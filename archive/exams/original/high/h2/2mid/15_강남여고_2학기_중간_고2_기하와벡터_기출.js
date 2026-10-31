@@ -567,7 +567,11 @@ window.questionBank = [
     "subUnitKeyNullReason": "The H15-GV master table defines standard units but does not publish exact H15-GV subUnitKey bindings for this topic; no other-curriculum key is inherited.",
     "difficultyReason": "Apply midpoint position vectors in two linked steps.",
     "layoutTag": "grid",
-    "wide": true
+    "wide": true,
+    "solutionImage": "assets/images/15_강남여고_2학기_중간_고2_기하와벡터_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 변 BC의 중점 M과 선분 AM의 중점 K를 잡고, 꼭짓점 A에서 B, C로 가는 화살표를 벡터 a, b로, B에서 K로 가는 화살표를 벡터 BK로 나타냈다.",
+    "solutionImageCaption": "AB=a, AC=b와 BK를 화살표로 나타냈다. M은 BC의 중점, K는 AM의 중점이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,

@@ -22,7 +22,44 @@ DEFAULT_STROKE='#111'
 ACCENT_STROKE='#c0392b'      # emphasis ACCENT: the red of a singled-out segment
 ANGLE_GROUP_STROKES={1:'#c0392b',2:'#1f5fa8',3:'#2e7d32'}   # emphasisGroup of an angle: the colour of every arc of the group (red, blue, green)
 
+VECTOR_CALL=re.compile(r'(?<![A-Za-z])vec\(([^()]*)\)')              # (G3) a vector name written in a plan label
+VECTOR_TEX=re.compile(r'\\vec\{[^{}]*\}|\\overrightarrow\{[^{}]*\}')   # (G3) the TeX commands a vector name becomes
 def tag(node):return node.tag.split('}')[-1]
+def path_extent_x(d):
+    """This observer's own reading of a path's horizontal extent (every coordinate, control points included) in the path's units."""
+    tokens=re.findall(r'[a-zA-Z]|-?\d*\.?\d+(?:e[-+]?\d+)?',d);xs=[];i=0;cmd='';cx=sx=0.0
+    while i<len(tokens):
+        if tokens[i].isalpha():cmd=tokens[i];i+=1
+        rel=cmd.islower();c=cmd.upper();base=cx if rel else 0.0
+        if c=='Z':cx=sx;continue
+        if c=='H':cx=base+float(tokens[i]);i+=1;xs.append(cx);continue
+        if c=='V':i+=1;continue
+        pairs={'M':1,'L':1,'T':1,'Q':2,'S':2,'C':3}.get(c)
+        if pairs is None:raise ValueError('UNSUPPORTED_PATH_COMMAND:'+cmd)
+        last=cx
+        for _ in range(pairs):last=base+float(tokens[i]);i+=2;xs.append(last)
+        cx=last
+        if c=='M':sx=cx;cmd='l' if rel else 'L'
+    return min(xs),max(xs)
+
+def vector_accent_clipped(label):
+    """(G3) A label group's \\vec accent (data-c 20D7) must lie inside the label's own box: the group's inner svg width, with the accent's path placed by the group transforms."""
+    box=next((c for c in label if tag(c)=='svg'),None)
+    if box is None:return False
+    try:width=float(box.get('width'))
+    except (TypeError,ValueError):return False
+    for g in box:
+        m=re.fullmatch(r'translate\(([-\d.eE+]+)[ ,]([-\d.eE+]+)\)\s*scale\(([-\d.eE+]+)\)',(g.get('transform') or '').strip()) if tag(g)=='g' else None
+        if not m:continue
+        tx,scale=float(m.group(1)),float(m.group(3))
+        for mo in g.iter():
+            accent=next((c for c in mo if tag(c)=='path' and c.get('data-c')=='20D7'),None)
+            if tag(mo)!='g' or accent is None:continue
+            shift=sum(float(t) for t in re.findall(r'translate\(\s*(-?[\d.]+)[ ,]\s*-?[\d.]+\s*\)',mo.get('transform') or ''))
+            lo,hi=path_extent_x(accent.get('d') or '')
+            if tx+scale*(shift+lo)<-0.01 or tx+scale*(shift+hi)>width+0.01:return True
+    return False
+
 def sub(p,q):return (p[0]-q[0],p[1]-q[1])
 def norm(v):return math.hypot(v[0],v[1])
 def angle_between(a,v,c):
@@ -485,6 +522,17 @@ def audit(p):
         if 'a'<=ch<='z':out.add(format(0x210E if ch=='h' else 0x1D44E+ord(ch)-97,'X'))
         if 'A'<=ch<='Z':out.add(format(0x1D434+ord(ch)-65,'X'))
         return out
+    def vector_label_check(label_id,node,text):
+        """(G3) A label that names vectors, vec(a) or vec(AB): this observer's own reading of the plan text gives the TeX commands the label must carry, in reading order
+        (\\vec{a}, \\overrightarrow{AB}); the label group's data-tex must carry exactly those, and a capital-letter name must be two different points of the figure."""
+        if not re.search(r'(?<![A-Za-z])vec\s*\(',text):return
+        names=VECTOR_CALL.findall(text)
+        if len(names)!=len(re.findall(r'(?<![A-Za-z])vec\s*\(',text)) or any(not re.fullmatch(r'[a-z]|[A-Z]{2}',name) for name in names):errors.append('VECTOR_LABEL_INVALID:'+label_id);return
+        known=p.get('points') or {}
+        if any(len(name)==2 and (name[0]==name[1] or any(ch not in known for ch in name)) for name in names):errors.append('VECTOR_LABEL_UNKNOWN_POINT:'+label_id);return
+        expected=[('\\vec{'+name+'}') if len(name)==1 else ('\\overrightarrow{'+name+'}') for name in names]
+        if VECTOR_TEX.findall(node.get('data-tex') or '')!=expected:errors.append('VECTOR_LABEL_TEX_MISMATCH:'+label_id)
+        if vector_accent_clipped(node):errors.append('VECTOR_LABEL_ACCENT_CLIPPED:'+label_id)
     def label_content(label_id,kind,text,unit,weight=None):
         """What a plain-text (labelKind TEXT) or unit-bearing label of the plan says, read back from the final SVG. A TEXT label is plain outlines (no math glyphs)
         whose text the typesetting step left on its group as data-text; a unit label is checked glyph by glyph (the unit letters last, a plain number's digits first)
@@ -505,6 +553,7 @@ def audit(p):
                 if weight!='MATH' and stroked:errors.append('LABEL_WEIGHT_UNDECLARED:'+label_id)
             return
         if node.get('data-text') is not None:errors.append('LABEL_KIND_MISMATCH:'+label_id)
+        vector_label_check(label_id,node,str(text))
         if not unit:return
         tail=[format(ord(ch),'X') for ch in unit]
         if len(codes)<len(tail)+1 or codes[-len(tail):]!=tail:errors.append('LABEL_UNIT_MISMATCH:'+label_id)
@@ -902,7 +951,7 @@ def audit(p):
         if anchor is not None and anchor not in TEXT_LABEL_ANCHORS:errors.append('TEXT_LABEL_ANCHOR_INVALID:'+oid);continue
         label_content(oid,kind,text,None,row.get('labelWeight'))
         node=elements.get(oid)
-        if kind=='MATH' and node is not None:
+        if kind=='MATH' and node is not None and 'vec(' not in text:   # a vector name draws arrow accents: label_content has read its TeX back instead
             want=math_label_codes(text);codes=glyph_codes(node)
             if len(codes)!=len(want) or any(code not in allowed for code,allowed in zip(codes,want)):errors.append('LABEL_TEXT_MISMATCH:'+oid)
         cx,cy=box[0]+box[2]/2,box[1]+box[3]/2;ax,ay=target
@@ -1339,6 +1388,21 @@ def audit(p):
         elif emphasis is not None:errors.append('SEGMENT_EMPHASIS_INVALID:'+s['id'])
         elif stroke!=DEFAULT_STROKE or (width>=EMPHASIS_WIDTH and not lies_on_drawn_line(node)):errors.append('SEGMENT_EMPHASIS_UNDECLARED:'+s['id'])
 
+    vector_rows=[r for r in (marks.get('vectors') or []) if isinstance(r,dict)];op_rows=[r for r in (marks.get('vectorOps') or []) if isinstance(r,dict)]
+    by_vector={};arrows=[]
+    if vector_rows or op_rows:
+        by_vector.update({r.get('id'):r for r in vector_rows})
+        def op_point(op):return op['point'] if isinstance(op.get('point'),str) else 'v'+re.sub('[^A-Za-z0-9]','',str(op.get('id')))[:20]+'P'
+        arrows.extend((r['id'],r['from'],r['to']) for r in vector_rows)
+        for op in op_rows:
+            ends=[by_vector.get(i) for i in (op.get('of') or [])]
+            if op.get('op')=='SUM' and len(ends)==2 and all(ends):
+                arrows.append((op['id'],ends[0]['from'],op_point(op)))
+                if op.get('guides')=='TRIANGLE':arrows.append((op['id']+'-g1',ends[0]['to'],op_point(op)))
+            elif op.get('op')=='DIFF' and len(ends)==2 and all(ends):arrows.append((op['id'],ends[1]['to'],ends[0]['to']))
+            elif op.get('op')=='SCALE' and len(ends)==1 and all(ends):arrows.append((op['id'],ends[0]['from'],op_point(op)))
+    vec_tails={a[1] for a in arrows}
+    vec_dots=[(float(n.get('cx')),float(n.get('cy')),float(n.get('r') or 0)) for n in root.iter() if tag(n)=='circle' and n.get('data-role')=='point' and n.get('cx') is not None]
     # ---- segment styles: dashes and arrowheads
     for s in p.get('segments',[]):
         node=elements.get(s['id'])
@@ -1354,8 +1418,86 @@ def audit(p):
                 head=elements.get(s['id']+'-arrow-'+end)
                 if head is None or tag(head)!='polygon':errors.append('SEGMENT_ARROW_MISSING:'+s['id']);continue
                 pts=poly_model(head);tip=pts[0];base=((pts[1][0]+pts[2][0])/2,(pts[1][1]+pts[2][1])/2);axis=sub(tip,base)
-                if norm(sub(tip,tip_expected))*sx>1e-3:errors.append('SEGMENT_ARROW_TIP_OFF_END:'+s['id'])
+                # (G3) a vector arrow that ends on a point which starts another arrow: where that point draws its dot the head stops on the dot's edge (radius +-0.5 px), else on the point itself
+                inset_dot=None
+                if any(a[0]==s['id'] and a[2] in vec_tails for a in arrows):
+                    where=forward(peer_point(next(a[2] for a in arrows if a[0]==s['id'])));inset_dot=next((d for d in vec_dots if math.dist(where,d[:2])<=1.5),None)
+                if inset_dot is not None:
+                    if abs(norm(sub(tip,tip_expected))*sx-inset_dot[2])>0.5:errors.append('SEGMENT_ARROW_TIP_OFF_END:'+s['id'])
+                elif norm(sub(tip,tip_expected))*sx>1e-3:errors.append('SEGMENT_ARROW_TIP_OFF_END:'+s['id'])
                 if axis[0]*out[0]+axis[1]*out[1]<=0 or abs(axis[0]*unit[1]-axis[1]*unit[0])/norm(axis)>math.sin(math.radians(0.1)):errors.append('SEGMENT_ARROW_NOT_ALONG_SEGMENT:'+s['id'])
+    # ---- vectors (G3): planeMarks.vectors / vectorOps, every fact recomputed here from the peer points. This copy of the rules lists the arrows the rows stand for on its own.
+    if vector_rows or op_rows:
+        VECTOR_POINT_PX=1.0          # px: an arrow's tail and head against the points it joins
+        def px_gap(q,r):return math.dist(q,r)*sx
+        dots=[(float(n.get('cx')),float(n.get('cy'))) for n in root.iter() if tag(n)=='circle' and n.get('data-role')=='point' and n.get('cx') is not None]
+        def has_dot(pid):
+            where=forward(peer_point(pid));return any(math.dist(where,d)<=1.5 for d in dots)
+        for sid,start,end in arrows:
+            n=elements.get(sid)
+            if n is None or tag(n)!='line':continue
+            a,b=line_model(n);ps,pe=peer_point(start),peer_point(end)
+            head=elements.get(sid+'-arrow-end')
+            if px_gap(a,ps)>VECTOR_POINT_PX or px_gap(b,pe)>VECTOR_POINT_PX:errors.append('VECTOR_DIRECTION_MISMATCH:'+sid)
+            elif head is None or tag(head)!='polygon' or elements.get(sid+'-arrow-start') is not None:errors.append('VECTOR_DIRECTION_MISMATCH:'+sid)
+            else:
+                tip_at=poly_model(head)[0];dot=next((d for d in vec_dots if math.dist(forward(pe),d[:2])<=1.5),None) if end in vec_tails else None
+                gap=px_gap(tip_at,pe)
+                if (dot is None and gap>VECTOR_POINT_PX) or (dot is not None and abs(gap-dot[2])>0.5):errors.append('VECTOR_DIRECTION_MISMATCH:'+sid)
+            observations.append({'id':sid,'type':'VECTOR_ARROW','from':start,'to':end})
+        tails={a[1] for a in arrows}
+        for tip in sorted({a[2] for a in arrows}-tails):
+            if has_dot(tip):errors.append('VECTOR_TIP_DOT_PRESENT:'+tip)
+        for row in vector_rows:
+            if row.get('components') is not True:continue
+            tip=peer_point(row['to']);cid=row['id']
+            for key,foot_ok,want_foot in (('cx',lambda q:abs(q[1])*sx<=VECTOR_POINT_PX,(tip[0],0.0)),('cy',lambda q:abs(q[0])*sx<=VECTOR_POINT_PX,(0.0,tip[1]))):
+                seg=drawn_segment(cid+'-'+key)
+                if seg is None:continue
+                a,b=seg
+                if px_gap(a,tip)>VECTOR_POINT_PX:a,b=b,a
+                axis_unit=(0.0,1.0) if key=='cx' else (1.0,0.0)           # the perpendicular to the x axis is vertical, to the y axis horizontal
+                d=sub(b,a);length=norm(d)
+                if px_gap(a,tip)>VECTOR_POINT_PX or not foot_ok(b) or px_gap(b,want_foot)>VECTOR_POINT_PX or length<=1e-12 or abs(d[0]*axis_unit[1]-d[1]*axis_unit[0])/length>math.sin(math.radians(ANGLE_TOLERANCE)):errors.append('VECTOR_COMPONENT_MISMATCH:'+cid+':'+key)
+                elif any(math.dist(forward(want_foot),dot)<=1.5 for dot in dots):errors.append('VECTOR_COMPONENT_MISMATCH:'+cid+':'+key+':foot_dot')
+                observations.append({'id':cid+'-'+key,'type':'VECTOR_COMPONENT','foot':want_foot})
+        def drawn_arrow(sid):
+            n=elements.get(sid)
+            return line_model(n) if n is not None and tag(n)=='line' else None
+        def parallel(u,v):
+            nu,nv=norm(u),norm(v)
+            return nu>1e-12 and nv>1e-12 and abs(u[0]*v[1]-u[1]*v[0])/(nu*nv)<=math.sin(math.radians(ANGLE_TOLERANCE))
+        for op in op_rows:
+            ends=[by_vector.get(i) for i in (op.get('of') or [])];oid=op.get('id')
+            if not ends or not all(ends):continue
+            if op.get('op')=='SUM' and len(ends)==2:
+                A,B,C=[peer_point(i) for i in (ends[0]['from'],ends[0]['to'],ends[1]['to'])];D=(B[0]+C[0]-A[0],B[1]+C[1]-A[1])
+                if px_gap(peer_point(op_point(op)),D)>VECTOR_POINT_PX:errors.append('VECTOR_SUM_POINT_MISMATCH:'+oid)
+                result=drawn_arrow(oid)
+                if result is not None and (px_gap(result[0],A)>VECTOR_POINT_PX or px_gap(result[1],D)>VECTOR_POINT_PX):errors.append('VECTOR_SUM_POINT_MISMATCH:'+oid)
+                if op.get('guides')=='PARALLELOGRAM':
+                    for suffix,start_point,opposite in (('-g1',B,sub(C,A)),('-g2',C,sub(B,A))):
+                        guide=drawn_arrow(oid+suffix)
+                        if guide is None:errors.append('SEGMENT_MISSING:'+oid+suffix);continue
+                        if min(px_gap(guide[0],start_point),px_gap(guide[1],start_point))>VECTOR_POINT_PX or min(px_gap(guide[0],D),px_gap(guide[1],D))>VECTOR_POINT_PX or not parallel(sub(guide[1],guide[0]),opposite):errors.append('VECTOR_SUM_GUIDE_NOT_PARALLEL:'+oid+suffix)
+                elif op.get('guides')=='TRIANGLE':
+                    guide=drawn_arrow(oid+'-g1');second=sub(C,A)
+                    if guide is None:errors.append('SEGMENT_MISSING:'+oid+'-g1')
+                    else:
+                        g=sub(guide[1],guide[0])
+                        if px_gap(guide[0],B)>VECTOR_POINT_PX or px_gap(guide[1],D)>VECTOR_POINT_PX or not parallel(g,second) or g[0]*second[0]+g[1]*second[1]<=0 or abs(norm(g)-norm(second))*sx>VECTOR_POINT_PX:errors.append('VECTOR_SUM_GUIDE_NOT_PARALLEL:'+oid+'-g1')
+            elif op.get('op')=='DIFF' and len(ends)==2:
+                B,C=peer_point(ends[0]['to']),peer_point(ends[1]['to']);result=drawn_arrow(oid)
+                if result is None or px_gap(result[0],C)>VECTOR_POINT_PX or px_gap(result[1],B)>VECTOR_POINT_PX:errors.append('VECTOR_DIFF_MISMATCH:'+oid)
+            elif op.get('op')=='SCALE' and len(ends)==1:
+                A,B,P=peer_point(ends[0]['from']),peer_point(ends[0]['to']),peer_point(op_point(op))
+                try:
+                    num,_,den=str(op.get('k')).partition('/');k=float(num)/float(den or 1)
+                except ValueError:errors.append('VECTOR_SCALE_MISMATCH:'+oid);continue
+                d=sub(B,A);t=((P[0]-A[0])*d[0]+(P[1]-A[1])*d[1])/(norm(d)**2) if norm(d)>1e-12 else math.nan
+                if not math.isfinite(t) or abs(t-k)>0.01 or abs((P[0]-A[0])*d[1]-(P[1]-A[1])*d[0])/norm(d)*sx>VECTOR_POINT_PX:errors.append('VECTOR_SCALE_MISMATCH:'+oid)
+                result=drawn_arrow(oid)
+                if result is None or px_gap(result[0],A)>VECTOR_POINT_PX or px_gap(result[1],P)>VECTOR_POINT_PX:errors.append('VECTOR_SCALE_MISMATCH:'+oid)
     return {'status':'FAIL' if errors else 'PASS','errors':errors,'observations':observations,'finalSvgSha256':'sha256:'+hashlib.sha256(p['svg'].encode('utf-8')).hexdigest(),'strategy':'FINAL_XML_PLANE_MARKS_FROM_PEER_POINTS'}
 
 if __name__=='__main__':

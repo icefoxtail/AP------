@@ -4,6 +4,7 @@
 // which recomputes every fact from the Cindy peer's points and from the drawn primitives.
 // The marks also work on a coordinate construction plan (SOURCE_COORDINATES with axes): the same facts, drawn on the same source frame.
 import {regionSpec,regionPointRefs} from './plane-regions.mjs';
+import {vectorTipIds,vectorArrows,checkVectorFacts} from './plane-vectors.mjs';
 export const PLANE_RECIPE='PLANE_FIGURE_v1';
 export const isPlaneFigure=plan=>plan?.mathPlan?.realization?.recipeId===PLANE_RECIPE;
 export const COORDINATE_RECIPE='SOURCE_COORDINATE_AXES_v1';
@@ -16,8 +17,9 @@ export const planeMarksAllowed=(plan,model)=>isPlaneFigure(plan)||isCoordinateFi
 // figure keep their dots while the feet of the perpendiculars that only guide the dashed segments draw none).
 export const unmarkedPointIds=plan=>{
   if(!(isPlaneFigure(plan)||plan?.mathPlan?.realization?.recipeId===COORDINATE_RECIPE))return [];
-  if(plan?.hiddenPointStyle==='NONE')return Array.isArray(plan.hiddenPointNames)?[...plan.hiddenPointNames]:[];
-  return Array.isArray(plan?.unmarkedPointNames)?[...plan.unmarkedPointNames]:[];
+  // (G3) the point that ends a vector arrow and starts none is drawn without its dot (the dot would cover the arrow head)
+  const base=plan?.hiddenPointStyle==='NONE'?(Array.isArray(plan.hiddenPointNames)?[...plan.hiddenPointNames]:[]):(Array.isArray(plan?.unmarkedPointNames)?[...plan.unmarkedPointNames]:[]);
+  return [...new Set([...base,...vectorTipIds(plan)])];
 };
 // Texts of a plan that write point names (caption and the labels of marks/lengths), for the check that a nameless point is never named in text.
 export function planNameTexts(plan,exceptPointId){
@@ -62,13 +64,13 @@ export function segmentLabelSite(row,p,q){
   const others=(at==='START'?[0.06,0.15,0.3]:at==='END'?[0.94,0.85,0.7]:[0.3,0.7]).map(lerp);
   return {at:mid,others,band:at==='START'?[0,.25]:at==='END'?[.75,1]:null};
 }
-const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums','commonSides','quadrants','callouts'],
+const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts','dimensions','pathLabels','textLabels','angleSums','commonSides','quadrants','callouts','vectors','vectorOps'],
   quadrants:['id','quadrant','label','fill','factRole'],textLabels:['id','at','text','labelKind','labelWeight','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],commonSides:['id','segment','text','labelWeight','labelAt','factRole'],
   dimensions:['id','from','to','label','labelKind','labelWeight','unit','side','style','offset','offsetPx','extension','crossArcs','value','factRole'],
   pathLabels:['id','points','label','labelKind','labelWeight','unit','value','factRole','closed','anchor','side','leader'],
   angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight','over','arcScale','angleDimension'],
   equalLengths:['id','count','segments','pathMark','markStyle'],parallels:['id','count','segments','lines'],
-  expressionLabels:['id','ownerSegment','text','factRole','labelKind','labelWeight','unit','labelAt','ownership'],
+  expressionLabels:['id','ownerSegment','text','factRole','labelKind','labelWeight','unit','labelAt','ownership','side'],
   arcs:['id','circle','center','from','to','side','label','labelKind','labelWeight','unit','labelPlacement','highlight','factRole'],
   traces:['id','center','radius','through','spanDeg','span','labelAt','label','labelKind','labelWeight','unit','factRole'],
   facts:['kind','circle','points','center','contact','tangent']};
@@ -116,6 +118,19 @@ const list=(value,where)=>{if(value===undefined)return [];if(!Array.isArray(valu
 export const TEXT_LABEL_ANCHORS=['CENTER','N','NE','E','SE','S','SW','W','NW'];
 export const TEXT_LABEL_HANGUL=/[\u1100-\u11FF\u3130-\u318F\uAC00-\uD7AF]/u;
 export const TEXT_LABEL_MATH=/^[A-Za-z0-9 (),<>=+\-.\u00B0]{1,40}$/;
+// (G3) A vector name inside a MATH label: vec(a) (one lower-case letter) or vec(AB) (two capital letters, each a point of the figure) is the only place a label may name a vector;
+// the engine turns it into \vec{a} / \overrightarrow{AB}. A backslash or dollar sign written directly stays refused. Returns null, or the error code for the first bad name.
+export function vectorLabelIssue(text,hasPoint){
+  const source=String(text);
+  if(!/(?<![A-Za-z])vec\s*\(/.test(source))return null;
+  const names=[...source.matchAll(/(?<![A-Za-z])vec\(([^()]*)\)/g)];
+  if(names.length!==(source.match(/(?<![A-Za-z])vec\s*\(/g)||[]).length)return 'VECTOR_LABEL_INVALID';
+  for(const [,name] of names){
+    if(!/^(?:[a-z]|[A-Z]{2})$/.test(name))return 'VECTOR_LABEL_INVALID';
+    if(name.length===2&&!(name[0]!==name[1]&&[...name].every(ch=>hasPoint(ch))))return name[0]===name[1]?'VECTOR_LABEL_INVALID':'VECTOR_LABEL_UNKNOWN_POINT';
+  }
+  return null;
+}
 export const textLabelKind=row=>row?.labelKind??(TEXT_LABEL_HANGUL.test(String(row?.text??''))?'TEXT':'MATH');
 export const TEXT_LABEL_FUNCTIONS=/(?<![A-Za-z])(?:sqrt|abs|log|logb|ln|exp|sin|cos|tan|pi)(?![A-Za-z])/;
 /** An angle value as the sum label writes it: 15, 37.5 (at most six decimals, no trailing zeros). */
@@ -252,6 +267,8 @@ export function planeMarkSpec(plan,model,points,segmentIds){
   const claim=(id,where)=>{if(typeof id!=='string'||!ID.test(id))bad('MARK_ID_INVALID:'+where);if(used.has(id))bad('MARK_ID_DUPLICATE:'+id);used.add(id);};
   const segEnds=id=>{const s=(plan.displaySegments||[]).find(row=>row.id===id);if(!s||!segmentIds.has(id))bad('MARK_TARGET_UNKNOWN:'+id);return s.refs.map(at);};
   const objects=[],factRolesByLabel={};
+  checkVectorFacts(plan,at);   // (G3) planeMarks.vectors / vectorOps against the model's points
+  const vectorSegmentIds=new Set(vectorArrows(marks).map(arrow=>arrow.id));   // (G3) a vector arrow may lie over another vector on one line (a and 2a): neither is a competitor for the other's label
   const role=(row,fallback='GIVEN')=>{const r=row.factRole??fallback;if(!FACT_ROLES.includes(r))bad('MARK_FACT_ROLE_INVALID:'+row.id);return r;};
   const labelOf=(row,measuredText,allowNone)=>{
     if(row.noLabel===true)return null;
@@ -394,13 +411,20 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     const kind=row.labelKind??'MATH';
     if(!['MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:expressionLabels.labelKind:'+row.id);
     if(kind==='TEXT')plainTextOk(row.text,'expressionLabels.text',row.id);
+    else{const issue=vectorLabelIssue(row.text,ch=>!!points[ch]);if(issue)bad(issue+':'+row.id);}
     const unit=unitOf(row,kind,true,'expressionLabels');
     // labelAt (E8b): START / END write the label at the first / second end of its segment (the order of the segment's refs), MID (default) at its middle;
     // (E31) a number 0..1 writes it that fraction of the way from the first end.
     const site=segmentLabelSite(row,p,q);
     // ownership NEAREST (E32): the label stands where its own segment is the nearest one by a small margin (a side of a small triangle among its other sides); STRICT (default) keeps the old margin
     if(row.ownership!==undefined&&!['STRICT','NEAREST'].includes(row.ownership))bad('SEGMENT_LABEL_OWNERSHIP_INVALID:'+row.id);
-    objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.ownerSegment,text:row.text,at:site.at,lineOwned:true,
+    // side (G3, the vector rows' label): LEFT / RIGHT of the segment walking from its first end to its second, as the page shows it; the layout tries that compass direction first
+    if(row.side!==undefined&&!['LEFT','RIGHT'].includes(row.side))bad('MARK_FIELD_INVALID:expressionLabels.side:'+row.id);
+    const sideDirection=row.side===undefined?null:(()=>{
+      const d=sub(q,p),n=row.side==='LEFT'?[-d[1],d[0]]:[d[1],-d[0]],turn=Math.round(Math.atan2(n[1],n[0])/(Math.PI/4));
+      return ['E','NE','N','NW','W','SW','S','SE'][((turn%8)+8)%8];
+    })();
+    objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.ownerSegment,text:row.text,at:site.at,lineOwned:true,...(sideDirection?{preferred:sideDirection}:{}),...(vectorSegmentIds.has(row.ownerSegment)?{collinearOwners:true}:{}),
       alternateAt:site.others,gaps:[8,6,10,20,32,48],priority:1,...(site.band?{lineBand:site.band}:{}),
       ...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{}),...(row.ownership==='NEAREST'?{ownership:'NEAREST'}:{}),...weightOf(row,kind,'expressionLabels')});
     factRolesByLabel[row.id]=role(row);
@@ -415,6 +439,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(!['MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:textLabels.labelKind:'+row.id);
     if(kind==='TEXT')plainTextOk(row.text,'textLabels.text',row.id);
     else if(!TEXT_LABEL_MATH.test(row.text)||TEXT_LABEL_FUNCTIONS.test(row.text)||TEXT_LABEL_HANGUL.test(row.text))bad('TEXT_LABEL_MATH_UNSUPPORTED:'+row.id);
+    if(kind==='MATH'){const issue=vectorLabelIssue(row.text,ch=>!!points[ch]);if(issue)bad(issue+':'+row.id);}
     const byPoint=typeof row.at==='string';
     let place;
     if(byPoint)place=at(row.at);

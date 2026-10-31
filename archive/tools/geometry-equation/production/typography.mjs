@@ -6,6 +6,30 @@ import {objectSha,bytesSha} from '../../pipeline-core/canonical.mjs';
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 export const MATH_GLYPH_STROKE_UNITS=30;
 export const TEXT_MATH_WEIGHT_STROKE_EM=0.06;   // weight:'MATH' on a TEXT label: the outline stroke (em) that gives the thin Noto face the weight of the math labels beside it (checked by eye against the MathJax glyphs)
+// (G3) The horizontal ink range [left,right] (MathJax units) of every \vec accent (U+20D7) in a typeset label: the path's own coordinates plus the translations of its group.
+export function pathExtentX(d){
+  const tokens=String(d).match(/[a-zA-Z]|-?\d*\.?\d+(?:e[-+]?\d+)?/g)||[],xs=[];let i=0,cmd='',cx=0,sx=0;
+  const num=()=>Number(tokens[i++]);
+  while(i<tokens.length){
+    if(/[a-zA-Z]/.test(tokens[i]))cmd=tokens[i++];
+    const rel=cmd===cmd.toLowerCase(),c=cmd.toUpperCase(),base=rel?cx:0;
+    if(c==='Z'){cx=sx;continue;}
+    if(c==='H'){cx=base+num();xs.push(cx);continue;}
+    if(c==='V'){num();continue;}
+    const pairs={M:1,L:1,T:1,Q:2,S:2,C:3}[c];if(!pairs)throw Error('UNSUPPORTED_PATH_COMMAND:'+cmd);
+    let last=cx;for(let k=0;k<pairs;k++){last=base+num();num();xs.push(last);}
+    cx=last;if(c==='M'){sx=cx;cmd=rel?'l':'L';}
+  }
+  return {left:Math.min(...xs),right:Math.max(...xs)};
+}
+export function accentInk(inner){
+  let left=Infinity,right=-Infinity;
+  for(const hit of String(inner).matchAll(/<g data-mml-node="mo" transform="([^"]*)"><path data-c="20D7" d="([^"]*)"/g)){
+    const shift=[...hit[1].matchAll(/translate\(\s*(-?[\d.]+)[ ,]\s*-?[\d.]+\s*\)/g)].reduce((sum,t)=>sum+Number(t[1]),0),ext=pathExtentX(hit[2]);
+    left=Math.min(left,shift+ext.left);right=Math.max(right,shift+ext.right);
+  }
+  return Number.isFinite(left)?{left,right}:null;
+}
 export function typesetter({fontPath=process.env.GEOMETRY_KOREAN_FONT || path.join(dependencyRoot,'NotoSansKR.ttf'),fontSha256=dependencyLock.font.sha256}={}) {
   const raw=fs.readFileSync(fontPath),actual=bytesSha(raw);
   if(!fontSha256 || fontSha256!==actual)throw Error('FONT_HASH_LOCK_REQUIRED');
@@ -26,7 +50,9 @@ export function typesetter({fontPath=process.env.GEOMETRY_KOREAN_FONT || path.jo
       const node=doc.convert(label.tex,{display:false});
       const svg=adaptor.firstChild(node);
       if(adaptor.outerHTML(svg).includes('data-mjx-error'))throw Error('MATHJAX_TYPESET_ERROR');
-      const [x,y,w,h]=adaptor.getAttribute(svg,'viewBox').split(/\s+/).map(Number);
+      let [x,y,w,h]=adaptor.getAttribute(svg,'viewBox').split(/\s+/).map(Number);
+      // (G3) a vector accent (\vec) reaches past the advance width of the letter under it: only for such labels the box grows to the accent's own ink, so it is never cut. Other labels keep MathJax's box.
+      if(label.tex.includes('\\vec{')){const ink=accentInk(adaptor.innerHTML(svg));if(ink){const left=Math.min(x,ink.left),right=Math.max(x+w,ink.right);x=left;w=right-left;}}
       width=w*label.fontPx/1000;height=h*label.fontPx/1000;baseline=-y*label.fontPx/1000;
       // Freeze the glyph-to-font transform, rather than fitting glyphs into a
       // second SVG viewport. Changing a fragment box must never shrink its ink.

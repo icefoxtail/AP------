@@ -10,6 +10,7 @@
 //   link: SEGMENT "ENDS" / ANGLE "VERTEX" joins the main figure's points to their copies with light dotted guide lines.
 // The copies are real points of the picture named `<callout id>__<point id>`; its marks are the ordinary plane marks, written on the copies and checked by the same code
 // (planeMarkSpec) and by the independent observer, which also reads the copies back against the main figure's own points.
+import {vectorArrows} from './plane-vectors.mjs';
 import {planeMarkSpec,dimensionSites,PLANE_RECIPE,isPlaneFigure,isCoordinateFigure} from './plane-marks.mjs';
 export const CALLOUT_KINDS=['SEGMENT','ANGLE'];
 export const CALLOUT_SIDES=['RIGHT','LEFT','ABOVE','BELOW'];
@@ -93,6 +94,8 @@ export function calloutEntries(plan,points,bounds,hidden=new Set(),model=undefin
     if(row.kind==='SEGMENT'){
       const path=row.path;
       if(!Array.isArray(path)||path.length<2||path.length>CALLOUT_PATH_MAX||path.some(id=>typeof id!=='string')||new Set(path).size!==path.length)bad('CALLOUT_PATH_INVALID:'+cid);
+      // (G3) the pulled-out copy of a piece never carries an arrow head: a piece that is a drawn vector arrow is refused rather than copied without its head
+      for(let i=1;i<path.length;i++)if(vectorArrows(plan.planeMarks).some(arrow=>(arrow.from===path[i-1]&&arrow.to===path[i])||(arrow.from===path[i]&&arrow.to===path[i-1])))bad('CALLOUT_VECTOR_UNSUPPORTED:'+cid);
       const coords=path.map(main),lengths=coords.slice(1).map((p,i)=>norm(sub(p,coords[i])));
       if(lengths.some(length=>!(length>1e-9)))bad('CALLOUT_PATH_DEGENERATE:'+cid);
       const scale=row.scale===undefined?1:numberOf(row.scale);

@@ -82,6 +82,16 @@ export function reconstruct(graph) {
         // Cindy has no ratio primitive: a free point pinned below from the Cindy-evaluated inputs with the textbook section formula.
         addGeometry({name:n.id,type:'Free',pos:[0,0]});branchEvents.push({kind:'DIVISION_POINT',node:n});
       }
+      else if(n.op==='VECTOR_SUM_POINT'){
+        // first+second-base is the reflection of base in the middle of first and second: Mid, TrReflectionP, TransformP (all Cindy primitives).
+        const [base,first,second]=n.inputs,middle='Z'+n.id+'M',transform='Z'+n.id+'Tr';
+        addGeometry({name:middle,type:'Mid',args:[first,second]});addGeometry({name:transform,type:'TrReflectionP',args:[middle]});
+        addGeometry({name:n.id,type:'TransformP',args:[transform,base]});
+      }
+      else if(n.op==='VECTOR_SCALE_POINT'){
+        // Cindy has no scaling primitive: a free point pinned below from the Cindy-evaluated inputs, first+k(second-first).
+        addGeometry({name:n.id,type:'Free',pos:[0,0]});branchEvents.push({kind:'VECTOR_SCALE_POINT',node:n});
+      }
       else if(n.op==='CENTROID'){
         // Intersection of two medians, built only from Mid/Join/Meet.
         const [a,b,c]=n.inputs,m1='Z'+n.id+'MA',m2='Z'+n.id+'MB',l1='Z'+n.id+'LA',l2='Z'+n.id+'LB';
@@ -165,6 +175,10 @@ export function reconstruct(graph) {
         if(!(m>0)||!(k>0)||!['INTERNAL','EXTERNAL'].includes(n.args.mode)||Math.hypot(b[0]-a[0],b[1]-a[1])<=1e-10||(!internal&&Math.abs(m-k)<=1e-12))throw Error('INVALID_CINDY_DIVISION');
         const denominator=internal?m+k:m-k,sign=internal?1:-1;
         geometry.find(value=>value.name===n.id).pos=[0,1].map(i=>(sign*k*a[i]+m*b[i])/denominator);
+      }else if(event.kind==='VECTOR_SCALE_POINT'){
+        const n=event.node,[a,b]=n.inputs.map(point),k=scalar(n.args.k);
+        if(!Number.isFinite(k)||k===0||k===1||Math.hypot(b[0]-a[0],b[1]-a[1])<=1e-10)throw Error('INVALID_CINDY_VECTOR_SCALE');
+        geometry.find(value=>value.name===n.id).pos=[0,1].map(i=>a[i]+k*(b[i]-a[i]));
       }else if(event.kind==='POLAR_POINT'){
         const n=event.node,[center,reference]=n.inputs.map(point),length=scalar(n.args.length),angle=scalar(n.args.angleDeg);
         const dx=reference[0]-center[0],dy=reference[1]-center[1],norm=Math.hypot(dx,dy);

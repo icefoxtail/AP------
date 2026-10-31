@@ -697,6 +697,12 @@ def prepare(spec):
     for obj in spec['objects']:
         oid=obj['id'];kind=obj['kind'];value=geometry.get(oid)
         if kind=='POINT' and obj.get('marker')=='NONE':pass   # an unmarked point: it draws neither a dot nor a name
+        elif kind=='POINT' and obj.get('marker')=='NO_DOT':
+            # the end of a vector arrow: no dot is drawn, but the name still stands clear of the place a dot would take (the point stays an obstacle and the owner of its name)
+            obstacles.append({'id':oid,'kind':'point','role':'point','axis':None,'value':None,'geometry':(*vp.screen(value),tokens['criticalPoint'] if obj.get('priority')==0 else tokens['point'])})
+            point_names=semantic.get('publication',{}).get('sourcePointLabels',{})
+            point_name=point_names.get(oid,obj.get('name',oid))
+            if oid not in named and point_name is not None:labels.append({'id':oid+'-name','kind':'POINT_NAME','target':oid,'text':point_name,'at':vp.screen(value),'font':tokens['pointName'],'priority':obj.get('priority',1)})
         elif kind=='POINT':
             primitive({'id':oid,'kind':'circle','at':vp.screen(value),'radius':obj['markerRadius'] if obj.get('markerRadius') is not None else tokens['criticalPoint'] if obj.get('priority')==0 else tokens['point'],'layer':70,'role':'point','token':'indicator'},'point')
             point_names=semantic.get('publication',{}).get('sourcePointLabels',{})
@@ -727,6 +733,8 @@ def prepare(spec):
                 for end,(tip,back) in {'START':(a,b),'END':(b,a)}.items():
                     if obj['arrow']!='BOTH' and obj['arrow']!=end:continue
                     ux,uy=(tip[0]-back[0])/length,(tip[1]-back[1])/length
+                    # arrowInset (G3, a vector whose end point keeps its dot): the head stops at the dot's edge instead of lying under the dot
+                    if obj.get('arrowInset') is True:tip=(tip[0]-ux*tokens['point'],tip[1]-uy*tokens['point'])
                     base=(tip[0]-ux*10,tip[1]-uy*10)
                     primitive({'id':oid+'-arrow-'+end.lower(),'kind':'polygon','points':[tip,(base[0]-uy*3.6,base[1]+ux*3.6),(base[0]+uy*3.6,base[1]-ux*3.6)],'token':'indicator','layer':62,'role':'indicator','fill':ACCENT_STROKE if emphasis=='ACCENT' else '#111','mark':'arrow','markId':oid,'markEnd':end,**({'stroke':ACCENT_STROKE} if emphasis=='ACCENT' else {})},'curve')
         elif kind=='CIRCLE':
@@ -1220,6 +1228,7 @@ def prepare(spec):
                     else:tree=Expr('unit',notation['unit'],(tree,))
                 label.update(text=serialize(tree,'plain'),markup=serialize(tree,'svg'),tex=serialize(tree,'tex'),sourceMath=obj['text'],math=True)
                 label['layoutText']=''.join(ET.fromstring('<text>'+label['markup']+'</text>').itertext())
+                if 'vec(' in obj['text']:label['bindText']=True   # (G3) a vector name's TeX stays on the label group, so the observer can read it back
                 if kind=='LENGTH_LABEL' and abs(float(evaluate(parse(obj['text'])))-obj['value'])>1e-9:raise ValueError('DISPLAY_LENGTH_PARITY_FAIL')
             if kind=='EQUATION_LABEL' and obj.get('freeLabel'):
                 # A free text label (planeMarks.textLabels): centred on its place (the nearest free spot of a small ring round it) or beside it on the side `anchor`

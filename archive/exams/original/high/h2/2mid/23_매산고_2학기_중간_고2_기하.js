@@ -164,7 +164,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-05-VECTOR_BASIC",
     "subUnit": "벡터의 뜻과 연산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육각형 ABCDEF와 중심 O. 꼭짓점 A에서 B로, A에서 F로 가는 화살표를 이웃한 두 변으로 하는 평행사변형을 점선으로 완성하고, 두 벡터의 합을 하나의 화살표로 나타냈다.",
+    "solutionImageCaption": "벡터 AB와 AF를 이웃한 두 변으로 하는 평행사변형을 그려 두 벡터의 합 AB+AF를 화살표로 나타냈다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -397,7 +401,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-05-VECTOR_BASIC",
     "subUnit": "벡터의 뜻과 연산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD(AB=2, AD=4)에서 꼭짓점 A에서 B, C, D로 가는 세 화살표와 D에서 B로 가는 화살표를 그리고 각각 벡터 a, b, c, d라고 이름 붙였다.",
+    "solutionImageCaption": "직사각형의 꼭짓점 A에서 B, C, D로, D에서 B로 가는 네 벡터 a, b, c, d를 화살표로 나타냈다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,

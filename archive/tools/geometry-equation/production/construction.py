@@ -22,6 +22,7 @@ SIGNATURES = {
     'PERPENDICULAR_THROUGH': (['POINT','LINE'],'LINE'),
     'TRANSLATE_POINT': (['POINT'],'POINT'), 'TRANSLATE_LINE': (['LINE'],'LINE'),
     'POLAR_POINT': (['POINT','POINT'],'POINT'),
+    'VECTOR_SUM_POINT': (['POINT','POINT','POINT'],'POINT'), 'VECTOR_SCALE_POINT': (['POINT','POINT'],'POINT'),
     'CIRCLE_CENTER_RADIUS': (['POINT'],'CIRCLE'),
     'CIRCLE_THROUGH_3': (['POINT','POINT','POINT'],'CIRCLE'),
     'CIRCLE_THROUGH_POINT': (['POINT','POINT'],'CIRCLE'),
@@ -143,7 +144,7 @@ def validate(graph):
             b=node.get('branch',{})
             if set(b)!={'kind','refs','sign'} or b['kind']!='SIDE_OF_ORIENTED_LINE' or len(b['refs'])!=2 or b['sign'] not in (-1,1): raise ValueError('INVALID_BRANCH')
         elif 'branch' in node: raise ValueError('UNEXPECTED_BRANCH')
-        expected={'SOURCE_POINT':{'coordinates'},'NORMALIZATION_ORIGIN':set(),'NORMALIZATION_AXIS':{'length'},'CIRCLE_CENTER_RADIUS':{'radius'},'ANGLE_BISECTOR':{'mode'},'SOURCE_LINE':{'a','b','c'},'DIVISION_POINT':{'m','n','mode'},'TRANSLATE_POINT':{'dx','dy'},'TRANSLATE_LINE':{'dx','dy'},'POLAR_POINT':{'length','angleDeg','turn'}}.get(node['op'],set())
+        expected={'SOURCE_POINT':{'coordinates'},'NORMALIZATION_ORIGIN':set(),'NORMALIZATION_AXIS':{'length'},'CIRCLE_CENTER_RADIUS':{'radius'},'ANGLE_BISECTOR':{'mode'},'SOURCE_LINE':{'a','b','c'},'DIVISION_POINT':{'m','n','mode'},'TRANSLATE_POINT':{'dx','dy'},'TRANSLATE_LINE':{'dx','dy'},'POLAR_POINT':{'length','angleDeg','turn'},'VECTOR_SCALE_POINT':{'k'}}.get(node['op'],set())
         if set(node['args'])!=expected: raise ValueError('UNSUPPORTED_NODE_ARGS')
         if node['op']=='POLAR_POINT' and node['args']['turn'] not in ('CCW','CW'):raise ValueError('INVALID_POLAR_TURN')
         if node['op']=='DIVISION_POINT' and node['args']['mode'] not in ('INTERNAL','EXTERNAL'):raise ValueError('INVALID_DIVISION_MODE')
@@ -245,6 +246,16 @@ def execute(graph):
             else:
                 if m==k:raise ValueError('EXTERNAL_DIVISION_EQUAL_RATIO')
                 value=S.Point((m*second.x-k*first.x)/(m-k),(m*second.y-k*first.y)/(m-k))
+        elif op=='VECTOR_SUM_POINT':
+            # (G3) the sum of the vectors base->first and base->second, from the same start: the fourth corner of their parallelogram, first+second-base.
+            base,first,second=a
+            if (first.x-base.x)*(second.y-base.y)-(first.y-base.y)*(second.x-base.x)==0:raise ValueError('VECTOR_SUM_DEGENERATE')
+            value=S.Point(first.x+second.x-base.x,first.y+second.y-base.y)
+        elif op=='VECTOR_SCALE_POINT':
+            # (G3) the end of the vector first->second scaled by the rational k from its start: first+k(second-first). k=0 and k=1 scale nothing.
+            first,second=a;k=scalar(args['k'])
+            if first==second or not k.is_rational or k==0 or k==1:raise ValueError('VECTOR_SCALE_INVALID')
+            value=S.Point(first.x+k*(second.x-first.x),first.y+k*(second.y-first.y))
         elif op=='CENTROID':
             if S.Point.is_collinear(*a):raise ValueError('DEGENERATE_TRIANGLE')
             value=S.Point(sum(p.x for p in a)/3,sum(p.y for p in a)/3)
