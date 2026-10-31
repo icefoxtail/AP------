@@ -124,7 +124,7 @@ def validate(spec):
         if 'labelWeight' in obj and (obj['labelWeight']!='MATH' or obj.get('labelKind')!='TEXT' or obj['kind'] not in {'FILL_REGION','EQUATION_LABEL','CIRCULAR_ARC','DIMENSION_LINE','PATH_LABEL','TRACE_ARC'}):raise ValueError('INVALID_LABEL_WEIGHT:'+str(obj.get('id')))
         if obj['kind']=='FILL_REGION' and 'labelAt' in obj and (not isinstance(obj['labelAt'],list) or len(obj['labelAt'])!=2 or any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) for v in obj['labelAt'])):raise ValueError('REGION_LABEL_AT_INVALID:'+str(obj.get('id')))
         # A first layout direction for a label at its point (the layout still tries the other directions).
-        if 'preferred' in obj and (obj['kind'] not in {'POINT_NAME','COORDINATE_LABEL'} or obj['preferred'] not in {'N','NE','E','SE','S','SW','W','NW'}):raise ValueError('INVALID_LABEL_PREFERRED_DIRECTION')
+        if 'preferred' in obj and ((obj['kind'] not in {'POINT_NAME','COORDINATE_LABEL'} and not (obj['kind']=='EQUATION_LABEL' and obj.get('lineOwned') is True)) or obj['preferred'] not in {'N','NE','E','SE','S','SW','W','NW'}):raise ValueError('INVALID_LABEL_PREFERRED_DIRECTION')
         if 'priority' in obj and (isinstance(obj['priority'],bool) or not isinstance(obj['priority'],int) or not 0<=obj['priority']<=4):raise ValueError('INVALID_PRIORITY')
         if 'refs' in obj and (not isinstance(obj['refs'],list) or not all(isinstance(v,str) for v in obj['refs'])):raise ValueError('INVALID_REFS')
         for key in ('math','allowSuppress'):

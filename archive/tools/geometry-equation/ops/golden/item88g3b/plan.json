@@ -1,0 +1,259 @@
+{
+ "capability": "construction-spike-v1",
+ "caption": "정육각형 ABCDEF의 꼭짓점 A에서 나가는 두 벡터 AB, AF를 이웃한 두 변으로 하는 평행사변형을 점선으로 그리고, 두 벡터의 합 AB+AF를 화살표로 나타낸 그림이다.",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "-1"
+      },
+      {
+       "kind": "expression",
+       "op": "sqrt",
+       "args": [
+        {
+         "kind": "integer",
+         "value": "3"
+        }
+       ]
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "-2"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "-1"
+      },
+      {
+       "kind": "expression",
+       "op": "neg",
+       "args": [
+        {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "3"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "expression",
+       "op": "neg",
+       "args": [
+        {
+         "kind": "expression",
+         "op": "sqrt",
+         "args": [
+          {
+           "kind": "integer",
+           "value": "3"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "E",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "2"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "F",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "expression",
+       "op": "sqrt",
+       "args": [
+        {
+         "kind": "integer",
+         "value": "3"
+        }
+       ]
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "O"
+ ],
+ "displayLines": [],
+ "coordinateCanvas": {
+  "width": 560,
+  "height": 480
+ },
+ "displaySegments": [
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ]
+  },
+  {
+   "id": "sDE",
+   "refs": [
+    "D",
+    "E"
+   ]
+  },
+  {
+   "id": "sEF",
+   "refs": [
+    "E",
+    "F"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "vectors": [
+   {
+    "id": "vAB",
+    "from": "A",
+    "to": "B",
+    "label": "vec(AB)",
+    "side": "LEFT"
+   },
+   {
+    "id": "vAF",
+    "from": "A",
+    "to": "F",
+    "label": "vec(AF)",
+    "side": "LEFT"
+   }
+  ],
+  "vectorOps": [
+   {
+    "id": "sum",
+    "op": "SUM",
+    "of": [
+     "vAB",
+     "vAF"
+    ],
+    "point": "O",
+    "guides": "PARALLELOGRAM",
+    "label": "vec(AB)+vec(AF)",
+    "labelAt": 0.5
+   }
+  ]
+ }
+}

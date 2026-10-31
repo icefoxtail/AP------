@@ -1,0 +1,162 @@
+{
+ "capability": "construction-spike-v1",
+ "caption": "AB=2, AD=4인 직사각형 ABCD에서 AB, AC, AD, DB를 화살표로 그리고 각각 벡터 a, b, c, d라 이름 붙인 그림이다.",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "2"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "4"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "4"
+      },
+      {
+       "kind": "integer",
+       "value": "2"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D"
+ ],
+ "displayLines": [],
+ "displaySegments": [
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "vectors": [
+   {
+    "id": "va",
+    "from": "A",
+    "to": "B",
+    "label": "vec(a)",
+    "side": "LEFT"
+   },
+   {
+    "id": "vb",
+    "from": "A",
+    "to": "C",
+    "label": "vec(b)",
+    "labelAt": 0.3
+   },
+   {
+    "id": "vc",
+    "from": "A",
+    "to": "D",
+    "label": "vec(c)"
+   },
+   {
+    "id": "vd",
+    "from": "D",
+    "to": "B",
+    "label": "vec(d)",
+    "labelAt": 0.3
+   }
+  ],
+  "dimensions": [
+   {
+    "id": "lAB",
+    "from": "A",
+    "to": "B",
+    "label": "2",
+    "side": "LEFT",
+    "offset": 1
+   },
+   {
+    "id": "lAD",
+    "from": "A",
+    "to": "D",
+    "label": "4",
+    "side": "ABOVE",
+    "offset": 1
+   }
+  ]
+ }
+}

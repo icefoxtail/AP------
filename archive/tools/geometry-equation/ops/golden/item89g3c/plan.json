@@ -1,0 +1,175 @@
+{
+ "capability": "construction-spike-v1",
+ "caption": "삼각형 ABC에서 변 BC의 중점 M, 선분 AM의 중점 K를 잡고 AB, AC, BK를 화살표로 그린 그림이다. AB와 AC는 각각 벡터 a, b이다.",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "6"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "2"
+      },
+      {
+       "kind": "integer",
+       "value": "5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "M",
+    "op": "MIDPOINT",
+    "inputs": [
+     "B",
+     "C"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "K",
+    "op": "MIDPOINT",
+    "inputs": [
+     "A",
+     "M"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "M",
+  "K"
+ ],
+ "displayLines": [],
+ "displaySegments": [
+  {
+   "id": "sBM",
+   "refs": [
+    "B",
+    "M"
+   ]
+  },
+  {
+   "id": "sMC",
+   "refs": [
+    "M",
+    "C"
+   ]
+  },
+  {
+   "id": "sAK",
+   "refs": [
+    "A",
+    "K"
+   ]
+  },
+  {
+   "id": "sKM",
+   "refs": [
+    "K",
+    "M"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "equalLengths": [
+   {
+    "id": "eBM",
+    "count": 2,
+    "segments": [
+     "sBM",
+     "sMC"
+    ]
+   },
+   {
+    "id": "eAK",
+    "count": 1,
+    "segments": [
+     "sAK",
+     "sKM"
+    ]
+   }
+  ],
+  "vectors": [
+   {
+    "id": "va",
+    "from": "A",
+    "to": "B",
+    "label": "vec(a)",
+    "side": "LEFT"
+   },
+   {
+    "id": "vb",
+    "from": "A",
+    "to": "C",
+    "label": "vec(b)",
+    "side": "RIGHT"
+   },
+   {
+    "id": "vBK",
+    "from": "B",
+    "to": "K",
+    "label": "vec(BK)",
+    "emphasis": "ACCENT",
+    "labelAt": 0.6
+   }
+  ]
+ }
+}

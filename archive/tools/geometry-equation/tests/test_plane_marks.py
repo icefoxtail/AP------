@@ -694,4 +694,76 @@ class DecimalStringTests(unittest.TestCase):
             self.assertRegex(construction.plain_decimal(value),grammar)
 
 
+# ---- (G3) vectors: construction ops and the observer's vector checks on a hand-made spec (the label TeX is read back in Chrome tests: tests/plane-vectors.test.mjs)
+def rational(n,d):return {'kind':'rational','numerator':str(n),'denominator':str(d)}
+def vnode(identifier,op,inputs,args=None):return {'id':identifier,'op':op,'inputs':inputs,'args':args or {},'outputType':'POINT','factRole':'DERIVED_INTERMEDIATE'}
+
+class VectorConstructionTests(unittest.TestCase):
+    base=[source('A',0,0),source('B',6,0),source('C',2,4)]
+    def test_sum_point_is_the_fourth_corner_exactly(self):
+        model=construction.execute(plane([*self.base,vnode('D','VECTOR_SUM_POINT',['A','B','C'])]))
+        self.assertEqual(model['points']['D']['approximation'],[8.0,4.0]);self.assertEqual([v['value'] for v in model['points']['D']['exact']],['8','4'])
+    def test_sum_of_vectors_on_one_line_is_refused(self):
+        with self.assertRaises(ValueError) as caught:construction.execute(plane([source('A',0,0),source('B',2,0),source('E',5,0),vnode('D','VECTOR_SUM_POINT',['A','B','E'])]))
+        self.assertEqual(str(caught.exception),'VECTOR_SUM_DEGENERATE')
+    def test_scale_point_takes_an_exact_rational(self):
+        for k,want in ((integer(2),[12.0,0.0]),(rational(-1,2),[-3.0,0.0]),(rational(3,2),[9.0,0.0])):
+            model=construction.execute(plane([*self.base,vnode('P','VECTOR_SCALE_POINT',['A','B'],{'k':k})]))
+            self.assertEqual(model['points']['P']['approximation'],want)
+        model=construction.execute(plane([*self.base,vnode('P','VECTOR_SCALE_POINT',['A','C'],{'k':rational(1,3)})]))
+        self.assertEqual([v['kind'] for v in model['points']['P']['exact']],['rational','rational'])
+    def test_scale_point_refuses_zero_one_and_a_point_on_itself(self):
+        for k in (integer(0),integer(1)):
+            with self.assertRaises(ValueError) as caught:construction.execute(plane([*self.base,vnode('P','VECTOR_SCALE_POINT',['A','B'],{'k':k})]))
+            self.assertEqual(str(caught.exception),'VECTOR_SCALE_INVALID')
+        with self.assertRaises(ValueError):construction.execute(plane([*self.base,vnode('P','VECTOR_SCALE_POINT',['A','B'])]))   # args {k} required
+
+class VectorObserverTests(unittest.TestCase):
+    """A triangle of arrows A->B, A->C and the sum arrow A->D with its dashed sides, drawn by the engine; the observer reads the vector facts back."""
+    @classmethod
+    def setUpClass(cls):
+        cls.points={'A':(0.0,0.0),'B':(6.0,0.0),'C':(2.0,4.0),'D':(8.0,4.0)}
+        def arrow(identifier,a,b,**extra):return seg(identifier,cls.points,a,b,arrow='END',**extra)
+        objects=[arrow('va','A','B'),arrow('vb','A','C'),arrow('s1','A','D',emphasis='ACCENT'),seg('s1-g1',cls.points,'B','D',dash=True),seg('s1-g2',cls.points,'C','D',dash=True)]
+        spec=spec_of(cls.points,objects)
+        for obj in spec['objects']:
+            if obj['kind']=='POINT' and obj['id'] in ('B','C','D'):obj['marker']='NO_DOT'
+        cls.spec=spec;cls.result=build(spec);cls.svg=cls.result['svg'];cls.transform=cls.result['witness']['coordinateModel']
+        cls.segments=[{'id':'va','refs':['A','B'],'arrow':'END'},{'id':'vb','refs':['A','C'],'arrow':'END'},{'id':'s1','refs':['A','D'],'arrow':'END','emphasis':'ACCENT'},
+                      {'id':'s1-g1','refs':['B','D'],'dashed':True},{'id':'s1-g2','refs':['C','D'],'dashed':True}]
+        cls.marks={'vectors':[{'id':'va','from':'A','to':'B'},{'id':'vb','from':'A','to':'C'}],
+                   'vectorOps':[{'id':'s1','op':'SUM','of':['va','vb'],'point':'D','guides':'PARALLELOGRAM'}]}
+    def audit(self,svg=None,points=None,marks=None,segments=None):
+        return OBSERVER.audit({'svg':svg or self.svg,'points':points or {k:list(v) for k,v in self.points.items()},'marks':marks if marks is not None else self.marks,'segments':segments if segments is not None else self.segments,'transform':self.transform})
+    def codes(self,**kw):return [error.split(':')[0] for error in self.audit(**kw)['errors']]
+    def test_genuine_figure_passes_and_tips_draw_no_dot(self):
+        self.assertEqual(self.audit()['errors'],[])
+        for tip in ('B','C','D'):self.assertNotRegex(self.svg,r'<circle[^>]*\bid="'+tip+'"')
+        self.assertRegex(self.svg,r'<circle[^>]*\bid="A"')
+    def test_a_dot_on_a_tip(self):
+        spec=json.loads(json.dumps(self.spec))
+        for obj in spec['objects']:
+            if obj.get('id')=='D':obj.pop('marker',None)
+        svg=build(spec)['svg'];self.assertIn('VECTOR_TIP_DOT_PRESENT',self.codes(svg=svg))
+    def test_reversed_or_misplaced_arrow(self):
+        marks=json.loads(json.dumps(self.marks));marks['vectors'][0]['from'],marks['vectors'][0]['to']=['B','A']
+        self.assertIn('VECTOR_DIRECTION_MISMATCH',self.codes(marks=marks))
+        points={k:list(v) for k,v in self.points.items()};points['C']=[2.0,5.0]
+        self.assertIn('VECTOR_DIRECTION_MISMATCH',self.codes(points=points))
+    def test_sum_point_and_guides(self):
+        points={k:list(v) for k,v in self.points.items()};points['D']=[8.5,4.0]
+        self.assertIn('VECTOR_SUM_POINT_MISMATCH',self.codes(points=points))
+        marks=json.loads(json.dumps(self.marks));marks['vectorOps'][0]['of']=['va','va']
+        self.assertTrue({'VECTOR_SUM_POINT_MISMATCH','VECTOR_SUM_GUIDE_NOT_PARALLEL'}&set(self.codes(marks=marks)))
+        tilted=re.sub(r'(<line\s(?:[^>]*\s)?id="s1-g1"[^>]*\sy1=")([^"]*)"',lambda m:m.group(1)+str(float(m.group(2))+12)+'"',self.svg)
+        self.assertNotEqual(tilted,self.svg);self.assertIn('VECTOR_SUM_GUIDE_NOT_PARALLEL',self.codes(svg=tilted))
+    def test_difference_and_scale(self):
+        points={**{k:list(v) for k,v in self.points.items()},'P':[12.0,0.0]}
+        diff={'vectors':self.marks['vectors'],'vectorOps':[{'id':'va','op':'DIFF','of':['va','vb']}]}
+        self.assertIn('VECTOR_DIFF_MISMATCH',self.codes(marks=diff,points=points))        # the drawn va is A->B, not C->B
+        scale={'vectors':self.marks['vectors'],'vectorOps':[{'id':'va','op':'SCALE','of':['va'],'k':'2','point':'P'}]}
+        self.assertIn('VECTOR_SCALE_MISMATCH',self.codes(marks=scale,points=points))      # the drawn va ends at B, not at P=A+2(B-A)
+        points['P']=[6.0,1.0];self.assertIn('VECTOR_SCALE_MISMATCH',self.codes(marks=scale,points=points))
+
+
 if __name__=='__main__':unittest.main()

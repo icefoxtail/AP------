@@ -16,8 +16,8 @@ const NODE_ID=/^[A-Za-z][A-Za-z0-9]{0,31}$/;
 const PLANE_RECIPE='PLANE_FIGURE_v1';
 const COORDINATE_RECIPE='SOURCE_COORDINATE_AXES_v1';
 const bad=code=>{throw Error(code);};
-export const VECTOR_KEYS=['id','from','to','label','labelAt','side','emphasis','dashed','components','componentLabels','factRole'];
-export const VECTOR_OP_KEYS=['id','op','of','point','label','labelAt','side','guides','k','emphasis','factRole'];
+export const VECTOR_KEYS=['id','from','to','label','labelAt','side','ownership','emphasis','dashed','components','componentLabels','factRole'];
+export const VECTOR_OP_KEYS=['id','op','of','point','label','labelAt','side','ownership','guides','k','emphasis','factRole'];
 export const VECTOR_OPS=['SUM','DIFF','SCALE'];
 export const VECTOR_GUIDES=['PARALLELOGRAM','TRIANGLE'];
 export const VECTOR_SIDES=['LEFT','RIGHT'];
@@ -102,7 +102,7 @@ export function expandPlaneVectors(input){
     if(typeof row.label!=='string'||!row.label.trim())bad('MARK_FIELD_INVALID:vectors.label:'+row.id);
     if(row.side!==undefined&&!VECTOR_SIDES.includes(row.side))bad('MARK_FIELD_INVALID:vectors.side:'+row.id);
     claim(row.id+'-text');
-    labels.push({id:row.id+'-text',ownerSegment:ownerId,text:row.label,...(row.labelAt!==undefined?{labelAt:row.labelAt}:{}),...(row.side?{side:row.side}:{}),...(row.factRole?{factRole:row.factRole}:{})});
+    labels.push({id:row.id+'-text',ownerSegment:ownerId,text:row.label,...(row.labelAt!==undefined?{labelAt:row.labelAt}:{}),...(row.side?{side:row.side}:{}),...(row.ownership!==undefined?{ownership:row.ownership}:{}),...(row.factRole?{factRole:row.factRole}:{})});
   };
   const arrowSegment=(row,id,from,to,{dashed=false,emphasis}={})=>{
     if(row.emphasis!==undefined&&!VECTOR_EMPHASIS.includes(row.emphasis))bad('DISPLAY_SEGMENT_EMPHASIS_INVALID:'+row.id);
