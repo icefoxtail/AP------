@@ -827,7 +827,11 @@ def prepare(spec):
                 for step in loop['steps']:
                     p0=geometry[current];p1=geometry[step['to']];end=vp.screen(p1);arc=step.get('arc')
                     if arc is None:
-                        d_parts.append('L'+_num(end[0])+' '+_num(end[1]));dense.append(end);straight_edges.append((vp.screen(p0),end))
+                        # via (G6c): vertices of a sampled curve piece between the two displayed points; each is one L and one (short) straight edge
+                        chain=[vp.screen(p0)]
+                        for vertex in step.get('via') or []:
+                            shown=vp.screen(tuple(vertex));d_parts.append('L'+_num(shown[0])+' '+_num(shown[1]));dense.append(shown);chain.append(shown)
+                        d_parts.append('L'+_num(end[0])+' '+_num(end[1]));dense.append(end);chain.append(end);straight_edges.extend(zip(chain,chain[1:]))
                     elif arc.get('full'):
                         # a whole circle: two half arcs through the antipode of its start point
                         centre=geometry[arc['center']];radius=math.dist(p0,centre);owners.append(arc['center'])

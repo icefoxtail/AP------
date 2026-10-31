@@ -320,13 +320,27 @@ function addGraphOverlays(plan,spec){
     // coordinates:true: the dot carries no separate name; a named point is written A(-6,-3), an unnamed one (-6,-3).
     objects.push({id:point.id,kind:'POINT',at:[point.x,point.y],name:null,priority:0});
     objects.push(names.has(point.id)&&!point.unnamed
-      ?{id:point.id+'-coordinates',kind:'EQUATION_LABEL',target:point.id,text:names.expr(point.id)+'('+point.coordinates.join(',')+')',at:[point.x,point.y],priority:0,...(point.labelDirection?{directions:directionsFrom(point.labelDirection)}:{})}
+      ?{id:point.id+'-coordinates',kind:'EQUATION_LABEL',target:point.id,text:names.expr(point.id)+'('+point.coordinates.join(',')+')',at:[point.x,point.y],priority:0,ringLeader:true,...(point.labelDirection?{directions:directionsFrom(point.labelDirection)}:{})}
       :{id:point.id+'-coordinates',kind:'COORDINATE_LABEL',target:point.id,exact:point.coordinates,priority:0,...(point.unnamed?{ringLeader:true}:{}),...(point.labelDirection?{preferred:point.labelDirection}:{})});
   }
   // circles (G6): a circle drawn at the plot's single scale (the observer refuses an ellipse).
   for(const circle of features.circles??[])objects.push({id:'overlay-circle-'+circle.id,kind:'CIRCLE',center:[circle.cx,circle.cy],radius:circle.r,...(circle.fill?{fill:circle.fill}:{})});
   // circleRegions (G6b): the circular segment between two points on a circle, a real SVG arc closed by the chord (a FILL_REGION of one arc and one straight edge).
   for(const region of features.circleRegions??[]){
+    if(region.boundary){
+      // boundary form (G6c): pieces of the drawn curve (one straight step through the sampled vertices) and circle arcs; every junction is a hidden point at the exact vertex.
+      const junction=index=>'overlay-circle-region-'+region.id+'-v'+index,count=region.boundary.length;
+      region.vertices.forEach((vertex,index)=>objects.push({id:junction(index),kind:'POINT',at:vertex,name:null,marker:'NONE'}));
+      const steps=region.boundary.map((piece,index)=>{
+        const to=junction((index+1)%count);
+        if(piece.kind==='CURVE')return {to,via:piece.samples.slice(1,-1)};
+        const centerId='overlay-circle-'+piece.circle+'-center';
+        if(!objects.some(object=>object.id===centerId)){const ring=features.circles?.find(row=>row.id===piece.circle);if(!ring)throw Error('OVERLAY_CIRCLE_REGION_INVENTORY_REQUIRED');objects.push({id:centerId,kind:'POINT',at:[ring.cx,ring.cy],name:null,marker:'NONE'});}
+        return {to,arc:{center:centerId,sweep:piece.sweep}};
+      });
+      objects.push({id:'overlay-circle-region-'+region.id,kind:'FILL_REGION',fill:region.fill,...(region.label?{labelText:region.label}:{}),loops:[{start:junction(0),steps}]});
+      continue;
+    }
     const circle=features.circles?.find(row=>row.id===region.circle),centerId='overlay-circle-'+region.circle+'-center';
     if(!circle||!points.has(region.from)||!points.has(region.to))throw Error('OVERLAY_CIRCLE_REGION_INVENTORY_REQUIRED');
     if(!objects.some(object=>object.id===centerId))objects.push({id:centerId,kind:'POINT',at:[circle.cx,circle.cy],name:null,marker:'NONE'});

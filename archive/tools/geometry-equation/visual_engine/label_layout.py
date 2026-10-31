@@ -11,7 +11,7 @@ PATH_LABEL_SIDE_MIN_DOT=0.5   # E37: a direction counts as on a path's side when
 OWNER_BOUND_POINT_LABELS={'POINT_NAME','COORDINATE_LABEL'}
 POINT_OWNER_DISTANCE_TOLERANCE_PX2=1e-6
 MEASURED_OWNER_REPAIR_GAPS=(64,80,96,128)
-POINT_NAME_RING_RADII=(12,16,20,26,32,40,48,56,64,72,80,96,112)
+POINT_NAME_RING_RADII=(12,16,20,26,32,40,48,56,64,72,80,96,112,128,144,160,180,210,240,270,300)
 NEAR_RELOCATION_LEADER_MIN_GAP=20
 # A wedge narrower than twice the 15-degree leader/line tolerance keeps its bisector leaders hidden under a ray (visible_owner_leader rejects them).
 NARROW_WEDGE_MAX_DEGREES=30.0
@@ -125,7 +125,7 @@ def segment_segment_distance(a,b,c,d):
         if cross(ab,ac)*cross(ab,ad)<=1e-12 and cross(cd,ca)*cross(cd,cb)<=1e-12:return 0.0
     return min(point_segment_distance(a,c,d),point_segment_distance(b,c,d),point_segment_distance(c,a,b),point_segment_distance(d,a,b))
 
-def leader_clear(start,end,obstacles,owner_ids,clearance=6.0,near_start=False):
+def leader_clear(start,end,obstacles,owner_ids,clearance=6.0,near_start=False,start_tolerance=1e-4):
     """near_start (E31): a leader that starts on its own line right beside a parallel neighbour (closer than `clearance`) may leave it when it only moves
     away from that neighbour: the closest approach to the neighbour is its start, which keeps at least LEADER_NEAR_START_MIN_PX from it, and it never crosses it."""
     def intersection_points(a,b,c,d):
@@ -159,7 +159,7 @@ def leader_clear(start,end,obstacles,owner_ids,clearance=6.0,near_start=False):
         segments=list(zip(geometry,geometry[1:]))
         if owner:
             points=[point for c,d in segments for point in intersection_points(start,end,c,d)]
-            if any(math.dist(point,start)>1e-4 for point in points):return False
+            if any(math.dist(point,start)>start_tolerance for point in points):return False
             continue
         if near_start:
             for c,d in segments:
@@ -364,10 +364,10 @@ def line_between(start,box,occupied,incident):
     return any(o.get('kind') in {'line','axis','auxiliary','curve'} and o.get('id') not in incident and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
                and any(segment_segment_distance(start,end,c,d)<=1.0 for c,d in zip(o['geometry'],o['geometry'][1:])) for o in occupied)
 
-def visible_owner_leader(start,box,occupied,incident,near_start=False):
+def visible_owner_leader(start,box,occupied,incident,near_start=False,start_tolerance=1e-4):
     """End of a leader from the point to the label box, or None when it would touch other geometry or hide along a line through the point."""
     end=owner_leader_endpoint(box,start,(box.x+box.width/2,box.y+box.height/2))
-    if not leader_clear(start,end,occupied,incident,near_start=near_start):return None
+    if not leader_clear(start,end,occupied,incident,near_start=near_start,start_tolerance=start_tolerance):return None
     # A leader running along a line through the point (within 15 degrees) hides under that line: not a visible leader.
     if any(o.get('id') in incident and o.get('kind') in {'line','axis','auxiliary','curve','leader'} and isinstance(o.get('geometry'),(list,tuple))
            and any(point_segment_distance(start,c,d)<=1e-3 and leader_hides_along(start,end,c,d) for c,d in zip(o['geometry'],o['geometry'][1:]))
@@ -381,6 +381,7 @@ def point_box_has_unambiguous_owner(box,owner,competitors):
         owner_distance2=(x-ox)**2+(y-oy)**2
         for marker in competitors:
             cx,cy=marker['geometry'][:2]
+            if (cx-ox)**2+(cy-oy)**2<1e-6:continue   # a second marker on the very same place is no competitor (G6c: a hidden construction dot under a named point)
             competitor_distance2=(x-cx)**2+(y-cy)**2
             if owner_distance2+POINT_OWNER_DISTANCE_TOLERANCE_PX2>=competitor_distance2:return False
     return True
@@ -650,7 +651,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
             intersection=_segment_intersection(axes[0]['geometry'],tick_owner['geometry'])
             if intersection is None or math.dist(tuple(label.get('at',())),intersection)>1e-4:raise ValueError('TICK_LABEL_SOURCE_POSITION_MISMATCH:'+label['id'])
         owner_marker=None;competing_markers=[]
-        if require_measurements and label.get('kind') in OWNER_BOUND_POINT_LABELS:
+        if require_measurements and (label.get('kind') in OWNER_BOUND_POINT_LABELS or (label.get('kind')=='EQUATION_LABEL' and label.get('ringLeader') is True)):
             owner_id=label.get('target')
             if not isinstance(owner_id,str) or not owner_id:raise ValueError('POINT_LABEL_OWNER_REQUIRED:'+label['id'])
             markers=[obstacle for obstacle in obstacles if obstacle.get('kind')=='point']
@@ -1020,7 +1021,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 if panel.contains(box) and acceptable(box):
                     chosen=box;method='SIDE_PANEL';label={**label,'text':text,'markup':html.escape(label.get('panelPrefix',''))+label['markup'] if label.get('markup') else None};break
         if (chosen is None and ((label['kind']=='POINT_NAME' and not label.get('directions') and not label.get('gaps') and label.get('preferred') is None)
-                or (label['kind']=='COORDINATE_LABEL' and owner_marker is not None and label.get('ringLeader')))):
+                or (label['kind'] in {'COORDINATE_LABEL','EQUATION_LABEL'} and owner_marker is not None and label.get('ringLeader')))):
             # (E31) The same last resort for the coordinates of an unnamed point (ringLeader: an overlay point with unnamed+coordinates, a hidden construction point that writes its coordinates):
             # a box in the nearest free sector, on a visible leader from the point.
             # A point where several strokes meet (the centre of a circle with its radii) leaves no free cardinal direction for its name: the name
@@ -1039,6 +1040,19 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                     tie_to_owner(end);ring=box
                     ring_method='OWNER_LEADER_'+('E','SE','S','SW','W','NW','N','NE')[int(((step*7.5+22.5)%360)//45)];break
                 if ring is not None:break
+            if ring is None and label['kind'] in {'COORDINATE_LABEL','EQUATION_LABEL'} and label.get('ringLeader'):
+                # (G6c) Nothing outside the strokes is free for a wide coordinate label: the leader may then cross the point's own circle (never another stroke, label or point)
+                # to reach the nearest free box. The leader still starts on its own dot and ends on the label box, which the observer ties back to the owner.
+                crossing=[o for o in occupied if not (o.get('kind')=='circle' and o.get('id') in incident_ids)] if (incident_ids:=owner_incident_ids(at,owner_marker,occupied)) is not None else occupied
+                for radius in POINT_NAME_RING_RADII:
+                    for step in range(48):
+                        angle=math.radians(step*7.5)
+                        box=Box(at[0]+radius*math.cos(angle)-w/2,at[1]+radius*math.sin(angle)-h/2,w,h)
+                        if not acceptable(box,owner_check=False):continue
+                        end=visible_owner_leader(at,box,crossing,incident_ids,start_tolerance=2e-3)
+                        if end is None:continue
+                        tie_to_owner(end);ring=box;ring_method='OWNER_LEADER_'+('E','SE','S','SW','W','NW','N','NE')[int(((step*7.5+22.5)%360)//45)];break
+                    if ring is not None:break
             if ring is not None:chosen=ring;method=ring_method
         if chosen is None:
             unresolved.append(label['id'])

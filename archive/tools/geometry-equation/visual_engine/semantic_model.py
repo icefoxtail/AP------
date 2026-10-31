@@ -94,7 +94,7 @@ def validate(spec):
         # quadrant (E31): the coordinate quadrant 1..4 a QUADRANT object tints and names.
         if 'quadrant' in obj and (obj['kind']!='QUADRANT' or isinstance(obj['quadrant'],bool) or obj['quadrant'] not in {1,2,3,4}):raise ValueError('INVALID_QUADRANT:'+str(obj.get('id')))
         # ringLeader (E31): an unnamed point's coordinate label may take the nearest free sector on a leader from its point as the last resort.
-        if 'ringLeader' in obj and (obj['kind']!='COORDINATE_LABEL' or obj['ringLeader'] is not True):raise ValueError('INVALID_RING_LEADER')
+        if 'ringLeader' in obj and ((obj['kind']!='COORDINATE_LABEL' and not (obj['kind']=='EQUATION_LABEL' and isinstance(obj.get('target'),str))) or obj['ringLeader'] is not True):raise ValueError('INVALID_RING_LEADER')
         # lineBarrier (E31): the hidden point's coordinates must not sit beyond a line the point is not on (the label reads as that line's).
         if 'lineBarrier' in obj and (obj['kind']!='COORDINATE_LABEL' or obj['lineBarrier'] is not True or obj.get('ringLeader') is not True):raise ValueError('INVALID_LINE_BARRIER')
         # lineBand (E31): the part [lo,hi] (fractions of the drawn segment, from its first point) a segment's expression label may stand in.
@@ -246,7 +246,10 @@ def validate(spec):
             if any(objects.get(name,{}).get('kind')!='POINT' for name in names): raise ValueError('REGION_BOUNDARY_UNKNOWN:'+obj['id'])
             if names[-1]!=names[0]: raise ValueError('REGION_NOT_CLOSED:'+obj['id'])
             for before,step in zip(names,loop['steps']):
-                if set(step)-{'to','arc'}: raise ValueError('REGION_BOUNDARY_UNKNOWN:'+obj['id'])
+                if set(step)-{'to','arc','via'}: raise ValueError('REGION_BOUNDARY_UNKNOWN:'+obj['id'])
+                if 'via' in step:
+                    via=step['via']
+                    if step.get('arc') is not None or not isinstance(via,list) or not via or len(via)>400 or any(not isinstance(v,list) or len(v)!=2 or any(isinstance(c,bool) or not isinstance(c,(int,float)) or not math.isfinite(c) for c in v) for v in via):raise ValueError('REGION_BOUNDARY_UNKNOWN:'+obj['id'])
                 arc=step.get('arc')
                 full=isinstance(arc,dict) and arc.get('full') is True
                 if before==step['to'] and not full: raise ValueError('REGION_DEGENERATE_EDGE:'+obj['id'])

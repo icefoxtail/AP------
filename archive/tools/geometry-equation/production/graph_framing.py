@@ -2498,6 +2498,46 @@ def _overlay_line_circle_point(line,circle,pick,ident):
     index=0 if pick.endswith('X') else 1
     return (min if pick.startswith('MIN') else max)(pts,key=lambda point:float(S.N(point[index],30)))
 
+def _overlay_curve_pieces(plan):
+    """The plan's drawn curve as exact rational functions of x: [(numerator, denominator, lo, hi)] (lo/hi None = open), or None for a family
+    that is not a polynomial / rational function (G6c: those have no exact tangent search)."""
+    x=S.Symbol('x',real=True);family=plan.get('family')
+    poly=lambda values:sum((_overlay_exact(c,'curve')*x**i for i,c in enumerate(values)),S.Integer(0))
+    try:
+        if family=='polynomial':return x,[(poly(plan['coefficients']),S.Integer(1),None,None)]
+        if family=='rational':return x,[(poly(plan['numerator']),poly(plan['denominator']),None,None)]
+        if family=='piecewise-polynomial':
+            cut=[_overlay_exact(point['x'],'curve') for point in plan.get('breakpoints') or []];pieces=plan.get('pieces') or []
+            return x,[(poly(piece.get('coefficients') or []),S.Integer(1),None if index==0 else cut[index-1],None if index==len(pieces)-1 else cut[index]) for index,piece in enumerate(pieces)]
+    except (KeyError,IndexError,TypeError):return None
+    return None
+
+def _overlay_tangent_points(plan,circle):
+    """Every exact point where the drawn curve touches the overlay circle with a repeated root (G6c): the residual (x-cx)^2+(y-cy)^2-r^2 of a
+    polynomial / rational curve is a polynomial in x; its square-free factors of multiplicity >= 2 are the touching points. A touching root
+    without an exact (radical) form is refused. Returns None for a family without this exact search."""
+    model=_overlay_curve_pieces(plan)
+    if model is None:return None
+    x,pieces=model;cx,cy,r2=circle;lo,hi=plan['domain'];found=[]
+    for numerator,denominator,left,right in pieces:
+        residual=S.expand((x-cx)**2*denominator**2+(numerator-cy*denominator)**2-r2*denominator**2)
+        if residual==0 or not residual.has(x):continue
+        for factor,multiplicity in S.sqf_list(S.Poly(residual,x))[1]:
+            if multiplicity<2:continue
+            roots=S.roots(factor.as_expr(),x)
+            if sum(roots.values())!=factor.degree():
+                if any(float(S.N(root,30))>=lo-1e-9 and float(S.N(root,30))<=hi+1e-9 for root in S.Poly(factor,x).nroots(n=30) if abs(S.im(root))<1e-12):_overlay_fail('OVERLAY_CIRCLE_CURVE_INTERSECTION_NOT_EXACT')
+                continue
+            for root in roots:
+                if not root.is_real:continue
+                value=float(S.N(root,30))
+                if not lo-1e-9<=value<=hi+1e-9 or left is not None and root<left or right is not None and root>right:continue
+                if S.simplify(denominator.subs(x,root))==0:continue
+                root=S.radsimp(S.simplify(root));y=S.radsimp(S.simplify((numerator/denominator).subs(x,root)))
+                pp_surd_text(root);pp_surd_text(y)
+                if not any(abs(float(S.N(root-other[0],30)))<1e-9 for other in found):found.append((root,y))
+    return sorted(found,key=lambda point:float(S.N(point[0],30)))
+
 OVERLAY_CURVE_CIRCLE_SAMPLES=400
 def _overlay_curve_circle_point(plan,circle,curve_ref,pick,ident):
     """Exact intersection of the drawn curve with an overlay circle (G6b): the curve is scanned over its drawn interval for sign changes of
@@ -2525,6 +2565,17 @@ def _overlay_curve_circle_point(plan,circle,curve_ref,pick,ident):
         roots.append((a+b)/2)
     if values and values[-1]==0:roots.append(xs[-1])
     roots=sorted(roots);roots=[root for index,root in enumerate(roots) if index==0 or root-roots[index-1]>1e-7]
+    # G6c: roots of multiplicity >= 2 (the curve touches the circle) give no sign change; they are found exactly from the residual polynomial.
+    tangents=_overlay_tangent_points(plan,circle) if curve_id is None else None
+    if pick=='TANGENT':
+        if tangents is None:_overlay_fail('OVERLAY_CIRCLE_CURVE_INTERSECTION_NOT_EXACT',ident)
+        if not tangents:_overlay_fail('OVERLAY_CIRCLE_CURVE_TANGENT_NOT_FOUND',ident)
+        if len(tangents)!=1:_overlay_fail('OVERLAY_CIRCLE_CURVE_TANGENT_AMBIGUOUS',ident)
+        return tangents[0]
+    for tangent in tangents or []:
+        value=float(S.N(tangent[0],30))
+        if not any(abs(value-root)<=1e-6 for root in roots):roots.append(value)
+    roots=sorted(roots)
     if not roots:_overlay_fail('OVERLAY_CIRCLE_CURVE_NO_INTERSECTION',ident)
     if pick is None:
         if len(roots)!=1:_overlay_fail('OVERLAY_CIRCLE_PICK_REQUIRED',ident)
@@ -2532,6 +2583,8 @@ def _overlay_curve_circle_point(plan,circle,curve_ref,pick,ident):
     else:
         if pick not in ('MIN_X','MAX_X'):_overlay_fail('OVERLAY_CIRCLE_PICK_INVALID',ident)
         chosen=roots[0] if pick=='MIN_X' else roots[-1]
+    for tangent in tangents or []:
+        if abs(float(S.N(tangent[0],30))-chosen)<=1e-6:return tangent
     for candidate in (S.nsimplify(chosen,rational=True,tolerance=1e-9),S.nsimplify(chosen,tolerance=1e-9)):
         try:
             y=_overlay_curve_exact(plan,candidate,curve_id)
@@ -2545,9 +2598,84 @@ def _overlay_curve_circle_point(plan,circle,curve_ref,pick,ident):
 # two named points (both exactly on the circle): the part on the `side` of the chord (ABOVE/BELOW for a chord that is not vertical, LEFT/RIGHT for one that
 # is not horizontal). The arc is drawn as a true SVG arc; the observer recomputes the arc from the raw circle and points.
 OVERLAY_CIRCLE_REGION_SIDES=('ABOVE','BELOW','LEFT','RIGHT')
-def _overlay_circle_regions(raw,circle_rows,circle_exact,by_point,exact_by_point,claim):
+# boundary form (G6c): {id,boundary:[piece,...],fill?,label?} fills the closed region bounded by drawn-curve pieces and circle arcs. A piece is
+# {curve:'curve'|'curve:ID'|<functionName>,fromX,toX} (the drawn curve between two exact x) or {arc:circleId,from:P,to:Q,sweep:'MINOR'|'MAJOR'} (the shorter or
+# longer arc of the circle from point P to point Q). Each piece must start where the one before it ended and the last must end where the first began.
+OVERLAY_CIRCLE_REGION_CURVE_SAMPLES=96
+OVERLAY_CIRCLE_REGION_LABEL_PATTERN=r'[0-9A-Za-z=+\-*/().\^_ ]{1,40}'   # a math label such as S_1 (the underscore writes a subscript)
+def _overlay_region_curve_ref(plan,ref,ident):
+    if not isinstance(ref,str):_overlay_fail('OVERLAY_CIRCLE_REGION_CURVE_UNKNOWN',ident)
+    if ref=='curve' or ref.startswith('curve:'):return ref
+    if plan.get('family')=='exp-log-pair':
+        if any(isinstance(row,dict) and row.get('id')==ref for row in plan.get('curves') or []):return 'curve:'+ref
+    elif ref==plan.get('functionName'):return 'curve'
+    _overlay_fail('OVERLAY_CIRCLE_REGION_CURVE_UNKNOWN',ident)
+
+def _overlay_same_point(first,second):
+    return all(S.simplify(S.expand(a-b))==0 for a,b in zip(first,second))
+
+def _overlay_circle_boundary_region(plan,entry,ident,circle_rows,circle_exact,by_point,exact_by_point):
+    if set(entry)-{'id','boundary','fill','label'}:_overlay_fail('OVERLAY_CIRCLE_REGION_INVALID',ident)
+    fill=entry.get('fill','LIGHT')
+    if fill not in ('LIGHT','MEDIUM'):_overlay_fail('OVERLAY_CIRCLE_REGION_FILL_INVALID',ident)
+    pieces=entry['boundary']
+    if not isinstance(pieces,list) or not 2<=len(pieces)<=4:_overlay_fail('OVERLAY_CIRCLE_REGION_INVALID',ident)
+    lo,hi=plan['domain'];rows=[]
+    for piece in pieces:
+        if not isinstance(piece,dict):_overlay_fail('OVERLAY_CIRCLE_REGION_INVALID',ident)
+        if 'curve' in piece:
+            if set(piece)!={'curve','fromX','toX'}:_overlay_fail('OVERLAY_CIRCLE_REGION_INVALID',ident)
+            ref=_overlay_region_curve_ref(plan,piece['curve'],ident);curve_id=ref.split(':',1)[1] if ':' in ref else None
+            if (plan.get('family')=='exp-log-pair')!=(curve_id is not None):_overlay_fail('OVERLAY_CIRCLE_REGION_CURVE_UNKNOWN',ident)
+            x0=_overlay_exact(piece['fromX'],ident);x1=_overlay_exact(piece['toX'],ident)
+            if x0==x1 or not all(lo-1e-9<=float(S.N(value,30))<=hi+1e-9 for value in (x0,x1)):_overlay_fail('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN',ident)
+            try:y0=_overlay_curve_exact(plan,x0,curve_id);y1=_overlay_curve_exact(plan,x1,curve_id)
+            except ValueError as error:
+                if str(error).startswith('OVERLAY_CURVE_UNKNOWN'):_overlay_fail('OVERLAY_CIRCLE_REGION_CURVE_UNKNOWN',ident)
+                raise
+            a,b=float(S.N(x0,30)),float(S.N(x1,30));count=OVERLAY_CIRCLE_REGION_CURVE_SAMPLES;samples=[]
+            for k in range(count+1):
+                xv=a+(b-a)*k/count
+                yv=float(S.N(y0 if k==0 else y1 if k==count else _overlay_curve_exact(plan,S.Float(xv,30),curve_id),30))
+                if not math.isfinite(yv):_overlay_fail('OVERLAY_POINT_NOT_ON_CURVE',ident)
+                samples.append([xv,yv])
+            rows.append({'kind':'CURVE','curve':ref,'fromX':pp_surd_text(x0),'toX':pp_surd_text(x1),'samples':samples,'_start':(x0,y0),'_end':(x1,y1)})
+        elif 'arc' in piece:
+            if set(piece)!={'arc','from','to','sweep'}:_overlay_fail('OVERLAY_CIRCLE_REGION_INVALID',ident)
+            circle=piece['arc'];first=piece['from'];second=piece['to']
+            if circle not in circle_exact or first not in by_point or second not in by_point or first==second:_overlay_fail('OVERLAY_CIRCLE_REGION_INVALID',ident)
+            if piece['sweep'] not in ('MINOR','MAJOR'):_overlay_fail('OVERLAY_CIRCLE_REGION_SWEEP_INVALID',ident)
+            for name in (first,second):
+                if not _overlay_on_circle(circle_exact[circle],*exact_by_point[name]):_overlay_fail('OVERLAY_CIRCLE_REGION_ENDPOINT_NOT_ON_CIRCLE',ident+':'+name)
+            ring=[row for row in circle_rows if row['id']==circle][0];cx,cy=ring['cx'],ring['cy']
+            p0,p1=by_point[first],by_point[second]
+            ccw=(math.atan2(p1['y']-cy,p1['x']-cx)-math.atan2(p0['y']-cy,p0['x']-cx))%(2*math.pi)
+            if abs(ccw-math.pi)<1e-9:_overlay_fail('OVERLAY_CIRCLE_REGION_SWEEP_INVALID',ident)
+            counter=(ccw<math.pi)==(piece['sweep']=='MINOR');angle=ccw if counter else 2*math.pi-ccw
+            rows.append({'kind':'ARC','circle':circle,'from':first,'to':second,'sweep':'CCW' if counter else 'CW','large':angle>math.pi+1e-9,'_start':exact_by_point[first],'_end':exact_by_point[second]})
+        else:_overlay_fail('OVERLAY_CIRCLE_REGION_INVALID',ident)
+    for k,row in enumerate(rows):
+        following=rows[(k+1)%len(rows)]
+        if not _overlay_same_point(row['_end'],following['_start']):_overlay_fail('OVERLAY_CIRCLE_REGION_BOUNDARY_NOT_CLOSED',ident)
+    # a curve piece end that meets an arc must lie on that arc's circle (the exact check of the shared point)
+    for k,row in enumerate(rows):
+        following=rows[(k+1)%len(rows)]
+        if row['kind']=='CURVE' and following['kind']=='ARC' and not _overlay_on_circle(circle_exact[following['circle']],*row['_end']):_overlay_fail('OVERLAY_CIRCLE_REGION_ENDPOINT_NOT_ON_CIRCLE',ident)
+        if row['kind']=='ARC' and following['kind']=='CURVE' and not _overlay_on_circle(circle_exact[row['circle']],*following['_start']):_overlay_fail('OVERLAY_CIRCLE_REGION_ENDPOINT_NOT_ON_CIRCLE',ident)
+    result={'id':ident,'fill':fill,'boundary':[{key:value for key,value in row.items() if not key.startswith('_')} for row in rows],
+            'vertices':[[float(S.N(row['_start'][0],30)),float(S.N(row['_start'][1],30))] for row in rows]}
+    label=entry.get('label')
+    if label is not None:
+        if not isinstance(label,str) or not label.strip() or len(label)>40 or any(ord(char)<32 for char in label) or not re.fullmatch(OVERLAY_CIRCLE_REGION_LABEL_PATTERN,label):_overlay_fail('OVERLAY_CIRCLE_REGION_LABEL_INVALID',ident)
+        result['label']=label
+    return result
+
+def _overlay_circle_regions(plan,raw,circle_rows,circle_exact,by_point,exact_by_point,claim):
     rows=[]
     for entry in raw.get('circleRegions',[]) or []:
+        if isinstance(entry,dict) and 'boundary' in entry:
+            ident=_overlay_id(entry.get('id'),'circleRegion');claim('circleRegion:'+ident)
+            rows.append(_overlay_circle_boundary_region(plan,entry,ident,circle_rows,circle_exact,by_point,exact_by_point));continue
         if not isinstance(entry,dict) or set(entry)-{'id','circle','from','to','side','fill'}:_overlay_fail('OVERLAY_CIRCLE_REGION_INVALID',entry.get('id') if isinstance(entry,dict) else 'circleRegion')
         ident=_overlay_id(entry.get('id'),'circleRegion');claim('circleRegion:'+ident)
         circle=entry.get('circle');first=entry.get('from');second=entry.get('to')
@@ -3098,7 +3226,7 @@ def _overlay_features(plan):
             row['label']=label;row['labelKind']=label_kind
         polygons.append(row)
     for line in lines:line['labelAlternates']=_overlay_label_alternates(plan,line,lines,points)
-    circle_regions=_overlay_circle_regions(raw,circle_rows,circle_exact,by_point,exact_by_point,claim)
+    circle_regions=_overlay_circle_regions(plan,raw,circle_rows,circle_exact,by_point,exact_by_point,claim)
     features={'schemaVersion':'GRAPH_OVERLAYS_FEATURES_v1','points':points,'lines':lines,'segments':segments,'guides':guides,'polygons':polygons}
     if circle_regions:features['circleRegions']=circle_regions
     if circle_rows:
