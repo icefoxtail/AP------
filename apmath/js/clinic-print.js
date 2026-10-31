@@ -100,7 +100,7 @@ async function clinicPrintLoadArchive2CandidateCatalog() {
         clinicPrintArchive2CatalogPromise = (async () => {
             await clinicPrintLoadArchive2Script('mixer-selector', '../archive/mixer-selector.js?v=20261016-clinic-rec-1', 'ArchiveMixerSelector');
             await clinicPrintLoadArchive2Script('archive2-canonical', '../archive/archive2-canonical.js?v=20261030-release-sync-1', 'Archive2Canonical');
-            await clinicPrintLoadArchive2Script('archive2-core', '../archive/archive2-core.js?v=20261029-s14-1', 'Archive2Core');
+            await clinicPrintLoadArchive2Script('archive2-core', '../archive/archive2-core.js?v=20261031-recorded-use-1', 'Archive2Core');
             const archiveBase = clinicPrintGetArchiveBaseUrl();
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 90000);
