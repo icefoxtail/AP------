@@ -544,7 +544,9 @@ def _overlay_model_svg(plan,transform):
         a,b=clip_line(line);p,q=screen(*a),screen(*b)
         parts.append(f'<line id="overlay-line-{line["id"]}" data-role="overlayLine" x1="{p[0]:.12g}" y1="{p[1]:.12g}" x2="{q[0]:.12g}" y2="{q[1]:.12g}" stroke="black"/>')
     for circle in features.get('circles',[]):
-        centre=screen(circle['cx'],circle['cy']);parts.append(f'<circle id="overlay-circle-{circle["id"]}" data-role="overlayCircle" cx="{centre[0]:.12g}" cy="{centre[1]:.12g}" r="{circle["r"]*sx:.12g}" fill="none" stroke="black"/>')
+        centre=screen(circle['cx'],circle['cy'])
+        if circle.get('fill'):parts.append(f'<circle id="overlay-circle-{circle["id"]}-fill" data-role="region" cx="{centre[0]:.12g}" cy="{centre[1]:.12g}" r="{circle["r"]*sx:.12g}" fill="{ {"LIGHT":"#e4e7ec","MEDIUM":"#c7ccd5"}[circle["fill"]] }" stroke="none"/>')
+        parts.append(f'<circle id="overlay-circle-{circle["id"]}" data-role="overlayCircle" cx="{centre[0]:.12g}" cy="{centre[1]:.12g}" r="{circle["r"]*sx:.12g}" fill="none" stroke="black"/>')
     points={point['id']:point for point in features['points']}
     def at(ident):
         point=points.get(ident)
@@ -554,6 +556,9 @@ def _overlay_model_svg(plan,transform):
         a,b=at(segment['from']),at(segment['to'])
         dash=' stroke-dasharray="6 4"' if segment['dashed'] else ''
         parts.append(f'<line id="overlay-segment-{segment["id"]}" data-role="overlaySegment" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black"{dash}/>')
+    for region in features.get('circleRegions',[]):
+        circle=[row for row in features['circles'] if row['id']==region['circle']][0];a,b=at(region['from']),at(region['to']);radius=circle['r']*sx
+        parts.append(f'<path id="overlay-circle-region-{region["id"]}" data-role="region" fill="{ {"LIGHT":"#e4e7ec","MEDIUM":"#c7ccd5"}[region["fill"]] }" stroke="none" d="M{a[0]:.12g} {a[1]:.12g} A{radius:.12g} {radius:.12g} 0 {1 if region["large"] else 0} {0 if region["sweep"]=="CCW" else 1} {b[0]:.12g} {b[1]:.12g} L{a[0]:.12g} {a[1]:.12g} Z"/>')
     for guide in features['guides']:
         point=points[guide['from']];origin=screen(point['x'],point['y']);axis=guide['axis'];dash=' stroke-dasharray="6 4"' if guide['dashed'] else ''
         if axis in ('x','BOTH'):

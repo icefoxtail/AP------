@@ -324,7 +324,14 @@ function addGraphOverlays(plan,spec){
       :{id:point.id+'-coordinates',kind:'COORDINATE_LABEL',target:point.id,exact:point.coordinates,priority:0,...(point.unnamed?{ringLeader:true}:{}),...(point.labelDirection?{preferred:point.labelDirection}:{})});
   }
   // circles (G6): a circle drawn at the plot's single scale (the observer refuses an ellipse).
-  for(const circle of features.circles??[])objects.push({id:'overlay-circle-'+circle.id,kind:'CIRCLE',center:[circle.cx,circle.cy],radius:circle.r});
+  for(const circle of features.circles??[])objects.push({id:'overlay-circle-'+circle.id,kind:'CIRCLE',center:[circle.cx,circle.cy],radius:circle.r,...(circle.fill?{fill:circle.fill}:{})});
+  // circleRegions (G6b): the circular segment between two points on a circle, a real SVG arc closed by the chord (a FILL_REGION of one arc and one straight edge).
+  for(const region of features.circleRegions??[]){
+    const circle=features.circles?.find(row=>row.id===region.circle),centerId='overlay-circle-'+region.circle+'-center';
+    if(!circle||!points.has(region.from)||!points.has(region.to))throw Error('OVERLAY_CIRCLE_REGION_INVENTORY_REQUIRED');
+    if(!objects.some(object=>object.id===centerId))objects.push({id:centerId,kind:'POINT',at:[circle.cx,circle.cy],name:null,marker:'NONE'});
+    objects.push({id:'overlay-circle-region-'+region.id,kind:'FILL_REGION',fill:region.fill,loops:[{start:region.from,steps:[{to:region.to,arc:{center:centerId,sweep:region.sweep}},{to:region.from}]}]});
+  }
   const at=ident=>{const point=points.get(ident);if(!point)throw Error('OVERLAY_POINT_UNKNOWN:'+ident);return [point.x,point.y];};
   for(const segment of features.segments){
     objects.push({id:'overlay-segment-'+segment.id,kind:'SEGMENT',from:at(segment.from),to:at(segment.to),...(segment.dashed?{dash:true}:{})});
@@ -476,6 +483,30 @@ function addAxisTitles(plan,spec){
   return {...spec,displayFacts:{...spec.displayFacts,axisTitles:{...titles}}};
 }
 
+// An exponential or logarithmic graph that carries a circle is framed at one scale (graph_framing _equalize_exp_log_for_circles): its plot size is the frame's.
+const expLogEqualCanvas=p=>{
+  const plot=p.plotCanvas;
+  if(!plot||typeof plot!=='object'||Object.keys(plot).sort().join(',')!=='height,width'||plot.width!==448||!Number.isSafeInteger(plot.height)||plot.height<120||plot.height>640)throw Error('EQUAL_UNIT_PLOT_CANVAS_INVALID');
+  return {width:512,height:plot.height+64,panel:0,topInset:0};
+};
+// graphPlan.coordinateBand {hide:[requiredPoint ids]} (G6b): the named required points keep their dot and their name in the figure but leave the coordinate band
+// (a point already on the origin, whose name stands where the axes cross, needs no O(0,0) row). Positions stay exact and are still observed.
+function coordinateBandHide(plan,required){
+  const band=plan.coordinateBand;
+  if(band===undefined)return new Set();
+  if(!band||typeof band!=='object'||Array.isArray(band)||Object.keys(band).join(',')!=='hide'||!Array.isArray(band.hide)||band.hide.length<1||band.hide.length>8||new Set(band.hide).size!==band.hide.length)throw Error('COORDINATE_BAND_INVALID');
+  for(const ident of band.hide)if(typeof ident!=='string'||!required.some(point=>point?.id===ident))throw Error('COORDINATE_BAND_HIDE_UNKNOWN:'+ident);
+  return new Set(band.hide);
+}
+// graphPlan.hideLabels (G6b): the automatic labels of an exponential/logarithmic figure that the source figure does not show. 'formula' (a base
+// exponential/logarithm writes its own formula, which can give away the base the question asks for), 'reference' (f(x0)=y0 at the reference
+// point) and 'boundary' (x=root beside the dashed domain boundary of a logarithm). The dots and lines stay; only the text goes.
+const EXP_LOG_HIDEABLE=['formula','reference','boundary'];
+function expLogHidden(p,basePlan){
+  if(p.hideLabels===undefined)return new Set();
+  if(!Array.isArray(p.hideLabels)||!p.hideLabels.length||new Set(p.hideLabels).size!==p.hideLabels.length||p.hideLabels.some(name=>!EXP_LOG_HIDEABLE.includes(name))||(p.hideLabels.includes('formula')&&!basePlan))throw Error('HIDE_LABELS_INVALID');
+  return new Set(p.hideLabels);
+}
 function specForFamily(plan,model,id){
   if(plan.capability==='absolute-value-spike-v1'){
     const p=plan.graphPlan,v=p.viewport,features=p.absoluteFeatures;
@@ -527,20 +558,22 @@ function specForFamily(plan,model,id){
   if(plan.capability==='exponential-affine-spike-v1'){
     const p=plan.graphPlan,v=p.viewport,features=p.exponentialFeatures,policy=p.exponentialFeaturePolicy;
     const basePlan=features?.schemaVersion==='EXPONENTIAL_BASE_FEATURES_v1';
+    if(expLogHidden(p,basePlan).size&&[...expLogHidden(p,basePlan)].some(name=>name!=='formula'))throw Error('HIDE_LABELS_INVALID');   // an exponential graph has only its formula to hide
     if(!features||!['EXPONENTIAL_AFFINE_FEATURES_v1','EXPONENTIAL_BASE_FEATURES_v1'].includes(features.schemaVersion)||!policy||!['EXPONENTIAL_AFFINE_FEATURE_POLICY_v1','EXPONENTIAL_BASE_FEATURE_POLICY_v1'].includes(policy.schemaVersion))throw Error('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED');
     const [a,k,c]=p.coefficients,expression=basePlan?expLogExpression({family:'exponential-affine',base:p.base,shiftX:p.shiftX,coefficients:p.coefficients}):`(${a})*exp((${k})*x)+(${c})`,showX=v[2]<0&&v[3]>0,showY=v[0]<=0&&v[1]>=0,refX=Number(String(features.referencePoint.x).split('/')[0])/(String(features.referencePoint.x).includes('/')?Number(String(features.referencePoint.x).split('/')[1]):1),refY=Number(features.referencePoint.y.split('/')[0])/(features.referencePoint.y.includes('/')?Number(features.referencePoint.y.split('/')[1]):1);
     const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX:[refX]},{id:'reference-value',kind:'EQUATION_LABEL',text:'f('+features.referencePoint.x+')='+features.referencePoint.y,at:[refX,refY+(v[3]-v[2])*.08],math:true,priority:0}];
-    if(basePlan)objects.push({id:'formula',kind:'EQUATION_LABEL',text:expLogFormulaText({family:'exponential-affine',base:p.base,shiftX:p.shiftX,coefficients:p.coefficients}),at:[v[0]+(v[1]-v[0])*.12,v[2]+(v[3]-v[2])*.10],math:true,priority:0});
-    return {id,visualType:'function_graph',viewport:basePlan?graphViewport(v):{xMin:v[0],xMax:v[1],yMin:v[2],yMax:v[3],width:384,height:320,panel:140},axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{exponentialFeatures:features,exponentialFeaturePolicy:policy},objects};
+    if(basePlan&&!expLogHidden(p,basePlan).has('formula'))objects.push({id:'formula',kind:'EQUATION_LABEL',text:expLogFormulaText({family:'exponential-affine',base:p.base,shiftX:p.shiftX,coefficients:p.coefficients}),at:[v[0]+(v[1]-v[0])*.12,v[2]+(v[3]-v[2])*.10],math:true,priority:0});
+    return {id,visualType:'function_graph',viewport:p.equalUnits===true?{...graphViewport(v,expLogEqualCanvas(p)),equalUnits:true}:basePlan?graphViewport(v):{xMin:v[0],xMax:v[1],yMin:v[2],yMax:v[3],width:384,height:320,panel:140},axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{exponentialFeatures:features,exponentialFeaturePolicy:policy},objects};
   }
   if(plan.capability==='logarithmic-affine-spike-v1'){
     const p=plan.graphPlan,v=p.viewport,features=p.logarithmicFeatures,policy=p.logarithmicFeaturePolicy;
     const basePlan=features?.schemaVersion==='LOGARITHMIC_BASE_FEATURES_v1';
     if(!features||!['LOGARITHMIC_AFFINE_FEATURES_v1','LOGARITHMIC_BASE_FEATURES_v1'].includes(features.schemaVersion)||!policy||!['LOGARITHMIC_AFFINE_FEATURE_POLICY_v1','LOGARITHMIC_BASE_FEATURE_POLICY_v1'].includes(policy.schemaVersion))throw Error('LOGARITHMIC_FEATURE_INVENTORY_REQUIRED');
     const [a,k,b,c]=p.coefficients,expression=basePlan?expLogExpression({family:'logarithmic-affine',base:p.base,coefficients:p.coefficients}):`(${a})*log((${k})*x+(${b}))+(${c})`,number=value=>{const parts=String(value).split('/');return Number(parts[0])/(parts.length===2?Number(parts[1]):1);},root=number(features.naturalDomainBoundaryX),ref=number(features.referencePoint.x),refY=number(features.referencePoint.y),showX=v[2]<0&&v[3]>0,showY=v[0]<=0&&v[1]>=0;
-    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX:[ref]},{id:'reference-value',kind:'EQUATION_LABEL',text:'f('+features.referencePoint.x+')='+features.referencePoint.y,at:[ref,refY+(v[3]-v[2])*.08],math:true,priority:0},{id:'log-domain-boundary-label',kind:'EQUATION_LABEL',text:'x='+features.naturalDomainBoundaryX,at:[root+(k.startsWith('-')?-1:1)*(v[1]-v[0])*.1,v[3]-(v[3]-v[2])*.2],math:true,priority:0}];
-    if(basePlan)objects.push({id:'formula',kind:'EQUATION_LABEL',text:expLogFormulaText({family:'logarithmic-affine',base:p.base,coefficients:p.coefficients}),at:[v[0]+(v[1]-v[0])*.55,v[2]+(v[3]-v[2])*.10],math:true,priority:0});
-    return {id,visualType:'function_graph',viewport:graphViewport(v),axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),logarithmicFeatures:features,logarithmicFeaturePolicy:policy},objects};
+    const hidden=expLogHidden(p,basePlan);
+    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX:[ref]},...(hidden.has('reference')?[]:[{id:'reference-value',kind:'EQUATION_LABEL',text:'f('+features.referencePoint.x+')='+features.referencePoint.y,at:[ref,refY+(v[3]-v[2])*.08],math:true,priority:0}]),...(hidden.has('boundary')?[]:[{id:'log-domain-boundary-label',kind:'EQUATION_LABEL',text:'x='+features.naturalDomainBoundaryX,at:[root+(k.startsWith('-')?-1:1)*(v[1]-v[0])*.1,v[3]-(v[3]-v[2])*.2],math:true,priority:0}])];
+    if(basePlan&&!expLogHidden(p,basePlan).has('formula'))objects.push({id:'formula',kind:'EQUATION_LABEL',text:expLogFormulaText({family:'logarithmic-affine',base:p.base,coefficients:p.coefficients}),at:[v[0]+(v[1]-v[0])*.55,v[2]+(v[3]-v[2])*.10],math:true,priority:0});
+    return {id,visualType:'function_graph',viewport:p.equalUnits===true?{...graphViewport(v,expLogEqualCanvas(p)),equalUnits:true}:graphViewport(v),axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),logarithmicFeatures:features,logarithmicFeaturePolicy:policy},objects};
   }
   if(plan.capability==='trigonometric-spike-v1'&&plan.graphPlan?.trigIntervalFeatures?.schemaVersion==='TRIGONOMETRIC_INTERVAL_FEATURES_v2'){
     // General parameters (a rate or phase carrying pi, a plain or pi-unit x interval): the curve, reference lines and their curved crossings,
@@ -1012,7 +1045,8 @@ function piecewisePolynomialSpec(plan,id){
   }
   const integerKey=point=>Number.isSafeInteger(point?.x)&&Number.isSafeInteger(point?.y);
   const coordinateText=point=>exactCoordinates[point?.id]??(integerKey(point)?[String(point.x),String(point.y)]:null);
-  const pointNames=pointNameModel(plan,[...required.map(point=>point?.id),...overlayPointIds(plan)]),nameLike=pointId=>pointNames.has(pointId)||/^[A-Z][0-9']?$/.test(pointId),graphPanel=new Set([...(plan.coordinatePlacement==='PANEL'?required.filter(point=>coordinateText(point)&&nameLike(point.id)).map(point=>point.id):plan.coordinatePanel||[]),...required.filter(point=>pointNames.has(point?.id)&&coordinateText(point)).map(point=>point.id)]);
+  const bandHidden=coordinateBandHide(p,required);
+  const pointNames=pointNameModel(plan,[...required.map(point=>point?.id),...overlayPointIds(plan)]),nameLike=pointId=>pointNames.has(pointId)||/^[A-Z][0-9']?$/.test(pointId),graphPanel=new Set([...(plan.coordinatePlacement==='PANEL'?required.filter(point=>coordinateText(point)&&nameLike(point.id)).map(point=>point.id):plan.coordinatePanel||[]),...required.filter(point=>pointNames.has(point?.id)&&coordinateText(point)).map(point=>point.id)].filter(pointId=>!bandHidden.has(pointId)));
   for(const pointId of graphPanel)if(!nameLike(pointId)||!coordinateText(required.find(point=>point.id===pointId)))throw Error('COORDINATE_PANEL_POINT_INVALID:'+pointId);
   const graphDirections=plan.labelDirections??{};
   if(!graphDirections||typeof graphDirections!=='object'||Array.isArray(graphDirections)||Object.entries(graphDirections).some(([pointId,direction])=>!required.some(point=>point.id===pointId)||graphPanel.has(pointId)||!['N','NE','E','SE','S','SW','W','NW'].includes(direction)))throw Error('INVALID_LABEL_DIRECTIONS');
@@ -1026,8 +1060,9 @@ function piecewisePolynomialSpec(plan,id){
       objects.push({id:labelId,kind:'EQUATION_LABEL',target:markerId,text:pointNames.expr(point.id)+'('+coordinates.map(unwrapParentheses).join(',')+')',at:[point.x,point.y],priority:0});
       continue;
     }
-    objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],...(coordinates?{}:pointNames.has(point.id)?{name:pointNames.tex(point.id)}:{name:null})});
-    if(coordinates)objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:coordinates,...(graphDirections[point.id]?{preferred:graphDirections[point.id]}:{})});
+    const bandHide=bandHidden.has(point.id);
+    objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],...(coordinates&&!bandHide?{}:pointNames.has(point.id)?{name:pointNames.tex(point.id)}:{name:null})});
+    if(coordinates&&!bandHide)objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:coordinates,...(graphDirections[point.id]?{preferred:graphDirections[point.id]}:{})});
   }
   // Horizontal lines y=c (a=0, b=-1, c) with a dot at every intersection the framing verified; the equation goes to the band.
   const lines=p.referenceLines??[],lineLabels=[];

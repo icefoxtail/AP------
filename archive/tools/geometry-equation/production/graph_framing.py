@@ -1398,7 +1398,7 @@ def _fit_trigonometric_overview(plan):
 # ---- piecewise polynomial: one continuous y=g(x) of up to three pieces (degree <= 2 each) plus up to three horizontal lines y=c ----------
 # The plan claims the breakpoint values, marks every corner and every vertex inside a piece as a requiredPoint, and lists the exact x of every
 # intersection with each line. All of it is recomputed here exactly (Fractions, SymPy surds) and a disagreement refuses the plan.
-PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','axisScale','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions','axisTitles'}
+PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','axisScale','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions','axisTitles','coordinateBand'}
 PIECEWISE_POLY_MIN_ARM_PX=12
 PIECEWISE_POLY_MIN_FEATURE_GAP_PX=4
 # Four pieces cover the two-piecewise exam items (f and g both piecewise); a fifth piece is refused.
@@ -2442,7 +2442,7 @@ def fit_piecewise_discontinuous(plan):
 # segments to the axes, simple polygons and extra named points on the curve. Every coordinate is recomputed here exactly; the plan names
 # the points and the elements, never raw derived coordinates. The fitted plan carries overlaysFeatures (numeric, for the model/spec) and
 # the independent graph observer recomputes the same values from the raw overlays field and reads the FINAL SVG back.
-OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4,'quadrants':4,'circles':2}
+OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4,'quadrants':4,'circles':2,'circleRegions':2}
 # overlays.names: a plain Korean name (토끼, 거북이, 직선 l) written beside one overlay segment, overlay line or the drawn curve at curveX.
 OVERLAY_NAME_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,10}'
 OVERLAY_LATTICE_REGIONS=('BELOW_CURVE','ABOVE_CURVE')
@@ -2457,7 +2457,7 @@ OVERLAY_POLYGON_MATH_LABEL_PATTERN=r'[0-9A-Za-z=+\-*/().\^ ]{1,40}'
 def _overlay_circle_rows(raw):
     rows=[];exact={}
     for entry in raw.get('circles',[]) or []:
-        if not isinstance(entry,dict) or set(entry)-{'id','center','radiusSquared'}:_overlay_fail('OVERLAY_CIRCLE_INVALID',entry.get('id') if isinstance(entry,dict) else 'circle')
+        if not isinstance(entry,dict) or set(entry)-{'id','center','radiusSquared','fill'}:_overlay_fail('OVERLAY_CIRCLE_INVALID',entry.get('id') if isinstance(entry,dict) else 'circle')
         ident=_overlay_id(entry.get('id'),'circle')
         center=entry.get('center')
         if not isinstance(center,list) or len(center)!=2 or ident in exact:_overlay_fail('OVERLAY_CIRCLE_INVALID',ident)
@@ -2465,7 +2465,12 @@ def _overlay_circle_rows(raw):
         if not r2>0:_overlay_fail('OVERLAY_CIRCLE_INVALID',ident)
         radius=S.radsimp(S.sqrt(r2))
         exact[ident]=(cx,cy,r2)
-        rows.append({'id':ident,'cx':_overlay_number(cx),'cy':_overlay_number(cy),'r':_overlay_number(radius),'center':[pp_surd_text(cx),pp_surd_text(cy)],'radiusSquared':pp_surd_text(r2)})
+        row={'id':ident,'cx':_overlay_number(cx),'cy':_overlay_number(cy),'r':_overlay_number(radius),'center':[pp_surd_text(cx),pp_surd_text(cy)],'radiusSquared':pp_surd_text(r2)}
+        # fill (G6b): the whole disk shaded LIGHT or MEDIUM under every stroke; absent or NONE leaves the circle unshaded.
+        fill=entry.get('fill','NONE')
+        if fill not in ('NONE','LIGHT','MEDIUM'):_overlay_fail('OVERLAY_CIRCLE_FILL_INVALID',ident)
+        if fill!='NONE':row['fill']=fill
+        rows.append(row)
     return rows,exact
 
 def _overlay_on_circle(circle,x,y):
@@ -2492,6 +2497,84 @@ def _overlay_line_circle_point(line,circle,pick,ident):
     if pick not in ('MIN_X','MAX_X','MIN_Y','MAX_Y') or (line['kind']=='VERTICAL')!=(pick in ('MIN_Y','MAX_Y')):_overlay_fail('OVERLAY_CIRCLE_PICK_INVALID',ident)
     index=0 if pick.endswith('X') else 1
     return (min if pick.startswith('MIN') else max)(pts,key=lambda point:float(S.N(point[index],30)))
+
+OVERLAY_CURVE_CIRCLE_SAMPLES=400
+def _overlay_curve_circle_point(plan,circle,curve_ref,pick,ident):
+    """Exact intersection of the drawn curve with an overlay circle (G6b): the curve is scanned over its drawn interval for sign changes of
+    (x-cx)^2+(y-cy)^2-r^2, every root is refined, and the root the author's pick names (MIN_X/MAX_X) must have an exact form (a rational, or a
+    radical the exact curve check accepts); a root that cannot be written exactly is refused, never rounded."""
+    cx,cy,r2=circle
+    curve_id=curve_ref.split(':',1)[1] if ':' in curve_ref else None
+    if plan.get('family')=='exp-log-pair' and curve_id is None:_overlay_fail('OVERLAY_CURVE_REQUIRED',ident)
+    if plan.get('family')!='exp-log-pair' and curve_id is not None:_overlay_fail('OVERLAY_CURVE_UNKNOWN',ident)
+    lo,hi=plan['domain'];cxf,cyf,r2f=(float(S.N(v,30)) for v in (cx,cy,r2))
+    def residual(x):
+        try:y=float(S.N(_overlay_curve_exact(plan,S.Float(x,30),curve_id),30))
+        except (ValueError,TypeError,ZeroDivisionError):return None
+        return (x-cxf)**2+(y-cyf)**2-r2f if math.isfinite(y) else None
+    count=OVERLAY_CURVE_CIRCLE_SAMPLES;xs=[lo+(hi-lo)*i/count for i in range(count+1)];values=[residual(x) for x in xs];roots=[]
+    for i in range(count):
+        a,b,fa,fb=xs[i],xs[i+1],values[i],values[i+1]
+        if fa is None or fb is None or fa*fb>0:continue
+        if fa==0:roots.append(a);continue
+        for _ in range(60):
+            mid=(a+b)/2;fm=residual(mid)
+            if fm is None:break
+            if fa*fm<=0:b,fb=mid,fm
+            else:a,fa=mid,fm
+        roots.append((a+b)/2)
+    if values and values[-1]==0:roots.append(xs[-1])
+    roots=sorted(roots);roots=[root for index,root in enumerate(roots) if index==0 or root-roots[index-1]>1e-7]
+    if not roots:_overlay_fail('OVERLAY_CIRCLE_CURVE_NO_INTERSECTION',ident)
+    if pick is None:
+        if len(roots)!=1:_overlay_fail('OVERLAY_CIRCLE_PICK_REQUIRED',ident)
+        chosen=roots[0]
+    else:
+        if pick not in ('MIN_X','MAX_X'):_overlay_fail('OVERLAY_CIRCLE_PICK_INVALID',ident)
+        chosen=roots[0] if pick=='MIN_X' else roots[-1]
+    for candidate in (S.nsimplify(chosen,rational=True,tolerance=1e-9),S.nsimplify(chosen,tolerance=1e-9)):
+        try:
+            y=_overlay_curve_exact(plan,candidate,curve_id)
+            if _overlay_on_circle(circle,candidate,y):
+                exact=(S.radsimp(S.simplify(candidate)),S.radsimp(S.simplify(y)));pp_surd_text(exact[0]);pp_surd_text(exact[1])   # a rational or one radical: nested radicals are refused
+                return exact
+        except (ValueError,TypeError,ZeroDivisionError):continue
+    _overlay_fail('OVERLAY_CIRCLE_CURVE_INTERSECTION_NOT_EXACT',ident)
+
+# overlays.circleRegions (G6b): [{id,circle,from,to,side,fill?}] shades the circular segment of overlay circle `circle` cut off by the chord between the
+# two named points (both exactly on the circle): the part on the `side` of the chord (ABOVE/BELOW for a chord that is not vertical, LEFT/RIGHT for one that
+# is not horizontal). The arc is drawn as a true SVG arc; the observer recomputes the arc from the raw circle and points.
+OVERLAY_CIRCLE_REGION_SIDES=('ABOVE','BELOW','LEFT','RIGHT')
+def _overlay_circle_regions(raw,circle_rows,circle_exact,by_point,exact_by_point,claim):
+    rows=[]
+    for entry in raw.get('circleRegions',[]) or []:
+        if not isinstance(entry,dict) or set(entry)-{'id','circle','from','to','side','fill'}:_overlay_fail('OVERLAY_CIRCLE_REGION_INVALID',entry.get('id') if isinstance(entry,dict) else 'circleRegion')
+        ident=_overlay_id(entry.get('id'),'circleRegion');claim('circleRegion:'+ident)
+        circle=entry.get('circle');first=entry.get('from');second=entry.get('to')
+        if circle not in circle_exact or first not in by_point or second not in by_point or first==second:_overlay_fail('OVERLAY_CIRCLE_REGION_INVALID',ident)
+        for name in (first,second):
+            if not _overlay_on_circle(circle_exact[circle],*exact_by_point[name]):_overlay_fail('OVERLAY_POINT_NOT_ON_CIRCLE',name)
+        side=entry.get('side');fill=entry.get('fill','LIGHT')
+        if side not in OVERLAY_CIRCLE_REGION_SIDES:_overlay_fail('OVERLAY_CIRCLE_REGION_SIDE_INVALID',ident)
+        if fill not in ('LIGHT','MEDIUM'):_overlay_fail('OVERLAY_CIRCLE_REGION_FILL_INVALID',ident)
+        ring=[row for row in circle_rows if row['id']==circle][0];cx,cy,radius=ring['cx'],ring['cy'],ring['r']
+        px,py,qx,qy=by_point[first]['x'],by_point[first]['y'],by_point[second]['x'],by_point[second]['y']
+        sweep,large=_circle_region_arc((cx,cy,radius),(px,py),(qx,qy),side,ident)
+        rows.append({'id':ident,'circle':circle,'from':first,'to':second,'side':side,'fill':fill,'sweep':sweep,'large':large})
+    return rows
+
+def _circle_region_arc(ring,first,second,side,ident):
+    """Which way round the circle the arc from `first` to `second` runs (CCW/CW) to lie on `side` of the chord, and whether it is longer than a half circle."""
+    cx,cy,radius=ring;a0=math.atan2(first[1]-cy,first[0]-cx);ccw=(math.atan2(second[1]-cy,second[0]-cx)-a0)%(2*math.pi)
+    mx,my=cx+radius*math.cos(a0+ccw/2),cy+radius*math.sin(a0+ccw/2)
+    if side in ('ABOVE','BELOW'):
+        if abs(second[0]-first[0])<1e-9:_overlay_fail('OVERLAY_CIRCLE_REGION_SIDE_INVALID',ident)
+        offset=my-(first[1]+(second[1]-first[1])/(second[0]-first[0])*(mx-first[0]));wanted=offset>0 if side=='ABOVE' else offset<0
+    else:
+        if abs(second[1]-first[1])<1e-9:_overlay_fail('OVERLAY_CIRCLE_REGION_SIDE_INVALID',ident)
+        offset=mx-(first[0]+(second[0]-first[0])/(second[1]-first[1])*(my-first[1]));wanted=offset>0 if side=='RIGHT' else offset<0
+    angle=ccw if wanted else 2*math.pi-ccw
+    return ('CCW' if wanted else 'CW'),angle>math.pi+1e-9
 
 def _overlay_fail(code,ident=None):
     raise ValueError(code if ident is None else code+':'+str(ident))
@@ -2912,7 +2995,11 @@ def _overlay_features(plan):
             pair=entry['intersect']
             if not isinstance(pair,list) or len(pair)!=2 or len(set(pair))!=2:_overlay_fail('OVERLAY_POINT_INVALID',ident)
             first=by_line.get(pair[0]);second=by_line.get(pair[1])
-            if (first is None and pair[0] in circle_exact) or (second is None and pair[1] in circle_exact):
+            if isinstance(pair[0],str) and (pair[0]=='curve' or pair[0].startswith('curve:')) and first is None:
+                # curve x circle (G6b): the drawn curve and an overlay circle, the root the pick names; it must have an exact form
+                if pair[1] not in circle_exact:_overlay_fail('OVERLAY_POINT_UNKNOWN',ident)
+                x,y=_overlay_curve_circle_point(plan,circle_exact[pair[1]],pair[0],entry.get('pick'),ident)
+            elif (first is None and pair[0] in circle_exact) or (second is None and pair[1] in circle_exact):
                 # line x circle (G6): the root the author's pick names
                 line=first if first is not None else second;cid=pair[1] if first is not None else pair[0]
                 if line is None or cid not in circle_exact:_overlay_fail('OVERLAY_POINT_UNKNOWN',ident)
@@ -3011,7 +3098,9 @@ def _overlay_features(plan):
             row['label']=label;row['labelKind']=label_kind
         polygons.append(row)
     for line in lines:line['labelAlternates']=_overlay_label_alternates(plan,line,lines,points)
+    circle_regions=_overlay_circle_regions(raw,circle_rows,circle_exact,by_point,exact_by_point,claim)
     features={'schemaVersion':'GRAPH_OVERLAYS_FEATURES_v1','points':points,'lines':lines,'segments':segments,'guides':guides,'polygons':polygons}
+    if circle_regions:features['circleRegions']=circle_regions
     if circle_rows:
         xmin,xmax,ymin,ymax=plan['viewport']
         for row in circle_rows:
@@ -3193,6 +3282,20 @@ def fit_multi_curve(plan):
                    'equalUnits':True,'axisRatio':ratio,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height},'multiCurveFeatures':features})
     return {'graphPlan':fitted,'policy':MULTI_CURVE_OVERVIEW_POLICY,'sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
 
+OVERLAY_CIRCLE_MIN_RADIUS_PX=24
+def _equalize_exp_log_for_circles(plan,framed,anchors):
+    """A circle on an exponential or logarithmic graph (G6b): the family window is widened to one scale on both axes (the window only grows, so the
+    drawn interval and every curve value stay inside) and the circle is refused only when that single scale leaves it unreadable."""
+    raw=plan.get('overlays')
+    if plan.get('family') not in ('exponential-affine','logarithmic-affine') or not isinstance(raw,dict) or not raw.get('circles'):return framed
+    graph=framed['graphPlan'];window=graph['viewport']
+    viewport,height,scale=equal_unit_frame([(window[0],window[2]),(window[1],window[3])]+[(x,y) for x,y in anchors],plot_height_limit(graph))
+    rows,_=_overlay_circle_rows(raw)
+    for row in rows:
+        if row['r']*scale<OVERLAY_CIRCLE_MIN_RADIUS_PX:_overlay_fail('OVERLAY_CIRCLE_TOO_SMALL_AT_EQUAL_UNITS',row['id'])
+    if (graph['domain'][1]-graph['domain'][0])*scale<EQUAL_UNIT_MIN_CURVE_PX:_overlay_fail('OVERLAY_EQUAL_UNITS_CURVE_TOO_NARROW',plan.get('family'))
+    return {**framed,'graphPlan':{**graph,'viewport':viewport,'equalUnits':True,'axisRatio':1,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height}}}
+
 def fit_overview(plan):
     """The family framer, then the optional graph overlays: every overlay coordinate is recomputed exactly and must stay inside the
     framed viewport. The fitted plan carries overlaysFeatures for the model/spec; the independent observer recomputes them from the raw
@@ -3200,6 +3303,7 @@ def fit_overview(plan):
     anchors=_overlay_anchor_points(plan)
     framed=_fit_overview_family({**plan,'overlayAnchors':anchors} if anchors else plan)
     framed['graphPlan'].pop('overlayAnchors',None)
+    framed=_equalize_exp_log_for_circles(plan,framed,anchors)
     features=_overlay_features(framed['graphPlan'])
     if features is None:return framed
     framed['graphPlan']={**framed['graphPlan'],'overlaysFeatures':features}

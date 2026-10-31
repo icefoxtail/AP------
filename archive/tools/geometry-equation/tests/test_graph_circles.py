@@ -68,9 +68,10 @@ class CircleFraming(unittest.TestCase):
             with self.subTest(code=code):self.assertEqual(refused(variant(mutate)),code)
 
     def test_a_graph_without_equal_units_refuses_a_circle(self):
-        plan={'family':'logarithmic-affine','base':'3','coefficients':['2','1','0','0'],'sourceDomain':{'kind':'NATURAL_LOG_AFFINE'},'domain':[0.1,4],'viewport':[-1,5,-5,5],
-              'overlays':{'circles':[{'id':'C','center':['1','0'],'radiusSquared':'1'}]}}
-        self.assertTrue(refused(plan).startswith('OVERLAY_CIRCLE_REQUIRES_EQUAL_UNITS'))
+        # a family with no equal-unit framing (an absolute value) still refuses a circle; exponential/logarithmic graphs widen to one scale (G6b, test_graph_circles_g6b)
+        plan={'family':'absolute-value','coefficients':['0','1','1','0'],'sourceDomain':{'kind':'ALL_REALS'},'domain':[-3,3],'viewport':[-4,4,-1,5],
+              'overlays':{'circles':[{'id':'C','center':['0','1'],'radiusSquared':'1/4'}]}}
+        self.assertTrue((refused(plan) or '').startswith('OVERLAY_CIRCLE_REQUIRES_EQUAL_UNITS'),refused(plan))
 
     def test_a_plan_without_circles_is_unchanged(self):
         plan=copy.deepcopy(PLAN);plan['overlays'].pop('circles');plan['overlays']['points']=[plan['overlays']['points'][1]];plan['overlays']['lines']=[];plan['overlays']['segments']=[]
