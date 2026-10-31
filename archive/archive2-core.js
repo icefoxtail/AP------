@@ -758,6 +758,16 @@
   function generalPathKey(record, depth = 4) {
     return pathKey(generalFilterRecord(record, { useMode: "general" }), depth);
   }
+  // The general-purpose Archive is a usage surface: recorded 1..5 difficulty is
+  // sufficient for a selected difficulty filter. Strict approval/difficultyEligible
+  // remains unchanged for certification and external consumers such as APMS.
+  function difficultyFilterMatches(record, buckets, options = {}) {
+    if (!Array.isArray(buckets) || !buckets.length) return true;
+    const bucket = record?.difficultyBucket;
+    if (!Number.isInteger(bucket) || bucket < 1 || bucket > 5 || !buckets.includes(bucket))
+      return false;
+    return options.useMode === "general" || difficultyEligible(record, options);
+  }
   function matches(record, filters = {}, options = {}) {
     const filterRecord = options.useMode === "general"
       ? generalFilterRecord(record, options)
@@ -807,10 +817,7 @@
         continue;
       if (filters[field] && filterRecord[field] !== filters[field]) return false;
     }
-    if (
-      filters.difficultyBuckets?.length &&
-      (!difficultyEligible(record, options) || !filters.difficultyBuckets.includes(record.difficultyBucket))
-    )
+    if (!difficultyFilterMatches(record, filters.difficultyBuckets, options))
       return false;
     if (
       filters.query &&
@@ -886,8 +893,7 @@
       : !row.path || pathKey(filterRecord, row.depth || 4) === row.path;
     return (
       pathsMatch &&
-      (!row.difficultyBuckets?.length ||
-        (difficultyEligible(record, options) && row.difficultyBuckets.includes(record.difficultyBucket)))
+      difficultyFilterMatches(record, row.difficultyBuckets, options)
     );
   }
   function validatePlan(request) {

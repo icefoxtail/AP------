@@ -143,6 +143,27 @@ test("BASIC preserves explicit quality holds while optional difficulty remains a
     assert.equal(core.matches(record, { difficultyBuckets: [1, 2, 3, 4, 5] }, { canonicalAuthority: authority }), false);
   }
 });
+test("general Archive difficulty filtering accepts recorded buckets but strict approval and source integrity remain separate", () => {
+  const baseline = record(base.sourceOrdinal);
+  const proofMissing = {
+    ...baseline, difficultyBucket: 3, difficultyConfidence: undefined,
+    difficultyBoundaryFlag: undefined, legacyLevelCompatibility: undefined,
+    sourceStatus: "HOLD", metaBinding: "", metadataConflicts: ["difficultyBucket"],
+  };
+  const opts = { useMode: "general" };
+  const target = { difficultyBuckets: [3] };
+  assert.equal(core.generalUseEligibility(proofMissing).ok, true);
+  assert.equal(core.matches(proofMissing, target, opts), true);
+  assert.equal(core.rowMatches(proofMissing, { difficultyBuckets: [3] }, opts), true);
+  assert.equal(core.matches(proofMissing, target), false, "strict mode still requires complete difficulty approval");
+  assert.equal(core.rowMatches(proofMissing, { difficultyBuckets: [3] }), false);
+  assert.equal(core.matches(proofMissing, { difficultyBuckets: [2] }, opts), false);
+  for (const value of ["UNKNOWN", null, "3", 0, 6]) {
+    assert.equal(core.matches({ ...proofMissing, difficultyBucket: value }, target, opts), false);
+  }
+  assert.equal(core.generalUseEligibility({ ...proofMissing, sourceIntegrityStatus: "MISMATCH" }).ok, false);
+});
+
 test("pin and rebuild retain pins and student/series exclusion; no silent shortage relaxation", () => {
   const pool = Array.from({ length: 20 }, (_, i) => record(i + 1));
   const req = request([{ id: "a", count: 10 }], pool);
