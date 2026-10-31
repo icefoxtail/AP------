@@ -342,7 +342,13 @@ test('opening a unit selects the preset mix once per usable step and publishes 4
   assert.equal(meta.subject, '공통수학1');
   const byUid = new Map(data.records.map(rec => [rec.questionUid, rec]));
   assert.deepEqual(questionUids.map(id => byUid.get(id).difficultyBucket).sort(), [2, 2, 3, 3]);
-  for (const id of questionUids) assert.equal(core.difficultyEligible(byUid.get(id), { useMode: 'general' }), true);
+  // Quick assessments use recorded difficulty after the technical source/identity gate.
+  // Strict metadata approval is deliberately not a selection requirement.
+  for (const id of questionUids) {
+    const record = byUid.get(id);
+    assert.equal(core.generalUseEligibility(record).ok, true);
+    assert.equal(Quick.usableBucket(record), record.difficultyBucket);
+  }
   assert.equal(h.opened.length, 1);
 });
 
@@ -354,14 +360,19 @@ test('opening refuses a unit that cannot make the mix and a changed question sta
   h.w.quickState.subject = 'COMMON_MATH_1';
   const html = h.w.renderQuick();
   assert.ok(/is-short/.test(html));
-  await h.w.openQuickAssessment(['u:고1:COMMON_MATH_1:H22-C-01']);
+  // Do not hard-code a unit: its readiness changes when the reviewed catalog grows.
+  const index = Unified.buildIndex(data.records, { projectionPolicy: data.projectionPolicy });
+  const units = Quick.unitsFor(Quick.buildPools(index), 'unit-test', '고1', 'COMMON_MATH_1');
+  const short = Quick.partition(units, Quick.PRODUCTS['unit-test'], 'standard').short;
+  assert.ok(short.length > 0, 'the current catalog contains a short unit');
+  await h.w.openQuickAssessment([short[0].unit.key]);
   assert.equal(h.published.length, 0, 'a short unit never prints');
-  // monthly: whole subject, then mark every pooled question HOLD (no content binding) in place
+  // Review-only HOLD is intentionally usable; a genuine source-integrity failure is not.
   h.w.state.view = 'monthly-test';
   h.w.renderQuick();
-  for (const record of data.records) { record.sourceStatus = 'HOLD'; delete record.metaBinding; }
+  for (const record of data.records) record.sourceIntegrityStatus = 'MISMATCH';
   await h.w.openQuickAssessment('all');
-  assert.equal(h.published.length, 0, 'stale pooled questions are re-checked and dropped');
+  assert.equal(h.published.length, 0, 'stale technically invalid questions are re-checked and dropped');
 });
 
 test('the quick products have one navigation tab that stays active on all four views', () => {
