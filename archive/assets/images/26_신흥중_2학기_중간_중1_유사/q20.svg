@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" width="420" height="360" role="img" aria-labelledby="q20-title q20-desc">
+  <title id="q20-title">직사각형 창고 모서리에 묶인 양의 이동 영역</title>
+  <desc id="q20-desc">가로 5 m, 세로 3 m인 창고의 꼭짓점 A에 6 m 줄로 묶인 양의 이동 가능 영역</desc>
+  <rect width="420" height="360" fill="#ffffff"/>
+  <!-- Main 270 deg sector at A(160, 160) radius 140 -->
+  <path d="M 160 160 L 160 20 A 140 140 0 1 0 20 160 Z" fill="#d8ecfc" stroke="#0275d8" stroke-width="1.5"/>
+  <!-- Corner extension 90 deg sector radius 70 -->
+  <path d="M 160 230 L 160 300 A 70 70 0 0 1 90 230 Z" fill="#d8ecfc" stroke="#0275d8" stroke-width="1.5"/>
+  <!-- Top extension 90 deg sector radius 25 -->
+  <path d="M 280 160 L 305 160 A 25 25 0 0 0 280 135 Z" fill="#d8ecfc" stroke="#0275d8" stroke-width="1.5"/>
+  <!-- Warehouse rectangle -->
+  <rect x="160" y="160" width="120" height="70" fill="#adb5bd" stroke="#333333" stroke-width="2"/>
+  <circle cx="160" cy="160" r="5" fill="#d9534f"/>
+  <g font-family="sans-serif" font-size="13" font-weight="bold" fill="#111111">
+    <text x="145" y="155" fill="#d9534f">A</text>
+    <text x="210" y="200" fill="#333">창고</text>
+    <text x="210" y="150">5 m</text>
+    <text x="288" y="200">3 m</text>
+    <text x="80" y="80" fill="#0275d8">6 m</text>
+  </g>
+</svg>
