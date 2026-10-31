@@ -2075,12 +2075,59 @@ def fit_piecewise_polynomial(plan):
 # ---- piecewise discontinuous: one to six polynomial pieces (degree <= 2) on their own intervals, each end OPEN or CLOSED ----------
 # Unlike piecewise-polynomial-spike-v1 the pieces need not meet: a junction may jump, the function value there is declared either by a
 # CLOSED end or by jumpValues, and a jumpValue may also stand alone as an isolated point. A staircase is written as a step block.
-PIECEWISE_DISCONTINUOUS_FIELDS={'family','pieces','step','jumpValues','referenceLines','requiredPoints','exactCoordinates','axisTickValues','functionName','domain','viewport','plotHeightLimit','axisTitles'}
+PIECEWISE_DISCONTINUOUS_FIELDS={'family','pieces','step','jumpValues','referenceLines','requiredPoints','exactCoordinates','axisTickValues','functionName','domain','viewport','plotHeightLimit','axisTitles','limitArrows','xWindow'}
 PIECEWISE_DISCONTINUOUS_OVERVIEW_POLICY='PIECEWISE_DISCONTINUOUS_OVERVIEW_v1'
-PIECEWISE_DISCONTINUOUS_MAX_PIECES=6
+PIECEWISE_DISCONTINUOUS_MAX_PIECES=8   # a two-function solution figure restores a graph with its mirror image: 8 pieces
+PIECEWISE_DISCONTINUOUS_MAX_STEPS=6
 PIECEWISE_DISCONTINUOUS_MAX_JUMP_VALUES=8
 PIECEWISE_DISCONTINUOUS_MAX_REQUIRED_POINTS=24
 PIECEWISE_DISCONTINUOUS_MIN_FEATURE_GAP_PX=4
+PIECEWISE_DISCONTINUOUS_MAX_LIMIT_ARROWS=6
+# limitArrows: a short arrow on the curve toward (at, toY) from the LEFT or RIGHT, with dashed guides from that point to both axes. The tip stops
+# LIMIT_ARROW_HEAD_GAP_PX (screen px along the curve) short of the point so the open dot stays clear; the tail is up to LIMIT_ARROW_TAIL_PX away and never leaves its piece.
+LIMIT_ARROW_HEAD_GAP_PX=11.0
+LIMIT_ARROW_TAIL_PX=46.0
+LIMIT_ARROW_MIN_LENGTH_PX=30.0
+
+def pd_limit_arrow_inputs(plan,pieces):
+    """The authored limitArrows, each checked exactly: the piece the arrow runs along (the one reaching `at` from that side) must approach exactly toY there."""
+    raw=plan.get('limitArrows',[])
+    if not isinstance(raw,list) or len(raw)>PIECEWISE_DISCONTINUOUS_MAX_LIMIT_ARROWS:raise ValueError('PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_INVALID')
+    rows=[]
+    for index,entry in enumerate(raw):
+        if not isinstance(entry,dict) or set(entry)-{'curve','at','side','toY'} or not {'at','side','toY'}<=set(entry) or entry['side'] not in ('LEFT','RIGHT') or ('curve' in entry and not isinstance(entry['curve'],str)):raise ValueError('PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_INVALID:'+str(index+1))
+        at=pp_surd(entry['at'],'PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_INVALID:'+str(index+1));to_y=pp_surd(entry['toY'],'PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_INVALID:'+str(index+1))
+        left=entry['side']=='LEFT'
+        found=[(k,piece) for k,piece in enumerate(pieces) if (piece['a'] is None or (piece['a']<at if left else piece['a']<=at)) and (piece['b'] is None or (at<=piece['b'] if left else at<piece['b']))]
+        if len(found)!=1:raise ValueError('PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_AT_INVALID:'+str(index+1))
+        k,piece=found[0]
+        if not pp_same(pd_piece_value(piece,at),to_y):raise ValueError('PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_VALUE_MISMATCH:'+str(index+1)+':the curve approaches '+_pp_text(pd_piece_value(piece,at)))
+        rows.append({'index':index+1,'at':at,'toY':to_y,'side':entry['side'],'piece':k})
+    return rows
+
+def pd_limit_arrow_features(rows,pieces,draw,scale,ratio):
+    """Geometry of every arrow (tail and tip ON the curve, tip short of the target) in model units once the x scale is known."""
+    out=[]
+    for row in rows:
+        piece=pieces[row['piece']];at=float(row['at']);sign=-1.0 if row['side']=='LEFT' else 1.0
+        edge=(draw[0] if piece['a'] is None else max(draw[0],float(piece['a']))) if sign<0 else (draw[1] if piece['b'] is None else min(draw[1],float(piece['b'])))
+        room=abs(at-edge)
+        value=lambda x_value:float(pd_piece_value(piece,x_value));target=float(row['toY'])
+        def dx_for(pixels,cap):
+            # the x distance from the point at which the curve itself is `pixels` of screen away from it (arc distance grows with x: bisection), never beyond cap
+            reach=lambda dx:math.hypot(dx*scale,(value(at+sign*dx)-target)*scale*ratio)
+            if reach(cap)<=pixels:return cap
+            low,high=0.0,cap
+            for _ in range(60):
+                mid=(low+high)/2
+                if reach(mid)<pixels:low=mid
+                else:high=mid
+            return (low+high)/2
+        head_dx=dx_for(LIMIT_ARROW_HEAD_GAP_PX,.5*room);tail_dx=dx_for(LIMIT_ARROW_TAIL_PX,.85*room)
+        tail=(at+sign*tail_dx,value(at+sign*tail_dx));tip=(at+sign*head_dx,value(at+sign*head_dx))
+        if math.hypot((tail[0]-tip[0])*scale,(tail[1]-tip[1])*scale*ratio)<LIMIT_ARROW_MIN_LENGTH_PX:raise ValueError('PIECEWISE_DISCONTINUOUS_LIMIT_ARROW_NO_ROOM:'+str(row['index']))
+        out.append({'id':'limit-arrow-'+str(row['index']),'at':_pp_text(row['at']),'toY':_pp_text(row['toY']),'atValue':at,'toYValue':float(row['toY']),'side':row['side'],'piece':row['piece']+1,'from':list(tail),'to':list(tip),'guideX':abs(float(row['toY']))>1e-12,'guideY':abs(at)>1e-12})
+    return out
 
 def _pd_piece(entry,index):
     """One piece: exact coefficients of degree at most 2 and its own interval, each end OPEN or CLOSED (null = an unbounded end)."""
@@ -2103,7 +2150,7 @@ def piecewise_discontinuous_step(step):
     the last, which is closed at xTo. Returns the same piece rows as the pieces field."""
     if not isinstance(step,dict) or set(step)!={'values','xFrom','xTo'}:raise ValueError('STEP_INTERVAL_INVALID')
     values=step['values']
-    if not isinstance(values,list) or not 1<=len(values)<=PIECEWISE_DISCONTINUOUS_MAX_PIECES:raise ValueError('STEP_INTERVAL_INVALID')
+    if not isinstance(values,list) or not 1<=len(values)<=PIECEWISE_DISCONTINUOUS_MAX_STEPS:raise ValueError('STEP_INTERVAL_INVALID')
     x_from=pp_surd(step['xFrom'],'STEP_INTERVAL_INVALID');x_to=pp_surd(step['xTo'],'STEP_INTERVAL_INVALID')
     if not x_from<x_to:raise ValueError('STEP_INTERVAL_INVALID')
     heights=[pp_surd(value,'PIECEWISE_DISCONTINUOUS_COEFFICIENT_INVALID') for value in values]
@@ -2273,6 +2320,13 @@ def fit_piecewise_discontinuous(plan):
             a,b=piece['a'],piece['b']
             if (a is None or float(a)<=x_value) and (b is None or x_value<=float(b)):return float(pd_piece_value(piece,x_value))
         raise ValueError('PIECEWISE_DISCONTINUOUS_POINT_OUTSIDE_SOURCE_DOMAIN')
+    arrow_rows=pd_limit_arrow_inputs(plan,pieces)
+    key=key+[(float(row['at']),float(row['toY'])) for row in arrow_rows]
+    window=plan.get('xWindow')
+    if window is not None:
+        if not isinstance(window,list) or len(window)!=2 or any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) or abs(v)>1e6 for v in window) or not window[0]<window[1]:raise ValueError('PIECEWISE_DISCONTINUOUS_X_WINDOW_INVALID')
+        window=[float(window[0]),float(window[1])]
+        if any(not window[0]<=px<=window[1] for px,_ in key):raise ValueError('PIECEWISE_DISCONTINUOUS_X_WINDOW_TOO_SMALL')
     xs=[p[0] for p in key];span=max(xs)-min(xs);extend=max(1.0,.2*span)
     ys=[p[1] for p in key];ylo,yhi=min(ys),max(ys);band=max(1.0,.25*(yhi-ylo))
     def arm(anchor,direction):
@@ -2288,7 +2342,7 @@ def fit_piecewise_discontinuous(plan):
     right_x=float(pieces[-1]['b']) if pieces[-1]['b'] is not None else arm(max(xs),1)
     ends=[(left_x,coverage(left_x)),(right_x,coverage(right_x))]
     limit=plot_height_limit(plan)
-    points=[(0.0,0.0)]+key+ends
+    points=[(0.0,0.0)]+key+ends+([(window[0],0.0),(window[1],0.0)] if window else [])
     for ratio in axis_ratios(plan,points,limit):
         viewport,height,scale=equal_unit_frame(points,limit,ratio)
         if (ends[1][0]-ends[0][0])*scale>=EQUAL_UNIT_MIN_CURVE_PX:break
@@ -2322,6 +2376,7 @@ def fit_piecewise_discontinuous(plan):
         end=draw[1] if piece['b'] is None else min(draw[1],float(piece['b']))
         piece_rows.append({'coefficients':[_pp_text(c) for c in piece['coefficients']],'interval':[None if piece['a'] is None else _pp_text(piece['a']),None if piece['b'] is None else _pp_text(piece['b'])],'drawInterval':[start,end],'start':piece['start'],'end':piece['end']})
     features={'schemaVersion':'PIECEWISE_DISCONTINUOUS_FEATURES_v1','pieces':piece_rows,'markers':marker_rows,'extrema':[{'x':_pp_text(x_value),'y':_pp_text(y_value),'kind':kind} for x_value,y_value,kind in extrema],'intersections':crossings}
+    if arrow_rows:features['limitArrows']=pd_limit_arrow_features(arrow_rows,pieces,draw,scale,ratio)
     fitted={key_name:value for key_name,value in plan.items() if key_name not in ('domain','viewport')}
     if exact_points:
         merged=dict(plan.get('exactCoordinates') or {})

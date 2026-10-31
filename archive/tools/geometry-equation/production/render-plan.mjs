@@ -15,6 +15,7 @@ import * as cap from './construction-archive-capture-v1.mjs';
 import * as obs from './archive-inverse-observation-v1.mjs';
 import {fileRef} from '../../pipeline-core/canonical.mjs';
 import * as comp from './composite-candidate-svg-v1.mjs';
+import {expandDiscontinuousPair} from './discontinuous-pair-v1.mjs';
 import * as chain from './quadratic-inequality-chain-v1.mjs';
 import * as nlf from './number-line-v1.mjs';
 import * as sol from './solid-figure-v1.mjs';
@@ -55,6 +56,8 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
     }
     if(!authored||typeof authored!=='object')throw new Error('plan missing or not an object');
     if(authored.status==='EXEMPT'||authored.status==='UNSUPPORTED'){row.status=authored.status;row.detail=authored.reason;return finish();}
+    // Two discontinuous functions (graphPlan.referenceCurves, layout STACKED) are the two-panel composite they stand for.
+    if(authored.capability==='piecewise-discontinuous-spike-v1'&&authored.graphPlan?.referenceCurves!==undefined)authored=expandDiscontinuousPair(authored);
     row.capability=authored.capability;
     // Writes the shared success outputs (state, svg, optional observer packet).
     const bind=async({plan,model,composed,capture})=>{
