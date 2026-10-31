@@ -332,3 +332,10 @@ test('G11 path label: where every first-round place fails (narrow vertex C) the 
   expectComposed(first);assert.equal(first.svg,firstNever.svg);assert.ok(!first.svg.includes('data-path-label-fallback'));
   assert.equal(specError(narrowPlan({leader:'ALWAYS'}),model),'PATH_LABEL_LEADER_INVALID:pCD');
 });
+
+test('G11 path label: a total length never starts its second-round leader on a piece that already carries a length (CG and GD have dimensions: PATH_LABEL_NO_ROOM)',async()=>{
+  const model=await modelOf(narrow),dims=[{id:'dCG',from:'C',to:'G',label:'10',unit:'cm',side:'ABOVE',style:'INLINE',factRole:'GIVEN'},{id:'dGD',from:'G',to:'D',label:'5',unit:'cm',side:'ABOVE',style:'INLINE',factRole:'DERIVED_INTERMEDIATE'}];
+  const plan=narrowPlan({anchor:0.2,side:'LEFT'});plan.planeMarks.dimensions=dims;
+  const composed=await composeOf(plan,model);
+  assert.equal(composed.status,'PATH_LABEL_NO_ROOM');assert.equal(composed.detail.id,'pCD');
+});

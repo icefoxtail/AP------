@@ -549,7 +549,19 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       if(declared===null||declared<=0)bad('MARK_FIELD_INVALID:pathLabels.value:'+row.id);
       if(Math.abs(declared-total)>1e-6*Math.max(1,declared))bad('PATH_LABEL_FACT_MISMATCH:'+row.id+':declared='+declared+':drawn='+total.toFixed(6));
     }
-    objects.push({id:row.id,kind:'PATH_LABEL',refs:[...row.points],segments:pathSegments,...(closed?{closed:true}:{}),...(row.anchor!==undefined?{anchorAt:pathLabelAnchorFraction(row.anchor)}:{}),...(row.side!==undefined?{side:row.side}:{}),...(row.leader==='NEVER'?{leader:'NEVER'}:{}),labelText:parts.label,...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{}),...weightOf(row,kind,'pathLabels')});
+    // (G11) the pieces of the path that already carry another length (a dimension between their two ends, a segment label on them, another path label over them): the second round of
+    // places never starts this label's leader on such a piece, or the total would read as that piece's own length
+    const pairKey=(a,b)=>[a,b].sort().join('|'),labeled=new Set();
+    if(!closed){
+      const pieceIndex=new Map(pathSegments.map((sid,i)=>[pairKey(ring[i],ring[i+1]),i]));
+      for(const d of Array.isArray(marks.dimensions)?marks.dimensions:[])if(d&&pieceIndex.has(pairKey(d.from,d.to)))labeled.add(pieceIndex.get(pairKey(d.from,d.to)));
+      for(const e of Array.isArray(marks.expressionLabels)?marks.expressionLabels:[]){const i=pathSegments.indexOf(e?.ownerSegment);if(i>=0)labeled.add(i);}
+      for(const other of Array.isArray(marks.pathLabels)?marks.pathLabels:[]){
+        if(!other||other===row||!Array.isArray(other.points))continue;
+        for(let i=0;i+1<other.points.length;i++)if(pieceIndex.has(pairKey(other.points[i],other.points[i+1])))labeled.add(pieceIndex.get(pairKey(other.points[i],other.points[i+1])));
+      }
+    }
+    objects.push({id:row.id,kind:'PATH_LABEL',refs:[...row.points],segments:pathSegments,...(closed?{closed:true}:{}),...(row.anchor!==undefined?{anchorAt:pathLabelAnchorFraction(row.anchor)}:{}),...(row.side!==undefined?{side:row.side}:{}),...(row.leader==='NEVER'?{leader:'NEVER'}:{}),...(labeled.size?{labeledPieces:[...labeled].sort((a,b)=>a-b)}:{}),labelText:parts.label,...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...(unit?{unit}:{}),...weightOf(row,kind,'pathLabels')});
     factRolesByLabel[row.id+'-label']=role(row);
   }
 

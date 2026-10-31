@@ -1098,6 +1098,23 @@ def audit(p):
                 if node.get('data-path-label-fallback') not in (None,'1'):errors.append('PATH_LABEL_FALLBACK_INVALID:'+oid)
                 if fallback and (row.get('leader')=='NEVER' or closed):errors.append('PATH_LABEL_NO_ROOM:'+oid)
                 anchor_tolerance=PATH_LABEL_FALLBACK_ANCHOR_TOLERANCE if fallback else PATH_LABEL_ANCHOR_TOLERANCE
+                if fallback and not closed:
+                    # (G11) a second-round leader never starts on a piece that already carries another length (a dimension between its ends, a segment label on it, another path label over it)
+                    def pair_key(a,b):return tuple(sorted((a,b)))
+                    pieces=[pair_key(a_id,b_id) for a_id,b_id in zip(ids,ids[1:])]
+                    taken=set()
+                    for d in marks.get('dimensions') or []:
+                        if pair_key(d.get('from'),d.get('to')) in pieces:taken.add(pieces.index(pair_key(d.get('from'),d.get('to'))))
+                    for e in marks.get('expressionLabels') or []:
+                        for i,(a_id,b_id) in enumerate(zip(ids,ids[1:])):
+                            seg=next((sg for sg in expanded if sg.get('id')==e.get('ownerSegment')),None)
+                            if seg and pair_key(*seg['refs'])==pair_key(a_id,b_id):taken.add(i)
+                    for other in marks.get('pathLabels') or []:
+                        if other is row or other.get('id')==row.get('id'):continue
+                        for a_id,b_id in zip(other.get('points') or [],(other.get('points') or [])[1:]):
+                            if pair_key(a_id,b_id) in pieces:taken.add(pieces.index(pair_key(a_id,b_id)))
+                    start_piece=min(range(len(path)-1),key=lambda i:point_segment_distance(la,path[i],path[i+1]))
+                    if start_piece in taken:errors.append('PATH_LABEL_LEADER_ON_LABELED_PIECE:'+oid)
                 side_min_cos=PATH_LABEL_FALLBACK_SIDE_MIN_COS if fallback else PATH_LABEL_SIDE_MIN_COS
                 # anchor / side (E37): where along the path the leader starts, and on which side of the path (walking first point to last, as the page shows it: y down) the label stands
                 if row.get('anchor') is not None:

@@ -1087,6 +1087,12 @@ def prepare(spec):
                         if 0.04<=t<=0.96:
                             spot=along(total*t)
                             if all(math.dist(spot,other)>=1.0 for other in anchors+more):more.append(spot)
+                # PATH_LABEL_LEADER_ON_LABELED_PIECE: no second-round leader starts on a piece that already carries another length (labeledPieces)
+                def piece_of(anchor):return min(range(len(path)-1),key=lambda i:point_segment_distance(anchor,path[i],path[i+1]))
+                blocked=set(obj.get('labeledPieces',()))
+                if blocked:
+                    more=[a for a in more if piece_of(a) not in blocked]
+                site['firstOk']=[piece_of(a) not in blocked for a in anchors]
                 site['fallback']={'anchors':[list(a) for a in more],'gaps':PATH_LABEL_FALLBACK_GAPS,'farGaps':PATH_LABEL_FALLBACK_FAR_GAPS,
                                   **({'sideNormals':[side_normal(a) for a in more],'allNormals':[side_normal(a) for a in anchors+more]} if obj.get('side') is not None else {})}
             labels.append(weighted(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchors[0],{'pathOwned':site},obj.get('unit')),obj))

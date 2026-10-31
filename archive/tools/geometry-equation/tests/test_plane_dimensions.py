@@ -340,5 +340,22 @@ class PathLabelFallbackTests(PathLabelTests):
             self.assertEqual(str(caught.exception),message)
         self.assertEqual(build(spec_of(PATH_POINTS,objects+[path_object(leader='NEVER')],width=640,height=420))['witness']['layout']['unresolved'],[])    # the first round still finds its place
 
+class PathLabelLabeledPieceTests(PathLabelTests):
+    def test_a_second_round_leader_on_a_piece_that_carries_a_length_is_refused(self):
+        marked=self.svg(leader=self.leader().replace('data-role="leader"','data-role="leader" data-path-label-fallback="1"',1))
+        node=self.leader();m=self.transform
+        la=(float(re.search(r'\sx1="([^"]*)"',node).group(1)),float(re.search(r'\sy1="([^"]*)"',node).group(1)))
+        path=[(m['originX']+PATH_POINTS[k][0]*m['sx'],m['originY']-PATH_POINTS[k][1]*m['sy']) for k in ('A','P','Q','B')]
+        i=min(range(3),key=lambda j:OBSERVER.point_segment_distance(la,path[j],path[j+1]))
+        ends=[('A','P'),('P','Q'),('Q','B')][i]
+        marks=path_marks();marks['dimensions']=[{'id':'dd','from':ends[0],'to':ends[1],'label':'7','side':'ABOVE'}]
+        self.assertIn('PATH_LABEL_LEADER_ON_LABELED_PIECE',[e.split(':')[0] for e in self.audit(svg=marked,marks=marks)['errors']])
+        marks['dimensions']=[]
+        self.assertNotIn('PATH_LABEL_LEADER_ON_LABELED_PIECE',[e.split(':')[0] for e in self.audit(svg=marked,marks=marks)['errors']])
+        # the first round is not held to it (no marker)
+        marks['dimensions']=[{'id':'dd','from':ends[0],'to':ends[1],'label':'7','side':'ABOVE'}]
+        self.assertNotIn('PATH_LABEL_LEADER_ON_LABELED_PIECE',[e.split(':')[0] for e in self.audit(svg=self.svg(),marks=marks)['errors']])
+
 if __name__=='__main__':unittest.main()
+
 

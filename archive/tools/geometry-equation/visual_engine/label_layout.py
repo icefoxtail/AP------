@@ -815,6 +815,13 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                     # out on a longer leader, the side leans a little less, and last the box goes out beyond the figure on a long leader. The leader still touches only the path's own
                     # segments and no other stroke (visible_owner_leader); the leader is marked data-path-label-fallback so the observer holds it to the wider tolerances.
                     fb=site['fallback'];first=site['anchors']
+                    first_ok=site.get('firstOk')
+                    if first_ok is not None and not all(first_ok):
+                        # anchors of the first list that stand on a piece carrying another length are not tried again in the second round
+                        keep=[i for i,ok in enumerate(first_ok) if ok]
+                        all_normals=fb.get('allNormals')
+                        if all_normals:fb={**fb,'allNormals':[all_normals[i] for i in keep]+list(all_normals[len(first):])}
+                        first=[first[i] for i in keep]
                     rounds=[(fb['anchors'],fb.get('sideNormals'),tuple(site['gaps']),PATH_LABEL_SIDE_MIN_DOT),
                             (first+fb['anchors'],fb.get('allNormals'),tuple(site['gaps'])+tuple(fb['gaps']),PATH_LABEL_SIDE_MIN_DOT),
                             (first+fb['anchors'],fb.get('allNormals'),tuple(site['gaps'])+tuple(fb['gaps']),PATH_LABEL_FALLBACK_SIDE_MIN_DOT),
