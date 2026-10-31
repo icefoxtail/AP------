@@ -1,0 +1,240 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "U0",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "6"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "3"
+      },
+      {
+       "kind": "integer",
+       "value": "6"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "DIVISION_POINT",
+    "inputs": [
+     "O",
+     "A"
+    ],
+    "args": {
+     "m": {
+      "kind": "integer",
+      "value": "3"
+     },
+     "n": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "mode": "INTERNAL"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "D",
+    "op": "DIVISION_POINT",
+    "inputs": [
+     "A",
+     "B"
+    ],
+    "args": {
+     "m": {
+      "kind": "integer",
+      "value": "3"
+     },
+     "n": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "mode": "INTERNAL"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "E",
+    "op": "DIVISION_POINT",
+    "inputs": [
+     "B",
+     "O"
+    ],
+    "args": {
+     "m": {
+      "kind": "integer",
+      "value": "3"
+     },
+     "n": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "mode": "INTERNAL"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "C",
+  "D",
+  "E"
+ ],
+ "displaySegments": [
+  {
+   "id": "sOA",
+   "refs": [
+    "O",
+    "A"
+   ]
+  },
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBO",
+   "refs": [
+    "B",
+    "O"
+   ]
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "sDE",
+   "refs": [
+    "D",
+    "E"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "sEC",
+   "refs": [
+    "E",
+    "C"
+   ],
+   "dashed": true
+  }
+ ],
+ "coordinateLabels": [
+  "A",
+  "B"
+ ],
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 480
+ },
+ "caption": "좌표평면 위의 삼각형 OAB와 세 변을 3:1로 내분하는 점 C, D, E이다. 변 OA를 3:1로 나눈 모양을 오른쪽에 크게 다시 그렸다.",
+ "planeMarks": {
+  "callouts": [
+   {
+    "id": "k1",
+    "kind": "SEGMENT",
+    "path": [
+     "O",
+     "C",
+     "A"
+    ],
+    "at": "RIGHT",
+    "scale": 1.5,
+    "dimensions": [
+     {
+      "id": "dOC",
+      "from": "O",
+      "to": "C",
+      "label": "3",
+      "side": "ABOVE",
+      "style": "ARROW",
+      "offset": "AUTO",
+      "factRole": "GIVEN"
+     },
+     {
+      "id": "dCA",
+      "from": "C",
+      "to": "A",
+      "label": "1",
+      "side": "ABOVE",
+      "style": "ARROW",
+      "offset": "AUTO",
+      "factRole": "GIVEN"
+     }
+    ]
+   }
+  ]
+ }
+}

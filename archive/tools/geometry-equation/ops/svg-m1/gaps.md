@@ -213,6 +213,8 @@
 - 샘플: `archive/exams/original/middle/m2/2final/25_왕운중_2학기_기말_중2_기출.js` #6 / 문제 그림 `assets/images/25_왕운중_2학기_기말_중2_기출/q6.png` (존재 True) — 삼각형 ABC의 무게중심 G, 중선 CD 위에서 CG=10·GD=5·CD=15와 BD=5를 좁은 꼭짓점(약 19°)에서도 겹치지 않게 보인다
 - 설계: callout을 SOURCE_COORDINATE_AXES에서도 허용하고(축·눈금을 피해 배치), ANGLE callout에 호 반지름 비례 옵션과 치수선(양 끝 보조선)을 더한다. pathLabels anchor 자리 탐색에 꼭짓점 근처 후보를 추가한다.
 
+- 구현됨(G11): 좌표 그림 callout(축은 주 프레임에 고정), ANGLE callout `arcScale`·`angleDimension`, `pathLabels` 2차 자리 탐색과 `leader`. 남은 것: 복사본에 좌표 읽기 라벨은 붙이지 않는다(이름만); 2차 자리는 8방향 격자라 매우 좁은 꼭짓점의 일부 경로는 여전히 `PATH_LABEL_NO_ROOM`이고(`anchor`·`side`를 바꾸거나 끌어낸다), `CALLOUT_ANGLE_DIMENSION_NO_ROOM`은 단위 테스트로 강제하지 못했다.
+
 ## 참고
 - 원장 OPEN 시험지 14개 중 엔진 대기 사유(E19·E26c·E26d·E28d·E29·E30 등)는 현재 가이드에 해당 필드가 있어 대부분 해결로 본다(재 plan 대상). 진짜 남은 것은 G8(속 빈 원기둥·원뿔대 전개도)과 위 표의 항목이다.
 - 원장 OPEN 중 내용 문제(OPEN_CONTENT 25_왕의중 기말 q19)·원본 그림 없음(26_왕의중 2학기 중간 8문항 등)·#777 골든 SHA 고정(25_매산여고·25_효천고 고1)은 엔진 부족이 아니라 제외했다.
