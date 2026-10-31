@@ -68,6 +68,13 @@ export function vectorTipIds(plan){
   return [...new Set(arrows.map(arrow=>arrow.to))].filter(id=>!tails.has(id));
 }
 
+/** The vector arrows whose end point keeps its dot (it starts another arrow): their head stops at the dot's edge (arrowInset), it never lies under the dot. */
+export function vectorInsetIds(plan){
+  const arrows=vectorArrows(plan?.planeMarks),tails=new Set(arrows.map(arrow=>arrow.from));
+  const dotless=new Set([...(plan?.hiddenPointStyle==='NONE'?(plan.hiddenPointNames||[]):(plan?.unmarkedPointNames||[]))]);
+  return arrows.filter(arrow=>tails.has(arrow.to)&&!dotless.has(arrow.to)).map(arrow=>arrow.id);
+}
+
 /** The axis feet of a vector's tip when components is set: ids of the helper construction nodes, from the vector's id alone. */
 export const componentIds=id=>({axisX:nodeIdOf(id,'Ax'),axisY:nodeIdOf(id,'Ay'),footX:nodeIdOf(id,'Fx'),footY:nodeIdOf(id,'Fy')});
 

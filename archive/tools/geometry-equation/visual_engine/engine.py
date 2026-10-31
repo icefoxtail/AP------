@@ -733,6 +733,8 @@ def prepare(spec):
                 for end,(tip,back) in {'START':(a,b),'END':(b,a)}.items():
                     if obj['arrow']!='BOTH' and obj['arrow']!=end:continue
                     ux,uy=(tip[0]-back[0])/length,(tip[1]-back[1])/length
+                    # arrowInset (G3, a vector whose end point keeps its dot): the head stops at the dot's edge instead of lying under the dot
+                    if obj.get('arrowInset') is True:tip=(tip[0]-ux*tokens['point'],tip[1]-uy*tokens['point'])
                     base=(tip[0]-ux*10,tip[1]-uy*10)
                     primitive({'id':oid+'-arrow-'+end.lower(),'kind':'polygon','points':[tip,(base[0]-uy*3.6,base[1]+ux*3.6),(base[0]+uy*3.6,base[1]-ux*3.6)],'token':'indicator','layer':62,'role':'indicator','fill':ACCENT_STROKE if emphasis=='ACCENT' else '#111','mark':'arrow','markId':oid,'markEnd':end,**({'stroke':ACCENT_STROKE} if emphasis=='ACCENT' else {})},'curve')
         elif kind=='CIRCLE':

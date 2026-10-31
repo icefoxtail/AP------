@@ -30,7 +30,7 @@ export {verifyConstructionConditionBindings} from './fact-display-map-v1.mjs';
 
 import {resolveQuestion,runQuestion} from './resolve-request.mjs';
 import {blindThenCompare,reuseReviewAuthority,verificationBinding,conditionBinding,validateReviewLineage} from './blinded-review.mjs';
-import {vectorTipIds} from './plane-vectors.mjs';
+import {vectorTipIds,vectorInsetIds} from './plane-vectors.mjs';
 import {planeMarkSpec,planeMarkPointRefs,isPlaneFigure,isCoordinateFigure,unmarkedPointIds,planNameTexts,textNamesPoint,arcLabelFraming,dimensionFraming,traceJoinExtentPoints,textLabelExtentPoints,TEXT_LABEL_MATH,TEXT_LABEL_HANGUL,TEXT_LABEL_FUNCTIONS} from './plane-marks.mjs';
 import {regionExtentPoints} from './plane-regions.mjs';
 import {calloutEntries,calloutExtentPoints,calloutDimensionSites,calloutSpec} from './plane-callouts.mjs';
@@ -874,6 +874,7 @@ function specForFamily(plan,model,id){
       objects.push({id:node.id,kind:'CIRCLE',center:fact.approximation.slice(0,2),radius:fact.approximation[2]});
     }
   }
+  const insetArrows=new Set(vectorInsetIds(plan));   // (G3) vector arrows that end on a dotted point
   for(const s of plan.displaySegments||[]){
     if(!points[s.refs[0]]||!points[s.refs[1]])throw Error('DISPLAY_SEGMENT_UNKNOWN_REF');
     if((s.dashed!==undefined&&typeof s.dashed!=='boolean')||(s.arrow!==undefined&&!['START','END','BOTH'].includes(s.arrow)))throw Error('DISPLAY_SEGMENT_STYLE_INVALID:'+s.id);
@@ -881,7 +882,7 @@ function specForFamily(plan,model,id){
     if(s.emphasis!==undefined&&!['BOLD','ACCENT'].includes(s.emphasis))throw Error('DISPLAY_SEGMENT_EMPHASIS_INVALID:'+s.id);
     // Dashed helper segments, arrows and emphasis are part of the same marking vocabulary and also work on a coordinate figure.
     if((s.dashed!==undefined||s.arrow!==undefined||s.emphasis!==undefined)&&!isPlaneFigure(plan)&&!isCoordinateFigure(plan,model))throw Error('DISPLAY_SEGMENT_STYLE_REQUIRES_PLANE_FIGURE:'+s.id);
-    objects.push({id:s.id,kind:'SEGMENT',from:points[s.refs[0]].approximation,to:points[s.refs[1]].approximation,...(s.dashed?{dash:true}:{}),...(s.arrow?{arrow:s.arrow}:{}),...(s.emphasis?{emphasis:s.emphasis}:{})});
+    objects.push({id:s.id,kind:'SEGMENT',from:points[s.refs[0]].approximation,to:points[s.refs[1]].approximation,...(s.dashed?{dash:true}:{}),...(s.arrow?{arrow:s.arrow}:{}),...(s.emphasis?{emphasis:s.emphasis}:{}),...(insetArrows.has(s.id)?{arrowInset:true}:{})});
   }
   // coordinatePlacement:'PANEL' (도형추출.md 6-7-1): point names stay at their points and each exact coordinate moves to a band above the plot
   // as one "A(x,y)" label, so a crowded coordinate figure keeps every coordinate at the Archive font floor. Same exact source as below.

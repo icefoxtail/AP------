@@ -247,3 +247,46 @@ test('G3-3: operations on vectors that do not fit are refused with their own cod
   const response=await pythonWorker({action:'construction',graph:plan.mathPlan},{timeoutMs:90000});
   assert.notEqual(response.status,'OK');assert.match(JSON.stringify(response.result),/VECTOR_SUM_DEGENERATE/);
 });
+
+// ---- vector accent never clipped; a head that ends on a dotted point stops at the dot's edge
+import {typesetter,pathExtentX,accentInk} from '../production/typography.mjs';
+test('G3-4: the box of a \\vec label holds the whole accent, for all 26 letters and two-letter names; other labels keep their box',()=>{
+  const typeset=typesetter(),identityRow={visualAssetKey:'sha256:test'};
+  const fragment=(tex,id)=>typeset({id,owner:'o',factRole:'GIVEN',kind:'MATH',tex,fontPx:16},identityRow);
+  const inkOf=svg=>{
+    const width=Number(/<svg[^>]* width="([^"]*)"/.exec(svg)[1]),scale=/translate\(([-\d.e]+) [-\d.e]+\) scale\(([-\d.e]+)\)/.exec(svg),tx=Number(scale[1]),s=Number(scale[2]);
+    const parts=[...svg.matchAll(/<g data-mml-node="mo" transform="([^"]*)"><path data-c="20D7" d="([^"]*)"/g)];
+    assert.ok(parts.length>=1,'an accent is drawn');
+    return parts.map(part=>{const shift=[...part[1].matchAll(/translate\(\s*(-?[\d.]+)[ ,]/g)].reduce((sum,t)=>sum+Number(t[1]),0),ext=pathExtentX(part[2]);return {width,left:tx+s*(shift+ext.left),right:tx+s*(shift+ext.right)};});
+  };
+  const letters='abcdefghijklmnopqrstuvwxyz'.split('');
+  for(const letter of letters)for(const ink of inkOf(fragment('\\vec{'+letter+'}','l'+letter).svg)){assert.ok(ink.left>=-0.01&&ink.right<=ink.width+0.01,letter+' accent '+ink.left.toFixed(2)+'..'+ink.right.toFixed(2)+' in '+ink.width.toFixed(2));}
+  for(const name of ['AB','DB','AF'])assert.ok(fragment('\\overrightarrow{'+name+'}','n'+name).intrinsic.width>0);
+  // the same letter without an accent keeps the MathJax box exactly
+  const plainD=fragment('d','plain'),accentD=fragment('\\vec{d}','accent');
+  assert.ok(accentD.intrinsic.width>plainD.intrinsic.width,'the box with the accent is wider than the bare letter');
+  assert.equal(accentInk('<g data-mml-node="mi"></g>'),null);
+});
+
+test('G3-4: the observer refuses a vector label whose accent leaves its box',async()=>{
+  const marks={expressionLabels:[{id:'td',ownerSegment:'sAB',text:'vec(d)'}]};
+  const plan=planOf(marks),composed=await compose(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.deepEqual((await observe(plan,composed.svg)).errors,[]);
+  const label=/<g id="td"[^>]*>\s*<svg[^>]* width="([^"]*)"/.exec(composed.svg);
+  const narrow=composed.svg.replace(label[0],label[0].replace('width="'+label[1]+'"','width="'+(Number(label[1])*0.6).toFixed(3)+'"'));
+  assert.ok(codes(await observe(plan,narrow)).includes('VECTOR_LABEL_ACCENT_CLIPPED'));
+});
+
+test('G3-4: a vector head that ends on a dotted point stops on the dot edge; the observer holds it to that',async()=>{
+  const {plan,model:m,composed}=await built({vectors:[{id:'va',from:'A',to:'B'},{id:'vb',from:'B',to:'C'}]});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.planeMarks.status,'PASS',JSON.stringify(composed.staticAudit.planeMarks.errors));
+  const dot=/<circle[^>]*id="B"[^>]*\/>/.exec(composed.svg)[0],cx=Number(/cx="([^"]*)"/.exec(dot)[1]),cy=Number(/cy="([^"]*)"/.exec(dot)[1]),r=Number(/ r="([^"]*)"/.exec(dot)[1]);
+  const tip=/<polygon[^>]*id="va-arrow-end"[^>]*points="([^ ]+)/.exec(composed.svg)[1].split(',').map(Number);
+  assert.ok(Math.abs(Math.hypot(tip[0]-cx,tip[1]-cy)-r)<=0.5,'the tip lies on the dot edge');
+  assert.deepEqual((await observe(plan,composed.svg,m)).errors,[]);
+  // a head pushed under the dot (on the point itself) or short of the dot is refused
+  const onPoint=retag(composed.svg,'va-arrow-end',tag=>tag.replace(/points="([^ ]+) /,'points="'+cx+','+cy+' '));
+  assert.ok(codes(await observe(plan,onPoint,m)).includes('SEGMENT_ARROW_TIP_OFF_END'));
+});
