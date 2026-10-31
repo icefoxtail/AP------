@@ -323,6 +323,8 @@ function addGraphOverlays(plan,spec){
       ?{id:point.id+'-coordinates',kind:'EQUATION_LABEL',target:point.id,text:names.expr(point.id)+'('+point.coordinates.join(',')+')',at:[point.x,point.y],priority:0,...(point.labelDirection?{directions:directionsFrom(point.labelDirection)}:{})}
       :{id:point.id+'-coordinates',kind:'COORDINATE_LABEL',target:point.id,exact:point.coordinates,priority:0,...(point.unnamed?{ringLeader:true}:{}),...(point.labelDirection?{preferred:point.labelDirection}:{})});
   }
+  // circles (G6): a circle drawn at the plot's single scale (the observer refuses an ellipse).
+  for(const circle of features.circles??[])objects.push({id:'overlay-circle-'+circle.id,kind:'CIRCLE',center:[circle.cx,circle.cy],radius:circle.r});
   const at=ident=>{const point=points.get(ident);if(!point)throw Error('OVERLAY_POINT_UNKNOWN:'+ident);return [point.x,point.y];};
   for(const segment of features.segments){
     objects.push({id:'overlay-segment-'+segment.id,kind:'SEGMENT',from:at(segment.from),to:at(segment.to),...(segment.dashed?{dash:true}:{})});
