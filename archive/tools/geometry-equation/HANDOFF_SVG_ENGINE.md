@@ -7,6 +7,11 @@
 - 캠페인 도구·지시서·현황 메모: `archive/tools/geometry-equation/ops/svg-m1/` (§3에서 `.tmp/svg-m1/`로 복원해서 쓴다)
 - 엔진 정답지(골든): `archive/tools/geometry-equation/ops/golden.manifest.json` + `ops/golden/itemNN/`
 
+> **2026-10-31 이후 엔진 빈틈 완성 라인(G1~G11).** 사용자 지시: 엔진 부족한 부분을 실제 기출 샘플로 하나씩 완성하고, 완성한 샘플 그림은 시험지에 게시까지 한다. 고등 우선, 샘플은 최신 연도(26→25→24). Sonnet 작업자는 한 번에 하나(토큰 절약), 보고는 변경 하나가 끝날 때 한 번.
+> - **엔진 지시서를 쓰기 전에 `ops/svg-m1/BRIEF_RULES.md`(실패 기록과 지시서 규칙)를 반드시 읽고 `ops/svg-m1/briefs/engine-gap-template.md`로 쓴다.** 남은 한계는 "한계"로 끝내지 말고 후속 묶음으로 이어서 맡긴다.
+> - 빈틈 목록·샘플: `ops/svg-m1/gaps.md` 아래 G1~G11 절. 진행: G7·G9·G1·G5·G6 main 반영(#1065~#1073), G6b 진행 중.
+> - Windows PC에서 도구 복원 시: `/home/user/AP------` 경로를 실제 체크아웃 경로로, `python3`를 `python`으로 바꾸고, Chrome은 설치된 것(`channel:'chrome'`), playwright는 `.tmp/apmath-visual-engine/dependencies/node_modules/playwright`를 직접 require, 동적 import 경로는 `file:///C:/...`.
+
 ---
 
 ## 0. 한 줄 요약
