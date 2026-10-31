@@ -213,9 +213,9 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $f(x)$, $g(x)$의 그래프가 각각 그림과 같을 때, $\\displaystyle\\lim_{x\\to1+}[f(x+1)]+\\lim_{x\\to1-}g(x)$의 값은? (단, $[x]$는 $x$보다 크지 않은 최대의 정수이다.) [4.1점]",
     "image": "assets/images/22_팔마고_2학기_중간_고2_수학II/q8.png",
-    "solutionImage": "assets/images/22_팔마고_2학기_중간_고2_수학II/q8-solution-v3.svg",
-    "solutionImageAlt": "같은 좌표평면에 그린 y=f(x)(실선)와 y=g(x)(점선). g는 중심이 (0,0), (1,0)이고 반지름이 1인 사분원 호이고, f는 x=1,2에서 열린 점·닫힌 점을 가진다. 눈금 1, 2를 나타냈다.",
-    "solutionImageCaption": "한 좌표평면에 그린 y=f(x)(실선)와 y=g(x)(점선). 열린 점과 닫힌 점으로 각 함수값을 구별한다.",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고2_수학II/q8-solution-v4.svg",
+    "solutionImageAlt": "같은 좌표평면에 그린 y=f(x)(실선)와 y=g(x)(점선). g는 중심이 (0,0), (1,0)이고 반지름이 1인 사분원 호이고, g(x) 이름은 지시선으로 g 위의 점에 이어져 있다. f는 x=1,2에서 열린 점·닫힌 점을 가지며, g 위의 점 P(1/2, √3/2)에서 x축까지 점선 안내를 그렸다. 눈금 1, 2를 나타냈다.",
+    "solutionImageCaption": "한 좌표평면에 그린 y=f(x)(실선)와 y=g(x)(점선). g(x)는 지시선으로 g 위의 점에 이어 구별하고, 열린 점과 닫힌 점으로 각 함수값을 구별한다.",
     "solutionImageSize": "medium",
     "solutionImageStatus": "asset_verified",
     "choices": [
