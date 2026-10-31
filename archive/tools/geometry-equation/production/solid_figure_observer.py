@@ -903,6 +903,7 @@ def audit_solids(plan, ctx):
                 else:
                     for key in vertex_keys(solid, i): named[key] = (sid, px(p), p)
             check_poly_edges(solid, root, px, scale, errors)
+            audit_aux_points((specs_by_id.get(sid) or {}).get('points'), solid, named, px, root, errors)
             audit_counts(solid, (specs_by_id.get(sid) or {}).get('count') or {}, px, ctx)
             counted.add(sid)
             # the solid's drawn extent, for the overlap check
@@ -1053,6 +1054,122 @@ def audit_solids(plan, ctx):
 
 
 MAX_BALLS = 6
+
+
+# --- named helper points of a polyhedron (solids[].points) ---------------------------------------------------------------------------------------
+# Recomputed here from the plan and this module's own solid (not the producer's): a face centre by the plane-polygon centroid formula in the face's dominant plane, a point of an edge by
+# the fraction of its two ends, the foot of a perpendicular by solving the perpendicularity condition. Each must be drawn as exactly one small dot at the projected place.
+def _plane_polygon_centroid(pts):
+    n = vunit(vcross(vsub(pts[1], pts[0]), vsub(pts[2], pts[0])))
+    drop = max(range(3), key=lambda k: abs(n[k]))
+    k1, k2 = [k for k in range(3) if k != drop]
+    area = cx = cy = 0.0
+    for i in range(len(pts)):
+        a, b = pts[i], pts[(i + 1) % len(pts)]
+        w = a[k1] * b[k2] - b[k1] * a[k2]
+        area += w
+        cx += (a[k1] + b[k1]) * w
+        cy += (a[k2] + b[k2]) * w
+    area /= 2.0
+    if abs(area) < 1e-12: raise ValueError('SOLID_POINT_AT_INVALID')
+    c = [0.0, 0.0, 0.0]
+    c[k1], c[k2] = cx / (6 * area), cy / (6 * area)
+    c[drop] = pts[0][drop] - (n[k1] * (c[k1] - pts[0][k1]) + n[k2] * (c[k2] - pts[0][k2])) / n[drop]
+    return tuple(c)
+
+
+def aux_point_places(specs, solid, named):
+    """name -> (sid, 3D point) of the helper points of one solid, in the order written (a later point may use an earlier one); ValueError with the plan's code for a bad definition"""
+    sid = solid['id']
+    local = dict(named)   # the vertices and the helper points placed so far
+    norm = make_norm([solid], local)
+    names = face_names(solid)
+    edges = poly_edges(solid)
+    placed = {}
+    if not isinstance(specs, list) or not 1 <= len(specs) <= 6: raise ValueError('SOLID_POINTS_INVALID')
+
+    def mine(key):
+        e = local.get(key)
+        if e is None or e[0] != sid: raise ValueError('SOLID_POINT_AT_INVALID')
+        return e[2]
+
+    def key_of(x): return norm(x, 'SOLID_POINT_AT_INVALID')
+    for entry in specs:
+        if not isinstance(entry, dict) or set(entry) - {'id', 'at'} or not isinstance(entry.get('id'), str) or not PLAIN_KEY.fullmatch(entry['id']): raise ValueError('SOLID_POINTS_INVALID')
+        if entry['id'] in named or entry['id'] in placed: raise ValueError('SOLID_NAME_DUPLICATE:' + entry['id'])
+        at = entry.get('at')
+        if not isinstance(at, dict): raise ValueError('SOLID_POINT_AT_INVALID')
+        kinds = [k for k in ('base', 'edge', 'foot') if at.get(k) is not None]
+        if len(kinds) != 1: raise ValueError('SOLID_POINT_AT_INVALID')
+        if kinds[0] == 'base':
+            if set(at) - {'base', 'face'} or at['base'] not in ('center', 'centroid'): raise ValueError('SOLID_POINT_AT_INVALID')
+            if at.get('face') is None and solid['kind'] == 'REGULAR_POLYHEDRON':
+                # the one face lying on the floor (all its vertices at the lowest height)
+                zmin = min(v[1][2] for v in solid['verts'])
+                flat = [f for f in solid['faces'] if all(abs(solid['verts'][i][1][2] - zmin) < 1e-6 for i in f)]
+                if len(flat) != 1: raise ValueError('SOLID_POINT_FACE_UNKNOWN:bottom')
+                cycle = flat[0]
+            else:
+                face = at.get('face') or 'bottom'
+                if face not in names: raise ValueError('SOLID_POINT_FACE_UNKNOWN:' + str(face)[:12])
+                cycle = solid['faces'][names.index(face)]
+            p = _plane_polygon_centroid([solid['verts'][i][1] for i in cycle])
+        elif kinds[0] == 'edge':
+            if set(at) - {'edge', 't'}: raise ValueError('SOLID_POINT_AT_INVALID')
+            pair = list(at['edge']) if isinstance(at['edge'], (list, str)) else None
+            if pair is None or len(pair) != 2: raise ValueError('SOLID_POINT_AT_INVALID')
+            ka, kb = key_of(pair[0]), key_of(pair[1])
+            ia = next((i for i in range(len(solid['verts'])) if ka in vertex_keys(solid, i)), -1)
+            ib = next((i for i in range(len(solid['verts'])) if kb in vertex_keys(solid, i)), -1)
+            if ia < 0 or ib < 0 or (min(ia, ib), max(ia, ib)) not in edges: raise ValueError('SOLID_POINT_EDGE_UNKNOWN:' + join_keys([ka, kb]))
+            m = re.fullmatch(r'([1-9]\d?)/([1-9]\d?)', at['t']) if isinstance(at.get('t'), str) else None
+            if not m or int(m.group(1)) >= int(m.group(2)): raise ValueError('SOLID_POINT_AT_INVALID')
+            f = int(m.group(1)) / int(m.group(2))
+            A, B = mine(ka), mine(kb)
+            p = tuple(A[k] * (1 - f) + B[k] * f for k in range(3))
+        else:
+            foot = at['foot']
+            if not isinstance(foot, dict) or set(foot) - {'from', 'to'}: raise ValueError('SOLID_POINT_AT_INVALID')
+            P = mine(key_of(foot.get('from')))
+            to = foot.get('to')
+            if isinstance(to, str):
+                if to not in names: raise ValueError('SOLID_POINT_FACE_UNKNOWN:' + to[:12])
+                F = [solid['verts'][i][1] for i in solid['faces'][names.index(to)]]
+                n = vunit(vcross(vsub(F[1], F[0]), vsub(F[2], F[0])))
+                p = vsub(P, vmul(n, vdot(vsub(P, F[0]), n)))
+            else:
+                if not isinstance(to, list) or len(to) != 2: raise ValueError('SOLID_POINT_AT_INVALID')
+                A, B = mine(key_of(to[0])), mine(key_of(to[1]))
+                d = vsub(B, A)
+                if vdot(d, d) < 1e-12: raise ValueError('SOLID_POINT_FOOT_DEGENERATE')
+                # the foot X = A + t d makes (P - X) perpendicular to d: (P - A - t d) . d = 0
+                t = vdot(vsub(P, A), d) / vdot(d, d)
+                p = vadd(A, vmul(d, t))
+            if vlen(vsub(p, P)) < 1e-6: raise ValueError('SOLID_POINT_FOOT_DEGENERATE')
+        placed[entry['id']] = p
+        local[entry['id']] = (sid, None, p)
+    return placed
+
+
+def audit_aux_points(specs, solid, named, px, root, errors):
+    sid = solid['id']
+    dots = [e for e in root.iter(NS + 'circle') if e.get('data-role') == 'aux-point' and e.get('data-solid') == sid]
+    if specs is None:
+        if dots: errors.append('SOLID_AUX_POINT_NOT_IN_PLAN:' + sid)
+        return
+    try: placed = aux_point_places(specs, solid, named)
+    except ValueError as exc:
+        errors.append(str(exc))
+        return
+    drawn = {}
+    for e in dots: drawn.setdefault(e.get('data-point'), []).append(e)
+    if sorted(drawn) != sorted(placed) or any(len(v) != 1 for v in drawn.values()): errors.append('SOLID_AUX_POINT_SET_MISMATCH:' + sid)
+    for name, p in placed.items():
+        named[name] = (sid, px(p), p)
+        for e in drawn.get(name, []):
+            q = px(p)
+            if math.hypot(_num(e, 'cx') - q[0], _num(e, 'cy') - q[1]) > POS_TOL: errors.append('SOLID_AUX_POINT_OFF:' + name)
+
 
 
 def expanded_solid_specs(plan):
@@ -2953,6 +3070,10 @@ def expected_dim_values(plan, ctx):
     names = []
     for s in solids:
         if s['cat'] == 'POLY': names += ['name-' + n for n, _ in s['verts'] if n]
+        if s['cat'] == 'POLY':
+            # the helper points of the plan (solids[].points) are named too
+            spec_points = next((x.get('points') for x in solids_with_ids(plan) if x.get('id') == s['id']), None)
+            if isinstance(spec_points, list): names += ['name-' + x['id'] for x in spec_points if isinstance(x, dict) and isinstance(x.get('id'), str)]
         else: names += ['name-' + n for n, _, _ in s['points'] if n]
     ctx['expected_name_labels'] = names
     return out

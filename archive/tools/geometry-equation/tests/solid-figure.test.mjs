@@ -2548,3 +2548,76 @@ test('E33: the water cone with its slant parts and level points is composed and 
   const seg=svg.match(/<line id="segment-CD"[^>]*\/>/)[0];
   await failing(plan,svg.replace(seg,seg.replace(/ x2="([\d.]+)"/,(all,v)=>` x2="${Number(v)-12}"`)),'SOLID_SEGMENT_ENDPOINT_OFF:CD');
 });
+
+// --- G1: named helper points of a polyhedron (solids[].points) -------------------------------------------------------------------------------
+const auxPyramid=(over={})=>figure({unit:'cm',
+  solids:[{kind:'PYRAMID',base:{kind:'RECT',width:4,depth:4},height:2.8284271247,names:'ABCDV',
+    points:[{id:'M',at:{edge:['A','B'],t:'1/2'}},{id:'N',at:{edge:['C','D'],t:'1/2'}},{id:'H',at:{foot:{from:'V',to:['M','N']}}}]}],
+  segments:[{from:'V',to:'M',style:'SOLID'},{from:'V',to:'N',style:'SOLID'},{from:'V',to:'H',style:'DASHED'},{from:'M',to:'H',style:'DASHED'},{from:'H',to:'N',style:'DASHED'}],
+  marks:{rightAngles:[{at:'H',refs:['V','M']}],equalLengths:[{count:1,segments:['VM','VN']}],angles:[{refs:['V','M','H'],arcs:1,label:'x'}]},...over});
+test('G1: helper points are computed in 3D: an edge midpoint, the foot of a perpendicular and a face centre',()=>{
+  const m=solveSolidFigure(auxPyramid());
+  const at=name=>m.solids[0].aux.find(q=>q.name===name).p;
+  const V=m.solids[0].vertices[4].p,A=m.solids[0].vertices[0].p,B=m.solids[0].vertices[1].p;
+  const mid=[0,1,2].map(k=>(A[k]+B[k])/2);
+  for(let k=0;k<3;k++)assert.ok(Math.abs(at('M')[k]-mid[k])<1e-9);
+  // H lies on MN and VH is perpendicular to MN; the lengths of the right triangle VMH are the a/2 and a/sqrt(2) of a pyramid with all edges equal
+  const sub3=(p,q)=>[p[0]-q[0],p[1]-q[1],p[2]-q[2]],dot3=(p,q)=>p[0]*q[0]+p[1]*q[1]+p[2]*q[2],len3=p=>Math.hypot(...p);
+  assert.ok(Math.abs(dot3(sub3(V,at('H')),sub3(at('N'),at('M'))))<1e-9);
+  assert.ok(Math.abs(len3(sub3(at('H'),at('M')))-2)<1e-9);
+  assert.ok(Math.abs(len3(sub3(V,at('H')))-2.8284271247)<1e-5);
+  assert.ok(Math.abs(len3(sub3(V,at('M')))-2*Math.sqrt(3))<1e-5);
+  // the centre of the base of a regular tetrahedron is the foot of the perpendicular from the apex onto the floor face (found twice, by two routes)
+  const t=solveSolidFigure(figure({unit:'cm',solids:[{kind:'REGULAR_POLYHEDRON',faces:4,side:4,names:'BCDA',points:[{id:'H',at:{base:'centroid'}}]}]}));
+  const solid=t.solids[0],H=solid.aux[0].p,apex=solid.vertices[3].p;
+  assert.ok(Math.hypot(H[0]-apex[0],H[1]-apex[1])<1e-9&&H[2]<1e-9,JSON.stringify([H,apex]));
+  assert.ok(Math.abs(Math.hypot(...solid.vertices[0].p.map((c,k)=>c-H[k]))-4/Math.sqrt(3))<1e-9);// the distance from the centre to a base vertex: a/sqrt(3)
+});
+test('G1: a bad helper point is refused with its own code',()=>{
+  const withPoints=(points,solid={})=>figure({unit:'cm',solids:[{kind:'PYRAMID',base:{kind:'RECT',width:4,depth:4},height:3,names:'ABCDV',points,...solid}]});
+  const bad=(points,expected,solid)=>assert.throws(()=>solveSolidFigure(withPoints(points,solid)),code(expected),expected);
+  bad([],'SOLID_POINTS_INVALID');
+  bad([{id:'m',at:{edge:['A','B'],t:'1/2'}}],'SOLID_POINTS_INVALID');
+  bad([{id:'A',at:{edge:['A','B'],t:'1/2'}}],'SOLID_NAME_DUPLICATE:A');
+  bad([{id:'M',at:{edge:['A','C'],t:'1/2'}}],'SOLID_POINT_EDGE_UNKNOWN');// AC is a diagonal of the base, no edge
+  bad([{id:'M',at:{edge:['A','B'],t:'1/1'}}],'SOLID_POINT_AT_INVALID');
+  bad([{id:'M',at:{edge:['A','B'],t:'0.5'}}],'SOLID_POINT_AT_INVALID');
+  bad([{id:'M',at:{edge:['A','B'],t:'1/2'},extra:1}],'SOLID_POINTS_INVALID');
+  bad([{id:'M',at:{edge:['A','B'],t:'1/2'}},{id:'M',at:{edge:['B','C'],t:'1/2'}}],'SOLID_NAME_DUPLICATE:M');
+  bad([{id:'K',at:{foot:{from:'A',to:['A','B']}}}],'SOLID_POINT_FOOT_DEGENERATE');// A is on the line AB
+  bad([{id:'H',at:{foot:{from:'V',to:['A','A']}}}],'SOLID_POINT_FOOT_DEGENERATE');
+  bad([{id:'H',at:{foot:{from:'V',to:'nowhere'}}}],'SOLID_POINT_FACE_UNKNOWN');
+  bad([{id:'H',at:{base:'middle'}}],'SOLID_POINT_AT_INVALID');
+  bad([{id:'H',at:{base:'center',face:'nowhere'}}],'SOLID_POINT_FACE_UNKNOWN');
+  bad([{id:'H',at:{base:'center'}},{id:'J',at:{}}],'SOLID_POINT_AT_INVALID');
+  bad(Array.from({length:7},(x,k)=>({id:'MNPQRSTU'[k],at:{edge:['A','B'],t:'1/2'}})),'SOLID_POINTS_INVALID');
+  // an octahedron stands on a vertex: it has no face on the floor to call its base
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'REGULAR_POLYHEDRON',faces:8,side:4,points:[{id:'H',at:{base:'center'}}]}]})),code('SOLID_POINT_FACE_UNKNOWN'));
+  // a round solid has no helper points
+  assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'CYLINDER',radius:3,height:5,points:[{id:'H',at:{base:'center'}}]}]})));
+  // an unknown name used by a segment is still unknown
+  assert.throws(()=>solveSolidFigure({...withPoints([{id:'M',at:{edge:['A','B'],t:'1/2'}}]),segments:[{from:'V',to:'K'}]}),code('SOLID_NAME_UNKNOWN'));
+});
+test('G1: the panel with helper points is composed, audited, and each tamper is caught',async()=>{
+  const plan=auxPyramid();
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  for(const name of ['M','N','H'])assert.match(svg,new RegExp(`<circle id="aux-${name}" data-role="aux-point" data-solid="s1" data-point="${name}"`));
+  assert.equal((svg.match(/data-role="aux-point"/g)??[]).length,3);
+  const failing=async(p,tampered,prefix)=>{const r=await audit(p,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const dot=name=>svg.match(new RegExp(`<circle id="aux-${name}"[^>]*/>`))[0];
+  // the dot of H moved: the plan puts H at the foot of the perpendicular, the figure shows it elsewhere
+  await failing(plan,svg.replace(dot('H'),dot('H').replace(/ cx="([\d.]+)"/,(all,v)=>` cx="${Number(v)+9}"`)),'SOLID_AUX_POINT_OFF:H');
+  await failing(plan,svg.replace(dot('M'),dot('M').replace(/ cy="([\d.]+)"/,(all,v)=>` cy="${Number(v)-9}"`)),'SOLID_AUX_POINT_OFF:M');
+  // a dot taken away, and a dot that the plan did not ask for
+  await failing(plan,svg.replace(dot('N'),''),'SOLID_AUX_POINT_SET_MISMATCH');
+  await failing(plan,svg.replace(dot('N'),dot('N')+dot('N')),'SOLID_AUX_POINT_SET_MISMATCH');
+  // the segment VH no longer ends at H
+  const seg=svg.match(/<line id="segment-VH"[^>]*\/>/)[0];
+  await failing(plan,svg.replace(seg,seg.replace(/ y2="([\d.]+)"/,(all,v)=>` y2="${Number(v)-14}"`)),'SOLID_SEGMENT_ENDPOINT_OFF');
+  // a plan whose M sits at 1/3 of AB is not this figure
+  const moved={...plan,solids:[{...plan.solids[0],points:[{id:'M',at:{edge:['A','B'],t:'1/3'}},...plan.solids[0].points.slice(1)]}]};
+  await failing(moved,svg,'SOLID_AUX_POINT_OFF:M');
+});
