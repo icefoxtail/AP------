@@ -721,6 +721,31 @@ test('difficulty filters apply only after an explicit choice and can return to a
   assert.deepEqual(plain(w.state.buckets), []);
 });
 
+test('problem paper maker does not require difficulty evidence or source-bound meta for recorded difficulty', async () => {
+  const r2 = basicRecord('중3', {
+    difficultyBucket: 2, difficultyConfidence: undefined, difficultyBoundaryFlag: undefined,
+    legacyLevelCompatibility: undefined, sourceStatus: 'HOLD', metaBinding: '',
+    metadataConflicts: ['difficultyBucket'],
+  });
+  const r3 = basicRecord('중3', {
+    questionUid: 'qid_v1_' + crypto.createHash('sha256').update('general-r3').digest('hex'),
+    difficultyBucket: 3, sourceStatus: 'HOLD', metaBinding: '',
+  });
+  const { w, click } = harness({ ...catalog, records: [r2, r3], taxonomy: [] });
+  w.state.filters = { grade: '중3' };
+  await click({ action: 'bucket', bucket: '2' });
+  w.state.scopes = w.scopeOptions().map(scope => scope.key);
+  w.state.distribution = 'all';
+  const req = w.request();
+  assert.equal(req.rows[0].count, 1, 'the recorded bucket survives missing auxiliary metadata');
+  const selected = core.selectBlueprint([r2, r3], req);
+  assert.equal(selected.ok, true);
+  assert.deepEqual(selected.selected.map(row => row.questionUid), [r2.questionUid]);
+  assert.notEqual(core.review(selected.selected, req).status, 'HARD_BLOCK');
+  await click({ action: 'bucket-all' });
+  assert.equal(w.request().rows[0].count, 2);
+});
+
 test('new entry, grade changes and new drafts restore BASIC all-difficulty defaults', async () => {
   const { w, click, change } = harness();
   w.state.buckets = [2, 3];
