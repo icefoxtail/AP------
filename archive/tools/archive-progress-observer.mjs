@@ -210,6 +210,20 @@ export async function executeOnce({api,getEvidence,historyPages=1,clock=()=>new 
  return current;
 }
 
+const TRANSIENT_CODES=/EPIPE|ECONNRESET|ETIMEDOUT|ECONNABORTED|UND_ERR_SOCKET/;
+const isTransient=e=>TRANSIENT_CODES.test([e?.code,e?.cause?.code,e?.message,e?.cause?.message].filter(Boolean).join(' '));
+/** Bounded retry (max 3 attempts, short backoff) for transient socket errors only; other errors surface at once. */
+export async function withTransientRetry(fn,{attempts=3,delayMs=1000,sleep=ms=>new Promise(r=>setTimeout(r,ms)),log=()=>{}}={}){
+ for(let n=1;;n++){
+  try{return await fn();}
+  catch(e){
+   if(n>=attempts||!isTransient(e))throw e;
+   log('transient error on status save ('+(e?.cause?.code||e?.code||e?.message)+'), retry '+n+'/'+(attempts-1));
+   await sleep(delayMs*n);
+  }
+ }
+}
+
 async function main(){
  if(process.env.GITHUB_REPOSITORY!==REPOSITORY)throw Error('Unexpected GitHub repository');
  const pages=Math.min(100,Math.max(1,Number.parseInt(process.env.ARCHIVE_PROGRESS_HISTORY_PAGES||'1',10)||1));
@@ -219,9 +233,10 @@ async function main(){
   try{await api('/git/refs',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ref:'refs/heads/archive-progress-state',sha:base.object.sha})});}
   catch(e){if(!/GitHub 422/.test(String(e)))throw e;}
  }
- const storeStatus=async(value,priorSha)=>api('/contents/archive-progress.json',{method:'PUT',headers:{'Content-Type':'application/json'},
+ const storeStatus=async(value,priorSha)=>withTransientRetry(()=>api('/contents/archive-progress.json',{method:'PUT',headers:{'Content-Type':'application/json'},
   body:JSON.stringify({message:'chore(status): refresh GitHub-observed archive progress',branch:'archive-progress-state',
-   content:Buffer.from(JSON.stringify(value,null,2)+'\n').toString('base64'),...(priorSha?{sha:priorSha}:{})})});
+   content:Buffer.from(JSON.stringify(value,null,2)+'\n').toString('base64'),...(priorSha?{sha:priorSha}:{})})}),
+  {log:m=>console.log(m)});
  console.log('OBSERVER_CHECKOUT_SHA='+execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim());
  const started=Date.now();
  const log=message=>console.log('['+Math.round((Date.now()-started)/1000)+'s] '+message);

@@ -18,7 +18,7 @@ test('단원별 기출 페이지는 승인 메타데이터와 새 출제 UI를 �
   assert.ok(html.indexOf('archive2-canonical.js') < html.indexOf('archive2-core.js'), 'canonical core must load before its browser consumer');
   assert.ok(html.indexOf('archive2-output-contract.js') < html.indexOf('archive2-output.js'), 'output contract must load before its producer');
   assert.ok(html.indexOf('archive2-output.js') < html.indexOf('unit-past-exams.js'), 'Unit Past must load the existing Output Envelope producer first');
-  assert.match(html, /archive2-core\.js\?v=20261029-s14-1/);
+  assert.match(html, /archive2-core\.js\?v=20261031-recorded-use-1/);
   assert.match(html, /unit-past-exams-core\.js\?v=20261029-s14-1/);
   assert.match(html, /unit-past-exams\.js\?v=20261030-s10-1/);
   assert.match(html, /id="unit-stepper"/);

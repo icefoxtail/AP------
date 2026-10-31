@@ -69,9 +69,10 @@ test('every textbook JS is registered with the manifest grade, except the declar
     assert.equal(row.primaryStandardCourse, manifest.folders[folder].subject);
   }
   assert.equal(sources, textbookRows.length, 'every registered textbook row has a source file');
-  // 138 = S11 baseline (62 previously registered + 76 newly registered textbook sets); main added one more registered set
-  // (백발백중 공통수학2 함수 P70-73, 2026-10-30). Every set must still be registered with its manifest grade (above).
-  assert.equal(sources, 146 - 8 + 1, 'S11 baseline 62 + 76 textbook sets, plus the 백발백중 공통수학2 set added on main');
+  // Invariants instead of an exact count (the registered set keeps growing): registration and source files match
+  // one-to-one (above), no duplicate registrations, and every registered file exists on disk.
+  assert.equal(new Set(textbookRows.map(row => row.file)).size, textbookRows.length, 'duplicate textbook registration');
+  for (const row of textbookRows) assert.ok(fs.existsSync(path.join(examsDir, row.file)), `registered textbook source missing: ${row.file}`);
   for (const row of textbookRows) assert.ok(manifest.folders[folderOf(row.file)], row.file);
 });
 
