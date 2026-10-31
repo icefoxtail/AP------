@@ -17,7 +17,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 발문 그림: 학생이 문제를 읽을 때 봐야 하는 주어진 조건만 그린다. 구하는 값, 풀이로 얻는 점, 정답을 암시하는 표시는 넣지 않는다. 엔진은 이를 강제하지 않으므로 작성자가 지킨다.
 - 해설 그림: 풀이의 결정적 관계를 보여 준다. 접점, 교점, 꼭짓점, 대칭점, 수선의 발, 구간에서의 최대·최소, 부등식의 해집합 등.
 - 풀이가 순수 계산(전개, 인수분해, 방정식 풀이)이고 공간이나 그래프 관계가 없으면 그림을 만들지 않고 `{"status":"EXEMPT","reason":"한 문장"}`을 쓴다.
-- 엔진이 못 그리는 것(삼차 이상 그래프와 직선 조합 같은 것)은 `{"status":"UNSUPPORTED","reason":"필요한 것"}`을 쓴다. 비슷하게 억지로 그리지 않는다. 세로선은 이제 그린다: 그래프 위 `graphPlan.overlays`의 `lines`에 `{"id":"k","x":"2"}`를 쓴다(3-14). 원기둥 안에 구를 위아래로 둘 이상 쌓는 것도 그린다: 입체(`solid-figure-v1`)의 E28c 기능이며 `inside`로 원기둥 안에 놓는다(아래 3-입체). 그래프의 색칠 영역은 아래 3-6-영역의 `graphPlan.regions`로, 중학교 평면도형의 색칠은 3-9의 `planeMarks.regions`로 그린다.
+- 엔진이 못 그리는 것(사차 초과 그래프, 닫힌 형 근이 없는 삼차 같은 것; 유리수 계수 삼차·사차와 직선·이차의 조합은 3-6-영역)은 `{"status":"UNSUPPORTED","reason":"필요한 것"}`을 쓴다. 비슷하게 억지로 그리지 않는다. 세로선은 이제 그린다: 그래프 위 `graphPlan.overlays`의 `lines`에 `{"id":"k","x":"2"}`를 쓴다(3-14). 원기둥 안에 구를 위아래로 둘 이상 쌓는 것도 그린다: 입체(`solid-figure-v1`)의 E28c 기능이며 `inside`로 원기둥 안에 놓는다(아래 3-입체). 그래프의 색칠 영역은 아래 3-6-영역의 `graphPlan.regions`로, 중학교 평면도형의 색칠은 3-9의 `planeMarks.regions`로 그린다.
 - 발문 그림과 해설 그림은 별개의 plan이다. 각각 따로 쓴다.
 
 ## 3. 어떤 plan을 쓰는가
@@ -130,7 +130,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - `PIECEWISE_POLY_SLANTED_LINE_LABELS_UNSUPPORTED`: 기울어진 직선에는 `labelIntersections`를 쓸 수 없다(위 `requiredPoints` 방법).
 - `PIECEWISE_POLY_REFERENCE_LINE_INVALID`: `y`와 `slope/intercept` 중 하나만, 필드 이름이 맞는지 확인한다.
 - `PIECEWISE_POLY_REFERENCE_LINE_CONTAINS_A_PIECE`: 직선이 조각 하나와 완전히 겹친다(교점이 무한개). 그릴 수 없다.
-- 수직선, 조각 5개 이상(`PIECEWISE_POLY_PIECE_COUNT_INVALID`), 삼차 이상 조각, 끊어지는 함수는 지원하지 않는다. UNSUPPORTED. 둘째 함수(f와 g, g도 구간별)가 필요하면 3-6절의 `referenceCurves`를 쓴다.
+- 수직선, 조각 5개 이상(`PIECEWISE_POLY_PIECE_COUNT_INVALID`), 사차 초과 조각, 끊어지는 함수는 지원하지 않는다(삼차·사차 조각은 3-6-영역의 G5 항목). UNSUPPORTED. 둘째 함수(f와 g, g도 구간별)가 필요하면 3-6절의 `referenceCurves`를 쓴다.
 
 ### 3-4. 무리수 계수: `p+q√r` (접하는 조건의 매개변수, 무리수 기울기·절편·교점)
 
@@ -227,6 +227,8 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - `fill`은 `LIGHT`(기본) 또는 `MEDIUM`(평면도형 영역과 같은 연한 회색). `label`은 영역 안에 놓이는 짧은 수식(40자 이내, 예: `S_1`, `S_2`)이다.
 - 경계는 그 곡선을 그리는 바로 그 식으로 표본화하므로 색칠 테두리가 곡선 획과 어긋나지 않는다. 엔진은 모든 획 아래에 even-odd path 하나로 칠하고, 독립 관측기는 plan에서 두 경계를 다시 계산해 9개 표본 x에서 채움 경계·안/밖·x 범위·색·획 아래 순서·라벨 내부·영역 겹침을 확인한다.
 
+삼차와 접선 사이 넓이(영역 이름 `S`, 넓이 값은 문제가 준 값만 쓰고 답은 쓰지 않는다): `{"capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["1","0","0","1"]}],"breakpoints":[],"sourceDomain":{"kind":"ALL_REALS"},"formula":"x^3+1","functionName":"f","referenceLines":[{"id":"g","slope":"3","intercept":"-1","intersectionX":["-2","1"]}],"requiredPoints":[],"axisTickValues":{"x":[],"y":[]},"regions":[{"id":"S","upper":"f","lower":"g","from":"-2","to":"1","label":"S"}]},"caption":"..."}`. 삼차와 이차를 함께 그릴 때는 `referenceCurves:[{"id":"g","name":"g","coefficients":["-3","-2","-1"],"intersectionX":["-1","3"]}]`처럼 이차는 기존 `coefficients`, 삼차 이상의 둘째 곡선은 `pieces:[{"coefficients":[...]}]`로 쓴다.
+
 ```json
 {"capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial",
  "pieces":[{"coefficients":["0","0","1"]}],"breakpoints":[],
@@ -237,6 +239,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 ```
 
 - 교점 x를 직접 쓰지 않아도 된다. 교점이 `2±sqrt(2)` 같은 무리수면 `intersectionX`에 쓴 것과 같은 문자열을 `from`·`to`에 그대로 쓴다. 두 경계가 그 x에서 실제로 만나는지, 경계가 구간 전체에 정의되는지는 엔진이 정확히 확인한다.
+- **삼차·사차 조각(G5)**: `pieces`와 `referenceCurves`의 `pieces`에서 한 조각의 `coefficients`는 **최대 5개**(상수항부터 x⁴ 계수)까지 쓸 수 있다. 차수가 2를 넘는 조각의 계수는 **유리수 문자열**이어야 하고(근호가 있으면 `PIECEWISE_POLY_HIGH_DEGREE_IRRATIONAL_UNSUPPORTED`), 6개 이상이면 `PIECEWISE_POLY_PIECE_INVALID`다. 엔진은 교점·경계 교차 x를 SymPy로 **유리수 위에서 인수분해해** 1·2차 인수의 근으로 정확히 구한다(예: `x^3-3x-2=(x+1)^2(x-2)`의 근 `-1`, `2`). 1·2차로 풀리지 않는 기약 인수가 남으면 닫힌 형이 없어 `PIECEWISE_POLY_ROOT_NOT_CLOSED_FORM`으로 거절한다. 극점은 조각 안쪽에서 도함수가 0이고 **0이 아닌 첫 고계 도함수의 차수가 짝수**인 점(극대·극소)이며, 변곡점은 극값이 아니다. 극점은 이차 꼭짓점과 같이 `requiredPoints`에 적어야 한다(`PIECEWISE_POLY_EXTREMUM_NOT_IN_REQUIRED_POINTS`). 독립 관측기는 plan에서 곡선·교점·극점·영역 경계를 SymPy `real_roots`로 따로 계산해 최종 SVG와 대조한다. 삼차 이상의 `coefficients`(이차 전용 형식)는 쓸 수 없고 `pieces`로 쓴다.
 - 오류 코드: `GRAPH_REGION_COUNT_INVALID`(4개 초과), `GRAPH_REGION_FIELD_UNKNOWN`/`GRAPH_REGION_FIELD_INVALID`(모르는 필드·형식), `GRAPH_REGION_ID_INVALID`/`GRAPH_REGION_ID_DUPLICATE`, `GRAPH_REGION_BOUNDARY_UNKNOWN`(없는 곡선·직선 id), `GRAPH_REGION_BOUNDARY_UNDEFINED`(그 경계가 구간 전체에 정의되지 않음), `GRAPH_REGION_DOMAIN_INVALID`(`from`≥`to`, 그린 범위 밖), `GRAPH_REGION_BOUNDARIES_CROSS`(안에서 교차·폭 0 → 영역을 나눈다), `GRAPH_REGION_EMPTY`, `GRAPH_REGION_FILL_UNSUPPORTED`, `GRAPH_REGION_LABEL_INVALID`. `regions`는 `piecewise-polynomial-spike-v1`에서만 쓴다(다른 family에 넣으면 `GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL`). 관측기 코드는 `GRAPH_REGION_BOUNDARY_MISMATCH`, `GRAPH_REGION_OUTSIDE_INTERVAL`, `GRAPH_REGION_INTERIOR_MISSING`, `GRAPH_REGION_FILL_MISMATCH`, `GRAPH_REGION_NOT_BENEATH_STROKES`, `GRAPH_REGION_LABEL_OUTSIDE`, `GRAPH_REGION_OVERLAP` 등이다.
 
 ### 3-7. 사인·코사인을 구간(여러 주기)에서 직선과 함께: `INTERVAL_PI`, `referenceLines`
