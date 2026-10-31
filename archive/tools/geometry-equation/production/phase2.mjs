@@ -320,7 +320,7 @@ function addGraphOverlays(plan,spec){
     // coordinates:true: the dot carries no separate name; a named point is written A(-6,-3), an unnamed one (-6,-3).
     objects.push({id:point.id,kind:'POINT',at:[point.x,point.y],name:null,priority:0});
     objects.push(names.has(point.id)&&!point.unnamed
-      ?{id:point.id+'-coordinates',kind:'EQUATION_LABEL',target:point.id,text:names.expr(point.id)+'('+point.coordinates.join(',')+')',at:[point.x,point.y],priority:0,...(point.labelDirection?{directions:directionsFrom(point.labelDirection)}:{})}
+      ?{id:point.id+'-coordinates',kind:'EQUATION_LABEL',target:point.id,text:names.expr(point.id)+'('+point.coordinates.join(',')+')',at:[point.x,point.y],priority:0,ringLeader:true,...(point.labelDirection?{directions:directionsFrom(point.labelDirection)}:{})}
       :{id:point.id+'-coordinates',kind:'COORDINATE_LABEL',target:point.id,exact:point.coordinates,priority:0,...(point.unnamed?{ringLeader:true}:{}),...(point.labelDirection?{preferred:point.labelDirection}:{})});
   }
   // circles (G6): a circle drawn at the plot's single scale (the observer refuses an ellipse).

@@ -147,4 +147,21 @@ class CoordinateBandHide(unittest.TestCase):
         report=audit(plan,moved,model['transform']);self.assertEqual(report['status'],'FAIL');self.assertIn('PIECEWISE_POLY_KEY_POINT_DOT_MISSING:V',report['errors'])
 
 
+class NamedCoordinatesLeader(unittest.TestCase):
+    """25 금당고 q20: the wide coordinate labels P(1/3,1/3) and Q(3,-1/3) leave the crowded points on a leader (the final composed figure is the fixture)."""
+    FIXTURES=Path(__file__).resolve().parent/'g6c-fixtures'
+    def setUp(self):
+        import json
+        self.graph=fitted(json.loads((self.FIXTURES/'kd25-q20-plan.json').read_text(encoding='utf8'))['graphPlan'])
+        self.svg=(self.FIXTURES/'kd25-q20-figure.svg').read_text(encoding='utf8');self.transform=produce(self.graph)['transform']
+    def test_the_final_figure_passes_and_has_its_leader(self):
+        self.assertIn('id="P-coordinates-owner-leader"',self.svg);self.assertEqual(audit(self.graph,self.svg,self.transform)['status'],'PASS')
+    def test_a_leader_that_does_not_reach_its_label_fails(self):
+        bad=self.svg.replace('x2="265.703020143" y2="69.590746986"','x2="300" y2="20"');self.assertNotEqual(bad,self.svg)
+        self.assertIn('OVERLAY_COORDINATES_LEADER_NOT_ON_LABEL:P',audit(self.graph,bad,self.transform)['errors'])
+    def test_a_leader_owned_by_another_point_fails(self):
+        bad=self.svg.replace('data-owner-label="P-coordinates" data-owner="P"','data-owner-label="P-coordinates" data-owner="Q"');self.assertNotEqual(bad,self.svg)
+        self.assertIn('OVERLAY_COORDINATES_LEADER_NOT_ON_OWNER:P',audit(self.graph,bad,self.transform)['errors'])
+
+
 if __name__=='__main__':unittest.main()
