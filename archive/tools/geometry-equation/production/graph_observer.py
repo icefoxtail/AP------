@@ -2601,6 +2601,19 @@ def _ov_curve_value(plan,value,curve_id=None):
             if (left is None or left<=value) and (right is None or value<=right):
                 return sum((coefficient*value**i for i,coefficient in enumerate(coefficients)),S.Integer(0))
         raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+    if family=='piecewise-discontinuous':
+        # SHARED (G7c): curve_id is f's name (or None) or g's id; the exact pieces (and a declared isolated value) decide the y.
+        body=plan
+        if curve_id is not None and curve_id!=plan.get('functionName','f'):
+            shared=plan.get('sharedCurve')
+            if not isinstance(shared,dict) or shared.get('id')!=curve_id:raise ValueError('OVERLAY_POINT_CURVE_UNKNOWN')
+            body=shared
+        pieces=_pd_pieces(body)
+        for piece in pieces:
+            if _pd_defines(piece,value):return _pd_value(piece,value)
+        for at,declared in _pd_jumps(body,pieces):
+            if _pp_same(at,value):return declared
+        raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
     if family=='exp-log-pair':
         rows=plan.get('curves') or []
         row=next((item for item in rows if item.get('id')==curve_id),None)
@@ -2872,9 +2885,10 @@ def _ov_expected(plan):
         ident=entry.get('id')
         if not isinstance(ident,str) or ident in points:raise ValueError('OVERLAY_POINT_INVALID')
         if 'curveX' in entry:
-            x=_ov_reader(entry.get('curveX'));lo,hi=plan.get('domain',[None,None])
+            pair_family=plan.get('family')=='piecewise-discontinuous'
+            x=_ov_reader(entry.get('curveX'));lo,hi=[None,None] if pair_family else plan.get('domain',[None,None])
             if lo is not None and not lo<=float(S.N(x,30))<=hi:raise ValueError('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN')
-            y=_ov_curve_value(plan,x,entry.get('curve'))
+            y=_ov_curve_value(plan,x,entry.get('on') if pair_family else entry.get('curve'))
         elif 'intersect' in entry:
             pair=entry.get('intersect')
             if not isinstance(pair,list) or len(pair)!=2:raise ValueError('OVERLAY_POINT_INVALID')
@@ -3924,6 +3938,45 @@ def _pd_shared_errors(plan,shared,svg):
     if len(frozen.get('coincidentMarkers',[]))!=found:errors.append('PAIR_SHARED_COINCIDENT_INVENTORY_MISMATCH')
     return errors
 
+PD_NAME_LEADER_ON_CURVE_PX=1.0
+PD_NAME_LEADER_AMBIGUOUS_PX=3.0
+
+def _pd_curve_y(pieces,value):
+    for piece in pieces:
+        if _pd_defines(piece,value):return float(S.N(_pd_value(piece,value),30))
+    return None
+
+def _pd_name_label_errors(plan,shared,svg,transform):
+    """G7c sharedCurve.nameLabel LEADER, read from the final SVG with the observer's own exact pieces: the leader starts ON g (at anchorX when declared),
+    clearly farther from f than from g (never at a crossing), and ends on the label box of the name."""
+    raw=shared.get('nameLabel')
+    if raw is None or 'data-label-kind' not in svg:return []
+    if not isinstance(raw,dict) or raw.get('placement')!='LEADER':return ['CURVE_NAME_LABEL_INVALID']
+    try:
+        ox,oy,sx,sy=[transform[key] for key in ('originX','originY','sx','sy')]
+        root=ET.fromstring(svg)
+        leader=next((node for node in root.iter() if node.tag.split('}')[-1]=='line' and node.get('data-role')=='leader' and node.get('data-owner-label')=='g-curve-name'),None)
+        groups={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id')}
+        box=_region_label_box(groups,'g-curve-name')
+        if leader is None or box is None:return ['CURVE_NAME_LEADER_MISSING']
+        start=(float(leader.get('x1')),float(leader.get('y1')));end=(float(leader.get('x2')),float(leader.get('y2')))
+        data_x=(start[0]-ox)/sx;data_y=(oy-start[1])/sy
+        g_pieces=_pd_pieces(shared);expected=_pd_curve_y(g_pieces,S.Float(data_x,40))
+        errors=[]
+        if expected is None or abs(expected-data_y)*sy>PD_NAME_LEADER_ON_CURVE_PX:errors.append('CURVE_NAME_LEADER_NOT_ON_OWNER')
+        if 'anchorX' in raw and abs(data_x-float(S.N(_pp_coeff(str(raw['anchorX'])),30)))*sx>PD_NAME_LEADER_ON_CURVE_PX:errors.append('CURVE_NAME_LEADER_NOT_ON_OWNER')
+        f_pieces=_pd_pieces({key:value for key,value in plan.items() if key not in ('sharedCurve','sharedFeatures','overlays')})
+        low,high=plan['viewport'][0],plan['viewport'][1];nearest=math.inf
+        for step in range(401):
+            at=S.Float(low+(high-low)*step/400,40);y_f=_pd_curve_y(f_pieces,at)
+            if y_f is not None:nearest=min(nearest,math.hypot((float(at)-data_x)*sx,(y_f-data_y)*sy))
+        if nearest<PD_NAME_LEADER_AMBIGUOUS_PX:errors.append('CURVE_NAME_LEADER_AMBIGUOUS_OWNER')
+        edges=[((box[0],box[1]),(box[0]+box[2],box[1])),((box[0]+box[2],box[1]),(box[0]+box[2],box[1]+box[3])),((box[0]+box[2],box[1]+box[3]),(box[0],box[1]+box[3])),((box[0],box[1]+box[3]),(box[0],box[1]))]
+        if min(_ov_point_segment_distance(end,a,b) for a,b in edges)>OV_LEADER_TOLERANCE_PX:errors.append('CURVE_NAME_LEADER_NOT_ON_LABEL')
+        return errors
+    except (TypeError,ValueError,KeyError,ET.ParseError):
+        return ['CURVE_NAME_LEADER_UNREADABLE']
+
 def piecewise_discontinuous_audit(plan,svg,transform):
     shared=plan.get('sharedCurve')
     if shared is None:return _pd_audit_curve(plan,svg,transform)
@@ -3933,6 +3986,7 @@ def piecewise_discontinuous_audit(plan,svg,transform):
     errors=[*first.get('errors',[]),*second.get('errors',[])]
     try:extra=_pd_shared_errors(plan,shared,svg)
     except (ET.ParseError,KeyError,TypeError,ValueError):extra=['PAIR_SHARED_SOURCE_INVALID']
+    extra=[*extra,*_pd_name_label_errors(plan,shared,svg,transform)]
     errors+=extra
     statuses={first.get('status'),second.get('status')}
     status='UNSUPPORTED' if 'UNSUPPORTED' in statuses else 'FAIL' if ('FAIL' in statuses or extra) else 'PASS'

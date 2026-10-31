@@ -2126,7 +2126,7 @@ def fit_piecewise_polynomial(plan):
 # ---- piecewise discontinuous: one to six polynomial pieces (degree <= 2) on their own intervals, each end OPEN or CLOSED ----------
 # Unlike piecewise-polynomial-spike-v1 the pieces need not meet: a junction may jump, the function value there is declared either by a
 # CLOSED end or by jumpValues, and a jumpValue may also stand alone as an isolated point. A staircase is written as a step block.
-PIECEWISE_DISCONTINUOUS_FIELDS={'family','pieces','step','jumpValues','referenceLines','requiredPoints','exactCoordinates','axisTickValues','functionName','domain','viewport','plotHeightLimit','axisTitles','limitArrows','xWindow','sharedCurve','sharedFeatures'}
+PIECEWISE_DISCONTINUOUS_FIELDS={'family','pieces','step','jumpValues','referenceLines','requiredPoints','exactCoordinates','axisTickValues','functionName','domain','viewport','plotHeightLimit','axisTitles','limitArrows','xWindow','sharedCurve','sharedFeatures','overlays','overlayAnchors'}
 PIECEWISE_DISCONTINUOUS_OVERVIEW_POLICY='PIECEWISE_DISCONTINUOUS_OVERVIEW_v1'
 PIECEWISE_DISCONTINUOUS_MAX_PIECES=8   # a two-function solution figure restores a graph with its mirror image: 8 pieces
 PIECEWISE_DISCONTINUOUS_MAX_STEPS=6
@@ -2346,9 +2346,27 @@ def piecewise_discontinuous_crossings(pieces,level,jump_values):
         if pp_same(y_value,level) and not any(pp_same(x_value,other) for other in found):found.append(x_value)
     return sorted(found,key=lambda value:float(value))
 
-PIECEWISE_SHARED_CURVE_FIELDS={'id','name','style','pieces','step','jumpValues','limitArrows'}
+PIECEWISE_SHARED_CURVE_FIELDS={'id','name','style','pieces','step','jumpValues','limitArrows','nameLabel'}
+PIECEWISE_NAME_LABEL_FIELDS={'text','placement','anchorX'}
 PIECEWISE_SHARED_STYLES=('DASHED','ACCENT')
 PIECEWISE_SHARED_MIN_DOT_GAP_PX=4.0
+
+def _pd_name_label(plan,shared):
+    """sharedCurve.nameLabel {text?,placement:'LEADER',anchorX?} (G7c): g's name tied to the curve by a leader that starts ON g at anchorX (an exact value;
+    without it the engine takes the middle of g's longest drawn piece) and ends on the label box. Returns the validated frozen row, or None when absent."""
+    raw=shared.get('nameLabel')
+    if raw is None:return None
+    if not isinstance(raw,dict) or set(raw)-PIECEWISE_NAME_LABEL_FIELDS or raw.get('placement')!='LEADER':raise ValueError('CURVE_NAME_LABEL_INVALID')
+    row={'placement':'LEADER'}
+    if 'text' in raw:
+        if not isinstance(raw['text'],str) or not raw['text'].strip():raise ValueError('CURVE_NAME_LABEL_INVALID')
+        row['text']=raw['text']
+    if 'anchorX' in raw:
+        anchor=pp_exact_value(str(raw['anchorX']))
+        pieces=piecewise_discontinuous_pieces(shared)
+        if not any(pd_defines_at(piece,anchor) for piece in pieces):raise ValueError('CURVE_NAME_LEADER_ANCHOR_OFF_CURVE')
+        row['anchorX']=str(raw['anchorX'])
+    return row
 
 def fit_piecewise_discontinuous_shared(plan):
     """Two discontinuous functions on ONE pair of axes (layout SHARED). graphPlan is f's own plan and graphPlan.sharedCurve is g (pieces or step,
@@ -2360,12 +2378,13 @@ def fit_piecewise_discontinuous_shared(plan):
     if shared.get('style') not in PIECEWISE_SHARED_STYLES:raise ValueError('PAIR_SHARED_CURVES_INDISTINCT')
     if plan.get('referenceLines'):raise ValueError('PAIR_SHARED_REFERENCE_LINES_UNSUPPORTED')
     if plan.get('functionName')==shared['id']:raise ValueError('PAIR_SHARED_CURVE_INVALID')
-    own={key:value for key,value in plan.items() if key not in ('sharedCurve','sharedFeatures')}
+    own={key:value for key,value in plan.items() if key not in ('sharedCurve','sharedFeatures','overlays','overlayAnchors')}
+    name_label=_pd_name_label(plan,shared)
     second={'family':plan['family'],'requiredPoints':[],'axisTickValues':{'x':[],'y':[]},'functionName':shared['id'],**{key:value for key,value in shared.items() if key in ('pieces','step','jumpValues','limitArrows')}}
     for key in ('xWindow','plotHeightLimit','axisTitles'):
         if key in plan:second[key]=plan[key]
     first_probe=fit_piecewise_discontinuous(own,probe=True);second_probe=fit_piecewise_discontinuous(second,probe=True)
-    points=first_probe['points']+second_probe['points'];ends=first_probe['ends']+second_probe['ends']
+    points=first_probe['points']+second_probe['points']+[(float(x_value),float(y_value)) for x_value,y_value in plan.get('overlayAnchors',[])];ends=first_probe['ends']+second_probe['ends']
     limit=plot_height_limit(plan)
     for ratio in axis_ratios(plan,points,limit):
         if (first_probe['hasArc'] or second_probe['hasArc']) and ratio!=1.0:raise ValueError('PIECEWISE_ARC_REQUIRES_EQUAL_UNITS')
@@ -2387,6 +2406,8 @@ def fit_piecewise_discontinuous_shared(plan):
             elif gap<PIECEWISE_SHARED_MIN_DOT_GAP_PX:raise ValueError('PIECEWISE_DISCONTINUOUS_FEATURES_BELOW_RESOLUTION')
     other={**other,'id':shared['id'],'style':shared['style']}
     if 'name' in shared:other['name']=shared['name']
+    if name_label is not None:other['nameLabel']=name_label
+    if 'overlays' in plan:first['overlays']=plan['overlays']
     first['sharedCurve']=other;first['sharedFeatures']={'schemaVersion':'PIECEWISE_SHARED_FEATURES_v1','coincidentMarkers':coincident}
     return {'graphPlan':first,'policy':PIECEWISE_DISCONTINUOUS_OVERVIEW_POLICY,'sourceDomainPreserved':False,'displayOnly':True,'features':first['piecewiseDiscontinuousFeatures'],'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
 
@@ -2894,6 +2915,7 @@ def _overlay_curve_exact(plan,x_value,curve_id=None):
                 if (left is None or left<=x_value) and (right is None or x_value<=right):
                     return sum((_overlay_exact(coefficient,'curve')*x_value**power for power,coefficient in enumerate(piece.get('coefficients') or [])),S.Integer(0))
             _overlay_fail('OVERLAY_POINT_NOT_ON_CURVE',str(x_value))
+        if family=='piecewise-discontinuous':return _overlay_pd_value(plan,x_value,curve_id)
         if family=='exp-log-pair':
             rows=plan.get('curves') or []
             row=next((item for item in rows if item.get('id')==curve_id),None)
@@ -2909,6 +2931,24 @@ def _overlay_curve_exact(plan,x_value,curve_id=None):
     except (KeyError,IndexError,TypeError):
         _overlay_fail('OVERLAY_CURVE_UNSUPPORTED',family)
     _overlay_fail('OVERLAY_CURVE_UNSUPPORTED',family)
+
+def _overlay_pd_value(plan,x_value,curve_id):
+    """piecewise-discontinuous (SHARED, G7c): the exact y of f (curve_id None or f's name) or of the shared curve g, from the exact pieces; a declared
+    isolated value (jumpValues) counts where no piece is defined."""
+    body=plan
+    if curve_id is not None and curve_id!=plan.get('functionName','f'):
+        shared=plan.get('sharedCurve')
+        if not isinstance(shared,dict) or shared.get('id')!=curve_id:_overlay_fail('OVERLAY_POINT_CURVE_UNKNOWN',str(curve_id))
+        body=shared
+    try:
+        pieces=piecewise_discontinuous_pieces(body)
+        for piece in pieces:
+            if pd_defines_at(piece,x_value):return pd_piece_value(piece,x_value)
+        for at_value,value in piecewise_discontinuous_values(body,pieces):
+            if pp_same(at_value,x_value):return value
+    except ValueError as error:
+        if str(error).startswith('OVERLAY_'):raise
+    _overlay_fail('OVERLAY_POINT_NOT_ON_CURVE',str(x_value))
 
 def _overlay_number(value):
     return float(S.N(value,30))
@@ -3207,20 +3247,28 @@ def _overlay_features(plan):
     required_ids={point.get('id') for point in plan.get('requiredPoints',[]) if isinstance(point,dict)}
     for entry in raw.get('points',[]):
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_POINT_INVALID','point')
-        if set(entry)-{'id','curveX','curve','x','y','axis','value','intersect','coordinates','labelDirection','unnamed','pick','onCircle'}:_overlay_fail('OVERLAY_POINT_INVALID',entry.get('id'))
+        if set(entry)-{'id','curveX','curve','on','x','y','axis','value','intersect','coordinates','labelDirection','unnamed','pick','onCircle'}:_overlay_fail('OVERLAY_POINT_INVALID',entry.get('id'))
         ident=_overlay_id(entry.get('id'),'point')
         if ident in required_ids:_overlay_fail('OVERLAY_POINT_ID_CONFLICT',ident)
         claim('point:'+ident)
         forms=sum(1 for key in ('curveX','intersect','axis','x') if key in entry)
-        if forms!=1 or ('curve' in entry and 'curveX' not in entry) or ('value' in entry)!=(entry.get('axis') is not None):_overlay_fail('OVERLAY_POINT_INVALID',ident)
+        if forms!=1 or ('curve' in entry and 'curveX' not in entry) or ('on' in entry and 'curveX' not in entry) or ('value' in entry)!=(entry.get('axis') is not None):_overlay_fail('OVERLAY_POINT_INVALID',ident)
         if 'curveX' in entry:
             x=_overlay_exact(entry['curveX'],ident)
-            curve_id=entry.get('curve')
-            if plan.get('family')=='exp-log-pair' and curve_id is None:_overlay_fail('OVERLAY_CURVE_REQUIRED',ident)
-            if plan.get('family')!='exp-log-pair' and curve_id is not None:_overlay_fail('OVERLAY_CURVE_UNKNOWN',ident)
-            lo,hi=plan['domain']
-            if not lo<=float(S.N(x,30))<=hi:_overlay_fail('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN',ident)
-            y=_overlay_curve_exact(plan,x,curve_id)
+            if plan.get('family')=='piecewise-discontinuous':
+                # SHARED (G7c): `on` names the curve (f's name or g's id; absent = f); the exact pieces decide whether the point exists there.
+                if 'curve' in entry:_overlay_fail('OVERLAY_CURVE_UNKNOWN',ident)
+                curve_id=entry.get('on')
+                if curve_id is not None and curve_id!=plan.get('functionName','f') and not (isinstance(plan.get('sharedCurve'),dict) and plan['sharedCurve'].get('id')==curve_id):_overlay_fail('OVERLAY_POINT_CURVE_UNKNOWN',ident)
+                y=_overlay_curve_exact(plan,x,curve_id)
+            else:
+                if 'on' in entry:_overlay_fail('OVERLAY_POINT_CURVE_UNKNOWN',ident)
+                curve_id=entry.get('curve')
+                if plan.get('family')=='exp-log-pair' and curve_id is None:_overlay_fail('OVERLAY_CURVE_REQUIRED',ident)
+                if plan.get('family')!='exp-log-pair' and curve_id is not None:_overlay_fail('OVERLAY_CURVE_UNKNOWN',ident)
+                lo,hi=plan['domain']
+                if not lo<=float(S.N(x,30))<=hi:_overlay_fail('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN',ident)
+                y=_overlay_curve_exact(plan,x,curve_id)
         elif 'intersect' in entry:
             pair=entry['intersect']
             if not isinstance(pair,list) or len(pair)!=2 or len(set(pair))!=2:_overlay_fail('OVERLAY_POINT_INVALID',ident)
@@ -3363,7 +3411,7 @@ def _overlay_anchor_points(plan):
         try:
             on_curve=False
             if 'curveX' in entry:
-                x=_overlay_exact(entry['curveX'],'point');y=_overlay_curve_exact(plan,x,entry.get('curve'));on_curve=True
+                x=_overlay_exact(entry['curveX'],'point');y=_overlay_curve_exact(plan,x,entry.get('on') if plan.get('family')=='piecewise-discontinuous' else entry.get('curve'));on_curve=True
             elif 'intersect' in entry:
                 pair=entry['intersect'];first=lines.get(pair[0]);second=lines.get(pair[1])
                 if (first is None and pair[0] in circle_exact) or (second is None and pair[1] in circle_exact):continue
