@@ -2442,7 +2442,7 @@ def fit_piecewise_discontinuous(plan):
 # segments to the axes, simple polygons and extra named points on the curve. Every coordinate is recomputed here exactly; the plan names
 # the points and the elements, never raw derived coordinates. The fitted plan carries overlaysFeatures (numeric, for the model/spec) and
 # the independent graph observer recomputes the same values from the raw overlays field and reads the FINAL SVG back.
-OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4,'quadrants':4}
+OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4,'quadrants':4,'circles':2}
 # overlays.names: a plain Korean name (토끼, 거북이, 직선 l) written beside one overlay segment, overlay line or the drawn curve at curveX.
 OVERLAY_NAME_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,10}'
 OVERLAY_LATTICE_REGIONS=('BELOW_CURVE','ABOVE_CURVE')
@@ -2451,6 +2451,47 @@ OVERLAY_LATTICE_MAX_POINTS=40
 OVERLAY_LATTICE_MAX_COLUMNS=12
 OVERLAY_POLYGON_LABEL_KINDS=('MATH','TEXT')
 OVERLAY_POLYGON_MATH_LABEL_PATTERN=r'[0-9A-Za-z=+\-*/().\^ ]{1,40}'
+
+# overlays.circles (G6): [{id,center:[x,y],radiusSquared}] draws a circle on a graph at the plot's single scale (a plan without equal units is refused). A point may lie on it
+# (points[].onCircle, verified exactly) or be the intersection of an overlay line with it (points[].intersect:[lineId,circleId] with pick MIN_X|MAX_X, or MIN_Y|MAX_Y for a vertical line).
+def _overlay_circle_rows(raw):
+    rows=[];exact={}
+    for entry in raw.get('circles',[]) or []:
+        if not isinstance(entry,dict) or set(entry)-{'id','center','radiusSquared'}:_overlay_fail('OVERLAY_CIRCLE_INVALID',entry.get('id') if isinstance(entry,dict) else 'circle')
+        ident=_overlay_id(entry.get('id'),'circle')
+        center=entry.get('center')
+        if not isinstance(center,list) or len(center)!=2 or ident in exact:_overlay_fail('OVERLAY_CIRCLE_INVALID',ident)
+        cx=_overlay_exact(center[0],ident);cy=_overlay_exact(center[1],ident);r2=_overlay_exact(entry.get('radiusSquared'),ident)
+        if not r2>0:_overlay_fail('OVERLAY_CIRCLE_INVALID',ident)
+        radius=S.radsimp(S.sqrt(r2))
+        exact[ident]=(cx,cy,r2)
+        rows.append({'id':ident,'cx':_overlay_number(cx),'cy':_overlay_number(cy),'r':_overlay_number(radius),'center':[pp_surd_text(cx),pp_surd_text(cy)],'radiusSquared':pp_surd_text(r2)})
+    return rows,exact
+
+def _overlay_on_circle(circle,x,y):
+    cx,cy,r2=circle
+    return S.simplify(S.expand((x-cx)**2+(y-cy)**2-r2))==0
+
+def _overlay_line_circle_point(line,circle,pick,ident):
+    """Exact intersection of an overlay line with an overlay circle: the root the author's pick names (MIN_X/MAX_X, MIN_Y/MAX_Y); a tangent line has one root."""
+    cx,cy,r2=circle
+    if line['kind']=='VERTICAL':
+        x0=pp_exact_value(line['x']);disc=r2-(x0-cx)**2
+    else:
+        m=pp_exact_value(line['slope']);q=pp_exact_value(line['intercept'])
+        a=1+m**2;b=2*(m*(q-cy)-cx);c=cx**2+(q-cy)**2-r2;disc=S.expand(b**2-4*a*c)
+    if float(S.N(disc,30))<-1e-12:_overlay_fail('OVERLAY_CIRCLE_LINE_NO_INTERSECTION',ident)
+    s=S.sqrt(disc)
+    if line['kind']=='VERTICAL':pts=[(x0,cy+s),(x0,cy-s)]
+    else:pts=[(xr,m*xr+q) for xr in ((-b+s)/(2*a),(-b-s)/(2*a))]
+    pts=[(S.radsimp(S.simplify(px)),S.radsimp(S.simplify(py))) for px,py in pts]
+    if abs(float(S.N(disc,30)))<1e-12:pts=pts[:1]
+    if pick is None:
+        if len(pts)!=1:_overlay_fail('OVERLAY_CIRCLE_PICK_REQUIRED',ident)
+        return pts[0]
+    if pick not in ('MIN_X','MAX_X','MIN_Y','MAX_Y') or (line['kind']=='VERTICAL')!=(pick in ('MIN_Y','MAX_Y')):_overlay_fail('OVERLAY_CIRCLE_PICK_INVALID',ident)
+    index=0 if pick.endswith('X') else 1
+    return (min if pick.startswith('MIN') else max)(pts,key=lambda point:float(S.N(point[index],30)))
 
 def _overlay_fail(code,ident=None):
     raise ValueError(code if ident is None else code+':'+str(ident))
@@ -2846,11 +2887,14 @@ def _overlay_features(plan):
             line['lineAt']=entry['labelAt']
         lines.append(line)
     by_line={line['id']:line for line in lines}
+    circle_rows,circle_exact=_overlay_circle_rows(raw)
+    if circle_rows and (plan.get('equalUnits') is not True or plan.get('axisRatio',1)!=1):_overlay_fail('OVERLAY_CIRCLE_REQUIRES_EQUAL_UNITS',circle_rows[0]['id'])
+    for row in circle_rows:claim('circle:'+row['id'])
     points=[];by_point={};exact_by_point={}
     required_ids={point.get('id') for point in plan.get('requiredPoints',[]) if isinstance(point,dict)}
     for entry in raw.get('points',[]):
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_POINT_INVALID','point')
-        if set(entry)-{'id','curveX','curve','x','y','axis','value','intersect','coordinates','labelDirection','unnamed'}:_overlay_fail('OVERLAY_POINT_INVALID',entry.get('id'))
+        if set(entry)-{'id','curveX','curve','x','y','axis','value','intersect','coordinates','labelDirection','unnamed','pick','onCircle'}:_overlay_fail('OVERLAY_POINT_INVALID',entry.get('id'))
         ident=_overlay_id(entry.get('id'),'point')
         if ident in required_ids:_overlay_fail('OVERLAY_POINT_ID_CONFLICT',ident)
         claim('point:'+ident)
@@ -2868,9 +2912,15 @@ def _overlay_features(plan):
             pair=entry['intersect']
             if not isinstance(pair,list) or len(pair)!=2 or len(set(pair))!=2:_overlay_fail('OVERLAY_POINT_INVALID',ident)
             first=by_line.get(pair[0]);second=by_line.get(pair[1])
-            if first is None or second is None:_overlay_fail('OVERLAY_POINT_UNKNOWN',ident)
-            if first['kind']=='VERTICAL' and second['kind']=='VERTICAL':_overlay_fail('OVERLAY_LINE_PARALLEL',ident)
-            if first['kind']=='VERTICAL':x=pp_exact_value(first['x']);y=pp_exact_value(second['slope'])*x+pp_exact_value(second['intercept'])
+            if (first is None and pair[0] in circle_exact) or (second is None and pair[1] in circle_exact):
+                # line x circle (G6): the root the author's pick names
+                line=first if first is not None else second;cid=pair[1] if first is not None else pair[0]
+                if line is None or cid not in circle_exact:_overlay_fail('OVERLAY_POINT_UNKNOWN',ident)
+                x,y=_overlay_line_circle_point(line,circle_exact[cid],entry.get('pick'),ident)
+            elif 'pick' in entry:_overlay_fail('OVERLAY_CIRCLE_PICK_INVALID',ident)
+            elif first is None or second is None:_overlay_fail('OVERLAY_POINT_UNKNOWN',ident)
+            elif first['kind']=='VERTICAL' and second['kind']=='VERTICAL':_overlay_fail('OVERLAY_LINE_PARALLEL',ident)
+            elif first['kind']=='VERTICAL':x=pp_exact_value(first['x']);y=pp_exact_value(second['slope'])*x+pp_exact_value(second['intercept'])
             elif second['kind']=='VERTICAL':x=pp_exact_value(second['x']);y=pp_exact_value(first['slope'])*x+pp_exact_value(first['intercept'])
             else:
                 m1=pp_exact_value(first['slope']);q1=pp_exact_value(first['intercept']);m2=pp_exact_value(second['slope']);q2=pp_exact_value(second['intercept'])
@@ -2883,6 +2933,8 @@ def _overlay_features(plan):
             else:_overlay_fail('OVERLAY_POINT_INVALID',ident)
         else:
             x=_overlay_exact(entry['x'],ident);y=_overlay_exact(entry['y'],ident)
+        if 'onCircle' in entry:
+            if entry['onCircle'] not in circle_exact or not _overlay_on_circle(circle_exact[entry['onCircle']],x,y):_overlay_fail('OVERLAY_POINT_NOT_ON_CIRCLE',ident)
         xmin,xmax,ymin,ymax=plan['viewport'];xf,yf=_overlay_number(x),_overlay_number(y)
         if not (xmin<xf<xmax and ymin<yf<ymax):_overlay_fail('OVERLAY_POINT_OUTSIDE_VIEWPORT',ident)
         row={'id':ident,'x':xf,'y':yf,'xExact':pp_surd_text(x),'yExact':pp_surd_text(y)}
@@ -2960,6 +3012,11 @@ def _overlay_features(plan):
         polygons.append(row)
     for line in lines:line['labelAlternates']=_overlay_label_alternates(plan,line,lines,points)
     features={'schemaVersion':'GRAPH_OVERLAYS_FEATURES_v1','points':points,'lines':lines,'segments':segments,'guides':guides,'polygons':polygons}
+    if circle_rows:
+        xmin,xmax,ymin,ymax=plan['viewport']
+        for row in circle_rows:
+            if not (xmin<=row['cx']-row['r'] and row['cx']+row['r']<=xmax and ymin<=row['cy']-row['r'] and row['cy']+row['r']<=ymax):_overlay_fail('OVERLAY_CIRCLE_OUTSIDE_VIEWPORT',row['id'])
+        features['circles']=circle_rows
     if 'names' in raw:features['names']=_overlay_names(plan,raw.get('names'),claim,lines,segments,by_point)
     if raw.get('quadrants'):features['quadrants']=_overlay_quadrants(plan,raw['quadrants'],claim)
     if raw.get('latticePoints') is not None:features['latticePoints']=_overlay_lattice(plan,raw['latticePoints'],[(point['x'],point['y']) for point in points])
@@ -2979,6 +3036,9 @@ def _overlay_anchor_points(plan):
             elif 'slope' in entry and 'intercept' in entry:lines[entry.get('id')]=('L',(_overlay_exact(entry['slope'],'line'),_overlay_exact(entry['intercept'],'line')))
         except (ValueError,TypeError):continue
     viewport=plan.get('viewport');domain=plan.get('domain');anchors=[]
+    try:circle_rows,circle_exact=_overlay_circle_rows(raw)
+    except ValueError:circle_rows,circle_exact=[],{}
+    for row in circle_rows:anchors.extend([(row['cx']-row['r'],row['cy']-row['r']),(row['cx']+row['r'],row['cy']+row['r'])])
     for entry in raw.get('points') or []:
         if not isinstance(entry,dict):continue
         try:
@@ -2987,6 +3047,7 @@ def _overlay_anchor_points(plan):
                 x=_overlay_exact(entry['curveX'],'point');y=_overlay_curve_exact(plan,x,entry.get('curve'));on_curve=True
             elif 'intersect' in entry:
                 pair=entry['intersect'];first=lines.get(pair[0]);second=lines.get(pair[1])
+                if (first is None and pair[0] in circle_exact) or (second is None and pair[1] in circle_exact):continue
                 if first is None or second is None:continue
                 if first[0]=='V' and second[0]=='V':continue
                 if first[0]=='V':x=first[1];y=second[1][0]*x+second[1][1]

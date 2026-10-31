@@ -1,0 +1,29 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "caption": "t=7/10인 예시에서 원 x²+y²=2, 포물선 y=x², 직선 y=tx가 만나는 점 P, Q와 원과 포물선의 교점 A를 보인다.",
+ "pointNames": {"A": "A", "P": "P", "Q": "Q", "O": "O"},
+ "sourceConditions": [
+  {"id": "c1", "condition": "원 x^2+y^2=2와 곡선 y=x^2이 제1사분면에서 만나는 점을 A, 직선 y=tx가 원, 곡선과 제1사분면에서 만나는 점을 P, Q이다.", "mappedTo": ["graphPlan.pieces", "graphPlan.overlays"]},
+  {"id": "c2", "condition": "문제 본문·보기·정답·풀이는 변경하지 않는다.", "mappedTo": "PRESERVED_ARCHIVE_BANK"}
+ ],
+ "newVisualInformation": ["t<1에서 원 위의 P가 포물선 위의 Q보다 원점에서 멀리 있고 선분 PQ가 OP-OQ임을 한 그림에서 보여 준다."],
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [{"coefficients": ["0", "0", "1"]}],
+  "sourceDomain": {"kind": "ALL_REALS"},
+  "domain": [-2, 2],
+  "requiredPoints": [{"id": "O", "x": 0, "y": 0}],
+  "axisTickValues": {"x": [], "y": []},
+  "sampleNote": "t=7/10",
+  "overlays": {
+   "circles": [{"id": "C", "center": ["0", "0"], "radiusSquared": "2"}],
+   "lines": [{"id": "L", "slope": "7/10", "intercept": "0", "label": "y=tx"}],
+   "points": [
+    {"id": "P", "intersect": ["L", "C"], "pick": "MAX_X"},
+    {"id": "Q", "curveX": "7/10"},
+    {"id": "A", "curveX": "1", "onCircle": "C"}
+   ],
+   "segments": [{"id": "PQ", "from": "P", "to": "Q"}]
+  }
+ }
+}

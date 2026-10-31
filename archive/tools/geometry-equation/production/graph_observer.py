@@ -2633,6 +2633,28 @@ def _ov_line(entry):
     if 'slope' not in entry or 'intercept' not in entry:raise ValueError('OVERLAY_LINE_INVALID')
     return {'id':entry.get('id'),'kind':'LINE','slope':_ov_reader(entry.get('slope')),'intercept':_ov_reader(entry.get('intercept')),**extra}
 
+def _ov_circle_line_root(line,ring,pick):
+    """The observer's own intersection of an overlay line with an overlay circle, in floating point at 40 digits: the root the plan's pick names."""
+    cx,cy,r2=[float(S.N(v,40)) for v in ring]
+    if line['kind']=='VERTICAL':
+        x0=float(S.N(line['x'],40));disc=r2-(x0-cx)**2
+        if disc<-1e-12:raise ValueError('OVERLAY_CIRCLE_LINE_NO_INTERSECTION')
+        s=math.sqrt(max(disc,0.0));roots=[(x0,cy+s),(x0,cy-s)]
+    else:
+        m=float(S.N(line['slope'],40));q=float(S.N(line['intercept'],40))
+        a=1+m*m;b=2*(m*(q-cy)-cx);c=cx*cx+(q-cy)**2-r2;disc=b*b-4*a*c
+        if disc<-1e-9:raise ValueError('OVERLAY_CIRCLE_LINE_NO_INTERSECTION')
+        s=math.sqrt(max(disc,0.0));roots=[((-b+s)/(2*a),None),((-b-s)/(2*a),None)];roots=[(rx,m*rx+q) for rx,_ in roots]
+    if len(roots)==2 and abs(roots[0][0]-roots[1][0])<1e-9 and abs(roots[0][1]-roots[1][1])<1e-9:roots=roots[:1]
+    if pick is None:
+        if len(roots)!=1:raise ValueError('OVERLAY_CIRCLE_PICK_REQUIRED')
+        chosen=roots[0]
+    else:
+        if pick not in ('MIN_X','MAX_X','MIN_Y','MAX_Y') or (line['kind']=='VERTICAL')!=(pick in ('MIN_Y','MAX_Y')):raise ValueError('OVERLAY_CIRCLE_PICK_INVALID')
+        index=0 if pick.endswith('X') else 1
+        chosen=(min if pick.startswith('MIN') else max)(roots,key=lambda point:point[index])
+    return S.Float(chosen[0],30),S.Float(chosen[1],30)
+
 def _ov_expected(plan):
     """Every overlay element recomputed from the raw plan: points; lines; segments, guides and polygons."""
     raw=plan.get('overlays')
@@ -2640,6 +2662,12 @@ def _ov_expected(plan):
     if not isinstance(raw,dict):raise ValueError('OVERLAY_PLAN_INVALID')
     lines=[_ov_line(entry) for entry in raw.get('lines',[])]
     by_line={line['id']:line for line in lines}
+    circles={}
+    for entry in raw.get('circles',[]) or []:
+        if not isinstance(entry,dict) or not isinstance(entry.get('id'),str) or entry['id'] in circles or not isinstance(entry.get('center'),list) or len(entry['center'])!=2:raise ValueError('OVERLAY_CIRCLE_INVALID')
+        radius_squared=_ov_reader(entry.get('radiusSquared'))
+        if not radius_squared>0:raise ValueError('OVERLAY_CIRCLE_INVALID')
+        circles[entry['id']]=(_ov_reader(entry['center'][0]),_ov_reader(entry['center'][1]),radius_squared)
     points={};coordinates={};unnamed=set()
     for entry in raw.get('points',[]):
         if not isinstance(entry,dict):raise ValueError('OVERLAY_POINT_INVALID')
@@ -2653,9 +2681,13 @@ def _ov_expected(plan):
             pair=entry.get('intersect')
             if not isinstance(pair,list) or len(pair)!=2:raise ValueError('OVERLAY_POINT_INVALID')
             first=by_line.get(pair[0]);second=by_line.get(pair[1])
-            if first is None or second is None:raise ValueError('OVERLAY_POINT_UNKNOWN')
-            if first['kind']=='VERTICAL' and second['kind']=='VERTICAL':raise ValueError('OVERLAY_LINE_PARALLEL')
-            if first['kind']=='VERTICAL':x=first['x'];y=second['slope']*x+second['intercept']
+            if (first is None and pair[0] in circles) or (second is None and pair[1] in circles):
+                line=first if first is not None else second;ring=circles.get(pair[1] if first is not None else pair[0])
+                if line is None or ring is None:raise ValueError('OVERLAY_POINT_UNKNOWN')
+                x,y=_ov_circle_line_root(line,ring,entry.get('pick'))
+            elif first is None or second is None:raise ValueError('OVERLAY_POINT_UNKNOWN')
+            elif first['kind']=='VERTICAL' and second['kind']=='VERTICAL':raise ValueError('OVERLAY_LINE_PARALLEL')
+            elif first['kind']=='VERTICAL':x=first['x'];y=second['slope']*x+second['intercept']
             elif second['kind']=='VERTICAL':x=second['x'];y=first['slope']*x+first['intercept']
             else:
                 if first['slope']==second['slope']:raise ValueError('OVERLAY_LINE_PARALLEL')
@@ -2668,6 +2700,9 @@ def _ov_expected(plan):
         elif 'x' in entry and 'y' in entry:
             x,y=_ov_reader(entry['x']),_ov_reader(entry['y'])
         else:raise ValueError('OVERLAY_POINT_INVALID')
+        if 'onCircle' in entry:
+            ring=circles.get(entry['onCircle'])
+            if ring is None or abs(float(S.N((x-ring[0])**2+(y-ring[1])**2-ring[2],40)))>1e-12:raise ValueError('OVERLAY_POINT_NOT_ON_CIRCLE')
         points[ident]=(x,y)
         if entry.get('unnamed') is True:unnamed.add(ident)
         if entry.get('coordinates') is True:
@@ -2732,7 +2767,7 @@ def _ov_expected(plan):
         if label is not None and (not isinstance(label,str) or label!=label.strip() or not re.fullmatch(r'[가-힣A-Za-z0-9 ()]{1,12}',label)):raise ValueError('OVERLAY_QUADRANT_INVALID')
         if fill is not None and fill not in ('LIGHT','MEDIUM'):raise ValueError('OVERLAY_QUADRANT_INVALID')
         seen_quadrants.add(number);quadrants.append({'id':entry['id'],'quadrant':number,'label':label,'fill':fill})
-    return {'quadrants':quadrants,'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'names':names,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
+    return {'circles':circles,'quadrants':quadrants,'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'names':names,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
 
 OV_DIGIT=lambda text:[format(0x30+int(d),'X') for d in str(text)]
 
@@ -2892,6 +2927,17 @@ def overlays_audit(plan,svg,transform):
             claimed.add(ident);got=read_circle(ident)
             if got is None:errors.append('OVERLAY_POINT_MISSING:'+ident)
             elif not near(got,(float(S.N(x,30)),float(S.N(y,30)))):errors.append('OVERLAY_POINT_MISMATCH:'+ident)
+        # circles (G6): centre, radius and a single scale for both axes (a circle drawn as an ellipse is refused), all recomputed from the raw field
+        for ident,(cx,cy,r2) in expected['circles'].items():
+            oid='overlay-circle-'+str(ident);claimed.add(oid);node=circles.get(oid)
+            if node is None:errors.append('OVERLAY_CIRCLE_MISSING:'+str(ident));continue
+            if abs(sx-sy)>.005*max(sx,sy):errors.append('OVERLAY_CIRCLE_NOT_EQUAL_SCALE:'+str(ident))
+            try:
+                centre=to_data(float(node.get('cx')),float(node.get('cy')));radius=float(node.get('r'))/sx
+            except (TypeError,ValueError):errors.append('OVERLAY_CIRCLE_UNREADABLE:'+str(ident));continue
+            if not near(centre,(float(S.N(cx,30)),float(S.N(cy,30)))):errors.append('OVERLAY_CIRCLE_CENTER_MISMATCH:'+str(ident))
+            want=math.sqrt(float(S.N(r2,30)))
+            if abs(radius-want)>max(.5/(sx*transform['displayScale']),1e-3*want):errors.append('OVERLAY_CIRCLE_RADIUS_MISMATCH:'+str(ident))
         for segment in expected['segments']:
             ident='overlay-segment-'+str(segment['id']);claimed.add(ident);got=read_line(ident)
             if got is None:errors.append('OVERLAY_SEGMENT_MISSING:'+str(segment['id']));continue

@@ -543,6 +543,8 @@ def _overlay_model_svg(plan,transform):
     for line in features['lines']:
         a,b=clip_line(line);p,q=screen(*a),screen(*b)
         parts.append(f'<line id="overlay-line-{line["id"]}" data-role="overlayLine" x1="{p[0]:.12g}" y1="{p[1]:.12g}" x2="{q[0]:.12g}" y2="{q[1]:.12g}" stroke="black"/>')
+    for circle in features.get('circles',[]):
+        centre=screen(circle['cx'],circle['cy']);parts.append(f'<circle id="overlay-circle-{circle["id"]}" data-role="overlayCircle" cx="{centre[0]:.12g}" cy="{centre[1]:.12g}" r="{circle["r"]*sx:.12g}" fill="none" stroke="black"/>')
     points={point['id']:point for point in features['points']}
     def at(ident):
         point=points.get(ident)
