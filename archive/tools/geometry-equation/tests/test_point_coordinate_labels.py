@@ -28,9 +28,12 @@ class Framing(unittest.TestCase):
     def test_fractions_are_written_as_numerator_over_denominator_text(self):
         rows={row['id']:row for row in fit_overview(copy.deepcopy(BASE))['graphPlan']['overlaysFeatures']['points']}
         self.assertEqual(rows['P']['coordinates'],['5/6','1/6']);self.assertEqual(rows['X']['coordinates'],['3/4','0']);self.assertEqual(rows['Y']['coordinates'],['0','-3/2']);self.assertEqual(rows['Z']['coordinates'],['0','1'])
-    def test_an_irrational_coordinate_is_refused_with_its_code(self):
-        plan=copy.deepcopy(BASE);plan['overlays']['points'].append({'id':'W','x':'sqrt(2)','y':'1','coordinates':True})
-        self.assertEqual(refused(plan),'OVERLAY_COORDINATES_REQUIRE_RATIONALS:W')
+    def test_a_single_radical_coordinate_is_written_now_and_a_nested_one_is_refused(self):
+        plan=copy.deepcopy(BASE);plan['overlays']['points'].append({'id':'W','x':'sqrt(2)','y':'1','coordinates':True})      # G5b: p+q*sqrt(r) is written (tests/test_graph_g5b.py)
+        rows={row['id']:row for row in fit_overview(plan)['graphPlan']['overlaysFeatures']['points']}
+        self.assertEqual(rows['W']['coordinates'],['sqrt(2)','1'])
+        plan['overlays']['points'][-1]['x']='sqrt(1+sqrt(2))'
+        self.assertEqual(refused(plan),'PIECEWISE_POLY_IRRATIONAL_FORM_UNSUPPORTED')
     def test_integers_are_written_as_before(self):
         plan=copy.deepcopy(BASE);plan['overlays']['points']=[{'id':'A','x':'1','y':'1','unnamed':True,'coordinates':True}]
         self.assertEqual({row['id']:row['coordinates'] for row in fit_overview(plan)['graphPlan']['overlaysFeatures']['points']},{'A':['1','1']})

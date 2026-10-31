@@ -222,7 +222,7 @@ class CoordinatesAndLengths(unittest.TestCase):
             plan=self.plan();edit(plan['overlays']);return plan
         cases=[
           (variant(lambda o:o['points'][2].update(coordinates='yes')),'OVERLAY_COORDINATES_INVALID:C'),
-          (variant(lambda o:o['points'].append({'id':'E','x':'sqrt(2)','y':'-1','coordinates':True})),'OVERLAY_COORDINATES_REQUIRE_RATIONALS:E'),   # E31: fractions are written now; an irrational coordinate is not
+          (variant(lambda o:o['points'].append({'id':'E','x':'sqrt(1+sqrt(2))','y':'-1','coordinates':True})),'PIECEWISE_POLY_IRRATIONAL_FORM_UNSUPPORTED'),   # G5b: p+q*sqrt(r) is written now; a nested radical is not
           (variant(lambda o:o['points'][2].update(labelDirection='N')),'OVERLAY_LABEL_DIRECTION_INVALID:C'),
           (variant(lambda o:o['points'][0].update(labelDirection='UP')),'OVERLAY_LABEL_DIRECTION_INVALID:A'),
           (variant(lambda o:o['segments'][1].update(labelDirection='N')),'OVERLAY_LABEL_DIRECTION_INVALID:sBC'),

@@ -286,7 +286,18 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       const unresolvedIds=composed.detail?.unresolved||[];
       const stuck=(plan.graphPlan?unresolvedIds.map(id=>/^required-point-(\d+)-coordinates$/.exec(id)).filter(Boolean).map(m=>keyPoints[Number(m[1])-1]).filter(bandable).map(point=>point.id)
         :unresolvedIds.filter(id=>id.endsWith('-coordinate')).map(id=>id.slice(0,-'-coordinate'.length))).filter(id=>!(plan.coordinatePanel||[]).includes(id)&&!(plan.hiddenPointNames||[]).includes(id));
-      if(stuck.length){
+      // (G5b) Before the band: a coordinate that found no room beside its point takes the nearest free place on a leader from the dot (graph key points only).
+      const leaderStuck=plan.graphPlan?unresolvedIds.map(id=>/^required-point-(\d+)-coordinates$/.exec(id)).filter(Boolean).map(m=>keyPoints[Number(m[1])-1]).filter(point=>point&&typeof point.id==='string').map(point=>point.id).filter(id=>!(plan.coordinatePanel||[]).includes(id)&&!(plan.coordinateLeader||[]).includes(id)):[];
+      if(leaderStuck.length){
+        const leaderPlan={...plan,coordinateLeader:[...(plan.coordinateLeader||[]),...leaderStuck]};
+        let tried=null;
+        try{tried=await attempt(leaderPlan,'-leader');}catch{tried=null;}
+        if(tried&&tried.composed.status!=='LAYOUT_INVENTORY_INCOMPLETE'){
+          row.fallback.push({from:clip(composed.detail),to:'COORDINATE_LEADER',points:leaderStuck});
+          plan=leaderPlan;({size,measured,composed}=tried);
+        }
+      }
+      if(composed.status==='LAYOUT_INVENTORY_INCOMPLETE'&&stuck.length){
         row.fallback.push({from:clip(composed.detail),to:'COORDINATE_PANEL_PARTIAL',points:stuck});
         plan={...plan,coordinatePanel:[...(plan.coordinatePanel||[]),...stuck],labelDirections:Object.fromEntries(Object.entries(plan.labelDirections||{}).filter(([id])=>!stuck.includes(id)))};
         ({size,measured,composed}=await attempt(plan,'-panel1'));
