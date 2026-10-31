@@ -153,11 +153,13 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
   };
 }
 
-export function wrapGeminiFile(geminiPath, driveFileId) {
+export function wrapGeminiFile(geminiPath, driveFileId, driveChecksum) {
   const bytes = fs.readFileSync(geminiPath);
   if (!driveFileId) fail("--drive-file-id required");
   return {
-    schemaVersion: SCHEMA, driveFileId, driveSha256: crypto.createHash("sha256").update(bytes).digest("hex"),
+    schemaVersion: SCHEMA, driveFileId,
+    driveSha256: driveChecksum || crypto.createHash("sha256").update(bytes).digest("hex"),
+    driveChecksumSource: driveChecksum ? "drive_metadata" : "local_bytes",
     gemini: JSON.parse(bytes.toString("utf8"))
   };
 }
@@ -167,7 +169,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const opt = n => { const i = argv.indexOf("--" + n); return i < 0 ? undefined : (argv[i + 1]?.startsWith("--") || argv[i + 1] === undefined ? true : argv[i + 1]); };
   const root = opt("repo-root") ? path.resolve(String(opt("repo-root"))) : path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
   if (opt("wrap")) {
-    const text = JSON.stringify(wrapGeminiFile(path.resolve(String(opt("wrap"))), String(opt("drive-file-id") || "")), null, 2) + "\n";
+    const text = JSON.stringify(wrapGeminiFile(path.resolve(String(opt("wrap"))), String(opt("drive-file-id") || ""), opt("drive-checksum") && opt("drive-checksum") !== true ? String(opt("drive-checksum")) : undefined), null, 2) + "\n";
     if (opt("out") && opt("out") !== true) fs.writeFileSync(path.resolve(String(opt("out"))), text, "utf8"); else process.stdout.write(text);
   } else {
     if (!opt("request")) fail("--request or --wrap required");

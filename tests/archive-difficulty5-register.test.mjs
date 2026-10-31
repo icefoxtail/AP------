@@ -42,6 +42,15 @@ function make(t, { mutateMeta } = {}) {
 const decisions = r => Object.fromEntries(r.items.map(i => [i.ordinal, i.decision]));
 const withItem = (n, fn) => { const g = structuredClone(gemini); fn(g.items.find(i => i.ordinal === n)); return g; };
 
+test("derived fixture carries only registration fields", () => {
+  assert.match(gemini._fixtureNote, /not a byte copy/);
+  for (const i of gemini.items) {
+    assert.deepEqual(Object.keys(i).sort(), ["after", "before", "ordinal", "questionUid"]);
+    assert.deepEqual(Object.keys(i.before), ["level"]);
+    assert.deepEqual(Object.keys(i.after).sort(), ["difficultyBoundaryFlag", "difficultyBucket", "difficultyConfidence", "legacyLevelCompatibility"]);
+  }
+});
+
 test("fixture dry-run: no write, Q22/Q23 NORMAL expected, Q19 BORDERLINE_REVIEW, 23 APPLY", t => {
   const x = make(t), before = x.snap();
   const r = registerDifficulty5({ root: x.root, request: x.req() });
@@ -168,6 +177,13 @@ test("wrap CLI helper and registrar CLI dry-run / verify", t => {
   const w = wrapGeminiFile(FIXTURE, "DRIVE_ID");
   assert.equal(w.schemaVersion, SCHEMA);
   assert.equal(w.driveSha256, sha256(fs.readFileSync(FIXTURE)));
+  assert.equal(w.driveChecksumSource, "local_bytes");
+  const w2 = wrapGeminiFile(FIXTURE, "DRIVE_ID", "abc123");
+  assert.equal(w2.driveSha256, "abc123");
+  assert.equal(w2.driveChecksumSource, "drive_metadata");
+  const cli = JSON.parse(execFileSync("node", [path.join(repo, "archive/tools/meta-foundation/register-difficulty5.mjs"), "--wrap", FIXTURE, "--drive-file-id", "X", "--drive-checksum", "deadbeef"], { encoding: "utf8" }));
+  assert.equal(cli.driveSha256, "deadbeef");
+  assert.equal(cli.driveChecksumSource, "drive_metadata");
   assert.equal(w.gemini.requestId, gemini.requestId);
   const reqPath = path.join(x.root, ".archive-meta-register/inbox/req.json");
   fs.mkdirSync(path.dirname(reqPath), { recursive: true });
