@@ -16,6 +16,7 @@ import * as obs from './archive-inverse-observation-v1.mjs';
 import {fileRef} from '../../pipeline-core/canonical.mjs';
 import * as comp from './composite-candidate-svg-v1.mjs';
 import {expandDiscontinuousPair} from './discontinuous-pair-v1.mjs';
+import {expandPlaneVectors} from './plane-vectors.mjs';
 import * as chain from './quadratic-inequality-chain-v1.mjs';
 import * as nlf from './number-line-v1.mjs';
 import * as sol from './solid-figure-v1.mjs';
@@ -59,6 +60,8 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
     if(authored.status==='EXEMPT'||authored.status==='UNSUPPORTED'){row.status=authored.status;row.detail=authored.reason;return finish();}
     // Two discontinuous functions (graphPlan.referenceCurves, layout STACKED) are the two-panel composite they stand for.
     if(authored.capability==='piecewise-discontinuous-spike-v1'&&authored.graphPlan?.referenceCurves!==undefined)authored=expandDiscontinuousPair(authored);
+    // planeMarks.vectors / vectorOps (G3) are unfolded into arrows, labels and construction points before the exact model is built.
+    if(authored.capability==='construction-spike-v1')authored=expandPlaneVectors(authored);
     row.capability=authored.capability;
     // Writes the shared success outputs (state, svg, optional observer packet).
     const bind=async({plan,model,composed,capture})=>{

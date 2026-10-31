@@ -59,7 +59,8 @@ def validate(spec):
         if not isinstance(obj,dict) or obj.get('kind') not in KINDS: raise ValueError('UNKNOWN_COMPONENT')
         if set(obj)-FIELDS or not REQUIRED[obj['kind']]<=obj.keys():raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
         # marker:'NONE' is a nameless POINT that draws no dot at all (a plane figure's hiddenPointStyle NONE); nothing else carries a marker.
-        if 'marker' in obj and (obj['kind']!='POINT' or obj['marker']!='NONE' or 'name' not in obj or obj['name'] is not None):raise ValueError('INVALID_POINT_MARKER')
+        # marker:'NO_DOT' (G3) is a named point that draws no dot, only its name: the end of a vector arrow, where the dot would cover the arrow head.
+        if 'marker' in obj and (obj['kind']!='POINT' or obj['marker'] not in {'NONE','NO_DOT'} or (obj['marker']=='NONE' and ('name' not in obj or obj['name'] is not None))):raise ValueError('INVALID_POINT_MARKER')
         # A fill pattern belongs to a plane region only; no other object carries one.
         if 'pattern' in obj and obj['kind']!='FILL_REGION':raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
         # emphasis (BOLD, ACCENT) singles out one drawn segment; nothing else carries it.

@@ -30,6 +30,7 @@ export {verifyConstructionConditionBindings} from './fact-display-map-v1.mjs';
 
 import {resolveQuestion,runQuestion} from './resolve-request.mjs';
 import {blindThenCompare,reuseReviewAuthority,verificationBinding,conditionBinding,validateReviewLineage} from './blinded-review.mjs';
+import {vectorTipIds} from './plane-vectors.mjs';
 import {planeMarkSpec,planeMarkPointRefs,isPlaneFigure,isCoordinateFigure,unmarkedPointIds,planNameTexts,textNamesPoint,arcLabelFraming,dimensionFraming,traceJoinExtentPoints,textLabelExtentPoints,TEXT_LABEL_MATH,TEXT_LABEL_HANGUL,TEXT_LABEL_FUNCTIONS} from './plane-marks.mjs';
 import {regionExtentPoints} from './plane-regions.mjs';
 import {calloutEntries,calloutExtentPoints,calloutDimensionSites,calloutSpec} from './plane-callouts.mjs';
@@ -861,7 +862,9 @@ function specForFamily(plan,model,id){
   const unmarked=new Set(unmarkedPointIds(plan));
   const pointNames=pointNameModel(plan,Object.keys(points));
   for(const entry of pointNames.entries())if(hiddenNames.has(entry.id))throw Error('POINT_NAME_TARGET_HIDDEN:'+entry.id);
-  const objects=Object.entries(points).map(([name,p])=>({id:name,kind:'POINT',at:p.approximation,...(hiddenNames.has(name)?{name:null,...(unmarked.has(name)?{marker:'NONE'}:{})}:pointNames.has(name)?{name:pointNames.tex(name)}:{})}));const notationByLabel={},factRolesByLabel={},axisCoincidentLines=displayed.axisCoincidentLines;
+  // (G3) a point that ends a vector arrow and starts none keeps its name but draws no dot (marker NO_DOT): the dot would cover the arrow head
+  const noDot=new Set(vectorTipIds(plan));
+  const objects=Object.entries(points).map(([name,p])=>({id:name,kind:'POINT',at:p.approximation,...(hiddenNames.has(name)?{name:null,...(unmarked.has(name)?{marker:'NONE'}:{})}:{...(pointNames.has(name)?{name:pointNames.tex(name)}:{}),...(noDot.has(name)?{marker:'NO_DOT'}:{})})}));const notationByLabel={},factRolesByLabel={},axisCoincidentLines=displayed.axisCoincidentLines;
   for(const node of plan.mathPlan.nodes){
     if(node.outputType==='LINE'&&Object.hasOwn(displayed.lines,node.id)){
       const fact=model.lines?.[node.id];if(!fact||!Array.isArray(fact.approximation)||fact.approximation.length!==3)throw Error('CONSTRUCTION_LINE_FACT_REQUIRED:'+node.id);

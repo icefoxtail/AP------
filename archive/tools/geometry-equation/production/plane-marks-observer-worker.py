@@ -1369,6 +1369,85 @@ def audit(p):
                 pts=poly_model(head);tip=pts[0];base=((pts[1][0]+pts[2][0])/2,(pts[1][1]+pts[2][1])/2);axis=sub(tip,base)
                 if norm(sub(tip,tip_expected))*sx>1e-3:errors.append('SEGMENT_ARROW_TIP_OFF_END:'+s['id'])
                 if axis[0]*out[0]+axis[1]*out[1]<=0 or abs(axis[0]*unit[1]-axis[1]*unit[0])/norm(axis)>math.sin(math.radians(0.1)):errors.append('SEGMENT_ARROW_NOT_ALONG_SEGMENT:'+s['id'])
+    # ---- vectors (G3): planeMarks.vectors / vectorOps, every fact recomputed here from the peer points. This copy of the rules lists the arrows the rows stand for on its own.
+    vector_rows=[r for r in (marks.get('vectors') or []) if isinstance(r,dict)];op_rows=[r for r in (marks.get('vectorOps') or []) if isinstance(r,dict)]
+    if vector_rows or op_rows:
+        VECTOR_POINT_PX=1.0          # px: an arrow's tail and head against the points it joins
+        by_vector={r.get('id'):r for r in vector_rows}
+        def op_point(op):return op['point'] if isinstance(op.get('point'),str) else 'v'+re.sub('[^A-Za-z0-9]','',str(op.get('id')))[:20]+'P'
+        arrows=[(r['id'],r['from'],r['to']) for r in vector_rows]
+        for op in op_rows:
+            ends=[by_vector.get(i) for i in (op.get('of') or [])]
+            if op.get('op')=='SUM' and len(ends)==2 and all(ends):
+                arrows.append((op['id'],ends[0]['from'],op_point(op)))
+                if op.get('guides')=='TRIANGLE':arrows.append((op['id']+'-g1',ends[0]['to'],op_point(op)))
+            elif op.get('op')=='DIFF' and len(ends)==2 and all(ends):arrows.append((op['id'],ends[1]['to'],ends[0]['to']))
+            elif op.get('op')=='SCALE' and len(ends)==1 and all(ends):arrows.append((op['id'],ends[0]['from'],op_point(op)))
+        def px_gap(q,r):return math.dist(q,r)*sx
+        dots=[(float(n.get('cx')),float(n.get('cy'))) for n in root.iter() if tag(n)=='circle' and n.get('data-role')=='point' and n.get('cx') is not None]
+        def has_dot(pid):
+            where=forward(peer_point(pid));return any(math.dist(where,d)<=1.5 for d in dots)
+        for sid,start,end in arrows:
+            n=elements.get(sid)
+            if n is None or tag(n)!='line':continue
+            a,b=line_model(n);ps,pe=peer_point(start),peer_point(end)
+            head=elements.get(sid+'-arrow-end')
+            if px_gap(a,ps)>VECTOR_POINT_PX or px_gap(b,pe)>VECTOR_POINT_PX:errors.append('VECTOR_DIRECTION_MISMATCH:'+sid)
+            elif head is None or tag(head)!='polygon' or px_gap(poly_model(head)[0],pe)>VECTOR_POINT_PX or elements.get(sid+'-arrow-start') is not None:errors.append('VECTOR_DIRECTION_MISMATCH:'+sid)
+            observations.append({'id':sid,'type':'VECTOR_ARROW','from':start,'to':end})
+        tails={a[1] for a in arrows}
+        for tip in sorted({a[2] for a in arrows}-tails):
+            if has_dot(tip):errors.append('VECTOR_TIP_DOT_PRESENT:'+tip)
+        for row in vector_rows:
+            if row.get('components') is not True:continue
+            tip=peer_point(row['to']);cid=row['id']
+            for key,foot_ok,want_foot in (('cx',lambda q:abs(q[1])*sx<=VECTOR_POINT_PX,(tip[0],0.0)),('cy',lambda q:abs(q[0])*sx<=VECTOR_POINT_PX,(0.0,tip[1]))):
+                seg=drawn_segment(cid+'-'+key)
+                if seg is None:continue
+                a,b=seg
+                if px_gap(a,tip)>VECTOR_POINT_PX:a,b=b,a
+                axis_unit=(0.0,1.0) if key=='cx' else (1.0,0.0)           # the perpendicular to the x axis is vertical, to the y axis horizontal
+                d=sub(b,a);length=norm(d)
+                if px_gap(a,tip)>VECTOR_POINT_PX or not foot_ok(b) or px_gap(b,want_foot)>VECTOR_POINT_PX or length<=1e-12 or abs(d[0]*axis_unit[1]-d[1]*axis_unit[0])/length>math.sin(math.radians(ANGLE_TOLERANCE)):errors.append('VECTOR_COMPONENT_MISMATCH:'+cid+':'+key)
+                elif any(math.dist(forward(want_foot),dot)<=1.5 for dot in dots):errors.append('VECTOR_COMPONENT_MISMATCH:'+cid+':'+key+':foot_dot')
+                observations.append({'id':cid+'-'+key,'type':'VECTOR_COMPONENT','foot':want_foot})
+        def drawn_arrow(sid):
+            n=elements.get(sid)
+            return line_model(n) if n is not None and tag(n)=='line' else None
+        def parallel(u,v):
+            nu,nv=norm(u),norm(v)
+            return nu>1e-12 and nv>1e-12 and abs(u[0]*v[1]-u[1]*v[0])/(nu*nv)<=math.sin(math.radians(ANGLE_TOLERANCE))
+        for op in op_rows:
+            ends=[by_vector.get(i) for i in (op.get('of') or [])];oid=op.get('id')
+            if not ends or not all(ends):continue
+            if op.get('op')=='SUM' and len(ends)==2:
+                A,B,C=[peer_point(i) for i in (ends[0]['from'],ends[0]['to'],ends[1]['to'])];D=(B[0]+C[0]-A[0],B[1]+C[1]-A[1])
+                if px_gap(peer_point(op_point(op)),D)>VECTOR_POINT_PX:errors.append('VECTOR_SUM_POINT_MISMATCH:'+oid)
+                result=drawn_arrow(oid)
+                if result is not None and (px_gap(result[0],A)>VECTOR_POINT_PX or px_gap(result[1],D)>VECTOR_POINT_PX):errors.append('VECTOR_SUM_POINT_MISMATCH:'+oid)
+                if op.get('guides')=='PARALLELOGRAM':
+                    for suffix,start_point,opposite in (('-g1',B,sub(C,A)),('-g2',C,sub(B,A))):
+                        guide=drawn_arrow(oid+suffix)
+                        if guide is None:errors.append('SEGMENT_MISSING:'+oid+suffix);continue
+                        if min(px_gap(guide[0],start_point),px_gap(guide[1],start_point))>VECTOR_POINT_PX or min(px_gap(guide[0],D),px_gap(guide[1],D))>VECTOR_POINT_PX or not parallel(sub(guide[1],guide[0]),opposite):errors.append('VECTOR_SUM_GUIDE_NOT_PARALLEL:'+oid+suffix)
+                elif op.get('guides')=='TRIANGLE':
+                    guide=drawn_arrow(oid+'-g1');second=sub(C,A)
+                    if guide is None:errors.append('SEGMENT_MISSING:'+oid+'-g1')
+                    else:
+                        g=sub(guide[1],guide[0])
+                        if px_gap(guide[0],B)>VECTOR_POINT_PX or px_gap(guide[1],D)>VECTOR_POINT_PX or not parallel(g,second) or g[0]*second[0]+g[1]*second[1]<=0 or abs(norm(g)-norm(second))*sx>VECTOR_POINT_PX:errors.append('VECTOR_SUM_GUIDE_NOT_PARALLEL:'+oid+'-g1')
+            elif op.get('op')=='DIFF' and len(ends)==2:
+                B,C=peer_point(ends[0]['to']),peer_point(ends[1]['to']);result=drawn_arrow(oid)
+                if result is None or px_gap(result[0],C)>VECTOR_POINT_PX or px_gap(result[1],B)>VECTOR_POINT_PX:errors.append('VECTOR_DIFF_MISMATCH:'+oid)
+            elif op.get('op')=='SCALE' and len(ends)==1:
+                A,B,P=peer_point(ends[0]['from']),peer_point(ends[0]['to']),peer_point(op_point(op))
+                try:
+                    num,_,den=str(op.get('k')).partition('/');k=float(num)/float(den or 1)
+                except ValueError:errors.append('VECTOR_SCALE_MISMATCH:'+oid);continue
+                d=sub(B,A);t=((P[0]-A[0])*d[0]+(P[1]-A[1])*d[1])/(norm(d)**2) if norm(d)>1e-12 else math.nan
+                if not math.isfinite(t) or abs(t-k)>0.01 or abs((P[0]-A[0])*d[1]-(P[1]-A[1])*d[0])/norm(d)*sx>VECTOR_POINT_PX:errors.append('VECTOR_SCALE_MISMATCH:'+oid)
+                result=drawn_arrow(oid)
+                if result is None or px_gap(result[0],A)>VECTOR_POINT_PX or px_gap(result[1],P)>VECTOR_POINT_PX:errors.append('VECTOR_SCALE_MISMATCH:'+oid)
     return {'status':'FAIL' if errors else 'PASS','errors':errors,'observations':observations,'finalSvgSha256':'sha256:'+hashlib.sha256(p['svg'].encode('utf-8')).hexdigest(),'strategy':'FINAL_XML_PLANE_MARKS_FROM_PEER_POINTS'}
 
 if __name__=='__main__':
