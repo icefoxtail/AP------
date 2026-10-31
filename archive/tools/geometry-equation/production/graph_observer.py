@@ -1483,6 +1483,12 @@ def _pp_real_roots(poly):
     if poly.degree()<=0:return []
     if poly.degree()==1:
         c1,c0=poly.all_coeffs();return [S.N(-c0/c1,60)]
+    if poly.degree()>2:
+        if poly.degree()>4 or any(not value.is_Rational for value in poly.all_coeffs()):raise ValueError('PIECEWISE_POLY_HIGH_DEGREE_IRRATIONAL_UNSUPPORTED')
+        found=[]
+        for root in sorted(S.N(value,60) for value in S.Poly(poly.as_expr(),x,domain='QQ').real_roots()):
+            if not found or abs(root-found[-1])>S.Float('1e-40',60):found.append(root)
+        return found
     c2,c1,c0=poly.all_coeffs();disc=S.N(S.expand(c1**2-4*c2*c0),80)
     if abs(disc)<S.Float('1e-60',80):return [S.N(-c1/(2*c2),60)]
     if disc<0:return []
@@ -1521,6 +1527,38 @@ def _pp_in_source(value,source):
 
 def _pp_in_domain(value,interval,source):return _pp_in_closed(value,interval) and _pp_in_source(value,source)
 
+def _pp_piece_poly(values):
+    """One piece as a SymPy polynomial: up to five coefficients; above degree 2 they must be rational (no radical)."""
+    poly=S.Poly(sum(_pp_coeff(v)*x**i for i,v in enumerate(values)),x)
+    if poly.degree()>2 and any(not value.is_Rational for value in poly.all_coeffs()):raise ValueError('PIECEWISE_POLY_HIGH_DEGREE_IRRATIONAL_UNSUPPORTED')
+    return poly
+
+def _pp_local_extrema(poly,a,b,inside):
+    """Local extrema of one piece strictly inside (a,b): (x, y, MAX|MIN). A quadratic has its vertex; a cubic or quartic every stationary
+    point whose first non-vanishing derivative of order >= 2 has even order (found numerically to 60 digits, from the plan's own coefficients)."""
+    rows=[]
+    if poly.degree()==2:
+        h=S.radsimp(S.expand(-poly.nth(1)/(2*poly.nth(2))))
+        if inside(h,a,b,True):rows.append((h,S.radsimp(S.expand(poly.eval(h))),'MAX' if poly.nth(2)<0 else 'MIN'))
+    elif poly.degree()>2:
+        tiny=S.Float('1e-30',60)
+        for h in _pp_real_roots(poly.diff(x)) or []:
+            derivative=poly.diff(x);order=1;value=None
+            while not derivative.is_zero:
+                derivative=derivative.diff(x);order+=1
+                if derivative.is_zero:break
+                candidate=derivative.eval(h)
+                if abs(candidate)>tiny:value=candidate;break
+            if value is not None and inside(h,a,b,True) and order%2==0:rows.append((h,S.N(poly.eval(h),60),'MAX' if value<0 else 'MIN'))
+    return rows
+
+def _pp_second_bound(poly,ax,bx):
+    """An upper bound of |f''| on [ax,bx] (the chord sag of the drawn polyline is at most this times the squared step over 8)."""
+    if poly.degree()<=2:return abs(float(poly.nth(2)))*2 if poly.degree()==2 else 0.0
+    second=poly.diff(x).diff(x);cands=[ax,bx]
+    cands+=[float(r) for r in (_pp_real_roots(second.diff(x)) or []) if ax<float(r)<bx]
+    return max(abs(float(second.eval(S.Float(c,30)))) for c in cands)
+
 def _pp_reference_source(entry):
     raw=entry.get('sourceDomain',{'kind':'ALL_REALS'})
     if raw=={'kind':'ALL_REALS'}:return None,None,['CLOSED','CLOSED']
@@ -1549,8 +1587,8 @@ def _pp_reference_row(entry,errors):
     ref_pieces=[]
     for piece in raw_pieces:
         values=piece.get('coefficients') if isinstance(piece,dict) else None
-        if not isinstance(values,list) or not 1<=len(values)<=3:raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
-        ref_pieces.append(S.Poly(sum(_pp_coeff(v)*x**i for i,v in enumerate(values)),x))
+        if not isinstance(values,list) or not 1<=len(values)<=5:raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
+        ref_pieces.append(_pp_piece_poly(values))
     ref_breaks=[(_pp_coeff(breakpoint['x']),_pp_coeff(breakpoint['y'])) for breakpoint in raw_breaks]
     if any(not a[0]<b[0] for a,b in zip(ref_breaks,ref_breaks[1:])):raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
     ref_lo,ref_hi,ref_states=_pp_reference_source(entry)
@@ -1561,10 +1599,9 @@ def _pp_reference_row(entry,errors):
         elif not _pp_same(left,S.sympify(claimed_y)):errors.append('PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_CLAIM_MISMATCH:'+ref_id+':'+str(at))
     corners=[(at,ref_pieces[index].eval(S.sympify(at))) for index,(at,_) in enumerate(ref_breaks)]
     extrema=[]
+    ref_inside=lambda value,a,b,strict:(a is None or value>a) and (b is None or value<b)
     for poly,(a,b) in zip(ref_pieces,ref_intervals):
-        if poly.degree()==2:
-            h=S.radsimp(S.expand(-poly.nth(1)/(2*poly.nth(2))))
-            if (a is None or h>a) and (b is None or h<b):extrema.append((h,S.radsimp(S.expand(poly.eval(h))),'MAX' if poly.nth(2)<0 else 'MIN'))
+        extrema.extend(_pp_local_extrema(poly,a,b,ref_inside))
     row.update(pieces=ref_pieces,intervals=ref_intervals,source=(ref_lo,ref_hi,ref_states),corners=corners,extrema=extrema)
     return row
 
@@ -1601,7 +1638,7 @@ def _region_rows(plan,pieces,intervals,refs,name,from_x,to_x,region_id):
         out=[]
         for poly,(a,b) in rows:
             start=from_x if a is None else max(from_x,a);end=to_x if b is None else min(to_x,b)
-            if start<end:out.append(([poly.nth(index) if hasattr(poly,'nth') else poly[index] for index in range(3)],(start,end)))
+            if start<end:out.append(([poly.nth(index) if hasattr(poly,'nth') else poly[index] for index in range(max(3,poly.degree()+1) if hasattr(poly,'nth') else 3)],(start,end)))
         out.sort(key=lambda row:float(row[1][0]))
         return out
     if from_x>=to_x:raise ValueError('GRAPH_REGION_DOMAIN_INVALID:'+region_id)
@@ -1626,7 +1663,7 @@ def _region_rows(plan,pieces,intervals,refs,name,from_x,to_x,region_id):
 def _region_value(rows,x_value):
     for coefficients,(a,b) in rows:
         if float(a)<=x_value<=float(b):
-            return float(coefficients[0])+float(coefficients[1])*x_value+float(coefficients[2])*x_value*x_value
+            return sum(float(value)*x_value**index for index,value in enumerate(coefficients))
     raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED')
 
 def _region_polygon(node):
@@ -1763,8 +1800,8 @@ def piecewise_polynomial_audit(plan,svg,transform):
         pieces=[]
         for piece in plan.get('pieces') or []:
             values=piece.get('coefficients') if isinstance(piece,dict) else None
-            if not isinstance(values,list) or not 1<=len(values)<=3:raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
-            pieces.append(S.Poly(sum(_pp_coeff(v)*x**i for i,v in enumerate(values)),x))
+            if not isinstance(values,list) or not 1<=len(values)<=5:raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
+            pieces.append(_pp_piece_poly(values))
         breaks=[(_pp_coeff(row['x']),_pp_coeff(row['y'])) for row in plan.get('breakpoints') or []]
         if not 1<=len(pieces)<=4 or len(breaks)!=len(pieces)-1 or any(not a[0]<b[0] for a,b in zip(breaks,breaks[1:])):raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
         # referenceCurves: a quadratic or its own piecewise function, rebuilt again from the plan's own exact fields and its own domain.
@@ -1790,9 +1827,7 @@ def piecewise_polynomial_audit(plan,svg,transform):
         inside=lambda value,a,b,strict:(a is None or (value>rational(a) if strict else value>=rational(a))) and (b is None or (value<rational(b) if strict else value<=rational(b)))
         extrema_exact=[]
         for poly,(a,b) in zip(pieces,intervals):
-            if poly.degree()==2:
-                h=S.radsimp(S.expand(-poly.nth(1)/(2*poly.nth(2))))
-                if inside(h,a,b,True):extrema_exact.append((h,S.radsimp(S.expand(poly.eval(h))),'MAX' if poly.nth(2)<0 else 'MIN'))
+            extrema_exact.extend(_pp_local_extrema(poly,a,b,inside))
         corners_exact=[(bx,by,None) for bx,by in breaks]
         extrema=[{'x':str(h),'y':str(y),'kind':kind} for h,y,kind in extrema_exact]
         corners=[{'x':str(bx),'y':str(by)} for bx,by,_ in corners_exact]
@@ -1939,10 +1974,10 @@ def piecewise_polynomial_audit(plan,svg,transform):
             if any(b[0]<=a[0] for a,b in zip(points,points[1:])):errors.append('PIECEWISE_POLY_PIECE_NOT_INCREASING_X:'+str(index))
             if abs(points[0][0]-start)>x_tol or abs(points[-1][0]-end)>x_tol:errors.append('PIECEWISE_POLY_PIECE_COVERAGE_FAIL:'+str(index))
             if any(px<start-x_tol or px>end+x_tol for px,_ in points):errors.append('PIECEWISE_POLY_PIECE_CROSSES_ITS_INTERVAL:'+str(index))
-            curvature=abs(float(poly.nth(2)))*2 if poly.degree()==2 else 0.0;worst=0.0
+            worst=0.0
             evaluate=lambda value:_pp_eval_poly(poly,value)
             for (ax,ay),(bx,by) in zip(points,points[1:]):
-                bound=(max(abs(ay-evaluate(ax)),abs(by-evaluate(bx)))+curvature*(bx-ax)**2/8)*sy*display
+                bound=(max(abs(ay-evaluate(ax)),abs(by-evaluate(bx)))+_pp_second_bound(poly,ax,bx)*(bx-ax)**2/8)*sy*display
                 worst=max(worst,bound)
             for px,py in points:
                 if not (xmin-x_tol<=px<=xmax+x_tol and ymin-y_tol<=py<=ymax+y_tol):errors.append('PIECEWISE_POLY_CURVE_OUTSIDE_VIEW:'+str(index));break
@@ -1974,10 +2009,10 @@ def piecewise_polynomial_audit(plan,svg,transform):
             if any(b[0]<=a[0] for a,b in zip(points,points[1:])):errors.append('PIECEWISE_POLY_PIECE_NOT_INCREASING_X:'+ref_id)
             if abs(points[0][0]-start)>x_tol or abs(points[-1][0]-end)>x_tol:errors.append('PIECEWISE_POLY_REFERENCE_CURVE_COVERAGE_FAIL:'+ref_id)
             if any(px<start-x_tol or px>end+x_tol for px,_ in points):errors.append('PIECEWISE_POLY_REFERENCE_PIECE_CROSSES_ITS_INTERVAL:'+ref_id)
-            curvature=abs(float(refpoly.nth(2)))*2 if refpoly.degree()==2 else 0.0;worst=0.0
+            worst=0.0
             evaluate=lambda value,refpoly=refpoly:_pp_eval_poly(refpoly,value)
             for (ax,ay),(bx,by) in zip(points,points[1:]):
-                worst=max(worst,(max(abs(ay-evaluate(ax)),abs(by-evaluate(bx)))+curvature*(bx-ax)**2/8)*sy*display)
+                worst=max(worst,(max(abs(ay-evaluate(ax)),abs(by-evaluate(bx)))+_pp_second_bound(refpoly,ax,bx)*(bx-ax)**2/8)*sy*display)
             for px,py in points:
                 if not (xmin-x_tol<=px<=xmax+x_tol and ymin-y_tol<=py<=ymax+y_tol):errors.append('PIECEWISE_POLY_CURVE_OUTSIDE_VIEW:'+ref_id);break
             if worst>.35:errors.append('PIECEWISE_POLY_CURVE_INTERIOR_BOUND_FAIL:'+ref_id)

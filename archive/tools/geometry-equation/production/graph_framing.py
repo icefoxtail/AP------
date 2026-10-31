@@ -1403,6 +1403,7 @@ PIECEWISE_POLY_MIN_ARM_PX=12
 PIECEWISE_POLY_MIN_FEATURE_GAP_PX=4
 # Four pieces cover the two-piecewise exam items (f and g both piecewise); a fifth piece is refused.
 PIECEWISE_POLY_MAX_PIECES=4
+PIECEWISE_POLY_MAX_COEFFICIENTS=5   # constant ... x^4: a piece or reference piece may be cubic or quartic (rational coefficients above degree 2)
 # A reference curve may list as many crossings as four piece pairs can produce in a readable figure.
 PIECEWISE_POLY_MAX_CURVE_INTERSECTIONS=8
 PIECEWISE_POLY_MAX_REQUIRED_POINTS=24
@@ -1573,8 +1574,8 @@ def piecewise_polynomial_source(plan):
     if not isinstance(raw_breaks,list) or len(raw_breaks)!=len(raw_pieces)-1:raise ValueError('PIECEWISE_POLY_BREAKPOINT_COUNT_INVALID')
     pieces=[]
     for piece in raw_pieces:
-        if not isinstance(piece,dict) or set(piece)!={'coefficients'} or not isinstance(piece['coefficients'],list) or not 1<=len(piece['coefficients'])<=3:raise ValueError('PIECEWISE_POLY_PIECE_INVALID')
-        pieces.append([pp_surd(value,'PIECEWISE_POLY_COEFFICIENT_INVALID') for value in piece['coefficients']]+[S.Integer(0)]*(3-len(piece['coefficients'])))
+        if not isinstance(piece,dict) or set(piece)!={'coefficients'} or not isinstance(piece['coefficients'],list) or not 1<=len(piece['coefficients'])<=PIECEWISE_POLY_MAX_COEFFICIENTS:raise ValueError('PIECEWISE_POLY_PIECE_INVALID')
+        pieces.append(_pp_piece_coefficients(piece['coefficients']))
     breaks=[]
     for row in raw_breaks:
         if not isinstance(row,dict) or set(row)!={'x','y'}:raise ValueError('PIECEWISE_POLY_BREAKPOINT_INVALID')
@@ -1604,10 +1605,60 @@ def _pp_inside(x_value,interval,strict):
     if strict:return (a is None or a<x_value) and (b is None or x_value<b)
     return (a is None or a<=x_value) and (b is None or x_value<=b)
 
+def _pp_piece_coefficients(values):
+    """Exact coefficients of one piece: at least three entries (the legacy quadratic shape), trailing zero terms above degree 2 dropped. A cubic
+    or quartic piece must have rational coefficients, so its real roots are found exactly by factoring over the rationals."""
+    coefficients=[pp_surd(value,'PIECEWISE_POLY_COEFFICIENT_INVALID') for value in values]
+    coefficients+=[S.Integer(0)]*(3-len(coefficients))
+    while len(coefficients)>3 and coefficients[-1]==0:coefficients.pop()
+    if len(coefficients)>3 and any(pp_radicand(value) is not None for value in coefficients):raise ValueError('PIECEWISE_POLY_HIGH_DEGREE_IRRATIONAL_UNSUPPORTED')
+    return coefficients
+
+def pp_sub(a,b):
+    """a-b for two coefficient lists of any length (the shorter is padded with zeros); trailing zeros above degree 2 are dropped."""
+    size=max(len(a),len(b),3)
+    out=[(a[i] if i<len(a) else S.Integer(0))-(b[i] if i<len(b) else S.Integer(0)) for i in range(size)]
+    while len(out)>3 and _pp_norm(out[-1])==0:out.pop()
+    return out
+
+_PP_X=S.Symbol('x')
+
+def pp_poly_roots(coefficients):
+    """The distinct real roots of a polynomial of degree <= 4 (exact, increasing); None when identically zero. Degree <= 2 keeps the closed
+    formula. A cubic or quartic with rational coefficients is factored over the rationals and every factor of degree <= 2 is solved exactly;
+    an irreducible factor of degree 3 or more has no closed form accepted here (PIECEWISE_POLY_ROOT_NOT_CLOSED_FORM)."""
+    values=[_pp_norm(value) for value in coefficients]
+    while len(values)>3 and values[-1]==0:values.pop()
+    if len(values)<=3:return pp_quadratic_roots(*(values+[S.Integer(0)]*(3-len(values))))
+    if any(pp_radicand(value) is not None for value in values):raise ValueError('PIECEWISE_POLY_HIGH_DEGREE_IRRATIONAL_UNSUPPORTED')
+    poly=S.Poly(sum(value*_PP_X**index for index,value in enumerate(values)),_PP_X,domain='QQ')
+    found=[]
+    for factor,_ in S.factor_list(poly)[1]:
+        if factor.degree()>2:raise ValueError('PIECEWISE_POLY_ROOT_NOT_CLOSED_FORM')
+        row=[S.Integer(0)]*3
+        for index,value in enumerate(reversed(factor.all_coeffs())):row[index]=value
+        for root in pp_quadratic_roots(*row) or []:
+            if not any(pp_same(root,other) for other in found):found.append(root)
+    return sorted(found,key=lambda value:float(value))
+
+def _pp_derivative(coefficients):
+    return [index*value for index,value in enumerate(coefficients)][1:]
+
 def piecewise_polynomial_extrema(pieces,intervals):
-    """The vertex of each quadratic piece strictly inside its own interval: exact (x, y, MAX|MIN)."""
+    """The local extremum of each piece strictly inside its own interval: exact (x, y, MAX|MIN). A quadratic has its vertex; a cubic or
+    quartic has every stationary point whose first non-vanishing derivative of order >= 2 has even order (an inflection is not one)."""
     rows=[]
     for coefficients,interval in zip(pieces,intervals):
+        if len(coefficients)>3:
+            derivatives=[coefficients]
+            while derivatives[-1]:derivatives.append(_pp_derivative(derivatives[-1]))
+            for h in pp_poly_roots(derivatives[1]) or []:
+                for order in range(2,len(derivatives)):
+                    value=_pp_poly_value(derivatives[order],h) if derivatives[order] else S.Integer(0)
+                    if value!=0:break
+                else:continue
+                if _pp_inside(h,interval,True) and order%2==0:rows.append((_pp_norm(h),_pp_poly_value(coefficients,h),'MAX' if value<0 else 'MIN'))
+            continue
         c0,c1,c2=coefficients
         if c2==0:continue
         h=_pp_norm(-c1/(2*c2))
@@ -1640,7 +1691,7 @@ def piecewise_polynomial_crossings(pieces,intervals,level,source,slope=S.Integer
     lo,hi,states=source;found=[]
     reference=list(curve) if curve is not None else [level,slope,S.Integer(0)]
     for coefficients,(a,b) in zip(pieces,intervals):
-        roots=pp_quadratic_roots(coefficients[0]-reference[0],coefficients[1]-reference[1],coefficients[2]-reference[2])
+        roots=pp_poly_roots(pp_sub(coefficients,reference))
         if roots is None:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_CONTAINS_A_PIECE' if curve is not None else 'PIECEWISE_POLY_REFERENCE_LINE_CONTAINS_A_PIECE')
         for root in roots:
             if a is not None and root<a or b is not None and root>b:continue
@@ -1717,8 +1768,8 @@ def piecewise_reference_curves(plan,pieces,breaks,source,intervals):
         if not isinstance(raw_breaks,list) or len(raw_breaks)!=len(raw_pieces)-1:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_COUNT_INVALID:'+entry['id'])
         ref_pieces=[]
         for piece in raw_pieces:
-            if not isinstance(piece,dict) or set(piece)!={'coefficients'} or not isinstance(piece['coefficients'],list) or not 1<=len(piece['coefficients'])<=3:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_PIECE_INVALID:'+entry['id'])
-            ref_pieces.append([pp_surd(value,'PIECEWISE_POLY_COEFFICIENT_INVALID') for value in piece['coefficients']]+[S.Integer(0)]*(3-len(piece['coefficients'])))
+            if not isinstance(piece,dict) or set(piece)!={'coefficients'} or not isinstance(piece['coefficients'],list) or not 1<=len(piece['coefficients'])<=PIECEWISE_POLY_MAX_COEFFICIENTS:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_PIECE_INVALID:'+entry['id'])
+            ref_pieces.append(_pp_piece_coefficients(piece['coefficients']))
         ref_breaks=[]
         for row in raw_breaks:
             if not isinstance(row,dict) or set(row)!={'x','y'}:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_INVALID:'+entry['id'])
@@ -1745,7 +1796,7 @@ def piecewise_reference_crossings(pieces,intervals,source,ref):
     found=[]
     for coefficients,(a,b) in zip(pieces,intervals):
         for other,(c,d) in zip(ref['pieces'],ref['intervals']):
-            roots=pp_quadratic_roots(coefficients[0]-other[0],coefficients[1]-other[1],coefficients[2]-other[2])
+            roots=pp_poly_roots(pp_sub(coefficients,other))
             if roots is None:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_CONTAINS_A_PIECE')
             for root in roots:
                 if not pp_in_domain(root,(a,b),source) or not pp_in_domain(root,(c,d),ref['source']):continue
@@ -1786,8 +1837,8 @@ def _pp_region_crossings(upper_rows,lower_rows,region_id):
         for lower,lower_interval in lower_rows:
             start=max(upper_interval[0],lower_interval[0]);end=min(upper_interval[1],lower_interval[1])
             if not start<end:continue
-            difference=[upper[i]-lower[i] for i in range(3)]
-            roots=pp_quadratic_roots(*difference)
+            difference=pp_sub(upper,lower)
+            roots=pp_poly_roots(difference)
             if roots is None:raise ValueError('GRAPH_REGION_EMPTY:'+region_id)
             if any(start<root<end for root in roots):raise ValueError('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id)
             if float(_pp_poly_value(difference,(start+end)/2))<=0:raise ValueError('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id)
