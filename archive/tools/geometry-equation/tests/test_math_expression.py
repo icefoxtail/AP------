@@ -57,4 +57,23 @@ class MathTests(unittest.TestCase):
         self.assertTrue(evaluate(parse('x<=2'),{'x':1}))
         self.assertFalse(evaluate(parse('x=2'),{'x':1}))
 
+class VectorNameTests(unittest.TestCase):
+    """(G3) vec(a) / vec(AB) are the only way a label names a vector; every other expression reads and writes exactly as before."""
+    def test_tex(self):
+        for source,tex in {'vec(a)':r'\vec{a}','vec(AB)':r'\overrightarrow{AB}','vec(a)+vec(b)':r'\vec{a}+\vec{b}','2vec(a)-vec(b)':r'2\vec{a}-\vec{b}',
+                           '(-3vec(a)+vec(b))/4':r'{\displaystyle\frac{-3\vec{a}+\vec{b}}{4}}','vec(AB)+vec(AF)':r'\overrightarrow{AB}+\overrightarrow{AF}','-vec(a)':r'-\vec{a}'}.items():
+            with self.subTest(source=source):self.assertEqual(serialize(parse(source)),tex)
+    def test_plain_and_svg_text_carry_the_arrow(self):
+        self.assertEqual(serialize(parse('vec(a)+vec(b)'),'plain'),'a\u20d7+b\u20d7')
+        self.assertEqual(''.join(ET.fromstring('<text>'+serialize(parse('2vec(a)-vec(AB)'),'svg')+'</text>').itertext()),'2a\u20d7−AB\u20d7')
+    def test_bad_names_are_refused(self):
+        for source in ('vec()','vec(ab)','vec(vec(a))','vec(1)','vec(A)','vec(AAB)','vec(a','vec(a,b)'):
+            with self.subTest(source=source),self.assertRaises(ValueError) as caught:parse(source)
+            self.assertEqual(str(caught.exception),'VECTOR_LABEL_INVALID')
+    def test_a_backslash_is_still_refused(self):
+        with self.assertRaises(ValueError):parse(r'\vec{a}')
+    def test_other_expressions_are_unchanged(self):
+        for source,tex in {'v':'v','vec':'vec','x+1':'x+1','2v':'2v','vector':'vector'}.items():
+            with self.subTest(source=source):self.assertEqual(serialize(parse(source)),tex)
+
 if __name__=='__main__':unittest.main()

@@ -9,6 +9,7 @@ import re
 FUNCTIONS={'sqrt':math.sqrt,'sin':math.sin,'cos':math.cos,'tan':math.tan,
            'log':math.log,'ln':math.log,'exp':math.exp,'abs':abs}
 CALL_SYMBOLS=set('fghpq')|{'logb'}
+VECTOR_NAME=re.compile(r'[a-z]|[A-Z]{2}')
 TOKEN=re.compile(r'\s*(\d+(?:\.\d+)?|[A-Za-zαβγδθπ]+|<=|>=|!=|[+*/^_\-=<>()\x27,°])')
 
 @dataclass(frozen=True)
@@ -48,6 +49,11 @@ class Parser:
             self.expect(')')
             left=self.node('tuple' if len(rows)>1 else 'group',args=rows)
         elif token[0].isdigit():left=self.node('number',token)
+        elif token=='vec' and self.peek()=='(':
+            # (G3) a vector name: vec(a) is the vector a (one lower-case letter), vec(AB) the vector from point A to point B (two capital letters); nothing else is accepted.
+            self.take();name=self.take()
+            if not VECTOR_NAME.fullmatch(name) or self.take()!=')':raise ValueError('VECTOR_LABEL_INVALID')
+            left=self.node('vec',name)
         elif token.isalpha() and token!='EOF':
             if token in FUNCTIONS and self.peek()!='(':raise ValueError('FUNCTION_CALL_REQUIRED')
             left=self.node('symbol',token)
@@ -128,6 +134,11 @@ def serialize(node,mode='tex'):
     if k=='symbol':
         if mode=='svg':return '<tspan font-style="italic">'+escape(node.value)+'</tspan>'
         return {'pi':r'\pi','π':r'\pi','α':r'\alpha','β':r'\beta','γ':r'\gamma','δ':r'\delta','θ':r'\theta'}.get(node.value,node.value) if mode=='tex' else ('π' if node.value=='pi' else node.value)
+    if k=='vec':
+        if not VECTOR_NAME.fullmatch(node.value):raise ValueError('VECTOR_LABEL_INVALID')
+        if mode=='tex':return ('\\vec{'+node.value+'}') if len(node.value)==1 else ('\\overrightarrow{'+node.value+'}')
+        if mode=='svg':return '<tspan font-style="italic">'+node.value+'</tspan>\u20d7'
+        return node.value+'\u20d7'
     if k=='list':return (',\\;' if mode=='tex' else ', ').join(s(v) for v in a)
     if k=='group':return '('+s(a[0])+')'
     if k=='tuple':return '('+','.join(s(v) for v in a)+')'

@@ -1220,6 +1220,7 @@ def prepare(spec):
                     else:tree=Expr('unit',notation['unit'],(tree,))
                 label.update(text=serialize(tree,'plain'),markup=serialize(tree,'svg'),tex=serialize(tree,'tex'),sourceMath=obj['text'],math=True)
                 label['layoutText']=''.join(ET.fromstring('<text>'+label['markup']+'</text>').itertext())
+                if 'vec(' in obj['text']:label['bindText']=True   # (G3) a vector name's TeX stays on the label group, so the observer can read it back
                 if kind=='LENGTH_LABEL' and abs(float(evaluate(parse(obj['text'])))-obj['value'])>1e-9:raise ValueError('DISPLAY_LENGTH_PARITY_FAIL')
             if kind=='EQUATION_LABEL' and obj.get('freeLabel'):
                 # A free text label (planeMarks.textLabels): centred on its place (the nearest free spot of a small ring round it) or beside it on the side `anchor`

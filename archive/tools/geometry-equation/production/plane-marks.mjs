@@ -116,6 +116,19 @@ const list=(value,where)=>{if(value===undefined)return [];if(!Array.isArray(valu
 export const TEXT_LABEL_ANCHORS=['CENTER','N','NE','E','SE','S','SW','W','NW'];
 export const TEXT_LABEL_HANGUL=/[\u1100-\u11FF\u3130-\u318F\uAC00-\uD7AF]/u;
 export const TEXT_LABEL_MATH=/^[A-Za-z0-9 (),<>=+\-.\u00B0]{1,40}$/;
+// (G3) A vector name inside a MATH label: vec(a) (one lower-case letter) or vec(AB) (two capital letters, each a point of the figure) is the only place a label may name a vector;
+// the engine turns it into \vec{a} / \overrightarrow{AB}. A backslash or dollar sign written directly stays refused. Returns null, or the error code for the first bad name.
+export function vectorLabelIssue(text,hasPoint){
+  const source=String(text);
+  if(!/(?<![A-Za-z])vec\s*\(/.test(source))return null;
+  const names=[...source.matchAll(/(?<![A-Za-z])vec\(([^()]*)\)/g)];
+  if(names.length!==(source.match(/(?<![A-Za-z])vec\s*\(/g)||[]).length)return 'VECTOR_LABEL_INVALID';
+  for(const [,name] of names){
+    if(!/^(?:[a-z]|[A-Z]{2})$/.test(name))return 'VECTOR_LABEL_INVALID';
+    if(name.length===2&&!(name[0]!==name[1]&&[...name].every(ch=>hasPoint(ch))))return name[0]===name[1]?'VECTOR_LABEL_INVALID':'VECTOR_LABEL_UNKNOWN_POINT';
+  }
+  return null;
+}
 export const textLabelKind=row=>row?.labelKind??(TEXT_LABEL_HANGUL.test(String(row?.text??''))?'TEXT':'MATH');
 export const TEXT_LABEL_FUNCTIONS=/(?<![A-Za-z])(?:sqrt|abs|log|logb|ln|exp|sin|cos|tan|pi)(?![A-Za-z])/;
 /** An angle value as the sum label writes it: 15, 37.5 (at most six decimals, no trailing zeros). */
@@ -394,6 +407,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     const kind=row.labelKind??'MATH';
     if(!['MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:expressionLabels.labelKind:'+row.id);
     if(kind==='TEXT')plainTextOk(row.text,'expressionLabels.text',row.id);
+    else{const issue=vectorLabelIssue(row.text,ch=>!!points[ch]);if(issue)bad(issue+':'+row.id);}
     const unit=unitOf(row,kind,true,'expressionLabels');
     // labelAt (E8b): START / END write the label at the first / second end of its segment (the order of the segment's refs), MID (default) at its middle;
     // (E31) a number 0..1 writes it that fraction of the way from the first end.
@@ -415,6 +429,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(!['MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:textLabels.labelKind:'+row.id);
     if(kind==='TEXT')plainTextOk(row.text,'textLabels.text',row.id);
     else if(!TEXT_LABEL_MATH.test(row.text)||TEXT_LABEL_FUNCTIONS.test(row.text)||TEXT_LABEL_HANGUL.test(row.text))bad('TEXT_LABEL_MATH_UNSUPPORTED:'+row.id);
+    if(kind==='MATH'){const issue=vectorLabelIssue(row.text,ch=>!!points[ch]);if(issue)bad(issue+':'+row.id);}
     const byPoint=typeof row.at==='string';
     let place;
     if(byPoint)place=at(row.at);

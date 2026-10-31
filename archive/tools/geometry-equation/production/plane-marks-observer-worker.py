@@ -22,6 +22,8 @@ DEFAULT_STROKE='#111'
 ACCENT_STROKE='#c0392b'      # emphasis ACCENT: the red of a singled-out segment
 ANGLE_GROUP_STROKES={1:'#c0392b',2:'#1f5fa8',3:'#2e7d32'}   # emphasisGroup of an angle: the colour of every arc of the group (red, blue, green)
 
+VECTOR_CALL=re.compile(r'(?<![A-Za-z])vec\(([^()]*)\)')              # (G3) a vector name written in a plan label
+VECTOR_TEX=re.compile(r'\\vec\{[^{}]*\}|\\overrightarrow\{[^{}]*\}')   # (G3) the TeX commands a vector name becomes
 def tag(node):return node.tag.split('}')[-1]
 def sub(p,q):return (p[0]-q[0],p[1]-q[1])
 def norm(v):return math.hypot(v[0],v[1])
@@ -485,6 +487,16 @@ def audit(p):
         if 'a'<=ch<='z':out.add(format(0x210E if ch=='h' else 0x1D44E+ord(ch)-97,'X'))
         if 'A'<=ch<='Z':out.add(format(0x1D434+ord(ch)-65,'X'))
         return out
+    def vector_label_check(label_id,node,text):
+        """(G3) A label that names vectors, vec(a) or vec(AB): this observer's own reading of the plan text gives the TeX commands the label must carry, in reading order
+        (\\vec{a}, \\overrightarrow{AB}); the label group's data-tex must carry exactly those, and a capital-letter name must be two different points of the figure."""
+        if not re.search(r'(?<![A-Za-z])vec\s*\(',text):return
+        names=VECTOR_CALL.findall(text)
+        if len(names)!=len(re.findall(r'(?<![A-Za-z])vec\s*\(',text)) or any(not re.fullmatch(r'[a-z]|[A-Z]{2}',name) for name in names):errors.append('VECTOR_LABEL_INVALID:'+label_id);return
+        known=p.get('points') or {}
+        if any(len(name)==2 and (name[0]==name[1] or any(ch not in known for ch in name)) for name in names):errors.append('VECTOR_LABEL_UNKNOWN_POINT:'+label_id);return
+        expected=[('\\vec{'+name+'}') if len(name)==1 else ('\\overrightarrow{'+name+'}') for name in names]
+        if VECTOR_TEX.findall(node.get('data-tex') or '')!=expected:errors.append('VECTOR_LABEL_TEX_MISMATCH:'+label_id)
     def label_content(label_id,kind,text,unit,weight=None):
         """What a plain-text (labelKind TEXT) or unit-bearing label of the plan says, read back from the final SVG. A TEXT label is plain outlines (no math glyphs)
         whose text the typesetting step left on its group as data-text; a unit label is checked glyph by glyph (the unit letters last, a plain number's digits first)
@@ -505,6 +517,7 @@ def audit(p):
                 if weight!='MATH' and stroked:errors.append('LABEL_WEIGHT_UNDECLARED:'+label_id)
             return
         if node.get('data-text') is not None:errors.append('LABEL_KIND_MISMATCH:'+label_id)
+        vector_label_check(label_id,node,str(text))
         if not unit:return
         tail=[format(ord(ch),'X') for ch in unit]
         if len(codes)<len(tail)+1 or codes[-len(tail):]!=tail:errors.append('LABEL_UNIT_MISMATCH:'+label_id)
@@ -902,7 +915,7 @@ def audit(p):
         if anchor is not None and anchor not in TEXT_LABEL_ANCHORS:errors.append('TEXT_LABEL_ANCHOR_INVALID:'+oid);continue
         label_content(oid,kind,text,None,row.get('labelWeight'))
         node=elements.get(oid)
-        if kind=='MATH' and node is not None:
+        if kind=='MATH' and node is not None and 'vec(' not in text:   # a vector name draws arrow accents: label_content has read its TeX back instead
             want=math_label_codes(text);codes=glyph_codes(node)
             if len(codes)!=len(want) or any(code not in allowed for code,allowed in zip(codes,want)):errors.append('LABEL_TEXT_MISMATCH:'+oid)
         cx,cy=box[0]+box[2]/2,box[1]+box[3]/2;ax,ay=target
