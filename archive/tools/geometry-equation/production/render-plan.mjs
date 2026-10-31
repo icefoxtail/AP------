@@ -23,6 +23,7 @@ import * as scf from './stat-chart-v1.mjs';
 import * as sdg from './set-diagram-v1.mjs';
 import * as ell from './ellipse-figure-v1.mjs';
 import * as cfv from './container-fill-v1.mjs';
+import * as lpf from './lattice-path-v1.mjs';
 import {observeDisplayedPointNames,planNameExpectations} from './point-name-observer.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
@@ -119,6 +120,23 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
       stage='compose';
       const composed=await cfv.composeContainerFillFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
+      if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
+      stage='capture';
+      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
+      if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
+      await bind({plan:authored,model,composed,capture});
+      row.status='ARCHIVE_BOUND';row.sizeClass='full';
+      return finish();
+    }
+    if(authored.capability===lpf.FIGURE_CAPABILITY){
+      // A standalone road-network / lattice shortest-path figure: the exact path counts derived once, composed, read back by its own brute-force observer, then the same Archive capture.
+      stage='lattice-path';
+      const model=lpf.checkLatticePathPlan(authored),size=lpf.latticePathSize(model);
+      stage='measure';
+      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
+      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+      stage='compose';
+      const composed=await lpf.composeLatticePathFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
       stage='capture';
       const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});

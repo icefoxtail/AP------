@@ -1,0 +1,7 @@
+{"capability":"lattice-path-figure-v1",
+ "lattice":{"grid":{"cols":6,"rows":3},
+  "points":{"A":[0,0],"B":[6,3],"P":[4,1],"Q":[4,2]},
+  "from":"A","to":"B","forbidden":[["P","Q"]],"counts":true},
+ "caption":"가로 6칸, 세로 3칸 도로망에서 구간 PQ를 끊고 A에서 각 교차점까지 가는 최단 경로의 수",
+ "sourceConditions":[{"id":"c1","condition":"A에서 B까지 오른쪽 6번 위로 3번 이동하는 최단 경로","mappedTo":"lattice"},{"id":"c2","condition":"구간 PQ는 지나지 않는다","mappedTo":"forbidden"}],
+ "newVisualInformation":["PQ를 지나지 않는 경로만 센 교차점별 경로 수"]}
