@@ -18,6 +18,7 @@ NARROW_WEDGE_MAX_DEGREES=30.0
 TICK_LABEL_ALIGNMENT_TOLERANCE=4.0
 TICK_LABEL_MAX_EDGE_GAP=16.0
 TICK_LABEL_GAPS=(8,12,16)
+TICK_CALLOUT_OFFSETS=([28,-22],[-28,-22],[28,22],[-28,22])   # the label-centre offsets a tick-label leader callout may use (the first is the authored x=-6 callout)
 TICK_LABEL_SLIDES=(-2.0,2.0,-3.5,3.5)   # px along its axis a tick label may move when no centred box is clear (inside TICK_LABEL_ALIGNMENT_TOLERANCE)
 # Gaps tried from each alternate anchor of a lineFallback label (nearest first; from NEAR_RELOCATION_LEADER_MIN_GAP on, a visible leader is needed).
 LINE_FALLBACK_GAPS=(8,6,10,20,32,48)
@@ -146,7 +147,7 @@ def leader_clear(start,end,obstacles,owner_ids,clearance=6.0,near_start=False,st
             if kind=='point' and distance<=radius+clearance:return False
             if kind=='circle':
                 start_radius=math.dist(start,(x,y));end_radius=math.dist(end,(x,y))
-                starts_on_owner=owner and abs(start_radius-radius)<=1e-4
+                starts_on_owner=owner and (abs(start_radius-radius)<=1e-4 or start_radius<radius)
                 if starts_on_owner:
                     # A leader may leave its source circle at the exact owner
                     # point, but it may not exit through the circle again.
@@ -617,6 +618,22 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
         # (equal priority, ordered by id): the second pass places the tick numbers first, so the point name moves to the free side instead.
         retry=layout_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,tick_labels_first_order)
         if len(retry['unresolved'])<len(result['unresolved']):return retry
+    # tickCalloutFallback (set only by figures that opt in, e.g. discontinuous functions with dashed approach guides): a tick number whose two
+    # axis-normal sides are all blocked keeps its tick and moves to a small offset with a leader to that tick, never dropped. The first offset
+    # (of TICK_CALLOUT_OFFSETS) that resolves the label wins; a layout that already resolved is never changed.
+    pending=[label for label in labels if label['id'] in result['unresolved'] and label.get('kind')=='TICK_LABEL' and label.get('tickCalloutFallback') is True and label.get('tickLabelCallout') is None]
+    if pending:
+        current=labels
+        for target in pending:
+            for offset in TICK_CALLOUT_OFFSETS:
+                trial=copy.deepcopy(current)
+                for label in trial:
+                    if label['id']==target['id']:
+                        label['tickLabelCallout']={'schemaVersion':'TICK_LABEL_OWNER_LEADER_v1','tickId':label['tickId'],'axis':label['tickAxis'],'value':label['tickValue'],'sourceAt':list(label['at']),'offsetUser':list(offset)}
+                try:retry=layout_pass(copy.deepcopy(trial),obstacles,safe_area,panel,measurements,require_measurements,tick_labels_first_order)
+                except ValueError:continue
+                if target['id'] not in retry['unresolved'] and len(retry['unresolved'])<=len(result['unresolved']):
+                    current=trial;result=retry;break
     return result
 
 def tick_labels_first_order(label):
@@ -675,7 +692,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 or tick_callout.get('schemaVersion')!='TICK_LABEL_OWNER_LEADER_v1'
                 or tick_callout.get('tickId')!=tick_owner.get('id') or tick_callout.get('axis')!=label.get('tickAxis')
                 or tick_callout.get('value')!=label.get('tickValue') or tick_callout.get('sourceAt')!=list(label['at'])
-                or tick_callout.get('offsetUser')!=[28,-22]):
+                or tick_callout.get('offsetUser') not in TICK_CALLOUT_OFFSETS):
                 raise ValueError('TICK_LABEL_CALLOUT_BINDING_INVALID:'+label['id'])
         # lineOwned: an equation written beside its displayed line (kind 'line', id == target); no other label kind takes this path.
         line_owner=next((o for o in obstacles if label.get('lineOwned') and o.get('kind')=='line' and o.get('id')==label.get('target')),None)
@@ -715,6 +732,10 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 chosen=box;method='OWNER_BOUND_TICK_LEADER'
                 end=owner_leader_endpoint(box,label['at'],center)
                 owner_ids={tick_owner['id'],label['tickAxis']+'-axis'}
+                # A dot drawn exactly on its own tick (a declared function value on an axis) is part of that tick, not an obstacle to its leader.
+                owner_ids|={o.get('id') for o in occupied if o.get('kind') in {'circle','point'} and math.dist((o['geometry'][0],o['geometry'][1]),label['at'])<=1e-3}
+                # Likewise a dashed approach guide that ends exactly on this tick belongs to it (the leader may touch it only at its start).
+                owner_ids|={o.get('id') for o in occupied if (o.get('kind')=='line' and '-guide-' in str(o.get('id')) or o.get('kind')=='curve' and str(o.get('id','')).split('-piece-')[0] in ('f','g')) and isinstance(o.get('geometry'),(list,tuple)) and any(point_segment_distance(label['at'],c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
                 if not leader_clear(label['at'],end,occupied,owner_ids):
                     chosen=None;method=None
                     trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['OWNER_LEADER_CLEARANCE']})

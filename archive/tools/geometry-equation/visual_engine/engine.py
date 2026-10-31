@@ -520,7 +520,7 @@ def prepare(spec):
                 tick_primitive=next((item for item in primitives if item['id']==tick_id),None)
                 if tick_primitive is None:raise ValueError('TICK_LABEL_REQUIRED_PRIMITIVE_MISSING:'+label_id)
                 tick_primitive['requiredLabelId']=label_id
-                label={'id':label_id,'kind':'TICK_LABEL','tickId':tick_id,'target':tick_id,'owner':tick_id,'tickAxis':axis,'tickValue':value,'tickDisplayValue':text,'at':p,'text':text,'font':tokens['tickLabel'],'priority':0,'allowSuppress':False,'preferred':'S' if axis=='x' else 'W','directions':('S','N') if axis=='x' else ('W','E'),'gaps':(8,12),'centered':True,'math':True,**({'tickPiValue':tick_pi['multiple']} if tick_pi else {})}
+                label={'id':label_id,'kind':'TICK_LABEL','tickId':tick_id,'target':tick_id,'owner':tick_id,'tickAxis':axis,'tickValue':value,'tickDisplayValue':text,'at':p,'text':text,'font':tokens['tickLabel'],'priority':0,'allowSuppress':False,'preferred':'S' if axis=='x' else 'W','directions':('S','N') if axis=='x' else ('W','E'),'gaps':(8,12),'centered':True,'math':True,**({'tickPiValue':tick_pi['multiple']} if tick_pi else {}),**({'tickCalloutFallback':True} if spec['displayFacts'].get('tickLabelFallbackCallout') is True else {})}
                 callout=tick_callouts.pop((axis,value),None)
                 if callout is not None:
                     label['tickLabelCallout']={'schemaVersion':'TICK_LABEL_OWNER_LEADER_v1','tickId':tick_id,'axis':axis,'value':value,'sourceAt':list(p),'offsetUser':list(callout['offsetUser'])}
@@ -598,7 +598,7 @@ def prepare(spec):
             if marker.get('state') not in {'OPEN','CLOSED'} or not isinstance(marker.get('id'),str) or not marker['id']:raise ValueError('INVALID_PIECEWISE_DISCONTINUOUS_ENDPOINT')
             # A CLOSED end or a declared value is a filled dot; an OPEN end is hollow and the function is not defined there.
             at=vp.screen((_exact_float(marker['x']),_exact_float(marker['y'])))
-            primitive({'id':'discontinuous-'+marker['id'],'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'discontinuous-endpoint','fill':'#fff' if marker['state']=='OPEN' else '#111','state':marker['state']},'circle')
+            primitive({'id':'discontinuous-'+marker['id'],'kind':'circle','at':at,'radius':marker.get('radiusPx',radius),'token':'indicator','layer':65,'role':'discontinuous-endpoint','fill':'#fff' if marker['state']=='OPEN' else '#111','state':marker['state']},'circle')
     if reference_interval_features is not None:
         policy=spec['displayFacts'].get('referenceIntervalFeaturePolicy',{});radius=policy.get('markerRadiusIntrinsicPx')
         if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('REFERENCE_INTERVAL_MARKER_POLICY_REQUIRED')
@@ -907,9 +907,10 @@ def prepare(spec):
             result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]))
             sampling.append({'id':oid,**{k:v for k,v in result.items() if k!='branches'}})
             # The pieces of one piecewise function (branch PIECE_n) are all the main curve, not a first curve and secondary ones.
-            main=graph_index==0 or str(obj.get('branch','')).startswith('PIECE_')
+            main=graph_index==0 or str(obj.get('branch','')).startswith(('PIECE_','G_PIECE_'))
+            curve_style=obj.get('curveStyle')
             for index,branch in enumerate(result['branches']):
-                primitive({'id':oid+'-branch-'+str(index),'kind':'polyline','points':[vp.screen(p) for p in branch],'token':'mainCurve' if main else 'secondaryCurve','layer':40 if main else 35,'role':'curve',**({'branch':obj['branch']} if 'branch' in obj else {})},'curve')
+                primitive({'id':oid+'-branch-'+str(index),'kind':'polyline','points':[vp.screen(p) for p in branch],'token':'mainCurve' if main else 'secondaryCurve','layer':40 if main else 35,'role':'curve',**({'branch':obj['branch']} if 'branch' in obj else {}),**({'dash':'6 4'} if curve_style=='DASHED' else {'stroke':ACCENT_STROKE} if curve_style=='ACCENT' else {})},'curve')
             graph_index+=1
         elif kind=='PERPENDICULAR_MARK':
             at=vp.screen(obj['at']);vectors=[]

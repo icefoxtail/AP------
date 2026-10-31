@@ -1144,15 +1144,19 @@ function piecewiseDiscontinuousSpec(plan,id){
   const spanX=v[1]-v[0],spanY=v[3]-v[2],clampY=y=>Math.max(v[2]+spanY*.06,Math.min(v[3]-spanY*.06,y));
   const evalCoefficients=(values,x)=>values.reduce((sum,c,index)=>sum+exactValue(c)*x**index,0);
   const anchorOnRows=(rows,x)=>rows.find(row=>row.drawInterval[0]<=x&&x<=row.drawInterval[1])??rows[0];
+  // A circular-arc piece row ({kind:'ARC',center,radiusSquared,branch}) is y=cy+-sqrt(r2-(x-cx)^2).
+  const arcValue=(row,x)=>exactValue(row.center[1])+(row.branch==='UPPER'?1:-1)*Math.sqrt(Math.max(0,exactValue(row.radiusSquared)-(x-exactValue(row.center[0]))**2));
+  const arcExpression=row=>'('+row.center[1]+')'+(row.branch==='UPPER'?'+':'-')+'sqrt(('+row.radiusSquared+')-(x-('+row.center[0]+'))^2)';
+  const rowValue=(row,x)=>row.kind==='ARC'?arcValue(row,x):evalCoefficients(row.coefficients,x);
   const polyText=values=>{
     const terms=values.map((c,i)=>({c,i})).reverse().filter(({c})=>c!=='0');
     return terms.length?terms.map(({c,i},index)=>{const surd=c.includes('sqrt'),negative=!surd&&c.startsWith('-'),magnitude=negative?c.slice(1):c,coefficient=surd||magnitude.includes('/')?'('+magnitude+')':magnitude;return (negative?'-':index?'+':'')+(i?(magnitude==='1'?'':coefficient+'*')+'x'+(i>1?'^'+i:''):coefficient);}).join(''):'0';
   };
   const required=p.requiredPoints||[],crossX=features.intersections.flatMap(row=>row.points.map(point=>point.xValue));
-  const objects=features.pieces.map((piece,i)=>({id:'f-piece-'+(i+1),kind:'FUNCTION_GRAPH',expression:polyText(piece.coefficients),domain:piece.drawInterval,criticalX:[...new Set([...required.map(point=>point.x),...crossX])].filter(x=>piece.drawInterval[0]<=x&&x<=piece.drawInterval[1]),branch:'PIECE_'+(i+1)}));
+  const objects=features.pieces.map((piece,i)=>({id:'f-piece-'+(i+1),kind:'FUNCTION_GRAPH',expression:piece.kind==='ARC'?arcExpression(piece):polyText(piece.coefficients),domain:piece.drawInterval,criticalX:[...new Set([...required.map(point=>point.x),...crossX])].filter(x=>piece.drawInterval[0]<=x&&x<=piece.drawInterval[1]),branch:'PIECE_'+(i+1)}));
   if(functionName!==undefined){
     const x=v[0]+spanX*.16,row=anchorOnRows(features.pieces,x);
-    objects.push({id:'main-curve-name',kind:'GRAPH_ANNOTATION',text:functionName+'(x)',at:[x,clampY(evalCoefficients(row.coefficients,x)-spanY*.14)],math:true,priority:0});
+    objects.push({id:'main-curve-name',kind:'GRAPH_ANNOTATION',text:functionName+'(x)',at:[x,clampY(rowValue(row,x)-spanY*.14)],math:true,priority:0});
   }
   if(plan.coordinatePlacement!==undefined&&plan.coordinatePlacement!=='PANEL')throw Error('UNSUPPORTED_COORDINATE_PLACEMENT');
   const exactCoordinates=p.exactCoordinates??{};
@@ -1205,6 +1209,22 @@ function piecewiseDiscontinuousSpec(plan,id){
     if(arrow.guideY)objects.push({id:arrow.id+'-guide-y',kind:'SEGMENT',from:[arrow.atValue,arrow.toYValue],to:[0,arrow.toYValue],dash:true});
     objects.push({id:arrow.id,kind:'SEGMENT',from:arrow.from,to:arrow.to,arrow:'END'});
   }
+  // SHARED layout: the second function g drawn on the same axes (ids g-..., branch G_PIECE_n, a DASHED or ACCENT line); its dots reach the engine through the same marker list.
+  const sharedCurve=p.sharedCurve,sharedMarkers=[];
+  if(sharedCurve!==undefined){
+    const second=sharedCurve.piecewiseDiscontinuousFeatures;
+    if(!second||second.schemaVersion!=='PIECEWISE_DISCONTINUOUS_FEATURES_v1'||!['DASHED','ACCENT'].includes(sharedCurve.style))throw Error('PIECEWISE_DISCONTINUOUS_FEATURE_INVENTORY_REQUIRED');
+    second.pieces.forEach((piece,i)=>objects.push({id:'g-piece-'+(i+1),kind:'FUNCTION_GRAPH',expression:piece.kind==='ARC'?arcExpression(piece):polyText(piece.coefficients),domain:piece.drawInterval,criticalX:[],branch:'G_PIECE_'+(i+1),curveStyle:sharedCurve.style}));
+    const gx=v[1]-spanX*.2,grow=anchorOnRows(second.pieces,gx);
+    objects.push({id:'g-curve-name',kind:'GRAPH_ANNOTATION',text:(sharedCurve.name??sharedCurve.id)+'(x)',at:[gx,clampY(rowValue(grow,gx)+spanY*.14)],math:true,priority:0});
+    for(const arrow of second.limitArrows??[]){
+      if(arrow.guideX)objects.push({id:'g-'+arrow.id+'-guide-x',kind:'SEGMENT',from:[arrow.atValue,arrow.toYValue],to:[arrow.atValue,0],dash:true});
+      if(arrow.guideY)objects.push({id:'g-'+arrow.id+'-guide-y',kind:'SEGMENT',from:[arrow.atValue,arrow.toYValue],to:[0,arrow.toYValue],dash:true});
+      objects.push({id:'g-'+arrow.id,kind:'SEGMENT',from:arrow.from,to:arrow.to,arrow:'END'});
+    }
+    const coincident=new Set((p.sharedFeatures?.coincidentMarkers??[]).map(row=>row.second));
+    for(const marker of second.markers)sharedMarkers.push({...marker,id:'g-'+marker.id,...(coincident.has(marker.id)?{radiusPx:2.4}:{})});
+  }
   const longCoordinate=objects.some(object=>panelLabels.includes(object.id)&&object.text.length>10),columns=longCoordinate?1:2;
   const coordinateRows=Math.ceil(panelLabels.length/columns),textOf=labelId=>objects.find(object=>object.id===labelId)?.text??'';
   const rows=[...lineLabels.map(labelId=>[labelId]),...Array.from({length:coordinateRows},(_,r)=>panelLabels.slice(r*columns,r*columns+columns))];
@@ -1213,7 +1233,7 @@ function piecewiseDiscontinuousSpec(plan,id){
   if(canvas.height+bandExtra>1099)throw Error('COORDINATE_PANEL_TOO_TALL');
   const rowCenters=bandRowCenters(pitches,55);
   const bandCenters=Object.fromEntries(rows.flatMap((row,r)=>row.map((labelId,k)=>[labelId,[panelLabels.length===1||columns===1?canvas.width/2:canvas.width*(k?.72:.28),rowCenters[r]]])));
-  return {id,visualType:'function_graph',viewport:{...graphViewport(v,{...canvas,height:canvas.height+bandExtra}),topInset:canvas.topInset+bandExtra,...((p.axisRatio??1)===1?{equalUnits:true}:{})},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts({axisTickValues:p.axisTickValues??{x:[],y:[]}}),equationLabelCenters:bandCenters,discontinuousEndpointFeatures:{schemaVersion:'PIECEWISE_DISCONTINUOUS_ENDPOINTS_v1',markers:features.markers},discontinuousEndpointFeaturePolicy:{schemaVersion:'PIECEWISE_DISCONTINUOUS_ENDPOINT_POLICY_v1',markerRadiusIntrinsicPx:4}},objects};
+  return {id,visualType:'function_graph',viewport:{...graphViewport(v,{...canvas,height:canvas.height+bandExtra}),topInset:canvas.topInset+bandExtra,...((p.axisRatio??1)===1?{equalUnits:true}:{})},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts({axisTickValues:p.axisTickValues??{x:[],y:[]}}),tickLabelFallbackCallout:true,equationLabelCenters:bandCenters,discontinuousEndpointFeatures:{schemaVersion:'PIECEWISE_DISCONTINUOUS_ENDPOINTS_v1',markers:[...features.markers,...sharedMarkers]},discontinuousEndpointFeaturePolicy:{schemaVersion:'PIECEWISE_DISCONTINUOUS_ENDPOINT_POLICY_v1',markerRadiusIntrinsicPx:4}},objects};
 }
 
 // multi-curve-figure-v1: three to six independent nonlinear curves in one plane (source-first; for a figure bounded

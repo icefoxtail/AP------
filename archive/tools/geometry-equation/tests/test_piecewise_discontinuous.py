@@ -153,4 +153,63 @@ class LimitArrows(unittest.TestCase):
         self.assertIsNone(refused(p))
         g=fit_overview(JUMP)['graphPlan'];self.assertNotIn('limitArrows',g['piecewiseDiscontinuousFeatures']);self.assertNotIn('limit-arrow',produce(g)['svg'])
 
+ARC_PLAN={'family':'piecewise-discontinuous','pieces':[
+ {'kind':'ARC','center':['0','0'],'radiusSquared':'1','fromX':'0','toX':'1','branch':'UPPER','rightClosed':False},
+ {'kind':'ARC','center':['1','0'],'radiusSquared':'1','fromX':'1','toX':'2','branch':'UPPER'}],
+ 'jumpValues':[{'x':'1','y':'1'}],'requiredPoints':[],'axisTickValues':{'x':[1,2],'y':[1]},'limitArrows':[{'at':'1','side':'LEFT','toY':'0'}]}
+
+class ArcPieces(unittest.TestCase):
+    def test_model_passes_and_markers_are_exact(self):
+        g=fit_overview(ARC_PLAN)['graphPlan'];out=produce(g)
+        self.assertEqual([(m['x'],m['y'],m['state']) for m in g['piecewiseDiscontinuousFeatures']['markers']],[('0','1','CLOSED'),('1','0','OPEN'),('1','1','CLOSED'),('2','0','CLOSED')])
+        result=audit(g,out['svg'],out['transform']);self.assertEqual(result['status'],'PASS',result['errors'])
+    def test_claims_fail_closed(self):
+        p=copy.deepcopy(ARC_PLAN);p['pieces'][0]['toX']='2';self.assertTrue(refused(p).startswith('PIECEWISE_ARC_OUT_OF_DOMAIN'))
+        p=copy.deepcopy(ARC_PLAN);p['pieces'][0]['branch']='MIDDLE';self.assertTrue(refused(p).startswith('PIECEWISE_ARC_INVALID'))
+        p=copy.deepcopy(ARC_PLAN);p['pieces'][0]['radiusSquared']='0';self.assertTrue(refused(p).startswith('PIECEWISE_ARC_INVALID'))
+        p=copy.deepcopy(ARC_PLAN);p['axisScale']=.5;self.assertIsNotNone(refused(p))
+    def test_top_of_a_half_circle_must_be_marked(self):
+        p=copy.deepcopy(ARC_PLAN);p['pieces']=[{'kind':'ARC','center':['0','0'],'radiusSquared':'1','fromX':'-1','toX':'1','branch':'UPPER'}];p['jumpValues']=[];p['limitArrows']=[]
+        self.assertTrue(refused(p).startswith('PIECEWISE_DISCONTINUOUS_EXTREMUM_NOT_IN_REQUIRED_POINTS'))
+        p['requiredPoints']=[{'id':'T','x':0,'y':1}];self.assertIsNone(refused(p))
+    def test_observer_reads_the_arc(self):
+        g=fit_overview(ARC_PLAN)['graphPlan'];model=produce(g);svg=model['svg'];transform=model['transform']
+        first=re.search(r'(<polyline id="curve-piece-1"[^>]*points=")([^"]*)(")',svg);pts=first.group(2).split()
+        mid=len(pts)//2;x,y=pts[mid].split(',');moved=svg[:first.start(2)]+' '.join(pts[:mid]+[x+','+str(float(y)+9)]+pts[mid+1:])+svg[first.end(2):]
+        self.assertEqual(audit(g,moved,transform)['status'],'FAIL')
+        frozen=copy.deepcopy(g);frozen['piecewiseDiscontinuousFeatures']['pieces'][0]['radiusSquared']='2'
+        self.assertEqual(audit(frozen,svg,transform)['status'],'FAIL')
+
+SHARED_PLAN={'family':'piecewise-discontinuous','functionName':'f','xWindow':[-1,3],'requiredPoints':[],'axisTickValues':{'x':[1,2],'y':[1]},
+ 'pieces':[{'coefficients':['1','-1'],'domain':[None,1],'end':'OPEN'},{'coefficients':['-1','1'],'domain':[1,2],'start':'OPEN','end':'OPEN'},{'coefficients':['-1','1'],'domain':[2,None],'start':'OPEN'}],
+ 'jumpValues':[{'x':'1','y':'1'},{'x':'2','y':'0'}],
+ 'sharedCurve':{'id':'g','style':'DASHED','pieces':copy.deepcopy(ARC_PLAN['pieces']),'jumpValues':[{'x':'1','y':'1'}]}}
+
+class SharedAxes(unittest.TestCase):
+    def build(self,plan=SHARED_PLAN):
+        g=fit_overview(plan)['graphPlan'];model=produce(g);return g,model['svg'],model['transform']
+    def test_one_frame_and_coincident_dots_listed(self):
+        g,svg,transform=self.build()
+        self.assertEqual(g['viewport'],g['sharedCurve']['viewport'])
+        self.assertEqual([(row['first'],row['second']) for row in g['sharedFeatures']['coincidentMarkers']],[('endpoint-1','endpoint-2'),('endpoint-2','endpoint-3'),('endpoint-3','endpoint-4')])
+        result=audit(g,svg,transform);self.assertEqual(result['status'],'PASS',result['errors'])
+    def test_style_is_required_and_checked(self):
+        p=copy.deepcopy(SHARED_PLAN);del p['sharedCurve']['style'];self.assertEqual(refused(p),'PAIR_SHARED_CURVES_INDISTINCT')
+        g,svg,transform=self.build()
+        same=re.sub(r'(<polyline id="curve-g-piece-\d"[^>]*?) stroke-dasharray="6 4"',r'\1',svg)
+        self.assertNotEqual(same,svg);result=audit(g,same,transform)
+        self.assertEqual(result['status'],'FAIL');self.assertIn('PAIR_SHARED_CURVES_INDISTINCT',result['errors'])
+    def test_overlapping_dots_must_differ_in_size(self):
+        g,svg,transform=self.build()
+        big=re.sub(r'(<circle id="discontinuous-g-endpoint-2"[^>]*?) r="[0-9.]+"',r'\1 r="4"',svg)
+        self.assertNotEqual(big,svg);result=audit(g,big,transform)
+        self.assertEqual(result['status'],'FAIL');self.assertIn('PAIR_SHARED_MARKER_INDISTINCT',result['errors'])
+    def test_second_curve_is_audited_on_its_own(self):
+        g,svg,transform=self.build()
+        moved=re.sub(r'(<circle id="discontinuous-g-endpoint-1"[^>]*?cx=")([0-9.]+)',lambda m:m.group(1)+str(float(m.group(2))+12),svg)
+        self.assertNotEqual(moved,svg);self.assertEqual(audit(g,moved,transform)['status'],'FAIL')
+        missing=re.sub(r'<polyline id="curve-g-piece-2"[^>]*/>','',svg);self.assertEqual(audit(g,missing,transform)['status'],'FAIL')
+    def test_reference_lines_are_not_supported_with_shared(self):
+        p=copy.deepcopy(SHARED_PLAN);p['referenceLines']=[{'id':'k','y':'1','intersectionX':['0']}];self.assertEqual(refused(p),'PAIR_SHARED_REFERENCE_LINES_UNSUPPORTED')
+
 if __name__=='__main__':unittest.main()

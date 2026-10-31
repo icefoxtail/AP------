@@ -23,7 +23,7 @@ test('a pair becomes a two-panel composite with one x window and arrows routed b
 });
 test('explicit xWindow wins; a missing or unsupported layout and bad curves are refused',()=>{
   const p=plan();p.graphPlan.xWindow=[-3,3];assert.deepEqual(expandDiscontinuousPair(p).panels[1].plan.graphPlan.xWindow,[-3,3]);
-  const shared=plan();shared.graphPlan.layout='SHARED';assert.match(code(()=>expandDiscontinuousPair(shared)),/PIECEWISE_DISCONTINUOUS_PAIR_LAYOUT_UNSUPPORTED:SHARED/);
+  const odd=plan();odd.graphPlan.layout='SIDE';assert.match(code(()=>expandDiscontinuousPair(odd)),/PIECEWISE_DISCONTINUOUS_PAIR_LAYOUT_UNSUPPORTED:SIDE/);
   const none=plan();delete none.graphPlan.layout;assert.match(code(()=>expandDiscontinuousPair(none)),/PAIR_LAYOUT_REQUIRED/);
   const same=plan();same.graphPlan.referenceCurves[0].id='f';assert.match(code(()=>expandDiscontinuousPair(same)),/PAIR_CURVES_INVALID/);
   const two=plan();two.graphPlan.referenceCurves.push({id:'h',pieces:[]});assert.match(code(()=>expandDiscontinuousPair(two)),/PAIR_CURVES_INVALID/);
@@ -36,4 +36,15 @@ test('the golden pair plan (item31g7) expands to eight pieces per function with 
   assert.deepEqual(out.panels.map(panel=>panel.plan.graphPlan.pieces.length),[8,8]);
   assert.deepEqual(out.panels.map(panel=>panel.plan.graphPlan.limitArrows.length),[1,2]);
   assert.equal(out.panels[0].plan.graphPlan.xWindow[0],-2);
+});
+
+test('SHARED keeps one plan with the second curve as sharedCurve and demands a distinct line style',()=>{
+  const p=plan();p.graphPlan.layout='SHARED';
+  assert.equal(code(()=>expandDiscontinuousPair(p)),'PAIR_SHARED_CURVES_INDISTINCT');
+  p.graphPlan.referenceCurves[0].style='DASHED';
+  const out=expandDiscontinuousPair(p);
+  assert.equal(out.capability,'piecewise-discontinuous-spike-v1');assert.equal(out.graphPlan.sharedCurve.id,'g');assert.equal(out.graphPlan.sharedCurve.style,'DASHED');
+  assert.deepEqual(out.graphPlan.limitArrows,[{at:'0',side:'RIGHT',toY:'1'},{at:'0',side:'LEFT',toY:'0'}]);
+  assert.deepEqual(out.graphPlan.sharedCurve.limitArrows,[{at:'1',side:'LEFT',toY:'1'}]);
+  assert.equal(out.graphPlan.referenceCurves,undefined);assert.equal(out.graphPlan.layout,undefined);
 });

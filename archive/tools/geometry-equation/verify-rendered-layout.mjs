@@ -224,7 +224,9 @@ function ownerLeaderClearance(label,leader,geometry,tickIntersection,scale) {
         if(intersection)intersections.push(intersection);
       }
     }
-    const owner=allowedOwnerIds.has(other.id);
+    // A dot drawn exactly on this tick, and a dashed approach guide that ends on it, belong to the tick the leader names (the leader may touch the guide only at its start).
+    const nearTick=point=>Array.isArray(point)&&Math.hypot(point[0]-tickIntersection[0],point[1]-tickIntersection[1])<=1*scale+.25;
+    const owner=allowedOwnerIds.has(other.id)||((other.kind==='point'||other.kind==='circle')&&nearTick(other.at))||(/-guide-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.some(nearTick))||(/^[fg]-piece-\d+/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25));
     if(owner){
       if(intersections.some(point=>Math.hypot(point[0]-tickIntersection[0],point[1]-tickIntersection[1])>1*scale+.25))errors.push('LEADER_OWNER_ENDPOINT_CROSSING:'+other.id);
     }else if(minimum<=clearance)errors.push('LEADER_NEAR_GEOMETRY:'+leader.id+':'+other.id);
