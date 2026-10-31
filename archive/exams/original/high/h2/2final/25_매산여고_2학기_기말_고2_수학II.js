@@ -180,14 +180,15 @@ window.questionBank = [
       "$\\dfrac{29}{5}$"
     ],
     "answer": "①",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q6-solution.svg",
-    "solutionImageAlt": "삼차함수 y=x³+1과 접선 y=3x−1 사이의 −2부터 1까지 음영 영역",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q6-solution-v2.svg",
+    "solutionImageAlt": "삼차곡선 y=f(x)=x³+1과 점 (1,2)에서 접하는 접선 y=3x−1을 함께 그린 그래프이다. 두 경계가 x=−2에서 만나고 x=1에서 접하며, 그 사이의 영역 S가 색칠되어 있다.",
     "solutionImageSize": "full",
     "solution": "$f(x)=x^3+1$이면 $f'(x)=3x^2$이다.\n$x=1$에서 접선의 기울기는 $3$이므로\n$y-2=3(x-1)$\n$y=3x-1$이다.\n곡선과 접선의 교점에서는\n$x^3+1=3x-1$\n$x^3-3x+2=0$\n$(x-1)^2(x+2)=0$이다.\n따라서 두 경계의 $x$좌표는 $-2,\\ 1$이다.\n$-2\\le x\\le1$에서\n$(x^3+1)-(3x-1)=(x-1)^2(x+2)\\ge0$이므로 곡선이 위쪽이다.\n구하는 넓이는\n$S=\\displaystyle\\int_{-2}^{1}(x^3-3x+2)dx$\n$=\\left[\\dfrac14x^4-\\dfrac32x^2+2x\\right]_{-2}^{1}$\n$=\\left(\\dfrac14-\\dfrac32+2\\right)-\\left(4-6-4\\right)$\n$=\\dfrac34+6=\\dfrac{27}{4}$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageCaption": "곡선 y=f(x)=x³+1과 점 (1,2)에서의 접선 y=3x−1은 x=−2, x=1에서 만난다. 두 경계 사이의 영역 S가 구하는 도형이다."
   },
   {
     "id": 7,
