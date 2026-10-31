@@ -3,6 +3,7 @@ from dataclasses import dataclass,asdict
 import copy
 import heapq
 import math
+import re
 import html
 from .geometry_model import finite
 
@@ -11,6 +12,7 @@ PATH_LABEL_SIDE_MIN_DOT=0.5   # E37: a direction counts as on a path's side when
 OWNER_BOUND_POINT_LABELS={'POINT_NAME','COORDINATE_LABEL'}
 POINT_OWNER_DISTANCE_TOLERANCE_PX2=1e-6
 MEASURED_OWNER_REPAIR_GAPS=(64,80,96,128)
+LEADER_ONLY_MIN_PX=14.0
 POINT_NAME_RING_RADII=(12,16,20,26,32,40,48,56,64,72,80,96,112,128,144,160,180,210,240,270,300)
 NEAR_RELOCATION_LEADER_MIN_GAP=20
 # A wedge narrower than twice the 15-degree leader/line tolerance keeps its bisector leaders hidden under a ray (visible_owner_leader rejects them).
@@ -126,7 +128,7 @@ def segment_segment_distance(a,b,c,d):
         if cross(ab,ac)*cross(ab,ad)<=1e-12 and cross(cd,ca)*cross(cd,cb)<=1e-12:return 0.0
     return min(point_segment_distance(a,c,d),point_segment_distance(b,c,d),point_segment_distance(c,a,b),point_segment_distance(d,a,b))
 
-def leader_clear(start,end,obstacles,owner_ids,clearance=6.0,near_start=False,start_tolerance=1e-4):
+def leader_clear(start,end,obstacles,owner_ids,clearance=6.0,near_start=False,start_tolerance=1e-4,skip_ids=frozenset()):
     """near_start (E31): a leader that starts on its own line right beside a parallel neighbour (closer than `clearance`) may leave it when it only moves
     away from that neighbour: the closest approach to the neighbour is its start, which keeps at least LEADER_NEAR_START_MIN_PX from it, and it never crosses it."""
     def intersection_points(a,b,c,d):
@@ -137,6 +139,7 @@ def leader_clear(start,end,obstacles,owner_ids,clearance=6.0,near_start=False,st
         return [[a[0]+t*r[0],a[1]+t*r[1]]] if -1e-9<=t<=1+1e-9 and -1e-9<=u<=1+1e-9 else []
     for obstacle in obstacles:
         kind=obstacle.get('kind');geometry=obstacle.get('geometry');owner=obstacle.get('id') in owner_ids
+        if obstacle.get('id') in skip_ids:continue
         if kind in {'label','conditionBox','rectangle'}:
             box=geometry if isinstance(geometry,Box) else Box(**geometry) if isinstance(geometry,dict) and {'x','y','width','height'}<=set(geometry) else None
             if box is not None and segment_hits_box(start,end,box.expand(clearance)):return False
@@ -365,10 +368,10 @@ def line_between(start,box,occupied,incident):
     return any(o.get('kind') in {'line','axis','auxiliary','curve'} and o.get('id') not in incident and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
                and any(segment_segment_distance(start,end,c,d)<=1.0 for c,d in zip(o['geometry'],o['geometry'][1:])) for o in occupied)
 
-def visible_owner_leader(start,box,occupied,incident,near_start=False,start_tolerance=1e-4):
+def visible_owner_leader(start,box,occupied,incident,near_start=False,start_tolerance=1e-4,skip_ids=frozenset()):
     """End of a leader from the point to the label box, or None when it would touch other geometry or hide along a line through the point."""
     end=owner_leader_endpoint(box,start,(box.x+box.width/2,box.y+box.height/2))
-    if not leader_clear(start,end,occupied,incident,near_start=near_start,start_tolerance=start_tolerance):return None
+    if not leader_clear(start,end,occupied,incident,near_start=near_start,start_tolerance=start_tolerance,skip_ids=skip_ids):return None
     # A leader running along a line through the point (within 15 degrees) hides under that line: not a visible leader.
     if any(o.get('id') in incident and o.get('kind') in {'line','axis','auxiliary','curve','leader'} and isinstance(o.get('geometry'),(list,tuple))
            and any(point_segment_distance(start,c,d)<=1e-3 and leader_hides_along(start,end,c,d) for c,d in zip(o['geometry'],o['geometry'][1:]))
@@ -724,6 +727,10 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
         # labelPlacement LEADER on an angle mark (E12b): no search inside the angle and no box beside the arc; only the outside leader from its own arc, with the whole box outside the wedge.
         force_leader=bool(label.get('wedgeSearch',{}).get('forceLeader'))
         if force_leader:default_gaps=()
+        leader_only=bool(label.get('leaderOnly'))
+        # leaderOnly (G7c): a thin leader may cross the axes, ticks and dashed guides (they are guides, not the curves it must not be confused with); never a curve or another line.
+        leader_skip=frozenset(o['id'] for o in obstacles if leader_only and isinstance(o.get('id'),str) and (o.get('kind') in {'axis','tick'} or re.search(r'-guide(-[xy])?$',o['id']) or o['id'].startswith('overlay-guide-')))
+        if leader_only:default_gaps=()
         if label.get('regionLeader',{}).get('only'):default_gaps=()
         if tick_callout is not None:
             offset=tick_callout['offsetUser'];center=[label['at'][0]+offset[0],label['at'][1]+offset[1]]
@@ -1053,10 +1060,11 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 for step in range(48):
                     angle=math.radians(step*7.5)
                     box=Box(at[0]+radius*math.cos(angle)-w/2,at[1]+radius*math.sin(angle)-h/2,w,h)
-                    if acceptable(box):ring=box;ring_method='POINT_NAME_RING';break
+                    if leader_only and box_point_distance(box,at)<LEADER_ONLY_MIN_PX:continue
+                    if not leader_only and acceptable(box):ring=box;ring_method='POINT_NAME_RING';break
                     if owner_marker is None or not acceptable(box,owner_check=False):continue
                     incident=incident or owner_incident_ids(at,owner_marker,occupied)
-                    end=visible_owner_leader(at,box,occupied,incident)
+                    end=visible_owner_leader(at,box,occupied,incident,skip_ids=leader_skip)
                     if end is None:continue
                     tie_to_owner(end);ring=box
                     ring_method='OWNER_LEADER_'+('E','SE','S','SW','W','NW','N','NE')[int(((step*7.5+22.5)%360)//45)];break

@@ -1216,7 +1216,15 @@ function piecewiseDiscontinuousSpec(plan,id){
     if(!second||second.schemaVersion!=='PIECEWISE_DISCONTINUOUS_FEATURES_v1'||!['DASHED','ACCENT'].includes(sharedCurve.style))throw Error('PIECEWISE_DISCONTINUOUS_FEATURE_INVENTORY_REQUIRED');
     second.pieces.forEach((piece,i)=>objects.push({id:'g-piece-'+(i+1),kind:'FUNCTION_GRAPH',expression:piece.kind==='ARC'?arcExpression(piece):polyText(piece.coefficients),domain:piece.drawInterval,criticalX:[],branch:'G_PIECE_'+(i+1),curveStyle:sharedCurve.style}));
     const gx=v[1]-spanX*.2,grow=anchorOnRows(second.pieces,gx);
-    objects.push({id:'g-curve-name',kind:'GRAPH_ANNOTATION',text:(sharedCurve.name??sharedCurve.id)+'(x)',at:[gx,clampY(rowValue(grow,gx)+spanY*.14)],math:true,priority:0});
+    const gName=(sharedCurve.name??sharedCurve.id)+'(x)',nameLabel=sharedCurve.nameLabel;
+    if(nameLabel?.placement==='LEADER'){
+      // nameLabel.placement LEADER (G7c): the name stands on a visible leader that starts ON g (a hidden point at anchorX, y from g's own piece) and ends on the label box.
+      const longest=second.pieces.reduce((best,row)=>row.drawInterval[1]-row.drawInterval[0]>best.drawInterval[1]-best.drawInterval[0]?row:best,second.pieces[0]);
+      const ax=nameLabel.anchorX!==undefined?exactValue(nameLabel.anchorX):(longest.drawInterval[0]+longest.drawInterval[1])/2,arow=anchorOnRows(second.pieces,ax);
+      if(!(arow.drawInterval[0]-1e-9<=ax&&ax<=arow.drawInterval[1]+1e-9))throw Error('CURVE_NAME_LEADER_ANCHOR_OFF_CURVE');
+      objects.push({id:'g-name-anchor',kind:'POINT',at:[ax,rowValue(arow,ax)],name:null,markerRadius:2.4,priority:2});
+      objects.push({id:'g-curve-name',kind:'EQUATION_LABEL',target:'g-name-anchor',text:nameLabel.text??gName,at:[ax,rowValue(arow,ax)],ringLeader:true,leaderOnly:true,priority:0});
+    }else objects.push({id:'g-curve-name',kind:'GRAPH_ANNOTATION',text:gName,at:[gx,clampY(rowValue(grow,gx)+spanY*.14)],math:true,priority:0});
     for(const arrow of second.limitArrows??[]){
       if(arrow.guideX)objects.push({id:'g-'+arrow.id+'-guide-x',kind:'SEGMENT',from:[arrow.atValue,arrow.toYValue],to:[arrow.atValue,0],dash:true});
       if(arrow.guideY)objects.push({id:'g-'+arrow.id+'-guide-y',kind:'SEGMENT',from:[arrow.atValue,arrow.toYValue],to:[0,arrow.toYValue],dash:true});

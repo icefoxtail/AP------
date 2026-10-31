@@ -48,3 +48,15 @@ test('SHARED keeps one plan with the second curve as sharedCurve and demands a d
   assert.deepEqual(out.graphPlan.sharedCurve.limitArrows,[{at:'1',side:'LEFT',toY:'1'}]);
   assert.equal(out.graphPlan.referenceCurves,undefined);assert.equal(out.graphPlan.layout,undefined);
 });
+test('SHARED carries overlays and the g nameLabel through; STACKED refuses both instead of dropping them (G7c)',()=>{
+  const golden=JSON.parse(fs.readFileSync(new URL('../ops/golden/item76g7c/plan.json',import.meta.url),'utf8'));
+  const out=expandDiscontinuousPair(golden);
+  assert.deepEqual(out.graphPlan.sharedCurve.nameLabel,{text:'g(x)',placement:'LEADER',anchorX:'3/2'});
+  assert.equal(out.graphPlan.overlays.points[0].on,'g');
+  const stacked=structuredClone(golden);stacked.graphPlan.layout='STACKED';
+  assert.match(code(()=>expandDiscontinuousPair(stacked)),/PAIR_STACKED_OVERLAYS_UNSUPPORTED/);
+  const labelOnly=structuredClone(golden);labelOnly.graphPlan.layout='STACKED';delete labelOnly.graphPlan.overlays;
+  assert.match(code(()=>expandDiscontinuousPair(labelOnly)),/PAIR_STACKED_OVERLAYS_UNSUPPORTED/);
+  const requiredPoints=structuredClone(golden);requiredPoints.graphPlan.referenceCurves[0].requiredPoints=[{id:'A',x:0,y:1}];
+  assert.match(code(()=>expandDiscontinuousPair(requiredPoints)),/PAIR_SHARED_REQUIRED_POINTS_UNSUPPORTED/);
+});
