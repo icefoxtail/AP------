@@ -832,7 +832,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "84ea85b021831e07c2eb7e7cd8ce5218b9b552b88918fd4ddd8df89caee024f7"
+    "solutionSha256": "84ea85b021831e07c2eb7e7cd8ce5218b9b552b88918fd4ddd8df89caee024f7",
+    "solutionImage": "assets/images/19_순천여고_2학기_기말_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "원 C와 포물선이 원점에서 접하고 두 점 P, Q에서 만난다. 포물선과 오른쪽 원호 사이의 영역 S1, 왼쪽 원호 사이의 영역 S2가 좌우 대칭으로 색칠되어 있다.",
+    "solutionImageCaption": "원과 포물선이 원점에서 접하고 두 점 P, Q에서 만나면 포물선과 원호로 둘러싸인 영역 S₁, S₂는 y축에 대해 서로 대칭이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
