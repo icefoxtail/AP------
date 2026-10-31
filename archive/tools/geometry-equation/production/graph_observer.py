@@ -2022,8 +2022,11 @@ def piecewise_polynomial_audit(plan,svg,transform):
             if node is None or node.get('data-role')!=role:return False
             mx,my=to_model(float(node.get('cx')),float(node.get('cy')))
             return abs(mx-wx)<=x_tol and abs(my-wy)<=y_tol
+        # coordinateBand.hide (G6c): a hidden required point keeps its dot at the exact place (checked below like any key point) but has no coordinate text in the band or beside it.
+        band_hidden=set(plan['coordinateBand']['hide']) if isinstance(plan.get('coordinateBand'),dict) and isinstance(plan['coordinateBand'].get('hide'),list) else set()
         for index,point in enumerate(required,1):
             if not dot_at('required-point-'+str(index),point['x'],point['y']):errors.append('PIECEWISE_POLY_KEY_POINT_DOT_MISSING:'+str(point.get('id')))
+            if point.get('id') in band_hidden and any((node.get('id') or '').startswith('required-point-'+str(index)+'-coordinate') for node in root.iter()):errors.append('COORDINATE_BAND_HIDDEN_POINT_SHOWN:'+str(point.get('id')))
         for line_id,level,xs,keys,m,heights in expected_rows:
             node=next((n for n in root.iter() if n.tag.split('}')[-1]=='line' and n.get('id')=='line-'+str(line_id)),None)
             if node is None:errors.append('PIECEWISE_POLY_REFERENCE_LINE_MISSING:'+str(line_id));continue
@@ -2678,19 +2681,124 @@ def _ov_curve_circle_root(plan,ring,curve_ref,pick):
         roots.append((a+b)/2)
     if fs and fs[-1]==0:roots.append(xs[-1])
     roots=sorted(roots);roots=[r for k,r in enumerate(roots) if k==0 or r-roots[k-1]>1e-7]
+    # G6c: a touching root gives no sign change. The observer finds it its own way: a local minimum of |residual| that reaches zero (refined by golden-section
+    # search); the curve slope there must equal the circle's tangent slope.
+    touching=[]
+    if plan.get('family') in ('polynomial','rational','piecewise-polynomial'):
+        def slope_matches(x0):
+            h=1e-6
+            try:y0,yp,ym=(float(S.N(_ov_curve_value(plan,S.Float(v,40),curve_id),40)) for v in (x0,x0+h,x0-h))
+            except (ValueError,TypeError,ZeroDivisionError):return False
+            return abs(y0-cy)>1e-9 and abs((yp-ym)/(2*h)-(-(x0-cx)/(y0-cy)))<=1e-4
+        candidates=list(roots);magnitude=[abs(v) if v is not None else None for v in fs]
+        for i in range(1,n):
+            if magnitude[i-1] is None or magnitude[i] is None or magnitude[i+1] is None or not (magnitude[i]<=magnitude[i-1] and magnitude[i]<=magnitude[i+1]):continue
+            a,b=xs[i-1],xs[i+1];phi=(math.sqrt(5)-1)/2
+            for _ in range(120):
+                c=b-phi*(b-a);d=a+phi*(b-a);fc,fd=residual(c),residual(d)
+                if fc is None or fd is None:break
+                if abs(fc)<abs(fd):b=d
+                else:a=c
+            x0=(a+b)/2;f0=residual(x0)
+            if f0 is not None and abs(f0)<=1e-9*max(1.0,r2) and not any(abs(x0-r)<=1e-6 for r in candidates):candidates.append(x0)
+        touching=sorted(x0 for x0 in candidates if slope_matches(x0))
+        roots=[r for r in roots if not any(abs(r-t)<=1e-6 for t in touching)]
+    if pick=='TANGENT':
+        if plan.get('family') not in ('polynomial','rational','piecewise-polynomial'):raise ValueError('OVERLAY_CIRCLE_CURVE_INTERSECTION_NOT_EXACT')
+        if not touching:raise ValueError('OVERLAY_CIRCLE_CURVE_TANGENT_NOT_FOUND')
+        if len(touching)!=1:raise ValueError('OVERLAY_CIRCLE_CURVE_TANGENT_AMBIGUOUS')
+        roots=touching
+    else:roots=sorted(roots+touching)
     if not roots:raise ValueError('OVERLAY_CIRCLE_CURVE_NO_INTERSECTION')
     if pick is None:
         if len(roots)!=1:raise ValueError('OVERLAY_CIRCLE_PICK_REQUIRED')
         x=roots[0]
     else:
-        if pick not in ('MIN_X','MAX_X'):raise ValueError('OVERLAY_CIRCLE_PICK_INVALID')
-        x=roots[0] if pick=='MIN_X' else roots[-1]
+        if pick not in ('MIN_X','MAX_X','TANGENT'):raise ValueError('OVERLAY_CIRCLE_PICK_INVALID')
+        x=roots[0] if pick in ('MIN_X','TANGENT') else roots[-1]
     y=float(S.N(_ov_curve_value(plan,S.Float(x,40),curve_id),40))
     def snapped(value):
         # a root that is a rational to 1e-9 is kept as that rational (the coordinate labels read rationals); anything else stays a 30-digit float
         rational=S.nsimplify(value,rational=True,tolerance=1e-9)
         return rational if abs(float(rational)-value)<1e-9 and rational.is_Rational else S.Float(value,30)
     return snapped(x),snapped(y)
+
+def _ov_boundary_region(plan,entry,circles,points):
+    """circleRegions in boundary form (G6c), read from the raw plan only: pieces of the drawn curve (exact x ends) and circle arcs between declared points."""
+    if set(entry)-{'id','boundary','fill','label'} or not isinstance(entry.get('id'),str) or entry.get('fill','LIGHT') not in ('LIGHT','MEDIUM') or not isinstance(entry['boundary'],list) or not 2<=len(entry['boundary'])<=4:raise ValueError('OVERLAY_CIRCLE_REGION_INVALID')
+    pieces=[]
+    for piece in entry['boundary']:
+        if isinstance(piece,dict) and 'curve' in piece:
+            ref=piece['curve']
+            if not isinstance(ref,str):raise ValueError('OVERLAY_CIRCLE_REGION_CURVE_UNKNOWN')
+            if plan.get('family')=='exp-log-pair':
+                curve_id=ref.split(':',1)[1] if ref.startswith('curve:') else ref
+                if not any(isinstance(row,dict) and row.get('id')==curve_id for row in plan.get('curves') or []):raise ValueError('OVERLAY_CIRCLE_REGION_CURVE_UNKNOWN')
+            else:
+                curve_id=None
+                if ref!='curve' and ref!=plan.get('functionName'):raise ValueError('OVERLAY_CIRCLE_REGION_CURVE_UNKNOWN')
+            pieces.append({'kind':'CURVE','curveId':curve_id,'x0':float(S.N(_ov_reader(piece['fromX']),30)),'x1':float(S.N(_ov_reader(piece['toX']),30))})
+        elif isinstance(piece,dict) and 'arc' in piece:
+            if piece['arc'] not in circles or piece.get('from') not in points or piece.get('to') not in points or piece.get('sweep') not in ('MINOR','MAJOR'):raise ValueError('OVERLAY_CIRCLE_REGION_INVALID')
+            pieces.append({'kind':'ARC','circle':piece['arc'],'from':piece['from'],'to':piece['to'],'sweep':piece['sweep']})
+        else:raise ValueError('OVERLAY_CIRCLE_REGION_INVALID')
+    return {'id':entry['id'],'fill':entry.get('fill','LIGHT'),'pieces':pieces,'label':entry.get('label')}
+
+def _ov_point_in_polygon(polygon,point):
+    inside=False;x,y=point
+    for (ax,ay),(bx,by) in zip(polygon,polygon[1:]+polygon[:1]):
+        if (ay>y)!=(by>y) and x<(bx-ax)*(y-ay)/(by-ay)+ax:inside=not inside
+    return inside
+
+def _ov_check_boundary_path(plan,region,node,expected,to_data,sx,display,near,errors):
+    """The boundary region path M v0 (L... | A...)* Z read back against the raw plan: every curve vertex lies on the drawn curve between the declared x, every arc has the
+    circle's radius, flags and end, the junctions are the declared points, and a point inside the expected area is inside the drawn path (even-odd)."""
+    ident=str(region['id']);tol=.6/(sx*display)
+    tokens=re.findall(r'[MLAZ]|-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('d') or '')
+    position=0
+    def number(count):
+        nonlocal position
+        values=[float(token) for token in tokens[position+1:position+1+count]];position+=1+count;return values
+    try:
+        if tokens[0]!='M':raise ValueError
+        position=0;start=to_data(*number(2));current=start;drawn=[start];expected_polygon=[start]
+        for piece in region['pieces']:
+            if piece['kind']=='CURVE':
+                first=(piece['x0'],float(S.N(_ov_curve_value(plan,S.Float(piece['x0'],40),piece['curveId']),40)));last=(piece['x1'],float(S.N(_ov_curve_value(plan,S.Float(piece['x1'],40),piece['curveId']),40)))
+                if not near(current,first):errors.append('OVERLAY_CIRCLE_REGION_CORNER_MISMATCH:'+ident)
+                count=0;direction=1 if piece['x1']>piece['x0'] else -1;previous=current
+                while position<len(tokens) and tokens[position]=='L':
+                    vertex=to_data(*number(2));count+=1;drawn.append(vertex)
+                    want=float(S.N(_ov_curve_value(plan,S.Float(vertex[0],40),piece['curveId']),40))
+                    if abs(want-vertex[1])>max(tol*sx/sx,1e-3*max(1,abs(want))):errors.append('OVERLAY_CIRCLE_REGION_CURVE_MISMATCH:'+ident);break
+                    if (vertex[0]-previous[0])*direction<=0 or (vertex[0]-piece['x0'])*direction<-tol or (vertex[0]-piece['x1'])*direction>tol:errors.append('OVERLAY_CIRCLE_REGION_CURVE_RANGE_MISMATCH:'+ident);break
+                    previous=vertex
+                    if near(vertex,last):break
+                if count<4 or not near(previous,last):errors.append('OVERLAY_CIRCLE_REGION_CURVE_MISMATCH:'+ident)
+                current=previous
+                for k in range(49):
+                    xv=piece['x0']+(piece['x1']-piece['x0'])*k/48;expected_polygon.append((xv,float(S.N(_ov_curve_value(plan,S.Float(xv,40),piece['curveId']),40))))
+            else:
+                cx,cy,r2=[float(S.N(v,30)) for v in expected['circles'][piece['circle']]];radius=math.sqrt(r2)
+                a=[float(S.N(v,30)) for v in expected['points'][piece['from']]];b=[float(S.N(v,30)) for v in expected['points'][piece['to']]]
+                ccw=(math.atan2(b[1]-cy,b[0]-cx)-math.atan2(a[1]-cy,a[0]-cx))%(2*math.pi)
+                counter=(ccw<math.pi)==(piece['sweep']=='MINOR');angle=ccw if counter else 2*math.pi-ccw
+                if tokens[position]!='A':raise ValueError
+                n=number(7);end=to_data(n[5],n[6])
+                if not near(current,(a[0],a[1])) or not near(end,(b[0],b[1])):errors.append('OVERLAY_CIRCLE_REGION_CORNER_MISMATCH:'+ident)
+                if abs(n[0]/sx-radius)>max(.5/(sx*display),1e-3*radius) or abs(n[1]/sx-radius)>max(.5/(sx*display),1e-3*radius) or n[2]!=0:errors.append('OVERLAY_CIRCLE_REGION_RADIUS_MISMATCH:'+ident)
+                if (int(n[3]),int(n[4]))!=(1 if angle>math.pi+1e-9 else 0,0 if counter else 1):errors.append('OVERLAY_CIRCLE_REGION_ARC_SIDE_MISMATCH:'+ident)
+                base=math.atan2(a[1]-cy,a[0]-cx);sign=1 if counter else -1
+                dense=[(cx+radius*math.cos(base+sign*angle*k/90),cy+radius*math.sin(base+sign*angle*k/90)) for k in range(1,91)]
+                drawn.extend(dense);expected_polygon.extend(dense);current=end
+        if tokens[position:]!=['Z'] or not near(current,start):errors.append('OVERLAY_CIRCLE_REGION_PATH_INVALID:'+ident);return
+    except (ValueError,IndexError,KeyError,TypeError,ZeroDivisionError):
+        errors.append('OVERLAY_CIRCLE_REGION_PATH_INVALID:'+ident);return
+    # a point inside the expected area (the centroid of the recomputed outline, when it falls inside) must be painted by the drawn path
+    twice=sum(ax*by-bx*ay for (ax,ay),(bx,by) in zip(expected_polygon,expected_polygon[1:]+expected_polygon[:1]))
+    if abs(twice)>1e-12:
+        centroid=(sum((ax+bx)*(ax*by-bx*ay) for (ax,ay),(bx,by) in zip(expected_polygon,expected_polygon[1:]+expected_polygon[:1]))/(3*twice),sum((ay+by)*(ax*by-bx*ay) for (ax,ay),(bx,by) in zip(expected_polygon,expected_polygon[1:]+expected_polygon[:1]))/(3*twice))
+        if _ov_point_in_polygon(expected_polygon,centroid) and not _ov_point_in_polygon(drawn,centroid):errors.append('OVERLAY_CIRCLE_REGION_INTERIOR_NOT_FILLED:'+ident)
 
 def _ov_expected(plan):
     """Every overlay element recomputed from the raw plan: points; lines; segments, guides and polygons."""
@@ -2813,6 +2921,8 @@ def _ov_expected(plan):
         seen_quadrants.add(number);quadrants.append({'id':entry['id'],'quadrant':number,'label':label,'fill':fill})
     circle_regions=[]
     for entry in raw.get('circleRegions',[]) or []:
+        if isinstance(entry,dict) and 'boundary' in entry:
+            circle_regions.append(_ov_boundary_region(plan,entry,circles,points));continue
         if not isinstance(entry,dict) or set(entry)-{'id','circle','from','to','side','fill'} or entry.get('circle') not in circles or entry.get('from') not in points or entry.get('to') not in points or entry.get('from')==entry.get('to'):raise ValueError('OVERLAY_CIRCLE_REGION_INVALID')
         if entry.get('side') not in ('ABOVE','BELOW','LEFT','RIGHT') or entry.get('fill','LIGHT') not in ('LIGHT','MEDIUM'):raise ValueError('OVERLAY_CIRCLE_REGION_INVALID')
         circle_regions.append({'id':entry['id'],'circle':entry['circle'],'from':entry['from'],'to':entry['to'],'side':entry['side'],'fill':entry.get('fill','LIGHT')})
@@ -3006,6 +3116,12 @@ def overlays_audit(plan,svg,transform):
         for region in expected['circleRegions']:
             ident='overlay-circle-region-'+str(region['id']);claimed.add(ident);node=paths.get(ident)
             if node is None:errors.append('OVERLAY_CIRCLE_REGION_MISSING:'+str(region['id']));continue
+            if 'pieces' in region:
+                if region.get('label'):claimed.add(ident+'-label')
+                _ov_check_boundary_path(plan,region,node,expected,to_data,sx,transform['displayScale'],near,errors)
+                if node.get('fill')!=palette[region['fill']]:errors.append('OVERLAY_CIRCLE_REGION_FILL_MISMATCH:'+str(region['id']))
+                if node.get('stroke') not in (None,'none'):errors.append('OVERLAY_CIRCLE_REGION_STROKE_PRESENT:'+str(region['id']))
+                continue
             cx,cy,r2=[float(S.N(v,30)) for v in expected['circles'][region['circle']]];radius=math.sqrt(r2)
             first=[float(S.N(v,30)) for v in expected['points'][region['from']]];second=[float(S.N(v,30)) for v in expected['points'][region['to']]]
             a0=math.atan2(first[1]-cy,first[0]-cx);ccw=(math.atan2(second[1]-cy,second[0]-cx)-a0)%(2*math.pi);mx,my=cx+radius*math.cos(a0+ccw/2),cy+radius*math.sin(a0+ccw/2)

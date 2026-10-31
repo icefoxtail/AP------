@@ -246,7 +246,10 @@ def validate(spec):
             if any(objects.get(name,{}).get('kind')!='POINT' for name in names): raise ValueError('REGION_BOUNDARY_UNKNOWN:'+obj['id'])
             if names[-1]!=names[0]: raise ValueError('REGION_NOT_CLOSED:'+obj['id'])
             for before,step in zip(names,loop['steps']):
-                if set(step)-{'to','arc'}: raise ValueError('REGION_BOUNDARY_UNKNOWN:'+obj['id'])
+                if set(step)-{'to','arc','via'}: raise ValueError('REGION_BOUNDARY_UNKNOWN:'+obj['id'])
+                if 'via' in step:
+                    via=step['via']
+                    if step.get('arc') is not None or not isinstance(via,list) or not via or len(via)>400 or any(not isinstance(v,list) or len(v)!=2 or any(isinstance(c,bool) or not isinstance(c,(int,float)) or not math.isfinite(c) for c in v) for v in via):raise ValueError('REGION_BOUNDARY_UNKNOWN:'+obj['id'])
                 arc=step.get('arc')
                 full=isinstance(arc,dict) and arc.get('full') is True
                 if before==step['to'] and not full: raise ValueError('REGION_DEGENERATE_EDGE:'+obj['id'])

@@ -1,0 +1,138 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "caption": "원 C와 포물선 y=x²는 원점 O에서 접하고 두 점 P, Q에서 만난다. 오른쪽 영역 S₁과 왼쪽 영역 S₂는 포물선과 원호로 둘러싸인 부분이며 서로 좌우 대칭이다.",
+ "pointNames": {
+  "P": "P",
+  "Q": "Q"
+ },
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "원 C: x^2+(y-2)^2=4와 이차함수 y=x^2로 둘러싸인 두 영역의 넓이 S_1, S_2의 합을 구한다.",
+   "mappedTo": [
+    "graphPlan.pieces",
+    "graphPlan.overlays"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "문제 본문·정답·풀이는 변경하지 않는다.",
+   "mappedTo": "PRESERVED_ARCHIVE_BANK"
+  }
+ ],
+ "newVisualInformation": [
+  "원과 포물선이 원점에서 접하고 두 점에서 만나 오른쪽·왼쪽 영역이 대칭으로 생기는 모양을 한 그림에서 보인다."
+ ],
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "0",
+     "0",
+     "1"
+    ]
+   }
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -2,
+   2
+  ],
+  "requiredPoints": [
+   {
+    "id": "V",
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "circles": [
+    {
+     "id": "C",
+     "center": [
+      "0",
+      "2"
+     ],
+     "radiusSquared": "4"
+    }
+   ],
+   "points": [
+    {
+     "id": "T",
+     "intersect": [
+      "curve",
+      "C"
+     ],
+     "pick": "TANGENT",
+     "unnamed": true
+    },
+    {
+     "id": "P",
+     "intersect": [
+      "curve",
+      "C"
+     ],
+     "pick": "MAX_X"
+    },
+    {
+     "id": "Q",
+     "intersect": [
+      "curve",
+      "C"
+     ],
+     "pick": "MIN_X"
+    }
+   ],
+   "circleRegions": [
+    {
+     "id": "S1",
+     "fill": "LIGHT",
+     "label": "S_1",
+     "boundary": [
+      {
+       "curve": "curve",
+       "fromX": "0",
+       "toX": "sqrt(3)"
+      },
+      {
+       "arc": "C",
+       "from": "P",
+       "to": "T",
+       "sweep": "MINOR"
+      }
+     ]
+    },
+    {
+     "id": "S2",
+     "fill": "MEDIUM",
+     "label": "S_2",
+     "boundary": [
+      {
+       "curve": "curve",
+       "fromX": "0",
+       "toX": "-sqrt(3)"
+      },
+      {
+       "arc": "C",
+       "from": "Q",
+       "to": "T",
+       "sweep": "MINOR"
+      }
+     ]
+    }
+   ]
+  },
+  "coordinateBand": {
+   "hide": [
+    "V"
+   ]
+  }
+ }
+}
