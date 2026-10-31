@@ -2830,6 +2830,17 @@ def _circle_region_arc(ring,first,second,side,ident):
 def _overlay_fail(code,ident=None):
     raise ValueError(code if ident is None else code+':'+str(ident))
 
+def _overlay_coordinate_text(value,ident):
+    """(G5b) The text a coordinate label writes for an exact coordinate: an integer or a fraction ('3/2'), or one p+q*sqrt(r) over a common denominator
+    ('1+sqrt(2)', '2*sqrt(3)', '(1+sqrt(2))/2'; one radical, r squarefree). A nested radical or a second radical is COORDINATE_SURD_FORM_UNSUPPORTED."""
+    if value.is_Rational:return str(int(value)) if value.is_Integer else str(int(value.p))+'/'+str(int(value.q))
+    try:p,q,r=pp_surd_split(value,'x')
+    except ValueError:_overlay_fail('COORDINATE_SURD_FORM_UNSUPPORTED',ident)
+    d=S.ilcm(p.q,q.q);a,b=p*d,q*d
+    magnitude=abs(b);body=('' if magnitude==1 else str(int(magnitude))+'*')+'sqrt('+str(r)+')'
+    text=('' if a==0 else str(int(a)))+('-' if b<0 else '+' if a!=0 else '')+body
+    return text if d==1 else '('+text+')/'+str(int(d))
+
 def _overlay_exact(value,ident):
     try:
         number=pp_exact_value(value)
@@ -3307,8 +3318,7 @@ def _overlay_features(plan):
         if 'coordinates' in entry:
             if not isinstance(entry['coordinates'],bool):_overlay_fail('OVERLAY_COORDINATES_INVALID',ident)
             if entry['coordinates']:
-                if not (x.is_Rational and y.is_Rational):_overlay_fail('OVERLAY_COORDINATES_REQUIRE_RATIONALS',ident)
-                row['coordinates']=[str(int(v)) if v.is_Integer else str(int(v.p))+'/'+str(int(v.q)) for v in (x,y)]
+                row['coordinates']=[_overlay_coordinate_text(v,ident) for v in (x,y)]
         # unnamed:true: a dot with no name letter (an unlabelled intersection of the source figure); with coordinates:true it keeps (x,y) alone.
         if 'unnamed' in entry:
             if not isinstance(entry['unnamed'],bool):_overlay_fail('OVERLAY_POINT_UNNAMED_INVALID',ident)

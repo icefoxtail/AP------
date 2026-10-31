@@ -1,0 +1,85 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "0",
+     "3",
+     "0",
+     "-1"
+    ]
+   }
+  ],
+  "breakpoints": [],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "formula": "-x^3+3x",
+  "functionName": "f",
+  "referenceCurves": [
+   {
+    "id": "g",
+    "name": "g",
+    "coefficients": [
+     "-3",
+     "-2",
+     "-1"
+    ],
+    "intersectionX": [
+     "-1",
+     "3"
+    ]
+   }
+  ],
+  "requiredPoints": [
+   {
+    "id": "T",
+    "x": -1,
+    "y": -2
+   },
+   {
+    "id": "M",
+    "x": 1,
+    "y": 2
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "regions": [
+   {
+    "id": "S",
+    "upper": "f",
+    "lower": "g",
+    "from": "-1",
+    "to": "3",
+    "fill": "LIGHT",
+    "label": "S"
+   }
+  ]
+ },
+ "caption": "곡선 y=f(x)=−x³+3x와 y=g(x)=−(x+1)²−2는 x=−1에서 접하고 x=3에서 다시 만난다. 두 곡선 사이의 영역이 구하는 부분이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f(x)=-x^3+3x이고 g(x)는 최고차항의 계수가 -1인 이차함수이다.",
+   "mappedTo": "PRESERVED_ARCHIVE_BANK"
+  },
+  {
+   "id": "c2",
+   "condition": "음수 a에 대하여 f(a)=g(a), f'(a)=g'(a)=0이다.",
+   "mappedTo": "PRESERVED_ARCHIVE_BANK"
+  },
+  {
+   "id": "b1",
+   "condition": "문항 본문·보기·정답·해설은 문제은행 원본을 그대로 유지한다.",
+   "mappedTo": "PRESERVED_ARCHIVE_BANK"
+  }
+ ],
+ "newVisualInformation": [
+  "삼차곡선과 이차곡선이 x=-1에서 접하고 x=3에서 만나며 그 사이 영역이 색칠된 모습"
+ ]
+}

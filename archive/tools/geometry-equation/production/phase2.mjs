@@ -115,6 +115,8 @@ function axisTickDisplayFacts(graphPlan){
     if(!callout||Object.keys(callout).sort().join(',')!=='axis,offsetUser,value'||callout.axis!=='x'||callout.value!=='-6'||!Array.isArray(callout.offsetUser)||callout.offsetUser.length!==2||callout.offsetUser[0]!==28||callout.offsetUser[1]!==-22)throw Error('INVALID_TICK_LABEL_CALLOUTS');
     facts.tickLabelCallouts=callouts;
   }
+  // (G5b) A tick number whose two axis-normal sides are all blocked (a vertical line or guide through the tick) keeps its tick and moves to a small offset on a leader: every graph family, only where the plain place fails.
+  facts.tickLabelFallbackCallout=true;
   return facts;
 }
 function exactFraction(value){
@@ -749,6 +751,7 @@ function specForFamily(plan,model,id){
     }
     const coordinateText=point=>exactCoordinates[point?.id]??(integerKey(point)?[String(point.x),String(point.y)]:null);
     const pointNames=pointNameModel(plan,[...required.map(point=>point?.id),...overlayPointIds(plan)]),nameLike=id=>pointNames.has(id)||/^[A-Z][0-9']?$/.test(id),graphPanel=new Set([...(plan.coordinatePlacement==='PANEL'?required.filter(point=>coordinateText(point)&&nameLike(point.id)).map(point=>point.id):plan.coordinatePanel||[]),...required.filter(point=>pointNames.has(point?.id)&&coordinateText(point)).map(point=>point.id)]);
+    const leaderIds=coordinateLeaderIds(plan,required,coordinateText);for(const id of leaderIds)graphPanel.delete(id);
     if(graphPanel.size&&degree>2)throw Error('COORDINATE_PANEL_NEEDS_HEADER_BAND');
     for(const pointId of graphPanel)if(!nameLike(pointId)||!coordinateText(required.find(point=>point.id===pointId)))throw Error('COORDINATE_PANEL_POINT_INVALID:'+pointId);
     // labelDirections {pointId: N|NE|E|SE|S|SW|W|NW}: first layout direction for a key point's coordinate label (not for band points).
@@ -765,6 +768,7 @@ function specForFamily(plan,model,id){
       }
       // A marker id is internal: without an exact coordinate label the point is a bare dot (name null), never "required-point-N" text.
       const markerId='required-point-'+(index+1),coordinates=coordinateText(point);
+      if(leaderIds.has(point.id)){objects.push(...coordinateLeaderObjects(markerId,point,coordinates,pointNames,nameLike));continue;}
       objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],...(coordinates?{}:pointNames.has(point.id)?{name:pointNames.tex(point.id)}:{name:null})});
       if(coordinates)objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:coordinates,...(graphDirections[point.id]?{preferred:graphDirections[point.id]}:{})});
     }
@@ -1061,6 +1065,7 @@ function piecewisePolynomialSpec(plan,id){
   const coordinateText=point=>exactCoordinates[point?.id]??(integerKey(point)?[String(point.x),String(point.y)]:null);
   const bandHidden=coordinateBandHide(p,required);
   const pointNames=pointNameModel(plan,[...required.map(point=>point?.id),...overlayPointIds(plan)]),nameLike=pointId=>pointNames.has(pointId)||/^[A-Z][0-9']?$/.test(pointId),graphPanel=new Set([...(plan.coordinatePlacement==='PANEL'?required.filter(point=>coordinateText(point)&&nameLike(point.id)).map(point=>point.id):plan.coordinatePanel||[]),...required.filter(point=>pointNames.has(point?.id)&&coordinateText(point)).map(point=>point.id)].filter(pointId=>!bandHidden.has(pointId)));
+  const leaderIds=coordinateLeaderIds(plan,required,coordinateText);for(const id of leaderIds)graphPanel.delete(id);
   for(const pointId of graphPanel)if(!nameLike(pointId)||!coordinateText(required.find(point=>point.id===pointId)))throw Error('COORDINATE_PANEL_POINT_INVALID:'+pointId);
   const graphDirections=plan.labelDirections??{};
   if(!graphDirections||typeof graphDirections!=='object'||Array.isArray(graphDirections)||Object.entries(graphDirections).some(([pointId,direction])=>!required.some(point=>point.id===pointId)||graphPanel.has(pointId)||!['N','NE','E','SE','S','SW','W','NW'].includes(direction)))throw Error('INVALID_LABEL_DIRECTIONS');
@@ -1074,6 +1079,7 @@ function piecewisePolynomialSpec(plan,id){
       objects.push({id:labelId,kind:'EQUATION_LABEL',target:markerId,text:pointNames.expr(point.id)+'('+coordinates.map(unwrapParentheses).join(',')+')',at:[point.x,point.y],priority:0});
       continue;
     }
+    if(leaderIds.has(point.id)&&!bandHidden.has(point.id)){objects.push(...coordinateLeaderObjects(markerId,point,coordinates,pointNames,nameLike));continue;}
     const bandHide=bandHidden.has(point.id);
     objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],...(coordinates&&!bandHide?{}:pointNames.has(point.id)?{name:pointNames.tex(point.id)}:{name:null})});
     if(coordinates&&!bandHide)objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:coordinates,...(graphDirections[point.id]?{preferred:graphDirections[point.id]}:{})});
@@ -1168,6 +1174,7 @@ function piecewiseDiscontinuousSpec(plan,id){
   const integerKey=point=>Number.isSafeInteger(point?.x)&&Number.isSafeInteger(point?.y);
   const coordinateText=point=>exactCoordinates[point?.id]??(integerKey(point)?[String(point.x),String(point.y)]:null);
   const pointNames=pointNameModel(plan,required.map(point=>point?.id)),nameLike=pointId=>pointNames.has(pointId)||/^[A-Z][0-9']?$/.test(pointId),graphPanel=new Set([...(plan.coordinatePlacement==='PANEL'?required.filter(point=>coordinateText(point)&&nameLike(point.id)).map(point=>point.id):plan.coordinatePanel||[]),...required.filter(point=>pointNames.has(point?.id)&&coordinateText(point)).map(point=>point.id)]);
+  const leaderIds=coordinateLeaderIds(plan,required,coordinateText);for(const id of leaderIds)graphPanel.delete(id);
   for(const pointId of graphPanel)if(!nameLike(pointId)||!coordinateText(required.find(point=>point.id===pointId)))throw Error('COORDINATE_PANEL_POINT_INVALID:'+pointId);
   const graphDirections=plan.labelDirections??{};
   if(!graphDirections||typeof graphDirections!=='object'||Array.isArray(graphDirections)||Object.entries(graphDirections).some(([pointId,direction])=>!required.some(point=>point.id===pointId)||graphPanel.has(pointId)||!['N','NE','E','SE','S','SW','W','NW'].includes(direction)))throw Error('INVALID_LABEL_DIRECTIONS');
@@ -1181,6 +1188,7 @@ function piecewiseDiscontinuousSpec(plan,id){
       objects.push({id:labelId,kind:'EQUATION_LABEL',target:markerId,text:pointNames.expr(point.id)+'('+coordinates.map(unwrapParentheses).join(',')+')',at:[point.x,point.y],priority:0});
       continue;
     }
+    if(leaderIds.has(point.id)){objects.push(...coordinateLeaderObjects(markerId,point,coordinates,pointNames,nameLike));continue;}
     objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],...(coordinates?{}:pointNames.has(point.id)?{name:pointNames.tex(point.id)}:{name:null})});
     if(coordinates)objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:coordinates,...(graphDirections[point.id]?{preferred:graphDirections[point.id]}:{})});
   }
@@ -1854,6 +1862,24 @@ function freeLineTextOk(label,coefficients){
   if(!sameLine(equation,line))throw Error('LINE_LABEL_TEXT_NOT_THE_LINE:'+id);
 }
 export const lineAtValid=value=>value==='START'||value==='END'||(typeof value==='number'&&Number.isFinite(value)&&value>=0&&value<=1);
+// (G5b) coordinateLeader:[required point IDs]: the listed key points write their coordinates beside the dot, on a leader from the dot when the plain places are
+// taken (named: "T(-1,-2)" as one label that carries the name; unnamed: "(x,y)"). render-plan adds it by itself, before the band, for a coordinate that found no room.
+function coordinateLeaderIds(plan,required,coordinateText){
+  const raw=plan.coordinateLeader;if(raw===undefined)return new Set();
+  if(!Array.isArray(raw)||!raw.length||raw.some(id=>typeof id!=='string')||new Set(raw).size!==raw.length)throw Error('COORDINATE_LEADER_INVALID');
+  for(const id of raw){
+    const point=required.find(other=>other?.id===id);
+    if(!point||!coordinateText(point))throw Error('COORDINATE_LEADER_POINT_INVALID:'+id);
+    if((plan.coordinatePanel||[]).includes(id)||plan.coordinatePlacement==='PANEL')throw Error('COORDINATE_LEADER_PANEL_CONFLICT:'+id);
+  }
+  return new Set(raw);
+}
+function coordinateLeaderObjects(markerId,point,coordinates,pointNames,nameLike){
+  const at=[point.x,point.y],dot={id:markerId,kind:'POINT',at,name:null};
+  return [dot,nameLike(point.id)
+    ?{id:markerId+'-coordinates',kind:'EQUATION_LABEL',target:markerId,text:pointNames.expr(point.id)+'('+coordinates.map(unwrapParentheses).join(',')+')',at,priority:0,ringLeader:true}
+    :{id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:coordinates,ringLeader:true}];
+}
 function unwrapParentheses(text){
   if(!text.startsWith('(')||!text.endsWith(')'))return text;
   let depth=0;for(let i=0;i<text.length;i++){if(text[i]==='(')depth++;else if(text[i]===')'&&--depth===0&&i<text.length-1)return text;}

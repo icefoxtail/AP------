@@ -1,4 +1,4 @@
-import math,sys,unittest
+import copy,math,sys,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from visual_engine.label_layout import *
@@ -218,6 +218,18 @@ class LayoutTests(unittest.TestCase):
         self.assertEqual(leader['from'],[100,160])
         self.assertTrue(Box(**result['labels'][0]['box']).x<=leader['to'][0]<=Box(**result['labels'][0]['box']).right)
         self.assertAlmostEqual(leader['to'][1],Box(**result['labels'][0]['box']).bottom)
+    def test_a_vertical_overlay_line_through_a_tick_moves_the_number_to_an_owner_leader(self):
+        # G5b: the line x=2 runs through the tick and the number's two axis-normal places; with the fallback opted in the number keeps its tick on a leader.
+        tick={'id':'tick-x-2','kind':'line','role':'tick','axis':'x','value':2,'geometry':[(100,156),(100,164)]}
+        axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,160),(200,160)]}
+        line={'id':'overlay-line-k','kind':'line','role':'line','geometry':[(100,0),(100,240)]}
+        item=label('tick-x-2-label',(100,160),'2','TICK_LABEL',0,tickId='tick-x-2',tickAxis='x',tickValue=2,tickDisplayValue='2',directions=('S','N'),gaps=(8,12),allowSuppress=False)
+        plain=layout([copy.deepcopy(item)],[tick,axis,line],Box(0,0,200,240),measurements={item['id']:(12,14)},require_measurements=True)
+        self.assertEqual(plain['unresolved'],[item['id']])                                    # without the opt-in it stays unplaced
+        result=layout([{**item,'tickCalloutFallback':True}],[tick,axis,line],Box(0,0,200,240),measurements={item['id']:(12,14)},require_measurements=True)
+        self.assertEqual(result['status'],'PASS',result['unresolved'])
+        self.assertEqual(result['labels'][0]['placement'],'OWNER_BOUND_TICK_LEADER')
+        self.assertEqual(result['leaders'][0]['from'],[100,160])
     def test_tick_label_cannot_fallback_to_panel_or_suppression(self):
         tick={'id':'tick-x--2','kind':'line','role':'tick','axis':'x','value':-2,'geometry':[(34.84,156),(34.84,164)]}
         axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,160),(250,160)]}

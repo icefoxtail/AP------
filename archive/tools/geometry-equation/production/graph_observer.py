@@ -2922,7 +2922,7 @@ def _ov_expected(plan):
         points[ident]=(x,y)
         if entry.get('unnamed') is True:unnamed.add(ident)
         if entry.get('coordinates') is True:
-            if not (x.is_Rational and y.is_Rational):raise ValueError('OVERLAY_COORDINATES_REQUIRE_RATIONALS')
+            if not (_ov_surd_form(x) and _ov_surd_form(y)):raise ValueError('COORDINATE_SURD_FORM_UNSUPPORTED')
             coordinates[ident]=(x,y)
     def point_ref(value):
         if value not in points:raise ValueError('OVERLAY_POINT_UNKNOWN')
@@ -2998,6 +2998,39 @@ def _ov_int_codes(value):
     """MathJax glyph codes (data-c) of a rational number: a minus sign (U+2212), then its digits; a fraction (E31) stacks, so its numerator digits come before its denominator digits."""
     value=S.Rational(value)
     return (['2212'] if value<0 else [])+OV_DIGIT(abs(int(value.p)))+(OV_DIGIT(int(value.q)) if value.q!=1 else [])
+
+def _ov_surd_terms(value):
+    """(G5b) The observer's own reading of a coordinate: (terms, denominator) with value = (a + b*sqrt(r)) / d, a, b, d integers (d > 0, a may be 0), one squarefree radicand r,
+    the integer term first; None for a rational or any other form (a second radical, a nested radical)."""
+    if value.is_Rational:return None
+    p=S.Integer(0);q=S.Integer(0);radicand=None
+    for term in S.Add.make_args(S.expand(S.radsimp(value))):
+        coefficient,radical=term.as_coeff_Mul()
+        if not coefficient.is_Rational:return None
+        if radical==1:p+=coefficient;continue
+        if not radical.is_Pow or radical.exp!=S.Rational(1,2) or not radical.base.is_Integer or radical.base<2 or radicand not in (None,radical.base):return None
+        radicand=radical.base;q+=coefficient
+    if radicand is None or q==0:return None
+    d=S.ilcm(p.q,q.q);a=int(p*d)
+    return ([(a,None)] if a else [])+[(int(q*d),int(radicand))],int(d)
+
+def _ov_surd_form(value):
+    value=S.sympify(value)
+    return value.is_Rational or _ov_surd_terms(value) is not None
+
+def _ov_coordinate_codes(value):
+    """(G5b) Glyph codes of a coordinate written as an integer, a fraction or p+q*sqrt(r) over a denominator: terms in reading order (+ is U+002B, - is U+2212), the radicand
+    digits before the radical U+221A (MathJax draws the radicand first), then the denominator digits (a stacked fraction reads numerator first)."""
+    value=S.sympify(value)
+    if value.is_Rational:return _ov_int_codes(value)
+    rows=_ov_surd_terms(value)
+    if rows is None:raise ValueError('COORDINATE_SURD_FORM_UNSUPPORTED')
+    terms,denominator=rows;out=[]
+    for index,(coefficient,base) in enumerate(terms):
+        out+=['2212'] if coefficient<0 else (['2B'] if index else [])
+        if base is None:out+=OV_DIGIT(abs(coefficient))
+        else:out+=(OV_DIGIT(abs(coefficient)) if abs(coefficient)!=1 else [])+OV_DIGIT(base)+['221A']
+    return out+(OV_DIGIT(denominator) if denominator!=1 else [])
 
 def _ov_length_codes(value):
     """Glyph codes of a segment length written as an integer or p*sqrt(q): the digits, the radical U+221A, the radicand digits."""
@@ -3302,7 +3335,7 @@ def overlays_audit(plan,svg,transform):
             # coordinates:true points: the label is `name(x,y)` or `(x,y)` (integers), owned by its point, nearer to it than to any other overlay point.
             for ident,(cx,cy) in expected['coordinates'].items():
                 label_id=ident+'-coordinates';claimed.add(label_id);node=groups.get(label_id)
-                want=['28',*_ov_int_codes(cx),'2C',*_ov_int_codes(cy),'29']
+                want=['28',*_ov_coordinate_codes(cx),'2C',*_ov_coordinate_codes(cy),'29']
                 if node is None:errors.append('OVERLAY_COORDINATES_LABEL_MISSING:'+ident);continue
                 if node.get('data-owner')!=ident or node.get('data-label-kind') not in ('COORDINATE_LABEL','EQUATION_LABEL'):errors.append('OVERLAY_COORDINATES_LABEL_OWNER_MISMATCH:'+ident);continue
                 codes=_ov_glyph_codes(node)

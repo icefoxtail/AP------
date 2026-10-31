@@ -1,0 +1,108 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "0",
+     "3",
+     "-1"
+    ]
+   },
+   {
+    "coefficients": [
+     "0",
+     "-3",
+     "1"
+    ]
+   }
+  ],
+  "breakpoints": [
+   {
+    "x": "3",
+    "y": "0"
+   }
+  ],
+  "sourceDomain": {
+   "kind": "INTERVAL",
+   "range": [
+    "0",
+    "6"
+   ],
+   "states": [
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "functionName": "f",
+  "requiredPoints": [
+   {
+    "id": "V",
+    "x": 1.5,
+    "y": 2.25
+   },
+   {
+    "id": "C",
+    "x": 3,
+    "y": 0
+   }
+  ],
+  "exactCoordinates": {
+   "V": [
+    "3/2",
+    "9/4"
+   ]
+  },
+  "axisTickValues": {
+   "x": [
+    3,
+    6
+   ],
+   "y": []
+  },
+  "overlays": {
+   "lines": [
+    {
+     "id": "m",
+     "x": "3"
+    },
+    {
+     "id": "n",
+     "x": "6"
+    }
+   ]
+  },
+  "regions": [
+   {
+    "id": "S1",
+    "upper": "f",
+    "lower": "axis",
+    "from": "0",
+    "to": "3",
+    "fill": "LIGHT",
+    "label": "S_1"
+   },
+   {
+    "id": "S2",
+    "upper": "f",
+    "lower": "axis",
+    "from": "3",
+    "to": "6",
+    "fill": "LIGHT",
+    "label": "S_2"
+   }
+  ]
+ },
+ "caption": "곡선 y=x|x−3|와 x축, 직선 x=6으로 둘러싸인 도형을 x=3에서 두 부분 S₁, S₂로 나눈다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "곡선 y=x|x-3|와 x축 및 직선 x=6으로 둘러싸인 도형의 넓이를 구한다.",
+   "mappedTo": "PRESERVED_ARCHIVE_BANK"
+  }
+ ],
+ "newVisualInformation": [
+  "절댓값 곡선을 x=3에서 나눈 두 영역과 경계 직선"
+ ]
+}

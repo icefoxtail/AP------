@@ -1,0 +1,82 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "0",
+     "1",
+     "-1",
+     "1"
+    ]
+   }
+  ],
+  "breakpoints": [],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "formula": "x^3-x^2+x",
+  "functionName": "f",
+  "requiredPoints": [],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "lines": [
+    {
+     "id": "t1",
+     "slope": "1",
+     "intercept": "0",
+     "label": "l1"
+    },
+    {
+     "id": "t2",
+     "slope": "(49-13*sqrt(13))/2",
+     "intercept": "(-141+39*sqrt(13))/2",
+     "label": "l2"
+    },
+    {
+     "id": "t3",
+     "slope": "(49+13*sqrt(13))/2",
+     "intercept": "(-141-39*sqrt(13))/2",
+     "label": "l3"
+    }
+   ],
+   "points": [
+    {
+     "id": "P",
+     "x": "3",
+     "y": "3",
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "curveX": "(5-sqrt(13))/2"
+    },
+    {
+     "id": "C",
+     "curveX": "(5+sqrt(13))/2",
+     "coordinates": true
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "P": "P",
+  "B": "B",
+  "C": "C"
+ },
+ "caption": "곡선 y=f(x)=x³−x²+x 위의 세 접점(원점, B, C)에서의 접선 l₁, l₂, l₃이 모두 점 P(3,3)을 지난다. B, C의 x좌표는 (5−√13)/2, (5+√13)/2이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f(x)=x^3-x^2+x이고 점 P(3,3)을 지나며 곡선 y=f(x)에 접하는 서로 다른 세 접선의 접점의 x좌표의 합을 구한다.",
+   "mappedTo": "PRESERVED_ARCHIVE_BANK"
+  }
+ ],
+ "newVisualInformation": [
+  "삼차곡선 위의 세 접점과 점 P를 지나는 세 접선"
+ ]
+}
