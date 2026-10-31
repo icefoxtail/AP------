@@ -1,0 +1,8 @@
+{"capability":"solid-figure-v1","unit":"cm",
+ "solids":[{"kind":"PYRAMID","base":{"kind":"RECT","width":4,"depth":4},"height":2.8284271247,"names":"ABCDV",
+   "points":[{"id":"M","at":{"edge":["A","B"],"t":"1/2"}},{"id":"N","at":{"edge":["C","D"],"t":"1/2"}},{"id":"H","at":{"foot":{"from":"V","to":["M","N"]}}}]}],
+ "segments":[{"from":"V","to":"M","style":"SOLID","role":"ACCENT"},{"from":"V","to":"N","style":"SOLID","role":"ACCENT"},{"from":"V","to":"H","style":"DASHED","role":"ACCENT"},{"from":"M","to":"H","style":"DASHED","role":"ACCENT"},{"from":"H","to":"N","style":"DASHED","role":"ACCENT"}],
+ "marks":{"rightAngles":[{"at":"H","refs":["V","M"]}],"equalLengths":[{"count":1,"segments":["VM","VN"]}],"angles":[{"refs":["V","M","H"],"arcs":1,"label":"x"}]},
+ "caption":"모서리가 모두 같은 정사각뿔 V-ABCD, AB와 CD의 중점 M, N, V에서 MN에 내린 수선의 발 H",
+ "sourceConditions":["모서리의 길이가 모두 a인 정사각뿔 V-ABCD","M, N은 AB, CD의 중점","V에서 MN에 내린 수선의 발 H","각 x는 VMN"],
+ "newVisualInformation":["삼각형 VMH의 직각과 각 x"]}

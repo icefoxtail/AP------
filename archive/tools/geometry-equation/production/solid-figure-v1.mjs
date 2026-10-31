@@ -738,8 +738,87 @@ function pointTable(solids){
   for(const solid of solids){
     if(solid.category==='POLY')solid.vertices.forEach((v,i)=>{for(const key of vertexKeys(solid,i))table.set(key,v.p);});
     else for(const q of solid.points)if(q.name)table.set(q.name,q.p);
+    for(const q of solid.aux??[])table.set(q.name,q.p);
   }
   return table;
+}
+
+// --- named helper points of a polyhedron (solids[].points) ---------------------------------------------------------------------------------------
+// [{id:"H",at:{base:"center"}},{id:"M",at:{edge:["A","B"],t:"1/2"}},{id:"K",at:{foot:{from:"V",to:["M","N"]}}}]: points that are no vertex of the solid (the centre of a face, a point
+// of an edge, the foot of a perpendicular) get a name and a place the engine computes in 3D; segments, marks and dims then take the name like a vertex. Resolved in order, so a
+// later point may use an earlier one. Every point belongs to this solid (a point is on a face, on an edge, or on the line / plane named by its own solid's points).
+const AUX_MAX=6,AUX_NAME=/^[A-Z]′?$/u,AUX_FRACTION=/^([1-9]\d?)\/([1-9]\d?)$/;
+function faceCentroid(pts){
+  // area centroid of a planar polygon (a fan of triangles from its first vertex)
+  let total=0,acc=[0,0,0];
+  for(let i=1;i<pts.length-1;i++){
+    const area=len(cross(sub(pts[i],pts[0]),sub(pts[i+1],pts[0])))/2;
+    total+=area;acc=add(acc,mulv(add(add(pts[0],pts[i]),pts[i+1]),area/3));
+  }
+  if(!(total>1e-12))bad('SOLID_POINT_AT_INVALID');
+  return mulv(acc,1/total);
+}
+function resolveAuxPoints(solids,named,vref){
+  for(const solid of solids){
+    if(solid.auxSpec===undefined)continue;
+    const raw=solid.auxSpec;
+    delete solid.auxSpec;
+    if(!Array.isArray(raw)||raw.length<1||raw.length>AUX_MAX)bad('SOLID_POINTS_INVALID');
+    solid.aux=[];
+    const own=key=>{const e=named.get(key);if(!e||e.solid!==solid.id)bad('SOLID_POINT_AT_INVALID');return e.p;};
+    const idxOf=key=>solid.vertices.findIndex((v,i)=>vertexKeys(solid,i).includes(key));
+    for(const entry of raw){
+      if(!isPlain(entry))bad('SOLID_POINTS_INVALID');
+      onlyKeys(entry,['id','at'],'SOLID_POINTS_INVALID');
+      if(typeof entry.id!=='string'||!AUX_NAME.test(entry.id))bad('SOLID_POINTS_INVALID');
+      if(named.has(entry.id))bad('SOLID_NAME_DUPLICATE:'+entry.id);
+      const at=entry.at;
+      if(!isPlain(at))bad('SOLID_POINT_AT_INVALID');
+      const kinds=['base','edge','foot'].filter(k=>at[k]!==undefined);
+      if(kinds.length!==1)bad('SOLID_POINT_AT_INVALID');
+      let p;
+      if(kinds[0]==='base'){
+        // the centre of a face of the solid ("bottom" unless face says another): the area centroid, which is the centre of a regular or rectangular face
+        onlyKeys(at,['base','face'],'SOLID_POINT_AT_INVALID');
+        if(at.base!=='center'&&at.base!=='centroid')bad('SOLID_POINT_AT_INVALID');
+        // a regular polyhedron names its faces f0, f1, ...: its "bottom" is the one face lying on the floor (a tetrahedron or a dodecahedron; an octahedron or an icosahedron stands on a vertex)
+        const zmin=Math.min(...solid.vertices.map(v=>v.p[2])),onFloor=solid.faces.filter(f=>f.idx.every(i=>Math.abs(solid.vertices[i].p[2]-zmin)<1e-6));
+        const face=at.face===undefined&&solid.kind==='REGULAR_POLYHEDRON'?(onFloor.length===1?onFloor[0]:undefined):solid.faces.find(f=>f.id===(at.face??'bottom'));
+        if(!face)bad('SOLID_POINT_FACE_UNKNOWN:'+String(at.face??'bottom').slice(0,12));
+        p=faceCentroid(face.idx.map(i=>solid.vertices[i].p));
+      }else if(kinds[0]==='edge'){
+        // a point of an edge of the solid at the fraction t of the way from the first named end to the second
+        onlyKeys(at,['edge','t'],'SOLID_POINT_AT_INVALID');
+        const [pa,pb]=edgePair(at.edge,'SOLID_POINT_AT_INVALID'),a=vref(pa,'SOLID_POINT_AT_INVALID'),b=vref(pb,'SOLID_POINT_AT_INVALID');
+        const ia=idxOf(a),ib=idxOf(b);
+        if(ia<0||ib<0||ia===ib||!solid.edges.some(([i,j])=>(i===ia&&j===ib)||(i===ib&&j===ia)))bad('SOLID_POINT_EDGE_UNKNOWN:'+joinKeys([a,b]));
+        const m=typeof at.t==='string'?AUX_FRACTION.exec(at.t):null;
+        if(!m||Number(m[1])>=Number(m[2]))bad('SOLID_POINT_AT_INVALID');
+        p=lerp(own(a),own(b),Number(m[1])/Number(m[2]));
+      }else{
+        // the foot of the perpendicular from a point onto the line through two points (or onto the plane of a face: a face id)
+        onlyKeys(at,['foot'],'SOLID_POINT_AT_INVALID');
+        const f=at.foot;
+        if(!isPlain(f))bad('SOLID_POINT_AT_INVALID');
+        onlyKeys(f,['from','to'],'SOLID_POINT_AT_INVALID');
+        const P=own(vref(f.from,'SOLID_POINT_AT_INVALID'));
+        if(typeof f.to==='string'){
+          const face=solid.faces.find(x=>x.id===f.to);
+          if(!face)bad('SOLID_POINT_FACE_UNKNOWN:'+f.to.slice(0,12));
+          const pts=face.idx.map(i=>solid.vertices[i].p),n=faceNormal(pts);
+          p=sub(P,mulv(n,dot(sub(P,pts[0]),n)));
+        }else{
+          if(!Array.isArray(f.to)||f.to.length!==2)bad('SOLID_POINT_AT_INVALID');
+          const A=own(vref(f.to[0],'SOLID_POINT_AT_INVALID')),B=own(vref(f.to[1],'SOLID_POINT_AT_INVALID')),d=sub(B,A);
+          if(!(dot(d,d)>1e-12))bad('SOLID_POINT_FOOT_DEGENERATE');
+          p=add(A,mulv(d,dot(sub(P,A),d)/dot(d,d)));
+        }
+        if(len(sub(p,P))<1e-6)bad('SOLID_POINT_FOOT_DEGENERATE');
+      }
+      solid.aux.push({name:entry.id,p});
+      named.set(entry.id,{solid:solid.id,p});
+    }
+  }
 }
 
 // --- solving the figure ---------------------------------------------------------------------------------------------------------------------
@@ -763,7 +842,7 @@ export function solveSolidFigure(plan){
   if(plan.unit!==undefined&&(typeof plan.unit!=='string'||!UNIT.test(plan.unit)))bad('SOLID_UNIT_INVALID');
   const model=plan.net!==undefined?solveNet(plan):solveSolids(plan);
   // the Archive publication check reads text: a figure with no name and no length at all cannot be published
-  const names=model.mode==='SOLIDS'?model.solids.reduce((sum,solid)=>sum+(solid.category==='POLY'?solid.vertices:solid.points).filter(q=>q.name).length+(solid.count?(solid.count.vertices?solid.vertices.length:0)+(solid.count.edges?solid.edges.length:0):0),0)
+  const names=model.mode==='SOLIDS'?model.solids.reduce((sum,solid)=>sum+(solid.category==='POLY'?solid.vertices:solid.points).filter(q=>q.name).length+(solid.aux?.length??0)+(solid.count?(solid.count.vertices?solid.vertices.length:0)+(solid.count.edges?solid.edges.length:0):0),0)
     :model.netKind==='POLYHEDRON'?model.faces.reduce((sum,f)=>sum+f.corners.filter(Boolean).length,0):0;
   // A figure with no name, length or label is still readable when something in it is stressed (a highlighted face, a drawn segment, a section, a mark, a cut) or when it
   // carries a caption: the author's solidCaption, or the panel caption of a composite grid (the grid sets panelWidth, and every composite panel has a caption).
@@ -913,7 +992,13 @@ function solveSolids(plan){
     if(!isPlain(spec))bad('SOLID_PARAM_INVALID');
     const withId={...spec,id:spec.id??'s'+(i+1)};
     if(typeof withId.id!=='string'||!/^[a-z][a-z0-9]{0,7}$/.test(withId.id))bad('SOLID_ID_INVALID');
-    if(POLY_KINDS.includes(spec.kind))return buildPolyhedron(withId);
+    if(POLY_KINDS.includes(spec.kind)){
+      // points: named helper points the engine places in 3D (see resolveAuxPoints); the builders know nothing of them
+      const {points:auxSpec,...bare}=withId;
+      const built=buildPolyhedron(bare);
+      if(auxSpec!==undefined)built.auxSpec=auxSpec;
+      return built;
+    }
     if(ROUND_KINDS.includes(spec.kind))return buildRound(withId);
     return bad('SOLID_KIND_UNSUPPORTED:'+String(spec.kind).slice(0,24));
   });
@@ -971,6 +1056,7 @@ function solveSolids(plan){
   }
   // a name or a vertex reference ("#b0", "#t2", "#apex", "#v5"; see above) becomes the key of its vertex
   const vref=vertexResolver(solids,named);
+  resolveAuxPoints(solids,named,vref);
   // segments (aux) between named points
   const segments=[];
   if(plan.segments!==undefined){
@@ -1804,6 +1890,11 @@ function spec3d(plan,model,ctx){
     line(`segment-${joinKeys([s.from,s.to])}`,'segment',a,b,{edge:joinKeys([s.from,s.to]),vis:s.style==='AUTO'?(s.hidden?'hidden':'solid'):s.style==='DASHED'?'hidden':'solid',accent:s.role,style:s.style});
     void k;
   }
+  // helper points of a polyhedron (solids[].points): a small dot on each, so a point inside a face or on an edge is seen
+  for(const solid of model.solids)for(const q of solid.aux??[]){
+    const c=pt(project(q.p));
+    prims.push({t:'dot',id:'aux-'+q.name,role:'aux-point',solid:solid.id,point:q.name,cx:c[0],cy:c[1],r:2.4});
+  }
   // the axis of a rotation solid: a dash-dot line a little longer than the solid
   for(const solid of model.solids)if(solid.axis){
     const [a,b]=axisEnds(solid);
@@ -1959,6 +2050,21 @@ function spec3d(plan,model,ctx){
         const text=v.aliases?v.aliases.join(','):v.name;
         labels.push({id:'name-'+v.name,role:'vertex-name',owner:'vertex-'+v.name,kind:'MATH',tex:text,plain:text,value:text,anchor:pt(here),dir});
       });
+      for(const q of solid.aux??[]){
+        // a helper point's name stands on the open side of the lines that meet there (the segments drawn on it), else away from the middle of the figure
+        const here=project(q.p),hp=pt(here);let dir=[0,0];
+        for(const sg of model.segments){
+          const other=sg.from===q.name?sg.to:sg.to===q.name?sg.from:null;
+          if(other===null)continue;
+          const o=pt(project(named.get(other))),d=[o[0]-hp[0],o[1]-hp[1]],l=Math.hypot(d[0],d[1]);
+          if(l>1e-9){dir[0]-=d[0]/l;dir[1]-=d[1]/l;}
+        }
+        let l=Math.hypot(dir[0],dir[1]);
+        if(l<0.35){dir=[hp[0]-centroidScreen[0],hp[1]-centroidScreen[1]];l=Math.hypot(dir[0],dir[1])||1;}
+        dir=[r6(dir[0]/l),r6(dir[1]/l)];
+        vertexSpot.set(q.name,()=>({here,dir}));
+        labels.push({id:'name-'+q.name,role:'vertex-name',owner:'vertex-'+q.name,kind:'MATH',tex:q.name,plain:q.name,value:q.name,anchor:hp,dir});
+      }
       if(solid.count?.vertices){
         const spots=solid.vertices.map(v=>pt(project(v.p)));
         solid.vertices.forEach((v,i)=>{
@@ -2620,7 +2726,7 @@ function renderPrims(spec,model){
     }else if(p.t==='earc'){
       body+=`<g data-layer="40"><path id="${p.id}" data-role="${p.role}" data-solid="${p.solid}" data-arc="${p.arc}" data-t0="${p.t0}" data-t1="${p.t1}" data-vis="${p.vis}" stroke="#111" stroke-width="1.6"${strokeFor(p)} fill="none" d="M ${p.p0.join(' ')} A ${p.rx} ${p.ry} ${p.rot} 0 ${p.sweep} ${p.p1.join(' ')}"/></g>`;
     }else if(p.t==='dot'){
-      body+=`<g data-layer="45"><circle id="${p.id}" data-role="${p.role}" data-solid="${p.solid}" fill="#111" cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
+      body+=`<g data-layer="45"><circle id="${p.id}" data-role="${p.role}" data-solid="${p.solid}"${p.point?` data-point="${p.point}"`:''} fill="#111" cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
     }else if(p.t==='polyline'){
       const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid&&(p.role==='cut-right-angle'||p.role==='foot-right-angle')?`data-solid="${p.solid}"`:'',p.role==='foot-right-angle'?`data-dim="${p.dim}"`:'',p.mark?`data-mark="${p.mark}"`:'',p.at?`data-at="${p.at}"`:'',p.refs?`data-refs="${p.refs}"`:'',p.role==='net-right-angle'?`data-face="${p.face}" data-corner="${p.corner}"`:'',p.index!==undefined?`data-mark-index="${p.index}" data-mark-count="${p.count}"`:''].filter(Boolean).join(' ');
       body+=`<g data-layer="55"><polyline ${attrs} stroke="#111" stroke-width="1.2" fill="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
