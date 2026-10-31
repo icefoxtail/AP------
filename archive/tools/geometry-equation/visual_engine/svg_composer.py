@@ -5,6 +5,8 @@ import re
 import xml.etree.ElementTree as ET
 from .style_tokens import load
 
+TICK_CALLOUT_OFFSETS=([28,-22],[-28,-22],[28,22],[-28,22])   # same set as label_layout.TICK_CALLOUT_OFFSETS (label centre relative to its tick)
+
 def esc(value):return html.escape(str(value),quote=True)
 def num(value):return f'{value:.9f}'.rstrip('0').rstrip('.') or '0'
 
@@ -124,7 +126,7 @@ def compose(prepared,layout,viewport,fragments=None):
         if not all(math.isfinite(value) for value in (x1,y1,x2,y2)) or math.hypot(x2-x1,y2-y1)<=1e-6 or math.hypot(x2-x1,y2-y1)>48:
             raise ValueError('TICK_LABEL_OWNER_LEADER_COORDINATE_INVALID')
         offset=binding.get('offsetUser')
-        if offset!=[28,-22] or not isinstance(owner.get('box'),dict):raise ValueError('TICK_LABEL_OWNER_LEADER_BINDING_INVALID')
+        if offset not in TICK_CALLOUT_OFFSETS or not isinstance(owner.get('box'),dict):raise ValueError('TICK_LABEL_OWNER_LEADER_BINDING_INVALID')
         center=[leader['from'][0]+offset[0],leader['from'][1]+offset[1]]
         box=owner['box']
         expected_box={'x':center[0]-box['width']/2,'y':center[1]-box['height']/2,'width':box['width'],'height':box['height']}

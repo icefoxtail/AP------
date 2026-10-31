@@ -471,22 +471,47 @@ def _produce_piecewise_polynomial(plan,vp):
     svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(region_fills+parts+region_labels)+'</svg>'
     return {'svg':svg,'sampling':{'branches':sampling,'branchCount':len(sampling),'status':'PASS' if all(row['status']=='PASS' for row in sampling) else 'POLISH_REQUIRED'},'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
 
-def _produce_piecewise_discontinuous(plan,vp):
-    """Each discontinuous piece on its own draw interval (so a jump is never bridged by a connecting segment), the endpoint/value dots
-    (filled CLOSED, hollow OPEN), the reference lines and their crossing dots, and the key points - with the ids the final figure uses."""
+def _pd_arc_expression(row):
+    """y=cy+-sqrt(r2-(x-cx)^2) of an ARC piece row, in the sampler's grammar."""
+    cx,cy=row['center']
+    return '('+cy+')'+('+' if row['branch']=='UPPER' else '-')+'sqrt(('+row['radiusSquared']+')-(x-('+cx+'))^2)'
+
+SHARED_DOT_RADIUS=4.0
+SHARED_SMALL_DOT_RADIUS=2.4
+SHARED_ACCENT_STROKE='#c0392b'
+SHARED_DASH='6 4'
+
+def _pd_curve_parts(curve,vp,prefix,branch_prefix,style,small_markers):
+    """The polylines (one per piece, never bridged), endpoint dots and limit arrows of ONE discontinuous curve. prefix ('' or 'g-') and branch_prefix
+    ('' or 'G_') keep the ids of two curves in one figure apart; style (None, DASHED, ACCENT) is the second curve's line style."""
     from graph_framing import pp_exact_float
-    features=plan.get('piecewiseDiscontinuousFeatures')
+    features=curve.get('piecewiseDiscontinuousFeatures')
     if not isinstance(features,dict) or features.get('schemaVersion')!='PIECEWISE_DISCONTINUOUS_FEATURES_v1':raise ValueError('PIECEWISE_DISCONTINUOUS_FEATURE_INVENTORY_REQUIRED')
-    required_x=[p['x'] for p in plan.get('requiredPoints',[])]
+    required_x=[p['x'] for p in curve.get('requiredPoints',[])]
     cross_x=[point['xValue'] for row in features.get('intersections',[]) for point in row['points']]
     parts=[];sampling=[]
+    stroke_attrs={'DASHED':' stroke-dasharray="'+SHARED_DASH+'"','ACCENT':''}.get(style,'')
+    stroke='"'+SHARED_ACCENT_STROKE+'"' if style=='ACCENT' else '"black"'
     for index,piece in enumerate(features['pieces'],1):
         critical=[value for value in required_x+cross_x if piece['drawInterval'][0]<=value<=piece['drawInterval'][1]]
-        result=sample(_polynomial_text(piece['coefficients']),piece['drawInterval'],vp,critical_x=critical)
+        result=sample(_pd_arc_expression(piece) if piece.get('kind')=='ARC' else _polynomial_text(piece['coefficients']),piece['drawInterval'],vp,critical_x=critical)
         if len(result['branches'])!=1:raise ValueError('PIECEWISE_DISCONTINUOUS_PIECE_SAMPLING_FAILED')
-        sampling.append({'id':'curve-piece-'+str(index),**{key:value for key,value in result.items() if key!='branches'}})
+        sampling.append({'id':'curve-'+prefix+'piece-'+str(index),**{key:value for key,value in result.items() if key!='branches'}})
         points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
-        parts.append(f'<polyline id="curve-piece-{index}" data-role="curve" data-branch="PIECE_{index}" points="{points}" fill="none" stroke="black"/>')
+        parts.append(f'<polyline id="curve-{prefix}piece-{index}" data-role="curve" data-branch="{branch_prefix}PIECE_{index}" points="{points}" fill="none" stroke={stroke}{stroke_attrs}/>')
+    return parts,sampling,features
+
+def _produce_piecewise_discontinuous(plan,vp):
+    """Each discontinuous piece on its own draw interval (so a jump is never bridged by a connecting segment), the endpoint/value dots
+    (filled CLOSED, hollow OPEN), the reference lines and their crossing dots, and the key points - with the ids the final figure uses.
+    With plan.sharedCurve a second discontinuous function is drawn on the same axes (ids prefixed g-, a DASHED or ACCENT line)."""
+    from graph_framing import pp_exact_float
+    parts,sampling,features=_pd_curve_parts(plan,vp,'','',None,None)
+    shared=plan.get('sharedCurve')
+    second_parts=[];second_features=None
+    if shared is not None:
+        second_parts,second_sampling,second_features=_pd_curve_parts(shared,vp,'g-','G_',shared.get('style'),None)
+        sampling+=second_sampling
     xmin,xmax=plan['viewport'][0],plan['viewport'][1]
     for row in features.get('intersections',[]):
         level=pp_exact_float(row['y']);a,b=vp.screen((xmin,level)),vp.screen((xmax,level))
@@ -495,22 +520,30 @@ def _produce_piecewise_discontinuous(plan,vp):
             if point.get('keyPoint') or point.get('marker'):continue
             cx,cy=vp.screen((point['xValue'],level))
             parts.append(f'<circle id="intersection-{row["lineId"]}-{k}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
-    for marker in features.get('markers',[]):
-        cx,cy=vp.screen((pp_exact_float(marker['x']),pp_exact_float(marker['y'])))
-        fill='#fff' if marker['state']=='OPEN' else '#111'
-        parts.append(f'<circle id="discontinuous-{marker["id"]}" data-role="discontinuous-endpoint" data-state="{marker["state"]}" cx="{cx:.12g}" cy="{cy:.12g}" r="4" fill="{fill}" stroke="black" stroke-width="1"/>')
+    coincident={row['second'] for row in plan.get('sharedFeatures',{}).get('coincidentMarkers',[])}
+    for prefix,curve_features in (('',features),('g-',second_features)):
+        if curve_features is None:continue
+        for marker in curve_features.get('markers',[]):
+            cx,cy=vp.screen((pp_exact_float(marker['x']),pp_exact_float(marker['y'])))
+            fill='#fff' if marker['state']=='OPEN' else '#111'
+            radius=SHARED_SMALL_DOT_RADIUS if prefix and marker['id'] in coincident else SHARED_DOT_RADIUS
+            parts.append(f'<circle id="discontinuous-{prefix}{marker["id"]}" data-role="discontinuous-endpoint" data-state="{marker["state"]}" cx="{cx:.12g}" cy="{cy:.12g}" r="{radius:g}" fill="{fill}" stroke="black" stroke-width="1"/>')
     for index,point in enumerate(plan.get('requiredPoints',[]),1):
         cx,cy=vp.screen((point['x'],point['y']))
         parts.append(f'<circle id="required-point-{index}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
-    for arrow in features.get('limitArrows',[]):
-        a,b=vp.screen(tuple(arrow['from'])),vp.screen(tuple(arrow['to']));target=vp.screen((arrow['atValue'],arrow['toYValue']))
-        if arrow['guideX']:
-            e=vp.screen((arrow['atValue'],0.0));parts.append(f'<line id="{arrow["id"]}-guide-x" data-role="limitGuide" x1="{target[0]:.12g}" y1="{target[1]:.12g}" x2="{e[0]:.12g}" y2="{e[1]:.12g}" stroke="black" stroke-dasharray="6 4"/>')
-        if arrow['guideY']:
-            e=vp.screen((0.0,arrow['toYValue']));parts.append(f'<line id="{arrow["id"]}-guide-y" data-role="limitGuide" x1="{target[0]:.12g}" y1="{target[1]:.12g}" x2="{e[0]:.12g}" y2="{e[1]:.12g}" stroke="black" stroke-dasharray="6 4"/>')
-        length=math.dist(a,b);ux,uy=(b[0]-a[0])/length,(b[1]-a[1])/length;base=(b[0]-ux*10,b[1]-uy*10)
-        parts.append(f'<line id="{arrow["id"]}" data-role="limitArrow" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black"/>')
-        parts.append(f'<polygon id="{arrow["id"]}-arrow-end" data-role="limitArrow" points="{b[0]:.12g},{b[1]:.12g} {base[0]-uy*3.6:.12g},{base[1]+ux*3.6:.12g} {base[0]+uy*3.6:.12g},{base[1]-ux*3.6:.12g}" fill="#111" stroke="black"/>')
+    for prefix,curve_features in (('',features),('g-',second_features)):
+        if curve_features is None:continue
+        for arrow in curve_features.get('limitArrows',[]):
+            arrow_id=prefix+arrow['id']
+            a,b=vp.screen(tuple(arrow['from'])),vp.screen(tuple(arrow['to']));target=vp.screen((arrow['atValue'],arrow['toYValue']))
+            if arrow['guideX']:
+                e=vp.screen((arrow['atValue'],0.0));parts.append(f'<line id="{arrow_id}-guide-x" data-role="limitGuide" x1="{target[0]:.12g}" y1="{target[1]:.12g}" x2="{e[0]:.12g}" y2="{e[1]:.12g}" stroke="black" stroke-dasharray="6 4"/>')
+            if arrow['guideY']:
+                e=vp.screen((0.0,arrow['toYValue']));parts.append(f'<line id="{arrow_id}-guide-y" data-role="limitGuide" x1="{target[0]:.12g}" y1="{target[1]:.12g}" x2="{e[0]:.12g}" y2="{e[1]:.12g}" stroke="black" stroke-dasharray="6 4"/>')
+            length=math.dist(a,b);ux,uy=(b[0]-a[0])/length,(b[1]-a[1])/length;base=(b[0]-ux*10,b[1]-uy*10)
+            parts.append(f'<line id="{arrow_id}" data-role="limitArrow" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black"/>')
+            parts.append(f'<polygon id="{arrow_id}-arrow-end" data-role="limitArrow" points="{b[0]:.12g},{b[1]:.12g} {base[0]-uy*3.6:.12g},{base[1]+ux*3.6:.12g} {base[0]+uy*3.6:.12g},{base[1]-ux*3.6:.12g}" fill="#111" stroke="black"/>')
+    parts=parts[:len(features['pieces'])]+second_parts+parts[len(features['pieces']):]
     svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(parts)+'</svg>'
     return {'svg':svg,'sampling':{'branches':sampling,'branchCount':len(sampling),'status':'PASS' if all(row['status']=='PASS' for row in sampling) else 'POLISH_REQUIRED'},'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
 

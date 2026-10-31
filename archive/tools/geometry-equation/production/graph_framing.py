@@ -2126,7 +2126,7 @@ def fit_piecewise_polynomial(plan):
 # ---- piecewise discontinuous: one to six polynomial pieces (degree <= 2) on their own intervals, each end OPEN or CLOSED ----------
 # Unlike piecewise-polynomial-spike-v1 the pieces need not meet: a junction may jump, the function value there is declared either by a
 # CLOSED end or by jumpValues, and a jumpValue may also stand alone as an isolated point. A staircase is written as a step block.
-PIECEWISE_DISCONTINUOUS_FIELDS={'family','pieces','step','jumpValues','referenceLines','requiredPoints','exactCoordinates','axisTickValues','functionName','domain','viewport','plotHeightLimit','axisTitles','limitArrows','xWindow'}
+PIECEWISE_DISCONTINUOUS_FIELDS={'family','pieces','step','jumpValues','referenceLines','requiredPoints','exactCoordinates','axisTickValues','functionName','domain','viewport','plotHeightLimit','axisTitles','limitArrows','xWindow','sharedCurve','sharedFeatures'}
 PIECEWISE_DISCONTINUOUS_OVERVIEW_POLICY='PIECEWISE_DISCONTINUOUS_OVERVIEW_v1'
 PIECEWISE_DISCONTINUOUS_MAX_PIECES=8   # a two-function solution figure restores a graph with its mirror image: 8 pieces
 PIECEWISE_DISCONTINUOUS_MAX_STEPS=6
@@ -2180,8 +2180,50 @@ def pd_limit_arrow_features(rows,pieces,draw,scale,ratio):
         out.append({'id':'limit-arrow-'+str(row['index']),'at':_pp_text(row['at']),'toY':_pp_text(row['toY']),'atValue':at,'toYValue':float(row['toY']),'side':row['side'],'piece':row['piece']+1,'from':list(tail),'to':list(tip),'guideX':abs(float(row['toY']))>1e-12,'guideY':abs(at)>1e-12})
     return out
 
+PIECEWISE_ARC_FIELDS={'kind','center','radiusSquared','fromX','toX','branch','leftClosed','rightClosed'}
+
+def _pd_arc_piece(entry,index):
+    """A circular-arc piece y=cy+-sqrt(r2-(x-cx)^2) on fromX..toX (UPPER or LOWER half of the circle), each end OPEN or CLOSED (leftClosed/rightClosed, default CLOSED)."""
+    invalid='PIECEWISE_ARC_INVALID:'+str(index)
+    if set(entry)-PIECEWISE_ARC_FIELDS or not {'center','radiusSquared','fromX','toX','branch'}<=set(entry):raise ValueError(invalid)
+    center=entry['center']
+    if not isinstance(center,list) or len(center)!=2:raise ValueError(invalid)
+    cx=pp_surd(center[0],invalid);cy=pp_surd(center[1],invalid);r2=pp_surd(entry['radiusSquared'],invalid)
+    a=pp_surd(entry['fromX'],invalid);b=pp_surd(entry['toX'],invalid)
+    if entry['branch'] not in ('UPPER','LOWER') or not r2>0 or not a<b:raise ValueError(invalid)
+    for flag in ('leftClosed','rightClosed'):
+        if flag in entry and not isinstance(entry[flag],bool):raise ValueError(invalid)
+    tiny=S.Float('1e-40',60)
+    if any(S.N(r2-(value-cx)**2,60)<-tiny for value in (a,b)):raise ValueError('PIECEWISE_ARC_OUT_OF_DOMAIN:'+str(index))
+    return {'kind':'ARC','coefficients':[S.Integer(0)]*3,'a':a,'b':b,'start':'CLOSED' if entry.get('leftClosed',True) else 'OPEN','end':'CLOSED' if entry.get('rightClosed',True) else 'OPEN','arc':{'cx':cx,'cy':cy,'r2':r2,'sign':1 if entry['branch']=='UPPER' else -1}}
+
+def pd_arc_extremum(piece):
+    """The top (UPPER) or bottom (LOWER) of the circle when it lies strictly inside the arc's own x interval, else None."""
+    arc=piece['arc']
+    if not (piece['a']<arc['cx']<piece['b']):return None
+    return (_pp_norm(arc['cx']),_pp_norm(arc['cy']+arc['sign']*S.sqrt(arc['r2'])),'MAX' if arc['sign']>0 else 'MIN')
+
+def pd_arc_roots(arc,level):
+    """Every x where the arc's whole branch of the circle equals the horizontal line y=level (exact)."""
+    dy=level-arc['cy']
+    if arc['sign']*dy<0:return []
+    rest=arc['r2']-dy**2
+    if S.N(rest,60)<-S.Float('1e-40',60):return []
+    if abs(S.N(rest,60))<=S.Float('1e-40',60):return [_pp_norm(arc['cx'])]
+    return [_pp_norm(arc['cx']-S.sqrt(rest)),_pp_norm(arc['cx']+S.sqrt(rest))]
+
+def pd_extrema(pieces):
+    rows=[]
+    for piece in pieces:
+        if piece.get('arc'):
+            row=pd_arc_extremum(piece)
+            if row is not None:rows.append(row)
+        else:rows.extend(piecewise_polynomial_extrema([piece['coefficients']],[(piece['a'],piece['b'])]))
+    return rows
+
 def _pd_piece(entry,index):
     """One piece: exact coefficients of degree at most 2 and its own interval, each end OPEN or CLOSED (null = an unbounded end)."""
+    if isinstance(entry,dict) and entry.get('kind')=='ARC':return _pd_arc_piece(entry,index)
     if not isinstance(entry,dict) or 'coefficients' not in entry or 'domain' not in entry or set(entry)-{'coefficients','domain','start','end'}:raise ValueError('PIECEWISE_DISCONTINUOUS_PIECE_INVALID:'+str(index))
     raw=entry['coefficients']
     if not isinstance(raw,list) or not 1<=len(raw)<=3:raise ValueError('PIECEWISE_DISCONTINUOUS_PIECE_INVALID:'+str(index))
@@ -2238,6 +2280,8 @@ def pd_defines_at(piece,x_value):
     return True
 
 def pd_piece_value(piece,x_value):
+    arc=piece.get('arc')
+    if arc is not None:return _pp_norm(arc['cy']+arc['sign']*S.sqrt(arc['r2']-(S.sympify(x_value)-arc['cx'])**2))
     return _pp_norm(sum((c*S.sympify(x_value)**i for i,c in enumerate(piece['coefficients'])),S.Integer(0)))
 
 def piecewise_discontinuous_values(plan,pieces):
@@ -2287,6 +2331,11 @@ def piecewise_discontinuous_crossings(pieces,level,jump_values):
     not on the graph) or a declared value at that height. A piece equal to the line is refused."""
     found=[]
     for piece in pieces:
+        if piece.get('arc'):
+            roots=pd_arc_roots(piece['arc'],level)
+            for root in roots:
+                if pd_defines_at(piece,root) and not any(pp_same(root,other) for other in found):found.append(root)
+            continue
         c0,c1,c2=piece['coefficients']
         roots=pp_quadratic_roots(c0-level,c1,c2)
         if roots is None:raise ValueError('PIECEWISE_REFERENCE_LINE_CONTAINS_A_PIECE')
@@ -2297,14 +2346,59 @@ def piecewise_discontinuous_crossings(pieces,level,jump_values):
         if pp_same(y_value,level) and not any(pp_same(x_value,other) for other in found):found.append(x_value)
     return sorted(found,key=lambda value:float(value))
 
-def fit_piecewise_discontinuous(plan):
+PIECEWISE_SHARED_CURVE_FIELDS={'id','name','style','pieces','step','jumpValues','limitArrows'}
+PIECEWISE_SHARED_STYLES=('DASHED','ACCENT')
+PIECEWISE_SHARED_MIN_DOT_GAP_PX=4.0
+
+def fit_piecewise_discontinuous_shared(plan):
+    """Two discontinuous functions on ONE pair of axes (layout SHARED). graphPlan is f's own plan and graphPlan.sharedCurve is g (pieces or step,
+    jumpValues, limitArrows, an id, a name and style DASHED|ACCENT: the drawn line style that tells it from f). Both curves are fitted exactly like
+    a single function, but at one common frame (one scale on both axes, one x window); the dots where the two curves share a point are listed so
+    the second curve's dot can be drawn smaller and both stay visible."""
+    shared=plan['sharedCurve']
+    if not isinstance(shared,dict) or set(shared)-PIECEWISE_SHARED_CURVE_FIELDS or not isinstance(shared.get('id'),str) or not re.fullmatch(r'[a-hj-wz]',shared['id']):raise ValueError('PAIR_SHARED_CURVE_INVALID')
+    if shared.get('style') not in PIECEWISE_SHARED_STYLES:raise ValueError('PAIR_SHARED_CURVES_INDISTINCT')
+    if plan.get('referenceLines'):raise ValueError('PAIR_SHARED_REFERENCE_LINES_UNSUPPORTED')
+    if plan.get('functionName')==shared['id']:raise ValueError('PAIR_SHARED_CURVE_INVALID')
+    own={key:value for key,value in plan.items() if key not in ('sharedCurve','sharedFeatures')}
+    second={'family':plan['family'],'requiredPoints':[],'axisTickValues':{'x':[],'y':[]},'functionName':shared['id'],**{key:value for key,value in shared.items() if key in ('pieces','step','jumpValues','limitArrows')}}
+    for key in ('xWindow','plotHeightLimit','axisTitles'):
+        if key in plan:second[key]=plan[key]
+    first_probe=fit_piecewise_discontinuous(own,probe=True);second_probe=fit_piecewise_discontinuous(second,probe=True)
+    points=first_probe['points']+second_probe['points'];ends=first_probe['ends']+second_probe['ends']
+    limit=plot_height_limit(plan)
+    for ratio in axis_ratios(plan,points,limit):
+        if (first_probe['hasArc'] or second_probe['hasArc']) and ratio!=1.0:raise ValueError('PIECEWISE_ARC_REQUIRES_EQUAL_UNITS')
+        viewport,height,scale=equal_unit_frame(points,limit,ratio)
+        if (max(x for x,_ in ends)-min(x for x,_ in ends))*scale>=EQUAL_UNIT_MIN_CURVE_PX:break
+    else:raise ValueError('PIECEWISE_DISCONTINUOUS_CURVE_TOO_NARROW')
+    frame=(viewport,height,scale,ratio)
+    first=fit_piecewise_discontinuous(own,frame=frame)['graphPlan'];result=fit_piecewise_discontinuous(second,frame=frame)
+    other=result['graphPlan']
+    # The dots both curves share (same point): the second curve's dot is drawn smaller; distinct dots under 4 px apart could not be told apart.
+    first_markers=first['piecewiseDiscontinuousFeatures']['markers'];second_markers=other['piecewiseDiscontinuousFeatures']['markers']
+    coincident=[]
+    for a in first_markers:
+        ax,ay=pp_exact_float(a['x']),pp_exact_float(a['y'])
+        for b in second_markers:
+            bx,by=pp_exact_float(b['x']),pp_exact_float(b['y'])
+            gap=math.hypot((ax-bx)*scale,(ay-by)*scale*ratio)
+            if gap<=1e-6:coincident.append({'first':a['id'],'second':b['id'],'x':a['x'],'y':a['y'],'firstState':a['state'],'secondState':b['state']})
+            elif gap<PIECEWISE_SHARED_MIN_DOT_GAP_PX:raise ValueError('PIECEWISE_DISCONTINUOUS_FEATURES_BELOW_RESOLUTION')
+    other={**other,'id':shared['id'],'style':shared['style']}
+    if 'name' in shared:other['name']=shared['name']
+    first['sharedCurve']=other;first['sharedFeatures']={'schemaVersion':'PIECEWISE_SHARED_FEATURES_v1','coincidentMarkers':coincident}
+    return {'graphPlan':first,'policy':PIECEWISE_DISCONTINUOUS_OVERVIEW_POLICY,'sourceDomainPreserved':False,'displayOnly':True,'features':first['piecewiseDiscontinuousFeatures'],'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
+
+def fit_piecewise_discontinuous(plan,frame=None,probe=False):
+    if 'sharedCurve' in plan and frame is None and not probe:return fit_piecewise_discontinuous_shared(plan)
     if 'functionName' in plan and not (isinstance(plan['functionName'],str) and re.fullmatch(r'[a-hj-wz]',plan['functionName'])):raise ValueError('PIECEWISE_DISCONTINUOUS_FUNCTION_NAME_INVALID')
     unknown=sorted(set(plan)-PIECEWISE_DISCONTINUOUS_FIELDS)
     if unknown:raise ValueError('PIECEWISE_DISCONTINUOUS_FIELD_UNKNOWN:'+unknown[0])
     pieces=piecewise_discontinuous_pieces(plan)
     jumps=piecewise_discontinuous_values(plan,pieces)
-    intervals=[(piece['a'],piece['b']) for piece in pieces]
-    extrema=piecewise_polynomial_extrema([piece['coefficients'] for piece in pieces],intervals)
+    extrema=pd_extrema(pieces)
+    has_arc=any(piece.get('arc') for piece in pieces)
     # Reference lines y=level: the claimed exact crossings must be exactly the engine's own (including declared values on the line).
     raw_lines=plan.get('referenceLines',[])
     if not isinstance(raw_lines,list) or len(raw_lines)>3:raise ValueError('PIECEWISE_REFERENCE_LINES_INVALID')
@@ -2394,10 +2488,14 @@ def fit_piecewise_discontinuous(plan):
     ends=[(left_x,coverage(left_x)),(right_x,coverage(right_x))]
     limit=plot_height_limit(plan)
     points=[(0.0,0.0)]+key+ends+([(window[0],0.0),(window[1],0.0)] if window else [])
-    for ratio in axis_ratios(plan,points,limit):
-        viewport,height,scale=equal_unit_frame(points,limit,ratio)
-        if (ends[1][0]-ends[0][0])*scale>=EQUAL_UNIT_MIN_CURVE_PX:break
-    else:raise ValueError('PIECEWISE_DISCONTINUOUS_CURVE_TOO_NARROW')
+    if probe:return {'points':points,'ends':ends,'hasArc':has_arc}
+    if frame is not None:viewport,height,scale,ratio=frame
+    else:
+        for ratio in axis_ratios(plan,points,limit):
+            if has_arc and ratio!=1.0:raise ValueError('PIECEWISE_ARC_REQUIRES_EQUAL_UNITS')   # a circle squeezed on one axis would be drawn as an ellipse
+            viewport,height,scale=equal_unit_frame(points,limit,ratio)
+            if (ends[1][0]-ends[0][0])*scale>=EQUAL_UNIT_MIN_CURVE_PX:break
+        else:raise ValueError('PIECEWISE_DISCONTINUOUS_CURVE_TOO_NARROW')
     # An unbounded end is drawn out to the edge of the panel (never stopped short of it) while its own height still lies inside
     # the framed viewport, so a graph on |x|>1 does not look as if it ended at the last marked point.
     def reach_edge(anchor,direction):
@@ -2425,6 +2523,10 @@ def fit_piecewise_discontinuous(plan):
     for piece in pieces:
         start=draw[0] if piece['a'] is None else max(draw[0],float(piece['a']))
         end=draw[1] if piece['b'] is None else min(draw[1],float(piece['b']))
+        if piece.get('arc'):
+            arc=piece['arc']
+            piece_rows.append({'kind':'ARC','center':[_pp_text(arc['cx']),_pp_text(arc['cy'])],'radiusSquared':_pp_text(arc['r2']),'branch':'UPPER' if arc['sign']>0 else 'LOWER','interval':[_pp_text(piece['a']),_pp_text(piece['b'])],'drawInterval':[start,end],'start':piece['start'],'end':piece['end']})
+            continue
         piece_rows.append({'coefficients':[_pp_text(c) for c in piece['coefficients']],'interval':[None if piece['a'] is None else _pp_text(piece['a']),None if piece['b'] is None else _pp_text(piece['b'])],'drawInterval':[start,end],'start':piece['start'],'end':piece['end']})
     features={'schemaVersion':'PIECEWISE_DISCONTINUOUS_FEATURES_v1','pieces':piece_rows,'markers':marker_rows,'extrema':[{'x':_pp_text(x_value),'y':_pp_text(y_value),'kind':kind} for x_value,y_value,kind in extrema],'intersections':crossings}
     if arrow_rows:features['limitArrows']=pd_limit_arrow_features(arrow_rows,pieces,draw,scale,ratio)

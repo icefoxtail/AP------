@@ -126,6 +126,10 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 직선 식은 띠에 `y=ax+b`로 세로분수와 함께 써지고, 교점마다 직선 위에 점이 찍힌다. 직선은 그림 영역 안에서 잘려서 그려지며 모든 교점을 지난다.
 - 그림은 가로·세로 같은 배율이 기본이다. 직선이 가파르거나 값이 크면 엔진이 세로를 최대 1/2까지 줄이는 대체(`AXIS_SQUEEZE`)로 다시 시도한다. 그래도 안 되면 `PIECEWISE_POLY_CURVE_TOO_NARROW`.
 
+- **원호 조각(사분원·반원 등)**: `pieces`에 `{"kind":"ARC","center":["a","b"],"radiusSquared":"r2","fromX":"..","toX":"..","branch":"UPPER"|"LOWER","leftClosed":true,"rightClosed":false}`를 다른 조각과 섞어 쓴다. y=b±√(r²−(x−a)²)이고, 끝점 y는 정확값이며 열린·닫힌 점은 다항 조각과 같다. fromX·toX가 원의 x 범위 밖이면 `PIECEWISE_ARC_OUT_OF_DOMAIN`, 형식 오류는 `PIECEWISE_ARC_INVALID`, 가로·세로 배율이 같지 않으면(세로 줄임) `PIECEWISE_ARC_REQUIRES_EQUAL_UNITS`다. 호의 맨 위·아래가 안쪽에 있으면 `requiredPoints`에 넣는다.
+- **한 좌표축에 겹치기 `"layout":"SHARED"`**: `referenceCurves[0]`에 `"style":"DASHED"`(점선) 또는 `"ACCENT"`(색)을 반드시 쓴다(없으면 `PAIR_SHARED_CURVES_INDISTINCT`). f는 실선, g는 그 스타일로 같은 축·같은 배율에 그려지고 `y=f(x)`, `y=g(x)` 이름이 곡선 곁에 붙는다. 두 곡선의 같은 점은 g의 점을 작게 그려 둘 다 보인다. `referenceLines`와 g의 `requiredPoints`는 아직 쓰지 못한다(`PAIR_SHARED_REFERENCE_LINES_UNSUPPORTED`, `PAIR_SHARED_REQUIRED_POINTS_UNSUPPORTED`).
+- **눈금과 점선 안내**: 점선·곡선 때문에 눈금 숫자가 축 양옆에 들어갈 자리가 없으면, 엔진이 그 눈금을 지우지 않고 작은 거리의 지시선으로 눈금에 이어 붙인다. 눈금을 일부러 빼지 않는다.
+
 한계와 오류 코드(가짜 지원 없이 거절):
 - `PIECEWISE_POLY_SLANTED_LINE_SLOPE_ZERO`: 기울기 0은 수평선이다. `{"id","y",...}`로 쓴다.
 - `PIECEWISE_POLY_SLANTED_LINE_COEFFICIENT_INVALID`: 기울기·절편은 정수·분수 또는 `p+q*sqrt(r)` 문자열만 된다(소수, 문자, 식 불가). 무리수 계수의 쓰는 법과 한계는 3-4.
