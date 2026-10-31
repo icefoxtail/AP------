@@ -19,8 +19,24 @@ const sha256 = b => crypto.createHash("sha256").update(b).digest("hex");
 // Read the real sidecars once, keep only this exam's rows. Tests then run on temp copies, never on the real files.
 const realMeta = JSON.parse(fs.readFileSync(path.join(repo, META), "utf8"));
 const realIds = JSON.parse(fs.readFileSync(path.join(repo, IDENTITY), "utf8"));
+const geminiByOrdinal = new Map(gemini.items.map(i => [i.ordinal, i]));
 const slice = {
-  meta: { ...realMeta, records: realMeta.records.filter(r => r.sourceArchiveFile === SOURCE) },
+  meta: {
+    ...realMeta,
+    records: realMeta.records.filter(r => r.sourceArchiveFile === SOURCE).map(r => {
+      const copy = { ...r };
+      const item = geminiByOrdinal.get(copy.sourceOrdinal);
+      if (item?.before?.level) {
+        copy.difficultyBucket = item.before.level;
+      } else {
+        delete copy.difficultyBucket;
+      }
+      delete copy.difficultyConfidence;
+      delete copy.difficultyBoundaryFlag;
+      delete copy.legacyLevelCompatibility;
+      return copy;
+    })
+  },
   ids: { ...realIds, records: realIds.records.filter(r => r.sourceArchiveFile === SOURCE) }
 };
 const sourceBytes = fs.readFileSync(path.join(repo, "archive/exams", SOURCE));
