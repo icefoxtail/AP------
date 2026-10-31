@@ -599,13 +599,14 @@ window.questionBank = [
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q15-solution.svg",
-    "solutionImageAlt": "p가 3/4일 때 포물선과 초점 F, 준선의 발 B, 교점 C의 위치",
-    "solutionImageCaption": "AB=BF에서 A의 x좌표는 3p이고, C는 BF를 2:1로 나눈다.",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y²=4px의 초점 F와 준선, 포물선 위의 점 A, A에서 준선에 내린 수선의 발 B, 선분 BF와 포물선이 만나는 점 C를 나타냈다. AB와 BF는 같은 길이다.",
+    "solutionImageCaption": "AB=BF인 점 A와 준선에 내린 수선의 발 B, 선분 BF와 포물선의 교점 C의 위치를 보인다. p는 문자이므로 한 예로 그린 그림이다.",
     "problemTypeKey": "PT_GEO_PARABOLA",
     "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
     "crossConceptKeys": ["CC_PARABOLA"],
-    "conditionKeys": []
+    "conditionKeys": [],
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
