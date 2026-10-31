@@ -49,17 +49,16 @@
   const text = (value) => String(value ?? "").trim();
   const hasHangul = (value) => /[가-힣]/.test(value);
 
-  // difficultyMode "eligible" (the only mode the screens use): the S14 definition, i.e. a recorded
-  // 1~5 bucket with its confidence / boundary / compatibility fields and no difficulty conflict,
-  // bound to the verified (or content-bound) source. "recorded" accepts every integer bucket,
-  // including the ones whose supporting fields are missing; it exists to MEASURE what that wider
-  // reading would add and is not reachable from the UI.
-  function usableBucket(record, difficultyMode = "eligible") {
+  // Quick assessment selection uses any recorded 1~4 difficultyBucket after the technical
+  // source/identity gate. Confidence, boundary, compatibility, metadata approval/binding and
+  // review annotations are not extra usage gates. No legacy 하/중/상 inference is allowed.
+  // The optional "eligible" mode remains for strict before/after auditing only; the UI uses
+  // "recorded" by default. 5단계 has no quick-assessment preset and remains out of scope.
+  function usableBucket(record, difficultyMode = "recorded") {
     if (!Core.generalUseEligibility(record).ok) return 0;
     const bucket = record.difficultyBucket;
     if (!Number.isInteger(bucket) || bucket < 1 || bucket > 4) return 0;
-    if (difficultyMode === "recorded") return bucket;
-    return Core.difficultyEligible(record, GENERAL) ? bucket : 0;
+    return difficultyMode === "eligible" && !Core.difficultyEligible(record, GENERAL) ? 0 : bucket;
   }
 
   const emptyBuckets = () => ({ 1: [], 2: [], 3: [], 4: [] });
@@ -71,7 +70,7 @@
   // metaByUid (optional, uid -> projected meta row) supplies the recorded 소단원; records without
   // one are simply not part of any 소단원 pool (never guessed).
   function buildPools(index, options = {}) {
-    const difficultyMode = options.difficultyMode === "recorded" ? "recorded" : "eligible";
+    const difficultyMode = options.difficultyMode === "eligible" ? "eligible" : "recorded";
     const metaByUid = options.metaByUid || null;
     const pools = {
       difficultyMode,
