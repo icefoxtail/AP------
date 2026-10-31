@@ -1341,14 +1341,17 @@
     return result;
   }
   function composeMetaMatches(record, filters = state.filters) {
-    const hasMetaFilter = Boolean(filters.L1 || filters.L2 || filters.L3 || filters.L4 || state.buckets.length);
+    // A recorded numeric difficulty is an ordinary usage filter, independent of
+    // metadata approval, source-bound display projection and the DIRECT meta index.
+    // Strict semantic L1-L4 faceting continues to use its existing meta query.
+    if (state.buckets.length && !state.buckets.includes(record.difficultyBucket)) return false;
+    const hasMetaFilter = Boolean(filters.L1 || filters.L2 || filters.L3 || filters.L4);
     if (!hasMetaFilter) return true;
     const supplementalParent = record?.unverifiedTaxonomy ? workspaceScopeParent(record) : null;
     if (supplementalParent?.supplemental) {
-      // The fallback taxonomy is explicitly unverified. It may support basic
-      // L1/L2 browsing, but never advanced L3/L4 or a fabricated difficulty
-      // capability.
-      if (filters.L3 || filters.L4 || state.buckets.length) return false;
+      // A fallback L1/L2 classification is not a verified advanced taxonomy.
+      // Recorded difficulty is independent and was checked above.
+      if (filters.L3 || filters.L4) return false;
       return (!filters.L1 || scopeText(supplementalParent.L1) === scopeText(filters.L1)) &&
         (!filters.L2 || scopeText(supplementalParent.L2) === scopeText(filters.L2));
     }
@@ -1366,7 +1369,6 @@
         if (value && !(level >= 3 && /^(?:mf|rpm):/.test(value)))
           directFilters[`rpmL${level}`] = value.replace(/^rpm:/, "");
       }
-      if (state.buckets.length) directFilters.difficultyBuckets = state.buckets;
       const key = JSON.stringify([state.indexVersion, directFilters]);
       allowed = composeMetaQueryCache.get(key);
       if (!allowed) {
