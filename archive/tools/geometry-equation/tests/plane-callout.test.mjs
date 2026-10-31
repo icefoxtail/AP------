@@ -25,8 +25,8 @@ const modelOf=async graph=>{const response=await pythonWorker({action:'construct
 const tagOf=(svg,id)=>new RegExp('<(?:polyline|line|polygon|circle|g)\\s(?:[^>]*\\s)?id="'+id+'"[^>]*>').exec(svg)?.[0];
 const attr=(tag,name)=>new RegExp('\\s'+name+'="([^"]*)"').exec(tag)?.[1];
 const specError=(plan,model)=>{try{specFor(plan,model,identity.assetId);}catch(error){return String(error.message);}assert.fail('specFor accepted the plan');};
-const observe=async(svg,graph,planeMarks,segments,transform)=>{
-  const response=await pythonWorker({action:'planeMarksAudit',svg,points:reconstruct(graph).points,marks:planeMarks,segments,transform},{script:OBSERVER});
+const observe=async(svg,graph,planeMarks,segments,transform,extra={})=>{
+  const response=await pythonWorker({action:'planeMarksAudit',svg,points:reconstruct(graph).points,marks:planeMarks,segments,transform,...extra},{script:OBSERVER});
   assert.equal(response.status,'OK',JSON.stringify(response.result));return response.result;
 };
 const codes=report=>report.errors.map(error=>error.split(':')[0]);
@@ -241,4 +241,101 @@ test('E37 callouts with hidden points: a point drawn with no dot (hiddenPointSty
   expectComposed(composed);
   assert.equal(tagOf(composed.svg,'B'),undefined,'the hidden point draws no dot');
   for(const id of ['k1__D','k1__G','k1__C'])assert.ok(tagOf(composed.svg,id),'the copy '+id+' keeps its dot');
+});
+
+// ---- (G11) a callout beside a coordinate figure with axes (SOURCE_COORDINATE_AXES_v1): the axes keep the main frame, the copy stands outside it
+const division=(id,a,b)=>({...node(id,'DIVISION_POINT',[a,b],'POINT',{m:int(3),n:int(1),mode:'INTERNAL'}),factRole:'DERIVED_INTERMEDIATE'});
+const coordGraph={schemaVersion:'construction-spike-v1',realization:{recipeId:'SOURCE_COORDINATE_AXES_v1',unit:'source-coordinate',reflectionEquivalent:false},nodes:[
+  {...node('O','NORMALIZATION_ORIGIN',[],'POINT',{}),factRole:'GIVEN'},{...node('U0','NORMALIZATION_AXIS',[],'POINT',{length:int(1)}),factRole:'DERIVED_INTERMEDIATE'},
+  {...source('A',6,0),factRole:'GIVEN'},{...source('B',3,6),factRole:'GIVEN'},division('C','O','A'),division('D','A','B'),division('E','B','O')]};
+const coordRow=(extra={})=>({id:'k1',kind:'SEGMENT',path:['O','C','A'],at:'RIGHT',scale:1.6,dimensions:[
+  {id:'dOC',from:'O',to:'C',label:'3',side:'ABOVE',style:'ARROW',offset:'AUTO',factRole:'GIVEN'},{id:'dCA',from:'C',to:'A',label:'1',side:'ABOVE',style:'ARROW',offset:'AUTO',factRole:'GIVEN'}],...extra});
+const coordPlan=(row=coordRow(),extra={})=>({capability:'construction-spike-v1',caption:'좌표평면 위의 삼각형 OAB와 세 변을 3:1로 내분하는 점 C, D, E이다.',mathPlan:coordGraph,displayPoints:['O','A','B','C','D','E'],
+  displaySegments:[['sOA','O','A'],['sAB','A','B'],['sBO','B','O'],['sCD','C','D'],['sDE','D','E'],['sEC','E','C']].map(([id,a,b])=>({id,refs:[a,b]})),coordinateLabels:['A'],axisTickValues:{x:[],y:[]},coordinateCanvas:{width:640,height:520},
+  planeMarks:{callouts:[row]},...extra});
+
+test('G11 coordinate callout: a segment pulled out of a figure with axes stands outside the axes; every audit passes and the observer holds the axes to the main frame',async()=>{
+  const model=await modelOf(coordGraph),plan=coordPlan(),composed=await composeOf(plan,model);
+  expectComposed(composed);
+  const spec=specFor(plan,model,identity.assetId),frame=spec.displayFacts.axisBounds;
+  assert.ok(Array.isArray(frame)&&frame.length===4,'the main frame is passed to the axes');
+  const [o,c,a]=['O','C','A'].map(id=>scaled(composed.svg,'k1__'+id));
+  assert.ok(Math.abs(Math.hypot(c[0]-o[0],c[1]-o[1])/Math.hypot(a[0]-c[0],a[1]-c[1])-3)<1e-9,'OC : CA = 3 : 1 on the copy');
+  // the x-axis ends at the main frame, left of the first copy point
+  const xAxis=tagOf(composed.svg,'x-axis'),axisEnd=Math.max(Number(attr(xAxis,'x1')),Number(attr(xAxis,'x2')));
+  assert.ok(axisEnd<Math.min(o[0],c[0],a[0]),'the x-axis stops before the copy');
+  const transform=await transformOf(plan,model),report=await observe(composed.svg,coordGraph,plan.planeMarks,plan.displaySegments,transform,{axisBounds:frame});
+  assert.deepEqual(report.errors,[]);
+  // without callouts the same figure is unchanged: no axisBounds, the axes run over the whole frame
+  const bare=coordPlan(undefined,{planeMarks:{}});
+  expectComposed(await composeOf(bare,model));
+  assert.equal(specFor(bare,model,identity.assetId).displayFacts.axisBounds,undefined);
+  // plan errors
+  assert.equal(specError(coordPlan(coordRow({scale:9})),model),'CALLOUT_SCALE_INVALID:k1');
+});
+
+// ---- (G11) angle callout: arcs that follow the drawn rays (arcScale PROPORTIONAL) and an angle dimension (angleDimension), on the fan of 26 왕운중 2학기 중간 q8
+test('G11 angle callout: proportional arcs and a dimension arc with arrowheads; every audit passes, the radii follow the drawn rays, and plan errors have explicit codes',async()=>{
+  const model=await modelOf(fanNodes),row=fanRow({radius:9,arcScale:'PROPORTIONAL',angleDimension:{text:'x',refs:['I','O']}}),plan=fanPlan(row),composed=await composeOf(plan,model);
+  expectComposed(composed);
+  const transform=await transformOf(plan,model),report=await observe(composed.svg,fanNodes,plan.planeMarks,plan.displaySegments,transform);
+  assert.deepEqual(report.errors,[]);
+  // the radii in px: the first arc 0.30 of the ray (no 28 px cap), the dimension arc 1.15 of it
+  const vertex=scaled(composed.svg,'kB__B'),ray=Math.hypot(...scaled(composed.svg,'kB__C').map((v,i)=>v-vertex[i]));
+  const radius=id=>{const pts=attr(tagOf(composed.svg,id),'points').split(' ').map(p=>p.split(',').map(Number));return Math.hypot(pts[0][0]-vertex[0],pts[0][1]-vertex[1]);};
+  assert.ok(Math.abs(radius('kB__aIBC-arc-1')-Math.min(Math.max(0.3*ray,16),0.55*ray))<1e-3&&radius('kB__aIBC-arc-1')>28,'proportional first arc');
+  assert.ok(Math.abs(radius('kB__angDim-arc-1')-1.15*ray)<1e-3,'dimension arc');
+  assert.equal([...composed.svg.matchAll(/id="kB__angDim-arrow-(from|to)"/g)].length,2,'an arrowhead at each end');
+  // tamper: the observer holds the drawing to the declared fields
+  const check=async(change,code)=>assert.ok(codes(await observe(composed.svg,fanNodes,{callouts:[JSON.parse(JSON.stringify(fanRow({...row,...change})))]},plan.displaySegments,transform)).includes(code),code);
+  await check({angleDimension:{text:'x',refs:['I','O'],radiusFactor:1.4}},'CALLOUT_ANGLE_DIMENSION_GEOMETRY_MISMATCH');
+  await check({angleDimension:{text:'y',refs:['I','O']}},'CALLOUT_ANGLE_DIMENSION_LABEL_MISMATCH');
+  // without the new fields the callout is the old figure (arcs capped at 28 px)
+  const old=await composeOf(fanPlan(),model);expectComposed(old);
+  const oldVertex=scaled(old.svg,'kB__B'),oldPts=attr(tagOf(old.svg,'kB__aIBC-arc-1'),'points').split(' ').map(p=>p.split(',').map(Number));
+  assert.ok(Math.hypot(oldPts[0][0]-oldVertex[0],oldPts[0][1]-oldVertex[1])<=28+1e-6);
+  // the old drawing (arcs capped at 28 px) declared PROPORTIONAL is refused
+  assert.ok(codes(await observe(old.svg,fanNodes,{callouts:[fanRow({arcScale:'PROPORTIONAL'})]},plan.displaySegments,transform)).includes('CALLOUT_ARC_SCALE_MISMATCH'));
+  const err=extra=>specError(fanPlan(fanRow({radius:9,...extra})),model);
+  assert.equal(err({arcScale:'FIXED'}),'CALLOUT_ARC_SCALE_INVALID:kB');
+  assert.equal(err({angleDimension:{text:'',refs:['I','O']}}),'CALLOUT_ANGLE_DIMENSION_INVALID:kB');
+  assert.equal(err({angleDimension:{text:'x',refs:['I','O'],radiusFactor:2}}),'CALLOUT_ANGLE_DIMENSION_INVALID:kB');
+  assert.equal(err({angleDimension:{text:'x'}}),'CALLOUT_ANGLE_DIMENSION_INVALID:kB');          // four rays: the two of the angle must be named
+  assert.equal(err({angleDimension:{text:'x',refs:['I','M']}}),'CALLOUT_ANGLE_DIMENSION_INVALID:kB');
+  assert.equal(specError(trianglePlan(calloutRow({arcScale:'PROPORTIONAL'})),await modelOf(triangle)),'CALLOUT_ARC_SCALE_INVALID:k1');
+  assert.equal(specError(trianglePlan(calloutRow({angleDimension:{text:'x'}})),await modelOf(triangle)),'CALLOUT_ANGLE_DIMENSION_INVALID:k1');
+  assert.equal(err({angleDimension:{text:'36°',refs:['I','O']}}),'ANGLE_MARK_FACT_MISMATCH:kB__angDim:declared=36:drawn=18.000');       // a degree text is the drawn value
+});
+
+// ---- (G11) path label: a narrow vertex leaves the first round no place; the second round slides the anchor, goes farther out and marks its leader (25 왕운중 2학기 기말 q6)
+const narrow=plane([source('A',6,8),source('B',0,0),node('C','SOURCE_POINT',[],'POINT',{coordinates:[frac(219,13),frac(-23,13)]}),{...node('D','MIDPOINT',['A','B'],'POINT',{}),factRole:'GIVEN'},{...node('G','CENTROID',['A','B','C'],'POINT',{}),factRole:'GIVEN'}]);
+const narrowPlan=(row,extra={})=>({capability:'construction-spike-v1',caption:'중선 CD 위에서 CG=10 cm, GD=5 cm이고 전체 CD=x=15 cm이다.',mathPlan:narrow,displayPoints:['A','B','C','D','G'],
+  displaySegments:triangleSegments,coordinateCanvas:{width:640,height:440},planeMarks:{pathLabels:[{id:'pCD',points:['C','G','D'],label:'x=15',unit:'cm',factRole:'DERIVED_INTERMEDIATE',...row}]},...extra});
+
+test('G11 path label: where every first-round place fails (narrow vertex C) the second round finds one on a marked leader; leader NEVER stops with PATH_LABEL_NO_ROOM; every audit passes',async()=>{
+  const model=await modelOf(narrow),names=['C','G','D'];
+  const plan=narrowPlan({anchor:0.2,side:'LEFT'}),composed=await composeOf(plan,model);
+  expectComposed(composed);
+  assert.equal([...composed.svg.matchAll(/data-path-label-fallback="1"/g)].length,1,'the second-round leader is marked');
+  const leader=leaderOf(composed.svg,'pCD-label'),drawn=fractionAlong(composed.svg,leader,names);
+  assert.ok(Math.abs(drawn-0.2)<=0.26,'the leader starts within 0.26 of the declared anchor: '+drawn);
+  const transform=await transformOf(plan,model);
+  assert.deepEqual((await observe(composed.svg,narrow,plan.planeMarks,plan.displaySegments,transform)).errors,[]);
+  // the marker is what widens the tolerance: without it the leader is held to the first round's 0.1 (when it lies farther than that)
+  if(Math.abs(drawn-0.2)>0.1)assert.ok(codes(await observe(composed.svg.replace(' data-path-label-fallback="1"',''),narrow,plan.planeMarks,plan.displaySegments,transform)).includes('PATH_LABEL_ANCHOR_MISMATCH'));
+  // leader NEVER: no second round
+  const never=await composeOf(narrowPlan({anchor:0.2,side:'LEFT',leader:'NEVER'}),model);
+  assert.equal(never.status,'PATH_LABEL_NO_ROOM');assert.equal(never.detail.id,'pCD');
+  assert.ok(codes(await observe(composed.svg,narrow,{pathLabels:[{...plan.planeMarks.pathLabels[0],leader:'NEVER'}]},plan.displaySegments,transform)).includes('PATH_LABEL_NO_ROOM'));
+  // a figure whose first round succeeds is the same with or without the field, and carries no marker
+  const first=await composeOf(narrowPlan({anchor:0.5,side:'RIGHT'}),model),firstNever=await composeOf(narrowPlan({anchor:0.5,side:'RIGHT',leader:'NEVER'}),model);
+  expectComposed(first);assert.equal(first.svg,firstNever.svg);assert.ok(!first.svg.includes('data-path-label-fallback'));
+  assert.equal(specError(narrowPlan({leader:'ALWAYS'}),model),'PATH_LABEL_LEADER_INVALID:pCD');
+});
+
+test('G11 path label: a total length never starts its second-round leader on a piece that already carries a length (CG and GD have dimensions: PATH_LABEL_NO_ROOM)',async()=>{
+  const model=await modelOf(narrow),dims=[{id:'dCG',from:'C',to:'G',label:'10',unit:'cm',side:'ABOVE',style:'INLINE',factRole:'GIVEN'},{id:'dGD',from:'G',to:'D',label:'5',unit:'cm',side:'ABOVE',style:'INLINE',factRole:'DERIVED_INTERMEDIATE'}];
+  const plan=narrowPlan({anchor:0.2,side:'LEFT'});plan.planeMarks.dimensions=dims;
+  const composed=await composeOf(plan,model);
+  assert.equal(composed.status,'PATH_LABEL_NO_ROOM');assert.equal(composed.detail.id,'pCD');
 });

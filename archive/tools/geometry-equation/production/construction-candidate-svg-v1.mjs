@@ -185,6 +185,12 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     if(![unresolved,suppressed,repairs].every(Array.isArray))throw new Stop('WORKER_ERROR',{stage:'build',code:'BUILD_WITNESS_LAYOUT_INVALID'});
     // Opt-in diagnostic: keep the incomplete candidate beside the failure so a person can see what the layout could not place (never read by any gate).
     if(process.env.APMS_DRAFT_DIR&&(unresolved.length||suppressed.length))(await import('node:fs')).writeFileSync((process.env.APMS_DRAFT_DIR)+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-'+Date.now()+'.svg',svg);
+    // (G11) a path total-length label (pathLabels[].id) found no place even in the second round (or leader:NEVER forbids it): its own code with the label's id
+    const pathRowIds=new Set((Array.isArray(plan?.planeMarks?.pathLabels)?plan.planeMarks.pathLabels:[]).map(row=>row?.id));
+    const stuckIds=[...unresolved,...suppressed].map(id=>String(id?.id??id)),stuckPath=stuckIds.length&&stuckIds.every(id=>id.endsWith('-label')&&pathRowIds.has(id.slice(0,-'-label'.length)))?stuckIds[0]:null;
+    if(stuckPath)throw new Stop('PATH_LABEL_NO_ROOM',{id:stuckPath.slice(0,-'-label'.length),unresolved,suppressed});
+    // (G11) the label of a callout's angle dimension (kX__angDim-label) found no room, not even on a leader: its own code, so the author moves it (radiusFactor, radius, at) instead of retrying elsewhere
+    if([...unresolved,...suppressed].some(id=>/__angDim-label$/.test(String(id?.id??id))))throw new Stop('CALLOUT_ANGLE_DIMENSION_NO_ROOM',{unresolved,suppressed});
     if(unresolved.length||suppressed.length)throw new Stop('LAYOUT_INVENTORY_INCOMPLETE',{unresolved,suppressed});
     // Binding a repair needs Archive profile/policy refs: without repairContext never accept one silently.
     if(repairs.length&&!repairContext)throw new Stop('LAYOUT_REPAIR_NOT_BOUND',{repairs});
@@ -230,7 +236,7 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     // runPhase2 715: graphs also need the graph observer on the final SVG at the intrinsic scale.
     const graphAudit=graph?await call(pythonWorker,'graphAudit',{graphPlan:plan.graphPlan,svg,transform:{...observerFrame(witness.coordinateModel),displayScale:1}},{script:GRAPH_OBSERVER_SCRIPT,timeoutMs:120000}):null;
     // The plane-marks observer recomputes every stated angle, length, parallel and arc fact from the Cindy peer's points and the drawn primitives.
-    const planeAudit=!graph&&usesPlaneMarks(plan)?await call(pythonWorker,'planeMarksAudit',{svg,points:peer.points,marks:plan.planeMarks||{},segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:witness.coordinateModel},{script:PLANE_MARKS_OBSERVER_SCRIPT}):null;
+    const planeAudit=!graph&&usesPlaneMarks(plan)?await call(pythonWorker,'planeMarksAudit',{svg,points:peer.points,marks:plan.planeMarks||{},segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:witness.coordinateModel,...(Array.isArray(spec.displayFacts.axisBounds)?{axisBounds:spec.displayFacts.axisBounds}:{})},{script:PLANE_MARKS_OBSERVER_SCRIPT}):null;
     lineage.staticAuditSha256=digest(graph?{primitive:audit,graph:graphAudit}:planeAudit?{primitive:audit,planeMarks:planeAudit}:audit,'staticAudit','OUTPUT_NOT_CANONICAL');
     const auditErrors=Array.isArray(audit.errors)?[...audit.errors]:[];
     // The observer reports the bytes it parsed; they must be the bytes the render below receives.

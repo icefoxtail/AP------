@@ -193,6 +193,8 @@ def box_polyline_distance(box,points):
 # ---- path label anchor and side (E37): this observer's own copy of the rules
 PATH_LABEL_ANCHORS={'START':0.15,'END':0.85}   # START / END: near the first / last point of the path (a fraction of its length)
 PATH_LABEL_ANCHOR_TOLERANCE=0.1                # the engine slides a named anchor at most 0.09 of the path along it
+PATH_LABEL_FALLBACK_ANCHOR_TOLERANCE=0.26      # (G11) the engine's second round slides the anchor at most 0.25 of the path from the plan's
+PATH_LABEL_FALLBACK_SIDE_MIN_COS=0.1           # (G11) and takes directions up to about 75 degrees off the side's normal (cosine 0.26): the box centre, seen from the leader's start, leans at least this far
 PATH_LABEL_SIDE_MIN_COS=0.3                    # the label box's centre, seen from the leader's start, leans at least this far to the declared side (cosine with that side's normal)
 def path_anchor_fraction(anchor):
     if isinstance(anchor,str):return PATH_LABEL_ANCHORS.get(anchor)
@@ -233,6 +235,8 @@ def expand_callouts(p,elements,inverse,errors,observations):
         if cid in taken:errors.append('CALLOUT_ID_DUPLICATE:'+cid);continue
         taken.add(cid)
         if kind not in ('SEGMENT','ANGLE'):errors.append('CALLOUT_KIND_INVALID:'+cid);continue
+        if kind=='SEGMENT' and row.get('arcScale') is not None:errors.append('CALLOUT_ARC_SCALE_INVALID:'+cid)
+        if kind=='SEGMENT' and row.get('angleDimension') is not None:errors.append('CALLOUT_ANGLE_DIMENSION_INVALID:'+cid)
         # the points the copies stand for, and the pieces drawn between them (a path's consecutive pairs, or the rays from the vertex)
         if kind=='SEGMENT':
             path=list(row.get('path') or []);piece_pairs=[(path[i],path[i+1]) for i in range(len(path)-1)];piece_prefix='s'
@@ -319,9 +323,24 @@ def expand_callouts(p,elements,inverse,errors,observations):
                 refs=angle.get('refs') or []
                 if len(refs)!=3 or refs[1]!=path[0] or refs[0] not in path[1:] or refs[2] not in path[1:] or refs[0]==refs[2]:errors.append('CALLOUT_ANGLE_REFS_INVALID:'+cid+':'+str(angle.get('id')));continue
                 out={**angle,'id':prefix+angle['id'],'refs':[prefix+r for r in refs]}
+                if row.get('arcScale') is not None:out['arcScale']=row['arcScale']     # (G11) the callout's arcs follow its drawn rays
                 if angle.get('equalGroup') is not None:out['equalGroup']=cid+':'+str(angle['equalGroup'])      # an equal group is the callout's own, never the main figure's
                 if angle.get('over'):out['over']=[prefix+r for r in angle['over']]
                 angles.append(out)
+            # (G11) arcScale / angleDimension: this observer's own reading of the two fields (they belong to an ANGLE callout only)
+            if row.get('arcScale') not in (None,'PROPORTIONAL'):errors.append('CALLOUT_ARC_SCALE_INVALID:'+cid)
+            dim=row.get('angleDimension')
+            if dim is not None:
+                bad_dim=not isinstance(dim,dict) or set(dim)-{'text','radiusFactor','refs','factRole'} or not isinstance(dim.get('text'),str) or not dim['text'].strip()
+                factor=dim.get('radiusFactor',1.15) if isinstance(dim,dict) else None
+                if bad_dim or isinstance(factor,bool) or not isinstance(factor,(int,float)) or not 0.6<=factor<=1.5:errors.append('CALLOUT_ANGLE_DIMENSION_INVALID:'+cid)
+                else:
+                    pair=dim.get('refs') if dim.get('refs') is not None else (path[1:] if len(path)==3 else None)
+                    if not isinstance(pair,list) or len(pair)!=2 or pair[0]==pair[1] or any(r not in path[1:] for r in pair):errors.append('CALLOUT_ANGLE_DIMENSION_INVALID:'+cid)
+                    else:
+                        degrees=re.fullmatch(r'\s*(\d+(?:\.\d+)?)\s*\u00b0\s*',dim['text'])
+                        angles.append({'id':prefix+'angDim','refs':[prefix+pair[0],prefix+path[0],prefix+pair[1]],'style':'ARC','arcs':1,'angleDimension':{'radiusFactor':float(factor)},
+                                       **({'value':float(degrees.group(1)),'label':degrees.group(1),'labelKind':'DEGREE'} if degrees else {'label':dim['text'].strip(),'labelKind':'MATH'})})
         def piece_of(pair,piece_pairs=piece_pairs,prefix=prefix,piece_prefix=piece_prefix):
             for i,(a,b) in enumerate(piece_pairs):
                 if [a,b]==list(pair) or [b,a]==list(pair):return prefix+piece_prefix+str(i+1)
@@ -367,6 +386,7 @@ def audit(p):
         if n.get('data-mark'):by_mark.setdefault((n.get('data-mark'),n.get('data-mark-id')),[]).append(n)
     declared={('angle',r['id']) for r in marks.get('angles',[])}|{('equal',r['id']) for r in marks.get('equalLengths',[])}|{('parallel',r['id']) for r in marks.get('parallels',[])}|{('arc',r['id']) for r in marks.get('arcs',[]) if r.get('highlight',True)}
     declared|={('trace',r['id']) for r in marks.get('traces',[])}
+    declared|={('angle-dimension',r['id']) for r in marks.get('angles',[]) if isinstance(r,dict) and r.get('angleDimension') is not None}      # (G11)
     declared|={('dimension',r['id']) for r in marks.get('dimensions',[])}
     declared|={('arrow',s['id']) for s in p.get('segments',[]) if s.get('arrow')}
     declared|={('region',r['id']) for r in marks.get('regions',[])}
@@ -381,6 +401,45 @@ def audit(p):
             m=re.fullmatch(r'translate\(([-\d.eE+]+)[ ,]([-\d.eE+]+)\)',n.get('transform'))
             inner=next((c for c in n if tag(c)=='svg'),None)
             if m and inner is not None:label_boxes[n.get('id')]=(float(m.group(1)),float(m.group(2)),float(inner.get('width')),float(inner.get('height')))
+    # (G11) callouts beside a coordinate figure: no axis line, tick, tick number or axis name may touch a copy, and the axes stay on the main frame
+    callout_rows=[r for r in (marks.get('callouts') or []) if isinstance(r,dict) and isinstance(r.get('id'),str)]
+    if callout_rows:
+        def svg_points(n):
+            t=tag(n)
+            if t=='line' and n.get('x1') is not None:return [(float(n.get('x1')),float(n.get('y1'))),(float(n.get('x2')),float(n.get('y2')))]
+            if t in ('polyline','polygon') and n.get('points'):
+                raw=[float(v) for part in n.get('points','').split() for v in part.split(',')];return [(raw[i],raw[i+1]) for i in range(0,len(raw)-1,2)]
+            if t=='circle' and n.get('cx') is not None:
+                cx,cy,r=float(n.get('cx')),float(n.get('cy')),float(n.get('r') or 0);return [(cx-r,cy-r),(cx+r,cy+r)]
+            return []
+        copy_boxes=[]
+        for row in callout_rows:
+            prefix=str(row['id'])+CALLOUT_SEP;pts=[]
+            for node_id,node in elements.items():
+                if str(node_id).startswith(prefix) and node_id not in label_boxes:pts+=svg_points(node)
+            boxes=[b for label_id,b in label_boxes.items() if str(label_id).startswith(prefix)]
+            if not pts and not boxes:continue
+            x0=min([q[0] for q in pts]+[b[0] for b in boxes]);x1=max([q[0] for q in pts]+[b[0]+b[2] for b in boxes])
+            y0=min([q[1] for q in pts]+[b[1] for b in boxes]);y1=max([q[1] for q in pts]+[b[1]+b[3] for b in boxes])
+            copy_boxes.append((str(row['id']),(x0,y0,x1-x0,y1-y0)))
+        axis_lines=[(i,n) for i,n in elements.items() if tag(n)=='line' and n.get('data-role') in ('axis','tick') and not str(i).startswith(tuple(str(r['id'])+CALLOUT_SEP for r in callout_rows))]
+        axis_labels=[(i,b) for i,b in label_boxes.items() if str(i).startswith(('tick-','axis-','model-')) or str(i).endswith('-coordinate-panel')]
+        for cid,box in copy_boxes:
+            for i,n in axis_lines:
+                a,b=svg_points(n)
+                if segment_box_hit(a,b,box,0.5):errors.append('CALLOUT_OVERLAPS_AXES:'+cid+':'+str(i))
+            for i,lb in axis_labels:
+                if box[0]<lb[0]+lb[2] and lb[0]<box[0]+box[2] and box[1]<lb[1]+lb[3] and lb[1]<box[1]+box[3]:
+                    errors.append(('CALLOUT_OVERLAPS_COORDINATE_BAND:' if str(i).endswith('-coordinate-panel') else 'CALLOUT_OVERLAPS_AXES:')+cid+':'+str(i))
+        axis_frame=p.get('axisBounds')
+        drawn_axes=[(i,n) for i,n in axis_lines if n.get('data-role')=='axis']
+        if drawn_axes:
+            if not (isinstance(axis_frame,list) and len(axis_frame)==4):errors.append('CALLOUT_AXIS_EXTENT_MISMATCH:main frame missing')
+            else:
+                for i,n in drawn_axes:
+                    for q in svg_points(n):
+                        mx,my=inverse(q[0],q[1])
+                        if mx<axis_frame[0]-1e-6 or mx>axis_frame[1]+1e-6 or my<axis_frame[2]-1e-6 or my>axis_frame[3]+1e-6:errors.append('CALLOUT_AXIS_EXTENT_MISMATCH:'+str(i))
     leaders={n.get('data-owner-label'):n for n in root.iter() if tag(n)=='line' and n.get('data-role')=='leader' and n.get('data-owner-label')}
     # every drawn stroke a label must keep clear of (svg px): lines, polylines, polygons, circle outlines (sampled), point disks
     strokes=[]
@@ -496,6 +555,34 @@ def audit(p):
         if not sweeps:continue
         drawn=sweeps[0]
         angle_geometry[oid]=(v,direction_degrees(sub(a,v)),signed,max(radii))
+        # (G11) arcScale PROPORTIONAL: the arcs' radii (px) are those of the shorter drawn ray, with no 28 px cap
+        ray_px=min(norm(sub(a,v)),norm(sub(c,v)))*sx
+        if row.get('arcScale')=='PROPORTIONAL':
+            gap_px=max(4.5,0.04*ray_px);rings=[row['ring']] if isinstance(row.get('ring'),int) else [1,2,3]
+            def proportional_ok(ring):
+                first_px=min(max(0.30*ray_px,16.0),0.55*ray_px)+2*gap_px*(ring-1)
+                return all(abs(r*sx-(first_px+gap_px*k))<=0.5 for k,r in enumerate(radii))
+            if not any(proportional_ok(ring) for ring in rings):errors.append('CALLOUT_ARC_SCALE_MISMATCH:'+oid+':rayPx=%.2f:radiusPx=%.2f'%(ray_px,radii[0]*sx))
+        # (G11) angleDimension: one arc at radiusFactor times the shorter ray, an arrowhead at each end, the rays prolonged to the arc when it stands beyond them
+        if row.get('angleDimension') is not None:
+            factor=float(row['angleDimension'].get('radiusFactor',1.15));want_px=factor*ray_px
+            def dim_error(why):errors.append('CALLOUT_ANGLE_DIMENSION_GEOMETRY_MISMATCH:'+oid+':'+why)
+            if len(arcs)!=1 or sectors:dim_error('arc')
+            elif abs(radii[0]*sx-want_px)>0.5:dim_error('radius=%.2f:want=%.2f'%(radii[0]*sx,want_px))
+            heads={n.get('data-mark-part'):n for n in by_mark.get(('angle-dimension',oid),[]) if tag(n)=='polygon'}
+            if set(heads)!={'arrow-from','arrow-to'}:dim_error('arrowheads')
+            else:
+                arc_pts=poly_model(arcs[0])
+                for part,end in (('arrow-from',arc_pts[0]),('arrow-to',arc_pts[-1])):
+                    tip=poly_model(heads[part])[0]
+                    if norm(sub(tip,end))*sx>1.0:dim_error(part+' tip')
+            prolonged={n.get('data-mark-part'):n for n in by_mark.get(('angle-dimension',oid),[]) if tag(n)=='line'}
+            for part,ray_end in (('ext-from',a),('ext-to',c)):
+                need=want_px>norm(sub(ray_end,v))*sx+4.0+2.0
+                if need!=(part in prolonged):dim_error(part+(' missing' if need else ' unexpected'))
+                elif need:
+                    e0,e1=line_model(prolonged[part]);direction=sub(ray_end,v)
+                    if abs(wrap180(direction_degrees(sub(e1,e0))-direction_degrees(direction)))>0.5 or norm(sub(e0,v))<norm(direction)-1e-9:dim_error(part+' off the ray')
         if straight:
             # the semicircle faces the screen side the plan names: the middle of its first arc, seen from the vertex in svg px, points that way
             want_side=DIM_SIDE_VECTORS.get(row.get('side'))
@@ -547,6 +634,13 @@ def audit(p):
                     along=((direction_degrees(d)-direction_degrees(sub(a,v)))*(1 if signed>0 else -1))%360.0
                     if along>360.0-ANGLE_LEADER_END_TOLERANCE:along-=360.0
                     return -ANGLE_LEADER_END_TOLERANCE<=along<=abs(signed)+ANGLE_LEADER_END_TOLERANCE
+                if row.get('angleDimension') is not None:
+                    # (G11) the label says what the plan's text says (read back glyph by glyph)
+                    node=elements.get(oid+'-label');codes_here=glyph_codes(node) if node is not None else []
+                    label_text=str(row.get('label',''));expect=None
+                    if row.get('labelKind','DEGREE')=='DEGREE':expect=[{format(ord(ch),'X')} for ch in label_text]+[{'2218'}]
+                    elif re.fullmatch(r'[A-Za-z0-9 ()+=<>.-]+',label_text):expect=math_label_codes(label_text)
+                    if not codes_here or (expect is not None and (len(codes_here)!=len(expect) or any(code not in allowed for code,allowed in zip(codes_here,expect)))):errors.append('CALLOUT_ANGLE_DIMENSION_LABEL_MISMATCH:'+oid)
                 has_leader=oid+'-label' in leaders
                 if has_leader:
                     leader_ok(oid+'-label',box,on_arc)
@@ -999,22 +1093,45 @@ def audit(p):
             else:
                 leader_ok(oid+'-label',box,lambda q:min(point_segment_distance(q,c,d) for c,d in zip(path,path[1:]))<=1.0)
                 la=(float(node.get('x1')),float(node.get('y1')));lb=(float(node.get('x2')),float(node.get('y2')))
+                # (G11) a leader of the engine's second round (every place of the first round failed) says so: the anchor may lie up to 0.26 of the path from the plan's, the side leans less
+                fallback=node.get('data-path-label-fallback')=='1'
+                if node.get('data-path-label-fallback') not in (None,'1'):errors.append('PATH_LABEL_FALLBACK_INVALID:'+oid)
+                if fallback and (row.get('leader')=='NEVER' or closed):errors.append('PATH_LABEL_NO_ROOM:'+oid)
+                anchor_tolerance=PATH_LABEL_FALLBACK_ANCHOR_TOLERANCE if fallback else PATH_LABEL_ANCHOR_TOLERANCE
+                if fallback and not closed:
+                    # (G11) a second-round leader never starts on a piece that already carries another length (a dimension between its ends, a segment label on it, another path label over it)
+                    def pair_key(a,b):return tuple(sorted((a,b)))
+                    pieces=[pair_key(a_id,b_id) for a_id,b_id in zip(ids,ids[1:])]
+                    taken=set()
+                    for d in marks.get('dimensions') or []:
+                        if pair_key(d.get('from'),d.get('to')) in pieces:taken.add(pieces.index(pair_key(d.get('from'),d.get('to'))))
+                    for e in marks.get('expressionLabels') or []:
+                        for i,(a_id,b_id) in enumerate(zip(ids,ids[1:])):
+                            seg=next((sg for sg in expanded if sg.get('id')==e.get('ownerSegment')),None)
+                            if seg and pair_key(*seg['refs'])==pair_key(a_id,b_id):taken.add(i)
+                    for other in marks.get('pathLabels') or []:
+                        if other is row or other.get('id')==row.get('id'):continue
+                        for a_id,b_id in zip(other.get('points') or [],(other.get('points') or [])[1:]):
+                            if pair_key(a_id,b_id) in pieces:taken.add(pieces.index(pair_key(a_id,b_id)))
+                    start_piece=min(range(len(path)-1),key=lambda i:point_segment_distance(la,path[i],path[i+1]))
+                    if start_piece in taken:errors.append('PATH_LABEL_LEADER_ON_LABELED_PIECE:'+oid)
+                side_min_cos=PATH_LABEL_FALLBACK_SIDE_MIN_COS if fallback else PATH_LABEL_SIDE_MIN_COS
                 # anchor / side (E37): where along the path the leader starts, and on which side of the path (walking first point to last, as the page shows it: y down) the label stands
                 if row.get('anchor') is not None:
                     wanted=path_anchor_fraction(row['anchor'])
                     if wanted is None or closed:errors.append('PATH_LABEL_ANCHOR_INVALID:'+oid)
                     else:
                         drawn,_=nearest_on_path(la,path)
-                        if abs(drawn-wanted)>PATH_LABEL_ANCHOR_TOLERANCE:errors.append('PATH_LABEL_ANCHOR_MISMATCH:'+oid+':wanted=%.3f:drawn=%.3f'%(wanted,drawn))
+                        if abs(drawn-wanted)>anchor_tolerance:errors.append('PATH_LABEL_ANCHOR_MISMATCH:'+oid+':wanted=%.3f:drawn=%.3f'%(wanted,drawn))
                 if row.get('side') is not None:
                     if row['side'] not in ('LEFT','RIGHT') or closed:errors.append('PATH_LABEL_SIDE_INVALID:'+oid)
                     else:
                         _,(dx,dy)=nearest_on_path(la,path);normal=(dy,-dx) if row['side']=='LEFT' else (-dy,dx)
                         centre=(box[0]+box[2]/2-la[0],box[1]+box[3]/2-la[1])
-                        if norm(centre)<=1e-9 or (centre[0]*normal[0]+centre[1]*normal[1])/norm(centre)<PATH_LABEL_SIDE_MIN_COS:errors.append('PATH_LABEL_SIDE_MISMATCH:'+oid)
+                        if norm(centre)<=1e-9 or (centre[0]*normal[0]+centre[1]*normal[1])/norm(centre)<side_min_cos:errors.append('PATH_LABEL_SIDE_MISMATCH:'+oid)
                 for sid,pts in strokes:
                     if closed and sid in ids:continue      # a perimeter leader may leave from a corner: that corner's own dot is where it starts
-                    if any(properly_cross(la,lb,q0,q1) for q0,q1 in zip(pts,pts[1:])):errors.append('PATH_LABEL_LEADER_CROSSES:'+oid+':'+str(sid))
+                    if any(properly_cross(la,lb,q0,q1) for q0,q1 in zip(pts,pts[1:])):errors.append(('PATH_LABEL_LEADER_CROSSES_SEGMENT:' if fallback else 'PATH_LABEL_LEADER_CROSSES:')+oid+':'+str(sid))
                 if closed:
                     # a perimeter label stands outside the figure, its leader never enters it
                     ring=path[:-1]

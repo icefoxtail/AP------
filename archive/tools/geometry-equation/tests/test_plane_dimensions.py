@@ -303,4 +303,59 @@ class PathLabelTests(unittest.TestCase):
         self.assertEqual(error(segments=['sAP','sQB','sPQ']),'PATH_LABEL_SEGMENT_NOT_DRAWN:road:P-Q')
         self.assertEqual(error(labelText=''),'PATH_LABEL_LABEL_REQUIRED:road')
 
+# ---- (G11) the second round of path label places: a leader marked data-path-label-fallback is held to the wider tolerances; leader NEVER forbids it
+class PathLabelFallbackTests(PathLabelTests):
+    def marked(self,leader):return leader.replace('data-role="leader"','data-role="leader" data-path-label-fallback="1"',1)
+    def drawn_fraction(self):
+        node=self.leader();m=self.transform
+        la=(float(re.search(r'\sx1="([^"]*)"',node).group(1)),float(re.search(r'\sy1="([^"]*)"',node).group(1)))
+        path=[(m['originX']+PATH_POINTS[k][0]*m['sx'],m['originY']-PATH_POINTS[k][1]*m['sy']) for k in ('A','P','Q','B')]
+        return OBSERVER.nearest_on_path(la,path)[0]
+    def test_a_second_round_leader_may_start_up_to_a_quarter_of_the_path_from_the_plans_anchor(self):
+        drawn=self.drawn_fraction();far=min(0.95,drawn+0.2) if drawn+0.2<0.99 else max(0.05,drawn-0.2)
+        plain=self.codes(svg=self.svg(),marks=path_marks(anchor=far))
+        self.assertIn('PATH_LABEL_ANCHOR_MISMATCH',plain)                                    # the first round keeps its 0.1
+        marked=self.svg(leader=self.marked(self.leader()))
+        self.assertNotIn('PATH_LABEL_ANCHOR_MISMATCH',self.codes(svg=marked,marks=path_marks(anchor=far)))
+        too_far=drawn+0.4 if drawn+0.4<0.99 else drawn-0.4
+        self.assertIn('PATH_LABEL_ANCHOR_MISMATCH',self.codes(svg=marked,marks=path_marks(anchor=too_far)))
+    def test_leader_never_refuses_a_second_round_leader(self):
+        marked=self.svg(leader=self.marked(self.leader()))
+        self.assertIn('PATH_LABEL_NO_ROOM',self.codes(svg=marked,marks=path_marks(leader='NEVER')))
+        self.assertNotIn('PATH_LABEL_NO_ROOM',self.codes(svg=marked,marks=path_marks()))
+    def test_a_second_round_leader_that_crosses_a_segment_is_refused(self):
+        leader=self.leader();m=self.transform
+        def screen(p):return (m['originX']+p[0]*m['sx'],m['originY']-p[1]*m['sy'])
+        a,q,b=PATH_POINTS['A'],PATH_POINTS['Q'],PATH_POINTS['B'];d=(b[0]-q[0],b[1]-q[1]);t=((a[0]-q[0])*d[0]+(a[1]-q[1])*d[1])/(d[0]**2+d[1]**2)
+        foot=(q[0]+t*d[0],q[1]+t*d[1]);mirrored=(2*foot[0]-a[0],2*foot[1]-a[1]);start,end=screen(a),screen(mirrored)
+        across=self.marked(leader)
+        for name,value in (('x1',start[0]),('y1',start[1]),('x2',end[0]),('y2',end[1])):across=re.sub(r'(\s'+name+'=")[^"]*(")',lambda mm,v=value:mm.group(1)+str(v)+mm.group(2),across,count=1)
+        self.assertIn('PATH_LABEL_LEADER_CROSSES_SEGMENT',self.codes(svg=self.svg(leader=across)))
+    def test_the_marker_and_the_field_are_checked(self):
+        bad=self.leader().replace('data-role="leader"','data-role="leader" data-path-label-fallback="2"',1)
+        self.assertIn('PATH_LABEL_FALLBACK_INVALID',self.codes(svg=self.svg(leader=bad)))
+        objects=[seg(s['id'],PATH_POINTS,*s['refs']) for s in PATH_SEGMENTS]
+        for extra,message in (({'leader':'ALWAYS'},'PATH_LABEL_LEADER_INVALID:road'),):
+            with self.assertRaises(ValueError) as caught:build(spec_of(PATH_POINTS,objects+[path_object(**extra)]))
+            self.assertEqual(str(caught.exception),message)
+        self.assertEqual(build(spec_of(PATH_POINTS,objects+[path_object(leader='NEVER')],width=640,height=420))['witness']['layout']['unresolved'],[])    # the first round still finds its place
+
+class PathLabelLabeledPieceTests(PathLabelTests):
+    def test_a_second_round_leader_on_a_piece_that_carries_a_length_is_refused(self):
+        marked=self.svg(leader=self.leader().replace('data-role="leader"','data-role="leader" data-path-label-fallback="1"',1))
+        node=self.leader();m=self.transform
+        la=(float(re.search(r'\sx1="([^"]*)"',node).group(1)),float(re.search(r'\sy1="([^"]*)"',node).group(1)))
+        path=[(m['originX']+PATH_POINTS[k][0]*m['sx'],m['originY']-PATH_POINTS[k][1]*m['sy']) for k in ('A','P','Q','B')]
+        i=min(range(3),key=lambda j:OBSERVER.point_segment_distance(la,path[j],path[j+1]))
+        ends=[('A','P'),('P','Q'),('Q','B')][i]
+        marks=path_marks();marks['dimensions']=[{'id':'dd','from':ends[0],'to':ends[1],'label':'7','side':'ABOVE'}]
+        self.assertIn('PATH_LABEL_LEADER_ON_LABELED_PIECE',[e.split(':')[0] for e in self.audit(svg=marked,marks=marks)['errors']])
+        marks['dimensions']=[]
+        self.assertNotIn('PATH_LABEL_LEADER_ON_LABELED_PIECE',[e.split(':')[0] for e in self.audit(svg=marked,marks=marks)['errors']])
+        # the first round is not held to it (no marker)
+        marks['dimensions']=[{'id':'dd','from':ends[0],'to':ends[1],'label':'7','side':'ABOVE'}]
+        self.assertNotIn('PATH_LABEL_LEADER_ON_LABELED_PIECE',[e.split(':')[0] for e in self.audit(svg=self.svg(),marks=marks)['errors']])
+
 if __name__=='__main__':unittest.main()
+
+

@@ -325,6 +325,9 @@ PATH_LABEL_ANCHOR_FRACTIONS=(0.5,0.4,0.6,0.3,0.7,0.2,0.8)   # where along the pa
 PATH_LABEL_GAPS=(24,32,44,60)                                  # distance from the anchor to the label box: always far enough to need a visible leader
 PATH_LABEL_CORNER_CLEAR_PX=12.0                                 # closed path: a leader starts at least this far from a corner
 PATH_LABEL_ANCHOR_SLIDES=(0.0,0.03,-0.03,0.06,-0.06,0.09,-0.09)   # E37: an anchor the author names (anchorAt) may slide this fraction of the path along it to find room
+PATH_LABEL_FALLBACK_SLIDES=(0.06,0.12,0.18,0.25)                  # (G11) second round, only after every place above failed: the anchor slides this far (away from the nearer end of the path first)
+PATH_LABEL_FALLBACK_GAPS=(80,100,120)                          # (G11) second round: farther boxes on a longer leader
+PATH_LABEL_FALLBACK_FAR_GAPS=(150,190,230)                     # (G11) last resort: a box out beyond the figure on a long leader that crosses no other segment
 PATH_LABEL_CLEAR_PX=28.0                                       # an anchor farther than this from every other stroke is as good as any
 
 DIM_INLINE_TIP_INSET_PX=5.0        # style INLINE: the arrowheads' tips stand this far inside the two points (clear of their dots)
@@ -429,6 +432,11 @@ def prepare(spec):
         if obstacle:obstacles.append({'id':p['id'],'kind':obstacle,'role':p.get('role'),'axis':p.get('axis'),'value':p.get('value'),'geometry':p.get('points', [p.get('from'),p.get('to')]) if obstacle not in {'point','circle'} else (*p['at'],p['radius'])})
     if show_x or show_y:
         xmin,xmax,ymin,ymax=vp.bounds
+        # (G11) a coordinate figure with callouts keeps its axes, ticks and axis names on the main frame (the frame before any callout was placed): no axis line crosses a copy
+        axis_bounds=spec['displayFacts'].get('axisBounds')
+        if axis_bounds is not None:
+            if not isinstance(axis_bounds,list) or len(axis_bounds)!=4 or any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) for v in axis_bounds):raise ValueError('INVALID_AXIS_BOUNDS')
+            xmin,xmax,ymin,ymax=max(xmin,axis_bounds[0]),min(xmax,axis_bounds[1]),max(ymin,axis_bounds[2]),min(ymax,axis_bounds[3])
         axes=[]
         if show_x:axes.append(('x-axis',(xmin,0),(xmax,0)))
         if show_y:axes.append(('y-axis',(0,ymin),(0,ymax)))
@@ -946,9 +954,26 @@ def prepare(spec):
                 if isinstance(count,bool) or not isinstance(count,int) or not 1<=count<=3:raise ValueError('ANGLE_ARC_COUNT_INVALID')
                 style=obj.get('style','SECTOR')
                 if style not in {'SECTOR','ARC'}:raise ValueError('ANGLE_MARK_STYLE_INVALID')
-                ring=obj.get('ring',1);first=min(28.0,max(16.0,.25*rays))+9.0*(ring-1)
-                if rays<first+4.5*(count-1)+8:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+oid)
-                steps=max(16,math.ceil(abs(math.degrees(delta))/4));outer_radius=first+4.5*(count-1)
+                ring=obj.get('ring',1);first=min(28.0,max(16.0,.25*rays))+9.0*(ring-1);arc_gap=4.5
+                if obj.get('arcScale')=='PROPORTIONAL':
+                    # (G11) a pulled-out angle keeps its arcs in proportion to the drawn rays (the fixed 28 px cap does not apply): the first arc at 0.30 of the ray, clamped to [16 px, 0.55 of the ray]
+                    arc_gap=max(4.5,.04*rays);first=min(max(.30*rays,16.0),.55*rays)+2*arc_gap*(ring-1)
+                if rays<first+arc_gap*(count-1)+8:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+oid)
+                steps=max(16,math.ceil(abs(math.degrees(delta))/4));outer_radius=first+arc_gap*(count-1)
+                if obj.get('angleDimension') is not None:
+                    # (G11) the angle as a dimension: one arc at radiusFactor times the shorter ray (1.15 by default), an arrowhead at each end, and the rays prolonged to the arc when it stands beyond them
+                    if count!=1 or style!='ARC':raise ValueError('ANGLE_DIMENSION_STYLE_INVALID:'+oid)
+                    radius=obj['angleDimension'].get('radiusFactor',1.15)*rays;outer_radius=radius
+                    if radius*abs(delta)<2*DIM_ARROW_LENGTH_PX+8:raise ValueError('ANGLE_DIMENSION_TOO_NARROW:'+oid)
+                    sign=1.0 if delta>0 else -1.0
+                    for part,theta,out_sign,end in (('arrow-from',start,-1.0,a),('arrow-to',start+delta,1.0,b)):
+                        tip=(v[0]+radius*math.cos(theta),v[1]+radius*math.sin(theta));out=(-math.sin(theta)*sign*out_sign,math.cos(theta)*sign*out_sign)
+                        base=(tip[0]-out[0]*DIM_ARROW_LENGTH_PX,tip[1]-out[1]*DIM_ARROW_LENGTH_PX)
+                        primitive({'id':oid+'-'+part,'kind':'polygon','points':[tip,(base[0]-out[1]*DIM_ARROW_HALF_WIDTH_PX,base[1]+out[0]*DIM_ARROW_HALF_WIDTH_PX),(base[0]+out[1]*DIM_ARROW_HALF_WIDTH_PX,base[1]-out[0]*DIM_ARROW_HALF_WIDTH_PX)],'token':'indicator','layer':60,'role':'indicator','fill':'#111','mark':'angle-dimension','markId':oid,'markPart':part},'curve')
+                        reach=math.dist(end,v)
+                        if radius>reach+DIM_EXT_GAP_PX+2:
+                            ray=((end[0]-v[0])/reach,(end[1]-v[1])/reach)
+                            primitive({'id':oid+'-'+('ext-from' if part=='arrow-from' else 'ext-to'),'kind':'line','from':(v[0]+ray[0]*(reach+DIM_EXT_GAP_PX),v[1]+ray[1]*(reach+DIM_EXT_GAP_PX)),'to':(v[0]+ray[0]*(radius+DIM_ARROW_OVERSHOOT_PX),v[1]+ray[1]*(radius+DIM_ARROW_OVERSHOOT_PX)),'token':'indicator','layer':52,'role':'indicator','mark':'angle-dimension','markId':oid,'markPart':'ext-from' if part=='arrow-from' else 'ext-to'},'curve')
                 angle_sectors[oid]=([v[0],v[1]],start,delta,outer_radius)
                 if obj.get('over'):angle_over[oid]=set(obj['over'])
                 if style=='SECTOR':
@@ -957,7 +982,7 @@ def prepare(spec):
                     primitive({'id':oid+'-sector','kind':'polygon','points':wedge,'token':'secondaryShape','layer':12,'role':'angleSector','mark':'angle','markId':oid,'markIndex':0,'markCount':count,'markSide':'OUTER' if obj.get('outer') is True else 'INNER','fill':SECTOR_FILL,'noStroke':True,'ownerPoints':obj['refs']})
                 group_stroke=ANGLE_EMPHASIS_STROKES.get(obj.get('emphasisGroup'))
                 for k in range(count):
-                    radius=first+4.5*k
+                    radius=outer_radius if obj.get('angleDimension') is not None else first+arc_gap*k
                     primitive({'id':oid+'-arc-'+str(k+1),'kind':'polyline','points':[(v[0]+radius*math.cos(start+delta*i/steps),v[1]+radius*math.sin(start+delta*i/steps)) for i in range(steps+1)],'token':'secondaryShape','layer':60,'role':'indicator','ownerPoints':obj['refs'],'mark':'angle','markId':oid,'markIndex':k+1,'markCount':count,'markSide':'OUTER' if obj.get('outer') is True else 'INNER',**({'stroke':group_stroke} if group_stroke else {})},'curve')
                 if obj.get('labelText') is not None:
                     middle=start+delta/2;anchor=(v[0]+outer_radius*math.cos(middle),v[1]+outer_radius*math.sin(middle))
@@ -1044,13 +1069,32 @@ def prepare(spec):
                 clear_of_corners=[a for a in anchors if all(math.dist(a,v)>=PATH_LABEL_CORNER_CLEAR_PX for v in path)]
                 anchors=clear_of_corners+[v for v in path[:-1] if all(math.dist(v,a)>=1.0 for a in clear_of_corners)]
             site={'ids':list(obj['segments'])+(list(obj['refs']) if closed else []),'anchors':[list(a) for a in anchors],'gaps':PATH_LABEL_GAPS,**({'outside':[list(p) for p in path[:-1]]} if closed else {})}
+            def side_normal(anchor):
+                a,b=min(zip(path,path[1:]),key=lambda pair:point_segment_distance(anchor,pair[0],pair[1]))
+                length=math.dist(a,b);dx,dy=(b[0]-a[0])/length,(b[1]-a[1])/length
+                return [dy,-dx] if obj['side']=='LEFT' else [-dy,dx]
             if obj.get('side') is not None:
                 # E37: the label stands on the LEFT or RIGHT of the path (walking from its first point to its last, as the page shows it: y points down, so the left normal of (dx,dy) is (dy,-dx))
-                def side_normal(anchor):
-                    a,b=min(zip(path,path[1:]),key=lambda pair:point_segment_distance(anchor,pair[0],pair[1]))
-                    length=math.dist(a,b);dx,dy=(b[0]-a[0])/length,(b[1]-a[1])/length
-                    return [dy,-dx] if obj['side']=='LEFT' else [-dy,dx]
                 site['sideNormals']=[side_normal(a) for a in anchors]
+            if obj.get('leader')=='NEVER':site['leaderNever']=True
+            elif not closed:
+                # (G11) the second round (label_layout), tried only when no place above found room (a narrow vertex crowds the path's own surroundings): the anchor slides farther,
+                # the box stands farther out on a longer leader, and the side may lean a little less. Nothing here is read when the first round succeeds.
+                base=obj.get('anchorAt',0.5);more=[];away=(1,-1) if base<=0.5 else (-1,1)
+                for sign in away:
+                    for slide in PATH_LABEL_FALLBACK_SLIDES:
+                        t=base+sign*slide
+                        if 0.04<=t<=0.96:
+                            spot=along(total*t)
+                            if all(math.dist(spot,other)>=1.0 for other in anchors+more):more.append(spot)
+                # PATH_LABEL_LEADER_ON_LABELED_PIECE: no second-round leader starts on a piece that already carries another length (labeledPieces)
+                def piece_of(anchor):return min(range(len(path)-1),key=lambda i:point_segment_distance(anchor,path[i],path[i+1]))
+                blocked=set(obj.get('labeledPieces',()))
+                if blocked:
+                    more=[a for a in more if piece_of(a) not in blocked]
+                site['firstOk']=[piece_of(a) not in blocked for a in anchors]
+                site['fallback']={'anchors':[list(a) for a in more],'gaps':PATH_LABEL_FALLBACK_GAPS,'farGaps':PATH_LABEL_FALLBACK_FAR_GAPS,
+                                  **({'sideNormals':[side_normal(a) for a in more],'allNormals':[side_normal(a) for a in anchors+more]} if obj.get('side') is not None else {})}
             labels.append(weighted(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','MATH'),anchors[0],{'pathOwned':site},obj.get('unit')),obj))
         elif kind in {'EQUAL_MARK','PARALLEL_MARK'}:
             # A ref is a segment, or (parallels[].lines, E31) a displayed line: its drawn chord inside the window, with the places where other lines and the axes cross it kept clear.

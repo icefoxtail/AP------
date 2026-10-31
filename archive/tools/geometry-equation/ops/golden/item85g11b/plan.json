@@ -1,0 +1,325 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "10"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "rational",
+       "numerator": "24210259",
+       "denominator": "1573278"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "rational",
+       "numerator": "63317959",
+       "denominator": "9200638"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "I",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "rational",
+       "numerator": "12098833",
+       "denominator": "3330523"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sCA",
+   "refs": [
+    "C",
+    "A"
+   ]
+  },
+  {
+   "id": "sBO",
+   "refs": [
+    "B",
+    "O"
+   ]
+  },
+  {
+   "id": "sCO",
+   "refs": [
+    "C",
+    "O"
+   ]
+  },
+  {
+   "id": "sBI",
+   "refs": [
+    "B",
+    "I"
+   ]
+  },
+  {
+   "id": "sCI",
+   "refs": [
+    "C",
+    "I"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "O",
+  "I"
+ ],
+ "planeMarks": {
+  "equalLengths": [
+   {
+    "id": "eAB",
+    "count": 2,
+    "segments": [
+     "sAB",
+     "sCA"
+    ]
+   }
+  ],
+  "angles": [
+   {
+    "id": "aI",
+    "refs": [
+     "B",
+     "I",
+     "C"
+    ],
+    "value": 108.0,
+    "label": "108",
+    "arcs": 1,
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aA",
+    "refs": [
+     "B",
+     "A",
+     "C"
+    ],
+    "value": 36.0,
+    "label": "36",
+    "arcs": 1,
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "aC",
+    "refs": [
+     "B",
+     "C",
+     "A"
+    ],
+    "value": 72.0,
+    "label": "72",
+    "arcs": 1,
+    "ring": 3,
+    "style": "ARC",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "labelPlacement": "LEADER"
+   }
+  ],
+  "callouts": [
+   {
+    "id": "kB",
+    "kind": "ANGLE",
+    "vertex": "B",
+    "rays": [
+     "C",
+     "I",
+     "O",
+     "A"
+    ],
+    "at": "RIGHT",
+    "angles": [
+     {
+      "id": "aIBC",
+      "refs": [
+       "C",
+       "B",
+       "I"
+      ],
+      "value": 36.0,
+      "label": "36",
+      "arcs": 1,
+      "ring": 1,
+      "style": "ARC",
+      "factRole": "DERIVED_INTERMEDIATE"
+     },
+     {
+      "id": "aOBC",
+      "refs": [
+       "C",
+       "B",
+       "O"
+      ],
+      "value": 54.0,
+      "label": "54",
+      "arcs": 1,
+      "ring": 2,
+      "style": "ARC",
+      "factRole": "DERIVED_INTERMEDIATE"
+     },
+     {
+      "id": "aOBI",
+      "refs": [
+       "I",
+       "B",
+       "O"
+      ],
+      "value": 18.0,
+      "noLabel": true,
+      "arcs": 1,
+      "ring": 3,
+      "emphasisGroup": 1,
+      "factRole": "CONCLUSION"
+     }
+    ],
+    "arcScale": "PROPORTIONAL",
+    "radius": 12.0,
+    "angleDimension": {
+     "text": "x",
+     "refs": [
+      "I",
+      "O"
+     ]
+    }
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 720,
+  "height": 600
+ },
+ "caption": "이등변삼각형 ABC의 꼭짓점 B에서 반직선 BC, BI, BO, BA가 이루는 각을 오른쪽에 크게 다시 그렸다. ∠IBC=36°, ∠OBC=54°이고 구하는 ∠OBI는 x로 둔다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "AB=AC인 이등변삼각형 ABC, 외심 O, 내심 I",
+   "mappedTo": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "I",
+    "eAB"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "∠BIC=108°",
+   "mappedTo": [
+    "aI"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "풀이에서 구한 ∠A=36°, ∠B=72°, ∠OBC=54°, ∠IBC=36°와 구하는 ∠OBI의 호 표식"
+ ],
+ "sourceQuote": "$\\angle BIC=108^\\circ$일 때"
+}
