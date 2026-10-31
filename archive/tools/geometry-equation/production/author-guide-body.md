@@ -697,6 +697,27 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
  "caption":"두 소문항을 나란히 비교한 해설 그림","sourceConditions":[...],"newVisualInformation":[...]}
 ```
 
+### 3-17. 도로망·격자 최단 경로 (`lattice-path-figure-v1`)
+
+원문이 **정사각형(격자) 도로망에서 A에서 B까지 가는 경로의 수**를 묻고, 해설이 "지나지 않는 길을 빼고 센다 / 반드시 지나는 길로 나눠 센다 / 교차점마다 경로 수를 더해 간다"를 그림으로 보이면 쓴다. 도로망을 한 장의 그림으로 그리고, 끊긴 길·꼭 지나는 길·한 경로의 예·교차점별 경로 수를 plan 필드로 정한다.
+
+```json
+{"capability":"lattice-path-figure-v1",
+ "lattice":{"grid":{"cols":6,"rows":3},
+  "points":{"A":[0,0],"B":[6,3],"P":[4,1],"Q":[4,2]},
+  "from":"A","to":"B","forbidden":[["P","Q"]],"counts":true},
+ "caption":"...","sourceConditions":[...],"newVisualInformation":[...]}
+```
+
+- `grid`: 칸의 수 `cols`(1~10)·`rows`(1~8). 교차점은 **왼쪽 아래가 [0,0]**이고 오른쪽이 x, 위쪽이 y이다. `points`는 이름(대문자 한 자와 숫자·프라임 하나)과 교차점 좌표 `[x,y]`이다(12개 이하, 한 교차점에 이름 하나). 도로(선분)는 격자선 한 칸 단위로 엔진이 모두 그린다.
+- `forbidden:[["P","Q"],...]`: **지나지 않는 구간**. 이웃한 두 교차점(이름 또는 `[x,y]`)이며 점선(끊김)으로 그려진다. `via:[["P","Q"]]`: **반드시 지나는 구간**(3개 이하). 굵은 선으로 그려지고, 시작점·도착점이 이루는 직사각형 안에 있어야 한다.
+- `counts:true`: 엔진이 `from`(기본 `"A"`)에서 `to`(기본 `"B"`)까지 **오른쪽·위쪽(도착점 쪽)으로만** 가는 최단 경로를 직접 세어 **교차점마다 그 교차점까지 오는 경로 수**를 작은 숫자로 쓴다. 금지·경유 구간을 지켜 완성할 수 있는 경로만 센다. 값은 저자가 쓰지 않는다(`counts:["P","Q"]`처럼 이름·좌표 목록을 주면 그 교차점만 쓴다).
+- **도착점의 최종 경로 수(정답)는 기본으로 쓰지 않는다**(`hideTargetCount` 기본 true). 도착점 앞 두 교차점의 수를 더하면 정답이므로, 해설이 그 합을 보이게 하려는 문항에만 `counts`를 쓰고, 그림이 정답을 그대로 드러내면 안 되는 면에서는 `counts:false`(기본)로 둔다. `hideTargetCount:false`는 정답이 이미 문제나 해설 본문에 있을 때만 쓴다.
+- `highlightPath`: 한 경로의 예. 이웃한 교차점을 잇는 이름·좌표의 열(2~40개)이며 점선 굵은 선으로 그려진다. **왼쪽으로 가거나 되돌아가는 경로도 그릴 수 있다**(같은 길을 두 번 쓰거나 `forbidden` 길을 쓰면 거절). 이때 최단 경로 수는 세지 않으므로 `counts`와 함께 쓰는 것은 자유이지만, 되돌아가는 문항에는 `counts`를 쓰지 않는다.
+- 이 그림은 **오른쪽·위쪽 한 방향 최단 경로**의 수만 센다. 대각선 도로, 한 방향이 막힌 부분 격자(직사각형이 아닌 도로망), 되돌아가는 경로의 수는 세지 않는다(원문에 그려진 도로망이 직사각형 격자가 아니면 `UNSUPPORTED`).
+- **독립 검수.** `lattice_path_observer.py`는 plan만 보고 시작점에서 도착점까지의 모든 최단 경로를 **하나씩 걸어서** 금지·경유 조건을 거른 뒤 교차점마다 서로 다른 앞부분 경로를 세어, **최종 SVG**에 적힌 숫자와 대조한다. 그려진 도로의 간격으로 격자 배율을 되찾아 모든 도로가 정확한 위치에 하나씩 있는지, 끊긴 길이 점선인지, 꼭 지나는 길이 더 굵은지, 이름 점과 `highlightPath`가 제 교차점에 있는지, 숨긴 최종 수가 적히지 않았는지 확인한다.
+- 오류 코드: `LATTICE_PLAN_INVALID`(허용하지 않는 키), `LATTICE_GRID_INVALID`(범위 밖), `LATTICE_POINT_INVALID`/`LATTICE_POINT_ID_INVALID`/`LATTICE_POINT_OUT_OF_GRID`/`LATTICE_POINT_POSITION_DUPLICATE`, `LATTICE_SEGMENT_INVALID`/`LATTICE_SEGMENT_NOT_ADJACENT`/`LATTICE_SEGMENT_DUPLICATE`, `LATTICE_VIA_TOO_MANY`/`LATTICE_VIA_FORBIDDEN_CONFLICT`/`LATTICE_VIA_UNREACHABLE`, `LATTICE_ENDPOINT_INVALID`(시작점·도착점 없음·같음), `LATTICE_NO_PATH`(조건을 만족하는 경로 없음), `LATTICE_COUNTS_INVALID`, `LATTICE_HIGHLIGHT_PATH_INVALID`, `LATTICE_LABEL_NO_ROOM`(숫자·이름이 들어갈 자리 없음: 칸을 줄이거나 `counts` 목록으로 일부만 쓴다).
+
 ### 3-40. 서로 다른 비선형 곡선 세 개 이상을 한 그림에: `multi-curve-figure-v1`
 
 한 문항의 그림이 **서로 다른 비선형 곡선 3개 이상**으로 둘러싸이거나 이루어질 때만 쓴다. 곡선 2개, 곡선 2개+직선 1개, 한 곡선의 조각(가지)은 이 기능의 대상이 아니며 기존 family(`referenceCurves`, `piecewise-*`)를 쓴다. 실제 예: 22 효천고 2학기 기말 고2 수학II q10의 `y=2-x^2`, `x=2-y^2`, `y=x^2-2`, `x=y^2-2` 네 포물선.
