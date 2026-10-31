@@ -1289,7 +1289,7 @@ window.questionBank = [
     ],
     "answer": "27",
     "solution": "원의 중심은 $M=(5/3,0)$이다. $P=(u,v)$라 하면 $Q=(10/3-u,-v)$이고 두 점이 같은 로그곡선 위에 있으므로 $u(10/3-u)=1$이다.\n따라서 $u=1/3$ 또는 $3$이며, 그림에서 $P$는 $x<1$이므로 $u=1/3$이다.\n원에 대입하면 $v^2=17/9-(1/3-5/3)^2=1/9$이고 $P$는 $x$축 위에 있으므로 $v=1/3$이다.\n$1/3=\\log_a3$에서 $a=27$이다.",
-    "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학I/q20-solution-v2.svg",
+    "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학I/q20-solution-v3.svg",
     "level": "상",
     "category": "로그함수",
     "originalCategory": "로그함수",
@@ -1338,7 +1338,7 @@ window.questionBank = [
     "semanticSourceScope": "PRIMARY",
     "semanticScopeRelation": "DIRECT",
     "projectionStatus": "BINDING_PENDING",
-    "solutionImageAlt": "로그함수 곡선과 원 C가 두 점 P, Q에서 만나고, 선분 PQ가 원의 중심 M을 지나는 지름이다.",
+    "solutionImageAlt": "로그함수 곡선과 원 C가 두 점 P(1/3, 1/3), Q(3, -1/3)에서 만나고, 선분 PQ가 원의 중심 M을 지나는 지름이다.",
     "solutionImageCaption": "곡선과 원이 만나는 두 점 P, Q는 원의 중심 M에 대해 서로 대칭인 지름의 양 끝점이다.",
     "solutionImageSize": "medium"
   },
