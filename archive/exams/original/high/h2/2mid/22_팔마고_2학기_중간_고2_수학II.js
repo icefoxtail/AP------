@@ -213,9 +213,9 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $f(x)$, $g(x)$의 그래프가 각각 그림과 같을 때, $\\displaystyle\\lim_{x\\to1+}[f(x+1)]+\\lim_{x\\to1-}g(x)$의 값은? (단, $[x]$는 $x$보다 크지 않은 최대의 정수이다.) [4.1점]",
     "image": "assets/images/22_팔마고_2학기_중간_고2_수학II/q8.png",
-    "solutionImage": "assets/images/22_팔마고_2학기_중간_고2_수학II/q8-solution-v2.svg",
-    "solutionImageAlt": "y=f(x)의 그래프: x<1에서 y=1-x, f(1)=1, 1<x<2와 x>2에서 y=x-1, f(2)=0이다. 오른쪽에서 x가 2에 가까워질 때 f(x)가 열린 점 (2,1)에 접근하는 방향을 화살표와 점선으로 표시했다.",
-    "solutionImageCaption": "x가 오른쪽에서 2에 가까워지면 f(x)는 1보다 큰 값으로 열린 점 (2,1)에 접근한다.",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고2_수학II/q8-solution-v3.svg",
+    "solutionImageAlt": "같은 좌표평면에 그린 y=f(x)(실선)와 y=g(x)(점선). g는 중심이 (0,0), (1,0)이고 반지름이 1인 사분원 호이고, f는 x=1,2에서 열린 점·닫힌 점을 가진다. 눈금 1, 2를 나타냈다.",
+    "solutionImageCaption": "한 좌표평면에 그린 y=f(x)(실선)와 y=g(x)(점선). 열린 점과 닫힌 점으로 각 함수값을 구별한다.",
     "solutionImageSize": "medium",
     "solutionImageStatus": "asset_verified",
     "choices": [
