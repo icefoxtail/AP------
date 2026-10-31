@@ -9,7 +9,7 @@ from pathlib import Path
 
 HERE=Path(__file__).resolve().parent
 sys.path.insert(0,str(HERE))
-from test_plane_dimensions import Fixture,OBSERVER,spec_of,seg,dim,tag,attribute,replace_attribute   # noqa: E402
+from test_plane_dimensions import Fixture,OBSERVER,spec_of,seg,dim,tag,attribute,replace_attribute,label_group   # noqa: E402
 from visual_engine.engine import build   # noqa: E402
 from visual_engine.semantic_model import validate   # noqa: E402
 
@@ -183,6 +183,45 @@ class AngleCalloutTests(unittest.TestCase):
     def test_the_name_of_a_ray_end_is_the_main_points(self):
         svg=self.fan.svg();node=re.search(r'<g id="k2__A-name"[^>]*>.*?</g>',svg,flags=re.S).group(0)
         self.assertIn('CALLOUT_NAME_MISMATCH',self.fan.codes(svg=svg.replace(node,node.replace('data-c="41"','data-c="42"'))))
+
+# ---- (G11) a callout beside a coordinate figure with axes: the axes keep the main frame, no axis line, tick or number touches a copy
+MAIN_FRAME=[-3.0,12.0,-4.0,8.0]
+class AxisFixture(CalloutFixture):
+    """The segment callout of the triangle, drawn with axes. `bounded` writes the main frame into the displayFacts (as phase2 does); without it the axes run across the whole viewport."""
+    def __init__(self,bounded):
+        spec=figure_spec();spec['axes']=True
+        if bounded:spec['displayFacts']={'axisBounds':list(MAIN_FRAME)}
+        self.points=POINTS;self.labels=LABELS;self.result=build(spec);self.transform=self.result['witness']['coordinateModel'];self.layout=self.result['witness']['layout']
+        self.boxes={row['id']:row['box'] for row in self.layout['labels']}
+        svg=self.result['svg']
+        for label_id in LABELS:svg=re.sub(r'<text\s[^>]*id="'+re.escape(label_id)+r'"[^>]*>.*?</text>','',svg,flags=re.S)
+        self.base_svg=svg
+    def audit(self,svg=None,marks=None,segments=None,axis_bounds=None):
+        return OBSERVER.audit({'svg':svg or self.svg(),'points':{k:list(v) for k,v in MAIN.items()},'marks':marks if marks is not None else marks_of(),
+                               'segments':segments if segments is not None else SEGMENTS,'transform':self.transform,**({'axisBounds':axis_bounds} if axis_bounds is not None else {})})
+
+class CoordinateCalloutTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.bounded=AxisFixture(True);cls.free=AxisFixture(False)
+    def test_axes_stay_on_the_main_frame_and_the_observer_passes(self):
+        report=self.bounded.audit(axis_bounds=MAIN_FRAME);self.assertEqual(report['errors'],[],report['errors'])
+        # the x-axis ends at the main frame's right edge, left of the copies (x>=14)
+        node=tag(self.bounded.result['svg'],'x-axis');ends=[float(attribute(node,'x2')),float(attribute(node,'x1'))]
+        ox,sx=self.bounded.transform['originX'],self.bounded.transform['sx']
+        self.assertAlmostEqual(max((e-ox)/sx for e in ends),MAIN_FRAME[1],places=6)
+    def test_an_axis_across_a_copy_is_refused(self):
+        codes=[e.split(':')[0] for e in self.free.audit(axis_bounds=MAIN_FRAME)['errors']]
+        self.assertIn('CALLOUT_OVERLAPS_AXES',codes);self.assertIn('CALLOUT_AXIS_EXTENT_MISMATCH',codes)
+    def test_axes_without_a_main_frame_are_refused(self):
+        self.assertIn('CALLOUT_AXIS_EXTENT_MISMATCH',self.bounded.codes())
+    def test_the_axis_must_stay_inside_the_main_frame(self):
+        narrow=[-3.0,6.0,-4.0,8.0]       # the drawn x-axis reaches x=12: beyond this frame
+        self.assertIn('CALLOUT_AXIS_EXTENT_MISMATCH',self.bounded.codes(axis_bounds=narrow))
+    def test_a_coordinate_band_label_across_a_copy_is_refused(self):
+        box=self.bounded.boxes['k1__d1-label'];extra=label_group('x-coordinate-panel',box,'3','')
+        svg=self.bounded.svg().replace('</svg>',extra+'</svg>')
+        self.assertIn('CALLOUT_OVERLAPS_COORDINATE_BAND',[e.split(':')[0] for e in self.bounded.audit(svg=svg,axis_bounds=MAIN_FRAME)['errors']])
 
 if __name__=='__main__':
     unittest.main()

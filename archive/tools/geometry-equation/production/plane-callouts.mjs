@@ -10,7 +10,7 @@
 //   link: SEGMENT "ENDS" / ANGLE "VERTEX" joins the main figure's points to their copies with light dotted guide lines.
 // The copies are real points of the picture named `<callout id>__<point id>`; its marks are the ordinary plane marks, written on the copies and checked by the same code
 // (planeMarkSpec) and by the independent observer, which also reads the copies back against the main figure's own points.
-import {planeMarkSpec,dimensionSites,PLANE_RECIPE,isPlaneFigure} from './plane-marks.mjs';
+import {planeMarkSpec,dimensionSites,PLANE_RECIPE,isPlaneFigure,isCoordinateFigure} from './plane-marks.mjs';
 export const CALLOUT_KINDS=['SEGMENT','ANGLE'];
 export const CALLOUT_SIDES=['RIGHT','LEFT','ABOVE','BELOW'];
 export const CALLOUT_ORIENTATIONS=['HORIZONTAL','VERTICAL'];
@@ -52,13 +52,14 @@ function place(offsets,at,gap,bounds){
 /**
  * The checked callouts of a plan, with every copy placed: [{id,kind,row,prefix,order,local,pieces,guides,scale,subPlan,subPoints,segmentIds}].
  * `points` are the displayed points of the main figure (id -> {approximation}); `bounds` {xMin,xMax,yMin,yMax} is the main figure's box (displayed points and extras, before any callout);
- * `hidden` the ids the plan draws without a name. Throws an UPPER_SNAKE code.
+ * `hidden` the ids the plan draws without a name; `model` the construction model (a coordinate figure is told by its coordinateMode). Throws an UPPER_SNAKE code.
  */
-export function calloutEntries(plan,points,bounds,hidden=new Set()){
+export function calloutEntries(plan,points,bounds,hidden=new Set(),model=undefined){
   const rows=plan?.planeMarks?.callouts;
   if(rows===undefined)return [];
   if(!Array.isArray(rows)||!rows.length||rows.length>CALLOUT_MAX)bad('CALLOUTS_INVALID');
-  if(!isPlaneFigure(plan))bad('CALLOUT_REQUIRES_PLANE_FIGURE');
+  // (G11) a coordinate figure with axes (SOURCE_COORDINATE_AXES_v1, SOURCE_COORDINATES) takes callouts too: `bounds` is then its main frame (axis extent plus the room the names need)
+  if(!isPlaneFigure(plan)&&!isCoordinateFigure(plan,model))bad('CALLOUT_REQUIRES_PLANE_FIGURE');
   const taken=new Set([...(plan.displaySegments||[]).map(s=>s.id),...(plan.rightAngles||[]).map(s=>s.id),...plan.mathPlan.nodes.map(n=>n.id)]);
   for(const key of MARK_ID_KEYS)for(const row of Array.isArray(plan.planeMarks[key])?plan.planeMarks[key]:[])if(row&&typeof row.id==='string')taken.add(row.id);
   const seen=new Set();

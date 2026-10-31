@@ -826,10 +826,17 @@ function specForFamily(plan,model,id){
   }
   const displayed=displayGeometryInventory(plan,model),points=displayed.points;const xs=Object.values(points).map(p=>p.approximation[0]),ys=Object.values(points).map(p=>p.approximation[1]);for(const q of [...regionExtentPoints(plan,points),...traceJoinExtentPoints(plan,points),...textLabelExtentPoints(plan)]){xs.push(q[0]);ys.push(q[1]);}   // a region's arc can bulge past the displayed points, and so can a joined trace arc
   // callouts (E37): the pulled-out copies stand beside the main figure's box, inside the same frame ([] without planeMarks.callouts: nothing below changes)
-  const callouts=calloutEntries(plan,points,{xMin:Math.min(...xs),xMax:Math.max(...xs),yMin:Math.min(...ys),yMax:Math.max(...ys)},new Set(Array.isArray(plan.hiddenPointNames)?plan.hiddenPointNames:[]));
+  // (G11) a coordinate figure with axes: the axes, ticks and axis names keep the main frame (the frame without any callout), and the callouts stand outside it, so no axis line crosses a copy
+  let mainFrame=null;
+  if(isCoordinateFigure(plan,model)&&Array.isArray(plan.planeMarks?.callouts)){
+    const frameCanvas=plan.coordinateCanvas??{width:384,height:320},frameSpan=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys),1e-9),framePad=frameSpan*.35;
+    mainFrame=dimensionFraming(plan,model,points,arcLabelFraming(plan,model,points,{xMin:Math.min(...xs)-framePad,xMax:Math.max(...xs)+framePad,yMin:Math.min(...ys)-framePad,yMax:Math.max(...ys)+framePad},frameCanvas),frameCanvas);
+  }
+  const callouts=calloutEntries(plan,points,mainFrame??{xMin:Math.min(...xs),xMax:Math.max(...xs),yMin:Math.min(...ys),yMax:Math.max(...ys)},new Set(Array.isArray(plan.hiddenPointNames)?plan.hiddenPointNames:[]),model);
   for(const q of calloutExtentPoints(callouts)){xs.push(q[0]);ys.push(q[1]);}
+  if(mainFrame&&callouts.length){xs.push(mainFrame.xMin,mainFrame.xMax);ys.push(mainFrame.yMin,mainFrame.yMax);}
   // A plane figure (no axes) is fitted tightly: the engine's own margin already leaves room for the point names.
-  const span=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys),1e-9),pad=span*(isPlaneFigure(plan)?.06:.35);
+  const span=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys),1e-9),pad=span*(isPlaneFigure(plan)||(mainFrame&&callouts.length)?.06:.35);
   // hiddenPointNames:[point IDs] draws derived helper points as bare dots: never a GIVEN/CONCLUSION point. (E31) A hidden point may also be listed in coordinateLabels: its name stays
   // unwritten and only its coordinates (1,-1) stand beside it (an unnamed intersection or intercept of the source figure).
   // A plane figure (axis-free PLANE_FIGURE_v1) or a coordinate figure with axes (SOURCE_COORDINATE_AXES_v1) may also list a SOURCE_POINT (a point the
@@ -969,7 +976,7 @@ function specForFamily(plan,model,id){
   const equationLabelCenters=Object.fromEntries(panelLabels.map((labelId,i)=>[labelId,[panelLabels.length===1?coordinateCanvas.width/2:coordinateCanvas.width*(i%2?.72:.28),panelCenters[Math.floor(i/2)]]]));
   // A plane figure with a label on a circular arc (outside its circle) widens its frame so the label has canvas room; every other figure keeps the tight frame.
   const frame=dimensionFraming(plan,model,points,arcLabelFraming(plan,model,points,{xMin:Math.min(...xs)-pad,xMax:Math.max(...xs)+pad,yMin:Math.min(...ys)-pad,yMax:Math.max(...ys)+pad},coordinateCanvas),coordinateCanvas,calloutDimensionSites(callouts));
-  return {id,visualType:'line_circle_geometry',viewport:{xMin:frame.xMin,xMax:frame.xMax,yMin:frame.yMin,yMax:frame.yMax,width:coordinateCanvas.width,height,panel:0,...(topInset?{topInset}:{})},axes:model.coordinateMode==='SOURCE_COORDINATES',title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{notationByLabel,factRolesByLabel,squareAngleIds:(plan.rightAngles||[]).map(a=>a.id),...axisTickDisplayFacts(plan),...(panelLabels.length?{equationLabelCenters}:{}),...(axisCoincidentLines.length?{axisCoincidentLines}:{})},objects};
+  return {id,visualType:'line_circle_geometry',viewport:{xMin:frame.xMin,xMax:frame.xMax,yMin:frame.yMin,yMax:frame.yMax,width:coordinateCanvas.width,height,panel:0,...(topInset?{topInset}:{})},axes:model.coordinateMode==='SOURCE_COORDINATES',title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{notationByLabel,factRolesByLabel,squareAngleIds:(plan.rightAngles||[]).map(a=>a.id),...axisTickDisplayFacts(plan),...(panelLabels.length?{equationLabelCenters}:{}),...(axisCoincidentLines.length?{axisCoincidentLines}:{}),...(mainFrame&&callouts.length?{axisBounds:[mainFrame.xMin,mainFrame.xMax,mainFrame.yMin,mainFrame.yMax]}:{})},objects};
 }
 
 // piecewise-polynomial-spike-v1: one continuous function of up to three pieces (degree <= 2) framed at one scale by graph_framing

@@ -25,8 +25,8 @@ const modelOf=async graph=>{const response=await pythonWorker({action:'construct
 const tagOf=(svg,id)=>new RegExp('<(?:polyline|line|polygon|circle|g)\\s(?:[^>]*\\s)?id="'+id+'"[^>]*>').exec(svg)?.[0];
 const attr=(tag,name)=>new RegExp('\\s'+name+'="([^"]*)"').exec(tag)?.[1];
 const specError=(plan,model)=>{try{specFor(plan,model,identity.assetId);}catch(error){return String(error.message);}assert.fail('specFor accepted the plan');};
-const observe=async(svg,graph,planeMarks,segments,transform)=>{
-  const response=await pythonWorker({action:'planeMarksAudit',svg,points:reconstruct(graph).points,marks:planeMarks,segments,transform},{script:OBSERVER});
+const observe=async(svg,graph,planeMarks,segments,transform,extra={})=>{
+  const response=await pythonWorker({action:'planeMarksAudit',svg,points:reconstruct(graph).points,marks:planeMarks,segments,transform,...extra},{script:OBSERVER});
   assert.equal(response.status,'OK',JSON.stringify(response.result));return response.result;
 };
 const codes=report=>report.errors.map(error=>error.split(':')[0]);
@@ -241,4 +241,35 @@ test('E37 callouts with hidden points: a point drawn with no dot (hiddenPointSty
   expectComposed(composed);
   assert.equal(tagOf(composed.svg,'B'),undefined,'the hidden point draws no dot');
   for(const id of ['k1__D','k1__G','k1__C'])assert.ok(tagOf(composed.svg,id),'the copy '+id+' keeps its dot');
+});
+
+// ---- (G11) a callout beside a coordinate figure with axes (SOURCE_COORDINATE_AXES_v1): the axes keep the main frame, the copy stands outside it
+const division=(id,a,b)=>({...node(id,'DIVISION_POINT',[a,b],'POINT',{m:int(3),n:int(1),mode:'INTERNAL'}),factRole:'DERIVED_INTERMEDIATE'});
+const coordGraph={schemaVersion:'construction-spike-v1',realization:{recipeId:'SOURCE_COORDINATE_AXES_v1',unit:'source-coordinate',reflectionEquivalent:false},nodes:[
+  {...node('O','NORMALIZATION_ORIGIN',[],'POINT',{}),factRole:'GIVEN'},{...node('U0','NORMALIZATION_AXIS',[],'POINT',{length:int(1)}),factRole:'DERIVED_INTERMEDIATE'},
+  {...source('A',6,0),factRole:'GIVEN'},{...source('B',3,6),factRole:'GIVEN'},division('C','O','A'),division('D','A','B'),division('E','B','O')]};
+const coordRow=(extra={})=>({id:'k1',kind:'SEGMENT',path:['O','C','A'],at:'RIGHT',scale:1.6,dimensions:[
+  {id:'dOC',from:'O',to:'C',label:'3',side:'ABOVE',style:'ARROW',offset:'AUTO',factRole:'GIVEN'},{id:'dCA',from:'C',to:'A',label:'1',side:'ABOVE',style:'ARROW',offset:'AUTO',factRole:'GIVEN'}],...extra});
+const coordPlan=(row=coordRow(),extra={})=>({capability:'construction-spike-v1',caption:'좌표평면 위의 삼각형 OAB와 세 변을 3:1로 내분하는 점 C, D, E이다.',mathPlan:coordGraph,displayPoints:['O','A','B','C','D','E'],
+  displaySegments:[['sOA','O','A'],['sAB','A','B'],['sBO','B','O'],['sCD','C','D'],['sDE','D','E'],['sEC','E','C']].map(([id,a,b])=>({id,refs:[a,b]})),coordinateLabels:['A'],axisTickValues:{x:[],y:[]},coordinateCanvas:{width:640,height:520},
+  planeMarks:{callouts:[row]},...extra});
+
+test('G11 coordinate callout: a segment pulled out of a figure with axes stands outside the axes; every audit passes and the observer holds the axes to the main frame',async()=>{
+  const model=await modelOf(coordGraph),plan=coordPlan(),composed=await composeOf(plan,model);
+  expectComposed(composed);
+  const spec=specFor(plan,model,identity.assetId),frame=spec.displayFacts.axisBounds;
+  assert.ok(Array.isArray(frame)&&frame.length===4,'the main frame is passed to the axes');
+  const [o,c,a]=['O','C','A'].map(id=>scaled(composed.svg,'k1__'+id));
+  assert.ok(Math.abs(Math.hypot(c[0]-o[0],c[1]-o[1])/Math.hypot(a[0]-c[0],a[1]-c[1])-3)<1e-9,'OC : CA = 3 : 1 on the copy');
+  // the x-axis ends at the main frame, left of the first copy point
+  const xAxis=tagOf(composed.svg,'x-axis'),axisEnd=Math.max(Number(attr(xAxis,'x1')),Number(attr(xAxis,'x2')));
+  assert.ok(axisEnd<Math.min(o[0],c[0],a[0]),'the x-axis stops before the copy');
+  const transform=await transformOf(plan,model),report=await observe(composed.svg,coordGraph,plan.planeMarks,plan.displaySegments,transform,{axisBounds:frame});
+  assert.deepEqual(report.errors,[]);
+  // without callouts the same figure is unchanged: no axisBounds, the axes run over the whole frame
+  const bare=coordPlan(undefined,{planeMarks:{}});
+  expectComposed(await composeOf(bare,model));
+  assert.equal(specFor(bare,model,identity.assetId).displayFacts.axisBounds,undefined);
+  // plan errors
+  assert.equal(specError(coordPlan(coordRow({scale:9})),model),'CALLOUT_SCALE_INVALID:k1');
 });

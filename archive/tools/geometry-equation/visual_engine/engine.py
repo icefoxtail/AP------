@@ -429,6 +429,11 @@ def prepare(spec):
         if obstacle:obstacles.append({'id':p['id'],'kind':obstacle,'role':p.get('role'),'axis':p.get('axis'),'value':p.get('value'),'geometry':p.get('points', [p.get('from'),p.get('to')]) if obstacle not in {'point','circle'} else (*p['at'],p['radius'])})
     if show_x or show_y:
         xmin,xmax,ymin,ymax=vp.bounds
+        # (G11) a coordinate figure with callouts keeps its axes, ticks and axis names on the main frame (the frame before any callout was placed): no axis line crosses a copy
+        axis_bounds=spec['displayFacts'].get('axisBounds')
+        if axis_bounds is not None:
+            if not isinstance(axis_bounds,list) or len(axis_bounds)!=4 or any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) for v in axis_bounds):raise ValueError('INVALID_AXIS_BOUNDS')
+            xmin,xmax,ymin,ymax=max(xmin,axis_bounds[0]),min(xmax,axis_bounds[1]),max(ymin,axis_bounds[2]),min(ymax,axis_bounds[3])
         axes=[]
         if show_x:axes.append(('x-axis',(xmin,0),(xmax,0)))
         if show_y:axes.append(('y-axis',(0,ymin),(0,ymax)))

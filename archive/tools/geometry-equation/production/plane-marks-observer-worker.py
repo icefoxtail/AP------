@@ -381,6 +381,45 @@ def audit(p):
             m=re.fullmatch(r'translate\(([-\d.eE+]+)[ ,]([-\d.eE+]+)\)',n.get('transform'))
             inner=next((c for c in n if tag(c)=='svg'),None)
             if m and inner is not None:label_boxes[n.get('id')]=(float(m.group(1)),float(m.group(2)),float(inner.get('width')),float(inner.get('height')))
+    # (G11) callouts beside a coordinate figure: no axis line, tick, tick number or axis name may touch a copy, and the axes stay on the main frame
+    callout_rows=[r for r in (marks.get('callouts') or []) if isinstance(r,dict) and isinstance(r.get('id'),str)]
+    if callout_rows:
+        def svg_points(n):
+            t=tag(n)
+            if t=='line' and n.get('x1') is not None:return [(float(n.get('x1')),float(n.get('y1'))),(float(n.get('x2')),float(n.get('y2')))]
+            if t in ('polyline','polygon') and n.get('points'):
+                raw=[float(v) for part in n.get('points','').split() for v in part.split(',')];return [(raw[i],raw[i+1]) for i in range(0,len(raw)-1,2)]
+            if t=='circle' and n.get('cx') is not None:
+                cx,cy,r=float(n.get('cx')),float(n.get('cy')),float(n.get('r') or 0);return [(cx-r,cy-r),(cx+r,cy+r)]
+            return []
+        copy_boxes=[]
+        for row in callout_rows:
+            prefix=str(row['id'])+CALLOUT_SEP;pts=[]
+            for node_id,node in elements.items():
+                if str(node_id).startswith(prefix) and node_id not in label_boxes:pts+=svg_points(node)
+            boxes=[b for label_id,b in label_boxes.items() if str(label_id).startswith(prefix)]
+            if not pts and not boxes:continue
+            x0=min([q[0] for q in pts]+[b[0] for b in boxes]);x1=max([q[0] for q in pts]+[b[0]+b[2] for b in boxes])
+            y0=min([q[1] for q in pts]+[b[1] for b in boxes]);y1=max([q[1] for q in pts]+[b[1]+b[3] for b in boxes])
+            copy_boxes.append((str(row['id']),(x0,y0,x1-x0,y1-y0)))
+        axis_lines=[(i,n) for i,n in elements.items() if tag(n)=='line' and n.get('data-role') in ('axis','tick') and not str(i).startswith(tuple(str(r['id'])+CALLOUT_SEP for r in callout_rows))]
+        axis_labels=[(i,b) for i,b in label_boxes.items() if str(i).startswith(('tick-','axis-','model-')) or str(i).endswith('-coordinate-panel')]
+        for cid,box in copy_boxes:
+            for i,n in axis_lines:
+                a,b=svg_points(n)
+                if segment_box_hit(a,b,box,0.5):errors.append('CALLOUT_OVERLAPS_AXES:'+cid+':'+str(i))
+            for i,lb in axis_labels:
+                if box[0]<lb[0]+lb[2] and lb[0]<box[0]+box[2] and box[1]<lb[1]+lb[3] and lb[1]<box[1]+box[3]:
+                    errors.append(('CALLOUT_OVERLAPS_COORDINATE_BAND:' if str(i).endswith('-coordinate-panel') else 'CALLOUT_OVERLAPS_AXES:')+cid+':'+str(i))
+        axis_frame=p.get('axisBounds')
+        drawn_axes=[(i,n) for i,n in axis_lines if n.get('data-role')=='axis']
+        if drawn_axes:
+            if not (isinstance(axis_frame,list) and len(axis_frame)==4):errors.append('CALLOUT_AXIS_EXTENT_MISMATCH:main frame missing')
+            else:
+                for i,n in drawn_axes:
+                    for q in svg_points(n):
+                        mx,my=inverse(q[0],q[1])
+                        if mx<axis_frame[0]-1e-6 or mx>axis_frame[1]+1e-6 or my<axis_frame[2]-1e-6 or my>axis_frame[3]+1e-6:errors.append('CALLOUT_AXIS_EXTENT_MISMATCH:'+str(i))
     leaders={n.get('data-owner-label'):n for n in root.iter() if tag(n)=='line' and n.get('data-role')=='leader' and n.get('data-owner-label')}
     # every drawn stroke a label must keep clear of (svg px): lines, polylines, polygons, circle outlines (sampled), point disks
     strokes=[]
