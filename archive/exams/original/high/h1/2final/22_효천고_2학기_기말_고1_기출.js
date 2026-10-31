@@ -548,7 +548,11 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";window.questionBank=[
     "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수의 기본 원리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "5열 2행 도로망에서 A에서 출발해 위, 위로 올라가 윗변 CD 위를 지난 뒤 아래, 아래로 내려와 B에 닿는 경로의 한 예",
+    "solutionImageCaption": "세로 이동이 위, 위, 아래, 아래 순서로 이어지며 윗변 CD 위를 지나는 경로의 한 예",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
