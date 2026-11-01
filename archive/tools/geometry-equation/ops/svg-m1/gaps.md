@@ -254,6 +254,8 @@
 - set-diagram 영역별 다른 색 shade, 서로소(겹치지 않는) 두 집합 표현, 영역 개수 라벨이 원소 글자로만 가능(교집합 포함 개수 표기 불가: 매산여고 q13).
 - 좌표 작도 plan에서 문자·근호 좌표 이름("(−3,−√2)")을 pointNames로 쓸 수 없음(그래프만 G12-3). 좌표 띠 근호 표기가 "(0,(−1√2))"로 어색.
 
+- 이차곡선(`ellipse-figure-v1` conic): 선분·직선 color·equalLengths 없음(다각형 fill LIGHT/MEDIUM만) → C1 색 묶음 불가; 같은 값 라벨 두 번이면 ELLIPSE_LABEL_NO_ROOM; 치수선 없음; 포물선 창이 정직선현 끝을 강제 포함해 큰 값이면 ELLIPSE_FIGURE_TOO_LARGE(창 지정 필요); 곡선 이름 라벨 LEADER_CROSSING(26 금당고 기하).
+- 입체(`solid-figure-v1`): dims/labels 라벨 앵커 지정 없음(√3이 엉뚱한 모서리 옆), labels가 TeX·√ 미지원, 평행 표식·색 묶음 없음(REF/ACCENT 둘만). guide-solid.md 발췌본에 `points`(edge+t, base:center) 항목 누락.
 ## 참고
 - 원장 OPEN 시험지 14개 중 엔진 대기 사유(E19·E26c·E26d·E28d·E29·E30 등)는 현재 가이드에 해당 필드가 있어 대부분 해결로 본다(재 plan 대상). 진짜 남은 것은 G8(속 빈 원기둥·원뿔대 전개도)과 위 표의 항목이다.
 - 원장 OPEN 중 내용 문제(OPEN_CONTENT 25_왕의중 기말 q19)·원본 그림 없음(26_왕의중 2학기 중간 8문항 등)·#777 골든 SHA 고정(25_매산여고·25_효천고 고1)은 엔진 부족이 아니라 제외했다.
