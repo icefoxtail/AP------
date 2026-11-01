@@ -524,6 +524,7 @@ const FIT = {
   'z2-semi': [{ csP: 0 }], 'z2-quarter': [{ csP: 0 }], 'z2-sector': [{ csA: 30 }, { csA: 90 }, { csA: 150 }, { csA: 210 }, { csA: 300 }], 'z2-segment': [{ csS: 30 }, { csS: 60 }, { csS: 120 }, { csS: 180 }],
   'z3-circleProof': [{ csT: 0, csN: 8 }, { csT: 100, csN: 8 }, { csT: 100, csN: 64 }], 'z3-sectorProof': [{ csT: 0, csS: 180 }, { csT: 0, csS: 60 }, { csT: 100, csS: 30 }, { csT: 100, csS: 90 }, { csT: 100, csS: 180 }]
 };
+const CANON_VIEW = { x: [-5, 5], y: [-4, 4] }; // 처음 열 때의 기본 범위
 const unionFocus = (a, b) => (a ? { x: [Math.min(a.x[0], b.x[0]), Math.max(a.x[1], b.x[1])], y: [Math.min(a.y[0], b.y[0]), Math.max(a.y[1], b.y[1])] } : b);
 mineGroups.forEach((g) => g.scenes.forEach((sc) => {
   const d = ENTER[sc.id];
@@ -532,11 +533,13 @@ mineGroups.forEach((g) => g.scenes.forEach((sc) => {
     s.playing = false;
     sc._focus = null;
     if (lab && lab.board && FIT[sc.id]) {
-      const keep = { ...s };
+      const keep = { ...s }, b = lab.board, view = { focus: b.focus, zoom: b.zoom, panX: b.panX, panY: b.panY };
+      b.setFocus(CANON_VIEW, true); // 앞 장면의 확대·위치가 남은 채로 재면 그림이 작게 맞춰집니다 → 항상 같은 처음 상태에서 잽니다
       let uni = null;
       for (const st of FIT[sc.id]) { Object.assign(s, st); const f = lab._measureFocus(sc); if (f) uni = unionFocus(uni, f); }
       Object.assign(s, keep);
       sc._focus = uni;
+      if (s !== lab.s) Object.assign(b, view); // 장면 목록의 작은 그림을 만드는 중이면 지금 보는 화면은 그대로 둡니다
     }
   };
   sc.focus = () => sc._focus;
@@ -569,6 +572,8 @@ function start() {
     home: '../index.html#g7',
     legacy: '../../labs/g7/원과_부채꼴_통합_마스터_스튜디오.html',
     board: { kind: 'figure', autoFit: true, pad: 0.02, minZoom: 0.5, maxZoom: 6 },
+    // 어느 장면에서 오든 처음 열 때와 같은 맞춤이 되도록, 장면에 들어갈 때 화면 범위를 처음 상태로 되돌립니다(작은 그림 만들 때는 제외).
+    enter: (s, sc, lab) => { if (lab && lab.board && s === lab.s) { lab.board.setFocus(CANON_VIEW, true); lab.board.setPanes(null); lab.board.setInsets({ top: 0, right: 0, bottom: 0, left: 0 }); } },
     state: { csN: 16 },
     params,
     groups
