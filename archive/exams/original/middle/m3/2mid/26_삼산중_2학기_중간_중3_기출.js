@@ -790,8 +790,8 @@ window.questionBank = [
       "40√3−16π",
       "20√3−8π"
     ],
-    "answer": "①",
-    "solution": "정삼각형의 넓이는 $\\dfrac{\\sqrt3}{4}\\cdot16^2=64\\sqrt3$이다. 원의 반지름은 $4\\sqrt3$이므로 넓이는 $\\pi(4\\sqrt3)^2=48\\pi$이다. 그림에서 삼각형 안에 포함되는 원의 부분은 중심각 $120^\\circ$인 부채꼴로, 넓이는 $\\dfrac{120}{360}\\cdot48\\pi=16\\pi$이다.\n따라서 색칠한 넓이는 $64\\sqrt3-16\\pi$이다. 정답은 ①이다.",
+    "answer": "④",
+    "solution": "정삼각형의 넓이는 $\\dfrac{\\sqrt3}{4}\\cdot16^2=64\\sqrt3$이다. 변 $AB$, $AC$가 원과 $A$ 외에 만나는 점을 각각 $P$, $Q$라 하자. $AO$는 $\\angle A=60^\\circ$를 이등분하므로 $\\angle OAP=30^\\circ$이다. 따라서 원의 중심 $O$에서 현 $AP$까지의 거리는 $4\\sqrt3\\sin30^\\circ=2\\sqrt3$이고, $AP=2\\sqrt{(4\\sqrt3)^2-(2\\sqrt3)^2}=12$이다. $\\triangle OAP$는 $OA=OP$인 이등변삼각형이므로 $\\angle OPA=30^\\circ$, $\\angle AOP=120^\\circ$이다. 같은 방법으로 $\\angle AOQ=120^\\circ$이므로 $\\angle POQ=360^\\circ-120^\\circ-120^\\circ=120^\\circ$이다.\n삼각형 안에 들어 있는 원의 부분은 부채꼴 $POQ$와 $\\triangle OAP$, $\\triangle OAQ$의 합이다. 부채꼴 $POQ$의 넓이는 $\\dfrac{120}{360}\\cdot\\pi(4\\sqrt3)^2=16\\pi$이고, $\\triangle OAP=\\dfrac12\\cdot12\\cdot2\\sqrt3=12\\sqrt3$, $\\triangle OAQ=12\\sqrt3$이다.\n따라서 색칠한 넓이는 $64\\sqrt3-(16\\pi+24\\sqrt3)=40\\sqrt3-16\\pi$이다. 정답은 ④이다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
