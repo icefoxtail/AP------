@@ -246,6 +246,14 @@
 - 점 표시 이름에 `(2,k)` 같은 문자 좌표, 분수 좌표 라벨을 쓸 수 없다.
 - `polynomial-spike-v1`의 긴 식 제목(`8x^3-12x^2-2x+3`)이 `LAYOUT_INVENTORY_INCOMPLETE` → piecewise로 우회. 패널 제목에 "f−g" 같은 설명을 넣을 수 없다.
 
+
+### G12 이후 남은 그래프·집합 공백 (2026-11-01, 26 고교 시험지)
+- 유리함수 세로 점근선 라벨(x=2/3) 위치 고정: phase2.mjs 일차/일차 분기 vertical-asymptote-label(xSingularity+7%, 맨 위) → asymptoteLabelAt을 세로 점근선에도. 축 이름 y가 allowSuppress로 오른쪽 위 먼 자리로 밀림(engine.py axis_labels). 효천고 q7 대기.
+- 직선 라벨 지시선 끝 앵커 점(g-name-anchor, piecewiseDiscontinuousSpec)이 점으로 그려짐 → marker NONE.
+- composite-panels-v1에 좌표축 패널·set-diagram 패널 불가(매산여고 q11·q18·q22, 효천고 등 두 경우 문항).
+- set-diagram 영역별 다른 색 shade, 서로소(겹치지 않는) 두 집합 표현, 영역 개수 라벨이 원소 글자로만 가능(교집합 포함 개수 표기 불가: 매산여고 q13).
+- 좌표 작도 plan에서 문자·근호 좌표 이름("(−3,−√2)")을 pointNames로 쓸 수 없음(그래프만 G12-3). 좌표 띠 근호 표기가 "(0,(−1√2))"로 어색.
+
 ## 참고
 - 원장 OPEN 시험지 14개 중 엔진 대기 사유(E19·E26c·E26d·E28d·E29·E30 등)는 현재 가이드에 해당 필드가 있어 대부분 해결로 본다(재 plan 대상). 진짜 남은 것은 G8(속 빈 원기둥·원뿔대 전개도)과 위 표의 항목이다.
 - 원장 OPEN 중 내용 문제(OPEN_CONTENT 25_왕의중 기말 q19)·원본 그림 없음(26_왕의중 2학기 중간 8문항 등)·#777 골든 SHA 고정(25_매산여고·25_효천고 고1)은 엔진 부족이 아니라 제외했다.
