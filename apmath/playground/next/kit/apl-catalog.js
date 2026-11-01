@@ -78,6 +78,30 @@ window.APLab.catalog = {
    "sceneTotal": 27
   },
   {
+   "id": "g7-construction",
+   "course": "g7",
+   "unit": "기본 도형",
+   "strand": "shape",
+   "order": 2.5,
+   "title": "작도와 합동",
+   "short": "작도와 합동",
+   "summary": "눈금 없는 자와 컴퍼스로 하는 작도(크기가 같은 각·평행선)를 단계 플레이어로 보고, 삼각형이 만들어질 조건, 삼각형의 결정 조건(SSS·SAS·ASA), 합동인 도형의 성질과 합동 조건, 정삼각형·정사각형 속 숨은 합동을 도형을 직접 조절하며 탐구하고 정리와 5지선다 문제로 확인합니다.",
+   "keywords": "작도 컴퍼스 눈금 없는 자 크기가 같은 각 평행선 삼각형의 결정 조건 세 변의 길이 합동 합동 조건 SSS SAS ASA 대응변 대응각 정삼각형 정사각형 숨은 합동 기본 도형 중1",
+   "badge": "6탭",
+   "scenes": [
+    "작도",
+    "삼각형이 만들어질 조건",
+    "삼각형의 결정 조건",
+    "합동인 도형",
+    "삼각형의 합동 조건",
+    "숨은 합동"
+   ],
+   "legacy": "labs/g8/triangles-atlas.html",
+   "next": "next/labs/g7-construction.html",
+   "glyph": "<path d=\"M8 56 L28 18 L48 56 Z\"/><path d=\"M34 62 L54 24 L74 62 Z\" stroke-dasharray=\"4 4\"/><path d=\"M14 56 V50 H8 M24 36 L32 40\"/>",
+   "sceneTotal": 23
+  },
+  {
    "id": "g7-polygons",
    "course": "g7",
    "unit": "평면도형",
@@ -1090,6 +1114,7 @@ window.APLab.catalog = {
    "stations": [
     "g7-points-lines",
     "g7-parallel",
+    "g7-construction",
     "g7-polygons",
     "g8-triangles",
     "g8-quadrilaterals",

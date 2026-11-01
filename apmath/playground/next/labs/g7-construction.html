@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>작도와 합동 · AP Math 실험실</title>
+<meta name="description" content="중1 작도와 합동: 눈금 없는 자와 컴퍼스로 하는 작도(크기가 같은 각·평행선), 삼각형이 만들어질 조건, 삼각형의 결정 조건, 합동인 도형의 성질, 삼각형의 합동 조건, 정삼각형·정사각형 속 숨은 합동을 도형을 직접 조절하며 탐구하고 정리와 5지선다 문제로 확인합니다.">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: light)').matches?'paper':'board');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
+<script>
+/* ==========================================================================
+   중1 · 작도와 합동 (AP Math Lab 2.0) — Ⅰ-3. 작도와 합동
+   탭(order 순): ① 작도(10) · ② 삼각형이 만들어질 조건(20) · ③ 삼각형의 결정 조건(30) · ④ 합동인 도형(40) · ⑤ 삼각형의 합동 조건(50) · ⑥ 숨은 합동(60)
+   이 파일은 얇은 껍데기입니다. 공용 도구는 labs/g7-construction/core.js, 각 탭은 t1~t6.js 모듈이
+   window.APL_CN_GROUPS 에 { order, id, title, short, params, scenes } 를 등록하면 order 순으로 붙습니다.
+   원칙(학생 가독성)
+   - 그림은 무대 가득 · 길이와 각은 그림 안에 크게(화면 기준 14px 이상) · 모든 도형은 막대나 손잡이로 조절
+   - 작도는 학생이 호를 끌지 않고 단계 플레이어(▶)로 순서대로 봅니다. 중2 삼각형(g8-triangles)의 RHA/RHS·이등변·외심·내심은 여기서 다루지 않습니다.
+   - 움직임은 가로로만(제자리 회전·뒤집기는 허용). 탐구 → 정리(교과서 해결 전략 순서) → 문제(5지선다 + 숫자 바꾸기)
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+'use strict';
+const MODULES = ['core', 't1', 't2', 't3', 't4', 't5', 't6'];
+const loadScript = (src) => new Promise((res) => {
+  const el = document.createElement('script');
+  el.src = src; el.async = false;
+  el.onload = () => res(true);
+  el.onerror = () => { el.remove(); res(false); }; // 아직 없는 모듈은 건너뜁니다
+  document.head.append(el);
+});
+
+function start() {
+  const mods = (window.APL_CN_GROUPS || []).filter((g) => g && Array.isArray(g.scenes) && g.scenes.length);
+  const groups = mods.slice().sort((a, b) => (a.order || 0) - (b.order || 0)).map((g) => ({ id: g.id, title: g.title, short: g.short || g.title, scenes: g.scenes }));
+  const params = {};
+  mods.forEach((g) => Object.assign(params, g.params || {}));
+  APLab.createLab({
+    id: 'g7-construction',
+    title: '작도와 합동',
+    courseName: '중1',
+    unit: '기본 도형 · 작도와 합동',
+    courseColor: 'var(--m-sky)',
+    home: '../index.html#g7',
+    legacy: '../../labs/g8/triangles-atlas.html',
+    board: { kind: 'figure', pad: 0.02, minZoom: 0.5, maxZoom: 6 },
+    // 장면에 들어올 때마다 화면 범위를 처음 상태로 되돌립니다(앞 장면의 확대·위치가 남지 않게). 그림 맞춤은 장면 그리기에서 매번 합니다.
+    enter: (s, sc, lab) => { if (lab && lab.board && s === lab.s) { lab.board.fit(); lab.board.setPanes(null); lab.board.setInsets({ top: 0, right: 0, bottom: 0, left: 0 }); } },
+    params,
+    groups
+  });
+}
+Promise.all(MODULES.map((m) => loadScript(`g7-construction/${m}.js`))).then(start);
+});
+</script>
+</body>
+</html>
