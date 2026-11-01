@@ -92,6 +92,21 @@ test('the lane never changes the canonical resolution or the strict approval met
   // advanced-eligible record must stay canonically approved, and the counts must not fall below the 2026-10-30 floor.
   const strict = data.records.filter(row => core.basicEligibility(row, auth).ok);
   const advanced = data.records.filter(row => core.advancedEligible(row, auth));
+  if (strict.length < 1495 || advanced.length < 195) {
+    const source = await metadata();
+    const metaByUid = new Map(source.records.map(row => [row.questionUid, row]));
+    const canonical = data.records.filter(row => core.Canonical.validateAdvancedAssignment(row, auth.canonicalAuthority).ok);
+    const sourceOk = canonical.filter(row => row.sourceIntegrityStatus === 'VERIFIED' && row.sourceStatus === 'VERIFIED');
+    const bothOk = sourceOk.filter(row => (row.metadataConflicts || []).every(field => !['L3', 'L4', 'problemTypeKey', 'templateKey', 'foundationTaxonomy'].includes(field))
+      && (row.foundationTaxonomyStatus === 'CONFIRMED' || row.foundationTaxonomyStatus == null || row.foundationTaxonomyStatus === ''));
+    console.error('ARCHIVE2_DIAG_ADVANCED', JSON.stringify({
+      strict: strict.length, actual: advanced.length, canonicalCount: canonical.length, sourceOkCount: sourceOk.length,
+      afterConflictFoundation: bothOk.length, sourceStatus: [...new Set(canonical.map(row => row.sourceStatus))].map(status => [status, canonical.filter(row => row.sourceStatus === status).length]),
+      samples: canonical.filter(row => !core.advancedEligible(row, auth)).slice(0, 12).map(row => ({uid: row.questionUid, sourceStatus: row.sourceStatus,
+        sourceIntegrityStatus: row.sourceIntegrityStatus, metaBinding: row.metaBinding, foundationTaxonomyStatus: row.foundationTaxonomyStatus,
+        assignmentFingerprint: row.assignmentFingerprint, recordedFingerprint: metaByUid.get(row.questionUid)?.contentFingerprint || '' }))
+    }));
+  }
   assert.ok(strict.length >= 1495, String(strict.length));
   assert.ok(advanced.length >= 195, String(advanced.length));
   assert.ok(data.records.filter(row => row.problemTypeKey).length >= 549);
