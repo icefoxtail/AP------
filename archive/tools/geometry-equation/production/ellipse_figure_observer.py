@@ -285,7 +285,7 @@ def _line_interior_points(a,b,end_margin=3.0,step=1.5):
 
 def audit(plan,svg):
     """Return {status, errors, finalSvgSha256, checks} for one plan against one final SVG."""
-    if isinstance(plan,dict) and 'conic' in plan:
+    if isinstance(plan,dict) and ('conic' in plan or 'conics' in plan):
         # A parabola figure has its own independent observer; every ellipse plan keeps the code below.
         from conic_figure_observer import audit as audit_conic
         return audit_conic(plan,svg)

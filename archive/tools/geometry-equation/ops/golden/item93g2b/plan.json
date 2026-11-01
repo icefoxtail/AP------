@@ -1,0 +1,25 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "두 점 F(5,0)과 F'(-5,0)을 초점으로 하는 쌍곡선이 있다. 두 점 F와 F'을 지름의 양 끝점으로 하는 원과 쌍곡선이 만나는 한 점을 P라 하자.",
+  "conic": { "kind": "HYPERBOLA", "center": ["0", "0"], "aSquared": "1", "bSquared": "24", "transverse": "X" },
+  "points": [
+    { "id": "O", "kind": "ORIGIN" },
+    { "id": "F", "kind": "FOCUS", "side": 1 },
+    { "id": "F'", "kind": "FOCUS", "side": -1 },
+    { "id": "P", "kind": "ON_CONIC", "x": "7/5", "sign": "POS" }
+  ],
+  "segments": [
+    { "id": "sPF", "from": "P", "to": "F" },
+    { "id": "sPG", "from": "P", "to": "F'" },
+    { "id": "sGF", "from": "F'", "to": "F" }
+  ],
+  "polygons": [
+    { "id": "tri", "points": ["P", "F'", "F"], "fill": "LIGHT" }
+  ],
+  "caption": "초점이 F, F'인 쌍곡선과 쌍곡선 위의 점 P, 삼각형 PF'F",
+  "sourceConditions": [
+    { "id": "c1", "condition": "두 점 F(5,0), F'(-5,0)이 쌍곡선의 초점이다.", "mappedTo": ["conic", "points"] },
+    { "id": "c2", "condition": "점 P는 쌍곡선 위의 점이고 삼각형 PF'F를 만든다.", "mappedTo": ["points", "segments", "polygons"] }
+  ],
+  "newVisualInformation": ["쌍곡선의 두 초점과 점 P, 삼각형 PF'F의 위치를 보여 준다."]
+}

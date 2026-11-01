@@ -1,0 +1,22 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "타원 x^2/a^2+y^2/b^2=1과 포물선 y^2=4x는 점 P(3,-2√3)에서 만나고 점 P에서의 타원의 접선의 기울기와 포물선의 접선의 기울기의 곱이 -2/9일 때",
+  "conics": [
+    { "id": "c1", "kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "36", "bSquared": "16", "major": "X", "label": "x^2/a^2+y^2/b^2=1" },
+    { "id": "c2", "kind": "PARABOLA", "vertex": ["0", "0"], "p": "1", "axis": "X", "label": "y^2=4x" }
+  ],
+  "points": [
+    { "id": "O", "kind": "ORIGIN" },
+    { "id": "P", "kind": "CONIC_CONIC", "curves": ["c1", "c2"], "which": 1 }
+  ],
+  "lines": [
+    { "id": "t1", "tangent": true, "at": "P", "curve": "c1", "label": "l_1" },
+    { "id": "t2", "tangent": true, "at": "P", "curve": "c2", "label": "l_2" }
+  ],
+  "caption": "타원과 포물선이 만나는 점 P에서 l_1은 타원의 접선, l_2는 포물선의 접선이다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "타원과 포물선 y^2=4x가 점 P에서 만난다.", "mappedTo": ["conics", "points"] },
+    { "id": "c2", "condition": "점 P에서 타원의 접선과 포물선의 접선을 각각 생각한다.", "mappedTo": ["lines"] }
+  ],
+  "newVisualInformation": ["점 P에서 두 곡선의 접선이 서로 다른 기울기를 가짐을 보여 준다."]
+}

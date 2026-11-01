@@ -66,20 +66,41 @@ function validatePair(plan){
   return ids;
 }
 
-// --- conic (parabola) plans: a root `conic` field; the plan shape is checked here, every value in conic_figure.py -------------------------------
-const CONIC_TOP_KEYS=['capability','conic','points','segments','polygons','lines','caption','sourceConditions','newVisualInformation','sourceQuote'];
-const CONIC_POINT_KEYS={ORIGIN:['id','kind','label'],FOCUS:['id','kind','label'],VERTEX:['id','kind','label'],POINT:['id','kind','x','y','label'],
-  ON_CONIC:['id','kind','x','y','branch','label'],LINE_CONIC:['id','kind','line','which','label'],FOOT:['id','kind','from','onto','rightAngle','label']};
-const CONIC_LINE_KEYS=['id','role','label','dashed','hidden','x','y','slope','intercept','through'];
+// --- conic (parabola, hyperbola, circle, ellipse; one `conic` or one or two `conics`) plans: a root `conic` field; the plan shape is checked here, every value in conic_figure.py -------------------------------
+const CONIC_TOP_KEYS=['capability','conic','conics','points','segments','polygons','lines','caption','sourceConditions','newVisualInformation','sourceQuote'];
+const CONIC_POINT_KEYS={ORIGIN:['id','kind','label'],FOCUS:['id','kind','label','side','curve'],VERTEX:['id','kind','label','side','curve'],
+  CENTER:['id','kind','label','curve'],POINT:['id','kind','x','y','label'],
+  ON_CONIC:['id','kind','x','y','branch','sign','label','curve'],LINE_CONIC:['id','kind','line','which','label','curve'],LINE_LINE:['id','kind','lines','label'],
+  FOOT:['id','kind','from','onto','rightAngle','label'],CONIC_CONIC:['id','kind','curves','which','label'],TANGENT_FROM:['id','kind','from','which','label','curve']};
+const CONIC_KEYS_BY_KIND={PARABOLA:['kind','vertex','p','axis'],HYPERBOLA:['kind','center','aSquared','bSquared','transverse'],
+  CIRCLE:['kind','center','rSquared'],ELLIPSE:['kind','center','aSquared','bSquared','major']};
+const CONIC_LINE_KEYS=['id','role','label','dashed','hidden','x','y','slope','intercept','through','sign','tangent','at','curve'];
+const MAX_CONIC_CURVES=2;
 const LINE_ID=/^[A-Za-z][A-Za-z0-9_]{0,7}$/;
 
 export function validateConicPlan(plan){
   if('ellipse' in plan||'ellipses' in plan)bad('CONIC_PLAN_CONFLICT');
   onlyKeys(plan,CONIC_TOP_KEYS,'ELLIPSE_PLAN_INVALID');
   if(plan.capability!==FIGURE_CAPABILITY)bad('ELLIPSE_PLAN_INVALID');
-  onlyKeys(plan.conic,['kind','vertex','p','axis'],'CONIC_PARAMETER_INVALID');
-  if(typeof plan.conic.kind!=='string')bad('CONIC_PARAMETER_INVALID');
-  if(plan.conic.kind!=='PARABOLA')bad('CONIC_KIND_UNSUPPORTED');
+  if('conic' in plan&&'conics' in plan)bad('CONIC_PLAN_CONFLICT');
+  let rows;
+  if('conics' in plan){
+    if(!Array.isArray(plan.conics)||!plan.conics.length)bad('CONIC_PARAMETER_INVALID');
+    if(plan.conics.length>MAX_CONIC_CURVES)bad('CONIC_TOO_MANY_CURVES');
+    rows=plan.conics;
+  }else rows=[plan.conic];
+  const curveIds=new Set();
+  for(const row of rows){
+    if(!isPlain(row)||typeof row.kind!=='string')bad('CONIC_PARAMETER_INVALID');
+    if('conics' in plan){
+      if(typeof row.id!=='string'||!LINE_ID.test(row.id)||curveIds.has(row.id))bad('CONIC_PARAMETER_INVALID');
+      curveIds.add(row.id);
+    }
+    onlyKeys(row,('conics' in plan?['id','label']:[]).concat(CONIC_KEYS_BY_KIND[row.kind]??CONIC_KEYS_BY_KIND.PARABOLA),'CONIC_PARAMETER_INVALID');
+    if(!(row.kind in CONIC_KEYS_BY_KIND))bad('CONIC_KIND_UNSUPPORTED');
+    if(row.label!==undefined&&(typeof row.label!=='string'||!row.label.trim()||row.label.length>40))bad('CONIC_LINE_LABEL_INVALID');
+  }
+  const kinds=new Set(rows.map(row=>row.kind));
   const points=plan.points??[];
   if(!Array.isArray(points)||points.length>10)bad('ELLIPSE_POINT_INVALID');
   const ids=new Set();
@@ -102,6 +123,8 @@ export function validateConicPlan(plan){
   }
   for(const line of plan.lines??[]){
     onlyKeys(line,CONIC_LINE_KEYS,'ELLIPSE_LINE_INVALID');
+    if(line.role==='ASYMPTOTE'&&!kinds.has('HYPERBOLA'))bad('CONIC_ASYMPTOTE_REQUIRES_HYPERBOLA');
+    if(line.role==='DIRECTRIX'&&!kinds.has('PARABOLA'))bad('CONIC_DIRECTRIX_REQUIRES_PARABOLA');
     if(typeof line.id!=='string'||!LINE_ID.test(line.id))bad('ELLIPSE_LINE_INVALID');
     if(line.label!==undefined&&(typeof line.label!=='string'||!line.label.trim()||line.label.length>40))bad('CONIC_LINE_LABEL_INVALID');
   }
@@ -111,7 +134,7 @@ export function validateConicPlan(plan){
 }
 
 export function validateEllipseFigurePlan(plan){
-  if(isPlain(plan)&&'conic' in plan)return validateConicPlan(plan);
+  if(isPlain(plan)&&('conic' in plan||'conics' in plan))return validateConicPlan(plan);
   onlyKeys(plan,TOP_KEYS,'ELLIPSE_PLAN_INVALID');
   if(plan.capability!==FIGURE_CAPABILITY)bad('ELLIPSE_PLAN_INVALID');
   const pair='ellipses' in plan;
@@ -298,9 +321,28 @@ export function placeLabels(entries,layout,obstacles){
     if(!best&&entry.fallbacks){
       // A line name with no room beside the line: a free spot joined to the line by a leader.
       for(const fallback of entry.fallbacks){
-        const anchored={...entry,pointX:fallback.pointX,pointY:fallback.pointY,centerX:fallback.centerX,centerY:fallback.centerY,requiresLeader:true};
+        const anchored={...entry,pointX:fallback.pointX,pointY:fallback.pointY,centerX:fallback.centerX,centerY:fallback.centerY,requiresLeader:true,
+          ...(fallback.ownerSegment?{ownerSegment:fallback.ownerSegment}:{})};
         for(const delta of fallback.candidates){
           const box={x:r6(anchored.centerX+delta.dx-entry.width/2),y:r6(anchored.centerY+delta.dy-entry.height/2),width:entry.width,height:entry.height};
+          if(blocked(box,anchored))continue;
+          const leader=leaderFor(box,anchored);if(!leader)continue;
+          const score=-delta.distance;
+          if(!best||score>best.score)best={box,score,leader,anchored};
+        }
+        if(best)break;
+      }
+    }
+    if(!best&&entry.fallbacks){
+      // Still no room: a diagonal leader would meet a slanted line too shallowly, so the box is set corner-first
+      // on the leader's ray (its nearest corner then lies on the ray and the leader runs straight along it).
+      for(const fallback of entry.fallbacks){
+        const anchored={...entry,pointX:fallback.pointX,pointY:fallback.pointY,centerX:fallback.centerX,centerY:fallback.centerY,requiresLeader:true};
+        for(const delta of fallback.candidates){
+          const reach=Math.hypot(delta.dx,delta.dy);
+          if(!(Math.abs(delta.dx)>0.2*reach&&Math.abs(delta.dy)>0.2*reach))continue;
+          const box={x:r6(anchored.centerX+delta.dx+Math.sign(delta.dx)*entry.width/2-entry.width/2),
+            y:r6(anchored.centerY+delta.dy+Math.sign(delta.dy)*entry.height/2-entry.height/2),width:entry.width,height:entry.height};
           if(blocked(box,anchored))continue;
           const leader=leaderFor(box,anchored);if(!leader)continue;
           const score=-delta.distance;
@@ -488,15 +530,64 @@ function parabolaRuns(conic,layout,count=320){
   return runs.filter(row=>row.length>=2);
 }
 
+// One branch of the hyperbola (side +1 / -1 of the transverse axis) inside the plane window, as runs of model points.
+function hyperbolaRuns(conic,layout,side,count=400){
+  const h=num(conic.center.x),k=num(conic.center.y),a=Math.sqrt(num(conic.aSquared)),b=Math.sqrt(num(conic.bSquared)),axisX=conic.transverse==='X';
+  const {baseX,baseY,unitsW,unitsH}=layout;
+  const left=baseX,right=baseX+unitsW,bottom=baseY,top=baseY+unitsH,eps=1e-9;
+  const at=axisX?t=>[h+side*a*Math.cosh(t),k+b*Math.sinh(t)]:t=>[h+b*Math.sinh(t),k+side*a*Math.cosh(t)];
+  const inside=pt=>pt[0]>=left-eps&&pt[0]<=right+eps&&pt[1]>=bottom-eps&&pt[1]<=top+eps;
+  // |other coordinate - centre| <= reach everywhere in the window, so t in [-asinh(reach/b), asinh(reach/b)] covers it
+  const span=axisX?Math.max(Math.abs(bottom-k),Math.abs(top-k)):Math.max(Math.abs(left-h),Math.abs(right-h));
+  const tMax=Math.asinh(span/b)+0.05;
+  const edge=(tIn,tOut)=>{
+    let lo=tIn,hi=tOut;
+    for(let i=0;i<60;i++){const mid=(lo+hi)/2;if(inside(at(mid)))lo=mid;else hi=mid;}
+    return at(lo);
+  };
+  const runs=[];let run=null,prevT=null,prevIn=false;
+  for(let i=0;i<=count;i++){
+    const t=-tMax+2*tMax*i/count,pt=at(t),isIn=inside(pt);
+    if(isIn){
+      if(!run){run=[];runs.push(run);if(prevT!==null&&!prevIn)run.push(edge(t,prevT));}
+      run.push(pt);
+    }else if(run){run.push(edge(prevT,t));run=null;}
+    prevT=t;prevIn=isIn;
+  }
+  return runs.filter(row=>row.length>=2);
+}
+
+// A circle or an ellipse is one closed run (the window already holds all of it); the four axis ends are samples.
+function roundRuns(conic,count=360){
+  const h=num(conic.center.x),k=num(conic.center.y);
+  let rx,ry;
+  if(conic.kind==='CIRCLE')rx=ry=Math.sqrt(num(conic.rSquared));
+  else{
+    const a=Math.sqrt(num(conic.aSquared)),b=Math.sqrt(num(conic.bSquared));
+    [rx,ry]=conic.major==='X'?[a,b]:[b,a];
+  }
+  const run=[];
+  for(let i=0;i<=count;i++){
+    const theta=i*2*Math.PI/count;
+    run.push([h+rx*Math.cos(theta),k+ry*Math.sin(theta)]);
+  }
+  run[count]=run[0];
+  return [run];
+}
+
 function conicCurveRuns(conic,layout){
   if(conic.kind==='PARABOLA')return parabolaRuns(conic,layout);
+  if(conic.kind==='CIRCLE'||conic.kind==='ELLIPSE')return roundRuns(conic);
   bad('CONIC_KIND_UNSUPPORTED');
 }
 
 function conicFigureSpec(plan,model){
   const layout=layoutOf(model),{width,height}=layout.size;
-  const conic=model.conic;
-  const vertexPx={x:layout.px(num(conic.vertex.x)),y:layout.py(num(conic.vertex.y))};
+  const manyCurves=Array.isArray(model.conics);
+  const curveList=manyCurves?model.conics:[model.conic];
+  const conic=curveList[0];
+  const anchor=conic.kind==='PARABOLA'?conic.vertex:conic.center;
+  const vertexPx={x:layout.px(num(anchor.x)),y:layout.py(num(anchor.y))};
   const prims=axisPrims(layout);
   const point=id=>model.points.find(row=>row.id===id);
   const toPx=(x,y)=>[layout.px(x),layout.py(y)];
@@ -505,9 +596,21 @@ function conicFigureSpec(plan,model){
     prims.push({t:'polygon',id:`polygon-${polygon.id}`,role:'polygon',cls:'polygon',layer:20,
       points:points.map(([x,y])=>[r6(x),r6(y)]),fill:FILL[polygon.fill??'LIGHT'],data:{points:polygon.points.join(',')}});
   }
-  prims.push({t:'path',id:'curve',role:'curve',cls:'curve',layer:25,
-    runs:conicCurveRuns(conic,layout).map(run=>run.map(([x,y])=>{const [qx,qy]=toPx(x,y);return [r6(qx),r6(qy)];})),
-    data:{curve:conic.kind}});
+  const toPxRuns=runs=>runs.map(run=>run.map(([x,y])=>{const [qx,qy]=toPx(x,y);return [r6(qx),r6(qy)];}));
+  for(const one of curveList){
+    const tag=manyCurves?{'curve-id':one.id}:{};
+    const suffix=manyCurves?`-${one.id}`:'';
+    if(one.kind==='HYPERBOLA'){
+      for(const [side,name] of [[1,'POS'],[-1,'NEG']]){
+        const runs=hyperbolaRuns(one,layout,side);
+        if(!runs.length)bad('ELLIPSE_FIGURE_TOO_LARGE');
+        prims.push({t:'path',id:`curve${suffix}-${name.toLowerCase()}`,role:'curve',cls:'curve',layer:25,runs:toPxRuns(runs),
+          data:{curve:one.kind,...tag,branch:name}});
+      }
+    }else prims.push({t:'path',id:`curve${suffix}`,role:'curve',cls:'curve',layer:25,
+      runs:toPxRuns(conicCurveRuns(one,layout)),
+      data:{curve:one.kind,...tag}});
+  }
   const segmentLabelCounts=new Map();
   for(const segment of plan.segments??[])if(segment.label)segmentLabelCounts.set(segment.label,(segmentLabelCounts.get(segment.label)||0)+1);
   for(const segment of plan.segments??[]){
@@ -590,9 +693,31 @@ function conicFigureSpec(plan,model){
     labels.push({key:`line-${line.id}`,role:'line',lineId:line.id,text:line.label,
       ownerSegment:{a:va,b:vb},pointX:mid[0],pointY:mid[1],centerX:mid[0],centerY:mid[1],candidates,fallbacks});
   }
+  // A curve name: always a free spot joined to the curve by a leader that starts at the name and ends on the drawn path.
+  for(const one of curveList){
+    if(!one.label)continue;
+    const prim=prims.find(row=>row.role==='curve'&&row.data['curve-id']===one.id&&row.data.branch!=='NEG');
+    const run=prim.runs.reduce((best,row)=>row.length>best.length?row:best,[]);
+    const fallbacks=[];
+    for(const t of [0.12,0.3,0.5,0.7,0.88,0.2,0.4,0.6,0.8,0.05,0.95]){
+      const index=Math.min(run.length-2,Math.max(1,Math.round(t*(run.length-1))));
+      const anchor=run[index],prev=run[index-1],next=run[index+1];
+      const length=Math.hypot(next[0]-prev[0],next[1]-prev[1])||1;
+      const u=[(next[0]-prev[0])/length,(next[1]-prev[1])/length],n=[-u[1],u[0]];
+      const far=[];
+      for(const [dx,dy] of [n,[-n[0],-n[1]],[Math.SQRT1_2*(n[0]+u[0]),Math.SQRT1_2*(n[1]+u[1])],[Math.SQRT1_2*(n[0]-u[0]),Math.SQRT1_2*(n[1]-u[1])],
+        [-Math.SQRT1_2*(n[0]+u[0]),-Math.SQRT1_2*(n[1]+u[1])],[-Math.SQRT1_2*(n[0]-u[0]),-Math.SQRT1_2*(n[1]-u[1])]])
+        for(const distance of [22,28,34,42,50])far.push({dx:dx*distance,dy:dy*distance,distance});
+      fallbacks.push({pointX:anchor[0],pointY:anchor[1],centerX:anchor[0],centerY:anchor[1],candidates:far,
+        ownerSegment:{a:[anchor[0]-6*u[0],anchor[1]-6*u[1]],b:[anchor[0]+6*u[0],anchor[1]+6*u[1]]}});
+    }
+    const first=fallbacks[0];
+    labels.push({key:`curve-${one.id}`,role:'curve',curveId:one.id,text:one.label,
+      ownerSegment:first.ownerSegment,pointX:first.pointX,pointY:first.pointY,centerX:first.centerX,centerY:first.centerY,candidates:[],fallbacks});
+  }
   labels.push(...segmentMeasureLabels(plan,model,layout,segmentLabelCounts));
   return {schemaVersion:SPEC_VERSION,size:{width,height},prims,labels,layout:{
-    scale:layout.scale,origin:{x:layout.px(0),y:layout.py(0)},rect:layout.rect},model:{conic:conic.kind}};
+    scale:layout.scale,origin:{x:layout.px(0),y:layout.py(0)},rect:layout.rect},model:{conic:curveList.map(one=>one.kind).join('+')}};
 }
 
 function printPrim(prim){
@@ -630,17 +755,17 @@ export async function renderEllipseSvg({plan,model,identity,typographyPolicy}){
     specSha256:null,fragmentSha256s:{},svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
   lineage.specSha256=objectSha(spec);
   for(const item of placed)if(item.leader){
-    const ownerAttr=item.role==='line'?`data-owner-line="${esc(item.lineId)}"`:`data-owner-segment="${item.segmentId}"`;
+    const ownerAttr=item.role==='line'?`data-owner-line="${esc(item.lineId)}"`:item.role==='curve'?`data-owner-curve="${esc(item.curveId)}"`:`data-owner-segment="${item.segmentId}"`;
     body+=`<g data-layer="50"><line id="leader-${item.key}" data-role="leader" data-owner-label="${item.key}" ${ownerAttr} data-label="${item.key}" stroke="#555" stroke-width="0.9" fill="none" x1="${r6(item.leader.a[0])}" y1="${r6(item.leader.a[1])}" x2="${r6(item.leader.b[0])}" y2="${r6(item.leader.b[1])}"/></g>`;
   }
   for(const item of placed){
     const box=item.box;
-    const extra=item.role==='point'?` data-point="${esc(item.pointId)}"`:item.role==='line'?` data-line="${esc(item.lineId)}"`:` data-segment="${esc(item.segmentId)}"`;
-    const role=item.role==='point'?'point':item.role==='line'?'line':'measure';
+    const extra=item.role==='point'?` data-point="${esc(item.pointId)}"`:item.role==='line'?` data-line="${esc(item.lineId)}"`:item.role==='curve'?` data-curve-id="${esc(item.curveId)}"`:` data-segment="${esc(item.segmentId)}"`;
+    const role=item.role==='point'?'point':item.role==='line'?'line':item.role==='curve'?'curve':'measure';
     body+=`<g data-layer="90"><g id="${item.key}" data-label-kind="COORDINATE_LABEL" data-label-role="${role}" data-priority="0" data-font-px="${font}" data-owner="ellipse-${item.key}"${extra} data-tex="${esc(item.text)}" data-fragment-sha="${item.fragment.fragmentSha256}" data-box="${r6(box.x)},${r6(box.y)},${r6(box.width)},${r6(box.height)}" transform="translate(${r6(box.x)} ${r6(box.y)})">${item.fragment.svg}</g></g>`;
     lineage.fragmentSha256s[item.key]=item.fragment.fragmentSha256;
   }
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" data-ellipse-figure="${FIGURE_CAPABILITY}" ${model.mode==='CONIC'?`data-conic="${model.conic.kind}"`:`data-major-axis="${model.majorAxis}"`} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="6" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" data-ellipse-figure="${FIGURE_CAPABILITY}" ${model.mode==='CONIC'?`data-conic="${(model.conic?[model.conic]:model.conics).map(one=>one.kind).join('+')}"`:`data-major-axis="${model.majorAxis}"`} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="6" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
   lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
   return {status:'RENDERED',svg,lineage,spec};
 }
