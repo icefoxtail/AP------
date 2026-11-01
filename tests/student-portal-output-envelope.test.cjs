@@ -115,11 +115,20 @@ test('student exact deep links call the Assignment-scoped endpoint while ordinar
   const start = html.indexOf('    async function loadOmrExams(force = false) {');
   const end = html.indexOf('    function getOmrExams()', start);
   assert.ok(start >= 0 && end > start);
+  // loadOmrExams now starts its request through the portal's real request guard, so run that guard too.
+  const guardStart = html.indexOf('    function beginStudentRequest(resource) {');
+  const guardEnd = html.indexOf('    function enterStudentView(', guardStart);
+  assert.ok(guardStart >= 0 && guardEnd > guardStart);
+  const guard = html.slice(guardStart, guardEnd);
   async function requestFor(exactOmrAssignmentId) {
     const calls = [];
     const context = {
       URLSearchParams,
       exactOmrAssignmentId,
+      studentRequestGeneration: 0,
+      studentRequestSequences: Object.create(null),
+      isTeacherPreview: false,
+      readTeacherPreviewToken: () => '',
       omrData: null,
       omrLoadedAssignmentId: null,
       omrIndex: null,
@@ -127,7 +136,7 @@ test('student exact deep links call the Assignment-scoped endpoint while ordinar
       hasPortalReadAccess: () => true,
       apiGet: async (url, token) => { calls.push({ url, token }); return { exams: [] }; },
     };
-    vm.runInNewContext(html.slice(start, end), context);
+    vm.runInNewContext(guard + html.slice(start, end), context);
     await context.loadOmrExams();
     return calls[0];
   }
@@ -151,9 +160,20 @@ test('student app, manifest, service worker, and version endpoint advance togeth
   const sw = fs.readFileSync(require.resolve('../apmath/student/sw.js'), 'utf8');
   const appVersion = html.match(/const STUDENT_APP_VERSION = '([^']+)'/)?.[1];
   const swVersion = sw.match(/const STUDENT_SW_VERSION = '([^']+)'/)?.[1];
-  assert.equal(appVersion, '2026.10.03.3');
+  // The version moves on every portal release, so check that the places the release rule in index.html lists
+  // (app, student-version.json, manifest, sw.js, static ?v=) agree, not a fixed value.
+  const parts = v => String(v).match(/^(\d{4})\.(\d{2})\.(\d{2})\.(\d+)$/)?.slice(1).map(Number);
+  assert.ok(parts(appVersion), `STUDENT_APP_VERSION must look like YYYY.MM.DD.N, got ${appVersion}`);
+  // The assignment-scoped output envelope shipped in 2026.10.03.3; a release older than that would lose it.
+  const floor = parts('2026.10.03.3');
+  const cmp = parts(appVersion).reduce((d, n, i) => d || n - floor[i], 0);
+  assert.ok(cmp >= 0, `student portal version ${appVersion} must not go back before 2026.10.03.3`);
   assert.equal(manifest.version, appVersion);
   assert.equal(version.version, appVersion);
   assert.equal(swVersion, appVersion);
+  assert.match(sw, /const CACHE_NAME = `[^`]*\$\{STUDENT_SW_VERSION\}`/, 'cache name must follow the sw version');
+  const staticVersions = [...html.matchAll(/\?v=(\d{4}\.\d{2}\.\d{2}\.\d+)/g)].map(m => m[1]);
+  assert.ok(staticVersions.length > 0, 'index.html static resources carry a ?v= release version');
+  assert.deepEqual([...new Set(staticVersions)], [appVersion], 'every ?v= release version in index.html equals STUDENT_APP_VERSION');
   assert.match(html, /archive2-output\.js\?v=20261003-student-output-s4-1/);
 });

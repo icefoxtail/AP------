@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>AP Math 오답 제출</title>
     <style>
         :root {
@@ -221,6 +221,11 @@
             .omr-grid { grid-template-columns: repeat(4, 1fr); }
             .student-grid { grid-template-columns: 1fr; }
         }
+    /* 확대 허용(2026-11-01 결정) 후 iOS가 16px 미만 입력칸에 포커스할 때 화면을 자동 확대하는 것을 막는다. 휴대폰 폭에서만. */
+    @media (max-width:767px) {
+      input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]):not([type=button]):not([type=submit]),
+      select, textarea { font-size:16px !important; }
+    }
     </style>
 </head>
 <body>
