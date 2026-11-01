@@ -14,6 +14,7 @@
   const lenF = (v) => fmtN(v) + ' cm';
   const cmTex = (v) => `${fmtN(v)}\\text{ cm}`;
   const numTex = (v) => String(v);
+  const jos = (n, a, b) => ([0, 1, 3, 6, 7, 8].includes(Math.abs(Math.round(n)) % 10) ? a : b); // 받침 있는 숫자(영 일 삼 육 칠 팔 → 이) / 없으면 가
 
   const PARAMS = {
     cnA: P('막대 a', 1, 12, 1, 4, { color: 'sky', format: lenF }),
@@ -103,13 +104,13 @@
     steps: (M) => [
       `세 막대 중 가장 긴 막대를 찾아요. 가장 긴 막대는 $${M.srt[2].n}=${fmtN(M.L)}$ cm예요.`,
       `나머지 두 막대의 길이의 합을 구해요. $${fmtN(M.srt[0].v)}+${fmtN(M.srt[1].v)}=${fmtN(M.sum)}$ (cm)`,
-      `(가장 긴 막대) < (나머지 두 막대의 합)인지 확인해요. $${fmtN(M.L)}${M.ok ? '<' : '\\ge'}${fmtN(M.sum)}$ 이므로 삼각형을 ${M.ok ? '만들 수 있어요' : '만들 수 없어요'}.`
+      `(가장 긴 막대) < (나머지 두 막대의 합)인지 확인해요. $${fmtN(M.L)}${M.ok ? '\\lt ' : '\\ge '}${fmtN(M.sum)}$ 이므로 삼각형을 ${M.ok ? '만들 수 있어요' : '만들 수 없어요'}.`
     ],
     view: (M, C) => ({
       guide: '막대 <b>a, b, c</b>의 길이를 바꾸고 ▶를 눌러 보세요. 가장 긴 막대를 밑변으로 놓고, 나머지 두 막대를 경첩에서 세워요. 두 막대의 끝이 만나면 삼각형이에요.',
       readouts: [rd('가장 긴 막대', `${fmtN(M.L)} cm`, 'amber'), rd('나머지 두 막대의 합', `${fmtN(M.sum)} cm`, M.ok ? 'green' : 'rose'), rd('삼각형', M.ok ? '만들 수 있어요' : '만들 수 없어요', M.ok ? 'green' : 'rose', `${fmtN(M.L)} ${M.ok ? '<' : '≥'} ${fmtN(M.sum)}`, null, true)],
       status: M.ok ? { tone: 'ok', text: '삼각형이 만들어져요' } : { tone: 'warn', text: M.L === M.sum ? '일직선이 돼요 — 삼각형이 아니에요' : '두 막대가 모자라서 닿지 않아요' },
-      formula: `<p>가장 긴 변 $${fmtN(M.L)}$ ${M.ok ? '<' : '$\\ge$'} 나머지 두 변의 합 $${fmtN(M.srt[0].v)}+${fmtN(M.srt[1].v)}=${fmtN(M.sum)}$</p>`,
+      formula: `<p>(가장 긴 변) ${M.ok ? '<' : '≥'} (나머지 두 변의 합)</p><p>$${fmtN(M.L)}${M.ok ? '\\lt ' : '\\ge '}${fmtN(M.srt[0].v)}+${fmtN(M.srt[1].v)}=${fmtN(M.sum)}$</p>`,
       rule: '삼각형이 되려면 (가장 긴 변의 길이) < (나머지 두 변의 길이의 합)',
       notes: notes('합이 가장 긴 변과 <b>같아도</b> 삼각형이 되지 않아요. 두 막대가 일직선으로 놓여요.', '세 변 중 아무 변이나 골라 비교하면 안 돼요. 꼭 <b>가장 긴 변</b>과 나머지 두 변의 합을 비교해요.')
     }),
@@ -191,8 +192,8 @@
       }
     },
     steps: (M) => [
-      `x가 가장 긴 변인 경우와 아닌 경우로 나눠요. (아니라면 ${fmtN(M.mx)}이(가) 가장 긴 변이에요.)`,
-      `① x가 가장 긴 변: 가장 긴 변 < 나머지 두 변의 합이므로 $x<${M.a}+${M.b}=${M.hi}$ ($x\ge ${fmtN(M.mx)}$) ② 아닐 때: $${fmtN(M.mx)}<${fmtN(M.mn)}+x$, 즉 $x>${M.lo}$`,
+      `x가 가장 긴 변인 경우와 아닌 경우로 나눠요. (아니라면 ${fmtN(M.mx)}${jos(M.mx, '이', '가')} 가장 긴 변이에요.)`,
+      `① x가 가장 긴 변: 가장 긴 변 < 나머지 두 변의 합이므로 $x<${M.a}+${M.b}=${M.hi}$ ($x\\ge ${fmtN(M.mx)}$) ② 아닐 때: $${fmtN(M.mx)}<${fmtN(M.mn)}+x$, 즉 $x>${M.lo}$`,
       `두 경우를 합치면 $${M.lo}<x<${M.hi}$예요. 이 범위의 정수 x는 ${M.lo + 1}부터 ${M.hi - 1}까지 $${M.cnt}$개예요.`
     ],
     view: (M, C) => ({

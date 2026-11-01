@@ -39,7 +39,7 @@
 
   /* ====================================================================== 하나로 정해지는 조건 문제 (공용) */
   const triCnt = { // 삼각형이 몇 개 만들어지는가: 1(정해짐), 2(두 개), 0(안 만들어짐), Infinity(정해지지 않음)
-    ssa: (adj, opp, th) => { const d = opp * opp - adj * adj * Math.sin(th * DEG) ** 2; if (d < 0) return 0; const m = adj * Math.cos(th * DEG), r = Math.sqrt(d); return [m - r, m + r].filter((t) => t > 1e-9).length; }
+    ssa: (adj, opp, th) => { const d = opp * opp - adj * adj * Math.sin(th * DEG) ** 2; if (d < 0) return 0; const m = adj * Math.cos(th * DEG), r = d < 1e-9 ? 0 : Math.sqrt(d); return (r === 0 ? [m] : [m - r, m + r]).filter((t) => t > 1e-9).length; }
   };
   const nm = (p, q) => `\\overline{${p}${q}}`;
   const KIND_HINT = {
@@ -311,15 +311,15 @@
         const le = trs.map((t) => -Math.min(...t.map((q) => q.x))), re = trs.map((t) => Math.max(...t.map((q) => q.x)));
         const fx = [le[0]]; for (let i = 1; i < 3; i++) fx.push(fx[i - 1] + re[i - 1] + 0.9 + le[i]);
         const total = fx[2] + re[2], hmax = Math.max(...trs[2].map((q) => -q.y));
-        fit(b, { x0: -Math.max(...le) - 0.4, x1: total + 0.4, y0: -hmax - 0.5, y1: 1.4 }, { t: 26, b: 100 });
+        fit(b, { x0: -Math.max(...le) - 0.4, x1: total + 0.4, y0: -hmax - 0.5, y1: 1.4 }, { t: 26, b: 116 });
         for (let i = 2; i >= 0; i--) {
           const T3 = shiftPts(trs[i], p * fx[i]), big = i === 2 && p > 0.5;
           fillPoly(b, T3, ['green', 'sky', 'amber'][i], 0.08);
           drawTri(b, T3, { color: 'ink', angs: { A: { c: 'sky', rings: 1, r: 22 + i * 6 }, B: { c: 'green', rings: 2, r: 22 + i * 6 }, C: { c: 'rose', rings: 3, r: 22 + i * 4 } } });
           if (p > 0.6) T(b, mid(T3[0], T3[1]), `AB = ${lens[i]}`, { dy: 20, size: 15, color: 'amber' });
         }
-        if (C.txt) T(b, pt((total - 0.4) / 2, 0), `∠A = ${A}°, ∠B = ${B}°, ∠C = ${Cc}° (모두 같아요)`, { dy: 30, size: b.W < 560 ? 14 : 16, color: 'sky' });
-        if (C.txt) T(b, pt((total - 0.4) / 2, 0), p < 0.05 ? '세 각이 같은 삼각형을 겹쳐 놓았어요' : p > 0.95 ? '각이 모두 같아도 크기가 달라요 → 합동이 아니에요' : '가로로 벌려 봐요', { dy: 74, size: b.W < 560 ? 13 : 16, color: p > 0.95 ? 'rose' : 'amber' });
+        if (C.txt) T(b, pt((total - 0.4) / 2, 0), `∠A = ${A}°, ∠B = ${B}°, ∠C = ${Cc}° (모두 같아요)`, { dy: 54, size: b.W < 560 ? 14 : 16, color: 'sky' });
+        if (C.txt) T(b, pt((total - 0.4) / 2, 0), p < 0.05 ? '세 각이 같은 삼각형을 겹쳐 놓았어요' : p > 0.95 ? '각이 모두 같아도 크기가 달라요 → 합동이 아니에요' : '가로로 벌려 봐요', { dy: 84, size: b.W < 560 ? 13 : 16, color: p > 0.95 ? 'rose' : 'amber' });
         return;
       }
       if (mode === 'ssa') {

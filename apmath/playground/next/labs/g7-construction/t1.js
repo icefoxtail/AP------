@@ -374,7 +374,8 @@
     '점 C를 중심으로 반지름이 $\\overline{AB}$인 원을 그려 앞의 원과 만나는 점을 D라 한다.',
     '직선 PD를 긋는다.'
   ];
-  const PRE = [[], [0], [0], [1], [2, 3], [4]]; // 앞서 해야 하는 단계
+  const PRE = [[], [0], [0], [1, 2], [2, 3], [4]]; // 앞서 해야 하는 단계 (㉣ 컴퍼스로 AB 재기는 같은 반지름의 두 원을 모두 그린 뒤에 — 그 전에는 컴퍼스 벌림을 그대로 둬요)
+  const REASON = ['', '직선 PQ가 있어야 PQ와 만나는 점 B를 찾을 수 있어요.', '직선 PQ가 있어야 PQ와 만나는 점 C를 찾을 수 있어요.', '점 Q 중심의 원과 같은 반지름으로 점 P 중심의 원을 그려야 해요. 컴퍼스를 AB의 길이로 바꾸기 전에 두 원을 먼저 그려요. (점 A, B도 있어야 AB를 재요.)', '점 C와 컴퍼스로 잰 AB의 길이가 모두 있어야 해요.', '점 D를 찾은 뒤에야 직선 PD를 그을 수 있어요.'];
   const okOrder = (ord) => ord.every((st, i) => PRE[st].every((q) => ord.indexOf(q) >= 0 && ord.indexOf(q) < i));
   function allOrders() { const out = []; (function rec(cur) { if (cur.length === 6) { out.push(cur.slice()); return; } for (let i = 0; i < 6; i++) if (!cur.includes(i) && PRE[i].every((q) => cur.includes(q))) { cur.push(i); rec(cur); cur.pop(); } })([]); return out; }
   const ORDERS = allOrders();
@@ -415,7 +416,7 @@
       '직선 PQ를 긋는다. (점 P와 직선 l 위의 점 Q를 잇는다.) 모든 작도의 바탕이 돼요.',
       '점 Q를 중심으로 호를 그려 직선 l, PQ와 만나는 점 A, B를 찾는다. 직선 PQ가 있어야 B를 찾을 수 있어요.',
       '점 P를 중심으로 같은 반지름의 호를 그려 직선 PQ와 만나는 점 C를 찾는다. 직선 PQ가 있어야 C를 찾을 수 있어요.',
-      '컴퍼스로 $\\overline{AB}$의 길이를 잰다. 점 A, B가 있어야 재요.',
+      '컴퍼스로 $\\overline{AB}$의 길이를 잰다. 점 A, B가 있고, 같은 반지름의 두 원을 모두 그린 뒤에 해요. (그 전에는 컴퍼스 벌림을 그대로 둬요.)',
       '점 C를 중심으로 반지름이 $\\overline{AB}$인 호를 그려 점 D를 찾는다. 점 C와 $\\overline{AB}$의 길이가 모두 있어야 해요.',
       '직선 PD를 긋는다. 이 직선이 l과 평행해요.'
     ],
@@ -424,7 +425,7 @@
       alert: M.msg ? { tone: 'warn', text: M.msg.text } : null,
       readouts: [rd('한 단계', `${M.ord.length} / 6`, 'green'), rd('지금까지의 순서', M.ord.length ? M.ord.map((i) => KL[M.perm.indexOf(i)]).join(' → ') : '아직 없음', 'sky', '', null, true)],
       rule: '앞의 점·선이 있어야 다음 작도를 할 수 있다',
-      notes: notes('㉡과 ㉢은 서로 어느 쪽을 먼저 해도 되지만, 둘 다 직선 PQ를 먼저 그린 뒤에 해요.', '$\\overline{AB}$를 재는 일은 점 A, B를 찾은 다음, 점 C를 중심으로 호를 그리기 전에 해요.')
+      notes: notes('점 Q 중심의 원과 점 P 중심의 원은 반지름이 같아요. 두 원은 어느 쪽을 먼저 그려도 되지만, 둘 다 직선 PQ를 먼저 그은 뒤에 해요.', '$\\overline{AB}$를 재면 컴퍼스 벌림이 바뀌어요. 그래서 같은 반지름의 두 원을 모두 그린 뒤에 재요.')
     }),
     prob: (M) => {
       const k = M.pk, perm = k.perm || [0, 1, 2, 3, 4, 5];
@@ -432,13 +433,18 @@
       return fallbackProb(perm, k.good, k.bads);
     }
   };
+  function whyBad(o, lt) { // 틀린 순서가 왜 틀렸는지: 처음으로 앞 단계가 모자란 곳
+    for (let i = 0; i < o.length; i++) { const miss = PRE[o[i]].filter((q) => !o.slice(0, i).includes(q)); if (miss.length) return `${lt(o[i])}의 앞에는 ${miss.map(lt).join(', ')}이(가) 먼저 와야 해요. ${REASON[o[i]]}`; }
+    return '작도 순서가 맞지 않아요.';
+  }
   function fallbackProb(perm, good, bads) {
     const lt = (i) => KL[perm.indexOf(i)];
     const seqH = (o) => o.map(lt).join(' → ');
     const list = perm.map((st, i) => `<li><b>${KL[i]}</b>${SNL[st]}</li>`).join('');
-    const items = [{ h: seqH(good), ok: true }].concat(bads.slice(0, 4).map((o) => ({ h: seqH(o), hint: '앞의 일이 끝나기 전에 다음 일을 하는 곳이 있어요. 어떤 점이 먼저 있어야 하는지 생각해 보세요.' })));
-    const key = perm.join('') + good.join('') + bads.map((x) => x.join('')).join('');
-    return { tag: '작도 순서', key, html: `그림은 직선 l 밖의 한 점 P를 지나고 l에 평행한 직선을 작도한 것이다. 다음 ㉠~㉥을 작도 순서에 맞게 나열한 것은?<ol>${list}</ol>`, choices: mkTextChoices(items, key), wide: true };
+    const bad = bads.filter((o) => !okOrder(o)).slice(0, 4); // 보기에는 올바른 순서가 정확히 하나만 들어가도록
+    const items = [{ h: seqH(good), ok: true }].concat(bad.map((o) => ({ h: seqH(o), hint: whyBad(o, lt) })));
+    const key = perm.join('') + good.join('') + bad.map((x) => x.join('')).join('');
+    return { tag: '작도 순서', key, html: `그림은 직선 l 밖의 한 점 P를 지나고 l에 평행한 직선을 작도한 것이다. 다음 ㉠~㉥을 작도 순서에 맞게 나열한 것은? (앞의 점·선이 있어야 다음 작도를 할 수 있고, 컴퍼스의 벌림은 바꾸기 전까지 그대로예요.)<ol>${list}</ol>`, choices: mkTextChoices(items, key), wide: true };
   }
   // 칩: 순서 칩(㉠~㉥)과 처음으로
   orderScene.presets = function (s) {

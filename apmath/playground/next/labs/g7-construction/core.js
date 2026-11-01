@@ -335,6 +335,8 @@
      D = { id, title, short, question, ctl:[조절 값 id…], presets?(s), init(s), reroll(s),
            model(s)→M, draw(b,s,M,C), steps(M)→[글…], view(M,C,s)→{guide,readouts,status?,formula?,rule?,notes?,alert?},
            prob(M,s)→{tag,stem|html,choices,key,note?}, anim?:{key,dur,label,start}, stepT?(n,M) } */
+  // $…$ 안의 < > 는 HTML 로 이스케이프되어 수식 오류가 나므로 \lt \gt 로 바꿉니다.
+  const texSafe = (t) => String(t == null ? t : t).replace(/\$([^$]+)\$/g, (m, x) => '$' + x.replace(/</g, '\\lt ').replace(/>/g, '\\gt ') + '$');
   function makeScene(D) {
     const A = D.anim;
     const actions = A ? () => [
@@ -352,7 +354,7 @@
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
-      steps: (s) => D.steps(D.model(s)).map((t) => String(t).replace(/<\/?b>/g, '')),
+      steps: (s) => D.steps(D.model(s)).map((t) => texSafe(String(t).replace(/<\/?b>/g, ''))),
       notesTitle: '자주 틀리는 부분',
       problem: D.prob ? {
         tag: (s) => D.prob(D.model(s), s).tag,
@@ -382,6 +384,7 @@
         const C = baseCtx(s, lab, false);
         const M = D.model(s);
         const v = D.view(M, C, s) || {};
+        ['formula', 'rule', 'notes', 'guide'].forEach((k) => { if (typeof v[k] === 'string') v[k] = texSafe(v[k]); });
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
         else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
         return v;

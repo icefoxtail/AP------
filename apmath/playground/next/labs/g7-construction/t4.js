@@ -157,7 +157,7 @@
       if ((s.cnOmode || 'order') !== 'order') return md;
       return md.concat(PERMS.map((p, i) => ({ group: i === 0 ? '△ABC ≡ △ 다음 순서는?' : '', label: `△ABC ≡ △${permName(p)}`, color: 'amber', apply: (ss) => { ss.cnOpick = i; }, on: (ss) => ss.cnOpick === i })));
     },
-    init: (s) => { s.cnOmode = 'order'; s.cnOa = 6; s.cnOb = 7; s.cnOc = 8; s.cnOs = 3; s.cnOpick = null; s.cnRw = 6; s.cnRh = 4; s.cnRw2 = 8; s.cnPk = { s: 0, k: 0 }; },
+    init: (s) => { s.cnOmode = 'order'; s.cnOa = 6; s.cnOb = 7; s.cnOc = 8; s.cnOs = 3; s.cnOpick = null; s.cnRw = 6; s.cnRh = 4; s.cnRw2 = 8; s.cnPk = { s: 0, k: 0, f: 0, tt: [0, 1, 2, 3] }; },
     reroll: (s) => { s.cnOs = pick([0, 1, 2, 3, 4, 5], s.cnOs); s.cnOpick = null; s.cnPk = { k: ((s.cnPk && s.cnPk.k) || 0) + 1, t: [0, 1, 2, 3, 4, 5, 6, 7], f: rint(0, 6), tt: shuffle([0, 1, 2, 3, 4, 5, 6, 7, 8], Math.random).slice(0, 4), sg: pick([0, 1, 2, 3, 4, 5], null) }; },
     model: (s) => ({ mode: s.cnOmode || 'order', g: ordGeo(s), pick: s.cnOpick, Rw: s.cnRw, Rh: s.cnRh, Rw2: s.cnRw2, pk: s.cnPk || { k: 0 } }),
     draw(b, s, M, C) {
