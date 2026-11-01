@@ -1,0 +1,115 @@
+{
+ "capability": "solid-figure-v1",
+ "solids": [
+  {
+   "kind": "REGULAR_POLYHEDRON",
+   "faces": 4,
+   "side": 4,
+   "names": "ABCD",
+   "points": [
+    {
+     "id": "N",
+     "at": {
+      "midpoint": [
+       "A",
+       "B"
+      ]
+     }
+    },
+    {
+     "id": "M",
+     "at": {
+      "midpoint": [
+       "C",
+       "D"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "from": "N",
+   "to": "C",
+   "style": "AUTO",
+   "role": "ACCENT"
+  },
+  {
+   "from": "N",
+   "to": "M",
+   "style": "DASHED",
+   "role": "ACCENT"
+  },
+  {
+   "from": "A",
+   "to": "M",
+   "style": "AUTO",
+   "role": "REF"
+  },
+  {
+   "from": "B",
+   "to": "M",
+   "style": "AUTO",
+   "role": "REF"
+  },
+  {
+   "from": "C",
+   "to": "M",
+   "style": "SOLID",
+   "role": "ACCENT"
+  }
+ ],
+ "highlights": [
+  {
+   "polygon": [
+    "A",
+    "B",
+    "M"
+   ]
+  }
+ ],
+ "marks": {
+  "rightAngles": [
+   {
+    "at": "M",
+    "refs": [
+     "C",
+     "N"
+    ]
+   }
+  ],
+  "angles": [
+   {
+    "refs": [
+     "C",
+     "N",
+     "M"
+    ],
+    "arcs": 1,
+    "label": "\\varphi"
+   }
+  ]
+ },
+ "dims": [
+  {
+   "from": "N",
+   "to": "C"
+  },
+  {
+   "from": "N",
+   "to": "M"
+  }
+ ],
+ "caption": "한 모서리의 길이가 4인 정사면체 ABCD에서 AB의 중점 N, CD의 중점 M",
+ "sourceConditions": [
+  "한 모서리의 길이가 4인 정사면체 ABCD",
+  "모서리 CD의 중점 M",
+  "평면 ABM"
+ ],
+ "newVisualInformation": [
+  "AB의 중점 N과 NC, NM의 길이",
+  "두 평면의 이면각 φ",
+  "C의 평면 ABM 위 정사영(M)과 정사영 삼각형 ABM 칠"
+ ]
+}

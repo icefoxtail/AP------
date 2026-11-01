@@ -1586,3 +1586,72 @@ class SlantPartsAndLevelPoints(unittest.TestCase):
         # the line given the other way round is the same
         self.assertEqual(O.slant_part_segment((seg[1], seg[0]), solid, 'top', 0.4), top)
         self.assertIsNone(O.slant_part_segment(seg, O.build_solid({'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'id': 's2'}), 'top', 0.5))
+
+
+class GeneralAuxPoints(unittest.TestCase):
+    """G4a: division point, midpoint, centroid, foot on a line and projection on a plane, re-derived from the plan alone"""
+
+    def cube(self):
+        return O.build_solid({'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 3, 'depth': 3}, 'height': 3, 'names': {'base': 'EFGH', 'top': 'ABCD'}, 'id': 's1'})
+
+    def named(self, solid):
+        return {name: ('s1', None, p) for name, p in solid['verts'] if name}
+
+    def places(self, points, solid=None):
+        solid = solid or self.cube()
+        return O.aux_point_places(points, solid, self.named(solid))
+
+    def rel(self, placed, solid, name, base='E'):
+        origin = next(p for n, p in solid['verts'] if n == base)
+        return O.vsub(placed[name], origin)
+
+    def test_the_cube_of_q11_places_p_and_its_foot_in_3d(self):
+        solid = self.cube()
+        placed = self.places([{'id': 'P', 'at': {'divide': ['D', 'F'], 'ratio': '1:2'}}, {'id': 'Q', 'at': {'footOnLine': {'from': 'P', 'line': ['E', 'F']}}}], solid)
+        for got, want in ((self.rel(placed, solid, 'P'), (1, 2, 2)), (self.rel(placed, solid, 'Q'), (1, 0, 0))):
+            for a, b in zip(got, want): self.assertAlmostEqual(a, b, places=9)
+        self.assertAlmostEqual(O.vlen(O.vsub(placed['P'], placed['Q'])), 2 * math.sqrt(2), places=9)
+
+    def test_midpoint_centroid_and_outside_division(self):
+        solid = self.cube()
+        placed = self.places([{'id': 'M', 'at': {'midpoint': ['E', 'F']}}, {'id': 'N', 'at': {'centroid': ['E', 'F', 'H']}}, {'id': 'R', 'at': {'divide': ['E', 'F'], 'ratio': '2:1', 'external': True}}, {'id': 'S', 'at': {'divide': ['E', 'F'], 'ratio': '1:2', 'external': True}}], solid)
+        for name, want in (('M', (1.5, 0, 0)), ('N', (1, 1, 0)), ('R', (6, 0, 0)), ('S', (-3, 0, 0))):
+            for a, b in zip(self.rel(placed, solid, name), want): self.assertAlmostEqual(a, b, places=9)
+
+    def test_projection_on_a_plane(self):
+        solid = self.cube()
+        placed = self.places([{'id': 'P', 'at': {'divide': ['D', 'F'], 'ratio': '1:2'}}, {'id': 'R', 'at': {'projection': {'from': 'P', 'plane': ['E', 'F', 'G']}}}], solid)
+        for a, b in zip(self.rel(placed, solid, 'R'), (1, 2, 0)): self.assertAlmostEqual(a, b, places=9)
+
+    def test_every_bad_definition_has_its_code(self):
+        cases = (
+            ([{'id': 'P', 'at': {'divide': ['D', 'F'], 'ratio': '1/2'}}], 'SOLID_AUX_POINT_RATIO_INVALID'),
+            ([{'id': 'P', 'at': {'divide': ['D', 'F'], 'ratio': '0:1'}}], 'SOLID_AUX_POINT_RATIO_INVALID'),
+            ([{'id': 'P', 'at': {'divide': ['D', 'F'], 'ratio': '2:2', 'external': True}}], 'SOLID_AUX_POINT_RATIO_INVALID'),
+            ([{'id': 'P', 'at': {'midpoint': ['D', 'Z']}}], 'SOLID_AUX_POINT_UNKNOWN'),
+            ([{'id': 'P', 'at': {'midpoint': ['D', 'K']}}, {'id': 'K', 'at': {'midpoint': ['E', 'F']}}], 'SOLID_AUX_POINT_CYCLE:K'),
+            ([{'id': 'P', 'at': {'midpoint': ['P', 'F']}}], 'SOLID_AUX_POINT_CYCLE:P'),
+            ([{'id': 'P', 'at': {'footOnLine': {'from': 'E', 'line': ['E', 'F']}}}], 'SOLID_AUX_FOOT_DEGENERATE'),
+            ([{'id': 'M', 'at': {'midpoint': ['A', 'B']}}, {'id': 'P', 'at': {'projection': {'from': 'C', 'plane': ['A', 'B', 'M']}}}], 'SOLID_PROJECTION_PLANE_DEGENERATE'),
+            ([{'id': 'P', 'at': {'projection': {'from': 'E', 'plane': ['E', 'F', 'G']}}}], 'SOLID_AUX_FOOT_DEGENERATE'),
+            ([{'id': 'P', 'at': {'midpoint': ['D', 'D']}}], 'SOLID_POINT_AT_INVALID'),
+            ([{'id': 'P', 'at': {'midpoint': ['D', 'F'], 'ratio': '1:2'}}], 'SOLID_POINT_AT_INVALID'),
+            ([{'id': 'MNPQRSTUWXY'[k], 'at': {'midpoint': ['A', 'B']}} for k in range(11)], 'SOLID_AUX_POINT_LIMIT'),
+        )
+        for points, code in cases:
+            with self.assertRaises(ValueError, msg=code) as cm: self.places(points)
+            self.assertTrue(str(cm.exception).startswith(code), (code, str(cm.exception)))
+        # ten are fine
+        self.assertEqual(len(self.places([{'id': 'MNPQRSTUWX'[k], 'at': {'midpoint': ['A', 'B']}} for k in range(10)])), 10)
+
+    def test_the_perpendicularity_checks_catch_a_wrong_point(self):
+        A, B, P = (0.0, 0.0, 0.0), (3.0, 0.0, 0.0), (1.0, 2.0, 2.0)
+        O.check_foot_on_line(P, A, B, (1.0, 0.0, 0.0))
+        for wrong in ((1.5, 0.0, 0.0), (1.0, 0.2, 0.0)):
+            with self.assertRaises(ValueError) as cm: O.check_foot_on_line(P, A, B, wrong)
+            self.assertTrue(str(cm.exception).startswith('SOLID_AUX_FOOT_NOT_PERPENDICULAR'))
+        M = (0.0, 3.0, 0.0)
+        O.check_projection((1.0, 2.0, 2.0), A, B, M, (1.0, 2.0, 0.0))
+        for wrong in ((1.0, 2.0, 0.5), (1.5, 2.0, 0.0)):
+            with self.assertRaises(ValueError) as cm: O.check_projection((1.0, 2.0, 2.0), A, B, M, wrong)
+            self.assertTrue(str(cm.exception).startswith('SOLID_PROJECTION_MISMATCH'))
