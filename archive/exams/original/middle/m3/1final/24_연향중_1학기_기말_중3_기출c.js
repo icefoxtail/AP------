@@ -470,7 +470,7 @@ window.questionBank = [
     "choices": [],
     "answer": "①",
     "solution": "[키포인트] 원래 그래프에서 $a,p$의 부호를 읽는다.\n[풀이] 그림이 아래로 볼록하므로 $a>0$, 꼭짓점 $(-p,0)$이 $y$축 왼쪽이므로 $p>0$. 따라서 $y=ax^2+p$는 아래로 볼록하고 꼭짓점이 $y$축의 양의 부분에 있다. 이에 해당하는 것은 ①이다.",
-    "image": "assets/images/24_연향중_1학기_기말_중3_기출/q14.png",
+    "image": "assets/images/24_연향중_1학기_기말_중3_기출/q14-choice1-corrected.svg",
     "imageSize": "tall",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
