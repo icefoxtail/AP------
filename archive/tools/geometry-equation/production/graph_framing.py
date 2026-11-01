@@ -1410,7 +1410,7 @@ PIECEWISE_POLY_MAX_REQUIRED_POINTS=24
 # Shaded regions between two drawn boundaries (the function, a reference curve, a reference line or the x-axis).
 PIECEWISE_POLY_REGION_FIELDS={'id','upper','lower','from','to','fill','label'}
 PIECEWISE_POLY_MAX_REGIONS=4
-PIECEWISE_POLY_REGION_FILLS=('LIGHT','MEDIUM')
+PIECEWISE_POLY_REGION_FILLS=('LIGHT','MEDIUM','BLUE','WARM','GREEN','ROSE','VIOLET')   # the gray tints and (C1) the colour-group tints of visual_engine/palette.py
 
 def _pp_rational(value,code):
     """An exact rational: a decimal integer, an 'a/b' string, or a JSON integer."""

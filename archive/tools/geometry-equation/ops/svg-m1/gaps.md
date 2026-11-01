@@ -223,6 +223,10 @@
 
 - 구현됨(G11): 좌표 그림 callout(축은 주 프레임에 고정), ANGLE callout `arcScale`·`angleDimension`, `pathLabels` 2차 자리 탐색과 `leader`. 남은 것: 복사본에 좌표 읽기 라벨은 붙이지 않는다(이름만); 2차 자리는 8방향 격자라 매우 좁은 꼭짓점의 일부 경로는 여전히 `PATH_LABEL_NO_ROOM`이고(`anchor`·`side`를 바꾸거나 끌어낸다), `CALLOUT_ANGLE_DIMENSION_NO_ROOM`은 단위 테스트로 강제하지 못했다.
 
+### C1 평면·좌표 그림의 색 구분: 같은 것은 같은 색 (중2, S)
+- 구현됨(C1): 5색 팔레트(`production/palette.mjs` = `visual_engine/palette.py`, 입체 `HIGHLIGHT_FILLS`와 같은 칠·투명도), `regions[].fill`·`graphPlan.regions[].fill`에 색 이름, `planeMarks.equalAreas`(넓이를 경계에서 정확히 계산해 대조), `angles[].color`·`equalAngles`, `segmentColors`, `equalLengths[].color`·`parallels[].color`(선분과 눈금·화살표). 가이드 3-9-색절.
+- 남은 것: `overlays`의 원·사분면·`circleRegions` 칠과 `composite` 패널 사이의 색 일치 검사(패널마다 plan에 쓰고 같은 색 = 같은 대응은 작성자가 지킨다), `parallels.lines`(직선 위 화살표)의 색, 도형 callout 복사본 안의 표식 색, 흑백 인쇄용 무늬(화면이 우선이라 경고만).
+
 ## 참고
 - 원장 OPEN 시험지 14개 중 엔진 대기 사유(E19·E26c·E26d·E28d·E29·E30 등)는 현재 가이드에 해당 필드가 있어 대부분 해결로 본다(재 plan 대상). 진짜 남은 것은 G8(속 빈 원기둥·원뿔대 전개도)과 위 표의 항목이다.
 - 원장 OPEN 중 내용 문제(OPEN_CONTENT 25_왕의중 기말 q19)·원본 그림 없음(26_왕의중 2학기 중간 8문항 등)·#777 골든 SHA 고정(25_매산여고·25_효천고 고1)은 엔진 부족이 아니라 제외했다.

@@ -6,6 +6,9 @@ import math
 import re
 
 REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
+# the colour-group tints (C1): this observer's own copy of the table (fill colour, fill-opacity); tests/test_palette_c1.py ties it to the engine's
+PALETTE_FILLS={'BLUE':('#7fa6e8',0.32),'WARM':('#f2a65a',0.42),'GREEN':('#6fcf97',0.42),'ROSE':('#e98aa8',0.42),'VIOLET':('#a78bdb',0.42)}
+EQUAL_AREA_TOLERANCE=1e-6   # relative: the areas of one equalAreas group, recomputed from the peer points
 VERTEX_TOLERANCE=0.02   # svg px: a drawn region vertex against the peer point
 DRAWN_TOLERANCE=0.6     # svg px: a region edge against the stroke that draws it
 LABEL_GAP=10.0          # svg px: the least room between a region's label and any other label
@@ -172,9 +175,76 @@ def audit_hatch(record,hatch_nodes,order,errors,observations):
     if any(order[id(node)]<order[id(record['node'])] for node in hatch_nodes):errors.append('REGION_HATCH_COVERED_BY_FILL:'+oid)
     observations.append({'id':oid,'type':'REGION_HATCH','strokes':len(spans),'angleDegrees':max(angles)-min(angles)})
 
+def planned_fill(name):
+    """(colour, opacity) a region of this fill name is drawn with: the opaque gray of LIGHT / MEDIUM has no opacity, a palette colour carries its fill-opacity."""
+    if name in PALETTE_FILLS:return PALETTE_FILLS[name]
+    return (REGION_FILLS.get(name,'?'),None)
+
+def drawn_fill(node):
+    try:opacity=None if node.get('fill-opacity') is None else round(float(node.get('fill-opacity')),6)
+    except ValueError:opacity=-1.0
+    return (node.get('fill','').lower(),opacity)
+
+def loop_area(loop):
+    """Signed area of one expanded region loop by Green's theorem (no sampling): a straight edge adds (x1*y2-x2*y1)/2, a circular arc of centre c and radius r
+    with signed sweep f from angle a0 adds (r*(cx*(sin a1-sin a0)-cy*(cos a1-cos a0))+r*r*f)/2, a1=a0+f. Written here from the formula, not from the producer."""
+    total=0.0
+    for edge in loop['edges']:
+        p,q,arc=edge['pa'],edge['pb'],edge['arc']
+        if arc is None:total+=(p[0]*q[1]-q[0]*p[1])/2;continue
+        c=arc['center'];r=norm(sub(p,c));a0=math.atan2(p[1]-c[1],p[0]-c[0])
+        ccw=(math.atan2(q[1]-c[1],q[0]-c[0])-a0)%(2*math.pi)
+        f=ccw if arc['ccw'] else -(2*math.pi-ccw);a1=a0+f
+        total+=(r*(c[0]*(math.sin(a1)-math.sin(a0))-c[1]*(math.cos(a1)-math.cos(a0)))+r*r*f)/2
+    return total
+
+def region_area(row,peer_point):
+    """Area the even-odd fill colours: the shapes' areas minus the holes' areas, from the peer points."""
+    loops=expand_region(row,{pid:peer_point(pid) for pid in peer_ids(row)})
+    shapes=len(row.get('shapes',[]))
+    return sum((1 if index<shapes else -1)*abs(loop_area(loop)) for index,loop in enumerate(loops))
+
+def exact_text(value):
+    """The exact form of an area (SymPy nsimplify, with pi allowed) when one is found, else None."""
+    try:
+        import sympy
+        return str(sympy.nsimplify(value,[sympy.pi],tolerance=1e-9,rational=False))
+    except Exception:return None
+
+def audit_equal_areas(root,marks,peer_point,by_mark,errors,observations):
+    """planeMarks.equalAreas: the regions of a group have the same area (recomputed here from the peer points) and are drawn in one palette colour that no region
+    outside the group uses (read from the final SVG, not from the plan)."""
+    groups=marks.get('equalAreas')
+    if groups is None:return
+    rows={r['id']:r for r in marks.get('regions',[]) if isinstance(r,dict) and 'id' in r}
+    if not isinstance(groups,list) or not groups:errors.append('REGION_EQUAL_AREA_INVALID:equalAreas');return
+    drawn={}
+    for oid in rows:
+        nodes=by_mark.get(('region',oid),[])
+        if len(nodes)==1 and tag(nodes[0])=='path':drawn[oid]=drawn_fill(nodes[0])
+    palette_tints=set(PALETTE_FILLS.values());member_of={}
+    for index,group in enumerate(groups):
+        if not isinstance(group,list) or len(group)<2:errors.append('REGION_EQUAL_AREA_INVALID:equalAreas.'+str(index));continue
+        unknown=[i for i in group if i not in rows]
+        if unknown:errors.append('REGION_EQUAL_AREA_UNKNOWN_REGION:'+str(unknown[0]));continue
+        for oid in group:
+            if oid in member_of:errors.append('REGION_COLOR_GROUP_AMBIGUOUS:'+oid)
+            member_of[oid]=index
+        try:areas=[region_area(rows[oid],peer_point) for oid in group]
+        except (ValueError,KeyError) as error:errors.append(str(error));continue
+        if any(abs(a-areas[0])>EQUAL_AREA_TOLERANCE*max(abs(a),abs(areas[0]),1e-12) for a in areas):errors.append('REGION_EQUAL_AREA_MISMATCH:'+'&'.join(group)+':'+','.join('%.6f'%a for a in areas))
+        fills=[drawn.get(oid) for oid in group]
+        if any(f is None for f in fills) or any(f!=fills[0] for f in fills) or fills[0] not in palette_tints:errors.append('REGION_EQUAL_AREA_COLOR_MISMATCH:'+'&'.join(group))
+        observations.append({'id':'equalAreas.'+str(index),'type':'EQUAL_AREA','regions':list(group),'area':areas[0],'exact':exact_text(areas[0])})
+    for oid,fill in drawn.items():
+        if fill not in palette_tints:continue
+        for other,index in member_of.items():
+            if other!=oid and drawn.get(other)==fill and member_of.get(oid)!=index:errors.append('REGION_COLOR_GROUP_AMBIGUOUS:'+oid+'&'+other)
+
 def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,observations,label_boxes=None,leaders=None,leader_ok=None,strokes=None):
     label_boxes=label_boxes or {}
     rows=marks.get('regions',[])
+    audit_equal_areas(root,marks,peer_point,by_mark,errors,observations)
     if not rows:return
     elements=list(root.iter());order={id(n):i for i,n in enumerate(elements)}
     stroke_lines=[((float(n.get('x1')),float(n.get('y1'))),(float(n.get('x2')),float(n.get('y2')))) for n in elements if tag(n)=='line' and n.get('data-role') in {'line','segment'}]
@@ -194,7 +264,7 @@ def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,obser
         records.append(record)
         try:expected=expand_region(row,{pid:peer_point(pid) for pid in peer_ids(row)})
         except (ValueError,KeyError) as error:errors.append(str(error));continue
-        if node.get('fill','').lower()!=REGION_FILLS.get(row.get('fill','LIGHT'),'?'):errors.append('REGION_FILL_MISMATCH:'+oid)
+        if drawn_fill(node)!=planned_fill(row.get('fill','LIGHT')):errors.append('REGION_FILL_MISMATCH:'+oid)
         if node.get('fill-rule')!='evenodd':errors.append('REGION_FILL_RULE_MISMATCH:'+oid)
         if node.get('stroke') not in (None,'none'):errors.append('REGION_STROKE_PRESENT:'+oid)
         try:drawn=parse_path(node.get('d',''))

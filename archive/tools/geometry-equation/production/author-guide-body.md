@@ -297,7 +297,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
  "facts":[{"kind":"ON_CIRCLE","circle":"k","points":["A","B"]},{"kind":"TANGENT_PERPENDICULAR","center":"O","contact":"A","tangent":"sAT"}]}
 ```
 
-- 각 호 `angles`: `refs`는 [한 변 위의 점, 꼭짓점, 다른 변 위의 점]이고 모두 화면에 나오는 점이다. `value`는 그림의 점들이 실제로 만드는 각이다(허용 오차 0.5°; 틀리면 plan이 아니라 작도를 고친다). `side:"OUTER"`는 큰 쪽(360°-각)이다. `arcs` 1~3은 같은 각이 같은 개수의 호를 갖게 하는 표시이고, `equalGroup`이 같은 각은 크기·`arcs`·`style`이 같아야 하며 모둠마다 `arcs`가 달라야 한다. `ring` 1~3은 꼭짓점에 겹친 호가 있을 때 바깥으로 비키는 정도다. **`emphasisGroup` 1~3**(정수)은 같은 값의 각이 호를 **같은 색**으로 그린다(1 빨강 `#c0392b`, 2 파랑 `#1f5fa8`, 3 초록 `#2e7d32`; 부채꼴 칠은 회색 그대로, 값이 없는 각은 기본 검정): 한 각이 두 관계(동위각 쌍과 맞꼭지각 쌍)에 속할 때 `equalGroup`(호 개수)과 따로 색으로 어느 관계의 호인지 구분한다(`ANGLE_EMPHASIS_GROUP_INVALID`; 관측기는 호의 색을 읽는다: `ANGLE_EMPHASIS_COLOR_MISMATCH`, `ANGLE_EMPHASIS_UNDECLARED`). **기본 모양 `style:"SECTOR"`**: 두 변 사이에 연한 회색(#d9d9d9) 작은 부채꼴을 칠하고 그 바깥 경계(가장 바깥 호)에 호를 그린다(교과서 모양). 칠은 모든 선·점·라벨 아래에 깔리고, 영역 색칠(`regions`, 3-9)의 회색과 구별되는 중성 회색을 쓴다. `style:"ARC"`는 지금까지의 획만 있는 호다. 라벨: `label`(`"40"`, `"x"`, `"2x+10"`은 뒤에 °가 붙는다; `labelKind:"NAME"`이면 `"ABC"`가 ∠ABC), 없으면 `value`를 쓰고, 읽을 값이 없는 쌍의 두 번째 각은 `noLabel:true`. 라벨은 부채꼴 바깥 이등분선 위에 놓이고, 가까운 곳에서 못 놓으면 먼 곳 + 지시선을 쓴다. 직각은 기존 `rightAngles`를 쓴다(직각 사각 표시는 그대로).
+- 각 호 `angles`: `refs`는 [한 변 위의 점, 꼭짓점, 다른 변 위의 점]이고 모두 화면에 나오는 점이다. `value`는 그림의 점들이 실제로 만드는 각이다(허용 오차 0.5°; 틀리면 plan이 아니라 작도를 고친다). `side:"OUTER"`는 큰 쪽(360°-각)이다. `arcs` 1~3은 같은 각이 같은 개수의 호를 갖게 하는 표시이고, `equalGroup`이 같은 각은 크기·`arcs`·`style`이 같아야 하며 모둠마다 `arcs`가 달라야 한다. `ring` 1~3은 꼭짓점에 겹친 호가 있을 때 바깥으로 비키는 정도다. **`emphasisGroup` 1~3**(정수; 같은 크기의 각을 색 묶음으로 칠하려면 3-9-색절의 `equalAngles`·`color`가 더 좋다)은 같은 값의 각이 호를 **같은 색**으로 그린다(1 빨강 `#c0392b`, 2 파랑 `#1f5fa8`, 3 초록 `#2e7d32`; 부채꼴 칠은 회색 그대로, 값이 없는 각은 기본 검정): 한 각이 두 관계(동위각 쌍과 맞꼭지각 쌍)에 속할 때 `equalGroup`(호 개수)과 따로 색으로 어느 관계의 호인지 구분한다(`ANGLE_EMPHASIS_GROUP_INVALID`; 관측기는 호의 색을 읽는다: `ANGLE_EMPHASIS_COLOR_MISMATCH`, `ANGLE_EMPHASIS_UNDECLARED`). **기본 모양 `style:"SECTOR"`**: 두 변 사이에 연한 회색(#d9d9d9) 작은 부채꼴을 칠하고 그 바깥 경계(가장 바깥 호)에 호를 그린다(교과서 모양). 칠은 모든 선·점·라벨 아래에 깔리고, 영역 색칠(`regions`, 3-9)의 회색과 구별되는 중성 회색을 쓴다. `style:"ARC"`는 지금까지의 획만 있는 호다. 라벨: `label`(`"40"`, `"x"`, `"2x+10"`은 뒤에 °가 붙는다; `labelKind:"NAME"`이면 `"ABC"`가 ∠ABC), 없으면 `value`를 쓰고, 읽을 값이 없는 쌍의 두 번째 각은 `noLabel:true`. 라벨은 부채꼴 바깥 이등분선 위에 놓이고, 가까운 곳에서 못 놓으면 먼 곳 + 지시선을 쓴다. 직각은 기존 `rightAngles`를 쓴다(직각 사각 표시는 그대로).
 - `traces`의 **긴 연속 호와 라벨 자리** (E8b): `span:"JOIN"`을 쓰면 교점마다 짧은 호 대신 `through`의 교점을 **모두 지나는 호 하나**(그 교점들을 품는 가장 작은 호에서 양 끝으로 `spanDeg`/2만큼 더 뻗은 반시계 방향 호)를 그린다(교점이 하나면 보통 호와 같다; 교점들과 `spanDeg`이 300° 넘게 벌어지면 `TRACE_JOIN_TOO_WIDE`). `labelAt`은 라벨이 원 둘레 어디에 서는지 정한다: `"START"`(그려진 호의 **반시계 방향 시작 끝**), `"MID"`, `"END"`(다른 끝) 또는 중심에서 본 **방향 각도**(0=오른쪽, 90=위쪽; 숫자). 라벨은 원 바깥에서 그 방향으로 가장 바깥을 향하는 자리부터 찾는다. `labelAt`이 없으면 이전과 같고(긴 연속 호는 가운데) 관측기가 라벨 방향이 말한 자리의 45° 안인지 확인한다(`TRACE_LABEL_NOT_AT_ANCHOR`). 평행선 작도의 ㉠~㉥ 라벨을 문제 그림 자리에 맞출 때 쓴다. `span:"JOIN"`이나 `labelAt`을 쓴 흔적은 그림 프레임이 호 전체와 라벨 자리를 품도록 알아서 넓어지고, 이전 방식(교점마다 짧은 호)은 프레임이 점에만 맞으므로 호가 프레임 밖으로 나가 `GEOMETRY_VIEWPORT_CLIPPING`이면 `span:"JOIN"`으로 바꾸거나 호 가까이에 숨은 점을 하나 더 둔다. `expressionLabels[].labelAt:"START"|"MID"|"END"`는 같은 방식으로 선분 라벨을 선분의 첫 끝(refs 첫 점 쪽)·가운데(기본)·둘째 끝 쪽에 쓴다(`SEGMENT_LABEL_AT_INVALID`, 관측기 `SEGMENT_LABEL_NOT_AT_END`). (E31) 0~1 숫자도 되고(첫 끝에서 그 비율), `START`·`END`·숫자는 선분의 그 부분 안에서 자리를 끝까지 찾는다(`MID`는 선분 전체).
 - **각 라벨 지시선 강제** (E12b): `angles[].labelPlacement:"LEADER"`는 각 안에 자리가 있어도 라벨을 **각 바깥**(부채꼴이 쓸고 지나가는 범위 밖)에 두고 그 각의 가장 바깥 호에서 시작하는 지시선으로 잇는다(기본 `"AUTO"`는 이전과 같다; 라벨이 없는 각에는 쓸 수 없다: `ANGLE_LABEL_PLACEMENT_INVALID`, `ANGLE_LABEL_PLACEMENT_NEEDS_LABEL`). 자리가 없으면 `LAYOUT_INVENTORY_INCOMPLETE`다(`AUTO`로 되돌리거나 캔버스를 키운다). 관측기는 지시선이 있는지(`ANGLE_LABEL_LEADER_MISSING`)와 라벨 상자 전체가 각 바깥인지(`ANGLE_LABEL_NOT_OUTSIDE_ANGLE`)를 최종 SVG에서 확인한다. 같은 꼭짓점에 겹친 각(x, 2x, 3x)은 `ring`(1~3, 호 반지름 순서: 한 단계마다 9px 바깥)으로 호를 겹치지 않게 나누고, 숨은 점으로 반직선을 줄이는 우회는 필요 없다.
 - `dimensions`: **치수선·길이 괄호** (E7). `{id,from,to,label,unit?,labelKind?,side,style?,offset?,value?,factRole?}`는 화면에 나오는 두 점 `from`·`to` 사이의 길이를 도형 **바깥쪽으로 평행 이동한 선**에 쓴다(같은 직선 위에서 겹치는 구간 여러 개도 된다). `side`는 화면 방향 `ABOVE`/`BELOW`/`LEFT`/`RIGHT`다: 두 점을 잇는 선분의 두 수선 중 그 쪽을 더 향하는 쪽에 선다(선분이 그 방향과 거의 수직이면 `DIMENSION_SIDE_AMBIGUOUS`: 가로 선분은 `ABOVE`/`BELOW`, 세로 선분은 `LEFT`/`RIGHT`). `style`은 `BAR`(기본: 두 점에서 나온 얇은 보조선, 치수선, 양 끝의 9px 수직 눈금), `ARROW`(양 끝 화살촉), `BRACE`(점 가까이서 시작해 바깥으로 뾰족한 중괄호). 치수선은 두 점에서 24px 떨어지고 끝은 두 점에서 수선으로 내린 자리이며, `offset` 2~3은 44px씩 더 바깥이다(같은 쪽에 여러 개를 쌓을 때; 라벨이 선 바깥에 서므로 한 줄 라벨이 들어갈 만큼 벌어져 있다). 라벨은 치수선(중괄호는 뾰족한 끝) **바깥쪽 가운데**에 서고 가운데가 막히면 선 길이의 24% 안에서 미끄러진다. `label`은 수식(숫자·문자), `unit:"cm"|"m"|"mm"`는 수식 뒤에 붙는다(`"24\\,cm"`처럼 라벨 끝에 `\\,cm`를 쓰면 숫자 24와 단위 cm으로 읽는다). `labelKind:"TEXT"`는 한글 평문이다. `value`(선택)는 두 점 사이의 실제 거리이고 틀리면 `DIMENSION_FACT_MISMATCH`다(그림이 축척과 다르면 쓰지 않는다). 점은 `displayPoints`에 있어야 하고, 프레임은 치수선과 라벨이 들어가도록 알아서 넓어진다(치수선이 없는 plan의 프레임은 그대로). 거절: `DIMENSION_SIDE_INVALID`, `DIMENSION_STYLE_INVALID`, `DIMENSION_OFFSET_INVALID`, `DIMENSION_LABEL_REQUIRED`, `DIMENSION_POINTS_COINCIDE`, `DIMENSION_TOO_SHORT`(40px 미만), `DIMENSION_FACT_MISMATCH`. 관측기는 최종 SVG에서 치수선의 끝이 두 점의 수선 발과 일치하는지, 거리·방향(`DIMENSION_OFFSET_MISMATCH`, `DIMENSION_SIDE_MISMATCH`, `DIMENSION_END_MISMATCH`), 보조선·눈금·화살촉·중괄호 모양(`DIMENSION_EXTENSION_MISMATCH`, `DIMENSION_TICK_MISMATCH`, `DIMENSION_ARROW_MISMATCH`, `DIMENSION_BRACE_MISMATCH`, `DIMENSION_PART_MISSING`), 라벨이 선 바깥 가운데에 있고 자기 치수선에 가장 가까운지(`DIMENSION_LABEL_NOT_OUTSIDE`, `DIMENSION_LABEL_OFF_CENTER`, `DIMENSION_LABEL_TOO_FAR`, `DIMENSION_LABEL_AMBIGUOUS_OWNER`), 치수선이 다른 획을 가로지르지 않는지(`DIMENSION_CROSSES_STROKE`)를 다시 계산해 확인한다. 한 그림에 치수선이 둘 이상이면 서로 다른 쪽에 두거나 `offset`을 달리한다.
@@ -343,7 +343,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 
 ### 3-9. 영역 색칠: 다각형·부채꼴·활꼴·차집합 (`planeMarks.regions`)
 
-문제 그림에서 **이미 그린 선·호로 둘러싸인 영역을 회색으로 칠하고** 그 넓이를 영역 안에 적어야 할 때 쓴다(넓이 분할, 부채꼴, 띠, 활꼴, 합동 삼각형 강조). `PLANE_FIGURE_v1` plan의 `planeMarks.regions`에 쓴다. 칠하는 영역은 **도형에서 구멍을 뺀 것**으로 쓴다. 도형끼리는 겹칠 수 없고(겹쳐야 하면 구멍으로 뺀다) 구멍은 반드시 어떤 도형 안에 있어야 한다. 색은 `LIGHT`(기본) 또는 `MEDIUM`이고, 칠은 모든 획·라벨 **아래**에 깔린다.
+문제 그림에서 **이미 그린 선·호로 둘러싸인 영역을 회색으로 칠하고** 그 넓이를 영역 안에 적어야 할 때 쓴다(넓이 분할, 부채꼴, 띠, 활꼴, 합동 삼각형 강조). `PLANE_FIGURE_v1` plan의 `planeMarks.regions`에 쓴다. 칠하는 영역은 **도형에서 구멍을 뺀 것**으로 쓴다. 도형끼리는 겹칠 수 없고(겹쳐야 하면 구멍으로 뺀다) 구멍은 반드시 어떤 도형 안에 있어야 한다. 색은 `LIGHT`(기본) 또는 `MEDIUM`(회색)이고, 같은 것끼리 색으로 묶으려면 `BLUE`·`WARM`·`GREEN`·`ROSE`·`VIOLET`도 쓴다(3-9-색절: `equalAreas`, 각·선분 색 묶음). 칠은 모든 획·라벨 **아래**에 깔린다.
 
 ```json
 "regions":[
@@ -370,6 +370,49 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 오류 코드: `REGION_BOUNDARY_UNKNOWN`(모르는 점 또는 그리지 않은 변), `REGION_NOT_CLOSED`, `REGION_SELF_INTERSECTING`, `REGION_LOOPS_CROSS`, `REGION_SHAPES_OVERLAP`, `REGION_HOLE_OUTSIDE`, `REGION_ARC_SIDE_AMBIGUOUS`, `REGION_ARC_ENDPOINT_NOT_ON_CIRCLE`, `REGION_DEGENERATE`, `REGION_DEGENERATE_EDGE`, `REGION_FILL_UNSUPPORTED`, `REGION_FIELD_UNKNOWN`, `REGION_FIELD_INVALID`, `REGION_ID_INVALID`, `REGION_ID_DUPLICATE`, `REGION_REQUIRES_EQUAL_UNITS`.
 - 관측기(`plane_regions_observer.py`, `plane-marks-observer-worker.py`가 호출)는 Cindy 점에서 경계를 **다시 계산해** 최종 SVG의 even-odd `<path>`와 꼭짓점·호 끝점·호 중심·반지름·sweep을 맞춰 보고, 획이 없는지, 모든 변이 실제 획으로 그려졌는지, 칠이 모든 획·라벨 아래인지, 라벨이 영역 안에 있고 다른 라벨과 붙지 않았는지 확인한다(`REGION_VERTEX_MISMATCH`, `REGION_ARC_SIDE_MISMATCH`, `REGION_ARC_RADIUS_MISMATCH`, `REGION_BOUNDARY_NOT_DRAWN`, `REGION_NOT_BENEATH_STROKES`, `REGION_LABEL_OUTSIDE`, `REGION_LABEL_CROWDS_LABEL`, `UNDECLARED_MARK` 등).
 - **한계.** 관측기는 경계의 모양만 보고 **넓이 값 자체는 검산하지 않는다**: `label`의 수치는 원문·해설과 맞는지 사람이 확인한다(색칠이 넓이 계산을 대신하지 않는다). 한 영역은 even-odd path 하나이므로 도형이 겹치면 칠이 상쇄된다(겹침 금지). 같은 점에서 여러 획이 만나는 중심에 점 이름을 두면 자리가 없어 지시선이 붙을 수 있다. 영역 라벨이 들어갈 안쪽 여백이 없으면 `LAYOUT_INVENTORY_INCOMPLETE`로 실패하니 라벨을 줄이거나 값을 밖으로 뺀다.
+
+### 3-9-색. 같은 것은 같은 색으로: 색 묶음 (`fill`·`color`·`equalAreas`·`equalAngles`·`segmentColors`)
+
+해설 그림의 핵심은 "어느 것과 어느 것이 같은가"다(넓이가 같은 두 조각, 합동인 두 삼각형, 크기가 같은 각, 대응하는 변, 같은 길이, 평행). **같은 묶음은 같은 색, 다른 묶음은 다른 색**으로 그리면 학생이 눈으로 짝을 찾는다. 회색 `LIGHT`·`MEDIUM`(영역 칠)과 빨강 선 강조(`emphasis`)는 그대로 있고(색값 불변), 아래 5색은 옵트인으로 더해진다. 입체도형의 강조 색(`solid-figure-v1`의 `HIGHLIGHT_FILLS`)과 같은 칠·투명도다.
+
+| 이름 | 칠(영역·각 부채꼴) | 선(선분·각 호·눈금·화살표) | 
+|---|---|---|
+| `BLUE` | `#7fa6e8` 투명도 0.32 (입체의 `LIGHT` 파랑) | `#1f5fa8` |
+| `WARM` | `#f2a65a` 0.42 | `#b85c00` |
+| `GREEN` | `#6fcf97` 0.42 | `#2e7d32` |
+| `ROSE` | `#e98aa8` 0.42 | `#b8325f` |
+| `VIOLET` | `#a78bdb` 0.42 | `#6b46b3` |
+
+칠은 반투명이라 그 위의 **검정 라벨은 그대로 읽힌다**(라벨 글자는 항상 검정; 색은 칠·선·호에만). 선 색은 흰 배경에서 3:1 이상으로 진하다. 화면에서 또렷한 조합은 `BLUE`와 `WARM`(파랑·주황)이므로 **주로 쓰는 두 묶음은 이 둘**로 하고, 나머지는 세 번째 묶음부터 쓴다. 흑백 인쇄에서의 명도 차는 테스트가 경고만 한다(화면이 우선).
+
+```json
+"planeMarks":{
+ "regions":[
+  {"id":"rBase","fill":"BLUE","shapes":[{"polygon":["A","B","D","P"]}]},
+  {"id":"wA","fill":"WARM","shapes":[{"polygon":["A","P","E"]}]},
+  {"id":"wD","fill":"WARM","shapes":[{"polygon":["D","P","C"]}]}],
+ "equalAreas":[["wA","wD"]],
+ "angles":[{"id":"a1","refs":["A","O","D"],"value":60,"noLabel":true},{"id":"a2","refs":["B","O","C"],"value":60,"noLabel":true}],
+ "equalAngles":[{"angles":["a1","a2"],"color":"GREEN"}],
+ "parallels":[{"id":"p1","count":1,"segments":["sAD","sEC"],"color":"VIOLET"}],
+ "equalLengths":[{"id":"e1","count":1,"segments":["sOA","sOB"],"color":"ROSE"}],
+ "segmentColors":[{"segments":["sAB","sEF"],"color":"BLUE"},{"segments":["sBC","sFG"],"color":"WARM"}]
+}
+```
+
+| 필드 | 뜻 |
+|---|---|
+| `regions[].fill` | `LIGHT`·`MEDIUM`(회색, 기본 `LIGHT`) 또는 위 5색 이름. 그래프의 `graphPlan.regions[].fill`도 같은 이름을 받는다 |
+| `equalAreas:[["w1","w2"],...]` | 같은 넓이인 영역 id 묶음(묶음 3개까지). **넓이가 실제로 같아야** 하고(상대 오차 1e-6, 경계의 점·호로 정확히 계산: 신발끈·부채꼴 공식, 구멍은 뺀다) 묶음 영역은 **같은 팔레트 색**이어야 하며 그 색을 묶음 밖 영역이 쓰면 안 된다 |
+| `angles[].color` | 한 각의 부채꼴 칠과 호 선 색(5색). `emphasisGroup`과 함께 못 쓴다. 평각(`straight`)에는 못 쓴다 |
+| `equalAngles:[{"angles":["a1","a2"],"color":"GREEN"}]` | **크기가 같은 각 모둠 전체**를 한 색으로. 같은 색의 각은 크기가 같아야 한다(0.5°). 기존 `equalGroup`(호 개수)과 함께 써도 된다 |
+| `equalLengths[].color`, `parallels[].color` | 그 모둠의 **선분과 눈금·화살표**가 같은 색이 된다. 같은 길이/평행임은 원래 검사에 더해 색 묶음으로도 다시 확인한다 |
+| `segmentColors:[{"segments":["sAB","sEF"],"color":"BLUE"}]` | 그려진 선분(`displaySegments` id)을 그 색의 진한 선색, 조금 굵게(2.4px) 그린다. 닮음·합동의 **대응변**처럼 길이가 달라도 한 묶음인 것에 쓴다. 같은 선분은 한 묶음에만 들어간다 |
+
+- **권장: 한 색 = 한 관계, 묶음은 2~3개까지.** 색 묶음에는 관계 표식(눈금·호 겹수)도 함께 쓴다(색만으로 구분하지 않는다). 한 그림에서 같은 색을 영역 묶음 둘에, 또는 선분 묶음 둘에 쓰지 않는다. 합성 그림(`composite-panels-v1`)은 패널마다 `segmentColors`를 쓰고 두 패널에서 **같은 색 = 같은 대응**이 되게 한다.
+- 색을 쓰는 선분은 `emphasis`·`dashed`·`arrow`와 같이 쓸 수 없다(색이 강조를 대신한다).
+- 오류 코드: `REGION_FILL_INVALID`(문자가 아닌 fill), `REGION_FILL_UNSUPPORTED`(모르는 색 이름), `REGION_EQUAL_AREA_INVALID`(`equalAreas` 모양), `REGION_EQUAL_AREA_UNKNOWN_REGION`, `REGION_EQUAL_AREA_MISMATCH`(넓이가 다름), `REGION_EQUAL_AREA_COLOR_MISMATCH`(묶음의 색이 다르거나 회색), `REGION_COLOR_GROUP_AMBIGUOUS`(한 색을 두 묶음 또는 묶음 밖 영역에 씀), `ANGLE_COLOR_INVALID`(색 이름·`equalAngles` 모양·`emphasisGroup`과 중복), `ANGLE_COLOR_GROUP_MISMATCH`(같은 색인데 크기가 다른 각, 한 각이 두 모둠에), `ANGLE_COLOR_MISMATCH`(관측기: 호·부채꼴 색이 plan과 다름), `SEGMENT_COLOR_INVALID`, `SEGMENT_COLOR_UNKNOWN_SEGMENT`, `SEGMENT_COLOR_DUPLICATE`, `SEGMENT_COLOR_GROUP_MISMATCH`(같은 색을 두 관계에 씀, 또는 같은 색 모둠의 선분이 실제로 같은 길이·평행이 아님), `SEGMENT_COLOR_MISMATCH`(관측기: 선·눈금 색·굵기가 plan과 다름), `SEGMENT_COLOR_UNDECLARED`(선언하지 않은 선분이 색으로 그려짐).
+- 관측기는 최종 SVG에서 칠 색·투명도(`fill-opacity`)·선 색·굵기를 읽어 plan의 이름과 맞추고, `equalAreas`의 넓이를 Cindy 점에서 **독립 계산**해(정확한 식은 SymPy `nsimplify`로 보고) 같은지, 같은 색 각의 크기와 같은 색 모둠 선분의 길이·평행을 다시 계산해 확인한다.
 
 ### 3-10. 좌표 그림의 각 표시: 축이 있는 작도에 같은 표식 (`SOURCE_COORDINATE_AXES_v1`, `planeMarks`)
 

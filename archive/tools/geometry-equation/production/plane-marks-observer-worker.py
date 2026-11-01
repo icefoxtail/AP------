@@ -7,7 +7,7 @@ import re
 import sys
 import xml.etree.ElementTree as ET
 from worker import read_request,VERSION
-from plane_regions_observer import audit_regions
+from plane_regions_observer import audit_regions,PALETTE_FILLS,drawn_fill
 
 ANGLE_TOLERANCE=0.5          # degrees: a drawn angle against its stated value
 RAY_TOLERANCE=0.05           # degrees: an arc end against the ray it should start on
@@ -21,6 +21,10 @@ EMPHASIS_WIDTH=3.0           # px: an emphasized segment's stroke (the default s
 DEFAULT_STROKE='#111'
 ACCENT_STROKE='#c0392b'      # emphasis ACCENT: the red of a singled-out segment
 ANGLE_GROUP_STROKES={1:'#c0392b',2:'#1f5fa8',3:'#2e7d32'}   # emphasisGroup of an angle: the colour of every arc of the group (red, blue, green)
+
+# colour groups (C1): this observer's own copy of the line colours (the tints come from plane_regions_observer.PALETTE_FILLS); tests/test_palette_c1.py ties both to the engine's table
+PALETTE_LINES={'BLUE':'#1f5fa8','WARM':'#b85c00','GREEN':'#2e7d32','ROSE':'#b8325f','VIOLET':'#6b46b3'}
+COLORED_SEGMENT_WIDTH=2.4    # px: a coloured segment's stroke (the default is 1.6, an emphasized one 3.0)
 
 VECTOR_CALL=re.compile(r'(?<![A-Za-z])vec\(([^()]*)\)')              # (G3) a vector name written in a plan label
 VECTOR_TEX=re.compile(r'\\vec\{[^{}]*\}|\\overrightarrow\{[^{}]*\}')   # (G3) the TeX commands a vector name becomes
@@ -577,6 +581,19 @@ def audit(p):
             if t in {'line','polyline','polygon','circle','path'} and n.get('stroke') not in (None,'none'):return True
             if t=='g' and n.get('data-fragment-sha'):return True
         return False
+    # colour groups of angles (C1): angles[].color and the groups of equalAngles, resolved from the plan alone; angles of one colour must be drawn the same size
+    angle_colors={};angle_ids={r.get('id') for r in marks.get('angles',[]) if isinstance(r,dict)}
+    for index,group in enumerate(marks.get('equalAngles') or []):
+        if not isinstance(group,dict) or group.get('color') not in PALETTE_LINES or not isinstance(group.get('angles'),list) or len(group['angles'])<2:errors.append('ANGLE_COLOR_INVALID:equalAngles.'+str(index));continue
+        for aid in group['angles']:
+            if aid not in angle_ids:errors.append('ANGLE_COLOR_INVALID:'+str(aid))
+            elif aid in angle_colors:errors.append('ANGLE_COLOR_GROUP_MISMATCH:'+aid)
+            else:angle_colors[aid]=group['color']
+    for row in marks.get('angles',[]):
+        if row.get('color') is not None:
+            if row['color'] not in PALETTE_LINES:errors.append('ANGLE_COLOR_INVALID:'+row['id'])
+            elif angle_colors.get(row['id'],row['color'])!=row['color']:errors.append('ANGLE_COLOR_INVALID:'+row['id'])
+            else:angle_colors[row['id']]=row['color']
     for row in marks.get('angles',[]):
         oid=row['id'];nodes=by_mark.get(('angle',oid),[])
         arcs=sorted((n for n in nodes if tag(n)=='polyline'),key=lambda n:int(n.get('data-mark-index','0')))
@@ -644,8 +661,12 @@ def audit(p):
         if row.get('value') is not None and abs(drawn-float(row['value']))>ANGLE_TOLERANCE:errors.append('ANGLE_MARK_FACT_MISMATCH:'+oid+':drawn=%.3f:declared=%s'%(drawn,row['value']))
         if len(radii)>1 and any(r1-r0<=1e-9 for r0,r1 in zip(radii,radii[1:])):errors.append('ANGLE_ARCS_NOT_CONCENTRIC_INCREASING:'+oid)
         # emphasisGroup: every arc of the angle is drawn in its group's colour; an angle without a group keeps the default stroke
-        group=row.get('emphasisGroup')
-        if group is not None and group not in ANGLE_GROUP_STROKES:errors.append('ANGLE_EMPHASIS_GROUP_INVALID:'+oid)
+        group=row.get('emphasisGroup');color=angle_colors.get(oid)
+        if color is not None:
+            if group is not None:errors.append('ANGLE_COLOR_INVALID:'+oid)
+            for n in arcs:
+                if str(n.get('stroke') or '').lower()!=PALETTE_LINES[color]:errors.append('ANGLE_COLOR_MISMATCH:'+oid);break
+        elif group is not None and group not in ANGLE_GROUP_STROKES:errors.append('ANGLE_EMPHASIS_GROUP_INVALID:'+oid)
         else:
             want=ANGLE_GROUP_STROKES[group] if group is not None else DEFAULT_STROKE
             for n in arcs:
@@ -653,7 +674,9 @@ def audit(p):
         if sectors:
             node=sectors[0]
             if node.get('stroke') not in (None,'none'):errors.append('ANGLE_SECTOR_STROKE_PRESENT:'+oid)
-            if str(node.get('fill','')).lower()!=SECTOR_FILL:errors.append('ANGLE_SECTOR_FILL_MISMATCH:'+oid)
+            if color is not None:
+                if drawn_fill(node)!=PALETTE_FILLS[color]:errors.append('ANGLE_COLOR_MISMATCH:'+oid+':sector')
+            elif str(node.get('fill','')).lower()!=SECTOR_FILL or node.get('fill-opacity') is not None:errors.append('ANGLE_SECTOR_FILL_MISMATCH:'+oid)
             wedge=poly_model(node)
             if len(wedge)<3:errors.append('ANGLE_SECTOR_MISSING:'+oid)
             else:
@@ -668,7 +691,12 @@ def audit(p):
                 if signed!=0 and total*signed<=0:errors.append('ANGLE_SECTOR_SIDE_MISMATCH:'+oid)
                 if stroke_before(node):errors.append('ANGLE_SECTOR_NOT_BENEATH_STROKES:'+oid)
                 observations.append({'id':oid+'-sector','type':'ANGLE_SECTOR','drawnDegrees':abs(total),'radius':mean,'atVertex':bool(norm(sub(wedge[0],v))*sx<=SECTOR_TOLERANCE)})
-        drawn_angles[oid]=drawn;observations.append({'id':oid,'type':'ANGLE','drawnDegrees':drawn,'pointsDegrees':expected,'arcs':len(arcs),'style':style})
+        drawn_angles[oid]=drawn
+        if color is not None:
+            # the same colour means the same size: against the first angle of this colour, drawn and from the peer points
+            earlier=[(other,drawn_angles[other]) for other in drawn_angles if other!=oid and angle_colors.get(other)==color]
+            if earlier and abs(earlier[0][1]-drawn)>ANGLE_TOLERANCE:errors.append('ANGLE_COLOR_GROUP_MISMATCH:'+earlier[0][0]+'&'+oid+':'+color+':%.3f!=%.3f'%(earlier[0][1],drawn))
+        observations.append({'id':oid,'type':'ANGLE','drawnDegrees':drawn,'pointsDegrees':expected,'arcs':len(arcs),'style':style})
         if row.get('noLabel') is not True and (row.get('label') is not None or row.get('value') is not None):
             box=label_clear(oid+'-label')
             if box is not None:
@@ -1375,18 +1403,64 @@ def audit(p):
             d=sub(b,a)
             if norm(d)>1e-9 and all(abs((q[0]-a[0])*d[1]-(q[1]-a[1])*d[0])/norm(d)<=0.5 for q in ends):return True
         return False
+    # colour groups of segments (C1): segmentColors rows and the `color` of equalLengths / parallels rows, resolved from the plan alone
+    segment_colors={};color_owner={};peer_segments={sg['id']:sg for sg in p.get('segments',[])}
+    def claim_color(color,source):
+        if color not in PALETTE_LINES:errors.append('SEGMENT_COLOR_INVALID:'+source);return False
+        if color_owner.setdefault(color,source)!=source:errors.append('SEGMENT_COLOR_GROUP_MISMATCH:'+color+':'+color_owner[color]+'&'+source);return False
+        return True
+    def claim_segment(sid,color):
+        if sid not in peer_segments:errors.append('SEGMENT_COLOR_UNKNOWN_SEGMENT:'+str(sid))
+        elif sid in segment_colors:errors.append('SEGMENT_COLOR_DUPLICATE:'+sid)
+        else:segment_colors[sid]=color
+    for index,row in enumerate(marks.get('segmentColors') or []):
+        if not isinstance(row,dict) or not isinstance(row.get('segments'),list):errors.append('SEGMENT_COLOR_INVALID:segmentColors.'+str(index));continue
+        if claim_color(row.get('color'),'segmentColors.'+str(index)):
+            for sid in row['segments']:claim_segment(sid,row['color'])
+    for field,kind in (('equalLengths','equal'),('parallels','parallel')):
+        for row in marks.get(field,[]):
+            if row.get('color') is None:continue
+            if not isinstance(row.get('segments'),list) or not claim_color(row['color'],field+'.'+row['id']):errors.append('SEGMENT_COLOR_INVALID:'+row['id']);continue
+            entries=[[entry] if isinstance(entry,str) else list(entry.get('path') or []) for entry in row['segments']]
+            for ids in entries:
+                for sid in ids:claim_segment(sid,row['color'])
+            # the segments (or paths) of one colour group are really equal in length / parallel, recomputed from the peer points
+            try:
+                if kind=='equal':
+                    totals=[sum(norm(sub(peer_point(peer_segments[sid]['refs'][1]),peer_point(peer_segments[sid]['refs'][0]))) for sid in ids) for ids in entries]
+                    if any(abs(t-totals[0])>LENGTH_RELATIVE*max(1.0,totals[0]) for t in totals):errors.append('SEGMENT_COLOR_GROUP_MISMATCH:'+row['id']+':lengths')
+                else:
+                    dirs=[]
+                    for ids in entries:
+                        a0,b0=peer_point(peer_segments[ids[0]]['refs'][0]),peer_point(peer_segments[ids[0]]['refs'][1]);d=sub(b0,a0);dirs.append((d[0]/norm(d),d[1]/norm(d)))
+                    if any(abs(u[0]*dirs[0][1]-u[1]*dirs[0][0])>math.sin(math.radians(ANGLE_TOLERANCE)) for u in dirs):errors.append('SEGMENT_COLOR_GROUP_MISMATCH:'+row['id']+':directions')
+            except (KeyError,IndexError,ZeroDivisionError):pass   # an unknown segment is reported above
+            # the ticks / arrows of the group wear the group's line colour; those of a group without a colour never wear a palette colour
+        for row in marks.get(field,[]):
+            nodes=by_mark.get((kind,row['id']),[])+by_mark.get(('equal-bracket',row['id']),[])
+            want=PALETTE_LINES.get(row.get('color')) if row.get('color') is not None else None
+            for n in nodes:
+                stroke=str(n.get('stroke') or '').lower()
+                if want is not None and stroke!=want:errors.append('SEGMENT_COLOR_MISMATCH:'+row['id']+':mark');break
+                if want is None and stroke in PALETTE_LINES.values():errors.append('SEGMENT_COLOR_MISMATCH:'+row['id']+':mark undeclared');break
     for s in p.get('segments',[]):
         node=elements.get(s['id'])
         if node is None:continue
         try:width=float(node.get('stroke-width'))
         except (TypeError,ValueError):width=0.0
         stroke=str(node.get('stroke') or '').lower();emphasis=s.get('emphasis')
-        if emphasis in ('BOLD','ACCENT'):
+        wanted=segment_colors.get(s['id'])
+        if wanted is not None:
+            # a coloured segment: the palette's line colour, a little heavier than a plain one, and none of the other segment styles
+            if emphasis is not None or s.get('dashed') or s.get('arrow'):errors.append('SEGMENT_COLOR_INVALID:'+s['id'])
+            if stroke!=PALETTE_LINES[wanted] or width<COLORED_SEGMENT_WIDTH-0.05:errors.append('SEGMENT_COLOR_MISMATCH:'+s['id'])
+            observations.append({'id':s['id'],'type':'SEGMENT_COLOR','color':wanted,'strokeWidth':width,'stroke':stroke})
+        elif emphasis in ('BOLD','ACCENT'):
             if width<EMPHASIS_WIDTH:errors.append('SEGMENT_EMPHASIS_MISSING:'+s['id'])
             if stroke!=(ACCENT_STROKE if emphasis=='ACCENT' else DEFAULT_STROKE):errors.append('SEGMENT_EMPHASIS_COLOR_MISMATCH:'+s['id'])
             observations.append({'id':s['id'],'type':'SEGMENT_EMPHASIS','emphasis':emphasis,'strokeWidth':width,'stroke':stroke})
         elif emphasis is not None:errors.append('SEGMENT_EMPHASIS_INVALID:'+s['id'])
-        elif stroke!=DEFAULT_STROKE or (width>=EMPHASIS_WIDTH and not lies_on_drawn_line(node)):errors.append('SEGMENT_EMPHASIS_UNDECLARED:'+s['id'])
+        elif stroke!=DEFAULT_STROKE or (width>=EMPHASIS_WIDTH and not lies_on_drawn_line(node)):errors.append(('SEGMENT_COLOR_UNDECLARED:' if stroke in PALETTE_LINES.values() else 'SEGMENT_EMPHASIS_UNDECLARED:')+s['id'])
 
     vector_rows=[r for r in (marks.get('vectors') or []) if isinstance(r,dict)];op_rows=[r for r in (marks.get('vectorOps') or []) if isinstance(r,dict)]
     by_vector={};arrows=[]
