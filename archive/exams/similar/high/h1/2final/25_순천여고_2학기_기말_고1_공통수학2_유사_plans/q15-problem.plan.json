@@ -1,0 +1,107 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "224/9",
+      "0"
+    ],
+    "denominator": [
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      13
+    ],
+    "viewport": [
+      -1,
+      13,
+      -1,
+      10.5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formulaLabel": "y=k/x",
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "-1",
+          "intercept": "12"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "curveX": "8/3"
+        },
+        {
+          "id": "Q",
+          "curveX": "28/3"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "O",
+            "P",
+            "Q"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "displayWindow": [
+      -1,
+      13,
+      -1,
+      10.5
+    ]
+  },
+  "pointNames": {
+    "P": "P",
+    "Q": "Q",
+    "O": "O"
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "반비례 곡선 y=k/x가 직선 y=-x+12와 두 점 P, Q에서 만나고, 원점 O와 P, Q를 꼭짓점으로 하는 삼각형 OPQ가 색칠되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "유리함수 y=k/x (k>0)의 그래프가 직선 y=-x+12와 두 점 P, Q에서 만난다.",
+      "mappedTo": [
+        "graphPlan.overlays.lines",
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "삼각형 OPQ에서 O는 원점이다.",
+      "mappedTo": [
+        "graphPlan.overlays.polygons"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "곡선과 직선의 두 교점 P, Q의 위치와 삼각형 OPQ를 한눈에 보여 준다."
+  ],
+  "sourceQuote": "직선 $y=-x+12$와 두 점 $P, Q$에서 만난다",
+  "assetPath": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사/q15.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사_plans/engine_evidence/q15-problem-result.json",
+    "statePath": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사_plans/engine_evidence/q15-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사_plans/engine_evidence/q15-problem.svg"
+  }
+}
