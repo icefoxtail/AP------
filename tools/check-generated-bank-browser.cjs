@@ -2,6 +2,24 @@
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),http=require('node:http');
 const {spawn}=require('node:child_process');
 const repoRoot=path.resolve(__dirname,'..'),sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const imageMime={'.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.gif':'image/gif','.svg':'image/svg+xml'};
+// The staged Pages package carries no exam images (they live on Cloudflare R2, https://img.wangjiedu.com/exams/images/<key>).
+// This smoke runs on 127.0.0.1, which the bucket's CORS does not allow, so those requests are answered from the repository's
+// archive/assets/images and counted. The staged site itself answers 404 for any same-origin image request (the page's same-origin
+// fallback therefore cannot hide a missing R2 image).
+const examImageRequests=[];
+function answerExamImageRequest(requestUrl){
+  let status=404,body=Buffer.from('Not Found'),contentType='text/plain';
+  try{
+    const url=new URL(requestUrl),prefix='/exams/images/',imageRoot=path.join(repoRoot,'archive','assets','images');
+    if(url.origin==='https://img.wangjiedu.com'&&url.pathname.startsWith(prefix)){
+      const key=decodeURIComponent(url.pathname.slice(prefix.length)),file=path.resolve(imageRoot,...key.split('/')),rel=path.relative(imageRoot,file);
+      examImageRequests.push(key);
+      if(rel&&!rel.startsWith('..')&&!path.isAbsolute(rel)&&fs.existsSync(file)&&fs.statSync(file).isFile()){status=200;body=fs.readFileSync(file);contentType=imageMime[path.extname(file).toLowerCase()]||'application/octet-stream';}
+    }
+  }catch{}
+  return {status,body,contentType};
+}
 async function main(){
   const root=path.resolve(process.env.ARCHIVE_PAGES_SITE_ROOT||repoRoot);
   const basePath=process.env.ARCHIVE_PAGES_BASE_PATH||'/';
@@ -25,7 +43,7 @@ async function main(){
   const browser=spawn(chrome,['--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage',
     '--no-first-run','--disable-background-networking','--remote-allow-origins=*',
     '--remote-debugging-port=0','--user-data-dir='+temp,'about:blank'],{stdio:'ignore'});
-  let ws;
+  let ws,browserWs;
   try{
     let port=0;
     for(let k=0;k<100;k++){
@@ -54,6 +72,28 @@ async function main(){
       return r.result.value;
     };
     await send('Runtime.enable');await send('Page.enable');
+    if(process.env.ARCHIVE_PAGES_SITE_ROOT){
+      // Staged site: answer img.wangjiedu.com for the page AND for every window it opens (the Mixer print popup renders the exam images).
+      const fulfill=(socket,sessionId,params)=>{
+        const r=answerExamImageRequest(params.request.url);
+        socket.send(JSON.stringify({id:++id,method:'Fetch.fulfillRequest',...(sessionId?{sessionId}:{}),params:{requestId:params.requestId,responseCode:r.status,body:r.body.toString('base64'),responseHeaders:[{name:'Content-Type',value:r.contentType},{name:'Access-Control-Allow-Origin',value:'*'},{name:'Cache-Control',value:'no-store'}]}}));
+      };
+      ws.addEventListener('message',ev=>{const d=JSON.parse(ev.data);if(d.method==='Fetch.requestPaused'&&!d.sessionId)fulfill(ws,'',d.params);});
+      await send('Fetch.enable',{patterns:[{urlPattern:'https://img.wangjiedu.com/*'}]});
+      const version=await(await fetch('http://127.0.0.1:'+port+'/json/version')).json();
+      browserWs=new WebSocket(version.webSocketDebuggerUrl);
+      await new Promise((resolve,reject)=>{browserWs.addEventListener('open',resolve,{once:true});browserWs.addEventListener('error',reject,{once:true});});
+      browserWs.addEventListener('message',ev=>{
+        const d=JSON.parse(ev.data);
+        if(d.method==='Fetch.requestPaused'&&d.sessionId)fulfill(browserWs,d.sessionId,d.params);
+        if(d.method==='Target.attachedToTarget'&&d.params.targetInfo.targetId!==target.id){
+          const sessionId=d.params.sessionId;
+          if(['page','iframe'].includes(d.params.targetInfo.type))browserWs.send(JSON.stringify({id:++id,method:'Fetch.enable',sessionId,params:{patterns:[{urlPattern:'https://img.wangjiedu.com/*'}]}}));
+          browserWs.send(JSON.stringify({id:++id,method:'Runtime.runIfWaitingForDebugger',sessionId,params:{}}));
+        }
+      });
+      browserWs.send(JSON.stringify({id:++id,method:'Target.setAutoAttach',params:{autoAttach:true,waitForDebuggerOnStart:true,flatten:true}}));
+    }
     if(process.env.ARCHIVE_PAGES_SITE_ROOT){
       await send('Page.addScriptToEvaluateOnNewDocument',{source:`(()=>{const nativeFetch=window.fetch.bind(window);window.fetch=(input,init={})=>{const request=input instanceof Request?input:null;const url=new URL(request?.url||String(input),location.href);const method=String(init.method||request?.method||'GET').toUpperCase();if(url.hostname.includes('workers.dev')||url.pathname.includes('/api/')){if(method!=='GET'&&method!=='HEAD')return Promise.reject(new Error('Pages smoke blocked a non-read-only API request'));return Promise.resolve(new Response(JSON.stringify({success:true,data:[],students:[],assignments:[],records:[]}),{status:200,headers:{'Content-Type':'application/json'}}));}return nativeFetch(input,init);};window.print=()=>{window.__pagesSmokePrintCount=(window.__pagesSmokePrintCount||0)+1;};})();`});
     }
@@ -128,14 +168,18 @@ async function main(){
     if(q11.count!==9||q11.rpm!==3||q11.ext!==6||!q11.valid)throw Error('B02 q11 semantic Chrome verification '+JSON.stringify(q11));
     const q22=await ev("(async()=>{const items=rows.filter(r=>r.uid.startsWith('ALITE-BSG26-B05R2-Q22-'));const questions=await Promise.all(items.map(questionFor));return {count:items.length,subjective:questions.filter(q=>q.choices.length===0).length,valid:questions.every(q=>q.content&&q.answer&&q.solution),meta:items.every(r=>r.rpmRecordId)}})()");
     if(q22.count!==10||q22.subjective!==10||!q22.valid||!q22.meta)throw Error('B05 q22 10 subjective student lookup failed '+JSON.stringify(q22));
-    const b06=await ev("(async()=>{const b=rows.filter(r=>r.uid.startsWith('ALITE-BSG26-B06-'));const questions=await Promise.all(b.map(r=>questionFor(r)));const sources=[...new Set(questions.map(q=>q.image))];const graphics=await Promise.all(sources.map(src=>new Promise(resolve=>{const img=new Image();img.onload=()=>resolve({src,valid:img.naturalWidth>0,w:img.naturalWidth,h:img.naturalHeight});img.onerror=()=>resolve({src,valid:false});img.src=new URL(src,location.href).href;})));return {registered:b.length,objective:questions.filter(q=>q.choices.length===5).length,subjective:questions.filter(q=>q.choices.length===0).length,imageCount:sources.length,images:graphics,remainingMarkdown:questions.filter(q=>q.content.includes('**')).length,s01:questions.find(q=>q.uid.endsWith('B06-Q19-S01'))?.answer,s15:questions.find(q=>q.uid.endsWith('B06-Q19-S15'))?.answer}})()");
+    // Staged site: load each figure the way the page does (generated-bank.html passes q.image through resolveExamImageUrl), i.e. from R2.
+    const imageUrlExpression=process.env.ARCHIVE_PAGES_SITE_ROOT?'(window.resolveExamImageUrl?resolveExamImageUrl(src):src)':'src';
+    const b06=await ev("(async()=>{const b=rows.filter(r=>r.uid.startsWith('ALITE-BSG26-B06-'));const questions=await Promise.all(b.map(r=>questionFor(r)));const sources=[...new Set(questions.map(q=>q.image))];const graphics=await Promise.all(sources.map(src=>new Promise(resolve=>{const img=new Image();img.onload=()=>resolve({src,valid:img.naturalWidth>0,w:img.naturalWidth,h:img.naturalHeight});img.onerror=()=>resolve({src,valid:false});img.src=new URL("+imageUrlExpression+",location.href).href;})));return {registered:b.length,objective:questions.filter(q=>q.choices.length===5).length,subjective:questions.filter(q=>q.choices.length===0).length,imageCount:sources.length,images:graphics,remainingMarkdown:questions.filter(q=>q.content.includes('**')).length,s01:questions.find(q=>q.uid.endsWith('B06-Q19-S01'))?.answer,s15:questions.find(q=>q.uid.endsWith('B06-Q19-S15'))?.answer}})()");
     if(b06.registered!==25||b06.objective!==23||b06.subjective!==2||b06.imageCount!==9||b06.remainingMarkdown||b06.s01!=='⑤'||b06.s15!=='④'||b06.images.some(x=>!x.valid))throw Error('B06 real SVG and original-pixel wrapper load mismatch '+JSON.stringify(b06));
 
     const table=await ev("(async()=>{const row=rows.find(x=>x.uid==='ALITE-BSG26-B04R2-Q23-S01');const q=await questionFor(row);const root=document.createElement('section');questionMarkup(root,q,row,true);return {table:root.querySelectorAll('table.question-table').length,rows:root.querySelectorAll('tr').length,noRaw:!root.textContent.includes('<table'),answer:root.textContent.includes('정답:')};})()");
     if(table.table!==1||table.rows!==3||!table.noRaw||!table.answer)throw Error('HTML table/subjective regression '+JSON.stringify(table));
-    console.log('GENERATED_BANK_REAL_CHROME_SMOKE_PASS '+JSON.stringify({screen:'source-filters-purpose-difficulty-preview-lock-replace-print',bokseongPrinted:22,hyocheonPrinted:hyoCount,registered:source.total,bokseongAvailable:source.bok,hyocheonAvailable:source.hyo,palmaAvailable:source.palma,palmaNewLookupVerified:palmaQid9.count,mainSourceAvailableIndependentOfReview:true,tableSubjective:true,...(process.env.ARCHIVE_PAGES_SITE_ROOT?{siteRoot:root,basePath,apiMode:'in-memory GET fixtures; non-read-only methods rejected',liveApiIntegration:false}: {})}));
+    if(process.env.ARCHIVE_PAGES_SITE_ROOT&&!examImageRequests.length)throw Error('Exam figures rendered but none was requested from img.wangjiedu.com (exam images are served from R2)');
+    console.log('GENERATED_BANK_REAL_CHROME_SMOKE_PASS '+JSON.stringify({screen:'source-filters-purpose-difficulty-preview-lock-replace-print',bokseongPrinted:22,hyocheonPrinted:hyoCount,registered:source.total,bokseongAvailable:source.bok,hyocheonAvailable:source.hyo,palmaAvailable:source.palma,palmaNewLookupVerified:palmaQid9.count,mainSourceAvailableIndependentOfReview:true,tableSubjective:true,...(process.env.ARCHIVE_PAGES_SITE_ROOT?{siteRoot:root,basePath,examImageRequestsFromR2:examImageRequests.length,apiMode:'in-memory GET fixtures; non-read-only methods rejected',liveApiIntegration:false}: {})}));
   }finally{
     if(ws)ws.close();
+    if(browserWs)browserWs.close();
     browser.kill('SIGTERM');
     await new Promise(r=>server.close(r));
     try{fs.rmSync(temp,{recursive:true,force:true});}catch(e){}
