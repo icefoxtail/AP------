@@ -175,7 +175,7 @@ function createArchiveScreenRuntime() {
         idleHandleIsIdleCallback = false;
     }
     function prewarmEligible(candidate) {
-        if (!candidate || candidate.source?.sourceKind === 'review-snapshot' || candidate.qrState?.renderSubmit || candidate.qrState?.renderSolution) return false;
+        if (!candidate || candidate.source?.sourceKind === 'review-snapshot' || candidate.qrState?.renderSubmit || candidate.qrState?.renderSubmitQr || candidate.qrState?.renderSolution) return false;
         const params = new URL(candidate.environment.url).searchParams;
         return params.get('prewarm') !== '0'
             && params.get('snapshotCache') !== '0'
@@ -183,6 +183,7 @@ function createArchiveScreenRuntime() {
             && params.get('reviewBridge') !== '1'
             && params.get('preview') !== '1'
             && params.get('submitQr') !== '1'
+            && params.get('showSubmitQr') !== '1'
             && params.get('solQr') !== '1'
             && params.get('renderAuthorityDualRun') !== '1'
             && params.get('layoutPlanner') !== 'observed'
@@ -283,7 +284,7 @@ function createArchiveScreenRuntime() {
         cancelPrewarm(event?.type || 'user-input');
         if (candidate && prewarmEligible(candidate)) schedulePrewarm({ candidate });
     }
-    const initialFingerprints = Object.freeze({ engine: 'archive-solution-upgrade-20261010.4', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: 'measured-production-v1-20260914.1', executor: 'solution-layout-roster-20261010.2', pageLayout: 'engine-fullwidth-aware-20261010.2', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v1' });
+    const initialFingerprints = Object.freeze({ engine: 'archive-solution-upgrade-20261010.4', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: 'measured-production-v1-20260914.1', executor: 'solution-layout-roster-20261010.2', pageLayout: 'engine-fullwidth-aware-20261010.2', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v2' });
 
     async function waitForArchiveFonts() {
         if (!document.fonts?.ready) return;
@@ -349,8 +350,8 @@ function createArchiveScreenRuntime() {
         if (intent.type === 'QR_CHANGE') {
             for (const [key, value] of Object.entries(payload.qrState || {})) {
                 if (!['submit', 'sol'].includes(key)) throw new Error('INVALID_QR_STATE');
-                url.searchParams.set(key === 'submit' ? 'submitQr' : 'solQr', value ? '1' : '0');
-                if (key === 'submit') url.searchParams.delete('osqr');
+                // 2026-11-01: 제출 QR 표시는 showSubmitQr(선생님 선택). submitQr는 반 출제 등록 신호라 건드리지 않는다.
+                url.searchParams.set(key === 'submit' ? 'showSubmitQr' : 'solQr', value ? '1' : '0');
             }
         }
         if (intent.type === 'PROFILE_CHANGE') next.profile = { ...base.profile, ...payload.profile };
@@ -456,21 +457,22 @@ function createArchiveScreenRuntime() {
         const url = new URL(input.url), p = url.searchParams;
         const preview = p.get('preview') === '1';
         const submit = p.get('submitQr') === '1' || (p.get('submitQr') !== '0' && p.get('osqr') === '1');
+        const showSubmitQr = p.get('showSubmitQr') === '1';
         const sol = p.get('solQr') === '1';
         const solution = p.get('portalQr')==='1'?new URL('../apmath/student/index.html',url):new URL(url);
         if(p.get('portalQr')==='1'){solution.searchParams.set('omr','1');if(p.get('assignmentId'))solution.searchParams.set('assignment_id',p.get('assignmentId'));}
         else{solution.searchParams.set('mode', 'sol'); solution.searchParams.set('qr', '1');}
         const hasClass = !!p.get('class');
-        const target = new URL(hasClass ? '../check/' : '../apmath/student/', url);
-        if (!hasClass) target.searchParams.set('omr', '1');
-        else for (const key of ['class', 'teacher', 'className']) if (p.get(key)) target.searchParams.set(key, p.get(key));
+        // 2026-11-01 사용자 결정: 제출 QR은 항상 학생 포털(OMR 목록)로 간다. 옛 ../check/ 는 쓰지 않는다.
+        const target = new URL('../apmath/student/', url);
+        target.searchParams.set('omr', '1');
         const today = new Date();
         const date = p.get('date') || `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
         target.searchParams.set('exam', source.identityTitle || '시험지');
         target.searchParams.set('date', date);
         target.searchParams.set('q', p.get('q') || source.canonicalRenderData.length);
         if (p.get('data')) target.searchParams.set('archiveFile', p.get('data'));
-        return N.copy({ submit, sol, preview, hasClass, renderSubmit: submit && !preview && input.mode === 'exam', renderSolution: sol && !preview && input.mode === 'exam', solutionUrl: solution.href, submitUrl: target.href, assignmentDate: p.get('date') || getKstTodayString() });
+        return N.copy({ submit, showSubmitQr, sol, preview, hasClass, renderSubmit: submit && !preview && input.mode === 'exam', renderSubmitQr: showSubmitQr && !preview && input.mode === 'exam', renderSolution: sol && !preview && input.mode === 'exam', solutionUrl: solution.href, submitUrl: target.href, assignmentDate: p.get('date') || getKstTodayString() });
     }
 
     async function prepare(input, ctx, committed) {
@@ -604,7 +606,7 @@ function createArchiveScreenRuntime() {
             error.details = imageReadiness;
             throw error;
         }
-        if ((ctx.candidate.qrState.renderSubmit || ctx.candidate.qrState.renderSolution) && typeof QRious !== 'function') throw new Error('QR_RUNTIME_UNAVAILABLE');
+        if ((ctx.candidate.qrState.renderSubmitQr || ctx.candidate.qrState.renderSolution) && typeof QRious !== 'function') throw new Error('QR_RUNTIME_UNAVAILABLE');
     }
 
     function capture(ctx) {
@@ -655,9 +657,9 @@ function createArchiveScreenRuntime() {
         renderPrintHeaderControls();
         // QR controls use the candidate until history becomes visible at the end.
         const qr = ctx.candidate.qrState;
-        document.getElementById('chk-submit-qr').checked = qr.submit;
+        document.getElementById('chk-submit-qr').checked = qr.showSubmitQr;
         document.getElementById('chk-sol-qr').checked = qr.sol;
-        const count = Number(qr.submit) + Number(qr.sol);
+        const count = Number(qr.showSubmitQr) + Number(qr.sol);
         document.getElementById('btn-qr-output').textContent = count ? `QR 출력: ${count}개` : 'QR 출력: 없음';
         applyQrSolutionLockUI();
         Object.assign(document.documentElement.dataset, ctx.diagnostics);

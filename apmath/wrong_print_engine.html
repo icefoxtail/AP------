@@ -23,7 +23,7 @@
     <script src="../archive/vendor/qrious/qrious.min.js?v=4.0.2"></script>
     <script src="../archive/vendor/html2canvas/html2canvas.min.js?v=1.4.1"></script>
     <script src="../archive/native_print.js?v=20260915.2"></script>
-    <script src="../archive/archive-asset-base.js?v=20261030-s20-1"></script>
+    <script src="../archive/archive-asset-base.js?v=20261030-s21-1"></script>
     <script src="../archive/data/svg-accessibility-index.js?v=20261014.1" onerror="console.warn('[svg-accessibility] 색인 로드 실패 — 그림 이름 한국어 기본값 사용')"></script>
     <script src="../archive/svg-accessibility.js?v=20261014.1"></script>
     <script src="../archive/print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
@@ -600,7 +600,11 @@ function rewriteImgSrcInHtml(html, archiveFile) {
         /(<img\b[^>]*?\bsrc\s*=\s*)(["'])([\s\S]*?)\2/gi,
         (match, pre, quote, src) => {
             const resolved = resolveArchiveAssetUrl(src, archiveFile);
-            return `${pre}${quote}${withArchiveAssetCacheBuster(resolved || src)}${quote}`;
+            const finalSrc = withArchiveAssetCacheBuster(resolved || src);
+            // External (R2) exam images are requested in CORS mode like in the engine pages (archive-asset-base.js):
+            // the same URL is then cached once, with its Access-Control-Allow-Origin header.
+            const cors = typeof examImageCrossOriginAttr === 'function' && !/\bcrossorigin\b/i.test(pre) ? examImageCrossOriginAttr(finalSrc) : '';
+            return `${cors ? pre.replace(/^<img\b/i, '<img' + cors) : pre}${quote}${finalSrc}${quote}`;
         }
     );
 }
@@ -1574,7 +1578,9 @@ function renderQuestionImageHTML(q) {
     const size = ['small', 'half', 'medium', 'large', 'full', 'tall'].includes(q.imageSize) ? q.imageSize : '';
     const sizeClass = size ? ` image-${size}` : '';
     const alt = window.APSvgAccessibility?.selectAccessibleAlt(image, 'image', q, q.imageAlt || '', '문제 그림') || q.imageAlt || '문제 그림';
-    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeHtml(withArchiveAssetCacheBuster(url))}" alt="${escapeHtml(alt)}"></div>`;
+    const imageSrc = withArchiveAssetCacheBuster(url);
+    const cors = typeof examImageCrossOriginAttr === 'function' ? examImageCrossOriginAttr(imageSrc) : '';
+    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeHtml(imageSrc)}"${cors} alt="${escapeHtml(alt)}"></div>`;
 }
 
 function renderSolutionImageHTML(q) {
@@ -1586,7 +1592,8 @@ function renderSolutionImageHTML(q) {
         : '';
     const url = resolveArchiveAssetUrl(q.solutionImage, getQuestionArchiveFile(q));
     if (!url) return '';
-    return `<span class="sol-image-wrap image-${size}"><img src="${escapeHtml(url)}" alt="${escapeHtml(alt)}">${caption}</span>`;
+    const cors = typeof examImageCrossOriginAttr === 'function' ? examImageCrossOriginAttr(url) : '';
+    return `<span class="sol-image-wrap image-${size}"><img src="${escapeHtml(url)}"${cors} alt="${escapeHtml(alt)}">${caption}</span>`;
 }
 
 function getQuestionAnswer(q) {

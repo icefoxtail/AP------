@@ -33,7 +33,7 @@
     <!-- 페이지 전체 평탄화 인쇄용 로컬 번들. 외부 CDN 지연이 인쇄 준비를 막지 않도록 로컬 보관. -->
     <script src="vendor/html2canvas/html2canvas.min.js?v=1.4.1"></script>
     <script src="native_print.js?v=20260915.2"></script>
-    <script src="archive-asset-base.js?v=20261030-s20-1"></script>
+    <script src="archive-asset-base.js?v=20261030-s21-1"></script>
     <script src="print_image_optimizer.js?v=20261030.1"></script>
     <script src="mathjax_render_loop.js?v=20260911.5"></script>
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
@@ -55,7 +55,7 @@
     <script src="snapshot-contract.js?v=20260923.1"></script>
     <script src="review-preview-bridge.js?v=20260915.2"></script>
     <script src="question-image-readiness.js?v=20261030-s11-1"></script>
-    <script src="screen-runtime-adapter.js?v=20261010.4"></script>
+    <script src="screen-runtime-adapter.js?v=20261101.1"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         .archive2-snapshot-output #print-header-editor-wrap,.archive2-snapshot-output #qr-output-wrap{display:none!important}
@@ -86,9 +86,14 @@
         .print-header-editor-check input { width: 14px; height: 14px; margin: 0; }
         .page-header-subtitle { font-size: 9.2pt; font-weight: 700; line-height: 1.2; margin-top: 3px; }
         :is(#print-area,[data-archive-build-root]) { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
+        /* 측정용 숨김 영역(staging)은 화면 밖(top:-9999px)에 있지만 absolute라서, 안의 수식·그림이 83mm보다 넓으면
+           문서의 가로 스크롤 폭을 늘린다. fixed는 문서 스크롤 영역에 포함되지 않고 레이아웃(폭·높이 측정)은 같다. */
+        @media screen { #staging, [data-archive-staging] { position: fixed !important; } }
         body.screen-fit-mode { overflow-x: hidden; }
         body.screen-fit-mode :is(#print-area,[data-archive-build-root]) { width: max-content; max-width: none; margin-left: auto; margin-right: auto; transform: scale(var(--screen-page-scale, 1)); transform-origin: top center; }
         body.screen-fit-mode .page { flex: 0 0 auto; }
+        /* 2026-11-01: 학생 화면(fit=screen)에는 QR 출력 선택지를 보이지 않는다. 선생님이 출력할 때만 고른다. */
+        body.screen-fit-mode .qr-output-wrap { display: none !important; }
         @media screen and (max-width: 640px) {
             body.screen-fit-mode { padding-top: 44px; }
             body.screen-fit-mode #mode-ctrl { height: 44px; padding: 0 8px; justify-content: center; gap: 8px; }
@@ -733,9 +738,10 @@ function shouldRenderSolutionQr() {
 
 function getQrOutputState() {
     const params = new URLSearchParams(window.location.search);
-    const submitQr = params.get('submitQr');
     return {
-        submit: submitQr === '1' || (submitQr !== '0' && params.get('osqr') === '1'),
+        // 2026-11-01 사용자 결정: 시험지 끝 제출 QR은 기본 숨김. 선생님이 고를 때만(showSubmitQr=1) 그린다.
+        // submitQr=1은 '반 출제 등록' 신호라서 QR 표시와 분리했다(출제 흐름이 자동으로 submitQr=1을 붙인다).
+        submit: params.get('showSubmitQr') === '1',
         sol: params.get('solQr') === '1'
     };
 }
@@ -765,8 +771,7 @@ function setQrOutputParam(type, checked) {
     }
     const url = new URL(window.location.href);
     if (type === 'submit') {
-        url.searchParams.set('submitQr', checked ? '1' : '0');
-        url.searchParams.delete('osqr');
+        url.searchParams.set('showSubmitQr', checked ? '1' : '0');
     } else {
         url.searchParams.set('solQr', checked ? '1' : '0');
     }
@@ -838,6 +843,7 @@ function injectQrToLastExamPage(area, ctx = null) {
 // [5A] AP Math OS 제출용 QR 추가 기능 시작
 // =========================================================================
 
+// 2026-11-01: 이 함수는 '반 출제 등록(블루프린트·출제이력) 모드' 판정이다. QR을 그릴지는 shouldShowSubmitQr()가 따로 정한다.
 function shouldRenderSubmitQr() {
     if (AppState.mode !== 'exam') return false;
     // preview에서는 제출 QR과 이를 전제로 한 OS 등록(블루프린트/출제이력)까지 전부 차단된다.
@@ -852,12 +858,9 @@ function shouldRenderSubmitQr() {
     }
 }
 
+// 2026-11-01 사용자 결정: 제출 QR은 항상 학생 포털(OMR 목록)로 보낸다. 옛 ../check/ 화면은 쓰지 않는다.
 function buildSubmitQrTargetUrl() {
     const params = new URLSearchParams(window.location.search);
-    const classId = params.get('class') || '';
-    const teacherName = params.get('teacher') || '';
-    const className = params.get('className') || '';
-    
     let date = params.get('date') || '';
     if (!date) {
         const d = new Date();
@@ -866,37 +869,22 @@ function buildSubmitQrTargetUrl() {
         const day = String(d.getDate()).padStart(2, '0');
         date = `${year}-${month}-${day}`;
     }
-    
+
     const q = params.get('q') || AppState.data.length || 0;
     const exam = getIdentityTitle() || '시험지';
     const dataUrl = params.get('data') || '';
 
-    if (!classId) {
-        const url = new URL('../apmath/student/', window.location.href);
-        url.searchParams.set('omr', '1');
-        url.searchParams.set('exam', exam);
-        url.searchParams.set('date', date);
-        url.searchParams.set('q', q);
-        if (dataUrl) url.searchParams.set('archiveFile', dataUrl);
-        return url.toString();
-    }
-
-    const url = new URL('../check/', window.location.href);
-    if (classId) url.searchParams.set('class', classId);
-    if (teacherName) url.searchParams.set('teacher', teacherName);
-    if (className) url.searchParams.set('className', className);
+    const url = new URL('../apmath/student/', window.location.href);
+    url.searchParams.set('omr', '1');
     url.searchParams.set('exam', exam);
     url.searchParams.set('date', date);
     url.searchParams.set('q', q);
-
-    // [3B] archive_file 전달
     if (dataUrl) url.searchParams.set('archiveFile', dataUrl);
-
     return url.toString();
 }
 
 function injectSubmitQrToLastExamPage(area, ctx = null) {
-    if (!(ctx ? ctx.candidate.qrState.renderSubmit : shouldRenderSubmitQr())) return;
+    if (!(ctx ? ctx.candidate.qrState.renderSubmitQr : shouldShowSubmitQr())) return;
     if (typeof QRious !== 'function') return;
 
     const pages = area.querySelectorAll('.page');
@@ -907,13 +895,10 @@ function injectSubmitQrToLastExamPage(area, ctx = null) {
     const oldQr = targetPage.querySelector('.page-submit-qr');
     if (oldQr) oldQr.remove();
 
-    const params = new URLSearchParams(ctx ? new URL(ctx.candidate.environment.url).search : window.location.search);
-    const hasClass = !!params.get('class');
-
     const qrWrap = document.createElement('div');
     qrWrap.className = 'page-submit-qr';
     
-    const warnHtml = hasClass ? '' : `<div class="page-submit-qr-warn">학생페이지로 이동</div>`;
+    const warnHtml = `<div class="page-submit-qr-warn">학생페이지로 이동</div>`;
     
     qrWrap.innerHTML = `
         <div class="page-submit-qr-info">
@@ -935,6 +920,17 @@ function injectSubmitQrToLastExamPage(area, ctx = null) {
         foreground: 'black',
         padding: 0
     });
+}
+
+// 제출 QR을 시험지에 그릴지: 선생님이 고른 경우(showSubmitQr=1)만. 미리보기·시험지 외 모드에서는 그리지 않는다.
+function shouldShowSubmitQr() {
+    if (AppState.mode !== 'exam') return false;
+    if (isPreviewMode()) return false;
+    try {
+        return new URLSearchParams(window.location.search).get('showSubmitQr') === '1';
+    } catch (e) {
+        return false;
+    }
 }
 
 // =========================================================================
@@ -2321,7 +2317,10 @@ function renderQuestionImageHTML(q, renderState) {
     const size = ['small','half','medium','large','full','tall'].includes(q.imageSize) ? q.imageSize : '';
     const sizeClass = size ? ` image-${size}` : '';
     const alt = window.APSvgAccessibility?.selectAccessibleAlt(q.image, 'image', q, q.imageAlt || '', '문제 그림') || q.imageAlt || '문제 그림';
-    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeArchiveHtmlAttribute(withArchiveAssetCacheBuster(q.image, renderState))}" alt="${escapeArchiveHtmlAttribute(alt)}"></div>`;
+    const imageSrc = withArchiveAssetCacheBuster(q.image, renderState);
+    // External (R2) exam images are requested in CORS mode (archive-asset-base.js): print code reads their pixels.
+    const cors = typeof examImageCrossOriginAttr === 'function' ? examImageCrossOriginAttr(imageSrc) : '';
+    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeArchiveHtmlAttribute(imageSrc)}"${cors} alt="${escapeArchiveHtmlAttribute(alt)}"></div>`;
 }
 
 function withArchiveAssetCacheBuster(src, renderState) {
@@ -2357,7 +2356,9 @@ function renderSolutionImageHTML(q, renderState) {
         ? `<span class="sol-image-caption">${escapeArchiveHtmlAttribute(q.solutionImageCaption)}</span>`
         : '';
     const layout = q.solutionImageLayout === 'fullwidth' ? ' layout-fullwidth' : '';
-    return `<span class="sol-image-wrap image-${size}${layout}"><img src="${escapeArchiveHtmlAttribute(withArchiveAssetCacheBuster(q.solutionImage, renderState))}" alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
+    const imageSrc = withArchiveAssetCacheBuster(q.solutionImage, renderState);
+    const cors = typeof examImageCrossOriginAttr === 'function' ? examImageCrossOriginAttr(imageSrc) : '';
+    return `<span class="sol-image-wrap image-${size}${layout}"><img src="${escapeArchiveHtmlAttribute(imageSrc)}"${cors} alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
 }
 
 const AUTO_IMAGE_SIZE_CLASSES = ['image-small', 'image-half', 'image-medium', 'image-large', 'image-full', 'image-tall'];
@@ -2380,8 +2381,13 @@ function collectQuestionImages(root) {
 
 function normalizeQuestionImageSources(root, renderState = AppState) {
     const readiness = window.APQuestionImageReadiness;
-    return readiness.normalizeQuestionImageSources(root, (src, image) => withArchiveAssetCacheBuster(
-        readiness.resolveSourceRelativeImage(src, readiness.sourceFileOfImage(image) || renderState?.sourceArchiveFile), renderState));
+    return readiness.normalizeQuestionImageSources(root, (src, image) => {
+        const resolved = withArchiveAssetCacheBuster(
+            readiness.resolveSourceRelativeImage(src, readiness.sourceFileOfImage(image) || renderState?.sourceArchiveFile), renderState);
+        // CORS mode is set before the src changes, so an external (R2) inline image is fetched once (archive-asset-base.js).
+        if (typeof examImageCrossOrigin === 'function') examImageCrossOrigin(image, resolved);
+        return resolved;
+    });
 }
 
 function validateQuestionImageReadiness(root) {
@@ -3568,9 +3574,13 @@ function updateScreenFitScale() {
     if (!document.body.classList.contains('screen-fit-mode')) return;
     const area = document.getElementById('print-area');
     const page = area?.querySelector('.page');
-    if (!area || !page) return;
-    const pageWidth = page.offsetWidth || 794;
-    const availableWidth = Math.max(280, window.innerWidth - 16);
+    const pageWidth = page?.offsetWidth || 794;
+    // 모바일 브라우저는 A4 쪽(794px)이 축소 전에 한 번이라도 그려지면 레이아웃 뷰포트를
+    // 내용 폭까지 넓히고 innerWidth도 함께 커진다. 그 값으로 배율을 구하면 축소가 되지 않아
+    // 가로 스크롤이 생기므로, 기기 화면 폭(screen.width)을 상한으로 쓴다.
+    const deviceWidth = Number(window.screen && window.screen.width) || window.innerWidth;
+    const viewWidth = Math.min(window.innerWidth, deviceWidth);
+    const availableWidth = Math.max(280, viewWidth - 16);
     const scale = Math.max(0.32, Math.min(1, availableWidth / pageWidth));
     document.documentElement.style.setProperty('--screen-page-scale', String(scale));
 }
@@ -3646,6 +3656,7 @@ window.onload = () => {
     const params = new URLSearchParams(window.location.search);
     if (isPreviewMode()) document.body.classList.add('preview-mode', 'screen-fit-mode');
     else if (shouldUseScreenFit(params)) document.body.classList.add('screen-fit-mode');
+    updateScreenFitScale();
     init();
 };
 </script>

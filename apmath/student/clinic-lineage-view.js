@@ -7,7 +7,7 @@
 (function (root) {
   'use strict';
 
-  const VERSION = '2026.10.26.2';
+  const VERSION = '2026.11.01.1';
   const ASSIGNMENT_ID = /^[A-Za-z0-9_:.\-]{1,80}$/;
 
   const REASON_LABELS = {

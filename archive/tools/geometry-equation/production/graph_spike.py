@@ -5,6 +5,7 @@ from fractions import Fraction
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from visual_engine.function_sampling import sample
+from visual_engine.palette import PALETTE
 from visual_engine.viewport import Viewport
 
 def _exp_log_base_expression(row):
@@ -357,8 +358,10 @@ def _region_parts(features,vp):
         if len(upper)<2 or len(lower)<2:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
         polygon=upper+list(reversed(lower))
         path='M'+','.join(svg_number(value) for value in polygon[0])+' '+' '.join('L'+','.join(svg_number(value) for value in point) for point in polygon[1:])+' Z'
-        fill={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}[region.get('fill','LIGHT')]
-        fills.append(f'<path id="region-{region["id"]}" data-role="region" data-mark="graph-region" data-mark-id="{region["id"]}" fill="{fill}" fill-rule="evenodd" stroke="none" d="{path}"/>')
+        tint=region.get('fill','LIGHT')
+        fill={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}[tint] if tint in ('LIGHT','MEDIUM') else PALETTE[tint]['fill']
+        opacity='' if tint in ('LIGHT','MEDIUM') else f' fill-opacity="{PALETTE[tint]["opacity"]}"'   # a colour-group tint (C1) is translucent, the gray ones opaque
+        fills.append(f'<path id="region-{region["id"]}" data-role="region" data-mark="graph-region" data-mark-id="{region["id"]}" fill="{fill}"{opacity} fill-rule="evenodd" stroke="none" d="{path}"/>')
         if region.get('label') is not None:
             # A point inside the band: halfway between the two boundaries at the middle x (never a centroid that a concave band could leave).
             mid=(min(point[0] for point in polygon)+max(point[0] for point in polygon))/2
@@ -461,6 +464,7 @@ def _produce_piecewise_polynomial(plan,vp):
             cx,cy=vp.screen((point['xValue'],point['yValue'] if 'slope' in row else level))
             parts.append(f'<circle id="intersection-{row["lineId"]}-{k}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
     for index,point in enumerate(plan.get('requiredPoints',[]),1):
+        if point.get('marker')=='NONE':continue   # (G12-1) a key point the picture does not draw
         cx,cy=vp.screen((point['x'],point['y']))
         parts.append(f'<circle id="required-point-{index}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
     interval=plan.get('intervalFeatures')

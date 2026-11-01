@@ -179,6 +179,7 @@
 - 샘플: `archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js` #19 / 문제 그림 `assets/images/26_매산고_1학기_중간_고2_기하/q19.png` (존재 True) — 평면 α, 평면 밖의 점 P, α 위의 점 O, 직선 l과 그 위의 H, 수선 PO·OH·PH를 그려 삼수선 정리의 반례를 보인다
 - 설계: space-figure-v1을 새로 둔다: 평면(`planes:[{id:'alpha',through:[점 3개]|normal+point,extent}]`), 점(3차원 좌표 또는 평면 위 좌표), 선분·직선·교선(두 평면의 교선을 엔진이 계산), 수선의 발·정사영(`PROJECT onto`), 이면각 표식과 x·y·z 축. 고정 정사영(방위 28°)을 solid-figure와 공유하고 가려짐은 평면을 반투명 면으로 보고 깊이 검사한다.
 - 구현됨(G4a, 2026-11-01): 새 capability 대신 기존 solid-figure-v1을 넓혔다. ① `solids[].points[].at`에 이 입체의 **이름 붙은 점 아무거나**를 받는 형식 `divide`(내분·`external` 외분)·`midpoint`·`centroid`·`footOnLine`(직선에 내린 수선의 발)·`projection`(세 점이 정하는 평면에 내린 수선의 발 = 정사영 점)을 더하고 보조점 한도를 6에서 10으로 올렸다(오류 `SOLID_AUX_POINT_LIMIT·UNKNOWN·CYCLE·RATIO_INVALID`, `SOLID_AUX_FOOT_DEGENERATE`, `SOLID_PROJECTION_PLANE_DEGENERATE`). 관측기는 plan만으로 점을 3D에서 다시 구해 SVG 점과 대조한다(`SOLID_AUX_POINT_OFF`, 발·정사영 성질 `SOLID_AUX_FOOT_NOT_PERPENDICULAR`·`SOLID_PROJECTION_MISMATCH`). 정사영 도형은 `highlights`의 polygon, 수선은 `segments`+`marks.rightAngles`로 그린다. 문항: 22_매산고 기말 #11(정육면체 DF의 내분점 P와 EF에 내린 수선의 발 Q), #13(정사면체 CD의 중점 M, AB의 중점 N, 이면각 φ, 정사영 삼각형 ABM) 모두 ARCHIVE_BOUND, 정답지 item97g4a·98g4a. 남은 것(G4b·G4c로): (a) 평면 α·β를 평행사변형으로 그리고 교선·직선과의 위치(#14, 26_매산고 #19)는 아직 없다; (b) 이면각은 두 선분 사이의 각(`marks.angles`) 표시뿐이고 두 평면의 이면각 자체(평면 그림과 반원 호)는 없다; (c) 보조점은 한 입체의 점에서만 계산한다(다른 입체의 점·좌표 입력 없음); (d) 좌표공간(x·y·z축)은 없다; (e) 입체 위 점의 위치는 부동소수점으로 계산하고(SymPy 정확값이 아님) 길이 라벨 `dims`가 근호 꼴로 읽는다; (f) #13에서 정사영 점은 이미 이름 붙은 M과 같은 자리라 점을 따로 만들지 않고 M에 직각 표시를 붙였다.
+- 구현됨(G4b, 2026-11-01): solid-figure-v1에 `space` 블록을 더했다. ① 입체 없이(또는 입체와 함께) 3D 자유 점 `space.points`(좌표 수·정확한 문자열 `"sqrt(3)/2"`, G4a 형식 `midpoint`·`divide`·`centroid`·`footOnLine`·`projection`, `on` 검사, `hideName`·`hideDot`)와 선분 `space.segments`(AUTO는 입체 면과 평면 뒤를 점선으로) ② 평면 `space.planes`(세 점 또는 법선, `extent` 평행사변형 또는 기본 직사각형, 반투명 칠, 그리스 TeX 이름, 평면을 뚫는 선분의 실선·점선 경계) ③ 직선 `space.lines`(두 점 또는 두 평면의 교선, 소문자 한 글자 이름, 직선 위 점을 `marks`의 `refs`에 사용). 오류 `SPACE_POINT_*`·`SPACE_SEGMENT_INVALID`·`SPACE_PLANE_*`·`SPACE_LINE_*`·`SPACE_PLANES_PARALLEL`. 관측기는 점·평면 틀·교선 방향과 위치·가림 경계를 plan에서 독립으로 다시 계산해 대조한다. 문항: 26_매산고 중간 #19(삼수선 정리), 22_매산고 기말 #14(두 평면 α·β, 교선 l, 정사영 A′), 정답지 item99g4b·item100g4b. 남은 것(G4c로): 이면각 θ 표식(두 평면 사이 각의 호), 좌표축 x·y·z, 평면의 이름·지시선(평행사변형 안에 자리가 없을 때), 점이 입체와 함께 있을 때의 절대 좌표.
 
 ### G5 삼차 이상 함수의 색칠 영역과 삼차+이차(직선) 두 곡선 사이 (고2, M)
 - 근거: AUTHOR_GUIDE §3-6-영역('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL'), §3-6 referenceCurves(삼차 이상은 참조 곡선 불가), §3-2 한계('곡선은 한 개… 색칠 영역·보조선은 같이 그릴 수 없다'), HANDOFF §4.3-1('삼차함수 영역')
@@ -222,6 +223,39 @@
 
 - 구현됨(G11): 좌표 그림 callout(축은 주 프레임에 고정), ANGLE callout `arcScale`·`angleDimension`, `pathLabels` 2차 자리 탐색과 `leader`. 남은 것: 복사본에 좌표 읽기 라벨은 붙이지 않는다(이름만); 2차 자리는 8방향 격자라 매우 좁은 꼭짓점의 일부 경로는 여전히 `PATH_LABEL_NO_ROOM`이고(`anchor`·`side`를 바꾸거나 끌어낸다), `CALLOUT_ANGLE_DIMENSION_NO_ROOM`은 단위 테스트로 강제하지 못했다.
 
+### C1 평면·좌표 그림의 색 구분: 같은 것은 같은 색 (중2, S)
+- 구현됨(C1): 5색 팔레트(`production/palette.mjs` = `visual_engine/palette.py`, 입체 `HIGHLIGHT_FILLS`와 같은 칠·투명도), `regions[].fill`·`graphPlan.regions[].fill`에 색 이름, `planeMarks.equalAreas`(넓이를 경계에서 정확히 계산해 대조), `angles[].color`·`equalAngles`, `segmentColors`, `equalLengths[].color`·`parallels[].color`(선분과 눈금·화살표). 가이드 3-9-색절.
+- 남은 것: `overlays`의 원·사분면·`circleRegions` 칠과 `composite` 패널 사이의 색 일치 검사(패널마다 plan에 쓰고 같은 색 = 같은 대응은 작성자가 지킨다), `parallels.lines`(직선 위 화살표)의 색, 도형 callout 복사본 안의 표식 색, 흑백 인쇄용 무늬(화면이 우선이라 경고만).
+
+
+### 26 삼산중 중3에서 나온 공백 (2026-11-01, 우회해서 게시함)
+- callout이 숨긴 점을 쓸 수 없다(`CALLOUT_POINT_HIDDEN`): 짧은 0.5m 치수를 끌어내지 못했다.
+- 5° 미만 각은 `ANGLE_ARC_TOO_SMALL`로 표시하지 못한다.
+- 일부가 깨진 원(호 조각만 남은 원)을 그릴 수 없다(q24 수막새는 온전한 원으로 대신).
+- 입체 높이 치수에 `side`를 줄 수 없다. 기존 입체 프라임 글자(V′)가 사선으로 렌더된다.
+- 치수선 색(`planeMarks.dimensions[].color`)이 없다: 같은 길이를 색 치수선으로 묶지 못하고 선분 색으로만 묶었다(q17 AD=AF).
+- 한 원에 걸친 현의 치수선은 `DIMENSION_CROSSES_STROKE`로 막힌다(q15 CD=4√7 생략, 같은 색으로 AB와 대응).
+- 넓이가 같은 영역 여러 개에 각각 넓이 라벨(예: "12√3" 넷)을 붙이면 `LAYOUT_INVENTORY_INCOMPLETE`(q12, 글줄로 대신).
+- 끌어내기(callout)가 있을 때 자유 텍스트 라벨이 점선 지시선을 피하지 못한다(q17은 지시선을 끄고 점 이름으로만 대응).
+
+
+### 26 순천여고 고2 미적분I에서 나온 공백 (2026-11-01, 우회해서 게시함)
+- 그래프 plan의 `overlays.lines[].color`·곡선 색이 없다(C1은 `regions[].fill`만): 접선과 곡선, 근 구간을 색으로 묶지 못해 흑색 선으로 그렸다.
+- 직선 `label`이 `f'(-1)=7` 같은 식을 받지 않는다(`OVERLAY_LABEL_INVALID`) → `m=7`로 대신.
+- `overlays.segments[].length`가 분수(3/2, 9/8)를 받지 않는다(`OVERLAY_SEGMENT_LENGTH_UNSUPPORTED`) → 캡션으로.
+- 점 표시 이름에 `(2,k)` 같은 문자 좌표, 분수 좌표 라벨을 쓸 수 없다.
+- `polynomial-spike-v1`의 긴 식 제목(`8x^3-12x^2-2x+3`)이 `LAYOUT_INVENTORY_INCOMPLETE` → piecewise로 우회. 패널 제목에 "f−g" 같은 설명을 넣을 수 없다.
+
+
+### G12 이후 남은 그래프·집합 공백 (2026-11-01, 26 고교 시험지)
+- 유리함수 세로 점근선 라벨(x=2/3) 위치 고정: phase2.mjs 일차/일차 분기 vertical-asymptote-label(xSingularity+7%, 맨 위) → asymptoteLabelAt을 세로 점근선에도. 축 이름 y가 allowSuppress로 오른쪽 위 먼 자리로 밀림(engine.py axis_labels). 효천고 q7 대기.
+- 직선 라벨 지시선 끝 앵커 점(g-name-anchor, piecewiseDiscontinuousSpec)이 점으로 그려짐 → marker NONE.
+- composite-panels-v1에 좌표축 패널·set-diagram 패널 불가(매산여고 q11·q18·q22, 효천고 등 두 경우 문항).
+- set-diagram 영역별 다른 색 shade, 서로소(겹치지 않는) 두 집합 표현, 영역 개수 라벨이 원소 글자로만 가능(교집합 포함 개수 표기 불가: 매산여고 q13).
+- 좌표 작도 plan에서 문자·근호 좌표 이름("(−3,−√2)")을 pointNames로 쓸 수 없음(그래프만 G12-3). 좌표 띠 근호 표기가 "(0,(−1√2))"로 어색.
+
+- 이차곡선(`ellipse-figure-v1` conic): 선분·직선 color·equalLengths 없음(다각형 fill LIGHT/MEDIUM만) → C1 색 묶음 불가; 같은 값 라벨 두 번이면 ELLIPSE_LABEL_NO_ROOM; 치수선 없음; 포물선 창이 정직선현 끝을 강제 포함해 큰 값이면 ELLIPSE_FIGURE_TOO_LARGE(창 지정 필요); 곡선 이름 라벨 LEADER_CROSSING(26 금당고 기하).
+- 입체(`solid-figure-v1`): dims/labels 라벨 앵커 지정 없음(√3이 엉뚱한 모서리 옆), labels가 TeX·√ 미지원, 평행 표식·색 묶음 없음(REF/ACCENT 둘만). guide-solid.md 발췌본에 `points`(edge+t, base:center) 항목 누락.
 ## 참고
 - 원장 OPEN 시험지 14개 중 엔진 대기 사유(E19·E26c·E26d·E28d·E29·E30 등)는 현재 가이드에 해당 필드가 있어 대부분 해결로 본다(재 plan 대상). 진짜 남은 것은 G8(속 빈 원기둥·원뿔대 전개도)과 위 표의 항목이다.
 - 원장 OPEN 중 내용 문제(OPEN_CONTENT 25_왕의중 기말 q19)·원본 그림 없음(26_왕의중 2학기 중간 8문항 등)·#777 골든 SHA 고정(25_매산여고·25_효천고 고1)은 엔진 부족이 아니라 제외했다.

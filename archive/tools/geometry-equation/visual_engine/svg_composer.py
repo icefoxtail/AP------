@@ -90,6 +90,8 @@ def compose(prepared,layout,viewport,fragments=None):
         if p.get('role')=='tick':attrs+=' data-value="'+esc(p['value'])+'"'
         if p.get('requiredLabelId'):attrs+=' data-required-label-id="'+esc(p['requiredLabelId'])+'"'
         if p.get('fill'):attrs=attrs.replace('fill="none"','fill="'+esc(p['fill'])+'"')
+        if p.get('fillOpacity') is not None:attrs+=' fill-opacity="'+num(p['fillOpacity'])+'"'   # a palette tint (C1); the gray fills are opaque and carry none
+        if p.get('strokeWidth') is not None:attrs=attrs.replace('stroke-width="'+str(stroke)+'"','stroke-width="'+num(p['strokeWidth'])+'"',1)   # a coloured segment (C1) is a little heavier than a plain one
         if p.get('noStroke'):attrs=attrs.replace('stroke="'+tokens['primary']+'"','stroke="none"')
         if p.get('stroke'):attrs=attrs.replace('stroke="'+tokens['primary']+'"','stroke="'+esc(p['stroke'])+'"',1)
         if p.get('dash'):attrs+=' stroke-dasharray="'+esc(p['dash'])+'"'

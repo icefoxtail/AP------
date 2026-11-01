@@ -165,6 +165,87 @@
     }
     return out;
   };
+  /* ---------- 글 속 분수를 쌓은 분수($\frac{a}{b}$)로 바꾸기 (실험실이 stackFractions 를 켠 경우만) ---------- */
+  // 학생에게는 '1/2'·'½'·'5π/3' 같은 슬래시·글리프 분수가 헷갈리므로, 패널 글의 '정수/정수'·'(정수)π/정수'·유니코드 분수를 KaTeX 분수로 바꿉니다.
+  // 이미 $…$ 안에 있는 글, HTML 태그, 'a/2'·'r/R' 같은 글자 분수(작성자가 직접 $\frac$ 로 씀)와 '1 / 3번째' 같은 띄어쓴 세기는 건드리지 않습니다.
+  const VULGAR_TEX = { '½': [1, 2], '⅓': [1, 3], '⅔': [2, 3], '¼': [1, 4], '¾': [3, 4], '⅕': [1, 5], '⅖': [2, 5], '⅗': [3, 5], '⅘': [4, 5], '⅙': [1, 6], '⅚': [5, 6], '⅛': [1, 8], '⅜': [3, 8], '⅝': [5, 8], '⅞': [7, 8] };
+  const FRAC_TEXT = /([½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])|(?<![\w.\/\\$])((?:\d+(?:\.\d+)?)?π|\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)(?![\d\/]|\.\d)/g;
+  const stackCache = new Map();
+  // tight=true: 높이가 빠듯한 칸(칩·버튼·값 칸 등)용 — 글자 크기(\frac)로 쌓습니다. 아니면 여유 있는 블록용으로 \dfrac(분자·분모가 본문 크기)를 씁니다.
+  APLab.stackFr = function (html, tight) {
+    if (html == null) return html;
+    const s = String(html);
+    if (!/[½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]|\/\d|\\frac/.test(s)) return s;
+    const ck = (tight ? 'T' : 'D') + s;
+    if (stackCache.has(ck)) return stackCache.get(ck);
+    const fr = tight ? '\\frac' : '\\dfrac';
+    const conv = (t) => t.replace(FRAC_TEXT, (m, v, n, d) => {
+      if (v) return `$${fr}{${VULGAR_TEX[v][0]}}{${VULGAR_TEX[v][1]}}$`;
+      return `$${fr}{${n.replace('π', '\\pi')}}{${d}}$`;
+    });
+    let out = '';
+    let i = 0;
+    let text = '';
+    const flush = () => { out += conv(text); text = ''; };
+    while (i < s.length) {
+      const ch = s[i];
+      if (ch === '<') {
+        const j = s.indexOf('>', i);
+        flush();
+        if (j < 0) { out += s.slice(i); i = s.length; break; }
+        out += s.slice(i, j + 1);
+        i = j + 1;
+        continue;
+      }
+      if (ch === '$' && s[i - 1] !== '\\') {
+        const display = s[i + 1] === '$';
+        const open = display ? 2 : 1;
+        let j = i + open;
+        while (j < s.length) {
+          if (s[j] === '$' && s[j - 1] !== '\\' && (!display || s[j + 1] === '$')) break;
+          j++;
+        }
+        if (j < s.length) {
+          flush();
+          const seg = s.slice(i, j + open);
+          out += tight ? seg : seg.replace(/\\frac(?![a-zA-Z])/g, '\\dfrac');
+          i = j + open;
+          continue;
+        }
+      }
+      text += ch;
+      i++;
+    }
+    flush();
+    if (stackCache.size > 4000) stackCache.clear();
+    stackCache.set(ck, out);
+    return out;
+  };
+  const STACK_SKIP = new Set(['tex', 'color', 'tone', 'ref', 'id', 'icon', 'key', 'group']);
+  const STACK_TIGHT = new Set(['chips', 'parts', 'status', 'tape', 'presets', 'actions']); // 칩·버튼·관찰 칸은 높이가 빠듯해 \frac 크기를 씁니다
+  function stackDeep(x, key, tight) {
+    if (STACK_TIGHT.has(key)) tight = true;
+    if (typeof x === 'string') return STACK_SKIP.has(key) ? x : APLab.stackFr(x, tight);
+    if (Array.isArray(x)) return x.map((y) => stackDeep(y, undefined, tight));
+    if (x && typeof x === 'object' && Object.getPrototypeOf(x) === Object.prototype) {
+      const o = {};
+      for (const k of Object.keys(x)) o[k] = stackDeep(x[k], k, tight);
+      return o;
+    }
+    return x;
+  }
+  /** 장면 정의의 패널 글(질문·안내·단계·값 칸·문제·풀이·칩)에 stackFr 를 입힌 새 장면을 돌려줍니다. 그림(draw)은 건드리지 않습니다(그림 글은 board._text 가 쌓습니다). */
+  APLab.stackScene = function (sc) {
+    const out = { ...sc };
+    const wrap = (v, key) => (typeof v === 'function' ? function (...a) { return stackDeep(v.apply(this, a), key); } : stackDeep(v, key));
+    for (const k of ['question', 'guide', 'steps', 'view', 'solution', 'presets', 'actions']) if (out[k] != null) out[k] = wrap(out[k], k);
+    if (out.problem) {
+      const p = { ...out.problem };
+      for (const k of ['tag', 'text', 'answer', 'note']) if (p[k] != null) p[k] = wrap(p[k]);
+      out.problem = p;
+    }
+    return out;
+  };
   APLab.setHTML = function (el, html) {
     const v = APLab.renderMath(html);
     if (el.__aplHTML !== v) {
@@ -217,14 +298,14 @@
   /* ---------- 테마 ---------- */
   APLab.theme = {
     current() {
-      return document.documentElement.getAttribute('data-theme') || 'board';
+      return document.documentElement.getAttribute('data-theme') || 'paper';
     },
     init() {
       const saved = APLab.store.get('theme', null);
       const url = new URLSearchParams(location.search).get('theme');
-      let t = url || saved;
-      if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'paper' : 'board';
-      document.documentElement.setAttribute('data-theme', t === 'paper' ? 'paper' : 'board');
+      // 기본은 종이(밝음). OS 다크 설정과 무관하며, 학생이 칠판으로 바꾸면 그 선택이 저장돼 유지된다. (사용자 결정 2026-11-01)
+      const t = url || saved || 'paper';
+      document.documentElement.setAttribute('data-theme', t === 'board' ? 'board' : 'paper');
     },
     toggle() {
       const next = APLab.theme.current() === 'paper' ? 'board' : 'paper';

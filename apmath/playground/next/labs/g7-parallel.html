@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>평행선의 성질 · AP Math 실험실</title>
+<meta name="description" content="중1 평행선의 성질: 동위각·엇각, 평행선 사이의 꺾인 선, 평행선과 정다각형, 종이 접기를 도형을 직접 조절하며 탐구하고, 도형이 바뀔 때마다 풀이와 문제가 다시 계산되는 실험실입니다.">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):'paper';document.documentElement.setAttribute('data-theme',t==='board'?'board':'paper')}catch(e){document.documentElement.setAttribute('data-theme','paper')}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
+<script>
+/* ==========================================================================
+   중1 · 평행선의 성질 (AP Math Lab 2.0)
+   탭(order 순): ① 동위각·엇각(10) · ② 꺾인 선(20) · ③ 정다각형 결합(30) · ④ 종이 접기(40)
+   이 파일은 탭을 직접 그리지 않고, labs/g7-parallel/*.js 모듈이 window.APL_PA_GROUPS 에
+   { order, id, title, short, params?, scenes } 묶음을 등록하면 order 순으로 붙여 줍니다(kit.js 가 먼저 로드).
+   원칙(학생 가독성)
+   - 모든 도형은 막대 또는 손잡이로 조절되고, 각의 크기·이름·식·정리 단계·문제의 보기와 정답이 그 값으로 다시 계산됩니다.
+   - 풀이에 쓰는 각은 그림 안에 크게 적고, 같은 각은 같은 표시(호 개수), 직각은 네모, 평행선은 > 표시를 씁니다.
+   - 색의 역할: 하늘=평행선 l·m · 분홍=횡단선·꺾인 선·접는 선 · 노랑=각 · 초록=구하는 각 x · 보라=다른 쪽 각 · 회색 점선=보조선
+   - 움직임: 위치 이동은 가로로만, 접기는 접는 선에서 제자리 회전.
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+'use strict';
+const MODULES = ['t1', 't2', 't3', 't4'];
+const loadScript = (src) => new Promise((res) => {
+  const el = document.createElement('script');
+  el.src = src; el.async = false;
+  el.onload = () => res(true);
+  el.onerror = () => { el.remove(); res(false); }; // 아직 없는 모듈은 건너뜁니다
+  document.head.append(el);
+});
+function start() {
+  const mods = (window.APL_PA_GROUPS || []).filter((g) => g && Array.isArray(g.scenes) && g.scenes.length);
+  const groups = mods.slice().sort((a, b) => (a.order || 0) - (b.order || 0)).map((g) => ({ id: g.id, title: g.title, short: g.short || g.title, scenes: g.scenes }));
+  const params = {};
+  mods.forEach((g) => Object.assign(params, g.params || {}));
+  APLab.createLab({
+    id: 'g7-parallel',
+    title: '평행선의 성질',
+    courseName: '중1',
+    unit: '기본 도형 · 평행선의 성질',
+    courseColor: 'var(--m-sky)',
+    home: '../index.html#g7',
+    legacy: '../../labs/g7/points-lines.html',
+    board: { kind: 'figure', pad: 0.02, minZoom: 0.5, maxZoom: 6 },
+    params,
+    groups
+  });
+}
+loadScript('g7-parallel/kit.js').then(() => Promise.all(MODULES.map((m) => loadScript(`g7-parallel/${m}.js`)))).then(start);
+});
+</script>
+</body>
+</html>

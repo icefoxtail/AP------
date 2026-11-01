@@ -132,6 +132,10 @@ const requiredCommands = [
     args: ['--test', 'tests/apms-worker-deploy.test.mjs']
   },
   {
+    label: 'tests/archive-pages-image-r2-gate.test.mjs',
+    args: ['--test', 'tests/archive-pages-image-r2-gate.test.mjs']
+  },
+  {
     label: 'tests/archive-pages-release-reg-commit.test.mjs',
     args: ['--test', 'tests/archive-pages-release-reg-commit.test.mjs']
   },
@@ -270,6 +274,32 @@ const requiredCommands = [
   }
 ];
 
+// The pre-step below (archive/tools/build-archive2-catalog.mjs) regenerates
+// committed Archive2 canonical artifacts. While the post-merge "sync
+// registration artifacts" bot commit is pending they are stale, so a run used to
+// leave a dirty tree. The guard puts back ONLY these pre-step outputs, and only
+// when they were clean before the run and nobody changed them since the
+// pre-step wrote them; anything else is merely reported (see
+// tools/lib/test-output-guard.js). The build tool exports no path list, so the
+// paths it writes are listed here explicitly; keep in sync with its
+// fs.writeFileSync targets. APMATH_KEEP_TEST_OUTPUT=1 turns the guard off.
+const { createOutputGuard } = require('./lib/test-output-guard.js');
+const outputGuard = createOutputGuard({
+  root,
+  outputFiles: [
+    'archive/data/archive2-canonical-input-manifest.json',
+    'archive/data/archive2-catalog.json',
+    'archive/data/archive2-item-review-overrides.json',
+    'archive/data/archive2-source-verification-index.json'
+  ],
+  outputPrefixes: ['archive/data/archive2-source-verification/'],
+  keep: process.env.APMATH_KEEP_TEST_OUTPUT === '1'
+});
+outputGuard.begin();
+process.on('exit', () => outputGuard.finish());
+process.on('SIGINT', () => process.exit(130));
+process.on('SIGTERM', () => process.exit(143));
+
 // Source-verification tests exercise generated canonical artifacts. Build them
 // from the checked-out source tree so code-only pull requests do not depend on
 // already-committed shard outputs.
@@ -280,6 +310,7 @@ const canonicalProjectionBuild = spawnSync(process.execPath, [
   stdio: 'inherit',
   timeout: 120000
 });
+outputGuard.afterPrestep();
 if (canonicalProjectionBuild.error) console.error(canonicalProjectionBuild.error.message);
 if (canonicalProjectionBuild.status !== 0 || canonicalProjectionBuild.error) {
   console.error('Failed to build canonical Archive2 test projection.');

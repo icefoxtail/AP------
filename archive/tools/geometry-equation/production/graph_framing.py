@@ -1,9 +1,13 @@
 """Bounded overview fitting. Display windows do not change source domains."""
 import math
 import re
+import sys
 from fractions import Fraction
+from pathlib import Path
 import sympy as S
 
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from visual_engine.palette import PALETTE_NAMES as OVERLAY_COLOR_NAMES   # (G12-2) the colour-group names of the plane figures (BLUE WARM GREEN ROSE VIOLET)
 _x=S.Symbol('x',real=True)
 # A repeated real root of a cubic/quartic is a root of gcd(p,p'), a degree<=2 factor of rational coefficients: it is either rational or
 # p+q*sqrt(r). The isolating interval pins its location; a width beyond this bound means the location is not representable.
@@ -385,6 +389,10 @@ def _fit_rational_overview(plan):
         raise ValueError('INVALID_RATIONAL_VIEWPORT')
     numerator=_rational_coefficients(plan.get('numerator'),'numerator',allow_constant=True)
     denominator=_rational_coefficients(plan.get('denominator'),'denominator')
+    # asymptoteLabelAt (G12-5): START | END puts the label of the horizontal asymptote at that end of its dashed line, on the side away from the curve (default: near the middle, above)
+    if 'asymptoteLabelAt' in plan:
+        if plan['asymptoteLabelAt'] not in ('START','END'):raise ValueError('ASYMPTOTE_LABEL_AT_INVALID')
+        if numerator[1]==0:raise ValueError('ASYMPTOTE_LABEL_AT_UNSUPPORTED')
     if numerator[1]==0:return _fit_rational_constant_numerator(plan,numerator[0],denominator,original_domain,original_viewport)
     if plan.get('displayWindow') is not None:raise ValueError('DISPLAY_WINDOW_REQUIRES_INVERSE_PROPORTION')
     if plan.get('formulaAt') is not None:raise ValueError('FORMULA_AT_REQUIRES_DISPLAY_WINDOW')
@@ -1398,7 +1406,7 @@ def _fit_trigonometric_overview(plan):
 # ---- piecewise polynomial: one continuous y=g(x) of up to three pieces (degree <= 2 each) plus up to three horizontal lines y=c ----------
 # The plan claims the breakpoint values, marks every corner and every vertex inside a piece as a requiredPoint, and lists the exact x of every
 # intersection with each line. All of it is recomputed here exactly (Fractions, SymPy surds) and a disagreement refuses the plan.
-PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','axisScale','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions','axisTitles','coordinateBand'}
+PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','axisScale','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions','axisTitles','coordinateBand','curveColor'}
 PIECEWISE_POLY_MIN_ARM_PX=12
 PIECEWISE_POLY_MIN_FEATURE_GAP_PX=4
 # Four pieces cover the two-piecewise exam items (f and g both piecewise); a fifth piece is refused.
@@ -1410,7 +1418,7 @@ PIECEWISE_POLY_MAX_REQUIRED_POINTS=24
 # Shaded regions between two drawn boundaries (the function, a reference curve, a reference line or the x-axis).
 PIECEWISE_POLY_REGION_FIELDS={'id','upper','lower','from','to','fill','label'}
 PIECEWISE_POLY_MAX_REGIONS=4
-PIECEWISE_POLY_REGION_FILLS=('LIGHT','MEDIUM')
+PIECEWISE_POLY_REGION_FILLS=('LIGHT','MEDIUM','BLUE','WARM','GREEN','ROSE','VIOLET')   # the gray tints and (C1) the colour-group tints of visual_engine/palette.py
 
 def _pp_rational(value,code):
     """An exact rational: a decimal integer, an 'a/b' string, or a JSON integer."""
@@ -1749,8 +1757,9 @@ def piecewise_reference_curves(plan,pieces,breaks,source,intervals):
     if not isinstance(raw,list) or len(raw)>2:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
     rows=[];ids=set()
     for entry in raw:
-        if not isinstance(entry,dict) or set(entry)-{'id','name','coefficients','pieces','breakpoints','sourceDomain','formula','intersectionX'} or not isinstance(entry.get('id'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',entry['id']) or entry['id'] in ids:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+        if not isinstance(entry,dict) or set(entry)-{'id','name','coefficients','pieces','breakpoints','sourceDomain','formula','intersectionX','color'} or not isinstance(entry.get('id'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',entry['id']) or entry['id'] in ids:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
         if 'name' in entry and not (isinstance(entry['name'],str) and re.fullmatch(r'[a-hj-wz]',entry['name'])):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+        if 'color' in entry:curve_color_name(entry['color'],str(entry['id'])+'.color')
         claimed=entry.get('intersectionX')
         if not isinstance(claimed,list) or len(claimed)>PIECEWISE_POLY_MAX_CURVE_INTERSECTIONS:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
         ids.add(entry['id'])
@@ -1878,6 +1887,7 @@ def piecewise_polynomial_regions(plan,pieces,intervals,refs,line_specs):
     return rows
 
 def fit_piecewise_polynomial(plan):
+    if 'curveColor' in plan:curve_color_name(plan['curveColor'])
     if 'functionName' in plan and not (isinstance(plan['functionName'],str) and re.fullmatch(r'[a-hj-wz]',plan['functionName'])):raise ValueError('PIECEWISE_POLY_FUNCTION_NAME_INVALID')
     if 'sampleNote' in plan and (not isinstance(plan['sampleNote'],str) or not re.fullmatch(r'[0-9A-Za-z=+\-*/(). ]{1,32}',plan['sampleNote']) or not plan['sampleNote'].strip()):raise ValueError('PIECEWISE_POLY_SAMPLE_NOTE_INVALID')
     pieces,breaks,source,intervals=piecewise_polynomial_source(plan)
@@ -1916,7 +1926,9 @@ def fit_piecewise_polynomial(plan):
     if not isinstance(required,list) or len(required)>PIECEWISE_POLY_MAX_REQUIRED_POINTS:raise ValueError('INVALID_REQUIRED_GRAPH_FEATURES')
     ids=set();required_xy=[];exact_points={};normalized=[]
     for point in required:
-        if not isinstance(point,dict) or set(point)!={'id','x','y'} or not isinstance(point['id'],str) or not point['id'] or point['id'] in ids:raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
+        if not isinstance(point,dict) or set(point)-{'id','x','y','marker'} or not {'id','x','y'}<=set(point) or not isinstance(point['id'],str) or not point['id'] or point['id'] in ids:raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
+        # marker NONE (G12-1): a key point the framing and the claims need (a vertex, a corner) that the picture does not draw: no dot, no name, no coordinates.
+        if 'marker' in point and point['marker']!='NONE':raise ValueError('REQUIRED_POINT_MARKER_INVALID:'+point['id'])
         # A coordinate is a number or an exact string (for an irrational key point such as the vertex '-3/2+sqrt(3)/2'); the exact strings become
         # the point's exactCoordinates and the figure keeps the float.
         floats={};exact={}
@@ -1940,7 +1952,7 @@ def fit_piecewise_polynomial(plan):
         if exact:
             exact_points[point['id']]=[pp_surd_text(exact[k]) if k in exact else (str(Fraction(str(floats[k]))) if floats[k]==int(floats[k]) else None) for k in ('x','y')]
             if None in exact_points[point['id']]:raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_MIXED_EXACT:'+point['id'])
-        normalized.append({'id':point['id'],'x':floats['x'],'y':floats['y']});required_xy.append((floats['x'],floats['y']))
+        normalized.append({'id':point['id'],'x':floats['x'],'y':floats['y'],**({'marker':'NONE'} if point.get('marker')=='NONE' else {})});required_xy.append((floats['x'],floats['y']))
     required=normalized
     marked=lambda x_value,y_value:any(abs(px-float(x_value))<=1e-9*max(1,abs(px)) and abs(py-float(y_value))<=1e-9*max(1,abs(py)) for px,py in required_xy)
     for x_value,y_value in corners:
@@ -2126,7 +2138,7 @@ def fit_piecewise_polynomial(plan):
 # ---- piecewise discontinuous: one to six polynomial pieces (degree <= 2) on their own intervals, each end OPEN or CLOSED ----------
 # Unlike piecewise-polynomial-spike-v1 the pieces need not meet: a junction may jump, the function value there is declared either by a
 # CLOSED end or by jumpValues, and a jumpValue may also stand alone as an isolated point. A staircase is written as a step block.
-PIECEWISE_DISCONTINUOUS_FIELDS={'family','pieces','step','jumpValues','referenceLines','requiredPoints','exactCoordinates','axisTickValues','functionName','domain','viewport','plotHeightLimit','axisTitles','limitArrows','xWindow','sharedCurve','sharedFeatures','overlays','overlayAnchors'}
+PIECEWISE_DISCONTINUOUS_FIELDS={'family','pieces','step','jumpValues','referenceLines','requiredPoints','exactCoordinates','axisTickValues','functionName','domain','viewport','plotHeightLimit','axisTitles','limitArrows','xWindow','sharedCurve','sharedFeatures','overlays','overlayAnchors','curveColor','nameLabel','axisVariable'}
 PIECEWISE_DISCONTINUOUS_OVERVIEW_POLICY='PIECEWISE_DISCONTINUOUS_OVERVIEW_v1'
 PIECEWISE_DISCONTINUOUS_MAX_PIECES=8   # a two-function solution figure restores a graph with its mirror image: 8 pieces
 PIECEWISE_DISCONTINUOUS_MAX_STEPS=6
@@ -2346,10 +2358,33 @@ def piecewise_discontinuous_crossings(pieces,level,jump_values):
         if pp_same(y_value,level) and not any(pp_same(x_value,other) for other in found):found.append(x_value)
     return sorted(found,key=lambda value:float(value))
 
-PIECEWISE_SHARED_CURVE_FIELDS={'id','name','style','pieces','step','jumpValues','limitArrows','nameLabel'}
+PIECEWISE_SHARED_CURVE_FIELDS={'id','name','style','pieces','step','jumpValues','limitArrows','nameLabel','color'}
 PIECEWISE_NAME_LABEL_FIELDS={'text','placement','anchorX'}
 PIECEWISE_SHARED_STYLES=('DASHED','ACCENT')
 PIECEWISE_SHARED_MIN_DOT_GAP_PX=4.0
+
+def curve_color_name(value,ident='curveColor'):
+    """(G12-2) The palette colour a drawn curve wears (BLUE WARM GREEN ROSE VIOLET), or OVERLAY_COLOR_INVALID:<where>."""
+    if value not in OVERLAY_COLOR_NAMES:raise ValueError('OVERLAY_COLOR_INVALID:'+str(ident))
+    return value
+
+PD_MAIN_NAME_AT=('START','MID','END')
+PD_MAIN_NAME_SIDES=('BELOW','ABOVE')
+def pd_main_name_label(plan):
+    """graphPlan.nameLabel {at:START|MID|END,side?:BELOW|ABOVE} (G12-4): where the name of the function f (f(x)) stands along its curve; absent keeps the old place (near the
+    left end, below). Returns the validated row or None."""
+    raw=plan.get('nameLabel')
+    if raw is None:return None
+    if not isinstance(raw,dict) or set(raw)-{'at','side'} or raw.get('at') not in PD_MAIN_NAME_AT or raw.get('side','BELOW') not in PD_MAIN_NAME_SIDES:raise ValueError('CURVE_NAME_LABEL_INVALID')
+    if plan.get('functionName') is None:raise ValueError('CURVE_NAME_LABEL_INVALID')
+    return {'at':raw['at'],'side':raw.get('side','BELOW')}
+
+def pd_axis_variable(plan):
+    """graphPlan.axisVariable (G12-4): the letter the horizontal axis and the function names use instead of x (g(m)); one lowercase letter that is neither y nor the function's own name."""
+    value=plan.get('axisVariable')
+    if value is None:return None
+    if not isinstance(value,str) or not re.fullmatch(r'[a-xz]',value) or value==plan.get('functionName'):raise ValueError('INVALID_AXIS_VARIABLE')
+    return value
 
 def _pd_name_label(plan,shared):
     """sharedCurve.nameLabel {text?,placement:'LEADER',anchorX?} (G7c): g's name tied to the curve by a leader that starts ON g at anchorX (an exact value;
@@ -2376,6 +2411,8 @@ def fit_piecewise_discontinuous_shared(plan):
     shared=plan['sharedCurve']
     if not isinstance(shared,dict) or set(shared)-PIECEWISE_SHARED_CURVE_FIELDS or not isinstance(shared.get('id'),str) or not re.fullmatch(r'[a-hj-wz]',shared['id']):raise ValueError('PAIR_SHARED_CURVE_INVALID')
     if shared.get('style') not in PIECEWISE_SHARED_STYLES:raise ValueError('PAIR_SHARED_CURVES_INDISTINCT')
+    if 'color' in shared:curve_color_name(shared['color'],str(shared['id'])+'.color')
+    if shared.get('color') is not None and shared['style']=='ACCENT':raise ValueError('OVERLAY_COLOR_INVALID:'+shared['id']+'.color')   # the red ACCENT line style already is its colour
     if plan.get('referenceLines'):raise ValueError('PAIR_SHARED_REFERENCE_LINES_UNSUPPORTED')
     if plan.get('functionName')==shared['id']:raise ValueError('PAIR_SHARED_CURVE_INVALID')
     own={key:value for key,value in plan.items() if key not in ('sharedCurve','sharedFeatures','overlays','overlayAnchors')}
@@ -2407,6 +2444,7 @@ def fit_piecewise_discontinuous_shared(plan):
     other={**other,'id':shared['id'],'style':shared['style']}
     if 'name' in shared:other['name']=shared['name']
     if name_label is not None:other['nameLabel']=name_label
+    if 'color' in shared:other['color']=shared['color']
     if 'overlays' in plan:first['overlays']=plan['overlays']
     first['sharedCurve']=other;first['sharedFeatures']={'schemaVersion':'PIECEWISE_SHARED_FEATURES_v1','coincidentMarkers':coincident}
     return {'graphPlan':first,'policy':PIECEWISE_DISCONTINUOUS_OVERVIEW_POLICY,'sourceDomainPreserved':False,'displayOnly':True,'features':first['piecewiseDiscontinuousFeatures'],'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
@@ -2416,6 +2454,8 @@ def fit_piecewise_discontinuous(plan,frame=None,probe=False):
     if 'functionName' in plan and not (isinstance(plan['functionName'],str) and re.fullmatch(r'[a-hj-wz]',plan['functionName'])):raise ValueError('PIECEWISE_DISCONTINUOUS_FUNCTION_NAME_INVALID')
     unknown=sorted(set(plan)-PIECEWISE_DISCONTINUOUS_FIELDS)
     if unknown:raise ValueError('PIECEWISE_DISCONTINUOUS_FIELD_UNKNOWN:'+unknown[0])
+    if 'curveColor' in plan:curve_color_name(plan['curveColor'])
+    pd_main_name_label(plan);pd_axis_variable(plan)
     pieces=piecewise_discontinuous_pieces(plan)
     jumps=piecewise_discontinuous_values(plan,pieces)
     extrema=pd_extrema(pieces)
@@ -2565,7 +2605,7 @@ def fit_piecewise_discontinuous(plan,frame=None,probe=False):
 # segments to the axes, simple polygons and extra named points on the curve. Every coordinate is recomputed here exactly; the plan names
 # the points and the elements, never raw derived coordinates. The fitted plan carries overlaysFeatures (numeric, for the model/spec) and
 # the independent graph observer recomputes the same values from the raw overlays field and reads the FINAL SVG back.
-OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4,'quadrants':4,'circles':2,'circleRegions':2}
+OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4,'quadrants':4,'circles':2,'circleRegions':2,'callouts':4}
 # overlays.names: a plain Korean name (토끼, 거북이, 직선 l) written beside one overlay segment, overlay line or the drawn curve at curveX.
 OVERLAY_NAME_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,10}'
 OVERLAY_LATTICE_REGIONS=('BELOW_CURVE','ABOVE_CURVE')
@@ -3070,9 +3110,11 @@ def _overlay_label_alternates(plan,line,lines,points):
     return [[round(point[0],9),round(point[1],9)] for point in chosen]
 
 def _overlay_length_row(value,ident):
-    """A segment length as the label text the figure shows: an integer (4) or a square-root surd (2*sqrt(5)); nothing else is read back reliably."""
+    """A segment length as the label text the figure shows: an integer (4), a fraction (3/2) or a square-root surd (2*sqrt(5)); nothing else is read back reliably."""
     value=value if value.is_Integer else S.simplify(value)
     if value.is_Integer:return {'text':str(int(value)),'value':float(value)}
+    # a fraction (G12-3): 3/2, 9/8 (stacked in the figure; the observer reads numerator then denominator digits)
+    if value.is_Rational and value>0:return {'text':str(int(value.p))+'/'+str(int(value.q)),'value':float(value)}
     coefficient,radical=value.as_coeff_Mul()
     if coefficient.is_Integer and coefficient>0 and radical.is_Pow and radical.exp==S.Rational(1,2) and radical.base.is_Integer and radical.base>1:
         base=int(radical.base);return {'text':(str(int(coefficient))+'*' if coefficient!=1 else '')+'sqrt('+str(base)+')','value':float(S.N(value,30))}
@@ -3189,6 +3231,41 @@ def _overlay_names(plan,rows,claim,lines,segments,by_point):
 
 OVERLAY_QUADRANT_LABEL_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,12}'
 
+OVERLAY_CALLOUT_DIRECTIONS=('N','NE','E','SE','S','SW','W','NW')
+def _overlay_callouts(plan,rows,claim,by_point):
+    """overlays.callouts (G12-1): [{id,point,text,direction?,labelKind?}], a short label pulled out to a free place on a visible leader line that starts ON its point (an overlay
+    point, or a requiredPoints id whose dot is drawn). The leader names the owner, so a label that would sit among other strokes is never mistaken for theirs. text is a short
+    formula (f(a), a, 2k) written as math, or plain Korean (극대, 접점) written as text; direction is the side to try first. Nothing is dropped: no room is a layout error."""
+    from linear_text import TEXT_PATTERN
+    if not isinstance(rows,list):_overlay_fail('OVERLAY_CALLOUT_INVALID','callouts')
+    required=plan.get('requiredPoints',[]) if isinstance(plan.get('requiredPoints'),list) else []
+    out=[]
+    for entry in rows:
+        if not isinstance(entry,dict) or set(entry)-{'id','point','text','direction','labelKind'}:_overlay_fail('OVERLAY_CALLOUT_INVALID',entry.get('id') if isinstance(entry,dict) else 'callout')
+        ident=_overlay_id(entry.get('id'),'callout');claim('callout:'+ident)
+        ref=entry.get('point')
+        if not isinstance(ref,str):_overlay_fail('OVERLAY_CALLOUT_POINT_UNKNOWN',ident)
+        if ref in by_point:dot=ref;at=[by_point[ref]['x'],by_point[ref]['y']]
+        else:
+            index=next((i for i,point in enumerate(required) if isinstance(point,dict) and point.get('id')==ref),None)
+            if index is None:_overlay_fail('OVERLAY_CALLOUT_POINT_UNKNOWN',ident)
+            if required[index].get('marker')=='NONE':_overlay_fail('OVERLAY_CALLOUT_POINT_HIDDEN',ident)
+            at=[_overlay_number(_overlay_exact(required[index][k],ident)) if isinstance(required[index][k],str) else float(required[index][k]) for k in ('x','y')]
+            dot='required-point-'+str(index+1)
+        text=entry.get('text')
+        kind=entry.get('labelKind')
+        if kind is not None and kind not in ('TEXT','MATH'):_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
+        if not isinstance(text,str) or text!=text.strip() or not text:_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
+        if kind is None:kind='TEXT' if re.search('[가-힣]',text) else 'MATH'
+        if kind=='TEXT' and re.fullmatch(OVERLAY_NAME_PATTERN,text) is None:_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
+        if kind=='MATH' and (TEXT_PATTERN.fullmatch(text) is None or len(text)>12):_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
+        row={'id':ident,'point':ref,'dot':dot,'at':at,'text':text,'labelKind':kind}
+        if 'direction' in entry:
+            if entry['direction'] not in OVERLAY_CALLOUT_DIRECTIONS:_overlay_fail('OVERLAY_CALLOUT_DIRECTION_INVALID',ident)
+            row['direction']=entry['direction']
+        out.append(row)
+    return out
+
 def _overlay_quadrants(plan,rows,claim):
     """overlays.quadrants:[{id,quadrant,label?,fill?}] (E31): the coordinate quadrant 1..4 tinted (LIGHT | MEDIUM, under every stroke, out to the edge of the drawn window) and/or named
     in plain Korean text inside it. The origin must lie strictly inside the framed window, and a quadrant is named at most once."""
@@ -3226,7 +3303,7 @@ def _overlay_features(plan):
     lines=[]
     for entry in raw.get('lines',[]):
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_LINE_INVALID','line')
-        if set(entry)-{'id','slope','intercept','x','label','labelAt','labelValues','style'}:_overlay_fail('OVERLAY_LINE_INVALID',entry.get('id'))
+        if set(entry)-{'id','slope','intercept','x','label','labelAt','labelValues','style','color'}:_overlay_fail('OVERLAY_LINE_INVALID',entry.get('id'))
         ident=_overlay_id(entry.get('id'),'line');claim('line:'+ident)
         if 'x' in entry:
             if 'slope' in entry or 'intercept' in entry:_overlay_fail('OVERLAY_LINE_INVALID',ident)
@@ -3242,6 +3319,10 @@ def _overlay_features(plan):
         if 'style' in entry:
             if entry['style'] not in ('SOLID','DASHED'):_overlay_fail('OVERLAY_LINE_STYLE_INVALID',ident)
             if entry['style']=='DASHED':line['style']='DASHED'
+        # color (G12-2): a palette colour of this line (BLUE WARM GREEN ROSE VIOLET); the observer reads it back from the final SVG
+        if 'color' in entry:
+            if entry['color'] not in OVERLAY_COLOR_NAMES:_overlay_fail('OVERLAY_COLOR_INVALID',ident)
+            line['color']=entry['color']
         line['text']=_overlay_line_text(line)
         if not _overlay_line_crosses_view(plan['viewport'],line):_overlay_fail('OVERLAY_LINE_OUTSIDE_VIEWPORT',ident)
         line['labelAt']=_overlay_label_anchor(plan['viewport'],line)
@@ -3334,13 +3415,17 @@ def _overlay_features(plan):
     segments=[]
     for entry in raw.get('segments',[]):
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_SEGMENT_INVALID','segment')
-        if set(entry)-{'id','from','to','dashed','length','labelDirection'}:_overlay_fail('OVERLAY_SEGMENT_INVALID',entry.get('id'))
+        if set(entry)-{'id','from','to','dashed','length','labelDirection','color'}:_overlay_fail('OVERLAY_SEGMENT_INVALID',entry.get('id'))
         ident=_overlay_id(entry.get('id'),'segment');claim('segment:'+ident)
         start=point_ref(entry.get('from'),ident);end=point_ref(entry.get('to'),ident)
         if start==end:_overlay_fail('OVERLAY_SEGMENT_DEGENERATE',ident)
         dashed=entry.get('dashed',False)
         if not isinstance(dashed,bool):_overlay_fail('OVERLAY_SEGMENT_INVALID',ident)
         row={'id':ident,'from':start,'to':end,'dashed':dashed}
+        # color (G12-2): a solid segment of a colour group (a dashed one keeps its dashes and no colour)
+        if 'color' in entry:
+            if entry['color'] not in OVERLAY_COLOR_NAMES or dashed:_overlay_fail('OVERLAY_COLOR_INVALID',ident)
+            row['color']=entry['color']
         # length:true writes the segment's exact length beside it: an integer or p*sqrt(q), recomputed from its end points.
         if 'length' in entry:
             if not isinstance(entry['length'],bool):_overlay_fail('OVERLAY_SEGMENT_LENGTH_INVALID',ident)
@@ -3370,7 +3455,7 @@ def _overlay_features(plan):
         if not isinstance(refs,list) or not 3<=len(refs)<=6 or len(set(refs))!=len(refs):_overlay_fail('OVERLAY_POLYGON_INVALID',ident)
         refs=[point_ref(value,ident) for value in refs]
         fill=entry.get('fill','LIGHT')
-        if fill not in ('LIGHT','MEDIUM','NONE'):_overlay_fail('OVERLAY_FILL_INVALID',ident)
+        if fill not in ('LIGHT','MEDIUM','NONE',*OVERLAY_COLOR_NAMES):_overlay_fail('OVERLAY_FILL_INVALID',ident)   # (G12-2) a palette colour too
         coords=[(by_point[value]['x'],by_point[value]['y']) for value in refs]
         area=sum(coords[i][0]*coords[(i+1)%len(coords)][1]-coords[(i+1)%len(coords)][0]*coords[i][1] for i in range(len(coords)))
         if abs(area)<1e-9:_overlay_fail('OVERLAY_POLYGON_DEGENERATE',ident)
@@ -3396,6 +3481,7 @@ def _overlay_features(plan):
         features['circles']=circle_rows
     if 'names' in raw:features['names']=_overlay_names(plan,raw.get('names'),claim,lines,segments,by_point)
     if raw.get('quadrants'):features['quadrants']=_overlay_quadrants(plan,raw['quadrants'],claim)
+    if raw.get('callouts'):features['callouts']=_overlay_callouts(plan,raw['callouts'],claim,by_point)
     if raw.get('latticePoints') is not None:features['latticePoints']=_overlay_lattice(plan,raw['latticePoints'],[(point['x'],point['y']) for point in points])
     return features
 

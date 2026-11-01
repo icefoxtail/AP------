@@ -8,6 +8,7 @@
      2) scenes  : 장면마다 질문·안내·단계·문제·해설(데이터)과 draw(b, s, v)(수학 그림)
      3) view(s) : 실시간 값·상태·관찰 포인트 등 변하는 내용을 돌려주는 함수
    나머지(반응형 배치, 수업 모드, 판서, 공유, 단축키, URL 상태 저장)는 셸이 책임집니다.
+   [stackFractions: true] 패널·칸·칩 글 속 '1/2'·'½'·'5π/3'(숫자 분수)를 쌓은 KaTeX 분수로 바꿉니다(APLab.stackFr). 'a/2' 같은 글자 분수는 $\frac{a}{2}$ 로 직접 씁니다.
    ========================================================================== */
 (function () {
   'use strict';
@@ -41,7 +42,7 @@
       this.teach = false;
       this.list = [];
       const groups = def.groups || [{ title: '', scenes: def.scenes || [] }];
-      groups.forEach((g, gi) => g.scenes.forEach((sc) => this.list.push({ ...sc, gi, group: g })));
+      groups.forEach((g, gi) => g.scenes.forEach((sc) => this.list.push({ ...(def.stackFractions ? APLab.stackScene(sc) : sc), gi, group: g })));
       this.groups = groups;
       this.index = 0;
       this.ink = new Map();
@@ -163,6 +164,7 @@
       const prev = this.scene;
       this.index = i;
       const sc = this.scene;
+      this.board.kind = sc.boardKind || (this.def.board || {}).kind || 'cartesian'; // 장면별 좌표계(선택): 한 실험실에 수학 좌표 장면과 도형 좌표 장면을 함께 둘 때
       this.s.part = null;
       this.s.revealed = false;
       this.s.playing = false;
@@ -232,8 +234,31 @@
         rail.append(b);
       });
       rail.append(h('button', { class: 'apl-btn sm ghost apl-all-btn', title: '모든 장면 한눈에 보기', html: icon('list') + '<span>모든 장면</span>', onclick: () => this.openOverview() }));
-      const on = rail.querySelector('[aria-selected="true"]');
-      if (on && on.scrollIntoView) on.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      this._edgeFade(rail);
+      // 지금 장면 탭이 가운데에 오도록 레일만 가로로 옮깁니다(페이지는 움직이지 않습니다). 글꼴이 늦게 바뀌어도 한 번 더 맞춥니다.
+      const center = () => {
+        const on = rail.querySelector('[aria-selected="true"]');
+        if (!on) return;
+        const max = rail.scrollWidth - rail.clientWidth;
+        rail.scrollLeft = Math.max(0, Math.min(max, on.offsetLeft - rail.offsetLeft - (rail.clientWidth - on.offsetWidth) / 2));
+        this._edgeFade(rail);
+      };
+      center();
+      requestAnimationFrame(center);
+    }
+
+    /* 가로로 넘치는 줄(장면 탭·세부 장면)에서 "더 있다"를 보이도록 넘친 쪽 가장자리를 흐리게 합니다. */
+    _edgeFade(el) {
+      if (!el.__fade) {
+        el.__fade = () => {
+          const max = el.scrollWidth - el.clientWidth;
+          el.classList.toggle('fade-l', max > 2 && el.scrollLeft > 2);
+          el.classList.toggle('fade-r', max > 2 && el.scrollLeft < max - 2);
+        };
+        el.addEventListener('scroll', el.__fade, { passive: true });
+        if (window.ResizeObserver) new ResizeObserver(el.__fade).observe(el);
+      }
+      el.__fade();
     }
 
     /* ---------- 패널 ---------- */
@@ -250,15 +275,16 @@
       const cnt = grouped ? `${g.scenes.indexOf(g.scenes.find((x) => x.id === sc.id)) + 1} / ${g.scenes.length}` : `${this.index + 1} / ${this.list.length}`;
       ui.head.append(h('div', { class: 'apl-eyebrow', html: `${icon('compass')}<span>${APLab.esc(pos)}</span><span class="count">${cnt}</span>` }));
       const tt = APLab.splitFlag(sc.title);
-      ui.head.append(h('h2', { class: 'apl-scene-title', html: (tt.flag ? `<span class="apl-tag" style="--c:var(--m-rose);margin-right:6px;vertical-align:3px">${APLab.esc(tt.flag)}</span>` : '') + APLab.esc(tt.text) }));
+      ui.head.append(h('h2', { class: 'apl-scene-title', html: (tt.flag ? `<span class="apl-tag" style="--c:var(--m-rose);margin-right:6px;vertical-align:3px">${APLab.esc(tt.flag)}</span>` : '') + APLab.renderMath(this._sf(APLab.esc(tt.text), false)) }));
       if (grouped && g.scenes.length > 1) {
         const subs = h('div', { class: 'apl-subscenes', role: 'tablist', 'aria-label': '세부 장면' });
         g.scenes.forEach((x) => {
           const sp = APLab.splitFlag(x.short || x.title);
           const idx = this.list.findIndex((y) => y.gi === sc.gi && y.id === x.id);
-          subs.append(h('button', { class: 'apl-chip' + (idx === this.index ? ' on' : ''), role: 'tab', 'aria-selected': String(idx === this.index), onclick: () => this.goScene(idx), html: (sp.flag ? `<span class="flag">${APLab.esc(sp.flag)}</span>` : '') + APLab.esc(sp.text) }));
+          subs.append(h('button', { class: 'apl-chip' + (idx === this.index ? ' on' : ''), role: 'tab', 'aria-selected': String(idx === this.index), onclick: () => this.goScene(idx), html: (sp.flag ? `<span class="flag">${APLab.esc(sp.flag)}</span>` : '') + APLab.renderMath(this._sf(APLab.esc(sp.text))) }));
         });
         ui.head.append(subs);
+        this._edgeFade(subs);
       }
       if (sc.question) {
         ui.head.append(h('div', { class: 'apl-question', html: `<small>탐구 질문</small>${APLab.renderMath(sc.question)}` }));
@@ -285,6 +311,9 @@
       this.invalidate(true);
     }
 
+    /** 실험실이 stackFractions 를 켠 경우 칸·칩 글 속 분수를 쌓은 분수로 바꿉니다. */
+    _sf(x, tight = true) { return this.def.stackFractions ? APLab.stackFr(x, tight) : x; }
+
     _section(title, ico, ...kids) {
       return h('section', { class: 'apl-section' }, title ? h('h3', { class: 'apl-section-h', html: `<span>${icon(ico || 'info')}${APLab.esc(title)}</span>` }) : null, ...kids);
     }
@@ -298,7 +327,7 @@
       r.guide = h('div', { class: 'apl-rich' });
       pane.append(h('div', { class: 'apl-card' }, h('div', { class: 'apl-guide' }, h('span', { class: 'badge', html: icon('hand') }), r.guide)));
       // 조작
-      r.controls = h('div', { class: 'apl-section' });
+      r.controls = h('div', { class: 'apl-section apl-controls' });
       pane.append(r.controls);
       this._ctlIds = null;
       // 실시간 값
@@ -330,9 +359,9 @@
         const input = h('input', { type: 'range', class: 'apl-range', min: p.min, max: p.max, step: p.step || 0.01, value: this.s[id], 'aria-label': APLab.stripEmoji(p.label) });
         const out = h('output', {});
         const wrap = h('div', { class: 'apl-ctl', style: { '--c': `var(--m-${p.color || 'amber'})` } },
-          h('div', { class: 'apl-ctl-head' }, h('label', { html: APLab.renderMath(p.label) }), out),
+          h('div', { class: 'apl-ctl-head' }, h('label', { html: APLab.renderMath(this._sf(p.label)) }), out),
           input,
-          p.hint ? h('div', { class: 'apl-ctl-hint', html: APLab.renderMath(p.hint) }) : null);
+          p.hint ? h('div', { class: 'apl-ctl-hint', html: APLab.renderMath(this._sf(p.hint)) }) : null);
         input.addEventListener('input', () => {
           this._tween = null;
           this.s[id] = parseFloat(input.value);
@@ -352,7 +381,7 @@
             groups[gname] = true;
             if (gname) row.append(h('span', { class: 'ttl', text: gname }));
           }
-          const b = h('button', { class: 'apl-chip', html: (pr.color ? `<span class="dot" style="--c:var(--m-${pr.color})"></span>` : '') + APLab.esc(APLab.stripEmoji(pr.label)) });
+          const b = h('button', { class: 'apl-chip', html: (pr.color ? `<span class="dot" style="--c:var(--m-${pr.color})"></span>` : '') + APLab.renderMath(APLab.esc(APLab.stripEmoji(pr.label))) });
           b.addEventListener('click', () => {
             if (pr.apply) pr.apply(this.s, this);
             if (pr.set) this.tween(pr.set, pr.ms);
@@ -382,9 +411,11 @@
     _buildReview() {
       const sc = this.scene;
       const pane = this.ui.panes.review;
+      const openSol = Array.from(pane.querySelectorAll('details.apl-acc')).map((d) => d.open); // 다시 만들어도 펼친 풀이는 그대로
       pane.innerHTML = '';
       const r = this.refs;
       const steps = call(sc.steps, this.s);
+      r.stepsSig = JSON.stringify(steps || null); // 마지막으로 만든 단계 글: _renderPanel이 현재 글과 비교해 달라졌을 때만 다시 만듭니다
       if (steps && steps.length) {
         r.steps = h('div', { class: 'apl-steps' });
         r.stepPrev = h('button', { class: 'apl-btn sm', html: icon('prev') + '<span>이전</span>', onclick: () => this.stepBy(-1) });
@@ -418,6 +449,7 @@
           mk('quick', sol.quickTitle || '빠른 풀이 · 핵심 원리', sol.quickTag || '핵심', 'amber', false));
         pane.append(r.solution);
       }
+      Array.from(pane.querySelectorAll('details.apl-acc')).forEach((d, i) => { if (openSol[i]) d.open = true; });
       r.notes = h('div', { class: 'apl-rich' });
       r.notesSec = this._section(sc.notesTitle || this.def.notesTitle || '시험에서 자주 틀리는 부분', 'alert', h('div', { class: 'apl-card soft' }, r.notes));
       pane.append(r.notesSec);
@@ -425,9 +457,9 @@
     _fillSolution(body, src) {
       const v = call(src, this.s) || {};
       body.innerHTML = '';
-      if (v.steps) body.append(h('div', { class: 'apl-rich', html: APLab.renderMath(v.steps) }));
+      if (v.steps) body.append(h('div', { class: 'apl-rich', html: APLab.renderMath(this._sf(v.steps, false)) }));
       const note = v.warning || v.highlight || v.note;
-      if (note) body.append(h('div', { class: 'apl-callout', 'data-tone': v.warning ? 'warn' : 'key', html: icon(v.warning ? 'alert' : 'bulb') + `<div>${APLab.renderMath(APLab.cleanLead(note))}</div>` }));
+      if (note) body.append(h('div', { class: 'apl-callout', 'data-tone': v.warning ? 'warn' : 'key', html: icon(v.warning ? 'alert' : 'bulb') + `<div>${APLab.renderMath(this._sf(APLab.cleanLead(note), false))}</div>` }));
     }
 
     _buildProblem() {
@@ -438,7 +470,7 @@
       const r = this.refs;
       if (!pr) return;
       const meta = h('div', { class: 'apl-problem-meta' });
-      if (pr.tag) meta.append(h('span', { class: 'apl-tag', style: { '--c': 'var(--m-amber)' }, html: icon('flag') + APLab.esc(APLab.stripEmoji(call(pr.tag, this.s))) }));
+      if (pr.tag) meta.append(h('span', { class: 'apl-tag', style: { '--c': 'var(--m-amber)' }, html: icon('flag') + APLab.renderMath(APLab.esc(APLab.stripEmoji(call(pr.tag, this.s)))) }));
       r.timerBtn = null;
       const secs = pr.time ? parseInt(String(call(pr.time, this.s)).replace(/[^\d]/g, ''), 10) : 0;
       if (secs) {
@@ -625,7 +657,7 @@
           ui.tape.append(h('div', { class: 'apl-tape-title', html: APLab.renderMath(APLab.esc(APLab.stripEmoji(tape.title || ''))) }));
           if (tape.segments && tape.segments.length) {
             const bar = h('div', { class: 'apl-tape-bar' });
-            tape.segments.forEach((sg) => bar.append(h('span', { style: { flexGrow: String(Math.max(0.06, sg.weight || 1)), '--c': this.board.color(sg.color) }, title: sg.text, text: APLab.stripEmoji(sg.text) })));
+            tape.segments.forEach((sg) => bar.append(h('span', { style: { flexGrow: String(Math.max(0.06, sg.weight || 1)), '--c': this.board.color(sg.color) }, title: /\$/.test(sg.text) ? '' : sg.text, html: APLab.renderMath(APLab.esc(APLab.stripEmoji(sg.text))) })));
             ui.tape.append(bar);
           }
           requestAnimationFrame(() => this.board.resize() && this.invalidate());
@@ -663,13 +695,13 @@
         if (document.activeElement !== c.input) c.input.value = val;
         const pct = ((val - c.p.min) / (c.p.max - c.p.min)) * 100;
         c.input.style.setProperty('--p', clamp(pct, 0, 100) + '%');
-        APLab.setText(c.out, c.p.format ? c.p.format(val, s) : APLab.fmt(val));
+        APLab.setHTML(c.out, this._sf(APLab.esc(c.p.format ? c.p.format(val, s) : APLab.fmt(val))));
       }
       if (this._presetRow) APLab.$$('.apl-chip', this._presetRow).forEach((b) => { if (b.__isOn) b.classList.toggle('on', !!b.__isOn(s)); });
       for (const { a, b } of this._actionBtns || []) {
         const lbl = APLab.stripEmoji(call(a.label, s));
         const ic = call(a.icon, s);
-        const html = (ic ? icon(ic) : '') + `<span>${APLab.esc(lbl)}</span>`;
+        const html = (ic ? icon(ic) : '') + `<span>${APLab.renderMath(APLab.esc(lbl))}</span>`;
         if (b.__h !== html) { b.__h = html; b.innerHTML = html; }
         if (a.on) b.classList.toggle('on', !!a.on(s));
       }
@@ -706,8 +738,8 @@
           const el = r.readouts.children[i];
           el.style.setProperty('--c', x.color ? `var(--m-${x.color})` : 'var(--text)');
           APLab.setHTML(el.children[0], APLab.esc(APLab.stripEmoji(x.label)));
-          APLab.setText(el.children[1], x.value);
-          APLab.setText(el.children[2], x.note || '');
+          APLab.setHTML(el.children[1], APLab.esc(x.value == null ? '' : String(x.value)));
+          APLab.setHTML(el.children[2], APLab.esc(x.note || ''));
           el.children[2].hidden = !x.note;
           el.classList.toggle('hot', this._hoverRef === x.ref && !!x.ref);
         });
@@ -724,7 +756,7 @@
             const b = h('button', { class: 'apl-part' + (p.ok === false ? ' bad' : ''), 'aria-pressed': String(s.part === p.id), style: { '--c': this.board.color(p.color) } },
               h('span', { class: 'dot' }),
               h('span', {}, h('div', { class: 'nm', html: APLab.renderMath(APLab.esc(APLab.stripEmoji(p.name))) }), p.desc ? h('div', { class: 'ds', html: APLab.renderMath(APLab.esc(APLab.stripEmoji(p.desc))) }) : null),
-              p.value != null ? h('span', { class: 'val', text: APLab.stripEmoji(p.value) }) : h('span'));
+              p.value != null ? h('span', { class: 'val', html: APLab.renderMath(APLab.esc(APLab.stripEmoji(p.value))) }) : h('span'));
             b.addEventListener('click', () => { this.s.part = this.s.part === p.id ? null : p.id; this.invalidate(true); });
             r.parts.append(b);
           });
@@ -733,9 +765,16 @@
       // 요약
       r.summary.hidden = !v.summary;
       if (v.summary) APLab.setHTML(r.summary, `<small>핵심 결과</small>${APLab.esc(APLab.stripEmoji(v.summary))}`);
-      // 정리 탭
+      // 정리 탭: 단계 글이 지금 상태와 달라졌으면(슬라이더·점 이동 등) 다시 만듭니다. 단계 번호(s.step)는 유지하고 줄 수가 줄면 맞춥니다.
+      const stepsNow = call(sc.steps, s);
+      if (r.stepsSig !== JSON.stringify(stepsNow || null)) {
+        this._buildReview();
+        if (stepsNow && s.step > stepsNow.length) s.step = stepsNow.length;
+        const cnt = this.ui.tabs.querySelector('.apl-tab[aria-controls="apl-pane-review"] .cnt');
+        if (cnt && stepsNow) cnt.textContent = stepsNow.length + '단계';
+      }
       if (r.steps) {
-        const steps = call(sc.steps, s);
+        const steps = stepsNow;
         Array.from(r.steps.children).forEach((el, i) => {
           el.classList.toggle('done', i < s.step);
           el.classList.toggle('cur', i === s.step - 1);
@@ -799,7 +838,7 @@
       p.innerHTML = '';
       p.append(
         h('button', { class: 'apl-icon-btn', 'aria-label': '이전', html: icon('prev'), onclick: () => this.prev() }),
-        h('div', { class: 'txt', html: `<small>${APLab.esc(label)}</small>${APLab.renderMath(APLab.esc(txt))}` }),
+        h('div', { class: 'txt', html: `<small>${APLab.esc(label)}</small>${APLab.renderMath(this._sf(APLab.esc(txt)))}` }),
         h('button', { class: 'apl-icon-btn', 'aria-label': '다음', html: icon('next'), onclick: () => this.next() }));
     }
     next() {
@@ -1062,7 +1101,7 @@
           if (sc.enter) sc.enter(st, this);
           if (sc.problem && sc.problem.snap && sc.thumbSnap !== false) Object.assign(st, call(sc.problem.snap, st));
           const focus = call(sc.focus, st) || call(bd.focus, st);
-          APLab.Board.renderThumb(cv, { kind: bd.kind || 'cartesian', focus, pad: bd.thumbPad, aspect: sc.aspect || bd.aspect }, (b) => {
+          APLab.Board.renderThumb(cv, { kind: sc.boardKind || bd.kind || 'cartesian', focus, pad: bd.thumbPad, aspect: sc.aspect || bd.aspect }, (b) => {
             if (sc.panes) b.setPanes(call(sc.panes, st));
             const v = (sc.view ? sc.view(st, this) : this.def.view ? this.def.view(st, sc, this) : {}) || {};
             (sc.draw || this.def.draw)(b, st, v, this);

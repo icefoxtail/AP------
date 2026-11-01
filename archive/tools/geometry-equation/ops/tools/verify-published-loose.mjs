@@ -17,7 +17,7 @@ for(const ex of report){
   const ords=ex.items.filter(i=>i.ok).map(i=>i.ord);const page=await browser.newPage({viewport:{width:1100,height:1400}});
   const row={exam:ex.exam,figures:ords.length,status:'OK',missing:[]};
   try{
-    await page.goto(base+'/archive/engine.html?preview=1&qpp=4&mode=sol&data='+encodeURIComponent(dataParam),{waitUntil:'domcontentloaded',timeout:60000});
+    await page.goto(base+'/archive/engine.html?preview=1&qpp=4&mode=sol&data='+encodeURIComponent(dataParam)+'&assetBase=off',{waitUntil:'domcontentloaded',timeout:60000});
     const s=await page.waitForFunction(()=>{const e=document.documentElement.dataset.apRenderError;if(e)return {error:e};const t=document.getElementById('ctrl-title');if(t&&t.innerText==='시험지 데이터를 불러올 수 없습니다')return {error:'LOAD_ERROR'};const r=document.getElementById('print-area');if(r&&r.querySelector('.page')){const s2=document.documentElement.dataset.apPrintReadiness;if(!s2)return {ok:true};try{const v=JSON.parse(s2);if(!v.failed&&['RENDER_READY','PRINT_READY'].includes(v.state))return {ok:true};}catch{}}return false;},null,{timeout:90000}).then(h=>h.jsonValue()).catch(()=>({error:'TIMEOUT'}));
     if(!s.ok){row.status='RENDER_ERROR:'+s.error;}
     else{

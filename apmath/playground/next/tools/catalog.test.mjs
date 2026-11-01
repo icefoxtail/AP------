@@ -48,7 +48,7 @@ test('노선도의 역은 모두 실제 실험실이다', () => {
 
 test('labs/ 안의 실험실 HTML은 모두 카탈로그에 등록되어 있다', () => {
   const registered = new Set(cat.labs.map((l) => path.normalize(strip(l.legacy))));
-  const PORTALS = new Set([path.normalize('labs/대수/index.html')]); // 허브 카드에서 뺀 묶음 포털(#978)
+  const PORTALS = new Set([path.normalize('labs/대수/index.html'), path.normalize('labs/g7/nets-folding.html')]); // 허브 카드에서 뺀 묶음 포털(#978) · 옛 전개도 실험실(2.0 g7-nets 는 g7-polyhedra 로 합쳐 카탈로그에서 뺌, 옛 허브 카드만 연결)
   const missing = [];
   (function walk(dir) {
     for (const name of fs.readdirSync(dir)) {
