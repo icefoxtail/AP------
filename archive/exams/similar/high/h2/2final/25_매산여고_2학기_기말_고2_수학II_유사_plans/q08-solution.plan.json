@@ -1,0 +1,66 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "이제 증가 조건을 확인한다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "30",
+      "-6"
+    ],
+    "domain": [
+      -0.8,
+      5.8
+    ],
+    "viewport": [
+      -1,
+      6.5,
+      -12,
+      42
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisVariable": "t",
+    "functionName": "g'",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2.5,
+        "y": 37.5
+      },
+      {
+        "id": "T",
+        "x": 5,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "a=11일 때 g'(t)=6t(5-t)는 0<t<5에서 양수이다.",
+  "sourceConditions": [
+    {
+      "id": "q8-c1",
+      "condition": "a=11이면 g'(t)=6t(5-t)",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "a=11일 때 열린 구간 (0,5)에서 g'(t)>0이고 양 끝에서 0이 됨을 보인다."
+  ],
+  "assetPath": "assets/images/25_매산여고_2학기_기말_고2_수학II_유사/q8-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q08-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q08-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q08-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
+      "ordinal": 8,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 graphPlan에서만 결정된다."
+    }
+  }
+}
