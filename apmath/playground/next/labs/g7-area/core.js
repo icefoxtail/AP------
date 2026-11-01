@@ -329,8 +329,8 @@
 
 
   /* ------------------------------------------------------------------ 넓이 실험실 도우미 */
-  // 그림 속 글자에 쓰는 ½: 키트가 \\frac{1}{2} 를 위·아래로 쌓은 분수로 그립니다(검사용으로 APL_AR_RAWHALF=true 이면 ½ 글자).
-  const HALF = window.APL_AR_RAWHALF ? '½' : '\\frac{1}{2}';
+  // 그림 속 글자에 쓰는 ½: 키트가 \\frac{1}{2} 를 위·아래로 쌓은 분수로 그립니다.
+  const HALF = '\\frac{1}{2}';
   const cm2 = { tex: (v) => tx(v) + '\\text{cm}^2', plain: (v) => fmtN(v) + 'cm²' };
   const cm1 = { tex: (v) => tx(v) + '\\text{cm}', plain: (v) => fmtN(v) + 'cm' };
   const rotAbout = (p, q, th) => { const c = Math.cos(th), sn = Math.sin(th), dx = p.x - q.x, dy = p.y - q.y; return pt(q.x + dx * c - dy * sn, q.y + dx * sn + dy * c); };
