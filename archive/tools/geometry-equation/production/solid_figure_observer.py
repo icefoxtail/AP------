@@ -1326,10 +1326,12 @@ def space_vector(list_, code='SPACE_POINT_INVALID'):
 SPACE_ID = re.compile(r'^[a-z][a-z0-9]{0,7}$')
 SPACE_PLANE_NAME = re.compile(r'^\\(?:alpha|beta|gamma|delta|pi|theta|phi|sigma|omega|lambda|mu|rho)$')
 SPACE_PLANE_KEYS = {'id', 'name', 'through', 'normal', 'point', 'extent', 'fill', 'nameAt'}
+SPACE_LINE_KEYS = {'id', 'name', 'through', 'intersection', 'style'}
+SPACE_LINE_NAME = re.compile(r'^[a-z]$')
 
 
 def space_places(space, named, norm):
-    """(points, flags, frames) of the plan's space: id -> 3D point, id -> display flags and on-plane claim, plane id -> (a point, the unit normal); the points in the order written (a later point may use an earlier one); named: the solids' points (name -> (sid, px, p)); ValueError with the plan's code"""
+    """(points, flags, frames, lines) of the plan's space: id -> 3D point, id -> display flags and on-plane claim, plane id -> (a point, the unit normal), line id -> (a point, the unit direction); the points in the order written (a later point may use an earlier one); named: the solids' points (name -> (sid, px, p)); ValueError with the plan's code"""
     specs = space.get('points')
     if not isinstance(specs, list) or len(specs) < 1: raise ValueError('SPACE_POINT_INVALID')
     if len(specs) > 16: raise ValueError('SPACE_POINT_LIMIT')
@@ -1349,6 +1351,19 @@ def space_places(space, named, norm):
         if pl.get('fill') is not None and pl['fill'] not in BASE_FILL_STYLE: raise ValueError('SPACE_PLANE_INVALID')
         if pl.get('nameAt') is not None and (pl.get('name') is None or not (pl['nameAt'] in ('CORNER', 'CENTER') or (isinstance(pl['nameAt'], int) and not isinstance(pl['nameAt'], bool) and 0 <= pl['nameAt'] <= 3))): raise ValueError('SPACE_PLANE_INVALID')
         by_id[pl['id']] = pl
+    line_specs = space.get('lines') if space.get('lines') is not None else []
+    if not isinstance(line_specs, list) or len(line_specs) > 4: raise ValueError('SPACE_LINE_INVALID')
+    line_by_id = {}
+    for ln in line_specs:
+        if not isinstance(ln, dict) or set(ln) - SPACE_LINE_KEYS: raise ValueError('SPACE_LINE_INVALID')
+        if not isinstance(ln.get('id'), str) or not SPACE_ID.fullmatch(ln['id']) or ln['id'] in line_by_id or ln['id'] in by_id: raise ValueError('SPACE_LINE_INVALID')
+        if ln.get('name') is not None and (not isinstance(ln['name'], str) or not SPACE_LINE_NAME.fullmatch(ln['name'])): raise ValueError('SPACE_LINE_NAME_INVALID')
+        if (ln.get('through') is None) == (ln.get('intersection') is None): raise ValueError('SPACE_LINE_INVALID')
+        ends = ln.get('through') if ln.get('through') is not None else ln.get('intersection')
+        if not isinstance(ends, list) or len(ends) != 2 or len(set(map(str, ends))) != 2 or any(not isinstance(k, str) for k in ends): raise ValueError('SPACE_LINE_INVALID')
+        if ln.get('intersection') is not None and any(k not in by_id for k in ends): raise ValueError('SPACE_LINE_INVALID')
+        if ln.get('style') is not None and ln['style'] not in ('SOLID', 'DASHED', 'AUTO'): raise ValueError('SPACE_LINE_INVALID')
+        line_by_id[ln['id']] = ln
 
     def lookup(key, code='SPACE_POINT_INVALID'):
         if not isinstance(key, str): raise ValueError(code)
@@ -1377,6 +1392,24 @@ def space_places(space, named, norm):
             if not vlen(nn) > 1e-9: raise ValueError('SPACE_PLANE_DEGENERATE:' + pid)
             frames[pid] = (lookup(pl['point'], 'SPACE_PLANE_INVALID'), vunit(nn))
         return frames[pid]
+    lframes = {}
+
+    def line_frame(lid):
+        if lid in lframes: return lframes[lid]
+        ln = line_by_id.get(lid)
+        if ln is None: raise ValueError('SPACE_LINE_INVALID:' + str(lid)[:12])
+        if ln.get('through') is not None:
+            P, Q = (lookup(k, 'SPACE_LINE_INVALID') for k in ln['through'])
+            d = vsub(Q, P)
+            if not vlen(d) > 1e-9: raise ValueError('SPACE_LINE_INVALID:' + lid)
+            lframes[lid] = (P, vunit(d))
+        else:
+            (p1, n1), (p2, n2) = (frame(k) for k in ln['intersection'])
+            d = vcross(n1, n2)
+            if not vlen(d) > 1e-9: raise ValueError('SPACE_PLANES_PARALLEL:' + lid)
+            c1, c2, dd = vdot(n1, p1), vdot(n2, p2), vdot(d, d)
+            lframes[lid] = (vmul(vadd(vmul(vcross(n2, d), c1), vmul(vcross(d, n1), c2)), 1 / dd), vunit(d))
+        return lframes[lid]
     for entry in specs:
         if not isinstance(entry, dict) or set(entry) - {'id', 'at', 'on', 'hideName', 'hideDot'}: raise ValueError('SPACE_POINT_INVALID')
         ident = entry.get('id')
@@ -1413,7 +1446,11 @@ def space_places(space, named, norm):
                 f = at['footOnLine']
                 if not isinstance(f, dict) or set(f) - {'from', 'line'}: raise ValueError('SPACE_POINT_INVALID')
                 P = lookup(f.get('from'))
-                A, B = places(f.get('line'), 2)
+                if isinstance(f.get('line'), str):
+                    A, u = line_frame(f['line'])
+                    B = vadd(A, u)
+                else:
+                    A, B = places(f.get('line'), 2)
                 d = vsub(B, A)
                 if vdot(d, d) < 1e-12: raise ValueError('SOLID_AUX_FOOT_DEGENERATE')
                 p = vadd(A, vmul(d, vdot(vsub(P, A), d) / vdot(d, d)))
@@ -1440,11 +1477,12 @@ def space_places(space, named, norm):
         pts[ident] = p
         flags[ident] = {'hideName': entry.get('hideName') is True, 'hideDot': entry.get('hideDot') is True, 'on': entry.get('on')}
     for pid in by_id: frame(pid)
+    for lid in line_by_id: line_frame(lid)
     for ident, f in flags.items():
         if f['on'] is not None:
             A, u = frames[f['on']]
             if abs(vdot(u, vsub(pts[ident], A))) > 1e-7 * (1 + vlen(pts[ident])): raise ValueError('SPACE_POINT_NOT_ON_PLANE:' + ident)
-    return pts, flags, frames
+    return pts, flags, frames, lframes
 
 
 def space_planes(space, pts, named, frames, norm):
@@ -1481,7 +1519,56 @@ def space_planes(space, pts, named, frames, norm):
             c = vadd(p0, vadd(vmul(e1, (a0 + a1) / 2), vmul(e2, (b0 + b1) / 2)))
             u, v = vmul(e1, 0.75 * sa), vmul(e2, 0.75 * sb)
         verts = [vsub(vsub(c, u), v), vsub(vadd(c, u), v), vadd(vadd(c, u), v), vadd(vsub(c, u), v)]
-        out[pid] = {'verts': verts, 'name': pl.get('name'), 'fill': pl.get('fill') or 'LIGHT', 'nameAt': pl.get('nameAt') or 'CORNER', 'n': n}
+        out[pid] = {'verts': verts, 'name': pl.get('name'), 'fill': pl.get('fill') or 'LIGHT', 'nameAt': pl.get('nameAt') or 'CORNER', 'n': n, 'p0': p0, 'c': c, 'u': u, 'v': v}
+    return out
+
+
+def _clip_range(A, d, pl):
+    """the range of s for which A + s d is inside the plane's parallelogram, or None"""
+    n, c, u, v = pl['n'], pl['c'], pl['u'], pl['v']
+    uv = vdot(vcross(u, v), n)
+    w0 = vsub(A, c)
+    lo, hi = -math.inf, math.inf
+    for k0, k1 in ((vdot(vcross(w0, v), n) / uv, vdot(vcross(d, v), n) / uv), (vdot(vcross(u, w0), n) / uv, vdot(vcross(u, d), n) / uv)):
+        if abs(k1) < 1e-12:
+            if abs(k0) > 1 + 1e-9: return None
+            continue
+        s1, s2 = (-1 - k0) / k1, (1 - k0) / k1
+        lo, hi = max(lo, min(s1, s2)), min(hi, max(s1, s2))
+    return (lo, hi) if lo < hi - 1e-9 else None
+
+
+def space_lines(space, pts, named, frames, lframes, planes):
+    """line id -> {a, b: the two ends (3D), name, style}: a line through two points runs 35 percent of its length beyond them (kept inside a plane it lies in); the intersection of two planes runs the length of the parallelograms it is the common edge of, a little beyond"""
+    out = {}
+    every = dict(pts)
+    every.update({k: v[2] for k, v in named.items() if k not in every})
+    for ln in space.get('lines') or []:
+        lid = ln['id']
+        A, d = lframes[lid]
+        anchors = [vdot(vsub(p, A), d) for p in every.values() if vlen(vcross(vsub(p, A), d)) < 1e-7 * (1 + vlen(p))]
+        clips = []
+        for pl in planes.values():
+            if abs(vdot(pl['n'], d)) < 1e-9 and abs(vdot(pl['n'], vsub(A, pl['p0']))) < 1e-7 * (1 + vlen(A)):
+                r = _clip_range(A, d, pl)
+                if r: clips.append(r)
+        if ln.get('intersection') is not None:
+            both = (max(c[0] for c in clips), min(c[1] for c in clips)) if len(clips) >= 2 else None
+            rng = both if both and both[0] < both[1] - 1e-9 else ((min(c[0] for c in clips), max(c[1] for c in clips)) if clips else None)
+            if rng: lo, hi = rng
+            elif len(anchors) >= 2: lo, hi = min(anchors), max(anchors)
+            else: raise ValueError('SPACE_LINE_INVALID:' + lid)
+            if anchors: lo, hi = min([lo] + anchors), max([hi] + anchors)
+            m = 0.06 * (hi - lo)
+            lo, hi = lo - m, hi + m
+        else:
+            lo, hi = min(anchors), max(anchors)
+            a0, a1, w = lo, hi, 0.35 * (hi - lo)
+            lo, hi = lo - w, hi + w
+            if clips:
+                r0, r1 = max(c[0] for c in clips), min(c[1] for c in clips)
+                if r0 < r1 - 1e-9: lo, hi = min(max(lo, r0), a0), max(min(hi, r1), a1)
+        out[lid] = {'a': vadd(A, vmul(d, lo)), 'b': vadd(A, vmul(d, hi)), 'name': ln.get('name'), 'style': ln.get('style') or 'SOLID', 'A': A, 'd': d}
     return out
 
 
@@ -1553,12 +1640,13 @@ def audit_space(plan, ctx, named, norm, scale, solids):
     root, errors = ctx['root'], ctx['errors']
     space = plan.get('space')
     if space is None: return
-    if not isinstance(space, dict) or set(space) - {'points', 'planes', 'segments'}:
+    if not isinstance(space, dict) or set(space) - {'points', 'planes', 'lines', 'segments'}:
         errors.append('SPACE_POINT_INVALID')
         return
     try:
-        pts, flags, frames = space_places(space, named, norm)
+        pts, flags, frames, lframes = space_places(space, named, norm)
         planes = space_planes(space, pts, named, frames, norm)
+        lines = space_lines(space, pts, named, frames, lframes, planes)
     except ValueError as exc:
         errors.append(str(exc))
         return
@@ -1569,6 +1657,9 @@ def audit_space(plan, ctx, named, norm, scale, solids):
     pieces = {}
     for e in root.iter(NS + 'line'):
         if e.get('data-role') == 'space-segment': pieces.setdefault(e.get('data-edge') or '', []).append(e)
+    line_els = {}
+    for e in root.iter(NS + 'line'):
+        if e.get('data-role') == 'space-line': line_els.setdefault(e.get('data-line') or '', []).append(e)
     plane_els = {}
     for e in root.iter(NS + 'polygon'):
         if e.get('data-role') == 'space-plane': plane_els.setdefault(e.get('data-plane'), []).append(e)
@@ -1585,6 +1676,11 @@ def audit_space(plan, ctx, named, norm, scale, solids):
         for pid, els in plane_els.items():
             if pid in planes and len(els) == 1:
                 for p, q in zip(planes[pid]['verts'], _points(els[0].get('points'))): pairs.append((p, q))
+    if not pairs:
+        for lid, els in line_els.items():
+            if lid in lines and len(els) >= 1:
+                first = min(els, key=lambda e: float(e.get('data-t0') or 0))
+                if abs(float(first.get('data-t0') or 0)) < 1e-9: pairs.append((lines[lid]['a'], (_num(first, 'x1'), _num(first, 'y1'))))
     if not pairs:
         errors.append('SPACE_FRAME_UNKNOWN')
         return
@@ -1615,6 +1711,7 @@ def audit_space(plan, ctx, named, norm, scale, solids):
         if solid['cat'] == 'POLY': occluders.append((solid, {fi: _plane_of(solid, f) for fi, f in enumerate(solid['faces'])}))
     if planes: occluders.append((None, {pid: _plane_of_points(pl['verts']) for pid, pl in planes.items()}))
     audit_space_segments(space, ctx, named, norm, px, occluders, pieces)
+    audit_space_lines(lines, line_els, ctx, px, occluders)
     ctx['space_occluders'] = occluders
     ctx['space_px'] = px
 
@@ -1671,28 +1768,63 @@ def audit_space_segments(space, ctx, named, norm, px, occluders, pieces):
         expected[join_keys([a, b])] = (a, b, style, role)
     if sorted(pieces) != sorted(expected): errors.append('SPACE_SEGMENT_SET_MISMATCH')
     for key, (a, b, style, role) in expected.items():
-        els = sorted(pieces.get(key, []), key=lambda e: float(e.get('data-t0') or 0))
-        if not els or a not in named or b not in named: continue
-        A, B = named[a][2], named[b][2]
-        pa, pb = px(A), px(B)
-        if style == 'AUTO':
-            def hidden_at(t, A=A, B=B):
-                P = vadd(A, vmul(vsub(B, A), t))
-                return any(hidden_by_faces(solid, planes, P, set()) for solid, planes in occluders)
-            runs = space_runs(hidden_at)
-        else: runs = [(0.0, 1.0, style == 'DASHED')]
-        runs = [r for r in runs if math.hypot((r[1] - r[0]) * (pb[0] - pa[0]), (r[1] - r[0]) * (pb[1] - pa[1])) >= 0.4]
-        if len(runs) != len(els):
-            errors.append('SPACE_SEGMENT_RUNS_MISMATCH:' + key)
+        if a not in named or b not in named: continue
+        audit_runs(key, pieces.get(key, []), named[a][2], named[b][2], style, ('#c0392b' if role == 'ACCENT' else '#111', role), px, occluders, ctx, 'SEGMENT')
+
+
+def audit_runs(key, els, A, B, style, look, px, occluders, ctx, kind):
+    """the pieces of one drawn segment or line from A to B: where the depth test changes, each piece's ends on the projected segment, dashed where hidden, the stroke as written"""
+    errors = ctx['errors']
+    els = sorted(els, key=lambda e: float(e.get('data-t0') or 0))
+    if not els: return
+    pa, pb = px(A), px(B)
+    if style == 'AUTO':
+        def hidden_at(t):
+            P = vadd(A, vmul(vsub(B, A), t))
+            return any(hidden_by_faces(solid, planes, P, set()) for solid, planes in occluders)
+        runs = space_runs(hidden_at)
+    else: runs = [(0.0, 1.0, style == 'DASHED')]
+    runs = [r for r in runs if math.hypot((r[1] - r[0]) * (pb[0] - pa[0]), (r[1] - r[0]) * (pb[1] - pa[1])) >= 0.4]
+    if len(runs) != len(els):
+        errors.append('SPACE_%s_RUNS_MISMATCH:%s' % (kind, key))
+        return
+    for (t0, t1, hid), e in zip(runs, els):
+        d0, d1 = float(e.get('data-t0') or 0), float(e.get('data-t1') or 0)
+        if abs(d0 - t0) > 1.5e-3 or abs(d1 - t1) > 1.5e-3: errors.append('SPACE_%s_RUN_BOUNDARY:%s' % (kind, key))
+        for (x, y), t in (((_num(e, 'x1'), _num(e, 'y1')), d0), ((_num(e, 'x2'), _num(e, 'y2')), d1)):
+            if math.hypot(x - (pa[0] + (pb[0] - pa[0]) * t), y - (pa[1] + (pb[1] - pa[1]) * t)) > POS_TOL: errors.append('SPACE_%s_ENDPOINT_OFF:%s' % (kind, key))
+        _stroke_ok(e, hid, errors, 'space-%s-%s' % (kind.lower(), key))
+        if e.get('data-style') != style or e.get('stroke') != look[0] or (len(look) > 1 and e.get('data-accent') != look[1]): errors.append('SPACE_%s_STYLE_MISMATCH:%s' % (kind, key))
+    ctx['segments'].extend(((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2'))) for e in els)
+
+
+def audit_space_lines(lines, line_els, ctx, px, occluders):
+    """G4b-3: each line of plan.space is drawn from its end a to its end b (found by the observer from the plan alone), through its points, with its one-letter name near an end"""
+    errors = ctx['errors']
+    if sorted(line_els) != sorted(lines): errors.append('SPACE_LINE_SET_MISMATCH')
+    for lid, ln in lines.items():
+        audit_runs(lid, line_els.get(lid, []), ln['a'], ln['b'], ln['style'], ('#111',), px, occluders, ctx, 'LINE')
+        label = next((g for g in ctx['labels'] if g.get('id') == 'line-name-' + lid), None)
+        if ln['name'] is None:
+            if label is not None: errors.append('SPACE_LINE_NAME_NOT_IN_PLAN:' + lid)
             continue
-        for (t0, t1, hid), e in zip(runs, els):
-            d0, d1 = float(e.get('data-t0') or 0), float(e.get('data-t1') or 0)
-            if abs(d0 - t0) > 1.5e-3 or abs(d1 - t1) > 1.5e-3: errors.append('SPACE_SEGMENT_RUN_BOUNDARY:' + key)
-            for (x, y), t in (((_num(e, 'x1'), _num(e, 'y1')), d0), ((_num(e, 'x2'), _num(e, 'y2')), d1)):
-                if math.hypot(x - (pa[0] + (pb[0] - pa[0]) * t), y - (pa[1] + (pb[1] - pa[1]) * t)) > POS_TOL: errors.append('SPACE_SEGMENT_ENDPOINT_OFF:' + key)
-            _stroke_ok(e, hid, errors, 'space-segment-' + key)
-            if e.get('data-style') != style or e.get('data-accent') != role or e.get('stroke') != ('#c0392b' if role == 'ACCENT' else '#111'): errors.append('SPACE_SEGMENT_STYLE_MISMATCH:' + key)
-        ctx['segments'].extend(((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2'))) for e in els)
+        box = ctx['boxes'].get('line-name-' + lid)
+        if label is None or box is None:
+            errors.append('SPACE_LINE_NAME_MISSING:' + lid)
+            continue
+        if label.get('data-tex') != ln['name'] or label.get('data-space-of') != lid: errors.append('SPACE_LINE_NAME_MISMATCH:' + lid)
+        a, b = px(ln['a']), px(ln['b'])
+        if g_leader_free(ctx, label, box, a, b): errors.append('SPACE_LINE_NAME_FAR:' + lid)
+    expected = {'line-name-' + lid for lid, ln in lines.items() if ln['name'] is not None}
+    for g in ctx['labels']:
+        if g.get('data-label-role') == 'line-name' and g.get('id') not in expected: errors.append('SPACE_LINE_NAME_UNEXPECTED:' + str(g.get('id')))
+
+
+def g_leader_free(ctx, label, box, a, b):
+    """True when a line's name stands too far from its line: more than 40 px (a name with a leader: the leader has to end on the line)"""
+    leader = next((e for e in ctx['root'].iter(NS + 'line') if e.get('data-role') == 'leader' and e.get('data-label') == label.get('id')), None)
+    if leader is not None: return _seg_dist((_num(leader, 'x2'), _num(leader, 'y2')), a, b) > 1.5
+    return _box_seg_dist(box, a, b) > 40
 
 
 def expanded_solid_specs(plan):

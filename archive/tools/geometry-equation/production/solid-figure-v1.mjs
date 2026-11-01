@@ -883,11 +883,12 @@ function resolveAuxPoints(solids,named,vref){
 }
 
 // --- free space: points and segments of a space figure (G4b) ---------------------------------------------------------------------------------------
-// plan.space:{points:[{id,at,on?,hideName?,hideDot?}],planes:[{id,name?,through|normal+point,extent?,fill?,nameAt?}],segments:[{from,to,style?,role?}]}: points that belong to no solid, in 3D. A figure of the three-perpendiculars
+// plan.space:{points:[{id,at,on?,hideName?,hideDot?}],planes:[{id,name?,through|normal+point,extent?,fill?,nameAt?}],lines:[{id,name?,through|intersection,style?}],segments:[{from,to,style?,role?}]}: points that belong to no solid, in 3D. A figure of the three-perpendiculars
 // theorem or of two planes has no solid at all, so a plan may have space and no solids (or both). at is [x,y,z] (numbers or exact texts) or one of the general forms of
 // a solid's helper points (midpoint, divide, centroid, footOnLine, projection), read over every named point placed so far (a point of the space, a vertex of a solid).
-const SPACE_MAX_POINTS=16,SPACE_MAX_PLANES=3,SPACE_MAX_SEGMENTS=16,SPACE_POINT_NAME=/^[A-Z]′?$/u,SPACE_ID=/^[a-z][a-z0-9]{0,7}$/;
+const SPACE_MAX_POINTS=16,SPACE_MAX_PLANES=3,SPACE_MAX_LINES=4,SPACE_MAX_SEGMENTS=16,SPACE_POINT_NAME=/^[A-Z]′?$/u,SPACE_ID=/^[a-z][a-z0-9]{0,7}$/;
 // a plane is named by a Greek letter written in TeX
+const SPACE_LINE_NAME=/^[a-z]$/;
 const SPACE_PLANE_NAME=/^\\(?:alpha|beta|gamma|delta|pi|theta|phi|sigma|omega|lambda|mu|rho)$/;
 /** An exact coordinate text: integers and decimals with + - * / ( ) and sqrt(n), such as "1/2", "sqrt(3)/2", "-sqrt(2)/2". NaN when the text is not one. */
 function spaceNumber(text){
@@ -917,10 +918,11 @@ const spaceVector=(list,code)=>{if(!Array.isArray(list)||list.length!==3)bad(cod
 const r6v=p=>p.map(r6);
 function solveSpace(raw,solids,named,vref){
   if(!isPlain(raw))bad('SPACE_POINT_INVALID');
-  onlyKeys(raw,['points','planes','segments'],'SPACE_POINT_INVALID');
-  const pointSpecs=raw.points,planeSpecs=raw.planes??[],segSpecs=raw.segments??[];
+  onlyKeys(raw,['points','planes','lines','segments'],'SPACE_POINT_INVALID');
+  const pointSpecs=raw.points,planeSpecs=raw.planes??[],lineSpecs=raw.lines??[],segSpecs=raw.segments??[];
   if(!Array.isArray(pointSpecs)||pointSpecs.length<1||!Array.isArray(segSpecs))bad('SPACE_POINT_INVALID');
   if(!Array.isArray(planeSpecs))bad('SPACE_PLANE_INVALID');
+  if(!Array.isArray(lineSpecs)||lineSpecs.length>SPACE_MAX_LINES)bad('SPACE_LINE_INVALID');
   if(pointSpecs.length>SPACE_MAX_POINTS)bad('SPACE_POINT_LIMIT');
   if(planeSpecs.length>SPACE_MAX_PLANES)bad('SPACE_PLANE_LIMIT');
   if(segSpecs.length>SPACE_MAX_SEGMENTS)bad('SPACE_SEGMENT_INVALID');
@@ -969,6 +971,41 @@ function solveSpace(raw,solids,named,vref){
     const frame={id,p0,n};
     planeCache.set(id,frame);return frame;
   };
+  // lines: through two points, or the intersection of two planes of this space (the engine works the line out)
+  const lineById=new Map();
+  for(const ln of lineSpecs){
+    if(!isPlain(ln))bad('SPACE_LINE_INVALID');
+    onlyKeys(ln,['id','name','through','intersection','style'],'SPACE_LINE_INVALID');
+    if(typeof ln.id!=='string'||!SPACE_ID.test(ln.id)||lineById.has(ln.id)||planeById.has(ln.id))bad('SPACE_LINE_INVALID');
+    if(ln.name!==undefined&&(typeof ln.name!=='string'||!SPACE_LINE_NAME.test(ln.name)))bad('SPACE_LINE_NAME_INVALID');
+    if((ln.through===undefined)===(ln.intersection===undefined))bad('SPACE_LINE_INVALID');
+    const ends=ln.through??ln.intersection;
+    if(!Array.isArray(ends)||ends.length!==2||new Set(ends).size!==2||ends.some(k=>typeof k!=='string'))bad('SPACE_LINE_INVALID');
+    if(ln.intersection!==undefined&&ends.some(k=>!planeById.has(k)))bad('SPACE_LINE_INVALID');
+    if(ln.style!==undefined&&!['SOLID','DASHED','AUTO'].includes(ln.style))bad('SPACE_LINE_INVALID');
+    lineById.set(ln.id,ln);
+  }
+  const lineCache=new Map();
+  const lineFrame=id=>{
+    if(lineCache.has(id))return lineCache.get(id);
+    const spec=lineById.get(id);
+    if(!spec)bad('SPACE_LINE_INVALID:'+String(id).slice(0,12));
+    let A,d;
+    if(spec.through!==undefined){
+      const [P,Q]=spec.through.map(k=>lookup(k,'SPACE_LINE_INVALID'));
+      d=sub(Q,P);
+      if(!(len(d)>1e-9))bad('SPACE_LINE_INVALID:'+id);
+      A=P;d=unit(d);
+    }else{
+      // the direction is the cross product of the two normals; a point on both planes comes from the two plane equations and d.x = 0: x = (c1 (n2 x d) + c2 (d x n1)) / |d|^2
+      const [f1,f2]=spec.intersection.map(planeFrame),dd=cross(f1.n,f2.n);
+      if(!(len(dd)>1e-9))bad('SPACE_PLANES_PARALLEL:'+id);
+      const c1=dot(f1.n,f1.p0),c2=dot(f2.n,f2.p0);
+      A=mulv(add(mulv(cross(f2.n,dd),c1),mulv(cross(dd,f1.n),c2)),1/dot(dd,dd));d=unit(dd);
+    }
+    const frame={id,A,d};
+    lineCache.set(id,frame);return frame;
+  };
   const points=[];
   for(const entry of pointSpecs){
     if(!isPlain(entry))bad('SPACE_POINT_INVALID');
@@ -1005,7 +1042,11 @@ function solveSpace(raw,solids,named,vref){
         const f=at.footOnLine;
         if(!isPlain(f))bad('SPACE_POINT_INVALID');
         onlyKeys(f,['from','line'],'SPACE_POINT_INVALID');
-        const P=lookup(f.from),[A,B]=places(f.line,2),d=sub(B,A);
+        const P=lookup(f.from);
+        let A,d;
+        // the line through two points, or a line of this space by its id
+        if(typeof f.line==='string'){const fr=lineFrame(f.line);A=fr.A;d=fr.d;}
+        else{const [P0,P1]=places(f.line,2);A=P0;d=sub(P1,P0);}
         if(!(dot(d,d)>1e-12))bad('SOLID_AUX_FOOT_DEGENERATE');
         p=add(A,mulv(d,dot(sub(P,A),d)/dot(d,d)));
         if(len(sub(p,P))<1e-6)bad('SOLID_AUX_FOOT_DEGENERATE');
@@ -1063,10 +1104,51 @@ function solveSpace(raw,solids,named,vref){
     const verts=[sub(sub(c,u),v),sub(add(c,u),v),add(add(c,u),v),add(sub(c,u),v)];
     return {id:spec.id,...(spec.name!==undefined?{name:spec.name}:{}),fill:spec.fill??'LIGHT',nameAt:spec.nameAt??'CORNER',n,p0:fr.p0,c,u,v,verts};
   });
+  // the part of the line inside a plane's parallelogram, as a range of the line's parameter s (the point A + s d), or null
+  const clipRange=(fr,pl)=>{
+    const uv=dot(cross(pl.u,pl.v),pl.n),w0=sub(fr.A,pl.c);
+    // a point q of the plane is c + a u + b v: a = ((q-c) x v).n / (u x v).n, b = (u x (q-c)).n / (u x v).n; the parallelogram is |a| <= 1, |b| <= 1
+    const ks=[[dot(cross(w0,pl.v),pl.n)/uv,dot(cross(fr.d,pl.v),pl.n)/uv],[dot(cross(pl.u,w0),pl.n)/uv,dot(cross(pl.u,fr.d),pl.n)/uv]];
+    let lo=-Infinity,hi=Infinity;
+    for(const [k0,k1] of ks){
+      if(Math.abs(k1)<1e-12){if(Math.abs(k0)>1+1e-9)return null;continue;}
+      const s1=(-1-k0)/k1,s2=(1-k0)/k1;
+      lo=Math.max(lo,Math.min(s1,s2));hi=Math.min(hi,Math.max(s1,s2));
+    }
+    return lo<hi-1e-9?[lo,hi]:null;
+  };
+  // the lines: drawn from one end to the other, through every point of the space on them. A line through two points runs 35 percent of its length beyond them (kept inside a plane it lies in);
+  // the intersection of two planes runs the length of the parallelograms it is the common edge of, a little beyond
+  const lines=lineSpecs.map(spec=>{
+    const fr=lineFrame(spec.id);
+    const members=[...named.entries()].filter(([,e])=>len(cross(sub(e.p,fr.A),fr.d))<1e-7*(1+len(e.p))).map(([k])=>k);
+    const anchors=members.map(k=>dot(sub(named.get(k).p,fr.A),fr.d));
+    const clips=planes.filter(pl=>Math.abs(dot(pl.n,fr.d))<1e-9&&Math.abs(dot(pl.n,sub(fr.A,pl.p0)))<1e-7*(1+len(fr.A))).map(pl=>clipRange(fr,pl)).filter(Boolean);
+    let lo,hi;
+    if(spec.intersection!==undefined){
+      const both=clips.length>=2?[Math.max(...clips.map(c=>c[0])),Math.min(...clips.map(c=>c[1]))]:null;
+      const range=both&&both[0]<both[1]-1e-9?both:clips.length?[Math.min(...clips.map(c=>c[0])),Math.max(...clips.map(c=>c[1]))]:null;
+      if(range){lo=range[0];hi=range[1];}
+      else if(anchors.length>=2){lo=Math.min(...anchors);hi=Math.max(...anchors);}
+      else bad('SPACE_LINE_INVALID:'+spec.id);
+      if(anchors.length){lo=Math.min(lo,...anchors);hi=Math.max(hi,...anchors);}
+      const m=0.06*(hi-lo);lo-=m;hi+=m;
+    }else{
+      lo=Math.min(...anchors);hi=Math.max(...anchors);
+      const w=0.35*(hi-lo),a0=lo,a1=hi;
+      lo-=w;hi+=w;
+      if(clips.length){
+        const r=[Math.max(...clips.map(c=>c[0])),Math.min(...clips.map(c=>c[1]))];
+        if(r[0]<r[1]-1e-9){lo=Math.min(Math.max(lo,r[0]),a0);hi=Math.max(Math.min(hi,r[1]),a1);}
+      }
+    }
+    return {id:spec.id,...(spec.name!==undefined?{name:spec.name}:{}),a:add(fr.A,mulv(fr.d,lo)),b:add(fr.A,mulv(fr.d,hi)),style:spec.style??'SOLID',points:members};
+  });
   // segments between named points; AUTO dashes the parts that something in front of them hides: a face of a solid or a plane of the space
   const segments=[],pairKeys=new Set(),occluders=new Map();
   for(const solid of solids)if(solid.category==='POLY')for(const face of solid.faces)occluders.set(solid.id+'|'+face.id,facePlane(solid,face));
   for(const pl of planes)occluders.set('plane:'+pl.id,planeOfPoints(pl.verts));
+  for(const ln of lines)ln.runs=ln.style==='AUTO'?runsAlong(t=>occluded(occluders,lerp(ln.a,ln.b,t),new Set())):[{t0:0,t1:1,hidden:ln.style==='DASHED'}];
   for(const s of segSpecs){
     if(!isPlain(s))bad('SPACE_SEGMENT_INVALID');
     onlyKeys(s,['from','to','style','role'],'SPACE_SEGMENT_INVALID');
@@ -1083,13 +1165,13 @@ function solveSpace(raw,solids,named,vref){
     const runs=style==='AUTO'?runsAlong(t=>occluded(occluders,lerp(A,B,t),new Set())):[{t0:0,t1:1,hidden:style==='DASHED'}];
     segments.push({from,to,style,role,runs});
   }
-  const drawn=(a,b)=>segments.some(s=>(s.from===a&&s.to===b)||(s.from===b&&s.to===a));
-  return {model:{points:points.map(q=>({...q,p:r6v(q.p)})),...(planes.length?{planes:planes.map(pl=>({id:pl.id,...(pl.name!==undefined?{name:pl.name}:{}),fill:pl.fill,nameAt:pl.nameAt,n:r6v(pl.n),verts:pl.verts.map(r6v)}))}:{}),segments},drawn};
+  const drawn=(a,b)=>segments.some(s=>(s.from===a&&s.to===b)||(s.from===b&&s.to===a))||lines.some(l=>l.points.includes(a)&&l.points.includes(b));
+  return {model:{points:points.map(q=>({...q,p:r6v(q.p)})),...(planes.length?{planes:planes.map(pl=>({id:pl.id,...(pl.name!==undefined?{name:pl.name}:{}),fill:pl.fill,nameAt:pl.nameAt,n:r6v(pl.n),verts:pl.verts.map(r6v)}))}:{}),...(lines.length?{lines:lines.map(l=>({...l,a:r6v(l.a),b:r6v(l.b)}))}:{}),segments},drawn};
 }
 const spaceNames=space=>space?space.points.filter(q=>!q.hideName).length:0;
-const spaceStress=space=>space?space.segments.length+(space.planes?.length??0):0;
+const spaceStress=space=>space?space.segments.length+(space.planes?.length??0)+(space.lines?.length??0):0;
 /** The screen points (screen units) a space figure occupies: its points and the corners of its planes. */
-const spaceScreenPoints=space=>space?[...space.points.map(q=>project(q.p)),...(space.planes??[]).flatMap(pl=>pl.verts.map(project))]:[];
+const spaceScreenPoints=space=>space?[...space.points.map(q=>project(q.p)),...(space.planes??[]).flatMap(pl=>pl.verts.map(project)),...(space.lines??[]).flatMap(l=>[project(l.a),project(l.b)])]:[];
 
 // --- solving the figure ---------------------------------------------------------------------------------------------------------------------
 const MAX_SEGMENTS=10;
@@ -2180,6 +2262,11 @@ function spec3d(plan,model,ctx){
         line(`space-segment-${key}-${k+1}`,'space-segment',p0,p1,{edge:key,vis:run.hidden?'hidden':'solid',t0:run.t0,t1:run.t1,accent:sg.role,style:sg.style,space:true});
       });
     }
+    for(const ln of model.space.lines??[])ln.runs.forEach((run,k)=>{
+      const p0=pt(project(lerp(ln.a,ln.b,run.t0))),p1=pt(project(lerp(ln.a,ln.b,run.t1)));
+      if(Math.hypot(p1[0]-p0[0],p1[1]-p0[1])<0.4)return;
+      line(`space-line-${ln.id}-${k+1}`,'space-line',p0,p1,{lineId:ln.id,vis:run.hidden?'hidden':'solid',t0:run.t0,t1:run.t1,style:ln.style,space:true});
+    });
     for(const q of model.space.points)if(!q.hideDot){const c=pt(project(q.p));prims.push({t:'dot',id:'space-'+q.id,role:'space-point',point:q.id,cx:c[0],cy:c[1],r:2.4,space:true});}
   }
   // the axis of a rotation solid: a dash-dot line a little longer than the solid
@@ -2410,6 +2497,13 @@ function spec3d(plan,model,ctx){
     const room=i=>{const c=polygonCentroid(regions[i]);return Math.min(1e9,...others.map(o=>Math.hypot(o[0]-c[0],o[1]-c[1])));};
     const pick=Number.isInteger(pl.nameAt)?pl.nameAt:[0,1,2,3].reduce((best,i)=>room(i)>room(best)+1e-9?i:best,0);
     labels.push({id:'plane-name-'+pl.id,role:'plane-name',owner:'plane-'+pl.id,kind:'MATH',tex:pl.name,plain:pl.name,value:pl.name,place:'FACE',target:'plane|'+pl.id,region:pl.nameAt==='CENTER'?V:regions[pick],within:V,spaceOf:pl.id});
+  }
+  // the name of a line (one small letter) stands near its upper end (the right end of a level line), on the last third of the line
+  for(const ln of model.space?.lines??[]){
+    if(ln.name===undefined)continue;
+    let a=pt(project(ln.a)),b=pt(project(ln.b));
+    if(Math.abs(a[1]-b[1])>8?a[1]<b[1]:a[0]>b[0])[a,b]=[b,a];// b is the end that is higher on the page (a level line: the right one)
+    labels.push({id:'line-name-'+ln.id,role:'line-name',owner:'line-'+ln.id,kind:'MATH',tex:ln.name,plain:ln.name,value:ln.name,place:'SEGMENT',target:'line|'+ln.id,segment:[[r6(a[0]+0.7*(b[0]-a[0])),r6(a[1]+0.7*(b[1]-a[1]))],b],endBias:true,spaceOf:ln.id});
   }
   for(const d of model.dims){
     const label={id:d.id+'-label',role:'dim',owner:d.id,...(d.word?{kind:'TEXT',text:d.text}:{kind:'MATH',tex:d.tex}),plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id};
@@ -3034,7 +3128,7 @@ function renderPrims(spec,model){
     if(p.t==='line'){
       const accent=p.accent==='ACCENT'?' stroke="#c0392b"':'';
       const w=p.role==='dim-line'||p.role==='dim-ext'||p.role==='axis-line'||p.role==='cut-radius'?1.1:p.role==='segment'||p.role==='net-diagonal'||(p.role==='net-edge'&&p.accent)||(p.role==='space-segment'&&p.accent==='ACCENT')?2.4:p.role==='silhouette'?1.7:1.6;
-      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face&&p.diagonal===undefined?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.diagonal!==undefined?`data-face="${p.face}" data-diagonal="${p.diagonal}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:'',(p.role==='net-edge'||p.role==='net-diagonal'||p.role==='space-segment')&&p.accent?`data-accent="${p.accent}"`:'',p.space?'data-space="1"':''].filter(Boolean).join(' ');
+      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face&&p.diagonal===undefined?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.diagonal!==undefined?`data-face="${p.face}" data-diagonal="${p.diagonal}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:'',(p.role==='net-edge'||p.role==='net-diagonal'||p.role==='space-segment')&&p.accent?`data-accent="${p.accent}"`:'',p.lineId?`data-line="${p.lineId}"`:'',p.space?'data-space="1"':''].filter(Boolean).join(' ');
       body+=`<g data-layer="40"><line ${attrs} stroke="${p.accent==='ACCENT'?'#c0392b':'#111'}" stroke-width="${w}"${strokeFor(p)} fill="none" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}"/></g>`;
       void accent;
     }else if(p.t==='arc'){

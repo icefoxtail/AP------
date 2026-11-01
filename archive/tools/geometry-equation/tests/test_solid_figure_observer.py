@@ -1775,7 +1775,7 @@ class SpacePlanes(unittest.TestCase):
     def derive(self, planes, points=None):
         space = {'points': points or self.POINTS, 'planes': planes}
         norm = O.make_norm([], {})
-        pts, flags, frames = O.space_places(space, {}, norm)
+        pts, flags, frames, _ = O.space_places(space, {}, norm)
         return pts, flags, frames, O.space_planes(space, pts, {}, frames, norm)
 
     def test_the_frame_of_a_plane_by_three_points_and_by_a_normal(self):
@@ -1870,3 +1870,90 @@ class SpacePlanes(unittest.TestCase):
         # a plan whose plane is wider is not this drawing
         wider = {**self.PLAN, 'space': {'points': self.POINTS, 'planes': [{**self.FLOOR, 'extent': {'center': [0, 0, 0], 'u': [4, 0, 0], 'v': [0, 2, 0]}}]}}
         self.assertTrue(any(e.startswith('SPACE_PLANE_CORNER_OFF:alpha') for e in self.errors(plan=wider)))
+
+
+class SpaceLines(unittest.TestCase):
+    """G4b-3: the observer works out each line of plan.space itself (through two points, or the cross product of two normals with a point from the two plane equations)"""
+    BOOK = {'points': [{'id': 'P', 'at': [0, 0, 0]}, {'id': 'A', 'at': ['1/2', 0, 'sqrt(3)/2']}, {'id': 'B', 'at': ['sqrt(2)/2', '-sqrt(2)/2', 0]}, {'id': 'C', 'at': [1, 0, 0]}],
+            'planes': [{'id': 'alpha', 'through': ['P', 'A', 'C'], 'extent': {'center': [0.25, 0, 1.1], 'u': [1.75, 0, 0], 'v': [0, 0, 1.1]}},
+                       {'id': 'beta', 'through': ['P', 'B', 'C'], 'extent': {'center': [0.25, -0.9, 0], 'u': [1.75, 0, 0], 'v': [0, 0.9, 0]}}],
+            'lines': [{'id': 'l', 'name': 'l', 'intersection': ['alpha', 'beta']}]}
+
+    def derive(self, space, named=None):
+        norm = O.make_norm([], named or {})
+        pts, flags, frames, lframes = O.space_places(space, named or {}, norm)
+        planes = O.space_planes(space, pts, named or {}, frames, norm)
+        return pts, frames, lframes, planes, O.space_lines(space, pts, named or {}, frames, lframes, planes)
+
+    def test_the_intersection_of_two_perpendicular_planes_is_the_x_axis(self):
+        pts, frames, lframes, planes, lines = self.derive(self.BOOK)
+        A, d = lframes['l']
+        self.assertAlmostEqual(abs(d[0]), 1.0, places=12)
+        self.assertAlmostEqual(O.vlen(O.vcross(A, d)), 0.0, places=12)   # the x-axis passes through the origin
+        ln = lines['l']
+        for end in (ln['a'], ln['b']): self.assertAlmostEqual(math.hypot(end[1], end[2]), 0.0, places=9)
+        lo, hi = sorted((ln['a'][0], ln['b'][0]))
+        self.assertTrue(-1.8 < lo < -1.5 and 2.0 < hi < 2.3, (lo, hi))   # the common edge of the parallelograms (x from -1.5 to 2) and a little beyond
+
+    def test_a_line_through_two_points_runs_beyond_them(self):
+        space = {'points': [{'id': 'A', 'at': [0, 0, 0]}, {'id': 'B', 'at': [3, 0, 0]}, {'id': 'M', 'at': {'midpoint': ['A', 'B']}}], 'lines': [{'id': 'g', 'through': ['A', 'B']}]}
+        *_, lines = self.derive(space)
+        xs = sorted((lines['g']['a'][0], lines['g']['b'][0]))
+        self.assertAlmostEqual(xs[0], -1.05, places=9)
+        self.assertAlmostEqual(xs[1], 4.05, places=9)
+
+    def test_the_foot_on_a_line_by_its_id(self):
+        space = {'points': [{'id': 'A', 'at': [0, 0, 0]}, {'id': 'B', 'at': [3, 0, 0]}, {'id': 'P', 'at': [1, 2, 0]}, {'id': 'F', 'at': {'footOnLine': {'from': 'P', 'line': 'g'}}}], 'lines': [{'id': 'g', 'through': ['A', 'B']}]}
+        pts, *_ = self.derive(space)
+        for a, b in zip(pts['F'], (1.0, 0.0, 0.0)): self.assertAlmostEqual(a, b, places=9)
+
+    def test_every_bad_line_has_its_code(self):
+        pts = [{'id': 'A', 'at': [0, 0, 0]}, {'id': 'B', 'at': [1, 0, 0]}, {'id': 'C', 'at': [0, 1, 0]}, {'id': 'E', 'at': [0, 0, 2]}]
+        planes = [{'id': 'a', 'through': ['A', 'B', 'C']}, {'id': 'c', 'normal': [0, 0, 1], 'point': 'E'}]
+        cases = (
+            ([{'id': 'l', 'through': ['A', 'B'], 'intersection': ['a', 'c']}], 'SPACE_LINE_INVALID'),
+            ([{'id': 'l', 'through': ['A', 'A']}], 'SPACE_LINE_INVALID'),
+            ([{'id': 'l', 'through': ['A', 'Z']}], 'SPACE_LINE_INVALID'),
+            ([{'id': 'l', 'through': ['A', 'B']}, {'id': 'l', 'through': ['A', 'C']}], 'SPACE_LINE_INVALID'),
+            ([{'id': 'a', 'through': ['A', 'B']}], 'SPACE_LINE_INVALID'),
+            ([{'id': 'l', 'intersection': ['a', 'x']}], 'SPACE_LINE_INVALID'),
+            ([{'id': 'l', 'through': ['A', 'B'], 'style': 'WAVY'}], 'SPACE_LINE_INVALID'),
+            ([{'id': k, 'through': ['A', 'B']} for k in 'lmnop'], 'SPACE_LINE_INVALID'),
+            ([{'id': 'l', 'intersection': ['a', 'c']}], 'SPACE_PLANES_PARALLEL'),
+            ([{'id': 'l', 'name': 'll', 'through': ['A', 'B']}], 'SPACE_LINE_NAME_INVALID'),
+            ([{'id': 'l', 'name': 'L', 'through': ['A', 'B']}], 'SPACE_LINE_NAME_INVALID'),
+        )
+        for lines, code in cases:
+            with self.assertRaises(ValueError, msg=code) as cm: self.derive({'points': pts, 'planes': planes, 'lines': lines})
+            self.assertTrue(str(cm.exception).startswith(code), (code, str(cm.exception)))
+
+    # --- a hand-built svg: the line l of the book (the x-axis) and its pieces ---
+    PLAN = {'capability': 'solid-figure-v1', 'space': {'points': [{'id': 'P', 'at': [0, 0, 0], 'hideName': True}, {'id': 'C', 'at': [1, 0, 0], 'hideName': True}], 'lines': [{'id': 'l', 'through': ['P', 'C']}]}}
+
+    def svg(self, tamper=None):
+        tx, ty = 150.0, 150.0
+        px = lambda p: (tx + SCALE * O.project(p)[0], ty - SCALE * O.project(p)[1])
+        a, b = px((-0.35, 0.0, 0.0)), px((1.35, 0.0, 0.0))
+        ends = [list(a), list(b)]
+        if tamper: tamper(ends)
+        dots = ''.join('<circle id="space-%s" data-role="space-point" data-space="1" data-point="%s" fill="#111" cx="%.3f" cy="%.3f" r="2.4"/>' % (k, k, *px(p)) for k, p in (('P', (0.0, 0.0, 0.0)), ('C', (1.0, 0.0, 0.0))))
+        line = '<line id="space-line-l-1" data-role="space-line" data-vis="solid" data-t0="0" data-t1="1" data-style="SOLID" data-line="l" data-space="1" stroke="#111" stroke-width="1.6" fill="none" x1="%.3f" y1="%.3f" x2="%.3f" y2="%.3f"/>' % (ends[0][0], ends[0][1], ends[1][0], ends[1][1])
+        return '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" data-solid-figure="solid-figure-v1" data-mode="SOLIDS" data-scale="%s" data-origin="150 150" data-yaw="28" data-pitch="20">%s%s</svg>' % (SCALE, line, dots)
+
+    def errors(self, tamper=None, plan=None):
+        return O.audit(plan or self.PLAN, self.svg(tamper))['errors']
+
+    def test_an_untouched_line_passes(self):
+        self.assertEqual(self.errors(), [])
+
+    def test_a_line_that_leaves_the_axis_or_stops_short_is_caught(self):
+        def tilt(ends): ends[1][1] -= 10
+        self.assertTrue(any(e.startswith('SPACE_LINE_ENDPOINT_OFF:l') for e in self.errors(tilt)), self.errors(tilt))
+
+        def short(ends): ends[0][0] += 20
+        self.assertTrue(any(e.startswith('SPACE_LINE_ENDPOINT_OFF:l') for e in self.errors(short)), self.errors(short))
+        # a plan whose line goes through other points is another line
+        other = {**self.PLAN, 'space': {**self.PLAN['space'], 'points': self.PLAN['space']['points'] + [{'id': 'Q', 'at': [0, 1, 0], 'hideName': True}], 'lines': [{'id': 'l', 'through': ['P', 'Q']}]}}
+        self.assertTrue(any(e.startswith('SPACE_LINE_ENDPOINT_OFF:l') or e.startswith('SPACE_POINT_SET_MISMATCH') for e in self.errors(plan=other)))
+        no_line = {**self.PLAN, 'space': {'points': self.PLAN['space']['points']}}
+        self.assertTrue(any(e.startswith('SPACE_LINE_SET_MISMATCH') for e in self.errors(plan=no_line)))

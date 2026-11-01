@@ -2946,3 +2946,101 @@ test('G4b-2: a figure with a plane, a point above it, a perpendicular and a segm
   const {planes:droppedPlanes,...noPlanes}=plan.space;void droppedPlanes;
   await g4bFailing({...plan,space:{...noPlanes,points:noPlanes.points.map(({on,...q})=>{void on;return q;})}},svg,'SPACE_PLANE_SET_MISMATCH');
 });
+
+// --- G4b-3: lines (through two points, or the intersection of two planes) and the perpendicular marks on them ---------------------------------------------------------------------
+// two perpendicular planes alpha (the xz-plane, standing) and beta (the xy-plane, lying) meeting in the x-axis l; P on l, A in alpha, B in beta, A' the foot of A on beta
+const g4bBook=(over={},extra={})=>g4bSpace({
+  points:[{id:'P',at:[0,0,0]},{id:'A',at:['1/2',0,'sqrt(3)/2'],on:'alpha'},{id:'B',at:['sqrt(2)/2','-sqrt(2)/2',0],on:'beta'},{id:'C',at:[1,0,0],hideName:true,hideDot:true},{id:"A′",at:{projection:{from:'A',plane:'beta'}},on:'beta'}],
+  planes:[{id:'alpha',name:'\\alpha',through:['P','A','C'],extent:{center:[0.25,0,1.1],u:[1.75,0,0],v:[0,0,1.1]}},{id:'beta',name:'\\beta',through:['P','B','C'],fill:'WARM',extent:{center:[0.25,-0.9,0],u:[1.75,0,0],v:[0,0.9,0]}}],
+  lines:[{id:'l',name:'l',intersection:['alpha','beta']}],
+  segments:[{from:'P',to:'A',role:'ACCENT'},{from:'P',to:'B',role:'ACCENT'},{from:'A',to:"A′",style:'DASHED'},{from:'P',to:"A′",style:'DASHED'},{from:"A′",to:'B',style:'DASHED'}],
+  ...over},{marks:{angles:[{refs:["A′",'P','A'],arcs:1,label:'60^\\circ'},{refs:["A′",'P','B'],arcs:2,label:'45^\\circ'}],rightAngles:[{at:"A′",refs:['A','P']}]},...extra});
+test('G4b-3: the intersection of two planes is worked out in 3D; a line through two points runs beyond them; points on a line are its points',()=>{
+  const m=solveSolidFigure(g4bBook());
+  const l=m.space.lines[0];
+  // l is the x-axis: both ends on it, running the length of the parallelograms (x from -1.5 to 2) and a little beyond
+  assert.ok(Math.abs(l.a[1])<1e-6&&Math.abs(l.a[2])<1e-6&&Math.abs(l.b[1])<1e-6&&Math.abs(l.b[2])<1e-6);
+  assert.ok(Math.min(l.a[0],l.b[0])<-1.5&&Math.max(l.a[0],l.b[0])>2&&Math.min(l.a[0],l.b[0])>-1.8&&Math.max(l.a[0],l.b[0])<2.3,JSON.stringify(l));
+  assert.deepEqual([...l.points].sort(),['A′','C','P']);// A' = (1/2,0,0) is on the x-axis too
+  const aPrime=m.space.points.find(q=>q.id==='A′').p;
+  assert.ok(aPrime.every((x,k)=>Math.abs(x-[0.5,0,0][k])<1e-6));
+  // a line through two points: it runs 35 percent of its length beyond them, and a point of the space on it is one of its points
+  const through=solveSolidFigure(g4bSpace({points:[{id:'A',at:[0,0,0]},{id:'B',at:[3,0,0]},{id:'M',at:{midpoint:['A','B']}},{id:'N',at:[1,1,0]}],lines:[{id:'g',name:'g',through:['A','B']}]})).space.lines[0];
+  assert.deepEqual([...through.points].sort(),['A','B','M']);
+  assert.ok(Math.abs(through.a[0]+1.05)<1e-6&&Math.abs(through.b[0]-4.05)<1e-6,JSON.stringify(through));
+  // the foot of a perpendicular on a line of the space by its id
+  const foot=solveSolidFigure(g4bSpace({points:[{id:'A',at:[0,0,0]},{id:'B',at:[3,0,0]},{id:'P',at:[1,2,0]},{id:'F',at:{footOnLine:{from:'P',line:'g'}}}],lines:[{id:'g',through:['A','B']}]}));
+  assert.ok(foot.space.points.find(q=>q.id==='F').p.every((x,k)=>Math.abs(x-[1,0,0][k])<1e-6));
+  // two planes that meet in a line the parallelograms do not share: the line is still the exact intersection
+  const skew=solveSolidFigure(g4bSpace({points:[{id:'O',at:[0,0,0]},{id:'X',at:[1,0,0]},{id:'Y',at:[0,1,0]},{id:'Z',at:[0,0,1]}],planes:[{id:'a',through:['O','X','Y']},{id:'b',through:['O','Y','Z']}],lines:[{id:'m',intersection:['a','b']}]})).space.lines[0];
+  assert.ok(Math.abs(skew.a[0])<1e-6&&Math.abs(skew.a[2])<1e-6&&Math.abs(skew.b[0])<1e-6&&Math.abs(skew.b[2])<1e-6,'the y-axis: '+JSON.stringify(skew));
+});
+test('G4b-3: a bad line is refused with its own code',()=>{
+  const pts=[{id:'A',at:[0,0,0]},{id:'B',at:[1,0,0]},{id:'C',at:[0,1,0]},{id:'D',at:[0,0,1]},{id:'E',at:[0,0,2]}];
+  const planes=[{id:'a',through:['A','B','C']},{id:'b',through:['A','B','D']},{id:'c',normal:[0,0,1],point:'E'}];
+  const bad=(lines,expected,extra={})=>assert.throws(()=>solveSolidFigure(g4bSpace({points:pts,planes,lines,...extra})),code(expected),expected);
+  bad([{id:'l',through:['A','B'],intersection:['a','b']}],'SPACE_LINE_INVALID');
+  bad([{id:'l'}],'SPACE_LINE_INVALID');
+  bad([{id:'l',through:['A','A']}],'SPACE_LINE_INVALID');
+  bad([{id:'l',through:['A','Z']}],'SPACE_LINE_INVALID');
+  bad([{id:'l',through:['A','B']},{id:'l',through:['A','C']}],'SPACE_LINE_INVALID');
+  bad([{id:'a',through:['A','B']}],'SPACE_LINE_INVALID');// the id of a plane
+  bad([{id:'l',intersection:['a','x']}],'SPACE_LINE_INVALID');
+  bad([{id:'l',intersection:['a','a']}],'SPACE_LINE_INVALID');
+  bad([{id:'l',through:['A','B'],style:'WAVY'}],'SPACE_LINE_INVALID');
+  bad([{id:'l',through:['A','B'],colour:'red'}],'SPACE_LINE_INVALID');
+  bad(['l','m','n','o','p'].map(id=>({id,through:['A','B']})),'SPACE_LINE_INVALID');
+  bad([{id:'l',intersection:['a','c']},{id:'m',intersection:['b','c']}].slice(0,1).concat([{id:'m',intersection:['a','c']}]),'SPACE_PLANES_PARALLEL');// a is z = 0 and c is z = 2
+  for(const name of ['ll','L','1','\\alpha',''])bad([{id:'l',name,through:['A','B']}],'SPACE_LINE_NAME_INVALID');
+  assert.throws(()=>solveSolidFigure(g4bSpace({points:pts,planes,lines:'l'})),code('SPACE_LINE_INVALID'));
+  // a line with no point on it and two planes with no common parallelogram has nothing to draw
+  assert.throws(()=>solveSolidFigure(g4bSpace({points:[{id:'A',at:[0,0,0]},{id:'B',at:[1,0,0]},{id:'C',at:[0,1,0]},{id:'D',at:[9,9,5]},{id:'E',at:[9,10,5]},{id:'F',at:[10,9,5]}],
+    planes:[{id:'a',through:['A','B','C'],extent:{center:[0,0,0],u:[1,0,0],v:[0,1,0]}},{id:'b',normal:[1,0,0],point:'D',extent:{center:'D',u:[0,1,0],v:[0,0,1]}}],lines:[{id:'m',intersection:['a','b']}]})),code('SPACE_LINE_INVALID'));
+});
+test('G4b-3: two perpendicular planes with their line of intersection, a foot and two angles are composed and audited; every tamper is caught',async()=>{
+  const plan=g4bBook();
+  const m=solveSolidFigure(plan);
+  assert.equal(m.marks.angles.length,2);assert.equal(m.marks.rightAngles.length,1);
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.match(svg,/<line id="space-line-l-1" data-role="space-line" data-vis="solid" data-t0="0" data-t1="1" data-style="SOLID" data-line="l" data-space="1" stroke="#111"/);
+  assert.match(svg,/data-label-role="line-name"[^>]*data-owner="line-l"[^>]*data-space-of="l"/);
+  const lineEl=svg.match(/<line id="space-line-l-1"[^>]*\/>/)[0];
+  const shift=(el,attr,d)=>el.replace(new RegExp(` ${attr}="([\\d.]+)"`),(all,v)=>` ${attr}="${Number(v)+d}"`);
+  await g4bFailing(plan,svg.replace(lineEl,shift(lineEl,'y2',9)),'SPACE_LINE_ENDPOINT_OFF:l');// the line no longer runs along the intersection
+  await g4bFailing(plan,svg.replace(lineEl,shift(lineEl,'x1',-14)),'SPACE_LINE_ENDPOINT_OFF:l');
+  await g4bFailing(plan,svg.replace(lineEl,''),'SPACE_LINE_SET_MISMATCH');
+  await g4bFailing(plan,svg.replace(lineEl,lineEl.replace(' data-vis="solid"',' data-vis="hidden"').replace('fill="none"','stroke-dasharray="5 4" fill="none"')),'SOLID_EDGE_VISIBILITY_MISMATCH');
+  // the name of the line is far from its line
+  const label=svg.match(/<g id="line-name-l"[^>]*transform="translate\(([\d.]+) ([\d.]+)\)"/);
+  await g4bFailing(plan,svg.replace(label[0],label[0].replace(/translate\([\d.]+ [\d.]+\)/,'translate(10 10)')),'SPACE_LINE_NAME_FAR:l');
+  // a plan whose planes meet in another line (beta tipped) or whose line has another name is not this figure
+  const tipped={...plan,space:{...plan.space,planes:[plan.space.planes[0],{id:'beta',name:'\\beta',fill:'WARM',normal:[0,1,1],point:'P'}]}};
+  const r=await audit(tipped,svg);
+  assert.equal(r.status,'FAIL');
+  assert.ok(r.errors.some(e=>/^SPACE_(LINE|PLANE)_/.test(e)||e.startsWith('SPACE_POINT')||e.startsWith('SPACE_ORIGIN')),JSON.stringify(r.errors));
+  await g4bFailing({...plan,space:{...plan.space,lines:[{id:'l',name:'m',intersection:['alpha','beta']}]}},svg,'SPACE_LINE_NAME_MISMATCH:l');
+  // a line the plan does not have
+  const {lines:droppedLines,...noLines}=plan.space;void droppedLines;
+  await g4bFailing({...plan,space:noLines},svg,'SPACE_LINE_SET_MISMATCH');
+  // the right angle at the foot A' is a right angle in 3D: a plan that puts it at another point is caught by the marks audit
+  const mark=svg.match(/<polyline id="ra1"[^>]*\/>/)[0];
+  await g4bFailing(plan,svg.replace(mark,mark.replace(/points="([\d.]+),([\d.]+)/,(all,x,y)=>`points="${Number(x)+9},${y}`)),'SOLID_RIGHT_ANGLE');
+});
+test('G4b-3: the three-perpendiculars figure (a plane, its point P above it, the foot O, the line l, the right angles) is composed and audited',async()=>{
+  const plan=g4bSpace({points:[{id:'O',at:[0,0,0]},{id:'P',at:[0,0,2.5]},{id:'H',at:[-1.5,-1.5,0]},{id:'K',at:[-2.5,-0.5,0],hideName:true,hideDot:true},{id:'L',at:[-0.5,-2.5,0],hideName:true,hideDot:true}],
+    planes:[{id:'alpha',name:'\\alpha',through:['O','H','K'],extent:{center:[-0.3,-0.2,0],u:[3.2,0,0],v:[0,2.6,0]}}],lines:[{id:'l',name:'l',through:['K','L']}],
+    segments:[{from:'P',to:'O'},{from:'O',to:'H'},{from:'P',to:'H'}]},{marks:{rightAngles:[{at:'O',refs:['P','H']},{at:'H',refs:['O','K']},{at:'H',refs:['P','L']}]}});
+  const m=solveSolidFigure(plan);
+  // PO is perpendicular to the plane; OH is perpendicular to l; PH is perpendicular to l (the engine checks each right angle in 3D)
+  assert.equal(m.marks.rightAngles.length,3);
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  // a right angle that is not one is refused: PH is not perpendicular to OH
+  assert.throws(()=>solveSolidFigure({...plan,marks:{rightAngles:[{at:'H',refs:['P','O']}]}}),code('SOLID_MARK_NOT_RIGHT_ANGLE'));
+  // a ray along no drawn line is refused
+  assert.throws(()=>solveSolidFigure({...plan,space:{...plan.space,lines:[]}}),code('SOLID_MARK_RAY_NOT_DRAWN'));
+});
