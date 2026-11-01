@@ -1765,3 +1765,108 @@ class FreeSpacePoints(unittest.TestCase):
         self.assertTrue(any(e.startswith('SPACE_POINT_OFF:H') for e in self.errors(plan=other)))
         no_space = {'capability': 'solid-figure-v1', 'solids': [{'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 4, 'depth': 3}, 'height': 2, 'names': UNNAMED}]}
         self.assertTrue(any(e.startswith('SPACE_NOT_IN_PLAN') for e in self.errors(plan=no_space)))
+
+
+class SpacePlanes(unittest.TestCase):
+    """G4b-2: the observer re-derives the planes of plan.space (frame by three points or by a normal, extent, default extent) and checks the drawn parallelograms"""
+    POINTS = [{'id': 'O', 'at': [0, 0, 0], 'hideName': True}, {'id': 'H', 'at': [1, 0, 0], 'hideName': True}, {'id': 'Q', 'at': [0, 1, 0], 'hideName': True}]
+    FLOOR = {'id': 'alpha', 'through': ['O', 'H', 'Q'], 'extent': {'center': [0, 0, 0], 'u': [3, 0, 0], 'v': [0, 2, 0]}}
+
+    def derive(self, planes, points=None):
+        space = {'points': points or self.POINTS, 'planes': planes}
+        norm = O.make_norm([], {})
+        pts, flags, frames = O.space_places(space, {}, norm)
+        return pts, flags, frames, O.space_planes(space, pts, {}, frames, norm)
+
+    def test_the_frame_of_a_plane_by_three_points_and_by_a_normal(self):
+        _, _, frames, planes = self.derive([self.FLOOR, {'id': 'wall', 'normal': [1, 0, 0], 'point': 'H'}])
+        p0, n = frames['alpha']
+        self.assertAlmostEqual(abs(n[2]), 1.0, places=12)
+        self.assertEqual(O.vsub(p0, (0.0, 0.0, 0.0)), (0.0, 0.0, 0.0))
+        self.assertAlmostEqual(abs(frames['wall'][1][0]), 1.0, places=12)
+        self.assertEqual(planes['alpha']['verts'], [(-3.0, -2.0, 0.0), (3.0, -2.0, 0.0), (3.0, 2.0, 0.0), (-3.0, 2.0, 0.0)])
+        for v in planes['wall']['verts']: self.assertAlmostEqual(v[0], 1.0, places=9)
+
+    def test_the_default_extent_covers_the_points_on_the_plane_with_a_margin(self):
+        pts, _, _, planes = self.derive([{'id': 'f', 'through': ['O', 'H', 'Q']}])
+        verts = planes['f']['verts']
+        scr = [O.project(v) for v in verts]
+        for name, p in pts.items():
+            q = O.project(p)
+            self.assertTrue(O._winding_inside(scr, q), name)
+        # a rectangle: the opposite corners sum to the same point and the sides are perpendicular
+        self.assertAlmostEqual(O.vlen(O.vsub(O.vadd(verts[0], verts[2]), O.vadd(verts[1], verts[3]))), 0.0, places=9)
+        self.assertAlmostEqual(O.vdot(O.vsub(verts[1], verts[0]), O.vsub(verts[3], verts[0])), 0.0, places=9)
+
+    def test_every_bad_plane_has_its_code(self):
+        cases = (
+            ([{'id': 'a', 'through': ['O', 'H', 'Z']}], 'SPACE_PLANE_INVALID'),
+            ([{'id': 'a', 'through': ['O', 'H']}], 'SPACE_PLANE_INVALID'),
+            ([{'id': 'a', 'through': ['O', 'H', 'Q'], 'normal': [0, 0, 1], 'point': 'O'}], 'SPACE_PLANE_INVALID'),
+            ([{'id': 'a', 'through': ['O', 'H', 'Q']}, {'id': 'a', 'through': ['O', 'H', 'Q']}], 'SPACE_PLANE_INVALID'),
+            ([{'id': 'a', 'through': ['O', 'H', 'Q'], 'fill': 'RED'}], 'SPACE_PLANE_INVALID'),
+            ([{'id': 'a', 'through': ['O', 'H', 'Q'], 'nameAt': 'CENTER'}], 'SPACE_PLANE_INVALID'),
+            ([{'id': 'a', 'normal': [0, 0, 0], 'point': 'O'}], 'SPACE_PLANE_DEGENERATE'),
+            ([{'id': 'a', 'name': 'alpha', 'through': ['O', 'H', 'Q']}], 'SPACE_PLANE_NAME_INVALID'),
+            ([{'id': 'a', 'name': '\\x', 'through': ['O', 'H', 'Q']}], 'SPACE_PLANE_NAME_INVALID'),
+            ([{'id': k, 'through': ['O', 'H', 'Q']} for k in 'abcd'], 'SPACE_PLANE_LIMIT'),
+        )
+        for planes, code in cases:
+            with self.assertRaises(ValueError, msg=code) as cm: self.derive(planes)
+            self.assertTrue(str(cm.exception).startswith(code), (code, str(cm.exception)))
+        with self.assertRaises(ValueError) as cm: self.derive([{'id': 'a', 'through': ['O', 'H', 'D']}], self.POINTS + [{'id': 'D', 'at': [2, 0, 0]}])
+        self.assertTrue(str(cm.exception).startswith('SPACE_PLANE_DEGENERATE'))
+        for extent in ({'center': 'O', 'u': [1, 0, 0], 'v': [0, 0, 1]}, {'center': [0, 0, 1], 'u': [1, 0, 0], 'v': [0, 1, 0]}, {'center': 'O', 'u': [1, 0, 0], 'v': [2, 0, 0]}, {'center': 'O', 'u': [0, 0, 0], 'v': [0, 1, 0]}, {'center': 'Z', 'u': [1, 0, 0], 'v': [0, 1, 0]}):
+            with self.assertRaises(ValueError, msg=str(extent)) as cm: self.derive([{'id': 'a', 'through': ['O', 'H', 'Q'], 'extent': extent}])
+            self.assertTrue(str(cm.exception).startswith('SPACE_PLANE_EXTENT_INVALID'), str(cm.exception))
+        # on: a point that says it is on a plane is on it
+        with self.assertRaises(ValueError) as cm: self.derive([self.FLOOR], self.POINTS + [{'id': 'G', 'at': [1, 1, 0.5], 'on': 'alpha'}])
+        self.assertTrue(str(cm.exception).startswith('SPACE_POINT_NOT_ON_PLANE:G'))
+        with self.assertRaises(ValueError) as cm: self.derive([self.FLOOR], self.POINTS + [{'id': 'G', 'at': [1, 1, 0], 'on': 'nowhere'}])
+        self.assertTrue(str(cm.exception).startswith('SPACE_PLANE_INVALID'))
+
+    def test_the_projection_onto_a_plane_by_its_id(self):
+        pts, _, _, _ = self.derive([self.FLOOR], self.POINTS + [{'id': 'P', 'at': [0.5, 0.25, 3]}, {'id': 'F', 'at': {'projection': {'from': 'P', 'plane': 'alpha'}}, 'on': 'alpha'}])
+        for a, b in zip(pts['F'], (0.5, 0.25, 0.0)): self.assertAlmostEqual(a, b, places=9)
+
+    def test_a_plane_hides_a_segment_where_the_line_of_sight_meets_it(self):
+        _, _, _, planes = self.derive([{'id': 'a', 'through': ['O', 'H', 'Q'], 'extent': {'center': [0, 0, 0], 'u': [3, 0, 0], 'v': [0, 3, 0]}}])
+        frame = {'a': O._plane_of_points(planes['a']['verts'])}
+        A, B = (0.0, 0.0, 2.5), (0.0, 0.0, -1.5)   # from above the plane to below it, straight down through the plane's middle
+        runs = O.space_runs(lambda t: O.hidden_by_faces(None, frame, O.vadd(A, O.vmul(O.vsub(B, A), t)), set()))
+        self.assertEqual([r[2] for r in runs], [False, True, False])   # seen above, hidden behind the plane, seen again once the line of sight leaves the parallelogram
+        self.assertAlmostEqual(runs[0][1], 2.5 / 4, places=6)   # the plane z = 0 is crossed at t = 2.5/4
+
+    # --- a hand-built svg: one plane and its dots ---
+    PLAN = {'capability': 'solid-figure-v1', 'space': {'points': POINTS, 'planes': [FLOOR]}}
+
+    def svg(self, tamper=None, name_box=None):
+        tx, ty = 200.0, 150.0
+        px = lambda p: (tx + SCALE * O.project(p)[0], ty - SCALE * O.project(p)[1])
+        verts = [px(v) for v in (( -3.0, -2.0, 0.0), (3.0, -2.0, 0.0), (3.0, 2.0, 0.0), (-3.0, 2.0, 0.0))]
+        attrs = {'fill': '#7fa6e8', 'data-fill': 'LIGHT', 'opacity': '0.32'}
+        if tamper: tamper(verts, attrs)
+        dots = ''.join('<circle id="space-%s" data-role="space-point" data-space="1" data-point="%s" fill="#111" cx="%.3f" cy="%.3f" r="2.4"/>' % (k, k, *px(p)) for k, p in (('O', (0.0, 0.0, 0.0)), ('H', (1.0, 0.0, 0.0)), ('Q', (0.0, 1.0, 0.0))))
+        poly = '<polygon id="space-plane-alpha" data-role="space-plane" data-plane="alpha" data-space="1" data-fill="%s" fill="%s" fill-opacity="%s" stroke="#555" stroke-width="1.2" points="%s"/>' % (attrs['data-fill'], attrs['fill'], attrs['opacity'], ' '.join('%.3f,%.3f' % v for v in verts))
+        return '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" data-solid-figure="solid-figure-v1" data-mode="SOLIDS" data-scale="%s" data-origin="200 150" data-yaw="28" data-pitch="20">%s%s</svg>' % (SCALE, poly, dots)
+
+    def errors(self, tamper=None, plan=None):
+        return O.audit(plan or self.PLAN, self.svg(tamper))['errors']
+
+    def test_an_untouched_plane_passes(self):
+        self.assertEqual(self.errors(), [])
+
+    def test_a_moved_corner_a_wrong_tint_and_a_missing_plane_are_caught(self):
+        def corner(verts, attrs): verts[2] = (verts[2][0], verts[2][1] + 12)
+        self.assertTrue(any(e.startswith('SPACE_PLANE_CORNER_OFF:alpha') for e in self.errors(corner)), self.errors(corner))
+
+        def tint(verts, attrs): attrs['data-fill'] = 'WARM'
+        self.assertTrue(any(e.startswith('SPACE_PLANE_FILL_MISMATCH:alpha') for e in self.errors(tint)))
+
+        def opacity(verts, attrs): attrs['opacity'] = '0.9'
+        self.assertTrue(any(e.startswith('SPACE_PLANE_FILL_MISMATCH:alpha') for e in self.errors(opacity)))
+        no_plane = {**self.PLAN, 'space': {'points': self.POINTS}}
+        self.assertTrue(any(e.startswith('SPACE_PLANE_SET_MISMATCH') for e in self.errors(plan=no_plane)))
+        # a plan whose plane is wider is not this drawing
+        wider = {**self.PLAN, 'space': {'points': self.POINTS, 'planes': [{**self.FLOOR, 'extent': {'center': [0, 0, 0], 'u': [4, 0, 0], 'v': [0, 2, 0]}}]}}
+        self.assertTrue(any(e.startswith('SPACE_PLANE_CORNER_OFF:alpha') for e in self.errors(plan=wider)))

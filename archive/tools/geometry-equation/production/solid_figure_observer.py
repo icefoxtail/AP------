@@ -1323,13 +1323,32 @@ def space_vector(list_, code='SPACE_POINT_INVALID'):
     except ValueError: raise ValueError(code) from None
 
 
+SPACE_ID = re.compile(r'^[a-z][a-z0-9]{0,7}$')
+SPACE_PLANE_NAME = re.compile(r'^\\(?:alpha|beta|gamma|delta|pi|theta|phi|sigma|omega|lambda|mu|rho)$')
+SPACE_PLANE_KEYS = {'id', 'name', 'through', 'normal', 'point', 'extent', 'fill', 'nameAt'}
+
+
 def space_places(space, named, norm):
-    """id -> 3D point of the plan's space points, in the order written (a later point may use an earlier one); named: the solids' points (name -> (sid, px, p)); ValueError with the plan's code"""
+    """(points, flags, frames) of the plan's space: id -> 3D point, id -> display flags and on-plane claim, plane id -> (a point, the unit normal); the points in the order written (a later point may use an earlier one); named: the solids' points (name -> (sid, px, p)); ValueError with the plan's code"""
     specs = space.get('points')
     if not isinstance(specs, list) or len(specs) < 1: raise ValueError('SPACE_POINT_INVALID')
     if len(specs) > 16: raise ValueError('SPACE_POINT_LIMIT')
+    plane_specs = space.get('planes') if space.get('planes') is not None else []
+    if not isinstance(plane_specs, list): raise ValueError('SPACE_PLANE_INVALID')
+    if len(plane_specs) > 3: raise ValueError('SPACE_PLANE_LIMIT')
     pts, flags = {}, {}
     later = {e.get('id') for e in specs if isinstance(e, dict)}
+    by_id = {}
+    for pl in plane_specs:
+        if not isinstance(pl, dict) or set(pl) - SPACE_PLANE_KEYS: raise ValueError('SPACE_PLANE_INVALID')
+        if not isinstance(pl.get('id'), str) or not SPACE_ID.fullmatch(pl['id']) or pl['id'] in by_id: raise ValueError('SPACE_PLANE_INVALID')
+        if pl.get('name') is not None and (not isinstance(pl['name'], str) or not SPACE_PLANE_NAME.fullmatch(pl['name'])): raise ValueError('SPACE_PLANE_NAME_INVALID')
+        if (pl.get('through') is not None) == (pl.get('normal') is not None or pl.get('point') is not None): raise ValueError('SPACE_PLANE_INVALID')
+        if pl.get('through') is not None and (not isinstance(pl['through'], list) or len(pl['through']) != 3 or len(set(map(str, pl['through']))) != 3 or any(not isinstance(k, str) for k in pl['through'])): raise ValueError('SPACE_PLANE_INVALID')
+        if pl.get('through') is None and (pl.get('normal') is None or not isinstance(pl.get('point'), str)): raise ValueError('SPACE_PLANE_INVALID')
+        if pl.get('fill') is not None and pl['fill'] not in BASE_FILL_STYLE: raise ValueError('SPACE_PLANE_INVALID')
+        if pl.get('nameAt') is not None and (pl.get('name') is None or not (pl['nameAt'] in ('CORNER', 'CENTER') or (isinstance(pl['nameAt'], int) and not isinstance(pl['nameAt'], bool) and 0 <= pl['nameAt'] <= 3))): raise ValueError('SPACE_PLANE_INVALID')
+        by_id[pl['id']] = pl
 
     def lookup(key, code='SPACE_POINT_INVALID'):
         if not isinstance(key, str): raise ValueError(code)
@@ -1342,12 +1361,29 @@ def space_places(space, named, norm):
     def places(list_, n):
         if not isinstance(list_, list) or len(list_) != n or len(set(map(str, list_))) != n: raise ValueError('SPACE_POINT_INVALID')
         return [lookup(k) for k in list_]
+    frames = {}
+
+    def frame(pid):
+        if pid in frames: return frames[pid]
+        pl = by_id.get(pid)
+        if pl is None: raise ValueError('SPACE_PLANE_INVALID:' + str(pid)[:12])
+        if pl.get('through') is not None:
+            A, B, C = (lookup(k, 'SPACE_PLANE_INVALID') for k in pl['through'])
+            c = vcross(vsub(B, A), vsub(C, A))
+            if not vlen(c) > 1e-9 * max(1.0, vlen(vsub(B, A)) * vlen(vsub(C, A))): raise ValueError('SPACE_PLANE_DEGENERATE:' + pid)
+            frames[pid] = (A, vunit(c))
+        else:
+            nn = space_vector(pl['normal'], 'SPACE_PLANE_INVALID')
+            if not vlen(nn) > 1e-9: raise ValueError('SPACE_PLANE_DEGENERATE:' + pid)
+            frames[pid] = (lookup(pl['point'], 'SPACE_PLANE_INVALID'), vunit(nn))
+        return frames[pid]
     for entry in specs:
-        if not isinstance(entry, dict) or set(entry) - {'id', 'at', 'hideName', 'hideDot'}: raise ValueError('SPACE_POINT_INVALID')
+        if not isinstance(entry, dict) or set(entry) - {'id', 'at', 'on', 'hideName', 'hideDot'}: raise ValueError('SPACE_POINT_INVALID')
         ident = entry.get('id')
         if not isinstance(ident, str) or not SPACE_POINT_NAME.fullmatch(ident): raise ValueError('SPACE_POINT_INVALID')
         if ident in named or ident in pts: raise ValueError('SPACE_POINT_DUPLICATE:' + ident)
         if any(entry.get(f) is not None and not isinstance(entry[f], bool) for f in ('hideName', 'hideDot')): raise ValueError('SPACE_POINT_INVALID')
+        if entry.get('on') is not None and (not isinstance(entry['on'], str) or entry['on'] not in by_id): raise ValueError('SPACE_PLANE_INVALID')
         at = entry.get('at')
         if isinstance(at, list): p = space_vector(at)
         else:
@@ -1387,17 +1423,66 @@ def space_places(space, named, norm):
                 f = at['projection']
                 if not isinstance(f, dict) or set(f) - {'from', 'plane'}: raise ValueError('SPACE_POINT_INVALID')
                 P = lookup(f.get('from'))
-                A, B, M = places(f.get('plane'), 3)
-                n = vcross(vsub(B, A), vsub(M, A))
-                if vlen(n) < 1e-9: raise ValueError('SOLID_PROJECTION_PLANE_DEGENERATE')
-                u = vunit(n)
-                p = vsub(P, vmul(u, vdot(vsub(P, A), u)))
-                if vlen(vsub(p, P)) < 1e-6: raise ValueError('SOLID_AUX_FOOT_DEGENERATE')
-                check_projection(P, A, B, M, p)
+                if isinstance(f.get('plane'), str):
+                    A, u = frame(f['plane'])
+                    p = vsub(P, vmul(u, vdot(vsub(P, A), u)))
+                    if vlen(vsub(p, P)) < 1e-6: raise ValueError('SOLID_AUX_FOOT_DEGENERATE')
+                    if abs(vdot(u, vsub(p, A))) > 1e-6 or vlen(vcross(vsub(P, p), u)) > 1e-6: raise ValueError('SOLID_PROJECTION_MISMATCH')
+                else:
+                    A, B, M = places(f.get('plane'), 3)
+                    n = vcross(vsub(B, A), vsub(M, A))
+                    if vlen(n) < 1e-9: raise ValueError('SOLID_PROJECTION_PLANE_DEGENERATE')
+                    u = vunit(n)
+                    p = vsub(P, vmul(u, vdot(vsub(P, A), u)))
+                    if vlen(vsub(p, P)) < 1e-6: raise ValueError('SOLID_AUX_FOOT_DEGENERATE')
+                    check_projection(P, A, B, M, p)
         later.discard(ident)
         pts[ident] = p
-        flags[ident] = {'hideName': entry.get('hideName') is True, 'hideDot': entry.get('hideDot') is True}
-    return pts, flags
+        flags[ident] = {'hideName': entry.get('hideName') is True, 'hideDot': entry.get('hideDot') is True, 'on': entry.get('on')}
+    for pid in by_id: frame(pid)
+    for ident, f in flags.items():
+        if f['on'] is not None:
+            A, u = frames[f['on']]
+            if abs(vdot(u, vsub(pts[ident], A))) > 1e-7 * (1 + vlen(pts[ident])): raise ValueError('SPACE_POINT_NOT_ON_PLANE:' + ident)
+    return pts, flags, frames
+
+
+def space_planes(space, pts, named, frames, norm):
+    """plane id -> {verts: the four corners (3D), name, fill, nameAt, n}: the parallelogram of every plane (its extent, or the default one covering the points on the plane with a quarter of margin)"""
+    out = {}
+    all_points = [v[2] for v in named.values()] + list(pts.values())
+    for pl in space.get('planes') or []:
+        pid = pl['id']
+        p0, n = frames[pid]
+        ext = pl.get('extent')
+        if ext is not None:
+            code = 'SPACE_PLANE_EXTENT_INVALID:' + pid
+            if not isinstance(ext, dict) or set(ext) - {'center', 'u', 'v'}: raise ValueError(code)
+            if isinstance(ext.get('center'), str):
+                k = norm(ext['center'], code) if '#' in ext['center'] else ext['center']
+                if k in pts: c = pts[k]
+                elif k in named: c = named[k][2]
+                else: raise ValueError(code)
+            else: c = space_vector(ext.get('center'), code)
+            u, v = space_vector(ext.get('u'), code), space_vector(ext.get('v'), code)
+            if abs(vdot(n, vsub(c, p0))) > 1e-7 * (1 + vlen(c)) or abs(vdot(n, u)) > 1e-7 * (1 + vlen(u)) or abs(vdot(n, v)) > 1e-7 * (1 + vlen(v)): raise ValueError(code)
+            if not (vlen(u) > 1e-9 and vlen(v) > 1e-9 and vlen(vcross(u, v)) > 1e-9 * vlen(u) * vlen(v)): raise ValueError(code)
+        else:
+            e1 = vsub(SCREEN_X, vmul(n, vdot(SCREEN_X, n)))
+            if vlen(e1) < 1e-6: e1 = vsub(DEPTH, vmul(n, vdot(DEPTH, n)))
+            e1 = vunit(e1)
+            e2 = vcross(n, e1)
+            on = [p for p in all_points if abs(vdot(n, vsub(p, p0))) < 1e-7 * (1 + vlen(p))]
+            a_s, b_s = [vdot(vsub(p, p0), e1) for p in on], [vdot(vsub(p, p0), e2) for p in on]
+            a0, a1, b0, b1 = min(a_s), max(a_s), min(b_s), max(b_s)
+            big = max(a1 - a0, b1 - b0)
+            m = big if big > 1e-6 else 1.0
+            sa, sb = max(a1 - a0, 0.6 * m), max(b1 - b0, 0.6 * m)
+            c = vadd(p0, vadd(vmul(e1, (a0 + a1) / 2), vmul(e2, (b0 + b1) / 2)))
+            u, v = vmul(e1, 0.75 * sa), vmul(e2, 0.75 * sb)
+        verts = [vsub(vsub(c, u), v), vsub(vadd(c, u), v), vadd(vadd(c, u), v), vadd(vsub(c, u), v)]
+        out[pid] = {'verts': verts, 'name': pl.get('name'), 'fill': pl.get('fill') or 'LIGHT', 'nameAt': pl.get('nameAt') or 'CORNER', 'n': n}
+    return out
 
 
 def _plane_of_points(pts):
@@ -1437,7 +1522,7 @@ def space_runs(hidden_at):
 def space_scale(plan, root, errors):
     """the scale of a figure made of a space alone: the fit of the point dots to the projected points (the declared scale when there are fewer than two)"""
     declared = float(root.get('data-scale') or 0)
-    try: pts, _ = space_places(plan['space'], {}, make_norm([], {}))
+    try: pts = space_places(plan['space'], {}, make_norm([], {}))[0]
     except ValueError as exc:
         errors.append(str(exc))
         return None
@@ -1464,14 +1549,16 @@ def _median(values):
 
 
 def audit_space(plan, ctx, named, norm, scale, solids):
-    """G4b: the points, segments (and planes, lines) of plan.space against the SVG; registers every point in `named` (name -> (space, px, 3D point))"""
+    """G4b: the points, planes and segments of plan.space against the SVG; registers every point in `named` (name -> (space, px, 3D point))"""
     root, errors = ctx['root'], ctx['errors']
     space = plan.get('space')
     if space is None: return
-    if not isinstance(space, dict) or set(space) - {'points', 'segments'}:
+    if not isinstance(space, dict) or set(space) - {'points', 'planes', 'segments'}:
         errors.append('SPACE_POINT_INVALID')
         return
-    try: pts, flags = space_places(space, named, norm)
+    try:
+        pts, flags, frames = space_places(space, named, norm)
+        planes = space_planes(space, pts, named, frames, norm)
     except ValueError as exc:
         errors.append(str(exc))
         return
@@ -1482,6 +1569,9 @@ def audit_space(plan, ctx, named, norm, scale, solids):
     pieces = {}
     for e in root.iter(NS + 'line'):
         if e.get('data-role') == 'space-segment': pieces.setdefault(e.get('data-edge') or '', []).append(e)
+    plane_els = {}
+    for e in root.iter(NS + 'polygon'):
+        if e.get('data-role') == 'space-plane': plane_els.setdefault(e.get('data-plane'), []).append(e)
     pairs = []
     for ident, els in dots.items():
         if ident in pts and len(els) == 1: pairs.append((pts[ident], (_num(els[0], 'cx'), _num(els[0], 'cy'))))
@@ -1491,6 +1581,10 @@ def audit_space(plan, ctx, named, norm, scale, solids):
             for e in els:
                 if a in pts and abs(float(e.get('data-t0') or 0)) < 1e-9: pairs.append((pts[a], (_num(e, 'x1'), _num(e, 'y1'))))
                 if b in pts and abs(float(e.get('data-t1') or 0) - 1) < 1e-9: pairs.append((pts[b], (_num(e, 'x2'), _num(e, 'y2'))))
+    if not pairs:
+        for pid, els in plane_els.items():
+            if pid in planes and len(els) == 1:
+                for p, q in zip(planes[pid]['verts'], _points(els[0].get('points'))): pairs.append((p, q))
     if not pairs:
         errors.append('SPACE_FRAME_UNKNOWN')
         return
@@ -1513,13 +1607,49 @@ def audit_space(plan, ctx, named, norm, scale, solids):
             q = px(pts[ident])
             if math.hypot(_num(els[0], 'cx') - q[0], _num(els[0], 'cy') - q[1]) > POS_TOL: errors.append('SPACE_POINT_OFF:' + ident)
     ctx['space_names'] = [i for i, f in flags.items() if not f['hideName']]
-    # the depth test: every face of every polyhedron (and, below, every plane) between a point and the viewer hides it
+    # the planes: one translucent parallelogram each, its four corners where the plan puts them, its tint as written
+    audit_space_planes(planes, plane_els, ctx, px)
+    # the depth test: every face of every polyhedron and every plane between a point and the viewer hides it
     occluders = []
     for solid in solids:
         if solid['cat'] == 'POLY': occluders.append((solid, {fi: _plane_of(solid, f) for fi, f in enumerate(solid['faces'])}))
+    if planes: occluders.append((None, {pid: _plane_of_points(pl['verts']) for pid, pl in planes.items()}))
     audit_space_segments(space, ctx, named, norm, px, occluders, pieces)
     ctx['space_occluders'] = occluders
     ctx['space_px'] = px
+
+
+def audit_space_planes(planes, plane_els, ctx, px):
+    errors = ctx['errors']
+    if sorted(plane_els) != sorted(planes) or any(len(v) != 1 for v in plane_els.values()): errors.append('SPACE_PLANE_SET_MISMATCH')
+    for pid, pl in planes.items():
+        els = plane_els.get(pid) or []
+        if len(els) != 1: continue
+        el = els[0]
+        want = [px(v) for v in pl['verts']]
+        got = _points(el.get('points'))
+        if len(got) != 4 or any(math.hypot(a[0] - b[0], a[1] - b[1]) > POS_TOL for a, b in zip(got, want)): errors.append('SPACE_PLANE_CORNER_OFF:' + pid)
+        # the corners are really in one plane with the normal of the points that define it, and form a parallelogram of area
+        verts = pl['verts']
+        if any(abs(vdot(pl['n'], vsub(v, verts[0]))) > 1e-6 for v in verts) or vlen(vsub(vadd(verts[0], verts[2]), vadd(verts[1], verts[3]))) > 1e-6: errors.append('SPACE_PLANE_NOT_PLANAR:' + pid)
+        color, opacity = BASE_FILL_STYLE[pl['fill']]
+        if el.get('data-fill') != pl['fill'] or el.get('fill') != color or abs(float(el.get('fill-opacity') or 0) - opacity) > 1e-9: errors.append('SPACE_PLANE_FILL_MISMATCH:' + pid)
+        for k in range(4): ctx['segments'].append((want[k], want[(k + 1) % 4]))
+        # its name: the label of the plan's name, wholly inside the parallelogram
+        label = next((g for g in ctx['labels'] if g.get('id') == 'plane-name-' + pid), None)
+        if pl['name'] is None:
+            if label is not None: errors.append('SPACE_PLANE_NAME_NOT_IN_PLAN:' + pid)
+            continue
+        box = ctx['boxes'].get('plane-name-' + pid)
+        if label is None or box is None:
+            errors.append('SPACE_PLANE_NAME_MISSING:' + pid)
+            continue
+        if label.get('data-tex') != pl['name'] or label.get('data-space-of') != pid: errors.append('SPACE_PLANE_NAME_MISMATCH:' + pid)
+        corners = [(box[0], box[1]), (box[0] + box[2], box[1]), (box[0] + box[2], box[1] + box[3]), (box[0], box[1] + box[3])]
+        if not all(_winding_inside(want, c) for c in corners): errors.append('SPACE_PLANE_NAME_OUTSIDE:' + pid)
+    expected = {'plane-name-' + pid for pid, pl in planes.items() if pl['name'] is not None}
+    for g in ctx['labels']:
+        if g.get('data-label-role') == 'plane-name' and g.get('id') not in expected: errors.append('SPACE_PLANE_NAME_UNEXPECTED:' + str(g.get('id')))
 
 
 def audit_space_segments(space, ctx, named, norm, px, occluders, pieces):

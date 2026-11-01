@@ -2841,3 +2841,108 @@ test('G4b-1: an AUTO segment is dashed where a solid\'s face hides it and solid 
   const seen=pieces.find(p=>!p.includes('stroke-dasharray'));
   await g4bFailing(plan,svg.replace(seen,seen.replace(/ x2="([\d.]+)"/,(all,v)=>` x2="${Number(v)+10}"`)),'SPACE_SEGMENT_ENDPOINT_OFF');
 });
+
+// --- G4b-2: planes (translucent parallelograms) and the depth test against them -----------------------------------------------------------------------------------------
+const g4bFloor={id:'alpha',name:'\\alpha',through:['O','H','Q'],extent:{center:[0,0,0],u:[3,0,0],v:[0,2,0]}};
+const g4bFloorPoints=[{id:'O',at:[0,0,0]},{id:'H',at:[1,0,0]},{id:'Q',at:[0,1,0]}];
+test('G4b-2: a plane is a parallelogram of its extent; through three points or by a normal; a point on it and the projection onto it are checked in 3D',()=>{
+  const m=solveSolidFigure(g4bSpace({points:[...g4bFloorPoints,{id:'P',at:[0.5,0.25,3],hideName:true},{id:'F',at:{projection:{from:'P',plane:'alpha'}},on:'alpha'},{id:'G',at:[1,1,0],on:'alpha'}],planes:[g4bFloor]}));
+  const pl=m.space.planes[0];
+  assert.deepEqual(pl.verts,[[-3,-2,0],[3,-2,0],[3,2,0],[-3,2,0]]);
+  assert.ok(Math.abs(Math.abs(pl.n[2])-1)<1e-9);
+  assert.ok(m.space.points.find(q=>q.id==='F').p.every((x,k)=>Math.abs(x-[0.5,0.25,0][k])<1e-6));// the foot of P on the floor
+  // by a normal and a point: the wall x = 1; the default extent covers the points on it with a margin, as a rectangle whose sides run along the screen's horizontal and the plane's other direction
+  const wall=solveSolidFigure(g4bSpace({points:[{id:'A',at:[1,0,0]},{id:'B',at:[1,2,0]},{id:'C',at:[1,0,3]}],planes:[{id:'beta',name:'\\beta',normal:[1,0,0],point:'A'}]}));
+  const w=wall.space.planes[0];
+  for(const v of w.verts)assert.ok(Math.abs(v[0]-1)<1e-6,'every corner is on the wall');
+  const inside=(pt,verts)=>{const ys=verts.map(v=>project(v));let c=false;for(let i=0,j=3;i<4;j=i++){if((ys[i][1]>pt[1])!==(ys[j][1]>pt[1])&&pt[0]<(ys[j][0]-ys[i][0])*(pt[1]-ys[i][1])/(ys[j][1]-ys[i][1])+ys[i][0])c=!c;}return c;};
+  for(const q of wall.space.points)assert.ok(inside(project(q.p),w.verts),'the plane covers its point '+q.id);
+  // a plane with no name and a different tint
+  const plain=solveSolidFigure(g4bSpace({points:g4bFloorPoints,planes:[{id:'f',through:['O','H','Q'],fill:'WARM'}]}));
+  assert.equal(plain.space.planes[0].name,undefined);assert.equal(plain.space.planes[0].fill,'WARM');
+  // three planes at most; a name and a point each
+  const three=solveSolidFigure(g4bSpace({points:[...g4bFloorPoints,{id:'R',at:[0,0,1]}],planes:[{id:'a',name:'\\alpha',through:['O','H','Q']},{id:'b',name:'\\beta',through:['O','H','R']},{id:'c',name:'\\pi',normal:[1,0,0],point:'O'}]}));
+  assert.equal(three.space.planes.length,3);
+});
+test('G4b-2: a bad plane is refused with its own code',()=>{
+  const bad=(planes,expected,points=g4bFloorPoints,extra={})=>assert.throws(()=>solveSolidFigure(g4bSpace({points,planes,...extra})),code(expected),expected);
+  bad([{id:'a',through:['O','H','Z']}],'SPACE_PLANE_INVALID');
+  bad([{id:'a',through:['O','H']}],'SPACE_PLANE_INVALID');
+  bad([{id:'a',through:['O','H','Q'],normal:[0,0,1],point:'O'}],'SPACE_PLANE_INVALID');
+  bad([{id:'a'}],'SPACE_PLANE_INVALID');
+  bad([{id:'a',through:['O','H','Q']},{id:'a',through:['O','H','Q']}],'SPACE_PLANE_INVALID');
+  bad([{id:'A',through:['O','H','Q']}],'SPACE_PLANE_INVALID');
+  bad([{id:'a',through:['O','H','Q'],fill:'RED'}],'SPACE_PLANE_INVALID');
+  bad([{id:'a',through:['O','H','Q'],nameAt:'CENTER'}],'SPACE_PLANE_INVALID');// nameAt needs a name
+  bad([{id:'a',name:'\\alpha',through:['O','H','Q'],nameAt:4}],'SPACE_PLANE_INVALID');
+  bad([{id:'a',through:['O','H','Q'],colour:'red'}],'SPACE_PLANE_INVALID');
+  bad([{id:'a',through:['O','H','O']}],'SPACE_PLANE_INVALID');
+  bad([{id:'a',through:['O','H','D']}],'SPACE_PLANE_DEGENERATE',[...g4bFloorPoints,{id:'D',at:[2,0,0]}]);// O, H and D are on one line
+  bad([{id:'a',normal:[0,0,0],point:'O'}],'SPACE_PLANE_DEGENERATE');
+  bad([{id:'a',name:'alpha',through:['O','H','Q']}],'SPACE_PLANE_NAME_INVALID');
+  bad([{id:'a',name:'\\alpha\\beta',through:['O','H','Q']}],'SPACE_PLANE_NAME_INVALID');
+  bad([{id:'a',name:'\\textbf{x}',through:['O','H','Q']}],'SPACE_PLANE_NAME_INVALID');
+  bad(['a','b','c','d'].map(id=>({id,through:['O','H','Q']})),'SPACE_PLANE_LIMIT');
+  const ext=e=>[{id:'a',through:['O','H','Q'],extent:e}];
+  bad(ext({center:'O',u:[1,0,0],v:[0,0,1]}),'SPACE_PLANE_EXTENT_INVALID');// v leaves the plane
+  bad(ext({center:[0,0,1],u:[1,0,0],v:[0,1,0]}),'SPACE_PLANE_EXTENT_INVALID');// the centre is off the plane
+  bad(ext({center:'O',u:[1,0,0],v:[2,0,0]}),'SPACE_PLANE_EXTENT_INVALID');// u and v are parallel
+  bad(ext({center:'O',u:[0,0,0],v:[0,1,0]}),'SPACE_PLANE_EXTENT_INVALID');
+  bad(ext({center:'Z',u:[1,0,0],v:[0,1,0]}),'SPACE_PLANE_EXTENT_INVALID');
+  bad(ext({center:'O',u:[1,0],v:[0,1,0]}),'SPACE_PLANE_EXTENT_INVALID');
+  bad(ext({center:'O',u:[1,0,0],v:[0,1,0],w:1}),'SPACE_PLANE_EXTENT_INVALID');
+  // a point that says it is on a plane is on it
+  bad([g4bFloor],'SPACE_POINT_NOT_ON_PLANE:G',[...g4bFloorPoints,{id:'G',at:[1,1,0.5],on:'alpha'}]);
+  bad([g4bFloor],'SPACE_PLANE_INVALID',[...g4bFloorPoints,{id:'G',at:[1,1,0],on:'nowhere'}]);
+  bad([g4bFloor],'SPACE_PLANE_INVALID',[...g4bFloorPoints,{id:'G',at:{projection:{from:'O',plane:'nowhere'}}}]);
+});
+test('G4b-2: a figure with a plane, a point above it, a perpendicular and a segment behind it is composed and audited; the depth boundary is where the segment crosses the plane; every tamper is caught',async()=>{
+  const plan=g4bSpace({points:[{id:'O',at:[0,0,0]},{id:'P',at:[0,0,2.5]},{id:'H',at:[-1.5,-1.5,0]},{id:'Q',at:[1,-1,0],on:'alpha'},{id:'B',at:[0.5,0.5,-1.5]}],
+    planes:[{id:'alpha',name:'\\alpha',through:['O','H','Q'],extent:{center:[-0.3,-0.2,0],u:[3.2,0,0],v:[0,2.6,0]}}],
+    segments:[{from:'P',to:'O'},{from:'O',to:'H'},{from:'P',to:'H'},{from:'P',to:'B',style:'AUTO'},{from:'O',to:'B',style:'AUTO',role:'ACCENT'}]},{marks:{rightAngles:[{at:'O',refs:['P','H']}]}});
+  const m=solveSolidFigure(plan);
+  // the segment PB runs from above the plane (z = 2.5) to below it (z = -1.5) and crosses z = 0 at t = 2.5/4; below the plane it is behind the plane (seen through it)
+  const pb=m.space.segments.find(s=>s.from==='P'&&s.to==='B');
+  assert.deepEqual(pb.runs.map(r=>r.hidden),[false,true,false]);// seen above the plane, behind it while the line of sight meets the parallelogram, seen again once it leaves it
+  assert.ok(Math.abs(pb.runs[0].t1-0.625)<1e-4,'the crossing is at t=0.625: '+JSON.stringify(pb.runs));
+  const ob=m.space.segments.find(s=>s.from==='O'&&s.to==='B');
+  assert.equal(ob.runs[0].hidden,true,'a segment from a point on the plane to a point behind it is hidden where it leaves the plane');
+  const po=m.space.segments.find(s=>s.from==='P'&&s.to==='O');
+  void po;
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.match(svg,/<polygon id="space-plane-alpha" data-role="space-plane" data-plane="alpha" data-space="1" data-fill="LIGHT" fill="#7fa6e8" fill-opacity="0.32"/);
+  assert.match(svg,/data-label-role="plane-name"[^>]*data-owner="plane-alpha"[^>]*data-space-of="alpha"/);
+  const poly=svg.match(/<polygon id="space-plane-alpha"[^>]*\/>/)[0];
+  const pts=poly.match(/points="([^"]+)"/)[1].split(' ').map(s=>s.split(',').map(Number));
+  const moveCorner=(k,dx,dy)=>poly.replace(/points="[^"]+"/,'points="'+pts.map((p,i)=>i===k?[p[0]+dx,p[1]+dy]:p).map(p=>p.join(',')).join(' ')+'"');
+  await g4bFailing(plan,svg.replace(poly,moveCorner(2,0,14)),'SPACE_PLANE_CORNER_OFF:alpha');
+  await g4bFailing(plan,svg.replace(poly,moveCorner(0,-8,0)),'SPACE_PLANE_CORNER_OFF:alpha');
+  await g4bFailing(plan,svg.replace(poly,poly.replace('data-fill="LIGHT"','data-fill="WARM"')),'SPACE_PLANE_FILL_MISMATCH:alpha');
+  await g4bFailing(plan,svg.replace(poly,''),'SPACE_PLANE_SET_MISMATCH');
+  // the name of the plane is moved out of its parallelogram
+  const label=svg.match(/<g id="plane-name-alpha"[^>]*transform="translate\(([\d.]+) ([\d.]+)\)"/);
+  const out=svg.replace(label[0],label[0].replace(/translate\([\d.]+ [\d.]+\)/,'translate(2 2)'));
+  await g4bFailing(plan,out,'SPACE_PLANE_NAME_OUTSIDE:alpha');
+  // a plan whose plane is another one (a different extent) or whose name differs is not this figure
+  await g4bFailing({...plan,space:{...plan.space,planes:[{...plan.space.planes[0],extent:{center:[-0.3,-0.2,0],u:[3.2,0,0],v:[0,2.0,0]}}]}},svg,'SPACE_PLANE_CORNER_OFF:alpha');
+  await g4bFailing({...plan,space:{...plan.space,planes:[{...plan.space.planes[0],name:'\\beta'}]}},svg,'SPACE_PLANE_NAME_MISMATCH:alpha');
+  // the depth boundary is moved along PB: the first piece's end and the next piece's start slide up the segment
+  const pieces=[...svg.matchAll(/<line id="space-segment-BP-?\d*"[^>]*\/>|<line id="space-segment-PB-\d+"[^>]*\/>/g)].map(x=>x[0]);
+  assert.equal(pieces.length,3);
+  const first=pieces[0],second=pieces[1];
+  const slide=(el,which,d)=>el.replace(new RegExp(` ${which}="([\\d.]+)"`),(all,v)=>` ${which}="${Number(v)+d}"`);
+  await g4bFailing(plan,svg.replace(first,slide(slide(first,'x2',6),'y2',9)).replace(second,slide(slide(second,'x1',6),'y1',9)),'SPACE_SEGMENT_ENDPOINT_OFF:PB');
+  const retimed=el=>el.replace(/data-t1="[\d.]+"/,'data-t1="0.8"');
+  await g4bFailing(plan,svg.replace(first,retimed(first)),'SPACE_SEGMENT_RUN_BOUNDARY:PB');
+  // a segment drawn solid where the plane hides it
+  const hiddenPiece=pieces.find(p=>p.includes('stroke-dasharray'));
+  await g4bFailing(plan,svg.replace(hiddenPiece,hiddenPiece.replace(' stroke-dasharray="5 4"','').replace('data-vis="hidden"','data-vis="solid"')),'SOLID_EDGE_VISIBILITY_MISMATCH');
+  // a point that is not on the plane the plan says it is on is the observer's to catch from the plan alone
+  await g4bFailing({...plan,space:{...plan.space,points:plan.space.points.map(q=>q.id==='B'?{...q,on:'alpha'}:q)}},svg,'SPACE_POINT_NOT_ON_PLANE:B');
+  // a drawn plane the plan does not have
+  const {planes:droppedPlanes,...noPlanes}=plan.space;void droppedPlanes;
+  await g4bFailing({...plan,space:{...noPlanes,points:noPlanes.points.map(({on,...q})=>{void on;return q;})}},svg,'SPACE_PLANE_SET_MISMATCH');
+});
