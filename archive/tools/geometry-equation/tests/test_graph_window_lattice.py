@@ -227,7 +227,7 @@ class CoordinatesAndLengths(unittest.TestCase):
           (variant(lambda o:o['points'][0].update(labelDirection='UP')),'OVERLAY_LABEL_DIRECTION_INVALID:A'),
           (variant(lambda o:o['segments'][1].update(labelDirection='N')),'OVERLAY_LABEL_DIRECTION_INVALID:sBC'),
           (variant(lambda o:o['segments'][1].update(length='yes')),'OVERLAY_SEGMENT_LENGTH_INVALID:sBC'),
-          (variant(lambda o:o['points'].append({'id':'E','x':'-3/2','y':'-2'}) or o['segments'].append({'id':'sEO','from':'E','to':'O','length':True})),'OVERLAY_SEGMENT_LENGTH_UNSUPPORTED:sEO'),
+          (variant(lambda o:o['points'].append({'id':'E','x':'1/2','y':'-1'}) or o['segments'].append({'id':'sEO','from':'E','to':'O','length':True})),'OVERLAY_SEGMENT_LENGTH_UNSUPPORTED:sEO'),   # G12-3: a fraction (5/2) is written now; sqrt(5)/2 (a fraction times a radical) is not
         ]
         for plan,code in cases:self.assertEqual(refused(plan),code,code)
     def test_model_observation(self):

@@ -4,7 +4,7 @@ import {exactValue} from './phase2.mjs';
 // pieces or step, jumpValues, requiredPoints, axisTickValues), graphPlan.layout is 'STACKED', and graphPlan.limitArrows[].curve says which function an arrow runs along.
 // The pair becomes composite-panels-v1 (each panel is a normal one-function plan with its own audits), so nothing here draws or measures anything.
 export const PAIR_LAYOUTS=['STACKED','SHARED'];
-const curveFields=['id','name','style','pieces','step','jumpValues','requiredPoints','axisTickValues','exactCoordinates','pointNames','nameLabel'];
+const curveFields=['id','name','style','pieces','step','jumpValues','requiredPoints','axisTickValues','exactCoordinates','pointNames','nameLabel','color'];
 const shared=['family','axisTitles','plotHeightLimit'];
 const fail=code=>{throw Error(code);};
 
@@ -25,9 +25,10 @@ export function expandDiscontinuousPair(plan){
   if(!ref||typeof ref!=='object'||Object.keys(ref).some(key=>!curveFields.includes(key))||typeof ref.id!=='string'||!/^[a-hj-wz]$/.test(ref.id))fail('PIECEWISE_DISCONTINUOUS_PAIR_CURVES_INVALID');
   const mainId=g.functionName??'f';
   if(!/^[a-hj-wz]$/.test(mainId)||mainId===ref.id)fail('PIECEWISE_DISCONTINUOUS_PAIR_CURVES_INVALID');
-  for(const key of Object.keys(g))if(!['family','pieces','step','jumpValues','requiredPoints','axisTickValues','exactCoordinates','pointNames','functionName','referenceCurves','layout','limitArrows','xWindow','overlays',...shared].includes(key))fail('PIECEWISE_DISCONTINUOUS_PAIR_FIELD_UNKNOWN:'+key);
+  for(const key of Object.keys(g))if(!['family','pieces','step','jumpValues','requiredPoints','axisTickValues','exactCoordinates','pointNames','functionName','referenceCurves','layout','limitArrows','xWindow','overlays','curveColor','nameLabel','axisVariable',...shared].includes(key))fail('PIECEWISE_DISCONTINUOUS_PAIR_FIELD_UNKNOWN:'+key);
   const bodyOf=source=>Object.fromEntries(['pieces','step','jumpValues','requiredPoints','axisTickValues','exactCoordinates'].filter(key=>source[key]!==undefined).map(key=>[key,source[key]]));
   const mainBody=bodyOf(g),refBody=bodyOf(ref);
+  if(g.layout!=='SHARED'&&(g.curveColor!==undefined||g.nameLabel!==undefined||g.axisVariable!==undefined||ref.color!==undefined))fail('PAIR_STACKED_CURVE_FIELDS_UNSUPPORTED:curveColor, nameLabel, axisVariable and color need layout SHARED');
   if(g.layout!=='SHARED'&&(g.overlays!==undefined||ref.nameLabel!==undefined))fail('PAIR_STACKED_OVERLAYS_UNSUPPORTED:overlays and nameLabel need layout SHARED');
   if(g.layout==='SHARED'){
     // SHARED: both functions on one pair of axes. The second curve must be drawn in a line style that tells it from f (DASHED or ACCENT).
@@ -38,7 +39,7 @@ export function expandDiscontinuousPair(plan){
     if(arrowsAll.some(arrow=>![mainId,ref.id].includes(arrow?.curve??mainId)))fail('PIECEWISE_DISCONTINUOUS_PAIR_ARROW_CURVE_UNKNOWN');
     const strip=({curve,...rest})=>rest;
     const {referenceCurves,layout,limitArrows,...own}=g;
-    const second={id:ref.id,style:ref.style,...(ref.name!==undefined?{name:ref.name}:{}),...(ref.nameLabel!==undefined?{nameLabel:ref.nameLabel}:{}),...(refBody.pieces!==undefined?{pieces:refBody.pieces}:{}),...(refBody.step!==undefined?{step:refBody.step}:{}),...(refBody.jumpValues!==undefined?{jumpValues:refBody.jumpValues}:{}),...(arrowsAll.some(a=>a.curve===ref.id)?{limitArrows:arrowsAll.filter(a=>a.curve===ref.id).map(strip)}:{})};
+    const second={id:ref.id,style:ref.style,...(ref.name!==undefined?{name:ref.name}:{}),...(ref.nameLabel!==undefined?{nameLabel:ref.nameLabel}:{}),...(ref.color!==undefined?{color:ref.color}:{}),...(refBody.pieces!==undefined?{pieces:refBody.pieces}:{}),...(refBody.step!==undefined?{step:refBody.step}:{}),...(refBody.jumpValues!==undefined?{jumpValues:refBody.jumpValues}:{}),...(arrowsAll.some(a=>a.curve===ref.id)?{limitArrows:arrowsAll.filter(a=>a.curve===ref.id).map(strip)}:{})};
     const ticks=axis=>[...new Set([...(mainBody.axisTickValues?.[axis]??[]),...(refBody.axisTickValues?.[axis]??[])].map(String))].map(v=>Number.isFinite(Number(v))&&!/[a-z]/i.test(v)?Number(v):v);
     const ownArrows=arrowsAll.filter(a=>(a.curve??mainId)===mainId).map(strip);
     return {...plan,graphPlan:{...own,functionName:mainId,axisTickValues:{x:ticks('x'),y:ticks('y')},...(ownArrows.length?{limitArrows:ownArrows}:{}),sharedCurve:second}};

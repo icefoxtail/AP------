@@ -8,7 +8,12 @@ const SUBS='₁₂₃₄₅₆₇₈₉';
 const hex=n=>n.toString(16).toUpperCase();
 
 /** The glyph tokens a display name must show: [{c:'1D447',level:'base'},{c:'31',level:'sub'}] for T_1; or the plain id's letters when there is no display name. */
+const COORD=/^\(\s*(-?\d{1,3}|[A-Za-z])\s*,\s*(-?\d{1,3}|[A-Za-z])\s*\)$/u;
+const part=text=>[...text].map(ch=>ch==='-'?{c:'2212',level:'base'}:{c:/[A-Za-z]/u.test(ch)?(ch==='h'?'210E':hex((ch<='Z'?0x1D434-65:0x1D44E-97)+ch.charCodeAt(0))):hex(ch.charCodeAt(0)),level:'base'});
 export function expectedNameTokens(name){
+  // a coordinate-pair name with a letter (2,k) (G12-3): ( first , second ), every glyph at base level, read as a name (the point's own coordinates are not compared)
+  const pair=COORD.exec(String(name));
+  if(pair)return /[A-Za-z]/u.test(pair[1]+pair[2])?[{c:'28',level:'base'},...part(pair[1]),{c:'2C',level:'base'},...part(pair[2]),{c:'29',level:'base'}]:null;
   const m=NAME.exec(String(name));
   if(!m)return null;
   const primeText=m[2]??'',primes=primeText?(['″',"''",'′′'].includes(primeText)?2:1):0;
@@ -57,7 +62,8 @@ export function observeDisplayedPointNames(svg,expectations){
   for(const {owner,name} of expectations){
     const want=expectedNameTokens(name);
     if(!want){errors.push('POINT_DISPLAY_NAME_INVALID:'+owner);continue;}
-    const mine=groups.filter(g=>g.owner===owner&&(g.kind==='POINT_NAME'||g.kind==='EQUATION_LABEL'));
+    // a callout (G12-1) is a label of its own text on a leader from the point, not the point's name
+    const mine=groups.filter(g=>g.owner===owner&&(g.kind==='POINT_NAME'||g.kind==='EQUATION_LABEL')&&!g.id.startsWith('overlay-callout-'));
     if(!mine.length){errors.push('POINT_DISPLAY_NAME_NOT_SHOWN:'+owner);continue;}
     for(const group of mine){
       const got=glyphTokens(group.markup);checked++;
@@ -79,7 +85,7 @@ export function planNameExpectations(plan){
   const required=plan.graphPlan?.requiredPoints??[],overlay=new Set((plan.graphPlan?.overlays?.points??[]).map(point=>point?.id));
   return Object.entries(names).flatMap(([id,name])=>{
     const index=required.findIndex(point=>point?.id===id);
-    if(index>=0)return [{owner:'required-point-'+(index+1),name}];
+    if(index>=0)return required[index].marker==='NONE'?[]:[{owner:'required-point-'+(index+1),name}];   // marker NONE (G12-1): not drawn, so no name to read back
     return overlay.has(id)?[{owner:id,name}]:[];
   });
 }

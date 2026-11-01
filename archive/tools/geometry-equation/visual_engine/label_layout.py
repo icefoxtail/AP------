@@ -1089,8 +1089,13 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
             # goes into the nearest free sector around the point, closest to it first. When that sector is outside the point's Voronoi cell (a long
             # name, a narrow sector) a visible leader from the point ties the name back to it.
             at=tuple(label['at']);ring=None;ring_method=None;incident=None
+            # (G12-1) A callout label names the side to try first (directions[0]): the ring is searched from that heading outwards on both sides; other labels keep the fixed order.
+            ring_steps=range(48)
+            if leader_only and label.get('directions'):
+                heading={'E':0,'SE':45,'S':90,'SW':135,'W':180,'NW':225,'N':270,'NE':315}.get(label['directions'][0])
+                if heading is not None:ring_steps=sorted(range(48),key=lambda k:(min((k*7.5-heading)%360,(heading-k*7.5)%360),k))
             for radius in POINT_NAME_RING_RADII:
-                for step in range(48):
+                for step in ring_steps:
                     angle=math.radians(step*7.5)
                     box=Box(at[0]+radius*math.cos(angle)-w/2,at[1]+radius*math.sin(angle)-h/2,w,h)
                     if leader_only and box_point_distance(box,at)<LEADER_ONLY_MIN_PX:continue
@@ -1107,7 +1112,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 # to reach the nearest free box. The leader still starts on its own dot and ends on the label box, which the observer ties back to the owner.
                 crossing=[o for o in occupied if not (o.get('kind')=='circle' and o.get('id') in incident_ids)] if (incident_ids:=owner_incident_ids(at,owner_marker,occupied)) is not None else occupied
                 for radius in POINT_NAME_RING_RADII:
-                    for step in range(48):
+                    for step in ring_steps:
                         angle=math.radians(step*7.5)
                         box=Box(at[0]+radius*math.cos(angle)-w/2,at[1]+radius*math.sin(angle)-h/2,w,h)
                         if not acceptable(box,owner_check=False):continue

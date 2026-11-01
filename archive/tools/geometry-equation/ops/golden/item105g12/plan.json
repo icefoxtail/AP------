@@ -1,0 +1,156 @@
+{
+ "capability": "piecewise-discontinuous-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-discontinuous",
+  "functionName": "f",
+  "layout": "SHARED",
+  "xWindow": [
+   0,
+   5
+  ],
+  "pieces": [
+   {
+    "coefficients": [
+     "0",
+     "0",
+     "1/4"
+    ],
+    "domain": [
+     0,
+     null
+    ]
+   }
+  ],
+  "requiredPoints": [],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "referenceCurves": [
+   {
+    "id": "g",
+    "name": "g",
+    "style": "ACCENT",
+    "pieces": [
+     {
+      "coefficients": [
+       "0",
+       "1"
+      ],
+      "domain": [
+       0,
+       null
+      ]
+     }
+    ],
+    "axisTickValues": {
+     "x": [],
+     "y": []
+    },
+    "nameLabel": {
+     "text": "y=x",
+     "placement": "LEADER"
+    }
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "pf",
+     "curveX": "2",
+     "unnamed": true
+    },
+    {
+     "id": "pl",
+     "curveX": "2",
+     "on": "g",
+     "unnamed": true
+    },
+    {
+     "id": "pb",
+     "curveX": "4",
+     "unnamed": true
+    },
+    {
+     "id": "a",
+     "axis": "x",
+     "value": "2"
+    },
+    {
+     "id": "b",
+     "axis": "x",
+     "value": "4"
+    },
+    {
+     "id": "ya",
+     "axis": "y",
+     "value": "2",
+     "unnamed": true
+    },
+    {
+     "id": "yf",
+     "axis": "y",
+     "value": "1",
+     "unnamed": true
+    }
+   ],
+   "segments": [
+    {
+     "id": "sa",
+     "from": "a",
+     "to": "pf",
+     "dashed": true
+    },
+    {
+     "id": "sb",
+     "from": "b",
+     "to": "pb",
+     "dashed": true
+    },
+    {
+     "id": "sl",
+     "from": "ya",
+     "to": "pl",
+     "dashed": true
+    },
+    {
+     "id": "sf",
+     "from": "yf",
+     "to": "pf",
+     "dashed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cf",
+     "point": "yf",
+     "text": "f(a)",
+     "direction": "W"
+    },
+    {
+     "id": "cl",
+     "point": "ya",
+     "text": "a",
+     "direction": "W"
+    }
+   ]
+  },
+  "nameLabel": {
+   "at": "END",
+   "side": "BELOW"
+  }
+ },
+ "caption": "x=a에서 곡선이 직선 아래에 있고(f(a)<a), x=b에서 곡선과 직선이 만난다(f(b)=b).",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "0<a<b이고 f(a)<a, f(b)=b",
+   "mappedTo": [
+    "graph"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "x=a에서 f(a)가 a보다 작고 x=b에서 두 그래프가 만남"
+ ]
+}

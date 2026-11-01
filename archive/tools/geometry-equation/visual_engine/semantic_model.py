@@ -80,7 +80,9 @@ def validate(spec):
         if 'emphasisGroup' in obj and (obj['kind']!='ANGLE_MARK' or isinstance(obj['emphasisGroup'],bool) or obj['emphasisGroup'] not in {1,2,3}):raise ValueError('INVALID_ANGLE_EMPHASIS_GROUP')
         # color (C1): a palette colour of a segment, an angle mark or an equal / parallel mark group; an angle mark takes either a colour or an emphasisGroup, a guide / emphasised / dashed / arrow segment none
         if 'color' in obj:
-            if obj['kind'] not in {'SEGMENT','ANGLE_MARK','EQUAL_MARK','PARALLEL_MARK'} or obj['color'] not in PALETTE_NAMES:raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
+            # (G12-2) a graph's overlay line or drawn curve wears a palette colour too (a curve keeps its own line style DASHED, but not the red ACCENT)
+            if obj['kind'] not in {'SEGMENT','ANGLE_MARK','EQUAL_MARK','PARALLEL_MARK','LINE','FUNCTION_GRAPH'} or obj['color'] not in PALETTE_NAMES:raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
+            if obj['kind']=='FUNCTION_GRAPH' and obj.get('curveStyle')=='ACCENT':raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
             if obj['kind']=='ANGLE_MARK' and 'emphasisGroup' in obj:raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
             if obj['kind']=='SEGMENT' and any(key in obj for key in ('guide','dash','arrow','emphasis')):raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
         # A plane mark label is plain TEXT or math; a unit (cm, m, mm) follows a math label of an expression label, a circular arc or a trace only.
@@ -285,7 +287,7 @@ def validate(spec):
         # A simple closed polygon of displayed points (a triangle OAB, a trapezoid of two chords): its own outline, optionally filled.
         refs=obj['refs']
         if len(refs)<3 or len(set(refs))!=len(refs) or any(objects.get(ref,{}).get('kind')!='POINT' for ref in refs): raise ValueError('POLYGON_POINT_REFS_REQUIRED:'+obj['id'])
-        if 'fill' in obj and obj['fill'] not in {'LIGHT','MEDIUM','NONE'}: raise ValueError('REGION_FILL_UNSUPPORTED:'+obj['id'])
+        if 'fill' in obj and obj['fill'] not in {'LIGHT','MEDIUM','NONE',*PALETTE_NAMES}: raise ValueError('REGION_FILL_UNSUPPORTED:'+obj['id'])   # (G12-2) a palette colour too
         geometry[obj['id']]=[geometry[ref] for ref in refs]
         relations.append({'id':obj['id'],'kind':'POLYGON','status':'PASS','observed':len(refs)})
     for obj in spec['objects']:

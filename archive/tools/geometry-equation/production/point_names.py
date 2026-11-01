@@ -9,7 +9,15 @@ SUBSCRIPTS = '₁₂₃₄₅₆₇₈₉'
 _NAME = re.compile(r"([A-Z])(′′|″|''|′|')?(?:_\{([1-9]{1,2})\}|_([1-9])|([₁-₉]{1,2}))?")
 
 
+_COORD = re.compile(r"\(\s*(-?\d{1,3}|[A-Za-z])\s*,\s*(-?\d{1,3}|[A-Za-z])\s*\)")
+
+
 def parse(name):
+    pair = _COORD.fullmatch(name) if isinstance(name, str) else None
+    if pair is not None:
+        # a coordinate-pair name with a letter in it, (2,k) (G12-3): returned as ((first, second), None, None)
+        if not re.search('[A-Za-z]', pair.group(1) + pair.group(2)): raise ValueError('POINT_DISPLAY_NAME_INVALID')
+        return (pair.group(1), pair.group(2)), None, None
     m = _NAME.fullmatch(name) if isinstance(name, str) else None
     if m is None: raise ValueError('POINT_DISPLAY_NAME_INVALID')
     primes = {None: 0, "'": 1, '′': 1, "''": 2, '′′': 2, '″': 2}[m.group(2)]
@@ -19,6 +27,7 @@ def parse(name):
 
 def expected_tex(name):
     letter, primes, sub = parse(name)
+    if primes is None: return '(%s,%s)' % letter
     return letter + "'" * primes + ('_{%s}' % sub if sub else '')
 
 
