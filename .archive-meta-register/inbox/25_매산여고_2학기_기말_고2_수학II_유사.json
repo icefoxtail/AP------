@@ -1,0 +1,1553 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "req-similar-473dc256ab199924",
+  "examUid": "25_매산여고_2학기_기말_고2_수학II_유사",
+  "sourceArchiveFile": "similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.js",
+  "expectedSourceBlobSha1": "430b7b5a0cf917de36837012b2e72486439ebef7",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "FINAL_QA",
+    "metadataReviewed": true,
+    "approvedBy": "13th-route-main-merge-master",
+    "evidenceRefs": [
+      {
+        "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+        "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+      }
+    ]
+  },
+  "registryChanges": [
+    {
+      "registryPath": "archive/data/meta-foundation/extensions/similar-high/25_매산여고_2학기_기말_고2_수학II_유사.registry.json",
+      "registrySha256": "aed84f9e13f72a8fb6f27259b60770475a0046834e90b5b4ab0a4426639768ac",
+      "keys": [
+        "EXT-L4-DERIV-TANGENT-INTERCEPT-FUNCTION-MONOTONICITY",
+        "EXT-L4-DERIV-EXTREMA-COUNT-ROOT-COINCIDENCE",
+        "EXT-L4-DERIV-SUM-PRODUCT-FUNCTION-RECOVERY",
+        "EXT-L4-DERIV-ABSOLUTE-CUBIC-ROOT-COUNT-EXTREMUM-DETERMINATION",
+        "EXT-L4-DERIV-ABSOLUTE-EQUATION-CASE-SPLIT-ROOT-COUNT",
+        "EXT-L4-INDEF-FUNCTIONAL-EQUATION-DERIVATIVE-NO-EXTREMUM",
+        "EXT-L4-INTEGRAL-DEFINED-FUNCTION-SIGN-CHANGE-EXTREMA-COUNT",
+        "EXT-CROSS-TANGENT-LINE-Y-INTERCEPT",
+        "EXT-CROSS-DERIVATIVE-SIGN-CHANGE-EXTREMUM",
+        "EXT-CROSS-SUM-PRODUCT-POLYNOMIAL-RECOVERY",
+        "EXT-COND-EXACT-EXTREMA-COUNT"
+      ],
+      "details": {
+        "generatedL4": [
+          {
+            "key": "EXT-L4-DERIV-TANGENT-INTERCEPT-FUNCTION-MONOTONICITY",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "접선의 y절편 함수의 증가·감소 조건",
+            "definition": "곡선 위 임의의 점 (t,f(t))에서의 접선의 y절편을 g(t)=f(t)-t f'(t)로 세우고, 주어진 열린 구간에서 g가 증가할 조건(g'≥0)을 매개변수의 범위로 환산하는 사고.",
+            "parentRpmRecordId": "H2-M2-RPM-023",
+            "parentRpmL1": "미분",
+            "parentRpmL2": "도함수의 활용(2)",
+            "parentRpmL3": "증가·감소와 극값",
+            "parentRpmL4": "증감표",
+            "parentProblemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+            "parentTemplateKey": "TPL_MONOTONICITY_DIRECT",
+            "standardUnitKey": "H15-M2-06",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "standardCourse": "수학II",
+            "curriculum": "2015",
+            "basis": "RPM 'H2-M2-RPM-023 증감표'는 주어진 f의 증감만 다루고, 접선 y절편이라는 새 함수 g를 만들어 g의 증감을 묻는 한 단계 위의 구조를 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "25_매산여고_2학기_기말_고2_수학II_유사",
+              "qid": 8
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-10-29",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-L4-DERIV-EXTREMA-COUNT-ROOT-COINCIDENCE",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "도함수 인수의 근 중복·원점 일치에 따른 극값 개수 판정",
+            "definition": "f'(x)=(상수)·x·(이차식)에서 이차식의 판별식 부호, 중근, 근이 x=0과 일치하는 경우를 매개변수별로 나누어 부호가 바뀌는 점의 개수(극값 개수)를 판정하는 사고.",
+            "parentRpmRecordId": "H2-M2-RPM-024",
+            "parentRpmL1": "미분",
+            "parentRpmL2": "도함수의 활용(2)",
+            "parentRpmL3": "증가·감소와 극값",
+            "parentRpmL4": "극대·극소",
+            "parentProblemTypeKey": "PT_DERIVATIVE_EXTREMA",
+            "parentTemplateKey": "TPL_EXTREMA_STRUCTURE_COUNT",
+            "standardUnitKey": "H15-M2-06",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "standardCourse": "수학II",
+            "curriculum": "2015",
+            "basis": "RPM 'H2-M2-RPM-024 극대·극소'는 극값의 존재·값 결정을 다루며, 부호 비변화 중근과 근 겹침 때문에 극값 개수가 달라지는 경우 분류를 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "25_매산여고_2학기_기말_고2_수학II_유사",
+              "qid": 11
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-10-29",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-L4-DERIV-SUM-PRODUCT-FUNCTION-RECOVERY",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "합과 곱의 도함수로 두 다항함수 복원",
+            "definition": "(f+g)', (fg)'가 주어질 때 적분과 초기값으로 합 S와 곱 P를 복원한 뒤 (f-g)^2=S^2-4P의 완전제곱 인수분해와 부호 선택으로 f, g를 각각 구하는 사고.",
+            "parentRpmRecordId": "H2-M2-RPM-016",
+            "parentRpmL1": "미분",
+            "parentRpmL2": "미분계수와 도함수",
+            "parentRpmL3": "도함수",
+            "parentRpmL4": "도함수 계산",
+            "parentProblemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+            "parentTemplateKey": "TPL_LOCAL_DERIVATIVE_CONSTRAINT_FUNCTION_DETERMINE",
+            "standardUnitKey": "H15-M2-04",
+            "subUnitKey": "H15-M2-04-DERIVATIVE",
+            "standardCourse": "수학II",
+            "curriculum": "2015",
+            "basis": "RPM 'H2-M2-RPM-016 도함수 계산'은 주어진 함수의 도함수 계산이며, 합·곱의 도함수 정보로 두 함수를 역으로 복원하는 구조를 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "25_매산여고_2학기_기말_고2_수학II_유사",
+              "qid": 12
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-10-29",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-L4-DERIV-ABSOLUTE-CUBIC-ROOT-COUNT-EXTREMUM-DETERMINATION",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "|f(x)|=상수의 실근 개수로 삼차함수의 극값 결정",
+            "definition": "삼차함수의 극댓값이 주어졌을 때 방정식 |f(x)|=c의 서로 다른 실근 개수를 극솟값 m의 위치(m<-c, m=-c, -c<m<c, ...)로 분류해 극솟값을 고정하고 함수를 결정하는 사고.",
+            "parentRpmRecordId": "H2-M2-RPM-027",
+            "parentRpmL1": "미분",
+            "parentRpmL2": "도함수의 활용(3)",
+            "parentRpmL3": "방정식과 부등식",
+            "parentRpmL4": "근의 개수",
+            "parentProblemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+            "parentTemplateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+            "standardUnitKey": "H15-M2-06",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "standardCourse": "수학II",
+            "curriculum": "2015",
+            "basis": "RPM 'H2-M2-RPM-027 근의 개수'는 f(x)=k형 방정식의 근 개수 판정이며, 절댓값으로 수평선 두 개를 동시에 다뤄 역으로 극값을 고정하는 구조를 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "25_매산여고_2학기_기말_고2_수학II_유사",
+              "qid": 16
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-10-29",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-L4-DERIV-ABSOLUTE-EQUATION-CASE-SPLIT-ROOT-COUNT",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "절댓값 포함 방정식의 부호 구간 분할과 삼차 극값을 이용한 근의 개수 판정",
+            "definition": "f(x)+|f(x)+cx|=dx+k에서 절댓값 안의 부호를 구간으로 나누어 한 구간은 일차 방정식, 다른 구간은 삼차함수의 극값으로 정리하고 구간별 근의 개수를 합하여 매개변수 범위를 구하는 사고.",
+            "parentRpmRecordId": "H2-M2-RPM-027",
+            "parentRpmL1": "미분",
+            "parentRpmL2": "도함수의 활용(3)",
+            "parentRpmL3": "방정식과 부등식",
+            "parentRpmL4": "근의 개수",
+            "parentProblemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+            "parentTemplateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+            "standardUnitKey": "H15-M2-06",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "standardCourse": "수학II",
+            "curriculum": "2015",
+            "basis": "RPM 'H2-M2-RPM-027 근의 개수'는 단일 식의 근 개수 판정이며, 절댓값 부호 분할로 두 구간의 방정식이 달라지는 합산 구조를 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "25_매산여고_2학기_기말_고2_수학II_유사",
+              "qid": 22
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-10-29",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-L4-INDEF-FUNCTIONAL-EQUATION-DERIVATIVE-NO-EXTREMUM",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "함수방정식을 미분해 f'을 구하고 부정적분의 극값 존재 조건 판정",
+            "definition": "f(x+y)=f(x)+f(y)+g(x,y)형 함수방정식을 y에 대해 미분하여 f'(x)를 매개변수로 표현하고, F=∫(x-p)f'(x)dx의 도함수 F'의 부호 변화 여부(중근이면 극값 없음)로 매개변수를 결정하는 사고.",
+            "parentRpmRecordId": "H2-M2-RPM-036",
+            "parentRpmL1": "적분",
+            "parentRpmL2": "부정적분",
+            "parentRpmL3": "조건을 이용한 함수 결정",
+            "parentRpmL4": "도함수에서 원함수",
+            "parentProblemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+            "parentTemplateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+            "standardUnitKey": "H15-M2-07",
+            "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+            "standardCourse": "수학II",
+            "curriculum": "2015",
+            "basis": "RPM 'H2-M2-RPM-036 도함수에서 원함수'는 도함수가 직접 주어진 경우이며, 함수방정식에서 도함수를 유도하고 부정적분의 극값 존재 조건까지 연결하는 구조를 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "25_매산여고_2학기_기말_고2_수학II_유사",
+              "qid": 19
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-10-29",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-L4-INTEGRAL-DEFINED-FUNCTION-SIGN-CHANGE-EXTREMA-COUNT",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "적분으로 정의된 함수의 도함수 부호 변화로 극값 개수 판정",
+            "definition": "F(x)=∫_0^x f(t)dt에서 F'=f의 부호가 바뀌는 점의 개수가 극값 개수임을 이용하여, 삼차함수 f의 극값 부호와 중근 경계로 매개변수의 범위(극값 개수 지정)를 결정하는 사고.",
+            "parentRpmRecordId": "H2-M2-RPM-041",
+            "parentRpmL1": "적분",
+            "parentRpmL2": "정적분",
+            "parentRpmL3": "정적분과 함수",
+            "parentRpmL4": "상한이 변수인 적분",
+            "parentProblemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+            "parentTemplateKey": "TPL_INTEGRAL_DEFINED_FUNCTION_ANALYSIS",
+            "standardUnitKey": "H15-M2-08",
+            "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+            "standardCourse": "수학II",
+            "curriculum": "2015",
+            "basis": "RPM 'H2-M2-RPM-041 상한이 변수인 적분'은 미분 관계(F'=f) 자체를 다루며, F의 극값 개수를 f의 부호 변화 횟수로 환원해 매개변수를 정하는 분석 구조를 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "25_매산여고_2학기_기말_고2_수학II_유사",
+              "qid": 21
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-10-29",
+              "reviewRequired": true
+            },
+            "aliases": []
+          }
+        ],
+        "generatedCrossConcepts": [
+          {
+            "key": "EXT-CROSS-TANGENT-LINE-Y-INTERCEPT",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "접선의 y절편",
+            "definition": "곡선 위의 점에서 그은 접선 y-f(t)=f'(t)(x-t)에 x=0을 대입해 y절편을 f(t)-t f'(t)로 표현하는 개념.",
+            "parentKey": "CC_TANGENCY",
+            "parentLabelKo": "접선",
+            "standardUnitKey": "H15-M2-06",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "standardCourse": "수학II",
+            "curriculum": "2015",
+            "basis": "CC_TANGENCY는 접선·접점 관계 일반이며 접선의 절편을 변수의 함수로 세우는 개념을 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "25_매산여고_2학기_기말_고2_수학II_유사",
+              "qid": 8
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-10-29",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-CROSS-DERIVATIVE-SIGN-CHANGE-EXTREMUM",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "도함수의 부호 변화와 극값의 존재",
+            "definition": "함수의 극값은 도함수의 부호가 바뀌는 점에서만 생기며 부호가 바뀌지 않는 중근에서는 극값이 생기지 않는다는 개념.",
+            "parentKey": "CC_FUNCTION_EXTREMA",
+            "parentLabelKo": "함수의 극대와 극소",
+            "standardUnitKey": "H15-M2-06",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "standardCourse": "수학II",
+            "curriculum": "2015",
+            "basis": "CC_FUNCTION_EXTREMA는 극값 일반이며 중근에서 부호가 바뀌지 않아 극값이 없다는 판정 개념을 따로 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "25_매산여고_2학기_기말_고2_수학II_유사",
+              "qid": 11
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-10-29",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-CROSS-SUM-PRODUCT-POLYNOMIAL-RECOVERY",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "합과 곱으로부터 두 다항식 복원",
+            "definition": "두 다항식의 합 S와 곱 P가 주어질 때 (f-g)^2=S^2-4P로 차를 구하고 부호를 정해 각 식을 복원하는 개념.",
+            "parentKey": "CC_POLYNOMIAL_SUM_PRODUCT_SYSTEM",
+            "parentLabelKo": "다항식의 합과 곱 조건",
+            "standardUnitKey": "H15-M2-04",
+            "subUnitKey": "H15-M2-04-DERIVATIVE",
+            "standardCourse": "수학II",
+            "curriculum": "2015",
+            "basis": "CC_POLYNOMIAL_SUM_PRODUCT_SYSTEM은 합·곱 연립 일반이며 도함수 조건에서 적분으로 S, P를 복원하는 맥락을 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "25_매산여고_2학기_기말_고2_수학II_유사",
+              "qid": 12
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-10-29",
+              "reviewRequired": true
+            },
+            "aliases": []
+          }
+        ],
+        "generatedConditions": [
+          {
+            "key": "EXT-COND-EXACT-EXTREMA-COUNT",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "극값 개수 정확 지정 조건",
+            "definition": "함수가 극값을 오직 n개(0개 포함) 가져야 한다는 조건으로, 매개변수의 범위나 경계값(최솟값·최댓값) 판정에 직접 영향을 주는 경우.",
+            "parentKey": "COND_EXACT_INTERSECTION_COUNT",
+            "parentLabelKo": "교점 개수 정확 지정 조건",
+            "standardUnitKey": "H15-M2-06",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "standardCourse": "수학II",
+            "curriculum": "2015",
+            "basis": "COND_EXACT_INTERSECTION_COUNT는 교점 개수 지정이며 극값 개수 지정 조건을 구분하지 못한다.",
+            "firstUsed": {
+              "stem": "25_매산여고_2학기_기말_고2_수학II_유사",
+              "qid": 11
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-10-29",
+              "reviewRequired": true
+            },
+            "aliases": []
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "questionUid": "qid_v1_cf45568d18171552335ebd0066b3565a9b7b5d55e1503a64cd417a2397866864",
+      "sourceOrdinal": 1,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-04",
+        "standardUnit": "도함수",
+        "subUnitKey": "H15-M2-04-DERIVATIVE",
+        "subUnit": "도함수",
+        "conceptClusterKey": "DERIVATIVE",
+        "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+        "templateKey": "TPL_LOCAL_DERIVATIVE_CONSTRAINT_FUNCTION_DETERMINE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q1: 원본 Q1의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_19fa82075b97c267b81d7a4fba969acad0cbe1670c1d035af4d1a410ad62a99f",
+      "sourceOrdinal": 2,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분",
+        "conceptClusterKey": "DEFINITE_INTEGRAL",
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "templateKey": "TPL_DEFINITE_EVALUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q2: 원본 Q2의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5b3dae0308ac924f76107a4538e34f7d9a7427294b77940eedfedb906b948a07",
+      "sourceOrdinal": 3,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "INTEGRAL_APPLICATION",
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q3: 원본 Q3의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_845a2e52e1a05ec3275f4c571c6b99fc4a4299af676daa44829aaa5a693cb8f0",
+      "sourceOrdinal": 4,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "problemTypeKey": "PT_DERIVATIVE_MOTION",
+        "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q4: 원본 Q4의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_73f20d1a9d7132c3aee57526b22f0903262bdf627747fc1f775900381162a0aa",
+      "sourceOrdinal": 5,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-04",
+        "standardUnit": "도함수",
+        "subUnitKey": "H15-M2-04-DERIVATIVE",
+        "subUnit": "도함수",
+        "conceptClusterKey": "DERIVATIVE",
+        "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+        "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+        "crossConceptKeys": [
+          "CC_TANGENCY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q5: 원본 Q5의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7a7b971819bcab3c720e8b358e42a3ed9a288651f05bb9e8a3f952d8fc6371c8",
+      "sourceOrdinal": 6,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "INTEGRAL_APPLICATION",
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+        "crossConceptKeys": [
+          "CC_TANGENCY",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q6: 원본 Q6의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9c66a7cbacd836e1c8f3aa5e6cc9c988351e4106680e6c8062409fb27f3d58d1",
+      "sourceOrdinal": 7,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-03",
+        "standardUnit": "미분계수",
+        "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
+        "subUnit": "미분계수",
+        "conceptClusterKey": "DERIVATIVE_DEFINITION",
+        "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+        "templateKey": "TPL_DERIVATIVE_LIMIT_INFORMATION_SYSTEM",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q7: 원본 Q7의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_381ac178ec9d52f4947acb3b888f073276808fd78cfd9277074889042680c049",
+      "sourceOrdinal": 8,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+        "templateKey": "TPL_MONOTONICITY_DIRECT",
+        "crossConceptKeys": [
+          "CC_TANGENCY",
+          "EXT-CROSS-TANGENT-LINE-Y-INTERCEPT"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q8: 원본 Q8의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_da8259bb8b5f12bc8ce2ac22d1cc50db50b448b993e8c38d7e12ac8009b9e6a1",
+      "sourceOrdinal": 9,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q9: 원본 Q9의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c2ca08af5cb3398bfda2b258e8f1eea39f84c50ea7f5281e991bc131110cd1f5",
+      "sourceOrdinal": 10,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분",
+        "conceptClusterKey": "DEFINITE_INTEGRAL",
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_INTEGRAL_DEFINED_FUNCTION_DIFFERENTIATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q10: 원본 Q10의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_256b31007541e233d5862d69889d26056172a533de618d7bc7621f26763b1895",
+      "sourceOrdinal": 11,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_STRUCTURE_COUNT",
+        "crossConceptKeys": [
+          "EXT-CROSS-DERIVATIVE-SIGN-CHANGE-EXTREMUM"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "EXT-COND-EXACT-EXTREMA-COUNT"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q11: 원본 Q11의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ea76beef4caa289c2ec847cc9a36ed07266a9f09afa1cf8137774d6931a124f7",
+      "sourceOrdinal": 12,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-04",
+        "standardUnit": "도함수",
+        "subUnitKey": "H15-M2-04-DERIVATIVE",
+        "subUnit": "도함수",
+        "conceptClusterKey": "DERIVATIVE",
+        "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+        "templateKey": "TPL_LOCAL_DERIVATIVE_CONSTRAINT_FUNCTION_DETERMINE",
+        "crossConceptKeys": [
+          "CC_INDEFINITE_INTEGRAL",
+          "EXT-CROSS-SUM-PRODUCT-POLYNOMIAL-RECOVERY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q12: 원본 Q12의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c9fa13004b9b3ed3120503bbe79317ea93d18df62a474a94852c81c94ae8c71c",
+      "sourceOrdinal": 13,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "INTEGRAL_APPLICATION",
+        "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+        "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q13: 원본 Q13의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_658be876c65ccdaf211ad95dba455666a7c455f9f872cab4fc36cb3357d57aaf",
+      "sourceOrdinal": 14,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "INTEGRAL_APPLICATION",
+        "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+        "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q14: 원본 Q14의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7a2f698f976991337a6f111ed737e4b46ae9b0388fc3ae5bf3d78e191c0ea8d4",
+      "sourceOrdinal": 15,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분",
+        "conceptClusterKey": "DEFINITE_INTEGRAL",
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
+        "crossConceptKeys": [
+          "CC_INDEFINITE_INTEGRAL"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q15: 원본 Q15의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_17af96bdebfbc16428a14b6ac399c24cac33a49e4b0056e91ed9a72a09821f1b",
+      "sourceOrdinal": 16,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+        "crossConceptKeys": [
+          "CC_ABSOLUTE_VALUE_EQUATION",
+          "CC_FUNCTION_EXTREMA"
+        ],
+        "conditionKeys": [
+          "COND_EXACT_INTERSECTION_COUNT"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q16: 원본 Q16의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_278806a81038b250c309169f760d1aecf280180ef5a1a9ee4378e10321632ec0",
+      "sourceOrdinal": 17,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "INTEGRAL_APPLICATION",
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_AREA_CONDITION_MODEL_DETERMINATION",
+        "crossConceptKeys": [
+          "CC_DEFINITE_INTEGRAL"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q17: 원본 Q17의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9407787e9caa750ca4f474d2bb865183899feee35a52181b12e2d85a1a60181c",
+      "sourceOrdinal": 18,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+        "templateKey": "TPL_MODELED_QUANTITY_OPTIMIZATION",
+        "crossConceptKeys": [
+          "CC_TANGENCY",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q18: 원본 Q18의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ad42122086b76107758678ded9bcfb95090e855e6d0d50a54c1c4531b55e4253",
+      "sourceOrdinal": 19,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-07",
+        "standardUnit": "부정적분",
+        "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+        "subUnit": "부정적분",
+        "conceptClusterKey": "INDEFINITE_INTEGRAL",
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+        "crossConceptKeys": [
+          "CC_FUNCTIONAL_EQUATION",
+          "EXT-CROSS-DERIVATIVE-SIGN-CHANGE-EXTREMUM"
+        ],
+        "conditionKeys": [
+          "EXT-COND-EXACT-EXTREMA-COUNT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q19: 원본 Q19의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_383df5e9a443649d7e0411ff2a58d8140f50c65c40ad5145a837be25db6ae8a9",
+      "sourceOrdinal": 20,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "INTEGRAL_APPLICATION",
+        "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+        "templateKey": "TPL_MOTION_CONDITION_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q20: 원본 Q20의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6321d0a8679962b30da9a535c880e26dd660c3946e86374ccc0d9c5374f69513",
+      "sourceOrdinal": 21,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분",
+        "conceptClusterKey": "DEFINITE_INTEGRAL",
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_INTEGRAL_DEFINED_FUNCTION_ANALYSIS",
+        "crossConceptKeys": [
+          "CC_CUBIC_EQUATION",
+          "EXT-CROSS-DERIVATIVE-SIGN-CHANGE-EXTREMUM"
+        ],
+        "conditionKeys": [
+          "COND_NEGATIVE",
+          "EXT-COND-EXACT-EXTREMA-COUNT"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "상",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q21: 원본 Q21의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_080546ac918ec76b89b956bd88048cf7ab95e3db80dd589a58c03a23f6611499",
+      "sourceOrdinal": 22,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "DERIVATIVE_APPLICATION",
+        "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+        "crossConceptKeys": [
+          "CC_ABSOLUTE_VALUE_EQUATION",
+          "CC_ABSOLUTE_VALUE_GRAPH"
+        ],
+        "conditionKeys": [
+          "COND_EXACT_INTERSECTION_COUNT"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q22: 원본 Q22의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6a3d1c444846a6edf872b5e2f98ec7fc6be1d5658ab06b2dfda05ccf8f64161c",
+      "sourceOrdinal": 23,
+      "before": {
+        "standardCourse": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "rpmSemanticStatus": null
+      },
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "INTEGRAL_APPLICATION",
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_AREA_CONDITION_MODEL_DETERMINATION",
+        "crossConceptKeys": [
+          "CC_DEFINITE_INTEGRAL",
+          "CC_CUBIC_EQUATION",
+          "CC_AREA",
+          "EXT-CROSS-DERIVATIVE-SIGN-CHANGE-EXTREMUM"
+        ],
+        "conditionKeys": [
+          "COND_RANGE",
+          "EXT-COND-EXACT-EXTREMA-COUNT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED"
+      },
+      "reason": "25_매산여고_2학기_기말_고2_수학II_유사 Q23: 원본 Q23의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 완료(review-receipt 결속))",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사.review-receipt.json",
+          "sha256": "83fb7ac5cd3cfc7284a8d121716442e8e3fd82acac9eac6f9475e2e31bc340cf"
+        }
+      ]
+    }
+  ]
+}

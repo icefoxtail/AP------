@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-11/3",
+          "9",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "formula": "x^3-6x^2+9x-11/3",
+    "domain": [
+      -0.1,
+      4.2
+    ],
+    "viewport": [
+      -1,
+      5,
+      -5.5,
+      3
+    ],
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 1,
+        "y": 0.3333333333333333
+      },
+      {
+        "id": "N",
+        "x": 3,
+        "y": -3.6666666666666665
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "1",
+        "1/3"
+      ],
+      "N": [
+        "3",
+        "-11/3"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "곡선 y=f(x)는 x=1에서 극댓값 1/3, x=3에서 극솟값 -11/3을 갖는다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "f(x)=x³-6x²+9x-11/3이고 f'(x)=3(x-1)(x-3)이다.",
+      "mappedTo": [
+        "graphPlan.pieces"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "x=1에서 극대, x=3에서 극소이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "극대점과 극소점의 위치와 값을 한 그림에서 확인하게 한다."
+  ],
+  "sourceQuote": "따라서 $x=1$에서 극대, $x=3$에서 극소이다.",
+  "assetPath": "assets/images/24_매산여고_2학기_기말_고2_수학II_유사/q13-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q13-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q13-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q13-solution.svg"
+  }
+}
