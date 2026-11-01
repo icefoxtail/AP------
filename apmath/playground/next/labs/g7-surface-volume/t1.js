@@ -1,7 +1,7 @@
 /* ==========================================================================
    중1 · 겉넓이와 부피 — 탭 ① 「기둥의 겉넓이와 부피」 (t1.js, order 10) — 장면 5개
    · sv1-1 전개도로 보는 겉넓이(직사각형·직각삼각형·사다리꼴·원 밑면) · sv1-2 부채꼴기둥[함정: 호만 곱함]
-   · sv1-3 원기둥 굴리기(2πr) · sv1-4 부피 V=Sh(판 쌓기, 오른쪽으로) · sv1-5 기둥 종합(직사각형+반원 밑면)
+   · sv1-3 원기둥 굴리기(2πr) · sv1-4 부피 V=Sh(밑면이 아래, 판이 왼쪽에서 들어와 위로 쌓임) · sv1-5 기둥 종합(직사각형+반원 밑면)
    전개도가 겉넓이 식의 첫 단계입니다: 입체를 펼치면 「밑면 2개 + 옆면 직사각형 1개(가로 = 밑면 둘레 전체, 세로 = 높이)」가 보입니다.
    모든 글자·식·보기·정답은 지금의 값으로 다시 계산됩니다. 정확한 값은 π 가 들어간 식으로 씁니다.
    ========================================================================== */
@@ -9,7 +9,7 @@
   'use strict';
   const G = window.APL_SV;
   if (!G) return;
-  const { PI, DEG, clamp, ease, seg01, lin01, v3, add3, sub3, mul3, lerp3, mid3, dot3, unit3, len3, V, vadd, vmul, vnum, tx, plainVal, mkV, mkText, P, fmtN, jo, pick, rint, shuffle, notes, rd, span, scene3, solidNet, circleBase, sectorBase, netScene, roleStyle, layoutTiles, drawTiles, prismMesh, revolveMesh, xfMesh, rotM } = G;
+  const { cube8, PI, DEG, clamp, ease, seg01, lin01, v3, add3, sub3, mul3, lerp3, mid3, dot3, unit3, len3, V, vadd, vmul, vnum, tx, plainVal, mkV, mkText, P, fmtN, jo, pick, rint, shuffle, notes, rd, span, scene3, solidNet, circleBase, sectorBase, netScene, roleStyle, layoutTiles, drawTiles, prismMesh, revolveMesh, xfMesh, rotM } = G;
 
   const PARAMS = {
     sA: P('가로 a', 2, 8, 1, 4, { color: 'amber', format: (v) => v + ' cm' }),
@@ -235,7 +235,7 @@
           };
           fr(sn.top, B); fr(sn.bot, A);
           if (!C.problem && ctx.e > 0.8) {
-            const cs = sn.lat.map((idx) => ctx.at(idx, G.centroid(sn.net.pieces[idx].pts)));
+            const cs = sn.lat.slice(2, sn.lat.length - 2).map((idx) => ctx.at(idx, G.centroid(sn.net.pieces[idx].pts)));
             D.tag(G.centroid(cs), `호 ${plainVal(M.arc)} + 2r = ${plainVal(M.P)}`, { size: 14, color: 'amber' });
           }
         }
@@ -381,57 +381,41 @@
       const shape = SHAPE_ORDER.includes(s.svShape) ? s.svShape : 'rect', bm = baseModel(shape, s), h = clamp(Math.round(s.sH), 2, 8);
       return { shape, bm, h, S: bm.area, vol: vmul(bm.area, h), L: vmul(bm.per, h) };
     };
-    const plateMesh = (bm, sc, x0, x1) => {
-      if (bm.shape === 'circ') return revolveMesh([[0, x0], [bm.r * sc, x0], [bm.r * sc, x1], [0, x1]], { axis: 'x', N: 28, tags: ['left', 'side', 'right'] });
-      const poly = scaledPoly(bm, sc), m = prismMesh(poly, x0, x1);
-      // y축 방향 기둥을 x축 방향으로 눕힙니다: (x,y,z) → (y, -x, z)
-      return xfMesh(m, { R: rotM(v3(0, 0, 1), -PI / 2), t: v3(0, 0, 0) });
-    };
+    // 밑면이 아래: 얇은 판(두께 1cm)을 위로 쌓습니다. 판은 왼쪽에서 오른쪽으로(가로로) 들어와 제자리에 놓여요.
+    const slab = (bm, sc, y0, y1) => (bm.shape === 'circ' ? revolveMesh([[0, y0], [bm.r * sc, y0], [bm.r * sc, y1], [0, y1]], { N: 32, tags: ['bot', 'side', 'top'] }) : prismMesh(scaledPoly(bm, sc), y0, y1));
     const draw = (b, s, M, C) => {
-      const { bm, h } = M, sc = 3.4 / Math.max(bm.ex, bm.ez), t = C.problem ? 1 : C.t, D = scene3(b, s, C);
-      const ext = Math.max(bm.ex, bm.ez) * sc, plates = [];
-      const cnt = t * h;
+      const { bm, h } = M, sc = Math.min(3.0 / Math.max(bm.ex, bm.ez), 5.0 / h), t = C.problem ? 1 : C.t, D = scene3(b, s, C);
+      const ext = Math.max(bm.ex, bm.ez) * sc, H = h * sc, y0 = -H / 2, cnt = t * h, slide = ext * 1.7 + 0.6, st = C.step;
+      const plates = [];
       for (let k = 0; k < h; k++) {
         const loc = clamp(cnt - k, 0, 1);
         if (loc <= 0 && !C.problem) continue;
-        const off = (1 - ease(loc)) * (h - k + 2.5) * sc * 0.0 + (1 - ease(loc)) * (h - k + 3) * sc;
-        const m = xfMesh(plateMesh(bm, sc, k * sc, (k + 1) * sc), G.shiftT(D.hx(0)));
-        const T = { R: [[1, 0, 0], [0, 1, 0], [0, 0, 1]], t: v3(off, 0, 0) };
-        plates.push({ k, loc, mesh: xfMesh(m, T), fly: loc < 1 });
-      }
-      const L = h * sc, st = C.step;
-      const pts = [v3(0, -ext / 2, -ext / 2), v3(L, ext / 2, ext / 2), v3(0, ext / 2, ext / 2), v3(L, -ext / 2, -ext / 2), v3(L + 2 * sc, 0, 0)];
-      const bb = G.bboxOf(pts.map(D.P));
-      D.fit(pts, [{ x: bb.x0, y: bb.y1 + 1.2 }], { l: 36, r: 36, t: 36, b: 46 });
-      const hlS = !C.review ? 1 : st === 1 ? 2 : 1, hlH = !C.review ? 1 : st === 2 ? 2 : 1;
-      // 밑면(맨 왼쪽 판의 왼쪽 면)을 강조
-      if (!C.problem) { const gm = plateMesh(bm, sc, 0, h * sc); D.body({ mesh: gm, fill: null, edge: 'muted', edgeW: 1.6, hiddenAlpha: 0.5, hidden: true }); }
-      plates.sort((a, c) => a.k - c.k);
-      plates.forEach((p) => D.body({ mesh: p.mesh, fill: hlH === 2 ? 'amber' : 'sky', alpha: p.fly ? 0.34 : 0.2, edge: 'ink', edgeW: 2.2, faceStyle: (f) => (p.k === 0 && (f.tag === 'bot' || f.tag === 'left' || (f.n && f.n.x < -0.9)) && hlS === 2 ? { fill: 'amber', alpha: 0.5 } : (p.k === 0 && f.n && f.n.x < -0.9 ? { fill: 'green', alpha: 0.32 } : {})) }));
-      // 라벨: 밑넓이, 높이 눈금
-      const baseC = v3(0, 0, 0);
-      if (plates.some((p) => p.k === 0 && p.loc >= 1) || C.problem) {
-        if (!C.problem) D.tag(baseC, `S=${plainVal(M.S)}`, { size: 15, color: 'ink' });
-        else D.tag(baseC, bm.shape === 'circ' ? `r=${bm.r}` : bm.shape === 'rect' ? `${bm.sides[0]}×${bm.sides[1]}` : bm.shape === 'tri' ? `${bm.sides[0]}·${bm.sides[2]}·${bm.sides[1]}` : `${bm.u}, ${bm.wb}`, { size: 14 });
+        const off = -(1 - ease(loc)) * slide; // 왼쪽에서 오른쪽으로 들어옴
+        plates.push({ k, loc, mesh: xfMesh(slab(bm, sc, y0 + k * sc, y0 + (k + 1) * sc), G.shiftT(D.hx(off))), fly: loc < 1 });
       }
       const nDone = plates.filter((p) => p.loc >= 1).length;
-      const yb = -ext / 2, zf = ext / 2, kpx = b.k || 40;
-      const dimY = D.P(v3(0, yb, zf)).y + 26 / kpx;
-      const x0s = D.P(v3(0, yb, zf)).x, x1s = D.P(v3(nDone * sc, yb, zf)).x;
-      if (nDone > 0 || C.problem) {
-        const xe = C.problem ? D.P(v3(L, yb, zf)).x : x1s;
-        b.path([{ x: x0s, y: dimY }, { x: xe, y: dimY }], { color: 'amber', width: 2.6 });
-        b.path([{ x: x0s, y: dimY - 6 / kpx }, { x: x0s, y: dimY + 6 / kpx }], { color: 'amber', width: 2.6 });
-        b.path([{ x: xe, y: dimY - 6 / kpx }, { x: xe, y: dimY + 6 / kpx }], { color: 'amber', width: 2.6 });
-        b.text({ x: (x0s + xe) / 2, y: dimY }, `높이 h = ${C.problem ? h : nDone}`, { dy: 15, color: 'amber', size: D.fs(15), weight: 800, baseline: 'middle' });
+      const pts = cube8(v3(0, 0, 0), Math.max(ext / 2, H / 2)).map((p) => v3(p.x, p.y, p.z)).concat([add3(v3(-ext / 2, y0, 0), D.hx(-slide))]);
+      D.fit(pts, [], { l: 40, r: 70, t: 36, b: 40 });
+      const hlS = !C.review ? 1 : st === 1 ? 2 : 1, hlH = !C.review ? 1 : st === 2 ? 2 : 1;
+      if (!C.problem) D.body({ mesh: prismMesh(bm.shape === 'circ' ? G.circleBase(bm.r * sc, 32) : scaledPoly(bm, sc), y0, y0 + H), fill: null, edge: 'muted', edgeW: 1.6, hiddenAlpha: 0.5, hidden: true });
+      plates.forEach((p) => D.body({ mesh: p.mesh, fill: hlH === 2 ? 'amber' : 'sky', alpha: p.fly ? 0.34 : 0.2, edge: 'ink', edgeW: 2.2, faceStyle: (f) => (p.k === 0 && f.tag === 'bot' ? {} : f.tag === 'top' && p.k === h - 1 && hlS === 2 ? { fill: 'amber', alpha: 0.5 } : {}) }));
+      // 밑넓이 라벨(맨 위 판의 윗면) · 길이
+      const topY = y0 + H;
+      if (!C.problem) { if (nDone === h || t >= 0.999) D.tag(v3(0, topY, 0), `S=${plainVal(M.S)}`, { size: 15, color: 'ink' }); }
+      else D.tag(v3(0, topY, 0), bm.shape === 'circ' ? `r=${bm.r}` : bm.shape === 'rect' ? `${bm.sides[0]}×${bm.sides[1]}` : bm.shape === 'tri' ? `${bm.sides[0]}·${bm.sides[2]}·${bm.sides[1]}` : `${bm.u}, ${bm.wb}`, { size: 14 });
+      // 높이 h: 오른쪽 앞 모서리를 따라 (쌓인 만큼)
+      const nShow = C.problem ? h : nDone;
+      if (nShow > 0) {
+        const xr = bm.shape === 'circ' ? ext / 2 : ext / 2, p0 = v3(xr, y0, ext / 2), p1 = v3(xr, y0 + nShow * sc, ext / 2);
+        D.line(p0, p1, 'amber', 4);
+        D.elabel(p0, p1, `높이 h = ${nShow}`, { side: { x: 1, y: 0 }, color: 'amber', size: 15, gap: 10 });
       }
-      // 판 번호
-      if (!C.problem) plates.forEach((p) => { if (p.loc >= 1) D.tag(v3((p.k + 0.5) * sc, 0, zf), String(p.k + 1), { size: 13, color: 'ink' }); });
+      if (!C.problem) plates.forEach((p) => { if (p.loc >= 1 && h <= 8) D.tag(v3(0, y0 + (p.k + 0.5) * sc, ext / 2 * (bm.shape === 'circ' ? 1 : 1)), String(p.k + 1), { size: 12, color: 'ink' }); });
     };
     return {
       id: 'sv1-4', title: '기둥의 부피 V=Sh', short: '기둥의 부피',
       question: '밑면과 같은 모양의 얇은 판을 한 장씩 쌓으면 기둥이 만들어져. 판이 쌓일수록 부피는 어떻게 늘어날까?',
-      anim: { key: 'sT4', dur: 6, label: '판 쌓기', start: 1 }, cam0: { yaw: -38, pitch: 18 }, stepT: (st) => 1, thumbT: 1, problemT: 1,
+      anim: { key: 'sT4', dur: 6, label: '판 쌓기', start: 1 }, cam0: { yaw: 28, pitch: 22 }, stepT: (st) => 1, thumbT: 1, problemT: 1,
       ctl: (s) => ({ rect: ['sA', 'sB'], tri: ['sK'], trap: ['sU'], circ: ['sR'] }[s.svShape || 'rect'].concat(['sH', 'sT4'])),
       presets: () => SHAPE_ORDER.map((k, i) => ({ group: i === 0 ? '밑면 모양' : '', label: SHAPE_LABEL[k], apply: (st) => { st.svShape = k; }, on: (st) => (st.svShape || 'rect') === k })),
       init: (s) => { s.svShape = 'rect'; s.sA = 4; s.sB = 3; s.sK = 1; s.sU = 3; s.sR = 3; s.sH = 5; s.sT4 = 1; },
@@ -452,7 +436,7 @@
         `(부피) $=S\\times h=${tx(M.S)}\\times${M.h}=${tx(M.vol)}\\,\\mathrm{cm}^3$예요.`
       ],
       view: (M) => ({
-        guide: `<b>판 쌓기</b> 막대를 끌거나 ▶를 눌러 보세요. 같은 모양의 판이 오른쪽에서 밀려 와 ${span('sky', '높이')}만큼 쌓여요. 밑면 모양 칩과 길이 막대로 바꿔 보세요.`,
+        guide: `<b>판 쌓기</b> 막대를 끌거나 ▶를 눌러 보세요. 같은 모양의 판이 왼쪽에서 가로로 들어와 ${span('sky', '높이')}만큼 위로 쌓여요. 밑면 모양 칩과 길이 막대로 바꿔 보세요.`,
         readouts: [
           rd('밑넓이 S', plainVal(M.S) + ' cm²', 'sky', M.bm.areaTex.replace(/\\frac\{1\}\{2\}/g, '½').replace(/\\times/g, '×').replace(/\\pi/g, 'π')),
           rd('높이 h', M.h + ' cm', 'amber', `판 ${M.h}장`),

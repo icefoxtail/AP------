@@ -8,7 +8,7 @@
   'use strict';
   const G = window.APL_SV;
   if (!G) return;
-  const { PI, DEG, clamp, ease, seg01, lin01, v3, add3, sub3, mul3, lerp3, mid3, dot3, unit3, len3, V, vadd, vsub, vmul, vnum, tx, plainVal, mkV, P, fmtN, pick, rint, notes, rd, span, scene3, solidNet, circleBase, netScene, roleStyle, layoutTiles, drawTiles, polyMesh, revolveMesh, shiftT, centroid } = G;
+  const { cube8, PI, DEG, clamp, ease, seg01, lin01, v3, add3, sub3, mul3, lerp3, mid3, dot3, unit3, len3, V, vadd, vsub, vmul, vnum, tx, plainVal, mkV, P, fmtN, pick, rint, notes, rd, span, scene3, solidNet, circleBase, netScene, roleStyle, layoutTiles, drawTiles, polyMesh, revolveMesh, shiftT, centroid } = G;
 
   const TRI = { A: [3, 4, 5], B: [4, 3, 5], C: [5, 12, 13], D: [6, 8, 10] }; // [r, h, R]
   const TRI_LABEL = { A: 'r:h:R = 3:4:5', B: 'r:h:R = 4:3:5', C: 'r:h:R = 5:12:13', D: 'r:h:R = 6:8:10' };
@@ -48,41 +48,36 @@
       return { mode, r, h, cyl, cone, ans: cone, big: cyl, S: V(0, r * r), hh: h };
     };
     const draw = (b, s, M, C) => {
-      const D = scene3(b, s, C), st = C.step, t = C.problem ? (M.mode === 'cube' ? 0.75 : 1) : C.t;
+      const D = scene3(b, s, C), st = C.step, t = C.problem ? 1 : C.t;
       if (M.mode === 'cube') {
-        const hf = 1.6, V0 = v3(hf, hf, hf), dd = ease(t) * hf * 2.35;
+        const hf = 1.6, V0 = v3(hf, hf, hf), dd = ease(lin01(t, 0, 0.5)) * hf * 4.0, rotE = ease(lin01(t, 0.5, 1));
         const faces = [
-          { name: 'L', col: 'sky', pts: [v3(-hf, -hf, -hf), v3(-hf, hf, -hf), v3(-hf, hf, hf), v3(-hf, -hf, hf)], off: -dd },
-          { name: 'B', col: 'green', pts: [v3(-hf, -hf, -hf), v3(hf, -hf, -hf), v3(hf, -hf, hf), v3(-hf, -hf, hf)], off: 0 },
-          { name: 'K', col: 'violet', pts: [v3(-hf, -hf, -hf), v3(hf, -hf, -hf), v3(hf, hf, -hf), v3(-hf, hf, -hf)], off: dd }
+          { name: 'L', col: 'sky', pts: [v3(-hf, -hf, -hf), v3(-hf, hf, -hf), v3(-hf, hf, hf), v3(-hf, -hf, hf)], off: 2 * dd, ax: v3(0, 0, 1), ang: (PI / 2) * rotE },
+          { name: 'B', col: 'green', pts: [v3(-hf, -hf, -hf), v3(hf, -hf, -hf), v3(hf, -hf, hf), v3(-hf, -hf, hf)], off: 0, ax: v3(0, 1, 0), ang: 0 },
+          { name: 'K', col: 'violet', pts: [v3(-hf, -hf, -hf), v3(hf, -hf, -hf), v3(hf, hf, -hf), v3(-hf, hf, -hf)], off: dd, ax: v3(1, 0, 0), ang: -(PI / 2) * rotE }
         ];
+        // 가로(왼쪽 → 오른쪽)로만 옮기고, 밑면이 아래로 가도록 제자리에서 돌려 세웁니다
         const bodies = faces.map((f) => {
           const polys = [{ pts: f.pts, tag: 'base' }];
           for (let i = 0; i < 4; i++) polys.push({ pts: [f.pts[i], f.pts[(i + 1) % 4], V0], tag: 'side' });
-          const mesh = G.xfMesh(polyMesh(polys, centroid(f.pts.concat([V0]))), shiftT(D.hx(f.off)));
-          return { mesh, fill: f.col, alpha: st === 3 && f.name === 'B' && C.review ? 0.42 : 0.24, edge: 'ink', edgeW: 2.2, f };
+          const cen = centroid(f.pts.concat([V0])), T = G.compose(shiftT(D.hx(f.off)), G.rotAbout(cen, f.ax, f.ang));
+          const mesh = G.xfMesh(polyMesh(polys, cen), T);
+          return { mesh, fill: f.col, alpha: st === 3 && f.name === 'B' && C.review ? 0.42 : 0.24, edge: 'ink', edgeW: 2.2, f, T, cen };
         });
         const pts = [];
-        [-dd, 0, dd].forEach((o) => [-hf, hf].forEach((x) => [-hf, hf].forEach((y) => [-hf, hf].forEach((z) => pts.push(add3(v3(x, y, z), D.hx(o)))))));
+        bodies.forEach((bd) => cube8(G.applyT(bd.T, bd.cen), hf * 0.9).forEach((p) => pts.push(p)));
         D.fit(pts, [], { l: 36, r: 36, t: 44, b: 40 });
-        // 정육면체의 윤곽(갈라 놓기 전에만)
         const cornersAll = [];
         for (const x of [-hf, hf]) for (const y of [-hf, hf]) for (const z of [-hf, hf]) cornersAll.push(v3(x, y, z));
-        if (t < 0.98) {
-          const cm = polyMesh([{ pts: [cornersAll[0], cornersAll[1], cornersAll[3], cornersAll[2]] }], v3(0, 0, 0));
-          void cm;
+        if (t < 0.5) {
           const E = [[0, 1], [2, 3], [4, 5], [6, 7], [0, 2], [1, 3], [4, 6], [5, 7], [0, 4], [1, 5], [2, 6], [3, 7]];
-          E.forEach(([i, j]) => D.line(cornersAll[i], cornersAll[j], 'muted', 1.6, { dash: [5, 4], alpha: 0.55 * (1 - ease(t)) }));
+          E.forEach(([i, j]) => D.line(cornersAll[i], cornersAll[j], 'muted', 1.6, { dash: [5, 4], alpha: 0.55 * (1 - ease(t * 2)) }));
         }
         D.bodies(bodies);
-        // 공통 꼭짓점과 길이
-        D.dot(V0, 'amber', 5.5);
-        D.label(V0, '꼭짓점', { dir: { x: 1, y: -0.4 }, color: 'amber', size: 14, gap: 6 });
+        bodies.forEach((bd) => D.dot(G.applyT(bd.T, V0), 'amber', 5));
+        if (t < 0.02) D.label(V0, '꼭짓점', { dir: { x: 1, y: -0.4 }, color: 'amber', size: 14, gap: 6 });
         D.elabel(v3(-hf, -hf, hf), v3(hf, -hf, hf), `a=${M.a}`, { side: { x: 0, y: 1 }, color: 'amber', size: 15 });
-        if (!C.problem && t > 0.5) bodies.forEach((bd, k) => {
-          const c = centroid(bd.f.pts.concat([V0])), q = add3(c, D.hx(bd.f.off));
-          D.tag(q, `⅓a³ = ${plainVal(M.pyr)}`, { size: 14, dy: 22 });
-        });
+        if (!C.problem && t > 0.5) bodies.forEach((bd) => D.tag(G.applyT(bd.T, bd.cen), `⅓a³ = ${plainVal(M.pyr)}`, { size: 14, dy: 22 }));
         if (!C.problem) D.tag(v3(0, hf, 0), t < 0.5 ? `정육면체 a³ = ${plainVal(M.cubeV)}` : `사각뿔 3개 = 정육면체 1개`, { dy: -62, size: 15, color: 'amber' });
         return;
       }
@@ -92,7 +87,7 @@
       const q = t * 3, k = Math.min(3, Math.floor(q + 1e-9)), fracq = q - Math.floor(q + 1e-9), nPour = t >= 0.999 ? 3 : k + (fracq > 0.001 ? 1 : 0);
       const coneFill = t >= 0.999 ? 0 : t <= 0.001 ? 1 : 1 - fracq;
       const water = t * hu;
-      const coneM = revolveMesh([[0, 0], [ru, hu], [0, hu]], { O: v3(xc, 0, 0), N: 36, tags: ['side', 'top'] });
+      const coneM = revolveMesh([[0, 0], [ru, 0], [0, hu]], { O: v3(xc, 0, 0), N: 36, tags: ['bot', 'side'] });
       const cylM = revolveMesh([[0, 0], [ru, 0], [ru, hu], [0, hu]], { O: v3(xy, 0, 0), N: 36, tags: ['bot', 'side', 'top'] });
       const pts = [v3(xc - ru, 0, -ru), v3(xy + ru, hu, ru), v3(xc - ru, hu, ru), v3(xy + ru, 0, -ru)];
       const bb = G.bboxOf(pts.map(D.P));
@@ -100,13 +95,11 @@
       D.body({ mesh: cylM, fill: 'sky', alpha: 0.1, edge: 'ink', edgeW: 2.4 });
       if (water > 0.01) D.body({ mesh: revolveMesh([[0, 0], [ru * 0.98, 0], [ru * 0.98, water], [0, water]], { O: v3(xy, 0, 0), N: 36 }), fill: 'sky', alpha: 0.4, edge: 'sky', edgeW: 1.6, hidden: false });
       D.body({ mesh: coneM, fill: 'amber', alpha: 0.1, edge: 'ink', edgeW: 2.4 });
-      if (coneFill > 0.01) {
-        const qh = Math.cbrt(coneFill);
-        D.body({ mesh: revolveMesh([[0, hu * (1 - qh)], [ru * qh * 0.98, hu], [0, hu]], { O: v3(xc, 0, 0), N: 36 }), fill: 'sky', alpha: 0.5, edge: 'sky', edgeW: 1.6, hidden: false });
-      }
-      D.elabel(v3(xc + ru, hu, 0), v3(xc + ru, 0, 0), `h=${M.h}`, { side: { x: 1, y: 0 }, color: 'amber', size: 15, gap: 10 });
-      D.line(v3(xc, hu, 0), v3(xc + ru, hu, 0), 'amber', 2.4, {});
-      D.tag(v3(xc + ru / 2, hu, 0), `r=${M.r}`, { dy: -11, size: 14, color: 'amber' });
+      if (coneFill > 0.01) D.body({ mesh: coneM, fill: 'sky', alpha: 0.46 * coneFill, edge: 'sky', edgeW: 1.4, hidden: false, edgeFn: () => ({ alpha: coneFill }) });
+      D.line(v3(xc, 0, 0), v3(xc, hu, 0), 'amber', 2.4, { dash: [6, 5] });
+      D.tag(v3(xc, hu / 2, 0), `h=${M.h}`, { dx: -22, size: 15, color: 'amber' });
+      D.line(v3(xc, 0, 0), v3(xc + ru, 0, 0), 'amber', 2.4, {});
+      D.tag(v3(xc + ru / 2, 0, 0), `r=${M.r}`, { dy: 14, size: 14, color: 'amber' });
       D.line(v3(xy, hu, 0), v3(xy + ru, hu, 0), 'amber', 2.4, {});
       D.tag(v3(xy + ru / 2, hu, 0), `r=${M.r}`, { dy: -11, size: 14, color: 'amber' });
       if (!C.problem) {
@@ -154,8 +147,8 @@
       ],
       view: (M) => ({
         guide: M.mode === 'cube'
-          ? `<b>움직여 보기</b> 막대를 끌어 정육면체를 ${span('sky', '합동인 사각뿔 3개')}로 가로로 갈라 놓아 보세요. 세 뿔은 노란 꼭짓점을 함께 써요. 위 칩에서 <b>물 붓기</b>로도 확인해 볼 수 있어요.`
-          : `<b>움직여 보기</b> 막대를 끌어 원뿔의 물을 원기둥에 부어 보세요. 3번 부으면 가득 차요. 위 칩에서 <b>정육면체</b> 실험으로도 확인해 볼 수 있어요.`,
+          ? `<b>움직여 보기</b> 막대를 끌어 정육면체를 ${span('sky', '합동인 사각뿔 3개')}로 갈라 보세요. 뿔이 오른쪽으로 옮겨지고 밑면이 아래로 오도록 제자리에서 돌아 서요. 세 뿔은 노란 꼭짓점을 함께 써요. 위 칩에서 <b>물 붓기</b>로도 확인해 볼 수 있어요.`
+          : `<b>움직여 보기</b> 막대를 끌어 원뿔의 물이 서서히 줄면서(사라지면서) 원기둥에 채워져요. 3번 부으면 가득 차요. 위 칩에서 <b>정육면체</b> 실험으로도 확인해 볼 수 있어요.`,
         readouts: M.mode === 'cube'
           ? [rd('정육면체의 부피', plainVal(M.cubeV) + ' cm³', 'sky', 'a³'), rd('사각뿔 하나', plainVal(M.pyr) + ' cm³', 'amber', '⅓ × 정육면체'), rd('뿔 3개의 합', plainVal(vmul(M.pyr, 3)) + ' cm³', 'green')]
           : [rd('원기둥의 부피', plainVal(M.cyl) + ' cm³', 'sky', 'πr²h'), rd('원뿔의 부피', plainVal(M.cone) + ' cm³', 'amber', '⅓ × 원기둥'), rd('원뿔 3개의 합', plainVal(vmul(M.cone, 3)) + ' cm³', 'green')],
@@ -184,7 +177,7 @@
     return { r, R, h: Math.sqrt(R * R - r * r), S, arc, lat, tot };
   }
   function sv22() {
-    const model = (s) => coneModel(clamp(Math.round(s.s2r), 2, 6), clamp(Math.round(s.s2G), 3, 12));
+    const model = (s) => { const r = clamp(Math.round(s.s2r), 2, 6), R = Math.max(clamp(Math.round(s.s2G), 3, 12), r + 1); s.s2r = r; s.s2G = R; return coneModel(r, R); };
     const draw = (b, s, M, C) => {
       const { r, R, h } = M, sc = 4.6 / Math.max(R, 2 * r), ru = r * sc, hu = h * sc, Ru = R * sc, st = C.step;
       const sn = solidNet(circleBase(ru, 36), hu, 0, Array(36).fill(true), 18);
@@ -342,6 +335,7 @@
   function sv24() {
     const model = (s) => {
       const fam = oneOf(s.svTri4, TRI_ORDER, 'A'), [a, c, d] = TRI[fam], k = clamp(Math.round(s.s4K), 2, 5), j = clamp(Math.round(s.s4J), 1, k - 1), mode = s.svMode === 'vol' ? 'vol' : 'surf';
+      s.s4K = k; s.s4J = j;
       const r2 = a * k, h2 = c * k, R2 = d * k, r1 = a * j, h1 = c * j, R1 = d * j, hf = h2 - h1, Rf = R2 - R1;
       const lat2 = V(0, r2 * R2), lat1 = V(0, r1 * R1), latF = vsub(lat2, lat1), top = V(0, r1 * r1), bot = V(0, r2 * r2), surf = vadd(latF, vadd(top, bot));
       const v2 = V(0, (r2 * r2 * h2) / 3), v1 = V(0, (r1 * r1 * h1) / 3), vol = vsub(v2, v1);
@@ -433,6 +427,7 @@
   function sv25() {
     const model = (s) => {
       const kind = s.svKind5 === 'pyr' ? 'pyr' : 'frus', k = clamp(Math.round(s.s5K), 2, 4), j = kind === 'frus' ? clamp(Math.round(s.s5J), 1, k - 1) : 0, mode = s.svMode === 'vol' ? 'vol' : 'surf';
+      s.s5K = k; if (kind === 'frus') s.s5J = j;
       const a2 = 6 * k, h2 = 4 * k, l2 = 5 * k, a1 = 6 * j, h1 = 4 * j, l1 = 5 * j, hf = h2 - h1, lf = l2 - l1;
       const bot = V(a2 * a2), top = V(a1 * a1), lat = V(2 * (a1 + a2) * lf), tot = vadd(vadd(bot, top), lat);
       const v2 = V((a2 * a2 * h2) / 3), v1 = V((a1 * a1 * h1) / 3), vol = vsub(v2, v1);

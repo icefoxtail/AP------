@@ -123,6 +123,14 @@
     });
     return { tiles: out, k, total, height: maxH * k };
   }
+  // 여러 줄(휴대폰용): 줄마다 타일 목록, 모든 줄이 같은 배율을 씁니다
+  function layoutTileRows(rows, W, Hmax, gap = 0.5, rowGap = 1.3) {
+    const ks = rows.map((r) => layoutTiles(r, W, Hmax, gap).k), k = Math.min(...ks);
+    const Ls = rows.map((r) => layoutTiles(r, W, Hmax, gap, { maxK: k }));
+    let h = 0; Ls.forEach((L, i) => { L.offset = h; h += L.height + (i < Ls.length - 1 ? rowGap : 0); });
+    return { rows: Ls, height: h, total: Math.max(...Ls.map((L) => L.total)) };
+  }
+  function drawTileRows(D, R, cx, top) { R.rows.forEach((L) => drawTiles(D, L, cx, top + L.offset)); }
   // 타일을 (cx, topY) 기준 줄로 그립니다. 반환: 글자 상자 배열(세계 좌표 점들)
   function drawTiles(D, L, cx, top, op = {}) {
     const { b } = D;
@@ -303,7 +311,7 @@
         return list.concat(vl.map((v, i) => ({ group: i === 0 ? '시점' : '', label: v[0], apply: (st) => { st.svYaw = v[1]; st.svPitch = v[2]; }, on: (st) => Math.abs((st.svYaw == null ? c0.yaw : st.svYaw) - v[1]) < 1.5 && Math.abs((st.svPitch == null ? c0.pitch : st.svPitch) - v[2]) < 1.5 })));
       },
       actions,
-      steps: (s) => D.steps(D.model(s)),
+      steps: (s) => D.steps(D.model(s)).map((t) => String(t).replace(/<\/?b>/g, '')),
       notesTitle: '자주 틀리는 부분',
       problem: {
         tag: (s) => D.prob(D.model(s), s).tag,
@@ -316,7 +324,7 @@
         D.init(s);
         s.svSeed = 0; s.svPick = null; s.playing = false;
         if (A) s[A.key] = A.start || 0;
-        if (lab) curLab = lab;
+        if (lab) { curLab = lab; lab._svOwner = D.id; lab._svSig = null; }
       },
       tick: (s, dt, lab) => {
         let again = false;
@@ -335,6 +343,11 @@
         const C = baseCtx(s, lab, false);
         const M = D.model(s);
         const v = D.view(M, C, s) || {};
+        // 조절 막대로 값이 바뀌면 정리 탭의 풀이 글도 그 값으로 다시 만듭니다
+        if (lab && lab._svOwner === D.id && typeof lab._buildReview === 'function') {
+          const sig = JSON.stringify(D.steps(M));
+          if (lab._svSig !== sig) { const first = lab._svSig == null; lab._svSig = sig; if (!first) { try { lab._buildReview(); lab._dirtyPanel = true; } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ } } }
+        }
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
         else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
         return v;
@@ -358,6 +371,6 @@
 
   Object.assign(G, {
     clamp, NUM, esc, pick, rint, shuffle, jo, fmtN, gcd, fr, toFr, V, vadd, vneg, vsub, vmul, veq, vnum, texVal, texFr, plainVal, tx, nTex, UNIT, UNITTEX,
-    mkV, mkN, mkText, layoutTiles, drawTiles, baseCtx, P, cm, makeScene, register, notes, rd, span
+    mkV, mkN, mkText, layoutTiles, layoutTileRows, drawTileRows, drawTiles, baseCtx, P, cm, makeScene, register, notes, rd, span
   });
 })();

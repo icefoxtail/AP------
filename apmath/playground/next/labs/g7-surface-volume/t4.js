@@ -21,7 +21,7 @@
     s42T: P('돌리기', 0, 1, 0.005, 0, { color: 'green', format: (v) => (v < 0.01 ? '0°' : v > 0.99 ? '한 바퀴' : Math.round(v * 360) + '°') }),
     s43T: P('돌리기 · 분해하기', 0, 1, 0.005, 0, { color: 'green', format: (v) => (v < 0.5 ? (v < 0.01 ? '0°' : Math.round(v * 2 * 360) + '°') : v > 0.99 ? '분해 완료' : '가로로 분해하는 중') }),
     s44H: P('원기둥 부분의 높이 H', 1, 8, 1, 4, { color: 'amber', format: (v) => v + ' cm' }),
-    s44T: P('분해하기', 0, 1, 0.01, 0, { color: 'green', hint: '세 부분이 가로로 갈라져요', format: (v) => (v < 0.02 ? '붙어 있음' : v > 0.98 ? '모두 분해' : Math.round(v * 100) + '%') })
+    s44T: P('분해하기', 0, 1, 0.01, 0, { color: 'green', hint: '원기둥과 원뿔이 오른쪽으로 옮겨지고 반구는 제자리에서 뒤집혀요', format: (v) => (v < 0.02 ? '붙어 있음' : v > 0.98 ? '모두 분해' : Math.round(v * 100) + '%') })
   };
   const oneOf = (v, list, d) => (list.includes(v) ? v : d);
   const A0 = -28 * DEG; // 평면도형이 처음 놓이는 방위(정면을 향함)
@@ -241,27 +241,29 @@
     };
     const draw = (b, s, M, C) => {
       const sc = 4.6 / Math.max(M.h1 + M.h2, 2.2 * M.r), r = M.r * sc, h1 = M.h1 * sc, h2 = M.h2 * sc, D = scene3(b, s, C), st = C.step;
-      const t = C.problem ? 0.45 : C.t, rotT = clamp(t / 0.5, 0, 1), sep = ease(lin01(t, 0.5, 1)) * (r * 1.55);
+      const t = C.problem ? 0.45 : C.t, rotT = clamp(t / 0.5, 0, 1), sep = ease(lin01(t, 0.5, 0.8)) * (r * 2.6), flip = ease(lin01(t, 0.8, 1));
       const yy0 = -(h1 + h2) / 2, yMid = yy0 + h1;
       const low = revolveMesh([[0, yy0], [r, yMid], [0, yMid]], { N: 44, tags: ['side', 'disc'] }), upm = revolveMesh([[0, yMid], [r, yMid], [0, yMid + h2]], { N: 44, tags: ['disc', 'side'] });
-      const lowM = xfMesh(low, shiftT(D.hx(-sep))), upM = xfMesh(upm, shiftT(D.hx(sep)));
-      D.fit(cube8(D.hx(-r * 1.55), Math.max(r, (h1 + h2) / 2)).concat(cube8(D.hx(r * 1.55), Math.max(r, (h1 + h2) / 2))), [], { l: 40, r: 40, t: 36, b: 40 });
+      // 아래 원뿔은 제자리에서 뒤집어(회전) 밑면이 아래로, 위 원뿔은 오른쪽으로만 옮겨요
+      const Tl = G.rotAbout(v3(0, (yy0 + yy0 + h1) / 2, 0), v3(0, 0, 1), PI * flip), lp = (p) => G.applyT(Tl, p);
+      const lowM = xfMesh(low, Tl), upM = xfMesh(upm, shiftT(D.hx(sep)));
+      D.fit(cube8(v3(0, yy0 + h1 / 2, 0), Math.max(r, (h1 + h2) / 2)).concat(cube8(add3(D.hx(r * 2.6), v3(0, yy0 + h1 + h2 / 2 - (yy0 + h1 / 2), 0)), Math.max(r, (h1 + h2) / 2))), [], { l: 40, r: 40, t: 36, b: 40 });
       const poly = [[0, yy0], [r, yMid], [0, yMid + h2]];
-      if (sep < 0.01) axisLine(D, yy0 - 0.5, yMid + h2 + 0.6);
+      if (sep < 0.01 && flip < 0.01) axisLine(D, yy0 - 0.5, yMid + h2 + 0.6);
       const faceS = (hot) => (f) => (f.tag === 'disc' ? { fill: 'red', alpha: sep > 0.2 ? 0.5 : 0.001 } : C.review && hot && f.tag === 'side' ? { fill: 'amber', alpha: 0.36 } : {});
       if (rotT < 0.995) sweepDraw(D, [[0, yy0], [r, yMid], [0, yMid + h2]], poly, rotT, {});
       else { D.body({ mesh: lowM, fill: 'sky', alpha: 0.26, edge: 'ink', edgeW: 2.6, faceStyle: faceS(C.review && st === 2) }); D.body({ mesh: upM, fill: 'violet', alpha: 0.26, edge: 'ink', edgeW: 2.6, faceStyle: faceS(C.review && st === 2) }); }
       const pa = (rr, yy, off) => add3(v3(rr * Math.cos(A0), yy, rr * Math.sin(A0)), off || v3(0, 0, 0));
       if (rotT >= 0.995) {
-        const ol = D.hx(-sep), ou = D.hx(sep);
-        D.elabel(pa(0, yy0, ol), pa(r, yMid, ol), `${M.R1}`, { side: { x: -1, y: 0 }, size: 15, gap: 8 });
+        const ou = D.hx(sep);
+        D.elabel(lp(pa(0, yy0)), lp(pa(r, yMid)), `${M.R1}`, { side: { x: -1, y: 0 }, size: 15, gap: 8 });
         D.elabel(pa(0, yMid + h2, ou), pa(r, yMid, ou), `${M.R2}`, { side: { x: 1, y: 0 }, size: 15, gap: 8 });
-        D.line(pa(0, yMid, ol), pa(r, yMid, ol), 'ink', 2.4);
+        D.line(lp(pa(0, yMid)), lp(pa(r, yMid)), 'ink', 2.4);
         D.line(pa(0, yMid, ou), pa(r, yMid, ou), 'ink', 2.4);
-        D.tag(pa(r * 0.8, yMid, ol), `r=${M.r}`, { dy: 15, size: 14, color: 'amber' });
+        D.tag(lp(pa(r * 0.8, yMid)), `r=${M.r}`, { dy: 15, size: 14, color: 'amber' });
         D.tag(pa(r * 0.8, yMid, ou), `r=${M.r}`, { dy: 15, size: 14, color: 'amber' });
-        if (sep > 0.2 && !C.problem) { D.tag(add3(v3(0, yMid, 0), ol), '붙은 면(제외)', { dy: 34, size: 13, color: 'red' }); }
-        if (!C.problem) { D.tag(add3(v3(0, yy0 + h1 * 0.4, 0), ol), `πRr=${plainVal(M.lat1)}`, { size: 14, dx: 4 }); D.tag(add3(v3(0, yMid + h2 * 0.4, 0), ou), `πRr=${plainVal(M.lat2)}`, { size: 14, dx: 4 }); }
+        if (sep > 0.2 && !C.problem) { D.tag(v3(0, yMid, 0), '붙은 면(제외)', { dy: 34, size: 13, color: 'red' }); }
+        if (!C.problem) { D.tag(lp(v3(0, yy0 + h1 * 0.4, 0)), `πRr=${plainVal(M.lat1)}`, { size: 14, dx: 4 }); D.tag(add3(v3(0, yMid + h2 * 0.4, 0), ou), `πRr=${plainVal(M.lat2)}`, { size: 14, dx: 4 }); }
       } else {
         const o = pa(0, yMid), pr = pa(r, yMid);
         D.line(o, pr, 'amber', 2.6); D.dot(o, 'ink', 3.5);
@@ -299,7 +301,7 @@
         `(겉넓이) $=${tx(M.lat1)}+${tx(M.lat2)}=${tx(M.surf)}\\,\\mathrm{cm}^2$예요. (밑넓이는 더하지 않아요.)`
       ],
       view: (M) => ({
-        guide: `<b>돌리고 분해하기</b> 막대를 끌어 보세요. 앞쪽 절반은 삼각형이 축 둘레를 <b>제자리에서 돌고</b>, 뒤쪽 절반은 두 원뿔이 ${span('red', '맞붙은 면')}을 드러내며 <b>가로로 갈라져요</b>. 위 칩에서 삼각형을 바꿔 보세요.`,
+        guide: `<b>돌리고 분해하기</b> 막대를 끌어 보세요. 앞쪽 절반은 삼각형이 축 둘레를 <b>제자리에서 돌고</b>, 뒤쪽 절반은 위 원뿔이 <b>오른쪽으로</b> 옮겨 가며 ${span('red', '맞붙은 면')}을 드러내요. 마지막에 아래 원뿔이 제자리에서 뒤집혀 밑면이 아래로 와요. 위 칩에서 삼각형을 바꿔 보세요.`,
         readouts: M.mode === 'vol' ? [rd('아래 원뿔 V₁', plainVal(M.v1) + ' cm³', 'sky'), rd('위 원뿔 V₂', plainVal(M.v2) + ' cm³', 'violet'), rd('부피', plainVal(M.vol) + ' cm³', 'green')] : [rd('아래 원뿔의 옆넓이', plainVal(M.lat1) + ' cm²', 'sky', `π×${M.R1}×${M.r}`), rd('위 원뿔의 옆넓이', plainVal(M.lat2) + ' cm²', 'violet', `π×${M.R2}×${M.r}`), rd('맞붙은 면(제외)', plainVal(M.disc) + ' cm²', 'red'), rd('겉넓이', plainVal(M.surf) + ' cm²', 'green')],
         formula: `<p>(겉넓이) $=\\pi Rr+\\pi R'r$ (맞붙은 면은 제외) &nbsp;,&nbsp; (부피) $=\\frac{1}{3}\\pi r^2(h+h')$</p>`,
         rule: '이중원뿔의 겉넓이 = 두 원뿔의 옆넓이의 합 (맞붙은 밑면은 빼요)',
@@ -326,9 +328,9 @@
     };
     const draw = (b, s, M, C) => {
       const sc = 5.4 / (M.r + M.H + M.hc), r = M.r * sc, H = M.H * sc, hc = M.hc * sc, D = scene3(b, s, C), st = C.step;
-      const t = C.problem ? 0 : C.t, sep = ease(t) * (r * 2.7), yB = -(r + H + hc) / 2;
+      const t = C.problem ? 0 : C.t, sep = ease(lin01(t, 0, 0.5)) * (r * 2.4), flipE = ease(lin01(t, 0.5, 1)), yB = -(r + H + hc) / 2;
       // 반구(아래, 곡면은 아래쪽): 프로필 = 극에서 적도까지, 맨 위는 평평한 원
-      const hp = [], hn = 12;
+      const hp = [], hn = 36;
       for (let i = 0; i <= hn; i++) { const a = (PI / 2) * (1 - i / hn); hp.push([Math.max(0, r * Math.cos(a)), yB + r - r * Math.sin(a)]); }
       hp[0][0] = 0; hp.push([0, yB + r]);
       const yH = yB + r, yC = yH + H;
@@ -336,21 +338,23 @@
       const cyl = revolveMesh([[0, yH], [r, yH], [r, yC], [0, yC]], { N: 36, tags: ['flat', 'side', 'flat'] });
       const cone = revolveMesh([[0, yC], [r, yC], [0, yC + hc]], { N: 36, tags: ['flat', 'side'] });
       const dx = sep;
-      const parts = [{ m: xfMesh(hemi, shiftT(D.hx(-dx))), col: 'sky', k: 'h', off: -dx }, { m: cyl, col: 'green', k: 'c', off: 0 }, { m: xfMesh(cone, shiftT(D.hx(dx))), col: 'violet', k: 'k', off: dx }];
-      D.fit([].concat(cube8(add3(D.hx(-dx), v3(0, yB + r, 0)), r), cube8(v3(0, (yH + yC) / 2, 0), Math.max(r, H / 2)), cube8(add3(D.hx(dx), v3(0, yC + hc / 2, 0)), Math.max(r, hc / 2))), [], { l: 44, r: 44, t: 40, b: 40 });
+      // 반구는 제자리에서 뒤집어 밑면이 아래로, 원기둥과 원뿔은 오른쪽으로만 옮겨요
+      const Th = G.rotAbout(v3(0, yB + r / 2, 0), v3(0, 0, 1), PI * flipE), lp = (p) => G.applyT(Th, p);
+      const parts = [{ m: xfMesh(hemi, Th), col: 'sky', k: 'h' }, { m: xfMesh(cyl, shiftT(D.hx(dx))), col: 'green', k: 'c' }, { m: xfMesh(cone, shiftT(D.hx(2 * dx))), col: 'violet', k: 'k' }];
+      D.fit([].concat(cube8(v3(0, yB + r / 2, 0), r), cube8(add3(D.hx(dx), v3(0, (yH + yC) / 2, 0)), Math.max(r, H / 2)), cube8(add3(D.hx(2 * dx), v3(0, yC + hc / 2, 0)), Math.max(r, hc / 2))), [], { l: 44, r: 44, t: 40, b: 40 });
       const lvK = !C.review ? 1 : st === 1 ? 2 : 1, lvC = !C.review ? 1 : st === 2 ? 2 : 1, lvH = !C.review ? 1 : st === 3 ? 2 : 1;
       const lv = { k: lvK, c: lvC, h: lvH };
       parts.forEach((p) => D.body({ mesh: p.m, fill: lv[p.k] === 2 ? 'amber' : p.col, alpha: lv[p.k] === 2 ? 0.38 : 0.26, edge: 'ink', edgeW: 2.6, faceStyle: (f) => (f.tag === 'flat' && dx > r * 0.5 ? { fill: 'red', alpha: 0.4 } : f.tag === 'flat' ? { fill: p.col, alpha: 0.12 } : {}) }));
       const pa = (rr, yy, off) => add3(v3(rr * Math.cos(A0), yy, rr * Math.sin(A0)), D.hx(off));
-      D.elabel(pa(r, yC, dx), pa(0, yC + hc, dx), `${M.R}`, { side: { x: 1, y: 0 }, size: 15, gap: 8 });
-      D.elabel(pa(0, yC, dx), pa(0, yC + hc, dx), `${M.hc}`, { side: { x: -1, y: 0 }, size: 14, color: 'muted', gap: 8 });
-      D.elabel(pa(r, yH, 0), pa(r, yC, 0), `${M.H}`, { side: { x: 1, y: 0 }, size: 15, color: 'amber', gap: 8 });
-      D.line(pa(0, yH, -dx), pa(r, yH, -dx), 'ink', 2.4); D.dot(pa(0, yH, -dx), 'ink', 3.5);
-      D.tag(pa(r / 2, yH, -dx), `r=${M.r}`, { dy: 14, size: 14, color: 'amber' });
+      D.elabel(pa(r, yC, 2 * dx), pa(0, yC + hc, 2 * dx), `${M.R}`, { side: { x: 1, y: 0 }, size: 15, gap: 8 });
+      D.elabel(pa(0, yC, 2 * dx), pa(0, yC + hc, 2 * dx), `${M.hc}`, { side: { x: -1, y: 0 }, size: 14, color: 'muted', gap: 8 });
+      D.elabel(pa(r, yH, dx), pa(r, yC, dx), `${M.H}`, { side: { x: 1, y: 0 }, size: 15, color: 'amber', gap: 8 });
+      D.line(lp(pa(0, yH, 0)), lp(pa(r, yH, 0)), 'ink', 2.4); D.dot(lp(pa(0, yH, 0)), 'ink', 3.5);
+      D.tag(lp(pa(r / 2, yH, 0)), `r=${M.r}`, { dy: flipE > 0.5 ? -12 : 14, size: 14, color: 'amber' });
       if (!C.problem && dx > r * 0.5) {
-        D.tag(pa(0, yB + r * 0.5, -dx), `2πr²=${plainVal(M.hemi)}`, { size: 14, dy: 22 });
-        D.tag(pa(0, (yH + yC) / 2, 0), `2πrH=${plainVal(M.cylLat)}`, { size: 14 });
-        D.tag(pa(0, yC + hc * 0.35, dx), `πRr=${plainVal(M.coneLat)}`, { size: 14, dx: -4 });
+        D.tag(lp(pa(0, yB + r * 0.5, 0)), `2πr²=${plainVal(M.hemi)}`, { size: 14, dy: flipE > 0.5 ? 28 : 22 });
+        D.tag(pa(0, (yH + yC) / 2, dx), `2πrH=${plainVal(M.cylLat)}`, { size: 14 });
+        D.tag(pa(0, yC + hc * 0.12, 2 * dx), `πRr=${plainVal(M.coneLat)}`, { size: 13, dy: 12 });
       }
     };
     return {
@@ -380,7 +384,7 @@
         `(겉넓이) $=${tx(M.coneLat)}+${tx(M.cylLat)}+${tx(M.hemi)}=${tx(M.surf)}\\,\\mathrm{cm}^2$예요.`
       ],
       view: (M) => ({
-        guide: `<b>분해하기</b> 막대를 끌어 보세요. 세 부분이 ${span('sky', '가로로')} 갈라지면서 서로 맞붙었던 ${span('red', '평평한 면')}이 빨갛게 드러나요. 위 칩에서 원뿔의 모양을, 막대로 원기둥의 높이를 바꿔 보세요.`,
+        guide: `<b>분해하기</b> 막대를 끌어 보세요. 원기둥·원뿔이 ${span('sky', '오른쪽으로')} 옮겨지고 반구는 제자리에서 뒤집히면서 서로 맞붙었던 ${span('red', '평평한 면')}이 빨갛게 드러나요. 위 칩에서 원뿔의 모양을, 막대로 원기둥의 높이를 바꿔 보세요.`,
         readouts: M.mode === 'vol' ? [rd('원뿔', plainVal(M.vk) + ' cm³', 'violet'), rd('원기둥', plainVal(M.vc) + ' cm³', 'green'), rd('반구', plainVal(M.vh) + ' cm³', 'sky'), rd('부피', plainVal(M.vol) + ' cm³', 'amber')] : [rd('원뿔의 옆면 πRr', plainVal(M.coneLat) + ' cm²', 'violet'), rd('원기둥의 옆면 2πrH', plainVal(M.cylLat) + ' cm²', 'green'), rd('반구의 곡면 2πr²', plainVal(M.hemi) + ' cm²', 'sky'), rd('겉넓이', plainVal(M.surf) + ' cm²', 'amber', '붙은 면 제외')],
         formula: `<p>(겉넓이) $=\\pi Rr+2\\pi rH+2\\pi r^2$ &nbsp;(맞붙은 면 3개는 빼요)</p>`,
         rule: '붙인 입체의 겉넓이 = 겉으로 드러난 면만 더하기 (붙은 면은 제외)',

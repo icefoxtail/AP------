@@ -499,14 +499,18 @@
     const tp = net.pieces.map((pc, k) => ({ pc, k, pts: pc.pts.map((p) => applyT(poses[k], p)), n: mulM(poses[k].R, pc.n) }));
     tp.forEach((q) => { q.c = centroid(q.pts); q.front = dot3(q.n, D.vw) > 1e-6; });
     const order = tp.slice().sort((a, c) => D.depth(a.c) - D.depth(c.c));
-    // 채우기
+    // 채우기: 같은 색의 조각은 한 번에 칠해 이음매가 생기지 않게 합니다
+    const groups = new Map();
     order.forEach((q) => {
       const st = (style && style(q.pc, q.k)) || {};
       if (st.skip) return;
-      const fill = st.fill || 'sky', alpha = st.alpha == null ? 0.22 : st.alpha;
-      if (q.front) fillPolys(b, [q.pts.map(D.P)], fill, alpha);
-      else if (st.back !== false) fillPolys(b, [q.pts.map(D.P)], fill, alpha * 0.35);
+      const fill = st.fill || 'sky', alpha = (st.alpha == null ? 0.22 : st.alpha) * (q.front ? 1 : 0.35);
+      if (!q.front && st.back === false) return;
+      const key = fill + '|' + alpha.toFixed(3) + '|' + (q.front ? 1 : 0);
+      if (!groups.has(key)) groups.set(key, { fill, alpha, polys: [] });
+      groups.get(key).polys.push(q.pts.map(D.P));
     });
+    groups.forEach((g) => fillPolys(b, g.polys, g.fill, g.alpha));
     // 모서리
     order.forEach((q) => {
       const st = (style && style(q.pc, q.k)) || {};

@@ -63,7 +63,7 @@ function start() {
         s.svYaw = (s.svYaw == null ? 28 : s.svYaw) + dx * 0.5;
         if (s.svYaw > 180) s.svYaw -= 360;
         if (s.svYaw < -180) s.svYaw += 360;
-        s.svPitch = clamp((s.svPitch == null ? 22 : s.svPitch) + dy * 0.4, -10, 85);
+        s.svPitch = clamp((s.svPitch == null ? 22 : s.svPitch) + dy * 0.4, -30, 85);
       }
     },
     // 장면에 들어올 때마다 화면 범위를 처음 상태로 되돌립니다. 그림 맞춤은 장면 그리기에서 매번 합니다.

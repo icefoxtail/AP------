@@ -3,7 +3,7 @@
    · sv5-1 구멍(관통, 안쪽 벽이 새로 생김) · sv5-2 막힌 구멍·사각 구멍 · sv5-3 모퉁이 절단(겉넓이 그대로)
    · sv5-4 모서리·가운데 홈(확장: 위치에 따라 달라짐) · sv5-5 원뿔 속 원뿔 · sv5-6 붙인 입체 종합(붙은 면 제외)
    핵심 생각: 파내거나 붙이면 「없어지는 겉면」과 「새로 생기는 겉면」이 생겨요. 둘을 따로 구해 빼고 더해요.
-   움직임은 가로로만: 구멍 막대·잘린 조각·붙인 입체는 가로로 빠지고, 절개는 앞쪽 절반이 옆으로 열려요. 조각 줄도 같은 줄 안에서 가로로 움직여요.
+   모든 입체는 밑면이 아래로 서 있고, 움직임은 왼쪽 → 오른쪽 가로로만: 잘린 조각·붙인 입체·열리는 절반은 오른쪽으로 빠지고, 구멍 막대는 제자리에서 나타났다 사라져요. 조각 줄도 왼쪽에서 오른쪽으로 펼쳐져요.
    ========================================================================== */
 (function () {
   'use strict';
@@ -43,83 +43,88 @@
   const ROT_X = (T) => T;
   void ROT_X;
 
-  // 가로로 눕힌 기둥(길이 방향 x)의 단면(y,z) 다각형을 기둥 메시로
-  function laidPrism(polyYZ, x0, x1, smooth) {
-    const poly = polyYZ.map((p) => [-p[0], p[1]]);
-    const m = prismMesh(poly, x0, x1, { simple: true, smooth });
-    return xfMesh(m, { R: rotM(v3(0, 0, 1), -PI / 2), t: v3(0, 0, 0) });
-  }
-  // 막대(원기둥)를 x 방향으로, 중심 xc
-  const rod = (q, len, xc) => revolveMesh([[0, -len / 2], [q, -len / 2], [q, len / 2], [0, len / 2]], { axis: 'x', O: v3(xc, 0, 0), N: 28 });
-
-  /* 구멍 뚫린 기둥의 앞·뒤 절반 */
-  function holeHalves(A, Hh, qu, N) {
+  // 밑면이 아래로 서 있는 기둥을 x=0 평면으로 반씩 나눈 모양(가운데 세로 구멍)
+  function holeHalvesUp(A, Hh, qu, N) {
     N = N || 16;
-    const back = [[-A, -A], [A, -A], [A, 0], [qu, 0]], bs = [false, false, false, false];
-    for (let i = 1; i < N; i++) { const a = -(PI * i) / N; back.push([qu * Math.cos(a), qu * Math.sin(a)]); bs.push(true); }
-    back.push([-qu, 0], [-A, 0]); bs.push(false, false);
-    const front = [[-A, 0], [-qu, 0]], fs = [false, false];
-    for (let i = 1; i < N; i++) { const a = PI - (PI * i) / N; front.push([qu * Math.cos(a), qu * Math.sin(a)]); fs.push(true); }
-    front.push([qu, 0], [A, 0], [A, A], [-A, A]); fs.push(false, false, false, false);
-    const tagger = (m) => { m.faces.forEach((f) => { if (f.pts.every((p) => Math.abs(p.z) < 1e-9)) f.tag = 'cut'; else if (f.tag === 'side' && f.pts.every((p) => Math.abs(Math.hypot(p.y, p.z) - qu) < 1e-6)) f.tag = 'wall'; }); return m; };
-    return { back: tagger(laidPrism(back, -Hh / 2, Hh / 2, bs)), front: tagger(laidPrism(front, -Hh / 2, Hh / 2, fs)) };
+    const y0 = -Hh / 2, y1 = Hh / 2;
+    const left = [[-A, -A], [0, -A], [0, -qu]], ls = [false, false, false];
+    for (let i = 1; i < N; i++) { const a = -PI / 2 - (PI * i) / N; left.push([qu * Math.cos(a), qu * Math.sin(a)]); ls.push(true); }
+    left.push([0, qu], [0, A], [-A, A]); ls.push(false, false, false);
+    const right = [[0, -A], [A, -A], [A, A], [0, A], [0, qu]], rs = [false, false, false, false, false];
+    for (let i = 1; i < N; i++) { const a = PI / 2 - (PI * i) / N; right.push([qu * Math.cos(a), qu * Math.sin(a)]); rs.push(true); }
+    right.push([0, -qu]); rs.push(false);
+    const tagger = (m) => { m.faces.forEach((f) => { if (f.pts.every((p) => Math.abs(p.x) < 1e-9)) f.tag = 'cut'; else if (f.tag === 'side' && f.pts.every((p) => Math.abs(Math.hypot(p.x, p.z) - qu) < 1e-6)) f.tag = 'wall'; }); return m; };
+    return { left: tagger(prismMesh(left, y0, y1, { simple: true, smooth: ls })), right: tagger(prismMesh(right, y0, y1, { simple: true, smooth: rs })) };
   }
+  // 타일을 왼쪽 끝에 모아 두었다가 오른쪽으로 가로로 펼칩니다(줄마다)
+  function slideTiles(R, te) { R.rows.forEach((L) => { const st = -L.total / 2; L.tiles.forEach((tl) => { tl.x = st + (tl.x - st) * te; }); }); }
+  const totalText = (D, R, topY, text) => { const px = D.b.toS({ x: 0, y: topY + R.height }); D.b.stext(px.x, px.y + 50, text, { size: D.fs(15), weight: 800, color: 'green', align: 'center', baseline: 'middle' }); };
 
   /* ================================================================ sv5-1 구멍 뚫린 입체 (Ⅳ-1) */
   function sv51() {
     const model = (s) => {
       const a = clamp(Math.round(s.s51A), 4, 10), h = clamp(Math.round(s.s51H), 1, 10), q = clamp(Math.round(s.s51Q), 1, Math.min(4, Math.floor((a - 1) / 2)));
+      s.s51A = a; s.s51H = h; s.s51Q = q;
       const S0 = V(2 * a * a + 4 * a * h), minus = V(0, -2 * q * q), plus = V(0, 2 * q * h), delta = vadd(minus, plus), tot = vadd(S0, delta), trend = h > q ? 'up' : h < q ? 'down' : 'same';
       return { a, h, q, S0, minus, plus, delta, tot, trend, ans: tot };
     };
     const draw = (b, s, M, C) => {
-      const D = scene3(b, s, C), st = C.step, sc = 3.5 / Math.max(M.a, M.h * 0.95), A = (M.a * sc) / 2, Hh = M.h * sc, qu = M.q * sc;
-      const t = C.problem ? 0.26 : C.t, p1 = lin01(t, 0, 0.25), open = ease(lin01(t, 0.25, 0.55)), te = ease(lin01(t, 0.55, 0.9));
-      const dOpen = open * (Hh + 0.9 * A), closed = open < 0.02, plain = t < 0.02 && !C.problem;
-      const L = Hh + 1.4, xr = lerp3(v3(-Hh / 2 - L / 2 - 0.3, 0, 0), v3(Hh / 2 + L / 2 + 0.3, 0, 0), ease(p1)).x;
-      const row = C.problem ? null : layoutTiles([
-        { w: M.a, h: M.a, shape: 'hole', holeR: M.q / M.a * 0.5 * 1.0, count: 2, fill: 'sky', label: plainVal(V(M.a * M.a, -M.q * M.q)), cap: '뚫린 면 ×2', hl: !C.review ? 1 : st === 2 ? 2 : st === 4 ? 3 : 1 },
-        { w: M.a, h: M.h, shape: 'rect', count: 4, fill: 'sky', label: `${M.a * M.h}`, cap: '바깥 옆면 ×4', hl: !C.review ? 1 : st === 1 ? 2 : st === 4 ? 3 : 1 },
-        { w: 2 * PI * M.q, h: M.h, shape: 'rect', fill: 'amber', label: plainVal(M.plus), cap: '안쪽 옆면 2πq×h', hl: !C.review ? 1 : st === 3 ? 2 : 1 }
-      ], 6.2, 2.0, 0.6);
-      const ex = Hh / 2 + 0.5 + L / 2 * 0 + dOpen * 0, pts = cube8(v3(0, 0, 0), Math.max(A, Hh / 2)).concat(cube8(D.hx(-dOpen), Math.max(A, Hh / 2)));
+      const D = scene3(b, s, C), st = C.step, sc = 3.4 / Math.max(M.a, M.h * 0.9), A = (M.a * sc) / 2, Hh = M.h * sc, qu = M.q * sc, narrow = b.W < 560;
+      const t = C.problem ? 0.3 : C.t, rodA = t < 0.3 ? Math.sin((PI * t) / 0.3) : 0, open = ease(lin01(t, 0.3, 0.6)), te = ease(lin01(t, 0.6, 0.95));
+      const dMax = C.problem ? 0 : A * 2 + 0.9, dOpen = open * (A * 2 + 0.9), closed = open < 0.02, plain = t < 0.15 && !C.problem, y0 = -Hh / 2, y1 = Hh / 2;
+      const hlOf = (k) => (!C.review ? 1 : st === k ? 2 : st === 4 ? 3 : 1);
+      const t0 = { w: M.a, h: M.a, shape: 'hole', holeR: (M.q / M.a) * 0.5, count: 2, fill: 'sky', label: plainVal(V(M.a * M.a, -M.q * M.q)), cap: '뚫린 면 ×2', hl: hlOf(2) };
+      const t1 = { w: M.a, h: M.h, shape: 'rect', count: 4, fill: 'sky', label: `${M.a * M.h}`, cap: '바깥 옆면 ×4', hl: hlOf(1) };
+      const t2 = { w: 2 * PI * M.q, h: M.h, shape: 'rect', fill: 'amber', label: plainVal(M.plus), cap: '안쪽 옆면 2πq×h', hl: hlOf(3) };
+      const R = C.problem ? null : G.layoutTileRows(narrow ? [[t0, t1], [t2]] : [[t0, t1, t2]], narrow ? 4.6 : 6.4, narrow ? 1.6 : 2.0, 0.7, 1.9);
+      const pts = cube8(v3(0, 0, 0), Math.max(A, Hh / 2)).concat(cube8(D.hx(dMax), Math.max(A, Hh / 2)));
       const bb = bboxOf(pts.map(D.P));
-      D.fit(pts.concat([v3(Hh / 2 + L, 0, 0)]), row ? [{ x: -row.total / 2, y: bb.y1 + 0.9 }, { x: row.total / 2, y: bb.y1 + 0.9 + row.height + 1.0 }] : [], { l: 36, r: 36, t: 36, b: 40 });
+      const blend = narrow && R ? ease(lin01(te, 0, 0.4)) : 0, rowTop = bb.y1 + 0.9;
+      if (blend > 0) {
+        const mix = (p, q) => p + (q - p) * blend;
+        D.fit([], [{ x: mix(bb.x0, -R.total / 2), y: mix(bb.y0, rowTop) }, { x: mix(bb.x1, R.total / 2), y: mix(bb.y1, rowTop + R.height + 2.6) }], { l: 36, r: 36, t: 44, b: 40 });
+      } else D.fit(pts, R && !narrow ? [{ x: -R.total / 2, y: rowTop }, { x: R.total / 2, y: rowTop + R.height + 2.6 }] : [], { l: 36, r: 36, t: 44, b: 40 });
+      const showSolid = !(narrow && te > 0.35);
       const lvAll = !C.review ? 1 : st === 1 ? 2 : 1, lvWall = !C.review ? 1 : st === 3 ? 2 : 1;
-      if (plain) {
-        D.body({ mesh: boxMesh(-Hh / 2, Hh / 2, -A, A, -A, A), fill: 'sky', alpha: 0.22, edge: 'ink' });
-        [-Hh / 2, Hh / 2].forEach((x) => D.path(D.circ(v3(x, 0, 0), v3(0, 1, 0), v3(0, 0, 1), qu, 0, TAU, 60), 'red', 2.4, { dash: [6, 5], alpha: 0.85 }));
-        [qu, -qu].forEach((yy) => D.line(v3(-Hh / 2, yy, 0), v3(Hh / 2, yy, 0), 'red', 2, { dash: [6, 5], alpha: 0.7 }));
+      if (!showSolid) {
+        // 휴대폰: 조각 줄이 펼쳐지는 동안 입체는 물러나요
+      } else if (plain) {
+        D.body({ mesh: boxMesh(-A, A, y0, y1, -A, A), fill: 'sky', alpha: 0.22, edge: 'ink' });
+        [y0, y1].forEach((y) => D.path(D.circ(v3(0, y, 0), v3(1, 0, 0), v3(0, 0, 1), qu, 0, TAU, 60), 'red', 2.4, { dash: [6, 5], alpha: 0.85 }));
+        [qu, -qu].forEach((xx) => D.line(v3(xx, y0, 0), v3(xx, y1, 0), 'red', 2, { dash: [6, 5], alpha: 0.7 }));
       } else {
-        const { back, front } = holeHalves(A, Hh, qu);
-        const frontM = xfMesh(front, shiftT(D.hx(-dOpen)));
+        const { left, right } = holeHalvesUp(A, Hh, qu), rightM = xfMesh(right, shiftT(D.hx(dOpen)));
         const cutSkip = (m) => (e) => (closed && ((m.faces[e.f1] && m.faces[e.f1].tag === 'cut') || (m.faces[e.f2] && m.faces[e.f2].tag === 'cut')) ? { skip: true } : {});
         const sty = (f) => (f.tag === 'wall' ? { fill: 'amber', alpha: lvWall === 2 ? 0.55 : 0.34 } : f.tag === 'cut' ? (closed ? { skip: true } : { fill: 'sky', alpha: 0.12 }) : lvAll === 2 ? { fill: 'amber', alpha: 0.3 } : {});
-        const list = [{ mesh: back, fill: 'sky', alpha: 0.22, edge: 'ink', faceStyle: sty, edgeFn: cutSkip(back) }, { mesh: frontM, fill: 'sky', alpha: 0.22, edge: 'ink', faceStyle: sty, edgeFn: cutSkip(frontM) }];
-        if (p1 < 0.999 && t < 0.26) list.push({ mesh: rod(qu * 0.97, L, xr), fill: 'amber', alpha: 0.4, edge: 'amber', edgeW: 2.2, hidden: false });
+        const list = [{ mesh: left, fill: 'sky', alpha: 0.22, edge: 'ink', faceStyle: sty, edgeFn: cutSkip(left) }, { mesh: rightM, fill: 'sky', alpha: 0.22, edge: 'ink', faceStyle: sty, edgeFn: cutSkip(rightM) }];
+        if (rodA > 0.02) list.push({ mesh: revolveMesh([[0, y0 - 0.5], [qu * 0.97, y0 - 0.5], [qu * 0.97, y1 + 0.5], [0, y1 + 0.5]], { N: 28 }), fill: 'amber', alpha: 0.42 * rodA, edge: 'amber', edgeW: 2.2, hidden: false, edgeFn: () => ({ alpha: rodA }) });
         D.bodies(list);
-        if (C.review && st === 2) [-Hh / 2, Hh / 2].forEach((x, i) => { if (i === 1 || open > 0.5) D.disc(v3(x + (i === 0 ? -dOpen * 0 : 0), 0, 0), v3(0, 1, 0), v3(0, 0, 1), qu, 'red', 0.45, 'red', 2.6); });
+        if (C.review && st === 2) [y0, y1].forEach((y) => D.disc(v3(0, y, 0), v3(1, 0, 0), v3(0, 0, 1), qu, 'red', 0.45, 'red', 2.6));
       }
-      // 길이 표시
-      D.elabel(v3(Hh / 2, A, -A), v3(Hh / 2, A, A), `a=${M.a}`, { side: { x: 1, y: -0.3 }, size: 15, color: 'amber', gap: 8 });
-      D.elabel(v3(-Hh / 2, -A, A), v3(Hh / 2, -A, A), `h=${M.h}`, { side: { x: 0, y: 1 }, size: 15, color: 'amber', gap: 8 });
-      D.line(v3(Hh / 2, 0, 0), v3(Hh / 2, qu, 0), 'red', 2.8);
-      D.dot(v3(Hh / 2, 0, 0), 'ink', 3.5);
-      D.tag(v3(Hh / 2, qu / 2, 0), `q=${M.q}`, { dx: -24, size: 15, color: 'red' });
+      // 길이: 바깥 모서리에
+      if (showSolid) {
+        D.elabel(v3(-A, y0, A), v3(A, y0, A), `a=${M.a}`, { side: { x: 0, y: 1 }, size: 15, color: 'amber', gap: 8 });
+        D.elabel(v3(A, y0, A), v3(A, y1, A), `h=${M.h}`, { side: { x: 1, y: 0 }, size: 15, color: 'amber', gap: 8 });
+        // 구멍의 반지름 q (윗면)
+        D.line(v3(0, y1, 0), v3(-qu, y1, 0), 'red', 2.8);
+        D.dot(v3(0, y1, 0), 'ink', 3.5);
+        D.tag(v3(-qu / 2, y1, 0), `q=${M.q}`, { dy: -12, size: 15, color: 'red' });
+      }
       if (!C.problem) {
-        if (plain) D.tag(v3(0, A, 0), `구멍 없는 기둥  S₀ = 2a²+4ah = ${plainVal(M.S0)}`, { dy: -34, size: 15, color: 'ink' });
-        else if (open > 0.3) D.tag(add3(v3(0, -qu * 0.35, -qu * 0.5), D.hx(0)), `안쪽 벽: 높이 ${M.h}, 둘레 2πq`, { dy: 20, size: 14, color: 'amber' });
-        if (row && te > 0.01) {
-          row.tiles.forEach((tl) => { const fx = tl.x; tl.x = (-tl.sw / 2) + (fx + tl.sw / 2) * te; });
-          drawTiles(D, row, 0, bb.y1 + 0.9);
-          if (te > 0.95) b.text({ x: 0, y: bb.y1 + 0.9 }, `겉넓이 = ${plainVal(M.tot)}`, { dy: -14, size: D.fs(15), weight: 800, color: 'green', baseline: 'middle' });
+        if (!showSolid) { /* 입체 글자 없음 */ } else if (plain) D.tag(v3(0, y1, 0), `구멍 없는 기둥  S₀ = 2a²+4ah = ${plainVal(M.S0)}`, { dy: -40, size: 15, color: 'ink' });
+        else if (open > 0.3) D.tag(v3(0, y1, 0), `노란 면 = 안쪽 벽 (높이 ${M.h}, 둘레 2πq)`, { dy: -40, size: 14, color: 'amber' });
+        if (R && te > 0.01) {
+          slideTiles(R, te);
+          const top = rowTop;
+          G.drawTileRows(D, R, 0, top);
+          if (te > 0.95) totalText(D, R, top, `겉넓이 = ${plainVal(M.tot)}`);
         }
       }
     };
     return {
       id: 'sv5-1', title: '구멍 뚫린 입체', short: '구멍 [함정]',
       question: '기둥에 구멍을 뚫으면 겉넓이는 어떻게 달라질까? 없어지는 면과 새로 생기는 면을 각각 찾아보자.',
-      anim: { key: 's51T', dur: 12, label: '뚫고 열어 보기' }, cam0: { yaw: 28, pitch: 22 }, stepT: (n) => [0, 0.02, 0.26, 0.5, 1][Math.min(n, 4)], thumbT: 0.5, problemT: 0.26,
+      anim: { key: 's51T', dur: 12, label: '뚫고 열어 보기' }, cam0: { yaw: 28, pitch: 22 }, stepT: (n) => [0, 0.02, 0.3, 0.5, 1][Math.min(n, 4)], thumbT: 0.5, problemT: 0.3,
       ctl: () => ['s51A', 's51H', 's51Q', 's51T'],
       init: (s) => { s.s51A = 6; s.s51H = 5; s.s51Q = 2; s.s51T = 0; },
       reroll: (s) => { s.s51A = rint(4, 10); s.s51H = rint(2, 10); s.s51Q = rint(1, Math.min(4, Math.floor((s.s51A - 1) / 2))); s.s51T = 0; },
@@ -159,6 +164,7 @@
       const kind = oneOf(s.svK52, ['cb', 'st', 'sb'], 'cb'), a = clamp(Math.round(s.s51A), 4, 10), h = clamp(Math.round(s.s51H), 2, 10);
       const size = kind === 'cb' ? clamp(Math.round(s.s52U), 1, Math.min(4, Math.floor((a - 1) / 2))) : clamp(Math.round(s.s52U), 1, Math.min(5, a - 2));
       const d = kind === 'st' ? h : clamp(Math.round(s.s52D), 1, h - 1);
+      s.s51A = a; s.s51H = h; s.s52U = size; if (kind !== 'st') s.s52D = d;
       const S0 = V(2 * a * a + 4 * a * h);
       let removed, added, delta, parts;
       if (kind === 'cb') { removed = V(0, -size * size); added = V(0, 2 * size * d + size * size); delta = V(0, 2 * size * d); parts = [{ w: 2 * size, h: 2 * size, shape: 'circle', fill: 'red', label: plainVal(V(0, size * size)), cap: '입구 −πq²' }, { w: 2 * PI * size, h: d, shape: 'rect', fill: 'amber', label: plainVal(V(0, 2 * size * d)), cap: '안쪽 옆면 +2πq×d' }, { w: 2 * size, h: 2 * size, shape: 'circle', fill: 'amber', label: plainVal(V(0, size * size)), cap: '바닥 +πq²' }]; }
@@ -168,44 +174,48 @@
       return { kind, a, h, size, d, S0, removed, added, delta, tot, parts, ans: tot };
     };
     const draw = (b, s, M, C) => {
-      const D = scene3(b, s, C), st = C.step, sc = 3.5 / Math.max(M.a, M.h * 0.95), A = (M.a * sc) / 2, Hh = M.h * sc, qu = M.size * sc, du = M.d * sc;
-      const t = C.problem ? 0.5 : C.t, rodP = t < 0.3 ? ease(t / 0.3) : t < 0.5 ? 1 - ease((t - 0.3) / 0.2) : 0, te = ease(lin01(t, 0.5, 0.9));
-      const hot = (k) => (!C.review ? 1 : k);
-      const L = Hh + 1.2, far = Hh / 2 + L / 2 + 0.4, depthCenter = M.kind === 'st' ? 0 : Hh / 2 - du + L / 2 - 0.0;
-      const xr = far + (depthCenter - far) * rodP;
+      const D = scene3(b, s, C), st = C.step, sc = 3.4 / Math.max(M.a, M.h * 0.9), A = (M.a * sc) / 2, Hh = M.h * sc, qu = M.size * sc, du = M.d * sc, narrow = b.W < 560, y0 = -Hh / 2, y1 = Hh / 2;
+      const t = C.problem ? 0.55 : C.t, rodA = t < 0.5 ? Math.sin((PI * t) / 0.5) : 0, te = ease(lin01(t, 0.5, 0.9));
+      const hot = (fill) => (!C.review ? 1 : (st === 2 && fill === 'red') || (st === 3 && fill === 'amber') ? 2 : st === 4 ? 3 : 1);
+      const parts = M.parts.map((p) => Object.assign({}, p, { hl: hot(p.fill) }));
+      const rows = narrow && parts.length >= 3 ? [parts.slice(0, 2), parts.slice(2)] : [parts];
+      const R = C.problem ? null : G.layoutTileRows(rows, narrow ? 4.6 : 6.4, narrow ? 1.6 : 1.9, 0.7, 1.9);
+      const pts = cube8(v3(0, 0, 0), Math.max(A, Hh / 2)), bb = bboxOf(pts.map(D.P)), rowTop = bb.y1 + 0.9;
+      const blend = narrow && R ? ease(lin01(te, 0, 0.4)) : 0, showSolid = !(narrow && te > 0.35);
+      if (blend > 0) { const mix = (p, q2) => p + (q2 - p) * blend; D.fit([], [{ x: mix(bb.x0, -R.total / 2), y: mix(bb.y0, rowTop) }, { x: mix(bb.x1, R.total / 2), y: mix(bb.y1, rowTop + R.height + 2.6) }], { l: 36, r: 36, t: 44, b: 40 }); }
+      else D.fit(pts, R && !narrow ? [{ x: -R.total / 2, y: rowTop }, { x: R.total / 2, y: rowTop + R.height + 2.6 }] : [], { l: 36, r: 36, t: 44, b: 40 });
       const mats = [];
-      const row = C.problem ? null : layoutTiles(M.parts.map((p, i) => Object.assign({}, p, { hl: !C.review ? 1 : (st === 2 && p.fill === 'red') || (st === 3 && p.fill === 'amber') ? 2 : st === 4 ? 3 : 1 })), 6.2, 1.9, 0.6);
-      const pts = cube8(v3(0, 0, 0), Math.max(A, Hh / 2)).concat([v3(far + L / 2, 0, 0)]), bb = bboxOf(pts.map(D.P));
-      D.fit(pts, row ? [{ x: -row.total / 2, y: bb.y1 + 0.9 }, { x: row.total / 2, y: bb.y1 + 0.9 + row.height + 1.0 }] : [], { l: 36, r: 36, t: 36, b: 40 });
       if (M.kind === 'cb') {
-        const box = boxMesh(-Hh / 2, Hh / 2, -A, A, -A, A);
-        box.faces.forEach((f) => { if (f.n.x > 0.9) f.holes = [circPts(v3(Hh / 2, 0, 0), v3(0, 1, 0), v3(0, 0, 1), qu, 48)]; });
-        const hole = flipMesh(revolveMesh([[0, Hh / 2 - du], [qu, Hh / 2 - du], [qu, Hh / 2]], { axis: 'x', N: 32, tags: ['bot', 'wall'] }));
+        const box = boxMesh(-A, A, y0, y1, -A, A);
+        box.faces.forEach((f) => { if (f.n.y > 0.9) f.holes = [circPts(v3(0, y1, 0), v3(1, 0, 0), v3(0, 0, 1), qu, 48)]; });
+        const hole = flipMesh(revolveMesh([[0, y1 - du], [qu, y1 - du], [qu, y1]], { N: 32, tags: ['bot', 'wall'] }));
         mats.push({ mesh: box, fill: 'sky', alpha: 0.22, edge: 'ink', faceStyle: () => ({}) });
-        mats.push({ mesh: hole, fill: 'amber', alpha: 0.36, edge: 'amber', edgeW: 1.8, sil: true, edgeFn: (e) => (e.chain && e.chain.indexOf('r2_') === 0 ? { skip: true } : {}), faceStyle: (f) => (f.tag === 'bot' && C.review && st === 3 ? { fill: 'amber', alpha: 0.55 } : f.tag === 'wall' && C.review && st === 3 ? { fill: 'amber', alpha: 0.5 } : {}) });
+        mats.push({ mesh: hole, fill: 'amber', alpha: 0.36, edge: 'amber', edgeW: 1.8, sil: true, edgeFn: (e) => (e.chain && e.chain.indexOf('r2_') === 0 ? { skip: true } : {}), faceStyle: (f) => ((f.tag === 'bot' || f.tag === 'wall') && C.review && st === 3 ? { fill: 'amber', alpha: 0.55 } : {}) });
       } else {
-        const O = [-Hh / 2, Hh / 2, -A, A, -A, A], hb = M.kind === 'st' ? [-Hh / 2, Hh / 2, -qu / 2, qu / 2, -qu / 2, qu / 2] : [Hh / 2 - du, Hh / 2, -qu / 2, qu / 2, -qu / 2, qu / 2];
+        const O = [-A, A, y0, y1, -A, A], hb = M.kind === 'st' ? [-qu / 2, qu / 2, y0, y1, -qu / 2, qu / 2] : [-qu / 2, qu / 2, y1 - du, y1, -qu / 2, qu / 2];
         mats.push({ mesh: boxMinusBoxes(O, [hb]), fill: 'sky', alpha: 0.22, edge: 'ink', faceStyle: (f) => (f.tag === 'in' ? { fill: 'amber', alpha: C.review && st === 3 ? 0.55 : 0.36 } : {}) });
       }
-      if (rodP > 0.001 && t < 0.5) mats.push({ mesh: M.kind === 'cb' ? rod(qu * 0.95, L, xr) : boxMesh(xr - L / 2, xr + L / 2, -qu / 2 * 0.95, qu / 2 * 0.95, -qu / 2 * 0.95, qu / 2 * 0.95), fill: 'red', alpha: 0.34, edge: 'red', edgeW: 2, hidden: false });
-      D.bodies(mats);
-      if (M.kind === 'cb') D.path(D.circ(v3(Hh / 2, 0, 0), v3(0, 1, 0), v3(0, 0, 1), qu, 0, TAU, 60), 'ink', 2.6, {});
-      // 길이
-      D.elabel(v3(Hh / 2, A, -A), v3(Hh / 2, A, A), `a=${M.a}`, { side: { x: 1, y: -0.3 }, size: 15, color: 'amber', gap: 8 });
-      D.elabel(v3(-Hh / 2, -A, A), v3(Hh / 2, -A, A), `h=${M.h}`, { side: { x: 0, y: 1 }, size: 15, color: 'amber', gap: 8 });
-      if (M.kind === 'cb') { D.line(v3(Hh / 2, 0, 0), v3(Hh / 2, qu, 0), 'red', 2.8); D.dot(v3(Hh / 2, 0, 0), 'ink', 3.5); D.tag(v3(Hh / 2, qu / 2, 0), `q=${M.size}`, { dx: -24, size: 15, color: 'red' }); }
-      else D.elabel(v3(Hh / 2, qu / 2, -qu / 2), v3(Hh / 2, qu / 2, qu / 2), `u=${M.size}`, { side: { x: 1, y: -0.2 }, size: 15, color: 'red', gap: 6 });
-      if (M.kind !== 'st') { D.line(v3(Hh / 2, -A - 0.05, A), v3(Hh / 2 - du, -A - 0.05, A), 'red', 3, {}); D.tag(v3(Hh / 2 - du / 2, -A, A), `깊이 d=${M.d}`, { dy: 36, size: 14, color: 'red' }); }
-      if (row && te > 0.01) {
-        row.tiles.forEach((tl) => { const fx = tl.x; tl.x = (-tl.sw / 2) + (fx + tl.sw / 2) * te; });
-        drawTiles(D, row, 0, bb.y1 + 0.9);
-        if (te > 0.95) b.text({ x: 0, y: bb.y1 + 0.9 }, `변화 = ${vnum(M.delta) >= 0 ? '+' : ''}${plainVal(M.delta)}  →  겉넓이 ${plainVal(M.tot)}`, { dy: -14, size: D.fs(15), weight: 800, color: 'green', baseline: 'middle' });
+      // 구멍 만드는 막대: 제자리에서 나타났다 사라져요(위아래로 움직이지 않아요)
+      if (rodA > 0.02) mats.push({ mesh: M.kind === 'cb' ? revolveMesh([[0, (M.kind === 'st' ? y0 : y1 - du)], [qu * 0.95, y1 - du], [qu * 0.95, y1 + 0.5], [0, y1 + 0.5]], { N: 28 }) : boxMesh(-qu * 0.47, qu * 0.47, M.kind === 'st' ? y0 - 0.4 : y1 - du, y1 + 0.5, -qu * 0.47, qu * 0.47), fill: 'red', alpha: 0.36 * rodA, edge: 'red', edgeW: 2, hidden: false, edgeFn: () => ({ alpha: rodA }) });
+      if (showSolid) {
+        D.bodies(mats);
+        if (M.kind === 'cb') D.path(D.circ(v3(0, y1, 0), v3(1, 0, 0), v3(0, 0, 1), qu, 0, TAU, 60), 'ink', 2.6, {});
+        D.elabel(v3(-A, y0, A), v3(A, y0, A), `a=${M.a}`, { side: { x: 0, y: 1 }, size: 15, color: 'amber', gap: 8 });
+        D.elabel(v3(A, y0, A), v3(A, y1, A), `h=${M.h}`, { side: { x: 1, y: 0 }, size: 15, color: 'amber', gap: 8 });
+        if (M.kind === 'cb') { D.line(v3(0, y1, 0), v3(-qu, y1, 0), 'red', 2.8); D.dot(v3(0, y1, 0), 'ink', 3.5); D.tag(v3(-qu / 2, y1, 0), `q=${M.size}`, { dy: -12, size: 15, color: 'red' }); }
+        else D.elabel(v3(-qu / 2, y1, qu / 2), v3(qu / 2, y1, qu / 2), `u=${M.size}`, { side: { x: 0, y: 1 }, size: 15, color: 'red', gap: 6 });
+        if (M.kind !== 'st') { D.line(v3(0, y1, 0), v3(0, y1 - du, 0), 'red', 3, { dash: [5, 4] }); D.tag(v3(0, y1 - du / 2, 0), `d=${M.d}`, { dx: 22, size: 14, color: 'red' }); }
+      }
+      if (R && te > 0.01) {
+        slideTiles(R, te);
+        G.drawTileRows(D, R, 0, rowTop);
+        if (te > 0.95) totalText(D, R, rowTop, `변화 = ${vnum(M.delta) >= 0 ? '+' : ''}${plainVal(M.delta)}  →  겉넓이 ${plainVal(M.tot)}`);
       }
     };
     return {
       id: 'sv5-2', title: '막힌 구멍·사각 구멍', short: '막힌·사각 구멍',
       question: '구멍이 끝까지 뚫리지 않았거나(막힌 구멍) 모양이 정사각형이면 겉넓이는 어떻게 달라질까?',
-      anim: { key: 's52T', dur: 9, label: '구멍 막대 넣기' }, cam0: { yaw: 28, pitch: 22 }, stepT: (n) => [0, 0.02, 0.5, 0.5, 1][Math.min(n, 4)], thumbT: 0.95, problemT: 0.5,
+      anim: { key: 's52T', dur: 9, label: '구멍 뚫기' }, cam0: { yaw: 28, pitch: 22 }, stepT: (n) => [0, 0.02, 0.5, 0.5, 1][Math.min(n, 4)], thumbT: 0.95, problemT: 0.55,
       ctl: (s) => (oneOf(s.svK52, ['cb', 'st', 'sb'], 'cb') === 'st' ? ['s51A', 's51H', 's52U', 's52T'] : ['s51A', 's51H', 's52U', 's52D', 's52T']),
       presets: () => Object.keys(K52).map((k, i) => ({ group: i === 0 ? '구멍의 모양' : '', label: K52[k], apply: (st) => { st.svK52 = k; st.s52T = 0; }, on: (st) => oneOf(st.svK52, ['cb', 'st', 'sb'], 'cb') === k })),
       init: (s) => { s.svK52 = 'cb'; s.s51A = 6; s.s51H = 5; s.s52U = 2; s.s52D = 3; s.s52T = 0; },
@@ -225,7 +235,7 @@
         return [s1, `입구의 정사각형 1개가 없어져요. $-u^2=${tx(M.removed)}$예요.`, `안쪽 옆면 $4\\times u\\times d=${tx(V(4 * M.size * M.d))}$와 바닥의 정사각형 $u^2=${tx(V(M.size * M.size))}$이 새로 생겨요.`, `입구와 바닥이 같아 지워져서 (새 겉넓이) $=S_0+4ud=${tx(M.S0)}+${tx(M.delta)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`];
       },
       view: (M) => ({
-        guide: `위 칩에서 <b>구멍의 모양</b>을 골라 보세요. <b>구멍 막대 넣기</b> 막대를 끌면 ${span('red', '구멍 막대')}가 오른쪽에서 가로로 들어갔다 빠져요. 막힌 구멍은 <b>바닥</b>이 새로 생기고, 입구와 바닥이 서로 <b>지워져요</b>.`,
+        guide: `위 칩에서 <b>구멍의 모양</b>을 골라 보세요. <b>구멍 뚫기</b> 막대를 끌면 ${span('red', '구멍 막대')}가 구멍 자리에 나타났다 사라져요. 막힌 구멍은 <b>바닥</b>이 새로 생기고, 입구와 바닥이 서로 <b>지워져요</b>.`,
         readouts: [rd('구멍 없을 때 S₀', plainVal(M.S0) + ' cm²', 'sky'), rd('없어진 입구', plainVal(M.removed) + ' cm²', 'red'), rd('생긴 안쪽 면', '+' + plainVal(M.added) + ' cm²', 'amber', M.kind === 'cb' || M.kind === 'sb' ? '벽 + 바닥' : '벽 4개'), rd('새 겉넓이', plainVal(M.tot) + ' cm²', 'green', `변화 ${vnum(M.delta) >= 0 ? '+' : ''}${plainVal(M.delta)}`)],
         formula: M.kind === 'cb' ? `<p>(막힌 원기둥 구멍) 겉넓이 $=S_0+2\\pi qd$ &nbsp;(입구와 바닥의 $\\pi q^2$는 서로 지워져요)</p>` : M.kind === 'st' ? `<p>(관통하는 정사각 구멍) 겉넓이 $=S_0-2u^2+4uh$</p>` : `<p>(막힌 정사각 구멍) 겉넓이 $=S_0+4ud$ &nbsp;(입구와 바닥의 $u^2$는 서로 지워져요)</p>`,
         rule: '파낸 곳마다 「없어지는 겉면」과 「새로 생기는 겉면」을 따로 구해요',
@@ -255,6 +265,7 @@
   function sv53() {
     const model = (s) => {
       const a = clamp(Math.round(s.s53A), 4, 10), cnt = [1, 4, 8].includes(s.svCnt) ? s.svCnt : 1, pMax = cnt === 1 ? a - 1 : Math.floor((a - 1) / 2), p = clamp(Math.round(s.s53P), 1, pMax);
+      s.s53A = a; s.s53P = p;
       const S0 = V(6 * a * a), out3 = V(3 * p * p), in3 = V(3 * p * p), tot = vadd(vsub(S0, vmul(out3, cnt)), vmul(in3, cnt));
       return { a, cnt, p, S0, out3, in3, tot, ans: tot };
     };
@@ -264,16 +275,17 @@
       const blist = cornerBoxes(A, pu, M.cnt), body = boxMinusBoxes([-A, A, -A, A, -A, A], blist);
       const pulse = 0.35 + 0.25 * Math.sin(glow * PI * 3 + 0.0);
       const hotOut = C.review ? (st === 2 ? 1 : 0) : (t > 0.02 && t < 0.3 ? 1 : 0), hotIn = C.review ? (st === 3 ? 1 : 0) : (t > 0.02 && t < 0.3 ? 1 : 0), settled = !C.review && t >= 0.3;
-      const sd = slide * (A * 1.2 + pu * 0.8);
-      const piece = (bx, sg) => { const sx = bx[1] > 0 && bx[1] === A ? 1 : -1; const m = boxMesh(bx[0], bx[1], bx[2], bx[3], bx[4], bx[5]); const sgn = [sx, bx[3] === A ? 1 : -1, bx[5] === A ? 1 : -1]; return { m: xfMesh(m, shiftT(D.hx(sx * sd))), sgn }; };
+      // 모든 조각은 오른쪽으로만(가로로) 빠집니다. 왼쪽 조각은 더 멀리 가서 오른쪽 조각 곁에 놓여요
+      const sdR = slide * (1.6 * pu + 0.3 * A), sdL = slide * (2.3 * A + 2.3 * pu), sd = sdR;
+      const piece = (bx, sg) => { const sx = bx[1] > 0 && bx[1] === A ? 1 : -1; const m = boxMesh(bx[0], bx[1], bx[2], bx[3], bx[4], bx[5]); const sgn = [sx, bx[3] === A ? 1 : -1, bx[5] === A ? 1 : -1]; return { m: xfMesh(m, shiftT(D.hx(sx > 0 ? sdR : sdL))), sgn }; };
       const pcs = blist.map((bx) => piece(bx));
-      const pts = cube8(v3(0, 0, 0), A).concat(blist.length ? [add3(v3(A + pu, 0, 0), D.hx(0)), add3(D.hx(sd + 0), v3(A, A, A)), add3(D.hx(-sd), v3(-A, A, A))] : []);
+      const xMax = C.problem ? A : A + (M.cnt === 1 ? 1.1 * pu + 0.3 * A + pu : 2.8 * pu + 0.3 * A + pu), pts = cube8(v3(0, 0, 0), A).concat([v3(xMax, A, A), v3(xMax, -A, -A), v3(xMax, A, -A), v3(xMax, -A, A)]);
       const row = C.problem ? null : (() => {
         const mk = (fill, i) => ({ w: M.p, h: M.p, shape: 'rect', fill, label: `${M.p * M.p}`, hl: 1 });
         return layoutTiles([mk('red', 0), mk('red', 1), mk('red', 2)], 3.6, 1.2, 0.35);
       })();
       const bbx = bboxOf(pts.map(D.P));
-      D.fit(pts, row ? [{ x: -3.2, y: bbx.y1 + 0.7 }, { x: 3.2, y: bbx.y1 + 0.7 + row.height + 1.2 }] : [], { l: 40, r: 40, t: 40, b: 40 });
+      D.fit(pts, row ? [{ x: -4.3, y: bbx.y1 + 0.7 }, { x: 4.3, y: bbx.y1 + 0.7 + row.height + 1.2 }] : [], { l: 40, r: 40, t: 40, b: 40 });
       D.body({ mesh: body, fill: 'sky', alpha: 0.2, edge: 'ink', faceStyle: (f) => (f.tag === 'in' ? { fill: 'amber', alpha: hotIn || settled || (C.review && st >= 3) ? (hotIn ? pulse + 0.1 : 0.42) : 0.28 } : {}) });
       pcs.forEach((pc) => D.body({ mesh: pc.m, fill: 'violet', alpha: 0.16, edge: 'ink', edgeW: 2.2, faceStyle: (f) => (f.n && (f.n.x * pc.sgn[0] + f.n.y * pc.sgn[1] + f.n.z * pc.sgn[2]) > 0.5 && (hotOut || settled || (C.review && st >= 2)) ? { fill: 'red', alpha: hotOut ? pulse + 0.1 : 0.45 } : {}) }));
       D.elabel(v3(-A, -A, A), v3(A, -A, A), `a=${M.a}`, { side: { x: 0, y: 1 }, size: 15, color: 'amber', gap: 8 });
@@ -284,13 +296,13 @@
         if (t >= 0.3 || (C.review && st >= 3)) D.tag(v3(A * 0.55, A * 0.55, A * 0.55), `+3p² = +${plainVal(M.in3)}`, { size: 14, color: 'amber', dy: -2, dx: -8 });
         if (row) {
           // 같은 줄 안에서 가로로: 빨강(없어진 바깥 3면)과 노랑(새로 생긴 안쪽 3면)이 포개져요
-          const off = (row.total + 0.8) * (1 - te) / 2, y0 = bbx.y1 + 0.7;
-          const L1 = { tiles: row.tiles.map((tl) => Object.assign({}, tl, { x: tl.x - off, fill: 'red', label: '', cap: '' })), height: row.height }, L2 = { tiles: row.tiles.map((tl) => Object.assign({}, tl, { x: tl.x + off, fill: 'amber', label: tl.label })), height: row.height };
-          if (C.step === 99 || true) { drawTiles(D, L1, 0, y0); drawTiles(D, L2, 0, y0); }
-          if (te < 0.45) b.text({ x: -(row.total + 0.8) / 2 * (1 - te) - 0.0, y: y0 }, '없어진 바깥 3면', { dy: -13, size: D.fs(13), weight: 800, color: 'red', baseline: 'middle', align: 'center' });
-          if (te < 0.45) b.text({ x: (row.total + 0.8) / 2 * (1 - te), y: y0 }, '생긴 안쪽 3면', { dy: -13, size: D.fs(13), weight: 800, color: 'amber', baseline: 'middle', align: 'center' });
-          if (te > 0.95) b.text({ x: 0, y: y0 + row.height }, '합동 · 넓이 같음', { dy: 18, size: D.fs(15), weight: 800, color: 'green', baseline: 'middle' });
-          if (te > 0.95) b.text({ x: 0, y: y0 }, `변화 = −3p² + 3p² = 0${M.cnt > 1 ? ` (모퉁이 ${M.cnt}개 모두 0)` : ''}`, { dy: -32, size: D.fs(14), weight: 800, color: 'green', baseline: 'middle' });
+          const off = (row.total + 0.8) / 2, y0 = bbx.y1 + 0.7, xB = (1 - te) * 2 * off; // 빨강은 오른쪽에 고정, 노랑이 왼쪽에서 오른쪽으로 가로로 겹쳐요
+          const L1 = { tiles: row.tiles.map((tl) => Object.assign({}, tl, { x: tl.x + off, fill: 'red', label: '', cap: '' })), height: row.height }, L2 = { tiles: row.tiles.map((tl) => Object.assign({}, tl, { x: tl.x + off - xB, fill: 'amber', label: tl.label })), height: row.height };
+          drawTiles(D, L1, 0, y0); drawTiles(D, L2, 0, y0);
+          if (te < 0.45) b.text({ x: off, y: y0 }, '없어진 바깥 3면', { dy: -13, size: D.fs(13), weight: 800, color: 'red', baseline: 'middle', align: 'center' });
+          if (te < 0.45) b.text({ x: off - xB, y: y0 }, '생긴 안쪽 3면', { dy: -13, size: D.fs(13), weight: 800, color: 'amber', baseline: 'middle', align: 'center' });
+          if (te > 0.95) b.text({ x: off, y: y0 + row.height }, '합동 · 넓이 같음', { dy: 18, size: D.fs(15), weight: 800, color: 'green', baseline: 'middle' });
+          if (te > 0.95) b.text({ x: off, y: y0 }, `변화 = −3p² + 3p² = 0${M.cnt > 1 ? ` (모퉁이 ${M.cnt}개 모두 0)` : ''}`, { dy: -32, size: D.fs(14), weight: 800, color: 'green', baseline: 'middle' });
         }
       }
     };
@@ -311,7 +323,7 @@
         `없어진 면과 생긴 면이 합동이라 넓이가 같아요. (겉넓이) $=6a^2-3p^2+3p^2=${tx(M.S0)}\\,\\mathrm{cm}^2$ — ${M.cnt > 1 ? `모퉁이 ${M.cnt}개를 모두 잘라도 ` : ''}<b>변하지 않아요</b>.`
       ],
       view: (M) => ({
-        guide: `<b>잘라 내기</b> 막대를 끌거나 ▶를 눌러 보세요. 모퉁이 조각이 ${span('violet', '가로로')} 빠지고(왼쪽 조각은 왼쪽으로, 오른쪽 조각은 오른쪽으로), 아래 타일 줄에서 ${span('red', '없어진 바깥 3면')}과 ${span('amber', '생긴 안쪽 3면')}이 <b>같은 줄에서 가로로 겹쳐져요</b>. 위 칩으로 모퉁이 개수를 바꿔 보세요.`,
+        guide: `<b>잘라 내기</b> 막대를 끌거나 ▶를 눌러 보세요. 모퉁이 조각이 모두 ${span('violet', '오른쪽으로')} 빠지고, 아래 타일 줄에서 ${span('amber', '생긴 안쪽 3면')}이 왼쪽에서 오른쪽으로 가로로 밀려 ${span('red', '없어진 바깥 3면')}과 <b>겹쳐져요</b>. 위 칩으로 모퉁이 개수를 바꿔 보세요.`,
         readouts: [rd('처음 겉넓이 6a²', plainVal(M.S0) + ' cm²', 'sky'), rd('없어진 바깥 3면', '−' + plainVal(vmul(M.out3, M.cnt)) + ' cm²', 'red', `3p² × ${M.cnt}개`), rd('생긴 안쪽 3면', '+' + plainVal(vmul(M.in3, M.cnt)) + ' cm²', 'amber', `3p² × ${M.cnt}개`), rd('자른 뒤 겉넓이', plainVal(M.tot) + ' cm²', 'green', '변화 없음')],
         formula: `<p>(자른 뒤 겉넓이) $=6a^2-3p^2+3p^2=6a^2$</p>`,
         rule: '모퉁이를 정육면체(직육면체) 모양으로 잘라 내도 겉넓이는 그대로',
@@ -336,6 +348,7 @@
       if (kind === 'groove') { rem = a * w + 2 * w * z; add = a * w + 2 * a * z; delta = 2 * a * z - 2 * w * z; blk = [-a / 2, a / 2, a / 2 - z, a / 2, -w / 2, w / 2]; detail = { removed: `윗면 띠 ${a}×${w} + 양 끝 ${w}×${z} 두 개`, added: `홈 바닥 ${a}×${w} + 옆벽 ${a}×${z} 두 개` }; }
       else { rem = c * q + c * p + (kind === 'thru' ? 2 * p * q : 0); add = c * q + c * p + (kind === 'thru' ? 0 : 2 * p * q); delta = add - rem; blk = [-c / 2, c / 2, a / 2 - p, a / 2, a / 2 - q, a / 2]; detail = { removed: kind === 'thru' ? `윗면 ${c}×${q} + 앞면 ${c}×${p} + 양 끝 ${p}×${q} 두 개` : `윗면 ${c}×${q} + 앞면 ${c}×${p}`, added: kind === 'thru' ? `홈 바닥 ${c}×${q} + 홈 뒷벽 ${c}×${p}` : `홈 바닥 ${c}×${q} + 홈 뒷벽 ${c}×${p} + 양 끝벽 ${p}×${q} 두 개` }; }
       const tot = vadd(S0, V(delta));
+      s.s54A = a; s.s54P = p; s.s54Q = q; if (kind !== 'thru') s.s54C = c; s.s54W = w; s.s54Z = z;
       return { kind, a, p, q, c, w, z, S0, rem, add, delta, blk, detail, tot, ans: tot };
     };
     const draw = (b, s, M, C) => {
@@ -395,38 +408,41 @@
   function sv55() {
     const model = (s) => {
       const K = clamp(Math.round(s.s55K), 2, 5), j = clamp(Math.round(s.s55J), 1, K - 1), mode = s.svMode === 'vol' ? 'vol' : 'surf';
+      s.s55K = K; s.s55J = j;
       const r2 = 3 * K, h2 = 4 * K, R2 = 5 * K, r1 = 3 * j, h1 = 4 * j, R1 = 5 * j;
       const lat2 = V(0, r2 * R2), ann = V(0, r2 * r2 - r1 * r1), lat1 = V(0, r1 * R1), surf = vadd(lat2, vadd(ann, lat1)), v2 = V(0, (r2 * r2 * h2) / 3), v1 = V(0, (r1 * r1 * h1) / 3), vol = vsub(v2, v1);
       return { K, j, mode, r2, h2, R2, r1, h1, R1, lat2, ann, lat1, surf, v2, v1, vol, ans: mode === 'vol' ? vol : surf };
     };
     const draw = (b, s, M, C) => {
       const D = scene3(b, s, C), st = C.step, sc = 4.4 / Math.max(M.h2, 2 * M.r2), r2 = M.r2 * sc, h2 = M.h2 * sc, r1 = M.r1 * sc, h1 = M.h1 * sc, t = C.problem ? 0 : C.t, slide = ease(t) * (r2 + r1 * 1.7);
+      // 밑면이 아래: 원뿔의 밑면(아래)에서 같은 모양의 작은 원뿔만큼 파냈어요. 아래에서 조금 올려다본 모습이에요.
       const y0 = -h2 / 2, yt = y0 + h2;
-      const outer = revolveMesh([[0, y0], [r2, yt]], { N: 48 });
-      const cav = flipMesh(revolveMesh([[0, yt - h1], [r1, yt]], { N: 48 }));
-      const ann = { faces: [{ pts: circPts(v3(0, yt, 0), v3(1, 0, 0), v3(0, 0, 1), r2, 64), holes: [circPts(v3(0, yt, 0), v3(1, 0, 0), v3(0, 0, 1), r1, 64)], n: v3(0, 1, 0), c: v3(0, yt, 0), tag: 'ann' }], edges: [] };
-      const piece = xfMesh(revolveMesh([[0, yt - h1], [r1, yt], [0, yt]], { N: 48, tags: ['side', 'top'] }), shiftT(D.hx(slide)));
-      D.fit(cube8(v3(0, 0, 0), Math.max(r2, h2 / 2)).concat(cube8(D.hx(slide), Math.max(r1, h1 / 2))), [], { l: 44, r: 44, t: 40, b: 40 });
+      const outer = revolveMesh([[r2, y0], [0, yt]], { N: 48 });
+      const cav = flipMesh(revolveMesh([[r1, y0], [0, y0 + h1]], { N: 48 }));
+      const ann = { faces: [{ pts: circPts(v3(0, y0, 0), v3(1, 0, 0), v3(0, 0, 1), r2, 64), holes: [circPts(v3(0, y0, 0), v3(1, 0, 0), v3(0, 0, 1), r1, 64)], n: v3(0, -1, 0), c: v3(0, y0, 0), tag: 'ann' }], edges: [] };
+      const piece = xfMesh(revolveMesh([[0, y0], [r1, y0], [0, y0 + h1]], { N: 48, tags: ['bot', 'side'] }), shiftT(D.hx(slide)));
+      D.fit(cube8(v3(0, 0, 0), Math.max(r2, h2 / 2)).concat(cube8(D.hx(C.problem ? 0 : r2 + r1 * 1.7), Math.max(r1, h1 / 2))), [], { l: 44, r: 44, t: 40, b: 40 });
       const lvL = !C.review ? 1 : st === 1 ? 2 : 1, lvA = !C.review ? 1 : st === 2 ? 2 : 1, lvI = !C.review ? 1 : st === 3 ? 2 : 1;
       D.body({ mesh: outer, fill: lvL === 2 ? 'amber' : 'sky', alpha: lvL === 2 ? 0.36 : 0.2, edge: 'ink', edgeW: 2.6 });
       D.body({ mesh: ann, fill: lvA === 2 ? 'amber' : 'sky', alpha: lvA === 2 ? 0.5 : 0.3, edge: 'ink', edgeW: 2.4, sil: false });
-      D.path(D.circ(v3(0, yt, 0), v3(1, 0, 0), v3(0, 0, 1), r2, 0, TAU, 72), 'ink', 2.6, {});
-      D.path(D.circ(v3(0, yt, 0), v3(1, 0, 0), v3(0, 0, 1), r1, 0, TAU, 72), 'ink', 2.4, {});
+      D.path(D.circ(v3(0, y0, 0), v3(1, 0, 0), v3(0, 0, 1), r2, 0, TAU, 72), 'ink', 2.6, {});
+      D.path(D.circ(v3(0, y0, 0), v3(1, 0, 0), v3(0, 0, 1), r1, 0, TAU, 72), 'ink', 2.4, {});
       D.body({ mesh: cav, fill: lvI === 2 ? 'amber' : 'red', alpha: lvI === 2 ? 0.55 : 0.32, edge: 'red', edgeW: 1.8, edgeFn: (e) => (e.chain ? { skip: true } : {}), hidden: false });
       D.body({ mesh: piece, fill: 'red', alpha: 0.2, edge: 'red', edgeW: 2, hidden: true });
       const yaw = Math.atan2(D.cam.sy, D.cam.cy), thR = -yaw, pa = (rr, yy, off) => add3(v3(rr * Math.cos(thR), yy, rr * Math.sin(thR)), off || v3(0, 0, 0));
-      const c0 = v3(0, yt, 0);
-      D.line(c0, pa(r2, yt), 'amber', 2.4, { dash: [5, 4] }); D.dot(c0, 'ink', 3.5);
-      D.tag(pa(r2 * 0.78, yt), `r₂=${M.r2}`, { dy: 14, size: 14, color: 'amber' });
-      D.tag(pa(r1 * 0.5, yt), `r₁=${M.r1}`, { dy: -12, size: 14, color: 'red' });
-      D.elabel(pa(r2, yt), v3(0, y0, 0), `R₂=${M.R2}`, { side: { x: 1, y: 0.2 }, size: 15, gap: 8 });
-      D.elabel(add3(pa(r1, yt), D.hx(slide)), add3(v3(0, yt - h1, 0), D.hx(slide)), `R₁=${M.R1}`, { side: { x: 1, y: 0 }, size: 15, color: 'red', gap: 8 });
-      D.tag(add3(v3(0, yt - h1 / 2, 0), D.hx(slide)), `h₁=${M.h1}`, { size: 13, color: 'red', dx: -2 });
+      const c0 = v3(0, y0, 0);
+      D.line(c0, pa(r2, y0), 'amber', 2.4, { dash: [5, 4] }); D.dot(c0, 'ink', 3.5);
+      D.tag(pa(r2 * 0.8, y0), `r₂=${M.r2}`, { dy: 14, size: 14, color: 'amber' });
+      D.tag(pa(r1 * 0.5, y0), `r₁=${M.r1}`, { dy: -12, size: 14, color: 'red' });
+      D.elabel(pa(r2, y0), v3(0, yt, 0), `R₂=${M.R2}`, { side: { x: 1, y: 0.2 }, size: 15, gap: 8 });
+      const sh = D.hx(slide);
+      D.elabel(add3(pa(r1, y0), sh), add3(v3(0, y0 + h1, 0), sh), `R₁=${M.R1}`, { side: { x: 1, y: 0 }, size: 15, color: 'red', gap: 8 });
+      D.tag(add3(v3(0, y0 + h1 / 2, 0), sh), `h₁=${M.h1}`, { size: 13, color: 'red', dx: -2 });
     };
     return {
       id: 'sv5-5', title: '원뿔 속을 원뿔로 판 입체', short: '원뿔 속 원뿔',
       question: '원뿔 모양 그릇의 속을 같은 모양의 작은 원뿔만큼 파내면 부피와 겉넓이는 각각 어떻게 될까?',
-      anim: { key: 's55T', dur: 5, label: '파낸 원뿔 빼내기' }, cam0: { yaw: 28, pitch: 36 }, stepT: () => 1, thumbT: 1, problemT: 0,
+      anim: { key: 's55T', dur: 5, label: '파낸 원뿔 빼내기' }, cam0: { yaw: 28, pitch: -22 }, stepT: () => 1, thumbT: 1, problemT: 0,
       ctl: () => ['s55K', 's55J', 's55T'],
       presets: () => [{ group: '구하는 것', label: '겉넓이', apply: (st) => { st.svMode = 'surf'; }, on: (st) => st.svMode !== 'vol' }, { label: '부피', apply: (st) => { st.svMode = 'vol'; }, on: (st) => st.svMode === 'vol' }],
       init: (s) => { s.s55K = 4; s.s55J = 2; s.s55T = 0; s.svMode = 'surf'; },
@@ -449,7 +465,7 @@
         `(겉넓이) $=${tx(M.lat2)}+${tx(M.ann)}+${tx(M.lat1)}=${tx(M.surf)}\\,\\mathrm{cm}^2$예요. (겉넓이는 늘어요)`
       ],
       view: (M) => ({
-        guide: `<b>파낸 원뿔 빼내기</b> 막대를 끌면 파낸 ${span('red', '작은 원뿔')}이 구멍에서 ${span('red', '가로로')} 빠져나가요. 위쪽에서 내려다본 모습이에요(밑면이 위). 부피는 <b>줄고</b> 겉넓이는 <b>늘어요</b>.`,
+        guide: `<b>파낸 원뿔 빼내기</b> 막대를 끌면 파낸 ${span('red', '작은 원뿔')}이 구멍에서 ${span('red', '가로로')} 빠져나가요. 밑면이 아래에 있고, 아래에서 조금 올려다본 모습이에요. 부피는 <b>줄고</b> 겉넓이는 <b>늘어요</b>.`,
         readouts: M.mode === 'vol' ? [rd('큰 원뿔 V₂', plainVal(M.v2) + ' cm³', 'sky'), rd('파낸 원뿔 V₁', plainVal(M.v1) + ' cm³', 'red'), rd('남은 부피', plainVal(M.vol) + ' cm³', 'green', 'V₂ − V₁')] : [rd('바깥 옆면 πR₂r₂', plainVal(M.lat2) + ' cm²', 'sky'), rd('윗면의 고리', plainVal(M.ann) + ' cm²', 'amber', 'πr₂² − πr₁²'), rd('구멍 안쪽 πR₁r₁', plainVal(M.lat1) + ' cm²', 'red'), rd('겉넓이', plainVal(M.surf) + ' cm²', 'green')],
         formula: `<p>(부피) $=V_2-V_1$ &nbsp;,&nbsp; (겉넓이) $=\\pi R_2r_2+(\\pi r_2^2-\\pi r_1^2)+\\pi R_1r_1$</p>`,
         rule: '속을 파내면 부피는 줄고(큰 뿔 − 작은 뿔), 겉넓이는 안쪽 면만큼 늘어요',
@@ -474,6 +490,7 @@
       let r = clamp(Math.round(s.s56R), 1, 5);
       if (top === 'cone') r = [3, 4, 6].includes(r) ? r : 3;
       const a = clamp(Math.max(Math.round(s.s56A), 2 * r), 4, 12), z = clamp(Math.round(s.s56Z), 1, 6);
+      s.s56A = a; s.s56R = r; s.s56H = H; s.s56Z = z;
       const box = V(2 * a * a + 4 * a * H), cover = V(0, -r * r), vBox = V(a * a * H);
       let add, vTop, topText, hc = 0, R = 0;
       if (top === 'cyl') { add = V(0, r * r + 2 * r * z); vTop = V(0, r * r * z); topText = `원기둥(높이 ${z})`; }

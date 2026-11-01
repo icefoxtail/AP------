@@ -23,7 +23,7 @@
     s9T: P('조각 줄 합치기', 0, 1, 0.01, 0, { color: 'green', format: (v) => (v < 0.02 ? '떼어 놓음' : v > 0.98 ? '합침' : Math.round(v * 100) + '%') }),
     sAR: P('구의 반지름 r', 1, 8, 1, 3, { color: 'amber', format: (v) => v + ' cm' })
   };
-  const sph = (R, from, to, extra = {}) => revolveMesh(sphereProfile(R, from, to, 24), Object.assign({ N: 40, lines: from === -90 && to === 90 ? [12] : [], round: from === -90 && to === 90 }, extra));
+  const sph = (R, from, to, extra = {}) => revolveMesh(sphereProfile(R, from, to, 48), Object.assign({ N: 40, lines: from === -90 && to === 90 ? [24] : [], round: from === -90 && to === 90 }, extra));
 
   // 가로 막대 줄(합쳐지는 조각 줄)
   function drawBars(D, parts, cx, top, W, merge, op = {}) {
@@ -74,7 +74,7 @@
         D.tag(v3(0, 0, 0), `4πr² = ${plainVal(M.tot)}`, { dy: 26, size: 15, color: 'ink' });
         const startCenter = rowW / 2;
         for (let i = 0; i < 4; i++) {
-          const f = finals[i], rw = Math.floor(i / perRow), x0 = 0 /* 줄의 가운데에 겹쳐 있다가 */, x = x0 + (f.x - x0) * e;
+          const f = finals[i], rw = Math.floor(i / perRow), x0 = finals[rw * perRow].x /* 줄의 왼쪽 끝에 겹쳐 있다가 오른쪽으로 */, x = x0 + (f.x - x0) * e;
           const al = 0.12 + 0.28 * e, hl = lvD, ec = hl === 2 ? 'amber' : 'sky';
           b.circle({ x, y: f.y }, dR, { fill: hl === 2 ? 'amber' : 'sky', fillAlpha: hl === 2 ? 0.4 : al * (hl === 3 ? 1.25 : 1), color: ec, width: hl === 2 ? 3.2 : 2.4, alpha: 0.5 + 0.5 * e });
           if (e > 0.55) b.text({ x, y: f.y }, plainVal(M.one), { size: D.fs(15), weight: 800, color: 'ink', baseline: 'middle' });
@@ -134,62 +134,56 @@
       return cutModel(s, fr, key);
     };
     const draw = (b, s, M, C) => {
-      const D = scene3(b, s, C), st = C.step, R = 1.6, t = C.problem ? (isHalf ? 0.8 : 1) : C.t, fr = M.frac;
+      const D = scene3(b, s, C), st = C.step, R = 1.6, bcx = (isHalf ? 1.25 : 0.95) * 1.6, t = C.problem ? (isHalf ? 0.8 : 1) : C.t, fr = M.frac;
       const sph0 = (a, c) => sph(R, a, c);
       let bodies = [], extra = [], ptsFit = [];
       const lvC = !C.review ? 1 : (st === 2 || st === 1) ? (st === 2 ? 2 : 1) : 1, lvF = !C.review ? 1 : st === 3 ? 2 : 1;
       let sweep = 0, sep = 0, rot = 0, merge = 0, pop = 1;
-      if (isHalf) { sweep = lin01(t, 0, 0.3); sep = ease(lin01(t, 0.3, 0.55)); rot = ease(lin01(t, 0.55, 0.8)); merge = ease(lin01(t, 0.8, 1)); pop = 1 + 0.06 * Math.sin(PI * lin01(t, 0.7, 0.82)); }
+      if (isHalf) { sweep = lin01(t, 0, 0.25); sep = ease(lin01(t, 0.25, 0.55)); rot = 1; merge = ease(lin01(t, 0.8, 1)); pop = 1 + 0.06 * Math.sin(PI * lin01(t, 0.55, 0.75)); }
       else { sep = ease(lin01(t, 0, 0.5)); merge = ease(lin01(t, 0.5, 1)); }
-      if (C.problem && isHalf) { sep = 0; rot = 0.5; merge = 0; pop = 1; }
-      const dsep = sep * R * 1.35;
+      if (C.problem && isHalf) { sep = 0; merge = 0; pop = 1; }
+      const dsep = sep * R * 2.5;
       const curveStyle = (f) => (f.tag === 'cap' || f.cut ? {} : lvC === 2 ? { fill: 'amber', alpha: 0.36 } : {});
       if (isHalf) {
-        const cut = sweep >= 0.999 || t >= 0.3;
-        const hn = 12;
-        const rightProf = [[0, 0], [R, 0]];
-        for (let i = 1; i <= hn; i++) { const a = (PI / 2) * (i / hn); rightProf.push([R * Math.cos(a), R * Math.sin(a)]); }
-        rightProf[rightProf.length - 1][0] = 0;
-        const leftProf = [[0, -R]];
-        for (let i = 1; i <= hn; i++) { const a = (PI / 2) * (1 - i / hn); leftProf.push([R * Math.cos(a), -R * Math.sin(a)]); }
-        leftProf.push([0, 0]);
-        const mkHalf = (prof) => revolveMesh(prof, { axis: 'x', N: 40, tags: prof === rightProf ? ['cap'] : Array(hn + 1).fill('curve').concat('cap') });
-        let lm = mkHalf(leftProf), rm = mkHalf(rightProf);
-        // 레일: 오른쪽 반구는 제자리에서 돌려 단면이 정면을 향하게(크기 튀김)
-        const beta = Math.atan2(D.cam.cy, -D.cam.sy), Trot = rotAbout(v3(0, 0, 0), v3(0, 1, 0), beta * rot);
-        const Tscale = { R: [[pop, 0, 0], [0, pop, 0], [0, 0, pop]], t: v3(0, 0, 0) };
-        rm = xfMesh(xfMesh(xfMesh(rm, Trot), Tscale), shiftT(D.hx(dsep)));
-        lm = xfMesh(lm, shiftT(D.hx(-dsep)));
-        bodies = [
-          { mesh: lm, fill: 'sky', alpha: 0.26, edge: 'ink', edgeW: 2.6, faceStyle: (f) => (!cut ? { skip: f.tag === 'cap' } : curveStyle(f)) },
-          { mesh: rm, fill: 'sky', alpha: 0.26, edge: 'ink', edgeW: 2.6, faceStyle: (f) => (f.tag === 'cap' ? (!cut ? { skip: true } : { fill: lvF === 2 ? 'amber' : 'red', alpha: 0.46 }) : curveStyle(f)) }
-        ];
-        ptsFit = [v3(-R - dsep, -R, -R), v3(R + dsep, R, R), v3(-R - 1.4 * R, 0, 0), v3(R + 1.4 * R * (sep > 0 ? 0 : 0), 0, 0)];
-        D.fit(cube8(D.hx(-R * (C.problem ? 0 : 1.35)), R).concat(cube8(D.hx(R * (C.problem ? 0 : 1.35)), R)), C.problem ? [] : [{ x: 0, y: D.P(v3(0, -R, R)).y + 3.0 }], { l: 34, r: 34, t: 36, b: 34 });
-        D.bodies(C.problem ? [bodies[1]] : bodies);
-        // 레이저 칼날
-        if (sweep > 0 && sweep < 0.999 && t < 0.3) {
-          const xp = -R * 1.5 + sweep * R * 1.5, Rr = R * 1.3;
-          D.panel([v3(xp, -Rr, -Rr), v3(xp, Rr, -Rr), v3(xp, Rr, Rr), v3(xp, -Rr, Rr)], 'amber', 0.16, 'amber', 2.2);
-          const rho2 = R * R - xp * xp;
-          if (rho2 > 0) D.path(D.circ(v3(xp, 0, 0), v3(0, 1, 0), v3(0, 0, 1), Math.sqrt(rho2), 0, 2 * PI, 72), 'amber', 3.6, {});
+        // 밑면(평평한 면)이 아래인 반구: 수평 레이저 판이 나타나(제자리에서 번짐) 구를 가르고, 윗 반구가 오른쪽으로 가로 이동해요
+        const hn = 36, cutOn = t >= 0.25 || C.problem;
+        const domeProf = [[0, 0], [R, 0]];
+        for (let i = 1; i <= hn; i++) { const a2 = (PI / 2) * (i / hn); domeProf.push([R * Math.cos(a2), R * Math.sin(a2)]); }
+        domeProf[domeProf.length - 1][0] = 0;
+        const bowlProf = [[0, -R]];
+        for (let i = 1; i <= hn; i++) { const a2 = (PI / 2) * (1 - i / hn); bowlProf.push([R * Math.cos(a2), -R * Math.sin(a2)]); }
+        bowlProf.push([0, 0]);
+        let dome = revolveMesh(domeProf, { N: 44, tags: ['cap'] }), bowl = revolveMesh(bowlProf, { N: 44, tags: Array(hn).fill('curve').concat('cap') });
+        dome = xfMesh(dome, shiftT(D.hx(dsep)));
+        bowl = xfMesh(bowl, { R: [[pop, 0, 0], [0, pop, 0], [0, 0, pop]], t: v3(0, 0, 0) });
+        const domeB = { mesh: dome, fill: 'sky', alpha: 0.26, edge: 'ink', edgeW: 2.6, faceStyle: (f) => (f.tag === 'cap' ? { skip: true } : curveStyle(f)) };
+        const bowlB = { mesh: bowl, fill: 'sky', alpha: 0.26, edge: 'ink', edgeW: 2.6, faceStyle: (f) => (f.tag === 'cap' ? (!cutOn ? { skip: true } : { fill: lvF === 2 ? 'amber' : 'red', alpha: 0.46 }) : curveStyle(f)) };
+        D.fit(cube8(v3(0, 0, 0), R).concat(cube8(D.hx(C.problem ? 0 : R * 2.5), R)), C.problem ? [] : [{ x: bcx - 3.2, y: D.P(v3(0, -R, R)).y + 3.0 }, { x: bcx + 3.2, y: D.P(v3(0, -R, R)).y + 3.0 }], { l: 34, r: 34, t: 36, b: 34 });
+        D.bodies(C.problem ? [domeB] : [bowlB, domeB]);
+        // 평평한 밑면의 자리(점선 원)
+        const baseC = add3(v3(0, 0, 0), D.hx(dsep));
+        if (C.problem || sep > 0.3) D.disc(baseC, v3(1, 0, 0), v3(0, 0, 1), R, 'red', 0.16, 'red', 2.2, { dash: [6, 5] });
+        // 수평 레이저 판
+        if (sweep > 0 && t < 0.25) {
+          D.disc(v3(0, 0, 0), v3(1, 0, 0), v3(0, 0, 1), R * (0.5 + 0.85 * sweep), 'amber', 0.2 * sweep, 'amber', 2.2, { alpha: sweep });
+          D.path(D.circ(v3(0, 0, 0), v3(1, 0, 0), v3(0, 0, 1), R, 0, 2 * PI, 72), 'amber', 3.6, { alpha: sweep });
         }
-        if (t >= 0.3 && t < 0.55 || (t >= 0.3 && rot < 0.05)) D.path(D.circ(v3(0, 0, 0), v3(0, 1, 0), v3(0, 0, 1), R, 0, 2 * PI, 72).map((p) => add3(p, D.hx(-dsep))), 'red', 3, { alpha: 0.6 });
-        // 라벨
-        const cR = add3(v3(0, 0, 0), D.hx(dsep));
-        sphereLabels(D, R * pop, rot > 0.3 ? add3(cR, v3(0, 0, 0)) : cR, `r=${M.r}`);
+        if (!C.problem && t >= 0.25 && sep < 0.02) D.path(D.circ(v3(0, 0, 0), v3(1, 0, 0), v3(0, 0, 1), R, 0, 2 * PI, 72), 'red', 3, { alpha: 0.7 });
+        // 라벨: 반지름은 평평한 면 위에(가로 방향)
+        if (C.problem) sphereLabels(D, R, baseC, `r=${M.r}`);
+        else sphereLabels(D, R * pop, t < 0.25 ? v3(0, 0, 0) : (t < 0.3 ? v3(0, 0, 0) : v3(0, 0, 0)), `r=${M.r}`);
         if (!C.problem) {
-          if (t < 0.3) D.tag(v3(0, 0, 0), `4πr² = ${plainVal(M.sphere)}`, { dy: 28, size: 15 });
-          if (t >= 0.3) D.tag(add3(v3(-R * 0.45, R * 0.35, 0), D.hx(-dsep)), `4πr²×½ = ${plainVal(M.curve)}`, { size: 14, dy: -16 });
-          if (rot > 0.6) D.tag(add3(cR, v3(0, 0, 0)), `πr² = ${plainVal(M.flat)}`, { size: 15, color: 'ink', dy: 18 });
+          if (t < 0.25) D.tag(v3(0, 0, 0), `4πr² = ${plainVal(M.sphere)}`, { dy: 28, size: 15 });
+          if (t >= 0.25) D.tag(add3(v3(0, R * 0.55, 0), D.hx(dsep)), `4πr²×½ = ${plainVal(M.curve)}`, { size: 14, dy: -10 });
+          if (t >= 0.5) D.tag(v3(0, 0, 0), `πr² = ${plainVal(M.flat)}`, { size: 15, color: 'ink', dy: 20 });
         }
       } else {
         // 1/4, 1/8 구
-        const wedge = fr === 'quarter' ? revolveMesh(sphereProfile(R, -90, 90, 24), { axis: 'y', N: 40, a0: -3 * PI / 4, a1: -PI / 4 }) : revolveMesh([[0, 0], ...sphereProfile(R, 0, 90, 12)], { axis: 'y', N: 40, a0: -3 * PI / 4, a1: -PI / 4, tags: ['cap'] });
+        const wedge = fr === 'quarter' ? revolveMesh(sphereProfile(R, -90, 90, 48), { axis: 'y', N: 40, a0: -3 * PI / 4, a1: -PI / 4 }) : revolveMesh([[0, 0], ...sphereProfile(R, 0, 90, 36)], { axis: 'y', N: 40, a0: -3 * PI / 4, a1: -PI / 4, tags: ['cap'] });
         const ghost = sph(R, -90, 90);
         const dd = sep * R * 1.9;
         const wm = xfMesh(wedge, shiftT(D.hx(dd)));
-        D.fit(cube8(v3(0, 0, 0), R).concat(cube8(D.hx(dd), R)), [{ x: 0, y: D.P(v3(0, -R, R)).y + 3.0 }], { l: 34, r: 34, t: 36, b: 34 });
+        D.fit(cube8(v3(0, 0, 0), R).concat(cube8(D.hx(dd), R)), [{ x: bcx - 3.2, y: D.P(v3(0, -R, R)).y + 3.0 }, { x: bcx + 3.2, y: D.P(v3(0, -R, R)).y + 3.0 }], { l: 34, r: 34, t: 36, b: 34 });
         D.body({ mesh: ghost, fill: null, edge: 'muted', edgeW: 1.6, hiddenAlpha: 0.5, sil: true });
         D.body({ mesh: wm, fill: 'sky', alpha: 0.3, edge: 'ink', edgeW: 2.6, faceStyle: (f) => (f.cut || f.tag === 'cap' ? { fill: lvF === 2 ? 'amber' : 'red', alpha: 0.42 } : curveStyle(f)) });
         sphereLabels(D, R, add3(v3(0, 0, 0), D.hx(dd)), `r=${M.r}`);
@@ -199,14 +193,14 @@
         const flatsLabel = M.f.flats[0].name;
         const parts = [{ v: M.f.curveK, fill: 'sky', label: `곡면 ${plainVal(M.curve)}`, hl: lvC }].concat(M.f.flats.map((q, i) => ({ v: q.k, fill: 'red', label: M.f.flats.length > 1 ? `${q.name} ${plainVal(V(0, q.k * M.r * M.r))}` : `${flatsLabel} ${plainVal(M.flat)}`, hl: lvF })));
         const y0 = D.P(v3(0, -R, R)).y + 1.9;
-        drawBars(D, parts, 0, y0, 6.2, merge, { total: `겉넓이 = ${plainVal(M.tot)}` });
+        drawBars(D, parts, bcx, y0, 6.2, merge, { total: `겉넓이 = ${plainVal(M.tot)}` });
       }
     };
     const stemName = (M) => (M.frac === 'half' ? '반구' : M.frac === 'quarter' ? '구를 $\\frac{1}{4}$만큼 잘라 낸 입체(중심을 지나는 평면 2개로 자른 쐐기 모양)' : '구를 $\\frac{1}{8}$만큼 잘라 낸 입체(서로 수직인 세 평면으로 자른 조각)');
     return {
       id: isHalf ? 'sv3-2' : 'sv3-5', title: isHalf ? '반구의 겉넓이' : '1/4 구·1/8 구', short: isHalf ? '반구' : '1/4·1/8 구',
       question: isHalf ? '구를 반으로 자른 반구의 겉넓이는 구 겉넓이의 반일까? 잘린 평평한 면은 어떻게 될까?' : '구를 더 잘게 자른 조각의 겉넓이는? 곡면의 몇 분의 몇만 더하면 될까, 새로 생긴 평평한 면은 몇 개일까?',
-      anim: { key: tkey, dur: isHalf ? 11 : 7, label: isHalf ? '자르고 합치기' : '조각 떼어 내기' }, cam0: { yaw: 28, pitch: 20 }, stepT: (st) => (isHalf ? [0, 0.02, 0.47, 0.82, 1][Math.min(st, 4)] : [0, 0.02, 0.47, 0.82, 1][Math.min(st, 4)]) , thumbT: 1, problemT: isHalf ? 0 : 0.2, view3: true,
+      anim: { key: tkey, dur: isHalf ? 11 : 7, label: isHalf ? '자르고 합치기' : '조각 떼어 내기' }, cam0: { yaw: 28, pitch: 20 }, stepT: (st) => (isHalf ? [0, 0.02, 0.5, 0.75, 1][Math.min(st, 4)] : [0, 0.02, 0.47, 0.82, 1][Math.min(st, 4)]) , thumbT: 1, problemT: isHalf ? 0 : 0.2, view3: true,
       ctl: () => [key, tkey],
       presets: isHalf ? undefined : () => [{ group: '조각', label: '1/4 구', apply: (st) => { st.svFrac = 'quarter'; }, on: (st) => st.svFrac !== 'eighth' }, { label: '1/8 구', apply: (st) => { st.svFrac = 'eighth'; }, on: (st) => st.svFrac === 'eighth' }],
       init: (s) => { s[key] = 3; s[tkey] = 0; s.svFrac = 'quarter'; },
@@ -234,7 +228,7 @@
       },
       view: (M) => ({
         guide: isHalf
-          ? `<b>자르고 합치기</b> 막대를 끌거나 ▶를 눌러 보세요. 노란 ${span('amber', '레이저 판')}이 가로로 훑고 지나가 구가 두 반구로 갈라져요. 오른쪽 반구가 제자리에서 돌아 ${span('red', '자른 면(원)')}이 정면을 보고, 아래 막대로 합쳐져요.`
+          ? `<b>자르고 합치기</b> 막대를 끌거나 ▶를 눌러 보세요. 노란 ${span('amber', '레이저 판')}이 구의 가운데에 나타나 구를 둘로 가르고, 위쪽 반구(밑면이 아래)가 오른쪽으로 옮겨 가요. 아래쪽 반구에 ${span('red', '자른 면(원)')}이 드러나고, 아래 막대로 합쳐져요.`
           : `위 칩에서 <b>1/4 구</b>와 <b>1/8 구</b>를 골라 보세요. <b>조각 떼어 내기</b>를 끌면 조각이 가로로 빠져나가요. 곡면(${span('sky', '파랑')})에 새로 생긴 ${span('red', '자른 면(빨강)')}을 더해요.`,
         readouts: [rd('구의 겉넓이', plainVal(M.sphere) + ' cm²', 'ink', '4πr²'), rd(`곡면 (${M.f.factor})`, plainVal(M.curve) + ' cm²', 'sky'), rd('자른 면', plainVal(M.flat) + ' cm²', 'red', M.f.flats.length > 1 ? `${M.f.flats[0].name} ${M.f.flats.length}개` : '원 1개'), rd(`${M.f.name}의 겉넓이`, plainVal(M.tot) + ' cm²', 'green')],
         formula: `<p>(${M.f.name}의 겉넓이) $=4\\pi r^2\\times${M.f.fracTex}+$ (자른 면의 넓이)</p>`,
@@ -287,7 +281,7 @@
       const colr = M.body === 'sph' ? 'green' : M.body === 'cone' ? 'amber' : 'violet';
       const bodyTop = M.body === 'cyl' ? hT + 0.2 : M.body === 'cone' ? hT + 0.25 : hT + 0.25;
       const topAlpha = 1 - ease(sink);
-      D.line(v3(sx - 0.4, yRail - 0.0, 0), v3(0.5, yRail - 0.0, 0), 'muted', 2, { dash: [6, 5] });
+      if (sink < 0.02 || C.problem) D.line(v3(sx - 0.4, yRail - 0.0, 0), v3(0.5, yRail - 0.0, 0), 'muted', 2, { dash: [6, 5] });
       if (topAlpha > 0.02) {
         const cy = yRail - (M.body === 'sph' ? 1 : M.body === 'cone' ? 0.5 * hT : 0.5 * hT);
         D.body({ mesh: bodyMesh(bx, M.body === 'sph' ? yRail - 1 : yRail - hT / 2), fill: colr, alpha: 0.36 * topAlpha, edge: 'ink', edgeW: 2.4 * topAlpha + 0.2, edgeFn: () => ({ alpha: topAlpha }) });
@@ -302,7 +296,7 @@
       D.elabel(v3(-1, 0, 0), v3(-1, hT, 0), M.k === 0 ? `2r=${M.h}` : `h=${M.h}`, { side: { x: -1, y: 0 }, size: 15, color: 'amber', gap: 8 });
       if (!C.problem) {
         const formula = { cone: `원뿔 ⅓πr²h = ${plainVal(M.vols.cone)}`, sph: `구 4/3πr³ = ${plainVal(M.vols.sph)}`, cyl: `원기둥 πr²h = ${plainVal(M.vols.cyl)}` }[M.body];
-        D.tag(v3(0, yRail, 0), formula, { dy: -58, size: 14, color: colr });
+        if (sink < 0.02) D.tag(v3(0, yRail, 0), formula, { dy: -58, size: 14, color: colr });
         // 가로 막대: 원뿔·구·원기둥 (1칸 = 원뿔)
         const rowsV = ['cone', 'sph', 'cyl'].map((k2) => ({ k: k2, units: M.mode === 'remain' ? 3 - M.unitsOf(M.vols[k2]) : M.unitsOf(M.vols[k2]), val: M.mode === 'remain' ? vsub(M.tank, M.vols[k2]) : M.vols[k2] }));
         const y0 = D.P(v3(0, 0, 1)).y + 0.7, W = 5.4, x0 = -W / 2 - 0.2, H = 0.42;
@@ -382,7 +376,7 @@
     };
     const draw = (b, s, M, C) => {
       const D = scene3(b, s, C), R = 1.7, st = C.step;
-      const mesh = M.shape === 'full' ? sph(R, -90, 90) : revolveMesh([[0, 0], [R, 0], ...sphereProfile(R, 0, 90, 12).slice(1)], { N: 40, tags: ['cap'] });
+      const mesh = M.shape === 'full' ? sph(R, -90, 90) : revolveMesh([[0, 0], [R, 0], ...sphereProfile(R, 0, 90, 36).slice(1)], { N: 40, tags: ['cap'] });
       const mv = M.shape === 'half' ? shiftT(v3(0, -R / 2, 0)) : shiftT(v3(0, 0, 0));
       const m2 = xfMesh(mesh, mv), c = v3(0, M.shape === 'half' ? -R / 2 : 0, 0);
       D.fit(cube8(v3(0, 0, 0), R), [], { l: 40, r: 40, t: 40, b: 50 });
