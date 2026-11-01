@@ -148,7 +148,7 @@
     let g = 0;
     while (out.length < 5 && g++ < 200) {
       const n = rint(1, Math.max(1, Math.min(2, T.length + 1))), arr = []; while (arr.length < n) { const j = all[rint(0, all.length - 1)]; if (!arr.includes(j)) arr.push(j); }
-      add(arr, '접으면 이 점들은 점 ' + nm(k) + '와 만나지 않아요.');
+      add(arr, '접으면 이 점들은 점 ' + nm(k) + jo(nm(k), 'wa') + ' 만나지 않아요.');
     }
     return out;
   }
@@ -504,7 +504,11 @@
       }),
       prob: (M) => {
         const a = M.Q.a, ans = a / 2;
-        return { tag: '겉면 위의 최단 경로', key: 'sp' + a, stem: `그림과 같이 한 모서리의 길이가 $${a}$인 정육면체의 꼭짓점 A에서 겉면을 따라 꼭짓점 G까지 가는 가장 짧은 경로가 모서리 EF와 만나는 점은 점 E에서 얼마나 떨어져 있는가?`, choices: mkChoices(ans, [[ans + 1, '가운데보다 한 칸 F 쪽으로 치우쳤어요.'], [ans - 1, '가운데보다 한 칸 E 쪽으로 치우쳤어요.'], [ans + 2, 'EF의 가운데가 아니에요. 펼친 직선이 지나는 자리를 다시 살펴보세요.'], [ans - 2, 'EF의 가운데가 아니에요. 펼친 직선이 지나는 자리를 다시 살펴보세요.'], [ans + 0.5, ''], [ans - 0.5, ''], [ans + 1.5, ''], [ans - 1.5, '']], { unit: '', valid: (v) => v > 0 && v < a && Math.abs(v * 2 - Math.round(v * 2)) < 1e-9 }) };
+        return { tag: '겉면 위의 최단 경로', key: 'sp' + a, stem: `그림과 같이 한 모서리의 길이가 $${a}$인 정육면체의 꼭짓점 A에서 겉면을 따라 꼭짓점 G까지 가는 가장 짧은 경로가 모서리 EF와 만나는 점은 점 E에서 얼마나 떨어져 있는가?`, choices: (() => {
+          const pool = []; for (let v = 0.5; v < a; v += 0.5) if (Math.abs(v - ans) > 1e-9) pool.push(v);
+          const items = shuf(pool).slice(0, 4).map((v) => ({ v, ok: false, hint: Math.abs(v - ans) < 1.01 ? `가운데보다 한 칸쯤 ${v > ans ? 'F' : 'E'} 쪽으로 치우쳤어요.` : 'EF의 가운데가 아니에요. 펼친 직선이 지나는 자리를 다시 살펴보세요.' })).concat([{ v: ans, ok: true, hint: '' }]).sort((p, q) => p.v - q.v);
+          return mkText(items.map((x) => ({ h: String(x.v), p: String(x.v), ok: x.ok, hint: x.hint })));
+        })() };
       }
     };
   })();

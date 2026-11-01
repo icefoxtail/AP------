@@ -284,8 +284,16 @@
   }
 
   /* ------------------------------------------------------------------ 문제 탭 (보기 5개 · 숫자 바꾸기) */
+  // 같은 문제(s.phQ)는 한 번만 만들어 두고 다시 씁니다. 보기를 만들 때 무작위를 써도, 보기를 누른 뒤 보기가 바뀌지 않게 하기 위해서입니다.
+  function probOf(D, s) {
+    const c = s.phPC, seed = s.phSeed || 0;
+    if (c && c.id === D.id && c.q === s.phQ && c.seed === seed) return c.Q;
+    const Q = D.prob(D.model(s), s);
+    s.phPC = { id: D.id, q: s.phQ, seed, Q };
+    return Q;
+  }
   function problemHTML(D, s) {
-    const M = D.model(s), Q = D.prob(M, s);
+    const Q = probOf(D, s);
     const key = D.id + '|' + Q.key + '|' + (s.phSeed || 0);
     const pk = s.phPick && s.phPick.key === key ? s.phPick : null;
     let h = `<div class="ph-q">${esc(Q.stem).replace(/&amp;/g, '&')}</div>`;
@@ -303,7 +311,7 @@
     return h;
   }
   function answerText(D, s) {
-    const Q = D.prob(D.model(s), s), i = Q.choices.findIndex((o) => o.ok);
+    const Q = probOf(D, s), i = Q.choices.findIndex((o) => o.ok);
     return `${NUM[i]} ${Q.choices[i].h}`;
   }
 
@@ -329,7 +337,7 @@
         return;
       }
       const idx = parseInt(hit.getAttribute('data-ph-pick'), 10);
-      const Q = D.prob(D.model(s), s);
+      const Q = probOf(D, s);
       s.phPick = { key: D.id + '|' + Q.key + '|' + (s.phSeed || 0), idx };
       if (Q.choices[idx] && Q.choices[idx].ok) s.revealed = true;
       lab.invalidate(true);
@@ -388,7 +396,7 @@
       steps: (s) => D.steps(D.model(s)),
       notesTitle: '자주 틀리는 부분',
       problem: {
-        tag: (s) => D.prob(D.model(s), s).tag,
+        tag: (s) => probOf(D, s).tag,
         text: (s) => problemHTML(D, s),
         answer: (s) => answerText(D, s)
       },
@@ -416,6 +424,12 @@
       },
       view: (s, lab) => {
         if (lab) curLab = lab;
+        // 막대를 움직이면 정리 단계의 글(숫자)도 달라지므로, 글이 바뀌면 정리 칸을 다시 만듭니다.
+        if (lab && lab.scene && lab.scene.ph === D) {
+          let sig = '';
+          try { sig = D.id + JSON.stringify(D.steps(D.model(s))); } catch (e) { sig = ''; }
+          if (lab._phSig !== sig) { lab._phSig = sig; if (lab.refs && lab.ui && lab.ui.panes) { try { lab._buildReview(); lab._dirtyPanel = true; } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ } } }
+        }
         const C = baseCtx(s, lab, false);
         const M = D.model(s);
         const v = D.view(M, C, s) || {};
@@ -443,6 +457,6 @@
     PI, DEG, clamp, ease, seg01, NUM, LET, esc, pick, rint, shuffle, fmtN, jo,
     v3, add3, sub3, mul3, dot3, cross3, len3, unit3, lerp3, mid3, rotAxis, camOf, proj, facing, lineRel, lineMeetPoint,
     relEdges, classify, edgeByKey, ov, nm,
-    textW, bboxOf, fit, scene3, drawSolid, drawVerts, P, VIEW_PARAMS, VIEW, mkChoices, mkText, cnt, baseCtx, makeScene, register, notes, rd
+    textW, bboxOf, fit, scene3, drawSolid, drawVerts, P, VIEW_PARAMS, VIEW, mkChoices, mkText, probOf, cnt, baseCtx, makeScene, register, notes, rd
   };
 })();
