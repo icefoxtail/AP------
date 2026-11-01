@@ -196,14 +196,20 @@
     const cams = (tt) => camOf(camFold(s, tt, 44, -28)); // 접을수록 조금 낮은 시점에서 보아 입체로 보이게
     const flatPts = (tt) => { const cam = cams(tt); return net.at(tt).flat().map((p) => { const q = proj(cam, p); return { x: q.x, y: q.y }; }); };
     const dual = !C.thumb && b.W >= 640;
-    const bR = bboxOf([0, 0.25, 0.5, 0.75, 1].flatMap(flatPts));
-    let off0 = { x: 0, y: 0 }, off1 = { x: 0, y: 0 }, box = bR, bL = null;
+    // 화면 배치: 전개도(왼쪽)와 접은 모양(오른쪽 칸)을 나란히. 접은 모양은 지금 모양의 상자를 칸에 꼭 맞게 키워서(같은 비율 확대) 가운데에 놓습니다.
+    const curB = bboxOf(flatPts(t)), cw = curB.x1 - curB.x0, ch = curB.y1 - curB.y0;
+    let box, placeL = null, placeR, bL = null, slot = null;
+    const g = 0.7;
     if (dual) {
       bL = bboxOf(flatPts(0));
-      const g = 0.7;
-      off0 = { x: -g / 2 - bL.x1, y: -(bL.y0 + bL.y1) / 2 };
-      off1 = { x: g / 2 - bR.x0, y: -(bR.y0 + bR.y1) / 2 };
-      box = { x0: -g / 2 - (bL.x1 - bL.x0), x1: g / 2 + (bR.x1 - bR.x0), y0: Math.min(off0.y + bL.y0, off1.y + bR.y0), y1: Math.max(off0.y + bL.y1, off1.y + bR.y1) };
+      const wL = bL.x1 - bL.x0, hL = bL.y1 - bL.y0;
+      slot = { w: wL, h: hL * 1.9, cx: g / 2 + wL / 2, cy: 0 };
+      placeL = { cx: -g / 2 - wL / 2, cy: 0, z: 1 };
+      placeR = { cx: slot.cx, cy: 0, z: Math.max(0.2, Math.min(2.2, slot.w / cw, slot.h / ch)) };
+      box = { x0: -g / 2 - wL, x1: g / 2 + wL, y0: -slot.h / 2, y1: slot.h / 2 };
+    } else {
+      placeR = { cx: 0, cy: 0, z: 1 };
+      box = { x0: -cw / 2, x1: cw / 2, y0: -ch / 2, y1: ch / 2 }; // 지금 모양을 화면에 꼭 맞춥니다(접을수록 입체가 커집니다)
     }
     fit(b, box, { t: C.thumb ? 5 : 102, b: 46, l: 46, r: 46 });
     const D = scene3(b, camFold(s, t), C);
@@ -215,9 +221,10 @@
     const clusters = net.cl.map((_, c) => ({ c, pts: net.pt.map((__, k) => k).filter((k) => net.ptCl[k] === c) }));
     const hasTxt = C.txt && !C.thumb;
 
-    const mkPanel = (tt, off) => {
+    const mkPanel = (tt, place) => {
       const cam = cams(tt), F = net.at(tt), fin = tt >= 0.97;
-      const pj = (p) => { const q = proj(cam, p); return { x: q.x + off.x, y: q.y + off.y }; };
+      const pb = bboxOf(flatPts(tt)), pcx = (pb.x0 + pb.x1) / 2, pcy = (pb.y0 + pb.y1) / 2;
+      const pj = (p) => { const q = proj(cam, p); return { x: (q.x - pcx) * place.z + place.cx, y: (q.y - pcy) * place.z + place.cy }; };
       const fvis = F.map((pts, i) => facing(cam, mul3(cross3(sub3(pts[1], pts[0]), sub3(pts[2], pts[0])), -sg[i])));
       F.map((p, i) => ({ i, d: proj(cam, cen3(p)).d })).sort((a, c) => c.d - a.d).forEach(({ i }) => b.path(F[i].map(pj), { close: true, fill: 'green', fillAlpha: fin ? (fvis[i] ? 0.16 : 0.05) : 0.09, color: null }));
       const A = (e) => pj(F[e.fi][e.vi]), B = (e) => pj(F[e.fi][e.vj]);
@@ -250,7 +257,7 @@
       });
       return { pj, F, vlabels, elabels };
     };
-    const pL = dual ? mkPanel(0, off0) : null, pR = mkPanel(t, off1);
+    const pL = dual ? mkPanel(0, placeL) : null, pR = mkPanel(t, placeR);
     if (hasTxt) { [pL, pR].forEach((p) => p && p.vlabels()); [pL, pR].forEach((p) => p && p.elabels()); }
     b.emph = prevEmph;
 
@@ -264,8 +271,8 @@
       const capY = b.insets.top + 66, sx = (x) => b.toS({ x, y: 0 }).x;
       const capR = t < 0.01 ? '접기 전' : t > 0.99 ? '접은 모양(겨냥도)' : '접는 중';
       if (dual) {
-        b.stext(sx(off0.x + (bL.x0 + bL.x1) / 2), capY, '전개도', { color: 'muted', size: 15, weight: 800, align: 'center', baseline: 'middle' });
-        b.stext(sx(off1.x + (bR.x0 + bR.x1) / 2), capY, capR, { color: 'muted', size: 15, weight: 800, align: 'center', baseline: 'middle' });
+        b.stext(sx(placeL.cx), capY, '전개도', { color: 'muted', size: 15, weight: 800, align: 'center', baseline: 'middle' });
+        b.stext(sx(placeR.cx), capY, capR, { color: 'muted', size: 15, weight: 800, align: 'center', baseline: 'middle' });
       } else b.stext(b.W / 2 - b.insets.right / 2, capY, t < 0.01 ? '전개도' : capR, { color: 'muted', size: 15, weight: 800, align: 'center', baseline: 'middle' });
     }
     if (C.tab === 'explore' && !C.thumb) {

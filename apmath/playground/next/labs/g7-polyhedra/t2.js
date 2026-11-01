@@ -476,7 +476,7 @@
     view: (M) => ({
       guide: `표에서 칸을 눌러 보거나 막대·${span('amber', '노란 손잡이')}로 칸을 고르세요. 각의 합이 ${span('green', '360°보다 작은 칸(초록)')}만 입체가 돼요. 초록 칸은 모두 5개예요.`,
       readouts: [rd('고른 칸', `${PNAME[M.p]} ${M.q}개`, AMB), rd('각의 합', `${Math.round(M.sum)}°`, M.kind === 'ok' ? GRN : RED, `${Math.round(M.th)}° × ${M.q}`), rd('판정', M.kind === 'ok' ? nameOfPlat(M.key) : '입체 ✕', M.kind === 'ok' ? GRN : RED)],
-      formula: `<p>입체가 되는 칸: $60^\\circ\\times 3,4,5 \\;/\\; 90^\\circ\\times 3 \\;/\\; 108^\\circ\\times 3$ → 5가지</p>`,
+      formula: `<p>입체가 되는 칸: $60^\\circ\\times 3,4,5$, $90^\\circ\\times 3$, $108^\\circ\\times 3$ → 5가지</p>`,
       rule: '한 꼭짓점에 모인 각의 합이 360°보다 작은 경우만 입체가 된다 → 정다면체는 5가지뿐',
       notes: notes('정삼각형은 최대 5개까지, 정사각형·정오각형은 3개까지 모을 수 있어요.', '정육각형 이상은 3개를 모아도 $360^\\circ$ 이상이라 정다면체를 만들 수 없어요.')
     }),
