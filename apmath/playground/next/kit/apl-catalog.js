@@ -99,7 +99,7 @@ window.APLab.catalog = {
    "legacy": "labs/g7/원과_부채꼴_통합_마스터_스튜디오.html?v=20261027-circlelab-26",
    "next": "next/labs/g7-circle-sector.html",
    "glyph": "<circle cx=\"40\" cy=\"38\" r=\"28\"/><path d=\"M40 38 L40 10 A28 28 0 0 1 64 52 Z\" fill=\"currentColor\" fill-opacity=\".15\"/><path d=\"M40 38 L40 10 M40 38 L64 52\"/>",
-   "sceneTotal": 23,
+   "sceneTotal": 92,
    "extra": [
     {
      "label": "기초판",

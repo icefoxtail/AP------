@@ -508,7 +508,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
 
   /* ① 13번 : 정사각형 − 사분원 4개 */
   SPECS.push({
-    id: 'star', title: '정사각형에서 사분원 4개 파내기', short: '사분원 4개 (13번)',
+    id: 'star', title: '정사각형에서 사분원 4개 파내기', short: '사분원 4개',
     question: '정사각형의 네 모서리에서 사분원을 파내면 별 모양이 남아요. 파낸 사분원 4개를 모으면 어떤 도형일까요?',
     vars: [{ k: 'a', sym: 'a', label: '정사각형의 한 변 a', min: 6, max: 16, step: 2, value: 10 }],
     pool: [{ a: 6 }, { a: 8 }, { a: 12 }, { a: 14 }, { a: 16 }],
@@ -567,7 +567,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
 
   /* ② 서술형 2 : 부채꼴 − 반원 (둘레와 넓이) */
   SPECS.push({
-    id: 'ss2', title: '부채꼴에서 반원 파내기 (서술형 2)', short: '부채꼴−반원 (서술형 2)',
+    id: 'ss2', title: '부채꼴에서 반원 파내기', short: '부채꼴−반원',
     question: '정사각형 안의 부채꼴에서 한 변을 지름으로 하는 반원을 파냈어요. 색칠한 부분의 둘레와 넓이는 얼마일까요?',
     vars: [{ k: 'a', sym: 'a', label: '정사각형의 한 변 a', min: 4, max: 12, step: 2, value: 6 }],
     pool: [{ a: 4 }, { a: 8 }, { a: 10 }, { a: 12 }],
@@ -629,7 +629,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
 
   /* ③ 연습 2-1 : 정사각형 − 잎 모양 */
   SPECS.push({
-    id: 'lens', title: '정사각형에서 잎 모양 파내기 (연습 2-1)', short: '잎 모양 (연습 2-1)',
+    id: 'lens', title: '정사각형에서 잎 모양 파내기', short: '잎 모양',
     question: '마주 보는 두 꼭짓점을 중심으로 사분원을 그리면 가운데에 잎 모양이 생겨요. 잎 모양을 파내면 얼마가 남을까요?',
     vars: [{ k: 'a', sym: 'a', label: '정사각형의 한 변 a', min: 4, max: 12, step: 2, value: 8 }],
     pool: [{ a: 4 }, { a: 6 }, { a: 10 }, { a: 12 }],
@@ -673,7 +673,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
 
   /* ④ 연습 2-2 : 정사각형 − (사분원 − 반원) */
   SPECS.push({
-    id: 'ex22', title: '정사각형에서 사분원과 반원 사이 파내기 (연습 2-2)', short: '사분원·반원 (연습 2-2)',
+    id: 'ex22', title: '정사각형에서 사분원과 반원 사이 파내기', short: '사분원·반원',
     question: '정사각형에서 사분원 안쪽 중 반원이 아닌 흰 부분을 파냈어요. 색칠한 부분은 얼마일까요?',
     vars: [{ k: 'a', sym: 'a', label: '정사각형의 한 변 a', min: 4, max: 12, step: 2, value: 4 }],
     pool: [{ a: 6 }, { a: 8 }, { a: 10 }, { a: 12 }],

@@ -263,7 +263,7 @@
         const ghost = 1 - seg(t, 0.7, 0.82);
         if (ghost > 0.02) {
           b.path(cat(arcPts(Cf, a, 90, 270), [polar(Cf, a, 90)]), { color: 'muted', width: 1.8, dash: [6, 5], alpha: 0.75 * ghost });
-          tx(b, C, pt(Cf.x - a / 2, Cf.y + a), '이어 붙일 자리', 'muted', { size: 14, alpha: ghost, dy: 20 });
+          if (mixA > 0.6) tx(b, C, pt(Cf.x - a / 2, Cf.y + a), '이어 붙일 자리', 'muted', { size: 14, alpha: ghost * mixA, dy: 20 });
         }
         if (al > 0.01) {
           sector(b, Cf, a, 180, 270, CB, { alpha: al, ref: 'arc1' });

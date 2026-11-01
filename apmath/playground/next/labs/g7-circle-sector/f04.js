@@ -493,7 +493,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
 
   /* ① 15번 : 정사각형 안의 두 반원 → 직각삼각형 */
   SPECS.push({
-    id: 'sq12', title: '정사각형 속 두 반원 → 삼각형 (15번)', short: '반원 둘 → 삼각형 (15번)',
+    id: 'sq12', title: '정사각형 속 두 반원 → 삼각형', short: '반원 둘 → 삼각형',
     question: '잎 모양의 두 조각을 돌려 빈 곳에 끼우면 색칠한 부분은 어떤 도형이 될까요?',
     phaseNames: ['처음 모양', '옮길 조각 찾기', '조각 돌려 끼우기', '옮긴 뒤 모양', '삼각형 완성'],
     vars: [{ k: 'a', sym: 'a', label: '정사각형의 한 변 a', min: 6, max: 16, step: 2, value: 12 }],
@@ -844,7 +844,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
           { k: 'dot', p: [0, 0], when: 'g' },
           { k: 'ang', v: P(0, 0), d0: 90, d1: 90 + th, text: `${fn(th)}°`, when: 'b', r: Math.min(30, 20 + r * 1.5) },
           { k: 'ang', v: P(0, 0), d0: 90 - th, d1: 90, text: `${fn(th)}°`, when: 'g', r: Math.min(30, 20 + r * 1.5) },
-          T([R * Math.cos(aR), R * Math.sin(aR)], `R=${fn(R)}`, { when: 'g', ...away(nx, ny, 22), color: 'ink' }),
+          T([R * 0.8 * Math.cos(aR), R * 0.8 * Math.sin(aR)], `R=${fn(R)}`, { when: 'g', ...away(-nx, -ny, 24), align: 'center', color: 'ink' }),
           T([r * Math.cos(rad(90 + th)), r * Math.sin(rad(90 + th))], `r=${fn(r)}`, { when: 'b', ...away(-Math.cos(rad(th)), -Math.sin(rad(th)), 20), color: 'amber', align: 'right' }),
           T([R * 0.55 * Math.cos(rad(90 - th / 2)), R * 0.55 * Math.sin(rad(90 - th / 2))], `${xs(resX)}`, { when: 'r', color: 'sky', size: 15 })
         ],

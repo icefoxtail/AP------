@@ -554,6 +554,9 @@ const loadScript = (src) => new Promise((res) => {
 
 function start() {
   const mods = (window.APL_CS_GROUPS || []).filter((g) => g && Array.isArray(g.scenes) && g.scenes.length);
+  // 좌표계: 이 파일의 탭(①③④)과 F03·F05·F06·중심각 탭은 도형 좌표(figure, y 아래쪽), F01·F04 모듈은 수학 좌표(cartesian, y 위쪽)로 그려져 있어 장면마다 알려 줍니다.
+  const CARTESIAN = { f01: 1, f04: 1 };
+  mods.forEach((g) => { if (CARTESIAN[g.id]) g.scenes.forEach((sc) => { sc.boardKind = 'cartesian'; }); });
   const groups = [...mineGroups, ...mods].sort((a, b) => (a.order || 0) - (b.order || 0)).map((g) => ({ id: g.id, title: g.title, short: g.short || g.title, scenes: g.scenes }));
   const params = { ...PARAMS };
   mods.forEach((g) => Object.assign(params, g.params || {}));

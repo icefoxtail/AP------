@@ -905,7 +905,7 @@
   };
   sweepScene({
     id: 'sw-square',
-    title: '[교재 18번] 원이 정사각형 바깥을 한 바퀴 돌 때',
+    title: '원이 정사각형 바깥을 한 바퀴 돌 때',
     short: '정사각형',
     shape: 'square',
     dims: (s) => ({ a: s.swA, b: s.swA }),
@@ -1547,7 +1547,7 @@
   /* ----- 정사각형 개집 (교재 19-18) ----- */
   goatScene({
     id: 'gt-kennel', kind: 'square',
-    title: '[교재 19-18] 정사각형 개집에 묶인 강아지', short: '정사각형 개집',
+    title: '정사각형 개집에 묶인 강아지', short: '정사각형 개집',
     question: '강아지가 끈으로 움직일 수 있는 영역은 어떤 부채꼴들로 이루어져 있을까?',
     controls: ['gtT', 'gtQ', 'gtL'],
     enter: { gtQ: 2, gtL: 4 },
@@ -1555,7 +1555,7 @@
     numberPresets: [goatNumPreset('한 변 2 · 끈 4 (교재)', { gtQ: 2, gtL: 4 }), goatNumPreset('한 변 3 · 끈 5', { gtQ: 3, gtL: 5 }), goatNumPreset('한 변 4 · 끈 6', { gtQ: 4, gtL: 6 })],
     textbook: { list: [[10, 1], [12, 1], [14, 1], [16, 1], [18, 1]], ans: 2 },
     steps: goatSteps('square'),
-    tag: '교재 19-18 · 실수 유발',
+    tag: '교재 문제 · 실수 유발',
     stem: (M) => `오른쪽 그림과 같이 한 변의 길이가 ${num(M.side)} m인 정사각형 모양의 개집의 한 꼭짓점에 강아지가 끈으로 묶여 있다. 끈의 길이가 ${num(M.L)} m일 때, 강아지가 움직일 수 있는 영역의 최대 넓이는? (단, 개집의 내부는 제외하고, 강아지의 크기와 끈의 매듭의 길이는 생각하지 않는다.)`,
     formula: goatFormula, notes: GOAT_NOTES, solution: goatSolution('square')
   });
@@ -1563,7 +1563,7 @@
   /* ----- 직사각형 창고 (교재 20 예제, 서답형) ----- */
   goatScene({
     id: 'gt-warehouse', kind: 'rect', free: true,
-    title: '[교재 20 예제] 창고 모퉁이에 묶인 강아지', short: '직사각형 창고',
+    title: '창고 모퉁이에 묶인 강아지', short: '직사각형 창고',
     question: '창고 밖에서 강아지가 움직일 수 있는 영역은 어떤 부채꼴들로 이루어져 있을까?',
     controls: ['gtT', 'gtA', 'gtB', 'gtL'],
     enter: { gtA: 5, gtB: 4, gtL: 7 },
@@ -1578,7 +1578,7 @@
   /* ----- 정삼각형 울타리 (교재 20 유사 1) ----- */
   goatScene({
     id: 'gt-tri', kind: 'tri',
-    title: '[교재 20 유사 1] 정삼각형 울타리에 묶인 염소', short: '정삼각형 울타리',
+    title: '정삼각형 울타리에 묶인 염소', short: '정삼각형 울타리',
     question: '울타리가 정삼각형이면 큰 부채꼴과 모서리를 돌아가는 부채꼴의 중심각은 각각 얼마일까?',
     controls: ['gtT', 'gtS', 'gtL'],
     enter: { gtS: 8, gtL: 10 },
@@ -1594,7 +1594,7 @@
   /* ----- 정육각형 가축우리 (교재 20 유사 2, 서답형) ----- */
   goatScene({
     id: 'gt-hex', kind: 'hex', free: true,
-    title: '[교재 20 유사 2] 정육각형 가축우리에 묶인 소', short: '정육각형 우리',
+    title: '정육각형 가축우리에 묶인 소', short: '정육각형 우리',
     question: '정육각형 우리에서는 큰 부채꼴의 중심각과 작은 부채꼴의 중심각이 각각 얼마일까?',
     controls: ['gtT', 'gtH', 'gtL'],
     enter: { gtH: 6, gtL: 9 },
@@ -1622,7 +1622,7 @@
   const spiralWords = ['', '한', '두', '세', '네'];
   const spiralScene = {
     id: 'gt-spiral',
-    title: '[교재 17-20] 이어지는 부채꼴',
+    title: '이어지는 부채꼴',
     short: '이어지는 부채꼴',
     kind: 'spiral',
     question: '반지름이 점점 커지는 부채꼴을 이어 붙이면, 색칠한 부분의 넓이는 어떻게 구할까?',
@@ -1677,7 +1677,7 @@
     again: (s) => { Object.assign(s, pickRandom([{ gtP: 3, gtK: 3 }, { gtP: 2, gtK: 3 }, { gtP: 4, gtK: 3 }, { gtP: 3, gtK: 2 }, { gtP: 3, gtK: 4 }, { gtP: 2, gtK: 4 }, { gtP: 5, gtK: 3 }], s, (x, c) => x.gtP === c.gtP && x.gtK === c.gtK)); },
     reset: (s) => { Object.assign(s, { gtP: 3, gtK: 3 }); }
   };
-  spiralScene.problem = { tag: '교재 17-20 · 서술형', text: (s) => problemHTML(spiralScene, s), answer: (s) => spiralScene.csd.make(s).ansTex, note: '과정은 정리 탭의 단계를 따라 서술해 보세요.' };
+  spiralScene.problem = { tag: '교재 문제 · 서술형', text: (s) => problemHTML(spiralScene, s), answer: (s) => spiralScene.csd.make(s).ansTex, note: '과정은 정리 탭의 단계를 따라 서술해 보세요.' };
   spiralScene.solution = {
     standardTitle: '기본 풀이 (부채꼴의 넓이의 합)', standardTag: '기본', quickTitle: '이 장면의 핵심', quickTag: '핵심',
     standard: (s) => { const M = spiralModel(s); return { steps: M.secs.map((x) => `<p>꼭짓점 ${x.id} 중심: 반지름 ${num(x.R)}, 60° → ${ratPi(x.area)}</p>`).join('') + `<p>합: ${ratPi(M.area)} (cm²)</p>` }; },

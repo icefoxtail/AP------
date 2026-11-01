@@ -163,6 +163,7 @@
       const prev = this.scene;
       this.index = i;
       const sc = this.scene;
+      this.board.kind = sc.boardKind || (this.def.board || {}).kind || 'cartesian'; // 장면별 좌표계(선택): 한 실험실에 수학 좌표 장면과 도형 좌표 장면을 함께 둘 때
       this.s.part = null;
       this.s.revealed = false;
       this.s.playing = false;
@@ -1062,7 +1063,7 @@
           if (sc.enter) sc.enter(st, this);
           if (sc.problem && sc.problem.snap && sc.thumbSnap !== false) Object.assign(st, call(sc.problem.snap, st));
           const focus = call(sc.focus, st) || call(bd.focus, st);
-          APLab.Board.renderThumb(cv, { kind: bd.kind || 'cartesian', focus, pad: bd.thumbPad, aspect: sc.aspect || bd.aspect }, (b) => {
+          APLab.Board.renderThumb(cv, { kind: sc.boardKind || bd.kind || 'cartesian', focus, pad: bd.thumbPad, aspect: sc.aspect || bd.aspect }, (b) => {
             if (sc.panes) b.setPanes(call(sc.panes, st));
             const v = (sc.view ? sc.view(st, this) : this.def.view ? this.def.view(st, sc, this) : {}) || {};
             (sc.draw || this.def.draw)(b, st, v, this);
