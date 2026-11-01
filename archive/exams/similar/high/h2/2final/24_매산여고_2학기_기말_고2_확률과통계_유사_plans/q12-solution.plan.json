@@ -1,0 +1,52 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X1",
+        "mean": "22",
+        "sd": "2",
+        "label": "X1"
+      },
+      {
+        "id": "X2",
+        "mean": "22",
+        "sd": "3",
+        "label": "X2"
+      }
+    ],
+    "ticks": [
+      "19",
+      "22",
+      "25"
+    ],
+    "shades": [
+      {
+        "curve": "X1",
+        "from": "25",
+        "to": null
+      },
+      {
+        "curve": "X2",
+        "from": null,
+        "to": "19"
+      }
+    ]
+  },
+  "caption": "표본의 크기에 따라 표본평균의 표준편차가 달라지고, X1은 오른쪽 꼬리 X2는 왼쪽 꼬리를 구한다.",
+  "sourceQuote": "첫 번째 표본평균의 표준편차는",
+  "sourceConditions": [
+    {
+      "id": "q12-c1",
+      "condition": "문항의 해설 풀이에 쓰인 값과 관계를 그림으로 옮긴다."
+    }
+  ],
+  "newVisualInformation": "평균 22인 두 표본평균 분포(표준편차 2, 3)와 각각의 꼬리 영역",
+  "assetPath": "archive/assets/images/24_매산여고_2학기_기말_고2_확률과통계_유사/q12-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계_유사_plans/evidence/q12-solution/figure-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계_유사_plans/evidence/q12-solution/figure-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계_유사_plans/evidence/q12-solution/figure-solution.svg"
+  }
+}

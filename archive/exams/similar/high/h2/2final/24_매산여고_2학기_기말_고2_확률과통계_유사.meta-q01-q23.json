@@ -1,0 +1,2093 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "24_매산여고_2학기_기말_고2_확률과통계_유사-candidate-v1",
+  "examUid": "24_매산여고_2학기_기말_고2_확률과통계_유사",
+  "sourceArchiveFile": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계_유사.js",
+  "expectedSourceBlobSha1": "8b83320a809a382fb500e4fd8ea7d0660aecd9c2",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "approvedBy": "generator-agent-similar-high-v1",
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": 1,
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+        "subUnit": "확률변수와 기댓값",
+        "conceptClusterKey": "H15-PS-05-RANDOM_VARIABLE",
+        "L1": "통계",
+        "L2": "확률분포",
+        "L3": "확률변수와 확률분포",
+        "L4": "확률질량함수",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "확률분포",
+          "L3": "확률변수와 확률분포",
+          "L4": "확률질량함수",
+          "parentChain": [
+            "통계",
+            "확률분포",
+            "확률변수와 확률분포",
+            "확률질량함수"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-021"
+          ]
+        },
+        "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+        "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+        "crossConceptKeys": [
+          "CC_PROBABILITY_DISTRIBUTION_TABLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 1,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 1
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "확률질량함수의 합이 1이라는 조건을 한 번 적용해 일차방정식을 푼다(풀이 2단계 이하).",
+        "difficultyBucketRationale": "개념 직접 대입과 일차방정식 풀이 1회(1)",
+        "crossConceptRationale": "확률분포표의 확률 총합 1 성질이 결정 단계",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "단일 풀이 구조로 결합 단계가 없음",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-05",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "level": "하",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {
+            "subUnitKey": [
+              "H15-PS-05-PROBABILITY_DISTRIBUTION",
+              "H15-PS-05-RANDOM_VARIABLE"
+            ]
+          },
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_PROBABILITY_DISTRIBUTION_TABLE"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q1의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 확률질량함수의 합이 1이라는 조건을 한 번 적용해 일차방정식을 푼다(풀이 2단계 이하).",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 2,
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "subUnit": "확률분포",
+        "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "L1": "통계",
+        "L2": "확률분포",
+        "L3": "이항분포",
+        "L4": "평균·분산",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "확률분포",
+          "L3": "이항분포",
+          "L4": "평균·분산",
+          "parentChain": [
+            "통계",
+            "확률분포",
+            "이항분포",
+            "평균·분산"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-025"
+          ]
+        },
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 2,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 2
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "이항분포 평균·분산 공식에 직접 대입(풀이 2단계 이하)",
+        "difficultyBucketRationale": "공식 대입 두 번과 덧셈(1)",
+        "crossConceptRationale": "이항분포 공식 자체가 Primary이고 별도 보조 개념이 없음",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "단일 풀이 구조로 결합 단계가 없음",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-05",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "level": "하",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {},
+          "crossConceptKeys": {
+            "source": [],
+            "similar": []
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q2의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 이항분포 평균·분산 공식에 직접 대입(풀이 2단계 이하)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 3,
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "subUnit": "확률분포",
+        "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "L1": "통계",
+        "L2": "확률분포",
+        "L3": "정규분포",
+        "L4": "표준정규분포",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "확률분포",
+          "L3": "정규분포",
+          "L4": "표준정규분포",
+          "parentChain": [
+            "통계",
+            "확률분포",
+            "정규분포",
+            "표준정규분포"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-026"
+          ]
+        },
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_STANDARDIZATION",
+        "crossConceptKeys": [
+          "CC_NORMAL_CURVE_SYMMETRY",
+          "CC_INTERVAL_PROBABILITY_ADDITION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 3,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 3
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "표준화 후 표준정규분포표에서 두 값을 읽어 더한다(조건 해석 + 식 전개, 3단계)",
+        "difficultyBucketRationale": "표준화, 구간 분할, 대칭 이용으로 표 값 두 개를 더함(2)",
+        "crossConceptRationale": "구간을 0 기준으로 나누는 덧셈과 대칭으로 음의 구간을 양의 구간으로 바꾸는 단계가 결정에 쓰임",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "표준화 뒤 표 읽기로 이어지나 한 개념 안의 연속 계산",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-05",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {},
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_NORMAL_CURVE_SYMMETRY",
+              "CC_INTERVAL_PROBABILITY_ADDITION"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q3의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 표준화 후 표준정규분포표에서 두 값을 읽어 더한다(조건 해석 + 식 전개, 3단계)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 4,
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "subUnit": "확률분포",
+        "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "L1": "통계",
+        "L2": "확률분포",
+        "L3": "정규분포",
+        "L4": "정규분포 확률",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "확률분포",
+          "L3": "정규분포",
+          "L4": "정규분포 확률",
+          "parentChain": [
+            "통계",
+            "확률분포",
+            "정규분포",
+            "정규분포 확률"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-027"
+          ]
+        },
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+        "crossConceptKeys": [
+          "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 4,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 4
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "그림에서 대칭축 위치(평균)와 곡선의 높이·폭(표준편차)을 각각 읽어 비교(2단계)",
+        "difficultyBucketRationale": "평균과 표준편차의 두 비교를 그림에서 읽음(2)",
+        "crossConceptRationale": "평균이 정규분포곡선의 대칭축이라는 성질로 m1, m2의 크기를 비교",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "단일 풀이 구조로 결합 단계가 없음",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-05",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {},
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q4의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 그림에서 대칭축 위치(평균)와 곡선의 높이·폭(표준편차)을 각각 읽어 비교(2단계)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 5,
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+        "subUnit": "통계적 추정",
+        "conceptClusterKey": "H15-PS-06-ESTIMATION_BASIC",
+        "L1": "통계",
+        "L2": "통계적 추정",
+        "L3": "모집단과 표본",
+        "L4": "표본평균",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "통계적 추정",
+          "L3": "모집단과 표본",
+          "L4": "표본평균",
+          "parentChain": [
+            "통계",
+            "통계적 추정",
+            "모집단과 표본",
+            "표본평균"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-028"
+          ]
+        },
+        "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+        "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+        "crossConceptKeys": [
+          "CC_INDEPENDENT_TRIALS_REPLACEMENT",
+          "CC_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 5,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 5
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "모집단의 분포 정리, 합이 4인 경우 나열, 독립 곱셈과 덧셈(3~4단계)",
+        "difficultyBucketRationale": "순서쌍 세 가지를 빠짐없이 나열하고 확률을 곱·합(2)",
+        "crossConceptRationale": "복원추출이므로 두 시행이 독립이라는 모델링과 모집단의 확률분포 정리가 결정 단계에 쓰임",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "독립 곱셈과 합이 한 흐름으로 이어지는 단일 구조",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-06",
+          "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {
+            "subUnitKey": [
+              "H15-PS-06-STATISTICAL_ESTIMATION",
+              "H15-PS-06-ESTIMATION_BASIC"
+            ]
+          },
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_INDEPENDENT_TRIALS_REPLACEMENT",
+              "CC_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q5의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 모집단의 분포 정리, 합이 4인 경우 나열, 독립 곱셈과 덧셈(3~4단계)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 6,
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+        "subUnit": "신뢰구간",
+        "conceptClusterKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+        "L1": "통계",
+        "L2": "통계적 추정",
+        "L3": "모평균 추정",
+        "L4": "신뢰구간",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "통계적 추정",
+          "L3": "모평균 추정",
+          "L4": "신뢰구간",
+          "parentChain": [
+            "통계",
+            "통계적 추정",
+            "모평균 추정",
+            "신뢰구간"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-030"
+          ]
+        },
+        "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+        "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+        "crossConceptKeys": [
+          "CC_CONFIDENCE_INTERVAL_LENGTH"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 6,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 6
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "신뢰구간 길이 공식(오차 한계의 2배)에 값을 대입(2~3단계)",
+        "difficultyBucketRationale": "공식 선택과 소수 계산 1회(2)",
+        "crossConceptRationale": "신뢰구간의 길이가 오차의 한계의 2배라는 성질이 결정 단계",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "단일 풀이 구조로 결합 단계가 없음",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-06",
+          "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {
+            "subUnitKey": [
+              "H15-PS-06-STATISTICAL_ESTIMATION",
+              "H15-PS-06-CONFIDENCE_INTERVAL"
+            ]
+          },
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_CONFIDENCE_INTERVAL_LENGTH"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q6의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 신뢰구간 길이 공식(오차 한계의 2배)에 값을 대입(2~3단계)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 7,
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+        "subUnit": "확률변수와 기댓값",
+        "conceptClusterKey": "H15-PS-05-RANDOM_VARIABLE",
+        "L1": "통계",
+        "L2": "확률분포",
+        "L3": "기댓값과 분산",
+        "L4": "분산·표준편차",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "확률분포",
+          "L3": "기댓값과 분산",
+          "L4": "분산·표준편차",
+          "parentChain": [
+            "통계",
+            "확률분포",
+            "기댓값과 분산",
+            "분산·표준편차"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-023"
+          ]
+        },
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+        "crossConceptKeys": [
+          "CC_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+          "CC_EXPECTATION_SECOND_MOMENT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 7,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 7
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "확률분포 설정, 평균, 제곱의 평균, 분산 공식으로 이어지는 3~4단계",
+        "difficultyBucketRationale": "균등한 분포 설정과 분산 공식 계산 1회(2)",
+        "crossConceptRationale": "시도 횟수의 확률분포를 세우는 단계와 V(X)=E(X²)-{E(X)}² 이차 적률 계산이 결정 단계",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "분포 설정 뒤 분산 계산으로 이어지는 단일 흐름",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-05",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {
+            "subUnitKey": [
+              "H15-PS-05-PROBABILITY_DISTRIBUTION",
+              "H15-PS-05-RANDOM_VARIABLE"
+            ]
+          },
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+              "CC_EXPECTATION_SECOND_MOMENT"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q7의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 확률분포 설정, 평균, 제곱의 평균, 분산 공식으로 이어지는 3~4단계",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 8,
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+        "subUnit": "확률변수와 기댓값",
+        "conceptClusterKey": "H15-PS-05-RANDOM_VARIABLE",
+        "L1": "통계",
+        "L2": "확률분포",
+        "L3": "기댓값과 분산",
+        "L4": "기댓값",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "확률분포",
+          "L3": "기댓값과 분산",
+          "L4": "기댓값",
+          "parentChain": [
+            "통계",
+            "확률분포",
+            "기댓값과 분산",
+            "기댓값"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-022"
+          ]
+        },
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_EXPECTATION_TRANSFORM",
+        "crossConceptKeys": [
+          "CC_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+          "CC_COMBINATORICS_COUNTING"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 8,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 8
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "조합으로 분포 작성, 평균 계산, 일차변환 성질 적용(3~4단계)",
+        "difficultyBucketRationale": "분포 4개 계산과 평균 변환 1회(2)",
+        "crossConceptRationale": "파란 공의 개수 분포를 조합으로 세우는 단계가 결정 단계",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "분포 작성 뒤 평균 변환으로 이어지는 단일 흐름",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-05",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {
+            "subUnitKey": [
+              "H15-PS-05-PROBABILITY_DISTRIBUTION",
+              "H15-PS-05-RANDOM_VARIABLE"
+            ]
+          },
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+              "CC_COMBINATORICS_COUNTING"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q8의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 조합으로 분포 작성, 평균 계산, 일차변환 성질 적용(3~4단계)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 9,
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+        "subUnit": "확률변수와 기댓값",
+        "conceptClusterKey": "H15-PS-05-RANDOM_VARIABLE",
+        "L1": "통계",
+        "L2": "확률분포",
+        "L3": "기댓값과 분산",
+        "L4": "분산·표준편차",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "확률분포",
+          "L3": "기댓값과 분산",
+          "L4": "분산·표준편차",
+          "parentChain": [
+            "통계",
+            "확률분포",
+            "기댓값과 분산",
+            "분산·표준편차"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-023"
+          ]
+        },
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+        "crossConceptKeys": [
+          "CC_LINEAR_EXPECTATION_PROPERTY"
+        ],
+        "conditionKeys": [
+          "COND_NEGATIVE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 9,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 9
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "분산 조건으로 a, 평균 조건으로 b를 순서대로 구하며 a의 부호를 판단(3~4단계)",
+        "difficultyBucketRationale": "제곱 방정식에서 부호 조건으로 근을 고르고 평균식에 대입(3)",
+        "crossConceptRationale": "평균의 일차변환 E(aX+b)=aE(X)+b가 b를 정하는 단계",
+        "conditionRationale": "a<0 조건이 a²=9의 두 근 중 하나를 고르는 데 쓰임",
+        "integrationPatternRationale": "분산 단계와 평균 단계가 같은 일차변환 성질 안에서 이어짐",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-05",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {
+            "subUnitKey": [
+              "H15-PS-05-PROBABILITY_DISTRIBUTION",
+              "H15-PS-05-RANDOM_VARIABLE"
+            ]
+          },
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_LINEAR_EXPECTATION_PROPERTY"
+            ]
+          },
+          "conditionKeys": {
+            "source": [],
+            "similar": [
+              "COND_NEGATIVE"
+            ]
+          }
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q9의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 분산 조건으로 a, 평균 조건으로 b를 순서대로 구하며 a의 부호를 판단(3~4단계)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 10,
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "subUnit": "확률분포",
+        "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "L1": "통계",
+        "L2": "확률분포",
+        "L3": "정규분포",
+        "L4": "정규분포 확률",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "확률분포",
+          "L3": "정규분포",
+          "L4": "정규분포 확률",
+          "parentChain": [
+            "통계",
+            "확률분포",
+            "정규분포",
+            "정규분포 확률"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-027"
+          ]
+        },
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+        "crossConceptKeys": [
+          "CC_NORMAL_CURVE_SYMMETRY",
+          "CC_NORMAL_DISTRIBUTION_STANDARDIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 10,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 10
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "표준화, 대칭을 이용한 구간 이동, 경계 방정식 풀이(3~4단계)",
+        "difficultyBucketRationale": "대칭으로 구간을 바꿔 경계를 찾는 추론 1회와 표준화(3)",
+        "crossConceptRationale": "표준정규분포곡선의 좌우 대칭으로 같은 넓이의 구간을 찾는 단계와 X의 표준화가 결정 단계",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "대칭 이동 뒤 표준화로 이어지는 단일 풀이 구조",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-05",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {},
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_NORMAL_CURVE_SYMMETRY",
+              "CC_NORMAL_DISTRIBUTION_STANDARDIZATION"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q10의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 표준화, 대칭을 이용한 구간 이동, 경계 방정식 풀이(3~4단계)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 11,
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "subUnit": "확률분포",
+        "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "L1": "통계",
+        "L2": "확률분포",
+        "L3": "확률변수와 확률분포",
+        "L4": "확률밀도함수",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "확률분포",
+          "L3": "확률변수와 확률분포",
+          "L4": "확률밀도함수",
+          "parentChain": [
+            "통계",
+            "확률분포",
+            "확률변수와 확률분포",
+            "확률밀도함수"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-065"
+          ]
+        },
+        "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+        "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+        "crossConceptKeys": [
+          "CC_PROBABILITY_DENSITY_CONDITIONS",
+          "CC_LINEAR_FUNCTION_AREA"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_PIECEWISE_DOMAIN_PARTITION"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 11,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 11
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "전체 넓이 1로 k 결정, 도형 넓이로 구간 확률 계산(조건 해석 + 식 전개, 4단계)",
+        "difficultyBucketRationale": "넓이 조건으로 k를 구한 뒤 사다리꼴 넓이를 계산하는 두 단계(3)",
+        "crossConceptRationale": "확률밀도함수의 전체 넓이 1 성질과 일차함수 그래프 아래 사다리꼴 넓이 계산이 결정 단계",
+        "conditionRationale": "k가 양수라는 조건이 k²=1/4에서 근을 고르고 구간별로 식이 달라짐",
+        "integrationPatternRationale": "k를 먼저 정해야 구간 확률을 계산할 수 있는 순차 구조",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-05",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {},
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_PROBABILITY_DENSITY_CONDITIONS",
+              "CC_LINEAR_FUNCTION_AREA"
+            ]
+          },
+          "conditionKeys": {
+            "source": [],
+            "similar": [
+              "COND_POSITIVE",
+              "COND_PIECEWISE_DOMAIN_PARTITION"
+            ]
+          }
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q11의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 전체 넓이 1로 k 결정, 도형 넓이로 구간 확률 계산(조건 해석 + 식 전개, 4단계)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 12,
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+        "subUnit": "통계적 추정",
+        "conceptClusterKey": "H15-PS-06-ESTIMATION_BASIC",
+        "L1": "통계",
+        "L2": "통계적 추정",
+        "L3": "모집단과 표본",
+        "L4": "표본분포",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "통계적 추정",
+          "L3": "모집단과 표본",
+          "L4": "표본분포",
+          "parentChain": [
+            "통계",
+            "통계적 추정",
+            "모집단과 표본",
+            "표본분포"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-029"
+          ]
+        },
+        "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+        "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+        "crossConceptKeys": [
+          "CC_NORMAL_DISTRIBUTION_SYMMETRY",
+          "CC_NORMAL_DISTRIBUTION_STANDARDIZATION",
+          "CC_STANDARD_NORMAL_TABLE_READING"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 12,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 12
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "대칭 조건으로 m 범위를 구해 m 결정, 두 표본평균을 표준화해 표 값을 읽는 5단계 이상",
+        "difficultyBucketRationale": "두 부등식으로 m 결정 후 서로 다른 표본 크기의 표본평균 두 확률을 계산(4)",
+        "crossConceptRationale": "꼬리 확률의 대칭 변환으로 m의 범위를 구하는 단계, 표본평균의 표준화, 표 값 읽기가 결정에 쓰임",
+        "conditionRationale": "m이 자연수라는 조건과 (가)(나)가 주는 m의 범위가 m=22를 유일하게 정함",
+        "integrationPatternRationale": "m을 먼저 정한 뒤 두 표본평균의 확률을 구하는 순차 구조",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-06",
+          "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+          "level": "상",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {
+            "subUnitKey": [
+              "H15-PS-06-STATISTICAL_ESTIMATION",
+              "H15-PS-06-ESTIMATION_BASIC"
+            ]
+          },
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_NORMAL_DISTRIBUTION_SYMMETRY",
+              "CC_NORMAL_DISTRIBUTION_STANDARDIZATION",
+              "CC_STANDARD_NORMAL_TABLE_READING"
+            ]
+          },
+          "conditionKeys": {
+            "source": [],
+            "similar": [
+              "COND_NATURAL_NUMBER",
+              "COND_RANGE"
+            ]
+          }
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q12의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 대칭 조건으로 m 범위를 구해 m 결정, 두 표본평균을 표준화해 표 값을 읽는 5단계 이상",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 13,
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+        "subUnit": "통계적 추정",
+        "conceptClusterKey": "H15-PS-06-ESTIMATION_BASIC",
+        "L1": "통계",
+        "L2": "통계적 추정",
+        "L3": "모집단과 표본",
+        "L4": "표본평균",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "통계적 추정",
+          "L3": "모집단과 표본",
+          "L4": "표본평균",
+          "parentChain": [
+            "통계",
+            "통계적 추정",
+            "모집단과 표본",
+            "표본평균"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-028"
+          ]
+        },
+        "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+        "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+        "crossConceptKeys": [
+          "CC_PROBABILITY_DISTRIBUTION_TABLE",
+          "CC_EXPECTATION_SECOND_MOMENT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 13,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 13
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "k 결정, 평균, 제곱의 평균, 모분산, 표본평균의 분산으로 이어지는 5단계",
+        "difficultyBucketRationale": "분포표 4개 값으로 모평균·모분산을 구한 뒤 표본평균의 분산을 구하는 긴 계산(3)",
+        "crossConceptRationale": "확률의 총합 1로 k를 정하는 단계와 V(X)=E(X²)-{E(X)}² 이차 적률 계산이 결정에 쓰임",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "k, 모분산, 표본평균의 분산 순으로 앞 결과가 다음 단계의 입력이 되는 순차 구조",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-06",
+          "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {
+            "subUnitKey": [
+              "H15-PS-06-STATISTICAL_ESTIMATION",
+              "H15-PS-06-ESTIMATION_BASIC"
+            ]
+          },
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_PROBABILITY_DISTRIBUTION_TABLE",
+              "CC_EXPECTATION_SECOND_MOMENT"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q13의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: k 결정, 평균, 제곱의 평균, 모분산, 표본평균의 분산으로 이어지는 5단계",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 14,
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+        "subUnit": "신뢰구간",
+        "conceptClusterKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+        "L1": "통계",
+        "L2": "통계적 추정",
+        "L3": "모평균 추정",
+        "L4": "표본크기",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "통계적 추정",
+          "L3": "모평균 추정",
+          "L4": "표본크기",
+          "parentChain": [
+            "통계",
+            "통계적 추정",
+            "모평균 추정",
+            "표본크기"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-031"
+          ]
+        },
+        "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+        "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+        "crossConceptKeys": [
+          "CC_CONFIDENCE_INTERVAL_FORMULA"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 14,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 14
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "신뢰구간에서 오차의 한계 읽기, 공식 대입, 제곱근 방정식 풀이(3~4단계)",
+        "difficultyBucketRationale": "구간에서 오차의 한계를 읽고 n을 역으로 구하는 1회 추론(2)",
+        "crossConceptRationale": "신뢰구간 공식 표본평균±신뢰상수×σ/√n에서 n을 구하는 단계가 결정 단계",
+        "conditionRationale": "n이 자연수이고 n≥30이라는 조건이 해의 적합성을 확인",
+        "integrationPatternRationale": "단일 풀이 구조로 결합 단계가 없음",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-06",
+          "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {
+            "subUnitKey": [
+              "H15-PS-06-STATISTICAL_ESTIMATION",
+              "H15-PS-06-CONFIDENCE_INTERVAL"
+            ]
+          },
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_CONFIDENCE_INTERVAL_FORMULA"
+            ]
+          },
+          "conditionKeys": {
+            "source": [],
+            "similar": [
+              "COND_NATURAL_NUMBER"
+            ]
+          }
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q14의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 신뢰구간에서 오차의 한계 읽기, 공식 대입, 제곱근 방정식 풀이(3~4단계)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 15,
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+        "subUnit": "확률변수와 기댓값",
+        "conceptClusterKey": "H15-PS-05-RANDOM_VARIABLE",
+        "L1": "통계",
+        "L2": "확률분포",
+        "L3": "기댓값과 분산",
+        "L4": "분산·표준편차",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "확률분포",
+          "L3": "기댓값과 분산",
+          "L4": "분산·표준편차",
+          "parentChain": [
+            "통계",
+            "확률분포",
+            "기댓값과 분산",
+            "분산·표준편차"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-023"
+          ]
+        },
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+        "crossConceptKeys": [
+          "CC_EXPECTATION_SECOND_MOMENT",
+          "CC_QUADRATIC_VERTEX_MAXIMUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 15,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 15
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "분산 공식, 완전제곱식으로 최댓값, 표준편차의 일차변환 성질로 이어지는 4단계",
+        "difficultyBucketRationale": "이차 적률로 분산식을 세우고 이차식의 최댓값을 구한 뒤 변환(3)",
+        "crossConceptRationale": "V(X)=E(X²)-{E(X)}² 이차 적률과 완전제곱식으로 이차식의 최댓값을 구하는 단계가 결정에 쓰임",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "분산식, 최댓값, 표준편차 변환으로 앞 결과가 다음 단계에 쓰이는 순차 구조",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-05",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {
+            "subUnitKey": [
+              "H15-PS-05-PROBABILITY_DISTRIBUTION",
+              "H15-PS-05-RANDOM_VARIABLE"
+            ]
+          },
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_EXPECTATION_SECOND_MOMENT",
+              "CC_QUADRATIC_VERTEX_MAXIMUM"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q15의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 분산 공식, 완전제곱식으로 최댓값, 표준편차의 일차변환 성질로 이어지는 4단계",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 16,
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "subUnit": "확률분포",
+        "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "L1": "통계",
+        "L2": "확률분포",
+        "L3": "이항분포",
+        "L4": "평균·분산",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "확률분포",
+          "L3": "이항분포",
+          "L4": "평균·분산",
+          "parentChain": [
+            "통계",
+            "확률분포",
+            "이항분포",
+            "평균·분산"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-025"
+          ]
+        },
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+        "crossConceptKeys": [
+          "CC_INDEPENDENT_TRIALS_REPLACEMENT",
+          "CC_BINOMIAL_DISTRIBUTION_EXPECTATION_VARIANCE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 16,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 16
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "복원추출의 이항분포 모델링, 평균·분산 연립, p·a·n을 차례로 구하는 5단계",
+        "difficultyBucketRationale": "이항분포 모형화와 평균·분산 연립방정식을 푸는 다단계 계산(3)",
+        "crossConceptRationale": "복원추출을 독립시행(이항분포)으로 모형화하는 단계와 평균·분산 두 식의 연립이 결정에 쓰임",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "p, a, n 순으로 앞 결과가 다음 단계에 쓰이는 순차 구조",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-05",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {},
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_INDEPENDENT_TRIALS_REPLACEMENT",
+              "CC_BINOMIAL_DISTRIBUTION_EXPECTATION_VARIANCE"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q16의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 복원추출의 이항분포 모델링, 평균·분산 연립, p·a·n을 차례로 구하는 5단계",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 17,
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "subUnit": "확률분포",
+        "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "L1": "통계",
+        "L2": "확률분포",
+        "L3": "정규분포",
+        "L4": "정규분포 확률",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "확률분포",
+          "L3": "정규분포",
+          "L4": "정규분포 확률",
+          "parentChain": [
+            "통계",
+            "확률분포",
+            "정규분포",
+            "정규분포 확률"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-027"
+          ]
+        },
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+        "crossConceptKeys": [
+          "CC_NORMAL_DISTRIBUTION_SYMMETRY",
+          "CC_STANDARD_NORMAL_DISTRIBUTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 17,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 17
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "양쪽 꼬리의 대칭으로 한쪽 확률 구하기, 표 값 대응, 표준화 식으로 σ 결정(4단계)",
+        "difficultyBucketRationale": "대칭 분해, 표 값 역탐색, 표준화 방정식 풀이(3)",
+        "crossConceptRationale": "평균에 대한 대칭으로 두 꼬리를 하나로 줄이는 단계와 표준정규분포표 판독이 결정 단계",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "대칭 분해, 표 읽기, 방정식 풀이로 이어지는 단일 흐름",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-05",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {},
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_NORMAL_DISTRIBUTION_SYMMETRY",
+              "CC_STANDARD_NORMAL_DISTRIBUTION"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q17의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 양쪽 꼬리의 대칭으로 한쪽 확률 구하기, 표 값 대응, 표준화 식으로 σ 결정(4단계)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 18,
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "subUnit": "확률분포",
+        "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "L1": "통계",
+        "L2": "확률분포",
+        "L3": "정규분포",
+        "L4": "정규분포 확률",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "확률분포",
+          "L3": "정규분포",
+          "L4": "정규분포 확률",
+          "parentChain": [
+            "통계",
+            "확률분포",
+            "정규분포",
+            "정규분포 확률"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-027"
+          ]
+        },
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+        "crossConceptKeys": [
+          "CC_NORMAL_DISTRIBUTION_PERCENTILE",
+          "CC_NORMAL_DISTRIBUTION_STANDARDIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 18,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 18
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "평균·표준편차 읽기, 합격 비율 계산, 표준화와 표 값 역탐색으로 경계 결정(4~5단계)",
+        "difficultyBucketRationale": "자료식에서 모수 추출, 비율을 꼬리 확률로 해석, 표 역탐색 후 환산(3)",
+        "crossConceptRationale": "상위 비율에 해당하는 점수를 역산하는 백분위수 단계와 표준화가 결정 단계",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "모수 추출, 꼬리 확률, 표 읽기로 이어지는 단일 흐름",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-05",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {},
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_NORMAL_DISTRIBUTION_PERCENTILE",
+              "CC_NORMAL_DISTRIBUTION_STANDARDIZATION"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q18의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 평균·표준편차 읽기, 합격 비율 계산, 표준화와 표 값 역탐색으로 경계 결정(4~5단계)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 19,
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+        "subUnit": "통계적 추정",
+        "conceptClusterKey": "H15-PS-06-ESTIMATION_BASIC",
+        "L1": "통계",
+        "L2": "통계적 추정",
+        "L3": "모집단과 표본",
+        "L4": "표본분포",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "통계적 추정",
+          "L3": "모집단과 표본",
+          "L4": "표본분포",
+          "parentChain": [
+            "통계",
+            "통계적 추정",
+            "모집단과 표본",
+            "표본분포"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-029"
+          ]
+        },
+        "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+        "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+        "crossConceptKeys": [
+          "CC_DICE_EXPERIMENT",
+          "CC_COMBINATORICS_COUNTING",
+          "CC_PROBABILITY_MULTIPLICATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 19,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 19
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "동전 분기와 조합으로 한 번의 기록의 분포 작성, 합이 8인 7개 순서쌍 열거와 독립 곱셈까지 5단계 이상",
+        "difficultyBucketRationale": "두 규칙을 합친 분포표 작성과 7개 순서쌍 열거라는 긴 계산(4)",
+        "crossConceptRationale": "동전 분기에 따른 두 규칙, 두 공의 조합 6가지 열거, 확률의 곱셈으로 분포표를 만드는 단계가 결정 단계",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "한 번의 기록의 분포를 먼저 만든 뒤 두 번의 평균의 확률을 구하는 순차 구조",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-04",
+          "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+          "level": "상",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {
+            "standardUnitKey": [
+              "H15-PS-04",
+              "H15-PS-06"
+            ],
+            "subUnitKey": [
+              "H15-PS-04-CONDITIONAL_PROBABILITY",
+              "H15-PS-06-ESTIMATION_BASIC"
+            ]
+          },
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_DICE_EXPERIMENT",
+              "CC_COMBINATORICS_COUNTING",
+              "CC_PROBABILITY_MULTIPLICATION"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q19의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 동전 분기와 조합으로 한 번의 기록의 분포 작성, 합이 8인 7개 순서쌍 열거와 독립 곱셈까지 5단계 이상",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 20,
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+        "subUnit": "신뢰구간",
+        "conceptClusterKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+        "L1": "통계",
+        "L2": "통계적 추정",
+        "L3": "모평균 추정",
+        "L4": "표본크기",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "통계적 추정",
+          "L3": "모평균 추정",
+          "L4": "표본크기",
+          "parentChain": [
+            "통계",
+            "통계적 추정",
+            "모평균 추정",
+            "표본크기"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-031"
+          ]
+        },
+        "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+        "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+        "crossConceptKeys": [
+          "CC_CONFIDENCE_INTERVAL_LENGTH",
+          "CC_BINOMIAL_DISTRIBUTION_MOMENTS",
+          "CC_EXPECTATION_SECOND_MOMENT"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_UPPER_BOUND"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 20,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 20
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "신뢰구간 길이 식, 부등식으로 M=k², 이항분포 E(Y²) 이차방정식, k 결정의 5단계 이상",
+        "difficultyBucketRationale": "신뢰구간 길이 부등식과 이항분포 이차 적률을 결합해 두 번 이차·제곱 방정식을 푸는 긴 풀이(4)",
+        "crossConceptRationale": "신뢰구간 길이 공식, 이항분포의 평균·분산, V+E² 이차 적률 계산이 각각 결정 단계",
+        "conditionRationale": "n, k가 자연수이고 n의 최댓값을 구하는 상한 조건이 M=k²를 정함",
+        "integrationPatternRationale": "M=k²를 정한 뒤 E(Y²) 식으로 k를 구하는 순차 구조",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-06",
+          "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+          "level": "상",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {
+            "subUnitKey": [
+              "H15-PS-06-STATISTICAL_ESTIMATION",
+              "H15-PS-06-CONFIDENCE_INTERVAL"
+            ]
+          },
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_CONFIDENCE_INTERVAL_LENGTH",
+              "CC_BINOMIAL_DISTRIBUTION_MOMENTS",
+              "CC_EXPECTATION_SECOND_MOMENT"
+            ]
+          },
+          "conditionKeys": {
+            "source": [],
+            "similar": [
+              "COND_NATURAL_NUMBER",
+              "COND_UPPER_BOUND"
+            ]
+          }
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q20의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 신뢰구간 길이 식, 부등식으로 M=k², 이항분포 E(Y²) 이차방정식, k 결정의 5단계 이상",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 21,
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "subUnit": "확률분포",
+        "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "L1": "통계",
+        "L2": "확률분포",
+        "L3": "정규분포",
+        "L4": "정규분포 확률",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "확률분포",
+          "L3": "정규분포",
+          "L4": "정규분포 확률",
+          "parentChain": [
+            "통계",
+            "확률분포",
+            "정규분포",
+            "정규분포 확률"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-027"
+          ]
+        },
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+        "crossConceptKeys": [
+          "CC_BINOMIAL_NORMAL_APPROXIMATION",
+          "CC_CUMULATIVE_DISTRIBUTION_COMPLEMENT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 21,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 21
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "이항분포 모수 계산, 정규근사, 표준화, 표에서 꼬리 확률 계산(4단계)",
+        "difficultyBucketRationale": "정규근사를 적용하는 표준 절차 1회(2)",
+        "crossConceptRationale": "이항분포를 정규분포로 근사하는 단계와 꼬리 확률을 0.5에서 빼는 여사건 계산이 결정 단계",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "근사, 표준화, 표 읽기가 하나의 표준 절차",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-05",
+          "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {
+            "subUnitKey": [
+              "H15-PS-05-BINOMIAL_NORMAL",
+              "H15-PS-05-PROBABILITY_DISTRIBUTION"
+            ]
+          },
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_BINOMIAL_NORMAL_APPROXIMATION",
+              "CC_CUMULATIVE_DISTRIBUTION_COMPLEMENT"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q21의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 이항분포 모수 계산, 정규근사, 표준화, 표에서 꼬리 확률 계산(4단계)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 22,
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "subUnit": "확률분포",
+        "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "L1": "통계",
+        "L2": "확률분포",
+        "L3": "정규분포",
+        "L4": "정규분포 확률",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "확률분포",
+          "L3": "정규분포",
+          "L4": "정규분포 확률",
+          "parentChain": [
+            "통계",
+            "확률분포",
+            "정규분포",
+            "정규분포 확률"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-027"
+          ]
+        },
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+        "crossConceptKeys": [
+          "EXT-CROSS-SCORE_RULE_TO_SUCCESS_COUNT",
+          "CC_BINOMIAL_NORMAL_APPROXIMATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 22,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 22
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "득점 규칙을 성공 횟수의 일차식으로 환산, 이항분포 모수와 정규근사, 표 읽기의 5단계 이상",
+        "difficultyBucketRationale": "점수 조건을 횟수 부등식으로 바꾼 뒤 정규근사하는 두 단계 변환(3)",
+        "crossConceptRationale": "득점 규칙을 성공 횟수에 대한 일차식으로 환산하는 단계와 이항분포의 정규근사가 결정 단계",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "점수 조건을 횟수 조건으로 바꾼 뒤 정규근사를 적용하는 순차 구조",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-05",
+          "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {
+            "subUnitKey": [
+              "H15-PS-05-BINOMIAL_NORMAL",
+              "H15-PS-05-PROBABILITY_DISTRIBUTION"
+            ]
+          },
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "EXT-CROSS-SCORE_RULE_TO_SUCCESS_COUNT",
+              "CC_BINOMIAL_NORMAL_APPROXIMATION"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q22의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 득점 규칙을 성공 횟수의 일차식으로 환산, 이항분포 모수와 정규근사, 표 읽기의 5단계 이상",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 23,
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "확률과 통계",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+        "subUnit": "신뢰구간",
+        "conceptClusterKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+        "L1": "통계",
+        "L2": "통계적 추정",
+        "L3": "모평균 추정",
+        "L4": "신뢰구간",
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "통계적 추정",
+          "L3": "모평균 추정",
+          "L4": "신뢰구간",
+          "parentChain": [
+            "통계",
+            "통계적 추정",
+            "모평균 추정",
+            "신뢰구간"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-030"
+          ]
+        },
+        "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+        "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+        "crossConceptKeys": [
+          "CC_CONFIDENCE_INTERVAL_LENGTH",
+          "CC_STANDARD_NORMAL_TABLE_READING",
+          "CC_LINEAR_INEQUALITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "DIRECT_ACTIVE",
+        "sourceQid": 23,
+        "variationType": "STRICT_VARIANT",
+        "provenance": {
+          "kind": "SIMILAR_OF_ORIGINAL",
+          "originalExam": "24_매산여고_2학기_기말_고2_확률과통계",
+          "originalSourceArchiveFile": "archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계.js",
+          "sourceQid": 23
+        }
+      },
+      "metaDecision": {
+        "levelRationale": "신뢰구간 길이 비교 부등식으로 신뢰상수 범위, 표에서 확률 읽기, 신뢰도 환산(5단계)",
+        "difficultyBucketRationale": "길이 부등식을 신뢰상수로 바꾼 뒤 표를 역으로 읽어 신뢰도를 환산하는 두 단계 변환(3)",
+        "crossConceptRationale": "신뢰구간 길이=2×신뢰상수×σ/√n, 신뢰도와 표준정규분포표 확률의 대응, 일차부등식 풀이가 결정 단계",
+        "conditionRationale": "해당 없음",
+        "integrationPatternRationale": "길이 부등식으로 신뢰상수의 범위를 정한 뒤 표로 신뢰도를 구하는 순차 구조",
+        "sourceMetaBaseline": {
+          "standardUnitKey": "H15-PS-06",
+          "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+          "level": "중",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": null,
+          "difficultyBucket": null
+        },
+        "rejudgedDifferences": {
+          "fields": {
+            "subUnitKey": [
+              "H15-PS-06-STATISTICAL_ESTIMATION",
+              "H15-PS-06-CONFIDENCE_INTERVAL"
+            ]
+          },
+          "crossConceptKeys": {
+            "source": [],
+            "similar": [
+              "CC_CONFIDENCE_INTERVAL_LENGTH",
+              "CC_STANDARD_NORMAL_TABLE_READING",
+              "CC_LINEAR_INEQUALITY"
+            ]
+          },
+          "conditionKeys": null
+        }
+      },
+      "reason": "원본 24_매산여고_2학기_기말_고2_확률과통계 Q23의 1:1 유사문항(STRICT_VARIANT). 유사문항 최종 풀이 기준 재판정: 신뢰구간 길이 비교 부등식으로 신뢰상수 범위, 표에서 확률 읽기, 신뢰도 환산(5단계)",
+      "evidenceRefs": []
+    }
+  ],
+  "evidenceRefs": [
+    {
+      "path": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계_유사.js",
+      "sha256": "b3007b18f497a83759022c00ec2758ff0440245a21bfd0e404cc9955e7de0390"
+    }
+  ]
+}
