@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "similar-high-generated-extension-registry-v1",
+  "stem": "25_제일고_2학기_기말_고2_확률과통계_유사",
+  "status": "GENERATED_ACTIVE",
+  "registryScope": "GENERATED_ONLY_NOT_RPM_LOCKED",
+  "extensions": [
+    {
+      "key": "EXT-CROSS-TAIL_PROBABILITY_SUM_EXPECTATION",
+      "kind": "CROSS",
+      "status": "GENERATED_ACTIVE",
+      "canonicalRpmPromotion": false,
+      "label": "기댓값의 꼬리확률 합 표현과 평균 논법",
+      "definition": "0 이상의 정수값을 갖는 확률변수 X에 대하여 E(X)=ΣP(X≥k) (k=1,2,…)임을 보이고, 이 합이 어떤 값보다 작으면 그 합을 이루는 항들 중 평균보다 작은 항이 반드시 있다는 평균 논법으로 존재 명제를 판정하는 개념.",
+      "parent": {
+        "conceptKey": "CC_DISCRETE_EXPECTATION",
+        "conceptLabel": "이산확률변수의 기댓값(평균)",
+        "related": [
+          "CC_CUMULATIVE_DISTRIBUTION_COMPLEMENT"
+        ]
+      },
+      "standardUnitKey": "H15-PS-05",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "standardCourse": "확률과 통계",
+      "curriculumKey": "2015",
+      "basis": "canonical CC_DISCRETE_EXPECTATION은 E(X)=Σx·p만, CC_CUMULATIVE_DISTRIBUTION_COMPLEMENT는 P(X>x)=1-P(X≤x)만 다루어 E(X)를 꼬리확률의 합으로 바꾸어 존재성을 판정하는 개념이 없어 확장했다. 기존 확장 레지스트리(similar-high 3개)와 canonical 키 전체를 대조해 같은 의미의 키가 없음을 확인했다.",
+      "firstUsed": {
+        "stem": "25_제일고_2학기_기말_고2_확률과통계_유사",
+        "questionOrdinal": 18
+      },
+      "provenance": {
+        "createdBy": "GEN2_HIGH_SIMILAR_20261101",
+        "sourceExamUid": "25_제일고_2학기_기말_고2_확률과통계",
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+        "note": "Generated-only extension; RPM LOCKED canonical key is not changed (canonicalRpmPromotion=false)."
+      },
+      "aliases": []
+    }
+  ],
+  "aliasProposals": [
+    {
+      "from": "CC_EXPECTATION_LINEARITY",
+      "to": "CC_LINEAR_EXPECTATION_PROPERTY",
+      "reason": "두 canonical 키 모두 E(aX+b)=aE(X)+b(기댓값의 일차변환)를 가리켜 의미가 같다. 본 시험지는 CC_LINEAR_EXPECTATION_PROPERTY만 사용했다."
+    },
+    {
+      "from": "CC_Z_SCORE_STANDARDIZATION",
+      "to": "CC_NORMAL_DISTRIBUTION_STANDARDIZATION",
+      "reason": "두 canonical 키 모두 정규분포 N(m,σ²)을 Z=(X-m)/σ로 표준화하는 방법을 가리킨다. 본 시험지는 CC_NORMAL_DISTRIBUTION_STANDARDIZATION만 사용했다."
+    },
+    {
+      "from": "CC_STANDARD_NORMAL_DISTRIBUTION",
+      "to": "CC_STANDARD_NORMAL_TABLE_READING",
+      "reason": "두 canonical 키 모두 표준정규분포표를 읽어 구간 확률을 구하는 판독을 가리킨다. 본 시험지는 CC_STANDARD_NORMAL_TABLE_READING만 사용했다."
+    }
+  ]
+}

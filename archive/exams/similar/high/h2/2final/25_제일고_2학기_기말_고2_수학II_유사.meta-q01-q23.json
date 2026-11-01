@@ -1,0 +1,1809 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "25_제일고_2학기_기말_고2_수학II_유사-candidate-v1",
+  "examUid": "25_제일고_2학기_기말_고2_수학II_유사",
+  "sourceArchiveFile": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사.js",
+  "expectedSourceBlobSha1": "c6bfeb1ad4f7d4d4baf83942f2206803385125ee",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "approvedBy": "claude-similar-high-gen",
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": 1,
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "rpmPrimary": {
+          "l1": "미분",
+          "l2": "도함수의 활용(1)",
+          "l3": "평균값 정리 기초",
+          "l4": "기울기 조건",
+          "recordId": "H2-M2-RPM-022",
+          "l3Label": "평균값 정리 기초",
+          "l4Label": "기울기 조건",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-022"
+        },
+        "rpmPrimaryL1": "미분",
+        "rpmPrimaryL2": "도함수의 활용(1)",
+        "rpmPrimaryL3": "평균값 정리 기초",
+        "rpmPrimaryL4": "기울기 조건",
+        "rpmPrimaryRecordId": "H2-M2-RPM-022",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+        "templateKey": "TPL_MVT_ROLLE_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 1,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "정리의 가정 확인 후 도함수를 0으로 놓는 한 단계 계산이므로 하",
+        "difficultyBasis": "계산 2~3단계, 함정 없음(c가 열린구간에 속하는지 확인) → 1",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "롤의 정리 적용이 f(1)=f(5)와 f'(c)=0의 대수 계산으로 닫혀 보조 그림의 추가 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "다항함수에 롤의 정리를 직접 적용하여 f'(c)=0인 c를 구하는 기울기 조건 유형",
+          "crossConcept": "롤의 정리의 연속·미분가능 확인은 정리 적용의 일부이며 별도 교차 개념 없음",
+          "condition": "조건은 닫힌구간 양 끝의 함숫값 일치뿐이며 별도 제약 조건 없음",
+          "integration": "단일 정리 적용",
+          "curriculum": "롤의 정리·다항함수 미분: 수학II 미분 단원 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 1,
+          "variationNote": "함수 x²-2x+7→x²-6x+10, 구간 [0,2]→[1,5], 답 c=1→3(보기 분수 목록→분수·정수 혼합)",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q1: 원본 Q1의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 2,
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "rpmPrimary": {
+          "l1": "미분",
+          "l2": "도함수의 활용(2)",
+          "l3": "증가·감소와 극값",
+          "l4": "증감표",
+          "recordId": "H2-M2-RPM-023",
+          "l3Label": "증가·감소와 극값",
+          "l4Label": "증감표",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-023"
+        },
+        "rpmPrimaryL1": "미분",
+        "rpmPrimaryL2": "도함수의 활용(2)",
+        "rpmPrimaryL3": "증가·감소와 극값",
+        "rpmPrimaryL4": "증감표",
+        "rpmPrimaryRecordId": "H2-M2-RPM-023",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+        "templateKey": "TPL_MONOTONICITY_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 2,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "도함수를 인수분해하고 부호를 읽는 2~3단계 직접 풀이이므로 하",
+        "difficultyBasis": "계산 3단계, 함정 없음(감소 구간의 양 끝 포함 여부는 답에 영향 없음) → 1",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "도함수 6(x+1)(x-4)의 부호표만으로 감소 구간이 정해져 그래프의 추가 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "삼차함수의 도함수 부호로 감소 구간을 구하고 구간 길이를 계산하는 증감표 직접 유형",
+          "crossConcept": "도함수 인수분해는 계산 기술이며 별도 교차 개념으로 보지 않음",
+          "condition": "별도 제약 조건 없음",
+          "integration": "도함수→부호→구간 순차 계산",
+          "curriculum": "도함수와 함수의 증가·감소: 수학II 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 2,
+          "variationNote": "함수 x³+6x²+9x+1→2x³-9x²-24x+3, 감소구간 [-3,-1]→[-1,4], 답 2→5",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q2: 원본 Q2의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 3,
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "rpmPrimary": {
+          "l1": "미분",
+          "l2": "도함수의 활용(2)",
+          "l3": "증가·감소와 극값",
+          "l4": "극대·극소",
+          "recordId": "H2-M2-RPM-024",
+          "l3Label": "증가·감소와 극값",
+          "l4Label": "극대·극소",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-024"
+        },
+        "rpmPrimaryL1": "미분",
+        "rpmPrimaryL2": "도함수의 활용(2)",
+        "rpmPrimaryL3": "증가·감소와 극값",
+        "rpmPrimaryL4": "극대·극소",
+        "rpmPrimaryRecordId": "H2-M2-RPM-024",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 3,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "도함수의 부호 변화로 극대·극소를 찾아 함숫값을 계산하는 직접 풀이 3~4단계이므로 하",
+        "difficultyBasis": "도함수 부호 판정과 두 극값 계산 4단계, 함정 없음 → 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "도함수의 부호 변화와 두 함숫값 계산으로 완결되어 그래프의 추가 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "삼차함수의 극댓값과 극솟값을 각각 구해 차를 계산하는 극대·극소 직접 유형",
+          "crossConcept": "별도 교차 개념 없음",
+          "condition": "별도 제약 조건 없음",
+          "integration": "도함수→부호 변화→함숫값→차 순차 계산",
+          "curriculum": "극대·극소와 도함수 부호 변화: 수학II 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 3,
+          "variationNote": "함수 x³-6x²+9x+4→3x³-9x²+5(최고차항 계수 3), M-m=4→12",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q3: 원본 Q3의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 4,
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "rpmPrimary": {
+          "l1": "미분",
+          "l2": "도함수의 활용(3)",
+          "l3": "방정식과 부등식",
+          "l4": "근의 개수",
+          "recordId": "H2-M2-RPM-027",
+          "l3Label": "방정식과 부등식",
+          "l4Label": "근의 개수",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-027"
+        },
+        "rpmPrimaryL1": "미분",
+        "rpmPrimaryL2": "도함수의 활용(3)",
+        "rpmPrimaryL3": "방정식과 부등식",
+        "rpmPrimaryL4": "근의 개수",
+        "rpmPrimaryRecordId": "H2-M2-RPM-027",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+        "crossConceptKeys": [
+          "CC_ROOT_INTERSECTION_COUNT_FUNCTION",
+          "CC_FUNCTION_EXTREMA"
+        ],
+        "conditionKeys": [
+          "COND_EXACT_INTERSECTION_COUNT",
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 4,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "방정식을 곡선과 수평선의 교점으로 바꾸고 극값을 비교하는 3~4단계, 경계값 처리가 필요하므로 중",
+        "difficultyBasis": "극값 3개 계산, 접하는 경계값 제외 판단, 정수 개수 세기 → 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "도함수의 부호표와 세 극값 -135, -7, 0의 대소 비교만으로 완결되며, 극값의 크기 차가 커서 한 배율의 그림에서 수평선 y=a와의 위치 관계가 식별되지 않는다."
+        },
+        "metaRationale": {
+          "problemType": "사차함수의 극값을 구해 수평선과 네 점에서 만나는 매개변수 범위를 구하는 근의 개수 유형",
+          "crossConcept": "방정식의 해를 y=h(x)와 y=a의 교점으로 보는 관점과 극값 비교가 결정 단계",
+          "condition": "서로 다른 실근 4개(접하면 제외)와 정수 a",
+          "integration": "방정식을 그래프 교점 문제로 재해석한 뒤 극값 비교",
+          "curriculum": "도함수를 이용한 방정식의 실근 개수: 수학II 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 4,
+          "variationNote": "사차함수 3x⁴+4x³-12x²→3x⁴-8x³-18x²(극값 -135,-7,0), 정수 a 개수 4→6",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q4: 원본 Q4의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 5,
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분",
+        "conceptClusterKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "rpmPrimary": {
+          "l1": "적분",
+          "l2": "정적분",
+          "l3": "정적분과 함수",
+          "l4": "미분과 적분 관계",
+          "recordId": "H2-M2-RPM-042",
+          "l3Label": "정적분과 함수",
+          "l4Label": "미분과 적분 관계",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-042"
+        },
+        "rpmPrimaryL1": "적분",
+        "rpmPrimaryL2": "정적분",
+        "rpmPrimaryL3": "정적분과 함수",
+        "rpmPrimaryL4": "미분과 적분 관계",
+        "rpmPrimaryRecordId": "H2-M2-RPM-042",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
+        "crossConceptKeys": [
+          "CC_DERIVATIVE_VALUE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 5,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "차분몫 꼴을 인식하여 기본정리를 한 번 적용하는 2~3단계이므로 하",
+        "difficultyBasis": "극한을 F'(2)의 정의로 바꾸는 재해석 1회와 함숫값 계산 → 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "적분함수의 미분계수 정의와 기본정리를 적용하는 식 변형이어서 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "상한이 변수인 적분의 차분몫 극한을 미적분의 기본정리로 함숫값 f(2)로 바꾸는 미분과 적분 관계 유형",
+          "crossConcept": "미분계수의 정의(차분몫)로 극한을 F'(2)로 읽는 것이 결정 단계",
+          "condition": "별도 제약 조건 없음",
+          "integration": "극한식을 미분계수로 재해석한 뒤 기본정리 적용",
+          "curriculum": "미분계수의 정의와 정적분으로 정의된 함수의 미분: 수학II 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 5,
+          "variationNote": "f(x)=x³-2x+1→2x³-x+1, 답 5→15(보기 1~5→11~19)",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q5: 원본 Q5의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 6,
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "rpmPrimary": {
+          "l1": "적분",
+          "l2": "정적분의 활용",
+          "l3": "도형 활용",
+          "l4": "매개변수 넓이",
+          "recordId": "H2-M2-RPM-047",
+          "l3Label": "도형 활용",
+          "l4Label": "매개변수 넓이",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-047"
+        },
+        "rpmPrimaryL1": "적분",
+        "rpmPrimaryL2": "정적분의 활용",
+        "rpmPrimaryL3": "도형 활용",
+        "rpmPrimaryL4": "매개변수 넓이",
+        "rpmPrimaryRecordId": "H2-M2-RPM-047",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_AREA_CONDITION_MODEL_DETERMINATION",
+        "crossConceptKeys": [
+          "CC_DEFINITE_INTEGRAL",
+          "CC_AXIS_INTERCEPT"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 6,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "교점을 구해 정적분 한 번으로 넓이를 매개변수로 나타내고 방정식을 푸는 3단계이므로 하",
+        "difficultyBasis": "넓이를 a³/6으로 일반화하여 계산하는 3~4단계, 부호 처리 함정 약함 → 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "x축과의 교점 0, a를 이용한 정적분 계산이 핵심이며 그래프의 추가 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "곡선과 x축으로 둘러싸인 넓이가 주어질 때 매개변수 a를 결정하는 넓이 조건 모델 유형",
+          "crossConcept": "x절편(0, a)을 구해 적분 구간으로 삼고 정적분으로 넓이를 계산",
+          "condition": "a는 양수",
+          "integration": "교점→부호 확인→정적분→방정식 순차 계산",
+          "curriculum": "정적분과 넓이: 수학II 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 6,
+          "variationNote": "y=ax-x²·넓이 9/2→y=x²-ax(아래로 볼록)·넓이 32/3, 답 a=3→4",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q6: 원본 Q6의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 7,
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "rpmPrimary": {
+          "l1": "적분",
+          "l2": "정적분의 활용",
+          "l3": "속도와 거리",
+          "l4": "속도에서 이동거리",
+          "recordId": "H2-M2-RPM-045",
+          "l3Label": "속도와 거리",
+          "l4Label": "속도에서 이동거리",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-045"
+        },
+        "rpmPrimaryL1": "적분",
+        "rpmPrimaryL2": "정적분의 활용",
+        "rpmPrimaryL3": "속도와 거리",
+        "rpmPrimaryL4": "속도에서 이동거리",
+        "rpmPrimaryRecordId": "H2-M2-RPM-045",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+        "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+        "crossConceptKeys": [
+          "CC_POLYGON_AREA_INTEGRATION",
+          "CC_DEFINITE_INTEGRAL"
+        ],
+        "conditionKeys": [
+          "COND_PIECEWISE_DOMAIN_PARTITION"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 7,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "그래프를 읽고 방향 전환·위치·이동거리·원점 복귀를 각각 판정하는 3~4단계 보기 판정이므로 중",
+        "difficultyBasis": "부호 있는 넓이와 절댓값 넓이 구분, 방향 전환 함정(꺾임점≠부호 변화), 보기 4개 판정 → 3",
+        "visualNecessity": {
+          "problem": "ACTIVE:BOUND",
+          "solution": "EXEMPT",
+          "solutionReason": "발문 그림의 꺾인 선만으로 삼각형·직사각형 넓이를 읽어 위치와 거리를 구하는 풀이여서 해설 그림이 새로 보일 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "꺾인 선 속도 그래프에서 위치 변화와 움직인 거리를 넓이로 구하여 보기를 판정하는 속도·거리 유형",
+          "crossConcept": "꺾인 선과 t축으로 둘러싸인 삼각형·직사각형 넓이를 구하는 계산이 결정 단계",
+          "condition": "속도 부호가 바뀌는 t=4를 경계로 구간을 나눔",
+          "integration": "보기별로 구간을 나누어 위치·거리를 따로 판정",
+          "curriculum": "속도와 위치·움직인 거리의 정적분: 수학II 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 7,
+          "variationNote": "속도 그래프 꺾은선 (0,0)(1,2)(3,-2)(5,2)(6,2)(7,0)→(0,0)(2,2)(3,2)(5,-2)(7,0), 보기 ㄱ~ㄹ의 시각·값 변경, 정답 ㄴ,ㄹ→ㄴ,ㄷ",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q7: 원본 Q7의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 8,
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "rpmPrimary": {
+          "l1": "미분",
+          "l2": "도함수의 활용(2)",
+          "l3": "증가·감소와 극값",
+          "l4": "극대·극소",
+          "recordId": "H2-M2-RPM-024",
+          "l3Label": "증가·감소와 극값",
+          "l4Label": "극대·극소",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-024"
+        },
+        "rpmPrimaryL1": "미분",
+        "rpmPrimaryL2": "도함수의 활용(2)",
+        "rpmPrimaryL3": "증가·감소와 극값",
+        "rpmPrimaryL4": "극대·극소",
+        "rpmPrimaryRecordId": "H2-M2-RPM-024",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+        "crossConceptKeys": [
+          "CC_EXTREMA_EQUATION_ROOTS"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 8,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "극대·극소가 되는 위치를 a의 부호로 경우를 나누어 구간 조건과 연립하는 5단계 이상 풀이이므로 상",
+        "difficultyBasis": "두 영점의 대소가 a의 부호에 따라 바뀌는 경우 분류, a<0에서 모순 확인, 범위 연립 → 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "도함수의 두 영점 -a/3, a의 위치를 a의 부호로 나누는 대수 판단이 핵심이고 매개변수 a가 문자라 하나의 그래프로 그릴 수 없다."
+        },
+        "metaRationale": {
+          "problemType": "삼차함수의 극대·극소가 되는 위치에 대한 구간 조건으로 매개변수 범위를 구하는 극대·극소 유형",
+          "crossConcept": "극값 조건을 도함수 영점의 위치 조건으로 바꾸어 매개변수를 결정하는 개념이 결정 단계",
+          "condition": "극대점은 (-2,0)에, 극소점은 x>2에 있어야 하는 구간 제한",
+          "integration": "a>0, a<0, a=0으로 경우를 나누어 판정",
+          "curriculum": "도함수와 극값, 이차식의 부호: 수학II 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 8,
+          "variationNote": "f(x)=-x³+ax²+a²x-1(극솟값 x∈(-1,1), 극댓값 x>1)→x³-ax²-a²x+1(극댓값 x∈(-2,0), 극솟값 x>2), 답 nm=3→12",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q8: 원본 Q8의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 9,
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "rpmPrimary": {
+          "l1": "미분",
+          "l2": "도함수의 활용(2)",
+          "l3": "증가·감소와 극값",
+          "l4": "증감표",
+          "recordId": "H2-M2-RPM-023",
+          "l3Label": "증가·감소와 극값",
+          "l4Label": "증감표",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-023"
+        },
+        "rpmPrimaryL1": "미분",
+        "rpmPrimaryL2": "도함수의 활용(2)",
+        "rpmPrimaryL3": "증가·감소와 극값",
+        "rpmPrimaryL4": "증감표",
+        "rpmPrimaryRecordId": "H2-M2-RPM-023",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+        "templateKey": "TPL_MONOTONICITY_DIRECT",
+        "crossConceptKeys": [
+          "CC_ZERO_MULTIPLICITY"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_UPPER_BOUND"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 9,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "그래프에서 중근을 읽어 식을 세우고 f와 f'의 부호를 자연수마다 판정하는 5단계 이상이므로 상",
+        "difficultyBasis": "단순근·중근 해석, 도함수 인수분해, f=0 또는 f'=0 포함 판단, n=1 부호 확인 함정 → 4",
+        "visualNecessity": {
+          "problem": "ACTIVE:BOUND",
+          "solution": "EXEMPT",
+          "solutionReason": "f와 f'의 부호를 자연수 n마다 표로 판정하는 풀이이며, 발문 그림이 이미 영점 2, 8과 접점을 보여 주어 해설 그림이 새로 보일 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "삼차함수 그래프로 f(x)와 f'(x)의 부호를 구간별로 판정하여 곱의 부호 조건을 만족하는 정수를 세는 증감 유형",
+          "crossConcept": "x축에 접하는 영점이 중근임을 이용해 f(x)=c(x-2)(x-8)²을 세우는 개념이 결정 단계",
+          "condition": "10 이하의 자연수 n, 곱이 0 이하(0 포함)",
+          "integration": "n의 구간별 경우로 나누어 두 부호를 비교",
+          "curriculum": "삼차함수의 그래프·도함수와 증가·감소: 수학II 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 9,
+          "variationNote": "영점 1(교차)·10(접함)→2(교차)·8(접함), n≤11→n≤10, 도함수 영점 4 유지·8로 변경, 답 8개→7개(n=1에서 f<0 함정 추가)",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q9: 원본 Q9의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 10,
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "rpmPrimary": {
+          "l1": "미분",
+          "l2": "도함수의 활용(2)",
+          "l3": "최대·최소",
+          "l4": "도형 활용",
+          "recordId": "H2-M2-RPM-026",
+          "l3Label": "최대·최소",
+          "l4Label": "도형 활용",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-026"
+        },
+        "rpmPrimaryL1": "미분",
+        "rpmPrimaryL2": "도함수의 활용(2)",
+        "rpmPrimaryL3": "최대·최소",
+        "rpmPrimaryL4": "도형 활용",
+        "rpmPrimaryRecordId": "H2-M2-RPM-026",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+        "templateKey": "TPL_MODELED_QUANTITY_OPTIMIZATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 10,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "상황을 식으로 모델링하고 도함수로 최댓값을 구하는 4단계이므로 중",
+        "difficultyBasis": "변수 설정과 범위 0<x<6, 도함수 인수분해, 부호 판정, 함숫값 계산 → 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다(상자 모양은 문장으로 완결 서술).",
+          "solution": "EXEMPT",
+          "solutionReason": "부피함수 V(x)의 도함수 부호 판정과 함숫값 계산으로 닫히며 엔진이 종이 접기 모형을 그릴 수 없어 그림을 만들지 않는다."
+        },
+        "metaRationale": {
+          "problemType": "정사각형 종이로 만든 상자의 부피를 한 변수로 나타내고 도함수로 최댓값을 구하는 도형 활용 최대·최소 유형",
+          "crossConcept": "별도 교차 개념 없음",
+          "condition": "잘라내는 변의 길이는 0<x<6",
+          "integration": "모델링→도함수→부호→최댓값 순차 계산",
+          "curriculum": "도함수를 활용한 최대·최소 문제: 수학II 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 10,
+          "variationNote": "종이 한 변 6→12, 최댓값 16→128(보기 8~27→80~144)",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q10: 원본 Q10의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 11,
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "rpmPrimary": {
+          "l1": "미분",
+          "l2": "도함수의 활용(3)",
+          "l3": "속도와 가속도",
+          "l4": "위치·속도·가속도",
+          "recordId": "H2-M2-RPM-029",
+          "l3Label": "속도와 가속도",
+          "l4Label": "위치·속도·가속도",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-029"
+        },
+        "rpmPrimaryL1": "미분",
+        "rpmPrimaryL2": "도함수의 활용(3)",
+        "rpmPrimaryL3": "속도와 가속도",
+        "rpmPrimaryL4": "위치·속도·가속도",
+        "rpmPrimaryRecordId": "H2-M2-RPM-029",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DERIVATIVE_MOTION",
+        "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+        "crossConceptKeys": [
+          "CC_ROOT_INTERSECTION_COUNT_FUNCTION",
+          "CC_QUADRATIC_VERTEX_FORM"
+        ],
+        "conditionKeys": [
+          "COND_EXACT_INTERSECTION_COUNT",
+          "COND_RESTRICTED_INTERVAL",
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 11,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "가속도 관계를 방정식으로 바꾸고 교점 개수 조건과 제외 끝점을 따지는 5단계 이상이므로 상",
+        "difficultyBasis": "이계도함수 계산, k=-6(t-1)²+7로 재해석, t>0 제한의 끝점 제외(k=1), 정수 합 → 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "포물선 y=-6(t-1)²+7과 수평선의 교점 개수를 꼭짓점과 t=0의 값으로 판단하는 풀이이며 매개변수 k가 문자라 하나의 그래프로 그릴 수 없다."
+        },
+        "metaRationale": {
+          "problemType": "두 점의 가속도가 같아지는 순간의 수를 이계도함수 방정식으로 나타내는 위치·속도·가속도 유형",
+          "crossConcept": "가속도 방정식을 k=f(t) 꼴로 정리하여 y=k와의 교점 개수로 읽는 개념이 결정 단계",
+          "condition": "t>0에서 정확히 2번, k는 정수(t=0은 제외)",
+          "integration": "가속도 조건을 교점 문제로 재해석",
+          "curriculum": "위치·속도·가속도와 이차함수의 꼭짓점: 수학II·중등 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 11,
+          "variationNote": "P의 위치 -t⁴/2+2t³+3t²→-t⁴+4t³+t², 조건 3<k<6→1<k<7, 정수 합 9→20",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q11: 원본 Q11의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 12,
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분",
+        "conceptClusterKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "rpmPrimary": {
+          "l1": "적분",
+          "l2": "정적분",
+          "l3": "정적분의 뜻",
+          "l4": "구간 분할",
+          "recordId": "H2-M2-RPM-038",
+          "l3Label": "정적분의 뜻",
+          "l4Label": "구간 분할",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-038"
+        },
+        "rpmPrimaryL1": "적분",
+        "rpmPrimaryL2": "정적분",
+        "rpmPrimaryL3": "정적분의 뜻",
+        "rpmPrimaryL4": "구간 분할",
+        "rpmPrimaryRecordId": "H2-M2-RPM-038",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "templateKey": "TPL_DEFINITE_EVALUATION",
+        "crossConceptKeys": [
+          "CC_PERIODIC_FUNCTION",
+          "CC_PIECEWISE_FUNCTION"
+        ],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 12,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "주기를 읽고 한 주기 정적분을 구해 곱하는 4단계이므로 중",
+        "difficultyBasis": "구간별 함수의 정적분 두 번, 구간 길이를 주기로 나누어 주기 수 판단 → 3",
+        "visualNecessity": {
+          "problem": "ACTIVE:BOUND",
+          "solution": "EXEMPT",
+          "solutionReason": "한 주기 [-2,4]의 그래프는 발문 그림에 이미 있고, 풀이는 두 일차함수의 정적분과 주기 수 곱셈이어서 해설 그림이 새로 보일 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "주기함수의 정적분을 한 주기의 정적분과 주기 수의 곱으로 계산하는 정적분 구간 분할 유형",
+          "crossConcept": "f(x+6)=f(x)의 주기성과 구간별 정의된 함수의 정적분을 함께 사용",
+          "condition": "모든 실수 x에 대하여 주기 조건이 성립",
+          "integration": "한 주기 적분 → 주기 수 곱 순차 계산",
+          "curriculum": "정적분의 구간 분할과 주기함수: 수학II 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 12,
+          "variationNote": "주기 4·구간 [-1,19]·삼각형 높이 3(한 주기 6, 답 30)→주기 6·구간 [-2,28]·한 주기 9, 답 30→45",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q12: 원본 Q12의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 13,
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분",
+        "conceptClusterKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "rpmPrimary": {
+          "l1": "적분",
+          "l2": "정적분",
+          "l3": "정적분과 함수",
+          "l4": "미분과 적분 관계",
+          "recordId": "H2-M2-RPM-042",
+          "l3Label": "정적분과 함수",
+          "l4Label": "미분과 적분 관계",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-042"
+        },
+        "rpmPrimaryL1": "적분",
+        "rpmPrimaryL2": "정적분",
+        "rpmPrimaryL3": "정적분과 함수",
+        "rpmPrimaryL4": "미분과 적분 관계",
+        "rpmPrimaryRecordId": "H2-M2-RPM-042",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 13,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "(x-t)가 포함된 적분을 분리하여 두 번 미분하고 아래끝 대입으로 상수를 구하는 5단계 이상이므로 상",
+        "difficultyBasis": "x 포함 피적분함수 분리, 곱의 미분, 두 번 미분, k 결정 순서 판단 → 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "적분식을 두 번 미분하고 x=1을 대입하는 대수 풀이여서 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "피적분함수에 x가 포함된 적분방정식을 적분과 미분의 관계로 두 번 미분하여 함수를 구하는 유형",
+          "crossConcept": "별도 교차 개념 없음(적분과 미분의 관계가 Primary 결정 단계)",
+          "condition": "모든 실수 x에 대하여 등식이 성립(아래끝 대입 가능)",
+          "integration": "x=1 대입→분리→두 번 미분→함숫값 순차 계산",
+          "curriculum": "정적분으로 정의된 함수의 미분: 수학II 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 13,
+          "variationNote": "아래끝 2→1, x³-3x²+k→x³-3x+k, f(x)=6x-6→6x, k=4→2, 답 f(k) 18→12",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q13: 원본 Q13의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 14,
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "rpmPrimary": {
+          "l1": "적분",
+          "l2": "정적분의 활용",
+          "l3": "도형 활용",
+          "l4": "매개변수 넓이",
+          "recordId": "H2-M2-RPM-047",
+          "l3Label": "도형 활용",
+          "l4Label": "매개변수 넓이",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-047"
+        },
+        "rpmPrimaryL1": "적분",
+        "rpmPrimaryL2": "정적분의 활용",
+        "rpmPrimaryL3": "도형 활용",
+        "rpmPrimaryL4": "매개변수 넓이",
+        "rpmPrimaryRecordId": "H2-M2-RPM-047",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_AREA_CONDITION_MODEL_DETERMINATION",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_LINEAR_INTERSECTION",
+          "CC_DEFINITE_INTEGRAL"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 14,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "교점 계산, 두 영역의 넓이를 각각 적분하여 등식을 세우고 비를 구하는 5단계 이상이므로 상",
+        "difficultyBasis": "교점 계산, 영역별 위·아래 판단, 두 정적분 계산, 무리수 계산 → 4",
+        "visualNecessity": {
+          "problem": "ACTIVE:BOUND",
+          "solution": "EXEMPT",
+          "solutionReason": "발문 그림이 이미 두 영역 S1, S2와 교점 위치를 보여 주고, 풀이는 두 정적분의 계산이어서 해설 그림이 새로 보일 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "두 영역의 넓이가 같다는 조건으로 직선의 위치 k를 결정하는 넓이 조건 모델 유형",
+          "crossConcept": "포물선과 수평선의 교점 x=√3을 구해 영역 경계로 삼는 개념과 정적분",
+          "condition": "k>√3이고 S₁=S₂",
+          "integration": "교점 계산→두 넓이 적분→등식→k와 S₁ 계산 순차 진행",
+          "curriculum": "정적분과 넓이: 수학II 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 14,
+          "variationNote": "곡선 y=9-x²·직선 x=3→y=x²·직선 y=3(수평선을 주어진 값으로, 수직선 x=k를 구할 값으로 역할 교환), k=6→3, 답 √3→√3/2",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q14: 원본 Q14의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 15,
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-04",
+        "standardUnit": "도함수",
+        "subUnitKey": "H15-M2-04-DERIVATIVE",
+        "subUnit": "도함수",
+        "conceptClusterKey": "H15-M2-04-DERIVATIVE",
+        "rpmPrimary": {
+          "l1": "미분",
+          "l2": "미분계수와 도함수",
+          "l3": "도함수",
+          "l4": "도함수 계산",
+          "recordId": "H2-M2-RPM-016",
+          "l3Label": "도함수",
+          "l4Label": "도함수 계산",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-016"
+        },
+        "rpmPrimaryL1": "미분",
+        "rpmPrimaryL2": "미분계수와 도함수",
+        "rpmPrimaryL3": "도함수",
+        "rpmPrimaryL4": "도함수 계산",
+        "rpmPrimaryRecordId": "H2-M2-RPM-016",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+        "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+        "crossConceptKeys": [
+          "CC_FACTOR_THEOREM_CUBIC",
+          "CC_QUADRATIC_EXTREMUM",
+          "CC_DERIVATIVE_VALUE"
+        ],
+        "conditionKeys": [
+          "COND_FUNCTION_VALUE_CONSTRAINT",
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 15,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "세 함숫값 조건을 인수분해로 바꾸고 도함수 조건, 최댓값, 접선 조건을 차례로 써서 함수를 결정하는 5단계 이상이므로 상",
+        "difficultyBasis": "f-f(0)의 근 설정, 도함수 계수 비교로 a 결정, f' 꼭짓점으로 A 결정, 접선으로 D 결정 → 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "함숫값이 같다는 조건을 인수분해에 쓰고 계수를 비교하는 대수 풀이이며 매개변수 a를 구하기 전에는 그릴 곡선이 정해지지 않는다."
+        },
+        "metaRationale": {
+          "problemType": "함숫값·도함수 조건과 f'의 최댓값, 접선의 y절편으로 삼차함수를 결정하는 도함수 계산 중심 유형",
+          "crossConcept": "세 함숫값이 같다는 조건에서 인수정리로 인수분해, f'의 꼭짓점으로 최댓값, 미분계수로 접선 기울기를 사용",
+          "condition": "f(0)=f(2)=f(a), a≠0,2와 인수 곱의 0이 아닌 조건",
+          "integration": "조건을 차례로 사용해 A, a, D를 순차 결정",
+          "curriculum": "다항함수의 미분, 접선의 방정식, 이차함수의 최댓값: 수학II·중등 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 15,
+          "variationNote": "f(0)=f(1)=f(a)→f(0)=f(2)=f(a), f' 최댓값 1→4, (1,f(1))의 접선 y절편 6→(2,f(2))의 접선 y절편 -3, 답 f(3) 1→8",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q15: 원본 Q15의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 16,
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "rpmPrimary": {
+          "l1": "미분",
+          "l2": "도함수의 활용(2)",
+          "l3": "최대·최소",
+          "l4": "구간 최대·최소",
+          "recordId": "H2-M2-RPM-025",
+          "l3Label": "최대·최소",
+          "l4Label": "구간 최대·최소",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-025"
+        },
+        "rpmPrimaryL1": "미분",
+        "rpmPrimaryL2": "도함수의 활용(2)",
+        "rpmPrimaryL3": "최대·최소",
+        "rpmPrimaryL4": "구간 최대·최소",
+        "rpmPrimaryRecordId": "H2-M2-RPM-025",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+        "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
+        "crossConceptKeys": [
+          "CC_RESTRICTED_DOMAIN_EXTREMA",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL",
+          "COND_FUNCTION_VALUE_CONSTRAINT"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 16,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "구간 끝 t에 따라 최솟값·최댓값이 정해지는 조건을 각각 따져 t의 범위를 구하는 5단계 이상이므로 상",
+        "difficultyBasis": "극값 위치와 구간 포함 조건, f(t)≤32의 인수분해 부등식, 최대·최소 t의 곱 → 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "도함수 부호와 f(0), f(4), f(t)-32의 인수분해 비교로 완결되며 구간 끝 t가 문자라 하나의 그림으로 보일 수 없다."
+        },
+        "metaRationale": {
+          "problemType": "닫힌구간 [0,t]에서 최댓값·최솟값이 주어질 때 구간의 끝 t의 범위를 구하는 구간 최대·최소 유형",
+          "crossConcept": "극값 위치가 구간에 포함되는 조건과 f(t)-32의 인수분해를 이용한 부등식 풀이",
+          "condition": "t>0이고 최댓값 32, 최솟값 0이 모두 만족",
+          "integration": "최솟값 조건→최댓값 조건으로 t의 범위를 차례로 좁힘",
+          "curriculum": "닫힌구간에서 삼차함수의 최대·최소: 수학II 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 16,
+          "variationNote": "f(x)=2x³-9x²+12x·구간 [1,t]·(최대 5, 최소 4)→x³-6x²+32·구간 [0,t]·(최대 32, 최소 0), 답 ab=5→24",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q16: 원본 Q16의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 17,
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분",
+        "conceptClusterKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "rpmPrimary": {
+          "l1": "적분",
+          "l2": "정적분",
+          "l3": "정적분의 뜻",
+          "l4": "구간 분할",
+          "recordId": "H2-M2-RPM-038",
+          "l3Label": "정적분의 뜻",
+          "l4Label": "구간 분할",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-038"
+        },
+        "rpmPrimaryL1": "적분",
+        "rpmPrimaryL2": "정적분",
+        "rpmPrimaryL3": "정적분의 뜻",
+        "rpmPrimaryL4": "구간 분할",
+        "rpmPrimaryRecordId": "H2-M2-RPM-038",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "templateKey": "TPL_DEFINITE_EVALUATION",
+        "crossConceptKeys": [
+          "CC_ABSOLUTE_VALUE_FUNCTION",
+          "CC_QUADRATIC_EXTREMUM"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 17,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "적분변수의 대소로 절댓값을 나누어 적분하고 미분한 뒤 이차식의 최솟값을 구하는 5단계 이상이므로 상",
+        "difficultyBasis": "절댓값 분리(t와 x 비교), 두 정적분 계산, 미분, 완전제곱식 최솟값과 정의역 확인 → 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "절댓값을 t와 x의 대소로 나누어 적분하고 이차식 f'(x)의 최솟값을 구하는 대수 풀이이며 그림의 추가 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "절댓값이 있는 피적분함수를 구간으로 나누어 정적분한 뒤 도함수의 극솟값을 구하는 정적분 구간 분할 유형",
+          "crossConcept": "절댓값 기호를 x와 t의 대소로 나누는 개념과 이차함수의 최솟값(꼭짓점)을 사용",
+          "condition": "정의역 -1<x<3 안에서 극값 판정",
+          "integration": "절댓값 분리→적분→미분→이차식 최솟값 순차 진행",
+          "curriculum": "정적분의 구간 분할, 절댓값 함수, 이차함수의 최솟값: 수학II·중등 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 17,
+          "variationNote": "정의역 0<x<3·∫_0^3→-1<x<3·∫_{-1}^3, f'의 극솟값 9/2→8",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q17: 원본 Q17의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 18,
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "rpmPrimary": {
+          "l1": "미분",
+          "l2": "도함수의 활용(2)",
+          "l3": "증가·감소와 극값",
+          "l4": "극대·극소",
+          "recordId": "H2-M2-RPM-024",
+          "l3Label": "증가·감소와 극값",
+          "l4Label": "극대·극소",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-024"
+        },
+        "rpmPrimaryL1": "미분",
+        "rpmPrimaryL2": "도함수의 활용(2)",
+        "rpmPrimaryL3": "증가·감소와 극값",
+        "rpmPrimaryL4": "극대·극소",
+        "rpmPrimaryRecordId": "H2-M2-RPM-024",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+        "crossConceptKeys": [
+          "CC_ZERO_MULTIPLICITY"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 18,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "도함수의 중근 인수와 부호 변화를 분석하여 극값 조건을 매개변수 관계식으로 바꾸고 정수 조건으로 최솟값을 구하는 5단계 이상이므로 상",
+        "difficultyBasis": "중근 인수에서 부호 불변 확인, 극솟값 위치 r의 부등식, 정수 범위 a≤1, 합의 최솟값 판단 → 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "도함수 (x-b)²(4x-3a-b)의 인수 구조와 정수 조건을 대수로 따지는 풀이이며 정수 매개변수 a, b가 정해지기 전에는 그릴 곡선이 없다."
+        },
+        "metaRationale": {
+          "problemType": "사차함수가 한 점에서 극솟값을 가질 조건을 도함수의 부호 변화로 분석하는 극대·극소 유형",
+          "crossConcept": "도함수의 제곱인수(중근)에서는 부호가 바뀌지 않아 극값이 아니라는 영점의 중복도 개념",
+          "condition": "a, b는 서로 다른 정수이고 a<b",
+          "integration": "극솟값 조건→관계식→정수 범위→합의 최솟값 순차 진행",
+          "curriculum": "도함수의 부호 변화와 극값, 정수 조건 부등식: 수학II 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 18,
+          "variationNote": "f(x)=(x-a)³(x-b)+3·x=3에서 극솟값·합의 최댓값 3→f(x)=(x-a)(x-b)³+1·x=2에서 극솟값·합의 최솟값 7",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q18: 원본 Q18의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 19,
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "conceptClusterKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "rpmPrimary": {
+          "l1": "적분",
+          "l2": "정적분의 활용",
+          "l3": "넓이",
+          "l4": "두 곡선 사이",
+          "recordId": "H2-M2-RPM-044",
+          "l3Label": "넓이",
+          "l4Label": "두 곡선 사이",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-044"
+        },
+        "rpmPrimaryL1": "적분",
+        "rpmPrimaryL2": "정적분의 활용",
+        "rpmPrimaryL3": "넓이",
+        "rpmPrimaryL4": "두 곡선 사이",
+        "rpmPrimaryRecordId": "H2-M2-RPM-044",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+        "crossConceptKeys": [
+          "CC_FUNCTION_SYMMETRY",
+          "CC_PIECEWISE_MAX_FUNCTION"
+        ],
+        "conditionKeys": [
+          "COND_PIECEWISE_DOMAIN_PARTITION",
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 19,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "원점 대칭으로 함수 확장, 구간 최댓값 함수 g 구성, 구간별 넓이 적분, 서로소 조건까지 5단계 이상의 복합 풀이이므로 상",
+        "difficultyBasis": "대칭 확장, 윈도 [t,t+1]의 위치별 최댓값(경우 분류), 두 구간의 적분, 기약분수 p+q → 5",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 조건 (가), (나)의 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다(구간 최댓값 함수 g는 학생이 구하는 대상).",
+          "solution": "EXEMPT",
+          "solutionReason": "구간별 최댓값 함수 g의 식을 윈도 [t,t+1]의 위치에 따라 대수적으로 구하고 두 구간의 정적분으로 넓이를 계산하는 풀이가 핵심이며, 구간별 두 곡선 y=f(x), y=g(x)를 한 그림으로 도시하지 않는다."
+        },
+        "metaRationale": {
+          "problemType": "원점 대칭 함수와 구간 최댓값 함수 g가 만드는 두 곡선 사이의 넓이를 구하는 두 곡선 사이 넓이 유형",
+          "crossConcept": "원점 대칭으로 f(-x)=-f(x)를 이용한 함수 확장과 구간별 최댓값 함수(g)의 구성이 넓이 계산의 전제 단계",
+          "condition": "t의 구간별로 g(t)가 달라지는 구간 분할과 p, q가 서로소인 자연수",
+          "integration": "대칭 확장→g 구성→구간별 적분→기약분수 순으로 여러 개념을 결합",
+          "curriculum": "함수의 대칭, 이차함수의 최댓값, 정적분과 넓이: 수학II·중등 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 19,
+          "variationNote": "f(x)=-x²+2x (x≥0)→-x²+3x, 넓이 19/12→37/12, 답 p+q 31→49(꼭짓점 위치 -3/2는 유지하되 구간 구성 변경)",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q19: 원본 Q19의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 20,
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "rpmPrimary": {
+          "l1": "미분",
+          "l2": "도함수의 활용(3)",
+          "l3": "방정식과 부등식",
+          "l4": "부등식 증명",
+          "recordId": "H2-M2-RPM-028",
+          "l3Label": "방정식과 부등식",
+          "l4Label": "부등식 증명",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-028"
+        },
+        "rpmPrimaryL1": "미분",
+        "rpmPrimaryL2": "도함수의 활용(3)",
+        "rpmPrimaryL3": "방정식과 부등식",
+        "rpmPrimaryL4": "부등식 증명",
+        "rpmPrimaryRecordId": "H2-M2-RPM-028",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_GLOBAL_INEQUALITY_BY_DERIVATIVE",
+        "crossConceptKeys": [
+          "CC_FUNCTION_MONOTONICITY",
+          "CC_INEQUALITY_QUADRATIC"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL",
+          "COND_NATURAL_NUMBER",
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 20,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "모든 x>1 조건을 도함수로 증가 판정하여 하한 비교 부등식으로 바꾸고 이차부등식을 푸는 5단계 이상이므로 상",
+        "difficultyBasis": "하한이 최솟값이 아니라는 점(열린구간)과 등호 포함 판단, n에 관한 이차부등식, 자연수 개수 → 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "자연수 n이 문자인 함수 x^{n+1}-(n+1)x의 증가 여부와 하한 -n을 도함수로 판단하는 풀이이며 하나의 그래프로 그릴 수 없다."
+        },
+        "metaRationale": {
+          "problemType": "모든 x>1에서 성립하는 부등식을 도함수로 증가·하한을 구해 매개변수(n) 조건으로 바꾸는 부등식 유형",
+          "crossConcept": "도함수 부호로 함수의 증가를 판정(단조성)하고 얻은 n에 관한 이차부등식을 푸는 계산",
+          "condition": "x>1(열린 구간), n은 자연수, 모든 x에서 성립(등호 허용 여부 판단)",
+          "integration": "모든 x 조건을 하한 비교로 재해석한 뒤 n의 이차부등식으로 변환",
+          "curriculum": "도함수를 이용한 부등식과 이차부등식: 수학II·수학 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 20,
+          "variationNote": "상수항 n²-10n+14→n²-11n+21, 답 6개(2≤n≤7)→5개(3≤n≤7)",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q20: 원본 Q20의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 21,
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "rpmPrimary": {
+          "l1": "미분",
+          "l2": "도함수의 활용(2)",
+          "l3": "증가·감소와 극값",
+          "l4": "극대·극소",
+          "recordId": "H2-M2-RPM-024",
+          "l3Label": "증가·감소와 극값",
+          "l4Label": "극대·극소",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-024"
+        },
+        "rpmPrimaryL1": "미분",
+        "rpmPrimaryL2": "도함수의 활용(2)",
+        "rpmPrimaryL3": "증가·감소와 극값",
+        "rpmPrimaryL4": "극대·극소",
+        "rpmPrimaryRecordId": "H2-M2-RPM-024",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+        "crossConceptKeys": [
+          "CC_EXTERNAL_DIVISION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 21,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "외분점 공식으로 함수를 세우고 도함수 부호로 극값을 구하는 4~5단계 직접 풀이이므로 중",
+        "difficultyBasis": "세 점의 좌표 설정, 외분 공식에서 비 순서 주의, 도함수 부호 판정, 두 극값 계산 → 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다(점의 위치는 좌표로 서술).",
+          "solution": "EXEMPT",
+          "solutionReason": "외분점 공식으로 f(t)를 세우고 도함수의 부호를 판정하는 대수 풀이이며 그림의 추가 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "외분점의 y좌표로 정의된 삼차함수의 극솟값·극댓값을 구하는 극대·극소 유형",
+          "crossConcept": "선분의 외분점 공식으로 R의 좌표를 구하여 f(t)를 세우는 것이 전제 단계",
+          "condition": "별도 제약 조건 없음",
+          "integration": "좌표 설정→외분점→함수→도함수 부호→극값 순차 계산",
+          "curriculum": "외분점 공식(수학), 도함수와 극값: 수학II·중등 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 21,
+          "variationNote": "외분 3:1·직선 y=x→3:2·직선 y=2x, f(t)=(3t-t³)/2→-2t³+6t, 극값 -1, 1→-4, 4",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q21: 원본 Q21의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 22,
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분",
+        "conceptClusterKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "rpmPrimary": {
+          "l1": "적분",
+          "l2": "정적분",
+          "l3": "정적분의 뜻",
+          "l4": "정적분 계산",
+          "recordId": "H2-M2-RPM-037",
+          "l3Label": "정적분의 뜻",
+          "l4Label": "정적분 계산",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-037"
+        },
+        "rpmPrimaryL1": "적분",
+        "rpmPrimaryL2": "정적분",
+        "rpmPrimaryL3": "정적분의 뜻",
+        "rpmPrimaryL4": "정적분 계산",
+        "rpmPrimaryRecordId": "H2-M2-RPM-037",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "templateKey": "TPL_DEFINITE_EVALUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 22,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "적분값을 상수로 두고 방정식을 세워 푸는 3~4단계이므로 중",
+        "difficultyBasis": "상수 A 설정, 정적분 계산, A에 관한 일차방정식, 함숫값 계산 → 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "정적분 값을 상수로 놓고 연립하는 대수 풀이여서 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "피적분함수가 자기 자신을 포함한 정적분 관계식에서 정적분 값을 상수로 두고 다항함수를 결정하는 정적분 계산 유형",
+          "crossConcept": "별도 교차 개념 없음",
+          "condition": "별도 제약 조건 없음",
+          "integration": "상수 설정→정적분 계산→방정식→함숫값 순차 계산",
+          "curriculum": "다항함수의 정적분 계산: 수학II 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 22,
+          "variationNote": "f(x)=3x²+2∫_0^1 f→3x²+2x+∫_0^2 f, 답 10→21",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q22: 원본 Q22의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    },
+    {
+      "questionUid": 23,
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "수학II",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "conceptClusterKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "rpmPrimary": {
+          "l1": "미분",
+          "l2": "도함수의 활용(3)",
+          "l3": "방정식과 부등식",
+          "l4": "근의 개수",
+          "recordId": "H2-M2-RPM-027",
+          "l3Label": "방정식과 부등식",
+          "l4Label": "근의 개수",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math2-calculus1 crosswalk record H2-M2-RPM-027"
+        },
+        "rpmPrimaryL1": "미분",
+        "rpmPrimaryL2": "도함수의 활용(3)",
+        "rpmPrimaryL3": "방정식과 부등식",
+        "rpmPrimaryL4": "근의 개수",
+        "rpmPrimaryRecordId": "H2-M2-RPM-027",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+        "crossConceptKeys": [
+          "CC_INDEFINITE_INTEGRAL",
+          "CC_FUNCTION_EXTREMA",
+          "CC_ROOT_INTERSECTION_COUNT_FUNCTION"
+        ],
+        "conditionKeys": [
+          "COND_EXACT_INTERSECTION_COUNT",
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 23,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "도함수 그래프에서 식을 읽고 원함수를 구해 극값으로 근의 개수를 판정하는 4~5단계 풀이이므로 중",
+        "difficultyBasis": "그래프에서 f' 결정, 부정적분과 f(0)=0, 극값 계산, 접하는 경계 제외, 정수 개수 → 3",
+        "visualNecessity": {
+          "problem": "ACTIVE:BOUND",
+          "solution": "EXEMPT",
+          "solutionReason": "극값 F(-1)=-5/3, F(3)=9를 계산해 수평선 y=k와의 교점 개수를 부등식으로 판정하는 풀이이며, 도함수 f의 그래프가 발문 그림으로 이미 주어져 있어 해설 그림이 새로 보일 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "도함수의 그래프에서 삼차함수를 복원하고 극값으로 방정식 F(x)=k의 서로 다른 세 실근 조건을 구하는 근의 개수 유형",
+          "crossConcept": "도함수 f를 적분하여 F를 구하는 부정적분과 극값 계산이 결정 단계의 전제",
+          "condition": "서로 다른 세 실근(접하면 제외)과 정수 k",
+          "integration": "도함수 그래프 읽기→원함수 복원→극값→교점 개수로 재해석",
+          "curriculum": "도함수의 그래프, 부정적분, 도함수를 이용한 방정식의 실근: 수학II 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-01",
+          "reviewRequired": true,
+          "sourceQid": 23,
+          "variationNote": "f(=F') 영점 -2, 2·y절편 3→영점 -1, 3·y절편 3(대칭 포물선→비대칭), 극값 ±4→-5/3, 9, 답 7개→10개",
+          "originalMetaSeed": {
+            "source": "archive/data/meta-foundation/evidence (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution"
+          }
+        }
+      },
+      "reason": "25_제일고_2학기_기말_고2_수학II_유사 Q23: 원본 Q23의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": []
+    }
+  ]
+}
