@@ -227,8 +227,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "먼저 $x$축과 만나는 점은 $f(x)=0$을 풀어 구한다.\n$f(x)=x^3-2x^2+3=(x+1)(x^2-3x+3)$이다.\n이차식의 판별식은 $9-12=-3\\lt0$이므로 실근은 $x=-1$ 하나뿐이다. 따라서 $A=(-1,0)$.\n$f\\prime(x)=3x^2-4x$이고 $f\\prime(-1)=3+4=7$이다.\n$A$에서의 접선은 $y=7(x+1)=7x+7$이다.\n따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/26_순천여고_2학기_중간_고2_미적분I/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼차 곡선 y=f(x)=x^3-2x^2+3이 극대점 (0,3)과 극소점 (4/3,49/27)이 모두 x축 위에 있어 x축과 A(-1,0) 한 점에서만 만나고, 점 A에서 기울기 7인 접선이 곡선에 접하도록 그어져 있다.",
+    "solutionImage": "assets/images/26_순천여고_2학기_중간_고2_미적분I/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼차 곡선 y=f(x)=x^3-2x^2+3이 극대점 (0,3)과 극소점 (4/3,49/27)이 모두 x축 위에 있어 x축과 A(-1,0) 한 점에서만 만나고, 점 A에서 기울기 7인 접선(주황색)이 곡선에 접하도록 그어져 있다.",
     "solutionImageCaption": "A(-1,0)에서의 접선의 기울기 f'(-1)=7이므로 접선은 y=7x+7이고 정답은 ④이다.",
     "solutionImageSize": "medium"
   },
@@ -501,8 +501,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$x=t$에서의 접선은 $y=(2t-3)(x-t)+(t^2-3t)=(2t-3)x-t^2$이다.\n이 직선이 $(2,k)$를 지나므로 $k=2(2t-3)-t^2=-(t-2)^2-2$.\n서로 다른 두 접점의 $x$좌표를 $t_1,t_2$라 하면 같은 $k$를 주므로 $(t_1-2)^2=(t_2-2)^2$이다. 두 값이 다르므로 $t_1+t_2=4$.\n또 $|t_1-t_2|=4$이므로 $t_1=0,t_2=4$ (순서 무관)이다.\n$k=-(0-2)^2-2=-6$이므로 정답은 ②이다.",
-    "solutionImage": "assets/images/26_순천여고_2학기_중간_고2_미적분I/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 포물선 y=x^2-3x 위의 접점 A(0,0), B(4,4)에서 그은 접선 y=-3x, y=5x-16이 점선 x=2 위의 한 점에서 만나고, x축 위에 A와 B의 x좌표 차 4가 표시되어 있다.",
+    "solutionImage": "assets/images/26_순천여고_2학기_중간_고2_미적분I/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x^2-3x 위의 접점 A(0,0), B(4,4)에서 그은 접선 y=-3x, y=5x-16(주황색)이 점선 x=2 위의 점 (2,k)에서 만나고, x축 위에 A와 B의 x좌표 차 4가 표시되어 있다.",
     "solutionImageCaption": "접점의 x좌표가 0, 4이면 두 접선의 교점은 (2,k)이고 k=-6이므로 정답은 ②이다.",
     "solutionImageSize": "medium"
   },
@@ -632,8 +632,8 @@ window.questionBank = [
     "answer": "$B\\left(-\\dfrac12,-\\dfrac18\\right)$, $\\dfrac{15}{8}$",
     "solution": "$A=(1,1)$이다. 점 $B$의 $x$좌표를 $u$라 하면 $B=(u,u^3)$이고, $y=x^3$의 도함수는 $3x^2$이다.\n따라서 점 $B$에서의 접선은 $y-u^3=3u^2(x-u)$, 즉 $y=3u^2x-2u^3$이다.\n이 접선이 $A(1,1)$을 지나므로 $1=3u^2-2u^3$, 즉 $2u^3-3u^2+1=(u-1)^2(2u+1)=0$이다.\n$u=1$은 점 $A$ 자체를 접점으로 잡는 경우로, 그림과 문제의 다른 접점 $B$가 아니다. 따라서 $u=-\\frac12$이다.\n$B=\\left(-\\frac12,-\\frac18\\right)$이고 두 점 사이의 거리는\n$AB=\\sqrt{\\left(1+\\frac12\\right)^2+\\left(1+\\frac18\\right)^2}=\\sqrt{\\frac94+\\frac{81}{64}}=\\sqrt{\\frac{225}{64}}=\\frac{15}{8}$이다.\n따라서 점 $B$의 좌표는 $\\left(-\\frac12,-\\frac18\\right)$, 다리 $AB$의 길이는 $\\frac{15}{8}$이다.",
     "image": "assets/images/26_순천여고_2학기_중간_고2_미적분I/q22.png",
-    "solutionImage": "assets/images/26_순천여고_2학기_중간_고2_미적분I/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 곡선 y=x^3 위의 점 A(1,1)과, 기울기 3/4인 접선이 곡선에 접하는 점 B가 표시되고, 접선이 A를 지난다. 선분 AB를 빗변으로 하는 직각삼각형이 연하게 칠해지고 가로·세로 변이 점선으로 그려져 있다.",
+    "solutionImage": "assets/images/26_순천여고_2학기_중간_고2_미적분I/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=x^3 위의 점 A(1,1)과, 기울기 3/4인 접선(주황색)이 곡선에 접하는 점 B가 표시되고, 접선이 A를 지난다. 선분 AB를 빗변으로 하는 직각삼각형이 연하게 칠해지고 가로 3/2, 세로 9/8이 점선 곁에 적혀 있다.",
     "solutionImageCaption": "B(-1/2,-1/8)이고 직각삼각형의 가로 3/2, 세로 9/8이므로 AB=15/8이다.",
     "solutionImageSize": "medium"
   },

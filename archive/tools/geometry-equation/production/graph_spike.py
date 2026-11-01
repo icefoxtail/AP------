@@ -464,6 +464,7 @@ def _produce_piecewise_polynomial(plan,vp):
             cx,cy=vp.screen((point['xValue'],point['yValue'] if 'slope' in row else level))
             parts.append(f'<circle id="intersection-{row["lineId"]}-{k}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
     for index,point in enumerate(plan.get('requiredPoints',[]),1):
+        if point.get('marker')=='NONE':continue   # (G12-1) a key point the picture does not draw
         cx,cy=vp.screen((point['x'],point['y']))
         parts.append(f'<circle id="required-point-{index}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
     interval=plan.get('intervalFeatures')

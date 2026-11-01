@@ -1631,6 +1631,9 @@ def _pp_ref_crossings(pieces,intervals,source,row):
 GRAPH_REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5','BLUE':'#7fa6e8','WARM':'#f2a65a','GREEN':'#6fcf97','ROSE':'#e98aa8','VIOLET':'#a78bdb'}
 # the colour-group tints (C1) are translucent: this observer's own copy of their fill-opacity (the gray ones carry none)
 GRAPH_REGION_OPACITY={'BLUE':0.32,'WARM':0.42,'GREEN':0.42,'ROSE':0.42,'VIOLET':0.42}
+# (G12-2) the colour-group line colours of overlay lines, segments, polygon outlines and drawn curves: this observer's own copy of the table (tests/test_palette_c1.py ties it)
+GRAPH_COLOR_LINES={'BLUE':'#1f5fa8','WARM':'#b85c00','GREEN':'#2e7d32','ROSE':'#b8325f','VIOLET':'#6b46b3'}
+GRAPH_COLOR_LINE_WIDTH=2.4   # stroke width of a coloured overlay line, segment or polygon outline (a plain one is thinner)
 GRAPH_REGION_BOUNDARY_TOLERANCE=0.75   # svg px: a fill boundary against the boundary curve at sample x
 GRAPH_REGION_OUTSIDE=0.02              # relative band height: how far outside counts as outside the fill
 
@@ -2027,6 +2030,10 @@ def piecewise_polynomial_audit(plan,svg,transform):
         # coordinateBand.hide (G6c): a hidden required point keeps its dot at the exact place (checked below like any key point) but has no coordinate text in the band or beside it.
         band_hidden=set(plan['coordinateBand']['hide']) if isinstance(plan.get('coordinateBand'),dict) and isinstance(plan['coordinateBand'].get('hide'),list) else set()
         for index,point in enumerate(required,1):
+            if point.get('marker')=='NONE':
+                # marker NONE (G12-1): the key point is part of the claims but is not drawn: no dot, no name, no coordinates under its id
+                if any((node.get('id') or '')=='required-point-'+str(index) or (node.get('id') or '').startswith('required-point-'+str(index)+'-') for node in root.iter()):errors.append('PIECEWISE_POLY_KEY_POINT_MARKER_SHOWN:'+str(point.get('id')))
+                continue
             if not dot_at('required-point-'+str(index),point['x'],point['y']):errors.append('PIECEWISE_POLY_KEY_POINT_DOT_MISSING:'+str(point.get('id')))
             if point.get('id') in band_hidden and any((node.get('id') or '').startswith('required-point-'+str(index)+'-coordinate') for node in root.iter()):errors.append('COORDINATE_BAND_HIDDEN_POINT_SHOWN:'+str(point.get('id')))
         for line_id,level,xs,keys,m,heights in expected_rows:
@@ -2694,6 +2701,9 @@ def _ov_line(entry):
     if 'style' in entry:
         if entry['style'] not in ('SOLID','DASHED'):raise ValueError('OVERLAY_LINE_STYLE_INVALID')
         extra['style']=entry['style']
+    if 'color' in entry:
+        if entry['color'] not in GRAPH_COLOR_LINES:raise ValueError('OVERLAY_COLOR_INVALID')
+        extra['color']=entry['color']
     if entry.get('labelValues') is not None:extra['labelValues']=entry['labelValues']
     if 'x' in entry:
         if 'slope' in entry or 'intercept' in entry:raise ValueError('OVERLAY_LINE_INVALID')
@@ -2933,6 +2943,9 @@ def _ov_expected(plan):
     for entry in raw.get('segments',[]):
         if not isinstance(entry,dict):raise ValueError('OVERLAY_SEGMENT_INVALID')
         row={'id':entry.get('id'),'from':point_ref(entry.get('from')),'to':point_ref(entry.get('to')),'dashed':entry.get('dashed',False)}
+        if 'color' in entry:
+            if entry['color'] not in GRAPH_COLOR_LINES or entry.get('dashed',False):raise ValueError('OVERLAY_COLOR_INVALID')
+            row['color']=entry['color']
         if entry.get('length') is True:
             (x1,y1),(x2,y2)=row['from'],row['to'];row['lengthCodes']=_ov_length_codes(S.sqrt(S.expand((x2-x1)**2+(y2-y1)**2)))
         segments.append(row)
@@ -2952,6 +2965,7 @@ def _ov_expected(plan):
             if label_kind is None:label_kind='MATH'
             if label_kind not in ('MATH','TEXT'):raise ValueError('OVERLAY_POLYGON_LABEL_KIND_INVALID')
             if not isinstance(label,str) or not label.strip() or len(label)>40 or any(ord(char)<32 for char in label) or (label_kind=='MATH' and not re.fullmatch(r'[0-9A-Za-z=+\-*/().\^ ]{1,40}',label)):raise ValueError('OVERLAY_POLYGON_LABEL_INVALID')
+        if entry.get('fill','LIGHT') not in ('LIGHT','MEDIUM','NONE',*GRAPH_COLOR_LINES):raise ValueError('OVERLAY_FILL_INVALID')
         polygons.append({'id':entry.get('id'),'points':[point_ref(value) for value in entry['points']],'fill':entry.get('fill','LIGHT'),'label':label,'labelKind':label_kind})
     names=[];seen_names=set()
     for entry in raw.get('names',[]):
@@ -2985,6 +2999,22 @@ def _ov_expected(plan):
         if label is not None and (not isinstance(label,str) or label!=label.strip() or not re.fullmatch(r'[가-힣A-Za-z0-9 ()]{1,12}',label)):raise ValueError('OVERLAY_QUADRANT_INVALID')
         if fill is not None and fill not in ('LIGHT','MEDIUM'):raise ValueError('OVERLAY_QUADRANT_INVALID')
         seen_quadrants.add(number);quadrants.append({'id':entry['id'],'quadrant':number,'label':label,'fill':fill})
+    callouts=[];seen_callouts=set();required_rows=plan.get('requiredPoints') if isinstance(plan.get('requiredPoints'),list) else []
+    for entry in raw.get('callouts',[]) or []:
+        # callouts (G12-1): a label pulled out on a leader that starts on its own point; read again here from the raw field
+        if not isinstance(entry,dict) or set(entry)-{'id','point','text','direction','labelKind'}:raise ValueError('OVERLAY_CALLOUT_INVALID')
+        ident=entry.get('id');text=entry.get('text');ref=entry.get('point')
+        if not isinstance(ident,str) or ident in seen_callouts or not isinstance(ref,str) or not isinstance(text,str) or text!=text.strip() or not text:raise ValueError('OVERLAY_CALLOUT_INVALID')
+        seen_callouts.add(ident)
+        kind=entry.get('labelKind') or ('TEXT' if re.search('[가-힣]',text) else 'MATH')
+        if kind not in ('TEXT','MATH') or (kind=='TEXT' and not re.fullmatch(OV_NAME_PATTERN,text)) or (kind=='MATH' and not re.fullmatch(r'[0-9A-Za-z=+\-*/().^ ]{1,12}',text)):raise ValueError('OVERLAY_CALLOUT_INVALID')
+        if ref in points:dot=ref;at=(float(S.N(points[ref][0],30)),float(S.N(points[ref][1],30)))
+        else:
+            index=next((i for i,point in enumerate(required_rows) if isinstance(point,dict) and point.get('id')==ref),None)
+            if index is None or required_rows[index].get('marker')=='NONE':raise ValueError('OVERLAY_CALLOUT_INVALID')
+            dot='required-point-'+str(index+1)
+            at=tuple(float(S.N(_ov_reader(required_rows[index][k]),30)) if isinstance(required_rows[index][k],str) else float(required_rows[index][k]) for k in ('x','y'))
+        callouts.append({'id':ident,'dot':dot,'at':at,'text':text,'labelKind':kind})
     circle_regions=[]
     for entry in raw.get('circleRegions',[]) or []:
         if isinstance(entry,dict) and 'boundary' in entry:
@@ -2992,7 +3022,7 @@ def _ov_expected(plan):
         if not isinstance(entry,dict) or set(entry)-{'id','circle','from','to','side','fill'} or entry.get('circle') not in circles or entry.get('from') not in points or entry.get('to') not in points or entry.get('from')==entry.get('to'):raise ValueError('OVERLAY_CIRCLE_REGION_INVALID')
         if entry.get('side') not in ('ABOVE','BELOW','LEFT','RIGHT') or entry.get('fill','LIGHT') not in ('LIGHT','MEDIUM'):raise ValueError('OVERLAY_CIRCLE_REGION_INVALID')
         circle_regions.append({'id':entry['id'],'circle':entry['circle'],'from':entry['from'],'to':entry['to'],'side':entry['side'],'fill':entry.get('fill','LIGHT')})
-    return {'circleFills':circle_fills,'circleRegions':circle_regions,'circles':circles,'quadrants':quadrants,'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'names':names,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
+    return {'callouts':callouts,'circleFills':circle_fills,'circleRegions':circle_regions,'circles':circles,'quadrants':quadrants,'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'names':names,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
 
 OV_DIGIT=lambda text:[format(0x30+int(d),'X') for d in str(text)]
 
@@ -3035,9 +3065,10 @@ def _ov_coordinate_codes(value):
     return out+(OV_DIGIT(denominator) if denominator!=1 else [])
 
 def _ov_length_codes(value):
-    """Glyph codes of a segment length written as an integer or p*sqrt(q): the digits, the radical U+221A, the radicand digits."""
+    """Glyph codes of a segment length written as an integer, a fraction or p*sqrt(q): the digits (numerator then denominator), the radical U+221A, the radicand digits."""
     value=value if value.is_Integer else S.simplify(value)
     if value.is_Integer:return OV_DIGIT(int(value))
+    if value.is_Rational and value>0:return OV_DIGIT(int(value.p))+OV_DIGIT(int(value.q))   # a fraction (G12-3): the numerator digits, then the denominator digits
     coefficient,radical=value.as_coeff_Mul()
     if coefficient.is_Integer and coefficient>0 and radical.is_Pow and radical.exp==S.Rational(1,2) and radical.base.is_Integer and radical.base>1:
         return (OV_DIGIT(int(coefficient)) if coefficient!=1 else [])+['221A']+OV_DIGIT(int(radical.base))
@@ -3098,6 +3129,8 @@ OV_NAME_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,10}'
 OV_NAME_CURVE_ANCHOR_MAX_PX=48.0
 OV_NAME_CURVE_OWN_MAX_PX=18.0
 OV_NAME_CURVE_MARGIN_PX=6.0
+OV_CALLOUT_LEADER_MIN_PX=8.0       # a callout's leader is long enough to be seen
+OV_CALLOUT_START_SLACK_PX=3.0      # where the leader leaves its own dot it may touch the stroke the dot sits on
 
 def _ov_point_segment_distance(point,a,b):
     dx,dy=b[0]-a[0],b[1]-a[1];length2=dx*dx+dy*dy
@@ -3134,6 +3167,15 @@ def _ov_collinear(own,other,tolerance=0.5):
 
 def _ov_glyph_codes(node):
     return [(child.get('data-c') or '').upper() for child in node.iter() if child.tag.split('}')[-1]=='path' and child.get('data-c')]
+
+def _ov_color_errors(node,color,code):
+    """(G12-2) The stroke of one drawn overlay line or segment against the plan's colour name: a coloured one wears the palette's line colour at the colour width, a plain one
+    wears no palette colour (a colour the plan did not declare is as wrong as a missing one)."""
+    stroke=node.get('stroke')
+    if color is None:return [code] if stroke in GRAPH_COLOR_LINES.values() else []
+    try:width=float(node.get('stroke-width') or 0)
+    except ValueError:return [code]
+    return [] if stroke==GRAPH_COLOR_LINES[color] and abs(width-GRAPH_COLOR_LINE_WIDTH)<1e-6 else [code]
 
 def overlays_audit(plan,svg,transform):
     raw=plan.get('overlays')
@@ -3181,6 +3223,7 @@ def overlays_audit(plan,svg,transform):
             if 'data-label-kind' in svg:
                 # style (E31): a DASHED overlay line carries a stroke-dasharray, a SOLID one (the default) none
                 if (lines[obj_id].get('stroke-dasharray') is not None)!=(line.get('style')=='DASHED'):errors.append('OVERLAY_LINE_STYLE_MISMATCH:'+str(line['id']))
+                errors+=_ov_color_errors(lines[obj_id],line.get('color'),'OVERLAY_COLOR_MISMATCH:'+str(line['id']))
         for ident,(x,y) in expected['points'].items():
             claimed.add(ident);got=read_circle(ident)
             if got is None:errors.append('OVERLAY_POINT_MISSING:'+ident)
@@ -3245,6 +3288,7 @@ def overlays_audit(plan,svg,transform):
             if got is None:errors.append('OVERLAY_SEGMENT_MISSING:'+str(segment['id']));continue
             want=[(float(S.N(segment['from'][0],30)),float(S.N(segment['from'][1],30))),(float(S.N(segment['to'][0],30)),float(S.N(segment['to'][1],30)))]
             if not (near(got[0],want[0]) and near(got[1],want[1]) or near(got[0],want[1]) and near(got[1],want[0])):errors.append('OVERLAY_SEGMENT_MISMATCH:'+str(segment['id']))
+            if 'data-label-kind' in svg:errors+=_ov_color_errors(lines[ident],segment.get('color'),'OVERLAY_COLOR_MISMATCH:'+str(segment['id']))
         for guide in expected['guides']:
             point=guide['from'];px,py=float(S.N(point[0],30)),float(S.N(point[1],30))
             wanted=[]
@@ -3263,6 +3307,17 @@ def overlays_audit(plan,svg,transform):
             if polygon['fill']!='NONE':
                 claimed.add(ident+'-fill');fill=polylines.get(ident+'-fill',None) or root.find(f'.//*[@id="{ident}-fill"]')
                 if fill is None:errors.append('OVERLAY_FILL_MISSING:'+str(polygon['id']))
+                elif 'data-label-kind' in svg:
+                    # (G12-2) the tint is the plan's own: a palette colour carries its tint colour and opacity, a gray one its gray (and no opacity)
+                    tone=fill.get('fill');opacity=fill.get('fill-opacity')
+                    if polygon['fill'] in GRAPH_COLOR_LINES:
+                        if tone!=GRAPH_REGION_FILLS[polygon['fill']] or opacity is None or round(float(opacity),6)!=GRAPH_REGION_OPACITY[polygon['fill']]:errors.append('OVERLAY_COLOR_MISMATCH:'+str(polygon['id']))
+                    elif tone!=GRAPH_REGION_FILLS[polygon['fill']] or opacity is not None:errors.append('OVERLAY_COLOR_MISMATCH:'+str(polygon['id']))
+            if 'data-label-kind' in svg and ident in polylines:
+                outline=polylines[ident]
+                if polygon['fill'] in GRAPH_COLOR_LINES:
+                    if outline.get('stroke')!=GRAPH_COLOR_LINES[polygon['fill']] or abs(float(outline.get('stroke-width') or 0)-GRAPH_COLOR_LINE_WIDTH)>1e-6:errors.append('OVERLAY_COLOR_MISMATCH:'+str(polygon['id']))
+                elif outline.get('stroke') in GRAPH_COLOR_LINES.values():errors.append('OVERLAY_COLOR_MISMATCH:'+str(polygon['id']))
             if polygon['label'] is not None:claimed.add(ident+'-label')
         # Lattice points: the observer enumerates them itself from the exact curve; the figure must show exactly those dots, small and unnamed.
         lattice=expected.get('lattice')
@@ -3368,6 +3423,44 @@ def overlays_audit(plan,svg,transform):
                 others=[px for other in expected['segments'] if other is not segment for px in [px_segment('overlay-segment-'+str(other['id']))] if px is not None]
                 others+=[px for other in expected['lines'] for px in [px_segment('overlay-line-'+str(other['id']))] if px is not None]
                 label_belongs(label_id,'overlay-segment-'+str(segment['id']),'OVERLAY_SEGMENT_LENGTH',True,others)
+            # callouts (G12-1): the label stands on a leader that starts ON its own dot (at the point the observer computed) and ends on the label box;
+            # the leader crosses no other stroke and the box sits on none, so the leader alone names the owner.
+            if expected['callouts']:
+                stroke_px=[px for kind,rows in (('segment',expected['segments']),('line',expected['lines'])) for other in rows for px in [px_segment('overlay-'+kind+'-'+str(other['id']))] if px is not None]
+                for node in root.iter():
+                    if node.tag.split('}')[-1]!='polyline' or not (node.get('id') or '').startswith('overlay-polygon-') and node.get('data-role')!='curve':continue
+                    if (node.get('id') or '').endswith('-fill'):continue
+                    try:values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
+                    except ValueError:values=[]
+                    stroke_px+=[((values[i],values[i+1]),(values[i+2],values[i+3])) for i in range(0,len(values)-3,2)]
+                def cross_point(a,b,c,d):
+                    r=(b[0]-a[0],b[1]-a[1]);q=(d[0]-c[0],d[1]-c[1]);den=r[0]*q[1]-r[1]*q[0]
+                    if abs(den)<1e-12:return None
+                    t=((c[0]-a[0])*q[1]-(c[1]-a[1])*q[0])/den;u=((c[0]-a[0])*r[1]-(c[1]-a[1])*r[0])/den
+                    return (a[0]+t*r[0],a[1]+t*r[1]) if 0<=t<=1 and 0<=u<=1 else None
+                for callout in expected['callouts']:
+                    ident=str(callout['id']);label_id='overlay-callout-'+ident;claimed.add(label_id);claimed.add(label_id+'-owner-leader')
+                    node=groups.get(label_id)
+                    if node is None:errors.append('OVERLAY_CALLOUT_LABEL_MISSING:'+ident);continue
+                    if node.get('data-owner')!=callout['dot']:errors.append('OVERLAY_CALLOUT_OWNER_MISMATCH:'+ident);continue
+                    if callout['labelKind']=='MATH':
+                        want=_ov_label_codes(callout['text']);got=_ov_glyph_codes(node)
+                        if node.get('data-text') is not None or len(got)!=len(want) or any(code not in allowed for code,allowed in zip(got,want)):errors.append('OVERLAY_CALLOUT_TEXT_MISMATCH:'+ident);continue
+                    elif node.get('data-text')!=callout['text'] or node.get('data-tex') is not None or _ov_glyph_codes(node):errors.append('OVERLAY_CALLOUT_TEXT_MISMATCH:'+ident);continue
+                    box=_region_label_box(groups,label_id);leader=leaders.get(label_id);dot_node=circles.get(callout['dot'])
+                    if box is None or leader is None or dot_node is None:errors.append('OVERLAY_CALLOUT_LEADER_MISSING:'+ident);continue
+                    try:
+                        start=(float(leader.get('x1')),float(leader.get('y1')));end=(float(leader.get('x2')),float(leader.get('y2')))
+                        centre=(float(dot_node.get('cx')),float(dot_node.get('cy')));radius=float(dot_node.get('r') or 0)
+                    except (TypeError,ValueError):errors.append('OVERLAY_CALLOUT_LEADER_UNREADABLE:'+ident);continue
+                    want_centre=(ox+callout['at'][0]*sx,oy-callout['at'][1]*sy)
+                    if math.dist(centre,want_centre)>max(.35,.35*transform['displayScale']):errors.append('OVERLAY_CALLOUT_POINT_MISMATCH:'+ident);continue
+                    if leader.get('data-owner')!=callout['dot'] or math.dist(start,centre)>radius+OV_LEADER_TOLERANCE_PX:errors.append('OVERLAY_CALLOUT_LEADER_NOT_ON_OWNER:'+ident)
+                    edges=[((box[0],box[1]),(box[0]+box[2],box[1])),((box[0]+box[2],box[1]),(box[0]+box[2],box[1]+box[3])),((box[0]+box[2],box[1]+box[3]),(box[0],box[1]+box[3])),((box[0],box[1]+box[3]),(box[0],box[1]))]
+                    if min(_ov_point_segment_distance(end,a,b) for a,b in edges)>OV_LEADER_TOLERANCE_PX:errors.append('OVERLAY_CALLOUT_LEADER_NOT_ON_LABEL:'+ident)
+                    if math.dist(start,end)<OV_CALLOUT_LEADER_MIN_PX:errors.append('OVERLAY_CALLOUT_LEADER_TOO_SHORT:'+ident)
+                    if any((hit:=cross_point(start,end,a,b)) is not None and math.dist(hit,centre)>radius+OV_CALLOUT_START_SLACK_PX for a,b in stroke_px):errors.append('OVERLAY_CALLOUT_LEADER_CROSSES_STROKE:'+ident)
+                    if any(_ov_segment_hits_box(a,b,box) for a,b in stroke_px):errors.append('OVERLAY_CALLOUT_LABEL_ON_STROKE:'+ident)
             # names: a plain-text label (its text on the group, no math glyphs) that belongs to the segment or line it names (strictly nearest, or a
             # leader), or stands beside the drawn curve near its anchor point, nearer the curve than any overlay segment or line.
             curve_segments=[]
@@ -4176,11 +4269,131 @@ def axis_titles_audit(plan,svg,transform):
     except (KeyError,TypeError,ValueError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['AXIS_TITLE_SOURCE_INVALID']}
     return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'titles':len(titles)}
 
+def _observed_curve_polylines(root):
+    """(branch, [(x,y) px ...]) of every drawn curve polyline that names its branch."""
+    rows=[]
+    for node in root.iter():
+        if node.tag.split('}')[-1]=='polyline' and node.get('data-role')=='curve' and node.get('data-branch'):
+            try:values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
+            except ValueError:continue
+            rows.append((node,str(node.get('data-branch')),[(values[i],values[i+1]) for i in range(0,len(values)-1,2)]))
+    return rows
+
+def curve_color_audit(plan,svg,transform):
+    """(G12-2) graphPlan.curveColor, referenceCurves[].color and sharedCurve.color, read from the final SVG: every branch of a coloured curve is stroked in the palette's line
+    colour, every branch of a plain curve in no palette colour. The branch tags say which curve a polyline is (PIECE_n = f, REF_<id>[_n] = a reference curve, G_PIECE_n = g)."""
+    if 'data-label-kind' not in svg:return None
+    errors=[]
+    try:
+        for key,value in (('curveColor',plan.get('curveColor')),):
+            if value is not None and value not in GRAPH_COLOR_LINES:return {'status':'UNSUPPORTED','errors':['OVERLAY_COLOR_INVALID:'+key]}
+        refs={str(row.get('id')):row.get('color') for row in plan.get('referenceCurves',[]) or [] if isinstance(row,dict)}
+        shared=plan.get('sharedCurve') if isinstance(plan.get('sharedCurve'),dict) else {}
+        for value in (*refs.values(),shared.get('color')):
+            if value is not None and value not in GRAPH_COLOR_LINES:return {'status':'UNSUPPORTED','errors':['OVERLAY_COLOR_INVALID:curve']}
+        root=ET.fromstring(svg)
+        for node,branch,_points in _observed_curve_polylines(root):
+            if branch.startswith('G_PIECE_'):want=shared.get('color')
+            elif branch.startswith('REF_'):
+                ident=branch[4:];want=refs.get(ident,refs.get(ident.rsplit('_',1)[0]))
+            elif branch.startswith('PIECE_'):want=plan.get('curveColor')
+            else:continue
+            stroke=node.get('stroke')
+            if want is None:
+                if stroke in GRAPH_COLOR_LINES.values():errors.append('OVERLAY_COLOR_MISMATCH:'+branch)
+            elif stroke!=GRAPH_COLOR_LINES[want]:errors.append('OVERLAY_COLOR_MISMATCH:'+branch)
+    except (KeyError,TypeError,ValueError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['OVERLAY_COLOR_SOURCE_INVALID']}
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
+
+def _letter_codes(text):
+    """Glyph codes of a short math text of letters and brackets (f(m)): each letter is its math-italic code."""
+    out=[]
+    for ch in text:
+        if 'a'<=ch<='z':out.append(format(0x210E if ch=='h' else 0x1D44E+ord(ch)-97,'X'))
+        elif 'A'<=ch<='Z':out.append(format(0x1D434+ord(ch)-65,'X'))
+        else:out.append(format(ord(ch),'X'))
+    return out
+
+def curve_name_audit(plan,svg,transform):
+    """(G12-4) graphPlan.axisVariable and graphPlan.nameLabel of a discontinuous function, read from the final SVG: the horizontal axis is named with the letter, f's name is
+    f(letter), g's name (when it has no text of its own) is g(letter), and f's name stands where nameLabel says (along its curve, on its side of it)."""
+    variable=plan.get('axisVariable');place=plan.get('nameLabel')
+    if (variable is None and place is None) or 'data-label-kind' not in svg:return None
+    errors=[]
+    try:
+        root=ET.fromstring(svg);groups={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id')}
+        if variable is not None:
+            if not isinstance(variable,str) or not re.fullmatch(r'[a-xz]',variable):return {'status':'UNSUPPORTED','errors':['INVALID_AXIS_VARIABLE']}
+            node=groups.get('axis-x')
+            if node is None or _ov_glyph_codes(node)!=_letter_codes(variable):errors.append('AXIS_VARIABLE_LABEL_MISMATCH')
+            name=plan.get('functionName')
+            if name is not None:
+                node=groups.get('main-curve-name')
+                if node is None or _ov_glyph_codes(node)!=_letter_codes(name+'('+variable+')'):errors.append('AXIS_VARIABLE_NAME_MISMATCH:'+str(name))
+            shared=plan.get('sharedCurve') if isinstance(plan.get('sharedCurve'),dict) else None
+            if shared is not None and not (isinstance(shared.get('nameLabel'),dict) and 'text' in shared['nameLabel']):
+                node=groups.get('g-curve-name');text=str(shared.get('name') or shared.get('id'))+'('+variable+')'
+                if node is None or _ov_glyph_codes(node)!=_letter_codes(text):errors.append('AXIS_VARIABLE_NAME_MISMATCH:'+str(shared.get('id')))
+        if place is not None:
+            if not isinstance(place,dict) or place.get('at') not in ('START','MID','END') or place.get('side','BELOW') not in ('BELOW','ABOVE') or plan.get('functionName') is None:return {'status':'UNSUPPORTED','errors':['CURVE_NAME_LABEL_INVALID']}
+            box=_region_label_box(groups,'main-curve-name')
+            points=[point for _node,branch,pts in _observed_curve_polylines(root) if branch.startswith('PIECE_') for point in pts]
+            if box is None or len(points)<2:errors.append('CURVE_NAME_LABEL_BOX_UNREADABLE')
+            else:
+                x0=min(point[0] for point in points);x1=max(point[0] for point in points);cx=box[0]+box[2]/2;cy=box[1]+box[3]/2
+                fraction=(cx-x0)/max(1e-9,x1-x0)
+                wanted={'START':fraction<=.35,'MID':.3<=fraction<=.7,'END':fraction>=.65}[place['at']]
+                near=min(points,key=lambda point:abs(point[0]-cx))
+                below=cy>near[1]
+                if not wanted or below!=(place.get('side','BELOW')=='BELOW'):errors.append('CURVE_NAME_LABEL_NOT_AT_PLACE:main-curve-name')
+                if min(_ov_point_box_distance(point,box) for point in points)>OV_CURVE_NAME_FAR_PX:errors.append('CURVE_NAME_LABEL_NOT_NEAR_CURVE:main-curve-name')
+    except (KeyError,TypeError,ValueError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['CURVE_NAME_SOURCE_INVALID']}
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
+
+OV_CURVE_NAME_FAR_PX=80.0   # a curve's name stands within this many px of its curve
+OV_ASYMPTOTE_LABEL_END_PX=90.0     # asymptoteLabelAt: the label stands within this many px (along the line) of the end it names
+OV_ASYMPTOTE_LABEL_LINE_PX=45.0    # ... and within this many px of the dashed line itself
+OV_ASYMPTOTE_LABEL_CURVE_PX=4.0    # ... and keeps at least this many px from every curve branch
+
+def asymptote_label_audit(plan,svg,transform):
+    """(G12-5) graphPlan.asymptoteLabelAt START|END of a rational graph, read from the final SVG: the label of the horizontal asymptote stands near that end of the dashed line,
+    close to the line, on the side the curve is not (the observer recomputes the curve value at that end from the plan's own coefficients) and touches no curve branch."""
+    place=plan.get('asymptoteLabelAt')
+    if place is None or 'data-label-kind' not in svg:return None
+    try:
+        if place not in ('START','END') or plan.get('family')!='rational':return {'status':'UNSUPPORTED','errors':['ASYMPTOTE_LABEL_AT_INVALID']}
+        n=[float(S.N(_ov_reader(v),30)) for v in plan['numerator']];d=[float(S.N(_ov_reader(v),30)) for v in plan['denominator']]
+        if len(n)!=2 or len(d)!=2 or d[1]==0 or n[1]==0:return {'status':'UNSUPPORTED','errors':['ASYMPTOTE_LABEL_AT_UNSUPPORTED']}
+        asymptote=n[1]/d[1];x_end=plan['viewport'][1] if place=='END' else plan['viewport'][0]
+        curve=(n[0]+n[1]*x_end)/(d[0]+d[1]*x_end)
+        ox,oy,sx,sy=[transform[key] for key in ('originX','originY','sx','sy')]
+        root=ET.fromstring(svg);groups={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id')}
+        box=_region_label_box(groups,'horizontal-asymptote-label')
+        if box is None:return {'status':'FAIL','errors':['ASYMPTOTE_LABEL_BOX_UNREADABLE']}
+        errors=[];line_y=oy-asymptote*sy;end_x=ox+x_end*sx;cx=box[0]+box[2]/2;cy=box[1]+box[3]/2
+        if abs(cx-end_x)>OV_ASYMPTOTE_LABEL_END_PX or _ov_point_box_distance((cx,line_y),box)>OV_ASYMPTOTE_LABEL_LINE_PX:errors.append('ASYMPTOTE_LABEL_NOT_AT_END')
+        if (cy>line_y)!=(curve>asymptote):errors.append('ASYMPTOTE_LABEL_ON_CURVE_SIDE')
+        for _node,_branch,points in [row for row in _observed_curve_polylines_all(root)]:
+            if any(_ov_box_segment_distance(box,a,b)<OV_ASYMPTOTE_LABEL_CURVE_PX for a,b in zip(points,points[1:])):errors.append('ASYMPTOTE_LABEL_TOUCHES_CURVE');break
+    except (KeyError,TypeError,ValueError,ZeroDivisionError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['ASYMPTOTE_LABEL_SOURCE_INVALID']}
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
+
+def _observed_curve_polylines_all(root):
+    """Every drawn curve polyline (with or without a branch tag): (node, branch, [(x,y) px ...])."""
+    rows=[]
+    for node in root.iter():
+        if node.tag.split('}')[-1]=='polyline' and node.get('data-role')=='curve':
+            try:values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
+            except ValueError:continue
+            rows.append((node,str(node.get('data-branch') or ''),[(values[i],values[i+1]) for i in range(0,len(values)-1,2)]))
+    return rows
+
+
 def audit(plan,svg,transform):
     """The family audit plus the optional graph overlays and axis titles: the observer re-derives every overlay element from the raw overlays
     field and reads the same element ids back from the model and the final SVG."""
     result=_audit_family(plan,svg,transform)
-    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform)) if part is not None]
+    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform)) if part is not None]
     if not parts:return result
     errors=sorted(set([*(result.get('errors') or []),*(error for part in parts for error in (part.get('errors') or []))]))
     if result.get('status')=='UNSUPPORTED' or any(part.get('status')=='UNSUPPORTED' for part in parts):status='UNSUPPORTED'

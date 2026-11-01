@@ -1,0 +1,114 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "functionName": "f",
+  "pieces": [
+   {
+    "coefficients": [
+     "3",
+     "-2",
+     "0",
+     "1"
+    ]
+   }
+  ],
+  "breakpoints": [],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "formula": "x^3-2x+3",
+  "overlays": {
+   "lines": [
+    {
+     "id": "t1",
+     "slope": "1",
+     "intercept": "1",
+     "label": "y=x+1",
+     "labelAt": "END"
+    },
+    {
+     "id": "t2",
+     "slope": "1",
+     "intercept": "5",
+     "label": "y=x+5",
+     "labelAt": "END"
+    }
+   ],
+   "points": [
+    {
+     "id": "A",
+     "curveX": "1",
+     "unnamed": true,
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "curveX": "-1",
+     "unnamed": true,
+     "coordinates": true
+    }
+   ],
+   "segments": [
+    {
+     "id": "AB",
+     "from": "A",
+     "to": "B",
+     "dashed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "ta",
+     "point": "A",
+     "text": "접점",
+     "direction": "SE"
+    },
+    {
+     "id": "tb",
+     "point": "B",
+     "text": "접점",
+     "direction": "NW"
+    }
+   ]
+  },
+  "requiredPoints": [
+   {
+    "id": "M",
+    "x": "-sqrt(6)/3",
+    "y": "3+4*sqrt(6)/9",
+    "marker": "NONE"
+   },
+   {
+    "id": "N",
+    "x": "sqrt(6)/3",
+    "y": "3-4*sqrt(6)/9",
+    "marker": "NONE"
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "coordinateBand": {
+   "hide": [
+    "M",
+    "N"
+   ]
+  }
+ },
+ "caption": "곡선 y=f(x)의 두 접점 (1,2), (-1,4)에서 기울기 1인 접선 y=x+1, y=x+5를 그렸다. 좌표가 적힌 큰 점이 접점이고, 두 접점을 이은 점선이 두 평행선 사이의 수직 거리이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "3t^2-2=1에서 t=1, -1; 접점 (1,2), (-1,4); 접선 y=x+1, y=x+5",
+   "mappedTo": [
+    "graphPlan.pieces",
+    "graphPlan.overlays"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "직선 y=x와 평행한 두 접선과 접점"
+ ]
+}
