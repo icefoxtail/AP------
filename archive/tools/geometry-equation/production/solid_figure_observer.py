@@ -2590,6 +2590,18 @@ def check_angle_labels(plan, ctx):
         box = boxes.get(g.get('id'))
         if box is None: continue
         pv, pa, pb = named[keys[1]][1], named[keys[0]][1], named[keys[2]][1]
+        # a name with a leader (a figure of a space alone, no room inside the angle): the leader ends on an end of an arc of its mark and the box stands within 90 px of it
+        leader = next((e for e in (ctx['root'].iter(NS + 'line') if ctx.get('root') is not None else ()) if e.get('data-role') == 'leader' and e.get('data-label') == g.get('id')), None)
+        if leader is not None:
+            tip = (_num(leader, 'x2'), _num(leader, 'y2'))
+            arc_ends = []
+            for el in ctx['root'].iter(NS + 'polyline'):
+                if el.get('data-role') == 'angle-mark' and el.get('data-mark') == mid:
+                    pts = _points(el.get('points'))
+                    if pts: arc_ends += [pts[0], pts[-1]]
+            if g.get('data-leader') != '1' or not any(math.hypot(tip[0] - q[0], tip[1] - q[1]) <= 1.5 for q in arc_ends) or _box_seg_dist(box, (_num(leader, 'x1'), _num(leader, 'y1')), (_num(leader, 'x1'), _num(leader, 'y1'))) > 2.5 or math.hypot(box[0] + box[2] / 2 - tip[0], box[1] + box[3] / 2 - tip[1]) > 90.0:
+                errors.append('SOLID_ANGLE_LABEL_LEADER_NOT_ATTACHED:' + mid)
+            continue
         cx, cy = box[0] + box[2] / 2 - pv[0], box[1] + box[3] / 2 - pv[1]
         dist = math.hypot(cx, cy)
         if dist > 80.0 or _box_seg_dist(box, pv, pv) < 1.5: errors.append('SOLID_ANGLE_LABEL_FAR_FROM_ANGLE:' + mid)

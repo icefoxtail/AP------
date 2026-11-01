@@ -2315,6 +2315,7 @@ function spec3d(plan,model,ctx){
     const p1=project(add(V,e1)),p2=project(add(V,e2)),pv=project(V);
     const l1=Math.hypot(p1[0]-pv[0],p1[1]-pv[1]),l2=Math.hypot(p2[0]-pv[0],p2[1]-pv[1]);
     if(len(w)<1e-9||l1<1e-9||l2<1e-9)bad('SOLID_MARK_ANGLE_DEGENERATE:'+m.id);
+    let outerEnds=null;
     for(let ring=0;ring<m.arcs;ring++){
       const wantPx=20+5*ring;
       const kWorld=Math.min(0.36*Math.min(len(sub(A,V)),len(sub(B,V))),wantPx/(S*Math.max(l1,l2)));
@@ -2322,13 +2323,14 @@ function spec3d(plan,model,ctx){
       const pts=[];
       for(let k=0;k<=24;k++){const t=theta*k/24;pts.push(pt(project(add(V,mulv(add(mulv(e1,Math.cos(t)),mulv(w,Math.sin(t))),kWorld)))));}
       prims.push({t:'polyline',id:m.id+'-arc-'+(ring+1),role:'angle-mark',points:pts,mark:m.id,refs:joinKeys(m.refs),index:ring+1,count:m.arcs});
+      outerEnds=[pts[0],pts[pts.length-1]];
     }
     if(m.label!==undefined){
       // the label stands beyond the outer arc along the bisector of the two rays on the page (it may slide round the vertex a little where something is in the way)
       const u1=[(p1[0]-pv[0])/l1,(p1[1]-pv[1])/l1],u2=[(p2[0]-pv[0])/l2,(p2[1]-pv[1])/l2];
       let bis=[u1[0]+u2[0],u1[1]+u2[1]];const bl=Math.hypot(bis[0],bis[1]);
       bis=bl>1e-6?[bis[0]/bl,bis[1]/bl]:[-u1[1],u1[0]];
-      labels.push({id:'angle-label-'+m.id,role:'angle-label',owner:'angle-'+m.id,kind:'MATH',tex:m.label,plain:m.label,value:m.label,mark:m.id,place:'ANGLE',anchor:pt(pv),dir:[r6(bis[0]),r6(bis[1])],reach:20+5*(m.arcs-1)});
+      labels.push({id:'angle-label-'+m.id,role:'angle-label',owner:'angle-'+m.id,kind:'MATH',tex:m.label,plain:m.label,value:m.label,mark:m.id,place:'ANGLE',anchor:pt(pv),dir:[r6(bis[0]),r6(bis[1])],reach:20+5*(m.arcs-1),...(model.solids.length===0?{wedge:true,arcEnds:outerEnds}:{})});
     }
   }
   if(model.section?.kind==='AXIAL'){
@@ -2486,7 +2488,8 @@ function spec3d(plan,model,ctx){
     if(l<0.35){dir=[here[0]-centroidScreen[0],here[1]-centroidScreen[1]];l=Math.hypot(dir[0],dir[1])||1;}
     dir=[r6(dir[0]/l),r6(dir[1]/l)];
     vertexSpot.set(q.id,()=>({here,dir}));
-    if(!q.hideName)labels.push({id:'name-'+q.id,role:'vertex-name',owner:'vertex-'+q.id,kind:'MATH',tex:q.id,plain:q.id,value:q.id,anchor:hp,dir});
+    // typeset like the point names of a plane figure: a prime is the TeX prime (A'), not the Unicode glyph of a letter-like symbol; the label's value stays the name
+    if(!q.hideName)labels.push({id:'name-'+q.id,role:'vertex-name',owner:'vertex-'+q.id,kind:'MATH',tex:q.id.replace('′',"'"),plain:q.id,value:q.id,anchor:hp,dir});
   }
   // the name of a plane stands inside its parallelogram, in the corner with the most room (or at the centre, or at the corner nameAt says)
   for(const pl of model.space?.planes??[]){
@@ -3000,7 +3003,7 @@ function polygonCentroid(poly){
   for(let i=0;i<poly.length;i++){const [p,q]=[poly[i],poly[(i+1)%poly.length]],w=p[0]*q[1]-q[0]*p[1];a+=w;cx+=(p[0]+q[0])*w;cy+=(p[1]+q[1])*w;}
   return Math.abs(a)<1e-9?[poly.reduce((s,p)=>s+p[0],0)/poly.length,poly.reduce((s,p)=>s+p[1],0)/poly.length]:[cx/(3*a),cy/(3*a)];
 }
-const rankOf=l=>l.role==='vertex-name'||l.role==='count-vertex'||l.place==='VERTEX'?0:l.role==='count-edge'?2:1;
+const rankOf=l=>l.wedge?-1:l.role==='vertex-name'||l.role==='count-vertex'||l.place==='VERTEX'?0:l.role==='count-edge'?2:1;
 function placeLabels(spec,fragments,errors){
   let order=[...spec.labels].sort((a,b)=>rankOf(a)-rankOf(b)),best=null;
   for(let attempt=0;attempt<6;attempt++){
@@ -3045,7 +3048,13 @@ function placeLabelsOnce(spec,fragments,order){
     }else if(label.place==='ANGLE'){
       // beyond the outer arc of an angle mark, round the bisector of its two rays: the box edge stands `reach` + a few px from the vertex
       const base=Math.atan2(label.dir[1],label.dir[0]);
-      for(const dist of [label.reach+3,label.reach+7,label.reach+12,label.reach+18,label.reach+26,label.reach+36])for(const da of [0,0.35,-0.35,0.7,-0.7,1.1,-1.1]){
+      // a figure of a space alone (wedge): the name stays inside the angle (a narrow one on the page too) as far out as there is room, before it slides round the vertex
+      if(label.wedge)for(const dist of [label.reach+3,label.reach+8,label.reach+14,label.reach+22,label.reach+30,label.reach+36])for(const da of [0,0.12,-0.12]){
+        const a=base+da,dx=Math.cos(a),dy=-Math.sin(a);
+        const cx=label.anchor[0]+dx*(dist+Math.abs(dx)*w/2),cy=label.anchor[1]+dy*(dist+Math.abs(dy)*h/2);
+        candidates.push({x:cx-w/2,y:cy-h/2});
+      }
+      if(!label.wedge)for(const dist of [label.reach+3,label.reach+7,label.reach+12,label.reach+18,label.reach+26,label.reach+36])for(const da of [0,0.35,-0.35,0.7,-0.7,1.1,-1.1]){
         const a=base+da,dx=Math.cos(a),dy=-Math.sin(a);
         const cx=label.anchor[0]+dx*(dist+Math.abs(dx)*w/2),cy=label.anchor[1]+dy*(dist+Math.abs(dy)*h/2);
         candidates.push({x:cx-w/2,y:cy-h/2});
@@ -3079,6 +3088,20 @@ function placeLabelsOnce(spec,fragments,order){
     }
     for(const c of candidates){const box={x:r6(c.x),y:r6(c.y),width:w,height:h};if(free(box)&&nearest(label,box)&&(!label.region||inside2(label.within??label.region,[box.x+w/2,box.y+h/2]))){chosen=box;break;}}
     let leader=null;
+    if(!chosen&&label.wedge&&label.arcEnds){
+      // no room for the name inside the angle: it stands in the free place nearest an end of the outer arc, and a thin leader joins it to that end (the end lies on a ray, so the leader never crosses a stroke)
+      search:for(const dist of [10,16,24,34,46,60])for(const end of label.arcEnds)for(let k=0;k<16;k++){
+        const ang=k*Math.PI/8,dx=Math.cos(ang),dy=Math.sin(ang);
+        const box={x:r6(end[0]+dx*(dist+Math.abs(dx)*w/2)-w/2),y:r6(end[1]+dy*(dist+Math.abs(dy)*h/2)-h/2),width:w,height:h};
+        if(!free(box))continue;
+        const nx=Math.max(box.x,Math.min(end[0],box.x+box.width)),ny=Math.max(box.y,Math.min(end[1],box.y+box.height));
+        if(placed.some(p=>segmentHitsBox([nx,ny],end,p.box,1)))continue;
+        // the end of the arc lies on a ray: the crossing test stops 0.8 px short of it, so a rounding of the end does not count as crossing that ray
+        const ll=Math.hypot(end[0]-nx,end[1]-ny)||1,short=[end[0]-(end[0]-nx)/ll*0.8,end[1]-(end[1]-ny)/ll*0.8];
+        if(obstacles.some(([c,d,tag])=>tag!=='dot'&&segmentsCross([nx,ny],short,c,d)))continue;
+        chosen=box;leader=[[r6(nx),r6(ny)],[r6(end[0]),r6(end[1])]];obstacles.push(leader);break search;
+      }
+    }
     if(!chosen&&(label.role==='dim'||label.place==='SEGMENT'||label.place==='VERTEX')){
       // no room beside the segment (or the vertex): the label goes to the nearest free place and a thin leader line joins it to the middle of its segment (to the vertex)
       const [a,b]=label.place==='VERTEX'?[label.anchor,label.anchor]:label.segment,mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2;

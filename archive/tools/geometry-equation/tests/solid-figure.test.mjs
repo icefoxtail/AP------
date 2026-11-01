@@ -3044,3 +3044,20 @@ test('G4b-3: the three-perpendiculars figure (a plane, its point P above it, the
   // a ray along no drawn line is refused
   assert.throws(()=>solveSolidFigure({...plan,space:{...plan.space,lines:[]}}),code('SOLID_MARK_RAY_NOT_DRAWN'));
 });
+
+// --- G4b: the name of a point with a prime is typeset as TeX A', and a name that has no room inside a narrow angle goes to the end of the arc by a leader -----------------------------------------
+test('G4b: the golden figure of 22 매산고 q14 has a primed name typeset as TeX and a 45 degree name joined to its arc by a leader; the observer catches a leader that leaves the arc',async()=>{
+  const {readFileSync}=await import('node:fs');
+  const plan=JSON.parse(readFileSync(new URL('../ops/golden/item100g4b/plan.json',import.meta.url),'utf8'));
+  const spec=solidFigureSpec(plan,solveSolidFigure(plan));
+  const name=spec.labels.find(l=>l.id==='name-A′');
+  assert.equal(name.tex,"A'");assert.equal(name.value,'A′');
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.match(svg,/<g id="angle-label-an2"[^>]*data-leader="1"/);
+  const leader=svg.match(/<line id="leader-angle-label-an2"[^>]*\/>/)[0];
+  assert.match(svg,/data-value="A′"/);
+  await g4bFailing(plan,svg.replace(leader,leader.replace(/ x2="([\d.]+)"/,(all,v)=>` x2="${Number(v)+8}"`)),'SOLID_ANGLE_LABEL_LEADER_NOT_ATTACHED:an2');
+});
