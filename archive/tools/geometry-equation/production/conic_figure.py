@@ -49,17 +49,17 @@ SEGMENT_KEYS={'id','from','to','label','dashed'}
 POLYGON_KEYS={'id','points','fill'}
 LINE_KEYS={'id','role','label','dashed','hidden','x','y','slope','intercept','through','sign','tangent','at','curve'}
 POINT_KIND_KEYS={
-    'ORIGIN':{'id','kind','label'},
-    'FOCUS':{'id','kind','label','side','curve'},
-    'VERTEX':{'id','kind','label','side','curve'},
-    'CENTER':{'id','kind','label','curve'},
-    'POINT':{'id','kind','x','y','label'},
-    'ON_CONIC':{'id','kind','x','y','branch','sign','label','curve'},
-    'LINE_CONIC':{'id','kind','line','which','label','curve'},
-    'LINE_LINE':{'id','kind','lines','label'},
-    'FOOT':{'id','kind','from','onto','rightAngle','label'},
-    'CONIC_CONIC':{'id','kind','curves','which','label'},
-    'TANGENT_FROM':{'id','kind','from','which','label','curve'},
+    'ORIGIN':{'id','kind','label','coordinates'},
+    'FOCUS':{'id','kind','label','coordinates','side','curve'},
+    'VERTEX':{'id','kind','label','coordinates','side','curve'},
+    'CENTER':{'id','kind','label','coordinates','curve'},
+    'POINT':{'id','kind','x','y','label','coordinates'},
+    'ON_CONIC':{'id','kind','x','y','branch','sign','label','coordinates','curve'},
+    'LINE_CONIC':{'id','kind','line','which','label','coordinates','curve'},
+    'LINE_LINE':{'id','kind','lines','label','coordinates'},
+    'FOOT':{'id','kind','from','onto','rightAngle','label','coordinates'},
+    'CONIC_CONIC':{'id','kind','curves','which','label','coordinates'},
+    'TANGENT_FROM':{'id','kind','from','which','label','coordinates','curve'},
 }
 SUPPORTED_KINDS=('PARABOLA','HYPERBOLA','CIRCLE','ELLIPSE')
 LABEL_LIMIT=40
@@ -392,6 +392,7 @@ def _check_line_shape(raw,curves):
 def _label_flag(raw):
     label=raw.get('label',True)
     if label not in (True,False): _fail('ELLIPSE_POINT_INVALID')
+    if raw.get('coordinates') not in (None,True,False): _fail('ELLIPSE_POINT_INVALID')
     return label
 
 
@@ -712,6 +713,7 @@ def produce(plan):
         pid=raw['id'];px,py=resolved[pid]
         entry={'id':pid,'kind':raw['kind'],'x':_value(px),'y':_value(py),'labels':_label_flag(raw),
                'onCurve':any(bool(_is_zero(_residual(one,px,py))) for one in curves.values()),'foot':foot_info.get(pid)}
+        if raw.get('coordinates') is True: entry['coordinates']=True
         if multi: entry['onCurves']=[cid for cid,one in curves.items() if _is_zero(_residual(one,px,py))]
         points.append(entry)
     # one name per spot: a second labelled point on the same place would print two names on one dot
