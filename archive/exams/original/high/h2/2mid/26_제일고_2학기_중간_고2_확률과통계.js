@@ -398,7 +398,11 @@ window.questionBank = [
     "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 당뇨병 유무(3/20, 17/20)와 진단 결과의 확률을 나타낸 수형도. 정확한 진단 두 경로(진단 있음, 진단 없음)가 굵은 선과 동그라미로 표시되고 경로 확률 27/200과 119/200이 적혀 있다.",
+    "solutionImageCaption": "정확한 진단 두 경로의 확률 0.135(=27/200)와 0.595(=119/200)을 더하면 0.730이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -479,8 +483,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
     "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
-    "solutionImage": "assets/solution-images/26_제일고_2학기_중간_고2_확률과통계/q12.svg",
-    "solutionImageAlt": "12번 문항의 독립 계산 결과를 표시한 해설 시각자료",
+    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_확률과통계/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 2인 정사각형 ABCD와 각 변의 중점 E, F, G, H. 세 패널로 넓이가 2인 삼각형 ABC(색칠), 삼각형 ABG(색칠), 삼각형이 되지 않는 일직선 위의 세 점 A, E, B(주황 선분)를 보여 준다.",
     "crossConceptKeys": [
       "CC_COMBINATION_PROBABILITY"
     ],
@@ -488,7 +492,9 @@ window.questionBank = [
       "COND_NO_THREE_COLLINEAR_POINTS",
       "COND_RANGE"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "solutionImageCaption": "삼각형은 8C3-4=52개, 넓이가 2인 것은 4+4=8개이므로 넓이가 2보다 작을 확률은 44/52=11/13이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -731,7 +737,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_DIVISIBILITY"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U(216개) 안의 두 원 A(3의 배수), B(5의 배수) 벤다이어그램. A만 60개, 겹치는 부분 12개(색칠), B만 24개, 둘 다 아닌 수 120개가 적혀 있다.",
+    "solutionImageCaption": "|A|=72, |B|=36, |A∩B|=12이므로 P(A∪B)=(72+36-12)/216=96/216=4/9이다. 그림의 '개'는 해당 영역에 속한 세 자리 수의 개수이다. 전체 U는 6³=216개이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -765,13 +775,15 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
-    "solutionImage": "assets/solution-images/26_제일고_2학기_중간_고2_확률과통계/q19.svg",
-    "solutionImageAlt": "19번 문항의 독립 계산 결과를 표시한 해설 시각자료",
+    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_확률과통계/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 5×5 도로망에서 A에서 오른쪽 k칸, 위쪽 5-k칸 떨어진 파란 대각선 위 교점 6개에 A에서 그 점까지의 최단 경로 수 1, 5, 10, 10, 5, 1이 적혀 있고, 주황색 선은 가을이가 10가지 경로가 있는 교점을 지나 B로 가는 경로의 한 예이다.",
     "crossConceptKeys": [
       "CC_GRID_SHORTEST_PATH"
     ],
     "conditionKeys": [],
-    "integrationPattern": "DEEP_COMPOSITE"
+    "integrationPattern": "DEEP_COMPOSITE",
+    "solutionImageCaption": "두 사람은 대각선 위 한 교점에서 만나며, 그 교점에서 만나는 경로 쌍은 (5Ck)^4가지이다. 만나는 경우 1+625+10000+10000+625+1=21252이므로 만나지 않는 경우는 252^2-21252=42252이다. (파란 대각선은 교점의 위치를 보이는 표시선이다.) 대각선 위 숫자 1, 5, 10, 10, 5, 1(=5Ck)은 A에서 그 교점까지 가는 최단 경로의 수이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -805,11 +817,13 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
     "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
-    "solutionImage": "assets/solution-images/26_제일고_2학기_중간_고2_확률과통계/q20.svg",
-    "solutionImageAlt": "20번 문항의 독립 계산 결과를 표시한 해설 시각자료",
+    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_확률과통계/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 상자를 고르는 확률 1/3과 상자에서 동전을 꺼내는 확률을 나타낸 수형도. 금화가 나오는 세 경로(금금 상자 둘, 금은 상자 하나)가 굵은 선과 동그라미로 표시되고 각 경로의 확률은 1/6이다.",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "solutionImageCaption": "금금 상자는 금화 2개를 각각 1/2씩 나누어 그렸으므로 금화가 나오는 경로 확률은 1/6+1/6+1/6=1/2이고, 그중 금금 상자 경로가 2/3이다(은은 상자는 금화 없음).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
