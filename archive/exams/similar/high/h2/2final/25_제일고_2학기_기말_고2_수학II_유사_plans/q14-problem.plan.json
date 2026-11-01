@@ -1,0 +1,119 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "3",
+        "intersectionX": [
+          "-sqrt(3)",
+          "sqrt(3)"
+        ]
+      }
+    ],
+    "domain": [
+      -1.2,
+      3.4
+    ],
+    "viewport": [
+      -1.5,
+      4.5,
+      -1,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "P",
+        "x": 3,
+        "y": 9
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "P"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "m",
+          "x": "3",
+          "label": "x=k"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "h",
+        "lower": "f",
+        "from": "0",
+        "to": "sqrt(3)",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "h",
+        "from": "sqrt(3)",
+        "to": "3",
+        "fill": "MEDIUM",
+        "label": "S_2"
+      }
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "곡선 y=x²과 y축, 직선 y=3으로 둘러싸인 x≥0인 부분 S₁과, 곡선과 두 직선 y=3, x=k로 둘러싸인 부분 S₂를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "곡선 y=x², y축, 직선 y=3으로 둘러싸인 x≥0인 부분이 S₁이다.",
+      "mappedTo": [
+        "graphPlan.regions"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "곡선 y=x²과 직선 y=3, x=k로 둘러싸인 부분이 S₂이다.",
+      "mappedTo": [
+        "graphPlan.regions",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 영역 S₁, S₂가 직선 y=3의 아래쪽·위쪽 어디에 놓이는지 보인다."
+  ],
+  "sourceQuote": "아래 그림과 같이 곡선 $y=x^2$과 $y$축",
+  "assetPath": "assets/images/25_제일고_2학기_기말_고2_수학II_유사/q14.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q14-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q14-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q14-problem.svg"
+  }
+}
