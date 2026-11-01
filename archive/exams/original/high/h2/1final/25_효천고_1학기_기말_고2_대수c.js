@@ -417,7 +417,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 상용로그의 정수 부분은 진수의 자릿수보다 1 작음을 이용한다.\n조건 정리: $b_n = (a_n$의 자릿수$) - 1$\n풀이 방향: 각 $n$에 대하여 $a_n$의 자릿수를 파악하여 $b_n$을 구한 후 합한다.\n정석 풀이: $a_n$은 자연수 $n$을 $n$번 이어 붙여 만든 수이다.\n$1 \\le n \\le 9$일 때, $n$은 1자리 수이므로 $n$을 $n$번 이어 붙인 $a_n$은 $n$자리 수이다.\n따라서 $1 \\le n \\le 9$일 때 $b_n = n - 1$이다.\n$n = 10$일 때, $10$은 2자리 수이므로 $10$을 10번 이어 붙인 $a_{10}$은 $2 \\times 10 = 20$자리 수이다.\n따라서 $b_{10} = 20 - 1 = 19$이다.\n$\\displaystyle\\sum_{n=1}^{10}b_n = \\sum_{n=1}^{9}(n - 1) + b_{10} = (0 + 1 + 2 + \\cdots + 8) + 19 = \\dfrac{8 \\times 9}{2} + 19 = 36 + 19 = 55$\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
