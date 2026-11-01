@@ -78,6 +78,30 @@ window.APLab.catalog = {
    "sceneTotal": 27
   },
   {
+   "id": "g7-construction",
+   "course": "g7",
+   "unit": "기본 도형",
+   "strand": "shape",
+   "order": 2.5,
+   "title": "작도와 합동",
+   "short": "작도와 합동",
+   "summary": "눈금 없는 자와 컴퍼스로 하는 작도(크기가 같은 각·평행선)를 단계 플레이어로 보고, 삼각형이 만들어질 조건, 삼각형의 결정 조건(SSS·SAS·ASA), 합동인 도형의 성질과 합동 조건, 정삼각형·정사각형 속 숨은 합동을 도형을 직접 조절하며 탐구하고 정리와 5지선다 문제로 확인합니다.",
+   "keywords": "작도 컴퍼스 눈금 없는 자 크기가 같은 각 평행선 삼각형의 결정 조건 세 변의 길이 합동 합동 조건 SSS SAS ASA 대응변 대응각 정삼각형 정사각형 숨은 합동 기본 도형 중1",
+   "badge": "6탭",
+   "scenes": [
+    "작도",
+    "삼각형이 만들어질 조건",
+    "삼각형의 결정 조건",
+    "합동인 도형",
+    "삼각형의 합동 조건",
+    "숨은 합동"
+   ],
+   "legacy": "labs/g8/triangles-atlas.html",
+   "next": "next/labs/g7-construction.html",
+   "glyph": "<path d=\"M8 56 L28 18 L48 56 Z\"/><path d=\"M34 62 L54 24 L74 62 Z\" stroke-dasharray=\"4 4\"/><path d=\"M14 56 V50 H8 M24 36 L32 40\"/>",
+   "sceneTotal": 23
+  },
+  {
    "id": "g7-polygons",
    "course": "g7",
    "unit": "평면도형",
@@ -143,45 +167,19 @@ window.APLab.catalog = {
    "order": 5,
    "title": "다면체와 정다면체",
    "short": "다면체",
-   "summary": "각기둥·각뿔·각뿔대와 정다면체의 면·꼭짓점·모서리 사이의 관계, 전개도, 단면을 확인합니다.",
-   "keywords": "다면체 정다면체 각기둥 각뿔 각뿔대 정육면체 정사면체 면 꼭짓점 모서리 전개도 단면 입체 중1",
+   "summary": "각기둥·각뿔·각뿔대의 면·모서리·꼭짓점과 오일러의 공식, 정다면체 5가지와 정다면체가 아닌 예, 정다면체의 전개도(겹치는 꼭짓점·평행한 면·꼬인 위치), 겉면 위의 최단 경로, 정육면체의 단면을 입체를 직접 조절하며 탐구하고 정리와 5지선다 문제로 확인합니다.",
+   "keywords": "다면체 정다면체 각기둥 각뿔 각뿔대 오일러 정육면체 정사면체 정팔면체 정십이면체 정이십면체 면 꼭짓점 모서리 전개도 겹치는 점 꼬인 위치 최단 경로 주사위 단면 입체 중1",
    "badge": "입체",
    "scenes": [
-    "각기둥·각뿔·각뿔대",
-    "정다면체 5가지와 정다면체가 아닌 예",
-    "전개도를 접어 입체 만들기",
-    "단면과 꼭짓점 잘라 내기"
+    "다면체와 각기둥·각뿔·각뿔대",
+    "정다면체",
+    "정다면체의 전개도와 꼬인 위치",
+    "도전: 단면과 꼭짓점 자르기"
    ],
    "legacy": "labs/g7/polyhedra.html?v=20261027-g7chalkboard",
    "next": "next/labs/g7-polyhedra.html",
    "glyph": "<path d=\"M40 8 L68 26 L60 58 L26 66 L10 34 Z\"/><path d=\"M40 8 L40 38 L68 26 M40 38 L10 34 M40 38 L26 66 M40 38 L60 58\"/>",
-   "tags": [
-    "입체"
-   ]
-  },
-  {
-   "id": "g7-nets",
-   "course": "g7",
-   "unit": "입체도형",
-   "strand": "space",
-   "order": 6,
-   "title": "전개도와 입체 단면",
-   "short": "전개도",
-   "summary": "기둥·뿔·정다면체·원기둥·원뿔의 전개도를 접고 펼치며, 입체를 자른 단면의 모양을 확인합니다.",
-   "keywords": "전개도 접기 펼치기 정육면체 각기둥 각뿔 각뿔대 정다면체 원기둥 원뿔 원뿔대 단면 최단 경로 입체도형 중1",
-   "badge": "입체",
-   "scenes": [
-    "정육면체의 전개도 · 안 되는 전개도 · 최단 거리",
-    "각기둥의 전개도",
-    "각뿔과 각뿔대의 전개도",
-    "정다면체의 전개도와 5가지뿐인 까닭",
-    "원기둥 · 반원기둥 · 부채꼴기둥 · 구멍 뚫린 원기둥",
-    "원뿔 · 원뿔대의 전개도와 입체의 단면"
-   ],
-   "legacy": "labs/g7/nets-folding.html",
-   "next": "next/labs/g7-nets.html",
-   "glyph": "<path d=\"M26 10 H50 V36 H26 Z M26 36 H50 V58 H26 Z M2 36 H26 V58 H2 Z M50 36 H74 V58 H50 Z M26 58 H50 V72 H26 Z\"/>",
-   "sceneTotal": 30,
+   "sceneTotal": 24,
    "tags": [
     "입체"
    ]
@@ -218,20 +216,21 @@ window.APLab.catalog = {
    "unit": "입체도형",
    "strand": "space",
    "order": 8,
-   "title": "입체도형 종합",
-   "short": "입체 종합",
-   "summary": "다면체와 회전체의 모양, 전개도, 회전체의 단면과 입체 위의 최단 경로를 한곳에서 살펴봅니다.",
-   "keywords": "입체도형 종합 다면체 정다면체 회전체 회전축 겨냥도 전개도 단면 최단 경로 중1",
-   "badge": "입체 종합",
+   "title": "회전체",
+   "short": "회전체",
+   "summary": "평면도형을 회전축 둘레로 돌려 회전체를 만들고(원기둥·원뿔·원뿔대·구), 회전체의 단면, 원기둥·원뿔의 전개도와 중심각, 원뿔 옆면 위 끈의 최단거리를 직접 조절하며 탐구하고 정리와 5지선다 문제로 확인합니다.",
+   "keywords": "회전체 회전축 원기둥 원뿔 원뿔대 구 단면 전개도 중심각 최단 거리 겨냥도 입체도형 중1",
+   "badge": "4탭",
    "scenes": [
-    "다면체(기둥·뿔·뿔대)와 정다면체",
-    "정육면체·다면체의 전개도",
-    "회전체 만들기와 단면",
-    "회전체의 전개도와 최단 거리"
+    "회전체 만들기",
+    "회전체의 단면",
+    "원기둥·원뿔의 전개도",
+    "원뿔 옆면의 최단거리"
    ],
    "legacy": "labs/g7/다면체·회전체&겨냥도·전개도.html",
    "next": "next/labs/g7-solids.html",
-   "glyph": "<ellipse cx=\"38\" cy=\"18\" rx=\"26\" ry=\"10\"/><path d=\"M12 18 V54 M64 18 V54\"/><path d=\"M12 54 A26 10 0 0 0 64 54 M12 54 A26 10 0 0 1 64 54\" stroke-dasharray=\"4 4\"/>"
+   "glyph": "<ellipse cx=\"38\" cy=\"18\" rx=\"26\" ry=\"10\"/><path d=\"M12 18 V54 M64 18 V54\"/><path d=\"M12 54 A26 10 0 0 0 64 54 M12 54 A26 10 0 0 1 64 54\" stroke-dasharray=\"4 4\"/>",
+   "sceneTotal": 22
   },
   {
    "id": "g8-triangles",
@@ -1092,6 +1091,7 @@ window.APLab.catalog = {
    "stations": [
     "g7-points-lines",
     "g7-parallel",
+    "g7-construction",
     "g7-polygons",
     "g8-triangles",
     "g8-quadrilaterals",
@@ -1131,7 +1131,6 @@ window.APLab.catalog = {
    "stations": [
     "g7-spatial",
     "g7-polyhedra",
-    "g7-nets",
     "g7-surface-volume",
     "g7-solids",
     "geom-space",

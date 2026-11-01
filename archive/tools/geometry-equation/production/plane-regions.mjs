@@ -3,9 +3,11 @@
 // loop) minus holes; the fill rule is even-odd, so a hole must lie inside the shapes. Every edge must already be drawn (a displayed segment, line,
 // circle or highlighted arc), because the fill only colours what the picture bounds. The independent check of the FINAL SVG is the `regions`
 // section of plane-marks-observer-worker.py, which recomputes the boundary from the Cindy peer's points.
+import {PALETTE_NAMES} from './palette.mjs';
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
 const KEYS={region:['id','fill','pattern','label','labelKind','labelWeight','labelName','unit','labelPlacement','labelAt','factRole','shapes','holes'],shape:['polygon','sector','segment','loop'],sector:['center','from','to','side'],loop:['start','steps'],step:['to','arc'],arc:['center','side']};
-const FILLS=['LIGHT','MEDIUM'];
+// LIGHT / MEDIUM are the gray tints of the older figures (their colours never change); BLUE WARM GREEN ROSE VIOLET (C1) are the colour-group tints of palette.mjs.
+const FILLS=['LIGHT','MEDIUM',...PALETTE_NAMES];
 // A source that says 빗금친 (hatched) needs a real hatch pattern, not a second grey: PATTERNS adds diagonal strokes clipped to the region.
 const PATTERNS=['HATCH'];
 const LABEL_KINDS=['MATH','TEXT'];
@@ -179,20 +181,69 @@ function arcEdgeDrawn(from,to,arc,at,cover){
   });
 }
 
+// Exact area of one resolved loop (Green's theorem, no sampling): a straight edge adds (x1*y2-x2*y1)/2; a circular arc of centre c, radius r and signed sweep f
+// (CCW positive) from angle a0 adds (r*(cx*(sin a1-sin a0)-cy*(cos a1-cos a0))+r*r*f)/2 with a1=a0+f. regionSpec subtracts the holes, so the result is
+// the area the even-odd fill really colours.
+function loopArea(loop,at){
+  let total=0,current=loop.start;
+  for(const step of loop.steps){
+    const p=at(current),q=at(step.to);
+    if(!step.arc)total+=(p[0]*q[1]-q[0]*p[1])/2;
+    else{
+      const c=at(step.arc.center),r=norm(sub(p,c)),a0=Math.atan2(p[1]-c[1],p[0]-c[0]);
+      const ccw=(((Math.atan2(q[1]-c[1],q[0]-c[0])-a0)%(2*Math.PI))+2*Math.PI)%(2*Math.PI);
+      const f=step.arc.full?(step.arc.sweep==='CCW'?2*Math.PI:-2*Math.PI):(step.arc.sweep==='CCW'?ccw:-(2*Math.PI-ccw)),a1=a0+f;
+      total+=(r*(c[0]*(Math.sin(a1)-Math.sin(a0))-c[1]*(Math.cos(a1)-Math.cos(a0)))+r*r*f)/2;
+    }
+    current=step.to;
+  }
+  return total;
+}
+export const EQUAL_AREA_TOLERANCE=1e-6;
+// planeMarks.equalAreas (C1): [["w1","w2"],...], each group names regions that have the SAME area and therefore the SAME palette colour; no other region of the
+// figure may use that colour (one colour = one relation). The areas are recomputed from the boundaries, never taken from a label.
+function checkEqualAreas(groups,areas){
+  if(groups===undefined)return;
+  if(!Array.isArray(groups)||!groups.length||groups.length>3)bad('REGION_EQUAL_AREA_INVALID:equalAreas');
+  const groupOf=new Map();
+  groups.forEach((group,index)=>{
+    if(!Array.isArray(group)||group.length<2||group.some(id=>typeof id!=='string')||new Set(group).size!==group.length)bad('REGION_EQUAL_AREA_INVALID:equalAreas.'+index);
+    for(const id of group){
+      if(!areas.has(id))bad('REGION_EQUAL_AREA_UNKNOWN_REGION:'+id);
+      if(groupOf.has(id))bad('REGION_COLOR_GROUP_AMBIGUOUS:'+id+':in two equalAreas groups');
+      groupOf.set(id,index);
+    }
+    const first=areas.get(group[0]);
+    for(const id of group.slice(1)){
+      const row=areas.get(id);
+      if(Math.abs(row.area-first.area)>EQUAL_AREA_TOLERANCE*Math.max(Math.abs(first.area),Math.abs(row.area),1e-12))bad('REGION_EQUAL_AREA_MISMATCH:'+group[0]+'&'+id+':'+first.area.toFixed(6)+'!='+row.area.toFixed(6));
+    }
+    if(!PALETTE_NAMES.includes(first.fill)||group.some(id=>areas.get(id).fill!==first.fill))bad('REGION_EQUAL_AREA_COLOR_MISMATCH:'+group.join('&'));
+  });
+  // one colour = one relation: a grouped colour is used by no region outside its own group
+  for(const [id,row] of areas){
+    if(!PALETTE_NAMES.includes(row.fill))continue;
+    for(const [other,index] of groupOf){
+      if(other!==id&&areas.get(other).fill===row.fill&&groupOf.get(id)!==index)bad('REGION_COLOR_GROUP_AMBIGUOUS:'+id+'&'+other+':'+row.fill);
+    }
+  }
+}
+
 // Returns {objects, factRolesByLabel}; errors are REGION_* codes.
 export function regionSpec(plan,model,points,usedIds){
   const regions=plan.planeMarks?.regions;
-  if(regions===undefined)return {objects:[],factRolesByLabel:{}};
+  if(regions===undefined){if(plan.planeMarks?.equalAreas!==undefined)bad('REGION_EQUAL_AREA_UNKNOWN_REGION:regions');return {objects:[],factRolesByLabel:{}};}
   if(!Array.isArray(regions))bad('REGION_FIELD_INVALID:regions');
   const at=id=>{const p=points[id];if(!p)bad('REGION_BOUNDARY_UNKNOWN:'+id);return p.approximation;};
   const cover=drawnCover(plan,model,points,at);
-  const objects=[],factRolesByLabel={};
+  const objects=[],factRolesByLabel={},areas=new Map();
   for(const row of regions){
     if(!isObject(row))bad('REGION_FIELD_INVALID:regions');
     keysOk(row,KEYS.region,'regions');
     if(typeof row.id!=='string'||!ID.test(row.id))bad('REGION_ID_INVALID');
     if(usedIds.has(row.id))bad('REGION_ID_DUPLICATE:'+row.id);usedIds.add(row.id);
     const fill=row.fill??'LIGHT';
+    if(typeof fill!=='string')bad('REGION_FILL_INVALID:'+row.id);
     if(!FILLS.includes(fill))bad('REGION_FILL_UNSUPPORTED:'+row.id+':'+fill);
     if(!Array.isArray(row.shapes)||!row.shapes.length)bad('REGION_FIELD_INVALID:shapes:'+row.id);
     const holeRows=row.holes??[];
@@ -230,6 +281,7 @@ export function regionSpec(plan,model,points,usedIds){
         current=step.to;
       }
     }
+    areas.set(row.id,{fill,area:shapes.reduce((sum,l)=>sum+Math.abs(loopArea(l,at)),0)-holes.reduce((sum,l)=>sum+Math.abs(loopArea(l,at)),0)});
     const object={id:row.id,kind:'FILL_REGION',fill,loops:all.map(l=>({start:l.start,steps:l.steps}))};
     if(row.pattern!==undefined){
       if(!PATTERNS.includes(row.pattern))bad('REGION_PATTERN_UNSUPPORTED:'+row.id+':'+row.pattern);
@@ -277,6 +329,7 @@ export function regionSpec(plan,model,points,usedIds){
     else if(row.labelName!==undefined||row.unit!==undefined||row.labelPlacement!==undefined||row.labelAt!==undefined||row.labelWeight!==undefined)bad('REGION_LABEL_FIELDS_NEED_LABEL:'+row.id);
     objects.push(object);
   }
+  checkEqualAreas(plan.planeMarks.equalAreas,areas);
   return {objects,factRolesByLabel};
 }
 

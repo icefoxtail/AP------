@@ -1,0 +1,375 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "10"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "24"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "16"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "E",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "23",
+       "denominator": "2"
+      },
+      {
+       "kind": "integer",
+       "value": "20"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "lAC",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "A",
+     "C"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lDE",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "D",
+     "E"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "P",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "lAC",
+     "lDE"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBD",
+   "refs": [
+    "B",
+    "D"
+   ]
+  },
+  {
+   "id": "sDC",
+   "refs": [
+    "D",
+    "C"
+   ]
+  },
+  {
+   "id": "sAD",
+   "refs": [
+    "A",
+    "D"
+   ]
+  },
+  {
+   "id": "sAE",
+   "refs": [
+    "A",
+    "E"
+   ]
+  },
+  {
+   "id": "sEC",
+   "refs": [
+    "E",
+    "C"
+   ]
+  },
+  {
+   "id": "sAP",
+   "refs": [
+    "A",
+    "P"
+   ]
+  },
+  {
+   "id": "sPC",
+   "refs": [
+    "P",
+    "C"
+   ]
+  },
+  {
+   "id": "sDP",
+   "refs": [
+    "D",
+    "P"
+   ]
+  },
+  {
+   "id": "sPE",
+   "refs": [
+    "P",
+    "E"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "P"
+ ],
+ "planeMarks": {
+  "parallels": [
+   {
+    "id": "p1",
+    "count": 1,
+    "segments": [
+     "sAD",
+     "sEC"
+    ],
+    "color": "GREEN"
+   }
+  ],
+  "dimensions": [
+   {
+    "id": "dAB",
+    "from": "A",
+    "to": "B",
+    "label": "16",
+    "unit": "cm",
+    "side": "LEFT",
+    "style": "BAR",
+    "offset": 1,
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "dBD",
+    "from": "B",
+    "to": "D",
+    "label": "10",
+    "unit": "cm",
+    "side": "BELOW",
+    "style": "BAR",
+    "offset": 1,
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "dDC",
+    "from": "D",
+    "to": "C",
+    "label": "14",
+    "unit": "cm",
+    "side": "BELOW",
+    "style": "BAR",
+    "offset": 1,
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "dBC",
+    "from": "B",
+    "to": "C",
+    "label": "24",
+    "unit": "cm",
+    "side": "BELOW",
+    "style": "BAR",
+    "offset": 2,
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ],
+  "regions": [
+   {
+    "id": "rBase",
+    "fill": "BLUE",
+    "shapes": [
+     {
+      "polygon": [
+       "A",
+       "B",
+       "D",
+       "P"
+      ]
+     }
+    ],
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "wA",
+    "fill": "WARM",
+    "label": "넓이 같음",
+    "labelKind": "TEXT",
+    "shapes": [
+     {
+      "polygon": [
+       "A",
+       "P",
+       "E"
+      ]
+     }
+    ],
+    "factRole": "CONCLUSION"
+   },
+   {
+    "id": "wD",
+    "fill": "WARM",
+    "label": "넓이 같음",
+    "labelKind": "TEXT",
+    "shapes": [
+     {
+      "polygon": [
+       "D",
+       "P",
+       "C"
+      ]
+     }
+    ],
+    "factRole": "CONCLUSION"
+   }
+  ],
+  "equalAreas": [
+   [
+    "wA",
+    "wD"
+   ]
+  ]
+ },
+ "caption": "AD∥EC이므로 두 대각선 AC, DE의 교점 P에서 △APE=△DPC(같은 색 두 날개)이다. 따라서 사각형 ABDE=△ABC=½×16×24=192cm²이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "AD∥EC, ∠ABC=90°, AB=16cm, BD=10cm, DC=14cm",
+   "mappedTo": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "P"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "BC=24cm와 AC, DE의 교점 P, 넓이가 같은 두 삼각형 APE, DPC(같은 색)"
+ ],
+ "sourceQuote": "$[ABD]+[ADE]=[ABD]+[ADC]=[ABC]$이다.",
+ "coordinateCanvas": {
+  "width": 600,
+  "height": 600
+ },
+ "rightAngles": [
+  {
+   "id": "rB",
+   "refs": [
+    "A",
+    "B",
+    "D"
+   ]
+  }
+ ]
+}

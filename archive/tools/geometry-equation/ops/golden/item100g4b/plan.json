@@ -1,0 +1,183 @@
+{
+ "capability": "solid-figure-v1",
+ "space": {
+  "points": [
+   {
+    "id": "P",
+    "at": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "id": "A",
+    "at": [
+     1,
+     0,
+     "sqrt(3)"
+    ],
+    "on": "alpha"
+   },
+   {
+    "id": "B",
+    "at": [
+     "sqrt(2)",
+     "-sqrt(2)",
+     0
+    ],
+    "on": "beta"
+   },
+   {
+    "id": "A′",
+    "at": {
+     "projection": {
+      "from": "A",
+      "plane": "beta"
+     }
+    },
+    "on": "beta"
+   }
+  ],
+  "planes": [
+   {
+    "id": "alpha",
+    "name": "\\alpha",
+    "normal": [
+     0,
+     1,
+     0
+    ],
+    "point": "P",
+    "extent": {
+     "center": [
+      0.9,
+      0,
+      1.05
+     ],
+     "u": [
+      1.7,
+      0,
+      0
+     ],
+     "v": [
+      0,
+      0,
+      1.05
+     ]
+    }
+   },
+   {
+    "id": "beta",
+    "name": "\\beta",
+    "normal": [
+     0,
+     0,
+     1
+    ],
+    "point": "P",
+    "fill": "WARM",
+    "extent": {
+     "center": [
+      0.9,
+      -0.95,
+      0
+     ],
+     "u": [
+      1.7,
+      0,
+      0
+     ],
+     "v": [
+      0,
+      0.95,
+      0
+     ]
+    }
+   }
+  ],
+  "lines": [
+   {
+    "id": "l",
+    "name": "l",
+    "intersection": [
+     "alpha",
+     "beta"
+    ]
+   }
+  ],
+  "segments": [
+   {
+    "from": "P",
+    "to": "A",
+    "role": "ACCENT"
+   },
+   {
+    "from": "P",
+    "to": "B",
+    "role": "ACCENT"
+   },
+   {
+    "from": "A",
+    "to": "A′",
+    "style": "DASHED"
+   },
+   {
+    "from": "A′",
+    "to": "B",
+    "style": "DASHED"
+   }
+  ]
+ },
+ "marks": {
+  "angles": [
+   {
+    "refs": [
+     "A′",
+     "P",
+     "A"
+    ],
+    "arcs": 2,
+    "label": "60^\\circ"
+   },
+   {
+    "refs": [
+     "A′",
+     "P",
+     "B"
+    ],
+    "arcs": 1,
+    "label": "45^\\circ"
+   }
+  ],
+  "rightAngles": [
+   {
+    "at": "A′",
+    "refs": [
+     "A",
+     "P"
+    ]
+   }
+  ]
+ },
+ "highlights": [
+  {
+   "polygon": [
+    "P",
+    "A′",
+    "B"
+   ],
+   "fill": "GREEN"
+  }
+ ],
+ "caption": "서로 수직인 두 평면 α, β의 교선 l 위의 점 P, α 위의 점 A, β 위의 점 B",
+ "sourceConditions": [
+  "서로 수직인 두 평면 α, β",
+  "점 P는 교선 l 위, 점 A는 α 위, 점 B는 β 위",
+  "l과 PA가 이루는 각 60°, l과 PB가 이루는 각 45°"
+ ],
+ "newVisualInformation": [
+  "A의 평면 β 위 정사영 A′와 AA′⊥β",
+  "정사영 삼각형 PA′B"
+ ]
+}

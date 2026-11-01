@@ -4,7 +4,8 @@
   "upstream": "origin/main",
   "canonicalRoots": [
     ".codex/skills",
-    ".agents/skills"
+    ".agents/skills",
+    ".claude/skills"
   ],
   "skills": [
     {
@@ -98,6 +99,42 @@
       ],
       "scope": "similar-question-adaptive-comparison",
       "status": "experimental"
+    },
+    {
+      "name": "impeccable",
+      "path": ".claude/skills/impeccable",
+      "entrypoint": "SKILL.md",
+      "requiredFiles": [
+        "SKILL.md",
+        "VENDOR.md",
+        "LICENSE",
+        "NOTICE.md"
+      ],
+      "scope": "third-party-ui-design",
+      "status": "active",
+      "vendor": {
+        "origin": "https://github.com/pbakaus/impeccable",
+        "ref": "skill-v4.8.0",
+        "commit": "414603bf14c7a344edb466bb1f85690c77ce8b7d",
+        "license": "Apache-2.0"
+      }
+    },
+    {
+      "name": "security-audit",
+      "path": ".claude/skills/security-audit",
+      "entrypoint": "SKILL.md",
+      "requiredFiles": [
+        "SKILL.md",
+        "VENDOR.md",
+        "LICENSE"
+      ],
+      "scope": "third-party-security-audit",
+      "status": "active",
+      "vendor": {
+        "origin": "https://github.com/cloudflare/security-audit-skill",
+        "commit": "c1c8a8c1471069fb0e188eeaff69b8e8db6564a8",
+        "license": "MIT"
+      }
     }
   ]
 }

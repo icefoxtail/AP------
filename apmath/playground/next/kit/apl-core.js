@@ -217,14 +217,14 @@
   /* ---------- 테마 ---------- */
   APLab.theme = {
     current() {
-      return document.documentElement.getAttribute('data-theme') || 'board';
+      return document.documentElement.getAttribute('data-theme') || 'paper';
     },
     init() {
       const saved = APLab.store.get('theme', null);
       const url = new URLSearchParams(location.search).get('theme');
-      let t = url || saved;
-      if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'paper' : 'board';
-      document.documentElement.setAttribute('data-theme', t === 'paper' ? 'paper' : 'board');
+      // 기본은 종이(밝음). OS 다크 설정과 무관하며, 학생이 칠판으로 바꾸면 그 선택이 저장돼 유지된다. (사용자 결정 2026-11-01)
+      const t = url || saved || 'paper';
+      document.documentElement.setAttribute('data-theme', t === 'board' ? 'board' : 'paper');
     },
     toggle() {
       const next = APLab.theme.current() === 'paper' ? 'board' : 'paper';

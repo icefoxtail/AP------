@@ -233,8 +233,31 @@
         rail.append(b);
       });
       rail.append(h('button', { class: 'apl-btn sm ghost apl-all-btn', title: '모든 장면 한눈에 보기', html: icon('list') + '<span>모든 장면</span>', onclick: () => this.openOverview() }));
-      const on = rail.querySelector('[aria-selected="true"]');
-      if (on && on.scrollIntoView) on.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      this._edgeFade(rail);
+      // 지금 장면 탭이 가운데에 오도록 레일만 가로로 옮깁니다(페이지는 움직이지 않습니다). 글꼴이 늦게 바뀌어도 한 번 더 맞춥니다.
+      const center = () => {
+        const on = rail.querySelector('[aria-selected="true"]');
+        if (!on) return;
+        const max = rail.scrollWidth - rail.clientWidth;
+        rail.scrollLeft = Math.max(0, Math.min(max, on.offsetLeft - rail.offsetLeft - (rail.clientWidth - on.offsetWidth) / 2));
+        this._edgeFade(rail);
+      };
+      center();
+      requestAnimationFrame(center);
+    }
+
+    /* 가로로 넘치는 줄(장면 탭·세부 장면)에서 "더 있다"를 보이도록 넘친 쪽 가장자리를 흐리게 합니다. */
+    _edgeFade(el) {
+      if (!el.__fade) {
+        el.__fade = () => {
+          const max = el.scrollWidth - el.clientWidth;
+          el.classList.toggle('fade-l', max > 2 && el.scrollLeft > 2);
+          el.classList.toggle('fade-r', max > 2 && el.scrollLeft < max - 2);
+        };
+        el.addEventListener('scroll', el.__fade, { passive: true });
+        if (window.ResizeObserver) new ResizeObserver(el.__fade).observe(el);
+      }
+      el.__fade();
     }
 
     /* ---------- 패널 ---------- */
@@ -260,6 +283,7 @@
           subs.append(h('button', { class: 'apl-chip' + (idx === this.index ? ' on' : ''), role: 'tab', 'aria-selected': String(idx === this.index), onclick: () => this.goScene(idx), html: (sp.flag ? `<span class="flag">${APLab.esc(sp.flag)}</span>` : '') + APLab.esc(sp.text) }));
         });
         ui.head.append(subs);
+        this._edgeFade(subs);
       }
       if (sc.question) {
         ui.head.append(h('div', { class: 'apl-question', html: `<small>탐구 질문</small>${APLab.renderMath(sc.question)}` }));
@@ -299,7 +323,7 @@
       r.guide = h('div', { class: 'apl-rich' });
       pane.append(h('div', { class: 'apl-card' }, h('div', { class: 'apl-guide' }, h('span', { class: 'badge', html: icon('hand') }), r.guide)));
       // 조작
-      r.controls = h('div', { class: 'apl-section' });
+      r.controls = h('div', { class: 'apl-section apl-controls' });
       pane.append(r.controls);
       this._ctlIds = null;
       // 실시간 값

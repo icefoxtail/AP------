@@ -1,0 +1,137 @@
+{
+ "capability": "solid-figure-v1",
+ "space": {
+  "points": [
+   {
+    "id": "O",
+    "at": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "id": "P",
+    "at": [
+     0,
+     0,
+     3
+    ]
+   },
+   {
+    "id": "H",
+    "at": [
+     -1.5,
+     -1.5,
+     0
+    ],
+    "on": "alpha"
+   },
+   {
+    "id": "K",
+    "at": [
+     -2.5,
+     -0.5,
+     0
+    ],
+    "hideName": true,
+    "hideDot": true
+   },
+   {
+    "id": "L",
+    "at": [
+     -0.5,
+     -2.5,
+     0
+    ],
+    "hideName": true,
+    "hideDot": true
+   }
+  ],
+  "planes": [
+   {
+    "id": "alpha",
+    "name": "\\alpha",
+    "through": [
+     "O",
+     "H",
+     "K"
+    ],
+    "extent": {
+     "center": [
+      -0.3,
+      -0.2,
+      0
+     ],
+     "u": [
+      3.2,
+      0,
+      0
+     ],
+     "v": [
+      0,
+      2.6,
+      0
+     ]
+    }
+   }
+  ],
+  "lines": [
+   {
+    "id": "l",
+    "name": "l",
+    "through": [
+     "K",
+     "L"
+    ]
+   }
+  ],
+  "segments": [
+   {
+    "from": "P",
+    "to": "O"
+   },
+   {
+    "from": "O",
+    "to": "H"
+   },
+   {
+    "from": "P",
+    "to": "H"
+   }
+  ]
+ },
+ "marks": {
+  "rightAngles": [
+   {
+    "at": "O",
+    "refs": [
+     "P",
+     "H"
+    ]
+   },
+   {
+    "at": "H",
+    "refs": [
+     "O",
+     "L"
+    ]
+   },
+   {
+    "at": "H",
+    "refs": [
+     "P",
+     "K"
+    ]
+   }
+  ]
+ },
+ "caption": "평면 α 위의 점 O, 직선 l 위의 점 H, α 밖의 점 P",
+ "sourceConditions": [
+  "평면 α 위에 있지 않은 점 P, 평면 α 위의 점 O",
+  "점 O를 지나지 않는 평면 α 위의 직선 l과 l 위의 점 H"
+ ],
+ "newVisualInformation": [
+  "PO⊥α, OH⊥l, PH⊥l의 세 직각 표시"
+ ]
+}
