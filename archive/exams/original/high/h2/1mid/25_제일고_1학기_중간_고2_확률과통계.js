@@ -65,7 +65,7 @@ window.questionBank = [
     "wide": false,
     "standardUnitOrder": 3,
     "subUnitKey": "H15-PS-03-PROBABILITY_APPLICATION",
-    "subUnit": "확률의 뜻과 활용",
+    "subUnit": "확률의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -322,7 +322,7 @@ window.questionBank = [
     "wide": false,
     "standardUnitOrder": 3,
     "subUnitKey": "H15-PS-03-PROBABILITY_APPLICATION",
-    "subUnit": "확률의 뜻과 활용",
+    "subUnit": "확률의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
