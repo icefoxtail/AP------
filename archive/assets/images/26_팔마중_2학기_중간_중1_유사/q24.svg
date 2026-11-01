@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 400" width="520" height="400" role="img" aria-labelledby="q24-title q24-desc">
+  <title id="q24-title">두 정사각형의 배치와 겹치는 부분의 넓이</title>
+  <desc id="q24-desc">한 변 10cm인 두 정사각형 ABCD와 EFGH에서 E가 ABCD의 대각선 교점에 위치하고 겹친 영역이 색칠된 다이어그램</desc>
+  <rect width="520" height="400" fill="#ffffff"/>
+  <!-- 정사각형 ABCD: (80, 80) to (280, 280), 한변 200px (10cm) -->
+  <!-- 대각선 교점 E = (180, 180) -->
+  <!-- 대각선 AC, BD (점선) -->
+  <line x1="80" y1="80" x2="280" y2="280" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="80" y1="280" x2="280" y2="80" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <!-- 회전된 두 번째 정사각형 EFGH: 꼭짓점 E=(180, 180), 회전각 약 25도 -->
+  <!-- F=(361, 265), G=(276, 446), H=(95, 361) -->
+  <!-- 겹치는 사각형 (색칠된 부분): E=(180, 180), 교점1=(280, 227), C=(280, 280), 교점2=(190, 280) -->
+  <!-- 색칠된 다각형 fill="#93c5fd" non-white shaded shape -->
+  <polygon points="180,180 280,227 280,280 233,280" fill="#93c5fd" stroke="#2563eb" stroke-width="2"/>
+  <!-- 정사각형 ABCD 테두리 -->
+  <rect x="80" y="80" width="200" height="200" fill="none" stroke="#1e293b" stroke-width="2.5"/>
+  <!-- 정사각형 EFGH 테두리 -->
+  <polygon points="180,180 361,265 276,446 95,361" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+  <!-- 꼭짓점 점들 -->
+  <circle cx="80" cy="80" r="4.5" fill="#1e293b"/>
+  <circle cx="280" cy="80" r="4.5" fill="#1e293b"/>
+  <circle cx="280" cy="280" r="4.5" fill="#1e293b"/>
+  <circle cx="80" cy="280" r="4.5" fill="#1e293b"/>
+  <circle cx="180" cy="180" r="5" fill="#dc2626"/>
+  <circle cx="361" cy="265" r="4.5" fill="#dc2626"/>
+  <circle cx="276" cy="446" r="4.5" fill="#dc2626"/>
+  <circle cx="95" cy="361" r="4.5" fill="#dc2626"/>
+  <!-- 치수선 10 cm -->
+  <line x1="80" y1="60" x2="280" y2="60" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="80" y1="52" x2="80" y2="68" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="280" y1="52" x2="280" y2="68" stroke="#64748b" stroke-width="1.5"/>
+  <text x="180" y="50" font-family="sans-serif" font-size="14" fill="#475569" text-anchor="middle">10 cm</text>
+  <!-- 꼭짓점 문자 -->
+  <g font-family="sans-serif" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">
+    <text x="65" y="75">A</text>
+    <text x="295" y="75">B</text>
+    <text x="295" y="295">C</text>
+    <text x="65" y="295">D</text>
+  </g>
+  <g font-family="sans-serif" font-size="16" font-weight="bold" fill="#dc2626" text-anchor="middle">
+    <text x="165" y="170">E</text>
+    <text x="375" y="260">F</text>
+    <text x="285" y="445">G</text>
+    <text x="80" y="375">H</text>
+  </g>
+</svg>
