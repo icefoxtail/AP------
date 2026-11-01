@@ -1,0 +1,41 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "48",
+        "sd": "6",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      "48",
+      "60"
+    ],
+    "zAxis": true,
+    "shades": [
+      {
+        "curve": "X",
+        "from": "60",
+        "to": null
+      }
+    ]
+  },
+  "caption": "60가구 이상은 평균 48에서 표준편차의 2배 이상 오른쪽에 있는 꼬리 부분이다.",
+  "sourceQuote": "이항분포를 평균 $48$, 표준편차 $6$인 정규분포로 근사한다",
+  "sourceConditions": [
+    {
+      "id": "q21-c1",
+      "condition": "문항의 해설 풀이에 쓰인 값과 관계를 그림으로 옮긴다."
+    }
+  ],
+  "newVisualInformation": "정규근사한 분포에서 60 이상인 오른쪽 꼬리와 z=2에 해당하는 위치",
+  "assetPath": "archive/assets/images/24_매산여고_2학기_기말_고2_확률과통계_유사/q21-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계_유사_plans/evidence/q21-solution/figure-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계_유사_plans/evidence/q21-solution/figure-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계_유사_plans/evidence/q21-solution/figure-solution.svg"
+  }
+}
