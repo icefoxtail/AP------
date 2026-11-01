@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 300" width="460" height="300" role="img" aria-labelledby="q04-title q04-desc">
+  <title id="q04-title">오각기둥의 모서리 위치 관계</title>
+  <desc id="q04-desc">위 밑면 ABCDE와 아래 밑면 FGHIJ로 이루어진 오각기둥</desc>
+  <rect width="460" height="300" fill="#ffffff"/>
+  <!-- 윗면 ABCDE -->
+  <polygon points="230,40 330,70 290,130 170,130 130,70" fill="#f8fafc" stroke="#0f172a" stroke-width="2"/>
+  <!-- 밑면 FGHIJ (일부 점선) -->
+  <polygon points="230,170 330,200 290,260 170,260 130,200" fill="none" stroke="#0f172a" stroke-width="2"/>
+  <!-- 옆모서리 -->
+  <line x1="230" y1="40" x2="230" y2="170" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="330" y1="70" x2="330" y2="200" stroke="#0f172a" stroke-width="2"/>
+  <line x1="290" y1="130" x2="290" y2="260" stroke="#0f172a" stroke-width="2"/>
+  <line x1="170" y1="130" x2="170" y2="260" stroke="#0f172a" stroke-width="2"/>
+  <line x1="130" y1="70" x2="130" y2="200" stroke="#0f172a" stroke-width="2"/>
+  <!-- 모서리 강조: CD (파란색) -->
+  <line x1="290" y1="130" x2="170" y2="130" stroke="#2563eb" stroke-width="3.5"/>
+  <!-- 꼭짓점 점 표시 -->
+  <circle cx="230" cy="40" r="3.5" fill="#0f172a"/>
+  <circle cx="330" cy="70" r="3.5" fill="#0f172a"/>
+  <circle cx="290" cy="130" r="3.5" fill="#2563eb"/>
+  <circle cx="170" cy="130" r="3.5" fill="#2563eb"/>
+  <circle cx="130" cy="70" r="3.5" fill="#0f172a"/>
+  <circle cx="230" cy="170" r="3" fill="#94a3b8"/>
+  <circle cx="330" cy="200" r="3.5" fill="#0f172a"/>
+  <circle cx="290" cy="260" r="3.5" fill="#0f172a"/>
+  <circle cx="170" cy="260" r="3.5" fill="#0f172a"/>
+  <circle cx="130" cy="200" r="3.5" fill="#0f172a"/>
+  <!-- 레이블 10개 꼭짓점 A, B, C, D, E, F, G, H, I, J -->
+  <g font-family="sans-serif" font-size="15" font-weight="bold" fill="#0f172a" text-anchor="middle">
+    <text x="230" y="25">A</text>
+    <text x="348" y="68">B</text>
+    <text x="308" y="132" fill="#2563eb">C</text>
+    <text x="152" y="132" fill="#2563eb">D</text>
+    <text x="112" y="68">E</text>
+    <text x="230" y="162" fill="#64748b">F</text>
+    <text x="348" y="205">G</text>
+    <text x="308" y="275">H</text>
+    <text x="152" y="275">I</text>
+    <text x="112" y="205">J</text>
+  </g>
+</svg>
