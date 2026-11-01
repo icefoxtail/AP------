@@ -11,7 +11,7 @@
 > - **엔진 지시서를 쓰기 전에 `ops/svg-m1/BRIEF_RULES.md`(실패 기록과 지시서 규칙)를 반드시 읽고 `ops/svg-m1/briefs/engine-gap-template.md`로 쓴다.** 남은 한계는 "한계"로 끝내지 말고 후속 묶음으로 이어서 맡긴다.
 > - 빈틈 목록·샘플: `ops/svg-m1/gaps.md` 아래 G1~G11 절. 진행(2026-11-01): G7·G7b·G7c·G9·G1·G5·G5b·G6·G6b·G6c·G11·G3·G2(a·b·c)·G4a main 반영(#1065~)과 샘플 게시. 남은 빈틈: §00 참고. G4 공간도형(고2, L) → G8 속 빈 원기둥·원뿔대 전개도(중1, M) → G10 내접 혼합 입체(중1, L).
 > - Linux 클라우드 컨테이너에서 렌더 의존성 복원: `GEOMETRY_PYTHON=python3 node archive/tools/geometry-equation/production/setup-spikes.mjs`(→ `.tmp/apmath-visual-engine/dependencies`), Chrome은 `GEOMETRY_BROWSER_EXECUTABLE=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome`. 첫 엔진 병합 전 main으로 정답지 전체를 렌더해 기준(`.tmp/svg-m1/golden-main/`)을 만든다(약 70분).
-> - 정답지 회귀는 표본만(BRIEF_RULES 규칙 10, 전체는 사용자 승인 시). G3 지시서 `ops/svg-m1/briefs/engine-g3-vectors.md`.
+> - 정답지 회귀는 평소 표본, 전체는 main PR 직전·공용 파일 수동 충돌 병합 때만(§00, BRIEF_RULES 규칙 10). G3 지시서 `ops/svg-m1/briefs/engine-g3-vectors.md`.
 > - G11 지시서·검수 지시서 예: `ops/svg-m1/briefs/engine-g11-callout-coord-angle.md`, `ops/svg-m1/briefs/review-g11.md`.
 > - Windows PC에서 도구 복원 시: `/home/user/AP------` 경로를 실제 체크아웃 경로로, `python3`를 `python`으로 바꾸고, Chrome은 설치된 것(`channel:'chrome'`), playwright는 `.tmp/apmath-visual-engine/dependencies/node_modules/playwright`를 직접 require, 동적 import 경로는 `file:///C:/...`.
 
@@ -31,7 +31,8 @@
 
 ### 바뀐 규칙 (반드시 따른다)
 - **그림 안에는 풀이 핵심 단계에 꼭 필요한 중간값만, 정답은 캡션(과 alt)에 따로**(§1 규칙 5, BRIEF_RULES 11). 너무 많은 정보 금지. 최종 정리는 메인이 PNG를 보고 판단.
-- **정답지 회귀는 표본만**(BRIEF_RULES 10). 전체 회귀(약 75분)는 사용자 승인 시만.
+- **정답지 회귀 기준(사용자 결정 2026-11-01, BRIEF_RULES 10):** 평소(작업자·검수자·재검수)는 표본(바뀐 코드가 그리는 항목 10개 안팎 + 새 항목). **전체 회귀는 main PR 직전, 또는 공용 파일(`plane-marks.mjs`·`engine.py`·`semantic_model.py`·observer 등) 충돌을 손으로 해소한 병합일 때만** 하고, 다른 렌더 작업이 없는 때 돌린다. 이유: 전체 회귀의 비용은 토큰이 아니라 시간·CPU(70~100분, 병합 검수 에이전트 95k~173k 토큰 대부분은 충돌 해소·테스트였다)이고, 손으로 합친 공용 코드는 표본으로 놓칠 수 있다.
+- **두 줄 체제(사용자 결정 2026-11-01):** 엔진 확장(G 라인)은 작업자 한 명이 순서대로, 해설 그림 생산(plan·검토·게시)은 병렬 5~7개로 따로 돌린다. 이유: 남은 그림 약 4,200개를 한 명씩 하면 몇 주가 걸리고, 중학교 쪽 엔진은 거의 갖춰졌다.
 - **메인(오케스트레이터)이 할 일**은 루트 `CLAUDE.md` "메인이 할 일" 7가지와 §2.1. 핵심: 보고를 믿지 말고 PNG를 직접 보고 해설·정답과 대조, 융통성 있게 판단, 지시가 바뀌면 진행 중 작업자와 문서에 즉시 반영.
 
 ### 일하는 순서 (이번 세션에서 굳어진 방식)
@@ -64,9 +65,11 @@
 
 ## 0. 한 줄 요약
 
-- **해설 그림 게시:** 중1 기출 2학기 26개 시험지, 중2 기출 2026·2025년 25개 시험지(그림 236개), 고등 143개 시험지를 해설 그림으로 마감했다(원장 `CLOSED`).
-- **엔진 확장:** E1~E37을 넓혔다. 중학교 평면·좌표·입체·수직선·통계 대부분과 정규분포 곡선을 그린다.
-- **남은 일:** 중2 2024·2023년과 그 이전, 중3 전체, 고등 나머지, 중1 미결 12문항. 그리고 엔진 빈틈(이차곡선, 공간좌표, 입체 보조점 등)이다(§6).
+- **해설 그림 게시:** 중1 기출 2학기 26개 시험지, 중2 기출 2026·2025년 25개 시험지(그림 236개), 고등 143개 시험지를 해설 그림으로 마감했다(원장 `CLOSED`, §5).
+- **엔진 확장:** E1~E37로 중학교 평면·좌표·입체·수직선·통계와 정규분포를 그리고, 이어 G 라인(G1·G5·G6·G7·G9 계열, 좌표 그림 끌어내기·각 끌어내기 보강 G11, 평면벡터 G3, 이차곡선 포물선·쌍곡선·타원·접선 G2a~c, 입체 보조점 G4a 등)을 더했다(§00 표, §4.1).
+- **남은 일:** 두 줄 체제로 진행한다(§6). 엔진 줄은 G4b 평면 α·β → G4c 이면각 → G4 후속 → G4d 좌표공간 → G8·G10 → G2 남은 것(§00 다음 할 일). 생산 줄은 중2 2024→2023 이전, 중1 미결, 중3, 고등 나머지.
+
+---
 
 ## 1. 사용자 지시 (누적, 반드시 지킬 것)
 
@@ -120,7 +123,7 @@
 | 7 게시 | `pubflow.py` | 아래 명령. JS 반영 → 렌더 확인 → 게이트 테스트 → 원장 → 커밋·push |
 | 내용 검사 | `content-check.md` | 답·해설 오류 확인 |
 | 엔진 확장 | `engine-common.md` + `engine-eNN-*.md` | 워크트리에서 기능 하나씩 커밋. 관측기·테스트·가이드·정답지 항목까지 |
-| 엔진 병합 | `merge.md` | cherry-pick → 충돌 해소 → 관련 테스트 → **정답지 전체 회귀**(바이트 동일) → PASS면 메인이 rebase·push |
+| 엔진 병합 | `merge.md` | cherry-pick → 충돌 해소 → 관련 테스트 → 정답지 표본 회귀(전체는 main PR 직전·공용 파일 수동 충돌 병합 때만, 바이트 동일) → PASS면 메인이 rebase·push |
 | 표본 조사 | `survey.md` | 남은 학년 표본으로 그림 필요율·그릴 수 있는 비율 추정 |
 
 - **렌더:** `cd /home/user/AP------ && node archive/tools/geometry-equation/production/render-plan.mjs --item <dir>/item.json --plan <dir>/plan.json --out <dir>/out`. 결과는 `out/figure-result.json`의 `status`.
@@ -128,7 +131,7 @@
   - 경로는 `runs/` 기준이다.
   - rows는 `[{"ord":N,"A":"<png 절대경로>"}]`이고, **이미 그림이 있는 문항을 교체할 때는 `"replace":true`**를 넣는다(없으면 publish.mjs가 HAS_EXISTING_SOLUTION_IMAGE_FIELDS로 건너뛰고 pubflow가 멈춘다).
   - 시험지마다 `runs/ledger-spec-<시험>.json`이 없으면 triage에서 만든다. 문항을 EXEMPT로 돌릴 때는 `exempt_override`를 쓴다.
-- **엔진 확장 묶음 하나**는 Sonnet 작업자 1명이 1~2시간, 병합 검수는 1~1.5시간(정답지 105개 렌더)이 걸린다. 병합은 한 번에 하나씩 순서대로 한다. 끝난 묶음 여러 개를 한 번에 cherry-pick 검수하면 시간이 준다.
+- **엔진 확장 묶음 하나**는 Sonnet 작업자 1명이 1~2시간이 걸린다. 병합 검수는 표본 회귀면 짧고, 전체 회귀(정답지 전체 렌더, 70~100분)는 §00 기준에 해당할 때만 한다. 병합은 한 번에 하나씩 순서대로 한다. 끝난 묶음 여러 개를 한 번에 cherry-pick 검수하면 시간이 준다.
 
 ### 2.3 동시 실행·환경
 - **CPU:** 4개다. 렌더가 많은 에이전트는 5~7개까지 돌린다. 부하가 높으면 Chrome 준비 실패(`QUESTION_IMAGE_READINESS_INCOMPLETE`)가 난다 → 부하가 7 아래로 내려간 뒤 단독 재시도한다.
@@ -148,7 +151,7 @@ mkdir -p .tmp/svg-m1/runs .tmp/svg-m1/packets && cp -r archive/tools/geometry-eq
 
 ## 4. 엔진 현황
 
-### 4.1 확장 묶음 (E1~E37 모두 main 반영)
+### 4.1 확장 묶음 (E1~E37, G 라인 모두 main 반영)
 - **평면:**
   - E1 이름 없는 점
   - E7 치수선·경로 합·지시선
@@ -178,8 +181,14 @@ mkdir -p .tmp/svg-m1/runs .tmp/svg-m1/packets && cp -r archive/tools/geometry-eq
   - E34 범례·점도표
   - E36 정규분포 곡선 `normal.curves`·넓이 `shades`·`areaLabels`·산점도 기준선·영역
 - **용기:** E15 물 채우기 + 높이 그래프
+- **G 라인(2026-10-31~11-01, 상세·필드는 `ops/svg-m1/gaps.md`):**
+  - G1·G5·G5b·G6·G6b·G6c·G7·G7b·G7c·G9: 입체 보조점·삼차 색칠 영역·그래프와 원·불연속 함수 둘·도로망 경로(필드는 `gaps.md` 각 절과 AUTHOR_GUIDE)
+  - G11 좌표(축 있는) 그림 callout 끌어내기, ANGLE callout 호 비례·각 치수선, 좁은 꼭짓점 경로 라벨
+  - G3 벡터: 라벨 `vec(a)`, `planeMarks.vectors`(from→to 화살표, `labelAt`·`side`, 좌표 `components`), `planeMarks.vectorOps`(SUM·DIFF·SCALE `k`)
+  - G2a~c 이차곡선 `conic`(포물선·초점·준선·교점·수선의 발, 쌍곡선·점근선, 접선 판별식·외부 점 접선, 원·타원), `conics` 곡선 2개, 곡선 이름, 점 좌표 라벨 `coordinates:true`
+  - G4a 입체 보조점 `solids[].points[].at`의 `divide`(`external` 외분)·`midpoint`·`centroid`·`footOnLine`·`projection`(한도 10)
 
-### 4.2 검증 기준 (2026-10-30, merge e37)
+### 4.2 검증 기준 (2026-10-30, E37 병합 시점의 값. 최신 수치는 직전 병합 보고 기준)
 - **정답지:** 109개(item29 포함) 모두 ARCHIVE_BOUND, 기존 항목 바이트 동일.
 - **Python:** `PYTHONPATH=… python3 -m unittest discover -s archive/tools/geometry-equation/tests` 966개 중 실패 1개(`test_graph_spike` 반복근, 원래 있던 것).
 - **Node 원래 실패**(기준 트리에서도 같음):
@@ -188,33 +197,40 @@ mkdir -p .tmp/svg-m1/runs .tmp/svg-m1/packets && cp -r archive/tools/geometry-eq
   - archive-cancel-recovery 1개, axis-overlap-segment 2개, cubic-quartic-archive-publication 1개, offline-archive-runtime 1개, rational-linear-over-linear-archive 1개, trigonometric-archive 1개
   - 이 밖의 실패는 새로 생긴 것으로 본다.
 
-### 4.3 엔진 빈틈 (다음 확장 후보, 상세는 `ops/svg-m1/gaps.md`)
-1. **정규분포 외 고2:** 이차곡선(포물선·타원·쌍곡선), 공간좌표, 입체 면-면·직선-평면 관계, 삼차함수 영역, 불연속·극한 표시(빈 점·화살표).
-2. **입체 보조점:** 꼭짓점이 아닌 점(밑면 중심 H·변의 중점 M)에 이름 달기, 라벨 없는 수선(점선과 직각 표시만). 고정 YAW 28°라 정사각뿔 앞 옆모서리가 높이선과 겹친다. 지금은 끌어낸 직각삼각형 패널로 우회한다(26_왕의중 1학기 중간 q23).
-3. **전개도:** 속이 빈 원기둥, 원뿔대 전개도(설계 메모 `ops/svg-m1/notes/DESIGN-hollow-cylinder-and-frustum-net.txt`).
-4. **E37 한계:**
-   - 좌표(축 있는) 그림의 callout은 CALLOUT_REQUIRES_PLANE_FIGURE로 거절한다.
-   - ANGLE callout은 호 크기(px)가 그대로이고 치수선이 없다.
-   - pathLabels anchor는 꼭짓점 근처에서 LAYOUT_INVENTORY_INCOMPLETE가 날 수 있다.
+### 4.3 엔진 빈틈 (다음 확장 후보, 상세는 `ops/svg-m1/gaps.md`, 순서는 §00 다음 할 일)
+- **해결됨:** 이차곡선 포물선·타원·쌍곡선(G2a~c), 입체 보조점 이름·수선의 발·정사영 점(G4a), E37 한계 중 좌표 그림 callout·각 호 비례·각 치수선(G11), 벡터(G3), 삼차 이상 색칠 영역·두 곡선 사이(G5·G5b), 불연속 함수 둘·접근 방향 표시(G7·G7b·G7c), 그래프와 원(G6·G6b·G6c), G1, 도로망 최단 경로(G9). `gaps.md`에 G5·G7 후속 잔여는 적혀 있지 않다.
+- **남음:**
+  1. 공간도형: 평면 α·β·교선·삼수선(G4b), 이면각·직선과 평면의 각(G4c), 입체 모서리 바깥 치수선·라벨 지시선·solid 기본 제목 끄기(G4 후속), 좌표공간 x·y·z(G4d).
+  2. 전개도·입체: 속 빈 원기둥·원뿔대 전개도(G8, 설계 메모 `ops/svg-m1/notes/DESIGN-hollow-cylinder-and-frustum-net.txt`), 내접 혼합 입체(G10).
+  3. G2 남은 것: 곡선 3개 이상, 두 곡선의 공통 접선, 쌍곡선 준선.
+  4. 입체 고정 YAW 28°라 정사각뿔 앞 옆모서리가 높이선과 겹친다(끌어낸 직각삼각형 패널로 우회).
+  5. pathLabels anchor가 꼭짓점 근처에서 LAYOUT_INVENTORY_INCOMPLETE가 날 수 있다(E37).
 
-## 5. 진행 현황 (원장 기준, 2026-10-30)
+## 5. 진행 현황 (원장 `exam-figure-ledger.json` 다시 센 값, 2026-11-01)
 
 | 학년 | 시험지(원본) | 원장 등록 | CLOSED | 미결 |
 |---|---|---|---|---|
-| 중1 | 44 | 36 | 26 | 10개 시험지·12문항(엔진 대기·내용 문제) |
-| 중2 | 137 | 27 (2026·2025 전부) | 25 | 2개(원본 그림 없음: 26_왕의중 2학기 중간 8문항, 25_연향중 1학기 중간 q14) |
+| 중1 | 44 | 36 | 26 | 10개 시험지·12문항(내용 문제·재 plan 대상) |
+| 중2 | 138 | 27 (2026·2025 전부) | 25 | 2개 시험지·9문항(26_왕의중 2학기 중간 8문항은 원본 그림 없음, 25_연향중 1학기 중간 q14) |
 | 중3 | 198 | 0 | 0 | 전부 |
-| 고등 | 480 | 145 | 143 | 2개(골든 샘플 SHA 고정 문제·내분점 작도) |
+| 고등 | 487 | 145 | 143 | 2개 시험지·5문항(25_매산여고 2학기 중간 고1 4문항, 25_효천고 2학기 중간 고1 1문항) |
 
+- 원장 합계: 208개 등록, CLOSED 194, OPEN 14. 원장 자체의 `updated`는 2026-10-29이다(G 라인 샘플 게시는 원장 등록 시험지와 별개로 시험지 JS에 직접 게시했다).
 - 처리 속도는 16시간에 그림 약 790개(Sonnet 병렬 5~7)였다.
 - 단계별 평균은 plan 13.5분/묶음, 검토 3.5분, 엔진 묶음 1~2시간이다.
 
-## 6. 남은 일 (권장 순서)
+## 6. 남은 일 (두 줄 체제, 사용자 결정 2026-11-01)
 
-1. **중2 2024 → 2023 → 그 이전**(원장에 없는 110개 시험지). §2.2 파이프라인을 시험지 2~4개씩 묶어 돌린다.
-2. **중1 미결 12문항:** 원장의 `OPEN_*` reason에 적힌 엔진(E23·E26c·E26d·E28d·E29·E30)은 대부분 이미 들어왔다. 다시 plan → 검토 → 게시한다. `25_왕의중 2학기 기말 q19`는 원본 히스토그램 내용 문제(OPEN_CONTENT)이다.
+두 줄은 서로 기다리지 않고 따로 돌린다. 이유: 남은 그림 약 4,200개를 한 명씩 하면 몇 주가 걸리고, 중학교 쪽 엔진은 거의 갖춰졌다.
+
+### 엔진 줄 (작업자 한 명, 순서대로. 순서와 샘플은 §00 "다음 할 일")
+G4b 평면 α·β → G4c 이면각 → G4 후속(바깥 치수선·제목 끄기) → G4d 좌표공간 → G8 속 빈 원기둥·원뿔대 전개도 → G10 내접 혼합 입체 → G2 남은 것(곡선 3개 이상·공통 접선·쌍곡선 준선). 공간좌표(G4d)는 `gaps.md`에서 확인해 이어 붙인다. 지시서는 `BRIEF_RULES.md`와 `briefs/engine-gap-template.md`.
+
+### 생산 줄 (병렬 5~7개, 엔진 변경 없이 plan → 검토 → 게시)
+1. **중2 2024 → 2023 → 그 이전**(원장에 없는 시험지 약 110개). §2.2 파이프라인을 시험지 2~4개씩 묶어 돌린다.
+2. **중1 미결 12문항:** 원장의 `OPEN_*` reason에 적힌 엔진(E23·E26c·E26d·E28d·E29·E30)은 대부분 이미 들어왔다. 다시 plan → 검토 → 게시한다. `25_왕의중 2학기 기말 q19`는 원본 히스토그램 내용 문제(OPEN_CONTENT)이다. 속 빈 원기둥은 G8을 기다린다.
 3. **중3** (표본 조사: 문항의 43%가 그림 필요, 95%를 지금 그릴 수 있음, 시험지당 8.4개, 약 1,570개). 먼저 `24_연향중 2학기 기말 중3` 해설의 `$` 짝 오류를 고쳐야 그 시험지가 렌더된다.
-4. **고1 나머지·고2** (고2 표본: 38%가 그림 필요, 지금 63%, 정규분포 반영 후 확통 약 85%). 이차곡선·공간좌표 등 §4.3 확장이 먼저다.
+4. **고1 나머지·고2** (고2 표본: 38%가 그림 필요). 이차곡선·벡터·입체 보조점은 G2·G3·G4a로 이미 그릴 수 있고, 평면 α·β·이면각·좌표공간 문항은 엔진 줄 G4b~d를 기다린다.
 5. **원본 자료 문제**(`ops/svg-m1/data-issues.md`)를 사용자에게 원문 확인을 받는다.
    - 26_왕의중 2학기 중간 문제 그림 8개 없음
    - 22_순천고 2학기 중간 고2 확통 q17 그림 파일 없음(그 시험지 전체 렌더 실패)

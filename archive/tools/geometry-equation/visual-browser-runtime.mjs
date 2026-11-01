@@ -11,6 +11,14 @@ export function playwright() {
     throw Error('PLAYWRIGHT_REQUIRED: use installed dependency path via GEOMETRY_NODE_MODULES');
   }
 }
+// Exam images default to the external R2 origin (archive-asset-base.js). Render/measure tools forbid external requests and
+// measure the repository's own image files, so they open exam pages with the teacher/QA override ?assetBase=off
+// (same-origin images, honoured on non-student pages such as archive/engine.html). Evidence keeps the unmodified urlPath.
+export function sameOriginExamImageUrl(url) {
+  const text=String(url),hash=text.indexOf('#'),head=hash<0?text:text.slice(0,hash),tail=hash<0?'':text.slice(hash);
+  const clean=head.replace(/([?&])assetBase=[^&]*&?/,'$1').replace(/[?&]$/,'');
+  return clean+(clean.includes('?')?'&':'?')+'assetBase=off'+tail;
+}
 export function assertOutput(file) {
   const root=path.resolve(repoRoot,'.tmp/archive');
   const target=path.resolve(file);

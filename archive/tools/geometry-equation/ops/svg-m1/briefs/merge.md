@@ -1,4 +1,4 @@
-# 엔진 묶음 병합 검수 (cherry-pick → 충돌 해소 → 테스트 → 정답지 전체 회귀)
+# 엔진 묶음 병합 검수 (cherry-pick → 충돌 해소 → 테스트 → 정답지 회귀)
 
 너는 엔진 작업자의 커밋을 최신 작업 브랜치 위에 올려 검수한다. **push·PR 금지**(코디네이터가 PASS를 보고 직접 올린다). 본 체크아웃(/home/user/AP------)의 파일은 건드리지 않는다.
 
@@ -29,8 +29,11 @@ cd .claude/worktrees/merge-{TAG} && mkdir -p .tmp && ln -s /home/user/AP------/.
 - python: `PYTHONPATH=$PWD/.tmp/apmath-visual-engine/dependencies/python python3 -m unittest discover -s archive/tools/geometry-equation -p 'test_*.py'`(위치가 다르면 저장소의 기존 방식). 기준 실패: test_graph_spike 반복근 1건(원래 있던 것). 그 밖의 실패 = FAIL.
 - node: 커밋들이 건드린 기능의 `archive/tools/geometry-equation/tests/*.test.mjs`와 author-guide 테스트. 작업자 보고에 "원래 실패"로 적힌 것(construction-candidate-svg-v1 14개 등)은 origin 기준에서 같은 수인지 확인.
 
-## 5. 정답지 전체 회귀
+## 5. 정답지 회귀 (사용자 결정 2026-11-01, BRIEF_RULES 규칙 10)
+**기본은 표본**: 커밋이 바꾼 코드가 그리는 정답지 항목 10개 안팎과 새로 들어온 항목만 아래 방식으로 렌더해 비교한다. **전체 회귀는 main PR 직전이거나, 공용 파일(`plane-marks.mjs`·`engine.py`·`semantic_model.py`·observer 등)의 충돌을 손으로 해소한 병합일 때만** 한다. 전체는 다른 렌더 작업이 없는 때 돌린다. 이유: 비용은 토큰이 아니라 시간·CPU(70~100분)이고, 손으로 합친 공용 코드는 표본으로 놓칠 수 있다.
+
+### 전체를 돌리는 경우의 절차
 `ops/golden.manifest.json`의 **모든** 항목(item29 제외, X9 원래 실패)을 하나씩 렌더한다(`/home/user/AP------/.tmp/svg-m1/golden-one.sh`를 참고하되 WT를 이 트리로, OUT을 `$H/runs/merge-{TAG}/golden/<item>`로 바꾼 사본을 `$H/runs/merge-{TAG}/`에 만들어 쓴다). 기존 항목은 저장 SVG와 바이트 동일, 이번에 새로 들어온 항목은 ARCHIVE_BOUND. 결과를 `$H/runs/merge-{TAG}/golden-result.txt`에 `itemNN STATUS SAME|DIFF|NEW` 줄로. CPU 4개 공유이니 하나씩.
 
 ## 6. 판정·보고 (10줄 이내)
-PASS 조건: 2의 설명 없는 삭제 없음, 3의 충돌 표식 없음, 4 기준 외 실패 없음, 5 DIFF 없음. 보고: PASS/FAIL, `merge-{TAG}` 브랜치 HEAD 해시와 커밋 수, 해소한 충돌 파일, 테스트 수치, 정답지 집계(SAME n / NEW n / DIFF 목록), FAIL이면 정확한 원인. 브랜치와 작업 트리는 그대로 둔다.
+PASS 조건: 2의 설명 없는 삭제 없음, 3의 충돌 표식 없음, 4 기준 외 실패 없음, 5 DIFF 없음(표본이면 표본 안에서). 보고: PASS/FAIL, `merge-{TAG}` 브랜치 HEAD 해시와 커밋 수, 해소한 충돌 파일, 테스트 수치, 정답지 집계(SAME n / NEW n / DIFF 목록), FAIL이면 정확한 원인. 브랜치와 작업 트리는 그대로 둔다.

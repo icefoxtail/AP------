@@ -50,7 +50,7 @@ export async function runTypographySpike() {
     page.on('pageerror',e=>pageErrors.push(String(e)));
     page.on('response',r=>pending.push((async()=>{try{responses.push({url:r.url(),status:r.status(),sha256:bytesSha(await r.body())});}catch{}})()));
     const base='http://127.0.0.1:'+server.address().port;
-    const url=base+'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourcePath.replace('/archive/',''));
+    const url=base+'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourcePath.replace('/archive/',''))+'&assetBase=off';
     await page.goto(url,{waitUntil:'domcontentloaded'});
     await page.waitForFunction(()=>{
       const imgs=[...document.querySelectorAll('#print-area .sol-image-wrap img')].filter(i=>i.getBoundingClientRect().width>0);
