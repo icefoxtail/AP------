@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-01T15:22:17.655Z",
+  "updatedAt": "2026-11-01T15:25:10.246Z",
   "coverage": "GitHub PR/Actions only; Library/GPT completion not observed",
   "history": {
     "complete": false,
@@ -31518,7 +31518,6 @@
       "key": "release:41317620702:1:733c4734cb3ff91a1fd29d0a47807f12e9863d7c",
       "status": "unverified",
       "attempts": 3,
-      "reason": "증거 실행/차수/SHA 불일치",
       "run": {
         "id": 41317620702,
         "attempt": 1,
@@ -31529,6 +31528,7 @@
         "event": "push",
         "branch": "main"
       },
+      "reason": "증거 실행/차수/SHA 불일치",
       "nextRetryAt": "2026-11-01T15:42:16.928Z"
     },
     "registration:41317433495:1:1ceb49eb40829b32c6539574d02ab3e7ab57bc1b": {
@@ -31552,7 +31552,6 @@
       "key": "registration:41319395714:1:806a68e1ba45b0311642c34ce4c65ca355ee9fbb",
       "status": "unverified",
       "attempts": 2,
-      "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 41319395714,
         "attempt": 1,
@@ -31563,14 +31562,13 @@
         "event": "push",
         "branch": "main"
       },
+      "reason": "현재 실행 차수 증거 없음",
       "nextRetryAt": "2026-11-01T15:32:13.807Z"
     },
     "release:41319395754:1:806a68e1ba45b0311642c34ce4c65ca355ee9fbb": {
       "key": "release:41319395754:1:806a68e1ba45b0311642c34ce4c65ca355ee9fbb",
       "status": "partial",
-      "fileProofState": "retryable",
       "attempts": 2,
-      "verifiedAt": "2026-11-01T15:22:14.551Z",
       "run": {
         "id": 41319395754,
         "attempt": 1,
@@ -31591,6 +31589,8 @@
         "fileProofReason": "Pages ZIP 다운로드 실패",
         "exams": {}
       },
+      "fileProofState": "retryable",
+      "verifiedAt": "2026-11-01T15:22:14.551Z",
       "checkedExamIds": [
         "15_강남여고_2학기_중간_고2_기하와벡터_기출",
         "15_신흥중_2학기_기말_중3_수학",
