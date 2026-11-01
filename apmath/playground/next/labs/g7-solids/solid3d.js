@@ -256,7 +256,7 @@
     if (o.axis !== false) {
       const e = o.ext == null ? 0.4 : o.ext;
       g.path([f([0, y0 - e]), f([0, y1 + e])], { color: o.axisColor || 'rose', width: 2.2, dash: [7, 5] });
-      if (o.axisLabel !== false) g.text(f([0, y1 + e]), o.axisText || 'l', o.axisColor || 'rose', { dx: o.horiz ? (o.axisText && o.axisText.length > 1 ? 36 : 14) : 0, dy: o.horiz ? 0 : -14, size: 17 });
+      if (o.axisLabel !== false) g.text(f([0, y1 + e]), o.axisText || 'l', o.axisColor || 'rose', { dx: o.horiz ? (o.axisText && o.axisText.length > 1 ? 36 : 14) : (o.axisDx || 0), dy: o.horiz ? 0 : -14, size: 17 });
     }
   }
   // 보기용 svg: 회전축이 있는 평면도형

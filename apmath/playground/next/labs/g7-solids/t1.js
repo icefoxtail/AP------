@@ -10,7 +10,7 @@
   const G = window.APL_SO;
   if (!G || !G.S3) return;
   const S3 = G.S3;
-  const { PI, DEG, clamp, fmtN, T, fit, P, rd, notes, mkNum, mkText, rint, pick, shuffle, esc, span, jo, piT, bboxOf } = G;
+  const { PI, DEG, clamp, fmtN, T, fit, P, rd, notes, mkNum, mkText, rint, pick, shuffle, sshuffle, esc, span, jo, piT, bboxOf } = G;
 
   const PARAMS = {
     soT: P('돌리는 각도', 0, 1, 0.005, 0.4, { color: 'amber', hint: '오른쪽으로 끌면 평면도형이 축을 따라 한 바퀴 돌아요', format: (v) => Math.round(v * 360) + '°' }),
@@ -58,12 +58,14 @@
   function prob2D(b, spec) {
     const g = S3.boardSink(b), horiz = !!spec.horiz;
     const f = (p) => (horiz ? { x: p[1], y: p[0] } : { x: p[0], y: p[1] });
-    S3.planeFig(g, spec.poly, { horiz, axisText: '회전축 l', ext: spec.ext });
     const pts = spec.poly.map(f);
     const ys = spec.poly.map((p) => p[1]), y0 = Math.min(...ys), y1 = Math.max(...ys);
     pts.push(f([0, y0 - 0.55]), f([0, y1 + 0.55]));
+    (spec.lines || []).forEach((ln) => pts.push(f(ln.a), f(ln.b)));
     const bb = bboxOf(pts), cen = { x: (bb.x0 + bb.x1) / 2, y: (bb.y0 + bb.y1) / 2 };
     fit(b, bb, { l: 70, r: 70, t: 56, b: 56 });
+    S3.planeFig(g, spec.poly, { horiz, axisText: '회전축 l', ext: spec.ext, axisDx: -38 });
+    (spec.lines || []).forEach((ln) => { b.seg(f(ln.a), f(ln.b), { color: AMB, width: 2.6 }); });
     (spec.rights || []).forEach((r) => {
       const c = f(r.c), a = f([r.c[0] + r.da[0], r.c[1] + r.da[1]]), d = f([r.c[0] + r.db[0], r.c[1] + r.db[1]]);
       b.right(c, a, d, { size: 11, color: AMB });
@@ -370,12 +372,12 @@
     draw(b, s, M, C) {
       if (C.problem) {
         const w = M.pw;
-        let poly, labels, rights = [], horiz = false;
+        let poly, labels, rights = [], horiz = false, lines = [];
         if (M.c5 === 'rect0') { poly = [[0, 0], [w, 0], [w, 4], [0, 4]]; labels = [{ a: [0, 0], b: [w, 0], text: `${w} cm` }, { a: [w, 0], b: [w, 4], text: '4 cm' }]; }
-        else if (M.c5 === 'rect1') { poly = [[2, 0], [2 + w, 0], [2 + w, 4], [2, 4]]; labels = [{ a: [2, 0], b: [2 + w, 0], text: `${w} cm` }, { a: [2, 0], b: [2, 4], text: '4 cm' }, { a: [0, 4.5], b: [2, 4.5], text: '2 cm', out: [0, 1] }]; }
-        else if (M.c5 === 'tri') { poly = [[0, 0], [2.4, 1.8], [0, 5]]; labels = [{ a: [0, 0], b: [2.4, 1.8], text: '3 cm', out: [1, -0.6] }, { a: [2.4, 1.8], b: [0, 5], text: '4 cm', out: [1, 0.6] }, { a: [0, 0], b: [0, 5], text: '5 cm', out: [-1, 0] }]; }
+        else if (M.c5 === 'rect1') { poly = [[2, 0], [2 + w, 0], [2 + w, 4], [2, 4]]; labels = [{ a: [2, 0], b: [2 + w, 0], text: `${w} cm` }, { a: [2, 0], b: [2, 4], text: '4 cm' }, { a: [0, -0.5], b: [2, -0.5], text: '축까지 2 cm', out: [0, -1] }]; lines = [{ a: [0, -0.5], b: [2, -0.5] }]; }
+        else if (M.c5 === 'tri') { rights = [{ c: [2.4, 1.8], da: [-0.6, 0.8], db: [-0.8, -0.6] }]; poly = [[0, 0], [2.4, 1.8], [0, 5]]; labels = [{ a: [0, 0], b: [2.4, 1.8], text: '3 cm', out: [1, -0.6] }, { a: [2.4, 1.8], b: [0, 5], text: '4 cm', out: [1, 0.6] }, { a: [0, 0], b: [0, 5], text: '5 cm', out: [-1, 0] }]; }
         else { poly = [[0, 0], [3, 0], [0, 4]]; labels = [{ a: [0, 0], b: [3, 0], text: '3 cm' }, { a: [0, 0], b: [0, 4], text: '4 cm', out: [-1, 0] }]; rights = [{ c: [0, 0], da: [0.5, 0], db: [0, 0.5] }]; }
-        prob2D(b, { poly, horiz, labels, rights });
+        prob2D(b, { poly, horiz, labels, rights, lines });
         return;
       }
       const tri = M.kind === 'tri';
@@ -393,7 +395,7 @@
           } else {
             const k = m.k;
             D.line({ x: 0, y: m.h1, z: 0 }, { x: m.r, y: m.h1, z: 0 }, AMB, 2.2, { dash: [5, 4] });
-            rm(D, [m.r, m.h1], [-1, 0], [0, -1], 0.3 * k);
+            rm(D, [m.r, m.h1], [-0.6, 0.8], [-0.8, -0.6], 0.4 * k);
             D.lab({ x: m.r * 0.55, y: m.h1 * 0.5, z: 0 }, `${3 * k}`, AMB, { dx: 18, dy: 6 });
             D.lab({ x: m.r * 0.55, y: m.h1 + (m.h2 * 0.5), z: 0 }, `${4 * k}`, AMB, { dx: 22, dy: -4 });
             D.lab({ x: 0, y: 2.5 * k, z: 0 }, `빗변 ${5 * k}`, AMB, { dx: -50 });
@@ -474,12 +476,12 @@
       rule: '회전체를 회전축을 포함하는 평면으로 자른 한쪽 단면이 회전하기 전의 평면도형이다',
       notes: notes('축의 <b>한쪽만</b> 그려요. 양쪽이 대칭으로 그려진 도형은 틀려요.', '입체에 보이는 <b>꺾이는 곳(고리)</b>이 평면도형의 꼭짓점이에요.')
     }),
-    prob: (M) => {
-      const d = M.d, correct = S3.solid(M.kind, d).poly;
-      const others = shuffle(KINDS6.filter((k) => k !== M.kind)).slice(0, 3);
+    prob: (M, s) => {
+      const d = M.d, correct = S3.solid(M.kind, d).poly, sd = 's1-6|' + M.kind + JSON.stringify(d) + '|' + ((s && s.soSeed) || 0);
+      const others = sshuffle(KINDS6.filter((k) => k !== M.kind), sd + 'o').slice(0, 3);
       const items = [{ svg: S3.planeSvg(correct, { w: 150, h: 130 }), ok: true, hint: '' }, { svg: S3.planeSvg(correct, { mirror: true, w: 150, h: 130 }), ok: false, hint: '축 양쪽에 대칭으로 그린 도형은 아니에요. 한쪽 단면만 돌려요.' }];
       others.forEach((k) => items.push({ svg: S3.planeSvg(S3.solid(k, d).poly, { w: 150, h: 130 }), ok: false, hint: '이 도형을 돌리면 다른 모양의 입체가 돼요. 꺾이는 곳을 비교해 보세요.' }));
-      const list = shuffle(items);
+      const list = sshuffle(items, sd);
       return { tag: '회전체의 평면도형 (핵심)', key: M.kind + JSON.stringify(d), fig: true, stem: '그림의 회전체는 어떤 평면도형을 직선 l을 축으로 1회전시킨 것인가?', choices: list.map((x) => ({ h: x.svg, p: '평면도형 그림', ok: x.ok, hint: x.hint })) };
     }
   });
@@ -507,16 +509,18 @@
     draw(b, s, M, C) {
       if (C.problem) {
         const narrow = b.W < b.H * 1.1, cells = M.list.map((k, i) => ({ k, i }));
-        const colN = narrow ? 3 : 5, cw = 4.2, chh = 4.4;
-        const pts = [];
+        const colN = narrow ? 3 : 5, cw = 4.2, chh = 4.4, pts = [], at = [];
         cells.forEach(({ k, i }) => {
           const col = i % colN, row = Math.floor(i / colN), cx = (col - (colN - 1) / 2) * cw + (narrow && row === 1 ? cw / 2 : 0), cy = -row * chh;
-          const D = S3.ctx(b, { soYaw: -25, soPitch: 20 }, { k: 1, ox: cx, oy: cy - 1.2 });
-          if (K7[k].rev) S3.drawSolid(D, S3.solid(k, K7D[k]), {}); else S3.drawPolyhedron(D, S3.polyhedron(k), 0, {});
+          at.push({ k, i, cx, cy });
           pts.push({ x: cx - 1.9, y: cy - 1.4 }, { x: cx + 1.9, y: cy + 3.2 });
-          if (C.txt) T(b, { x: cx, y: cy - 1.2 }, G.NUM[i], 'amber', { dy: 26, size: 19 });
         });
         fit(b, bboxOf(pts), { l: 20, r: 20, t: 30, b: 50 });
+        at.forEach(({ k, i, cx, cy }) => {
+          const D = S3.ctx(b, { soYaw: -25, soPitch: 20 }, { k: 1, ox: cx, oy: cy - 1.2 });
+          if (K7[k].rev) S3.drawSolid(D, S3.solid(k, K7D[k]), {}); else S3.drawPolyhedron(D, S3.polyhedron(k), 0, {});
+          if (C.txt) T(b, { x: cx, y: cy - 1.2 }, G.NUM[i], 'amber', { dy: 26, size: 19 });
+        });
         return;
       }
       const D = S3.ctx(b, { soYaw: -25, soPitch: 20 });

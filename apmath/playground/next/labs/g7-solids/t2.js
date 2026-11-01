@@ -10,7 +10,7 @@
   const G = window.APL_SO;
   if (!G || !G.S3) return;
   const S3 = G.S3;
-  const { PI, DEG, clamp, fmtN, T, fit, P, rd, notes, mkNum, mkText, rint, pick, shuffle, esc, span, jo, piT, bboxOf } = G;
+  const { PI, DEG, clamp, fmtN, T, fit, P, rd, notes, mkNum, mkText, rint, pick, shuffle, sshuffle, esc, span, jo, piT, bboxOf } = G;
   const AMB = 'amber', SKY = 'sky', ROSE = 'rose', GRN = 'green';
   const cmv = (v) => fmtN(v) + ' cm';
 
@@ -62,14 +62,14 @@
     return { cx: q.cx, cy: q.cy, side, narrow: below, box: box(q) };
   }
   function stage(b, s, M, C, hooks) {
-    const D = S3.ctx(b, s, { lay: true }), sol = M.sol, ext = 0.5, Rs = sol.rmax * 1.3;
+    const D = S3.ctx(b, s, { lay: true }), sol = M.sol, ext = 0.5, Rs = sol.rmax * 1.2;
     const pts = [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + ext, z: 0 })];
     if (hooks.pts) hooks.pts(D, M, Rs).forEach((p) => pts.push(p));
     const sb = S3.boxOf(D, sol, pts);
     const side = hooks.side === undefined ? Math.max(2 * sol.rmax * 1.05, 3.6) : hooks.side;
     const ins = side ? placeInset(b, sb, side) : null;
     const wide = ins && !ins.narrow;
-    fit(b, ins ? union(sb, ins.box) : sb, { t: 48, b: ins && ins.narrow ? 36 : 44, l: 44, r: 40 });
+    fit(b, ins ? union(sb, ins.box) : sb, { t: 48, b: ins && ins.narrow ? 36 : 44, l: 44, r: 88 });
     S3.drawSolid(D, sol, {});
     S3.drawAxis(D, sol.ymin, sol.ymax, { ext, label: '회전축 l', dx: 44, dy: 0 });
     hooks.after(D, M, C, ins, Rs);
@@ -82,6 +82,9 @@
     const y0 = sol.ymin - e, y1 = sol.ymax + e, q = (rho, y) => D.pol(rho, y, psi);
     D.poly3([q(-Rs, y0), q(Rs, y0), q(Rs, y1), q(-Rs, y1)], { close: true, fill: col, fillAlpha: fa, color: col, width: 2 });
   }
+  // 자르는 평면 모서리의 화면 위치(그림 맞춤용)
+  const perpCorners = (D, u, Rs) => [[-Rs, -Rs], [Rs, -Rs], [Rs, Rs], [-Rs, Rs]].map((q) => D.P({ x: q[0], y: u, z: q[1] }));
+  const axCorners = (D, sol, psi, Rs, e = 0.4) => [[-Rs, sol.ymin - e], [Rs, sol.ymin - e], [Rs, sol.ymax + e], [-Rs, sol.ymax + e]].map((q) => D.P(D.pol(q[0], q[1], psi)));
   const f2 = (ins, k) => (u, v) => ({ x: ins.cx + u * k, y: ins.cy + v * k });
   // 단면 2차원 그림의 척도와 좌표 변환(축이 가로)
   function secFrame(ins, sol, pad = 0.2) {
@@ -155,7 +158,7 @@
         const sol = S3.solid('cone', { R: M.pr, h1: M.ph }), t = M.ph / 2;
         M = Object.assign({}, M, { sol, u: t, ru: rAt(sol, t) });
         stage(b, s, M, C, {
-          side: 0, pts: (D, m, Rs) => [D.P({ x: Rs, y: 0, z: 0 })],
+          side: 0, pts: (D, m, Rs) => perpCorners(D, m.u, Rs).concat([D.P({ x: -m.sol.d.R - 3.4, y: 0, z: 0 })]),
           after: (D, m, c, ins, Rs) => {
             sheetPerp(D, m.u, Rs, ROSE, 0.14);
             D.g.path(S3.ringP(D, m.ru, m.u), { close: true, fill: AMB, fillAlpha: 0.3, color: AMB, width: 3.4 });
@@ -172,14 +175,14 @@
         return;
       }
       if (C.problem) {
-        stage(b, s, M, C, { side: 0, after: (D, m, c, ins, Rs) => { sheetPerp(D, m.u, Rs, ROSE, 0.14); D.g.path(S3.ringP(D, Math.max(0.05, m.ru), m.u), { close: true, fill: AMB, fillAlpha: 0.3, color: AMB, width: 3.4 }); } });
+        stage(b, s, M, C, { side: 0, pts: (D, m, Rs) => perpCorners(D, m.u, Rs), after: (D, m, c, ins, Rs) => { sheetPerp(D, m.u, Rs, ROSE, 0.14); D.g.path(S3.ringP(D, Math.max(0.05, m.ru), m.u), { close: true, fill: AMB, fillAlpha: 0.3, color: AMB, width: 3.4 }); } });
         return;
       }
       stage(b, s, M, C, {
-        pts: (D, m, Rs) => [D.P({ x: Rs, y: m.u, z: Rs }), D.P({ x: -Rs, y: m.u, z: -Rs })],
+        pts: (D, m, Rs) => perpCorners(D, m.u, Rs),
         after: (D, m, c, ins) => {
           const hi = c.review && c.step === 1;
-          sheetPerp(D, m.u, m.sol.rmax * 1.3, ROSE, hi ? 0.24 : 0.14);
+          sheetPerp(D, m.u, m.sol.rmax * 1.2, ROSE, hi ? 0.24 : 0.14);
           D.g.path(S3.ringP(D, Math.max(0.04, m.ru), m.u), { close: true, fill: AMB, fillAlpha: 0.32, color: AMB, width: c.review && c.step === 2 ? 5 : 3.4 });
           if (!ins) return;
           const cx = ins.cx, cy = ins.cy, K = ins.side * 0.4 / m.sol.rmax, rr = Math.max(0.04, m.ru) * K;
@@ -218,7 +221,7 @@
           choices: mkNum(ans, [[R, '밑면의 반지름이에요. 위로 올라갈수록 원이 작아져요.'], [R - 1, ''], [t, '자른 높이예요. 반지름이 아니에요.'], [R / 4, '너무 작아요. 높이의 중간이에요.']], (v) => fmtN(v) + ' cm', { valid: (v) => v > 0 })
         };
       }
-      const names = ['원', '타원', '직사각형', '이등변삼각형', '사다리꼴'];
+      const names = ['원', '정사각형', '직사각형', '이등변삼각형', '사다리꼴'];
       return {
         tag: '단면의 모양', key: 'shape' + M.kind,
         stem: `그림과 같이 ${M.sol.name}${jo(M.sol.name, 'eul')} 회전축에 수직인 평면으로 자를 때 생기는 단면의 모양은?`,
@@ -238,13 +241,13 @@
     draw(b, s, M, C) {
       if (C.problem) {
         const sol = mkSol(M.pk, { R: 3, r: 2, h1: 6 }); M = Object.assign({}, M, { sol, psi: 50 * DEG });
-        stage(b, s, M, C, { side: 0, after: (D, m, c, ins, Rs) => { sheetAxial(D, m.sol, m.psi, Rs, ROSE, 0.12); D.poly3(secPoly(m.sol).map((p) => D.pol(p[1], p[0], m.psi)), { close: true, fill: AMB, fillAlpha: 0.3, color: AMB, width: 3.4 }); } });
+        stage(b, s, M, C, { side: 0, pts: (D, m, Rs) => axCorners(D, m.sol, m.psi, Rs), after: (D, m, c, ins, Rs) => { sheetAxial(D, m.sol, m.psi, Rs, ROSE, 0.12); D.poly3(secPoly(m.sol).map((p) => D.pol(p[1], p[0], m.psi)), { close: true, fill: AMB, fillAlpha: 0.3, color: AMB, width: 3.4 }); } });
         return;
       }
       stage(b, s, M, C, {
-        pts: (D, m, Rs) => [D.P(D.pol(Rs, m.sol.ymax, m.psi)), D.P(D.pol(-Rs, m.sol.ymin, m.psi))],
+        pts: (D, m, Rs) => axCorners(D, m.sol, m.psi, Rs),
         after: (D, m, c, ins, Rs) => {
-          sheetAxial(D, m.sol, m.psi, m.sol.rmax * 1.3, ROSE, c.review && c.step === 1 ? 0.22 : 0.12);
+          sheetAxial(D, m.sol, m.psi, m.sol.rmax * 1.2, ROSE, c.review && c.step === 1 ? 0.22 : 0.12);
           D.poly3(secPoly(m.sol).map((p) => D.pol(p[1], p[0], m.psi)), { close: true, fill: AMB, fillAlpha: 0.32, color: AMB, width: c.review && c.step === 2 ? 5 : 3.4 });
           if (!ins) return;
           T(b, { x: ins.cx, y: ins.cy + ins.side * 0.5 }, `단면의 모양: ${SEC_NAME[m.kind]}`, 'ink', { dy: -2, size: 15 });
@@ -294,10 +297,10 @@
       if (C.problem) {
         const sol = mkSol(M.pk, M.pd);
         const D = S3.ctx(b, s, { lay: true }), ext = 0.5;
-        const sb = S3.boxOf(D, sol, [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + ext, z: 0 }), D.P({ x: -sol.rmax * 1.8, y: 0, z: 0 })]);
-        fit(b, sb, { t: 56, b: 70, l: 50, r: 50 });
+        const sb = S3.boxOf(D, sol, [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + ext, z: 0 }), D.P({ x: -sol.rmax * 1.8, y: 0, z: 0 })].concat(axCorners(D, sol, 50 * DEG, sol.rmax * 1.2)));
+        fit(b, sb, { t: 56, b: 70, l: 50, r: 90 });
         S3.drawSolid(D, sol, {}); S3.drawAxis(D, sol.ymin, sol.ymax, { ext, label: '회전축 l', dx: 44, dy: 0 });
-        sheetAxial(D, sol, 50 * DEG, sol.rmax * 1.3, ROSE, 0.12);
+        sheetAxial(D, sol, 50 * DEG, sol.rmax * 1.2, ROSE, 0.12);
         D.poly3(secPoly(sol).map((p) => D.pol(p[1], p[0], 50 * DEG)), { close: true, fill: AMB, fillAlpha: 0.3, color: AMB, width: 3.4 });
         // 주어진 길이: 반지름과 높이
         const d = sol.d;
@@ -310,8 +313,9 @@
         return;
       }
       stage(b, s, M, C, {
+        pts: (D, m, Rs) => axCorners(D, m.sol, 50 * DEG, Rs),
         after: (D, m, c, ins, Rs) => {
-          sheetAxial(D, m.sol, 50 * DEG, m.sol.rmax * 1.3, ROSE, 0.12);
+          sheetAxial(D, m.sol, 50 * DEG, m.sol.rmax * 1.2, ROSE, 0.12);
           D.poly3(secPoly(m.sol).map((p) => D.pol(p[1], p[0], 50 * DEG)), { close: true, fill: AMB, fillAlpha: 0.3, color: AMB, width: 3.4 });
           if (!ins) return;
           const { k, f } = drawSection(b, c, ins, m.sol, { hiW: c.review && c.step === 2 });
@@ -425,9 +429,9 @@
     model: (s) => Object.assign(baseModel(s), { pk: s.soPK || 'cone', ps: s.soPs || 0 }),
     draw(b, s, M, C) {
       if (C.problem) {
-        const sol = mkSol(M.pk, { R: 3, r: 2, h1: 6 }), D = S3.ctx(b, s, { lay: true }), ext = 0.5, Rs = sol.rmax * 1.3;
-        const sb = S3.boxOf(D, sol, [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + ext, z: 0 })]);
-        fit(b, sb, { t: 48, b: 44, l: 44, r: 44 });
+        const sol = mkSol(M.pk, { R: 3, r: 2, h1: 6 }), D = S3.ctx(b, s, { lay: true }), ext = 0.5, Rs = sol.rmax * 1.2;
+        const sb = S3.boxOf(D, sol, [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + ext, z: 0 })].concat(axCorners(D, sol, 30 * DEG, Rs)));
+        fit(b, sb, { t: 48, b: 44, l: 44, r: 90 });
         S3.drawSolid(D, sol, {}); S3.drawAxis(D, sol.ymin, sol.ymax, { ext, label: '회전축 l', dx: 44, dy: 0 });
         sheetAxial(D, sol, 30 * DEG, Rs, ROSE, 0.12);
         D.poly3(secPoly(sol).map((p) => D.pol(p[1], p[0], 30 * DEG)), { close: true, fill: AMB, fillAlpha: 0.3, color: AMB, width: 3.4 });
@@ -465,7 +469,7 @@
       rule: '회전체를 회전축을 포함하는 평면으로 자른 단면은 선대칭도형이다',
       notes: notes('대칭축은 <b>회전축</b>이에요. 회전축에 수직인 선이 아니에요.', '회전축에 <b>수직</b>인 단면(원)과 헷갈리지 않게 해요.')
     }),
-    prob: (M) => {
+    prob: (M, s) => {
       const nm = { sphere: '구', cyl: '원기둥', cone: '원뿔', frus: '원뿔대' }[M.pk];
       const items = [
         { h: '선대칭도형이고, 대칭축은 회전축이다.', ok: true },
@@ -474,7 +478,7 @@
         { h: '항상 원이다.', hint: '원은 축에 수직인 단면(또는 구)일 때예요.' },
         { h: '선대칭도형이 아니다.', hint: '접으면 겹치므로 선대칭도형이에요.' }
       ];
-      const list = shuffle(items.map((x, i) => ({ h: x.h, ok: !!x.ok, hint: x.hint || '' })));
+      const list = sshuffle(items.map((x, i) => ({ h: x.h, ok: !!x.ok, hint: x.hint || '' })), 's2-5|' + M.pk + M.ps + '|' + ((s && s.soSeed) || 0));
       return { tag: '축을 포함한 단면의 성질', key: 'sym' + M.pk + M.ps, wide: true, stem: `그림과 같이 ${nm}${jo(nm, 'eul')} 회전축을 포함하는 평면으로 자를 때 생기는 단면에 대한 설명으로 옳은 것은?`, choices: mkText(list) };
     }
   });
@@ -502,26 +506,27 @@
       const big = S3.solid('cone', { R, h1: H });
       const ext = 0.5;
       const pts = [D.P({ x: 0, y: -ext, z: 0 }), D.P({ x: 0, y: H + shift + ext, z: 0 })];
-      if (prob) pts.push(D.P({ x: -R - 1.9, y: 0, z: 0 }));
+      if (prob) pts.push(D.P({ x: -R - 3.6, y: 0, z: 0 }));
       const sb = S3.boxOf(D, big, pts);
       const side = Math.max(2 * R * 1.0, 4);
       const ins = prob ? null : placeInset(b, sb, side);
-      fit(b, ins ? union(sb, ins.box) : sb, { t: 50, b: 40, l: 44, r: 40 });
+      fit(b, ins ? union(sb, ins.box) : sb, { t: 50, b: 40, l: 44, r: 88 });
       // 큰 원뿔의 윤곽(점선)
       if (g > 0.02 || prob) { const gh = S3.tangents(S3.ringP(D, R, 0), S3.ringP(D, 0, H)).lines; gh.forEach((ln) => D.g.path([ln[0], ln[1]], { color: 'muted', width: 1.8, dash: [6, 5], alpha: 0.8 })); }
       S3.drawBands(D, frus.bands, {});
       S3.drawBands(D, smallBands, { color: AMB, fillAlpha: 0.2 });
       S3.drawAxis(D, 0, H + shift, { ext, label: '회전축 l', dx: 44, dy: 0 });
       if (C.txt) {
-        D.lab({ x: R, y: 0, z: 0 }, `R = ${fmtN(R)}`, SKY, { dx: 34, dy: 4, size: 16 });
+        D.line({ x: 0, y: 0, z: 0 }, { x: R, y: 0, z: 0 }, SKY, 2.4, { dash: [5, 4] });
+        D.lab({ x: R / 2, y: 0, z: 0 }, `R = ${fmtN(R)}`, SKY, { dx: 26, size: 16 });
         D.lab({ x: rs, y: H - hs + shift, z: 0 }, `r = ${fmtN(rs)}`, AMB, { dy: -17, dx: 30, size: 16 });
         D.line({ x: H - hs, y: 0, z: 0 }, { x: H - hs, y: 0, z: 0 }, AMB, 1);
         if (prob) {
-          const by = -R - 0.6;
+          const by = -R - 0.8, by2 = by - 1.6;
           D.line({ x: by, y: 0, z: 0 }, { x: by, y: H, z: 0 }, 'ink', 2.6);
-          D.lab({ x: by, y: H / 2, z: 0 }, `큰 원뿔의 높이 ${H}`, 'ink', { dy: 18, size: 15 });
-          D.line({ x: by - 0.8, y: H - hs, z: 0 }, { x: by - 0.8, y: H, z: 0 }, AMB, 2.6);
-          D.lab({ x: by - 0.8, y: H - hs / 2, z: 0 }, `작은 원뿔의 높이 ${fmtN(hs)}`, AMB, { dy: 36, size: 15 });
+          D.lab({ x: by, y: H / 2, z: 0 }, `큰 원뿔의 높이 ${H}`, 'ink', { dy: 17, size: 15 });
+          D.line({ x: by2, y: H - hs, z: 0 }, { x: by2, y: H, z: 0 }, AMB, 2.6);
+          D.lab({ x: by2, y: H - hs / 2, z: 0 }, `작은 원뿔의 높이 ${fmtN(hs)}`, AMB, { dy: 17, size: 15 });
         }
       }
       if (ins && C.txt) {

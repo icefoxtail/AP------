@@ -18,6 +18,11 @@
   const pick = (list, cur) => { const pool = list.filter((x) => x !== cur); return pool[Math.floor(Math.random() * pool.length)]; };
   const shuffle = (arr) => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const fmtN = (v, d = 1) => { const f = Math.pow(10, d), x = Math.round(v * f) / f; return (Number.isInteger(x) ? String(x) : x.toFixed(d)).replace('-', '−'); };
+  const hashS = (str) => { let h = 2166136261; for (const ch of String(str)) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
+  // 씨앗이 같으면 늘 같은 순서로 섞입니다(그림을 다시 그려도 보기의 순서가 바뀌지 않게)
+  const sshuffle = (arr, seedStr) => { let a = hashS(seedStr); const rnd = () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; const o = arr.slice(); for (let i = o.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [o[i], o[j]] = [o[j], o[i]]; } return o; };
+  // 수식($…$) 안의 따옴표(′)는 화면에서 이스케이프되므로 ^{\prime} 로 바꿉니다
+  const texFix = (str) => String(str).replace(/\$([^$]*)\$/g, (m, t) => '$' + t.replace(/'/g, '^{\\prime}') + '$');
   const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) { const t = a % b; a = b; b = t; } return a || 1; };
   // 받침에 따라 조사: 'wa'(과/와) · 'eul'(을/를) · 'eun'(은/는) · 'i'(이/가)
   const PAIR = { wa: ['과', '와'], eul: ['을', '를'], eun: ['은', '는'], i: ['이', '가'] };
@@ -62,7 +67,7 @@
   }
 
   /* ------------------------------------------------------------------ 조절 값 만들기 */
-  const P = (label, min, max, step, value, o = {}) => ({ value, min, max, step, color: o.color || 'sky', label, hint: o.hint, format: o.format || ((v) => fmtN(v)) });
+  const P = (label, min, max, step, value, o = {}) => ({ value, min, max, step, color: o.color || 'sky', label, hint: o.hint, format: o.format || ((v) => fmtN(v)), onInput: o.onInput });
   const cm = (v) => fmtN(v) + ' cm';
   const VIEW_PARAMS = {
     soYaw: P('좌우로 돌려 보기', -180, 180, 1, 0, { color: 'muted', format: (v) => Math.round(v) + '°' }),
@@ -205,7 +210,7 @@
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl).concat(D.noView ? [] : D.lay ? ['soYawL'] : VIEW),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
-      steps: (s) => D.steps(D.model(s)).map((x) => String(x).replace(/<\/?b>/g, '')),
+      steps: (s) => D.steps(D.model(s)).map((x) => texFix(String(x).replace(/<\/?b>/g, ''))),
       notesTitle: '자주 틀리는 부분',
       problem: {
         tag: (s) => D.prob(D.model(s), s).tag,
@@ -240,6 +245,7 @@
         C.t = A ? (C.tab === 'explore' ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : (D.problemT == null ? 1 : D.problemT))) : 1;
         const M = D.model(s);
         const v = D.view(M, C, s) || {};
+        ['formula', 'guide', 'notes', 'rule'].forEach((k) => { if (typeof v[k] === 'string') v[k] = texFix(v[k]); });
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
         else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
         return v;
@@ -261,7 +267,7 @@
   const rd = (label, value, color, note, ref, wide) => ({ label, value, color, note, ref, wide });
 
   window.APL_SO = {
-    PI, DEG, clamp, ease, seg01, NUM, esc, rint, pick, shuffle, fmtN, gcd, jo, piT, piTex, span, cm,
+    PI, DEG, clamp, ease, seg01, NUM, esc, rint, pick, shuffle, sshuffle, texFix, fmtN, gcd, jo, piT, piTex, span, cm,
     textW, bboxOf, fit, FS, T, P, VIEW, VIEW_PARAMS, mkNum, mkText, baseCtx, makeScene, register, notes, rd
   };
 })();

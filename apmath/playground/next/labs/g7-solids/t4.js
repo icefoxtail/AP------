@@ -11,14 +11,15 @@
   const G = window.APL_SO;
   if (!G || !G.S3 || !G.NET) return;
   const S3 = G.S3, N = G.NET;
-  const { PI, DEG, clamp, fmtN, T, fit, P, rd, notes, mkNum, mkText, rint, pick, shuffle, esc, jo } = G;
+  const { PI, DEG, clamp, fmtN, T, fit, P, rd, notes, mkNum, mkText, rint, pick, shuffle, sshuffle, esc, jo } = G;
   const { pt, arcPts, sectorPts, unionB, shiftB, arrange, xTxt, px } = N;
   const AMB = 'amber', SKY = 'sky', ROSE = 'rose', GRN = 'green';
   const rad = (d) => d * DEG;
   const cmv = (v) => fmtN(v) + ' cm';
 
   const PARAMS = {
-    soTr: P('밑면의 반지름 r', 1, 4, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
+    soTr: P('밑면의 반지름 r', 1, 4, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm', onInput: (st) => { st.soTR = Math.max(st.soTR == null ? 6 : st.soTR, 2 * Math.round(st.soTr)); } }),
+    soTR: P('모선의 길이 R', 2, 9, 1, 6, { color: 'amber', hint: '끈이 한 바퀴를 도는 경우만 다뤄요: R은 r의 2배 이상(중심각 180° 이하)', format: (v) => Math.round(v) + ' cm', onInput: (st) => { st.soTR = Math.max(st.soTR, 2 * Math.round(st.soTr)); } }),
     soTp: P('점 P의 위치 (꼭짓점에서의 거리)', 1, 12, 1, 3, { color: 'amber', hint: '모선을 따라 꼭짓점 O에서 떨어진 거리', format: (v) => Math.round(v) + ' cm' }),
     soTf: P('작은 밑면의 반지름', 1, 4, 1, 2, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
     soTg: P('큰 밑면의 반지름', 2, 6, 1, 4, { color: 'sky', format: (v) => Math.round(v) + ' cm' })
@@ -83,7 +84,7 @@
 
   /* ================================================================== s4-1 끈 감기 */
   function m1(s) {
-    const r = clamp(Math.round(s.soNr), 1, 6), R = Math.max(clamp(Math.round(s.soNR), 2, 9), r + 1), x = 360 * r / R;
+    const r = clamp(Math.round(s.soTr), 1, 4), R = Math.max(clamp(Math.round(s.soTR), 2, 9), 2 * r), x = 360 * r / R;
     const mode = s.soMode || 'via', a0 = -90 - x / 2, a1 = -90 + x / 2;
     const ms = clamp(s.soMs == null ? 0.75 * R : s.soMs, 0.12 * R, R), mp = clamp(s.soMp == null ? -90 : s.soMp, a0 + 1, a1 - 1);
     const A = pt({ x: 0, y: 0 }, R, a0), A2 = pt({ x: 0, y: 0 }, R, a1), M = pt({ x: 0, y: 0 }, ms, mp);
@@ -93,9 +94,9 @@
   S.push({
     id: 's4-1', noView: true, title: '끈 감기: 가장 짧은 길은?', short: '끈 감기',
     question: '원뿔의 밑면의 한 점 A에서 옆면을 한 바퀴 돌아 다시 A로 돌아오는 끈 중 가장 짧은 것은 어떤 모양일까? 전개도에서는 어떻게 보일까?',
-    ctl: ['soNr', 'soNR'],
-    presets: (s) => [{ group: '끈의 모양', label: '밑면 둘레를 따라', apply: (st) => { st.soMode = 'rim'; }, on: (st) => st.soMode === 'rim' }, { label: '점 M을 지나게', apply: (st) => { st.soMode = 'via'; }, on: (st) => (st.soMode || 'via') === 'via' }, { label: '직선 (전개도에서)', apply: (st) => { st.soMode = 'line'; }, on: (st) => st.soMode === 'line' }].concat((s.soMode || 'via') === 'via' ? [{ group: '점 M의 위치', label: '현의 중점', apply: (st) => { const R = Math.max(clamp(Math.round(st.soNR), 2, 9), clamp(Math.round(st.soNr), 1, 6) + 1), x = 360 * clamp(Math.round(st.soNr), 1, 6) / R; st.soMs = R * Math.cos(rad(x / 2)); st.soMp = -90; }, on: () => false }, { label: '호의 중점', apply: (st) => { const R = Math.max(clamp(Math.round(st.soNR), 2, 9), clamp(Math.round(st.soNr), 1, 6) + 1); st.soMs = R; st.soMp = -90; }, on: () => false }, { label: '꼭짓점 O 쪽', apply: (st) => { st.soMs = 0.3 * Math.max(clamp(Math.round(st.soNR), 2, 9), clamp(Math.round(st.soNr), 1, 6) + 1); st.soMp = -90; }, on: () => false }] : []),
-    init: (s) => { s.soNr = 2; s.soNR = 6; s.soMode = 'via'; s.soMs = 5; s.soMp = -90; },
+    ctl: ['soTr', 'soTR'],
+    presets: (s) => [{ group: '끈의 모양', label: '밑면 둘레를 따라', apply: (st) => { st.soMode = 'rim'; }, on: (st) => st.soMode === 'rim' }, { label: '점 M을 지나게', apply: (st) => { st.soMode = 'via'; }, on: (st) => (st.soMode || 'via') === 'via' }, { label: '직선 (전개도에서)', apply: (st) => { st.soMode = 'line'; }, on: (st) => st.soMode === 'line' }].concat((s.soMode || 'via') === 'via' ? [{ group: '점 M의 위치', label: '현의 중점', apply: (st) => { const mm = m1(st); st.soMs = mm.R * Math.cos(rad(mm.x / 2)); st.soMp = -90; }, on: () => false }, { label: '호의 중점', apply: (st) => { st.soMs = m1(st).R; st.soMp = -90; }, on: () => false }, { label: '꼭짓점 O 쪽', apply: (st) => { st.soMs = 0.3 * m1(st).R; st.soMp = -90; }, on: () => false }] : []),
+    init: (s) => { s.soTr = 2; s.soTR = 6; s.soMode = 'via'; s.soMs = 5; s.soMp = -90; },
     reroll: (s) => { s.soQv = pick([1, 2, 3], s.soQv); },
     model: (s) => Object.assign(m1(s), { qv: s.soQv || 1 }),
     stepT: undefined,
@@ -152,9 +153,9 @@
       rule: '원뿔의 옆면을 따라 한 바퀴 도는 최단 거리는 전개도에서 두 점을 직선으로 이은 선분의 길이이다',
       notes: notes('밑면의 둘레를 따라 도는 끈은 <b>최단이 아니에요</b>.', '입체에서는 곡선처럼 보여도 펼치면 <b>직선</b>이에요.')
     }),
-    prob: (M) => {
+    prob: (M, s) => {
       const choices = [{ h: '밑면의 둘레를 따라 한 바퀴 도는 끈', ok: false, hint: '둘레를 따라 가면 전개도에서 호가 돼요. 직선이 더 짧아요.' }, { h: '꼭짓점을 지나갔다가 내려오는 끈', ok: false, hint: '꼭짓점을 거치면 모선 두 개의 합(2R)이라 더 길어요.' }, { h: '전개도에서 두 점 A, A′을 직선으로 이은 선에 해당하는 끈', ok: true }, { h: '밑면에서 가장 높은 곳까지 올라갔다 내려오는 끈', ok: false, hint: '꼭짓점 쪽으로 너무 올라가면 길어져요.' }, { h: '모선을 따라 올라가는 끈', ok: false, hint: '한 바퀴를 돌아 A로 돌아오는 끈이 아니에요.' }];
-      return { tag: '원뿔 옆면의 최단 거리', key: 'sh' + M.r + '-' + M.R, wide: true, stem: '그림과 같이 원뿔의 밑면 위의 점 A에서 옆면을 한 바퀴 돌아 다시 A로 오는 끈 중 가장 짧은 것은?', choices: mkText(shuffle(choices)) };
+      return { tag: '원뿔 옆면의 최단 거리', key: 'sh' + M.r + '-' + M.R, wide: true, stem: '그림과 같이 원뿔의 밑면 위의 점 A에서 옆면을 한 바퀴 돌아 다시 A로 오는 끈 중 가장 짧은 것은?', choices: mkText(sshuffle(choices, 's4-1|' + M.r + '-' + M.R + '|' + ((s && s.soSeed) || 0))) };
     }
   });
 

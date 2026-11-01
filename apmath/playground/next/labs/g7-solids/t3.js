@@ -15,6 +15,8 @@
   const AMB = 'amber', SKY = 'sky', ROSE = 'rose', GRN = 'green';
   const cmv = (v) => fmtN(v) + ' cm';
   const rad = (d) => d * DEG;
+  const pk = (n) => (n === 1 ? 'π' : n + 'π');
+  const pkT = (n) => (n === 1 ? '\\pi' : n + '\\pi');
 
   const PARAMS = {
     soCr: P('밑면의 반지름 r', 1, 3, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
@@ -141,7 +143,7 @@
       return {
         tag: '원기둥의 옆넓이', key: `${r}-${h}`,
         stem: `그림은 밑면의 반지름이 ${r} cm, 높이가 ${h} cm인 원기둥의 전개도이다. 옆면의 넓이는 몇 cm²인가?`,
-        choices: mkNum(ans, [[r * h, '가로를 반지름 r로 썼어요. 가로는 둘레 2πr이에요.'], [r * r + 2 * r * h, '밑면의 넓이 πr² 하나를 더했어요. 옆넓이만 구해요.'], [2 * r * r, '밑면의 넓이 두 개의 합이에요.'], [4 * r * h, '']], (v) => v + 'π cm²', { valid: (v) => v > 0 && Number.isInteger(v) }),
+        choices: mkNum(ans, [[r * h, '가로를 반지름 r로 썼어요. 가로는 둘레 2πr이에요.'], [r * r + 2 * r * h, '밑면의 넓이 πr² 하나를 더했어요. 옆넓이만 구해요.'], [2 * r * r, '밑면의 넓이 두 개의 합이에요.'], [4 * r * h, '']], (v) => pk(v) + ' cm²', { valid: (v) => v > 0 && Number.isInteger(v) }),
         note: '옆면은 직사각형: 가로 = 밑면의 둘레'
       };
     }
@@ -355,10 +357,10 @@
         if (q > 0.6) {
           const al = clamp((q - 0.6) / 0.35, 0, 1);
           b.seg({ x: x0, y: Yt + 0.15 }, { x: x0 + W, y: Yt + 0.15 }, { color: AMB, width: 3, alpha: al });
-          T(b, { x: xc, y: Yt + 0.15 }, `가로 ≈ 호의 길이의 절반 = π×${r} = ${r}π`, AMB, { dy: -17, size: 15, alpha: al });
+          T(b, { x: xc, y: Yt + 0.15 }, `가로 ≈ 호의 길이의 절반 = π×${r} = ${pk(r)}`, AMB, { dy: -17, size: 15, alpha: al });
           b.seg({ x: x0 - 0.2, y: Yt }, { x: x0 - 0.2, y: Yb }, { color: ROSE, width: 3, alpha: al });
           T(b, { x: x0 - 0.2, y: (Yt + Yb) / 2 }, `세로 ≈ R = ${R}`, ROSE, { dx: -8, align: 'right', size: 15, alpha: al });
-          T(b, { x: xc, y: Yb }, `넓이 ≈ ${r}π × ${R} = ${r * R}π cm²`, GRN, { dy: 24, size: 16, alpha: al });
+          T(b, { x: xc, y: Yb }, `넓이 ≈ ${pk(r)} × ${R} = ${pk(r * R)} cm²`, GRN, { dy: 24, size: 16, alpha: al });
         }
       }
       b.handle('q', { x: x0 + W * 0.0 + (W * 1.0) * q, y: Yb - 0.9 }, { color: GRN, ariaLabel: '조각을 가로로 밀기', drag: (w) => { s.playing = false; s.soNq = clamp((w.x - x0) / W, 0, 1); } });
@@ -368,13 +370,13 @@
     steps: (M) => [
       `밑면의 반지름 ${M.r} cm, 모선 ${M.R} cm인 원뿔의 옆면은 반지름 ${M.R}, 호의 길이 $2\\pi\\times${M.r}$인 부채꼴이에요.`,
       `부채꼴을 잘게 나눠 위·아래 방향을 번갈아 가로로 놓고 맞물려요. 직사각형에 가까워져요.`,
-      `가로 = 호의 길이의 절반 = $\\dfrac12\\times 2\\pi\\times ${M.r} = ${M.r}\\pi$, 세로 = 반지름 = ${M.R}`,
-      `(옆넓이) = $${M.r}\\pi\\times${M.R} = ${M.r * M.R}\\pi$ (cm²). 일반적으로 $\\pi R r$ 이에요.`
+      `가로 = 호의 길이의 절반 = $\\dfrac12\\times 2\\pi\\times ${M.r} = ${pkT(M.r)}$, 세로 = 반지름 = ${M.R}`,
+      `(옆넓이) = $${pkT(M.r)}\\times${M.R} = ${pkT(M.r * M.R)}$ (cm²). 일반적으로 $\\pi R r$ 이에요.`
     ],
     view: (M) => ({
       guide: '막대를 오른쪽으로 끌면 <b>조각이 가로로 밀려</b> 맞물려요. 가로는 호의 길이의 절반, 세로는 반지름 R이에요.',
-      readouts: [rd('가로 (호의 길이의 절반)', `${M.r}π cm`, AMB, 'π × r'), rd('세로 (모선 R)', cmv(M.R), ROSE), rd('옆넓이', `${M.r * M.R}π cm²`, GRN, 'π × R × r', null, true)],
-      status: M.q > 0.95 ? { tone: 'ok', text: `옆넓이 = ${M.r * M.R}π cm²` } : { tone: 'info', text: '조각을 가로로 밀어 보세요' },
+      readouts: [rd('가로 (호의 길이의 절반)', `${pk(M.r)} cm`, AMB, 'π × r'), rd('세로 (모선 R)', cmv(M.R), ROSE), rd('옆넓이', `${pk(M.r * M.R)} cm²`, GRN, 'π × R × r', null, true)],
+      status: M.q > 0.95 ? { tone: 'ok', text: `옆넓이 = ${pk(M.r * M.R)} cm²` } : { tone: 'info', text: '조각을 가로로 밀어 보세요' },
       formula: `<p>(옆넓이) = $\\dfrac12\\times(\\text{호의 길이})\\times R$ = $\\dfrac12\\times 2\\pi r\\times R$ = $\\pi R r$</p><p>= π × ${M.R} × ${M.r} = <b>${M.r * M.R}π</b> cm²</p>`,
       rule: '원뿔의 옆넓이 = (1/2) × (호의 길이) × (모선의 길이) = πRr',
       notes: notes('옆넓이에는 <b>모선 R</b>을 써요(높이가 아니에요).', '겉넓이는 <b>밑면의 넓이 πr²</b>까지 더해요.')
@@ -384,7 +386,7 @@
       return {
         tag: '원뿔의 겉넓이', key: `${r}-${R}`,
         stem: `그림은 밑면의 반지름이 ${r} cm, 모선의 길이가 ${R} cm인 원뿔의 전개도이다. 이 원뿔의 겉넓이는 몇 cm²인가?`,
-        choices: mkNum(ans, [[r * R, '옆넓이만 구했어요. 겉넓이에는 밑면의 넓이 πr²도 더해요.'], [r * r + 2 * r * R, '옆넓이를 두 배로 계산했어요. 옆넓이는 πRr이에요.'], [2 * r * r + r * R, '밑면을 두 번 더했어요. 원뿔의 밑면은 하나예요.'], [r * r, '']], (v) => v + 'π cm²', { valid: (v) => v > 0 && Number.isInteger(v) })
+        choices: mkNum(ans, [[r * R, '옆넓이만 구했어요. 겉넓이에는 밑면의 넓이 πr²도 더해요.'], [r * r + 2 * r * R, '옆넓이를 두 배로 계산했어요. 옆넓이는 πRr이에요.'], [2 * r * r + r * R, '밑면을 두 번 더했어요. 원뿔의 밑면은 하나예요.'], [r * r, '']], (v) => pk(v) + ' cm²', { valid: (v) => v > 0 && Number.isInteger(v) })
       };
     }
   });
@@ -412,25 +414,32 @@
       b.path(band, { close: true, fill: SKY, fillAlpha: 0.26, color: SKY, width: 3 });
       // 작은 부채꼴은 가로로 빠져나갑니다.
       const Os = { x: shiftX, y: 0 };
-      if (shiftX > 0.4) b.path(sectorPts(O, R1, a0, a1), { close: true, color: 'muted', width: 1.6, dash: [5, 5], alpha: 0.7 });
-      b.path(sectorPts(Os, R1, a0, a1), { close: true, fill: AMB, fillAlpha: shiftX < 0.01 ? 0.18 : 0.26, color: AMB, width: 2.6, dash: shiftX < 0.01 ? [6, 5] : undefined });
-      if (C.txt) {
-        const e2 = pt(O, R2, a1), e1 = pt(O, R1, a1);
-        T(b, { x: (e1.x + e2.x) / 2, y: (e1.y + e2.y) / 2 }, `${k * (r2 - r1)} cm`, SKY, { dx: 34, size: 16 });
-        T(b, pt(O, R2, -90), `큰 호 = 2π×${r2} = ${2 * r2}π`, SKY, { dy: 18, size: 15 });
-        T(b, pt(Os, R1, -90), `작은 호 = 2π×${r1} = ${2 * r1}π`, AMB, { dy: 18, dx: shiftX > 0.4 ? 0 : 0, size: 14 });
-        { const eL = pt(O, R2, a0); T(b, { x: eL.x * 0.5, y: eL.y * 0.5 }, `R = ${R2}`, SKY, { dx: -6, dy: 0, size: 14, align: 'right' }); }
-        const rr = Math.min(R1 * 0.36, px(b, 30));
-        b.arc(O, rr, rad(a0), rad(a1), { sector: true, fill: ROSE, fillAlpha: 0.3, color: ROSE, width: 2.2 });
-        T(b, O, `${fmtN(x)}°`, ROSE, { dy: 28, size: 15 });
+      if (prob) { // 문제: 띠 모양과 주어진 반지름만 (중심각·호의 길이는 구하는 값)
+        b.path(sectorPts(O, R1, a0, a1), { close: true, color: 'muted', width: 1.6, dash: [5, 5], alpha: 0.7 });
+        if (C.txt) {
+          const eL = pt(O, R2, a0), eM = pt(O, R1, a0);
+          T(b, { x: eL.x * 0.5, y: eL.y * 0.5 }, `R₂ = ${R2} cm`, SKY, { dx: -8, size: 15, align: 'right' });
+          T(b, pt(O, R1, -90), `R₁ = ${R1} cm`, 'ink', { dy: -18, size: 15 });
+          void eM;
+        }
+      } else {
+        if (shiftX > 0.4) b.path(sectorPts(O, R1, a0, a1), { close: true, color: 'muted', width: 1.6, dash: [5, 5], alpha: 0.7 });
+        b.path(sectorPts(Os, R1, a0, a1), { close: true, fill: AMB, fillAlpha: shiftX < 0.01 ? 0.18 : 0.26, color: AMB, width: 2.6, dash: shiftX < 0.01 ? [6, 5] : undefined });
+        if (C.txt) {
+          const e2 = pt(O, R2, a1), e1 = pt(O, R1, a1);
+          T(b, { x: (e1.x + e2.x) / 2, y: (e1.y + e2.y) / 2 }, `${k * (r2 - r1)} cm`, SKY, { dx: 34, size: 16 });
+          T(b, pt(O, R2, -90), `큰 호 = 2π×${r2} = ${2 * r2}π`, SKY, { dy: 18, size: 15 });
+          T(b, pt(Os, R1, -90), `작은 호 = 2π×${r1} = ${2 * r1}π`, AMB, { dy: 18, size: 14 });
+          { const eL = pt(O, R2, a0); T(b, { x: eL.x * 0.5, y: eL.y * 0.5 }, `R = ${R2}`, SKY, { dx: -6, dy: 0, size: 14, align: 'right' }); }
+          const rr = Math.min(R1 * 0.36, px(b, 30));
+          b.arc(O, rr, rad(a0), rad(a1), { sector: true, fill: ROSE, fillAlpha: 0.3, color: ROSE, width: 2.2 });
+          T(b, O, `${fmtN(x)}°`, ROSE, { dy: 28, size: 15 });
+        }
       }
       if (off) {
         const frus = S3.solid('frus', { R: r2, r: r1, h1: fh }), D = S3.ctx(b, s, { k: 1, ox: off.dx, oy: off.dy });
         S3.drawSolid(D, frus, {});
         if (C.txt) { T(b, D.P({ x: r2 / 2, y: 0, z: 0 }), `${r2}`, SKY, { dy: 18, size: 15 }); T(b, D.P({ x: r1 / 2, y: fh, z: 0 }), `${r1}`, AMB, { dy: -16, size: 15 }); D.line({ x: r2, y: 0, z: 0 }, { x: r1, y: fh, z: 0 }, SKY, 3.4); }
-      }
-      if (C.txt && prob) {
-        T(b, { x: 0, y: -R2 * 0.55 }, `R₂ = ${R2}, R₁ = ${R1}`, 'ink', { size: 15 });
       }
     },
     steps: (M) => [
@@ -452,7 +461,7 @@
       return {
         tag: '원뿔대의 옆넓이', key: `${k}-${r1}-${r2}`,
         stem: `그림은 큰 원뿔에서 작은 원뿔을 잘라 낸 원뿔대의 옆면의 전개도이다. 큰 부채꼴의 반지름은 ${R2} cm, 작은 부채꼴의 반지름은 ${R1} cm이고 두 밑면의 반지름은 각각 ${r2} cm, ${r1} cm이다. 원뿔대의 옆넓이는 몇 cm²인가?`,
-        choices: mkNum(ans, [[R2 * r2 + R1 * r1, '더하지 않고 빼요. 큰 것에서 작은 것을 빼요.'], [R2 * r2, '큰 부채꼴의 넓이만 구했어요.'], [R1 * r1, '작은 부채꼴의 넓이예요.'], [(R2 - R1) * (r2 - r1), '']], (v) => v + 'π cm²', { valid: (v) => v > 0 && Number.isInteger(v) })
+        choices: mkNum(ans, [[R2 * r2 + R1 * r1, '더하지 않고 빼요. 큰 것에서 작은 것을 빼요.'], [R2 * r2, '큰 부채꼴의 넓이만 구했어요.'], [R1 * r1, '작은 부채꼴의 넓이예요.'], [(R2 - R1) * (r2 - r1), '']], (v) => pk(v) + ' cm²', { valid: (v) => v > 0 && Number.isInteger(v) })
       };
     }
   });
