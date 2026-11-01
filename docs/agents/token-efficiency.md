@@ -17,6 +17,7 @@
 | Pages 배포 워크플로 | 작업기 배포 대기 최대 14분 포함 | 결과는 Actions에서 확인 |
 
 - 런타임 검사는 작업 폴더의 `archive/data/svg-accessibility-index.js`와 `archive/data/archive2-catalog.json`을 다시 만든다. 의도한 변경이 아니면 `git checkout -- <경로>`로 되돌린다.
+- `tools/run-tests.js`는 시작할 때 카탈로그 산출물(`archive2-catalog.json` 등 Archive2 canonical 4종과 `archive2-source-verification/`)을 다시 만들고, 끝나면 건드리지 않은 것만 원래대로 되돌린다. 재생성본을 커밋해야 하면 `APMATH_KEEP_TEST_OUTPUT=1`로 돌린다. 이유: 병합 직후 sync bot 커밋 전에는 커밋본이 낡아서, 전체 테스트마다 작업 트리가 더러워져 실수 커밋 위험이 있었다. 그 밖의 파일은 되돌리지 않고 `CHANGED_DURING_RUN`으로만 알린다.
 - main과 비교할 때는 실패한 테스트만 main에서 다시 돌린다. 전체 테스트를 main에서 한 번 더 돌리지 않는다.
 - 이유: 구현·검토·수정 때마다 전체 테스트와 런타임 검사를 다시 돌렸고, main 비교를 위해 전체 테스트를 한 번 더 돌렸다.
 

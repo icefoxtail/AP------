@@ -127,7 +127,7 @@ const version = '20260915.2';
             await page.evaluate(() => window.__releaseQrDelay());
             await page.evaluate(() => archiveScreenRuntime.whenIdle());
             const result = await page.evaluate(({ param, candidateField, canvasSelector }) => ({
-                checkbox: document.querySelector(candidateField === 'submit' ? '#chk-submit-qr' : '#chk-sol-qr').checked,
+                checkbox: document.querySelector(candidateField === 'showSubmitQr' ? '#chk-submit-qr' : '#chk-sol-qr').checked,
                 url: new URL(location.href).searchParams.get(param),
                 candidate: archiveScreenRuntime.committedCandidate.qrState[candidateField],
                 canvasCount: document.querySelectorAll(canvasSelector).length,
@@ -138,7 +138,7 @@ const version = '20260915.2';
             return result;
         }
         const qr = {
-            submit: await fastToggle('#chk-submit-qr', 'submitQr', 'submit', '.page-submit-qr canvas'),
+            submit: await fastToggle('#chk-submit-qr', 'showSubmitQr', 'showSubmitQr', '.page-submit-qr canvas'),
             solution: await fastToggle('#chk-sol-qr', 'solQr', 'sol', '.page-qr canvas')
         };
         assert.deepEqual(errors, []);
