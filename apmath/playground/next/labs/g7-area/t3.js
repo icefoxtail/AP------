@@ -11,6 +11,7 @@
   'use strict';
   const G = window.APL_AR;
   if (!G) return;
+  const HALF = G.HALF; // 그림 속 글자의 분수(키트가 위·아래로 쌓아 그립니다)
   const { clamp, ease, seg01, pt, add, sub, mul, mid, lerp, fmtN, T, tagOut, fit, fillPoly, line, poly, par, mkChoices, P, rd, notes, cm2, rotAbout, rpick, range, dim, hgtTo, area2, centroid, tx } = G;
 
   const FIT = (b, box, o = {}) => fit(b, box, { l: 46, r: 46, t: 40, b: 70, ...o });
@@ -52,7 +53,7 @@
         if (fin) { dim(b, BR, pt(B + a, 0), `${a}`, { ref: c0, color: 'green' }); dim(b, BL, pt(B + a, 0), `밑변 ${a}+${B} = ${a + B}`, { ref: c0, color: 'green', off: 54 }); }
         if (C.problem) { foot(b, pt((B + a) / 2, 0), M.q === 0 ? '사다리꼴 2개를 거꾸로 붙여요' : '사다리꼴의 넓이 = ? cm²', 'amber', 60); return; }
         const fx = (B + a) / 2;
-        if (C.review ? C.step >= 3 : t > 0.999) foot(b, pt(fx, 0), `평행사변형의 절반: ½×${a + B}×${H} = ${num(S)}cm²`, 'green', 92);
+        if (C.review ? C.step >= 3 : t > 0.999) foot(b, pt(fx, 0), `평행사변형의 절반: ${HALF}×${a + B}×${H} = ${num(S)}cm²`, 'green', 92);
         else foot(b, pt(fx, 0), C.review && C.step >= 2 ? '돌려서 붙여요' : '사다리꼴의 넓이 = ?', 'amber', C.review && C.step >= 2 ? 92 : 64);
         return;
       }
@@ -72,7 +73,7 @@
       dim(b, BL, BR, `아랫변 ${B}cm`, { ref: c0, color: 'sky' });
       if (C.problem) { foot(b, pt(Math.max(B, p + a) / 2, 0), '삼각형 ACD의 넓이 = ? cm²', 'amber', 58); return; }
       const x0 = Math.max(B, p + a) / 2;
-      if (!C.review || C.step >= 2) { foot(b, pt(x0, 0), `① ½×${B}×${H} = ${num(T1)}`, 'sky', 58); foot(b, pt(x0, 0), `② ½×${a}×${H} = ${num(T2)}`, 'green', 84); }
+      if (!C.review || C.step >= 2) { foot(b, pt(x0, 0), `① ${HALF}×${B}×${H} = ${num(T1)}`, 'sky', 58); foot(b, pt(x0, 0), `② ${HALF}×${a}×${H} = ${num(T2)}`, 'green', 84); }
       if (!C.review || C.step >= 3) foot(b, pt(x0, 0), `① + ② = ${num(T1)} + ${num(T2)} = ${num(S)}cm²`, 'amber', 110);
     },
     stepT: (n) => (n <= 1 ? 0 : 1),
@@ -82,14 +83,14 @@
       `평행사변형의 넓이는 ${M.a + M.B}×${M.H}=${(M.a + M.B) * M.H}cm²이고, 사다리꼴은 그 절반이므로 ${num(M.S)}cm²예요.`
     ] : [
       '대각선 AC를 그어 사다리꼴을 삼각형 ABC와 삼각형 ACD, 두 개로 나눠요.',
-      `두 삼각형의 높이는 모두 ${M.H}cm예요. ① 아랫변을 밑변으로 하면 ½×${M.B}×${M.H}=${num(M.T1)}, ② 윗변을 밑변으로 하면 ½×${M.a}×${M.H}=${num(M.T2)}예요.`,
-      `사다리꼴의 넓이는 두 삼각형의 합 ${num(M.T1)}+${num(M.T2)}=${num(M.S)}cm²예요. 식으로 묶으면 ½×(${M.a}+${M.B})×${M.H}예요.`
+      `두 삼각형의 높이는 모두 ${M.H}cm예요. ① 아랫변을 밑변으로 하면 $\\frac{1}{2}$×${M.B}×${M.H}=${num(M.T1)}, ② 윗변을 밑변으로 하면 $\\frac{1}{2}$×${M.a}×${M.H}=${num(M.T2)}예요.`,
+      `사다리꼴의 넓이는 두 삼각형의 합 ${num(M.T1)}+${num(M.T2)}=${num(M.S)}cm²예요. 식으로 묶으면 $\\frac{1}{2}$×(${M.a}+${M.B})×${M.H}예요.`
     ]),
     view: (M) => ({
       guide: M.mode ? '▶를 누르면 <b>초록 복사본</b>이 제자리에서 180° 돌아 붙어요. 위의 칩으로 <b>삼각형 둘로 나누기</b> 방법도 살펴보세요.' : '▶를 누르면 <b>윗변 쪽 삼각형</b>이 가로로 떼어져요. 두 삼각형은 높이가 같아요. 위의 칩으로 <b>돌려 붙이기</b> 방법도 살펴보세요.',
-      readouts: [rd('윗변 · 아랫변', `${M.a} · ${M.B}`, 'sky'), rd('높이', mm(M.H), 'amber'), rd('넓이', `${num(M.S)}cm²`, 'green', `½ × (${M.a}+${M.B}) × ${M.H}`)],
+      readouts: [rd('윗변 · 아랫변', `${M.a} · ${M.B}`, 'sky'), rd('높이', mm(M.H), 'amber'), rd('넓이', `${num(M.S)}cm²`, 'green', `(${M.a}+${M.B}) × ${M.H} ÷ 2`)],
       formula: M.mode ? `<p>$(${M.a}+${M.B})\\times${M.H}\\times\\dfrac{1}{2}=${tx(M.S)}$</p>` : `<p>$\\dfrac{1}{2}\\times${M.B}\\times${M.H}+\\dfrac{1}{2}\\times${M.a}\\times${M.H}=${tx(M.T1)}+${tx(M.T2)}=${tx(M.S)}$</p>`,
-      rule: '사다리꼴의 넓이 = ½ × (윗변 + 아랫변) × 높이 — 두 방법의 답은 같다',
+      rule: '사다리꼴의 넓이 = $\\frac{1}{2}$ × (윗변 + 아랫변) × 높이 — 두 방법의 답은 같다',
       notes: notes('돌려 붙이면 평행사변형의 밑변이 (윗변+아랫변)이 돼요.', '대각선으로 나누면 두 삼각형의 높이가 같아서 윗변과 아랫변의 크기가 넓이의 비가 돼요.')
     }),
     prob: (M) => {
@@ -130,7 +131,7 @@
       const f = (str, col, i) => foot(b, pt(W / 2, H), str, col, 84 + 26 * i);
       if (C.review) {
         if (C.step === 1) f(`직사각형 ${W}×${H} = ${R}`, 'sky', 0);
-        else if (C.step === 2) { f(`① ½×${W}×${a} = ${num(t1)}  ② ½×${x}×${H - a} = ${num(t2)}`, 'rose', 0); f(`③ ½×${W - x}×${H} = ${num(t3)}`, 'rose', 1); }
+        else if (C.step === 2) { f(`① ${HALF}×${W}×${a} = ${num(t1)}  ② ${HALF}×${x}×${H - a} = ${num(t2)}`, 'rose', 0); f(`③ ${HALF}×${W - x}×${H} = ${num(t3)}`, 'rose', 1); }
         else { f(`${R} − (${num(t1)}+${num(t2)}+${num(t3)}) = ${num(A)}`, 'green', 0); }
       } else {
         f(`직사각형 ${W}×${H} = ${R}`, 'sky', 0);
@@ -144,7 +145,7 @@
     stepT: (n) => (n >= 2 ? 1 : 0),
     steps: (M) => [
       `세 꼭짓점이 모두 닿도록 삼각형을 둘러싸는 직사각형을 그려요. 가로 ${M.W}, 세로 ${M.H}이므로 넓이는 ${M.W}×${M.H}=${M.R}예요.`,
-      `바깥에 남는 직각삼각형 3개의 넓이를 각각 구해요. ① ½×${M.W}×${M.a}=${num(M.t1)}, ② ½×${M.x}×${M.H - M.a}=${num(M.t2)}, ③ ½×${M.W - M.x}×${M.H}=${num(M.t3)}예요.`,
+      `바깥에 남는 직각삼각형 3개의 넓이를 각각 구해요. ① $\\frac{1}{2}$×${M.W}×${M.a}=${num(M.t1)}, ② $\\frac{1}{2}$×${M.x}×${M.H - M.a}=${num(M.t2)}, ③ $\\frac{1}{2}$×${M.W - M.x}×${M.H}=${num(M.t3)}예요.`,
       `삼각형 ABC의 넓이는 직사각형에서 세 귀퉁이를 뺀 ${M.R}−(${num(M.t1)}+${num(M.t2)}+${num(M.t3)})=${num(M.A)}예요.`
     ],
     view: (M) => ({
@@ -152,7 +153,7 @@
       readouts: [rd('바깥 직사각형', `${M.W} × ${M.H} = ${M.R}`, 'sky'), rd('귀퉁이 ① ② ③', `${num(M.t1)}, ${num(M.t2)}, ${num(M.t3)}`, 'rose', `합 ${num(M.t1 + M.t2 + M.t3)}`), rd('△ABC의 넓이', num(M.A), 'green', `${M.R} − ${num(M.t1 + M.t2 + M.t3)}`, null, true)],
       formula: `<p>$\\triangle ABC=${M.R}-(${tx(M.t1)}+${tx(M.t2)}+${tx(M.t3)})=${tx(M.A)}$</p>`,
       rule: '밑변과 높이를 바로 알 수 없으면, 바깥 직사각형의 넓이에서 귀퉁이 직각삼각형의 넓이를 뺀다',
-      notes: notes('귀퉁이는 모두 직각삼각형이라서 ½×가로×세로로 구해요.', '세 점이 직사각형의 변 위에 흩어져 있을 때는 직사각형의 절반이 아니에요. 귀퉁이를 각각 빼야 해요.')
+      notes: notes('귀퉁이는 모두 직각삼각형이라서 $\\frac{1}{2}$×가로×세로로 구해요.', '세 점이 직사각형의 변 위에 흩어져 있을 때는 직사각형의 절반이 아니에요. 귀퉁이를 각각 빼야 해요.')
     }),
     prob: (M) => {
       const { W, H, R, t1, t2, t3, A } = M, sum = t1 + t2 + t3;
@@ -186,7 +187,7 @@
     },
     draw(b, s, M, C) {
       const { W, H, x, h1, A } = M, pc = road.pieces(M), C0 = pt(W / 2, H / 2), R = Math.hypot(W, H) / 2;
-      FIT(b, { x0: C0.x - R, x1: C0.x + R, y0: C0.y - R, y1: C0.y + R }, { b: C.problem ? 78 : 96, t: 34, l: 60, r: 90 });
+      FIT(b, { x0: C0.x - R, x1: C0.x + R, y0: C0.y - R, y1: C0.y + R }, { b: C.problem ? 78 : 96, t: 34, l: 60, r: 116 });
       const t = C.problem ? 0 : C.review ? (C.step === 1 ? 0.4 : 1) : C.t;
       const s1 = ease(seg01(t, 0, 0.4)), phi = (Math.PI / 2) * ease(seg01(t, 0.4, 0.7)), s3 = ease(seg01(t, 0.7, 1));
       const tf = (q) => rotAbout(q, C0, phi), sh = (P3, dx, dy) => P3.map((q) => pt(q.x + dx, q.y + dy)), out = (P3) => P3.map(tf);
@@ -198,7 +199,7 @@
         // 길의 폭 x 와 땅의 가로·세로 표시
         const ey = (y) => pc.e(y);
         dim(b, pt(0, H), pt(W, H), `가로 ${W}m`, { ref: C0, color: 'sky' });
-        dim(b, pt(W, 0), pt(W, H), `세로 ${H}m`, { ref: C0, color: 'sky', off: 30 });
+        dim(b, pt(W, 0), pt(W, H), `세로 ${H}m`, { ref: C0, color: 'sky', off: 34 });
         dim(b, pt(ey(0), 0), pt(ey(0) + x, 0), `${x}m`, { ref: C0, color: 'rose', off: 20 });
         dim(b, pt(0, h1), pt(0, h1 + x), `${x}m`, { ref: C0, color: 'rose', off: 22 });
         T(b, pt(ey(H * 0.5) + x / 2, H * 0.3), '길', { size: 16, color: 'rose' });

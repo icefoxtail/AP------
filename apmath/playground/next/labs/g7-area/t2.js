@@ -13,6 +13,7 @@
   'use strict';
   const G = window.APL_AR;
   if (!G) return;
+  const HALF = G.HALF; // 그림 속 글자의 분수(키트가 위·아래로 쌓아 그립니다)
   const { clamp, ease, seg01, pt, add, sub, mul, mid, lerp, inter, fmtN, T, tagOut, fit, fillPoly, line, poly, tick, par, mkChoices, P, rd, notes, cm1, cm2, rotAbout, rpick, range, dim, hgtTo, area2, centroid, bboxOf, tx } = G;
 
   const FIT = (b, box, o = {}) => fit(b, box, { l: 46, r: 46, t: 40, b: 70, ...o });
@@ -47,21 +48,22 @@
       dim(b, Bv, Av, `${a}`, { ref: Cv, color: 'sky', width: 3 });
       dim(b, Av, Cv, `${bb}`, { ref: Bv, color: 'sky' });
       dim(b, Bv, Cv, `${c}`, { ref: Av, color: 'green' });
+      T(b, Av, 'A', { dy: -20, dx: 14, size: 18 }); T(b, Bv, 'B', { dx: -14, dy: 15, size: 18 }); T(b, Cv, 'C', { dx: 14, dy: 15, size: 18 }); T(b, Hf, 'H', { dx: -14, dy: 15, size: 18, color: 'amber' });
       if (hot1) { line(b, Bv, Av, 'sky', 6, { alpha: 0.6 }); line(b, Av, Cv, 'sky', 6, { alpha: 0.6 }); }
       if (hot2) line(b, Bv, Cv, 'green', 6, { alpha: 0.6 });
       if (C.problem) { foot(b, Mh, '빗변에 내린 수선의 길이 h = ?', 'amber', 58); return; }
-      if (C.review) foot(b, Mh, C.step === 1 ? `넓이 = ½×${a}×${bb} = ${S}` : C.step === 2 ? `넓이 = ½×${c}×h` : `${a}×${bb} = ${c}×h → h = ${num(h)}`, C.step >= 3 ? 'green' : 'amber', 58);
-      else foot(b, Mh, t > 0.999 ? `직사각형 ${a}×${bb}=${a * bb}의 절반 = ${S}` : `넓이 = ½×${a}×${bb} = ${S}`, 'green', 58);
+      if (C.review) foot(b, Mh, C.step === 1 ? `넓이 = ${HALF}×${a}×${bb} = ${S}` : C.step === 2 ? `넓이 = ${HALF}×${c}×h` : `${a}×${bb} = ${c}×h → h = ${num(h)}`, C.step >= 3 ? 'green' : 'amber', 58);
+      else foot(b, Mh, t > 0.999 ? `직사각형 ${a}×${bb}=${a * bb}의 절반 = ${S}` : `넓이 = ${HALF}×${a}×${bb} = ${S}`, 'green', 58);
     },
     stepT: (n) => (n === 1 ? 1 : 0),
     steps: (M) => [
-      `직각을 낀 두 변 ${M.a}, ${M.bb}를 밑변과 높이로 보면 넓이는 ½×${M.a}×${M.bb}=${M.S}예요. (같은 삼각형 2개는 직사각형이 돼요.)`,
-      `빗변 BC=${M.c}를 밑변으로 보면 높이는 A에서 BC에 내린 수선 h예요. 넓이는 ½×${M.c}×h예요.`,
-      `같은 삼각형의 넓이이므로 ½×${M.a}×${M.bb}=½×${M.c}×h에서 ${M.a * M.bb}=${M.c}×h이고, h=${num(M.h)}예요.`
+      `직각을 낀 두 변 ${M.a}, ${M.bb}를 밑변과 높이로 보면 넓이는 $\\frac{1}{2}$×${M.a}×${M.bb}=${M.S}예요. (같은 삼각형 2개는 직사각형이 돼요.)`,
+      `빗변 BC=${M.c}를 밑변으로 보면 높이는 A에서 BC에 내린 수선 h예요. 넓이는 $\\frac{1}{2}$×${M.c}×h예요.`,
+      `같은 삼각형의 넓이이므로 $\\frac{1}{2}$×${M.a}×${M.bb}=$\\frac{1}{2}$×${M.c}×h에서 ${M.a * M.bb}=${M.c}×h이고, h=${num(M.h)}예요.`
     ],
     view: (M) => ({
       guide: '막대로 세 변(3, 4, 5의 몇 배)을 바꿔 보세요. ▶를 누르면 같은 삼각형이 <b>제자리에서 180° 돌아</b> 직사각형이 돼요. <b>노란 점선</b>이 빗변에 내린 높이 h예요.',
-      readouts: [rd('직각을 낀 두 변', `${M.a}, ${M.bb}`, 'sky'), rd('빗변', `${M.c}`, 'green'), rd('넓이', `${M.S}`, 'ink', `½ × ${M.a} × ${M.bb}`), rd('빗변에 내린 높이 h', `${num(M.h)}`, 'amber', `${M.a * M.bb} ÷ ${M.c}`, null, true)],
+      readouts: [rd('직각을 낀 두 변', `${M.a}, ${M.bb}`, 'sky'), rd('빗변', `${M.c}`, 'green'), rd('넓이', `${M.S}`, 'ink', `${M.a} × ${M.bb} ÷ 2`), rd('빗변에 내린 높이 h', `${num(M.h)}`, 'amber', `${M.a * M.bb} ÷ ${M.c}`, null, true)],
       formula: `<p>$\\dfrac{1}{2}\\times${M.a}\\times${M.bb}=\\dfrac{1}{2}\\times${M.c}\\times h$</p><p>$${M.a * M.bb}=${M.c}h\\ \\Rightarrow\\ h=${tx(M.h)}$</p>`,
       rule: '직각삼각형: (직각을 낀 두 변의 곱) = (빗변) × (빗변에 내린 높이)',
       notes: notes('빗변을 밑변으로 볼 때 높이는 <b>직각 꼭짓점에서 빗변에 내린 수선</b>이에요. 직각을 낀 변은 그 높이가 아니에요.', '같은 삼각형의 넓이를 두 가지로 나타낸 식이에요. 2로 나누는 것은 양쪽에 모두 있어서 없어져요.')
@@ -71,7 +73,7 @@
       return {
         tag: '함정 · 직각삼각형의 빗변에 내린 높이', key: `k${M.k}`,
         stem: `∠A = 90°인 직각삼각형 ABC에서 AB = ${a} cm, AC = ${bb} cm, BC = ${c} cm이다. 꼭짓점 A에서 빗변 BC에 내린 수선 AH의 길이는?`,
-        choices: mkChoices(h, [[S, '그것은 삼각형의 넓이예요. 넓이 ½×밑변×높이에서 높이를 구해요.'], [c / 2, '빗변의 절반이에요. 높이가 아니에요.'], [a * bb, '2로 나누는 식이 양쪽에 있어요. 넓이의 2배는 높이가 아니에요.'], [(a + bb) / 2, '두 변을 더해 평균을 냈어요. 넓이로 식을 세워야 해요.']], { ...cm1, pad: 1 })
+        choices: mkChoices(h, [[S, '그것은 삼각형의 넓이예요. 넓이 $\\frac{1}{2}$×밑변×높이에서 높이를 구해요.'], [c / 2, '빗변의 절반이에요. 높이가 아니에요.'], [a * bb, '2로 나누는 식이 양쪽에 있어요. 넓이의 2배는 높이가 아니에요.'], [(a + bb) / 2, '두 변을 더해 평균을 냈어요. 넓이로 식을 세워야 해요.']], { ...cm1, pad: 1 })
       };
     },
     verify: (s) => { const M = rt.model(s), g = rt.geo(M).tri; return { geo: Math.abs(g[2].y), formula: M.h }; }
@@ -163,20 +165,20 @@
       T(b, Av, 'A', { dy: -18, size: 17 }); T(b, Bv, 'B', { dx: -14, dy: 14, size: 17 }); T(b, Cv, 'C', { dx: 14, dy: 14, size: 17 });
       dim(b, Bv, Cv, `BC = ${B}`, { ref: pt(B / 2, -H), color: 'sky' });
       if (C.problem) { foot(b, pt(B / 2, 0), `△ABC = ${A} cm² → △A′BC = ?`, 'amber', 58); return; }
-      hgtTo(b, Av, Bv, Cv, { label: `높이 ${H}`, side: x < B / 2 ? 1 : -1 });
+      hgtTo(b, Av, Bv, Cv, { label: `높이 ${H}`, side: x <= 0 ? -1 : x >= B ? 1 : (x < B / 2 ? 1 : -1) });
       const showP = !C.review || C.step >= 3;
-      foot(b, pt(B / 2, 0), `넓이 = ½×${B}×${H} = ${num(A)} (그대로)`, 'green', 58);
+      foot(b, pt(B / 2, 0), `넓이 = ${HALF}×${B}×${H} = ${num(A)} (그대로)`, 'green', 58);
       if (showP) foot(b, pt(B / 2, 0), `둘레 ≈ ${fmtN(per)} (변해요)`, 'rose', 84);
       handle(b, C, 'a', Av, '꼭짓점 A를 가로로 끌기', (w) => { s.b3T = clamp((w.x + 4) / (B + 8), 0, 1); });
     },
     steps: (M) => [
       `두 직선 l, m은 평행하므로 점 A가 l 위 어디에 있어도 A에서 BC까지의 거리(높이)는 ${M.H}로 같아요.`,
       `밑변 BC=${M.B}도 그대로예요.`,
-      `그러므로 넓이 ½×${M.B}×${M.H}=${num(M.A)}는 변하지 않아요. (둘레는 변해요. 넓이가 같다고 둘레가 같은 것은 아니에요.)`
+      `그러므로 넓이 $\\frac{1}{2}$×${M.B}×${M.H}=${num(M.A)}는 변하지 않아요. (둘레는 변해요. 넓이가 같다고 둘레가 같은 것은 아니에요.)`
     ],
     view: (M) => ({
       guide: '<b>노란 점 A</b>를 평행선 위에서 가로로 끌거나 ▶를 눌러 보세요. 밑변과 높이가 그대로이면 <b>넓이는 그대로</b>예요. 그런데 둘레는 어떻게 될까요?',
-      readouts: [rd('밑변 BC', `${M.B}`, 'sky'), rd('두 평행선 사이의 거리', `${M.H}`, 'amber'), rd('넓이', `${num(M.A)}`, 'green', `½ × ${M.B} × ${M.H}`), rd('둘레(어림)', `≈ ${fmtN(M.per)}`, 'rose', 'A가 한가운데일 때 가장 짧아요')],
+      readouts: [rd('밑변 BC', `${M.B}`, 'sky'), rd('두 평행선 사이의 거리', `${M.H}`, 'amber'), rd('넓이', `${num(M.A)}`, 'green', `${M.B} × ${M.H} ÷ 2`), rd('둘레(어림)', `≈ ${fmtN(M.per)}`, 'rose', 'A가 한가운데일 때 가장 짧아요')],
       formula: `<p>(삼각형의 넓이) $=\\dfrac{1}{2}\\times${M.B}\\times${M.H}=${tx(M.A)}$ — A를 옮겨도 같아요</p>`,
       rule: '밑변이 같고 꼭짓점이 평행선 위에 있으면 넓이가 같다',
       notes: notes('높이는 두 평행선 사이의 거리라서 A가 어디에 있어도 같아요.', '넓이가 같아도 둘레는 달라질 수 있어요.')
@@ -224,11 +226,11 @@
       T(b, O, 'O', { dy: -4, dx: 15, size: 16 });
       const cen = (P3) => centroid(P3);
       if (C.problem) {
-        T(b, cen([Av, Bv, O]), 'S₁=?', { size: 16, color: 'amber' });
+        T(b, cen([Av, Bv, O]), 'S₁=?', { size: 20, color: 'amber' });
         foot(b, pt(B / 2, 0), `△ABC = ${X} cm²`, 'sky', 36); foot(b, pt(B / 2, 0), `△OBC = ${Y} cm²`, 'green', 62);
         return;
       }
-      if (t > 0.8) { T(b, cen([Av, Bv, O]), 'S₁', { size: 16, color: 'amber' }); T(b, cen([Dv, Cv, O]), 'S₂', { size: 16, color: 'amber' }); }
+      if (t > 0.8) { T(b, cen([Av, Bv, O]), 'S₁', { size: 22, color: 'amber' }); T(b, cen([Dv, Cv, O]), 'S₂', { size: 22, color: 'amber' }); }
       dim(b, Bv, Cv, `${B}`, { ref: c0, color: 'sky' });
       let r = 0;
       if (t > 0.25) foot(b, pt(B / 2, 0), `△ABC = △DBC = ${num(X)}`, 'sky', 58 + 26 * r++);
@@ -244,7 +246,7 @@
     ],
     view: (M) => ({
       guide: '▶를 눌러 <b>△ABC</b>(하늘)와 <b>△DBC</b>(분홍)를 비교하고, 공통 부분(초록)을 빼면 <b>노란 양옆 삼각형</b>이 남아요. 길이는 막대로 바꿔요.',
-      readouts: [rd('△ABC = △DBC', num(M.X), 'sky', `½ × ${M.B} × ${M.H}`), rd('공통 △OBC', num(M.Y), 'green'), rd('△ABO = △DCO', num(M.w), 'amber', `${num(M.X)} − ${num(M.Y)}`, null, true)],
+      readouts: [rd('△ABC = △DBC', num(M.X), 'sky', `${M.B} × ${M.H} ÷ 2`), rd('공통 △OBC', num(M.Y), 'green'), rd('△ABO = △DCO', num(M.w), 'amber', `${num(M.X)} − ${num(M.Y)}`, null, true)],
       formula: `<p>$\\triangle ABO=\\triangle ABC-\\triangle OBC=${tx(M.X)}-${tx(M.Y)}=${tx(M.w)}$</p><p>$\\triangle DCO=\\triangle DBC-\\triangle OBC=${tx(M.w)}$</p>`,
       rule: 'AD ∥ BC인 사다리꼴에서 대각선의 교점 O를 잡으면 △ABO = △DCO',
       notes: notes('밑변이 BC로 같고 평행선 사이에 있으니 △ABC=△DBC예요.', '공통 부분 △OBC를 빼는 것이 핵심이에요. 대각선으로 나뉜 위·아래 삼각형(△AOD, △OBC)은 같지 않아요.')
@@ -288,17 +290,17 @@
       }
       T(b, pt((Av.x + Bv.x + D.x) / 3, -h / 3), 'S₁', { size: 16, color: 'sky' }); T(b, pt((Av.x + D.x + Cv.x) / 3 + gap, -h / 3), 'S₂', { size: 16, color: 'rose' });
       const x0 = (m + n) / 2;
-      if (!C.review || C.step >= 2) { foot(b, pt(x0, 0), `S₁ = ½×${m}×${h} = ${S1}`, 'sky', 58); foot(b, pt(x0, 0), `S₂ = ½×${n}×${h} = ${S2}`, 'rose', 84); }
+      if (!C.review || C.step >= 2) { foot(b, pt(x0, 0), `S₁ = ${HALF}×${m}×${h} = ${S1}`, 'sky', 58); foot(b, pt(x0, 0), `S₂ = ${HALF}×${n}×${h} = ${S2}`, 'rose', 84); }
       if (!C.review || C.step >= 3) foot(b, pt(x0, 0), `S₁ : S₂ = ${m} : ${n}`, 'amber', 110);
     },
     steps: (M) => [
       `△ABD와 △ADC는 꼭짓점 A에서 직선 BC까지의 높이 h=${M.h}가 같아요.`,
-      `넓이는 S₁=½×${M.m}×${M.h}=${M.S1}, S₂=½×${M.n}×${M.h}=${M.S2}예요.`,
+      `넓이는 S₁=$\\frac{1}{2}$×${M.m}×${M.h}=${M.S1}, S₂=$\\frac{1}{2}$×${M.n}×${M.h}=${M.S2}예요.`,
       `S₁ : S₂ = ${M.S1} : ${M.S2} = ${M.m} : ${M.n}이에요. 높이가 같으면 넓이의 비는 밑변의 길이의 비와 같아요.`
     ],
     view: (M) => ({
       guide: '막대로 <b>BD</b>와 <b>DC</b>의 길이를 바꿔 보세요. ▶를 누르면 두 삼각형이 가로로 떼어져요. 두 삼각형의 <b>높이(점선)</b>는 같아요.',
-      readouts: [rd('BD : DC', `${M.m} : ${M.n}`, 'amber'), rd('S₁ (△ABD)', num(M.S1), 'sky', `½ × ${M.m} × ${M.h}`), rd('S₂ (△ADC)', num(M.S2), 'rose', `½ × ${M.n} × ${M.h}`), rd('S₁ : S₂', `${M.S1 / G.gcd(M.S1, M.S2)} : ${M.S2 / G.gcd(M.S1, M.S2)}`, 'green', '밑변의 비와 같아요')],
+      readouts: [rd('BD : DC', `${M.m} : ${M.n}`, 'amber'), rd('S₁ (△ABD)', num(M.S1), 'sky', `${M.m} × ${M.h} ÷ 2`), rd('S₂ (△ADC)', num(M.S2), 'rose', `${M.n} × ${M.h} ÷ 2`), rd('S₁ : S₂', `${M.S1 / G.gcd(M.S1, M.S2)} : ${M.S2 / G.gcd(M.S1, M.S2)}`, 'green', '밑변의 비와 같아요')],
       formula: `<p>$S_1:S_2=\\dfrac{1}{2}\\times${M.m}\\times${M.h}:\\dfrac{1}{2}\\times${M.n}\\times${M.h}=${M.m}:${M.n}$</p>`,
       rule: '높이가 같은 두 삼각형의 넓이의 비 = 밑변의 길이의 비',
       notes: notes('높이가 같을 때만 성립해요. 꼭짓점 A를 공유하면 두 삼각형의 높이가 같아요.', '밑변의 중점 D를 이으면 m = n이라 넓이가 정확히 반으로 나뉘어요.')

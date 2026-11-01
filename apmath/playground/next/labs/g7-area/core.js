@@ -140,7 +140,7 @@
   }
 
   /* ------------------------------------------------------------------ 조절 값 만들기 */
-  const P = (label, min, max, step, value, o = {}) => ({ value, min, max, step, color: o.color || 'sky', label, hint: o.hint, format: o.format || ((v) => fmtN(v)) });
+  const P = (label, min, max, step, value, o = {}) => ({ value, min, max, step, color: o.color || 'sky', label, hint: o.hint, onInput: o.onInput, format: o.format || ((v) => fmtN(v)) });
   const degF = (v) => fmtN(v) + '°';
 
   /* ------------------------------------------------------------------ 5지선다 만들기 */
@@ -329,6 +329,8 @@
 
 
   /* ------------------------------------------------------------------ 넓이 실험실 도우미 */
+  // 그림 속 글자에 쓰는 ½: 키트가 \\frac{1}{2} 를 위·아래로 쌓은 분수로 그립니다(검사용으로 APL_AR_RAWHALF=true 이면 ½ 글자).
+  const HALF = window.APL_AR_RAWHALF ? '½' : '\\frac{1}{2}';
   const cm2 = { tex: (v) => tx(v) + '\\text{cm}^2', plain: (v) => fmtN(v) + 'cm²' };
   const cm1 = { tex: (v) => tx(v) + '\\text{cm}', plain: (v) => fmtN(v) + 'cm' };
   const rotAbout = (p, q, th) => { const c = Math.cos(th), sn = Math.sin(th), dx = p.x - q.x, dy = p.y - q.y; return pt(q.x + dx * c - dy * sn, q.y + dx * sn + dy * c); };
@@ -347,7 +349,7 @@
       line(b, add(a, mul(n, e)), sub(a, mul(n, e)), col, 1.9, { alpha: 0.75 });
       line(b, add(c, mul(n, e)), sub(c, mul(n, e)), col, 1.9, { alpha: 0.75 });
     }
-    if (str) T(b, mid(a, c), str, { color: col, size: o.size || 17, dx: o.dx || 0, dy: o.dy || 0 });
+    if (str) T(b, lerp(a, c, o.at == null ? 0.5 : o.at), str, { color: col, size: o.size || 17, dx: o.dx || 0, dy: o.dy || 0 });
   }
   // 점 X 에서 직선 PQ 에 내린 높이: 노란 점선 + 직각 표시. 수선의 발이 선분 밖이면 밑변을 점선으로 늘입니다.
   function hgtTo(b, X, P0, Q0, o = {}) {
@@ -370,6 +372,6 @@
     PI, DEG, clamp, ease, seg01, NUM, LET, esc, r1, isInt, fmtN, dg, eqs, tx, texDeg,
     pt, add, sub, mul, len, unit, mid, lerp, polar, dirDeg, angBetween, cross, inter, regPoly, regUp, polyArea, centroid, gcd, pick, rint, bboxOf, unionBox,
     textW, T, tagOut, vtx, ang, tick, par, fillPoly, line, poly, fit, P, degF, mkChoices, baseCtx, showAt, makeScene, register, notes, rd,
-    cm2, cm1, rotAbout, rpick, range, dim, hgtTo, area2
+    HALF, cm2, cm1, rotAbout, rpick, range, dim, hgtTo, area2
   };
 })();
