@@ -17,7 +17,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -51,7 +51,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -87,7 +87,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -122,7 +122,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -158,7 +158,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -192,7 +192,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -229,7 +229,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -266,7 +266,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -300,7 +300,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -335,7 +335,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -408,7 +408,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -442,7 +442,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -476,7 +476,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -513,7 +513,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -547,7 +547,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -584,7 +584,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -618,7 +618,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -655,7 +655,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -691,7 +691,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -719,7 +719,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -749,7 +749,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -780,7 +780,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -810,7 +810,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
