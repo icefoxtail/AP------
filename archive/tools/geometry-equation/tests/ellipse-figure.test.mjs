@@ -3,7 +3,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {assetIdentity} from '../production/contracts.mjs';
-import {solveEllipseFigure,renderEllipseSvg,auditEllipseSvg,ellipseFigureSize,ellipseFigureSpec,ellipseLabelObstacles,placeLabels,validateEllipseFigurePlan,FIGURE_CAPABILITY} from '../production/ellipse-figure-v1.mjs';
+import {solveEllipseFigure,composeEllipseFigure,renderEllipseSvg,auditEllipseSvg,ellipseFigureSize,ellipseFigureSpec,ellipseLabelObstacles,placeLabels,validateEllipseFigurePlan,FIGURE_CAPABILITY} from '../production/ellipse-figure-v1.mjs';
 
 const identity=assetIdentity('22_매산고_1학기_중간_고2_기하와벡터_기출|18','SOLUTION_VISUAL','decisive-relation');
 const policy={baseFontPx:15,displayScale:1,profile:'TEST'};
@@ -266,4 +266,89 @@ test('the pair observer rejects a moved second ellipse, a missing one and an und
   assert.equal((await auditEllipseSvg({plan,svg:removed})).status,'FAIL');
   const extra=rendered.svg.replace('</svg>','<g data-layer="25"><ellipse id="ellipse-C3" data-role="ellipse" data-ellipse="C3" cx="40" cy="40" rx="10" ry="20" fill="none"/></g></svg>');
   assert.equal((await auditEllipseSvg({plan,svg:extra})).status,'FAIL');
+});
+
+// --- conic (parabola) plans: root field `conic`, same capability, own solver branch and observer ----------------------------------------------
+// 26 제일고 q2: a focal chord with AF=AM=5, BF=BN=3 gives p=15/8; M, N are the feet on the directrix l.
+const parabolaPlan=()=>({...base(),
+  conic:{kind:'PARABOLA',vertex:['0','0'],p:'15/8',axis:'X'},
+  points:[{id:'O',kind:'ORIGIN'},{id:'F',kind:'FOCUS'},{id:'A',kind:'ON_CONIC',x:'25/8',branch:'POS'},
+    {id:'B',kind:'LINE_CONIC',line:'k1',which:1},
+    {id:'M',kind:'FOOT',from:'A',onto:'l',rightAngle:true},{id:'N',kind:'FOOT',from:'B',onto:'l',rightAngle:true}],
+  lines:[{id:'l',role:'DIRECTRIX',label:'l'},{id:'k1',through:['A','F'],hidden:true}],
+  segments:[{id:'sAM',from:'A',to:'M',label:'5'},{id:'sBN',from:'B',to:'N',label:'3'},
+    {id:'sAF',from:'A',to:'F',label:'5'},{id:'sBF',from:'B',to:'F',label:'3'}]});
+
+test('a parabola plan derives the focus, directrix, intersection and feet exactly',async()=>{
+  const model=await solveEllipseFigure(parabolaPlan());
+  assert.equal(model.mode,'CONIC');
+  assert.equal(model.conic.focus.x.exact,'15/8');
+  assert.equal(model.conic.directrix.value.exact,'-15/8');
+  const row=id=>model.points.find(point=>point.id===id);
+  assert.equal(row('A').y.exact,'5*sqrt(15)/4');
+  assert.equal(row('B').x.exact,'9/8');assert.equal(row('B').y.exact,'-3*sqrt(15)/4');
+  assert.equal(row('M').x.exact,'-15/8');assert.equal(row('N').y.exact,'-3*sqrt(15)/4');
+  assert.ok(row('A').onCurve&&row('B').onCurve&&!row('M').onCurve);
+  // the definition: AF=AM and BF=BN
+  const dist=(p,q)=>Math.hypot(p.x.value-q.x.value,p.y.value-q.y.value);
+  assert.ok(Math.abs(dist(row('A'),model.conic.focus)-dist(row('A'),row('M')))<1e-9);
+  assert.ok(Math.abs(dist(row('B'),model.conic.focus)-dist(row('B'),row('N')))<1e-9);
+});
+
+test('parabola plans refuse bad parameters, missing intersections and a second plane field',async()=>{
+  const withConic=changes=>({...parabolaPlan(),conic:{...parabolaPlan().conic,...changes}});
+  await solverRefused(withConic({p:'0'}),'CONIC_PARAMETER_INVALID');
+  await solverRefused(withConic({kind:'HYPERBOLA'}),'CONIC_KIND_UNSUPPORTED');
+  refused(withConic({kind:'HYPERBOLA'}),'CONIC_KIND_UNSUPPORTED');
+  refused({...parabolaPlan(),ellipse:chordPlan().ellipse},'CONIC_PLAN_CONFLICT');
+  refused({...chordPlan(),conic:parabolaPlan().conic},'CONIC_PLAN_CONFLICT');
+  refused({...chordPlan(),lines:[{id:'l',slope:'1',intercept:'0',role:'DIRECTRIX'}]},'CONIC_DIRECTRIX_REQUIRES_PARABOLA');
+  refused({...parabolaPlan(),lines:[{id:'l',role:'DIRECTRIX',label:'x'.repeat(41)}]},'CONIC_LINE_LABEL_INVALID');
+  await solverRefused({...parabolaPlan(),points:[{id:'A',kind:'ON_CONIC',x:'-1',branch:'POS'}],lines:[],segments:[]},'CONIC_POINT_NOT_ON_CURVE');
+  await solverRefused({...parabolaPlan(),points:[{id:'B',kind:'LINE_CONIC',line:'k',which:1}],lines:[{id:'k',x:'-3'}],segments:[]},'CONIC_LINE_NO_INTERSECTION');
+  await solverRefused({...parabolaPlan(),points:[{id:'B',kind:'LINE_CONIC',line:'k',which:2}],lines:[{id:'k',y:'1'}],segments:[]},'CONIC_INTERSECTION_INDEX_INVALID');
+  await solverRefused({...parabolaPlan(),points:[{id:'A',kind:'ON_CONIC',y:'2'},{id:'M',kind:'FOOT',from:'A',onto:'zz'}],lines:[],segments:[]},'CONIC_FOOT_INVALID');
+  await solverRefused({...parabolaPlan(),points:[{id:'O',kind:'ORIGIN'},{id:'V',kind:'VERTEX'}],lines:[],segments:[]},'CONIC_POINT_COINCIDENT');
+});
+
+test('the parabola figure renders in real Chrome, passes its observer, and tampering fails it',async()=>{
+  const plan=parabolaPlan(),model=await solveEllipseFigure(plan);
+  const composed=await composeEllipseFigure({plan,model,identity,typographyPolicy:policy});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  const svg=composed.svg;
+  assert.match(svg,/<path id="curve" data-role="curve" data-curve="PARABOLA" d="M/);
+  assert.match(svg,/data-conic="PARABOLA"/);
+  assert.ok(!/<ellipse/.test(svg));
+  for(const id of ['sAM','sBN','sAF','sBF'])assert.match(svg,new RegExp(`<line id="leader-measure-${id}"`),`${id}: a repeated value keeps its owner leader`);
+  assert.match(svg,/data-label-role="line"[^>]*data-line="l"/);
+  assert.equal((svg.match(/id="rightangle-/g)||[]).length,2);
+  const audit=await auditEllipseSvg({plan,svg});
+  assert.equal(audit.status,'PASS',JSON.stringify(audit.errors));
+  const failsWith=async(tampered,prefix)=>{
+    assert.notEqual(tampered,svg);
+    const result=await auditEllipseSvg({plan,svg:tampered});
+    assert.equal(result.status,'FAIL');
+    assert.ok(result.errors.some(error=>error.startsWith(prefix)),`${prefix} in ${JSON.stringify(result.errors)}`);
+  };
+  await failsWith(svg.replace(/(id="curve"[^>]* d=")M([0-9.]+) ([0-9.]+)/,(all,head,x,y)=>`${head}M${Number(x)+9} ${y}`),'CONIC_CURVE_OFF_EQUATION');
+  await failsWith(svg.replace(/(id="line-l" data-role="line"[^>]*?)x1="([0-9.]+)" y1="([0-9.]+)" x2="([0-9.]+)"/,
+    (all,head,x1,y1,x2)=>`${head}x1="${Number(x1)+6}" y1="${y1}" x2="${Number(x2)+6}"`),'CONIC_DIRECTRIX_MISMATCH:l');
+  await failsWith(svg.replace(/(id="point-M" data-role="point"[^>]*?)cy="([0-9.]+)"/,(all,head,cy)=>`${head}cy="${Number(cy)+12}"`),'CONIC_FOOT_MISMATCH:M');
+  await failsWith(svg.replace(/<polyline id="rightangle-N"[^>]*\/>/,''),'CONIC_FOOT_MISMATCH:N:rightangle-missing');
+  await failsWith(svg.replace(/(data-label-role="line"[^>]*data-line="l" data-tex=")l"/,'$1m"'),'CONIC_LINE_LABEL_MISMATCH:l:text');
+  await failsWith(svg.replace(/(id="point-B" data-role="point"[^>]*?)cx="([0-9.]+)"/,(all,head,cx)=>`${head}cx="${Number(cx)+20}"`),'CONIC_POINT_OFF_CURVE:B');
+});
+
+test('a line name with no room beside its line gets a leader joined to the line',()=>{
+  const layout={size:{width:200,height:200}};
+  const owner={a:[100,20],b:[100,180]};
+  const entry={key:'line-l',role:'line',lineId:'l',text:'l',width:8,height:12,ownerSegment:owner,
+    pointX:100,pointY:100,centerX:100,centerY:100,candidates:[{dx:12,dy:0,distance:12}],
+    fallbacks:[{pointX:100,pointY:60,centerX:100,centerY:60,candidates:[{dx:30,dy:0,distance:30}]}]};
+  const obstacles={points:[{key:'P',x:112,y:100}],curve:[],segments:[{a:owner.a,b:owner.b}]};
+  const [placed]=placeLabels([entry],layout,obstacles);
+  assert.ok(placed.leader,'the near spot is blocked, so the name is led out');
+  assert.deepEqual(placed.leader.b,[100,60]);
+  const [near]=placeLabels([{...entry,candidates:[{dx:14,dy:0,distance:14}]}],layout,{points:[],curve:[],segments:[{a:owner.a,b:owner.b}]});
+  assert.equal(near.leader,null,'a free spot beside the line needs no leader');
 });

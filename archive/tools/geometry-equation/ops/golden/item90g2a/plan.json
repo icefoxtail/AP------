@@ -1,0 +1,30 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "포물선의 초점 F를 지나는 직선과 포물선이 만나는 두 점 A와 B에서 준선 l에 내린 수선의 발을 각각 M과 N이라 하자. AM=5이고 BN=3이다.",
+  "conic": { "kind": "PARABOLA", "vertex": ["0", "0"], "p": "15/8", "axis": "X" },
+  "points": [
+    { "id": "O", "kind": "ORIGIN" },
+    { "id": "F", "kind": "FOCUS" },
+    { "id": "A", "kind": "ON_CONIC", "x": "25/8", "branch": "POS" },
+    { "id": "B", "kind": "LINE_CONIC", "line": "k1", "which": 1 },
+    { "id": "M", "kind": "FOOT", "from": "A", "onto": "l", "rightAngle": true },
+    { "id": "N", "kind": "FOOT", "from": "B", "onto": "l", "rightAngle": true }
+  ],
+  "lines": [
+    { "id": "l", "role": "DIRECTRIX", "label": "l" },
+    { "id": "k1", "through": ["A", "F"], "hidden": true }
+  ],
+  "segments": [
+    { "id": "sAM", "from": "A", "to": "M", "label": "5" },
+    { "id": "sBN", "from": "B", "to": "N", "label": "3" },
+    { "id": "sAF", "from": "A", "to": "F", "label": "5" },
+    { "id": "sBF", "from": "B", "to": "F", "label": "3" }
+  ],
+  "caption": "포물선 위의 점에서 초점까지의 거리와 준선까지의 거리가 같다: AF=AM=5, BF=BN=3",
+  "sourceConditions": [
+    { "id": "c1", "condition": "A, B는 초점 F를 지나는 직선과 포물선의 교점이고, M, N은 A, B에서 준선 l에 내린 수선의 발이다.", "mappedTo": ["conic", "points", "lines"] },
+    { "id": "c2", "condition": "AM=5, BN=3 (문제가 준 값). 포물선 위의 점은 AF=AM, BF=BN이다.", "mappedTo": ["segments"] },
+    { "id": "c3", "condition": "그림은 AF=5, BF=3이 되는 포물선 y^2=4px (p=15/8) 한 예이다.", "mappedTo": ["conic"] }
+  ],
+  "newVisualInformation": ["AF=AM, BF=BN이라는 포물선의 정의가 같은 길이 표시로 보인다."]
+}

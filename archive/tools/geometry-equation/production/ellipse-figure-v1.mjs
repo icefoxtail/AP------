@@ -26,7 +26,8 @@ const STYLE={
   segment:'fill="none" stroke="#111" stroke-width="1.3"',
   segmentDashed:'fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="7 5"',
   line:'fill="none" stroke="#111" stroke-width="1.3"',
-  point:'fill="#111" stroke="none"'
+  point:'fill="#111" stroke="none"',
+  rightAngle:'fill="none" stroke="#111" stroke-width="1.1"'
 };
 const bad=code=>{throw Error(code);};
 const isPlain=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
@@ -65,7 +66,52 @@ function validatePair(plan){
   return ids;
 }
 
+// --- conic (parabola) plans: a root `conic` field; the plan shape is checked here, every value in conic_figure.py -------------------------------
+const CONIC_TOP_KEYS=['capability','conic','points','segments','polygons','lines','caption','sourceConditions','newVisualInformation','sourceQuote'];
+const CONIC_POINT_KEYS={ORIGIN:['id','kind','label'],FOCUS:['id','kind','label'],VERTEX:['id','kind','label'],POINT:['id','kind','x','y','label'],
+  ON_CONIC:['id','kind','x','y','branch','label'],LINE_CONIC:['id','kind','line','which','label'],FOOT:['id','kind','from','onto','rightAngle','label']};
+const CONIC_LINE_KEYS=['id','role','label','dashed','hidden','x','y','slope','intercept','through'];
+const LINE_ID=/^[A-Za-z][A-Za-z0-9_]{0,7}$/;
+
+export function validateConicPlan(plan){
+  if('ellipse' in plan||'ellipses' in plan)bad('CONIC_PLAN_CONFLICT');
+  onlyKeys(plan,CONIC_TOP_KEYS,'ELLIPSE_PLAN_INVALID');
+  if(plan.capability!==FIGURE_CAPABILITY)bad('ELLIPSE_PLAN_INVALID');
+  onlyKeys(plan.conic,['kind','vertex','p','axis'],'CONIC_PARAMETER_INVALID');
+  if(typeof plan.conic.kind!=='string')bad('CONIC_PARAMETER_INVALID');
+  if(plan.conic.kind!=='PARABOLA')bad('CONIC_KIND_UNSUPPORTED');
+  const points=plan.points??[];
+  if(!Array.isArray(points)||points.length>10)bad('ELLIPSE_POINT_INVALID');
+  const ids=new Set();
+  for(const point of points){
+    if(!isPlain(point))bad('ELLIPSE_POINT_INVALID');
+    if(typeof point.id!=='string'||!POINT_ID.test(point.id))bad('ELLIPSE_POINT_ID_INVALID');
+    if(ids.has(point.id))bad('ELLIPSE_POINT_ID_DUPLICATE');
+    ids.add(point.id);
+    if(!(point.kind in CONIC_POINT_KEYS))bad('ELLIPSE_POINT_INVALID');
+    onlyKeys(point,CONIC_POINT_KEYS[point.kind],'ELLIPSE_POINT_INVALID');
+  }
+  for(const segment of plan.segments??[]){
+    onlyKeys(segment,SEGMENT_KEYS,'ELLIPSE_SEGMENT_INVALID');
+    if(!ids.has(segment.from)||!ids.has(segment.to)||segment.from===segment.to)bad('ELLIPSE_SEGMENT_INVALID');
+  }
+  for(const polygon of plan.polygons??[]){
+    onlyKeys(polygon,POLYGON_KEYS,'ELLIPSE_POLYGON_INVALID');
+    if(!Array.isArray(polygon.points)||polygon.points.length<3||polygon.points.length>6)bad('ELLIPSE_POLYGON_INVALID');
+    if(polygon.points.some(id=>!ids.has(id)))bad('ELLIPSE_POLYGON_UNKNOWN_POINT');
+  }
+  for(const line of plan.lines??[]){
+    onlyKeys(line,CONIC_LINE_KEYS,'ELLIPSE_LINE_INVALID');
+    if(typeof line.id!=='string'||!LINE_ID.test(line.id))bad('ELLIPSE_LINE_INVALID');
+    if(line.label!==undefined&&(typeof line.label!=='string'||!line.label.trim()||line.label.length>40))bad('CONIC_LINE_LABEL_INVALID');
+  }
+  if(!Array.isArray(plan.sourceConditions))bad('ELLIPSE_PLAN_INVALID');
+  if(!Array.isArray(plan.newVisualInformation))bad('ELLIPSE_PLAN_INVALID');
+  return plan;
+}
+
 export function validateEllipseFigurePlan(plan){
+  if(isPlain(plan)&&'conic' in plan)return validateConicPlan(plan);
   onlyKeys(plan,TOP_KEYS,'ELLIPSE_PLAN_INVALID');
   if(plan.capability!==FIGURE_CAPABILITY)bad('ELLIPSE_PLAN_INVALID');
   const pair='ellipses' in plan;
@@ -94,6 +140,7 @@ export function validateEllipseFigurePlan(plan){
     if(polygon.points.some(id=>!ids.has(id)))bad('ELLIPSE_POLYGON_UNKNOWN_POINT');
   }
   for(const line of plan.lines??[]){
+    if(isPlain(line)&&'role' in line)bad('CONIC_DIRECTRIX_REQUIRES_PARABOLA');
     onlyKeys(line,LINE_KEYS,'ELLIPSE_LINE_INVALID');
     if(line.label!==undefined)bad('ELLIPSE_LINE_LABEL_UNSUPPORTED');
     if(typeof line.slope!=='string'||typeof line.intercept!=='string')bad('ELLIPSE_LINE_INVALID');
@@ -248,18 +295,62 @@ export function placeLabels(entries,layout,obstacles){
       const score=clearance*0.5-delta.distance*0.15;
       if(!best||score>best.score)best={box,score,leader};
     }
+    if(!best&&entry.fallbacks){
+      // A line name with no room beside the line: a free spot joined to the line by a leader.
+      for(const fallback of entry.fallbacks){
+        const anchored={...entry,pointX:fallback.pointX,pointY:fallback.pointY,centerX:fallback.centerX,centerY:fallback.centerY,requiresLeader:true};
+        for(const delta of fallback.candidates){
+          const box={x:r6(anchored.centerX+delta.dx-entry.width/2),y:r6(anchored.centerY+delta.dy-entry.height/2),width:entry.width,height:entry.height};
+          if(blocked(box,anchored))continue;
+          const leader=leaderFor(box,anchored);if(!leader)continue;
+          const score=-delta.distance;
+          if(!best||score>best.score)best={box,score,leader,anchored};
+        }
+        if(best)break;
+      }
+    }
     if(!best)throw new Stop('ELLIPSE_LABEL_NO_ROOM',{label:entry.key});
-    placed.push({...entry,box:best.box,leader:best.leader??null});
+    const chosen=best.anchored??entry;
+    placed.push({...chosen,box:best.box,leader:best.leader??null});
     placedBoxes.push(best.box);
-    placedPoints.push({x:entry.pointX,y:entry.pointY});
+    if(!(entry.role==='line'&&!best.leader))placedPoints.push({x:chosen.pointX,y:chosen.pointY});
     if(best.leader)placedLeaders.push(best.leader);
   }
   return placed;
 }
 
+function segmentMeasureLabels(plan,model,layout,segmentLabelCounts){
+  const labels=[];
+  for(const segment of plan.segments??[]){
+    if(!segment.label)continue;
+    const from=model.points.find(row=>row.id===segment.from),to=model.points.find(row=>row.id===segment.to);
+    const ax=layout.px(num(from.x)),ay=layout.py(num(from.y)),bx=layout.px(num(to.x)),by=layout.py(num(to.y));
+    // The primitive is serialized to 0.01 px. Anchor owner leaders to those visible endpoint bytes,
+    // so the rendered-layout audit sees the leader touch the owner only at its endpoint.
+    const visible=(value)=>Math.round(value*100)/100;
+    const va=[visible(ax),visible(ay)],vb=[visible(bx),visible(by)];
+    const mx=(va[0]+vb[0])/2,my=(va[1]+vb[1])/2;
+    const length=Math.hypot(bx-ax,by-ay)||1;
+    const nx=-(by-ay)/length,ny=(bx-ax)/length;
+    const candidates=[];
+    // The measure sits off the segment. Besides the two normals, the four diagonals are offered so a
+    // segment that runs through an axis still finds a place clear of both the segment and the axes.
+    const directions=[[nx,ny],[nx,-ny],[-nx,ny],[-nx,-ny],
+      [Math.SQRT1_2,Math.SQRT1_2],[Math.SQRT1_2,-Math.SQRT1_2],[-Math.SQRT1_2,Math.SQRT1_2],[-Math.SQRT1_2,-Math.SQRT1_2]];
+    for(const [dx,dy] of directions)for(const distance of [10,14,18,22,26,30,36,42]){
+      candidates.push({dx:dx*distance,dy:dy*distance,distance});
+    }
+    labels.push({key:`measure-${segment.id}`,role:'measure',segmentId:segment.id,text:segment.label,
+      requiresLeader:segmentLabelCounts.get(segment.label)>1,ownerSegment:{a:va,b:vb},
+      pointX:mx,pointY:my,centerX:mx,centerY:my,candidates});
+  }
+  return labels;
+}
+
 // --- spec and SVG ------------------------------------------------------------------------------------------------------------------------------
 export function ellipseFigureSpec(plan,model){
   if(plan?.capability!==FIGURE_CAPABILITY)bad('ELLIPSE_PLAN_INVALID');
+  if(model.mode==='CONIC')return conicFigureSpec(plan,model);
   const layout=layoutOf(model);
   const pair=Array.isArray(model.ellipses);
   const shapes=pair?model.ellipses:[{id:null,center:model.center,semiAxis:model.semiAxis,majorAxis:model.majorAxis}];
@@ -334,31 +425,174 @@ export function ellipseFigureSpec(plan,model){
     labels.push({key:`point-${point.id}`,role:'point',pointId:point.id,text:point.id,
       pointX:px,pointY:py,centerX:px,centerY:py,candidates:labelCandidates({x:px,y:py},lc.x,lc.y)});
   }
-  for(const segment of plan.segments??[]){
-    if(!segment.label)continue;
-    const from=model.points.find(row=>row.id===segment.from),to=model.points.find(row=>row.id===segment.to);
-    const ax=layout.px(num(from.x)),ay=layout.py(num(from.y)),bx=layout.px(num(to.x)),by=layout.py(num(to.y));
-    // The primitive is serialized to 0.01 px. Anchor owner leaders to those visible endpoint bytes,
-    // so the rendered-layout audit sees the leader touch the owner only at its endpoint.
-    const visible=(value)=>Math.round(value*100)/100;
-    const va=[visible(ax),visible(ay)],vb=[visible(bx),visible(by)];
-    const mx=(va[0]+vb[0])/2,my=(va[1]+vb[1])/2;
-    const length=Math.hypot(bx-ax,by-ay)||1;
-    const nx=-(by-ay)/length,ny=(bx-ax)/length;
-    const candidates=[];
-    // The measure sits off the segment. Besides the two normals, the four diagonals are offered so a
-    // segment that runs through an axis still finds a place clear of both the segment and the axes.
-    const directions=[[nx,ny],[nx,-ny],[-nx,ny],[-nx,-ny],
-      [Math.SQRT1_2,Math.SQRT1_2],[Math.SQRT1_2,-Math.SQRT1_2],[-Math.SQRT1_2,Math.SQRT1_2],[-Math.SQRT1_2,-Math.SQRT1_2]];
-    for(const [dx,dy] of directions)for(const distance of [10,14,18,22,26,30,36,42]){
-      candidates.push({dx:dx*distance,dy:dy*distance,distance});
-    }
-    labels.push({key:`measure-${segment.id}`,role:'measure',segmentId:segment.id,text:segment.label,
-      requiresLeader:segmentLabelCounts.get(segment.label)>1,ownerSegment:{a:va,b:vb},
-      pointX:mx,pointY:my,centerX:mx,centerY:my,candidates});
-  }
+  labels.push(...segmentMeasureLabels(plan,model,layout,segmentLabelCounts));
   return {schemaVersion:SPEC_VERSION,size:{width,height},prims,labels,layout:{
     scale:layout.scale,origin:{x:layout.px(0),y:layout.py(0)},rect:layout.rect},model:{majorAxis:model.majorAxis}};
+}
+
+// --- conic (parabola) figure: the same plane, scale, label placement and observer contract as the ellipse figure ------------------------------
+const AXIS_INK_CONIC=AXIS_INK;
+
+function axisPrims(layout){
+  const prims=[];
+  const axisX={x1:r6(layout.rect.x0),y1:r6(layout.py(0)),x2:r6(layout.rect.x1),y2:r6(layout.py(0))};
+  const axisY={x1:r6(layout.px(0)),y1:r6(layout.rect.y1),x2:r6(layout.px(0)),y2:r6(layout.rect.y0)};
+  prims.push({t:'line',id:'axis-x',role:'axis',cls:'axis',data:{axis:'x'},layer:10,...axisX});
+  prims.push({t:'line',id:'axis-y',role:'axis',cls:'axis',data:{axis:'y'},layer:10,...axisY});
+  prims.push({t:'polygon',id:'axis-x-head',role:'axis-head',cls:'axisHead',fill:AXIS_INK_CONIC,layer:11,
+    points:[[axisX.x2,axisX.y2],[axisX.x2-9,axisX.y2-3.6],[axisX.x2-9,axisX.y2+3.6]],data:{axis:'x'}});
+  prims.push({t:'polygon',id:'axis-y-head',role:'axis-head',cls:'axisHead',fill:AXIS_INK_CONIC,layer:11,
+    points:[[axisY.x2,axisY.y2],[axisY.x2-3.6,axisY.y2+9],[axisY.x2+3.6,axisY.y2+9]],data:{axis:'y'}});
+  return prims;
+}
+
+// A line of the plan clipped to the plane window (vertical and horizontal lines have no slope form).
+function clipConicLine(line,layout){
+  const {baseX,baseY,unitsW,unitsH}=layout;
+  const left=baseX,right=baseX+unitsW,bottom=baseY,top=baseY+unitsH;
+  if(line.type==='VERTICAL'){
+    const x=num(line.x);
+    if(x<left-1e-9||x>right+1e-9)bad('ELLIPSE_LINE_OUTSIDE_VIEWPORT');
+    return {a:[x,bottom],b:[x,top]};
+  }
+  if(line.type==='HORIZONTAL'){
+    const y=num(line.y);
+    if(y<bottom-1e-9||y>top+1e-9)bad('ELLIPSE_LINE_OUTSIDE_VIEWPORT');
+    return {a:[left,y],b:[right,y]};
+  }
+  return clipLine(line,layout);
+}
+
+// The part of the parabola inside the plane window, as runs of model points (the vertex is always a sample).
+function parabolaRuns(conic,layout,count=320){
+  const h=num(conic.vertex.x),k=num(conic.vertex.y),p=num(conic.p),axisX=conic.axis==='X';
+  const {baseX,baseY,unitsW,unitsH}=layout;
+  const left=baseX,right=baseX+unitsW,bottom=baseY,top=baseY+unitsH,eps=1e-9;
+  const at=axisX?s=>[h+s*s/(4*p),k+s]:s=>[h+s,k+s*s/(4*p)];
+  const inside=pt=>pt[0]>=left-eps&&pt[0]<=right+eps&&pt[1]>=bottom-eps&&pt[1]<=top+eps;
+  const reach=axisX?Math.max(Math.abs(bottom-k),Math.abs(top-k)):Math.max(Math.abs(left-h),Math.abs(right-h));
+  const edge=(sIn,sOut)=>{
+    let lo=sIn,hi=sOut;
+    for(let i=0;i<60;i++){const mid=(lo+hi)/2;if(inside(at(mid)))lo=mid;else hi=mid;}
+    return at(lo);
+  };
+  const runs=[];let run=null,prevS=null,prevIn=false;
+  for(let i=0;i<=count;i++){
+    const s=-reach+2*reach*i/count,pt=at(s),isIn=inside(pt);
+    if(isIn){
+      if(!run){run=[];runs.push(run);if(prevS!==null&&!prevIn)run.push(edge(s,prevS));}
+      run.push(pt);
+    }else if(run){run.push(edge(prevS,s));run=null;}
+    prevS=s;prevIn=isIn;
+  }
+  return runs.filter(row=>row.length>=2);
+}
+
+function conicCurveRuns(conic,layout){
+  if(conic.kind==='PARABOLA')return parabolaRuns(conic,layout);
+  bad('CONIC_KIND_UNSUPPORTED');
+}
+
+function conicFigureSpec(plan,model){
+  const layout=layoutOf(model),{width,height}=layout.size;
+  const conic=model.conic;
+  const vertexPx={x:layout.px(num(conic.vertex.x)),y:layout.py(num(conic.vertex.y))};
+  const prims=axisPrims(layout);
+  const point=id=>model.points.find(row=>row.id===id);
+  const toPx=(x,y)=>[layout.px(x),layout.py(y)];
+  for(const polygon of plan.polygons??[]){
+    const points=polygon.points.map(id=>toPx(num(point(id).x),num(point(id).y)));
+    prims.push({t:'polygon',id:`polygon-${polygon.id}`,role:'polygon',cls:'polygon',layer:20,
+      points:points.map(([x,y])=>[r6(x),r6(y)]),fill:FILL[polygon.fill??'LIGHT'],data:{points:polygon.points.join(',')}});
+  }
+  prims.push({t:'path',id:'curve',role:'curve',cls:'curve',layer:25,
+    runs:conicCurveRuns(conic,layout).map(run=>run.map(([x,y])=>{const [qx,qy]=toPx(x,y);return [r6(qx),r6(qy)];})),
+    data:{curve:conic.kind}});
+  const segmentLabelCounts=new Map();
+  for(const segment of plan.segments??[])if(segment.label)segmentLabelCounts.set(segment.label,(segmentLabelCounts.get(segment.label)||0)+1);
+  for(const segment of plan.segments??[]){
+    const from=point(segment.from),to=point(segment.to);
+    prims.push({t:'line',id:`segment-${segment.id}`,role:'segment',cls:segment.dashed?'segmentDashed':'segment',layer:30,
+      x1:r6(layout.px(num(from.x))),y1:r6(layout.py(num(from.y))),x2:r6(layout.px(num(to.x))),y2:r6(layout.py(num(to.y))),
+      data:{from:segment.from,to:segment.to}});
+  }
+  const drawnLines=[];
+  for(const line of model.lines){
+    if(line.hidden)continue;
+    const clipped=clipConicLine(line,layout);
+    const prim={t:'line',id:`line-${line.id}`,role:'line',cls:line.dashed?'segmentDashed':'line',layer:30,
+      x1:r6(layout.px(clipped.a[0])),y1:r6(layout.py(clipped.a[1])),x2:r6(layout.px(clipped.b[0])),y2:r6(layout.py(clipped.b[1])),
+      data:{line:line.id}};
+    prims.push(prim);drawnLines.push({line,prim});
+  }
+  const bbox=model.bbox,center=toPx((bbox.minX+bbox.maxX)/2,(bbox.minY+bbox.maxY)/2);
+  for(const row of model.points){
+    if(!row.foot||!row.foot.rightAngle)continue;
+    const owner=model.lines.find(line=>line.id===row.foot.onto),from=point(row.foot.from);
+    const foot=toPx(num(row.x),num(row.y)),apex=toPx(num(from.x),num(from.y));
+    const toward=[apex[0]-foot[0],apex[1]-foot[1]],reach=Math.hypot(toward[0],toward[1]);
+    const e1=[toward[0]/reach,toward[1]/reach];
+    let u=[num(owner.general.b),num(owner.general.a)];   // model direction (b,-a) with the pixel y axis flipped
+    const norm=Math.hypot(u[0],u[1]);u=[u[0]/norm,u[1]/norm];
+    if((center[0]-foot[0])*u[0]+(center[1]-foot[1])*u[1]<0)u=[-u[0],-u[1]];
+    // The mark must not sit on another segment that leaves the foot: flip it to the free side of the line.
+    const crowded=sign=>(model.segments??[]).some(segment=>{
+      const other=segment.from===row.id?segment.to:segment.to===row.id?segment.from:null;
+      if(!other||other===row.foot.from)return false;
+      const target=point(other),away=toPx(num(target.x),num(target.y));
+      const d=[away[0]-foot[0],away[1]-foot[1]],dl=Math.hypot(d[0],d[1])||1;
+      const along=sign*(d[0]*u[0]+d[1]*u[1])/dl,across=(d[0]*e1[0]+d[1]*e1[1])/dl;
+      return along>0.05&&across>0.05;
+    });
+    if(crowded(1)&&!crowded(-1))u=[-u[0],-u[1]];
+    const size=Math.min(8,0.4*reach);
+    prims.push({t:'polyline',id:`rightangle-${row.id}`,role:'right-angle',cls:'rightAngle',layer:35,
+      points:[[foot[0]+e1[0]*size,foot[1]+e1[1]*size],
+        [foot[0]+(e1[0]+u[0])*size,foot[1]+(e1[1]+u[1])*size],[foot[0]+u[0]*size,foot[1]+u[1]*size]].map(([x,y])=>[r6(x),r6(y)]),
+      data:{foot:row.id}});
+  }
+  for(const row of model.points){
+    prims.push({t:'circle',id:`point-${row.id}`,role:'point',cls:'point',layer:40,
+      cx:r6(layout.px(num(row.x))),cy:r6(layout.py(num(row.y))),r:3.2,data:{point:row.id}});
+  }
+  const labels=[];
+  for(const row of model.points){
+    if(!row.labels)continue;
+    const px=layout.px(num(row.x)),py=layout.py(num(row.y));
+    labels.push({key:`point-${row.id}`,role:'point',pointId:row.id,text:row.id,
+      pointX:px,pointY:py,centerX:px,centerY:py,candidates:labelCandidates({x:px,y:py},vertexPx.x,vertexPx.y)});
+  }
+  for(const {line,prim} of drawnLines){
+    if(!line.label)continue;
+    const visible=value=>Math.round(value*100)/100;
+    const va=[visible(prim.x1),visible(prim.y1)],vb=[visible(prim.x2),visible(prim.y2)];
+    const length=Math.hypot(vb[0]-va[0],vb[1]-va[1])||1;
+    const u=[(vb[0]-va[0])/length,(vb[1]-va[1])/length],n=[-u[1],u[0]];
+    const at=t=>[va[0]+u[0]*length*t,va[1]+u[1]*length*t];
+    const mid=at(0.5);
+    const candidates=[];
+    for(const t of [0.07,0.15,0.25,0.4,0.6,0.75,0.85,0.93]){
+      const anchor=at(t);
+      for(const side of [1,-1])for(const distance of [9,12,15,19,24,30]){
+        candidates.push({dx:anchor[0]-mid[0]+n[0]*side*distance,dy:anchor[1]-mid[1]+n[1]*side*distance,
+          distance:distance+20*Math.min(t,1-t)});
+      }
+    }
+    // No room beside the line: the name goes to a free spot and a leader joins it to the line.
+    const fallbacks=[];
+    for(const t of [0.2,0.35,0.5,0.65,0.8]){
+      const anchor=at(t),far=[];
+      for(const [dx,dy] of [n,[-n[0],-n[1]],[Math.SQRT1_2*(n[0]+u[0]),Math.SQRT1_2*(n[1]+u[1])],[Math.SQRT1_2*(n[0]-u[0]),Math.SQRT1_2*(n[1]-u[1])],
+        [-Math.SQRT1_2*(n[0]+u[0]),-Math.SQRT1_2*(n[1]+u[1])],[-Math.SQRT1_2*(n[0]-u[0]),-Math.SQRT1_2*(n[1]-u[1])]])
+        for(const distance of [20,26,32,40,48])far.push({dx:dx*distance,dy:dy*distance,distance});
+      fallbacks.push({pointX:anchor[0],pointY:anchor[1],centerX:anchor[0],centerY:anchor[1],candidates:far});
+    }
+    labels.push({key:`line-${line.id}`,role:'line',lineId:line.id,text:line.label,
+      ownerSegment:{a:va,b:vb},pointX:mid[0],pointY:mid[1],centerX:mid[0],centerY:mid[1],candidates,fallbacks});
+  }
+  labels.push(...segmentMeasureLabels(plan,model,layout,segmentLabelCounts));
+  return {schemaVersion:SPEC_VERSION,size:{width,height},prims,labels,layout:{
+    scale:layout.scale,origin:{x:layout.px(0),y:layout.py(0)},rect:layout.rect},model:{conic:conic.kind}};
 }
 
 function printPrim(prim){
@@ -368,6 +602,8 @@ function printPrim(prim){
   switch(prim.t){
     case 'line':tag=`<line ${head} x1="${px2(prim.x1)}" y1="${px2(prim.y1)}" x2="${px2(prim.x2)}" y2="${px2(prim.y2)}" ${style}/>`;break;
     case 'ellipse':tag=`<ellipse ${head} cx="${px2(prim.cx)}" cy="${px2(prim.cy)}" rx="${px2(prim.rx)}" ry="${px2(prim.ry)}" ${style}/>`;break;
+    case 'path':tag=`<path ${head} d="${prim.runs.map(run=>run.map(([x,y],index)=>`${index?'L':'M'}${px2(x)} ${px2(y)}`).join(' ')).join(' ')}" ${style}/>`;break;
+    case 'polyline':tag=`<polyline ${head} points="${prim.points.map(([x,y])=>px2(x)+','+px2(y)).join(' ')}" ${style}/>`;break;
     case 'circle':tag=`<circle ${head} cx="${px2(prim.cx)}" cy="${px2(prim.cy)}" r="${px2(prim.r)}" ${style}/>`;break;
     case 'polygon':tag=`<polygon ${head} points="${prim.points.map(([x,y])=>px2(x)+','+px2(y)).join(' ')}" fill="${prim.fill}" stroke="none"/>`;break;
     default:throw Error('ELLIPSE_PRIMITIVE_UNKNOWN');
@@ -394,16 +630,17 @@ export async function renderEllipseSvg({plan,model,identity,typographyPolicy}){
     specSha256:null,fragmentSha256s:{},svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
   lineage.specSha256=objectSha(spec);
   for(const item of placed)if(item.leader){
-    body+=`<g data-layer="50"><line id="leader-${item.key}" data-role="leader" data-owner-label="${item.key}" data-owner-segment="${item.segmentId}" data-label="${item.key}" stroke="#555" stroke-width="0.9" fill="none" x1="${r6(item.leader.a[0])}" y1="${r6(item.leader.a[1])}" x2="${r6(item.leader.b[0])}" y2="${r6(item.leader.b[1])}"/></g>`;
+    const ownerAttr=item.role==='line'?`data-owner-line="${esc(item.lineId)}"`:`data-owner-segment="${item.segmentId}"`;
+    body+=`<g data-layer="50"><line id="leader-${item.key}" data-role="leader" data-owner-label="${item.key}" ${ownerAttr} data-label="${item.key}" stroke="#555" stroke-width="0.9" fill="none" x1="${r6(item.leader.a[0])}" y1="${r6(item.leader.a[1])}" x2="${r6(item.leader.b[0])}" y2="${r6(item.leader.b[1])}"/></g>`;
   }
   for(const item of placed){
     const box=item.box;
-    const extra=item.role==='point'?` data-point="${esc(item.pointId)}"`:` data-segment="${esc(item.segmentId)}"`;
-    const role=item.role==='point'?'point':'measure';
+    const extra=item.role==='point'?` data-point="${esc(item.pointId)}"`:item.role==='line'?` data-line="${esc(item.lineId)}"`:` data-segment="${esc(item.segmentId)}"`;
+    const role=item.role==='point'?'point':item.role==='line'?'line':'measure';
     body+=`<g data-layer="90"><g id="${item.key}" data-label-kind="COORDINATE_LABEL" data-label-role="${role}" data-priority="0" data-font-px="${font}" data-owner="ellipse-${item.key}"${extra} data-tex="${esc(item.text)}" data-fragment-sha="${item.fragment.fragmentSha256}" data-box="${r6(box.x)},${r6(box.y)},${r6(box.width)},${r6(box.height)}" transform="translate(${r6(box.x)} ${r6(box.y)})">${item.fragment.svg}</g></g>`;
     lineage.fragmentSha256s[item.key]=item.fragment.fragmentSha256;
   }
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" data-ellipse-figure="${FIGURE_CAPABILITY}" data-major-axis="${model.majorAxis}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="6" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" data-ellipse-figure="${FIGURE_CAPABILITY}" ${model.mode==='CONIC'?`data-conic="${model.conic.kind}"`:`data-major-axis="${model.majorAxis}"`} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="6" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
   lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
   return {status:'RENDERED',svg,lineage,spec};
 }
@@ -426,6 +663,14 @@ export function ellipseLabelObstacles(spec){
   const segments=[];
   for(const prim of spec.prims){
     if(prim.role==='segment'||prim.role==='axis'||prim.role==='line')segments.push({a:[prim.x1,prim.y1],b:[prim.x2,prim.y2]});
+    if(prim.role==='right-angle')for(let index=1;index<prim.points.length;index++)segments.push({a:prim.points[index-1],b:prim.points[index]});
+    if(prim.role==='curve')for(const run of prim.runs)for(let index=0;index<run.length;index++){
+      curve.push(run[index]);
+      if(index===0)continue;
+      // a sample every ~1.5 px so a label box cannot slip between two vertices of the path
+      const [x0,y0]=run[index-1],[x1,y1]=run[index],steps=Math.ceil(Math.hypot(x1-x0,y1-y0)/1.5);
+      for(let step=1;step<steps;step++)curve.push([x0+(x1-x0)*step/steps,y0+(y1-y0)*step/steps]);
+    }
     if(prim.role==='polygon')prim.points.forEach((start,index)=>{
       const end=prim.points[(index+1)%prim.points.length];segments.push({a:start,b:end});
     });

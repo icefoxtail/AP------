@@ -1,0 +1,27 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "초점이 F인 포물선 y^2=4px 위의 한 점 A에서 포물선의 준선에 내린 수선의 발을 B라 하고, 선분 BF와 포물선이 만나는 점을 C라 하자. AB=BF이다.",
+  "conic": { "kind": "PARABOLA", "vertex": ["0", "0"], "p": "1", "axis": "X" },
+  "points": [
+    { "id": "O", "kind": "ORIGIN" },
+    { "id": "F", "kind": "FOCUS" },
+    { "id": "A", "kind": "ON_CONIC", "x": "3", "branch": "POS" },
+    { "id": "B", "kind": "FOOT", "from": "A", "onto": "l", "rightAngle": true },
+    { "id": "C", "kind": "LINE_CONIC", "line": "k1", "which": 1 }
+  ],
+  "lines": [
+    { "id": "l", "role": "DIRECTRIX" },
+    { "id": "k1", "through": ["B", "F"], "hidden": true }
+  ],
+  "segments": [
+    { "id": "sAB", "from": "A", "to": "B" },
+    { "id": "sBF", "from": "B", "to": "F" }
+  ],
+  "caption": "포물선 y^2=4px 위의 점 A, 준선에 내린 수선의 발 B, 선분 BF와 포물선의 교점 C (p는 문자이므로 한 예로 그린 그림)",
+  "sourceConditions": [
+    { "id": "c1", "condition": "A는 포물선 위의 점, B는 A에서 준선에 내린 수선의 발, C는 선분 BF와 포물선이 만나는 점이다.", "mappedTo": ["conic", "points", "lines"] },
+    { "id": "c2", "condition": "AB=BF (문제가 준 조건).", "mappedTo": ["segments"] },
+    { "id": "c3", "condition": "p는 문자이므로 한 예(p=1)로 그린다. AB=BF를 만족하는 모양은 p와 무관하게 닮은꼴이다.", "mappedTo": ["conic"] }
+  ],
+  "newVisualInformation": ["AB와 BF가 같은 길이가 되는 점 A의 위치와, BF가 포물선과 만나는 점 C의 위치를 보여 준다."]
+}

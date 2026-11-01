@@ -11,6 +11,7 @@ PRODUCTION=Path(__file__).resolve().parents[1]/'production'
 sys.path.insert(0,str(PRODUCTION))
 import ellipse_figure as E
 import ellipse_figure_observer as O
+import sympy as S
 
 NS='http://www.w3.org/2000/svg'
 
@@ -234,6 +235,214 @@ class ObserverTest(unittest.TestCase):
         self.assertEqual(passed['status'],'PASS',passed['errors'])
         shifted=out.replace('data-point="F" cx="%.3f"'%x,'data-point="F" cx="%.3f"'%(x+5))
         self.assertNotEqual(O.audit(value,shifted)['status'],'PASS')
+
+
+# --- conic (parabola) plans: root field `conic`, derived by conic_figure.py and read back by conic_figure_observer.py ---
+import conic_figure_observer as CO
+
+SCALE=30.0
+OX,OY=100.0,150.0
+
+
+def conic_plan(points=None,segments=None,lines=None,**conic):
+    return {'capability':'ellipse-figure-v1','caption':'c',
+            'sourceConditions':[{'id':'c1','condition':'c','mappedTo':['conic']}],
+            'newVisualInformation':['n'],
+            'conic':{'kind':'PARABOLA','vertex':['0','0'],'p':'1','axis':'X',**conic},
+            'points':points if points is not None else [
+                {'id':'F','kind':'FOCUS'},{'id':'O','kind':'ORIGIN'},
+                {'id':'A','kind':'ON_CONIC','x':'4','branch':'POS'},
+                {'id':'M','kind':'FOOT','from':'A','onto':'l','rightAngle':True}],
+            'segments':segments if segments is not None else [{'id':'s1','from':'A','to':'M'}],
+            'polygons':[],
+            'lines':lines if lines is not None else [{'id':'l','role':'DIRECTRIX','label':'l'}]}
+
+
+def px(x):
+    return OX+SCALE*x
+
+
+def py(y):
+    return OY-SCALE*y
+
+
+def conic_svg(markers=None,line_label='l',directrix_x=-1.0,mark=True,curve_squash=1.0,extra=''):
+    """A hand-built final SVG of y^2=4x at 30 px per unit: axes, curve, directrix, A, M, F, O and their names."""
+    markers=markers or {'F':(1,0),'O':(0,0),'A':(4,4),'M':(-1,4)}
+    t=-4.6;samples=[]
+    while t<=4.6001:
+        samples.append((px(t*t/4),py(t*curve_squash)));t+=0.2
+    samples.append((px(0),py(0)));samples.sort(key=lambda pt:-pt[1])
+    d=' '.join('%s%.2f %.2f'%('M' if index==0 else 'L',x,y) for index,(x,y) in enumerate(samples))
+    out=['<svg xmlns="%s" width="300" height="300" viewBox="0 0 300 300">'%NS,
+         '<line id="axis-x" data-role="axis" data-axis="x" x1="10" y1="150" x2="290" y2="150"/>',
+         '<line id="axis-y" data-role="axis" data-axis="y" x1="100" y1="290" x2="100" y2="10"/>',
+         '<polygon id="axis-x-head" data-role="axis-head" data-axis="x" points="290,150 281,146.4 281,153.6"/>',
+         '<polygon id="axis-y-head" data-role="axis-head" data-axis="y" points="100,10 96.4,19 103.6,19"/>',
+         '<path id="curve" data-role="curve" data-curve="PARABOLA" d="%s" fill="none"/>'%d,
+         '<line id="line-l" data-role="line" data-line="l" x1="%.2f" y1="10" x2="%.2f" y2="290"/>'%(px(directrix_x),px(directrix_x))]
+    if 'A' in markers and 'M' in markers:
+        out.append('<line id="segment-s1" data-role="segment" data-from="A" data-to="M" x1="%.2f" y1="%.2f" x2="%.2f" y2="%.2f"/>'%(
+            px(markers['A'][0]),py(markers['A'][1]),px(markers['M'][0]),py(markers['M'][1])))
+    if mark:
+        mx,my=px(-1),py(4)
+        out.append('<polyline id="rightangle-M" data-role="right-angle" data-foot="M" points="%.2f,%.2f %.2f,%.2f %.2f,%.2f"/>'%(
+            mx+6,my,mx+6,my+6,mx,my+6))
+    for pid,(x,y) in markers.items():
+        out.append('<circle id="point-%s" data-role="point" data-point="%s" cx="%.2f" cy="%.2f" r="3.2"/>'%(pid,pid,px(x),py(y)))
+        out.append('<g id="point-label-%s" data-label-role="point" data-point="%s" data-tex="%s" data-box="%.2f,%.2f,10,12"/>'%(
+            pid,pid,pid,px(x)+5,py(y)+3))
+    out.append('<g id="line-l-label" data-label-role="line" data-line="l" data-tex="%s" data-box="%.2f,%.2f,6,12"/>'%(line_label,px(-1)+8,py(4)+30))
+    out.append(extra)
+    out.append('</svg>')
+    return ''.join(out)
+
+
+def refused_with(case,callable_,value,code):
+    with case.assertRaises(ValueError) as caught:
+        callable_(value)
+    case.assertEqual(str(caught.exception),code)
+
+
+class ConicProduceTest(unittest.TestCase):
+    def test_focus_directrix_curve_points_and_feet_are_exact(self):
+        # 26 제일고 q2: AF=5, BF=3 on a focal chord gives p=15/8; B is the first intersection of line AF with the parabola.
+        value=conic_plan(p='15/8',points=[
+            {'id':'F','kind':'FOCUS'},{'id':'A','kind':'ON_CONIC','x':'25/8','branch':'POS'},
+            {'id':'B','kind':'LINE_CONIC','line':'k1','which':1},
+            {'id':'M','kind':'FOOT','from':'A','onto':'l','rightAngle':True},{'id':'N','kind':'FOOT','from':'B','onto':'l'}],
+            segments=[],lines=[{'id':'l','role':'DIRECTRIX'},{'id':'k1','through':['A','F'],'hidden':True}])
+        model=E.produce(value)
+        self.assertEqual(model['mode'],'CONIC')
+        self.assertEqual(model['conic']['focus']['x']['exact'],'15/8')
+        self.assertEqual(model['conic']['directrix']['orientation'],'VERTICAL')
+        self.assertEqual(model['conic']['directrix']['value']['exact'],'-15/8')
+        rows={row['id']:row for row in model['points']}
+        self.assertEqual((rows['A']['x']['exact'],rows['A']['y']['exact']),('25/8','5*sqrt(15)/4'))
+        self.assertEqual((rows['B']['x']['exact'],rows['B']['y']['exact']),('9/8','-3*sqrt(15)/4'))
+        self.assertEqual((rows['M']['x']['exact'],rows['M']['y']['exact']),('-15/8','5*sqrt(15)/4'))
+        self.assertEqual((rows['N']['x']['exact'],rows['N']['y']['exact']),('-15/8','-3*sqrt(15)/4'))
+        self.assertTrue(rows['A']['onCurve'] and rows['B']['onCurve'])
+        self.assertFalse(rows['M']['onCurve'])
+        self.assertEqual(rows['M']['foot'],{'from':'A','onto':'l','rightAngle':True})
+        # the focus-directrix definition holds for A and B (AF=AM=5, BF=BN=3)
+        for pid,length in (('A',5),('B',3)):
+            self.assertAlmostEqual(rows[pid]['x']['value']-rows['M']['x']['value'],length,places=9)
+
+    def test_an_upward_parabola_and_a_vertical_line_through_it(self):
+        value=conic_plan(vertex=['1','-1'],p='1/2',axis='Y',points=[
+            {'id':'F','kind':'FOCUS'},{'id':'V','kind':'VERTEX'},
+            {'id':'P','kind':'LINE_CONIC','line':'m','which':1},{'id':'Q','kind':'ON_CONIC','y':'1/2','branch':'NEG'}],
+            segments=[],lines=[{'id':'m','x':'3'},{'id':'d','role':'DIRECTRIX'}])
+        model=E.produce(value)
+        rows={row['id']:row for row in model['points']}
+        self.assertEqual((rows['F']['x']['exact'],rows['F']['y']['exact']),('1','-1/2'))
+        self.assertEqual(model['conic']['directrix']['orientation'],'HORIZONTAL')
+        self.assertEqual(rows['P']['x']['exact'],'3');self.assertEqual(rows['P']['y']['exact'],'1')
+        self.assertEqual(rows['Q']['y']['exact'],'1/2')
+        self.assertTrue(rows['Q']['onCurve'])
+        self.assertLess(float(rows['Q']['x']['value']),1.0)
+
+    def test_conic_refusals_carry_their_own_codes(self):
+        check=lambda value,code:refused_with(self,E.produce,value,code)
+        check(conic_plan(p='0'),'CONIC_PARAMETER_INVALID')
+        check(conic_plan(p='x'),'CONIC_PARAMETER_INVALID')
+        check(conic_plan(axis='Z'),'CONIC_PARAMETER_INVALID')
+        check(conic_plan(kind='HYPERBOLA'),'CONIC_KIND_UNSUPPORTED')
+        check({**conic_plan(),'ellipse':{'center':['0','0'],'semiAxisSquared':{'major':'4','minor':'1'},'majorAxis':'X'}},'CONIC_PLAN_CONFLICT')
+        check(conic_plan(points=[{'id':'A','kind':'ON_CONIC','x':'-1','branch':'POS'}],segments=[]),'CONIC_POINT_NOT_ON_CURVE')
+        check(conic_plan(points=[{'id':'A','kind':'ON_CONIC','y':'1'},{'id':'B','kind':'LINE_CONIC','line':'k','which':1}],segments=[],
+                         lines=[{'id':'k','x':'-3'}]),'CONIC_LINE_NO_INTERSECTION')
+        check(conic_plan(points=[{'id':'B','kind':'LINE_CONIC','line':'k','which':2}],segments=[],
+                         lines=[{'id':'k','y':'1'}]),'CONIC_INTERSECTION_INDEX_INVALID')
+        check(conic_plan(points=[{'id':'B','kind':'LINE_CONIC','line':'k','which':2}],segments=[],
+                         lines=[{'id':'k','x':'0'}]),'CONIC_INTERSECTION_INDEX_INVALID')
+        check(conic_plan(points=[{'id':'A','kind':'ON_CONIC','y':'2'},{'id':'M','kind':'FOOT','from':'A','onto':'nope'}],segments=[]),'CONIC_FOOT_INVALID')
+        check(conic_plan(points=[{'id':'F','kind':'FOCUS'},{'id':'M','kind':'FOOT','from':'F','onto':'k'}],segments=[],
+                         lines=[{'id':'k','y':'0'}]),'CONIC_FOOT_INVALID')
+        check(conic_plan(points=[{'id':'O','kind':'ORIGIN'},{'id':'V','kind':'VERTEX'}],segments=[]),'CONIC_POINT_COINCIDENT')
+        check(conic_plan(lines=[{'id':'l','role':'DIRECTRIX','label':'x'*41}]),'CONIC_LINE_LABEL_INVALID')
+        check(conic_plan(lines=[{'id':'l','role':'DIRECTRIX','x':'3'}]),'ELLIPSE_LINE_INVALID')
+
+    def test_ellipse_plans_keep_refusing_conic_only_fields(self):
+        refused_with(self,E.produce,plan(lines=[{'id':'l','slope':'1','intercept':'1','role':'DIRECTRIX'}]),'CONIC_DIRECTRIX_REQUIRES_PARABOLA')
+        refused_with(self,E.produce,plan(lines=[{'id':'l','slope':'1','intercept':'1','label':'l'}]),'ELLIPSE_LINE_LABEL_UNSUPPORTED')
+        refused_with(self,E.produce,plan(points=[{'id':'A','kind':'ON_CONIC','x':'1'}]),'ELLIPSE_POINT_INVALID')
+
+
+class ConicObserverTest(unittest.TestCase):
+    def audit(self,svg_text,value=None):
+        return CO.audit(value or conic_plan(),svg_text)
+
+    def assertFails(self,result,prefix):
+        self.assertEqual(result['status'],'FAIL')
+        self.assertTrue(any(error.startswith(prefix) for error in result['errors']),'%s not in %s'%(prefix,result['errors']))
+
+    def test_a_faithful_parabola_svg_passes_and_the_dispatch_finds_the_conic_observer(self):
+        result=self.audit(conic_svg())
+        self.assertEqual(result['status'],'PASS',result['errors'])
+        self.assertAlmostEqual(result['checks']['scale'],SCALE,delta=0.05)
+        self.assertEqual(O.audit(conic_plan(),conic_svg())['status'],'PASS')
+
+    def test_the_curve_must_lie_on_the_exact_equation(self):
+        self.assertFails(self.audit(conic_svg(curve_squash=0.8)),'CONIC_CURVE_OFF_EQUATION')
+
+    def test_the_directrix_and_other_lines_sit_on_their_equations(self):
+        self.assertFails(self.audit(conic_svg(directrix_x=-1.3)),'CONIC_DIRECTRIX_MISMATCH:l')
+        value=conic_plan(lines=[{'id':'l','role':'DIRECTRIX','label':'l'},{'id':'m','x':'3'}])
+        good=conic_svg(extra='<line id="line-m" data-role="line" data-line="m" x1="%.2f" y1="10" x2="%.2f" y2="290"/>'%(px(3),px(3)))
+        self.assertEqual(self.audit(good,value)['status'],'PASS')
+        bad=conic_svg(extra='<line id="line-m" data-role="line" data-line="m" x1="%.2f" y1="10" x2="%.2f" y2="290"/>'%(px(3.4),px(3.4)))
+        self.assertFails(self.audit(bad,value),'LINE_OFF_EQUATION:m')
+        self.assertFails(self.audit(good),'LINE_UNDECLARED:m')
+
+    def test_points_on_the_curve_and_the_focus_stay_where_the_plan_puts_them(self):
+        self.assertFails(self.audit(conic_svg(markers={'F':(1.4,0),'O':(0,0),'A':(4,4),'M':(-1,4)})),'POINT_MOVED:F')
+        result=self.audit(conic_svg(markers={'F':(1,0),'O':(0,0),'A':(4,3.5),'M':(-1,4)}))
+        self.assertFails(result,'POINT_MOVED:A')
+        self.assertTrue(any(error.startswith('CONIC_POINT_OFF_CURVE:A') for error in result['errors']),result['errors'])
+
+    def test_a_line_conic_point_is_the_named_intersection(self):
+        value=conic_plan(points=[{'id':'F','kind':'FOCUS'},{'id':'A','kind':'ON_CONIC','x':'4','branch':'POS'},
+                                 {'id':'B','kind':'LINE_CONIC','line':'k1','which':1}],segments=[],
+                         lines=[{'id':'l','role':'DIRECTRIX','label':'l'},{'id':'k1','through':['A','F'],'hidden':True}])
+        ok=self.audit(conic_svg(markers={'F':(1,0),'A':(4,4),'B':(0.25,-1)},mark=False),value)
+        self.assertEqual(ok['status'],'PASS',ok['errors'])
+        # B drawn on A's own intersection: a right place on the curve, but the wrong one of the two
+        swapped=self.audit(conic_svg(markers={'F':(1,0),'A':(4,4),'B':(4,4)},mark=False),value)
+        self.assertFails(swapped,'CONIC_INTERSECTION_MISMATCH:B:order')
+        off_line=self.audit(conic_svg(markers={'F':(1,0),'A':(4,4),'B':(1,-2)},mark=False),value)
+        self.assertFails(off_line,'CONIC_INTERSECTION_MISMATCH:B:not-on-line')
+
+    def test_the_foot_of_the_perpendicular_and_its_right_angle_mark(self):
+        self.assertFails(self.audit(conic_svg(markers={'F':(1,0),'O':(0,0),'A':(4,4),'M':(-1,3)})),'CONIC_FOOT_MISMATCH:M:not-perpendicular')
+        self.assertFails(self.audit(conic_svg(markers={'F':(1,0),'O':(0,0),'A':(4,4),'M':(-1.4,4)})),'CONIC_FOOT_MISMATCH:M:not-on-line')
+        self.assertFails(self.audit(conic_svg(mark=False)),'CONIC_FOOT_MISMATCH:M:rightangle-missing')
+        crooked=conic_svg().replace('%.2f,%.2f %.2f,%.2f'%(px(-1)+6,py(4),px(-1)+6,py(4)+6),'%.2f,%.2f %.2f,%.2f'%(px(-1)+6,py(4),px(-1)+9,py(4)+6))
+        self.assertNotEqual(crooked,conic_svg())
+        self.assertFails(self.audit(crooked),'CONIC_FOOT_MISMATCH:M:rightangle-shape')
+        no_mark_plan=conic_plan(points=[{'id':'F','kind':'FOCUS'},{'id':'O','kind':'ORIGIN'},{'id':'A','kind':'ON_CONIC','x':'4','branch':'POS'},
+                                        {'id':'M','kind':'FOOT','from':'A','onto':'l'}])
+        self.assertFails(self.audit(conic_svg(),no_mark_plan),'CONIC_FOOT_MISMATCH:M:rightangle-undeclared')
+
+    def test_the_line_name_is_the_plans_text_and_sits_by_its_own_line(self):
+        self.assertFails(self.audit(conic_svg(line_label='m')),'CONIC_LINE_LABEL_MISMATCH:l:text')
+        near='data-box="%.2f,%.2f,6,12"/>'%(px(-1)+8,py(4)+30)
+        far=conic_svg().replace(near,'data-box="%.2f,%.2f,6,12"/>'%(px(4),py(-3)))
+        self.assertNotEqual(far,conic_svg())
+        self.assertFails(self.audit(far),'CONIC_LINE_LABEL_MISMATCH:l:not-adjacent')
+
+    def test_the_definition_check_uses_the_plans_own_focus_and_directrix(self):
+        par=CO.parabola_of(conic_plan()['conic'])
+        points={'A':(S.Integer(4),S.Integer(4))}
+        self.assertEqual(CO.definition_errors(par,points),[])
+        self.assertEqual(CO.definition_errors(par,points,focus=(S.Integer(2),S.Integer(0))),['CONIC_DEFINITION_MISMATCH:A'])
+        self.assertEqual(CO.definition_errors(par,points,directrix=(S.Integer(1),S.Integer(0),S.Integer(-2))),['CONIC_DEFINITION_MISMATCH:A'])
+
+    def test_the_observer_refuses_the_same_plans_the_producer_does(self):
+        for value,code in ((conic_plan(kind='HYPERBOLA'),'CONIC_KIND_UNSUPPORTED'),(conic_plan(p='0'),'CONIC_PARAMETER_INVALID'),
+                           ({**conic_plan(),'ellipse':{}},'CONIC_PLAN_CONFLICT')):
+            self.assertEqual(self.audit(conic_svg(),value)['errors'],['PLAN_REFUSED:%s'%code])
 
 
 if __name__=='__main__':
