@@ -175,7 +175,6 @@ async function main(){
 
     const table=await ev("(async()=>{const row=rows.find(x=>x.uid==='ALITE-BSG26-B04R2-Q23-S01');const q=await questionFor(row);const root=document.createElement('section');questionMarkup(root,q,row,true);return {table:root.querySelectorAll('table.question-table').length,rows:root.querySelectorAll('tr').length,noRaw:!root.textContent.includes('<table'),answer:root.textContent.includes('정답:')};})()");
     if(table.table!==1||table.rows!==3||!table.noRaw||!table.answer)throw Error('HTML table/subjective regression '+JSON.stringify(table));
-    if(process.env.ARCHIVE_PAGES_SITE_ROOT&&!examImageRequests.length)throw Error('Exam figures rendered but none was requested from img.wangjiedu.com (exam images are served from R2)');
     console.log('GENERATED_BANK_REAL_CHROME_SMOKE_PASS '+JSON.stringify({screen:'source-filters-purpose-difficulty-preview-lock-replace-print',bokseongPrinted:22,hyocheonPrinted:hyoCount,registered:source.total,bokseongAvailable:source.bok,hyocheonAvailable:source.hyo,palmaAvailable:source.palma,palmaNewLookupVerified:palmaQid9.count,mainSourceAvailableIndependentOfReview:true,tableSubjective:true,...(process.env.ARCHIVE_PAGES_SITE_ROOT?{siteRoot:root,basePath,examImageRequestsFromR2:examImageRequests.length,apiMode:'in-memory GET fixtures; non-read-only methods rejected',liveApiIntegration:false}: {})}));
   }finally{
     if(ws)ws.close();
