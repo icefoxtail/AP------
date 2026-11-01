@@ -516,13 +516,14 @@ window.questionBank = [
     "subUnit": "이차곡선의 접선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q13-solution.svg",
-    "solutionImageAlt": "쌍곡선의 두 점근선과 접선이 만드는 삼각형",
-    "solutionImageCaption": "접선은 두 점근선과 (6,6), (2,-2)에서 만나고 삼각형의 넓이는 12이다.",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 쌍곡선 x²-y²=12의 두 가지, 점선으로 그린 두 점근선 y=x와 y=-x, 쌍곡선 위의 점 P(4,2)를 지나는 직선과 두 점근선이 만나는 점 A, B, 그리고 원점 O와 A, B가 이루는 삼각형을 나타냈다.",
+    "solutionImageCaption": "쌍곡선 위의 점 (4,2)에서의 접선과 두 점근선으로 둘러싸인 삼각형 OAB의 모양을 보인다.",
     "problemTypeKey": "PT_GEO_CONIC_TANGENT",
     "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
     "crossConceptKeys": ["CC_HYPERBOLA","CC_CONIC_TANGENT","CC_AREA"],
-    "conditionKeys": []
+    "conditionKeys": [],
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
