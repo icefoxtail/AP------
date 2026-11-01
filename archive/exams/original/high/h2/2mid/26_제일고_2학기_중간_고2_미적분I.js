@@ -41,7 +41,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_미적분I/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 함수 f의 그래프에서 x가 오른쪽에서 -2에, 왼쪽에서 0에 가까워질 때 함수값이 -2로 다가가고, x=1에서 채운 점 (1,2)가 있음을 화살표와 점선으로 보여 준다.",
+    "solutionImageCaption": "x→0-일 때 -2, f(1)=2, x→-2+일 때 -2이므로 합은 -2이고 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -365,7 +369,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_미적분I/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=f(x)와 직선 y=x를 그리고, x축 위 a, b에서 점선을 올려 x=a에서는 곡선이 직선 아래, x=b에서는 두 그래프가 만나는 모양을 보여 준다.",
+    "solutionImageCaption": "x=a에서 곡선이 직선 아래에 있고(f(a)<a), x=b에서 곡선과 직선이 만나므로(f(b)=b) 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -405,7 +413,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_미적분I/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: y=-x²+2x+3의 그래프에 꼭짓점 (1,4)와 직선 y=-5 위의 두 점 (-2,-5), (4,-5)를 표시했다.",
+    "solutionImageCaption": "a=4일 때 구간 [-2,4]에서 최댓값 4, 최솟값 -5로 차가 9이다. 따라서 a의 최댓값은 4(정답 ⑤).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -485,7 +497,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_미적분I/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: ㄴ y=|x|와 ㄹ y=|x|-x의 그래프가 모두 원점에서 꺾이고, 좌우 기울기가 각각 -1, 1과 -2, 0임을 두 패널로 보여 준다.",
+    "solutionImageCaption": "연속이지만 미분가능하지 않은 것은 ㄴ, ㄹ이고 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -645,7 +661,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_미적분I/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: g(m)이 m<-2에서 2, m=-2에서 1, -2<m≤-1에서 0, m>-1에서 1인 계단 그래프이고 m=-2, m=-1에서 불연속임을 점선으로 보여 준다.",
+    "solutionImageCaption": "h(x)=(x+2)(x+1)이므로 h(3)=20이고 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -768,7 +788,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_미적분I/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: t=1을 예로 든 y=x²-2, y=tx 그래프에서 교점 P₁(2,2), P₂(-1,-1), 수직선과 y축의 교점 Q₁(0,4), Q₂(0,-2), 삼각형 OP₁Q₁, OP₂Q₂를 보인다.",
+    "solutionImageCaption": "예: t=1. S₁-S₂=½(t²+1)√(t²+8)이고 t→0+이면 √2(정답 ⑤).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -836,7 +860,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_미적분I/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: f(x)=x³-4x²+5x-7의 극대점 (1,-5)와 극소점 (5/3,-139/27)이 모두 x축 아래에 있어 x축과 한 번만 만나는 모양이다.",
+    "solutionImageCaption": "g가 실근을 가지면 안 되므로 a²<48이고, 정수 a의 최댓값은 6.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,

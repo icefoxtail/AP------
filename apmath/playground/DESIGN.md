@@ -228,7 +228,7 @@ Pretendard는 CDN에서 불러오고(`index.html:11` 등 페이지마다 `<link>
 ### Named Rules
 **The Tabular Number Rule.** 바뀌는 숫자(실시간 값, 슬라이더 값, 눈금)는 `font-variant-numeric: tabular-nums`로 자릿수가 움직이지 않게 한다.
 
-**The No-Tiny-Text Rule (확정 2026-11-01).** 학생이 읽는 글자는 12px 아래로 내리지 않는다. 그래서 `--fs-2xs`를 11px에서 12px로 올렸다(수업 모드는 그대로 12.5px). 정답 이름표·질문 머리·값 이름·조작 힌트가 이 값을 쓴다. (`apl-hub.css`에 직접 적힌 11px 두 곳, 장면 칩 `.hub-scenes`와 지하철 노선도 `.col-s`는 아직 남아 있다.)
+**The No-Tiny-Text Rule (확정 2026-11-01).** 학생이 읽는 글자는 12px 아래로 내리지 않는다. 그래서 `--fs-2xs`를 11px에서 12px로 올렸다(수업 모드는 그대로 12.5px). 정답 이름표·질문 머리·값 이름·조작 힌트가 이 값을 쓴다. 허브의 장면 칩 `.hub-scenes`와 지하철 노선도 `.col-s`도 같은 값을 쓴다(2026-11-01 해결).
 
 **The Contrast Rule (WCAG 2.2 AA, 확정 2026-11-01).** 본문 글자는 모든 바탕(`--bg`·`--panel`·`--card`·`--card-2`) 위에서 4.5:1 이상이다. `--text-3`(힌트색)을 올려 맞췄다. 종이 `#7c8680` → `#646e68`: bg 4.60 · panel 5.06 · card 5.29 · card-2 4.76. 칠판 `#6e827a` → `#7e9089`: bg 5.71 · panel 5.32 · card 4.97 · card-2 4.59. `--text`·`--text-2`는 이미 7:1 이상이다. 수학 의미색 `--m-*`는 아직 이 기준으로 검사하지 않았다.
 
