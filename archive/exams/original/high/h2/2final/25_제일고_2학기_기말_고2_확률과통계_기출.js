@@ -157,7 +157,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "모집단의 평균은 $50$, 분산은 $64$이다.\n크기가 $8$인 표본의 표본평균에 대하여\n$E(\\overline X)=50$\n$V(\\overline X)=\\dfrac{64}{8}=8$이다.\n분산의 성질 $V(Y)=E(Y^2)-\\{E(Y)\\}^2$을 이용하면\n$E(\\overline X^2)=V(\\overline X)+\\{E(\\overline X)\\}^2$\n$=8+50^2=2508$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_확통_2기말.pdf"
@@ -222,7 +222,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "모집단의 평균은 $30$, 표준편차는 $\\sigma$이고 표본의 크기는 $16$이다.\n따라서 표본평균 $\\overline X$에 대하여\n$E(\\overline X)=30$\n$\\sigma_{\\overline X}=\\dfrac{\\sigma}{\\sqrt{16}}=\\dfrac{\\sigma}{4}$이다.\n주어진 확률을 표준화하면\n$P(30\\le\\overline X\\le36)$\n$=P\\left(0\\le Z\\le\\dfrac{36-30}{\\sigma/4}\\right)$\n$=P\\left(0\\le Z\\le\\dfrac{24}{\\sigma}\\right)=0.4772$이다.\n표에서 $P(0\\le Z\\le2)=0.4772$이므로\n$\\dfrac{24}{\\sigma}=2$, 즉 $\\sigma=12$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_확통_2기말.pdf"
@@ -391,7 +391,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "모표준편차가 $\\sigma$, 표본의 크기가 $n$, 신뢰도에 따른 양의 신뢰상수가 $z$일 때 신뢰구간의 길이는\n$L=b-a=2z\\dfrac{\\sigma}{\\sqrt n}$이다.\n\nㄱ. 표본의 크기 $n$이 일정하면 신뢰도가 높아질수록 $z$가 커진다.\n따라서 $L$은 커지므로 ㄱ은 거짓이다.\n\nㄴ. 신뢰도가 일정하면 $z$는 일정하다.\n$n$이 커지면 $\\sqrt n$이 커지므로 $L$은 작아진다. 따라서 ㄴ은 참이다.\n\nㄷ. $L$이 일정하려면 $\\dfrac z{\\sqrt n}$이 일정해야 한다.\n신뢰도가 높아져 $z$가 커지면 $\\sqrt n$도 커져야 하므로 $n$은 커진다. 따라서 ㄷ은 참이다.\n\n옳은 것은 ㄴ, ㄷ이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "sourcePdf": "2025_제일고2_확통_2기말.pdf"
@@ -423,7 +423,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "95% 신뢰구간의 중심이 표본평균이므로\n$\\overline x=\\dfrac{40.2+59.8}{2}=50$이다.\n오차한계는 $59.8-50=9.8$이다.\n신뢰도 95%에 대응하는 신뢰상수는 $1.96$이고 $n=9$이므로\n$1.96\\cdot\\dfrac{\\sigma}{\\sqrt9}=9.8$\n$\\dfrac{\\sigma}{3}=5$이다.\n\n같은 표본으로 신뢰도를 99%로 높이면 신뢰상수는 $2.58$이다.\n새 오차한계는\n$2.58\\cdot\\dfrac{\\sigma}{3}=2.58\\cdot5=12.9$이다.\n따라서 신뢰구간은\n$50-12.9\\le m\\le50+12.9$\n$37.1\\le m\\le62.9$이다.\n이 구간에 속하는 자연수는 $38,39,\\ldots,62$이므로\n$62-38+1=25$개이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "sourcePdf": "2025_제일고2_확통_2기말.pdf"
@@ -522,7 +522,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "한 제품의 길이 $X$는 평균 $m$, 표준편차 $4$인 정규분포를 따른다.\n$P(m\\le X\\le a)=P\\left(0\\le Z\\le\\dfrac{a-m}{4}\\right)=0.3413$이다.\n표에서 $P(0\\le Z\\le1)=0.3413$이므로\n$\\dfrac{a-m}{4}=1$\n$a=m+4$이다.\n\n표본의 크기가 $16$이므로 표본평균 $\\overline X$는\n$E(\\overline X)=m$\n$\\sigma_{\\overline X}=\\dfrac4{\\sqrt{16}}=1$이다.\n$a-2=m+2$이므로\n$P(\\overline X\\ge a-2)=P(\\overline X\\ge m+2)$\n$=P\\left(Z\\ge\\dfrac{m+2-m}{1}\\right)$\n$=P(Z\\ge2)=0.5-0.4772=0.0228$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_확통_2기말.pdf"
@@ -555,7 +555,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "신뢰구간의 길이는 신뢰상수를 $z$라 할 때\n$L=2z\\dfrac{\\sigma}{\\sqrt n}$이다.\n현재 $\\sigma=10$, $n=400$이므로\n$L=2z\\cdot\\dfrac{10}{20}=z$이다.\n\n신뢰도 95%에 대해서는 표에서 $z=2$이므로 $l=2$이다.\n다른 신뢰도의 구간 길이가 $\\dfrac34l$이므로\n$L_a=\\dfrac34\\cdot2=1.5$이다.\n따라서 새로운 신뢰상수는 $z_a=1.5$이다.\n표에서 $P(0\\le Z\\le1.5)=0.430$이므로\n$a\\%=P(-1.5\\le Z\\le1.5)$\n$=2\\cdot0.430=0.860$이다.\n따라서 $a=86$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "sourcePdf": "2025_제일고2_확통_2기말.pdf"
@@ -620,7 +620,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "정규분포는 평균을 기준으로 좌우 대칭이다.\n$P(X\\ge4.5)=\\dfrac12$이므로 모집단 평균은\n$m=4.5$이다.\n\n$P(X\\le5)+P(Z\\le-1)=1$이고\n$P(Z\\le-1)=0.5-0.3413=0.1587$이므로\n$P(X\\le5)=1-0.1587=0.8413$이다.\n또 $P(Z\\le1)=0.8413$이므로 모집단 표준편차 $\\sigma$는\n$\\dfrac{5-4.5}{\\sigma}=1$\n$\\sigma=0.5$이다.\n\n25마리의 몸무게의 표본평균 $\\overline X$는\n$E(\\overline X)=4.5$\n$\\sigma_{\\overline X}=\\dfrac{0.5}{\\sqrt{25}}=0.1$이다.\n따라서\n$P(\\overline X\\ge4.6)=P\\left(Z\\ge\\dfrac{4.6-4.5}{0.1}\\right)$\n$=P(Z\\ge1)=0.5-0.3413=0.1587$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_확통_2기말.pdf"
@@ -652,7 +652,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "신뢰구간의 길이는 신뢰상수 $z$와 표본 크기 $n$에 대해\n$L=2z\\dfrac{\\sigma}{\\sqrt n}$이다.\n문제의 표에서 신뢰도 95%는 $z=2$, 99%는 $z=2.5$이므로\n$l_1=2\\cdot2\\cdot\\dfrac{\\sigma}{\\sqrt{n_1}}$\n$l_2=2\\cdot2.5\\cdot\\dfrac{\\sigma}{\\sqrt{n_2}}$이다.\n두 길이를 나누면\n$\\dfrac{l_1}{l_2}=\\dfrac{2}{2.5}\\sqrt{\\dfrac{n_2}{n_1}}$이다.\n$\\dfrac{n_2}{n_1}=25$이므로\n$\\dfrac{l_1}{l_2}=\\dfrac45\\cdot\\sqrt{25}=\\dfrac45\\cdot5=4$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "sourcePdf": "2025_제일고2_확통_2기말.pdf"
@@ -734,7 +734,7 @@ window.questionBank = [
     "answer": "54",
     "solution": "신뢰도 $99\\%$에 대응하는 신뢰상수는 문제의 표에 의해 $3$이다.\n첫 표본 크기가 $36$이므로 오차한계는\n$3\\cdot\\dfrac{\\sigma}{\\sqrt{36}}=\\dfrac{\\sigma}{2}$이다.\n둘째 표본 크기가 $81$이므로 오차한계는\n$3\\cdot\\dfrac{\\sigma}{\\sqrt{81}}=\\dfrac{\\sigma}{3}$이다.\n\n두 신뢰구간의 상한은 모두 $37$이므로\n$\\overline x+\\dfrac{\\sigma}{2}=37$ ①\n$\\overline x+2+\\dfrac{\\sigma}{3}=37$ ②\n가 성립한다.\n①에서 ②를 빼면\n$\\dfrac{\\sigma}{2}-\\dfrac{\\sigma}{3}=2$\n$\\dfrac{\\sigma}{6}=2$\n$\\sigma=12$이다.\n\n①에 대입하여\n$\\overline x=37-\\dfrac{12}{2}=31$이다.\n따라서 첫째 구간의 하한은\n$a=\\overline x-\\dfrac{\\sigma}{2}=31-6=25$이다.\n\n둘째 표본평균은 $\\overline x+2=33$이고 오차한계는 $\\dfrac{12}{3}=4$이므로\n$b=33-4=29$이다.\n따라서 $a+b=25+29=54$이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "sourcePdf": "2025_제일고2_확통_2기말.pdf"
