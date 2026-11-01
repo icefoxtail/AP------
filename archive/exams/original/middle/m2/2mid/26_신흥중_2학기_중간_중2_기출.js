@@ -30,7 +30,11 @@ window.questionBank = [
     ],
     "answer": "3",
     "solution": "이등분선이므로 $\\angle A=2\\times40^\\circ=80^\\circ$이다.\n$\\overline{AB}=\\overline{AC}$이므로 두 밑각은 같다. 따라서 $\\angle C=(180^\\circ-80^\\circ)\\div2=50^\\circ$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q01.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q01.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC에서 꼭지각 A가 80°이고 두 밑각 B, C가 같음을 호 표시로 보여 주는 그림. ∠C=50°이다. 색: 파란색 AB=AC, 주황색 두 밑각 B·C, 초록색 ∠A의 이등분으로 나뉜 각.",
+    "solutionImageCaption": "꼭지각 ∠A=80°이고 두 밑각이 같으므로 ∠C=50°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -61,7 +65,11 @@ window.questionBank = [
     ],
     "answer": "5",
     "solution": "닮음인 두 사각형의 대응하는 변은 $AB\\leftrightarrow EF$, $BC\\leftrightarrow FG$이다.\n$AB:EF=8:12=2:3$이므로 $BC:FG=2:3$이다.\n$12:FG=2:3$에서 $FG=18$cm이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q02.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q02.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 닮은 두 사각형 ABCD와 EFGH를 나란히 놓고, 대응하는 변 AB와 EF는 파란색, BC와 FG는 주황색으로 같은 색끼리 표시한 그림. 닮음비는 2:3이고 FG=18cm이다.",
+    "solutionImageCaption": "대응변의 비 AB:EF=8:12=2:3에서 FG=18cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -120,7 +128,11 @@ window.questionBank = [
     ],
     "answer": "1",
     "solution": "직사각형의 두 대각선은 길이가 같고 서로를 이등분한다.\n$BD=10$cm이므로 $OA=OB=5$cm이고, $AB=DC=6$cm이다.\n따라서 $\\triangle OAB$의 둘레는 $5+5+6=16$cm이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q04.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q04.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD의 두 대각선이 만나는 점 O에서 OA, OB, OC, OD가 모두 같고 OA=OB=5cm, AB=6cm인 삼각형 OAB를 색칠한 그림. 둘레는 16cm이다. 색: 파란색으로 OA=OB=OC=OD.",
+    "solutionImageCaption": "△OAB에서 OA=OB=5cm, AB=6cm이므로 둘레는 16cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -151,7 +163,11 @@ window.questionBank = [
     ],
     "answer": "3",
     "solution": "삼각형의 세 내각의 합은 $180^\\circ$이므로\n$\\angle A=180^\\circ-(50^\\circ+65^\\circ)=65^\\circ$이다.\n$\\angle A=\\angle C=65^\\circ$이므로 두 각의 맞은편 변인 $BC$, $AB$의 길이는 같다.\n그림의 길이를 대입하면 $x+6=2x+3$이므로 $x=3$이다.\n$2x+3$과 $x+6$은 모두 $9$로 같아 조건을 만족한다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q05.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q05.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠B=50°, ∠A=∠C=65°인 삼각형 ABC에서 AB와 BC에 같은 길이 표시를 하고 두 변의 길이를 모두 9로 나타낸 그림. x=3이다. 색: 파란색 AB=BC, 주황색 ∠A=∠C.",
+    "solutionImageCaption": "∠A=∠C=65°이므로 AB=BC이고, x+6=2x+3에서 x=3이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -182,7 +198,11 @@ window.questionBank = [
     ],
     "answer": "5",
     "solution": "내심 $I$는 삼각형의 세 내각의 이등분선이 만나는 점이다. 따라서 $BI$는 $\\angle B$를, $CI$는 $\\angle C$를 각각 이등분한다.\n그림에서 $\\angle ABI=35^\\circ$이므로 $\\angle B=2\\times35^\\circ=70^\\circ$이다.\n또 $\\angle BCI=15^\\circ$이므로 $\\angle C=2\\times15^\\circ=30^\\circ$이다.\n이제 삼각형의 내각의 합을 이용하면\n$\\angle BAC=180^\\circ-(70^\\circ+30^\\circ)=80^\\circ$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q06.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q06.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 내심 I를 가진 삼각형 ABC에서 BI, CI가 각 B, 각 C를 이등분하고 ∠B=70°, ∠C=30°를 나타낸 그림. ∠BAC=80°이다. 색: 파란색 ∠ABI=∠IBC, 주황색 ∠BCI=∠ICA.",
+    "solutionImageCaption": "∠B=70°, ∠C=30°이므로 ∠BAC=180°-(70°+30°)=80°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -213,7 +233,11 @@ window.questionBank = [
     ],
     "answer": "1",
     "solution": "외심 $O$에서는 세 꼭짓점까지의 거리가 같으므로 $OA=OB=OC$이다.\n먼저 $OA=OC$이므로 $\\triangle AOC$는 이등변삼각형이고\n$\\angle ACO=\\angle OAC=35^\\circ$이다.\n또 $OB=OC$이므로 $\\triangle BOC$도 이등변삼각형이고\n$\\angle BCO=\\angle OBC=20^\\circ$이다.\n그림에서 선분 $CO$가 $\\angle ACB$의 내부에 있으므로\n$\\angle ACB=\\angle ACO+\\angle OCB=35^\\circ+20^\\circ=55^\\circ$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q07.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q07.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 외심 O에서 OA, OB, OC가 같고, 이등변삼각형 AOC와 BOC의 밑각이 ∠OAC=∠ACO=35°, ∠OBC=∠BCO=20°임을 보여 주는 그림. ∠C=55°이다. 색: 파란색 OA=OB=OC, 주황색 ∠OAC=∠ACO, 초록색 ∠OBC=∠BCO.",
+    "solutionImageCaption": "∠ACO=35°, ∠BCO=20°이므로 ∠C=55°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -244,7 +268,11 @@ window.questionBank = [
     ],
     "answer": "2",
     "solution": "그림에서 $AB=16$cm, $BD=10$cm, $DC=14$cm이고 $\\angle ABC=90^\\circ$이다.\n점 B, D, C가 한 직선 위에 있으므로 $BC=BD+DC=10+14=24$cm이다.\n$AD\\parallel EC$이므로 점 E와 C는 선분 AD에 평행한 직선 위에 있다. 따라서 같은 밑변 AD를 갖는 두 삼각형 ADE와 ADC는 높이가 같아 넓이가 같다.\n사각형 ABDE를 $\\triangle ABD$와 $\\triangle ADE$로 나누면 넓이는 $[ABD]+[ADE]=[ABD]+[ADC]=[ABC]$이다.\n$\\angle ABC=90^\\circ$이므로 $[ABC]=\\frac12\\times AB\\times BC=\\frac12\\times16\\times24=192\\mathrm{cm}^2$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q08.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q08.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 사다리꼴 ADCE(AD∥EC)에서 두 대각선 AC, DE가 점 P에서 만나고, 같은 색으로 칠한 두 삼각형 APE와 DPC의 넓이가 같음을 보여 주는 그림. AB=16cm, BD=10cm, DC=14cm이며 사각형 ABDE의 넓이는 △ABC와 같은 192cm²이다. 같은 넓이의 두 삼각형은 주황색, 평행한 두 변 AD와 EC는 초록색으로 표시했다.",
+    "solutionImageCaption": "AD∥EC이므로 △APE=△DPC이고, 사각형 ABDE=△ABC=½×16×24=192cm²이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -275,7 +303,11 @@ window.questionBank = [
     ],
     "answer": "2",
     "solution": "마름모에서는 두 대각선이 서로를 수직이등분한다.\n따라서 그림에서 $AO=OC=12\\mathrm{cm}$, $BO=OD=20\\mathrm{cm}$이고 $BD=40\\mathrm{cm}$이다.\n$AO\\perp BD$이므로 밑변을 $BD$로 잡은 $\\triangle ABD$의 높이는 $AO=12\\mathrm{cm}$이다.\n따라서 $[ABD]=\\frac12\\times40\\times12=240\\mathrm{cm}^2$이다.\n점 $E$는 $AB$ 위에 있고 $AE:EB=3:2$이므로 $BE:BA=2:5$이다.\n$\\triangle EBD$와 $\\triangle ABD$는 밑변 $BD$가 같고, $E$가 $BA$의 $\\frac25$ 지점에 있으므로 높이도 $\\frac25$배이다.\n따라서 $[EBD]=240\\times\\frac25=96\\mathrm{cm}^2$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q09.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q09.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 마름모 ABCD에서 두 대각선과 직각, BD=40cm와 AO=12cm로 △ABD=240cm²를 보이고, 오른쪽 그림에서 AE:EB=3:2인 점 E로 △EBD를 칠해 보인다. 색: 왼쪽 △ABD는 파란색, 오른쪽 △EBD는 주황색.",
+    "solutionImageCaption": "△EBD의 높이는 △ABD의 2/5이므로 240×2/5=96cm²이다. 정답 ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -306,7 +338,11 @@ window.questionBank = [
     ],
     "answer": "3",
     "solution": "$BE$와 $AD$의 교점을 $F$라 하자.\n평행사변형이므로 $AD\\parallel BC$이고, 엇각에 의하여 $\\angle AFB=\\angle FBC$이다.\n한편 $BF$는 $\\angle ABC$의 이등분선이므로 $\\angle ABF=\\angle FBC$이다.\n따라서 $\\angle ABF=\\angle AFB$인 $\\triangle ABF$에서 $AF=AB=12\\mathrm{cm}$이다.\n또 $AD=BC=18\\mathrm{cm}$이므로 $FD=18-12=6\\mathrm{cm}$이다.\n이제 $AB\\parallel DE$, $A,F,D$는 한 직선 위, $B,F,E$는 한 직선 위이므로\n$\\triangle ABF\\sim\\triangle DEF$이다.\n대응하는 변의 비에서 $AB:DE=AF:FD=12:6=2:1$이다.\n따라서 $DE=12\\times\\frac12=6\\mathrm{cm}$이고, 정답은 ③이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q10.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q10.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 ∠B의 이등분선이 AD와 만나는 점 F로 AF=12cm, FD=6cm가 정해지고, 닮은 삼각형 ABF와 DEF를 색으로 구분해 보인다. 색: △ABF는 파란색, △DEF는 주황색, 같은 크기의 세 각은 초록색.",
+    "solutionImageCaption": "△ABF∽△DEF이고 닮음비가 2:1이므로 DE=6cm이다. 정답 ③",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -368,7 +404,11 @@ window.questionBank = [
     ],
     "answer": "4",
     "solution": "구하는 각을 $x=\\angle ACD$라고 하자. 그림에서 $C,B,A$는 한 직선 위에 있고 $C,D,E$도 한 직선 위에 있다.\n$BC=BD$이므로 $\\triangle BCD$는 이등변삼각형이다. 따라서 $\\angle BCD=\\angle BDC=x$이다.\n$\\angle CBD=180^\\circ-2x$이고, $BA$와 $BC$가 반대 방향이므로 $\\angle ABD=2x$이다.\n또 $AD=DB$이므로 $\\triangle ADB$도 이등변삼각형이고 $\\angle BAD=\\angle ABD=2x$이다.\n그림에서 $\\angle ADE=75^\\circ$이며 $DC$와 $DE$가 반대 방향이므로\n$\\angle ADC=180^\\circ-75^\\circ=105^\\circ$이다.\n삼각형 $ACD$의 내각의 합을 적용하면 $2x+x+105^\\circ=180^\\circ$이다.\n따라서 $3x=75^\\circ$, $x=25^\\circ$이므로 정답은 ④이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q12.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q12.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: AD=DB=BC인 그림에서 이등변삼각형 BCD의 밑각 x, 이등변삼각형 ADB의 밑각 2x와 ∠ADC=105°를 호로 표시해 삼각형 ACD의 내각의 합을 보인다. 색: 파란색 BC=BD=DA, 주황색 두 각 x, 초록색 두 각 2x.",
+    "solutionImageCaption": "2x+x+105°=180°에서 x=25°이므로 ∠ACD=25°이다. 정답 ④",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -399,7 +439,11 @@ window.questionBank = [
     ],
     "answer": "2",
     "solution": "평행사변형의 마주 보는 두 변의 길이는 같다. 따라서 $AD=BC=24\\mathrm{cm}$, $AB=CD=18\\mathrm{cm}$이다.\n$AD\\parallel BC$이고 $AE$는 $\\angle DAB$의 이등분선이므로\n$\\angle BAE=\\angle EAD=\\angle AEB$이다. 따라서 $\\triangle ABE$는 이등변삼각형이고 $BE=AB=18\\mathrm{cm}$이다.\n같은 방법으로 $DF$가 $\\angle ADC$의 이등분선이므로 $CF=CD=18\\mathrm{cm}$이다.\n$BF=BC-CF=24-18=6\\mathrm{cm}$이다.\n그림에서 $B,F,E,C$의 순서로 놓였으므로 $FE=BE-BF=18-6=12\\mathrm{cm}$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q13.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q13.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 각의 이등분선 AE, DF가 만드는 같은 크기의 각을 표시하고, BC 아래에 BE=18cm, BF=6cm, CF=18cm를 치수선으로 나타낸다. 색: 파란색 52.5° 세 각, 주황색 37.5° 세 각.",
+    "solutionImageCaption": "B, F, E, C 순서이므로 FE=BE-BF=18-6=12cm이다. 정답 ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -458,7 +502,11 @@ window.questionBank = [
       "$AB=6$cm, $DC=6$cm, $\\overline{AD}\\parallel\\overline{BC}$"
     ],
     "answer": "5",
-    "solution": "반드시 평행사변형이 되려면 두 쌍의 대변이 평행하거나, 두 쌍의 대변의 길이가 각각 같거나, 두 대각선이 서로를 이등분하는 등 충분한 조건이 있어야 한다.\n① $AD\\parallel BC$, $AB\\parallel DC$: 두 쌍의 대변이 평행하므로 평행사변형이다.\n② 맞은편 각이 각각 $120^\\circ$, $60^\\circ$로 같으므로 평행사변형이다.\n③ $AB=CD=8$, $BC=DA=11$: 마주 보는 변의 길이가 각각 같으므로 평행사변형이다.\n④ $OA=OC=4$, $OB=OD=5$: 두 대각선이 교점에서 각각 이등분되므로 평행사변형이다.\n⑤ $AD\\parallel BC$이고 $AB=DC$이더라도, 두 쌍이 모두 평행하다는 보장은 없다. 실제로 양 옆변이 같은 이등변사다리꼴도 이 조건을 만족한다.\n따라서 반드시 평행사변형이라고 할 수 없는 것은 ⑤이다."
+    "solution": "반드시 평행사변형이 되려면 두 쌍의 대변이 평행하거나, 두 쌍의 대변의 길이가 각각 같거나, 두 대각선이 서로를 이등분하는 등 충분한 조건이 있어야 한다.\n① $AD\\parallel BC$, $AB\\parallel DC$: 두 쌍의 대변이 평행하므로 평행사변형이다.\n② 맞은편 각이 각각 $120^\\circ$, $60^\\circ$로 같으므로 평행사변형이다.\n③ $AB=CD=8$, $BC=DA=11$: 마주 보는 변의 길이가 각각 같으므로 평행사변형이다.\n④ $OA=OC=4$, $OB=OD=5$: 두 대각선이 교점에서 각각 이등분되므로 평행사변형이다.\n⑤ $AD\\parallel BC$이고 $AB=DC$이더라도, 두 쌍이 모두 평행하다는 보장은 없다. 실제로 양 옆변이 같은 이등변사다리꼴도 이 조건을 만족한다.\n따라서 반드시 평행사변형이라고 할 수 없는 것은 ⑤이다.",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: AD∥BC이고 AB=DC=6cm이지만 AB와 DC는 평행하지 않은 등변사다리꼴 ABCD로, ⑤ 조건의 반례를 보여 준다. 색: 평행한 AD와 BC는 파란색, 길이가 같은 AB와 DC는 주황색.",
+    "solutionImageCaption": "⑤의 조건만으로는 이 등변사다리꼴 같은 반례가 있으므로 반드시 평행사변형이라고 할 수 없다. 정답 ⑤",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -517,7 +565,11 @@ window.questionBank = [
     ],
     "answer": "2",
     "solution": "세 내각의 비 $\\angle A:\\angle B:\\angle C=2:3:4$에서 비의 합은 $9$이다.\n따라서 $\\angle A=180^\\circ\\times\\frac29=40^\\circ$이다.\n내심 $I$이므로 $BI$와 $CI$는 각각 $\\angle B$, $\\angle C$의 이등분선이다.\n$\\triangle BIC$에서 $\\angle IBC=\\frac12\\angle B$, $\\angle ICB=\\frac12\\angle C$이므로\n$\\angle BIC=180^\\circ-\\frac12(\\angle B+\\angle C)$이다.\n$\\angle B+\\angle C=180^\\circ-\\angle A=140^\\circ$이므로\n$\\angle BIC=180^\\circ-70^\\circ=110^\\circ$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q17.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q17.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 ∠A=40°를 표시하고, 내심 I를 지나는 BI와 CI가 ∠B와 ∠C를 각각 이등분함을 같은 개수의 호로 보여 준다. 색: 파란색 ∠ABI=∠IBC, 주황색 ∠ACI=∠ICB.",
+    "solutionImageCaption": "∠IBC+∠ICB=70°이므로 ∠BIC=180°-70°=110°이다. 정답 ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -548,7 +600,11 @@ window.questionBank = [
     ],
     "answer": "3",
     "solution": "외심 $O$이므로 $OA=OB=OC$이다. 그림에서 $O$는 변 $BC$의 아래쪽에 있다.\n$\\angle OBC=\\angle BCO=t$라고 하자. 이는 $OB=OC$인 $\\triangle OBC$의 밑각이 같기 때문이다.\n$OA=OB$이므로 $\\triangle AOB$에서 $\\angle BAO=\\angle ABO=45^\\circ+t$이다.\n또 $OA=OC$이므로 $\\triangle AOC$에서 $\\angle OAC=\\angle ACO=30^\\circ+t$이다.\n$\\angle BAC=180^\\circ-45^\\circ-30^\\circ=105^\\circ$이고, 그림에서 $AO$가 $\\angle BAC$를 나누므로\n$(45^\\circ+t)+(30^\\circ+t)=105^\\circ$이다.\n따라서 $2t=30^\\circ$, $t=15^\\circ$이다.\n$\\triangle BOC$의 내각의 합에서 $\\angle BOC=180^\\circ-2\\times15^\\circ=150^\\circ$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q18.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q18.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 외심 O에서 OA=OB=OC를 표시하고, 이등변삼각형 OBC의 밑각 15°와 ∠BAO=60°, ∠OAC=45°를 호로 나타낸다. 색: 파란색 OA=OB=OC, 주황색 두 밑각 15°. 오른쪽과 아래에 밑각 ∠OBC, ∠OCB를 따로 크게 끌어내 같은 주황색 호로 보인다.",
+    "solutionImageCaption": "△BOC에서 ∠BOC=180°-2×15°=150°이다. 정답 ③",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -579,7 +635,11 @@ window.questionBank = [
     ],
     "answer": "1",
     "solution": "그림의 물은 원뿔의 꼭짓점을 밑으로 한 작은 원뿔 모양이다.\n물이 찬 높이가 전체 높이의 $\\frac13$이므로 작은 원뿔과 전체 원뿔의 닮음비는 $1:3$이다.\n닮은 입체도형의 부피의 비는 닮음비의 세제곱이므로 $1^3:3^3=1:27$이다.\n즉 6분 동안 채운 물은 전체 부피의 $\\frac1{27}$이다.\n물을 일정한 부피씩 채우므로 전체를 가득 채우는 시간은 $6\\times27=162$분이다.\n문제는 처음부터 걸리는 시간이 아니라 **앞으로 더 필요한 시간**을 묻고 있으므로 $162-6=156$분이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q19.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q19.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점을 아래로 한 원뿔 모양 그릇에 전체 높이의 1/3까지 물이 찬 모습. 물이 찬 부분(작은 원뿔)과 그릇 전체의 높이를 1과 3으로 나타냈다.",
+    "solutionImageCaption": "닮음비 1:3이므로 부피비는 1:27이다. 6분 동안 채운 물이 전체의 1/27이므로 가득 채우는 데 6×27=162분이 걸려 앞으로 162-6=156분이 더 필요하다(①).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -610,7 +670,11 @@ window.questionBank = [
     ],
     "answer": "2",
     "solution": "그림에서 $AF=18\\mathrm{cm}$, $CG=12\\mathrm{cm}$이고 $AF\\perp BE$, $CG\\perp BE$이다.\n정사각형이므로 $AB=BC$이고 $\\angle ABC=90^\\circ$이다.\n직각삼각형 $ABF$와 $BCG$는 빗변 $AB=BC$이고, $\\angle ABF=\\angle BCG$이므로 닮음이다. 닮음비가 $1:1$이어서 합동이다.\n대응변에 따라 $BF=CG=12\\mathrm{cm}$, $BG=AF=18\\mathrm{cm}$이다.\n점 $B,F,G$가 차례로 놓이므로 $FG=BG-BF=18-12=6\\mathrm{cm}$이다.\n$AF$는 밑변 $FG$에 수직이므로 $\\triangle AFG$의 넓이는\n$\\frac12\\times FG\\times AF=\\frac12\\times6\\times18=54\\mathrm{cm}^2$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q20.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q20.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD 안에서 합동인 직각삼각형 ABF와 BCG를 같은 파란색으로, 구하는 삼각형 AFG를 주황색으로 칠하고 크기가 같은 ∠ABF와 ∠BCG의 호를 초록색으로 표시하고 CG=12cm를 적었다. 위쪽에는 AF를 펴서 AF=18cm를 점선 안내선과 함께 보였다. 오른쪽에는 BE 위의 점 B, F, G를 펴서 BF=12cm, FG=6cm, BG=18cm를 쌓아 보였다.",
+    "solutionImageCaption": "BF=CG=12cm, BG=AF=18cm이므로 FG=6cm이고 △AFG의 넓이는 ½×6×18=54cm²(②)이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -636,7 +700,11 @@ window.questionBank = [
     "choices": [],
     "answer": "$34^\\circ$",
     "solution": "점 $M$은 $BC$의 중점이므로 $BM=MC$이다. 따라서 $\\triangle ABM$과 $\\triangle ACM$은 밑변을 각각 $BM$, $MC$로 잡았을 때 높이가 같아 넓이가 같다.\n한편 $MD\\perp AB$, $ME\\perp AC$이므로 각각의 넓이는\n$[ABM]=\\frac12\\times AB\\times MD$, $[ACM]=\\frac12\\times AC\\times ME$이다.\n$MD=ME$이고 두 넓이가 같으므로 $AB=AC$이다. 따라서 $\\triangle ABC$는 이등변삼각형이고 $\\angle B=\\angle C$이다.\n그림에서 $\\angle A=68^\\circ$이므로 $\\angle B=\\angle C=\\frac{180^\\circ-68^\\circ}{2}=56^\\circ$이다.\n$D$가 $AB$ 위에 있으므로 $\\angle DBM=\\angle ABC=56^\\circ$이며, $MD\\perp AB$이므로 $\\angle BDM=90^\\circ$이다.\n따라서 $\\triangle BDM$에서 $\\angle BMD=180^\\circ-90^\\circ-56^\\circ=34^\\circ$이다.\n따라서 구하는 각의 크기는 $34^\\circ$이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q21.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q21.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=AC인 삼각형 ABC에서 중점 M, 수선의 발 D, E와 같은 길이 표시를 그렸고 ∠A=68°, ∠B=∠C=56°, ∠BDM=90°를 나타냈다. ∠BMD는 호로만 강조했다. △BDM과 △CEM은 같은 파란색, ∠B=∠C는 같은 주황색 호로 묶어 칠했다.",
+    "solutionImageCaption": "△BDM에서 ∠BMD=180°-90°-56°=34°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -662,7 +730,11 @@ window.questionBank = [
     "choices": [],
     "answer": "$35^\\circ$",
     "solution": "(1) 마름모 $ABCD$에서 $AB\\parallel CD$이므로 $AE\\parallel CF$이다. 또한 $AC$의 중점이 $O$이므로 $AO=CO$이다.\n$\\angle OAE=\\angle OCF$(엇각), $\\angle AOE=\\angle COF$(맞꼭지각)이므로 $\\triangle AOE\\cong\\triangle COF$이고 $OE=OF$이다.\n따라서 사각형 $AECF$의 두 대각선 $AC$, $EF$가 서로를 이등분하므로 $AECF$는 평행사변형이다.\n여기에 문제의 조건 $AC=EF$를 적용하면, 대각선의 길이가 같은 평행사변형이므로 $AECF$는 **직사각형**이다.\n(2) 직사각형에서 $\\angle AEC=90^\\circ$이다.\n또한 직사각형의 두 대각선은 길이가 같고, 변 $AE$를 기준으로 대칭인 각을 이루므로 $\\angle AEF=\\angle EAO=55^\\circ$이다.\n따라서 $\\angle CEF=\\angle AEC-\\angle AEF=90^\\circ-55^\\circ=35^\\circ$이다.\n따라서 구하는 각의 크기는 $35^\\circ$이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q22.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q22.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 마름모 ABCD에서 합동인 △AOE와 △COF를 같은 파란색으로 칠하고, 직사각형 AECF의 네 선분 OA=OC=OE=OF를 같은 초록색·같은 눈금으로 표시했다. 오른쪽에는 꼭짓점 E의 각을 크게 펴서 ∠AEC=90°, ∠AEO=55°(주황, ∠EAO=55°와 같은 색)와 호로만 강조한 ∠CEO를 보였다.",
+    "solutionImageCaption": "∠AEF=55°이고 ∠AEC=90°이므로 ∠CEF=90°-55°=35°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -688,6 +760,10 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $x+y$ / (2) $34^\\circ$",
     "solution": "(1) $I$는 $\\triangle ABO$의 내심이므로 $AI$가 $\\angle BAO$를 이등분한다.\n따라서 $\\angle BAI=\\angle IAO=y$이다.\n그림에서 $AI,AO,AC$가 차례로 놓이므로 $\\angle IAC=\\angle IAO+\\angle OAC=y+x$이다.\n(2) 외심 $O$이므로 $OA=OB$이고, $\\triangle AOB$의 두 밑각은 같다.\n$\\angle BAO=2y$이므로 $\\angle ABO=2y$, $\\angle AOB=180^\\circ-4y$이다.\n$AB$의 중점을 $M$이라 하면 $OA=OB$이므로 $OM$은 $AB$의 수직이등분선이자 $\\angle AOB$의 이등분선이다.\n$O'$도 $\\triangle ABO$의 외심이므로 $O'A=O'B=O'O$이다. 따라서 $O'$는 수직이등분선 $OM$ 위에 있다.\n$\\angle BOO'=\\frac12\\angle AOB=90^\\circ-2y$이고, $O'B=O'O$이므로 $\\angle OBO'=90^\\circ-2y$이다.\n그림의 각의 위치에 따라 $\\angle ABO'=\\angle ABO-\\angle OBO'=2y-(90^\\circ-2y)=4y-90^\\circ$이다.\n$O'A=O'B$이므로 $\\angle BAO'=\\angle ABO'=4y-90^\\circ$이다.\n또 $\\angle IAO'=\\angle BAO'-\\angle BAI=(4y-90^\\circ)-y=3y-90^\\circ$이다.\n$\\angle IAO'=12^\\circ$이므로 $3y-90^\\circ=12^\\circ$, 따라서 $y=34^\\circ$이다.\n따라서 (1) $x+y$, (2) $34^\\circ$이다.",
-    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q23.png"
+    "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q23.png",
+    "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: AC=BC인 삼각형 ABC와 점 O, O′, I를 그리고, 아래쪽에 꼭짓점 A에서 나온 반직선 AB, AI, AO′, AO, AC 사이의 각 y, 4y-90°, 3y-90°, 2y, x를 크게 나타냈다. OA=OB는 같은 파란색, CA=CB는 같은 주황색 선분으로, ∠BAI=∠IAO는 초록 호로 묶었다.",
+    "solutionImageCaption": "(1) ∠IAC=∠IAO+∠OAC=x+y이고, (2) 3y-90°=12°에서 y=34°이다.",
+    "solutionImageSize": "medium"
   }
 ];
