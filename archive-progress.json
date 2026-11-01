@@ -1,12 +1,12 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-01T20:09:35.238Z",
+  "updatedAt": "2026-11-01T20:12:54.223Z",
   "coverage": "GitHub PR/Actions only; Library/GPT completion not observed",
   "history": {
     "complete": false,
     "scope": "recent",
     "oldestObservedAt": "2026-10-31T04:35:30Z",
-    "seenRegistrationRuns": 23,
+    "seenRegistrationRuns": 22,
     "seenReleaseRuns": 24,
     "runScanIsPartial": true
   },
@@ -32144,7 +32144,6 @@
       "key": "release:41335907857:1:e65a443efc877a2fd361ed852b63a06d602b2708",
       "status": "unverified",
       "attempts": 3,
-      "reason": "증거 실행/차수/SHA 불일치",
       "run": {
         "id": 41335907857,
         "attempt": 1,
@@ -32155,13 +32154,13 @@
         "event": "unknown",
         "branch": "main"
       },
+      "reason": "증거 실행/차수/SHA 불일치",
       "nextRetryAt": "2026-11-01T20:29:29.889Z"
     },
     "release:41342751359:1:c7fbc4d8726061c50e4532a48c731bec3b15922f": {
       "key": "release:41342751359:1:c7fbc4d8726061c50e4532a48c731bec3b15922f",
       "status": "unverified",
       "attempts": 2,
-      "reason": "배포 진단 증거 없음",
       "run": {
         "id": 41342751359,
         "attempt": 1,
@@ -32172,14 +32171,13 @@
         "event": "unknown",
         "branch": "main"
       },
+      "reason": "배포 진단 증거 없음",
       "nextRetryAt": "2026-11-01T20:19:29.627Z"
     },
     "release:41335513280:1:5cb0767184b402c02d761617ab14458f5c0875c0": {
       "key": "release:41335513280:1:5cb0767184b402c02d761617ab14458f5c0875c0",
       "status": "partial",
-      "fileProofState": "retryable",
       "attempts": 3,
-      "verifiedAt": "2026-11-01T20:09:30.788Z",
       "run": {
         "id": 41335513280,
         "attempt": 1,
@@ -32200,6 +32198,8 @@
         "fileProofReason": "Pages ZIP 다운로드 실패",
         "exams": {}
       },
+      "fileProofState": "retryable",
+      "verifiedAt": "2026-11-01T20:09:30.788Z",
       "checkedExamIds": [
         "15_강남여고_2학기_중간_고2_기하와벡터_기출",
         "15_신흥중_2학기_기말_중3_수학",
@@ -144860,7 +144860,6 @@
       "key": "registration:41335764953:1:a42161f3122e45c8c72f40f3fa93294c556a9ee2",
       "status": "unverified",
       "attempts": 4,
-      "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 41335764953,
         "attempt": 1,
@@ -144871,6 +144870,7 @@
         "event": "push",
         "branch": "main"
       },
+      "reason": "현재 실행 차수 증거 없음",
       "retryExhausted": true
     },
     "registration:41325317289:1:365a279f8759038ca8dadf2b47728184e644005d": {
