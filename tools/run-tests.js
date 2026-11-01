@@ -274,6 +274,59 @@ const requiredCommands = [
   }
 ];
 
+// The canonical-projection build below regenerates committed artifacts
+// (archive2-catalog.json, archive2-canonical-input-manifest.json,
+// archive2-source-verification-index.json and its shard) from the checked-out
+// sources. Between a source-changing merge and the post-merge "sync
+// registration artifacts" bot commit, those committed files are stale, so the
+// run used to leave a dirty tree that could be committed by mistake. Record the
+// tree state first and put back whatever the run itself changed (tracked files
+// only; untracked outputs are only reported). APMATH_KEEP_TEST_OUTPUT=1 keeps
+// the regenerated files on purpose.
+function dirtyPaths() {
+  const out = spawnSync('git', ['status', '--porcelain', '-z', '--untracked-files=all'], {
+    cwd: root,
+    encoding: 'utf8',
+    maxBuffer: 64 * 1024 * 1024
+  });
+  if (out.status !== 0 || out.error) return null;
+  const entries = new Map();
+  const parts = out.stdout.split('\0').filter(Boolean);
+  for (let i = 0; i < parts.length; i += 1) {
+    const code = parts[i].slice(0, 2);
+    entries.set(parts[i].slice(3), code);
+    if (code[0] === 'R' || code[0] === 'C') i += 1;
+  }
+  return entries;
+}
+
+const dirtyBeforeRun = process.env.APMATH_KEEP_TEST_OUTPUT === '1' ? null : dirtyPaths();
+let restoredAfterRun = false;
+function restoreTestOutput() {
+  if (restoredAfterRun || !dirtyBeforeRun) return;
+  restoredAfterRun = true;
+  const after = dirtyPaths();
+  if (!after) return;
+  const tracked = [];
+  const untracked = [];
+  for (const [file, code] of after) {
+    if (dirtyBeforeRun.has(file)) continue;
+    (code === '??' ? untracked : tracked).push(file);
+  }
+  if (tracked.length > 0) {
+    spawnSync('git', ['checkout', '--', ...tracked], { cwd: root, stdio: 'inherit' });
+    console.log(`Restored ${tracked.length} tracked file(s) that the test run rewrote:`);
+    for (const file of tracked) console.log(`  RESTORED ${file}`);
+  }
+  if (untracked.length > 0) {
+    console.warn(`Test run left ${untracked.length} untracked file(s):`);
+    for (const file of untracked) console.warn(`  UNTRACKED ${file}`);
+  }
+}
+process.on('exit', restoreTestOutput);
+process.on('SIGINT', () => process.exit(130));
+process.on('SIGTERM', () => process.exit(143));
+
 // Source-verification tests exercise generated canonical artifacts. Build them
 // from the checked-out source tree so code-only pull requests do not depend on
 // already-committed shard outputs.
