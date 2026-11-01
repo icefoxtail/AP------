@@ -24,6 +24,6 @@
 
 - 금지: `npx impeccable install` (사용자 홈·프로젝트에 별도로 설치함).
 - 금지: `/impeccable hooks on` (훅이 `.claude/settings.local.json`에 설치됨. 훅은 이 저장소에서 쓰지 않는다. 이유: 클라우드 환경의 Stop/UserPromptSubmit 훅과 겹친다).
-- 금지: `init`, `document` (저장소 루트에 `PRODUCT.md`·`DESIGN.md`를 만들어 기존 디자인 규칙 문서와 중복된다).
+- 금지: `init`·`document`를 대상 지정 없이 쓰는 것. 현재 방침: PRODUCT.md는 저장소 루트 1개(AP Math 공통), DESIGN.md는 화면 폴더별(`apmath/playground/` 완료, 나머지 `archive/`, `apmath/`(APMS), `apmath/student/`는 아직). `document`는 반드시 대상 폴더 경로에 쓰게 지정할 것 — 지정하지 않으면 루트에 써서 화면들이 섞인다. 이유: 이 저장소는 화면마다 디자인이 달라 하나의 루트 DESIGN.md로는 맞지 않는다.
 - 엔진은 첫 실행 때 `~/.impeccable/bin`에 sha256(`scripts/engine-checksums.txt`) 검증 후 내려받는다. 네트워크가 필요하다.
 - 실행 결과·세션 파일은 저장소 루트 `.impeccable/`에 쓰이므로 `.gitignore`에 넣었다. 커밋하지 않는다.
