@@ -56,9 +56,10 @@
       if (cx.problem || st >= 4 || (!cx.review)) poly(b, abe, 'amber', 3, { dash: [10, 6], alpha: 0.9 });
       if (cx.problem) {
         const k = M.K;
-        if (k === 0) { aTag(b, [A, B, C], M.S1, 'sky'); aTag(b, [A, C, D], M.S2, 'sky'); T(b, mid(A, E), 'x', { dy: -16, size: 20, color: 'rose' }); }
-        else if (k === 1) { aTag(b, [A, C, D], M.S2, 'sky'); T(b, aceAt(M), 'x', { size: 20, color: 'rose' }); }
-        else { aTag(b, [A, B, C], M.S1, 'sky'); T(b, mid(A, E), `${M.tot}`, { dy: -16, size: 17, color: 'amber' }); aTag(b, [A, C, D], 'x', 'rose', 20); }
+        const cap = (str, col) => T(b, pt(M.L / 2 + 1, M.h1), str, { dy: 44, size: b.W < 560 ? 15 : 17, color: col, weight: 800 });
+        if (k === 0) { aTag(b, [A, B, C], M.S1, 'sky'); aTag(b, [A, C, D], M.S2, 'sky'); cap('△ABE의 넓이 = x', 'rose'); }
+        else if (k === 1) { aTag(b, [A, C, D], M.S2, 'sky'); cap('△ACE의 넓이 = x', 'rose'); }
+        else { aTag(b, [A, B, C], M.S1, 'sky'); aTag(b, [A, C, D], 'x', 'rose', 20); cap(`△ABE의 넓이 = ${M.tot}`, 'amber'); }
         dotsN(b, { A, B, C, D, E }, mid(A, C), { cens: { E: C, D: mid(A, C) } });
         return;
       }
