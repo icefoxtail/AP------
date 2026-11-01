@@ -16,7 +16,8 @@ export function playwright() {
 // (same-origin images, honoured on non-student pages such as archive/engine.html). Evidence keeps the unmodified urlPath.
 export function sameOriginExamImageUrl(url) {
   const text=String(url),hash=text.indexOf('#'),head=hash<0?text:text.slice(0,hash),tail=hash<0?'':text.slice(hash);
-  return head.replace(/([?&])assetBase=[^&]*&?/,'$1').replace(/[?&]$/,'')+(head.includes('?')?'&':'?')+'assetBase=off'+tail;
+  const clean=head.replace(/([?&])assetBase=[^&]*&?/,'$1').replace(/[?&]$/,'');
+  return clean+(clean.includes('?')?'&':'?')+'assetBase=off'+tail;
 }
 export function assertOutput(file) {
   const root=path.resolve(repoRoot,'.tmp/archive');
