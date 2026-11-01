@@ -33,7 +33,7 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
       'exam-render-executor': '20261029-sections-1',
       'question-image-readiness': '20261030-s11-1',
       'layout-authority': '20261009\\.1',
-      'screen-runtime-adapter': '20261010.4',
+      'screen-runtime-adapter': '20261101\\.1',
       'screen-runtime': '20260922\\.2',
       'render-state-normalizer': '20261009\\.1'
     }[script] || (script === 'snapshot-contract' ? '20260923\\.1' : '20260911\\.5');
