@@ -283,12 +283,18 @@
 
   /* ------------------------------------------------------------------ 보기가 글인 문제: 참·거짓을 도형에서 직접 재서 정합니다.
      pool = [{h: 보기 글, f: (M)=>참인가, hint?}], wantTrue=true 이면 「옳은 것」(참 1 + 거짓 4), false 이면 「옳지 않은 것」(거짓 1 + 참 4). */
+  // 옳은/옳지 않은 것 고르기. 학생이 문제에 주어진 것(그림의 표시)만으로 판단할 수 있어야 하므로:
+  //  · 'T' 보기 = 늘 성립하는 구조적 성질(f 가 항상 true 인 보기)
+  //  · 'F' 보기 = 일반적으로 성립하지 않는 보기(f 가 숫자에 따라 달라지는 보기, 또는 항상 false). 그림의 값으로 우연히 성립하는 경우는 빼고 씁니다.
+  // 우연히 성립하는 보기를 '옳은 것'의 정답으로 쓰지 않습니다.
   function mkStmtChoices(pool, M, key, wantTrue) {
     const rnd = seeded('st|' + key);
-    const T0 = shuffle(pool.filter((x) => x.f(M)), rnd), F0 = shuffle(pool.filter((x) => !x.f(M)), rnd);
+    const kind = (x) => (x.g ? x.g : x.f.length === 0 && x.f(M) ? 'T' : 'F');
+    const T0 = shuffle(pool.filter((x) => kind(x) === 'T'), rnd), F0 = shuffle(pool.filter((x) => kind(x) === 'F' && !x.f(M)), rnd);
     const need = wantTrue ? [T0, F0] : [F0, T0]; // 정답 1개를 낼 쪽, 오답 4개를 낼 쪽
     const ok = need[0][0], bad = need[1].slice(0, 4);
-    const items = [{ h: ok.h, ok: true, hint: '' }].concat(bad.map((x) => ({ h: x.h, ok: false, hint: x.hint || (wantTrue ? '이 보기는 그림에서 성립하지 않아요. 그림의 표시를 다시 확인해 보세요.' : '이 보기는 그림에서 성립하는 내용이에요. 옳지 않은 것을 찾아야 해요.') })));
+    const meta = (x) => ({ g: kind(x), now: !!x.f(M) });
+    const items = [{ h: ok.h, ok: true, hint: '', ...meta(ok) }].concat(bad.map((x) => ({ h: x.h, ok: false, ...meta(x), hint: x.hint || (wantTrue ? '이 보기는 늘 성립하는 것이 아니에요. 그림의 표시를 다시 확인해 보세요.' : '이 보기는 늘 성립하는 내용이에요. 옳지 않은 것을 찾아야 해요.') })));
     return { choices: mkTextChoices(items, key), n: 1 + bad.length };
   }
   // 문제 만들기 도우미: 숫자 정답 + 흔한 실수 오답
@@ -341,7 +347,7 @@
   // 글 보기: items = [{h: 보기(글·$수식$ 가능), ok, hint}] 5개를 key 로 안정되게 섞어 놓습니다.
   function mkTextChoices(items, key) {
     const list = shuffle(items, seeded('tc|' + key));
-    return list.map((x) => ({ h: x.h, p: x.p || String(x.h).replace(/\$/g, ''), ok: !!x.ok, hint: x.hint || '' }));
+    return list.map((x) => ({ h: x.h, p: x.p || String(x.h).replace(/\$/g, ''), ok: !!x.ok, hint: x.hint || '', g: x.g, now: x.now }));
   }
 
   /* ------------------------------------------------------------------ 장면 상태 (탭·단계) */
