@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
 import {fileURLToPath} from 'node:url';
-import {repoRoot,assertOutput,launchBrowser} from './visual-browser-runtime.mjs';
+import {repoRoot,assertOutput,launchBrowser,sameOriginExamImageUrl} from './visual-browser-runtime.mjs';
 import {sha256} from './verify-visual-engine-static.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from './verify-rendered-layout.mjs';
 import {fileRef,readBoundFile} from '../pipeline-core/canonical.mjs';
@@ -84,7 +84,7 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
       page.on('response',r=>{responsePromises.push((async()=>{try{const bytes=await r.body();responses.push({url:r.url(),status:r.status(),sha256:sha256(bytes),bytes:bytes.length});}catch(error){responses.push({url:r.url(),status:r.status(),error:String(error)});}})());});
       const prefix=item.id+'-'+item.mode+'-'+item.viewport;const errors=[];let state={};const layouts=[];
       try {
-        await page.goto(base+item.urlPath,{waitUntil:'domcontentloaded',timeout:60000});checkCancelled();
+        await page.goto(sameOriginExamImageUrl(base+item.urlPath),{waitUntil:'domcontentloaded',timeout:60000});checkCancelled();
         const readiness=page.waitForFunction(({mode,count})=>{
           // The Archive page reports its own render failure in dataset.apRenderError: fail at once with that code instead of waiting out the timeout.
           const renderError=document.documentElement.dataset.apRenderError,titleNode=document.getElementById('ctrl-title');if(renderError||(titleNode&&titleNode.innerText==='시험지 데이터를 불러올 수 없습니다'))throw new Error('ARCHIVE_PAGE_RENDER_ERROR:'+String(renderError||'NO_CODE').slice(0,200));
