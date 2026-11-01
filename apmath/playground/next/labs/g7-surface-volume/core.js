@@ -202,7 +202,7 @@
   }
 
   /* ------------------------------------------------------------------ 조절 값 */
-  const P = (label, min, max, step, value, o = {}) => ({ value, min, max, step, color: o.color || 'sky', label, hint: o.hint, format: o.format || ((v) => fmtN(v)) });
+  const P = (label, min, max, step, value, o = {}) => ({ value, min, max, step, color: o.color || 'sky', label, hint: o.hint, format: o.format || ((v) => fmtN(v)), clampTo: o.clampTo });
   const cm = (v) => fmtN(v) + 'cm';
 
   /* ------------------------------------------------------------------ 문제 탭 */
@@ -363,6 +363,15 @@
   }
 
   function register(order, id, title, short, params, scenes) {
+    // 다른 값에 따라 범위가 달라지는 막대: 끄는 동안에도 막대 손잡이를 허용 범위 안에 붙잡아 그림의 값과 같게 합니다
+    Object.keys(params).forEach((pid) => {
+      const p = params[pid];
+      if (typeof p.clampTo !== 'function') return;
+      p.onInput = (s, lab) => {
+        const [lo, hi] = p.clampTo(s), v = Math.max(lo, Math.min(hi, Math.round(s[pid])));
+        if (v !== s[pid]) { s[pid] = v; const c = lab && lab._ctls && lab._ctls[pid]; if (c) c.input.value = v; }
+      };
+    });
     (window.APL_SV_GROUPS = window.APL_SV_GROUPS || []).push({ order, id, title, short, params: Object.assign({}, params), scenes: scenes.map(makeScene) });
   }
   const notes = (...li) => `<ul class="sv-notes">${li.map((x) => `<li>${x}</li>`).join('')}</ul>`;

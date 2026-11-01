@@ -20,17 +20,17 @@
     s2T: P('움직여 보기', 0, 1, 0.01, 0, { color: 'green', format: (v, s) => ((s && s.svMode2 === 'pour') ? (v < 0.02 ? '비어 있음' : v > 0.98 ? '3번 부음' : `${Math.min(3, Math.floor(v * 3 + 0.001) + (v * 3 % 1 > 0.0 ? 1 : 0))}번째 붓는 중`) : (v < 0.02 ? '합쳐진 정육면체' : v > 0.98 ? '모두 갈라 놓음' : Math.round(v * 100) + '%')) }),
     // sv2-2
     s2r: P('밑면의 반지름 r', 2, 6, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
-    s2G: P('모선의 길이 R', 3, 12, 1, 5, { color: 'sky', hint: 'R은 r보다 커야 해요(작으면 r+1로 맞춰요)', format: (v) => v + ' cm' }),
+    s2G: P('모선의 길이 R', 3, 12, 1, 5, { color: 'sky', hint: 'R은 r보다 커야 해요(작으면 r+1로 맞춰요)', format: (v) => v + ' cm', clampTo: (s) => [Math.round(s.s2r) + 1, 12] }),
     s2U: P('펼치기', 0, 1, 0.01, 0, { color: 'green', format: (v) => (v < 0.02 ? '입체' : v > 0.98 ? '전개도' : Math.round(v * 100) + '%') }),
     // sv2-3
     s3K: P('크기 배율 k', 1, 2, 1, 1, { color: 'amber', hint: '세 수 (r, h, R)를 k배 해요', format: (v) => `${v}배` }),
     // sv2-4
     s4K: P('큰 원뿔의 크기 k', 2, 5, 1, 3, { color: 'sky', format: (v) => `k = ${v}` }),
-    s4J: P('자르는 위치 (작은 원뿔의 크기 j)', 1, 4, 1, 1, { color: 'amber', hint: '작은 원뿔은 큰 원뿔과 같은 모양이고 j/k 배예요', format: (v) => `j = ${v}` }),
+    s4J: P('자르는 위치 (작은 원뿔의 크기 j)', 1, 4, 1, 1, { color: 'amber', hint: '작은 원뿔은 큰 원뿔과 같은 모양이고 j/k 배예요', format: (v) => `j = ${v}`, clampTo: (s) => [1, Math.round(s.s4K) - 1] }),
     s4T: P('작은 원뿔 빼내기', 0, 1, 0.01, 0, { color: 'green', format: (v) => (v < 0.02 ? '붙어 있음' : v > 0.98 ? '빠짐' : Math.round(v * 100) + '%') }),
     // sv2-5
     s5K: P('큰 각뿔의 크기 k', 2, 4, 1, 3, { color: 'sky', format: (v) => `밑면 한 변 ${6 * v} cm` }),
-    s5J: P('자르는 위치 (작은 각뿔의 크기 j)', 1, 3, 1, 1, { color: 'amber', hint: '각뿔대의 윗면은 한 변이 6j cm인 정사각형', format: (v) => `j = ${v}` }),
+    s5J: P('자르는 위치 (작은 각뿔의 크기 j)', 1, 3, 1, 1, { color: 'amber', hint: '각뿔대의 윗면은 한 변이 6j cm인 정사각형', format: (v) => `j = ${v}`, clampTo: (s) => [1, Math.round(s.s5K) - 1] }),
     s5T: P('펼치기', 0, 1, 0.01, 0, { color: 'green', format: (v) => (v < 0.02 ? '입체' : v > 0.98 ? '전개도' : Math.round(v * 100) + '%') })
   };
   const oneOf = (v, list, d) => (list.includes(v) ? v : d);

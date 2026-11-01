@@ -138,8 +138,8 @@
       const sph0 = (a, c) => sph(R, a, c);
       let bodies = [], extra = [], ptsFit = [];
       const lvC = !C.review ? 1 : (st === 2 || st === 1) ? (st === 2 ? 2 : 1) : 1, lvF = !C.review ? 1 : st === 3 ? 2 : 1;
-      let sweep = 0, sep = 0, rot = 0, merge = 0, pop = 1;
-      if (isHalf) { sweep = lin01(t, 0, 0.25); sep = ease(lin01(t, 0.25, 0.55)); rot = 1; merge = ease(lin01(t, 0.8, 1)); pop = 1 + 0.06 * Math.sin(PI * lin01(t, 0.55, 0.75)); }
+      let sweep = 0, sep = 0, rot = 0, merge = 0, pop = 1, flipB = 0;
+      if (isHalf) { sweep = lin01(t, 0, 0.25); sep = ease(lin01(t, 0.25, 0.55)); rot = 1; merge = ease(lin01(t, 0.8, 1)); flipB = ease(lin01(t, 0.55, 0.72)); }
       else { sep = ease(lin01(t, 0, 0.5)); merge = ease(lin01(t, 0.5, 1)); }
       if (C.problem && isHalf) { sep = 0; merge = 0; pop = 1; }
       const dsep = sep * R * 2.5;
@@ -155,7 +155,9 @@
         bowlProf.push([0, 0]);
         let dome = revolveMesh(domeProf, { N: 44, tags: ['cap'] }), bowl = revolveMesh(bowlProf, { N: 44, tags: Array(hn).fill('curve').concat('cap') });
         dome = xfMesh(dome, shiftT(D.hx(dsep)));
-        bowl = xfMesh(bowl, { R: [[pop, 0, 0], [0, pop, 0], [0, 0, pop]], t: v3(0, 0, 0) });
+        // 자른 뒤 아래 반구는 제자리에서 뒤집어(회전) 밑면이 아래로 오는 반구가 돼요
+        const Tb = G.rotAbout(v3(0, -R / 2, 0), v3(0, 0, 1), PI * flipB), cF = G.applyT(Tb, v3(0, 0, 0));
+        bowl = xfMesh(bowl, Tb);
         const domeB = { mesh: dome, fill: 'sky', alpha: 0.26, edge: 'ink', edgeW: 2.6, faceStyle: (f) => (f.tag === 'cap' ? { skip: true } : curveStyle(f)) };
         const bowlB = { mesh: bowl, fill: 'sky', alpha: 0.26, edge: 'ink', edgeW: 2.6, faceStyle: (f) => (f.tag === 'cap' ? (!cutOn ? { skip: true } : { fill: lvF === 2 ? 'amber' : 'red', alpha: 0.46 }) : curveStyle(f)) };
         D.fit(cube8(v3(0, 0, 0), R).concat(cube8(D.hx(C.problem ? 0 : R * 2.5), R)), C.problem ? [] : [{ x: bcx - 3.2, y: D.P(v3(0, -R, R)).y + 3.0 }, { x: bcx + 3.2, y: D.P(v3(0, -R, R)).y + 3.0 }], { l: 34, r: 34, t: 36, b: 34 });
@@ -171,11 +173,12 @@
         if (!C.problem && t >= 0.25 && sep < 0.02) D.path(D.circ(v3(0, 0, 0), v3(1, 0, 0), v3(0, 0, 1), R, 0, 2 * PI, 72), 'red', 3, { alpha: 0.7 });
         // 라벨: 반지름은 평평한 면 위에(가로 방향)
         if (C.problem) sphereLabels(D, R, baseC, `r=${M.r}`);
-        else sphereLabels(D, R * pop, t < 0.25 ? v3(0, 0, 0) : (t < 0.3 ? v3(0, 0, 0) : v3(0, 0, 0)), `r=${M.r}`);
+        else sphereLabels(D, R, t < 0.25 ? v3(0, 0, 0) : cF, `r=${M.r}`);
+        if (!C.problem && flipB > 0.3) D.disc(cF, v3(1, 0, 0), v3(0, 0, 1), R, lvF === 2 ? 'amber' : 'red', lvF === 2 ? 0.5 : 0.3, lvF === 2 ? 'amber' : 'red', 2.4, { dash: [6, 5] });
         if (!C.problem) {
           if (t < 0.25) D.tag(v3(0, 0, 0), `4πr² = ${plainVal(M.sphere)}`, { dy: 28, size: 15 });
           if (t >= 0.25) D.tag(add3(v3(0, R * 0.55, 0), D.hx(dsep)), `4πr²×½ = ${plainVal(M.curve)}`, { size: 14, dy: -10 });
-          if (t >= 0.5) D.tag(v3(0, 0, 0), `πr² = ${plainVal(M.flat)}`, { size: 15, color: 'ink', dy: 20 });
+          if (t >= 0.5) D.tag(cF, `πr² = ${plainVal(M.flat)}`, { size: 15, color: 'ink', dy: 20 });
         }
       } else {
         // 1/4, 1/8 구
