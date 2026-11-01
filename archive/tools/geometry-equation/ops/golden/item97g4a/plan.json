@@ -1,0 +1,125 @@
+{
+ "capability": "solid-figure-v1",
+ "solids": [
+  {
+   "kind": "PRISM",
+   "base": {
+    "kind": "RECT",
+    "width": 3,
+    "depth": 3
+   },
+   "height": 3,
+   "names": {
+    "base": "EFGH",
+    "top": "ABCD"
+   },
+   "points": [
+    {
+     "id": "P",
+     "at": {
+      "divide": [
+       "D",
+       "F"
+      ],
+      "ratio": "1:2"
+     }
+    },
+    {
+     "id": "Q",
+     "at": {
+      "footOnLine": {
+       "from": "P",
+       "line": [
+        "E",
+        "F"
+       ]
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "from": "D",
+   "to": "P",
+   "style": "DASHED",
+   "role": "REF"
+  },
+  {
+   "from": "P",
+   "to": "F",
+   "style": "DASHED",
+   "role": "REF"
+  },
+  {
+   "from": "P",
+   "to": "E",
+   "style": "DASHED",
+   "role": "ACCENT"
+  },
+  {
+   "from": "P",
+   "to": "Q",
+   "style": "DASHED",
+   "role": "ACCENT"
+  },
+  {
+   "from": "Q",
+   "to": "F",
+   "style": "SOLID",
+   "role": "ACCENT"
+  }
+ ],
+ "highlights": [
+  {
+   "polygon": [
+    "P",
+    "E",
+    "F"
+   ]
+  }
+ ],
+ "marks": {
+  "rightAngles": [
+   {
+    "at": "Q",
+    "refs": [
+     "P",
+     "F"
+    ]
+   }
+  ]
+ },
+ "dims": [
+  {
+   "from": "P",
+   "to": "F",
+   "side": "RIGHT"
+  },
+  {
+   "from": "P",
+   "to": "Q",
+   "side": "RIGHT"
+  },
+  {
+   "from": "D",
+   "to": "P",
+   "side": "RIGHT"
+  },
+  {
+   "edge": "DC",
+   "side": "TOP"
+  }
+ ],
+ "caption": "한 모서리의 길이가 3인 정육면체에서 DF를 1:2로 내분하는 점 P, P에서 EF에 내린 수선의 발 Q",
+ "sourceConditions": [
+  "한 모서리의 길이가 3인 정육면체",
+  "선분 DF를 1:2로 내분하는 점 P",
+  "삼각형 PEF"
+ ],
+ "newVisualInformation": [
+  "P에서 EF에 내린 수선의 발 Q와 PQ",
+  "삼각형 PEF 칠"
+ ]
+}

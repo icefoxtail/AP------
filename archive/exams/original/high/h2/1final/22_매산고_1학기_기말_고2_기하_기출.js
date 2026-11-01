@@ -459,7 +459,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 모서리의 길이가 3인 정육면체 ABCD-EFGH에서 선분 DF를 1:2로 내분하는 점 P(DP=√3, PF=2√3)와 P에서 모서리 EF에 내린 수선의 발 Q(PQ=2√2, Q에 직각 표시)를 잡고, 삼각형 PEF를 칠했다. 모서리의 길이 3도 적었다.",
+    "solutionImageCaption": "EF=3이고 점 P에서 직선 EF까지의 거리가 PQ=2√2이므로 [PEF]=½×3×2√2=3√2이다. 따라서 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,

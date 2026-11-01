@@ -1,6 +1,6 @@
-# AP Math 해설 그림 SVG — 인계 문서 (Claude Code 오케스트레이터 → 다음 작업자, 2026-10-30)
+# AP Math 해설 그림 SVG — 인계 문서 (Claude Code 오케스트레이터 → 다음 작업자, 최종 갱신 2026-11-01)
 
-다음 작업자는 이 문서 하나로 이어서 일할 수 있다. **읽는 순서: §0 → §1 → §2(작업 방식) → §3(도구 복원) → §6(남은 일).** 나머지는 필요할 때 찾아본다. 2026-10-26판(Codex·opencode DeepSeek 방식)은 git 이력에 있다. 지금 방식은 이 문서다.
+다음 작업자는 이 문서 하나로 이어서 일할 수 있다. **읽는 순서: §00(최신 현황) → §0 → §1 → §2(작업 방식) → §3(도구 복원) → §6(남은 일).** 나머지는 필요할 때 찾아본다. 2026-10-26판(Codex·opencode DeepSeek 방식)은 git 이력에 있다. 지금 방식은 이 문서다.
 
 - 그림 작성 규칙 정본: `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`. 본문 `author-guide-body.md`와 계약을 `node archive/tools/geometry-equation/production/build-author-guide.mjs`로 합성한다. `tests/author-guide.test.mjs`가 동기화를 검사한다.
 - 시험지 마감 원장: `archive/tools/geometry-equation/production/exam-figure-ledger.json`
@@ -9,11 +9,56 @@
 
 > **2026-10-31 이후 엔진 빈틈 완성 라인(G1~G11).** 사용자 지시: 엔진 부족한 부분을 실제 기출 샘플로 하나씩 완성하고, 완성한 샘플 그림은 시험지에 게시까지 한다. 고등 우선, 샘플은 최신 연도(26→25→24). Sonnet 작업자는 한 번에 하나(토큰 절약), 보고는 변경 하나가 끝날 때 한 번.
 > - **엔진 지시서를 쓰기 전에 `ops/svg-m1/BRIEF_RULES.md`(실패 기록과 지시서 규칙)를 반드시 읽고 `ops/svg-m1/briefs/engine-gap-template.md`로 쓴다.** 남은 한계는 "한계"로 끝내지 말고 후속 묶음으로 이어서 맡긴다.
-> - 빈틈 목록·샘플: `ops/svg-m1/gaps.md` 아래 G1~G11 절. 진행(2026-11-01): G7·G7b·G7c·G9·G1·G5·G5b·G6·G6b·G6c·G11·G3·G2(a 포물선·b 쌍곡선·c 접선/원·타원 혼합) main 반영(#1065~)과 샘플 게시. 남은 빈틈: G4 공간도형(고2, L) → G8 속 빈 원기둥·원뿔대 전개도(중1, M) → G10 내접 혼합 입체(중1, L).
+> - 빈틈 목록·샘플: `ops/svg-m1/gaps.md` 아래 G1~G11 절. 진행(2026-11-01): G7·G7b·G7c·G9·G1·G5·G5b·G6·G6b·G6c·G11·G3·G2(a·b·c)·G4a main 반영(#1065~)과 샘플 게시. 남은 빈틈: §00 참고. G4 공간도형(고2, L) → G8 속 빈 원기둥·원뿔대 전개도(중1, M) → G10 내접 혼합 입체(중1, L).
 > - Linux 클라우드 컨테이너에서 렌더 의존성 복원: `GEOMETRY_PYTHON=python3 node archive/tools/geometry-equation/production/setup-spikes.mjs`(→ `.tmp/apmath-visual-engine/dependencies`), Chrome은 `GEOMETRY_BROWSER_EXECUTABLE=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome`. 첫 엔진 병합 전 main으로 정답지 전체를 렌더해 기준(`.tmp/svg-m1/golden-main/`)을 만든다(약 70분).
 > - 정답지 회귀는 표본만(BRIEF_RULES 규칙 10, 전체는 사용자 승인 시). G3 지시서 `ops/svg-m1/briefs/engine-g3-vectors.md`.
 > - G11 지시서·검수 지시서 예: `ops/svg-m1/briefs/engine-g11-callout-coord-angle.md`, `ops/svg-m1/briefs/review-g11.md`.
 > - Windows PC에서 도구 복원 시: `/home/user/AP------` 경로를 실제 체크아웃 경로로, `python3`를 `python`으로 바꾸고, Chrome은 설치된 것(`channel:'chrome'`), playwright는 `.tmp/apmath-visual-engine/dependencies/node_modules/playwright`를 직접 require, 동적 import 경로는 `file:///C:/...`.
+
+---
+
+## 00. 최신 현황과 다음 할 일 (2026-11-01, 먼저 읽기)
+
+### 이번 세션(2026-10-31~11-01)에 끝낸 것 — 모두 main 반영
+| 묶음 | 엔진 | 게시한 해설 그림 |
+|---|---|---|
+| G11 (#1094·#1095) | 좌표 그림 끌어내기, 각 끌어내기 호 비례·각 치수선, 좁은 꼭짓점 경로 라벨 | 25 팔마고 고1 q9, 26 왕운중 중2 q8 |
+| G3 (#1099) | 벡터 이름 `vec(a)`, `planeMarks.vectors`, `vectorOps`(합·차·실수배) | 23 매산고 기하 q5·q12, 15 강남여고 q10 |
+| G2a (#1110) | `conic` 포물선(초점·준선·교점·수선의 발) | 26 제일고 q2, 26 매산고 q15 |
+| G2b·G2c (#1120) | 쌍곡선·점근선, 접선 판별식·외부 점 접선, 원·타원·`conics` 곡선 2개·곡선 이름 | 26 매산고 q13, 26 제일고 q12, 26 금당고 q13 |
+| 중간값 복원 (#1125) | conic 점 좌표 라벨 `coordinates:true` | 위 그림 9장을 해설 중간값 넣어 다시 그림(정답은 캡션) |
+| G4a | 입체 보조점 `divide`·`midpoint`·`centroid`·`footOnLine`·`projection`(한도 10) | 22 매산고 기말 기하 q11 (q13은 기존 단면 그림이 더 명확해 유지) |
+
+### 바뀐 규칙 (반드시 따른다)
+- **그림 안에는 풀이 핵심 단계에 꼭 필요한 중간값만, 정답은 캡션(과 alt)에 따로**(§1 규칙 5, BRIEF_RULES 11). 너무 많은 정보 금지. 최종 정리는 메인이 PNG를 보고 판단.
+- **정답지 회귀는 표본만**(BRIEF_RULES 10). 전체 회귀(약 75분)는 사용자 승인 시만.
+- **메인(오케스트레이터)이 할 일**은 루트 `CLAUDE.md` "메인이 할 일" 7가지와 §2.1. 핵심: 보고를 믿지 말고 PNG를 직접 보고 해설·정답과 대조, 융통성 있게 판단, 지시가 바뀌면 진행 중 작업자와 문서에 즉시 반영.
+
+### 일하는 순서 (이번 세션에서 굳어진 방식)
+1. 읽기 전용 조사(Explore, `model: sonnet`) — 코드 위치·기존 규칙 충돌·최신 샘플.
+2. 메인이 샘플 문항의 solution을 직접 읽어 **핵심 중간값 목록**을 뽑고, `briefs/engine-gap-template.md` 형식으로 지시서(`.tmp/svg-m1/briefs/`)를 쓴다. 예: `ops/svg-m1/briefs/engine-g4a-solid-space-points.md`.
+3. 수정 작업자(`model: sonnet`, `isolation: worktree`). 작업자 브랜치에서 엔진 커밋 + 게시 커밋까지 하게 하면 PR이 하나로 준다.
+4. 메인이 PNG를 직접 본다 → 부족하면 같은 작업자에게 SendMessage.
+5. 다른 Sonnet 검수자(바뀐 부분만, 정답지 표본 2~6개).
+6. 메인이 `ccr-…`(지정 작업 브랜치)로 작업자 브랜치를 merge → push → PR → 바로 merge → main readback.
+
+### 다음 할 일 (권장 순서)
+1. **G4b 평면 α·β**: 평행사변형 평면(through 3점/법선+점, 반투명 칠, 이름 α·β — 그리스 문자 라벨 필요), 평면 위 점·직선, 두 평면의 교선, 직선⊥평면 수선·직각. 새 capability `space-figure-v1` 권장(solid의 `project`·숨은선·라벨 배치를 export해 공유). 샘플: 22 매산고 1학기 기말 기하 q14(수직인 두 평면, 교선 l, 정사영), 26 매산고 1학기 중간 기하 q19(삼수선). 조사 결과는 `gaps.md` G4 절.
+2. **G4c 이면각·직선과 평면의 각**: 교선에 수직인 두 반직선+호+θ. 샘플 22 매산고 기말 q16(정육면체 이면각), q19.
+3. **G4 후속(작은 것)**: 입체 모서리 바깥 치수선·라벨 지시선(지금 없음 — q11에서 EF=3을 캡션으로 뺐다), solid 기본 제목 "입체도형" 끄기 옵션.
+4. **G4d 좌표공간**(x·y·z 축, 점·구): 문제 그림 있는 기출이 없어 우선순위 낮음.
+5. **G8** 속 빈 원기둥·원뿔대 전개도(설계 메모 `ops/svg-m1/notes/DESIGN-hollow-cylinder-and-frustum-net.txt`), **G10** 내접 혼합 입체.
+6. G2 남은 것: 곡선 3개 이상, 두 곡선의 공통 접선, 쌍곡선 준선.
+
+### 알려진 미해결
+- `archive/data/svg-accessibility-manifest.v1.json`·`svg-accessibility-index.js`에 교체 전 옛 해설 SVG 경로가 남아 있다(자동 생성 파일로 추정, 테스트는 통과). 26 매산고 q13 옛 `q13-solution.svg`는 이 참조 때문에 지우지 않았다. 재생성 방법 확인 필요.
+- 26 금당고 q13에 옛 `solutionImageStatus` 필드와 `q13-solution.png`가 남아 있다.
+
+### 이번 세션 함정
+- 원격 작업 브랜치에 `Archive Registration Sync` 워크플로가 생성 파일 커밋을 올려 push가 거절되면 `git merge origin/<브랜치>` 후 생성 파일 충돌은 `git checkout --ours`(워크플로가 다시 만든다). 이력 재작성 금지.
+- 사용량 한도·컨테이너 재시작으로 작업자가 끊기면 워크트리가 남아 있으니 같은 작업자에게 SendMessage로 이어서.
+- `ops/tools/hints.mjs` 문자열의 작은따옴표는 `\'` 이스케이프(한 번 main에서 문법 오류가 났다). 수정 후 `node -e "import('./archive/tools/geometry-equation/ops/tools/hints.mjs')"`.
+- 지시서에 쓴 기하 사실이 틀릴 수 있다(G4a: 정사면체에서 C의 평면 ABM 위 정사영은 M 자체). 작업자 보고의 "지시서와 다른 점"을 꼭 읽는다.
 
 ---
 
@@ -32,9 +77,9 @@
    - 막힌 문항을 해결한다. 엔진이 못 그리면 기록만 하지 말고 엔진을 확장한다.
    - 게시 → 원장 `CLOSED` → 다음 시험지 순서로 간다.
    - 마감한 시험지는 다시 하지 않는다.
-5. **중간값은 그림 안에 가능한 많이, 정답은 캡션에 따로(2026-11-01 사용자 지시, 이전 "정답 금지" 폐지).**
-   - 해설 그림은 학생이 보고 확인하는 자료다. 해설의 풀이 중간값(길이·좌표·계수·기울기·교점·각)은 그림 안에 **가능한 많이** 넣는다. 학생이 풀이를 따라가는 데 꼭 필요한 값은 반드시 넣고, 그림이 읽히는 범위에서 더 넣는다. 정답(구하는 값)은 그림 안에 넣지 않고 **캡션(과 alt)에 따로** 적는다.
-   - 작업자·검수자는 해설에 나온 값을 "정답 노출"이라는 이유로 지우지 않는다. 어떤 값을 넣고 뺄지는 기계적인 FAIL 규칙이 아니라, 메인이 그림을 직접 보고 학생에게 필요한지로 판단한다.
+5. **그림 안에는 꼭 필요한 중간값만, 정답은 캡션에 따로(2026-11-01 사용자 지시, 이전 "정답 금지" 폐지).**
+   - 해설 그림은 학생이 보고 확인하는 자료다. 해설의 풀이 중간값(길이·좌표·계수·기울기·교점·각)중 풀이의 핵심 단계에 **꼭 필요한 것만** 그림 안에 넣는다. 정보가 많아 그림이 복잡해지면 안 된다. 나머지 값은 캡션으로. 정답(구하는 값)은 그림 안에 넣지 않고 **캡션(과 alt)에 따로** 적는다.
+   - 작업자·검수자는 해설에 나온 값을 "정답 노출"이라는 이유로 지우지 않는다. 어떤 값을 넣고 뺄지는 기계적인 규칙이 아니라, 메인이 마지막에 그림을 직접 보고 한 번 더 판단해 정리한다.
    - 문자 미지수는 해설이 값을 구하면 그 실제 값으로 그린다(예시 값 "한 예" 그림 금지). 해설에서도 끝까지 문자인 경우만 문자 이름으로 둔다.
 6. **라벨·치수선이 실패하거나 오독될 때는 그 선분·각을 끌어내 따로 크게 그리는 방법을 먼저 쓴다(적극 권장, 2026-10-30).**
    - 엔진 필드는 `planeMarks.callouts`(E37)이다. 입체는 합성 패널로 하고, 같은 점 이름으로 잇는다.
