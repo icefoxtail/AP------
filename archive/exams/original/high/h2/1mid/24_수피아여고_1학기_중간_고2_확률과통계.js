@@ -122,7 +122,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 절대로 일어나지 않는 사건의 확률은 0이다.\\n조건 정리: 주사위 한 개를 던져서 나오는 눈은 1, 2, 3, 4, 5, 6 중 하나이다.\\n풀이 과정: 7보다 큰 눈이 나오는 사건은 절대로 일어날 수 없는 공사건이므로 그 확률은 0이다.\\n결론: 따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 계산",
+    "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -154,7 +154,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 배반사건과 여사건의 개념을 구별한다.\\n조건 정리: 사건 $A$와 $B$는 배반사건이다. 즉, $A \\cap B = \\emptyset$이다.\\n풀이 과정: $P(A)=1-P(B)$가 성립하는 경우는 $A$와 $B$가 서로 여사건일 때($B = A^c$)이다.\\n두 사건이 서로 배반사건이라고 해서 반드시 서로 여사건인 것은 아니므로 명제는 거짓이다.\\n결론: 따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 계산",
+    "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -258,7 +258,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 표본공간의 원소의 개수와 특정 사건의 원소의 개수를 구하여 확률을 계산한다.\\n조건 정리: 3개의 동전을 던질 때, 모두 앞면이거나 모두 뒷면인 경우를 구한다.\\n풀이 과정: 서로 다른 세 개의 동전을 동시에 던질 때 일어나는 모든 경우의 수는 $2^3 = 8$이다.\\n모두 같은 면이 나오는 사건은 (앞, 앞, 앞), (뒤, 뒤, 뒤)의 2가지이다.\\n따라서 구하는 확률은 $\\frac{2}{8} = \\frac{1}{4}$이다.\\n결론: 따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 계산",
+    "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -293,7 +293,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 확률의 덧셈정리를 이용하여 합사건의 확률을 구한다.\\n조건 정리: $P(A)=\\frac{1}{4}$, $P(B)=\\frac{2}{3}$, $P(A\\cap B)=\\frac{1}{6}$이다.\\n풀이 과정: 확률의 덧셈정리에 의하여\\n$P(A\\cup B) = P(A) + P(B) - P(A\\cap B)$이다.\\n따라서 $P(A\\cup B) = \\frac{1}{4} + \\frac{2}{3} - \\frac{1}{6} = \\frac{3}{12} + \\frac{8}{12} - \\frac{2}{12} = \\frac{9}{12} = \\frac{3}{4}$이다.\\n결론: 따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 계산",
+    "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -472,7 +472,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 통계적 확률은 전체 시행 횟수에 대한 특정 사건이 일어난 횟수의 비율로 구한다.\\n조건 정리: 활을 쏜 전체 횟수는 500번이다.\\n풀이 과정: 표에서 8점을 맞힌 횟수는 167번, 9점을 맞힌 횟수는 133번이다.\\n8점 또는 9점을 맞힐 횟수는 $167 + 133 = 300$이다.\\n따라서 구하는 확률은 $\\frac{300}{500} = \\frac{3}{5}$이다.\\n결론: 따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 계산",
+    "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -508,7 +508,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 확률의 기본 성질을 이해하고 적용한다.\\n조건 정리: $P(S)=1$, $P(\\emptyset)=0$이며, 임의의 사건의 확률은 $0$ 이상 $1$ 이하이다.\\n풀이 과정: (ㄱ) 반드시 일어나는 사건의 확률은 1이고 절대로 일어나지 않는 사건의 확률은 0이므로 $P(S)-P(\\emptyset) = 1 - 0 = 1$이다. (참)\\n(ㄴ) 임의의 사건의 확률은 $0$ 이상 $1$ 이하이므로 $0 \\le P(A \\cup B) \\le 1$이다. (참)\\n(ㄷ) $P(A) \\le P(B)$라고 해서 반드시 사건 $A$가 사건 $B$의 부분집합이 되는 것은 아니다. 확률 값만 작을 뿐 다른 원소를 포함할 수 있다. (거짓)\\n따라서 옳은 것은 (ㄱ), (ㄴ)이다.\\n결론: 따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 계산",
+    "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -544,7 +544,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 확률의 덧셈정리를 활용하여 교사건의 확률을 구한다.\\n조건 정리: 임의로 택한 한 명이 남자인 사건을 $M$, 짜장면을 시킨 사건을 $J$라 하자.\\n$P(M) = \\frac{2}{3}$, $P(J) = \\frac{3}{5}$, $P(M \\cup J) = \\frac{4}{5}$이다.\\n풀이 과정: 확률의 덧셈정리 $P(M \\cup J) = P(M) + P(J) - P(M \\cap J)$에 의하여\\n$P(M \\cap J) = P(M) + P(J) - P(M \\cup J)$이다.\\n따라서 $P(M \\cap J) = \\frac{2}{3} + \\frac{3}{5} - \\frac{4}{5} = \\frac{10}{15} + \\frac{9}{15} - \\frac{12}{15} = \\frac{7}{15}$이다.\\n결론: 따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 계산",
+    "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -580,7 +580,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] '적어도 ~일 확률'은 여사건의 확률을 이용하여 구하는 것이 편리하다.\\n조건 정리: 7명이 일렬로 줄을 설 때, 적어도 1명의 여학생이 양 끝에 선다.\\n여사건은 양 끝에 모두 남학생이 서는 경우이다.\\n풀이 과정: 전체 7명이 일렬로 줄을 서는 경우의 수는 $7!$이다.\\n양 끝에 모두 남학생이 서는 경우의 수는 남학생 4명 중 2명을 뽑아 양 끝에 세우고, 나머지 5명을 일렬로 세우는 경우의 수와 같으므로\\n${}_{4}P_{2} \\times 5! = 12 \\times 5!$이다.\\n양 끝에 모두 남학생이 설 확률은 $\\frac{12 \\times 5!}{7!} = \\frac{12}{7 \\times 6} = \\frac{2}{7}$이다.\\n따라서 구하는 확률은 $1 - \\frac{2}{7} = \\frac{5}{7}$이다.\\n결론: 따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 계산",
+    "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -688,7 +688,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 이웃하지 않아야 하는 원소들은 나머지 원소들을 먼저 나열한 후 양 끝과 사이사이의 빈자리에 나열한다.\\n조건 정리: 주어진 문자 중 모음은 $i, u, e$로 3개, 자음은 $p, c, t, r$로 4개이다.\\n풀이 방향 설정: 자음을 먼저 일렬로 나열한 후, 생성된 빈공간에 모음을 배치하여 확률을 계산한다.\\n풀이 과정:\\n전체 7개의 문자를 일렬로 나열하는 모든 경우의 수는 $7!$이다.\\n\\n모음끼리 이웃하지 않으려면 자음 4개를 먼저 일렬로 나열하고, 자음 사이사이와 양 끝을 포함한 5개의 빈자리 중 3자리를 택하여 모음을 나열하면 된다.\\n1) 자음 4개를 나열하는 경우의 수는 $4! = 24$이다.\\n2) 5개의 빈자리에 모음 3개를 나열하는 경우의 수는 ${}_{5}P_{3} = 5 \\times 4 \\times 3 = 60$이다.\\n\\n따라서 모음끼리 이웃하지 않게 나열하는 사건의 경우의 수는 $4! \\times {}_{5}P_{3} = 24 \\times 60 = 1440$이다.\\n\\n구하는 확률은 $\\frac{1440}{7!} = \\frac{1440}{5040} = \\frac{2}{7}$이다.\\n결론: 따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 계산",
+    "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -724,7 +724,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] '적어도 ~일 확률'은 여사건의 확률을 활용한다.\\n조건 정리: 총 옷은 10벌이다. 3벌을 고를 때 적어도 1벌은 바지, 적어도 1벌은 청색이다.\\n이 사건의 여사건은 '모두 치마이거나 모두 흰색인 사건'이다.\\n풀이 과정: 전체 경우의 수는 ${}_{10}C_{3} = \\frac{10 \\times 9 \\times 8}{3 \\times 2 \\times 1} = 120$이다.\\n모두 치마인 경우(치마 5벌 중 3벌): ${}_{5}C_{3} = 10$\\n모두 흰색인 경우(흰색 6벌 중 3벌): ${}_{6}C_{3} = 20$\\n모두 치마이면서 모두 흰색인 경우(흰색 치마 3벌 중 3벌): ${}_{3}C_{3} = 1$\\n여사건의 경우의 수는 $10 + 20 - 1 = 29$이다.\\n따라서 여사건의 확률은 $\\frac{29}{120}$이다.\\n그러므로 구하는 확률은 $1 - \\frac{29}{120} = \\frac{91}{120}$이다.\\n결론: 따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 계산",
+    "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -811,7 +811,7 @@ window.questionBank = [
     "answer": "$\\frac{7}{15}$",
     "solution": "[키포인트] 이차방정식의 해를 구하고 조건에 맞는 $n$의 개수를 구하여 확률을 계산한다.\\n조건 정리: $n$은 30 이하의 자연수이다.\\n방정식 $15x^2-8nx+n^2=0$을 인수분해하면 $(3x-n)(5x-n)=0$이다.\\n따라서 해는 $x=\\frac{n}{3}$ 또는 $x=\\frac{n}{5}$이다.\\n풀이 과정: 정수해가 존재하려면 $n$이 3의 배수이거나 5의 배수이어야 한다.\\n$n$이 3의 배수인 사건을 $A$, 5의 배수인 사건을 $B$라 하자.\\n$n(A) = 10$, $n(B) = 6$이다.\\n$n(A \\cap B)$는 $n$이 15의 배수인 경우이므로 2가지이다.\\n확률의 덧셈정리에 의해 조건을 만족하는 $n$의 개수는 $10 + 6 - 2 = 14$이다.\\n전체 경우의 수는 30이므로 구하는 확률은 $\\frac{14}{30} = \\frac{7}{15}$이다.\\n결론: 따라서 구하는 값은 $\\frac{7}{15}$이다.",
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 계산",
+    "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -841,7 +841,7 @@ window.questionBank = [
     "answer": "$\\frac{23}{30}$",
     "solution": "[키포인트] '3장 이상 꺼낼 확률'은 여사건을 활용하여 1장 또는 2장 만에 끝나는 확률을 빼서 구한다.\\n조건 정리: 카드의 합이 7의 배수가 되면 시행을 멈춘다. 꺼낸 카드는 다시 넣지 않는다.\\n풀이 방향 설정: 여사건인 1장만 꺼내고 멈출 확률과 2장만 꺼내고 멈출 확률을 구한다.\\n풀이 과정: \\n첫째, 1장만 꺼내고 멈추는 경우는 처음에 7을 뽑는 경우이므로 그 확률은 $\\frac{1}{10}$이다.\\n\\n둘째, 2장을 꺼내고 멈추는 경우는 처음에 7이 아닌 카드를 뽑고, 첫 번째와 두 번째 뽑은 카드의 합이 7의 배수가 되는 경우이다.\\n1부터 10까지의 수를 7로 나눈 나머지별로 분류하면\\n나머지 0: $\\{7\\}$\\n나머지 1: $\\{1, 8\\}$\\n나머지 2: $\\{2, 9\\}$\\n나머지 3: $\\{3, 10\\}$\\n나머지 4: $\\{4\\}$\\n나머지 5: $\\{5\\}$\\n나머지 6: $\\{6\\}$\\n\\n2장의 합이 7의 배수가 되려면 두 카드의 나머지 합이 7이 되어야 한다. (나머지 0, 0은 7이 한 장뿐이라 불가능하다.)\\n순서를 고려하여 꺼내는 경우의 수는:\\n- (나머지 1, 나머지 6) 및 (나머지 6, 나머지 1): $2 \\times 1 + 1 \\times 2 = 4$가지\\n- (나머지 2, 나머지 5) 및 (나머지 5, 나머지 2): $2 \\times 1 + 1 \\times 2 = 4$가지\\n- (나머지 3, 나머지 4) 및 (나머지 4, 나머지 3): $2 \\times 1 + 1 \\times 2 = 4$가지\\n총 $4 + 4 + 4 = 12$가지이다.\\n\\n2장의 카드를 순서대로 꺼내는 전체 경우의 수는 $10 \\times 9 = 90$이므로, 2장 만에 멈출 확률은 $\\frac{12}{90} = \\frac{2}{15}$이다.\\n\\n따라서 여사건의 확률은 $\\frac{1}{10} + \\frac{2}{15} = \\frac{3}{30} + \\frac{4}{30} = \\frac{7}{30}$이다.\\n그러므로 구하는 확률은 $1 - \\frac{7}{30} = \\frac{23}{30}$이다.\\n결론: 따라서 구하는 값은 $\\frac{23}{30}$이다.",
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 계산",
+    "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }

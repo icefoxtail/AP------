@@ -953,7 +953,7 @@ window.questionBank = [
     "standardUnit": "이항정리",
     "standardUnitOrder": 2,
     "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
-    "subUnit": "이항계수와 계수 비교",
+    "subUnit": "이항계수와 계수비교",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
