@@ -407,9 +407,11 @@
     _buildReview() {
       const sc = this.scene;
       const pane = this.ui.panes.review;
+      const openSol = Array.from(pane.querySelectorAll('details.apl-acc')).map((d) => d.open); // 다시 만들어도 펼친 풀이는 그대로
       pane.innerHTML = '';
       const r = this.refs;
       const steps = call(sc.steps, this.s);
+      r.stepsSig = JSON.stringify(steps || null); // 마지막으로 만든 단계 글: _renderPanel이 현재 글과 비교해 달라졌을 때만 다시 만듭니다
       if (steps && steps.length) {
         r.steps = h('div', { class: 'apl-steps' });
         r.stepPrev = h('button', { class: 'apl-btn sm', html: icon('prev') + '<span>이전</span>', onclick: () => this.stepBy(-1) });
@@ -443,6 +445,7 @@
           mk('quick', sol.quickTitle || '빠른 풀이 · 핵심 원리', sol.quickTag || '핵심', 'amber', false));
         pane.append(r.solution);
       }
+      Array.from(pane.querySelectorAll('details.apl-acc')).forEach((d, i) => { if (openSol[i]) d.open = true; });
       r.notes = h('div', { class: 'apl-rich' });
       r.notesSec = this._section(sc.notesTitle || this.def.notesTitle || '시험에서 자주 틀리는 부분', 'alert', h('div', { class: 'apl-card soft' }, r.notes));
       pane.append(r.notesSec);
@@ -758,9 +761,16 @@
       // 요약
       r.summary.hidden = !v.summary;
       if (v.summary) APLab.setHTML(r.summary, `<small>핵심 결과</small>${APLab.esc(APLab.stripEmoji(v.summary))}`);
-      // 정리 탭
+      // 정리 탭: 단계 글이 지금 상태와 달라졌으면(슬라이더·점 이동 등) 다시 만듭니다. 단계 번호(s.step)는 유지하고 줄 수가 줄면 맞춥니다.
+      const stepsNow = call(sc.steps, s);
+      if (r.stepsSig !== JSON.stringify(stepsNow || null)) {
+        this._buildReview();
+        if (stepsNow && s.step > stepsNow.length) s.step = stepsNow.length;
+        const cnt = this.ui.tabs.querySelector('.apl-tab[aria-controls="apl-pane-review"] .cnt');
+        if (cnt && stepsNow) cnt.textContent = stepsNow.length + '단계';
+      }
       if (r.steps) {
-        const steps = call(sc.steps, s);
+        const steps = stepsNow;
         Array.from(r.steps.children).forEach((el, i) => {
           el.classList.toggle('done', i < s.step);
           el.classList.toggle('cur', i === s.step - 1);
