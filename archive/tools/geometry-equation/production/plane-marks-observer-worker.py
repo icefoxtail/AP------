@@ -1403,18 +1403,64 @@ def audit(p):
             d=sub(b,a)
             if norm(d)>1e-9 and all(abs((q[0]-a[0])*d[1]-(q[1]-a[1])*d[0])/norm(d)<=0.5 for q in ends):return True
         return False
+    # colour groups of segments (C1): segmentColors rows and the `color` of equalLengths / parallels rows, resolved from the plan alone
+    segment_colors={};color_owner={};peer_segments={sg['id']:sg for sg in p.get('segments',[])}
+    def claim_color(color,source):
+        if color not in PALETTE_LINES:errors.append('SEGMENT_COLOR_INVALID:'+source);return False
+        if color_owner.setdefault(color,source)!=source:errors.append('SEGMENT_COLOR_GROUP_MISMATCH:'+color+':'+color_owner[color]+'&'+source);return False
+        return True
+    def claim_segment(sid,color):
+        if sid not in peer_segments:errors.append('SEGMENT_COLOR_UNKNOWN_SEGMENT:'+str(sid))
+        elif sid in segment_colors:errors.append('SEGMENT_COLOR_DUPLICATE:'+sid)
+        else:segment_colors[sid]=color
+    for index,row in enumerate(marks.get('segmentColors') or []):
+        if not isinstance(row,dict) or not isinstance(row.get('segments'),list):errors.append('SEGMENT_COLOR_INVALID:segmentColors.'+str(index));continue
+        if claim_color(row.get('color'),'segmentColors.'+str(index)):
+            for sid in row['segments']:claim_segment(sid,row['color'])
+    for field,kind in (('equalLengths','equal'),('parallels','parallel')):
+        for row in marks.get(field,[]):
+            if row.get('color') is None:continue
+            if not isinstance(row.get('segments'),list) or not claim_color(row['color'],field+'.'+row['id']):errors.append('SEGMENT_COLOR_INVALID:'+row['id']);continue
+            entries=[[entry] if isinstance(entry,str) else list(entry.get('path') or []) for entry in row['segments']]
+            for ids in entries:
+                for sid in ids:claim_segment(sid,row['color'])
+            # the segments (or paths) of one colour group are really equal in length / parallel, recomputed from the peer points
+            try:
+                if kind=='equal':
+                    totals=[sum(norm(sub(peer_point(peer_segments[sid]['refs'][1]),peer_point(peer_segments[sid]['refs'][0]))) for sid in ids) for ids in entries]
+                    if any(abs(t-totals[0])>LENGTH_RELATIVE*max(1.0,totals[0]) for t in totals):errors.append('SEGMENT_COLOR_GROUP_MISMATCH:'+row['id']+':lengths')
+                else:
+                    dirs=[]
+                    for ids in entries:
+                        a0,b0=peer_point(peer_segments[ids[0]]['refs'][0]),peer_point(peer_segments[ids[0]]['refs'][1]);d=sub(b0,a0);dirs.append((d[0]/norm(d),d[1]/norm(d)))
+                    if any(abs(u[0]*dirs[0][1]-u[1]*dirs[0][0])>math.sin(math.radians(ANGLE_TOLERANCE)) for u in dirs):errors.append('SEGMENT_COLOR_GROUP_MISMATCH:'+row['id']+':directions')
+            except (KeyError,IndexError,ZeroDivisionError):pass   # an unknown segment is reported above
+            # the ticks / arrows of the group wear the group's line colour; those of a group without a colour never wear a palette colour
+        for row in marks.get(field,[]):
+            nodes=by_mark.get((kind,row['id']),[])+by_mark.get(('equal-bracket',row['id']),[])
+            want=PALETTE_LINES.get(row.get('color')) if row.get('color') is not None else None
+            for n in nodes:
+                stroke=str(n.get('stroke') or '').lower()
+                if want is not None and stroke!=want:errors.append('SEGMENT_COLOR_MISMATCH:'+row['id']+':mark');break
+                if want is None and stroke in PALETTE_LINES.values():errors.append('SEGMENT_COLOR_MISMATCH:'+row['id']+':mark undeclared');break
     for s in p.get('segments',[]):
         node=elements.get(s['id'])
         if node is None:continue
         try:width=float(node.get('stroke-width'))
         except (TypeError,ValueError):width=0.0
         stroke=str(node.get('stroke') or '').lower();emphasis=s.get('emphasis')
-        if emphasis in ('BOLD','ACCENT'):
+        wanted=segment_colors.get(s['id'])
+        if wanted is not None:
+            # a coloured segment: the palette's line colour, a little heavier than a plain one, and none of the other segment styles
+            if emphasis is not None or s.get('dashed') or s.get('arrow'):errors.append('SEGMENT_COLOR_INVALID:'+s['id'])
+            if stroke!=PALETTE_LINES[wanted] or width<COLORED_SEGMENT_WIDTH-0.05:errors.append('SEGMENT_COLOR_MISMATCH:'+s['id'])
+            observations.append({'id':s['id'],'type':'SEGMENT_COLOR','color':wanted,'strokeWidth':width,'stroke':stroke})
+        elif emphasis in ('BOLD','ACCENT'):
             if width<EMPHASIS_WIDTH:errors.append('SEGMENT_EMPHASIS_MISSING:'+s['id'])
             if stroke!=(ACCENT_STROKE if emphasis=='ACCENT' else DEFAULT_STROKE):errors.append('SEGMENT_EMPHASIS_COLOR_MISMATCH:'+s['id'])
             observations.append({'id':s['id'],'type':'SEGMENT_EMPHASIS','emphasis':emphasis,'strokeWidth':width,'stroke':stroke})
         elif emphasis is not None:errors.append('SEGMENT_EMPHASIS_INVALID:'+s['id'])
-        elif stroke!=DEFAULT_STROKE or (width>=EMPHASIS_WIDTH and not lies_on_drawn_line(node)):errors.append('SEGMENT_EMPHASIS_UNDECLARED:'+s['id'])
+        elif stroke!=DEFAULT_STROKE or (width>=EMPHASIS_WIDTH and not lies_on_drawn_line(node)):errors.append(('SEGMENT_COLOR_UNDECLARED:' if stroke in PALETTE_LINES.values() else 'SEGMENT_EMPHASIS_UNDECLARED:')+s['id'])
 
     vector_rows=[r for r in (marks.get('vectors') or []) if isinstance(r,dict)];op_rows=[r for r in (marks.get('vectorOps') or []) if isinstance(r,dict)]
     by_vector={};arrows=[]

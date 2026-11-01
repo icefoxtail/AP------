@@ -729,7 +729,9 @@ def prepare(spec):
                 elif any(math.hypot(l[0],l[1])>0 and all(abs(l[0]*p[0]+l[1]*p[1]+l[2])/math.hypot(l[0],l[1])*vp.sx<=.5 for p in value) for _,l in drawn_lines):overlap='line'
             # emphasis BOLD / ACCENT (a plane figure's one singled-out segment): the heavy stroke above the other segments, ACCENT also in red.
             emphasis=obj.get('emphasis') if kind=='SEGMENT' else None
-            primitive({'id':oid,'kind':'line','from':a,'to':b,'token':'leaderLine' if kind=='LEADER_LINE' else 'axisOverlapShape' if overlap or emphasis else 'secondaryShape','layer':80 if kind=='LEADER_LINE' else 45 if overlap=='line' else 38 if emphasis else 35 if overlap else 30,'role':'leader' if kind=='LEADER_LINE' else 'line',**({'axisOverlap':overlap} if overlap else {}),**({'dash':'6 4'} if kind=='SEGMENT' and obj.get('dash') else {}),**({'stroke':ACCENT_STROKE} if emphasis=='ACCENT' else {})},'leader' if kind=='LEADER_LINE' else 'line')
+            # color (C1): a segment of a colour group is drawn in the palette's line colour, a little heavier than a plain one and above the plain segments
+            colored=obj.get('color') if kind=='SEGMENT' else None
+            primitive({'id':oid,'kind':'line','from':a,'to':b,'token':'leaderLine' if kind=='LEADER_LINE' else 'axisOverlapShape' if overlap or emphasis else 'secondaryShape','layer':80 if kind=='LEADER_LINE' else 45 if overlap=='line' else 38 if emphasis else 35 if overlap else 31 if colored else 30,'role':'leader' if kind=='LEADER_LINE' else 'line',**({'axisOverlap':overlap} if overlap else {}),**({'dash':'6 4'} if kind=='SEGMENT' and obj.get('dash') else {}),**({'stroke':ACCENT_STROKE} if emphasis=='ACCENT' else {}),**({'stroke':PALETTE[colored]['line'],**({} if overlap else {'strokeWidth':COLORED_SEGMENT_WIDTH})} if colored else {})},'leader' if kind=='LEADER_LINE' else 'line')
             if kind=='SEGMENT' and obj.get('arrow'):
                 # A ray / extension: arrowheads whose tips stand exactly on the segment's end points (START = the first point, END = the second).
                 if obj['arrow'] not in {'START','END','BOTH'}:raise ValueError('INVALID_SEGMENT_ARROW')
@@ -1129,6 +1131,7 @@ def prepare(spec):
                 else:
                     ends.append((vp.screen(g[0]),vp.screen(g[1])));crossings.append([])
             count=obj['count']
+            mark_stroke={'stroke':PALETTE[obj['color']]['line']} if obj.get('color') else {}   # color (C1): the ticks / arrows wear the group's line colour
             reference=(ends[0][1][0]-ends[0][0][0],ends[0][1][1]-ends[0][0][1])
             paths=obj.get('paths',{})
             for index,(ref,(p,q)) in enumerate(zip(obj['refs'],ends)):
@@ -1161,7 +1164,7 @@ def prepare(spec):
                         if bracket is None:raise ValueError('EQUAL_MARK_PATH_NO_ROOM:'+ref)
                         n,pa,pb,caps=bracket;d=((pb[0]-pa[0])/math.dist(pa,pb),(pb[1]-pa[1])/math.dist(pa,pb));mid=((pa[0]+pb[0])/2,(pa[1]+pb[1])/2);mark_spots.append(mid)
                         for part,(c0,c1) in (('line',(pa,pb)),('cap-from',caps[0]),('cap-to',caps[1])):
-                            primitive({'id':oid+'-'+ref+'-bracket-'+part,'kind':'line','from':c0,'to':c1,'token':'indicator','layer':55,'role':'indicator','mark':'equal-bracket','markId':oid,'markSegment':ref,'markPart':part},'curve')
+                            primitive({'id':oid+'-'+ref+'-bracket-'+part,'kind':'line','from':c0,'to':c1,'token':'indicator','layer':55,'role':'indicator','mark':'equal-bracket','markId':oid,'markSegment':ref,'markPart':part,**mark_stroke},'curve')
                 else:
                     length=math.dist(p,q)
                     if length<30+6*count:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+ref)
@@ -1176,12 +1179,12 @@ def prepare(spec):
                     if kind=='EQUAL_MARK' and obj.get('markStyle')=='CIRCLE':
                         # E32: a small open circle on the segment instead of a tick (the fourth, fifth ... equal group); two circles stand 9 px apart
                         c=(mid[0]+d[0]*(i-(count-1)/2)*EQUAL_CIRCLE_PITCH_PX,mid[1]+d[1]*(i-(count-1)/2)*EQUAL_CIRCLE_PITCH_PX)
-                        primitive({'id':oid+'-'+ref+'-'+str(i+1),'kind':'circle','at':c,'radius':EQUAL_CIRCLE_RADIUS_PX,'token':'secondaryShape','layer':55,'role':'indicator','mark':'equal','markId':oid,'markSegment':ref,'markIndex':i+1,'markCount':count},'circle')
+                        primitive({'id':oid+'-'+ref+'-'+str(i+1),'kind':'circle','at':c,'radius':EQUAL_CIRCLE_RADIUS_PX,'token':'secondaryShape','layer':55,'role':'indicator','mark':'equal','markId':oid,'markSegment':ref,'markIndex':i+1,'markCount':count,**mark_stroke},'circle')
                     elif kind=='EQUAL_MARK':
-                        primitive({'id':oid+'-'+ref+'-'+str(i+1),'kind':'line','from':(c[0]-n[0]*5.5,c[1]-n[1]*5.5),'to':(c[0]+n[0]*5.5,c[1]+n[1]*5.5),'token':'secondaryShape','layer':55,'role':'indicator','mark':'equal','markId':oid,'markSegment':ref,'markIndex':i+1,'markCount':count},'curve')
+                        primitive({'id':oid+'-'+ref+'-'+str(i+1),'kind':'line','from':(c[0]-n[0]*5.5,c[1]-n[1]*5.5),'to':(c[0]+n[0]*5.5,c[1]+n[1]*5.5),'token':'secondaryShape','layer':55,'role':'indicator','mark':'equal','markId':oid,'markSegment':ref,'markIndex':i+1,'markCount':count,**mark_stroke},'curve')
                     else:
                         tip=(c[0]+d[0]*3.5,c[1]+d[1]*3.5);back=(c[0]-d[0]*3.5,c[1]-d[1]*3.5)
-                        primitive({'id':oid+'-'+ref+'-'+str(i+1),'kind':'polyline','points':[(back[0]+n[0]*4.5,back[1]+n[1]*4.5),tip,(back[0]-n[0]*4.5,back[1]-n[1]*4.5)],'token':'secondaryShape','layer':55,'role':'indicator','mark':'parallel','markId':oid,'markSegment':ref,'markIndex':i+1,'markCount':count},'curve')
+                        primitive({'id':oid+'-'+ref+'-'+str(i+1),'kind':'polyline','points':[(back[0]+n[0]*4.5,back[1]+n[1]*4.5),tip,(back[0]-n[0]*4.5,back[1]-n[1]*4.5)],'token':'secondaryShape','layer':55,'role':'indicator','mark':'parallel','markId':oid,'markSegment':ref,'markIndex':i+1,'markCount':count,**mark_stroke},'curve')
         elif kind in {'POINT_NAME','COORDINATE_LABEL','EQUATION_LABEL','GRAPH_ANNOTATION','CONDITION_BOX','LENGTH_LABEL'}:
             label={**obj,'font':tokens['pointName'] if kind=='POINT_NAME' else tokens['coordinateLabel'] if kind=='COORDINATE_LABEL' else tokens['conditionBox'] if kind=='CONDITION_BOX' else tokens['mathLabel'],'priority':obj.get('priority',1 if kind in {'POINT_NAME','CONDITION_BOX'} else 2)}
             label['at']=vp.screen(geometry[obj['target']]) if kind in {'POINT_NAME','COORDINATE_LABEL'} else vp.screen(obj['at'])

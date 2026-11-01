@@ -258,6 +258,48 @@ export function resolveAngleOver(rows,at){
 }
 
 // Returns {objects, factRolesByLabel}; throws an Error whose message is an UPPER_SNAKE code (optionally ':detail').
+/** Segment colours of a plane figure (C1): Map segmentId -> palette colour, from planeMarks.segmentColors ([{segments:[ids],color}], corresponding sides or any
+ *  sides that belong together) and from the `color` of an equalLengths / parallels row (its segments and marks share it). One colour = one relation: a colour
+ *  used by two rows (SEGMENT_COLOR_GROUP_MISMATCH), a segment in two rows (SEGMENT_COLOR_DUPLICATE) or an unknown segment is refused. Rows that are not well
+ *  formed are skipped here; planeMarkSpec reports them. */
+export function collectSegmentColors(plan,segmentIds){
+  const marks=plan?.planeMarks,out=new Map();
+  if(!marks||typeof marks!=='object'||Array.isArray(marks))return out;
+  const owner=new Map(),shapes=new Map((plan.displaySegments||[]).map(s=>[s.id,s]));
+  const use=(color,source)=>{
+    if(!isPaletteName(color))bad('SEGMENT_COLOR_INVALID:'+source);
+    if(owner.has(color)&&owner.get(color)!==source)bad('SEGMENT_COLOR_GROUP_MISMATCH:'+color+':'+owner.get(color)+'&'+source);
+    owner.set(color,source);
+  };
+  const claim=(sid,color)=>{
+    if(typeof sid!=='string'||!segmentIds.has(sid))bad('SEGMENT_COLOR_UNKNOWN_SEGMENT:'+sid);
+    if(out.has(sid))bad('SEGMENT_COLOR_DUPLICATE:'+sid);
+    const shape=shapes.get(sid);
+    if(shape&&(shape.emphasis!==undefined||shape.dashed||shape.arrow!==undefined))bad('SEGMENT_COLOR_INVALID:'+sid+':a coloured segment is not also emphasised, dashed or an arrow');
+    out.set(sid,color);
+  };
+  const rows=marks.segmentColors;
+  if(rows!==undefined){
+    if(!Array.isArray(rows)||!rows.length||rows.length>5)bad('SEGMENT_COLOR_INVALID:segmentColors');
+    rows.forEach((row,index)=>{
+      if(!row||typeof row!=='object'||Array.isArray(row))bad('SEGMENT_COLOR_INVALID:segmentColors.'+index);
+      keysOk(row,KEYS.segmentColors,'segmentColors');
+      if(!Array.isArray(row.segments)||!row.segments.length)bad('SEGMENT_COLOR_INVALID:segmentColors.'+index+'.segments');
+      use(row.color,'segmentColors.'+index);
+      for(const sid of row.segments)claim(sid,row.color);
+    });
+  }
+  for(const field of ['equalLengths','parallels'])for(const row of Array.isArray(marks[field])?marks[field]:[]){
+    if(!row||typeof row!=='object'||row.color===undefined||!Array.isArray(row.segments))continue;
+    use(row.color,field+'.'+row.id);
+    for(const entry of row.segments){
+      const ids=typeof entry==='string'?[entry]:Array.isArray(entry?.path)?entry.path:[];
+      for(const sid of ids)claim(sid,row.color);
+    }
+  }
+  return out;
+}
+
 export function planeMarkSpec(plan,model,points,segmentIds){
   const marks=plan.planeMarks;
   if(marks===undefined)return {objects:[],factRolesByLabel:{}};
@@ -423,9 +465,13 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       if(counts.has(groupKey))bad((kind==='EQUAL_MARK'?'EQUAL_MARK_GROUP_AMBIGUOUS:':'PARALLEL_MARK_GROUP_AMBIGUOUS:')+row.id+'&'+counts.get(groupKey));
       counts.set(groupKey,row.id);
       const paths=Object.fromEntries(entries.filter(entry=>entry.ids.length>1).map(entry=>[entry.rep,entry.ids]));
-      objects.push({id:row.id,kind,refs:entries.map(entry=>entry.rep),count:row.count,...(Object.keys(paths).length?{paths}:{}),...(row.pathMark!==undefined&&row.pathMark!=='AUTO'?{pathMark:row.pathMark}:{}),...(markStyle==='CIRCLE'?{markStyle:'CIRCLE'}:{})});
+      // color (C1): the segments of this group and their marks are drawn in one palette colour (collectSegmentColors checks the rest)
+      if(row.color!==undefined&&(!isPaletteName(row.color)||onLines))bad('SEGMENT_COLOR_INVALID:'+row.id);
+      objects.push({id:row.id,kind,refs:entries.map(entry=>entry.rep),count:row.count,...(row.color!==undefined?{color:row.color}:{}),...(Object.keys(paths).length?{paths}:{}),...(row.pathMark!==undefined&&row.pathMark!=='AUTO'?{pathMark:row.pathMark}:{}),...(markStyle==='CIRCLE'?{markStyle:'CIRCLE'}:{})});
     }
   }
+
+  collectSegmentColors(plan,segmentIds);   // segmentColors / coloured equalLengths and parallels: unknown, repeated or conflicting segments are refused here
 
   // --- segment expression labels
   for(const row of list(marks.expressionLabels,'expressionLabels')){

@@ -1,0 +1,395 @@
+{
+ "capability": "composite-panels-v1",
+ "caption": "닮음비 AB:EF=8:12=2:3이므로 BC:FG=2:3이고, 12:FG=2:3에서 FG=18cm이다.",
+ "sourceQuote": "$AB:EF=8:12=2:3$이므로 $BC:FG=2:3$이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "사각형 ABCD와 사각형 EFGH가 닮음, AB=8cm, BC=12cm, EF=12cm",
+   "mappedTo": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "대응변 AB↔EF는 파란색, BC↔FG는 주황색 선으로 표시하고 닮음비 2:3"
+ ],
+ "panels": [
+  {
+   "caption": {
+    "text": "□ABCD"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "B",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "C",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "12"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "A",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "B",
+        "C"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "8"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "80"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "D",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "C",
+        "B"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "9"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "75"
+        },
+        "turn": "CW"
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "axisTickValues": {
+     "x": [],
+     "y": []
+    },
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sAB",
+      "refs": [
+       "A",
+       "B"
+      ]
+     },
+     {
+      "id": "sBC",
+      "refs": [
+       "B",
+       "C"
+      ]
+     },
+     {
+      "id": "sCD",
+      "refs": [
+       "C",
+       "D"
+      ]
+     },
+     {
+      "id": "sDA",
+      "refs": [
+       "D",
+       "A"
+      ]
+     }
+    ],
+    "displayPoints": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "planeMarks": {
+     "dimensions": [
+      {
+       "id": "dAB",
+       "from": "A",
+       "to": "B",
+       "label": "8",
+       "unit": "cm",
+       "side": "LEFT",
+       "style": "BAR",
+       "offset": 1,
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "dBC",
+       "from": "B",
+       "to": "C",
+       "label": "12",
+       "unit": "cm",
+       "side": "BELOW",
+       "style": "BAR",
+       "offset": 1,
+       "factRole": "GIVEN"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sAB"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sBC"
+       ],
+       "color": "WARM"
+      }
+     ]
+    },
+    "coordinateCanvas": {
+     "width": 384,
+     "height": 400
+    }
+   }
+  },
+  {
+   "caption": {
+    "text": "□EFGH (닮음비 2:3)"
+   },
+   "plan": {
+    "capability": "construction-spike-v1",
+    "mathPlan": {
+     "schemaVersion": "construction-spike-v1",
+     "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+     },
+     "nodes": [
+      {
+       "id": "F",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "0"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "G",
+       "op": "SOURCE_POINT",
+       "inputs": [],
+       "args": {
+        "coordinates": [
+         {
+          "kind": "integer",
+          "value": "18"
+         },
+         {
+          "kind": "integer",
+          "value": "0"
+         }
+        ]
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "E",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "F",
+        "G"
+       ],
+       "args": {
+        "length": {
+         "kind": "integer",
+         "value": "12"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "80"
+        },
+        "turn": "CCW"
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "H",
+       "op": "POLAR_POINT",
+       "inputs": [
+        "G",
+        "F"
+       ],
+       "args": {
+        "length": {
+         "kind": "rational",
+         "numerator": "27",
+         "denominator": "2"
+        },
+        "angleDeg": {
+         "kind": "integer",
+         "value": "75"
+        },
+        "turn": "CW"
+       },
+       "outputType": "POINT",
+       "factRole": "GIVEN"
+      }
+     ]
+    },
+    "axisTickValues": {
+     "x": [],
+     "y": []
+    },
+    "displayLines": [],
+    "displayCircles": [],
+    "displaySegments": [
+     {
+      "id": "sEF",
+      "refs": [
+       "E",
+       "F"
+      ]
+     },
+     {
+      "id": "sFG",
+      "refs": [
+       "F",
+       "G"
+      ]
+     },
+     {
+      "id": "sGH",
+      "refs": [
+       "G",
+       "H"
+      ]
+     },
+     {
+      "id": "sHE",
+      "refs": [
+       "H",
+       "E"
+      ]
+     }
+    ],
+    "displayPoints": [
+     "E",
+     "F",
+     "G",
+     "H"
+    ],
+    "planeMarks": {
+     "dimensions": [
+      {
+       "id": "dEF",
+       "from": "E",
+       "to": "F",
+       "label": "12",
+       "unit": "cm",
+       "side": "LEFT",
+       "style": "BAR",
+       "offset": 1,
+       "factRole": "GIVEN"
+      },
+      {
+       "id": "dFG",
+       "from": "F",
+       "to": "G",
+       "label": "FG",
+       "labelKind": "TEXT",
+       "side": "BELOW",
+       "style": "BAR",
+       "offset": 1,
+       "factRole": "DERIVED_INTERMEDIATE"
+      }
+     ],
+     "segmentColors": [
+      {
+       "segments": [
+        "sEF"
+       ],
+       "color": "BLUE"
+      },
+      {
+       "segments": [
+        "sFG"
+       ],
+       "color": "WARM"
+      }
+     ]
+    },
+    "coordinateCanvas": {
+     "width": 384,
+     "height": 400
+    }
+   }
+  }
+ ]
+}
