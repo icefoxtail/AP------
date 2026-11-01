@@ -52,7 +52,7 @@ web
 - 문항의 수학 값·정답·해설은 디자인 작업으로 바꾸지 않는다. (`.claude/skills/README.md`의 impeccable 적용 규칙, 실험실 이식 원칙 `apmath/playground/next/README.md` §4)
 - 화면 개선은 학생이 실제 화면(PC·휴대폰)에서 보고 이해할 수 있는가로 판정한다. (`CLAUDE.md`)
 
-미정(사용자 결정 필요): 학생 포털·APMS의 확대 막기 설정(`user-scalable=no`)을 유지할지. 현재 학생 포털과 `apmath/index.html`이 쓰고 있다.
+결정(2026-11-01): 확대 허용. 혼자 보는 학생이 작은 글자·그림을 확대해 볼 수 있어야 하므로 학생 포털·숙제·플래너·APMS(`apmath/index.html`)의 `user-scalable=no`·`maximum-scale=1.0`을 뺐다. 이 때문에 iOS가 16px 미만 입력칸에 포커스할 때 화면을 자동 확대하므로, 휴대폰 폭에서는 입력칸 글자를 16px 이상으로 둔다.
 
 ## Evidence on Hand
 
@@ -69,4 +69,4 @@ web
 
 ## Accessibility & Inclusion
 
-확정된 기준(WCAG 등급 등)은 없다. 미정(사용자 결정 필요). 사실: 사용자는 한국어 사용 학생이며 휴대폰 터치 사용이 기본이다.
+WCAG 2.2 AA 목표(본문 대비 4.5:1, UI 3:1, 누르는 영역 24px 이상). 결정 2026-11-01. 사실: 사용자는 한국어 사용 학생이며 휴대폰 터치 사용이 기본이다. 확대는 허용한다(위 결정).

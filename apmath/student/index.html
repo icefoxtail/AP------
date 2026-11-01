@@ -2,26 +2,26 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="theme-color" content="#F3F4F6">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
-  <link rel="manifest" href="./manifest.json?v=2026.10.26.2">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.10.26.2">
-  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.10.26.2">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.10.26.2">
+  <link rel="manifest" href="./manifest.json?v=2026.11.01.1">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.01.1">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.01.1">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.01.1">
   <title>AP Math OS | 학생 포털</title>
   <script>try{localStorage.removeItem("ap.examImageBase.qa");}catch(e){}/* students never use the teacher-only exam image base QA override */</script>
   <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
   <script src="../../archive/archive2-output.js?v=20261003-student-output-s4-1"></script>
   <script src="./archive-review-output.js?v=20261003-student-review-s4-1"></script>
-  <script src="./clinic-lineage-view.js?v=2026.10.26.2"></script>
-  <script src="./clinic-learning-view.js?v=2026.10.26.2"></script>
+  <script src="./clinic-lineage-view.js?v=2026.11.01.1"></script>
+  <script src="./clinic-learning-view.js?v=2026.11.01.1"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-  <link rel="stylesheet" href="../css/apms-ui-foundation.css?v=2026.10.26.2">
+  <link rel="stylesheet" href="../css/apms-ui-foundation.css?v=2026.11.01.1">
   <style>
     :root {
       --primary:#111827;
@@ -480,7 +480,7 @@
       width:40px;
       height:40px;
       border-radius:15px;
-      background:#FFFFFF url('./icons/icon-192.png?v=2026.10.26.2') center/cover no-repeat;
+      background:#FFFFFF url('./icons/icon-192.png?v=2026.11.01.1') center/cover no-repeat;
       color:transparent;
       display:flex;
       align-items:center;
@@ -622,8 +622,13 @@
       .omr-actions .btn { height:42px; min-height:42px; padding:0 4px; font-size:12px; }
       .omr-filter-tab { font-size:12px; }
     }
+    /* 확대 허용(2026-11-01 결정) 후 iOS가 16px 미만 입력칸에 포커스할 때 화면을 자동 확대하는 것을 막는다. 휴대폰 폭에서만. */
+    @media (max-width:767px) {
+      input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]):not([type=button]):not([type=submit]),
+      select, textarea { font-size:16px !important; }
+    }
   </style>
-  <link rel="stylesheet" href="../css/apms-theme-override.css?v=2026.10.26.2">
+  <link rel="stylesheet" href="../css/apms-theme-override.css?v=2026.11.01.1">
   <style>
     body.student-portal-theme {
       --primary:#111827;
@@ -733,7 +738,7 @@
 <body class="student-portal-theme">
   <header class="top">
     <div class="brand">
-      <img class="brand-logo" src="./icons/icon-192.png?v=2026.10.26.2" alt="AP Math">
+      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.01.1" alt="AP Math">
       <div class="brand-copy">
         <div class="brand-main">AP Math OS</div>
         <div class="brand-sub">학생 포털</div>
@@ -755,7 +760,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.10.26.2';
+    const STUDENT_APP_VERSION = '2026.11.01.1';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';

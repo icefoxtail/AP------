@@ -12,7 +12,7 @@ colors:
   board-line-2: "#2d4039"
   board-text: "#ebf3ef"
   board-text-2: "#a9bab2"
-  board-text-3: "#6e827a"
+  board-text-3: "#7e9089"
   board-accent: "#5ce3b2"
   board-accent-2: "#2fbf8c"
   board-accent-ink: "#052119"
@@ -39,7 +39,7 @@ colors:
   paper-line-2: "#d2ccbe"
   paper-text: "#17201c"
   paper-text-2: "#4b5751"
-  paper-text-3: "#7c8680"
+  paper-text-3: "#646e68"
   paper-accent: "#0d8b67"
   paper-accent-2: "#0a7254"
   paper-accent-ink: "#ffffff"
@@ -81,7 +81,7 @@ typography:
     letterSpacing: "-0.01em"
   caption:
     fontFamily: "Pretendard Variable, Pretendard, -apple-system, BlinkMacSystemFont, Apple SD Gothic Neo, Malgun Gothic, Noto Sans KR, system-ui, sans-serif"
-    fontSize: "11px"
+    fontSize: "12px"
     fontWeight: 650
     letterSpacing: "0.02em"
 rounded:
@@ -151,9 +151,9 @@ components:
 
 ## Overview
 
-**Creative North Star: "칠판과 모눈종이" (미정, 사용자 결정 필요 — `apl.css` 머리말의 "칠판(Board)"·"종이(Paper): 모눈 종이 위 잉크 느낌"에서 따온 가칭)**
+**Creative North Star: "칠판과 모눈종이" (확정 2026-11-01; `apl.css` 머리말의 "칠판(Board)"·"종이(Paper): 모눈 종이 위 잉크 느낌"에서 따옴)**
 
-그림(무대)이 화면의 주인공이다. 무대가 화면의 약 70%를 차지하고, 안내·수식·도구는 가장자리에 작게 둔다(`next/README.md` §1 원칙 1). 어두운 칠판 테마는 도형이 빛나 보이도록 깊은 청록 바탕이고, 밝은 종이 테마는 모눈 종이 위 잉크 느낌이다. 두 테마는 같은 토큰 이름을 다른 값으로 채운다. 기본은 칠판이고, 저장된 선택이 없으면 OS가 밝은 모드일 때 종이로 시작한다(`apl-core.js:218-228`).
+그림(무대)이 화면의 주인공이다. 무대가 화면의 약 70%를 차지하고, 안내·수식·도구는 가장자리에 작게 둔다(`next/README.md` §1 원칙 1). 어두운 칠판 테마는 도형이 빛나 보이도록 깊은 청록 바탕이고, 밝은 종이 테마는 모눈 종이 위 잉크 느낌이다. 두 테마는 같은 토큰 이름을 다른 값으로 채운다. 기본은 종이(밝음)다. 저장된 선택이나 `?theme=`가 없으면 OS 설정과 관계없이 종이로 시작하고, 학생이 칠판으로 바꾸면 그 선택이 저장돼 유지된다(결정 2026-11-01; `apl-core.js`의 `APLab.theme.init()`, 각 페이지 `<head>`의 인라인 스크립트도 같은 규칙이라 첫 화면에 깜빡임이 없다).
 
 색은 장식이 아니라 약속이다. 같은 대상은 같은 색이다(슬라이더 손잡이, 실시간 값, 그림의 선이 같은 색). 후광이 있는 점은 끌 수 있는 점이다. 이 약속은 `next/README.md` §1-3에 설계 원칙으로 적혀 있다.
 
@@ -193,8 +193,8 @@ components:
 상태 색은 의미색을 그대로 쓴다: ok = green, warn = amber, bad = red, info = sky, key = accent (`.apl-status`·`.apl-callout`의 `data-tone`, `apl.css:307-310, 431-435`).
 
 ### Neutral
-- **칠판 바탕** (`#0a100e`, `--bg`) 위에 막대 `#0d1512` → 패널 `#101916` → 카드 `#15201c` → 안쪽 카드 `#1a2723` 순으로 한 단계씩 밝아진다(36-41줄). 선은 `#22322c`(약함)·`#2d4039`(강함). 글자는 `#ebf3ef`(본문) · `#a9bab2`(보조) · `#6e827a`(힌트).
-- **종이 바탕** (`#f1efe8`) 위에 막대 `#f8f6f0` · 패널 `#fbfaf6` · 카드 `#ffffff` · 안쪽 카드 `#f5f3ec`(81-85줄). 선 `#e2ded3`·`#d2ccbe`. 글자 `#17201c`·`#4b5751`·`#7c8680`.
+- **칠판 바탕** (`#0a100e`, `--bg`) 위에 막대 `#0d1512` → 패널 `#101916` → 카드 `#15201c` → 안쪽 카드 `#1a2723` 순으로 한 단계씩 밝아진다(36-41줄). 선은 `#22322c`(약함)·`#2d4039`(강함). 글자는 `#ebf3ef`(본문) · `#a9bab2`(보조) · `#7e9089`(힌트, 모든 바탕 위 4.59:1 이상).
+- **종이 바탕** (`#f1efe8`) 위에 막대 `#f8f6f0` · 패널 `#fbfaf6` · 카드 `#ffffff` · 안쪽 카드 `#f5f3ec`(81-85줄). 선 `#e2ded3`·`#d2ccbe`. 글자 `#17201c`·`#4b5751`·`#646e68`(힌트, 모든 바탕 위 4.60:1 이상).
 - **무대** (`--stage`): 칠판 `#0f1d18`, 종이 `#fdfcf8`. 무대 배경은 가운데가 밝은 방사형 그라데이션(`apl.css:261-264`, `--stage-hi` → `--stage` → `--stage-lo`).
 - **포커스** (`--focus`): 칠판 `#ffd166`, 종이 `#e07a00`. 모든 키보드 포커스 고리와 캔버스 포커스에 쓴다(`apl.css:151, 272`).
 - 격자·축·눈금은 반투명 값이다(`--m-grid`, `--m-grid-major`, `--m-axis`, `--m-tick`). 후광 `--m-halo`는 라벨 글자 뒤 외곽을 지워 읽히게 한다.
@@ -215,12 +215,12 @@ components:
 Pretendard는 CDN에서 불러오고(`index.html:11` 등 페이지마다 `<link>`), 실패하면 시스템 글꼴로 내려간다(`next/README.md` §2). 외부 의존은 이 글꼴 하나뿐이다.
 
 ### Hierarchy
-크기 단계는 `--fs-*`다 (`apl.css:13-19`): 2xs 11px · xs 12px · sm 13px · md 14.5px · lg 16px · xl 19px · 2xl 23px.
+크기 단계는 `--fs-*`다 (`apl.css:13-19`): 2xs 12px · xs 12px · sm 13px · md 14.5px · lg 16px · xl 19px · 2xl 23px.
 - **Title** (800, 16px, 1.3, -0.025em; `.apl-title` 222줄): 상단 막대의 실험실 제목. 한 줄, 넘치면 말줄임.
 - **Headline** (800, 19px, 1.3, -0.03em; `.apl-scene-title`): 패널의 장면 제목.
 - **Body** (400, 14.5px, 1.55; `body.apl` 138-143줄): 패널 본문. 질문 상자는 650 굵기·1.6 줄간격.
 - **Label** (650, 13px, -0.01em; `.apl-btn`·`.apl-scene-tab`): 버튼·탭·슬라이더 이름.
-- **Caption** (650, 11px, 0.02em; `.apl-crumbs`, `.apl-read .k`): 경로 표시, 값 이름표, 힌트.
+- **Caption** (650, 12px, 0.02em; `.apl-crumbs`, `.apl-read .k`): 경로 표시, 값 이름표, 힌트.
 - **값 숫자**: 실시간 값 `.apl-read .v`는 16px 800 굵기에 `tabular-nums`로 자릿수가 흔들리지 않게 한다(425줄, 153줄).
 - **수업 모드**(`data-teach="on"`)는 같은 단계를 한 칸 키운다: 2xs 12.5 · xs 13.5 · sm 15 · md 16.5 · lg 18 · xl 22 · 2xl 27px (124-133줄).
 - **허브 제목**: `clamp(22px, 2.4vw, 30px)`, 850, 자간 -0.045em (`apl-hub.css`의 `.hub-intro h1`).
@@ -228,7 +228,9 @@ Pretendard는 CDN에서 불러오고(`index.html:11` 등 페이지마다 `<link>
 ### Named Rules
 **The Tabular Number Rule.** 바뀌는 숫자(실시간 값, 슬라이더 값, 눈금)는 `font-variant-numeric: tabular-nums`로 자릿수가 움직이지 않게 한다.
 
-**The No-Tiny-Text Rule (제안).** 학생이 읽어야 하는 내용은 12px 아래로 내리지 않는다. 현재 11px(`--fs-2xs`)은 경로·이름표·힌트에만 쓴다. (현행 사용 관찰에서 정리한 규칙이며, 기준값은 사용자 결정 필요.)
+**The No-Tiny-Text Rule (확정 2026-11-01).** 학생이 읽는 글자는 12px 아래로 내리지 않는다. 그래서 `--fs-2xs`를 11px에서 12px로 올렸다(수업 모드는 그대로 12.5px). 정답 이름표·질문 머리·값 이름·조작 힌트가 이 값을 쓴다. (`apl-hub.css`에 직접 적힌 11px 두 곳, 장면 칩 `.hub-scenes`와 지하철 노선도 `.col-s`는 아직 남아 있다.)
+
+**The Contrast Rule (WCAG 2.2 AA, 확정 2026-11-01).** 본문 글자는 모든 바탕(`--bg`·`--panel`·`--card`·`--card-2`) 위에서 4.5:1 이상이다. `--text-3`(힌트색)을 올려 맞췄다. 종이 `#7c8680` → `#646e68`: bg 4.60 · panel 5.06 · card 5.29 · card-2 4.76. 칠판 `#6e827a` → `#7e9089`: bg 5.71 · panel 5.32 · card 4.97 · card-2 4.59. `--text`·`--text-2`는 이미 7:1 이상이다. 수학 의미색 `--m-*`는 아직 이 기준으로 검사하지 않았다.
 
 ## Layout
 
@@ -328,7 +330,4 @@ Pretendard는 CDN에서 불러오고(`index.html:11` 등 페이지마다 `<link>
 
 ## 미정 (사용자 결정 필요)
 
-1. **Creative North Star 이름**: 위 "칠판과 모눈종이"는 CSS 주석에서 따온 가칭이다.
-2. **칠판/종이 중 학생 기본 테마**: 지금은 OS 설정을 따르고 없으면 칠판이다. 학생 휴대폰에서 어느 쪽을 기본으로 둘지는 정해지지 않았다.
-3. **최소 글자 크기 기준**: 11px(`--fs-2xs`)을 학생이 읽는 내용에 써도 되는지.
-4. **허브 전용 색**(`--h-*`, `apl-hub.css:1-9`)을 이 문서의 팔레트에 포함할지: 지금은 포함하지 않았다.
+1. **허브 전용 색**(`--h-*`, `apl-hub.css:1-9`)을 이 문서의 팔레트에 포함할지: 지금은 포함하지 않았다.
