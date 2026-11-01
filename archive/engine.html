@@ -55,7 +55,7 @@
     <script src="snapshot-contract.js?v=20260923.1"></script>
     <script src="review-preview-bridge.js?v=20260915.2"></script>
     <script src="question-image-readiness.js?v=20261030-s11-1"></script>
-    <script src="screen-runtime-adapter.js?v=20261010.4"></script>
+    <script src="screen-runtime-adapter.js?v=20261101.1"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         .archive2-snapshot-output #print-header-editor-wrap,.archive2-snapshot-output #qr-output-wrap{display:none!important}
@@ -92,6 +92,8 @@
         body.screen-fit-mode { overflow-x: hidden; }
         body.screen-fit-mode :is(#print-area,[data-archive-build-root]) { width: max-content; max-width: none; margin-left: auto; margin-right: auto; transform: scale(var(--screen-page-scale, 1)); transform-origin: top center; }
         body.screen-fit-mode .page { flex: 0 0 auto; }
+        /* 2026-11-01: 학생 화면(fit=screen)에는 QR 출력 선택지를 보이지 않는다. 선생님이 출력할 때만 고른다. */
+        body.screen-fit-mode .qr-output-wrap { display: none !important; }
         @media screen and (max-width: 640px) {
             body.screen-fit-mode { padding-top: 44px; }
             body.screen-fit-mode #mode-ctrl { height: 44px; padding: 0 8px; justify-content: center; gap: 8px; }
@@ -736,9 +738,10 @@ function shouldRenderSolutionQr() {
 
 function getQrOutputState() {
     const params = new URLSearchParams(window.location.search);
-    const submitQr = params.get('submitQr');
     return {
-        submit: submitQr === '1' || (submitQr !== '0' && params.get('osqr') === '1'),
+        // 2026-11-01 사용자 결정: 시험지 끝 제출 QR은 기본 숨김. 선생님이 고를 때만(showSubmitQr=1) 그린다.
+        // submitQr=1은 '반 출제 등록' 신호라서 QR 표시와 분리했다(출제 흐름이 자동으로 submitQr=1을 붙인다).
+        submit: params.get('showSubmitQr') === '1',
         sol: params.get('solQr') === '1'
     };
 }
@@ -768,8 +771,7 @@ function setQrOutputParam(type, checked) {
     }
     const url = new URL(window.location.href);
     if (type === 'submit') {
-        url.searchParams.set('submitQr', checked ? '1' : '0');
-        url.searchParams.delete('osqr');
+        url.searchParams.set('showSubmitQr', checked ? '1' : '0');
     } else {
         url.searchParams.set('solQr', checked ? '1' : '0');
     }
@@ -841,6 +843,7 @@ function injectQrToLastExamPage(area, ctx = null) {
 // [5A] AP Math OS 제출용 QR 추가 기능 시작
 // =========================================================================
 
+// 2026-11-01: 이 함수는 '반 출제 등록(블루프린트·출제이력) 모드' 판정이다. QR을 그릴지는 shouldShowSubmitQr()가 따로 정한다.
 function shouldRenderSubmitQr() {
     if (AppState.mode !== 'exam') return false;
     // preview에서는 제출 QR과 이를 전제로 한 OS 등록(블루프린트/출제이력)까지 전부 차단된다.
@@ -855,12 +858,9 @@ function shouldRenderSubmitQr() {
     }
 }
 
+// 2026-11-01 사용자 결정: 제출 QR은 항상 학생 포털(OMR 목록)로 보낸다. 옛 ../check/ 화면은 쓰지 않는다.
 function buildSubmitQrTargetUrl() {
     const params = new URLSearchParams(window.location.search);
-    const classId = params.get('class') || '';
-    const teacherName = params.get('teacher') || '';
-    const className = params.get('className') || '';
-    
     let date = params.get('date') || '';
     if (!date) {
         const d = new Date();
@@ -869,37 +869,22 @@ function buildSubmitQrTargetUrl() {
         const day = String(d.getDate()).padStart(2, '0');
         date = `${year}-${month}-${day}`;
     }
-    
+
     const q = params.get('q') || AppState.data.length || 0;
     const exam = getIdentityTitle() || '시험지';
     const dataUrl = params.get('data') || '';
 
-    if (!classId) {
-        const url = new URL('../apmath/student/', window.location.href);
-        url.searchParams.set('omr', '1');
-        url.searchParams.set('exam', exam);
-        url.searchParams.set('date', date);
-        url.searchParams.set('q', q);
-        if (dataUrl) url.searchParams.set('archiveFile', dataUrl);
-        return url.toString();
-    }
-
-    const url = new URL('../check/', window.location.href);
-    if (classId) url.searchParams.set('class', classId);
-    if (teacherName) url.searchParams.set('teacher', teacherName);
-    if (className) url.searchParams.set('className', className);
+    const url = new URL('../apmath/student/', window.location.href);
+    url.searchParams.set('omr', '1');
     url.searchParams.set('exam', exam);
     url.searchParams.set('date', date);
     url.searchParams.set('q', q);
-
-    // [3B] archive_file 전달
     if (dataUrl) url.searchParams.set('archiveFile', dataUrl);
-
     return url.toString();
 }
 
 function injectSubmitQrToLastExamPage(area, ctx = null) {
-    if (!(ctx ? ctx.candidate.qrState.renderSubmit : shouldRenderSubmitQr())) return;
+    if (!(ctx ? ctx.candidate.qrState.renderSubmitQr : shouldShowSubmitQr())) return;
     if (typeof QRious !== 'function') return;
 
     const pages = area.querySelectorAll('.page');
@@ -910,13 +895,10 @@ function injectSubmitQrToLastExamPage(area, ctx = null) {
     const oldQr = targetPage.querySelector('.page-submit-qr');
     if (oldQr) oldQr.remove();
 
-    const params = new URLSearchParams(ctx ? new URL(ctx.candidate.environment.url).search : window.location.search);
-    const hasClass = !!params.get('class');
-
     const qrWrap = document.createElement('div');
     qrWrap.className = 'page-submit-qr';
     
-    const warnHtml = hasClass ? '' : `<div class="page-submit-qr-warn">학생페이지로 이동</div>`;
+    const warnHtml = `<div class="page-submit-qr-warn">학생페이지로 이동</div>`;
     
     qrWrap.innerHTML = `
         <div class="page-submit-qr-info">
@@ -938,6 +920,17 @@ function injectSubmitQrToLastExamPage(area, ctx = null) {
         foreground: 'black',
         padding: 0
     });
+}
+
+// 제출 QR을 시험지에 그릴지: 선생님이 고른 경우(showSubmitQr=1)만. 미리보기·시험지 외 모드에서는 그리지 않는다.
+function shouldShowSubmitQr() {
+    if (AppState.mode !== 'exam') return false;
+    if (isPreviewMode()) return false;
+    try {
+        return new URLSearchParams(window.location.search).get('showSubmitQr') === '1';
+    } catch (e) {
+        return false;
+    }
 }
 
 // =========================================================================
