@@ -715,7 +715,8 @@ def prepare(spec):
             if oid not in named and point_name is not None:labels.append({'id':oid+'-name','kind':'POINT_NAME','target':oid,'text':point_name,'at':vp.screen(value),'font':tokens['pointName'],'priority':obj.get('priority',1)})
         elif kind in {'LINE','AUXILIARY_LINE'}:
             hits=clip_line(value,vp.bounds)
-            if len(hits)==2:primitive({'id':oid,'kind':'line','from':vp.screen(hits[0]),'to':vp.screen(hits[1]),'token':'auxiliary' if kind=='AUXILIARY_LINE' else 'secondaryShape' if kind=='LINE' and obj.get('dash') else 'tangent' if oid in tangent_lines else 'mainShape','layer':20 if kind=='AUXILIARY_LINE' else 40,'role':'auxiliary' if kind=='AUXILIARY_LINE' else 'line','dash':'4 3' if kind=='AUXILIARY_LINE' or (kind=='LINE' and obj.get('dash')) else ''},'auxiliary' if kind=='AUXILIARY_LINE' else 'line')
+            # color (G12-2): an overlay line of a colour group wears the palette's line colour at the colour width
+            if len(hits)==2:primitive({'id':oid,'kind':'line','from':vp.screen(hits[0]),'to':vp.screen(hits[1]),'token':'auxiliary' if kind=='AUXILIARY_LINE' else 'secondaryShape' if kind=='LINE' and obj.get('dash') else 'tangent' if oid in tangent_lines else 'mainShape','layer':20 if kind=='AUXILIARY_LINE' else 40,'role':'auxiliary' if kind=='AUXILIARY_LINE' else 'line','dash':'4 3' if kind=='AUXILIARY_LINE' or (kind=='LINE' and obj.get('dash')) else '',**({'stroke':PALETTE[obj['color']]['line'],'strokeWidth':COLORED_SEGMENT_WIDTH} if kind=='LINE' and obj.get('color') else {})},'auxiliary' if kind=='AUXILIARY_LINE' else 'line')
         elif kind=='SEGMENT' and obj.get('guide') is True:
             # E37: a light dotted guide line from a point of the main figure to its pulled-out copy (planeMarks.callouts link); labels keep clear of it like any line
             primitive({'id':oid,'kind':'line','from':vp.screen(value[0]),'to':vp.screen(value[1]),'token':'leaderLine','layer':25,'role':'guide','stroke':GUIDE_STROKE,'dash':'2 4'},'line')
@@ -753,8 +754,9 @@ def prepare(spec):
             # A simple closed polygon of displayed points (graph overlays): a light fill under the strokes, then its own closed outline.
             vertices=[vp.screen(p) for p in value]
             if obj.get('fill') and obj['fill']!='NONE':
-                primitive({'id':oid+'-fill','kind':'polygon','points':vertices,'token':'secondaryShape','layer':10,'role':'region','fill':REGION_FILLS.get(obj['fill'],REGION_FILLS['LIGHT']),'noStroke':True},'curve')
-            primitive({'id':oid,'kind':'polyline','points':vertices+[vertices[0]],'token':'secondaryShape','layer':35,'role':'overlayPolygon'},'line')
+                primitive({'id':oid+'-fill','kind':'polygon','points':vertices,'token':'secondaryShape','layer':10,'role':'region',**(region_paint(obj['fill']) if obj['fill'] in PALETTE else {'fill':REGION_FILLS.get(obj['fill'],REGION_FILLS['LIGHT'])}),'noStroke':True},'curve')
+            # a polygon of a colour group (G12-2) also draws its outline in that colour's line colour
+            primitive({'id':oid,'kind':'polyline','points':vertices+[vertices[0]],'token':'secondaryShape','layer':35,'role':'overlayPolygon',**({'stroke':PALETTE[obj['fill']]['line'],'strokeWidth':COLORED_SEGMENT_WIDTH} if obj.get('fill') in PALETTE else {})},'line')
             if obj.get('labelText') is not None:
                 # An optional label (a formula such as b, or plain Korean text) inside the polygon where it has the most room, like a region label.
                 if obj.get('labelKind','MATH')=='TEXT':
@@ -933,7 +935,7 @@ def prepare(spec):
             main=graph_index==0 or str(obj.get('branch','')).startswith(('PIECE_','G_PIECE_'))
             curve_style=obj.get('curveStyle')
             for index,branch in enumerate(result['branches']):
-                primitive({'id':oid+'-branch-'+str(index),'kind':'polyline','points':[vp.screen(p) for p in branch],'token':'mainCurve' if main else 'secondaryCurve','layer':40 if main else 35,'role':'curve',**({'branch':obj['branch']} if 'branch' in obj else {}),**({'dash':'6 4'} if curve_style=='DASHED' else {'stroke':ACCENT_STROKE} if curve_style=='ACCENT' else {})},'curve')
+                primitive({'id':oid+'-branch-'+str(index),'kind':'polyline','points':[vp.screen(p) for p in branch],'token':'mainCurve' if main else 'secondaryCurve','layer':40 if main else 35,'role':'curve',**({'branch':obj['branch']} if 'branch' in obj else {}),**({'dash':'6 4'} if curve_style=='DASHED' else {'stroke':ACCENT_STROKE} if curve_style=='ACCENT' else {}),**({'stroke':PALETTE[obj['color']]['line']} if obj.get('color') else {})},'curve')
             graph_index+=1
         elif kind=='PERPENDICULAR_MARK':
             at=vp.screen(obj['at']);vectors=[]

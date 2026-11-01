@@ -1,0 +1,156 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "-2",
+     "0",
+     "1"
+    ]
+   }
+  ],
+  "breakpoints": [],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "formula": "x^2-2",
+  "domain": [
+   -3,
+   3
+  ],
+  "viewport": [
+   -3,
+   4,
+   -4,
+   6
+  ],
+  "overlays": {
+   "lines": [
+    {
+     "id": "L",
+     "slope": "1",
+     "intercept": "0",
+     "label": "y=tx",
+     "labelAt": "END"
+    },
+    {
+     "id": "M1",
+     "slope": "-1",
+     "intercept": "4",
+     "label": "y=-x+4",
+     "labelAt": "START",
+     "color": "BLUE"
+    },
+    {
+     "id": "M2",
+     "slope": "-1",
+     "intercept": "-2",
+     "label": "y=-x-2",
+     "labelAt": "END",
+     "color": "WARM"
+    }
+   ],
+   "points": [
+    {
+     "id": "O",
+     "x": "0",
+     "y": "0"
+    },
+    {
+     "id": "P1",
+     "curveX": "2",
+     "coordinates": true
+    },
+    {
+     "id": "P2",
+     "curveX": "-1",
+     "coordinates": true
+    },
+    {
+     "id": "Q1",
+     "x": "0",
+     "y": "4",
+     "coordinates": true
+    },
+    {
+     "id": "Q2p",
+     "x": "0",
+     "y": "-2",
+     "unnamed": true
+    }
+   ],
+   "guides": [
+    {
+     "id": "g1",
+     "from": "P1",
+     "axis": "x"
+    },
+    {
+     "id": "g2",
+     "from": "P2",
+     "axis": "x"
+    }
+   ],
+   "polygons": [
+    {
+     "id": "T1",
+     "points": [
+      "O",
+      "P1",
+      "Q1"
+     ],
+     "fill": "BLUE"
+    },
+    {
+     "id": "T2",
+     "points": [
+      "O",
+      "P2",
+      "Q2p"
+     ],
+     "fill": "WARM"
+    }
+   ]
+  },
+  "requiredPoints": [
+   {
+    "id": "Q2",
+    "x": 0,
+    "y": -2
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "coordinateBand": {
+   "hide": [
+    "Q2"
+   ]
+  },
+  "curveColor": "GREEN"
+ },
+ "pointNames": {
+  "O": "O",
+  "P1": "P_1",
+  "P2": "P_2",
+  "Q1": "Q_1",
+  "Q2": "Q_2"
+ },
+ "caption": "예: t=1일 때 y=x²-2와 y=tx의 교점 P_1, P_2에서 y=tx에 수직인 직선이 y축과 만나는 점 Q_1, Q_2를 잡아 삼각형 OP_1Q_1(파란색), OP_2Q_2(주황색)를 보인다. 점선은 P_1, P_2의 x좌표 α, β의 위치이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "y=x^2-2와 y=tx의 교점 P1, P2, P1·P2를 지나 y=tx에 수직인 직선이 y축과 만나는 점 Q1, Q2, 삼각형 OP1Q1, OP2Q2",
+   "mappedTo": [
+    "graphPlan.pieces",
+    "graphPlan.overlays"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "t=1일 때 점 P1, P2, Q1, Q2의 위치와 두 삼각형"
+ ]
+}

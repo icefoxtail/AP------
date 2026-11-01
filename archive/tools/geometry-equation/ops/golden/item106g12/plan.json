@@ -1,0 +1,65 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "0",
+   "6"
+  ],
+  "denominator": [
+   "-2",
+   "3"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -6,
+   10
+  ],
+  "viewport": [
+   -6,
+   10,
+   -4,
+   8
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "lines": [
+    {
+     "id": "ht",
+     "slope": "0",
+     "intercept": "4",
+     "label": "y=t"
+    }
+   ],
+   "points": [
+    {
+     "id": "Z",
+     "curveX": "4/3",
+     "unnamed": true
+    }
+   ]
+  },
+  "asymptoteLabelAt": "END"
+ },
+ "caption": "예: t=4인 수평선 y=t는 곡선 y=4/(3x-2)+2와 한 점에서 만나지만, 점근선 y=2와는 만나지 않는다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "유리함수 y=4/(3x-2)+2와 직선 y=t가 만나는 점의 개수를 f(t)라 한다.",
+   "mappedTo": [
+    "graphPlan.numerator",
+    "graphPlan.denominator",
+    "graphPlan.overlays"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "점근선 y=2와 만나지 않는 t=2, 그 밖의 t에서 한 점에서 만나는 수평선"
+ ],
+ "sourceQuote": "수평선 $y=2$와는 만나지 않고, $y=t$ ($t\\ne2$)와는 한 번 만난다"
+}
