@@ -3595,37 +3595,6 @@ window.mainDB = {
       "primaryStandardCourse": "확률과 통계"
     },
     {
-      "file": "similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사.js",
-      "school": "제일고",
-      "topic": "수학II",
-      "grade": "고2",
-      "year": 2025,
-      "semester": "2",
-      "examType": "final",
-      "subject": "수학II",
-      "contentType": "유형",
-      "qCount": 23,
-      "rangeStartUnitKey": "H15-M2-04",
-      "rangeStartUnit": "도함수",
-      "rangeStartUnitOrder": 4,
-      "rangeEndUnitKey": "H15-M2-09",
-      "rangeEndUnit": "적분의 활용",
-      "rangeEndUnitOrder": 9,
-      "courseRanges": [
-        {
-          "standardCourse": "수학II",
-          "courseCode": "H15-M2",
-          "rangeStartUnitKey": "H15-M2-04",
-          "rangeStartUnit": "도함수",
-          "rangeStartUnitOrder": 4,
-          "rangeEndUnitKey": "H15-M2-09",
-          "rangeEndUnit": "적분의 활용",
-          "rangeEndUnitOrder": 9
-        }
-      ],
-      "primaryStandardCourse": "수학II"
-    },
-    {
       "file": "similar/high/h2/1mid/25_제일고_1학기_중간_고2_유사.js",
       "school": "제일고",
       "topic": "",
