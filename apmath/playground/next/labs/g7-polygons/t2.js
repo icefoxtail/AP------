@@ -251,7 +251,7 @@
       const pts = [A, B, Cp, X].concat(extB ? [extB, extC] : []).concat(F ? [F] : []);
       fit(b, bboxOf(pts), { t: 50, b: 92, l: 40, r: 40 });
       const st = C.step, cen = pt((A.x + B.x + Cp.x) / 3, (A.y + B.y + Cp.y) / 3);
-      const sh = (n) => (C.problem ? n <= 0 : st >= n);
+      const sh = (n) => (C.problem ? true : st >= n);
       fillPoly(b, [A, B, Cp], 'sky', 0.1);
       poly(b, [A, B, Cp], 'ink', 3.4);
       // 연장선
@@ -333,7 +333,7 @@
       const { a, k, x } = M, V = BIS;
       const w = [[V[1].val(a), '내각의 이등분선 둘일 때의 값이에요. 이 문제와 다른 경우예요.'], [V[2].val(a), '외각의 이등분선 둘일 때의 값이에요.'], [V[3].val(a), '내각과 외각의 이등분선일 때의 값이에요.'], [180 - a, '∠A의 보각을 구했어요.'], [90 + a, '90°에 ∠A를 그대로 더했어요. ½을 곱해요.'], [a, '∠A 그대로예요.']].filter((q) => Math.abs(q[0] - x) > 1e-6);
       const stems = { 1: '∠B의 이등분선과 ∠C의 이등분선이 만나는 점을 I라 할 때, ∠BIC의 크기 $x$는?', 2: '∠B의 외각의 이등분선과 ∠C의 외각의 이등분선이 만나는 점을 E라 할 때, ∠BEC의 크기 $x$는?', 3: '∠B의 이등분선과 ∠C의 외각의 이등분선이 만나는 점을 D라 할 때, ∠BDC의 크기 $x$는?' };
-      return { tag: ['', '내각의 이등분선', '외각의 이등분선', '내각과 외각의 이등분선'][k], key: `k${k}a${a}`, stem: `삼각형 ABC에서 ∠A=${a}°이고 ${stems[k]}`, choices: mkChoices(x, w) };
+      return { tag: '이등분선이 만드는 각', key: `k${k}a${a}`, stem: `삼각형 ABC에서 ∠A=${a}°이고 ${stems[k]}`, choices: mkChoices(x, w) };
     },
     verify: (s) => { const M = bis.model(s), g = M.g; return { ans: angBetween(g.X, g.B, g.C), model: M.x }; }
   };
@@ -457,8 +457,8 @@
       tick(b, A, B, 2, 'rose'); tick(b, A, Cp, 2, 'rose'); if (done || C.problem) tick(b, Cp, D, 2, 'rose');
       // 각
       ang(b, B, Cp, A, { color: 'sky', rings: 1, r: 30, label: C.problem ? dg(bb) : dg(bb), size: 16 });
-      ang(b, Cp, A, B, { color: 'sky', rings: 1, r: 30, label: dg(bb), size: 16, labelDist: 52 });
-      ang(b, A, B, Cp, { color: 'sky', r: 30, label: dg(al), size: 16, labelDist: 56 });
+      ang(b, Cp, A, B, { color: 'sky', rings: 1, r: 30, label: C.problem ? '' : dg(bb), size: 16, labelDist: 52 });
+      ang(b, A, B, Cp, { color: 'sky', r: 30, label: C.problem ? '' : dg(al), size: 16, labelDist: 56 });
       if (done || C.problem) {
         if (m2 > 0.01 || C.problem) {
           ang(b, A, Cp, D, { color: 'amber', rings: 2, r: 34, label: C.problem ? '' : dg(d), size: 16, labelDist: 62, alpha: C.problem ? 1 : m2 });
