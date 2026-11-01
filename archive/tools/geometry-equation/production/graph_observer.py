@@ -1628,7 +1628,9 @@ def _pp_ref_crossings(pieces,intervals,source,row):
     return sorted(found)
 
 
-GRAPH_REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
+GRAPH_REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5','BLUE':'#7fa6e8','WARM':'#f2a65a','GREEN':'#6fcf97','ROSE':'#e98aa8','VIOLET':'#a78bdb'}
+# the colour-group tints (C1) are translucent: this observer's own copy of their fill-opacity (the gray ones carry none)
+GRAPH_REGION_OPACITY={'BLUE':0.32,'WARM':0.42,'GREEN':0.42,'ROSE':0.42,'VIOLET':0.42}
 GRAPH_REGION_BOUNDARY_TOLERANCE=0.75   # svg px: a fill boundary against the boundary curve at sample x
 GRAPH_REGION_OUTSIDE=0.02              # relative band height: how far outside counts as outside the fill
 
@@ -1739,7 +1741,7 @@ def graph_region_audit(plan,svg,transform,pieces,intervals,refs,features,root):
             if not frozen_same:errors.append('GRAPH_REGION_INVENTORY_MISMATCH:'+region_id)
         node=paths.get('region-'+region_id)
         if node is None:errors.append('GRAPH_REGION_MISSING:'+region_id);continue
-        if node.get('fill')!=GRAPH_REGION_FILLS.get(fill):errors.append('GRAPH_REGION_FILL_MISMATCH:'+region_id)
+        if node.get('fill')!=GRAPH_REGION_FILLS.get(fill) or (None if node.get('fill-opacity') is None else round(float(node.get('fill-opacity')),6))!=GRAPH_REGION_OPACITY.get(fill):errors.append('GRAPH_REGION_FILL_MISMATCH:'+region_id)
         if node.get('fill-rule')!='evenodd':errors.append('GRAPH_REGION_FILL_RULE_MISMATCH:'+region_id)
         if node.get('stroke') not in {None,'none'}:errors.append('GRAPH_REGION_STROKE_PRESENT:'+region_id)
         try:polygon=[((px-transform['originX'])/transform['sx'],(transform['originY']-py)/transform['sy']) for px,py in _region_polygon(node)]

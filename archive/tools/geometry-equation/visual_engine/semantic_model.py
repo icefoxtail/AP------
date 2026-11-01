@@ -3,6 +3,7 @@ from __future__ import annotations
 from copy import deepcopy
 import math
 import re
+from .palette import PALETTE_NAMES
 from .geometry_model import (Line,Circle,CircularArc,point,finite,line_intersection,
     parallel_check,perpendicular_check,point_on_line,tangent_check)
 
@@ -12,7 +13,7 @@ KINDS = {'POINT','POINT_NAME','COORDINATE_LABEL','LINE','SEGMENT','CIRCLE','CIRC
     'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE','FILL_REGION','POLYGON','GRAPH_REGION','DIMENSION_LINE','PATH_LABEL','QUADRANT'}
 VISUAL_TYPES={'coordinate_geometry','line_circle_geometry','function_graph','calculus_graph','explanation_card'}
 RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUAL_MARK','PARALLEL_MARK'}
-FIELDS={'curveStyle','id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','pattern','through','spanDeg','radiusPoint','radiusSegment','upper','lower','marker','unit','emphasis','emphasisGroup','markerRadius','lineFallback','collinearOwners','side','offset','labelPlacement','span','labelAt','segments','freeLabel','anchor','straight','straightSide','lineAt','lineBand','ringLeader','leaderOnly','lineBarrier','quadrant','arcScale','angleDimension','leader','labeledPieces','arrowInset'}
+FIELDS={'curveStyle','id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','pattern','through','spanDeg','radiusPoint','radiusSegment','upper','lower','marker','unit','emphasis','emphasisGroup','markerRadius','lineFallback','collinearOwners','side','offset','labelPlacement','span','labelAt','segments','freeLabel','anchor','straight','straightSide','lineAt','lineBand','ringLeader','leaderOnly','lineBarrier','quadrant','arcScale','angleDimension','leader','labeledPieces','arrowInset','color'}
 REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'TRACE_ARC':{'centerPoint','through'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'},'POLYGON':{'refs'},'GRAPH_REGION':{'upper','lower','domain','fill'},'DIMENSION_LINE':{'refs','side'},'PATH_LABEL':{'labelText','refs'},'QUADRANT':{'quadrant'}}
 
 FIELDS|={'labelWeight','extension','offsetPx','paths','pathMark','autoOffset','over','ownership','markStyle','closed'}   # E32 additions to the component fields (kept apart from the long set above)
@@ -247,7 +248,7 @@ def validate(spec):
         if obj['kind'] != 'FILL_REGION': continue
         # A region is closed chains of straight edges and circular arcs between displayed points (even-odd fill: shapes minus holes).
         loops=obj['loops']
-        if obj['fill'] not in {'LIGHT','MEDIUM'}: raise ValueError('REGION_FILL_UNSUPPORTED:'+obj['id'])
+        if obj['fill'] not in {'LIGHT','MEDIUM',*PALETTE_NAMES}: raise ValueError('REGION_FILL_UNSUPPORTED:'+obj['id'])
         # pattern HATCH paints real diagonal strokes clipped to this even-odd area: the source says 빗금친.
         if obj.get('pattern') not in (None,'HATCH'): raise ValueError('REGION_PATTERN_UNSUPPORTED:'+obj['id'])
         if obj.get('labelKind','MATH') not in {'MATH','TEXT'}: raise ValueError('REGION_FIELD_INVALID:labelKind:'+obj['id'])
@@ -286,7 +287,7 @@ def validate(spec):
         if obj['kind'] != 'GRAPH_REGION': continue
         # A graph region is a band between two sampled function boundaries over [lo,hi]: each side is rows of {expression, domain} that
         # exactly cover the interval in order (the engine samples those expressions; the boundary is the drawn curve itself).
-        if obj['fill'] not in {'LIGHT','MEDIUM'}: raise ValueError('GRAPH_REGION_FILL_UNSUPPORTED:'+obj['id'])
+        if obj['fill'] not in {'LIGHT','MEDIUM',*PALETTE_NAMES}: raise ValueError('GRAPH_REGION_FILL_UNSUPPORTED:'+obj['id'])
         lo,hi=point(obj['domain'])
         if not lo<hi: raise ValueError('GRAPH_REGION_DOMAIN_INVALID:'+obj['id'])
         for side in ('upper','lower'):

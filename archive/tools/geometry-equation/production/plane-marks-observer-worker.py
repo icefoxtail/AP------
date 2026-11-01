@@ -7,7 +7,7 @@ import re
 import sys
 import xml.etree.ElementTree as ET
 from worker import read_request,VERSION
-from plane_regions_observer import audit_regions
+from plane_regions_observer import audit_regions,PALETTE_FILLS,drawn_fill
 
 ANGLE_TOLERANCE=0.5          # degrees: a drawn angle against its stated value
 RAY_TOLERANCE=0.05           # degrees: an arc end against the ray it should start on
@@ -21,6 +21,10 @@ EMPHASIS_WIDTH=3.0           # px: an emphasized segment's stroke (the default s
 DEFAULT_STROKE='#111'
 ACCENT_STROKE='#c0392b'      # emphasis ACCENT: the red of a singled-out segment
 ANGLE_GROUP_STROKES={1:'#c0392b',2:'#1f5fa8',3:'#2e7d32'}   # emphasisGroup of an angle: the colour of every arc of the group (red, blue, green)
+
+# colour groups (C1): this observer's own copy of the line colours (the tints come from plane_regions_observer.PALETTE_FILLS); tests/test_palette_c1.py ties both to the engine's table
+PALETTE_LINES={'BLUE':'#1f5fa8','WARM':'#b85c00','GREEN':'#2e7d32','ROSE':'#b8325f','VIOLET':'#6b46b3'}
+COLORED_SEGMENT_WIDTH=2.4    # px: a coloured segment's stroke (the default is 1.6, an emphasized one 3.0)
 
 VECTOR_CALL=re.compile(r'(?<![A-Za-z])vec\(([^()]*)\)')              # (G3) a vector name written in a plan label
 VECTOR_TEX=re.compile(r'\\vec\{[^{}]*\}|\\overrightarrow\{[^{}]*\}')   # (G3) the TeX commands a vector name becomes

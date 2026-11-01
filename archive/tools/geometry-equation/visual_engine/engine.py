@@ -9,6 +9,7 @@ import xml.etree.ElementTree as ET
 from fractions import Fraction
 from pathlib import Path
 from . import ENGINE_VERSION
+from .palette import PALETTE,COLORED_SEGMENT_WIDTH
 from .semantic_model import validate
 from .geometry_model import Circle,CircularArc,Line,clip_line,finite
 from .math_expression import parse as _parse_expression,evaluate as _evaluate_expression,parse_list as _parse_list
@@ -69,6 +70,10 @@ def _sample_graph_boundary(rows,vp):
     return points
 
 REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
+def region_paint(name):
+    """The fill fields of a region primitive: the opaque gray of LIGHT / MEDIUM (unchanged), or a palette colour (C1) as its tint colour plus fill-opacity."""
+    if name in PALETTE:return {'fill':PALETTE[name]['fill'],'fillOpacity':PALETTE[name]['opacity']}
+    return {'fill':REGION_FILLS[name]}
 # A light neutral grey, clearly apart from the cooler region fills above, so an angle sector stays distinguishable from a shaded area.
 SECTOR_FILL='#d9d9d9'
 STRAIGHT_SIDE_VECTORS={'ABOVE':(0,-1),'BELOW':(0,1),'LEFT':(-1,0),'RIGHT':(1,0)}   # screen directions (y points down) a straight angle's semicircle may face
@@ -868,7 +873,7 @@ def prepare(spec):
                         dense.append(end)
                     current=step['to'];owners.append(current)
                 dense.pop();d_parts.append('Z');polygons.append(dense)
-            primitive({'id':oid,'kind':'path','d':' '.join(d_parts),'token':'secondaryShape','layer':10,'role':'region','fill':REGION_FILLS[obj['fill']],'noStroke':True,'fillRule':'evenodd',
+            primitive({'id':oid,'kind':'path','d':' '.join(d_parts),'token':'secondaryShape','layer':10,'role':'region',**region_paint(obj['fill']),'noStroke':True,'fillRule':'evenodd',
                        'mark':'region','markId':oid,'ownerPoints':sorted(set(owners)),'fillPolygons':polygons})
             region_areas.append({'id':oid,'polygons':polygons})
             if obj.get('pattern')=='HATCH':
@@ -904,13 +909,13 @@ def prepare(spec):
         elif kind=='GRAPH_REGION':
             # A shaded band between two drawn graph boundaries (graph_plan regions): sample the exact rows named by the plan, then one even-odd
             # path painted beneath every stroke. The independent graph observer recomputes the rows from the plan and reads this path back.
-            if obj['fill'] not in REGION_FILLS:raise ValueError('GRAPH_REGION_FILL_UNSUPPORTED:'+oid)
+            if obj['fill'] not in REGION_FILLS and obj['fill'] not in PALETTE:raise ValueError('GRAPH_REGION_FILL_UNSUPPORTED:'+oid)
             upper=_sample_graph_boundary(obj['upper'],vp);lower=_sample_graph_boundary(obj['lower'],vp)
             if len(upper)<2 or len(lower)<2:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
             polygon=upper+list(reversed(lower))
             if any(b[0]<a[0] for a,b in zip(upper,upper[1:])) or any(b[0]<a[0] for a,b in zip(lower,lower[1:])):raise ValueError('GRAPH_REGION_BOUNDARY_NOT_INCREASING')
             d='M'+_num(polygon[0][0])+' '+_num(polygon[0][1])+' '+' '.join('L'+_num(x)+' '+_num(y) for x,y in polygon[1:])+' Z'
-            primitive({'id':oid,'kind':'path','d':d,'token':'secondaryShape','layer':10,'role':'region','fill':REGION_FILLS[obj['fill']],'noStroke':True,'fillRule':'evenodd',
+            primitive({'id':oid,'kind':'path','d':d,'token':'secondaryShape','layer':10,'role':'region',**region_paint(obj['fill']),'noStroke':True,'fillRule':'evenodd',
                        'mark':'graph-region','markId':oid,'fillPolygons':[polygon]})
             if obj.get('labelText') is not None:
                 tree=parse(obj['labelText']);markup=serialize(tree,'svg')
