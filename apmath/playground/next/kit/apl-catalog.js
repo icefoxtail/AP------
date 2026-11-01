@@ -102,6 +102,27 @@ window.APLab.catalog = {
    "sceneTotal": 23
   },
   {
+   "id": "g7-area",
+   "course": "g7",
+   "unit": "평면도형",
+   "strand": "shape",
+   "order": 2.8,
+   "title": "다각형의 넓이",
+   "short": "다각형의 넓이",
+   "summary": "초등에서 배운 직사각형·평행사변형·삼각형·사다리꼴·마름모의 넓이 공식을 잘라 붙이는 움직임으로 다시 확인하고, 밑변과 높이가 같으면 넓이가 같다는 원리, 사다리꼴 두 방법, 모눈 위 삼각형, 길이 있는 땅의 넓이를 도형을 직접 조절하며 탐구하고 정리와 5지선다 문제로 확인합니다. 다각형 단원에 들어가기 전의 복습 정거장입니다.",
+   "keywords": "넓이 직사각형 평행사변형 삼각형 사다리꼴 마름모 밑변 높이 대각선 초등 복습 넓이가 같은 도형 평행선 사이 밑변의 비 넓이의 비 모눈 바깥 직사각형 길 산책로 잔디밭 평면도형 중1",
+   "badge": "초등 복습",
+   "scenes": [
+    "기본 넓이 공식",
+    "넓이가 같은 도형",
+    "잘라 붙이기·길·땅"
+   ],
+   "legacy": "labs/g7/polygons-area.html",
+   "next": "next/labs/g7-area.html",
+   "glyph": "<path d=\"M10 56 L28 20 L70 20 L52 56 Z\"/><path d=\"M28 20 L28 56\" stroke-dasharray=\"4 4\"/><path d=\"M28 50 H34 V56\"/>",
+   "sceneTotal": 14
+  },
+  {
    "id": "g7-polygons",
    "course": "g7",
    "unit": "평면도형",
@@ -1092,6 +1113,7 @@ window.APLab.catalog = {
     "g7-points-lines",
     "g7-parallel",
     "g7-construction",
+    "g7-area",
     "g7-polygons",
     "g8-triangles",
     "g8-quadrilaterals",
