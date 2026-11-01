@@ -370,8 +370,8 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_미적분I/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 곡선 y=f(x)와 직선 y=x를 그리고, x축 위 a, b에서 점선을 올려 x=a에서는 곡선이 직선 아래, x=b에서는 두 그래프가 만나는 모양을 보여 준다.",
+    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_미적분I/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=f(x)와 직선 y=x를 그리고, x축 위 a, b에서 점선을 올려 x=a에서는 곡선이 직선 아래, x=b에서는 두 그래프가 만나는 모양을 보여 준다. y축에는 직선의 높이 a와 곡선의 높이 f(a)가 점선으로 표시되어 있다.",
     "solutionImageCaption": "x=a에서 곡선이 직선 아래에 있고(f(a)<a), x=b에서 곡선과 직선이 만나므로(f(b)=b) 정답은 ⑤이다.",
     "solutionImageSize": "medium"
   },
@@ -457,7 +457,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_미적분I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: y=x³-2x+3의 두 접점 (1,2), (-1,4)에서 y=x와 평행한 접선 y=x+1, y=x+5를 그리고 두 접점을 점선으로 이었다.",
+    "solutionImageCaption": "좌표가 적힌 큰 점이 접점 (-1,4), (1,2)이다. 두 접선 사이의 거리는 2√2(정답 ①).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -662,7 +666,7 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_미적분I/q16-solution.svg",
+    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_미적분I/q16-solution-v2.svg",
     "solutionImageAlt": "해설 그림: g(m)이 m<-2에서 2, m=-2에서 1, -2<m≤-1에서 0, m>-1에서 1인 계단 그래프이고 m=-2, m=-1에서 불연속임을 점선으로 보여 준다.",
     "solutionImageCaption": "h(x)=(x+2)(x+1)이므로 h(3)=20이고 정답은 ③이다.",
     "solutionImageSize": "medium"
@@ -789,8 +793,8 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_미적분I/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: t=1을 예로 든 y=x²-2, y=tx 그래프에서 교점 P₁(2,2), P₂(-1,-1), 수직선과 y축의 교점 Q₁(0,4), Q₂(0,-2), 삼각형 OP₁Q₁, OP₂Q₂를 보인다.",
+    "solutionImage": "assets/images/26_제일고_2학기_중간_고2_미적분I/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: t=1을 예로 든 y=x²-2, y=tx 그래프에서 교점 P₁(2,2), P₂(-1,-1), 수직선과 y축의 교점 Q₁(0,4), Q₂(0,-2), 삼각형 OP₁Q₁(파란색), OP₂Q₂(주황색)를 보인다.",
     "solutionImageCaption": "예: t=1. S₁-S₂=½(t²+1)√(t²+8)이고 t→0+이면 √2(정답 ⑤).",
     "solutionImageSize": "medium"
   },
