@@ -36,7 +36,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 빗변 AB=4(주황), BC=2√3(파랑), AC=2와 C의 직각 표시를 보여 준다. sinA=BC/AB, tanB=AC/BC에서 파란 변 BC가 약분된다.",
+    "solutionImageCaption": "sinA=√3/2, tanB=1/√3이므로 sinA×tanB=1/2, 정답 ③",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -74,7 +78,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각이 C인 삼각형 ABC에서 AB=4, BC=√7, 피타고라스 정리로 구한 AC=3을 보여 준다. sinB와 cosA는 모두 AC/AB(파랑 변/주황 변)이다.",
+    "solutionImageCaption": "sinB+cosA=3/4+3/4=3/2, 정답 ④",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -111,7 +119,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: tanA=√3/2에서 만든 보조 직각삼각형으로, 높이 √3(파랑), 밑변 2, 빗변 √7(주황)과 ∠A를 보여 준다. 해설의 항등식 값을 확인하는 그림이다.",
+    "solutionImageCaption": "tanA로 만든 직각삼각형에서 sinA·cosA=(√3/√7)(2/√7)=2√3/7, 정답 ⑤",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -148,7 +160,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 변이 1, √3, 2인 직각삼각형에서 tanx=√3인 각 x=60°(파랑)와 siny=1/2인 각 y=30°(주황)를 보여 준다. 두 각의 합이 90°이다.",
+    "solutionImageCaption": "x+y=90°이므로 cos(x+y)=cos90°=0, 정답 ①",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -185,7 +201,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: A=30°인 직각삼각형에서 높이 1(파랑), 밑변 √3(주황), 빗변 2를 보여 준다. 이 변들로 sinA, cosA, tanA를 구한다.",
+    "solutionImageCaption": "내각 3:7:8에서 A=30°이므로 sinA:cosA:tanA=1/2:√3/2:1/√3=√3:3:2, 정답 ④",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -223,7 +243,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 1인 사분원에서 32°와 58°, 같은 길이 0.53인 두 선분(파랑: sin32°=cos58°), tan32°에 해당하는 0.62인 선분(주황)을 보여 준다.",
+    "solutionImageCaption": "sin32°와 cos58°가 같아 소거되고 값은 tan32°≈0.62, 정답 ④",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -261,7 +285,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: A에서 나무 꼭대기 B를 올려본 각 28°, 눈높이와 같은 높이의 수평선 10 m, 눈높이 위 높이 5.32 m(파랑)와 눈높이 1.6 m(주황)를 나타낸 그림.",
+    "solutionImageCaption": "나무 높이는 눈높이 위 5.32 m와 눈높이 1.6 m의 합 6.92 m이다(정답 ③).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -299,7 +327,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 A에서 BC에 내린 수선의 발 H를 잡아 CH=3√3(파랑), BH=√3(주황), AH=3으로 BC=4√3을 나눈 그림.",
+    "solutionImageCaption": "직각삼각형 ABH에서 AB=√((√3)²+3²)=2√3이다(정답 ②).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -337,7 +369,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AB의 연장선에 C에서 수선을 내려 높이 3√3 cm와 바깥각 60°(파랑)를 나타낸 그림.",
+    "solutionImageCaption": "∠A의 바깥각이 60°이므로 sin A=sin 60°=√3/2이고 ∠A=120°이다(정답 ②).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -375,7 +411,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 빗변 AC에 내린 수선의 발 D와 AB에 내린 수선의 발 E, △ABD(주황)와 같은 크기의 30° 각(파랑)을 나타낸 그림.",
+    "solutionImageCaption": "△ABD=1/2·AD·BD=1/2·15·5√3=75√3/2이다(정답 ⑤).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -412,7 +452,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD의 두 대각선 AC=10 cm, BD=6 cm가 점 O에서 만나 마주 보는 60° 한 쌍(파랑)과 120° 한 쌍(주황)을 만든다.",
+    "solutionImageCaption": "네 삼각형 모두 끼인각의 sin 값이 √3/2로 같아 넓이는 1/2·10·6·sin60°=15√3 cm²이다(정답 ②).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -450,7 +494,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD의 대각선 AC=AE+EC=8+2=10과 D에서 내린 수선의 발 E, 같은 길이의 AD와 BC(파랑), 각 x를 나타낸 그림.",
+    "solutionImageCaption": "BC=AD=√(AE·AC)=4√5이므로 cos x=BC/AC=2√5/5이다(정답 ②).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -488,7 +536,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 종이를 AC로 접은 그림에서 A에서 AC가 나누는 같은 크기 67.5°인 두 각(파랑, 접기 대칭)과 C의 67.5°(파랑, 엇각), ∠ABC=45°, 높이 8 cm, BC=8√2 cm를 나타낸 그림.",
+    "solutionImageCaption": "BC=8√2 cm이고 높이가 8 cm이므로 넓이는 1/2·8√2·8=32√2 cm²이다(정답 ④). 접힌 종이 윤곽은 생략했다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -526,7 +578,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 원에서 중심까지 거리 4, 4인 두 현(같은 색)과 반현 5 cm, 오른쪽에서 점 P에서 그은 접선 PA=PB=15 cm, 반지름 OA=8 cm, 직각 OA⊥PA와 PO=y를 보인다.",
+    "solutionImageCaption": "x=10, y=17이므로 x+y=27이다. 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -564,7 +620,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 반지름 OA=OB=OC=6 cm(파랑), 직각 M, CM=MD(주황)를 보이고 오른쪽에 AM=9, OM=3, MB=3 cm, 왼쪽에 CM=MD=3√3 cm를 따로 늘려 그렸다.",
+    "solutionImageCaption": "CD=2CM=6√3 cm이다. 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -602,7 +662,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 현 AB=BC(초록 눈금)와 OM=ON(파랑 눈금), ∠MON=110°이고, 오른쪽에 중심각 ∠AOB=∠BOC=110°(주황 호)를 따로 그렸다.",
+    "solutionImageCaption": "∠ACB=½∠AOB=55°이다. 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -640,7 +704,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 밖의 점 P에서 그은 두 접선 PA=PB=6 cm(파랑), ∠APB=60°, 색칠한 삼각형 APB와 접점에서 OA⊥PA, OB⊥PB인 직각 표식을 보인다.",
+    "solutionImageCaption": "삼각형 APB의 넓이는 9√3 cm²이다. 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -678,7 +746,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 외접하는 사각형 ABCD에서 네 꼭짓점의 접선 길이가 같은 쌍을 같은 색과 눈금으로 묶고 AB=6, AD=4, BC=9 cm를 보인다.",
+    "solutionImageCaption": "AB+CD=AD+BC이므로 CD=7 cm이다. 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -716,7 +788,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 반원 O의 접선 AB=3 cm, CD=7 cm에서 AE=AB(파랑), ED=DC(주황), AD=10 cm와 A에서 그은 수평 보조선으로 만든 높이 4 cm, 밑변 BC=2r인 직각삼각형을 보인다.",
+    "solutionImageCaption": "r²=21이므로 반원의 넓이는 21π/2 cm²이다. 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -754,7 +830,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심이 같은 두 원에서 정사각형 OQPR(변 6, 파랑), 큰 원의 반지름 OA=10(주황), 직각삼각형 OQA에서 AQ=8을 보인다.",
+    "solutionImageCaption": "AP=AQ+QP=8+6=14이다. 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -786,7 +866,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육면체 안의 직각삼각형 EGC를 색칠해 보이고, 오른쪽에 같은 삼각형을 EG=5√2, CG=5, EC=5√3, 직각 G, ∠CEG=x로 따로 그렸다.",
+    "solutionImageCaption": "sinx=CG/EC=1/√3, tanx=CG/EG=1/√2이므로 sinx×tanx=√6/6",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -818,7 +902,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 성벽 BC의 높이 h를 변수로 두고 ∠A=30°, ∠D=45°, AD=20 m, DC=BC=h(파랑)와 AC=h+20을 나타낸 그림.",
+    "solutionImageCaption": "h=20/(√3−1)=10(√3+1) m이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -850,7 +938,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 AM=MB=6 cm(파랑), 반지름 OA=OB=r(주황), CM=3 cm, 직각 M과 오른쪽에 OM=r-3, MC=3, OC=r를 한 직선으로 늘려 그렸다.",
+    "solutionImageCaption": "r²=(r-3)²+6²에서 r=15/2 cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -882,6 +974,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마중_2학기_중간_중3_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD와 세 변에 접하는 원 O에서 반지름 6(초록), DE=DI=w-6(파랑), HI=HG=w-15(주황), CH=9, DH=15를 보이고 아래에 D-I-H를 한 직선으로 늘려 그렸다.",
+    "solutionImageCaption": "2w-21=15에서 w=18이므로 GH=3 cm이다.",
+    "solutionImageSize": "medium"
   }
 ];
