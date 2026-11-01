@@ -16,18 +16,21 @@ window.APLab.catalog = {
    "order": 1,
    "title": "점 · 직선 · 반직선 · 선분 · 각",
    "short": "점·직선·각",
-   "summary": "직선·반직선·선분의 차이, 중점, 맞꼭지각, 종이 접기에서 생기는 각을 점을 움직이며 확인합니다.",
-   "keywords": "점 직선 반직선 선분 각 중점 삼등분점 맞꼭지각 각의 이등분선 수직 수선의 발 두 점 사이의 거리 시침 분침 종이테이프 기본 도형 중1",
+   "summary": "교점과 교선, 직선·반직선·선분의 개수, 중점과 거리, 시계의 각, 맞꼭지각, 수직과 수선을 점을 움직이며 확인하고 5지선다 문제로 점검합니다.",
+   "keywords": "점 선 면 교점 교선 직선 반직선 선분 개수 중점 삼등분점 두 점 사이의 거리 각 시침 분침 맞꼭지각 수직 수선 수선의 발 기본 도형 중1",
    "badge": "기초",
    "scenes": [
-    "직선·반직선·선분 & 공통부분 (5종)",
-    "중점·삼등분·길이의 비 (4종)",
-    "선의 개수·맞꼭지각·시계 (4종)",
-    "종이 테이프 접기·이등분선·직교 (4종)"
+    "점·선·면, 교점·교선",
+    "직선·반직선·선분",
+    "중점과 거리",
+    "시계의 각",
+    "맞꼭지각",
+    "수직과 수선"
    ],
    "legacy": "labs/g7/points-lines.html",
    "next": "next/labs/g7-points-lines.html",
-   "glyph": "<path d=\"M10 52 L64 18\"/><circle cx=\"16\" cy=\"48\" r=\"4\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"58\" cy=\"22\" r=\"4\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M38 58 L70 58\"/>"
+   "glyph": "<path d=\"M10 52 L64 18\"/><circle cx=\"16\" cy=\"48\" r=\"4\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"58\" cy=\"22\" r=\"4\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M38 58 L70 58\"/>",
+   "sceneTotal": 24
   },
   {
    "id": "g7-spatial",
