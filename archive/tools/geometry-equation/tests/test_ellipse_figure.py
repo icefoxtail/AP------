@@ -349,7 +349,7 @@ class ConicProduceTest(unittest.TestCase):
         check(conic_plan(p='0'),'CONIC_PARAMETER_INVALID')
         check(conic_plan(p='x'),'CONIC_PARAMETER_INVALID')
         check(conic_plan(axis='Z'),'CONIC_PARAMETER_INVALID')
-        check(conic_plan(kind='CIRCLE'),'CONIC_KIND_UNSUPPORTED')
+        check(conic_plan(kind='SPIRAL'),'CONIC_KIND_UNSUPPORTED')
         check({**conic_plan(),'ellipse':{'center':['0','0'],'semiAxisSquared':{'major':'4','minor':'1'},'majorAxis':'X'}},'CONIC_PLAN_CONFLICT')
         check(conic_plan(points=[{'id':'A','kind':'ON_CONIC','x':'-1','branch':'POS'}],segments=[]),'CONIC_POINT_NOT_ON_CURVE')
         check(conic_plan(points=[{'id':'A','kind':'ON_CONIC','y':'1'},{'id':'B','kind':'LINE_CONIC','line':'k','which':1}],segments=[],
@@ -441,7 +441,7 @@ class ConicObserverTest(unittest.TestCase):
         self.assertEqual(CO.definition_errors(par,points,directrix=(S.Integer(1),S.Integer(0),S.Integer(-2))),['CONIC_DEFINITION_MISMATCH:A'])
 
     def test_the_observer_refuses_the_same_plans_the_producer_does(self):
-        for value,code in ((conic_plan(kind='CIRCLE'),'CONIC_KIND_UNSUPPORTED'),(conic_plan(p='0'),'CONIC_PARAMETER_INVALID'),
+        for value,code in ((conic_plan(kind='SPIRAL'),'CONIC_KIND_UNSUPPORTED'),(conic_plan(p='0'),'CONIC_PARAMETER_INVALID'),
                            ({**conic_plan(),'ellipse':{}},'CONIC_PLAN_CONFLICT')):
             self.assertEqual(self.audit(conic_svg(),value)['errors'],['PLAN_REFUSED:%s'%code])
 
@@ -600,6 +600,185 @@ class HyperbolaObserverTest(unittest.TestCase):
                            (hyper_plan(points=[{'id':'A','kind':'LINE_LINE','lines':['s1','m']}],
                                        lines=[{'id':'s1','role':'ASYMPTOTE','sign':1},{'id':'m','slope':'1','intercept':'1'}]),'CONIC_LINES_PARALLEL')):
             self.assertEqual(self.audit(hyper_svg(),value)['errors'],['PLAN_REFUSED:%s'%code])
+
+
+# --- G2c: circle / ellipse kinds, two curves, tangents ---------------------------------------------------------------------------------
+def g2c_plan(**fields):
+    value={'capability':'ellipse-figure-v1','caption':'c','sourceConditions':[{'id':'c1','condition':'c','mappedTo':['conics']}],
+           'newVisualInformation':['n']}
+    value.update(fields)
+    return value
+
+
+MIX_CURVES=[{'id':'c1','kind':'ELLIPSE','center':['0','0'],'aSquared':'36','bSquared':'16','major':'X'},
+            {'id':'c2','kind':'PARABOLA','vertex':['0','0'],'p':'1','axis':'X'}]
+
+
+def mix_plan(**fields):
+    value=g2c_plan(conics=MIX_CURVES,
+                   points=[{'id':'O','kind':'ORIGIN','label':False},{'id':'P','kind':'CONIC_CONIC','curves':['c1','c2'],'which':1,'label':False}],
+                   lines=[{'id':'t1','tangent':True,'at':'P','curve':'c1'},{'id':'t2','tangent':True,'at':'P','curve':'c2'}])
+    value.update(fields)
+    return value
+
+
+def circle_plan(**fields):
+    value=g2c_plan(conic={'kind':'CIRCLE','center':['0','0'],'rSquared':'25'},
+                   points=[{'id':'Q','kind':'POINT','x':'7','y':'1','label':False},
+                           {'id':'A','kind':'TANGENT_FROM','from':'Q','which':1,'label':False},
+                           {'id':'B','kind':'TANGENT_FROM','from':'Q','which':2,'label':False}],
+                   lines=[{'id':'u','through':['Q','A'],'tangent':True},{'id':'w','through':['Q','B'],'tangent':True}])
+    value.update(fields)
+    return value
+
+
+G_SCALE=20.0
+
+
+def g2c_svg(plan_value,squash=1.0,moves=None,line_shift=0.0):
+    """A faithful SVG of a circle / ellipse / parabola(axis X, vertex 0,0) plan, drawn from the exact model."""
+    import json as _json
+    model=E.produce(plan_value)
+    ox,oy=200.0,150.0
+    px=lambda x:ox+float(x)*G_SCALE
+    py=lambda y:oy-float(y)*G_SCALE
+    out=['<svg xmlns="%s" width="400" height="300" viewBox="0 0 400 300">'%NS,
+         '<line id="axis-x" data-role="axis" data-axis="x" x1="10" y1="150" x2="390" y2="150"/>',
+         '<line id="axis-y" data-role="axis" data-axis="y" x1="200" y1="290" x2="200" y2="10"/>',
+         '<polygon id="axis-x-head" data-role="axis-head" data-axis="x" points="390,150 381,146.4 381,153.6"/>',
+         '<polygon id="axis-y-head" data-role="axis-head" data-axis="y" points="200,10 196.4,19 203.6,19"/>']
+    rows=model.get('conics') or [dict(model['conic'],id=None)]
+    for row in rows:
+        tag='' if row['id'] is None else ' data-curve-id="%s"'%row['id']
+        if row['kind']=='PARABOLA':
+            samples=[(px(s*s/4),py(s)) for s in [i/10.0 for i in range(-55,56)]]
+        else:
+            if row['kind']=='CIRCLE': rx=ry=float(row['rSquared']['value'])**0.5
+            else:
+                a,b=float(row['aSquared']['value'])**0.5,float(row['bSquared']['value'])**0.5
+                rx,ry=(a,b) if row['major']=='X' else (b,a)
+            import math as _m
+            samples=[(px(rx*_m.cos(i*_m.pi/180)*(squash if row['kind']=='CIRCLE' else 1)),py(ry*_m.sin(i*_m.pi/180))) for i in range(361)]
+        d=' '.join('%s%.2f %.2f'%('L' if i else 'M',x,y) for i,(x,y) in enumerate(samples))
+        out.append('<path id="curve%s" data-role="curve" data-curve="%s"%s d="%s" fill="none"/>'%(row['id'] or '',row['kind'],tag,d))
+    for row in model['points']:
+        x,y=px(row['x']['value']),py(row['y']['value'])
+        if moves and row['id'] in moves: x,y=moves[row['id']]
+        out.append('<circle id="point-%s" data-role="point" data-point="%s" cx="%.2f" cy="%.2f" r="3"/>'%(row['id'],row['id'],x,y))
+    for row in model['lines']:
+        a,b,c=[float(row['general'][key]['value']) for key in 'abc']
+        if abs(b)>1e-12: ends=[(-8,(c-a*-8)/b),(8,(c-a*8)/b)]
+        else: ends=[(c/a,-6),(c/a,6)]
+        out.append('<line id="line-%s" data-role="line" data-line="%s" x1="%.2f" y1="%.2f" x2="%.2f" y2="%.2f"/>'%(
+            row['id'],row['id'],px(ends[0][0]),py(ends[0][1])+line_shift,px(ends[1][0]),py(ends[1][1])+line_shift))
+    out.append('</svg>')
+    return ''.join(out)
+
+
+class G2cProduceTest(unittest.TestCase):
+    def test_two_curves_meet_and_the_tangents_at_the_meeting_are_exact(self):
+        model=E.produce(mix_plan())
+        rows={row['id']:row for row in model['points']}
+        self.assertEqual((rows['P']['x']['exact'],rows['P']['y']['exact']),('3','-2*sqrt(3)'))
+        self.assertEqual(rows['P']['onCurves'],['c1','c2'])
+        self.assertEqual([row['kind'] for row in model['conics']],['ELLIPSE','PARABOLA'])
+        slopes=[row['slope']['value'] for row in model['lines']]
+        self.assertAlmostEqual(slopes[0]*slopes[1],-2/9,places=9)
+        self.assertEqual(model['lines'][0]['tangencyPoint']['x']['exact'],'3')
+
+    def test_a_circle_and_the_tangents_from_an_outside_point(self):
+        model=E.produce(circle_plan())
+        rows={row['id']:row for row in model['points']}
+        self.assertEqual([(rows[i]['x']['exact'],rows[i]['y']['exact']) for i in 'AB'],[('3','4'),('4','-3')])
+        self.assertTrue(all(row['tangent'] for row in model['lines']))
+
+    def test_hyperbola_and_circle_meet_in_four_points_in_x_then_y_order(self):
+        value=g2c_plan(conics=[{'id':'h','kind':'HYPERBOLA','center':['0','0'],'aSquared':'1','bSquared':'24','transverse':'X'},
+                               {'id':'k','kind':'CIRCLE','center':['0','0'],'rSquared':'25'}],
+                       points=[{'id':'P','kind':'CONIC_CONIC','curves':['h','k'],'which':4,'label':False},
+                               {'id':'N','kind':'CONIC_CONIC','curves':['h','k'],'which':1,'label':False}])
+        rows={row['id']:row for row in E.produce(value)['points']}
+        self.assertEqual((rows['P']['x']['exact'],rows['P']['y']['exact']),('7/5','24/5'))
+        self.assertEqual((rows['N']['x']['exact'],rows['N']['y']['exact']),('-7/5','-24/5'))
+
+    def test_an_ellipse_has_foci_and_a_circle_a_centre(self):
+        value=g2c_plan(conic={'kind':'ELLIPSE','center':['0','0'],'aSquared':'25','bSquared':'9','major':'X'},
+                       points=[{'id':'F','kind':'FOCUS','side':1},{'id':'V','kind':'VERTEX','side':-1},{'id':'M','kind':'ON_CONIC','x':'0','branch':'POS'}])
+        rows={row['id']:row for row in E.produce(value)['points']}
+        self.assertEqual((rows['F']['x']['exact'],rows['V']['x']['exact'],rows['M']['y']['exact']),('4','-5','3'))
+        value=g2c_plan(conic={'kind':'CIRCLE','center':['1','2'],'rSquared':'5'},points=[{'id':'C','kind':'CENTER'}])
+        self.assertEqual(E.produce(value)['points'][0]['x']['exact'],'1')
+
+    def test_refusals_carry_their_own_codes(self):
+        check=lambda value,code:refused_with(self,E.produce,value,code)
+        check(mix_plan(lines=[{'id':'t','slope':'0','intercept':'3','tangent':True,'curve':'c1'}]),'CONIC_TANGENT_CLAIM_FALSE')
+        check(circle_plan(lines=[{'id':'t','slope':'0','intercept':'4','tangent':True}]),'CONIC_TANGENT_CLAIM_FALSE')
+        check(circle_plan(points=[{'id':'Q','kind':'POINT','x':'1','y':'1'},{'id':'A','kind':'TANGENT_FROM','from':'Q','which':1}],lines=[]),'CONIC_TANGENT_FROM_INVALID')
+        check(circle_plan(points=[{'id':'Q','kind':'POINT','x':'5','y':'0'},{'id':'A','kind':'TANGENT_FROM','from':'Q','which':1}],lines=[]),'CONIC_TANGENT_FROM_INVALID')
+        check(circle_plan(points=[{'id':'Q','kind':'POINT','x':'7','y':'1'},{'id':'A','kind':'TANGENT_FROM','from':'Q','which':3}],lines=[]),'CONIC_INTERSECTION_INDEX_INVALID')
+        check(mix_plan(points=[{'id':'P','kind':'CONIC_CONIC','curves':['c1','c2'],'which':3}],lines=[]),'CONIC_INTERSECTION_INDEX_INVALID')
+        check(g2c_plan(conics=[MIX_CURVES[0],{'id':'c2','kind':'CIRCLE','center':['10','10'],'rSquared':'1'}],
+                       points=[{'id':'P','kind':'CONIC_CONIC','curves':['c1','c2'],'which':1}]),'CONIC_INTERSECTION_INDEX_INVALID')
+        check(g2c_plan(conics=MIX_CURVES+[{'id':'c3','kind':'CIRCLE','center':['0','0'],'rSquared':'1'}]),'CONIC_TOO_MANY_CURVES')
+        check(mix_plan(conic=MIX_CURVES[0]),'CONIC_PLAN_CONFLICT')
+        check(mix_plan(ellipse={'center':['0','0']}),'CONIC_PLAN_CONFLICT')
+        check(mix_plan(points=[{'id':'F','kind':'FOCUS','side':1}],lines=[]),'CONIC_CURVE_REQUIRED')
+        check(mix_plan(lines=[{'id':'t1','tangent':True,'at':'P'}]),'CONIC_CURVE_REQUIRED')
+        check(g2c_plan(conic={'kind':'CIRCLE','center':['0','0'],'rSquared':'0'}),'CONIC_PARAMETER_INVALID')
+        check(g2c_plan(conic={'kind':'ELLIPSE','center':['0','0'],'aSquared':'4','bSquared':'4','major':'X'}),'CONIC_PARAMETER_INVALID')
+        check(g2c_plan(conic={'kind':'ELLIPSE','center':['0','0'],'aSquared':'0','bSquared':'4','major':'X'}),'CONIC_PARAMETER_INVALID')
+
+
+class G2cObserverTest(unittest.TestCase):
+    def assertFails(self,result,prefix):
+        self.assertEqual(result['status'],'FAIL')
+        self.assertTrue(any(error.startswith(prefix) for error in result['errors']),'%s not in %s'%(prefix,result['errors']))
+
+    def test_faithful_svgs_pass_and_the_dispatch_reads_conics(self):
+        for value in (mix_plan(),circle_plan()):
+            result=CO.audit(value,g2c_svg(value))
+            self.assertEqual(result['status'],'PASS',result['errors'])
+            self.assertAlmostEqual(result['checks']['scale'],G_SCALE,delta=0.05)
+        self.assertEqual(O.audit(mix_plan(),g2c_svg(mix_plan()))['status'],'PASS')
+
+    def test_a_circle_must_be_round(self):
+        value=circle_plan()
+        self.assertFails(CO.audit(value,g2c_svg(value,squash=0.9)),'CONIC_CIRCLE_NOT_ROUND')
+
+    def test_the_meeting_of_two_curves_lies_on_both(self):
+        value=mix_plan()
+        self.assertFails(CO.audit(value,g2c_svg(value,moves={'P':(260.0,190.0)})),'CONIC_CONIC_INTERSECTION_MISMATCH:P')
+
+    def test_a_tangent_from_point_must_touch(self):
+        value=circle_plan()
+        # (5,0) is on the circle but is not a point of contact of the tangents from (7,1)
+        self.assertFails(CO.audit(value,g2c_svg(value,moves={'A':(300.0,150.0)})),'CONIC_TANGENT_FROM_MISMATCH:A')
+
+    def test_a_false_tangent_claim_and_an_undeclared_contact_are_caught(self):
+        base=circle_plan(points=[{'id':'Q','kind':'POINT','x':'7','y':'1','label':False}],lines=[{'id':'u','slope':'0','intercept':'4','tangent':True}])
+        self.assertFails(CO.audit(base,g2c_svg(circle_plan(points=[],lines=[]))),'TANGENT_CLAIM_FALSE:u')
+        undeclared=circle_plan(points=[{'id':'Q','kind':'POINT','x':'7','y':'1','label':False}],lines=[{'id':'u','slope':'0','intercept':'5','tangent':True}])
+        self.assertFails(CO.audit(undeclared,g2c_svg(undeclared)),'TANGENCY_POINT_NOT_DECLARED:u')
+
+    def test_a_tangent_line_drawn_off_its_equation_fails(self):
+        value=mix_plan()
+        self.assertFails(CO.audit(value,g2c_svg(value,line_shift=5.0)),'LINE_OFF_EQUATION')
+
+    def test_the_ellipse_definition_uses_the_plans_own_foci(self):
+        par=CO.conic_of({'kind':'ELLIPSE','center':['0','0'],'aSquared':'25','bSquared':'9','major':'X'})
+        points={'P':(S.Integer(0),S.Integer(3))}
+        self.assertEqual(CO.definition_errors(par,points),[])
+        par['foci']={1:(S.Integer(5),S.Integer(0)),-1:(S.Integer(-4),S.Integer(0))}
+        self.assertEqual(CO.definition_errors(par,points),['CONIC_DEFINITION_MISMATCH:P'])
+
+    def test_the_observer_refuses_the_same_plans_the_producer_does(self):
+        for value,code in ((g2c_plan(conics=MIX_CURVES+[{'id':'c3','kind':'CIRCLE','center':['0','0'],'rSquared':'1'}]),'CONIC_TOO_MANY_CURVES'),
+                           (mix_plan(conic=MIX_CURVES[0]),'CONIC_PLAN_CONFLICT'),
+                           (mix_plan(points=[{'id':'F','kind':'FOCUS','side':1}],lines=[]),'CONIC_CURVE_REQUIRED'),
+                           (circle_plan(points=[{'id':'Q','kind':'POINT','x':'1','y':'1'},{'id':'A','kind':'TANGENT_FROM','from':'Q','which':1}],lines=[]),'CONIC_TANGENT_FROM_INVALID'),
+                           (mix_plan(points=[{'id':'P','kind':'CONIC_CONIC','curves':['c1','c2'],'which':3}],lines=[]),'CONIC_INTERSECTION_INDEX_INVALID'),
+                           (g2c_plan(conic={'kind':'CIRCLE','center':['0','0'],'rSquared':'0'}),'CONIC_PARAMETER_INVALID')):
+            self.assertEqual(CO.audit(value,'<svg xmlns="%s"/>'%NS)['errors'],['PLAN_REFUSED:%s'%code])
 
 
 if __name__=='__main__':

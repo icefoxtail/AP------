@@ -27,7 +27,10 @@ from ellipse_figure_observer import (
 CURVE_TOLERANCE_PX=0.6
 FOOT_ANGLE_DEGREES=0.5
 DEFINITION_TOLERANCE=1e-6
-SUPPORTED_KINDS=('PARABOLA','HYPERBOLA')
+SUPPORTED_KINDS=('PARABOLA','HYPERBOLA','CIRCLE','ELLIPSE')
+MAX_CURVES=2
+ROUND_SPREAD_PX=0.8
+TANGENT_FROM_ANGLE_DEGREES=0.6
 ASYMPTOTE_ANGLE_DEGREES=0.3
 X,Y=S.symbols('X Y',real=True)
 
@@ -44,7 +47,7 @@ def _fl(value):
 
 
 def _real(value):
-    return abs(float(S.N(S.im(value),25)))<1e-12
+    return abs(complex(S.N(value,25)).imag)<1e-12
 
 
 def hyperbola_of(raw):
@@ -71,9 +74,104 @@ def hyperbola_of(raw):
             'foci':foci,'vertices':vertices,'slopes':slopes}
 
 
+def circle_of(raw):
+    if set(raw)-{'kind','center','rSquared'}: raise Refuse('CONIC_PARAMETER_INVALID')
+    center=raw.get('center')
+    if not isinstance(center,list) or len(center)!=2: raise Refuse('CONIC_PARAMETER_INVALID')
+    h,k=_scalar(center[0]),_scalar(center[1])
+    r2=_scalar(raw.get('rSquared'))
+    if _fl(r2)<=0: raise Refuse('CONIC_PARAMETER_INVALID')
+    return {'kind':'CIRCLE','h':h,'k':k,'r2':r2,'r':S.sqrt(r2),'axis':None,'equation':(X-h)**2+(Y-k)**2-r2}
+
+
+def ellipse_of(raw):
+    if set(raw)-{'kind','center','aSquared','bSquared','major'}: raise Refuse('CONIC_PARAMETER_INVALID')
+    center=raw.get('center')
+    if not isinstance(center,list) or len(center)!=2: raise Refuse('CONIC_PARAMETER_INVALID')
+    h,k=_scalar(center[0]),_scalar(center[1])
+    a2,b2=_scalar(raw.get('aSquared')),_scalar(raw.get('bSquared'))
+    axis=raw.get('major')
+    if axis not in ('X','Y') or _fl(a2)<=0 or _fl(b2)<=0 or S.simplify(a2-b2)==0 or _fl(a2)<_fl(b2): raise Refuse('CONIC_PARAMETER_INVALID')
+    on_x=axis=='X'
+    equation=(X-h)**2/a2+(Y-k)**2/b2-1 if on_x else (Y-k)**2/a2+(X-h)**2/b2-1
+    c=S.sqrt(S.simplify(a2-b2));a=S.sqrt(a2)
+    foci={side:((h+side*c,k) if on_x else (h,k+side*c)) for side in (1,-1)}
+    vertices={side:((h+side*a,k) if on_x else (h,k+side*a)) for side in (1,-1)}
+    return {'kind':'ELLIPSE','h':h,'k':k,'a2':a2,'b2':b2,'a':a,'b':S.sqrt(b2),'axis':axis,'equation':equation,'foci':foci,'vertices':vertices}
+
+
 def conic_of(raw):
     if isinstance(raw,dict) and raw.get('kind')=='HYPERBOLA': return hyperbola_of(raw)
+    if isinstance(raw,dict) and raw.get('kind')=='CIRCLE': return circle_of(raw)
+    if isinstance(raw,dict) and raw.get('kind')=='ELLIPSE': return ellipse_of(raw)
     return parabola_of(raw)
+
+
+def pars_of(plan):
+    """({id: curve}, many): the plan's single `conic` (id None) or the one or two `conics`."""
+    if 'conic' in plan and 'conics' in plan: raise Refuse('CONIC_PLAN_CONFLICT')
+    if 'conics' not in plan: return {None:conic_of(plan.get('conic'))},False
+    rows=plan['conics']
+    if not isinstance(rows,list) or not rows: raise Refuse('CONIC_PARAMETER_INVALID')
+    if len(rows)>MAX_CURVES: raise Refuse('CONIC_TOO_MANY_CURVES')
+    pars={}
+    for row in rows:
+        if not isinstance(row,dict) or not isinstance(row.get('id'),str) or row['id'] in pars: raise Refuse('CONIC_PARAMETER_INVALID')
+        pars[row['id']]=conic_of({key:value for key,value in row.items() if key!='id'})
+    return pars,True
+
+
+def pick(raw,pars):
+    cid=raw.get('curve')
+    if cid is None:
+        if len(pars)>1: raise Refuse('CONIC_CURVE_REQUIRED')
+        return next(iter(pars.values()))
+    if not isinstance(cid,str) or cid not in pars: raise Refuse('CONIC_CURVE_UNKNOWN')
+    return pars[cid]
+
+
+def tangency_of(par,line):
+    """The point where the line touches the curve: discriminant of the substituted quadratic is 0 (and it is a quadratic), else None."""
+    a,b,c=line
+    t=S.Symbol('t',real=True)
+    if b!=0:
+        expr=par['equation'].subs({X:t,Y:(c-a*t)/b});at=lambda value:(value,S.simplify((c-a*value)/b))
+    else:
+        expr=par['equation'].subs({X:c/a,Y:t});at=lambda value:(S.simplify(c/a),value)
+    poly=S.Poly(S.expand(S.together(expr)),t)
+    if poly.degree()!=2 or S.simplify(S.discriminant(poly))!=0: return None
+    return at(S.simplify(-poly.coeff_monomial(t)/(2*poly.LC())))
+
+
+def gradient_at(par,point):
+    return (S.simplify(S.diff(par['equation'],X).subs({X:point[0],Y:point[1]})),
+            S.simplify(S.diff(par['equation'],Y).subs({X:point[0],Y:point[1]})))
+
+
+def real_points(solutions):
+    found=[]
+    for row in solutions:
+        x,y=row.get(X),row.get(Y)
+        if x is None or y is None or not (x.is_number and y.is_number) or not (_real(x) and _real(y)): continue
+        found.append((S.simplify(S.re(x)),S.simplify(S.re(y))))
+    unique=[]
+    for point in sorted(found,key=lambda pt:(round(_fl(pt[0]),12),round(_fl(pt[1]),12))):
+        if not unique or any(abs(_fl(point[i]-unique[-1][i]))>1e-12 for i in (0,1)): unique.append(point)
+    return unique
+
+
+def curves_meet(first,second):
+    try: rows=S.solve([first['equation'],second['equation']],[X,Y],dict=True)
+    except (NotImplementedError,ValueError,TypeError): rows=[]
+    return real_points(rows)
+
+
+def contacts_from(par,q):
+    """Points of contact of the tangents from q: on the curve with gradient . (q - P) = 0."""
+    gx,gy=S.diff(par['equation'],X),S.diff(par['equation'],Y)
+    try: rows=S.solve([par['equation'],gx*(q[0]-X)+gy*(q[1]-Y)],[X,Y],dict=True)
+    except (NotImplementedError,ValueError,TypeError): rows=[]
+    return real_points(rows)
 
 
 def parabola_of(raw):
@@ -112,9 +210,23 @@ def hyperbola_definition_errors(par,points):
     return errors
 
 
+def round_definition_errors(par,points):
+    """Circle: |PC| = r.  Ellipse: |PF| + |PF'| = 2a, for every declared point that lies on the curve."""
+    errors=[]
+    for pid,point in points.items():
+        if not on_curve(par,point): continue
+        if par['kind']=='CIRCLE': off=abs(math.hypot(_fl(point[0]-par['h']),_fl(point[1]-par['k']))-_fl(par['r']))
+        else:
+            first,second=par['foci'][1],par['foci'][-1]
+            off=abs(math.hypot(_fl(point[0]-first[0]),_fl(point[1]-first[1]))+math.hypot(_fl(point[0]-second[0]),_fl(point[1]-second[1]))-2*_fl(par['a']))
+        if off>DEFINITION_TOLERANCE: errors.append('CONIC_DEFINITION_MISMATCH:%s'%pid)
+    return errors
+
+
 def definition_errors(par,points,focus=None,directrix=None):
     """|PF| equals the distance to the directrix for every declared point that lies on the parabola."""
     if par['kind']=='HYPERBOLA': return hyperbola_definition_errors(par,points)
+    if par['kind'] in ('CIRCLE','ELLIPSE'): return round_definition_errors(par,points)
     focus=focus or par['focus'];directrix=directrix or par['directrix']
     errors=[]
     for pid,point in points.items():
@@ -143,7 +255,8 @@ def derive(plan):
     if not isinstance(plan,dict): raise Refuse('ELLIPSE_PLAN_INVALID')
     if 'ellipse' in plan or 'ellipses' in plan: raise Refuse('CONIC_PLAN_CONFLICT')
     if plan.get('capability')!='ellipse-figure-v1': raise Refuse('ELLIPSE_PLAN_INVALID')
-    par=conic_of(plan.get('conic'))
+    pars,many=pars_of(plan)
+    par=next(iter(pars.values()))
     raw_points=plan.get('points',[]) or [];raw_lines=plan.get('lines',[]) or []
     ids=[]
     for raw in raw_points:
@@ -153,19 +266,26 @@ def derive(plan):
         ids.append(pid)
     line_ids=[raw.get('id') for raw in raw_lines if isinstance(raw,dict)]
     points={};lines={};feet={};meets={};joins={}
+    extra={'pars':pars,'multi':many,'tangents':{},'tangentFrom':{},'meetings':{},'owners':{}}
     pending_points=list(raw_points);pending_lines=list(raw_lines)
     h,k,p=par['h'],par['k'],par.get('p')
     for _round in range(len(raw_points)+len(raw_lines)+2):
         if not pending_points and not pending_lines: break
         progress=False
         for raw in list(pending_lines):
+            lpar=pick(raw,pars) if (raw.get('role') or raw.get('tangent') is True or 'curve' in raw) else par
             if raw.get('role')=='DIRECTRIX':
-                if par['kind']!='PARABOLA': raise Refuse('CONIC_DIRECTRIX_REQUIRES_PARABOLA')
-                lines[raw['id']]=par['directrix']
+                if lpar['kind']!='PARABOLA': raise Refuse('CONIC_DIRECTRIX_REQUIRES_PARABOLA')
+                lines[raw['id']]=lpar['directrix']
             elif raw.get('role')=='ASYMPTOTE':
-                if par['kind']!='HYPERBOLA': raise Refuse('CONIC_ASYMPTOTE_REQUIRES_HYPERBOLA')
+                if lpar['kind']!='HYPERBOLA': raise Refuse('CONIC_ASYMPTOTE_REQUIRES_HYPERBOLA')
                 if raw.get('sign') not in (1,-1): raise Refuse('CONIC_PARAMETER_INVALID')
-                m=par['slopes'][raw['sign']];lines[raw['id']]=(-m,S.Integer(1),S.simplify(k-m*h))
+                m=lpar['slopes'][raw['sign']];lines[raw['id']]=(-m,S.Integer(1),S.simplify(lpar['k']-m*lpar['h']))
+            elif 'at' in raw:
+                if raw['at'] not in points: continue
+                if not on_curve(lpar,points[raw['at']]): raise Refuse('CONIC_POINT_NOT_ON_CURVE')
+                gx,gy=gradient_at(lpar,points[raw['at']])
+                lines[raw['id']]=(gx,gy,S.simplify(gx*points[raw['at']][0]+gy*points[raw['at']][1]))
             elif 'x' in raw: lines[raw['id']]=(S.Integer(1),S.Integer(0),_scalar(raw['x'],'ELLIPSE_VALUE_INVALID'))
             elif 'y' in raw: lines[raw['id']]=(S.Integer(0),S.Integer(1),_scalar(raw['y'],'ELLIPSE_VALUE_INVALID'))
             elif 'slope' in raw:
@@ -178,47 +298,71 @@ def derive(plan):
                 if a==0 and b==0: raise Refuse('ELLIPSE_LINE_INVALID')
                 lines[raw['id']]=(a,b,S.simplify(a*x1+b*y1))
             else: raise Refuse('ELLIPSE_LINE_INVALID')
+            extra['owners'][raw['id']]=lpar
+            if raw.get('tangent') is True: extra['tangents'][raw['id']]=lpar
             pending_lines.remove(raw);progress=True
         for raw in list(pending_points):
             kind=raw.get('kind');pid=raw['id']
+            cp=pick(raw,pars) if kind in ('FOCUS','VERTEX','CENTER','ON_CONIC','LINE_CONIC','TANGENT_FROM') else par
             if kind=='ORIGIN': value=(S.Integer(0),S.Integer(0))
+            elif kind=='CENTER':
+                if cp['kind']=='PARABOLA': raise Refuse('ELLIPSE_POINT_INVALID')
+                value=(cp['h'],cp['k'])
             elif kind=='FOCUS' or kind=='VERTEX':
-                if par['kind']=='HYPERBOLA':
+                if cp['kind'] in ('HYPERBOLA','ELLIPSE'):
                     if raw.get('side') not in (1,-1): raise Refuse('ELLIPSE_POINT_INVALID')
-                    value=(par['foci'] if kind=='FOCUS' else par['vertices'])[raw['side']]
-                else: value=par['focus'] if kind=='FOCUS' else (h,k)
+                    value=(cp['foci'] if kind=='FOCUS' else cp['vertices'])[raw['side']]
+                elif cp['kind']=='CIRCLE': raise Refuse('ELLIPSE_POINT_INVALID')
+                else: value=cp['focus'] if kind=='FOCUS' else (cp['h'],cp['k'])
             elif kind=='POINT': value=(_scalar(raw.get('x'),'ELLIPSE_VALUE_INVALID'),_scalar(raw.get('y'),'ELLIPSE_VALUE_INVALID'))
             elif kind=='ON_CONIC':
                 has_x,has_y='x' in raw,'y' in raw
                 if has_x==has_y: raise Refuse('ELLIPSE_POINT_INVALID')
                 if has_x:
                     x0=_scalar(raw['x'],'ELLIPSE_VALUE_INVALID')
-                    roots=[S.simplify(r) for r in S.solve(par['equation'].subs(X,x0),Y) if _real(r)]
+                    roots=[S.simplify(r) for r in S.solve(cp['equation'].subs(X,x0),Y) if _real(r)]
                     value_list=[(x0,r) for r in roots]
                     coordinate=1
                 else:
                     y0=_scalar(raw['y'],'ELLIPSE_VALUE_INVALID')
-                    roots=[S.simplify(r) for r in S.solve(par['equation'].subs(Y,y0),X) if _real(r)]
+                    roots=[S.simplify(r) for r in S.solve(cp['equation'].subs(Y,y0),X) if _real(r)]
                     value_list=[(r,y0) for r in roots]
                     coordinate=0
                 if not value_list: raise Refuse('CONIC_POINT_NOT_ON_CURVE')
                 if len(value_list)==1: value=value_list[0]
                 else:
                     branch=raw.get('branch')
-                    if par['kind']=='HYPERBOLA':
+                    if cp['kind']=='HYPERBOLA':
                         # the root list is the branch (other coordinate given) or the half of the other axis (transverse given)
-                        branch=raw.get('sign') if has_x==(par['axis']=='X') else branch
+                        branch=raw.get('sign') if has_x==(cp['axis']=='X') else branch
+                    elif cp['kind'] in ('CIRCLE','ELLIPSE') and branch is None: raise Refuse('ELLIPSE_POINT_INVALID')
                     if branch not in (None,'POS','NEG'): raise Refuse('ELLIPSE_POINT_INVALID')
                     choose=min if branch=='NEG' else max   # POS is the larger of the two roots
                     value=choose(value_list,key=lambda pt:_fl(pt[coordinate]))
             elif kind=='LINE_CONIC':
                 if raw.get('line') not in lines: continue
-                found=_intersections(par,lines[raw['line']])
+                found=_intersections(cp,lines[raw['line']])
                 which=raw.get('which')
                 if not found: raise Refuse('CONIC_LINE_NO_INTERSECTION')
                 if which not in (1,2) or which>len(found): raise Refuse('CONIC_INTERSECTION_INDEX_INVALID')
                 value=found[which-1]
                 meets[pid]={'line':raw['line'],'which':which,'found':found}
+            elif kind=='CONIC_CONIC':
+                pair=raw.get('curves')
+                if not isinstance(pair,list) or len(pair)!=2 or pair[0]==pair[1] or any(cid is None or cid not in pars for cid in pair):
+                    raise Refuse('CONIC_CURVE_UNKNOWN')
+                found=curves_meet(pars[pair[0]],pars[pair[1]])
+                which=raw.get('which')
+                if which not in (1,2,3,4) or isinstance(which,bool) or which>len(found): raise Refuse('CONIC_INTERSECTION_INDEX_INVALID')
+                value=found[which-1];extra['meetings'][pid]=(pair[0],pair[1])
+            elif kind=='TANGENT_FROM':
+                if raw.get('from') not in ids or raw.get('from')==pid: raise Refuse('ELLIPSE_POINT_UNKNOWN')
+                if raw['from'] not in points: continue
+                which=raw.get('which')
+                if which not in (1,2) or isinstance(which,bool): raise Refuse('CONIC_INTERSECTION_INDEX_INVALID')
+                found=contacts_from(cp,points[raw['from']])
+                if len(found)!=2: raise Refuse('CONIC_TANGENT_FROM_INVALID')
+                value=found[which-1];extra['tangentFrom'][pid]=(raw['from'],cp)
             elif kind=='LINE_LINE':
                 pair=raw.get('lines')
                 if not isinstance(pair,list) or len(pair)!=2 or any(lid not in line_ids for lid in pair): raise Refuse('ELLIPSE_LINE_INVALID')
@@ -250,7 +394,7 @@ def derive(plan):
         members=raw.get('points')
         if not isinstance(members,list) or not (3<=len(members)<=6) or len(set(members))!=len(members) \
                 or any(pid not in points for pid in members): raise Refuse('ELLIPSE_POLYGON_INVALID')
-    return par,points,lines,feet,meets,labels,segments,polygons,raw_lines,joins
+    return par,points,lines,feet,meets,labels,segments,polygons,raw_lines,joins,extra
 
 
 def _parse_runs(element):
@@ -327,15 +471,24 @@ def _hyperbola_scale(par,samples,ox,oy):
     return best[1] if best else None
 
 
+def _round_scale(par,samples):
+    """Pixels per model unit read from the drawn extent of a circle or an ellipse alone."""
+    rx2,ry2=(par['r2'],par['r2']) if par['kind']=='CIRCLE' else ((par['a2'],par['b2']) if par['axis']=='X' else (par['b2'],par['a2']))
+    width=max(pt[0] for pt in samples)-min(pt[0] for pt in samples);height=max(pt[1] for pt in samples)-min(pt[1] for pt in samples)
+    wanted=(2*math.sqrt(_fl(rx2)),2*math.sqrt(_fl(ry2)))
+    return (width/wanted[0]+height/wanted[1])/2 if wanted[0] and wanted[1] else None
+
+
 def audit(plan,svg):
     errors=[];checks={'capability':'ellipse-figure-v1','conic':True}
     digest='sha256:'+hashlib.sha256(svg.encode('utf-8')).hexdigest()
     result=lambda:{'status':'PASS' if not errors else 'FAIL','errors':errors,'finalSvgSha256':digest,'checks':checks}
     try:
-        par,points,lines,feet,meets,labels,segments,polygons,raw_lines,joins=derive(plan)
+        par,points,lines,feet,meets,labels,segments,polygons,raw_lines,joins,extra=derive(plan)
     except Refuse as error:
         return {'status':'FAIL','errors':['PLAN_REFUSED:%s'%error],'finalSvgSha256':digest,'checks':checks}
-    errors.extend(definition_errors(par,points))
+    pars=extra['pars'];multi=extra['multi']
+    for one in pars.values(): errors.extend(definition_errors(one,points))
     try: root=ET.fromstring(svg)
     except ET.ParseError:
         return {'status':'FAIL','errors':['SVG_NOT_WELL_FORMED'],'finalSvgSha256':digest,'checks':checks}
@@ -368,32 +521,39 @@ def audit(plan,svg):
         elif tip[1]>min(y1,y2)+PIXEL_TOLERANCE or abs(tip[0]-ox)>PIXEL_TOLERANCE: errors.append('AXIS_HEAD_DIRECTION_INVALID:y')
     if errors: return result()
 
-    # --- the curve: scale from its vertex and farthest sample, then every sample (and chord midpoint) on the equation ------------------------
+    # --- the curves: scale from the declared markers (or a curve alone), then every sample (and chord midpoint) on the equation ------------------
     curves=_find(elements,'curve')
-    hyperbola=par['kind']=='HYPERBOLA'
-    if hyperbola:
-        found_branches=sorted(element.get('data-branch') or '' for element in curves if element.tag==NS+'path')
-        if found_branches!=['NEG','POS']:
-            errors.append('CONIC_HYPERBOLA_BRANCH_MISSING:%s'%','.join(found_branches) if found_branches else 'CONIC_HYPERBOLA_BRANCH_MISSING')
-            return result()
-    if len(curves)!=(2 if hyperbola else 1) or any(element.tag!=NS+'path' for element in curves):
+    if any(element.tag!=NS+'path' for element in curves):
         errors.append('CONIC_CURVE_COUNT_INVALID:%d'%len(curves));return result()
-    branch_runs={}
-    runs=[]
-    for curve in curves:
-        if curve.get('data-curve')!=par['kind']: errors.append('CONIC_CURVE_KIND_MISMATCH')
-        if curve.get('transform'): errors.append('CONIC_CURVE_TRANSFORM_UNSUPPORTED')
-        one=_parse_runs(curve)
-        if not one or any(len(run)<2 for run in one):
-            errors.append('CONIC_CURVE_GEOMETRY_INVALID');return result()
-        branch_runs[curve.get('data-branch') or '']=one;runs.extend(one)
-    samples=[pt for run in runs for pt in run]
+    groups={cid:[] for cid in pars}
+    for element in curves:
+        cid=element.get('data-curve-id') if multi else None
+        if cid not in groups: errors.append('CONIC_CURVE_COUNT_INVALID:%d'%len(curves));return result()
+        groups[cid].append(element)
+    curve_runs={};branch_runs={}
+    for cid,one in pars.items():
+        members=groups[cid]
+        if one['kind']=='HYPERBOLA':
+            found_branches=sorted(element.get('data-branch') or '' for element in members)
+            if found_branches!=['NEG','POS']:
+                errors.append('CONIC_HYPERBOLA_BRANCH_MISSING:%s'%','.join(found_branches) if found_branches else 'CONIC_HYPERBOLA_BRANCH_MISSING')
+                return result()
+        if len(members)!=(2 if one['kind']=='HYPERBOLA' else 1):
+            errors.append('CONIC_CURVE_COUNT_INVALID:%d'%len(curves) if not multi else 'CONIC_CURVE_COUNT_INVALID:%s'%cid);return result()
+        curve_runs[cid]=[];branch_runs[cid]={}
+        for curve in members:
+            if curve.get('data-curve')!=one['kind']: errors.append('CONIC_CURVE_KIND_MISMATCH')
+            if curve.get('transform'): errors.append('CONIC_CURVE_TRANSFORM_UNSUPPORTED')
+            got=_parse_runs(curve)
+            if not got or any(len(run)<2 for run in got):
+                errors.append('CONIC_CURVE_GEOMETRY_INVALID');return result()
+            branch_runs[cid][curve.get('data-branch') or '']=got;curve_runs[cid].extend(got)
+    runs=[run for rows in curve_runs.values() for run in rows]
     markers={}
     for element in _find(elements,'point','data-point'):
         pid=element.get('data-point')
         if pid in markers: errors.append('POINT_DUPLICATE:%s'%pid)
         markers[pid]=(_attr_float(element,'cx',errors,'POINT_COORDINATE_INVALID'),_attr_float(element,'cy',errors,'POINT_COORDINATE_INVALID'))
-    hx,ky=_fl(par['h']),_fl(par['k']);pv=_fl(par['p']) if not hyperbola else 0.0
     # A parabola alone fixes only (p x scale), so the scale is read from the declared point markers (median of
     # their distances from the drawn origin over the exact ones); the curve is then checked against it.
     candidates=[]
@@ -401,44 +561,70 @@ def audit(plan,svg):
         reach=math.hypot(_fl(value[0]),_fl(value[1]))
         if pid in markers and reach>=0.5: candidates.append(math.hypot(markers[pid][0]-ox,markers[pid][1]-oy)/reach)
     candidates.sort()
-    if hyperbola: scale=candidates[len(candidates)//2] if candidates else _hyperbola_scale(par,samples,ox,oy)
-    else: scale=candidates[len(candidates)//2] if candidates else _curve_scale(par,samples,ox,oy,hx,ky,pv)
+    first_id=next(iter(pars))
+    if candidates: scale=candidates[len(candidates)//2]
+    else:
+        lone=pars[first_id];lone_samples=[pt for run in curve_runs[first_id] for pt in run]
+        if lone['kind']=='HYPERBOLA': scale=_hyperbola_scale(lone,lone_samples,ox,oy)
+        elif lone['kind'] in ('CIRCLE','ELLIPSE'): scale=_round_scale(lone,lone_samples)
+        else: scale=_curve_scale(lone,lone_samples,ox,oy,_fl(lone['h']),_fl(lone['k']),_fl(lone['p']))
     if not scale:
         errors.append('CONIC_CURVE_OFF_EQUATION:scale');return result()
     checks['scale']=scale
-    # the drawn curve passes through its vertex
-    if hyperbola:
-        for side,vertex in par['vertices'].items():
+    # the drawn curve passes through its vertices (parabola vertex, hyperbola vertices, the four axis ends of a circle / ellipse)
+    for cid,one in pars.items():
+        samples=[pt for run in curve_runs[cid] for pt in run]
+        tag='' if not multi else ':%s'%cid
+        if one['kind']=='HYPERBOLA': wanted=[('vertex%d'%side,vertex) for side,vertex in one['vertices'].items()]
+        elif one['kind'] in ('CIRCLE','ELLIPSE'):
+            rx2,ry2=(one['r2'],one['r2']) if one['kind']=='CIRCLE' else ((one['a2'],one['b2']) if one['axis']=='X' else (one['b2'],one['a2']))
+            wanted=[('end%d'%index,(one['h']+dx*S.sqrt(rx2),one['k']+dy*S.sqrt(ry2))) for index,(dx,dy) in enumerate(((1,0),(-1,0),(0,1),(0,-1)))]
+        else: wanted=[('vertex',(one['h'],one['k']))]
+        for name,vertex in wanted:
             vx,vy=ox+_fl(vertex[0])*scale,oy-_fl(vertex[1])*scale
             if min(math.hypot(pt[0]-vx,pt[1]-vy) for pt in samples)>PIXEL_TOLERANCE:
-                errors.append('CONIC_CURVE_OFF_EQUATION:vertex%d'%side)
-    elif min(math.hypot(pt[0]-(ox+hx*scale),pt[1]-(oy-ky*scale)) for pt in samples)>PIXEL_TOLERANCE:
-        errors.append('CONIC_CURVE_OFF_EQUATION:vertex')
+                errors.append('CONIC_CURVE_OFF_EQUATION:%s%s'%(name,tag))
+        if one['kind']=='CIRCLE':
+            # the drawn circle is round: every sample is the same distance from the centre of its own bounding box
+            cx=(min(pt[0] for pt in samples)+max(pt[0] for pt in samples))/2;cy=(min(pt[1] for pt in samples)+max(pt[1] for pt in samples))/2
+            radii=[math.hypot(pt[0]-cx,pt[1]-cy) for pt in samples]
+            if max(radii)-min(radii)>ROUND_SPREAD_PX: errors.append('CONIC_CIRCLE_NOT_ROUND%s'%tag)
 
     def pixel(x,y): return ox+_fl(x)*scale,oy-_fl(y)*scale
     def model_of(px,py): return (px-ox)/scale,(oy-py)/scale
-    def curve_distance(px,py):
+    def curve_distance_to(one,px,py):
         mx,my=model_of(px,py)
-        if hyperbola:
-            a2,b2=_fl(par['a2']),_fl(par['b2'])
-            if par['axis']=='X': value=(mx-hx)**2/a2-(my-ky)**2/b2-1;grad=math.hypot(2*(mx-hx)/a2,2*(my-ky)/b2)
+        hx,ky=_fl(one['h']),_fl(one['k'])
+        if one['kind']=='HYPERBOLA':
+            a2,b2=_fl(one['a2']),_fl(one['b2'])
+            if one['axis']=='X': value=(mx-hx)**2/a2-(my-ky)**2/b2-1;grad=math.hypot(2*(mx-hx)/a2,2*(my-ky)/b2)
             else: value=(my-ky)**2/a2-(mx-hx)**2/b2-1;grad=math.hypot(2*(my-ky)/a2,2*(mx-hx)/b2)
-        elif par['axis']=='X': value=(my-ky)**2-4*pv*(mx-hx);grad=math.hypot(2*(my-ky),4*pv)
-        else: value=(mx-hx)**2-4*pv*(my-ky);grad=math.hypot(2*(mx-hx),4*pv)
-        return abs(value)/grad*scale
+        elif one['kind']=='CIRCLE':
+            value=(mx-hx)**2+(my-ky)**2-_fl(one['r2']);grad=math.hypot(2*(mx-hx),2*(my-ky))
+        elif one['kind']=='ELLIPSE':
+            a2,b2=_fl(one['a2']),_fl(one['b2'])
+            rx2,ry2=(a2,b2) if one['axis']=='X' else (b2,a2)
+            value=(mx-hx)**2/rx2+(my-ky)**2/ry2-1;grad=math.hypot(2*(mx-hx)/rx2,2*(my-ky)/ry2)
+        else:
+            pv=_fl(one['p'])
+            if one['axis']=='X': value=(my-ky)**2-4*pv*(mx-hx);grad=math.hypot(2*(my-ky),4*pv)
+            else: value=(mx-hx)**2-4*pv*(my-ky);grad=math.hypot(2*(mx-hx),4*pv)
+        return abs(value)/max(grad,1e-12)*scale
     worst=0.0
-    for run in runs:
-        for index,pt in enumerate(run):
-            worst=max(worst,curve_distance(*pt))
-            if index: worst=max(worst,curve_distance((pt[0]+run[index-1][0])/2,(pt[1]+run[index-1][1])/2))
+    for cid,one in pars.items():
+        for run in curve_runs[cid]:
+            for index,pt in enumerate(run):
+                worst=max(worst,curve_distance_to(one,*pt))
+                if index: worst=max(worst,curve_distance_to(one,(pt[0]+run[index-1][0])/2,(pt[1]+run[index-1][1])/2))
+        if one['kind']=='HYPERBOLA':   # each branch lies on its own side of the centre (POS = larger transverse coordinate)
+            hx,ky=_fl(one['h']),_fl(one['k'])
+            center_px=ox+hx*scale if one['axis']=='X' else oy-ky*scale
+            for name,rows in branch_runs[cid].items():
+                for run in rows:
+                    for pt in run:
+                        delta=(pt[0]-center_px) if one['axis']=='X' else (center_px-pt[1])
+                        if (delta>0)!=(name=='POS'): errors.append('CONIC_HYPERBOLA_BRANCH_MISSING:side-%s'%name);break
     checks['curveWorstPx']=worst
-    if hyperbola:   # each branch lies on its own side of the centre (POS = larger transverse coordinate)
-        center_px=ox+hx*scale if par['axis']=='X' else oy-ky*scale
-        for name,rows in branch_runs.items():
-            for run in rows:
-                for pt in run:
-                    delta=(pt[0]-center_px) if par['axis']=='X' else (center_px-pt[1])
-                    if (delta>0)!=(name=='POS'): errors.append('CONIC_HYPERBOLA_BRANCH_MISSING:side-%s'%name);break
     if worst>CURVE_TOLERANCE_PX: errors.append('CONIC_CURVE_OFF_EQUATION:%.3fpx'%worst)
     for element in elements:
         if element.tag==NS+'path' and element not in curves and element.get('data-role'): errors.append('PATH_UNDECLARED')
@@ -450,7 +636,7 @@ def audit(plan,svg):
         ex,ey=pixel(*value)
         if math.hypot(markers[pid][0]-ex,markers[pid][1]-ey)>PIXEL_TOLERANCE:
             errors.append('POINT_MOVED:%s (%.2f,%.2f) vs (%.2f,%.2f)'%(pid,markers[pid][0],markers[pid][1],ex,ey))
-        if on_curve(par,value) and curve_distance(*markers[pid])>PIXEL_TOLERANCE:
+        if any(on_curve(one,value) and curve_distance_to(one,*markers[pid])>PIXEL_TOLERANCE for one in pars.values()):
             errors.append('CONIC_POINT_OFF_CURVE:%s'%pid)
     for pid in markers:
         if pid not in points: errors.append('POINT_UNDECLARED:%s'%pid)
@@ -472,6 +658,34 @@ def audit(plan,svg):
         mx,my=model_of(*markers[pid])
         if any(line_distance(lines[lid],(S.Float(mx,20),S.Float(my,20)))*scale>PIXEL_TOLERANCE for lid in pair):
             errors.append('CONIC_LINE_LINE_MISMATCH:%s'%pid)
+
+    # a CONIC_CONIC point lies on both of its curves (and is the which-th meeting, by x then y)
+    for pid,pair in extra['meetings'].items():
+        if pid not in markers: continue
+        if any(curve_distance_to(pars[cid],*markers[pid])>PIXEL_TOLERANCE for cid in pair):
+            errors.append('CONIC_CONIC_INTERSECTION_MISMATCH:%s'%pid)
+
+    # a TANGENT_FROM point lies on its curve, and the line from the outside point to it touches the curve there
+    for pid,(origin,one) in extra['tangentFrom'].items():
+        if pid not in markers or origin not in markers: continue
+        mx,my=model_of(*markers[pid]);qx,qy=model_of(*markers[origin])
+        sx,sy=S.Float(mx,20),S.Float(my,20)
+        gx=_fl(S.diff(one['equation'],X).subs({X:sx,Y:sy}));gy=_fl(S.diff(one['equation'],Y).subs({X:sx,Y:sy}))
+        reach=math.hypot(qx-mx,qy-my)*scale
+        bad=curve_distance_to(one,*markers[pid])>PIXEL_TOLERANCE
+        if not bad and reach>=6.0 and math.hypot(gx,gy)>1e-12:
+            cross=abs(gx*(qx-mx)+gy*(qy-my))/(math.hypot(gx,gy)*math.hypot(qx-mx,qy-my))
+            bad=math.degrees(math.asin(min(1.0,cross)))>TANGENT_FROM_ANGLE_DEGREES
+        if bad: errors.append('CONIC_TANGENT_FROM_MISMATCH:%s'%pid)
+
+    # every declared tangent line is proved here: the discriminant of the line put into the curve is 0, and the point of contact is a declared point
+    for lid,one in extra['tangents'].items():
+        touch=tangency_of(one,lines[lid])
+        if touch is None:
+            errors.append('TANGENT_CLAIM_FALSE:%s'%lid);continue
+        touching=[pid for pid,value in points.items() if S.simplify(value[0]-touch[0])==0 and S.simplify(value[1]-touch[1])==0]
+        if not touching: errors.append('TANGENCY_POINT_NOT_DECLARED:%s'%lid)
+        checks.setdefault('tangency',[]).append({'line':lid,'x':str(touch[0]),'y':str(touch[1]),'point':touching[0] if touching else None})
 
     # --- segments and polygons -------------------------------------------------------------------------------------------------------------
     found_segments={}
@@ -521,7 +735,9 @@ def audit(plan,svg):
         code={'DIRECTRIX':'CONIC_DIRECTRIX_MISMATCH','ASYMPTOTE':'CONIC_ASYMPTOTE_MISMATCH'}.get(raw.get('role'),'LINE_OFF_EQUATION')
         if raw.get('role')=='ASYMPTOTE' and math.hypot(x2-x1,y2-y1)>=1.0:
             # slope within 0.3 degrees of the exact asymptote, and the drawn line passes through the centre
-            m=_fl(par['slopes'][raw['sign']]);want=math.atan2(m,1.0);got=math.atan2(-(y2-y1),(x2-x1))
+            owner=extra['owners'][lid]
+            hx,ky=_fl(owner['h']),_fl(owner['k'])
+            m=_fl(owner['slopes'][raw['sign']]);want=math.atan2(m,1.0);got=math.atan2(-(y2-y1),(x2-x1))
             turn=abs((got-want+math.pi/2)%math.pi-math.pi/2)
             cx,cy=ox+hx*scale,oy-ky*scale
             through=abs((x2-x1)*(cy-y1)-(y2-y1)*(cx-x1))/math.hypot(x2-x1,y2-y1)

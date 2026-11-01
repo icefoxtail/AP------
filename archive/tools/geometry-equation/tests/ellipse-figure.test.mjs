@@ -298,8 +298,8 @@ test('a parabola plan derives the focus, directrix, intersection and feet exactl
 test('parabola plans refuse bad parameters, missing intersections and a second plane field',async()=>{
   const withConic=changes=>({...parabolaPlan(),conic:{...parabolaPlan().conic,...changes}});
   await solverRefused(withConic({p:'0'}),'CONIC_PARAMETER_INVALID');
-  await solverRefused(withConic({kind:'CIRCLE'}),'CONIC_KIND_UNSUPPORTED');
-  refused(withConic({kind:'CIRCLE'}),'CONIC_KIND_UNSUPPORTED');
+  await solverRefused(withConic({kind:'SPIRAL'}),'CONIC_KIND_UNSUPPORTED');
+  refused(withConic({kind:'SPIRAL'}),'CONIC_KIND_UNSUPPORTED');
   refused({...parabolaPlan(),ellipse:chordPlan().ellipse},'CONIC_PLAN_CONFLICT');
   refused({...chordPlan(),conic:parabolaPlan().conic},'CONIC_PLAN_CONFLICT');
   refused({...chordPlan(),lines:[{id:'l',slope:'1',intercept:'0',role:'DIRECTRIX'}]},'CONIC_DIRECTRIX_REQUIRES_PARABOLA');
@@ -418,4 +418,55 @@ test('a line name beside a diagonal line is led out corner-first so the leader m
   const lead=[a[0]-b[0],a[1]-b[1]],along=[1,1];
   const cos=Math.abs(lead[0]*along[0]+lead[1]*along[1])/(Math.hypot(...lead)*Math.hypot(...along));
   assert.ok(cos<0.2,'the leader runs close to perpendicular to the line');
+});
+
+// --- G2c: circle / ellipse kinds, two curves (`conics`), tangents --------------------------------------------------------------------------
+const mixPlan=()=>({...base(),
+  conics:[{id:'c1',kind:'ELLIPSE',center:['0','0'],aSquared:'36',bSquared:'16',major:'X'},{id:'c2',kind:'PARABOLA',vertex:['0','0'],p:'1',axis:'X'}],
+  points:[{id:'O',kind:'ORIGIN'},{id:'P',kind:'CONIC_CONIC',curves:['c1','c2'],which:1}],
+  lines:[{id:'t1',tangent:true,at:'P',curve:'c1'},{id:'t2',tangent:true,at:'P',curve:'c2'}]});
+
+test('conics plans check their shape and the solver refuses bad curves, tangents and counts',async()=>{
+  refused({...mixPlan(),conics:[...mixPlan().conics,{id:'c3',kind:'CIRCLE',center:['0','0'],rSquared:'1'}]},'CONIC_TOO_MANY_CURVES');
+  refused({...mixPlan(),conic:mixPlan().conics[0]},'CONIC_PLAN_CONFLICT');
+  refused({...mixPlan(),ellipse:{center:['0','0']}},'CONIC_PLAN_CONFLICT');
+  await solverRefused({...mixPlan(),lines:[{id:'t',slope:'0',intercept:'3',tangent:true,curve:'c1'}]},'CONIC_TANGENT_CLAIM_FALSE');
+  await solverRefused({...mixPlan(),points:[{id:'F',kind:'FOCUS',side:1}],lines:[]},'CONIC_CURVE_REQUIRED');
+  await solverRefused({...mixPlan(),points:[{id:'P',kind:'CONIC_CONIC',curves:['c1','c2'],which:3}],lines:[]},'CONIC_INTERSECTION_INDEX_INVALID');
+  await solverRefused({...base(),conic:{kind:'CIRCLE',center:['0','0'],rSquared:'25'},
+    points:[{id:'Q',kind:'POINT',x:'1',y:'1'},{id:'A',kind:'TANGENT_FROM',from:'Q',which:1}]},'CONIC_TANGENT_FROM_INVALID');
+  await solverRefused({...base(),conic:{kind:'CIRCLE',center:['0','0'],rSquared:'0'}},'CONIC_PARAMETER_INVALID');
+});
+
+test('an ellipse and a parabola meet at P with a tangent to each; the figure renders in Chrome and tampering fails the observer',async()=>{
+  const plan=mixPlan(),model=await solveEllipseFigure(plan);
+  const composed=await composeEllipseFigure({plan,model,identity,typographyPolicy:policy});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  const svg=composed.svg;
+  assert.match(svg,/data-curve="ELLIPSE" data-curve-id="c1"/);
+  assert.match(svg,/data-curve="PARABOLA" data-curve-id="c2"/);
+  assert.match(svg,/data-conic="ELLIPSE\+PARABOLA"/);
+  assert.equal((await auditEllipseSvg({plan,svg})).status,'PASS');
+  const failsWith=async(tampered,prefix)=>{
+    assert.notEqual(tampered,svg);
+    const result=await auditEllipseSvg({plan,svg:tampered});
+    assert.equal(result.status,'FAIL');
+    assert.ok(result.errors.some(error=>error.startsWith(prefix)),`${prefix} in ${JSON.stringify(result.errors)}`);
+  };
+  await failsWith(svg.replace(/(id="point-P" data-role="point"[^>]*?)cy="([0-9.]+)"/,(all,head,cy)=>`${head}cy="${Number(cy)-30}"`),'CONIC_CONIC_INTERSECTION_MISMATCH:P');
+  await failsWith(svg.replace(/(id="line-t1" data-role="line"[^>]*?)y2="([0-9.]+)"/,(all,head,y2)=>`${head}y2="${Number(y2)+10}"`),'LINE_OFF_EQUATION');
+  await failsWith(svg.replace(/<path id="curve-c2"[^>]*\/>/,''),'CONIC_CURVE_COUNT_INVALID');
+});
+
+test('a circle with tangents from an outside point renders and a lopsided circle fails the observer',async()=>{
+  const circle={...base(),conic:{kind:'CIRCLE',center:['0','0'],rSquared:'25'},
+    points:[{id:'Q',kind:'POINT',x:'7',y:'1'},{id:'A',kind:'TANGENT_FROM',from:'Q',which:1},{id:'B',kind:'TANGENT_FROM',from:'Q',which:2}],
+    lines:[{id:'u',through:['Q','A'],tangent:true},{id:'w',through:['Q','B'],tangent:true}]};
+  const model=await solveEllipseFigure(circle);
+  const composed=await composeEllipseFigure({plan:circle,model,identity,typographyPolicy:policy});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.match(composed.svg,/data-conic="CIRCLE"/);
+  const lopsided=composed.svg.replace(/(<path id="curve"[^>]* d=")M([0-9.]+) ([0-9.]+)/,(all,head,x,y)=>`${head}M${Number(x)+9} ${y}`);
+  assert.notEqual(lopsided,composed.svg);
+  assert.equal((await auditEllipseSvg({plan:circle,svg:lopsided})).status,'FAIL');
 });

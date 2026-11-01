@@ -316,7 +316,7 @@ def _produce_pair(plan):
 
 
 def produce(plan):
-    if isinstance(plan,dict) and 'conic' in plan:
+    if isinstance(plan,dict) and ('conic' in plan or 'conics' in plan):
         # A plan with a root `conic` field is a parabola figure: its own module, so every ellipse plan keeps this code path.
         from conic_figure import produce as produce_conic
         return produce_conic(plan)
