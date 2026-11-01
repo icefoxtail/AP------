@@ -9,7 +9,7 @@
 
 > **2026-10-31 이후 엔진 빈틈 완성 라인(G1~G11).** 사용자 지시: 엔진 부족한 부분을 실제 기출 샘플로 하나씩 완성하고, 완성한 샘플 그림은 시험지에 게시까지 한다. 고등 우선, 샘플은 최신 연도(26→25→24). Sonnet 작업자는 한 번에 하나(토큰 절약), 보고는 변경 하나가 끝날 때 한 번.
 > - **엔진 지시서를 쓰기 전에 `ops/svg-m1/BRIEF_RULES.md`(실패 기록과 지시서 규칙)를 반드시 읽고 `ops/svg-m1/briefs/engine-gap-template.md`로 쓴다.** 남은 한계는 "한계"로 끝내지 말고 후속 묶음으로 이어서 맡긴다.
-> - 빈틈 목록·샘플: `ops/svg-m1/gaps.md` 아래 G1~G11 절. 진행(2026-11-01): G7·G7b·G7c·G9·G1·G5·G5b·G6·G6b·G6c·G11·G3 main 반영(#1065~)과 샘플 게시. 남은 빈틈: G2 이차곡선(고2, L) → G4 공간도형(고2, L) → G8 속 빈 원기둥·원뿔대 전개도(중1, M) → G10 내접 혼합 입체(중1, L).
+> - 빈틈 목록·샘플: `ops/svg-m1/gaps.md` 아래 G1~G11 절. 진행(2026-11-01): G7·G7b·G7c·G9·G1·G5·G5b·G6·G6b·G6c·G11·G3·G2(a 포물선·b 쌍곡선·c 접선/원·타원 혼합) main 반영(#1065~)과 샘플 게시. 남은 빈틈: G4 공간도형(고2, L) → G8 속 빈 원기둥·원뿔대 전개도(중1, M) → G10 내접 혼합 입체(중1, L).
 > - Linux 클라우드 컨테이너에서 렌더 의존성 복원: `GEOMETRY_PYTHON=python3 node archive/tools/geometry-equation/production/setup-spikes.mjs`(→ `.tmp/apmath-visual-engine/dependencies`), Chrome은 `GEOMETRY_BROWSER_EXECUTABLE=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome`. 첫 엔진 병합 전 main으로 정답지 전체를 렌더해 기준(`.tmp/svg-m1/golden-main/`)을 만든다(약 70분).
 > - 정답지 회귀는 표본만(BRIEF_RULES 규칙 10, 전체는 사용자 승인 시). G3 지시서 `ops/svg-m1/briefs/engine-g3-vectors.md`.
 > - G11 지시서·검수 지시서 예: `ops/svg-m1/briefs/engine-g11-callout-coord-angle.md`, `ops/svg-m1/briefs/review-g11.md`.
