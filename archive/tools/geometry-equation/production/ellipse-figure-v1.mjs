@@ -66,20 +66,22 @@ function validatePair(plan){
   return ids;
 }
 
-// --- conic (parabola) plans: a root `conic` field; the plan shape is checked here, every value in conic_figure.py -------------------------------
+// --- conic (parabola, hyperbola) plans: a root `conic` field; the plan shape is checked here, every value in conic_figure.py -------------------------------
 const CONIC_TOP_KEYS=['capability','conic','points','segments','polygons','lines','caption','sourceConditions','newVisualInformation','sourceQuote'];
-const CONIC_POINT_KEYS={ORIGIN:['id','kind','label'],FOCUS:['id','kind','label'],VERTEX:['id','kind','label'],POINT:['id','kind','x','y','label'],
-  ON_CONIC:['id','kind','x','y','branch','label'],LINE_CONIC:['id','kind','line','which','label'],FOOT:['id','kind','from','onto','rightAngle','label']};
-const CONIC_LINE_KEYS=['id','role','label','dashed','hidden','x','y','slope','intercept','through'];
+const CONIC_POINT_KEYS={ORIGIN:['id','kind','label'],FOCUS:['id','kind','label','side'],VERTEX:['id','kind','label','side'],POINT:['id','kind','x','y','label'],
+  ON_CONIC:['id','kind','x','y','branch','sign','label'],LINE_CONIC:['id','kind','line','which','label'],LINE_LINE:['id','kind','lines','label'],
+  FOOT:['id','kind','from','onto','rightAngle','label']};
+const CONIC_KEYS_BY_KIND={PARABOLA:['kind','vertex','p','axis'],HYPERBOLA:['kind','center','aSquared','bSquared','transverse']};
+const CONIC_LINE_KEYS=['id','role','label','dashed','hidden','x','y','slope','intercept','through','sign'];
 const LINE_ID=/^[A-Za-z][A-Za-z0-9_]{0,7}$/;
 
 export function validateConicPlan(plan){
   if('ellipse' in plan||'ellipses' in plan)bad('CONIC_PLAN_CONFLICT');
   onlyKeys(plan,CONIC_TOP_KEYS,'ELLIPSE_PLAN_INVALID');
   if(plan.capability!==FIGURE_CAPABILITY)bad('ELLIPSE_PLAN_INVALID');
-  onlyKeys(plan.conic,['kind','vertex','p','axis'],'CONIC_PARAMETER_INVALID');
-  if(typeof plan.conic.kind!=='string')bad('CONIC_PARAMETER_INVALID');
-  if(plan.conic.kind!=='PARABOLA')bad('CONIC_KIND_UNSUPPORTED');
+  if(!isPlain(plan.conic)||typeof plan.conic.kind!=='string')bad('CONIC_PARAMETER_INVALID');
+  onlyKeys(plan.conic,CONIC_KEYS_BY_KIND[plan.conic.kind]??CONIC_KEYS_BY_KIND.PARABOLA,'CONIC_PARAMETER_INVALID');
+  if(!(plan.conic.kind in CONIC_KEYS_BY_KIND))bad('CONIC_KIND_UNSUPPORTED');
   const points=plan.points??[];
   if(!Array.isArray(points)||points.length>10)bad('ELLIPSE_POINT_INVALID');
   const ids=new Set();
@@ -102,6 +104,8 @@ export function validateConicPlan(plan){
   }
   for(const line of plan.lines??[]){
     onlyKeys(line,CONIC_LINE_KEYS,'ELLIPSE_LINE_INVALID');
+    if(line.role==='ASYMPTOTE'&&plan.conic.kind!=='HYPERBOLA')bad('CONIC_ASYMPTOTE_REQUIRES_HYPERBOLA');
+    if(line.role==='DIRECTRIX'&&plan.conic.kind==='HYPERBOLA')bad('CONIC_DIRECTRIX_REQUIRES_PARABOLA');
     if(typeof line.id!=='string'||!LINE_ID.test(line.id))bad('ELLIPSE_LINE_INVALID');
     if(line.label!==undefined&&(typeof line.label!=='string'||!line.label.trim()||line.label.length>40))bad('CONIC_LINE_LABEL_INVALID');
   }
@@ -309,6 +313,24 @@ export function placeLabels(entries,layout,obstacles){
         if(best)break;
       }
     }
+    if(!best&&entry.fallbacks){
+      // Still no room: a diagonal leader would meet a slanted line too shallowly, so the box is set corner-first
+      // on the leader's ray (its nearest corner then lies on the ray and the leader runs straight along it).
+      for(const fallback of entry.fallbacks){
+        const anchored={...entry,pointX:fallback.pointX,pointY:fallback.pointY,centerX:fallback.centerX,centerY:fallback.centerY,requiresLeader:true};
+        for(const delta of fallback.candidates){
+          const reach=Math.hypot(delta.dx,delta.dy);
+          if(!(Math.abs(delta.dx)>0.2*reach&&Math.abs(delta.dy)>0.2*reach))continue;
+          const box={x:r6(anchored.centerX+delta.dx+Math.sign(delta.dx)*entry.width/2-entry.width/2),
+            y:r6(anchored.centerY+delta.dy+Math.sign(delta.dy)*entry.height/2-entry.height/2),width:entry.width,height:entry.height};
+          if(blocked(box,anchored))continue;
+          const leader=leaderFor(box,anchored);if(!leader)continue;
+          const score=-delta.distance;
+          if(!best||score>best.score)best={box,score,leader,anchored};
+        }
+        if(best)break;
+      }
+    }
     if(!best)throw new Stop('ELLIPSE_LABEL_NO_ROOM',{label:entry.key});
     const chosen=best.anchored??entry;
     placed.push({...chosen,box:best.box,leader:best.leader??null});
@@ -488,6 +510,33 @@ function parabolaRuns(conic,layout,count=320){
   return runs.filter(row=>row.length>=2);
 }
 
+// One branch of the hyperbola (side +1 / -1 of the transverse axis) inside the plane window, as runs of model points.
+function hyperbolaRuns(conic,layout,side,count=400){
+  const h=num(conic.center.x),k=num(conic.center.y),a=Math.sqrt(num(conic.aSquared)),b=Math.sqrt(num(conic.bSquared)),axisX=conic.transverse==='X';
+  const {baseX,baseY,unitsW,unitsH}=layout;
+  const left=baseX,right=baseX+unitsW,bottom=baseY,top=baseY+unitsH,eps=1e-9;
+  const at=axisX?t=>[h+side*a*Math.cosh(t),k+b*Math.sinh(t)]:t=>[h+b*Math.sinh(t),k+side*a*Math.cosh(t)];
+  const inside=pt=>pt[0]>=left-eps&&pt[0]<=right+eps&&pt[1]>=bottom-eps&&pt[1]<=top+eps;
+  // |other coordinate - centre| <= reach everywhere in the window, so t in [-asinh(reach/b), asinh(reach/b)] covers it
+  const span=axisX?Math.max(Math.abs(bottom-k),Math.abs(top-k)):Math.max(Math.abs(left-h),Math.abs(right-h));
+  const tMax=Math.asinh(span/b)+0.05;
+  const edge=(tIn,tOut)=>{
+    let lo=tIn,hi=tOut;
+    for(let i=0;i<60;i++){const mid=(lo+hi)/2;if(inside(at(mid)))lo=mid;else hi=mid;}
+    return at(lo);
+  };
+  const runs=[];let run=null,prevT=null,prevIn=false;
+  for(let i=0;i<=count;i++){
+    const t=-tMax+2*tMax*i/count,pt=at(t),isIn=inside(pt);
+    if(isIn){
+      if(!run){run=[];runs.push(run);if(prevT!==null&&!prevIn)run.push(edge(t,prevT));}
+      run.push(pt);
+    }else if(run){run.push(edge(prevT,t));run=null;}
+    prevT=t;prevIn=isIn;
+  }
+  return runs.filter(row=>row.length>=2);
+}
+
 function conicCurveRuns(conic,layout){
   if(conic.kind==='PARABOLA')return parabolaRuns(conic,layout);
   bad('CONIC_KIND_UNSUPPORTED');
@@ -496,7 +545,9 @@ function conicCurveRuns(conic,layout){
 function conicFigureSpec(plan,model){
   const layout=layoutOf(model),{width,height}=layout.size;
   const conic=model.conic;
-  const vertexPx={x:layout.px(num(conic.vertex.x)),y:layout.py(num(conic.vertex.y))};
+  const hyperbola=conic.kind==='HYPERBOLA';
+  const anchor=hyperbola?conic.center:conic.vertex;
+  const vertexPx={x:layout.px(num(anchor.x)),y:layout.py(num(anchor.y))};
   const prims=axisPrims(layout);
   const point=id=>model.points.find(row=>row.id===id);
   const toPx=(x,y)=>[layout.px(x),layout.py(y)];
@@ -505,8 +556,16 @@ function conicFigureSpec(plan,model){
     prims.push({t:'polygon',id:`polygon-${polygon.id}`,role:'polygon',cls:'polygon',layer:20,
       points:points.map(([x,y])=>[r6(x),r6(y)]),fill:FILL[polygon.fill??'LIGHT'],data:{points:polygon.points.join(',')}});
   }
-  prims.push({t:'path',id:'curve',role:'curve',cls:'curve',layer:25,
-    runs:conicCurveRuns(conic,layout).map(run=>run.map(([x,y])=>{const [qx,qy]=toPx(x,y);return [r6(qx),r6(qy)];})),
+  const toPxRuns=runs=>runs.map(run=>run.map(([x,y])=>{const [qx,qy]=toPx(x,y);return [r6(qx),r6(qy)];}));
+  if(hyperbola){
+    for(const [side,name] of [[1,'POS'],[-1,'NEG']]){
+      const runs=hyperbolaRuns(conic,layout,side);
+      if(!runs.length)bad('ELLIPSE_FIGURE_TOO_LARGE');
+      prims.push({t:'path',id:`curve-${name.toLowerCase()}`,role:'curve',cls:'curve',layer:25,runs:toPxRuns(runs),
+        data:{curve:conic.kind,branch:name}});
+    }
+  }else prims.push({t:'path',id:'curve',role:'curve',cls:'curve',layer:25,
+    runs:toPxRuns(conicCurveRuns(conic,layout)),
     data:{curve:conic.kind}});
   const segmentLabelCounts=new Map();
   for(const segment of plan.segments??[])if(segment.label)segmentLabelCounts.set(segment.label,(segmentLabelCounts.get(segment.label)||0)+1);

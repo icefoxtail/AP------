@@ -9,16 +9,19 @@ FINAL SVG.
 
   {capability: "ellipse-figure-v1",
    conic: {kind: "PARABOLA", vertex: [h, k], p: "p", axis: "X"|"Y"},   # (y-k)^2=4p(x-h) | (x-h)^2=4p(y-k)
-   points: [{id, kind: FOCUS|VERTEX|ORIGIN|POINT|ON_CONIC|LINE_CONIC|FOOT, label?: bool,
-             x?, y?, branch?: POS|NEG,                 # POINT / ON_CONIC
+        | {kind: "HYPERBOLA", center: [h, k], aSquared, bSquared, transverse: "X"|"Y"},   # (x-h)^2/a2-(y-k)^2/b2=1 | (y-k)^2/a2-(x-h)^2/b2=1
+   points: [{id, kind: FOCUS|VERTEX|ORIGIN|POINT|ON_CONIC|LINE_CONIC|LINE_LINE|FOOT, label?: bool,
+             side?: 1|-1,                              # hyperbola FOCUS / VERTEX (required there, refused on a parabola)
+             x?, y?, branch?: POS|NEG, sign?: POS|NEG, # POINT / ON_CONIC (hyperbola: branch = side of the transverse axis, sign = other coordinate)
+             lines?: [k1, k2],                         # LINE_LINE: the meeting point of two lines
              line?, which?: 1|2,                       # LINE_CONIC: the line and the 1st/2nd intersection
              from?, onto?, rightAngle?: bool}],        # FOOT: foot of the perpendicular from `from` onto line `onto`
    segments: [{id, from, to, label?, dashed?}],
    polygons: [{id, points, fill?}],
-   lines: [{id, role?: "DIRECTRIX", x? | y? | slope+intercept | through: [P, Q], label?, dashed?, hidden?}],
+   lines: [{id, role?: "DIRECTRIX"|"ASYMPTOTE", sign?: 1|-1, x? | y? | slope+intercept | through: [P, Q], label?, dashed?, hidden?}],
    caption, sourceConditions, newVisualInformation}
 
-Adding a curve kind later (hyperbola, ...) means one more branch in `_curve`, `_residual`, `_intersections`
+Adding a curve kind later means one more branch in `_curve`, `_residual`, `_intersections`
 and the window extras in `produce`; the point and line machinery here is curve-independent.
 """
 import re
@@ -30,19 +33,21 @@ LINE_ID=re.compile(r"^[A-Za-z][A-Za-z0-9_]{0,7}$")
 TOP_KEYS={'capability','conic','points','segments','polygons','lines','caption',
           'sourceConditions','newVisualInformation','sourceQuote'}
 CONIC_KEYS={'kind','vertex','p','axis'}
+HYPERBOLA_KEYS={'kind','center','aSquared','bSquared','transverse'}
 SEGMENT_KEYS={'id','from','to','label','dashed'}
 POLYGON_KEYS={'id','points','fill'}
-LINE_KEYS={'id','role','label','dashed','hidden','x','y','slope','intercept','through'}
+LINE_KEYS={'id','role','label','dashed','hidden','x','y','slope','intercept','through','sign'}
 POINT_KIND_KEYS={
     'ORIGIN':{'id','kind','label'},
-    'FOCUS':{'id','kind','label'},
-    'VERTEX':{'id','kind','label'},
+    'FOCUS':{'id','kind','label','side'},
+    'VERTEX':{'id','kind','label','side'},
     'POINT':{'id','kind','x','y','label'},
-    'ON_CONIC':{'id','kind','x','y','branch','label'},
+    'ON_CONIC':{'id','kind','x','y','branch','sign','label'},
     'LINE_CONIC':{'id','kind','line','which','label'},
+    'LINE_LINE':{'id','kind','lines','label'},
     'FOOT':{'id','kind','from','onto','rightAngle','label'},
 }
-SUPPORTED_KINDS=('PARABOLA',)
+SUPPORTED_KINDS=('PARABOLA','HYPERBOLA')
 LABEL_LIMIT=40
 
 
@@ -57,10 +62,46 @@ def _scalar(text,code='CONIC_PARAMETER_INVALID'):
         _fail(code)
 
 
+def _conic(raw):
+    if not isinstance(raw,dict) or not isinstance(raw.get('kind'),str): _fail('CONIC_PARAMETER_INVALID')
+    if raw['kind']=='HYPERBOLA': return _hyperbola(raw)
+    return _parabola(raw)
+
+
+def _positive(value):
+    sign=value.is_positive
+    return sign if sign is not None else float(value.evalf(30))>0
+
+
+def _hyperbola(raw):
+    if set(raw)-HYPERBOLA_KEYS: _fail('CONIC_PARAMETER_INVALID')
+    center=raw.get('center')
+    if not isinstance(center,list) or len(center)!=2: _fail('CONIC_PARAMETER_INVALID')
+    h,k=_scalar(center[0]),_scalar(center[1])
+    a2,b2=_scalar(raw.get('aSquared')),_scalar(raw.get('bSquared'))
+    if not _positive(a2) or not _positive(b2): _fail('CONIC_PARAMETER_INVALID')
+    axis=raw.get('transverse')
+    if axis not in ('X','Y'): _fail('CONIC_PARAMETER_INVALID')
+    a,b,c=S.sqrt(a2),S.sqrt(b2),S.sqrt(a2+b2)
+    if axis=='X':
+        foci={side:(h+side*c,k) for side in (1,-1)};vertices={side:(h+side*a,k) for side in (1,-1)}
+        slope=b/a
+    else:
+        foci={side:(h,k+side*c) for side in (1,-1)};vertices={side:(h,k+side*a) for side in (1,-1)}
+        slope=a/b
+    return {'kind':'HYPERBOLA','h':h,'k':k,'a2':a2,'b2':b2,'a':a,'b':b,'c':c,'axis':axis,
+            'foci':foci,'vertices':vertices,'asymptoteSlope':S.simplify(slope)}
+
+
+def _side(raw):
+    side=raw.get('side')
+    if side not in (1,-1) or isinstance(side,bool): _fail('ELLIPSE_POINT_INVALID')
+    return side
+
+
 def _parabola(raw):
-    if not isinstance(raw,dict) or set(raw)-CONIC_KEYS: _fail('CONIC_PARAMETER_INVALID')
-    kind=raw.get('kind')
-    if not isinstance(kind,str): _fail('CONIC_PARAMETER_INVALID')
+    if set(raw)-CONIC_KEYS: _fail('CONIC_PARAMETER_INVALID')
+    kind=raw['kind']
     if kind not in SUPPORTED_KINDS: _fail('CONIC_KIND_UNSUPPORTED')
     vertex=raw.get('vertex')
     if not isinstance(vertex,list) or len(vertex)!=2: _fail('CONIC_PARAMETER_INVALID')
@@ -78,7 +119,11 @@ def _parabola(raw):
 
 def _residual(par,x,y):
     """Zero exactly on the curve (curve-kind branch point)."""
-    h,k,p=par['h'],par['k'],par['p']
+    h,k=par['h'],par['k']
+    if par['kind']=='HYPERBOLA':
+        if par['axis']=='X': return (x-h)**2/par['a2']-(y-k)**2/par['b2']-1
+        return (y-k)**2/par['a2']-(x-h)**2/par['b2']-1
+    p=par['p']
     if par['axis']=='X': return (y-k)**2-4*p*(x-h)
     return (x-h)**2-4*p*(y-k)
 
@@ -113,9 +158,35 @@ def _solve_axis_x(h,k,p,a,b,c):
     return [(x0,S.simplify(k-root)),(x0,S.simplify(k+root))]
 
 
+def _solve_hyperbola_x(h,k,a2,b2,a,b,c):
+    """Intersections of a*x+b*y=c with (x-h)^2/a2-(y-k)^2/b2=1 (a line parallel to an asymptote meets it once)."""
+    if b!=0:
+        m=-a/b;n=c/b
+        A=b2-a2*m**2;B=-2*b2*h-2*a2*m*(n-k);C=b2*h**2-a2*(n-k)**2-a2*b2
+        A,B,C=S.simplify(A),S.simplify(B),S.simplify(C)
+        if A==0:
+            if B==0: return []
+            x=S.simplify(-C/B);return [(x,S.simplify(m*x+n))]
+        D=S.simplify(B**2-4*A*C)
+        if _negative(D): return []
+        if _is_zero(D): xs=[-B/(2*A)]
+        else:
+            root=S.sqrt(D);xs=[(-B-root)/(2*A),(-B+root)/(2*A)]
+        return [(S.simplify(x),S.simplify(m*x+n)) for x in xs]
+    x0=c/a
+    R=S.simplify(b2*((x0-h)**2/a2-1))
+    if _negative(R): return []
+    if _is_zero(R): return [(x0,k)]
+    root=S.sqrt(R)
+    return [(x0,S.simplify(k-root)),(x0,S.simplify(k+root))]
+
+
 def _intersections(par,line):
     a,b,c=line
-    if par['axis']=='X':
+    if par['kind']=='HYPERBOLA':
+        if par['axis']=='X': found=_solve_hyperbola_x(par['h'],par['k'],par['a2'],par['b2'],a,b,c)
+        else: found=[(y,x) for (x,y) in _solve_hyperbola_x(par['k'],par['h'],par['a2'],par['b2'],b,a,c)]
+    elif par['axis']=='X':
         found=_solve_axis_x(par['h'],par['k'],par['p'],a,b,c)
     else:
         found=[(y,x) for (x,y) in _solve_axis_x(par['k'],par['h'],par['p'],b,a,c)]
@@ -149,11 +220,17 @@ def _line_public(raw,line,role):
     return entry
 
 
-def _check_line_shape(raw):
+def _check_line_shape(raw,par):
     if not isinstance(raw,dict) or set(raw)-LINE_KEYS: _fail('ELLIPSE_LINE_INVALID')
     if not isinstance(raw.get('id'),str) or not LINE_ID.fullmatch(raw['id']): _fail('ELLIPSE_LINE_INVALID')
     role=raw.get('role')
-    if role is not None and role!='DIRECTRIX': _fail('ELLIPSE_LINE_INVALID')
+    if role is not None and role not in ('DIRECTRIX','ASYMPTOTE'): _fail('ELLIPSE_LINE_INVALID')
+    hyperbola=par['kind']=='HYPERBOLA'
+    if role=='DIRECTRIX' and hyperbola: _fail('CONIC_DIRECTRIX_REQUIRES_PARABOLA')
+    if role=='ASYMPTOTE' and not hyperbola: _fail('CONIC_ASYMPTOTE_REQUIRES_HYPERBOLA')
+    if role=='ASYMPTOTE':
+        if raw.get('sign') not in (1,-1) or isinstance(raw.get('sign'),bool): _fail('CONIC_PARAMETER_INVALID')
+    elif 'sign' in raw: _fail('ELLIPSE_LINE_INVALID')
     if 'label' in raw:
         label=raw['label']
         if not isinstance(label,str) or not label.strip() or len(label)>LABEL_LIMIT: _fail('CONIC_LINE_LABEL_INVALID')
@@ -163,7 +240,7 @@ def _check_line_shape(raw):
     if 'slope' in raw or 'intercept' in raw:
         if 'slope' not in raw or 'intercept' not in raw: _fail('ELLIPSE_LINE_INVALID')
         geometry.append('slope')
-    if role=='DIRECTRIX':
+    if role in ('DIRECTRIX','ASYMPTOTE'):
         if geometry: _fail('ELLIPSE_LINE_INVALID')
     elif len(geometry)!=1: _fail('ELLIPSE_LINE_INVALID')
     if 'through' in raw:
@@ -178,12 +255,38 @@ def _label_flag(raw):
     return label
 
 
+def _hyperbola_point(par,raw):
+    """A point of the hyperbola from one coordinate: the transverse one needs `sign` (which half of the other axis);
+    the other one needs `branch` (which side of the transverse axis)."""
+    has_x,has_y='x' in raw,'y' in raw
+    if has_x==has_y: _fail('ELLIPSE_POINT_INVALID')
+    branch,sign=raw.get('branch'),raw.get('sign')
+    if branch not in (None,'POS','NEG') or sign not in (None,'POS','NEG'): _fail('ELLIPSE_POINT_INVALID')
+    on_x=par['axis']=='X'
+    ct,co=(par['h'],par['k']) if on_x else (par['k'],par['h'])
+    if has_x==on_x:   # the transverse coordinate is given
+        u=_scalar(raw['x' if on_x else 'y'],'ELLIPSE_VALUE_INVALID')
+        rest=S.simplify(par['b2']*((u-ct)**2/par['a2']-1))
+        if _negative(rest): _fail('CONIC_POINT_NOT_ON_CURVE')
+        if branch is not None and (branch=='POS')!=_positive(u-ct): _fail('CONIC_POINT_NOT_ON_CURVE')
+        if _is_zero(rest): v=co
+        else:
+            if sign is None: _fail('ELLIPSE_POINT_INVALID')
+            v=S.simplify(co+(1 if sign=='POS' else -1)*S.sqrt(rest))
+    else:
+        v0=_scalar(raw['y' if on_x else 'x'],'ELLIPSE_VALUE_INVALID')
+        if sign is not None or branch is None: _fail('ELLIPSE_POINT_INVALID')
+        u=S.simplify(ct+(1 if branch=='POS' else -1)*S.sqrt(S.simplify(par['a2']*(1+(v0-co)**2/par['b2']))))
+        v=v0
+    return (u,v) if on_x else (v,u)
+
+
 def produce(plan):
     if not isinstance(plan,dict): _fail('ELLIPSE_PLAN_INVALID')
     if 'ellipse' in plan or 'ellipses' in plan: _fail('CONIC_PLAN_CONFLICT')
     if set(plan)-TOP_KEYS: _fail('ELLIPSE_PLAN_INVALID')
     if plan.get('capability')!=CAPABILITY: _fail('ELLIPSE_PLAN_INVALID')
-    par=_parabola(plan.get('conic'))
+    par=_conic(plan.get('conic'))
     raw_points=plan.get('points',[]) or []
     if not isinstance(raw_points,list) or len(raw_points)>10: _fail('ELLIPSE_POINT_INVALID')
     raw_lines=plan.get('lines',[]) or []
@@ -198,14 +301,22 @@ def produce(plan):
         point_ids.append(pid)
         kind=raw.get('kind')
         if kind not in POINT_KIND_KEYS or set(raw)-POINT_KIND_KEYS[kind]: _fail('ELLIPSE_POINT_INVALID')
+        if kind in ('FOCUS','VERTEX'):
+            if par['kind']=='HYPERBOLA': _side(raw)
+            elif 'side' in raw: _fail('ELLIPSE_POINT_INVALID')
+        if 'sign' in raw and par['kind']!='HYPERBOLA': _fail('ELLIPSE_POINT_INVALID')
     line_roles={};line_ids=[]
     for raw in raw_lines:
-        role=_check_line_shape(raw)
+        role=_check_line_shape(raw,par)
         if raw['id'] in line_ids: _fail('ELLIPSE_LINE_INVALID')
         line_ids.append(raw['id']);line_roles[raw['id']]=role
     for raw in raw_points:
         kind=raw['kind']
         if kind=='LINE_CONIC' and raw.get('line') not in line_ids: _fail('ELLIPSE_LINE_INVALID')
+        if kind=='LINE_LINE':
+            pair=raw.get('lines')
+            if not isinstance(pair,list) or len(pair)!=2 or pair[0]==pair[1] or any(lid not in line_ids for lid in pair):
+                _fail('ELLIPSE_LINE_INVALID')
         if kind=='FOOT':
             if raw.get('onto') not in line_ids: _fail('CONIC_FOOT_INVALID')
             if raw.get('from') not in point_ids or raw['from']==raw['id']: _fail('ELLIPSE_POINT_UNKNOWN')
@@ -216,12 +327,14 @@ def produce(plan):
 
     resolved={};lines={};foot_info={}
     pending_points=list(raw_points);pending_lines=list(raw_lines)
-    h,k,p=par['h'],par['k'],par['p']
+    h,k,p=par['h'],par['k'],par.get('p')
     for _round in range(len(raw_points)+len(raw_lines)+2):
         if not pending_points and not pending_lines: break
         progress=False
         for raw in list(pending_lines):
             if raw.get('role')=='DIRECTRIX': lines[raw['id']]=par['directrix']['line']
+            elif raw.get('role')=='ASYMPTOTE':
+                m=raw['sign']*par['asymptoteSlope'];lines[raw['id']]=(-m,S.Integer(1),S.simplify(k-m*h))
             elif 'x' in raw:
                 lines[raw['id']]=(S.Integer(1),S.Integer(0),_scalar(raw['x'],'ELLIPSE_VALUE_INVALID'))
             elif 'y' in raw:
@@ -240,11 +353,19 @@ def produce(plan):
         for raw in list(pending_points):
             kind=raw['kind'];pid=raw['id']
             if kind=='ORIGIN': value=(S.Integer(0),S.Integer(0))
-            elif kind=='FOCUS': value=par['focus']
-            elif kind=='VERTEX': value=(h,k)
+            elif kind=='FOCUS': value=par['foci'][raw['side']] if par['kind']=='HYPERBOLA' else par['focus']
+            elif kind=='VERTEX': value=par['vertices'][raw['side']] if par['kind']=='HYPERBOLA' else (h,k)
             elif kind=='POINT':
                 if 'x' not in raw or 'y' not in raw: _fail('ELLIPSE_POINT_INVALID')
                 value=(_scalar(raw['x'],'ELLIPSE_VALUE_INVALID'),_scalar(raw['y'],'ELLIPSE_VALUE_INVALID'))
+            elif kind=='LINE_LINE':
+                first,second=raw['lines']
+                if first not in lines or second not in lines: continue
+                a1,b1,c1=lines[first];a2,b2,c2=lines[second]
+                det=S.simplify(a1*b2-a2*b1)
+                if det==0: _fail('CONIC_LINES_PARALLEL')
+                value=(S.simplify((c1*b2-c2*b1)/det),S.simplify((a1*c2-a2*c1)/det))
+            elif kind=='ON_CONIC' and par['kind']=='HYPERBOLA': value=_hyperbola_point(par,raw)
             elif kind=='ON_CONIC':
                 has_x,has_y='x' in raw,'y' in raw
                 if has_x==has_y: _fail('ELLIPSE_POINT_INVALID')
@@ -329,10 +450,21 @@ def produce(plan):
                 _fail('CONIC_POINT_COINCIDENT')
     lines_public=[_line_public(raw,lines[raw['id']],line_roles[raw['id']]) for raw in raw_lines]
 
-    xs=[S.Integer(0),h,par['focus'][0]];ys=[S.Integer(0),k,par['focus'][1]]
-    # the open end of the curve: the latus rectum ends keep a visible stretch of the curve in the window
-    if par['axis']=='X': ends=[(h+p,k+2*abs(p)),(h+p,k-2*abs(p))]
-    else: ends=[(h+2*abs(p),k+p),(h-2*abs(p),k+p)]
+    hyperbola=par['kind']=='HYPERBOLA'
+    if hyperbola:
+        # both branches stay visible: the vertices and foci, and the points a half-width (b) off the transverse axis
+        xs=[S.Integer(0),h];ys=[S.Integer(0),k]
+        ends=list(par['foci'].values())+list(par['vertices'].values())
+        reach=S.sqrt(2*par['a2'])
+        for side in (1,-1):
+            for off in (1,-1):
+                if par['axis']=='X': ends.append((h+side*reach,k+off*par['b']))
+                else: ends.append((h+off*par['b'],k+side*reach))
+    else:
+        xs=[S.Integer(0),h,par['focus'][0]];ys=[S.Integer(0),k,par['focus'][1]]
+        # the open end of the curve: the latus rectum ends keep a visible stretch of the curve in the window
+        if par['axis']=='X': ends=[(h+p,k+2*abs(p)),(h+p,k-2*abs(p))]
+        else: ends=[(h+2*abs(p),k+p),(h-2*abs(p),k+p)]
     for x,y in ends: xs.append(x);ys.append(y)
     for px,py in resolved.values(): xs.append(px);ys.append(py)
     for entry in lines_public:
@@ -341,6 +473,16 @@ def produce(plan):
         elif entry['type']=='HORIZONTAL': ys.append(exact_scalar(entry['y']['exact']));xs.append(h)
     bbox={'minX':float(min(xs).evalf(17)),'maxX':float(max(xs).evalf(17)),
           'minY':float(min(ys).evalf(17)),'maxY':float(max(ys).evalf(17))}
+    if hyperbola:
+        point_of=lambda pt:{'x':_value(pt[0]),'y':_value(pt[1])}
+        conic={'kind':'HYPERBOLA','transverse':par['axis'],'center':{'x':_value(h),'y':_value(k)},
+               'aSquared':_value(par['a2']),'bSquared':_value(par['b2']),'cSquared':_value(par['a2']+par['b2']),
+               'foci':[point_of(par['foci'][1]),point_of(par['foci'][-1])],
+               'vertices':[point_of(par['vertices'][1]),point_of(par['vertices'][-1])],
+               'asymptoteSlope':_value(par['asymptoteSlope']),
+               'equation':_text(_residual(par,S.Symbol('x'),S.Symbol('y')))}
+        return {'modelVersion':MODEL_VERSION,'capability':CAPABILITY,'mode':'CONIC','conic':conic,
+                'points':points,'segments':segments,'polygons':polygons,'lines':lines_public,'bbox':bbox}
     d=par['directrix']
     conic={'kind':par['kind'],'axis':par['axis'],'vertex':{'x':_value(h),'y':_value(k)},'p':_value(p),
            'focus':{'x':_value(par['focus'][0]),'y':_value(par['focus'][1])},

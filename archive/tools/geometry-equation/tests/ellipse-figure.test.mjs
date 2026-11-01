@@ -298,8 +298,8 @@ test('a parabola plan derives the focus, directrix, intersection and feet exactl
 test('parabola plans refuse bad parameters, missing intersections and a second plane field',async()=>{
   const withConic=changes=>({...parabolaPlan(),conic:{...parabolaPlan().conic,...changes}});
   await solverRefused(withConic({p:'0'}),'CONIC_PARAMETER_INVALID');
-  await solverRefused(withConic({kind:'HYPERBOLA'}),'CONIC_KIND_UNSUPPORTED');
-  refused(withConic({kind:'HYPERBOLA'}),'CONIC_KIND_UNSUPPORTED');
+  await solverRefused(withConic({kind:'CIRCLE'}),'CONIC_KIND_UNSUPPORTED');
+  refused(withConic({kind:'CIRCLE'}),'CONIC_KIND_UNSUPPORTED');
   refused({...parabolaPlan(),ellipse:chordPlan().ellipse},'CONIC_PLAN_CONFLICT');
   refused({...chordPlan(),conic:parabolaPlan().conic},'CONIC_PLAN_CONFLICT');
   refused({...chordPlan(),lines:[{id:'l',slope:'1',intercept:'0',role:'DIRECTRIX'}]},'CONIC_DIRECTRIX_REQUIRES_PARABOLA');
@@ -351,4 +351,71 @@ test('a line name with no room beside its line gets a leader joined to the line'
   assert.deepEqual(placed.leader.b,[100,60]);
   const [near]=placeLabels([{...entry,candidates:[{dx:14,dy:0,distance:14}]}],layout,{points:[],curve:[],segments:[{a:owner.a,b:owner.b}]});
   assert.equal(near.leader,null,'a free spot beside the line needs no leader');
+});
+
+// 26 매산고 q13 (G2b): x^2-y^2=12, the line y=2x-6 through (4,2), both asymptotes, and the triangle they bound with it.
+const hyperbolaPlan=()=>({...base(),
+  conic:{kind:'HYPERBOLA',center:['0','0'],aSquared:'12',bSquared:'12',transverse:'X'},
+  points:[{id:'O',kind:'ORIGIN'},{id:'P',kind:'ON_CONIC',x:'4',sign:'POS'},
+    {id:'A',kind:'LINE_LINE',lines:['k1','s1']},{id:'B',kind:'LINE_LINE',lines:['k1','s2']}],
+  lines:[{id:'s1',role:'ASYMPTOTE',sign:1,dashed:true,label:'y=x'},{id:'s2',role:'ASYMPTOTE',sign:-1,dashed:true,label:'y=-x'},
+    {id:'k1',slope:'2',intercept:'-6'}],
+  polygons:[{id:'tri',points:['O','A','B'],fill:'LIGHT'}]});
+
+test('hyperbola plans derive exact points and refuse bad parameters, asymptote misuse and parallel lines',async()=>{
+  const model=await solveEllipseFigure(hyperbolaPlan());
+  const row=id=>model.points.find(point=>point.id===id);
+  assert.equal(model.conic.kind,'HYPERBOLA');
+  assert.equal(row('A').x.exact,'6');assert.equal(row('A').y.exact,'6');
+  assert.equal(row('B').x.exact,'2');assert.equal(row('B').y.exact,'-2');
+  assert.ok(row('P').onCurve&&!row('A').onCurve);
+  const withConic=changes=>({...hyperbolaPlan(),conic:{...hyperbolaPlan().conic,...changes}});
+  await solverRefused(withConic({aSquared:'0'}),'CONIC_PARAMETER_INVALID');
+  refused(withConic({vertex:['0','0']}),'CONIC_PARAMETER_INVALID');
+  await solverRefused({...hyperbolaPlan(),lines:[{id:'d',role:'DIRECTRIX'}],points:[],polygons:[]},'CONIC_DIRECTRIX_REQUIRES_PARABOLA');
+  refused({...hyperbolaPlan(),lines:[{id:'d',role:'DIRECTRIX'}]},'CONIC_DIRECTRIX_REQUIRES_PARABOLA');
+  refused({...parabolaPlan(),lines:[{id:'s',role:'ASYMPTOTE',sign:1}]},'CONIC_ASYMPTOTE_REQUIRES_HYPERBOLA');
+  await solverRefused({...parabolaPlan(),lines:[{id:'s',role:'ASYMPTOTE',sign:1}],points:[],segments:[]},'CONIC_ASYMPTOTE_REQUIRES_HYPERBOLA');
+  await solverRefused({...hyperbolaPlan(),lines:[{id:'s',role:'ASYMPTOTE',sign:3}],points:[],polygons:[]},'CONIC_PARAMETER_INVALID');
+  await solverRefused({...hyperbolaPlan(),points:[{id:'A',kind:'LINE_LINE',lines:['s1','m']}],polygons:[],
+    lines:[{id:'s1',role:'ASYMPTOTE',sign:1},{id:'m',slope:'1',intercept:'1'}]},'CONIC_LINES_PARALLEL');
+  await solverRefused({...hyperbolaPlan(),points:[{id:'A',kind:'ON_CONIC',x:'1',sign:'POS'}],polygons:[],lines:[]},'CONIC_POINT_NOT_ON_CURVE');
+});
+
+test('the hyperbola figure renders in real Chrome with both branches, passes its observer, and tampering fails it',async()=>{
+  const plan=hyperbolaPlan(),model=await solveEllipseFigure(plan);
+  const composed=await composeEllipseFigure({plan,model,identity,typographyPolicy:policy});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  const svg=composed.svg;
+  assert.match(svg,/data-curve="HYPERBOLA" data-branch="POS"/);
+  assert.match(svg,/data-curve="HYPERBOLA" data-branch="NEG"/);
+  assert.match(svg,/data-conic="HYPERBOLA"/);
+  assert.ok(!/<ellipse/.test(svg));
+  assert.match(svg,/data-label-role="line"[^>]*data-line="s2"/);
+  const audit=await auditEllipseSvg({plan,svg});
+  assert.equal(audit.status,'PASS',JSON.stringify(audit.errors));
+  const failsWith=async(tampered,prefix)=>{
+    assert.notEqual(tampered,svg);
+    const result=await auditEllipseSvg({plan,svg:tampered});
+    assert.equal(result.status,'FAIL');
+    assert.ok(result.errors.some(error=>error.startsWith(prefix)),`${prefix} in ${JSON.stringify(result.errors)}`);
+  };
+  await failsWith(svg.replace(/(id="curve-neg"[^>]* d=")M([0-9.]+) ([0-9.]+)/,(all,head,x,y)=>`${head}M${Number(x)+9} ${y}`),'CONIC_CURVE_OFF_EQUATION');
+  await failsWith(svg.replace(/<path id="curve-neg"[^>]*\/>/,''),'CONIC_HYPERBOLA_BRANCH_MISSING');
+  await failsWith(svg.replace(/(id="line-s1" data-role="line"[^>]*?)y2="([0-9.]+)"/,(all,head,y2)=>`${head}y2="${Number(y2)+10}"`),'CONIC_ASYMPTOTE_MISMATCH:s1');
+  await failsWith(svg.replace(/(id="point-A" data-role="point"[^>]*?)cx="([0-9.]+)"/,(all,head,cx)=>`${head}cx="${Number(cx)+9}"`),'CONIC_LINE_LINE_MISMATCH:A');
+});
+
+test('a line name beside a diagonal line is led out corner-first so the leader meets the line squarely',()=>{
+  const layout={size:{width:300,height:300}};
+  const owner={a:[20,20],b:[280,280]};
+  const entry={key:'line-s',role:'line',lineId:'s',text:'y=-x',width:60,height:16,ownerSegment:owner,
+    pointX:150,pointY:150,centerX:150,centerY:150,candidates:[{dx:10,dy:-10,distance:14}],
+    fallbacks:[{pointX:150,pointY:150,centerX:150,centerY:150,candidates:[{dx:-34,dy:34,distance:48},{dx:34,dy:-34,distance:48}]}]};
+  const [placed]=placeLabels([entry],layout,{points:[],curve:[],segments:[{a:owner.a,b:owner.b}]});
+  assert.ok(placed.leader,'no spot beside the line, so it is led out');
+  const [a,b]=[placed.leader.a,placed.leader.b];
+  const lead=[a[0]-b[0],a[1]-b[1]],along=[1,1];
+  const cos=Math.abs(lead[0]*along[0]+lead[1]*along[1])/(Math.hypot(...lead)*Math.hypot(...along));
+  assert.ok(cos<0.2,'the leader runs close to perpendicular to the line');
 });

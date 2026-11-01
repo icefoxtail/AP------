@@ -3,6 +3,7 @@
 The composed figures are exercised end to end by tests/ellipse-figure.test.mjs; these cases pin the
 exact foci/vertices/tangency and the observer's tamper detection on a hand-built SVG.
 """
+import math
 import sys
 import unittest
 from pathlib import Path
@@ -348,7 +349,7 @@ class ConicProduceTest(unittest.TestCase):
         check(conic_plan(p='0'),'CONIC_PARAMETER_INVALID')
         check(conic_plan(p='x'),'CONIC_PARAMETER_INVALID')
         check(conic_plan(axis='Z'),'CONIC_PARAMETER_INVALID')
-        check(conic_plan(kind='HYPERBOLA'),'CONIC_KIND_UNSUPPORTED')
+        check(conic_plan(kind='CIRCLE'),'CONIC_KIND_UNSUPPORTED')
         check({**conic_plan(),'ellipse':{'center':['0','0'],'semiAxisSquared':{'major':'4','minor':'1'},'majorAxis':'X'}},'CONIC_PLAN_CONFLICT')
         check(conic_plan(points=[{'id':'A','kind':'ON_CONIC','x':'-1','branch':'POS'}],segments=[]),'CONIC_POINT_NOT_ON_CURVE')
         check(conic_plan(points=[{'id':'A','kind':'ON_CONIC','y':'1'},{'id':'B','kind':'LINE_CONIC','line':'k','which':1}],segments=[],
@@ -440,9 +441,165 @@ class ConicObserverTest(unittest.TestCase):
         self.assertEqual(CO.definition_errors(par,points,directrix=(S.Integer(1),S.Integer(0),S.Integer(-2))),['CONIC_DEFINITION_MISMATCH:A'])
 
     def test_the_observer_refuses_the_same_plans_the_producer_does(self):
-        for value,code in ((conic_plan(kind='HYPERBOLA'),'CONIC_KIND_UNSUPPORTED'),(conic_plan(p='0'),'CONIC_PARAMETER_INVALID'),
+        for value,code in ((conic_plan(kind='CIRCLE'),'CONIC_KIND_UNSUPPORTED'),(conic_plan(p='0'),'CONIC_PARAMETER_INVALID'),
                            ({**conic_plan(),'ellipse':{}},'CONIC_PLAN_CONFLICT')):
             self.assertEqual(self.audit(conic_svg(),value)['errors'],['PLAN_REFUSED:%s'%code])
+
+
+# --- hyperbola (G2b) ------------------------------------------------------------------------------------------------------------------------
+HX,HY=150.0,150.0
+HSCALE=20.0
+
+
+def hyper_plan(points=None,lines=None,**conic):
+    return {'capability':'ellipse-figure-v1','caption':'c',
+            'sourceConditions':[{'id':'c1','condition':'c','mappedTo':['conic']}],'newVisualInformation':['n'],
+            'conic':{'kind':'HYPERBOLA','center':['0','0'],'aSquared':'12','bSquared':'12','transverse':'X',**conic},
+            'points':points if points is not None else [
+                {'id':'O','kind':'ORIGIN','label':False},{'id':'P','kind':'ON_CONIC','x':'4','sign':'POS','label':False},
+                {'id':'A','kind':'LINE_LINE','lines':['k1','s1'],'label':False},{'id':'B','kind':'LINE_LINE','lines':['k1','s2'],'label':False}],
+            'segments':[],'polygons':[{'id':'t','points':['O','A','B']}] if points is None else [],
+            'lines':lines if lines is not None else [
+                {'id':'s1','role':'ASYMPTOTE','sign':1,'dashed':True},{'id':'s2','role':'ASYMPTOTE','sign':-1,'dashed':True},
+                {'id':'k1','slope':'2','intercept':'-6'}]}
+
+
+def hx(x):
+    return HX+HSCALE*x
+
+
+def hy(y):
+    return HY-HSCALE*y
+
+
+def hyper_svg(squash=1.0,drop_branch=None,asymptote_turn=0.0,markers=None,dash=True,neg_side_flip=False):
+    """x^2-y^2=12 at 20 px per unit: axes, both branches, the asymptotes, the line y=2x-6, O, P, A(6,6), B(2,-2) and the triangle."""
+    markers=markers or {'O':(0,0),'P':(4,2),'A':(6,6),'B':(2,-2)}
+    a=math.sqrt(12.0)
+    out=['<svg xmlns="%s" width="300" height="300" viewBox="0 0 300 300">'%NS,
+         '<line id="axis-x" data-role="axis" data-axis="x" x1="10" y1="150" x2="290" y2="150"/>',
+         '<line id="axis-y" data-role="axis" data-axis="y" x1="150" y1="290" x2="150" y2="10"/>',
+         '<polygon id="axis-x-head" data-role="axis-head" data-axis="x" points="290,150 281,146.4 281,153.6"/>',
+         '<polygon id="axis-y-head" data-role="axis-head" data-axis="y" points="150,10 146.4,19 153.6,19"/>']
+    out.append('<polygon id="polygon-t" data-role="polygon" data-points="O,A,B" points="%.2f,%.2f %.2f,%.2f %.2f,%.2f" fill="%s"/>'%(
+        hx(0),hy(0),hx(markers['A'][0]),hy(markers['A'][1]),hx(markers['B'][0]),hy(markers['B'][1]),O.LIGHT_FILL))
+    for name,side in (('POS',1),('NEG',-1)):
+        if drop_branch==name: continue
+        ts=[-1.3+0.1*i for i in range(27)]
+        flip=-1 if (neg_side_flip and name=='NEG') else 1
+        d=' '.join('%s%.2f %.2f'%('M' if i==0 else 'L',hx(flip*side*a*math.cosh(t)),hy(squash*a*math.sinh(t))) for i,t in enumerate(ts))
+        out.append('<path id="curve-%s" data-role="curve" data-curve="HYPERBOLA" data-branch="%s" d="%s" fill="none"/>'%(name.lower(),name,d))
+    dashed=' stroke-dasharray="5 4"' if dash else ''
+    turn=math.radians(asymptote_turn)
+    for lid,slope,extra in (('s1',1.0,dashed),('s2',-1.0,dashed)):
+        far=(7.0,7.0*slope+(7.0*math.tan(turn) if lid=='s1' else 0.0))
+        out.append('<line id="line-%s" data-role="line" data-line="%s" x1="%.2f" y1="%.2f" x2="%.2f" y2="%.2f"%s/>'%(
+            lid,lid,hx(-7.0),hy(-7.0*slope),hx(far[0]),hy(far[1]),extra))
+    out.append('<line id="line-k1" data-role="line" data-line="k1" x1="%.2f" y1="%.2f" x2="%.2f" y2="%.2f"/>'%(hx(-0.5),hy(-7),hx(6.5),hy(7)))
+    for pid,(x,y) in markers.items():
+        out.append('<circle id="point-%s" data-role="point" data-point="%s" cx="%.2f" cy="%.2f" r="3.2"/>'%(pid,pid,hx(x),hy(y)))
+    out.append('</svg>')
+    return ''.join(out)
+
+
+class HyperbolaProduceTest(unittest.TestCase):
+    def test_foci_vertices_asymptotes_and_meeting_points_are_exact(self):
+        value=hyper_plan(points=[
+            {'id':'F','kind':'FOCUS','side':1},{'id':'G','kind':'FOCUS','side':-1},{'id':'V','kind':'VERTEX','side':1},
+            {'id':'P','kind':'ON_CONIC','x':'4','sign':'POS'},{'id':'Q','kind':'ON_CONIC','y':'-2','branch':'NEG'},
+            {'id':'A','kind':'LINE_LINE','lines':['k1','s1']},{'id':'B','kind':'LINE_LINE','lines':['k1','s2']},
+            {'id':'C','kind':'LINE_CONIC','line':'k1','which':1,'label':False}])
+        model=E.produce(value)
+        rows={row['id']:row for row in model['points']}
+        self.assertEqual(model['conic']['kind'],'HYPERBOLA')
+        self.assertEqual((rows['F']['x']['exact'],rows['G']['x']['exact']),('2*sqrt(6)','-2*sqrt(6)'))
+        self.assertEqual(rows['V']['x']['exact'],'2*sqrt(3)')
+        self.assertEqual((rows['P']['x']['exact'],rows['P']['y']['exact']),('4','2'))
+        self.assertEqual((rows['Q']['x']['exact'],rows['Q']['y']['exact']),('-4','-2'))
+        self.assertEqual((rows['A']['x']['exact'],rows['A']['y']['exact']),('6','6'))
+        self.assertEqual((rows['B']['x']['exact'],rows['B']['y']['exact']),('2','-2'))
+        # y=2x-6 is tangent at (4,2): the single meeting point
+        self.assertEqual((rows['C']['x']['exact'],rows['C']['y']['exact']),('4','2'))
+        self.assertTrue(rows['P']['onCurve'] and not rows['A']['onCurve'])
+        lines={row['id']:row for row in model['lines']}
+        self.assertEqual(lines['s1']['slope']['exact'],'1');self.assertEqual(lines['s2']['slope']['exact'],'-1')
+
+    def test_a_transverse_y_hyperbola_and_the_line_parallel_to_an_asymptote(self):
+        value=hyper_plan(center=['1','0'],aSquared='4',bSquared='1',transverse='Y',points=[
+            {'id':'V','kind':'VERTEX','side':-1},{'id':'P','kind':'ON_CONIC','x':'1','branch':'POS'},
+            {'id':'Q','kind':'LINE_CONIC','line':'m','which':1,'label':False}],
+            lines=[{'id':'s','role':'ASYMPTOTE','sign':-1},{'id':'m','slope':'-2','intercept':'0'}])
+        model=E.produce(value)
+        rows={row['id']:row for row in model['points']}
+        self.assertEqual((rows['V']['x']['exact'],rows['V']['y']['exact']),('1','-2'))
+        self.assertEqual((rows['P']['x']['exact'],rows['P']['y']['exact']),('1','2'))
+        lines={row['id']:row for row in model['lines']}
+        self.assertEqual(lines['s']['slope']['exact'],'-2');self.assertEqual(lines['s']['intercept']['exact'],'2')
+        # m (slope -2, through the origin) is parallel to the asymptote s: one meeting point only
+        self.assertEqual(len(E.produce(value)['points']),3)
+        refused_with(self,E.produce,{**value,'points':[{'id':'Q','kind':'LINE_CONIC','line':'m','which':2}]},'CONIC_INTERSECTION_INDEX_INVALID')
+
+    def test_hyperbola_refusals_carry_their_own_codes(self):
+        check=lambda value,code:refused_with(self,E.produce,value,code)
+        check(hyper_plan(aSquared='0'),'CONIC_PARAMETER_INVALID')
+        check(hyper_plan(bSquared='-3'),'CONIC_PARAMETER_INVALID')
+        check(hyper_plan(transverse='Z'),'CONIC_PARAMETER_INVALID')
+        check(hyper_plan(points=[{'id':'A','kind':'ON_CONIC','x':'1','sign':'POS'}],lines=[]),'CONIC_POINT_NOT_ON_CURVE')
+        check(hyper_plan(points=[{'id':'A','kind':'ON_CONIC','x':'-4','branch':'POS','sign':'POS'}],lines=[]),'CONIC_POINT_NOT_ON_CURVE')
+        check(hyper_plan(points=[{'id':'F','kind':'FOCUS'}],lines=[]),'ELLIPSE_POINT_INVALID')
+        check(hyper_plan(lines=[{'id':'s1','role':'ASYMPTOTE','sign':2}]),'CONIC_PARAMETER_INVALID')
+        check(hyper_plan(lines=[{'id':'d','role':'DIRECTRIX'}]),'CONIC_DIRECTRIX_REQUIRES_PARABOLA')
+        check(conic_plan(lines=[{'id':'s','role':'ASYMPTOTE','sign':1}]),'CONIC_ASYMPTOTE_REQUIRES_HYPERBOLA')
+        check(hyper_plan(points=[{'id':'A','kind':'LINE_LINE','lines':['s1','m']}],
+                         lines=[{'id':'s1','role':'ASYMPTOTE','sign':1},{'id':'m','slope':'1','intercept':'1'}]),'CONIC_LINES_PARALLEL')
+        check(hyper_plan(points=[{'id':'A','kind':'LINE_CONIC','line':'m','which':1}],
+                         lines=[{'id':'m','x':'1'}]),'CONIC_LINE_NO_INTERSECTION')
+        check(hyper_plan(points=[{'id':'A','kind':'LINE_LINE','lines':['s1','zz']}]),'ELLIPSE_LINE_INVALID')
+        check(conic_plan(points=[{'id':'F','kind':'FOCUS','side':1}],segments=[]),'ELLIPSE_POINT_INVALID')
+
+
+class HyperbolaObserverTest(unittest.TestCase):
+    def audit(self,svg_text,value=None):
+        return CO.audit(value or hyper_plan(),svg_text)
+
+    def assertFails(self,result,prefix):
+        self.assertEqual(result['status'],'FAIL')
+        self.assertTrue(any(error.startswith(prefix) for error in result['errors']),'%s not in %s'%(prefix,result['errors']))
+
+    def test_a_faithful_hyperbola_svg_passes(self):
+        result=self.audit(hyper_svg())
+        self.assertEqual(result['status'],'PASS',result['errors'])
+        self.assertAlmostEqual(result['checks']['scale'],HSCALE,delta=0.05)
+        self.assertEqual(O.audit(hyper_plan(),hyper_svg())['status'],'PASS')
+
+    def test_both_branches_lie_on_the_equation_and_on_their_own_side(self):
+        self.assertFails(self.audit(hyper_svg(squash=0.85)),'CONIC_CURVE_OFF_EQUATION')
+        self.assertFails(self.audit(hyper_svg(drop_branch='NEG')),'CONIC_HYPERBOLA_BRANCH_MISSING')
+        self.assertFails(self.audit(hyper_svg(neg_side_flip=True)),'CONIC_HYPERBOLA_BRANCH_MISSING')
+
+    def test_asymptotes_pass_through_the_centre_at_the_exact_slope_and_stay_dashed(self):
+        self.assertFails(self.audit(hyper_svg(asymptote_turn=1.0)),'CONIC_ASYMPTOTE_MISMATCH:s1')
+        self.assertFails(self.audit(hyper_svg(dash=False)),'LINE_DASH_MISMATCH')
+
+    def test_line_line_points_sit_on_both_lines(self):
+        moved={'O':(0,0),'P':(4,2),'A':(6,6),'B':(2.5,-2)}
+        result=self.audit(hyper_svg(markers=moved))
+        self.assertFails(result,'CONIC_LINE_LINE_MISMATCH:B')
+
+    def test_the_definition_check_uses_the_plans_own_foci(self):
+        par=CO.conic_of(hyper_plan()['conic'])
+        points={'P':(S.Integer(4),S.Integer(2))}
+        self.assertEqual(CO.definition_errors(par,points),[])
+        par['foci']={1:(S.Integer(5),S.Integer(0)),-1:(S.Integer(-4),S.Integer(0))}
+        self.assertEqual(CO.definition_errors(par,points),['CONIC_DEFINITION_MISMATCH:P'])
+
+    def test_the_observer_refuses_the_same_plans_the_producer_does(self):
+        for value,code in ((hyper_plan(aSquared='0'),'CONIC_PARAMETER_INVALID'),
+                           (hyper_plan(lines=[{'id':'d','role':'DIRECTRIX'}]),'CONIC_DIRECTRIX_REQUIRES_PARABOLA'),
+                           (conic_plan(lines=[{'id':'s','role':'ASYMPTOTE','sign':1}]),'CONIC_ASYMPTOTE_REQUIRES_HYPERBOLA'),
+                           (hyper_plan(points=[{'id':'A','kind':'LINE_LINE','lines':['s1','m']}],
+                                       lines=[{'id':'s1','role':'ASYMPTOTE','sign':1},{'id':'m','slope':'1','intercept':'1'}]),'CONIC_LINES_PARALLEL')):
+            self.assertEqual(self.audit(hyper_svg(),value)['errors'],['PLAN_REFUSED:%s'%code])
 
 
 if __name__=='__main__':
