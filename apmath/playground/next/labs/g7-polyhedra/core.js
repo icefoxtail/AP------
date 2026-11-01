@@ -180,7 +180,8 @@
       const p = o.fig ? p3 : P2(p3);
       const size = (o.size || 16) * (b.W < 560 ? 0.92 : 1);
       const eff = size * b.fs * b._ts();
-      const w = textW(str, eff) + 4, h = eff * 1.2;
+      let w = textW(str, eff) + 4, h = eff * 1.2;
+      if (o.badge) { w = h = Math.max(w, h) + 8; } // 동그라미 번호표: 글자 둘레에 원을 그립니다
       const s0 = b.toS(p);
       const bx = (cx, cy) => ({ x0: cx - w / 2, x1: cx + w / 2, y0: cy - h / 2, y1: cy + h / 2 });
       const area = (a, c) => Math.max(0, Math.min(a.x1, c.x1) - Math.max(a.x0, c.x0)) * Math.max(0, Math.min(a.y1, c.y1) - Math.max(a.y0, c.y0));
@@ -207,6 +208,7 @@
       });
       if (!best) return;
       D.boxes.push(bx(best[0], best[1]));
+      if (o.badge) b.point(b.toW(best[0], best[1]), { color: o.color || 'ink', r: Math.max(11, w / 2 - 1), hollow: true, ref: o.dimRing ? 'dim' : o.ref });
       b.text(p, str, { dx: best[0] - s0.x, dy: best[1] - s0.y, color: o.color || 'ink', size, weight: 800, align: 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref });
     };
     // 화면에서 점 p 가 입체 중심(c)의 어느 쪽 바깥인지 단위벡터
@@ -373,7 +375,7 @@
            prob(M,s)→{tag,stem,choices,key,note?}, anim?:{key,dur,label,start}, stepT?(n), cam0?:{yaw,pitch}, spin?:false } */
   function makeScene(D) {
     const A = D.anim;
-    const actions = () => {
+    const actions = (s) => {
       const out = [];
       if (A) {
         out.push({
@@ -384,6 +386,7 @@
         });
         out.push({ id: 'reset', icon: 'reset', label: '처음으로', run: (s) => { s.playing = false; s[A.key] = 0; if (D.onAnim) D.onAnim(s, 0); } });
       }
+      if (D.actions) D.actions(s).forEach((a) => out.push(a)); // 장면마다 더하는 버튼(예: 짝 보기)
       if (D.spin !== false) out.push({ id: 'spin', icon: (s) => (s.phSpin ? 'pause' : 'play'), label: (s) => (s.phSpin ? '돌리기 멈춤' : '빙글 돌려 보기'), on: (s) => !!s.phSpin, run: (s) => { s.phSpin = !s.phSpin; } });
       return out.length ? out : undefined;
     };

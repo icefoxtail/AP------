@@ -233,6 +233,49 @@
     return net;
   }
 
+  /* ---- 접은 모양 정보: 접으면 한 점이 되는 꼭짓점의 모둠 · 붙어서 한 모서리가 되는 모서리 짝
+     (손으로 정해 둔 표가 아니라, 접은 모양(t=1)의 3차원 위치를 허용 오차 안에서 맞춰 보아 구합니다) */
+  function foldInfoOf(net) {
+    if (net._fi) return net._fi;
+    const faces = net.faces, same = (p, q) => len3(sub3(p, q)) < 1e-5;
+    const E = [], at = [];
+    faces.forEach((f, fi) => { at[fi] = []; f.poly.forEach((_, vi) => { const vj = (vi + 1) % f.poly.length; at[fi][vi] = E.length; E.push({ fi, vi, vj, ka: net.ptOf[fi][vi], kb: net.ptOf[fi][vj], ca: net.clOf[fi][vi], cb: net.clOf[fi][vj], hinge: false, pair: -1 }); }); });
+    // 전개도에서 이미 이어져 있는(접는 선) 모서리
+    faces.forEach((f, fi) => {
+      if (!f.hinge) return;
+      [fi, f.parent].forEach((gi) => faces[gi].poly.forEach((a, vi) => {
+        const b = faces[gi].poly[(vi + 1) % faces[gi].poly.length];
+        if ((same(a, f.hinge.p1) && same(b, f.hinge.p2)) || (same(a, f.hinge.p2) && same(b, f.hinge.p1))) E[at[gi][vi]].hinge = true;
+      }));
+    });
+    // 접었을 때 같은 모서리(양 끝이 같은 꼭짓점 둘)가 되는 모서리끼리 묶기
+    const grp = new Map();
+    E.forEach((e, i) => { const k = Math.min(e.ca, e.cb) + '-' + Math.max(e.ca, e.cb); if (!grp.has(k)) grp.set(k, []); grp.get(k).push(i); });
+    const pairs = [], folds = [];
+    let ok = true;
+    grp.forEach((ids) => {
+      const es = ids.map((i) => E[i]);
+      if (es.length !== 2) ok = false;
+      if (es.length === 2 && es.every((e) => !e.hinge)) pairs.push(es);
+      else if (es.length === 2 && es.every((e) => e.hinge)) folds.push(es);
+      else ok = false;
+    });
+    const sk = (es) => es.map((e) => [Math.min(e.ka, e.kb), Math.max(e.ka, e.kb)]).sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    pairs.sort((A, B) => { const a = sk(A), b = sk(B); return a[0][0] - b[0][0] || a[0][1] - b[0][1] || a[1][0] - b[1][0]; });
+    pairs.forEach((es, i) => es.forEach((e) => { e.pair = i; }));
+    // 꼭짓점 모둠: 접으면 한 점이 되는 전개도의 점들(둘 이상일 때만 색을 줍니다)
+    const groups = [], ptGrp = net.pt.map(() => -1);
+    net.cl.forEach((_, c) => {
+      const pts = net.pt.map((__, k) => k).filter((k) => net.ptCl[k] === c);
+      if (pts.length > 1) groups.push({ c, pts });
+    });
+    groups.sort((a, b) => a.pts[0] - b.pts[0]);
+    groups.forEach((g, gi) => g.pts.forEach((k) => { ptGrp[k] = gi; }));
+    const info = { E, at, pairs, folds, groups, ptGrp, ok, nPairs: pairs.length, nFolds: folds.length, nVerts: net.cl.length, nNetPts: net.pt.length };
+    net._fi = info;
+    return info;
+  }
+
   /* ---- 칸(정사각형) 전개도: 정육면체 */
   const LCUBE = 1.2;
   function cellNet(cells0, label) {
@@ -427,6 +470,6 @@
   Object.assign(G, {
     NK, KNAME, nameOf, countsOf, solidOfKind, banner, sRect, shuf,
     PHI, cen3, hx, hxOf, hullFaces, solidOf, ring, prismS, pyrS, frustumS, topPyrS, PLAT, PLAT_KEYS, platS, truncS, dualDeg,
-    drawPoly, faceMid, drawCurved, finishNet, cellNet, cubeNetOK, CUBE_NETS, BAD_NETS, cubeNetOf, transformCells, canonCells, randCells, netSvg, polyNetsOf, hasBlock
+    drawPoly, faceMid, drawCurved, finishNet, foldInfoOf, cellNet, cubeNetOK, CUBE_NETS, BAD_NETS, cubeNetOf, transformCells, canonCells, randCells, netSvg, polyNetsOf, hasBlock
   });
 })();
