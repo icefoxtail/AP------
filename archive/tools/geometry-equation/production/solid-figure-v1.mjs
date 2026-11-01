@@ -747,7 +747,7 @@ function pointTable(solids){
 // [{id:"H",at:{base:"center"}},{id:"M",at:{edge:["A","B"],t:"1/2"}},{id:"K",at:{foot:{from:"V",to:["M","N"]}}}]: points that are no vertex of the solid (the centre of a face, a point
 // of an edge, the foot of a perpendicular) get a name and a place the engine computes in 3D; segments, marks and dims then take the name like a vertex. Resolved in order, so a
 // later point may use an earlier one. Every point belongs to this solid (a point is on a face, on an edge, or on the line / plane named by its own solid's points).
-const AUX_MAX=6,AUX_NAME=/^[A-Z]′?$/u,AUX_FRACTION=/^([1-9]\d?)\/([1-9]\d?)$/;
+const AUX_MAX=10,AUX_NAME=/^[A-Z]′?$/u,AUX_FRACTION=/^([1-9]\d?)\/([1-9]\d?)$/,AUX_RATIO=/^([1-9]\d?):([1-9]\d?)$/;
 function faceCentroid(pts){
   // area centroid of a planar polygon (a fan of triangles from its first vertex)
   let total=0,acc=[0,0,0];
@@ -763,8 +763,22 @@ function resolveAuxPoints(solids,named,vref){
     if(solid.auxSpec===undefined)continue;
     const raw=solid.auxSpec;
     delete solid.auxSpec;
-    if(!Array.isArray(raw)||raw.length<1||raw.length>AUX_MAX)bad('SOLID_POINTS_INVALID');
+    if(!Array.isArray(raw)||raw.length<1)bad('SOLID_POINTS_INVALID');
+    if(raw.length>AUX_MAX)bad('SOLID_AUX_POINT_LIMIT');
     solid.aux=[];
+    // the ids still to be placed (this one included): a general point that names one of them reads a point that does not exist yet
+    const later=new Set(raw.map(e=>isPlain(e)?e.id:undefined));
+    // G4a: any point of this solid placed so far (a vertex or an earlier helper point), for the general forms of "at"
+    const place=key=>{
+      if(typeof key==='string'&&!key.includes('#')&&!named.has(key))bad((later.has(key)?'SOLID_AUX_POINT_CYCLE:':'SOLID_AUX_POINT_UNKNOWN:')+key.slice(0,12));
+      const k=vref(key,'SOLID_AUX_POINT_UNKNOWN'),e=named.get(k);
+      if(!e||e.solid!==solid.id)bad('SOLID_AUX_POINT_UNKNOWN:'+String(k).slice(0,12));
+      return e.p;
+    };
+    const places=(list,n)=>{
+      if(!Array.isArray(list)||list.length!==n||new Set(list).size!==n)bad('SOLID_POINT_AT_INVALID');
+      return list.map(place);
+    };
     const own=key=>{const e=named.get(key);if(!e||e.solid!==solid.id)bad('SOLID_POINT_AT_INVALID');return e.p;};
     const idxOf=key=>solid.vertices.findIndex((v,i)=>vertexKeys(solid,i).includes(key));
     for(const entry of raw){
@@ -774,7 +788,7 @@ function resolveAuxPoints(solids,named,vref){
       if(named.has(entry.id))bad('SOLID_NAME_DUPLICATE:'+entry.id);
       const at=entry.at;
       if(!isPlain(at))bad('SOLID_POINT_AT_INVALID');
-      const kinds=['base','edge','foot'].filter(k=>at[k]!==undefined);
+      const kinds=['base','edge','foot','divide','midpoint','centroid','footOnLine'].filter(k=>at[k]!==undefined);
       if(kinds.length!==1)bad('SOLID_POINT_AT_INVALID');
       let p;
       if(kinds[0]==='base'){
@@ -795,7 +809,7 @@ function resolveAuxPoints(solids,named,vref){
         const m=typeof at.t==='string'?AUX_FRACTION.exec(at.t):null;
         if(!m||Number(m[1])>=Number(m[2]))bad('SOLID_POINT_AT_INVALID');
         p=lerp(own(a),own(b),Number(m[1])/Number(m[2]));
-      }else{
+      }else if(kinds[0]==='foot'){
         // the foot of the perpendicular from a point onto the line through two points (or onto the plane of a face: a face id)
         onlyKeys(at,['foot'],'SOLID_POINT_AT_INVALID');
         const f=at.foot;
@@ -814,7 +828,37 @@ function resolveAuxPoints(solids,named,vref){
           p=add(A,mulv(d,dot(sub(P,A),d)/dot(d,d)));
         }
         if(len(sub(p,P))<1e-6)bad('SOLID_POINT_FOOT_DEGENERATE');
+      }else if(kinds[0]==='divide'){
+        // G4a: the point that cuts the segment from the first named point to the second in the ratio m:n (outside the segment when external is true)
+        onlyKeys(at,['divide','ratio','external'],'SOLID_POINT_AT_INVALID');
+        if(at.external!==undefined&&typeof at.external!=='boolean')bad('SOLID_POINT_AT_INVALID');
+        const [A,B]=places(at.divide,2),m=typeof at.ratio==='string'?AUX_RATIO.exec(at.ratio):null;
+        if(!m)bad('SOLID_AUX_POINT_RATIO_INVALID');
+        const a=Number(m[1]),b=Number(m[2]);
+        // inside: A + (B-A) a/(a+b); outside, AX:XB = a:b with X beyond B when a>b and beyond A when a<b: X = (b A - a B)/(b - a)
+        if(at.external===true){if(a===b)bad('SOLID_AUX_POINT_RATIO_INVALID');p=lerp(A,B,a/(a-b));}
+        else p=lerp(A,B,a/(a+b));
+      }else if(kinds[0]==='midpoint'){
+        onlyKeys(at,['midpoint'],'SOLID_POINT_AT_INVALID');
+        const [A,B]=places(at.midpoint,2);
+        p=lerp(A,B,0.5);
+      }else if(kinds[0]==='centroid'){
+        // G4a: the centroid of three points (the mean of the three)
+        onlyKeys(at,['centroid'],'SOLID_POINT_AT_INVALID');
+        const [A,B,C]=places(at.centroid,3);
+        p=mulv(add(add(A,B),C),1/3);
+      }else{
+        // G4a: the foot of the perpendicular from a point onto the line through two points: any named points of this solid (a midpoint, the end of an earlier segment)
+        onlyKeys(at,['footOnLine'],'SOLID_POINT_AT_INVALID');
+        const f=at.footOnLine;
+        if(!isPlain(f))bad('SOLID_POINT_AT_INVALID');
+        onlyKeys(f,['from','line'],'SOLID_POINT_AT_INVALID');
+        const P=place(f.from),[A,B]=places(f.line,2),d=sub(B,A);
+        if(!(dot(d,d)>1e-12))bad('SOLID_AUX_FOOT_DEGENERATE');
+        p=add(A,mulv(d,dot(sub(P,A),d)/dot(d,d)));
+        if(len(sub(p,P))<1e-6)bad('SOLID_AUX_FOOT_DEGENERATE');
       }
+      later.delete(entry.id);
       solid.aux.push({name:entry.id,p});
       named.set(entry.id,{solid:solid.id,p});
     }

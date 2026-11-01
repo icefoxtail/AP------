@@ -1086,7 +1086,23 @@ def aux_point_places(specs, solid, named):
     names = face_names(solid)
     edges = poly_edges(solid)
     placed = {}
-    if not isinstance(specs, list) or not 1 <= len(specs) <= 6: raise ValueError('SOLID_POINTS_INVALID')
+    if not isinstance(specs, list) or len(specs) < 1: raise ValueError('SOLID_POINTS_INVALID')
+    if len(specs) > 10: raise ValueError('SOLID_AUX_POINT_LIMIT')
+    # the ids still to be placed (this one included): a general point that names one of them reads a point that does not exist yet
+    later = {e.get('id') for e in specs if isinstance(e, dict)}
+
+    def place(key):
+        # G4a: any point of this solid placed so far (a vertex or an earlier helper point)
+        if isinstance(key, str) and '#' not in key and key not in local:
+            raise ValueError(('SOLID_AUX_POINT_CYCLE:' if key in later else 'SOLID_AUX_POINT_UNKNOWN:') + key[:12])
+        k = norm(key, 'SOLID_AUX_POINT_UNKNOWN')
+        e = local.get(k)
+        if e is None or e[0] != sid: raise ValueError('SOLID_AUX_POINT_UNKNOWN:' + str(k)[:12])
+        return e[2]
+
+    def places(lst, n):
+        if not isinstance(lst, list) or len(lst) != n or len(set(map(str, lst))) != n: raise ValueError('SOLID_POINT_AT_INVALID')
+        return [place(x) for x in lst]
 
     def mine(key):
         e = local.get(key)
@@ -1099,7 +1115,7 @@ def aux_point_places(specs, solid, named):
         if entry['id'] in named or entry['id'] in placed: raise ValueError('SOLID_NAME_DUPLICATE:' + entry['id'])
         at = entry.get('at')
         if not isinstance(at, dict): raise ValueError('SOLID_POINT_AT_INVALID')
-        kinds = [k for k in ('base', 'edge', 'foot') if at.get(k) is not None]
+        kinds = [k for k in ('base', 'edge', 'foot', 'divide', 'midpoint', 'centroid', 'footOnLine') if at.get(k) is not None]
         if len(kinds) != 1: raise ValueError('SOLID_POINT_AT_INVALID')
         if kinds[0] == 'base':
             if set(at) - {'base', 'face'} or at['base'] not in ('center', 'centroid'): raise ValueError('SOLID_POINT_AT_INVALID')
@@ -1127,6 +1143,35 @@ def aux_point_places(specs, solid, named):
             f = int(m.group(1)) / int(m.group(2))
             A, B = mine(ka), mine(kb)
             p = tuple(A[k] * (1 - f) + B[k] * f for k in range(3))
+        elif kinds[0] == 'divide':
+            if set(at) - {'divide', 'ratio', 'external'} or (at.get('external') is not None and not isinstance(at['external'], bool)): raise ValueError('SOLID_POINT_AT_INVALID')
+            A, B = places(at['divide'], 2)
+            m = re.fullmatch(r'([1-9]\d?):([1-9]\d?)', at['ratio']) if isinstance(at.get('ratio'), str) else None
+            if not m: raise ValueError('SOLID_AUX_POINT_RATIO_INVALID')
+            a, b = int(m.group(1)), int(m.group(2))
+            if at.get('external') is True:
+                if a == b: raise ValueError('SOLID_AUX_POINT_RATIO_INVALID')
+                t = a / (a - b)
+            else: t = a / (a + b)
+            p = tuple(A[k] + (B[k] - A[k]) * t for k in range(3))
+        elif kinds[0] == 'midpoint':
+            if set(at) - {'midpoint'}: raise ValueError('SOLID_POINT_AT_INVALID')
+            A, B = places(at['midpoint'], 2)
+            p = tuple((A[k] + B[k]) / 2 for k in range(3))
+        elif kinds[0] == 'centroid':
+            if set(at) - {'centroid'}: raise ValueError('SOLID_POINT_AT_INVALID')
+            A, B, C = places(at['centroid'], 3)
+            p = tuple((A[k] + B[k] + C[k]) / 3 for k in range(3))
+        elif kinds[0] == 'footOnLine':
+            f = at['footOnLine']
+            if set(at) - {'footOnLine'} or not isinstance(f, dict) or set(f) - {'from', 'line'}: raise ValueError('SOLID_POINT_AT_INVALID')
+            P = place(f.get('from'))
+            A, B = places(f.get('line'), 2)
+            d = vsub(B, A)
+            if vdot(d, d) < 1e-12: raise ValueError('SOLID_AUX_FOOT_DEGENERATE')
+            p = vadd(A, vmul(d, vdot(vsub(P, A), d) / vdot(d, d)))
+            if vlen(vsub(p, P)) < 1e-6: raise ValueError('SOLID_AUX_FOOT_DEGENERATE')
+            check_foot_on_line(P, A, B, p)
         else:
             foot = at['foot']
             if not isinstance(foot, dict) or set(foot) - {'from', 'to'}: raise ValueError('SOLID_POINT_AT_INVALID')
@@ -1148,7 +1193,15 @@ def aux_point_places(specs, solid, named):
             if vlen(vsub(p, P)) < 1e-6: raise ValueError('SOLID_POINT_FOOT_DEGENERATE')
         placed[entry['id']] = p
         local[entry['id']] = (sid, None, p)
+        later.discard(entry['id'])
     return placed
+
+
+def check_foot_on_line(P, A, B, H, tol=1e-6):
+    """G4a: H is on the line AB and PH is perpendicular to AB (a 3D dot product); ValueError otherwise"""
+    d = vsub(B, A)
+    if vlen(vcross(vsub(H, A), d)) > tol * max(1.0, vlen(d)) or abs(vdot(vsub(P, H), d)) > tol * max(1.0, vlen(d)):
+        raise ValueError('SOLID_AUX_FOOT_NOT_PERPENDICULAR')
 
 
 def audit_aux_points(specs, solid, named, px, root, errors):

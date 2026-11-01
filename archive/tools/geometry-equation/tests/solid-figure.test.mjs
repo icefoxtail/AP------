@@ -2590,7 +2590,7 @@ test('G1: a bad helper point is refused with its own code',()=>{
   bad([{id:'H',at:{base:'middle'}}],'SOLID_POINT_AT_INVALID');
   bad([{id:'H',at:{base:'center',face:'nowhere'}}],'SOLID_POINT_FACE_UNKNOWN');
   bad([{id:'H',at:{base:'center'}},{id:'J',at:{}}],'SOLID_POINT_AT_INVALID');
-  bad(Array.from({length:7},(x,k)=>({id:'MNPQRSTU'[k],at:{edge:['A','B'],t:'1/2'}})),'SOLID_POINTS_INVALID');
+  bad(Array.from({length:11},(x,k)=>({id:'MNPQRSTUWXY'[k],at:{edge:['A','B'],t:'1/2'}})),'SOLID_AUX_POINT_LIMIT');// G4a raised the limit from 6 to 10
   // an octahedron stands on a vertex: it has no face on the floor to call its base
   assert.throws(()=>solveSolidFigure(figure({unit:'cm',solids:[{kind:'REGULAR_POLYHEDRON',faces:8,side:4,points:[{id:'H',at:{base:'center'}}]}]})),code('SOLID_POINT_FACE_UNKNOWN'));
   // a round solid has no helper points
@@ -2620,4 +2620,101 @@ test('G1: the panel with helper points is composed, audited, and each tamper is 
   // a plan whose M sits at 1/3 of AB is not this figure
   const moved={...plan,solids:[{...plan.solids[0],points:[{id:'M',at:{edge:['A','B'],t:'1/3'}},...plan.solids[0].points.slice(1)]}]};
   await failing(moved,svg,'SOLID_AUX_POINT_OFF:M');
+});
+
+// --- G4a: general helper points inside a solid (division point, midpoint, centroid, foot on a line) and the projection onto a plane -----------------------------------
+const g4aCube=(points,over={})=>figure({solids:[{kind:'PRISM',base:{kind:'RECT',width:3,depth:3},height:3,names:{base:'EFGH',top:'ABCD'},points}],...over});
+const g4aTetra=(points,over={})=>figure({solids:[{kind:'REGULAR_POLYHEDRON',faces:4,side:4,names:'ABCD',points}],...over});
+const g4aAt=(m,name)=>m.solids[0].aux.find(q=>q.name===name).p;
+const g4aVertex=(m,name)=>m.solids[0].vertices.find(v=>v.name===name).p;
+const g4aSub=(p,q)=>[p[0]-q[0],p[1]-q[1],p[2]-q[2]],g4aDot=(p,q)=>p[0]*q[0]+p[1]*q[1]+p[2]*q[2],g4aLen=p=>Math.hypot(...p);
+const g4aCross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+const g4aNear=(p,q,tol=1e-9)=>g4aLen(g4aSub(p,q))<tol;
+const g4aPlan=()=>g4aCube([{id:'P',at:{divide:['D','F'],ratio:'1:2'}},{id:'Q',at:{footOnLine:{from:'P',line:['E','F']}}}],{
+  segments:[{from:'D',to:'P',style:'DASHED',role:'REF'},{from:'P',to:'F',style:'DASHED',role:'REF'},{from:'P',to:'E',style:'DASHED',role:'ACCENT'},{from:'P',to:'Q',style:'DASHED',role:'ACCENT'},{from:'Q',to:'F',style:'SOLID',role:'ACCENT'}],
+  highlights:[{polygon:['P','E','F']}],marks:{rightAngles:[{at:'Q',refs:['P','F']}]},dims:[{edge:'EF',side:'BOTTOM'},{from:'P',to:'Q',side:'RIGHT'}]});
+test('G4a: a division point, a midpoint, a centroid and the foot on a line are placed exactly in 3D (a cube of edge 3: DP:PF=1:2 gives P=(1,2,2), PEF has height 2 sqrt 2)',()=>{
+  const m=solveSolidFigure(g4aPlan());
+  const E=g4aVertex(m,'E'),F=g4aVertex(m,'F'),D=g4aVertex(m,'D'),P=g4aAt(m,'P'),Q=g4aAt(m,'Q');
+  assert.ok(g4aNear(g4aSub(P,E),[1,2,2],1e-6),JSON.stringify(g4aSub(P,E)));
+  assert.ok(g4aNear(g4aSub(Q,E),[1,0,0],1e-6));
+  assert.ok(g4aNear(g4aSub(D,E),[0,3,3],1e-6)&&g4aNear(g4aSub(F,E),[3,0,0],1e-6));
+  assert.ok(Math.abs(g4aLen(g4aSub(P,Q))-2*Math.SQRT2)<1e-6);
+  assert.ok(Math.abs(g4aDot(g4aSub(P,Q),g4aSub(F,E)))<1e-9);// PQ is perpendicular to EF
+  // a midpoint, a centroid and the outside division point
+  const w=solveSolidFigure(g4aCube([{id:'M',at:{midpoint:['A','G']}},{id:'N',at:{centroid:['E','F','H']}},{id:'R',at:{divide:['E','F'],ratio:'2:1',external:true}},{id:'S',at:{divide:['E','F'],ratio:'1:2',external:true}},{id:'T',at:{divide:['E','F'],ratio:'10:1'}}]));
+  const A=g4aVertex(w,'A'),G=g4aVertex(w,'G'),Hh=g4aVertex(w,'H'),E2=g4aVertex(w,'E'),F2=g4aVertex(w,'F');
+  assert.ok(g4aNear(g4aAt(w,'M'),[0,1,2].map(k=>(A[k]+G[k])/2)));
+  assert.ok(g4aNear(g4aAt(w,'N'),[0,1,2].map(k=>(E2[k]+F2[k]+Hh[k])/3)));
+  assert.ok(g4aNear(g4aSub(g4aAt(w,'R'),E2),[6,0,0],1e-6));// AX:XB = 2:1 beyond B
+  assert.ok(g4aNear(g4aSub(g4aAt(w,'S'),E2),[-3,0,0],1e-6));// AX:XB = 1:2 beyond A
+  assert.ok(g4aNear(g4aSub(g4aAt(w,'T'),E2),[30/11,0,0],1e-6));
+  // a general point may use an earlier helper point (the foot on a line through two helper points)
+  const chain=solveSolidFigure(g4aCube([{id:'M',at:{midpoint:['A','B']}},{id:'N',at:{midpoint:['G','H']}},{id:'K',at:{footOnLine:{from:'E',line:['M','N']}}}]));
+  const K=g4aAt(chain,'K'),Mm=g4aAt(chain,'M'),Nn=g4aAt(chain,'N'),E3=g4aVertex(chain,'E');
+  assert.ok(Math.abs(g4aDot(g4aSub(E3,K),g4aSub(Nn,Mm)))<1e-9);
+  // a vertex reference works like a name
+  const ref=solveSolidFigure(figure({solids:[{kind:'PRISM',base:{kind:'RECT',width:3,depth:3},height:3,names:'........',points:[{id:'M',at:{midpoint:['#b0','#t2']}}]}]}));
+  assert.ok(g4aNear(g4aAt(ref,'M'),[0,1,2].map(k=>(ref.solids[0].vertices[0].p[k]+ref.solids[0].vertices[6].p[k])/2)));
+});
+test('G4a: a bad general helper point is refused with its own code',()=>{
+  const bad=(points,expected,make=g4aCube)=>assert.throws(()=>solveSolidFigure(make(points)),code(expected),expected);
+  bad([{id:'P',at:{divide:['D','F'],ratio:'1/2'}}],'SOLID_AUX_POINT_RATIO_INVALID');
+  bad([{id:'P',at:{divide:['D','F'],ratio:'0:1'}}],'SOLID_AUX_POINT_RATIO_INVALID');
+  bad([{id:'P',at:{divide:['D','F'],ratio:'1:0'}}],'SOLID_AUX_POINT_RATIO_INVALID');
+  bad([{id:'P',at:{divide:['D','F'],ratio:12}}],'SOLID_AUX_POINT_RATIO_INVALID');
+  bad([{id:'P',at:{divide:['D','F']}}],'SOLID_AUX_POINT_RATIO_INVALID');
+  bad([{id:'P',at:{divide:['D','F'],ratio:'2:2',external:true}}],'SOLID_AUX_POINT_RATIO_INVALID');// an outside point cannot cut in the ratio 1:1
+  bad([{id:'P',at:{divide:['D','F'],ratio:'1:2',external:'yes'}}],'SOLID_POINT_AT_INVALID');
+  bad([{id:'P',at:{divide:['D','Z'],ratio:'1:2'}}],'SOLID_AUX_POINT_UNKNOWN');
+  bad([{id:'P',at:{midpoint:['D','#v99']}}],'SOLID_VREF_UNKNOWN');
+  bad([{id:'P',at:{midpoint:['D','K']}},{id:'K',at:{midpoint:['E','F']}}],'SOLID_AUX_POINT_CYCLE:K');// K is placed after P
+  bad([{id:'P',at:{midpoint:['P','F']}}],'SOLID_AUX_POINT_CYCLE:P');
+  bad([{id:'P',at:{midpoint:['D','D']}}],'SOLID_POINT_AT_INVALID');
+  bad([{id:'P',at:{midpoint:['D']}}],'SOLID_POINT_AT_INVALID');
+  bad([{id:'P',at:{centroid:['D','E']}}],'SOLID_POINT_AT_INVALID');
+  bad([{id:'P',at:{midpoint:['D','F'],ratio:'1:2'}}],'SOLID_POINT_AT_INVALID');// extra key
+  bad([{id:'P',at:{midpoint:['D','F'],centroid:['D','E','F']}}],'SOLID_POINT_AT_INVALID');// two kinds
+  bad([{id:'P',at:{footOnLine:{from:'E',line:['E','F']}}}],'SOLID_AUX_FOOT_DEGENERATE');// E is on the line EF
+  bad([{id:'P',at:{footOnLine:{from:'D',line:['E','E']}}}],'SOLID_POINT_AT_INVALID');
+  bad([{id:'P',at:{footOnLine:{from:'D',line:['E','F'],extra:1}}}],'SOLID_POINT_AT_INVALID');
+  bad([{id:'P',at:{footOnLine:{from:'K',line:['E','F']}}}],'SOLID_AUX_POINT_UNKNOWN');
+  bad([{id:'A',at:{midpoint:['E','F']}}],'SOLID_NAME_DUPLICATE:A');
+  // ten points are fine, eleven are not
+  const ten=Array.from({length:10},(x,k)=>({id:'MNPQRSTUWX'[k],at:{midpoint:['A','B']}}));
+  assert.equal(solveSolidFigure(g4aCube(ten)).solids[0].aux.length,10);
+  bad([...ten,{id:'Y',at:{midpoint:['A','B']}}],'SOLID_AUX_POINT_LIMIT');
+  // the new points belong to their own solid: a name of another solid is not read
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'PRISM',base:{kind:'RECT',width:3,depth:3},height:3,names:'ABCDEFGH',points:[{id:'M',at:{midpoint:['A','K']}}]},{kind:'PYRAMID',base:{kind:'RECT',width:3,depth:3},height:3,names:'IJKLV'}]})),code('SOLID_AUX_POINT_UNKNOWN'));
+});
+test('G4a: the cube figure of 22 매산고 q11 (P on DF with DP:PF=1:2, the foot Q on EF, the triangle PEF) is composed, audited, and each tamper is caught',async()=>{
+  const plan=g4aPlan();
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  for(const name of ['P','Q'])assert.match(svg,new RegExp(`<circle id="aux-${name}" data-role="aux-point" data-solid="s1" data-point="${name}"`));
+  const failing=async(p,tampered,prefix)=>{const r=await audit(p,tampered);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+  const dot=name=>svg.match(new RegExp(`<circle id="aux-${name}"[^>]*/>`))[0];
+  await failing(plan,svg.replace(dot('P'),dot('P').replace(/ cx="([\d.]+)"/,(all,v)=>` cx="${Number(v)+9}"`)),'SOLID_AUX_POINT_OFF:P');
+  await failing(plan,svg.replace(dot('Q'),dot('Q').replace(/ cx="([\d.]+)"/,(all,v)=>` cx="${Number(v)+9}"`)),'SOLID_AUX_POINT_OFF:Q');
+  // a plan that puts P at the middle of DF (1:1), or Q on another line, is not this figure
+  const half={...plan,solids:[{...plan.solids[0],points:[{id:'P',at:{divide:['D','F'],ratio:'1:1'}},plan.solids[0].points[1]]}]};
+  await failing(half,svg,'SOLID_AUX_POINT_OFF:P');
+  const other={...plan,solids:[{...plan.solids[0],points:[plan.solids[0].points[0],{id:'Q',at:{footOnLine:{from:'P',line:['E','H']}}}]}]};
+  await failing(other,svg,'SOLID_AUX_POINT_OFF:Q');
+  // the plan's own errors are read back by the observer
+  const loop={...plan,solids:[{...plan.solids[0],points:[{id:'P',at:{divide:['D','F'],ratio:'1/2'}},plan.solids[0].points[1]]}]};
+  await failing(loop,svg,'SOLID_AUX_POINT_RATIO_INVALID');
+  // the segment PQ no longer ends at Q
+  const seg=svg.match(/<line id="segment-PQ"[^>]*\/>/)[0];
+  await failing(plan,svg.replace(seg,seg.replace(/ y2="([\d.]+)"/,(all,v)=>` y2="${Number(v)-14}"`)),'SOLID_SEGMENT_ENDPOINT_OFF');
+});
+test('G4a: the tetrahedron figure of 22 매산고 q13 (midpoints N, M, the dihedral angle at N, the triangle ABM that C projects to) is composed and audited',async()=>{
+  const plan=figure({solids:[{kind:'REGULAR_POLYHEDRON',faces:4,side:4,names:'ABCD',points:[{id:'N',at:{midpoint:['A','B']}},{id:'M',at:{midpoint:['C','D']}}]}],
+    segments:[{from:'N',to:'C',style:'AUTO',role:'ACCENT'},{from:'N',to:'M',style:'DASHED',role:'ACCENT'},{from:'A',to:'M',style:'AUTO',role:'REF'},{from:'B',to:'M',style:'AUTO',role:'REF'},{from:'C',to:'M',style:'SOLID',role:'ACCENT'}],
+    highlights:[{polygon:['A','B','M']}],marks:{rightAngles:[{at:'M',refs:['C','N']}],angles:[{refs:['C','N','M'],arcs:1,label:'\\varphi'}]},dims:[{from:'N',to:'C'},{from:'N',to:'M'}]});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
 });
