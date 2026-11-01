@@ -15,6 +15,12 @@
   'use strict';
   const APLab = window.APLab;
   const clamp = APLab.clamp;
+  // 캔버스 글자 속 분수(유니코드 ½·\frac{A}{B}·정수/정수)를 쌓은 분수로 그리기 위한 규칙. 빠른 검사에 걸리지 않으면 기존 경로 그대로입니다.
+  const VULGAR = { '½': ['1', '2'], '⅓': ['1', '3'], '⅔': ['2', '3'], '¼': ['1', '4'], '¾': ['3', '4'], '⅕': ['1', '5'], '⅖': ['2', '5'], '⅗': ['3', '5'], '⅘': ['4', '5'], '⅙': ['1', '6'], '⅚': ['5', '6'], '⅛': ['1', '8'], '⅜': ['3', '8'], '⅝': ['5', '8'], '⅞': ['7', '8'] };
+  const FRAC_QUICK = /[½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]|\\frac|[\dπ]\/[\d√]/;
+  // 날짜(2026/11/01)·소수(3.5/2)·길게 이어진 토큰의 일부는 분수로 보지 않습니다. √3/2·2π/3처럼 위가 √수·π인 분수도 포함합니다.
+  const FRAC_RE = /[½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]|\\frac\{([^{}]{1,14})\}\{([^{}]{1,14})\}|(?<![\d./])(√?\d{1,3}|\d{0,3}π)\/(√?\d{1,3})(?![\d/])/g;
+  const fracTidy = (t) => String(t).trim().replace(/\\pi\b/g, 'π').replace(/\^2/g, '²').replace(/\^3/g, '³');
   const NAMES = ['ink', 'sky', 'rose', 'amber', 'green', 'violet', 'red', 'orange', 'muted'];
 
   function niceStep(raw) {
@@ -773,34 +779,118 @@
       if (this.kind !== 'figure' || this.thumb) return 1;
       return clamp(0.55 + 0.45 * this.k, 0.78, 1);
     }
+    /** 캔버스 글자 속 분수를 찾아 [{t}|{n,d}] 조각으로 나눕니다(분수가 없으면 null). 학생이 익숙한 '위·막대·아래' 모양으로 그리기 위함입니다. */
+    _fracSplit(str) {
+      if (!FRAC_QUICK.test(str)) return null;
+      const out = [];
+      let last = 0;
+      FRAC_RE.lastIndex = 0;
+      let m;
+      while ((m = FRAC_RE.exec(str))) {
+        let n, d;
+        if (m[1] !== undefined) [n, d] = [m[1], m[2]];
+        else if (m[3] !== undefined) [n, d] = [m[3], m[4]];
+        else [n, d] = VULGAR[m[0]];
+        if (m.index > last) out.push({ t: str.slice(last, m.index) });
+        out.push({ n: fracTidy(n), d: fracTidy(d) });
+        last = m.index + m[0].length;
+      }
+      if (!out.length) return null;
+      if (last < str.length) out.push({ t: str.slice(last) });
+      return out;
+    }
     _text(x, y, str, o = {}, screen = false) {
       if (str == null || str === '') return this;
       const c = this.ctx;
       const em = this._em(o);
       const size = (o.size || 13) * this.fs * (this.thumb ? 0.78 : this._ts());
+      str = String(str);
+      const segs = this._fracSplit(str);
       c.save();
       c.font = `${o.weight || 750} ${size}px ${this.font}`;
       c.textAlign = o.align || 'center';
       c.textBaseline = o.baseline || 'alphabetic';
+      const al = c.textAlign, bl = c.textBaseline;
+      // 분수는 본문 글자의 0.72배로 위·아래에 쌓고, 폭은 위·아래 중 넓은 쪽 + 여백입니다.
+      let W = 0, fs = 0, gap = 0, pad = 0;
+      if (segs) {
+        fs = Math.max(size * 0.72, Math.min(size * 0.9, 9.5)); // 0.72배, 아주 작은 글자에서는 읽을 수 있게 9.5px까지 키움
+        gap = fs * 0.2;
+        pad = fs * 0.34;
+        for (const g of segs) {
+          if (g.t !== undefined) { c.font = `${o.weight || 750} ${size}px ${this.font}`; g.w = c.measureText(g.t).width; }
+          else { c.font = `${o.weight || 750} ${fs}px ${this.font}`; g.w = Math.max(c.measureText(g.n).width, c.measureText(g.d).width) + pad; }
+          W += g.w;
+        }
+        c.font = `${o.weight || 750} ${size}px ${this.font}`;
+      } else if (this._bbox && !screen) {
+        W = c.measureText(str).width;
+      }
+      // 글자 줄의 세로 가운데(기준점에서의 거리)
+      const midOff = bl === 'middle' ? 0 : bl === 'top' || bl === 'hanging' ? size * 0.5 : bl === 'bottom' ? -size * 0.5 : -size * 0.3;
       if (this._bbox && !screen) {
         // 재는 중: 글자 상자를 '세계 기준점 + 화면 픽셀 크기'로 기록(fitBox가 배율과 함께 풉니다)
-        const w = c.measureText(String(str)).width;
-        const al = c.textAlign, bl = c.textBaseline;
-        const l = al === 'center' ? -w / 2 : al === 'right' || al === 'end' ? -w : 0;
-        const t = bl === 'middle' ? -size / 2 : bl === 'top' || bl === 'hanging' ? 0 : bl === 'bottom' ? -size : -size * 0.8;
+        const l = al === 'center' ? -W / 2 : al === 'right' || al === 'end' ? -W : 0;
+        let t = bl === 'middle' ? -size / 2 : bl === 'top' || bl === 'hanging' ? 0 : bl === 'bottom' ? -size : -size * 0.8;
+        let b = t + size;
+        if (segs) {
+          t = Math.min(t, midOff - gap - fs * 0.95);
+          b = Math.max(b, midOff + gap + fs * 0.95);
+        }
         const ref = this.toW(x, y);
-        this._bbox.texts.push({ x: ref.x, y: ref.y, l: l - 3, r: l + w + 3, t: t - 3, b: t + size + 3 });
+        this._bbox.texts.push({ x: ref.x, y: ref.y, l: l - 3, r: l + W + 3, t: t - 3, b: b + 3 });
       }
       c.setLineDash([]);
       c.shadowBlur = 0;
-      if (o.halo !== false) {
+      const halo = o.halo !== false;
+      if (halo) {
         c.lineJoin = 'round';
         c.lineWidth = 4;
         c.strokeStyle = this.colors.halo;
-        c.strokeText(str, x, y);
       }
-      c.fillStyle = this.color(o.color || 'ink', em === -1 ? 0.3 : o.alpha);
-      c.fillText(str, x, y);
+      const col = this.color(o.color || 'ink', em === -1 ? 0.3 : o.alpha);
+      c.fillStyle = col;
+      if (!segs) {
+        if (halo) c.strokeText(str, x, y);
+        c.fillText(str, x, y);
+        c.restore();
+        return this;
+      }
+      // 조각마다 왼쪽 기준으로 이어 그립니다.
+      let cx = al === 'center' ? x - W / 2 : al === 'right' || al === 'end' ? x - W : x;
+      const my = y + midOff;
+      const barW = Math.max(1.3, fs * 0.09);
+      const fontS = `${o.weight || 750} ${size}px ${this.font}`;
+      const fontF = `${o.weight || 750} ${fs}px ${this.font}`;
+      for (const g of segs) {
+        if (g.t !== undefined) {
+          c.font = fontS;
+          c.textAlign = 'left';
+          c.textBaseline = bl;
+          if (halo) c.strokeText(g.t, cx, y);
+          c.fillText(g.t, cx, y);
+        } else {
+          c.font = fontF;
+          c.textAlign = 'center';
+          c.textBaseline = 'alphabetic';
+          const mx = cx + g.w / 2;
+          const yn = my - gap - barW / 2;
+          const yd = my + gap + barW / 2 + fs * 0.74;
+          const x0 = cx + pad * 0.3, x1 = cx + g.w - pad * 0.3;
+          if (halo) {
+            c.strokeText(g.n, mx, yn);
+            c.strokeText(g.d, mx, yd);
+            c.lineCap = 'round';
+            c.lineWidth = barW + 3;
+            c.beginPath(); c.moveTo(x0, my); c.lineTo(x1, my); c.stroke();
+            c.lineWidth = 4;
+          }
+          c.fillText(g.n, mx, yn);
+          c.fillText(g.d, mx, yd);
+          c.fillRect(x0, my - barW / 2, x1 - x0, barW);
+        }
+        cx += g.w;
+      }
       c.restore();
       return this;
     }
