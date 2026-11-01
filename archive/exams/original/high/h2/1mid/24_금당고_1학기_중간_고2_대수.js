@@ -17,7 +17,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -31,7 +31,7 @@ window.questionBank = [
     "solution": "$-32 = (-2)^5$ 이므로 $\\sqrt[5]{-32} = -2$ 이다.",
     "level": "중",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -52,7 +52,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -65,7 +65,7 @@ window.questionBank = [
     "solution": "$3^{\\frac{10}{3}} \\times 3^{-\\frac{1}{3}} = 3^{\\frac{10}{3}-\\frac{1}{3}} = 3^{\\frac{9}{3}} = 3^3 = 27$ 이다.",
     "level": "중",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -86,7 +86,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -99,7 +99,7 @@ window.questionBank = [
     "solution": "$\\log_a b \\cdot \\log_b c = \\log_a c$ 이고 $\\log_a c \\cdot \\log_c a = 1$ 이므로 주어진 값은 $1$ 이다.",
     "level": "중",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -120,7 +120,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -133,7 +133,7 @@ window.questionBank = [
     "solution": "진수 조건은 $x+5>0$, $2x+1>0$ 이므로 $x>-\\frac{1}{2}$ 이다. 같은 밑의 로그가 같으므로 $x+5=2x+1$ 이고, 이를 풀면 $x=4$ 이다. $x=4$ 는 진수 조건도 만족한다.",
     "level": "중",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -154,7 +154,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -188,7 +188,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -224,7 +224,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -240,7 +240,7 @@ window.questionBank = [
     "solution": "$\\log_3 x = t$ 로 두면 $\\log_3 x^3 = 3\\log_3 x = 3t$ 이므로 부등식은 $t^2 - 3t + 2 < 0$ 이다. 즉 $(t-1)(t-2)<0$ 이므로 $1<t<2$ 이다. 따라서 $1<\\log_3 x<2$, 즉 $3<x<9$ 이다. 자연수 $x$ 는 $4,5,6,7,8$ 이므로 개수는 $5$ 이다.",
     "level": "중",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -261,7 +261,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -298,7 +298,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-11",
     "standardUnit": "삼각방정식과 삼각부등식",
     "standardUnitOrder": 11,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -333,7 +333,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-11",
     "standardUnit": "삼각방정식과 삼각부등식",
     "standardUnitOrder": 11,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -369,7 +369,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -385,7 +385,7 @@ window.questionBank = [
     "solution": "$-n^2+11n-24 = -(n-3)(n-8)$ 이다. $x^n=A$ 의 실근 개수는 $A>0$ 이면 홀수 차수에서 1개, 짝수 차수에서 2개이고, $A=0$ 이면 1개, $A<0$ 이면 홀수 차수에서 1개, 짝수 차수에서 0개이다. 이를 이용하면 $f(3)=1$, $f(4)=2$, $f(5)=1$, $f(6)=2$, $f(7)=1$ 이다. 따라서 $f(n)+f(n+1)=3$ 을 만족하는 $n$ 은 $3,4,5,6$ 이고, 그 합은 $18$ 이다.",
     "level": "중",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -406,7 +406,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -422,7 +422,7 @@ window.questionBank = [
     "solution": "주어진 식은 $n\\left(\\frac{3}{2}\\right)^{m/4}$ 이다. 이 값이 자연수가 되려면 $\\left(\\frac{3}{2}\\right)^{m/4}$ 가 유리수가 되어야 하므로 $m$ 은 4의 배수여야 한다. $m=4k$ 로 두면 식은 $n\\left(\\frac{3}{2}\\right)^k = \\frac{n\\cdot 3^k}{2^k}$ 이다. 이를 자연수로 만들기 위한 최소의 $n$ 은 $2^k$ 이므로 $m+n = 4k + 2^k$ 이다. $k=1$ 일 때 $m=4, n=2$ 로 최솟값 $6$ 을 가지므로 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -443,7 +443,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-03",
     "standardUnit": "로그함수",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -459,7 +459,7 @@ window.questionBank = [
     "solution": "함수식은 $y = \\log_2((x-k)^2+1)+2$ 이다. 최솟값이 $3$ 이므로 $(x-k)^2+1$ 의 최솟값이 $2$ 여야 하고, 이는 구간 $[1,3]$ 에서 점 $k$ 와의 최소거리가 $1$ 임을 뜻한다. $k>0$ 이므로 $k=4$ 이다. 이때 $(x-4)^2+1$ 의 최댓값은 $x=1$ 에서 $10$ 이므로 $M=\\log_2 10 + 2$ 이다. 따라서 $2^M = 2^{\\log_2 10 + 2} = 40$ 이고, $k+2^M = 44$ 이다.",
     "level": "중",
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
-    "subUnit": "logarithmic function",
+    "subUnit": "로그함수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -480,7 +480,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-10",
     "standardUnit": "삼각함수의 그래프",
     "standardUnitOrder": 10,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -517,7 +517,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-11",
     "standardUnit": "삼각방정식과 삼각부등식",
     "standardUnitOrder": 11,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -559,7 +559,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -575,7 +575,7 @@ window.questionBank = [
     "solution": "직선 $y=-x+8$ 위에서 지수함수와 로그함수의 교점은 서로 좌표가 뒤바뀌므로 $B=(t, 8-t)$, $C=(8-t, t)$ 로 둘 수 있다. 또 $A=(8,0)$ 이고 $\\overline{BC}:\\overline{CA}=2:1$ 이므로 같은 직선 위의 길이비를 이용하면 $\\frac{8-2t}{t}=2$ 이고, 따라서 $t=2$ 이다. 그러므로 $B=(2,6)$, $C=(6,2)$ 이다.<br>점 $B$ 가 $y=a^x$ 위에 있으므로 $a^2=6$ 이다. 점 $D$ 는 $y=6$ 과 $y=\\log_a x$ 의 교점이므로 $x=a^6=(a^2)^3=6^3=216$ 이고, 따라서 $D=(216,6)$ 이다. 삼각형 BCD 의 넓이는 $\\frac{1}{2}\\cdot(216-2)\\cdot(6-2)=428$ 이다.",
     "level": "중",
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
-    "subUnit": "exponential function",
+    "subUnit": "지수함수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -601,7 +601,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -637,7 +637,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-03",
     "standardUnit": "로그함수",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -652,7 +652,7 @@ window.questionBank = [
     "solution": "$y=\\log_2 x$ 를 아래로 3만큼 평행이동하면 $y=\\log_2 x-3$ 이다. 이를 $x$ 축 대칭이동하면 $y=-(\\log_2 x-3)=-\\log_2 x+3$ 이다. 또 $-\\log_2 x = \\log_{1/2}x$ 이므로 $-\\log_2 x+3 = \\log_{1/2}x + \\log_{1/2}\\frac{1}{8} = \\log_{1/2}\\left(\\frac{x}{8}\\right)$ 이다. 따라서 $a=\\frac{1}{2}$, $b=\\frac{1}{8}$ 이고, $a+b=\\frac{5}{8}$ 이다.",
     "level": "중",
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
-    "subUnit": "logarithmic function",
+    "subUnit": "로그함수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -672,7 +672,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -703,7 +703,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -716,7 +716,7 @@ window.questionBank = [
     "solution": "$7^{a+b}=16$, $7^{a-b}=4$ 이므로 $a+b=\\log_7 16$, $a-b=\\log_7 4$ 이다. 두 식을 더하면 $2a=\\log_7 64$ 이므로 $a=\\log_7 8$ 이고, 두 식을 빼면 $2b=\\log_7 4$ 이므로 $b=\\log_7 2$ 이다. 따라서 $\\frac{a+b}{ab} = \\frac{\\log_7 16}{(\\log_7 8)(\\log_7 2)} = \\frac{4\\log_7 2}{3(\\log_7 2)^2} = \\frac{4}{3\\log_7 2}$ 이다. 그러므로 $\\log_7 8^{\\frac{a+b}{ab}} = \\frac{a+b}{ab}\\cdot\\log_7 8 = \\frac{4}{3\\log_7 2}\\cdot 3\\log_7 2 = 4$ 이다.",
     "level": "중",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -736,7 +736,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -752,7 +752,7 @@ window.questionBank = [
     "solution": "좌표를 평행이동하여 u=x-3이라 두면 두 곡선은 y=a^u, y=log_a u이고, 직선은 y=8-u이다. 두 곡선의 교점은 (u,v)와 (v,u)의 형태로 대응하므로 주어진 중점 x좌표 11/2에서 u+v=5, 즉 직선은 y=-x+8이다.\n\n삼각형의 두 교점을 A=(u+3,5-u), B=(8-u,u)라 하고 C=(3,0)이라 하자. 넓이 조건에서 1/2 |det(A-C,B-C)| = 1/2 |u^2-(5-u)^2| = 10이다.\n\n이므로 |10u-25|=20이다. 따라서 u=1/2 또는 9/2이다. a>2이고 A가 y=a^u 위에 있어야 하므로 u=1/2를 선택한다. 이때 A=(7/2,9/2)이고 a^{1/2}=9/2이므로 a=81/4이다.\n\n따라서 구하는 값은 $\\frac{81}{4}$이다.",
     "level": "중",
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
-    "subUnit": "exponential function",
+    "subUnit": "지수함수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   }
