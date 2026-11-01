@@ -1655,3 +1655,305 @@ class GeneralAuxPoints(unittest.TestCase):
         for wrong in ((1.0, 2.0, 0.5), (1.5, 2.0, 0.0)):
             with self.assertRaises(ValueError) as cm: O.check_projection((1.0, 2.0, 2.0), A, B, M, wrong)
             self.assertTrue(str(cm.exception).startswith('SOLID_PROJECTION_MISMATCH'))
+
+
+class FreeSpacePoints(unittest.TestCase):
+    """G4b-1: the observer re-derives plan.space from the grammar alone (exact texts, the general forms, the depth test) and checks the drawn dots and segment pieces"""
+    def places(self, points):
+        return O.space_places({'points': points}, {}, O.make_norm([], {}))[0]
+
+    def test_exact_texts(self):
+        for text, want in (('1/2', 0.5), ('sqrt(3)/2', math.sqrt(3) / 2), ('-sqrt(2)/2', -math.sqrt(2) / 2), ('(1+sqrt(2))*3', 3 * (1 + math.sqrt(2))), ('2.5', 2.5), (' 1 / 4 ', 0.25), (3, 3.0)):
+            self.assertAlmostEqual(O.space_number(text), want, places=12)
+        for bad in ('1/0', 'sqrt(-1)', '2**2', 'abc', '', '1+', '((1)', '1e5', True, None, 2000, 'sqrt(1', '1;2'):
+            with self.assertRaises(ValueError, msg=repr(bad)): O.space_number(bad)
+
+    def test_general_forms_in_3d(self):
+        pts = self.places([{'id': 'P', 'at': [0, 0, 3]}, {'id': 'O', 'at': [0, 0, 0]}, {'id': 'H', 'at': ['2', '1/2', 0]}, {'id': 'M', 'at': {'midpoint': ['P', 'H']}},
+                           {'id': 'N', 'at': {'divide': ['O', 'H'], 'ratio': '1:3'}}, {'id': 'G', 'at': {'centroid': ['P', 'O', 'H']}}, {'id': 'F', 'at': {'footOnLine': {'from': 'P', 'line': ['O', 'H']}}},
+                           {'id': 'X', 'at': [0, 1, 0]}, {'id': 'R', 'at': {'projection': {'from': 'P', 'plane': ['O', 'H', 'X']}}}])
+        for name, want in (('M', (1, 0.25, 1.5)), ('N', (0.5, 0.125, 0)), ('G', (2 / 3, 1 / 6, 1))):
+            for a, b in zip(pts[name], want): self.assertAlmostEqual(a, b, places=9)
+        self.assertAlmostEqual(O.vdot(O.vsub(pts['P'], pts['F']), O.vsub(pts['H'], pts['O'])), 0.0, places=9)
+        # R is on the plane O H X and PR is along its normal
+        n = O.vcross(O.vsub(pts['H'], pts['O']), O.vsub(pts['X'], pts['O']))
+        self.assertAlmostEqual(O.vdot(n, O.vsub(pts['R'], pts['O'])), 0.0, places=9)
+        self.assertAlmostEqual(O.vlen(O.vcross(O.vsub(pts['P'], pts['R']), n)), 0.0, places=9)
+
+    def test_every_bad_definition_has_its_code(self):
+        cases = (
+            ([{'id': 'P', 'at': [0, 0]}], 'SPACE_POINT_INVALID'),
+            ([{'id': 'P', 'at': ['1/0', 0, 0]}], 'SPACE_POINT_INVALID'),
+            ([{'id': 'P', 'at': {'midpoint': ['Q', 'P']}}], 'SPACE_POINT_INVALID'),
+            ([{'id': 'P', 'at': {'midpoint': ['Q', 'O']}}, {'id': 'Q', 'at': [0, 0, 1]}, {'id': 'O', 'at': [0, 0, 0]}], 'SPACE_POINT_INVALID:forward:'),
+            ([{'id': 'p', 'at': [0, 0, 0]}], 'SPACE_POINT_INVALID'),
+            ([{'id': 'P', 'at': [0, 0, 0], 'hideName': 'yes'}], 'SPACE_POINT_INVALID'),
+            ([{'id': 'P', 'at': [0, 0, 0]}, {'id': 'P', 'at': [1, 0, 0]}], 'SPACE_POINT_DUPLICATE:P'),
+            ([{'id': 'ABCDEFGHIJKLMNOPQ'[k], 'at': [k, 0, 0]} for k in range(17)], 'SPACE_POINT_LIMIT'),
+            ([{'id': 'P', 'at': [0, 0, 0]}, {'id': 'Q', 'at': {'divide': ['P', 'P'], 'ratio': '1:2'}}], 'SPACE_POINT_INVALID'),
+            ([{'id': 'P', 'at': [0, 0, 0]}, {'id': 'Q', 'at': {'divide': ['P', 'P'], 'ratio': '1/2'}}], 'SPACE_POINT_INVALID'),
+            ([{'id': 'P', 'at': [0, 0, 0]}, {'id': 'O', 'at': [1, 0, 0]}, {'id': 'Q', 'at': {'divide': ['P', 'O'], 'ratio': '1/2'}}], 'SOLID_AUX_POINT_RATIO_INVALID'),
+            ([{'id': 'P', 'at': [0, 0, 0]}, {'id': 'O', 'at': [1, 0, 0]}, {'id': 'Q', 'at': {'footOnLine': {'from': 'P', 'line': ['P', 'O']}}}], 'SOLID_AUX_FOOT_DEGENERATE'),
+            ([{'id': 'P', 'at': [0, 0, 0]}, {'id': 'O', 'at': [1, 0, 0]}, {'id': 'Q', 'at': [2, 0, 0]}, {'id': 'R', 'at': {'projection': {'from': 'P', 'plane': ['P', 'O', 'Q']}}}], 'SOLID_PROJECTION_PLANE_DEGENERATE'),
+        )
+        for points, code in cases:
+            with self.assertRaises(ValueError, msg=code) as cm: self.places(points)
+            self.assertTrue(str(cm.exception).startswith(code), (code, str(cm.exception)))
+
+    def test_runs_find_the_depth_change_by_bisection(self):
+        # a point is hidden when t > 0.37: one change, found to 1e-9
+        runs = O.space_runs(lambda t: t > 0.37)
+        self.assertEqual(len(runs), 2)
+        self.assertAlmostEqual(runs[0][1], 0.37, places=9)
+        self.assertEqual([r[2] for r in runs], [False, True])
+        self.assertEqual(O.space_runs(lambda t: False), [(0.0, 1.0, False)])
+
+    def test_a_plane_polygon_hides_what_is_behind_it(self):
+        # the square z = 0, |x|, |y| <= 1: a point below it on the line of sight is hidden, a point above it is not
+        plane = O._plane_of_points([(-4.0, -4.0, 0.0), (4.0, -4.0, 0.0), (4.0, 4.0, 0.0), (-4.0, 4.0, 0.0)])
+        below, above = (0.0, 0.0, -1.0), (0.0, 0.0, 1.0)
+        self.assertTrue(O.hidden_by_faces(None, {0: plane}, below, set()))
+        self.assertFalse(O.hidden_by_faces(None, {0: plane}, above, set()))
+        self.assertFalse(O.hidden_by_faces(None, {0: plane}, (0.0, 0.0, 0.0), set()))   # on the plane: seen
+
+    # --- a hand-built svg: the dots and the pieces of the segments, drawn from the observer's own projection ---
+    PLAN = {'capability': 'solid-figure-v1', 'space': {'points': [{'id': 'P', 'at': [0, 0, 3], 'hideName': True}, {'id': 'O', 'at': [0, 0, 0], 'hideName': True}, {'id': 'H', 'at': [2, 0, 0], 'hideName': True}],
+                                                      'segments': [{'from': 'P', 'to': 'O', 'style': 'DASHED'}, {'from': 'P', 'to': 'H', 'role': 'ACCENT'}]}}
+
+    def svg(self, tamper=None):
+        tx, ty = 100.0, 250.0
+        px = lambda p: (tx + SCALE * O.project(p)[0], ty - SCALE * O.project(p)[1])
+        pts = {'P': (0.0, 0.0, 3.0), 'O': (0.0, 0.0, 0.0), 'H': (2.0, 0.0, 0.0)}
+        dots = {k: list(px(p)) for k, p in pts.items()}
+        lines = {'PO': [list(px(pts['P'])), list(px(pts['O'])), True, 'REF', 'DASHED'], 'PH': [list(px(pts['P'])), list(px(pts['H'])), False, 'ACCENT', 'SOLID']}
+        if tamper: tamper(dots, lines)
+        body = ''.join('<circle id="space-%s" data-role="space-point" data-space="1" data-point="%s" fill="#111" cx="%.3f" cy="%.3f" r="2.4"/>' % (k, k, v[0], v[1]) for k, v in dots.items())
+        for key, (a, b, hidden, role, style) in lines.items():
+            body += '<line id="space-segment-%s-1" data-role="space-segment" data-edge="%s" data-vis="%s" data-t0="0" data-t1="1" data-style="%s" data-accent="%s" data-space="1" stroke="%s" stroke-width="1.6"%s fill="none" x1="%.3f" y1="%.3f" x2="%.3f" y2="%.3f"/>' % (
+                key, key, 'hidden' if hidden else 'solid', style, role, '#c0392b' if role == 'ACCENT' else '#111', ' stroke-dasharray="5 4"' if hidden else '', a[0], a[1], b[0], b[1])
+        return '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" data-solid-figure="solid-figure-v1" data-mode="SOLIDS" data-scale="%s" data-origin="100 250" data-yaw="28" data-pitch="20">%s</svg>' % (SCALE, body)
+
+    def errors(self, tamper=None, plan=None):
+        return O.audit(plan or self.PLAN, self.svg(tamper))['errors']
+
+    def test_an_untouched_figure_passes(self):
+        self.assertEqual(self.errors(), [])
+
+    def test_a_moved_dot_or_end_is_caught(self):
+        def move_dot(dots, lines): dots['H'][0] += 7
+        self.assertTrue(any(e.startswith('SPACE_POINT_OFF:H') for e in self.errors(move_dot)), self.errors(move_dot))
+
+        def move_end(dots, lines): lines['PH'][1][1] -= 9
+        self.assertTrue(any(e.startswith('SPACE_SEGMENT_ENDPOINT_OFF:PH') for e in self.errors(move_end)), self.errors(move_end))
+
+        def drop_dot(dots, lines): del dots['O']
+        self.assertTrue(any(e.startswith('SPACE_POINT_SET_MISMATCH') for e in self.errors(drop_dot)))
+
+        def solid_instead(dots, lines): lines['PO'][2] = False
+        self.assertTrue(any(e.startswith('SOLID_EDGE_VISIBILITY_MISMATCH') or e.startswith('SPACE_SEGMENT_STYLE_MISMATCH') for e in self.errors(solid_instead)))
+
+    def test_one_displaced_dot_does_not_drag_the_frame(self):
+        # the translation is the median of the dots and the scale is the declared one: with three dots one moved by 30 px is the one that is off
+        def move_dot(dots, lines): dots['P'][1] -= 30
+        errors = self.errors(move_dot)
+        self.assertIn('SPACE_POINT_OFF:P', errors)
+        self.assertNotIn('SPACE_POINT_OFF:O', errors)
+        self.assertNotIn('SPACE_POINT_OFF:H', errors)
+
+    def test_a_plan_the_svg_does_not_draw_is_caught(self):
+        other = {**self.PLAN, 'space': {**self.PLAN['space'], 'points': [{'id': 'P', 'at': [0, 0, 3], 'hideName': True}, {'id': 'O', 'at': [0, 0, 0], 'hideName': True}, {'id': 'H', 'at': [2, 1, 0], 'hideName': True}]}}
+        self.assertTrue(any(e.startswith('SPACE_POINT_OFF:H') for e in self.errors(plan=other)))
+        no_space = {'capability': 'solid-figure-v1', 'solids': [{'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 4, 'depth': 3}, 'height': 2, 'names': UNNAMED}]}
+        self.assertTrue(any(e.startswith('SPACE_NOT_IN_PLAN') for e in self.errors(plan=no_space)))
+
+
+class SpacePlanes(unittest.TestCase):
+    """G4b-2: the observer re-derives the planes of plan.space (frame by three points or by a normal, extent, default extent) and checks the drawn parallelograms"""
+    POINTS = [{'id': 'O', 'at': [0, 0, 0], 'hideName': True}, {'id': 'H', 'at': [1, 0, 0], 'hideName': True}, {'id': 'Q', 'at': [0, 1, 0], 'hideName': True}]
+    FLOOR = {'id': 'alpha', 'through': ['O', 'H', 'Q'], 'extent': {'center': [0, 0, 0], 'u': [3, 0, 0], 'v': [0, 2, 0]}}
+
+    def derive(self, planes, points=None):
+        space = {'points': points or self.POINTS, 'planes': planes}
+        norm = O.make_norm([], {})
+        pts, flags, frames, _ = O.space_places(space, {}, norm)
+        return pts, flags, frames, O.space_planes(space, pts, {}, frames, norm)
+
+    def test_the_frame_of_a_plane_by_three_points_and_by_a_normal(self):
+        _, _, frames, planes = self.derive([self.FLOOR, {'id': 'wall', 'normal': [1, 0, 0], 'point': 'H'}])
+        p0, n = frames['alpha']
+        self.assertAlmostEqual(abs(n[2]), 1.0, places=12)
+        self.assertEqual(O.vsub(p0, (0.0, 0.0, 0.0)), (0.0, 0.0, 0.0))
+        self.assertAlmostEqual(abs(frames['wall'][1][0]), 1.0, places=12)
+        self.assertEqual(planes['alpha']['verts'], [(-3.0, -2.0, 0.0), (3.0, -2.0, 0.0), (3.0, 2.0, 0.0), (-3.0, 2.0, 0.0)])
+        for v in planes['wall']['verts']: self.assertAlmostEqual(v[0], 1.0, places=9)
+
+    def test_the_default_extent_covers_the_points_on_the_plane_with_a_margin(self):
+        pts, _, _, planes = self.derive([{'id': 'f', 'through': ['O', 'H', 'Q']}])
+        verts = planes['f']['verts']
+        scr = [O.project(v) for v in verts]
+        for name, p in pts.items():
+            q = O.project(p)
+            self.assertTrue(O._winding_inside(scr, q), name)
+        # a rectangle: the opposite corners sum to the same point and the sides are perpendicular
+        self.assertAlmostEqual(O.vlen(O.vsub(O.vadd(verts[0], verts[2]), O.vadd(verts[1], verts[3]))), 0.0, places=9)
+        self.assertAlmostEqual(O.vdot(O.vsub(verts[1], verts[0]), O.vsub(verts[3], verts[0])), 0.0, places=9)
+
+    def test_every_bad_plane_has_its_code(self):
+        cases = (
+            ([{'id': 'a', 'through': ['O', 'H', 'Z']}], 'SPACE_PLANE_INVALID'),
+            ([{'id': 'a', 'through': ['O', 'H']}], 'SPACE_PLANE_INVALID'),
+            ([{'id': 'a', 'through': ['O', 'H', 'Q'], 'normal': [0, 0, 1], 'point': 'O'}], 'SPACE_PLANE_INVALID'),
+            ([{'id': 'a', 'through': ['O', 'H', 'Q']}, {'id': 'a', 'through': ['O', 'H', 'Q']}], 'SPACE_PLANE_INVALID'),
+            ([{'id': 'a', 'through': ['O', 'H', 'Q'], 'fill': 'RED'}], 'SPACE_PLANE_INVALID'),
+            ([{'id': 'a', 'through': ['O', 'H', 'Q'], 'nameAt': 'CENTER'}], 'SPACE_PLANE_INVALID'),
+            ([{'id': 'a', 'normal': [0, 0, 0], 'point': 'O'}], 'SPACE_PLANE_DEGENERATE'),
+            ([{'id': 'a', 'name': 'alpha', 'through': ['O', 'H', 'Q']}], 'SPACE_PLANE_NAME_INVALID'),
+            ([{'id': 'a', 'name': '\\x', 'through': ['O', 'H', 'Q']}], 'SPACE_PLANE_NAME_INVALID'),
+            ([{'id': k, 'through': ['O', 'H', 'Q']} for k in 'abcd'], 'SPACE_PLANE_LIMIT'),
+        )
+        for planes, code in cases:
+            with self.assertRaises(ValueError, msg=code) as cm: self.derive(planes)
+            self.assertTrue(str(cm.exception).startswith(code), (code, str(cm.exception)))
+        with self.assertRaises(ValueError) as cm: self.derive([{'id': 'a', 'through': ['O', 'H', 'D']}], self.POINTS + [{'id': 'D', 'at': [2, 0, 0]}])
+        self.assertTrue(str(cm.exception).startswith('SPACE_PLANE_DEGENERATE'))
+        for extent in ({'center': 'O', 'u': [1, 0, 0], 'v': [0, 0, 1]}, {'center': [0, 0, 1], 'u': [1, 0, 0], 'v': [0, 1, 0]}, {'center': 'O', 'u': [1, 0, 0], 'v': [2, 0, 0]}, {'center': 'O', 'u': [0, 0, 0], 'v': [0, 1, 0]}, {'center': 'Z', 'u': [1, 0, 0], 'v': [0, 1, 0]}):
+            with self.assertRaises(ValueError, msg=str(extent)) as cm: self.derive([{'id': 'a', 'through': ['O', 'H', 'Q'], 'extent': extent}])
+            self.assertTrue(str(cm.exception).startswith('SPACE_PLANE_EXTENT_INVALID'), str(cm.exception))
+        # on: a point that says it is on a plane is on it
+        with self.assertRaises(ValueError) as cm: self.derive([self.FLOOR], self.POINTS + [{'id': 'G', 'at': [1, 1, 0.5], 'on': 'alpha'}])
+        self.assertTrue(str(cm.exception).startswith('SPACE_POINT_NOT_ON_PLANE:G'))
+        with self.assertRaises(ValueError) as cm: self.derive([self.FLOOR], self.POINTS + [{'id': 'G', 'at': [1, 1, 0], 'on': 'nowhere'}])
+        self.assertTrue(str(cm.exception).startswith('SPACE_PLANE_INVALID'))
+
+    def test_the_projection_onto_a_plane_by_its_id(self):
+        pts, _, _, _ = self.derive([self.FLOOR], self.POINTS + [{'id': 'P', 'at': [0.5, 0.25, 3]}, {'id': 'F', 'at': {'projection': {'from': 'P', 'plane': 'alpha'}}, 'on': 'alpha'}])
+        for a, b in zip(pts['F'], (0.5, 0.25, 0.0)): self.assertAlmostEqual(a, b, places=9)
+
+    def test_a_plane_hides_a_segment_where_the_line_of_sight_meets_it(self):
+        _, _, _, planes = self.derive([{'id': 'a', 'through': ['O', 'H', 'Q'], 'extent': {'center': [0, 0, 0], 'u': [3, 0, 0], 'v': [0, 3, 0]}}])
+        frame = {'a': O._plane_of_points(planes['a']['verts'])}
+        A, B = (0.0, 0.0, 2.5), (0.0, 0.0, -1.5)   # from above the plane to below it, straight down through the plane's middle
+        runs = O.space_runs(lambda t: O.hidden_by_faces(None, frame, O.vadd(A, O.vmul(O.vsub(B, A), t)), set()))
+        self.assertEqual([r[2] for r in runs], [False, True, False])   # seen above, hidden behind the plane, seen again once the line of sight leaves the parallelogram
+        self.assertAlmostEqual(runs[0][1], 2.5 / 4, places=6)   # the plane z = 0 is crossed at t = 2.5/4
+
+    # --- a hand-built svg: one plane and its dots ---
+    PLAN = {'capability': 'solid-figure-v1', 'space': {'points': POINTS, 'planes': [FLOOR]}}
+
+    def svg(self, tamper=None, name_box=None):
+        tx, ty = 200.0, 150.0
+        px = lambda p: (tx + SCALE * O.project(p)[0], ty - SCALE * O.project(p)[1])
+        verts = [px(v) for v in (( -3.0, -2.0, 0.0), (3.0, -2.0, 0.0), (3.0, 2.0, 0.0), (-3.0, 2.0, 0.0))]
+        attrs = {'fill': '#7fa6e8', 'data-fill': 'LIGHT', 'opacity': '0.32'}
+        if tamper: tamper(verts, attrs)
+        dots = ''.join('<circle id="space-%s" data-role="space-point" data-space="1" data-point="%s" fill="#111" cx="%.3f" cy="%.3f" r="2.4"/>' % (k, k, *px(p)) for k, p in (('O', (0.0, 0.0, 0.0)), ('H', (1.0, 0.0, 0.0)), ('Q', (0.0, 1.0, 0.0))))
+        poly = '<polygon id="space-plane-alpha" data-role="space-plane" data-plane="alpha" data-space="1" data-fill="%s" fill="%s" fill-opacity="%s" stroke="#555" stroke-width="1.2" points="%s"/>' % (attrs['data-fill'], attrs['fill'], attrs['opacity'], ' '.join('%.3f,%.3f' % v for v in verts))
+        return '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" data-solid-figure="solid-figure-v1" data-mode="SOLIDS" data-scale="%s" data-origin="200 150" data-yaw="28" data-pitch="20">%s%s</svg>' % (SCALE, poly, dots)
+
+    def errors(self, tamper=None, plan=None):
+        return O.audit(plan or self.PLAN, self.svg(tamper))['errors']
+
+    def test_an_untouched_plane_passes(self):
+        self.assertEqual(self.errors(), [])
+
+    def test_a_moved_corner_a_wrong_tint_and_a_missing_plane_are_caught(self):
+        def corner(verts, attrs): verts[2] = (verts[2][0], verts[2][1] + 12)
+        self.assertTrue(any(e.startswith('SPACE_PLANE_CORNER_OFF:alpha') for e in self.errors(corner)), self.errors(corner))
+
+        def tint(verts, attrs): attrs['data-fill'] = 'WARM'
+        self.assertTrue(any(e.startswith('SPACE_PLANE_FILL_MISMATCH:alpha') for e in self.errors(tint)))
+
+        def opacity(verts, attrs): attrs['opacity'] = '0.9'
+        self.assertTrue(any(e.startswith('SPACE_PLANE_FILL_MISMATCH:alpha') for e in self.errors(opacity)))
+        no_plane = {**self.PLAN, 'space': {'points': self.POINTS}}
+        self.assertTrue(any(e.startswith('SPACE_PLANE_SET_MISMATCH') for e in self.errors(plan=no_plane)))
+        # a plan whose plane is wider is not this drawing
+        wider = {**self.PLAN, 'space': {'points': self.POINTS, 'planes': [{**self.FLOOR, 'extent': {'center': [0, 0, 0], 'u': [4, 0, 0], 'v': [0, 2, 0]}}]}}
+        self.assertTrue(any(e.startswith('SPACE_PLANE_CORNER_OFF:alpha') for e in self.errors(plan=wider)))
+
+
+class SpaceLines(unittest.TestCase):
+    """G4b-3: the observer works out each line of plan.space itself (through two points, or the cross product of two normals with a point from the two plane equations)"""
+    BOOK = {'points': [{'id': 'P', 'at': [0, 0, 0]}, {'id': 'A', 'at': ['1/2', 0, 'sqrt(3)/2']}, {'id': 'B', 'at': ['sqrt(2)/2', '-sqrt(2)/2', 0]}, {'id': 'C', 'at': [1, 0, 0]}],
+            'planes': [{'id': 'alpha', 'through': ['P', 'A', 'C'], 'extent': {'center': [0.25, 0, 1.1], 'u': [1.75, 0, 0], 'v': [0, 0, 1.1]}},
+                       {'id': 'beta', 'through': ['P', 'B', 'C'], 'extent': {'center': [0.25, -0.9, 0], 'u': [1.75, 0, 0], 'v': [0, 0.9, 0]}}],
+            'lines': [{'id': 'l', 'name': 'l', 'intersection': ['alpha', 'beta']}]}
+
+    def derive(self, space, named=None):
+        norm = O.make_norm([], named or {})
+        pts, flags, frames, lframes = O.space_places(space, named or {}, norm)
+        planes = O.space_planes(space, pts, named or {}, frames, norm)
+        return pts, frames, lframes, planes, O.space_lines(space, pts, named or {}, frames, lframes, planes)
+
+    def test_the_intersection_of_two_perpendicular_planes_is_the_x_axis(self):
+        pts, frames, lframes, planes, lines = self.derive(self.BOOK)
+        A, d = lframes['l']
+        self.assertAlmostEqual(abs(d[0]), 1.0, places=12)
+        self.assertAlmostEqual(O.vlen(O.vcross(A, d)), 0.0, places=12)   # the x-axis passes through the origin
+        ln = lines['l']
+        for end in (ln['a'], ln['b']): self.assertAlmostEqual(math.hypot(end[1], end[2]), 0.0, places=9)
+        lo, hi = sorted((ln['a'][0], ln['b'][0]))
+        self.assertTrue(-1.8 < lo < -1.5 and 2.0 < hi < 2.3, (lo, hi))   # the common edge of the parallelograms (x from -1.5 to 2) and a little beyond
+
+    def test_a_line_through_two_points_runs_beyond_them(self):
+        space = {'points': [{'id': 'A', 'at': [0, 0, 0]}, {'id': 'B', 'at': [3, 0, 0]}, {'id': 'M', 'at': {'midpoint': ['A', 'B']}}], 'lines': [{'id': 'g', 'through': ['A', 'B']}]}
+        *_, lines = self.derive(space)
+        xs = sorted((lines['g']['a'][0], lines['g']['b'][0]))
+        self.assertAlmostEqual(xs[0], -1.05, places=9)
+        self.assertAlmostEqual(xs[1], 4.05, places=9)
+
+    def test_the_foot_on_a_line_by_its_id(self):
+        space = {'points': [{'id': 'A', 'at': [0, 0, 0]}, {'id': 'B', 'at': [3, 0, 0]}, {'id': 'P', 'at': [1, 2, 0]}, {'id': 'F', 'at': {'footOnLine': {'from': 'P', 'line': 'g'}}}], 'lines': [{'id': 'g', 'through': ['A', 'B']}]}
+        pts, *_ = self.derive(space)
+        for a, b in zip(pts['F'], (1.0, 0.0, 0.0)): self.assertAlmostEqual(a, b, places=9)
+
+    def test_every_bad_line_has_its_code(self):
+        pts = [{'id': 'A', 'at': [0, 0, 0]}, {'id': 'B', 'at': [1, 0, 0]}, {'id': 'C', 'at': [0, 1, 0]}, {'id': 'E', 'at': [0, 0, 2]}]
+        planes = [{'id': 'a', 'through': ['A', 'B', 'C']}, {'id': 'c', 'normal': [0, 0, 1], 'point': 'E'}]
+        cases = (
+            ([{'id': 'l', 'through': ['A', 'B'], 'intersection': ['a', 'c']}], 'SPACE_LINE_INVALID'),
+            ([{'id': 'l', 'through': ['A', 'A']}], 'SPACE_LINE_INVALID'),
+            ([{'id': 'l', 'through': ['A', 'Z']}], 'SPACE_LINE_INVALID'),
+            ([{'id': 'l', 'through': ['A', 'B']}, {'id': 'l', 'through': ['A', 'C']}], 'SPACE_LINE_INVALID'),
+            ([{'id': 'a', 'through': ['A', 'B']}], 'SPACE_LINE_INVALID'),
+            ([{'id': 'l', 'intersection': ['a', 'x']}], 'SPACE_LINE_INVALID'),
+            ([{'id': 'l', 'through': ['A', 'B'], 'style': 'WAVY'}], 'SPACE_LINE_INVALID'),
+            ([{'id': k, 'through': ['A', 'B']} for k in 'lmnop'], 'SPACE_LINE_INVALID'),
+            ([{'id': 'l', 'intersection': ['a', 'c']}], 'SPACE_PLANES_PARALLEL'),
+            ([{'id': 'l', 'name': 'll', 'through': ['A', 'B']}], 'SPACE_LINE_NAME_INVALID'),
+            ([{'id': 'l', 'name': 'L', 'through': ['A', 'B']}], 'SPACE_LINE_NAME_INVALID'),
+        )
+        for lines, code in cases:
+            with self.assertRaises(ValueError, msg=code) as cm: self.derive({'points': pts, 'planes': planes, 'lines': lines})
+            self.assertTrue(str(cm.exception).startswith(code), (code, str(cm.exception)))
+
+    # --- a hand-built svg: the line l of the book (the x-axis) and its pieces ---
+    PLAN = {'capability': 'solid-figure-v1', 'space': {'points': [{'id': 'P', 'at': [0, 0, 0], 'hideName': True}, {'id': 'C', 'at': [1, 0, 0], 'hideName': True}], 'lines': [{'id': 'l', 'through': ['P', 'C']}]}}
+
+    def svg(self, tamper=None):
+        tx, ty = 150.0, 150.0
+        px = lambda p: (tx + SCALE * O.project(p)[0], ty - SCALE * O.project(p)[1])
+        a, b = px((-0.35, 0.0, 0.0)), px((1.35, 0.0, 0.0))
+        ends = [list(a), list(b)]
+        if tamper: tamper(ends)
+        dots = ''.join('<circle id="space-%s" data-role="space-point" data-space="1" data-point="%s" fill="#111" cx="%.3f" cy="%.3f" r="2.4"/>' % (k, k, *px(p)) for k, p in (('P', (0.0, 0.0, 0.0)), ('C', (1.0, 0.0, 0.0))))
+        line = '<line id="space-line-l-1" data-role="space-line" data-vis="solid" data-t0="0" data-t1="1" data-style="SOLID" data-line="l" data-space="1" stroke="#111" stroke-width="1.6" fill="none" x1="%.3f" y1="%.3f" x2="%.3f" y2="%.3f"/>' % (ends[0][0], ends[0][1], ends[1][0], ends[1][1])
+        return '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" data-solid-figure="solid-figure-v1" data-mode="SOLIDS" data-scale="%s" data-origin="150 150" data-yaw="28" data-pitch="20">%s%s</svg>' % (SCALE, line, dots)
+
+    def errors(self, tamper=None, plan=None):
+        return O.audit(plan or self.PLAN, self.svg(tamper))['errors']
+
+    def test_an_untouched_line_passes(self):
+        self.assertEqual(self.errors(), [])
+
+    def test_a_line_that_leaves_the_axis_or_stops_short_is_caught(self):
+        def tilt(ends): ends[1][1] -= 10
+        self.assertTrue(any(e.startswith('SPACE_LINE_ENDPOINT_OFF:l') for e in self.errors(tilt)), self.errors(tilt))
+
+        def short(ends): ends[0][0] += 20
+        self.assertTrue(any(e.startswith('SPACE_LINE_ENDPOINT_OFF:l') for e in self.errors(short)), self.errors(short))
+        # a plan whose line goes through other points is another line
+        other = {**self.PLAN, 'space': {**self.PLAN['space'], 'points': self.PLAN['space']['points'] + [{'id': 'Q', 'at': [0, 1, 0], 'hideName': True}], 'lines': [{'id': 'l', 'through': ['P', 'Q']}]}}
+        self.assertTrue(any(e.startswith('SPACE_LINE_ENDPOINT_OFF:l') or e.startswith('SPACE_POINT_SET_MISMATCH') for e in self.errors(plan=other)))
+        no_line = {**self.PLAN, 'space': {'points': self.PLAN['space']['points']}}
+        self.assertTrue(any(e.startswith('SPACE_LINE_SET_MISMATCH') for e in self.errors(plan=no_line)))
