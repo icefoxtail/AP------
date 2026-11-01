@@ -260,6 +260,7 @@ def _produce_pair(plan):
     lines=[]
     x=S.Symbol('x')
     for raw in plan.get('lines',[]) or []:
+        if isinstance(raw,dict) and 'role' in raw: _fail('CONIC_DIRECTRIX_REQUIRES_PARABOLA')
         _only(raw,LINE_KEYS,'ELLIPSE_LINE_INVALID')
         if not isinstance(raw.get('id'),str) or not raw['id']: _fail('ELLIPSE_LINE_INVALID')
         if 'label' in raw: _fail('ELLIPSE_LINE_LABEL_UNSUPPORTED')
@@ -315,6 +316,10 @@ def _produce_pair(plan):
 
 
 def produce(plan):
+    if isinstance(plan,dict) and 'conic' in plan:
+        # A plan with a root `conic` field is a parabola figure: its own module, so every ellipse plan keeps this code path.
+        from conic_figure import produce as produce_conic
+        return produce_conic(plan)
     _only(plan,TOP_KEYS,'ELLIPSE_PLAN_INVALID')
     if plan.get('capability')!=CAPABILITY: _fail('ELLIPSE_PLAN_INVALID')
     if 'ellipses' in plan:
@@ -386,6 +391,7 @@ def produce(plan):
     lines=[]
     x=S.Symbol('x')
     for raw in plan.get('lines',[]) or []:
+        if isinstance(raw,dict) and 'role' in raw: _fail('CONIC_DIRECTRIX_REQUIRES_PARABOLA')
         _only(raw,LINE_KEYS,'ELLIPSE_LINE_INVALID')
         if 'ellipseId' in raw: _fail('ELLIPSE_LINE_INVALID')
         if not isinstance(raw.get('id'),str) or not raw['id']: _fail('ELLIPSE_LINE_INVALID')
