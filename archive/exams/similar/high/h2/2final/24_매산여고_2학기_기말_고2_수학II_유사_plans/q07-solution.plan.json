@@ -1,0 +1,93 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-9",
+      "3",
+      "1"
+    ],
+    "domain": [
+      -5.05,
+      3.2
+    ],
+    "viewport": [
+      -6,
+      4,
+      -10,
+      35
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -3,
+        "y": 27
+      },
+      {
+        "id": "N",
+        "x": 1,
+        "y": -5
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "-3",
+        "27"
+      ],
+      "N": [
+        "1",
+        "-5"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "h1",
+          "slope": "0",
+          "intercept": "27"
+        },
+        {
+          "id": "h2",
+          "slope": "0",
+          "intercept": "-5"
+        }
+      ]
+    }
+  },
+  "caption": "곡선 y=G(x)와 수평선 y=27, y=-5는 극대점 (-3, 27)과 극소점 (1, -5)에서 접하여 서로 다른 교점이 두 개이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "G(x)=x³+3x²-9x는 x=-3에서 극댓값 27, x=1에서 극솟값 -5를 갖는다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "수평선 y=20-a가 y=27 또는 y=-5일 때 교점이 두 개이다.",
+      "mappedTo": [
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수평선이 극대점 또는 극소점을 지날 때 교점이 정확히 두 개가 됨을 보여 준다."
+  ],
+  "sourceQuote": "$G(1)=1+3-9=-5$",
+  "assetPath": "assets/images/24_매산여고_2학기_기말_고2_수학II_유사/q7-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q07-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q07-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q07-solution.svg"
+  }
+}

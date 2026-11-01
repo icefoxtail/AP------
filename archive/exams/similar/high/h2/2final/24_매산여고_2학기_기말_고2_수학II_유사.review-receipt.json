@@ -1,0 +1,180 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "24_매산여고_2학기_기말_고2_수학II_유사",
+  "candidateJsPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사.meta-q01-q23.json",
+  "candidateGitBlobSha1": "245c219a21169c1e476fc45589f6c125bcd61a25",
+  "reviewTimestamp": "2026-11-01T00:00:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "SIGNED_OFF_PASS_WITH_NOTES",
+  "blindFirstPass": {
+    "totalSolved": 23,
+    "answerMatches": 23,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "scratchpad/rev1/blind_freeze.json",
+    "freezeFileSha1": "65d03f4ff0006aab91bfb8ed475555972edc5fcd",
+    "method": "Student-visible fields only (content, choices, figures q11 problem image rendered and viewed) dumped and solved with sympy/Node before any stored answer or solution was displayed; answers frozen to file (sha1 above) and then compared with stored answers. Q20 solved with the reading that '원점을 한 번만 지난다' forces a=b (touching counts as one pass).",
+    "disclosure": "Reviewer had read the generator-uncertainty list (Q6/Q23 unit, Q13/Q14 TPL, Q20/Q23 bucket, Q11 label, Q17 label) before solving, but no stored answers or solutions. Original answers were viewed only after the freeze.",
+    "frozenAnswers": {
+      "1": "②",
+      "2": "④",
+      "3": "⑤",
+      "4": "①",
+      "5": "③",
+      "6": "①",
+      "7": "③",
+      "8": "④",
+      "9": "②",
+      "10": "④",
+      "11": "③",
+      "12": "⑤",
+      "13": "①",
+      "14": "②",
+      "15": "④",
+      "16": "②",
+      "17": "①",
+      "18": "③",
+      "19": "⑤",
+      "20": "5",
+      "21": "극솟값 -4, 극댓값 4",
+      "22": "21",
+      "23": "10"
+    }
+  },
+  "originalComparison": {
+    "questionCount": "23 vs 23",
+    "pointsSum": "100 vs 100",
+    "perQuestionPoints": "all equal",
+    "questionTypes": "all equal (MC 1-20, 서술형 21-23)",
+    "levels": "equal per qid after reviewer edit (Q13 중->상 to match original)",
+    "answerValueCollisionWithOriginal": "none (all 23 final answer values differ from original; Q5 and Q17 share the answer slot/number only, not the value)",
+    "notes": [
+      "Q3 uses a different true statement as the correct option (original answer was 'F,G 부정적분 -> F=G+C'); same concept, acceptable",
+      "Q6 standardUnit 도함수 (crosswalk RPM-017 unit) vs original 미분계수: matches canonical crosswalk, accepted",
+      "Q20 keeps the original structure (a=b forced by condition 다, 극댓값, 이동거리) with new numbers; answer unique",
+      "Q23 keeps trapezoid-shaped h(x) tangent to a parabola at three points; unique under 접점은 꺾임점이 아님"
+    ]
+  },
+  "answerDistribution": {
+    "①": 4,
+    "②": 4,
+    "③": 4,
+    "④": 4,
+    "⑤": 4,
+    "note": "MC 1-20; max-min=0"
+  },
+  "mathReview": "All 23 solutions re-derived with sympy/Node; solution logic, case analysis (Q7 two-root a values, Q16 f'(1)=0 then endpoint min, Q20 r=3 forced by distance condition, Q23 slope-matching on 3 segments) and curriculum (2015 수학II) OK. MC choices ascending, 5 distinct, unique correct. KaTeX: 755 formulas rendered with throwOnError, 0 real errors (one false alarm came from the checker's own tag stripping; engine escapes < inside math). $ parity OK.",
+  "reviewerEdits": [
+    {
+      "qid": 13,
+      "file": "js+meta",
+      "change": "level 중 -> 상 (original Q13 is 상, same structure); levelBasis rewritten; difficultyBucket stays 3"
+    },
+    {
+      "qid": 13,
+      "file": "js+meta",
+      "change": "templateKey TPL_DIFFERENTIATE_INTEGRAL_RELATION -> TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION (solution sets the integral value as an unknown constant; template is a child of the same PT_DEFINITE_INTEGRAL_FUNCTION_RELATION); metaRationale.problemType updated"
+    },
+    {
+      "qid": 14,
+      "file": "js+meta",
+      "change": "templateKey -> TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION (two integral values A,B solved as a system; the generator itself noted this template as the better fit)"
+    },
+    {
+      "qid": 11,
+      "file": "js",
+      "change": "solution note: figure axes x,y mean t and v, v(x)=v(t), Z is t=3, shaded numbers are areas"
+    },
+    {
+      "qid": 15,
+      "file": "js",
+      "change": "solution note: figure point P is (4,5)"
+    },
+    {
+      "qid": 20,
+      "file": "js",
+      "change": "solution note: figure axes x,y mean t and position, f(x)=x(t), P(4,3) is the graph point x(4)=3 (not the moving point)"
+    },
+    {
+      "qid": 22,
+      "file": "js",
+      "change": "solution note: figure is the graph of F(x) at a=21; the f(x) shown in the figure means F(x)"
+    },
+    {
+      "qid": "all",
+      "file": "meta",
+      "change": "expectedSourceBlobSha1 recomputed for final JS (245c219a21169c1e476fc45589f6c125bcd61a25)"
+    }
+  ],
+  "metaReview": {
+    "coverage": {
+      "items": 23,
+      "requiredFieldsFilled": "690/690 (30 fields x 23)",
+      "canonicalRpmL4Items": 23,
+      "extensionL4Items": 0,
+      "reusedExtensionKeys": 0,
+      "newExtensionKeys": 0,
+      "allCrossConceptKeysExistInCanonical": true,
+      "allConditionKeysExistInCanonical": true,
+      "allPtTplRegisteredInCanonicalPacksAndTemplateBelongsToPT": true,
+      "rpmRecordIdsExistAndL1toL3L4MatchCrosswalk": true,
+      "unitKeysMatchCrosswalk": true,
+      "jsFieldsEqualMetaFields": true,
+      "aliasProposals": 0,
+      "evidenceDebt": 0,
+      "registryFile": "none needed (no new extension keys, registryChanges empty)"
+    },
+    "unitJudgement": {
+      "Q6": "standardUnit 도함수/H15-M2-04 follows crosswalk record H2-M2-RPM-017 (미분가능성과 연속). Original was labeled 미분계수; both defensible, canonical wins. ACCEPT.",
+      "Q23": "접선의 방정식 follows crosswalk RPM-020 (접점 조건); solution is a three-point tangency problem. ACCEPT."
+    },
+    "levelDifficulty": "Q20/Q23 상 5 are consistent with multi-step solutions (condition interpretation, case analysis, tangency on three segments, integral) and with original 상. ACCEPT. Q13 level aligned to original (see edits).",
+    "notes": [
+      "Q14 TPL system template now in use; Q18 keeps TPL_DIFFERENTIATE_INTEGRAL_RELATION (identity differentiated, product-rule antiderivative).",
+      "Non-default TPLs for a record are children of the correct PT (same practice as the merged 25_강남 receipt)."
+    ]
+  },
+  "visualReview": {
+    "plans": "46 plan files (23 problem + 23 solution) valid; 13 active (q11 problem; q7,q11,q12,q13,q15,q16,q17,q19,q20,q21,q22,q23 solution), 33 EXEMPT with reasons, 0 UNSUPPORTED. Each active plan: capability + sourceQuote (12-40 chars, found in text), caption, assetPath equals JS field, engineEvidence result ARCHIVE_BOUND, evidence SVG bytes equal asset bytes. SVGs have role=img, title, desc, white background, glyph-path text (no raw LaTeX).",
+    "activeSvg": [
+      "q11 problem",
+      "q7,q11,q12,q13,q15,q16,q17,q19,q20,q21,q22,q23 solution"
+    ],
+    "unsupported": {},
+    "renderedViewed": "All 13 SVGs rendered to PNG (rsvg-convert) and viewed; coordinates, shading and labels agree with solutions. q11 problem figure shows v graph with vertices O,A,B,C,D and does not leak the answer.",
+    "figureNotes": [
+      "Q11 problem: 'P' is the moving point, not a point on the graph; harness 'P missing' is a tool limitation. Stem states axes x,y = t,v. Non-blocking.",
+      "Engine fixes axis names to x,y and function name to f (or v); stems/solutions now carry a note for Q11, Q20, Q22 (and alt text for Q8-type items). Sufficient for students.",
+      "Q17 figure shows f(x) label only near the left and g(x) in header; region S is described in alt text and the solution. Non-blocking.",
+      "Q7 vertical scale is compressed (lines y=27,-5 close to x-axis) but values are labelled. Non-blocking."
+    ]
+  },
+  "harness": {
+    "command": "node tools/harness/verify_similar_exam.mjs <js> --phase=draft",
+    "result": "GATE_FAIL 47 errors",
+    "classification": {
+      "toolLimit": "46 'unregistered problemTypeKey/templateKey in canonical taxonomy' errors: harness reads the middle-school taxonomy; verified directly against high canonical packs (all registered, TPL parent matches PT). 1 error 'P missing from q11.svg text labels': P is the moving point (see figureNotes).",
+      "fixed": "expectedSourceBlobSha1 refreshed after edits",
+      "realContentDefects": "none"
+    },
+    "runtimeGuard": "node tools/check-archive2-runtime.cjs fails at build-svg-accessibility-index on SVG_ACCESSIBILITY_DUPLICATE_ID for q11/q12/q17/q19 region SVGs: the language-contract regex counts data-mark-id as id. Identical to already merged region SVGs (25_강남 q12/q5/q8, 25_순천고 ...), i.e. pre-existing tool limitation/manifest sync step for the orchestrator, not a content defect. Shared tools not modified."
+  },
+  "structural": {
+    "nodeCheck": "PASS",
+    "questionCount": 23,
+    "pointsSum": 100,
+    "choicesPerMC": 5,
+    "mcQuestions": 20,
+    "subjective": 3
+  },
+  "NOT_RUN": [
+    "actual browser/print render of the exam page",
+    "student engine.html runtime check in Chrome",
+    "check-archive2-runtime full pass (blocked by pre-existing SVG guard limitation, see harness.runtimeGuard)",
+    "Chrome print preview"
+  ],
+  "defects": []
+}

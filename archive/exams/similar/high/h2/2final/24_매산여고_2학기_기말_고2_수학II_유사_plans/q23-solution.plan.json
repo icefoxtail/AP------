@@ -1,0 +1,161 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "3"
+        ]
+      },
+      {
+        "coefficients": [
+          "8",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "x": "3/2",
+        "y": "3"
+      },
+      {
+        "x": "5/2",
+        "y": "3"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "h",
+    "domain": [
+      -1,
+      4.5
+    ],
+    "viewport": [
+      -1.5,
+      5,
+      -2.5,
+      4.5
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "-1",
+          "4",
+          "-1"
+        ],
+        "intersectionX": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 1.5,
+        "y": 3
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "id": "C",
+        "x": 2.5,
+        "y": 3
+      },
+      {
+        "id": "T",
+        "x": 3,
+        "y": 2
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "1",
+        "2"
+      ],
+      "B": [
+        "3/2",
+        "3"
+      ],
+      "V": [
+        "2",
+        "3"
+      ],
+      "C": [
+        "5/2",
+        "3"
+      ],
+      "T": [
+        "3",
+        "2"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "c=3/2일 때 꺾은선 y=h(x)와 포물선 y=g(x)는 x=1, 2, 3의 세 점에서 접한다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "c=3/2이면 h는 x≤0에서 0, 0<x≤3/2에서 2x, 3/2<x≤5/2에서 3, x>5/2에서 8-2x이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "g(x)=-(x-2)²+3이고 접점은 x=1, 2, 3이다.",
+      "mappedTo": [
+        "graphPlan.referenceCurves"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 접점의 위치와 각 접점에서의 기울기 2, 0, -2를 한 그림에서 확인하게 한다."
+  ],
+  "sourceQuote": "$g(x)=-(x-2)^2+3$이다.",
+  "assetPath": "assets/images/24_매산여고_2학기_기말_고2_수학II_유사/q23-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q23-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q23-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q23-solution.svg"
+  }
+}

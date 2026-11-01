@@ -1,0 +1,173 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "4"
+        ]
+      },
+      {
+        "coefficients": [
+          "4"
+        ]
+      },
+      {
+        "coefficients": [
+          "12",
+          "-4"
+        ]
+      },
+      {
+        "coefficients": [
+          "-12",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "4"
+      },
+      {
+        "x": "2",
+        "y": "4"
+      },
+      {
+        "x": "4",
+        "y": "-4"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "v",
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      -1,
+      7,
+      -5,
+      5
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "3",
+        "fill": "LIGHT",
+        "label": "8"
+      },
+      {
+        "id": "S2",
+        "upper": "axis",
+        "lower": "f",
+        "from": "3",
+        "to": "6",
+        "fill": "MEDIUM",
+        "label": "6"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 4
+      },
+      {
+        "id": "Z",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 4,
+        "y": -4
+      },
+      {
+        "id": "D",
+        "x": 6,
+        "y": 0
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "1",
+        "4"
+      ],
+      "B": [
+        "2",
+        "4"
+      ],
+      "Z": [
+        "3",
+        "0"
+      ],
+      "C": [
+        "4",
+        "-4"
+      ],
+      "D": [
+        "6",
+        "0"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "v(t)가 t=3에서 t축과 만나며 t축 위쪽 넓이는 8, 아래쪽 넓이는 6이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "0≤t≤3에서 v≥0이고 넓이는 2+4+2=8이다.",
+      "mappedTo": [
+        "graphPlan.regions"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "3≤t≤6에서 v≤0이고 넓이는 2+4=6이다.",
+      "mappedTo": [
+        "graphPlan.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "속도의 부호가 t=3에서 바뀌며 위쪽 넓이 8과 아래쪽 넓이 6의 차가 t=3부터 t=6까지의 위치 변화임을 보여 준다."
+  ],
+  "sourceQuote": "최댓값이 $x(3)=k+8=11$이므로 $k=3$이다.",
+  "assetPath": "assets/images/24_매산여고_2학기_기말_고2_수학II_유사/q11-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q11-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q11-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q11-solution.svg"
+  }
+}
