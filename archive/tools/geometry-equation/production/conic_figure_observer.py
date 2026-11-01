@@ -117,7 +117,10 @@ def pars_of(plan):
     pars={}
     for row in rows:
         if not isinstance(row,dict) or not isinstance(row.get('id'),str) or row['id'] in pars: raise Refuse('CONIC_PARAMETER_INVALID')
-        pars[row['id']]=conic_of({key:value for key,value in row.items() if key!='id'})
+        pars[row['id']]=conic_of({key:value for key,value in row.items() if key not in ('id','label')})
+        if 'label' in row:
+            if not isinstance(row['label'],str) or not row['label'].strip() or len(row['label'])>40: raise Refuse('CONIC_LINE_LABEL_INVALID')
+            pars[row['id']]['label']=row['label']
     return pars,True
 
 
@@ -826,7 +829,8 @@ def audit(plan,svg):
             if not key or key in leaders_by_label: errors.append('MEASURE_LEADER_DUPLICATE_OR_UNOWNED')
             else: leaders_by_label[key]=element
     named_lines={raw['id'] for raw in raw_lines if raw.get('label') and raw.get('hidden') is not True}
-    allowed_leader_keys={'measure-'+sid for sid in required_leaders}|{'line-'+lid for lid in named_lines}
+    named_curves={cid for cid,one in pars.items() if one.get('label')}
+    allowed_leader_keys={'measure-'+sid for sid in required_leaders}|{'line-'+lid for lid in named_lines}|{'curve-'+cid for cid in named_curves}
     for key in leaders_by_label:
         if key not in allowed_leader_keys: errors.append('MEASURE_LEADER_UNDECLARED:%s'%key)
 
@@ -847,7 +851,7 @@ def audit(plan,svg):
                 prev=run[index-1];steps=max(1,int(math.hypot(pt[0]-prev[0],pt[1]-prev[1])/1.5))
                 for step in range(1,steps): curve_samples.append((prev[0]+(pt[0]-prev[0])*step/steps,prev[1]+(pt[1]-prev[1])*step/steps))
 
-    def leader_clear(leader_key,leader):
+    def leader_clear(leader_key,leader,own_curve=False):
         x1,y1,x2,y2=_line_coords(leader,errors,'MEASURE_LEADER_COORDINATE_INVALID')
         a,b=(x1,y1),(x2,y2);samples=_line_interior_points(a,b)
         for role,lid,stroke in strokes:
@@ -856,7 +860,10 @@ def audit(plan,svg):
                     errors.append('MEASURE_LEADER_CROSSES_STROKE:%s:%s'%(leader_key,lid or role));break
         for pid,value in points.items():
             if _point_segment_distance(pixel(*value),a,b)<3.0: errors.append('MEASURE_LEADER_CROSSES_POINT:%s:%s'%(leader_key,pid))
-        if any(_point_segment_distance(sample,a,b)<2.2 for sample in curve_samples):
+        reach=math.hypot(b[0]-a[0],b[1]-a[1])
+        # a curve name's leader ends on its own curve: only its last 3 px may touch the curve
+        stop=b if not own_curve or reach<=3.0 else (a[0]+(b[0]-a[0])*(reach-3.0)/reach,a[1]+(b[1]-a[1])*(reach-3.0)/reach)
+        if any(_point_segment_distance(sample,a,stop)<2.2 for sample in curve_samples):
             errors.append('MEASURE_LEADER_CROSSES_CURVE:%s'%leader_key)
         for element in elements:
             if element.get('data-box') is None: continue
@@ -926,6 +933,28 @@ def audit(plan,svg):
         else:
             leader_geometry(leader,box,lambda x2,y2,s=start,e=end:_point_segment_distance((x2,y2),s,e)>1.5,start,end,key,'line-'+lid,'data-owner-line',lid)
 
+    # a curve name is the plan's text, sits inside the canvas, and its leader starts at the name and ends on that curve's drawn path
+    curve_labels={element.get('data-curve-id'):element for element in elements if element.get('data-label-role')=='curve'}
+    for cid in curve_labels:
+        if cid not in named_curves: errors.append('CONIC_CURVE_LABEL_MISMATCH:%s:undeclared'%cid)
+    for cid in sorted(named_curves):
+        element=curve_labels.get(cid)
+        if element is None: errors.append('CONIC_CURVE_LABEL_MISMATCH:%s:missing'%cid);continue
+        shown=element.get('data-tex') if element.get('data-tex') is not None else element.get('data-text')
+        if shown!=pars[cid]['label']: errors.append('CONIC_CURVE_LABEL_MISMATCH:%s:text'%cid)
+        box=_box_of(element)
+        if box is None: errors.append('CONIC_CURVE_LABEL_MISMATCH:%s:box'%cid);continue
+        if box['x']<0 or box['y']<0 or box['x']+box['width']>canvas['width'] or box['y']+box['height']>canvas['height']:
+            errors.append('LABEL_OUT_OF_CANVAS:curve-%s'%cid)
+        leader=leaders_by_label.get('curve-'+cid)
+        if leader is None: errors.append('CONIC_CURVE_LABEL_MISMATCH:%s:leader-missing'%cid);continue
+        x1,y1,x2,y2=_line_coords(leader,errors,'MEASURE_LEADER_COORDINATE_INVALID')
+        if leader.get('data-owner-curve')!=cid or leader.get('id')!='leader-curve-'+cid: errors.append('CONIC_CURVE_LABEL_MISMATCH:%s:owner'%cid)
+        if _box_boundary_distance((x1,y1),box)>2.5: errors.append('CONIC_CURVE_LABEL_MISMATCH:%s:leader-not-at-label'%cid)
+        if curve_distance_to(pars[cid],x2,y2)>PIXEL_TOLERANCE: errors.append('CONIC_CURVE_LABEL_MISMATCH:%s:leader-not-on-curve'%cid)
+        length=math.hypot(x2-x1,y2-y1)
+        if length<8 or length>64: errors.append('CONIC_CURVE_LABEL_MISMATCH:%s:leader-length'%cid)
+        leader_clear('curve-'+cid,leader,own_curve=True)
     for key,leader in leaders_by_label.items():
         if key.startswith('line-') and key[5:] not in named_lines: errors.append('MEASURE_LEADER_UNDECLARED:%s'%key)
     return result()

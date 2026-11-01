@@ -452,11 +452,21 @@ def _curves(plan):
     for row in rows:
         if not isinstance(row,dict) or not isinstance(row.get('id'),str) or not LINE_ID.fullmatch(row['id']) or row['id'] in curves:
             _fail('CONIC_PARAMETER_INVALID')
-        curves[row['id']]=_conic({key:value for key,value in row.items() if key!='id'})
+        curves[row['id']]=_conic({key:value for key,value in row.items() if key not in ('id','label')})
+        if 'label' in row:
+            label=row['label']
+            if not isinstance(label,str) or not label.strip() or len(label)>LABEL_LIMIT: _fail('CONIC_LINE_LABEL_INVALID')
+            curves[row['id']]['label']=label
     return curves
 
 
 def _conic_public(par):
+    point_of=lambda pt:{'x':_value(pt[0]),'y':_value(pt[1])}
+    shape=_conic_shape(par)
+    return dict(shape,label=par['label']) if par.get('label') else shape
+
+
+def _conic_shape(par):
     point_of=lambda pt:{'x':_value(pt[0]),'y':_value(pt[1])}
     equation=_text(_residual(par,S.Symbol('x'),S.Symbol('y')))
     h,k=par['h'],par['k']

@@ -96,8 +96,9 @@ export function validateConicPlan(plan){
       if(typeof row.id!=='string'||!LINE_ID.test(row.id)||curveIds.has(row.id))bad('CONIC_PARAMETER_INVALID');
       curveIds.add(row.id);
     }
-    onlyKeys(row,('conics' in plan?['id']:[]).concat(CONIC_KEYS_BY_KIND[row.kind]??CONIC_KEYS_BY_KIND.PARABOLA),'CONIC_PARAMETER_INVALID');
+    onlyKeys(row,('conics' in plan?['id','label']:[]).concat(CONIC_KEYS_BY_KIND[row.kind]??CONIC_KEYS_BY_KIND.PARABOLA),'CONIC_PARAMETER_INVALID');
     if(!(row.kind in CONIC_KEYS_BY_KIND))bad('CONIC_KIND_UNSUPPORTED');
+    if(row.label!==undefined&&(typeof row.label!=='string'||!row.label.trim()||row.label.length>40))bad('CONIC_LINE_LABEL_INVALID');
   }
   const kinds=new Set(rows.map(row=>row.kind));
   const points=plan.points??[];
@@ -320,7 +321,8 @@ export function placeLabels(entries,layout,obstacles){
     if(!best&&entry.fallbacks){
       // A line name with no room beside the line: a free spot joined to the line by a leader.
       for(const fallback of entry.fallbacks){
-        const anchored={...entry,pointX:fallback.pointX,pointY:fallback.pointY,centerX:fallback.centerX,centerY:fallback.centerY,requiresLeader:true};
+        const anchored={...entry,pointX:fallback.pointX,pointY:fallback.pointY,centerX:fallback.centerX,centerY:fallback.centerY,requiresLeader:true,
+          ...(fallback.ownerSegment?{ownerSegment:fallback.ownerSegment}:{})};
         for(const delta of fallback.candidates){
           const box={x:r6(anchored.centerX+delta.dx-entry.width/2),y:r6(anchored.centerY+delta.dy-entry.height/2),width:entry.width,height:entry.height};
           if(blocked(box,anchored))continue;
@@ -691,6 +693,28 @@ function conicFigureSpec(plan,model){
     labels.push({key:`line-${line.id}`,role:'line',lineId:line.id,text:line.label,
       ownerSegment:{a:va,b:vb},pointX:mid[0],pointY:mid[1],centerX:mid[0],centerY:mid[1],candidates,fallbacks});
   }
+  // A curve name: always a free spot joined to the curve by a leader that starts at the name and ends on the drawn path.
+  for(const one of curveList){
+    if(!one.label)continue;
+    const prim=prims.find(row=>row.role==='curve'&&row.data['curve-id']===one.id&&row.data.branch!=='NEG');
+    const run=prim.runs.reduce((best,row)=>row.length>best.length?row:best,[]);
+    const fallbacks=[];
+    for(const t of [0.12,0.3,0.5,0.7,0.88,0.2,0.4,0.6,0.8,0.05,0.95]){
+      const index=Math.min(run.length-2,Math.max(1,Math.round(t*(run.length-1))));
+      const anchor=run[index],prev=run[index-1],next=run[index+1];
+      const length=Math.hypot(next[0]-prev[0],next[1]-prev[1])||1;
+      const u=[(next[0]-prev[0])/length,(next[1]-prev[1])/length],n=[-u[1],u[0]];
+      const far=[];
+      for(const [dx,dy] of [n,[-n[0],-n[1]],[Math.SQRT1_2*(n[0]+u[0]),Math.SQRT1_2*(n[1]+u[1])],[Math.SQRT1_2*(n[0]-u[0]),Math.SQRT1_2*(n[1]-u[1])],
+        [-Math.SQRT1_2*(n[0]+u[0]),-Math.SQRT1_2*(n[1]+u[1])],[-Math.SQRT1_2*(n[0]-u[0]),-Math.SQRT1_2*(n[1]-u[1])]])
+        for(const distance of [22,28,34,42,50])far.push({dx:dx*distance,dy:dy*distance,distance});
+      fallbacks.push({pointX:anchor[0],pointY:anchor[1],centerX:anchor[0],centerY:anchor[1],candidates:far,
+        ownerSegment:{a:[anchor[0]-6*u[0],anchor[1]-6*u[1]],b:[anchor[0]+6*u[0],anchor[1]+6*u[1]]}});
+    }
+    const first=fallbacks[0];
+    labels.push({key:`curve-${one.id}`,role:'curve',curveId:one.id,text:one.label,
+      ownerSegment:first.ownerSegment,pointX:first.pointX,pointY:first.pointY,centerX:first.centerX,centerY:first.centerY,candidates:[],fallbacks});
+  }
   labels.push(...segmentMeasureLabels(plan,model,layout,segmentLabelCounts));
   return {schemaVersion:SPEC_VERSION,size:{width,height},prims,labels,layout:{
     scale:layout.scale,origin:{x:layout.px(0),y:layout.py(0)},rect:layout.rect},model:{conic:curveList.map(one=>one.kind).join('+')}};
@@ -731,13 +755,13 @@ export async function renderEllipseSvg({plan,model,identity,typographyPolicy}){
     specSha256:null,fragmentSha256s:{},svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
   lineage.specSha256=objectSha(spec);
   for(const item of placed)if(item.leader){
-    const ownerAttr=item.role==='line'?`data-owner-line="${esc(item.lineId)}"`:`data-owner-segment="${item.segmentId}"`;
+    const ownerAttr=item.role==='line'?`data-owner-line="${esc(item.lineId)}"`:item.role==='curve'?`data-owner-curve="${esc(item.curveId)}"`:`data-owner-segment="${item.segmentId}"`;
     body+=`<g data-layer="50"><line id="leader-${item.key}" data-role="leader" data-owner-label="${item.key}" ${ownerAttr} data-label="${item.key}" stroke="#555" stroke-width="0.9" fill="none" x1="${r6(item.leader.a[0])}" y1="${r6(item.leader.a[1])}" x2="${r6(item.leader.b[0])}" y2="${r6(item.leader.b[1])}"/></g>`;
   }
   for(const item of placed){
     const box=item.box;
-    const extra=item.role==='point'?` data-point="${esc(item.pointId)}"`:item.role==='line'?` data-line="${esc(item.lineId)}"`:` data-segment="${esc(item.segmentId)}"`;
-    const role=item.role==='point'?'point':item.role==='line'?'line':'measure';
+    const extra=item.role==='point'?` data-point="${esc(item.pointId)}"`:item.role==='line'?` data-line="${esc(item.lineId)}"`:item.role==='curve'?` data-curve-id="${esc(item.curveId)}"`:` data-segment="${esc(item.segmentId)}"`;
+    const role=item.role==='point'?'point':item.role==='line'?'line':item.role==='curve'?'curve':'measure';
     body+=`<g data-layer="90"><g id="${item.key}" data-label-kind="COORDINATE_LABEL" data-label-role="${role}" data-priority="0" data-font-px="${font}" data-owner="ellipse-${item.key}"${extra} data-tex="${esc(item.text)}" data-fragment-sha="${item.fragment.fragmentSha256}" data-box="${r6(box.x)},${r6(box.y)},${r6(box.width)},${r6(box.height)}" transform="translate(${r6(box.x)} ${r6(box.y)})">${item.fragment.svg}</g></g>`;
     lineage.fragmentSha256s[item.key]=item.fragment.fragmentSha256;
   }

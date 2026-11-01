@@ -470,3 +470,23 @@ test('a circle with tangents from an outside point renders and a lopsided circle
   assert.notEqual(lopsided,composed.svg);
   assert.equal((await auditEllipseSvg({plan:circle,svg:lopsided})).status,'FAIL');
 });
+
+test('a curve name gets a leader that ends on its own curve; a changed name or a leader moved off the curve fails the observer',async()=>{
+  const plan={...mixPlan(),conics:[{...mixPlan().conics[0],label:'x^2/a^2+y^2/b^2=1'},{...mixPlan().conics[1],label:'y^2=4x'}]};
+  const model=await solveEllipseFigure(plan);
+  const composed=await composeEllipseFigure({plan,model,identity,typographyPolicy:policy});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  const svg=composed.svg;
+  assert.match(svg,/data-label-role="curve" data-priority="0"[^>]*data-curve-id="c2"/);
+  assert.match(svg,/id="leader-curve-c2" data-role="leader"[^>]*data-owner-curve="c2"/);
+  const failsWith=async(tampered,prefix)=>{
+    assert.notEqual(tampered,svg);
+    const result=await auditEllipseSvg({plan,svg:tampered});
+    assert.equal(result.status,'FAIL');
+    assert.ok(result.errors.some(error=>error.startsWith(prefix)),`${prefix} in ${JSON.stringify(result.errors)}`);
+  };
+  await failsWith(svg.replace('data-tex="y^2=4x"','data-tex="y^2=8x"'),'CONIC_CURVE_LABEL_MISMATCH:c2:text');
+  await failsWith(svg.replace(/(id="leader-curve-c2"[^>]*?)x2="([0-9.]+)"/,(all,head,x2)=>`${head}x2="${Number(x2)+8}"`),'CONIC_CURVE_LABEL_MISMATCH:c2:leader-not-on-curve');
+  await failsWith(svg.replace(/<g data-layer="50"><line id="leader-curve-c1"[^>]*\/><\/g>/,''),'CONIC_CURVE_LABEL_MISMATCH:c1:leader-missing');
+  refused({...plan,conics:[{...plan.conics[0],label:''},plan.conics[1]]},'CONIC_LINE_LABEL_INVALID');
+});
