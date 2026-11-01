@@ -454,7 +454,7 @@
       poly(b, [A, B, Cp], 'ink', 3.4);
       line(b, Cp, Dt, 'ink', 3.4);
       if (done || C.problem) line(b, A, D, 'ink', 3.4);
-      tick(b, A, B, 1, 'amber'); tick(b, A, Cp, 2, 'rose'); if (done || C.problem) tick(b, Cp, D, 2, 'rose');
+      tick(b, A, B, 2, 'rose'); tick(b, A, Cp, 2, 'rose'); if (done || C.problem) tick(b, Cp, D, 2, 'rose');
       // 각
       ang(b, B, Cp, A, { color: 'sky', rings: 1, r: 30, label: C.problem ? dg(bb) : dg(bb), size: 16 });
       ang(b, Cp, A, B, { color: 'sky', rings: 1, r: 30, label: dg(bb), size: 16, labelDist: 52 });
@@ -478,7 +478,7 @@
       else if (C.review && C.step === 2) { row = `∠ACB(${bb}°) = ∠CAD + ∠D`; col = 'sky'; }
       else row = done ? `∠D = ½ × ∠B = ½ × ${bb}° = ${d}°` : '막대를 끌어 CD를 늘여 보세요';
       T(b, pt(bx, 0), row, { dy: 62, size: 17, color: col });
-      if (!C.problem) T(b, pt(bx, 0), 'AB = AC · CA = CD', { dy: 88, size: 15, color: 'rose', alpha: 0.9 });
+      if (!C.problem) T(b, pt(bx, 0), 'AB = AC = CD (같은 눈금)', { dy: 88, size: 15, color: 'rose', alpha: 0.9 });
     },
     steps: (M) => [
       `AB=AC 이므로 ∠ACB=∠B=${M.bb}° (이등변삼각형의 두 밑각)`,
@@ -486,7 +486,7 @@
       `CA=CD 이므로 ∠CAD=∠D 예요. 그러므로 ${M.bb}° = 2×∠D, ∠D = ${M.bb}° ÷ 2 = ${M.d}°`
     ],
     view: (M) => ({
-      guide: '막대로 <b>∠B</b>를 바꾸거나 ▶를 눌러 <b>CD</b>를 가로로 늘여 보세요. CD=CA(눈금 2개)가 되면 ∠D는 늘 <b>∠B의 반</b>이에요.',
+      guide: '막대로 <b>∠B</b>를 바꾸거나 ▶를 눌러 <b>CD</b>를 가로로 늘여 보세요. AB=AC=CD(같은 눈금 3개)가 되면 ∠D는 늘 <b>∠B의 반</b>이에요.',
       readouts: [rd('∠B = ∠ACB', `${M.bb}°`, 'sky'), rd('꼭지각 ∠A', `${M.al}°`, 'sky', '180° − 2×∠B'), rd('∠D = ∠CAD', `${M.d}°`, 'amber', '∠B ÷ 2', null, true)],
       formula: `<p>$\\angle ACB=\\angle CAD+\\angle D=2\\angle D$</p><p>$\\angle D=\\dfrac{1}{2}\\times${M.bb}^{\\circ}=${M.d}^{\\circ}$</p>`,
       rule: '이등변삼각형 ACD의 외각 ∠ACB = 두 밑각의 합 = 2 × ∠D',

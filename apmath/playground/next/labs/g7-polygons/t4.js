@@ -294,7 +294,7 @@
       if (done) line(b, A, B, 'amber', 5);
       // 같은 길이 눈금: AP = AQ = AB
       if (done) { tick(b, A, Pp, 1, 'rose'); tick(b, A, Q, 1, 'rose'); }
-      if (done && valid && (C.full || st >= 3)) { line(b, Pp, Q, 'green', 3.2, { dash: [7, 6] }); }
+      if (done && valid && (C.problem || C.full || st >= 3)) { line(b, Pp, Q, 'green', 3.2, { dash: [7, 6] }); }
       if (!C.thumb) { [A, B, Pp].concat(polyN.slice(2, n - 1)).forEach((p) => b.point(p, { color: 'ink', r: 4 })); }
       if (C.txt) {
         b.point(A, { color: 'ink', r: 4.5 }); b.point(B, { color: 'ink', r: 4.5 });
@@ -308,10 +308,10 @@
           ang(b, A, B, Pp, { color: 'sky', r: 26, label: `${fmtN(In)}°`, size: 14, labelDist: 54, rings: 1 });
           ang(b, A, Q, B, { color: 'green', r: 26, label: `${fmtN(Im)}°`, size: 14, labelDist: 54, rings: 1 });
         }
-        if (C.problem || C.full || st >= 2) ang(b, A, Pp, Q, { color: 'amber', big: x > 180, r: 36, label: C.problem ? 'x' : `${fmtN(x)}°`, size: 17, fa: 0.26, labelDist: 62 });
-        if (valid && !C.problem && (C.full || st >= 3)) {
-          ang(b, Pp, Q, A, { color: 'rose', r: 28, rings: 1, label: `${fmtN(base)}°`, size: 14, labelDist: 46, labelRot: 40 });
-          ang(b, Q, A, Pp, { color: 'rose', r: 28, rings: 1 });
+        if (!C.problem && (C.full || st >= 2)) ang(b, A, Pp, Q, { color: 'violet', big: x > 180, r: 36, label: `${fmtN(x)}°`, size: 16, fa: 0.22, labelDist: 62 });
+        if (valid && (C.problem || C.full || st >= 3)) {
+          ang(b, Pp, Q, A, { color: 'amber', r: 28, rings: 1, label: C.problem ? 'x' : `${fmtN(base)}°`, size: C.problem ? 17 : 15, fa: 0.26, labelDist: 46, labelRot: 40 });
+          ang(b, Q, A, Pp, { color: 'amber', r: 28, rings: 1, fa: 0.26 });
         }
       }
       if (!C.txt) return;
@@ -320,21 +320,21 @@
       if (C.problem) { r1 = `정${n}각형과 정${m}각형이 변 AB를 공유해요`; r2 = `AP = AQ 일 때, ∠APQ = x 의 크기는?`; }
       else if (!done) { r1 = '오른쪽 도형을 가로로 밀어 붙여 보세요'; c1 = 'green'; }
       else if (C.review && st === 1) { r1 = `정${n}각형의 한 내각 ${fmtN(In)}°`; r2 = `정${m}각형의 한 내각 ${fmtN(Im)}°`; c1 = 'sky'; }
-      else if (C.review && st === 2) { r1 = `x = 360° − ${fmtN(In)}° − ${fmtN(Im)}° = ${fmtN(x)}°`; }
-      else if (!valid) { r1 = `A에서 남는 각 x = 360° − ${fmtN(In)}° − ${fmtN(Im)}° = ${fmtN(x)}°`; r2 = x > 180 + 1e-9 ? '180°보다 커요' : '일직선이에요 (삼각형 APQ가 없어요)'; }
-      else { r1 = `x = 360° − ${fmtN(In)}° − ${fmtN(Im)}° = ${fmtN(x)}°`; r2 = `∠APQ = (180° − ${fmtN(x)}°) ÷ 2 = ${fmtN(base)}°`; }
+      else if (C.review && st === 2) { r1 = `∠PAQ = 360° − ${fmtN(In)}° − ${fmtN(Im)}° = ${fmtN(x)}°`; }
+      else if (!valid) { r1 = `A에서 남는 각 ∠PAQ = 360° − ${fmtN(In)}° − ${fmtN(Im)}° = ${fmtN(x)}°`; r2 = x > 180 + 1e-9 ? '180°보다 커요' : '일직선이에요 (삼각형 APQ가 없어요)'; }
+      else { r1 = `∠PAQ = 360° − ${fmtN(In)}° − ${fmtN(Im)}° = ${fmtN(x)}°`; r2 = `∠APQ = (180° − ${fmtN(x)}°) ÷ 2 = ${fmtN(base)}°`; }
       T(b, pt((box.x0 + box.x1) / 2, yb), r1, { dy: 44, size: b.W < 560 ? 15 : 17, color: c1 });
       T(b, pt((box.x0 + box.x1) / 2, yb), r2, { dy: 72, size: b.W < 560 ? 15 : 16, color: 'rose' });
     },
     steps: (M) => [
       `정${M.n}각형의 한 내각은 ${fmtN(M.In)}°, 정${M.m}각형의 한 내각은 ${fmtN(M.Im)}°예요. (한 내각 = 180° × (변의 수 − 2) ÷ 변의 수)`,
-      `점 A 둘레의 각은 360°이므로 남는 각 ∠PAQ = x = 360° − ${fmtN(M.In)}° − ${fmtN(M.Im)}° = ${fmtN(M.x)}°`,
-      M.valid ? `AP=AQ=AB 이므로 △APQ는 이등변삼각형이에요. ∠APQ = (180° − ${fmtN(M.x)}°) ÷ 2 = ${fmtN(M.base)}°` : `x가 180°가 되거나 넘으면 P, A, Q가 삼각형을 이루지 않아요. 변의 수를 늘려 x가 180°보다 작게 만들어 보세요.`
+      `점 A 둘레의 각은 360°이므로 남는 각 ∠PAQ = 360° − ${fmtN(M.In)}° − ${fmtN(M.Im)}° = ${fmtN(M.x)}°`,
+      M.valid ? `AP=AQ=AB 이므로 △APQ는 이등변삼각형이에요. ∠APQ = (180° − ${fmtN(M.x)}°) ÷ 2 = ${fmtN(M.base)}°` : `∠PAQ가 180°가 되거나 넘으면 P, A, Q가 삼각형을 이루지 않아요. 변의 수를 늘려 ∠PAQ가 180°보다 작게 만들어 보세요.`
     ],
     view: (M) => ({
-      guide: '막대로 두 정다각형의 변의 수와 <b>변의 길이</b>를 바꾸고, ▶로 오른쪽 도형을 <b>가로로 밀어</b> 붙여 보세요. 두 도형의 한 내각을 빼고 남은 <b>x</b>가 AP = AQ인 이등변삼각형의 꼭지각이에요.',
-      readouts: [rd(`정${M.n}각형의 한 내각`, `${fmtN(M.In)}°`, 'sky'), rd(`정${M.m}각형의 한 내각`, `${fmtN(M.Im)}°`, 'green'), rd('A에서 남는 각 x', `${fmtN(M.x)}°`, 'amber', '360° − 두 내각'), rd('이등변삼각형의 밑각', M.valid ? `${fmtN(M.base)}°` : '—', 'rose', M.valid ? '(180° − x) ÷ 2' : 'x < 180°일 때', null, true)],
-      formula: `<p>$x=360^{\\circ}-${tx(M.In)}^{\\circ}-${tx(M.Im)}^{\\circ}=${tx(M.x)}^{\\circ}$</p>${M.valid ? `<p>$\\angle APQ=\\dfrac{180^{\\circ}-${tx(M.x)}^{\\circ}}{2}=${tx(M.base)}^{\\circ}$</p>` : ''}`,
+      guide: '막대로 두 정다각형의 변의 수와 <b>변의 길이</b>를 바꾸고, ▶로 오른쪽 도형을 <b>가로로 밀어</b> 붙여 보세요. 두 도형의 한 내각을 빼고 남은 <b>∠PAQ</b>가 AP = AQ인 이등변삼각형의 꼭지각이에요.',
+      readouts: [rd(`정${M.n}각형의 한 내각`, `${fmtN(M.In)}°`, 'sky'), rd(`정${M.m}각형의 한 내각`, `${fmtN(M.Im)}°`, 'green'), rd('A에서 남는 각 ∠PAQ', `${fmtN(M.x)}°`, 'amber', '360° − 두 내각'), rd('밑각 ∠APQ', M.valid ? `${fmtN(M.base)}°` : '—', 'rose', M.valid ? '(180° − ∠PAQ) ÷ 2' : '∠PAQ < 180°일 때', null, true)],
+      formula: `<p>$\\angle PAQ=360^{\\circ}-${tx(M.In)}^{\\circ}-${tx(M.Im)}^{\\circ}=${tx(M.x)}^{\\circ}$</p>${M.valid ? `<p>$\\angle APQ=\\dfrac{180^{\\circ}-${tx(M.x)}^{\\circ}}{2}=${tx(M.base)}^{\\circ}$</p>` : ''}`,
       rule: '한 점 둘레의 각은 360°. 정다각형의 변의 길이는 모두 같으므로 AP = AQ (이등변삼각형)',
       notes: notes('한 변이 겹쳐 있으니 AB 둘레에서 두 도형의 내각을 <b>모두</b> 빼야 해요.', '변의 길이를 바꿔도 각의 크기는 변하지 않아요. 닮음인 도형이 되기 때문이에요.')
     }),
@@ -343,7 +343,7 @@
       return {
         tag: '변을 공유하는 정다각형', key: `${n},${m}`,
         stem: `그림과 같이 한 변의 길이가 같은 정${n}각형과 정${m}각형이 변 AB를 공유하고 있다. 점 A에서 두 정다각형의 이웃한 꼭짓점 P, Q에 대하여 $\\overline{AP}=\\overline{AQ}$일 때, ∠APQ의 크기 $x$는?`,
-        choices: mkChoices(base, [[x, '∠PAQ를 구했어요. 구하는 것은 밑각 ∠APQ예요.'], [180 - x, '이등변삼각형의 밑각의 합이에요. 2로 나누어야 해요.'], [x / 2, '꼭지각의 반이에요. (180° − x) ÷ 2예요.'], [In, '정다각형의 한 내각이에요.'], [base + 8, '다시 계산해 보세요.'], [base - 6, '다시 계산해 보세요.']], { pad: 6, valid: (v) => v > 0 && v < 90 })
+        choices: mkChoices(base, [[x, '꼭지각 ∠PAQ를 구했어요. 구하는 것은 밑각 ∠APQ예요.'], [180 - x, '이등변삼각형의 밑각의 합이에요. 2로 나누어야 해요.'], [x / 2, '꼭지각의 반이에요. (180° − ∠PAQ) ÷ 2예요.'], [In, '정다각형의 한 내각이에요.'], [base + 8, '다시 계산해 보세요.'], [base - 6, '다시 계산해 보세요.']], { pad: 6, valid: (v) => v > 0 && v < 90 })
       };
     },
     verify: (s) => { const M = join.model(s), g = M.gp, q = M.pr; return { ans: angBetween(g.P, g.Q, g.A), model: q.base, extra: [[angBetween(g.A, g.P, g.Q), q.x]] }; }
