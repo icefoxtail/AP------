@@ -10,7 +10,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-05",
     "standardUnit": "삼각함수의 뜻과 값",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -47,7 +47,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-01",
     "standardUnit": "지수의 뜻과 성질",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -84,7 +84,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-07",
     "standardUnit": "삼각방정식과 삼각부등식",
     "standardUnitOrder": 7,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -120,7 +120,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-02",
     "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -157,7 +157,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-05",
     "standardUnit": "삼각함수의 뜻과 값",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -194,7 +194,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-01",
     "standardUnit": "지수의 뜻과 성질",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -231,7 +231,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-02",
     "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -272,7 +272,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-02",
     "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -309,7 +309,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-02",
     "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -346,7 +346,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-02",
     "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -383,7 +383,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-06",
     "standardUnit": "삼각함수의 그래프",
     "standardUnitOrder": 6,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -425,7 +425,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-05",
     "standardUnit": "삼각함수의 뜻과 값",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -462,7 +462,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-01",
     "standardUnit": "지수의 뜻과 성질",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -503,7 +503,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-01",
     "standardUnit": "지수의 뜻과 성질",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -540,7 +540,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-02",
     "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -571,7 +571,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-02",
     "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -602,7 +602,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-02",
     "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -633,7 +633,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-05",
     "standardUnit": "삼각함수의 뜻과 값",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -669,7 +669,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-01",
     "standardUnit": "지수의 뜻과 성질",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -700,7 +700,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-07",
     "standardUnit": "삼각방정식과 삼각부등식",
     "standardUnitOrder": 7,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -731,7 +731,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-02",
     "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
