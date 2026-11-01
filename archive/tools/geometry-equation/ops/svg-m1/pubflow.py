@@ -5,10 +5,13 @@ S='/home/user/AP------/.tmp/svg-m1/'; R=S+'runs/'; ROOT='/home/user/AP------'
 title,body=sys.argv[1],sys.argv[2]; specs=[a.split(':') for a in sys.argv[3:]]
 def sh(c,**k): return subprocess.run(c,shell=True,capture_output=True,text=True,cwd=ROOT,**k)
 batch=[]
-def gd(e): return 'm2' if '_중2_' in e else 'm3' if '_중3_' in e else 'm1'
+import glob
+def srcOf(e):
+    m=glob.glob(f'{ROOT}/archive/exams/original/**/{e}.js',recursive=True); assert len(m)==1,(e,m); return m[0][len(ROOT)+1:]
+def grade(e): return next((g for g in ('중1','중2','중3','고1','고2','고3') if f'_{g}_' in e),'중1')
+def camp(e): return {'중1':'m1','중2':'m2','중3':'m3','고1':'h1','고2':'h2','고3':'h3'}[grade(e)]+'-sonnet'
 for e,rv,rw in specs:
-    sub=('1' if '_1학기_' in e else '2')+('final' if '기말' in e else 'mid')
-    o=sh(f"python3 {S}publish-exam.py {e} archive/exams/original/middle/{gd(e)}/{sub}/{e}.js {R}{rv} {R}{rw}"); print(o.stdout.strip() or o.stderr[-500:])
+    o=sh(f"python3 {S}publish-exam.py {e} {srcOf(e)} {R}{rv} {R}{rw}"); print(o.stdout.strip() or o.stderr[-500:])
     p=R+f'publish-rows-{e}.json'
     if os.path.exists(p): batch+=json.load(open(p))
 if not batch: print('nothing to publish'); sys.exit(0)
@@ -30,18 +33,18 @@ assert dict(gp).get('fail')=='0', g.stdout[-2000:]
 by={}
 for r in batch: by.setdefault(r['src'].split('/')[-1][:-3],[]).append(r)
 for e,rows in by.items():
-    p=R+f'ledger-spec-{e}.json'; sub=('1' if '_1학기_' in e else '2')+('final' if '기말' in e else 'mid')
+    p=R+f'ledger-spec-{e}.json'
     if os.path.exists(p): s=json.load(open(p))
     else:
         t=json.load(open(R+f'triage-{e}.json'))
-        s={'exam':e,'src':f'archive/exams/original/middle/{gd(e)}/{sub}/{e}.js','camp':('m2-sonnet' if '_중2_' in e else 'm3-sonnet' if '_중3_' in e else 'm1-sonnet'),'triage':R+f'triage-{e}.json','published':{},
+        s={'exam':e,'src':srcOf(e),'camp':camp(e),'triage':R+f'triage-{e}.json','published':{},
            'open':{str(x['ord']):['OPEN_LAYOUT','plan 대기'] for x in t if x['decision'] in ('FIGURE','REPLACE','UNSUPPORTED')},
-           'note':('중2' if '_중2_' in e else '중3' if '_중3_' in e else '중1')+' Sonnet 캠페인: 0개 게시(독립 Sonnet 검토 PASS, 실제 해설 페이지 표시 확인).'}
+           'note':grade(e)+' Sonnet 캠페인: 0개 게시(독립 Sonnet 검토 PASS, 실제 해설 페이지 표시 확인).'}
     for r in rows: s['published'][str(r['ord'])]=f"assets/images/{e}/{r.get('asset') or 'q%d-solution.svg'%r['ord']}"; s['open'].pop(str(r['ord']),None)
     n=len(s['published']); s['note']=re.sub(r'\d+개 게시',f'{n}개 게시',s['note'],count=1)
     json.dump(s,open(p,'w'),ensure_ascii=False)
     print(sh(f"python3 {S}ledger-upsert.py {p}").stdout.strip())
 msg=f"{title}\n\n{body}\n독립 Sonnet 검토 PASS, 실제 해설 페이지 표시 확인, create-gate 8/8.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01F4RMLKQwWq73G4ju4Quc1a"
 open(R+'commitmsg.txt','w').write(msg)
-o=sh(f"git add archive/exams/original/middle archive/assets/images archive/tools/geometry-equation/production/exam-figure-ledger.json && git commit -q -F {R}commitmsg.txt && git push -q origin claude/fervent-knuth-s3xr1a && git log --oneline -1")
+o=sh(f"git add archive/exams/original archive/assets/images archive/tools/geometry-equation/production/exam-figure-ledger.json && git commit -q -F {R}commitmsg.txt && git push -q origin claude/fervent-knuth-s3xr1a && git log --oneline -1")
 print(o.stdout.strip(), o.stderr[-300:])
