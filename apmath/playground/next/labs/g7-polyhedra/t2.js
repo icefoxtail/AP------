@@ -127,7 +127,7 @@
       return {
         tag: '정다면체의 조건',
         key: `${q.p}-${q.q}`,
-        stem: `한 꼭짓점에 ${PNAME[q.p]}가 ${q.q}개씩 모여 있다. 이 면으로 만들 수 있는 정다면체는?`,
+        stem: `한 꼭짓점에 ${PNAME[q.p]}${jo(PNAME[q.p], 'i')} ${q.q}개씩 모여 있다. 이 면으로 만들 수 있는 정다면체는?`,
         choices: mkText(order.map((n) => ({ h: n, ok: n === correctName, hint: hint(n) })))
       };
     }
@@ -163,11 +163,14 @@
         D.flush();
         return;
       }
-      // 큰 입체 하나(고른 것) + 아래 작은 입체 5개(고르는 줄)
-      const S = platS(M.k), I = M.I, MS = 0.36, ROWZ = -3.8, SPm = 1.55;
-      const mini = PLAT_KEYS.map((k, i) => add3(hxOf(s, (i - 2) * SPm * 1.25), v3(0, 0, ROWZ)));
-      const fitp = S.V.concat(mini.map((c) => add3(c, v3(0, 0, -0.9))), mini.map((c) => add3(c, v3(-0.9, 0, 0))), mini.map((c) => add3(c, v3(0.9, 0, 0))));
-      D.fitPts(fitp, { t: 96, b: 24, l: 26, r: 26 });
+      // 큰 입체 하나(고른 것) + 아래 작은 입체 5개(고르는 줄). 작은 줄은 화면 아래쪽에 화면 픽셀 기준으로 놓아 큰 입체를 최대한 키웁니다.
+      const S = platS(M.k), I = M.I, narrow = b.W < 560, rowPx = narrow ? 56 : 70;
+      D.fitPts(S.V, { t: 66, b: rowPx + 26, l: 10, r: 10 });
+      const kpx = b.k, cp = camOf(s).cp;
+      const spPx = Math.min(rowPx + 14, (b.W - 24) / 5.2), ctrS = b.toS(D.P(S.ctr));
+      const dyFig = (b.H - b.insets.bottom - rowPx / 2 - 14 - ctrS.y) / kpx;
+      const MS = (spPx * 0.42) / (1.75 * kpx);
+      const mini = PLAT_KEYS.map((k, i) => add3(add3(S.ctr, hxOf(s, ((i - 2) * spPx) / kpx)), v3(0, 0, -dyFig / cp)));
       const hlFace = st !== 0 ? S.F.map((f, fi) => fi).filter((fi) => D.facing(S.F[fi].n)).sort((a, c) => D.depth(faceMid(S.V, S.F[a])) - D.depth(faceMid(S.V, S.F[c])))[0] : -1;
       let hv = -1;
       if (st === 2 || st === 4) { let bd = 1e9; S.V.forEach((p, vi) => { const d = D.depth(p); if (d < bd) { bd = d; hv = vi; } }); }
@@ -176,7 +179,10 @@
         edge: () => ({ color: 'ink', width: 3.2 })
       });
       if (C.txt && hlFace >= 0 && (st === 1 || st === 4)) D.label(faceMid(S.V, S.F[hlFace]), I.face, { color: SKY, size: 14, at: [[0, 0]] });
-      if (C.txt && hv >= 0) D.label(S.V[hv], `면 ${I.q}개`, { color: AMB, size: 15, dir: D.out(S.V[hv], S.ctr), gap: 14 });
+      if (hv >= 0) {
+        D.dot(S.V[hv], AMB, 8);
+        if (C.txt) D.label(S.V[hv], `한 꼭짓점에 모인 면 ${I.q}개`, { color: AMB, size: 14, dir: D.out(S.V[hv], S.ctr), gap: 16 });
+      }
       PLAT_KEYS.forEach((k, i) => {
         const sel = k === M.k;
         drawPoly(D, scl(platS(k), MS), { off: mini[i], face: (fi, vis) => (vis ? { c: sel ? AMB : 'green', a: sel ? 0.3 : 0.12 } : null), edge: () => ({ color: sel ? AMB : 'ink', width: sel ? 2.8 : 2, alpha: sel ? 1 : 0.7 }) });
@@ -187,7 +193,7 @@
         if (st === 3) L.push({ t: `꼭짓점 = ${I.p}×${I.F}÷${I.q} = ${I.V}개`, c: AMB, size: 15 });
         banner(b, L, C);
         if (C.tab === 'explore' && !C.thumb) {
-          const i = PLAT_KEYS.indexOf(M.k), hp = D.P(add3(mini[i], v3(0, 0, -1.0)));
+          const i = PLAT_KEYS.indexOf(M.k), hp = D.P(add3(mini[i], v3(0, 0, -(spPx * 0.5) / kpx / cp)));
           b.handle('sel', hp, { color: 'amber', r: 8.5, ariaLabel: '정다면체 고르기', drag: (w) => { let best = 0, bd = 1e18; mini.forEach((c, j) => { const q = D.P(c), d = (q.x - w.x) ** 2; if (d < bd) { bd = d; best = j; } }); s.phSel = PLAT_KEYS[best]; } });
         }
       }
@@ -459,7 +465,7 @@
       // 손잡이: 칸 고르기
       if (C.tab === 'explore' && !C.thumb) {
         const c = cell(M.p, M.q);
-        b.handle('cell', b.toW(c.x + cw - 12, c.y + 12), { color: 'amber', r: 9, ariaLabel: '칸 고르기', drag: (w) => { const sp = b.toS(w.x, w.y); s.phQq = clamp(Math.floor((sp.x - x0 - hw) / cw) + 3, 3, 6); s.phPp = clamp(Math.floor((sp.y - top - hh) / ch) + 3, 3, 6); } });
+        b.handle('cell', b.toW(c.x + cw - 9, c.y + 9), { color: 'amber', r: 6.5, ariaLabel: '칸 고르기', drag: (w) => { const sp = b.toS(w.x, w.y); s.phQq = clamp(Math.floor((sp.x - x0 - hw) / cw) + 3, 3, 6); s.phPp = clamp(Math.floor((sp.y - top - hh) / ch) + 3, 3, 6); } });
       }
     },
     steps: (M) => [

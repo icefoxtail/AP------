@@ -28,6 +28,7 @@
     const ch = String(w).trim().slice(-1), code = ch.charCodeAt(0) - 0xac00;
     if (code >= 0 && code <= 11171) return code % 28 !== 0;
     if (/[ㄱ-ㅎ]/.test(ch)) return true;
+    if (/[0-9]/.test(ch)) return '013678'.includes(ch); // 영·일·삼·육·칠·팔 은 받침이 있어요
     return /[LMNRlmnr]/.test(ch);
   };
   const jo = (w, kind) => PAIR[kind][hasBatchim(w) ? 0 : 1];

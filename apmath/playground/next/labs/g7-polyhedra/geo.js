@@ -312,7 +312,7 @@
     const u = o.u || 16, w = Math.max(...cells.map((c) => c[0])) + 1, h = Math.max(...cells.map((c) => c[1])) + 1;
     let g = '';
     cells.forEach((c) => { g += `<rect x="${c[0] * u + 1}" y="${c[1] * u + 1}" width="${u}" height="${u}" fill="var(--m-green)" fill-opacity=".28" stroke="currentColor" stroke-width="1.6"/>`; });
-    return `<svg viewBox="0 0 ${w * u + 2} ${h * u + 2}" width="${(w * u + 2) * (o.sc || 1)}" height="${(h * u + 2) * (o.sc || 1)}" role="img" aria-hidden="true" style="display:block">${g}</svg>`;
+    return `<svg viewBox="0 0 ${w * u + 2} ${h * u + 2}" width="${(w * u + 2) * (o.sc || 1)}" height="${(h * u + 2) * (o.sc || 1)}" role="img" aria-hidden="true" style="display:block;max-width:100%;height:auto">${g}</svg>`;
   }
 
   /* ---- 정다면체 전개도: 입체를 펼쳐 서로 겹치지 않는 것만 고릅니다(정다각형 면 → 평면 위에 차례로 붙이기) */

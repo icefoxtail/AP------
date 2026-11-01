@@ -38,7 +38,7 @@
   function fitNet(b, s, net, C, pad, camF = camFold, cur) {
     const pts = [];
     (cur == null ? [0, 0.5, 1] : [cur]).forEach((t) => { const D = scene3(b, camF(s, t), C); net.at(t).forEach((f) => f.forEach((p) => pts.push(D.P(p)))); });
-    fit(b, bboxOf(pts), Object.assign({ t: C.problem ? 40 : 86, b: 46, l: 40, r: 40 }, pad || {}));
+    fit(b, bboxOf(pts), Object.assign({ t: C.problem ? 40 : 108, b: 46, l: 40, r: 40 }, pad || {}));
   }
   // 면을 먼 것부터 그립니다. col(fi) → {c,a,ec,ew,alpha}
   function drawFaces(D, net, t, col) {
@@ -129,7 +129,7 @@
       return {
         tag: '정육면체의 전개도', key: its.map((x) => canonCells(x.cells)).join('|'), wide: false,
         stem: '다음 중 접어서 정육면체를 만들 수 있는 전개도는?',
-        choices: its.map((x) => ({ h: netSvg(x.cells, { u: 17 }), p: '전개도 모양', ok: x.ok, hint: x.ok ? '' : why31(x.cells) }))
+        choices: its.map((x) => ({ h: netSvg(x.cells, { u: 26 }), p: '전개도 모양', ok: x.ok, hint: x.ok ? '' : why31(x.cells) }))
       };
     }
   };
@@ -198,7 +198,7 @@
           const nm = (j) => ptName(net, j);
           const L = [{ t: `${net.name} 전개도 (${net.label || ''})`, c: 'ink', size: 15 }];
           if (st >= 1) L.push({ t: M.letters ? `점 ${nm(k)}${jo(nm(k), 'wa')} 겹치는 점: ${M.same.length ? M.same.map((j) => `점 ${nm(j)}`).join(', ') : '없음'}` : `고른 점과 겹치는 점 ${M.same.length}개`, c: AMB, size: 15 });
-          if (t > 0.98 && st !== 1 && M.letters) L.push({ t: `접으면 ${[k].concat(M.same).sort((a, c) => a - c).map(nm).join(' = ')} 가 한 꼭짓점`, c: GRN, size: 14 });
+          if (t > 0.98 && st !== 1 && M.letters) { const lst = [k].concat(M.same).sort((a, c) => a - c).map(nm); L.push({ t: `접으면 ${lst.join(' = ')}${jo(lst[lst.length - 1], 'i')} 한 꼭짓점`, c: GRN, size: 14 }); }
           banner(b, L, C);
         } else if (C.problem && C.txt) banner(b, [{ t: `${o.name}의 전개도`, c: 'ink', size: 16 }], C);
         D.flush();
@@ -217,7 +217,7 @@
         return [
           `전개도에서 점 $\\text{${k}}$를 골라요.`,
           `전개도를 접으면서 $\\text{${k}}$${jo(k, 'wa')} 한 점으로 모이는 점을 찾아요. ${M.same.length ? M.same.map((j) => `점 $\\text{${nm(j)}}$`).join(', ') + '이에요.' : '겹치는 점이 없어요.'}`,
-          `따라서 접으면 ${[M.k].concat(M.same).sort((a, c) => a - c).map((j) => `$\\text{${nm(j)}}$`).join(', ')}가 한 꼭짓점이 돼요. 한 꼭짓점에는 면이 $${PLAT[o.kind].q}$개씩 모여요.`
+          `따라서 접으면 ${[M.k].concat(M.same).sort((a, c) => a - c).map((j) => `$\\text{${nm(j)}}$`).join(', ')}${jo(nm([M.k].concat(M.same).sort((a, c) => a - c).slice(-1)[0]), 'i')} 한 꼭짓점이 돼요. 한 꼭짓점에는 면이 $${PLAT[o.kind].q}$개씩 모여요.`
         ];
       },
       view: (M) => {
@@ -298,8 +298,8 @@
       faces.forEach((p, i) => faceTxt(D, C, cen3(p), NUM6[net.num[i] - 1], { color: i === f ? AMB : i === opp && !C.problem ? SKY : 'ink', size: 20, at: [[0, 0]] }));
       if (C.txt && !C.problem) {
         const a = NUM6[net.num[f] - 1], c = NUM6[net.num[opp] - 1];
-        const L = [{ t: `면 ${a}과 평행한 면: ${c}`, c: SKY, size: 16 }];
-        if (st === 3 || st === 4) L.push({ t: `나머지 네 면은 면 ${a}과 수직이에요 (초록)`, c: GRN, size: 14 });
+        const L = [{ t: `면 ${a}${jo(a, 'wa')} 평행한 면: ${c}`, c: SKY, size: 16 }];
+        if (st === 3 || st === 4) L.push({ t: `나머지 네 면은 면 ${a}${jo(a, 'wa')} 수직이에요 (초록)`, c: GRN, size: 14 });
         banner(b, L, C);
       } else if (C.problem && C.txt) banner(b, [{ t: '정육면체의 전개도', c: 'ink', size: 16 }], C);
       D.flush();
@@ -308,9 +308,9 @@
     steps: (M) => {
       const a = NUM6[M.net.num[M.f] - 1], c = NUM6[M.net.num[M.opp] - 1];
       return [
-        `전개도에서 면 $\\text{${a}}$를 골라요. (노란 면)`,
-        `전개도를 접으면 면 $\\text{${a}}$와 마주 보는 면은 $\\text{${c}}$예요. 마주 보는 두 면은 서로 $\\text{평행}$해요.`,
-        `나머지 네 면은 면 $\\text{${a}}$와 $\\text{수직}$으로 만나요.`
+        `전개도에서 면 $\\text{${a}}$${jo(a, 'eul')} 골라요. (노란 면)`,
+        `전개도를 접으면 면 $\\text{${a}}$${jo(a, 'wa')} 마주 보는 면은 $\\text{${c}}$예요. 마주 보는 두 면은 서로 $\\text{평행}$해요.`,
+        `나머지 네 면은 면 $\\text{${a}}$${jo(a, 'wa')} $\\text{수직}$으로 만나요.`
       ];
     },
     view: (M) => {
@@ -328,7 +328,7 @@
       const others = [0, 1, 2, 3, 4, 5].filter((i) => i !== f);
       const items = others.map((i) => ({ i, ok: i === opp })).sort((a, c) => net.num[a.i] - net.num[c.i]);
       const pickN = shuf(items.filter((x) => !x.ok)).slice(0, 4).concat(items.filter((x) => x.ok)).sort((a, c) => net.num[a.i] - net.num[c.i]);
-      return { tag: '평행한 면', key: `${M.Q.ni}|${f}`, stem: `그림은 정육면체의 전개도이다. 이 전개도를 접을 때, 면 ${nf}과 평행한 면은?`, choices: mkText(pickN.map((x) => ({ h: `면 ${NUM6[net.num[x.i] - 1]}`, ok: x.ok, hint: '접으면 이 면은 면 ' + nf + '과 이웃해서 수직이에요. 마주 보는 면을 찾아 보세요.' }))) };
+      return { tag: '평행한 면', key: `${M.Q.ni}|${f}`, stem: `그림은 정육면체의 전개도이다. 이 전개도를 접을 때, 면 ${nf}${jo(nf, 'wa')} 평행한 면은?`, choices: mkText(pickN.map((x) => ({ h: `면 ${NUM6[net.num[x.i] - 1]}`, ok: x.ok, hint: '접으면 이 면은 면 ' + nf + jo(nf, 'wa') + ' 이웃해서 수직이에요. 마주 보는 면을 찾아 보세요.' }))) };
     }
   };
 
@@ -504,7 +504,7 @@
       }),
       prob: (M) => {
         const a = M.Q.a, ans = a / 2;
-        return { tag: '겉면 위의 최단 경로', key: 'sp' + a, stem: `그림과 같이 한 모서리의 길이가 $${a}$인 정육면체의 꼭짓점 A에서 겉면을 따라 꼭짓점 G까지 가는 가장 짧은 경로가 모서리 EF와 만나는 점은 점 E에서 얼마나 떨어져 있는가?`, choices: mkChoices(ans, [[a / 3, '이 점은 EF를 3등분한 점이에요. 펼치면 직선이 가운데를 지나요.'], [a / 4, 'EF를 4등분한 점이에요.'], [a, 'EF의 끝(F)이에요.'], [ans + 1, '가운데보다 한 칸 치우쳤어요.'], [ans - 1, '가운데보다 한 칸 치우쳤어요.'], [2 * a / 3, 'EF를 3등분한 점이에요.']], { unit: '', valid: (v) => v > 0 && v < a && Number.isFinite(v) && Math.abs(v * 3 - Math.round(v * 3)) < 1e-9 }) };
+        return { tag: '겉면 위의 최단 경로', key: 'sp' + a, stem: `그림과 같이 한 모서리의 길이가 $${a}$인 정육면체의 꼭짓점 A에서 겉면을 따라 꼭짓점 G까지 가는 가장 짧은 경로가 모서리 EF와 만나는 점은 점 E에서 얼마나 떨어져 있는가?`, choices: mkChoices(ans, [[ans + 1, '가운데보다 한 칸 F 쪽으로 치우쳤어요.'], [ans - 1, '가운데보다 한 칸 E 쪽으로 치우쳤어요.'], [ans + 2, 'EF의 가운데가 아니에요. 펼친 직선이 지나는 자리를 다시 살펴보세요.'], [ans - 2, 'EF의 가운데가 아니에요. 펼친 직선이 지나는 자리를 다시 살펴보세요.'], [ans + 0.5, ''], [ans - 0.5, ''], [ans + 1.5, ''], [ans - 1.5, '']], { unit: '', valid: (v) => v > 0 && v < a && Math.abs(v * 2 - Math.round(v * 2)) < 1e-9 }) };
       }
     };
   })();
