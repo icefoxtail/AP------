@@ -18,7 +18,7 @@ Claude Code 전용 외부 스킬을 저장소에 넣어 두는 곳이다. 클라
 
 | 스킬 | 호출 | 용도 | 적용 대상·주의 |
 | --- | --- | --- | --- |
-| impeccable (skill-v4.8.0) | `/impeccable` | 기존 화면 디자인 개선: critique → polish·layout·adapt → 브라우저 확인 | 아카이브 `archive/`, APMS `apmath/`, 도형실험실 `apmath/playground/labs/`, 학생포털 `apmath/student/`. 수학 엔진·문제·정답·버튼 동작은 바꾸지 않는다. 화면을 바꾸면 Archive 2.0 런타임 계약과 `node tools/check-archive2-runtime.cjs`를 따른다. 금지 명령은 `impeccable/VENDOR.md`. |
+| impeccable (skill-v4.8.0) | `/impeccable` | 기존 화면 디자인 개선: critique → polish·layout·adapt → 브라우저 확인 | 아카이브 `archive/`, APMS `apmath/`, 도형실험실 `apmath/playground/`(2.0 `next/` 기준, 이전 `labs/`), 학생포털 `apmath/student/`. 수학 엔진·문제·정답·버튼 동작은 바꾸지 않는다. 화면을 바꾸면 Archive 2.0 런타임 계약과 `node tools/check-archive2-runtime.cjs`를 따른다. 기준 문서: PRODUCT.md는 저장소 루트 1개(AP Math 공통), DESIGN.md는 화면 폴더별(`apmath/playground/` 완료, 나머지 `archive/`, `apmath/`(APMS), `apmath/student/`는 아직). `document`는 반드시 대상 폴더 경로에 쓰게 지정할 것 — 지정하지 않으면 루트에 써서 화면들이 섞인다. 금지 명령(`npx impeccable install`, `hooks on`)은 `impeccable/VENDOR.md`. |
 | security-audit (c1c8a8c) | `/security-audit` | 워커 `apmath/worker-backup/worker/`, `workers/`의 인증·학생 데이터·권한·배포 설정 감사 | 기본 제공 `/security-review`는 변경분 검토라 역할이 다르다. 비용이 크므로 범위를 좁혀 호출한다. 주의는 `security-audit/VENDOR.md`. |
 
 ## 미확인
