@@ -305,7 +305,7 @@
           { id: 'arc2', name: '노랑 호 ②', desc: '중심각 90°', value: piP(M.arc) + ' cm', color: CA }
         ],
         formula: `<p>둘레 = (호 ①) + (호 ②)</p><p>= $2\\pi\\times${M.a}\\times\\dfrac{90}{360}\\times 2$ = <b>${piP(M.tot)} cm</b></p>`,
-        rule: '(호의 길이) = 2π × (반지름) × (중심각 / 360°)',
+        rule: '(호의 길이) = 2π × (반지름) × ($\\dfrac{\\text{중심각}}{360^\\circ}$)',
         notes: '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>둘레에는 정사각형의 변이 들어가지 않아요. 색칠한 부분의 <b>경계선</b>만 세요.</li><li>두 호의 중심은 서로 <b>마주 보는 꼭짓점</b>이에요. 반지름은 모두 정사각형의 한 변이에요.</li><li>중심각이 90°인 호 2개는 합치면 180°, 즉 원 둘레의 <b>절반</b>이에요.</li></ul>'
       };
     },
