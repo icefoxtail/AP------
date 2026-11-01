@@ -48,6 +48,7 @@ const SCHEMA = {
   V2: "archive-reviewed-exam-meta-register-request-v2",
   LEGACY: "archive-reviewed-exam-meta-register-request-v1",
   SCOPED_LINKS: "archive2-reviewed-basic-source-links-exam-scoped-v1",
+  DIFF5: "archive-difficulty5-register-request-v1",
 };
 const GENERATED_INDEX = "archive/data/generated-lite-consumer/v1/index.json";
 // Fields the page can filter on; used for the final "UID is returned by the page query" proof.
@@ -149,6 +150,32 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
       rows: bank.map((q, i) => ({ ordinal: i + 1, gated: true, expect: { standardCourse: q.standardCourse, standardUnitKey: q.standardUnitKey, subUnitKey: q.subUnitKey,
         problemTypeKey: q.problemTypeKey, templateKey: q.templateKey, crossConceptKeys: q.crossConceptKeys || [], conditionKeys: q.conditionKeys || [],
         integrationPattern: q.integrationPattern || "NONE", difficultyBucket: q.difficultyBucket } })) };
+  }
+  if (schema === SCHEMA.DIFF5) {
+    const gemini = doc.gemini || {};
+    const sourceFile = normalizeFile(gemini.sourceArchiveFile || doc.sourceArchiveFile);
+    if (!sourceFile) fail("INVALID_REQUEST", "diff5 request needs sourceArchiveFile");
+    const items = gemini.items || doc.items || [];
+    if (!Array.isArray(items)) fail("INVALID_REQUEST", "diff5 request needs items[]");
+    const rows = items.map(item => {
+      if (!item?.after || typeof item.after !== "object") fail("INVALID_REQUEST", `item #${item?.ordinal} has no after`);
+      const expect = { difficultyBucket: item.after.difficultyBucket };
+      return {
+        ordinal: item.ordinal,
+        uid: item.questionUid,
+        expect,
+        unchanged: false,
+        gated: false
+      };
+    });
+    return {
+      kind: "difficulty5-ratings",
+      approvalType: null,
+      exam: gemini.requestId || sourceFile,
+      sourceFile,
+      expectedBlob: gemini.latestBlobSha || doc.latestBlobSha,
+      rows
+    };
   }
   return fail("UNSUPPORTED_REQUEST_SCHEMA", `${file}: schemaVersion=${JSON.stringify(schema)}`);
 }

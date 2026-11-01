@@ -7,7 +7,7 @@ window.questionBank = [
     "originalCategory": "기본 도형",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-05",
-    "standardUnit": "기본 도형",
+    "standardUnit": "기본도형",
     "standardUnitOrder": 5,
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -19,7 +19,8 @@ window.questionBank = [
       "기출",
       "작도",
       "삼각형의 작도",
-      "한 변과 두 각"
+      "한 변과 두 각",
+      "도형"
     ],
     "wide": false,
     "content": "다음은 삼각형을 작도하기 위해 필요한 조건을 나타낸 것이다. 작도 순서가 옳지 않은 것을 고르면? (3점)",
@@ -81,7 +82,7 @@ window.questionBank = [
     "originalCategory": "기본 도형",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-05",
-    "standardUnit": "기본 도형",
+    "standardUnit": "기본도형",
     "standardUnitOrder": 5,
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -153,7 +154,7 @@ window.questionBank = [
     "originalCategory": "기본 도형",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-05",
-    "standardUnit": "기본 도형",
+    "standardUnit": "기본도형",
     "standardUnitOrder": 5,
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -165,7 +166,8 @@ window.questionBank = [
       "기출",
       "합동",
       "대응변",
-      "대응각"
+      "대응각",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 $\\triangle ABC \\equiv \\triangle DEF$라 할 때, 그림에 대한 설명으로 옳은 것은? (3점)",
@@ -222,7 +224,7 @@ window.questionBank = [
     "originalCategory": "입체도형",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-05",
-    "standardUnit": "기본 도형",
+    "standardUnit": "기본도형",
     "standardUnitOrder": 5,
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -234,7 +236,8 @@ window.questionBank = [
       "기출",
       "각기둥",
       "꼬인 위치",
-      "모서리"
+      "모서리",
+      "도형"
     ],
     "wide": false,
     "content": "다음 오각기둥에서 모서리 $BC$와 꼬인 위치에 있는 모서리를 고르면? (3점)",
@@ -291,7 +294,7 @@ window.questionBank = [
     "originalCategory": "기본 도형",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-05",
-    "standardUnit": "기본 도형",
+    "standardUnit": "기본도형",
     "standardUnitOrder": 5,
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -303,7 +306,8 @@ window.questionBank = [
       "기출",
       "삼각형의 작도",
       "한 변과 두 각",
-      "삼각형 결정"
+      "삼각형 결정",
+      "도형"
     ],
     "wide": false,
     "content": "한 변의 길이가 $6\\mathrm{cm}$이고 그 양 끝 각이 아닌 두 각의 크기가 $40^\\circ$, $75^\\circ$인 삼각형을 아래와 같이 그릴 수 있다. 이에 대한 설명으로 옳은 것을 있는 대로 고른 것은? (4점)<br><div class=\"note-box\">ㄱ. 나머지 한 각의 크기를 알 수 있으므로 삼각형은 하나로 정해진다.<br>ㄴ. 제시된 삼각형과 다른 모양의 삼각형을 그릴 수 있다.<br>ㄷ. 나머지 한 각의 크기는 $75^\\circ$이다.<br>ㄹ. 제시된 삼각형은 이등변삼각형이다.</div>",
@@ -584,7 +588,7 @@ window.questionBank = [
     "originalCategory": "기본 도형",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-05",
-    "standardUnit": "기본 도형",
+    "standardUnit": "기본도형",
     "standardUnitOrder": 5,
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -597,7 +601,8 @@ window.questionBank = [
       "평행선",
       "엇각",
       "동위각",
-      "각의 크기"
+      "각의 크기",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 $m\\parallel n$일 때, $\\angle b-\\angle a$의 크기는? (4점)",
@@ -728,7 +733,7 @@ window.questionBank = [
     "originalCategory": "기본 도형",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-05",
-    "standardUnit": "기본 도형",
+    "standardUnit": "기본도형",
     "standardUnitOrder": 5,
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -740,7 +745,8 @@ window.questionBank = [
       "기출",
       "평행사변형",
       "중점",
-      "SAS 합동"
+      "SAS 합동",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림은 평행사변형 $ABCD$에 선분 $AB$, $BC$, $CD$, $DA$의 중점 $E$, $F$, $G$, $H$를 나타낸 것이다. 이에 대한 설명으로 옳지 않은 것은? (5점)",
@@ -802,7 +808,7 @@ window.questionBank = [
     "originalCategory": "기본 도형",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-05",
-    "standardUnit": "기본 도형",
+    "standardUnit": "기본도형",
     "standardUnitOrder": 5,
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -814,7 +820,8 @@ window.questionBank = [
       "기출",
       "평행선",
       "ASA 합동",
-      "맞꼭지각"
+      "맞꼭지각",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 $l\\parallel m$이고 점 $O$는 $\\overline{AB}$와 $\\overline{CD}$의 교점이다. $\\triangle AOC\\equiv\\triangle BOD$이 되도록 하는 조건을 고르면? (4점)",
@@ -878,7 +885,7 @@ window.questionBank = [
     "originalCategory": "기본 도형",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-05",
-    "standardUnit": "기본 도형",
+    "standardUnit": "기본도형",
     "standardUnitOrder": 5,
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -890,7 +897,8 @@ window.questionBank = [
       "기출",
       "평행선",
       "각의 크기",
-      "꺾은선"
+      "꺾은선",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 두 직선 $l$과 $m$이 평행할 때, $\\angle x$의 값은? (5점)",
@@ -1027,7 +1035,7 @@ window.questionBank = [
     "originalCategory": "기본 도형",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-05",
-    "standardUnit": "기본 도형",
+    "standardUnit": "기본도형",
     "standardUnitOrder": 5,
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -1039,7 +1047,8 @@ window.questionBank = [
       "기출",
       "엇각",
       "맞꼭지각",
-      "각의 위치"
+      "각의 위치",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 한 평면 위에서 두 직선 $l$, $m$이 한 직선 $n$과 만날 때, $\\angle d$와 엇각인 각의 크기는? (4점)",
@@ -1103,7 +1112,7 @@ window.questionBank = [
     "originalCategory": "기본 도형",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-05",
-    "standardUnit": "기본 도형",
+    "standardUnit": "기본도형",
     "standardUnitOrder": 5,
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -1172,7 +1181,7 @@ window.questionBank = [
     "originalCategory": "통계",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-08",
-    "standardUnit": "통계",
+    "standardUnit": "자료의 정리와 해석",
     "standardUnitOrder": 8,
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
@@ -1242,7 +1251,7 @@ window.questionBank = [
     "originalCategory": "통계",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-08",
-    "standardUnit": "통계",
+    "standardUnit": "자료의 정리와 해석",
     "standardUnitOrder": 8,
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
@@ -1254,7 +1263,8 @@ window.questionBank = [
       "기출",
       "중앙값",
       "최빈값",
-      "도수"
+      "도수",
+      "표"
     ],
     "wide": false,
     "content": "다음 표는 어느 중학교 32명의 학생들이 한 달 동안 읽은 책의 수를 조사하여 나타낸 것이다. 이에 대한 설명으로 옳은 것을 고르면? (4점)",
@@ -1312,7 +1322,7 @@ window.questionBank = [
     "originalCategory": "통계",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-08",
-    "standardUnit": "통계",
+    "standardUnit": "자료의 정리와 해석",
     "standardUnitOrder": 8,
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
@@ -1324,7 +1334,8 @@ window.questionBank = [
       "기출",
       "줄기와 잎",
       "도수분포표",
-      "중앙값"
+      "중앙값",
+      "표"
     ],
     "wide": false,
     "content": "[19.~20.] 다음은 어느 중학교 학생 20명의 일주일 동안의 스마트폰 사용 시간을 조사하여 줄기와 잎 그림과 도수분포표로 나타낸 것이다. 잎은 크기 순으로 나열되어 있고, 중앙값이 16시간일 때, 다음 물음에 답하시오.<br>a+b+A+B의 값은? (5점)",
@@ -1389,7 +1400,7 @@ window.questionBank = [
     "originalCategory": "통계",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-08",
-    "standardUnit": "통계",
+    "standardUnit": "자료의 정리와 해석",
     "standardUnitOrder": 8,
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
@@ -1460,7 +1471,7 @@ window.questionBank = [
     "originalCategory": "기본 도형",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-05",
-    "standardUnit": "기본 도형",
+    "standardUnit": "기본도형",
     "standardUnitOrder": 5,
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -1472,7 +1483,8 @@ window.questionBank = [
       "기출",
       "맞꼭지각",
       "평각",
-      "일차방정식"
+      "일차방정식",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 세 직선이 한 점 $O$에서 만날 때, $x$의 값을 풀이 과정과 함께 구하시오. (6점)",
@@ -1541,7 +1553,8 @@ window.questionBank = [
       "정비례",
       "좌표",
       "선분의 비",
-      "수선의 발"
+      "수선의 발",
+      "그래프"
     ],
     "wide": false,
     "content": "다음 두 정비례 관계 $y=\\dfrac{5}{6}x$, $y=-\\dfrac{1}{2}x$의 그래프가 다음 그림과 같이 $y$좌표가 $-5$인 두 점 $A$, $B$를 각각 지난다. 점 $K$는 선분 $AB$ 위에 있고, $\\overline{AK}:\\overline{KB}=3:1$을 만족할 때, 다음 (a)~(c)에 대한 답을 풀이 과정과 함께 구하시오. (7점)<br>(a) 선분 $AB$의 길이 (3점)<br>(b) 점 $K$의 좌표 (2점)<br>(c) 점 $K$에서 $x$축에 내린 수선의 발의 좌표 (2점)",
@@ -1598,7 +1611,7 @@ window.questionBank = [
     "originalCategory": "기본 도형",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-05",
-    "standardUnit": "기본 도형",
+    "standardUnit": "기본도형",
     "standardUnitOrder": 5,
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -1610,7 +1623,8 @@ window.questionBank = [
       "기출",
       "정삼각형",
       "SAS 합동",
-      "각의 크기"
+      "각의 크기",
+      "도형"
     ],
     "wide": false,
     "content": "다음 정삼각형 $ABC$에서 $\\overline{BD}=\\overline{CE}$이고 점 $P$는 $\\overline{AD}$와 $\\overline{BE}$의 교점일 때, $\\angle APE$의 크기를 삼각형의 합동을 이용하여 구하시오. (7점)<br>(삼각형이 합동이 되는 3가지 조건: 각 1점, 합동인 삼각형 찾기: 1점, 합동 조건 찾기: 1점, $\\angle APE$의 크기를 구하는 과정: 1점, 답 점수: 1점)",

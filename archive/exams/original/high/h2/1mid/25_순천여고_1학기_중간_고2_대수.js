@@ -9,7 +9,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -31,7 +31,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "1단계: 지수법칙 $a^m \\times a^n = a^{m+n}$을 적용한다.\\n2단계: $2^{2\\sqrt{3} + (3-2\\sqrt{3})} = 2^3$\\n3단계: $2^3 = 8$\\n* 검산: 지수 부분의 무리수 $2\\sqrt{3}$과 $-2\\sqrt{3}$이 소거되어 $2^3$이 됨을 확인.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -44,7 +44,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -67,7 +67,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "1단계: 로그의 성질 $\\log_a M + \\log_a N = \\log_a MN$을 적용한다.\\n$\\log_2 (x-3)(x+3) = 4 \\Rightarrow \\log_2 (x^2-9) = 4$\\n2단계: 로그의 정의에 의해 $x^2-9 = 2^4 = 16$이므로 $x^2 = 25$이다.\\n3단계: $x = \\pm 5$이나, 로그의 진수 조건($x-3>0, x+3>0$)에 의해 $x>3$이어야 한다. 따라서 $x=5$.\\n* 검산: $x=5$ 대입 시 $\\log_2 2 + \\log_2 8 = 1+3=4$ 성립.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -80,7 +80,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -108,7 +108,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "1단계: $y=\\left(\\frac{1}{2}\\right)^x+1$을 $y$축에 대하여 대칭이동하면 $x$ 대신 $-x$를 대입하므로 $y=\\left(\\frac{1}{2}\\right)^{-x}+1 = 2^x+1$이다.\\n2단계: 이 그래프를 $x$축으로 $a$, $y$축으로 $b$만큼 평행이동하면 $y=2^{x-a}+1+b$가 된다.\\n3단계: 주어진 식 $y=2^{x-3}+5$와 비교하면 $a=3, 1+b=5 \\Rightarrow b=4$이다.\\n4단계: $ab = 3 \\times 4 = 12$\\n* 검산: $a=3, b=4$ 대입 시 식이 완벽히 일치함.",
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
-    "subUnit": "exponential function",
+    "subUnit": "지수함수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -121,7 +121,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -143,7 +143,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "1단계: 각 보기의 값을 계산한다.\\n① $\\log_{3^{-1}} 3^2 = -2$\\n② $\\log_5 5^{\\frac{3}{2}} = \\frac{3}{2} = 1.5$\\n③ $4^{\\log_2 3} = (2^2)^{\\log_2 3} = 2^{2\\log_2 3} = 2^{\\log_2 9} = 9$\\n④ $\\log_{2^2} 2^3 = \\frac{3}{2} = 1.5$\\n⑤ $\\log_2 64 = \\log_2 2^6 = 6$\\n2단계: 비교 결과 $9$가 가장 크다.\\n* 검산: $9 > 6 > 1.5 > -2$ 순서 확인.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -156,7 +156,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -192,7 +192,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -228,7 +228,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -249,7 +249,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "1단계: $\\frac{a^x - a^{-x}}{a^x + a^{-x}} = \\frac{1}{2}$의 좌변 분모, 분자에 $a^x$를 곱하면 $\\frac{a^{2x} - 1}{a^{2x} + 1} = \\frac{1}{2}$이다.\\n2단계: 대각선으로 곱하여 정리하면 $2(a^{2x} - 1) = a^{2x} + 1 \\Rightarrow 2a^{2x} - 2 = a^{2x} + 1 \\Rightarrow a^{2x} = 3$이다.\\n3단계: 구하고자 하는 식 $\\frac{a^{2x} + a^{-2x}}{a^{2x} - a^{-2x}}$에 $a^{2x} = 3, a^{-2x} = \\frac{1}{3}$을 대입한다.\\n4단계: $\\frac{3 + \\frac{1}{3}}{3 - \\frac{1}{3}} = \\frac{\\frac{10}{3}}{\\frac{8}{3}} = \\frac{10}{8} = \\frac{5}{4}$이다.\\n* 검산: $a^{2x}$의 값을 직접 대입하여 계산한 번분수의 결과가 정확함.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -262,7 +262,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-03",
     "standardUnit": "로그함수",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -290,7 +290,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "1단계: 역함수가 점 $(a+4, a+2)$를 지나므로, 본래 함수 $f(x)$는 점 $(a+2, a+4)$를 지난다.\\n2단계: $f(a+2) = \\log_2(a+2-a) + 2 = \\log_2 2 + 2 = 1 + 2 = 3$이다.\\n3단계: 따라서 $a+4 = 3$이므로 $a = -1$이다.\\n* 검산: $a=-1$ 대입 시 $f(1) = 3$이 되어 역함수가 $(3, 1)$을 지남을 확인. (이는 $a+4=3, a+2=1$과 일치함)",
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
-    "subUnit": "logarithmic function",
+    "subUnit": "로그함수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -303,7 +303,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-10",
     "standardUnit": "삼각함수의 그래프",
     "standardUnitOrder": 10,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -340,7 +340,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-03",
     "standardUnit": "로그함수",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -369,7 +369,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "1단계: ㄱ. $x=0$을 대입하면 $y=2\\log 1+1=1$이므로 $(0, 1)$을 지난다. (참)\\n2단계: ㄴ. 로그함수의 진수 조건 $x+1>0$에 의해 점근선은 $x=-1$이다. (거짓)\\n3단계: ㄷ. $x>-1$에서 $y$값은 $-\\infty$부터 증가하며, $x=0$일 때 $y=1>0$이므로 제$4$사분면을 지나지 않는다. (참)\\n4단계: ㄹ. $y=\\log(x+1)^2$은 정의역이 $x \\ne -1$이므로 주어진 함수(정의역 $x>-1$)와 일치하지 않는다. (거짓)\\n* 검산: 옳은 것은 ㄱ, ㄷ이므로 정답은 ②번임을 확인.",
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
-    "subUnit": "logarithmic function",
+    "subUnit": "로그함수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -382,7 +382,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -404,7 +404,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "1단계: 주어진 식의 각 항을 지수 법칙을 이용해 분리한다.\\n2단계: $\\frac{a^{\\frac{2}{12}}}{a^{\\frac{1}{8}}} \\times \\frac{a^{\\frac{1}{48}}}{a^{\\frac{1}{8}}}$\\n3단계: $a^{\\frac{1}{6} - \\frac{1}{8} + \\frac{1}{48} - \\frac{1}{8}} = a^{\\frac{8 - 6 + 1 - 6}{48}} = a^{-\\frac{3}{48}} = a^{-\\frac{1}{16}}$이다.\\n4단계: $a^{-\\frac{1}{16}} = \\sqrt[16]{\\frac{1}{a}}$이므로 $n=16$이다.\\n* 검산: 지수 연산의 분모를 48로 통분하여 계산한 결과가 일치함을 확인.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -417,7 +417,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -453,7 +453,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -490,7 +490,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -519,7 +519,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "1단계: $f(x)$의 그래프는 $y$축에 대해 대칭이며, $x \\ge 0$일 때 $y = |4^x - 4|$의 그래프를 그린다.\\n2단계: $x=0$에서 $y=3$이고, $x=1$에서 $y=0$이며, 점근선은 없는 형태로 증가한다.\\n3단계: $f(x)=k$가 서로 다른 세 실근을 가지려면 직선 $y=k$가 극대점인 $(0, 3)$을 지나야 한다.\\n4단계: 따라서 $k=3$이다.\\n* 검산: $k=3$일 때 $x=0$과 양수, 음수에서 각각 1개씩 총 3개의 실근을 가짐을 확인.",
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
-    "subUnit": "exponential function",
+    "subUnit": "지수함수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -532,7 +532,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -556,7 +556,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "1단계: 로그의 진수 조건에 의해 $k>0$이다.\\n2단계: 이차방정식이 실근을 가지려면 판별식 $D \\ge 0$이어야 한다. $D = (\\log_2 k^2)^2 - 4(\\log_2 k + 6) \\ge 0$.\\n3단계: $(2\\log_2 k)^2 - 4\\log_2 k - 24 \\ge 0 \\Rightarrow 4(\\log_2 k)^2 - 4\\log_2 k - 24 \\ge 0 \\Rightarrow (\\log_2 k)^2 - \\log_2 k - 6 \\ge 0$.\\n4단계: $(\\log_2 k - 3)(\\log_2 k + 2) \\ge 0$이므로 $\\log_2 k \\ge 3$ 또는 $\\log_2 k \\le -2$이다.\\n5단계: 따라서 $k \\ge 8$ 또는 $k \\le \\frac{1}{4}$이며, 진수 조건에 의해 $0 < k \\le \\frac{1}{4}$ 또는 $k \\ge 8$이다.\\n* 검산: $k=8$ 대입 시 $x^2 - 6x + 9 = 0$으로 중근을 가짐을 확인.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -569,7 +569,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -593,7 +593,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "1단계: $n$이 홀수일 때 실수인 거듭제곱근의 개수 $f(n)$은 항상 $1$이다.\\n2단계: $n$이 짝수일 때, $n^2-15n+50 = (n-5)(n-10)$의 부호에 따라 $f(n)$은 양수면 $2$, $0$이면 $1$, 음수면 $0$이다.\\n3단계: $5 \\le n \\le 14$ 범위에서 $f(n)$의 값을 구하면 $f(6)=0, f(8)=0, f(10)=1, f(12)=2, f(14)=2$이다. (홀수는 모두 $1$)\\n4단계: $2f(n) = f(n+1)$을 만족하는 경우는 $2f(11) = 2 \\times 1 = 2 = f(12)$와 $2f(13) = 2 \\times 1 = 2 = f(14)$이다.\\n5단계: 만족하는 $n$은 $11, 13$이므로 합은 $24$이다.\\n* 검산: $n=11$과 $n=13$ 대입 시 조건식이 완벽히 성립함을 확인.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -606,7 +606,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -630,7 +630,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "(나)에서\n$\\frac{1}{2}\\log_a b=2\\log_b a$이다.\n$\\log_b a=\\frac{1}{\\log_a b}$이므로\n$(\\log_a b)^2=4$이다.\n조건 $1<a<b$에서 $\\log_a b>0$이므로\n$\\log_a b=2$이다.\n따라서\n$b=a^2$이다.\n\n(가)에서\n$\\log_{\\sqrt2}(ab)=18$이다.\n따라서\n$ab=(\\sqrt2)^{18}=2^9$이다.\n$b=a^2$를 대입하면\n$a^3=2^9$이다.\n$a=8$이고\n$b=64$이다.\n\n구하는 값은\n$(\\log_8 2)^2\\cdot\\log_2 64=(\\frac13)^2\\cdot6=\\frac23$이다.\n기약분수 $\\frac pq=\\frac23$이므로\n$p=2$, $q=3$이다.\n따라서\n$p+q=2+3=5$이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -643,7 +643,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-03",
     "standardUnit": "로그함수",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -672,7 +672,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "1단계: 함수 $f(x)$는 주기가 $2$인 주기함수이며, 각 구간 $[2k, 2k+2]$마다 $x=2k+1$에서 최댓값 $1$을 갖는 산 모양의 그래프를 그린다.\\n2단계: 함수 $y=\\log_{3n} x$는 점 $(1, 0)$과 $(3n, 1)$을 지나는 증가함수이다.\\n3단계: 교점의 개수를 파악하기 위해 $3n$이 홀수인 경우($3n=2k+1$)를 가정한다. $y=\\log_{3n} x$가 $y=1$에 도달하는 $x=2k+1$까지 교점을 센다.\\n4단계: $x=1$에서 $1$개의 교점을 가지며, $x=3, 5, \\cdots, 2k-1$의 $k-1$개 봉우리에서는 각각 $2$개씩 교점을 갖고, 마지막 $x=2k+1$에서 꼭짓점과 $1$개의 교점을 갖는다.\\n5단계: 총 교점의 개수는 $1 + 2(k-1) + 1 = 2k$이다. (만약 $3n$이 짝수라면 총 교점은 홀수개가 되어 $98$개가 될 수 없다.)\\n6단계: $2k = 98$이므로 $k=49$이다. 따라서 $3n = 2(49) + 1 = 99$이므로 $n=33$이다.\\n* 검산: $n=33$일 때 $y=\\log_{99} x$는 $(99, 1)$을 지나며, 이때 산 모양 그래프의 $49$번째 봉우리까지 좌우로 두 번씩 만나고 $50$번째 꼭짓점에서 한 번 만나 정확히 $98$개의 교점을 갖는다.",
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
-    "subUnit": "logarithmic function",
+    "subUnit": "로그함수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -685,7 +685,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-03",
     "standardUnit": "로그함수",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -714,7 +714,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "1단계: $f(12) = \\frac{a}{2}$를 이용해 $a$를 구한다. $12 \\ge 6$이므로 $f(12) = \\log_2 (12-4) - a = \\log_2 8 - a = 3 - a$이다.\\n2단계: $3 - a = \\frac{a}{2} \\Rightarrow \\frac{3a}{2} = 3 \\Rightarrow a = 2$이다.\\n3단계: 함수 $f(x)$와 $x$축이 만나는 점은 $f(x)=0$의 해이다. $x \\ge 6$일 때 $\\log_2 (x-4) - 2 = 0 \\Rightarrow x-4 = 2^2 \\Rightarrow x=8$이다. (점 $\\mathrm{A}$를 $(8, 0)$이라 하자.)\\n4단계: $\\overline{\\mathrm{AB}} = 5$이므로 점 $\\mathrm{B}$의 $x$좌표는 $8-5=3$ 또는 $8+5=13$이다. $13$은 $x \\ge 6$ 구간의 유일한 해가 $8$임에 모순되므로, 나머지 한 해는 $x < 6$ 구간에 속하는 $x=3$이다.\\n5단계: $f(3) = 0$을 이용해 $b$를 구한다. $b^{3-6} - 2 = 0 \\Rightarrow b^{-3} = 2 \\Rightarrow b^3 = \\frac{1}{2}$이다.\\n6단계: $(ab)^3 = a^3b^3 = 2^3 \\times \\frac{1}{2} = 4$이다.\\n* 검산: $a=2, b=2^{-1/3}$을 대입하여 $(ab)^3$을 계산한 결과가 4로 정확히 일치함.",
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
-    "subUnit": "logarithmic function",
+    "subUnit": "로그함수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -753,7 +753,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 평행사변형이므로 윗변과 아랫변이 평행이고, 대각선의 중점이 일치한다는 성질을 이용해 먼저 $k$를 구한 뒤 넓이로 $a$를 구한다.\\n1단계: 각 점의 좌표를 구한다.\\n직선 $y=3$과 $y=3^{x+1}$의 교점은 $3^{x+1}=3$이므로 $x=0$이다. 따라서 $A=(0,3)$이다.\\n직선 $y=3$과 $y=a^{x+1}$의 교점은 $a^{x+1}=3$이므로 $x=\\log_a 3-1$이다. 따라서 $B=(\\log_a 3-1,\\ 3)$이다.\\n직선 $y=k$와 $y=3^{x+1}$의 교점은 $3^{x+1}=k$이므로 $x=\\log_3 k-1$이다. 따라서 $C=(\\log_3 k-1,\\ k)$이다.\\n직선 $y=k$와 $y=a^{x+1}$의 교점은 $a^{x+1}=k$이므로 $x=\\log_a k-1$이다. 따라서 $D=(\\log_a k-1,\\ k)$이다.\\n2단계: 평행사변형 $ADCB$의 대각선은 서로의 중점을 지난다.\\n따라서 대각선 $AC$와 $DB$의 중점의 $x$좌표가 같으므로\\n$\\dfrac{0+(\\log_3 k-1)}{2}=\\dfrac{(\\log_a k-1)+(\\log_a 3-1)}{2}$이다.\\n즉,\\n$\\log_3 k-1=\\log_a k+\\log_a 3-2$\\n$\\Rightarrow \\log_3 k+1=\\log_a(3k)$이다.\\n3단계: $\\log_3 a=t$라 두면 $\\log_a(3k)=\\dfrac{\\log_3(3k)}{\\log_3 a}=\\dfrac{1+\\log_3 k}{t}$이므로\\n$\\log_3 k+1=\\dfrac{1+\\log_3 k}{t}$이다.\\n여기서 $1\\lt a\\lt 3$이므로 $0\\lt t\\lt 1$이고, 따라서 $t\\ne 1$이다.\\n그러므로 위 식이 성립하려면 $1+\\log_3 k=0$이어야 한다.\\n즉, $\\log_3 k=-1$이므로 $k=\\dfrac{1}{3}$이다.\\n4단계: 이제 평행사변형의 넓이로 $a$를 구한다.\\n윗변 $AB$와 아랫변 $DC$는 수평선 위에 있으므로 높이는\\n$3-\\dfrac{1}{3}=\\dfrac{8}{3}$이다.\\n또한 밑변의 길이는\\n$AB=(\\log_a 3-1)-0=\\log_a 3-1$이다.\\n따라서 평행사변형의 넓이는\\n$(\\log_a 3-1)\\cdot \\dfrac{8}{3}$이다.\\n그런데 그 넓이가 $\\dfrac{8}{3}$이므로\\n$(\\log_a 3-1)\\cdot \\dfrac{8}{3}=\\dfrac{8}{3}$\\n$\\Rightarrow \\log_a 3-1=1$\\n$\\Rightarrow \\log_a 3=2$이다.\\n따라서 $a^2=3$이므로 $a=3^{\\frac{1}{2}}$이다.\\n5단계: $ak$를 구하면\\n$ak=3^{\\frac{1}{2}}\\cdot 3^{-1}=3^{-\\frac{1}{2}}$이다.\\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-A-01-EXPONENTIAL_FUNCTION",
-    "subUnit": "exponential function",
+    "subUnit": "지수함수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -766,7 +766,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -784,7 +784,7 @@ window.questionBank = [
     "answer": "a=2, b=0, M=0, m=-9",
     "solution": "1단계: $2^x = t$로 치환한다. $x \\le 2$이므로 $t$의 범위는 $0 < t \\le 4$이다.\\n2단계: 주어진 함수를 $t$에 대한 이차함수로 나타내면 $y = t^2 - 2t - 8 = (t-1)^2 - 9$이다.\\n3단계: 대칭축이 $t=1$이고 범위가 $0 < t \\le 4$이므로, $t=1$일 때 최솟값을 갖고, 대칭축에서 가장 먼 $t=4$일 때 최댓값을 갖는다.\\n4단계: $t=1$일 때 $y = -9$이므로 $m = -9$이다. 이때 $2^x = 1$이므로 $x=0$이 되어 $b=0$이다.\\n5단계: $t=4$일 때 $y = (4-1)^2 - 9 = 0$이므로 $M = 0$이다. 이때 $2^x = 4$이므로 $x=2$가 되어 $a=2$이다.\\n* 검산: 원함수 양 끝값 및 극값 대입 비교 ($x=2 \\rightarrow y=0$, $x=0 \\rightarrow y=-9$, $x \\rightarrow -\\infty \\rightarrow y=-8$) 결과 이상 없음.",
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
-    "subUnit": "exponential function",
+    "subUnit": "지수함수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -797,7 +797,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -815,7 +815,7 @@ window.questionBank = [
     "answer": "0.3581",
     "solution": "1단계: $20$장 통과 후의 밝기는 $A(1 - 0.05)^{20} = A(0.95)^{20}$이다. 처음 밝기의 $x$배가 된다고 하면 $x = 0.95^{20}$이다.\\n2단계: 양변에 상용로그를 취하면 $\\log x = 20\\log 0.95$이다.\\n3단계: $\\log 0.95 = \\log (9.5 \\times 10^{-1}) = \\log 9.5 - 1 = 0.9777 - 1 = -0.0223$이다.\\n4단계: $\\log x = 20 \\times (-0.0223) = -0.446$이다.\\n5단계: 상용로그표를 이용하기 위해 소수 부분을 양수로 바꾸면 $-0.446 = -1 + 0.554$이다.\\n6단계: 주어진 조건에 의해 $0.554 = \\log 3.581$이므로, $\\log x = -1 + \\log 3.581 = \\log(3.581 \\times 10^{-1}) = \\log 0.3581$이다.\\n7단계: 따라서 $x = 0.3581$이므로 $0.3581$배이다.\\n* 검산: 역산하여 $\\log 0.3581 / 20 = -0.0223$이 도출됨을 확인.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -828,7 +828,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -846,7 +846,7 @@ window.questionBank = [
     "answer": "275",
     "solution": "1단계: $-5\\log_a b = 25\\log_b c = \\log_c a = k$라 둔다.\\n2단계: $\\log_a b = -\\frac{k}{5}$, $\\log_b c = \\frac{k}{25}$, $\\log_c a = k$이다.\\n3단계: 로그의 성질에 의해 $\\log_a b \\times \\log_b c \\times \\log_c a = 1$이므로, $(-\\frac{k}{5}) \\times (\\frac{k}{25}) \\times k = 1 \\Rightarrow -\\frac{k^3}{125} = 1 \\Rightarrow k^3 = -125 \\Rightarrow k = -5$이다.\\n4단계: 대입하면 $\\log_a b = 1 \\Rightarrow b = a$이고, $\\log_b c = -\\frac{1}{5} \\Rightarrow c = b^{-\\frac{1}{5}} = a^{-\\frac{1}{5}}$이다.\\n5단계: $b \\times c = a \\times a^{-\\frac{1}{5}} = a^{\\frac{4}{5}}$이다. 이 값이 자연수가 되려면 $a$는 어떤 자연수 $m$의 $5$제곱 형태인 $m^5$이어야 한다. (단, $a \\ne 1$이므로 $m \\ge 2$)\\n6단계: $a = m^5$일 때 $b \\times c = (m^5)^{\\frac{4}{5}} = m^4$이다.\\n7단계: $m^4 \\le 200$을 만족하는 자연수 $m$은 $m=2$ ($2^4=16$), $m=3$ ($3^4=81$)이다.\\n8단계: $m=2$일 때 $a = 2^5 = 32$, $m=3$일 때 $a = 3^5 = 243$이다. 따라서 모든 $a$의 합은 $32 + 243 = 275$이다.\\n* 검산: $a=32, b=32, c=1/2$일 때 주어진 비례식이 성립하며 곱이 $16$으로 $200$ 이하 조건을 충족함을 확인. $a=243$일 때도 동일하게 성립.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   }

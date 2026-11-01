@@ -9,7 +9,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -33,7 +33,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 지수와 로그의 기본 정의 $a^x=N \\iff x=\\log_a N$을 이용하여 각 보기의 변환이 올바른지 검증한다.\\n조건 정리: 주어진 지수식과 로그식의 관계가 수학적으로 참인지 확인한다.\\n풀이 과정:\\n- $5^3=125 \\iff 3=\\log_5 125$ 이므로 ①은 옳지 않다.\\n- $4=\\log_3 81 \\iff 3^4=81$ 이므로 ②는 옳지 않다.\\n- $2^{-3}=\\frac{1}{8} \\iff -3=\\log_2\\frac{1}{8}$ 이므로 ③은 옳다.\\n- $-1=\\log_{\\frac{1}{7}}7 \\iff (\\frac{1}{7})^{-1}=7$ 이므로 ④는 옳지 않다.\\n- $16^{\\frac{1}{4}}=2 \\iff \\frac{1}{4}=\\log_{16}2$ 이므로 ⑤는 옳지 않다.\\n결론: 따라서 정답은 ③이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -46,7 +46,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -83,7 +83,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -106,7 +106,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 상용로그표에서 소수 첫째 자리와 둘째 자리를 기준으로 위치를 찾는다.<br><br>조건 정리: $\\log 2.31$은 2.3행과 1열에 해당하는 값을 찾으면 된다.<br><br>풀이 과정: 상용로그표에서 2.3행을 찾고, 그중 1열의 값을 읽으면 $0.3636$ 이다.<br><br>결론: 따라서 정답은 ④이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -119,7 +119,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -143,7 +143,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 주어진 식에 $H=10$을 대입하고 $\\log 10=1$을 이용한다.<br><br>조건 정리: $M=\\log H+6.5$, 해일의 높이는 $H=10$이다.<br><br>풀이 과정: 식에 $H=10$을 대입하면<br>$M=\\log 10+6.5$ 이다.<br>상용로그의 성질에 의해 $\\log 10=1$ 이므로<br>$M=1+6.5=7.5$ 이다.<br><br>결론: 따라서 정답은 ①이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -156,7 +156,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -198,7 +198,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -235,7 +235,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -264,7 +264,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] $y=2^{-x}-3$은 $y=2^x$를 y축에 대하여 대칭이동한 뒤 아래로 3만큼 평행이동한 함수이다.<br><br>조건 정리: 각 보기의 설명이 함수의 성질과 맞는지 확인한다.<br><br>풀이 과정: $x=0$일 때 $y=2^0-3=-2$ 이므로 ①은 옳다.<br>지수함수는 모든 실수에서 정의되므로 ②도 옳다.<br>$2^{-x}$는 $x$가 증가할수록 감소하므로 ③도 옳다.<br>$x\\to\\infty$일 때 $2^{-x}\\to0$ 이므로 점근선은 $y=-3$이고, ④도 옳다.<br>한편 $y=2^{-x}$는 $y=2^x$를 y축에 대하여 대칭이동한 그래프이므로, ⑤의 x축 대칭이동이라는 설명은 틀리다.<br><br>결론: 따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
-    "subUnit": "exponential function",
+    "subUnit": "지수함수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -277,7 +277,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -314,7 +314,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -356,7 +356,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-03",
     "standardUnit": "로그함수",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -380,7 +380,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 각 함수의 증가, 감소를 이용하여 정의역의 끝값에서 최댓값을 구한다.<br><br>조건 정리: 정의역은 $-1\\le x\\le2$ 이다.<br><br>풀이 과정: $y=2^{-x}+6$은 $x$가 증가할수록 감소하므로 최댓값은 $x=-1$일 때이다.<br>따라서 $a=2^{-(-1)}+6=2+6=8$ 이다.<br>또 $y=\\log_3(2x+5)+3$은 로그함수의 증가성과 일차식 $2x+5$의 증가성을 이용하면 증가함수이므로 최댓값은 $x=2$일 때이다.<br>따라서 $b=\\log_3 9+3=2+3=5$ 이다.<br>그러므로 $a+b=8+5=13$ 이다.<br><br>결론: 따라서 정답은 ③이다.",
     "subUnitKey": "H22-A-03-EXPONENTIAL_FUNCTION",
-    "subUnit": "exponential function",
+    "subUnit": "지수함수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -393,7 +393,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -422,7 +422,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] $|x-2|\\ge0$ 이므로 지수 부분의 최솟값을 먼저 찾는다.<br><br>조건 정리: 함수는 $y=2^{|x-2|}+3$ 이다.<br><br>풀이 과정: $|x-2|\\ge0$ 이므로<br>$2^{|x-2|}\\ge2^0=1$ 이다.<br>따라서 $y=2^{|x-2|}+3\\ge1+3=4$ 이다.<br>최솟값 4는 $x=2$일 때 나온다.<br>직선 $y=k$가 그래프와 만나지 않으려면 그래프의 최솟값보다 작아야 하므로 $k<4$ 이다.<br><br>결론: 따라서 정답은 ④이다.",
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
-    "subUnit": "exponential function",
+    "subUnit": "지수함수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -435,7 +435,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -471,7 +471,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -495,7 +495,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 삼각함수의 최댓값은 진폭으로, 주기는 계수로 결정된다.<br><br>조건 정리: 함수는 $y=a\\sin\\frac{\\pi}{2b}x$ 이고, 최댓값은 3, 주기는 4이다.<br><br>풀이 과정: $\\sin$의 최댓값은 1이므로 함수의 최댓값은 $a$ 이다.<br>따라서 $a=3$ 이다.<br>또 $y=\\sin kx$의 주기는 $\\frac{2\\pi}{k}$ 이므로<br>$y=a\\sin\\frac{\\pi}{2b}x$의 주기는<br>$\\frac{2\\pi}{\\pi/(2b)}=4b$ 이다.<br>주기가 4이므로 $4b=4$ 이고, 따라서 $b=1$ 이다.<br>그러므로 $a+b=3+1=4$ 이다.<br><br>결론: 따라서 정답은 ①이다.",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
-    "subUnit": "trigonometric function",
+    "subUnit": "삼각함수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -508,7 +508,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -545,7 +545,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -569,7 +569,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 삼각함수의 평행이동, 상수배는 주기에 영향을 주지 않고, 내부의 계수와 절댓값 여부만 확인하면 된다.<br><br>조건 정리: 각 함수의 주기를 구하여 비교한다.<br><br>풀이 과정: $y=\\sin 2x-1$의 주기는 $\\pi$ 이다.<br>$y=2\\cos x+1$의 주기는 $2\\pi$ 이다.<br>$y=\\sqrt3\\tan(-x)$는 $\\tan x$와 같은 주기를 가지므로 $\\pi$ 이다.<br>$y=|2\\cos x|$는 $|\\cos x|$의 주기와 같아서 $\\pi$ 이다.<br>$y=\\sqrt2\\cos 2x-\\sqrt3$의 주기는 $\\pi$ 이다.<br><br>결론: 나머지 넷과 주기가 다른 것은 ②이므로, 따라서 정답은 ②이다.",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
-    "subUnit": "trigonometric function",
+    "subUnit": "삼각함수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -582,7 +582,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "fullwidth",
     "tags": [
       "객관식",
@@ -624,7 +624,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -647,7 +647,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] $t=\\log_a x$로 치환하면 세 식을 간단히 비교할 수 있다.<br><br>조건 정리: $a\\le x<a^2$ 이므로 $1\\le\\log_a x<2$ 이다. 이를 $t$라 두면 $1\\le t<2$ 이다.<br><br>풀이 과정: $t=\\log_a x$라 두면<br>$(\\log_a x)^2=t^2$, $\\log_a x^2=2t$, $\\log_a(\\log_a x)=\\log_a t$ 이다.<br>$1\\le t<2$ 이고 $a>2$ 이므로<br>$0\\le\\log_a t<1$ 이다.<br>또 $1\\le t<2$에서 $t^2<2t$ 이다.<br>따라서<br>$\\log_a t<t^2<2t$ 이다.<br>즉,<br>$\\log_a(\\log_a x)<(\\log_a x)^2<\\log_a x^2$ 이다.<br><br>결론: 따라서 정답은 ③이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -660,7 +660,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -684,7 +684,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 공통원소 조건을 로그의 밑변환으로 바꾸면 정수 조건 문제로 바뀐다.<br><br>조건 정리: 공통원소가 되려면 어떤 $n,m$에 대하여 $\\log_4 n=\\log_{2^k} m$ 이어야 한다.<br><br>풀이 과정: 밑변환 공식을 이용하면<br>$\\log_4 n=\\frac{\\log_2 n}{2}$, $\\log_{2^k} m=\\frac{\\log_2 m}{k}$ 이다.<br>따라서<br>$\\frac{\\log_2 n}{2}=\\frac{\\log_2 m}{k}$ 이고,<br>$k\\log_2 n=2\\log_2 m$ 이므로 $n^k=m^2$ 이다.<br>보기 중 $k=3$일 때 $n^3=m^2$ 이려면 $n=t^2$, $m=t^3$ 꼴이 된다.<br>이때 $m=t^3\\le100$ 이어야 하므로 가능한 $t$는 $1,2,3,4$ 뿐이다.<br>따라서 공통원소의 개수는 4개이다.<br><br>결론: 따라서 정답은 ③이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -697,7 +697,7 @@ window.questionBank = [
     "standardUnitKey": "H21-M1-01",
     "standardUnit": "지수함수와 로그함수",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -745,7 +745,7 @@ window.questionBank = [
     "answer": "$\\frac{4\\pi}{3}$",
     "solution": "[키포인트] 두 부등식으로 $x$의 범위를 먼저 구한 뒤, 삼각방정식의 해 중에서 그 범위에 들어가는 값을 찾는다.<br><br>조건 정리: $\\log_3(x-2)<2$, $\\left(\\frac18\\right)^x\\le\\left(\\frac14\\right)^{x+2}$, 그리고 $2\\cos^2x-\\cos x-1=0$ 이다.<br><br>풀이 과정: 먼저 $\\log_3(x-2)<2$ 에서 정의역 조건은 $x>2$ 이고, 밑이 3이므로 증가함수여서<br>$x-2<9$ 이다. 따라서 $2<x<11$ 이다.<br>다음으로 $\\left(\\frac18\\right)^x\\le\\left(\\frac14\\right)^{x+2}$ 에서 밑을 2로 바꾸면<br>$2^{-3x}\\le2^{-2x-4}$ 이다.<br>지수함수의 성질에 의해 $-3x\\le-2x-4$ 이므로 $x\\ge4$ 이다.<br>따라서 두 부등식을 동시에 만족하면 $4\\le x<11$ 이다.<br>이제 삼각방정식은<br>$2\\cos^2x-\\cos x-1=0$<br>$(2\\cos x+1)(\\cos x-1)=0$ 이므로<br>$\\cos x=1$ 또는 $\\cos x=-\\frac12$ 이다.<br>$0\\le x<2\\pi$ 에서 해는 $x=0,\\ \\frac{2\\pi}{3},\\ \\frac{4\\pi}{3}$ 이다.<br>이 중 $4\\le x<11$ 을 만족하는 값은 $\\frac{4\\pi}{3}$ 뿐이다.<br><br>결론: 따라서 구하는 값은 $\\frac{4\\pi}{3}$이다.",
     "subUnitKey": "H22-A-04-EXPONENTIAL_FUNCTION",
-    "subUnit": "exponential function",
+    "subUnit": "지수함수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -759,7 +759,7 @@ window.questionBank = [
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
     "layoutTag": "fullwidth",
-    "questionType": "",
+    "questionType": "객관식",
     "tags": [
       "객관식",
       "복소수",
@@ -811,7 +811,7 @@ window.questionBank = [
     "answer": "18",
     "solution": "[키포인트] $5^x+5^{-x}$를 하나의 문자로 놓아 식을 단순화하고, 세제곱의 합 공식을 이용한다.<br><br>조건 정리: $\\left(5^x+5^{-x}\\right)^2-\\left(5^x+5^{-x}\\right)=6$ 이다.<br><br>풀이 과정: $t=5^x+5^{-x}$ 라 두면 주어진 식은<br>$t^2-t=6$ 이다.<br>따라서<br>$t^2-t-6=0$<br>$(t-3)(t+2)=0$ 이므로 $t=3$ 또는 $t=-2$ 이다.<br>그런데 $5^x>0$, $5^{-x}>0$ 이므로 $t=5^x+5^{-x}>0$ 이다.<br>따라서 $t=3$ 이다.<br>이제 $a=5^x$, $b=5^{-x}$ 라 두면 $a+b=3$, $ab=1$ 이다.<br>구하는 값은<br>$125^x+125^{-x}=5^{3x}+5^{-3x}=a^3+b^3$ 이다.<br>세제곱의 합 공식을 이용하면<br>$a^3+b^3=(a+b)^3-3ab(a+b)$ 이므로<br>$a^3+b^3=3^3-3\\cdot1\\cdot3=27-9=18$ 이다.<br><br>결론: 따라서 구하는 값은 18이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
-    "subUnit": "exponent log",
+    "subUnit": "지수와 로그",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

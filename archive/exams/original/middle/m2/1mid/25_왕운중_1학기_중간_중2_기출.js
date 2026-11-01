@@ -552,7 +552,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "원뿔의 부피는 밑넓이 $S$와 높이 $h$에 대하여 $V=\\frac13Sh$이다.\n높이가 $5x$이고 부피가 $15x^2y^2$이므로 $15x^2y^2=\\frac13S\\cdot5x$이다.\n따라서 $S=\\frac{3\\cdot15x^2y^2}{5x}=9xy^2$이다.\n보기 ④ $9xy^2$이므로 정답은 ④이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
-    "subUnit": "단항식의 계산",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 2,

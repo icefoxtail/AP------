@@ -677,6 +677,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
+      "도형",
       "대칭이동",
       "최단거리",
       "원"
@@ -859,6 +860,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
+      "도형",
       "원의 방정식",
       "현의 길이"
     ],
@@ -1084,7 +1086,7 @@ window.questionBank = [
     "standardUnit": "평면좌표",
     "standardUnitOrder": 1,
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
-    "subUnit": "좌표 거리",
+    "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
