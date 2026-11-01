@@ -37,7 +37,7 @@
     fX: K.param({ value: -1.2, min: -2.4, max: -0.2, step: 0.05, label: '접는 선의 위치', hint: '그림의 점 B를 좌우로 끌어도 돼요', color: 'sky', format: (v) => v.toFixed(1) })
   };
   const D41 = {
-    id: 'p4-1', title: '직사각형 종이 테이프 접기', short: '종이 테이프 접기',
+    id: 'p4-1', title: '[함정] 직사각형 종이 테이프 접기', short: '종이 테이프 접기',
     question: '직사각형 종이 테이프를 점 B에서 점 C로 접으면 겹친 삼각형 ABC가 생겨요. 이 삼각형은 어떤 삼각형일까요?',
     focus: { x: [-3.85, 3.85], y: [-3.45, 2.55] }, t0: 1, ctl: ['fA', 'fX'], actions: () => foldActions(), tick: foldTick(1.8, () => 1),
     init: (s) => { s.fA = 55; s.fX = -1.2; },
@@ -100,10 +100,9 @@
         { v: 180 - a, hint: '삼각형의 세 각의 합 180°에서 밑각 두 개(a, a)를 빼야 해요.' },
         { v: 2 * a, hint: '2a는 두 밑각의 합이에요. ∠x는 180°에서 뺀 나머지예요.' },
         { v: 90 - a, hint: '직각 삼각형이 아니에요. 이등변삼각형의 꼭지각을 구해요.' },
-        { v: 180 - a / 2, hint: '밑각은 a, a 예요. a의 절반이 아니에요.' },
         { v: 180 - 3 * a, hint: '밑각 두 개만 빼요. 세 번 빼지 않아요.' }
       ];
-      return { tag: '종이 테이프 접기', stem: `그림은 직사각형 모양의 종이 테이프를 접은 것이다. ∠x의 크기는? (원래 각 ∠EBC = ${mi(a)}°)`, key: `${a}`, choices: mkChoices(x, wrongs, { lo: 5, hi: 175 }) };
+      return { tag: '함정 주의 · 종이 테이프 접기 (같은 변은 AB와 AC)', stem: `그림은 직사각형 모양의 종이 테이프를 접은 것이다. ∠x의 크기는? (접은 각 ∠ABC = ${mi(a)}°)`, key: `${a}`, choices: mkChoices(x, wrongs, { lo: 5, hi: 175 }) };
     }
   };
 

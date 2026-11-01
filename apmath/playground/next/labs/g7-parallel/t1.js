@@ -292,7 +292,7 @@
   // 값(vP, vQ)과 종류로 만든 그림: θ = vP, m 의 기울기 φ = vP − vQ
   function judgeGeom(vP, vQ) { return geom(vP, vP - vQ, 0); }
   function miniSVG(vP, vQ, kind) {
-    const W = 170, H = 112, yl = 32, ym = 82, cx = 85, half = (ym - yl) / 2;
+    const W = 170, H = 124, yl = 34, ym = 80, cx = 85, half = (ym - yl) / 2;
     const th = vP * DEG, cot = Math.cos(th) / Math.sin(th);
     const px = cx + half * cot, qx = cx - half * cot, phi = (vP - vQ) * DEG;
     const ptf = (x, y, d, len) => [x + Math.cos(d * DEG) * len, y - Math.sin(d * DEG) * len];
@@ -314,8 +314,8 @@
       `<line x1="${nBot[0].toFixed(1)}" y1="${nBot[1].toFixed(1)}" x2="${nTop[0].toFixed(1)}" y2="${nTop[1].toFixed(1)}" stroke="var(--m-rose)" stroke-width="3"/>` +
       `<path d="${A1.d}" fill="var(--m-amber)" fill-opacity=".28" stroke="var(--m-amber)" stroke-width="2"/>` +
       `<path d="${A2.d}" fill="var(${eq ? '--m-amber' : '--m-violet'})" fill-opacity=".28" stroke="var(${eq ? '--m-amber' : '--m-violet'})" stroke-width="2"/></g>` +
-      `<text x="${(A1.tx + (kind === 'corr' ? 9 : -9)).toFixed(1)}" y="${(A1.ty + 4).toFixed(1)}" text-anchor="middle" font-size="14" font-weight="800" fill="var(--m-amber)" stroke="var(--card-2)" stroke-width="3" paint-order="stroke">${vP}°</text>` +
-      `<text x="${(A2.tx + 6).toFixed(1)}" y="${(A2.ty + 4).toFixed(1)}" text-anchor="middle" font-size="14" font-weight="800" fill="var(${eq ? '--m-amber' : '--m-violet'})" stroke="var(--card-2)" stroke-width="3" paint-order="stroke">${vQ}°</text></svg>`;
+      `<text x="${(px + (kind === 'corr' || vP > 90 ? 34 : -34)).toFixed(1)}" y="${(yl - 8).toFixed(1)}" text-anchor="middle" font-size="15" font-weight="800" fill="var(--m-amber)" stroke="var(--card-2)" stroke-width="3" paint-order="stroke">${vP}°</text>` +
+      `<text x="${(qx + 28).toFixed(1)}" y="${(ym - 28 * Math.tan(phi) + 19).toFixed(1)}" text-anchor="middle" font-size="15" font-weight="800" fill="var(${eq ? '--m-amber' : '--m-violet'})" stroke="var(--card-2)" stroke-width="3" paint-order="stroke">${vQ}°</text></svg>`;
   }
   function genJudge(s) {
     // 정답 1개(두 각이 같음) + 오답 4개(다름). 오답 중 하나는 합이 180°인 함정.
@@ -337,7 +337,7 @@
     s.rList = all;
   }
   const D13 = {
-    id: 'p1-3', title: '평행인지 판별하기', short: '평행 판별',
+    id: 'p1-3', title: '[함정] 평행인지 판별하기', short: '평행 판별',
     question: '동위각 또는 엇각이라고 표시한 두 각의 크기가 주어졌어요. 두 각의 크기가 어떨 때 두 직선 l, m 이 평행일까요?',
     focus: FOCUS,
     ctl: ['rA', 'rB'],
@@ -398,7 +398,7 @@
     prob(M, s) {
       const list = M.list;
       return {
-        tag: '평행 판별', stem: '다음 중 두 직선 l, m 이 평행한 것은? (그림을 눌러 크게 볼 수 있어요)', key: list.map((x) => x.kind + x.vP + x.vQ).join(','),
+        tag: '함정 주의 · 평행 판별 (합이 180°는 평행이 아니에요)', stem: '다음 중 두 직선 l, m 이 평행한 것은?', key: list.map((x) => x.kind + x.vP + x.vQ).join(','),
         choices: list.map((it) => ({ html: miniSVG(it.vP, it.vQ, it.kind), p: `${KIND(it.kind)} ${it.vP}°, ${it.vQ}°`, ok: it.ok, hint: it.hint || '', t: '' })),
         note: '표시한 두 각이 같은 그림이 평행해요.'
       };

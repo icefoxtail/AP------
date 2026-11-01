@@ -111,7 +111,7 @@
     const P = D.prob(M, s);
     const pk = s.papick && s.papick.key === keyOf(D, P, s) ? s.papick : null;
     let h = `<div class="pa-q">${esc(P.stem).replace(/&amp;/g, '&')}</div>`;
-    h += '<div class="pa-choices">';
+    h += `<div class="pa-choices${P.choices.some((o) => o.html) ? ' figs' : ''}">`;
     P.choices.forEach((o, i) => {
       const cls = pk && pk.idx === i ? (o.ok ? ' ok' : ' bad') : '';
       h += `<button type="button" class="pa-ch${o.html ? ' fig' : ''}${cls}" data-pa-pick="${i}" aria-label="${NUM[i]} ${esc(o.p)}"><span class="n">${NUM[i]}</span><span class="v">${o.html ? o.html : '$' + o.t + '$'}</span></button>`;
@@ -168,7 +168,8 @@
 .pa-ch.bad{border-color:var(--m-red);background:color-mix(in srgb,var(--m-red) 12%,var(--card))}
 .pa-ch.fig{flex-direction:column;align-items:stretch;gap:4px}
 .pa-ch.fig .n{align-self:flex-start}
-.pa-ch.fig svg{width:100%;height:auto;display:block}
+.pa-choices.figs{grid-template-columns:minmax(0,1fr)}
+.pa-ch.fig svg{width:100%;max-width:260px;height:auto;display:block;margin:0 auto}
 .pa-fb{margin-top:8px;padding:10px 12px;border-radius:var(--r-md);font-size:var(--fs-sm);line-height:1.7;border-left:3px solid var(--m-sky);background:var(--card-2)}
 .pa-fb.ok{border-left-color:var(--m-green)}
 .pa-fb.bad{border-left-color:var(--m-red)}
