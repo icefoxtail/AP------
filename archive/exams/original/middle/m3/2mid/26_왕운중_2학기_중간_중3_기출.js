@@ -57,7 +57,11 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q001_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q001_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 AB=15cm, BC=17cm, 피타고라스 정리로 구한 AC=8cm를 보여 주고, sin B의 분자인 AC는 파란색, 분모인 빗변 BC는 주황색으로 구분한다.",
+    "solutionImageCaption": "피타고라스 정리로 AC=8이므로 sin B=AC/BC=8/17이고, 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -169,7 +173,11 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q003_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q003_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 1인 사분원에서 55°인 점의 세로 길이 0.82(파랑, sin), 가로 길이 0.57(주황, cos), x=1의 접선 위 높이 1.43(초록, tan)을 색 선분으로 보여 준다.",
+    "solutionImageCaption": "sin55°=0.82, cos55°=0.57, tan55°=1.43이므로 ㄷ만 옳고, 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -228,7 +236,11 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q004_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q004_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 AB=9, AC=12, BC=15와 BC에 수직인 DE를 보여 주고, ∠BED=α와 ∠C가 같은 각(파란 호)이며 ∠B(주황 호)와 합이 90°가 되는 관계를 표시한다.",
+    "solutionImageCaption": "α=∠BED=∠C이므로 tanα=AB/AC=9/12=3/4이고, 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -401,7 +413,11 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q007_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q007_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 중선 AD와 무게중심 G를 보여 주고, 옆에 AG=10cm, GD=5cm, AD=15cm를 펴서 나타낸다. AD=BD=CD(파란 눈금)이므로 BC=30cm이고 AC=18cm이다.",
+    "solutionImageCaption": "AG=10, GD=5이므로 AD=BD=CD=15, BC=30이고 sin B=AC/BC=18/30=3/5이다. 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -458,7 +474,11 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q008_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q008_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 1인 사분원에서 B의 가로 OA=cos a°(주황), 세로 AB=sin a°(초록)를 보여 주고, 직각삼각형 OAB의 ∠OBA와 직각삼각형 OCD의 ∠ODC가 같은 각 b°(파란 호)임을 표시한다.",
+    "solutionImageCaption": "B=(cos a°, sin a°)이고 a+b=90°이므로 B=(sin b°, cos b°)이다. 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -516,7 +536,10 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q009_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q9-solution.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 내접하는 정팔각형을 중심과 이웃한 두 꼭짓점으로 이루어진 합동인 이등변삼각형 8개로 나눈 그림이다. 반지름 6, 중심각 45°, 삼각형 한 개의 넓이 9√2가 표시되어 있고 삼각형 8개는 모두 같은 파랑으로 칠해져 있다.",
+    "solutionImageCaption": "8개의 합동 삼각형 넓이를 더하면 8×9√2=72√2이므로 정팔각형의 넓이는 72√2이다(정답 ④).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -577,7 +600,10 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q010_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q10-solution.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위에서 x축과 y축 위의 점 A, B를 지나는 직선 AB와 원점 O로 만든 삼각형 OAB를 그렸다. O에서 AB에 내린 수선 OH=2이고 OA=26/5, OB=13/6, AB=169/30이며 ∠BAO와 ∠BOH는 같은 크기 α로 파랑으로 표시했다.",
+    "solutionImageCaption": "tanα=m=5/12, n=OB=13/6이므로 m+n=31/12이다(정답 ①).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -637,7 +663,10 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q011_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q11-solution.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 꼭짓점 A에서 변 BC에 수선 AH를 내려 직각삼각형 ABH를 만든 그림이다. AC=40m, BC=60m, ∠C=60°이고 CH=20m, AH=20√3m(파랑), BH=40m(주황)가 표시되어 있다.",
+    "solutionImageCaption": "직각삼각형 ABH에서 AB=√(40²+(20√3)²)=20√7 m이다(정답 ⑤).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -696,7 +725,11 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q012_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q012_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC(파랑)와 AB 위의 점 A′, BC의 연장선 위의 점 C′로 만든 삼각형 A′BC′(주황)가 꼭짓점 B의 각을 공유하는 모양이다. BA′=0.7AB, BC′=1.3BC가 표시되어 있다.",
+    "solutionImageCaption": "두 삼각형은 ∠B를 공유하고 BA′=0.7AB, BC′=1.3BC이므로 넓이는 ½·BA′·BC′·sinB=0.91S이다. 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -754,7 +787,11 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q013_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q013_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭지 A에서 줄 AB와 AC가 각각 3m(파란 눈금)이고 ∠BAH=51°인 그림이다. B에서 AC에 내린 수선의 발 H까지 AH=1.89m, C는 지면에서 0.5m 위이며, 지면에서 B까지의 높이 h를 표시한다.",
+    "solutionImageCaption": "AH=3cos51°=1.89m이므로 h=3+0.5-1.89=1.61m이다. 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -815,7 +852,10 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q014_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q14-solution.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD를 A와 C가 겹치도록 접은 그림이다. PA=PC=5(파랑 눈금), PD=4, AD=9이고 접는 선 PQ는 AC의 중점 M을 지나 AC와 수직이며 ∠APM=∠CPM=x(주황)이다. 아래에 AC를 펴서 AM=MC=3√10/2를 따로 보였다.",
+    "solutionImageCaption": "직각삼각형 PMC에서 sin x=MC/PC=(3√10/2)/5=3√10/10이다(정답 ③).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -876,7 +916,10 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q015_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q15-solution.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x축 위의 O와 B(10, 0), 점 A(32/5, 24/5)로 만든 직각삼각형 OAB와 B가 AC의 중점인 점 C를 그린 그림이다. OA=8, AB=BC=6이고 삼각형 OAB와 OBC의 넓이가 같다(주황).",
+    "solutionImageCaption": "B는 AC의 중점이므로 C=2B−A=(68/5, −24/5)이다(정답 ②).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -933,7 +976,11 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q016_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q016_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 길이가 같은 두 현(파란색)과 중심에서 각 현까지의 같은 거리(주황색)를 보이고, 반현 6·반지름 10·아래 거리 8을 표시한 그림이다.",
+    "solutionImageCaption": "같은 길이의 현은 중심에서 거리가 같으므로 x=8, 정답 ①.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -990,7 +1037,11 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q017_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q017_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 중심 O에서 두 현 AB, AC까지의 거리가 같고(파란색) AB=AC(주황색), 밑각 ∠B=∠C=58°(초록색)임을 보이는 그림이다.",
+    "solutionImageCaption": "x=180°-58°×2=64°, 정답 ⑤.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -1048,7 +1099,10 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q018_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q18-solution.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 접선 PA, PB와 합동인 두 직각삼각형 OAP, OBP(파란색), ∠APO=∠BPO=30°, PA=PB=3√3, OA=OB=3을 보이는 그림이다.",
+    "solutionImageCaption": "PA+PB=6√3, 정답 ②.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -1104,7 +1158,10 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q19-solution.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 두 현과 각 현의 수직이등분선이 원의 중심에서 만나는 모양을 보이는 그림이다. 각 현의 중점에 직각 표시가 있다.",
+    "solutionImageCaption": "원의 중심은 두 현의 수직이등분선의 교점이므로 민재만 옳다, 정답 ①.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -1164,7 +1221,10 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q020_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q20-solution.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 9×6과 내접원, 접선 DE에서 DS=DT=6(파란색), ET=EV=6-x(주황색), BV=OV=3(초록색)을 표시하고 DE=12-x를 따로 펴서 보인 그림이다.",
+    "solutionImageCaption": "(12-x)²=x²+6²이므로 EC=9/2 cm, 정답 ③.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -1215,7 +1275,11 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q021_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q021_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원과 접점 D, E, F에서 BD=BE=6(파랑), AD=AF=4(주황), CE=CF=5(초록)를 보이는 그림이다.",
+    "solutionImageCaption": "둘레는 10+11+9=30 cm.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -1267,7 +1331,10 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q022_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q22-solution.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD를 대각선 BD로 나눈 그림이다. ∠B=90°인 삼각형 ABD(파랑)는 AB=7, BD=7√3이고 넓이 49√3/2, 삼각형 DBC(주황)는 DC=12, ∠BDC=30°이고 넓이 21√3이다. BD는 두 삼각형의 공통변이라 굵게 표시했다.",
+    "solutionImageCaption": "직각 B는 AD=2AB, ∠A=60°에서 나오고, □ABCD=49√3/2+21√3=91√3/2 cm²이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -1318,6 +1385,10 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q023_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q023_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 눈높이 1.6m인 측정자가 10m 떨어진 나무의 꼭대기를 올려다보는 그림이다. 올려본각은 30°(빨대와 수직 기준선이 이루는 각 60°의 여각)이고, 눈높이 위로 올라간 나무의 높이 H−1.6과 수평거리 10m가 직각삼각형(주황)을 이룬다. 문제 그림에 빠진 클리노미터 각 60°는 해설 기준이다.",
+    "solutionImageCaption": "tan30°=(H−1.6)/10이므로 H=1.6+10√3/3≈7.37m이다. 문제 그림에 빠진 클리노미터 각 60°는 해설 기준.",
+    "solutionImageSize": "medium"
   }
 ];
