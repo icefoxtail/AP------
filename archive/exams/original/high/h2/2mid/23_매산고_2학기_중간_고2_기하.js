@@ -165,9 +165,9 @@ window.questionBank = [
     "subUnit": "벡터의 뜻과 연산",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 정육각형 ABCDEF와 중심 O. 꼭짓점 A에서 B로, A에서 F로 가는 화살표를 이웃한 두 변으로 하는 평행사변형을 점선으로 완성하고, 두 벡터의 합을 하나의 화살표로 나타냈다.",
-    "solutionImageCaption": "벡터 AB와 AF를 이웃한 두 변으로 하는 평행사변형을 그려 두 벡터의 합 AB+AF를 화살표로 나타냈다.",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 O인 정육각형 ABCDEF. 꼭짓점 A에서 B로, A에서 F로 가는 화살표를 이웃한 두 변으로 하는 평행사변형을 점선으로 완성하고, 두 벡터의 합을 A에서 O로 가는 화살표 하나로 나타냈다. 한 변을 1로 두고 O를 원점으로 할 때 AB의 성분은 (-1/2, √3/2), AF의 성분은 (-1/2, -√3/2), 합은 (-1, 0)이다.",
+    "solutionImageCaption": "O를 원점, 한 변을 1로 두면 AB=(-1/2, √3/2), AF=(-1/2, -√3/2)이므로 AB+AF=(-1, 0)이고, OD=(-1, 0)이므로 AB+AF=OD이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -402,9 +402,9 @@ window.questionBank = [
     "subUnit": "벡터의 뜻과 연산",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q12-solution.svg",
-    "solutionImageAlt": "해설 그림: 직사각형 ABCD(AB=2, AD=4)에서 꼭짓점 A에서 B, C, D로 가는 세 화살표와 D에서 B로 가는 화살표를 그리고 각각 벡터 a, b, c, d라고 이름 붙였다.",
-    "solutionImageCaption": "직사각형의 꼭짓점 A에서 B, C, D로, D에서 B로 가는 네 벡터 a, b, c, d를 화살표로 나타냈다.",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: A를 원점으로 한 직사각형 ABCD(AB=2는 가로, AD=4는 세로)에서 A에서 B, C, D로 가는 세 화살표와 D에서 B로 가는 화살표를 그려 각각 벡터 a, b, c, d라 이름 붙이고, 성분 a=(2,0), b=(2,4), c=(0,4), d=(2,-4)와 a-b+c-d=(-2,4)를 적었다.",
+    "solutionImageCaption": "A(0,0), B(2,0), C(2,4), D(0,4)로 놓으면 a=(2,0), b=(2,4), c=(0,4), d=(2,-4)이므로 a-b+c-d=(-2,4)이고 |a-b+c-d|=√((-2)²+4²)=2√5이다.",
     "solutionImageSize": "medium"
   },
   {

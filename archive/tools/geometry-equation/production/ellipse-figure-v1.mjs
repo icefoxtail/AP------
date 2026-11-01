@@ -16,7 +16,7 @@ export const FIGURE_CAPABILITY='ellipse-figure-v1';
 export const MODEL_VERSION='ELLIPSE_FIGURE_MODEL_v1',SPEC_VERSION='ELLIPSE_FIGURE_SPEC_v1',SVG_VERSION='ellipse-figure-svg-v1';
 const OBSERVER_SCRIPT=fileURLToPath(new URL('ellipse_figure_observer.py',import.meta.url));
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
-const PAD_UNITS=0.75,MARGIN_PX=34,MAX_SCALE=40,MIN_SCALE=8,MAX_PLOT_W=460,MAX_PLOT_H=360;
+const PAD_UNITS=0.75,MARGIN_PX=34,COORD_MARGIN_X=140,COORD_MARGIN_Y=56,MAX_SCALE=40,MIN_SCALE=8,MAX_PLOT_W=460,MAX_PLOT_H=360;
 const FILL={LIGHT:'#eeeeee',MEDIUM:'#d8d8d8',NONE:'none'};
 const AXIS_INK='#444';
 const STYLE={
@@ -68,10 +68,10 @@ function validatePair(plan){
 
 // --- conic (parabola, hyperbola, circle, ellipse; one `conic` or one or two `conics`) plans: a root `conic` field; the plan shape is checked here, every value in conic_figure.py -------------------------------
 const CONIC_TOP_KEYS=['capability','conic','conics','points','segments','polygons','lines','caption','sourceConditions','newVisualInformation','sourceQuote'];
-const CONIC_POINT_KEYS={ORIGIN:['id','kind','label'],FOCUS:['id','kind','label','side','curve'],VERTEX:['id','kind','label','side','curve'],
-  CENTER:['id','kind','label','curve'],POINT:['id','kind','x','y','label'],
-  ON_CONIC:['id','kind','x','y','branch','sign','label','curve'],LINE_CONIC:['id','kind','line','which','label','curve'],LINE_LINE:['id','kind','lines','label'],
-  FOOT:['id','kind','from','onto','rightAngle','label'],CONIC_CONIC:['id','kind','curves','which','label'],TANGENT_FROM:['id','kind','from','which','label','curve']};
+const CONIC_POINT_KEYS={ORIGIN:['id','kind','label','coordinates'],FOCUS:['id','kind','label','coordinates','side','curve'],VERTEX:['id','kind','label','coordinates','side','curve'],
+  CENTER:['id','kind','label','coordinates','curve'],POINT:['id','kind','x','y','label','coordinates'],
+  ON_CONIC:['id','kind','x','y','branch','sign','label','coordinates','curve'],LINE_CONIC:['id','kind','line','which','label','coordinates','curve'],LINE_LINE:['id','kind','lines','label','coordinates'],
+  FOOT:['id','kind','from','onto','rightAngle','label','coordinates'],CONIC_CONIC:['id','kind','curves','which','label','coordinates'],TANGENT_FROM:['id','kind','from','which','label','coordinates','curve']};
 const CONIC_KEYS_BY_KIND={PARABOLA:['kind','vertex','p','axis'],HYPERBOLA:['kind','center','aSquared','bSquared','transverse'],
   CIRCLE:['kind','center','rSquared'],ELLIPSE:['kind','center','aSquared','bSquared','major']};
 const CONIC_LINE_KEYS=['id','role','label','dashed','hidden','x','y','slope','intercept','through','sign','tangent','at','curve'];
@@ -190,9 +190,11 @@ function layoutOf(model){
   const unitsW=(bbox.maxX-bbox.minX)+2*PAD_UNITS,unitsH=(bbox.maxY-bbox.minY)+2*PAD_UNITS;
   const scale=Math.min(MAX_SCALE,MAX_PLOT_W/unitsW,MAX_PLOT_H/unitsH);
   if(!(scale>=MIN_SCALE))bad('ELLIPSE_FIGURE_TOO_LARGE');
-  const width=Math.ceil(unitsW*scale)+2*MARGIN_PX,height=Math.ceil(unitsH*scale)+2*MARGIN_PX;
+  // a figure with coordinate labels gets a wider frame so the labels have free room beside the strokes
+  const wide=(model.points??[]).some(point=>point.coordinates===true),MX=wide?COORD_MARGIN_X:MARGIN_PX,MY=wide?COORD_MARGIN_Y:MARGIN_PX;
+  const width=Math.ceil(unitsW*scale)+2*MX,height=Math.ceil(unitsH*scale)+2*MY;
   const baseX=bbox.minX-PAD_UNITS,baseY=bbox.minY-PAD_UNITS;
-  const px=x=>MARGIN_PX+(x-baseX)*scale,py=y=>height-MARGIN_PX-(y-baseY)*scale;
+  const px=x=>MX+(x-baseX)*scale,py=y=>height-MY-(y-baseY)*scale;
   return {size:{width,height},scale,baseX,baseY,unitsW,unitsH,px,py,
     rect:{x0:px(baseX),y0:py(baseY+unitsH),x1:px(baseX+unitsW),y1:py(baseY)}};
 }
@@ -203,6 +205,16 @@ export function ellipseFigureSize(model){
 }
 
 const num=value=>Number(value.value);
+// exact value text ("-3/4", "3*sqrt(3)/2", "2*sqrt(3)") -> TeX for a coordinate label; the observer re-reads it numerically
+function exactTex(text){
+  const raw=String(text).replace(/\s+/g,''),sign=raw.startsWith('-')?'-':'';
+  const [top,den,...rest]=raw.replace(/^-/,'').split('/');
+  const m=/^(?:(\d+)\*)?sqrt\((\d+)\)$/.exec(top);
+  if(rest.length||(!m&&!/^\d+$/.test(top))||(den!==undefined&&!/^\d+$/.test(den)))bad('CONIC_COORDINATE_FORM_UNSUPPORTED');
+  const numerator=m?`${m[1]&&m[1]!=='1'?m[1]:''}\\sqrt{${m[2]}}`:top;
+  return sign+(den===undefined?numerator:`\\frac{${numerator}}{${den}}`);
+}
+
 
 function clipLine(line,layout){
   const m=Number(line.slope.value),n=Number(line.intercept.value);
@@ -232,13 +244,13 @@ function ellipseSamples(cx,cy,rx,ry,count=720){
 }
 
 // --- labels: a neutral name sits next to its own point and never covers the curve, a segment or another name ----------------------------------
-function labelCandidates(point,cx,cy){
+function labelCandidates(point,cx,cy,wide=false){
   const dx=point.x-cx,dy=point.y-cy;
   const base=Math.abs(dx)+Math.abs(dy)<1e-9?Math.PI/4:Math.atan2(dy,dx);
   const rows=[];
   for(const offset of [0,20,-20,40,-40,65,-65,90,-90,120,-120,150,-150,180]){
     const angle=base+offset*Math.PI/180;
-    for(const distance of [10,13,16,20,24,28,32,36,40]){
+    for(const distance of wide?[10,13,16,20,24,28,32,36,40,46,52,58,64,72,80,90,100,115,130,150]:[10,13,16,20,24,28,32,36,40]){
       rows.push({dx:Math.cos(angle)*distance,dy:Math.sin(angle)*distance,distance});
     }
   }
@@ -265,14 +277,20 @@ export function placeLabels(entries,layout,obstacles){
     Math.max(box.y,Math.min(point[1],box.y+box.height))];
   const leaderFor=(box,entry)=>{
     if(!entry.requiresLeader)return null;
-    const anchor=[entry.pointX,entry.pointY],start=nearestBoxPoint(anchor,box),length=Math.hypot(anchor[0]-start[0],anchor[1]-start[1]);
-    if(length<8||length>64)return false;
+    let anchor=[entry.pointX,entry.pointY];const start=nearestBoxPoint(anchor,box);
+    if(entry.role==='point'){
+      // a point's leader stops 4.5 px short of the dot so it never runs through it
+      const reach=Math.hypot(anchor[0]-start[0],anchor[1]-start[1])||1;
+      anchor=[anchor[0]+(start[0]-anchor[0])*4.5/reach,anchor[1]+(start[1]-anchor[1])*4.5/reach];
+    }
+    const length=Math.hypot(anchor[0]-start[0],anchor[1]-start[1]);
+    if(length<8||length>(entry.role==="point"?120:64))return false;
     const leader={a:start,b:anchor,ownerSegment:entry.ownerSegment};
     const steps=Math.max(2,Math.ceil(Math.max(0,length-3)/2));
     for(let i=0;i<=steps;i++){
       const along=Math.min(length-3,length*i/steps),t=length?along/length:0;
       const x=start[0]+(anchor[0]-start[0])*t,y=start[1]+(anchor[1]-start[1])*t;
-      if(obstacles.points.some(point=>Math.hypot(point.x-x,point.y-y)<3.5))return false;
+      if(obstacles.points.some(point=>!(entry.role==='point'&&point.key===entry.pointId)&&Math.hypot(point.x-x,point.y-y)<3.5))return false;
       if(obstacles.curve.some(sample=>Math.hypot(sample[0]-x,sample[1]-y)<2.5))return false;
       for(const segment of obstacles.segments){
         if(pointSegmentDistance([x,y],segment.a,segment.b)<2.5)return false;
@@ -281,12 +299,13 @@ export function placeLabels(entries,layout,obstacles){
       for(const other of placedLeaders){if(pointSegmentDistance([x,y],other.a,other.b)<2.5)return false;}
     }
     // The connector must meet the owner segment only at its midpoint, not run along it.
-    if(pointSegmentDistance([start[0]+(anchor[0]-start[0])*Math.max(0,(length-4)/length),
+    if(entry.ownerSegment&&pointSegmentDistance([start[0]+(anchor[0]-start[0])*Math.max(0,(length-4)/length),
       start[1]+(anchor[1]-start[1])*Math.max(0,(length-4)/length)],entry.ownerSegment.a,entry.ownerSegment.b)<2)return false;
     return leader;
   };
   const blocked=(box,entry)=>{
-    if(box.x<4||box.y<4||box.x+box.width>layout.size.width-4||box.y+box.height>layout.size.height-4)return true;
+    const edge=entry.coordinates?12:4;
+    if(box.x<edge||box.y<edge||box.x+box.width>layout.size.width-edge||box.y+box.height>layout.size.height-edge)return true;
     for(const point of obstacles.points){
       // A point label sits close to its own dot but must still clear the drawn circle.
       const own=!!entry.pointId&&point.key===entry.pointId;
@@ -310,6 +329,7 @@ export function placeLabels(entries,layout,obstacles){
   for(const entry of entries){
     let best=null;
     for(const delta of entry.candidates){
+      if(entry.coordinates&&delta.distance>40)continue;
       const box={x:r6(entry.centerX+delta.dx-entry.width/2),y:r6(entry.centerY+delta.dy-entry.height/2),width:entry.width,height:entry.height};
       if(blocked(box,entry))continue;
       const leader=leaderFor(box,entry);if(leader===false)continue;
@@ -349,6 +369,26 @@ export function placeLabels(entries,layout,obstacles){
           if(!best||score>best.score)best={box,score,leader,anchored};
         }
         if(best)break;
+      }
+    }
+    if(!best&&entry.role==='point'&&!entry.coordinates&&entry.farCandidates){
+      // a name that found no place within 40 px (a point where several strokes cross) may sit up to 60 px away
+      for(const delta of entry.farCandidates){
+        const box={x:r6(entry.centerX+delta.dx-entry.width/2),y:r6(entry.centerY+delta.dy-entry.height/2),width:entry.width,height:entry.height};
+        if(blocked(box,entry))continue;
+        const score=-delta.distance;
+        if(!best||score>best.score)best={box,score,leader:null};
+      }
+    }
+    if(!best&&entry.role==='point'&&entry.coordinates){
+      // no room beside the dot: a free spot for the coordinates, joined to the dot by a leader
+      const anchored={...entry,requiresLeader:true};
+      for(const delta of entry.candidates){
+        const box={x:r6(entry.centerX+delta.dx-entry.width/2),y:r6(entry.centerY+delta.dy-entry.height/2),width:entry.width,height:entry.height};
+        if(blocked(box,anchored))continue;
+        const leader=leaderFor(box,anchored);if(!leader)continue;
+        const score=-delta.distance;
+        if(!best||score>best.score)best={box,score,leader,anchored};
       }
     }
     if(!best)throw new Stop('ELLIPSE_LABEL_NO_ROOM',{label:entry.key});
@@ -662,8 +702,11 @@ function conicFigureSpec(plan,model){
   for(const row of model.points){
     if(!row.labels)continue;
     const px=layout.px(num(row.x)),py=layout.py(num(row.y));
-    labels.push({key:`point-${row.id}`,role:'point',pointId:row.id,text:row.id,
-      pointX:px,pointY:py,centerX:px,centerY:py,candidates:labelCandidates({x:px,y:py},vertexPx.x,vertexPx.y)});
+    const source=(plan.points??[]).find(one=>one.id===row.id);
+    const text=source?.coordinates===true?`${row.id}(${exactTex(row.x.exact)},${exactTex(row.y.exact)})`:row.id;
+    labels.push({key:`point-${row.id}`,role:'point',pointId:row.id,text,
+      pointX:px,pointY:py,centerX:px,centerY:py,coordinates:source?.coordinates===true,candidates:labelCandidates({x:px,y:py},vertexPx.x,vertexPx.y,source?.coordinates===true),
+      farCandidates:source?.coordinates===true?null:labelCandidates({x:px,y:py},vertexPx.x,vertexPx.y,true).filter(delta=>delta.distance>40&&delta.distance<=64)});
   }
   for(const {line,prim} of drawnLines){
     if(!line.label)continue;
@@ -755,7 +798,7 @@ export async function renderEllipseSvg({plan,model,identity,typographyPolicy}){
     specSha256:null,fragmentSha256s:{},svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
   lineage.specSha256=objectSha(spec);
   for(const item of placed)if(item.leader){
-    const ownerAttr=item.role==='line'?`data-owner-line="${esc(item.lineId)}"`:item.role==='curve'?`data-owner-curve="${esc(item.curveId)}"`:`data-owner-segment="${item.segmentId}"`;
+    const ownerAttr=item.role==='point'?`data-owner-point="${esc(item.pointId)}"`:item.role==='line'?`data-owner-line="${esc(item.lineId)}"`:item.role==='curve'?`data-owner-curve="${esc(item.curveId)}"`:`data-owner-segment="${item.segmentId}"`;
     body+=`<g data-layer="50"><line id="leader-${item.key}" data-role="leader" data-owner-label="${item.key}" ${ownerAttr} data-label="${item.key}" stroke="#555" stroke-width="0.9" fill="none" x1="${r6(item.leader.a[0])}" y1="${r6(item.leader.a[1])}" x2="${r6(item.leader.b[0])}" y2="${r6(item.leader.b[1])}"/></g>`;
   }
   for(const item of placed){

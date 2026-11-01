@@ -409,9 +409,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면 위의 삼각형 OAB(O(0,0), A(6,0), B(3,6))와 세 변을 3:1로 내분하는 점 C, D, E를 그린 그림 오른쪽에, 변 OA를 따로 펴서 OC와 CA의 길이 비 3:1을 치수선으로 나타냈다.",
-    "solutionImageCaption": "변 OA를 3:1로 내분하는 점 C를 오른쪽에 크게 따로 그려 OC:CA=3:1을 보였다.",
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위의 삼각형 OAB(O(0,0), A(6,0), B(3,6))와 세 변을 3:1로 내분하는 점 C(9/2,0), D(15/4,9/2), E, 점선 삼각형 CDE와 그 무게중심 G(3,2)를 나타낸 그림.",
+    "solutionImageCaption": "OC:CA=AD:DB=BE:EO=3:1이므로 C(9/2,0), D(15/4,9/2), E(3/4,3/2)이고, 삼각형 CDE의 무게중심은 G(3,2)이다. 따라서 a+b=3+2=5이다.",
     "solutionImageSize": "medium"
   },
   {

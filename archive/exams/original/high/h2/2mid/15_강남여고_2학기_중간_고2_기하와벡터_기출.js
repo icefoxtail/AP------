@@ -568,9 +568,9 @@ window.questionBank = [
     "difficultyReason": "Apply midpoint position vectors in two linked steps.",
     "layoutTag": "grid",
     "wide": true,
-    "solutionImage": "assets/images/15_강남여고_2학기_중간_고2_기하와벡터_기출/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 변 BC의 중점 M과 선분 AM의 중점 K를 잡고, 꼭짓점 A에서 B, C로 가는 화살표를 벡터 a, b로, B에서 K로 가는 화살표를 벡터 BK로 나타냈다.",
-    "solutionImageCaption": "AB=a, AC=b와 BK를 화살표로 나타냈다. M은 BC의 중점, K는 AM의 중점이다.",
+    "solutionImage": "assets/images/15_강남여고_2학기_중간_고2_기하와벡터_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 변 BC의 중점 M과 선분 AM의 중점 K를 잡고, 꼭짓점 A에서 B, C로 가는 화살표를 벡터 a, b로, B에서 K로 가는 화살표를 벡터 BK로 나타냈다. AK=(a+b)/4, BK=(-3a+b)/4를 적었다.",
+    "solutionImageCaption": "AM⃗=(a⃗+b⃗)/2이고 K는 AM의 중점이므로 AK⃗=(a⃗+b⃗)/4, BK⃗=AK⃗-AB⃗=(-3a⃗+b⃗)/4이다. 따라서 m=-3/4, n=1/4이고 m+n=-1/2이다.",
     "solutionImageSize": "medium"
   },
   {
