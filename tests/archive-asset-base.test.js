@@ -8,8 +8,16 @@ const root = path.join(__dirname, '..');
 const R2 = { base: 'https://img.wangjiedu.com', source: 'override' };
 const OFF = { base: '', source: 'default' };
 
-test('default setting is empty and returns every reference untouched', () => {
-  assert.equal(base.DEFAULT_EXAM_IMAGE_BASE, '');
+test('default setting maps exam images to img.wangjiedu.com', () => {
+  assert.equal(base.DEFAULT_EXAM_IMAGE_BASE, 'https://img.wangjiedu.com');
+  base.resetForTest();
+  assert.deepEqual({ base: base.describe().base, source: base.describe().source }, { base: 'https://img.wangjiedu.com', source: 'default' });
+  assert.equal(base.resolveExamImageUrl('assets/images/15_x/q1.png?v=1'), 'https://img.wangjiedu.com/exams/images/15_x/q1.png?v=1');
+  assert.equal(base.resolveExamImageUrl('assets/generated-lite/x.svg'), 'assets/generated-lite/x.svg');
+  base.resetForTest();
+});
+
+test('an empty base returns every reference untouched', () => {
   for (const value of ['assets/images/15_x/q1.png', 'assets/images/a b/q1.png?v=1#h', '../assets/images/a/q.svg', 'assets/generated-lite/x.svg', 'q1.png', '', undefined]) {
     assert.equal(base.resolveExamImageUrl(value, { config: OFF }), value);
   }
@@ -66,7 +74,7 @@ test('inline <img> html is rewritten only for exam images', () => {
   const html = '<p>x</p><img src="assets/images/a/q1.png" width="3"><img src=\'assets/generated-lite/b.svg\'>';
   assert.equal(base.resolveHtml(html, { config: OFF }), html);
   assert.equal(base.resolveHtml(html, { config: R2 }),
-    '<p>x</p><img src="https://img.wangjiedu.com/exams/images/a/q1.png" width="3"><img src=\'assets/generated-lite/b.svg\'>');
+    '<p>x</p><img crossorigin="anonymous" src="https://img.wangjiedu.com/exams/images/a/q1.png" width="3"><img src=\'assets/generated-lite/b.svg\'>');
 });
 
 test('base validation accepts https (and local http) origins only', () => {
@@ -121,32 +129,77 @@ test('QA override is read from the query, remembered, and ignored for students',
     vm.runInNewContext(source, sandbox);
     return { api: sandbox.module.exports, store };
   }
-  const teacher = load('?assetBase=https://img.wangjiedu.com', '/AP------/archive/engine.html');
-  assert.equal(teacher.api.describe().base, 'https://img.wangjiedu.com');
-  assert.equal(teacher.store.get('ap.examImageBase.qa'), 'https://img.wangjiedu.com');
+  const QA = 'https://qa.example.test/p';
+  const teacher = load('?assetBase=' + QA, '/AP------/archive/engine.html');
+  assert.equal(teacher.api.describe().base, QA);
+  assert.equal(teacher.store.get('ap.examImageBase.qa'), QA);
   const inherited = load('', '/AP------/archive/mixed_engine.html', teacher.store);
-  assert.equal(inherited.api.describe().base, 'https://img.wangjiedu.com');
-  const student = load('?assetBase=https://img.wangjiedu.com', '/AP------/apmath/student/index.html', teacher.store);
-  assert.equal(student.api.describe().base, '');
-  assert.equal(student.api.resolveExamImageUrl('assets/images/a/q.png'), 'assets/images/a/q.png');
+  assert.equal(inherited.api.describe().base, QA);
+  // students never honour the override: they get the default (R2)
+  const student = load('?assetBase=' + QA, '/AP------/apmath/student/index.html', teacher.store);
+  assert.equal(student.api.describe().base, 'https://img.wangjiedu.com');
+  assert.equal(student.api.describe().source, 'default');
+  assert.equal(student.api.resolveExamImageUrl('assets/images/a/q.png'), 'https://img.wangjiedu.com/exams/images/a/q.png');
   const review = load('?studentReview=1', '/AP------/archive/engine.html', teacher.store);
-  assert.equal(review.api.describe().base, '');
+  assert.equal(review.api.describe().base, 'https://img.wangjiedu.com');
+  const studentOff = load('?assetBase=off&studentReview=1', '/AP------/archive/engine.html', teacher.store);
+  assert.equal(studentOff.api.describe().base, 'https://img.wangjiedu.com', 'students cannot force same-origin either');
   const off = load('?assetBase=off', '/AP------/archive/engine.html', teacher.store);
-  assert.equal(off.api.describe().base, '');
-  assert.equal(off.store.has('ap.examImageBase.qa'), false);
+  assert.equal(off.api.describe().base, '', 'off forces same-origin images although the default is R2');
+  assert.equal(off.api.describe().source, 'override');
+  assert.equal(off.api.resolveExamImageUrl('assets/images/a/q.png'), 'assets/images/a/q.png');
+  assert.equal(off.store.get('ap.examImageBase.qa'), 'off');
+  const offInherited = load('', '/AP------/archive/mixed_engine.html', off.store);
+  assert.equal(offInherited.api.describe().base, '', 'off is remembered for preview iframes and print windows');
+  const offStudent = load('', '/AP------/apmath/student/index.html', off.store);
+  assert.equal(offStudent.api.describe().base, 'https://img.wangjiedu.com', 'students ignore a stored off');
+  const reset = load('?assetBase=default', '/AP------/archive/engine.html', off.store);
+  assert.equal(reset.api.describe().base, 'https://img.wangjiedu.com');
+  assert.equal(reset.api.describe().source, 'default');
+  assert.equal(reset.store.has('ap.examImageBase.qa'), false);
+  const fresh = load('', '/AP------/archive/engine.html');
+  assert.equal(fresh.api.describe().base, 'https://img.wangjiedu.com');
   const bad = load('?assetBase=http://evil.test', '/AP------/archive/engine.html');
-  assert.equal(bad.api.describe().base, '');
+  assert.equal(bad.api.describe().base, 'https://img.wangjiedu.com', 'an unusable value never becomes the base');
+  assert.equal(bad.store.has('ap.examImageBase.qa'), false);
+});
+
+test('external exam images are requested in CORS mode (http/https pages only)', () => {
+  base.resetForTest();
+  const external = base.resolveExamImageUrl('assets/images/a/q1.png?v=1', { config: R2 });
+  assert.equal(base.crossOriginAttr(external), ' crossorigin="anonymous"');
+  assert.equal(base.crossOriginAttr('assets/images/a/q1.png?v=1'), '', 'same-origin URLs stay plain');
+  assert.equal(base.crossOriginAttr('https://img.wangjiedu.com/never-resolved.png'), '');
+  const attrs = {};
+  const img = { getAttribute: n => attrs[n] ?? null, setAttribute: (n, v) => { attrs[n] = v; } };
+  assert.equal(base.applyCrossOrigin(img, external), true);
+  assert.equal(attrs.crossorigin, 'anonymous');
+  assert.equal(base.applyCrossOrigin({ getAttribute: () => null, setAttribute() { throw new Error('same-origin must not be touched'); } }, 'assets/images/a/q1.png'), false);
+  const vm = require('node:vm');
+  const source = fs.readFileSync(path.join(root, 'archive', 'archive-asset-base.js'), 'utf8');
+  const sandbox = { URL, URLSearchParams, location: { search: '', pathname: '/x/archive/engine.html', host: 'h', protocol: 'file:' }, module: { exports: {} } };
+  sandbox.globalThis = sandbox;
+  vm.runInNewContext(source, sandbox);
+  const fileApi = sandbox.module.exports;
+  const fileUrl = fileApi.resolveExamImageUrl('assets/images/a/q1.png');
+  assert.match(fileUrl, /^https:\/\/img\.wangjiedu\.com\//);
+  assert.equal(fileApi.crossOriginAttr(fileUrl), '', 'file:// pages cannot use CORS mode');
+  base.resetForTest();
 });
 
 test('every exam-image consumer is wired to the shared module and the module ships in the Pages package', () => {
   const read = file => fs.readFileSync(path.join(root, file), 'utf8');
   for (const file of ['archive/engine.html', 'archive/mixed_engine.html', 'archive/mixer.html', 'archive/problem-bank-search.html', 'archive/generated-bank.html',
     'archive/workspace.html', 'archive/unit-past-exams.html', 'archive/index.html', 'apmath/index.html', 'apmath/wrong_print_engine.html']) {
-    assert.match(read(file), /archive-asset-base\.js\?v=20261030-s20-1/, file);
+    assert.match(read(file), /archive-asset-base\.js\?v=20261030-s21-1/, file);
   }
   for (const file of ['archive/engine.html', 'archive/mixed_engine.html', 'apmath/js/archive-render.js', 'apmath/wrong_print_engine.html', 'apmath/js/report-center.js', 'archive/mixer.html', 'archive/problem-bank-search.html', 'archive/generated-bank.html']) {
     assert.match(read(file), /resolveExamImageUrl/, file);
   }
+  for (const file of ['archive/engine.html', 'archive/mixed_engine.html', 'apmath/wrong_print_engine.html']) {
+    assert.match(read(file), /examImageCrossOriginAttr\(/, `${file} requests external exam images in CORS mode`);
+  }
+  for (const file of ['archive/engine.html', 'archive/mixed_engine.html']) assert.match(read(file), /examImageCrossOrigin\(image, resolved\)/, file);
   assert.ok(JSON.parse(read('tools/archive-pages-release-manifest.json')).archiveFiles?.includes('archive-asset-base.js')
     || read('tools/archive-pages-release-manifest.json').includes('"archive-asset-base.js"'));
   assert.doesNotMatch(read('apmath/js/core.js'), /r2\.ap-math\.com/);
