@@ -669,7 +669,7 @@ window.questionBank = [
       "$1.69S$"
     ],
     "answer": "②",
-    "solution": "넓이는 두 직각변 길이의 곱에 비례하므로 새 넓이는 $0.7\\times1.3S=0.91S$. 정답은 ②.",
+    "solution": "그림에서 $A\\prime$은 $\\overline{AB}$ 위에, $C\\prime$은 $\\overline{BC}$의 연장선 위에 있으므로 두 삼각형 $ABC$와 $A\\prime BC\\prime$은 $\\angle B$를 공유한다. $\\overline{BA\\prime}=0.7\\overline{AB}$, $\\overline{BC\\prime}=1.3\\overline{BC}$이므로\n$\\triangle A\\prime BC\\prime=\\dfrac12\\cdot\\overline{BA\\prime}\\cdot\\overline{BC\\prime}\\cdot\\sin B=0.7\\times1.3\\times\\dfrac12\\cdot\\overline{AB}\\cdot\\overline{BC}\\cdot\\sin B=0.91S$이다. 정답은 ②.",
     "sourceQuestionNo": "12",
     "displayNo": "12",
     "sourceOrdinal": 12,
@@ -907,8 +907,8 @@ window.questionBank = [
       "$11$",
       "$12$"
     ],
-    "answer": "③",
-    "solution": "그림의 $x$ cm 선분과 10 cm 선분은 모두 중심 $O$에서 원 위의 점까지의 반지름이다. 따라서 $x=10$, 정답은 ③.",
+    "answer": "①",
+    "solution": "그림에서 두 현의 길이는 모두 $12$ cm이므로 원의 중심 $O$에서 두 현까지의 거리는 같다. $x$ cm는 $O$에서 위쪽 현까지의 거리이다.\n아래쪽 현에서 $O$에서 내린 수선은 현을 이등분하므로 반현은 $6$ cm이고, $10$ cm 선분은 반지름이다. 직각삼각형에서 중심까지의 거리는 $\\sqrt{10^2-6^2}=8$ cm이다.\n따라서 $x=8$이고 정답은 ①이다.",
     "sourceQuestionNo": "16",
     "displayNo": "16",
     "sourceOrdinal": 16,
