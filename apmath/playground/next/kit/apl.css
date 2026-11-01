@@ -224,11 +224,15 @@ body.apl {
 .apl-actions .apl-teach-btn { margin-left: 6px; }
 .apl-rail {
   grid-area: rail; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
-  padding: 0 2px 9px; margin: 0 -2px; scroll-snap-type: x proximity;
+  padding: 0 2px 9px; margin: 0 -2px;
 }
 .apl-rail::-webkit-scrollbar { display: none; }
+/* 가로로 넘치는 줄은 넘친 쪽 가장자리를 흐리게 해서 "옆에 더 있다"를 알려 줍니다(apl-shell.js _edgeFade가 클래스를 켭니다). */
+.apl-rail.fade-r, .apl-subscenes.fade-r { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent); }
+.apl-rail.fade-l, .apl-subscenes.fade-l { -webkit-mask-image: linear-gradient(90deg, transparent, #000 32px); mask-image: linear-gradient(90deg, transparent, #000 32px); }
+.apl-rail.fade-l.fade-r, .apl-subscenes.fade-l.fade-r { -webkit-mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 32px), transparent); mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 32px), transparent); }
 .apl-scene-tab {
-  display: inline-flex; align-items: center; gap: 8px; flex: none; scroll-snap-align: start;
+  display: inline-flex; align-items: center; gap: 8px; flex: none;
   min-height: 36px; padding: 0 13px 0 6px; border-radius: 999px;
   border: 1px solid var(--line); background: transparent; color: var(--text-2);
   font-size: var(--fs-sm); font-weight: 650; white-space: nowrap;
@@ -550,7 +554,21 @@ body.apl {
     height: clamp(300px, 54svh, 560px); min-height: 0; border-right: 0; border-bottom: 1px solid var(--line);
     box-shadow: 0 8px 18px rgba(0, 0, 0, .18);
   }
-  .apl-panel-inner { padding: 16px 14px 60px; }
+  /* 휴대폰 패널 순서: 제목 → 세부 장면 → 탭 → 조작부(슬라이더·칩·버튼) → 탐구 질문 → 안내·값.
+     도형이 위에 고정(sticky)되어 있으므로, 조작부가 도형 바로 아래에 오면 슬라이더를 움직이는 동안 그림의 변화를 계속 볼 수 있습니다. */
+  .apl-panel-inner { padding: 12px 14px 60px; gap: 10px; }
+  .apl-scene-head, #apl-pane-explore { display: contents; }
+  .apl-eyebrow { display: none; }
+  .apl-scene-title { order: 1; font-size: var(--fs-lg); }
+  .apl-subscenes { order: 2; }
+  .apl-tabs { order: 3; }
+  #apl-pane-explore > * { order: 7; }
+  #apl-pane-explore > .apl-controls { order: 4; gap: 8px; }
+  .apl-question { order: 6; }
+  .apl-tabpanel:not(#apl-pane-explore) { order: 7; }
+  .apl-sr { order: 9; }
+  .apl-ctl { gap: 2px; }
+  .apl-tab { min-height: 36px; }
   .apl-subscenes { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -14px; padding: 0 14px 2px; }
   .apl-subscenes::-webkit-scrollbar { display: none; }
   .apl-subscenes .apl-chip { white-space: nowrap; flex: none; }
