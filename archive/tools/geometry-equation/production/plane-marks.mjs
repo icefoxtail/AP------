@@ -4,6 +4,7 @@
 // which recomputes every fact from the Cindy peer's points and from the drawn primitives.
 // The marks also work on a coordinate construction plan (SOURCE_COORDINATES with axes): the same facts, drawn on the same source frame.
 import {regionSpec,regionPointRefs} from './plane-regions.mjs';
+import {isPaletteName} from './palette.mjs';
 import {vectorTipIds,vectorArrows,checkVectorFacts} from './plane-vectors.mjs';
 export const PLANE_RECIPE='PLANE_FIGURE_v1';
 export const isPlaneFigure=plan=>plan?.mathPlan?.realization?.recipeId===PLANE_RECIPE;
@@ -69,8 +70,8 @@ const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','
   quadrants:['id','quadrant','label','fill','factRole'],textLabels:['id','at','text','labelKind','labelWeight','anchor','factRole'],angleSums:['id','angles','label','at','anchor','factRole'],commonSides:['id','segment','text','labelWeight','labelAt','factRole'],
   dimensions:['id','from','to','label','labelKind','labelWeight','unit','side','style','offset','offsetPx','extension','crossArcs','value','factRole'],
   pathLabels:['id','points','label','labelKind','labelWeight','unit','value','factRole','closed','anchor','side','leader'],
-  angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight','over','arcScale','angleDimension'],
-  equalLengths:['id','count','segments','pathMark','markStyle'],parallels:['id','count','segments','lines'],
+  angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight','over','arcScale','angleDimension','color'],
+  equalLengths:['id','count','segments','pathMark','markStyle','color'],parallels:['id','count','segments','lines','color'],
   expressionLabels:['id','ownerSegment','text','factRole','labelKind','labelWeight','unit','labelAt','ownership','side'],
   arcs:['id','circle','center','from','to','side','label','labelKind','labelWeight','unit','labelPlacement','highlight','factRole'],
   traces:['id','center','radius','through','spanDeg','span','labelAt','label','labelKind','labelWeight','unit','factRole'],
@@ -291,6 +292,19 @@ export function planeMarkSpec(plan,model,points,segmentIds){
   // --- angle arcs
   const groups=new Map(),angleInfo=new Map();
   const overInfo=resolveAngleOver(list(marks.angles,'angles'),at);   // angles[].over (E32): whole angles over their halves
+  // equalAngles (C1): [{angles:[ids],color}] colours a whole group of equal angles at once; angles[].color colours one angle. One colour = one size of angle.
+  const angleGroupColor=new Map(),colorSizes=new Map();
+  list(marks.equalAngles,'equalAngles').forEach((group,index)=>{
+    if(!group||typeof group!=='object'||Array.isArray(group))bad('MARK_FIELD_INVALID:equalAngles');
+    keysOk(group,KEYS.equalAngles,'equalAngles');
+    if(!isPaletteName(group.color))bad('ANGLE_COLOR_INVALID:equalAngles.'+index);
+    if(!Array.isArray(group.angles)||group.angles.length<2||group.angles.some(id=>typeof id!=='string')||new Set(group.angles).size!==group.angles.length)bad('ANGLE_COLOR_INVALID:equalAngles.'+index+'.angles');
+    for(const id of group.angles){
+      if(!list(marks.angles,'angles').some(row=>row?.id===id))bad('ANGLE_COLOR_INVALID:equalAngles.'+index+':unknown angle '+id);
+      if(angleGroupColor.has(id))bad('ANGLE_COLOR_GROUP_MISMATCH:'+id+':in two equalAngles groups');
+      angleGroupColor.set(id,group.color);
+    }
+  });
   for(const row of list(marks.angles,'angles')){
     if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:angles');
     keysOk(row,KEYS.angles,'angles');claim(row.id,'angles');
@@ -332,6 +346,16 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     const text=labelOf(row,declared!==null?String(row.value).replace(/\.0+$/,''):(straight?'180':null),true);
     if(text===null&&row.noLabel!==true)bad('ANGLE_MARK_LABEL_REQUIRED:'+row.id);
     angleInfo.set(row.id,{vertex:row.refs[1],value:declared});
+    // color (C1): a palette colour for the sector and the arcs; angles of one colour must be the same size (0.5 degrees), and it replaces emphasisGroup
+    if(row.color!==undefined&&!isPaletteName(row.color))bad('ANGLE_COLOR_INVALID:'+row.id);
+    if(row.color!==undefined&&angleGroupColor.has(row.id)&&angleGroupColor.get(row.id)!==row.color)bad('ANGLE_COLOR_INVALID:'+row.id+':differs from its equalAngles group');
+    const color=row.color??angleGroupColor.get(row.id);
+    if(color!==undefined&&(row.emphasisGroup!==undefined||straight))bad('ANGLE_COLOR_INVALID:'+row.id+(straight?':a straight angle':':emphasisGroup'));
+    if(color!==undefined){
+      const seen=colorSizes.get(color);
+      if(seen&&Math.abs(seen.measured-measured)>ANGLE_TOLERANCE_DEGREES)bad('ANGLE_COLOR_GROUP_MISMATCH:'+seen.id+'&'+row.id+':'+color+':'+seen.measured.toFixed(3)+'!='+measured.toFixed(3));
+      if(!seen)colorSizes.set(color,{id:row.id,measured});
+    }
     if(row.emphasisGroup!==undefined&&(!Number.isInteger(row.emphasisGroup)||row.emphasisGroup<1||row.emphasisGroup>ANGLE_EMPHASIS_GROUPS))bad('ANGLE_EMPHASIS_GROUP_INVALID:'+row.id);
     // labelPlacement LEADER (E12b): the label stands outside its angle on a leader from its own arc even where the angle has room for it; AUTO (default) keeps the old search.
     if(row.labelPlacement!==undefined&&!ANGLE_LABEL_PLACEMENTS.includes(row.labelPlacement))bad('ANGLE_LABEL_PLACEMENT_INVALID:'+row.id);
@@ -352,7 +376,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       const dim=row.angleDimension,plainObject=!!dim&&typeof dim==='object'&&!Array.isArray(dim),factor=plainObject?(dim.radiusFactor===undefined?1.15:numberOf(dim.radiusFactor)):null;
       if(!plainObject||Object.keys(dim).some(key=>key!=='radiusFactor')||factor===null||factor<0.6||factor>1.5||straight||side==='OUTER'||arcs!==1||style!=='ARC')bad('CALLOUT_ANGLE_DIMENSION_INVALID:'+row.id);
     }
-    const object={id:row.id,kind:'ANGLE_MARK',refs:row.refs,value:measured,arcs,style,...(ring>1?{ring}:{}),...(straight?{straight:true,straightSide:side}:{}),...(side==='OUTER'?{outer:true}:{}),...(row.emphasisGroup!==undefined?{emphasisGroup:row.emphasisGroup}:{}),...(placement==='LEADER'?{labelPlacement:'LEADER'}:{}),...(overRow?{over:[...row.over]}:{}),...(row.arcScale!==undefined?{arcScale:row.arcScale}:{}),...(row.angleDimension!==undefined?{angleDimension:{radiusFactor:numberOf(row.angleDimension.radiusFactor??1.15)}}:{})};
+    const object={id:row.id,kind:'ANGLE_MARK',refs:row.refs,value:measured,arcs,style,...(ring>1?{ring}:{}),...(straight?{straight:true,straightSide:side}:{}),...(side==='OUTER'?{outer:true}:{}),...(row.emphasisGroup!==undefined?{emphasisGroup:row.emphasisGroup}:{}),...(color!==undefined?{color}:{}),...(placement==='LEADER'?{labelPlacement:'LEADER'}:{}),...(overRow?{over:[...row.over]}:{}),...(row.arcScale!==undefined?{arcScale:row.arcScale}:{}),...(row.angleDimension!==undefined?{angleDimension:{radiusFactor:numberOf(row.angleDimension.radiusFactor??1.15)}}:{})};
     if(text!==null){object.labelText=text;object.labelKind=kind;factRolesByLabel[row.id+'-label']=role(row);}
     objects.push(object);
   }

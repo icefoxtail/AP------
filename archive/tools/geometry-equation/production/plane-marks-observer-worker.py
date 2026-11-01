@@ -581,6 +581,19 @@ def audit(p):
             if t in {'line','polyline','polygon','circle','path'} and n.get('stroke') not in (None,'none'):return True
             if t=='g' and n.get('data-fragment-sha'):return True
         return False
+    # colour groups of angles (C1): angles[].color and the groups of equalAngles, resolved from the plan alone; angles of one colour must be drawn the same size
+    angle_colors={};angle_ids={r.get('id') for r in marks.get('angles',[]) if isinstance(r,dict)}
+    for index,group in enumerate(marks.get('equalAngles') or []):
+        if not isinstance(group,dict) or group.get('color') not in PALETTE_LINES or not isinstance(group.get('angles'),list) or len(group['angles'])<2:errors.append('ANGLE_COLOR_INVALID:equalAngles.'+str(index));continue
+        for aid in group['angles']:
+            if aid not in angle_ids:errors.append('ANGLE_COLOR_INVALID:'+str(aid))
+            elif aid in angle_colors:errors.append('ANGLE_COLOR_GROUP_MISMATCH:'+aid)
+            else:angle_colors[aid]=group['color']
+    for row in marks.get('angles',[]):
+        if row.get('color') is not None:
+            if row['color'] not in PALETTE_LINES:errors.append('ANGLE_COLOR_INVALID:'+row['id'])
+            elif angle_colors.get(row['id'],row['color'])!=row['color']:errors.append('ANGLE_COLOR_INVALID:'+row['id'])
+            else:angle_colors[row['id']]=row['color']
     for row in marks.get('angles',[]):
         oid=row['id'];nodes=by_mark.get(('angle',oid),[])
         arcs=sorted((n for n in nodes if tag(n)=='polyline'),key=lambda n:int(n.get('data-mark-index','0')))
@@ -648,8 +661,12 @@ def audit(p):
         if row.get('value') is not None and abs(drawn-float(row['value']))>ANGLE_TOLERANCE:errors.append('ANGLE_MARK_FACT_MISMATCH:'+oid+':drawn=%.3f:declared=%s'%(drawn,row['value']))
         if len(radii)>1 and any(r1-r0<=1e-9 for r0,r1 in zip(radii,radii[1:])):errors.append('ANGLE_ARCS_NOT_CONCENTRIC_INCREASING:'+oid)
         # emphasisGroup: every arc of the angle is drawn in its group's colour; an angle without a group keeps the default stroke
-        group=row.get('emphasisGroup')
-        if group is not None and group not in ANGLE_GROUP_STROKES:errors.append('ANGLE_EMPHASIS_GROUP_INVALID:'+oid)
+        group=row.get('emphasisGroup');color=angle_colors.get(oid)
+        if color is not None:
+            if group is not None:errors.append('ANGLE_COLOR_INVALID:'+oid)
+            for n in arcs:
+                if str(n.get('stroke') or '').lower()!=PALETTE_LINES[color]:errors.append('ANGLE_COLOR_MISMATCH:'+oid);break
+        elif group is not None and group not in ANGLE_GROUP_STROKES:errors.append('ANGLE_EMPHASIS_GROUP_INVALID:'+oid)
         else:
             want=ANGLE_GROUP_STROKES[group] if group is not None else DEFAULT_STROKE
             for n in arcs:
@@ -657,7 +674,9 @@ def audit(p):
         if sectors:
             node=sectors[0]
             if node.get('stroke') not in (None,'none'):errors.append('ANGLE_SECTOR_STROKE_PRESENT:'+oid)
-            if str(node.get('fill','')).lower()!=SECTOR_FILL:errors.append('ANGLE_SECTOR_FILL_MISMATCH:'+oid)
+            if color is not None:
+                if drawn_fill(node)!=PALETTE_FILLS[color]:errors.append('ANGLE_COLOR_MISMATCH:'+oid+':sector')
+            elif str(node.get('fill','')).lower()!=SECTOR_FILL or node.get('fill-opacity') is not None:errors.append('ANGLE_SECTOR_FILL_MISMATCH:'+oid)
             wedge=poly_model(node)
             if len(wedge)<3:errors.append('ANGLE_SECTOR_MISSING:'+oid)
             else:
@@ -672,7 +691,12 @@ def audit(p):
                 if signed!=0 and total*signed<=0:errors.append('ANGLE_SECTOR_SIDE_MISMATCH:'+oid)
                 if stroke_before(node):errors.append('ANGLE_SECTOR_NOT_BENEATH_STROKES:'+oid)
                 observations.append({'id':oid+'-sector','type':'ANGLE_SECTOR','drawnDegrees':abs(total),'radius':mean,'atVertex':bool(norm(sub(wedge[0],v))*sx<=SECTOR_TOLERANCE)})
-        drawn_angles[oid]=drawn;observations.append({'id':oid,'type':'ANGLE','drawnDegrees':drawn,'pointsDegrees':expected,'arcs':len(arcs),'style':style})
+        drawn_angles[oid]=drawn
+        if color is not None:
+            # the same colour means the same size: against the first angle of this colour, drawn and from the peer points
+            earlier=[(other,drawn_angles[other]) for other in drawn_angles if other!=oid and angle_colors.get(other)==color]
+            if earlier and abs(earlier[0][1]-drawn)>ANGLE_TOLERANCE:errors.append('ANGLE_COLOR_GROUP_MISMATCH:'+earlier[0][0]+'&'+oid+':'+color+':%.3f!=%.3f'%(earlier[0][1],drawn))
+        observations.append({'id':oid,'type':'ANGLE','drawnDegrees':drawn,'pointsDegrees':expected,'arcs':len(arcs),'style':style})
         if row.get('noLabel') is not True and (row.get('label') is not None or row.get('value') is not None):
             box=label_clear(oid+'-label')
             if box is not None:

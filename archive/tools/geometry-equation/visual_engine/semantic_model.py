@@ -78,6 +78,11 @@ def validate(spec):
         if 'guide' in obj and (obj['kind']!='SEGMENT' or obj['guide'] is not True or any(key in obj for key in ('dash','arrow','emphasis'))):raise ValueError('INVALID_SEGMENT_GUIDE:'+str(obj.get('id')))
         # emphasisGroup (1..3) colours the arcs of one angle mark; nothing else carries it.
         if 'emphasisGroup' in obj and (obj['kind']!='ANGLE_MARK' or isinstance(obj['emphasisGroup'],bool) or obj['emphasisGroup'] not in {1,2,3}):raise ValueError('INVALID_ANGLE_EMPHASIS_GROUP')
+        # color (C1): a palette colour of a segment, an angle mark or an equal / parallel mark group; an angle mark takes either a colour or an emphasisGroup, a guide / emphasised / dashed / arrow segment none
+        if 'color' in obj:
+            if obj['kind'] not in {'SEGMENT','ANGLE_MARK','EQUAL_MARK','PARALLEL_MARK'} or obj['color'] not in PALETTE_NAMES:raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
+            if obj['kind']=='ANGLE_MARK' and 'emphasisGroup' in obj:raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
+            if obj['kind']=='SEGMENT' and any(key in obj for key in ('guide','dash','arrow','emphasis')):raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
         # A plane mark label is plain TEXT or math; a unit (cm, m, mm) follows a math label of an expression label, a circular arc or a trace only.
         if 'unit' in obj:
             if obj['kind'] not in {'EQUATION_LABEL','CIRCULAR_ARC','TRACE_ARC','DIMENSION_LINE','PATH_LABEL'}:raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
