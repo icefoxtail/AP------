@@ -406,6 +406,27 @@ test('the hyperbola figure renders in real Chrome with both branches, passes its
   await failsWith(svg.replace(/(id="point-A" data-role="point"[^>]*?)cx="([0-9.]+)"/,(all,head,cx)=>`${head}cx="${Number(cx)+9}"`),'CONIC_LINE_LINE_MISMATCH:A');
 });
 
+test('coordinate labels are written from the solved points and the observer re-reads them numerically',async()=>{
+  const plan=hyperbolaPlan();
+  for(const point of plan.points)if(['P','A','B'].includes(point.id))point.coordinates=true;
+  const model=await solveEllipseFigure(plan);
+  const composed=await composeEllipseFigure({plan,model,identity,typographyPolicy:policy});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  const svg=composed.svg;
+  assert.match(svg,/data-point="A" data-tex="A\(6,6\)"/);
+  assert.match(svg,/data-point="B" data-tex="B\(2,-2\)"/);
+  const audit=await auditEllipseSvg({plan,svg});
+  assert.equal(audit.status,'PASS',JSON.stringify(audit.errors));
+  const tampered=svg.replace('data-tex="B(2,-2)"','data-tex="B(2,-3)"');
+  assert.notEqual(tampered,svg);
+  const result=await auditEllipseSvg({plan,svg:tampered});
+  assert.equal(result.status,'FAIL');
+  assert.ok(result.errors.some(error=>error.startsWith('LABEL_COORDINATES_MISMATCH:B')),JSON.stringify(result.errors));
+  const plain=hyperbolaPlan(),plainModel=await solveEllipseFigure(plain);
+  const plainSvg=(await composeEllipseFigure({plan:plain,model:plainModel,identity,typographyPolicy:policy})).svg;
+  assert.ok(!/data-tex="[A-Z]\(/.test(plainSvg),'a plan without coordinates keeps plain names');
+});
+
 test('a line name beside a diagonal line is led out corner-first so the leader meets the line squarely',()=>{
   const layout={size:{width:300,height:300}};
   const owner={a:[20,20],b:[280,280]};

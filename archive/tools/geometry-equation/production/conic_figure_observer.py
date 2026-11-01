@@ -35,6 +35,30 @@ ASYMPTOTE_ANGLE_DEGREES=0.3
 X,Y=S.symbols('X Y',real=True)
 
 
+POINT_LEADER_MAX=120.0  # a coordinate label's leader may be longer than a name's reach: the label then sits in a free spot of a crowded figure
+
+def _tex_number(text):
+    """Read a coordinate written as -3, \\frac{3}{4}, 2\\sqrt{3} or \\frac{3\\sqrt{3}}{2} back to a float (None when the form is not one of those)."""
+    import re
+    sign=-1.0 if text.startswith('-') else 1.0
+    text=text.lstrip('-')
+    m=re.fullmatch(r'\\frac\{(.+)\}\{(\d+)\}',text)
+    top,den=(m.group(1),float(m.group(2))) if m else (text,1.0)
+    m=re.fullmatch(r'(\d*)\\sqrt\{(\d+)\}',top)
+    if m: value=(float(m.group(1)) if m.group(1) else 1.0)*math.sqrt(float(m.group(2)))
+    elif re.fullmatch(r'\d+',top): value=float(top)
+    else: return None
+    return sign*value/den
+
+def _coordinate_label_matches(shown,pid,point):
+    """The label reads `ID(x,y)`; both numbers must equal the point the observer derived from the plan."""
+    import re
+    m=re.fullmatch(re.escape(pid)+r'\((.+),(.+)\)',shown or '')
+    if not m: return False
+    x,y=_tex_number(m.group(1)),_tex_number(m.group(2))
+    return x is not None and y is not None and abs(x-float(point[0]))<1e-6 and abs(y-float(point[1]))<1e-6
+
+
 def _scalar(text,code='CONIC_PARAMETER_INVALID'):
     try:
         return exact_scalar(text)
@@ -794,6 +818,7 @@ def audit(plan,svg):
         if pid not in feet: errors.append('CONIC_FOOT_MISMATCH:%s:rightangle-undeclared'%pid)
 
     # --- names ------------------------------------------------------------------------------------------------------------------------------
+    coordinate_ids={raw.get('id') for raw in (plan.get('points') or []) if isinstance(raw,dict) and raw.get('coordinates') is True}
     label_elements={}
     for element in elements:
         if element.get('data-label-role')=='point' and element.get('data-point'): label_elements[element.get('data-point')]=element
@@ -802,13 +827,15 @@ def audit(plan,svg):
         element=label_elements.get(pid)
         if element is None: errors.append('LABEL_MISSING:%s'%pid);continue
         shown=element.get('data-tex') if element.get('data-tex') is not None else element.get('data-text')
-        if shown!=pid: errors.append('LABEL_TEXT_MISMATCH:%s:%s'%(pid,shown))
+        if pid in coordinate_ids:
+            if not _coordinate_label_matches(shown,pid,points[pid]): errors.append('LABEL_COORDINATES_MISMATCH:%s:%s'%(pid,shown))
+        elif shown!=pid: errors.append('LABEL_TEXT_MISMATCH:%s:%s'%(pid,shown))
         box=_box_of(element)
         if box is None: errors.append('LABEL_BOX_MISSING:%s'%pid);continue
         if box['x']<0 or box['y']<0 or box['x']+box['width']>canvas['width'] or box['y']+box['height']>canvas['height']:
             errors.append('LABEL_OUT_OF_CANVAS:%s'%pid)
         ex,ey=pixel(*points[pid])
-        if _box_distance(ex,ey,box)>LABEL_DISTANCE: errors.append('LABEL_TOO_FAR:%s'%pid)
+        if _box_distance(ex,ey,box)>(POINT_LEADER_MAX if pid in coordinate_ids else LABEL_DISTANCE): errors.append('LABEL_TOO_FAR:%s'%pid)
         for other,value in points.items():
             if other==pid: continue
             gx,gy=pixel(*value)
@@ -830,7 +857,7 @@ def audit(plan,svg):
             else: leaders_by_label[key]=element
     named_lines={raw['id'] for raw in raw_lines if raw.get('label') and raw.get('hidden') is not True}
     named_curves={cid for cid,one in pars.items() if one.get('label')}
-    allowed_leader_keys={'measure-'+sid for sid in required_leaders}|{'line-'+lid for lid in named_lines}|{'curve-'+cid for cid in named_curves}
+    allowed_leader_keys={'measure-'+sid for sid in required_leaders}|{'line-'+lid for lid in named_lines}|{'curve-'+cid for cid in named_curves}|{'point-'+pid for pid in coordinate_ids}
     for key in leaders_by_label:
         if key not in allowed_leader_keys: errors.append('MEASURE_LEADER_UNDECLARED:%s'%key)
 
@@ -955,6 +982,21 @@ def audit(plan,svg):
         length=math.hypot(x2-x1,y2-y1)
         if length<8 or length>64: errors.append('CONIC_CURVE_LABEL_MISMATCH:%s:leader-length'%cid)
         leader_clear('curve-'+cid,leader,own_curve=True)
+    # a coordinate label that sits away from its point is joined to it by a leader that starts on the label box and stops just short of the dot
+    for pid in sorted(coordinate_ids):
+        leader=leaders_by_label.get('point-'+pid);element=label_elements.get(pid)
+        if leader is None or element is None or pid not in points: continue
+        box=_box_of(element)
+        if box is None: continue
+        key='point-'+pid
+        if leader.get('id')!='leader-'+key or leader.get('data-owner-point')!=pid or leader.get('data-label')!=key:
+            errors.append('MEASURE_LEADER_OWNER_MISMATCH:%s'%key)
+        x1,y1,x2,y2=_line_coords(leader,errors,'MEASURE_LEADER_COORDINATE_INVALID')
+        ex,ey=pixel(*points[pid])
+        if _box_boundary_distance((x1,y1),box)>2.5: errors.append('MEASURE_LEADER_NOT_AT_LABEL_BOX:%s'%key)
+        if not 3.5<=math.hypot(x2-ex,y2-ey)<=8.0: errors.append('MEASURE_LEADER_NOT_AT_OWNER:%s'%key)
+        if not 8<=math.hypot(x2-x1,y2-y1)<=POINT_LEADER_MAX: errors.append('MEASURE_LEADER_LENGTH_INVALID:%s'%key)
+        leader_clear(key,leader,own_curve=True)  # the dot may sit on a curve, so only the last 3 px of its leader may touch one
     for key,leader in leaders_by_label.items():
         if key.startswith('line-') and key[5:] not in named_lines: errors.append('MEASURE_LEADER_UNDECLARED:%s'%key)
     return result()
