@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "25_제일고_2학기_기말_고2_수학II_유사",
+  "candidateJsPath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사.meta-q01-q23.json",
+  "candidateGitBlobSha1": "c6bfeb1ad4f7d4d4baf83942f2206803385125ee",
+  "reviewTimestamp": "2026-11-01T00:00:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "SIGNED_OFF_PASS_WITH_NOTES",
+  "blindFirstPass": {
+    "totalSolved": 23,
+    "answerMatches": 23,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "scratchpad/rev1/blind_freeze.json",
+    "method": "Student-visible fields only (content/choices, rendered figures of Q7,Q9,Q12,Q14,Q23 viewed as PNG) solved with sympy/numpy brute-force cross-checks (blind.py), frozen to blind_freeze.json, then compared with stored answers.",
+    "disclosure": "Before solving, the problem plan JSON of Q7 and Q14 (figure captions/coordinates, no answer values) was read; no stored answer or solution text was viewed before the freeze.",
+    "frozenAnswers": {
+      "1": "②",
+      "2": "④",
+      "3": "⑤",
+      "4": "①",
+      "5": "③",
+      "6": "①",
+      "7": "③",
+      "8": "④",
+      "9": "②",
+      "10": "④",
+      "11": "③",
+      "12": "⑤",
+      "13": "①",
+      "14": "②",
+      "15": "④",
+      "16": "②",
+      "17": "①",
+      "18": "③",
+      "19": "⑤",
+      "20": "5",
+      "21": "극솟값 -4, 극댓값 4",
+      "22": "21",
+      "23": "10"
+    }
+  },
+  "originalComparison": {
+    "questionCount": "23 vs 23",
+    "pointsSum": "100 vs 100",
+    "perQuestionPoints": "all equal",
+    "questionTypes": "all equal (19 MC + 4 short-answer/서술형)",
+    "levels": "equal except Q21 and Q23 (original 상, similar 중); both are same-structure variants whose solving steps equal the original, so actual difficulty is unchanged (label only)",
+    "answerValueCollisionWithOriginal": "none (all 23 final answers differ from original answers)",
+    "notes": [
+      "Q14 restructured: original fixed curve y=9-x^2 with variable line y=k and asked k/S2; similar uses y=x^2, fixed y=3, variable x=k and asks k/S1. Same type (S1=S2 area relation), same difficulty; acceptable.",
+      "Q7 reading condition ㄱ changed from 'turns 3 times' to 'turns direction at t=3' and ㄹ added (position at t=7); same record, same difficulty.",
+      "Q9 original f(1)=f(10)=f'(10)=0 with n<=11; similar f(2)=f(8)=f'(8)=0 with n<=10; extra zero of f' at x=4 forces case split; same structure."
+    ]
+  },
+  "answerDistribution": {
+    "①": 4,
+    "②": 4,
+    "③": 4,
+    "④": 4,
+    "⑤": 3,
+    "note": "MC 1-19 only; max-min=1"
+  },
+  "mathReview": "All 23 solutions re-derived independently (sympy plus numeric brute force for Q9,Q11,Q16,Q18,Q19,Q20,Q23). Steps, case analysis (Q8 sign of a, Q9 sign table, Q11 t>0 and endpoint k=1/k=7 exclusions, Q16 4<=t<=6, Q18 a<=1 and distinct roots, Q19 piecewise g with f increasing on [-3/2,3/2], Q20 infimum -n not attained so equality allowed) and curriculum (2015 Math II: differentiation/integration only) are correct. MC choices strictly ascending, unique correct choice. KaTeX: 761 formulas rendered with throwOnError, 0 errors; $ parity OK.",
+  "reviewerEdits": [],
+  "metaReview": {
+    "coverage": {
+      "items": 23,
+      "requiredFieldsFilled": "23/23 for each of 26 required fields (core, RPM L1-L4/recordId, PT/TPL, cross/condition, integrationPattern, level, difficultyBucket, sourceQid, variationType, provenance, visualNecessity)",
+      "canonicalRpmL4Items": 23,
+      "extensionL4Items": 0,
+      "reusedExtensionKeys": 0,
+      "newExtensionKeys": 0,
+      "distinctCrossConceptKeys": 23,
+      "distinctConditionKeys": 10,
+      "distinctProblemTypeKeys": 11,
+      "distinctTemplateKeys": 14,
+      "totalDistinctKeysChecked": 81,
+      "allKeysExistInCanonical": true,
+      "allCrossConceptKeysExistInCanonical": true,
+      "allConditionKeysExistInCanonical": true,
+      "allPtTplRegisteredInCanonicalPacksAndTemplateBelongsToPT": true,
+      "rpmRecordIdsExistAndL1toL3L4MatchCrosswalk": true,
+      "metaMatchesJsFields": "0 mismatches (scripted comparison of meta.after vs JS question fields for 15 scalar fields, cross/condition arrays, RPM labels)",
+      "registryChanges": 0,
+      "aliasProposals": 0,
+      "evidenceDebt": 0,
+      "newCrossConceptKeys": 0,
+      "newConditionKeys": 0,
+      "extensionRegistryFile": "none required (no new EXT keys)"
+    },
+    "levelDifficulty": "difficultyBucket 1-5 consistent with solution step counts; Q19 bucket 5 (piecewise max function + symmetry).",
+    "notes": [
+      "Q5 uses RPM-042 (미분과 적분 관계); RPM-041 (상한이 변수인 적분) would also be defensible; left as is.",
+      "Q15 uses RPM-016 / PT_DERIVATIVE_RULE_EVALUATION (cubic determination via f(0)=f(2)=f(a), f' maximum, tangent intercept); canonical crosswalk has no dedicated cubic-determination record, so the closest derivative-calculation record is acceptable."
+    ]
+  },
+  "visualReview": {
+    "plans": "46 plan files (23 problem + 23 solution) plus engine_evidence; all valid and every problemPlanRef/solutionPlanRef resolves.",
+    "activeSvg": [
+      "q7 problem",
+      "q9 problem",
+      "q12 problem",
+      "q14 problem",
+      "q23 problem"
+    ],
+    "assetsMatchEngineEvidence": "all 5 SVG assets byte-identical to engine_evidence outputs (ARCHIVE_BOUND)",
+    "svgChecks": "role=img, title, desc present; text is glyph outlines at data-font-px=20 (>=11); no raw LaTeX; rendered through headless Chrome and viewed",
+    "problemFigureNeed": "All five originally figure-based problems (Q7,Q9,Q12,Q14,Q23) have a figure; no other stem needs a figure to be solved.",
+    "figureNotes": [
+      "Q7: curve label reads v(x) while the axis is t; stem explicitly says v(x) denotes v(t). Axis letters v,t render in a light sans style. Readable; accepted.",
+      "Q14: line x=k is labelled; y=3 is named in the top legend and in the stem. Figure is drawn with k=3 to scale, consistent with the solution; accepted.",
+      "Q23: curve labelled f(x) matching 'y=f(x)' in stem; roots -1,3 and C(0,3) shown, which determine f."
+    ],
+    "solutionVisualDebt": "All 23 solution plans are EXEMPT while the original had ~17 solution SVGs. Solutions are complete textual sign-table/step derivations, so students are not blocked. Optional ADD candidates with real learning gain: Q23 (graph of F with horizontal line y=k), Q4 (W-shaped quartic with y=a band), Q19 (region between f and g), Q16 (cubic on [0,t]). Not a merge blocker."
+  },
+  "harness": {
+    "command": "node tools/harness/verify_similar_exam.mjs <js>",
+    "result": "GATE_FAIL 50 errors (final run with this receipt present)",
+    "classification": {
+      "toolLimit": "46 'unregistered problemTypeKey/templateKey in canonical taxonomy' errors: harness reads the middle taxonomy; verified directly against canonical high packs (all registered, template parent PT matches). Same limitation present on the merged 강남여고 sibling.",
+      "falsePositive": "Q7 symbol 'P' (moving point, not a graph point) and Q23 symbol 'F' (antiderivative named in stem, graph shows f) missing from SVG labels: same class as merged 강남여고 Q8 'P'.",
+      "resolvedByThisReceipt": "'Review receipt not found' resolved. Remaining receipt-format errors (signOffStatus must equal SIGNED_OFF_PASS exactly; questionReviews array absent) are identical to the merged 강남여고 sibling receipt format, which this receipt follows.",
+      "realDefects": 0
+    }
+  },
+  "structural": {
+    "nodeCheck": "PASS",
+    "questionCount": 23,
+    "pointsSum": 100,
+    "choicesPerMC": 5,
+    "metaExpectedSourceBlobSha1MatchesJs": true
+  },
+  "NOT_RUN": [
+    "actual browser/print render of the exam page (engine.html)",
+    "tools/run-tests.js full suite",
+    "tools/check-archive2-runtime.cjs"
+  ],
+  "defects": []
+}

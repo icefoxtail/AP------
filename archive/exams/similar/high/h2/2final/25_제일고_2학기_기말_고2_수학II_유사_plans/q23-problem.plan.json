@@ -1,0 +1,101 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -2.2,
+      4.2
+    ],
+    "viewport": [
+      -3,
+      5,
+      -5.5,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "id": "M",
+        "x": 1,
+        "y": 4
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1",
+        "0"
+      ],
+      "B": [
+        "3",
+        "0"
+      ],
+      "C": [
+        "0",
+        "3"
+      ],
+      "M": [
+        "1",
+        "4"
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "M"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "삼차함수 F(x)의 도함수 y=f(x)의 그래프는 x=−1, x=3에서 x축과 만나고 y축과 점 (0,3)에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "y=f(x)의 그래프가 x축과 x=−1, 3에서 만나고 y절편이 3이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도함수 그래프의 x절편 −1, 3과 y절편 3을 읽을 수 있게 한다."
+  ],
+  "sourceQuote": "도함수 $y=f(x)$의 그래프이다",
+  "assetPath": "assets/images/25_제일고_2학기_기말_고2_수학II_유사/q23.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q23-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q23-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q23-problem.svg"
+  }
+}

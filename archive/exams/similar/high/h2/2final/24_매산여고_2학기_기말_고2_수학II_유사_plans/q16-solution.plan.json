@@ -1,0 +1,112 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "0",
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "formula": "2x^3-3x^2+3",
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -2,
+      3,
+      -3,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": -2
+      },
+      {
+        "id": "C",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "id": "D",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 7
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1",
+        "-2"
+      ],
+      "C": [
+        "0",
+        "3"
+      ],
+      "D": [
+        "1",
+        "2"
+      ],
+      "B": [
+        "2",
+        "7"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "구간 [-1,2]에서 f(x)=2x³-3x²+3의 양 끝점 (-1,-2), (2,7)과 극대점 (0,3), 극소점 (1,2)를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "a=-3, b=3이면 f(x)=2x³-3x²+3이다.",
+      "mappedTo": [
+        "graphPlan.pieces"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "구간 [-1,2]에서 f(-1)=-2가 최솟값, f(2)=7이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌구간의 양 끝점과 극점의 함수값을 한 그림에서 비교하게 한다."
+  ],
+  "sourceQuote": "가장 작은 값은 $f(-1)=b-5$이므로",
+  "assetPath": "assets/images/24_매산여고_2학기_기말_고2_수학II_유사/q16-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q16-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q16-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q16-solution.svg"
+  }
+}
