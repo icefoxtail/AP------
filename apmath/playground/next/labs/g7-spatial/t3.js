@@ -2,21 +2,22 @@
    중1 · 위치 관계 — 탭 ③ 「평면이 정해지는 조건」 (t3.js, order 30) — 장면 6개
    · s3-1 한 직선 위에 있지 않은 세 점 · s3-2 한 직선과 그 밖의 한 점 · s3-3 한 점에서 만나는 두 직선 · s3-4 평행한 두 직선
    · s3-5 [반례] 꼬인 위치의 두 직선은 평면이 없다 · s3-6 꼭짓점 세 점으로 만드는 평면의 개수
-   평면은 「책장」처럼 직선 둘레를 돌며 무수히 많아요. 시험 평면(초록)을 돌려 보며 원하는 점·직선을 모두 품는 평면이 몇 개인지 알아봅니다.
+   평면은 「책장」처럼 직선 둘레를 돌며 무수히 많아요. 시험 평면(초록)을 돌려 보며 원하는 점·직선을 모두 포함하는 평면이 몇 개인지 알아봅니다.
    (제자리 회전만 쓰고 이동은 없어요.) 모든 글자·판정·정답은 지금의 값으로 다시 계산됩니다.
    ========================================================================== */
 (function () {
   'use strict';
   const G = window.APL_SP;
   if (!G) return;
-  const { DEG, clamp, pick, rint, shuffle, v3, add3, sub3, mul3, dot3, cross3, len3, unit3, lerp3, mid3, scene3, buildSolid, classify, edgeByKey, fit, bboxOf, P, VIEW, mkChoices, mkText, rd, notes, ov, drawSolid, drawVerts, LET } = G;
+  const { lineRel, jo, DEG, clamp, pick, rint, shuffle, v3, add3, sub3, mul3, dot3, cross3, len3, unit3, lerp3, mid3, scene3, buildSolid, classify, edgeByKey, fit, bboxOf, P, VIEW, mkChoices, mkText, rd, notes, ov, drawSolid, drawVerts, LET } = G;
 
   const PARAMS = {
     spCd: P('점의 위치 (직선에서 떨어진 거리)', 0, 1.8, 0.05, 1.2, { color: 'amber', hint: '0으로 맞추면 점이 직선 위에 놓여요', format: (v) => v.toFixed(2) }),
     spCl: P('직선 사이의 거리', 0.4, 1.8, 0.05, 1.2, { color: 'amber', hint: '두 직선 사이의 간격을 바꿔요', format: (v) => v.toFixed(2) }),
     spAl: P('두 직선이 이루는 각', 20, 160, 1, 60, { color: 'amber', hint: '각이 바뀌어도 평면은 하나예요', format: (v) => Math.round(v) + '°' }),
-    spHt: P('두 직선 사이의 높이', 0, 1.6, 0.05, 0.9, { color: 'amber', hint: '0이면 두 직선이 같은 높이에서 만나요', format: (v) => v.toFixed(2) }),
-    spGm: P('직선 m을 돌리기', 0, 90, 1, 55, { color: 'amber', hint: '0°이면 m이 l과 같은 방향이에요', format: (v) => Math.round(v) + '°' }),
+    spDs: P('직선 m 옮기기 (앞뒤)', 0, 1.8, 0.05, 0.9, { color: 'amber', hint: '0이면 m이 l 위의 한 점을 지나가요', format: (v) => v.toFixed(2) }),
+    spTl: P('직선 m 기울이기', 0, 60, 1, 35, { color: 'amber', hint: '0°이면 m이 바닥과 나란해요', format: (v) => Math.round(v) + '°' }),
+    spGm: P('직선 m을 돌리기', 0, 90, 1, 55, { color: 'amber', hint: '제자리에서 돌려요. 기울기도 0°이면 l과 같은 방향이에요', format: (v) => Math.round(v) + '°' }),
     spTh: P('시험 평면 돌리기', 0, 180, 1, 0, { color: 'green', hint: '직선 둘레로 평면을 돌려 보세요', format: (v) => Math.round(v) + '°' })
   };
   const C2 = (n, k) => { let r = 1; for (let i = 1; i <= k; i++) r = (r * (n - k + i)) / i; return Math.round(r); };
@@ -26,11 +27,11 @@
   const mod180 = (a) => ((a % 180) + 180) % 180;
 
   /* ------------------------------------------------------------ 책장 모형: 직선(x축) 둘레의 평면들 */
-  const PHI = 35;
+  const PHI_CROSS = 35; // 두 직선이 만나는 평면의 기울기(제자리 회전만 하므로 비스듬해도 돼요)
   function fanModel(type, s) {
     const d = s.spCd == null ? 1.2 : s.spCd, A = v3(-1.8, 0, 0), B = v3(1.8, 0, 0);
     let objs = [], lines = [], pts = [], axisName = '', extra = {};
-    const pc = (dd) => add3(mul3(wdir(PHI), dd), v3(0.5, 0, 0));
+    const pc = (dd) => add3(mul3(wdir(0), dd), v3(0.5, 0, 0)); // 점·직선 사이 간격은 바닥과 나란히(앞뒤로) 벌어져요
     if (type === 'pts') {
       const Cp = pc(d); objs = [{ k: 'pt', p: Cp }];
       pts = [{ p: A, n: 'A', c: 'amber' }, { p: B, n: 'B', c: 'amber' }, { p: Cp, n: 'C', c: 'rose' }]; axisName = '직선 AB';
@@ -38,20 +39,21 @@
       const Cp = pc(d); objs = [{ k: 'pt', p: Cp }];
       pts = [{ p: Cp, n: 'A', c: 'rose' }]; lines = [{ p: v3(-2.8, 0, 0), q: v3(2.8, 0, 0), c: 'sky', n: 'l', thick: 5 }]; axisName = '직선 l';
     } else if (type === 'cross') {
-      const al = s.spAl == null ? 60 : s.spAl, dm = add3(mul3(U, Math.cos(al * DEG)), mul3(wdir(PHI), Math.sin(al * DEG)));
+      const al = s.spAl == null ? 60 : s.spAl, dm = add3(mul3(U, Math.cos(al * DEG)), mul3(wdir(PHI_CROSS), Math.sin(al * DEG)));
       objs = [{ k: 'ln', p: v3(0, 0, 0), d: dm }];
       lines = [{ p: v3(-2.8, 0, 0), q: v3(2.8, 0, 0), c: 'sky', n: 'l', thick: 5 }, { p: mul3(dm, -2.6), q: mul3(dm, 2.6), c: 'rose', n: 'm', thick: 5 }];
       pts = [{ p: v3(0, 0, 0), n: 'O', c: 'amber' }]; axisName = '직선 l'; extra = { al, dm };
     } else if (type === 'par') {
-      const dd = s.spCl == null ? 1.2 : s.spCl, Q = mul3(wdir(PHI), dd);
+      const dd = s.spCl == null ? 1.2 : s.spCl, Q = mul3(wdir(0), dd);
       objs = [{ k: 'ln', p: Q, d: U }];
       lines = [{ p: v3(-2.8, 0, 0), q: v3(2.8, 0, 0), c: 'sky', n: 'l', thick: 5 }, { p: add3(Q, v3(-2.8, 0, 0)), q: add3(Q, v3(2.8, 0, 0)), c: 'rose', n: 'm', thick: 5 }];
       extra = { dd, Q }; axisName = '직선 l';
-    } else { // skew
-      const h = s.spHt == null ? 0.9 : s.spHt, g = s.spGm == null ? 55 : s.spGm, dm = v3(Math.cos(g * DEG), Math.sin(g * DEG), 0), Q = v3(0, 0, h);
+    } else { // skew: 직선 m 은 바닥 위의 점 (0, d, 0) 을 지나요. d 만큼 앞뒤로 옮기고, 가로 방향 g 로 돌리고, t 만큼 기울여요.
+      const d = s.spDs == null ? 0.9 : s.spDs, g = s.spGm == null ? 55 : s.spGm, tl = s.spTl == null ? 35 : s.spTl;
+      const dm = v3(Math.cos(g * DEG) * Math.cos(tl * DEG), Math.sin(g * DEG) * Math.cos(tl * DEG), Math.sin(tl * DEG)), Q = v3(0, d, 0);
       objs = [{ k: 'ln', p: Q, d: dm }];
       lines = [{ p: v3(-2.8, 0, 0), q: v3(2.8, 0, 0), c: 'sky', n: 'l', thick: 5 }, { p: add3(Q, mul3(dm, -2.6)), q: add3(Q, mul3(dm, 2.6)), c: 'rose', n: 'm', thick: 5 }];
-      extra = { h, g, dm, Q }; axisName = '직선 l';
+      extra = { d, g, tl, dm, Q, rel: lineRel(v3(0, 0, 0), U, Q, dm) }; axisName = '직선 l';
     }
     // 평면이 있는지(몇 개인지)와 그 각
     const perp = (v) => sub3(v, mul3(U, dot3(v, U)));
@@ -123,7 +125,7 @@
   function capFan(b, F, theta, C) {
     if (!C.txt || C.problem) return;
     const ok = F.contains(theta);
-    const txt = F.nPl === 'inf' ? '어느 평면이든 지나요 → 평면이 무수히 많아요' : F.nPl === 0 ? (ok ? '' : '이 평면은 두 직선을 모두 품지 못해요') : ok ? '이 평면이 모두 지나요 → 평면 1개 고정!' : '이 평면은 지나지 못해요';
+    const txt = F.nPl === 'inf' ? '어느 평면이든 지나요 → 평면이 무수히 많아요' : F.nPl === 0 ? (ok ? '' : '이 평면은 두 직선을 모두 포함하지 못해요') : ok ? '이 평면이 모두 지나요 → 평면 1개 고정!' : '이 평면은 지나지 못해요';
     if (!txt) return;
     b.stext(b.W / 2 - b.insets.right / 2, b.insets.top + 20, txt, { color: ok || F.nPl === 'inf' ? 'green' : 'rose', size: b.W < 560 ? 14.5 : 17, weight: 800, align: 'center', baseline: 'middle' });
   }
@@ -133,12 +135,12 @@
   function fanScene(cfg) {
     const D = {
       id: cfg.id, title: cfg.title, short: cfg.short, question: cfg.question,
-      cam0: { yaw: -28, pitch: 20 },
+      cam0: { yaw: -28, pitch: 30 },
       ctl: (s) => cfg.ctl.concat(['spTh'], VIEW),
       anim: { key: 'spT', dur: 6, label: '평면 돌려 보기', start: 0 },
       onAnim: (s, t) => { s.spTh = Math.round(t * 180); },
       problemT: 0,
-      init: (s) => { Object.assign(s, cfg.init); s.spT = 0; s.spTh = 0; s.spPq = cfg.pq ? cfg.pq(s, true) : null; },
+      init: (s) => { Object.assign(s, cfg.init); s.spT = 0; s.spTh = cfg.init.spTh == null ? 0 : cfg.init.spTh; s.spPq = cfg.pq ? cfg.pq(s, true) : null; },
       reroll: (s) => { s.spPq = cfg.pq(s, false); },
       model: (s) => ({ F: fanModel(cfg.type, s), s, pq: s.spPq }),
       draw(b, s, M, C) {
@@ -164,7 +166,7 @@
         const F = M.F, th = s.spTh == null ? 0 : s.spTh, ok = F.contains(th);
         const rows = cfg.rows(M, ok);
         return {
-          guide: cfg.guide + ' 시험 평면(<b style="color:var(--m-green)">초록</b>)을 돌려 <b>' + cfg.need + '</b>을(를) 모두 품는 평면이 몇 개인지 찾아보세요. 빈 곳을 끌면 시점이 돌아가요.',
+          guide: cfg.guide + ' 시험 평면(<b style="color:var(--m-green)">초록</b>)을 돌려 <b>' + cfg.need + '</b>을(를) 모두 포함하는 평면이 몇 개인지 찾아보세요. 빈 곳을 끌면 시점이 돌아가요.',
           readouts: rows,
           formula: cfg.formula(M),
           rule: cfg.rule,
@@ -176,7 +178,7 @@
     return D;
   }
   const rdPl = (F, label) => rd(label, F.nPl === 'inf' ? '무수히 많아요' : F.nPl === 0 ? '없어요' : '1개', F.nPl === 1 ? 'green' : F.nPl === 0 ? 'rose' : 'amber', F.nPl === 1 ? '딱 하나로 정해져요' : F.nPl === 'inf' ? '풍차처럼 돌아가요' : '', null, true);
-  const rdTest = (ok, what) => rd('지금 돌린 평면', ok ? `${what}를 지나요` : `${what}를 지나지 못해요`, ok ? 'green' : 'violet');
+  const rdTest = (ok, what) => rd('지금 돌린 평면', ok ? `${what}${jo(what, 'eul')} 지나요` : `${what}${jo(what, 'eul')} 지나지 못해요`, ok ? 'green' : 'violet');
 
   /* ---- 5지선다(평면의 개수 5가지 보기) */
   const PCH = [['평면이 없다', 0], ['1개', 1], ['2개', 2], ['3개', 3], ['무수히 많다', 'inf']];
@@ -188,16 +190,16 @@
   S.push(fanScene({
     id: 's3-1', type: 'pts', title: '한 직선 위에 있지 않은 세 점', short: '세 점',
     question: '세 점을 지나는 평면은 몇 개일까? 세 점이 한 직선 위에 있을 때와 있지 않을 때를 비교해 보자.',
-    ctl: ['spCd'], init: { spCd: 1.2, spTh: 0 }, step3: { spCd: 0 },
+    ctl: ['spCd'], init: { spCd: 1.2, spTh: 75 }, step3: { spCd: 0 },
     guide: '두 점 A, B를 지나는 평면은 직선 AB 둘레로 돌아가는 책장처럼 무수히 많아요. 막대로 <b>점 C</b>의 위치를 바꿔 보세요.', need: '세 점 A, B, C',
     rows: (M, ok) => [rdPl(M.F, 'A, B, C를 지나는 평면'), rd('점 C와 직선 AB 사이의 거리', M.F.d.toFixed(2), 'amber', M.F.d < 0.05 ? '세 점이 한 직선 위에 있어요' : ''), rdTest(ok, '점 C')],
-    steps: (M) => ['두 점 A, B를 지나는 직선 AB를 그어요. 이 직선을 품는 평면은 책장처럼 무수히 많아요.', '점 C가 직선 AB 밖에 있으면, 그 평면들 중 C를 지나는 평면은 딱 하나예요. 한 직선 위에 있지 않은 세 점은 평면을 하나로 정해요.', '점 C가 직선 AB 위에 있으면 세 점이 한 직선 위에 있어서 평면이 하나로 정해지지 않아요. 평면이 무수히 많아요.'],
+    steps: (M) => ['두 점 A, B를 지나는 직선 AB를 그어요. 이 직선을 포함하는 평면은 책장처럼 무수히 많아요.', '점 C가 직선 AB 밖에 있으면, 그 평면들 중 C를 지나는 평면은 딱 하나예요. 한 직선 위에 있지 않은 세 점은 평면을 하나로 정해요.', '점 C가 직선 AB 위에 있으면 세 점이 한 직선 위에 있어서 평면이 하나로 정해지지 않아요. 평면이 무수히 많아요.'],
     formula: () => '<p>한 직선 위에 있지 않은 세 점 → 평면 $1$개</p><p>한 직선 위에 있는 세 점 → 평면 무수히 많음</p>',
     rule: '한 직선 위에 있지 않은 서로 다른 세 점은 평면을 하나로 정한다',
     notes: notes('“세 점이면 평면이 정해진다”가 아니에요. <b>한 직선 위에 있지 않은</b> 세 점이어야 해요.', '삼발이(다리 세 개)가 울퉁불퉁한 바닥에서도 흔들리지 않는 까닭이에요.'),
     pq: (s, first) => ({ col: first ? false : Math.random() < 0.5 }),
     drawProb: (D, b, s, M, C) => {
-      const col = !!(M.pq && M.pq.col), A = v3(-1.7, -0.4, -0.5), Bp = v3(0.4, 0.3, 0.3), Cp = col ? v3(2.4, 0.77, 0.89) : v3(1.2, 1.5, -0.9);
+      const col = !!(M.pq && M.pq.col), A = v3(-1.7, -0.4, -0.5), Bp = v3(0.4, 0.3, 0.3), Cp = col ? add3(A, mul3(sub3(Bp, A), 2)) : v3(1.2, 1.5, -0.9);
       D.fitPts([A, Bp, Cp], { t: 50, b: 56, l: 60, r: 60 });
       D.line(A, Cp, 'sky', 3.2, { dash: [6, 5], alpha: 0.7 });
       D.line(A, Bp, 'sky', 4); D.line(Bp, Cp, 'sky', 4);
@@ -214,16 +216,16 @@
   S.push(fanScene({
     id: 's3-2', type: 'linept', title: '한 직선과 그 밖의 한 점', short: '직선과 점',
     question: '직선 $l$과 점 $A$를 모두 지나는 평면은 몇 개일까? 점 $A$가 직선 위에 있을 때는 어떨까?',
-    ctl: ['spCd'], init: { spCd: 1.2, spTh: 0 }, step3: { spCd: 0 },
-    guide: '직선 $l$을 품는 평면은 책장처럼 무수히 많아요. 막대로 <b>점 A</b>의 위치를 바꿔 보세요.', need: '직선 $l$과 점 $A$',
-    rows: (M, ok) => [rdPl(M.F, 'l과 A를 모두 품는 평면'), rd('점 A와 직선 l 사이의 거리', M.F.d.toFixed(2), 'amber', M.F.d < 0.05 ? '점이 직선 위에 있어요' : ''), rdTest(ok, '점 A')],
-    steps: () => ['직선 $l$을 품는 평면은 책장처럼 무수히 많아요.', '점 $A$가 직선 $l$ 밖에 있으면, 그 평면들 중 $A$를 지나는 평면은 딱 하나예요.', '점 $A$가 직선 $l$ 위에 있으면 평면이 무수히 많아서 하나로 정해지지 않아요.'],
+    ctl: ['spCd'], init: { spCd: 1.2, spTh: 75 }, step3: { spCd: 0 },
+    guide: '직선 $l$을 포함하는 평면은 책장처럼 무수히 많아요. 막대로 <b>점 A</b>의 위치를 바꿔 보세요.', need: '직선 $l$과 점 $A$',
+    rows: (M, ok) => [rdPl(M.F, 'l과 A를 모두 포함하는 평면'), rd('점 A와 직선 l 사이의 거리', M.F.d.toFixed(2), 'amber', M.F.d < 0.05 ? '점이 직선 위에 있어요' : ''), rdTest(ok, '점 A')],
+    steps: () => ['직선 $l$을 포함하는 평면은 책장처럼 무수히 많아요.', '점 $A$가 직선 $l$ 밖에 있으면, 그 평면들 중 $A$를 지나는 평면은 딱 하나예요.', '점 $A$가 직선 $l$ 위에 있으면 평면이 무수히 많아서 하나로 정해지지 않아요.'],
     formula: () => '<p>직선과 그 직선 밖의 한 점 → 평면 $1$개</p><p>직선 위의 점 → 평면 무수히 많음</p>',
     rule: '한 직선과 그 직선 밖의 한 점은 평면을 하나로 정한다',
     notes: notes('점이 직선 <b>밖에</b> 있어야 해요. 직선 위의 점은 평면을 정해 주지 못해요.', '직선 위의 두 점과 밖의 한 점을 잡으면 “한 직선 위에 있지 않은 세 점”과 같아요.'),
     pq: (s, first) => ({ on: first ? false : Math.random() < 0.5 }),
     drawProb: (D, b, s, M, C) => {
-      const on = !!(M.pq && M.pq.on), A = on ? v3(0.5, 0.15, 0.1) : v3(0.8, 1.3, 0.9), p0 = v3(-2.4, -0.45, -0.3), p1 = v3(2.4, 0.5, 0.3);
+      const on = !!(M.pq && M.pq.on), p0 = v3(-2.4, -0.45, -0.3), p1 = v3(2.4, 0.5, 0.3), A = on ? lerp3(p0, p1, 0.55) : v3(0.8, 1.3, 0.9);
       D.fitPts([p0, p1, A], { t: 50, b: 56, l: 60, r: 60 });
       D.line(p0, p1, 'sky', 5); b.point(D.P(A), { color: 'rose', r: 6.5 }); D.obstacle(A, 9);
       D.label(p1, 'l', { color: 'sky', size: 18, dir: { x: 1, y: 0 }, gap: 10 }); D.label(A, 'A', { color: 'rose', size: 18, dir: { x: 0, y: -1 }, gap: 12 });
@@ -231,7 +233,7 @@
     },
     prob: (M) => {
       const on = !!(M.pq && M.pq.on);
-      return { tag: '평면이 정해지는 조건', key: 'o' + on, stem: '그림과 같이 직선 $l$과 점 $A$가 있다. 직선 $l$과 점 $A$를 모두 품는 평면은 몇 개인가?', choices: planeChoices(on ? 'inf' : 1, Object.assign({}, HINT_COMMON, { 1: '점이 직선 위에 있으면 평면이 하나로 정해지지 않아요.', inf: '점이 직선 밖에 있으면 평면이 하나로 정해져요.' })) };
+      return { tag: '평면이 정해지는 조건', key: 'o' + on, stem: '그림과 같이 직선 $l$과 점 $A$가 있다. 직선 $l$과 점 $A$를 모두 포함하는 평면은 몇 개인가?', choices: planeChoices(on ? 'inf' : 1, Object.assign({}, HINT_COMMON, { 1: '점이 직선 위에 있으면 평면이 하나로 정해지지 않아요.', inf: '점이 직선 밖에 있으면 평면이 하나로 정해져요.' })) };
     }
   }));
   /* ---------------- s3-3 한 점에서 만나는 두 직선 + 문제: k개 직선 */
@@ -239,11 +241,11 @@
   const generalPos = (dirs) => { for (let i = 0; i < dirs.length; i++) for (let j = i + 1; j < dirs.length; j++) for (let k = j + 1; k < dirs.length; k++) if (Math.abs(dot3(dirs[i], cross3(dirs[j], dirs[k]))) < 1e-9) return false; return true; };
   S.push(fanScene({
     id: 's3-3', type: 'cross', title: '한 점에서 만나는 두 직선', short: '만나는 두 직선',
-    question: '한 점에서 만나는 두 직선 $l$, $m$을 모두 품는 평면은 몇 개일까? 두 직선이 이루는 각을 바꿔도 그럴까?',
-    ctl: ['spAl'], init: { spAl: 60, spTh: 0 },
-    guide: '직선 $l$을 품는 평면은 책장처럼 무수히 많아요. 막대로 두 직선이 이루는 <b>각</b>을 바꿔 보세요.', need: '두 직선 $l$, $m$',
-    rows: (M, ok) => [rdPl(M.F, 'l과 m을 모두 품는 평면'), rd('두 직선이 이루는 각', Math.round(M.F.extra.al) + '°', 'amber', '한 점 O에서 만나요'), rdTest(ok, '직선 m')],
-    steps: () => ['두 직선 $l$, $m$이 만나는 점을 $O$라 해요. 직선 $l$을 품는 평면은 무수히 많아요.', '그중 직선 $m$까지 품는 평면은 딱 하나예요. $m$은 $O$를 지나므로 $l$과 $m$ 중 하나라도 정해지면 평면이 정해져요.', '두 직선이 이루는 각이 달라져도 한 점에서 만나는 두 직선은 언제나 평면을 하나로 정해요.'],
+    question: '한 점에서 만나는 두 직선 $l$, $m$을 모두 포함하는 평면은 몇 개일까? 두 직선이 이루는 각을 바꿔도 그럴까?',
+    ctl: ['spAl'], init: { spAl: 60, spTh: 75 },
+    guide: '직선 $l$을 포함하는 평면은 책장처럼 무수히 많아요. 막대로 두 직선이 이루는 <b>각</b>을 바꿔 보세요.', need: '두 직선 $l$, $m$',
+    rows: (M, ok) => [rdPl(M.F, 'l과 m을 모두 포함하는 평면'), rd('두 직선이 이루는 각', Math.round(M.F.extra.al) + '°', 'amber', '한 점 O에서 만나요'), rdTest(ok, '직선 m')],
+    steps: () => ['두 직선 $l$, $m$이 만나는 점을 $O$라 해요. 직선 $l$을 포함하는 평면은 무수히 많아요.', '그중 직선 $m$도 포함하는 평면은 딱 하나예요. 직선 $m$ 위에서 점 $O$가 아닌 한 점을 잡으면, 직선 $l$과 그 밖의 한 점이 평면을 하나로 정하기 때문이에요.', '두 직선이 이루는 각이 달라져도 한 점에서 만나는 두 직선은 언제나 평면을 하나로 정해요.'],
     formula: () => '<p>한 점에서 만나는 두 직선 → 평면 $1$개</p>',
     rule: '한 점에서 만나는 두 직선은 평면을 하나로 정한다',
     notes: notes('두 직선이 <b>한 점에서 만나야</b> 해요. 만나지 않는 꼬인 위치의 두 직선은 평면을 정하지 못해요.', '직선 $l$과 $m$ 위에서 점 $O$ 말고 점을 하나씩 잡으면 “한 직선 위에 있지 않은 세 점”과 같아요.'),
@@ -272,11 +274,11 @@
   const polyPos = (k) => Array.from({ length: k }, (_, i) => { const a = (2 * Math.PI * i) / k + 0.75; return v3(1.7 * Math.cos(a), 1.7 * Math.sin(a), 0); });
   S.push(fanScene({
     id: 's3-4', type: 'par', title: '평행한 두 직선', short: '평행한 두 직선',
-    question: '평행한 두 직선 $l$, $m$을 모두 품는 평면은 몇 개일까? 두 직선 사이의 거리를 바꿔도 그럴까?',
-    ctl: ['spCl'], init: { spCl: 1.2, spTh: 0 },
-    guide: '직선 $l$을 품는 평면은 책장처럼 무수히 많아요. 막대로 두 직선 사이의 <b>거리</b>를 바꿔 보세요.', need: '평행한 두 직선 $l$, $m$',
-    rows: (M, ok) => [rdPl(M.F, 'l과 m을 모두 품는 평면'), rd('두 직선 사이의 거리', M.F.extra.dd.toFixed(2), 'amber', 'l ∥ m'), rdTest(ok, '직선 m')],
-    steps: () => ['평행한 두 직선 $l$, $m$ 중 직선 $l$을 품는 평면은 무수히 많아요.', '그중 직선 $m$까지 품는 평면은 딱 하나예요. 평행한 두 직선은 평면 위에 놓여요.', '두 직선 사이의 거리가 달라져도 평행한 두 직선은 언제나 평면을 하나로 정해요.'],
+    question: '평행한 두 직선 $l$, $m$을 모두 포함하는 평면은 몇 개일까? 두 직선 사이의 거리를 바꿔도 그럴까?',
+    ctl: ['spCl'], init: { spCl: 1.2, spTh: 75 },
+    guide: '직선 $l$을 포함하는 평면은 책장처럼 무수히 많아요. 막대로 두 직선 사이의 <b>거리</b>를 바꿔 보세요.', need: '평행한 두 직선 $l$, $m$',
+    rows: (M, ok) => [rdPl(M.F, 'l과 m을 모두 포함하는 평면'), rd('두 직선 사이의 거리', M.F.extra.dd.toFixed(2), 'amber', 'l ∥ m'), rdTest(ok, '직선 m')],
+    steps: () => ['평행한 두 직선 $l$, $m$ 중 직선 $l$을 포함하는 평면은 무수히 많아요.', '그중 직선 $m$까지 포함하는 평면은 딱 하나예요. 평행한 두 직선은 평면 위에 놓여요.', '두 직선 사이의 거리가 달라져도 평행한 두 직선은 언제나 평면을 하나로 정해요.'],
     formula: () => '<p>평행한 두 직선 → 평면 $1$개</p>',
     rule: '평행한 두 직선은 평면을 하나로 정한다',
     notes: notes('평행한 두 직선은 <b>한 평면 위에 있어요</b>. 그래서 꼬인 위치가 아니에요.', '평행한 직선들은 방향이 같아서 한 직선 위의 한 점과 다른 직선을 합친 것과 같아요.'),
@@ -303,14 +305,14 @@
   /* ---------------- s3-5 꼬인 위치는 평면이 없다 (반례) */
   S.push(fanScene({
     id: 's3-5', type: 'skew', title: '[반례] 꼬인 위치의 두 직선', short: '[반례] 꼬인 위치',
-    question: '두 직선이 있으면 항상 그 두 직선을 모두 품는 평면이 있을까? 꼬인 위치의 두 직선은 어떨까?',
-    ctl: ['spHt', 'spGm'], init: { spHt: 0.9, spGm: 55, spTh: 0 }, step3: { spHt: 0.9, spGm: 55 },
-    guide: '두 직선 $l$, $m$의 높이와 방향을 막대로 바꿔 위치 관계를 달리해 보세요. 높이 0이면 만나고, 방향 0°이면 평행해요.', need: '두 직선 $l$, $m$',
+    question: '두 직선이 있으면 항상 그 두 직선을 모두 포함하는 평면이 있을까? 꼬인 위치의 두 직선은 어떨까?',
+    ctl: ['spDs', 'spGm', 'spTl'], init: { spDs: 0.9, spGm: 55, spTl: 35, spTh: 75 }, step3: { spDs: 0.9, spGm: 55, spTl: 35 },
+    guide: '두 직선 $l$, $m$이 있어요. 막대로 $m$을 앞뒤로 옮기고, 돌리고, 기울여 위치 관계를 바꿔 보세요. 옮기는 자리가 0이면 만나고, 돌리기·기울이기가 모두 0°이면 평행해요.', need: '두 직선 $l$, $m$',
     rows: (M, ok) => {
-      const { h, g } = M.F.extra, rel = h < 0.03 && g < 1 ? '한 직선(일치)' : h < 0.03 ? '한 점에서 만남' : g < 1 ? '평행' : '꼬인 위치';
-      return [rd('두 직선의 위치 관계', rel, rel === '꼬인 위치' ? 'green' : 'sky'), rdPl(M.F, 'l과 m을 모두 품는 평면'), rdTest(ok, '직선 m')];
+      const rel = { same: '한 직선(일치)', parallel: '평행', meet: '한 점에서 만남', skew: '꼬인 위치' }[M.F.extra.rel];
+      return [rd('두 직선의 위치 관계', rel, rel === '꼬인 위치' ? 'green' : 'sky'), rdPl(M.F, 'l과 m을 모두 포함하는 평면'), rdTest(ok, '직선 m')];
     },
-    steps: () => ['두 직선 $l$, $m$의 위치 관계를 확인해요. 만나는지, 평행한지, 꼬인 위치인지 살펴봐요.', '만나거나 평행하면 두 직선을 모두 품는 평면이 딱 하나 있어요. 시험 평면을 돌리면 맞는 순간이 있어요.', '꼬인 위치이면 어떤 평면도 두 직선을 모두 품지 못해요. 평면을 돌려도 직선 $m$은 한 점에서만 만나요.'],
+    steps: () => ['두 직선 $l$, $m$의 위치 관계를 확인해요. 만나는지, 평행한지, 꼬인 위치인지 살펴봐요.', '만나거나 평행하면 두 직선을 모두 포함하는 평면이 딱 하나 있어요. 시험 평면을 돌리면 맞는 순간이 있어요.', '꼬인 위치이면 어떤 평면도 두 직선을 모두 포함하지 못해요. 평면을 돌려도 직선 $m$은 한 점에서만 만나요.'],
     formula: () => '<p>만나거나 평행 → 평면 $1$개</p><p>꼬인 위치 → 평면 $0$개</p>',
     rule: '꼬인 위치에 있는 두 직선은 한 평면 위에 있지 않다',
     notes: notes('두 직선이 한 평면 위에 있으려면 <b>만나거나 평행</b>해야 해요.', '직육면체에서 꼬인 위치의 모서리 두 개는 어떤 면에도 함께 놓이지 않아요.'),
@@ -320,7 +322,7 @@
       const so = skewSolid(M), { sol, ref, c } = so, ans = c.nMeet + c.nExt + c.nPar;
       return {
         tag: '한 평면 위에 있는 두 모서리', key: sol.name + ref.key,
-        stem: `그림은 ${sol.name}이다. 모서리 $${ov(ref.name)}$와 한 평면 위에 있는 모서리는 모두 몇 개인가? (모서리 $${ov(ref.name)}$는 제외)`,
+        stem: `그림은 ${sol.name}이다. 모서리 $${ov(ref.name)}$${jo(ref.name, 'wa')} 한 평면 위에 있는 모서리는 모두 몇 개인가? (모서리 $${ov(ref.name)}$는 제외)`,
         choices: mkChoices(ans, [[c.nSkew, '꼬인 위치의 개수예요. 한 평면 위에 있는 것은 만나거나 평행한 것이에요.'], [c.nMeet + c.nPar, '늘이면 만나는 모서리도 한 평면 위에 있어요.'], [c.nMeet, '만나는 것만 셌어요. 평행한 것도 한 평면 위에 있어요.'], [c.nPar, '평행한 것만 셌어요.'], [ans + 1, '기준 모서리 자신은 빼야 해요.']], { unit: '개' })
       };
     }
@@ -443,5 +445,5 @@
   function defSel(k) { const s = buildSolid(k, 6); return s.order.slice(0, 3).map((x, i) => (k === 'cuboid' && i === 2 ? 'F' : x)); }
   S.push(sc6);
 
-  G.register(30, 't3', '③ 평면이 정해지는 조건', '평면의 결정', PARAMS, S);
+  G.register(30, 't3', '③ 평면이 정해질 조건', '평면이 정해질 조건', PARAMS, S);
 })();

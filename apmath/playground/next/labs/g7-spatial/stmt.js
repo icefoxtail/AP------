@@ -1,7 +1,7 @@
 /* ==========================================================================
    중1 · 위치 관계 — 공간에서의 설명 9가지의 그림 (stmt.js)
    · p1~p6 (탭 ②)  l⊥m,l⊥n ⇒ m∥n? · l∥P,m∥P ⇒ l∥m? · l⊥P,m⊥P ⇒ l∥m · P⊥Q,P⊥R ⇒ Q∥R? · l⊥P,l⊥Q ⇒ P∥Q · l⊥P,l⊥m ⇒ m∥P?
-   · door / planes / perp (탭 ⑤)  수직인 직선을 품은 평면 · 평행한 두 평면과 교선 · 한 직선과만 수직이면?
+   · door / planes / perp (탭 ⑤)  수직인 직선을 포함하는 평면 · 평행한 두 평면과 교선 · 한 직선과만 수직이면?
    설명마다 조절 막대 2개(a, b: 0~1)로 도형을 바꾸면, 그림과 「지금 두 대상의 위치 관계」·반례 여부가 숫자로 다시 계산됩니다.
    geo(a,b) → { panels, lines, rights, pars, dots, texts, fit, rel, given, holds, … } 를 돌려 주고 render() 가 그립니다.
    t2.js · t5.js 가 장면에 쓰고, 탭 ② 마지막 장면(s2-7)은 이 설명들 중 다섯 개를 한꺼번에 보여 줍니다.
@@ -20,34 +20,33 @@
   const COL = { l: 'amber', m: 'violet', n: 'rose' }; // 직선 l = 노랑, m = 보라, n = 분홍 (평면 P = 초록, Q = 하늘, R = 노랑)
 
   /* ------------------------------------------------------------ 설명별 도형 */
-  function geoP1(a, b) {
-    const ang = a * 90, zm = -0.4, zn = zm + b * 1.8, dn = dirH(ang);
-    const Pm = v3(0, 0, zm), dm = v3(1, 0, 0), Pn = v3(0, 0, zn);
+  function geoP1(a, b) { // l 은 가로로 놓인 막대, m 과 n 은 l 에 수직. n 은 l 둘레로 돌고(제자리 회전) l 을 따라 가로로 옮겨요.
+    const ang = a * 90, xn = (b - 0.5) * 3.6, rr = 2.4;
+    const dm = v3(0, 1, 0), dn = v3(0, Math.cos(ang * DEG), Math.sin(ang * DEG)), Pm = v3(0, 0, 0), Pn = v3(xn, 0, 0);
     const rel = lineRel(Pm, dm, Pn, dn);
     const lines = [
-      L(v3(0, 0, -1.9), v3(0, 0, 2.5), COL.l, { name: 'l', nameAt: v3(0, 0, 2.5) }),
-      L(v3(-2.5, 0, zm), v3(2.5, 0, zm), COL.m, { name: 'm', nameAt: v3(2.5, 0, zm) }),
-      L(v3(-2.5 * dn.x, -2.5 * dn.y, zn), v3(2.5 * dn.x, 2.5 * dn.y, zn), COL.n, { name: 'n', nameAt: v3(2.5 * dn.x, 2.5 * dn.y, zn) })
+      L(v3(-3.1, 0, 0), v3(3.1, 0, 0), COL.l, { name: 'l', nameAt: v3(3.1, 0, 0) }),
+      L(sub3(Pm, mul3(dm, rr)), add3(Pm, mul3(dm, rr)), COL.m, { name: 'm', nameAt: add3(Pm, mul3(dm, rr)) }),
+      L(sub3(Pn, mul3(dn, rr)), add3(Pn, mul3(dn, rr)), COL.n, { name: 'n', nameAt: add3(Pn, mul3(dn, rr)) })
     ];
     return {
-      lines, panels: [], rights: [{ O: Pm, a: dm, c: v3(0, 0, 1), color: COL.m }, { O: Pn, a: dn, c: v3(0, 0, 1), color: COL.n }],
+      lines, panels: [], rights: [{ O: Pm, a: v3(1, 0, 0), c: dm, color: COL.m }, { O: Pn, a: v3(1, 0, 0), c: dn, color: COL.n }],
       pars: rel === 'parallel' ? [[lines[1].p, lines[1].q], [lines[2].p, lines[2].q]] : [],
-      fit: [v3(-2.5, -2.5, -1.9), v3(2.5, 2.5, 2.5)],
-      conc: 'm∥n', relText: `m과 n: ${REL[rel]}`, rel, given: true, holds: rel === 'parallel' || rel === 'same'
+      fit: [], conc: 'm∥n', relText: `m과 n: ${REL[rel]}`, rel, given: true, holds: rel === 'parallel' || rel === 'same'
     };
   }
-  function geoP2(a, b) {
-    const ang = a * 90, zl = 0, zm = zl + b * 1.6, dm = dirH(ang);
-    const Pl = v3(0, -0.9, zl), dl = v3(1, 0, 0), Pm = v3(0, 0.7, zm);
+  function geoP2(a, b) { // 평면 P 는 뒤의 벽. l, m 은 P 와 나란한 직선. m 은 제자리에서 돌고 앞뒤로 옮겨요.
+    const ang = a * 90, yl = -0.3, ym = yl + (b - 0.5) * 2.8, Wy = 1.7, zl = 0, zm = 0.9, hl = 1.9;
+    const dl = v3(1, 0, 0), dm = v3(Math.cos(ang * DEG), 0, Math.sin(ang * DEG)), Pl = v3(0, yl, zl), Pm = v3(0, ym, zm);
     const rel = lineRel(Pl, dl, Pm, dm);
-    const l1 = L(v3(-2.5, -0.9, zl), v3(2.5, -0.9, zl), COL.l, { name: 'l', nameAt: v3(2.5, -0.9, zl) });
-    const m1 = L(v3(-2.5 * dm.x, 0.7 - 2.5 * dm.y, zm), v3(2.5 * dm.x, 0.7 + 2.5 * dm.y, zm), COL.m, { name: 'm', nameAt: v3(2.5 * dm.x, 0.7 + 2.5 * dm.y, zm) });
-    const drops = [l1, m1].flatMap((ln) => [L(ln.p, v3(ln.p.x, ln.p.y, PZ), ln.color, { width: 1.8, dash: [4, 5], alpha: 0.45 }), L(ln.q, v3(ln.q.x, ln.q.y, PZ), ln.color, { width: 1.8, dash: [4, 5], alpha: 0.45 })]);
+    const wall = { pts: [v3(-2.8, Wy, -1.2), v3(2.8, Wy, -1.2), v3(2.8, Wy, 3.0), v3(-2.8, Wy, 3.0)], color: 'green', fa: 0.13, name: '평면 P', nameAt: v3(2.7, Wy, 2.9) };
+    const l1 = L(sub3(Pl, mul3(dl, hl)), add3(Pl, mul3(dl, hl)), COL.l, { name: 'l', nameAt: add3(Pl, mul3(dl, hl)) });
+    const m1 = L(sub3(Pm, mul3(dm, hl)), add3(Pm, mul3(dm, hl)), COL.m, { name: 'm', nameAt: add3(Pm, mul3(dm, hl)) });
+    const drops = [l1, m1].flatMap((ln) => [ln.p, ln.q].map((p) => L(p, v3(p.x, Wy, p.z), ln.color, { width: 1.8, dash: [4, 5], alpha: 0.45 })));
     return {
-      lines: drops.concat([l1, m1]), panels: [floorP()], rights: [],
+      lines: drops.concat([l1, m1]), panels: [wall], rights: [],
       pars: rel === 'parallel' ? [[l1.p, l1.q], [m1.p, m1.q]] : [],
-      fit: [v3(-2.7, -2.7, PZ), v3(2.7, 2.7, 1.8)],
-      conc: 'l∥m', relText: `l과 m: ${REL[rel]}`, rel, given: true, holds: rel === 'parallel' || rel === 'same'
+      fit: [], conc: 'l∥m', relText: `l과 m: ${REL[rel]}`, rel, given: true, holds: rel === 'parallel' || rel === 'same'
     };
   }
   function geoP3(a, b) {
@@ -86,36 +85,34 @@
       conc: 'Q∥R', relText: `평면 Q와 R: ${rel === 'parallel' ? '평행' : '교선에서 만남'}`, rel, given: true, holds: rel === 'parallel'
     };
   }
-  function geoP5(a, b) {
-    const z2 = PZ + 0.55 + a * 1.5, tau = b * 30, Rr = 2.3, c2 = v3(0, 0, z2), ax = v3(1, 0, 0);
-    const Qp = sq(z2, Rr).map((p) => rotAxis(p, c2, ax, tau * DEG));
-    const lines = [L(v3(0, 0, PZ - 0.8), v3(0, 0, Math.max(z2, PZ) + 1.3), 'amber', { name: 'l', nameAt: v3(0, 0, Math.max(z2, PZ) + 1.3) })];
+  function geoP5(a, b) { // l 은 앞뒤로 놓인 막대, 평면 P·Q 는 l 에 수직으로 세운 판. Q 는 l 을 따라 앞뒤로 옮기고, 세로축 둘레로 기울여요(제자리 회전).
+    const y1 = -1.4, y2 = y1 + 0.7 + a * 2.2, tau = b * 30, zc = 0.5, Hh = 1.9, c2 = v3(0, y2, zc), ax = v3(0, 0, 1);
+    const wall = (y) => [v3(-Hh, y, zc - Hh), v3(Hh, y, zc - Hh), v3(Hh, y, zc + Hh), v3(-Hh, y, zc + Hh)];
+    const Qp = wall(y2).map((p) => rotAxis(p, c2, ax, tau * DEG));
+    const lines = [L(v3(0, -2.7, zc), v3(0, 2.9, zc), 'amber', { name: 'l', nameAt: v3(0, 2.9, zc) })];
     let rel = 'parallel';
     if (tau > 0.4) {
       rel = 'meet';
-      const yi = (PZ - z2) / Math.tan(tau * DEG);
-      if (Math.abs(yi) <= 2.6) lines.push(L(v3(-2.3, yi, PZ), v3(2.3, yi, PZ), 'red', { width: 5, name: '교선', nameAt: v3(2.3, yi, PZ) }));
+      const t = (y1 - y2) / Math.sin(tau * DEG), X = t * Math.cos(tau * DEG);
+      if (Math.abs(t) <= Hh && Math.abs(X) <= Hh) lines.push(L(v3(X, y1, zc - Hh), v3(X, y1, zc + Hh), 'red', { width: 5.5, name: '교선', nameAt: v3(X, y1, zc + Hh) }));
     }
-    const Pn = floorP(2.3);
     return {
-      lines, panels: [Pn, { pts: Qp, color: 'sky', fa: 0.17, name: '평면 Q', nameAt: Qp[3] }],
-      rights: [{ O: v3(0, 0, PZ), a: v3(1, 0, 0), c: v3(0, 0, 1), color: 'green' }].concat(tau < 0.4 ? [{ O: c2, a: v3(1, 0, 0), c: v3(0, 0, 1), color: 'sky' }] : []),
-      pars: [], fit: [v3(-2.4, -2.4, PZ - 0.8), v3(2.4, 2.4, PZ + 3.4)],
-      conc: 'P∥Q', relText: `평면 P와 Q: ${rel === 'parallel' ? '평행' : '교선에서 만남'}`, rel, given: tau < 0.4, holds: rel === 'parallel',
+      lines, panels: [{ pts: wall(y1), color: 'green', fa: 0.13, name: '평면 P', nameAt: v3(-Hh, y1, zc + Hh) }, { pts: Qp, color: 'sky', fa: 0.17, name: '평면 Q', nameAt: Qp[3] }],
+      rights: [{ O: v3(0, y1, zc), a: v3(0, 1, 0), c: v3(1, 0, 0), color: 'green' }].concat(tau < 0.4 ? [{ O: c2, a: v3(0, 1, 0), c: v3(1, 0, 0), color: 'sky' }] : []),
+      pars: [], fit: [], conc: 'P∥Q', relText: `평면 P와 Q: ${rel === 'parallel' ? '평행' : '교선에서 만남'}`, rel, given: tau < 0.4, holds: rel === 'parallel',
       note: tau >= 0.4 ? 'l이 평면 Q와 수직이 아니에요 (조건이 깨짐)' : ''
     };
   }
-  function geoP6(a, b) {
-    const zm = PZ + a * 2.0, dm = dirH(b * 90), O = v3(0, 0, PZ), Om = v3(0, 0, zm);
-    const onP = a < 0.02;
-    const l1 = L(v3(0, 0, PZ - 0.9), v3(0, 0, 2.4), 'amber', { name: 'l', nameAt: v3(0, 0, 2.4) });
-    const m1 = L(v3(-2.5 * dm.x, -2.5 * dm.y, zm), v3(2.5 * dm.x, 2.5 * dm.y, zm), COL.m, { name: 'm', nameAt: v3(2.5 * dm.x, 2.5 * dm.y, zm) });
-    const drops = [m1.p, m1.q].map((p) => L(p, v3(p.x, p.y, PZ), COL.m, { width: 1.8, dash: [4, 5], alpha: 0.45 }));
+  function geoP6(a, b) { // 평면 P 는 벽. l 은 벽에 수직으로 박힌 막대, m 은 l 에 수직. m 은 l 둘레로 돌고 앞뒤로 옮겨요(0 이면 벽 위).
+    const zc = 0.6, ym = -2.3 * a, dm = v3(Math.cos(b * 90 * DEG), 0, Math.sin(b * 90 * DEG)), onP = a < 0.02, Hh = 2.1, Cm = v3(0, ym, zc), O = v3(0, 0, zc);
+    const wall = { pts: [v3(-2.7, 0, zc - Hh), v3(2.7, 0, zc - Hh), v3(2.7, 0, zc + Hh), v3(-2.7, 0, zc + Hh)], color: 'green', fa: 0.13, name: '평면 P', nameAt: v3(2.6, 0, zc + Hh - 0.1) };
+    const l1 = L(v3(0, -2.7, zc), v3(0, 1.0, zc), 'amber', { name: 'l', nameAt: v3(0, -2.7, zc) });
+    const m1 = L(sub3(Cm, mul3(dm, 2.0)), add3(Cm, mul3(dm, 2.0)), COL.m, { name: 'm', nameAt: add3(Cm, mul3(dm, 2.0)) });
+    const drops = onP ? [] : [m1.p, m1.q].map((p) => L(p, v3(p.x, 0, p.z), COL.m, { width: 1.8, dash: [4, 5], alpha: 0.45 }));
     return {
-      lines: onP ? [l1, m1] : drops.concat([l1, m1]), panels: [floorP()],
-      rights: [{ O, a: v3(1, 0, 0), c: v3(0, 0, 1), color: 'green', size: 0.38 }].concat(onP ? [] : [{ O: Om, a: dm, c: v3(0, 0, 1), color: COL.m, size: 0.38 }]),
-      pars: [], fit: [v3(-2.7, -2.7, PZ - 0.9), v3(2.7, 2.7, 2.7)],
-      conc: 'm∥P', relText: onP ? 'm은 평면 P에 포함돼요 (평행이 아님)' : 'm과 평면 P: 평행', rel: onP ? 'sub' : 'parallel', given: true, holds: !onP
+      lines: drops.concat([l1, m1]), panels: [wall],
+      rights: [{ O, a: v3(1, 0, 0), c: v3(0, -1, 0), color: 'green', size: 0.38 }].concat(onP ? [] : [{ O: Cm, a: dm, c: v3(0, -1, 0), color: COL.m, size: 0.38 }]),
+      pars: [], fit: [], conc: 'm∥P', relText: onP ? 'm은 평면 P에 포함돼요 (평행이 아님)' : 'm과 평면 P: 평행', rel: onP ? 'sub' : 'parallel', given: true, holds: !onP
     };
   }
   function geoDoor(a) {
@@ -178,16 +175,16 @@
 
   const PARAMS = {
     spP1a: P('직선 n을 l 둘레로 돌리기', 0, 1, 0.01, 0, { color: 'amber', hint: 'n은 l과 계속 수직으로 만나요', format: dgr }),
-    spP1b: P('직선 n의 높이', 0, 1, 0.01, 0.6, { color: 'amber', hint: 'm과 같은 높이로 맞춰 보세요', format: (v) => (v < 0.02 ? 'm과 같은 높이' : pc(v)) }),
-    spP2a: P('직선 m을 돌리기', 0, 1, 0.01, 0, { color: 'amber', hint: '평면 P와 나란한 채로 돌아가요', format: dgr }),
-    spP2b: P('직선 m의 높이', 0, 1, 0.01, 0.6, { color: 'amber', hint: 'l과 같은 높이로 맞춰 보세요', format: (v) => (v < 0.02 ? 'l과 같은 높이' : pc(v)) }),
+    spP1b: P('직선 n 옮기기 (가로)', 0, 1, 0.01, 0.8, { color: 'amber', hint: 'l을 따라 옮겨요. m과 같은 자리에 맞춰 보세요', format: (v) => (Math.abs(v - 0.5) < 0.005 ? 'm과 같은 자리' : ((v - 0.5) * 3.6 > 0 ? '+' : '−') + Math.abs((v - 0.5) * 3.6).toFixed(1)) }),
+    spP2a: P('직선 m을 돌리기', 0, 1, 0.01, 0, { color: 'amber', hint: '평면 P와 나란한 채로 제자리에서 돌아가요', format: dgr }),
+    spP2b: P('직선 m 옮기기 (앞뒤)', 0, 1, 0.01, 0.8, { color: 'amber', hint: 'l과 같은 평면 위에 맞춰 보세요', format: (v) => (Math.abs(v - 0.5) < 0.005 ? 'l과 같은 평면 위' : ((v - 0.5) * 2.8 > 0 ? '+' : '−') + Math.abs((v - 0.5) * 2.8).toFixed(1)) }),
     spP3a: P('직선 m의 자리', 0, 1, 0.01, 0.2, { color: 'amber', hint: '바닥에 수직으로 세운 m을 옮겨 보세요', format: pc }),
     spP3b: P('직선 m 기울이기', 0, 1, 0.01, 0, { color: 'rose', hint: '기울이면 P와 수직이 아니에요', format: (v) => Math.round(v * 35) + '°' }),
     spP4a: P('평면 R을 돌리기', 0, 1, 0.01, 0, { color: 'amber', hint: 'R은 바닥에 수직인 채로 돌아가요', format: dgr }),
     spP4b: P('평면 R의 자리', 0, 1, 0.01, 0.2, { color: 'amber', format: pc }),
-    spP5a: P('평면 Q의 높이', 0, 1, 0.01, 0.3, { color: 'amber', hint: 'l을 따라 위아래로 옮겨요', format: pc }),
+    spP5a: P('평면 Q 옮기기 (앞뒤)', 0, 1, 0.01, 0.3, { color: 'amber', hint: 'l을 따라 앞뒤로 옮겨요', format: pc }),
     spP5b: P('평면 Q 기울이기', 0, 1, 0.01, 0, { color: 'rose', hint: '기울이면 l과 수직이 아니에요', format: (v) => Math.round(v * 30) + '°' }),
-    spP6a: P('직선 m의 높이', 0, 1, 0.01, 0.6, { color: 'amber', hint: '바닥까지 내려 보세요', format: (v) => (v < 0.02 ? '바닥(평면 P 위)' : pc(v)) }),
+    spP6a: P('직선 m 옮기기 (앞뒤)', 0, 1, 0.01, 0.6, { color: 'amber', hint: '평면 P에 닿게 옮겨 보세요', format: (v) => (v < 0.02 ? '평면 P 위' : pc(v)) }),
     spP6b: P('직선 m을 l 둘레로 돌리기', 0, 1, 0.01, 0.2, { color: 'amber', format: dgr }),
     spDoor: P('문(평면 Q) 열기', 0, 1, 0.01, 0.15, { color: 'amber', hint: '문을 열고 닫아도 바닥과 수직이에요', format: (v) => Math.round((0.15 + v * 0.7) * 180) + '°' }),
     spPl1: P('평면 R 기울이기', 0, 1, 0.01, 0.3, { color: 'amber', format: pc }),
@@ -215,9 +212,9 @@
     (geo.arcs || []).forEach((r) => D.arc(r.O, r.a, r.c, r.r, r.color, 1));
     geo.pars.forEach(([p, q]) => D.par(p, q, 1, 'sky', 0.35));
     if (C.txt) {
-      const ctr = lerp3(geo.fit[0], geo.fit[1], 0.5);
-      geo.panels.forEach((pn) => D.label(pn.nameAt, pn.name, { color: pn.color, size: 16, dir: D.out(pn.nameAt, ctr), gap: 10 }));
-      geo.lines.forEach((ln) => { if (ln.name) D.label(ln.nameAt, ln.name, { color: ln.color === 'red' ? 'red' : ln.color, size: 18, dir: D.out(ln.nameAt, ctr), gap: 10 }); });
+      const ctr = fp.reduce((a, p) => add3(a, p), v3(0, 0, 0)); const cc = mul3(ctr, 1 / Math.max(1, fp.length));
+      geo.panels.forEach((pn) => D.label(pn.nameAt, pn.name, { color: pn.color, size: 16, dir: D.out(pn.nameAt, cc), gap: 10 }));
+      geo.lines.forEach((ln) => { if (ln.name) D.label(ln.nameAt, ln.name, { color: ln.color === 'red' ? 'red' : ln.color, size: 18, dir: D.out(ln.nameAt, cc), gap: 10 }); });
       if (geo.arcText) D.label(add3(geo.rights[0].O, v3(0, 0.55, 0.35)), geo.arcText, { color: 'rose', size: 16, dir: { x: 1, y: 0 }, gap: 8 });
       if (opts.caption !== false && !C.problem) {
         const cex = geo.given && !geo.holds, col = !geo.given ? 'rose' : cex ? 'red' : 'green';

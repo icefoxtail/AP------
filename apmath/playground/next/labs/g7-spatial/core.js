@@ -22,6 +22,15 @@
   const pick = (list, cur) => { const pool = list.filter((x) => x !== cur); return pool[Math.floor(Math.random() * pool.length)]; };
   const rint = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
   const shuffle = (arr) => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  // 받침에 따라 조사를 고릅니다: kind = 'wa'(과/와) · 'eul'(을/를) · 'eun'(은/는) · 'i'(이/가). 영어 이름은 읽는 소리 기준(L·M·N·R 은 받침 있음).
+  const PAIR = { wa: ['과', '와'], eul: ['을', '를'], eun: ['은', '는'], i: ['이', '가'] };
+  const hasBatchim = (w) => {
+    const ch = String(w).trim().slice(-1), code = ch.charCodeAt(0) - 0xac00;
+    if (code >= 0 && code <= 11171) return code % 28 !== 0;
+    if (/[ㄱ-ㅎ]/.test(ch)) return true;
+    return /[LMNRlmnr]/.test(ch);
+  };
+  const jo = (w, kind) => PAIR[kind][hasBatchim(w) ? 0 : 1];
   const fmtN = (v) => { const x = Math.round(v * 10) / 10; return (Number.isInteger(x) ? String(x) : x.toFixed(1)).replace('-', '−'); };
 
   /* ------------------------------------------------------------------ 3차원 벡터 */
@@ -330,7 +339,7 @@
   /* ------------------------------------------------------------------ 5지선다 만들기 */
   // 숫자 보기: correct 정답, wrongs [[값, 힌트], …]. 모자라면 간격으로 채우고 작은 값부터 놓습니다.
   function mkChoices(correct, wrongs, o = {}) {
-    const unitTxt = o.unit == null ? '개' : o.unit, valid = o.valid || ((v) => v >= 0);
+    const unitTxt = o.unit == null ? '개' : o.unit, valid = o.valid || ((v) => Number.isInteger(v) && v >= 0);
     const same = (a, b) => Math.abs(a - b) < 1e-6;
     const list = [{ v: correct, ok: true, hint: '' }];
     for (const w of wrongs) {
@@ -516,7 +525,7 @@
   const rd = (label, value, color, note, ref, wide) => ({ label, value, color, note, ref, wide });
 
   window.APL_SP = {
-    PI, DEG, clamp, ease, seg01, NUM, LET, esc, pick, rint, shuffle, fmtN,
+    PI, DEG, clamp, ease, seg01, NUM, LET, esc, pick, rint, shuffle, fmtN, jo,
     v3, add3, sub3, mul3, dot3, cross3, len3, unit3, lerp3, mid3, rotAxis, camOf, proj, facing, lineRel, lineMeetPoint,
     buildSolid, relEdges, classify, edgeByKey, ov, nm, SHAPE_NAME, PRISM_NAME,
     textW, bboxOf, fit, scene3, drawSolid, drawVerts, P, VIEW_PARAMS, VIEW, mkChoices, mkText, cnt, baseCtx, makeScene, register, notes, rd

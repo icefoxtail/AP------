@@ -9,7 +9,7 @@
   'use strict';
   const G = window.APL_SP;
   if (!G) return;
-  const { clamp, pick, rint, buildSolid, classify, relEdges, edgeByKey, scene3, drawSolid, drawVerts, add3, mid3, lineMeetPoint, sub3, lerp3, len3, v3, P, VIEW, mkChoices, rd, notes, ov, DEG } = G;
+  const { jo, clamp, pick, rint, buildSolid, classify, relEdges, edgeByKey, scene3, drawSolid, drawVerts, add3, mid3, lineMeetPoint, sub3, lerp3, len3, v3, P, VIEW, mkChoices, rd, notes, ov, DEG } = G;
 
   const PARAMS = {
     spExt: P('모서리 늘이기', 0, 1, 0.01, 1, { color: 'violet', hint: '두 모서리를 쭉 늘이면 한 점에서 만나는 것이 있어요', format: (v) => Math.round(v * 100) + '%' }),
@@ -131,9 +131,9 @@
       const { ref, nMeet, nExt, nPar, nSkew, total } = M;
       const r = ov(ref.name);
       return [
-        `기준 모서리 $${r}$와 만나는 모서리를 지워요. 끝점에서 만나는 것이 $${nMeet}$개${nExt ? `, 늘이면 한 점에서 만나는 것이 $${nExt}$개이니 모두 $${nMeet + nExt}$개예요` : '예요'}.`,
-        `$${r}$와 평행한 모서리 $${nPar}$개도 지워요.`,
-        `남은 모서리 $${total}-1-${nMeet + nExt}-${nPar}=${nSkew}$개가 $${r}$와 꼬인 위치예요.`
+        `기준 모서리 $${r}$${jo(ref.name, 'wa')} 만나는 모서리를 지워요. 끝점에서 만나는 것이 $${nMeet}$개${nExt ? `, 늘이면 한 점에서 만나는 것이 $${nExt}$개이니 모두 $${nMeet + nExt}$개예요` : '예요'}.`,
+        `$${r}$${jo(ref.name, 'wa')} 평행한 모서리 $${nPar}$개도 지워요.`,
+        `남은 모서리 $${total}-1-${nMeet + nExt}-${nPar}=${nSkew}$개가 $${r}$${jo(ref.name, 'wa')} 꼬인 위치예요.`
       ];
     }
 
@@ -149,7 +149,7 @@
       ];
       if (M.tgt) {
         const t = M.tgt, rel = M.tgtRel;
-        readouts.push(rd(`${ref.name}와 ${t.name}`, rel === 'ref' ? '같은 모서리' : rel === 'skew' ? '꼬인 위치' : rel === 'par' ? '평행' : '만남', rel === 'skew' ? GREEN : rel === 'par' ? BLUE : RED, rel === 'ext' ? '늘이면 만나요' : rel === 'meet' ? '끝점에서 만나요' : '', null, true));
+        readouts.push(rd(`${ref.name}${jo(ref.name, 'wa')} ${t.name}`, rel === 'ref' ? '같은 모서리' : rel === 'skew' ? '꼬인 위치' : rel === 'par' ? '평행' : '만남', rel === 'skew' ? GREEN : rel === 'par' ? BLUE : RED, rel === 'ext' ? '늘이면 만나요' : rel === 'meet' ? '끝점에서 만나요' : '', null, true));
       }
       return {
         guide: `<b>노란 손잡이</b>를 끌어 <b>기준 모서리</b>를 바꿔 보세요.${M.tgt ? ' <b>보라 손잡이</b>로는 둘째 모서리를 골라 둘의 관계를 확인해요.' : ''} 빈 곳을 끌면 입체가 돌아가요. 나머지 모서리는 ${span('red', '만나거나')}, ${span('sky', '평행하거나')}, ${span('green', '꼬인 위치')}예요. 안 보이는 모서리는 점선이에요.${nExt ? ' 막대로 모서리를 늘이면 한 점에서 만나는 것이 보여요.' : ''}`,
@@ -175,7 +175,7 @@
       return {
         tag: c.trap ? '꼬인 위치의 개수 (함정)' : '꼬인 위치의 개수',
         key: `${c.id}|${n}|${ref.key}`,
-        stem: `그림은 ${shape}이다. 모서리 $${ov(ref.name)}$와 꼬인 위치에 있는 모서리의 개수는?`,
+        stem: `그림은 ${shape}이다. 모서리 $${ov(ref.name)}$${jo(ref.name, 'wa')} 꼬인 위치에 있는 모서리의 개수는?`,
         choices: mkChoices(nSkew, wr)
       };
     }
@@ -220,14 +220,14 @@
     id: 's1-6', title: '정사면체에서 꼬인 위치', short: '정사면체', kind: 'tetra', n: 3,
     question: '정사면체의 모서리는 6개예요. 한 모서리와 꼬인 위치에 있는 모서리는 몇 개일까?',
     refs: baseSide('AB', 'VA'),
-    notes: (M) => notes('사면체에서는 어느 모서리를 기준으로 해도 마주 보는 모서리 1개만 꼬인 위치예요.', '각뿔대·각뿔처럼 한 점에서 만나는 모서리가 많으면 꼬인 위치는 적어져요.')
+    notes: (M) => notes('사면체에서는 어느 모서리를 기준으로 해도 마주 보는 모서리 1개만 꼬인 위치예요.', '한 꼭짓점에서 만나는 모서리가 많을수록 꼬인 위치는 적어져요.')
   }));
   S.push(skewScene({
     id: 's1-7', title: 'n각기둥에서 꼬인 위치', short: 'n각기둥', kind: 'prism', n: 6, n0: 5, ext0: 0, pair: true,
     tgt: 's3',
     question: 'n각기둥의 밑면의 변의 수 n을 늘리면, 한 모서리와 꼬인 위치에 있는 모서리는 몇 개가 될까? 두 모서리를 골라 위치 관계도 알아보자.',
     refs: baseSide('t0', 's0'),
-    notes: (M) => notes('n각기둥의 모서리는 모두 $3n$개예요.', 'n이 짝수이면 밑면에 평행한 모서리가 더 많아져서 꼬인 위치가 한 개 줄어들 수 있어요. 막대로 n을 바꿔 세어 보세요.')
+    notes: (M) => notes('n각기둥의 모서리는 모두 $3n$개예요. 꼬인 위치의 개수는 (전체 모서리) $-$ (기준 모서리 자신 1) $-$ (만나는 모서리) $-$ (평행한 모서리)로 구해요.', '밑면의 모서리를 기준으로 하면 꼬인 위치는 n이 홀수일 때 $2n-3$개, 짝수일 때 $2n-4$개예요. 옆모서리를 기준으로 하면 n에 관계없이 $2n-4$개예요.')
   }));
 
   G.register(10, 't1', '① 꼬인 위치', '꼬인 위치', PARAMS, S);

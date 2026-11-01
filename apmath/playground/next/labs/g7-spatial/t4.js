@@ -9,7 +9,7 @@
   'use strict';
   const G = window.APL_SP;
   if (!G) return;
-  const { DEG, PI, clamp, pick, rint, shuffle, v3, add3, sub3, mul3, dot3, cross3, len3, unit3, lerp3, mid3, rotAxis, scene3, classify, ov, P, VIEW, mkChoices, mkText, rd, notes, LET, NUM } = G;
+  const { jo, DEG, PI, clamp, pick, rint, shuffle, v3, add3, sub3, mul3, dot3, cross3, len3, unit3, lerp3, mid3, rotAxis, scene3, classify, ov, P, VIEW, mkChoices, mkText, rd, notes, LET, NUM } = G;
 
   const PARAMS = {
     spFold: P('접기', 0, 1, 0.005, 0, { color: 'amber', hint: '막대를 끌거나 ▶를 눌러 전개도를 접어 보세요', format: (v) => (v < 0.01 ? '펼친 전개도' : v > 0.99 ? '다 접음' : Math.round(v * 100) + '%') })
@@ -257,8 +257,8 @@
   }
   const names2 = (e) => e.name;
   const stepsSkew = (M, r) => [
-    `전개도를 접어 입체를 만들어요. 같은 문자의 꼭짓점이 한 점으로 모여요. 기준 모서리 $${r}$와 끝점에서 만나는 모서리 $${M.c.nMeet + M.c.nExt}$개를 지워요.`,
-    `$${r}$와 평행한 모서리 $${M.c.nPar}$개도 지워요.`,
+    `전개도를 접어 입체를 만들어요. 같은 문자의 꼭짓점이 한 점으로 모여요. 기준 모서리 $${r}$${jo(M.ref.name, 'wa')} 끝점에서 만나는 모서리 $${M.c.nMeet + M.c.nExt}$개를 지워요.`,
+    `$${r}$${jo(M.ref.name, 'wa')} 평행한 모서리 $${M.c.nPar}$개도 지워요.`,
     `남은 모서리 $${M.c.total}-1-${M.c.nMeet + M.c.nExt}-${M.c.nPar}=${M.c.nSkew}$개가 꼬인 위치예요.`
   ];
   // 5지선다: 꼬인 위치인 모서리 이름 고르기 / 개수 고르기
@@ -273,7 +273,7 @@
     for (let k = 0; items.length < 5 && k < othL.length; k++) if (!items.includes(othL[k])) items.push(othL[k]);
     const order = items.map((e, i) => ({ e, o: hash(key + ref.key + e.name + i) })).sort((x, y) => x.o - y.o).map((q) => q.e);
     const hint = (e) => (e.rel === 'meet' ? '접으면 기준 모서리와 한 점에서 만나요.' : e.rel === 'par' ? '접으면 기준 모서리와 평행해요.' : e.rel === 'ext' ? '늘이면 기준 모서리와 만나요.' : '');
-    return { tag: '전개도에서 꼬인 위치', key: key + M.ref.key, stem: `그림은 ${shape}의 전개도이다. 이 전개도를 접어 만든 입체에서 모서리 $${ov(ref.name)}$와 꼬인 위치에 있는 모서리는? (같은 문자는 접으면 한 점으로 모인다.)`, choices: mkText(order.map((e) => ({ h: `$${ov(e.name)}$`, p: e.name, ok: e.rel === 'skew', hint: hint(e) }))) };
+    return { tag: '전개도에서 꼬인 위치', key: key + M.ref.key, stem: `그림은 ${shape}의 전개도이다. 이 전개도를 접어 만든 입체에서 모서리 $${ov(ref.name)}$${jo(ref.name, 'wa')} 꼬인 위치에 있는 모서리는? (같은 문자는 접으면 한 점으로 모인다.)`, choices: mkText(order.map((e) => ({ h: `$${ov(e.name)}$`, p: e.name, ok: e.rel === 'skew', hint: hint(e) }))) };
   };
 
   const S = [];
@@ -331,7 +331,7 @@
     },
     steps: (M) => [
       `전개도를 접어 면 ${M.bname}을 바닥으로 놓아요. 바닥에 닿은 면을 기준으로 삼아요.`,
-      `기준 면과 마주 보는 면은 전개도에서 한 칸 건너뛰어 놓인 면 ${M.net.faceName[M.par]} 하나예요. 이 면이 평행해요.`,
+      `접었을 때 면 ${M.bname}${jo(M.bname, 'wa')} 마주 보는 면은 면 ${M.net.faceName[M.par]}이에요. 마주 보는 면은 항상 세 쌍이지만, 어느 면끼리 마주 보는지는 전개도마다 접어 봐야 알 수 있어요.`,
       `나머지 면 ${M.perp.map((i) => M.net.faceName[i]).join(', ')} ${M.perp.length}개는 기준 면과 90°로 만나서 수직이에요.`
     ],
     view: (M) => ({
@@ -339,7 +339,7 @@
       readouts: [rd('기준 면', `면 ${M.bname}`, 'amber'), rd('평행한 면', `면 ${M.net.faceName[M.par]} (1개)`, 'rose'), rd('수직인 면', `${M.perp.map((i) => M.net.faceName[i]).join(' ')} (${M.perp.length}개)`, 'sky', null, null, true)],
       formula: `<p>평행한 면: $1$개 (마주 보는 면) · 수직인 면: $6-1-1=${M.perp.length}$개</p>`,
       rule: '정육면체에서 한 면과 평행한 면은 마주 보는 1개, 나머지 4개 면은 수직이다',
-      notes: notes('전개도에서 한 칸 건너뛴 면이 평행한 면이에요. 이웃한 면은 접으면 수직으로 만나요.', '전개도 모양이 달라도 마주 보는 면 세 쌍은 변하지 않아요. 접어서 확인해요.')
+      notes: notes('접었을 때 마주 보는 면이 평행한 면이에요. 어느 면끼리 마주 보는지는 전개도 모양에 따라 달라서 접어 봐야 알 수 있어요.', '마주 보는 면은 항상 세 쌍이고, 나머지 이웃한 면은 접으면 90°로 만나 수직이에요.')
     }),
     prob: (M) => {
       const items = M.net.faces.map((f, i) => ({ h: `면 ${M.net.faceName[i]}`, ok: M.rel[i] === 'par', skip: i === M.base, hint: '접으면 기준 면과 한 모서리를 공유하여 90°로 만나요. 마주 보는 면이 평행해요.' })).filter((x) => !x.skip);
@@ -356,7 +356,7 @@
     notes: () => notes('삼각기둥에서 한 밑면과 평행한 면은 다른 밑면 하나예요. 옆면 세 개는 밑면과 수직이에요.', '옆면끼리는 수직이 아니라 삼각형의 각(정삼각형이면 $60^{\\circ}$)으로 만나요.'),
     prob: (M) => {
       const c = M.c, wr = [[c.nMeet + c.nExt, '만나는 모서리의 개수예요.'], [c.nPar, '평행한 모서리의 개수예요.'], [c.nSkew + 1, '기준 모서리 자신은 꼬인 위치가 아니에요.'], [c.nSkew + c.nPar, '평행한 모서리를 꼬인 위치로 잘못 셌어요.'], [c.nSkew - 1, '빠뜨리지 않고 세어 보세요.']];
-      return { tag: '전개도에서 꼬인 위치의 개수', key: 'p' + M.ref.key, stem: `그림은 삼각기둥의 전개도이다. 이 전개도를 접어 삼각기둥을 만들 때, 모서리 $${ov(M.ref.name)}$와 꼬인 위치에 있는 모서리의 개수는? (같은 문자는 접으면 한 점으로 모인다.)`, choices: mkChoices(c.nSkew, wr, { unit: '개' }) };
+      return { tag: '전개도에서 꼬인 위치의 개수', key: 'p' + M.ref.key, stem: `그림은 삼각기둥의 전개도이다. 이 전개도를 접어 삼각기둥을 만들 때, 모서리 $${ov(M.ref.name)}$${jo(M.ref.name, 'wa')} 꼬인 위치에 있는 모서리의 개수는? (같은 문자는 접으면 한 점으로 모인다.)`, choices: mkChoices(c.nSkew, wr, { unit: '개' }) };
     }
   }));
   S.push(edgeScene({

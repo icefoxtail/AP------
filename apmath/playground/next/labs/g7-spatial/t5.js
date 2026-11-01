@@ -7,7 +7,7 @@
   'use strict';
   const G = window.APL_SP;
   if (!G || !G.stmt) return;
-  const { pick, rint, v3, add3, sub3, mul3, dot3, cross3, len3, unit3, mid3, scene3, buildSolid, drawSolid, drawVerts, VIEW, rd, notes, mkChoices } = G;
+  const { jo, pick, rint, v3, add3, sub3, mul3, dot3, cross3, len3, unit3, mid3, scene3, buildSolid, drawSolid, drawVerts, VIEW, rd, notes, mkChoices } = G;
   const { STM, render, ab, abAt, setAB } = G.stmt;
   const span = (c, t) => `<b style="color:var(--m-${c})">${t}</b>`;
 
@@ -79,7 +79,7 @@
       const { sol, q } = M, fi = q.face % sol.faces.length, f = sol.faces[fi], ans = perpEdges(sol, fi).length;
       return {
         tag: '평면에 수직인 모서리', key: caseKey(q),
-        stem: `그림은 ${sol.name}이다. 면 ${faceName(f)}와 수직인 모서리는 모두 몇 개인가?`,
+        stem: `그림은 ${sol.name}이다. 면 ${faceName(f)}${jo(faceName(f), 'wa')} 수직인 모서리는 모두 몇 개인가?`,
         choices: mkChoices(ans, [[sol.edges.length - f.v.length, '면 위에 있지 않은 모서리의 개수예요. 비스듬한 모서리가 아니라 면에 수직인 모서리를 세요.'], [f.v.length, '면의 모서리의 개수예요. 그 모서리들은 면 위에 있어요.'], [ans + 1, '하나 더 세었어요.'], [ans - 1, '빠뜨리지 않고 세어 보세요.'], [sol.faces.length, '면의 개수예요.']], { unit: '개' }),
         note: '면에 수직인 모서리는 그 면과 90°로 만나는 모서리예요'
       };
@@ -92,7 +92,7 @@
     q0: { kind: 'cuboid', n: 4, face: 2 }, cases: CASES.slice(1),
     guide: '바닥 $P$에 수직으로 박은 경첩 $l$에 문 $Q$가 달려 있어요. 막대로 문을 열고 닫아 보세요. 두 평면이 만나는 교선과 직각 표시를 확인해요.',
     steps: () => ['바닥 평면 $P$에 수직인 직선 $l$(경첩)을 세워요.', '$l$을 포함하는 평면 $Q$(문)를 만들어요. 문을 얼마나 열어도 $Q$는 $l$을 포함해요.', '그러므로 $P\\perp Q$예요. 평면 $P$에 수직인 직선을 포함하는 평면은 $P$와 수직이에요.'],
-    formula: (M) => `<p>$l\\perp P$이고 $l$이 평면 $Q$에 포함 $\\Rightarrow$ $P\\perp Q$</p><p>지금 문의 각: $${Math.round(M.cur.th)}^{\\circ}$ — 그래도 바닥과 수직이에요.</p>`,
+    formula: () => '<p>$l\\perp P$이고 $l$이 평면 $Q$에 포함 $\\Rightarrow$ $P\\perp Q$</p><p>문을 몇 도로 열어도 $Q$는 $l$을 포함하므로 바닥과 수직이에요.</p>',
     rule: '평면에 수직인 직선을 포함하는 평면은 그 평면과 수직이다',
     tips: ['교실 문이 얼마나 열리든 문짝은 바닥과 수직이에요. 경첩이 바닥에 수직이기 때문이에요.', '두 평면이 수직이면 한 평면의 직선이 다른 평면에 수직으로 서요.'],
     drawProb: (D, b, M, C) => drawSolidFace(D, b, M, C, true),
@@ -101,7 +101,7 @@
       const par = sol.faces.filter((g, i) => i !== fi && dot3(g.n, f.n) < -0.999999).length;
       return {
         tag: '평면에 수직인 면', key: caseKey(q),
-        stem: `그림은 ${sol.name}이다. 면 ${faceName(f)}와 수직인 면은 모두 몇 개인가?`,
+        stem: `그림은 ${sol.name}이다. 면 ${faceName(f)}${jo(faceName(f), 'wa')} 수직인 면은 모두 몇 개인가?`,
         choices: mkChoices(ans, [[sol.faces.length - 1, '다른 면 모두를 셌어요. 평행한 면이나 비스듬한 면은 수직이 아니에요.'], [par, '평행한 면의 개수예요.'], [ans + 1, '하나 더 세었어요.'], [ans - 1, '빠뜨리지 않고 세어 보세요.'], [f.v.length, '면의 모서리의 개수예요.']], { unit: '개' }),
         note: '두 면이 90°로 만나면 수직이에요'
       };
