@@ -21,7 +21,7 @@
   const PARAMS = {
     soCr: P('밑면의 반지름 r', 1, 3, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
     soCh: P('높이 h', 2, 6, 1, 4, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
-    soRl: P('굴러간 정도', 0, 1, 0.005, 0.5, { color: 'amber', hint: '오른쪽으로 끌면 원기둥이 가로로 굴러가요', format: (v) => (v * 100 >= 99.5 ? '한 바퀴' : Math.round(v * 360) + '°') }),
+    soRl: P('옆면 펼친 정도', 0, 1, 0.005, 0.5, { color: 'amber', hint: '오른쪽으로 끌면 옆면이 한 줄로 오른쪽으로 펼쳐져요', format: (v) => (v * 100 >= 99.5 ? '한 바퀴' : Math.round(v * 360) + '°') }),
     soNr: P('밑면의 반지름 r', 1, 6, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
     soNR: P('모선의 길이 R', 2, 9, 1, 6, { color: 'amber', hint: 'R은 r보다 길어야 해요', format: (v) => Math.round(v) + ' cm' }),
     soNt: P('호와 둘레 비교하기', 0, 1, 0.005, 0.5, { color: 'amber', hint: '오른쪽으로 끌면 색이 칠해지며 길이가 같아지는 것을 볼 수 있어요', format: (v) => Math.round(v * 100) + '%' }),
@@ -75,13 +75,12 @@
   }
 
   /* ================================================================== s3-1 원기둥 굴리기 */
-  S3.cylRoll = null;
   const rollM = (s) => { const r = clamp(Math.round(s.soCr), 1, 3), h = clamp(Math.round(s.soCh), 2, 6); return { r, h, t: clamp(s.soRl, 0, 1), sol: S3.solid('cyl', { R: r, h1: h }), pr: s.soPr || 3, ph: s.soPh || 5 }; };
   const S = [];
   S.push({
-    id: 's3-1', noView: true, cam0: { yaw: 0, pitch: 34 }, title: '원기둥을 굴리면 옆면이 직사각형', short: '원기둥 굴리기',
-    question: '원기둥을 바닥에서 한 바퀴 굴리면 옆면이 지나간 자리는 어떤 도형일까? 가로와 세로는 입체의 어디일까?',
-    ctl: ['soCr', 'soCh', 'soRl'], anim: { key: 'soRl', dur: 6, label: '굴려 보기', start: 0.5 },
+    id: 's3-1', noView: true, title: '원기둥의 옆면을 펼치면 직사각형', short: '원기둥 옆면 펼치기',
+    question: '원기둥의 옆면을 한 줄로 펼치면 어떤 도형일까? 가로와 세로는 입체의 어디일까?',
+    ctl: ['soCr', 'soCh', 'soRl'], anim: { key: 'soRl', dur: 6, label: '펼쳐 보기', start: 0.5 },
     stepT: (n) => (n >= 3 ? 1 : n >= 2 ? 0.5 : 0),
     init: (s) => { s.soCr = 2; s.soCh = 4; s.soRl = 0.5; },
     reroll: (s) => { s.soPr = pick([1, 2, 3, 4, 5], s.soPr); s.soPh = pick([2, 3, 4, 5, 6, 7].filter((v) => v !== s.soPr), s.soPh); },
@@ -100,40 +99,47 @@
         b.seg(Cb, pt(Cb, r, 30), { color: SKY, width: 2.6 }); T(b, Cb, `r = ${r} cm`, SKY, { dy: 16, size: 16 });
         return;
       }
-      const { r, h, t, sol } = M, w = 2 * PI * r, x0 = -w / 2, xc = x0 + w * t, cp = Math.cos(34 * DEG), sp = Math.sin(34 * DEG);
-      const D = S3.ctx(b, s, { lay: 'z', k: 1, ox: xc, oy: 0 });
-      const gy = -r * cp - h * sp, yTop = gy - (b.W < 560 ? 2.6 : 1.3), yBot = yTop - h;
-      const bb = { x0: x0 - r - 0.6, x1: x0 + w + r + 0.6, y0: yBot - 0.6, y1: r * cp + r * 0.2 + h * sp };
-      fit(b, bb, { l: 26, r: 26, t: 26, b: 26 });
-      // 바닥선과 지나간 자국(3D)
-      b.seg({ x: x0 - r - 0.4, y: gy }, { x: x0 + w + r + 0.4, y: gy }, { color: 'muted', width: 1.8, alpha: 0.8 });
-      b.path([{ x: x0, y: gy }, { x: xc, y: gy }, { x: xc, y: gy + h * sp }, { x: x0, y: gy + h * sp }], { close: true, fill: AMB, fillAlpha: 0.3, color: AMB, width: 2.4 });
-      // 굴러가는 원기둥(제자리에서 돌면서 가로로 이동)
+      const { r, h, t, sol } = M, w = 2 * PI * r, cp = Math.cos(22 * DEG), sp = Math.sin(22 * DEG);
+      // 오른쪽(또는 아래)에 펼친 옆면의 자리: 입체의 밑면 높이에 맞춰 놓습니다.
+      const cb = { x0: -r, x1: r, y0: -r * sp, y1: h * cp + r * sp };
+      const rb = { x0: 0, x1: w, y0: 0, y1: h };
+      const off = arrange(b, cb, rb, Math.max(r, h) * 0.5);
+      const rx = off.dx, ry = off.dy; // 직사각형 왼쪽 아래 모서리의 위치
+      fit(b, unionB(cb, shiftB(rb, rx, ry)), { l: 30, r: 30, t: 40, b: 30 });
+      const D = S3.ctx(b, s, {});
       S3.drawSolid(D, sol, {});
-      const th = PI / 2 + w * t / r; // 바닥에 닿은 줄이 돌아간 각
-      D.line(D.pol(r, 0, th), D.pol(r, h, th), AMB, 4);
-      // 2차원 전개도: 같은 가로 눈금 위에 옆면이 펼쳐져 칠해집니다.
-      b.poly([{ x: x0, y: yTop }, { x: x0 + w, y: yTop }, { x: x0 + w, y: yBot }, { x: x0, y: yBot }], { color: AMB, width: 2.4, dash: [6, 5] });
-      b.poly([{ x: x0, y: yTop }, { x: xc, y: yTop }, { x: xc, y: yBot }, { x: x0, y: yBot }], { fill: AMB, fillAlpha: 0.32, color: AMB, width: 3 });
+      const a = 2 * PI * t, n = Math.max(2, Math.ceil(a / (5 * DEG)));
+      for (let i = 0; i < n; i++) { // 입체 옆면에서 펼쳐지는 부분(같은 색)
+        const t0 = a * i / n, t1 = a * (i + 1) / n;
+        D.g.path([D.P(D.pol(r, 0, t0)), D.P(D.pol(r, 0, t1)), D.P(D.pol(r, h, t1)), D.P(D.pol(r, h, t0))], { close: true, fill: AMB, fillAlpha: 0.3, color: null });
+      }
+      D.line(D.pol(r, 0, 0), D.pol(r, h, 0), AMB, 3.6);
+      if (a > 0.05) D.line(D.pol(r, 0, a), D.pol(r, h, a), AMB, 3.6);
+      // 펼친 옆면: 왼쪽에서 오른쪽으로 늘어납니다.
+      const X0 = rx, Y0 = ry;
+      b.poly([{ x: X0, y: Y0 }, { x: X0 + w, y: Y0 }, { x: X0 + w, y: Y0 + h }, { x: X0, y: Y0 + h }], { color: AMB, width: 2.4, dash: [6, 5] });
+      b.poly([{ x: X0, y: Y0 }, { x: X0 + w * t, y: Y0 }, { x: X0 + w * t, y: Y0 + h }, { x: X0, y: Y0 + h }], { fill: AMB, fillAlpha: 0.32, color: AMB, width: 3 });
       if (C.txt) {
-        T(b, { x: x0 + w / 2, y: yTop }, `가로 = 밑면의 둘레 = 2π × ${r} = ${2 * r}π cm`, AMB, { dy: -17, size: 16 });
-        T(b, { x: x0 + w, y: (yTop + yBot) / 2 }, `세로 h = ${h} cm`, AMB, { dx: -62, size: 16 });
-        const rimP = D.P(D.pol(r, h, 0.8));
-        b.seg(D.P({ x: 0, y: h, z: 0 }), rimP, { color: SKY, width: 2.6 });
-        T(b, { x: (D.P({ x: 0, y: h, z: 0 }).x + rimP.x) / 2, y: (D.P({ x: 0, y: h, z: 0 }).y + rimP.y) / 2 }, `r = ${r} cm`, SKY, { dy: 15, size: 16 });
-        if (C.review && C.step >= 3) T(b, { x: x0 + w / 2, y: (yTop + yBot) / 2 }, `옆넓이 = ${2 * r}π × ${h} = ${2 * r * h}π cm²`, GRN, { size: 17 });
+        T(b, { x: X0 + w / 2, y: Y0 + h }, `가로 = 밑면의 둘레 = 2π × ${r} = ${2 * r}π cm`, AMB, { dy: -17, size: 16 });
+        T(b, { x: X0 + w, y: Y0 + h / 2 }, `세로 h = ${h} cm`, AMB, { dx: -62, size: 16 });
+        const c0 = D.P({ x: 0, y: 0, z: 0 }), rimP = D.P(D.pol(r, 0, 0));
+        b.seg(c0, rimP, { color: SKY, width: 2.6 });
+        T(b, { x: (c0.x + rimP.x) / 2, y: (c0.y + rimP.y) / 2 }, `r = ${r}`, SKY, { dy: 16, size: 16 });
+        const hm = D.P({ x: r, y: h / 2, z: 0 });
+        T(b, hm, `h = ${h}`, AMB, { dx: 36, size: 15 });
+        if (C.review && C.step >= 3) T(b, { x: X0 + w / 2, y: Y0 + h / 2 }, `옆넓이 = ${2 * r}π × ${h} = ${2 * r * h}π cm²`, GRN, { size: 17 });
       }
     },
     steps: (M) => [
-      `밑면의 반지름 ${M.r} cm, 높이 ${M.h} cm인 원기둥을 바닥에서 굴려요. 옆면에 칠한 노란 줄이 바닥에 닿을 때마다 자국이 남아요.`,
-      `한 바퀴 굴러가면 옆면 전체가 바닥에 펼쳐져요. 펼쳐진 옆면은 <b>직사각형</b>이에요.`,
-      `가로는 굴러간 거리 = <b>밑면의 둘레</b> $2\\pi r = 2\\pi\\times${M.r} = ${2 * M.r}\\pi$ (cm), 세로는 <b>높이</b> $h = ${M.h}$ cm예요.`,
+      `밑면의 반지름 ${M.r} cm, 높이 ${M.h} cm인 원기둥이에요. 옆면의 한 줄(세로선)을 따라 잘라 오른쪽으로 펼쳐요.`,
+      `옆면을 펼치는 만큼 오른쪽으로 직사각형이 늘어나요. 한 바퀴 펼치면 옆면 전체가 <b>직사각형</b>이 돼요.`,
+      `가로는 한 바퀴 돈 길이 = <b>밑면의 둘레</b> $2\\pi r = 2\\pi\\times${M.r} = ${2 * M.r}\\pi$ (cm), 세로는 <b>높이</b> $h = ${M.h}$ cm예요.`,
       `(옆넓이) = (가로) × (세로) = $${2 * M.r}\\pi\\times${M.h} = ${2 * M.r * M.h}\\pi$ (cm²)`
     ],
     view: (M, C) => ({
-      guide: '막대를 오른쪽으로 끌거나 ▶를 눌러 <b>원기둥을 가로로 굴려</b> 보세요. 지나간 자리는 바닥에 노랗게 남고, 아래 평면에는 펼쳐진 옆면이 같은 눈금으로 칠해져요.',
+      guide: '막대를 오른쪽으로 끌거나 ▶를 눌러 <b>옆면을 오른쪽으로 펼쳐</b> 보세요. 입체에서 펼쳐지는 부분(노랑)과 오른쪽(또는 아래) 직사각형이 같은 비율로 늘어나요.',
       readouts: [rd('옆면의 가로', `${2 * M.r}π cm`, AMB, '밑면의 둘레 2πr'), rd('옆면의 세로', cmv(M.h), AMB, '원기둥의 높이'), rd('옆넓이', `${2 * M.r * M.h}π cm²`, GRN, '가로 × 세로', null, true)],
-      status: M.t >= 0.995 ? { tone: 'ok', text: `한 바퀴 → 가로 ${2 * M.r}π cm` } : { tone: 'info', text: `${Math.round(M.t * 360)}° 굴렀어요` },
+      status: M.t >= 0.995 ? { tone: 'ok', text: `한 바퀴 → 가로 ${2 * M.r}π cm` } : { tone: 'info', text: `${Math.round(M.t * 360)}° 펼쳤어요` },
       formula: `<p>(옆면의 가로) = (밑면의 둘레) = $2\\pi r$</p><p>(옆면의 세로) = (높이) = $h$</p><p>(옆넓이) = $2\\pi r\\times h$ = ${2 * M.r}π × ${M.h} = <b>${2 * M.r * M.h}π</b> cm²</p>`,
       rule: '원기둥의 옆면의 전개도는 직사각형이고, 가로의 길이는 밑면의 둘레, 세로의 길이는 높이이다',
       notes: notes('가로는 <b>반지름이 아니라 밑면의 둘레</b> $2\\pi r$ 예요.', '펼친 옆면은 직사각형이므로 넓이는 가로 × 세로예요.')

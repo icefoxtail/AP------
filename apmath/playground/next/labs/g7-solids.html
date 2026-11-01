@@ -60,6 +60,7 @@ function start() {
       // 빈 곳을 끌면 시점이 제자리에서 돌아갑니다(좌우 회전·위아래 기울기). 눕힌 장면은 좌우로만.
       orbit: (s, dx, dy) => {
         if (s.soFix) return;
+        if (s.soPO) { s.soPitch = clamp((s.soPitch == null ? 22 : s.soPitch) + dy * 0.4, 6, 80); return; } // 가로 이동이 화면 가로가 되도록 좌우 돌리기는 막아요
         if (s.soLay) { s.soYawL = clamp((s.soYawL == null ? -32 : s.soYawL) + dx * 0.4, -80, -10); return; }
         s.soYaw = (s.soYaw || 0) + dx * 0.5;
         if (s.soYaw > 180) s.soYaw -= 360;

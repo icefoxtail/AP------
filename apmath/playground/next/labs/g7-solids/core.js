@@ -207,7 +207,7 @@
     return {
       id: D.id, title: D.title, short: D.short || D.title, so: D,
       question: D.question,
-      controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl).concat(D.noView ? [] : D.lay ? ['soYawL'] : VIEW),
+      controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl).concat(D.noView ? [] : D.pitchOnly ? ['soPitch'] : D.lay ? ['soYawL'] : VIEW),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
       steps: (s) => D.steps(D.model(s)).map((x) => texFix(String(x).replace(/<\/?b>/g, ''))),
@@ -219,7 +219,7 @@
       },
       enter: (s, lab) => {
         const c0 = D.cam0 || (D.lay ? { yaw: -32, pitch: 0 } : { yaw: 0, pitch: 22 });
-        s.soYaw = c0.yaw; s.soYawL = c0.yaw; s.soPitch = c0.pitch; s.soLay = !!D.lay; s.soFix = !!D.noView;
+        s.soYaw = c0.yaw; s.soYawL = c0.yaw; s.soPitch = c0.pitch; s.soLay = !!D.lay; s.soFix = !!D.noView; s.soPO = !!D.pitchOnly;
         Object.keys(s).forEach((k) => { if (/^so[PQ]/.test(k) && k !== 'soPitch' && k !== 'soPsi') delete s[k]; }); // 문제용 상태는 장면마다 새로
         D.init(s);
         s.soSeed = 0; s.soPick = null; s.playing = false;
@@ -244,6 +244,11 @@
         const C = baseCtx(s, lab, false);
         C.t = A ? (C.tab === 'explore' ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : (D.problemT == null ? 1 : D.problemT))) : 1;
         const M = D.model(s);
+        // 슬라이더·손잡이로 값이 바뀌면 정리 탭의 풀이 단계 글도 새 값으로 다시 만듭니다.
+        if (lab && lab.scene && lab.scene.so === D && s === lab.s && lab.refs) {
+          const sig = D.id + '|' + JSON.stringify(D.steps(M));
+          if (lab._soSig !== sig) { lab._soSig = sig; try { lab._buildReview(); lab._dirtyPanel = true; } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ } }
+        }
         const v = D.view(M, C, s) || {};
         ['formula', 'guide', 'notes', 'rule'].forEach((k) => { if (typeof v[k] === 'string') v[k] = texFix(v[k]); });
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };

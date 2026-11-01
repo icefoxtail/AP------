@@ -63,7 +63,7 @@
     pts.push(f([0, y0 - 0.55]), f([0, y1 + 0.55]));
     (spec.lines || []).forEach((ln) => pts.push(f(ln.a), f(ln.b)));
     const bb = bboxOf(pts), cen = { x: (bb.x0 + bb.x1) / 2, y: (bb.y0 + bb.y1) / 2 };
-    fit(b, bb, { l: 70, r: 70, t: 56, b: 56 });
+    fit(b, bb, { l: 104, r: 70, t: 56, b: 70 });
     S3.planeFig(g, spec.poly, { horiz, axisText: '회전축 l', ext: spec.ext, axisDx: -38 });
     (spec.lines || []).forEach((ln) => { b.seg(f(ln.a), f(ln.b), { color: AMB, width: 2.6 }); });
     (spec.rights || []).forEach((r) => {
@@ -302,14 +302,13 @@
     model: (s) => { const R = clamp(Math.round(s.soR), 1, 6); return { R, sol: S3.solid('sphere', { R }), pR: s.soPR || 4, pax: s.soPax || 'v' }; },
     draw(b, s, M, C) {
       if (C.problem) {
-        const R = M.pR, poly = [];
+        const R = M.pR, poly = [], horiz = M.pax === 'h', d0 = -0.9;
         for (let i = 0; i <= 28; i++) { const a = -PI / 2 + PI * i / 28; poly.push([R * Math.cos(a), R * Math.sin(a)]); }
-        const horiz = M.pax === 'h', f = (p) => (horiz ? { x: p[1], y: p[0] } : { x: p[0], y: p[1] });
-        prob2D(b, { poly, horiz, ext: 0.5, labels: [] });
-        const a = f([0, -R]), c = f([0, R]);
-        b.seg(a, c, { color: AMB, width: 2.6 });
-        T(b, { x: (a.x + c.x) / 2, y: (a.y + c.y) / 2 }, `지름 ${2 * R} cm`, AMB, { dx: horiz ? 0 : 56, dy: horiz ? 20 : 0, size: 17 });
-        b.point(f([0, 0]), { color: 'ink', r: 4 });
+        prob2D(b, {
+          poly, horiz, ext: 0.5,
+          lines: [{ a: [d0, -R], b: [d0, R] }, { a: [d0 - 0.18, -R], b: [d0 + 0.18, -R] }, { a: [d0 - 0.18, R], b: [d0 + 0.18, R] }],
+          labels: [{ a: [d0, -R], b: [d0, R], text: `지름 ${2 * R} cm`, out: horiz ? [0, -1] : [-1, 0] }]
+        });
         return;
       }
       explore3D(b, s, M, C, {
