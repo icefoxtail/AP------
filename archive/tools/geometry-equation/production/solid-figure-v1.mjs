@@ -563,11 +563,13 @@ function recentre(solid){
 }
 
 // --- visibility of polyhedron edges ------------------------------------------------------------------------------------------------------------
-const facePlane=(solid,face)=>{
-  const pts=face.idx.map(i=>solid.vertices[i].p),n=faceNormal(pts);
+/** The plane of a planar polygon of 3D points, for the depth test: unit normal, offset, and the polygon in the two axes the normal is least along. */
+const planeOfPoints=pts=>{
+  const n=faceNormal(pts);
   const axis=[0,1,2].sort((a,b)=>Math.abs(n[b])-Math.abs(n[a]))[0],keep=[0,1,2].filter(k=>k!==axis);
   return {pts,n,d:dot(n,pts[0]),poly:pts.map(p=>[p[keep[0]],p[keep[1]]]),keep};
 };
+const facePlane=(solid,face)=>planeOfPoints(face.idx.map(i=>solid.vertices[i].p));
 function inside2(poly,q){
   let c=false;
   for(let i=0,j=poly.length-1;i<poly.length;j=i++){
@@ -596,21 +598,24 @@ export function edgeRuns(solid){
   for(const [a,b] of solid.edges){
     const A=solid.vertices[a].p,B=solid.vertices[b].p;
     const skip=new Set(solid.faces.filter(f=>f.idx.includes(a)&&f.idx.includes(b)&&f.idx.some((x,k)=>{const y=f.idx[(k+1)%f.idx.length];return (x===a&&y===b)||(x===b&&y===a);})).map(f=>f.id));
-    const hiddenAt=t=>occluded(planes,lerp(A,B,t),skip);
-    const N=160,flags=[...Array(N).keys()].map(k=>hiddenAt((k+0.5)/N));
-    const cuts=[0];
-    for(let k=1;k<N;k++)if(flags[k]!==flags[k-1]){
-      let lo=(k-0.5)/N,hi=(k+0.5)/N;const fl=flags[k-1];
-      for(let it=0;it<42;it++){const mid=(lo+hi)/2;if(hiddenAt(mid)===fl)lo=mid;else hi=mid;}
-      cuts.push((lo+hi)/2);
-    }
-    cuts.push(1);
-    const edgeRunList=[];
-    let state=flags[0];
-    for(let c=0;c<cuts.length-1;c++){edgeRunList.push({t0:r6(cuts[c]),t1:r6(cuts[c+1]),hidden:state});state=!state;}
-    runs.push({a,b,runs:edgeRunList});
+    runs.push({a,b,runs:runsAlong(t=>occluded(planes,lerp(A,B,t),skip))});
   }
   return runs;
+}
+/** The contiguous runs {t0,t1,hidden} of a segment parametrised by t in [0,1] where hiddenAt(t) tells whether the point at t is behind something: 160 samples, each change located by bisection. */
+function runsAlong(hiddenAt){
+  const N=160,flags=[...Array(N).keys()].map(k=>hiddenAt((k+0.5)/N));
+  const cuts=[0];
+  for(let k=1;k<N;k++)if(flags[k]!==flags[k-1]){
+    let lo=(k-0.5)/N,hi=(k+0.5)/N;const fl=flags[k-1];
+    for(let it=0;it<42;it++){const mid=(lo+hi)/2;if(hiddenAt(mid)===fl)lo=mid;else hi=mid;}
+    cuts.push((lo+hi)/2);
+  }
+  cuts.push(1);
+  const list=[];
+  let state=flags[0];
+  for(let c=0;c<cuts.length-1;c++){list.push({t0:r6(cuts[c]),t1:r6(cuts[c+1]),hidden:state});state=!state;}
+  return list;
 }
 
 // --- numbers as label text --------------------------------------------------------------------------------------------------------------------
@@ -733,13 +738,14 @@ function edgePair(e,code){
   return [...e];
 }
 /** Key -> the 3D point, for the names and the canonical keys of the solids of a model. */
-function pointTable(solids){
+function pointTable(solids,space){
   const table=new Map();
   for(const solid of solids){
     if(solid.category==='POLY')solid.vertices.forEach((v,i)=>{for(const key of vertexKeys(solid,i))table.set(key,v.p);});
     else for(const q of solid.points)if(q.name)table.set(q.name,q.p);
     for(const q of solid.aux??[])table.set(q.name,q.p);
   }
+  for(const q of space?.points??[])table.set(q.id,q.p);
   return table;
 }
 
@@ -876,6 +882,297 @@ function resolveAuxPoints(solids,named,vref){
   }
 }
 
+// --- free space: points and segments of a space figure (G4b) ---------------------------------------------------------------------------------------
+// plan.space:{points:[{id,at,on?,hideName?,hideDot?}],planes:[{id,name?,through|normal+point,extent?,fill?,nameAt?}],lines:[{id,name?,through|intersection,style?}],segments:[{from,to,style?,role?}]}: points that belong to no solid, in 3D. A figure of the three-perpendiculars
+// theorem or of two planes has no solid at all, so a plan may have space and no solids (or both). at is [x,y,z] (numbers or exact texts) or one of the general forms of
+// a solid's helper points (midpoint, divide, centroid, footOnLine, projection), read over every named point placed so far (a point of the space, a vertex of a solid).
+const SPACE_MAX_POINTS=16,SPACE_MAX_PLANES=3,SPACE_MAX_LINES=4,SPACE_MAX_SEGMENTS=16,SPACE_POINT_NAME=/^[A-Z]′?$/u,SPACE_ID=/^[a-z][a-z0-9]{0,7}$/;
+// a plane is named by a Greek letter written in TeX
+const SPACE_LINE_NAME=/^[a-z]$/;
+const SPACE_PLANE_NAME=/^\\(?:alpha|beta|gamma|delta|pi|theta|phi|sigma|omega|lambda|mu|rho)$/;
+/** An exact coordinate text: integers and decimals with + - * / ( ) and sqrt(n), such as "1/2", "sqrt(3)/2", "-sqrt(2)/2". NaN when the text is not one. */
+function spaceNumber(text){
+  const s=String(text).replace(/\s+/g,'');
+  if(!/^[0-9.+\-*/()sqrt]{1,40}$/.test(s))return NaN;
+  let i=0;
+  const atom=()=>{
+    if(s.startsWith('sqrt(',i)){i+=5;const v=expr();if(s[i]!==')')return NaN;i++;return v<0?NaN:Math.sqrt(v);}
+    if(s[i]==='('){i++;const v=expr();if(s[i]!==')')return NaN;i++;return v;}
+    const m=/^\d+(?:\.\d+)?/.exec(s.slice(i));
+    if(!m)return NaN;
+    i+=m[0].length;return Number(m[0]);
+  };
+  const unary=()=>{if(s[i]==='-'){i++;return -unary();}if(s[i]==='+'){i++;return unary();}return atom();};
+  const term=()=>{let v=unary();while(s[i]==='*'||s[i]==='/'){const op=s[i++],t=unary();v=op==='*'?v*t:v/t;}return v;};
+  const expr=()=>{let v=term();while(s[i]==='+'||s[i]==='-'){const op=s[i++],t=term();v=op==='+'?v+t:v-t;}return v;};
+  const v=expr();
+  return i===s.length&&Number.isFinite(v)?v:NaN;
+}
+/** One coordinate: a number or an exact text, at most 1000 in size. */
+function spaceCoord(x,code){
+  const v=typeof x==='number'?x:typeof x==='string'?spaceNumber(x):NaN;
+  if(!Number.isFinite(v)||Math.abs(v)>1000)bad(code);
+  return v;
+}
+const spaceVector=(list,code)=>{if(!Array.isArray(list)||list.length!==3)bad(code);return list.map(x=>spaceCoord(x,code));};
+const r6v=p=>p.map(r6);
+function solveSpace(raw,solids,named,vref){
+  if(!isPlain(raw))bad('SPACE_POINT_INVALID');
+  onlyKeys(raw,['points','planes','lines','segments'],'SPACE_POINT_INVALID');
+  const pointSpecs=raw.points,planeSpecs=raw.planes??[],lineSpecs=raw.lines??[],segSpecs=raw.segments??[];
+  if(!Array.isArray(pointSpecs)||pointSpecs.length<1||!Array.isArray(segSpecs))bad('SPACE_POINT_INVALID');
+  if(!Array.isArray(planeSpecs))bad('SPACE_PLANE_INVALID');
+  if(!Array.isArray(lineSpecs)||lineSpecs.length>SPACE_MAX_LINES)bad('SPACE_LINE_INVALID');
+  if(pointSpecs.length>SPACE_MAX_POINTS)bad('SPACE_POINT_LIMIT');
+  if(planeSpecs.length>SPACE_MAX_PLANES)bad('SPACE_PLANE_LIMIT');
+  if(segSpecs.length>SPACE_MAX_SEGMENTS)bad('SPACE_SEGMENT_INVALID');
+  const later=new Set(pointSpecs.map(e=>isPlain(e)?e.id:undefined));
+  // any named point placed so far: a point of the space, a vertex or a helper point of a solid
+  const lookup=(key,code='SPACE_POINT_INVALID')=>{
+    if(typeof key!=='string')bad(code);
+    const k=key.includes('#')?vref(key,code):key,e=named.get(k);
+    if(!e)bad(code+':'+(later.has(key)?'forward:':'')+key.slice(0,12));
+    return e.p;
+  };
+  const places=(list,n,code='SPACE_POINT_INVALID')=>{
+    if(!Array.isArray(list)||list.length!==n||new Set(list).size!==n)bad(code);
+    return list.map(k=>lookup(k,code));
+  };
+  // the shape of every plane is read first; its frame (a point and the unit normal) is worked out when something needs it, from the points placed by then
+  const planeById=new Map();
+  for(const pl of planeSpecs){
+    if(!isPlain(pl))bad('SPACE_PLANE_INVALID');
+    onlyKeys(pl,['id','name','through','normal','point','extent','fill','nameAt'],'SPACE_PLANE_INVALID');
+    if(typeof pl.id!=='string'||!SPACE_ID.test(pl.id)||planeById.has(pl.id))bad('SPACE_PLANE_INVALID');
+    if(pl.name!==undefined&&(typeof pl.name!=='string'||!SPACE_PLANE_NAME.test(pl.name)))bad('SPACE_PLANE_NAME_INVALID');
+    // a plane is given by three points (through) or by a normal and a point
+    if((pl.through!==undefined)===(pl.normal!==undefined||pl.point!==undefined))bad('SPACE_PLANE_INVALID');
+    if(pl.through!==undefined&&(!Array.isArray(pl.through)||pl.through.length!==3||new Set(pl.through).size!==3||pl.through.some(k=>typeof k!=='string')))bad('SPACE_PLANE_INVALID');
+    if(pl.through===undefined&&(pl.normal===undefined||typeof pl.point!=='string'))bad('SPACE_PLANE_INVALID');
+    if(pl.fill!==undefined&&(typeof pl.fill!=='string'||!Object.hasOwn(HIGHLIGHT_FILLS,pl.fill)))bad('SPACE_PLANE_INVALID');
+    if(pl.nameAt!==undefined&&(pl.name===undefined||!(pl.nameAt==='CORNER'||pl.nameAt==='CENTER'||(Number.isInteger(pl.nameAt)&&pl.nameAt>=0&&pl.nameAt<=3))))bad('SPACE_PLANE_INVALID');
+    planeById.set(pl.id,pl);
+  }
+  const planeCache=new Map();
+  const planeFrame=id=>{
+    if(planeCache.has(id))return planeCache.get(id);
+    const spec=planeById.get(id);
+    if(!spec)bad('SPACE_PLANE_INVALID:'+String(id).slice(0,12));
+    let p0,n;
+    if(spec.through!==undefined){
+      const [A,B,C]=spec.through.map(k=>lookup(k,'SPACE_PLANE_INVALID')),c=cross(sub(B,A),sub(C,A));
+      if(!(len(c)>1e-9*Math.max(1,len(sub(B,A))*len(sub(C,A)))))bad('SPACE_PLANE_DEGENERATE:'+id);
+      p0=A;n=unit(c);
+    }else{
+      const nn=spaceVector(spec.normal,'SPACE_PLANE_INVALID');
+      if(!(len(nn)>1e-9))bad('SPACE_PLANE_DEGENERATE:'+id);
+      p0=lookup(spec.point,'SPACE_PLANE_INVALID');n=unit(nn);
+    }
+    const frame={id,p0,n};
+    planeCache.set(id,frame);return frame;
+  };
+  // lines: through two points, or the intersection of two planes of this space (the engine works the line out)
+  const lineById=new Map();
+  for(const ln of lineSpecs){
+    if(!isPlain(ln))bad('SPACE_LINE_INVALID');
+    onlyKeys(ln,['id','name','through','intersection','style'],'SPACE_LINE_INVALID');
+    if(typeof ln.id!=='string'||!SPACE_ID.test(ln.id)||lineById.has(ln.id)||planeById.has(ln.id))bad('SPACE_LINE_INVALID');
+    if(ln.name!==undefined&&(typeof ln.name!=='string'||!SPACE_LINE_NAME.test(ln.name)))bad('SPACE_LINE_NAME_INVALID');
+    if((ln.through===undefined)===(ln.intersection===undefined))bad('SPACE_LINE_INVALID');
+    const ends=ln.through??ln.intersection;
+    if(!Array.isArray(ends)||ends.length!==2||new Set(ends).size!==2||ends.some(k=>typeof k!=='string'))bad('SPACE_LINE_INVALID');
+    if(ln.intersection!==undefined&&ends.some(k=>!planeById.has(k)))bad('SPACE_LINE_INVALID');
+    if(ln.style!==undefined&&!['SOLID','DASHED','AUTO'].includes(ln.style))bad('SPACE_LINE_INVALID');
+    lineById.set(ln.id,ln);
+  }
+  const lineCache=new Map();
+  const lineFrame=id=>{
+    if(lineCache.has(id))return lineCache.get(id);
+    const spec=lineById.get(id);
+    if(!spec)bad('SPACE_LINE_INVALID:'+String(id).slice(0,12));
+    let A,d;
+    if(spec.through!==undefined){
+      const [P,Q]=spec.through.map(k=>lookup(k,'SPACE_LINE_INVALID'));
+      d=sub(Q,P);
+      if(!(len(d)>1e-9))bad('SPACE_LINE_INVALID:'+id);
+      A=P;d=unit(d);
+    }else{
+      // the direction is the cross product of the two normals; a point on both planes comes from the two plane equations and d.x = 0: x = (c1 (n2 x d) + c2 (d x n1)) / |d|^2
+      const [f1,f2]=spec.intersection.map(planeFrame),dd=cross(f1.n,f2.n);
+      if(!(len(dd)>1e-9))bad('SPACE_PLANES_PARALLEL:'+id);
+      const c1=dot(f1.n,f1.p0),c2=dot(f2.n,f2.p0);
+      A=mulv(add(mulv(cross(f2.n,dd),c1),mulv(cross(dd,f1.n),c2)),1/dot(dd,dd));d=unit(dd);
+    }
+    const frame={id,A,d};
+    lineCache.set(id,frame);return frame;
+  };
+  const points=[];
+  for(const entry of pointSpecs){
+    if(!isPlain(entry))bad('SPACE_POINT_INVALID');
+    onlyKeys(entry,['id','at','on','hideName','hideDot'],'SPACE_POINT_INVALID');
+    if(typeof entry.id!=='string'||!SPACE_POINT_NAME.test(entry.id))bad('SPACE_POINT_INVALID');
+    if(named.has(entry.id))bad('SPACE_POINT_DUPLICATE:'+entry.id);
+    for(const flag of ['hideName','hideDot'])if(entry[flag]!==undefined&&typeof entry[flag]!=='boolean')bad('SPACE_POINT_INVALID');
+    if(entry.on!==undefined&&(typeof entry.on!=='string'||!planeById.has(entry.on)))bad('SPACE_PLANE_INVALID');
+    const at=entry.at;
+    let p;
+    if(Array.isArray(at))p=spaceVector(at,'SPACE_POINT_INVALID');
+    else{
+      if(!isPlain(at))bad('SPACE_POINT_INVALID');
+      const kinds=['divide','midpoint','centroid','footOnLine','projection'].filter(k=>at[k]!==undefined);
+      if(kinds.length!==1)bad('SPACE_POINT_INVALID');
+      if(kinds[0]==='divide'){
+        onlyKeys(at,['divide','ratio','external'],'SPACE_POINT_INVALID');
+        if(at.external!==undefined&&typeof at.external!=='boolean')bad('SPACE_POINT_INVALID');
+        const [A,B]=places(at.divide,2),m=typeof at.ratio==='string'?AUX_RATIO.exec(at.ratio):null;
+        if(!m)bad('SOLID_AUX_POINT_RATIO_INVALID');
+        const a=Number(m[1]),b=Number(m[2]);
+        if(at.external===true){if(a===b)bad('SOLID_AUX_POINT_RATIO_INVALID');p=lerp(A,B,a/(a-b));}
+        else p=lerp(A,B,a/(a+b));
+      }else if(kinds[0]==='midpoint'){
+        onlyKeys(at,['midpoint'],'SPACE_POINT_INVALID');
+        const [A,B]=places(at.midpoint,2);
+        p=lerp(A,B,0.5);
+      }else if(kinds[0]==='centroid'){
+        onlyKeys(at,['centroid'],'SPACE_POINT_INVALID');
+        const [A,B,C]=places(at.centroid,3);
+        p=mulv(add(add(A,B),C),1/3);
+      }else if(kinds[0]==='footOnLine'){
+        onlyKeys(at,['footOnLine'],'SPACE_POINT_INVALID');
+        const f=at.footOnLine;
+        if(!isPlain(f))bad('SPACE_POINT_INVALID');
+        onlyKeys(f,['from','line'],'SPACE_POINT_INVALID');
+        const P=lookup(f.from);
+        let A,d;
+        // the line through two points, or a line of this space by its id
+        if(typeof f.line==='string'){const fr=lineFrame(f.line);A=fr.A;d=fr.d;}
+        else{const [P0,P1]=places(f.line,2);A=P0;d=sub(P1,P0);}
+        if(!(dot(d,d)>1e-12))bad('SOLID_AUX_FOOT_DEGENERATE');
+        p=add(A,mulv(d,dot(sub(P,A),d)/dot(d,d)));
+        if(len(sub(p,P))<1e-6)bad('SOLID_AUX_FOOT_DEGENERATE');
+      }else{
+        // the foot of the perpendicular from a point onto a plane: the plane of three points, or a plane of this space by its id
+        onlyKeys(at,['projection'],'SPACE_POINT_INVALID');
+        const f=at.projection;
+        if(!isPlain(f))bad('SPACE_POINT_INVALID');
+        onlyKeys(f,['from','plane'],'SPACE_POINT_INVALID');
+        const P=lookup(f.from);
+        let A,u;
+        if(typeof f.plane==='string'){const fr=planeFrame(f.plane);A=fr.p0;u=fr.n;}
+        else{
+          const [B,M0,M1]=places(f.plane,3),n=cross(sub(M0,B),sub(M1,B));
+          if(!(len(n)>1e-9))bad('SOLID_PROJECTION_PLANE_DEGENERATE');
+          A=B;u=unit(n);
+        }
+        p=sub(P,mulv(u,dot(sub(P,A),u)));
+        if(len(sub(p,P))<1e-6)bad('SOLID_AUX_FOOT_DEGENERATE');
+      }
+    }
+    later.delete(entry.id);
+    named.set(entry.id,{solid:'space',p});
+    points.push({id:entry.id,p,...(entry.on!==undefined?{on:entry.on}:{}),...(entry.hideName===true?{hideName:true}:{}),...(entry.hideDot===true?{hideDot:true}:{})});
+  }
+  // a point that says it is on a plane is on it
+  for(const q of points)if(q.on!==undefined){
+    const fr=planeFrame(q.on);
+    if(Math.abs(dot(fr.n,sub(q.p,fr.p0)))>1e-7*(1+len(q.p)))bad('SPACE_POINT_NOT_ON_PLANE:'+q.id);
+  }
+  // the planes: a parallelogram (centre, two half vectors u and v inside the plane) drawn as a translucent polygon
+  const planes=planeSpecs.map(spec=>{
+    const fr=planeFrame(spec.id),n=fr.n;
+    let c,u,v;
+    if(spec.extent!==undefined){
+      const e=spec.extent,code='SPACE_PLANE_EXTENT_INVALID:'+spec.id;
+      if(!isPlain(e))bad(code);
+      onlyKeys(e,['center','u','v'],code);
+      c=typeof e.center==='string'?lookup(e.center,code):spaceVector(e.center,code);
+      u=spaceVector(e.u,code);v=spaceVector(e.v,code);
+      const tol=1e-7;
+      if(Math.abs(dot(n,sub(c,fr.p0)))>tol*(1+len(c))||Math.abs(dot(n,u))>tol*(1+len(u))||Math.abs(dot(n,v))>tol*(1+len(v)))bad(code);
+      if(!(len(u)>1e-9)||!(len(v)>1e-9)||!(len(cross(u,v))>1e-9*len(u)*len(v)))bad(code);
+    }else{
+      // no extent: the parallelogram covers every point on the plane with a quarter of its size as margin; it is a rectangle of the plane whose sides run along the screen's horizontal and the plane's other direction
+      let e1=sub(EX,mulv(n,dot(EX,n)));if(len(e1)<1e-6)e1=sub(DEPTH,mulv(n,dot(DEPTH,n)));
+      e1=unit(e1);const e2=cross(n,e1);
+      const on=[...named.values()].map(q=>q.p).filter(p=>Math.abs(dot(n,sub(p,fr.p0)))<1e-7*(1+len(p)));
+      const as=on.map(p=>dot(sub(p,fr.p0),e1)),bs=on.map(p=>dot(sub(p,fr.p0),e2));
+      const [a0,a1,b0,b1]=[Math.min(...as),Math.max(...as),Math.min(...bs),Math.max(...bs)];
+      const M=Math.max(a1-a0,b1-b0,1e-9)>1e-6?Math.max(a1-a0,b1-b0):1,sa=Math.max(a1-a0,0.6*M),sb=Math.max(b1-b0,0.6*M);
+      c=add(fr.p0,add(mulv(e1,(a0+a1)/2),mulv(e2,(b0+b1)/2)));
+      u=mulv(e1,0.75*sa);v=mulv(e2,0.75*sb);
+    }
+    const verts=[sub(sub(c,u),v),sub(add(c,u),v),add(add(c,u),v),add(sub(c,u),v)];
+    return {id:spec.id,...(spec.name!==undefined?{name:spec.name}:{}),fill:spec.fill??'LIGHT',nameAt:spec.nameAt??'CORNER',n,p0:fr.p0,c,u,v,verts};
+  });
+  // the part of the line inside a plane's parallelogram, as a range of the line's parameter s (the point A + s d), or null
+  const clipRange=(fr,pl)=>{
+    const uv=dot(cross(pl.u,pl.v),pl.n),w0=sub(fr.A,pl.c);
+    // a point q of the plane is c + a u + b v: a = ((q-c) x v).n / (u x v).n, b = (u x (q-c)).n / (u x v).n; the parallelogram is |a| <= 1, |b| <= 1
+    const ks=[[dot(cross(w0,pl.v),pl.n)/uv,dot(cross(fr.d,pl.v),pl.n)/uv],[dot(cross(pl.u,w0),pl.n)/uv,dot(cross(pl.u,fr.d),pl.n)/uv]];
+    let lo=-Infinity,hi=Infinity;
+    for(const [k0,k1] of ks){
+      if(Math.abs(k1)<1e-12){if(Math.abs(k0)>1+1e-9)return null;continue;}
+      const s1=(-1-k0)/k1,s2=(1-k0)/k1;
+      lo=Math.max(lo,Math.min(s1,s2));hi=Math.min(hi,Math.max(s1,s2));
+    }
+    return lo<hi-1e-9?[lo,hi]:null;
+  };
+  // the lines: drawn from one end to the other, through every point of the space on them. A line through two points runs 35 percent of its length beyond them (kept inside a plane it lies in);
+  // the intersection of two planes runs the length of the parallelograms it is the common edge of, a little beyond
+  const lines=lineSpecs.map(spec=>{
+    const fr=lineFrame(spec.id);
+    const members=[...named.entries()].filter(([,e])=>len(cross(sub(e.p,fr.A),fr.d))<1e-7*(1+len(e.p))).map(([k])=>k);
+    const anchors=members.map(k=>dot(sub(named.get(k).p,fr.A),fr.d));
+    const clips=planes.filter(pl=>Math.abs(dot(pl.n,fr.d))<1e-9&&Math.abs(dot(pl.n,sub(fr.A,pl.p0)))<1e-7*(1+len(fr.A))).map(pl=>clipRange(fr,pl)).filter(Boolean);
+    let lo,hi;
+    if(spec.intersection!==undefined){
+      const both=clips.length>=2?[Math.max(...clips.map(c=>c[0])),Math.min(...clips.map(c=>c[1]))]:null;
+      const range=both&&both[0]<both[1]-1e-9?both:clips.length?[Math.min(...clips.map(c=>c[0])),Math.max(...clips.map(c=>c[1]))]:null;
+      if(range){lo=range[0];hi=range[1];}
+      else if(anchors.length>=2){lo=Math.min(...anchors);hi=Math.max(...anchors);}
+      else bad('SPACE_LINE_INVALID:'+spec.id);
+      if(anchors.length){lo=Math.min(lo,...anchors);hi=Math.max(hi,...anchors);}
+      const m=0.06*(hi-lo);lo-=m;hi+=m;
+    }else{
+      lo=Math.min(...anchors);hi=Math.max(...anchors);
+      const w=0.35*(hi-lo),a0=lo,a1=hi;
+      lo-=w;hi+=w;
+      if(clips.length){
+        const r=[Math.max(...clips.map(c=>c[0])),Math.min(...clips.map(c=>c[1]))];
+        if(r[0]<r[1]-1e-9){lo=Math.min(Math.max(lo,r[0]),a0);hi=Math.max(Math.min(hi,r[1]),a1);}
+      }
+    }
+    return {id:spec.id,...(spec.name!==undefined?{name:spec.name}:{}),a:add(fr.A,mulv(fr.d,lo)),b:add(fr.A,mulv(fr.d,hi)),style:spec.style??'SOLID',points:members};
+  });
+  // segments between named points; AUTO dashes the parts that something in front of them hides: a face of a solid or a plane of the space
+  const segments=[],pairKeys=new Set(),occluders=new Map();
+  for(const solid of solids)if(solid.category==='POLY')for(const face of solid.faces)occluders.set(solid.id+'|'+face.id,facePlane(solid,face));
+  for(const pl of planes)occluders.set('plane:'+pl.id,planeOfPoints(pl.verts));
+  for(const ln of lines)ln.runs=ln.style==='AUTO'?runsAlong(t=>occluded(occluders,lerp(ln.a,ln.b,t),new Set())):[{t0:0,t1:1,hidden:ln.style==='DASHED'}];
+  for(const s of segSpecs){
+    if(!isPlain(s))bad('SPACE_SEGMENT_INVALID');
+    onlyKeys(s,['from','to','style','role'],'SPACE_SEGMENT_INVALID');
+    const [from,to]=[s.from,s.to].map(k=>{
+      if(typeof k!=='string')bad('SPACE_SEGMENT_INVALID');
+      const key=k.includes('#')?vref(k,'SPACE_SEGMENT_INVALID'):k;
+      if(!named.has(key))bad('SPACE_SEGMENT_INVALID:'+k.slice(0,12));
+      return key;
+    });
+    const style=s.style??'SOLID',role=s.role??'REF',pair=[from,to].sort().join('|');
+    if(from===to||pairKeys.has(pair)||!['SOLID','DASHED','AUTO'].includes(style)||!['ACCENT','REF'].includes(role))bad('SPACE_SEGMENT_INVALID');
+    pairKeys.add(pair);
+    const A=named.get(from).p,B=named.get(to).p;
+    const runs=style==='AUTO'?runsAlong(t=>occluded(occluders,lerp(A,B,t),new Set())):[{t0:0,t1:1,hidden:style==='DASHED'}];
+    segments.push({from,to,style,role,runs});
+  }
+  const drawn=(a,b)=>segments.some(s=>(s.from===a&&s.to===b)||(s.from===b&&s.to===a))||lines.some(l=>l.points.includes(a)&&l.points.includes(b));
+  return {model:{points:points.map(q=>({...q,p:r6v(q.p)})),...(planes.length?{planes:planes.map(pl=>({id:pl.id,...(pl.name!==undefined?{name:pl.name}:{}),fill:pl.fill,nameAt:pl.nameAt,n:r6v(pl.n),verts:pl.verts.map(r6v)}))}:{}),...(lines.length?{lines:lines.map(l=>({...l,a:r6v(l.a),b:r6v(l.b)}))}:{}),segments},drawn};
+}
+const spaceNames=space=>space?space.points.filter(q=>!q.hideName).length:0;
+const spaceStress=space=>space?space.segments.length+(space.planes?.length??0)+(space.lines?.length??0):0;
+/** The screen points (screen units) a space figure occupies: its points and the corners of its planes. */
+const spaceScreenPoints=space=>space?[...space.points.map(q=>project(q.p)),...(space.planes??[]).flatMap(pl=>pl.verts.map(project)),...(space.lines??[]).flatMap(l=>[project(l.a),project(l.b)])]:[];
+
 // --- solving the figure ---------------------------------------------------------------------------------------------------------------------
 const MAX_SEGMENTS=10;
 // the side of a segment its label stands on (dims[].side): the direction on the screen (x right, y up) and how far the segment's normal has to point into it
@@ -888,8 +1185,9 @@ const POLY_KINDS=['PRISM','PYRAMID','FRUSTUM','REGULAR_POLYHEDRON','BIPYRAMID'],
 const UNIT=/^(cm|mm|m|km)$/;
 export function solveSolidFigure(plan){
   if(!isPlain(plan)||plan.capability!==SOLID_CAPABILITY)bad('SOLID_PLAN_INVALID');
-  onlyKeys(plan,['capability','unit','solids','net','dims','highlights','segments','section','marks','labels','solidCaption','caption','sourceConditions','newVisualInformation','sourceQuote','panelWidth'],'SOLID_PLAN_INVALID');
-  if((plan.solids===undefined)===(plan.net===undefined))bad('SOLID_PLAN_INVALID');
+  onlyKeys(plan,['capability','unit','solids','net','space','dims','highlights','segments','section','marks','labels','solidCaption','caption','sourceConditions','newVisualInformation','sourceQuote','panelWidth'],'SOLID_PLAN_INVALID');
+  // a figure is a net, or solids and/or a space (free points, planes and lines, G4b)
+  if(plan.net!==undefined?plan.solids!==undefined||plan.space!==undefined:plan.solids===undefined&&plan.space===undefined)bad('SOLID_PLAN_INVALID');
   if(plan.labels!==undefined&&plan.net!==undefined)bad('SOLID_LABELS_UNSUPPORTED:NET');
   // sourceQuote is provenance only (the item sentence the plan was written from): it never reaches the figure
   if(plan.sourceQuote!==undefined&&(typeof plan.sourceQuote!=='string'||!plan.sourceQuote.trim()||plan.sourceQuote.length>200))bad('SOLID_SOURCE_QUOTE_INVALID');
@@ -897,13 +1195,13 @@ export function solveSolidFigure(plan){
   if(plan.unit!==undefined&&(typeof plan.unit!=='string'||!UNIT.test(plan.unit)))bad('SOLID_UNIT_INVALID');
   const model=plan.net!==undefined?solveNet(plan):solveSolids(plan);
   // the Archive publication check reads text: a figure with no name and no length at all cannot be published
-  const names=model.mode==='SOLIDS'?model.solids.reduce((sum,solid)=>sum+(solid.category==='POLY'?solid.vertices:solid.points).filter(q=>q.name).length+(solid.aux?.length??0)+(solid.count?(solid.count.vertices?solid.vertices.length:0)+(solid.count.edges?solid.edges.length:0):0),0)
+  const names=model.mode==='SOLIDS'?model.solids.reduce((sum,solid)=>sum+(solid.category==='POLY'?solid.vertices:solid.points).filter(q=>q.name).length+(solid.aux?.length??0)+(solid.count?(solid.count.vertices?solid.vertices.length:0)+(solid.count.edges?solid.edges.length:0):0),0)+spaceNames(model.space)
     :model.netKind==='POLYHEDRON'?model.faces.reduce((sum,f)=>sum+f.corners.filter(Boolean).length,0):0;
   // A figure with no name, length or label is still readable when something in it is stressed (a highlighted face, a drawn segment, a section, a mark, a cut) or when it
   // carries a caption: the author's solidCaption, or the panel caption of a composite grid (the grid sets panelWidth, and every composite panel has a caption).
   // Only a bare, uncaptioned figure is refused: there nothing tells the reader which part matters.
   const stressed=model.mode==='SOLIDS'
-    ?model.highlights.length+model.segments.length+(model.section?1:0)+model.marks.rightAngles.length+model.marks.equalLengths.length+model.marks.angles.length+(model.marks.equalSlant?.length??0)+model.solids.filter(s=>s.cuts||s.cut||s.axis||s.baseFill).length
+    ?model.highlights.length+model.segments.length+(model.section?1:0)+model.marks.rightAngles.length+model.marks.equalLengths.length+model.marks.angles.length+(model.marks.equalSlant?.length??0)+model.solids.filter(s=>s.cuts||s.cut||s.axis||s.baseFill).length+spaceStress(model.space)
     :(model.highlights?.length??0)+(model.segments?.length??0)+(model.rightAngles?.length??0)+(model.excluded?.length??0);
   if(names+model.dims.length+(model.faceLabels?.length??0)+(model.labels?.length??0)+stressed===0&&plan.solidCaption===undefined&&plan.panelWidth===undefined)bad('SOLID_FIGURE_NEEDS_A_LABEL');
   return plan.panelWidth===undefined?model:{...model,panelWidth:plan.panelWidth};
@@ -1042,8 +1340,10 @@ function addLevelPoints(solids,plan){
   }
 }
 function solveSolids(plan){
-  if(!Array.isArray(plan.solids)||plan.solids.length<1||plan.solids.length>3)bad('SOLID_COUNT_INVALID');
-  const solids=expandBalls(plan.solids).map((spec,i)=>{
+  // a plan with a space may have no solid at all (a plane and its points, lines and perpendiculars)
+  const solidSpecs=plan.solids===undefined?[]:plan.solids;
+  if(!Array.isArray(solidSpecs)||solidSpecs.length>3||(plan.solids!==undefined&&solidSpecs.length<1))bad('SOLID_COUNT_INVALID');
+  const solids=expandBalls(solidSpecs).map((spec,i)=>{
     if(!isPlain(spec))bad('SOLID_PARAM_INVALID');
     const withId={...spec,id:spec.id??'s'+(i+1)};
     if(typeof withId.id!=='string'||!/^[a-z][a-z0-9]{0,7}$/.test(withId.id))bad('SOLID_ID_INVALID');
@@ -1112,6 +1412,7 @@ function solveSolids(plan){
   // a name or a vertex reference ("#b0", "#t2", "#apex", "#v5"; see above) becomes the key of its vertex
   const vref=vertexResolver(solids,named);
   resolveAuxPoints(solids,named,vref);
+  const space=plan.space!==undefined?solveSpace(plan.space,solids,named,vref):null;
   // segments (aux) between named points
   const segments=[];
   if(plan.segments!==undefined){
@@ -1126,11 +1427,11 @@ function solveSolids(plan){
       segments.push({from,to,style,role:s.role??'ACCENT'});
     }
   }
-  const drawnPair=(a,b)=>segments.some(s=>(s.from===a&&s.to===b)||(s.from===b&&s.to===a))||solids.some(solid=>solid.category==='POLY'&&solid.edges.some(([i,j])=>{const x=vertexKeys(solid,i),y=vertexKeys(solid,j);return (x.includes(a)&&y.includes(b))||(x.includes(b)&&y.includes(a));}));
+  const drawnPair=(a,b)=>space?.drawn(a,b)||segments.some(s=>(s.from===a&&s.to===b)||(s.from===b&&s.to===a))||solids.some(solid=>solid.category==='POLY'&&solid.edges.some(([i,j])=>{const x=vertexKeys(solid,i),y=vertexKeys(solid,j);return (x.includes(a)&&y.includes(b))||(x.includes(b)&&y.includes(a));}));
   // auto visibility of an AUTO segment: depth test at several points
   for(const s of segments)if(s.style==='AUTO'){
     const solid=solids.find(x=>x.id===named.get(s.from).solid);
-    if(solid.category!=='POLY')bad('SOLID_SEGMENTS_INVALID');
+    if(!solid||solid.category!=='POLY')bad('SOLID_SEGMENTS_INVALID');
     const planes=new Map(solid.faces.map(face=>[face.id,facePlane(solid,face)]));
     const A=named.get(s.from).p,B=named.get(s.to).p;
     const hiddenSamples=[0.2,0.4,0.6,0.8].map(t=>occluded(planes,lerp(A,B,t),new Set()));
@@ -1436,7 +1737,7 @@ function solveSolids(plan){
   }
   // text labels: a short word on a vertex, on the axis of a rotation solid, on a visible face, on a drawn edge or on the slant of a cone (labels:[{text,at}] and axis:{label})
   const labels=textLabels(plan,solids,named,vref,drawnPair);
-  return {schemaVersion:SOLID_MODEL_VERSION,mode:'SOLIDS',unit:unitName,yawDeg:YAW_DEG,pitchDeg:PITCH_DEG,solids,segments,highlights,section,marks,dims,...(labels.length?{labels}:{})};
+  return {schemaVersion:SOLID_MODEL_VERSION,mode:'SOLIDS',unit:unitName,yawDeg:YAW_DEG,pitchDeg:PITCH_DEG,solids,...(space?{space:space.model}:{}),segments,highlights,section,marks,dims,...(labels.length?{labels}:{})};
 }
 /**
  * The text labels of a plan: labels:[{text,at}] with at a vertex name or reference ("A", "#apex"), {axis:true,solid?}, {face:"top",solid?} (a visible face of a polyhedron),
@@ -1843,7 +2144,7 @@ export const GRID_PANEL_WIDTH=384;
 const GRID_MARGIN_X=40;
 function figureExtent(model){
   const pts=[];
-  if(model.mode==='SOLIDS'){for(const solid of model.solids)pts.push(...solidScreenPoints(solid));}
+  if(model.mode==='SOLIDS'){for(const solid of model.solids)pts.push(...solidScreenPoints(solid));pts.push(...spaceScreenPoints(model.space));}
   else if(model.netKind==='POLYHEDRON'){for(const f of model.faces)pts.push(...f.poly);}
   else if(model.netKind==='CYLINDER'){const s=model.shapes;pts.push([s.rect.x,s.rect.y],[s.rect.x+s.rect.w,s.rect.y+s.rect.h],[s.bottom.cx-s.bottom.r,s.bottom.cy-s.bottom.r],[s.bottom.cx+s.bottom.r,s.bottom.cy+s.bottom.r],[s.top.cx-s.top.r,s.top.cy-s.top.r],[s.top.cx+s.top.r,s.top.cy+s.top.r]);}
   else{
@@ -1912,7 +2213,7 @@ function sideHeightDim(d,solid,ctx){
 const heightDimX=(solid,X)=>r6(Math.max(SAFE+2,Math.min(...solid.vertices.map(v=>X(project(v.p)[0])))-26));
 function spec3d(plan,model,ctx){
   const {S,X,Y,pt,prims,labels,line}=ctx;
-  const named=pointTable(model.solids);
+  const named=pointTable(model.solids,model.space);
   const arcPrim=(id,role,e,u0,u1,vis,attrs={})=>prims.push({t:'arc',id,role,cx:X(e.cx),cy:Y(e.cy),rx:r6(S*e.a),ry:r6(S*e.b),u0:r6(u0),u1:r6(u1),vis,...attrs});
   const outline=[];// polylines for label obstacles are derived from prims later
   const fillFirst=[];
@@ -1922,6 +2223,7 @@ function spec3d(plan,model,ctx){
       fillFirst.push({t:'poly',id:`highlight-${h.solid}-${h.face}`,role:'highlight-face',solid:h.solid,face:h.face,fill:h.fill??'LIGHT',points:face.idx.map(i=>pt(project(owner.vertices[i].p)))});
     }else fillFirst.push({t:'poly',id:'highlight-'+joinKeys(h.polygon),role:'highlight-face',points:h.polygon.map(n=>pt(project(named.get(n)))),polygon:joinKeys(h.polygon),fill:h.fill??'LIGHT'});
   }
+  for(const pl of model.space?.planes??[])fillFirst.push({t:'poly',id:'space-plane-'+pl.id,role:'space-plane',plane:pl.id,fill:pl.fill,points:pl.verts.map(v=>pt(project(v)))});
   prims.push(...fillFirst);
   void outline;
   for(const solid of model.solids){
@@ -1949,6 +2251,23 @@ function spec3d(plan,model,ctx){
   for(const solid of model.solids)for(const q of solid.aux??[]){
     const c=pt(project(q.p));
     prims.push({t:'dot',id:'aux-'+q.name,role:'aux-point',solid:solid.id,point:q.name,cx:c[0],cy:c[1],r:2.4});
+  }
+  // free space (G4b): its segments (drawn in runs, the hidden ones dashed) and a small dot on each point
+  if(model.space){
+    for(const sg of model.space.segments){
+      const A=named.get(sg.from),B=named.get(sg.to),key=joinKeys([sg.from,sg.to]);
+      sg.runs.forEach((run,k)=>{
+        const p0=pt(project(lerp(A,B,run.t0))),p1=pt(project(lerp(A,B,run.t1)));
+        if(Math.hypot(p1[0]-p0[0],p1[1]-p0[1])<0.4)return;
+        line(`space-segment-${key}-${k+1}`,'space-segment',p0,p1,{edge:key,vis:run.hidden?'hidden':'solid',t0:run.t0,t1:run.t1,accent:sg.role,style:sg.style,space:true});
+      });
+    }
+    for(const ln of model.space.lines??[])ln.runs.forEach((run,k)=>{
+      const p0=pt(project(lerp(ln.a,ln.b,run.t0))),p1=pt(project(lerp(ln.a,ln.b,run.t1)));
+      if(Math.hypot(p1[0]-p0[0],p1[1]-p0[1])<0.4)return;
+      line(`space-line-${ln.id}-${k+1}`,'space-line',p0,p1,{lineId:ln.id,vis:run.hidden?'hidden':'solid',t0:run.t0,t1:run.t1,style:ln.style,space:true});
+    });
+    for(const q of model.space.points)if(!q.hideDot){const c=pt(project(q.p));prims.push({t:'dot',id:'space-'+q.id,role:'space-point',point:q.id,cx:c[0],cy:c[1],r:2.4,space:true});}
   }
   // the axis of a rotation solid: a dash-dot line a little longer than the solid
   for(const solid of model.solids)if(solid.axis){
@@ -1996,6 +2315,7 @@ function spec3d(plan,model,ctx){
     const p1=project(add(V,e1)),p2=project(add(V,e2)),pv=project(V);
     const l1=Math.hypot(p1[0]-pv[0],p1[1]-pv[1]),l2=Math.hypot(p2[0]-pv[0],p2[1]-pv[1]);
     if(len(w)<1e-9||l1<1e-9||l2<1e-9)bad('SOLID_MARK_ANGLE_DEGENERATE:'+m.id);
+    let outerEnds=null;
     for(let ring=0;ring<m.arcs;ring++){
       const wantPx=20+5*ring;
       const kWorld=Math.min(0.36*Math.min(len(sub(A,V)),len(sub(B,V))),wantPx/(S*Math.max(l1,l2)));
@@ -2003,13 +2323,14 @@ function spec3d(plan,model,ctx){
       const pts=[];
       for(let k=0;k<=24;k++){const t=theta*k/24;pts.push(pt(project(add(V,mulv(add(mulv(e1,Math.cos(t)),mulv(w,Math.sin(t))),kWorld)))));}
       prims.push({t:'polyline',id:m.id+'-arc-'+(ring+1),role:'angle-mark',points:pts,mark:m.id,refs:joinKeys(m.refs),index:ring+1,count:m.arcs});
+      outerEnds=[pts[0],pts[pts.length-1]];
     }
     if(m.label!==undefined){
       // the label stands beyond the outer arc along the bisector of the two rays on the page (it may slide round the vertex a little where something is in the way)
       const u1=[(p1[0]-pv[0])/l1,(p1[1]-pv[1])/l1],u2=[(p2[0]-pv[0])/l2,(p2[1]-pv[1])/l2];
       let bis=[u1[0]+u2[0],u1[1]+u2[1]];const bl=Math.hypot(bis[0],bis[1]);
       bis=bl>1e-6?[bis[0]/bl,bis[1]/bl]:[-u1[1],u1[0]];
-      labels.push({id:'angle-label-'+m.id,role:'angle-label',owner:'angle-'+m.id,kind:'MATH',tex:m.label,plain:m.label,value:m.label,mark:m.id,place:'ANGLE',anchor:pt(pv),dir:[r6(bis[0]),r6(bis[1])],reach:20+5*(m.arcs-1)});
+      labels.push({id:'angle-label-'+m.id,role:'angle-label',owner:'angle-'+m.id,kind:'MATH',tex:m.label,plain:m.label,value:m.label,mark:m.id,place:'ANGLE',anchor:pt(pv),dir:[r6(bis[0]),r6(bis[1])],reach:20+5*(m.arcs-1),...(model.solids.length===0?{wedge:true,arcEnds:outerEnds}:{})});
     }
   }
   if(model.section?.kind==='AXIAL'){
@@ -2082,7 +2403,7 @@ function spec3d(plan,model,ctx){
     }
   }
   // label requests
-  const centroidScreen=(()=>{const pts=model.solids.flatMap(solidScreenPoints);return [pts.reduce((s,p)=>s+p[0],0)/pts.length,pts.reduce((s,p)=>s+p[1],0)/pts.length];})();
+  const centroidScreen=(()=>{const pts=[...model.solids.flatMap(solidScreenPoints),...spaceScreenPoints(model.space)];return [pts.reduce((s,p)=>s+p[0],0)/pts.length,pts.reduce((s,p)=>s+p[1],0)/pts.length];})();
   const vertexSpot=new Map();// key of a vertex or named point -> {here,dir}: where a word written on it stands (open side of the corner)
   for(const solid of model.solids){
     if(solid.category==='POLY'){
@@ -2153,6 +2474,39 @@ function spec3d(plan,model,ctx){
         vertexSpot.set(q.name,()=>({here,dir}));
       }
     }
+  }
+  // the name of a point of the space stands on the open side of the lines that meet there (the segments drawn on it), else away from the middle of the figure
+  for(const q of model.space?.points??[]){
+    const here=project(q.p),hp=pt(here);let dir=[0,0];
+    for(const sg of model.space.segments){
+      const other=sg.from===q.id?sg.to:sg.to===q.id?sg.from:null;
+      if(other===null)continue;
+      const o=project(named.get(other)),d=[o[0]-here[0],o[1]-here[1]],l=Math.hypot(d[0],d[1]);
+      if(l>1e-9){dir[0]-=d[0]/l;dir[1]-=d[1]/l;}
+    }
+    let l=Math.hypot(dir[0],dir[1]);
+    if(l<0.35){dir=[here[0]-centroidScreen[0],here[1]-centroidScreen[1]];l=Math.hypot(dir[0],dir[1])||1;}
+    dir=[r6(dir[0]/l),r6(dir[1]/l)];
+    vertexSpot.set(q.id,()=>({here,dir}));
+    // typeset like the point names of a plane figure: a prime is the TeX prime (A'), not the Unicode glyph of a letter-like symbol; the label's value stays the name
+    if(!q.hideName)labels.push({id:'name-'+q.id,role:'vertex-name',owner:'vertex-'+q.id,kind:'MATH',tex:q.id.replace('′',"'"),plain:q.id,value:q.id,anchor:hp,dir});
+  }
+  // the name of a plane stands inside its parallelogram, in the corner with the most room (or at the centre, or at the corner nameAt says)
+  for(const pl of model.space?.planes??[]){
+    if(pl.name===undefined)continue;
+    const V=pl.verts.map(v=>pt(project(v))),others=model.space.points.map(q=>pt(project(q.p)));
+    const mix=(p,q)=>[p[0]+0.45*(q[0]-p[0]),p[1]+0.45*(q[1]-p[1])];
+    const regions=[0,1,2,3].map(i=>{const a=V[i],ab=mix(a,V[(i+1)%4]),ad=mix(a,V[(i+3)%4]);return [a,ab,[ab[0]+ad[0]-a[0],ab[1]+ad[1]-a[1]],ad];});
+    const room=i=>{const c=polygonCentroid(regions[i]);return Math.min(1e9,...others.map(o=>Math.hypot(o[0]-c[0],o[1]-c[1])));};
+    const pick=Number.isInteger(pl.nameAt)?pl.nameAt:[0,1,2,3].reduce((best,i)=>room(i)>room(best)+1e-9?i:best,0);
+    labels.push({id:'plane-name-'+pl.id,role:'plane-name',owner:'plane-'+pl.id,kind:'MATH',tex:pl.name,plain:pl.name,value:pl.name,place:'FACE',target:'plane|'+pl.id,region:pl.nameAt==='CENTER'?V:regions[pick],within:V,spaceOf:pl.id});
+  }
+  // the name of a line (one small letter) stands near its upper end (the right end of a level line), on the last third of the line
+  for(const ln of model.space?.lines??[]){
+    if(ln.name===undefined)continue;
+    let a=pt(project(ln.a)),b=pt(project(ln.b));
+    if(Math.abs(a[1]-b[1])>8?a[1]<b[1]:a[0]>b[0])[a,b]=[b,a];// b is the end that is higher on the page (a level line: the right one)
+    labels.push({id:'line-name-'+ln.id,role:'line-name',owner:'line-'+ln.id,kind:'MATH',tex:ln.name,plain:ln.name,value:ln.name,place:'SEGMENT',target:'line|'+ln.id,segment:[[r6(a[0]+0.7*(b[0]-a[0])),r6(a[1]+0.7*(b[1]-a[1]))],b],endBias:true,spaceOf:ln.id});
   }
   for(const d of model.dims){
     const label={id:d.id+'-label',role:'dim',owner:d.id,...(d.word?{kind:'TEXT',text:d.text}:{kind:'MATH',tex:d.tex}),plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id};
@@ -2599,8 +2953,10 @@ function obstacleSegments(spec){
     if(p.t==='line')segs.push([[p.x1,p.y1],[p.x2,p.y2]]);
     else if(p.t==='arc')poly(arcPoints(p),false);
     else if(p.t==='circle'){const pts=[];for(let k=0;k<ELL_SAMPLES;k++){const u=2*Math.PI*k/ELL_SAMPLES;pts.push([p.cx+p.r*Math.cos(u),p.cy-p.r*Math.sin(u)]);}poly(pts,true);}
-    else if(p.t==='poly'&&(p.role==='net-face'||p.role==='liquid-region'||p.role==='body-fill'))poly(p.points,true);
+    else if(p.t==='poly'&&(p.role==='net-face'||p.role==='liquid-region'||p.role==='body-fill'||p.role==='space-plane'))poly(p.points,true);
     else if(p.t==='polyline')poly(p.points,false);
+    // the dot of a point of the space is geometry a name keeps off (the polygon of its disc and a little air; a leader may still end on its centre)
+    else if(p.t==='dot'&&p.role==='space-point'){const first=segs.length;poly([...Array(10).keys()].map(k=>[p.cx+(p.r+1.4)*Math.cos(2*Math.PI*k/10),p.cy-(p.r+1.4)*Math.sin(2*Math.PI*k/10)]),true);for(let k=first;k<segs.length;k++)segs[k].push('dot');}
     else if(p.t==='earc')poly(p.samples,false);
     // the outline of a filled cut face is geometry the rendered layout check keeps labels off
     else if(p.t==='cutface')poly(p.points,true);
@@ -2647,7 +3003,7 @@ function polygonCentroid(poly){
   for(let i=0;i<poly.length;i++){const [p,q]=[poly[i],poly[(i+1)%poly.length]],w=p[0]*q[1]-q[0]*p[1];a+=w;cx+=(p[0]+q[0])*w;cy+=(p[1]+q[1])*w;}
   return Math.abs(a)<1e-9?[poly.reduce((s,p)=>s+p[0],0)/poly.length,poly.reduce((s,p)=>s+p[1],0)/poly.length]:[cx/(3*a),cy/(3*a)];
 }
-const rankOf=l=>l.role==='vertex-name'||l.role==='count-vertex'||l.place==='VERTEX'?0:l.role==='count-edge'?2:1;
+const rankOf=l=>l.wedge?-1:l.role==='vertex-name'||l.role==='count-vertex'||l.place==='VERTEX'?0:l.role==='count-edge'?2:1;
 function placeLabels(spec,fragments,errors){
   let order=[...spec.labels].sort((a,b)=>rankOf(a)-rankOf(b)),best=null;
   for(let attempt=0;attempt<6;attempt++){
@@ -2692,7 +3048,13 @@ function placeLabelsOnce(spec,fragments,order){
     }else if(label.place==='ANGLE'){
       // beyond the outer arc of an angle mark, round the bisector of its two rays: the box edge stands `reach` + a few px from the vertex
       const base=Math.atan2(label.dir[1],label.dir[0]);
-      for(const dist of [label.reach+3,label.reach+7,label.reach+12,label.reach+18,label.reach+26,label.reach+36])for(const da of [0,0.35,-0.35,0.7,-0.7,1.1,-1.1]){
+      // a figure of a space alone (wedge): the name stays inside the angle (a narrow one on the page too) as far out as there is room, before it slides round the vertex
+      if(label.wedge)for(const dist of [label.reach+3,label.reach+8,label.reach+14,label.reach+22,label.reach+30,label.reach+36])for(const da of [0,0.12,-0.12]){
+        const a=base+da,dx=Math.cos(a),dy=-Math.sin(a);
+        const cx=label.anchor[0]+dx*(dist+Math.abs(dx)*w/2),cy=label.anchor[1]+dy*(dist+Math.abs(dy)*h/2);
+        candidates.push({x:cx-w/2,y:cy-h/2});
+      }
+      if(!label.wedge)for(const dist of [label.reach+3,label.reach+7,label.reach+12,label.reach+18,label.reach+26,label.reach+36])for(const da of [0,0.35,-0.35,0.7,-0.7,1.1,-1.1]){
         const a=base+da,dx=Math.cos(a),dy=-Math.sin(a);
         const cx=label.anchor[0]+dx*(dist+Math.abs(dx)*w/2),cy=label.anchor[1]+dy*(dist+Math.abs(dy)*h/2);
         candidates.push({x:cx-w/2,y:cy-h/2});
@@ -2724,8 +3086,22 @@ function placeLabelsOnce(spec,fragments,order){
       const n=Math.max(8,Math.ceil(2*Math.PI*dist/3));
       for(let k=0;k<n;k++){const ang=2*Math.PI*k/n;candidates.push({x:label.near.own[0]+Math.cos(ang)*dist-w/2,y:label.near.own[1]-Math.sin(ang)*dist-h/2});}
     }
-    for(const c of candidates){const box={x:r6(c.x),y:r6(c.y),width:w,height:h};if(free(box)&&nearest(label,box)&&(!label.region||inside2(label.region,[box.x+w/2,box.y+h/2]))){chosen=box;break;}}
+    for(const c of candidates){const box={x:r6(c.x),y:r6(c.y),width:w,height:h};if(free(box)&&nearest(label,box)&&(!label.region||inside2(label.within??label.region,[box.x+w/2,box.y+h/2]))){chosen=box;break;}}
     let leader=null;
+    if(!chosen&&label.wedge&&label.arcEnds){
+      // no room for the name inside the angle: it stands in the free place nearest an end of the outer arc, and a thin leader joins it to that end (the end lies on a ray, so the leader never crosses a stroke)
+      search:for(const dist of [10,16,24,34,46,60])for(const end of label.arcEnds)for(let k=0;k<16;k++){
+        const ang=k*Math.PI/8,dx=Math.cos(ang),dy=Math.sin(ang);
+        const box={x:r6(end[0]+dx*(dist+Math.abs(dx)*w/2)-w/2),y:r6(end[1]+dy*(dist+Math.abs(dy)*h/2)-h/2),width:w,height:h};
+        if(!free(box))continue;
+        const nx=Math.max(box.x,Math.min(end[0],box.x+box.width)),ny=Math.max(box.y,Math.min(end[1],box.y+box.height));
+        if(placed.some(p=>segmentHitsBox([nx,ny],end,p.box,1)))continue;
+        // the end of the arc lies on a ray: the crossing test stops 0.8 px short of it, so a rounding of the end does not count as crossing that ray
+        const ll=Math.hypot(end[0]-nx,end[1]-ny)||1,short=[end[0]-(end[0]-nx)/ll*0.8,end[1]-(end[1]-ny)/ll*0.8];
+        if(obstacles.some(([c,d,tag])=>tag!=='dot'&&segmentsCross([nx,ny],short,c,d)))continue;
+        chosen=box;leader=[[r6(nx),r6(ny)],[r6(end[0]),r6(end[1])]];obstacles.push(leader);break search;
+      }
+    }
     if(!chosen&&(label.role==='dim'||label.place==='SEGMENT'||label.place==='VERTEX')){
       // no room beside the segment (or the vertex): the label goes to the nearest free place and a thin leader line joins it to the middle of its segment (to the vertex)
       const [a,b]=label.place==='VERTEX'?[label.anchor,label.anchor]:label.segment,mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2;
@@ -2736,7 +3112,7 @@ function placeLabelsOnce(spec,fragments,order){
         if(!free(box))continue;
         const nx=Math.max(box.x,Math.min(mx,box.x+box.width)),ny=Math.max(box.y,Math.min(my,box.y+box.height));
         if(placed.some(p=>segmentHitsBox([nx,ny],[mx,my],p.box,1)))continue;
-        if(obstacles.some(([c,d])=>segmentsCross([nx,ny],[mx,my],c,d)))continue;// a leader never crosses a stroke
+        if(obstacles.some(([c,d,tag])=>tag!=='dot'&&segmentsCross([nx,ny],[mx,my],c,d)))continue;// a leader never crosses a stroke
         chosen=box;leader=[[r6(nx),r6(ny)],[r6(mx),r6(my)]];obstacles.push(leader);break search;
       }
     }
@@ -2754,6 +3130,10 @@ function renderPrims(spec,model){
   for(const p of spec.prims.filter(p=>p.t==='sector'))body+=`<g data-layer="10"><path id="${p.id}" data-role="net-face" data-face="sector" data-angle="${p.angleDeg}" data-radius-px="${p.radius}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" d="M ${p.apex.join(' ')} L ${p.p1.join(' ')} A ${p.radius} ${p.radius} 0 ${p.large} 0 ${p.p2.join(' ')} Z"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='circle'))body+=`<g data-layer="12"><circle id="${p.id}" data-role="net-circle" data-part="${p.part}"${p.excluded?' data-excluded="1"':''} fill="${p.excluded?'#fff':'#f4f6fa'}" stroke="${p.excluded?'#888':'#111'}" stroke-width="1.6"${p.excluded?' stroke-dasharray="5 4"':''} cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-highlight'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="net-highlight" data-face="${p.face}" data-fill="${p.fill}" fill="${HIGHLIGHT_FILLS[p.fill][0]}" fill-opacity="${HIGHLIGHT_FILLS[p.fill][1]}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='space-plane')){
+    const [color,opacity]=HIGHLIGHT_FILLS[p.fill];
+    body+=`<g data-layer="20"><polygon id="${p.id}" data-role="space-plane" data-plane="${p.plane}" data-space="1" data-fill="${p.fill}" fill="${color}" fill-opacity="${opacity}" stroke="#555" stroke-width="1.2" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
+  }
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='highlight-face')){
     const [color,opacity]=HIGHLIGHT_FILLS[p.fill??'LIGHT'];
     body+=`<g data-layer="20"><polygon id="${p.id}" data-role="highlight-face"${p.polygon?` data-polygon="${p.polygon}"`:` data-solid="${p.solid}" data-face="${p.face}"`}${p.fill&&p.fill!=='LIGHT'?` data-fill="${p.fill}"`:''} fill="${color}" fill-opacity="${opacity}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
@@ -2770,8 +3150,8 @@ function renderPrims(spec,model){
   for(const p of spec.prims){
     if(p.t==='line'){
       const accent=p.accent==='ACCENT'?' stroke="#c0392b"':'';
-      const w=p.role==='dim-line'||p.role==='dim-ext'||p.role==='axis-line'||p.role==='cut-radius'?1.1:p.role==='segment'||p.role==='net-diagonal'||(p.role==='net-edge'&&p.accent)?2.4:p.role==='silhouette'?1.7:1.6;
-      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face&&p.diagonal===undefined?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.diagonal!==undefined?`data-face="${p.face}" data-diagonal="${p.diagonal}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:'',(p.role==='net-edge'||p.role==='net-diagonal')&&p.accent?`data-accent="${p.accent}"`:''].filter(Boolean).join(' ');
+      const w=p.role==='dim-line'||p.role==='dim-ext'||p.role==='axis-line'||p.role==='cut-radius'?1.1:p.role==='segment'||p.role==='net-diagonal'||(p.role==='net-edge'&&p.accent)||(p.role==='space-segment'&&p.accent==='ACCENT')?2.4:p.role==='silhouette'?1.7:1.6;
+      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face&&p.diagonal===undefined?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.diagonal!==undefined?`data-face="${p.face}" data-diagonal="${p.diagonal}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:'',(p.role==='net-edge'||p.role==='net-diagonal'||p.role==='space-segment')&&p.accent?`data-accent="${p.accent}"`:'',p.lineId?`data-line="${p.lineId}"`:'',p.space?'data-space="1"':''].filter(Boolean).join(' ');
       body+=`<g data-layer="40"><line ${attrs} stroke="${p.accent==='ACCENT'?'#c0392b':'#111'}" stroke-width="${w}"${strokeFor(p)} fill="none" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}"/></g>`;
       void accent;
     }else if(p.t==='arc'){
@@ -2781,7 +3161,7 @@ function renderPrims(spec,model){
     }else if(p.t==='earc'){
       body+=`<g data-layer="40"><path id="${p.id}" data-role="${p.role}" data-solid="${p.solid}" data-arc="${p.arc}" data-t0="${p.t0}" data-t1="${p.t1}" data-vis="${p.vis}" stroke="#111" stroke-width="1.6"${strokeFor(p)} fill="none" d="M ${p.p0.join(' ')} A ${p.rx} ${p.ry} ${p.rot} 0 ${p.sweep} ${p.p1.join(' ')}"/></g>`;
     }else if(p.t==='dot'){
-      body+=`<g data-layer="45"><circle id="${p.id}" data-role="${p.role}" data-solid="${p.solid}"${p.point?` data-point="${p.point}"`:''} fill="#111" cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
+      body+=`<g data-layer="45"><circle id="${p.id}" data-role="${p.role}"${p.solid!==undefined?` data-solid="${p.solid}"`:''}${p.space?' data-space="1"':''}${p.point?` data-point="${p.point}"`:''} fill="#111" cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
     }else if(p.t==='polyline'){
       const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid&&(p.role==='cut-right-angle'||p.role==='foot-right-angle')?`data-solid="${p.solid}"`:'',p.role==='foot-right-angle'?`data-dim="${p.dim}"`:'',p.mark?`data-mark="${p.mark}"`:'',p.at?`data-at="${p.at}"`:'',p.refs?`data-refs="${p.refs}"`:'',p.role==='net-right-angle'?`data-face="${p.face}" data-corner="${p.corner}"`:'',p.index!==undefined?`data-mark-index="${p.index}" data-mark-count="${p.count}"`:''].filter(Boolean).join(' ');
       body+=`<g data-layer="55"><polyline ${attrs} stroke="#111" stroke-width="1.2" fill="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
@@ -2815,7 +3195,7 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
     let body=`<rect width="${width}" height="${height}" fill="#fff"/>`+renderPrims(spec,model);
     for(const {label,leader} of placed)if(leader)body+=`<g data-layer="40"><line id="leader-${label.id}" data-role="leader" data-owner-label="${label.id}" data-label="${label.id}" stroke="#555" stroke-width="0.9" fill="none" x1="${leader[0][0]}" y1="${leader[0][1]}" x2="${leader[1][0]}" y2="${leader[1][1]}"/></g>`;
     for(const {label,fragment,box,leader} of placed){
-      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='dim'?'EQUATION_LABEL':label.role==='face-label'?'AREA_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}"${leader?' data-leader="1"':''} data-owner="${label.owner}" data-value="${esc(label.value)}"${label.numeric!==undefined?` data-numeric="${label.numeric?1:0}"`:''}${label.dim?` data-dim="${label.dim}"`:''}${label.mark?` data-mark="${label.mark}"`:''}${label.segmentOf?` data-segment="${esc(label.segmentOf)}"`:''}${label.face?` data-face="${label.face}" data-corner="${label.index}"`:''}${label.countKind?` data-count="${label.countKind}" data-count-n="${label.countN}" data-solid="${label.solid}"`:''}${label.faceOf?` data-face-of="${label.faceOf}"`:''}${label.textId?` data-text-id="${label.textId}" data-at-kind="${label.atKind}" data-target="${esc(label.target)}"`:''} ${label.kind==='TEXT'?`data-text="${esc(label.text)}"`:`data-tex="${esc(label.tex)}"`} data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
+      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='dim'?'EQUATION_LABEL':label.role==='face-label'?'AREA_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}"${leader?' data-leader="1"':''} data-owner="${label.owner}" data-value="${esc(label.value)}"${label.numeric!==undefined?` data-numeric="${label.numeric?1:0}"`:''}${label.dim?` data-dim="${label.dim}"`:''}${label.mark?` data-mark="${label.mark}"`:''}${label.segmentOf?` data-segment="${esc(label.segmentOf)}"`:''}${label.face?` data-face="${label.face}" data-corner="${label.index}"`:''}${label.countKind?` data-count="${label.countKind}" data-count-n="${label.countN}" data-solid="${label.solid}"`:''}${label.faceOf?` data-face-of="${label.faceOf}"`:''}${label.spaceOf?` data-space-of="${label.spaceOf}"`:''}${label.textId?` data-text-id="${label.textId}" data-at-kind="${label.atKind}" data-target="${esc(label.target)}"`:''} ${label.kind==='TEXT'?`data-text="${esc(label.text)}"`:`data-tex="${esc(label.tex)}"`} data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
     }
     const dataAttrs=` data-solid-figure="${SOLID_CAPABILITY}" data-mode="${model.mode}" data-scale="${spec.frame.scale}" data-origin="${spec.frame.origin.join(' ')}"${model.mode==='SOLIDS'?` data-yaw="${YAW_DEG}" data-pitch="${PITCH_DEG}"`:''}${model.unit?` data-unit="${model.unit}"`:''}`;
     const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${dataAttrs} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
@@ -2859,5 +3239,5 @@ export function expandSolidFigure(plan){
   if(plan.panelWidth!==undefined)bad('SOLID_PLAN_INVALID');
   // the author's solidCaption stays in the panel's plan: it is what lets a figure with nothing written on it stand (the panel caption carries the text)
   const {caption,sourceConditions,newVisualInformation,solidCaption,sourceQuote,...figure}=plan;void solidCaption;
-  return {capability:'composite-panels-v1',chain:SOLID_CAPABILITY,panels:[{caption:cap??{text:model.mode==='NET'?'전개도':'입체도형'},plan:cap!==undefined?{...figure,solidCaption:cap}:figure}],caption,sourceConditions,newVisualInformation,...(sourceQuote!==undefined?{sourceQuote}:{})};
+  return {capability:'composite-panels-v1',chain:SOLID_CAPABILITY,panels:[{caption:cap??{text:model.mode==='NET'?'전개도':model.solids.length===0?'공간도형':'입체도형'},plan:cap!==undefined?{...figure,solidCaption:cap}:figure}],caption,sourceConditions,newVisualInformation,...(sourceQuote!==undefined?{sourceQuote}:{})};
 }
