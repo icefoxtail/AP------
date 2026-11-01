@@ -671,7 +671,7 @@
   build(sectorSpec({
     id: '1209', title: '부채꼴의 호의 길이와 넓이', short: '호의 길이·넓이',
     question: '반지름과 중심각을 알면 호의 길이와 넓이를 모두 구할 수 있을까? 원 전체와 비교해 보자.',
-    guide: '<b>중심각 θ</b>와 <b>반지름 r</b>를 막대나 손잡이로 바꿔 보세요. 호와 넓이는 모두 <b>원 전체 × (θ/360)</b> 입니다.',
+    guide: '<b>중심각 θ</b>와 <b>반지름 r</b>를 막대나 손잡이로 바꿔 보세요. 호와 넓이는 모두 <b>원 전체 × ($\\frac{\\theta}{360}$)</b> 입니다.',
     presets: sp([[12, 120], [9, 80], [6, 60], [10, 72], [12, 45]]),
     given: ['r', 'th'], ask: ['l', 'S'], reveal: { l: 1, S: 2 }, def: { r: 12, th: 120 }, thMax: 350,
     steps: (q) => {
@@ -686,7 +686,7 @@
       ];
     },
     chipsF: (q, v, step) => (step === 1 ? [{ k: '호', tex: `2\\pi\\times${q.r}\\times\\frac{${q.th}}{360}=${piT(v.l)}`, color: 'rose' }] : [{ k: '넓이', tex: `\\pi\\times${q.r}^2\\times\\frac{${q.th}}{360}=${piT(v.S)}`, color: 'rose' }]),
-    rule: (q) => (q.step >= 2 ? '부채꼴은 원의 θ/360 만큼 → 호 = 원주 × θ/360, 넓이 = 원의 넓이 × θ/360' : null),
+    rule: (q) => (q.step >= 2 ? '부채꼴은 원의 $\\frac{\\theta}{360}$ 만큼 → 호 = 원주 × $\\frac{\\theta}{360}$, 넓이 = 원의 넓이 × $\\frac{\\theta}{360}$' : null),
     problem: (q) => {
       const v = sQ(q);
       const pair = (a, b) => `${T(piT(a))} cm, ${T(piT(b))} cm²`;
@@ -728,7 +728,7 @@
   build(sectorSpec({
     id: '1609', title: '넓이로 중심각 구하기', short: '넓이로 중심각', tag: '교재 문제 · 서답형',
     question: '부채꼴의 넓이가 원 전체의 몇 분의 몇인지 알면 중심각을 구할 수 있을까?',
-    guide: '<b>중심각 θ</b>를 바꿔 보세요. 부채꼴의 넓이는 원의 넓이의 <b>θ/360</b> 배입니다.',
+    guide: '<b>중심각 θ</b>를 바꿔 보세요. 부채꼴의 넓이는 원의 넓이의 <b>$\\frac{\\theta}{360}$</b> 배입니다.',
     presets: sp([[9, 120], [6, 60], [12, 150], [10, 72], [8, 45]]),
     given: ['r', 'S'], ask: ['th'], reveal: { th: 2 }, def: { r: 9, th: 120 }, thMax: 350,
     steps: (q) => {
@@ -770,7 +770,7 @@
       ];
     },
     chipsF: (q, v, step) => (step === 1 ? [{ k: '반지름', tex: `2\\pi r\\times\\frac{${q.th}}{360}=${piT(v.l)}\\ \\Rightarrow\\ r=${q.r}`, color: 'green' }] : [{ k: '넓이', tex: `\\pi\\times${q.r}^2\\times\\frac{${q.th}}{360}=${piT(v.S)}`, color: 'rose' }]),
-    rule: (q) => (q.step >= 2 ? '호의 길이로 반지름을 먼저 구한 뒤 넓이 = π r² × θ/360' : null),
+    rule: (q) => (q.step >= 2 ? '호의 길이로 반지름을 먼저 구한 뒤 넓이 = π r² × $\\frac{\\theta}{360}$' : null),
     problem: (q) => {
       const v = sQ(q);
       const c = mkChoices(v.S, 2, 3, (x) => `${T(piT(x))} cm²`);
@@ -798,13 +798,13 @@
       ];
     },
     chipsF: (q, v, step) => (step === 1 ? [{ k: '식', tex: `2\\pi r\\times\\frac{${q.th}}{360}=${piT(v.l)}`, color: 'amber' }] : [{ k: '답', tex: `r=${q.r}\\ \\text{cm}`, color: 'rose' }]),
-    rule: (q) => (q.step >= 2 ? '호의 길이 = 2πr × θ/360 에서 r을 구한다 (식을 r에 대해 푼다)' : null),
+    rule: (q) => (q.step >= 2 ? '호의 길이 = 2πr × $\\frac{\\theta}{360}$ 에서 r을 구한다 (식을 r에 대해 푼다)' : null),
     problem: (q) => {
       const v = sQ(q);
       const c = mkChoices(q.r, 2, 4, (x) => `${num(x)} cm`);
       return { text: qHtml(`중심각의 크기가 ${q.th}°이고 호의 길이가 ${T(piT(v.l))} cm인 부채꼴의 반지름의 길이는?`, c.items), answer: ansOf(c) };
     },
-    relation: (q, v) => rd('호 ÷ 반지름', piS(q.th / 180), 'violet', '= 2π × θ/360 (θ가 같으면 일정)')
+    relation: (q, v) => rd('호 ÷ 반지름', piS(q.th / 180), 'violet', '= 2π × $\\frac{\\theta}{360}$ (θ가 같으면 일정)')
   }));
 
   /* ======================================================================

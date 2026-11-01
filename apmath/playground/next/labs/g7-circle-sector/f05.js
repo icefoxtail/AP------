@@ -244,7 +244,7 @@
   function hintOf(o, ans) {
     const bits = [];
     const dp = o.n / o.d - ans.n / ans.d;
-    if (dp < -1e-9) bits.push('호의 길이를 덜 더했어요. 경계에 있는 호를 모두 찾았는지, 호마다 2π×반지름×(중심각/360)으로 구했는지 확인해 보세요.');
+    if (dp < -1e-9) bits.push('호의 길이를 덜 더했어요. 경계에 있는 호를 모두 찾았는지, 호마다 2π×반지름×($\\dfrac{\\text{중심각}}{360}$)으로 구했는지 확인해 보세요.');
     else if (dp > 1e-9) bits.push('호의 길이를 너무 많이 더했어요. 같은 호를 두 번 세지 않았는지, 중심각을 바르게 읽었는지 확인해 보세요.');
     if (o.c < ans.c - 1e-9) bits.push('직선(선분) 부분이 모자라요. 경계에 있는 선분을 빠뜨리지 않았는지 확인해 보세요.');
     else if (o.c > ans.c + 1e-9) bits.push('직선(선분) 부분이 너무 길어요. 둘레에 들어가지 않는 안쪽 선은 더하지 않아요.');
@@ -319,7 +319,7 @@
     if (st.sum) return '조각을 모두 더하면 둘레는 <b>' + esc(M.sumText) + '</b>예요. 슬라이더를 움직여 숫자를 바꾸어도 같은 방법으로 구할 수 있어요.';
     if (st.cur >= 0) {
       const P = M.P[G[st.cur].idx[0]];
-      return '<b>' + NUM[st.cur] + ' ' + esc(G[st.cur].name) + '</b>: ' + esc(G[st.cur].cap) + (P.kind === 'arc' ? '<br>호의 길이는 <b>2π × 반지름 × (중심각/360)</b>이에요.' : '');
+      return '<b>' + NUM[st.cur] + ' ' + esc(G[st.cur].name) + '</b>: ' + esc(G[st.cur].cap) + (P.kind === 'arc' ? '<br>호의 길이는 <b>2π × 반지름 × ($\\dfrac{\\text{중심각}}{360}$)</b>이에요.' : '');
     }
     if (tab === 'review') return '왼쪽 그림에서 경계를 조각으로 나누어 보아요. 위의 <b>다음 단계</b>를 눌러 조각을 하나씩 확인해 보세요.';
     return '색칠한 부분의 둘레는 호와 선분 <b>' + M.P.length + '조각</b>으로 이루어져 있어요. ▶ <b>재생</b>을 누르거나 아래 막대를 끌어 한 조각씩 길이를 구해 보세요.' + (D.guide0 ? '<br>' + D.guide0 : '');
@@ -349,7 +349,7 @@
     }
     v.formula = '<p><b>둘레</b> = (호의 길이의 합) + (선분의 길이의 합)</p>' + (D.formula ? D.formula(M, s) : '')
       + '<p>∴ <b>' + esc(M.sumText) + '</b> ≈ ' + valL(M.total).toFixed(2) + ' cm</p>';
-    v.rule = D.rule || '(호의 길이) = 2πr × (중심각/360), (둘레) = (호의 길이의 합) + (선분의 길이의 합)';
+    v.rule = D.rule || '(호의 길이) = 2πr × ($\\dfrac{\\text{중심각}}{360}$), (둘레) = (호의 길이의 합) + (선분의 길이의 합)';
     v.notes = D.notes ? '<ul style="margin:0;padding-left:18px;display:grid;gap:4px">' + D.notes.map((x) => '<li>' + x + '</li>').join('') + '</ul>' : '';
     return v;
   }
@@ -551,7 +551,7 @@
     introExtra: () => '직선 부분은 두 반지름의 차이만큼이에요.',
     guide0: '직선 부분은 (바깥쪽 반지름) − (안쪽 반지름)이에요. 두 곳이에요.',
     formula: (M) => '<p>호: 반지름 ' + M.g.R + ' cm와 ' + M.g.r + ' cm, 중심각 ' + M.g.th + '°. 선분: (' + M.g.R + ' − ' + M.g.r + ') × 2 = ' + 2 * (M.g.R - M.g.r) + ' cm</p>',
-    quick: (M) => '두 호의 중심각이 같으므로 <b>(바깥 + 안쪽 반지름) × 2π × 중심각/360</b>으로 한 번에: $2\\pi\\times(' + M.g.R + '+' + M.g.r + ')\\times\\dfrac{' + M.g.th + '}{360}=' + texPi(sumL([M.P[0].len, M.P[2].len])) + '$.<br>직선은 $(' + M.g.R + '-' + M.g.r + ')\\times2=' + 2 * (M.g.R - M.g.r) + '$ → $' + texSum(M.total) + '$ (cm)',
+    quick: (M) => '두 호의 중심각이 같으므로 <b>(바깥 + 안쪽 반지름) × 2π × $\\dfrac{\\text{중심각}}{360}$</b>으로 한 번에: $2\\pi\\times(' + M.g.R + '+' + M.g.r + ')\\times\\dfrac{' + M.g.th + '}{360}=' + texPi(sumL([M.P[0].len, M.P[2].len])) + '$.<br>직선은 $(' + M.g.R + '-' + M.g.r + ')\\times2=' + 2 * (M.g.R - M.g.r) + '$ → $' + texSum(M.total) + '$ (cm)',
     notes: ['안쪽 호도 둘레에 들어가요. 색칠한 부분의 경계이기 때문이에요.', '직선 부분은 반지름이 아니라 (바깥쪽 반지름 − 안쪽 반지름)이에요. 두 곳이라서 2배를 해요.'],
     warn: '직선 부분은 바깥쪽 반지름 전체가 아니라 안쪽 반지름을 뺀 길이예요.'
   });
@@ -1227,7 +1227,7 @@
       const o = opts[pick];
       h += o.ok
         ? '<div class="f5-fb ok"><b>정답이에요!</b> 직선 부분 ' + M.straight + ' cm + 곡선 부분(원 하나의 둘레) ' + 2 * r + 'π cm 이에요. 정리 탭에서 풀이 과정을 확인해 보세요.</div>'
-        : '<div class="f5-fb bad"><b>다시 생각해 볼까요?</b> ' + esc(hintOf(o.L, ok.L).replace('호의 길이를 덜 더했어요. 경계에 있는 호를 모두 찾았는지, 호마다 2π×반지름×(중심각/360)으로 구했는지 확인해 보세요.', '곡선 부분이 너무 짧아요. 곡선 부분을 모으면 반지름 r인 원 하나의 둘레 2πr이에요.').replace('호의 길이를 너무 많이 더했어요. 같은 호를 두 번 세지 않았는지, 중심각을 바르게 읽었는지 확인해 보세요.', '곡선 부분이 너무 길어요. 원 둘레를 여러 번 더하는 게 아니에요.')) + '</div>';
+        : '<div class="f5-fb bad"><b>다시 생각해 볼까요?</b> ' + esc(hintOf(o.L, ok.L).replace('호의 길이를 덜 더했어요. 경계에 있는 호를 모두 찾았는지, 호마다 2π×반지름×($\\dfrac{\\text{중심각}}{360}$)으로 구했는지 확인해 보세요.', '곡선 부분이 너무 짧아요. 곡선 부분을 모으면 반지름 r인 원 하나의 둘레 2πr이에요.').replace('호의 길이를 너무 많이 더했어요. 같은 호를 두 번 세지 않았는지, 중심각을 바르게 읽었는지 확인해 보세요.', '곡선 부분이 너무 길어요. 원 둘레를 여러 번 더하는 게 아니에요.')) + '</div>';
     }
     h += '<div class="f5-tools"><button type="button" class="apl-btn sm" data-f5-new>숫자 바꾸기</button>' + (A.textbook ? '' : '<span class="f5-note">교과서 문제를 응용한 문제예요.</span>') + '</div>';
     return h;

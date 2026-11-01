@@ -26,7 +26,7 @@
     s3K: P('크기 배율 k', 1, 2, 1, 1, { color: 'amber', hint: '세 수 (r, h, R)를 k배 해요', format: (v) => `${v}배` }),
     // sv2-4
     s4K: P('큰 원뿔의 크기 k', 2, 5, 1, 3, { color: 'sky', format: (v) => `k = ${v}` }),
-    s4J: P('자르는 위치 (작은 원뿔의 크기 j)', 1, 4, 1, 1, { color: 'amber', hint: '작은 원뿔은 큰 원뿔과 같은 모양이고 j/k 배예요', format: (v) => `j = ${v}`, clampTo: (s) => [1, Math.round(s.s4K) - 1] }),
+    s4J: P('자르는 위치 (작은 원뿔의 크기 j)', 1, 4, 1, 1, { color: 'amber', hint: '작은 원뿔은 큰 원뿔과 같은 모양이고 $\\frac{j}{k}$ 배예요', format: (v) => `j = ${v}`, clampTo: (s) => [1, Math.round(s.s4K) - 1] }),
     s4T: P('작은 원뿔 빼내기', 0, 1, 0.01, 0, { color: 'green', format: (v) => (v < 0.02 ? '붙어 있음' : v > 0.98 ? '빠짐' : Math.round(v * 100) + '%') }),
     // sv2-5
     s5K: P('큰 각뿔의 크기 k', 2, 4, 1, 3, { color: 'sky', format: (v) => `밑면 한 변 ${6 * v} cm` }),
@@ -307,7 +307,7 @@
         `(겉넓이) $=${tx(M.S)}+${tx(M.lat)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
       ],
       view: (M) => ({
-        guide: `위 칩에서 <b>(r, h, R) 모양</b>과 <b>겉넓이/부피</b>를 골라 보세요. ${span('amber', '높이 h')}는 수직으로 내린 점선, <b>모선 R</b>은 비스듬한 변이에요. 겉넓이에는 <b>R</b>, 부피에는 <b>h</b>를 써요.`,
+        guide: `위 칩에서 <b>(r, h, R) 모양</b>과 <b>겉넓이·부피</b>를 골라 보세요. ${span('amber', '높이 h')}는 수직으로 내린 점선, <b>모선 R</b>은 비스듬한 변이에요. 겉넓이에는 <b>R</b>, 부피에는 <b>h</b>를 써요.`,
         readouts: [
           rd('반지름 r', M.r + ' cm', 'ink'), rd('높이 h', M.h + ' cm', 'amber'), rd('모선 R', M.R + ' cm', 'sky'),
           rd('겉넓이 πr(r+R)', plainVal(M.tot) + ' cm²', M.mode === 'surf' ? 'green' : 'muted'), rd('부피 ⅓πr²h', plainVal(M.vol) + ' cm³', M.mode === 'vol' ? 'green' : 'muted')
@@ -498,7 +498,7 @@
         `(겉넓이) $=${tx(vadd(M.top, M.bot))}+${tx(M.lat)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
       ],
       view: (M) => ({
-        guide: `위 칩에서 <b>정사각뿔대/정사각뿔</b>과 <b>겉넓이/부피</b>를 고르고 <b>펼치기</b>를 끌어 보세요. ${span('green', '옆면')}은 합동인 ${M.kind === 'pyr' ? '삼각형' : '사다리꼴'} 4개예요. 옆면의 ${span('amber', '높이')}(점선)를 넓이에 써요.`,
+        guide: `위 칩에서 <b>정사각뿔대·정사각뿔</b>과 <b>겉넓이·부피</b>를 고르고 <b>펼치기</b>를 끌어 보세요. ${span('green', '옆면')}은 합동인 ${M.kind === 'pyr' ? '삼각형' : '사다리꼴'} 4개예요. 옆면의 ${span('amber', '높이')}(점선)를 넓이에 써요.`,
         readouts: M.mode === 'vol'
           ? [rd('큰 각뿔 V₂', plainVal(M.v2) + ' cm³', 'sky'), rd('작은 각뿔 V₁', plainVal(M.v1) + ' cm³', 'violet'), rd(M.kind === 'pyr' ? '부피' : '각뿔대의 부피', plainVal(M.vol) + ' cm³', 'green')]
           : [rd('밑면의 넓이 합', plainVal(vadd(M.top, M.bot)) + ' cm²', 'sky'), rd('옆면 1개의 넓이', plainVal(V(((M.a1 + M.a2) * M.lf) / 2)) + ' cm²', 'amber'), rd('옆넓이(4개)', plainVal(M.lat) + ' cm²', 'green'), rd('겉넓이', plainVal(M.tot) + ' cm²', 'amber')],

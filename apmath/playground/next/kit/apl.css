@@ -334,12 +334,16 @@ body.apl {
 }
 .apl-tape-title { font-size: var(--fs-sm); font-weight: 700; color: var(--text); line-height: 1.45; }
 .apl-tape-bar { display: flex; height: 26px; border-radius: 8px; overflow: hidden; gap: 2px; }
-.apl-tape-bar span {
+.apl-tape-bar > span {
   display: flex; align-items: center; justify-content: center; min-width: 0; padding: 0 8px;
   background: color-mix(in srgb, var(--c) 82%, transparent); color: #0b120f; font-size: var(--fs-2xs); font-weight: 800;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: flex-grow .25s var(--ease);
 }
-:root[data-theme="paper"] .apl-tape-bar span { color: #fff; }
+:root[data-theme="paper"] .apl-tape-bar > span { color: #fff; }
+/* 띠 안에 쌓은 분수가 있으면 위아래가 잘리지 않게 높이를 늘립니다 */
+.apl-tape-bar:has(.katex) { height: auto; min-height: 26px; }
+.apl-tape-bar > span:has(.katex) { overflow: visible; padding-block: 3px; }
+.apl-tape-bar .katex { font-size: 1.2em; }
 
 /* 수업 모드 발표 막대 */
 .apl-presenter {
@@ -368,7 +372,7 @@ body.apl {
   border: 1px solid var(--line); border-left: 3px solid var(--accent); font-size: var(--fs-md); font-weight: 650; line-height: 1.6;
 }
 .apl-question small { display: block; font-size: var(--fs-2xs); color: var(--text-3); font-weight: 750; margin-bottom: 2px; letter-spacing: .03em; }
-.apl-subscenes { display: flex; flex-wrap: wrap; gap: 6px; }
+.apl-subscenes { display: flex; flex-wrap: wrap; gap: 6px; position: relative; }
 .apl-subscenes .apl-chip { min-height: 32px; white-space: normal; text-align: left; line-height: 1.35; padding: 6px 12px; }
 .apl-subscenes .apl-chip .flag { font-size: 10.5px; font-weight: 800; color: var(--m-rose); }
 .apl-subscenes .apl-chip.on .flag { color: inherit; }
@@ -429,6 +433,9 @@ body.apl {
 .apl-read .v { font-size: var(--fs-lg); font-weight: 800; color: var(--c); font-variant-numeric: tabular-nums; letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .apl-read .n { font-size: var(--fs-2xs); color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .apl-read.wide { grid-column: 1 / -1; }
+/* 칸 안의 쌓은 분수는 글자보다 작아 보이기 쉬워 조금 키우고, 위아래가 잘리지 않게 줄 높이를 줍니다 */
+.apl-read .v .katex, .apl-ctl-head output .katex { font-size: 1.1em; }
+.apl-read .k:has(.katex), .apl-read .v:has(.katex), .apl-read .n:has(.katex) { line-height: 1.9; overflow: visible; }
 
 .apl-callout { display: flex; gap: 10px; padding: 11px 13px; border-radius: var(--r-md); font-size: var(--fs-sm); line-height: 1.65; background: color-mix(in srgb, var(--c) 10%, var(--card)); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); }
 .apl-callout .apl-ico { color: var(--c); margin-top: 2px; width: 17px; height: 17px; }
@@ -505,7 +512,7 @@ body.apl {
 .apl .font-extrabold, .apl .font-black { font-weight: 850; }
 
 /* KaTeX 미세 조정 */
-.apl .katex { font-size: 1.06em; }
+.apl .katex { font-size: 1.06em; position: relative; } /* 보이지 않는 수식 해설(.katex-mathml)이 칩 밖으로 새어 가로 넘침을 만들지 않게 기준을 잡습니다 */
 .apl-problem-text .katex { font-size: 1.08em; }
 .apl .katex-display { margin: .4em 0; }
 

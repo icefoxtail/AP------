@@ -328,8 +328,8 @@ function partScene(type) {
         T(b, { x: -1 + la, y: y1 }, cmOf(ex(r * sh.deg, 180)), { dx: 10, align: 'left', color: 'sky', size: 15 });
         T(b, { x: -1 + lc, y: y2 }, sh.deg === 60 ? `${r} cm` : sh.deg === 180 ? `${2 * r} cm` : '현', { dx: 10, align: 'left', color: 'rose', size: 15 });
       } else if (type === 'sector') {
-        const f = frac(sh.deg, 360);
-        T(b, { x: 0, y: 1 }, `원 전체의 ${sh.deg}/360 = ${f[0]}/${f[1]}`, { dy: 58, size: 16 });
+        const dg = Math.round(sh.deg), f = frac(dg, 360); // 끌다 보면 소수가 되므로 정수로 맞춰 써야 분수로 쌓여 보입니다
+        T(b, { x: 0, y: 1 }, `원 전체의 ${dg}/360 = ${f[0]}/${f[1]}`, { dy: 58, size: 16 });
       }
     }
   };
@@ -365,7 +365,7 @@ function periScene(type) {
       const rd = [{ label: '둘레', value: known ? cmOf(tot) : '호 + 현 (현은 계산 안 함)', color: 'sky' }];
       if (type !== 'segment') rd.push({ label: '넓이', value: cm2Of(type === 'semi' ? ex(r * r, 2) : ex(r * r * sh.deg, 360)), color: 'green' });
       rd.push({ label: '점 P가 지나간 길이', value: s.csP > 0 ? (tp.ex ? cmOf(tp.ex) : '계산 안 함') : '0', color: 'amber' });
-      const f = { semi: `반원 둘레 = πr + 2r = π × ${r} + 2 × ${r} = ${plain(tot)} cm`, quarter: `사분원 둘레 = πr/2 + 2r = π × ${r}/2 + 2 × ${r} = ${plain(tot)} cm`, sector: `부채꼴 둘레 = 호 AB + 2r = 2π × ${r} × ${sh.deg}/360 + 2 × ${r} = ${plain(tot)} cm`, segment: `활꼴 둘레 = 호 AB + 현 AB = 2π × ${r} × ${sh.deg}/360 + ${known ? plain(segs[1].exact) + ' = ' + plain(tot) : '현 AB'} cm` }[type];
+      const f = { semi: `반원 둘레 = πr + 2r = π × ${r} + 2 × ${r} = ${plain(tot)} cm`, quarter: `사분원 둘레 = $\\frac{\\pi r}{2}$ + 2r = π × ${r}/2 + 2 × ${r} = ${plain(tot)} cm`, sector: `부채꼴 둘레 = 호 AB + 2r = 2π × ${r} × ${sh.deg}/360 + 2 × ${r} = ${plain(tot)} cm`, segment: `활꼴 둘레 = 호 AB + 현 AB = 2π × ${r} × ${sh.deg}/360 + ${known ? plain(segs[1].exact) + ' = ' + plain(tot) : '현 AB'} cm` }[type];
       return { readouts: rd, formula: RICH(esc2(f), M('호의 길이 $l=2\\pi r\\times\\dfrac{\\theta}{360}$')), alert: type === 'segment' && !known ? { tone: 'info', text: '현의 길이를 수로 구하는 것은 중1 과정이 아닙니다. 중심각을 60° 또는 180°로 맞추면 둘레를 구할 수 있습니다.' } : null };
     },
     draw: (b, s) => {
@@ -430,7 +430,7 @@ function proofScene(type) {
   const circ = type === 'circle';
   const meta = circ
     ? { id: 'z3-circleProof', title: '원을 잘게 나누기', info: '원을 합동인 부채꼴 조각으로 잘게 나눕니다. 조각을 <b>위·아래 방향을 번갈아</b> 가로로 늘어놓고, 막대를 끌어 <b>가로로 밀어</b> 맞물리게 해 보세요. 직사각형에 가까워집니다. 조각 수와 반지름도 바꿔 보세요.', q: ['원을 한없이 잘게 나누어 만든 직사각형의 가로와 세로는 각각 원의 무엇과 같나요?', '가로는 원주의 절반(πr)이고, 세로는 원의 반지름(r)입니다. 따라서 넓이는 πr × r = πr²입니다.'] }
-    : { id: 'z3-sectorProof', title: '부채꼴 넓이', info: '부채꼴을 같은 크기로 나눈 뒤 조각을 위·아래 방향을 번갈아 가로로 늘어놓고, 막대를 끌어 가로로 밀어 맞물리게 합니다. 가로는 호의 길이의 절반(l/2), 세로는 반지름(r)에 가까워집니다.', q: ['부채꼴 넓이 공식 S = 1/2 rl에서 l은 무엇을 뜻하나요?', '부채꼴의 호의 길이(l = 2πr × θ/360°)입니다. 중심각을 몰라도 반지름(r)과 호의 길이(l)를 알면 넓이를 바로 구할 수 있습니다.'] };
+    : { id: 'z3-sectorProof', title: '부채꼴 넓이', info: '부채꼴을 같은 크기로 나눈 뒤 조각을 위·아래 방향을 번갈아 가로로 늘어놓고, 막대를 끌어 가로로 밀어 맞물리게 합니다. 가로는 호의 길이의 절반($\\frac{l}{2}$), 세로는 반지름(r)에 가까워집니다.', q: ['부채꼴 넓이 공식 S = 1/2 rl에서 l은 무엇을 뜻하나요?', '부채꼴의 호의 길이(l = 2πr × $\\frac{\\theta}{360}$°)입니다. 중심각을 몰라도 반지름(r)과 호의 길이(l)를 알면 넓이를 바로 구할 수 있습니다.'] };
   const Kof = (s) => Math.max(2, 2 * Math.ceil(s.csS / 20));
   const countOf = (s) => (circ ? s.csN : Kof(s));
   return {
@@ -565,6 +565,7 @@ function start() {
   mods.forEach((g) => Object.assign(params, g.params || {}));
   APLab.createLab({
     id: 'g7-circle-sector',
+    stackFractions: true, // 패널 글의 슬래시·유니코드 분수를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr)
     title: '원과 부채꼴',
     courseName: '중1',
     unit: '평면도형 · 원과 부채꼴',

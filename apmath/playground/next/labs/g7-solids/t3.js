@@ -253,7 +253,7 @@
       return {
         tag: '부채꼴의 중심각', key: `x${r}-${R}`,
         stem: `그림은 밑면의 반지름이 ${r} cm, 모선의 길이가 ${R} cm인 원뿔의 전개도이다. 옆면인 부채꼴의 중심각의 크기는?`,
-        choices: mkNum(x, [[360 * R / r > 360 ? 360 - x : 360 * R / r, '반대로 계산했어요. 중심각 = 360° × r/R (모선이 분모).'], [180 * r / R, '2π를 두 번 나눴어요. 360°에 r/R을 곱해요.'], [360 * (R - r) / R, ''], [x * 2, '']], (v) => fmtN(v) + '°', { valid: (v) => v > 0 && v < 360 && Number.isInteger(v), step: 15 })
+        choices: mkNum(x, [[360 * R / r > 360 ? 360 - x : 360 * R / r, '반대로 계산했어요. 중심각 = 360° × $\\frac{r}{R}$ (모선이 분모).'], [180 * r / R, '2π를 두 번 나눴어요. 360°에 $\\frac{r}{R}$을 곱해요.'], [360 * (R - r) / R, ''], [x * 2, '']], (v) => fmtN(v) + '°', { valid: (v) => v > 0 && v < 360 && Number.isInteger(v), step: 15 })
       };
     }
   });
@@ -303,19 +303,19 @@
       readouts: [rd('반지름 r', cmv(M.r), SKY), rd('모선 R', cmv(M.R), AMB, `r : R = 1 : ${M.k}`), rd('중심각 x', xTxt(M.x) + '°', GRN, `360° × ${M.r}/${M.R}`, null, true)],
       status: { tone: 'info', text: `중심각 x = ${xTxt(M.x)}°` },
       formula: `<p>$x = 360° \\times \\dfrac{r}{R}$</p><p>= $360° \\times \\dfrac{${M.r}}{${M.R}}$ = <b>${xTxt(M.x)}°</b></p>`,
-      rule: '원뿔의 전개도에서 옆면인 부채꼴의 중심각의 크기는 360° × (밑면의 반지름) / (모선의 길이)이다',
+      rule: '원뿔의 전개도에서 옆면인 부채꼴의 중심각의 크기는 360° × $\\frac{r}{R}$이다 (r: 밑면의 반지름, R: 모선의 길이)',
       notes: notes('분자는 <b>밑면의 반지름 r</b>, 분모는 <b>모선 R</b>이에요(바꾸면 360°보다 커져요).', '<b>r : R = 1 : 2</b>이면 반원(180°), <b>1 : 4</b>이면 직각(90°)이에요.')
     }),
     prob: (M) => {
       const r = M.qr, k = M.qk, R = r * k, x = 360 / k;
       if (M.qv === 'ratio') {
         const opts = [2, 3, 4, 5, 6], texts = (kk) => `1 : ${kk}`;
-        return { tag: '밑면의 반지름과 모선의 길이의 비', key: `ratio${k}-${r}`, stem: `밑면의 반지름이 ${r} cm인 원뿔의 전개도에서 옆면인 부채꼴의 중심각이 ${xTxt(x)}°이다. 밑면의 반지름과 모선의 길이의 비 r : R는?`, choices: mkText(opts.map((kk) => ({ h: texts(kk), ok: kk === k, hint: kk === k ? '' : '중심각 x = 360° × r/R 이므로 R/r = 360°/x 예요.' }))) };
+        return { tag: '밑면의 반지름과 모선의 길이의 비', key: `ratio${k}-${r}`, stem: `밑면의 반지름이 ${r} cm인 원뿔의 전개도에서 옆면인 부채꼴의 중심각이 ${xTxt(x)}°이다. 밑면의 반지름과 모선의 길이의 비 r : R는?`, choices: mkText(opts.map((kk) => ({ h: texts(kk), ok: kk === k, hint: kk === k ? '' : '중심각 x = 360° × $\\frac{r}{R}$ 이므로 $\\frac{R}{r} = \\frac{360°}{x}$ 예요.' }))) };
       }
       return {
         tag: '부채꼴의 중심각 (핵심)', key: `x${r}-${k}`,
         stem: `그림은 밑면의 반지름이 ${r} cm, 모선의 길이가 ${R} cm인 원뿔의 전개도이다. 옆면인 부채꼴의 중심각의 크기는?`,
-        choices: mkNum(x, [[360 * R / r > 360 ? 360 - x : 360 * R / r, '반대로 계산했어요. 중심각 = 360° × r/R.'], [180 * r / R, '2π를 두 번 나눴어요.'], [360 * (R - r) / R, ''], [x * 2, '']], (v) => fmtN(v) + '°', { valid: (v) => v > 0 && v < 360 && Number.isInteger(v), step: 15 })
+        choices: mkNum(x, [[360 * R / r > 360 ? 360 - x : 360 * R / r, '반대로 계산했어요. 중심각 = 360° × $\\frac{r}{R}$.'], [180 * r / R, '2π를 두 번 나눴어요.'], [360 * (R - r) / R, ''], [x * 2, '']], (v) => fmtN(v) + '°', { valid: (v) => v > 0 && v < 360 && Number.isInteger(v), step: 15 })
       };
     }
   });

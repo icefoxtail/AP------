@@ -166,14 +166,14 @@
     steps: (M) => [
       `한 내각 + 한 외각 = 180° 이고 내각 : 외각 = ${M.a} : ${M.bb} 이므로 한 외각 = 180° × ${M.bb}/${M.a + M.bb} = ${fmtN(M.eps)}°`,
       `정n각형의 한 외각은 360° ÷ n 이므로 n = 360° ÷ ${fmtN(M.eps)}° = ${fmtN(M.nn)}`,
-      M.valid ? `n = ${M.n} 이므로 <b>정${M.n}각형</b>이에요.` : `n = ${fmtN(M.nn)} 은 자연수가 아니므로 이 비로는 정다각형이 만들어지지 않아요.`
+      M.valid ? `n = ${M.n} 이므로 정${M.n}각형이에요.` : `n = ${fmtN(M.nn)} 은 자연수가 아니므로 이 비로는 정다각형이 만들어지지 않아요.`
     ],
     view: (M) => ({
       guide: '막대로 <b>내각 : 외각</b>의 비를 바꿔 보세요. 한 외각이 정해지면 그 외각을 <b>360°</b> 둘레에 몇 번 채울 수 있는지가 <b>n</b>이에요. 딱 맞아 떨어질 때만(<b>자연수</b>) 정다각형이 돼요.',
       readouts: [rd('내각 : 외각', `${M.a} : ${M.bb}`, 'ink'), rd('한 외각', `${fmtN(M.eps)}°`, 'rose', `180° × ${M.bb}/${M.a + M.bb}`), rd('n = 360° ÷ (한 외각)', M.valid ? `${M.n}` : `${fmtN(M.nn)} (자연수 아님)`, M.valid ? 'amber' : 'rose', null, null, true)],
       status: M.valid ? { tone: 'ok', text: `정${M.n}각형이에요` } : { tone: 'warn', text: `n = ${fmtN(M.nn)}: 정다각형이 아니에요` },
       formula: `<p>(한 외각) $=180^{\\circ}\\times\\dfrac{${M.bb}}{${M.a + M.bb}}=${tx(M.eps)}^{\\circ}$</p><p>$n=\\dfrac{360^{\\circ}}{${tx(M.eps)}^{\\circ}}=${M.valid ? M.n : tx(M.nn)}$</p>`,
-      rule: '내각 : 외각 = a : b 이면 한 외각 = 180° × b/(a+b), n = 360° ÷ (한 외각)',
+      rule: '내각 : 외각 = a : b 이면 한 외각 = 180° × $\\dfrac{b}{a+b}$, n = 360° ÷ (한 외각)',
       notes: notes('비는 <b>내각 : 외각</b>의 순서예요. 외각 : 내각으로 주어졌으면 비를 뒤집어요.', 'n은 자연수여야 해요. 나누어떨어지지 않으면 그런 정다각형은 없어요.')
     }),
     prob: (M) => {

@@ -179,7 +179,7 @@
   const PARAMS = {
     f3t: PARAM_T,
     f3a: { value: 6, min: 2, max: 12, step: 1, color: 'sky', label: '정사각형의 한 변 a', format: cmF },
-    f3e: { value: 6, min: 2, max: 12, step: 2, color: 'sky', label: '정사각형의 한 변 a', hint: '반지름 a/2가 정수가 되도록 짝수만', format: cmF },
+    f3e: { value: 6, min: 2, max: 12, step: 2, color: 'sky', label: '정사각형의 한 변 a', hint: '반지름 $\\frac{a}{2}$가 정수가 되도록 짝수만', format: cmF },
     f3b: { value: 4, min: 2, max: 10, step: 2, color: 'sky', label: '$\\overline{AB}$의 길이', format: cmF },
     f3w: { value: 2, min: 0.5, max: 9, step: 0.01, color: 'amber', label: '$\\overline{AD}$의 길이', hint: '그림의 점 D를 좌우로 끌어도 돼요', format: cmF },
     f3r: { value: 6, min: 3, max: 9, step: 1, color: 'sky', label: '원의 반지름 r', format: cmF },
@@ -305,7 +305,7 @@
           { id: 'arc2', name: '노랑 호 ②', desc: '중심각 90°', value: piP(M.arc) + ' cm', color: CA }
         ],
         formula: `<p>둘레 = (호 ①) + (호 ②)</p><p>= $2\\pi\\times${M.a}\\times\\dfrac{90}{360}\\times 2$ = <b>${piP(M.tot)} cm</b></p>`,
-        rule: '(호의 길이) = 2π × (반지름) × (중심각 / 360°)',
+        rule: '(호의 길이) = 2π × (반지름) × ($\\dfrac{\\text{중심각}}{360^\\circ}$)',
         notes: '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>둘레에는 정사각형의 변이 들어가지 않아요. 색칠한 부분의 <b>경계선</b>만 세요.</li><li>두 호의 중심은 서로 <b>마주 보는 꼭짓점</b>이에요. 반지름은 모두 정사각형의 한 변이에요.</li><li>중심각이 90°인 호 2개는 합치면 180°, 즉 원 둘레의 <b>절반</b>이에요.</li></ul>'
       };
     },
@@ -891,7 +891,7 @@
           rd('반지름 r · 거리 d', `r = ${fmtN(M.r)}, d = ${fmtN(M.d)}`, 'ink', M.rectEq ? 'd = r : 서로의 중심을 지나요' : 'd를 바꾸면 도형이 달라져요'),
           rd('직사각형', `${fmtN(M.d)} × ${fmtN(2 * M.r)}`, 'sky', '가로 d, 세로 2r'),
           rd('색칠한 부분', fmtN(M.area) + ' cm²', 'sky', '= 2r × d', 'sh', true),
-          rd('두 반원', '넓이가 같아요', CA, `π×${fmtN(M.r)}²/2 로 같은 크기`, 'bump')
+          rd('두 반원', '넓이가 같아요', CA, `π×$\\dfrac{${fmtN(M.r)}^2}{2}$ 로 같은 크기`, 'bump')
         ],
         status: { tone: 'ok', text: `색칠한 부분 = 직사각형 = ${fmtN(M.area)} cm²` },
         parts: [
