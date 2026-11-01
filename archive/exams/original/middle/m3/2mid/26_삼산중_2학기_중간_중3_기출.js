@@ -40,7 +40,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q1.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q1.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 ∠C의 맞은편 변 AB=3(주황)과 이웃한 변 BC=4(파랑), 빗변 AC=5를 색으로 구분해 보여 준다.",
+    "solutionImageCaption": "∠C 기준 맞은편 AB=3, 이웃한 BC=4이므로 tan C=3/4이다. 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -122,7 +126,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q3.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q3.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 중심에서 현까지 거리 9cm(파랑)와 현의 절반 12cm(주황), 반지름 15cm(초록)로 이루어진 직각삼각형을 보여 준다.",
+    "solutionImageCaption": "현의 절반 12, 거리 9의 직각삼각형에서 반지름 r=15cm이므로 둘레는 30π cm이다. 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -205,7 +213,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q5.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q5.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 ∠A=42°, 빗변 AB=2이고 AC=1.4862(파랑), BC=1.3382(주황)를 색으로 구분해 보여 준다.",
+    "solutionImageCaption": "AC=2cos42°=1.4862, BC=2sin42°=1.3382이므로 AC+BC=2.8244이다. 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -247,7 +259,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q6.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q6.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD를 대각선 BD로 나눈 두 직각삼각형으로, AB=BD=√3(주황 눈금), DC=1, 두 삼각형 안에 넓이 3/2와 √3/2가 적혀 있다.",
+    "solutionImageCaption": "삼각형 ABD의 넓이는 3/2, 삼각형 BCD의 넓이는 √3/2이므로 합은 (3+√3)/2이다. 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -344,7 +360,11 @@ window.questionBank = [
   "decisiveStep": "sin a°=BC/AB, hence BC=√13 sin a°.",
   "projectionStatus": "REUSE",
   "canonicalOwnerPack": "MIDDLE_GEOMETRY",
-  "bindingOwnerPack": "MIDDLE_GEOMETRY"
+  "bindingOwnerPack": "MIDDLE_GEOMETRY",
+  "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q8-solution.svg",
+  "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 빗변 AB=√13(파랑)과, ∠A=a°(주황 호)의 맞은편 변 BC(주황)를 색으로 구분해 보여 준다.",
+  "solutionImageCaption": "BC는 ∠A=a°의 맞은편 변이므로 sin a°=BC/√13에서 BC=√13 sin a°이다. 정답은 ④이다.",
+  "solutionImageSize": "medium"
 },
   {
     "id": 9,
@@ -386,7 +406,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q9.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q9.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 높이 3m인 직사각형 공간에서 A에서 거울 벽의 B까지 높이 2m·수평거리 2√3m, B에서 천장의 C까지 높이 1m·수평거리 √3m이고 입사각과 반사각이 모두 30°임을 보여 준다.",
+    "solutionImageCaption": "두 구간의 수평거리 2√3와 √3는 반대 방향이어서 AC의 수평 성분은 √3, 수직 성분은 3이므로 AC=2√3 m이다. 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -428,7 +452,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q10.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q10.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 공이 높이 2.5m의 A에서 높이 2m의 네트 끝 D까지 30°로 내려오는 AD=1m(주황)와, D에서 바닥 B까지 45°로 내려오는 DB=2√2m(파랑)를 보여 준다. A와 D의 높이 차는 0.5m이다.",
+    "solutionImageCaption": "높이 차 0.5m에서 AD=1m, 높이 2m와 45°에서 DB=2√2m이므로 총 이동거리는 (1+2√2)m이다. 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -470,7 +498,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q11.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q11.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AB=4√3 cm, 끼인각 A=30°, 넓이로 구한 AC=3 cm를 보이고 BC는 코사인 법칙으로 구하도록 한 그림.",
+    "solutionImageCaption": "끼인각 A=30°와 두 변 AB=4√3, AC=3을 코사인 법칙에 넣어 BC=√21 cm, 정답은 ④.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -512,7 +544,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q12.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q12.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 두 대각선이 넓이가 같은 네 삼각형으로 나누며 색칠된 마주 보는 두 삼각형(주황)이 전체의 절반임을 보이는 그림.",
+    "solutionImageCaption": "평행사변형 넓이 48√3의 절반인 색칠 부분의 넓이는 24√3 cm², 정답은 ⑤.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -554,7 +590,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q13.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q13.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD를 대각선 BD로 두 삼각형으로 나누어, 이등변삼각형 ABD(AB=AD, ∠A=120°)의 넓이와 삼각형 BCD(∠C=135°)의 넓이를 보이는 그림.",
+    "solutionImageCaption": "두 삼각형 넓이 8√3과 12√3−12를 더한 사각형 ABCD의 넓이는 20√3−12, 정답은 ③.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -596,7 +636,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q14.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q14.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 현 AB가 반지름 OC를 수직이등분하는 점 M을 잡아, OM=MC=r/2, AM=MB=9인 직각삼각형 OMA를 보이는 그림.",
+    "solutionImageCaption": "직각삼각형 OMA에서 r²=9²+(r/2)²이므로 반지름은 6√3 cm, 정답은 ③.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -638,7 +682,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q15.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q15.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 같은 길이의 두 현 AB, CD가 중심에서 같은 거리 6에 있음을 보이고, 색칠한 삼각형 OCD의 밑변 CD와 높이를 나타내는 그림.",
+    "solutionImageCaption": "CD=AB=4√7, 높이 6이므로 삼각형 OCD의 넓이는 12√7 cm², 정답은 ①.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -680,7 +728,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q16.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q16.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 평행한 두 쌍의 같은 길이의 현 AB, CD와 EF, GH를 그리고 중심에서 각 현까지의 거리 5와 3, AB의 절반 12, 반지름 13을 보이는 그림.",
+    "solutionImageCaption": "중심에서 EF까지의 거리 3과 r=13으로 EF의 절반은 4√10이므로 EF=8√10 cm, 정답은 ⑤.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -722,7 +774,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q17.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q17.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 밖의 점 A, B, C에서 원 O에 그은 접선의 길이가 같은 세 쌍 AD=AF=18, BD=BE=5, CE=CF=3을 색으로 묶어 보이고, 아래에 BE=5, EC=3, BC=8을 따로 그린 그림.",
+    "solutionImageCaption": "접선 길이로 BC=8을 얻고 AC=15, ∠ACB=60°로 삼각형 ACB의 넓이는 30√3 cm², 정답은 ②.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -764,7 +820,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q18.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q18.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC에서 BC, BD, AD가 모두 1(파랑)이고 36° 각 셋(주황), 72° 각 둘(초록)이 표시되어 있다. 아래에 BC 전체 1과 그 절반 HC=1/2의 치수선 두 단이 있고, A에서 BC에 내린 수선과 ∠HAC=18°가 있다.",
+    "solutionImageCaption": "BD=BC=AD=1이고 A에서 BC에 내린 수선으로 sin18°=(1/2)/AC를 세우면 정답은 ① (√5−1)/4이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -790,8 +850,8 @@ window.questionBank = [
       "40√3−16π",
       "20√3−8π"
     ],
-    "answer": "①",
-    "solution": "정삼각형의 넓이는 $\\dfrac{\\sqrt3}{4}\\cdot16^2=64\\sqrt3$이다. 원의 반지름은 $4\\sqrt3$이므로 넓이는 $\\pi(4\\sqrt3)^2=48\\pi$이다. 그림에서 삼각형 안에 포함되는 원의 부분은 중심각 $120^\\circ$인 부채꼴로, 넓이는 $\\dfrac{120}{360}\\cdot48\\pi=16\\pi$이다.\n따라서 색칠한 넓이는 $64\\sqrt3-16\\pi$이다. 정답은 ①이다.",
+    "answer": "④",
+    "solution": "정삼각형의 넓이는 $\\dfrac{\\sqrt3}{4}\\cdot16^2=64\\sqrt3$이다. 변 $AB$, $AC$가 원과 $A$ 외에 만나는 점을 각각 $P$, $Q$라 하자. $AO$는 $\\angle A=60^\\circ$를 이등분하므로 $\\angle OAP=30^\\circ$이다. 따라서 원의 중심 $O$에서 현 $AP$까지의 거리는 $4\\sqrt3\\sin30^\\circ=2\\sqrt3$이고, $AP=2\\sqrt{(4\\sqrt3)^2-(2\\sqrt3)^2}=12$이다. $\\triangle OAP$는 $OA=OP$인 이등변삼각형이므로 $\\angle OPA=30^\\circ$, $\\angle AOP=120^\\circ$이다. 같은 방법으로 $\\angle AOQ=120^\\circ$이므로 $\\angle POQ=360^\\circ-120^\\circ-120^\\circ=120^\\circ$이다.\n삼각형 안에 들어 있는 원의 부분은 부채꼴 $POQ$와 $\\triangle OAP$, $\\triangle OAQ$의 합이다. 부채꼴 $POQ$의 넓이는 $\\dfrac{120}{360}\\cdot\\pi(4\\sqrt3)^2=16\\pi$이고, $\\triangle OAP=\\dfrac12\\cdot12\\cdot2\\sqrt3=12\\sqrt3$, $\\triangle OAQ=12\\sqrt3$이다.\n따라서 색칠한 넓이는 $64\\sqrt3-(16\\pi+24\\sqrt3)=40\\sqrt3-16\\pi$이다. 정답은 ④이다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -806,7 +866,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q19.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q19.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 16인 정삼각형 ABC와 지름 AH인 원. 삼각형 안의 원 부분은 중심각 120°인 부채꼴 POQ(파랑, 16π)와 연 모양 OPAQ(초록, 24√3)로 나뉘고, 삼각형에서 원을 뺀 아래 양쪽 날개(주황)가 색칠한 부분이다.",
+    "solutionImageCaption": "색칠한 부분 = 64√3 − (16π + 24√3) = 40√3 − 16π이므로 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -848,7 +912,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q20.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q20.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠A=90°인 직각삼각형 ABC의 내접원과 접점 D, E, F. AD=AF=3, BD=BE=5, CE=CF=12, 반지름 3이고, 선분 OA=3√2, OB=√34, OC=3√17이 O에서 세 꼭짓점으로 그려져 있다(OA는 아래에 따로 확대). D와 F에서 반지름과 접선이 직각이다.",
+    "solutionImageCaption": "접선의 길이로 AD=AF=3, BD=BE=5, CE=CF=12, r=3이고 직각삼각형에서 OA=3√2, OB=√34, OC=3√17이므로 합은 3√2+√34+3√17, 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -884,7 +952,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q21.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q21.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위: 정삼각형 종이를 EF로 접은 그림(AF=DF=√3/2, ∠AEF=∠FED=45°, F에서 AE에 내린 수선의 발 G). 오른쪽 위: F에서 ∠AFE=∠EFD=75°. 아래: G에서 직각인 직각삼각형 EGF, EG=FG=3/4 cm.",
+    "solutionImageCaption": "접힌 삼각형에서 AF=DF=√3/2, ∠AFE=75°, ∠AEF=45°, FG=EG=3/4이므로 EF=3√2/4 cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -920,7 +992,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q22.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q22.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 지면 위의 A, D, B와 기울어진 사탑 BC. C에서 내린 수선의 발 D에서 직각이고, AD=CD(파랑), ∠A=45°, ∠CBD=86°, AB=60m이다.",
+    "solutionImageCaption": "AD=CD이고 tan86°=14로 CD=14BD, BD=60−CD이므로 사탑의 높이는 56 m이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -956,7 +1032,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q23.svg"
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q23.svg",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: △ABC(파랑으로 칠함)와 △ADE가 꼭짓점 A에서 같은 각 θ를 끼고 있다. 변의 비는 AB:AD=1:3, AC:AE=2:1이다.",
+    "solutionImageCaption": "공통각 θ를 끼고 AD/AB=3, AE/AC=1/2이므로 △ADE=△ABC×3/2=42√5이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -992,6 +1072,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q24.svg",
-    "conceptClusterKey": "CIRCLE_LINE"
+    "conceptClusterKey": "CIRCLE_LINE",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: (1) 복원한 원 안의 두 현과 각 현의 수직이등분선(점선)이 원의 중심 O에서 만난다. (2) OA=OB(파랑), OM은 공통, ∠OMA=∠OMB=90°, AM=BM(주황)으로 △OMA와 △OMB가 합동이다.",
+    "solutionImageCaption": "두 현의 수직이등분선의 교점이 원의 중심이고, OA=OB, OM 공통, ∠OMA=∠OMB=90°이므로 RHS 합동이어서 AM=BM이다.",
+    "solutionImageSize": "medium"
   }
 ];

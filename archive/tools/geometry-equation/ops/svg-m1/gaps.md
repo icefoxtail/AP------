@@ -227,6 +227,17 @@
 - 구현됨(C1): 5색 팔레트(`production/palette.mjs` = `visual_engine/palette.py`, 입체 `HIGHLIGHT_FILLS`와 같은 칠·투명도), `regions[].fill`·`graphPlan.regions[].fill`에 색 이름, `planeMarks.equalAreas`(넓이를 경계에서 정확히 계산해 대조), `angles[].color`·`equalAngles`, `segmentColors`, `equalLengths[].color`·`parallels[].color`(선분과 눈금·화살표). 가이드 3-9-색절.
 - 남은 것: `overlays`의 원·사분면·`circleRegions` 칠과 `composite` 패널 사이의 색 일치 검사(패널마다 plan에 쓰고 같은 색 = 같은 대응은 작성자가 지킨다), `parallels.lines`(직선 위 화살표)의 색, 도형 callout 복사본 안의 표식 색, 흑백 인쇄용 무늬(화면이 우선이라 경고만).
 
+
+### 26 삼산중 중3에서 나온 공백 (2026-11-01, 우회해서 게시함)
+- callout이 숨긴 점을 쓸 수 없다(`CALLOUT_POINT_HIDDEN`): 짧은 0.5m 치수를 끌어내지 못했다.
+- 5° 미만 각은 `ANGLE_ARC_TOO_SMALL`로 표시하지 못한다.
+- 일부가 깨진 원(호 조각만 남은 원)을 그릴 수 없다(q24 수막새는 온전한 원으로 대신).
+- 입체 높이 치수에 `side`를 줄 수 없다. 기존 입체 프라임 글자(V′)가 사선으로 렌더된다.
+- 치수선 색(`planeMarks.dimensions[].color`)이 없다: 같은 길이를 색 치수선으로 묶지 못하고 선분 색으로만 묶었다(q17 AD=AF).
+- 한 원에 걸친 현의 치수선은 `DIMENSION_CROSSES_STROKE`로 막힌다(q15 CD=4√7 생략, 같은 색으로 AB와 대응).
+- 넓이가 같은 영역 여러 개에 각각 넓이 라벨(예: "12√3" 넷)을 붙이면 `LAYOUT_INVENTORY_INCOMPLETE`(q12, 글줄로 대신).
+- 끌어내기(callout)가 있을 때 자유 텍스트 라벨이 점선 지시선을 피하지 못한다(q17은 지시선을 끄고 점 이름으로만 대응).
+
 ## 참고
 - 원장 OPEN 시험지 14개 중 엔진 대기 사유(E19·E26c·E26d·E28d·E29·E30 등)는 현재 가이드에 해당 필드가 있어 대부분 해결로 본다(재 plan 대상). 진짜 남은 것은 G8(속 빈 원기둥·원뿔대 전개도)과 위 표의 항목이다.
 - 원장 OPEN 중 내용 문제(OPEN_CONTENT 25_왕의중 기말 q19)·원본 그림 없음(26_왕의중 2학기 중간 8문항 등)·#777 골든 SHA 고정(25_매산여고·25_효천고 고1)은 엔진 부족이 아니라 제외했다.
