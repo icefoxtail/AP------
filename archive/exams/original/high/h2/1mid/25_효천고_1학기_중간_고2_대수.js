@@ -9,7 +9,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -46,7 +46,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -83,7 +83,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -119,7 +119,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -156,7 +156,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -198,7 +198,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -235,7 +235,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -277,7 +277,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -314,7 +314,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -356,7 +356,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-03",
     "standardUnit": "로그함수",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -393,7 +393,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-02",
     "standardUnit": "지수함수",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -435,7 +435,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -471,7 +471,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -508,7 +508,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -545,7 +545,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -582,7 +582,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "fullwidth",
     "tags": [
       "객관식",
@@ -624,7 +624,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -660,7 +660,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-01",
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -697,7 +697,7 @@ window.questionBank = [
     "standardUnitKey": "H21-M1-01",
     "standardUnit": "지수함수와 로그함수",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -759,7 +759,7 @@ window.questionBank = [
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
     "layoutTag": "fullwidth",
-    "questionType": "",
+    "questionType": "객관식",
     "tags": [
       "객관식",
       "복소수",
