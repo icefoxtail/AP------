@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 380" width="460" height="380" role="img" aria-labelledby="q06-title q06-desc">
+  <title id="q06-title">정육면체 ABCD-EFGH의 모서리와 면의 위치 관계</title>
+  <desc id="q06-desc">정육면체 ABCD-EFGH의 8개 꼭짓점과 12개 모서리가 표시된 입체도형 다이어그램</desc>
+  <rect width="460" height="380" fill="#ffffff"/>
+  <!-- 윗면 ABCD: A=(110, 100), B=(270, 100), C=(350, 50), D=(190, 50) -->
+  <!-- 아랫면 EFGH: E=(110, 260), F=(270, 260), G=(350, 210), H=(190, 210) -->
+  <!-- 뒤쪽 숨은 모서리 (점선): D-H, D-A, D-C, H-E, H-G -->
+  <line x1="190" y1="50" x2="190" y2="210" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/>
+  <line x1="190" y1="50" x2="110" y2="100" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/>
+  <line x1="190" y1="50" x2="350" y2="50" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/>
+  <line x1="190" y1="210" x2="110" y2="260" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/>
+  <line x1="190" y1="210" x2="350" y2="210" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/>
+  <!-- 앞쪽 보이는 모서리 (실선) -->
+  <!-- 앞면 ABFE -->
+  <polygon points="110,100 270,100 270,260 110,260" fill="#f8fafc" fill-opacity="0.6" stroke="#1e293b" stroke-width="2.5"/>
+  <!-- 오른쪽면 BCGF -->
+  <polygon points="270,100 350,50 350,210 270,260" fill="#f1f5f9" fill-opacity="0.6" stroke="#1e293b" stroke-width="2.5"/>
+  <!-- 윗면 보이는 선 AB, BC -->
+  <line x1="110" y1="100" x2="270" y2="100" stroke="#1e293b" stroke-width="2.5"/>
+  <line x1="270" y1="100" x2="350" y2="50" stroke="#1e293b" stroke-width="2.5"/>
+  <!-- 꼭짓점 점들 -->
+  <circle cx="110" cy="100" r="4.5" fill="#1e293b"/>
+  <circle cx="270" cy="100" r="4.5" fill="#1e293b"/>
+  <circle cx="350" cy="50" r="4.5" fill="#1e293b"/>
+  <circle cx="190" cy="50" r="4.5" fill="#94a3b8"/>
+  <circle cx="110" cy="260" r="4.5" fill="#1e293b"/>
+  <circle cx="270" cy="260" r="4.5" fill="#1e293b"/>
+  <circle cx="350" cy="210" r="4.5" fill="#1e293b"/>
+  <circle cx="190" cy="210" r="4.5" fill="#94a3b8"/>
+  <!-- 꼭짓점 문자 -->
+  <g font-family="sans-serif" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">
+    <text x="95" y="95">A</text>
+    <text x="285" y="95">B</text>
+    <text x="365" y="45">C</text>
+    <text x="180" y="45" fill="#64748b">D</text>
+    <text x="95" y="280">E</text>
+    <text x="285" y="280">F</text>
+    <text x="365" y="225">G</text>
+    <text x="180" y="225" fill="#64748b">H</text>
+  </g>
+</svg>

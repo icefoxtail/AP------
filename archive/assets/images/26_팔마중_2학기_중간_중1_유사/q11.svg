@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 280" width="500" height="280" role="img" aria-labelledby="q11-title q11-desc">
+  <title id="q11-title">삼각형 ABC의 작도: 두 변과 그 끼인각</title>
+  <desc id="q11-desc">선분 AB, 선분 AC와 끼인각 A가 주어졌을 때 삼각형 ABC를 작도하는 다이어그램</desc>
+  <rect width="500" height="280" fill="#ffffff"/>
+  <!-- 삼각형 ABC: A=(100, 200), B=(380, 200), C=(220, 60) -->
+  <polygon points="100,200 380,200 220,60" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5"/>
+  <!-- 각 A 호 -->
+  <path d="M 145,200 A 45,45 0 0,0 131,160" fill="none" stroke="#dc2626" stroke-width="2"/>
+  <!-- 꼭짓점 점 -->
+  <circle cx="100" cy="200" r="4.5" fill="#1e293b"/>
+  <circle cx="380" cy="200" r="4.5" fill="#1e293b"/>
+  <circle cx="220" cy="60" r="4.5" fill="#1e293b"/>
+  <!-- 레이블 -->
+  <g font-family="sans-serif" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">
+    <text x="80" y="215">A</text>
+    <text x="395" y="215">B</text>
+    <text x="220" y="45">C</text>
+  </g>
+  <g font-family="sans-serif" font-size="14" fill="#475569" text-anchor="middle">
+    <text x="240" y="225">선분 AB</text>
+    <text x="140" y="115">선분 AC</text>
+    <text x="155" y="185" fill="#dc2626">∠A</text>
+  </g>
+</svg>

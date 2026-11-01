@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 340" width="520" height="340" role="img" aria-labelledby="q10-title q10-desc">
+  <title id="q10-title">평행선의 작도 순서와 기호</title>
+  <desc id="q10-desc">점 P를 지나고 직선 l에 평행한 직선을 작도하는 과정과 ㉠, ㉡, ㉢, ㉣, ㉤ 표시 다이어그램</desc>
+  <rect width="520" height="340" fill="#ffffff"/>
+  <!-- 아래 직선 l -->
+  <line x1="50" y1="260" x2="470" y2="260" stroke="#1e293b" stroke-width="2.5"/>
+  <!-- 작도선 ㉠: P와 Q를 잇는 직선 -->
+  <line x1="120" y1="300" x2="320" y2="60" stroke="#475569" stroke-width="2"/>
+  <!-- 작도선 ㉤: 점 P, D를 지나는 평행선 -->
+  <line x1="80" y1="120" x2="470" y2="120" stroke="#2563eb" stroke-width="2.5"/>
+  <!-- 점 Q (153, 260), 점 P (270, 120) -->
+  <circle cx="153" cy="260" r="4.5" fill="#1e293b"/>
+  <circle cx="270" cy="120" r="4.5" fill="#2563eb"/>
+  <!-- 호 ㉡: 중심 Q, A=(223, 260), B=(200, 204) -->
+  <path d="M 223,260 A 70,70 0 0,0 188,198" fill="none" stroke="#dc2626" stroke-width="2"/>
+  <circle cx="223" cy="260" r="3.5" fill="#dc2626"/>
+  <circle cx="199" cy="205" r="3.5" fill="#dc2626"/>
+  <!-- 호 ㉢: 중심 P, C=(316, 65) -->
+  <path d="M 340,120 A 70,70 0 0,0 305,58" fill="none" stroke="#16a34a" stroke-width="2"/>
+  <circle cx="316" cy="65" r="3.5" fill="#16a34a"/>
+  <!-- 호 ㉣/㉤: 교점 D=(340, 120) -->
+  <path d="M 330,100 A 60,60 0 0,1 350,140" fill="none" stroke="#d97706" stroke-width="2"/>
+  <circle cx="340" cy="120" r="3.5" fill="#d97706"/>
+  <!-- 점 및 기호 레이블 -->
+  <g font-family="sans-serif" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">
+    <text x="140" y="285">Q</text>
+    <text x="255" y="110" fill="#2563eb">P</text>
+    <text x="235" y="280">A</text>
+    <text x="180" y="210">B</text>
+    <text x="335" y="65">C</text>
+    <text x="355" y="115">D</text>
+    <text x="480" y="265">l</text>
+  </g>
+  <!-- 작도 단계 번호 태그 -->
+  <g font-family="sans-serif" font-size="15" font-weight="bold" fill="#dc2626" text-anchor="middle">
+    <text x="195" y="145">㉠</text>
+    <text x="235" y="225">㉡</text>
+    <text x="350" y="85" fill="#16a34a">㉢</text>
+    <text x="200" y="240" fill="#d97706">㉣</text>
+    <text x="420" y="110" fill="#2563eb">㉤</text>
+  </g>
+</svg>
