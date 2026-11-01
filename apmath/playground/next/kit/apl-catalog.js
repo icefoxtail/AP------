@@ -30,6 +30,28 @@ window.APLab.catalog = {
    "glyph": "<path d=\"M10 52 L64 18\"/><circle cx=\"16\" cy=\"48\" r=\"4\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"58\" cy=\"22\" r=\"4\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M38 58 L70 58\"/>"
   },
   {
+   "id": "g7-parallel",
+   "course": "g7",
+   "unit": "기본 도형",
+   "strand": "shape",
+   "order": 2,
+   "title": "평행선의 성질",
+   "short": "평행선",
+   "summary": "동위각·엇각의 위치와 평행 조건, 평행선 사이의 꺾인 선, 정다각형이 낀 평행선, 종이 접기에서 생기는 각을 도형을 직접 조절하며 확인하고 문제로 연습합니다.",
+   "keywords": "평행선 동위각 엇각 평행 조건 꺾인 선 보조선 정삼각형 정다각형 종이 접기 종이테이프 귀퉁이 접기 위치 관계 중1",
+   "badge": "탐구",
+   "scenes": [
+    "동위각·엇각",
+    "꺾인 선",
+    "정다각형 결합",
+    "종이 접기"
+   ],
+   "legacy": "labs/g7/points-lines.html",
+   "next": "next/labs/g7-parallel.html",
+   "glyph": "<path d=\"M8 24 H72 M8 54 H72\"/><path d=\"M30 10 L50 68\"/><path d=\"M39 24 A9 9 0 0 1 46 28\" fill=\"currentColor\" fill-opacity=\".2\"/><path d=\"M41 54 A9 9 0 0 1 48 58\" fill=\"currentColor\" fill-opacity=\".2\"/>",
+   "sceneTotal": 12
+  },
+  {
    "id": "g7-spatial",
    "course": "g7",
    "unit": "기본 도형",
@@ -1061,6 +1083,7 @@ window.APLab.catalog = {
    "hue": "teal",
    "stations": [
     "g7-points-lines",
+    "g7-parallel",
     "g7-polygons",
     "g8-triangles",
     "g8-quadrilaterals",
