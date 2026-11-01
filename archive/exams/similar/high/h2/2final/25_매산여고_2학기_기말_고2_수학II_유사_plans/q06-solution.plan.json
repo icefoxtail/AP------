@@ -1,0 +1,79 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$(x-1)^2(x+3)=0$이다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-2",
+      "1",
+      "1"
+    ],
+    "domain": [
+      -3.6,
+      1.9
+    ],
+    "viewport": [
+      -4,
+      2.5,
+      -18,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "3",
+          "intercept": "-3"
+        }
+      ],
+      "points": [
+        {
+          "id": "B",
+          "curveX": "-3"
+        }
+      ]
+    }
+  },
+  "caption": "곡선 y=x³+x²-2x와 점 (1,0)에서의 접선 y=3x-3은 x=1에서 접하고 x=-3에서 다시 만난다.",
+  "sourceConditions": [
+    {
+      "id": "q6-c1",
+      "condition": "접선 y=3x-3은 점 (1,0)에서 접한다",
+      "mappedTo": "graphPlan.overlays.lines"
+    },
+    {
+      "id": "q6-c2",
+      "condition": "곡선과 접선은 x=-3, x=1에서 만난다",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선과 접선의 접점 x=1과 다른 교점 x=-3의 위치, 곡선이 접선 위쪽에 있는 구간."
+  ],
+  "assetPath": "assets/images/25_매산여고_2학기_기말_고2_수학II_유사/q6-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q06-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q06-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q06-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
+      "ordinal": 6,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 graphPlan에서만 결정된다."
+    }
+  }
+}

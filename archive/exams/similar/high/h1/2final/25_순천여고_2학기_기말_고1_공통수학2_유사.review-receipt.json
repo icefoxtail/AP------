@@ -1,0 +1,289 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "25_순천여고_2학기_기말_고1_공통수학2_유사",
+  "candidateJsPath": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사.meta-q01-q21.json",
+  "candidateGitBlobSha1": "4e67aea5a4f6844a9fef3a898903b9e8e6b0d097",
+  "reviewTimestamp": "2026-11-01T00:00:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "SIGNED_OFF_PASS_WITH_VISUAL_DEBT",
+  "blindFirstPass": {
+    "totalSolved": 21,
+    "answerMatches": 21,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "scratchpad/rev_sunchun/freeze_final.json (blind.py, blind2.py)",
+    "method": "Reviewer did not read the generator's answers/solutions before solving. Student-visible fields (content/choices) were dumped without answer/solution; figures of Q9/Q15/Q18 were rendered to PNG and read; all items solved with sympy/python (Q20 by brute force over the integer box), frozen, then compared to stored answers.",
+    "disclosure": "Reviewer had read the generator's brief and the review brief naming uncertain items (Q7 form change, Q17 UNSUPPORTED, Q18 anchor, PT/TPL nulls, unit changes) before solving, but not any answer or solution text. First freeze json had two choice-letter mapping slips (Q2, Q8) that were corrected after comparing to the choice order; the frozen math values were unchanged.",
+    "frozenAnswers": {
+      "1": "③",
+      "2": "④",
+      "3": "⑤",
+      "4": "②",
+      "5": "①",
+      "6": "③",
+      "7": "①",
+      "8": "⑤",
+      "9": "②",
+      "10": "①",
+      "11": "④",
+      "12": "⑤",
+      "13": "③",
+      "14": "②",
+      "15": "①",
+      "16": "③",
+      "17": "④",
+      "18": "②",
+      "19": "7",
+      "20": "17 ordered triples (1,4,-3)...(2,10,-4)",
+      "21": "(7+√5)/2"
+    }
+  },
+  "questionReviews": [
+    {
+      "qid": 1,
+      "blindAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "~p: 2x-9<=0 -> x<=4.5, natural 1..4, sum 10"
+    },
+    {
+      "qid": 2,
+      "blindAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "ㄱ sqrt2*sqrt8=4 rational F; ㄴ (2+3i)(2-3i)=13 T; ㄷ (x-3)^2-2<-1 solvable T; ㄹ n=2 gives -2 F -> ㄴ,ㄷ"
+    },
+    {
+      "qid": 3,
+      "blindAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "n=3k+1,3k+2; (3k+2)^2=3(3k^2+4k+1)+1 so 3k^2+4k+2 wrong -> ⑤"
+    },
+    {
+      "qid": 4,
+      "blindAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "p: x=y=0; q: xy<=0; r: x=y. ㄱ T; ㄴ r->q x=y=1 F; ㄷ x=y=0 F; ㄹ T -> ㄱ,ㄹ"
+    },
+    {
+      "qid": 5,
+      "blindAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "(가) P⊂Q, (나) Q⊂R^c so P⊂R^c i.e. r->~p; others refuted by U={1,2,3,4},P={1},Q={1,2},R={3}"
+    },
+    {
+      "qid": 6,
+      "blindAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "s=x+2y: s+25/s>=10 at s=5, 2(y-1/2)^2-1/2 min at y=1/2; x=4; gamma=9.5; sum 14"
+    },
+    {
+      "qid": 7,
+      "blindAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "① increasing, ranges [1,inf) and (-inf,1) -> bijection; ③ gap [-2,1); ② domain; ④ f(0)=f(sqrt3); ⑤ constant"
+    },
+    {
+      "qid": 8,
+      "blindAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "-2a+7=-3 -> a=5"
+    },
+    {
+      "qid": 9,
+      "blindAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "read f:1->4,2->3,3->1,4->2; g:1->3,2->2,3->4,4->1; (g^-1 f^-1)^-1=f∘g -> f(g(2))=3; f∘(g∘f)^-1=g^-1 -> g^-1(1)=4; total 7 (also computed by permutation script)"
+    },
+    {
+      "qid": 10,
+      "blindAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "f∘f=4x-3; value 9; inverse of 5 is 2; total 11"
+    },
+    {
+      "qid": 11,
+      "blindAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "f=(x-2)^2-4; need a>=2 and f(a)=3a-10 -> a=2,5; sum 7"
+    },
+    {
+      "qid": 12,
+      "blindAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "y=2+(b-2a)/(x+a); center (-a,2)=(-4,c) -> a=4,c=2; through (2,0): b=-4; a-b+c=10"
+    },
+    {
+      "qid": 13,
+      "blindAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "y=1+4/(x-3); need numerator constant 4: ㄴ (4), ㄹ 5+4/(x+1) (4); ㄱ 2, ㄷ -4 -> ㄴ,ㄹ"
+    },
+    {
+      "qid": 14,
+      "blindAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "involution condition a+(-5)=0 -> a=5 (nondegenerate det -19)"
+    },
+    {
+      "qid": 15,
+      "blindAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "x^2-12x+k=0, area=6|x1-x2|=40 -> (x1-x2)^2=400/9=144-4k -> k=224/9"
+    },
+    {
+      "qid": 16,
+      "blindAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "f(f(x))=x (sympy), so x=x^2+x-1 -> x=±1, x=1 excluded -> sum -1"
+    },
+    {
+      "qid": 17,
+      "blindAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "t=sqrt(2x+4): t^2-2t+2k-4=0 two nonneg distinct roots -> 2<=k<5/2"
+    },
+    {
+      "qid": 18,
+      "blindAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "f=1-x on [0,1], 2x-2 on [1,2]; f(u)=u -> u=1/2 or 2; x=1/2,5/4,2; sum 15/4"
+    },
+    {
+      "qid": 19,
+      "blindAnswer": "7",
+      "blindMatch": true,
+      "blindDerivation": "f bijective R->R (ranges (-inf,3] and (3,inf)); g=f^-1; a=f(f(3))=f(-1)=7"
+    },
+    {
+      "qid": 20,
+      "blindAnswer": "17 ordered triples (1,4,-3)...(2,10,-4)",
+      "blindMatch": true,
+      "blindDerivation": "a>=1, b>=4a, f(-4)>=-3 and f(0)<0 -> -3-sqrt(b-4a)<=c<-sqrt b; brute force over [-10,10]^3 gives 17 triples (sympy/python)"
+    },
+    {
+      "qid": 21,
+      "blindAnswer": "(7+√5)/2",
+      "blindMatch": true,
+      "blindDerivation": "f^-1(x)=1+sqrt(x-2); sqrt(x-2)=x-3, x>=3 -> x^2-7x+11=0 -> (7+√5)/2"
+    }
+  ],
+  "originalComparison": {
+    "questionCount": "21 vs 21",
+    "pointsSum": "100 vs 100 (floating 100.00000000000001 both)",
+    "perQuestionPoints": "all equal",
+    "questionTypes": "all equal (18 MC + 3 서술형)",
+    "levels": "equal except Q1 중->하 and Q6 중->상 (generator independent judgement; structure same as original; non-blocking)",
+    "answerValueCollisionWithOriginal": "none (Q1/Q11/Q15 share only the choice letter, values differ)",
+    "notes": [
+      "Q7 original = choose the bijection graph among 5 drawn graphs; similar = choose the bijection among 5 formulas. The decisive skill (check each piece is increasing/one-to-one and the ranges of the pieces tile R, spot domain/constant/cubic traps) is the same; five-graph figure is not supported by the engine. Accepted.",
+      "Q6 original sat under 함수 (misclassified): the problem is AM-GM + completing the square (RPM-250 절대부등식 증명, 공통수학2 명제 단원). Unit moved to H22-C2-06 is valid; structure/difficulty identical to original (2x+4y^2+9/(2x+4y)).",
+      "Q14 and Q16 original units were 유리함수; the decisive concepts are 역함수 (involution y=(ax-3)/(2x-5), RPM-255) and 합성함수 f(f(x)) with domain exclusion (RPM-254) which are canonical 함수 단원 records. Unit moves valid.",
+      "Q16 keeps the original trap: f∘f=id, equation reduces to x^2=1 and x=1 is outside the domain.",
+      "Q20 original quadrants 1,2,3 -> similar 1,3,4 with the same X->Y 'into' reading; 17 triples (original 14)."
+    ]
+  },
+  "answerDistribution": {
+    "①": 4,
+    "②": 4,
+    "③": 4,
+    "④": 3,
+    "⑤": 3,
+    "note": "MC 18 items, max-min=1"
+  },
+  "mathReview": "All 21 solutions re-derived independently and compared to the stored solutions line by line; intermediate claims (Q4 q<=>xy<=0, Q5 counterexample sets, Q9 permutation reading, Q11 a>=2 and f(a)=3a-10, Q16 domain exclusion, Q17 nonneg-root conditions, Q18 piecewise and domain check, Q19 bijectivity of f, Q20 case counts per (a,b), Q21 extraneous root) correct. Curriculum 2022 공통수학2 (명제, 함수, 유리·무리함수) respected. KaTeX: 720 formula segments rendered with throwOnError, 0 errors, no raw LaTeX outside $.",
+  "reviewerEdits": [
+    {
+      "qid": 20,
+      "file": "js",
+      "change": "Solution: the final answer line listed 17 ordered triples inside ONE $...$ math span; in the real 해설지 (engine.html mode=sol) this raised SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH:solution-block:20:primary and the whole 해설지 failed to render ('시험지 렌더링 중 오류'). Split into four $...$ lines (5/5/4/3 triples) like the original. 해설지 then renders; answer values unchanged."
+    },
+    {
+      "qid": 9,
+      "file": "plan",
+      "change": "q09-problem.plan.json lacked sourceQuote, assetPath and engineEvidence; added (sourceQuote '두 함수 $f, g$가 그림과 같을 때', assetPath, engine_evidence result/state/svg that already existed and are byte-identical to the attached SVG)."
+    },
+    {
+      "qid": "all",
+      "file": "meta",
+      "change": "expectedSourceBlobSha1 recomputed for the final JS; approval.evidenceRefs points to this receipt."
+    }
+  ],
+  "metaReview": {
+    "coverage": {
+      "items": 21,
+      "requiredFieldsFilled": "all 21 items have standard course/unit/subUnit, conceptCluster, RPM L1-L4 + recordId (CROSSWALK_RECORD), crossConceptKeys, integrationPattern, level, difficultyBucket, sourceQid, variationType, provenance; problemTypeKey/templateKey 18/21; conditionKeys 12/21 (9 are [] with a recorded reason 'no special condition')",
+      "canonicalRpmL4Items": 21,
+      "extensionL4Items": 0,
+      "newExtensionKeys": 0,
+      "registryChangesEmpty": true,
+      "script": "scratchpad/rev_sunchun/metacheck.py",
+      "allCrossConceptKeysExistInCanonical": true,
+      "allConditionKeysExistInCanonical": true,
+      "allPtTplRegisteredInCompiledTaxonomyAndTemplateBelongsToPT": true,
+      "rpmRecordIdsExistAndL1toL4MatchHigh1Crosswalk": true,
+      "unitKeysMatchCrosswalkRecord": true,
+      "ptTplEqualCrosswalkRecordOrListedCandidate": true,
+      "jsMetaFieldParity": "0 differences over level/difficulty/unit/PT/TPL/CC/COND/RPM",
+      "distinctCrossConceptKeys": 39,
+      "distinctConditionKeys": 9,
+      "aliasProposals": 0,
+      "evidenceDebt": 3
+    },
+    "bindingPending": {
+      "items": [
+        3,
+        13,
+        15
+      ],
+      "finding": "HONEST RECORD, NOT A MISSING-FIELD DEFECT. Ran the official resolver (rpm-active-resolver.mjs buildResolverDecisionEvidence) for H1-RPM-245/260/265: Q3 -> META_ONLY_COMPATIBILITY_PENDING (FAMILY_TEMPLATE_SELECTION_PENDING, crosswalk FAMILY_BINDING_GAP, bindingStatus MISSING); Q13/Q15 -> PROJECTION_BINDING_PENDING (EXACT_ACTIVE_BINDING_PENDING, DIRECT_BINDING_GAP, bindingStatus MISSING). Resolver returns empty PT/TPL, and the pipeline (prepare-target-registration-candidate META_BINDING_PENDING admission) explicitly supports problemTypeKey/templateKey null with a reason.",
+      "newExtNeeded": "NO. The canonical keys already exist in the compiled taxonomy (PT_CONTRAPOSITIVE_PROOF/TPL_CONTRAPOSITIVE_DIVISIBILITY_PROOF, PT_FUNCTION_GRAPH_TRANSFORM/TPL_FUNCTION_GRAPH_TRANSLATION, PT_FUNCTION_GRAPH_INTERSECTION/TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS) and are the original exam's own values; only the 2022 curriculum binding rows are missing in the crosswalk. Creating EXT-PT/TPL would duplicate canonical meaning; the repair is a canonical binding row (out of this task's remit, canonical registry is read-only here).",
+      "evidenceDebt": "3 items (Q3, Q13, Q15) carry EVIDENCE_DEBT on PT/TPL until the 2022 bindings H1-RPM-245/260/265 are repaired."
+    },
+    "unitChanges": {
+      "Q6": "valid (AM-GM proof, H22-C2-06)",
+      "Q14": "valid (역함수, H22-C2-07-FUNCTION_INVERSE)",
+      "Q16": "valid (합성함수, H22-C2-07-FUNCTION_COMPOSITION)"
+    },
+    "notes": [
+      "Q18 uses RPM-253 합성함수 계산 + PT_COMPOSITION_EVALUATION; only two 합성함수 records exist in the crosswalk, 253 is the closer one (original used a legacy non-canonical analysis PT). Accepted.",
+      "Q16 conditionKeys [] (x≠1 domain exclusion has no matching canonical COND key); acceptable."
+    ]
+  },
+  "visualReview": {
+    "plans": "42 plan files valid JSON (21 problem + 21 solution). Active: q09-problem (set-diagram-figure-v1), q15-problem (rational-spike-v1), q18-problem (piecewise-polynomial-spike-v1). All other problem plans EXEMPT with reasons; solution plans EXEMPT except q17-solution UNSUPPORTED.",
+    "rendered": "Rendered q9/q15/q18 SVG to PNG with Chromium and viewed; also engine.html exam mode screenshots (figures present, placed after stem, readable). Figures match the stems: Q9 f:1->4,2->3,3->1,4->2 and g:1->3,2->2,3->4,4->1; Q15 y=k/x with y=-x+12, P,Q,O and triangle shaded; Q18 broken line (0,1),(1,0),(2,2). No answer leakage. 해설지 mode shows problem text without the problem figure by design (same as merged similar exams); Q9/Q15/Q18 solutions restate all values read from the figure, so they are self-contained.",
+    "visualDebt": [
+      "q17-solution UNSUPPORTED (sqrt-affine engine LAYOUT_INVENTORY_INCOMPLETE tick-y-2-label because curve and line meet at (0,2)). Fallback APPROVED by independent reviewer: solution is complete algebraically with explicit boundary checks k=2 and k=5/2; non-blocking improvement.",
+      "q18-problem engine evidence is bound to ordinal 16 (questionUid ...|16) because render-plan capture with the original Q18 (ordinal 18) fails MEASURED_SOLUTION_CHUNK_EXCEEDS_PAGE and the similar JS as sourcePath fails SOURCE_SCOPE. Reviewer reproduced both. The SVG itself is genuine engine output, correct and attached to Q18; the harness ordinal check cannot be satisfied (engine capture limitation).",
+      "q9 SVG (set-diagram engine) has role=img but no <title>/<desc> (engine output; same as merged 23_강남여고 set-diagram SVGs); not hand-edited to keep engine byte binding."
+    ]
+  },
+  "harness": {
+    "command": "node tools/harness/verify_similar_exam.mjs <js path> (release) and --phase=draft",
+    "result": "GATE_FAIL (46 errors in draft phase after reviewer fixes; release adds receipt checks)",
+    "classification": {
+      "toolLimit": "36 'unregistered PT/TPL' errors: harness loads the middle1 taxonomy pack for a high-school stem; verified directly against compiled/taxonomy_registry.json (all registered, every TPL belongs to its PT, equals crosswalk record). Q15 'P/Q/O missing from SVG text labels' and Q9 'X missing': engine SVG text is glyph paths, labels are visible in rendered PNG. Q9 'capability invalid' and 'no actual engine input': harness SUPPORTED_CAPABILITIES/engine-input list does not know set-diagram-figure-v1/diagram. Q9 title/desc: engine set-diagram output.",
+      "visualDebtRecorded": "Q17 UNSUPPORTED (fallback approved), Q18 ordinal anchor mismatch (engine capture limit)",
+      "fixed": "Q9 plan sourceQuote/assetPath/engineEvidence added; expectedSourceBlobSha1 updated",
+      "realContentDefects": "none remaining (Q20 solution overflow fixed)"
+    }
+  },
+  "runtimeCheck": {
+    "engineHtml": "engine.html?data=exams/similar/high/h1/2final/<stem>.js served locally with Chrome (Playwright): exam mode 7 pages, 3 figures loaded (assetBase=off); sol mode 10 pages no apRenderError after the Q20 fix; ans mode renders 21 answers (Q20 wraps, Q21 fraction ok). img.wangjiedu.com images are not reachable in this sandbox and the R2 upload of the new SVGs was not verified."
+  },
+  "structural": {
+    "nodeCheck": "PASS",
+    "questionCount": 21,
+    "pointsSum": 100,
+    "choicesPerMC": 5,
+    "uniqueChoices": true
+  },
+  "NOT_RUN": [
+    "print preview / PDF output",
+    "R2 (img.wangjiedu.com) upload of q9/q15/q18 SVG",
+    "mobile-width render"
+  ],
+  "defects": []
+}
