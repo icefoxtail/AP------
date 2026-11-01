@@ -14,7 +14,12 @@ import { fileURLToPath } from 'node:url';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const base = (process.argv[2] || 'http://127.0.0.1:8765/apmath/playground/next/labs/').replace(/\/?$/, '/');
 const labsDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../labs');
-const pages = fs.readdirSync(labsDir).filter((f) => f.endsWith('.html'));
+// 실험실 무대(window.lab)가 없는 안내 전용 페이지(이전됨)는 검사 대상이 아닙니다. 소스에 무대 틀(APLab 셸)이 없으면 건너뜁니다.
+const pages = fs.readdirSync(labsDir).filter((f) => {
+  if (!f.endsWith('.html')) return false;
+  if (!/apl-shell\.js/.test(fs.readFileSync(path.join(labsDir, f), 'utf8'))) { console.log(`SKIP ${f} (실험실 무대 없음)`); return false; }
+  return true;
+});
 const RUNS = [
   { name: 'PC·칠판', theme: 'board', viewport: { width: 1280, height: 820 } },
   { name: 'PC·종이', theme: 'paper', viewport: { width: 1280, height: 820 } },

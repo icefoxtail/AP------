@@ -325,7 +325,7 @@
       steps: (M) => {
         const th = parGeo(M.px, M.ph, M.al, M.r, M.mode).th;
         return [
-          `점 P를 지나는 직선 PQ를 긋고, 크기가 같은 각을 작도해요. $\\angle AQB$와 같은 크기의 $\\angle ${alt ? 'QPD' : 'CPD'}$를 점 P에 그려요. (${ol('QA')}=${ol('QB')}=${ol('PC')}=${ol('PD')}, ${ol('AB')}=${ol('CD')})`,
+          `점 P를 지나는 직선 PQ를 긋고, 크기가 같은 각을 작도해요. $\\angle AQB$와 같은 크기의 $\\angle ${alt ? 'QPD' : 'CPD'}$를 점 P에 그려요. ($${ol('QA')}=${ol('QB')}=${ol('PC')}=${ol('PD')}$, $${ol('AB')}=${ol('CD')}$)`,
           `작도한 두 ${nameOf(mode)}의 크기가 같아요: $\\angle AQB=\\angle ${alt ? 'QPD' : 'CPD'}=${fmtN(th)}^{\\circ}$`,
           `${nameOf(mode)}의 크기가 같으면 두 직선은 평행해요. 그러므로 $l\\parallel m$ (직선 $PD$)이에요.`
         ];
@@ -423,7 +423,7 @@
     view: (M) => ({
       guide: '아래 <b>칩</b>(㉠~㉥)을 눌러 작도를 한 단계씩 해 보세요. 앞의 일이 끝나야 다음 일을 할 수 있어요. 틀린 칩을 누르면 왜 안 되는지 알려 줘요.',
       alert: M.msg ? { tone: 'warn', text: M.msg.text } : null,
-      readouts: [rd('한 단계', `${M.ord.length} / 6`, 'green'), rd('지금까지의 순서', M.ord.length ? M.ord.map((i) => KL[M.perm.indexOf(i)]).join(' → ') : '아직 없음', 'sky', '', null, true)],
+      readouts: [rd('한 단계', `6개 중 ${M.ord.length}개`, 'green'), rd('지금까지의 순서', M.ord.length ? M.ord.map((i) => KL[M.perm.indexOf(i)]).join(' → ') : '아직 없음', 'sky', '', null, true)],
       rule: '앞의 점·선이 있어야 다음 작도를 할 수 있다',
       notes: notes('점 Q 중심의 원과 점 P 중심의 원은 반지름이 같아요. 두 원은 어느 쪽을 먼저 그려도 되지만, 둘 다 직선 PQ를 먼저 그은 뒤에 해요.', '$\\overline{AB}$를 재면 컴퍼스 벌림이 바뀌어요. 그래서 같은 반지름의 두 원을 모두 그린 뒤에 재요.')
     }),
