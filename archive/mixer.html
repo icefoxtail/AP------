@@ -2066,6 +2066,18 @@ async function toggleIndexCart(qKey) {
     updateCartUI(); refreshFilterResults();
 }
 
+// Exam images come from R2 (archive-asset-base.js), not from the Pages package: inline <img src="assets/images/..."> inside
+// a question's content and the q.image figure both go through the module. Same-origin pages keep the input unchanged.
+function mixerExamHtml(html) {
+    return (typeof APArchiveAssetBase === 'object' && APArchiveAssetBase && typeof APArchiveAssetBase.resolveHtml === 'function')
+        ? APArchiveAssetBase.resolveHtml(html) : html;
+}
+function mixerExamImageTag(image) {
+    const url = typeof resolveExamImageUrl === 'function' ? resolveExamImageUrl(image) : image;
+    const cors = typeof examImageCrossOriginAttr === 'function' ? examImageCrossOriginAttr(url) : '';
+    return `<img src="${url}"${cors} class="q-image">`;
+}
+
 function createQuestionItem(record) {
     const q = record.raw || record;
     const key = record.key || q._qKey;
@@ -2075,7 +2087,7 @@ function createQuestionItem(record) {
     const safeKey = JSON.stringify(key);
     div.innerHTML = `<div class="q-header"><div><div class="q-tag-line"><span class="q-unit-tag">${escapeMixerHtml(record.course || '기타')}</span><span class="q-unit-tag" style="background:#eee; color:#666;">${escapeMixerHtml(record.standardUnit || '미분류')}</span><span class="q-unit-tag" style="background:#f8fafc; color:#475569;">${escapeMixerHtml(q.level || '미')}</span></div><span class="q-num">${escapeMixerHtml(q.id)}번</span><span style="font-size:11px; color:#999; margin-left:10px;">${escapeMixerHtml(record.sourceTitle)}</span></div>
         <button class="btn-add-cart ${isAdded ? 'in' : ''}" onclick='toggleCart(${safeKey})'><i class="fa-solid ${isAdded ? 'fa-check' : 'fa-plus'}"></i>${isAdded ? '담김' : '담기'}</button></div>
-        <div class="q-content">${q.content || ''}</div>${q.image ? `<img src="${typeof resolveExamImageUrl === 'function' ? resolveExamImageUrl(q.image) : q.image}" class="q-image">` : ''}${choicesHTML}`;
+        <div class="q-content">${mixerExamHtml(q.content || '')}</div>${q.image ? mixerExamImageTag(q.image) : ''}${choicesHTML}`;
     return div;
 }
 

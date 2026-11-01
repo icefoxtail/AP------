@@ -36,6 +36,12 @@ export default {async fetch(request, env) {
   external: ["cloudflare:*", "node:*"],
 });
 
+// Exam images live on Cloudflare R2 (https://img.wangjiedu.com/exams/images/<key>), not on the Pages site. The Worker's
+// plain fetch() to that host is answered from the repo's archive/assets/images; every URL it asks for is recorded.
+const r2ImageRequests = [];
+const pagesAssetRequests = [];
+const R2_IMAGE_PREFIX = "/exams/images/";
+
 const mf = new Miniflare({
   modules: true,
   script: bundle.outputFiles[0].text,
@@ -47,9 +53,24 @@ const mf = new Miniflare({
     ARCHIVE2_ENABLED: "true",
     ARCHIVE_PUBLIC_BASE_URL: "https://icefoxtail.github.io/AP------/archive",
   },
+  outboundService: (request) => {
+    const url = new URL(request.url);
+    if (url.origin !== "https://img.wangjiedu.com" || !url.pathname.startsWith(R2_IMAGE_PREFIX))
+      return new Response("Unexpected outbound request " + request.url, { status: 502 });
+    r2ImageRequests.push(request.url);
+    const key = decodeURIComponent(url.pathname.slice(R2_IMAGE_PREFIX.length));
+    const baseDir = path.join(root, "archive/assets/images");
+    const filePath = path.resolve(baseDir, key);
+    if (path.relative(baseDir, filePath).startsWith("..") || !fs.existsSync(filePath))
+      return new Response("Not found", { status: 404 });
+    const ext = path.extname(filePath).toLowerCase();
+    const mime = ext === ".svg" ? "image/svg+xml" : ext === ".png" ? "image/png" : "image/jpeg";
+    return new Response(fs.readFileSync(filePath), { headers: { "Content-Type": mime } });
+  },
   serviceBindings: {
     ARCHIVE2_ASSETS: (request) => {
       const url = new URL(request.url);
+      if (/\/assets\/images\//i.test(decodeURIComponent(url.pathname))) pagesAssetRequests.push(request.url);
       const mounts = [
         ["/AP------/archive/", path.join(root, "archive")],
         ["/AP------/docs/", path.join(root, "docs")],
@@ -352,6 +373,14 @@ try {
   assert.ok(Buffer.from(frozenImage.split(",")[1], "base64").equals(
     fs.readFileSync(path.join(root, "archive", imageFixture.rawQuestion.image)),
   ), "snapshot embeds the source image bytes");
+  assert.ok(r2ImageRequests.length >= 1, "the Worker fetched the saved-paper image from img.wangjiedu.com");
+  assert.equal(
+    r2ImageRequests[0],
+    "https://img.wangjiedu.com/exams/images/" +
+      imageFixture.rawQuestion.image.replace(/^assets\/images\//, "").split("/").map(encodeURIComponent).join("/"),
+    "R2 URL = https://img.wangjiedu.com/exams/images/<encoded key>",
+  );
+  assert.deepEqual(pagesAssetRequests, [], "no exam image is requested from the Pages site any more");
   const retry = await request("archive-saved-papers", "POST", directInput);
   assert.equal(retry.body.idempotent, true);
   assert.equal(retry.body.papers[0].id, directId);
