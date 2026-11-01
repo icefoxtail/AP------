@@ -788,7 +788,7 @@ function resolveAuxPoints(solids,named,vref){
       if(named.has(entry.id))bad('SOLID_NAME_DUPLICATE:'+entry.id);
       const at=entry.at;
       if(!isPlain(at))bad('SOLID_POINT_AT_INVALID');
-      const kinds=['base','edge','foot','divide','midpoint','centroid','footOnLine'].filter(k=>at[k]!==undefined);
+      const kinds=['base','edge','foot','divide','midpoint','centroid','footOnLine','projection'].filter(k=>at[k]!==undefined);
       if(kinds.length!==1)bad('SOLID_POINT_AT_INVALID');
       let p;
       if(kinds[0]==='base'){
@@ -847,7 +847,7 @@ function resolveAuxPoints(solids,named,vref){
         onlyKeys(at,['centroid'],'SOLID_POINT_AT_INVALID');
         const [A,B,C]=places(at.centroid,3);
         p=mulv(add(add(A,B),C),1/3);
-      }else{
+      }else if(kinds[0]==='footOnLine'){
         // G4a: the foot of the perpendicular from a point onto the line through two points: any named points of this solid (a midpoint, the end of an earlier segment)
         onlyKeys(at,['footOnLine'],'SOLID_POINT_AT_INVALID');
         const f=at.footOnLine;
@@ -856,6 +856,17 @@ function resolveAuxPoints(solids,named,vref){
         const P=place(f.from),[A,B]=places(f.line,2),d=sub(B,A);
         if(!(dot(d,d)>1e-12))bad('SOLID_AUX_FOOT_DEGENERATE');
         p=add(A,mulv(d,dot(sub(P,A),d)/dot(d,d)));
+        if(len(sub(p,P))<1e-6)bad('SOLID_AUX_FOOT_DEGENERATE');
+      }else{
+        // G4a: the foot of the perpendicular from a point onto the plane through three points = the orthogonal projection of the point on that plane
+        onlyKeys(at,['projection'],'SOLID_POINT_AT_INVALID');
+        const f=at.projection;
+        if(!isPlain(f))bad('SOLID_POINT_AT_INVALID');
+        onlyKeys(f,['from','plane'],'SOLID_POINT_AT_INVALID');
+        const P=place(f.from),[A,B,M]=places(f.plane,3),n=cross(sub(B,A),sub(M,A));
+        if(!(len(n)>1e-9))bad('SOLID_PROJECTION_PLANE_DEGENERATE');
+        const u=unit(n);
+        p=sub(P,mulv(u,dot(sub(P,A),u)));
         if(len(sub(p,P))<1e-6)bad('SOLID_AUX_FOOT_DEGENERATE');
       }
       later.delete(entry.id);

@@ -1115,7 +1115,7 @@ def aux_point_places(specs, solid, named):
         if entry['id'] in named or entry['id'] in placed: raise ValueError('SOLID_NAME_DUPLICATE:' + entry['id'])
         at = entry.get('at')
         if not isinstance(at, dict): raise ValueError('SOLID_POINT_AT_INVALID')
-        kinds = [k for k in ('base', 'edge', 'foot', 'divide', 'midpoint', 'centroid', 'footOnLine') if at.get(k) is not None]
+        kinds = [k for k in ('base', 'edge', 'foot', 'divide', 'midpoint', 'centroid', 'footOnLine', 'projection') if at.get(k) is not None]
         if len(kinds) != 1: raise ValueError('SOLID_POINT_AT_INVALID')
         if kinds[0] == 'base':
             if set(at) - {'base', 'face'} or at['base'] not in ('center', 'centroid'): raise ValueError('SOLID_POINT_AT_INVALID')
@@ -1172,6 +1172,17 @@ def aux_point_places(specs, solid, named):
             p = vadd(A, vmul(d, vdot(vsub(P, A), d) / vdot(d, d)))
             if vlen(vsub(p, P)) < 1e-6: raise ValueError('SOLID_AUX_FOOT_DEGENERATE')
             check_foot_on_line(P, A, B, p)
+        elif kinds[0] == 'projection':
+            f = at['projection']
+            if set(at) - {'projection'} or not isinstance(f, dict) or set(f) - {'from', 'plane'}: raise ValueError('SOLID_POINT_AT_INVALID')
+            P = place(f.get('from'))
+            A, B, M = places(f.get('plane'), 3)
+            n = vcross(vsub(B, A), vsub(M, A))
+            if vlen(n) < 1e-9: raise ValueError('SOLID_PROJECTION_PLANE_DEGENERATE')
+            u = vunit(n)
+            p = vsub(P, vmul(u, vdot(vsub(P, A), u)))
+            if vlen(vsub(p, P)) < 1e-6: raise ValueError('SOLID_AUX_FOOT_DEGENERATE')
+            check_projection(P, A, B, M, p)
         else:
             foot = at['foot']
             if not isinstance(foot, dict) or set(foot) - {'from', 'to'}: raise ValueError('SOLID_POINT_AT_INVALID')
@@ -1202,6 +1213,12 @@ def check_foot_on_line(P, A, B, H, tol=1e-6):
     d = vsub(B, A)
     if vlen(vcross(vsub(H, A), d)) > tol * max(1.0, vlen(d)) or abs(vdot(vsub(P, H), d)) > tol * max(1.0, vlen(d)):
         raise ValueError('SOLID_AUX_FOOT_NOT_PERPENDICULAR')
+
+
+def check_projection(P, A, B, M, H, tol=1e-6):
+    """G4a: H is on the plane ABM (normal . (H - A) = 0) and PH is parallel to the plane's normal (PH x normal = 0); ValueError otherwise"""
+    n = vunit(vcross(vsub(B, A), vsub(M, A)))
+    if abs(vdot(n, vsub(H, A))) > tol or vlen(vcross(vsub(P, H), n)) > tol: raise ValueError('SOLID_PROJECTION_MISMATCH')
 
 
 def audit_aux_points(specs, solid, named, px, root, errors):

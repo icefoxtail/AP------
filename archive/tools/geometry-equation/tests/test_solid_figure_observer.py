@@ -1618,6 +1618,11 @@ class GeneralAuxPoints(unittest.TestCase):
         for name, want in (('M', (1.5, 0, 0)), ('N', (1, 1, 0)), ('R', (6, 0, 0)), ('S', (-3, 0, 0))):
             for a, b in zip(self.rel(placed, solid, name), want): self.assertAlmostEqual(a, b, places=9)
 
+    def test_projection_on_a_plane(self):
+        solid = self.cube()
+        placed = self.places([{'id': 'P', 'at': {'divide': ['D', 'F'], 'ratio': '1:2'}}, {'id': 'R', 'at': {'projection': {'from': 'P', 'plane': ['E', 'F', 'G']}}}], solid)
+        for a, b in zip(self.rel(placed, solid, 'R'), (1, 2, 0)): self.assertAlmostEqual(a, b, places=9)
+
     def test_every_bad_definition_has_its_code(self):
         cases = (
             ([{'id': 'P', 'at': {'divide': ['D', 'F'], 'ratio': '1/2'}}], 'SOLID_AUX_POINT_RATIO_INVALID'),
@@ -1627,6 +1632,8 @@ class GeneralAuxPoints(unittest.TestCase):
             ([{'id': 'P', 'at': {'midpoint': ['D', 'K']}}, {'id': 'K', 'at': {'midpoint': ['E', 'F']}}], 'SOLID_AUX_POINT_CYCLE:K'),
             ([{'id': 'P', 'at': {'midpoint': ['P', 'F']}}], 'SOLID_AUX_POINT_CYCLE:P'),
             ([{'id': 'P', 'at': {'footOnLine': {'from': 'E', 'line': ['E', 'F']}}}], 'SOLID_AUX_FOOT_DEGENERATE'),
+            ([{'id': 'M', 'at': {'midpoint': ['A', 'B']}}, {'id': 'P', 'at': {'projection': {'from': 'C', 'plane': ['A', 'B', 'M']}}}], 'SOLID_PROJECTION_PLANE_DEGENERATE'),
+            ([{'id': 'P', 'at': {'projection': {'from': 'E', 'plane': ['E', 'F', 'G']}}}], 'SOLID_AUX_FOOT_DEGENERATE'),
             ([{'id': 'P', 'at': {'midpoint': ['D', 'D']}}], 'SOLID_POINT_AT_INVALID'),
             ([{'id': 'P', 'at': {'midpoint': ['D', 'F'], 'ratio': '1:2'}}], 'SOLID_POINT_AT_INVALID'),
             ([{'id': 'MNPQRSTUWXY'[k], 'at': {'midpoint': ['A', 'B']}} for k in range(11)], 'SOLID_AUX_POINT_LIMIT'),
@@ -1637,9 +1644,14 @@ class GeneralAuxPoints(unittest.TestCase):
         # ten are fine
         self.assertEqual(len(self.places([{'id': 'MNPQRSTUWX'[k], 'at': {'midpoint': ['A', 'B']}} for k in range(10)])), 10)
 
-    def test_the_perpendicularity_check_catches_a_wrong_point(self):
+    def test_the_perpendicularity_checks_catch_a_wrong_point(self):
         A, B, P = (0.0, 0.0, 0.0), (3.0, 0.0, 0.0), (1.0, 2.0, 2.0)
         O.check_foot_on_line(P, A, B, (1.0, 0.0, 0.0))
         for wrong in ((1.5, 0.0, 0.0), (1.0, 0.2, 0.0)):
             with self.assertRaises(ValueError) as cm: O.check_foot_on_line(P, A, B, wrong)
             self.assertTrue(str(cm.exception).startswith('SOLID_AUX_FOOT_NOT_PERPENDICULAR'))
+        M = (0.0, 3.0, 0.0)
+        O.check_projection((1.0, 2.0, 2.0), A, B, M, (1.0, 2.0, 0.0))
+        for wrong in ((1.0, 2.0, 0.5), (1.5, 2.0, 0.0)):
+            with self.assertRaises(ValueError) as cm: O.check_projection((1.0, 2.0, 2.0), A, B, M, wrong)
+            self.assertTrue(str(cm.exception).startswith('SOLID_PROJECTION_MISMATCH'))

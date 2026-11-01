@@ -2657,6 +2657,18 @@ test('G4a: a division point, a midpoint, a centroid and the foot on a line are p
   const ref=solveSolidFigure(figure({solids:[{kind:'PRISM',base:{kind:'RECT',width:3,depth:3},height:3,names:'........',points:[{id:'M',at:{midpoint:['#b0','#t2']}}]}]}));
   assert.ok(g4aNear(g4aAt(ref,'M'),[0,1,2].map(k=>(ref.solids[0].vertices[0].p[k]+ref.solids[0].vertices[6].p[k])/2)));
 });
+test('G4a: the projection of a point on the plane of three points is the foot of the perpendicular (in the regular tetrahedron of edge 4, C goes to the midpoint M of CD on the plane ABM)',()=>{
+  const m=solveSolidFigure(g4aTetra([{id:'N',at:{midpoint:['A','B']}},{id:'M',at:{midpoint:['C','D']}},{id:'X',at:{projection:{from:'C',plane:['A','B','M']}}}]));
+  const C=g4aVertex(m,'C'),A=g4aVertex(m,'A'),B=g4aVertex(m,'B'),M=g4aAt(m,'M'),X=g4aAt(m,'X');
+  assert.ok(g4aNear(X,M,1e-6),JSON.stringify([X,M]));// CD is perpendicular to the plane ABM, so the foot of C is M
+  assert.ok(Math.abs(g4aLen(g4aSub(C,X))-2)<1e-6);
+  // in general: X is on the plane (normal . (X-A) = 0) and CX is parallel to the normal
+  const cube=solveSolidFigure(g4aCube([{id:'P',at:{divide:['D','F'],ratio:'1:2'}},{id:'R',at:{projection:{from:'P',plane:['A','F','H']}}}]));
+  const a=g4aVertex(cube,'A'),f=g4aVertex(cube,'F'),h=g4aVertex(cube,'H'),p=g4aAt(cube,'P'),r=g4aAt(cube,'R'),n=g4aCross(g4aSub(f,a),g4aSub(h,a));
+  assert.ok(Math.abs(g4aDot(n,g4aSub(r,a)))<1e-6);
+  assert.ok(g4aLen(g4aCross(g4aSub(p,r),n))<1e-6);
+  void B;
+});
 test('G4a: a bad general helper point is refused with its own code',()=>{
   const bad=(points,expected,make=g4aCube)=>assert.throws(()=>solveSolidFigure(make(points)),code(expected),expected);
   bad([{id:'P',at:{divide:['D','F'],ratio:'1/2'}}],'SOLID_AUX_POINT_RATIO_INVALID');
@@ -2679,6 +2691,10 @@ test('G4a: a bad general helper point is refused with its own code',()=>{
   bad([{id:'P',at:{footOnLine:{from:'D',line:['E','E']}}}],'SOLID_POINT_AT_INVALID');
   bad([{id:'P',at:{footOnLine:{from:'D',line:['E','F'],extra:1}}}],'SOLID_POINT_AT_INVALID');
   bad([{id:'P',at:{footOnLine:{from:'K',line:['E','F']}}}],'SOLID_AUX_POINT_UNKNOWN');
+  bad([{id:'M',at:{midpoint:['A','B']}},{id:'P',at:{projection:{from:'C',plane:['A','B','M']}}}],'SOLID_PROJECTION_PLANE_DEGENERATE');// A, B and the midpoint of AB are on one line
+  bad([{id:'P',at:{projection:{from:'E',plane:['E','F','G']}}}],'SOLID_AUX_FOOT_DEGENERATE');// E is already on its own plane
+  bad([{id:'P',at:{projection:{from:'D',plane:['E','F']}}}],'SOLID_POINT_AT_INVALID');
+  bad([{id:'P',at:{projection:{from:'D',plane:['E','F','Z']}}}],'SOLID_AUX_POINT_UNKNOWN');
   bad([{id:'A',at:{midpoint:['E','F']}}],'SOLID_NAME_DUPLICATE:A');
   // ten points are fine, eleven are not
   const ten=Array.from({length:10},(x,k)=>({id:'MNPQRSTUWX'[k],at:{midpoint:['A','B']}}));
@@ -2710,11 +2726,21 @@ test('G4a: the cube figure of 22 매산고 q11 (P on DF with DP:PF=1:2, the foot
   const seg=svg.match(/<line id="segment-PQ"[^>]*\/>/)[0];
   await failing(plan,svg.replace(seg,seg.replace(/ y2="([\d.]+)"/,(all,v)=>` y2="${Number(v)-14}"`)),'SOLID_SEGMENT_ENDPOINT_OFF');
 });
-test('G4a: the tetrahedron figure of 22 매산고 q13 (midpoints N, M, the dihedral angle at N, the triangle ABM that C projects to) is composed and audited',async()=>{
+test('G4a: the tetrahedron figure of 22 매산고 q13 (midpoints N, M, the dihedral angle at N, the triangle ABM that C projects to) and a projection point are composed and audited',async()=>{
   const plan=figure({solids:[{kind:'REGULAR_POLYHEDRON',faces:4,side:4,names:'ABCD',points:[{id:'N',at:{midpoint:['A','B']}},{id:'M',at:{midpoint:['C','D']}}]}],
     segments:[{from:'N',to:'C',style:'AUTO',role:'ACCENT'},{from:'N',to:'M',style:'DASHED',role:'ACCENT'},{from:'A',to:'M',style:'AUTO',role:'REF'},{from:'B',to:'M',style:'AUTO',role:'REF'},{from:'C',to:'M',style:'SOLID',role:'ACCENT'}],
     highlights:[{polygon:['A','B','M']}],marks:{rightAngles:[{at:'M',refs:['C','N']}],angles:[{refs:['C','N','M'],arcs:1,label:'\\varphi'}]},dims:[{from:'N',to:'C'},{from:'N',to:'M'}]});
   const composed=await panel(plan);
   assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
   assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  // a projection point (the foot of P on the plane EFG) is drawn where the observer computes it; a plan with another plane is caught
+  const proj=g4aCube([{id:'P',at:{divide:['D','F'],ratio:'1:2'}},{id:'R',at:{projection:{from:'P',plane:['E','F','G']}}}],{segments:[{from:'P',to:'R',style:'DASHED',role:'ACCENT'}],marks:{rightAngles:[{at:'R',refs:['P','F']}]}});
+  const projSegments={...proj,segments:[...proj.segments,{from:'R',to:'F',style:'SOLID',role:'ACCENT'}]};
+  const made=await panel(projSegments);
+  assert.equal(made.status,'COMPOSED',JSON.stringify(made.detail));
+  assert.equal(made.staticAudit.status,'PASS',JSON.stringify(made.staticAudit.errors));
+  const moved={...projSegments,solids:[{...projSegments.solids[0],points:[projSegments.solids[0].points[0],{id:'R',at:{projection:{from:'P',plane:['E','B','H']}}}]}]};
+  const r=await audit(moved,made.svg);
+  assert.equal(r.status,'FAIL');
+  assert.ok(r.errors.some(e=>e.startsWith('SOLID_AUX_POINT_OFF:R')),JSON.stringify(r.errors));
 });
