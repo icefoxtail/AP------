@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-01T00:07:04.408Z",
+  "updatedAt": "2026-11-01T00:09:44.392Z",
   "coverage": "GitHub PR/Actions only; Library/GPT completion not observed",
   "history": {
     "complete": false,
@@ -31113,7 +31113,6 @@
       "key": "release:41218075133:1:69f4e5dbf4002562cdd7430463661e5a209404d8",
       "status": "unverified",
       "attempts": 3,
-      "reason": "증거 실행/차수/SHA 불일치",
       "run": {
         "id": 41218075133,
         "attempt": 1,
@@ -31124,13 +31123,13 @@
         "event": "push",
         "branch": "main"
       },
+      "reason": "증거 실행/차수/SHA 불일치",
       "nextRetryAt": "2026-11-01T00:27:04.067Z"
     },
     "release:41252531588:1:56b2114d0552a50a48eeb3b82ef25270101dd890": {
       "key": "release:41252531588:1:56b2114d0552a50a48eeb3b82ef25270101dd890",
       "status": "unverified",
       "attempts": 3,
-      "reason": "증거 실행/차수/SHA 불일치",
       "run": {
         "id": 41252531588,
         "attempt": 1,
@@ -31141,13 +31140,13 @@
         "event": "push",
         "branch": "main"
       },
+      "reason": "증거 실행/차수/SHA 불일치",
       "nextRetryAt": "2026-11-01T00:27:03.680Z"
     },
     "registration:41218075018:1:69f4e5dbf4002562cdd7430463661e5a209404d8": {
       "key": "registration:41218075018:1:69f4e5dbf4002562cdd7430463661e5a209404d8",
       "status": "unverified",
       "attempts": 3,
-      "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 41218075018,
         "attempt": 1,
@@ -31158,31 +31157,13 @@
         "event": "push",
         "branch": "main"
       },
-      "nextRetryAt": "2026-11-01T00:27:02.399Z"
-    },
-    "registration:41252253006:1:8ee7d3410c5fd288d42e0cff15da0ebf29991c7a": {
-      "key": "registration:41252253006:1:8ee7d3410c5fd288d42e0cff15da0ebf29991c7a",
-      "status": "unverified",
-      "attempts": 3,
-      "run": {
-        "id": 41252253006,
-        "attempt": 1,
-        "sha": "8ee7d3410c5fd288d42e0cff15da0ebf29991c7a",
-        "at": "2026-10-31T23:27:30Z",
-        "url": "https://github.com/icefoxtail/AP------/actions/runs/41252253006",
-        "conclusion": "success",
-        "event": "push",
-        "branch": "main"
-      },
       "reason": "현재 실행 차수 증거 없음",
-      "nextRetryAt": "2026-11-01T00:08:02.787Z"
+      "nextRetryAt": "2026-11-01T00:27:02.399Z"
     },
     "release:41254204740:1:7cedf8b4a0d6a3bf97ff8615f6296be096c394e7": {
       "key": "release:41254204740:1:7cedf8b4a0d6a3bf97ff8615f6296be096c394e7",
       "status": "partial",
-      "fileProofState": "permanent",
       "attempts": 1,
-      "verifiedAt": "2026-11-01T00:07:02.943Z",
       "run": {
         "id": 41254204740,
         "attempt": 1,
@@ -31203,6 +31184,8 @@
         "fileProofReason": "Pages ZIP 크기 초과",
         "exams": {}
       },
+      "fileProofState": "permanent",
+      "verifiedAt": "2026-11-01T00:07:02.943Z",
       "checkedExamIds": [
         "15_강남여고_2학기_중간_고2_기하와벡터_기출",
         "15_신흥중_2학기_기말_중3_수학",
@@ -119793,6 +119776,23 @@
         "test-fixtures"
       ],
       "reason": "Pages ZIP 크기 초과"
+    },
+    "registration:41252253006:1:8ee7d3410c5fd288d42e0cff15da0ebf29991c7a": {
+      "key": "registration:41252253006:1:8ee7d3410c5fd288d42e0cff15da0ebf29991c7a",
+      "status": "unverified",
+      "attempts": 4,
+      "reason": "현재 실행 차수 증거 없음",
+      "run": {
+        "id": 41252253006,
+        "attempt": 1,
+        "sha": "8ee7d3410c5fd288d42e0cff15da0ebf29991c7a",
+        "at": "2026-10-31T23:27:30Z",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/41252253006",
+        "conclusion": "success",
+        "event": "push",
+        "branch": "main"
+      },
+      "retryExhausted": true
     },
     "registration:41251467400:1:025f01dc8059d15d0bc4738042923b674cb48b75": {
       "key": "registration:41251467400:1:025f01dc8059d15d0bc4738042923b674cb48b75",
