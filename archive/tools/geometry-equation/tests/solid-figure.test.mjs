@@ -2744,3 +2744,100 @@ test('G4a: the tetrahedron figure of 22 매산고 q13 (midpoints N, M, the dihed
   assert.equal(r.status,'FAIL');
   assert.ok(r.errors.some(e=>e.startsWith('SOLID_AUX_POINT_OFF:R')),JSON.stringify(r.errors));
 });
+
+// --- G4b-1: free points and segments of a space (no solid needed) -----------------------------------------------------------------------------------------------------
+const g4bSpace=(space,over={})=>figure({space,...over});
+const g4bPoint=(m,id)=>m.space.points.find(q=>q.id===id).p;
+const g4bFailing=async(plan,svg,prefix)=>{const r=await audit(plan,svg);assert.equal(r.status,'FAIL',prefix);assert.ok(r.errors.some(e=>e.startsWith(prefix)),prefix+' in '+JSON.stringify(r.errors));};
+test('G4b-1: free points take numbers, exact texts (fractions, sqrt) and the general forms; a plan may have a space and no solid',()=>{
+  const m=solveSolidFigure(g4bSpace({points:[
+    {id:'P',at:[0,0,3]},{id:'O',at:[0,0,0]},{id:'H',at:['2','1/2',0]},{id:'A',at:['1/2',0,'sqrt(3)/2']},{id:'B',at:['-sqrt(2)/2','sqrt(2)/2',0]},
+    {id:'M',at:{midpoint:['P','H']}},{id:'N',at:{divide:['O','H'],ratio:'1:3'}},{id:'G',at:{centroid:['P','O','H']}},{id:'F',at:{footOnLine:{from:'P',line:['O','H']}}},
+    {id:'R',at:{projection:{from:'P',plane:['O','H','B']}}}]}));
+  assert.equal(m.solids.length,0);
+  const near=(p,q)=>Math.hypot(p[0]-q[0],p[1]-q[1],p[2]-q[2])<1e-5;
+  assert.ok(near(g4bPoint(m,'A'),[0.5,0,Math.sqrt(3)/2]));assert.ok(near(g4bPoint(m,'B'),[-Math.SQRT1_2,Math.SQRT1_2,0]));
+  assert.ok(near(g4bPoint(m,'M'),[1,0.25,1.5]));assert.ok(near(g4bPoint(m,'N'),[0.5,0.125,0]));assert.ok(near(g4bPoint(m,'G'),[2/3,1/6,1]));
+  // the foot F of P on the line OH: PF is perpendicular to OH; the projection R of P on the plane OHB (the floor z=0) is the origin
+  const F=g4bPoint(m,'F'),P=g4bPoint(m,'P'),d=[2,0.5,0];
+  assert.ok(Math.abs((P[0]-F[0])*d[0]+(P[1]-F[1])*d[1]+(P[2]-F[2])*d[2])<1e-5);
+  assert.ok(near(g4bPoint(m,'R'),[0,0,0]));
+  // a space with solids: it may name the solid's vertices (a midpoint of two corners)
+  const both=solveSolidFigure(figure({solids:[cuboid()],space:{points:[{id:'X',at:{midpoint:['F','A']}}]}}));
+  assert.equal(both.solids.length,1);assert.equal(both.space.points.length,1);
+});
+test('G4b-1: a bad space is refused with its own code; a plan with no solid and no space keeps the old codes',()=>{
+  const bad=(space,expected,over={})=>assert.throws(()=>solveSolidFigure(g4bSpace(space,over)),code(expected),expected);
+  bad({points:[{id:'P',at:[0,0]}]},'SPACE_POINT_INVALID');
+  bad({points:[{id:'P',at:['1/0',0,0]}]},'SPACE_POINT_INVALID');
+  bad({points:[{id:'P',at:['sqrt(-1)',0,0]}]},'SPACE_POINT_INVALID');
+  bad({points:[{id:'P',at:['2**2',0,0]}]},'SPACE_POINT_INVALID');
+  bad({points:[{id:'P',at:[0,0,2000]}]},'SPACE_POINT_INVALID');
+  bad({points:[{id:'P',at:{midpoint:['Q','P']}}]},'SPACE_POINT_INVALID');// Q does not exist
+  bad({points:[{id:'P',at:{midpoint:['Q','O']}},{id:'Q',at:[0,0,1]},{id:'O',at:[0,0,0]}]},'SPACE_POINT_INVALID:forward');// Q is placed later
+  bad({points:[{id:'p',at:[0,0,0]}]},'SPACE_POINT_INVALID');
+  bad({points:[{id:'P',at:[0,0,0],hideName:'yes'}]},'SPACE_POINT_INVALID');
+  bad({points:[{id:'P',at:[0,0,0]},{id:'P',at:[1,0,0]}]},'SPACE_POINT_DUPLICATE');
+  bad({points:Array.from({length:17},(x,k)=>({id:'ABCDEFGHIJKLMNOPQ'[k],at:[k,0,0]}))},'SPACE_POINT_LIMIT');
+  bad({points:[]},'SPACE_POINT_INVALID');
+  bad({points:[{id:'P',at:[0,0,0]},{id:'Q',at:[1,0,0]}],segments:[{from:'P',to:'Z'}]},'SPACE_SEGMENT_INVALID');
+  bad({points:[{id:'P',at:[0,0,0]},{id:'Q',at:[1,0,0]}],segments:[{from:'P',to:'P'}]},'SPACE_SEGMENT_INVALID');
+  bad({points:[{id:'P',at:[0,0,0]},{id:'Q',at:[1,0,0]}],segments:[{from:'P',to:'Q'},{from:'Q',to:'P'}]},'SPACE_SEGMENT_INVALID');
+  bad({points:[{id:'P',at:[0,0,0]},{id:'Q',at:[1,0,0]}],segments:[{from:'P',to:'Q',style:'WAVY'}]},'SPACE_SEGMENT_INVALID');
+  bad({points:[{id:'P',at:[0,0,0]},{id:'Q',at:[1,0,0]}],segments:Array.from({length:17},()=>({from:'P',to:'Q'}))},'SPACE_SEGMENT_INVALID');
+  bad({points:[{id:'P',at:[0,0,0]}],cubes:[]},'SPACE_POINT_INVALID');// an unknown key
+  assert.throws(()=>solveSolidFigure(figure({})),code('SOLID_PLAN_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[]})),code('SOLID_COUNT_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({net:{kind:'CYLINDER',radius:2,height:3},space:{points:[{id:'P',at:[0,0,0]}]}})),code('SOLID_PLAN_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],space:{points:[{id:'F',at:[0,0,0]}]}})),code('SPACE_POINT_DUPLICATE'));// F is a vertex of the cuboid
+});
+test('G4b-1: a figure of free points, segments and a right angle is composed and audited; every tamper is caught',async()=>{
+  const plan=g4bSpace({points:[{id:'P',at:[0,0,3]},{id:'O',at:[0,0,0]},{id:'H',at:['2',0,0]},{id:'M',at:{midpoint:['P','H']}},{id:'K',at:[1,0,0],hideName:true}],
+    segments:[{from:'P',to:'O',style:'DASHED'},{from:'P',to:'H'},{from:'O',to:'H',role:'ACCENT'}]},{marks:{rightAngles:[{at:'O',refs:['P','H']}]}});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.equal(svg.includes('data-solid="undefined"'),false);
+  for(const name of ['P','O','H','M','K'])assert.match(svg,new RegExp(`<circle id="space-${name}" data-role="space-point" data-space="1" data-point="${name}"`));
+  assert.equal([...svg.matchAll(/data-label-role="vertex-name"/g)].length,4);// K hides its name
+  const dot=name=>svg.match(new RegExp(`<circle id="space-${name}"[^>]*/>`))[0];
+  const seg=id=>svg.match(new RegExp(`<line id="${id}"[^>]*/>`))[0];
+  await g4bFailing(plan,svg.replace(dot('H'),dot('H').replace(/ cx="([\d.]+)"/,(all,v)=>` cx="${Number(v)+9}"`)),'SPACE_POINT_OFF:H');
+  await g4bFailing(plan,svg.replace(dot('M'),dot('M').replace(/ cy="([\d.]+)"/,(all,v)=>` cy="${Number(v)-9}"`)),'SPACE_POINT_OFF:M');
+  await g4bFailing(plan,svg.replace(dot('K'),''),'SPACE_POINT_SET_MISMATCH');
+  await g4bFailing(plan,svg.replace(seg('space-segment-PH-1'),seg('space-segment-PH-1').replace(/ y2="([\d.]+)"/,(all,v)=>` y2="${Number(v)+12}"`)),'SPACE_SEGMENT_ENDPOINT_OFF:PH');
+  await g4bFailing(plan,svg.replace(seg('space-segment-PO-1'),seg('space-segment-PO-1').replace(' stroke-dasharray="5 4"','')),'SOLID_EDGE_VISIBILITY_MISMATCH');
+  await g4bFailing(plan,svg.replace(seg('space-segment-OH-1'),seg('space-segment-OH-1').replace('#c0392b','#111')),'SPACE_SEGMENT_STYLE_MISMATCH:OH');
+  await g4bFailing(plan,svg.replace(seg('space-segment-PH-1'),''),'SPACE_SEGMENT_SET_MISMATCH');
+  // a plan that puts H elsewhere, or draws a segment that is not in the svg, is not this figure
+  await g4bFailing({...plan,space:{...plan.space,points:plan.space.points.map(q=>q.id==='H'?{id:'H',at:['2','1/2',0]}:q)}},svg,'SPACE_POINT_OFF:H');
+  await g4bFailing({...plan,space:{...plan.space,segments:[...plan.space.segments,{from:'M',to:'K'}]}},svg,'SPACE_SEGMENT_SET_MISMATCH');
+  // the observer reads the plan's own errors
+  await g4bFailing({...plan,space:{...plan.space,points:[...plan.space.points,{id:'P',at:[1,1,1]}]}},svg,'SPACE_POINT_DUPLICATE');
+  // a drawn space the plan does not have
+  const {space:dropped,...withoutSpace}=plan;void dropped;
+  const noSpace=await audit({...withoutSpace,solids:[cuboid()]},svg);
+  assert.equal(noSpace.status,'FAIL');
+});
+test('G4b-1: an AUTO segment is dashed where a solid\'s face hides it and solid where it is seen; the observer finds the same boundary',async()=>{
+  // a point X at the centre of a cuboid (the middle of the diagonal F-A) is inside it: every segment from X to a corner is hidden; a segment from a point beyond a corner is seen outside the solid
+  const plan=figure({solids:[cuboid()],space:{points:[{id:'X',at:{midpoint:['F','A']}},{id:'Q',at:{divide:['F','A'],ratio:'3:1',external:true}},{id:'W',at:{divide:['A','F'],ratio:'3:1',external:true}}],
+    segments:[{from:'X',to:'C'},{from:'Q',to:'X',style:'AUTO'},{from:'W',to:'X',style:'AUTO'},{from:'X',to:'H',style:'AUTO',role:'ACCENT'}]}});
+  const m=solveSolidFigure(plan);
+  const runs=m.space.segments.map(s=>s.runs);
+  assert.ok(runs.some(r=>r.length>=2&&r.some(x=>x.hidden)&&r.some(x=>!x.hidden)),'a segment through a face has a seen and a hidden part: '+JSON.stringify(runs));
+  assert.ok(runs[3].every(r=>r.hidden),'a segment from the centre to a corner is hidden all the way');
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  // the first piece of QX is seen, the dash flips: tampering the hidden piece to solid is caught
+  const pieces=[...svg.matchAll(/<line id="space-segment-(?:QX|WX)-\d+"[^>]*\/>/g)].map(x=>x[0]);
+  const dashed=pieces.find(p=>p.includes('stroke-dasharray'));
+  assert.ok(dashed);
+  await g4bFailing(plan,svg.replace(dashed,dashed.replace(' stroke-dasharray="5 4"','').replace('data-vis="hidden"','data-vis="solid"')),'SOLID_EDGE_VISIBILITY_MISMATCH');
+  // the boundary moved along the segment
+  const seen=pieces.find(p=>!p.includes('stroke-dasharray'));
+  await g4bFailing(plan,svg.replace(seen,seen.replace(/ x2="([\d.]+)"/,(all,v)=>` x2="${Number(v)+10}"`)),'SPACE_SEGMENT_ENDPOINT_OFF');
+});

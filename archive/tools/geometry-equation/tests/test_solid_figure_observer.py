@@ -1655,3 +1655,113 @@ class GeneralAuxPoints(unittest.TestCase):
         for wrong in ((1.0, 2.0, 0.5), (1.5, 2.0, 0.0)):
             with self.assertRaises(ValueError) as cm: O.check_projection((1.0, 2.0, 2.0), A, B, M, wrong)
             self.assertTrue(str(cm.exception).startswith('SOLID_PROJECTION_MISMATCH'))
+
+
+class FreeSpacePoints(unittest.TestCase):
+    """G4b-1: the observer re-derives plan.space from the grammar alone (exact texts, the general forms, the depth test) and checks the drawn dots and segment pieces"""
+    def places(self, points):
+        return O.space_places({'points': points}, {}, O.make_norm([], {}))[0]
+
+    def test_exact_texts(self):
+        for text, want in (('1/2', 0.5), ('sqrt(3)/2', math.sqrt(3) / 2), ('-sqrt(2)/2', -math.sqrt(2) / 2), ('(1+sqrt(2))*3', 3 * (1 + math.sqrt(2))), ('2.5', 2.5), (' 1 / 4 ', 0.25), (3, 3.0)):
+            self.assertAlmostEqual(O.space_number(text), want, places=12)
+        for bad in ('1/0', 'sqrt(-1)', '2**2', 'abc', '', '1+', '((1)', '1e5', True, None, 2000, 'sqrt(1', '1;2'):
+            with self.assertRaises(ValueError, msg=repr(bad)): O.space_number(bad)
+
+    def test_general_forms_in_3d(self):
+        pts = self.places([{'id': 'P', 'at': [0, 0, 3]}, {'id': 'O', 'at': [0, 0, 0]}, {'id': 'H', 'at': ['2', '1/2', 0]}, {'id': 'M', 'at': {'midpoint': ['P', 'H']}},
+                           {'id': 'N', 'at': {'divide': ['O', 'H'], 'ratio': '1:3'}}, {'id': 'G', 'at': {'centroid': ['P', 'O', 'H']}}, {'id': 'F', 'at': {'footOnLine': {'from': 'P', 'line': ['O', 'H']}}},
+                           {'id': 'X', 'at': [0, 1, 0]}, {'id': 'R', 'at': {'projection': {'from': 'P', 'plane': ['O', 'H', 'X']}}}])
+        for name, want in (('M', (1, 0.25, 1.5)), ('N', (0.5, 0.125, 0)), ('G', (2 / 3, 1 / 6, 1))):
+            for a, b in zip(pts[name], want): self.assertAlmostEqual(a, b, places=9)
+        self.assertAlmostEqual(O.vdot(O.vsub(pts['P'], pts['F']), O.vsub(pts['H'], pts['O'])), 0.0, places=9)
+        # R is on the plane O H X and PR is along its normal
+        n = O.vcross(O.vsub(pts['H'], pts['O']), O.vsub(pts['X'], pts['O']))
+        self.assertAlmostEqual(O.vdot(n, O.vsub(pts['R'], pts['O'])), 0.0, places=9)
+        self.assertAlmostEqual(O.vlen(O.vcross(O.vsub(pts['P'], pts['R']), n)), 0.0, places=9)
+
+    def test_every_bad_definition_has_its_code(self):
+        cases = (
+            ([{'id': 'P', 'at': [0, 0]}], 'SPACE_POINT_INVALID'),
+            ([{'id': 'P', 'at': ['1/0', 0, 0]}], 'SPACE_POINT_INVALID'),
+            ([{'id': 'P', 'at': {'midpoint': ['Q', 'P']}}], 'SPACE_POINT_INVALID'),
+            ([{'id': 'P', 'at': {'midpoint': ['Q', 'O']}}, {'id': 'Q', 'at': [0, 0, 1]}, {'id': 'O', 'at': [0, 0, 0]}], 'SPACE_POINT_INVALID:forward:'),
+            ([{'id': 'p', 'at': [0, 0, 0]}], 'SPACE_POINT_INVALID'),
+            ([{'id': 'P', 'at': [0, 0, 0], 'hideName': 'yes'}], 'SPACE_POINT_INVALID'),
+            ([{'id': 'P', 'at': [0, 0, 0]}, {'id': 'P', 'at': [1, 0, 0]}], 'SPACE_POINT_DUPLICATE:P'),
+            ([{'id': 'ABCDEFGHIJKLMNOPQ'[k], 'at': [k, 0, 0]} for k in range(17)], 'SPACE_POINT_LIMIT'),
+            ([{'id': 'P', 'at': [0, 0, 0]}, {'id': 'Q', 'at': {'divide': ['P', 'P'], 'ratio': '1:2'}}], 'SPACE_POINT_INVALID'),
+            ([{'id': 'P', 'at': [0, 0, 0]}, {'id': 'Q', 'at': {'divide': ['P', 'P'], 'ratio': '1/2'}}], 'SPACE_POINT_INVALID'),
+            ([{'id': 'P', 'at': [0, 0, 0]}, {'id': 'O', 'at': [1, 0, 0]}, {'id': 'Q', 'at': {'divide': ['P', 'O'], 'ratio': '1/2'}}], 'SOLID_AUX_POINT_RATIO_INVALID'),
+            ([{'id': 'P', 'at': [0, 0, 0]}, {'id': 'O', 'at': [1, 0, 0]}, {'id': 'Q', 'at': {'footOnLine': {'from': 'P', 'line': ['P', 'O']}}}], 'SOLID_AUX_FOOT_DEGENERATE'),
+            ([{'id': 'P', 'at': [0, 0, 0]}, {'id': 'O', 'at': [1, 0, 0]}, {'id': 'Q', 'at': [2, 0, 0]}, {'id': 'R', 'at': {'projection': {'from': 'P', 'plane': ['P', 'O', 'Q']}}}], 'SOLID_PROJECTION_PLANE_DEGENERATE'),
+        )
+        for points, code in cases:
+            with self.assertRaises(ValueError, msg=code) as cm: self.places(points)
+            self.assertTrue(str(cm.exception).startswith(code), (code, str(cm.exception)))
+
+    def test_runs_find_the_depth_change_by_bisection(self):
+        # a point is hidden when t > 0.37: one change, found to 1e-9
+        runs = O.space_runs(lambda t: t > 0.37)
+        self.assertEqual(len(runs), 2)
+        self.assertAlmostEqual(runs[0][1], 0.37, places=9)
+        self.assertEqual([r[2] for r in runs], [False, True])
+        self.assertEqual(O.space_runs(lambda t: False), [(0.0, 1.0, False)])
+
+    def test_a_plane_polygon_hides_what_is_behind_it(self):
+        # the square z = 0, |x|, |y| <= 1: a point below it on the line of sight is hidden, a point above it is not
+        plane = O._plane_of_points([(-4.0, -4.0, 0.0), (4.0, -4.0, 0.0), (4.0, 4.0, 0.0), (-4.0, 4.0, 0.0)])
+        below, above = (0.0, 0.0, -1.0), (0.0, 0.0, 1.0)
+        self.assertTrue(O.hidden_by_faces(None, {0: plane}, below, set()))
+        self.assertFalse(O.hidden_by_faces(None, {0: plane}, above, set()))
+        self.assertFalse(O.hidden_by_faces(None, {0: plane}, (0.0, 0.0, 0.0), set()))   # on the plane: seen
+
+    # --- a hand-built svg: the dots and the pieces of the segments, drawn from the observer's own projection ---
+    PLAN = {'capability': 'solid-figure-v1', 'space': {'points': [{'id': 'P', 'at': [0, 0, 3], 'hideName': True}, {'id': 'O', 'at': [0, 0, 0], 'hideName': True}, {'id': 'H', 'at': [2, 0, 0], 'hideName': True}],
+                                                      'segments': [{'from': 'P', 'to': 'O', 'style': 'DASHED'}, {'from': 'P', 'to': 'H', 'role': 'ACCENT'}]}}
+
+    def svg(self, tamper=None):
+        tx, ty = 100.0, 250.0
+        px = lambda p: (tx + SCALE * O.project(p)[0], ty - SCALE * O.project(p)[1])
+        pts = {'P': (0.0, 0.0, 3.0), 'O': (0.0, 0.0, 0.0), 'H': (2.0, 0.0, 0.0)}
+        dots = {k: list(px(p)) for k, p in pts.items()}
+        lines = {'PO': [list(px(pts['P'])), list(px(pts['O'])), True, 'REF', 'DASHED'], 'PH': [list(px(pts['P'])), list(px(pts['H'])), False, 'ACCENT', 'SOLID']}
+        if tamper: tamper(dots, lines)
+        body = ''.join('<circle id="space-%s" data-role="space-point" data-space="1" data-point="%s" fill="#111" cx="%.3f" cy="%.3f" r="2.4"/>' % (k, k, v[0], v[1]) for k, v in dots.items())
+        for key, (a, b, hidden, role, style) in lines.items():
+            body += '<line id="space-segment-%s-1" data-role="space-segment" data-edge="%s" data-vis="%s" data-t0="0" data-t1="1" data-style="%s" data-accent="%s" data-space="1" stroke="%s" stroke-width="1.6"%s fill="none" x1="%.3f" y1="%.3f" x2="%.3f" y2="%.3f"/>' % (
+                key, key, 'hidden' if hidden else 'solid', style, role, '#c0392b' if role == 'ACCENT' else '#111', ' stroke-dasharray="5 4"' if hidden else '', a[0], a[1], b[0], b[1])
+        return '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" data-solid-figure="solid-figure-v1" data-mode="SOLIDS" data-scale="%s" data-origin="100 250" data-yaw="28" data-pitch="20">%s</svg>' % (SCALE, body)
+
+    def errors(self, tamper=None, plan=None):
+        return O.audit(plan or self.PLAN, self.svg(tamper))['errors']
+
+    def test_an_untouched_figure_passes(self):
+        self.assertEqual(self.errors(), [])
+
+    def test_a_moved_dot_or_end_is_caught(self):
+        def move_dot(dots, lines): dots['H'][0] += 7
+        self.assertTrue(any(e.startswith('SPACE_POINT_OFF:H') for e in self.errors(move_dot)), self.errors(move_dot))
+
+        def move_end(dots, lines): lines['PH'][1][1] -= 9
+        self.assertTrue(any(e.startswith('SPACE_SEGMENT_ENDPOINT_OFF:PH') for e in self.errors(move_end)), self.errors(move_end))
+
+        def drop_dot(dots, lines): del dots['O']
+        self.assertTrue(any(e.startswith('SPACE_POINT_SET_MISMATCH') for e in self.errors(drop_dot)))
+
+        def solid_instead(dots, lines): lines['PO'][2] = False
+        self.assertTrue(any(e.startswith('SOLID_EDGE_VISIBILITY_MISMATCH') or e.startswith('SPACE_SEGMENT_STYLE_MISMATCH') for e in self.errors(solid_instead)))
+
+    def test_one_displaced_dot_does_not_drag_the_frame(self):
+        # the translation is the median of the dots and the scale is the declared one: with three dots one moved by 30 px is the one that is off
+        def move_dot(dots, lines): dots['P'][1] -= 30
+        errors = self.errors(move_dot)
+        self.assertIn('SPACE_POINT_OFF:P', errors)
+        self.assertNotIn('SPACE_POINT_OFF:O', errors)
+        self.assertNotIn('SPACE_POINT_OFF:H', errors)
+
+    def test_a_plan_the_svg_does_not_draw_is_caught(self):
+        other = {**self.PLAN, 'space': {**self.PLAN['space'], 'points': [{'id': 'P', 'at': [0, 0, 3], 'hideName': True}, {'id': 'O', 'at': [0, 0, 0], 'hideName': True}, {'id': 'H', 'at': [2, 1, 0], 'hideName': True}]}}
+        self.assertTrue(any(e.startswith('SPACE_POINT_OFF:H') for e in self.errors(plan=other)))
+        no_space = {'capability': 'solid-figure-v1', 'solids': [{'kind': 'PRISM', 'base': {'kind': 'RECT', 'width': 4, 'depth': 3}, 'height': 2, 'names': UNNAMED}]}
+        self.assertTrue(any(e.startswith('SPACE_NOT_IN_PLAN') for e in self.errors(plan=no_space)))

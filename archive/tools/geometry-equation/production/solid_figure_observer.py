@@ -844,6 +844,8 @@ def audit_solids(plan, ctx):
     stack_of = {m['id']: st for st in stacks for m in st['members']}
     ctx['stack_of'] = stack_of
     ctx['solids'] = solids
+    # nothing is drawn for a space the plan does not have
+    if plan.get('space') is None and any(e.get('data-space') for e in root.iter()): errors.append('SPACE_NOT_IN_PLAN')
     # nothing is drawn for a solid the plan does not have (a ball that is not in the plan, a second solid that was not asked for)
     drawn_solids = {e.get('data-solid') for e in root.iter() if e.get('data-solid')}
     if drawn_solids - {s_['id'] for s_ in solids}: errors.append('SOLID_SOLID_NOT_IN_PLAN:' + ','.join(sorted(drawn_solids - {s_['id'] for s_ in solids}))[:40])
@@ -879,6 +881,7 @@ def audit_solids(plan, ctx):
             frames[sid] = T
         if scale is None: scale = S
         elif abs(scale - S) > 0.012 * scale: errors.append('SOLID_SCALE_DIFFERS_BETWEEN_SOLIDS:' + sid)
+    if scale is None and plan.get('space') is not None: scale = space_scale(plan, root, errors)   # a figure of a space alone: the scale is the fit of its point dots
     if scale is None: return
     if declared and abs(declared - scale) > 0.012 * scale: errors.append('SOLID_DECLARED_SCALE_MISMATCH')
     ctx['scale'] = scale
@@ -916,6 +919,7 @@ def audit_solids(plan, ctx):
     ctx['named'] = named
     ctx['px'] = {sid: frames[sid] for sid in frames}
     norm = ctx['norm'] = make_norm(solids, named)
+    audit_space(plan, ctx, named, norm, scale, solids)
     # aux segments, highlights, section
     plan_segments = [(norm(s_['from']), norm(s_['to'])) for s_ in plan.get('segments') or []]
     declared_pairs = {join_keys(pair): pair for pair in plan_segments}
@@ -1242,11 +1246,330 @@ def audit_aux_points(specs, solid, named, px, root, errors):
 
 
 
+# --- free space: points and segments (G4b) ----------------------------------------------------------------------------------------------------
+# plan.space:{points,segments} is re-derived here from the grammar alone (own exact-text parser, own general forms, own depth test) and compared with the SVG: every point is one small dot at
+# its projected place (one scale and one origin for the whole figure, the translation read as the median of the dots so one displaced dot cannot drag the frame), every segment is drawn in runs
+# whose dashed parts are where the depth test says, and the points' names are the labels of the figure.
+SPACE_POINT_NAME = re.compile(r'^[A-Z]′?$')
+SPACE_AT_KINDS = ('divide', 'midpoint', 'centroid', 'footOnLine', 'projection')
+
+
+def space_number(x):
+    """a coordinate: a number, or an exact text of integers and decimals with + - * / ( ) and sqrt(n); ValueError otherwise"""
+    if isinstance(x, bool): raise ValueError('SPACE_POINT_INVALID')
+    if isinstance(x, (int, float)): v = float(x)
+    elif isinstance(x, str):
+        s = re.sub(r'\s+', '', x)
+        if not re.fullmatch(r'[0-9.+\-*/()sqrt]{1,40}', s): raise ValueError('SPACE_POINT_INVALID')
+        pos = [0]
+
+        def peek(): return s[pos[0]] if pos[0] < len(s) else ''
+
+        def atom():
+            if s.startswith('sqrt(', pos[0]):
+                pos[0] += 5
+                v_ = expr()
+                if peek() != ')' or v_ < 0: raise ValueError('SPACE_POINT_INVALID')
+                pos[0] += 1
+                return math.sqrt(v_)
+            if peek() == '(':
+                pos[0] += 1
+                v_ = expr()
+                if peek() != ')': raise ValueError('SPACE_POINT_INVALID')
+                pos[0] += 1
+                return v_
+            m = re.match(r'\d+(?:\.\d+)?', s[pos[0]:])
+            if not m: raise ValueError('SPACE_POINT_INVALID')
+            pos[0] += len(m.group(0))
+            return float(m.group(0))
+
+        def unary():
+            if peek() == '-':
+                pos[0] += 1
+                return -unary()
+            if peek() == '+':
+                pos[0] += 1
+                return unary()
+            return atom()
+
+        def term():
+            v_ = unary()
+            while peek() in ('*', '/'):
+                op = peek()
+                pos[0] += 1
+                t_ = unary()
+                v_ = v_ * t_ if op == '*' else v_ / t_
+            return v_
+
+        def expr():
+            v_ = term()
+            while peek() in ('+', '-'):
+                op = peek()
+                pos[0] += 1
+                t_ = term()
+                v_ = v_ + t_ if op == '+' else v_ - t_
+            return v_
+        try: v = expr()
+        except ZeroDivisionError: raise ValueError('SPACE_POINT_INVALID') from None
+        if pos[0] != len(s): raise ValueError('SPACE_POINT_INVALID')
+    else: raise ValueError('SPACE_POINT_INVALID')
+    if not math.isfinite(v) or abs(v) > 1000: raise ValueError('SPACE_POINT_INVALID')
+    return v
+
+
+def space_vector(list_, code='SPACE_POINT_INVALID'):
+    if not isinstance(list_, list) or len(list_) != 3: raise ValueError(code)
+    try: return tuple(space_number(x) for x in list_)
+    except ValueError: raise ValueError(code) from None
+
+
+def space_places(space, named, norm):
+    """id -> 3D point of the plan's space points, in the order written (a later point may use an earlier one); named: the solids' points (name -> (sid, px, p)); ValueError with the plan's code"""
+    specs = space.get('points')
+    if not isinstance(specs, list) or len(specs) < 1: raise ValueError('SPACE_POINT_INVALID')
+    if len(specs) > 16: raise ValueError('SPACE_POINT_LIMIT')
+    pts, flags = {}, {}
+    later = {e.get('id') for e in specs if isinstance(e, dict)}
+
+    def lookup(key, code='SPACE_POINT_INVALID'):
+        if not isinstance(key, str): raise ValueError(code)
+        if key in pts: return pts[key]
+        k = norm(key, code) if '#' in key else key
+        if k in pts: return pts[k]
+        if k not in named: raise ValueError(code + (':forward:' if key in later else ':') + key[:12])
+        return named[k][2]
+
+    def places(list_, n):
+        if not isinstance(list_, list) or len(list_) != n or len(set(map(str, list_))) != n: raise ValueError('SPACE_POINT_INVALID')
+        return [lookup(k) for k in list_]
+    for entry in specs:
+        if not isinstance(entry, dict) or set(entry) - {'id', 'at', 'hideName', 'hideDot'}: raise ValueError('SPACE_POINT_INVALID')
+        ident = entry.get('id')
+        if not isinstance(ident, str) or not SPACE_POINT_NAME.fullmatch(ident): raise ValueError('SPACE_POINT_INVALID')
+        if ident in named or ident in pts: raise ValueError('SPACE_POINT_DUPLICATE:' + ident)
+        if any(entry.get(f) is not None and not isinstance(entry[f], bool) for f in ('hideName', 'hideDot')): raise ValueError('SPACE_POINT_INVALID')
+        at = entry.get('at')
+        if isinstance(at, list): p = space_vector(at)
+        else:
+            if not isinstance(at, dict): raise ValueError('SPACE_POINT_INVALID')
+            kinds = [k for k in SPACE_AT_KINDS if at.get(k) is not None]
+            if len(kinds) != 1: raise ValueError('SPACE_POINT_INVALID')
+            kind = kinds[0]
+            if set(at) - ({'divide', 'ratio', 'external'} if kind == 'divide' else {kind}): raise ValueError('SPACE_POINT_INVALID')
+            if kind == 'divide':
+                if at.get('external') is not None and not isinstance(at['external'], bool): raise ValueError('SPACE_POINT_INVALID')
+                A, B = places(at['divide'], 2)
+                m = re.fullmatch(r'([1-9]\d?):([1-9]\d?)', at['ratio']) if isinstance(at.get('ratio'), str) else None
+                if not m: raise ValueError('SOLID_AUX_POINT_RATIO_INVALID')
+                a, b = int(m.group(1)), int(m.group(2))
+                if at.get('external') is True:
+                    if a == b: raise ValueError('SOLID_AUX_POINT_RATIO_INVALID')
+                    t = a / (a - b)
+                else: t = a / (a + b)
+                p = tuple(A[k] + (B[k] - A[k]) * t for k in range(3))
+            elif kind == 'midpoint':
+                A, B = places(at['midpoint'], 2)
+                p = tuple((A[k] + B[k]) / 2 for k in range(3))
+            elif kind == 'centroid':
+                A, B, C = places(at['centroid'], 3)
+                p = tuple((A[k] + B[k] + C[k]) / 3 for k in range(3))
+            elif kind == 'footOnLine':
+                f = at['footOnLine']
+                if not isinstance(f, dict) or set(f) - {'from', 'line'}: raise ValueError('SPACE_POINT_INVALID')
+                P = lookup(f.get('from'))
+                A, B = places(f.get('line'), 2)
+                d = vsub(B, A)
+                if vdot(d, d) < 1e-12: raise ValueError('SOLID_AUX_FOOT_DEGENERATE')
+                p = vadd(A, vmul(d, vdot(vsub(P, A), d) / vdot(d, d)))
+                if vlen(vsub(p, P)) < 1e-6: raise ValueError('SOLID_AUX_FOOT_DEGENERATE')
+                check_foot_on_line(P, A, B, p)
+            else:
+                f = at['projection']
+                if not isinstance(f, dict) or set(f) - {'from', 'plane'}: raise ValueError('SPACE_POINT_INVALID')
+                P = lookup(f.get('from'))
+                A, B, M = places(f.get('plane'), 3)
+                n = vcross(vsub(B, A), vsub(M, A))
+                if vlen(n) < 1e-9: raise ValueError('SOLID_PROJECTION_PLANE_DEGENERATE')
+                u = vunit(n)
+                p = vsub(P, vmul(u, vdot(vsub(P, A), u)))
+                if vlen(vsub(p, P)) < 1e-6: raise ValueError('SOLID_AUX_FOOT_DEGENERATE')
+                check_projection(P, A, B, M, p)
+        later.discard(ident)
+        pts[ident] = p
+        flags[ident] = {'hideName': entry.get('hideName') is True, 'hideDot': entry.get('hideDot') is True}
+    return pts, flags
+
+
+def _plane_of_points(pts):
+    """the depth-test frame of a planar polygon of 3D points (same shape as _plane_of)"""
+    n = (0.0, 0.0, 0.0)
+    for i in range(len(pts)): n = vadd(n, vcross(pts[i], pts[(i + 1) % len(pts)]))
+    n = vunit(n)
+    helper = (1.0, 0.0, 0.0) if abs(n[0]) < 0.9 else (0.0, 1.0, 0.0)
+    e1 = vunit(vcross(n, helper))
+    e2 = vcross(n, e1)
+    flat = [(vdot(vsub(p, pts[0]), e1), vdot(vsub(p, pts[0]), e2)) for p in pts]
+    return {'n': n, 'p0': pts[0], 'e1': e1, 'e2': e2, 'flat': flat}
+
+
+def space_runs(hidden_at):
+    """runs (t0, t1, hidden) of a segment: 160 samples, each change located by bisection"""
+    n = 160
+    flags = [hidden_at((k + 0.5) / n) for k in range(n)]
+    cuts = [0.0]
+    for k in range(1, n):
+        if flags[k] != flags[k - 1]:
+            lo, hi = (k - 0.5) / n, (k + 0.5) / n
+            fl = flags[k - 1]
+            for _ in range(42):
+                mid = (lo + hi) / 2
+                if hidden_at(mid) == fl: lo = mid
+                else: hi = mid
+            cuts.append((lo + hi) / 2)
+    cuts.append(1.0)
+    runs, state = [], flags[0]
+    for c in range(len(cuts) - 1):
+        runs.append((cuts[c], cuts[c + 1], state))
+        state = not state
+    return runs
+
+
+def space_scale(plan, root, errors):
+    """the scale of a figure made of a space alone: the fit of the point dots to the projected points (the declared scale when there are fewer than two)"""
+    declared = float(root.get('data-scale') or 0)
+    try: pts, _ = space_places(plan['space'], {}, make_norm([], {}))
+    except ValueError as exc:
+        errors.append(str(exc))
+        return None
+    pairs = []
+    for e in root.iter(NS + 'circle'):
+        if e.get('data-role') == 'space-point' and e.get('data-point') in pts:
+            q = project(pts[e.get('data-point')])
+            pairs.append(((q[0], -q[1]), (_num(e, 'cx'), _num(e, 'cy'))))
+    # the scale the dots themselves show: the median over every pair of dots of (distance on the page / distance of the projected points), so one displaced dot does not drag it
+    ests = []
+    for i in range(len(pairs)):
+        for j in range(i + 1, len(pairs)):
+            (qa, sa), (qb, sb) = pairs[i], pairs[j]
+            dq2 = (qa[0] - qb[0]) ** 2 + (qa[1] - qb[1]) ** 2
+            if dq2 > 1e-12: ests.append(((sa[0] - sb[0]) * (qa[0] - qb[0]) + (sa[1] - sb[1]) * (qa[1] - qb[1])) / dq2)
+    shown = _median(ests) if ests else None
+    if declared and shown is not None and abs(shown - declared) > 0.012 * declared: errors.append('SOLID_DECLARED_SCALE_MISMATCH')
+    return declared or shown
+
+
+def _median(values):
+    v = sorted(values)
+    return v[len(v) // 2] if len(v) % 2 else (v[len(v) // 2 - 1] + v[len(v) // 2]) / 2
+
+
+def audit_space(plan, ctx, named, norm, scale, solids):
+    """G4b: the points, segments (and planes, lines) of plan.space against the SVG; registers every point in `named` (name -> (space, px, 3D point))"""
+    root, errors = ctx['root'], ctx['errors']
+    space = plan.get('space')
+    if space is None: return
+    if not isinstance(space, dict) or set(space) - {'points', 'segments'}:
+        errors.append('SPACE_POINT_INVALID')
+        return
+    try: pts, flags = space_places(space, named, norm)
+    except ValueError as exc:
+        errors.append(str(exc))
+        return
+    # one frame: the dots (and the ends of the segment pieces) give the translation by their median
+    dots = {}
+    for e in root.iter(NS + 'circle'):
+        if e.get('data-role') == 'space-point': dots.setdefault(e.get('data-point'), []).append(e)
+    pieces = {}
+    for e in root.iter(NS + 'line'):
+        if e.get('data-role') == 'space-segment': pieces.setdefault(e.get('data-edge') or '', []).append(e)
+    pairs = []
+    for ident, els in dots.items():
+        if ident in pts and len(els) == 1: pairs.append((pts[ident], (_num(els[0], 'cx'), _num(els[0], 'cy'))))
+    if not pairs:
+        for key, els in pieces.items():
+            a, b = split_edge(key)
+            for e in els:
+                if a in pts and abs(float(e.get('data-t0') or 0)) < 1e-9: pairs.append((pts[a], (_num(e, 'x1'), _num(e, 'y1'))))
+                if b in pts and abs(float(e.get('data-t1') or 0) - 1) < 1e-9: pairs.append((pts[b], (_num(e, 'x2'), _num(e, 'y2'))))
+    if not pairs:
+        errors.append('SPACE_FRAME_UNKNOWN')
+        return
+    tx = _median([xy[0] - scale * project(p)[0] for p, xy in pairs])
+    ty = _median([xy[1] + scale * project(p)[1] for p, xy in pairs])
+
+    def px(p):
+        q = project(p)
+        return (tx + scale * q[0], ty - scale * q[1])
+    ctx['space_frame'] = (tx, ty, px)
+    origin = [float(v) for v in (root.get('data-origin') or '').split()]
+    # a space with solids reads the solids' own (side by side shifted) places: the frame is then the median alone; a space alone has the declared origin
+    if not solids and len(origin) == 2 and math.hypot(origin[0] - tx, origin[1] - ty) > POS_TOL: errors.append('SPACE_ORIGIN_MISMATCH')
+    for ident, p in pts.items(): named[ident] = ('space', px(p), p)
+    # the dots: one on every point that shows one, in place
+    want = sorted(i for i, f in flags.items() if not f['hideDot'])
+    if sorted(dots) != want or any(len(v) != 1 for v in dots.values()): errors.append('SPACE_POINT_SET_MISMATCH')
+    for ident, els in dots.items():
+        if ident in pts and len(els) == 1:
+            q = px(pts[ident])
+            if math.hypot(_num(els[0], 'cx') - q[0], _num(els[0], 'cy') - q[1]) > POS_TOL: errors.append('SPACE_POINT_OFF:' + ident)
+    ctx['space_names'] = [i for i, f in flags.items() if not f['hideName']]
+    # the depth test: every face of every polyhedron (and, below, every plane) between a point and the viewer hides it
+    occluders = []
+    for solid in solids:
+        if solid['cat'] == 'POLY': occluders.append((solid, {fi: _plane_of(solid, f) for fi, f in enumerate(solid['faces'])}))
+    audit_space_segments(space, ctx, named, norm, px, occluders, pieces)
+    ctx['space_occluders'] = occluders
+    ctx['space_px'] = px
+
+
+def audit_space_segments(space, ctx, named, norm, px, occluders, pieces):
+    errors = ctx['errors']
+    specs = space.get('segments') or []
+    if not isinstance(specs, list) or len(specs) > 16:
+        errors.append('SPACE_SEGMENT_INVALID')
+        return
+    expected = {}
+    for s_ in specs:
+        try:
+            if not isinstance(s_, dict) or set(s_) - {'from', 'to', 'style', 'role'}: raise ValueError('SPACE_SEGMENT_INVALID')
+            a, b = norm(s_.get('from'), 'SPACE_SEGMENT_INVALID'), norm(s_.get('to'), 'SPACE_SEGMENT_INVALID')
+        except ValueError as exc:
+            errors.append(str(exc))
+            return
+        style, role = s_.get('style') or 'SOLID', s_.get('role') or 'REF'
+        if a == b or style not in ('SOLID', 'DASHED', 'AUTO') or role not in ('ACCENT', 'REF') or join_keys([a, b]) in expected: errors.append('SPACE_SEGMENT_INVALID')
+        expected[join_keys([a, b])] = (a, b, style, role)
+    if sorted(pieces) != sorted(expected): errors.append('SPACE_SEGMENT_SET_MISMATCH')
+    for key, (a, b, style, role) in expected.items():
+        els = sorted(pieces.get(key, []), key=lambda e: float(e.get('data-t0') or 0))
+        if not els or a not in named or b not in named: continue
+        A, B = named[a][2], named[b][2]
+        pa, pb = px(A), px(B)
+        if style == 'AUTO':
+            def hidden_at(t, A=A, B=B):
+                P = vadd(A, vmul(vsub(B, A), t))
+                return any(hidden_by_faces(solid, planes, P, set()) for solid, planes in occluders)
+            runs = space_runs(hidden_at)
+        else: runs = [(0.0, 1.0, style == 'DASHED')]
+        runs = [r for r in runs if math.hypot((r[1] - r[0]) * (pb[0] - pa[0]), (r[1] - r[0]) * (pb[1] - pa[1])) >= 0.4]
+        if len(runs) != len(els):
+            errors.append('SPACE_SEGMENT_RUNS_MISMATCH:' + key)
+            continue
+        for (t0, t1, hid), e in zip(runs, els):
+            d0, d1 = float(e.get('data-t0') or 0), float(e.get('data-t1') or 0)
+            if abs(d0 - t0) > 1.5e-3 or abs(d1 - t1) > 1.5e-3: errors.append('SPACE_SEGMENT_RUN_BOUNDARY:' + key)
+            for (x, y), t in (((_num(e, 'x1'), _num(e, 'y1')), d0), ((_num(e, 'x2'), _num(e, 'y2')), d1)):
+                if math.hypot(x - (pa[0] + (pb[0] - pa[0]) * t), y - (pa[1] + (pb[1] - pa[1]) * t)) > POS_TOL: errors.append('SPACE_SEGMENT_ENDPOINT_OFF:' + key)
+            _stroke_ok(e, hid, errors, 'space-segment-' + key)
+            if e.get('data-style') != style or e.get('data-accent') != role or e.get('stroke') != ('#c0392b' if role == 'ACCENT' else '#111'): errors.append('SPACE_SEGMENT_STYLE_MISMATCH:' + key)
+        ctx['segments'].extend(((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2'))) for e in els)
+
+
 def expanded_solid_specs(plan):
     """the plan's solids with an id each (by their place in the plan), the balls of a cylinder (stack:{count,radius} or inside:[{kind,radius,centerZ?}]) turned into nested spheres s1b1, s1b2, ...
     (a ball without centerZ rests on the ball before it, the first on the bottom). Written here from the grammar alone."""
     out = []
-    for i, spec in enumerate(plan['solids']):
+    for i, spec in enumerate(plan.get('solids') or []):
         ident = spec.get('id') or 's%d' % (i + 1)
         stack, inside = spec.get('stack'), spec.get('inside')
         if stack is None and not isinstance(inside, list):
@@ -3145,6 +3468,7 @@ def expected_dim_values(plan, ctx):
             spec_points = next((x.get('points') for x in solids_with_ids(plan) if x.get('id') == s['id']), None)
             if isinstance(spec_points, list): names += ['name-' + x['id'] for x in spec_points if isinstance(x, dict) and isinstance(x.get('id'), str)]
         else: names += ['name-' + n for n, _, _ in s['points'] if n]
+    names += ['name-' + n for n in ctx.get('space_names') or []]
     ctx['expected_name_labels'] = names
     return out
 
