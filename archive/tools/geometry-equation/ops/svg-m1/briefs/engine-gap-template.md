@@ -29,7 +29,7 @@
 ## 실제 문항 (최신 고등 26→25→24)
 - 시험지 경로 #번호, 문제 그림 경로, 그려야 할 것 한 줄.
 - 기존 해설 그림 확인: 문항 객체에 `solutionImage`로 시작하는 키가 하나라도 있으면 그 그림을 렌더해 새 그림과 비교, 정답 노출 여부와 더 나은지 한 줄.
-- 각각 plan.json, out/figure-solution.svg, figure.png, publish.json {alt,caption,size}(최종 답·정답 번호 금지; 문제가 준 값·풀이 중간값은 가능), item.json.
+- 각각 plan.json, out/figure-solution.svg, figure.png, publish.json {alt,caption,size}(해설의 중간값은 무조건, 정답도 넣어도 됨 — BRIEF_RULES 규칙 11), item.json.
 
 ## 완료 기준
 - 관련 단위 테스트 추가·통과(전체 스위트 금지). 관측기 변조 테스트. 기존 테스트를 바꿨으면 이유를 커밋 본문에.
