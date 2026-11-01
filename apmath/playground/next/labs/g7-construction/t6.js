@@ -75,7 +75,7 @@
         else { const o = [[A, B], [B, g.E], [g.E, D], [D, A]][pk.q]; ang(b, Pp, o[0], o[1], { color: 'rose', rings: 1, label: '?', r: 24, labelDist: 44, size: 15 }); }
       }
       [[A, 'A'], [B, 'B'], [Cp, 'C'], [D, 'D'], [E, 'E']].forEach(([p, n]) => { b.point(p, { color: 'ink', r: 4.6 }); const o = n === 'C' ? pt(0, 1) : p; if (n === 'C') T(b, p, 'C', { dy: 18, size: 17 }); else tagOut(b, p, cen, n, { size: 17, gap: n === 'B' || n === 'E' ? 12 : 11 }); });
-      if ((prob && pk.kind !== 0) || st >= 4 || C.tab === 'explore') { if (Pp) { b.point(Pp, { color: 'rose', r: 4.2 }); if (C.txt) T(b, Pp, 'P', { dx: 12, dy: 16, size: 16, color: 'rose' }); } }
+      if ((prob ? pk.kind !== 0 : st >= 4) || C.tab === 'explore') { if (Pp) { b.point(Pp, { color: 'rose', r: 4.2 }); if (C.txt) T(b, Pp, 'P', { dx: 12, dy: 16, size: 16, color: 'rose' }); } }
       if (C.txt && !prob) {
         const msgs = ['같은 길이: AB=BC=CA, CD=DE=EC', '두 각 ∠BCD, ∠ACE는 모두 120°', t >= 0.999 ? '△BCD가 △ACE에 겹쳐요 → 합동 (SAS)' : '△BCD를 점 C 둘레로 60° 돌려요', `합동이라서 BD = AE, 두 선분이 이루는 각 ∠APB = ${dg(M.apb)}`];
         const m = C.review ? msgs[Math.min(3, Math.max(0, st - 1))] : t >= 0.999 ? msgs[2] : t > 0 ? msgs[2] : '▶를 눌러 △BCD를 돌려 보세요';
@@ -240,10 +240,10 @@
       const pk = M.pk, key = `k${pk.kind}.${pk.k}.${pk.x}.${pk.m}.${pk.n}.${pk.p}.${pk.q}.${pk.th}`;
       if ((pk.kind || 0) === 0) {
         const { k, x, m, n } = pk, ex = `${k}x${m > 0 ? '+' : '−'}${Math.abs(m)}`;
-        return { tag: '숨은 합동 · 정사각형 두 개와 길이', key, stem: `그림에서 □ABCD와 □AEFG는 정사각형이다. $\\overline{BE}=(${ex})$ cm, $\\overline{DG}=${n}$ cm일 때, $x$의 값은?`, choices: mkChoices(x, [[n, `${n}은 선분 DG의 길이예요. 대응변의 길이가 같으므로 $${ex}=${n}$을 풀어서 x를 구해요.`], [(n + m) / k, '상수항을 옮길 때 부호를 확인하세요.'], [x + 1, '식을 풀 때 계산이 틀렸어요.'], [x - 1, '식을 풀 때 계산이 틀렸어요.'], [k * x + m, 'x가 아니라 선분의 길이예요.']], { tex: (v) => String(v), plain: (v) => String(v), valid: (v) => Number.isInteger(v) && v > 0, pad: 1 }) };
+        return { tag: '숨은 합동 · 정사각형 두 개와 길이', key, stem: `그림에서 □ABCD와 □AEFG는 정사각형이다. $\\overline{BE}=(${ex})$ cm, $\\overline{DG}=${n}$ cm일 때, $x$의 값은?`, choices: mkChoices(x, [[n, `${n}${G.josa(n, '은', '는')} 선분 DG의 길이예요. 대응변의 길이가 같으므로 $${ex}=${n}$${G.josa(n, '을', '를')} 풀어서 x를 구해요.`], [(n + m) / k, '상수항을 옮길 때 부호를 확인하세요.'], [x + 1, '식을 풀 때 계산이 틀렸어요.'], [x - 1, '식을 풀 때 계산이 틀렸어요.'], [k * x + m, 'x가 아니라 선분의 길이예요.']], { tex: (v) => String(v), plain: (v) => String(v), valid: (v) => Number.isInteger(v) && v > 0, pad: 1 }) };
       }
       const { p, x, q, th } = pk, ex = `${p}x${q > 0 ? '+' : '−'}${Math.abs(q)}`;
-      return { tag: '숨은 합동 · 정사각형 두 개와 각', key, stem: `그림에서 □ABCD와 □AEFG는 정사각형이다. $\\angle BAE=(${ex})^{\\circ}$, $\\angle DAG=${th}^{\\circ}$일 때, $x$의 값은?`, choices: mkChoices(x, [[th, '∠DAG의 크기예요. $' + ex + '=' + th + '$을 풀어야 해요.'], [(th + q) / p, '상수항을 옮길 때 부호를 확인하세요.'], [x + 1, '식을 풀 때 계산이 틀렸어요.'], [x - 1, '식을 풀 때 계산이 틀렸어요.'], [90 - th, '∠EAD의 크기예요. ∠BAE=∠DAG를 이용해요.']], { tex: (v) => String(v), plain: (v) => String(v), valid: (v) => Number.isInteger(v) && v > 0, pad: 1 }) };
+      return { tag: '숨은 합동 · 정사각형 두 개와 각', key, stem: `그림에서 □ABCD와 □AEFG는 정사각형이다. $\\angle BAE=(${ex})^{\\circ}$, $\\angle DAG=${th}^{\\circ}$일 때, $x$의 값은?`, choices: mkChoices(x, [[th, `${th}${G.josa(th, '은', '는')} ∠DAG의 크기예요. $${ex}=${th}$${G.josa(th, '을', '를')} 풀어야 해요.`], [(th + q) / p, '상수항을 옮길 때 부호를 확인하세요.'], [x + 1, '식을 풀 때 계산이 틀렸어요.'], [x - 1, '식을 풀 때 계산이 틀렸어요.'], [90 - th, '∠EAD의 크기예요. ∠BAE=∠DAG를 이용해요.']], { tex: (v) => String(v), plain: (v) => String(v), valid: (v) => Number.isInteger(v) && v > 0, pad: 1 }) };
     },
     verify: (s) => { const g = geo3(s.cnKa, Math.min(s.cnKe, s.cnKa), s.cnKth); return { ans: [dist(g.B, g.E), angBetween(g.A, g.B, g.E)], model: [dist(g.D, g.G), angBetween(g.A, g.D, g.G)] }; }
   };

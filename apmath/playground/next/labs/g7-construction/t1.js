@@ -406,7 +406,7 @@
       const px = C.problem ? (M.pk.px || 1.4) : M.px, ph = C.problem ? (M.pk.ph || 3.8) : M.ph;
       const g = drawPar(b, { px, ph, al: 0, r: 1.4, mode: 'corr' }, C, fs, { ticks: !C.problem, marks: !C.problem && done.length >= 6, arrows: !C.problem && done.length >= 6 });
       if (C.txt && !C.problem) {
-        if (C.review) caption(b, `${C.step}단계: ${SNT[C.step - 1]}`, 'amber', 2.2);
+        if (C.review) { if (C.step >= 1) caption(b, `${C.step}단계: ${SNT[C.step - 1]}`, 'amber', 2.2); }
         else if (M.msg) caption(b, M.msg.text, 'rose', 2.2);
         else caption(b, done.length >= 6 ? '평행선을 모두 작도했어요! l ∥ m' : done.length ? `${done.length}단계 완료 · 다음 일을 골라 보세요` : '아래 칩에서 첫 번째 일을 골라 보세요', done.length >= 6 ? 'green' : 'amber', 2.2);
       }

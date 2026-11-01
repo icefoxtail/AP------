@@ -199,6 +199,9 @@
   const degF = (v) => fmtN(v) + '°';
   const cmF = (v) => fmtN(v) + ' cm';
 
+  // 숫자 뒤 조사: 받침 있는 숫자(0 1 3 6 7 8)는 첫째, 없으면 둘째
+  const josa = (n, a, b) => ([0, 1, 3, 6, 7, 8].includes(Math.abs(Math.round(n)) % 10) ? a : b);
+
   /* ------------------------------------------------------------------ 안정된 무작위(같은 키 → 같은 순서) */
   function seeded(key) {
     let h = 1779033703 ^ String(key).length;
@@ -410,6 +413,6 @@
     pt, add, sub, mul, len, dist, unit, mid, lerp, polar, dirDeg, rotP, angBetween, cross, inter, polyArea, centroid, pick, rint, bboxOf, unionBox, shiftPts,
     triSSS, triSAS, triASA, sidesOf, anglesOf, sameTri,
     textW, T, tagOut, vtx, sideTag, lenTag, ang, tick, par, fillPoly, line, poly, arcPart, drawTri, fit, P, degF, cmF,
-    seeded, shuffle, mkChoices, mkTextChoices, baseCtx, showAt, makeScene, register, notes, rd
+    josa, seeded, shuffle, mkChoices, mkTextChoices, baseCtx, showAt, makeScene, register, notes, rd
   };
 })();

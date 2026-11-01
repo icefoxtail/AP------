@@ -313,14 +313,14 @@
         return {
           tag: '합동인 도형의 성질 · 변의 길이', key: `s${k}.${x}.${m}.${n}`,
           stem: `그림에서 △ABC ≡ △DEF이다. $\\overline{BC}=(${ex})$ cm, $\\overline{EF}=${n}$ cm일 때, $x$의 값은?`,
-          choices: mkChoices(x, [[n, '대응변의 길이가 같다고 식을 세워야 해요. $' + ex + '=' + n + '$을 풀어 보세요.'], [(n + m) / k, '부호를 확인하세요. 상수항을 옮길 때 부호가 바뀌어요.'], [x + 1, '식을 풀 때 계산이 틀렸어요.'], [x - 1, '식을 풀 때 계산이 틀렸어요.'], [k * x + m, 'x가 아니라 변의 길이예요.']], { tex: (v) => String(v), plain: (v) => String(v), valid: (v) => Number.isInteger(v) && v > 0, pad: 1 })
+          choices: mkChoices(x, [[n, `대응변의 길이가 같다고 식을 세워야 해요. $${ex}=${n}$${G.josa(n, '을', '를')} 풀어 보세요.`], [(n + m) / k, '부호를 확인하세요. 상수항을 옮길 때 부호가 바뀌어요.'], [x + 1, '식을 풀 때 계산이 틀렸어요.'], [x - 1, '식을 풀 때 계산이 틀렸어요.'], [k * x + m, 'x가 아니라 변의 길이예요.']], { tex: (v) => String(v), plain: (v) => String(v), valid: (v) => Number.isInteger(v) && v > 0, pad: 1 })
         };
       }
       const { p, x, q, r } = pk, ex = `${p}x${q > 0 ? '+' : '−'}${Math.abs(q)}`;
       return {
         tag: '합동인 도형의 성질 · 각의 크기', key: `a${p}.${x}.${q}.${r}`,
         stem: `그림에서 △ABC ≡ △DEF이다. $\\angle B=(${ex})^{\\circ}$, $\\angle E=${r}^{\\circ}$일 때, $x$의 값은?`,
-        choices: mkChoices(x, [[r, '대응각의 크기가 같다고 식을 세워야 해요. $' + ex + '=' + r + '$을 풀어 보세요.'], [(r + q) / p, '부호를 확인하세요. 상수항을 옮기면 부호가 바뀌어요.'], [x + 1, '식을 풀 때 계산이 틀렸어요.'], [x - 1, '식을 풀 때 계산이 틀렸어요.'], [180 - r - pk.A, '∠C의 크기를 구했어요. x를 구해야 해요.']], { tex: (v) => String(v), plain: (v) => String(v), valid: (v) => Number.isInteger(v) && v > 0, pad: 1 })
+        choices: mkChoices(x, [[r, `대응각의 크기가 같다고 식을 세워야 해요. $${ex}=${r}$${G.josa(r, '을', '를')} 풀어 보세요.`], [(r + q) / p, '부호를 확인하세요. 상수항을 옮기면 부호가 바뀌어요.'], [x + 1, '식을 풀 때 계산이 틀렸어요.'], [x - 1, '식을 풀 때 계산이 틀렸어요.'], [180 - r - pk.A, '∠C의 크기를 구했어요. x를 구해야 해요.']], { tex: (v) => String(v), plain: (v) => String(v), valid: (v) => Number.isInteger(v) && v > 0, pad: 1 })
       };
     }
   };
