@@ -128,6 +128,27 @@ function sourceAssetPath(value) {
   return relative;
 }
 
+// Exam images are served from Cloudflare R2 (public custom domain), NOT from the Pages site: the Pages package no
+// longer ships archive/assets/images (tools/archive-pages-release-manifest.json). Same key mapping as the browsers'
+// archive/archive-asset-base.js: assets/images/<key> -> <base>/exams/images/<encoded key>. The Worker fetches
+// server-side, so no CORS is involved. Set EXAM_IMAGE_BASE_URL to "" to read the Pages copy instead (rollback:
+// re-include the images in the Pages package first, see tools/r2/EXAM_IMAGE_BASE.md).
+export const DEFAULT_EXAM_IMAGE_BASE_URL = "https://img.wangjiedu.com";
+export function examImageR2Url(env, assetPath) {
+  const configured = env && env.EXAM_IMAGE_BASE_URL !== undefined && env.EXAM_IMAGE_BASE_URL !== null
+    ? env.EXAM_IMAGE_BASE_URL
+    : DEFAULT_EXAM_IMAGE_BASE_URL;
+  const base = String(configured).trim().replace(/\/+$/, "");
+  if (!base) return null;
+  const match = /^assets\/images\/(.+)$/i.exec(String(assetPath || ""));
+  if (!match) return null;
+  let key = match[1];
+  try { key = decodeURIComponent(key); } catch { return null; }
+  const parts = key.split("/");
+  if (parts.length < 2 || parts.some((part) => !part || part === "." || part === "..")) return null;
+  return new URL(`${base}/exams/images/${parts.map(encodeURIComponent).join("/")}`);
+}
+
 function bytesToBase64(bytes) {
   let binary = "";
   for (let i = 0; i < bytes.length; i += 0x8000)
@@ -145,10 +166,22 @@ async function embedSavedPaperAssets(env, questions) {
     const path = sourceAssetPath(value);
     if (!path) return value;
     if (cache.has(path)) return cache.get(path);
-    const url = new URL(path, base);
-    const response = env.ARCHIVE2_ASSETS
-      ? await env.ARCHIVE2_ASSETS.fetch(url)
-      : await fetch(url);
+    let response = null;
+    const r2Url = examImageR2Url(env, path);
+    if (r2Url) {
+      try { response = await fetch(r2Url); } catch { response = null; }
+      if (response && !response.ok) {
+        try { await response.body?.cancel(); } catch { /* body already closed */ }
+        response = null;
+      }
+    }
+    if (!response) {
+      // R2 unavailable (or EXAM_IMAGE_BASE_URL is ""): the Pages copy, which exists only after a rollback re-includes it.
+      const url = new URL(path, base);
+      response = env.ARCHIVE2_ASSETS
+        ? await env.ARCHIVE2_ASSETS.fetch(url)
+        : await fetch(url);
+    }
     if (!response.ok) fail("문제지 이미지 파일을 저장할 수 없습니다.", 409);
     const reader = response.body?.getReader();
     let bytes;

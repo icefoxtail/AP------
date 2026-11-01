@@ -132,6 +132,39 @@ async function main() {
 
     await send('Runtime.enable');
     await send('Page.enable');
+    // The staged package carries no exam images (they live on Cloudflare R2). The page asks img.wangjiedu.com for them;
+    // this smoke runs on 127.0.0.1, which the bucket's CORS does not allow, so those requests are answered from the
+    // repository's archive/assets/images (with an Access-Control-Allow-Origin header) and counted. The staged site itself
+    // answers 404 for any same-origin archive/assets/images request, so a page that still needs the Pages copy fails here.
+    const examImageRequests = [];
+    const imageRoot = path.join(repoRoot, 'archive', 'assets', 'images');
+    socket.addEventListener('message', (event) => {
+      const message = JSON.parse(event.data);
+      if (message.method !== 'Fetch.requestPaused') return;
+      const { requestId, request } = message.params;
+      let status = 404, body = Buffer.from('Not Found'), contentType = 'text/plain';
+      try {
+        const url = new URL(request.url);
+        const prefix = '/exams/images/';
+        if (url.origin === 'https://img.wangjiedu.com' && url.pathname.startsWith(prefix)) {
+          const file = path.resolve(imageRoot, ...decodeURIComponent(url.pathname.slice(prefix.length)).split('/'));
+          const rel = path.relative(imageRoot, file);
+          examImageRequests.push(url.pathname.slice(prefix.length));
+          if (rel && !rel.startsWith('..') && !path.isAbsolute(rel) && fs.existsSync(file) && fs.statSync(file).isFile()) {
+            status = 200; body = fs.readFileSync(file); contentType = mimeTypes[path.extname(file).toLowerCase()] || 'application/octet-stream';
+          }
+        }
+      } catch { /* answered as 404 below */ }
+      send('Fetch.fulfillRequest', {
+        requestId, responseCode: status, body: body.toString('base64'),
+        responseHeaders: [
+          { name: 'Content-Type', value: contentType },
+          { name: 'Access-Control-Allow-Origin', value: '*' },
+          { name: 'Cache-Control', value: 'no-store' },
+        ],
+      }).catch(() => {});
+    });
+    await send('Fetch.enable', { patterns: [{ urlPattern: 'https://img.wangjiedu.com/*' }] });
     await send('Page.addScriptToEvaluateOnNewDocument', { source: `(()=>{
       window.__pagesSmokeScriptErrors=[];
       window.addEventListener('error',event=>{
@@ -219,6 +252,9 @@ async function main() {
         throw new Error(`Archive 1 ${mode} render or image asset failed: ${JSON.stringify(rendered)}`);
       archive1Modes.push({ mode: rendered.mode, questions: rendered.questions, pages: rendered.pages, images: rendered.images.length });
     }
+    const renderedImages = archive1Modes.reduce((sum, item) => sum + item.images, 0);
+    if (renderedImages > 0 && examImageRequests.length < 1)
+      throw new Error('Archive 1 rendered exam images but none was requested from img.wangjiedu.com (exam images are served from R2)');
 
     console.log('ARCHIVE_PAGES_SITE_CHROME_PASS ' + JSON.stringify({
       basePath, hub, frontendChecks, canonicalProjectionVersion: canonical.canonicalProjectionVersion,
@@ -228,6 +264,7 @@ async function main() {
       generatedConsumerRows: canonical.generatedConsumerRows,
       generatedShardStatus: canonical.generatedShardStatus,
       archive1Modes,
+      examImageRequestsFromR2: examImageRequests.length,
       apiMode: 'in-memory GET fixtures; non-read-only methods rejected',
       liveApiIntegration: false,
       readOnly: true,

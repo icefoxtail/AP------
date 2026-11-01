@@ -9,8 +9,10 @@
  *   DEFAULT_EXAM_IMAGE_BASE = ''                      -> same-origin relative URLs, byte-for-byte unchanged (pre-R2 behaviour).
  *
  * The default was switched to R2 on 2026-10-30 (bucket CORS is set for https://icefoxtail.github.io and
- * https://wangjiedu.com, see tools/r2/EXAM_IMAGE_BASE.md). Images stay in Git and in the Pages package, so an
- * external URL that fails to load falls back ONCE to the original same-origin URL.
+ * https://wangjiedu.com, see tools/r2/EXAM_IMAGE_BASE.md). Images stay in Git but, since 2026-11-01, are NOT in the
+ * Pages package (tools/archive-pages-release-manifest.json), so the one-time same-origin fallback below only helps when
+ * the images are shipped again (Rollback in tools/r2/EXAM_IMAGE_BASE.md); an external URL that fails to load falls back
+ * ONCE to the original same-origin URL.
  *
  * CORS mode: an external exam <img> is requested with crossorigin="anonymous" (crossOriginAttr / applyCrossOrigin)
  * so that print code can read its pixels (print_image_optimizer.js, html2canvas) and the browser cache keeps the

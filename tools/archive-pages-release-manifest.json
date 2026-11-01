@@ -32,7 +32,7 @@
     { "path": "shared", "reason": "Shared browser runtime modules." },
     { "path": "check", "reason": "Student check-in frontend." },
     { "path": "planner", "reason": "Student planner frontend." },
-    { "path": "archive/assets", "reason": "Referenced original and generated exam images and SVGs." },
+    { "path": "archive/assets", "exclude": ["images"], "reason": "Generated exam SVGs and solution assets. THE EXAM IMAGE SWITCH: archive/assets/images (about 478 MB) is NOT shipped because the pages load it from Cloudflare R2 (https://img.wangjiedu.com/exams/images/<key>); delete the \"exclude\" entry on this line to ship it again (tools/r2/EXAM_IMAGE_BASE.md, Rollback)." },
     { "path": "archive/exams", "reason": "Original exam sources opened directly by the student archive." },
     { "path": "archive/vendor", "reason": "Browser libraries and fonts loaded by archive renderers." },
     { "path": "archive/generated/lite", "reason": "Generated question JavaScript shards loaded by the archive." },

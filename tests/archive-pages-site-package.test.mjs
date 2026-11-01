@@ -407,3 +407,33 @@ test('the package refuses mixed data whose bytes, layout or rows do not match th
   crossed.mixedLookup.schemaVersion = 'archive2-mixed-source-verification-index-v1';
   assert.throws(() => addMixedSourceVerificationFiles(new Map(), root, crossed, 'fixture-index'), /does not match its index/);
 });
+
+// Exam images (archive/assets/images, about 478 MB) are served from Cloudflare R2 and are NOT part of the Pages package.
+// The only switch is the "exclude" entry of the archive/assets tree in tools/archive-pages-release-manifest.json.
+test('the release manifest keeps archive/assets/images out of the package and everything else under archive/assets in', () => {
+  const real = JSON.parse(fs.readFileSync(new URL('../tools/archive-pages-release-manifest.json', import.meta.url), 'utf8'));
+  const assets = real.trees.find((tree) => tree.path === 'archive/assets');
+  assert.ok(assets, 'archive/assets is still packaged (generated-lite and solution SVGs are loaded from the Pages host)');
+  assert.deepEqual(assets.exclude, ['images'], 'the exam image folder is the one exclusion');
+  assert.match(assets.reason, /EXAM IMAGE SWITCH/);
+  assert.equal(real.trees.some((tree) => tree.path === 'archive/assets/images'), false, 'no tree re-adds the images');
+});
+
+test('a tree that excludes images ships its other assets and no exam image, and dropping the exclusion ships them again', (t) => {
+  const { root, manifest } = fixture();
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  put(root, 'archive/assets/images/25_x_exam/q1.png', 'png');
+  put(root, 'archive/assets/images/25_x_exam/q2.svg', 'svg');
+  put(root, 'archive/assets/generated-lite/a.svg', 'generated');
+  put(root, 'archive/assets/solutions/s.svg', 'solution');
+  const real = JSON.parse(fs.readFileSync(new URL('../tools/archive-pages-release-manifest.json', import.meta.url), 'utf8'));
+  const excluding = { ...manifest, trees: [...manifest.trees, real.trees.find((tree) => tree.path === 'archive/assets')] };
+  const paths = planPagesSite({ sourceRoot: root, manifest: excluding }).entries.map((entry) => entry.path);
+  assert.deepEqual(paths.filter((p) => p.startsWith('archive/assets/images')), []);
+  assert.ok(paths.includes('archive/assets/generated-lite/a.svg'));
+  assert.ok(paths.includes('archive/assets/solutions/s.svg'));
+  const rollback = { ...manifest, trees: [...manifest.trees, { path: 'archive/assets', reason: 'rollback' }] };
+  const shipped = planPagesSite({ sourceRoot: root, manifest: rollback }).entries.map((entry) => entry.path);
+  assert.ok(shipped.includes('archive/assets/images/25_x_exam/q1.png') && shipped.includes('archive/assets/images/25_x_exam/q2.svg'),
+    'removing the exclude entry ships the images again');
+});
