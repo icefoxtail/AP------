@@ -286,7 +286,7 @@ window.questionBank = [
       "$2\\sqrt{6}$"
     ],
     "answer": "②",
-    "solution": "삼각형 ABC에서 $AC=6$, $BC=4\\sqrt3$, $\\angle ACB=30^\\circ$이다.\n\n$C$에서 $AB$에 내린 높이를 생각하면, 빗변 $AC$의 수평 성분은 $6\\cos30^\\circ=3\\sqrt3$이고 수직 성분은 $6\\sin30^\\circ=3$이다. 밑변 $BC=4\\sqrt3$이므로 두 수평 성분의 차는 $\\sqrt3$이다.\n\n따라서 피타고라스 정리로\n$AB=\\sqrt{(\\sqrt3)^2+3^2}=\\sqrt{12}=2\\sqrt3$이다. 정답은 ②이다.",
+    "solution": "삼각형 ABC에서 $AC=6$, $BC=4\\sqrt3$, $\\angle ACB=30^\\circ$이다.\n\n$A$에서 $BC$에 내린 수선의 발을 $H$라 하면, 직각삼각형 $AHC$에서 $CH=6\\cos30^\\circ=3\\sqrt3$, $AH=6\\sin30^\\circ=3$이다. $BC=4\\sqrt3$이므로 $BH=4\\sqrt3-3\\sqrt3=\\sqrt3$이다.\n\n따라서 피타고라스 정리로\n$AB=\\sqrt{(\\sqrt3)^2+3^2}=\\sqrt{12}=2\\sqrt3$이다. 정답은 ②이다.",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
