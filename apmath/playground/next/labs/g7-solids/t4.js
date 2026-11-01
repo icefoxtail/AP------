@@ -222,7 +222,7 @@
       `최단 거리 $\\overline{AA'} = ${M.R} + ${M.R} = ${2 * M.R}$ (cm)`
     ],
     view: (M) => ({
-      guide: 'r : R 칩으로 <b>중심각 60° / 180°</b>를 고르고 r 막대를 바꿔 보세요. 입체 위의 끈이 전개도의 직선 AA′에 대응돼요. 60°이면 정삼각형, 180°이면 지름이에요.',
+      guide: 'r : R 칩으로 <b>중심각 60° 또는 180°</b>를 고르고 r 막대를 바꿔 보세요. 입체 위의 끈이 전개도의 직선 AA′에 대응돼요. 60°이면 정삼각형, 180°이면 지름이에요.',
       readouts: [rd('r : R', `1 : ${M.kk}`, SKY), rd('중심각 x', M.ang + '°', ROSE, `360° × ${M.r}/${M.R}`), rd('최단 거리 AA′', cmv(M.ans), GRN, M.ang === 60 ? 'AA′ = R (정삼각형)' : 'AA′ = 2R (지름)', null, true)],
       status: { tone: 'ok', text: `최단 거리 = ${cmv(M.ans)}` },
       formula: M.ang === 60 ? `<p>중심각 60° → △OAA′은 정삼각형 → $\\overline{AA'} = R$ = <b>${M.R} cm</b></p>` : `<p>중심각 180° → A, O, A′가 일직선 → $\\overline{AA'} = 2R$ = <b>${2 * M.R} cm</b></p>`,

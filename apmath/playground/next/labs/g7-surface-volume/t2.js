@@ -307,7 +307,7 @@
         `(겉넓이) $=${tx(M.S)}+${tx(M.lat)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
       ],
       view: (M) => ({
-        guide: `위 칩에서 <b>(r, h, R) 모양</b>과 <b>겉넓이/부피</b>를 골라 보세요. ${span('amber', '높이 h')}는 수직으로 내린 점선, <b>모선 R</b>은 비스듬한 변이에요. 겉넓이에는 <b>R</b>, 부피에는 <b>h</b>를 써요.`,
+        guide: `위 칩에서 <b>(r, h, R) 모양</b>과 <b>겉넓이·부피</b>를 골라 보세요. ${span('amber', '높이 h')}는 수직으로 내린 점선, <b>모선 R</b>은 비스듬한 변이에요. 겉넓이에는 <b>R</b>, 부피에는 <b>h</b>를 써요.`,
         readouts: [
           rd('반지름 r', M.r + ' cm', 'ink'), rd('높이 h', M.h + ' cm', 'amber'), rd('모선 R', M.R + ' cm', 'sky'),
           rd('겉넓이 πr(r+R)', plainVal(M.tot) + ' cm²', M.mode === 'surf' ? 'green' : 'muted'), rd('부피 ⅓πr²h', plainVal(M.vol) + ' cm³', M.mode === 'vol' ? 'green' : 'muted')
@@ -498,7 +498,7 @@
         `(겉넓이) $=${tx(vadd(M.top, M.bot))}+${tx(M.lat)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
       ],
       view: (M) => ({
-        guide: `위 칩에서 <b>정사각뿔대/정사각뿔</b>과 <b>겉넓이/부피</b>를 고르고 <b>펼치기</b>를 끌어 보세요. ${span('green', '옆면')}은 합동인 ${M.kind === 'pyr' ? '삼각형' : '사다리꼴'} 4개예요. 옆면의 ${span('amber', '높이')}(점선)를 넓이에 써요.`,
+        guide: `위 칩에서 <b>정사각뿔대·정사각뿔</b>과 <b>겉넓이·부피</b>를 고르고 <b>펼치기</b>를 끌어 보세요. ${span('green', '옆면')}은 합동인 ${M.kind === 'pyr' ? '삼각형' : '사다리꼴'} 4개예요. 옆면의 ${span('amber', '높이')}(점선)를 넓이에 써요.`,
         readouts: M.mode === 'vol'
           ? [rd('큰 각뿔 V₂', plainVal(M.v2) + ' cm³', 'sky'), rd('작은 각뿔 V₁', plainVal(M.v1) + ' cm³', 'violet'), rd(M.kind === 'pyr' ? '부피' : '각뿔대의 부피', plainVal(M.vol) + ' cm³', 'green')]
           : [rd('밑면의 넓이 합', plainVal(vadd(M.top, M.bot)) + ' cm²', 'sky'), rd('옆면 1개의 넓이', plainVal(V(((M.a1 + M.a2) * M.lf) / 2)) + ' cm²', 'amber'), rd('옆넓이(4개)', plainVal(M.lat) + ' cm²', 'green'), rd('겉넓이', plainVal(M.tot) + ' cm²', 'amber')],

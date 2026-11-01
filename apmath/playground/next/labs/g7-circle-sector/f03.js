@@ -891,7 +891,7 @@
           rd('반지름 r · 거리 d', `r = ${fmtN(M.r)}, d = ${fmtN(M.d)}`, 'ink', M.rectEq ? 'd = r : 서로의 중심을 지나요' : 'd를 바꾸면 도형이 달라져요'),
           rd('직사각형', `${fmtN(M.d)} × ${fmtN(2 * M.r)}`, 'sky', '가로 d, 세로 2r'),
           rd('색칠한 부분', fmtN(M.area) + ' cm²', 'sky', '= 2r × d', 'sh', true),
-          rd('두 반원', '넓이가 같아요', CA, `π×${fmtN(M.r)}²/2 로 같은 크기`, 'bump')
+          rd('두 반원', '넓이가 같아요', CA, `π×$\\dfrac{${fmtN(M.r)}^2}{2}$ 로 같은 크기`, 'bump')
         ],
         status: { tone: 'ok', text: `색칠한 부분 = 직사각형 = ${fmtN(M.area)} cm²` },
         parts: [

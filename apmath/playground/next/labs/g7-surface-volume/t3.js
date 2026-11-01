@@ -419,8 +419,8 @@
         return [`${nm}의 반지름은 $r=${r}$예요.`, `${M.ask === 'S' ? '겉넓이' : '부피'}의 식은 $${f[M.ask]}$예요.${M.shape === 'half' && M.ask === 'S' ? ' (곡면 + 자른 면의 원)' : ''}`, `대입하면 $${tx(M.ans)}\\,\\mathrm{${M.ask === 'S' ? 'cm}^2' : 'cm}^3'}$예요.`];
       },
       view: (M) => ({
-        guide: `<b>반지름 막대</b>와 위 칩으로 <b>구/반구</b>, <b>구하는 것</b>을 골라 보세요. 겉넓이 $4\\pi r^2$과 부피 $\\frac{4}{3}\\pi r^3$을 반지름 하나로 모두 구할 수 있어요. 부피가 주어지면 ${span('amber', '반지름부터')} 구해요.`,
-        readouts: [rd('반지름 r', M.r + ' cm', 'amber'), rd(M.shape === 'full' ? '겉넓이 4πr²' : '겉넓이 3πr²', plainVal(M.S) + ' cm²', 'sky'), rd(M.shape === 'full' ? '부피 ⁴⁄₃πr³' : '부피 ⅔πr³', plainVal(M.V) + ' cm³', 'green')],
+        guide: `<b>반지름 막대</b>와 위 칩으로 <b>구·반구</b>, <b>구하는 것</b>을 골라 보세요. 겉넓이 $4\\pi r^2$과 부피 $\\frac{4}{3}\\pi r^3$을 반지름 하나로 모두 구할 수 있어요. 부피가 주어지면 ${span('amber', '반지름부터')} 구해요.`,
+        readouts: [rd('반지름 r', M.r + ' cm', 'amber'), rd(M.shape === 'full' ? '겉넓이 4πr²' : '겉넓이 3πr²', plainVal(M.S) + ' cm²', 'sky'), rd(M.shape === 'full' ? '부피 $\\dfrac{4}{3}\\pi r^3$' : '부피 ⅔πr³', plainVal(M.V) + ' cm³', 'green')],
         formula: `<p>(구) $S=4\\pi r^2,\\ V=\\frac{4}{3}\\pi r^3$ &nbsp;,&nbsp; (반구) $S=3\\pi r^2,\\ V=\\frac{2}{3}\\pi r^3$</p>`,
         rule: '구는 반지름 r 하나로 겉넓이($4\\pi r^2$)와 부피($\\frac{4}{3}\\pi r^3$)가 모두 정해져요',
         notes: notes('반구의 겉넓이는 $2\\pi r^2$이 아니라 자른 면 $\\pi r^2$까지 더한 <b>$3\\pi r^2$</b>이에요.', '부피 → 겉넓이 문제는 먼저 $r^3$을 구해 <b>반지름</b>을 찾고 겉넓이 식에 넣어요.')

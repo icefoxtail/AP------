@@ -1536,7 +1536,7 @@
     };
   }
   const GOAT_NOTES = '<p>• 큰 부채꼴의 중심각은 360°가 아니라 울타리의 <b>안쪽 각을 뺀 각</b>이에요 (직각이면 270°).</p><p>• 모서리를 돌아가는 부채꼴의 반지름은 끈 전체가 아니라 <b>남은 끈</b> (끈 − 지나온 변)이에요.</p><p>• 중심각은 안쪽 각이 아니라 <b>바깥각</b> (180° − 안쪽 각)이에요.</p><p>• 끈이 변보다 짧으면 그 모서리를 돌아가지 못해서 작은 부채꼴이 <b>없어요</b>.</p>';
-  const goatFormula = (M) => `<p><b>영역의 넓이</b> = (큰 부채꼴) + (모서리를 돌아가는 작은 부채꼴들)</p><p>부채꼴의 넓이 = π × (반지름)² × (중심각/360°)</p><p>큰 부채꼴: 반지름 ${num(M.L)}, 중심각 ${M.A.deg}°. 작은 부채꼴의 반지름 = (끈의 길이) − (지나온 변의 길이)</p>`;
+  const goatFormula = (M) => `<p><b>영역의 넓이</b> = (큰 부채꼴) + (모서리를 돌아가는 작은 부채꼴들)</p><p>부채꼴의 넓이 = π × (반지름)² × ($\\dfrac{\\text{중심각}}{360^\\circ}$)</p><p>큰 부채꼴: 반지름 ${num(M.L)}, 중심각 ${M.A.deg}°. 작은 부채꼴의 반지름 = (끈의 길이) − (지나온 변의 길이)</p>`;
   const goatSolution = (kind) => ({
     standardTitle: '기본 풀이 (부채꼴로 나누기)', standardTag: '기본', quickTitle: '이 장면의 핵심', quickTag: '핵심',
     standard: (s) => { s.gtKind = kind; goatClamp(s); const M = goatModel(kind, s); return { steps: M.order.map((x) => `<p>${x.chain === 'A' ? '큰 부채꼴' : x.id + '를 돌아가는 부채꼴'}: 반지름 ${num(x.R)}, 중심각 ${x.deg}° → ${ratPi(x.area)}</p>`).join('') + `<p>합: ${ratPi(M.area)} (m²)</p>` }; },
