@@ -54,6 +54,7 @@ function start() {
   mods.forEach((g) => Object.assign(params, g.params || {}));
   APLab.createLab({
     id: 'g7-points-lines',
+    stackFractions: true, // 패널 글의 슬래시·유니코드 분수를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr)
     title: '점 · 직선 · 반직선 · 선분 · 각',
     courseName: '중1',
     unit: '기본 도형',

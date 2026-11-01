@@ -50,6 +50,7 @@ function start() {
   const clamp = APLab.clamp;
   APLab.createLab({
     id: 'g7-surface-volume',
+    stackFractions: true, // 패널 글의 슬래시·유니코드 분수를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr)
     title: '겉넓이 · 부피',
     courseName: '중1',
     unit: '입체도형',
