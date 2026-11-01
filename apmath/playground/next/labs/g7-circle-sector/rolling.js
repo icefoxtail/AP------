@@ -935,7 +935,7 @@
         const col = rt.arc >= 0 ? ARC_COL[rt.arc % ARC_COL.length] : 'muted';
         const roll = rt.kind === 'roll';
         const reads = [
-          { label: '지금 회전하는 중', value: sc.u <= 0 ? `0 / ${N}번` : finished ? `${N} / ${N}번 (끝)` : `${sc.k + 1} / ${N}번째`, note: roll ? '반원이 둥근 부분으로 굴러가요' : `회전의 중심: 점 ${P}`, color: 'amber' },
+          { label: '지금 회전하는 중', value: sc.u <= 0 ? `${N}번 중 0번` : finished ? `${N}번 중 ${N}번 (끝)` : `${N}번 중 ${sc.k + 1}번째`, note: roll ? '반원이 둥근 부분으로 굴러가요' : `회전의 중심: 점 ${P}`, color: 'amber' },
           rt.arc >= 0
             ? { label: roll ? '반지름 r (굴러가는 호)' : `반지름 r (점 ${T}~점 ${P})`, value: `${toFrac(rt.r) ? rTxt(rt.r) : '약 ' + rTxt(rt.r)} cm`, note: `${JAMO[rt.arc]}의 반지름`, color: col }
             : { label: `반지름 r (점 ${T}~점 ${P})`, value: '0 cm', note: `점 ${T}가 회전의 중심 → 움직이지 않아요`, color: 'muted' },

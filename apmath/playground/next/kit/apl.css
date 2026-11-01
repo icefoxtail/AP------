@@ -429,6 +429,9 @@ body.apl {
 .apl-read .v { font-size: var(--fs-lg); font-weight: 800; color: var(--c); font-variant-numeric: tabular-nums; letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .apl-read .n { font-size: var(--fs-2xs); color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .apl-read.wide { grid-column: 1 / -1; }
+/* 칸 안의 쌓은 분수는 글자보다 작아 보이기 쉬워 조금 키우고, 위아래가 잘리지 않게 줄 높이를 줍니다 */
+.apl-read .v .katex, .apl-ctl-head output .katex { font-size: 1.1em; }
+.apl-read .v:has(.katex), .apl-read .n:has(.katex) { line-height: 1.9; overflow: visible; }
 
 .apl-callout { display: flex; gap: 10px; padding: 11px 13px; border-radius: var(--r-md); font-size: var(--fs-sm); line-height: 1.65; background: color-mix(in srgb, var(--c) 10%, var(--card)); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); }
 .apl-callout .apl-ico { color: var(--c); margin-top: 2px; width: 17px; height: 17px; }

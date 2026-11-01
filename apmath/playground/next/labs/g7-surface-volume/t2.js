@@ -26,7 +26,7 @@
     s3K: P('크기 배율 k', 1, 2, 1, 1, { color: 'amber', hint: '세 수 (r, h, R)를 k배 해요', format: (v) => `${v}배` }),
     // sv2-4
     s4K: P('큰 원뿔의 크기 k', 2, 5, 1, 3, { color: 'sky', format: (v) => `k = ${v}` }),
-    s4J: P('자르는 위치 (작은 원뿔의 크기 j)', 1, 4, 1, 1, { color: 'amber', hint: '작은 원뿔은 큰 원뿔과 같은 모양이고 j/k 배예요', format: (v) => `j = ${v}`, clampTo: (s) => [1, Math.round(s.s4K) - 1] }),
+    s4J: P('자르는 위치 (작은 원뿔의 크기 j)', 1, 4, 1, 1, { color: 'amber', hint: '작은 원뿔은 큰 원뿔과 같은 모양이고 $\\frac{j}{k}$ 배예요', format: (v) => `j = ${v}`, clampTo: (s) => [1, Math.round(s.s4K) - 1] }),
     s4T: P('작은 원뿔 빼내기', 0, 1, 0.01, 0, { color: 'green', format: (v) => (v < 0.02 ? '붙어 있음' : v > 0.98 ? '빠짐' : Math.round(v * 100) + '%') }),
     // sv2-5
     s5K: P('큰 각뿔의 크기 k', 2, 4, 1, 3, { color: 'sky', format: (v) => `밑면 한 변 ${6 * v} cm` }),

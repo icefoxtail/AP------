@@ -179,7 +179,7 @@
   const PARAMS = {
     f3t: PARAM_T,
     f3a: { value: 6, min: 2, max: 12, step: 1, color: 'sky', label: '정사각형의 한 변 a', format: cmF },
-    f3e: { value: 6, min: 2, max: 12, step: 2, color: 'sky', label: '정사각형의 한 변 a', hint: '반지름 a/2가 정수가 되도록 짝수만', format: cmF },
+    f3e: { value: 6, min: 2, max: 12, step: 2, color: 'sky', label: '정사각형의 한 변 a', hint: '반지름 $\\frac{a}{2}$가 정수가 되도록 짝수만', format: cmF },
     f3b: { value: 4, min: 2, max: 10, step: 2, color: 'sky', label: '$\\overline{AB}$의 길이', format: cmF },
     f3w: { value: 2, min: 0.5, max: 9, step: 0.01, color: 'amber', label: '$\\overline{AD}$의 길이', hint: '그림의 점 D를 좌우로 끌어도 돼요', format: cmF },
     f3r: { value: 6, min: 3, max: 9, step: 1, color: 'sky', label: '원의 반지름 r', format: cmF },

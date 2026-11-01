@@ -30,7 +30,7 @@
     s54Z: P('홈의 깊이', 1, 9, 1, 2, { color: 'red', format: (v) => v + ' cm', clampTo: (s) => [1, Math.round(s.s54A) - 1] }),
     s54T: P('조각 빼내기', 0, 1, 0.005, 0, { color: 'green', format: (v) => (v < 0.02 ? '붙어 있음' : v > 0.99 ? '빠짐' : Math.round(v * 100) + '%') }),
     s55K: P('큰 원뿔의 크기 k', 2, 5, 1, 4, { color: 'sky', format: (v) => `k = ${v}` }),
-    s55J: P('파낸 원뿔의 크기 j', 1, 4, 1, 2, { color: 'red', hint: '파낸 원뿔은 큰 원뿔과 같은 모양이고 j/k 배예요', format: (v) => `j = ${v}`, clampTo: (s) => [1, Math.round(s.s55K) - 1] }),
+    s55J: P('파낸 원뿔의 크기 j', 1, 4, 1, 2, { color: 'red', hint: '파낸 원뿔은 큰 원뿔과 같은 모양이고 $\\frac{j}{k}$ 배예요', format: (v) => `j = ${v}`, clampTo: (s) => [1, Math.round(s.s55K) - 1] }),
     s55T: P('파낸 원뿔 빼내기', 0, 1, 0.005, 0, { color: 'green', format: (v) => (v < 0.02 ? '구멍에 들어 있음' : v > 0.99 ? '빠짐' : Math.round(v * 100) + '%') }),
     s56A: P('아래 상자의 한 변 a', 4, 12, 1, 8, { color: 'amber', hint: '위 입체의 지름(2r)보다 커야 해요', format: (v) => v + ' cm', clampTo: (s) => [Math.max(4, 2 * Math.round(s.s56R)), 12] }),
     s56H: P('아래 상자의 높이', 2, 8, 1, 4, { color: 'sky', format: (v) => v + ' cm' }),

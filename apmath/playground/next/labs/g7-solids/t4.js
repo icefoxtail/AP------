@@ -227,7 +227,7 @@
       status: { tone: 'ok', text: `최단 거리 = ${cmv(M.ans)}` },
       formula: M.ang === 60 ? `<p>중심각 60° → △OAA′은 정삼각형 → $\\overline{AA'} = R$ = <b>${M.R} cm</b></p>` : `<p>중심각 180° → A, O, A′가 일직선 → $\\overline{AA'} = 2R$ = <b>${2 * M.R} cm</b></p>`,
       rule: '원뿔 옆면의 최단 거리는 전개도에서 두 점을 이은 선분이다. 중심각이 60°이면 R, 180°이면 2R이다',
-      notes: notes('먼저 <b>중심각</b> $x = 360° \\times r/R$을 구해요.', '60°는 <b>정삼각형</b>, 180°는 <b>반원의 지름</b>이에요. 둘 다 길이가 바로 나와요.')
+      notes: notes('먼저 <b>중심각</b> $x = 360° \\times \\dfrac{r}{R}$을 구해요.', '60°는 <b>정삼각형</b>, 180°는 <b>반원의 지름</b>이에요. 둘 다 길이가 바로 나와요.')
     }),
     prob: (M) => {
       const ang = M.qa, r = M.qr, R = r * S42[ang], ans = ang === 60 ? R : 2 * R;

@@ -345,7 +345,7 @@
     const tri = { id: 'tri', name: '△ABC', sign: 1, pts: [B, C, A], area: V(ZERO, fr(p * q, 2)), aExpr: `½×${p}×${q}`, aTex: `\\frac12\\times ${p}\\times ${q}` };
     const sBC = {
       id: 'bc', name: '반원 BC', sign: -1, pts: halfArc(c / 2, 0, c / 2, PI / 2), area: V(fr(c2, 8)),
-      aExpr: cInt ? `π×${num(c / 2)}²×½` : 'π×(BC/2)²×½',
+      aExpr: cInt ? `π×${num(c / 2)}²×½` : 'π×($\\frac{BC}{2}$)²×½',
       aTex: cInt ? `\\pi\\times ${num(c / 2)}^2\\times\\frac12` : '\\pi\\times\\left(\\frac{\\overline{BC}}{2}\\right)^2\\times\\frac12'
     };
     sAB.aExpr = `π×${num(p / 2)}²×½`; sAB.aTex = `\\pi\\times ${num(p / 2)}^2\\times\\frac12`;
@@ -592,7 +592,7 @@
             lines.push({ t: parts.slice(0, h).join(' '), size: 14, color: 'muted', min: 12, always: true }, { t: parts.slice(h).join(' '), size: 14, color: 'muted', min: 12, always: true });
           } else lines.push({ t: bx.name, size: 14, color: 'muted', min: 12, always: st.lab === 1 });
         }
-        if (st.lab >= 2) lines.push({ t: mode === 'arc' ? it.arc.expr : it.aExpr, size: 14, color: 'ink', min: 12 });
+        if (st.lab >= 2) lines.push({ t: mode === 'arc' ? it.arc.expr : String(it.aExpr).replace(/\$/g, ''), size: 14, color: 'ink', min: 12 });
         if (st.lab >= 3) {
           lines.push({ t: (mode === 'arc' ? '' : sgn > 0 ? '+ ' : '− ') + vplain(valV), size: 19, color: col, min: 14, always: true });
           if (bx.each) lines.push({ t: '(각각)', size: 14, color: 'muted', min: 12, always: true });

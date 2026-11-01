@@ -165,6 +165,81 @@
     }
     return out;
   };
+  /* ---------- 글 속 분수를 쌓은 분수($\frac{a}{b}$)로 바꾸기 (실험실이 stackFractions 를 켠 경우만) ---------- */
+  // 학생에게는 '1/2'·'½'·'5π/3' 같은 슬래시·글리프 분수가 헷갈리므로, 패널 글의 '정수/정수'·'(정수)π/정수'·유니코드 분수를 KaTeX 분수로 바꿉니다.
+  // 이미 $…$ 안에 있는 글, HTML 태그, 'a/2'·'r/R' 같은 글자 분수(작성자가 직접 $\frac$ 로 씀)와 '1 / 3번째' 같은 띄어쓴 세기는 건드리지 않습니다.
+  const VULGAR_TEX = { '½': [1, 2], '⅓': [1, 3], '⅔': [2, 3], '¼': [1, 4], '¾': [3, 4], '⅕': [1, 5], '⅖': [2, 5], '⅗': [3, 5], '⅘': [4, 5], '⅙': [1, 6], '⅚': [5, 6], '⅛': [1, 8], '⅜': [3, 8], '⅝': [5, 8], '⅞': [7, 8] };
+  const FRAC_TEXT = /([½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])|(?<![\w.\/\\$])((?:\d+(?:\.\d+)?)?π|\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)(?![\d\/]|\.\d)/g;
+  const stackCache = new Map();
+  APLab.stackFr = function (html) {
+    if (html == null) return html;
+    const s = String(html);
+    if (!/[½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]|\/\d/.test(s)) return s;
+    if (stackCache.has(s)) return stackCache.get(s);
+    const conv = (t) => t.replace(FRAC_TEXT, (m, v, n, d) => {
+      if (v) return `$\\dfrac{${VULGAR_TEX[v][0]}}{${VULGAR_TEX[v][1]}}$`;
+      return `$\\dfrac{${n.replace('π', '\\pi')}}{${d}}$`;
+    });
+    let out = '';
+    let i = 0;
+    let text = '';
+    const flush = () => { out += conv(text); text = ''; };
+    while (i < s.length) {
+      const ch = s[i];
+      if (ch === '<') {
+        const j = s.indexOf('>', i);
+        flush();
+        if (j < 0) { out += s.slice(i); i = s.length; break; }
+        out += s.slice(i, j + 1);
+        i = j + 1;
+        continue;
+      }
+      if (ch === '$' && s[i - 1] !== '\\') {
+        const display = s[i + 1] === '$';
+        const open = display ? 2 : 1;
+        let j = i + open;
+        while (j < s.length) {
+          if (s[j] === '$' && s[j - 1] !== '\\' && (!display || s[j + 1] === '$')) break;
+          j++;
+        }
+        if (j < s.length) {
+          flush();
+          out += s.slice(i, j + open);
+          i = j + open;
+          continue;
+        }
+      }
+      text += ch;
+      i++;
+    }
+    flush();
+    if (stackCache.size > 4000) stackCache.clear();
+    stackCache.set(s, out);
+    return out;
+  };
+  const STACK_SKIP = new Set(['tex', 'color', 'tone', 'ref', 'id', 'icon', 'key', 'group']);
+  function stackDeep(x, key) {
+    if (typeof x === 'string') return STACK_SKIP.has(key) ? x : APLab.stackFr(x);
+    if (Array.isArray(x)) return x.map((y) => stackDeep(y));
+    if (x && typeof x === 'object' && Object.getPrototypeOf(x) === Object.prototype) {
+      const o = {};
+      for (const k of Object.keys(x)) o[k] = stackDeep(x[k], k);
+      return o;
+    }
+    return x;
+  }
+  /** 장면 정의의 패널 글(질문·안내·단계·값 칸·문제·풀이·칩)에 stackFr 를 입힌 새 장면을 돌려줍니다. 그림(draw)은 건드리지 않습니다(그림 글은 board._text 가 쌓습니다). */
+  APLab.stackScene = function (sc) {
+    const out = { ...sc };
+    const wrap = (v) => (typeof v === 'function' ? function (...a) { return stackDeep(v.apply(this, a)); } : stackDeep(v));
+    for (const k of ['question', 'guide', 'steps', 'view', 'solution', 'presets', 'actions']) if (out[k] != null) out[k] = wrap(out[k]);
+    if (out.problem) {
+      const p = { ...out.problem };
+      for (const k of ['tag', 'text', 'answer', 'note']) if (p[k] != null) p[k] = wrap(p[k]);
+      out.problem = p;
+    }
+    return out;
+  };
   APLab.setHTML = function (el, html) {
     const v = APLab.renderMath(html);
     if (el.__aplHTML !== v) {
