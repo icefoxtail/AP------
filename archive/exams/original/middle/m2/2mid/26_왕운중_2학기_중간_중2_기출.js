@@ -567,9 +567,9 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q008_visual.png",
-    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q8-solution-v3.svg",
-    "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC의 외심 O와 내심 I에서 ∠BIC=108°, ∠A=36°, ∠C=72°를 표시하고, 오른쪽에 꼭짓점 B에 모인 반직선 BC, BI, BO, BA를 크게 다시 그려 ∠IBC=36°, ∠OBC=54°를 호와 값으로 보이고 구하는 ∠OBI는 x로 나타냈다.",
-    "solutionImageCaption": "꼭짓점 B에 모인 각을 오른쪽에 크게 따로 그려 ∠IBC, ∠OBC와 구하는 ∠OBI=x를 함께 보였다.",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q8-solution-v4.svg",
+    "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC의 외심 O와 내심 I에서 ∠BIC=108°, ∠A=36°, ∠B=∠C=72°, ∠BOC=72°를 표시한 그림 오른쪽에, 꼭짓점 B에 모인 반직선 BC, BI, BO, BA를 같은 방향 그대로 크게 다시 그려 ∠IBC=36°와 ∠OBC=54°를 호와 값으로 보이고, 구하는 ∠OBI는 호 치수선에 x로 적었다.",
+    "solutionImageCaption": "∠A=36°, ∠B=72°, ∠BOC=72°, ∠OBC=54°, ∠IBC=36°이므로 ∠OBI=∠OBC−∠IBC=18°이다.",
     "solutionImageSize": "medium"
   },
   {
