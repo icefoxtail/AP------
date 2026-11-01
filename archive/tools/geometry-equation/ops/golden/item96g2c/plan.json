@@ -1,0 +1,98 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "쌍곡선 x^2-y^2=12 위의 점 (4,2)에서의 접선과 두 점근선으로 둘러싸인 삼각형의 넓이는?",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "12",
+    "bSquared": "12",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "sign": "POS"
+    },
+    {
+      "id": "A",
+      "kind": "LINE_LINE",
+      "lines": [
+        "k1",
+        "s1"
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "LINE_LINE",
+      "lines": [
+        "k1",
+        "s2"
+      ]
+    }
+  ],
+  "lines": [
+    {
+      "id": "s1",
+      "role": "ASYMPTOTE",
+      "sign": 1,
+      "dashed": true,
+      "label": "y=x"
+    },
+    {
+      "id": "s2",
+      "role": "ASYMPTOTE",
+      "sign": -1,
+      "dashed": true,
+      "label": "y=-x"
+    },
+    {
+      "id": "k1",
+      "slope": "2",
+      "intercept": "-6",
+      "tangent": true
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "O",
+        "A",
+        "B"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "쌍곡선 x²-y²=12 위의 점 P(4,2)에서의 접선과 두 점근선으로 둘러싸인 삼각형",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선 x^2-y^2=12 위의 점 (4,2)에서의 접선이 있다.",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "접선과 두 점근선으로 둘러싸인 삼각형을 생각한다.",
+      "mappedTo": [
+        "lines",
+        "polygons"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선이 두 점근선과 만나는 점 A, B와 원점 O가 이루는 삼각형의 위치를 보여 준다."
+  ]
+}
