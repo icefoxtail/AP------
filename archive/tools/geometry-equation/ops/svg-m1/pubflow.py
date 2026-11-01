@@ -44,7 +44,7 @@ for e,rows in by.items():
     n=len(s['published']); s['note']=re.sub(r'\d+개 게시',f'{n}개 게시',s['note'],count=1)
     json.dump(s,open(p,'w'),ensure_ascii=False)
     print(sh(f"python3 {S}ledger-upsert.py {p}").stdout.strip())
-msg=f"{title}\n\n{body}\n독립 Sonnet 검토 PASS, 실제 해설 페이지 표시 확인, create-gate 8/8.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01F4RMLKQwWq73G4ju4Quc1a"
+msg=f"{title}\n\n{body}\n독립 Sonnet 검토 PASS, 실제 해설 페이지 표시 확인, create-gate 8/8.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: {os.environ.get('CLAUDE_SESSION_URL','')}"
 open(R+'commitmsg.txt','w').write(msg)
-o=sh(f"git add archive/exams/original archive/assets/images archive/tools/geometry-equation/production/exam-figure-ledger.json && git commit -q -F {R}commitmsg.txt && git push -q origin claude/fervent-knuth-s3xr1a && git log --oneline -1")
+o=sh(f"git add archive/exams/original archive/assets/images archive/tools/geometry-equation/production/exam-figure-ledger.json && git commit -q -F {R}commitmsg.txt && git push -q -u origin HEAD && git log --oneline -1")
 print(o.stdout.strip(), o.stderr[-300:])
