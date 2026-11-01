@@ -275,7 +275,7 @@
       const cnt = grouped ? `${g.scenes.indexOf(g.scenes.find((x) => x.id === sc.id)) + 1} / ${g.scenes.length}` : `${this.index + 1} / ${this.list.length}`;
       ui.head.append(h('div', { class: 'apl-eyebrow', html: `${icon('compass')}<span>${APLab.esc(pos)}</span><span class="count">${cnt}</span>` }));
       const tt = APLab.splitFlag(sc.title);
-      ui.head.append(h('h2', { class: 'apl-scene-title', html: (tt.flag ? `<span class="apl-tag" style="--c:var(--m-rose);margin-right:6px;vertical-align:3px">${APLab.esc(tt.flag)}</span>` : '') + APLab.renderMath(this._sf(APLab.esc(tt.text))) }));
+      ui.head.append(h('h2', { class: 'apl-scene-title', html: (tt.flag ? `<span class="apl-tag" style="--c:var(--m-rose);margin-right:6px;vertical-align:3px">${APLab.esc(tt.flag)}</span>` : '') + APLab.renderMath(this._sf(APLab.esc(tt.text), false)) }));
       if (grouped && g.scenes.length > 1) {
         const subs = h('div', { class: 'apl-subscenes', role: 'tablist', 'aria-label': '세부 장면' });
         g.scenes.forEach((x) => {
@@ -312,7 +312,7 @@
     }
 
     /** 실험실이 stackFractions 를 켠 경우 칸·칩 글 속 분수를 쌓은 분수로 바꿉니다. */
-    _sf(x) { return this.def.stackFractions ? APLab.stackFr(x) : x; }
+    _sf(x, tight = true) { return this.def.stackFractions ? APLab.stackFr(x, tight) : x; }
 
     _section(title, ico, ...kids) {
       return h('section', { class: 'apl-section' }, title ? h('h3', { class: 'apl-section-h', html: `<span>${icon(ico || 'info')}${APLab.esc(title)}</span>` }) : null, ...kids);
@@ -457,9 +457,9 @@
     _fillSolution(body, src) {
       const v = call(src, this.s) || {};
       body.innerHTML = '';
-      if (v.steps) body.append(h('div', { class: 'apl-rich', html: APLab.renderMath(this._sf(v.steps)) }));
+      if (v.steps) body.append(h('div', { class: 'apl-rich', html: APLab.renderMath(this._sf(v.steps, false)) }));
       const note = v.warning || v.highlight || v.note;
-      if (note) body.append(h('div', { class: 'apl-callout', 'data-tone': v.warning ? 'warn' : 'key', html: icon(v.warning ? 'alert' : 'bulb') + `<div>${APLab.renderMath(this._sf(APLab.cleanLead(note)))}</div>` }));
+      if (note) body.append(h('div', { class: 'apl-callout', 'data-tone': v.warning ? 'warn' : 'key', html: icon(v.warning ? 'alert' : 'bulb') + `<div>${APLab.renderMath(this._sf(APLab.cleanLead(note), false))}</div>` }));
     }
 
     _buildProblem() {

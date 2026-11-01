@@ -171,14 +171,17 @@
   const VULGAR_TEX = { '½': [1, 2], '⅓': [1, 3], '⅔': [2, 3], '¼': [1, 4], '¾': [3, 4], '⅕': [1, 5], '⅖': [2, 5], '⅗': [3, 5], '⅘': [4, 5], '⅙': [1, 6], '⅚': [5, 6], '⅛': [1, 8], '⅜': [3, 8], '⅝': [5, 8], '⅞': [7, 8] };
   const FRAC_TEXT = /([½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])|(?<![\w.\/\\$])((?:\d+(?:\.\d+)?)?π|\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)(?![\d\/]|\.\d)/g;
   const stackCache = new Map();
-  APLab.stackFr = function (html) {
+  // tight=true: 높이가 빠듯한 칸(칩·버튼·값 칸 등)용 — 글자 크기(\frac)로 쌓습니다. 아니면 여유 있는 블록용으로 \dfrac(분자·분모가 본문 크기)를 씁니다.
+  APLab.stackFr = function (html, tight) {
     if (html == null) return html;
     const s = String(html);
-    if (!/[½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]|\/\d/.test(s)) return s;
-    if (stackCache.has(s)) return stackCache.get(s);
+    if (!/[½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]|\/\d|\\frac/.test(s)) return s;
+    const ck = (tight ? 'T' : 'D') + s;
+    if (stackCache.has(ck)) return stackCache.get(ck);
+    const fr = tight ? '\\frac' : '\\dfrac';
     const conv = (t) => t.replace(FRAC_TEXT, (m, v, n, d) => {
-      if (v) return `$\\dfrac{${VULGAR_TEX[v][0]}}{${VULGAR_TEX[v][1]}}$`;
-      return `$\\dfrac{${n.replace('π', '\\pi')}}{${d}}$`;
+      if (v) return `$${fr}{${VULGAR_TEX[v][0]}}{${VULGAR_TEX[v][1]}}$`;
+      return `$${fr}{${n.replace('π', '\\pi')}}{${d}}$`;
     });
     let out = '';
     let i = 0;
@@ -204,7 +207,8 @@
         }
         if (j < s.length) {
           flush();
-          out += s.slice(i, j + open);
+          const seg = s.slice(i, j + open);
+          out += tight ? seg : seg.replace(/\\frac(?![a-zA-Z])/g, '\\dfrac');
           i = j + open;
           continue;
         }
@@ -214,16 +218,18 @@
     }
     flush();
     if (stackCache.size > 4000) stackCache.clear();
-    stackCache.set(s, out);
+    stackCache.set(ck, out);
     return out;
   };
   const STACK_SKIP = new Set(['tex', 'color', 'tone', 'ref', 'id', 'icon', 'key', 'group']);
-  function stackDeep(x, key) {
-    if (typeof x === 'string') return STACK_SKIP.has(key) ? x : APLab.stackFr(x);
-    if (Array.isArray(x)) return x.map((y) => stackDeep(y));
+  const STACK_TIGHT = new Set(['chips', 'parts', 'status', 'tape', 'presets', 'actions']); // 칩·버튼·관찰 칸은 높이가 빠듯해 \frac 크기를 씁니다
+  function stackDeep(x, key, tight) {
+    if (STACK_TIGHT.has(key)) tight = true;
+    if (typeof x === 'string') return STACK_SKIP.has(key) ? x : APLab.stackFr(x, tight);
+    if (Array.isArray(x)) return x.map((y) => stackDeep(y, undefined, tight));
     if (x && typeof x === 'object' && Object.getPrototypeOf(x) === Object.prototype) {
       const o = {};
-      for (const k of Object.keys(x)) o[k] = stackDeep(x[k], k);
+      for (const k of Object.keys(x)) o[k] = stackDeep(x[k], k, tight);
       return o;
     }
     return x;
@@ -231,8 +237,8 @@
   /** 장면 정의의 패널 글(질문·안내·단계·값 칸·문제·풀이·칩)에 stackFr 를 입힌 새 장면을 돌려줍니다. 그림(draw)은 건드리지 않습니다(그림 글은 board._text 가 쌓습니다). */
   APLab.stackScene = function (sc) {
     const out = { ...sc };
-    const wrap = (v) => (typeof v === 'function' ? function (...a) { return stackDeep(v.apply(this, a)); } : stackDeep(v));
-    for (const k of ['question', 'guide', 'steps', 'view', 'solution', 'presets', 'actions']) if (out[k] != null) out[k] = wrap(out[k]);
+    const wrap = (v, key) => (typeof v === 'function' ? function (...a) { return stackDeep(v.apply(this, a), key); } : stackDeep(v, key));
+    for (const k of ['question', 'guide', 'steps', 'view', 'solution', 'presets', 'actions']) if (out[k] != null) out[k] = wrap(out[k], k);
     if (out.problem) {
       const p = { ...out.problem };
       for (const k of ['tag', 'text', 'answer', 'note']) if (p[k] != null) p[k] = wrap(p[k]);
