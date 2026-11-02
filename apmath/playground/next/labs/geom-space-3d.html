@@ -1347,9 +1347,36 @@ window.addEventListener('DOMContentLoaded', function () {
         arcL(g.M, g.K, g.B, 0.62, 'amber', ex ? `θ ${angDeg(g.M, g.K, g.B).toFixed(1)}°` : 'θ', 0.5, true, { dx: 24, dy: 2 });
       }
       if (PROB || tab === 'review' || ex) {
-        // 문제에 주어진 각: l과 PA, l과 PB
-        arcL(g.P, X1, g.A, 0.3 * norm(g.M), 'green', `${a}°`, 0.12 * norm(g.M), false, a >= 50 ? { dx: -18, dy: 12 } : { dx: -4, dy: 6 }); // 라벨이 점 M에 닿지 않게 |PM|에 비례
-        arcL(g.P, X1, g.B, 0.9, 'sky', `${bb}°`, 0.4, false, { dx: -8, dy: -4 });
+        // 문제에 주어진 각: l과 PA, l과 PB. 각 이름표는 호 바깥쪽에서 점 이름·선과 가장 멀리 떨어진 자리에 둡니다(화면 픽셀 기준).
+        const S = (p) => B.toS(SP.P(p)), pt = (p, dx = 0, dy = 0) => { const q = S(p); return { x: q.x + dx, y: q.y + dy }; };
+        const texts = [pt(g.P, -16, 4), pt(g.A, 10, 12), pt(g.B, 10, -8)];
+        const segs = [[g.P, g.A], [g.P, g.B], [V(-0.8, 0, 0), V(3.7, 0, 0)], [g.A, g.B]];
+        if (st(1)) { texts.push(pt(g.K, 0, 16)); segs.push([g.B, g.K]); }
+        if (st(2)) { texts.push(pt(g.M, -4, 16)); segs.push([g.K, g.M], [g.B, g.M]); }
+        if (st(3)) { const mu = unit(add(unit(sub(g.K, g.M)), unit(sub(g.B, g.M)))); texts.push(pt(add(g.M, mul(mu, 1.12)), 24, 2)); }
+        const dots = [];
+        const arcDots = (a3, radius) => { const u = unit(sub(X1, g.P)), v = unit(sub(a3, g.P)), th = Math.acos(Math.max(-1, Math.min(1, dot(u, v)))), w = unit(sub(v, mul(u, Math.cos(th)))); for (let i = 0; i <= 8; i++) { const t = (th * i) / 8; dots.push(S(add(g.P, mul(add(mul(u, Math.cos(t)), mul(w, Math.sin(t))), radius)))); } };
+        arcDots(g.A, 0.3 * norm(g.M)); arcDots(g.B, 0.9);
+        const sd = (q, a, c) => { const ax = c.x - a.x, ay = c.y - a.y, L = ax * ax + ay * ay || 1, t = Math.max(0, Math.min(1, ((q.x - a.x) * ax + (q.y - a.y) * ay) / L)); return Math.hypot(q.x - a.x - t * ax, q.y - a.y - t * ay); };
+        const place = (a3, radius, color, text) => {
+          const o = S(g.P), mid = unit(add(unit(sub(X1, g.P)), unit(sub(a3, g.P))));
+          const m = S(add(g.P, mul(mid, radius))), rpx = Math.hypot(m.x - o.x, m.y - o.y), base = Math.atan2(m.y - o.y, m.x - o.x);
+          let best = null;
+          for (let d = -180; d < 180; d += 10) for (const extra of [14, 22, 32, 44]) {
+            const an = base + (d * Math.PI) / 180, q = { x: o.x + Math.cos(an) * (rpx + extra), y: o.y + Math.sin(an) * (rpx + extra) };
+            let clr = 40;
+            for (const t of texts) clr = Math.min(clr, Math.hypot(q.x - t.x, q.y - t.y) - 16);
+            for (const t of dots) clr = Math.min(clr, Math.hypot(q.x - t.x, q.y - t.y) - 3);
+            for (const [u, w] of segs) clr = Math.min(clr, sd(q, S(u), S(w)) - 1);
+            const score = Math.min(clr, 14) * 2 - Math.abs(d) * 0.05 - extra * 0.1;
+            if (!best || score > best.score) best = { score, q };
+          }
+          texts.push(best.q);
+          SP.arc(g.P, X1, a3, radius, { color });
+          B.stext(best.q.x, best.q.y, text, { color, size: 13, weight: 800, align: 'center', baseline: 'middle' });
+        };
+        place(g.A, 0.3 * norm(g.M), 'green', `${a}°`);
+        place(g.B, 0.9, 'sky', `${bb}°`);
       }
       SP.point(g.P, { r: 5.5, color: 'ink', label: 'P', dx: -16, dy: 4, size: 15 });
       SP.point(g.A, { r: 5.5, color: 'green', label: 'A', dx: 10, dy: 12, size: 15 });
