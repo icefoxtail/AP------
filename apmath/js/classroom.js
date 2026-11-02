@@ -1760,8 +1760,8 @@ function renderClassToolBarV4B(cid, plannerEnabled, today) {
             <button class="btn cls-v4-date-reset" onclick="changeClassOperationDate('${cid}', '${realToday}')">오늘</button>
             <button class="btn cls-v4-tool red apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'progress')">진도</button>
             <button class="btn cls-v4-tool green apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'homework')">숙제</button>
-            <button class="btn cls-v4-tool blue apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'qr')">QR/OMR</button>
-            <button class="btn cls-v4-tool orange apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'exam')">원내평가</button>
+            <button class="btn cls-v4-tool blue apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'qr')">QR</button>
+            <button class="btn cls-v4-tool orange apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'exam')">원내평가/OMR</button>
             <button class="btn cls-v4-tool purple apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'clinic')">클리닉</button>
             ${plannerEnabled ? `<button class="btn cls-v4-tool green apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'planner')">플래너</button>` : ''}
         </div>

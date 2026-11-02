@@ -1008,18 +1008,9 @@ function renderAdminStudentSearch() {
 
 
 // [Phase 4/5] 글로벌 진입점
+// 반 고르기 모달은 없앴다. 원내평가·OMR 작업 화면 맨 위의 반 전환 탭이 그 일을 한다(ws-exam-workspace.js).
 function openGlobalExamGradeView() {
-    const classes = state.db.classes.filter(c => Number(c.is_active) !== 0);
-    const rows = classes.map(c => `
-        <button class="btn" style="width:100%; justify-content:space-between; padding:16px; margin-bottom:10px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); if(typeof openExamGradeView==='function') openExamGradeView('${c.id}')">
-            <span style="font-weight:500; font-size:15px; color:var(--text);">${apEscapeHtml(c.name)}</span>
-            <span style="font-size:12px; font-weight:500; color:var(--text); background:var(--surface-2); border:1px solid var(--border); padding:4px 10px; border-radius:8px;">${apEscapeHtml(c.grade)}</span>
-        </button>
-    `).join('');
-    showModal('반별 원내평가', `
-        <div style="margin-bottom:16px; font-size:13px; color:var(--secondary); font-weight:500;">조회할 반을 선택하세요.</div>
-        <div style="max-height:60vh; overflow-y:auto; padding-right:4px;">${rows || `<div style="text-align:center; color:var(--secondary); padding:30px; font-size:13px; font-weight:500;">담당 반이 없습니다.</div>`}</div>
-    `);
+    return openExamWorkspace('');
 }
 
 function openOperationMenu() {
