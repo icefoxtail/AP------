@@ -402,7 +402,7 @@
     let h = Q.tag ? `<div class="tr-tagline"><span class="apl-tag" style="--c:var(--m-amber)">${esc(Q.tag)}</span></div>` : '';
     h += `<div class="tr-q">${stemHTML(Q)}</div>`;
     h += '<div class="tr-try"><b>먼저 풀어 보세요.</b> 종이에 직접 풀어 본 뒤에 답을 확인해요.</div>';
-    if (shown) h += `<div class="tr-fb ok tr-ans"><span class="k">답</span> <span class="v">${Q.ansHTML != null ? Q.ansHTML : '$x=' + ok.t + '$'}</span></div>`; // Q.ansHTML: 답이 x= 꼴이 아닌 문제(예: 합동 여부)
+    if (shown) h += `<div class="tr-fb ok tr-ans"><span class="k">답</span> <span class="v">${Q.ansHTML != null ? Q.ansHTML : (Q.ansHtml != null ? Q.ansHtml : '$x=' + ok.t + '$')}</span></div>`; // Q.ansHTML/Q.ansHtml(둘 다 허용): 답이 x= 꼴이 아닌 문제(합동 여부, 참·거짓 판별, 식 답)는 답을 글로 보여 줍니다
     h += '<div class="tr-tools">';
     if (!shown) h += '<button type="button" class="apl-btn sm" data-tr-show>답 보기</button>';
     h += `<button type="button" class="apl-btn sm primary" data-tr-go="review">풀이 보기</button><button type="button" class="apl-btn sm ghost" data-tr-new>숫자 바꾸기</button></div>`;
