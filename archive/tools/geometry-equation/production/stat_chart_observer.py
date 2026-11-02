@@ -103,7 +103,8 @@ def five_numbers(values):
 
 
 class Doc:
-    def __init__(self, svg, kind):
+    def __init__(self, svg, kind, compact=False):
+        self.compact = compact
         self.errors = []
         self.root = ET.fromstring(svg)
         if self.root.get('data-stat-chart') != CAPABILITY: self.errors.append('SC_SVG_NOT_A_STAT_CHART')
@@ -1472,6 +1473,8 @@ def audit_tree(chart, doc):
 # next to the cut (half the width of each, 14.5 px a digit, and 8 px).
 DOT_FIRST, DOT_GAP, DOT_MAX_R, DOT_MINOR = 7.0, 1.5, 5.5, 3.0
 DOT_MAX_STACK, DOT_MAX_POINTS = 12, 60
+DOT_DIGIT_PX, DOT_DIGIT_PX_PANEL = 14.5, 14.5 * 32 / 20      # a number is this wide a digit; a panel of a composite is laid out for the largest composite font (32 units)
+PANEL_W = 420.0                                              # the width of a panel of a composite
 
 
 def dot_plan(chart):
@@ -1676,7 +1679,7 @@ def audit_dot(chart, doc):
     if (len(breaks) == 2) != (br is not None) or len(breaks) not in (0, 2): doc.err('SC_AXIS_BREAK_MISMATCH')
     if br:
         left_end, right_start = scale[0][1] + (scale[0][2][-1][0] - scale[0][0]) * unit, scale[1][1]
-        want_gap = 14.5 * (len(str(scale[0][2][-1][0])) + len(str(scale[1][2][0][0]))) / 2 + 8
+        want_gap = (DOT_DIGIT_PX_PANEL if doc.compact else DOT_DIGIT_PX) * (len(str(scale[0][2][-1][0])) + len(str(scale[1][2][0][0]))) / 2 + 8
         if abs((right_start - left_end) - want_gap) > 0.1: doc.err('SC_DOT_GAP')
         mids = [(num(e, 'x1') + num(e, 'x2')) / 2 for e in breaks]
         if any(not left_end < m < right_start for m in mids): doc.err('SC_DOT_BREAK_PLACE')
@@ -2119,10 +2122,14 @@ def audit_normal(chart, doc):
 AUDITS = {'HISTOGRAM': audit_freq, 'FREQUENCY_POLYGON': audit_freq, 'STEM_LEAF': audit_stem, 'BOX_PLOT': audit_box, 'SCATTER': audit_scatter, 'DICE_TABLE': audit_dice, 'TREE': audit_tree, 'DOT_PLOT': audit_dot, 'NORMAL_CURVE': audit_normal}
 
 
-def audit(chart, svg):
+def audit(chart, svg, compact=False):
     kind = chart.get('kind') if isinstance(chart, dict) else None
     if kind not in AUDITS: fail('STAT_KIND_UNSUPPORTED')
-    doc = Doc(svg, kind)
+    if compact and kind not in ('DOT_PLOT', 'SCATTER'): fail('STAT_PANEL_KIND_UNSUPPORTED')
+    doc = Doc(svg, kind, compact)
+    if compact:
+        root = doc.root
+        if abs(float(root.get('width') or 0) - PANEL_W) > TOL: doc.err('SC_PANEL_WIDTH')
     observed = AUDITS[kind](chart, doc)
     raw = svg.encode('utf-8')
     return {'status': 'FAIL' if doc.errors else 'PASS', 'errors': doc.errors, 'finalSvgSha256': 'sha256:' + hashlib.sha256(raw).hexdigest(), 'observed': observed}

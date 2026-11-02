@@ -6,7 +6,7 @@ from stat_chart_observer import audit
 
 input_hash,payload=read_request(sys.stdin.buffer.read(4000001))
 try:
-    result=audit(payload['chart'],payload['svg'])
+    result=audit(payload['chart'],payload['svg'],payload.get('compact') is True)
     status='OK'
 except (ValueError,KeyError,TypeError,IndexError,ZeroDivisionError) as error:
     result,status={'code':str(error)},'ERROR'

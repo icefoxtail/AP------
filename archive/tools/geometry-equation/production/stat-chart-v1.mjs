@@ -80,16 +80,17 @@ const fiveNumbers=sorted=>{const n=sorted.length,h=Math.floor(n/2);return {min:s
 const NICE=[1,2,5,10,20,50,100,200,500,1000,2000,5000];
 
 // --- solving: the exact model --------------------------------------------------------------------------------------------------------------
-export function solveStatChart(chart){
+export function solveStatChart(chart,opts={}){
   if(!isPlain(chart))bad('STAT_CHART_PLAN_INVALID');
+  if(opts.compact===true&&chart.kind!=='DOT_PLOT'&&chart.kind!=='SCATTER')bad('STAT_PANEL_KIND_UNSUPPORTED');   // a panel of a composite (G16) is a compact dot plot or scatter plot
   switch(chart.kind){
     case 'HISTOGRAM':case 'FREQUENCY_POLYGON':return solveFreq(chart);
     case 'STEM_LEAF':return solveStem(chart);
     case 'BOX_PLOT':return solveBox(chart);
-    case 'SCATTER':return solveScatter(chart);
+    case 'SCATTER':return solveScatter(chart,opts);
     case 'DICE_TABLE':return solveDice(chart);
     case 'TREE':return solveTree(chart);
-    case 'DOT_PLOT':return solveDot(chart);
+    case 'DOT_PLOT':return solveDot(chart,opts);
     case 'NORMAL_CURVE':return solveNormal(chart);
     default:return bad('STAT_KIND_UNSUPPORTED');
   }
@@ -483,7 +484,7 @@ function clipHalfPlane(poly,val){ // Sutherland-Hodgman against the closed half 
   });
   return out.filter((p,i)=>!out.slice(0,i).some(o=>qcmp(o[0],p[0])===0&&qcmp(o[1],p[1])===0));
 }
-function solveScatter(c){
+function solveScatter(c,opts={}){
   onlyKeys(c,['kind','points','xRange','yRange','xStep','yStep','labelEvery','xTitle','yTitle','grid','diagonal','refLines','regions','pointGroups','trendArrow'],'STAT_CHART_PLAN_INVALID');
   if(!Array.isArray(c.points)||c.points.length<1||c.points.length>40)bad('STAT_SCATTER_POINTS_INVALID');
   const range=(r,code)=>{if(!Array.isArray(r)||r.length!==2)bad(code);const x=r.map(v=>parseQ(v,code));if(qcmp(x[0],ZERO)<0||qcmp(x[0],x[1])>=0)bad(code);return x;};
@@ -580,7 +581,7 @@ function solveScatter(c){
     extra.pointGroups=c.pointGroups.map(g=>{
       onlyKeys(g,['points','color','label'],'STAT_SCATTER_GROUP_INVALID');
       if(!isPaletteName(g.color)||!Array.isArray(g.points)||g.points.length<1||g.points.length>40)bad('STAT_SCATTER_GROUP_INVALID');
-      if(g.label!==undefined&&(typeof g.label!=='string'||!/^[가-힣A-Za-z0-9 ()=<>+-]{1,8}$/.test(g.label)))bad('STAT_SCATTER_GROUP_INVALID');
+      if(g.label!==undefined&&(opts.compact===true||typeof g.label!=='string'||!/^[가-힣A-Za-z0-9 ()=<>+-]{1,8}$/.test(g.label)))bad('STAT_SCATTER_GROUP_INVALID');   // a panel has no room for a legend
       const idx=new Set();
       for(const e of g.points){
         if(!Array.isArray(e)||e.length!==2)bad('STAT_SCATTER_GROUP_INVALID');
@@ -606,7 +607,7 @@ function solveScatter(c){
     if(!line)bad('STAT_SCATTER_TREND_INVALID');
     extra.trendArrow={direction:c.trendArrow.direction,from:line[0].map(qstr),to:line[1].map(qstr)};
   }
-  return {schemaVersion:MODEL_VERSION,kind:'SCATTER',...extra,xRange:xr.map(qstr),yRange:yr.map(qstr),xStep:qstr(xs),yStep:qstr(ys),labelEvery:every,grid:c.grid!==false,diagonal:c.diagonal===true,
+  return {schemaVersion:MODEL_VERSION,kind:'SCATTER',...(opts.compact===true?{compact:true}:{}),...extra,xRange:xr.map(qstr),yRange:yr.map(qstr),xStep:qstr(xs),yStep:qstr(ys),labelEvery:every,grid:c.grid!==false,diagonal:c.diagonal===true,
     xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID',''),yTitle:titleText(c.yTitle,'STAT_TITLE_INVALID',''),
     points:points.map(p=>({x:qstr(p.x),y:qstr(p.y),name:p.name,onDiagonal:qcmp(p.x,p.y)===0})),onDiagonal:points.filter(p=>qcmp(p.x,p.y)===0).length};
 }
@@ -619,9 +620,13 @@ const dotSegments=(points,br,step)=>{
   return groups.map(g=>{const lo=Math.max(0,Math.floor((g[0].v-1)/step)*step),hi=Math.ceil((g.at(-1).v+1)/step)*step;return {lo,hi};});
 };
 // where the line is cut the two end numbers next to the break need room: the gap is half the width of each (14.5 px a digit) and 8 px
-const dotGapPx=segments=>segments.length>1?14.5*(String(segments[0].hi).length+String(segments[1].lo).length)/2+8:0;
-const dotUnitPx=segments=>(DOT_MAPR-DOT_MAPL-dotGapPx(segments))/segments.reduce((t,g)=>t+g.hi-g.lo,0);
-function solveDot(c){
+// A panel of a composite (G16) is narrower (420 units: two of them and the gap stay inside the 848 units the solution column allows) and is laid out for the largest font the Archive policy
+// gives a composite (32 units, so a number is 23.2 units a digit): a fixed assumption, so that the panel's size and step never depend on the measured font.
+const PANEL_FONT_PX=32,PANEL_W=420;   // (the geometry objects DOT_GEO and DOT_GEO_PANEL follow the shared chart geometry below)
+const dotGapPx=(segments,geo=DOT_GEO)=>segments.length>1?geo.digit*(String(segments[0].hi).length+String(segments[1].lo).length)/2+8:0;
+const dotUnitPx=(segments,geo=DOT_GEO)=>(geo.mapr-geo.mapl-dotGapPx(segments,geo))/segments.reduce((t,g)=>t+g.hi-g.lo,0);
+function solveDot(c,opts={}){
+  const geo=opts.compact===true?DOT_GEO_PANEL:DOT_GEO;
   onlyKeys(c,['kind','values','counts','step','xTitle','axisBreak','marks'],'STAT_CHART_PLAN_INVALID');
   if((c.values===undefined)===(c.counts===undefined))bad('STAT_DOT_PLOT_INVALID');
   const whole=v=>{const n=typeof v==='string'&&/^\d{1,4}$/.test(v)?Number(v):v;return intIn(n,0,9999,'STAT_DOT_VALUE_INVALID');};
@@ -652,8 +657,8 @@ function solveDot(c){
   }
   // the labelled ticks must leave room for their numbers: a step is wide enough when it is more than the longest number of the line (14.5 px a digit and 6 px between) apart
   const fits=step=>{
-    const seg=dotSegments(points,br,step),unit=dotUnitPx(seg);
-    return (seg.length<2||seg[0].hi<seg[1].lo)&&seg.every(g=>g.hi-g.lo>=step&&(g.hi-g.lo)/step+1<=DOT_MAX_TICKS&&(step*unit>=14.5*String(g.hi).length+6||(g.hi-g.lo)/step<1))&&unit>=DOT_MIN_UNIT_PX;
+    const seg=dotSegments(points,br,step),unit=dotUnitPx(seg,geo);
+    return (seg.length<2||seg[0].hi<seg[1].lo)&&seg.every(g=>g.hi-g.lo>=step&&(g.hi-g.lo)/step+1<=DOT_MAX_TICKS&&(step*unit>=geo.digit*String(g.hi).length+6||(g.hi-g.lo)/step<1))&&unit>=DOT_MIN_UNIT_PX;
   };
   let step;
   if(c.step!==undefined){step=intIn(c.step,1,500,'STAT_DOT_STEP_INVALID');if(!fits(step))bad('STAT_DOT_PLOT_TOO_DENSE');}
@@ -661,7 +666,7 @@ function solveDot(c){
   const segments=dotSegments(points,br,step);
   const marks=c.marks===undefined?null:solveDotMarks(c.marks,points,total,segments);
   return {schemaVersion:MODEL_VERSION,kind:'DOT_PLOT',step,xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID',''),total,maxStack:Math.max(...points.map(p=>p.count)),
-    points:points.map(p=>({value:String(p.v),count:p.count})),segments,...(br?{axisBreak:br}:{}),...(marks?{marks}:{})};
+    points:points.map(p=>({value:String(p.v),count:p.count})),segments,...(br?{axisBreak:br}:{}),...(marks?{marks}:{}),...(opts.compact===true?{compact:true}:{})};
 }
 // Marks on a dot plot (G16, opt-in; a plan without marks is exactly the plan it always was): a dashed vertical line at the mean and/or the median (the value is checked against the data,
 // so a figure cannot show a mean the data do not have), single columns recoloured in a C1 palette colour (the lowest `count` dots of a value, default all of them) and the deviation (value - mean)
@@ -1003,6 +1008,7 @@ const textWidth=(text,fontPx)=>labelSize({kind:'TEXT',text},fontPx).width;
 
 // --- geometry shared by the charts -------------------------------------------------------------------------------------------------------
 const W=548,SAFE=12,MAPL=76,MAPR=422,ARROW_TIP=434,TITLE_X=442,AXIS_TOP=54,TICK=5,LABEL_BELOW=34;
+const DOT_GEO={digit:14.5,mapl:DOT_MAPL,mapr:DOT_MAPR,tip:ARROW_TIP},DOT_GEO_PANEL={digit:14.5*PANEL_FONT_PX/20,mapl:DOT_MAPL,mapr:PANEL_W-SAFE-24,tip:PANEL_W-SAFE-2};
 const STYLE={
   axis:'stroke="#111" stroke-width="1.2" fill="none"',tick:'stroke="#111" stroke-width="1.2" fill="none"',grid:'stroke="#b4b4b4" stroke-width="0.8" fill="none" stroke-dasharray="3 3"',
   arrow:'fill="#111" stroke="none"',bar:'fill="#ececec" stroke="#111" stroke-width="1.2"',barHi:'fill="#b5b5b5" stroke="#111" stroke-width="1.2"',
@@ -1224,10 +1230,14 @@ function boxSpec(m){
   }
   return {size:{width:W,height:H},prims,labels};
 }
+// A scatter plot as a panel of a composite (G16): 420 units wide, laid out for the largest composite font (PANEL_FONT_PX), the x title under the numbers and a taller room for the y title above the axis.
+const SC_PANEL={mapl:88,mapr:PANEL_W-SAFE-30,tip:PANEL_W-SAFE-4,top:76,plotH:220};
 function scatterSpec(m,ctx){
-  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,xlo=N(m.xRange[0]),xhi=N(m.xRange[1]),ylo=N(m.yRange[0]),yhi=N(m.yRange[1]),xs=N(m.xStep),ys=N(m.yStep);
-  const dxLo=xlo>0?xlo-.8*xs:0,dxHi=xhi+.6*xs,dyLo=ylo>0?ylo-.8*ys:0,dyHi=yhi+.5*ys,PLOT_H=250,PT=AXIS_TOP+18,BASE=PT+PLOT_H,H=BASE+TICK+4+LABEL_BELOW+SAFE;
-  const px=u=>r6(MAPL+(u-dxLo)/(dxHi-dxLo)*(MAPR-MAPL)),py=v=>r6(BASE-(v-dyLo)/(dyHi-dyLo)*PLOT_H),yAxisPx=px(dxLo);
+  const compact=m.compact===true;
+  const fontPx=compact?PANEL_FONT_PX:(ctx?.fontPx??DEFAULT_FONT_PX),xlo=N(m.xRange[0]),xhi=N(m.xRange[1]),ylo=N(m.yRange[0]),yhi=N(m.yRange[1]),xs=N(m.xStep),ys=N(m.yStep);
+  const mapl=compact?SC_PANEL.mapl:MAPL,mapr=compact?SC_PANEL.mapr:MAPR,axisTop=compact?SC_PANEL.top:AXIS_TOP,tickRow=compact?Math.ceil(1.5*fontPx):LABEL_BELOW,titleRow=compact&&m.xTitle?Math.ceil(1.45*fontPx)+2:0;
+  const dxLo=xlo>0?xlo-.8*xs:0,dxHi=xhi+.6*xs,dyLo=ylo>0?ylo-.8*ys:0,dyHi=yhi+.5*ys,PLOT_H=compact?SC_PANEL.plotH:250,PT=axisTop+18,BASE=PT+PLOT_H,H=BASE+TICK+4+tickRow+titleRow+SAFE;
+  const px=u=>r6(mapl+(u-dxLo)/(dxHi-dxLo)*(mapr-mapl)),py=v=>r6(BASE-(v-dyLo)/(dyHi-dyLo)*PLOT_H),yAxisPx=px(dxLo);
   const prims=[],labels=[];
   const ticks=(lo,hi,s)=>{const t=[];for(let k=Math.round(lo/s);k<=Math.round(hi/s);k++)t.push({v:k*s,k,idx:k-Math.round(lo/s)});return t;};
   const xt=ticks(xlo,xhi,xs),yt=ticks(ylo,yhi,ys);
@@ -1236,7 +1246,7 @@ function scatterSpec(m,ctx){
     for(const t of xt)prims.push(L(`grid-x-${t.k}`,'grid','grid',px(t.v),py(ylo),px(t.v),py(yhi),{value:xv(t.k)},20));
     for(const t of yt)prims.push(L(`grid-y-${t.k}`,'grid','grid',px(xlo),py(t.v),px(xhi),py(t.v),{value:yv(t.k)},20));
   }
-  arrows(prims,{xStartPx:yAxisPx,yAxisPx,base:BASE});
+  arrows(prims,compact?{xStartPx:yAxisPx,yAxisPx,base:BASE,tipX:SC_PANEL.tip,tipY:axisTop}:{xStartPx:yAxisPx,yAxisPx,base:BASE});
   if(xlo>0)breakMark(prims,'x',px(xlo-.45*xs),BASE);
   if(ylo>0)breakMark(prims,'y',yAxisPx,py(ylo-.45*ys));
   for(const t of xt){
@@ -1250,8 +1260,8 @@ function scatterSpec(m,ctx){
     labels.push(math(`y-tick-${t.k}-label`,'y-tick',`y-tick-${t.k}`,DISPLAY+qtex(P(yv(t.k))),yv(t.k),'end','middle',yAxisPx-TICK-4,py(t.v),{value:yv(t.k)}));
   }
   if(xlo>0||ylo>0)labels.push(math('origin','origin','x-axis','O','O','end','top',yAxisPx-6,BASE+4));
-  if(m.xTitle)labels.push(textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
-  if(m.yTitle)labels.push(textLabel('y-title','axis-title','y-axis',m.yTitle,'center','bottom',yAxisPx,AXIS_TOP-4));
+  if(m.xTitle)labels.push(compact?textLabel('x-title','axis-title','x-axis',m.xTitle,'end','top',PANEL_W-SAFE,BASE+TICK+4+tickRow):textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
+  if(m.yTitle)labels.push(textLabel('y-title','axis-title','y-axis',m.yTitle,'center','bottom',yAxisPx,axisTop-4));
   if(m.diagonal){const t0=Math.max(xlo,ylo),t1=Math.min(xhi,yhi);prims.push(L('diagonal','diagonal','diagonal',px(t0),py(t0),px(t1),py(t1),{},35));}
   for(const [j,g] of (m.regions??[]).entries()){
     if(g.kind==='HALF_PLANE'){ // a half plane: the polygon the plotted range keeps (G16); a strict side (GT, LT) draws its boundary dotted
@@ -1303,7 +1313,7 @@ function scatterSpec(m,ctx){
   });
   const legendRight=Math.max(0,...(m.pointGroups??[]).filter(g=>g.label).map(g=>TITLE_X+16+textWidth(g.label,fontPx)));
   const extraWidth=Math.max(m.xTitle?Math.max(0,Math.ceil(TITLE_X+textWidth(m.xTitle,fontPx)+SAFE)-W):0,legendRight?Math.max(0,Math.ceil(legendRight+SAFE)-W):0);   // an x title longer than the room right of the arrow widens the frame (E36); a title that fits leaves the figure as it was
-  return {size:{width:W+extraWidth,height:H},prims,labels};
+  return {size:{width:compact?PANEL_W:W+extraWidth,height:H},prims,labels};
 }
 function diceSpec(m,ctx){
   const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,CELL=m.cell==='PAIR'?54:40,n=m.faces;
@@ -1375,17 +1385,20 @@ function treeSpec(m,ctx){
 // DOT_FIRST above the line, the others one pitch (a diameter and DOT_GAP) apart; the dot radius follows the length of a unit so that neighbours never touch.
 const DOT_FIRST=7,DOT_GAP=1.5,DOT_MAX_R=5.5,DOT_MINOR=3;
 function dotSpec(m,ctx){
-  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,segs=m.segments,gap=dotGapPx(segs);
-  const unit=dotUnitPx(segs),r=r6(Math.min(DOT_MAX_R,.45*unit)),pitch=2*r+DOT_GAP;
+  const compact=m.compact===true,geo=compact?DOT_GEO_PANEL:DOT_GEO;
+  const fontPx=compact?PANEL_FONT_PX:(ctx?.fontPx??DEFAULT_FONT_PX),segs=m.segments,gap=dotGapPx(segs,geo);
+  const unit=dotUnitPx(segs,geo),r=r6(Math.min(DOT_MAX_R,.45*unit)),pitch=2*r+DOT_GAP;
   const stackH=DOT_FIRST+m.maxStack*pitch+10;
   const mk=m.marks??{},lineMarks=[['mean-line','meanLine','meanLine'],['median-line','medianLine','medianLine']].filter(([,key])=>mk[key]);
   // room for what the marks add above the tallest stack: a row of deviations and a row for the names of the lines
   const devH=mk.deviations?Math.ceil(1.45*fontPx)+4:0,nameRow=lineMarks.length?Math.ceil(1.45*fontPx)+6:0;
-  const px=v=>{const k=segs.findIndex(g=>v>=g.lo&&v<=g.hi);return r6(DOT_MAPL+(k?(segs[0].hi-segs[0].lo)*unit+gap:0)+(v-segs[k].lo)*unit);};
-  const BASE=r6(SAFE+20+stackH+devH+nameRow),H=Math.ceil(BASE+TICK+4+LABEL_BELOW+SAFE);
-  const right=m.xTitle?TITLE_X+textWidth(m.xTitle,fontPx):0,extraWidth=Math.max(0,Math.ceil(right+SAFE)-W);
+  const px=v=>{const k=segs.findIndex(g=>v>=g.lo&&v<=g.hi);return r6(geo.mapl+(k?(segs[0].hi-segs[0].lo)*unit+gap:0)+(v-segs[k].lo)*unit);};
+  // a panel has no room right of the arrow: its x title stands under the tick numbers, at the right end
+  const tickRow=compact?Math.ceil(1.5*fontPx):LABEL_BELOW,titleRow=compact&&m.xTitle?Math.ceil(1.45*fontPx)+2:0;
+  const BASE=r6(SAFE+20+stackH+devH+nameRow),H=Math.ceil(BASE+TICK+4+tickRow+titleRow+SAFE);
+  const right=m.xTitle&&!compact?TITLE_X+textWidth(m.xTitle,fontPx):0,extraWidth=compact?0:Math.max(0,Math.ceil(right+SAFE)-W);
   const prims=[],labels=[];
-  arrows(prims,{xStartPx:SAFE+14,yAxisPx:null,base:BASE});
+  arrows(prims,{xStartPx:SAFE+14,yAxisPx:null,base:BASE,tipX:geo.tip});
   if(segs.length>1)breakMark(prims,'x',r6((px(segs[0].hi)+px(segs[1].lo))/2),BASE);
   for(const g of segs)for(let v=g.lo;v<=g.hi;v++){
     const x=px(v);
@@ -1414,8 +1427,8 @@ function dotSpec(m,ctx){
     const p=m.points.find(q=>q.value===d.value),x=px(Number(d.value)),topY=r6(BASE-DOT_FIRST-2*r-(p.count-1)*pitch);
     labels.push({...math(`dev-${d.value}`,'deviation',`dot-${d.value}-${p.count}`,DISPLAY+d.tex,d.deviation,'center','bottom',x,topY-3,{value:d.deviation,column:d.value}),place:{x,y:topY,gap:3}});
   }
-  if(m.xTitle)labels.push(textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
-  return {size:{width:W+extraWidth,height:H},prims,labels};
+  if(m.xTitle)labels.push(compact?textLabel('x-title','axis-title','x-axis',m.xTitle,'end','top',PANEL_W-SAFE,BASE+TICK+4+tickRow):textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
+  return {size:{width:compact?PANEL_W:W+extraWidth,height:H},prims,labels};
 }
 // Normal curves (E36): the x axis along the bottom, the window the curves' mean ± span·sd (a framed curve: ± span, in σ units), each curve a polyline of the exact density (the tallest, the one with the
 // smallest sd, NORM_PEAK high; the others in the ratio of their sds), a labelled tick at every marked position, the shaded areas as polygons that end in vertical edges at their two positions (a tail
@@ -1492,11 +1505,15 @@ const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stem
 export const statChartSize=(model,ctx)=>({...SPEC_BY_KIND[model.kind](model,ctx).size});
 export function statChartSpec(plan,model,ctx){
   if(plan?.capability!==FIGURE_CAPABILITY||!isPlain(plan.chart))bad('STAT_CHART_PLAN_INVALID');
-  if(objectSha(solveStatChart(plan.chart))!==objectSha(model))bad('STAT_MODEL_MISMATCH');
+  if(objectSha(solveStatChart(plan.chart,{compact:model?.compact===true}))!==objectSha(model))bad('STAT_MODEL_MISMATCH');
   const spec=SPEC_BY_KIND[model.kind](model,ctx);
   return {schemaVersion:SPEC_VERSION,...spec};
 }
 
+/** A dot plot as a panel of a composite (G16): the compact model, its size, its canonical spec and the plain texts of its labels (what the composite observation expects to read). */
+export const solveStatPanel=chart=>solveStatChart(chart,{compact:true});
+export const statChartPanelSpec=(plan,model)=>JSON.parse(JSON.stringify(statChartSpec(plan,model,{})));
+export const statChartLabelTexts=spec=>spec.labels.map(label=>label.plain);
 // --- value labels: a label that would touch a polygon line, a dot or ring, an axis, a bracket or another label is moved to the nearest free place around its point ---
 const strokeOf=cls=>{const st=STYLE[cls]??'',mm=/stroke-width="([\d.]+)"/.exec(st);return !mm||/stroke="none"/.test(st)?0:Number(mm[1]);};
 const rectDist=(x,y,b)=>Math.hypot(Math.max(b.x-x,0,x-b.x-b.width),Math.max(b.y-y,0,y-b.y-b.height));
@@ -1761,7 +1778,7 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-stat-chart-'+Date.now()+'.svg',svg);
     let response;
-    try{response=await pythonWorker({chart:plan.chart,svg},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'statChartAudit',code:String(error?.message??error)});}
+    try{response=await pythonWorker({chart:plan.chart,svg,...(model.compact===true?{compact:true}:{})},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'statChartAudit',code:String(error?.message??error)});}
     if(response?.status!=='OK')throw new Stop('WORKER_ERROR',{stage:'statChartAudit',code:response?.result?.code??null});
     const audit=response.result;lineage.staticAuditSha256=objectSha(audit);
     const errors=[...(audit.errors??[])];
