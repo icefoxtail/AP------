@@ -1568,6 +1568,15 @@
             record.nativeMetaStatus = "APPROVED";
             const rpmMetadata = Object.fromEntries(["rpmL1", "rpmL2", "rpmL3", "rpmL4", "rpmCurriculum", "rpmSemanticStatus", "rpmSemanticReason", "rpmEvidenceDebtFields"]
               .filter(key => Object.prototype.hasOwnProperty.call(matchingOverlay, key)).map(key => [key, matchingOverlay[key]]));
+            // Registered rows record the RPM path as `rpmPrimaryPath {L1..L4}` instead of flat rpmL1..4.
+            // Read the registered values as-is (never invented) so the card shows the RPM path.
+            const primaryPath = matchingOverlay.rpmPrimaryPath;
+            if (primaryPath && typeof primaryPath === "object") {
+              for (const level of ["L1", "L2", "L3", "L4"]) {
+                const flat = "rpm" + level;
+                if (!Object.prototype.hasOwnProperty.call(rpmMetadata, flat) && text(primaryPath[level])) rpmMetadata[flat] = text(primaryPath[level]);
+              }
+            }
             if (Object.keys(rpmMetadata).length) record.metadataAssignmentEvidence = { ...record.metadataAssignmentEvidence, rpmMetadata };
           }
           record.assignmentEvidence = candidate.assignmentEvidence || assignmentRows[0] || null;
