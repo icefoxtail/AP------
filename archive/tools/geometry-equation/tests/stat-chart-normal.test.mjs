@@ -89,6 +89,12 @@ test('normal-curve plans that cannot be drawn faithfully are refused with their 
   refuse(c({shades:[{from:'47',to:'50'}],areaLabels:[{shade:0,text:'area'}]}),'STAT_NORMAL_AREA_LABEL_INVALID');
   refuse(c({shades:[{from:'47',to:'50'},{from:'50',to:'52'}],areaLabels:[{shade:0,text:'p'},{shade:1,text:'p'}]}),'STAT_NORMAL_AREA_SYMBOL_UNEQUAL');   // one letter, two different areas
   assert.doesNotThrow(()=>solveStatChart(c({shades:[{from:'47',to:'50'}],areaLabels:[{shade:0,text:'0.5-0.0668'}]})));              // 0.4332 written as a difference of table values
+  // G19: a table value the problem gives is rounded (source TABLE): 0.43 for 0.4332 within 0.01, 0.433 within 0.001, 0.4330 within 0.0005; without the source the 2e-4 rule stands
+  const tbl=(text,source='TABLE')=>c({shades:[{from:'47',to:'50'}],areaLabels:[{shade:0,text,...(source?{source}:{})}]});
+  assert.doesNotThrow(()=>solveStatChart(tbl('0.43')));assert.doesNotThrow(()=>solveStatChart(tbl('0.433')));assert.doesNotThrow(()=>solveStatChart(tbl('0.5-0.07')));assert.doesNotThrow(()=>solveStatChart(tbl('0.4330')));
+  assert.equal(solveStatChart(tbl('0.43')).shades[0].labelSource,'TABLE');assert.ok(!('labelSource' in solveStatChart(tbl('0.4332',null)).shades[0]));
+  refuse(tbl('0.43',null),'STAT_NORMAL_AREA_LABEL_MISMATCH');refuse(tbl('0.45'),'STAT_NORMAL_AREA_LABEL_MISMATCH');
+  refuse(tbl('0.4340'),'STAT_NORMAL_AREA_LABEL_MISMATCH');refuse(tbl('p'),'STAT_NORMAL_AREA_LABEL_INVALID');refuse(tbl('0.43','LIST'),'STAT_NORMAL_AREA_LABEL_INVALID');
   refuse(c({symmetry:[{pair:['47','52']}]}),'STAT_NORMAL_SYMMETRY_MISMATCH');refuse(c({symmetry:[{pair:['47']}]}),'STAT_NORMAL_SYMMETRY_INVALID');
   refuse(c({symmetry:[{pair:['47','47']}]}),'STAT_NORMAL_SYMMETRY_MISMATCH');
   assert.doesNotThrow(()=>solveStatChart(c({ticks:['48','50','52'],symmetry:[{pair:['48','52']}]})));

@@ -719,6 +719,8 @@ function solveDotMarks(raw,points,total,segments){
 const NORM_MAX_CURVES=3,NORM_MAX_TICKS=10,NORM_MAX_SHADES=6,NORM_SD_RATIO=4,NORM_AREA_TOL=2e-4;
 const NORM_SYMBOL=/^[A-Za-zμσ]$/,NORM_TEXT=/^[A-Za-z0-9μσ+\-=.()^]{1,10}$/,NORM_NAME=/^(?:[A-Za-z0-9μσ+\-=.()^, ]{1,14}|[가-힣][가-힣A-Za-z0-9 ()]{0,9})$/,NORM_PLAIN=/^-?\d{1,6}(?:\.\d{1,4})?$/;
 const NORM_AREA_SUM=/^\d(?:\.\d{1,4})?(?:[+-]\d(?:\.\d{1,4})?){0,2}$/,NORM_AREA_SYMBOL=/^[A-Za-z?]$/;
+// A table value the problem gives is rounded (0.34 for 0.3413, 0.477 for 0.4772): it may differ from the integral by 0.01 (2 decimals), 0.001 (3) or 0.0005 (4), by the most decimals one of its terms writes.
+const tableAreaTol=text=>{const d=Math.max(...[...text.matchAll(/\d\.(\d+)/g)].map(m=>m[1].length),0);return d<=2?0.01:d===3?0.001:0.0005;};
 const normalTeX=text=>text.replaceAll('σ','\\sigma ').replaceAll('μ','\\mu ').trim();
 const tryQ=v=>{try{return parseQ(v,'STAT_NORMAL_NUMBER_INVALID');}catch(error){return null;}};
 const normalPdf=z=>Math.exp(-z*z/2)/Math.sqrt(2*Math.PI);
@@ -816,13 +818,15 @@ function solveNormal(c){
   const labelsRaw=c.areaLabels===undefined?[]:c.areaLabels;
   if(!Array.isArray(labelsRaw)||labelsRaw.length>shades.length)bad('STAT_NORMAL_AREA_LABEL_INVALID');
   for(const raw of labelsRaw){
-    onlyKeys(raw,['shade','text'],'STAT_NORMAL_AREA_LABEL_INVALID');
+    onlyKeys(raw,['shade','text','source'],'STAT_NORMAL_AREA_LABEL_INVALID');
     if(!Number.isInteger(raw.shade)||raw.shade<0||raw.shade>=shades.length||shades[raw.shade].label!==null||typeof raw.text!=='string')bad('STAT_NORMAL_AREA_LABEL_INVALID');
+    if(raw.source!==undefined&&(raw.source!=='TABLE'||!NORM_AREA_SUM.test(raw.text)))bad('STAT_NORMAL_AREA_LABEL_INVALID');   // source TABLE: a value the problem gives (rounded), never a letter
     if(NORM_AREA_SUM.test(raw.text)){
       let v=0;for(const [,sign,term] of raw.text.matchAll(/([+-]?)(\d(?:\.\d{1,4})?)/g))v+=(sign==='-'?-1:1)*qnum(P(term));
-      if(Math.abs(v-shades[raw.shade].area)>NORM_AREA_TOL)bad('STAT_NORMAL_AREA_LABEL_MISMATCH');
+      if(Math.abs(v-shades[raw.shade].area)>(raw.source==='TABLE'?tableAreaTol(raw.text):NORM_AREA_TOL))bad('STAT_NORMAL_AREA_LABEL_MISMATCH');
     }else if(!NORM_AREA_SYMBOL.test(raw.text))bad('STAT_NORMAL_AREA_LABEL_INVALID');
     shades[raw.shade].label=raw.text;
+    if(raw.source==='TABLE')shades[raw.shade].labelSource='TABLE';
   }
   for(const [i,a] of shades.entries())for(const b of shades.slice(i+1))if(a.label!==null&&a.label===b.label&&/^[A-Za-z]$/.test(a.label)&&Math.abs(a.area-b.area)>1e-5)bad('STAT_NORMAL_AREA_SYMBOL_UNEQUAL');
   // pairs symmetric about a mean

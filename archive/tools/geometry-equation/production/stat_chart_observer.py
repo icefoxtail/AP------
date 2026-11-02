@@ -1901,11 +1901,15 @@ def normal_plan(chart):
     raw_labels = chart.get('areaLabels', [])
     if not isinstance(raw_labels, list) or len(raw_labels) > len(shades): fail('STAT_NORMAL_AREA_LABEL_INVALID')
     for raw in raw_labels:
-        if not isinstance(raw, dict) or set(raw) - {'shade', 'text'}: fail('STAT_NORMAL_AREA_LABEL_INVALID')
+        if not isinstance(raw, dict) or set(raw) - {'shade', 'text', 'source'}: fail('STAT_NORMAL_AREA_LABEL_INVALID')
         j, text = raw.get('shade'), raw.get('text')
         if isinstance(j, bool) or not isinstance(j, int) or not 0 <= j < len(shades) or shades[j]['label'] is not None or not isinstance(text, str): fail('STAT_NORMAL_AREA_LABEL_INVALID')
+        source = raw.get('source')
+        if 'source' in raw and (source != 'TABLE' or not NORM_AREA_SUM.match(text)): fail('STAT_NORMAL_AREA_LABEL_INVALID')
         if NORM_AREA_SUM.match(text):
-            if abs(float(label_value(text)) - shades[j]['area']) > NORM_AREA_TOL: fail('STAT_NORMAL_AREA_LABEL_MISMATCH')
+            tol = table_area_tol(text) if source == 'TABLE' else NORM_AREA_TOL
+            if abs(float(label_value(text)) - shades[j]['area']) > tol: fail('STAT_NORMAL_AREA_LABEL_MISMATCH')
+            shades[j]['label_tol'] = tol
         elif not NORM_AREA_SYMBOL.match(text): fail('STAT_NORMAL_AREA_LABEL_INVALID')
         shades[j]['label'] = text
     for i, a in enumerate(shades):
@@ -1930,6 +1934,12 @@ def normal_plan(chart):
     for c in curves:
         if c['mean_line'] and not any(t['u'] == (0 if framed else c['mean']) for t in ticks): fail('STAT_NORMAL_MEAN_NOT_TICKED')
     return {'framed': framed, 'curves': curves, 'lo': lo, 'hi': hi, 'span': span, 'ticks': ticks, 'shades': shades, 'symmetry': symmetry, 'z_axis': z_axis, 'x_label': x_label}
+
+
+def table_area_tol(text):
+    """A table value the problem gives is rounded (0.34 for 0.3413): it may differ from the integral by 0.01 (2 decimals), 0.001 (3) or 0.0005 (4 or more), by the most decimals one of its terms writes."""
+    d = max([len(m) for m in re.findall(r'\d\.(\d+)', text)] or [0])
+    return 0.01 if d <= 2 else 0.001 if d == 3 else 0.0005
 
 
 def label_value(text):
@@ -2092,7 +2102,8 @@ def audit_normal(chart, doc):
         if abs(drawn - exact) > NORM_MEASURED_TOL: doc.err('SC_NORMAL_SHADE_AREA:%d' % j)
         if s['label'] is not None and NORM_AREA_SUM.match(s['label']):
             value = float(label_value(s['label']))
-            if abs(value - s['area']) > NORM_AREA_TOL or abs(value - drawn) > NORM_AREA_TOL + NORM_MEASURED_TOL + (s['area'] - exact): doc.err('SC_NORMAL_AREA_LABEL_VALUE:%d' % j)
+            tol = s.get('label_tol', NORM_AREA_TOL)
+            if abs(value - s['area']) > tol or abs(value - drawn) > tol + NORM_MEASURED_TOL + (s['area'] - exact): doc.err('SC_NORMAL_AREA_LABEL_VALUE:%d' % j)
     for i, a in enumerate(shades):
         for k, b in enumerate(shades[i + 1:], i + 1):
             if a['label'] is not None and a['label'] == b['label'] and re.fullmatch(r'[A-Za-z]', a['label']) and i in drawn_area and k in drawn_area:
