@@ -173,15 +173,35 @@ test('an extension key is never attached to an original exam item', () => {
   assert.ok(original.violations.length >= 2);
   assert.ok(original.items.filter(item => item.blocked).every(item => item.badge === '' && item.origin === 'blocked'));
   assert.equal(original.items.find(item => item.key === 'CC_POINT_LINE_DISTANCE').badge, '정식');
-  // The real catalog: no original exam question carries an extension key in any key field.
+  // A registered 유사시험지 (`similar/...` source) may carry its own registered extension keys, but a similar row
+  // with a key no registry defines, or an original exam row, is still blocked.
+  const similarExt = view.describe({ questionUid: 'qid_v1_similar', sourceKind: 'archive', sourceFile: 'similar/high/h2/2final/x.js',
+    crossConceptKeys: ['EXT-CROSS-NORMAL_LINEAR_TRANSFORM', 'EXT-CROSS-NOT-REGISTERED'] });
+  assert.equal(similarExt.generated, false);
+  assert.deepEqual(similarExt.violations.map(v => v.key), ['EXT-CROSS-NOT-REGISTERED']);
+  const shown = similarExt.items.find(item => item.key === 'EXT-CROSS-NORMAL_LINEAR_TRANSFORM');
+  assert.ok(!shown.blocked && shown.badge === '확장' && shown.label && shown.label !== shown.key);
+  const sameKeyOnOriginal = view.describe({ questionUid: 'qid_v1_o', sourceKind: 'original', sourceFile: 'original/high/h2/2final/x.js',
+    crossConceptKeys: ['EXT-CROSS-NORMAL_LINEAR_TRANSFORM'] });
+  assert.equal(sameKeyOnOriginal.violations.length, 1);
+  // The real catalog: no past-exam (non-similar) question carries an extension key; every extension key on a
+  // similar exam row is registered, shown with a label, and raises no violation.
   const { catalog } = require('./helpers/archive2-scope-harness.cjs');
   const carriers = [];
+  let similarWithExtension = 0;
   for (const record of catalog.records) {
     const described = view.describe(record);
-    if (described.violations.length || JSON.stringify([record.problemTypeKey, record.templateKey, record.crossConceptKeys, record.conditionKeys, record.secondaryConceptKeys]).includes('EXT-'))
-      carriers.push(record.questionUid);
+    const hasExt = JSON.stringify([record.problemTypeKey, record.templateKey, record.crossConceptKeys, record.conditionKeys, record.secondaryConceptKeys]).includes('EXT-');
+    if (/^similar\//.test(record.sourceFile)) {
+      assert.deepEqual(described.violations, [], `${record.questionUid} similar row has blocked extension keys`);
+      if (hasExt) {
+        similarWithExtension += 1;
+        assert.ok(described.hasExtension && described.items.filter(item => item.origin === 'extension').every(item => item.badge === '확장' && item.label && item.label !== item.key));
+      }
+    } else if (described.violations.length || hasExt) carriers.push(record.questionUid);
   }
   assert.deepEqual(carriers, []);
+  assert.ok(similarWithExtension >= 1);
   assert.ok(catalog.records.length > 10000);
 });
 
