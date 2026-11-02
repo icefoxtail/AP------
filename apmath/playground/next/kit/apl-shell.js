@@ -311,8 +311,11 @@
       this._dirtyPanel = true;
     }
     // 선택 사항: sc.tabs 를 쓰는 장면은 머리말에 data-tab 을 달아 탭마다 머리말 모양을 달리할 수 있게 합니다
+    // sc.tabs = { compact: true } 이면 휴대폰 문제 탭에서 '탐구 질문' 카드를 접고 그림 무대를 낮춰 문제 글이 첫 화면에 오게 합니다(apl.css).
     _syncTabAttr() {
-      if (this.scene && this.scene.tabs) this.ui.head.dataset.tab = this.tab; else delete this.ui.head.dataset.tab;
+      const h = this.ui.head;
+      if (this.scene && this.scene.tabs) h.dataset.tab = this.tab; else delete h.dataset.tab;
+      if (this.scene && this.scene.tabs && this.scene.tabs.compact) h.dataset.compact = '1'; else delete h.dataset.compact;
     }
     setTab(id) {
       if (!this._tabAvailable(id)) return;
@@ -620,7 +623,9 @@
     _renderStage(v) {
       const ui = this.ui;
       // 수식 칩
-      const chips = v.chips || [];
+      // answer:true 로 표시한 칩·띠는 문제 탭에서 숨깁니다(답이나 중간값이 그림 옆에 찍히지 않게). 탐구·정리 탭에서는 그대로 보입니다.
+      const inProblem = this.tab === 'problem';
+      const chips = (v.chips || []).filter((c) => !(inProblem && c.answer));
       const key = JSON.stringify(chips);
       if (key !== this._chipKey) {
         this._chipKey = key;
@@ -662,7 +667,7 @@
         }
       }
       // 테이프
-      const tape = v.tape;
+      const tape = inProblem && v.tape && v.tape.answer ? null : v.tape;
       ui.tape.hidden = !tape;
       if (tape) {
         const tk = JSON.stringify(tape);

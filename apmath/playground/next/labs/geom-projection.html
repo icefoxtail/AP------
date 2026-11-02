@@ -203,7 +203,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ===== 호환층: 원본 draw3D… 이름·인자 → 3D 무대 도우미 =====
      원본 alphaFor와 같은 규칙으로 ‘선택한 조각/관찰 렌즈’ 밖의 요소를 흐리게 합니다. */
-  let SP = null, BRD = null;
+  let SP = null, BRD = null, PROB = false; // PROB: 문제 탭 그림(풀이 단계·답을 그리지 않고 문제에 주어진 값만)
   const sink = {};
   function alphaFor(opt = {}) {
     let a = 1;
@@ -228,7 +228,11 @@ window.addEventListener('DOMContentLoaded', function () {
     styled(opt, () => SP.poly(pts, { fill: fillColor, color: strokeColor || null, stroke: !!strokeColor, width, dash: dashed ? [5, 5] : null, glow: !!strokeColor && isPart(opt) }));
   }
   function draw3DPoint(p, r = 5, color = '#fbbf24', label = '', offset = { x: 10, y: -10 }, opt = {}) {
-    styled(opt, () => SP.point(p, { r, color, label: alphaFor(opt) > .12 ? label : '', dx: offset.x || 10, dy: offset.y || -10, align: 'left' }));
+    styled(opt, () => SP.point(p, { r, color, label: alphaFor(opt) > .12 ? label : '', dx: offset.x || 10, dy: offset.y || -10, align: 'left', problemLabel: opt.problemLabel, answer: opt.answer }));
+  }
+  // 문제에 주어진 길이(선분 가운데에 놓는 글자). dx, dy: 선에서 띄우는 화면 거리
+  function lenLabel(a, c, str, color = '#fde68a', dx = 0, dy = -11) {
+    styled({}, () => SP.text(mul(add(a, c), .5), str, { color, size: 13, weight: 800, align: 'center', baseline: 'middle', dx, dy }));
   }
   function drawBottomTapeBanner(rect, labelA, valueA, labelB, valueB, caption = '') {
     sink.tape = {
@@ -271,6 +275,17 @@ window.addEventListener('DOMContentLoaded', function () {
     function renderMode1(rect,g){
       const {A,Ap,M,B,C}=g,t=state.planeTheta,co=Math.cos(t),si=Math.sin(t);
       draw3DPolygon([V(-3,0,-4.5),V(5,0,-4.5),V(5,0,4.5),V(-3,0,4.5)],'rgba(25,160,107,.07)','#176746',1,false,{group:'projection'});
+      if(PROB){ // 문제 그림: 평면 β 위의 삼각형 ABC(BC=8, AM=6, S=24)와 이면각 θ=60°. 구하는 A′M, S′ 값은 그리지 않습니다.
+        draw3DPolygon([B,C,A],'rgba(244,114,182,.22)','#f472b6',2.8,false,{});
+        draw3DPolygon([B,C,Ap],'rgba(56,189,248,.22)','#38bdf8',2.4,false,{});
+        draw3DLine(A,Ap,'#fde047',2.2,true,false,{});
+        draw3DLine(M,A,'#f472b6',2.4,false,false,{});draw3DLine(M,Ap,'#38bdf8',2.4,false,false,{});
+        draw3DAngleArc(M,Ap,A,.65,'#fde047','θ',{});
+        draw3DPoint(A,6,'#f472b6','A',{x:12,y:-12},{});draw3DPoint(Ap,5,'#38bdf8','A′',{x:12,y:18},{});
+        draw3DPoint(B,4,'#34d399','B',{x:8,y:12},{});draw3DPoint(C,4,'#34d399','C',{x:8,y:-12},{});draw3DPoint(M,4,'#fde047','M',{x:-29,y:10},{});
+        lenLabel(B,C,'8','#34d399',-12,0);lenLabel(M,A,'6','#f472b6',-12,0);
+        {const cen=mul(add(add(A,B),C),1/3);lenLabel(cen,cen,'S = 24','#f472b6',0,0);}
+      }
       if(state.steps[1]){
         draw3DPolygon([B,C,A],'rgba(244,114,182,.22)','#f472b6',2.8,false,{part:0,group:'source'});
         draw3DPoint(A,6,'#f472b6','A · S=24',{x:12,y:-12},{part:0,group:'source',priority:3});
@@ -278,7 +293,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if(state.steps[2]){
         draw3DPolygon([B,C,Ap],'rgba(56,189,248,.25)','#38bdf8',2.6,false,{part:1,group:'projection'});
         draw3DLine(A,Ap,'#fde047',2.6,true,true,{part:1,group:'aux'});
-        draw3DPoint(Ap,5,'#38bdf8',`A′ · S′=${(24*co).toFixed(2)}`,{x:12,y:18},{part:1,group:'projection',priority:2});
+        draw3DPoint(Ap,5,'#38bdf8',`A′ · S′=${(24*co).toFixed(2)}`,{x:12,y:18},{part:1,group:'projection',priority:2,problemLabel:'A′'});
         if(si>.04)draw3DRightAngle(Ap,A,M,.42,'#fde047');
       }
       if(state.steps[3]){
@@ -295,6 +310,15 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     function renderMode2(rect,g){
       const {base,ell,low,high,upperGround,r}=g,t=state.planeTheta,co=Math.cos(t);
+      if(PROB){ // 문제 그림: 밑면 원(r=3)과 60°로 자른 단면. 단면의 넓이·장축·단축 값은 그리지 않습니다.
+        draw3DPolygon(base,'rgba(56,189,248,.24)','#38bdf8',2.7,false,{});
+        draw3DPolygon(ell,'rgba(244,114,182,.25)','#f472b6',2.8,false,{});
+        draw3DLine(V(0,0,0),V(r,0,0),'#38bdf8',2,false,false,{});lenLabel(V(0,0,0),V(r,0,0),'r = 3','#38bdf8',22,16);
+        draw3DLine(low,upperGround,'#38bdf8',2.2,false,false,{});draw3DLine(low,high,'#fbbf24',2.6,false,false,{});
+        draw3DLine(upperGround,high,'#fde047',2,true,false,{});
+        draw3DRightAngle(upperGround,low,high,.4);
+        draw3DAngleArc(low,upperGround,high,.7,'#fde047','θ');
+      }
       if(state.steps[1]){
         draw3DPolygon(base,'rgba(56,189,248,.24)','#38bdf8',2.7,false,{part:0,group:'projection'});
         draw3DPoint(V(0,0,0),4,'#38bdf8','밑면 원 · 9π',{x:10,y:15},{part:0,group:'projection'});
@@ -319,6 +343,11 @@ window.addEventListener('DOMContentLoaded', function () {
       const {A,B,C,D,E,F,G,H,M,Mp}=g;
       const edges=[[E,F],[F,G],[G,H],[H,E],[A,B],[B,C],[C,D],[D,A],[A,E],[B,F],[C,G],[D,H]];
       edges.forEach(([p,q])=>draw3DLine(p,q,'rgba(203,213,225,.35)',1.4,false,false,{group:'aux'}));
+      if(PROB){ // 문제 그림: 한 모서리 4인 정육면체와 단면 BDE (정사영 FEH·S, S′ 값은 그리지 않습니다)
+        draw3DPolygon([B,D,E],'rgba(244,114,182,.26)','#f472b6',3,false,{});
+        [['A',A],['B',B],['C',C],['D',D],['E',E],['F',F],['G',G],['H',H]].forEach(([l,p])=>draw3DPoint(p,4.5,'#fde68a',l,{x:8,y:-10},{}));
+        lenLabel(E,F,'4','#fde68a',0,-11);
+      }
       if(state.steps[2]){
         draw3DPolygon([F,E,H],'rgba(56,189,248,.22)','#38bdf8',2.8,false,{part:1,group:'projection'});
         draw3DLine(B,F,'#fbbf24',2.4,true,false,{part:1,group:'aux'});draw3DLine(D,H,'#fbbf24',2.4,true,false,{part:1,group:'aux'});
@@ -456,6 +485,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       id: 'mode' + m, title: TITLES[m - 1], short: SHORT[m - 1],
       question: QUESTIONS[m - 1],
+      tabs: { compact: true }, // 휴대폰 문제 탭: 탐구 질문 카드를 접고 그림 무대를 낮춰 문제 글이 첫 화면에 오게 함
       guide: d.hint,
       enter: (s) => { const c = CAMS(m).iso; s.yaw = c.yaw; s.pitch = c.pitch; s.th = 60; s.board = 30; s.sun = 60; s.lens = 'all'; s.dir = 1; },
       controls: () => (m <= 2 ? ['th', 'yaw', 'pitch'] : m === 3 ? ['yaw', 'pitch'] : ['board', 'sun', 'yaw', 'pitch']),
@@ -499,24 +529,29 @@ window.addEventListener('DOMContentLoaded', function () {
           ? `원판-광선 각 ${Math.round(state.boardDeg + state.sunDeg)}° (수직 아님) — 시점 ${Math.round(s.yaw)}° · ${Math.round(s.pitch)}°`
           : `시점 ${Math.round(s.yaw)}° · ${Math.round(s.pitch)}° — 빈 곳을 끌면 회전`;
         return {
-          chips: chips(m),
+          chips: chips(m).map((c) => ({ ...c, answer: true })), // 칩은 모두 풀이 식·답이라 문제 탭에서는 숨깁니다
           status: { tone: 'info', text },
           readouts: readouts(m),
           parts: d.steps.map((t, i) => ({ id: i + 1, name: PART_NAMES[m - 1][i], desc: t, color: (m === 2 ? ['sky', 'rose', 'amber'] : ['rose', 'sky', 'amber'])[i] }))
         };
       },
-      draw: (b, s, v) => {
+      draw: (b, s0, v, lab) => {
         BRD = b;
+        PROB = !!lab && lab.tab === 'problem';
+        // 문제 탭: 풀이 단계·강조를 끄고 문제에 주어진 값(θ=60°, 30°·60°)만 고정합니다. 4번(그림자)은 문제 그림이 곧 상황 전체라 3단계까지 그리고 띠(답)만 숨깁니다.
+        const s = APLab.problemState(lab, s0, m <= 2 ? { th: 60 } : m === 4 ? { step: 3, board: 30, sun: 60 } : {});
         sync(s, m);
-        SP = APLab.space(b, cam(s));
+        SP = APLab.space(b, cam(s), { problem: PROB });
         const g = currentGeometry();
+        // 겨냥도: 정육면체의 면 목록을 알려 주면 뒷면의 모서리를 자동으로 점선으로 그립니다
+        if (m === 3) SP.solid(APLab.solidFaces.prism([g.E, g.F, g.G, g.H], [g.A, g.B, g.C, g.D]));
         const rect = { width: b.W, height: b.H };
         // 회전할 때마다 점과 라벨이 모두 화면 안에 들어오도록 맞춥니다(바닥 평면은 장식이라 넘쳐도 됩니다).
         SP.fitDrawing(g.fit, () => RENDER[m](rect, g));
         sink.tape = null;
         if (s.grid) draw3DFloorGrid(g.floor);
         RENDER[m](rect, g);
-        v.tape = sink.tape;
+        v.tape = sink.tape ? { ...sink.tape, answer: true } : null; // 띠는 풀이·답이라 문제 탭에서는 숨깁니다
       }
     };
   }

@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function () {
         targetTime: "목표 시간: 3초",
         question: () => `한 모서리의 길이가 ${tex('6')}인 정사면체 ${tex('ABCD')}에서 선분 ${tex('AB')}의 중점을 ${tex('N')}, 선분 ${tex('CD')}의 중점을 ${tex('M')}이라 하자. 꼬인 위치에 있는 두 직선 ${tex('AB')}와 ${tex('CD')}가 이루는 각의 크기 ${tex('\\theta')}와 두 모서리 사이의 최단 거리 ${tex('\\overline{MN}')}의 길이를 구하시오.`,
         answerBadge: () => `${tex('\\theta = 90^\\circ, \\; \\overline{MN} = 3\\sqrt{2}')}`,
-        cam: { yaw: (-35 * Math.PI) / 180, pitch: (22 * Math.PI) / 180 },
+        cam: { yaw: (20 * Math.PI) / 180, pitch: (22 * Math.PI) / 180 }, // 숨은선 도입으로 -35°는 A·C·D가 한 직선으로 겹쳐 보여 +20°로 바꿈
         sectionCam: { yaw: (0 * Math.PI) / 180, pitch: (0 * Math.PI) / 180 }, // CD 축 방향 정면 뷰
         steps: [
           "꼬인 위치에 있는 마주보는 두 모서리 AB(청색)와 CD(분홍색)",
@@ -99,7 +99,7 @@ window.addEventListener('DOMContentLoaded', function () {
         targetTime: "목표 시간: 3초",
         question: () => `한 모서리의 길이가 ${tex('6')}인 정사면체 ${tex('ABCD')}에서 두 면 ${tex('ABC')}와 ${tex('DBC')}가 이루는 이면각의 크기를 ${tex('\\theta')}라 할 때, ${tex('\\cos\\theta')}의 값과 꼭짓점 ${tex('A')}에서 밑면 ${tex('DBC')}에 내린 수선의 발 ${tex('G')}까지의 높이 ${tex('h')}를 구하시오.`,
         answerBadge: () => `${tex('\\cos\\theta = \\dfrac{1}{3}, \\; h = 2\\sqrt{6} \\approx 4.90')}`,
-        cam: { yaw: (-32 * Math.PI) / 180, pitch: (22 * Math.PI) / 180 },
+        cam: { yaw: (-15 * Math.PI) / 180, pitch: (22 * Math.PI) / 180 }, // -32°는 모서리 AB와 수선 AG가 한 직선으로 겹쳐 -15°로 바꿈
         sectionCam: { yaw: 0, pitch: 0 }, // BC 평행 시선: 교선을 점으로, 이면각 단면을 참모양으로
         steps: [
           "두 평면이 만나는 교선 BC 및 교선의 중점 M 표시",
@@ -183,7 +183,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ===== 호환층: 원본 draw3D… 이름 → 3D 무대 도우미 =====
      원본 getPartStyle과 같은 규칙으로 ‘선택한 단계/관찰 렌즈’ 밖의 요소를 흐리게 합니다. */
-  let SP = null, B = null;
+  let SP = null, B = null, PROB = false; // PROB: 문제 탭 그림(풀이 단계·답을 그리지 않고 문제에 주어진 값만)
   const sink = {};
   function getPartStyle(partIdx = 0, lensGroup = 'shape') {
     const focus = state.partIdx, lens = state.lens;
@@ -204,8 +204,12 @@ window.addEventListener('DOMContentLoaded', function () {
   function draw3DPolygon(pts, fill = 'rgba(52,211,153,.12)', stroke = null, width = 1.5, part = 0, group = 'shape') {
     styled(part, group, () => SP.poly(pts, { fill, color: stroke, stroke: !!stroke, width }));
   }
-  function draw3DPoint(p, radius = 5, color = '#fbbf24', label = '', offset = { x: 10, y: -10 }, part = 0, group = 'shape') {
-    styled(part, group, () => SP.point(p, { r: radius, color, label, dx: offset.x, dy: offset.y, align: 'left' }));
+  function draw3DPoint(p, radius = 5, color = '#fbbf24', label = '', offset = { x: 10, y: -10 }, part = 0, group = 'shape', extra = {}) {
+    styled(part, group, () => SP.point(p, { r: radius, color, label, dx: offset.x, dy: offset.y, align: 'left', ...extra }));
+  }
+  // 문제에 주어진 길이(모서리·선분 가운데에 놓는 글자). dx, dy: 선에서 띄우는 화면 거리
+  function lenLabel(a, c, str, color = '#fde68a', dx = 0, dy = -11) {
+    styled(0, 'shape', () => SP.text(mul(add(a, c), 0.5), str, { color, size: 13, weight: 800, align: 'center', baseline: 'middle', dx, dy }));
   }
   function draw3DRightAngle(o, a, b, size = 0.48, color = '#fbbf24', part = 0, group = 'perp') {
     styled(part, group, () => SP.right(o, a, b, { color, size: 14 })); // [표시 보강] 직각 표시를 11→14px로 키움(투시 화면에서 작아 안 보였음)
@@ -235,6 +239,12 @@ window.addEventListener('DOMContentLoaded', function () {
     function renderMode1(r,{A,B,C,D,M,N}){
       const edges=[[A,C],[A,D],[B,C],[B,D]];
       edges.forEach(([p,q])=>draw3DLine(p,q,'rgba(226,232,240,.56)',1.8,false,false,0,'shape'));
+      if(!state.steps[1]){draw3DLine(A,B,'rgba(226,232,240,.56)',1.8,false,false,0,'shape');draw3DLine(C,D,'rgba(226,232,240,.56)',1.8,false,false,0,'shape');}
+      if(PROB){ // 문제 그림: 주어진 한 모서리 길이 6, 중점 M·N (MN의 길이와 θ는 묻는 값이라 그리지 않습니다)
+        draw3DLine(M,N,'rgba(226,232,240,.75)',1.6,true,false,0,'shape');
+        draw3DPoint(M,5,'#e2e8f0','M',{x:10,y:8},0,'shape');draw3DPoint(N,5,'#e2e8f0','N',{x:-18,y:-6},0,'shape');
+        lenLabel(A,C,'6','#fde68a',-9,-9);
+      }
       if(state.steps[3]){
         draw3DPolygon([A,B,M],'rgba(251,191,36,.18)','#fbbf24',1.3,3,'perp');
         draw3DLine(M,N,'#fbbf24',3.4,false,true,3,'projection');
@@ -266,14 +276,25 @@ window.addEventListener('DOMContentLoaded', function () {
         draw3DRightAngle(H,P,A,.5,'#fbbf24',3,'perp');
         drawBottomTapeBanner(r,`PA² = PO² + OH² + AH² = ${state.h2.toFixed(1)}² + 3² + (2√6)² | PH = ${Math.hypot(state.h2,3).toFixed(2)}`);
       }
-      draw3DPoint(P,6,'#fbbf24',`P (PO=${state.h2.toFixed(1)})`,{x:-40,y:-15},1,'perp');
-      draw3DPoint(A,5,'#34d399','A (AH=2√6)',{x:10,y:12},3,'projection');
+      if(PROB){ // 문제 그림: 주어진 PO=4, OH=3, PA=7 과 두 직각. 구하는 AH(=2√6)는 그리지 않습니다.
+        draw3DLine(P,O,'#f472b6',3,false,false,0,'perp');draw3DRightAngle(O,P,H,.5,'#f472b6',0,'perp');
+        draw3DLine(O,H,'#38bdf8',3,false,false,0,'perp');draw3DRightAngle(H,O,A,.5,'#38bdf8',0,'perp');
+        draw3DLine(P,A,'#34d399',2.6,false,false,0,'projection');
+        draw3DPoint(O,5,'#f472b6','O',{x:-22,y:14},0,'perp');draw3DPoint(H,5,'#38bdf8','H',{x:9,y:-11},0,'perp');
+        lenLabel(P,O,'PO = 4','#f472b6',-34,0);lenLabel(O,H,'OH = 3','#38bdf8',0,15);lenLabel(P,A,'PA = 7','#34d399',24,-12);
+      }
+      draw3DPoint(P,6,'#fbbf24',`P (PO=${state.h2.toFixed(1)})`,{x:-40,y:-15},1,'perp',{problemLabel:'P'});
+      draw3DPoint(A,5,'#34d399','A (AH=2√6)',{x:10,y:12},3,'projection',{problemLabel:'A'});
     }
     function renderMode3(r,{M,B,C,D,A,G}){
       const θ=state.theta3,cos=Math.cos(θ),isRegular=Math.abs(θ-regularAngle)<1e-7;
       draw3DPolygon([D,B,C],'rgba(56,189,248,.14)','#38bdf8',2,0,'shape');
       draw3DPolygon([A,B,C],'rgba(244,114,182,.16)','#f472b6',2,0,'shape');
-      draw3DLine(A,D,'rgba(255,255,255,.5)',1.7,true,false,0,'shape');
+      draw3DLine(A,D,'rgba(255,255,255,.5)',1.7,false,false,0,'shape'); // 숨은 모서리는 SP.solid 가 자동으로 점선
+      if(PROB){ // 문제 그림: 한 모서리 6, 꼭짓점 A에서 밑면 DBC에 내린 수선의 발 G (cosθ와 h는 묻는 값)
+        draw3DLine(A,G,'#34d399',2.2,true,false,0,'projection');draw3DPoint(G,5,'#34d399','G',{x:10,y:16},0,'projection');
+        lenLabel(B,C,'6','#fde68a',-10,0);
+      }
       if(state.steps[1]){draw3DLine(B,C,'#fde047',3.8,false,true,1,'shape');draw3DPoint(M,5,'#fde047','M (BC 중점)',{x:-98,y:10},1,'shape');}
       if(state.steps[2]){
         draw3DLine(A,M,'#f472b6',3.3,false,true,2,'perp');draw3DLine(D,M,'#38bdf8',3.3,false,true,2,'perp');
@@ -311,6 +332,10 @@ window.addEventListener('DOMContentLoaded', function () {
         draw3DAngleArc(G,A,H,B&&B.W<520?1.7:2.2,'#fbbf24',angLabel('α',angDeg(G,A,H)),3,'perp');
         drawBottomTapeBanner(r,'cos α = cos β × cos γ  |  cos β = 1/√2, cos γ = 3/5',{
           fraction:{before:'cos α =',num:'3',den:'5√2',after:'≈ 0.424'}});
+      }
+      if(PROB){ // 문제 그림: 가로·세로·높이 3, 4, 5 와 대각선 AG, EG (세 각 β, γ, α 의 값은 묻는 값)
+        draw3DLine(A,G,'#fbbf24',3,false,false,0,'shape');draw3DLine(E,G,'#38bdf8',2.6,false,false,0,'projection');
+        lenLabel(E,F,'3','#fde68a',0,-11);lenLabel(E,H,'4','#fde68a',-12,12);lenLabel(A,E,'5','#fde68a',-11,0);
       }
       if(state.steps[1])draw3DLine(A,G,'#fbbf24',4,false,true,1,'shape');
       [['A',A],['E',E],['F',F],['G',G]].forEach(([label,p])=>draw3DPoint(p,5,label==='A'?'#fbbf24':label==='E'?'#f472b6':'#38bdf8',label,{x:10,y:-9},1,'shape'));
@@ -378,7 +403,7 @@ window.addEventListener('DOMContentLoaded', function () {
     ];
   }
   function chips(m) {
-    if (m === 1) return [{ tex: '\\overline{CD} \\perp \\triangle ABM \\implies \\overline{AB} \\perp \\overline{CD}' }, { tex: '\\theta = 90^\\circ', color: 'amber' }];
+    if (m === 1) return [{ tex: '\\overline{CD} \\perp \\triangle ABM \\implies \\overline{AB} \\perp \\overline{CD}', answer: true }, { tex: '\\theta = 90^\\circ', color: 'amber', answer: true }];
     if (m === 2) return [{ tex: '\\overline{PO} \\perp \\alpha, \\; \\overline{OH} \\perp l \\implies \\overline{PH} \\perp l' }, { tex: `\\overline{PA} = ${Math.hypot(Math.hypot(state.h2, 3), Math.sqrt(24)).toFixed(2)}`, color: 'green' }];
     if (m === 3) {
       const reg = Math.abs(state.theta3 - regularAngle) < 1e-7;
@@ -392,6 +417,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       id: 'mode' + m, title: TITLES[m - 1], short: SHORT[m - 1],
       question: QUESTIONS[m - 1],
+      tabs: { compact: true }, // 휴대폰 문제 탭: 탐구 질문 카드를 접고 그림 무대를 낮춰 문제 글이 첫 화면에 오게 함
       guide: d.hint,
       enter: (s) => { const c = CAMS(m).iso; s.yaw = c.yaw; s.pitch = c.pitch; s.h2 = 4.0; s.th = REG_DEG; s.lens = 'all'; },
       controls: () => (m === 2 ? ['h2', 'yaw', 'pitch'] : m === 3 ? ['th', 'yaw', 'pitch'] : ['yaw', 'pitch']),
@@ -417,23 +443,29 @@ window.addEventListener('DOMContentLoaded', function () {
       view: (s) => {
         sync(s, m);
         return {
-          chips: chips(m),
+          chips: chips(m).map((c) => ({ ...c, answer: true })), // 칩은 모두 풀이 식·답이라 문제 탭에서는 숨깁니다
           status: { tone: 'info', text: `시점 ${Math.round(s.yaw)}° · ${Math.round(s.pitch)}° — 빈 곳을 끌면 회전` },
           readouts: readouts(s, m),
           parts: d.steps.map((t, i) => ({ id: i + 1, name: `${i + 1}단계`, desc: t, color: PART_COLORS[i] }))
         };
       },
-      draw: (b, s, v) => {
+      draw: (b, s0, v, lab) => {
         B = b;
+        PROB = !!lab && lab.tab === 'problem';
+        // 문제 탭: 풀이 단계·강조를 끄고, 문제에 주어진 값(PO=4, 정사면체)만 고정합니다
+        const s = APLab.problemState(lab, s0, m === 2 ? { h2: 4.0 } : m === 3 ? { th: REG_DEG } : {});
         sync(s, m);
-        SP = APLab.space(b, cam(s));
+        SP = APLab.space(b, cam(s), { problem: PROB });
         const g = geometry(m);
+        // 겨냥도: 입체의 면 목록을 알려 주면 뒷면의 모서리를 자동으로 점선으로 그립니다
+        if (m === 1 || m === 3) SP.solid(APLab.solidFaces.tetra(g.A, g.B, g.C, g.D));
+        else if (m === 4) SP.solid(APLab.solidFaces.prism([g.E, g.F, g.G, g.H], [g.A, g.B, g.C, g.D]));
         // 회전할 때마다 점과 라벨이 모두 화면 안에 들어오도록 맞춥니다(바닥 평면은 장식이라 넘쳐도 됩니다).
         SP.fitDrawing(Object.values(g), () => RENDER[m]({ width: b.W, height: b.H }, g));
         sink.tape = null;
         if (s.grid) draw3DFloorGrid(-2.7);
         RENDER[m]({ width: b.W, height: b.H }, g);
-        v.tape = sink.tape;
+        v.tape = sink.tape ? { ...sink.tape, answer: true } : null; // 띠는 풀이·답이라 문제 탭에서는 숨깁니다
       }
     };
   }
