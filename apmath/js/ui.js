@@ -1072,6 +1072,21 @@ function drawerMark(key, kind) {
     drawerRefreshCurrent();
 }
 
+// 서랍·레일이 스크롤될 때 아래에 더 있음을 알리는 페이드(.drw-scroll-more, CSS가 그린다). 끝까지 내리면 사라진다.
+function drawerUpdateScrollHint() {
+    const drw = document.getElementById('app-drawer');
+    if (!drw) return;
+    const more = drw.scrollHeight - drw.clientHeight - drw.scrollTop > 4;
+    drw.classList.toggle('drw-scroll-more', more);
+}
+
+function drawerBindScrollHint(drw) {
+    if (!drw || drw.__apScrollHint) return;
+    drw.__apScrollHint = true;
+    drw.addEventListener('scroll', drawerUpdateScrollHint, { passive: true });
+    window.addEventListener('resize', drawerUpdateScrollHint);
+}
+
 function drawerBindNavObserver() {
     if (drawerNavState.observer || typeof MutationObserver === 'undefined') return;
     const root = document.getElementById('app-root');
@@ -1134,10 +1149,10 @@ function buildDrawerMenu(roleKey) {
         ${drawerItem('attendance', '출석부', "closeAppDrawer(); if(typeof openAttendanceLedger==='function') { drawerMark('attendance', 'page'); openAttendanceLedger(); } else if(typeof renderAttendanceLedger==='function') { drawerMark('attendance'); renderAttendanceLedger(); } else toast('출석부 기능을 불러오지 못했습니다.', 'warn');", '', 'attendance')}
         ${drawerItem('textbook', '진도·교재', "closeAppDrawer(); if(typeof openGlobalTextbookManage==='function') { drawerMark('textbook'); openGlobalTextbookManage(); } else toast('진도·교재 기능을 불러오지 못했습니다.', 'warn');", '', 'textbook')}
         ${drawerItem('clinic', '클리닉', "closeAppDrawer(); if(typeof openClinicCenter==='function') { drawerMark('clinic'); openClinicCenter(); } else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');", '', 'clinic')}
-        ${drawerItem('omr', '원내평가·OMR', "closeAppDrawer(); if(typeof openExamWorkspace==='function') { drawerMark('exam-omr'); openExamWorkspace(''); } else toast('원내평가·OMR 기능을 불러오지 못했습니다.', 'warn');", '', 'exam-omr')}
+        ${drawerItem('exam', '원내평가·OMR', "closeAppDrawer(); if(typeof openExamWorkspace==='function') { drawerMark('exam-omr'); openExamWorkspace(''); } else toast('원내평가·OMR 기능을 불러오지 못했습니다.', 'warn');", '', 'exam-omr')}
 
         ${drawerSection('반·학생')}
-        ${drawerItem('class', '반 관리', "closeAppDrawer(); drawerMark('class'); openClassManageModal();", '', 'class')}
+        ${drawerItem('manage', '반 관리', "closeAppDrawer(); drawerMark('class'); openClassManageModal();", '', 'class')}
         ${drawerItem('students', '학생 관리', "closeAppDrawer(); drawerMark('students'); openAddressBook();", '', 'students')}
         ${drawerItem('discharged', '퇴원생', "closeAppDrawer(); if(typeof openWithdrawalReport==='function') { drawerMark('discharged'); openWithdrawalReport(); } else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');", '', 'discharged')}
 
@@ -1152,7 +1167,7 @@ function buildDrawerMenu(roleKey) {
 
         ${drawerSection('자료')}
         ${drawerItem('material', '수업자료', "closeAppDrawer(); if(typeof openStudyMaterialWrongCenter==='function') { drawerMark('material'); openStudyMaterialWrongCenter(); } else toast('수업자료 기능을 불러오지 못했습니다.', 'warn');", '', 'material')}
-        ${drawerItem('exam', '시험지 보관함', "closeAppDrawer(); window.open(appendArchiveSessionToUrlForUi('../archive/assessment/assessment-mvp.html'), '_blank', 'noopener');")}
+        ${drawerItem('archive', '시험지 보관함', "closeAppDrawer(); window.open(appendArchiveSessionToUrlForUi('../archive/assessment/assessment-mvp.html'), '_blank', 'noopener');")}
         ${drawerItem('playground', '도형·함수 실험실', "closeAppDrawer(); window.open('./playground/index.html', '_blank', 'noopener');")}
 
         ${drawerSection('지원')}
@@ -1223,6 +1238,9 @@ function renderAppDrawer(force = false) {
 
     drawerBindNavObserver();
     drawerRefreshCurrent();
+    drawerBindScrollHint(document.getElementById('app-drawer'));
+    drawerUpdateScrollHint();
+    window.setTimeout(drawerUpdateScrollHint, 300);
     applyTheme(getTheme());
 }
 
@@ -1247,6 +1265,7 @@ function openAppDrawer() {
     }
     renderAppDrawer();
     drawerRefreshCurrent();
+    drawerUpdateScrollHint();
     const drw = document.getElementById('app-drawer');
     const ovl = document.getElementById('app-drawer-overlay');
     if (!drw) return;

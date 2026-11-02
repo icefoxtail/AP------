@@ -189,6 +189,39 @@ test('아이콘: 레일에서 같은 묶음 안 항목끼리 아이콘이 겹치
     }
 });
 
+test('레일 아이콘 구분: 선생님 서랍에서 비슷한 책 모양이 겹치지 않는다(반 관리=톱니, 원내평가·OMR=문서+체크, 시험지 보관함=상자)', () => {
+    const { parsed } = makeDrawer('teacher');
+    const iconOf = label => parsed.items.find(i => i.label === label).icon;
+    const sandboxIcons = makeDrawer('teacher').run('DRAWER_ICON_SVG');
+    assert.equal(iconOf('반 관리'), sandboxIcons.manage);
+    assert.equal(iconOf('원내평가·OMR'), sandboxIcons.exam);
+    assert.equal(iconOf('시험지 보관함'), sandboxIcons.archive);
+    const all = parsed.items.map(i => i.icon);
+    assert.equal(new Set(all).size, all.length, '선생님 서랍 전체에서 아이콘 중복 없음(레일은 아이콘만 보인다)');
+    // 원장 서랍의 반 관리는 그대로 class (원장 "관리"가 이미 톱니)
+    const admin = makeDrawer('admin');
+    assert.equal(admin.parsed.items.find(i => i.label === '반 관리').icon, admin.run('DRAWER_ICON_SVG').class);
+});
+
+test('스크롤 단서: 스크롤할 수 있을 때만 .drw-scroll-more가 붙고 끝까지 내리면 떨어진다, CSS는 페이드+⌄를 그린다', () => {
+    const code = sliceBetween(ui, 'function drawerUpdateScrollHint() {', 'function drawerBindScrollHint(');
+    const drw = { scrollHeight: 1000, clientHeight: 800, scrollTop: 0, classes: new Set(), classList: { toggle(c, on) { on ? drw.classes.add(c) : drw.classes.delete(c); } } };
+    const sandbox = { document: { getElementById: () => drw } };
+    vm.createContext(sandbox);
+    vm.runInContext(code, sandbox);
+    sandbox.drawerUpdateScrollHint();
+    assert.ok(drw.classes.has('drw-scroll-more'), '아래에 더 있으면 표시');
+    drw.scrollTop = 200;
+    sandbox.drawerUpdateScrollHint();
+    assert.ok(!drw.classes.has('drw-scroll-more'), '끝까지 내리면 사라짐');
+    drw.scrollHeight = 800; drw.scrollTop = 0;
+    sandbox.drawerUpdateScrollHint();
+    assert.ok(!drw.classes.has('drw-scroll-more'), '스크롤할 일이 없으면 표시 없음(원장 서랍 등)');
+    assert.ok(/#app-drawer\.drw-scroll-more \.drw-footer::before \{[^}]*linear-gradient/.test(css), '페이드');
+    assert.ok(/#app-drawer\.drw-scroll-more \.drw-footer::after \{/.test(css), '⌄ 표시');
+    assert.ok(/addEventListener\('scroll', drawerUpdateScrollHint/.test(ui), '스크롤하면 갱신');
+});
+
 test('현재 위치: 항목마다 고유 data-nav가 있고, 표시는 늘 한 개 이하이며 정확히 그 항목이다', () => {
     for (const role of ['teacher', 'admin']) {
         const { parsed, buttons, run } = makeDrawer(role);
