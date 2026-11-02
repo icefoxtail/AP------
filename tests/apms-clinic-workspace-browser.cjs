@@ -224,13 +224,31 @@ const OPEN = {
             await page.waitForTimeout(400);
             await page.getByRole('tab', { name: '유사문항' }).click();
         },
+        // 추천 보기(단원 상세 + 유사문항 후보)
         detail: async page => {
             await page.evaluate(() => openClinicCenter('c1'));
             await page.waitForTimeout(400);
             await page.getByRole('tab', { name: '유사문항' }).click();
             await page.waitForTimeout(500);
-            const items = page.locator('.ws-clinic-unit');
-            if (await items.count()) await items.first().click();
+            const tab = page.locator('.ws-clinic-subtab', { hasText: '유사문항 추천' });
+            if (await tab.count()) { await tab.click(); await page.waitForTimeout(600); }
+        },
+        // 바구니 보기(후보 2개 담은 뒤)
+        basket: async page => {
+            await page.evaluate(() => openClinicCenter('c1'));
+            await page.waitForTimeout(400);
+            await page.getByRole('tab', { name: '유사문항' }).click();
+            await page.waitForTimeout(500);
+            const tab = page.locator('.ws-clinic-subtab', { hasText: '유사문항 추천' });
+            if (await tab.count()) {
+                await tab.click();
+                await page.waitForSelector('.ws-clinic-candidate');
+                const add = page.locator('.ws-clinic-candidate button:not(:disabled)');
+                await add.first().click();
+                await add.first().click();
+                await page.locator('.ws-clinic-subtab', { hasText: '바구니' }).click();
+                await page.waitForTimeout(300);
+            }
         }
     }
 };
@@ -239,7 +257,8 @@ async function behaviour(browser, base) {
     const { context, page, errors, apiCalls } = await openApp(browser, base, DEVICES[3], 'light', 'normal');
     try {
         const dialogs = [];
-        page.on('dialog', async dialog => { dialogs.push(dialog.message()); await dialog.dismiss(); });
+        let acceptNext = false;
+        page.on('dialog', async dialog => { dialogs.push(dialog.message()); if (acceptNext) { acceptNext = false; await dialog.accept(); } else await dialog.dismiss(); });
         const title = () => page.locator('#modal-title').innerText();
         const settle = ms => page.waitForTimeout(ms || 700);
         // showModal 호출 횟수를 센다(테스트 전용 감시): 반·탭·단원을 바꿀 때 모달을 갈아 끼우지 않는다는 근거는 아래 DOM 표식으로 본다.
@@ -259,6 +278,19 @@ async function behaviour(browser, base) {
         assert.match(await page.locator('#clinic-print-summary').innerText(), /선택 시험/);
         assert.ok(apiCalls.some(c => c.startsWith('exam-sessions/by-class?class=c1')), '출력 센터가 반 시험 기록을 불러온다');
 
+        // 1b) 반 표기: 학년을 겹쳐 쓰지 않고, 같은 이름 + 다른 담당일 때만 담당 이름을 붙인다
+        const labels = await page.evaluate(() => {
+            const a = { id: 'x1', name: '중3A', grade: '중3', teacher_name: '김선생' };
+            const b = { id: 'x2', name: '중3A', grade: '중3', teacher_name: '박선생 선생님' };
+            const c = { id: 'x3', name: '심화반', grade: '고1', teacher_name: '김선생' };
+            const peers = [a, b, c];
+            return [wsClinicClassLabel(a, peers), wsClinicClassLabel(b, peers), wsClinicClassLabel(c, peers), wsClinicClassLabel(a, [a, c])];
+        });
+        assert.deepEqual(labels, [{ text: '중3A', teacher: '김선생' }, { text: '중3A', teacher: '박선생' }, { text: '고1 심화반', teacher: '' }, { text: '중3A', teacher: '' }]);
+
+        const shared = await page.evaluate(() => { window.apmsClassLabel = () => ({ text: '공통표기', teacher: '공통담당' }); const r = wsClinicClassLabel({ id: 'q', name: 'x' }, []); delete window.apmsClassLabel; return r; });
+        assert.deepEqual(shared, { text: '공통표기', teacher: '공통담당' }, '공통 함수 window.apmsClassLabel 이 있으면 먼저 쓴다');
+
         // 2) 반 전환: 모달이 닫히지 않고 같은 자리에서 다른 반 출력 센터로 바뀐다
         const hiddenBefore = await page.evaluate(() => window.__overlayHidden);
         await page.locator('.ws-clinic-classtab', { hasText: '중2B' }).click();
@@ -275,6 +307,41 @@ async function behaviour(browser, base) {
         await page.locator('.ws-clinic-classtab', { hasText: '중3A' }).click();
         await page.waitForSelector('.ws-clinic-unit', { timeout: 8000 });
         assert.ok(await page.locator('.ws-clinic-unit').count() >= 1, '중3A 취약 단원 목록');
+
+        // 4) 단원 선택 → 같은 자리에서 오른쪽 상세만 바뀐다(모달 갈아 끼움 없음)
+        const first = page.locator('.ws-clinic-unit').first();
+        await first.click();
+        await page.waitForSelector('.ws-clinic-detail__title');
+        const firstTitle = (await page.locator('.ws-clinic-detail__title').innerText()).trim();
+        assert.ok(firstTitle.length > 0);
+        assert.equal(await title(), '클리닉');
+        assert.equal(await page.evaluate(() => window.__overlayHidden), hiddenBefore);
+        assert.ok(await page.locator('.ws-clinic-row').count() >= 1, '오답 문항 목록');
+        const bodyBefore = await page.evaluate(() => { const el = document.getElementById('ws-clinic-root'); el.dataset.marker = 'same-modal'; return true; });
+        await page.locator('.ws-clinic-unit').nth(1).click();
+        assert.notEqual((await page.locator('.ws-clinic-detail__title').innerText()).trim(), firstTitle, '다른 단원 상세로 바뀐다');
+        assert.equal(await page.locator('.ws-clinic-unit[aria-current="true"]').count(), 1, '선택 단원은 하나');
+        assert.equal(await page.evaluate(() => document.getElementById('ws-clinic-root').dataset.marker), 'same-modal', '단원을 골라도 모달 내용을 갈아 끼우지 않는다');
+
+        // 5) 유사문항 추천 → 후보 담기 → 바구니(같은 자리) → 단원 B로 바로 이동 → 삭제
+        await page.locator('.ws-clinic-subtab', { hasText: '유사문항 추천' }).click();
+        await page.waitForSelector('.ws-clinic-candidate', { timeout: 8000 });
+        await page.locator('.ws-clinic-candidate button', { hasText: '클리닉 후보 담기' }).first().click();
+        await page.waitForTimeout(200);
+        assert.match(await page.locator('.ws-clinic-basket-count').first().innerText(), /1/);
+        assert.equal(await page.locator('.ws-clinic-candidate button:disabled').count(), 1, '담은 후보는 "바구니에 담김"으로 바뀐다');
+        await page.locator('.ws-clinic-unit').nth(2).click();
+        await page.waitForSelector('.ws-clinic-candidate', { timeout: 8000 });
+        assert.equal(await page.locator('.ws-clinic-unit[aria-current="true"] .ws-clinic-unit__name').count(), 1, '단원 A→B 이동 후에도 추천 보기가 이어진다');
+        await page.locator('.ws-clinic-subtab', { hasText: '바구니' }).click();
+        await page.waitForSelector('.ws-clinic-basket');
+        assert.equal(await page.locator('.ws-clinic-basket-item').count(), 1);
+        assert.equal(await title(), '클리닉', '추천·담기·바구니·단원 이동 내내 모달은 하나');
+        assert.equal(await page.evaluate(() => window.__overlayHidden), hiddenBefore, '추천·바구니·단원 이동 내내 모달이 닫히지 않는다');
+        await page.locator('.ws-clinic-basket-item button', { hasText: '삭제' }).first().click();
+        await page.waitForTimeout(200);
+        assert.equal(await page.locator('.ws-clinic-basket-item').count(), 0, '바구니 삭제는 같은 자리에서 반영된다');
+        assert.equal(await page.evaluate(() => document.getElementById('ws-clinic-root').dataset.marker), 'same-modal');
 
         // 6) 취소는 한 번에 닫히고 시작한 반 화면으로 돌아간다(옛: 취소 = 반 화면 이탈이 단계마다 반복)
         await page.locator('#modal-cancel-btn').click();
@@ -323,6 +390,21 @@ async function behaviour(browser, base) {
         await page.evaluate(() => { api.get = window.__origGet; closeModal(true); });
         await settle(500);
 
+        // 10) 고른 내용이 있으면 반·탭을 바꾸기 전에 묻는다. 취소하면 그대로, 확인하면 바뀐다.
+        await page.evaluate(() => openClinicPrintCenter('c1'));
+        await page.waitForSelector('.ws-clinic input[name="clinic-print-exam"]', { timeout: 8000 });
+        await page.locator('.ws-clinic input[name="clinic-print-exam"]:not(:checked)').first().check();
+        const askedBefore = dialogs.length;
+        await page.locator('.ws-clinic-classtab', { hasText: '중2B' }).click();
+        await page.waitForTimeout(500);
+        assert.equal(dialogs.length, askedBefore + 1, '고른 내용이 있으면 반을 바꾸기 전에 묻는다');
+        assert.equal(await page.locator('.ws-clinic-classtab[aria-pressed="true"]').innerText().then(t => t.trim()), '중3A', '취소하면 그 반에 그대로 있다');
+        acceptNext = true;
+        await page.locator('.ws-clinic-classtab', { hasText: '중2B' }).click();
+        await page.waitForFunction(() => document.querySelector('.clinic-print-summary-card__title')?.textContent.trim() === '중2B', null, { timeout: 8000 });
+        await page.evaluate(() => closeModal(true));
+        await settle(500);
+
         assert.deepEqual(errors, [], 'page errors: ' + errors.join(' | '));
     } finally {
         await context.close();
@@ -332,7 +414,7 @@ async function behaviour(browser, base) {
 async function shoot(browser, base) {
     fs.mkdirSync(shotDir, { recursive: true });
     const problems = [];
-    const views = flow === 'legacy' ? ['menu', 'picker', 'print', 'similar', 'detail'] : ['print', 'similar', 'detail'];
+    const views = flow === 'legacy' ? ['menu', 'picker', 'print', 'similar', 'detail'] : ['print', 'similar', 'detail', 'basket'];
     for (const device of DEVICES) {
         for (const theme of ['light', 'dark']) {
             if (theme === 'dark' && device.id !== 'phone-390x844') continue; // 다크는 대표 1기기(휴대폰)
@@ -366,11 +448,46 @@ async function shoot(browser, base) {
     return problems;
 }
 
+// 출력 불변 근거: 출력 센터에서 시험·학생을 고르고 만든 출제 payload(인쇄 엔진에 가는 값)를 파일로 저장한다.
+// 옛 시점(APMS_ROOT=main 을 풀어 둔 폴더, APMS_CLINIC_FLOW=legacy)과 새 시점의 결과를 diff 하면 같아야 한다.
+async function dumpPayloads(browser, base, file) {
+    const { context, page } = await openApp(browser, base, DEVICES[3], 'light', 'many');
+    try {
+        await page.evaluate(() => renderClass('c1'));
+        await page.waitForTimeout(500);
+        await page.evaluate(() => openClinicPrintCenter('c1'));
+        await page.waitForSelector('#clinic-print-summary', { timeout: 10000 });
+        await page.waitForTimeout(1200);
+        const out = await page.evaluate(() => {
+            const strip = value => JSON.parse(JSON.stringify(value, (key, v) => (/createdAt|generatedAt|timestamp|clientRequestId|requestId/i.test(key) ? undefined : v)));
+            const result = {};
+            const examKeys = Array.from(document.querySelectorAll('input[name="clinic-print-exam"]:not(:disabled)')).slice(0, 3).map(el => el.value);
+            const studentIds = Array.from(document.querySelectorAll('input[name="clinic-print-student"]')).map(el => el.value);
+            result.examKeys = examKeys;
+            result.studentCount = studentIds.length;
+            for (const mode of ['student', 'class', 'grade']) {
+                try {
+                    result[mode] = strip(clinicPrintBuildPayload('c1', { selectedExamKeys: examKeys, selectedStudentIds: studentIds, mode, headerOptions: clinicPrintGetHeaderOptions('c1') }));
+                } catch (e) { result[mode] = 'ERROR ' + e.message; }
+            }
+            result.summary = document.getElementById('clinic-print-summary').textContent.trim();
+            result.printCenterIds = Array.from(document.querySelectorAll('#modal-body [id]')).map(el => el.id).filter(id => id.startsWith('clinic-print-')).sort();
+            return result;
+        });
+        fs.writeFileSync(file, JSON.stringify(out, null, 2));
+    } finally { await context.close(); }
+}
+
 (async () => {
     const server = await startServer();
     const base = `http://127.0.0.1:${server.address().port}`;
     const browser = await chromium.launch({ channel: 'chrome', headless: true });
     try {
+        if (process.env.APMS_PAYLOAD_DUMP) {
+            await dumpPayloads(browser, base, process.env.APMS_PAYLOAD_DUMP);
+            console.log('출제 payload 저장:', process.env.APMS_PAYLOAD_DUMP);
+            return;
+        }
         if (!process.env.APMS_SKIP_BEHAVIOUR && flow === 'workspace') {
             await behaviour(browser, base);
             console.log('APMS 클리닉 작업 화면 동작 검사 통과');

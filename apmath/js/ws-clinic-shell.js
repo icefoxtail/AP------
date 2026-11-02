@@ -42,6 +42,27 @@ function wsClinicResolveClassId(classId = '') {
     return tabs.length ? String(tabs[0].id) : '';
 }
 
+// 반 탭 표기(사용자 지시 2026-11-02): 학년을 겹쳐 쓰지 않는다("중3A", 학년이 이름에 없을 때만 "고1 심화반").
+// 지금 함께 보이는 반 중 같은 이름이 있고 담당이 다를 때만 담당 이름을 작은 보조 글자로 붙인다. 모달 제목에는 넣지 않는다.
+// 공통 함수 window.apmsClassLabel(cls, peers) → {text, teacher} 가 있으면 그것을 먼저 쓴다.
+function wsClinicClassLabel(cls, peers) {
+    if (typeof window !== 'undefined' && typeof window.apmsClassLabel === 'function') {
+        try {
+            const shared = window.apmsClassLabel(cls, peers);
+            if (shared && typeof shared.text === 'string') return { text: shared.text, teacher: shared.teacher || '' };
+        } catch (e) { console.warn('[ws-clinic] apmsClassLabel failed:', e); }
+    }
+    const textOf = c => {
+        const name = String(c?.name || '').trim() || '반 이름 없음';
+        const grade = String(c?.grade || '').trim();
+        return grade && !name.includes(grade) ? `${grade} ${name}` : name;
+    };
+    const teacherOf = c => String(c?.teacher_name || '').replace(/\s*선생님\s*$/g, '').trim();
+    const text = textOf(cls);
+    const clash = (peers || []).some(other => String(other?.id) !== String(cls?.id) && textOf(other) === text && teacherOf(other) !== teacherOf(cls));
+    return { text, teacher: clash ? teacherOf(cls) : '' };
+}
+
 function wsClinicBarHtml(classId, view) {
     const tabs = wsClinicGetClassTabs(classId);
     const views = [['print', '오답 출력'], ['similar', '유사문항']];
@@ -51,8 +72,8 @@ function wsClinicBarHtml(classId, view) {
     }).join('');
     const classTabs = tabs.map(cls => {
         const selected = String(cls.id) === String(classId);
-        const meta = [cls.grade, cls.teacher_name].filter(Boolean).join(' · ');
-        return `<button type="button" class="ws-clinic-classtab${selected ? ' is-active' : ''}" data-class-id="${apEscapeHtml(String(cls.id))}" aria-pressed="${selected ? 'true' : 'false'}"${meta ? ` title="${apEscapeHtml(meta)}"` : ''} onclick="wsClinicSwitchClass(${wsClinicJsArg(cls.id)})">${apEscapeHtml(cls.name || '반 이름 없음')}</button>`;
+        const label = wsClinicClassLabel(cls, tabs);
+        return `<button type="button" class="ws-clinic-classtab${selected ? ' is-active' : ''}" data-class-id="${apEscapeHtml(String(cls.id))}" aria-pressed="${selected ? 'true' : 'false'}" onclick="wsClinicSwitchClass(${wsClinicJsArg(cls.id)})">${apEscapeHtml(label.text)}${label.teacher ? `<span class="ws-clinic-classtab__teacher">${apEscapeHtml(label.teacher)}</span>` : ''}</button>`;
     }).join('');
     return `
         <div class="ws-clinic__bar apms-workspace__bar">

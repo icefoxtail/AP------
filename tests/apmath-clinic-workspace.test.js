@@ -99,6 +99,29 @@ check('새 화면 글자는 12px 이상, 출력 센터 CSS 에도 12px 미만 �
     assert.equal(/font-size:\s*(?:[0-9]|1[01])(?:\.\d+)?px/.test(printCss), false, 'apms-clinic-print.css 에 12px 미만 글자');
 });
 
+check('유사문항 보기는 늦게 온 응답을 버리고, 단원 선택에 서버 왕복이 없다', () => {
+    assert.match(functionBody(similar, 'async function wsClinicLoadRecommendations('), /wsClinicSimilar !== data \|\| !wsClinicIsCurrent\(data\.token\)/);
+    assert.match(functionBody(similar, 'async function wsClinicOpenSimilar('), /if \(!wsClinicIsCurrent\(token\)\) return false/);
+    const select = functionBody(similar, 'function wsClinicSelectUnit(');
+    assert.equal(/await |fetch\(|api\.|buildSimilarQuestionCandidates/.test(select), false, '단원을 고르는 데 서버 왕복이 있다');
+    assert.equal(/font-size:\s*(?:[0-9]|1[01])px/.test(similar), false, '유사문항 보기에 12px 미만 인라인 글자');
+});
+
+check('바구니 삭제·비우기는 옛 모달(openClinicBasketByKey)을 다시 열지 않고 같은 자리에서 반영한다', () => {
+    for (const name of ['function wsClinicRemoveCandidate(', 'function wsClinicClearBasket(', 'function wsClinicAddCandidate(']) {
+        const body = functionBody(similar, name);
+        assert.equal(/openClinicBasketByKey|showModal|setModalBody/.test(body), false, `${name} 가 모달을 다시 연다`);
+        assert.match(body, /wsClinicRenderDetail\(true\)/);
+    }
+});
+
+check('반 탭 표기: 공통 함수 apmsClassLabel 을 먼저 쓰고 학년을 겹쳐 쓰지 않는다', () => {
+    const body = functionBody(shell, 'function wsClinicClassLabel(');
+    assert.match(body, /typeof window\.apmsClassLabel === 'function'/);
+    assert.match(body, /!name\.includes\(grade\)/);
+    assert.equal(/' · '/.test(functionBody(shell, 'function wsClinicBarHtml(')), false, '탭에 "학년 · 이름"을 겹쳐 쓰지 않는다');
+});
+
 check('index.html 은 clinic-print.js 바로 뒤에 새 스크립트를, 클리닉 CSS 뒤에 새 CSS를 불러온다', () => {
     const order = ['js/clinic-print.js', 'js/ws-clinic-shell.js', 'js/ws-clinic-similar.js'].map(f => indexHtml.indexOf(`src="${f}`));
     assert.ok(order.every(i => i > 0) && order[0] < order[1] && order[1] < order[2], '스크립트 순서');
