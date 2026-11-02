@@ -130,7 +130,7 @@ class Fixtures(unittest.TestCase):
         if change:svg=edit(svg,change)
         return audit(plan or fixed_plan,svg,transform)['errors']
     def test_every_stored_figure_is_clean(self):
-        for name in ('right-angle-tangents','equal-angles-bisector','vertical-asymptote-label','vertical-asymptote-label-none'):
+        for name in ('right-angle-tangents','equal-angles-bisector','vertical-asymptote-label','vertical-asymptote-label-none','radical-length'):
             self.assertEqual(self.errors(name),[],name)
 
 class RightAngleObserver(Fixtures):
@@ -214,5 +214,23 @@ class VerticalAsymptoteObserver(Fixtures):
                     if (child.get('id') or '').startswith('overlay-callout-cx'):parent.remove(child)
         errors=self.errors('vertical-asymptote-label-none',drop)
         self.assertIn('VERTICAL_ASYMPTOTE_LABEL_MISSING',errors)
+
+class RadicalLength(Fixtures):
+    def test_a_wrong_radical_is_still_refused(self):
+        plan,svg,transform=fixture('radical-length')
+        def other_radicand(root):
+            label=node(root,'overlay-segment-OP-length')
+            for path in label.iter():
+                if path.get('data-c')=='32':path.set('data-c','33')       # sqrt(3) instead of sqrt(2)
+        errors=audit(plan,edit(svg,other_radicand),transform)['errors']
+        self.assertTrue(any(error.startswith('OVERLAY_SEGMENT_LENGTH_LABEL_TEXT_MISMATCH:OP') for error in errors),errors)
+        def sign_first(root):
+            label=node(root,'overlay-segment-OP-length');paths=[path for path in label.iter() if path.get('data-c')]
+            codes=[path.get('data-c') for path in paths];self.assertEqual(codes,['32','221A'])
+            paths[0].set('data-c','221A');paths[1].set('data-c','32')      # the old (wrong) order: the radical sign first
+        self.assertTrue(any(error.startswith('OVERLAY_SEGMENT_LENGTH_LABEL_TEXT_MISMATCH:OP') for error in audit(plan,edit(svg,sign_first),transform)['errors']))
+    def test_the_length_leader_is_declared(self):
+        _,svg,_=fixture('radical-length');self.assertIn('overlay-segment-OP-length-owner-leader',svg)
+        plan,svg,transform=fixture('radical-length');self.assertNotIn('OVERLAY_UNDECLARED',' '.join(audit(plan,svg,transform)['errors']))
 
 if __name__=='__main__':unittest.main()

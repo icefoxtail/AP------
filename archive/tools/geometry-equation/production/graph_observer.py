@@ -3147,13 +3147,13 @@ def _ov_coordinate_codes(value):
     return out+(OV_DIGIT(denominator) if denominator!=1 else [])
 
 def _ov_length_codes(value):
-    """Glyph codes of a segment length written as an integer, a fraction or p*sqrt(q): the digits (numerator then denominator), the radical U+221A, the radicand digits."""
+    """Glyph codes of a segment length written as an integer, a fraction or p*sqrt(q): the digits (numerator then denominator), or the coefficient, the radicand digits and then the radical U+221A (MathJax order)."""
     value=value if value.is_Integer else S.simplify(value)
     if value.is_Integer:return OV_DIGIT(int(value))
     if value.is_Rational and value>0:return OV_DIGIT(int(value.p))+OV_DIGIT(int(value.q))   # a fraction (G12-3): the numerator digits, then the denominator digits
     coefficient,radical=value.as_coeff_Mul()
     if coefficient.is_Integer and coefficient>0 and radical.is_Pow and radical.exp==S.Rational(1,2) and radical.base.is_Integer and radical.base>1:
-        return (OV_DIGIT(int(coefficient)) if coefficient!=1 else [])+['221A']+OV_DIGIT(int(radical.base))
+        return (OV_DIGIT(int(coefficient)) if coefficient!=1 else [])+OV_DIGIT(int(radical.base))+['221A']   # MathJax draws the radicand before the radical sign (as in a coordinate)
     raise ValueError('OVERLAY_SEGMENT_LENGTH_UNSUPPORTED')
 
 def _ov_lattice(plan,entry):

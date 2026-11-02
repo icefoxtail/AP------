@@ -81,7 +81,7 @@ class Framing(unittest.TestCase):
         with self.assertRaises(ValueError) as caught:_overlay_length_row(S.pi,'s')
         self.assertEqual(str(caught.exception),'OVERLAY_SEGMENT_LENGTH_UNSUPPORTED:s')
         self.assertEqual(_ov_length_codes(S.Rational(3,2)),['33','32']);self.assertEqual(_ov_length_codes(S.Rational(9,8)),['39','38'])
-        self.assertEqual(_ov_length_codes(2*S.sqrt(5)),['32','221A','35'])
+        self.assertEqual(_ov_length_codes(2*S.sqrt(5)),['32','35','221A'])   # MathJax draws the radicand before the radical sign (G13a)
     def test_a_discontinuous_name_place_and_axis_variable_are_checked(self):
         base={'family':'piecewise-discontinuous','functionName':'g','pieces':[{'coefficients':['2'],'domain':[None,-2],'end':'OPEN'},{'coefficients':['1'],'domain':[-2,None],'start':'OPEN'}],'jumpValues':[{'x':'-2','y':'1'}],'requiredPoints':[],'axisTickValues':{'x':[-2],'y':[1,2]}}
         good=fit_overview({**copy.deepcopy(base),'nameLabel':{'at':'END','side':'ABOVE'},'axisVariable':'m'})['graphPlan']
