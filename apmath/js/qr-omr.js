@@ -1489,6 +1489,13 @@ async function saveOmrInputBulk(button) {
 
 function goOmrInputHome() {
     if (typeof leaveTimetableWideMode === 'function') leaveTimetableWideMode();
+    // 원내평가·OMR 작업 화면의 "표로 한 번에 입력"으로 들어왔다면 그 반의 작업 화면으로 돌아간다.
+    const returnClassId = String(state?.ui?.omrReturnClassId || '');
+    if (state?.ui) state.ui.omrReturnClassId = '';
+    if (returnClassId && typeof renderClass === 'function' && typeof openExamWorkspace === 'function') {
+        renderClass(returnClassId);
+        return openExamWorkspace(returnClassId);
+    }
     if (typeof goHome === 'function') return goHome();
     if (typeof renderDashboard === 'function') return renderDashboard();
 }
