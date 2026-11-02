@@ -22,6 +22,24 @@ function sha256(contentBytes) {
  * does not contain NaN/undefined/corrupt coordinate attributes, and maintains strict mathematical
  * semantic alignment with the question text (vertex labels, shaded regions, coordinate axes, blanks).
  */
+// Root attributes that mark an SVG as produced by the geometry/equation engine (fragment-publication output).
+const ENGINE_SVG_ROOT_RE = /\bdata-(?:stat-chart|set-diagram|lattice-path|composite|solid-figure|publication-profile)=["']/i;
+
+// Engine labels are glyph outlines: nested <svg data-outline-width ... data-owner="A"> (or "point-A"). The owner is the
+// decodable name of the drawn label, so it is label evidence where a <text> element would otherwise be. Only owners
+// that are bare symbols (A, B2, O...) are returned; a label that is not drawn has no such element and is still reported.
+function collectGlyphLabelOwners(svgContent) {
+  const owners = new Set();
+  let count = 0;
+  for (const m of svgContent.matchAll(/<svg\b[^>]*\bdata-outline-width=[^>]*>/gi)) {
+    count++;
+    const o = (m[0].match(/\bdata-owner=["']([^"']+)["']/i) || [])[1];
+    const sym = o && o.replace(/^(?:point|vertex|label)-/i, '');
+    if (sym && /^[A-Z][0-9]?$/.test(sym)) owners.add(sym);
+  }
+  return { owners, count };
+}
+
 function verifyMathematicalSvg(svgPath, svgContent, q, ord, errors, ctx = {}) {
   const warnings = ctx.warnings || [];
   const plan = ctx.plan || null;
@@ -45,19 +63,27 @@ function verifyMathematicalSvg(svgPath, svgContent, q, ord, errors, ctx = {}) {
   }
 
   // Accessibility tags and role per AUTHOR_GUIDE.md and visual contract.
-  // The stat-chart / set-diagram engines (data-stat-chart / data-set-diagram) emit no <title>/<desc>:
-  // their text alternative is the plan caption, so for those SVGs the caption is required instead.
-  const isTextlessEngineSvg = /\bdata-(?:stat-chart|set-diagram)=["']/i.test(rootTag);
-  if (isTextlessEngineSvg) {
+  // Engine SVGs (roots marked data-stat-chart / data-set-diagram / data-lattice-path / data-composite /
+  // data-solid-figure / data-publication-profile) may emit no <title>/<desc>: their text alternative is the plan
+  // caption. For an engine SVG without a complete <title>+<desc> pair the plan's substantive Korean caption is
+  // required instead.
+  // This is narrower than skipping the check: a hand-written SVG, or an engine SVG whose plan has no real caption,
+  // still fails, so a figure with no text alternative at all is still caught.
+  const hasTitle = /<title\b[^>]*>[\s\S]+?<\/title>/i.test(svgContent);
+  const hasDesc = /<desc\b[^>]*>[\s\S]+?<\/desc>/i.test(svgContent);
+  // stat-chart / set-diagram engine SVGs always need the caption (unchanged contract); other engine SVGs only when
+  // the SVG does not carry its own complete <title>+<desc>.
+  const captionAlwaysRequired = /\bdata-(?:stat-chart|set-diagram)=["']/i.test(rootTag);
+  if (captionAlwaysRequired || (ENGINE_SVG_ROOT_RE.test(rootTag) && !(hasTitle && hasDesc))) {
     const cap = plan?.caption;
     if (typeof cap !== 'string' || cap.trim().length < 10 || !/[가-힣]/.test(cap)) {
-      errors.push(`Q${ord}: engine stat-chart/set-diagram SVG has no <title>/<desc> and its plan has no substantive Korean caption to serve as the text alternative (${q.image})`);
+      errors.push(`Q${ord}: engine SVG has no <title>/<desc> pair and its plan has no substantive Korean caption to serve as the text alternative (${q.image})`);
     }
   } else {
-    if (!/<title\b[^>]*>[\s\S]+?<\/title>/i.test(svgContent)) {
+    if (!hasTitle) {
       errors.push(`Q${ord}: SVG is missing required educational <title> tag (${q.image})`);
     }
-    if (!/<desc\b[^>]*>[\s\S]+?<\/desc>/i.test(svgContent)) {
+    if (!hasDesc) {
       errors.push(`Q${ord}: SVG is missing required educational <desc> tag (${q.image})`);
     }
   }
@@ -127,11 +153,14 @@ function verifyMathematicalSvg(svgPath, svgContent, q, ord, errors, ctx = {}) {
   const dataTexts = [...svgContent.matchAll(/\bdata-text=["']([^"']+)["']/gi)].map((m) => m[1]);
   const planGraphFamily = planIsNonGeometryEngine(plan);
   const planSymbols = planGraphFamily ? collectPlanSymbols(plan) : new Set();
-  const labelEvidence = [fullSvgText, ...dataTexts, ...planSymbols].join(' ');
+  const glyph = collectGlyphLabelOwners(svgContent);
+  const labelEvidence = [fullSvgText, ...dataTexts, ...glyph.owners, ...planSymbols].join(' ');
   const hasGlyphLabels = /\bdata-label-kind=["']/i.test(svgContent);
 
-  if (geomPrimitiveCount < 2 && !(geomPrimitiveCount >= 1 && textMatches.length >= 3)) {
-    errors.push(`Q${ord}: SVG lacks substantive mathematical diagram content (geometric primitives=${geomPrimitiveCount}, text=${textMatches.length}) in ${q.image}`);
+  // Glyph-outline labels (engine SVG) count as text labels: they are the engine's drawn text.
+  const labelCount = textMatches.length + glyph.count;
+  if (geomPrimitiveCount < 2 && !(geomPrimitiveCount >= 1 && labelCount >= 3)) {
+    errors.push(`Q${ord}: SVG lacks substantive mathematical diagram content (geometric primitives=${geomPrimitiveCount}, text=${labelCount}) in ${q.image}`);
   }
 
   // 4. Semantic / Mathematical Alignment with Question Stem (q.content)
@@ -160,7 +189,7 @@ function verifyMathematicalSvg(svgPath, svgContent, q, ord, errors, ctx = {}) {
   if (/(?:좌표평면|x축|y축|사분면|그래프\s*위의\s*점)/i.test(stem)) {
     const hasX = /(?:^|[^a-zA-Z0-9])x(?:[^a-zA-Z0-9]|$)/i.test(fullSvgText) || /\bdata-owner=["']axis-x["']/i.test(svgContent);
     const hasY = /(?:^|[^a-zA-Z0-9])y(?:[^a-zA-Z0-9]|$)/i.test(fullSvgText) || /\bdata-owner=["']axis-y["']/i.test(svgContent);
-    const hasOrigin = /(?:^|[^a-zA-Z0-9])O(?:[^a-zA-Z0-9]|$)/.test(fullSvgText) || planSymbols.has('O');
+    const hasOrigin = /(?:^|[^a-zA-Z0-9])O(?:[^a-zA-Z0-9]|$)/.test(fullSvgText) || planSymbols.has('O') || glyph.owners.has('O');
     const axisLines = (svgContent.match(/<line\b|<path\b/gi) || []).length;
     if (axisLines < 2 || (!hasX && !hasY && !hasOrigin)) {
       errors.push(`Q${ord}: Coordinate graph question requires axis lines and x/y/O labels in SVG (${q.image})`);
@@ -632,12 +661,14 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
         mcAnswers.push(q.answer);
         mcSlots[q.answer] = (mcSlots[q.answer] || 0) + 1;
       }
-    } else if (q.questionType === '서술형') {
+    } else if (q.questionType === '서술형' || q.questionType === '단답형') {
+      // 단답형 (short answer, e.g. a number) has no choices and a free-text answer exactly like 서술형, so it gets the
+      // same checks. Anything else (e.g. a typo, or an MCQ without 객관식) still hits the invalid-type error below.
       if (q.choices && q.choices.length > 0) {
-        errors.push(`Q${ord}: Descriptive question must have 0 choices (got ${q.choices.length})`);
+        errors.push(`Q${ord}: ${q.questionType} question must have 0 choices (got ${q.choices.length})`);
       }
       if (!q.answer || typeof q.answer !== 'string' || !q.answer.trim()) {
-        errors.push(`Q${ord}: Descriptive question missing answer string`);
+        errors.push(`Q${ord}: ${q.questionType} question missing answer string`);
       }
     } else {
       errors.push(`Q${ord}: invalid questionType (${q.questionType})`);
@@ -768,11 +799,21 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
             errors.push(`Q${ord}: ${baseName} marked UNSUPPORTED must have a substantive 'reason' string per AUTHOR_GUIDE.md §2`);
           }
           if (strictAuthoring) {
+            const reasonOk = typeof planData.reason === 'string' && planData.reason.trim().length >= 5;
+            // The solution text must itself carry the explanation (>= 20 chars incl. Korean text), so the missing
+            // figure costs the student nothing they cannot read.
+            const solutionTextOk = typeof q?.solution === 'string' && q.solution.trim().length >= 20 && /[가-힣]/.test(q.solution);
             if (role === 'solution' && receiptAcksVisualDebt) {
               // The independent reviewer's receipt (bound to this exact JS blob) signs off with explicit VISUAL_DEBT:
               // a solution figure the engine cannot draw is the declared debt, not a hidden defect. Problem figures
               // a student needs are never accepted this way.
               warnings.push(`VISUAL_DEBT_ACKNOWLEDGED: Q${ord} ${baseName} UNSUPPORTED solution figure accepted via receipt signOffStatus ${receipt.signOffStatus}`);
+            } else if (role === 'solution' && reasonOk && solutionTextOk && !q?.solutionImage) {
+              // The engine cannot draw this explanation figure and the plan says why; the written solution completes
+              // the explanation, so it is a visible warning, not a release blocker. It needs no receipt VISUAL_DEBT
+              // (that made a text-complete solution fail on receipts that do not use the VISUAL_DEBT status). Still an
+              // error: no/short reason, no real solution text, or an attached solutionImage contradicting UNSUPPORTED.
+              warnings.push(`SOLUTION_FIGURE_UNSUPPORTED_TEXT_COMPLETE: Q${ord} ${baseName} engine cannot draw the solution figure (${planData.reason.trim().slice(0, 60)}); the written solution is the explanation`);
             } else {
               errors.push(`Q${ord}: ${baseName} UNSUPPORTED cannot be used as a production-visual PASS without an independently approved fallback`);
             }

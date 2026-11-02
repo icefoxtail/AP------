@@ -201,6 +201,24 @@ def _compact_scope(value: str) -> str:
     return "".join(str(value or "").split()).replace("Ⅱ", "II").replace("Ⅰ", "I")
 
 
+def _crosswalk_scope_matches(row: dict, scope: str) -> bool:
+    """A crosswalk row belongs to a course when its `scope` or its `standardCourse` is that course. The 2015 high-school
+    1st-year rows carry scope `수학_상`/`수학_하` but standardCourse `수학(상)`/`수학(하)` (the small meta's courseKey uses the
+    latter); both spellings name the same course, so either one matches (the registrar aliases them the same way)."""
+    wanted = _compact_scope(scope)
+    return bool(wanted) and wanted in {_compact_scope(row.get("scope")), _compact_scope(row.get("standardCourse"))}
+
+
+def _crosswalk_row_offers_template(row: dict, template_key: str) -> bool:
+    """The row maps the question's TPL: its own `templateKey`, or - for a FAMILY_ACTIVE row of the same PT, which lists the
+    templates the decisive step may select (Resolver `familyTemplateSelection`) - one of its `templateCandidates`."""
+    if row.get("templateKey"):
+        return row["templateKey"] == template_key
+    if row.get("mappingStatus") == "FAMILY_ACTIVE":
+        return template_key in {c.get("templateKey") for c in row.get("templateCandidates") or []}
+    return False
+
+
 def _crosswalk_row_fits(doc_status, row: dict, assignment: dict, classification: dict | None) -> bool:
     """Same conditions the registrar (withTargetParent) applies to a `crosswalkRef` row, except the course scope
     (which the registrar re-derives from the ACTIVE binding owner pack): ACTIVE_REFERENCE document, ACTIVE binding,
@@ -272,7 +290,7 @@ def build_target_parent_ref(assignment: dict, classification: dict | None = None
             # registrar does not weaken. If there is none, the parent is carried without a crosswalkRef (UNIT_LABEL
             # style): the registrar then accepts it only when L2 is the question's unit/sub-unit/binding label.
             same_scope = [(f, r) for f, st, r in all_rows
-                          if _compact_scope(r.get("scope")) == _compact_scope(assignment["scope"])
+                          if _crosswalk_scope_matches(r, assignment["scope"])
                           and _crosswalk_row_fits(st, r, assignment, classification)]
             if classification is not None and same_scope:
                 chosen = sorted(same_scope, key=lambda pair: pair[1]["id"])[0]
@@ -308,7 +326,7 @@ def resolve_rpm_primary_path(small_after: dict, classification: dict, curriculum
     """RPM Primary L1-L4 for one question from the official crosswalk only (never from name similarity).
 
     Candidates are the ACTIVE rows of an ACTIVE_REFERENCE crosswalk with the question's own curriculum, course scope,
-    PT and TPL (the same conditions the registrar applies to a `crosswalkRef`). The path is decided when
+    PT and TPL (a FAMILY_ACTIVE row counts when its `templateCandidates` list the question's TPL). The path is decided when
       - the small meta names a record id that is one of the candidates (the question's own final-solution pick), or
       - there is exactly one candidate path.
     Otherwise (no candidate, several different paths without a named record, a named record that is not a candidate, or
@@ -334,8 +352,8 @@ def resolve_rpm_primary_path(small_after: dict, classification: dict, curriculum
             continue
         for row in doc.get("records", []):
             if (row.get("bindingStatus") == "ACTIVE" and row.get("curriculum") == curriculum
-                    and _compact_scope(row.get("scope")) == _compact_scope(scope)
-                    and row.get("problemTypeKey") == pt and row.get("templateKey") == tpl):
+                    and _crosswalk_scope_matches(row, scope)
+                    and row.get("problemTypeKey") == pt and _crosswalk_row_offers_template(row, tpl)):
                 candidates.append((crosswalk_file, row))
     record_id, declared = _rpm_hint(small_after)
     if record_id:
