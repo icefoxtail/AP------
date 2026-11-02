@@ -454,8 +454,37 @@ function solveBox(c){
   return {schemaVersion:MODEL_VERSION,kind:'BOX_PLOT',xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID',''),showValues:c.showValues===true,step:qstr(step),ticks,
     series:series.map(s=>({name:s.name,n:s.n,five:Object.fromEntries(Object.entries(s.five).map(([k,v])=>[k,qstr(v)]))}))};
 }
+// Exact geometry of a scatter plot's straight lines and half planes (G16): the line a x + b y = c cut by the plotted range, a polygon cut by a half plane.
+const SCATTER_LINE_LABEL=/^[A-Za-z0-9+\-=.() ]{1,14}$/;
+const qzero=a=>a[0]===0n;
+function clipLine(a,b,c,xr,yr){ // the two ends of the line inside the rectangle xr x yr, left end first (lower end first when vertical), or null (misses it or only touches a corner)
+  const ends=[];
+  const add=(x,y)=>{if(qcmp(x,xr[0])>=0&&qcmp(x,xr[1])<=0&&qcmp(y,yr[0])>=0&&qcmp(y,yr[1])<=0&&!ends.some(e=>qcmp(e[0],x)===0&&qcmp(e[1],y)===0))ends.push([x,y]);};
+  if(!qzero(b))for(const x of xr)add(x,qdiv(qsub(c,qmul(a,x)),b));
+  if(!qzero(a))for(const y of yr)add(qdiv(qsub(c,qmul(b,y)),a),y);
+  if(ends.length!==2)return null;
+  return ends.sort((u,v)=>qcmp(u[0],v[0])||qcmp(u[1],v[1]));
+}
+function parseLine(g,xr,yr){
+  const a=parseQ(g.a,'STAT_SCATTER_LINE_INVALID'),b=parseQ(g.b,'STAT_SCATTER_LINE_INVALID'),c=parseQ(g.c,'STAT_SCATTER_LINE_INVALID');
+  if(qzero(a)&&qzero(b))bad('STAT_SCATTER_LINE_INVALID');
+  const ends=clipLine(a,b,c,xr,yr);
+  if(!ends)bad('STAT_SCATTER_LINE_INVALID');
+  const k=qzero(a)?b:a,key=[a,b,c].map(v=>qstr(qdiv(v,k))).join(',');   // the same line written with other multiples has the same key
+  return {a,b,c,ends,key};
+}
+const shoelace=poly=>poly.reduce((t,p,i)=>{const q=poly[(i+1)%poly.length];return qadd(t,qsub(qmul(p[0],q[1]),qmul(q[0],p[1])));},ZERO);
+function clipHalfPlane(poly,val){ // Sutherland-Hodgman against the closed half plane val(p) >= 0 (val: exact signed value)
+  const out=[];
+  poly.forEach((p,i)=>{
+    const q=poly[(i+1)%poly.length],vp=val(p),vq=val(q),sp=qcmp(vp,ZERO),sq=qcmp(vq,ZERO);
+    if(sp>=0)out.push(p);
+    if((sp>0&&sq<0)||(sp<0&&sq>0)){const t=qdiv(vp,qsub(vp,vq));out.push([qadd(p[0],qmul(t,qsub(q[0],p[0]))),qadd(p[1],qmul(t,qsub(q[1],p[1])))]);}
+  });
+  return out.filter((p,i)=>!out.slice(0,i).some(o=>qcmp(o[0],p[0])===0&&qcmp(o[1],p[1])===0));
+}
 function solveScatter(c){
-  onlyKeys(c,['kind','points','xRange','yRange','xStep','yStep','labelEvery','xTitle','yTitle','grid','diagonal','refLines','regions'],'STAT_CHART_PLAN_INVALID');
+  onlyKeys(c,['kind','points','xRange','yRange','xStep','yStep','labelEvery','xTitle','yTitle','grid','diagonal','refLines','regions','pointGroups','trendArrow'],'STAT_CHART_PLAN_INVALID');
   if(!Array.isArray(c.points)||c.points.length<1||c.points.length>40)bad('STAT_SCATTER_POINTS_INVALID');
   const range=(r,code)=>{if(!Array.isArray(r)||r.length!==2)bad(code);const x=r.map(v=>parseQ(v,code));if(qcmp(x[0],ZERO)<0||qcmp(x[0],x[1])>=0)bad(code);return x;};
   const xr=range(c.xRange,'STAT_RANGE_INVALID'),yr=range(c.yRange,'STAT_RANGE_INVALID');
@@ -483,6 +512,16 @@ function solveScatter(c){
     if(!Array.isArray(c.refLines)||c.refLines.length<1||c.refLines.length>4)bad('STAT_SCATTER_GUIDE_INVALID');
     const seen=new Set();
     extra.refLines=c.refLines.map(g=>{
+      if(isPlain(g)&&g.kind!==undefined){ // a general straight line ax+by=c (G16), clipped to the plotted range
+        onlyKeys(g,['kind','a','b','c','label','style'],'STAT_SCATTER_LINE_INVALID');
+        if(g.kind!=='LINE')bad('STAT_SCATTER_LINE_INVALID');
+        const line=parseLine(g,xr,yr);
+        if(g.label!==undefined&&(typeof g.label!=='string'||!SCATTER_LINE_LABEL.test(g.label)))bad('STAT_SCATTER_LINE_INVALID');
+        if(g.style!==undefined&&g.style!=='SOLID'&&g.style!=='DASHED')bad('STAT_SCATTER_LINE_INVALID');
+        const key='LINE'+line.key;
+        if(seen.has(key))bad('STAT_SCATTER_GUIDE_INVALID');seen.add(key);
+        return {type:'LINE',a:qstr(line.a),b:qstr(line.b),c:qstr(line.c),label:g.label??null,style:g.style??'SOLID',from:line.ends[0].map(qstr),to:line.ends[1].map(qstr)};
+      }
       onlyKeys(g,['type','value'],'STAT_SCATTER_GUIDE_INVALID');
       if(!['x=k','y=k','y=x'].includes(g.type))bad('STAT_SCATTER_GUIDE_INVALID');
       if(g.type==='y=x'){if(g.value!==undefined||c.diagonal===true)bad('STAT_SCATTER_GUIDE_INVALID');}
@@ -502,6 +541,20 @@ function solveScatter(c){
   if(c.regions!==undefined){
     if(!Array.isArray(c.regions)||c.regions.length<1||c.regions.length>3)bad('STAT_SCATTER_REGION_INVALID');
     extra.regions=c.regions.map(g=>{
+      if(isPlain(g)&&g.kind!==undefined){ // a half plane ax+by>=c (G16): the part of the plotted range on that side of the line
+        onlyKeys(g,['kind','a','b','c','side','countLabel','countUnit','markPoints','tone'],'STAT_SCATTER_REGION_INVALID');
+        if(g.kind!=='HALF_PLANE'||!['GE','LE','GT','LT'].includes(g.side))bad('STAT_SCATTER_REGION_INVALID');
+        for(const k of ['countLabel','markPoints'])if(g[k]!==undefined&&typeof g[k]!=='boolean')bad('STAT_SCATTER_REGION_INVALID');
+        if(g.tone!==undefined&&g.tone!==1&&g.tone!==2)bad('STAT_SCATTER_REGION_INVALID');
+        if(g.countUnit!==undefined&&(g.countLabel!==true||typeof g.countUnit!=='string'||!/^[가-힣]{1,3}$/.test(g.countUnit)))bad('STAT_SCATTER_REGION_INVALID');
+        const line=parseLine(g,xr,yr,true),greater=g.side==='GE'||g.side==='GT',strict=g.side==='GT'||g.side==='LT';
+        const val=p=>{const v=qsub(qadd(qmul(line.a,p[0]),qmul(line.b,p[1])),line.c);return greater?v:qsub(ZERO,v);};   // > 0 inside the half plane, 0 on the line
+        const polygon=clipHalfPlane([[xr[0],yr[0]],[xr[1],yr[0]],[xr[1],yr[1]],[xr[0],yr[1]]],val);
+        if(polygon.length<3||qcmp(shoelace(polygon),ZERO)===0)bad('STAT_SCATTER_REGION_EMPTY');
+        const inside=points.map((p,i)=>{const v=qcmp(val([p.x,p.y]),ZERO);return v>0||(!strict&&v===0)?i:-1;}).filter(i=>i>=0);
+        if(!inside.length)bad('STAT_SCATTER_REGION_EMPTY');
+        return {kind:'HALF_PLANE',a:qstr(line.a),b:qstr(line.b),c:qstr(line.c),side:g.side,polygon:polygon.map(q=>q.map(qstr)),edge:strict?[line.ends[0].map(qstr),line.ends[1].map(qstr)]:null,countLabel:g.countLabel===true,countUnit:g.countUnit??null,markPoints:g.markPoints===true,tone:g.tone??1,inside,count:inside.length};
+      }
       onlyKeys(g,['xMin','xMax','yMin','yMax','countLabel','countUnit','markPoints','tone'],'STAT_SCATTER_REGION_INVALID');
       if(['xMin','xMax','yMin','yMax'].every(k=>g[k]===undefined))bad('STAT_SCATTER_REGION_INVALID');
       for(const k of ['countLabel','markPoints'])if(g[k]!==undefined&&typeof g[k]!=='boolean')bad('STAT_SCATTER_REGION_INVALID');
@@ -520,6 +573,38 @@ function solveScatter(c){
       if(!inside.length)bad('STAT_SCATTER_REGION_EMPTY');
       return {xMin:qstr(x0),xMax:qstr(x1),yMin:qstr(y0),yMax:qstr(y1),countLabel:g.countLabel===true,countUnit:g.countUnit??null,markPoints:g.markPoints===true,tone:g.tone??1,inside,count:inside.length};
     });
+  }
+  if(c.pointGroups!==undefined){ // points recoloured in a palette colour (G16): the coordinates must be points of the data
+    if(!Array.isArray(c.pointGroups)||c.pointGroups.length<1||c.pointGroups.length>4)bad('STAT_SCATTER_GROUP_INVALID');
+    const taken=new Set();
+    extra.pointGroups=c.pointGroups.map(g=>{
+      onlyKeys(g,['points','color','label'],'STAT_SCATTER_GROUP_INVALID');
+      if(!isPaletteName(g.color)||!Array.isArray(g.points)||g.points.length<1||g.points.length>40)bad('STAT_SCATTER_GROUP_INVALID');
+      if(g.label!==undefined&&(typeof g.label!=='string'||!/^[가-힣A-Za-z0-9 ()=<>+-]{1,8}$/.test(g.label)))bad('STAT_SCATTER_GROUP_INVALID');
+      const idx=new Set();
+      for(const e of g.points){
+        if(!Array.isArray(e)||e.length!==2)bad('STAT_SCATTER_GROUP_INVALID');
+        const x=parseQ(e[0],'STAT_SCATTER_GROUP_INVALID'),y=parseQ(e[1],'STAT_SCATTER_GROUP_INVALID');
+        const hit=points.map((p,i)=>qcmp(p.x,x)===0&&qcmp(p.y,y)===0?i:-1).filter(i=>i>=0);
+        if(!hit.length)bad('STAT_SCATTER_GROUP_POINT_UNKNOWN');
+        for(const i of hit){if(taken.has(i)&&!idx.has(i))bad('STAT_SCATTER_GROUP_INVALID');idx.add(i);taken.add(i);}
+      }
+      return {color:g.color,label:g.label??null,points:[...idx].sort((u,v)=>u-v)};
+    });
+  }
+  if(c.trendArrow!==undefined){ // an arrow along the least-squares line of the points: up for a positive correlation, down for a negative one (G16)
+    onlyKeys(c.trendArrow,['direction'],'STAT_SCATTER_TREND_INVALID');
+    if(c.trendArrow.direction!=='UP'&&c.trendArrow.direction!=='DOWN')bad('STAT_SCATTER_TREND_INVALID');
+    if(points.length<3)bad('STAT_SCATTER_TREND_INVALID');
+    const n=Q(BigInt(points.length)),mx=qdiv(points.reduce((t,p)=>qadd(t,p.x),ZERO),n),my=qdiv(points.reduce((t,p)=>qadd(t,p.y),ZERO),n);
+    const sxx=points.reduce((t,p)=>qadd(t,qmul(qsub(p.x,mx),qsub(p.x,mx))),ZERO),sxy=points.reduce((t,p)=>qadd(t,qmul(qsub(p.x,mx),qsub(p.y,my))),ZERO);
+    if(qcmp(sxx,ZERO)===0||qcmp(sxy,ZERO)===0)bad('STAT_SCATTER_TREND_INVALID');
+    if((qcmp(sxy,ZERO)>0)!==(c.trendArrow.direction==='UP'))bad('STAT_SCATTER_TREND_MISMATCH');
+    const slope=qdiv(sxy,sxx);
+    const xs0=points.map(p=>p.x).reduce((u,v)=>qcmp(u,v)<=0?u:v),xs1=points.map(p=>p.x).reduce((u,v)=>qcmp(u,v)>=0?u:v);
+    const line=clipLine(slope,Q(-1n),qsub(qmul(slope,mx),my),[xs0,xs1],yr);   // y = at(x): slope*x - y = slope*mx - my, kept inside the data's x extent and the y range
+    if(!line)bad('STAT_SCATTER_TREND_INVALID');
+    extra.trendArrow={direction:c.trendArrow.direction,from:line[0].map(qstr),to:line[1].map(qstr)};
   }
   return {schemaVersion:MODEL_VERSION,kind:'SCATTER',...extra,xRange:xr.map(qstr),yRange:yr.map(qstr),xStep:qstr(xs),yStep:qstr(ys),labelEvery:every,grid:c.grid!==false,diagonal:c.diagonal===true,
     xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID',''),yTitle:titleText(c.yTitle,'STAT_TITLE_INVALID',''),
@@ -935,6 +1020,7 @@ const STYLE={
   ncurve0:'stroke="#111" stroke-width="2" fill="none"',ncurve1:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="8 4"',ncurve2:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="2 4"',
   shade1:'fill="#111" fill-opacity="0.16" stroke="none"',shade2:'fill="#111" fill-opacity="0.34" stroke="none"',guide:'stroke="#444" stroke-width="1.2" fill="none" stroke-dasharray="4 3"',
   leader:'stroke="#333" stroke-width="1" fill="none"',
+  reflineDash:'stroke="#333" stroke-width="1.8" fill="none" stroke-dasharray="7 4"',trend:'stroke="#555" stroke-width="3.2" fill="none"',trendHead:'fill="#555" stroke="none"',
   meanLine:'stroke="#333" stroke-width="1.6" fill="none" stroke-dasharray="6 4"',medianLine:'stroke="#333" stroke-width="1.6" fill="none" stroke-dasharray="2 3"',
   ...Object.fromEntries(PALETTE_NAMES.map(name=>['dot'+name,`fill="${PALETTE[name].line}" stroke="none"`]))
 };
@@ -958,6 +1044,7 @@ const breakMark=(prims,axis,x,y)=>{
 
 // --- the charts: spec = ordered primitives + labels at anchors (positions need no label widths; the tree's branch ends are placed when labels are typeset) --------
 // A class-sum bracket sits under the x tick labels: the first row's bottom line is SUM_Y0 below the axis, each further row (brackets that would overlap) SUM_PITCH lower; its text hangs beneath it.
+const TREND_HEAD_LEN=16,TREND_HEAD_HALF=7,GROUP_DOT_R=4.4; // a recoloured scatter point is a little larger than a plain one so that the colour reads
 const SUM_Y0=36,SUM_PITCH=44,SUM_INSET=2.5,SUM_ARM=5,SUM_TEXT_H=33,SUM_TEXT_GAP=3;
 const SUM_JOIN_DROP=10; // a group of class runs (classSums[].classes): each run's bracket sends a stem this far down to one joining line, the label hangs beneath it
 const UNKNOWN_BAR_FRACTION=0.4; // a hidden class drawn as a dotted outline this fraction of the plot high: a place-holder, not a value
@@ -1167,6 +1254,17 @@ function scatterSpec(m,ctx){
   if(m.yTitle)labels.push(textLabel('y-title','axis-title','y-axis',m.yTitle,'center','bottom',yAxisPx,AXIS_TOP-4));
   if(m.diagonal){const t0=Math.max(xlo,ylo),t1=Math.min(xhi,yhi);prims.push(L('diagonal','diagonal','diagonal',px(t0),py(t0),px(t1),py(t1),{},35));}
   for(const [j,g] of (m.regions??[]).entries()){
+    if(g.kind==='HALF_PLANE'){ // a half plane: the polygon the plotted range keeps (G16); a strict side (GT, LT) draws its boundary dotted
+      const pts=g.polygon.map(([x,y])=>[px(N(x)),py(N(y))]),cx=pts.reduce((t,q)=>t+q[0],0)/pts.length,cy=pts.reduce((t,q)=>t+q[1],0)/pts.length;
+      prims.push({t:'polygon',id:`region-${j}`,role:'scatter-region',cls:`region${g.tone}`,points:pts,data:{index:j,kind:'HALF_PLANE',a:g.a,b:g.b,c:g.c,side:g.side,tone:g.tone},layer:18});
+      if(g.edge)prims.push(L(`region-${j}-edge`,'region-edge','guide',px(N(g.edge[0][0])),py(N(g.edge[0][1])),px(N(g.edge[1][0])),py(N(g.edge[1][1])),{index:j},36));
+      if(g.markPoints)for(const i of g.inside)prims.push({t:'circle',id:`ring-${j}-${i}`,role:'point-ring',cls:'markRing',cx:px(N(m.points[i].x)),cy:py(N(m.points[i].y)),r:7.6,data:{region:j,point:i},layer:72});
+      if(g.countLabel){
+        const text=String(g.count)+(g.countUnit??'');
+        labels.push({...(g.countUnit?textLabel(`region-${j}-count`,'count-value',`region-${j}`,text,'center','middle',cx,cy,{region:j,value:String(g.count)}):math(`region-${j}-count`,'count-value',`region-${j}`,DISPLAY+String(g.count),String(g.count),'center','middle',cx,cy,{region:j,value:String(g.count)})),place:{x:cx,y:cy,gap:4}});
+      }
+      continue;
+    }
     const x0=px(N(g.xMin)),x1=px(N(g.xMax)),y0=py(N(g.yMax)),y1=py(N(g.yMin));
     prims.push(rect(`region-${j}`,'scatter-region',`region${g.tone}`,x0,y0,x1-x0,y1-y0,{index:j,xmin:g.xMin,xmax:g.xMax,ymin:g.yMin,ymax:g.yMax,tone:g.tone},18));
     if(g.markPoints)for(const i of g.inside)prims.push({t:'circle',id:`ring-${j}-${i}`,role:'point-ring',cls:'markRing',cx:px(N(m.points[i].x)),cy:py(N(m.points[i].y)),r:7.6,data:{region:j,point:i},layer:72});
@@ -1178,13 +1276,33 @@ function scatterSpec(m,ctx){
   for(const [i,g] of (m.refLines??[]).entries()){
     if(g.type==='x=k'){const x=px(N(g.value));prims.push(L(`ref-${i}`,'ref-line','refline',x,py(ylo),x,py(yhi),{type:g.type,value:g.value},36));}
     else if(g.type==='y=k'){const y=py(N(g.value));prims.push(L(`ref-${i}`,'ref-line','refline',px(xlo),y,px(xhi),y,{type:g.type,value:g.value},36));}
+    else if(g.type==='LINE'){ // ax+by=c cut by the plotted range (G16); its name stands at the upper end, stepping aside from dots and lines
+      const [e0,e1]=[g.from,g.to].map(([x,y])=>[px(N(x)),py(N(y))]);
+      prims.push(L(`ref-${i}`,'ref-line',g.style==='DASHED'?'reflineDash':'refline',e0[0],e0[1],e1[0],e1[1],{type:'LINE',a:g.a,b:g.b,c:g.c,style:g.style},36));
+      if(g.label){const top=e0[1]<=e1[1]?e0:e1;labels.push({...math(`ref-${i}-label`,'ref-label',`ref-${i}`,DISPLAY+g.label,g.label,'center','bottom',top[0],top[1]-6,{value:g.label}),place:{x:top[0],y:top[1],gap:6}});}
+    }
     else{const t0=Math.max(xlo,ylo),t1=Math.min(xhi,yhi);prims.push(L(`ref-${i}`,'ref-line','refline',px(t0),py(t0),px(t1),py(t1),{type:g.type},36));}
   }
+  if(m.trendArrow){ // a thick arrow along the least-squares line of the points, from the left end to the right end; its head is a filled triangle
+    const [e0,e1]=[m.trendArrow.from,m.trendArrow.to].map(([x,y])=>[px(N(x)),py(N(y))]),len=Math.hypot(e1[0]-e0[0],e1[1]-e0[1]),ux=(e1[0]-e0[0])/len,uy=(e1[1]-e0[1])/len;
+    const bx=e1[0]-TREND_HEAD_LEN*ux,by=e1[1]-TREND_HEAD_LEN*uy;
+    prims.push(L('trend-arrow','trend-arrow','trend',e0[0],e0[1],bx,by,{direction:m.trendArrow.direction},60));
+    prims.push({t:'polygon',id:'trend-arrow-head',role:'trend-arrow-head',cls:'trendHead',points:[[e1[0],e1[1]],[bx-TREND_HEAD_HALF*uy,by+TREND_HEAD_HALF*ux],[bx+TREND_HEAD_HALF*uy,by-TREND_HEAD_HALF*ux]],data:{direction:m.trendArrow.direction},layer:60});
+  }
+  const colourOf=new Map();
+  for(const g of m.pointGroups??[])for(const i of g.points)colourOf.set(i,g.color);
+  (m.pointGroups??[]).forEach((g,j)=>{ // a group with a label stands in a legend at the top right
+    if(!g.label)return;
+    const y=PT+14+j*Math.ceil(1.5*fontPx);
+    prims.push({t:'circle',id:`legend-${j}-dot`,role:'legend-dot',cls:'dot'+g.color,cx:TITLE_X+5,cy:y,r:GROUP_DOT_R,data:{group:j},layer:70});
+    labels.push(textLabel(`legend-${j}-label`,'legend',`legend-${j}-dot`,g.label,'start','middle',TITLE_X+16,y,{group:j,value:g.label}));
+  });
   m.points.forEach((p,i)=>{
-    prims.push({t:'circle',id:`pt-${i}`,role:'point',cls:'dot',cx:px(N(p.x)),cy:py(N(p.y)),r:3.6,data:{index:i},layer:70});
+    prims.push({t:'circle',id:`pt-${i}`,role:'point',cls:colourOf.has(i)?'dot'+colourOf.get(i):'dot',cx:px(N(p.x)),cy:py(N(p.y)),r:colourOf.has(i)?GROUP_DOT_R:3.6,data:{index:i},layer:70});
     if(p.name)labels.push(math(`pt-${i}-name`,'point-name',`pt-${i}`,p.name,p.name,'start','middle',px(N(p.x))+9,py(N(p.y)),{index:i,value:p.name}));
   });
-  const extraWidth=m.xTitle?Math.max(0,Math.ceil(TITLE_X+textWidth(m.xTitle,fontPx)+SAFE)-W):0;   // an x title longer than the room right of the arrow widens the frame (E36); a title that fits leaves the figure as it was
+  const legendRight=Math.max(0,...(m.pointGroups??[]).filter(g=>g.label).map(g=>TITLE_X+16+textWidth(g.label,fontPx)));
+  const extraWidth=Math.max(m.xTitle?Math.max(0,Math.ceil(TITLE_X+textWidth(m.xTitle,fontPx)+SAFE)-W):0,legendRight?Math.max(0,Math.ceil(legendRight+SAFE)-W):0);   // an x title longer than the room right of the arrow widens the frame (E36); a title that fits leaves the figure as it was
   return {size:{width:W+extraWidth,height:H},prims,labels};
 }
 function diceSpec(m,ctx){
@@ -1405,7 +1523,7 @@ function obstacles(prims){ // every line, polyline, dot and bar edge a label mus
     const pad=strokeOf(p.cls)/2;
     if(p.t==='line')out.push({segs:[[[p.x1,p.y1],[p.x2,p.y2]]],pad});
     else if(p.t==='polyline')out.push({segs:p.points.slice(1).map((q,i)=>[p.points[i],q]),pad});
-    else if(p.t==='polygon')out.push({segs:p.points.map((q,i)=>[q,p.points[(i+1)%p.points.length]]),pad});
+    else if(p.t==='polygon'&&p.role!=='scatter-region')out.push({segs:p.points.map((q,i)=>[q,p.points[(i+1)%p.points.length]]),pad});
     else if(p.t==='circle')out.push({circle:[p.cx,p.cy,p.r],pad});
     else if(p.t==='rect'&&p.role==='bar'){const c=[[p.x,p.y],[p.x+p.width,p.y],[p.x+p.width,p.y+p.height],[p.x,p.y+p.height]];out.push({segs:c.map((q,i)=>[q,c[(i+1)%4]]),pad});}
   }

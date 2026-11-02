@@ -928,6 +928,168 @@ SCATTER_REGION_OPACITY = {1: 0.12, 2: 0.26}      # this observer's own copy of h
 SCATTER_RING_R = 7.6
 
 
+SCATTER_LINE_LABEL = re.compile(r'^[A-Za-z0-9+\-=.() ]{1,14}$')
+SCATTER_GROUP_LABEL = re.compile('^[가-힣A-Za-z0-9 ()=<>+-]{1,8}$')
+TREND_HEAD_LEN, TREND_HEAD_HALF = 16.0, 7.0      # this observer's own copy of the trend arrow head: length and half width
+GROUP_DOT_R, PLAIN_DOT_R = 4.4, 3.6      # this observer's own copy: a recoloured scatter point is a little larger than a plain one
+
+
+def clip_line(a, b, c, xr, yr):
+    """The two ends of a x + b y = c inside the rectangle xr x yr, left end first (lower end first when vertical); None when it misses it or only touches a corner."""
+    ends = []
+    def add(x, y):
+        if xr[0] <= x <= xr[1] and yr[0] <= y <= yr[1] and (x, y) not in ends: ends.append((x, y))
+    if b != 0:
+        for x in xr: add(x, (c - a * x) / b)
+    if a != 0:
+        for y in yr: add((c - b * y) / a, y)
+    return sorted(ends) if len(ends) == 2 else None
+
+
+def plan_line(g, xr, yr):
+    a, b, c = (frac(g.get(k), 'STAT_SCATTER_LINE_INVALID') for k in ('a', 'b', 'c'))
+    if a == 0 and b == 0: fail('STAT_SCATTER_LINE_INVALID')
+    ends = clip_line(a, b, c, xr, yr)
+    if ends is None: fail('STAT_SCATTER_LINE_INVALID')
+    return a, b, c, ends
+
+
+def half_plane_vertices(a, b, c, side, xr, yr):
+    """The corners of the plotted range on the closed side of the line and the two ends of the line inside it: the vertices of the kept polygon (a set, in no order)."""
+    sign = 1 if side in ('GE', 'GT') else -1
+    corners = [(x, y) for x in xr for y in yr if sign * (a * x + b * y - c) >= 0]
+    ends = clip_line(a, b, c, xr, yr) or []
+    out = []
+    for v in corners + ends:
+        if v not in out: out.append(v)
+    return out
+
+
+def polygon_points(e):
+    return [tuple(float(v) for v in pair.split(',')) for pair in (e.get('points') or '').split()]
+
+
+def shoelace_abs(pts):
+    return abs(sum(p[0] * q[1] - q[0] * p[1] for p, q in zip(pts, pts[1:] + pts[:1]))) / 2
+
+
+def scatter_line(chart, doc, i, g, refs, fx, fy, xr, yr):
+    """G16: the straight line a x + b y = c of refLines[i] cut by the plotted range, its style and its label."""
+    a, b, c, ends = plan_line(g, xr, yr)
+    if g.get('label') is not None and (not isinstance(g['label'], str) or not SCATTER_LINE_LABEL.match(g['label'])): fail('STAT_SCATTER_LINE_INVALID')
+    if g.get('style', 'SOLID') not in ('SOLID', 'DASHED'): fail('STAT_SCATTER_LINE_INVALID')
+    e = refs.get('ref-%d' % i)
+    if e is None: doc.err('SC_SCATTER_REF_MISSING:%d' % i); return
+    got = ((num(e, 'x1'), num(e, 'y1')), (num(e, 'x2'), num(e, 'y2')))
+    want = tuple((fx(x), fy(y)) for x, y in ends)
+    if any(abs(p - q) > TOL for pa, pb in zip(got, want) for p, q in zip(pa, pb)): doc.err('SC_SCATTER_REF_PLACE:%d' % i)
+    try:
+        if e.get('data-type') != 'LINE' or any(frac(e.get('data-' + k), 'SC_PLAN_INVALID') != v for k, v in (('a', a), ('b', b), ('c', c))): doc.err('SC_SCATTER_REF_DATA:%d' % i)
+    except ValueError: doc.err('SC_SCATTER_REF_DATA:%d' % i)
+    if ('stroke-dasharray' in e.attrib) != (g.get('style') == 'DASHED'): doc.err('SC_SCATTER_REF_STYLE:%d' % i)
+    label = [l for l in doc.label_role('ref-label') if l.get('data-owner') == 'ref-%d' % i]
+    if g.get('label') is None:
+        if label: doc.err('SC_SCATTER_REF_LABEL_UNEXPECTED:%d' % i)
+        return
+    if len(label) != 1 or label[0].get('data-tex') != NORM_DISPLAY + g['label'] or label[0].get('data-value') != g['label']: doc.err('SC_SCATTER_REF_LABEL:%d' % i); return
+    box = box_of(label[0])
+    if segment_box_distance(got[0], got[1], box) > 45: doc.err('SC_SCATTER_REF_LABEL_PLACE:%d' % i)
+    if clearance(box, drawn_obstacles(doc)) < 1.0: doc.err('SC_SCATTER_REF_LABEL_CLEARANCE:%d' % i)
+
+
+def scatter_half_plane(doc, j, g, rects, fx, fy, xr, yr, points):
+    """G16: a half plane region: the polygon, its fill and (for a strict side) the dotted edge, re-derived from the plan. Returns (inside point indices, tone)."""
+    a, b, c, ends = plan_line(g, xr, yr)
+    if g.get('side') not in ('GE', 'LE', 'GT', 'LT'): fail('STAT_SCATTER_REGION_INVALID')
+    sign = 1 if g['side'] in ('GE', 'GT') else -1
+    strict = g['side'] in ('GT', 'LT')
+    verts = half_plane_vertices(a, b, c, g['side'], xr, yr)
+    if len(verts) < 3: fail('STAT_SCATTER_REGION_EMPTY')
+    want_px = [(fx(x), fy(y)) for x, y in verts]
+    inside = [i for i, (x, y) in enumerate(points) if sign * (a * x + b * y - c) > 0 or (not strict and sign * (a * x + b * y - c) == 0)]
+    if not inside: fail('STAT_SCATTER_REGION_EMPTY')
+    tone = g.get('tone', 1)
+    e = rects.get('region-%d' % j)
+    if e is None or e.tag != NS + 'polygon': doc.err('SC_SCATTER_REGION_MISSING:%d' % j)
+    else:
+        got = polygon_points(e)
+        if len(got) != len(want_px) or any(min(math.hypot(p[0] - q[0], p[1] - q[1]) for q in got) > TOL for p in want_px) or abs(shoelace_abs(got) - shoelace_abs(want_px)) > 0.5: doc.err('SC_SCATTER_REGION_PLACE:%d' % j)
+        if e.get('fill') != '#111' or abs(float(e.get('fill-opacity') or 0) - SCATTER_REGION_OPACITY[tone]) > 1e-9: doc.err('SC_SCATTER_REGION_STYLE:%d' % j)
+        if e.get('data-side') != g['side']: doc.err('SC_SCATTER_REGION_DATA:%d' % j)
+    edge = doc.by_id.get('region-%d-edge' % j)
+    if strict:
+        if edge is None: doc.err('SC_SCATTER_REGION_EDGE_MISSING:%d' % j)
+        else:
+            got = ((num(edge, 'x1'), num(edge, 'y1')), (num(edge, 'x2'), num(edge, 'y2')))
+            want = tuple((fx(x), fy(y)) for x, y in ends)
+            if any(abs(p - q) > TOL for pa, pb in zip(got, want) for p, q in zip(pa, pb)) or 'stroke-dasharray' not in edge.attrib: doc.err('SC_SCATTER_REGION_EDGE_PLACE:%d' % j)
+    elif edge is not None: doc.err('SC_SCATTER_REGION_EDGE_UNEXPECTED:%d' % j)
+    return inside, tone
+
+
+def scatter_groups(chart, doc, points):
+    """G16: the colour every dot must have (a palette line colour for the points of a group, plain otherwise) and the legend of the labelled groups. Returns {point index: fill}."""
+    fills = {}
+    groups = chart.get('pointGroups')
+    if groups is None:
+        if doc.role('circle', 'legend-dot'): doc.err('SC_SCATTER_LEGEND_UNEXPECTED')
+        return fills
+    if not isinstance(groups, list) or not 1 <= len(groups) <= 4: fail('STAT_SCATTER_GROUP_INVALID')
+    for j, g in enumerate(groups):
+        if not isinstance(g, dict) or set(g) - {'points', 'color', 'label'} or g.get('color') not in DOT_PALETTE_LINE or not isinstance(g.get('points'), list) or not g['points']: fail('STAT_SCATTER_GROUP_INVALID')
+        if g.get('label') is not None and (not isinstance(g['label'], str) or not SCATTER_GROUP_LABEL.match(g['label'])): fail('STAT_SCATTER_GROUP_INVALID')
+        mine = set()
+        for e in g['points']:
+            if not isinstance(e, list) or len(e) != 2: fail('STAT_SCATTER_GROUP_INVALID')
+            xy = (frac(e[0], 'STAT_SCATTER_GROUP_INVALID'), frac(e[1], 'STAT_SCATTER_GROUP_INVALID'))
+            hit = [i for i, p in enumerate(points) if p == xy]
+            if not hit: fail('STAT_SCATTER_GROUP_POINT_UNKNOWN')
+            for i in hit:
+                if i in fills and i not in mine: fail('STAT_SCATTER_GROUP_INVALID')
+                mine.add(i); fills[i] = DOT_PALETTE_LINE[g['color']]
+        legend = doc.by_id.get('legend-%d-dot' % j)
+        label = [l for l in doc.label_role('legend') if l.get('data-owner') == 'legend-%d-dot' % j]
+        if g.get('label') is None:
+            if legend is not None or label: doc.err('SC_SCATTER_LEGEND_UNEXPECTED:%d' % j)
+            continue
+        if legend is None or len(label) != 1 or label[0].get('data-text') != g['label']: doc.err('SC_SCATTER_LEGEND_MISSING:%d' % j); continue
+        if (legend.get('fill') or '').lower() != DOT_PALETTE_LINE[g['color']] or abs(num(legend, 'r') - GROUP_DOT_R) > TOL: doc.err('SC_SCATTER_LEGEND_STYLE:%d' % j)
+        bx, by, bw, bh = box_of(label[0])
+        if not 0 < bx - num(legend, 'cx') < 24 or abs(by + bh / 2 - num(legend, 'cy')) > LABEL_TOL + 1: doc.err('SC_SCATTER_LEGEND_PLACE:%d' % j)
+    return fills
+
+
+def scatter_trend(chart, doc, points, fx, fy, yr):
+    """G16: the trend arrow along the least-squares line of the points, from the left end to the right end of their x extent (clipped to the y range)."""
+    spec = chart.get('trendArrow')
+    shaft, head = doc.by_id.get('trend-arrow'), doc.by_id.get('trend-arrow-head')
+    if spec is None:
+        if shaft is not None or head is not None: doc.err('SC_SCATTER_TREND_UNEXPECTED')
+        return
+    if not isinstance(spec, dict) or set(spec) != {'direction'} or spec['direction'] not in ('UP', 'DOWN') or len(points) < 3: fail('STAT_SCATTER_TREND_INVALID')
+    n = len(points)
+    mx, my = sum(p[0] for p in points) / n, sum(p[1] for p in points) / n
+    sxx = sum((p[0] - mx) ** 2 for p in points)
+    sxy = sum((p[0] - mx) * (p[1] - my) for p in points)
+    if sxx == 0 or sxy == 0: fail('STAT_SCATTER_TREND_INVALID')
+    if (sxy > 0) != (spec['direction'] == 'UP'): fail('STAT_SCATTER_TREND_MISMATCH')
+    slope = sxy / sxx
+    xs = [p[0] for p in points]
+    ends = clip_line(slope, Fraction(-1), slope * mx - my, [min(xs), max(xs)], yr)
+    if ends is None: fail('STAT_SCATTER_TREND_INVALID')
+    (x0, y0), (x1, y1) = [(fx(x), fy(y)) for x, y in ends]
+    length = math.hypot(x1 - x0, y1 - y0)
+    ux, uy = (x1 - x0) / length, (y1 - y0) / length
+    bx, by = x1 - TREND_HEAD_LEN * ux, y1 - TREND_HEAD_LEN * uy
+    if shaft is None or head is None or shaft.tag != NS + 'line' or head.tag != NS + 'polygon': doc.err('SC_SCATTER_TREND_MISSING'); return
+    got = (num(shaft, 'x1'), num(shaft, 'y1'), num(shaft, 'x2'), num(shaft, 'y2'))
+    if any(abs(a - b_) > TOL for a, b_ in zip(got, (x0, y0, bx, by))): doc.err('SC_SCATTER_TREND_PLACE')
+    tri = polygon_points(head)
+    want = [(x1, y1), (bx - TREND_HEAD_HALF * uy, by + TREND_HEAD_HALF * ux), (bx + TREND_HEAD_HALF * uy, by - TREND_HEAD_HALF * ux)]
+    if len(tri) != 3 or any(min(math.hypot(p[0] - q[0], p[1] - q[1]) for q in tri) > TOL for p in want): doc.err('SC_SCATTER_TREND_HEAD')
+    if head.get('data-direction') != spec['direction'] or shaft.get('data-direction') != spec['direction']: doc.err('SC_SCATTER_TREND_DIRECTION')
+
+
 def scatter_marks(chart, doc, fx, fy, xr, yr):
     """E36: reference lines (x=k, y=k, y=x), highlighted rectangles with the points they hold (rings, a count the plan asks for), re-derived from the plan's points with exact fractions."""
     points = [(frac(p['x'], 'SC_PLAN_INVALID'), frac(p['y'], 'SC_PLAN_INVALID')) for p in chart['points']]
@@ -936,6 +1098,10 @@ def scatter_marks(chart, doc, fx, fy, xr, yr):
     refs = {e.get('id'): e for e in doc.role('line', 'ref-line')}
     if len(refs) != len(plan_refs): doc.err('SC_SCATTER_REF_COUNT')
     for i, g in enumerate(plan_refs):
+        if isinstance(g, dict) and g.get('kind') is not None:
+            if g.get('kind') != 'LINE' or set(g) - {'kind', 'a', 'b', 'c', 'label', 'style'}: fail('STAT_SCATTER_LINE_INVALID')
+            scatter_line(chart, doc, i, g, refs, fx, fy, xr, yr)
+            continue
         t = g.get('type')
         if t == 'y=x' and chart.get('diagonal') is True: fail('STAT_SCATTER_GUIDE_INVALID')
         e = refs.get('ref-%d' % i)
@@ -953,28 +1119,32 @@ def scatter_marks(chart, doc, fx, fy, xr, yr):
         if any(abs(a - b) > TOL for pa, pb in zip(got, want) for a, b in zip(pa, pb)): doc.err('SC_SCATTER_REF_PLACE:%d' % i)
         if e.get('data-type') != t or (t != 'y=x' and frac(e.get('data-value'), 'SC_PLAN_INVALID') != frac(g['value'], 'SC_PLAN_INVALID')): doc.err('SC_SCATTER_REF_DATA:%d' % i)
     plan_regions = chart.get('regions') or []
-    rects = {e.get('id'): e for e in doc.role('rect', 'scatter-region')}
+    rects = {e.get('id'): e for tag in ('rect', 'polygon') for e in doc.role(tag, 'scatter-region')}
     if len(rects) != len(plan_regions): doc.err('SC_SCATTER_REGION_COUNT')
     rings = {(e.get('data-region'), e.get('data-point')): e for e in doc.circles if e.get('data-role') == 'point-ring'}
     want_rings, count_labels = set(), {}
     dots = {int(c.get('data-index')): c for c in doc.circles if c.get('data-index') is not None}
     for j, g in enumerate(plan_regions):
-        x0 = frac(g['xMin'], 'SC_PLAN_INVALID') if 'xMin' in g else xr[0]
-        x1 = frac(g['xMax'], 'SC_PLAN_INVALID') if 'xMax' in g else xr[1]
-        y0 = frac(g['yMin'], 'SC_PLAN_INVALID') if 'yMin' in g else yr[0]
-        y1 = frac(g['yMax'], 'SC_PLAN_INVALID') if 'yMax' in g else yr[1]
-        if not (xr[0] <= x0 < x1 <= xr[1] and yr[0] <= y0 < y1 <= yr[1]): fail('STAT_SCATTER_REGION_INVALID')
-        for v, step, lo in ((x0, xs, xr[0]), (x1, xs, xr[0]), (y0, ys, yr[0]), (y1, ys, yr[0])):
-            if step and (v - lo) % step: fail('STAT_SCATTER_REGION_NOT_ON_STEP')
-        inside = [i for i, (x, y) in enumerate(points) if x0 <= x <= x1 and y0 <= y <= y1]
-        if not inside: fail('STAT_SCATTER_REGION_EMPTY')
-        tone = g.get('tone', 1)
-        e = rects.get('region-%d' % j)
-        if e is None: doc.err('SC_SCATTER_REGION_MISSING:%d' % j)
+        if isinstance(g, dict) and g.get('kind') is not None:
+            if g.get('kind') != 'HALF_PLANE' or set(g) - {'kind', 'a', 'b', 'c', 'side', 'countLabel', 'countUnit', 'markPoints', 'tone'}: fail('STAT_SCATTER_REGION_INVALID')
+            inside, tone = scatter_half_plane(doc, j, g, rects, fx, fy, xr, yr, points)
         else:
-            top, left = fy(y1), fx(x0)
-            if abs(num(e, 'x') - left) > TOL or abs(num(e, 'y') - top) > TOL or abs(num(e, 'width') - (fx(x1) - left)) > TOL or abs(num(e, 'height') - (fy(y0) - top)) > TOL: doc.err('SC_SCATTER_REGION_PLACE:%d' % j)
-            if e.get('fill') != '#111' or abs(float(e.get('fill-opacity') or 0) - SCATTER_REGION_OPACITY[tone]) > 1e-9: doc.err('SC_SCATTER_REGION_STYLE:%d' % j)
+            x0 = frac(g['xMin'], 'SC_PLAN_INVALID') if 'xMin' in g else xr[0]
+            x1 = frac(g['xMax'], 'SC_PLAN_INVALID') if 'xMax' in g else xr[1]
+            y0 = frac(g['yMin'], 'SC_PLAN_INVALID') if 'yMin' in g else yr[0]
+            y1 = frac(g['yMax'], 'SC_PLAN_INVALID') if 'yMax' in g else yr[1]
+            if not (xr[0] <= x0 < x1 <= xr[1] and yr[0] <= y0 < y1 <= yr[1]): fail('STAT_SCATTER_REGION_INVALID')
+            for v, step, lo in ((x0, xs, xr[0]), (x1, xs, xr[0]), (y0, ys, yr[0]), (y1, ys, yr[0])):
+                if step and (v - lo) % step: fail('STAT_SCATTER_REGION_NOT_ON_STEP')
+            inside = [i for i, (x, y) in enumerate(points) if x0 <= x <= x1 and y0 <= y <= y1]
+            if not inside: fail('STAT_SCATTER_REGION_EMPTY')
+            tone = g.get('tone', 1)
+            e = rects.get('region-%d' % j)
+            if e is None: doc.err('SC_SCATTER_REGION_MISSING:%d' % j)
+            else:
+                top, left = fy(y1), fx(x0)
+                if abs(num(e, 'x') - left) > TOL or abs(num(e, 'y') - top) > TOL or abs(num(e, 'width') - (fx(x1) - left)) > TOL or abs(num(e, 'height') - (fy(y0) - top)) > TOL: doc.err('SC_SCATTER_REGION_PLACE:%d' % j)
+                if e.get('fill') != '#111' or abs(float(e.get('fill-opacity') or 0) - SCATTER_REGION_OPACITY[tone]) > 1e-9: doc.err('SC_SCATTER_REGION_STYLE:%d' % j)
         if g.get('markPoints') is True:
             for i in inside: want_rings.add((str(j), str(i)))
         label = [l for l in doc.label_role('count-value') if l.get('data-owner') == 'region-%d' % j]
@@ -998,8 +1168,13 @@ def audit_scatter(chart, doc):
     fy, iy, yvals = doc.axis_map('y-tick', 'y')
     xr = [frac(v, 'SC_PLAN_INVALID') for v in chart['xRange']]
     yr = [frac(v, 'SC_PLAN_INVALID') for v in chart['yRange']]
-    circles = {int(c.get('data-index')): c for c in doc.circles if c.get('data-index') is not None}
+    circles = {int(c.get('data-index')): c for c in doc.circles if c.get('data-index') is not None and c.get('data-role') == 'point'}
     if len(circles) != len(chart['points']): doc.err('SC_POINT_COUNT')
+    plan_points = [(frac(p['x'], 'SC_PLAN_INVALID'), frac(p['y'], 'SC_PLAN_INVALID')) for p in chart['points']]
+    fills = scatter_groups(chart, doc, plan_points)
+    for i, c in circles.items():
+        if (c.get('fill') or '').lower() != fills.get(i, DOT_PLAIN_FILL): doc.err('SC_POINT_COLOR:%d' % i)
+        if abs(num(c, 'r') - (GROUP_DOT_R if i in fills else PLAIN_DOT_R)) > TOL: doc.err('SC_POINT_RADIUS:%d' % i)
     on_diagonal = 0
     for i, p in enumerate(chart['points']):
         x, y = frac(p['x'], 'SC_PLAN_INVALID'), frac(p['y'], 'SC_PLAN_INVALID')
@@ -1024,6 +1199,7 @@ def audit_scatter(chart, doc):
     elif diagonal is not None: doc.err('SC_DIAGONAL_UNEXPECTED')
     if not (xvals[0] >= xr[0] and xvals[-1] <= xr[1] and yvals[0] >= yr[0] and yvals[-1] <= yr[1]): doc.err('SC_TICK_OUTSIDE_RANGE')
     scatter_marks(chart, doc, fx, fy, xr, yr)
+    scatter_trend(chart, doc, plan_points, fx, fy, yr)
     grids = doc.role('line', 'grid')
     if chart.get('grid') is not False:
         if not grids: doc.err('SC_GRID_MISSING')
