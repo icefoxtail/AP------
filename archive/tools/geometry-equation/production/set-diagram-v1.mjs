@@ -124,7 +124,7 @@ const countNameTex=(name,count)=>`n(${name})=${count}`;
 
 // --- exact regions: the atomic cells of 1-3 sets -------------------------------------------------------------------------------------------
 function solveVenn(venn){
-  onlyKeys(venn,['kind','sets','elements','shade','subset','universe','countStyle'],'SET_DIAGRAM_PLAN_INVALID');
+  onlyKeys(venn,['kind','sets','elements','shade','subset','disjoint','universe','countStyle'],'SET_DIAGRAM_PLAN_INVALID');
   if(!Array.isArray(venn.sets)||venn.sets.length<1||venn.sets.length>3)bad(venn.sets?.length>3?'SET_COUNT_UNSUPPORTED':'SET_DIAGRAM_PLAN_INVALID');
   const sets=venn.sets.map(raw=>{
     onlyKeys(raw,['id','name','count','countUnit'],'SET_DIAGRAM_PLAN_INVALID');
@@ -135,12 +135,28 @@ function solveVenn(venn){
   });
   const ids=sets.map(s=>s.id);
   if(new Set(ids).size!==ids.length)bad('SET_ID_INVALID');
-  let subset=null;
+  let subset=null,chain=null,disjoint=null;
+  if(venn.subset!==undefined&&venn.disjoint!==undefined)bad('SET_LAYOUT_UNSUPPORTED');
   if(venn.subset!==undefined){
-    if(sets.length!==2)bad('SET_LAYOUT_UNSUPPORTED');
-    if(!Array.isArray(venn.subset)||venn.subset.length!==2||!ids.includes(venn.subset[0])||!ids.includes(venn.subset[1])||venn.subset[0]===venn.subset[1])bad('SET_LAYOUT_UNSUPPORTED');
-    subset={inner:ids.indexOf(venn.subset[0]),outer:ids.indexOf(venn.subset[1])};
+    // B⊂A of two sets (inner first), or since G17 the chain A⊂B⊂C of three sets (innermost first)
+    if(!Array.isArray(venn.subset)||venn.subset.length!==sets.length||sets.length<2||venn.subset.some(id=>!ids.includes(id))||new Set(venn.subset).size!==venn.subset.length)bad('SET_LAYOUT_UNSUPPORTED');
+    if(sets.length===2)subset={inner:ids.indexOf(venn.subset[0]),outer:ids.indexOf(venn.subset[1])};
+    else chain=venn.subset.map(id=>ids.indexOf(id));
   }
+  // disjoint (G17): [["A","B"]] draws the two sets apart, with no region in common (one pair of two sets, or one pair among three)
+  if(venn.disjoint!==undefined){
+    if(sets.length<2||!Array.isArray(venn.disjoint)||venn.disjoint.length!==1)bad('SET_LAYOUT_UNSUPPORTED');
+    const pair=venn.disjoint[0];
+    if(!Array.isArray(pair)||pair.length!==2||pair.some(id=>!ids.includes(id))||pair[0]===pair[1])bad('SET_LAYOUT_UNSUPPORTED');
+    disjoint=pair.map(id=>ids.indexOf(id)).sort((a,b)=>a-b);
+  }
+  // a cell the chosen layout leaves without any area (outside the inner set but inside it, or in two disjoint sets): no element and no shading can be there
+  const cellPossible=mask=>{
+    if(subset&&(mask&(1<<subset.inner))&&!(mask&(1<<subset.outer)))return false;
+    if(chain&&chain.slice(0,-1).some((set,k)=>(mask&(1<<set))&&!(mask&(1<<chain[k+1]))))return false;
+    if(disjoint&&(mask&(1<<disjoint[0]))&&(mask&(1<<disjoint[1])))return false;
+    return true;
+  };
   // the whole (universe) may carry a headcount too; a set can never have more members than the whole, nor an inner set more than its outer set
   let universe;
   if(venn.universe!==undefined){
@@ -160,6 +176,7 @@ function solveVenn(venn){
   }
   if(universe)for(const set of sets)if(set.count!==undefined&&Number(set.count)>Number(universe.count))bad('SET_COUNT_INVALID');
   if(subset&&sets[subset.inner].count!==undefined&&sets[subset.outer].count!==undefined&&Number(sets[subset.inner].count)>Number(sets[subset.outer].count))bad('SET_COUNT_INVALID');
+  if(chain)for(let k=0;k+1<chain.length;k++)if(sets[chain[k]].count!==undefined&&sets[chain[k+1]].count!==undefined&&Number(sets[chain[k]].count)>Number(sets[chain[k+1]].count))bad('SET_COUNT_INVALID');
   const n=sets.length,cellCount=1<<n;
   const elements=[];
   if(venn.elements!==undefined){
@@ -171,10 +188,7 @@ function solveVenn(venn){
       if(!Array.isArray(raw.in)||raw.in.length>n||new Set(raw.in).size!==raw.in.length)bad('SET_ELEMENT_INVALID');
       for(const id of raw.in)if(!ids.includes(id))bad('SET_ELEMENT_SET_UNKNOWN');
       let mask=0;for(const id of raw.in)mask|=1<<ids.indexOf(id);
-      if(subset){
-        const innerBit=1<<subset.inner,outerBit=1<<subset.outer;
-        if((mask&innerBit)&&!(mask&outerBit))bad('SET_ELEMENT_REGION_EMPTY');
-      }
+      if(!cellPossible(mask))bad('SET_ELEMENT_REGION_EMPTY');
       const key=text+'|'+raw.in.join(',');
       if(seen.has(key))bad('SET_ELEMENT_DUPLICATE');
       seen.add(key);
@@ -186,7 +200,7 @@ function solveVenn(venn){
     const parsed=parseShade(venn.shade,ids);
     const selected=[];
     for(let mask=0;mask<cellCount;mask++)if(parsed.fn(mask))selected.push(mask);
-    if(!selected.length)bad('SET_SHADE_EMPTY');
+    if(!selected.length||(disjoint||chain)&&!selected.some(cellPossible))bad('SET_SHADE_EMPTY');
     shade={expression:venn.shade,cells:selected};
   }
   const cells=[];
@@ -195,7 +209,7 @@ function solveVenn(venn){
     cells.push({mask,region:members.length?members.join('∩'):'OUTSIDE',members,shade:shade?shade.cells.includes(mask):false,
       elements:elements.filter(e=>e.cell===mask).map(e=>e.index)});
   }
-  return {schemaVersion:MODEL_VERSION,kind:'VENN',layout:subset?'SUBSET':'OVERLAP',sets,subset,elements,cells,shade,...(universe?{universe}:{}),...(countStyle?{countStyle}:{})};
+  return {schemaVersion:MODEL_VERSION,kind:'VENN',layout:subset?'SUBSET':chain?'CHAIN':disjoint?'DISJOINT':'OVERLAP',sets,subset,...(chain?{chain}:{}),...(disjoint?{disjoint}:{}),elements,cells,shade,...(universe?{universe}:{}),...(countStyle?{countStyle}:{})};
 }
 // A mapping element is a short Hangul/alphanumeric text (up to 4 characters, as always) or, since G17, a signed number, a fraction or a short root
 // (-2, 1/2, -1/2, √2, 2√3; up to 6 characters). The typed hyphen-minus is shown as the real minus sign U+2212; the figure writes it as a math label.
@@ -374,6 +388,21 @@ function vennLayout(model,opts={}){
   if(model.layout==='SUBSET'){
     circles[model.subset.outer]={cx:236,cy:172,r:94};
     circles[model.subset.inner]={cx:258,cy:166,r:54};
+  }
+  // G17: A⊂B⊂C drawn as three nested circles (innermost first in model.chain), each inside the next with room for a name and an element between the lines
+  if(model.layout==='CHAIN'){
+    circles[model.chain[2]]={cx:240,cy:194,r:140};
+    circles[model.chain[1]]={cx:262,cy:218,r:92};
+    circles[model.chain[0]]={cx:286,cy:236,r:48};
+  }
+  // G17: two sets drawn apart (no common region); with a third set, the disjoint pair stands at the bottom and the third set overlaps both from above
+  if(model.layout==='DISJOINT'){
+    if(model.sets.length===2){
+      circles[0]={cx:142,cy:172,r:76};circles[1]={cx:328,cy:172,r:76};
+    }else{
+      const [i,j]=model.disjoint,k=[0,1,2].find(x=>x!==i&&x!==j);
+      circles[i]={cx:140,cy:262,r:80};circles[j]={cx:340,cy:262,r:80};circles[k]={cx:240,cy:180,r:88};
+    }
   }
   if(hasCounts(model)){
     const side=opts.compact?0:COUNT_ROOM.side,top=COUNT_ROOM.top;
@@ -623,7 +652,7 @@ function vennSpec(model,layout){
     labels.push(Object.assign(elementLabel(`element-${element.index}`,'element',`element-${element.index}`,element,'start','top',0,0,
       {element:element.index,cell:model.cells[element.cell].region}),{placement:'element',cellMask:element.cell}));
   }
-  return {size,prims,labels,kind:'VENN',layout,setIds:model.sets.map(s=>s.id),vennLayoutKind:model.layout,subset:model.subset,geometry:{rect:{...U},circles:circles.map(c=>({...c}))},...(model.universe?{universeCounted:true}:{})};
+  return {size,prims,labels,kind:'VENN',layout,setIds:model.sets.map(s=>s.id),vennLayoutKind:model.layout,subset:model.subset,...(model.chain?{chain:model.chain}:{}),geometry:{rect:{...U},circles:circles.map(c=>({...c}))},...(model.universe?{universeCounted:true}:{})};
 }
 function mappingSpec(model,layout){
   const prims=[],labels=[];
@@ -760,6 +789,7 @@ function resolveVenn(spec,placed){
     const others=circles.filter((_,i)=>i!==setIndex);
     const direction=spec.setIds.length===1?{x:0,y:-1}
       :spec.vennLayoutKind==='SUBSET'?(setIndex===spec.subset.inner?{x:0.9,y:-0.44}:{x:-0.5,y:-0.87})
+      :spec.vennLayoutKind==='CHAIN'?[{x:-0.8,y:-0.6},{x:-0.75,y:-0.66},{x:-0.5,y:-0.87}][spec.chain.indexOf(setIndex)]
       :spec.setIds.length===2?(setIndex===0?{x:-0.5,y:-0.87}:{x:0.5,y:-0.87})
       :(()=>{
         let dx=c.cx*others.length,dy=c.cy*others.length;
@@ -813,7 +843,7 @@ function resolveVenn(spec,placed){
           for(let k=1;k<20&&!blocked;k++){
             const sx=px+(ex-px)*k/20,sy=py+(ey-py)*k/20;
             // the leader keeps off every other circle's line, except that the inner set of B⊂A is reached across the outer circle's line
-            if(circles.some((other,i)=>i!==setIndex&&!(spec.vennLayoutKind==='SUBSET'&&setIndex===spec.subset.inner&&i===spec.subset.outer)&&((norm2(sx,sy,other)<1)!==(norm2(px,py,other)<1)||Math.abs(Math.sqrt(norm2(sx,sy,other))-1)*other.r<1.5)))blocked=true;
+            if(circles.some((other,i)=>i!==setIndex&&!(spec.vennLayoutKind==='SUBSET'&&setIndex===spec.subset.inner&&i===spec.subset.outer)&&!(spec.vennLayoutKind==='CHAIN'&&spec.chain.indexOf(i)>spec.chain.indexOf(setIndex))&&((norm2(sx,sy,other)<1)!==(norm2(px,py,other)<1)||Math.abs(Math.sqrt(norm2(sx,sy,other))-1)*other.r<1.5)))blocked=true;
           }
           // nor does it run through the group's own other label or any label already placed
           if(!blocked&&[...occupied,...parts.filter(other=>other!==part).map(other=>({x:other.x-1,y:other.y-1,width:other.width+2,height:other.height+2}))].some(other=>segmentHitsBox([px,py],[ex,ey],other)))blocked=true;

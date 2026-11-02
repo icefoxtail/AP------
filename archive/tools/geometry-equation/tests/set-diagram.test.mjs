@@ -51,6 +51,10 @@ const mapFG={kind:'MAPPING',columns:[{id:'X',name:'X',elements:['1','2','3','4']
   arrows:[[0,0,1,2],[0,1,1,0],[0,2,1,0],[0,3,1,3],[1,0,2,3],[1,1,2,1],[1,2,2,2],[1,3,2,0]].map(([a,b,c,d])=>({from:{column:a,element:b},to:{column:c,element:d}})),
   arrowGroups:[{name:'g',from:'X',to:'Y',color:'BLUE'},{name:'f',from:'Y',to:'Z',color:'WARM'}],
   highlightPaths:[{path:['3','1','4'],color:'GREEN'},{path:['4','1'],startColumn:1,color:'VIOLET'}]};
+// G17: sets drawn apart (25 금당고 고1 q21; 26 매산여고 고1 q13: A∩B=∅ among three sets) and the chain A⊂B⊂C of three sets (25 금당고 고1 q11)
+const disjoint2={kind:'VENN',sets:[{id:'A'},{id:'B'}],elements:[{text:'1',in:['A']},{text:'2',in:['A']},{text:'3',in:['B']},{text:'4',in:['B']}],disjoint:[['A','B']]};
+const disjoint3={kind:'VENN',sets:[{id:'A'},{id:'B'},{id:'C'}],elements:[{text:'x',in:['B']},{text:'y',in:['A','C']}],shade:'(A∪C)∩(B∪C)',disjoint:[['A','B']]};
+const chain3={kind:'VENN',sets:[{id:'A'},{id:'B'},{id:'C'}],elements:[{text:'1',in:['A','B','C']},{text:'2',in:['B','C']},{text:'3',in:['C']},{text:'4',in:[]}],subset:['A','B','C'],shade:'B-A'};
 
 test('the engine derives every atomic region and the truth of the set expression itself',()=>{
   const m=solveDiagram(venn2);
@@ -77,6 +81,15 @@ test('the engine derives every atomic region and the truth of the set expression
   assert.deepEqual(fg.arrowGroups.map(g=>[g.name,g.from,g.to,g.color,g.arrows]),[['g',0,1,'BLUE',[0,1,2,3]],['f',1,2,'WARM',[4,5,6,7]]]);
   assert.deepEqual(fg.highlightPaths.map(p=>[p.cells,p.arrows,p.color]),[[[{column:0,element:2},{column:1,element:0},{column:2,element:3}],[2,4],'GREEN'],[[{column:1,element:3},{column:2,element:0}],[7],'VIOLET']]);
   assert.equal(solveDiagram(map2).arrowGroups,undefined);assert.equal(solveDiagram(map2).highlightPaths,undefined);
+  const dj=solveDiagram(disjoint2),dj3=solveDiagram(disjoint3),ch=solveDiagram(chain3);
+  assert.equal(dj.layout,'DISJOINT');assert.deepEqual(dj.disjoint,[0,1]);assert.equal(dj.subset,null);assert.deepEqual(dj3.disjoint,[0,1]);
+  assert.equal(ch.layout,'CHAIN');assert.deepEqual(ch.chain,[0,1,2]);assert.deepEqual(ch.shade.cells,[2,6]);
+  assert.equal(solveDiagram(venn2).disjoint,undefined);assert.equal(solveDiagram(subset).chain,undefined);
+  const circlesOf=model=>setDiagramSpec(plan(model===dj?disjoint2:model===dj3?disjoint3:chain3),model).layout.circles;
+  const dist=(a,b)=>Math.hypot(a.cx-b.cx,a.cy-b.cy);
+  const [da,db]=circlesOf(dj);assert.ok(dist(da,db)>da.r+db.r+10);
+  const [ta,tb,tc]=circlesOf(dj3);assert.ok(dist(ta,tb)>ta.r+tb.r+10&&dist(ta,tc)<ta.r+tc.r-20&&dist(tb,tc)<tb.r+tc.r-20);
+  const [ca,cb,cc]=circlesOf(ch);assert.ok(dist(ca,cb)+ca.r<cb.r-10&&dist(cb,cc)+cb.r<cc.r-10);
   assert.deepEqual(setDiagramSize(solveDiagram(venn2)),{width:470,height:330});
   assert.deepEqual(setDiagramSize(solveDiagram(map2)),{width:460,height:220});
   // a four-set membership table keeps every declared membership as its own cell truth
@@ -134,6 +147,21 @@ test('set figures that cannot be drawn faithfully are refused with their codes',
   refuse(withP([{path:['3','9']}]),'MAPPING_PATH_INVALID');
   refuse(withP([{path:['3']}]),'MAPPING_PATH_INVALID');
   refuse(withP([{path:['3','1'],color:'ORANGE'}]),'MAPPING_PATH_INVALID');
+  refuse({...disjoint2,subset:['B','A']},'SET_LAYOUT_UNSUPPORTED');
+  refuse({...disjoint2,disjoint:[['A','B'],['A','B']]},'SET_LAYOUT_UNSUPPORTED');
+  refuse({...disjoint2,disjoint:[['A','C']]},'SET_LAYOUT_UNSUPPORTED');
+  refuse({...disjoint2,disjoint:[['A','A']]},'SET_LAYOUT_UNSUPPORTED');
+  refuse({...disjoint2,disjoint:['A','B']},'SET_LAYOUT_UNSUPPORTED');
+  refuse({kind:'VENN',sets:[{id:'A'}],disjoint:[['A','A']]},'SET_LAYOUT_UNSUPPORTED');
+  refuse({...disjoint2,elements:[{text:'1',in:['A','B']}]},'SET_ELEMENT_REGION_EMPTY');
+  refuse({...disjoint2,elements:undefined,shade:'A∩B'},'SET_SHADE_EMPTY');
+  refuse({...disjoint3,elements:[{text:'1',in:['A','B','C']}]},'SET_ELEMENT_REGION_EMPTY');
+  refuse({...chain3,subset:['A','B']},'SET_LAYOUT_UNSUPPORTED');
+  refuse({...chain3,subset:['A','B','B']},'SET_LAYOUT_UNSUPPORTED');
+  refuse({...chain3,elements:[{text:'1',in:['A','C']}]},'SET_ELEMENT_REGION_EMPTY');
+  refuse({...chain3,elements:[{text:'1',in:['B']}]},'SET_ELEMENT_REGION_EMPTY');
+  refuse({...chain3,shade:'A∩Cᶜ'},'SET_SHADE_EMPTY');
+  refuse({...chain3,sets:[{id:'A',count:'9'},{id:'B',count:'5'},{id:'C',count:'20'}]},'SET_COUNT_INVALID');
   refuse({kind:'PIE'},'SET_KIND_UNSUPPORTED');
   assert.throws(()=>checkSetDiagramPlan({...plan(venn2),extra:1}),code('SET_DIAGRAM_PLAN_INVALID'));
   assert.throws(()=>setDiagramSpec(plan(venn2),{...solveDiagram(venn2),shade:null}),code('SET_MODEL_MISMATCH'));
@@ -215,6 +243,17 @@ test('every figure composes, the independent observer passes it, and it catches 
     assert.ok(has(await audit(mapFG,svg.replace(/(<polygon id="arrow-head-2"[^>]*fill=")#2e7d32/,'$1#111')),'SD_ARROW_COLOUR:2'));
     assert.ok(has(await audit({...mapFG,arrowGroups:[{name:'h',from:'X',to:'Y',color:'BLUE'},mapFG.arrowGroups[1]]},svg),'SD_ARROW_GROUP_TEXT:0'));
     assert.ok(has(await audit(mapFG,svg.replace('id="arrow-group-1" data-label-kind="COORDINATE_LABEL" data-label-role="arrow-group-name"','id="arrow-group-1" data-label-kind="COORDINATE_LABEL" data-label-role="column-note"')),'SD_ARROW_GROUP_LABEL_SET'));
+    // sets drawn apart, and the three-level chain: the observer reads the circles back and catches a pair drawn touching or an inner circle poking out
+    svg=await compose(disjoint2,12);
+    const djAudit=await audit(disjoint2,svg);assert.equal(djAudit.status,'PASS',JSON.stringify(djAudit.errors));
+    const touching=svg.replace(/(id="set-B"[^>]*cx=")[\d.]+/,'$1230');
+    assert.ok(has(await audit(disjoint2,touching),'SD_DISJOINT_GEOMETRY:A:B'));
+    svg=await compose(disjoint3,13);
+    const dj3Audit=await audit(disjoint3,svg);assert.equal(dj3Audit.status,'PASS',JSON.stringify(dj3Audit.errors));
+    svg=await compose(chain3,14);
+    const chainAudit=await audit(chain3,svg);assert.equal(chainAudit.status,'PASS',JSON.stringify(chainAudit.errors));
+    assert.ok(has(await audit(chain3,svg.replace(/(id="set-A"[^>]*cx=")[\d.]+/,'$1370')),'SD_SUBSET_GEOMETRY:A:B'));
+    assert.ok(has(await audit(chain3,svg.replace(/(id="set-C"[^>]*cx=")[\d.]+/,'$1100')),'SD_SET_OUTSIDE_UNIVERSAL:C'));
     // f and its reverse g between the same two sets
     svg=await compose(mapback,6);
     const reverse=await audit(mapback,svg);assert.equal(reverse.status,'PASS',JSON.stringify(reverse.errors));

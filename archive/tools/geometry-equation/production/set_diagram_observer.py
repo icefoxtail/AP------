@@ -268,7 +268,7 @@ def inside_contours(x, y, contours):
 
 
 # --- counts (the opt-in headcount labels of a Venn diagram) ---------------------------------------------------------------------------------
-VENN_KEYS = ('kind', 'sets', 'elements', 'shade', 'subset', 'universe', 'countStyle')
+VENN_KEYS = ('kind', 'sets', 'elements', 'shade', 'subset', 'disjoint', 'universe', 'countStyle')
 SET_KEYS = ('id', 'name', 'count', 'countUnit')
 UNIVERSE_KEYS = ('name', 'count', 'countUnit')
 COUNT_PATTERN = re.compile(r'^(0|[1-9][0-9]{0,3})$')
@@ -367,6 +367,20 @@ def audit_venn(plan, doc):
     if len(universal) != 1:
         fail('SD_UNIVERSAL_RECT')
     rect = (num(universal[0], 'x'), num(universal[0], 'y'), num(universal[0], 'width'), num(universal[0], 'height'))
+    # G17: the drawn circles show what the plan says about the sets: every circle lies in the universal rectangle, each set of a subset chain (innermost
+    # first) lies wholly inside the next one, and the two sets of a disjoint pair are drawn apart
+    for set_id, ellipse in drawn.items():
+        if ellipse['cx'] - ellipse['rx'] < rect[0] or ellipse['cx'] + ellipse['rx'] > rect[0] + rect[2] or ellipse['cy'] - ellipse['ry'] < rect[1] or ellipse['cy'] + ellipse['ry'] > rect[1] + rect[3]:
+            doc.err('SD_SET_OUTSIDE_UNIVERSAL:' + set_id)
+    chain = plan.get('subset') or []
+    for inner_id, outer_id in zip(chain, chain[1:]):
+        inner, outer = drawn.get(inner_id), drawn.get(outer_id)
+        if inner and outer and math.hypot(inner['cx'] - outer['cx'], inner['cy'] - outer['cy']) + inner['rx'] > outer['rx'] - 1:
+            doc.err('SD_SUBSET_GEOMETRY:%s:%s' % (inner_id, outer_id))
+    for pair in plan.get('disjoint') or []:
+        first, second = drawn.get(pair[0]), drawn.get(pair[1])
+        if first and second and math.hypot(first['cx'] - second['cx'], first['cy'] - second['cy']) < first['rx'] + second['rx'] + 2:
+            doc.err('SD_DISJOINT_GEOMETRY:%s:%s' % (pair[0], pair[1]))
     style, counts, uni = count_plan(plan)
     if style == 'n' and uni['count'] is None and not any(counts.values()):
         fail('SD_COUNT_INVALID')
@@ -453,8 +467,8 @@ def audit_venn(plan, doc):
             for other in sets:
                 if other == set_id:
                     continue
-                if subset and subset[0] == set_id and subset[1] == other:
-                    continue  # the inner set of B-in-A is reached across the outer circle's line
+                if subset and set_id in subset and other in subset and subset.index(other) > subset.index(set_id):
+                    continue  # the inner set of B-in-A (or of a chain) is reached across the outer circles' lines
                 for k in range(1, 20):
                     px, py = start[0] + (end[0] - start[0]) * k / 20, start[1] + (end[1] - start[1]) * k / 20
                     if inside_ellipse(px, py, drawn[other]) != inside_ellipse(start[0], start[1], drawn[other]):
