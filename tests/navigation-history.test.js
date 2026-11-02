@@ -19,7 +19,7 @@ assert.match(uiSource, /function updateAppBackButtons\(/, 'back button disabled 
 assert.match(uiSource, /AP_APP_HISTORY_WRAP_NAMES/, 'major screen renderers should be wrapped centrally');
 assert.match(uiSource, /modalStepStack\.length/, 'existing modal step stack should be honored before app history');
 
-const backHandler = uiSource.match(/function appHistoryBack\(\) \{[\s\S]*?\n\}/);
+const backHandler = uiSource.match(/function appHistoryBack\(options\) \{[\s\S]*?\n\}/);
 assert.ok(backHandler, 'back handler body should be findable');
 assert.doesNotMatch(backHandler[0], /renderDashboard\(\)/, 'back handler must not fall back to dashboard');
 

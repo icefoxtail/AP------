@@ -406,18 +406,22 @@ showModal('숙제', `
 ```
 - 위험 행동(삭제·보관)은 액션줄 첫 칸에 `class="btn btn-danger apms-modal__actions-start"`로 둔다(왼쪽 끝으로 떨어져 저장 버튼과 멀다. 휴대폰에서는 한 줄을 따로 쓴다).
 - P는 본문을 `.apms-modal__body`에 넣는다(스크롤). 앞으로 필요한 다른 구조는 클래스를 추가하지 말고 이 문서에 먼저 적는다.
-- 헤더 행동(`showModal(제목, 본문, '저장', fn)`)을 넘기는 옛 호출도 등급 모달에서는 하단 액션줄로 옮겨 그려진다(`ui.js` `adoptHeaderActionIntoModalActions`). 새 코드는 액션줄을 직접 쓴다.
+- 헤더 행동(`showModal(제목, 본문, '저장', fn)`)을 넘기는 옛 호출도 등급 모달에서는 하단 액션줄로 옮겨 그려진다(`ui.js` `adoptHeaderActionIntoModalActions`). 이때 모달 헤더에 "취소"가 있으므로 하단에는 주 버튼만 만든다(헤더·하단 취소 중복 금지, 사용자 결정 2026-11-02). 새 코드는 액션줄을 직접 쓴다.
 - 입력은 라벨을 달고(`.apms-unified-label` + `for`), `.apms-unified-control`(최소 44px, 테두리 `--control-border`)을 쓴다.
 
 **Esc·바깥 클릭·변경 감지 (`js/ui.js` "모달 닫기 정책" 구역).**
 - Esc: `document`의 keydown 한 곳에서 받는다(`handleModalEscape`). 열린 모달 하나(맨 위)만 닫고, 단계 모달(`showModalStep`)은 한 단계만 돌아간다(`closeModal()`과 같은 의미). 한글 입력 조합 중, 로그인 화면이 위에 있을 때는 무시한다. 모달 위에 뜨는 다른 레이어(전체 화면 오버레이 등)가 Esc로 닫혀야 하면 `const off = registerEscapeLayer(() => close())`로 등록하고 닫을 때 `off()`를 부른다. 더 늦게 열린 쪽만 반응한다.
-- 바깥 클릭: `#modal-overlay`의 `onpointerdown`/`onclick`이 `handleModalBackdropPress/Click`을 부른다. 누르기와 놓기가 모두 배경일 때만 처리하므로, 글자를 끌다가 밖에서 놓아도 닫히지 않는다. 판정은 순수 함수 `decideModalClose(source, tier, dirty)`(C·F·옛 모달: 변경 없을 때만 닫음 / W·P: 닫지 않음). 헤더 "취소"와 앱 뒤로 가기는 명시적 행동이라 확인 없이 `closeModal()`이다. 저장 성공 뒤 `closeModal(true)`도 확인하지 않는다.
+- 바깥 클릭: `#modal-overlay`의 `onpointerdown`/`onclick`이 `handleModalBackdropPress/Click`을 부른다. 누르기와 놓기가 모두 배경일 때만 처리하므로, 글자를 끌다가 밖에서 놓아도 닫히지 않는다. 판정은 순수 함수 `decideModalClose(source, tier, dirty)`(C·F·옛 모달: 변경 없을 때만 닫음 / W·P: 닫지 않음). 헤더 "취소"(`requestCloseModal('cancel')`)·앱 ←·기기 뒤로 가기(`requestCloseModal('back')`)도 Esc와 같다: 변경이 있으면 확인하고, 없으면 닫는다(N2, 2026-11-02. 전에는 확인 없이 닫아 OMR·진도 입력이 사라졌다). 코드가 부르는 `closeModal()`과 저장 성공 뒤 `closeModal(true)`는 확인하지 않는다.
 - 변경 있음(dirty) 판정 우선순위: ① 모달이 등록한 콜백 `setModalDirtyChecker(() => boolean)`(있으면 이것만 본다. `showModal` **뒤에** 등록하고, 모달이 닫히면 자동으로 지워진다. 단계 모달은 단계마다 따로 보관). ② 진도 모달은 `hasUnsavedClassProgressChanges`를 자동으로 쓴다(`.ap-class-progress-modal`이 본문에 있을 때). ③ 그 밖에는 본문 안 입력·선택·텍스트 칸을 **사용자가 직접 바꿨는가**(신뢰된 `input`/`change` 이벤트. 코드로 `.value`를 넣은 것은 세지 않으므로 미리 채우는 수정 폼이 처음부터 "변경됨"이 되지 않는다). 검색창은 `type="search"`나 `data-apms-nodirty` 속성으로 뺀다. 저장이 끝나고 모달을 이어서 쓸 때는 `markModalClean()`, 코드로 바꾼 값을 변경으로 치고 싶으면 `markModalDirty()`. `setModalBody(html)`로 본문을 통째로 바꾸면 입력 중 표시가 처음으로 돌아간다.
 - 확인 문구는 `입력한 내용이 저장되지 않았습니다. 닫을까요?`(`confirm`). 앱의 다른 확인과 같은 방식이다.
 
 **공유 파일 규칙(동시 작업용).** 공통 부품(`apms-unified-modal.css`의 `.apms-modal*`·`.apms-workspace*`, `ui.js`의 닫기 정책, 전역 토큰)은 이 문서를 바꾸는 별도 작업에서만 고친다. 각 묶음은 자기 모달 함수와 그 함수만 쓰는 CSS만 고치고, 공통 부품에 필요한 것이 있으면 새 클래스를 만들지 말고 보고한다. 자세한 경계는 계획서 3.5.
 
 현재 공통 동작(코드 사실, 2026-11-02 이후): `closeModal()`은 확인 없이 닫는다(저장 흐름이 부르기 때문). 모달 연쇄에는 대부분 뒤로 가기가 없다(`showModalStep`은 일정·시간표·학생 상세만 사용).
+
+**기기 뒤로 가기 = 앱 ← (N2, `ui.js` "브라우저 뒤로 가기 연결").** 뒤로 갈 곳이 있는 동안(열린 모달·단계 모달·위 Esc 레이어·화면 이력 `backStack`) 브라우저 이력에 보호 항목 한 칸(`history.state.apmsGuard`)을 둔다. 뒤로 가기(popstate)는 한 겹만 닫고(맨 위 레이어 → 모달/단계 → 화면 이력 한 칸), 입력 중이면 확인한다. 코드가 닫아 갈 곳이 0이 되면 `history.go(-1)`로 보호 항목을 걷어 "두 번 눌러야 하는" 일이 없다. 첫 화면에서는 보호 항목이 없어 뒤로 가기는 기본 동작(앱 종료)이다. 주소는 바꾸지 않는다(`pushState(state, '', location.href)`, 해시는 N4). 대시보드로 직접 돌아오면 화면 이력을 비우고, 학생 상세(모달)는 화면 이력에 넣지 않는다. 새 모달·화면을 만드는 코드는 따로 할 일이 없다(`showModal`·`closeModal`·`appHistoryRecordView`가 알아서 맞춘다). 모달 밖 전체 화면 레이어를 직접 만들면 `registerEscapeLayer`에 등록해야 뒤로 가기가 닫는다.
+
+**토스트·앱 ← (N2).** 모달이 열려 있으면 토스트는 모달 제목줄 바로 아래에 뜬다(`toast()`가 `#modal-header`를 재서 `--toast-top`·`--toast-left`를 넣는다). 휴대폰(≤600px)의 화면 전체 모달(W·P·클리닉 전체 화면)에서는 헤더 "취소"와 겹치므로 앱 ← 버튼을 숨긴다. `body.ap-modal-open > header`는 앱 맨 위 헤더만 잡는다(모달 안 `<header>`는 영향 없음).
 
 **통합 작업 화면 패턴(W)** — 진도 모달(`classroom.js` `openClassRecordModal`)에서 뽑은 규칙: 대상 하나 + 전환 탭, 목록/상세 한 쌍(선택은 서버 호출 없이), 추가·수정은 인라인 폼·행 펼침, 모달 연쇄 금지·미저장 변경 확인, 늦은 응답 가드, 모달 먼저 열고 자리에서 로딩, 저장 응답으로 로컬 상태 갱신(전체 `loadData()`·재오픈 지양). 근거 줄은 계획서 3.1. **진도 모달 자체는 아직 이 공통 클래스로 옮기지 않았다**(진도·교재 묶음 M8 담당). 지금 `.ap-class-progress-*` CSS가 같은 구조를 따로 갖고 있다.
 
@@ -429,7 +433,7 @@ showModal('숙제', `
 - `.tab-bar`/`.tab-btn`(옛, `apms-theme-override.css:163-176`): 선택 시 흰 면 + `--primary` 글자. `.apms-tab`: 알약, 선택 시 연한 파랑 면.
 
 ### Navigation
-- 데스크톱 56px 레일(펼침 260px) + 58px 상단 막대, 휴대폰은 헤더 + 서랍(`css/sidebar-foundation.css`, `.drw-*`). 뒤로 가기 버튼은 모달이 열려 있어도 헤더 위에 남는다(`index.html:670-690`).
+- 데스크톱 56px 레일(펼침 260px) + 58px 상단 막대, 휴대폰은 헤더 + 서랍(`css/sidebar-foundation.css`, `.drw-*`). 뒤로 가기 버튼은 모달이 열려 있어도 헤더 위에 남는다(휴대폰 화면 전체 모달은 제외, 위 "기기 뒤로 가기 = 앱 ←").
 - **서랍·레일 (N1, 결정 2026-11-02).** 선생님 서랍은 자주 쓰는 순서로 묶는다: 수업(시간표·출석부·진도·교재·클리닉·원내평가·OMR) / 반·학생(반 관리·학생 관리·퇴원생) / 기록(일지·메모·일정관리) / 평가·리포트 / 자료 / 지원(`ui.js` `buildDrawerMenu`). 원장 서랍은 항목 구성을 바꾸지 않는다(D1) — 이름 통일·현재 위치·레일 아이콘만 같다. 이유: 같은 일에 이름이 여럿이라(학급관리/반 관리, 원내평가/OMR 입력) 같은 기능을 다른 기능으로 오해했다.
 - **이름:** "학급" 대신 "반"(반 관리). 서랍의 "원내평가"와 "OMR 입력"은 작업 화면 하나이므로 "원내평가·OMR" 한 항목이다(`openExamWorkspace('')`). "교재관리"는 "진도·교재"(교재 관리 모드로 연다).
 - **현재 위치:** 항목을 누르면 `drawerMark(key, kind)`가 `aria-current="page"`(+`.drw-active`)를 그 항목에 단다. 모달형은 닫히면 해제하고, 시간표·출석부·학교성적은 `appHistoryState.currentView`를 따라간다. 표시는 왼쪽 3px 막대 + 옅은 면 + 600 굵기(색만으로 알리지 않는다).

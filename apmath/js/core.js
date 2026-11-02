@@ -595,6 +595,7 @@ function removeSyncQueueTask(task) {
 
 // [UI Standard Applied]: 로그인 화면
 function renderLogin() {
+    if (typeof apmsNavReset === 'function') apmsNavReset(); // 이전 사용자의 뒤로 가기 이력·모달 상태 폐기
     const root = document.getElementById('app-root');
     const scopeBtn = document.querySelector('header nav button');
     const logoutBtn = document.getElementById('btn-logout');

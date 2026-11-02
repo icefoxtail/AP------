@@ -115,10 +115,30 @@ if (document.readyState === 'loading') {
 // ============================================================
 // [UI Components] 토스트 및 모달
 // ============================================================
+// 모달이 열려 있으면 토스트를 모달 제목줄 바로 아래(본문 맨 위)에 띄운다. 제목·헤더 버튼·하단 액션줄을 가리지 않는다.
+// 위치는 모달 헤더 실측으로 정하고(CSS 변수 --toast-top/--toast-left), 모달이 없으면 변수를 지워 화면 아래 기본 위치로 돌아간다.
+function apmsPlaceToastContainer(c) {
+    try {
+        const header = document.getElementById('modal-header');
+        const content = document.getElementById('modal-content');
+        const open = typeof isModalOpen === 'function' && isModalOpen() && header && content;
+        if (!open) {
+            c.style.removeProperty('--toast-top');
+            c.style.removeProperty('--toast-left');
+            return;
+        }
+        const h = header.getBoundingClientRect();
+        const m = content.getBoundingClientRect();
+        c.style.setProperty('--toast-top', Math.round(h.bottom + 8) + 'px');
+        c.style.setProperty('--toast-left', Math.round(m.left + m.width / 2) + 'px');
+    } catch (error) { /* 위치를 못 재면 CSS 기본값 */ }
+}
+
 function toast(m, t='info') {
     const c = document.getElementById('toast-container');
     if (!c) return;
 
+    apmsPlaceToastContainer(c);
     const el = document.createElement('div');
     el.className = `toast ${t}`;
     el.innerText = m;
@@ -141,6 +161,8 @@ let modalLayerSeq = 0;              // 모달·상위 레이어가 열린 순서
 let modalOpenSeq = 0;               // 현재 모달이 열린 순서
 let modalBackdropPressed = false;   // 누르기 시작이 배경이었는가(안에서 끌어서 밖에서 놓은 경우 제외)
 const apmsEscapeLayers = [];        // 모달 위에 뜨는 다른 레이어의 Esc 닫기 등록부
+let apmsModalLogicalOpen = false;   // 모달이 "논리적으로" 열려 있는가(closeModal 즉시 false. DOM의 hidden은 260ms 뒤에 바뀐다)
+const apmsNavGuard = { traversing: false, timer: null, syncQueued: false }; // 브라우저 뒤로 가기 연결 상태(아래 "브라우저 뒤로 가기" 구역)
 let appHistoryState = {
     currentView: null,
     backStack: [],
@@ -206,11 +228,23 @@ function updateAppBackButtons() {
 
 function appHistoryRecordView(nextView) {
     if (!nextView || !nextView.type) return;
-    const current = appHistoryState.currentView;
+    // 학생 상세는 화면이 아니라 모달이다(자기 닫기·복귀 경로가 있다). 화면 이력에 넣으면 모달을 닫은 뒤
+    // 뒤로 가기가 같은 학생 상세를 다시 여는 "한 번 더" 문제가 생기므로 이력에서 뺀다.
+    if (nextView.type === 'studentDetail') return;
+    let current = appHistoryState.currentView;
+    // 첫 대시보드 그리기가 화면 이동 감싸기보다 먼저 끝난 경우(자료가 스크립트 로딩보다 빨리 온 경우)에는 현재 화면이 기록되지 않았다.
+    // 로그인한 상태에서 대시보드 아닌 화면으로 처음 이동하면 직전 화면은 첫 화면(대시보드)이었다고 본다. 아니면 반 화면에서 뒤로 갈 곳이 없다.
+    if (!current && !appHistoryState.restoring && state?.auth?.role && nextView.type !== 'dashboard' && nextView.type !== 'adminDashboard') {
+        current = appHistoryBuildView('renderDashboard');
+    }
     const currentKey = appHistoryViewKey(current);
     const nextKey = appHistoryViewKey(nextView);
 
-    if (!appHistoryState.restoring && current && currentKey && currentKey !== nextKey) {
+    const isRootView = nextView.type === 'dashboard' || nextView.type === 'adminDashboard';
+    if (!appHistoryState.restoring && isRootView) {
+        // 첫 화면(대시보드)으로 직접 돌아오면 쌓인 이력을 비운다. 그래야 첫 화면에서 뒤로 가기가 앱 종료(기본 동작)가 된다.
+        appHistoryState.backStack.length = 0;
+    } else if (!appHistoryState.restoring && current && currentKey && currentKey !== nextKey) {
         const stack = appHistoryState.backStack;
         if (appHistoryViewKey(stack[stack.length - 1]) !== currentKey) stack.push(current);
         if (stack.length > 50) stack.shift();
@@ -218,6 +252,7 @@ function appHistoryRecordView(nextView) {
 
     appHistoryState.currentView = nextView;
     updateAppBackButtons();
+    apmsNavScheduleSync();
 }
 
 function appHistoryRestoreView(view) {
@@ -263,29 +298,38 @@ function appHistoryRestoreView(view) {
     return false;
 }
 
-function appHistoryBack() {
+// 앱 ← 버튼과 기기 뒤로 가기가 공유하는 "모달 한 겹 닫기". 단계 모달이면 한 단계만 돌아간다.
+function closeModalForAppBack() {
     if (modalStepStack.length) {
         closeModal();
         updateAppBackButtons();
-        return true;
+        return;
     }
+    const returnCtx = state.ui?.modalReturnView;
+    const hasClassReturn = returnCtx?.type === 'classDetail' ||
+        (returnCtx?.type === 'studentDetail' && state.ui?.currentStudentDetailReturnTo?.type === 'classDetail');
+    // The app back button must not discard a classroom-origin modal's return route.
+    closeModal(!hasClassReturn);
+    window.setTimeout(updateAppBackButtons, 280);
+}
 
-    if (isModalOpen()) {
-        const returnCtx = state.ui?.modalReturnView;
-        const hasClassReturn = returnCtx?.type === 'classDetail' ||
-            (returnCtx?.type === 'studentDetail' && state.ui?.currentStudentDetailReturnTo?.type === 'classDetail');
-        // The app back button must not discard a classroom-origin modal's return route.
-        closeModal(!hasClassReturn);
-        window.setTimeout(updateAppBackButtons, 280);
-        return true;
+// options.fromHistory: 브라우저 뒤로 가기(popstate)에서 불렀다. 할 일이 없을 때 history.back()·홈 이동으로 되돌리지 않는다.
+function appHistoryBack(options) {
+    const fromHistory = !!(options && options.fromHistory === true);
+    if (modalStepStack.length || apmsNavModalOpen()) {
+        // 헤더 "취소"·Esc와 같은 확인: 입력 중이면 "닫을까요?"를 묻고, 아니오면 그대로 둔다.
+        return requestCloseModal('back');
     }
 
     const previous = appHistoryState.backStack.pop();
     if (previous) {
         const restored = appHistoryRestoreView(previous);
         if (!restored) updateAppBackButtons();
+        apmsNavScheduleSync();
         return restored;
     }
+
+    if (fromHistory) return false;
 
     if (appHistoryCanUseBrowserBack()) {
         window.history.back();
@@ -301,6 +345,109 @@ function appHistoryBack() {
 
     updateAppBackButtons();
     return false;
+}
+
+// ============================================================
+// [브라우저 뒤로 가기 연결] 휴대폰·태블릿 뒤로 가기 = 모달 닫기 / 앱 ← (2026-11-02 N2)
+// 방식: "뒤로 갈 곳이 있는 동안"(열린 모달·단계 모달·위 레이어·화면 이력) 브라우저 이력에 보호 항목(guard) 한 칸만 둔다.
+//   - 뒤로 가기(popstate): 보호 항목이 소모된다. 그때 한 겹만 닫는다(맨 위 레이어 → 모달/단계 → 화면 이력 한 칸 = 앱 ← 버튼과 같다).
+//     입력 중이면 Esc처럼 "닫을까요?"를 묻고, 아니오면 닫지 않는다. 뒤로 갈 곳이 남았으면 보호 항목을 다시 채운다.
+//   - 코드가 닫을 때(저장 성공 closeModal(true) 등): 뒤로 갈 곳이 0이 되면 보호 항목을 history.go(-1)로 걷어 낸다.
+//     그래서 "뒤로 가기를 두 번 눌러야 하는" 일이 없다. 갈 곳이 남아 있으면 보호 항목은 그대로다.
+//   - 뒤로 갈 곳이 없으면(첫 화면) 보호 항목도 없으므로 뒤로 가기는 기본 동작(앱 종료·이전 사이트) 그대로다.
+// 주소에는 아무것도 남기지 않는다: pushState(state, '', location.href).
+// 보호 항목은 사용자가 화면을 누른 뒤에만 쌓인다(모달·화면 열기는 모두 누르기에서 시작). 크롬의 "누르지 않은 페이지의 이력 건너뛰기"에 걸리지 않는다.
+// ============================================================
+// 지금 열려 있는 모달이 있는가. 닫는 중(closeModal 뒤 260ms)은 닫힌 것으로 본다. DOM을 직접 열어 쓰는 옛 화면도 열린 것으로 친다.
+// 실제 DOM과 맞춘다: closeModal 없이 #modal-overlay를 직접 숨긴 코드(report-center 등)가 있어도 논리 상태가 true로 남지 않게 고친다.
+function apmsNavModalOpen() {
+    const domOpen = isModalOpen();
+    if (!domOpen) {
+        if (apmsModalLogicalOpen) { apmsModalLogicalOpen = false; apmsNavScheduleSync(); }
+        return false;
+    }
+    return apmsModalLogicalOpen || !modalCloseTimer;
+}
+
+// 로그인 화면(로그아웃·세션 없음)으로 가면 이전 사용자의 화면 이력·모달 상태를 모두 버린다.
+// 안 그러면 기기 뒤로 가기가 이전 사용자의 대시보드를 로그인 없이 다시 그린다.
+function apmsNavReset() {
+    appHistoryState.backStack.length = 0;
+    appHistoryState.currentView = null;
+    modalStepStack = [];
+    apmsEscapeLayers.length = 0;
+    if (apmsModalLogicalOpen || isModalOpen()) closeModal(true);
+    apmsModalLogicalOpen = false;
+    apmsNavScheduleSync();
+}
+
+function apmsNavLoginVisible() {
+    return !!(typeof document !== 'undefined' && document.querySelector && document.querySelector('.ap-login-fullscreen'));
+}
+
+function apmsNavDepth() {
+    return modalStepStack.length + (apmsNavModalOpen() ? 1 : 0) + apmsEscapeLayers.length + appHistoryState.backStack.length;
+}
+
+function apmsNavHasGuard() {
+    try { return !!(window.history.state && window.history.state.apmsGuard); } catch (error) { return false; }
+}
+
+function apmsNavSync() {
+    if (typeof window === 'undefined' || !window.history || typeof window.history.pushState !== 'function') return;
+    if (apmsNavGuard.traversing) return; // 걷어 내는 중. popstate가 오면 다시 맞춘다.
+    const want = apmsNavDepth() > 0;
+    const has = apmsNavHasGuard();
+    if (want && !has) {
+        try { window.history.pushState({ apmsGuard: true }, '', window.location.href); } catch (error) { console.warn('[nav] pushState failed:', error); }
+    } else if (!want && has) {
+        apmsNavGuard.traversing = true;
+        clearTimeout(apmsNavGuard.timer);
+        // popstate가 끝내 안 오면 잠금이 풀리지 않으므로 안전 장치를 둔다.
+        apmsNavGuard.timer = setTimeout(() => { apmsNavGuard.traversing = false; apmsNavSync(); }, 700);
+        try { window.history.go(-1); } catch (error) { apmsNavGuard.traversing = false; }
+    }
+}
+
+// 같은 처리 흐름 안에서 닫고 바로 여는 경우(closeModal 뒤 showModal 등)에는 이력을 건드리지 않도록 한 번에 모아 맞춘다.
+function apmsNavScheduleSync() {
+    if (apmsNavGuard.syncQueued) return;
+    apmsNavGuard.syncQueued = true;
+    Promise.resolve().then(() => { apmsNavGuard.syncQueued = false; apmsNavSync(); });
+}
+
+// 기기 뒤로 가기 한 번이 닫을 한 겹. 닫았으면 true.
+function apmsNavBackStep() {
+    const topLayer = apmsEscapeLayers.length ? apmsEscapeLayers[apmsEscapeLayers.length - 1] : null;
+    if (topLayer && (!apmsNavModalOpen() || topLayer.seq > modalOpenSeq)) {
+        if (typeof topLayer.close === 'function') topLayer.close();
+        return true;
+    }
+    return appHistoryBack({ fromHistory: true }) !== false;
+}
+
+function apmsNavOnPopState(event) {
+    if (apmsNavGuard.traversing) { // 우리가 걷어 낸 이동. 할 일 없음.
+        apmsNavGuard.traversing = false;
+        clearTimeout(apmsNavGuard.timer);
+        apmsNavSync();
+        return;
+    }
+    // 방어: 로그인 화면에서는 아무것도 복원하지 않는다(이전 사용자의 화면이 로그인 없이 보이는 것을 막는다).
+    if (apmsNavLoginVisible()) { apmsNavReset(); apmsNavSync(); return; }
+    const landedOnGuard = !!(event && event.state && event.state.apmsGuard);
+    // 보호 항목으로 "앞으로 가기"로 들어왔다면 되돌릴 일만 맞춘다. 보호 항목에서 밖으로 나왔다면(뒤로 가기) 한 겹 닫는다.
+    if (!landedOnGuard && apmsNavDepth() > 0) apmsNavBackStep();
+    apmsNavSync();
+}
+
+if (typeof window !== 'undefined' && typeof window.addEventListener === 'function' && !window.__apmsNavHistoryBound) {
+    window.__apmsNavHistoryBound = true;
+    try {
+        // 새로고침으로 옛 보호 항목 위에서 시작한 경우: 보호 항목을 일반 항목으로 바꿔 둔다(앱 상태는 처음부터라 갈 곳이 없다).
+        if (window.history.state && window.history.state.apmsGuard) window.history.replaceState({ apmsBase: true }, '', window.location.href);
+    } catch (error) { /* 이력 접근이 막힌 환경 */ }
+    window.addEventListener('popstate', apmsNavOnPopState);
 }
 
 function appHistoryWrapGlobal(name, meta) {
@@ -374,6 +521,7 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
     if (!titleEl || !bodyEl || !overlay) return;
 
     document.body?.classList?.add('ap-modal-open');
+    apmsModalLogicalOpen = true;
 
     if (modalCloseTimer) {
         clearTimeout(modalCloseTimer);
@@ -431,6 +579,7 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
             overlay.classList.add('show');
         });
     }
+    apmsNavScheduleSync();
 }
 
 // 등급 모달(.apms-modal)에 헤더 행동(showModal의 at/af)이 넘어오면 저장 버튼을 하단 오른쪽 액션줄로 옮겨 그린다.
@@ -444,7 +593,10 @@ function adoptHeaderActionIntoModalActions(bodyEl, at, af) {
     const bar = document.createElement('div');
     bar.className = 'apms-modal__actions';
     bar.setAttribute('data-modal-action-proxy', '1');
-    bar.innerHTML = '<button type="button" class="btn apms-button apms-button--quiet apms-unified-quiet" onclick="closeModal()">취소</button>' +
+    // 모달 헤더에 "취소"(#modal-cancel-btn)가 있으면 하단에 취소를 또 만들지 않는다(헤더·하단 중복 금지, 사용자 결정 2026-11-02).
+    // 헤더 취소가 없는 화면에서만 하단 취소를 둔다.
+    const headerCancel = typeof document.getElementById === 'function' ? document.getElementById('modal-cancel-btn') : null;
+    bar.innerHTML = (headerCancel ? '' : '<button type="button" class="btn apms-button apms-button--quiet apms-unified-quiet" onclick="requestCloseModal(\'cancel\')">취소</button>') +
         '<button type="button" class="btn apms-button apms-button--primary btn-primary apms-unified-primary" onclick="document.getElementById(\'modal-action-btn\').click()"></button>';
     bar.lastChild.textContent = String(at);
     root.appendChild(bar);
@@ -522,7 +674,8 @@ function getModalTier() {
     return 'form';
 }
 
-// 순수 판정: source 'escape' | 'backdrop' → 'close' | 'confirm' | 'ignore'
+// 순수 판정: source 'escape' | 'cancel'(헤더 취소) | 'back'(앱 ← · 기기 뒤로 가기) | 'backdrop' → 'close' | 'confirm' | 'ignore'
+// escape·cancel·back은 같은 규칙이다: 변경이 있으면 확인, 없으면 닫음(작업 화면·전체 화면 등급도 같다).
 function decideModalClose(source, tier, dirty) {
     if (source === 'backdrop') {
         if (tier === 'workspace' || tier === 'panel') return 'ignore';
@@ -542,7 +695,9 @@ function requestCloseModal(source) {
     const action = decideModalClose(source, getModalTier(), isModalDirty());
     if (action === 'ignore') return false;
     if (action === 'confirm' && !confirmDiscardModalChanges()) return false;
-    closeModal();
+    // 'back'(앱 ← 버튼·기기 뒤로 가기)은 반 화면 등으로 돌아가는 경로를 지키는 전용 닫기를 쓴다. 'escape'·'cancel'은 closeModal().
+    if (source === 'back' && typeof closeModalForAppBack === 'function') closeModalForAppBack();
+    else closeModal();
     return true;
 }
 
@@ -551,9 +706,11 @@ function requestCloseModal(source) {
 function registerEscapeLayer(closeFn) {
     const layer = { seq: ++modalLayerSeq, close: closeFn };
     apmsEscapeLayers.push(layer);
+    if (typeof apmsNavScheduleSync === 'function') apmsNavScheduleSync();
     return function unregisterEscapeLayer() {
         const index = apmsEscapeLayers.indexOf(layer);
         if (index >= 0) apmsEscapeLayers.splice(index, 1);
+        if (typeof apmsNavScheduleSync === 'function') apmsNavScheduleSync();
     };
 }
 
@@ -717,6 +874,7 @@ function closeModal(suppressReturn = false) {
         const previous = modalStepStack.pop();
         restoreModalSnapshot(previous);
         updateAppBackButtons();
+        apmsNavScheduleSync();
         return;
     }
 
@@ -736,6 +894,8 @@ function closeModal(suppressReturn = false) {
     overlay.classList.remove('show');
     modalDirtyTouched = false;
     modalDirtyChecker = null;
+    apmsModalLogicalOpen = false;
+    apmsNavScheduleSync();
     modalCloseTimer = setTimeout(() => {
         overlay.classList.add('hidden');
         document.body?.classList?.remove('ap-modal-open');

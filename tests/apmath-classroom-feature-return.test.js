@@ -77,7 +77,8 @@ test('consultation keeps the original class as the student-detail return anchor'
 });
 
 test('app back honors class return context but leaves unrelated modal behavior unchanged', () => {
-    const start=ui.indexOf('function appHistoryBack()');
+    // 앱 ← 와 기기 뒤로 가기가 공유하는 모달 닫기(closeModalForAppBack, N2에서 appHistoryBack에서 뽑음)를 검사한다.
+    const start=ui.indexOf('function closeModalForAppBack()');
     const end=ui.indexOf('function appHistoryWrapGlobal(',start);
     assert.ok(start>=0 && end>start);
     const calls=[];
@@ -87,7 +88,7 @@ test('app back honors class return context but leaves unrelated modal behavior u
         closeModal:s=>calls.push(s), updateAppBackButtons(){},
         window:{setTimeout(){}}
     };
-    vm.runInNewContext(ui.slice(start,end)+'\nthis.go = appHistoryBack;',ctx);
+    vm.runInNewContext(ui.slice(start,end)+'\nthis.go = closeModalForAppBack;',ctx);
     ctx.go();
     assert.deepEqual(calls,[false]);
     ctx.state.ui.modalReturnView={type:'dashboard'};
@@ -102,7 +103,8 @@ test('app back honors class return context but leaves unrelated modal behavior u
 test('app back remains clickable above modal overlay and modal-open styling is cleared on close', () => {
     assert.match(ui,/document\.body\?\.classList\?\.add\('ap-modal-open'\)/);
     assert.match(ui,/document\.body\?\.classList\?\.remove\('ap-modal-open'\)/);
-    assert.match(indexHtml,/body\.ap-modal-open header,[\s\S]*?z-index:\s*1001/);
+    // N2: 앱 맨 위 헤더(`body > header`)만 잡는다. 모달 안의 <header>까지 잡아 누를 수 없게 되던 문제를 막는다.
+    assert.match(indexHtml,/body\.ap-modal-open > header,[\s\S]*?z-index:\s*1001/);
     assert.match(indexHtml,/body\.ap-modal-open \.app-back-btn\s*\{[^}]*pointer-events:\s*auto/s);
 });
 
