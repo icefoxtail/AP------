@@ -957,15 +957,15 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B34",
       "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q21-solution-v2.svg",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q21-solution-v3.svg",
       "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
       "templateKey": "TPL_M1_ROTATION_SOLID_FRUSTUM_NET_AXIS_SECTION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:cb4b7fba0c7d6ef121554db97b2dcc75879516e3804ca50e143d28fd74dc9368",
       "difficultyEvidenceSha": "sha256:868826eaa1a84d0018426877b25967d2614b7936cec7e130a3184aaf8ba8a0c6",
-      "solutionImageAlt": "해설 그림: 원뿔대(윗면 반지름 5cm, 아랫면 반지름 2cm, 높이 4cm, 모선 5cm)와 회전축을 포함하는 평면으로 자른 단면 사다리꼴을 색칠해 보인 그림.",
-      "solutionImageCaption": "회전축을 포함하는 평면으로 원뿔대를 자른 단면은 윗변 10cm, 아랫변 4cm, 높이 4cm인 사다리꼴이다.",
+      "solutionImageAlt": "해설 그림: 왼쪽 위는 위 밑면 반지름 5, 아래 밑면 반지름 2, 모선 5인 원뿔대와 회전축 l, 오른쪽 위는 그 전개도로 고리 모양 부채꼴(옆면, 안쪽 호 4π, 바깥 호 10π, 모선 5)과 반지름 2인 작은 원, 반지름 5인 큰 원이다. 왼쪽 아래는 축을 지나는 단면(사다리꼴)을 칠하고 윗변 10, 아랫변 4, 높이 4를 치수선으로 쓴 그림이다.",
+      "solutionImageCaption": "전개도는 고리 모양 부채꼴(옆면)과 두 원(밑면)이고, 안쪽 호 4π는 작은 원의 둘레, 바깥 호 10π는 큰 원의 둘레와 같다. 축단면은 윗변 10, 아랫변 4, 높이 4인 사다리꼴이므로 넓이는 (10+4)÷2×4 = 28 cm²이다.",
       "solutionImageSize": "medium"
     },
     {

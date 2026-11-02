@@ -566,7 +566,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 구를 넣을 때 넘친 물의 부피는 구의 부피와 같다. 구를 꺼낸 뒤의 물은 처음 물의 부피에서 넘친 양을 뺀 것이다.\n\n구의 반지름을 $r\\rm\\,cm$라고 하자. 구가 원기둥에 꼭 맞고 원기둥의 높이가 지름과 같으므로 원기둥 밑면 반지름은 $r$, 높이는 $2r$이다.\n\n처음 가득 찼을 때 물의 부피는 원기둥 부피인 $\\pi r^2\\times2r=2\\pi r^3$이다.\n\n구를 완전히 넣으면 구의 부피 $\\dfrac43\\pi r^3$만큼 물이 넘친다. 구를 꺼내도 넘친 물은 돌아오지 않으므로 남아 있는 물의 부피는\n$2\\pi r^3-\\dfrac43\\pi r^3=\\dfrac23\\pi r^3$이다.\n\n그림의 남은 물의 높이는 $4\\rm\\,cm$이므로 같은 부피를 원기둥 부피로 나타내면 $\\pi r^2\\times4=4\\pi r^2$이다.\n\n$4\\pi r^2=\\dfrac23\\pi r^3$이고 $r\\gt0$이므로 $\\pi r^2$로 나누면 $4=\\dfrac23r$이다.\n따라서 $r=6\\rm\\,cm$이다.\n\n정답은 ④이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q13.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q13-solution-v2.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q13-solution-v3.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
     "crossConceptKeys": [],
@@ -577,7 +577,7 @@ window.questionBank = [
     "sourceQuestionNo": "13",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
-    "solutionImageAlt": "해설 그림: 반지름 r, 높이 2r인 원기둥이 물로 가득 찬 모습, 그 안에 꼭 맞는 구를 넣은 모습, 구를 꺼낸 뒤 높이 4cm만큼 남은 물을 색으로 나타낸 세 그림이다.",
+    "solutionImageAlt": "해설 그림: 반지름 r, 높이 2r인 원기둥이 물로 가득 찬 모습, 그 안에 꼭 맞는 구를 넣은 모습, 구를 꺼낸 뒤 남은 물을 색으로 칠하고 물 높이 4 cm를 그릇 바깥 왼쪽 치수선으로 쓴 세 그림이다.",
     "solutionImageCaption": "남은 물 2πr³÷3이 높이 4cm인 원기둥 모양의 부피 4πr²과 같으므로 r=6 cm이고 정답은 ④이다."
   },
   {

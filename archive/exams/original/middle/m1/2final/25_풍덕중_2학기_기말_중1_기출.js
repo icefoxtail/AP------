@@ -417,8 +417,8 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:12627475eb4d31310be03f3372dc6bae8d1f2c7d7868c29a6dfa64ca18afb45f",
     "difficultyEvidenceSha": "sha256:52b4098549cb20a92e10e5c74f5a1cf686954dbc254cabe4538772bbb1f22f96",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q9-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽은 반지름 r, 높이 2r인 원기둥에 구가 꼭 맞게 든 모습, 오른쪽은 구를 꺼낸 뒤 원기둥의 전체 높이 2r 중 아래 1/3(높이 2r/3)까지 남은 물을 칠한 그림이다.",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q9-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 반지름 r, 높이 2r인 원기둥에 구가 꼭 맞게 든 모습, 오른쪽은 구를 꺼낸 뒤 원기둥(높이 2r)의 바닥에서 2r/3 높이까지 남은 물을 칠하고 물 높이 2r/3를 왼쪽 치수선, 원기둥 높이 2r을 오른쪽 치수선으로 쓴 그림이다.",
     "solutionImageCaption": "원기둥의 부피에서 구의 부피를 뺀 (2/3)πr³ = 18π에서 r³ = 27이므로 r = 3 cm(②)이다.",
     "solutionImageSize": "medium"
   },

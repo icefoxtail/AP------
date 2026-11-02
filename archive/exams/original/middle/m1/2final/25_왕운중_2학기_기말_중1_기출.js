@@ -1077,8 +1077,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "resolverEvidenceSha": "sha256:00676bd792aa9d9852370194d71d35349ffd365ab6d744330bdc5e046f0819fd",
       "difficultyEvidenceSha": "sha256:19a9883053c98e158c60d03d24c71b325e72e4527aad137ea9ee98a7577f7a9b",
-      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q23-solution-v2.svg",
-      "solutionImageAlt": "해설 그림: (가)는 밑면 12×18, 높이 9인 그릇의 1/3(높이 3)까지 찬 물, (나)는 밑면 9×12, 높이 18인 그릇에 높이 x까지 찬 물을 파랑으로 칠해 보여 주는 그림이다.",
+      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q23-solution-v3.svg",
+      "solutionImageAlt": "해설 그림: (가)는 밑면 12×18, 높이 9인 그릇에 높이 3(전체의 1/3)까지 찬 물을 파랑으로 칠하고 물 높이 3을 왼쪽 치수선, 그릇 높이 9를 오른쪽 치수선으로 따로 쓴 그림이다. (나)는 밑면 9×12, 높이 18인 그릇에 높이 x까지 찬 물을 파랑으로 칠하고 물 높이 x를 왼쪽 치수선, 그릇 높이 18을 오른쪽 치수선으로 쓴 그림이다.",
       "solutionImageCaption": "물의 부피 12×18×3 = 648 = 9×12×x이므로 x = 6이다.",
       "solutionImageSize": "medium"
     },

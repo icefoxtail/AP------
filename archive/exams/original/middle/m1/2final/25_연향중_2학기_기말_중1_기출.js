@@ -445,8 +445,8 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:a41c3fefd4185fd6edec31a063f0cb80be41c7f24e9692b1d6d38a1ff01eddd7",
     "difficultyEvidenceSha": "sha256:20fdd027bed0ffb9f8c6ebc94ace6ce9e44e111e1a668178f0db806717354310",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q10-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 작은 원, 큰 원, 고리 모양 부채꼴로 된 전개도와, 이를 접어 만든 원뿔대를 나란히 그린 그림이다. 작은 원은 작은 밑면, 큰 원은 큰 밑면, 고리 부채꼴은 옆면에 대응한다.",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q10-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 작은 원(주황), 큰 원(초록), 고리 모양 부채꼴(파랑)로 된 전개도와, 이를 접어 만든 원뿔대를 나란히 그린 그림이다. 작은 원은 작은 밑면, 큰 원은 큰 밑면, 고리 부채꼴은 옆면에 대응한다.",
     "solutionImageCaption": "두 밑면이 크기가 다른 원이고 옆면이 고리 모양 부채꼴이므로 원뿔대의 전개도이다. 회전시켜 원뿔대가 되는 평면도형은 ⑤이다.",
     "solutionImageSize": "medium"
   },
