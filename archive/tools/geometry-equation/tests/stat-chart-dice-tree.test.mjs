@@ -9,6 +9,7 @@ import {pythonWorker} from '../production/worker.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {solveStatChart,statChartSize,composeStatChartFigure,FIGURE_CAPABILITY} from '../production/stat-chart-v1.mjs';
+import {assertAccessibleNames} from './accessible-names.mjs';
 
 const observer=fileURLToPath(new URL('../production/stat-chart-observer-worker.py',import.meta.url));
 const code=expected=>error=>error.message===expected;
@@ -85,6 +86,7 @@ test('the observer passes grouped cells, named variables and highlighted paths, 
     const compose=async(chart,n)=>{
       const composed=await composeStatChartFigure({plan:plan(wire(chart)),model:solveStatChart(chart),identity:assetIdentity('26_테스트|'+(7000+n),'SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy,browser});
       assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+      assertAccessibleNames(composed.svg);
       assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));assert.equal(composed.renderedLayout.status,'PASS');
       return composed.svg;
     };

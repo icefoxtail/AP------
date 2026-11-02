@@ -113,7 +113,7 @@ function validateSvgStudentLanguage(svg, options = {}) {
   const tagPrefix = rootMatch.groups?.prefix ? rootMatch.groups.prefix + ':' : '';
   const escapeRegExp = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-  const ids = [...source.matchAll(/\bid\s*=\s*(["'])(.*?)\1/g)].map(match => decodeXml(match[2]));
+  const ids = [...source.matchAll(/(?<![\w:.-])id\s*=\s*(["'])(.*?)\1/g)].map(match => decodeXml(match[2]));
   const idCounts = new Map();
   for (const id of ids) idCounts.set(id, (idCounts.get(id) || 0) + 1);
   if ([...idCounts.values()].some(count => count > 1)) errors.push({ code: 'SVG_ACCESSIBILITY_DUPLICATE_ID', assetRef });

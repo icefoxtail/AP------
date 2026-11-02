@@ -88,3 +88,12 @@ test('student SVG language contract rejects any duplicate ID and dangling nested
   const danglingNestedRef = validateSvgStudentLanguage(svg('<g aria-labelledby="missing">원</g>'));
   assert.ok(danglingNestedRef.errors.some(error => error.code === 'SVG_ACCESSIBILITY_ARIA_REFERENCE_INVALID'));
 });
+
+test('student SVG language contract counts only real id attributes, not data-*-id look-alikes', () => {
+  const lookAlikes = validateSvgStudentLanguage(svg('<g id="region-S1" data-mark-id="region-S1"/><g id="p1" data-point-id="p1" data-owner-id="p1" data-id="p1"/>'));
+  assert.ok(!lookAlikes.errors.some(error => error.code === 'SVG_ACCESSIBILITY_DUPLICATE_ID'), JSON.stringify(lookAlikes.errors));
+  const sameIdTwice = validateSvgStudentLanguage(svg('<g id="a"/><g data-mark-id="a"/><g\n  id = \'a\'/>'));
+  assert.ok(sameIdTwice.errors.some(error => error.code === 'SVG_ACCESSIBILITY_DUPLICATE_ID'));
+  const duplicateWithLookAlike = validateSvgStudentLanguage(svg('<g id="same" data-mark-id="x"/><g data-mark-id="y" id="same"/>'));
+  assert.ok(duplicateWithLookAlike.errors.some(error => error.code === 'SVG_ACCESSIBILITY_DUPLICATE_ID'));
+});
