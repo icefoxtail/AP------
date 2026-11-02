@@ -544,7 +544,7 @@ window.questionBank = [
     "answer": "$\\frac{3\\sqrt2}{2}$",
     "solution": "점 $P,Q$는 모두 원점에서 출발하는 반직선 $y=tx$ 위에 있습니다.\n원과의 제1사분면 교점 $P$는 $x^2+(tx)^2=2$에서 $x=\\sqrt{\\frac2{1+t^2}}$이므로 원점에서의 거리 $OP=\\sqrt2$입니다.\n포물선과의 교점 $Q$는 $x^2=tx$에서 원점이 아닌 해 $x=t$를 취하므로 $Q=(t,t^2)$이고 $OQ=t\\sqrt{1+t^2}$입니다.\n$t\\to1-$에서는 $t\\lt1$이므로 $OQ\\lt OP$입니다. 따라서 두 점 사이의 길이는\n$l(t)=OP-OQ=\\sqrt2-t\\sqrt{1+t^2}$입니다.\n$t=1$에서 분자도 $0$이므로 함수 $H(t)=t\\sqrt{1+t^2}$를 놓고 미분계수로 바꾸면\n$\\lim_{t\\to1-}\\frac{l(t)}{1-t}=\\lim_{t\\to1-}\\frac{H(1)-H(t)}{1-t}=H'(1)$입니다.\n$H'(t)=\\sqrt{1+t^2}+\\frac{t^2}{\\sqrt{1+t^2}}$이므로\n$H'(1)=\\sqrt2+\\frac1{\\sqrt2}=\\frac{3\\sqrt2}{2}$입니다.\n따라서 구하는 값은 $\\frac{3\\sqrt2}{2}$이다.",
     "image": "assets/images/26_팔마고_2학기_중간_고2_미적분I/q20.png",
-    "solutionImage": "assets/images/26_팔마고_2학기_중간_고2_미적분I/q20-solution-v2.svg",
+    "solutionImage": "assets/images/26_팔마고_2학기_중간_고2_미적분I/q20-solution-v3.svg",
     "solutionImageAlt": "해설 그림: 원 x²+y²=2와 포물선 y=x², 직선 y=tx가 한 그림에 있고 A(1,1), P, Q와 선분 PQ가 표시되어 있다. 포물선 위의 Q와 원 위의 P가 원점에서 뻗는 같은 직선 위에 있음을 보여 준다.",
     "solutionImageCaption": "예: t=1/2일 때 원 x²+y²=2와 포물선 y=x²의 교점 A(1,1), 직선 y=tx와 만나는 점 P, Q(1/2,1/4)를 잡아 OP=√2(반지름), Q=(t,t²)임을 확인하고 선분 PQ를 보인 그림으로, 극한값은 3√2/2이다.",
     "solutionImageSize": "medium"
