@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 240" width="500" height="240" role="img" aria-labelledby="q04-title q04-desc">
+  <title id="q04-title">그릇 모양과 물의 높이 변화 그래프 매칭</title>
+  <desc id="q04-desc">원기둥 그릇 A, 위로 좁아지는 그릇 B, 위로 넓어지는 그릇 C와 세 가지 높이 그래프 ㄱ, ㄴ, ㄷ</desc>
+  <rect width="500" height="240" fill="#ffffff"/>
+  <!-- 그릇 패널 -->
+  <g stroke="#0f172a" stroke-width="2" fill="#f8fafc">
+    <!-- 그릇 A: 원기둥 -->
+    <rect x="35" y="60" width="50" height="90" rx="4"/>
+    <ellipse cx="60" cy="60" rx="25" ry="8" fill="#e2e8f0"/>
+    <text x="60" y="180" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">A</text>
+    <!-- 그릇 B: 위로 좁아짐 -->
+    <polygon points="120,150 180,150 165,60 135,60"/>
+    <ellipse cx="150" cy="60" rx="15" ry="5" fill="#e2e8f0"/>
+    <text x="150" y="180" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">B</text>
+    <!-- 그릇 C: 위로 넓어짐 -->
+    <polygon points="225,150 255,150 270,60 210,60"/>
+    <ellipse cx="240" cy="60" rx="30" ry="7" fill="#e2e8f0"/>
+    <text x="240" y="180" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">C</text>
+  </g>
+  <!-- 구분선 -->
+  <line x1="295" y1="30" x2="295" y2="210" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <!-- 그래프 패널 -->
+  <g transform="translate(315, 20)">
+    <!-- ㄱ 그래프 -->
+    <g transform="translate(0, 0)">
+      <line x1="15" y1="50" x2="55" y2="50" stroke="#64748b" stroke-width="1.5"/>
+      <line x1="15" y1="50" x2="15" y2="10" stroke="#64748b" stroke-width="1.5"/>
+      <path d="M 15 50 Q 25 20, 50 15" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+      <text x="35" y="70" font-family="sans-serif" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">ㄱ</text>
+    </g>
+    <!-- ㄴ 그래프 -->
+    <g transform="translate(60, 0)">
+      <line x1="15" y1="50" x2="55" y2="50" stroke="#64748b" stroke-width="1.5"/>
+      <line x1="15" y1="50" x2="15" y2="10" stroke="#64748b" stroke-width="1.5"/>
+      <line x1="15" y1="50" x2="50" y2="15" stroke="#2563eb" stroke-width="2.5"/>
+      <text x="35" y="70" font-family="sans-serif" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">ㄴ</text>
+    </g>
+    <!-- ㄷ 그래프 -->
+    <g transform="translate(120, 0)">
+      <line x1="15" y1="50" x2="55" y2="50" stroke="#64748b" stroke-width="1.5"/>
+      <line x1="15" y1="50" x2="15" y2="10" stroke="#64748b" stroke-width="1.5"/>
+      <path d="M 15 50 Q 40 45, 50 15" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+      <text x="35" y="70" font-family="sans-serif" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">ㄷ</text>
+    </g>
+    <!-- 축 안내 라벨 -->
+    <text x="90" y="150" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="middle">가로축: 시간, 세로축: 높이</text>
+  </g>
+</svg>

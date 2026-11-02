@@ -1,0 +1,109 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "9",
+      "0"
+    ],
+    "denominator": [
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -10,
+      10
+    ],
+    "viewport": [
+      -10,
+      10,
+      -10,
+      10
+    ],
+    "displayWindow": [
+      -1,
+      9,
+      -1,
+      7
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "9/16",
+          "intercept": "0",
+          "label": "l"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "curveX": "4"
+        },
+        {
+          "id": "Q",
+          "axis": "x",
+          "value": "4"
+        },
+        {
+          "id": "H",
+          "x": "1024/337",
+          "y": "576/337"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "QH",
+          "from": "Q",
+          "to": "H"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P",
+    "Q": "Q",
+    "H": "H",
+    "O": "O"
+  },
+  "caption": "y=9/x의 그래프 위의 점 P, P에서 x축에 내린 수선의 발 Q, Q에서 직선 l에 내린 수선의 발 H를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "P는 y=9/x의 그래프 위의 점이고 l은 원점과 P를 지나는 직선이다.",
+      "mappedTo": "graphPlan.overlays.lines"
+    },
+    {
+      "id": "S2",
+      "condition": "Q는 P에서 x축에 내린 수선의 발이고 H는 Q에서 l에 내린 수선의 발이다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "점 P, Q, H와 직선 l의 위치 관계(Q에서 l에 내린 수선)를 보여 준다."
+  ],
+  "sourceQuote": "점 $Q$에서 직선 $l$에 내린 수선의 발을 $H$라 할 때",
+  "assetPath": "assets/images/24_금당고_2학기_기말_고1_유사/q15.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q15-problem-result.json",
+    "statePath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q15-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q15-problem.svg"
+  }
+}

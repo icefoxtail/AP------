@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="400" height="320" role="img" aria-labelledby="q13-title q13-desc">
+  <title id="q13-title">삼각기둥 ABC-DEF 다이어그램</title>
+  <desc id="q13-desc">윗면 삼각형 ABC, 아랫면 삼각형 DEF로 이루어진 삼각기둥에서 꼭짓점과 모서리가 표시된 입체도형 그림</desc>
+  <rect width="400" height="320" fill="#ffffff"/>
+  <!-- 윗면 삼각형 ABC: A(100,70), B(260,50), C(180,110) -->
+  <polygon points="100,70 260,50 180,110" fill="#eff6ff" stroke="#0f172a" stroke-width="2"/>
+  <!-- 아랫면 삼각형 DEF: D(100,240), E(260,220), F(180,280) -->
+  <!-- 숨은 모서리 점선: D-E -->
+  <line x1="100" y1="240" x2="260" y2="220" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="4,4"/>
+  <!-- 보이는 모서리 실선: D-F, E-F -->
+  <line x1="100" y1="240" x2="180" y2="280" stroke="#0f172a" stroke-width="2"/>
+  <line x1="260" y1="220" x2="180" y2="280" stroke="#0f172a" stroke-width="2"/>
+  <!-- 옆모서리: A-D, B-E, C-F -->
+  <line x1="100" y1="70" x2="100" y2="240" stroke="#0f172a" stroke-width="2"/>
+  <line x1="260" y1="50" x2="260" y2="220" stroke="#0f172a" stroke-width="2"/>
+  <line x1="180" y1="110" x2="180" y2="280" stroke="#0f172a" stroke-width="2"/>
+  <!-- 꼭짓점 점 표시 -->
+  <circle cx="100" cy="70" r="4" fill="#0f172a"/>
+  <circle cx="260" cy="50" r="4" fill="#0f172a"/>
+  <circle cx="180" cy="110" r="4" fill="#0f172a"/>
+  <circle cx="100" cy="240" r="4" fill="#0f172a"/>
+  <circle cx="260" cy="220" r="4" fill="#0f172a"/>
+  <circle cx="180" cy="280" r="4" fill="#0f172a"/>
+  <!-- 꼭짓점 라벨 -->
+  <g font-family="sans-serif" font-size="15" font-weight="bold" fill="#0f172a">
+    <text x="85" y="65">A</text>
+    <text x="270" y="45">B</text>
+    <text x="180" y="132" text-anchor="middle">C</text>
+    <text x="85" y="250">D</text>
+    <text x="270" y="225">E</text>
+    <text x="180" y="302" text-anchor="middle">F</text>
+  </g>
+</svg>

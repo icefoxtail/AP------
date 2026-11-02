@@ -1,0 +1,72 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "9",
+      "2"
+    ],
+    "denominator": [
+      "3",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -8,
+      7
+    ],
+    "viewport": [
+      -8,
+      7,
+      -3,
+      9
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "curveX": "3",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P",
+    "Q": "Q"
+  },
+  "caption": "y=(2x+9)/(x+3)의 그래프에서 0≤x≤3일 때 y는 감소하므로 x=0에서 최댓값 3, x=3에서 최솟값 5/2이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "점근선이 x=-3, y=2이므로 a=3, b=2이다.",
+      "mappedTo": "graphPlan.numerator"
+    },
+    {
+      "id": "S2",
+      "condition": "0≤x≤3에서 y는 감소하고 끝점의 값이 최대·최소이다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "구간의 두 끝점 (0,3), (3,5/2)에서 최댓값과 최솟값이 생김을 보여 준다."
+  ],
+  "sourceQuote": "최댓값: $x=0$일 때 $y=\\dfrac{3}{3}+2=3$",
+  "assetPath": "assets/images/24_금당고_2학기_기말_고1_유사/q8-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q08-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q08-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q08-solution.svg"
+  }
+}

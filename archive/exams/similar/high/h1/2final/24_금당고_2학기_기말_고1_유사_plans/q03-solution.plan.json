@@ -1,0 +1,54 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "7",
+      "4"
+    ],
+    "denominator": [
+      "1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -7,
+      5
+    ],
+    "viewport": [
+      -7,
+      5,
+      -4,
+      12
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=3/(x+1)+4의 그래프는 두 점근선 x=-1, y=4에 한없이 가까워진다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "f(x)=3/(x-a)+b의 점근선은 x=a, y=b이다.",
+      "mappedTo": "graphPlan.numerator"
+    },
+    {
+      "id": "S2",
+      "condition": "점근선이 x=-1, y=4이므로 a=-1, b=4이다.",
+      "mappedTo": "graphPlan.denominator"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선이 가까워지는 두 점근선 x=-1, y=4의 위치를 보여 준다."
+  ],
+  "sourceQuote": "따라서 점근선의 방정식은 $x=a$, $y=b$이다.",
+  "assetPath": "assets/images/24_금당고_2학기_기말_고1_유사/q3-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q03-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q03-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q03-solution.svg"
+  }
+}

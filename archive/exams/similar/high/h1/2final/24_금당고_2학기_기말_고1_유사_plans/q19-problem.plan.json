@@ -1,0 +1,61 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "net": {
+    "solid": {
+      "kind": "PRISM",
+      "base": {
+        "kind": "REGULAR",
+        "n": 3,
+        "side": 3
+      },
+      "height": 4,
+      "names": "......"
+    },
+    "root": "side1",
+    "joins": [
+      [
+        "side1",
+        "side0"
+      ],
+      [
+        "side1",
+        "side2"
+      ],
+      [
+        "side1",
+        "top"
+      ],
+      [
+        "side1",
+        "bottom"
+      ]
+    ]
+  },
+  "solidCaption": {
+    "text": "삼각기둥의 전개도"
+  },
+  "caption": "두 개의 정삼각형과 세 개의 직사각형으로 이루어진 삼각기둥의 전개도이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "두 개의 정삼각형과 세 개의 직사각형으로 이루어진 삼각기둥의 전개도이다.",
+      "mappedTo": "net.solid"
+    },
+    {
+      "id": "S2",
+      "condition": "세 직사각형이 한 줄로 이어지고 정삼각형이 가운데 직사각형의 위와 아래에 붙는다.",
+      "mappedTo": "net.joins"
+    }
+  ],
+  "newVisualInformation": [
+    "다섯 면의 배치와 변을 공유하는 직사각형이 누구인지 보여 준다."
+  ],
+  "sourceQuote": "그림과 같이 두 개의 정삼각형과 세 개의 직사각형으로 이루어진",
+  "assetPath": "assets/images/24_금당고_2학기_기말_고1_유사/q19.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q19-problem-result.json",
+    "statePath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q19-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q19-problem.svg"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "6",
+      "-3"
+    ],
+    "sign": 1,
+    "offset": "-2",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -6,
+      2
+    ],
+    "viewport": [
+      -6,
+      3,
+      -3,
+      6
+    ],
+    "domainRangeLabels": false,
+    "requiredPoints": [
+      {
+        "id": "E",
+        "x": 2,
+        "y": -2
+      }
+    ],
+    "exactCoordinates": {
+      "E": [
+        "2",
+        "-2"
+      ]
+    }
+  },
+  "caption": "f(x)=√(-3x+6)-2의 그래프는 끝점 (2,-2)에서 왼쪽 위로 뻗고 정의역은 x≤2, 치역은 y≥-2이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "끝점은 (2,-2)이고 정의역은 x≤2이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.domainRangeLabels"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "치역은 y≥-2이고 제3사분면을 지나지 않는다.",
+      "mappedTo": [
+        "graphPlan.domainRangeLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "끝점과 정의역·치역, 그래프가 지나는 사분면을 한눈에 확인하게 한다."
+  ],
+  "sourceQuote": "$f(x)=\\sqrt{-3(x-2)}-2$이다.",
+  "assetPath": "assets/images/24_제일고_2학기_기말_고1_유사/q12-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/2final/24_제일고_2학기_기말_고1_유사_plans/engine_evidence/q12-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/2final/24_제일고_2학기_기말_고1_유사_plans/engine_evidence/q12-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/2final/24_제일고_2학기_기말_고1_유사_plans/engine_evidence/q12-solution.svg"
+  }
+}

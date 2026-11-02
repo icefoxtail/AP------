@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 400" width="450" height="400" role="img" aria-labelledby="q01-title q01-desc">
+  <title id="q01-title">놀이공원 주요 시설의 좌표평면 지도</title>
+  <desc id="q01-desc">좌표평면 위에 시계탑(0,0), 롤러코스터(2,3), 대관람차(-3,2), 사파리(-2,-3), 범퍼카(3,-1)가 표시된 그림</desc>
+  <rect width="450" height="400" fill="#ffffff"/>
+  <!-- 격자선 -->
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="45" y1="50" x2="45" y2="350"/>
+    <line x1="90" y1="50" x2="90" y2="350"/>
+    <line x1="135" y1="50" x2="135" y2="350"/>
+    <line x1="180" y1="50" x2="180" y2="350"/>
+    <line x1="270" y1="50" x2="270" y2="350"/>
+    <line x1="315" y1="50" x2="315" y2="350"/>
+    <line x1="360" y1="50" x2="360" y2="350"/>
+    <line x1="405" y1="50" x2="405" y2="350"/>
+    <line x1="25" y1="70" x2="425" y2="70"/>
+    <line x1="25" y1="113" x2="425" y2="113"/>
+    <line x1="25" y1="157" x2="425" y2="157"/>
+    <line x1="25" y1="243" x2="425" y2="243"/>
+    <line x1="25" y1="287" x2="425" y2="287"/>
+    <line x1="25" y1="330" x2="425" y2="330"/>
+  </g>
+  <!-- 좌표축 -->
+  <line x1="25" y1="200" x2="425" y2="200" stroke="#0f172a" stroke-width="2"/>
+  <polygon points="425,200 415,195 415,205" fill="#0f172a"/>
+  <text x="435" y="205" font-family="sans-serif" font-size="15" font-weight="bold" fill="#0f172a">x</text>
+  <line x1="225" y1="375" x2="225" y2="25" stroke="#0f172a" stroke-width="2"/>
+  <polygon points="225,25 220,35 230,35" fill="#0f172a"/>
+  <text x="225" y="18" font-family="sans-serif" font-size="15" font-weight="bold" fill="#0f172a" text-anchor="middle">y</text>
+  <text x="212" y="218" font-family="sans-serif" font-size="14" fill="#0f172a">O</text>
+  <!-- 눈금 라벨 -->
+  <g font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="middle">
+    <text x="90" y="216">-3</text>
+    <text x="135" y="216">-2</text>
+    <text x="180" y="216">-1</text>
+    <text x="270" y="216">1</text>
+    <text x="315" y="216">2</text>
+    <text x="360" y="216">3</text>
+    <text x="210" y="74">3</text>
+    <text x="210" y="117">2</text>
+    <text x="210" y="161">1</text>
+    <text x="208" y="247">-1</text>
+    <text x="208" y="291">-2</text>
+    <text x="208" y="334">-3</text>
+  </g>
+  <!-- 점선 안내선 -->
+  <g stroke="#3b82f6" stroke-dasharray="3,3" stroke-width="1.5">
+    <line x1="315" y1="200" x2="315" y2="70"/>
+    <line x1="225" y1="70" x2="315" y2="70"/>
+    <line x1="90" y1="200" x2="90" y2="113"/>
+    <line x1="225" y1="113" x2="90" y2="113"/>
+    <line x1="135" y1="200" x2="135" y2="330"/>
+    <line x1="225" y1="330" x2="135" y2="330"/>
+    <line x1="360" y1="200" x2="360" y2="243"/>
+    <line x1="225" y1="243" x2="360" y2="243"/>
+  </g>
+  <!-- 점 및 시설 라벨 -->
+  <circle cx="225" cy="200" r="5" fill="#ef4444"/>
+  <text x="225" y="185" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ef4444" text-anchor="middle">시계탑</text>
+  <circle cx="315" cy="70" r="5" fill="#2563eb"/>
+  <text x="315" y="55" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1e3a8a" text-anchor="middle">롤러코스터</text>
+  <circle cx="90" cy="113" r="5" fill="#2563eb"/>
+  <text x="90" y="98" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1e3a8a" text-anchor="middle">대관람차</text>
+  <circle cx="135" cy="330" r="5" fill="#2563eb"/>
+  <text x="135" y="350" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1e3a8a" text-anchor="middle">사파리</text>
+  <circle cx="360" cy="243" r="5" fill="#2563eb"/>
+  <text x="360" y="265" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1e3a8a" text-anchor="middle">범퍼카</text>
+</svg>

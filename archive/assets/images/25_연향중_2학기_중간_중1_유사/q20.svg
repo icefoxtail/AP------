@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320" role="img" aria-labelledby="q20-title q20-desc">
+  <title id="q20-title">수선과 삼각형의 합동 및 넓이 다이어그램</title>
+  <desc id="q20-desc">삼각형 ABC의 중선 AM 위의 수선의 발 D, E와 합동인 삼각형 BDM, CEM을 이용해 삼각형 ACE의 넓이를 구하는 그림</desc>
+  <rect width="480" height="320" fill="#ffffff"/>
+  <!-- 삼각형 ABC: A(140,40), B(60,240), C(420,180) -->
+  <polygon points="140,40 60,240 420,180" fill="none" stroke="#0f172a" stroke-width="2"/>
+  
+  <!-- 직선 AM과 연장선: A(140,40) -> E(215,168) -> M(240,210) -> D(265,253) -->
+  <line x1="100" y1="-28" x2="300" y2="312" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,4"/>
+  
+  <!-- 삼각형 ACE 색칠 영역: A(140,40), C(420,180), E(215,168) -->
+  <polygon points="140,40 215,168 420,180" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  
+  <!-- 수선 CE: C(420,180)에서 E(215,168) -->
+  <line x1="420" y1="180" x2="215" y2="168" stroke="#ef4444" stroke-width="2"/>
+  <!-- 수선 BD: B(60,240)에서 D(265,253) -->
+  <line x1="60" y1="240" x2="265" y2="253" stroke="#ef4444" stroke-width="2"/>
+  
+  <!-- 직각 표시 -->
+  <!-- E에서의 직각 표시 -->
+  <rect x="215" y="168" width="12" height="12" fill="none" stroke="#ef4444" stroke-width="1.5" transform="rotate(30, 215, 168)"/>
+  <!-- D에서의 직각 표시 -->
+  <rect x="265" y="253" width="12" height="12" fill="none" stroke="#ef4444" stroke-width="1.5" transform="rotate(30, 265, 253)"/>
+  
+  <!-- 중점 M 표시 -->
+  <circle cx="240" cy="210" r="4.5" fill="#0f172a"/>
+  
+  <!-- 꼭짓점 점 표시 -->
+  <circle cx="140" cy="40" r="4.5" fill="#0f172a"/>
+  <circle cx="60" cy="240" r="4.5" fill="#0f172a"/>
+  <circle cx="420" cy="180" r="4.5" fill="#0f172a"/>
+  <circle cx="215" cy="168" r="4" fill="#ef4444"/>
+  <circle cx="265" cy="253" r="4" fill="#ef4444"/>
+  
+  <!-- 라벨 -->
+  <g font-family="sans-serif" font-size="15" font-weight="bold" fill="#0f172a">
+    <text x="135" y="28">A</text>
+    <text x="45" y="248">B</text>
+    <text x="430" y="185">C</text>
+    <text x="248" y="210">M</text>
+    <text x="200" y="160" fill="#ef4444">E</text>
+    <text x="275" y="265" fill="#ef4444">D</text>
+  </g>
+  
+  <!-- 길이 치수 라벨 -->
+  <text x="170" y="260" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ef4444">8 cm</text>
+  <text x="260" y="235" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2563eb">3 cm</text>
+  <text x="120" y="120" font-family="sans-serif" font-size="13" font-weight="bold" fill="#0f172a">15 cm</text>
+</svg>
