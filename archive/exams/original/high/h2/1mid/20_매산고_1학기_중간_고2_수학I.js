@@ -486,8 +486,7 @@ window.questionBank = [
     "id": 7,
     "questionType": "객관식",
     "score": 4.2,
-    "image": "assets/images/20_매산고_1학기_중간_고2_수학I/q07.png",
-    "content": "7. 함수 $y=3^{-x+1}-2$의 그래프를 옳게 그린 것을 고르면? [4.2점]\n<p><img src=\"assets/images/20_매산고_1학기_중간_고2_수학I/q07.png\" class=\"question-img\" alt=\"문제 7 보기 그림\"></p>",
+    "content": "7. 함수 $y=3^{-x+1}-2$의 그래프를 옳게 그린 것을 고르면? [4.2점]",
     "choices": [
       "<img src=\"assets/images/20_매산고_1학기_중간_고2_수학I/q07_1.png\" class=\"choice-img\" alt=\"보기 1\">",
       "<img src=\"assets/images/20_매산고_1학기_중간_고2_수학I/q07_2.png\" class=\"choice-img\" alt=\"보기 2\">",

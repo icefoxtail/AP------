@@ -100,6 +100,7 @@ window.questionBank = [
       "$4$",
       "$5$"
     ],
+    "image": "assets/images/22_순천고_2학기_기말_고2_수학II/q3.png",
     "images": [
       "q3.png"
     ],
@@ -899,6 +900,7 @@ window.questionBank = [
     "questionType": "서술형",
     "content": "<서술형 2>\n그림과 같이 일차함수 $y=f(x)$의 그래프와 최고차항의 계수가 1인 사차함수 $y=g(x)$의 그래프는 $x$좌표가 $-2, 1$인 두 점에서 접한다. $h(x)=g(x)-f(x)$라 할 때, $h(x)$의 극댓값을 구하는 풀이 과정과 답을 서술하시오. (부분점수 있음) [7.0점]",
     "choices": [],
+    "image": "assets/images/22_순천고_2학기_기말_고2_수학II/q21.png",
     "images": [
       "q21.png"
     ],

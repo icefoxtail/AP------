@@ -338,6 +338,7 @@ window.questionBank = [
       "$-1$",
       "$-2$"
     ],
+    "image": "assets/images/23_강남여고_2학기_기말_고2_수학II/q7.png",
     "images": [
       "q7.png"
     ],
@@ -621,6 +622,7 @@ window.questionBank = [
       "$8$",
       "$9$"
     ],
+    "image": "assets/images/23_강남여고_2학기_기말_고2_수학II/q12.png",
     "images": [
       "q12.png"
     ],
@@ -736,6 +738,7 @@ window.questionBank = [
       "$130$",
       "$132$"
     ],
+    "image": "assets/images/23_강남여고_2학기_기말_고2_수학II/q14.png",
     "images": [
       "q14.png"
     ],
@@ -965,6 +968,7 @@ window.questionBank = [
       "$\\sqrt{5}$",
       "$\\sqrt{6}$"
     ],
+    "image": "assets/images/23_강남여고_2학기_기말_고2_수학II/q18.png",
     "images": [
       "q18.png"
     ],
@@ -1286,6 +1290,7 @@ window.questionBank = [
     "questionType": "서술형",
     "content": "서술형 3. 함수 $f(x)=x^3+ax^2+bx+c$의 도함수 $y=f'(x)$의 그래프가 다음 그림과 같다. 함수 $f(x)$의 극댓값이 $5$일 때, 상수 $a, b, c$의 값과 극솟값을 구하시오. [5.0점]",
     "choices": [],
+    "image": "assets/images/23_강남여고_2학기_기말_고2_수학II/q24.png",
     "images": [
       "q24.png"
     ],

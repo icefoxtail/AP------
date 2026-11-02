@@ -183,6 +183,7 @@ window.questionBank = [
       "$\\frac{1}{3}$",
       "$\\frac{1}{2}$"
     ],
+    "image": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q5.png",
     "images": [
       "q5.png"
     ],
@@ -427,6 +428,7 @@ window.questionBank = [
       "$28$",
       "$35$"
     ],
+    "image": "assets/images/20_매산고_2학기_기말_고2_확률과통계/q11.png",
     "images": [
       "q11.png"
     ],

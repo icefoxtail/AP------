@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
+<title id="title">정사각형의 변 관계로 본 IHGD 넓이</title>
+<desc id="desc">두 조건 범위에서 세 정사각형의 배치와 사각형 IHGD의 변 길이 관계를 설명하는 좌표 도식입니다.</desc>
+<defs>
+  <style>
+    .ink{stroke:#243447;stroke-width:2.6;fill:none;stroke-linejoin:round;stroke-linecap:round}
+    .outer{stroke:#425466;stroke-width:3;fill:#fbfdff}
+    .squareA{stroke:#425466;stroke-width:2.6;fill:#f3f6fa}
+    .squareB{stroke:#425466;stroke-width:2.6;fill:#eaf1f8}
+    .squareC{stroke:#425466;stroke-width:2.6;fill:#fff5dd}
+    .area{stroke:#087e8b;stroke-width:3.4;fill:#cdeff0;fill-opacity:.88}
+    .dot{fill:#243447}
+    .label{font:600 18px 'Noto Sans KR',sans-serif;fill:#172b3a}
+    .small{font:16px 'Noto Sans KR',sans-serif;fill:#314454}
+    .head{font:700 27px 'Noto Sans KR',sans-serif;fill:#172b3a}
+    .subhead{font:700 20px 'Noto Sans KR',sans-serif;fill:#087e8b}
+    .card{fill:#f4f8fb;stroke:#d1dde7;stroke-width:1.5}
+  </style>
+</defs>
+<rect width="1120" height="620" fill="#ffffff"/>
+<text x="44" y="48" class="head">정사각형 변의 관계로 넓이 구하기</text>
+<text x="44" y="78" class="small">세 정사각형의 좌표 관계를 나타낸 설명도 · 조건에 따라 IHGD의 가로 길이가 달라집니다</text>
+<!-- Case 1: b&lt;a&lt;3b/2 -->
+<rect x="34" y="104" width="500" height="366" rx="12" class="card"/>
+<text x="54" y="137" class="subhead">①  b &lt; a &lt; 3b/2</text>
+<text x="54" y="162" class="small">I가 D의 오른쪽에 놓입니다</text>
+<g transform="translate(84,370) scale(1,-1)">
+  <!-- convert all y from bottom; outer dimensions b=110, a=137.5 -->
+  <rect x="0" y="0" width="137.5" height="110" class="outer"/>
+  <!-- ABFJ -->
+  <rect x="0" y="0" width="110" height="110" class="squareA"/>
+  <!-- EFCG, side a-b=27.5, E=(110,27.5), F=(110,0), C=(137.5,0), G=(137.5,27.5) -->
+  <path d="M110 27.5 L110 0 L137.5 0 L137.5 27.5 Z" class="squareB"/>
+  <!-- JEHI, side 82.5 -->
+  <path d="M110 110 L110 27.5 L192.5 27.5 L192.5 110 Z" class="squareC"/>
+  <!-- IHGD -->
+  <path d="M192.5 110 L192.5 27.5 L137.5 27.5 L137.5 110 Z" class="area"/>
+  <!-- vertices -->
+  <circle cx="0" cy="110" r="3.4" class="dot"/><circle cx="0" cy="0" r="3.4" class="dot"/>
+  <circle cx="110" cy="0" r="3.4" class="dot"/><circle cx="110" cy="110" r="3.4" class="dot"/>
+  <circle cx="110" cy="27.5" r="3.4" class="dot"/><circle cx="137.5" cy="0" r="3.4" class="dot"/>
+  <circle cx="137.5" cy="27.5" r="3.4" class="dot"/><circle cx="192.5" cy="27.5" r="3.4" class="dot"/>
+  <circle cx="192.5" cy="110" r="3.4" class="dot"/><circle cx="137.5" cy="110" r="3.4" class="dot"/>
+</g>
+<!-- labels for case 1; group y-flipped, place text upright -->
+<text x="74" y="248" class="label">A</text><text x="74" y="386" class="label">B</text>
+<text x="192" y="392" class="label">F</text><text x="192" y="248" class="label">J</text>
+<text x="192" y="349" class="label">E</text><text x="224" y="392" class="label">C</text>
+<text x="224" y="349" class="label">G</text><text x="287" y="248" class="label">I</text>
+<text x="287" y="349" class="label">H</text><text x="224" y="248" class="label">D</text>
+
+<text x="54" y="434" class="small">IH = 2b−a,  HG = 3b−2a</text>
+<text x="54" y="458" class="small">넓이 = (2b−a)(3b−2a)</text>
+<!-- Case 2: 3b/2&lt;a&lt;2b -->
+<rect x="550" y="104" width="536" height="366" rx="12" class="card"/>
+<text x="570" y="137" class="subhead">②  3b/2 &lt; a &lt; 2b</text>
+<text x="570" y="162" class="small">I가 D의 왼쪽에 놓입니다</text>
+<g transform="translate(620,370) scale(1,-1)">
+  <!-- b=110, a=192.5, middle square side 82.5 -->
+  <rect x="0" y="0" width="192.5" height="110" class="outer"/>
+  <rect x="0" y="0" width="110" height="110" class="squareA"/>
+  <path d="M110 82.5 L110 0 L192.5 0 L192.5 82.5 Z" class="squareB"/>
+  <path d="M110 110 L110 82.5 L137.5 82.5 L137.5 110 Z" class="squareC"/>
+  <path d="M137.5 110 L137.5 82.5 L192.5 82.5 L192.5 110 Z" class="area"/>
+  <circle cx="0" cy="110" r="3.4" class="dot"/><circle cx="0" cy="0" r="3.4" class="dot"/>
+  <circle cx="110" cy="0" r="3.4" class="dot"/><circle cx="110" cy="110" r="3.4" class="dot"/>
+  <circle cx="110" cy="82.5" r="3.4" class="dot"/><circle cx="192.5" cy="0" r="3.4" class="dot"/>
+  <circle cx="192.5" cy="82.5" r="3.4" class="dot"/><circle cx="137.5" cy="82.5" r="3.4" class="dot"/>
+  <circle cx="137.5" cy="110" r="3.4" class="dot"/><circle cx="192.5" cy="110" r="3.4" class="dot"/>
+</g>
+<text x="610" y="248" class="label">A</text><text x="610" y="386" class="label">B</text>
+<text x="728" y="392" class="label">F</text><text x="728" y="248" class="label">J</text>
+<text x="697" y="310" class="label">E</text><text x="820" y="392" class="label">C</text>
+<text x="820" y="310" class="label">G</text><text x="761" y="248" class="label">I</text>
+<text x="755" y="310" class="label">H</text><text x="820" y="248" class="label">D</text>
+
+<text x="570" y="434" class="small">IH = 2b−a,  HG = 2a−3b</text>
+<text x="570" y="458" class="small">넓이 = (2b−a)(2a−3b)</text>
+<!-- Result card -->
+<rect x="34" y="493" width="1052" height="96" rx="12" class="card"/>
+<text x="55" y="526" class="subhead">공통 관계</text>
+<text x="55" y="558" class="small">IH = JE = b−(a−b) = 2b−a</text>
+<text x="411" y="558" class="small">HG = |a−(3b−a)| = |2a−3b|</text>
+<text x="821" y="526" class="subhead">경계</text>
+<text x="821" y="558" class="small">a=3b/2이면 HG=0, 넓이=0</text>
+</svg>

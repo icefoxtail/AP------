@@ -1463,7 +1463,7 @@ function wrapLatexPreserveBlocks(text) {
     s = s.replace(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g, mathBlock =>
         mathBlock.replace(/</g, '&lt;').replace(/>/g, '&gt;')
     );
-    s = s.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>|<br\s*\/?>|<\/?(div|span|b|i|strong|em|u|sup|sub|table|thead|tbody|tr|th|td|colgroup|col)[^>]*>/gi, m => {
+    s = s.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>|<br\s*\/?>|<\/?(p(?=[\s>/])|div|span|b|i|strong|em|u|sup|sub|table|thead|tbody|tr|th|td|colgroup|col)[^>]*>/gi, m => {
         const token = `__HTMLTAG_${htmlTags.length}__`; htmlTags.push(m); return token;
     });
     s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g).map((seg, idx) => {

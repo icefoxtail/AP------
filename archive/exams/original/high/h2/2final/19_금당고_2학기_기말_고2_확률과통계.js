@@ -63,6 +63,7 @@ window.questionBank = [
       "$\\frac{10!}{2}$",
       "$10!$"
     ],
+    "image": "assets/images/19_금당고_2학기_기말_고2_확률과통계/q2.png",
     "images": [
       "q2.png"
     ],
@@ -116,6 +117,7 @@ window.questionBank = [
       "$14$",
       "$13$"
     ],
+    "image": "assets/images/19_금당고_2학기_기말_고2_확률과통계/q3.png",
     "images": [
       "q3.png"
     ],
