@@ -95,7 +95,7 @@
       const out = [];
       const ok = Q.choices.findIndex((c) => c.ok);
       out.push({ k: 'given', f: 'given', t: `그림의 점과 조건을 먼저 확인하고, 보기 ①~⑤를 하나씩 그림에서 따져 봐요. ${ask ? '옳은' : '옳지 않은'} 것을 찾아요.`, cap: '보기 ①~⑤를 그림에서 하나씩 확인해요' });
-      out.push({ k: 'idea', f: 'idea', t: '문장이 늘 참이려면 이유가 있어야 하고, 거짓이려면 맞지 않는 그림(반례)이 하나라도 있으면 돼요. 그래서 참이면 이유를, 거짓이면 반례를 그림에서 찾아요.', cap: '참 → 이유 · 거짓 → 반례' });
+      out.push({ k: 'idea', f: 'idea', t: '문장이 늘 참이려면 이유가 있어야 하고, 거짓이려면 맞지 않는 그림(반례)가 하나라도 있으면 돼요. 그래서 참이면 이유를, 거짓이면 반례를 그림에서 찾아요.', cap: '참 → 이유 · 거짓 → 반례' });
       Q.choices.forEach((c, i) => {
         const it = pool.find((p) => p.h === c.h), truth = it ? it.f(M) : true;
         out.push({ k: 'fig', f: 's' + i, lb: `${G.NUM[i]} 확인`, t: `${c.h} — ${truth ? '참' : '거짓'}. ${it ? it.w(M, s) : ''}`, cap: it ? it.c(M, s) : '', col: truth ? 'green' : 'rose' });
@@ -137,6 +137,16 @@
     return Math.abs((((ap - am + Math.PI * 3) % TP) - Math.PI) / DEG) > 40 ? 0 : rotTo(V, A, B, P, mag, -1);
   };
   SVB.rotTo = rotTo;
+  // 각 V(A·B 사이)의 라벨(이등분선에서 rotDeg 돌린 방향)이 선분 PQ 를 가로지르지 않도록 거리를 정해요: 선에 닿기 전이면 그 앞에, 아니면 선을 넘은 자리에 둡니다
+  const lblAvoid = (b, V, A, B, rotDeg, P, Q, dmin = 30) => {
+    const k = b.k || 60, a0 = Math.atan2(A.y - V.y, A.x - V.x), a1 = Math.atan2(B.y - V.y, B.x - V.x), d = ((a1 - a0 + Math.PI * 3) % (Math.PI * 2)) - Math.PI, la = a0 + d / 2 + rotDeg * DEG;
+    const ux = Math.cos(la), uy = Math.sin(la), ex = Q.x - P.x, ey = Q.y - P.y, den = ux * ey - uy * ex;
+    if (Math.abs(den) < 1e-9) return 44;
+    const t = ((P.x - V.x) * ey - (P.y - V.y) * ex) / den;
+    if (t <= 0) return 44;
+    const px = t * k;
+    return px - 17 >= dmin ? px - 17 : px + 20;
+  };
 
   // 좁은 각(약 25° 미만)의 x: 호는 그대로 두고 글자는 각 바깥에 두어 짧은 선으로 잇습니다. (값은 그림 아래 한 줄에)
   function xOut(b, V, P1, P2, label, o = {}) {
@@ -274,7 +284,7 @@
           else { L.sd(A, O, pt(0, -2), `${M.R} cm`, { color: 'rose', size: fs(X.b, 16), gap: 10 }); L.sd(O, B, pt(0, -2), `${M.R} cm`, { color: 'rose', size: fs(X.b, 16), gap: 10 }); }
         },
         dia: (L, M, s, X) => { const { A, B } = M.g; L.ln(A, B, 'amber', 5.2); },
-        B: (L, M) => { const { A, B, C: Cc } = M.g; L.ang(B, A, Cc, { color: 'green', r: 34, label: dg(M.be), size: 15, labelDist: 58, fa: 0.4, keep: true }); },
+        B: (L, M) => { const { A, B, C: Cc } = M.g; L.ang(B, A, Cc, { color: 'green', r: 34, label: dg(M.be), size: 15, labelDist: 62, labelRot: G.sideRot(B, A, Cc, 'A', 26), fa: 0.4, keep: true }); }, // 값은 빗변 아래쪽에 두고 호에서 시작하는 지시선으로 ∠B 를 가리켜요
         iso: (L, M) => { const { O, B, C: Cc } = M.g; L.fl([O, B, Cc], 'amber', 0.14); L.ln(O, B, 'rose', 3.6); L.ln(O, Cc, 'rose', 3.6); L.tk(O, B, 2, 'rose'); L.tk(O, Cc, 2, 'rose'); L.ang(B, Cc, O, { color: 'green', r: 30, fa: 0.4 }); }
       },
       x: (b, M, s, X) => {
@@ -432,8 +442,8 @@
         given: (L, M, s, X) => {
           const { O, A, B, C: Cc } = M.g, v = (s.trV || 0) % 2;
           [B, Cc, A].forEach((z) => L.ln(O, z, 'rose', 3.2));
-          if (v === 0) L.ang(A, B, Cc, { color: 'sky', r: 22, label: dg(M.a), size: 16, labelDist: 40, labelRot: awayRot(A, B, Cc, O), keep: true });
-          else L.ang(O, B, Cc, { color: 'sky', r: 22, label: dg(M.boc), size: 16, labelDist: 44, labelRot: awayRot(O, B, Cc, A), keep: true });
+          if (v === 0) L.ang(A, B, Cc, { color: 'sky', r: 22, label: dg(M.a), size: 16, labelDist: lblAvoid(X.b, A, B, Cc, awayRot(A, B, Cc, O), B, Cc), labelRot: awayRot(A, B, Cc, O), keep: true });
+          else L.ang(O, B, Cc, { color: 'sky', r: 22, label: dg(M.boc), size: 16, labelDist: lblAvoid(X.b, O, B, Cc, rotTo(O, B, Cc, Cc, 30), B, Cc), labelRot: rotTo(O, B, Cc, Cc, 30), keep: true });
         },
         iso: (L, M) => { const { O, A, B, C: Cc } = M.g; L.fl([O, A, B], 'sky', 0.14); L.fl([O, A, Cc], 'green', 0.14); [A, B, Cc].forEach((z) => { L.ln(O, z, 'rose', 4); L.tk(O, z, 1, 'rose'); }); },
         base: (L, M) => {
@@ -442,16 +452,16 @@
           L.ang(B, O, A, { color: 'sky', r: 28, fa: 0.4 }); L.ang(Cc, O, A, { color: 'green', r: 28, fa: 0.4 });
         },
         ang: (L, M) => { const { O, A, B, C: Cc } = M.g; L.ang(O, A, B, { color: 'sky', r: 24, fa: 0.4 }); L.ang(O, A, Cc, { color: 'green', r: 32, fa: 0.4 }); },
-        trap: (L, M, s) => {
+        trap: (L, M, s, X) => {
           const { O, A, B, C: Cc } = M.g, v = (s.trV || 0) % 2;
-          if (v === 0) L.ang(O, B, Cc, { color: 'rose', r: 34, big: true, label: `2∠A=${2 * M.a}°`, size: 14, labelDist: 62, labelRot: 100, fa: 0.2 }); else L.ang(A, B, Cc, { color: 'rose', r: 30, label: `${M.boc / 2}°`, size: 15, labelDist: 44, labelRot: awayRot(A, B, Cc, O), fa: 0.3 });
+          if (v === 0) L.ang(O, B, Cc, { color: 'rose', r: 34, big: true, label: `2∠A=${2 * M.a}°`, size: 14, labelDist: 62, labelRot: 100, fa: 0.2 }); else L.ang(A, B, Cc, { color: 'rose', r: 30, label: `${M.boc / 2}°`, size: 15, labelDist: lblAvoid(X.b, A, B, Cc, awayRot(A, B, Cc, O), B, Cc), labelRot: awayRot(A, B, Cc, O), fa: 0.3 });
         }
       },
       x: (b, M, s, X) => {
         const { O, A, B, C: Cc } = M.g, v = (s.trV || 0) % 2;
         if (v === 1 && X.K === 'trap') return;
-        if (v === 0) ang(b, O, B, Cc, { color: 'amber', r: 22, label: xLbl(X, M.boc), size: 17, labelDist: 44, labelRot: awayRot(O, B, Cc, A), noMark: !X.xArc, fa: 0.3 });
-        else ang(b, A, B, Cc, { color: 'amber', r: 22, label: xLbl(X, M.a), size: 17, labelDist: 40, labelRot: awayRot(A, B, Cc, O), noMark: !X.xArc, fa: 0.3 });
+        if (v === 0) ang(b, O, B, Cc, { color: 'amber', r: 22, label: xLbl(X, M.boc), size: 17, labelDist: lblAvoid(b, O, B, Cc, rotTo(O, B, Cc, Cc, 30), B, Cc), labelRot: rotTo(O, B, Cc, Cc, 30), noMark: !X.xArc, fa: 0.3 });
+        else ang(b, A, B, Cc, { color: 'amber', r: 22, label: xLbl(X, M.a), size: 17, labelDist: lblAvoid(b, A, B, Cc, awayRot(A, B, Cc, O), B, Cc), labelRot: awayRot(A, B, Cc, O), noMark: !X.xArc, fa: 0.3 });
       },
       top: (b, M, s, X) => {
         const { O, A, B, C: Cc } = M.g;
@@ -499,7 +509,7 @@
   const o7Solve = {
     steps: (M, s) => {
       const v = (s.trV || 0) % 2, { R, a, per } = M, out = [];
-      out.push({ k: 'given', f: 'given', t: v === 0 ? `점 O는 △ABC의 외심이고 △OBC의 둘레는 ${per} cm, $\\overline{BC}=${a}$ cm예요. 외접원의 반지름 $R$를 구해요.` : `점 O는 △ABC의 외심이고 △OBC의 둘레는 ${per} cm, $\\overline{BC}=${a}$ cm예요. 외접원의 둘레 $x$를 구해요.`, cap: v === 0 ? `△OBC의 둘레 ${per} cm, BC=${a} cm, R=x` : `△OBC의 둘레 ${per} cm, BC=${a} cm, 원의 둘레=x` });
+      out.push({ k: 'given', f: 'given', t: v === 0 ? `점 O는 △ABC의 외심이고 △OBC의 둘레는 ${per} cm, $\\overline{BC}=${a}$ cm예요. 외접원의 반지름 $R$을 구해요.` : `점 O는 △ABC의 외심이고 △OBC의 둘레는 ${per} cm, $\\overline{BC}=${a}$ cm예요. 외접원의 둘레 $x$를 구해요.`, cap: v === 0 ? `△OBC의 둘레 ${per} cm, BC=${a} cm, R=x` : `△OBC의 둘레 ${per} cm, BC=${a} cm, 원의 둘레=x` });
       out.push({ k: 'idea', f: 'idea', t: v === 0 ? 'OB와 OC는 둘 다 외접원의 반지름 R이에요. 그러면 △OBC의 둘레에는 R이 두 번 들어 있으니까, 둘레에서 BC를 빼고 2로 나누면 R이 나와요.' : '원의 둘레는 2πR이라서 반지름 R부터 알아야 해요. R은 △OBC의 둘레에서 구해요. OB, OC가 둘 다 R이라서 둘레에 R이 두 번 들어 있거든요.', cap: 'OB=OC=R → △OBC의 둘레 = 2R + BC' });
       out.push({ k: 'fig', f: 'rad', lb: '반지름', t: '외심 O에서 두 꼭짓점 B, C까지의 거리는 같아요. $\\overline{OB}=\\overline{OC}=R$.', cap: 'OB=OC=R (외접원의 반지름)' });
       out.push({ k: 'fig', f: 'perim', lb: '둘레', t: `△OBC의 둘레는 $\\overline{OB}+\\overline{OC}+\\overline{BC}=R+R+${a}=2R+${a}$이고, 이것이 ${per} cm예요.`, cap: `2R+${a}=${per}` });
@@ -514,13 +524,12 @@
     draw: SVB.runner({
       box: () => RBOX,
       base: (b, M) => { const g = o7geom(M); b.circle(g.O, 1, { color: 'sky', width: 2.4, alpha: 0.7 }); fillPoly(b, [g.A, g.B, g.C], 'sky', 0.06); poly(b, [g.A, g.B, g.C], 'ink', 2.2, { alpha: 0.5 }); },
-      legend: () => 'O: 외심',
+      legend: (M) => `O: 외심 · △OBC의 둘레 ${M.per} cm`,
       st: {
         given: (L, M, s, X) => {
           const { O, B, C: Cc } = o7geom(M);
           L.fl([O, B, Cc], 'rose', 0.14); L.ln(O, B, 'rose', 3.4); L.ln(O, Cc, 'rose', 3.4); L.ln(B, Cc, 'ink', 3.6); L.tk(O, B, 1, 'amber'); L.tk(O, Cc, 1, 'amber');
           L.tx(G.mid(B, Cc), `${M.a} cm`, { dy: -20, size: fs(X.b, 16), color: 'sky', keep: true });
-          L.tx(O, `△OBC의 둘레 ${M.per} cm`, { dy: -34, size: fs(X.b, 15), color: 'rose', keep: true });
         },
         rad: (L, M, s, X) => { const { O, B, C: Cc } = o7geom(M); L.ln(O, B, 'rose', 4.6); L.ln(O, Cc, 'rose', 4.6); L.tk(O, B, 2, 'rose'); L.tk(O, Cc, 2, 'rose'); L.sd(O, Cc, pt(-1, 0.2), 'R', { color: 'rose', size: fs(X.b, 16), gap: 8 }); L.sd(O, B, pt(1, 0.2), 'R', { color: 'rose', size: fs(X.b, 16), gap: 8 }); },
         perim: (L, M, s, X) => { const { O, B, C: Cc } = o7geom(M); L.fl([O, B, Cc], 'rose', 0.22); L.pl([O, B, Cc], 'rose', 4); L.sd(O, Cc, pt(-1, 0.2), 'R', { color: 'rose', size: fs(X.b, 16), gap: 8 }); L.sd(O, B, pt(1, 0.2), 'R', { color: 'rose', size: fs(X.b, 16), gap: 8 }); },
@@ -953,7 +962,7 @@
       const head = `그림에서 점 O는 삼각형 ABC의 외심이고 △OBC의 둘레는 ${per} cm, ${S('BC')}=${a} cm이다.`;
       if (v === 0) return numProb({ tag: '외접원의 반지름', key, stem: `${head} 삼각형 ABC의 외접원의 반지름 $R$은?`, correct: R, wrongs: [[per - a, '2R이에요. 반으로 나누어야 해요.'], [per, '둘레 그대로예요.'], [(per - a) / 2 + 1, '다시 계산해 보세요.'], [(per - a) / 2 - 1, '다시 계산해 보세요.'], [per / 2, '다시 생각해 보세요. BC를 빼야 해요.']].filter((q) => Number.isInteger(q[0]) && q[0] > 0 && q[0] !== R), ...cmOpts });
       const pi = { tex: (x) => `${x}\\pi\\text{ cm}`, plain: (x) => `${x}π cm`, pad: 2, valid: (x) => Number.isInteger(x) && x > 0 };
-      return numProb({ tag: '외접원의 둘레', key, stem: `${head} 삼각형 ABC의 외접원의 둘레는?`, correct: 2 * R, wrongs: [[R, '반지름이에요. 둘레는 2πR이에요.'], [R * R, '넓이의 공식이에요.'], [per - a, '2R이에요. 둘레는 2πR이에요.'], [4 * R, '다시 계산해 보세요.'], [2 * R + 2, '다시 계산해 보세요.']].filter((q) => q[0] !== 2 * R), ...pi });
+      return numProb({ tag: '외접원의 둘레', key, stem: `${head} 삼각형 ABC의 외접원의 둘레 $x$는?`, correct: 2 * R, wrongs: [[R, '반지름이에요. 둘레는 2πR이에요.'], [R * R, '넓이의 공식이에요.'], [per - a, '2R이에요. 둘레는 2πR이에요.'], [4 * R, '다시 계산해 보세요.'], [2 * R + 2, '다시 계산해 보세요.']].filter((q) => q[0] !== 2 * R), ...pi });
     },
     verify: (s) => { const M = o7.model(s); return { ans: (M.per - M.a) / 2, model: M.R }; }
   };

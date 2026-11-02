@@ -208,11 +208,11 @@
       }
       [A, B, Mm, Pp].forEach((z) => b.point(z, { color: z === Pp ? 'amber' : 'ink', r: z === Pp ? 5.5 : 4.5 }));
       T(b, A, 'A', { dx: -14, dy: -6, size: 18 }); T(b, B, 'B', { dx: -14, dy: 8, size: 18 }); T(b, Mm, 'M', { dx: -14, dy: -2, size: 18 }); T(b, Pp, 'P', { dx: 14, dy: -2, size: 18, color: 'amber' });
-      T(b, pt(-1.2, 0), 'l', { dx: -2, dy: -14, size: 17 });
+      T(b, pt(-1.2, 0), 'ℓ', { dx: -2, dy: -14, size: 17 });
       if (!C.thumb && !C.problem && !C.review) b.handle('P', Pp, { color: 'amber', r: 8, ariaLabel: '점 P를 수직이등분선 위에서 가로로 끌기', drag: (w) => { s.trBq = clamp(Math.round(w.x), 1, 9); } });
       if (!C.thumb && !C.problem) {
         let row, col = 'sky';
-        if (C.review && st === 1) row = `AM=BM=${m} cm, l⊥AB`;
+        if (C.review && st === 1) row = `AM=BM=${m} cm, ℓ⊥AB`;
         else if (C.review && st === 2) { row = '△PAM ≡ △PBM (SAS)'; col = 'green'; }
         else if (C.review && st === 3) { row = 'PA=PB'; col = 'rose'; }
         else row = `AM=BM=${m} cm, PM=${q} cm → PA=PB`;
@@ -220,7 +220,7 @@
       }
     },
     steps: (M) => [
-      `직선 l은 선분 AB의 수직이등분선이므로 $\\overline{AM}=\\overline{BM}=${M.m}$ cm이고 $\\angle PMA=\\angle PMB=90^{\\circ}$이에요.`,
+      `직선 ℓ은 선분 AB의 수직이등분선이므로 $\\overline{AM}=\\overline{BM}=${M.m}$ cm이고 $\\angle PMA=\\angle PMB=90^{\\circ}$이에요.`,
       `△PAM과 △PBM에서 $\\overline{AM}=\\overline{BM}$, $\\angle PMA=\\angle PMB=90^{\\circ}$, $\\overline{PM}$은 공통이므로 △PAM≡△PBM (SAS 합동)이에요.`,
       `대응변의 길이가 같으므로 $\\overline{PA}=\\overline{PB}$예요. 즉 수직이등분선 위의 점은 선분의 양 끝점에서 같은 거리에 있어요.`
     ],
@@ -233,7 +233,7 @@
     }),
     prob: (M, s) => {
       const { pm, al } = M, v = (s.trV || 0) % 3, key = `${v}:${pm}:${al}`;
-      const head = `그림에서 직선 l은 선분 AB의 수직이등분선이고, 점 M은 AB와 l의 교점이며 점 P는 l 위의 점이다.`;
+      const head = `그림에서 직선 ℓ은 선분 AB의 수직이등분선이고, 점 M은 AB와 ℓ의 교점이며 점 P는 ℓ 위의 점이다.`;
       if (v === 0) return numProb({ tag: '수직이등분선 위의 점 · 길이', key, stem: `${head} ${S('PA')}=${pm} cm일 때, ${S('PB')}의 길이 $x$는?`, correct: pm, wrongs: [[pm * 2, '두 배가 아니에요. 수직이등분선 위의 점은 두 끝점에서 같은 거리에 있어요.'], [pm + 1, '다시 생각해 보세요.'], [pm - 1, '다시 생각해 보세요.'], [Math.floor(pm / 2), '반이 아니에요.'], [pm + 2, '다시 생각해 보세요.']], ...cmOpts });
       if (v === 1) return numProb({ tag: '수직이등분선 위의 점 · 각', key, stem: `${head} ∠PAB=${al}°일 때, ∠PBA의 크기 $x$는?`, correct: al, wrongs: [[90 - al, '다시 생각해 보세요. △PAB는 PA=PB인 이등변삼각형이에요.'], [180 - 2 * al, '꼭지각 ∠APB예요.'], [2 * al, '다시 생각해 보세요.'], [al + 10, '다시 계산해 보세요.'], [al - 5, '다시 계산해 보세요.']], ...degOpts(5) });
       return numProb({ tag: '수직이등분선 위의 점 · 각', key, stem: `${head} ∠APM=${al}°일 때, ∠APB의 크기 $x$는?`, correct: 2 * al, wrongs: [[al, '∠APM의 크기예요. ∠APB는 ∠APM의 2배예요.'], [90 - al, '∠PAM의 크기예요.'], [180 - 2 * al, '다시 생각해 보세요.'], [2 * al + 10, '다시 계산해 보세요.'], [2 * al - 10, '다시 계산해 보세요.']], ...degOpts(5) });
@@ -324,11 +324,11 @@
         line(b, pt(-5, 0), pt(5, 0), 'ink', 3.4);
         pts.forEach((p) => line(b, Pp, p, 'ink', 3));
         pts.forEach((p, i) => { b.point(p, { color: 'ink', r: 4 }); T(b, p, nm[i], { dy: 18, size: 17 }); });
-        b.point(Pp, { color: 'amber', r: 5 }); T(b, Pp, 'P', { dy: -16, size: 18, color: 'amber' }); T(b, pt(5, 0), 'l', { dy: -14, size: 17 });
+        b.point(Pp, { color: 'amber', r: 5 }); T(b, Pp, 'P', { dy: -16, size: 18, color: 'amber' }); T(b, pt(5, 0), 'ℓ', { dy: -14, size: 17 });
         return;
       }
       const { h, d, q } = M, st = C.step, show = (k) => (C.problem ? false : C.review ? st >= k : true);
-      if (!C.problem) { // 직선 l, 점 P, 수선의 발 E, 비스듬한 선분 PQ
+      if (!C.problem) { // 직선 ℓ, 점 P, 수선의 발 E, 비스듬한 선분 PQ
         const Pp = pt(0, -d), E = pt(0, 0), Q = pt(q, 0);
         fit(b, { x0: -7.5, x1: 7.5, y0: -8.6, y1: 0.5 }, { t: 40, b: C.thumb ? 20 : 96, l: 40, r: 40 });
         line(b, pt(-7.5, 0), pt(7.5, 0), 'ink', 3.4);
@@ -339,11 +339,11 @@
         if (q > 0) dim(b, E, Q, pt(0, -5), `EQ = ${q} cm`, { color: 'rose', size: fs(b, 15), off: 24 });
         if (show(3) && q > 0) T(b, mid(Pp, Q), 'PQ', { dx: 16, dy: -8, size: fs(b, 16), color: 'rose' });
         [Pp, E, Q].forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
-        T(b, Pp, 'P', { dx: 0, dy: -16, size: 18, color: 'amber' }); T(b, E, 'E', { dx: -14, dy: 16, size: 18 }); if (q > 0) T(b, Q, 'Q', { dx: 6, dy: 16, size: 18, color: 'rose' }); T(b, pt(7.5, 0), 'l', { dx: 0, dy: -14, size: 17 });
-        if (!C.thumb && !C.review) b.handle('Q', Q, { color: 'rose', r: 8, ariaLabel: '점 Q를 직선 l 위에서 가로로 끌기', drag: (w) => { s.trBe = clamp(Math.round(w.x), 0, 6); } });
+        T(b, Pp, 'P', { dx: 0, dy: -16, size: 18, color: 'amber' }); T(b, E, 'E', { dx: -14, dy: 16, size: 18 }); if (q > 0) T(b, Q, 'Q', { dx: 6, dy: 16, size: 18, color: 'rose' }); T(b, pt(7.5, 0), 'ℓ', { dx: 0, dy: -14, size: 17 });
+        if (!C.thumb && !C.review) b.handle('Q', Q, { color: 'rose', r: 8, ariaLabel: '점 Q를 직선 ℓ 위에서 가로로 끌기', drag: (w) => { s.trBe = clamp(Math.round(w.x), 0, 6); } });
         if (!C.thumb) {
           let row, col = 'sky';
-          if (C.review && st === 1) row = `PE⊥l 이므로 거리는 PE=${d} cm`;
+          if (C.review && st === 1) row = `PE⊥ℓ 이므로 거리는 PE=${d} cm`;
           else if (C.review && st === 2) { row = 'PQ는 비스듬한 선분'; col = 'rose'; }
           else if (C.review && st === 3) { row = '직각삼각형 PEQ에서 빗변 PQ > 직각변 PE'; col = 'rose'; }
           else row = q === 0 ? `Q가 E와 같아지면 PQ=PE=${d} cm` : `PQ는 PE=${d} cm보다 길어요 (PQ > PE)`;
@@ -380,7 +380,7 @@
       const v = (s.trV || 0) % 3, { h, d, of } = M, key = `${v}:${h}:${d}:${of.join(',')}`;
       if (v === 0) {
         const nm = ['A', 'B', 'C', 'D', 'E'], ok = of.indexOf(0);
-        return { tag: '점과 직선 사이의 거리', key, stem: '그림에서 점 P에서 직선 l까지의 거리를 나타내는 선분은?', choices: nm.map((q, i) => ({ h: `$\\overline{P${q}}$`, p: `선분 P${q}`, ok: i === ok, hint: '거리는 점에서 직선에 내린 수선의 길이예요. 가장 짧은 선분을 찾아보세요.' })), note: '가장 짧은 선분이 거리예요' };
+        return { tag: '점과 직선 사이의 거리', key, stem: '그림에서 점 P에서 직선 ℓ까지의 거리를 나타내는 선분은?', choices: nm.map((q, i) => ({ h: `$\\overline{P${q}}$`, p: `선분 P${q}`, ok: i === ok, hint: '거리는 점에서 직선에 내린 수선의 길이예요. 가장 짧은 선분을 찾아보세요.' })), note: '가장 짧은 선분이 거리예요' };
       }
       if (v === 1) return numProb({ tag: '각의 이등분선 위의 점 · 거리', key, stem: `그림에서 점 P는 ∠XOY의 이등분선 위의 점이고, 점 E, F는 P에서 두 변 OX, OY에 내린 수선의 발이다. ${S('PE')}=${d} cm일 때, 점 P에서 변 OY까지의 거리 ${S('PF')}의 길이 $x$는?`, correct: d, wrongs: [[d * 2, '두 배가 아니에요.'], [d + 1, '다시 생각해 보세요.'], [d - 1, '다시 생각해 보세요.'], [d + 2, '다시 생각해 보세요.'], [d - 2, '다시 생각해 보세요.']], ...cmOpts });
       const pool = [
@@ -518,9 +518,9 @@
   /* ---- t4-3 수직이등분선 위의 점 · v0: PA → PB · v1: ∠PAB → ∠PBA · v2: ∠APM → ∠APB ---- */
   const b3Plan = (M, s) => {
     const { m, q, A, B, Mm, Pp, al, pm } = M, v = (s.trV || 0) % 3, steps = [], items = [], Lp = pt(-1.2, 0), Rp = pt(q + 1.2, 0);
-    const head = '직선 $l$은 선분 AB의 수직이등분선이고, 점 M은 AB와 $l$의 교점이며, 점 P는 $l$ 위의 점이에요.';
-    steps.push({ id: 'given', k: 'given', t: v === 0 ? `${head} $${ov('PA')}=${pm}$ cm이고, 구하는 것은 $${ov('PB')}=x$.` : v === 1 ? `${head} $\\angle PAB=${dd(al)}$이고, 구하는 것은 $\\angle PBA=x$.` : `${head} $\\angle APM=${dd(al)}$이고, 구하는 것은 $\\angle APB=x$.`, cap: v === 0 ? `AM=BM, l⊥AB, PA=${pm} cm` : v === 1 ? `AM=BM, l⊥AB, ∠PAB=${al}°` : `AM=BM, l⊥AB, ∠APM=${al}°` });
-    steps.push({ id: 'idea', k: 'idea', t: 'P에서 A, B까지의 거리 PA, PB를 비교하려면, 이 둘을 변으로 가진 두 삼각형 PAM, PBM이 합동인지 확인하면 돼요. l이 AB의 수직이등분선이라는 것이 합동 조건을 줘요.', cap: '△PAM과 △PBM이 합동인지 확인' });
+    const head = '직선 $\\ell$은 선분 AB의 수직이등분선이고, 점 M은 AB와 $\\ell$의 교점이며, 점 P는 $\\ell$ 위의 점이에요.';
+    steps.push({ id: 'given', k: 'given', t: v === 0 ? `${head} $${ov('PA')}=${pm}$ cm이고, 구하는 것은 $${ov('PB')}=x$.` : v === 1 ? `${head} $\\angle PAB=${dd(al)}$이고, 구하는 것은 $\\angle PBA=x$.` : `${head} $\\angle APM=${dd(al)}$이고, 구하는 것은 $\\angle APB=x$.`, cap: v === 0 ? `AM=BM, ℓ⊥AB, PA=${pm} cm` : v === 1 ? `AM=BM, ℓ⊥AB, ∠PAB=${al}°` : `AM=BM, ℓ⊥AB, ∠APM=${al}°` });
+    steps.push({ id: 'idea', k: 'idea', t: 'P에서 A, B까지의 거리 PA, PB를 비교하려면, 이 둘을 변으로 가진 두 삼각형 PAM, PBM이 합동인지 확인하면 돼요. ℓ이 AB의 수직이등분선이라는 것이 합동 조건을 줘요.', cap: '△PAM과 △PBM이 합동인지 확인' });
     steps.push({ id: 'S1', k: 'fig', lb: '합동 조건 ①', t: `$${ov('AM')}=${ov('BM')}$ (M은 AB의 중점, Side)`, cap: 'AM=BM (S)' });
     steps.push({ id: 'A', k: 'fig', lb: '합동 조건 ②', t: '$\\angle PMA=\\angle PMB=90^{\\circ}$ ($l\\perp AB$, Angle)', cap: '∠PMA=∠PMB=90° (A)' });
     steps.push({ id: 'S2', k: 'fig', lb: '합동 조건 ③', t: '$\\overline{PM}$은 공통이에요 (Side)', cap: 'PM은 공통 (S)' });
@@ -539,7 +539,7 @@
     return {
       fit: [A, B, Pp, Lp, Rp], steps, items, l: 56, r: 50,
       base: (b) => { G.line(b, Lp, Rp, 'green', 3, { dash: [8, 6] }); G.line(b, A, B, 'ink', 3.8); G.line(b, Pp, A, 'ink', 3.4); G.line(b, Pp, B, 'ink', 3.4); },
-      names: (b) => { [A, B, Mm, Pp].forEach((z) => b.point(z, { color: z === Pp ? 'amber' : 'ink', r: z === Pp ? 5.5 : 4.5 })); T(b, A, 'A', { dx: -14, dy: -6, size: 18 }); T(b, B, 'B', { dx: -14, dy: 8, size: 18 }); T(b, Mm, 'M', { dx: -14, dy: -2, size: 18 }); T(b, Pp, 'P', { dx: 14, dy: -2, size: 18, color: 'amber' }); T(b, Lp, 'l', { dx: -2, dy: -14, size: 17 }); }
+      names: (b) => { [A, B, Mm, Pp].forEach((z) => b.point(z, { color: z === Pp ? 'amber' : 'ink', r: z === Pp ? 5.5 : 4.5 })); T(b, A, 'A', { dx: -14, dy: -6, size: 18 }); T(b, B, 'B', { dx: -14, dy: 8, size: 18 }); T(b, Mm, 'M', { dx: -14, dy: -2, size: 18 }); T(b, Pp, 'P', { dx: 14, dy: -2, size: 18, color: 'amber' }); T(b, Lp, 'ℓ', { dx: -2, dy: -14, size: 17 }); }
     };
   };
   b3.solve = mkSolve(b3Plan);
@@ -575,14 +575,14 @@
     const v = (s.trV || 0) % 3, { h, d } = M, steps = [], items = [];
     if (v === 0) {
       const of = M.of, Pp = pt(0, -3), pts = of.map((x) => pt(x, 0)), nm = ['A', 'B', 'C', 'D', 'E'], ok = of.indexOf(0), Fp = pts[ok];
-      steps.push({ id: 'given', k: 'given', t: '점 P와 직선 $l$ 위의 다섯 점 A, B, C, D, E를 잇는 선분이 그려져 있어요. 구하는 것은 점 P에서 직선 $l$까지의 거리를 나타내는 선분.', cap: '점 P에서 직선 l까지의 거리 = ?' });
+      steps.push({ id: 'given', k: 'given', t: '점 P와 직선 $\\ell$ 위의 다섯 점 A, B, C, D, E를 잇는 선분이 그려져 있어요. 구하는 것은 점 P에서 직선 $\\ell$까지의 거리를 나타내는 선분.', cap: '점 P에서 직선 ℓ까지의 거리 = ?' });
       steps.push({ id: 'idea', k: 'idea', t: '점에서 직선까지의 거리는 그 점에서 직선에 내린 수선의 길이예요. 수선은 점과 직선 위의 점을 잇는 선분 가운데 가장 짧은 선분이에요.', cap: '거리 = 수선의 길이 = 가장 짧은 선분' });
-      steps.push({ id: 'perp', k: 'fig', lb: '그림 변화', t: `직선 $l$과 직각을 이루는 선분을 찾아요. $\\overline{P${nm[ok]}}$는 $l$과 수직이에요 (직각 표시).`, cap: `P${nm[ok]} ⊥ l` });
+      steps.push({ id: 'perp', k: 'fig', lb: '그림 변화', t: `직선 $\\ell$과 직각을 이루는 선분을 찾아요. $\\overline{P${nm[ok]}}$는 $\\ell$과 수직이에요 (직각 표시).`, cap: `P${nm[ok]} ⊥ ℓ` });
       steps.push({ id: 'cmp', k: 'fig', lb: '비교하기', t: `나머지 선분은 모두 비스듬해서, 직각삼각형의 빗변이 되므로 $\\overline{P${nm[ok]}}$보다 길어요. 가장 짧은 선분이 $\\overline{P${nm[ok]}}$예요.`, cap: `비스듬한 선분은 P${nm[ok]}보다 길다` });
       steps.push({ id: 'ans', k: 'ans', t: `$\\overline{P${nm[ok]}}$`, cap: `답: 선분 P${nm[ok]}` });
       pts.forEach((p, i) => items.push(SK.seg(Pp, p, { at: 'given', to: i === ok ? 'perp' : 'idea', col: 'ink', w: 3 })));
       items.push(SK.seg(Pp, Fp, { at: 'perp', to: 'cmp', col: 'amber', w: 5 }), SK.ang(Fp, pts[ok > 0 ? ok - 1 : ok + 1], Pp, { r: 20, at: 'perp', col: 'green' }), SK.seg(Pp, Fp, { at: 'ans', col: 'amber', w: 5 }));
-      return { fit: [pt(-5, -3.4), pt(5, 0.5)], steps, items, l: 44, r: 44, base: (b) => { G.line(b, pt(-5, 0), pt(5, 0), 'ink', 3.4); }, names: (b) => { pts.forEach((p, i) => { b.point(p, { color: 'ink', r: 4 }); T(b, p, nm[i], { dy: 18, size: 17 }); }); b.point(Pp, { color: 'amber', r: 5 }); T(b, Pp, 'P', { dy: -16, size: 18, color: 'amber' }); T(b, pt(5, 0), 'l', { dy: -14, size: 17 }); } };
+      return { fit: [pt(-5, -3.4), pt(5, 0.5)], steps, items, l: 44, r: 44, base: (b) => { G.line(b, pt(-5, 0), pt(5, 0), 'ink', 3.4); }, names: (b) => { pts.forEach((p, i) => { b.point(p, { color: 'ink', r: 4 }); T(b, p, nm[i], { dy: 18, size: 17 }); }); b.point(Pp, { color: 'amber', r: 5 }); T(b, Pp, 'P', { dy: -16, size: 18, color: 'amber' }); T(b, pt(5, 0), 'ℓ', { dy: -14, size: 17 }); } };
     }
     const g = M.g, qp = Math.max(1, M.q), { O, P: Pp, E, F, Y } = g, Qp = add(E, mul(g.u1, qp)), X = mul(g.u1, v === 2 ? dist(O, Qp) + 1 : dist(O, E) + 1.1), gg = { ...g, X };
     const head = '점 P는 ∠XOY의 이등분선 위의 점이고, 점 E, F는 P에서 두 변 OX, OY에 내린 수선의 발이에요.';

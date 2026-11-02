@@ -36,9 +36,9 @@
     trNp: P('AB', 4, 12, 1, 9, { color: 'sky', format: (v) => v + ' cm' }),
     trNq: P('AC', 4, 12, 1, 7, { color: 'green', format: (v) => v + ' cm' }),
     trNs: P('BC', 3, 20, 1, 8, { color: 'amber', format: (v) => v + ' cm' }),
-    trNm: P('비 a', 1, 8, 1, 3, { color: 'sky', format: (v) => String(v) }),
-    trNn: P('비 b', 1, 8, 1, 3, { color: 'green', format: (v) => String(v) }),
-    trNo: P('비 c', 1, 8, 1, 4, { color: 'amber', format: (v) => String(v) })
+    trNm: P('비 a', 1, 13, 1, 7, { color: 'sky', format: (v) => String(v) }),
+    trNn: P('비 b', 1, 13, 1, 8, { color: 'green', format: (v) => String(v) }),
+    trNo: P('비 c', 1, 13, 1, 9, { color: 'amber', format: (v) => String(v) })
   };
   const RT = [[3, 4, 5, 1], [6, 8, 10, 2], [5, 12, 13, 2], [9, 12, 15, 3], [8, 15, 17, 3], [12, 16, 20, 4], [7, 24, 25, 3]];
 
@@ -82,7 +82,7 @@
   const feetL = (L, g, col = 'rose', w = 3) => [[g.D, g.B], [g.E, g.C], [g.F, g.A]].forEach(([Q, p]) => { L.ln(g.I, Q, col, w); L.ang(Q, g.I, p, { color: col, r: 14 }); });
   const feetTags = (L, g, X, f, col = 'rose') => { const { I, D, E, F } = g; [D, E, F].forEach((Q) => L.sd(I, Q, pt(I.x, I.y - 50), f, { color: col, size: fs(X.b, 15), gap: 8 })); };
   const NLEG = 'I: 내심 · D, E, F: 접점(수선의 발)';
-  const abO = (b, g) => ({ dx: (g.B.x - g.A.x) * 0.2 * (b.k || 60), dy: -(g.B.y - g.A.y) * 0.2 * (b.k || 60) }); // 빗변·AB 의 길이 글자는 접점 F 이름과 겹치지 않게 B 쪽으로 옮겨요
+  const abO = (b, g, f = 0.2) => ({ dx: (g.B.x - g.A.x) * f * (b.k || 60), dy: -(g.B.y - g.A.y) * f * (b.k || 60) }); // 빗변·AB 의 길이 글자는 접점 F 이름과 겹치지 않게 B 쪽으로 옮겨요
   const bcDx = (b, g, avoidBD) => (avoidBD ? ((g.D.x + g.C.x) / 2 - (g.B.x + g.C.x) / 2) * (b.k || 60) : -0.3 * dist(g.B, g.C) * (b.k || 60)); // 밑변 BC 의 길이 글자는 접점 D 이름과 겹치지 않게 왼쪽으로 옮겨요
 
   /* ---------------------------------------------------------------- 1. 내심 */
@@ -125,7 +125,7 @@
         given: (L, M, s, X) => {
           const g = M.g, v = (s.trV || 0) % 3, { A, B, C: Cc, I, D } = g;
           bisL(L, g); feetL(L, g); ringMarks(L, g);
-          if (v === 0) L.ang(A, B, Cc, { noMark: true, color: 'sky', label: dg(2 * M.al), size: 16, labelDist: 74, keep: true });
+          if (v === 0) L.ang(A, B, Cc, { color: 'sky', r: 62, fa: 0.06, label: dg(2 * M.al), size: 16, labelDist: 82, keep: true }); // 전체 각은 바깥 호에, 반쪽 x 는 안쪽 호에
           if (v === 1) L.sd(I, D, pt(I.x, I.y - 50), `${M.r} cm`, { color: 'rose', size: fs(X.b, 15), gap: 8, keep: true });
         },
         bis: (L, M) => { const { A, B, C: Cc, I } = M.g; L.ln(A, I, 'green', 4.4); L.ang(A, B, I, { color: 'sky', r: 32, fa: 0.4 }); L.ang(A, I, Cc, { color: 'sky', r: 32, fa: 0.4 }); },
@@ -210,7 +210,7 @@
         const g = M.g, { A, B, C: Cc, I, F } = g, v = (s.trV || 0) % 3, q = fs(X.b, 15);
         feetL(L, g, 'rose', 2.4); tanBars(L, g, { w: 4.4 });
         const kp = !X.at('sides') && !X.at('tan'), bd = kindOf(M, s) === 'BD' && !(opts.n3 && v === 2);
-        if (!(opts.n3 && v === 2)) { L.sd(A, B, I, `${M.c} cm`, { ...abO(X.b, M.g), color: 'sky', size: q, gap: 24, keep: kp }); L.sd(B, Cc, I, `${M.a} cm`, { color: 'sky', size: q, gap: 22, dx: bcDx(X.b, g, bd), keep: kp }); L.sd(Cc, A, I, `${M.b} cm`, { color: 'sky', size: q, gap: 24, keep: kp }); }
+        if (!(opts.n3 && v === 2)) { L.sd(A, B, I, `${M.c} cm`, { ...abO(X.b, M.g, kindOf(M, s) === 'AF' ? 0.36 : 0.2), color: 'sky', size: q, gap: 24, keep: kp }); L.sd(B, Cc, I, `${M.a} cm`, { color: 'sky', size: q, gap: 22, dx: bcDx(X.b, g, bd), keep: kp }); L.sd(Cc, A, I, `${M.b} cm`, { color: 'sky', size: q, gap: 24, keep: kp }); }
         else { L.sd(A, F, I, `${M.x} cm`, { color: 'sky', size: q, gap: 14, keep: kp }); L.sd(B, Cc, I, `${M.a} cm`, { color: 'sky', size: q, gap: 22, dx: bcDx(X.b, g, bd), keep: kp }); }
       },
       tan: (L, M, s, X) => { const g = M.g; tanBars(L, g); tanLetters(L, g, X); },
@@ -235,7 +235,7 @@
       if (v < 2) return tanSteps(M, n3kind(M, s), `원 I는 △ABC의 내접원이고 D, E, F는 접점이에요. $\\overline{AB}=${c}$ cm, $\\overline{BC}=${a}$ cm, $\\overline{CA}=${bb}$ cm인 이 삼각형`);
       const out = [];
       out.push({ k: 'given', f: 'given', t: `원 I는 △ABC의 내접원이고 D, E, F는 접점이에요. $\\overline{AF}=${x}$ cm, $\\overline{BC}=${a}$ cm일 때 △ABC의 둘레 $x$를 구해요.`, cap: `AF=${x} cm, BC=${a} cm, 둘레=x` });
-      out.push({ k: 'idea', f: 'idea', t: '둘레는 AB+BC+CA예요. AB와 CA를 접선의 길이로 쪼개면, A에서 그은 두 접선(AF=AE)이 두 번 나타나고 나머지는 BC로 묶여요.', cap: '둘레 = AB+BC+CA, 접선의 길이는 같다' });
+      out.push({ k: 'idea', f: 'idea', t: '둘레는 AB+BC+CA예요. AB와 CA를 접선의 길이로 쪼개면, A에서 그은 두 접선(AF=AE)가 두 번 나타나고 나머지는 BC로 묶여요.', cap: '둘레 = AB+BC+CA, 접선의 길이는 같다' });
       out.push({ k: 'fig', f: 'tan', lb: '접선의 길이', t: '$\\overline{AF}=\\overline{AE}=p$, $\\overline{BF}=\\overline{BD}=q$, $\\overline{CD}=\\overline{CE}=r$로 놓으면 $p=' + x + '$, 그리고 $\\overline{BC}=q+r=' + a + '$.', cap: `AF=AE=p=${x}, BC=q+r=${a}` });
       out.push({ k: 'fig', f: 'sides', lb: '변을 합으로', t: `$\\overline{AB}=p+q$, $\\overline{BC}=q+r$, $\\overline{CA}=r+p$예요.`, cap: 'AB=p+q, BC=q+r, CA=r+p' });
       out.push({ k: 'eq', f: 'eq', t: `(둘레) $=(p+q)+(q+r)+(r+p)=2(p+q+r)=2\\{p+(q+r)\\}=2\\times(${x}+${a})=${2 * x + 2 * a}$ (cm)`, cap: `x=2(p+q+r)=2×(${x}+${a})=${2 * x + 2 * a} cm` });
@@ -414,13 +414,15 @@
         },
         idea: (L, M) => { const { A, B, C: Cc, I } = M.g; L.fl([I, B, Cc], 'green', 0.14); },
         sum: (L, M, s, X) => { const { A, B, C: Cc, I } = M.g; L.ang(I, A, B, { color: 'sky', r: 24, label: String(M.a), size: 15, labelDist: 42, keep: true }); L.ang(I, B, Cc, { color: 'green', r: 24, label: String(M.b), size: 15, labelDist: 42, keep: !X.has('bic') }); L.ang(I, Cc, A, { color: 'violet', r: 24, label: String(M.c), size: 15, labelDist: 42, keep: !X.has('cia') }); },
-        bic: (L, M) => { const { B, C: Cc, I } = M.g; L.ang(I, B, Cc, { color: 'green', r: 26, label: dg(M.bic), size: 15, labelDist: 46, fa: 0.4, keep: true }); },
+        bic: (L, M, s, X) => { const { B, C: Cc, I, D } = M.g; L.ang(I, B, Cc, { color: 'green', r: 26, label: dg(M.bic), size: 15, labelDist: Math.max(40, Math.min(46, dist(I, D) * (X.b.k || 60) - 14)), fa: 0.4, keep: true }); },
         cia: (L, M) => { const { A, C: Cc, I } = M.g; L.ang(I, Cc, A, { color: 'violet', r: 26, label: dg(M.cia), size: 15, labelDist: 46, fa: 0.4, keep: true }); }
       },
       x: (b, M, s, X) => {
-        const { A, B, C: Cc } = M.g, v = (s.trV || 0) % 2;
-        if (v === 0) ang(b, A, B, Cc, { color: 'amber', r: 36, label: xLbl(X, M.A), size: 17, labelDist: 58, noMark: !X.xArc, fa: 0.3 });
-        else ang(b, B, A, Cc, { color: 'amber', r: 36, label: xLbl(X, M.B), size: 17, labelDist: 58, noMark: !X.xArc, fa: 0.3 });
+        const { A, B, C: Cc, I } = M.g, v = (s.trV || 0) % 2, kk = b.k || 60;
+        // 라벨은 호 바로 바깥(이등분선 위)에 두되, 내심 I 점을 덮지 않도록 꼭짓점에서 I 까지 거리의 60% 안쪽으로
+        const ld = (V) => Math.max(46, Math.min(60, 0.6 * dist(V, I) * kk));
+        if (v === 0) ang(b, A, B, Cc, { color: 'amber', r: 34, label: xLbl(X, M.A), size: 17, labelDist: ld(A), noMark: !X.xArc, fa: 0.3 });
+        else ang(b, B, A, Cc, { color: 'amber', r: 34, label: xLbl(X, M.B), size: 17, labelDist: ld(B), noMark: !X.xArc, fa: 0.3 });
       }
     })
   };
@@ -792,16 +794,16 @@
 
   /* ====================================================================== 7. 각의 비 */
   const validTri = (a, b, c) => { const S0 = a + b + c; return [a, b, c].every((q) => (360 * q) % S0 === 0 && (360 * q) / S0 > 90 && (360 * q) / S0 < 180); };
-  const VALID = []; for (let a = 1; a <= 8; a++) for (let b = 1; b <= 8; b++) for (let c = 1; c <= 8; c++) if (validTri(a, b, c)) VALID.push([a, b, c]);
-  const VALID_D = VALID.filter((t) => new Set(t).size === 3); // 문제는 세 값이 서로 다른 비만 (5:5:5 처럼 모두 같으면 비 문제가 되지 않아요)
+  const VALID = []; for (let a = 1; a <= 13; a++) for (let b = 1; b <= 13; b++) for (let c = 1; c <= 13; c++) if (validTri(a, b, c)) VALID.push([a, b, c]);
+  const VALID_D = VALID.filter((t) => new Set(t).size === 3 && (360 * Math.min(...t)) / (t[0] + t[1] + t[2]) >= 105); // 문제는 세 값이 서로 다르고 삼각형의 세 각이 모두 30° 이상(각 ∠AIB 등이 105° 이상)인 비만 — 7:8:9, 9:10:11, 11:12:13
   const n7 = {
     id: 't6-7', title: '∠AIB : ∠BIC : ∠CIA 의 비', short: '각의 비', solve: n7Solve,
     question: '내심 I에서 만든 세 각 ∠AIB, ∠BIC, ∠CIA의 비를 알면 ∠A, ∠B, ∠C를 구할 수 있을까?',
     ctl: ['trNm', 'trNn', 'trNo'],
-    init: (s) => { s.trNm = 4; s.trNn = 5; s.trNo = 6; s.trV = 0; },
+    init: (s) => { s.trNm = 7; s.trNn = 8; s.trNo = 9; s.trV = 0; },
     reroll: (s) => { const p = pick(VALID_D, null); s.trNm = p[0]; s.trNn = p[1]; s.trNo = p[2]; s.trV = (s.trV + 1) % 2; },
     model: (s) => {
-      const a0 = clamp(Math.round(s.trNm), 1, 8), b0 = clamp(Math.round(s.trNn), 1, 8), c0 = clamp(Math.round(s.trNo), 1, 8);
+      const a0 = clamp(Math.round(s.trNm), 1, 13), b0 = clamp(Math.round(s.trNn), 1, 13), c0 = clamp(Math.round(s.trNo), 1, 13);
       let best = VALID[0], bd = 1e9; VALID.forEach((t) => { const d = Math.abs(t[0] - a0) + Math.abs(t[1] - b0) + Math.abs(t[2] - c0); if (d < bd) { bd = d; best = t; } });
       const [a, b, c] = best, S0 = a + b + c, aib = (360 * a) / S0, bic = (360 * b) / S0, cia = (360 * c) / S0;
       const A = 2 * (bic - 90), B = 2 * (cia - 90), Cd = 2 * (aib - 90);

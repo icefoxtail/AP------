@@ -332,13 +332,13 @@
     verify: (s) => { const M = r4.model(s), g = M.g; return { ans: angBetween(g.B, g.E, g.D), model: 90, extra: [[dist(g.E, g.B), dist(g.B, g.D)], [dist(g.B, g.C), M.p], [dist(g.C, g.D), M.q]] }; }
   };
 
-  /* ====================================================================== 5. 직선 l을 지나는 직각이등변삼각형 */
-  // 직선 l(가로)이 A를 지나고, B·C는 l 위쪽 양쪽. D,E 는 B,C에서 l에 내린 수선의 발. BD=m, CE=n, AD=n, AE=m
+  /* ====================================================================== 5. 직선 ℓ을 지나는 직각이등변삼각형 */
+  // 직선 l(가로)이 A를 지나고, B·C는 ℓ 위쪽 양쪽. D,E 는 B,C에서 ℓ에 내린 수선의 발. BD=m, CE=n, AD=n, AE=m
   const lineGeom = (m, n) => { const A = pt(0, 0), D = pt(-n, 0), E = pt(m, 0), B = pt(-n, -m), C = pt(m, -n); return { A, B, C, D, E }; };
   const vv5 = (M, s) => (((s.trV || 0) % 3 === 2 && (M.m + M.n) % 2) ? 0 : (s.trV || 0) % 3);
   const r5 = {
     id: 't3-5', title: '꼭짓점을 지나는 직선과 합동', short: '직선을 지나는 합동',
-    question: '직각이등변삼각형의 직각 꼭짓점 A를 지나는 직선 l에 B, C에서 수선을 그으면 어떤 합동이 생길까?',
+    question: '직각이등변삼각형의 직각 꼭짓점 A를 지나는 직선 ℓ에 B, C에서 수선을 그으면 어떤 합동이 생길까?',
     ctl: ['trLm', 'trLn'],
     init: (s) => { s.trLm = 3; s.trLn = 5; s.trV = 0; },
     reroll: (s) => { s.trLm = rint(2, 8); s.trLn = rint(2, 8); s.trV = (s.trV + 1) % 3; },
@@ -363,7 +363,7 @@
       }
       [A, B, Cc, D, E].forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
       tagOut(b, B, cen, 'B', { size: 18 }); tagOut(b, Cc, cen, 'C', { size: 18 }); T(b, A, 'A', { dy: -18, size: 18 }); T(b, D, 'D', { dy: 18, size: 18 }); T(b, E, 'E', { dy: 18, size: 18 });
-      T(b, pt(m + 0.5, 0), 'l', { dy: -14, dx: -6, size: 17, color: 'ink' });
+      T(b, pt(m + 0.5, 0), 'ℓ', { dy: -14, dx: -6, size: 17, color: 'ink' });
       if (!C.thumb && !C.problem) {
         let row, col = 'sky';
         if (C.review && st === 1) row = '∠BAD+∠CAE=90° → ∠ABD=∠CAE';
@@ -379,18 +379,18 @@
       `대응변의 길이가 같으므로 $\\overline{AE}=\\overline{BD}=${M.m}$ cm, $\\overline{AD}=\\overline{CE}=${M.n}$ cm. 따라서 $\\overline{DE}=\\overline{AD}+\\overline{AE}=${M.n}+${M.m}=${M.m + M.n}$ (cm)`
     ],
     view: (M) => ({
-      guide: '막대로 <b>BD</b>와 <b>CE</b>를 바꿔 보세요. 직선 l이 어떤 방향이어도 △ABD≡△CAE예요. 그래서 <b>AE=BD, AD=CE</b>이고 DE=BD+CE예요.',
+      guide: '막대로 <b>BD</b>와 <b>CE</b>를 바꿔 보세요. 직선 ℓ이 어떤 방향이어도 △ABD≡△CAE예요. 그래서 <b>AE=BD, AD=CE</b>이고 DE=BD+CE예요.',
       readouts: [rd('BD = AE', `${M.m} cm`, 'sky'), rd('CE = AD', `${M.n} cm`, 'green'), rd('DE', `${M.m + M.n} cm`, 'amber', 'BD + CE', null, true)],
       formula: `<p>△ABD≡△CAE (RHA)</p><p>$\\overline{DE}=\\overline{AD}+\\overline{AE}=\\overline{CE}+\\overline{BD}=${M.n}+${M.m}=${M.m + M.n}$</p>`,
       rule: '직각이등변삼각형의 직각 꼭짓점을 지나는 직선에 내린 두 수선의 발 D, E에서 △ABD≡△CAE이다.',
-      notes: notes('BD와 AE, AD와 CE를 짝지어요. <b>BD와 CE가 같은 것이 아니에요</b>.', '직선 l이 삼각형을 가로지르지 않을 때(B, C가 l의 같은 쪽)만 DE=BD+CE예요.')
+      notes: notes('BD와 AE, AD와 CE를 짝지어요. <b>BD와 CE가 같은 것이 아니에요</b>.', '직선 ℓ이 삼각형을 가로지르지 않을 때(B, C가 ℓ의 같은 쪽)만 DE=BD+CE예요.')
     }),
     prob: (M, s) => {
       const { m, n } = M, v = vv5(M, s);
-      if (v === 0) return numProb({ tag: '직각이등변삼각형과 수선 · DE', key: `0:${m}:${n}`, stem: `그림과 같이 $\\angle A=90^{\\circ}$, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC의 꼭짓점 A를 지나는 직선 l에 B, C에서 내린 수선의 발을 각각 D, E라 하자. ${S('BD')}=${m} cm, ${S('CE')}=${n} cm일 때, ${S('DE')}의 길이 $x$는?`, correct: m + n, wrongs: [[Math.abs(m - n) || m + 1, '두 길이를 빼지 않고 더해요. DE=AD+AE=CE+BD예요.'], [m, 'BD의 길이예요.'], [n, 'CE의 길이예요.'], [m * n, '곱하지 않고 더해요.'], [m + n + 1, '다시 계산해 보세요.']], ...cmOpts });
-      if (v === 1) return numProb({ tag: '직각이등변삼각형과 수선 · CE', key: `1:${m}:${n}`, stem: `그림과 같이 $\\angle A=90^{\\circ}$, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC의 꼭짓점 A를 지나는 직선 l에 B, C에서 내린 수선의 발을 각각 D, E라 하자. ${S('BD')}=${m} cm, ${S('AD')}=${n} cm일 때, ${S('CE')}의 길이 $x$는?`, correct: n, wrongs: [[m, 'BD의 길이예요. CE는 AD와 같아요.'], [m + n, 'DE의 길이예요.'], [Math.abs(m - n) || n + 2, '다시 생각해 보세요.'], [n + 1, '다시 계산해 보세요.'], [n + 2, '다시 계산해 보세요.']], ...cmOpts });
+      if (v === 0) return numProb({ tag: '직각이등변삼각형과 수선 · DE', key: `0:${m}:${n}`, stem: `그림과 같이 $\\angle A=90^{\\circ}$, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC의 꼭짓점 A를 지나는 직선 ℓ에 B, C에서 내린 수선의 발을 각각 D, E라 하자. ${S('BD')}=${m} cm, ${S('CE')}=${n} cm일 때, ${S('DE')}의 길이 $x$는?`, correct: m + n, wrongs: [[Math.abs(m - n) || m + 1, '두 길이를 빼지 않고 더해요. DE=AD+AE=CE+BD예요.'], [m, 'BD의 길이예요.'], [n, 'CE의 길이예요.'], [m * n, '곱하지 않고 더해요.'], [m + n + 1, '다시 계산해 보세요.']], ...cmOpts });
+      if (v === 1) return numProb({ tag: '직각이등변삼각형과 수선 · CE', key: `1:${m}:${n}`, stem: `그림과 같이 $\\angle A=90^{\\circ}$, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC의 꼭짓점 A를 지나는 직선 ℓ에 B, C에서 내린 수선의 발을 각각 D, E라 하자. ${S('BD')}=${m} cm, ${S('AD')}=${n} cm일 때, ${S('CE')}의 길이 $x$는?`, correct: n, wrongs: [[m, 'BD의 길이예요. CE는 AD와 같아요.'], [m + n, 'DE의 길이예요.'], [Math.abs(m - n) || n + 2, '다시 생각해 보세요.'], [n + 1, '다시 계산해 보세요.'], [n + 2, '다시 계산해 보세요.']], ...cmOpts });
       const area = (m * m + n * n) / 2;
-      return numProb({ tag: '[함정] 직각이등변삼각형과 수선 · 넓이', key: `2:${m}:${n}`, stem: `그림과 같이 $\\angle A=90^{\\circ}$, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC의 꼭짓점 A를 지나는 직선 l에 B, C에서 내린 수선의 발을 각각 D, E라 하자. ${S('BD')}=${m} cm, ${S('CE')}=${n} cm일 때, 사다리꼴 BDEC의 넓이 $x$는?`, correct: ((m + n) * (m + n)) / 2, wrongs: [[(m + n) * (m + n), '2로 나누지 않았어요.'], [m * n, '밑변과 높이만 곱했어요.'], [((m + n) * (m + n)) / 2 + 3, '다시 계산해 보세요.'], [((m + n) * (m + n)) / 2 - 3, '다시 계산해 보세요.'], [m + n, '넓이가 아니라 높이예요.']], tex: (v2) => `${v2}\\text{ cm}^2`, plain: (v2) => v2 + ' cm²', pad: 1, valid: (v2) => v2 > 0 && Number.isInteger(v2) });
+      return numProb({ tag: '[함정] 직각이등변삼각형과 수선 · 넓이', key: `2:${m}:${n}`, stem: `그림과 같이 $\\angle A=90^{\\circ}$, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC의 꼭짓점 A를 지나는 직선 ℓ에 B, C에서 내린 수선의 발을 각각 D, E라 하자. ${S('BD')}=${m} cm, ${S('CE')}=${n} cm일 때, 사다리꼴 BDEC의 넓이 $x$는?`, correct: ((m + n) * (m + n)) / 2, wrongs: [[(m + n) * (m + n), '2로 나누지 않았어요.'], [m * n, '밑변과 높이만 곱했어요.'], [((m + n) * (m + n)) / 2 + 3, '다시 계산해 보세요.'], [((m + n) * (m + n)) / 2 - 3, '다시 계산해 보세요.'], [m + n, '넓이가 아니라 높이예요.']], tex: (v2) => `${v2}\\text{ cm}^2`, plain: (v2) => v2 + ' cm²', pad: 1, valid: (v2) => v2 > 0 && Number.isInteger(v2) });
     },
     verify: (s) => { const M = r5.model(s), g = M.g; return { ans: dist(g.D, g.E), model: M.m + M.n, extra: [[dist(g.A, g.B), dist(g.A, g.C)], [angBetween(g.A, g.B, g.C), 90], [dist(g.A, g.E), dist(g.B, g.D)], [dist(g.A, g.D), dist(g.C, g.E)]] }; }
   };
@@ -469,12 +469,12 @@
       const { m, n, trap, tri } = M, v = (s.trV || 0) % 2;
       return v === 0
         ? { steps: `<p>(사다리꼴) − (합동인 두 삼각형) $=\\frac{(${m}+${n})^2}{2}-${m}\\times${n}=\\frac{${m}^2+${n}^2}{2}$ 이므로</p><p>$\\triangle ABC=\\frac{${m * m}+${n * n}}{2}=${tri}$ (cm²)</p>`, note: '직각이등변삼각형에서 수선의 길이 BD, CE만 알면 넓이는 (BD²+CE²)÷2로 바로 나와요.' }
-        : { steps: `<p>높이 $\\overline{DE}=\\overline{BD}+\\overline{CE}=${m + n}$을 바로 쓰면 $\\frac{(${m}+${n})^2}{2}=${trap}$ (cm²)</p>`, note: '합동을 찾아 DE=BD+CE만 알면 사다리꼴의 넓이는 (BD+CE)²÷2로 바로 나와요.' };
+        : { steps: `<p>높이 $\\overline{DE}=\\overline{BD}+\\overline{CE}=${m + n}$${G.josa(m + n, '을', '를')} 바로 쓰면 $\\frac{(${m}+${n})^2}{2}=${trap}$ (cm²)</p>`, note: '합동을 찾아 DE=BD+CE만 알면 사다리꼴의 넓이는 (BD+CE)²÷2로 바로 나와요.' };
     },
     steps: (M, s) => {
       const { m, n, trap, tri, small } = M, v = (s.trV || 0) % 2, out = [];
       out.push({ k: 'given', f: 'given', t: `$\\angle A=90^{\\circ}$, $\\overline{AB}=\\overline{AC}$이고 $\\overline{BD}\\perp\\overline{DE}$, $\\overline{CE}\\perp\\overline{DE}$예요. $\\overline{BD}=${m}$ cm, $\\overline{CE}=${n}$ cm. 구하는 것은 ${v === 0 ? '△ABC' : '사다리꼴 BDEC'}의 넓이 $x$.`, cap: `∠A=90°, AB=AC, BD=${m} cm, CE=${n} cm` });
-      out.push({ k: 'idea', f: 'idea', t: v === 0 ? '직각이등변삼각형과 두 직각이 있으면 RHA 합동인 두 삼각형(△ABD, △CAE)이 숨어 있어요.' : '사다리꼴의 높이 DE를 알아야 해요. 직각이등변삼각형과 두 직각 → RHA 합동으로 구해요.', cap: '직각이등변 + 두 직각 → RHA 합동 찾기' });
+      out.push({ k: 'idea', f: 'idea', t: v === 0 ? '직각이등변삼각형과 두 직각이 있으면 RHA 합동인 두 삼각형(△ABD, △CAE)가 숨어 있어요.' : '사다리꼴의 높이 DE를 알아야 해요. 직각이등변삼각형과 두 직각 → RHA 합동으로 구해요.', cap: '직각이등변 + 두 직각 → RHA 합동 찾기' });
       out.push({ k: 'fig', f: 'cong', lb: '합동 찾기', t: `$\\angle BAD+\\angle CAE=180^{\\circ}-90^{\\circ}=90^{\\circ}$이고 △ABD에서 $\\angle ABD+\\angle BAD=90^{\\circ}$이므로 $\\angle ABD=\\angle CAE$. △ABD와 △CAE에서 $\\angle D=\\angle E=90^{\\circ}$, $\\overline{AB}=\\overline{CA}$, $\\angle ABD=\\angle CAE$이므로 △ABD≡△CAE (RHA 합동).`, cap: '∠ABD=∠CAE, ∠D=∠E=90°, AB=CA → △ABD≡△CAE (RHA)' });
       out.push({ k: 'fig', f: 'len', lb: '길이 구하기', t: `합동이므로 $\\overline{AE}=\\overline{BD}=${m}$ cm, $\\overline{AD}=\\overline{CE}=${n}$ cm예요. 따라서 $\\overline{DE}=${n}+${m}=${m + n}$ (cm).`, cap: `AE=BD=${m}, AD=CE=${n} → DE=${m + n} cm` });
       if (v === 0) {
@@ -690,7 +690,7 @@
     } else {
       steps.push({ id: 'cong', k: 'fig', lb: '반례 찾기', t: `${c.reason} 그림의 점선 삼각형은 같은 표시를 그대로 두고 모양만 바꾼 삼각형이에요. 합동이 아니에요.`, cap: '같은 표시는 그대로, 모양은 다른 삼각형 → 합동이 아니에요' });
       steps.push({ id: 'ans', k: 'ans', t: `합동이 아니에요 (${c.why})`, cap: `합동이 아니다 (${c.why})` });
-      steps.push({ id: 'trap', k: 'trap', t: '직각 하나만 같은 것으로는 부족해요. 합동 조건에 맞는 요소(변·각)가 충분한지 꼭 확인해요.', cap: '합동 조건에 맞는 요소가 충분한지 확인!' });
+      steps.push({ id: 'trap', k: 'trap', t: '직각 하나만 같은 것으로는 부족해요. 합동 조건에 맞는 요소(변·각)이 충분한지 꼭 확인해요.', cap: '합동 조건에 맞는 요소가 충분한지 확인!' });
     }
     [[T1, 1], [U, 2]].forEach(([Tr]) => {
       const mk = c.m;
@@ -736,7 +736,7 @@
       else {
         steps.push({ id: 'eq', k: 'eq', t: `평행한 두 변은 $${ov('AE')}=${p}$, $${ov('CD')}=${q}$이고 높이는 $${ov('AC')}=${q}+${p}=${p + q}$이므로 $x=\\frac{(${p}+${q})\\times${p + q}}{2}=${area}$ (cm²)`, cap: `x=\\frac{(${p}+${q})×${p + q}}{2}=${area} cm²` });
         steps.push({ id: 'ans', k: 'ans', t: `$x=${area}\\text{ cm}^2$`, cap: `x = ${area} cm²` });
-        steps.push({ id: 'trap', k: 'trap', t: `높이를 $${ov('AB')}=${q}$로 놓고 $\\frac{(${p}+${q})\\times${q}}{2}$로 구하면 틀려요. 높이는 두 평행한 변 사이의 거리인 $${ov('AC')}=${p + q}$예요.`, cap: `높이는 AB=${q}가 아니라 AC=${p + q}` });
+        steps.push({ id: 'trap', k: 'trap', t: `높이를 $${ov('AB')}=${q}$로 놓고 $\\frac{(${p}+${q})\\times${q}}{2}$로 구하면 틀려요. 높이는 두 평행한 변 사이의 거리인 $${ov('AC')}=${p + q}$예요.`, cap: `높이는 AB=${q}${G.josa(q, '이', '가')} 아니라 AC=${p + q}` });
       }
     }
     items.push(SK.ang(A, B, E, { r: 22, on: ['given', 'cong'], col: 'sky', cols: { cong: 'green' } }), SK.ang(Cc, B, D, { r: 22, on: ['given', 'cong'], col: 'sky', cols: { cong: 'green' } }), SK.ang(B, E, D, { r: 26, on: ['given'], col: 'amber' }),
@@ -755,10 +755,10 @@
   };
   r4.solve = mkSolve(r4Plan);
 
-  /* ---- t3-5 직선 l 을 지나는 직각이등변삼각형 · v0: DE · v1: CE · v2 [함정]: 사다리꼴 BDEC 의 넓이 ---- */
+  /* ---- t3-5 직선 ℓ 을 지나는 직각이등변삼각형 · v0: DE · v1: CE · v2 [함정]: 사다리꼴 BDEC 의 넓이 ---- */
   const r5Plan = (M, s) => {
     const { m, n, g } = M, { A, B, C: Cc, D, E } = g, v = vv5(M, s), cen = pt((D.x + E.x) / 2, -Math.max(m, n) * 0.5), steps = [], items = [], area = ((m + n) * (m + n)) / 2;
-    const g0 = `$\\angle A=90^{\\circ}$, $${ov('AB')}=${ov('AC')}$인 직각이등변삼각형이고, B, C에서 직선 $l$에 내린 수선의 발이 D, E예요.`;
+    const g0 = `$\\angle A=90^{\\circ}$, $${ov('AB')}=${ov('AC')}$인 직각이등변삼각형이고, B, C에서 직선 $\\ell$에 내린 수선의 발이 D, E예요.`;
     steps.push({ id: 'given', k: 'given', t: v === 0 ? `${g0} $${ov('BD')}=${m}$ cm, $${ov('CE')}=${n}$ cm이고, 구하는 것은 $${ov('DE')}=x$.` : v === 1 ? `${g0} $${ov('BD')}=${m}$ cm, $${ov('AD')}=${n}$ cm이고, 구하는 것은 $${ov('CE')}=x$.` : `${g0} $${ov('BD')}=${m}$ cm, $${ov('CE')}=${n}$ cm이고, 구하는 것은 사다리꼴 BDEC의 넓이 $x$.`, cap: v === 0 ? `AB=AC, ∠A=90°, BD=${m} cm, CE=${n} cm` : v === 1 ? `AB=AC, ∠A=90°, BD=${m} cm, AD=${n} cm` : `AB=AC, ∠A=90°, BD=${m} cm, CE=${n} cm` });
     steps.push({ id: 'idea', k: 'idea', t: v === 0 ? 'DE=AD+AE이니까 AD, AE의 길이가 필요해요. BD, CE를 이용하도록, 이 둘을 변으로 가지는 두 직각삼각형 ABD, CAE가 합동인지 찾아요.' : v === 1 ? 'CE는 직각삼각형 CAE의 변이에요. △ABD와 합동이라면 CE가 AD와 같을 거예요. 두 직각삼각형 ABD, CAE가 합동인지 찾아요.' : '사다리꼴의 넓이는 (윗변+아랫변)×높이÷2예요. 평행한 두 변 BD, CE와 높이 DE가 필요하니, DE=AD+AE를 합동인 두 직각삼각형 ABD, CAE로 구해요.', cap: '직각삼각형 ABD, CAE가 합동인지 확인' });
     steps.push({ id: 'sum', k: 'fig', lb: '각 구하기', t: '점 A에서 일직선이므로 $\\angle BAD+\\angle BAC+\\angle CAE=180^{\\circ}$이고 $\\angle BAC=90^{\\circ}$예요. 그래서 $\\angle BAD+\\angle CAE=90^{\\circ}$이고, △ABD에서 $\\angle ABD+\\angle BAD=90^{\\circ}$이므로 $\\angle ABD=\\angle CAE$.', cap: '∠BAD+∠CAE=90°, ∠ABD+∠BAD=90° → ∠ABD=∠CAE' });
@@ -769,22 +769,22 @@
     else {
       steps.push({ id: 'eq', k: 'eq', t: `평행한 두 변은 $${ov('BD')}=${m}$, $${ov('CE')}=${n}$이고 높이는 $${ov('DE')}=${m + n}$이므로 $x=\\frac{(${m}+${n})\\times${m + n}}{2}=${area}$ (cm²)`, cap: `x=\\frac{(${m}+${n})×${m + n}}{2}=${area} cm²` });
       steps.push({ id: 'ans', k: 'ans', t: `$x=${area}\\text{ cm}^2$`, cap: `x = ${area} cm²` });
-      steps.push({ id: 'trap', k: 'trap', t: `높이를 $${ov('BD')}=${m}$로 놓고 $\\frac{(${m}+${n})\\times${m}}{2}$로 구하면 틀려요. 높이는 두 평행한 변 사이의 거리인 $${ov('DE')}=${m + n}$이에요.`, cap: `높이는 BD=${m}가 아니라 DE=${m + n}` });
+      steps.push({ id: 'trap', k: 'trap', t: `높이를 $${ov('BD')}=${m}$로 놓고 $\\frac{(${m}+${n})\\times${m}}{2}$로 구하면 틀려요. 높이는 두 평행한 변 사이의 거리인 $${ov('DE')}=${m + n}$이에요.`, cap: `높이는 BD=${m}${G.josa(m, '이', '가')} 아니라 DE=${m + n}` });
     }
-    items.push(SK.ang(A, B, Cc, { r: 24, on: ['given'], col: 'amber' }), SK.tick(A, B, 1, { at: 'given', col: 'amber' }), SK.tick(A, Cc, 1, { at: 'given', col: 'amber' }),
+    items.push(SK.ang(A, B, Cc, { r: 28, on: ['given'], col: 'amber' }), SK.tick(A, B, 1, { at: 'given', col: 'amber' }), SK.tick(A, Cc, 1, { at: 'given', col: 'amber' }),
       SK.ang(D, B, A, { r: 18, on: ['given', 'cong'], col: 'sky', cols: { cong: 'green' } }), SK.ang(E, Cc, A, { r: 18, on: ['given', 'cong'], col: 'sky', cols: { cong: 'green' } }),
       SK.ang(A, B, D, { r: 34, rings: 2, at: 'sum', to: 'cong', col: 'green' }), SK.ang(Cc, A, E, { r: 34, rings: 2, at: 'sum', to: 'cong', col: 'green' }), SK.ang(B, A, D, { r: 34, at: 'sum', to: 'cong', col: 'sky' }), SK.ang(A, Cc, E, { r: 34, at: 'sum', to: 'cong', col: 'sky' }),
       SK.fill([A, B, D], { at: 'cong', to: 'len', col: 'sky', a: 0.26 }), SK.fill([A, Cc, E], { at: 'cong', to: 'len', col: 'green', a: 0.26 }));
     items.push(SK.len(B, D, pt(0, -2), `${m} cm`, { on: ['given', 'len'], col: 'sky', size: 16, gap: 6 }));
     if (v !== 1) items.push(SK.len(Cc, E, pt(0, -2), `${n} cm`, { on: ['given', 'len'], col: 'green', size: 16, gap: 6 }));
     items.push(SK.len(A, E, pt(0, -5), `${m} cm`, { at: 'len', col: 'sky', size: 16, gap: 8 }), SK.len(D, A, pt(0, -5), `${n} cm`, v === 1 ? { on: ['given', 'len'], col: 'green', size: 16, gap: 8 } : { at: 'len', col: 'green', size: 16, gap: 8 }));
-    if (v === 0) items.push(SK.dim(D, E, pt(0, -3), 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, off: 26, labels: { ans: `x=${m + n} cm` } }));
+    if (v === 0) items.push(SK.dim(D, E, pt(0, -3), 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, off: 20, labels: { ans: `x=${m + n} cm` } }));
     else if (v === 1) items.push(SK.len(Cc, E, pt(0, -2), 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, gap: 6, labels: { ans: `x=${n} cm` } }));
-    else items.push(SK.fill([B, D, E, Cc], { on: ['given', 'eq', 'ans'], col: 'amber', a: 0.14 }), SK.txt(pt((D.x + E.x) / 2, (B.y + Cc.y) / 4), 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, labels: { ans: `x=${area} cm²` } }), SK.seg(B, D, { at: 'trap', col: 'rose', w: 5.4 }), SK.dim(D, E, pt(0, -3), `${m + n} cm`, { at: 'len', to: 'eq', col: 'amber', size: 16, off: 26 }));
+    else items.push(SK.fill([B, D, E, Cc], { on: ['given', 'eq', 'ans'], col: 'amber', a: 0.14 }), SK.txt(pt((D.x + E.x) / 2, (B.y + Cc.y) / 4), 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, labels: { ans: `x=${area} cm²` } }), SK.seg(B, D, { at: 'trap', col: 'rose', w: 5.4 }), SK.dim(D, E, pt(0, -3), `${m + n} cm`, { at: 'len', to: 'eq', col: 'amber', size: 16, off: 20 }));
     return {
       fit: [B, Cc, D, E, pt(-n - 0.4, 0), pt(m + 0.4, 0), pt(0, v === 1 ? 0.2 : 0.7)], steps, items, l: 44, r: 44,
       base: (b) => { G.line(b, pt(-n - 0.5, 0), pt(m + 0.5, 0), 'ink', 3, { alpha: 0.7 }); G.poly(b, [A, B, Cc], 'ink', 3.6); G.line(b, B, D, 'ink', 3.2); G.line(b, Cc, E, 'ink', 3.2); G.fillPoly(b, [A, B, Cc], 'amber', 0.06); },
-      names: (b) => { [A, B, Cc, D, E].forEach((z) => b.point(z, { color: 'ink', r: 4.5 })); G.tagOut(b, B, cen, 'B', { size: 18 }); G.tagOut(b, Cc, cen, 'C', { size: 18 }); T(b, A, 'A', { dy: -18, size: 18 }); T(b, D, 'D', { dy: 18, size: 18 }); T(b, E, 'E', { dy: 18, size: 18 }); T(b, pt(m + 0.5, 0), 'l', { dy: -14, dx: -6, size: 17 }); }
+      names: (b) => { [A, B, Cc, D, E].forEach((z) => b.point(z, { color: 'ink', r: 4.5 })); G.tagOut(b, B, cen, 'B', { size: 18 }); G.tagOut(b, Cc, cen, 'C', { size: 18 }); T(b, A, 'A', { dy: -34, size: 18 }); T(b, D, 'D', { dy: 18, size: 18 }); T(b, E, 'E', { dy: 18, size: 18 }); T(b, pt(m + 0.5, 0), 'ℓ', { dy: -13, dx: 8, size: 17 }); }
     };
   };
   r5.solve = mkSolve(r5Plan);

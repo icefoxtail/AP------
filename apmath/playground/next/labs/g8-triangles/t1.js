@@ -693,7 +693,7 @@
       steps.push({ id: 'perp', k: 'fig', lb: '그림 변화', t: '$\\angle ADB$와 $\\angle ADC$는 같고 합이 $180^{\\circ}$(일직선)이므로 각각 $90^{\\circ}$예요. 그림에 직각을 표시해요.', cap: '∠ADB=∠ADC, 합 180° → 각각 90°' });
       steps.push({ id: 'eq', k: 'eq', t: `△ABD의 내각의 합에서 $x=180^{\\circ}-${dd(h)}-90^{\\circ}=${dd(bb)}$`, cap: `x=180°−${h}°−90°=${bb}°` });
       steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(bb)}$`, cap: `x = ${bb}°` });
-      items.push(halfL({ on: ['given', 'cong', 'eq'], col: 'sky', label: dg(h), ld: 62, gl: true, glTo: 'eq' }), halfR({ on: ['given', 'cong'], col: 'sky', cols: { cong: 'green' }, label: dg(h), ld: 62, gl: true, glTo: 'eq' }),
+      items.push(halfL({ on: ['given', 'cong', 'eq'], col: 'sky', label: dg(h), ld: 70, lr: G.sideRot(A, B, D, 'A', 24), gl: true, glTo: 'eq' }), halfR({ on: ['given', 'cong'], col: 'sky', cols: { cong: 'green' }, label: dg(h), ld: 70, lr: G.sideRot(A, D, Cc, 'B', 24), gl: true, glTo: 'eq' }),
         SK.ang(B, Cc, A, { r: 30, ld: 54, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${bb}°` }, gl: true }),
         SK.ang(D, A, B, { r: 20, at: 'perp', to: 'eq', col: 'green' }), SK.ang(D, A, Cc, { r: 20, at: 'perp', col: 'green' }));
     } else if (v === 1) {
@@ -814,7 +814,7 @@
       SK.tick(Pp, B, 2, { at: 'sym', col: 'rose' }), SK.tick(Pp, Cc, 2, { at: 'sym', col: 'rose' }),
       SK.ang(D, Pp, B, { r: 20, at: 'sym', col: 'green' }), SK.ang(D, Pp, Cc, { r: 20, at: 'sym', col: 'green' }));
     const sym = { id: 'sym', k: 'fig', lb: '합동 찾기', t: `AD는 BC를 수직이등분하므로 △PBD와 △PCD에서 $\\overline{BD}=\\overline{CD}$, $\\angle PDB=\\angle PDC=90^{\\circ}$, $\\overline{PD}$는 공통이에요. 따라서 △PBD≡△PCD (SAS 합동)이고 $\\overline{PB}=\\overline{PC}$, $\\angle PBC=\\angle PCB=${dd(th)}$예요.`, cap: `△PBD≡△PCD → PB=PC, ∠PBC=∠PCB=${th}°` };
-    const outB = (str, o) => SK.txt(B, str, { dx: 34, dy: 22, size: 15, ...o }), outC = (str, o) => SK.txt(Cc, str, { dx: 34, dy: -22, size: 15, ...o });
+    const sr = G.sideRot; // 좁은 각의 값은 부채꼴 밖에 두되, G.ang 이 호에서 시작하는 지시선으로 그 각을 가리켜요
     if (v === 0) {
       steps.push({ id: 'given', k: 'given', t: `${g0} $\\angle A=${dd(a)}$, $\\angle PCB=${dd(th)}$이고, 구하는 것은 $\\angle ABP=x$.`, cap: `AB=AC, ∠A=${a}°, ∠PCB=${th}°` });
       steps.push({ id: 'idea', k: 'idea', t: 'P가 이등분선 AD 위에 있으면 PB=PC예요. 그러면 $\\angle PBC=\\angle PCB$를 알 수 있고, $\\angle ABP$는 밑각 $\\angle ABC$에서 $\\angle PBC$를 뺀 각이에요.', cap: '∠ABP = ∠ABC − ∠PBC' });
@@ -823,20 +823,19 @@
       steps.push({ id: 'eq', k: 'eq', t: `$x=\\angle ABC-\\angle PBC=${dd(bb)}-${dd(th)}=${dd(rest)}$`, cap: `x=${bb}°−${th}°=${rest}°` });
       steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(rest)}$`, cap: `x = ${rest}°` });
       items.push(SK.ang(A, B, Cc, { r: 30, ld: 62, lr: -a / 4, on: ['given'], col: 'sky', label: dg(a), gl: true, glTo: 'idea' }),
-        SK.ang(Cc, Pp, B, { r: 44, on: ['given', 'sym'], col: 'sky', cols: { sym: 'green' }, gl: false }), outC(dg(th), { on: ['given', 'sym'], col: 'sky', cols: { sym: 'green' } }),
-        SK.ang(B, Pp, Cc, { r: 44, at: 'sym', col: 'green' }), outB(dg(th), { at: 'sym', col: 'green', to: 'sym' }),
+        SK.ang(Cc, Pp, B, { r: 44, on: ['given', 'sym'], col: 'sky', cols: { sym: 'green' }, label: dg(th), ld: 76, lr: sr(Cc, Pp, B, 'B', 16) }),
+        SK.ang(B, Pp, Cc, { r: 44, at: 'sym', col: 'green', label: dg(th), ld: 76, lr: sr(B, Pp, Cc, 'B', 16), gl: true }),
         SK.ang(B, A, Cc, { r: 60, ld: 90, at: 'base', col: 'violet', fa: 0.2, label: dg(bb), size: 16 }),
-        SK.ang(B, A, Pp, { r: 40, on: ['given', 'eq', 'ans'], col: 'amber', fa: 0.5 }), SK.txt(B, 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 17, dx: -28, dy: -16, labels: { ans: `x=${rest}°` } }));
+        SK.ang(B, A, Pp, { r: 40, on: ['given', 'eq', 'ans'], col: 'amber', fa: 0.5, label: 'x', size: 17, labels: { ans: `x=${rest}°` }, ld: 72, lr: sr(B, A, Pp, 'A', 16), gl: true }));
     } else {
       steps.push({ id: 'given', k: 'given', t: `${g0} $\\angle PBC=${dd(th)}$이고, 구하는 것은 $\\angle BPC=x$.`, cap: `AB=AC, ∠PBC=${th}°` });
       steps.push({ id: 'idea', k: 'idea', t: 'P가 이등분선 AD 위에 있으면 PB=PC라서 삼각형 PBC는 이등변삼각형이에요. 그러면 $\\angle PCB$도 알 수 있고, 세 각의 합 $180^{\\circ}$에서 꼭지각 $\\angle BPC$를 구해요.', cap: 'PB=PC → △PBC는 이등변삼각형' });
       steps.push(sym);
       steps.push({ id: 'eq', k: 'eq', t: `△PBC의 내각의 합에서 $x=180^{\\circ}-${dd(th)}-${dd(th)}=${dd(x)}$`, cap: `x=180°−${th}°−${th}°=${x}°` });
       steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(x)}$`, cap: `x = ${x}°` });
-      items.push(SK.ang(B, Pp, Cc, { r: 44, on: ['given', 'sym'], col: 'sky', cols: { sym: 'green' } }), outB(dg(th), { on: ['given', 'sym'], col: 'sky', cols: { sym: 'green' }, gl: false }),
-        SK.ang(Cc, Pp, B, { r: 44, at: 'sym', col: 'green' }), outC(dg(th), { at: 'sym', col: 'green', to: 'sym' }),
-        SK.ang(Pp, B, Cc, { r: 16, on: ['given', 'eq', 'ans'], col: 'amber', fa: 0.5 }),
-        SK.fn((b, st, id) => { if (id === 'ans') T(b, Pp, `x=${x}°`, { color: 'amber', size: 16, dx: -46, dy: -18 }); else T(b, Pp, 'x', { color: st === 'on' ? 'amber' : 'ink', size: 17, dx: 28, dy: 0, alpha: st === 'on' ? undefined : 0.55 }); }, { on: ['given', 'eq', 'ans'] }));
+      items.push(SK.ang(B, Pp, Cc, { r: 44, on: ['given', 'sym'], col: 'sky', cols: { sym: 'green' }, label: dg(th), ld: 76, lr: sr(B, Pp, Cc, 'B', 16) }),
+        SK.ang(Cc, Pp, B, { r: 44, at: 'sym', col: 'green', label: dg(th), ld: 76, lr: sr(Cc, Pp, B, 'B', 16), gl: true }),
+        SK.ang(Pp, B, Cc, { r: 16, on: ['given', 'eq', 'ans'], col: 'amber', fa: 0.5, label: 'x', size: 17, labels: { ans: `x=${x}°` }, ld: 40, lr: sr(Pp, B, Cc, 'A', 40 - (90 - th)), gl: true }));
     }
     return {
       fit: [A, B, Cc, pt(0.45, 0)], steps, items, l: 50, r: 56,
@@ -862,7 +861,7 @@
     steps.push({ id: 'idea', k: 'idea', t: '두 내각이 같은 삼각형은 이등변삼각형이라서, 그 각의 마주 보는 변 AB, AC의 길이가 같아요. 같은 길이를 두 가지 식으로 나타냈으니 "="로 이으면 $x$에 대한 방정식이 돼요.', cap: '∠B=∠C → AB=AC → 두 식을 =로 잇기' });
     steps.push({ id: 'fig', k: 'fig', lb: '그림 변화', t: '$\\angle B=\\angle C$이므로 마주 보는 변 AB, AC에 같은 눈금을 그려요.', cap: 'AB=AC' });
     steps.push({ id: 'eq1', k: 'eq', lb: '식 세우기', t: `$${e1}=${e2}$`, cap: `${pe1} = ${pe2}` });
-    steps.push({ id: 'eq2', k: 'eq', lb: '식 풀기', t: `$${Q.p - Q.r === 1 ? '' : Q.p - Q.r}x=${Q.sv - Q.q}$이므로 $x=${x0}$`, cap: `${Q.p - Q.r === 1 ? '' : Q.p - Q.r}x=${Q.sv - Q.q} → x=${x0}` });
+    steps.push({ id: 'eq2', k: 'eq', lb: '식 풀기', t: Q.p - Q.r === 1 ? `$x$ 항은 왼쪽으로, 숫자는 오른쪽으로 모아 정리하면 $x=${Q.sv - Q.q}$` : `$${Q.p - Q.r}x=${Q.sv - Q.q}$이므로 $x=${x0}$`, cap: Q.p - Q.r === 1 ? `x=${Q.sv - Q.q}` : `${Q.p - Q.r}x=${Q.sv - Q.q} → x=${x0}` });
     steps.push({ id: 'ans', k: 'ans', t: `$x=${x0}$ (이때 $\\overline{AB}=\\overline{AC}=${l1}$ cm로 양수예요)`, cap: `x = ${x0}  (AB=AC=${l1} cm)` });
     items.push(SK.ang(B, Cc, A, { rings: 2, r: 30, on: ['given'], col: 'sky' }), SK.ang(Cc, A, B, { rings: 2, r: 30, on: ['given'], col: 'sky' }),
       SK.len(A, B, cen, `(${pe1})cm`, { on: ['given', 'eq1', 'ans'], col: 'sky', size: 16, gap: 6, labels: { ans: `${l1} cm` } }), SK.len(A, Cc, cen, `(${pe2})cm`, { on: ['given', 'eq1', 'ans'], col: 'sky', size: 16, gap: 6, labels: { ans: `${l2} cm` } }),

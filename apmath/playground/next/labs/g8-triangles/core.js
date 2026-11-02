@@ -164,6 +164,15 @@
       const need = (textW(o.label, size) / 2 + 5) / Math.max(0.2, Math.sin(clamp(Math.abs(d) / 2, 0.12, 1.5)));
       const dst = o.labelDist != null ? o.labelDist : Math.max(r + 14, Math.min(need, r + 70));
       const la = am + (o.labelRot || 0) * DEG;
+      { // 라벨이 각의 부채꼴 밖에 놓이면(좁은 각), 호의 이등분선 위에서 시작하는 짧은 지시선으로 그 각을 가리켜요
+        const sgn0 = d < 0 ? -1 : 1; let tt0 = (sgn0 * (la - a0)) % (PI * 2); if (tt0 < 0) tt0 += PI * 2;
+        if (tt0 > Math.abs(d) + 1e-6 && !o.noLeader) {
+          const kk = b.k || 60, from = { x: V.x + Math.cos(am) * (rw + 3 / kk), y: V.y + Math.sin(am) * (rw + 3 / kk) }, cx = V.x + Math.cos(la) * dst / kk, cy = V.y + Math.sin(la) * dst / kk;
+          const vx = cx - from.x, vy = cy - from.y, ln = Math.hypot(vx, vy) || 1, ux = vx / ln, uy = vy / ln;
+          const edge = (Math.abs(ux) * (textW(o.label, size) / 2 + 3) + Math.abs(uy) * (size * 0.6 + 2)) / kk;
+          if (ln > edge + 4 / kk) b.path([from, { x: cx - ux * edge, y: cy - uy * edge }], { color: col, width: 1.8, alpha: o.alpha });
+        }
+      }
       T(b, V, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha });
     }
     return { deg, mid: am };
@@ -665,4 +674,10 @@
     return Object.assign({ steps: (M, s) => plan(M, s).steps, draw: (b, s, M, C, ST, idx) => render(b, plan(M, s), idx) }, extra || {});
   }
   G.SVK = K; G.mkSolve = mkSolve;
+  // 좁은 각의 라벨 위치: 각 VA–VB 의 이등분선에서 변 VA 쪽(side='A') 또는 VB 쪽(side='B')으로 (반각+extra)° 돌린 labelRot.
+  // 라벨이 부채꼴 밖에 놓이면 G.ang 이 호의 이등분선에서 시작하는 지시선을 그려 그 각을 분명히 가리켜요.
+  G.sideRot = (V, A, B, side, extra = 14) => {
+    const a0 = Math.atan2(A.y - V.y, A.x - V.x), a1 = Math.atan2(B.y - V.y, B.x - V.x), d = ((a1 - a0 + Math.PI * 3) % (Math.PI * 2)) - Math.PI, sgn = d < 0 ? -1 : 1;
+    return (side === 'A' ? -1 : 1) * sgn * (Math.abs(d) / (Math.PI / 180) / 2 + extra);
+  };
 })();

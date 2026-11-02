@@ -64,16 +64,16 @@
       out.push({ k: 'idea', t: '이등변삼각형이면 두 밑각이 같고, 외각은 이웃하지 않는 두 내각의 합이에요. 이 둘을 번갈아 써요.', cap: '이등변 → 밑각이 같다, 외각 = 이웃하지 않는 두 내각의 합' });
       for (let j = 1; j <= n - 1; j++) {
         if (j === 1) out.push({ k: 'fig', j, lb: '각 구하기', t: `$${ovl(0, 1)}=${ovl(1, 2)}$이므로 △${L(0)}${L(1)}${L(2)}는 이등변삼각형이에요. 두 밑각이 같으므로 $\\angle ${L(1)}${L(2)}${L(0)}=\\angle ${L(1)}${L(0)}${L(2)}=${val(1)}$.`, cap: `${L(0)}${L(1)}=${L(1)}${L(2)} → ∠${L(1)}${L(2)}${L(0)}=∠${L(0)}=${valP(1)}` });
-        else out.push({ k: 'fig', j, lb: '각 구하기', t: `$\\angle ${L(j)}${L(j - 1)}${L(j + 1)}$은 △${L(0)}${L(j - 1)}${L(j)}의 외각이므로 $${A1}+\\angle ${L(0)}${L(j)}${L(j - 1)}=${v === 0 ? `${a}^{\\circ}+${(j - 1) * a}^{\\circ}` : `x+${xs(j - 1)}`}=${val(j)}$. $${ovl(j - 1, j)}=${ovl(j, j + 1)}$이므로 $\\angle ${L(j)}${L(j + 1)}${L(j - 1)}=${val(j)}$.`, cap: `외각 ∠${L(j)}${L(j - 1)}${L(j + 1)}=${v === 0 ? `${a}°+${(j - 1) * a}°` : `x+${xs(j - 1)}`}=${valP(j)} → ∠${L(j)}${L(j + 1)}${L(j - 1)}=${valP(j)}` });
+        else out.push({ k: 'fig', j, lb: '각 구하기', t: `$\\angle ${L(j)}${L(j - 1)}${L(j + 1)}$는 △${L(0)}${L(j - 1)}${L(j)}의 외각이므로 $${A1}+\\angle ${L(0)}${L(j)}${L(j - 1)}=${v === 0 ? `${a}^{\\circ}+${(j - 1) * a}^{\\circ}` : `x+${xs(j - 1)}`}=${val(j)}$. $${ovl(j - 1, j)}=${ovl(j, j + 1)}$이므로 $\\angle ${L(j)}${L(j + 1)}${L(j - 1)}=${val(j)}$.`, cap: `외각 ∠${L(j)}${L(j - 1)}${L(j + 1)}=${v === 0 ? `${a}°+${(j - 1) * a}°` : `x+${xs(j - 1)}`}=${valP(j)} → ∠${L(j)}${L(j + 1)}${L(j - 1)}=${valP(j)}` });
       }
       if (v === 0) {
-        out.push({ k: 'eq', t: `$${EXT}$은 △${L(0)}${L(n - 1)}${L(n)}의 외각이므로 $x=${A1}+${LASTB}=${a}^{\\circ}+${(n - 1) * a}^{\\circ}=${ans}^{\\circ}$.`, cap: `x=∠${L(0)}+∠${L(0)}${L(n)}${L(n - 1)}=${a}°+${(n - 1) * a}°=${ans}°` });
+        out.push({ k: 'eq', t: `$${EXT}$는 △${L(0)}${L(n - 1)}${L(n)}의 외각이므로 $x=${A1}+${LASTB}=${a}^{\\circ}+${(n - 1) * a}^{\\circ}=${ans}^{\\circ}$.`, cap: `x=∠${L(0)}+∠${L(0)}${L(n)}${L(n - 1)}=${a}°+${(n - 1) * a}°=${ans}°` });
         out.push({ k: 'ans', t: `$x=${ans}^{\\circ}$`, cap: `x = ${ans}°` });
         out.push({ k: 'trap', t: `$${INT}=180^{\\circ}-${a}^{\\circ}-${(n - 1) * a}^{\\circ}=${180 - ans}^{\\circ}$처럼 안쪽 각을 구하면 안 돼요. $x$는 바깥쪽 각 $${EXT}$이고, 외각은 이웃하지 않는 두 내각의 합이에요. (안쪽 각과 바깥쪽 각의 합은 $180^{\\circ}$)`, cap: `∠${L(0)}${L(n - 1)}${L(n)}=${180 - ans}°는 안쪽 각이라 틀려요 → 바깥쪽 각 x=${ans}°` });
       } else {
         out.push({ k: 'eq', t: `$${EXT}=${A1}+${LASTB}=x+${xs(n - 1)}=${xs(n)}$이고 $${EXT}=${ans}^{\\circ}$이므로 $${xs(n)}=${ans}^{\\circ}$, $x=\\frac{${ans}^{\\circ}}{${n}}=${a}^{\\circ}$.`, cap: `x+${xs(n - 1)}=${xs(n)}=${ans}° → x=\\frac{${ans}}{${n}}=${a}°` });
         out.push({ k: 'ans', t: `$x=${a}^{\\circ}$`, cap: `x = ${a}°` });
-        out.push({ k: 'trap', t: `외각 $${EXT}$를 안쪽 밑각 $${LASTB}=${xs(n - 1)}$와 같다고 놓으면 $${xs(n - 1)}=${ans}^{\\circ}$, $x=\\frac{${ans}^{\\circ}}{${n - 1}}$이 되어 틀려요. 외각은 $x$와 $${xs(n - 1)}$의 합이에요.`, cap: `${xs(n - 1)}=${ans}° 로 놓으면 틀려요 (외각 = x+${xs(n - 1)})` });
+        out.push({ k: 'trap', t: `외각 $${EXT}$를 안쪽 밑각 $${LASTB}=${xs(n - 1)}$와 같다고 놓으면 $${xs(n - 1)}=${ans}^{\\circ}$, $x=\\frac{${ans}^{\\circ}}{${n - 1}}$${G.josa(n - 1, '이', '가')} 되어 틀려요. 외각은 $x$와 $${xs(n - 1)}$의 합이에요.`, cap: `${xs(n - 1)}=${ans}° 로 놓으면 틀려요 (외각 = x+${xs(n - 1)})` });
       }
       return out;
     },
@@ -197,9 +197,9 @@
       const { n, x } = M, L = (i) => nameOf(i), out = [];
       for (let j = 1; j <= n - 1; j++) {
         if (j === 1) out.push(`$\\overline{${L(0)}${L(1)}}=\\overline{${L(1)}${L(2)}}$이므로 △${L(0)}${L(1)}${L(2)}는 이등변삼각형이에요. 두 밑각 $\\angle ${L(1)}${L(2)}${L(0)}=\\angle ${L(0)}=x=${x}^{\\circ}$예요.`);
-        else out.push(`$\\angle ${L(j)}${L(j - 1)}${L(j + 1)}$은 △${L(0)}${L(j - 1)}${L(j)}의 외각이므로 $\\angle ${L(0)}+\\angle ${L(0)}${L(j)}${L(j - 1)}=x+${j - 1}x=${j}x=${j * x}^{\\circ}$예요. $\\overline{${L(j)}${L(j - 1)}}=\\overline{${L(j)}${L(j + 1)}}$이므로 두 밑각이 같아요.`);
+        else out.push(`$\\angle ${L(j)}${L(j - 1)}${L(j + 1)}$는 △${L(0)}${L(j - 1)}${L(j)}의 외각이므로 $\\angle ${L(0)}+\\angle ${L(0)}${L(j)}${L(j - 1)}=x+${j - 1}x=${j}x=${j * x}^{\\circ}$예요. $\\overline{${L(j)}${L(j - 1)}}=\\overline{${L(j)}${L(j + 1)}}$이므로 두 밑각이 같아요.`);
       }
-      out.push(`구하는 $\\angle ${L(n)}${L(n - 1)}${L(n + 1)}$은 △${L(0)}${L(n - 1)}${L(n)}의 외각이므로 $\\angle ${L(0)}+\\angle ${L(0)}${L(n)}${L(n - 1)}=x+${n - 1}x=${n}x=${n * x}^{\\circ}$예요.`);
+      out.push(`구하는 $\\angle ${L(n)}${L(n - 1)}${L(n + 1)}$는 △${L(0)}${L(n - 1)}${L(n)}의 외각이므로 $\\angle ${L(0)}+\\angle ${L(0)}${L(n)}${L(n - 1)}=x+${n - 1}x=${n}x=${n * x}^{\\circ}$예요.`);
       return out;
     },
     view: (M) => ({
@@ -384,7 +384,7 @@
     if (v === 0) steps.push({ id: 'given', k: 'given', t: `${gv} $\\angle B=${dd(x)}$예요. 구하는 것은 $\\angle EDF=x$.`, cap: `AB=AC=CD=CE, ∠B=${x}°` });
     else if (v === 1) steps.push({ id: 'given', k: 'given', t: `${gv} $\\angle B=${dd(x)}$예요. 구하는 것은 $\\angle CDE=x$.`, cap: `AB=AC=CD=CE, ∠B=${x}°` });
     else steps.push({ id: 'given', k: 'given', t: `${gv} $\\angle EDF=${dd(edf)}$예요. 구하는 것은 $\\angle B=x$.`, cap: `AB=AC=CD=CE, ∠EDF=${edf}°` });
-    steps.push({ id: 'idea', k: 'idea', t: sym ? '각을 하나만 알아도 이등변삼각형(밑각이 같다)과 외각(이웃하지 않는 두 내각의 합)을 번갈아 쓰면 다음 각을 계속 구할 수 있어요. ∠B를 $x$로 놓고 ∠EDF까지 따라가 식으로 나타낸 뒤, 주어진 값과 같다고 놓아요.' : '같은 길이의 변이 이어져 있어서, 이등변삼각형의 두 밑각이 같다는 것과 외각 = 이웃하지 않는 두 내각의 합을 번갈아 쓰면 각을 하나씩 구해 갈 수 있어요. 아는 각 ∠B에서 출발해요.', cap: '밑각이 같다 + 외각 = 이웃하지 않는 두 내각의 합' });
+    steps.push({ id: 'idea', k: 'idea', t: sym ? '각을 하나만 알아도 이등변삼각형(밑각이 같다)와 외각(이웃하지 않는 두 내각의 합)을 번갈아 쓰면 다음 각을 계속 구할 수 있어요. ∠B를 $x$로 놓고 ∠EDF까지 따라가 식으로 나타낸 뒤, 주어진 값과 같다고 놓아요.' : '같은 길이의 변이 이어져 있어서, 이등변삼각형의 두 밑각이 같다는 것과 외각 = 이웃하지 않는 두 내각의 합을 번갈아 쓰면 각을 하나씩 구해 갈 수 있어요. 아는 각 ∠B에서 출발해요.', cap: '밑각이 같다 + 외각 = 이웃하지 않는 두 내각의 합' });
     steps.push({ id: 'a1', k: 'fig', lb: '각 구하기 ①', t: `$${ov('AB')}=${ov('AC')}$이므로 $\\angle ACB=\\angle B=${t(1)}$예요.`, cap: `AB=AC → ∠ACB=∠B=${V(1, `${x}°`)}` });
     steps.push({ id: 'a2', k: 'fig', lb: '각 구하기 ②', t: `$\\angle CAD$는 △ABC의 외각이므로 $\\angle B+\\angle ACB=${t(2)}$예요. $${ov('CA')}=${ov('CD')}$이므로 $\\angle CDA=\\angle CAD=${t(2)}$.`, cap: `외각 ∠CAD=∠B+∠ACB=${V(2, `${a2}°`)} → ∠CDA=${V(2, `${a2}°`)}` });
     steps.push({ id: 'a3', k: 'fig', lb: '각 구하기 ③', t: `$\\angle DCE$는 △BCD의 외각이므로 $\\angle B+\\angle CDB=x_0+${t(2)}=${t(3)}$예요.`.replace('x_0', t(1)), cap: `외각 ∠DCE=∠B+∠CDB=${V(3, `${c3}°`)}` });
@@ -447,15 +447,15 @@
     const angB = (o) => SK.ang(B, Cc, A, { r: 26, ld: 40, rings: 2, ...o }), angC = (o) => SK.ang(Cc, A, B, { r: 26, ld: 40, rings: 2, ...o });
     const outer = (o) => SK.ang(Cc, A, D, { r: 24, ld: 40, ...o });
     const CAD = (o) => SK.ang(A, Cc, D, { r: 36, rings: 3, ...o }), CDA = (o) => SK.ang(D, A, Cc, { r: 30, rings: 3, ...o });
-    // 좁은 각(약 35° 이하)은 호만 그리고 값은 선 밖에 씁니다
-    const outCAD = (str, o) => SK.txt(A, str, { dx: 52, dy: -12, size: 14, ...o }), outCDA = (str, o) => SK.txt(D, str, { dx: -36, dy: 20, size: 14, ...o });
+    // 좁은 각(약 35° 이하)의 값은 부채꼴 밖에 두되, G.ang 이 호에서 시작하는 지시선으로 그 각을 가리켜요
+    const sr = G.sideRot;
     if (v !== 1) items.push(apex({ on: ['given', 'outer'], col: 'sky', label: dg(a), gl: true }));
     items.push(angB({ at: 'base', to: 'outer', col: 'green', cols: { outer: 'sky' }, label: v === 1 ? '' : dg(bb), labels: { outer: '' }, gl: true, glTo: 'base' }), angC({ at: 'base', col: 'green' }),
       outer({ at: 'outer', col: 'green', label: dg(a + bb), size: 15, gl: true, glTo: 'iso' }),
-      CAD({ ...(v === 2 ? { on: ['iso', 'trap'], cols: { trap: 'rose' } } : { at: 'iso' }), col: 'green' }), outCAD(dg(cad), { at: 'iso', col: 'green', to: 'iso' }));
+      CAD({ ...(v === 2 ? { on: ['iso', 'trap'], cols: { trap: 'rose' } } : { at: 'iso' }), col: 'green', label: dg(cad), size: 14, ld: 74, lr: sr(A, Cc, D, 'B', 24), gl: true }));
     if (v === 1) items.push(angB({ on: ['given'], col: 'sky', label: dg(bb), gl: true, glTo: 'outer' }));
     if (v === 2) items.push(CDA({ at: 'iso', col: 'green' }), SK.ang(A, B, D, { r: 46, ld: 60, on: ['given', 'eq', 'ans'], col: 'amber', fa: 0.12, label: 'x', size: 17, gl: true }));
-    else items.push(CDA({ on: ['given', 'iso', 'ans'], col: 'amber', label: '', fa: 0.5 }), SK.fn((b, st, id) => { T(b, D, id === 'ans' ? `x=${cad}°` : 'x', { color: st === 'on' ? 'amber' : 'ink', size: id === 'ans' ? 16 : 17, dx: -40, dy: 22, alpha: st === 'on' ? undefined : 0.55 }); }, { on: ['given', 'iso', 'ans'] }));
+    else items.push(CDA({ on: ['given', 'iso', 'ans'], col: 'amber', fa: 0.5, label: 'x', size: 17, labels: { ans: `x=${cad}°` }, ld: 62, lr: sr(D, A, Cc, 'A', 34), gl: true }));
     return {
       fit: [A, B, Cc, E, pt(B.x, 0.35)], steps, items, l: 44, r: 44,
       base: (b) => { G.fillPoly(b, [A, B, Cc], 'sky', 0.08); G.poly(b, [A, B, Cc], 'ink', 3.6); G.line(b, Cc, E, 'ink', 3.4); G.line(b, A, D, 'ink', 3.4); },

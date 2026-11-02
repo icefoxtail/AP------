@@ -225,7 +225,7 @@
   const m2Solve = {
     steps: (M, s) => {
       const v = (s.trV || 0) % 2, { a, b: bb, c, r, R, tri, circ } = M, out = [];
-      out.push({ k: 'given', f: 'given', t: v === 0 ? `∠C=90°이고 $\\overline{BC}=${a}$ cm, $\\overline{CA}=${bb}$ cm, $\\overline{AB}=${c}$ cm인 직각삼각형 ABC의 외심이 O, 내심이 I예요. 외접원에서 △ABC를 제외한 색칠한 부분의 넓이 $x$를 구해요.` : `∠C=90°이고 $\\overline{BC}=${a}$ cm, $\\overline{CA}=${bb}$ cm, $\\overline{AB}=${c}$ cm인 직각삼각형 ABC의 외심이 O, 내심이 I예요. 외접원의 반지름 R과 내접원의 반지름 r의 합 $x=R+r$를 구해요.`, cap: v === 0 ? `∠C=90°, BC=${a}, CA=${bb}, AB=${c} (cm), 색칠한 부분=x` : `∠C=90°, BC=${a}, CA=${bb}, AB=${c} (cm), R+r=x` });
+      out.push({ k: 'given', f: 'given', t: v === 0 ? `∠C=90°이고 $\\overline{BC}=${a}$ cm, $\\overline{CA}=${bb}$ cm, $\\overline{AB}=${c}$ cm인 직각삼각형 ABC의 외심이 O, 내심이 I예요. 외접원에서 △ABC를 제외한 색칠한 부분의 넓이 $x$를 구해요.` : `∠C=90°이고 $\\overline{BC}=${a}$ cm, $\\overline{CA}=${bb}$ cm, $\\overline{AB}=${c}$ cm인 직각삼각형 ABC의 외심이 O, 내심이 I예요. 외접원의 반지름 R과 내접원의 반지름 r의 합 $x=R+r$을 구해요.`, cap: v === 0 ? `∠C=90°, BC=${a}, CA=${bb}, AB=${c} (cm), 색칠한 부분=x` : `∠C=90°, BC=${a}, CA=${bb}, AB=${c} (cm), R+r=x` });
       out.push({ k: 'idea', f: 'idea', t: v === 0 ? '색칠한 부분은 (외접원의 넓이) − (삼각형의 넓이)예요. 직각삼각형의 외심은 빗변의 중점이라서, 외접원의 반지름 R은 빗변의 반이에요. 그러면 원의 넓이를 쉽게 구할 수 있어요.' : '직각삼각형은 R과 r을 따로 구하는 쉬운 길이 있어요. 외심은 빗변의 중점이라 R은 빗변의 반이고, 직각 꼭짓점 쪽의 정사각형을 이용하면 r은 (두 변의 합 − 빗변)의 반이에요.', cap: v === 0 ? '색칠한 부분 = 외접원의 넓이 − 삼각형의 넓이' : 'R=빗변의 반, r=(두 변의 합−빗변)÷2' });
       out.push({ k: 'fig', f: 'R', lb: '외접원의 반지름', t: `∠C=90°이므로 외심 O는 빗변 AB의 중점이에요. $R=\\overline{OA}=\\overline{OB}=\\overline{OC}=\\frac{\\overline{AB}}{2}=\\frac{${c}}{2}=${R}$ (cm).`, cap: `R=\\frac{AB}{2}=\\frac{${c}}{2}=${R} cm` });
       if (v === 0) {
@@ -250,7 +250,7 @@
           L.ang(Cc, A, B, { color: 'sky', r: 26 }); L.ln(O, Cc, 'rose', 3); L.tk(A, O, 1, 'amber'); L.tk(O, B, 1, 'amber');
           L.sd(Cc, B, pt(I.x, -50), `${M.a} cm`, { color: 'sky', size: q, gap: 8, keep: true }); L.sd(Cc, A, pt(80, I.y), `${M.b} cm`, { color: 'sky', size: q, gap: 8, keep: true }); L.sd(A, B, I, `${M.c} cm`, { color: 'sky', size: q, gap: 8, keep: true });
         },
-        R: (L, M, s, X) => { const { A, B, C: Cc, O } = M.g; [[A, O], [O, B], [O, Cc]].forEach(([p, q]) => { L.ln(p, q, 'rose', 4.6); L.tk(p, q, 2, 'rose'); }); L.circ(O, M.R, 'rose', 3); L.sd(O, Cc, M.g.I, `R=${M.R}`, { color: 'rose', size: fs(X.b, 15), gap: 6 }); },
+        R: (L, M, s, X) => { const { A, B, C: Cc, O } = M.g; [[A, O], [O, B], [O, Cc]].forEach(([p, q]) => { L.ln(p, q, 'rose', 4.6); L.tk(p, q, 2, 'rose'); }); L.circ(O, M.R, 'rose', 3); L.sd(A, O, M.g.I, `R=${M.R}`, { color: 'rose', size: fs(X.b, 15), gap: 10 }); },
         circ: (L, M) => { L.circ(M.g.O, M.R, 'amber', 3.4); },
         tri: (L, M) => { const { A, B, C: Cc } = M.g; L.fl([A, B, Cc], 'sky', 0.4); },
         r: (L, M, s, X) => { const { A, B, C: Cc, I } = M.g, D = pt(I.x, 0), E = pt(0, I.y); L.fl([Cc, D, I, E], 'green', 0.25); L.ln(I, D, 'green', 3.4); L.ln(I, E, 'green', 3.4); L.circ(I, M.r, 'green', 3.2); L.sd(I, D, pt(I.x + 50, I.y), 'r', { color: 'green', size: fs(X.b, 15), gap: 6 }); }
@@ -467,9 +467,9 @@
       if (v === 0) {
         const f = (p, q) => `${p}\\pi-${q}\\text{ cm}^2`;
         const items = [{ h: `$${f(circ, tri)}$`, ok: true }, { h: `$${f(circ, 2 * tri)}$`, hint: '삼각형의 넓이는 ½×밑변×높이예요. 2를 곱하지 않아요.' }, { h: `$${f(circ * 2, tri)}$`, hint: '외접원의 넓이는 πR²이에요. R은 빗변의 반이에요.' }, { h: `$${f(circ, tri / 2)}$`, hint: '삼각형의 넓이를 한 번 더 2로 나눴어요.' }, { h: `$${f((c * c) / 1, tri)}$`, hint: '빗변을 반지름으로 썼어요. 반지름 R은 빗변의 반이에요.' }].map((x) => ({ ...x, p: x.h.replace(/\$/g, '') }));
-        return { tag: '외접원과 삼각형 · 색칠한 부분의 넓이', key, stem: `${head} 외접원에서 삼각형 ABC를 제외한 색칠한 부분의 넓이는?`, ...txt(items, key) };
+        return { tag: '외접원과 삼각형 · 색칠한 부분의 넓이', key, stem: `${head} 외접원에서 삼각형 ABC를 제외한 색칠한 부분의 넓이 $x$는?`, ...txt(items, key) };
       }
-      return numProb({ tag: '외접원과 내접원의 반지름', key, stem: `${head} 외접원의 반지름 R과 내접원의 반지름 r의 합 $R+r$의 값은?`, correct: R + r, wrongs: [[R, 'R만 구했어요. r도 더해야 해요.'], [r, 'r만 구했어요. R도 더해야 해요.'], [R * 2 + r, 'R은 지름이 아니라 반지름이에요.'], [R + r + 1, '다시 계산해 보세요.'], [R + r - 1, '다시 계산해 보세요.']].filter((q) => q[0] !== R + r && q[0] > 0), ...cmOpts });
+      return numProb({ tag: '외접원과 내접원의 반지름', key, stem: `${head} 외접원의 반지름 R과 내접원의 반지름 r의 합 $x=R+r$의 값은?`, correct: R + r, wrongs: [[R, 'R만 구했어요. r도 더해야 해요.'], [r, 'r만 구했어요. R도 더해야 해요.'], [R * 2 + r, 'R은 지름이 아니라 반지름이에요.'], [R + r + 1, '다시 계산해 보세요.'], [R + r - 1, '다시 계산해 보세요.']].filter((q) => q[0] !== R + r && q[0] > 0), ...cmOpts });
     },
     verify: (s) => { const M = m2.model(s), g = M.g; return { ans: dist(g.O, g.C), model: dist(g.O, g.A), extra: [[dist(g.O, g.B), M.R], [dist(g.I, pt(g.I.x, 0)), M.r], [dist(g.I, pt(0, g.I.y)), M.r]] }; }
   };
