@@ -3,7 +3,7 @@
   "examUid": "25_순천여고_2학기_기말_고1_공통수학2_유사",
   "candidateJsPath": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사.js",
   "candidateMetaPath": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사.meta-q01-q21.json",
-  "candidateGitBlobSha1": "4e67aea5a4f6844a9fef3a898903b9e8e6b0d097",
+  "candidateGitBlobSha1": "329f90f38277e9e742b4937951088bcad98bb9d4",
   "reviewTimestamp": "2026-11-01T00:00:00+09:00",
   "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
   "reviewRound": 1,
@@ -285,5 +285,40 @@
     "R2 (img.wangjiedu.com) upload of q9/q15/q18 SVG",
     "mobile-width render"
   ],
-  "defects": []
+  "defects": [],
+  "postReviewMetaBindingResolution": {
+    "date": "2026-11-02",
+    "scope": "JS question-level fields \"problemTypeKey\"/\"templateKey\" of Q3, Q13, Q15 only (set from null to canonical keys; the stale projectionStatus/problemTypeKeyNullReason/templateKeyNullReason BINDING_PENDING markers of those three questions removed) and the matching small-meta values + registryChanges. No content, choices, answer, solution, figure or plan bytes changed.",
+    "reason": "Resolves the bindingPending finding of metaReview: the official Resolver (rpm-active-resolver.mjs via stage-meta-bridge.mjs --stage CREATE) maps crosswalk H1-RPM-245/260/265 to the canonical PT/TPL below and reports PROJECTION_BINDING_PENDING only because the 2022 exact ACTIVE binding rows are missing. The three add-only binding rows are carried in the registration request registryChanges (before=null); no existing registry row, PT, TPL or CrossConcept is modified.",
+    "resolved": [
+      {
+        "qid": 3,
+        "crosswalkRecordId": "H1-RPM-245",
+        "problemTypeKey": "PT_CONTRAPOSITIVE_PROOF",
+        "templateKey": "TPL_CONTRAPOSITIVE_DIVISIBILITY_PROOF",
+        "binding": "2022/공통수학2/H22-C2-06/H22-C2-06-CORE/SETS_PROPOSITIONS",
+        "basis": "FAMILY crosswalk row: the multiple-of-3 statement is proved through its contrapositive with the n=3k+1, 3k+2 remainder cases, so the divisibility template is chosen over the sign/factor template (familyTemplateSelection POST_CROSSWALK)."
+      },
+      {
+        "qid": 13,
+        "crosswalkRecordId": "H1-RPM-260",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "binding": "2022/공통수학2/H22-C2-08/H22-C2-08-FUNCTION_BASIC/FUNCTIONS_GRAPHS",
+        "basis": "DIRECT crosswalk row: rewrite each rational function as y=k/(x-p)+q and compare k to decide which graphs coincide by translation; the template already merges the rational-translation equivalence-selection raw templates."
+      },
+      {
+        "qid": 15,
+        "crosswalkRecordId": "H1-RPM-265",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "binding": "2022/공통수학2/H22-C2-08/H22-C2-08-FUNCTION_BASIC/FUNCTIONS_GRAPHS",
+        "basis": "DIRECT crosswalk row: intersect y=k/x with the line, then use the root relations of x^2-12x+k=0 in the triangle-area condition."
+      }
+    ],
+    "previousCandidateGitBlobSha1": "4e67aea5a4f6844a9fef3a898903b9e8e6b0d097",
+    "newCandidateGitBlobSha1": "329f90f38277e9e742b4937951088bcad98bb9d4",
+    "studentPayloadUnchanged": "verified: all question fields other than problemTypeKey/templateKey/projectionStatus/problemTypeKeyNullReason/templateKeyNullReason are deep-equal before/after; sourceFingerprint/contentFingerprint inputs (content, choices, answer, solution, image) untouched",
+    "independentReviewCovers": "the pre-edit JS blob 4e67aea5a4f6844a9fef3a898903b9e8e6b0d097; this PT/TPL resolution was made from the official Resolver output and was not re-reviewed by the independent reviewer."
+  }
 }

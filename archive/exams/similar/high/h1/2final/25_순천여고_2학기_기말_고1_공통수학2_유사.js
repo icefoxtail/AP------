@@ -147,8 +147,8 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "공통수학2",
     "conceptClusterKey": "H22-C2-06-CORE",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_CONTRAPOSITIVE_PROOF",
+    "templateKey": "TPL_CONTRAPOSITIVE_DIVISIBILITY_PROOF",
     "crossConceptKeys": [
       "CC_CONTRAPOSITIVE_EQUIVALENCE",
       "CC_NUMBER_DIVISOR_MULTIPLE"
@@ -170,10 +170,7 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2.js#q3",
     "problemPlanRef": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사_plans/q03-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사_plans/q03-solution.plan.json",
-    "projectionStatus": "BINDING_PENDING",
-    "problemTypeKeyNullReason": "Resolver PROJECTION_BINDING_PENDING: crosswalk H1-RPM-245(FAMILY_BINDING_GAP)에 현재 교육과정(2022 H22-C2-06) ACTIVE 바인딩이 없어 PT/TPL을 확정하지 않는다(추정 금지, 바인딩 수리 대상).",
-    "templateKeyNullReason": "Resolver PROJECTION_BINDING_PENDING: crosswalk H1-RPM-245(FAMILY_BINDING_GAP)에 현재 교육과정(2022 H22-C2-06) ACTIVE 바인딩이 없어 PT/TPL을 확정하지 않는다(추정 금지, 바인딩 수리 대상)."
+    "solutionPlanRef": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사_plans/q03-solution.plan.json"
   },
   {
     "id": 4,
@@ -706,8 +703,8 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "공통수학2",
     "conceptClusterKey": "H22-C2-08-FUNCTION_BASIC",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
     "crossConceptKeys": [
       "CC_RATIONAL_FUNCTION_ASYMPTOTE",
       "CC_RATIONAL_EXPRESSION_TRANSFORM"
@@ -726,10 +723,7 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2.js#q13",
     "problemPlanRef": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사_plans/q13-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사_plans/q13-solution.plan.json",
-    "projectionStatus": "BINDING_PENDING",
-    "problemTypeKeyNullReason": "Resolver PROJECTION_BINDING_PENDING: crosswalk H1-RPM-260(DIRECT_BINDING_GAP)에 현재 교육과정(2022 H22-C2-08) ACTIVE 바인딩이 없어 PT/TPL을 확정하지 않는다(추정 금지, 바인딩 수리 대상).",
-    "templateKeyNullReason": "Resolver PROJECTION_BINDING_PENDING: crosswalk H1-RPM-260(DIRECT_BINDING_GAP)에 현재 교육과정(2022 H22-C2-08) ACTIVE 바인딩이 없어 PT/TPL을 확정하지 않는다(추정 금지, 바인딩 수리 대상)."
+    "solutionPlanRef": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사_plans/q13-solution.plan.json"
   },
   {
     "id": 14,
@@ -821,8 +815,8 @@ window.questionBank = [
     "curriculumKey": "2022",
     "courseKey": "공통수학2",
     "conceptClusterKey": "H22-C2-08-FUNCTION_BASIC",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
     "crossConceptKeys": [
       "CC_TRIANGLE_AREA",
       "CC_VIETA_FORMULAS_QUADRATIC"
@@ -843,10 +837,7 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2.js#q15",
     "problemPlanRef": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사_plans/q15-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사_plans/q15-solution.plan.json",
-    "projectionStatus": "BINDING_PENDING",
-    "problemTypeKeyNullReason": "Resolver PROJECTION_BINDING_PENDING: crosswalk H1-RPM-265(DIRECT_BINDING_GAP)에 현재 교육과정(2022 H22-C2-08) ACTIVE 바인딩이 없어 PT/TPL을 확정하지 않는다(추정 금지, 바인딩 수리 대상).",
-    "templateKeyNullReason": "Resolver PROJECTION_BINDING_PENDING: crosswalk H1-RPM-265(DIRECT_BINDING_GAP)에 현재 교육과정(2022 H22-C2-08) ACTIVE 바인딩이 없어 PT/TPL을 확정하지 않는다(추정 금지, 바인딩 수리 대상)."
+    "solutionPlanRef": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사_plans/q15-solution.plan.json"
   },
   {
     "id": 16,
