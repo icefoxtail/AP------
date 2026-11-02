@@ -54,9 +54,10 @@
       line(b, B, I, 'green', 3, { dash: [7, 5] }); line(b, Cc, I, 'green', 3, { dash: [7, 5] });
       if (C.problem) {
         ang(b, A, B, Cc, { color: 'sky', r: 34, label: dg(a), size: 16, labelDist: 56 });
-        if (v === 0) ang(b, B, O, I, { color: 'amber', r: 34, label: 'x', size: 17, labelDist: 52 });
-        else if (v === 1) ang(b, O, B, Cc, { color: 'amber', r: 34, label: 'x', size: 17, labelDist: 52 });
-        else ang(b, I, B, Cc, { color: 'amber', r: 38, label: 'x', size: 17, labelDist: 56 });
+        if (same) ang(b, B, I, Cc, { color: 'amber', r: 38, label: 'x', size: 17, labelDist: 56 });
+        else if ((s.trV || 0) % 3 === 0) ang(b, B, O, I, { color: 'amber', r: 34, label: 'x', size: 17, labelDist: 52 });
+        else if ((s.trV || 0) % 3 === 1) ang(b, B, O, Cc, { color: 'amber', r: 34, label: 'x', size: 17, labelDist: 52 });
+        else { ang(b, O, B, Cc, { color: 'rose', r: 24, label: '∠BOC', size: 13, labelDist: 46 }); ang(b, I, B, Cc, { color: 'green', r: 40, label: '∠BIC', size: 13, labelDist: 62 }); T(b, pt(0, 0), 'x = ∠BOC와 ∠BIC의 차', { dy: 32, size: fs(b, 16), color: 'amber' }); }
       } else {
         const lf = fs(b, 14);
         if (show(2)) { ang(b, B, Cc, O, { color: 'rose', r: 26, label: dg(obc), size: lf, labelDist: 118 }); ang(b, Cc, B, O, { color: 'rose', r: 26, rings: 2 }); }
@@ -338,7 +339,7 @@
       const [A2, B2, C2, I2, D2] = R2;
       if (showL) {
         fillPoly(b, [A, B, Cc], 'sky', 0.08); poly(b, [A, B, Cc], 'ink', 3.4); line(b, O, DO, 'rose', 3); ang(b, DO, O, B, { color: 'rose', r: 14 });
-        tick(b, B, DO, 1, 'amber'); tick(b, DO, Cc, 1, 'amber');
+        if (!C.problem) { tick(b, B, DO, 1, 'amber'); tick(b, DO, Cc, 1, 'amber'); }
         b.point(O, { color: 'rose', r: 5.5 }); b.point(DO, { color: 'rose', r: 4 }); [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4 }));
         T(b, O, 'O', { dx: 12, dy: -10, size: 17, color: 'rose' }); T(b, DO, 'D', { dy: 16, size: 17, color: 'rose' });
         T(b, pt((B.x + Cc.x) / 2, A.y), '외심', { dy: -22, size: fs(b, 16), color: 'rose' });
@@ -382,14 +383,14 @@
     }),
     prob: (M, s) => {
       const { m, x } = M, v = (s.trV || 0) % 3, key = `${v}:${m}:${x.join(',')}`;
-      if (v === 0) return numProb({ tag: '외심의 중점 D', key, stem: `그림 왼쪽에서 점 O는 삼각형 ABC의 외심이고, 점 D는 O에서 변 BC에 내린 수선의 발이다. ${S('BC')}=${2 * m} cm일 때, ${S('BD')}의 길이 $x$는?`, correct: m, wrongs: [[2 * m, 'BC의 길이예요. D는 BC의 중점이에요.'], [m + 1, '다시 생각해 보세요.'], [Math.max(1, m - 1), '다시 생각해 보세요.'], [m + 2, '다시 생각해 보세요.'], [3 * m, '다시 생각해 보세요.']], ...cmOpts });
-      if (v === 1) return numProb({ tag: '[함정] 내심의 수선의 발 D', key, stem: `그림 오른쪽에서 점 I는 삼각형 ABC의 내심이고, 점 D는 I에서 변 BC에 내린 수선의 발이다. ${S('AB')}=${x[0] + x[1]} cm, ${S('BC')}=${x[1] + x[2]} cm, ${S('CA')}=${x[2] + x[0]} cm일 때, ${S('BD')}의 길이 $x$는?`, correct: x[1], wrongs: [[(x[1] + x[2]) / 2, 'BC의 반이에요. 내심의 D는 BC의 중점이 아니에요.'], [x[0], 'AF의 길이예요.'], [x[2], 'CD의 길이예요.'], [x[1] + 1, '다시 계산해 보세요.'], [Math.max(1, x[1] - 1), '다시 계산해 보세요.']].filter((q) => Number.isInteger(q[0]) && q[0] !== x[1] && q[0] > 0), ...cmOpts });
+      if (v === 0) return numProb({ tag: '외심의 중점 D', key, stem: `그림에서 점 O는 삼각형 ABC의 외심이고, 점 D는 O에서 변 BC에 내린 수선의 발이다. ${S('BC')}=${2 * m} cm일 때, ${S('BD')}의 길이 $x$는?`, correct: m, wrongs: [[2 * m, 'BC의 길이예요. D는 BC의 중점이에요.'], [m + 1, '다시 생각해 보세요.'], [Math.max(1, m - 1), '다시 생각해 보세요.'], [m + 2, '다시 생각해 보세요.'], [3 * m, '다시 생각해 보세요.']], ...cmOpts });
+      if (v === 1) return numProb({ tag: '[함정] 내심의 수선의 발 D', key, stem: `그림에서 점 I는 삼각형 ABC의 내심이고, 점 D는 I에서 변 BC에 내린 수선의 발이다. ${S('AB')}=${x[0] + x[1]} cm, ${S('BC')}=${x[1] + x[2]} cm, ${S('CA')}=${x[2] + x[0]} cm일 때, ${S('BD')}의 길이 $x$는?`, correct: x[1], wrongs: [[(x[1] + x[2]) / 2, 'BC의 반이에요. 내심의 D는 BC의 중점이 아니에요.'], [x[0], 'AF의 길이예요.'], [x[2], 'CD의 길이예요.'], [x[1] + 1, '다시 계산해 보세요.'], [Math.max(1, x[1] - 1), '다시 계산해 보세요.']].filter((q) => Number.isInteger(q[0]) && q[0] !== x[1] && q[0] > 0), ...cmOpts });
       const pool = [
         { h: '외심에서 변에 내린 수선의 발은 그 변의 중점이다.', f: () => true }, { h: '내심에서 세 변까지의 거리는 같다.', f: () => true }, { h: '외심에서 세 꼭짓점까지의 거리는 같다.', f: () => true }, { h: '내심에서 변에 내린 수선의 발에서 같은 점에서 그은 접선의 길이는 같다.', f: () => true }, { h: '내심에서 변에 내린 수선의 발은 항상 그 변의 중점이다.', f: () => false },
         { h: '외심에서 변에 내린 수선의 발은 변의 중점이 아닐 수 있다.', f: () => false }, { h: '내심에서 세 꼭짓점까지의 거리는 항상 같다.', f: () => false }, { h: '외심에서 세 변까지의 거리는 항상 같다.', f: () => false }
       ];
       const ask = true, r = mkStmtChoices(pool, M, key, ask);
-      return { tag: '외심·내심의 D, E, F 구별 · 옳은 것', key, stem: '그림에서 점 O는 삼각형 ABC의 외심, 점 I는 내심이다. 다음 중 옳은 것은?', choices: r.choices, wide: true };
+      return { tag: '외심·내심의 D, E, F 구별 · 옳은 것', key, stem: '그림의 왼쪽은 삼각형 ABC의 외심 O를, 오른쪽은 내심 I를 나타낸 것이다. 다음 중 옳은 것은?', choices: r.choices, wide: true };
     },
     verify: (s) => { const M = m5.model(s); return { ans: dist(M.B, M.DO), model: dist(M.DO, M.C), extra: [[dist(M.O, M.A), dist(M.O, M.B)], [dist(M.I, M.DI), M.I === null ? 0 : dist(M.I, foot(M.I, M.C, M.A))]] }; }
   };

@@ -65,9 +65,9 @@
       line(b, O, Pp, 'green', 3.2, { dash: [7, 5] });
       line(b, Pp, E, 'amber', 3.4); line(b, Pp, F, 'amber', 3.4);
       ang(b, E, O, Pp, { color: 'amber', r: 18 }); ang(b, F, O, Pp, { color: 'amber', r: 18 });
-      ang(b, O, X, Pp, { color: 'sky', r: 40, rings: 1 }); ang(b, O, Pp, Y, { color: 'sky', r: 40, rings: 1 });
+      ang(b, O, X, Pp, { color: 'sky', r: 40, rings: 1, cut: [0, 7] }); ang(b, O, Pp, Y, { color: 'sky', r: 40, rings: 1, cut: [7, 0] });
       if (C.problem) {
-        T(b, O, dg(h), { dx: 62, dy: -16, size: fs(b, 16), color: 'sky' });
+        if (v === 1) T(b, O, dg(h), { dx: 62, dy: -16, size: fs(b, 16), color: 'sky' });
         if (v === 0) { G.sideTag(b, Pp, E, pt(-50, 0), `${d} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, Pp, F, pt(-50, 0), 'x', { color: 'amber', size: fs(b, 18), gap: 6 }); }
         else if (v === 1) ang(b, Pp, E, F, { color: 'amber', r: 36, label: 'x', size: 17, labelDist: 50 });
       } else {
@@ -197,8 +197,7 @@
       ang(b, Mm, A, Pp, { color: 'green', r: 20 }); ang(b, Mm, B, Pp, { color: 'green', r: 20 });
       tick(b, A, Mm, 1, 'amber'); tick(b, Mm, B, 1, 'amber');
       if (C.problem) {
-        tick(b, Pp, A, 2, 'rose'); tick(b, Pp, B, 2, 'rose');
-        if (v === 0) { G.sideTag(b, Pp, A, pt(-50, 0), `${pm} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, Pp, B, pt(-50, 0), 'x', { color: 'amber', size: fs(b, 18), gap: 6 }); tick(b, Pp, A, 0); }
+        if (v === 0) { G.sideTag(b, Pp, A, pt(-50, 0), `${pm} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, Pp, B, pt(-50, 0), 'x', { color: 'amber', size: fs(b, 18), gap: 6 }); }
         else if (v === 1) { ang(b, A, B, Pp, { color: 'sky', r: 30, label: dg(al), size: 16, labelDist: 52 }); ang(b, B, A, Pp, { color: 'amber', r: 30, label: 'x', size: 17, labelDist: 52 }); }
         else { ang(b, Pp, A, Mm, { color: 'sky', r: 34, label: dg(al), size: 16, labelDist: 56 }); ang(b, Pp, A, B, { color: 'amber', r: 44, label: 'x', size: 17, labelDist: 70 }); }
       } else {
@@ -262,22 +261,22 @@
       const cen = pt(D.x * 0.6, 0), show = (n) => (C.problem ? false : C.review ? st >= n : true);
       fillPoly(b, [A, B, D], 'sky', 0.2); fillPoly(b, [A, D, Cc], 'green', 0.2);
       poly(b, [A, B, Cc], 'ink', 3.6); line(b, A, D, 'ink', 3.4, { dash: [8, 5] });
-      line(b, D, E, 'amber', 3.2); line(b, D, F, 'amber', 3.2);
-      ang(b, E, A, D, { color: 'amber', r: 16 }); ang(b, F, A, D, { color: 'amber', r: 16 });
-      ang(b, A, B, D, { color: 'sky', r: 34, rings: 1 }); ang(b, A, D, Cc, { color: 'sky', r: 34, rings: 1 });
-      tick(b, D, E, 2, 'rose'); tick(b, D, F, 2, 'rose');
+      if (!C.problem) { line(b, D, E, 'amber', 3.2); line(b, D, F, 'amber', 3.2);
+      ang(b, E, A, D, { color: 'amber', r: 16 }); ang(b, F, A, D, { color: 'amber', r: 16 }); }
+      ang(b, A, B, D, { color: 'sky', r: 34, rings: 1, cut: [0, 7] }); ang(b, A, D, Cc, { color: 'sky', r: 34, rings: 1, cut: [7, 0] });
+      if (!C.problem) { tick(b, D, E, 2, 'rose'); tick(b, D, F, 2, 'rose'); }
       if (C.problem) {
         const area1 = k * c, area2 = k * bb;
-        G.sideTag(b, A, B, pt(D.x, 5), `${c} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, A, Cc, pt(D.x, -5), `${bb} cm`, { color: 'green', size: fs(b, 16), gap: 6 });
+        G.sideTag(b, A, B, pt(D.x, 5), `${c} cm`, { color: "sky", size: fs(b, 16), gap: 30 }); G.sideTag(b, A, Cc, pt(D.x, -5), `${bb} cm`, { color: "green", size: fs(b, 16), gap: 30 });
         T(b, pt(mid(A, mid(B, D)).x, mid(A, mid(B, D)).y), v === 0 ? `${area1} cm²` : 'x', { size: fs(b, 16), color: v === 0 ? 'sky' : 'amber', dx: 0, dy: 0 });
         T(b, pt(mid(A, mid(Cc, D)).x, mid(A, mid(Cc, D)).y), v === 0 ? 'x' : `${area2} cm²`, { size: fs(b, 18), color: v === 0 ? 'amber' : 'green' });
       } else {
-        G.sideTag(b, A, B, pt(D.x, 5), `${c} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, A, Cc, pt(D.x, -5), `${bb} cm`, { color: 'green', size: fs(b, 16), gap: 6 });
+        G.sideTag(b, A, B, pt(D.x, 5), `${c} cm`, { color: "sky", size: fs(b, 16), gap: 30 }); G.sideTag(b, A, Cc, pt(D.x, -5), `${bb} cm`, { color: "green", size: fs(b, 16), gap: 30 });
         T(b, A, dg(a / 2), { dx: 58, dy: -12, size: fs(b, 14), color: 'sky' }); T(b, A, dg(a / 2), { dx: 58, dy: 14, size: fs(b, 14), color: 'sky' });
         if (show(3)) { T(b, mid(A, mid(B, D)), `△ABD`, { size: fs(b, 14), color: 'sky' }); T(b, mid(A, mid(Cc, D)), `△ACD`, { size: fs(b, 14), color: 'green' }); }
       }
-      [A, B, Cc, D, E, F].forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
-      T(b, A, 'A', { dx: -16, dy: 0, size: 18 }); tagOut(b, B, cen, 'B', { size: 18 }); tagOut(b, Cc, cen, 'C', { size: 18 }); T(b, D, 'D', { dx: 14, dy: 0, size: 18 }); tagOut(b, E, cen, 'E', { size: 17 }); tagOut(b, F, cen, 'F', { size: 17 });
+      (C.problem ? [A, B, Cc, D] : [A, B, Cc, D, E, F]).forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
+      T(b, A, 'A', { dx: -16, dy: 0, size: 18 }); tagOut(b, B, cen, 'B', { size: 18 }); tagOut(b, Cc, cen, 'C', { size: 18 }); T(b, D, 'D', { dx: 14, dy: 0, size: 18 }); if (!C.problem) { tagOut(b, E, cen, 'E', { size: 17 }); tagOut(b, F, cen, 'F', { size: 17 }); }
       if (!C.thumb && !C.problem) {
         let row, col = 'sky';
         if (C.review && st === 1) row = 'DE⊥AB, DF⊥AC → DE=DF (이등분선 위의 점)';
@@ -357,12 +356,12 @@
       fit(b, bboxOf([O, X, Y, Pp, E, F, Q]), { t: 46, b: 50, l: 50, r: 50 });
       drawAngle(b, { ...g, X });
       line(b, O, Pp, 'green', 3, { dash: [7, 5] });
-      line(b, Pp, E, 'amber', 3.6); line(b, Pp, F, 'amber', 3.6); line(b, Pp, Q, 'ink', 3.4);
+      line(b, Pp, E, 'amber', 3.6); line(b, Pp, F, 'amber', 3.6); if (v === 2) line(b, Pp, Q, 'ink', 3.4);
       ang(b, E, O, Pp, { color: 'amber', r: 18 }); ang(b, F, O, Pp, { color: 'amber', r: 18 });
-      ang(b, O, X, Pp, { color: 'sky', r: 40 }); ang(b, O, Pp, Y, { color: 'sky', r: 40 });
-      if (v === 1) { G.sideTag(b, Pp, E, pt(-50, 0), `${d} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, Pp, F, pt(-50, 0), 'x', { color: 'amber', size: fs(b, 18), gap: 6 }); tick(b, Pp, E, 2, 'rose'); tick(b, Pp, F, 2, 'rose'); }
-      [Pp, E, F, Q].forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
-      T(b, Pp, 'P', { dx: 14, dy: -2, size: 18, color: 'amber' }); T(b, E, 'E', { dx: -14, dy: -14, size: 18 }); T(b, F, 'F', { dx: 4, dy: 16, size: 18 }); T(b, Q, 'Q', { dx: 6, dy: -14, size: 18 });
+      ang(b, O, X, Pp, { color: 'sky', r: 40, cut: [0, 7] }); ang(b, O, Pp, Y, { color: 'sky', r: 40, cut: [7, 0] });
+      if (v === 1) { G.sideTag(b, Pp, E, pt(-50, 0), `${d} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, Pp, F, pt(-50, 0), 'x', { color: 'amber', size: fs(b, 18), gap: 6 }); }
+      [Pp, E, F].concat(v === 2 ? [Q] : []).forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
+      T(b, Pp, 'P', { dx: 14, dy: -2, size: 18, color: 'amber' }); T(b, E, 'E', { dx: -14, dy: -14, size: 18 }); T(b, F, 'F', { dx: 4, dy: 16, size: 18 }); if (v === 2) T(b, Q, 'Q', { dx: 6, dy: -14, size: 18 });
     },
     steps: (M) => [
       `점 P에서 변 OX까지의 거리는 P에서 OX에 내린 <b>수선의 길이</b>예요. $\\overline{PE}\\perp\\overline{OX}$이므로 거리는 $\\overline{PE}=${M.d}$ cm예요.`,

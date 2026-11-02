@@ -76,7 +76,7 @@
       });
       if (!C.problem && (show(2))) { G.sideTag(b, T1.A, T1.B, pt(T1.C.x, 0.3), `${c} cm`, { color: 'amber', size: fs(b, 16), gap: 6 }); G.sideTag(b, U.A, U.B, pt(U.C.x, 0.3), `${c} cm`, { color: 'amber', size: fs(b, 16), gap: 6 }); }
       if (C.problem) {
-        G.sideTag(b, T1.B, T1.C, cen1, `${m} cm`, { color: 'sky', size: fs(b, 16), gap: 6 });
+        if (v === 0) G.sideTag(b, T1.B, T1.C, cen1, `${m} cm`, { color: 'sky', size: fs(b, 16), gap: 6 });
         G.sideTag(b, U.B, U.C, cen2, v === 0 ? 'x' : '', { color: 'amber', size: fs(b, 18), gap: 6 });
         if (v === 1) ang(b, U.B, U.A, U.C, { color: 'amber', r: 32, label: 'x', size: 17, labelDist: 50 });
       }
@@ -132,8 +132,8 @@
       if (C.problem) {
         tick(b, A, B, 1, 'amber'); tick(b, A, Cc, 1, 'amber'); ang(b, D, B, A, { color: 'sky', r: 20 });
         if (v === 0) { G.sideTag(b, B, D, pt(0, -2), `${m} cm`, { color: 'sky', size: fs(b, 17), gap: 10, dy: 0 }); dim(b, B, Cc, cen, 'x', { color: 'amber', size: fs(b, 18), off: 30 }); }
-        else if (v === 1) { ang(b, B, A, Cc, { color: 'sky', r: 30, label: dg(bt), size: 16, labelDist: 52 }); ang(b, A, B, D, { color: 'amber', r: 34, label: 'x', size: 17, labelDist: 56 }); }
-        else { ang(b, B, A, Cc, { color: 'sky', r: 30, label: dg(bt), size: 16, labelDist: 52 }); ang(b, Cc, A, D, { color: 'amber', r: 30, label: 'x', size: 17, labelDist: 50 }); }
+        else if (v === 1) { ang(b, A, B, Cc, { color: 'sky', r: 30, label: dg(2 * ad), size: 16, labelDist: 52 }); ang(b, B, A, Cc, { color: 'amber', r: 30, label: 'x', size: 17, labelDist: 50 }); }
+        else { ang(b, B, A, Cc, { color: 'sky', r: 30, label: dg(bt), size: 16, labelDist: 50 }); ang(b, A, Cc, D, { color: 'amber', r: 34, label: 'x', size: 17, labelDist: 56 }); }
       } else {
         if (show(1)) { ang(b, D, B, A, { color: 'sky', r: 20 }); ang(b, D, Cc, A, { color: 'sky', r: 20 }); }
         if (show(2)) { tick(b, A, B, 1, 'amber'); tick(b, A, Cc, 1, 'amber'); }
@@ -292,8 +292,8 @@
       tick(b, E, B, 2, 'rose'); tick(b, B, D, 2, 'rose');
       if (C.problem) {
         if (v === 0) { G.sideTag(b, A, E, pt(50, 0), `${p} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, A, B, pt(0, -5), `${q} cm`, { color: 'sky', size: fs(b, 16), gap: 8 }); dim(b, A, Cc, pt(0, -3), 'x', { color: 'amber', size: fs(b, 18), off: 30 }); }
-        else if (v === 1) { G.sideTag(b, A, E, pt(50, 0), `${p} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, A, B, pt(0, -5), `${q} cm`, { color: 'sky', size: fs(b, 16), gap: 8 }); }
-        else { ang(b, B, A, E, { color: 'sky', r: 34, label: dg(M.al), size: 16, labelDist: 56 }); ang(b, B, Cc, D, { color: 'amber', r: 34, label: 'x', size: 17, labelDist: 56 }); }
+        else if (v === 1) { G.sideTag(b, A, E, pt(50, 0), `${p} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, A, B, pt(0, -5), `${q} cm`, { color: 'sky', size: fs(b, 16), gap: 8 }); poly(b, [A, E, D, Cc], 'amber', 3.6); T(b, pt((A.x + Cc.x) / 2, (A.y + (E.y + D.y) / 2) / 2), '사다리꼴 AEDC의 넓이 = x', { dy: 0, size: fs(b, 15), color: 'amber' }); }
+        else { ang(b, B, A, E, { color: 'sky', r: 34, label: dg(M.al), size: 16, labelDist: 56 }); ang(b, D, Cc, B, { color: 'amber', r: 34, label: 'x', size: 17, labelDist: 56 }); }
       } else {
         if (show(2)) { ang(b, B, A, E, { color: 'sky', r: 34, rings: 1 }); ang(b, D, Cc, B, { color: 'sky', r: 30, rings: 1 }); ang(b, B, Cc, D, { color: 'green', r: 34, rings: 2 }); ang(b, E, A, B, { color: 'green', r: 34, rings: 2 }); }
         G.sideTag(b, A, E, pt(50, 0), `${p} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, A, B, pt(0, -5), `${q} cm`, { color: 'sky', size: fs(b, 16), gap: 8 });
@@ -355,7 +355,7 @@
       if (C.problem) {
         if (v === 0) { G.sideTag(b, B, D, pt(0, -2), `${m} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, Cc, E, pt(0, -2), `${n} cm`, { color: 'green', size: fs(b, 16), gap: 6 }); dim(b, D, E, pt(0, -3), 'x', { color: 'amber', size: fs(b, 18), off: 26 }); }
         else if (v === 1) { G.sideTag(b, B, D, pt(0, -2), `${m} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, A, D, pt(0, -5), `${n} cm`, { color: 'green', size: fs(b, 16), gap: 6 }); G.sideTag(b, Cc, E, pt(0, -2), 'x', { color: 'amber', size: fs(b, 18), gap: 6 }); }
-        else { G.sideTag(b, B, D, pt(0, -2), `${m} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, Cc, E, pt(0, -2), `${n} cm`, { color: 'green', size: fs(b, 16), gap: 6 }); }
+        else { G.sideTag(b, B, D, pt(0, -2), `${m} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, Cc, E, pt(0, -2), `${n} cm`, { color: 'green', size: fs(b, 16), gap: 6 }); poly(b, [B, D, E, Cc], 'amber', 3.6); T(b, pt((D.x + E.x) / 2, (B.y + Cc.y) / 4), '사다리꼴 BDEC의 넓이 = x', { dy: 0, size: fs(b, 15), color: 'amber' }); }
       } else {
         if (show(1)) { ang(b, A, D, B, { color: 'sky', r: 34, rings: 1 }); ang(b, Cc, A, E, { color: 'sky', r: 34, rings: 1 }); ang(b, B, A, D, { color: 'green', r: 34, rings: 2 }); ang(b, A, Cc, E, { color: 'green', r: 34, rings: 2 }); }
         G.sideTag(b, B, D, pt(0, -2), `${m} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, Cc, E, pt(0, -2), `${n} cm`, { color: 'green', size: fs(b, 16), gap: 6 });
@@ -482,8 +482,7 @@
       ang(b, A, B, Cc, { color: 'amber', r: 22 }); ang(b, D, B, A, { color: 'sky', r: 18 }); ang(b, E, Cc, A, { color: 'sky', r: 18 });
       tick(b, A, B, 1, 'amber'); tick(b, A, Cc, 1, 'amber');
       G.sideTag(b, B, D, pt(0, -2), `${m} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, Cc, E, pt(0, -2), `${n} cm`, { color: 'sky', size: fs(b, 16), gap: 6 });
-      if (C.problem) { if (v !== 0) dim(b, D, E, pt(0, -3), `${m + n} cm`, { color: 'sky', size: fs(b, 16), off: 26 }); }
-      else if (show(2)) dim(b, D, E, pt(0, -3), `${m + n} cm`, { color: 'sky', size: fs(b, 16), off: 26 });
+            if (!C.problem && show(2)) dim(b, D, E, pt(0, -3), `${m + n} cm`, { color: 'sky', size: fs(b, 16), off: 26 });
       [A, B, Cc, D, E].forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
       tagOut(b, B, cen, 'B', { size: 18 }); tagOut(b, Cc, cen, 'C', { size: 18 }); T(b, A, 'A', { dy: -18, size: 18 }); T(b, D, 'D', { dy: 18, size: 18 }); T(b, E, 'E', { dy: 18, size: 18 });
       if (C.problem) T(b, mid(B, Cc), v === 0 ? '△ABC의 넓이 x' : '사다리꼴 BDEC의 넓이 x', { dy: -30, size: fs(b, 15), color: 'amber' });

@@ -78,8 +78,7 @@
       ang(b, B, A, I, { color: 'green', r: 30, rings: 2 }); ang(b, B, I, Cc, { color: 'green', r: 30, rings: 2 });
       ang(b, Cc, B, I, { color: 'violet', r: 30, rings: 3 }); ang(b, Cc, I, A, { color: 'violet', r: 30, rings: 3 });
       if (C.problem) {
-        tick(b, I, D, 1, 'amber'); tick(b, I, E, 1, 'amber');
-        if (v === 0) T(b, A, `${2 * al}°`, { dy: 84, size: fs(b, 16), color: 'sky' });
+        if (v === 0) ang(b, A, B, Cc, { color: 'sky', r: 54, label: dg(2 * al), size: 16, labelDist: 74, fa: 0.04 });
         if (v === 1) { G.sideTag(b, I, D, pt(I.x, I.y - 50), `${r} cm`, { color: 'rose', size: fs(b, 16), gap: 8 }); }
       } else {
         tick(b, I, D, 1, 'rose'); tick(b, I, E, 1, 'rose'); tick(b, I, F, 1, 'rose');
@@ -146,8 +145,8 @@
       const cen = I;
       G.sideTag(b, B, Cc, cen, `${a} cm`, { color: 'sky', size: fs(b, 16), gap: 8 }); G.sideTag(b, Cc, A, cen, `${bb} cm`, { color: 'green', size: fs(b, 16), gap: 8 }); G.sideTag(b, A, B, cen, `${c} cm`, { color: 'violet', size: fs(b, 16), gap: 8 });
       if (C.problem) {
-        if (v === 0) G.sideTag(b, I, D, pt(I.x, I.y - 50), `${r} cm`, { color: 'rose', size: fs(b, 15), gap: 6 });
-        else T(b, I, `넓이 ${area} cm²`, { dy: 26, size: fs(b, 15), color: 'amber' });
+        if (v === 0) { G.sideTag(b, I, D, pt(I.x, I.y - 50), `${r} cm`, { color: 'rose', size: fs(b, 15), gap: 6 }); T(b, I, '△ABC의 넓이 = x', { dy: -38, size: fs(b, 16), color: 'amber' }); }
+        else T(b, I, `넓이 ${area} cm²`, { dy: -38, size: fs(b, 15), color: 'amber' });
         if (v === 1) G.sideTag(b, I, D, pt(I.x, I.y - 50), 'x', { color: 'rose', size: fs(b, 18), gap: 6 });
       } else {
         G.sideTag(b, I, D, pt(I.x, I.y - 50), `r = ${r} cm`, { color: 'rose', size: fs(b, 15), gap: 6 });
@@ -204,9 +203,10 @@
       tick(b, A, F, 1, 'amber'); tick(b, A, E, 1, 'amber'); tick(b, B, F, 2, 'sky'); tick(b, B, D, 2, 'sky'); tick(b, Cc, D, 3, 'green'); tick(b, Cc, E, 3, 'green');
       const q = fs(b, 15);
       if (C.problem) {
-        G.sideTag(b, A, B, I, `${c} cm`, { color: 'ink', size: q, gap: 26 }); G.sideTag(b, B, Cc, I, `${a} cm`, { color: 'ink', size: q, gap: 26 }); G.sideTag(b, Cc, A, I, `${bb} cm`, { color: 'ink', size: q, gap: 26 });
+        if (v < 2) { G.sideTag(b, A, B, I, `${c} cm`, { color: 'ink', size: q, gap: 26 }); G.sideTag(b, B, Cc, I, `${a} cm`, { color: 'ink', size: q, gap: 26 }); G.sideTag(b, Cc, A, I, `${bb} cm`, { color: 'ink', size: q, gap: 26 }); }
         if (v === 0) G.sideTag(b, A, F, I, 'x', { color: 'amber', size: fs(b, 18), gap: 14 });
         else if (v === 1) G.sideTag(b, B, D, I, 'x', { color: 'sky', size: fs(b, 18), gap: 14 });
+        else { G.sideTag(b, A, F, I, `${x} cm`, { color: 'amber', size: q, gap: 14 }); G.sideTag(b, B, Cc, I, `${a} cm`, { color: 'ink', size: q, gap: 26 }); T(b, pt((A.x + B.x + Cc.x) / 3, Math.max(B.y, Cc.y)), '△ABC의 둘레 = x', { dy: 66, size: fs(b, 16), color: 'amber' }); }
       } else {
         G.sideTag(b, A, F, I, `${x}`, { color: 'amber', size: q, gap: 14 }); G.sideTag(b, A, E, I, `${x}`, { color: 'amber', size: q, gap: 14 });
         G.sideTag(b, B, F, I, `${y}`, { color: 'sky', size: q, gap: 14 }); G.sideTag(b, B, D, I, `${y}`, { color: 'sky', size: q, gap: 14 });
@@ -267,7 +267,7 @@
       [[D, B, Cc], [E, Cc, A], [F, A, B]].forEach(([Q]) => line(b, I, Q, 'rose', 3));
       ang(b, D, I, Cc, { color: 'rose', r: 12 }); ang(b, E, I, Cc, { color: 'rose', r: 12 });
       const cen = I;
-      G.sideTag(b, Cc, B, pt(I.x, I.y - 50), `${a} cm`, { color: 'sky', size: fs(b, 16), gap: 8 }); G.sideTag(b, Cc, A, pt(50, I.y), `${bb} cm`, { color: 'green', size: fs(b, 16), gap: 8 }); G.sideTag(b, A, B, cen, `${c} cm`, { color: 'violet', size: fs(b, 16), gap: 8 });
+      G.sideTag(b, Cc, B, pt(I.x, I.y - 50), `${a} cm`, { color: 'sky', size: fs(b, 16), gap: C.problem ? 24 : 8 }); G.sideTag(b, Cc, A, pt(50, I.y), `${bb} cm`, { color: 'green', size: fs(b, 16), gap: 8 }); G.sideTag(b, A, B, cen, C.problem && v === 1 ? 'x' : `${c} cm`, { color: C.problem && v === 1 ? 'amber' : 'violet', size: fs(b, C.problem && v === 1 ? 18 : 16), gap: 8 });
       if (C.problem) {
         if (v === 0) G.sideTag(b, I, D, pt(I.x + 50, I.y), 'x', { color: 'rose', size: fs(b, 18), gap: 6 });
         else { G.sideTag(b, I, D, pt(I.x + 50, I.y), `${r} cm`, { color: 'rose', size: fs(b, 15), gap: 6 }); }
@@ -379,17 +379,21 @@
     },
     draw(b, s, M, C) {
       const { a, b: bb, c, g, D, E, per } = M, { A, B, C: Cc, I } = g, st = C.step, v = (s.trV || 0) % 2;
-      fit(b, bboxOf([A, B, Cc]), { t: 44, b: C.problem ? 50 : 92, l: 54, r: 54 });
+      fit(b, bboxOf([A, B, Cc]), { t: 44, b: C.problem ? (v === 1 ? 84 : 64) : 92, l: 54, r: 54 });
       const show = (k) => (C.problem ? false : C.review ? st >= k : true);
       fillPoly(b, [A, D, E], 'green', 0.2); drawBase(b, g);
       line(b, B, I, 'sky', 3, { dash: [7, 5] }); line(b, Cc, I, 'violet', 3, { dash: [7, 5] });
       line(b, D, E, 'green', 3.6);
       ang(b, B, A, I, { color: 'sky', r: 30, rings: 1 }); ang(b, B, I, Cc, { color: 'sky', r: 30, rings: 1 }); ang(b, Cc, B, I, { color: 'violet', r: 30, rings: 2 }); ang(b, Cc, I, A, { color: 'violet', r: 30, rings: 2 });
       if (!C.problem || v === 0) { G.sideTag(b, A, B, I, `${c} cm`, { color: 'ink', size: fs(b, 15), gap: 8 }); G.sideTag(b, Cc, A, I, `${bb} cm`, { color: 'ink', size: fs(b, 15), gap: 8 }); }
-      if (C.problem && v === 1) T(b, I, `△ABC의 둘레 ${a + bb + c} cm`, { dy: 40, size: fs(b, 14), color: 'ink' });
+      if (C.problem) {
+        const by = Math.max(B.y, Cc.y), cx = (A.x + B.x + Cc.x) / 3;
+        poly(b, [A, D, E], 'amber', 3.6);
+        if (v === 1) T(b, pt(cx, by), `△ABC의 둘레 = ${a + bb + c} cm`, { dy: 34, size: fs(b, 15), color: 'ink' });
+        T(b, pt(cx, by), '△ADE의 둘레 = x', { dy: v === 1 ? 58 : 34, size: fs(b, 16), color: 'amber' });
+      }
       if (C.problem) { G.sideTag(b, B, Cc, I, `${a} cm`, { color: 'ink', size: fs(b, 15), gap: 8 }); }
       else if (show(2)) { tick(b, D, B, 2, 'sky'); tick(b, D, I, 2, 'sky'); tick(b, E, Cc, 3, 'violet'); tick(b, E, I, 3, 'violet'); }
-      if (C.problem) { tick(b, D, B, 2, 'sky'); tick(b, D, I, 2, 'sky'); tick(b, E, Cc, 3, 'violet'); tick(b, E, I, 3, 'violet'); }
       b.point(I, { color: 'amber', r: 5 }); [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4.5 })); [D, E].forEach((z) => b.point(z, { color: 'green', r: 4.5 }));
       T(b, I, 'I', { dy: 16, size: 17, color: 'amber' }); nameV(b, g, I); tagOut(b, D, I, 'D', { size: 17, gap: 8 }); tagOut(b, E, I, 'E', { size: 17, gap: 8 });
       if (!C.thumb && !C.problem) {

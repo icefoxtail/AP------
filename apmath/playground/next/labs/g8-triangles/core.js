@@ -147,16 +147,16 @@
     const a0 = Math.atan2(A.y - V.y, A.x - V.x), a1 = Math.atan2(B.y - V.y, B.x - V.x);
     let d = ((a1 - a0 + PI * 3) % (PI * 2)) - PI;
     if (o.big) d = d > 0 ? d - PI * 2 : d + PI * 2;
-    const deg = Math.abs(d) / DEG, col = o.color || 'sky', am = a0 + d / 2;
+    const deg = Math.abs(d) / DEG, col = o.color || 'sky', am = a0 + d / 2, sg = d < 0 ? -1 : 1, e0 = a0 + sg * (o.cut ? o.cut[0] : 0) * DEG, e1 = a0 + d - sg * (o.cut ? o.cut[1] : 0) * DEG;
     const rw = r / k;
     if (!o.noMark) {
-      if (!o.big && Math.abs(deg - 90) < 0.6 && !o.noRight) {
+      if (!o.big && Math.abs(deg - 90) < 0.6 && !o.noRight && o.label !== 'x') {
         b.right(V, A, B, { size: Math.min(r * 0.62, 17), color: col });
       } else {
-        b.arc(V, rw, a0, a0 + d, { sector: true, fill: col, fillAlpha: o.fa == null ? 0.2 : o.fa, color: null, ccw: d < 0, ref: o.ref });
+        b.arc(V, rw, e0, e1, { sector: true, fill: col, fillAlpha: o.fa == null ? 0.2 : o.fa, color: null, ccw: d < 0, ref: o.ref });
         const rings = o.rings || 1;
-        b.arc(V, rw, a0, a0 + d, { color: col, width: 2.4, ccw: d < 0, ref: o.ref });
-        for (let i = 1; i < rings; i++) b.arc(V, rw - (i * 4.6) / k, a0, a0 + d, { color: col, width: 2.2, ccw: d < 0, ref: o.ref });
+        b.arc(V, rw, e0, e1, { color: col, width: 2.4, ccw: d < 0, ref: o.ref });
+        for (let i = 1; i < rings; i++) b.arc(V, rw - (i * 4.6) / k, e0, e1, { color: col, width: 2.2, ccw: d < 0, ref: o.ref });
       }
     }
     if (o.label) {

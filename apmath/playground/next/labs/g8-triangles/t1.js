@@ -93,11 +93,11 @@
       if (!gen && !C.problem && (C.review ? C.step >= 2 : true)) line(b, A, D, 'green', 2.6, { dash: [6, 5], alpha: f > 0.001 ? 0.0 : 1 });
       // 각 표시
       if (C.problem) {
-        const ex = v === 2, apex = v === 1;
-        ang(b, B, Cc, A, { color: apex ? 'sky' : 'amber', r: 30, rings: 1, label: apex ? dg(Bd) : 'x', size: 17, fa: 0.2 });
-        ang(b, A, B, Cc, { color: apex ? 'amber' : 'sky', r: 32, rings: 1, label: apex ? 'x' : ex ? '' : '', size: 17, fa: 0.2 });
-        if (v === 0) T(b, A, dg(a), { dy: 54, size: 17, color: 'sky' });
-        if (ex) { ang(b, Cc, A, E, { color: 'amber', r: 32, label: 'x', size: 17, big: false }); }
+        const ex = v === 2, apex = v === 1, bc = v === 0 ? 'amber' : 'sky';
+        ang(b, B, Cc, A, { color: bc, r: 30, rings: 1, label: v === 0 ? 'x' : apex ? dg(Bd) : '', size: 17, fa: 0.2 });
+        ang(b, Cc, A, B, { color: bc, r: 30, rings: 1, label: '', size: 17, fa: 0.2 }); // 같은 밑각(같은 표시)
+        ang(b, A, B, Cc, { color: apex ? 'amber' : 'sky', r: 32, rings: 1, label: apex ? 'x' : dg(a), size: 17, fa: 0.2, labelDist: 54 });
+        if (ex) { ang(b, Cc, A, E, { color: 'amber', r: 34, label: 'x', size: 17, big: false }); }
       } else {
         const rg = gen ? 1 : 2;
         ang(b, B, Cc, A, { color: 'sky', r: 30, rings: rg, label: dg(Bd), size: 16, labelDist: 52 });
@@ -251,17 +251,15 @@
       tick(b, A, B, 1, 'amber'); tick(b, A, Cc, 1, 'amber');
       line(b, A, D, 'green', 3.4);
       if (C.problem) {
-        ang(b, A, B, D, { color: 'sky', r: 34, rings: 1 }); if (v !== 1) { const dd = Math.max(sin(h / 2) * 66, G.textW(dg(h), 16) / 2 + 4); T(b, A, dg(h), { dx: -dd, dy: cos(h / 2) * 66, size: 16, color: 'sky' }); }
-        ang(b, A, D, Cc, { color: 'sky', r: 34, rings: 1 });
-        if (v === 0) { ang(b, B, Cc, A, { color: 'amber', r: 30, label: 'x', size: 17 }); }
-        else if (v === 1) { ang(b, D, B, A, { color: 'amber', r: 26, label: 'x', size: 17 }); T(b, A, dg(a), { dy: 70, size: 17, color: 'sky', dx: 0 }); }
-        else { G.sideTag(b, B, D, pt(0, -1), `${M.m} cm`, { color: 'sky', size: fs(b, 17), gap: 4 }); G.sideTag(b, D, Cc, pt(0, -1), '', {}); G.sideTag(b, B, Cc, pt(0, -1), 'x', { color: 'amber', size: fs(b, 18), gap: 26 }); }
-        if (v !== 2) ang(b, D, B, A, { color: 'sky', r: 22, noMark: v === 1, label: '' });
-        if (v === 2) ang(b, D, B, A, { color: 'sky', r: 22 });
+        // 이등분선: 같은 크기의 두 각(같은 표시, 사이를 띄움). 값은 주어진 것만 적는다.
+        ang(b, A, B, D, { color: 'sky', r: 34, rings: 1, cut: [0, 7] }); ang(b, A, D, Cc, { color: 'sky', r: 34, rings: 1, cut: [7, 0] });
+        if (v === 0) { const dd = Math.max(sin(h / 2) * 66, G.textW(dg(h), 16) / 2 + 4); T(b, A, dg(h), { dx: -dd, dy: cos(h / 2) * 66, size: 16, color: 'sky' }); ang(b, B, Cc, A, { color: 'amber', r: 30, label: 'x', size: 17 }); }
+        else if (v === 1) { ang(b, A, B, Cc, { color: 'sky', r: 56, label: dg(a), size: 16, labelDist: 76, fa: 0.05 }); ang(b, D, B, A, { color: 'amber', r: 22, noRight: true, label: 'x', size: 17, labelDist: 38 }); }
+        else { G.sideTag(b, B, D, pt(0, -1), `${M.m} cm`, { color: 'sky', size: fs(b, 17), gap: 4 }); dim(b, B, Cc, pt(0, -1), 'x', { color: 'amber', size: fs(b, 18), off: 30 }); }
       } else {
         if (C.review ? st >= 2 : true) {
-          ang(b, A, B, D, { color: 'sky', r: 34, rings: 1 });
-          ang(b, A, D, Cc, { color: 'sky', r: 34, rings: 1 });
+          ang(b, A, B, D, { color: 'sky', r: 34, rings: 1, cut: [0, 7] });
+          ang(b, A, D, Cc, { color: 'sky', r: 34, rings: 1, cut: [7, 0] });
           { const dd = Math.max(sin(h / 2) * 66, G.textW(dg(h), 16) / 2 + 4), dy = cos(h / 2) * 66; T(b, A, dg(h), { dx: -dd, dy, size: 16, color: 'sky' }); T(b, A, dg(h), { dx: dd, dy, size: 16, color: 'sky' }); }
           ang(b, D, B, A, { color: 'amber', r: 22 }); ang(b, D, A, Cc, { color: 'amber', r: 22 });
           ang(b, B, Cc, A, { color: 'green', r: 30, rings: 2, label: dg(Bd), size: 16, labelDist: 52 });
@@ -325,8 +323,8 @@
       const below = pt(0, -5), left = pt(-5, A.y / 2);
       if (C.problem) {
         tick(b, B, D, 1, 'rose'); tick(b, D, Cc, 1, 'rose');
-        if (v === 0) { G.sideTag(b, A, D, left, `${m} cm`, { color: 'sky', size: fs(b, 17), gap: 8, dy: -26 }); dim(b, B, Cc, cen, 'x', { color: 'amber', size: fs(b, 18), off: 30 }); }
-        else if (v === 1) { G.sideTag(b, A, D, left, 'x', { color: 'amber', size: fs(b, 18), gap: 8, dy: -26 }); dim(b, B, Cc, cen, `${2 * m} cm`, { color: 'sky', size: fs(b, 17), off: 30 }); }
+        if (v === 0) { G.sideTag(b, A, D, left, `${m} cm`, { color: 'sky', size: fs(b, 17), gap: 8, dy: 10 }); dim(b, B, Cc, cen, 'x', { color: 'amber', size: fs(b, 18), off: 30 }); }
+        else if (v === 1) { G.sideTag(b, A, D, left, 'x', { color: 'amber', size: fs(b, 18), gap: 8, dy: 10 }); dim(b, B, Cc, cen, `${2 * m} cm`, { color: 'sky', size: fs(b, 17), off: 30 }); }
         else ang(b, A, B, D, { color: 'amber', r: 40, label: 'x', size: 17, labelDist: 62 });
       } else {
         ang(b, B, Cc, A, { color: 'green', r: 30, rings: 2, label: '45°', size: 16, labelDist: 54 });
@@ -339,7 +337,7 @@
           ang(b, D, B, A, { color: 'green', r: 18 });
         }
         if (!C.review || st >= 3) {
-          G.sideTag(b, A, D, left, `${m} cm`, { color: 'rose', size: fs(b, 16), gap: 8, dy: -26 });
+          G.sideTag(b, A, D, left, `${m} cm`, { color: 'rose', size: fs(b, 16), gap: 8, dy: 10 });
           G.sideTag(b, B, D, below, `${m} cm`, { color: 'rose', size: fs(b, 16), gap: 12 }); G.sideTag(b, D, Cc, below, `${m} cm`, { color: 'rose', size: fs(b, 16), gap: 12 });
           dim(b, B, Cc, cen, `${2 * m} cm`, { color: 'sky', size: fs(b, 16), off: 34 });
         }
@@ -364,7 +362,7 @@
       readouts: [rd('AD = BD = CD', `${M.m} cm`, 'rose'), rd('BC', `${M.bc} cm`, 'amber', 'AD의 2배'), rd('∠B = ∠C', '45°', 'green')],
       formula: `<p>$\\overline{BC}=2\\times\\overline{AD}=2\\times${M.m}=${M.bc}$ (cm)</p><p>$\\overline{AD}=${fr('1', 2)}\\overline{BC}$</p>`,
       rule: '직각이등변삼각형에서 직각 꼭짓점에서 빗변의 중점까지의 거리 = 빗변의 길이의 반',
-      notes: notes('AD=BD=CD예요. AD는 BD, CD와 길이가 같아요.', '√를 쓰지 않아요. 빗변 BC는 AD의 2배로 구해요.')
+      notes: notes('AD=BD=CD예요. AD는 BD, CD와 길이가 같아요.', '빗변 BC는 AD의 2배로 구해요. (BC=BD+CD=2×AD)')
     }),
     prob: (M, s) => {
       const v = (s.trV || 0) % 3, { m } = M;
@@ -456,8 +454,7 @@
       line(b, A, D, 'green', 3.2);
       line(b, B, Pp, 'ink', 3); line(b, Cc, Pp, 'ink', 3);
       if (C.problem) {
-        // 문제에서는 AB=AC와 점 P(AD 위)만 주어진다. 선분 PB, PC도 그림에 그린다.
-        ang(b, D, B, A, { color: 'sky', r: 22 });
+        // 문제에서는 AB=AC와 점 P(AD 위)만 주어진다. 선분 PB, PC도 그림에 그린다. (직각 표시는 정답의 단서라 그리지 않는다)
       } else {
         if (!C.review || st >= 2) { tick(b, Pp, B, 2, 'rose'); tick(b, Pp, Cc, 2, 'rose'); }
         ang(b, B, D, Pp, { color: 'sky', r: 30, rings: 2, label: dg(th), size: 15, labelDist: 52 });

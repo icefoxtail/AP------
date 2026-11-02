@@ -65,15 +65,15 @@
         const show = C.problem ? false : j <= upto && (C.review ? j <= st : true);
         if (!show) continue;
         const col = cols[(j - 1) % 5], lbl = dg(j * x), P0 = pts[j - 1], Pj = pts[j], P2 = pts[j + 1];
-        if (j === 1) ang(b, P0, Pj, P2, { color: col, rings: 1, r: 32, label: lbl, size: 15, labelDist: 56 });
+        if (j === 1) ang(b, P0, Pj, P2, { color: col, rings: 1, r: 32, label: lbl, size: 15, labelDist: 70, labelRot: -(x / 2 + 12) });
         else ang(b, P0, Pj, P2, { color: col, rings: j, r: 28 + (j % 2) * 4, label: lbl, size: 15, labelDist: 54 });
         ang(b, P2, Pj, P0, { color: col, rings: j, r: 28, label: lbl, size: 15, labelDist: 54 });
       }
       // 구하는 외각 (P_{n-1}에서)
       const lastFirst = pts[n], lastPrev = pts[n - 1];
       if (C.problem) {
-        if (v === 0) { ang(b, lastPrev, lastFirst, ext, { color: 'amber', r: 38, label: 'x', size: 18, rings: 1, labelDist: 62 }); ang(b, pts[0], pts[1], pts[2], { color: 'sky', r: 36, label: dg(x), size: 16, labelDist: 62 }); }
-        else { ang(b, lastPrev, lastFirst, ext, { color: 'sky', r: 38, label: dg(n * x), size: 16, rings: 1, labelDist: 62 }); ang(b, pts[0], pts[1], pts[2], { color: 'amber', r: 36, label: 'x', size: 18, labelDist: 62 }); }
+        if (v === 0) { ang(b, lastPrev, lastFirst, ext, { color: 'amber', r: 38, label: 'x', size: 18, rings: 1, labelDist: 62 }); ang(b, pts[0], pts[1], pts[2], { color: 'sky', r: 36, label: dg(x), size: 16, labelDist: 74, labelRot: -(x / 2 + 12) }); }
+        else { ang(b, lastPrev, lastFirst, ext, { color: 'sky', r: 38, label: dg(n * x), size: 16, rings: 1, labelDist: 62 }); ang(b, pts[0], pts[1], pts[2], { color: 'amber', r: 36, label: 'x', size: 18, labelDist: 74, labelRot: -(x / 2 + 12) }); }
       } else if (!C.review || st >= n) ang(b, lastPrev, lastFirst, ext, { color: 'amber', r: 38, label: dg(n * x), size: 16, rings: 1, labelDist: 62 });
       // 점 이름
       pts.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); tagOut(b, p, cen, nameOf(i), { size: 18, gap: 11 }); });
@@ -141,7 +141,7 @@
       // 각 표시 (x → 2x → 3x → (180−3x)/2 → 구하는 각)
       if (C.problem) {
         if (v === 0) { ang(b, B, Cc, A, { color: 'sky', r: 40, label: dg(x), size: 16, labelDist: 64 }); ang(b, D, E, F, { color: 'amber', r: 34, label: 'x', size: 18, labelDist: 56 }); }
-        else if (v === 1) { ang(b, B, Cc, A, { color: 'sky', r: 40, label: dg(x), size: 16, labelDist: 64 }); ang(b, Cc, D, E, { color: 'amber', r: 34, label: 'x', size: 18, labelDist: 56 }); }
+        else if (v === 1) { ang(b, B, Cc, A, { color: 'sky', r: 40, label: dg(x), size: 16, labelDist: 64 }); ang(b, D, Cc, E, { color: 'amber', r: 34, label: 'x', size: 18, labelDist: 56 }); }
         else { ang(b, D, E, F, { color: 'sky', r: 34, label: dg(edf), size: 16, labelDist: 56 }); ang(b, B, Cc, A, { color: 'amber', r: 40, label: 'x', size: 18, labelDist: 64 }); }
       } else {
         ang(b, B, Cc, A, { color: 'sky', r: 40, rings: 1, label: dg(x), size: 15, labelDist: 66 });
@@ -215,7 +215,7 @@
       if (C.problem) {
         if (v === 0) { ang(b, A, B, Cc, { color: 'sky', r: 34, label: dg(a), size: 16, labelDist: 56 }); ang(b, Dd, Cc, A, { color: 'amber', r: 30, label: 'x', size: 17, labelDist: 50 }); }
         else if (v === 1) { ang(b, B, Cc, A, { color: 'sky', r: 30, label: dg(bb), size: 16, labelDist: 52 }); ang(b, Dd, Cc, A, { color: 'amber', r: 30, label: 'x', size: 17, labelDist: 50 }); }
-        else { ang(b, A, B, Cc, { color: 'sky', r: 34, label: dg(a), size: 16, labelDist: 56 }); ang(b, A, B, Dd, { color: 'amber', r: 44, label: 'x', size: 17, labelDist: 70 }); }
+        else { ang(b, A, B, Cc, { color: 'sky', r: 30, label: dg(a), size: 16, labelDist: 48 }); ang(b, A, B, Dd, { color: 'amber', r: 50, label: 'x', size: 17, labelDist: 86 }); }
       } else {
         ang(b, A, B, Cc, { color: 'sky', r: 32, rings: 1, label: dg(a), size: 15, labelDist: 54 });
         ang(b, B, Cc, A, { color: 'green', r: 30, rings: 2, label: dg(bb), size: 15, labelDist: 54 });
