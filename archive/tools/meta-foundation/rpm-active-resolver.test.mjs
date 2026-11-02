@@ -292,7 +292,7 @@ test('an invalid ACTIVE template affects only the compatibility projection', () 
 });
 
 test('canonical PT owner may differ from exact curriculum binding owner', () => {
-  const row = rowFor('H1-RPM-124');
+  const row = rowFor('H1-RPM-125');
   const result = resolveMetaRoute(makeInput(row), { repoRoot: root });
   assert.equal(result.disposition, 'RPM_SEMANTIC_FINAL');
   assert.equal(result.projectionStatus, 'PROJECTION_REUSE');
