@@ -1648,6 +1648,515 @@ window.addEventListener('DOMContentLoaded', function () {
   scenes.push(SCENE6, SCENE7, SCENE8, SCENE9);
 
   /* ---------- 5. 실험실 등록 ---------- */
+
+
+
+
+
+
+  /* OU-BEGIN */
+  (function () {
+  const { tex, fmt, clamp } = APLab;
+  /* ==========================================================================
+     옛 장면 1~5에 「새 문제」 변형과 문제·풀이 단계 그림을 얹는 공용 부품 (2026-11)
+     - 탐구 탭(끌기·슬라이더·문구·그림)은 원래 장면 그대로 두고, 정리·문제 탭만 변형 문제를 따라가게 합니다.
+     - 첫 문제는 원래 문제 그대로이고, 「새 문제」를 누르면 같은 구조에서 숫자·상황만 바꾼 문제가 나옵니다(연속 중복 없음).
+     - 문제 탭 그림은 지문에 주어진 값만 그리고, 답과 보조선은 풀이 단계를 누른 뒤에만 나옵니다.
+     ========================================================================== */
+  const ouRint = (n) => Math.floor(Math.random() * n);
+  const ouPick = (arr) => arr[ouRint(arr.length)];
+  const ouGcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) { const t = a % b; a = b; b = t; } return a || 1; };
+  class QQ {
+    constructor(n, d) { this.n = n; this.d = d; }
+    add(o) { o = ouQq(o); return ouQ(this.n * o.d + o.n * this.d, this.d * o.d); }
+    sub(o) { o = ouQq(o); return ouQ(this.n * o.d - o.n * this.d, this.d * o.d); }
+    mul(o) { o = ouQq(o); return ouQ(this.n * o.n, this.d * o.d); }
+    div(o) { o = ouQq(o); return ouQ(this.n * o.d, this.d * o.n); }
+    neg() { return ouQ(-this.n, this.d); }
+    get v() { return this.n / this.d; }
+    get int() { return this.d === 1; }
+    get sgn() { return Math.sign(this.n); }
+    get tex() { return this.d === 1 ? String(this.n) : (this.n < 0 ? '-' : '') + `\\dfrac{${Math.abs(this.n)}}{${this.d}}`; }
+    get ptex() { return this.n < 0 ? `(${this.tex})` : this.tex; }
+    get txt() { return (this.n < 0 ? '−' : '') + (this.d === 1 ? String(Math.abs(this.n)) : `${Math.abs(this.n)}/${this.d}`); }
+  }
+  function ouQ(n, d = 1) { if (d < 0) { n = -n; d = -d; } const g = ouGcd(n, d); return new QQ(n / g, d / g); }
+  const ouQq = (x) => (x instanceof QQ ? x : ouQ(x));
+  // 다항식 TeX. co: 높은 차수부터의 계수(정수 또는 QQ)
+  function ouPoly(co, v = 'x') {
+    const n = co.length;
+    let out = '';
+    co.forEach((c0, i) => {
+      const c = ouQq(c0);
+      if (!c.n) return;
+      const deg = n - 1 - i, a = ouQ(Math.abs(c.n), c.d);
+      const t = deg === 0 ? '' : deg === 1 ? v : `${v}^${deg}`;
+      const body = t ? (a.n === 1 && a.d === 1 ? t : a.tex + t) : a.tex;
+      out += (c.n < 0 ? '-' : out ? '+' : '') + body;
+    });
+    return out || '0';
+  }
+  const ouEv = (co, x) => { let y = 0; for (let i = 0; i < co.length; i++) y = y * x + ouQq(co[i]).v; return y; };
+  const ouEvQ = (co, x) => { let y = ouQ(0); for (let i = 0; i < co.length; i++) y = y.mul(x).add(co[i]); return y; };
+  const ouDer = (co) => { const n = co.length - 1; return co.slice(0, n).map((c, i) => ouQq(c).mul(n - i)); };
+  const ouMul = (a, b) => { const out = Array(a.length + b.length - 1).fill(0).map(() => ouQ(0)); a.forEach((x, i) => b.forEach((y, j) => { out[i + j] = out[i + j].add(ouQq(x).mul(y)); })); return out; };
+  const ouAdd = (a, b) => { const n = Math.max(a.length, b.length), out = []; for (let i = 0; i < n; i++) out.push(ouQq(a[a.length - n + i] === undefined ? 0 : a[a.length - n + i]).add(b[b.length - n + i] === undefined ? 0 : b[b.length - n + i])); return out; };
+  // (x − r) 인수 TeX: 0 → x, 양수 r → (x-r), 음수 → (x+|r|)
+  const ouFac = (r) => (r === 0 ? 'x' : r > 0 ? `(x-${r})` : `(x+${-r})`);
+  const ouSg = (n) => (n < 0 ? `-${-n}` : `+${n}`); // 부호 있는 항
+  const ouPar = (n) => (n < 0 ? `(${n})` : String(n));
+  const ouMinus = (s) => String(s).replace(/-/g, '−');
+  // √(n/d)를 k√m/d' 꼴로: { tex, txt, val, rat }
+  function ouSqrt(n, d) {
+    const nd = n * d;
+    let k = 1, m = nd;
+    for (let t = Math.floor(Math.sqrt(nd)); t >= 1; t--) if (nd % (t * t) === 0) { k = t; m = nd / (t * t); break; }
+    const g = ouGcd(k, d), kk = k / g, dd = d / g, val = Math.sqrt(n / d);
+    if (m === 1) { const q = ouQ(kk, dd); return { tex: q.tex, txt: q.txt, val, rat: q }; }
+    const c = kk === 1 ? '' : String(kk);
+    return { tex: dd > 1 ? `\\dfrac{${c}\\sqrt{${m}}}{${dd}}` : `${c}\\sqrt{${m}}`, txt: `${c}√${m}` + (dd > 1 ? `/${dd}` : ''), val, rat: null };
+  }
+  // 점들이 모두 들어오는 창(여백 포함)
+  function ouWin(pts, o = {}) {
+    let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    pts.forEach((p) => { x0 = Math.min(x0, p[0]); x1 = Math.max(x1, p[0]); y0 = Math.min(y0, p[1]); y1 = Math.max(y1, p[1]); });
+    const mx = o.mx == null ? 0.9 : o.mx, my = o.my == null ? 0.9 : o.my;
+    x0 -= mx; x1 += mx; y0 -= my; y1 += my;
+    const minW = o.minW || 6, minH = o.minH || 4.4;
+    if (x1 - x0 < minW) { const c = (x0 + x1) / 2; x0 = c - minW / 2; x1 = c + minW / 2; }
+    if (y1 - y0 < minH) { const c = (y0 + y1) / 2; y0 = c - minH / 2; y1 = c + minH / 2; }
+    return { x: [x0, x1], y: [y0, y1] };
+  }
+  // 함수들이 [최소 x, 최대 x] 구간에서 지나는 높이와 점들을 모두 담는 창
+  function ouWinF(fs, xs, o = {}) {
+    const a = Math.min(...xs), c = Math.max(...xs), pts = (o.pts || []).slice();
+    fs.forEach((f) => { const r = ouRange(f, a, c, 80); if (Number.isFinite(r[0])) pts.push([a, r[0]], [c, r[1]]); });
+    return ouWin(pts, o);
+  }
+  // 함수 f가 [x0,x1]에서 지나는 높이 범위(점으로 표본)
+  function ouRange(f, x0, x1, n = 60) {
+    let lo = Infinity, hi = -Infinity;
+    for (let i = 0; i <= n; i++) { const y = f(x0 + ((x1 - x0) * i) / n); if (Number.isFinite(y)) { lo = Math.min(lo, y); hi = Math.max(hi, y); } }
+    return [lo, hi];
+  }
+  // 장면·문제가 바뀔 때만 보이는 범위를 맞춥니다(끌어서 확대한 것은 그대로 둡니다)
+  function ouFocus(b, key, box) { if (!box || b._ouKey === key) return; b._ouKey = key; b.setFocus(box, true); }
+  // 글자 라벨: 화면 안으로 밀어 넣고, 이미 그려진 글자와 겹치면 위·아래로 비켜 놓습니다
+  function ouHook(b) {
+    if (b._ouHooked) return;
+    b._ouHooked = true;
+    const orig = b._text;
+    b._text = function (x, y, str, o = {}, screen) {
+      if (str != null && str !== '' && this._ouBoxes && !this._bbox) {
+        const c = this.ctx, size = (o.size || 13) * this.fs * (this.thumb ? 0.78 : this._ts());
+        c.save(); c.font = `${o.weight || 750} ${size}px ${this.font}`;
+        const w = c.measureText(String(str)).width; c.restore();
+        const al = o.align || 'center', bl = o.baseline || 'alphabetic';
+        const x0 = x + (al === 'center' ? -w / 2 : al === 'right' || al === 'end' ? -w : 0), y0 = y + (bl === 'middle' ? -size / 2 : bl === 'top' ? 0 : bl === 'bottom' ? -size : -size * 0.8);
+        this._ouBoxes.push({ x0, x1: x0 + w, y0, y1: y0 + size });
+      }
+      return orig.call(this, x, y, str, o, screen);
+    };
+    // 점 이름표도 먼저 그려진 글자와 겹치면 다른 쪽으로 비켜 놓습니다
+    const origPL = b._pointLabel;
+    b._pointLabel = function (sp, o) {
+      if (this._ouBoxes && !this._bbox && o.label != null && o.dx != null && o.dy != null) {
+        const c = this.ctx, size = (o.size || 12.5) * this.fs * this._ts();
+        c.save(); c.font = `800 ${size}px ${this.font}`; const w = c.measureText(String(o.label)).width; c.restore();
+        const flip = (a) => (a === 'left' ? 'right' : a === 'right' ? 'left' : a), al0 = o.align || 'left';
+        const cands = [[o.dx, o.dy, al0], [o.dx, -o.dy, al0], [-o.dx, o.dy, flip(al0)], [-o.dx, -o.dy, flip(al0)], [o.dx, o.dy * 2.3, al0], [o.dx, -o.dy * 2.3, al0], [-o.dx, o.dy * 2.3, flip(al0)], [-o.dx, -o.dy * 2.3, flip(al0)]];
+        for (const [dx, dy, al] of cands) {
+          const x0 = sp.x + dx - (al === 'right' ? w : al === 'center' ? w / 2 : 0), y0 = sp.y + dy - size / 2, q = { x0, x1: x0 + w, y0, y1: y0 + size };
+          if (q.x0 < 4 || q.x1 > this.W - 4 || q.y0 < 4 || q.y1 > this.H - 4) continue;
+          if (!this._ouBoxes.some((r) => Math.min(q.x1, r.x1) - Math.max(q.x0, r.x0) > 2 && Math.min(q.y1, r.y1) - Math.max(q.y0, r.y0) > 2)) return origPL.call(this, sp, { ...o, dx, dy, align: al });
+        }
+      }
+      return origPL.call(this, sp, o);
+    };
+  }
+  function ouTag(b, p, str, o = {}) {
+    const c = b.ctx, size = (o.size || 12.5) * b.fs;
+    c.save();
+    c.font = `800 ${size}px ${b.font}`;
+    const w = c.measureText(String(str)).width;
+    c.restore();
+    const s = b.toS(Array.isArray(p) ? { x: p[0], y: p[1] } : p), al = o.align || 'center';
+    const boxes = b._ouBoxes || [];
+    const pos = (oy) => {
+      const dy = (o.dy || 0) + oy, want = s.x + (o.dx || 0) - (al === 'right' ? w : al === 'left' ? 0 : w / 2);
+      const left = Math.max(6, Math.min(want, Math.max(6, b.W - 6 - w)));
+      return { dy, left, box: { x0: left, x1: left + w, y0: s.y + dy - size * 0.8, y1: s.y + dy + size * 0.2 } };
+    };
+    const hit = (q) => boxes.some((r) => Math.min(q.x1, r.x1) - Math.max(q.x0, r.x0) > 2 && Math.min(q.y1, r.y1) - Math.max(q.y0, r.y0) > 2);
+    let pick = pos(0);
+    for (const oy of [0, -size * 1.5, size * 1.5, -size * 3, size * 3, -size * 4.5, size * 4.5]) { const t = pos(oy); if (t.box.y0 > 2 && t.box.y1 < b.H - 2 && !hit(t.box)) { pick = t; break; } }
+    b.text(p, str, { size: o.size || 12.5, weight: 800, ...o, align: 'left', dx: pick.left - s.x, dy: pick.dy });
+  }
+  // 곡선 이름표: 보이는 범위 안에서 곡선이 지나는 곳에 붙입니다.
+  function ouCurveTag(b, f, text, color, o = {}) {
+    const vb = b.viewBox();
+    const yl = vb.y0 + (vb.y1 - vb.y0) * 0.1, yh = vb.y1 - (vb.y1 - vb.y0) * 0.1;
+    const right = o.side !== 'left';
+    for (let i = 0; i <= 90; i++) {
+      const x = right ? vb.x1 - (vb.x1 - vb.x0) * 0.06 - i * (vb.x1 - vb.x0) * 0.008 : vb.x0 + (vb.x1 - vb.x0) * 0.06 + i * (vb.x1 - vb.x0) * 0.008;
+      const y = f(x);
+      const clash = (o.skip || []).some((q) => Math.hypot(x - q[0], y - q[1]) < (q[2] || 1.2));
+      let busy = false;
+      if (Number.isFinite(y) && b._ouBoxes && b._ouBoxes.length) {
+        const c = b.ctx, size = 13 * b.fs; c.save(); c.font = `800 ${size}px ${b.font}`; const w = c.measureText(text).width; c.restore();
+        const sp = b.toS(x, y), dx = right ? -8 : 8, dy = o.dy == null ? -12 : o.dy, x0 = sp.x + dx - (right ? w : 0), y0 = sp.y + dy - size * 0.8, q = { x0, x1: x0 + w, y0, y1: y0 + size };
+        busy = b._ouBoxes.some((r) => Math.min(q.x1, r.x1) - Math.max(q.x0, r.x0) > 2 && Math.min(q.y1, r.y1) - Math.max(q.y0, r.y0) > 2);
+      }
+      if (Number.isFinite(y) && y > yl && y < yh && !clash && !busy && !(o.axis && Math.abs(y) < o.axis)) {
+        b.text([x, y], text, { color, size: 13, weight: 800, align: right ? 'right' : 'left', dx: right ? -8 : 8, dy: o.dy == null ? -12 : o.dy, ref: o.ref });
+        return;
+      }
+    }
+  }
+  // f가 g보다 위인(또는 아래인) 구간마다 색칠 (부호가 바뀌는 곳에서 조각을 나눔). pos·neg 색을 따로 줄 수 있습니다.
+  function ouBetween(b, f, g, x0, x1, o = {}) {
+    if (!(x1 - x0 > 1e-6)) return;
+    const N = 200;
+    let piece = null;
+    const flush = () => { if (piece && piece.t.length > 1 && piece.sign) b.poly(piece.t.concat(piece.b.slice().reverse()), { fill: piece.sign > 0 ? (o.pos || 'rose') : (o.neg || 'sky'), fillAlpha: o.alpha == null ? 0.3 : o.alpha, color: null, ref: piece.sign > 0 ? o.refPos : o.refNeg }); piece = null; };
+    let px = x0, pd = f(x0) - g(x0);
+    const add = (x) => { if (!piece) piece = { t: [], b: [], sign: 0 }; piece.t.push([x, f(x)]); piece.b.push([x, g(x)]); };
+    add(x0);
+    if (pd) piece.sign = pd > 0 ? 1 : -1;
+    for (let i = 1; i <= N; i++) {
+      const x = x0 + ((x1 - x0) * i) / N, d = f(x) - g(x);
+      if (d) {
+        const sg = d > 0 ? 1 : -1;
+        if (!piece.sign) piece.sign = sg;
+        else if (sg !== piece.sign) {
+          const xc = px + ((x - px) * Math.abs(pd)) / (Math.abs(pd) + Math.abs(d));
+          piece.t.push([xc, f(xc)]); piece.b.push([xc, g(xc)]);
+          flush(); add(xc); piece.sign = sg;
+        }
+      }
+      add(x); px = x; pd = d;
+    }
+    flush();
+  }
+  // 변형 생성기: gen(이전)이 새 변형을 돌려주거나 null(다시 뽑기). 첫 변형 gen(null)은 원래 문제입니다.
+  let ouSerial = 0;
+  function ouVarier(gen) {
+    let cur = gen(null);
+    cur.first = true; cur.sid = ++ouSerial;
+    const firstKey = cur.key;
+    return {
+      ou: true,
+      cur: () => cur,
+      next: () => {
+        for (let i = 0; i < 600; i++) {
+          const v = gen(cur);
+          if (v && v.key !== cur.key && v.key !== firstKey) { v.first = false; v.sid = ++ouSerial; cur = v; break; }
+        }
+        return cur;
+      }
+    };
+  }
+  const ouProb = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-ou-new>새 문제</button></div>`;
+  document.addEventListener('click', (ev) => {
+    const hit = ev.target && ev.target.closest && ev.target.closest('[data-ou-new]');
+    if (!hit) return;
+    const lab = window.lab, sc = lab && lab.scene;
+    if (!sc || !sc.vary || !sc.vary.ou) return;
+    sc.vary.next();
+    lab.s.revealed = false;
+    lab.setStep(0);
+    try { lab._buildProblem(); lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+    lab.invalidate(true);
+  });
+  // 지금 그림에 보여 줄 풀이 단계: 정리 탭은 s.step, 문제 탭은 정답이 열렸을 때만 끝까지
+  const ouStepOf = (lab, s, n) => (lab && lab.tab === 'review' ? s.step : lab && lab.tab === 'problem' ? (lab._answerOpen && lab._answerOpen() ? n : 0) : n);
+  // 원래 장면 1~5에 문제·변형·풀이 단계 그림을 얹습니다. spec: { m, gen, text, ans, steps, core, draw }
+  const ouFix = (t) => String(t).replace(/'/g, '^{\\prime}').replace(/</g, '\\lt ').replace(/>/g, '\\gt '); // 단계 글은 esc를 거치므로 ' < > 를 수식 기호로 바꿉니다
+  function ouUpgrade(sc, spec) {
+    const ex = examData[spec.m], V = ouVarier(spec.gen);
+    const body = (v) => (v.first ? ex.question() : spec.text(v));
+    const pr0 = sc.problem || {}, origView = sc.view, origDraw = sc.draw, origPanes = sc.panes, focus0 = sc.focus;
+    const inExplore = (lab) => !lab || !lab.tab || lab.tab === 'explore';
+    // 탐구 탭은 원래대로: 원래 단계(1~3)가 그림에 드러나도록 단계 값을 1~3으로 맞춰 그립니다.
+    const withStep = (s, fn) => { const k = s.step; s.step = Math.max(1, Math.min(3, k)); try { return fn(); } finally { s.step = k; } };
+    const stepsOf = (v) => spec.steps(v).map(ouFix);
+    const stepsHtml = (v) => stepsOf(v).map((t, i) => `<b>${i + 1}.</b> ${t}`).join('<br>');
+    sc.tabs = { compact: true };
+    sc.startStep = 0;
+    sc.steps = () => stepsOf(V.cur());
+    sc.reviewTop = () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${body(V.cur())}</div>`;
+    sc.problem = { tag: pr0.tag, time: pr0.time, text: () => ouProb(body(V.cur())), answer: () => (V.cur().first ? ex.answerBadge() : spec.ans(V.cur())) };
+    sc.vary = V;
+    const sol0 = sc.solution || {};
+    sc.solution = {
+      ...sol0,
+      standard: () => (V.cur().first ? ex.textbook() : { steps: stepsHtml(V.cur()) }),
+      quick: () => (V.cur().first ? ex.shortcut() : { highlight: spec.core })
+    };
+    sc.view = (s, lab) => (inExplore(lab) ? (origView ? withStep(s, () => origView(s, lab)) : {}) : { formula: spec.core });
+    if (origPanes) sc.panes = (s) => { const L = window.lab; return L && L.tab && L.tab !== 'explore' ? null : origPanes(s); };
+    sc.draw = (b, s, v, lab) => {
+      if (b.thumb || inExplore(lab)) {
+        if (!b.thumb) ouFocus(b, 'e:' + spec.m, typeof focus0 === 'function' ? focus0(s) : focus0 || (lab && lab.def && lab.def.board && lab.def.board.focus));
+        const vv = origView ? withStep(s, () => origView(s, lab)) : v;
+        return withStep(s, () => origDraw(b, s, vv, lab));
+      }
+      const cur = V.cur(), st = ouStepOf(lab, s, stepsOf(cur).length);
+      ouFocus(b, 'v:' + cur.sid, cur.win);
+      ouHook(b); b._ouBoxes = [];
+      if (s.grid) b.grid();
+      b.axes();
+      spec.draw(b, s, cur, st, lab);
+    };
+  }
+  // 변수 항: 계수 c, 문자 t → '', '-' 접두 처리 (1·p → p, -1·p → -p, 3·p → 3p)
+  const ouCo = (c) => (c === 1 ? '' : c === -1 ? '-' : String(c));
+  const ouCoQ = (c) => (c.n === 1 && c.d === 1 ? '' : c.n === -1 && c.d === 1 ? '-' : c.tex);
+  const ouTerm = (c, t) => (c === 0 ? '0' : `${ouCo(c)}${t}`);
+  // a + k·h 꼴 (a=0이면 kh)
+  const ouLin = (a, k, v = 'h') => { const t = (Math.abs(k) === 1 ? '' : Math.abs(k)) + v; return a === 0 ? (k < 0 ? '-' : '') + t : `${a}${k < 0 ? '-' : '+'}${t}`; };
+  // 곡선 위의 점 이름표를 곡선이 없는 쪽(위)에 놓는 자리
+  const ouSide = (m) => (m >= 0 ? { dx: -10, dy: -14, align: 'right' } : { dx: 10, dy: -14, align: 'left' });
+  // 곡선(기울기 m) 위의 점 이름표 자리: 곡선이 없는 쪽. pos: 'L'(맨 왼쪽 점) · 'R'(맨 오른쪽 점) · 'M'(가운데 점)
+  const ouPlace = (m, pos) => {
+    const up = m >= 0;
+    if (pos === 'L') return up ? { dx: -10, dy: -14, align: 'right' } : { dx: -10, dy: 16, align: 'right' };
+    if (pos === 'R') return up ? { dx: 10, dy: 16, align: 'left' } : { dx: 10, dy: -14, align: 'left' };
+    return up ? { dx: -10, dy: -18, align: 'right' } : { dx: 10, dy: -18, align: 'left' };
+  };
+  const ouPos = (xs, x) => { const a = Math.min(...xs), c = Math.max(...xs); return x === a ? 'L' : x === c ? 'R' : 'M'; };
+  const ouSlope = (f, x) => (f(x + 0.01) - f(x - 0.01)) / 0.02;
+  // 그림 왼쪽 위 모서리에 놓는 한 줄 요약(축·곡선과 덜 겹칩니다)
+  const ouTop = (b, str, o = {}) => { const vb = b.viewBox(); ouTag(b, [vb.x0, vb.y1 - (vb.y1 - vb.y0) * 0.07], str, { align: 'left', dx: 12, ...o }); };
+
+  /* ========== 함수의 극한과 연속 장면 1~5 ========== */
+  const polyEv = (co) => (x) => ouEv(co, x);
+  const lbl = (b, p, str, o) => ouTag(b, p, str, o);
+
+  /* 장면 1 · 좌극한·우극한·함숫값과 연속 */
+  ouUpgrade(scenes[0], {
+    m: 1,
+    gen: (prev) => {
+      let c, left, m, n;
+      if (!prev) { c = 1; left = [ouQ(-1, 2), ouQ(0), ouQ(5, 2)]; m = 1; n = 1; }
+      else { c = ouPick([1, 2, -1, 0]); left = [ouPick([ouQ(-1, 2), ouQ(1, 2), ouQ(-1), ouQ(1)]), ouQ(ouPick([-2, -1, 0, 1, 2])), ouQ(ouPick([0, 1, 2, 3]))]; m = ouPick([-1, 1, 2]); n = ouPick([-2, -1, 0, 1, 2, 3]); }
+      const Lc = ouEvQ(left, c), base = m * c + n, dh = Lc.sub(base);
+      if (prev && (!Lc.int || !dh.int || dh.n === 0 || Math.abs(dh.v) > 4 || Math.abs(Lc.v) > 6)) return null;
+      const lf = polyEv(left), win = ouWinF([lf], [c - 3, c], { pts: [[c, Lc.v], [c + 3, m * (c + 3) + n], [c + 3, m * (c + 3) + n + dh.v]], mx: 0.3, my: 1.2, minW: 6.4, minH: 5 });
+      win.x = [c - 3.4, c + 3.4];
+      if (prev && win.y[1] - win.y[0] > 12) return null;
+      return { c, left, m, n, Lc, base, dh, lf, win, key: [c, left.map((q) => q.txt), m, n].join(), chk: { c, left: left.map((q) => q.v), m, n, dh: dh.v, k: Lc.v } };
+    },
+    text: (v) => `함수 ${tex(`f(x) = \\begin{cases} ${ouPoly(v.left)} & (x < ${v.c}) \\\\ k & (x = ${v.c}) \\\\ ${ouPoly([v.m, v.n])} + \\Delta h & (x > ${v.c}) \\end{cases}`)} 이 ${tex('x = ' + v.c)} 에서 연속이 되도록 하는 상수 ${tex('\\Delta h')}와 함숫값 ${tex('k = f(' + v.c + ')')}의 값을 구하시오.`,
+    ans: (v) => tex(`\\Delta h = ${v.dh.tex}, \; k = ${v.Lc.tex}`),
+    steps: (v) => [
+      `$x$ 가 왼쪽에서 $${v.c}$ 에 가까워질 때의 극한(좌극한)은 $\\lim_{x\\to ${v.c}-}(${ouPoly(v.left)})=${v.Lc.tex}$ 입니다.`,
+      `오른쪽에서의 극한(우극한)은 $\\lim_{x\\to ${v.c}+}(${ouPoly([v.m, v.n])}+\\Delta h)=${v.base}+\\Delta h$ 입니다. 극한값이 존재하려면 좌극한과 우극한이 같아야 하므로 $${v.Lc.tex}=${v.base}+\\Delta h$, $\\Delta h=${v.dh.tex}$.`,
+      `연속이려면 함숫값도 극한값과 같아야 하므로 $k=f(${v.c})=${v.Lc.tex}$ 입니다. 세 높이(좌극한, 우극한, 함숫값)가 모두 같습니다.`
+    ],
+    core: '<b>연속의 세 조건</b><br>$x=a$ 에서 연속 ⇔ 좌극한 = 우극한 = 함숫값 $f(a)$ 입니다. 구간별 함수는 경계값 $x=a$ 를 각 식에 넣은 값이 모두 같아야 합니다.',
+    draw: (b, s, v, st) => {
+      const c = v.c, line = (x) => v.m * x + v.n;
+      b.plot(v.lf, { to: c, color: 'ink', width: 3.2, glow: true });
+      b.plot(line, { from: c, color: 'muted', width: 1.8, dash: true, alpha: 0.9 });
+      const vb = b.viewBox();
+      b.seg([c, vb.y0], [c, vb.y1], { color: 'amber', width: 1.5, dash: true, alpha: 0.6 });
+      lbl(b, [c, vb.y0 + (vb.y1 - vb.y0) * 0.07], `x = ${c}`, { color: 'amber', dx: 6, align: 'left' });
+      lbl(b, [c + 2.6, line(c + 2.6)], `y = ${ouMinus(ouPoly([v.m, v.n]))} (Δh = 0일 때)`, { color: 'muted', size: 12, dy: v.m >= 0 ? 22 : -16, align: 'right' });
+      if (st >= 1) { b.point([c, v.Lc.v], { hollow: true, color: 'rose', r: 6, label: `좌극한 ${v.Lc.txt}`, dx: -12, dy: -14, align: 'right' }); }
+      if (st >= 2) {
+        b.plot((x) => line(x) + v.dh.v, { from: c, color: 'sky', width: 3.2, glow: true });
+        b.point([c, v.Lc.v], { hollow: true, color: 'sky', r: 6 });
+        if (v.dh.v !== 0) { b.seg([c + 1.2, line(c + 1.2)], [c + 1.2, line(c + 1.2) + v.dh.v], { color: 'violet', width: 2.6 }); lbl(b, [c + 1.2, line(c + 1.2) + v.dh.v / 2], `Δh = ${v.dh.txt}`, { color: 'violet', dx: 8, align: 'left' }); }
+      }
+      if (st >= 3) b.point([c, v.Lc.v], { color: 'green', r: 7, label: `k = ${v.Lc.txt}`, dx: 14, dy: v.dh.v > 0 ? 22 : -18, align: 'left' });
+    }
+  });
+
+  /* 장면 2 · 0/0 꼴의 극한 */
+  ouUpgrade(scenes[1], {
+    m: 2,
+    gen: (prev) => {
+      let m, c, r, u;
+      if (!prev) { m = 1; c = 1; r = -3; u = 1; }
+      else { m = ouPick([1, 1, 2]); c = ouPick([1, 2, -1, 3]); r = ouPick([-3, -2, -1, 0, 1, 2, 3, 4]); u = ouPick([1, 1, 2]); }
+      if (r === c) return null;
+      const a = -m * (c + r), d = m * c * r, bq = ouQ(m * (c - r), u);
+      if (prev && (!bq.int || Math.abs(bq.v) > 9 || Math.abs(a) > 9 || Math.abs(d) > 12)) return null;
+      const f = (x) => m * (x - c) * (x - r), g = (x) => u * (x - c);
+      const win = ouWinF([f, g], [Math.min(c, r) - 1.4, Math.max(c, r) + 1.4], { pts: [[c, 0], [r, 0]], mx: 0.1, my: 1.2, minW: 6.4, minH: 5 });
+      if (prev && win.y[1] - win.y[0] > 12) return null;
+      return { m, c, r, u, a, d, bq, f, g, win, key: [m, c, r, u].join(), chk: { m, c, r, u, a, d, b: bq.v } };
+    },
+    text: (v) => `두 다항함수 ${tex(`f(x) = ${ouCo(v.m)}x^2 + ax${v.d === 0 ? '' : ouSg(v.d)}`)}, ${tex(`g(x) = ${ouTerm(v.u, 'x')}${ouSg(-v.u * v.c)}`)} 에 대하여 ${tex(`\\lim_{x \\to ${v.c}} \\dfrac{f(x)}{g(x)} = b`)} 일 때, 상수 ${tex('a, b')}의 값을 구하시오.`,
+    ans: (v) => tex(`a = ${v.a}, \; b = ${v.bq.tex}`),
+    steps: (v) => [
+      `$x\\to ${v.c}$ 일 때 분모 $g(x)\\to 0$ 이고 극한값이 존재하므로 분자도 $0$ 으로 가야 합니다: $f(${v.c})=${ouCo(v.m)}\\cdot ${ouPar(v.c)}^2+a\\cdot ${ouPar(v.c)}${v.d === 0 ? '' : ouSg(v.d)}=0$, 따라서 $a=${v.a}$.`,
+      `$f(x)=${ouPoly([v.m, v.a, v.d])}=${ouCo(v.m)}${ouFac(v.c)}${ouFac(v.r)}$ 이므로 $x\\ne ${v.c}$ 에서 $\\dfrac{f(x)}{g(x)}=\\dfrac{${v.m}(x-${ouPar(v.c)})(x-${ouPar(v.r)})}{${v.u}(x-${ouPar(v.c)})}=${ouQ(v.m, v.u).tex}(x-${ouPar(v.r)})$ 로 약분됩니다.`,
+      `$b=\\lim_{x\\to ${v.c}}${ouQ(v.m, v.u).tex}(x-${ouPar(v.r)})=${v.bq.tex}$. 그림에서 $f$ 와 $g$ 가 모두 $0$ 이 되는 점 $A(${v.c},0)$ 에서 두 접선의 기울기의 비 $\\dfrac{f'(${v.c})}{g'(${v.c})}=\\dfrac{${v.m * (v.c - v.r)}}{${v.u}}=${v.bq.tex}$ 와 같습니다.`
+    ],
+    core: '<b>0/0 꼴의 극한은 접선의 기울기의 비</b><br>$f(a)=g(a)=0$ 이고 $g\'(a)\\neq0$ 이면 $\\displaystyle\\lim_{x\\to a}\\dfrac{f(x)}{g(x)}=\\dfrac{f\'(a)}{g\'(a)}$ 입니다. 분모가 $0$ 으로 가는데 극한이 있으면 분자도 $0$ 으로 가야 하므로 먼저 $f(a)=0$ 으로 미정계수를 구합니다.',
+    draw: (b, s, v, st) => {
+      const c = v.c, vb = b.viewBox();
+      b.line([c, 0], v.u, { color: 'sky', width: 2.8, glow: true });
+      b.seg([c, vb.y0], [c, vb.y1], { color: 'amber', width: 1.5, dash: true, alpha: 0.6 });
+      lbl(b, [c, vb.y0 + (vb.y1 - vb.y0) * 0.07], `x = ${c}`, { color: 'amber', dx: 6, align: 'left' });
+      ouCurveTag(b, v.g, 'y = g(x)', 'sky', { side: v.u > 0 ? 'left' : 'right', dy: 18, axis: 0.5 });
+      if (st >= 1) {
+        b.plot(v.f, { color: 'ink', width: 3.2, glow: true });
+        ouCurveTag(b, v.f, 'y = f(x)', 'ink', { side: v.m > 0 ? 'right' : 'left', dy: -12, skip: [[c, 0, 1.5], [v.r, 0, 1.5]] });
+        b.point([c, 0], { color: 'amber', r: 6.5, label: `A(${c}, 0)`, dx: v.c >= v.r ? 10 : -10, dy: 22, align: v.c >= v.r ? 'left' : 'right' });
+      }
+      if (st >= 2) b.point([v.r, 0], { hollow: true, color: 'ink', r: 5.5, label: `x = ${v.r}`, dx: 0, dy: 22, align: 'center' });
+      if (st >= 3) {
+        const fp = v.m * (v.c - v.r);
+        b.line([c, 0], fp, { extent: 2.2, color: 'rose', width: 2.2, dash: true });
+        ouTop(b, `b = f′(${c}) / g′(${c}) = ${fp} / ${v.u} = ${v.bq.txt}`, { color: 'green', size: 13 });
+      }
+    }
+  });
+
+  /* 장면 3 · 곱함수의 연속 */
+  ouUpgrade(scenes[2], {
+    m: 3,
+    gen: (prev) => {
+      let c, L, R, p;
+      if (!prev) { c = 1; L = [1, 1]; R = [1, -1]; p = 1; }
+      else { c = ouPick([1, 2, -1, 3]); L = [ouPick([1, 1, 2, -1]), ouPick([-2, -1, 0, 1, 2, 3])]; R = [ouPick([1, 1, 2, -1]), ouPick([-3, -2, -1, 0, 1, 2])]; p = ouPick([1, 1, 2, -1, 3]); }
+      const Lc = L[0] * c + L[1], Rc = R[0] * c + R[1], r = p * c;
+      if (prev && (Lc === Rc || Math.abs(Lc - Rc) > 5 || Math.abs(Lc) > 5 || Math.abs(Rc) > 5)) return null;
+      const fL = (x) => L[0] * x + L[1], fR = (x) => R[0] * x + R[1], g = (x) => p * x - r;
+      const hL = (x) => fL(x) * g(x), hR = (x) => fR(x) * g(x);
+      const pts = [[c, Lc], [c, Rc], [c - 2.6, fL(c - 2.6)], [c + 2.6, fR(c + 2.6)], [c - 2.6, hL(c - 2.6)], [c + 2.6, hR(c + 2.6)]];
+      const win = ouWin(pts, { mx: 0.1, my: 1.2, minW: 6.4, minH: 5 });
+      if (prev && win.y[1] - win.y[0] > 14) return null;
+      return { c, L, R, p, Lc, Rc, r, fL, fR, g, hL, hR, win, key: [c, L, R, p].join(), chk: { c, L, R, p, r } };
+    },
+    text: (v) => `함수 ${tex(`f(x) = \\begin{cases} ${ouPoly(v.L)} & (x < ${v.c}) \\\\ ${ouPoly(v.R)} & (x \\ge ${v.c}) \\end{cases}`)} 과 일차함수 ${tex(`g(x) = ${ouTerm(v.p, 'x')} - r`)} 에 대하여, 곱함수 ${tex('h(x) = f(x)g(x)')} 가 실수 전체의 집합에서 연속이 되도록 하는 상수 ${tex('r')}의 값을 구하시오.`,
+    ans: (v) => tex(`g(${v.c}) = 0 \\implies r = ${v.r}`),
+    steps: (v) => [
+      `$f$ 는 $x=${v.c}$ 에서 좌극한이 $${v.Lc}$, 함숫값(우극한)이 $${v.Rc}$ 로 서로 달라 불연속입니다. 그림에서 곡선이 $x=${v.c}$ 에서 끊어져 있습니다.`,
+      `곱함수의 좌극한은 $${v.Lc}\\cdot g(${v.c})$, 우극한과 함숫값은 $${v.Rc}\\cdot g(${v.c})$ 입니다. 연속이려면 $${v.Lc}\\,g(${v.c})=${v.Rc}\\,g(${v.c})$, 즉 $(${v.Lc}-(${v.Rc}))\\,g(${v.c})=0$ 이므로 $g(${v.c})=0$ 이어야 합니다.`,
+      `$g(${v.c})=${v.p}\\cdot ${ouPar(v.c)}-r=0$ 에서 $r=${v.r}$. 이때 $h(${v.c})=0$ 으로 좌극한·우극한과 같아 $h$ 는 이어집니다.`
+    ],
+    core: '<b>끊어진 함수와 연속함수의 곱</b><br>$f$ 가 $x=a$ 에서 좌극한 ≠ 우극한이면, 연속함수 $g$ 에 대하여 $f\\,g$ 가 $x=a$ 에서 연속이려면 $g(a)=0$ 이어야 합니다. (좌극한 $\\times g(a)=$ 우극한 $\\times g(a)$)',
+    draw: (b, s, v, st) => {
+      const c = v.c, vb = b.viewBox();
+      b.plot(v.fL, { to: c, color: 'ink', width: 3.2, glow: true });
+      b.plot(v.fR, { from: c, color: 'ink', width: 3.2, glow: true });
+      b.seg([c, vb.y0], [c, vb.y1], { color: 'amber', width: 1.5, dash: true, alpha: 0.6 });
+      lbl(b, [c, vb.y0 + (vb.y1 - vb.y0) * 0.07], `x = ${c}`, { color: 'amber', dx: 6, align: 'left' });
+      b.point([c, v.Lc], { hollow: true, color: 'ink', r: 6, label: `(${c}, ${v.Lc})`, dx: -12, dy: v.Lc >= v.Rc ? -14 : 16, align: 'right' });
+      b.point([c, v.Rc], { color: 'ink', r: 6, label: `(${c}, ${v.Rc})`, dx: 12, dy: v.Lc >= v.Rc ? 16 : -14, align: 'left' });
+      ouCurveTag(b, v.fL, 'y = f(x)', 'ink', { side: 'left', dy: -12, skip: [[c, v.Lc, 1.4]] });
+      if (st >= 1) {
+        b.line([c, 0], v.p, { color: 'sky', width: 2.6, glow: true });
+        b.point([c, 0], { color: 'sky', r: 6, label: `g(${c}) = 0`, dx: 12, dy: v.p > 0 ? 22 : -16, align: 'left' });
+      }
+      if (st >= 2) {
+        b.plot(v.hL, { to: c, color: 'violet', width: 3, glow: true });
+        b.plot(v.hR, { from: c, color: 'violet', width: 3, glow: true });
+        ouCurveTag(b, (x) => (x < c ? v.hL(x) : v.hR(x)), 'y = h(x)', 'violet', { side: 'right', dy: -12, skip: [[c, 0, 1.4]] });
+      }
+      if (st >= 3) ouTop(b, `g(${c}) = 0 이므로 r = ${v.r}`, { color: 'green', size: 13 });
+    }
+  });
+
+  /* 장면 4 · 교점의 개수 g(t)의 불연속 */
+  const L4 = [
+    { co: [1, 0, -3, 0], xs: [-1, 1] }, { co: [-1, 0, 3, 0], xs: [-1, 1] }, { co: [1, -3, 0, 0], xs: [0, 2] },
+    { co: [1, -6, 9, 0], xs: [1, 3] }, { co: [-1, 6, -9, 0], xs: [1, 3] }, { co: [1, 0, -2, 0, 0], xs: [-1, 0, 1] }, { co: [-1, 0, 2, 0, 0], xs: [-1, 0, 1] }
+  ];
+  function cnt4(co, xs, t) {
+    const n = co.length - 1, lead = co[0], inf = Infinity, f = (x) => ouEv(co, x);
+    const fm = (lead > 0 ? 1 : -1) * (n % 2 ? -inf : inf), fp = (lead > 0 ? inf : -inf);
+    const bounds = [-inf, ...xs, inf], vals = [fm, ...xs.map(f), fp];
+    let k = 0;
+    for (let i = 0; i < bounds.length - 1; i++) { const lo = Math.min(vals[i], vals[i + 1]), hi = Math.max(vals[i], vals[i + 1]); if (t > lo && t < hi) k++; }
+    xs.forEach((x) => { if (f(x) === t) k++; });
+    return k;
+  }
+  ouUpgrade(scenes[3], {
+    m: 4,
+    gen: (prev) => {
+      let fam, sh;
+      if (!prev) { fam = L4[0]; sh = 0; } else { fam = ouPick(L4); sh = ouPick([-2, -1, 0, 1, 2]); if (fam.co.length === 5) sh = ouPick([-1, 0, 1]); if (fam === L4[0] && sh === 0) return null; }
+      const co = fam.co.slice(); co[co.length - 1] += sh;
+      const f = (x) => ouEv(co, x), hs = [...new Set(fam.xs.map((x) => f(x)))].sort((p, q) => p - q);
+      const eps = 1e-6, jumps = hs.filter((t) => { const g0 = cnt4(co, fam.xs, t); return g0 !== cnt4(co, fam.xs, t - eps) || g0 !== cnt4(co, fam.xs, t + eps); });
+      const gv = jumps.map((t) => cnt4(co, fam.xs, t));
+      // 높이로 나뉜 영역마다 교점 개수(위에서부터 아래로)
+      const bands = [cnt4(co, fam.xs, hs[hs.length - 1] + 1)]; for (let i = hs.length - 1; i > 0; i--) bands.push(cnt4(co, fam.xs, (hs[i] + hs[i - 1]) / 2)); bands.push(cnt4(co, fam.xs, hs[0] - 1));
+      const x0 = Math.min(...fam.xs) - 2.3, x1 = Math.max(...fam.xs) + 2.3, y0 = hs[0] - 2.4, y1 = hs[hs.length - 1] + 2.4;
+      if (prev && y1 - y0 > 12) return null;
+      return { fam, co, f, hs, jumps, gv, bands, win: { x: [x0, x1], y: [y0, y1] }, key: [co].join(), chk: { co, xs: fam.xs, jumps, gv } };
+    },
+    text: (v) => `함수 ${tex('f(x) = ' + ouPoly(v.co))} 의 그래프와 직선 ${tex('y = t')} 가 만나는 점의 개수를 ${tex('g(t)')}라 하자. 함수 ${tex('g(t)')}가 불연속이 되는 모든 실수 ${tex('t')}의 값과 그때의 함숫값 ${tex('g(t)')}를 구하시오.`,
+    ans: (v) => tex(`t = ${v.jumps.join(', \; ')} \\text{ 에서 불연속 } (${v.jumps.map((t, i) => `g(${t}) = ${v.gv[i]}`).join(', \; ')})`),
+    steps: (v) => [
+      `$f'(x)=${ouPoly(ouDer(v.co))}=0$ 에서 극점은 $x=${v.fam.xs.join(',\\,')}$ 이고, 그 높이(극댓값·극솟값)는 $${v.fam.xs.map((x) => ouEv(v.co, x)).join(',\\,')}$ 입니다.`,
+      `수평선 $y=t$ 가 이 높이들을 지날 때 교점의 개수가 바뀝니다. 그림에서 높이 $${v.hs.slice().reverse().join(',\\,')}$ 로 나뉜 영역마다 교점의 개수는 위에서부터 $${v.bands.join(',\\,')}$ 개입니다.`,
+      `경계의 높이에서는 접점을 한 번만 세므로 ` + v.jumps.map((t, i) => `$g(${t})=${v.gv[i]}$`).join(', ') + ` 이고, 이 값이 양쪽 영역의 값과 다르므로 $t=${v.jumps.join(',\\,')}$ 에서 $g(t)$ 는 불연속입니다.`
+    ],
+    core: '<b>교점의 개수가 바뀌는 순간은 직선이 곡선에 접하는 순간</b><br>수평선 $y=t$ 와 $y=f(x)$ 의 교점의 개수 $g(t)$ 는 $t$ 가 $f$ 의 극댓값·극솟값을 지날 때 바뀝니다. 그 $t$ 에서는 접점을 한 번만 세므로 $g(t)$ 의 값이 양쪽 영역의 값과 달라 불연속입니다.',
+    draw: (b, s, v, st) => {
+      b.plot(v.f, { color: 'ink', width: 3.2, glow: true });
+      ouCurveTag(b, v.f, 'y = f(x)', 'ink', { side: 'left', dy: -12, skip: v.fam.xs.map((x) => [x, v.f(x), 1.6]) });
+      const vb = b.viewBox();
+      if (st >= 1) v.fam.xs.forEach((x) => b.point([x, v.f(x)], { hollow: true, color: 'violet', r: 6, label: `(${x}, ${v.f(x)})`, ...ouPlace(0, v.f(x) >= (v.hs[0] + v.hs[v.hs.length - 1]) / 2 ? 'L' : 'R'), dy: v.f(x) >= (v.hs[0] + v.hs[v.hs.length - 1]) / 2 ? -14 : 18 }));
+      if (st >= 2) {
+        v.hs.forEach((h, i) => { b.seg([vb.x0, h], [vb.x1, h], { color: 'amber', width: 1.8, dash: true }); lbl(b, [vb.x0 + 0.15, h], `t = ${h}`, { color: 'amber', size: 12.5, align: 'left', dy: -12 }); });
+        const tops = [v.hs[v.hs.length - 1] + 1.2, ...v.hs.slice(1).reverse().map((h, i) => (h + v.hs[v.hs.length - 2 - i]) / 2), v.hs[0] - 1.2];
+        tops.forEach((y, i) => lbl(b, [vb.x1 - 0.2, y], `${v.bands[i]}개`, { color: 'violet', size: 13, align: 'right' }));
+      }
+      if (st >= 3) v.jumps.forEach((t, i) => { const xr = v.fam.xs.find((x) => v.f(x) === t); lbl(b, [vb.x1 - 0.2, t], `g(${t}) = ${v.gv[i]}`, { color: 'green', size: 13, align: 'right', dy: 20 }); });
+    }
+  });
+
+  /* 장면 5 · 사잇값 정리 */
+  ouUpgrade(scenes[4], {
+    m: 5,
+    gen: (prev) => {
+      let co, den, a;
+      if (!prev) { co = [1, 0, -3, -1]; den = 2; a = 1; }
+      else {
+        co = [ouPick([1, 1, 2, -1]), ouPick([-2, -1, 0, 1, 2]), ouPick([-4, -3, -2, -1, 0, 1, 2, 3, 4]), ouPick([-3, -2, -1, 0, 1, 2, 3])]; den = 1; a = ouPick([-2, -1, 0, 1, 2]);
+      }
+      const f = (x) => ouEv(co, x) / den, fq = (x) => ouEvQ(co, x).div(den), fa = fq(a), fb = fq(a + 1);
+      if (prev && (fa.n * fb.n >= 0 || Math.abs(fa.v) > 8 || Math.abs(fb.v) > 8)) return null;
+      let lo = a, hi = a + 1; for (let i = 0; i < 60; i++) { const mid = (lo + hi) / 2; if (f(lo) * f(mid) <= 0) hi = mid; else lo = mid; }
+      const root = (lo + hi) / 2;
+      const win = ouWinF([f], [a - 0.5, a + 1.5], { pts: [[a, fa.v], [a + 1, fb.v], [root, 0]], mx: 1.6, my: 1.4, minW: 6.4, minH: 5 });
+      if (prev && win.y[1] - win.y[0] > 12) return null;
+      return { co, den, a, bb: a + 1, f, fa, fb, root, win, key: [co, den, a].join(), chk: { co, den, a, fa: fa.v, fb: fb.v, root } };
+    },
+    text: (v) => `연속함수 ${tex('f(x) = ' + ouPoly(v.co.map((c) => ouQ(c, v.den))))} 에 대하여 방정식 ${tex('f(x) = 0')} 의 실근이 열린구간 ${tex(`(${v.a}, ${v.bb})`)} 에 적어도 하나 존재함을 사잇값 정리를 이용하여 보이시오.`,
+    ans: (v) => tex(`f(${v.a}) = ${v.fa.tex} ${v.fa.v < 0 ? '<' : '>'} 0, \; f(${v.bb}) = ${v.fb.tex} ${v.fb.v < 0 ? '<' : '>'} 0 \\implies f(${v.a})f(${v.bb}) < 0 \; (\\text{존재})`),
+    steps: (v) => [
+      `$f$ 는 다항함수이므로 닫힌구간 $[${v.a},${v.bb}]$ 에서 연속입니다. 그림에서 구간 $[${v.a},${v.bb}]$ 를 띠로 표시합니다.`,
+      `양 끝점의 함숫값을 구하면 $f(${v.a})=${v.fa.tex}$, $f(${v.bb})=${v.fb.tex}$ 로 부호가 서로 반대이므로 $f(${v.a})f(${v.bb})\\lt 0$ 입니다.`,
+      `사잇값 정리에 의해 $f(c)=0$ 인 $c$ 가 열린구간 $(${v.a},${v.bb})$ 에 적어도 하나 존재합니다. 그림에서 곡선이 이 구간에서 $x$ 축을 지나는 점입니다.`
+    ],
+    core: '<b>사잇값 정리로 실근의 존재 보이기</b><br>$f$ 가 $[a,b]$ 에서 연속이고 $f(a)f(b)<0$ 이면 $f(c)=0$ 인 $c$ 가 $(a,b)$ 에 적어도 하나 있습니다. 서술형에는 ① 닫힌구간에서 연속, ② $f(a)f(b)<0$ 을 반드시 씁니다.',
+    draw: (b, s, v, st) => {
+      const vb = b.viewBox();
+      if (st >= 1) b.poly([[v.a, vb.y0], [v.bb, vb.y0], [v.bb, vb.y1], [v.a, vb.y1]], { fill: 'amber', fillAlpha: 0.14, color: null });
+      b.plot(v.f, { color: 'ink', width: 3.2, glow: true });
+      [v.a, v.bb].forEach((x) => b.seg([x, vb.y0], [x, vb.y1], { color: 'amber', width: 1.6, dash: true, alpha: 0.8 }));
+      lbl(b, [v.a, vb.y0 + (vb.y1 - vb.y0) * 0.07], `x = ${v.a}`, { color: 'amber', dx: -5, align: 'right' });
+      lbl(b, [v.bb, vb.y0 + (vb.y1 - vb.y0) * 0.07], `x = ${v.bb}`, { color: 'amber', dx: 5, align: 'left' });
+      ouCurveTag(b, v.f, 'y = f(x)', 'ink', { side: 'left', dy: -12, skip: [[v.a, v.fa.v, 1.5], [v.bb, v.fb.v, 1.5]] });
+      if (st >= 2) {
+        b.point([v.a, v.fa.v], { color: v.fa.v < 0 ? 'sky' : 'rose', r: 6.5, label: `f(${v.a}) = ${v.fa.txt}`, dx: -12, dy: v.fa.v < 0 ? 20 : -16, align: 'right' });
+        b.point([v.bb, v.fb.v], { color: v.fb.v < 0 ? 'sky' : 'rose', r: 6.5, label: `f(${v.bb}) = ${v.fb.txt}`, dx: 12, dy: v.fb.v < 0 ? 20 : -16, align: 'left' });
+      }
+      if (st >= 3) b.point([v.root, 0], { color: 'green', r: 7, label: 'c  (f(c) = 0)', dx: 0, dy: v.fa.v < 0 ? 24 : -18, align: 'center' });
+    }
+  });
+
+  })();
+  /* OU-END */
+
   APLab.createLab({
     id: 'calc1-limits',
     title: '함수의 극한 · 연속',
