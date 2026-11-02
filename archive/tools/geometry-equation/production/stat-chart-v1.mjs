@@ -819,8 +819,10 @@ function solveTree(c){
     const node={id,parent,depth,label:parent===null?(raw.label===undefined?null:lab(raw.label)):lab(raw.label),p:p===null?null:p,children:[]};
     nodes.push(node);
     if(raw.children!==undefined){
-      if(!Array.isArray(raw.children)||raw.children.length<2||raw.children.length>5)bad('STAT_TREE_INVALID');
+      // 1 to 5 children: a node with ONE child is a step that always happens (the professor opens a stone door), so its branch must carry p "1" (G13c)
+      if(!Array.isArray(raw.children)||raw.children.length<1||raw.children.length>5)bad('STAT_TREE_INVALID');
       const given=raw.children.map(ch=>{onlyKeys(ch,['label','p','children'],'STAT_TREE_INVALID');return ch.p!==undefined;});
+      if(raw.children.length===1&&(!given[0]||qcmp(parseQ(raw.children[0].p,'STAT_TREE_PROBABILITY_INVALID'),ONE)!==0))bad('STAT_TREE_SINGLE_CHILD_NOT_CERTAIN');
       if(given.some(g=>g!==given[0]))bad('STAT_TREE_PROBABILITY_MIXED');
       const ps=given[0]?raw.children.map(ch=>{const v=parseQ(ch.p,'STAT_TREE_PROBABILITY_INVALID');if(qcmp(v,ZERO)<=0||qcmp(v,ONE)>0)bad('STAT_TREE_PROBABILITY_INVALID');return v;}):raw.children.map(()=>null);
       if(given[0]&&qcmp(ps.reduce(qadd,ZERO),ONE)!==0)bad('STAT_TREE_BRANCH_PROBABILITY_SUM');
