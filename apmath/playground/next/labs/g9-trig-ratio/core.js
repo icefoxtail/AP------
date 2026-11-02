@@ -126,7 +126,7 @@
     const t = d * DEG, v = fn === 's' ? Math.sin(t) : fn === 'c' ? Math.cos(t) : Math.tan(t);
     return vf(v);
   }
-  const sinD = (d) => trig('s', d), cosD = (d) => trig('c', d), tanD = (d) => trig('t', d);
+  const sinD = (d) => trig('s', d), cosD = (d) => trig('c', d), tanD = (d) => trig('t', d), tanS = (d) => trig('t', d) || vi(0);
   const isSpec = (d) => [0, 15, 30, 45, 60, 75, 90].includes(d);
   // 삼각비의 표(소수 넷째 자리)
   const tbl = (fn, d) => { const t = d * DEG; const v = fn === 's' ? Math.sin(t) : fn === 'c' ? Math.cos(t) : Math.tan(t); return Math.round(v * 1e4) / 1e4; };
@@ -288,7 +288,7 @@
     const dupe = (v) => list.some((x) => vsame(x.v, v) || fmt(x.v) === fmt(v));
     for (const w of wrongs) {
       const v = asV(w[0]);
-      if (!Number.isFinite(v.v) || !valid(v) || dupe(v)) continue;
+      if (!Number.isFinite(v.v) || !valid(v) || dupe(v) || (!o.fmt && !v.x)) continue; // 소수 보기는 쓰지 않습니다(표 문제만 fmt 를 직접 줍니다)
       list.push({ v, ok: false, hint: w[1] || '' });
       if (list.length === 5) break;
     }
@@ -504,7 +504,7 @@
   window.APL_TG = {
     PI, DEG, clamp, ease, NUM, LET, esc, rint, pick, sample, gcd,
     fr, xQ, xS, xAdd, xMul, texX, mkV, vi, vsq, vf, vnum, vadd, vsub, vneg, vmul, vdiv, vscale, vsqrt, vpow2, vsame, vrat, vint, decS, vtex, vcan, veq, veqT, vplain,
-    SPEC, trig, sinD, cosD, tanD, isSpec, tbl, d4,
+    SPEC, trig, sinD, cosD, tanD, tanS, isSpec, tbl, d4,
     r1, fmtN, dg, tx, texDeg, ol,
     pt, add, sub, mul, len, dist, unit, mid, lerp, polar, rotP, angBetween, cross, inter, projOn, polyArea, centroid, bboxOf, shift,
     textW, textW2, T, tagOut, vtx, sideTag, ang, tick, fillPoly, line, poly, dashed, fit, rowsBelow, rtGeo, drawRT, rtBox,
