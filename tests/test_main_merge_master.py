@@ -273,6 +273,40 @@ class RpmPrimaryPathTests(unittest.TestCase):
         with redirect_stdout(io.StringIO()):
             return mm.generate_inbox_request(files, rpm_path_delta=True)
 
+    def resolve_in(self, rows, course, curriculum="2015"):
+        cross = self.root / "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json"
+        cross.parent.mkdir(parents=True, exist_ok=True)
+        cross.write_text(json.dumps({"status": "ACTIVE_REFERENCE", "records": rows}), encoding="utf-8")
+        notes = []
+        path, _ = mm.resolve_rpm_primary_path({}, {"problemTypeKey": "PT_A", "templateKey": "TPL_A"}, curriculum, course, notes, "#1")
+        return path, notes
+
+    def test_row_scope_alias_and_standard_course_name_the_same_course(self):
+        # 2015 high-1 rows: scope `수학_하`, standardCourse `수학(하)`; the small meta's courseKey is `수학(하)`.
+        row = self.row("H1-A", "가", "나", scope="수학_하", standardCourse="수학(하)")
+        for course in ("수학(하)", "수학_하", "수학 (하)"):
+            path, notes = self.resolve_in([row], course)
+            self.assertIsNotNone(path, course)
+            self.assertEqual(path["crosswalkRecordIds"], ["H1-A"])
+            self.assertEqual(notes, [])
+
+    def test_other_course_is_not_a_candidate_through_either_spelling(self):
+        rows = [self.row("H1-A", "가", "나", scope="수학_하", standardCourse="수학(하)"),
+                self.row("H1-B", "다", "라", scope="수학_상", standardCourse="수학(상)")]
+        path, notes = self.resolve_in(rows[:1], "수학(상)")
+        self.assertIsNone(path)
+        self.assertTrue(any("EVIDENCE_DEBT" in n for n in notes))
+        path, _ = self.resolve_in(rows, "수학(상)")
+        self.assertEqual(path["crosswalkRecordIds"], ["H1-B"])
+        path, notes = self.resolve_in(rows, "")
+        self.assertIsNone(path)
+
+    def test_course_alias_does_not_relax_curriculum_or_binding(self):
+        rows = [self.row("H1-A", "가", "나", scope="수학_하", standardCourse="수학(하)", curriculum="2022"),
+                self.row("H1-B", "다", "라", scope="수학_하", standardCourse="수학(하)", bindingStatus="MISSING")]
+        path, _ = self.resolve_in(rows, "수학(하)")
+        self.assertIsNone(path)
+
     def test_named_record_among_the_exact_candidates_decides_the_path(self):
         req = self.delta([self.row("R1", "가", "나"), self.row("R2", "다", "라")],
                          {"rpmPrimary": {"l1": "미분", "l2": "도함수의 활용(2)", "l3": "다", "l4": "라", "recordId": "R2"}})
