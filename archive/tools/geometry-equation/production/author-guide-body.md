@@ -815,9 +815,9 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - **독립 검수.** `lattice_path_observer.py`는 plan만 보고 시작점에서 도착점까지의 모든 최단 경로를 **하나씩 걸어서** 금지·경유 조건을 거른 뒤 교차점마다 서로 다른 앞부분 경로를 세어, **최종 SVG**에 적힌 숫자와 대조한다. 그려진 도로의 간격으로 격자 배율을 되찾아 모든 도로가 정확한 위치에 하나씩 있는지, 끊긴 길이 점선인지, 꼭 지나는 길이 더 굵은지, 이름 점과 `highlightPath`가 제 교차점에 있는지, 숨긴 최종 수가 적히지 않았는지 확인한다.
 - 오류 코드: `LATTICE_PLAN_INVALID`(허용하지 않는 키), `LATTICE_GRID_INVALID`(범위 밖), `LATTICE_POINT_INVALID`/`LATTICE_POINT_ID_INVALID`/`LATTICE_POINT_OUT_OF_GRID`/`LATTICE_POINT_POSITION_DUPLICATE`, `LATTICE_SEGMENT_INVALID`/`LATTICE_SEGMENT_NOT_ADJACENT`/`LATTICE_SEGMENT_DUPLICATE`, `LATTICE_VIA_TOO_MANY`/`LATTICE_VIA_FORBIDDEN_CONFLICT`/`LATTICE_VIA_UNREACHABLE`, `LATTICE_ENDPOINT_INVALID`(시작점·도착점 없음·같음), `LATTICE_NO_PATH`(조건을 만족하는 경로 없음), `LATTICE_COUNTS_INVALID`, `LATTICE_HIGHLIGHT_PATH_INVALID`, `LATTICE_LABEL_NO_ROOM`(숫자·이름이 들어갈 자리 없음: 칸을 줄이거나 `counts` 목록으로 일부만 쓴다).
 
-### 3-40. 서로 다른 비선형 곡선 세 개 이상을 한 그림에: `multi-curve-figure-v1`
+### 3-40. 서로 다른 곡선 2~6개를 한 그림에: `multi-curve-figure-v1`
 
-한 문항의 그림이 **서로 다른 비선형 곡선 3개 이상**으로 둘러싸이거나 이루어질 때만 쓴다. 곡선 2개, 곡선 2개+직선 1개, 한 곡선의 조각(가지)은 이 기능의 대상이 아니며 기존 family(`referenceCurves`, `piecewise-*`)를 쓴다. 실제 예: 22 효천고 2학기 기말 고2 수학II q10의 `y=2-x^2`, `x=2-y^2`, `y=x^2-2`, `x=y^2-2` 네 포물선.
+한 문항의 그림이 **서로 다른 곡선 2~6개**(이차곡선, 직선, 유리함수, 무리함수, 역함수 쌍)로 이루어지거나 둘러싸일 때 쓴다. 한 곡선의 조각(가지)만 있는 그림은 이 기능의 대상이 아니며 기존 family(`piecewise-*`)를 쓴다. 곡선이 둘일 때는 아래 "유리·무리·직선 섞기" 종류(`LINE`·`RATIONAL`·`SQRT`·`inverseOf`)를 쓴다. 실제 예: 22 효천고 2학기 기말 고2 수학II q10의 `y=2-x^2`, `x=2-y^2`, `y=x^2-2`, `x=y^2-2` 네 포물선.
 
 ```json
 {"capability":"multi-curve-figure-v1","graphPlan":{"family":"multi-curve","curves":[
@@ -830,14 +830,32 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
  "caption":"위쪽 y=2-x^2, 오른쪽 x=2-y^2, 아래쪽 y=x^2-2, 왼쪽 x=y^2-2의 네 포물선으로 둘러싸인 영역이다."}
 ```
 
-- `curves`는 3~6개다. 각 곡선은 `id`(영문 시작, 16자 이내), `kind`, `coefficients`(`[c0,c1,c2]`, x² 또는 y² 계수 `c2`는 0이 아님), `domain`(닫힌 구간의 두 끝)을 쓴다. 계수·끝은 정확한 정수·분수 문자열(또는 한 근호 `p+q*sqrt(r)`)이고 소수를 쓰지 않는다.
+- `curves`는 2~6개다. 각 곡선은 `id`(영문 시작, 16자 이내), `kind`, `coefficients`(`[c0,c1,c2]`, x² 또는 y² 계수 `c2`는 0이 아님), `domain`(닫힌 구간의 두 끝)을 쓴다. 계수·끝은 정확한 정수·분수 문자열(또는 한 근호 `p+q*sqrt(r)`)이고 소수를 쓰지 않는다.
 - `label`(선택)은 그 곡선 옆에 그릴 정확한 ASCII 수식 문자열이다(`y=2-x^2`, `x=2-y^2`). 기존 수식 라벨 장치로 그려지며, 쓸 수 없는 글자·TeX는 `MULTI_CURVE_LABEL_INVALID:<id>`로 거절된다. 원문 그림이 곡선의 식을 보여 주면 그 식을 그대로 쓴다.
 - `kind:"Y_OF_X"`는 `y=c0+c1*x+c2*x^2`를 x 구간 위에 그린다. `kind:"X_OF_Y"`는 `x=c0+c1*y+c2*y^2`를 y 구간 위에 그리며, `branch`로 꼭짓점 위쪽(`POSITIVE`)·아래쪽(`NEGATIVE`)·둘 다(`BOTH`, 기본)를 고른다. 엔진은 이 가지들을 `y(x)` 식으로 정확히 바꿔 그리므로 옆으로 열린 포물선도 학생 화면에는 같은 곡선으로 보인다.
 - 가로·세로 배율은 같고, 세로가 너무 길면 최대 1/2까지 줄인다. 좌표축과 눈금은 엔진이 그리며, `axisTickValues`로 눈금을 직접 정할 수 있다. 점 이름·곡선 식 라벨·눈금 라벨이 하나도 없으면 출판 글자 게이트가 막히므로, 다른 라벨이 없을 때는 정확한 눈금 값을 하나 이상 준다.
 - `overlays`(선택)는 다른 그래프 계열과 같은 보조 요소 층이다. `lines`(직선 `y=slope*x+intercept`, 세로선 `x=a`), `points`, `segments`, `guides`, `polygons`를 쓸 수 있고, 모든 좌표는 계산된 그림 안에 있어야 한다(엔진이 화면을 몰래 넓히지 않는다). 원문 그림에 그려진 대칭선·보조선은 `overlays.lines`로 그대로 살린다.
 - 엔진은 각 곡선·가지를 정확한 구간과 식으로 고정하고, 독립 관측기는 같은 계수에서 모든 가지를 다시 계산해 최종 SVG의 각 polyline(태그 `CURVE_<id>`, `CURVE_<id>_POS`/`_NEG`)이 그 곡선 위에 있는지, 자기 구간·가지를 벗어나지 않는지, 양 끝과 중간 호가 맞는지 확인한다. 하나라도 어긋나면 FAIL이다.
-- 오류 코드: `MULTI_CURVE_COUNT_INVALID`(3개 미만·6개 초과), `MULTI_CURVE_FIELD_UNKNOWN:<field>`, `MULTI_CURVE_CURVE_INVALID:<id>`, `MULTI_CURVE_ID_INVALID`, `MULTI_CURVE_KIND_INVALID:<id>`, `MULTI_CURVE_COEFFICIENT_INVALID:<id>`, `MULTI_CURVE_NOT_QUADRATIC:<id>`, `MULTI_CURVE_DOMAIN_INVALID:<id>`, `MULTI_CURVE_BRANCH_INVALID:<id>`, `MULTI_CURVE_BRANCH_EMPTY:<id>`, `MULTI_CURVE_LABEL_INVALID:<id>`, `MULTI_CURVE_FRAME_DEGENERATE`, `MULTI_CURVE_TOO_NARROW`.
+- 오류 코드: `MULTI_CURVE_COUNT_INVALID`(2개 미만·6개 초과), `MULTI_CURVE_FIELD_UNKNOWN:<field>`, `MULTI_CURVE_CURVE_INVALID:<id>`, `MULTI_CURVE_ID_INVALID`, `MULTI_CURVE_KIND_INVALID:<id>`, `MULTI_CURVE_COEFFICIENT_INVALID:<id>`, `MULTI_CURVE_NOT_QUADRATIC:<id>`, `MULTI_CURVE_DOMAIN_INVALID:<id>`, `MULTI_CURVE_BRANCH_INVALID:<id>`, `MULTI_CURVE_BRANCH_EMPTY:<id>`, `MULTI_CURVE_LABEL_INVALID:<id>`, `MULTI_CURVE_FRAME_DEGENERATE`, `MULTI_CURVE_TOO_NARROW`.
 
+
+**유리·무리·직선 섞기, 곡선별 모양, 역함수 쌍 (G18a).** 위 이차곡선 말고도 `kind`는 다음을 쓸 수 있다. 숫자는 모두 정확한 정수·분수 문자열이다.
+
+```json
+{"capability":"multi-curve-figure-v1","graphPlan":{"family":"multi-curve","viewport":[-4,5,-3,4],"curves":[
+  {"id":"f","kind":"RATIONAL","numerator":["3","2"],"denominator":["-5","4"],"domain":["-4","5"],"color":"BLUE","label":"y=f(x)"},
+  {"id":"g","inverseOf":"f","color":"WARM","label":"y=g(x)"},
+  {"id":"yx","kind":"LINE","coefficients":["0","1"],"domain":["-3","4"],"style":"DASHED","label":"y=x"}],
+  "axisTickValues":{"x":[],"y":[]}},
+ "caption":"f(x)=(2x+3)/(4x-5)와 역함수는 y=x에 대칭이다."}
+```
+
+- `LINE`: `coefficients:[c0,c1]` = `y=c0+c1*x`. `RATIONAL`: `numerator:[a0,a1]`, `denominator:[d0,d1]` = `y=(a0+a1*x)/(d0+d1*x)`(분모의 x 계수는 0이 아니고, 분자가 극점에서 0인 구멍은 `MULTI_CURVE_RATIONAL_DEGENERATE`). 극점이 `domain` 안에 있으면 두 쪽이 각각 가지(`CURVE_<id>_L`/`_R`)로 그려지고, 축 위가 아닌 점근선마다 점선 한 줄과 `x=p`·`y=q` 글자가 나온다. `SQRT`: `radicand:[c0,c1]`, `amplitude`(기본 1, 음수 가능), `offset`(기본 0) = `y=offset+amplitude*sqrt(c0+c1*x)`. 시작점에 검은 점과 좌표가 나온다.
+- 이런 곡선은 모양만으로 틀이 정해지지 않으므로 **창** `graphPlan.viewport:[xmin,xmax,ymin,ymax]`를 준다(틀은 이 창에 여백을 둘러 만들고, 곡선은 틀 위·아래에서 잘린다). `domain`을 생략하면 창의 x 범위(`SQRT`는 근호가 0인 점에서 창 끝까지)를 쓴다. 창이 없으면 `MULTI_CURVE_WINDOW_REQUIRED:<id>`.
+- `inverseOf:"<앞에 나온 곡선 id>"`는 그 곡선을 `y=x`에 대칭한 곡선이다. 엔진이 정확히 계산하며 `RATIONAL`→`RATIONAL`, `LINE`→`LINE`, `SQRT`→이차곡선 반쪽, 꼭짓점 한쪽만 쓴 이차곡선(`Y_OF_X`)→`SQRT`가 된다. 정의역(`domain`)을 생략하면 원 곡선의 치역(또는 창)을 쓴다. 독립 관측기는 그려진 모든 점을 `y=x`로 뒤집어 원 곡선 위에 있는지 확인한다. 지원하지 않으면 `MULTI_CURVE_INVERSE_UNSUPPORTED:<id>`. `y=x` 직선은 `LINE`(점선 `style:"DASHED"`)으로 그린다.
+- 곡선마다 고를 수 있는 모양: `color`(`BLUE|WARM|GREEN|ROSE|VIOLET`), `weight`(`"BOLD"`는 다른 곡선보다 굵게), `style`(`"SOLID"|"DASHED"`), `label`(그 곡선 식 또는 `f(x)` 같은 이름. 새 종류는 `-\frac{8}{x-1}-4` 같은 TeX도 되고 엔진이 ASCII 수식으로 바꿔 그린다), `hideLabel:true`(식 글자를 안 씀), `hideLabels`(`"formula"` 식, `"asymptotes"` 점근선 값 글자, `"start"` 시작점 좌표 중 골라서). 점근선 값이 정답이면 `hideLabels:["asymptotes"]`로 숨긴다. 새 종류는 `label`이 없으면 자동으로 `y=...` 식 글자를 쓴다.
+- 독립 관측기는 곡선마다 색·점선·굵기, 점근선 선 위치, 시작점 점, 가지 끝(틀에 잘린 곳 포함)을 다시 확인한다. 굵은 곡선은 다른 곡선보다 굵어야 한다.
+- 오류 코드: `MULTI_CURVE_WINDOW_REQUIRED:<id>`, `MULTI_CURVE_WINDOW_INVALID`, `MULTI_CURVE_COLOR_INVALID:<id>`, `MULTI_CURVE_WEIGHT_INVALID:<id>`, `MULTI_CURVE_STYLE_INVALID:<id>`, `MULTI_CURVE_HIDE_LABELS_INVALID:<id>`, `MULTI_CURVE_RATIONAL_DEGENERATE:<id>`, `MULTI_CURVE_INVERSE_UNSUPPORTED:<id>`.
 
 ### 3-41. 두 원의 호로 이루어진 영역(렌즈·활꼴): 중심이 다른 호를 한 `loop`에 잇기
 
