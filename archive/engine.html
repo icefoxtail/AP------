@@ -43,7 +43,7 @@
     <script src="svg-accessibility.js?v=20261014.1"></script>
     <script src="render-authority.js?v=20261014-svg-alt-1" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="layout-authority.js?v=20261009.1" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
-    <script src="layout-materializer.js?v=20261102.1"></script>
+    <script src="layout-materializer.js?v=20261102.2"></script>
     <script src="solution-render-executor.js?v=20261029-sections-1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1" onerror="console.warn('[answer-render-executor] shared answer renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="equal-slot-engine.js?v=20261029-mjx-ext-1"></script>
@@ -226,6 +226,15 @@
         .q-box.sol-box.sol-fit-narrow .sol-ans { max-width: 100%; white-space: normal; overflow-wrap: anywhere; word-break: break-word; }
         .q-box.sol-box.sol-fit-narrow .sol-exp mjx-container { display: inline-block; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
         .q-box.sol-box.sol-fit-narrow .sol-exp mjx-container mjx-math { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+        /* 인라인 style 고정폭(max-width:400px 등) 이미지·표·영상도 칸 폭에 맞춘다(비율 유지, 잘라 숨기지 않음).
+           해설 본문(.sol-exp)뿐 아니라 해설지 위쪽에 다시 보이는 문제 본문([data-semantic-content])도 포함한다.
+           .sol-image-wrap(해설 그림)은 자체 크기 규칙(image-small 등)을 쓰므로 제외한다. */
+        .q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) :is(img, video, canvas):not(.sol-image-wrap *) { max-width: 100% !important; width: auto !important; height: auto !important; box-sizing: border-box; }
+        .q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) svg:not(mjx-container svg):not(.sol-image-wrap *) { max-width: 100% !important; height: auto; }
+        .q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) table { max-width: 100% !important; table-layout: fixed; box-sizing: border-box; }
+        .q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) :is(td, th) { overflow-wrap: anywhere; word-break: break-word; }
+        .q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) :is(div, p, span, figure, pre)[style*="width"] { max-width: 100% !important; box-sizing: border-box; }
+        .q-box.sol-box.sol-fit-narrow [data-semantic-content="1"] { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
         .q-box.sol-box.sol-fit-narrow[data-sol-fit="1"] .sol-exp { font-size: 8pt; }
         .q-box.sol-box.sol-fit-narrow[data-sol-fit="2"] .sol-exp { font-size: 7.5pt; }
         .q-box.sol-box.sol-fit-narrow[data-sol-fit="3"] .sol-exp { font-size: 7pt; }

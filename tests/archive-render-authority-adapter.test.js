@@ -28,7 +28,7 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /recordArchiveDualRun\(area, ctx(?: = null)?\)/);
   for (const script of ['mathjax_render_loop', 'layout-authority', 'layout-materializer', 'solution-render-executor', 'exam-render-executor', 'render-state-normalizer', 'side-effect-ledger', 'screen-runtime', 'snapshot-contract', 'question-image-readiness', 'screen-runtime-adapter']) {
     const version = {
-      'layout-materializer': '20261102\\.1',
+      'layout-materializer': '20261102\\.2',
       'solution-render-executor': '20261029-sections-1',
       'exam-render-executor': '20261029-sections-1',
       'question-image-readiness': '20261030-s11-1',
