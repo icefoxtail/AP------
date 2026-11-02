@@ -57,3 +57,14 @@
 ## ROOT production 완성·예외·수정 대체 책임
 
 CURRENT Execution v1.3 §25를 따른다. ROOT는 승인 범위에서 캡처/실제 render 조건을 근거 있게 면제하고 최소 수정·승인 ALIVE 문형 대체·실제 기술 실행 인계·publication을 자율 결정하고 결과를 수납한다. 신규 문항 HOLD를 발행하거나 결함 보고만으로 작업을 종료하지 않는다. 같은 적용 여부를 반복 요청하지 않는다. 완료 기준은 JS/정답/해설/Meta/이미지/SVG, 유효한 R1/R2 및 R3 static integrity, zero item HOLD, 실제 production·remote readback·closeout이다. 캡처만 없다는 이유로 최종 HOLD를 만들지 않는다. ROOT 결정은 ROOT_DELEGATED/ROOT_DIRECTED_STATIC_COMPLETE/NOT_RUN_ROOT_WAIVER와 범위·사유·대체 검수·SHA를 기록한다. actual RENDER_PASS를 가장하지 않으며 알려진 품질 결함을 면제하지 않는다. 일반 ROOT 경로는 archive-codex-root-waiver-intake.mjs 및 RootWaived static/MAIN_DONE validators·stage consumers로 수납한다. 새로운 예외 기능이 미지원일 때만 MASTER의 exact 기술 continuation으로 결속을 보완한다. 원 정상/실패/freeze/capture/권한 provenance는 보존한다.
+
+## 시험지 이미지 올리기 — R2 제공 (2026-11-02)
+
+2026-11-01부터 시험지 이미지는 학생 사이트(Pages) 패키지에 들어가지 않고, R2(`https://img.wangjiedu.com/exams/images/<키>`)에서만 제공된다. 병합 후 R2 복사와 학생 사이트 배포는 Actions가 자동으로 한다. 자세한 구조와 되돌리는 방법은 [tools/r2/EXAM_IMAGE_BASE.md](../../tools/r2/EXAM_IMAGE_BASE.md).
+
+- **위치:** 이미지는 반드시 `archive/assets/images/<시험지키>/`에 둔다. 시험지 폴더 안(`archive/exams/**/assets/images/`)이나 저장소 최상위 `assets/images/`에 두면 R2로 올라가지 않아 학생 화면에서 그림이 깨진다. 이유: 2026-11-01 백발백중 공통수학2 4세트의 해설 그림 199개가 이렇게 빠져 있었다.
+- **SVG 크기:** 최상위 `<svg>`에 `viewBox`와 같은 비율의 `width`·`height`를 넣는다. 이유: `viewBox`만 있으면 래스터 인쇄(html2canvas)에서 그림이 크게 잘린 글자 하나로 나온다(2026-11-01 매산고 기하 q03·q04).
+- **기존 이미지 교체:** 같은 이름으로 내용만 바꾸지 말고, 새 파일 이름을 쓰거나 참조 경로의 `?v=` 값을 올린다. 이유: 배포 관문(`image_order`)은 R2에 파일이 있는지만 보므로 같은 이름이면 바로 통과하고, R2 복사 전이나 브라우저 캐시에서 옛 그림이 보일 수 있다.
+- **삭제:** Git에서 지워도 R2에는 남는다. 학생 화면에는 영향이 없다.
+- **병합 후:** 새로 추가하거나 바꾼 이미지가 R2에 확인될 때까지(최대 14분) 학생 사이트 배포를 기다린다. 끝내 없으면 배포를 멈추고 기존 사이트를 유지한다. 이때는 3시간마다 도는 자동 재시도를 기다리거나 Actions에서 다시 실행한다.
+- **로컬 확인·렌더 도구:** localhost에서는 R2가 CORS로 이미지를 막는다. 시험지 화면 주소에 `assetBase=off`를 붙이면 저장소 이미지로 본다. 렌더 도구도 같은 방법을 쓴다. 외부 요청 금지 검사는 완화하지 않는다.
