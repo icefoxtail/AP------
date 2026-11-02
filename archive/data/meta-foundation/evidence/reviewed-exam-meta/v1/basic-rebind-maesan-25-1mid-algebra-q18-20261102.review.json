@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "archive-basic-scope-rebind-review-v1",
+  "requestId": "basic-rebind-maesan-25-1mid-algebra-q18-20261102",
+  "examUid": "25_매산고_1학기_중간_고2_대수",
+  "sourceArchiveFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js",
+  "reviewedAt": "2026-11-02",
+  "decision": "REBIND_FINGERPRINTS_ONLY_METADATA_VALUES_UNCHANGED",
+  "reason": "q18 was approved (basic scope: standard unit H15-M1-05 / sub-unit H15-M1-05-TRIGONOMETRIC_DEFINITION) against the bytes of Git blob 67fb8df5d341b19bf27cf3b5b70136290220bbdb. PR #1121 attached the student-only figure q18.svg and removed the '[도형필요]' placeholder and the typo 길움을->길이를; commit 4152a587 then only re-aligned image alt texts and SVG labels with the scanned original. The catalog therefore saw a fingerprint mismatch (sourceStatus HOLD, no canonical parent) although the approved unit/sub-unit still describe the question.",
+  "approvedSourceBlobSha1": "67fb8df5d341b19bf27cf3b5b70136290220bbdb",
+  "currentSourceBlobSha1": "ccaa72cb9ce32f577a14f3a7ec5a3217f8a91091",
+  "basicParentLink": "Sibling questions of the same exam with the same approved sub-unit H15-M1-05-TRIGONOMETRIC_DEFINITION (q1, q5) are strict-approved with parent 2015 / 수학I / 삼각함수 / 삼각함수; the canonical crosswalk maps the sub-unit to exactly this parent. q18's reviewed parent link was dropped by Registration Sync when the body fingerprint changed (#1121) and is restored for the current bytes.",
+  "metadataValues": {
+    "standardUnitKey": "H15-M1-05",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "metadataStatus": "approved_partial_with_explicit_holds",
+    "unchanged": true
+  },
+  "questionReview": {
+    "ordinal": 18,
+    "stemNow": "다음 그림과 같이 중심각을 공유하는 두 부채꼴 $OAB$, $OCD$에 대하여 도형 $ABDC$의 둘레의 길이가 48이다. 도형 $ABDC$의 넓이가 최대가 될 때, 선분 $AC$의 길이를 구하시오. (6점)",
+    "answer": "12",
+    "answerCheck": "Perimeter L = (r1+r2)theta + 2x = 48 with x = AC = r2-r1; area S = (1/2)theta(r2-r1)(r2+r1) = (1/2)x(48-2x) = -x^2+24x = -(x-12)^2+144, maximal at x = 12. Answer 12 is correct and the written solution matches this derivation.",
+    "changedSinceApproval": [
+      "image (new student figure q18.svg)",
+      "imageAlt/imageSize",
+      "content: leading placeholder line '[도형필요]' removed",
+      "content: typo fix 길움을 -> 길이를",
+      "solutionImageAlt (alt text only)"
+    ],
+    "unchangedSinceApproval": [
+      "answer",
+      "solution text",
+      "choices",
+      "all classification fields"
+    ],
+    "figureCheck": "Rendered archive/assets/images/25_매산고_1학기_중간_고2_대수/q18.svg and q18-solution.svg in Chrome: concentric sectors with O, A, B, C, D, shaded region ABDC; the figure carries no numeric value the student needs (only the perimeter 48 in the stem), the solution figure shows AOB = COD = theta and the L/S/x=12 relations. Readable at desktop width."
+  },
+  "figureAssets": [
+    "archive/assets/images/25_매산고_1학기_중간_고2_대수/q18.svg",
+    "archive/assets/images/25_매산고_1학기_중간_고2_대수/q18-solution.svg"
+  ]
+}
