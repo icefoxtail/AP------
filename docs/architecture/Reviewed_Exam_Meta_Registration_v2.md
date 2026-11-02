@@ -39,6 +39,26 @@ node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --requ
 각 `evidenceRefs`는 `{ "path": "저장소 상대 경로", "sha256": "실바이트 SHA-256" }` 배열이다.
 실제 파일이 없거나 hash가 다르면 쓰기 전에 실패한다. URL이나 검토했다는 문장만으로 대체하지 않는다.
 
+### Generated 확장 키(EXT-*) — 사용은 허용, 정본 승격 없음 (2026-11-02)
+
+유사시험지 등 Generated 문항은 정본에 없는 개념·조건을 `EXT-CROSS-*`/`EXT-COND-*` 확장 키로 쓴다
+(`Archive_Correction_Owner_EndToEnd_Closeout_CURRENT_v1` §3). 이유: 확장 키를 등록기가 거부하면 같은 시험지의 정상 문항까지 등록되지 않았다.
+등록기(`resolve()`)는 `crossConceptKeys`/`conditionKeys`에 한해 아래를 모두 만족하는 EXT 키만 받는다. 하나라도 어긋나면 이전처럼 거부한다.
+
+- `archive/data/archive2-extension-keys.json` 색인에 `status: GENERATED_ACTIVE`, `canonicalPromoted: false`, 필드에 맞는 `kind`(cross/cond)로 올라 있다.
+- 색인이 가리키는 원본 registry가 `archive/data/meta-foundation/extensions/` 아래에 있고, 그 파일이 `GENERATED_ACTIVE*`이며 키를 정확히 한 번 정의한다.
+  원본 항목은 `status: GENERATED_ACTIVE`, `canonicalRpmPromotion: false`(명시적 false)여야 한다. 색인은 파생물이라 낡을 수 있으므로 원본을 다시 확인한다.
+- 정의가 실재하는 ACTIVE 정본 부모(CrossConcept `parent.conceptKey`/`parentKey`, Condition `parent.conditionKey`/`parentKey`)를 가진다.
+- 정의의 교육과정·과목이 문항의 `curriculum`/`standardCourse`와 같다(공백만 다른 표기는 같은 과목).
+
+PT/TPL에는 확장 키를 받지 않는다. 확장 키는 정본 registry·compiled·RPM LOCKED·색인·원본 registry에 쓰지 않으며(`registryChanges` 불필요), 영수증에
+`generatedExtensionKeys`(키, 종류, 부모, registry 경로와 SHA-256, 사용 UID)만 남긴다. 확장 키가 없는 요청은 색인을 읽지 않는다.
+`META_PIPELINE_AUDIT`의 감사 입력은 계속 `CC_` 정본 키만 허용한다.
+
+소비 쪽 계약: catalog 빌더는 정본 concept/condition registry에 없는 키를 가진 문항에 `foundationTaxonomy` 충돌을 표시하고 `advancedEligible`에서 뺀다.
+기본 선택(`basicEligibility`)과 정본 부모(L1/L2)는 그대로라서, 확장 키 문항은 쓸 수 있지만 정본 고급(L3/L4) 승인으로 세지지 않는다.
+`--verify-projection`은 그 충돌을 "확장 키 때문"일 때만(등록기 `resolve()`로 문항 전체 분류를 다시 검증) 허용하고 `consumerLanes.generatedExtension`으로 센다. 다른 충돌은 그대로 막는다.
+
 ### `META_PIPELINE_AUDIT` 승인 유형
 
 `META_PIPELINE_AUDIT`는 Gemini의 심화 메타 감사 인계를 등록하는 별도 유형이다. 이 유형은 FINAL_QA 또는 REVIEW2로 변환하지 않으며, 시험지의 최종 수학·해설 QA 상태를 승인하지 않는다. 요청은 다음을 제공한다.

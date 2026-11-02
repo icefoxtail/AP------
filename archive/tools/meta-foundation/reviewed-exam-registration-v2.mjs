@@ -805,7 +805,86 @@ function registryPlan(root, changes, verifyEvidence) {
   const readText = file => documents.has(file) && !eq(documents.get(file), original.get(file)) ? json(documents.get(file)) : fs.readFileSync(safePath(root, file), "utf8");
   output.set(INDEX, json(buildRegistryIndex(canonical, output, readText)));
   for (const [file, doc] of documents) if (file !== INDEX && !eq(doc, original.get(file))) output.set(file, json(doc));
-  return { canonical, compiled, output, master: readJson(MASTER), original, readJson };
+  return { root, canonical, compiled, output, master: readJson(MASTER), original, readJson };
+}
+
+// ---- Generated-only extension keys (EXT-*) ----------------------------------------------------------
+// A reviewed exam may carry Generated extension CrossConcept / Condition keys next to canonical ones
+// (Archive_Correction_Owner_EndToEnd_Closeout_CURRENT_v1 section 3: EXT namespace, never a canonical
+// promotion). The registrar accepts such a key ONLY when every statement below holds; anything else keeps
+// the previous refusal. It never writes an extension into a canonical registry or the RPM LOCKED master.
+//   1. The derived index (archive2-extension-keys.json) lists the key as GENERATED_ACTIVE, not promoted,
+//      of the kind the request field needs (cross -> crossConceptKeys, cond -> conditionKeys).
+//   2. The index's source file lives under archive/data/meta-foundation/extensions/ and the file itself is a
+//      GENERATED_ACTIVE* registry that defines the key exactly once, with status GENERATED_ACTIVE and
+//      canonicalRpmPromotion === false (re-checked in the source: the index is derived and may be stale).
+//   3. The definition names an existing ACTIVE canonical parent (CrossConcept / Condition).
+//   4. The definition's curriculum and course equal the question's.
+// Extension keys are not accepted for PT/TPL; those stay canonical-only.
+const EXTENSION_INDEX = "archive/data/archive2-extension-keys.json";
+const EXTENSION_INDEX_SCHEMA = "archive2-extension-keys-v1";
+const EXTENSION_ROOT = "archive/data/meta-foundation/extensions/";
+const isExtensionKey = key => typeof key === "string" && key.startsWith("EXT-");
+const compactText = value => String(value ?? "").normalize("NFC").replace(/\s/g, "");
+const EXTENSION_FIELDS = {
+  crossConceptKeys: { kind: "cross", sourceKind: "CROSS", containers: ["extensions", "generatedCrossConcepts"], parentProp: "conceptKey", table: "cc" },
+  conditionKeys: { kind: "cond", sourceKind: "COND", containers: ["extensions", "generatedConditions"], parentProp: "conditionKey", table: "cond" }
+};
+
+function createExtensionLookup(root, tables) {
+  let index = null;
+  const sources = new Map();
+  const loadIndex = () => {
+    if (index) return index;
+    const full = safePath(root, EXTENSION_INDEX);
+    if (!fs.existsSync(full)) fail("extension key index missing");
+    const doc = JSON.parse(fs.readFileSync(full, "utf8"));
+    if (doc.schemaVersion !== EXTENSION_INDEX_SCHEMA || !Array.isArray(doc.definitions)) fail("extension key index schema mismatch");
+    index = new Map();
+    for (const definition of doc.definitions) {
+      if (index.has(definition.key)) fail(`duplicate extension key index entry: ${definition.key}`);
+      index.set(definition.key, definition);
+    }
+    return index;
+  };
+  const loadSource = file => {
+    if (sources.has(file)) return sources.get(file);
+    const full = safePath(root, file);
+    if (!fs.existsSync(full)) fail(`extension registry missing: ${file}`);
+    const bytes = fs.readFileSync(full);
+    const loaded = { doc: JSON.parse(bytes.toString("utf8")), sha256: digest(bytes) };
+    sources.set(file, loaded);
+    return loaded;
+  };
+  return {
+    check(field, key, scope) {
+      const spec = EXTENSION_FIELDS[field];
+      if (!spec) fail(`extension keys are not accepted for ${field}: ${key}`);
+      const definition = loadIndex().get(key);
+      if (!definition) fail(`unregistered extension key (${field}): ${key}`);
+      if (definition.status !== "GENERATED_ACTIVE") fail(`extension key is not GENERATED_ACTIVE (${field}): ${key} (${definition.status})`);
+      if (definition.canonicalPromoted !== false) fail(`extension key claims or omits canonical promotion state (${field}): ${key}`);
+      if (definition.kind !== spec.kind || definition.kindConflicts) fail(`extension key kind mismatch (${field}): ${key} is ${definition.kind}`);
+      if (typeof definition.file !== "string" || !definition.file.startsWith(EXTENSION_ROOT)) fail(`extension key is not defined in ${EXTENSION_ROOT}: ${key}`);
+      const { doc, sha256 } = loadSource(definition.file);
+      if (!/^GENERATED_ACTIVE/.test(doc.status || "")) fail(`extension registry is not GENERATED_ACTIVE: ${definition.file}`);
+      const entries = spec.containers.flatMap(container => (Array.isArray(doc[container]) ? doc[container] : []).filter(entry => entry?.key === key));
+      if (entries.length !== 1) fail(`extension key must be defined exactly once in ${definition.file}: ${key}`);
+      const entry = entries[0];
+      if (entry.kind !== undefined && entry.kind !== spec.sourceKind) fail(`extension registry kind mismatch (${field}): ${key} is ${entry.kind}`);
+      if (entry.status !== "GENERATED_ACTIVE") fail(`extension registry entry is not GENERATED_ACTIVE: ${key} (${entry.status})`);
+      if (entry.canonicalRpmPromotion !== false || entry.canonicalPromoted === true || entry.canonicalRpmPromoted === true)
+        fail(`extension registry entry must declare canonicalRpmPromotion false: ${key}`);
+      const parentKey = entry.parent?.[spec.parentProp] ?? entry.parentKey;
+      if (typeof parentKey !== "string" || !parentKey || tables[spec.table].get(parentKey)?.status !== "ACTIVE")
+        fail(`extension key parent is not an ACTIVE canonical ${spec.kind}: ${key} -> ${parentKey}`);
+      const curriculum = entry.curriculumKey ?? entry.curriculum;
+      if (!curriculum || String(curriculum) !== String(scope.curriculum) || !entry.standardCourse || compactText(entry.standardCourse) !== compactText(scope.course))
+        fail(`extension key scope mismatch: ${key} is ${curriculum}/${entry.standardCourse}, question is ${scope.curriculum}/${scope.course}`);
+      return { key, field, kind: spec.kind, status: entry.status, canonicalRpmPromotion: false, parentKey,
+        registryPath: definition.file, registrySha256: sha256 };
+    }
+  };
 }
 
 function lookup(plan) {
@@ -833,6 +912,8 @@ function lookup(plan) {
     if (!result.master.has(b.standardUnitKey) || b.subUnitKey && !result.master.has(b.subUnitKey)) fail(`binding unit missing: ${b.standardUnitKey}/${b.subUnitKey}`);
   }
   if (c.aliases.collisions.length) fail("canonical alias collision");
+  // Lazy and read-only: canonical-only registrations never touch the extension files.
+  Object.defineProperty(result, "ext", { value: createExtensionLookup(plan.root, result), enumerable: false });
   return result;
 }
 
@@ -845,9 +926,15 @@ function resolve(row, tables) {
   const pt = active(tables.pt, row.problemTypeKey, "PT");
   const tpl = active(tables.tpl, row.templateKey, "TPL");
   if (tpl.parentProblemTypeKey !== pt.problemTypeKey) fail(`TPL parent mismatch: ${row.templateKey}`);
+  const extensionKeys = [];
   for (const [field, map] of [["crossConceptKeys", tables.cc], ["conditionKeys", tables.cond]]) {
     if (!Array.isArray(row[field]) || new Set(row[field]).size !== row[field].length) fail(`invalid ${field}`);
-    for (const k of row[field]) active(map, k, field);
+    for (const k of row[field]) {
+      // A key that is not a canonical definition at all may be a Generated extension (checked below, once
+      // curriculum/course are known). A canonical key that exists but is not ACTIVE is still refused.
+      if (isExtensionKey(k) && !map.has(k)) extensionKeys.push({ field, key: k });
+      else active(map, k, field);
+    }
   }
   const unit = tables.master.get(row.standardUnitKey), sub = tables.master.get(row.subUnitKey);
   if (!unit || unit.keyType !== "standardUnitKey" || !["active", "ACTIVE"].includes(unit.status)) fail(`standard unit missing: ${row.standardUnitKey}`);
@@ -864,7 +951,8 @@ function resolve(row, tables) {
   if (compactCourse(courseKey) !== compactCourse(course) && !courseAliasAllowed) fail("curriculum/course aliases disagree");
   if (!pack || !pack.meta.curricula.includes(curriculum) || !pack.meta.standardCourses.includes(course) || !pack.meta.standardCourses.includes(courseKey))
     fail(`binding ownerPack scope missing: ${binding.ownerPack || pt.ownerPack}/${curriculum}/${course}`);
-  return { pt, tpl, unit, sub, binding, pack, curriculum, course };
+  const extensions = extensionKeys.map(({ field, key }) => tables.ext.check(field, key, { curriculum, course }));
+  return { pt, tpl, unit, sub, binding, pack, curriculum, course, extensions };
 }
 
 function labelsFor(root, patch, row, resolved, read, sourceBlob, { registeredReplay = false } = {}) {
@@ -1144,6 +1232,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     owners.set(r.questionUid, pack);
   }
   const touched = new Set(), applied = [], runtimeRecords = [], appliedIdentityRecords = [], fingerprintRepairs = [];
+  const extensionUsage = new Map();
   let identityChanged = false;
   for (let i = 0; i < bank.length; i++) {
     const current = rows[i], patch = patches.get(current.questionUid), q = JSON.parse(JSON.stringify(bank[i]));
@@ -1199,6 +1288,11 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       integrationPatternEvidenceDebt = debt.reason;
     } else requireText(final.integrationPattern, "integrationPattern");
     const resolved = resolve(final, tables), { pt, tpl, unit, sub, pack, curriculum, course } = resolved;
+    for (const use of resolved.extensions) {
+      const seen = extensionUsage.get(use.key) || { ...use, questionUids: [] };
+      seen.questionUids.push(current.questionUid);
+      extensionUsage.set(use.key, seen);
+    }
     for (const [field, label] of Object.entries(labelsFor(root, patch, final, resolved, read, blob))) {
       if (Object.hasOwn(patch.after, field) && patch.after[field] !== label) fail(`canonical label mismatch: ${current.questionUid}.${field}`);
       if (approved(current) && current[field] !== label && !Object.hasOwn(patch.before, field)) fail(`before required for derived label: ${current.questionUid}.${field}`);
@@ -1350,6 +1444,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       sourceHashDrift: metaPipelineAudit.sourceParity.driveSourceSha256 !== metaPipelineAudit.audit.sourceSha256 } } : {}),
     metadataRegistrationStatus: "REGISTERED", examFinalQaStatus: "NOT_EVALUATED_BY_REGISTRAR",
     consumerSearchStatus: "NOT_RUN", totalQuestions: applied.length, registryChanges: req.registryChanges || [],
+    ...(extensionUsage.size ? { generatedExtensionKeys: [...extensionUsage.values()].sort((x, y) => x.key.localeCompare(y.key, "en")) } : {}),
     appliedRecords: applied, appliedIdentityRecords, fingerprintRepairs, runtimeRecords, outputDigests };
   plan.output.set(receiptPath, json(receipt));
   const changed = [...plan.output].filter(([file, text]) => !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text);
@@ -1408,6 +1503,8 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
   const byUid = unique(rows, "questionUid", "catalog UID");
   const runtimeByUid = unique(runtimeRecords, "questionUid", "runtime UID");
   const lanes = { canonical: 0, usableMetaLane: 0 };
+  let extensionTables = null;
+  const hasExtensionKey = r => [...(r.crossConceptKeys || []), ...(r.conditionKeys || [])].some(isExtensionKey);
   for (const r of records) {
     const c = byUid.get(r.questionUid);
     if (!c || c.sourceFile !== r.sourceArchiveFile || c.sourceOrdinal !== r.sourceOrdinal) fail(`Consumer UID missing/mismatch: ${r.questionUid}`);
@@ -1485,8 +1582,15 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
     // state, kept separately from this receipt's metadata approval; it is not a metadata conflict
     // for a record served through the usable-meta lane (the canonical resolver waives it the same
     // way for FINAL_QA / REVIEW2 registrations). Any other conflict still blocks.
-    const blockingConflicts = (c.metadataConflicts || []).filter(field => !(laneBound && field === "reviewStatus"));
+    // A Generated extension key is not in the compiled canonical concept/condition registry, so the catalog builder
+    // flags such a record with `foundationTaxonomy` and keeps it out of the strict advanced (canonical L3/L4) lane.
+    // That is the intended "usable, never promoted" outcome. It is waived here only when the record's whole
+    // classification (PT/TPL/binding/canonical keys/extension keys) re-validates through the registrar's own resolve().
+    const extensionExplained = field => field === "foundationTaxonomy" && hasExtensionKey(r) &&
+      resolve(r, (extensionTables ||= lookup(registryPlan(root, [], () => {})))).extensions.length > 0;
+    const blockingConflicts = (c.metadataConflicts || []).filter(field => !(laneBound && field === "reviewStatus") && !extensionExplained(field));
     if (blockingConflicts.length) fail(`Consumer metadata conflict: ${r.questionUid}`);
+    if ((c.metadataConflicts || []).includes("foundationTaxonomy") && hasExtensionKey(r)) lanes.generatedExtension = (lanes.generatedExtension || 0) + 1;
   }
   const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
   vm.createContext(ctx); vm.runInContext(fs.readFileSync(safePath(root, "archive/question-index.js"), "utf8"), ctx, { timeout: 10000 });
