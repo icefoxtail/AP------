@@ -42,6 +42,14 @@
     (cur == null ? [0, 0.5, 1] : [cur]).forEach((t) => { const D = scene3(b, camF(s, t), C); net.at(t).forEach((f) => f.forEach((p) => pts.push(D.P(p)))); });
     fit(b, bboxOf(pts), Object.assign({ t: C.problem ? 40 : 108, b: 46, l: 40, r: 40 }, pad || {}));
   }
+  // 문제 탭의 펼친 전개도가 세로로 길면(높이 > 폭) 90° 돌려 가로로 놓습니다(그림 영역 폭을 쓰도록). 글자는 따로 수평으로 쓰므로 똑바로 보입니다. 접기 그림에는 쓰지 않습니다.
+  function landscapeNet(net) {
+    if (net._land !== undefined) return net._land;
+    const P0 = net.at(0).flat(), bb = bboxOf(P0.map((q) => ({ x: q.x, y: q.y })));
+    if (bb.y1 - bb.y0 <= bb.x1 - bb.x0 + 1e-6) return (net._land = net);
+    const cx = (bb.x0 + bb.x1) / 2, cy = (bb.y0 + bb.y1) / 2, rot = (q) => v3(cx - (q.y - cy), cy + (q.x - cx), q.z);
+    return (net._land = Object.assign({}, net, { at: (t) => net.at(t).map((f) => f.map(rot)), faces: net.faces.map((f) => Object.assign({}, f, { poly: f.poly.map(rot) })) }));
+  }
   // 지금 그려지는 모양(시간 t)만 화면에 꼭 맞춥니다: 접은 입체가 작아지지 않고, 펼친 쪽으로 치우치지 않습니다.
   function fitNow(b, s, net, C, pad, camF, t) { fitNet(b, s, net, C, pad, camF, t); }
   // 면을 먼 것부터 불투명하게 그립니다(앞면이 뒤쪽 모서리·글자를 가립니다). col(fi) → {c,a,ec,ew}. 다 접었을 때 보이는 면(vis)도 돌려줍니다(덜 접었으면 모두 true).
@@ -376,8 +384,8 @@
 
   // 문제 그림: 접기 전 전개도에 점 이름을 모두 보이고, 묻는 점만 노랑으로 표시합니다.
   function vertexProblemDraw(o, b, s, M, C) {
-    const net = M.qnet, k = M.qk;
-    fitNow(b, s, net, C, { t: 44, b: 40, l: 34, r: 34 }, camFold, 0);
+    const net = landscapeNet(M.qnet), k = M.qk;
+    fitNow(b, s, net, C, { t: 56, b: 30, l: 40, r: 40 }, camFold, 0);
     const D = scene3(b, camFold(s, 0), C);
     const faces = drawFaces(D, net, 0, () => ({ c: 'green', a: 0.1, ec: 'ink', ew: 1.8 }));
     const cc = cen3(faces.flat());
@@ -547,8 +555,8 @@
     },
     draw(b, s, M, C) {
       const st = stepOf(C), t = C.problem ? 0 : C.review ? C.t : (C.thumb ? 0.6 : s.phFold);
-      const net = C.problem ? M.qn : M.net, f = C.problem ? M.qf : C.review ? M.fR : M.f, opp = f == null ? -1 : net.opposite[f];
-      fitNow(b, s, net, C, C.problem ? { t: 40, b: 40 } : { t: C.thumb ? 5 : 64, b: 18 }, camFold, t);
+      const net = C.problem ? landscapeNet(M.qn) : M.net, f = C.problem ? M.qf : C.review ? M.fR : M.f, opp = f == null ? -1 : net.opposite[f];
+      fitNow(b, s, net, C, C.problem ? { t: 52, b: 26 } : { t: C.thumb ? 5 : 64, b: 18 }, camFold, t);
       const D = scene3(b, camFold(s, t), C);
       const role = faceRoles(C, st, f, C.problem ? -1 : opp, 6), any = role.some((r) => r);
       const { faces, vis } = drawFacesOp(D, net, t, (i) => ROLE[role[i]] || { c: 'green', a: 0.08 }, any ? 0.72 : 1);
@@ -684,13 +692,13 @@
     },
     draw(b, s, M, C) {
       const st = C.problem ? 0 : C.review ? C.step + 0 : 4, t = C.problem ? 0 : C.review ? C.t : (C.thumb ? 0.6 : s.phFold);
-      const MM = C.problem ? M.qM : M, net0 = MM.net, ref = MM.ref, c = MM.c, sdName = C.problem ? M.qsd.name : M.sd.name;
+      const MM = C.problem ? M.qM : M, net0 = C.problem ? landscapeNet(MM.net) : MM.net, ref = MM.ref, c = MM.c, sdName = C.problem ? M.qsd.name : M.sd.name;
       const sdi = SOLIDS.indexOf(C.problem ? M.qsd : M.sd), upr = sdi > 0 && !C.problem ? uprightOf(net0, sdi === 2) : null;
       const net = upr ? Object.assign({}, net0, { at: (tt) => net0.at(tt).map((f) => f.map((q) => upr.rot(q, tt))) }) : net0;
       classify(MM.sol, ref);
       // 정사면체·정팔면체는 세워서(uprightOf) 낮은 시점(pitch 약 20°)에서 비스듬히(yaw 약 -28°) 봅니다. 정육면체 시점은 그대로.
       const camA4 = (s0, t0) => (C.problem ? Object.assign({}, s0, { phYaw: 0, phPitch: 84 }) : sdi === 1 ? camFold(s0, t0, 46, -24) : sdi === 2 ? camFold(s0, t0, 48, -24) : camFold(s0, t0, 12, -16));
-      fitNet(b, s, net, C, C.problem ? { t: 62, b: 36 } : { t: C.thumb ? 5 : 70, b: 20 }, camA4, C.problem ? 0 : t);
+      fitNet(b, s, net, C, C.problem ? { t: 56, b: 26, l: 30, r: 30 } : { t: C.thumb ? 5 : 70, b: 20 }, camA4, C.problem ? 0 : t);
       const D = scene3(b, camA4(s, t), C);
       const fin = t >= 0.97;
       const faces = drawFaces(D, net, t, () => ({ c: 'green', a: 0.07, ec: 'ink', ew: 0 }));
@@ -878,8 +886,8 @@
     },
     draw(b, s, M, C) {
       const st = stepOf(C), t = C.problem ? 0 : C.review ? C.t : (C.thumb ? 0.6 : s.phFold);
-      const net = C.problem ? M.qn : M.net, vals = C.problem ? M.qv : M.vals, f = C.problem ? null : C.review ? M.fR : M.f, opp = f == null ? -1 : net.opposite[f];
-      fitNow(b, s, net, C, C.problem ? { t: 40, b: 40 } : { t: C.thumb ? 5 : 64, b: 18 }, camFold, t);
+      const net = C.problem ? landscapeNet(M.qn) : M.net, vals = C.problem ? M.qv : M.vals, f = C.problem ? null : C.review ? M.fR : M.f, opp = f == null ? -1 : net.opposite[f];
+      fitNow(b, s, net, C, C.problem ? { t: 52, b: 26 } : { t: C.thumb ? 5 : 64, b: 18 }, camFold, t);
       const D = scene3(b, camFold(s, t), C);
       const role = faceRoles(C, st, f, opp, 6).map((r) => (r === 'p' ? 0 : r)), any = role.some((r) => r);
       const { faces, vis } = drawFacesOp(D, net, t, (i) => (C.problem && i === M.hid ? { c: AMB, a: 0.3, ec: AMB, ew: 2.6 } : ROLE[role[i]] || { c: 'green', a: 0.1 }), any ? 0.72 : 1);
