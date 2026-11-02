@@ -8740,6 +8740,161 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
+      "file": "similar/high/h1/2final/24_강남여고_2학기_기말_고1_유사.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2024,
+      "semester": "2",
+      "examType": "final",
+      "subject": "공통수학2",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "H15-SB-03",
+      "rangeStartUnit": "함수",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H15-SB-08",
+      "rangeEndUnit": "조합",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-03",
+          "rangeStartUnit": "함수",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-SB-08",
+          "rangeEndUnit": "조합",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "similar/high/h1/2final/24_금당고_2학기_기말_고1_유사.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2024,
+      "semester": "2",
+      "examType": "final",
+      "subject": "공통수학2",
+      "contentType": "유형",
+      "qCount": 21,
+      "rangeStartUnitKey": "H15-SB-03",
+      "rangeStartUnit": "함수",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H15-SB-08",
+      "rangeEndUnit": "조합",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-03",
+          "rangeStartUnit": "함수",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-SB-08",
+          "rangeEndUnit": "조합",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "similar/high/h1/2final/24_매산여고_2학기_기말_고1_유사.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2024,
+      "semester": "2",
+      "examType": "final",
+      "subject": "공통수학2",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-SB-03",
+      "rangeStartUnit": "함수",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H15-SB-08",
+      "rangeEndUnit": "조합",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-03",
+          "rangeStartUnit": "함수",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-SB-08",
+          "rangeEndUnit": "조합",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "similar/high/h1/2final/24_제일고_2학기_기말_고1_유사.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2024,
+      "semester": "2",
+      "examType": "final",
+      "subject": "공통수학2",
+      "contentType": "유형",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SB-01",
+      "rangeStartUnit": "집합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SB-07",
+      "rangeEndUnit": "순열",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-01",
+          "rangeStartUnit": "집합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SB-07",
+          "rangeEndUnit": "순열",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "similar/high/h1/2final/24_효천고_2학기_기말_고1_수학_유사.js",
+      "school": "효천고",
+      "topic": "수학",
+      "grade": "고1",
+      "year": 2024,
+      "semester": "2",
+      "examType": "final",
+      "subject": "공통수학2",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-SB-03",
+      "rangeStartUnit": "함수",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H15-SB-08",
+      "rangeEndUnit": "조합",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-03",
+          "rangeStartUnit": "함수",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-SB-08",
+          "rangeEndUnit": "조합",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
       "file": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
       "school": "금당중",
       "topic": "",
