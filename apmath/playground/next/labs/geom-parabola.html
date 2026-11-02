@@ -1135,6 +1135,411 @@ window.addEventListener('DOMContentLoaded', function () {
     scenes: [1, 2, 3].map((sub) => sceneOf(m, sub))
   }));
 
+  /* [기출 핵심 유형 장면 시작] 평가원·교육청 기출의 핵심 유형을 숫자·상황을 바꾼 변형으로 추가한 장면(장면 5~). 기존 장면 1~4는 건드리지 않았습니다. */
+  const KICE = (function () {
+  /* ---------- 공통 도우미 ---------- */
+  const tex = APLab.tex, clamp = APLab.clamp, esc = APLab.esc;
+  const D2R = Math.PI / 180;
+  const nf = (v, d = 2) => { const q = Math.pow(10, d); const r = Math.round(v * q) / q; return String(Object.is(r, -0) || r === 0 ? 0 : r).replace('-', '−'); };
+  // 분수 표기: 정수이면 그대로, 아니면 \dfrac
+  const frTex = (n, d) => { const g = (x, y) => (y ? g(y, x % y) : Math.abs(x)); const k = g(n, d); n /= k; d /= k; if (d < 0) { n = -n; d = -d; } return d === 1 ? String(n) : `\\dfrac{${n}}{${d}}`; };
+  const frTxt = (n, d) => { const g = (x, y) => (y ? g(y, x % y) : Math.abs(x)); const k = g(n, d); n /= k; d /= k; return d === 1 ? String(n) : `${n}/${d}`; };
+  // 변형 생성기: 처음에는 list[0](기출 유형 그대로), 「새 문제」를 누를 때마다 직전과 다른 것을 무작위로 고릅니다.
+  function varier(list, build) {
+    let idx = 0, cur = build(list[0], 0);
+    return { cur: () => cur, idx: () => idx, count: list.length, set: (i) => { idx = i; cur = build(list[i], i); return cur; }, next: () => { let i; do { i = Math.floor(Math.random() * list.length); } while (list.length > 1 && i === idx); idx = i; cur = build(list[i], i); return cur; } };
+  }
+  const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-cq-new>새 문제 (숫자 바꾸기)</button></div>`;
+  document.addEventListener('click', (ev) => {
+    const hit = ev.target && ev.target.closest && ev.target.closest('[data-cq-new]');
+    if (!hit) return;
+    const lab = window.lab, sc = lab && lab.scene;
+    if (!sc || !sc.vary) return;
+    sc.vary.next();
+    lab.__cqKey = '';
+    lab.s.revealed = false;
+    lab.setStep(1);
+    try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+    lab.invalidate(true);
+  });
+  const reviewTopOf = (textFn) => () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${textFn()}</div>`;
+
+  /* ---------- 그리기 도우미 (세계 좌표) ---------- */
+  const T = (b, p, str, color, dx, dy, size, align) => b.text(p, str, { color, size: size || 13, weight: 800, align: align || 'center', baseline: 'middle', dx: dx || 0, dy: dy || 0 });
+  const mid = (A, B) => [(A[0] + B[0]) / 2, (A[1] + B[1]) / 2];
+  const dist = (A, B) => Math.hypot(A[0] - B[0], A[1] - B[1]);
+  // 선분 A–B 의 가운데에서 화면 기준으로 수직 방향(side=±1)으로 off(px) 떨어진 곳에 글자를 씁니다
+  function segLabel(b, A, B, str, color, off, side, size, along) {
+    const s1 = b.toS(A[0], A[1]), s2 = b.toS(B[0], B[1]);
+    const L = Math.hypot(s2.x - s1.x, s2.y - s1.y) || 1;
+    const dx = (s2.x - s1.x) / L, dy = (s2.y - s1.y) / L;
+    const m = mid(A, B);
+    const a = (along || 0);
+    b.text(m, str, { color, size: size || 13, weight: 800, align: 'center', baseline: 'middle', dx: -dy * off * (side || 1) + dx * a, dy: dx * off * (side || 1) + dy * a });
+  }
+  function ellipsePath(cx, cy, ax, by, n = 200) {
+    const pts = [];
+    for (let i = 0; i <= n; i++) { const t = (i / n) * 2 * Math.PI; pts.push([cx + ax * Math.cos(t), cy + by * Math.sin(t)]); }
+    return pts;
+  }
+  // 쌍곡선 x²/a² − y²/b² = 1 의 한 가지(sgn=+1 오른쪽, −1 왼쪽), 중심 (cx, 0), |y| ≤ ymax
+  function hyperPath(cx, a, bb, sgn, ymax, n = 160) {
+    const U = Math.asinh(ymax / bb), pts = [];
+    for (let i = 0; i <= n; i++) { const u = -U + (2 * U * i) / n; pts.push([cx + sgn * a * Math.cosh(u), bb * Math.sinh(u)]); }
+    return pts;
+  }
+  // 위아래로 열린 쌍곡선 y²/m² − x²/n² = 1 의 한 가지(sgn=+1 위쪽), |x| ≤ xmax
+  function hyperPathV(m, n, sgn, xmax, nn = 160) {
+    const U = Math.asinh(xmax / n), pts = [];
+    for (let i = 0; i <= nn; i++) { const u = -U + (2 * U * i) / nn; pts.push([n * Math.sinh(u), sgn * m * Math.cosh(u)]); }
+    return pts;
+  }
+  // 오른쪽으로 열린 포물선 (y − vy)² = 4p(x − vx), |y − vy| ≤ ymax
+  function parabPath(vx, vy, p, ymax, n = 160) {
+    const pts = [];
+    for (let i = 0; i <= n; i++) { const y = -ymax + (2 * ymax * i) / n; pts.push([vx + (y * y) / (4 * p), vy + y]); }
+    return pts;
+  }
+  const curve = (b, pts, color, w) => b.path(pts, { color, width: w || 3.2, glow: true });
+  const seg = (b, A, B, color, w, dash) => b.seg(A, B, { color, width: w || 2.6, dash: dash || undefined });
+  // 같은 길이 표시와 직각 표시
+  const tk = (b, A, B, color, count) => b.ticks(A, B, { color, count: count || 1 });
+  const rt = (b, V, A, B, color, size) => b.right(V, A, B, { color: color || 'amber', size: size || 11 });
+  // 점: 고정점(name 라벨)
+  const dot = (b, p, name, color, dx, dy, o) => b.point(p, { r: 4.6, color, label: name, dx, dy, size: 14, ...(o || {}) });
+  // 좌표축: 탐구 탭은 눈금 숫자까지, 문제·풀이 탭은 눈금 숫자 없이 축과 x, y 글자만(숫자가 라벨·점 이름과 겹치지 않게)
+  function axes2(b, fit, ticks) {
+    if (fit) return;
+    if (ticks) { b.axes(); return; }
+    b.axes({ ticks: false });
+    const o = b.toS(0, 0), r = b._drawRect(b.paneId), ins = b.insets;
+    const ox = clamp(o.x, r.x + 14, r.x + r.w - ins.right - 14), oy = clamp(o.y, r.y + ins.top + 14, r.y + r.h - ins.bottom - 14);
+    b.stext(r.x + r.w - ins.right - 14, oy - 13, 'x', { color: 'muted', size: 14, weight: 700, align: 'center', baseline: 'middle' });
+    b.stext(ox + 13, r.y + ins.top + 14, 'y', { color: 'muted', size: 14, weight: 700, align: 'center', baseline: 'middle' });
+  }
+  // 장면을 열거나 탭·새 문제로 그림이 바뀔 때 한 번, 그린 라벨까지 모두 보이도록 보기 창을 맞춥니다(끌기·확대는 그대로 둡니다).
+  function autoView(b, lab, key, fitBody, explicitBox) {
+    const k2 = key + '|' + b.W + 'x' + b.H + '|' + Math.round(b.insets.top / 8) + ',' + Math.round(b.insets.right / 8) + ',' + Math.round(b.insets.bottom / 8);
+    if (lab.__cqKey === k2) return;
+    lab.__cqKey = k2;
+    if (explicitBox) { b.setFocus(explicitBox, true); return; }
+    const bb = b.measure(fitBody);
+    if (bb) b.setFocus(b.fitBox(bb, { margin: 0.07, px: 12 }), true);
+  }
+  // 새 장면의 공통 틀
+  const baseScene = (o) => ({ tabs: { compact: true }, reviewTab: true, ...o });
+  const KP = {}; // 이 장면들이 쓰는 조절 막대
+  const KS = {}; // 이 장면들의 초기 상태
+
+  /* ======================================================================
+     [기출 핵심 유형 추가 · 2026-11] 장면 5: 포물선 + 타원(초점 공유) — 한 선분 PF에 두 정의를 모두 쓰기
+     근거 기출: 2022학년도 3월 학평(서울) 30번 · 2026학년도 수능 29번 · 2023학년도 10월 학평(서울) 29번 (복합: 포물선·타원)
+     ====================================================================== */
+  Object.assign(KP, {
+    q5c: { value: 3, min: 2, max: 4, step: 0.05, color: 'amber', label: '타원의 초점 $F(c,0)$의 $c$', hint: '장축의 길이는 10으로 고정, $c$가 커질수록 타원이 납작해집니다', format: (v) => `c = ${nf(v, 2)}` },
+    q5t: { value: 70, min: 25, max: 105, step: 0.5, color: 'rose', label: '타원 위 점 P의 위치', hint: '그림의 점 P를 끌어도 됩니다', format: (v) => `${nf(v, 1)}°` }
+  });
+  Object.assign(KS, { q5c: 3, q5t: 70 });
+
+  function geo5(a, c, P) {
+    const bb = Math.sqrt(a * a - c * c), F = [c, 0], Fp = [-c, 0];
+    const PF = dist(P, F), PFp = dist(P, Fp), xD = P[0] - PF;
+    return { a, c, bb, F, Fp, P, PF, PFp, xD, Q: [xD, P[1]], k: -xD, vx: (c + xD) / 2, pp: (c - xD) / 2 };
+  }
+  // 변형: 장축 2a, cos∠F′FP = n/d, PF′ = FF′ ⇒ c = a/(1+2cosθ), PF = 2(a−c)
+  const V5 = [{ a: 6, n: 1, d: 4 }, { a: 15, n: 1, d: 3 }, { a: 12, n: 1, d: 4 }, { a: 18, n: 1, d: 4 }];
+  const var5 = varier(V5, (o) => {
+    const cos = o.n / o.d, c = o.a / (1 + 2 * cos), PF = 2 * (o.a - c);
+    const P = [c - PF * cos, PF * Math.sqrt(1 - cos * cos)], g = geo5(o.a, c, P);
+    return { ...o, cos, c, PF, xP: P[0], k: g.k, g, ans: c + g.k };
+  });
+  const text5 = (v = var5.cur()) => `두 점 ${tex("F(c,0),\\ F'(-c,0)")} ${tex('(c>0)')}을 초점으로 하고 장축의 길이가 ${tex(String(2 * v.a))}인 타원이 있다. 점 ${tex('F')}를 초점으로 하는 포물선이 이 타원 위의 점 ${tex('P')}(${tex('y')}좌표가 양수)를 지나고, 이 포물선의 준선은 직선 ${tex('x=-k')}이다. 점 ${tex('P')}에서 준선에 내린 수선의 발을 ${tex('Q')}라 할 때, 다음 조건을 만족시킨다.<br>(가) ${tex(`\\cos(\\angle F'FP)=${frTex(v.n, v.d)}`)} &nbsp; (나) ${tex("\\overline{PF'}=\\overline{FF'}")}<br>${tex('c+k')}의 값을 구하시오. (단, ${tex('k>0')})`;
+
+  function draw5(b, s0, v, lab) {
+    const tab = lab.tab, explore = tab === 'explore', prob = tab === 'problem';
+    const st = (i) => (explore ? true : tab === 'review' ? s0.step >= i : false);
+    const vr = var5.cur();
+    let g;
+    if (explore) {
+      const a = 5, c = s0.q5c, bb = Math.sqrt(a * a - c * c), t = s0.q5t * D2R;
+      g = geo5(a, c, [a * Math.cos(t), bb * Math.sin(t)]);
+    } else g = vr.g;
+    const a = g.a, c = g.c, bb = g.bb;
+    const body = (fit) => {
+      if (s0.grid && explore && !fit) b.grid();
+      axes2(b, fit, explore);
+      // 곡선: 타원, 포물선(점 P를 지나고 F가 초점), 준선
+      curve(b, ellipsePath(0, 0, a, bb), 'ink');
+      if (!fit) curve(b, parabPath(g.vx, 0, g.pp, bb * 1.45), 'violet', 3);
+      const yd = bb + 0.35 * Math.max(1, a / 6) + (explore ? 0.6 : 0);
+      seg(b, [g.xD, -yd], [g.xD, yd], 'red', 2.2, [6, 5]);
+      T(b, [g.xD, yd], prob || !st(4) ? 'x = −k' : `x = −${nf(g.k, 0)}`, 'red', 0, -12, 13);
+      // 점
+      dot(b, g.F, 'F', 'rose', 7, 16);
+      dot(b, g.Fp, "F′", 'sky', -9, 16, { align: 'right' });
+      // 포물선의 정의: 점 P에서 준선에 내린 수선 PQ = PF (문제 탭에서는 주어진 조건이라 표시만, 같은 길이 표시는 풀이 1단계부터)
+      seg(b, g.P, g.Q, 'rose', 2.6);
+      seg(b, g.P, g.F, 'rose', 2.8);
+      rt(b, g.Q, [g.Q[0], g.Q[1] - 1], g.P, 'rose', 10);
+      dot(b, g.Q, 'Q', 'red', -9, -6, { align: 'right' });
+      if (explore || st(1)) { tk(b, g.P, g.Q, 'rose', 2); tk(b, g.P, g.F, 'rose', 2); }
+      if (explore) {
+        seg(b, g.P, g.Fp, 'sky', 2.6);
+        segLabel(b, g.P, g.F, `PF = PQ = ${nf(g.PF, 2)}`, 'rose', 30, -1);
+        segLabel(b, g.P, g.Fp, `PF′ = ${nf(g.PFp, 2)}`, 'sky', 16, 1);
+      }
+      // (나) PF′ = FF′ : 문제 탭에서는 주어진 조건으로 같은 길이 표시
+      if (prob || (!explore && st(2))) {
+        seg(b, g.P, g.Fp, 'sky', 2.6); seg(b, g.Fp, g.F, 'violet', 2.6);
+        tk(b, g.P, g.Fp, 'violet', 2); tk(b, g.Fp, g.F, 'violet', 2);
+      }
+      // 풀이 2단계: 타원의 정의 PF + PF′ = 2a
+      if (!explore && st(2)) {
+        segLabel(b, g.P, g.Fp, `PF′ = ${nf(2 * c, 0)}`, 'sky', 16, 1, 13, 34);
+        segLabel(b, g.P, g.F, `PF = ${nf(g.PF, 0)}`, 'rose', 24, -1);
+      }
+      // 풀이 3단계: 이등변삼각형 F′FP, PF의 중점 M, 각 θ
+      if (!explore && st(3)) {
+        const M = mid(g.P, g.F);
+        seg(b, g.Fp, M, 'green', 2.2, [5, 4]);
+        rt(b, M, g.Fp, g.P, 'green', 9);
+        dot(b, M, 'M', 'green', -9, 9, { r: 3.8, align: 'right' });
+      }
+      // 풀이 4단계: P에서 x축에 내린 수선의 발 H, 준선과 x축의 교점 D
+      if (!explore && st(4)) {
+        const H = [g.P[0], 0];
+        seg(b, g.P, H, 'amber', 2, [4, 4]);
+        dot(b, H, 'H', 'amber', 6, 15, { r: 3.8 });
+        dot(b, [g.xD, 0], 'D', 'red', -8, 15, { r: 3.8, align: 'right' });
+        segLabel(b, [g.xD, 0], H, `PQ = ${nf(g.PF, 0)}`, 'rose', 14, 1, 13, -6);
+      }
+      // 문제 탭: 주어진 값 (장축의 길이, cosθ)
+      if (prob || (!explore && st(1))) T(b, [(-a + g.xD) / 2, -bb * 0.5], `장축의 길이 ${2 * a}`, 'muted', 0, 0, 13);
+      if (prob || (!explore && st(3))) {
+        b.angle(g.F, g.Fp, g.P, { r: 24, color: 'amber' });
+        T(b, g.F, prob ? `cos θ = ${frTxt(vr.n, vr.d)}` : 'θ', 'amber', prob ? 40 : 6, prob ? -34 : -26, 13);
+      }
+      if (explore) b.handle('P', g.P, { color: 'amber', r: 7.5, label: 'P', dx: -4, dy: -15, size: 14, ariaLabel: '점 P (타원 위에서 끌어 보세요)', drag: (w) => { const t = Math.atan2(w.y / bb, w.x / a) / D2R; lab.s.q5t = clamp(t < 0 ? (w.x > 0 ? 25 : 105) : t, 25, 105); } });
+      else dot(b, g.P, 'P', 'amber', -2, -14, { r: 6 });
+    };
+    autoView(b, lab, `${explore ? 'x' : 'v' + var5.idx()}|${tab}`, () => body(true), explore ? { x: [-8.2, 6.2], y: [-5.4, 5.4] } : null);
+    body(false);
+  }
+
+  function scene5() {
+    return baseScene({
+      id: 'q5', title: '포물선과 타원이 초점을 함께 쓸 때 — PF에 두 정의를 모두', short: '포물선+타원',
+      question: '타원과 포물선이 초점 F를 함께 쓸 때, 선분 PF는 두 곡선의 정의에서 각각 어떤 길이가 될까?',
+      guide: '점 <b>P</b>를 타원 위에서 끌어 보세요. F를 초점으로 하고 P를 지나는 포물선의 준선은 따라 움직이지만, <b>PF = PQ</b>(포물선의 정의)와 <b>PF + PF′ = 10</b>(타원의 정의)은 늘 성립합니다. 하나의 선분 <b>PF</b>에 두 정의를 모두 씁니다.',
+      enter: (s, lab) => { s.q5c = 3; s.q5t = 70; if (lab) lab.__cqKey = ''; },
+      controls: ['q5c', 'q5t'],
+      presets: () => [{ group: 'c 값', label: '삼각형 FPF′ 가 보이는 값 c = 3', apply: (st) => { st.q5c = 3; st.q5t = 70; }, on: (st) => Math.abs(st.q5c - 3) < 0.03 && Math.abs(st.q5t - 70) < 0.6 }],
+      steps: () => {
+        const v = var5.cur();
+        return [
+          '포물선의 정의: 포물선 위의 점 $P$에서 초점 $F$까지의 거리와 준선까지의 거리는 같습니다. $PQ=PF$.',
+          `타원의 정의와 (나): $PF+PF′=${2 * v.a}$, $PF′=FF′=2c$ ⇒ $PF=${2 * v.a}-2c$.`,
+          `이등변삼각형 $F′FP$($F′P=F′F$)에서 $F′$에서 $PF$에 내린 수선의 발 $M$은 $PF$의 중점입니다. $\\cos\\theta=\\dfrac{PF/2}{FF′}=\\dfrac{${v.a}-c}{2c}=${frTex(v.n, v.d)}$ ⇒ $c=${nf(v.c, 0)}$, $PF=${nf(v.PF, 0)}$.`,
+          `$P$의 $x$좌표는 $c-PF\\cos\\theta=${nf(v.xP, 0)}$. $PQ=x_P+k=PF=${nf(v.PF, 0)}$ ⇒ $k=${nf(v.k, 0)}$, 따라서 $c+k=${nf(v.ans, 0)}$.`
+        ];
+      },
+      reviewTop: reviewTopOf(() => text5()),
+      problem: { tag: '2022학년도 3월 학평(서울) 30번 유형', time: '목표 시간: 60초', text: () => probHTML(text5()), answer: () => tex(nf(var5.cur().ans, 0)) },
+      solution: {
+        standardTitle: '교과서식 풀이 (코사인법칙·좌표)', standardTag: '기본 풀이', quickTitle: '10초 컷 · 정의로 선분 옮기기', quickTag: '10초 컷',
+        standard: () => {
+          const v = var5.cur();
+          return {
+            steps: `① 타원의 정의 ${tex(`PF+PF'=${2 * v.a}`)}, (나)에서 ${tex("PF'=FF'=2c")}이므로 ${tex(`PF=${2 * v.a}-2c`)}.<br>
+② 삼각형 ${tex("PF'F")}에서 코사인법칙: ${tex(`(2c)^2=(${2 * v.a}-2c)^2+(2c)^2-2(${2 * v.a}-2c)(2c)\\cdot ${frTex(v.n, v.d)}`)}. 정리하면 ${tex(`${2 * v.a}-2c=4c\\cdot ${frTex(v.n, v.d)}`)}, 즉 ${tex(`c=${nf(v.c, 0)}`)}.<br>
+③ ${tex(`PF=${nf(v.PF, 0)}`)}, 점 ${tex('P')}의 ${tex('x')}좌표는 ${tex(`c-PF\\cos\\theta=${nf(v.xP, 0)}`)}.<br>
+④ 포물선의 정의 ${tex('PQ=PF')}에서 ${tex(`x_P+k=${nf(v.PF, 0)}`)}, ${tex(`k=${nf(v.k, 0)}`)}. 따라서 ${tex(`c+k=${nf(v.ans, 0)}`)}.`,
+            warning: '코사인법칙을 쓰면 식이 길어집니다. 이등변삼각형이라는 사실을 그림에서 먼저 읽으면 수선의 발 M 하나로 cosθ가 바로 나옵니다.'
+          };
+        },
+        quick: () => {
+          const v = var5.cur();
+          return {
+            steps: `<strong class="text-pink-300">${tex('PF=PQ')}</strong>(포물선)와 <strong class="text-sky-300">${tex(`PF+PF'=${2 * v.a}`)}</strong>(타원)을 동시에 씁니다. ${tex("PF'=FF'=2c")}이므로 ${tex("F'")}에서 ${tex('PF')}에 내린 수선의 발은 ${tex('PF')}의 중점이고 ${tex(`\\cos\\theta=\\dfrac{${v.a}-c}{2c}=${frTex(v.n, v.d)}`)}에서 ${tex(`c=${nf(v.c, 0)}`)}, ${tex(`PF=${nf(v.PF, 0)}`)}. ${tex('P')}는 ${tex('F')}에서 왼쪽으로 ${tex(`PF\\cos\\theta=${nf(v.PF * v.cos, 0)}`)} 간 곳이므로 ${tex(`x_P=${nf(v.xP, 0)}`)}, ${tex(`k=PF-x_P=${nf(v.k, 0)}`)}.`,
+            highlight: '두 곡선이 초점을 공유하면 PF가 하나뿐이므로, 포물선에서는 "준선까지의 거리", 타원에서는 "두 초점까지 거리의 합의 한 조각"으로 읽습니다.'
+          };
+        }
+      },
+      view: (s, lab) => {
+        const tab = lab ? lab.tab : 'explore';
+        const out = { chips: [{ tex: 'PF=PQ', color: 'rose', answer: true }, { tex: tab === 'explore' ? "PF+PF'=10" : `PF+PF'=${2 * var5.cur().a}`, color: 'sky', answer: true }] };
+        if (tab !== 'explore') return out;
+        const a = 5, c = s.q5c, bb = Math.sqrt(a * a - c * c), t = s.q5t * D2R, g = geo5(a, c, [a * Math.cos(t), bb * Math.sin(t)]);
+        out.status = { tone: 'info', text: `준선 x = ${nf(g.xD, 2)} · 포물선의 꼭짓점 (${nf(g.vx, 2)}, 0)` };
+        out.readouts = [
+          { label: '초점 F까지의 거리 PF', value: nf(g.PF, 3), color: 'rose' },
+          { label: '준선까지의 거리 PQ', value: `${nf(g.PF, 3)} (PF와 같음)`, color: 'red' },
+          { label: "다른 초점까지의 거리 PF′", value: nf(g.PFp, 3), color: 'sky' },
+          { label: "PF + PF′ (타원의 정의)", value: `${nf(g.PF + g.PFp, 3)} = 2a`, color: 'amber', wide: true }
+        ];
+        return out;
+      },
+      formula: '<b>한 선분, 두 정의</b><br>포물선: <b>PF = (P에서 준선까지의 거리)</b> &nbsp;·&nbsp; 타원: <b>PF + PF′ = 2a</b><br>초점 F를 공유하면 같은 선분 PF에 두 식을 모두 쓸 수 있습니다.',
+      notes: '준선에 내린 수선의 발 Q를 그림에서 먼저 잡고 PQ = PF로 바꿉니다. 타원의 두 초점이 F, F′일 때 F′은 준선 위의 점이 아니라 (이 문제에서는) 준선보다 오른쪽에 있습니다.',
+      vary: var5,
+      draw: draw5
+    });
+  }
+
+  /* ======================================================================
+     장면 6: 평행이동한 포물선 — A가 초점임을 알아보고 PA를 준선까지 거리로 바꾸기, 그리고 타원
+     근거 기출: 2024학년도 6월 모의평가 27번
+     ====================================================================== */
+  Object.assign(KP, {
+    q6p: { value: 3, min: 2, max: 4, step: 0.5, color: 'amber', label: '포물선 $(y-k)^2=4p(x+p)$의 $p$', hint: '꼭짓점 $(-p,\\,k)$, 초점은 항상 $(0,\\,k)=A$', format: (v) => `p = ${nf(v, 1)}`, onInput: (s) => { if (s.q6k > 2 * s.q6p - 0.5) s.q6k = 2 * s.q6p - 0.5; } },
+    q6k: { value: 4, min: 1, max: 5.5, step: 0.5, color: 'sky', label: '점 A의 높이 $k$ — A$(0,k)$', hint: '$k<2p$ 일 때 $O$와 준선 사이 수선이 포물선과 만납니다', format: (v) => `k = ${nf(v, 1)}`, onInput: (s) => { if (s.q6k > 2 * s.q6p - 0.5) s.q6k = 2 * s.q6p - 0.5; } },
+    q6y: { value: 2, min: -3, max: 8, step: 0.05, color: 'rose', label: '점 P의 $y$좌표', hint: '그림의 점 P를 끌어도 됩니다', format: (v) => `y = ${nf(v, 2)}` }
+  });
+  Object.assign(KS, { q6p: 3, q6k: 4, q6y: 2 });
+
+  function geo6(p, k, yP) {
+    const O = [0, 0], A = [0, k], xD = -2 * p;
+    const x0 = (k * k) / (4 * p) - p, P0 = [x0, 0];
+    const P = [((yP - k) * (yP - k)) / (4 * p) - p, yP];
+    return { p, k, O, A, xD, P, P0, H: [xD, yP], H0: [xD, 0], OP: dist(O, P), PA: dist(P, A), PH: P[0] - xD, sum: dist(O, P) + dist(P, A), Qa: p, Qc: k / 2 };
+  }
+  const V6 = [{ p: 3, k: 4 }, { p: 4, k: 6 }, { p: 3, k: 2 }, { p: 5, k: 6 }, { p: 4, k: 4 }];
+  const var6 = varier(V6, (o) => ({ ...o, ans: 2 * o.p * o.p + (o.k * o.k) / 2, g: geo6(o.p, o.k, 2), M: o.p + o.k / 2, m: o.k / 2 - o.p, x0: (o.k * o.k) / (4 * o.p) - o.p }));
+  const text6 = (v = var6.cur()) => `좌표평면에서 포물선 ${tex(`(y-${v.k})^2=${4 * v.p}(x+${v.p})`)} 위의 점 ${tex('P')}와 점 ${tex(`A(0,${v.k})`)}에 대하여 ${tex('\\overline{OP}+\\overline{PA}')}의 값이 최소가 되는 점 ${tex('P')}를 ${tex('P_0')}이라 하자. ${tex('\\overline{OQ}+\\overline{QA}=\\overline{OP_0}+\\overline{P_0A}')}를 만족시키는 점 ${tex('Q')}의 ${tex('y')}좌표의 최댓값을 ${tex('M')}, 최솟값을 ${tex('m')}이라 할 때, ${tex('M^2+m^2')}의 값을 구하시오. (단, ${tex('O')}는 원점이다.)`;
+
+  function draw6(b, s0, v, lab) {
+    const tab = lab.tab, explore = tab === 'explore', prob = tab === 'problem';
+    const st = (i) => (tab === 'review' ? s0.step >= i : false);
+    const stx = (i) => (explore ? i <= 3 : st(i)); // 탐구 탭: 타원(4단계)은 빼고 나머지 보조선은 항상
+    const vr = var6.cur();
+    const p = explore ? s0.q6p : vr.p, k = explore ? s0.q6k : vr.k;
+    const g0 = geo6(p, k, explore ? s0.q6y : 2.2);
+    const atMin = !explore && st(3);
+    const P = atMin ? g0.P0 : g0.P;
+    const g = geo6(p, k, P[1]);
+    const body = (fit) => {
+      if (s0.grid && explore && !fit) b.grid();
+      axes2(b, fit, explore);
+      if (!fit) curve(b, parabPath(-p, k, p, p + k / 2 + 6), 'violet', 3);
+      const yd = Math.max(k, p + k / 2) + 1.2, yn = Math.min(0, k / 2 - p) - 1.2;
+      seg(b, [-2 * p, yn], [-2 * p, yd], 'red', 2.2, [6, 5]);
+      T(b, [-2 * p, yd], prob ? '준선' : `준선 x = ${nf(-2 * p, 0)}`, 'red', 0, -12, 13);
+      dot(b, g.O, 'O', 'ink', -9, 14, { align: 'right' });
+      dot(b, g.A, `A(0, ${nf(k, 1)})`, 'sky', 11, 7);
+      // 문제 그림에 주어진 값: 포물선의 식 (탐구 탭은 위쪽 식 칩에 있습니다)
+      if (!explore) T(b, [-p + ((1.8 * p) ** 2) / (4 * p), k + 1.8 * p], `(y − ${nf(k, 0)})² = ${nf(4 * p, 0)}(x + ${nf(p, 0)})`, 'violet', -10, -2, 13, 'right');
+      // 풀이 1단계: 꼭짓점 V
+      if (explore || st(1)) dot(b, [-p, k], 'V', 'violet', -9, -11, { r: 3.8, align: 'right' });
+      // 풀이 3단계: O에서 준선에 내린 수선 OH₀ (P가 P₀일 때 최소)
+      if (stx(3)) {
+        seg(b, g.O, g.H0, 'green', 2.6, [5, 4]);
+        rt(b, g.H0, [g.H0[0], 1], g.O, 'green', 9);
+        dot(b, g.H0, 'H₀', 'green', -7, 14, { r: 3.8, align: 'right' });
+        T(b, [(g.O[0] + g.H0[0]) / 2, 0], `OH₀ = ${nf(2 * p, 1)}`, 'green', 0, 17, 13);
+        if (explore) dot(b, g.P0, 'P₀', 'green', 0, -14, { r: 4.2, hollow: true });
+      }
+      // 4단계: OQ + QA = 2p 인 점 Q의 자취(타원)
+      if (stx(4)) {
+        curve(b, ellipsePath(0, k / 2, Math.sqrt(p * p - (k * k) / 4), p, 200), 'amber', 3);
+        T(b, [Math.sqrt(p * p - (k * k) / 4), k / 2], `장축 ${nf(2 * p, 0)}`, 'amber', 8, 0, 12, 'left');
+        dot(b, [0, k / 2 + p], 'M', 'amber', 10, -9, { r: 3.8 });
+        dot(b, [0, k / 2 - p], 'm', 'amber', 10, 9, { r: 3.8 });
+      }
+      // 점 P와 거리 선분
+      const H = [-2 * p, P[1]];
+      seg(b, g.O, P, 'sky', 2.4); seg(b, P, g.A, 'rose', 2.6);
+      if (explore || st(2)) {
+        seg(b, P, H, 'rose', 2.4);
+        tk(b, P, g.A, 'rose', 2); tk(b, P, H, 'rose', 2);
+        rt(b, H, [H[0], H[1] - 1], P, 'rose', 9);
+        dot(b, H, 'H', 'red', -8, -3, { r: 3.8, align: 'right' });
+      }
+      if (explore) {
+        segLabel(b, g.O, P, `OP = ${nf(g.OP, 2)}`, 'sky', 16, 1);
+        segLabel(b, P, g.A, `PA = ${nf(g.PA, 2)}`, 'rose', 16, -1);
+      }
+      const pname = atMin ? 'P₀' : 'P';
+      if (explore) b.handle('P', P, { color: 'amber', r: 7.5, label: 'P', dx: -4, dy: -15, size: 14, ariaLabel: '점 P (포물선 위에서 끌어 보세요)', drag: (w) => { lab.s.q6y = clamp(w.y, -3, 8); } });
+      else dot(b, P, pname, 'amber', atMin ? 8 : -3, atMin ? -13 : -14, { r: 6 });
+    };
+    const box = explore ? { x: [-8 - 2.6, 4 * 1.2 + 0.6], y: [-4.2, 9.6] } : null;
+    autoView(b, lab, `${explore ? 'x' : 'v' + var6.idx()}|${tab}`, () => body(true), box);
+    body(false);
+  }
+
+  function scene6() {
+    return baseScene({
+      id: 'q6', title: '평행이동한 포물선 — 주어진 점 A가 초점이다', short: '평행이동 포물선',
+      question: '포물선 (y−k)² = 4p(x+p) 와 점 A(0, k) 가 주어졌을 때, PA는 어떤 길이로 바꿔 볼 수 있을까?',
+      guide: '점 <b>P</b>를 포물선 위에서 끌어 보세요. 꼭짓점이 (−p, k)인 이 포물선의 <b>초점은 A(0, k)</b>, 준선은 x = −2p 입니다. 그래서 <b>PA = PH</b>(준선까지 거리)가 늘 성립하고, OP + PA 는 <b>P가 선분 OH₀ 위에 놓일 때</b> 가장 작아집니다.',
+      enter: (s, lab) => { s.q6p = 3; s.q6k = 4; s.q6y = 2; if (lab) lab.__cqKey = ''; },
+      controls: ['q6p', 'q6k', 'q6y'],
+      presets: () => [{ group: '최소가 되는 점', label: 'P를 x축 위의 P₀로', apply: (st) => { st.q6y = 0; }, on: (st) => Math.abs(st.q6y) < 0.03 }],
+      steps: () => {
+        const v = var6.cur(), p = v.p, k = v.k;
+        return [
+          `포물선 $(y-${k})^2=${4 * p}(x+${p})$ 은 꼭짓점 $(-${p},\\,${k})$, $4p=${4 * p}$ 이므로 $p=${p}$, 초점은 $(0,\\,${k})$. 즉 $A$가 초점이고 준선은 $x=-${2 * p}$.`,
+          '$P$에서 준선에 내린 수선의 발을 $H$라 하면 $PA=PH$ (포물선의 정의). 따라서 $OP+PA=OP+PH$.',
+          `$OP+PH$ 는 $O$에서 준선까지의 거리 $OH_0=${2 * p}$ 이상이고, $P$가 선분 $OH_0$ 위(즉 $y=0$인 점 $P_0(${nf(v.x0, 3)},0)$)일 때 최소. 최솟값 $=\\overline{OP_0}+\\overline{P_0A}=${2 * p}$.`,
+          `$OQ+QA=${2 * p}$ 인 점 $Q$는 두 초점이 $O$, $A$이고 장축의 길이가 $${2 * p}$ 인 타원 위의 점. 중심 $(0,\\,${nf(k / 2, 1)})$, 장축이 $y$축 방향이므로 $y$는 $${nf(k / 2, 1)}\\pm ${p}$.`,
+          `$M=${nf(v.M, 1)}$, $m=${nf(v.m, 1)}$ ⇒ $M^2+m^2=${nf(v.ans, 1)}$.`
+        ];
+      },
+      reviewTop: reviewTopOf(() => text6()),
+      problem: { tag: '2024학년도 6월 모의평가 27번 유형', time: '목표 시간: 45초', text: () => probHTML(text6()), answer: () => tex(nf(var6.cur().ans, 1)) },
+      solution: {
+        standardTitle: '교과서식 풀이 (좌표로 계산)', standardTag: '기본 풀이', quickTitle: '10초 컷 · 초점을 알아보면 끝', quickTag: '10초 컷',
+        standard: () => {
+          const v = var6.cur(), p = v.p, k = v.k;
+          return {
+            steps: `① ${tex(`P\\left(\\dfrac{(y-${k})^2}{${4 * p}}-${p},\\ y\\right)`)}로 두고 ${tex('f(y)=OP+PA')}를 식으로 쓰면 두 제곱근의 합이 되어 최솟값을 직접 구하기 어렵습니다.<br>
+② 포물선의 초점이 ${tex(`(0,${k})`)}임을 알아보면 ${tex('PA')}가 ${tex('P')}에서 준선 ${tex(`x=-${2 * p}`)}까지의 거리 ${tex('PH')}이므로 ${tex('OP+PH\\ge OH_0=' + 2 * p)}.<br>
+③ ${tex(`OQ+QA=${2 * p}`)}: ${tex(`O(0,0),\\ A(0,${k})`)}를 초점으로 하는 타원, ${tex(`2a=${2 * p},\\ c=${nf(k / 2, 1)}`)}.<br>
+④ 타원의 중심 ${tex(`(0,${nf(k / 2, 1)})`)}에서 ${tex('y')}방향 반지름 ${tex('a=' + p)}이므로 ${tex(`M=${nf(v.M, 1)},\\ m=${nf(v.m, 1)}`)}, ${tex(`M^2+m^2=${nf(v.ans, 1)}`)}.`,
+            warning: '"A는 그냥 주어진 점"이라고 생각하면 막힙니다. 포물선 식을 평행이동 꼴 (y−k)²=4p(x−h)로 읽어 초점의 좌표부터 확인하세요.'
+          };
+        },
+        quick: () => {
+          const v = var6.cur(), p = v.p, k = v.k;
+          return {
+            steps: `<strong class="text-pink-300">A = 초점</strong>, 준선 ${tex(`x=-${2 * p}`)}. ${tex('OP+PA=OP+PH')}의 최솟값은 ${tex('O')}에서 준선까지의 거리 ${tex(String(2 * p))}입니다. 따라서 ${tex('Q')}는 ${tex('O,\\ A')}를 초점으로 하고 장축이 ${tex(String(2 * p))}인 타원 위에 있고, ${tex('y')}좌표의 범위는 중심 ${tex(nf(k / 2, 1))}에서 ${tex('\\pm' + p)}만큼. ${tex(`M^2+m^2=2\\left(\\dfrac{${k}}{2}\\right)^2+2\\cdot ${p}^2=${nf(v.ans, 1)}`)}.`,
+            highlight: 'M² + m² = (c' + "'" + '+a)² + (c' + "'" + '−a)² = 2(c' + "'" + '² + a²) 꼴로 한 번에 계산합니다. 여기서 c' + "'" + '는 타원 중심의 높이 k/2.'
+          };
+        }
+      },
+      view: (s, lab) => {
+        const tab = lab ? lab.tab : 'explore';
+        const vr = var6.cur();
+        const out = { chips: [{ tex: 'PA=PH', color: 'rose', answer: true }, { tex: tab === 'explore' ? `OP+PA\\ge ${nf(2 * s.q6p, 1)}` : `OP+PA\\ge ${2 * vr.p}`, color: 'green', answer: true }] };
+        if (tab !== 'explore') return out;
+        out.chips.unshift({ k: '포물선', tex: `(y-${nf(s.q6k, 1)})^2=${nf(4 * s.q6p, 1)}(x+${nf(s.q6p, 1)})`, color: 'violet' });
+        const g = geo6(s.q6p, s.q6k, s.q6y);
+        const eq = Math.abs(g.sum - 2 * g.p) < 0.02;
+        out.status = eq ? { tone: 'ok', text: 'P가 선분 OH₀ 위에 있어 OP + PA 가 최소입니다' } : { tone: 'info', text: `OP + PA 는 최솟값 ${nf(2 * g.p, 1)}보다 ${nf(g.sum - 2 * g.p, 2)} 큽니다` };
+        out.readouts = [
+          { label: 'OP', value: nf(g.OP, 3), color: 'sky' },
+          { label: 'PA', value: nf(g.PA, 3), color: 'rose' },
+          { label: 'PH (준선까지)', value: `${nf(g.PH, 3)} = PA`, color: 'red' },
+          { label: 'OP + PA', value: `${nf(g.sum, 3)} (최소 ${nf(2 * g.p, 1)})`, color: 'green', wide: true }
+        ];
+        return out;
+      },
+      formula: '<b>평행이동한 포물선</b> (y−k)² = 4p(x−h): 꼭짓점 (h, k), 초점 (h+p, k), 준선 x = h−p.<br>주어진 점이 이 초점이면 <b>PA = (P에서 준선까지의 거리)</b> 로 바꿔 최단 거리를 구합니다.',
+      notes: 'O에서 준선에 수선을 내렸을 때 그 수선이 포물선과 만나는 점(P₀)이 정말 존재하는지(k < 2p) 확인하세요. 최솟값이 되는 점이 곡선 위에 없으면 이 방법을 쓸 수 없습니다.',
+      vary: var6,
+      draw: draw6
+    });
+  }
+
+  const KICE_GROUPS = [
+    { id: 'q5', title: '[기출 핵심] 포물선과 타원이 초점을 함께 쓸 때 — PF에 두 정의를 모두', short: '포물선+타원', scenes: [scene5()] },
+    { id: 'q6', title: '[기출 핵심] 평행이동한 포물선 — 주어진 점 A가 초점이다', short: '평행이동 포물선', scenes: [scene6()] }
+  ];
+
+  return { groups: KICE_GROUPS, params: KP, state: KS };
+  })();
+  /* [기출 핵심 유형 장면 끝] */
+
   APLab.createLab({
     id: 'geom-parabola',
     title: '포물선 실전 킬러 랩',
@@ -1145,13 +1550,14 @@ window.addEventListener('DOMContentLoaded', function () {
     legacy: '../../labs/기하와벡터/포물선.html',
     board: { kind: 'cartesian', focus: FOCUS },
     params: {
+      ...KICE.params,
       p: { value: 2, min: 1, max: 4, step: 0.05, color: 'amber', label: '포물선 $y^2=4px$의 $p$ (준선 $x=-p$)', format: (v) => `p = ${fmtNum(v)} (4p = ${fmtNum(4 * v)})` },
       py: { value: Math.sqrt(32), min: -8, max: 8, step: 0.05, color: 'rose', label: '점 P의 $y$좌표 $y_1$', hint: '그림의 노란 점 P를 끌어도 같이 움직입니다', format: (v, s) => `y₁ = ${fmtNum(v)} (x₁ = ${fmtNum((v * v) / (4 * s.p))})` },
       th: { value: 60, min: 20, max: 160, step: 0.5, color: 'sky', label: '초점을 지나는 현이 $x$축과 이루는 각 $\\theta$', hint: '그림의 점 A 또는 B를 끌어 초점 F를 중심으로 돌릴 수도 있습니다', format: (v) => `${v.toFixed(1)}°` }
     },
-    state: { lens: 'all', a0x: 5, a0y: 4, animDir: 1 },
+    state: { ...KICE.state, lens: 'all', a0x: 5, a0y: 4, animDir: 1 },
     persist: ['lens'],
-    groups
+    groups: groups.concat(KICE.groups)
   });
 });
 </script>
