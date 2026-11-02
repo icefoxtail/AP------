@@ -320,7 +320,6 @@ function openQrGenerator(cid) {
                 </div>
             </div>
             <div class="apms-modal__actions">
-                <button type="button" class="btn apms-button apms-button--quiet apms-unified-quiet" onclick="closeModal()">닫기</button>
                 <button type="button" class="btn apms-button apms-button--primary btn-primary apms-unified-primary" onclick="generateQrCode()">생성</button>
             </div>
         </div>
