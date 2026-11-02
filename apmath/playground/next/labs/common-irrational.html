@@ -267,7 +267,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const v = var2.cur(), st = stepOf(lab, s), { c, p, q, al, be } = v, t = c / 4;
     drawSq(b, c, 1, 1, p, q, { color: 'sky', width: 3.6, glow: true });
     const ks = be + 1;
-    if (st < 2 && Math.abs(ks) <= 8) { b.line([0, ks], 1, { color: 'muted', dash: [6, 5], width: 2, alpha: 0.95 }); b.text([vb.x1, vb.x1 + ks], 'y=x+k', { color: 'muted', size: 12, align: 'right', dx: -6, dy: -10 }); }
+    if (st < 2 && Math.abs(ks) <= 8) { b.line([0, ks], 1, { color: 'muted', dash: [6, 5], width: 2, alpha: 0.95 }); const lx = Math.min(vb.x1 - 1.5, vb.y1 - ks - 2.4); b.text([lx, lx + ks], 'y = x + k', { color: 'muted', size: 13, align: 'right', dx: -4, dy: -10 }); }
     if (st >= 1) b.point([p, q], { r: 6, color: 'amber', label: `S(${mn(p)}, ${mn(q)})`, dx: -10, dy: 16, align: 'right', size: 13 });
     if (st >= 2) { b.line([0, al], 1, { color: 'rose', width: 2.8 }); b.text([0, al], `k=${mn(al)}`, { color: 'rose', size: 12, align: 'right', dx: -8, dy: 14 }); }
     if (st >= 3) { b.line([0, be], 1, { color: 'violet', width: 2.8 }); b.point([p + t, q + 2 * t], { r: 5.5, color: 'violet', label: '접점', dx: -10, dy: -8, align: 'right', size: 12 }); b.text([0, be], `k=${mn(be)}`, { color: 'violet', size: 12, align: 'right', dx: -8, dy: -10 }); }
@@ -304,7 +304,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const { c, p, q } = CUR2;
         if (lab.tab !== 'explore') {
           const v = var2.cur(), pts = [v.al, v.be], tp = tapeFor(pts, (k) => inter2(v.c, v.p, v.q, 1, k).n);
-          return { chips: [{ tex: v.ans.tex, color: 'amber', answer: true }], tape: { title: `k가 커질 때 교점 개수 (끝점 k=${v.al}, 접할 때 k=${v.be})`, segments: tp } };
+          return { chips: [{ tex: v.ans.tex, color: 'amber', answer: true }], tape: s.step >= 4 ? { title: `k가 커질 때 교점 개수 (끝점 k=${v.al}, 접할 때 k=${v.be})`, segments: tp, answer: true } : undefined };
         }
         const m = s.i2m, n = s.i2n, r = inter2(c, p, q, m, n), ne = q - m * p, nt = m > 0 ? ne + c / (4 * m) : null;
         const pts = nt == null ? [ne] : [ne, nt], tp = tapeFor(pts, (k) => inter2(c, p, q, m, k).n), r2 = (x) => mn(Math.round(x * 100) / 100);
