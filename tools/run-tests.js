@@ -271,6 +271,10 @@ const requiredCommands = [
   {
     label: 'apmath/playground/next/tools/catalog.test.mjs',
     args: ['--test', 'apmath/playground/next/tools/catalog.test.mjs']
+  },
+  {
+    label: 'apmath/playground/next/tools/hub-no-legacy.test.mjs',
+    args: ['--test', 'apmath/playground/next/tools/hub-no-legacy.test.mjs']
   }
 ];
 
