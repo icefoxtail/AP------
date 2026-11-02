@@ -21,30 +21,38 @@ test('APMS modal skin loads after classroom base and is opt-in only', () => {
     assert.doesNotMatch(css, /^#modal-content\s*\{/m);
     assert.doesNotMatch(css, /^body\s*\{/m);
 });
-test('class add/edit use same modal family and retain save handlers, field IDs and return view', () => {
-    const add = func(management, 'function openAddClassModal()', 'async function handleAddClass()');
-    const edit = func(management, 'function openEditClassModal(', 'async function handleEditClass(');
-    for (const s of [add, edit]) {
-        assert.match(s, /apms-unified-modal apms-unified-form/);
-        assert.match(s, /apms-unified-context/);
-        assert.match(s, /apms-unified-control/);
-        assert.match(s, /apms-unified-day/);
-    }
-    // 2026-11-02 사용자 결정: 저장 버튼은 모든 모달에서 하단 오른쪽 고정 액션줄이다.
-    // 그래서 예전 기대(헤더 행동 '추가' / '저장')를 하단 액션줄 안의 같은 저장 함수 호출로 바꿨다.
-    // 저장 함수(handleAddClass, handleEditClass(cid, returnTo))와 입력 ID, 돌아갈 화면은 그대로다.
-    assert.match(add, /apms-modal apms-modal--form/);
-    assert.match(edit, /apms-modal apms-modal--form/);
-    assert.match(add, /<div class="apms-modal__actions">[\s\S]*onclick="handleAddClass\(\)">추가<\/button>/);
-    assert.match(edit, /<div class="apms-modal__actions">[\s\S]*id="edit-cls-save"[^>]*>저장<\/button>/);
-    assert.match(edit, /saveBtn\.onclick = \(\) => handleEditClass\(cid, returnTo\)/);
-    assert.doesNotMatch(add, /`,\s*'추가'/);
-    assert.doesNotMatch(edit, /`,\s*'저장'/);
-    assert.match(edit, /setModalReturnView\(returnTo\)/);
+// 2026-11-02 사용자 결정(M4): 반 추가·수정 F 모달은 반 관리 작업 화면(W) 안으로 들어왔다(ws-student-class.js).
+// 그래서 예전 기대(F 모달 함수 본문에 통합 양식 클래스·헤더/액션줄 저장 버튼)를 새 폼 빌더와 작업 화면 껍데기로 옮겼다.
+// 지키는 것은 그대로다: 입력 ID(add-cls-*, edit-cls-*), 저장 함수(handleAddClass, handleEditClass(cid, returnTo)),
+// 돌아갈 화면(classDetail), 하단 오른쪽 액션줄의 저장 버튼.
+const wsClassSource = read('apmath/js/ws-student-class.js');
+test('class add/edit forms live in the W workspace and retain save handlers, field IDs and return view', () => {
+    const form = func(wsClassSource, 'function wsClassFormHtml(', 'function wsClassFormValues(');
+    assert.match(form, /apms-unified-form/);
+    assert.match(form, /apms-unified-control/);
+    assert.match(form, /apms-unified-day/);
+    assert.match(form, /apms-unified-label/);
     for (const field of ['name','grade','subject','teacher','period','timelabel']) {
-        assert.match(add, new RegExp('id="add-cls-'+field+'"'));
-        assert.match(edit, new RegExp('id="edit-cls-'+field+'"'));
+        assert.match(form, new RegExp('id="\\$\\{p\\}-cls-' + field + '"'));
     }
+    assert.match(form, /const p = mode === 'edit' \? 'edit' : 'add'/);
+    assert.match(form, /class="\$\{p\}-cls-days"/);
+    const open = wsClassSource.slice(wsClassSource.indexOf('function openClassManageWorkspace('));
+    assert.match(open, /apms-modal apms-modal--workspace/);
+    assert.match(open, /apms-modal__actions/);
+    assert.match(open, /setModalDirtyChecker\(wsClassIsDirty\)/);
+    const actions = func(wsClassSource, 'function wsClassActionsHtml(', 'function wsClassRenderDetail(');
+    assert.match(actions, /apms-modal__actions|wsClassSave\(\)">추가<\/button>/);
+    assert.match(actions, /wsClassSave\(\)">저장<\/button>/);
+    const save = func(wsClassSource, 'function wsClassSave(', 'function wsClassOpenClassroom(');
+    assert.match(save, /handleAddClass\(\)/);
+    assert.match(save, /handleEditClass\(wsClass\.selectedId, wsClass\.returnTo/);
+    // 옛 열기 함수는 얇은 래퍼로 남는다. 반 화면 "반 설정"의 돌아갈 화면 계약(classDetail)은 래퍼가 지킨다.
+    const edit = func(management, 'function openEditClassModal(', 'let classMutationInFlight');
+    assert.match(edit, /type: 'classDetail'/);
+    assert.match(edit, /openClassManageWorkspace\(\{ selectId: cid, returnTo \}\)/);
+    assert.match(func(management, 'function openAddClassModal()', 'function openEditClassModal('), /openClassManageWorkspace\(\{ mode: 'add' \}\)/);
+    assert.doesNotMatch(management, /`,\s*'추가'/);
 });
 test('homework modal adopts progress-like context and footer while preserving save and list actions', () => {
     const s=func(classroom,'function openHomeworkPhotoAssignmentModal(','async function handleCreateHomeworkPhotoAssignment(');

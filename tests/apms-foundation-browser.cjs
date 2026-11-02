@@ -126,6 +126,13 @@ const DEMO_W = `
   </div>
   <div class="apms-modal__actions"><button type="button" class="btn apms-unified-quiet" onclick="closeModal()">닫기</button><button type="button" class="btn btn-primary apms-unified-primary">저장</button></div>
 </div>`;
+const DEMO_F = `
+<div class="apms-modal apms-modal--form apms-unified-modal apms-unified-form">
+  <div class="apms-unified-context"><div class="apms-unified-context__name">F 폼 샘플</div><div class="apms-unified-context__meta">입력 1~8개, 저장하면 닫힘</div></div>
+  <label class="apms-unified-label" for="add-cls-name">이름</label>
+  <input id="add-cls-name" class="btn apms-unified-control" placeholder="이름">
+  <div class="apms-modal__actions"><button type="button" class="btn apms-unified-quiet" onclick="closeModal()">취소</button><button type="button" class="btn btn-primary apms-unified-primary">추가</button></div>
+</div>`;
 const DEMO_C = `
 <div class="apms-modal apms-modal--confirm">
   <div class="apms-unified-context"><div class="apms-unified-context__name">시간표를 적용할까요?</div><div class="apms-unified-context__meta">적용하면 오늘부터 새 시간표가 보입니다.</div></div>
@@ -147,8 +154,8 @@ async function behaviour(browser, base) {
         const dialogs = [];
         page.on('dialog', async dialog => { dialogs.push(dialog.message()); await dialog.dismiss(); });
 
-        // F: 반 추가. 하단 액션줄에 추가 버튼이 있고 헤더 행동은 없다.
-        await page.evaluate(() => { openAddClassModal(); state.ui.modalReturnView = null; }); // 반 관리 목록으로 돌아가는 연결은 이 검사와 무관하다
+        // F: 샘플 폼. 하단 액션줄에 추가 버튼이 있고 헤더 행동은 없다.
+        await page.evaluate(html => showModal('F 폼 샘플', html), DEMO_F); // 반 추가는 M4에서 작업 화면(W)으로 옮겨 F 등급 검사는 샘플 폼으로 한다
         await page.waitForTimeout(450);
         assert.equal(await isOpen(), true);
         assert.equal(await page.locator('#modal-body .apms-modal__actions button').count(), 2);
@@ -163,7 +170,7 @@ async function behaviour(browser, base) {
         assert.equal(dialogs.length, 0);
 
         // 입력하면 바깥 클릭으로 닫히지 않고, Esc는 확인을 묻는다(취소 → 유지)
-        await page.evaluate(() => { openAddClassModal(); state.ui.modalReturnView = null; }); // 반 관리 목록으로 돌아가는 연결은 이 검사와 무관하다
+        await page.evaluate(html => showModal('F 폼 샘플', html), DEMO_F); // 반 추가는 M4에서 작업 화면(W)으로 옮겨 F 등급 검사는 샘플 폼으로 한다
         await page.waitForTimeout(450);
         await page.fill('#add-cls-name', '새 반');
         await page.mouse.click(1425, 450);
@@ -180,7 +187,7 @@ async function behaviour(browser, base) {
         assert.equal(await isOpen(), false, '확인에서 수락 → 닫힘');
 
         // 깨끗한 상태 바깥 클릭은 닫는다. 모달 안에서 끌어 밖에서 놓으면 닫지 않는다.
-        await page.evaluate(() => { openAddClassModal(); state.ui.modalReturnView = null; }); // 반 관리 목록으로 돌아가는 연결은 이 검사와 무관하다
+        await page.evaluate(html => showModal('F 폼 샘플', html), DEMO_F); // 반 추가는 M4에서 작업 화면(W)으로 옮겨 F 등급 검사는 샘플 폼으로 한다
         await page.waitForTimeout(450);
         await page.mouse.click(1425, 450);
         await page.waitForTimeout(450);
@@ -262,8 +269,8 @@ async function shoot(browser, base) {
             await run('class', 'teacher', page => page.evaluate(() => renderClass('c1')), 900);
             await run('modal-C-legacy-clinic-menu', 'teacher', page => page.evaluate(() => { try { openClinicCenter('c1'); } catch (e) { showModal('클리닉', '<p>' + e.message + '</p>'); } }));
             await run('modal-C-new', 'teacher', page => page.evaluate(html => showModal('시간표 적용', html), DEMO_C));
-            await run('modal-F-addclass', 'teacher', page => page.evaluate(() => openAddClassModal()));
-            await run('modal-F-editclass', 'teacher', page => page.evaluate(() => openEditClassModal('c1')));
+            await run('modal-W-addclass', 'teacher', page => page.evaluate(() => openAddClassModal()));
+            await run('modal-W-editclass', 'teacher', page => page.evaluate(() => openEditClassModal('c1')));
             await run('modal-F-homework', 'teacher', page => page.evaluate(() => openHomeworkPhotoAssignmentModal('c1')));
             await run('modal-F-qr', 'teacher', page => page.evaluate(() => openQrGenerator('c1')));
             await run('modal-W-progress-current', 'teacher', page => page.evaluate(() => openClassRecordModal('c1')), 1200);

@@ -182,90 +182,31 @@ function syncClassPeriodTime(mode) {
     timeInput.value = period;
 }
 
-function renderClassManageRow(c) {
-    const isHidden = Number(c.is_active) === 0;
-    const studentCount = getClassStudentCount(c.id);
-    const timeLabel = c.time_label || '-';
-
-    return `
-        <div style="padding:14px 0; border-bottom:1px solid var(--border); display:flex; gap:12px; align-items:flex-start; opacity:${isHidden ? '0.68' : '1'};">
-            <div style="flex:1; min-width:0; cursor:pointer;" onclick="setManagementReturnView({ type: 'classManage' }); closeModal(true); state.ui.currentClassId='${c.id}'; if(typeof renderClass==='function') renderClass('${c.id}');">
-                <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px;">
-                    <span style="font-size:15px; color:var(--text); line-height:1.35;; font-weight:500;">${mgmtEscape(c.name)}</span>
-                    <span style="font-size:11px; font-weight:500; color:var(--primary); background:rgba(var(--primary-rgb),0.08); padding:3px 7px; border-radius:999px;">${mgmtEscape(c.grade || '-')}</span>
-                    ${isHidden ? `<span style="font-size:11px; font-weight:500; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 7px; border-radius:999px;">숨김</span>` : ''}
-                </div>
-                <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; font-size:12px; color:var(--secondary); line-height:1.5;">
-                    <div><span style="color:var(--text);; font-weight:500;">과목</span> ${mgmtEscape(c.subject || '수학')}</div>
-                    <div><span style="color:var(--text);; font-weight:500;">담당</span> ${mgmtEscape(c.teacher_name || '-')}</div>
-                    <div><span style="color:var(--text);; font-weight:500;">요일</span> ${mgmtEscape(formatClassScheduleDaysForUI(c.schedule_days))}</div>
-                    <div><span style="color:var(--text);; font-weight:500;">시간</span> ${mgmtEscape(timeLabel)}</div>
-                    <div><span style="color:var(--text);; font-weight:500;">학생</span> ${studentCount}명</div>
-                </div>
-            </div>
-            <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap; max-width:210px;">
-                <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="openEditClassModal('${c.id}')">수정</button>
-                ${isHidden
-                    ? `<button class="btn apms-button apms-button--primary btn-primary" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="toggleClassActive('${c.id}', 1)">복구</button>`
-                    : `<button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--warning); background:rgba(255,165,2,0.1); border:none;" onclick="toggleClassActive('${c.id}', 0)">숨김</button>`
-                }
-                <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--error); background:rgba(var(--error-rgb),0.08); border:none;" onclick="handleDeleteClass('${c.id}')">보관</button>
-            </div>
-        </div>
-    `;
-}
-
+// 반 관리 화면은 ws-student-class.js의 작업 화면(W) 하나다. 아래 세 열기 함수는 옛 호출처(서랍, 반 화면 "반 설정",
+// 원장 화면의 반 관리 버튼)를 위해 이름을 남긴 얇은 래퍼다.
 function openClassManageModal() {
-    setManagementReturnView({ type: 'classManage' });
-    setModalReturnView(null);
-    const activeClasses = sortClassesForManagement((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
-    const hiddenClasses = sortClassesForManagement((state.db.classes || []).filter(c => Number(c.is_active) === 0));
-
-    showModal('학급관리', `
-        <div style="display:flex; justify-content:flex-end; align-items:center; gap:8px; margin-bottom:16px;">
-            <button class="btn apms-button apms-button--primary btn-primary" style="padding:10px 14px; font-size:12px; font-weight:500;" onclick="openAddClassModal()">새 반 추가</button>
-        </div>
-        <h4 style="margin:0 0 8px 0; font-size:13px; color:var(--secondary);">활성 반 (${activeClasses.length})</h4>
-        <div style="margin-bottom:20px;">
-            ${activeClasses.length ? activeClasses.map(renderClassManageRow).join('') : `<div style="font-size:12px; color:var(--secondary); padding:14px 0;">활성 반이 없습니다.</div>`}
-        </div>
-        ${hiddenClasses.length ? `
-            <h4 style="margin:20px 0 8px 0; font-size:13px; color:var(--secondary);">숨김 반 (${hiddenClasses.length})</h4>
-            <div>${hiddenClasses.map(renderClassManageRow).join('')}</div>
-        ` : ''}
-    `);
+    return openClassManageWorkspace();
 }
 
 function openAddClassModal() {
-    setModalReturnView({ type: 'classManage' });
-    showModal('새 반 추가', `
-        <div class="apms-modal apms-modal--form apms-unified-modal apms-unified-form">
-            <div class="apms-unified-context"><div class="apms-unified-context__name">반 기본 정보</div><div class="apms-unified-context__meta">학년 · 담당 · 수업 요일 · 시간</div></div>
-            <input id="add-cls-name" class="btn apms-unified-control" placeholder="반 이름 (예: 중3A)" >
-            <select id="add-cls-grade" class="btn apms-unified-control" >
-                <option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option>
-                <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
-            </select>
-            <input id="add-cls-subject" class="btn apms-unified-control" value="수학" placeholder="과목" >
-            <input id="add-cls-teacher" class="btn apms-unified-control" value="${mgmtEscape(state.ui.userName || '')}" placeholder="담당 선생님" >
-            <label class="apms-unified-label">수업 요일 (미선택 시 매일)</label>
-            <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                ${['일','월','화','수','목','금','토'].map((d,i)=>`<label class="apms-unified-day"><input type="checkbox" value="${i}" class="add-cls-days"> ${d}</label>`).join('')}
-            </div>
-            <label class="apms-unified-label">시간</label>
-            <select id="add-cls-period" class="btn apms-unified-control"  onchange="syncClassPeriodTime('add')">
-                ${getTimeLabelOptions('')}
-            </select>
-            <input id="add-cls-timelabel" class="btn apms-unified-control" placeholder="직접 입력 (예: 화.목 9:30~11:30)" >
-            <div class="apms-modal__actions">
-                <button type="button" class="btn apms-button apms-button--quiet apms-unified-quiet" onclick="closeModal()">취소</button>
-                <button type="button" class="btn apms-button apms-button--primary btn-primary apms-unified-primary" onclick="handleAddClass()">추가</button>
-            </div>
-        </div>
-    `);
+    return openClassManageWorkspace({ mode: 'add' });
 }
 
+function openEditClassModal(cid, options = {}) {
+    const returnTo = options.returnTo?.type === 'classDetail' &&
+        String(options.returnTo.classId || '') === String(cid)
+        ? { type: 'classDetail', classId: String(cid) }
+        : { type: 'classManage' };
+    const c = (state.db.classes || []).find(x => String(x.id) === String(cid));
+    if (!c) return toast('반 정보를 찾을 수 없습니다.', 'warn');
+    return openClassManageWorkspace({ selectId: cid, returnTo });
+}
+
+// 반 저장·숨김·보관이 동시에 두 번 나가지 않게 한다(휴대폰에서 저장 줄을 두 번 누르는 경우).
+let classMutationInFlight = false;
+
 async function handleAddClass() {
+    if (classMutationInFlight) return;
     const name = document.getElementById('add-cls-name')?.value.trim() || '';
     if (!name) { toast('반 이름을 입력하세요.', 'warn'); return; }
     if (name.length > 30) { toast('반 이름은 30자 이내로 입력하세요.', 'warn'); return; }
@@ -280,11 +221,15 @@ async function handleAddClass() {
 
     const payload = { name, grade, subject, teacher_name, schedule_days, is_active: 1, time_label };
 
+    classMutationInFlight = true;
+    if (typeof wsClassSetBusy === 'function') wsClassSetBusy(true);
     try {
         const r = await api.post('classes', payload);
         if (r?.success) {
             toast('새 반이 추가되었습니다.', 'success');
-            state.ui.currentClassId = null;
+            // 서버가 새 반 행을 돌려주므로 전체 재조회(loadData) 없이 목록에 넣고 작업 화면만 갱신한다.
+            const row = r.class || (r.id ? Object.assign({ id: r.id, textbook: '' }, payload) : null);
+            if (row) { wsClassAfterMutation('add', row); return; }
             await loadData();
             openClassManageModal();
             return;
@@ -293,52 +238,14 @@ async function handleAddClass() {
     } catch (e) {
         console.error('[handleAddClass] failed:', e);
         toast('반 추가 중 오류가 발생했습니다.', 'error');
+    } finally {
+        classMutationInFlight = false;
+        if (typeof wsClassSetBusy === 'function') wsClassSetBusy(false);
     }
 }
 
-function openEditClassModal(cid, options = {}) {
-    const returnTo = options.returnTo?.type === 'classDetail' &&
-        String(options.returnTo.classId || '') === String(cid)
-        ? { type: 'classDetail', classId: String(cid) }
-        : { type: 'classManage' };
-    setModalReturnView(returnTo);
-    const c = (state.db.classes || []).find(x => String(x.id) === String(cid));
-    if (!c) return toast('반 정보를 찾을 수 없습니다.', 'warn');
-    const selectedDays = c.schedule_days ? String(c.schedule_days).split(',') : [];
-    const currentTime = c.time_label || '';
-    const periodTimes = ['4:50~6:20', '6:30~8:00', '8:00~9:30'];
-    const selectedPeriod = periodTimes.includes(currentTime) ? currentTime : '';
-
-    showModal('반 수정', `
-        <div class="apms-modal apms-modal--form apms-unified-modal apms-unified-form">
-            <div class="apms-unified-context"><div class="apms-unified-context__name">${mgmtEscape(c.name)}</div><div class="apms-unified-context__meta">${mgmtEscape(c.grade || '')} · 반 정보 수정</div></div>
-            <input id="edit-cls-name" class="btn apms-unified-control" value="${mgmtEscape(c.name)}" placeholder="반 이름" >
-            <select id="edit-cls-grade" class="btn apms-unified-control" >
-                ${['중1','중2','중3','고1','고2','고3'].map(g => `<option value="${g}" ${c.grade===g?'selected':''}>${g}</option>`).join('')}
-            </select>
-            <input id="edit-cls-subject" class="btn apms-unified-control" value="${mgmtEscape(c.subject || '')}" placeholder="과목" >
-            <input id="edit-cls-teacher" class="btn apms-unified-control" value="${mgmtEscape(c.teacher_name || '')}" placeholder="담당 선생님" >
-            <label class="apms-unified-label">수업 요일 (미선택 시 매일)</label>
-            <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                ${['일','월','화','수','목','금','토'].map((d,i)=>`<label class="apms-unified-day"><input type="checkbox" value="${i}" class="edit-cls-days" ${selectedDays.includes(String(i))?'checked':''}> ${d}</label>`).join('')}
-            </div>
-            <label class="apms-unified-label">시간</label>
-            <select id="edit-cls-period" class="btn apms-unified-control"  onchange="syncClassPeriodTime('edit')">
-                ${getTimeLabelOptions(selectedPeriod)}
-            </select>
-            <input id="edit-cls-timelabel" class="btn apms-unified-control" value="${mgmtEscape(c.time_label || '')}" placeholder="직접 입력 (예: 화.목 9:30~11:30)" >
-            <div class="apms-modal__actions">
-                <button type="button" class="btn btn-danger apms-modal__actions-start" onclick="handleDeleteClass('${c.id}')">반 보관</button>
-                <button type="button" class="btn apms-button apms-button--quiet apms-unified-quiet" onclick="closeModal()">취소</button>
-                <button type="button" id="edit-cls-save" class="btn apms-button apms-button--primary btn-primary apms-unified-primary">저장</button>
-            </div>
-        </div>
-    `);
-    const saveBtn = document.getElementById('edit-cls-save');
-    if (saveBtn) saveBtn.onclick = () => handleEditClass(cid, returnTo);
-}
-
 async function handleEditClass(cid, returnTo = { type: 'classManage' }) {
+    if (classMutationInFlight) return;
     const c = (state.db.classes || []).find(x => String(x.id) === String(cid));
     if (!c) return toast('반 정보를 찾을 수 없습니다.', 'warn');
     const name = document.getElementById('edit-cls-name')?.value.trim() || '';
@@ -352,20 +259,22 @@ async function handleEditClass(cid, returnTo = { type: 'classManage' }) {
     const time_label = periodTime || manualTime;
     const payload = { name, grade, subject, teacher_name, schedule_days, time_label };
 
+    classMutationInFlight = true;
+    if (typeof wsClassSetBusy === 'function') wsClassSetBusy(true);
     try {
         const r = await api.patch(`classes/${cid}`, payload);
         if (r?.success) {
             toast('반 정보가 수정되었습니다.', 'success');
-            await loadData();
-            if (returnTo?.type === 'classDetail' && String(returnTo.classId) === String(cid) &&
-                (typeof canCurrentUserAccessClass !== 'function' || canCurrentUserAccessClass(cid)) &&
-                (typeof isClassVisibleForCurrentTeacher !== 'function' ||
-                    isClassVisibleForCurrentTeacher((state.db.classes || []).find(row => String(row.id) === String(cid))))) {
+            // 수정 응답에는 행이 없지만 보낸 payload가 곧 바뀐 값이므로 로컬 상태에 그대로 반영한다(loadData 없음).
+            const row = Object.assign({ id: String(cid) }, payload);
+            const stillListed = wsClassApplyRow(row);
+            if (returnTo?.type === 'classDetail' && String(returnTo.classId) === String(cid) && stillListed &&
+                (typeof canCurrentUserAccessClass !== 'function' || canCurrentUserAccessClass(cid))) {
                 closeModal(true);
                 if (typeof setManagementReturnView === 'function') setManagementReturnView(returnTo);
                 if (typeof renderClass === 'function') renderClass(cid);
             } else {
-                openClassManageModal();
+                wsClassAfterMutation('edit', row);
             }
             return;
         }
@@ -373,53 +282,66 @@ async function handleEditClass(cid, returnTo = { type: 'classManage' }) {
     } catch (e) {
         console.error('[handleEditClass] failed:', e);
         toast('반 정보 수정 중 오류가 발생했습니다.', 'error');
+    } finally {
+        classMutationInFlight = false;
+        if (typeof wsClassSetBusy === 'function') wsClassSetBusy(false);
     }
 }
 
 async function toggleClassActive(cid, status) {
+    if (classMutationInFlight) return;
     if (!confirm(status === 0 ? '이 반을 숨김 처리하시겠습니까?' : '이 반을 복구하시겠습니까?')) return;
     const c = (state.db.classes || []).find(x => String(x.id) === String(cid));
     if (!c) return toast('반 정보를 찾을 수 없습니다.', 'warn');
     const payload = { name: c.name, grade: c.grade, subject: c.subject, teacher_name: c.teacher_name, schedule_days: c.schedule_days, is_active: status, time_label: c.time_label || '' };
 
+    classMutationInFlight = true;
+    if (typeof wsClassSetBusy === 'function') wsClassSetBusy(true);
     try {
         const r = await api.patch(`classes/${cid}`, payload);
         if (r?.success) {
             toast(status === 0 ? '숨김 처리되었습니다.' : '복구되었습니다.', 'info');
-            await loadData();
-            openClassManageModal();
+            wsClassAfterMutation('toggle', Object.assign({ id: String(cid) }, payload));
             return;
         }
         toast(r?.message || r?.error || '반 상태 변경에 실패했습니다.', 'error');
     } catch (e) {
         console.error('[toggleClassActive] failed:', e);
         toast('반 상태 변경 중 오류가 발생했습니다.', 'error');
+    } finally {
+        classMutationInFlight = false;
+        if (typeof wsClassSetBusy === 'function') wsClassSetBusy(false);
     }
 }
 
 async function handleDeleteClass(classId) {
-    if (!classId) return;
+    if (!classId || classMutationInFlight) return;
 
-    const first = confirm('\uC774 \uD559\uAE09\uC744 \uBCF4\uAD00 \uCC98\uB9AC\uD560\uAE4C\uC694?');
+    const first = confirm('이 학급을 보관 처리할까요?');
     if (!first) return;
 
-    const second = confirm('\uAE30\uC874 \uCD9C\uACB0, \uC131\uC801, \uC2DC\uD5D8 \uAE30\uB85D\uC740 \uC0AD\uC81C\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uBCF4\uAD00 \uCC98\uB9AC \uD6C4 \uAE30\uBCF8 \uBAA9\uB85D\uC5D0\uC11C\uB294 \uC228\uACA8\uC9D1\uB2C8\uB2E4. \uACC4\uC18D\uD560\uAE4C\uC694?');
+    const second = confirm('기존 출결, 성적, 시험 기록은 삭제되지 않습니다. 보관 처리 후 기본 목록에서는 숨겨집니다. 계속할까요?');
     if (!second) return;
 
+    classMutationInFlight = true;
+    if (typeof wsClassSetBusy === 'function') wsClassSetBusy(true);
     try {
         const r = await api.delete('classes', classId);
 
         if (r?.success) {
-            toast('\uD559\uAE09\uC774 \uBCF4\uAD00 \uCC98\uB9AC\uB418\uC5C8\uC2B5\uB2C8\uB2E4.', 'info');
-            await loadData();
-            openClassManageModal();
+            toast('학급이 보관 처리되었습니다.', 'info');
+            // 서버는 행을 지우지 않고 is_active=0으로 바꾼다(mode: 'archived'). 같은 값을 로컬에 반영한다.
+            wsClassAfterMutation('archive', { id: String(classId), is_active: 0 });
             return;
         }
 
-        toast(r?.message || r?.error || '\uD559\uAE09 \uBCF4\uAD00 \uCC98\uB9AC\uC5D0 \uC2E4\uD328\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
+        toast(r?.message || r?.error || '학급 보관 처리에 실패했습니다.', 'warn');
     } catch (e) {
         console.error('[handleDeleteClass] failed:', e);
-        toast('\uD559\uAE09 \uBCF4\uAD00 \uCC98\uB9AC \uC911 \uC624\uB958\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
+        toast('학급 보관 처리 중 오류가 발생했습니다.', 'warn');
+    } finally {
+        classMutationInFlight = false;
+        if (typeof wsClassSetBusy === 'function') wsClassSetBusy(false);
     }
 }
 
