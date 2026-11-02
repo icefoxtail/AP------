@@ -772,7 +772,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (!F2) { F1.ox = 0; F1.oy = 0; W = F1.w; H = F1.h; }
     else if (side) { F1.ox = 0; F1.oy = 0; F2.ox = F1.w + 2.1; F2.oy = 0; W = F1.w + 2.1 + F2.w; H = Math.max(F1.h, F2.h); }
     else { W = Math.max(F1.w, F2.w); F2.ox = (W - F2.w) / 2; F2.oy = 0; F1.ox = (W - F1.w) / 2; F1.oy = F2.h + 1.4; H = F2.h + 1.4 + F1.h; }
-    return { x: [-1.6, W + 0.7], y: [-1.4, H + (F2 ? 0.8 : 0.6)] };
+    return F2 ? { x: [-1.6, W + 0.7], y: [-1.4, H + 0.8] } : { x: [-1.3, W + 0.5], y: [-0.9, H + 0.4] }; // 그래프 하나(문제 탭)일 때는 여백을 줄여 무대를 더 씁니다
   }
   function clipTo(b, F, fn) {
     const c = b.ctx, A = b.toS({ x: F.ox, y: F.oy + F.h }), B = b.toS({ x: F.ox + F.w, y: F.oy });
@@ -1260,10 +1260,10 @@ window.addEventListener('DOMContentLoaded', function () {
   const m2T8 = (m) => ratTex(m.n * m.n, m.d * m.d);
   const limTex8 = (kind, m) => (kind === 'len0' ? ratTex(2 * m.d, m.n) : kind === 'area0' ? ratTex(m.n, 2 * m.d) : ratTex(m.d * m.d, m.d * m.d + m.n * m.n));
   const K8 = { len0: { t: [0, 1.5], tmax: 1.5, tmin: 0.02 }, area0: { t: [0, 1.5], tmax: 1.5, tmin: 0.02 }, inf: { t: [0.5, 3], tmax: 2.5, tmin: 0.5 } };
-  function dom8(kind, m) { // 왼쪽 그림의 정의역·치역: t 범위에서 점 A, B, C 가 모두 들어오는 만큼만 잡습니다
-    const kk = K8[kind];
+  function dom8(kind, m, tmax) { // 왼쪽 그림의 정의역·치역: t 범위에서 점 A, B, C 가 모두 들어오는 만큼만 잡습니다
+    const kk = K8[kind], tm = tmax || kk.tmax;
     let ma = 0;
-    for (let i = 0; i <= 20; i++) { const g = geo8(kind, m, kk.tmin + (kk.tmax - kk.tmin) * i / 20); ma = Math.max(ma, Math.abs(g.A[0]), Math.abs(g.B[0]), g.C ? Math.abs(g.C[0]) : 0); }
+    for (let i = 0; i <= 20; i++) { const g = geo8(kind, m, kk.tmin + (tm - kk.tmin) * i / 20); ma = Math.max(ma, Math.abs(g.A[0]), Math.abs(g.B[0]), g.C ? Math.abs(g.C[0]) : 0); }
     return { x: [-Math.max(2.5, Math.ceil((ma + 0.7) * 2) / 2), Math.max(2.5, Math.ceil((ma + 0.7) * 2) / 2)], y: [-1, Math.max(4, Math.ceil(ma * ma + 1))] };
   }
   const niceStep8 = (span) => [0.1, 0.25, 0.5, 1, 2].find((s) => span / s <= 5.2) || 2;
@@ -1281,7 +1281,7 @@ window.addEventListener('DOMContentLoaded', function () {
     ['len0', 'area0', 'inf'].forEach((kind) => M8.forEach((m) => pool.push({ kind, m })));
     const it = prev ? pickOf(pool, prev.item) : pool.find((x) => x.kind === 'len0' && x.m.n === 1 && x.m.d === 1);
     const lv = lim8(it.kind, mv8(it.m));
-    return { item: it, kind: it.kind, m: it.m, mv: mv8(it.m), lim: lv, ans: { tex: limTex8(it.kind, it.m), val: lv }, start: it.kind === 'inf' ? 1.8 : 1.0 };
+    return { item: it, kind: it.kind, m: it.m, mv: mv8(it.m), lim: lv, ans: { tex: limTex8(it.kind, it.m), val: lv }, start: it.kind === 'inf' ? 1.6 : 0.8 };
   });
   const text8 = (v) => {
     const ml = `${mT8(v.m) === '1' ? '' : mT8(v.m)}x`;
@@ -1341,11 +1341,11 @@ window.addEventListener('DOMContentLoaded', function () {
     const kind = explore ? s.k8 : V.kind;
     const m = explore ? s.m8 : V.mv;
     const tkey = explore ? (kind === 'inf' ? 'ti8' : 't8') : 'pv8';
-    const kk = K8[kind], t = clamp(s[tkey], kk.tmin, kk.tmax);
-    const setT = (val) => { s0[tkey] = +clamp(val, kk.tmin, kk.tmax).toFixed(3); };
+    const kk = K8[kind], tcap = prob ? (kind === 'inf' ? 2 : 1) : kk.tmax, t = clamp(s[tkey], kk.tmin, tcap);
+    const setT = (val) => { s0[tkey] = +clamp(val, kk.tmin, tcap).toFixed(3); };
     const g = geo8(kind, m, t);
     const side = !NARROWQ(), st = explore ? 3 : s.step;
-    const F1 = mkFrame(dom8(kind, m), { tx: 1, ty: 1 });
+    const F1 = mkFrame(dom8(kind, m, prob ? tcap : null), { tx: 1, ty: 1 });
     const fd = f2dom8(kind, m);
     const F2 = prob ? null : mkFrame(fd.dom, { tx: fd.tx, ty: fd.ty, sx: side ? fd.sx : Math.min(fd.sx, 5.2 / (fd.dom.x[1] - fd.dom.x[0])), sy: fd.sy });
     ensureFocus(b, arrange(F1, F2, side));
@@ -1463,7 +1463,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const xl = Math.min(...xs) - 1.5, xr = Math.max(...xs) + 1.5;
     let lo = INF, hi = -INF;
     for (let i = 0; i <= 80; i++) { const y = F(xl + (xr - xl) * i / 80); lo = Math.min(lo, y); hi = Math.max(hi, Math.abs(y)); }
-    lo = Math.max(lo, -3.4); hi = Math.min(hi, 3.4);
+    lo = Math.max(lo, -2.4); hi = Math.min(hi, 2.4);
     return { x: [Math.floor(xl * 2) / 2, Math.ceil(xr * 2) / 2], y: [Math.floor(Math.min(lo, 0) - 0.4), Math.ceil(hi + 0.4)] };
   };
   const var9 = varier((prev) => {
