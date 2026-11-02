@@ -8740,6 +8740,37 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
+      "file": "similar/high/h1/2final/24_강남여고_2학기_기말_고1_유사.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2024,
+      "semester": "2",
+      "examType": "final",
+      "subject": "공통수학2",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "H15-SB-03",
+      "rangeStartUnit": "함수",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H15-SB-08",
+      "rangeEndUnit": "조합",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-03",
+          "rangeStartUnit": "함수",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-SB-08",
+          "rangeEndUnit": "조합",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
       "file": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
       "school": "금당중",
       "topic": "",
