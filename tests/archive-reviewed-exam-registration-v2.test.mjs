@@ -1282,6 +1282,27 @@ test("shared definitions cannot change another exam's approved meaning", t => {
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: req, write: true }), /out-of-scope approved UID: unrelated/);
 });
 
+test("a binding for another course alias of the same unit and PT does not change an approved row of the original course", t => {
+  const f = fixture(t);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const meta = f.read(META), row = meta.records[0];
+  meta.records.push({ ...row, questionUid: "unrelated", sourceArchiveFile: "other.js", sourceOrdinal: 1 }); f.put(META, meta);
+  const bindingsPath = "archive/data/meta-foundation/canonical/packs/new-course/bindings.json";
+  const exact = f.read(bindingsPath).bindings[0];
+  // The row of the original course is looked up by its exact course, so a binding of another alias is not its consumer.
+  const alias = { ...exact, standardCourse: "다른 과정 표기" };
+  const add = { ...f.request, requestId: "add-course-alias-binding", registryChanges: [{ path: bindingsPath, collection: "bindings",
+    match: { curriculum: alias.curriculum, standardCourse: alias.standardCourse, standardUnitKey: alias.standardUnitKey, subUnitKey: alias.subUnitKey, problemTypeKey: alias.problemTypeKey },
+    before: null, after: alias, evidenceRefs: f.evidenceRefs }],
+  items: [{ ...f.request.items[0], before: Object.fromEntries(Object.keys(f.request.items[0].after).map(k => [k, f.read(META).records[0][k] ?? null])) }] };
+  assert.equal(registerReviewedExamV2({ root: f.root, request: add, write: true }).status, "PASS");
+  // Changing the exact binding of that course still counts as changing the unrelated approved row.
+  const edit = { ...add, requestId: "edit-exact-binding", registryChanges: [{ path: bindingsPath, collection: "bindings",
+    match: { curriculum: exact.curriculum, standardCourse: exact.standardCourse, standardUnitKey: exact.standardUnitKey, subUnitKey: exact.subUnitKey, problemTypeKey: exact.problemTypeKey },
+    before: exact, after: { ...exact, L2: "다른 중단원" }, evidenceRefs: f.evidenceRefs }] };
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: edit, write: true }), /out-of-scope approved UID: unrelated/);
+});
+
 test("META_PIPELINE_AUDIT canonical promotions do not treat unrelated pending rows as approved consumers", t => {
   const f = fixture(t);
   attachMetaPipelineAudit(f, { promoteCanonicalTypes: true });

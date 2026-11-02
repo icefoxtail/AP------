@@ -1227,7 +1227,9 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       const signature = t => {
         const refs = [t.pt.get(row.problemTypeKey), t.tpl.get(row.templateKey), t.master.get(row.standardUnitKey), t.master.get(row.subUnitKey),
           ...(row.crossConceptKeys || []).map(k => t.cc.get(k)), ...(row.conditionKeys || []).map(k => t.cond.get(k)),
-          ...[...t.bindings.values()].filter(b => b.curriculum === (row.curriculum || row.curriculumKey) && b.standardUnitKey === row.standardUnitKey && (b.subUnitKey ?? null) === (row.subUnitKey ?? null) && b.problemTypeKey === row.problemTypeKey)];
+          // A binding is looked up by its exact standardCourse (see resolve()); a binding for another course alias
+          // (e.g. "중3 수학" next to "중3-1") is not a consumer of this row and must not count as a change of it.
+          ...[...t.bindings.values()].filter(b => b.curriculum === (row.curriculum || row.curriculumKey) && b.standardCourse === (row.standardCourse || row.courseKey) && b.standardUnitKey === row.standardUnitKey && (b.subUnitKey ?? null) === (row.subUnitKey ?? null) && b.problemTypeKey === row.problemTypeKey)];
         return stable(refs);
       };
       if (signature(beforeTables) !== signature(tables)) fail(`registry change affects out-of-scope approved UID: ${row.questionUid}`);
