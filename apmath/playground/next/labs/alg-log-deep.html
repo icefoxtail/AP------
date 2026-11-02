@@ -15,6 +15,7 @@
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="alg-log-var.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -33,6 +34,9 @@
    - [2.0 수정] LOG 06: 3단계(수직 교차 직사각형 넓이)에 그려지는 것이 없던 점을 넓이 판서로 채움.
    - 원본 하단의 칠판 배지(drawCanvasBadge)·분수 판서(drawCanvasFraction)는 무대 카드·요약 띠로 옮겨 그림을 가리지 않게 함.
    - 원본의 '문제 조건 스냅'은 문제 탭의 [문제 조건으로 그림 맞추기]로, '숫자를 바꾼 문제'는 탐구 탭 버튼으로 둠.
+   - [2026-11 문제 탭 보강] 탐구 탭(그림·문구·조작)은 그대로 두고, 문제·정리 탭에 「새 문제」 변형 생성기(alg-log-var.js)를 붙였습니다.
+     첫 문제는 옛 문제·풀이 그대로이고, 새 문제는 같은 구조에서 숫자만 바꾼 변형(정답이 정수·간단한 분수·근호)입니다. 문제 그림은 변형의 조건대로 그리고,
+     답과 보조선은 정리 탭의 풀이 단계에서만 나옵니다. 탐구 탭의 그림 단계는 시작 단계로 고정했습니다.
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
   const { fmt, clamp } = APLab;
@@ -770,11 +774,13 @@ scen.problem = `**[숫자를 바꾼 문제]** $1 \\le x \\le ${mx},\\; 1 \\le y 
     };
   }
 
+  // 탐구 탭 그림은 옛 장면 그대로입니다(시작할 때의 보조선 단계 고정). 문제·정리 탭은 변형 문제를 따로 그립니다(alg-log-var.js).
+  const EXPST = 2;
   function draw(mo, b, s, v) {
     const p = pv(s, mo);
     const sink = { lines: [], tape: null };
     const { drawMathSegment, drawFunctionCurve, drawMathLine, drawMathCircle, drawMathPoint, badge } = shim(b, s, sink);
-    const st = (n) => s.step >= n; // 원본 state.steps[n] 에 해당 (셸의 단계는 누적)
+    const st = (n) => EXPST >= n; // 원본 state.steps[n] 에 해당 (탐구 탭은 시작 단계로 고정)
     if (s.grid) b.grid();
     b.axes();
     if (s.diag) drawMathLine(1, 0, 'rgba(251, 191, 36, 0.55)', [6, 5], 1.8);
@@ -963,56 +969,66 @@ scen.problem = `**[숫자를 바꾼 문제]** $1 \\le x \\le ${mx},\\; 1 \\le y 
     Object.keys(scen.params).forEach((k) => { p[k] = s[mo.id + '_' + k]; });
     runTwin(mo.id, scen, p);
     Object.keys(p).forEach((k) => { s[mo.id + '_' + k] = p[k]; });
-    s.step = Math.min(s.step, 2);
-    APLab.toast('숫자를 바꾼 새 문제가 만들어졌습니다');
+    APLab.toast('탐구 그림의 숫자를 바꿨습니다');
   }
+
+  /* 문제·정리 탭: 「새 문제」 변형 생성기. 첫 문제는 옛 문제 그대로(글·풀이 원문), 눌러서 숫자·상황이 바뀝니다. */
+  const KIND = ['vert', 'wing', 'absM', 'inv', 'xlat', 'trap', 'circ', 'latt'];
+  const POOLS = [
+    [ALV.POOLS.vertSAB, ALV.POOLS.vertTri], [ALV.POOLS.wingProd, ALV.POOLS.wingLine], [ALV.POOLS.absTF, ALV.POOLS.absProdSum],
+    [ALV.POOLS.invKS, ALV.POOLS.invM], [ALV.POOLS.xlatCM, ALV.POOLS.xlatC], [ALV.POOLS.trapA, ALV.POOLS.trapB],
+    [ALV.POOLS.circPa, ALV.POOLS.circA], [ALV.POOLS.lattA, ALV.POOLS.lattB]
+  ];
+  const KINDS_OF = ['vert', 'wing', ['absTF', 'absM'], 'inv', 'xlat', 'trap', 'circ', 'latt'];
+  const kindOf = (mi, si) => (Array.isArray(KINDS_OF[mi]) ? KINDS_OF[mi][si] : KINDS_OF[mi]);
 
   const groups = KILLER_MODES.map((mo, mi) => ({
     id: mo.id,
     title: rich(mo.shortTitle),
     short: SHORT[mi],
-    scenes: mo.scenarios.map((scen, si) => ({
-      id: mo.id + '-' + si,
-      title: rich(scen.chip),
-      short: scen.chip.split(' (')[0],
-      question: Q[mi],
-      guide: GUIDE[mi],
-      controls: SLIDERS[mo.id].filter((d) => params[mo.id + '_' + d.key]).map((d) => mo.id + '_' + d.key),
-      actions,
-      steps: mo.stepLabels.map((l, k) => `${k + 1}단계 · ${rich(l)}`),
-      startStep: 2,
-      notesTitle: '오답 함정 주의보',
-      focus: () => FOCUS[mi],
-      enter: (s) => {
-        current = { mo, scen };
-        Object.keys(scen.params).forEach((k) => { s[mo.id + '_' + k] = scen.params[k]; });
-      },
-      problem: {
-        tag: scen.source,
-        text: () => rich(scen.problem),
-        answer: () => '풀이와 결과는 정리 탭의 「두 가지 풀이 비교」에서 확인하세요.',
-        snap: () => { const o = {}; Object.keys(scen.snapParams).forEach((k) => { o[mo.id + '_' + k] = scen.snapParams[k]; }); return o; }
-      },
-      solution: {
-        standardTitle: rich(scen.textbookTitle), standardTag: '기본 풀이',
-        quickTitle: rich(scen.secretTitle), quickTag: '10초 컷',
-        standard: () => ({ steps: scen.textbookSteps.map((x) => `<div>${rich(x)}</div>`).join('') }),
-        quick: () => ({ steps: scen.secretSteps.map((x) => `<div>${rich(x)}</div>`).join('') })
-      },
-      view: (s) => {
-        current = { mo, scen };
-        const p = pv(s, mo);
-        if (mo.id === 'type5') tie(p);
-        const h = hudOf(mo.id, p);
-        return {
-          chips: [{ k: mo.code, html: rich(h.eq) }],
-          readouts: h.cards.map((c) => ({ label: rich(c.title), value: String(c.val), note: rich(c.sub), color: 'amber' })),
-          formula: s.step >= 1 ? rich(mo.stepDescs[Math.min(s.step, 3) - 1]) : '',
-          notes: rich(mo.trapWarning)
-        };
-      },
-      draw: (b, s, v) => draw(mo, b, s, v)
-    }))
+    scenes: mo.scenarios.map((scen, si) => {
+      const VARY = ALV.make(kindOf(mi, si), POOLS[mi][si], { text: scen.problem, std: scen.textbookSteps, quick: scen.secretSteps });
+      return {
+        id: mo.id + '-' + si,
+        title: rich(scen.chip),
+        short: scen.chip.split(' (')[0],
+        question: Q[mi],
+        guide: GUIDE[mi],
+        controls: SLIDERS[mo.id].filter((d) => params[mo.id + '_' + d.key]).map((d) => mo.id + '_' + d.key),
+        actions,
+        notesTitle: '오답 함정 주의보',
+        focus: () => FOCUS[mi],
+        enter: (s) => {
+          current = { mo, scen };
+          Object.keys(scen.params).forEach((k) => { s[mo.id + '_' + k] = scen.params[k]; });
+        },
+        ...ALV.ext(VARY, { tag: scen.source, standardTitle: rich(scen.textbookTitle), quickTitle: rich(scen.secretTitle) }),
+        view: (s, lab) => {
+          current = { mo, scen };
+          if (lab && lab.tab !== 'explore') return { notes: rich(mo.trapWarning) };
+          const p = pv(s, mo);
+          if (mo.id === 'type5') tie(p);
+          const h = hudOf(mo.id, p);
+          return {
+            chips: [{ k: mo.code, html: rich(h.eq) }],
+            readouts: h.cards.map((c) => ({ label: rich(c.title), value: String(c.val), note: rich(c.sub), color: 'amber' })),
+            formula: EXPST >= 1 ? rich(mo.stepDescs[Math.min(EXPST, 3) - 1]) : '',
+            notes: rich(mo.trapWarning)
+          };
+        },
+        draw: (b, s, v, lab) => {
+          if (b.thumb || !lab || lab.tab === 'explore') {
+            if (!b.thumb) ALV.focus(b, 'e' + mo.id + si, FOCUS[mi]);
+            draw(mo, b, s, v);
+            return;
+          }
+          const cv = VARY.cur();
+          ALV.focus(b, 'v' + cv.sid, cv.win);
+          ALV.gridAxes(b, s, cv);
+          ALV.draw(b, cv, lab.tab === 'review' ? s.step : 0, v);
+        }
+      };
+    })
   }));
 
   APLab.createLab({
