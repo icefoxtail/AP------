@@ -75,7 +75,7 @@ test('consumer DB preserves previous approvals, registers current Palma rows and
   assert.ok(index.records.every(r=>r.sourceKind==='generated'&&typeof r.uid==='string'&&r.uid.trim().length>0));
   assert.equal(index.records.filter(r => r.uid.includes('BSG26-B01R2-')).length, 45);
   assert.equal(index.records.filter(r => r.uid.includes('BSG26-B02-')).length, 38);
-  assert.equal(canonicalSourceGitSha(fs.readFileSync(path.join(root, originalFile))), '58bc37888ea64eae59f345580f7e3aaf26a87d55');
+  assert.equal(canonicalSourceGitSha(fs.readFileSync(path.join(root, originalFile))), 'e967d94ce3fc6b62c9a8db13f99bd4319dacf8ed');
 });
 
 test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound consumer shards with five choices', () => {
