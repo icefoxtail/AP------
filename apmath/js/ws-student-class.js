@@ -394,7 +394,7 @@ function openClassManageWorkspace(options = {}) {
     else if (opts.mode === 'add' || noClass) { wsClass.selectedId = ''; wsClass.mode = 'add'; }
     else { wsClass.selectedId = ''; wsClass.mode = 'idle'; }
 
-    showModal('학급관리', `
+    showModal('반 관리', `
         <div class="apms-modal apms-modal--workspace ws-class" data-ws-class>
             <div class="apms-workspace__bar ws-class__bar">
                 <span class="ws-class__summary" id="ws-class-summary"></span>

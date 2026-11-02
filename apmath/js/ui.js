@@ -6,13 +6,13 @@
  * 현재 사이드바 원칙:
  * - 홈 메뉴는 드로어에 두지 않는다. AP MATH 로고의 goHome()이 홈 역할을 담당한다.
  * - 햄버거(openAppDrawer)는 드로어 열기/닫기 전용이다.
- * - PC 닫힘 상태는 56px 미니 레일이며 햄버거만 표시한다.
- * - PC 열림 상태는 260px 텍스트 사이드바다.
+ * - PC 닫힘 상태는 56px 미니 레일이며 햄버거와 항목 아이콘(이름은 title·aria-label)을 표시한다.
+ * - PC 열림 상태는 260px 아이콘+텍스트 사이드바다.
  * - 모바일 drawer 내부에는 AP MATH OS 브랜드를 반복 표시하지 않는다.
  * - 다크모드 토글은 drawer 최상단 우측에 둔다.
  * - 햄버거, 메뉴 글자, 로그아웃은 같은 왼쪽 16px x축에 정렬한다.
  * - 다크모드 토글 오른쪽 끝은 drawer 오른쪽 16px 기준으로 정렬한다.
- * - 메뉴는 아이콘 없이 텍스트만 사용한다.
+ * - 메뉴 항목은 아이콘(DRAWER_ICON_SVG)과 이름을 함께 쓰고, 지금 열린 화면의 항목에 aria-current="page"를 단다(drawerMark).
  * - 로그아웃은 drawer 하단에 둔다.
  */
 
@@ -976,6 +976,7 @@ const DRAWER_ICON_SVG = {
     school: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10 12 5l8 5-8 5z"/><path d="M7 12v5c2.8 1.7 7.2 1.7 10 0v-5"/></svg>',
     exam: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h7l3 3v13H7z"/><path d="M14 4v4h4"/><path d="M9.5 13.5l1.5 1.5 3.5-4"/></svg>',
     omr: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="2"/><circle cx="9" cy="9" r="1"/><circle cx="9" cy="13" r="1"/><circle cx="9" cy="17" r="1"/><path d="M12 9h4"/><path d="M12 13h4"/><path d="M12 17h4"/></svg>',
+    report: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V10"/><path d="M12 20V4"/><path d="M19 20v-7"/><path d="M3.5 20h17"/></svg>',
     sync: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5"/><path d="M4 17v-5h5"/><path d="M18.5 9A7 7 0 0 0 6.7 6.4"/><path d="M5.5 15a7 7 0 0 0 11.8 2.6"/></svg>',
     manual: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H20v14H6.5A2.5 2.5 0 0 1 4 15.5z"/><path d="M8 8h8"/><path d="M8 12h7"/><path d="M8 16h6"/></svg>',
     discharged: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 19c0-2.2-1.8-4-4-4s-4 1.8-4 4"/><circle cx="12" cy="8" r="3"/><path d="M17 12h4"/></svg>',
@@ -991,16 +992,108 @@ function drawerIcon(icon) {
     return DRAWER_ICON_SVG[key] || DRAWER_ICON_SVG.default;
 }
 
-function drawerItem(icon, label, action, extraClass = '') {
+function drawerItem(icon, label, action, extraClass = '', navKey = '') {
     if (String(action || '').indexOf('renderTimetableMonths') !== -1) return '';
     const safeLabel = (typeof apEscapeHtml === 'function') ? apEscapeHtml(String(label || '')) : String(label || '');
     const iconHtml = drawerIcon(icon);
+    // aria-label·title: 레일(56px)에서는 이름 글자가 숨겨지므로 이 둘이 이름 역할을 한다.
+    const navAttr = navKey ? ` data-nav="${navKey}"` : '';
     return `
-        <button class="drw-item ${extraClass}" onclick="${action}">
+        <button type="button" class="drw-item ${extraClass}"${navAttr} aria-label="${safeLabel}" title="${safeLabel}" onclick="${action}">
             <span class="drw-icon" aria-hidden="true">${iconHtml}</span>
             <span class="drw-label">${safeLabel}</span>
         </button>
     `;
+}
+
+// ------------------------------------------------------------
+// 현재 위치 표시 (aria-current="page")
+// - 서랍 항목을 누르면 drawerMark(key, kind)가 그 항목을 현재 위치로 표시한다.
+//   kind 'modal': 모달·작업 화면(W)이 열려 있는 동안만 표시하고, 닫히면 해제한다.
+//   kind 'page' : 시간표·출석부·학교성적처럼 본 화면을 바꾸는 항목. 이후는 appHistoryState.currentView로 따라간다.
+// - 대시보드·반 화면에서 모달이 열리면 표시는 없다(서랍 항목이 없는 일).
+// ------------------------------------------------------------
+const DRAWER_PAGE_NAV_KEYS = { timetable: 'timetable', attendance: 'attendance', schoolExam: 'school' };
+const drawerNavState = { intent: null, timer: null, observer: null };
+
+function drawerOverlayOpen() {
+    const modal = document.getElementById('modal-overlay');
+    if (modal && !modal.classList.contains('hidden') && modal.classList.contains('show')) return true;
+    const wide = document.getElementById('report-center-wide-overlay');
+    return !!(wide && wide.classList.contains('show'));
+}
+
+function drawerPageNavKey() {
+    try {
+        const view = appHistoryState && appHistoryState.currentView;
+        return (view && DRAWER_PAGE_NAV_KEYS[view.type]) || '';
+    } catch (e) {
+        return '';
+    }
+}
+
+function drawerResolveCurrentKey() {
+    return drawerNavState.intent ? drawerNavState.intent.key : drawerPageNavKey();
+}
+
+function drawerRefreshCurrent() {
+    const drw = document.getElementById('app-drawer');
+    if (!drw) return '';
+    const key = drawerResolveCurrentKey();
+    drw.querySelectorAll('.drw-item[data-nav]').forEach(btn => {
+        const on = !!key && btn.getAttribute('data-nav') === key;
+        btn.classList.toggle('drw-active', on);
+        if (on) btn.setAttribute('aria-current', 'page');
+        else btn.removeAttribute('aria-current');
+    });
+    return key;
+}
+
+function drawerNavTick() {
+    const intent = drawerNavState.intent;
+    if (intent) {
+        const age = Date.now() - intent.at;
+        const open = drawerOverlayOpen();
+        if (open) intent.seen = true;
+        // 모달형: 한 번 열렸다가 닫히면 해제. 열리지 않으면 3초 뒤 해제. 본 화면형: 3초 뒤 currentView에 맡긴다.
+        const done = intent.kind === 'modal' ? (!open && (intent.seen || age > 3000)) : age > 3000;
+        if (done) drawerNavState.intent = null;
+    }
+    if (!drawerNavState.intent && drawerNavState.timer) {
+        clearInterval(drawerNavState.timer);
+        drawerNavState.timer = null;
+    }
+    drawerRefreshCurrent();
+}
+
+function drawerMark(key, kind) {
+    drawerNavState.intent = { key: String(key || ''), kind: kind === 'page' ? 'page' : 'modal', at: Date.now(), seen: false };
+    if (!drawerNavState.timer) drawerNavState.timer = setInterval(drawerNavTick, 300);
+    drawerRefreshCurrent();
+}
+
+// 서랍·레일이 스크롤될 때 아래에 더 있음을 알리는 페이드(.drw-scroll-more, CSS가 그린다). 끝까지 내리면 사라진다.
+function drawerUpdateScrollHint() {
+    const drw = document.getElementById('app-drawer');
+    if (!drw) return;
+    const more = drw.scrollHeight - drw.clientHeight - drw.scrollTop > 4;
+    drw.classList.toggle('drw-scroll-more', more);
+}
+
+function drawerBindScrollHint(drw) {
+    if (!drw || drw.__apScrollHint) return;
+    drw.__apScrollHint = true;
+    drw.addEventListener('scroll', drawerUpdateScrollHint, { passive: true });
+    window.addEventListener('resize', drawerUpdateScrollHint);
+}
+
+function drawerBindNavObserver() {
+    if (drawerNavState.observer || typeof MutationObserver === 'undefined') return;
+    const root = document.getElementById('app-root');
+    if (!root) return;
+    // 본 화면이 바뀌면(대시보드 버튼으로 시간표를 연 경우 포함) 표시를 다시 계산한다.
+    drawerNavState.observer = new MutationObserver(() => drawerRefreshCurrent());
+    drawerNavState.observer.observe(root, { childList: true });
 }
 
 function drawerSection(label) {
@@ -1025,55 +1118,60 @@ function openExamScoreMenu() {
 function buildDrawerMenu(roleKey) {
     const isAdminDrawer = roleKey === 'admin';
 
+    // 원장 서랍: 항목 구성은 그대로 두고(결정 D1) 이름 통일·현재 위치 표시·아이콘만 적용한다.
     if (isAdminDrawer) {
         return `
             ${drawerSection('학생 관리')}
-            ${drawerItem('students', '학생관리', "closeAppDrawer(); openAddressBook();")}
-            ${drawerItem('class', '학급관리', "closeAppDrawer(); openClassManageModal();")}
+            ${drawerItem('students', '학생 관리', "closeAppDrawer(); drawerMark('students'); openAddressBook();", '', 'students')}
+            ${drawerItem('class', '반 관리', "closeAppDrawer(); drawerMark('class'); openClassManageModal();", '', 'class')}
 
             ${drawerSection('운영')}
-            ${drawerItem('schedule', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
-            ${drawerItem('timetable', '시간표', "closeAppDrawer(); if(typeof openLiveTimetable==='function') openLiveTimetable(); else if(typeof renderTimetable==='function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');")}
-            ${drawerItem('discharged', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') openDischargedStudents(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
-            ${drawerItem('exam', '진단평가', "closeAppDrawer(); if(typeof openAdminDiagnosticPanel==='function') openAdminDiagnosticPanel(); else toast('진단평가 기능을 불러오지 못했습니다.', 'warn');")}
+            ${drawerItem('schedule', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') { drawerMark('schedule'); openExamScheduleModal(); } else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');", '', 'schedule')}
+            ${drawerItem('timetable', '시간표', "closeAppDrawer(); if(typeof openLiveTimetable==='function') { drawerMark('timetable', 'page'); openLiveTimetable(); } else if(typeof renderTimetable==='function') { drawerMark('timetable', 'page'); renderTimetable(); } else toast('시간표 기능을 불러오지 못했습니다.', 'warn');", '', 'timetable')}
+            ${drawerItem('discharged', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') { drawerMark('discharged'); openDischargedStudents(); } else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');", '', 'discharged')}
+            ${drawerItem('exam', '진단평가', "closeAppDrawer(); if(typeof openAdminDiagnosticPanel==='function') { drawerMark('diagnostic'); openAdminDiagnosticPanel(); } else toast('진단평가 기능을 불러오지 못했습니다.', 'warn');", '', 'diagnostic')}
 
             ${drawerSection('수업 자료')}
             ${drawerItem('archive', '아카이브', "closeAppDrawer(); if(typeof openDashboardArchiveWindow==='function') openDashboardArchiveWindow(event); else toast('아카이브를 불러오지 못했습니다.', 'warn');")}
             ${drawerItem('playground', '도형·함수 실험실', "closeAppDrawer(); window.open('./playground/index.html', '_blank', 'noopener');")}
 
             ${drawerSection('지원')}
-            ${drawerItem('manage', '관리', "closeAppDrawer(); if(typeof openAdminOperationMenu==='function') openAdminOperationMenu(); else toast('관리 기능을 불러오지 못했습니다.', 'warn');")}
-            ${drawerItem('sync', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}
+            ${drawerItem('manage', '관리', "closeAppDrawer(); if(typeof openAdminOperationMenu==='function') { drawerMark('manage'); openAdminOperationMenu(); } else toast('관리 기능을 불러오지 못했습니다.', 'warn');", '', 'manage')}
+            ${drawerItem('sync', '시스템 동기화', "closeAppDrawer(); drawerMark('sync'); openOperationMenu();", '', 'sync')}
             ${drawerItem('manual', '사용설명서', "closeAppDrawer(); openManualCenter();")}
         `;
     }
 
+    // 선생님 서랍: 자주 쓰는 순서(수업 → 반·학생 → 기록 → 평가·리포트 → 자료 → 지원). 항목은 빼지 않고 묶음만 옮겼다.
     return `
-        ${drawerSection('수업 관리')}
-        ${drawerItem('timetable', '시간표', "closeAppDrawer(); if(typeof openLiveTimetable==='function') openLiveTimetable(); else if(typeof renderTimetable==='function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('attendance', '출석부', "closeAppDrawer(); if(typeof openAttendanceLedger==='function') openAttendanceLedger(); else if(typeof renderAttendanceLedger==='function') renderAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('journal', '일지', "closeAppDrawer(); openDailyJournalModal();")}
-        ${drawerItem('memo', '메모', "closeAppDrawer(); openTodoMemoModal();")}
-        ${drawerItem('class', '학급관리', "closeAppDrawer(); openClassManageModal();")}
-        ${drawerItem('students', '학생관리', "closeAppDrawer(); openAddressBook();")}
-        ${drawerItem('discharged', '퇴원생', "closeAppDrawer(); if(typeof openWithdrawalReport==='function') openWithdrawalReport(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('schedule', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerSection('수업')}
+        ${drawerItem('timetable', '시간표', "closeAppDrawer(); if(typeof openLiveTimetable==='function') { drawerMark('timetable', 'page'); openLiveTimetable(); } else if(typeof renderTimetable==='function') { drawerMark('timetable', 'page'); renderTimetable(); } else toast('시간표 기능을 불러오지 못했습니다.', 'warn');", '', 'timetable')}
+        ${drawerItem('attendance', '출석부', "closeAppDrawer(); if(typeof openAttendanceLedger==='function') { drawerMark('attendance', 'page'); openAttendanceLedger(); } else if(typeof renderAttendanceLedger==='function') { drawerMark('attendance'); renderAttendanceLedger(); } else toast('출석부 기능을 불러오지 못했습니다.', 'warn');", '', 'attendance')}
+        ${drawerItem('textbook', '진도·교재', "closeAppDrawer(); if(typeof openGlobalTextbookManage==='function') { drawerMark('textbook'); openGlobalTextbookManage(); } else toast('진도·교재 기능을 불러오지 못했습니다.', 'warn');", '', 'textbook')}
+        ${drawerItem('clinic', '클리닉', "closeAppDrawer(); if(typeof openClinicCenter==='function') { drawerMark('clinic'); openClinicCenter(); } else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');", '', 'clinic')}
+        ${drawerItem('exam', '원내평가·OMR', "closeAppDrawer(); if(typeof openExamWorkspace==='function') { drawerMark('exam-omr'); openExamWorkspace(''); } else toast('원내평가·OMR 기능을 불러오지 못했습니다.', 'warn');", '', 'exam-omr')}
 
-        ${drawerSection('수업 자료')}
-        ${drawerItem('textbook', '교재관리', "closeAppDrawer(); if(typeof openGlobalTextbookManage==='function') openGlobalTextbookManage(); else toast('교재관리 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('material', '수업자료', "closeAppDrawer(); if(typeof openStudyMaterialWrongCenter==='function') openStudyMaterialWrongCenter(); else toast('수업자료 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('exam', '시험지 보관함', "closeAppDrawer(); window.open(appendArchiveSessionToUrlForUi('../archive/assessment/assessment-mvp.html'), '_blank', 'noopener');")}
-        ${drawerItem('clinic', '클리닉', "closeAppDrawer(); if(typeof openClinicCenter==='function') openClinicCenter(); else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerSection('반·학생')}
+        ${drawerItem('manage', '반 관리', "closeAppDrawer(); drawerMark('class'); openClassManageModal();", '', 'class')}
+        ${drawerItem('students', '학생 관리', "closeAppDrawer(); drawerMark('students'); openAddressBook();", '', 'students')}
+        ${drawerItem('discharged', '퇴원생', "closeAppDrawer(); if(typeof openWithdrawalReport==='function') { drawerMark('discharged'); openWithdrawalReport(); } else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');", '', 'discharged')}
+
+        ${drawerSection('기록')}
+        ${drawerItem('journal', '일지', "closeAppDrawer(); drawerMark('journal'); openDailyJournalModal();", '', 'journal')}
+        ${drawerItem('memo', '메모', "closeAppDrawer(); drawerMark('memo'); openTodoMemoModal();", '', 'memo')}
+        ${drawerItem('schedule', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') { drawerMark('schedule'); openExamScheduleModal(); } else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');", '', 'schedule')}
+
+        ${drawerSection('평가·리포트')}
+        ${drawerItem('report', '리포트 센터', "closeAppDrawer(); if(typeof openReportCenterHome==='function') { drawerMark('report'); openReportCenterHome(); } else toast('리포트 센터를 불러오지 못했습니다.', 'warn');", '', 'report')}
+        ${drawerItem('school', '학교성적', "closeAppDrawer(); if(typeof openSchoolExamLedger==='function') { drawerMark('school', 'page'); openSchoolExamLedger(); } else if(typeof openCumulativeOpsModal==='function') { drawerMark('school'); openCumulativeOpsModal('school'); } else toast('학교성적 기능을 불러오지 못했습니다.', 'warn');", '', 'school')}
+
+        ${drawerSection('자료')}
+        ${drawerItem('material', '수업자료', "closeAppDrawer(); if(typeof openStudyMaterialWrongCenter==='function') { drawerMark('material'); openStudyMaterialWrongCenter(); } else toast('수업자료 기능을 불러오지 못했습니다.', 'warn');", '', 'material')}
+        ${drawerItem('archive', '시험지 보관함', "closeAppDrawer(); window.open(appendArchiveSessionToUrlForUi('../archive/assessment/assessment-mvp.html'), '_blank', 'noopener');")}
         ${drawerItem('playground', '도형·함수 실험실', "closeAppDrawer(); window.open('./playground/index.html', '_blank', 'noopener');")}
 
-        ${drawerSection('평가')}
-        ${drawerItem('report', '리포트 센터', "closeAppDrawer(); if(typeof openReportCenterHome==='function') openReportCenterHome(); else toast('리포트 센터를 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('school', '학교성적', "closeAppDrawer(); if(typeof openSchoolExamLedger==='function') openSchoolExamLedger(); else if(typeof openCumulativeOpsModal==='function') openCumulativeOpsModal('school'); else toast('학교성적 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('exam', '원내평가', "closeAppDrawer(); if(typeof openGlobalExamGradeView==='function') openGlobalExamGradeView(); else toast('원내평가 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('omr', 'OMR 입력', "closeAppDrawer(); if(typeof openOmrInput==='function') openOmrInput(); else toast('OMR 입력 기능을 불러오지 못했습니다.', 'warn');")}
-
         ${drawerSection('지원')}
-        ${drawerItem('sync', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}
+        ${drawerItem('sync', '시스템 동기화', "closeAppDrawer(); drawerMark('sync'); openOperationMenu();", '', 'sync')}
         ${drawerItem('manual', '사용설명서', "closeAppDrawer(); openManualCenter();")}
     `;
 }
@@ -1138,6 +1236,11 @@ function renderAppDrawer(force = false) {
         document.body.appendChild(wrapper.firstChild);
     }
 
+    drawerBindNavObserver();
+    drawerRefreshCurrent();
+    drawerBindScrollHint(document.getElementById('app-drawer'));
+    drawerUpdateScrollHint();
+    window.setTimeout(drawerUpdateScrollHint, 300);
     applyTheme(getTheme());
 }
 
@@ -1161,6 +1264,8 @@ function openAppDrawer() {
         return;
     }
     renderAppDrawer();
+    drawerRefreshCurrent();
+    drawerUpdateScrollHint();
     const drw = document.getElementById('app-drawer');
     const ovl = document.getElementById('app-drawer-overlay');
     if (!drw) return;
@@ -1362,7 +1467,7 @@ function installDrawerSizeLock() {
 
         #app-drawer .drw-item {
             width: 100% !important;
-            min-height: 38px !important;
+            min-height: 44px !important; /* N1: 터치 목표 44px */
             margin: 1px 0 !important;
             padding: 9px var(--ap-drawer-x) !important;
             box-sizing: border-box !important;

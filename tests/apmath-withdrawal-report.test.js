@@ -22,7 +22,8 @@ assert(admin.includes('adminGetStudentClassMap(student.id)') && admin.includes('
 assert(admin.includes("const isAdmin = apAdminDashboardRole() === 'admin'"), 'admin actions should be role gated');
 assert.strictEqual((studentsRoute.match(/if \(!isAdminUser\(teacher\)\) return jsonResponse\(\{ error: 'Forbidden' \}, 403\);/g) || []).length >= 2, true, 'restore and hide mutations should both enforce admin authorization on the server');
 assert(!teacher.includes('openWithdrawalReport()') && !teacher.includes('>퇴원생</span>'), 'teacher quick actions should keep the original three-card set');
-assert(ui.includes("drawerItem('students', '학생관리'") && ui.includes("drawerItem('discharged', '퇴원생', \"closeAppDrawer(); if(typeof openWithdrawalReport==='function') openWithdrawalReport()"), 'teacher sidebar should place the withdrawal report directly after student management');
+// 2026-11-02 N1: 선생님 서랍은 "반·학생" 묶음(반 관리 → 학생 관리 → 퇴원생). 이름은 "학생 관리"로 통일했다.
+assert(ui.includes("drawerItem('students', '학생 관리'") && ui.includes("drawerItem('discharged', '퇴원생', \"closeAppDrawer(); if(typeof openWithdrawalReport==='function') { drawerMark('discharged'); openWithdrawalReport(); }"), 'teacher sidebar should keep the withdrawal report in the 반·학생 group');
 assert(css.includes('.ap-withdrawal-filters') && css.includes('@media (max-width:700px)'), 'withdrawal report should have scoped responsive styles');
 assert(css.includes('body.ap-teacher-dashboard-mode .ap-dash-redesign .ap-dash-quick-grid') && css.includes('grid-template-columns: repeat(3, minmax(0, 1fr))'), 'teacher quick actions should retain the original three-column grid');
 assert(admin.includes('function apAnnounceWithdrawalReportResults(count)') && admin.includes('data-withdrawal-filter') && admin.includes('data-withdrawal-reset'), 'filter updates should announce results and restore keyboard focus');
