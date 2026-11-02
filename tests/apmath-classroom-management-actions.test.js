@@ -8,6 +8,7 @@ const classroom = fs.readFileSync(path.join(root,'apmath/js/classroom.js'),'utf8
 const management = fs.readFileSync(path.join(root,'apmath/js/management.js'),'utf8');
 const timetable = fs.readFileSync(path.join(root,'apmath/js/timetable.js'),'utf8');
 const student = fs.readFileSync(path.join(root,'apmath/js/student.js'),'utf8');
+const wsClassSource = fs.readFileSync(path.join(root,'apmath/js/ws-student-class.js'),'utf8');
 const studentEdit = fs.readFileSync(path.join(root,'apmath/js/student-edit.js'),'utf8');
 const css = fs.readFileSync(path.join(root,'apmath/css/classroom-foundation.css'),'utf8');
 
@@ -63,7 +64,9 @@ test('move student picker never writes class assignment directly and opens exist
 
 test('existing edit class save keeps the originating classroom return, without modifying class API payload', () => {
     assert.match(management,/function openEditClassModal\(cid, options = \{\}\)/);
-    assert.match(management,/handleEditClass\(cid, returnTo\)/);
+    assert.match(wsClassSource,/handleEditClass\(wsClass\.selectedId, wsClass\.returnTo/);
+    assert.match(management,/openClassManageWorkspace\(\{ selectId: cid, returnTo \}\)/);
+    assert.doesNotMatch(management.slice(management.indexOf('async function handleEditClass('), management.indexOf('async function toggleClassActive(')), /loadData\(/);
     assert.match(management,/api\.patch\(`classes\/\$\{cid\}`, payload\)/);
     assert.match(management,/returnTo\?\.type === 'classDetail'/);
     assert.match(management,/closeModal\(true\)/);

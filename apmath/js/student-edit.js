@@ -113,6 +113,8 @@ async function handleRestore(sid) {
         toast('다른 학생의 재등원 처리가 진행 중입니다.', 'info');
         return;
     }
+    // 퇴원생 현황 목록에서는 모달을 갈아 끼우지 않고 그 행 아래에 같은 폼을 펼친다(M4, ws-student-restore.js).
+    if (typeof wsRestoreIsReportOpen === 'function' && wsRestoreIsReportOpen() && wsRestoreToggleInline(sid)) return;
     const student = state.db.students.find(row => String(row.id) === String(sid));
     if (!student) {
         toast('학생 정보를 찾을 수 없습니다.', 'error');
@@ -157,12 +159,17 @@ handleRestore.confirm = async function(sid) {
     const returnCtx = state.ui.modalReturnView || state.ui.returnView || null;
     const actionBtn = document.getElementById('modal-action-btn');
     const cancelBtn = document.getElementById('modal-cancel-btn');
+    const inlineSave = document.querySelector('#modal-body [data-ws-restore-save]');
     restoreStudentSubmitting = true;
     const overlay = document.getElementById('modal-overlay');
     if (overlay) overlay.dataset.mutationPending = 'reenrollment';
     if (actionBtn) {
         actionBtn.disabled = true;
         actionBtn.textContent = '처리 중…';
+    }
+    if (inlineSave) {
+        inlineSave.disabled = true;
+        inlineSave.textContent = '처리 중…';
     }
     if (cancelBtn) cancelBtn.disabled = true;
 
@@ -181,9 +188,15 @@ handleRestore.confirm = async function(sid) {
             if (refreshes.length) await Promise.allSettled(refreshes);
             if (handleRestore.isReenrollmentModalOpen(sid)) {
                 if (overlay) delete overlay.dataset.mutationPending;
-                closeModal();
-                if (typeof openWithdrawalReport === 'function') openWithdrawalReport();
-                else refreshCurrentStudentListViewAfterMutation(returnCtx);
+                if (inlineSave && typeof wsRestoreAfterSave === 'function') {
+                    // 퇴원생 현황 목록 안 폼: 모달을 닫지 않고 같은 목록만 다시 그린다.
+                    if (cancelBtn) cancelBtn.disabled = false;
+                    wsRestoreAfterSave();
+                } else {
+                    closeModal();
+                    if (typeof openWithdrawalReport === 'function') openWithdrawalReport();
+                    else refreshCurrentStudentListViewAfterMutation(returnCtx);
+                }
             } else {
                 refreshCurrentStudentListViewAfterMutation(returnCtx);
             }
@@ -202,6 +215,11 @@ handleRestore.confirm = async function(sid) {
             if (currentActionBtn) {
                 currentActionBtn.disabled = false;
                 currentActionBtn.textContent = '재등원';
+            }
+            const currentInlineSave = document.querySelector('#modal-body [data-ws-restore-save]');
+            if (currentInlineSave) {
+                currentInlineSave.disabled = false;
+                currentInlineSave.textContent = '재등원 처리';
             }
             if (currentCancelBtn) currentCancelBtn.disabled = false;
         }
