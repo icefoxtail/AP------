@@ -435,7 +435,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       id: 'mode' + m, title: TITLES[m - 1], short: SHORT[m - 1],
       question: QUESTIONS[m - 1],
-      tabs: { compact: true }, // 휴대폰 문제 탭: 탐구 질문 카드를 접고 그림 무대를 낮춰 문제 글이 첫 화면에 오게 함
+      tabs: { compact: true, status: true }, // 휴대폰 문제 탭: 탐구 질문 카드를 접고 그림 무대를 낮춰 문제 글이 첫 화면에 오게 함
       guide: d.hint,
       enter: (s) => { const c = CAMS(m).iso; s.yaw = c.yaw; s.pitch = c.pitch; s.h2 = 4.0; s.th = REG_DEG; s.lens = 'all'; },
       controls: () => (m === 2 ? ['h2', 'yaw', 'pitch'] : m === 3 ? ['th', 'yaw', 'pitch'] : ['yaw', 'pitch']),

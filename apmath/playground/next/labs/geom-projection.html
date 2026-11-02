@@ -868,7 +868,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       id: 'mode' + m, title: TITLES[m - 1], short: SHORT[m - 1],
       question: QUESTIONS[m - 1],
-      tabs: { compact: true }, // 휴대폰 문제 탭: 탐구 질문 카드를 접고 그림 무대를 낮춰 문제 글이 첫 화면에 오게 함
+      tabs: { compact: true, status: m !== 7 }, // 휴대폰 문제 탭: 탐구 질문 카드를 접고 그림 무대를 낮춰 문제 글이 첫 화면에 오게 함. status: 「빈 곳을 끌면 회전」 안내를 문제 탭에도 둠(mode7 은 중점 설명이 풀이라 제외)
       guide: d.hint,
       enter: (s) => { const c = CAMS(m).iso; s.yaw = c.yaw; s.pitch = c.pitch; s.th = 60; s.board = 30; s.sun = 60; s.press = 0; s.cn = 3; s.mt = 50; s.acd = false; s.lens = 'all'; s.dir = 1; },
       controls: () => (m <= 2 ? ['th', 'yaw', 'pitch'] : m === 3 ? ['yaw', 'pitch'] : m === 4 ? ['board', 'sun', 'yaw', 'pitch'] : [['press', 'cn', 'mt'][m - 5], 'yaw', 'pitch']),
