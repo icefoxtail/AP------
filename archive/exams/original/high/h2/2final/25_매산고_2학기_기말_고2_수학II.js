@@ -540,14 +540,15 @@ window.questionBank=[
     "wide": false,
     "content": "[서답형 1번] 함수 $f(x)=x^3+ax^2+bx-4$가 $x=1$에서 극댓값 $0$을 가진다. 이때, 상수 $a$, $b$와 함수 $f(x)$의 극솟값 $m$에 대하여 $a+b+m$의 값을 구하시오. [4점]",
     "answer": "$-1$",
-    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q17-solution.svg",
-    "solutionImageAlt": "삼차함수 f(x)=x³−6x²+9x−4의 그래프가 x=1에서 극댓값 0, x=3에서 극솟값 −4를 가져 a+b+m=−1임을 보여준다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 f의 그래프에서 x=1에서 극대(값 0), x=3에서 극소이며 x<1 증가, 1<x<3 감소, x>3 증가를 곡선 옆 글자로 나타냈다. 극소점은 (3,-4)이다.",
+    "solutionImageSize": "medium",
     "solution": "$x=1$에서 극댓값이 $0$이므로\n$f(1)=0,\\qquad f'(1)=0$이다.\n$f(1)=1+a+b-4=0$에서\n$a+b=3$이다.\n$f'(x)=3x^2+2ax+b$이므로\n$f'(1)=3+2a+b=0$이다.\n두 식을 빼면 $a=-6$, 따라서 $b=9$이다.\n$f(x)=x^3-6x^2+9x-4$\n$f'(x)=3x^2-12x+9=3(x-1)(x-3)$이다.\n도함수는 $x<1$에서 양, $1<x<3$에서 음, $x>3$에서 양이다.\n따라서 $x=1$에서 극대, $x=3$에서 극소이다.\n$m=f(3)=27-54+27-4=-4$이다.\n그러므로 $a+b+m=3-4=-1$이다.\n구하는 값은 $-1$이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "극솟값 m=f(3)=-4이고 a=-6, b=9이므로 a+b+m=-1이다. 구하는 값은 -1"
   },
   {
     "id": 18,
@@ -595,7 +596,11 @@ window.questionBank=[
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 f(x)=x²(x-3), t=3일 때 g(x)의 그래프. x≤3에서는 f와 같고 x>3에서는 -f여서 x=3에서 꺾이며, 극값점 α(x=0), γ(x=2), β(x=3=t)가 표시되어 있다.",
+    "solutionImageCaption": "예: f(x)=x²(x-3), t=3. g(x)는 x≤t에서 f(x)와 같고 x>t에서 -f(x)이므로 x=t에서 꺾인 연속인 그래프이고, 극값점은 α, γ, β(=t)의 세 곳이다. d=β-α라 하면 g(γ)=-4d³/27=-20에서 d³=135이므로 2(β-α)³=270이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,

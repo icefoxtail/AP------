@@ -278,7 +278,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수 f′(x)=3x²-4ax+a의 그래프 두 개. 파란 곡선 y=3x²(a=0)은 원점에서 x축에 접하고, 주황 곡선 y=3x²-4x+1(a=1)은 x축과 x=1/3, x=1에서 만나 그 사이에서 x축 아래로 내려간다.",
+    "solutionImageCaption": "a=0이면 f′(x)=3x²이 x축에 접해 f′(x)≥0이지만, a=1이면 f′(x)<0인 구간이 생겨 일대일함수가 아니다. 판별식 D=4a(4a-3)≤0에서 0≤a≤3/4이므로 α+β=3/4이다(정답 ④).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,

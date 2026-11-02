@@ -863,9 +863,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "content": "다음 <보기> 중 함수 그래프가 함수 $y=\\frac{x}{x-1}$의 그래프를 평행이동하여 겹칠 수 있는 것으로만 모두 고른 것은? [4.1점]<br><br><div style=\"border: 1px solid #000; padding: 10px; margin: 10px 0;\"><b>&lt; 보 기 &gt;</b><br>ㄱ. $y=\\frac{x-2}{x-1}$<br>ㄴ. $y=\\frac{1}{x-1}$<br>ㄷ. $y=\\frac{3x+4}{x+1}$<br>ㄹ. $y=\\frac{2x-3}{x+1}$</div>",
     "image": "",
-    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q13-solution.svg",
-    "solutionImageAlt": "원래 유리함수와 ㄴ, ㄷ의 그래프를 두 좌표평면에서 비교한 그림",
-    "solutionImageCaption": "평행이동은 분수항의 계수 1을 그대로 유지한다.",
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 y=x/(x-1)의 그래프(파랑)와 이를 왼쪽으로 2만큼 위로 2만큼 평행이동한 ㄷ의 그래프 y=(3x+4)/(x+1)(주황)를 점근선과 함께 나타낸 그림이다.",
+    "solutionImageCaption": "y=x/(x-1)=1+1/(x-1)의 그래프(파랑)를 아래로 1만큼 옮기면 ㄴ의 그래프가 되고, 왼쪽으로 2만큼, 위로 2만큼 옮기면 ㄷ의 그래프(주황)가 되어 겹친다. 분수항의 계수가 1이 아닌 ㄱ, ㄹ은 겹칠 수 없으므로 정답은 ④이다.",
     "solutionImageSize": "medium",
     "answer": "④",
     "solution": "주어진 유리함수를 먼저 정리한다.\n$y=\\dfrac{x}{x-1}=1+\\dfrac1{x-1}$이다.\n이 그래프의 점근선은 $x=1$, $y=1$이다.\n\n$y=b+\\dfrac{a}{x-h}$를 평행이동하면 $h,b$는 달라질 수 있지만 분수항의 계수 $a$는 바뀌지 않는다.\n따라서 각 보기에서 분수항의 계수가 $1$인지 확인한다.\n\nㄱ. $y=\\dfrac{x-2}{x-1}=1-\\dfrac1{x-1}$\n분수항의 계수가 $-1$이므로 평행이동하여 겹칠 수 없다.\n\nㄴ. $y=\\dfrac1{x-1}$\n원래 그래프를 아래로 $1$만큼 옮긴 것이다. 가능하다.\n\nㄷ. $y=\\dfrac{3x+4}{x+1}=3+\\dfrac1{x+1}$\n원래 그래프를 왼쪽으로 $2$만큼, 위로 $2$만큼 옮긴 것이다. 가능하다.\n\nㄹ. $y=\\dfrac{2x-3}{x+1}=2-\\dfrac5{x+1}$\n분수항의 계수가 $-5$이므로 평행이동으로 겹칠 수 없다.\n\n가능한 것은 ㄴ, ㄷ이므로 정답은 ④이다.",
@@ -992,7 +992,11 @@ window.questionBank = [
       }
     },
     "tags": [],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 y=f(x)의 그래프와 점선 직선 y=x. 곡선의 두 가지가 y=x에 대하여 대칭이고, 점근선의 교점이 y=x 위에 있으며, 대칭인 두 점을 잇는 점선이 y=x에 수직으로 놓인 모습을 나타낸 그림이다.",
+    "solutionImageCaption": "f(x)=(ax+1)/(x-1)의 역함수는 f⁻¹(x)=(x+1)/(x-a)이고, f=f⁻¹이면 a=1이다. 이때 f(x)=(x+1)/(x-1)의 그래프는 직선 y=x에 대하여 대칭이고 두 점근선의 교점이 y=x 위에 있다. 따라서 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
     {
     "number": 15,

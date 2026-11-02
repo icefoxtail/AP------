@@ -572,10 +572,10 @@ window.questionBank = [
       "solutionVisualRef": "assets/images/24_효천고_2학기_기말_고1_수학/q07-solution.svg",
       "solutionVisualSha256": "5c8dea214f327bb3b273f238dab2f42e50947d46f4703ab8bc570ad241873ced"
     },
-    "solutionImage": "assets/images/24_효천고_2학기_기말_고1_수학/q07-solution.svg",
-    "solutionImageAlt": "무리함수의 음의 정의역과 제2,3사분면 개형",
-    "solutionImageCaption": "계수 부호에서 정의역 끝점과 x절편의 위치를 정한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/24_효천고_2학기_기말_고1_수학/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예 a=1, b=1, c=-2일 때 g(x)=√(-2x-1)-1의 그래프로, 끝점 (-1/2,-1)에서 왼쪽 위로 뻗어 x절편 (-1,0)을 지나며 제2사분면과 제3사분면을 지난다.",
+    "solutionImageCaption": "예: a=1, b=1, c=-2일 때 g(x)=√(-2x-1)-1은 끝점 (-1/2,-1)에서 왼쪽 위로 뻗고 x절편 (-1,0)을 지나 제2사분면과 제3사분면을 지나므로 정답은 ④이다.",
+    "solutionImageSize": "medium",
     "crossConceptReasons": [
       "CC_RATIONAL_FUNCTION: 주어진 유리함수 그래프의 계수를 먼저 읽어 무리함수의 식과 사분면을 결정한다."
     ]

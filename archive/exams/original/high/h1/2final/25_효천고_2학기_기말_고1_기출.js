@@ -396,13 +396,13 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "분자를 나누어 그래프의 중심을 확인한다.\n$y=\\dfrac{3x+5}{x-a}=3+\\dfrac{3a+5}{x-a}$\n두 점근선은 $x=a$, $y=3$이므로 중심은 $(a,3)$이다. 이 그래프의 대칭축은 중심을 지나며 기울기가 1 또는 -1인 두 직선이다.\n첫째 대칭축 $y=x+5$가 $(a,3)$을 지나므로\n$3=a+5$, 따라서 $a=-2$이다.\n둘째 대칭축 $y=-x+\\dfrac12b$도 $(a,3)$을 지난다.\n$3=-(-2)+\\dfrac12b$\n$\\dfrac12b=1$, 따라서 $b=2$이다.\n그러므로 $ab=(-2)\\cdot2=-4$이다.\n따라서 정답은 ⑤이다.",
 
-    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q12-solution.svg",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q12-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수의 중심과 두 대칭축을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: y=3-1/(x+2)의 그래프. 점근선 x=-2, y=3의 교점인 중심 C(-2,3)을 기울기 1, -1인 두 직선 y=x+5, y=-x+1이 지나고, 가로·세로 눈금이 같아 두 직선이 서로 수직이며 곡선이 두 직선에 대해 대칭으로 보인다.",
 
-    "solutionImageCaption": "a=−2, b=2일 때 중심 C=(−2,3)과 대칭축 y=x+5, y=−x+1을 확인한다.",
+    "solutionImageCaption": "중심 C(-2,3)이 y=x+5 위에 있으므로 a=-2이고, y=-x+b/2도 지나므로 b=2이다. 따라서 ab=-4이다(정답 ⑤).",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -612,10 +612,10 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "유리함수를 중심 $(2,3)$을 기준으로 옮겨 쓴다.\n$X=x-2$, $Y=y-3$으로 놓으면\n$y=3+\\dfrac1{x-2}$이므로 $XY=1$이다.\n원도 같은 기준으로 옮기면 $X^2+Y^2=r^2$이다.\n$u=X^2$라 놓으면 $u>0$, $Y^2=\\dfrac1u$이므로\n$u+\\dfrac1u=r^2$\n이다. 양변의 차를 정리하면\n$u+\\dfrac1u-2=\\dfrac{(u-1)^2}{u}\\ge0$\n이므로 $r^2\\ge2$이어야 한다.\n$r^2=2$일 때는 $u=1$이고, 따라서 $X=1$ 또는 $X=-1$이다. $XY=1$에서 각각 $Y=1$, $Y=-1$이므로 교점은 서로 다른 두 개이다.\n$r^2>2$이면 $u^2-r^2u+1=0$이 서로 다른 두 양의 해를 가져, 각 해에서 X의 부호를 두 가지로 정할 수 있으므로 교점은 네 개이다. 따라서 서로 다른 두 점에서 만나는 경우는 $r^2=2$뿐이다.\n$r=\\sqrt2$이다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "유리함수의 그래프와 같은 중심을 갖는 원, 두 교점을 나타낸 해설 그래프",
-    "solutionImageCaption": "중심을 (2,3)으로 옮긴 뒤 유리함수와 원이 두 점에서 만나는 경계 반지름을 확인한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: y=3+1/(x-2)의 그래프와 점근선 x=2, y=3, 점근선의 교점 (2,3)을 중심으로 하는 원이 그려져 있고, 원이 곡선과 두 점 P(3,4), Q(1,2)에서 만난다. 가로·세로 눈금이 같아 원이 둥글게 보인다.",
+    "solutionImageCaption": "원이 곡선과 서로 다른 두 점에서 만나는 것은 u=X²일 때 u+1/u=r²에서 r²=2(u=1)일 때뿐이므로 r=√2이다(정답 ⑤).",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -722,13 +722,13 @@ window.questionBank = [
     "answer": "$5$",
     "solution": "점 P의 x좌표를 x, y좌표를 y라 하면 x축과 y축까지의 거리는 각각 $|y|$, $|x|$이다.\n$x<-2$이므로 $x<0$이고\n$y=\\dfrac1{x+2}-1<0$이다.\n따라서 두 길이의 합은 $-y-x$이다.\n$t=-(x+2)$라 놓으면 $t>0$, $x=-t-2$, $y=-\\dfrac1t-1$이다.\n그러므로\n$\\overline{PQ}+\\overline{PR}=t+\\dfrac1t+3$\n이다. $t>0$에서\n$t+\\dfrac1t-2=\\dfrac{(t-1)^2}{t}\\ge0$\n이므로 길이의 합은 5 이상이다. $t=1$, 즉 $x=-3$일 때 등호가 성립한다.\n따라서 최솟값은 5이다.",
 
-    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q22-solution.svg",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q22-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수와 수선 길이를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: y=1/(x+2)-1 (x<-2)의 왼쪽 가지와 점근선 x=-2, y=-1, 곡선 위의 점 P(-3,-2)에서 x축, y축에 내린 수선의 발 Q, R이 그려져 있고 PQ=2, PR=3으로 표시되어 있다. 가로·세로 눈금이 같다.",
 
-    "solutionImageCaption": "P=(−3,−2)에서 두 수선 길이의 합이 5가 됨을 확인한다.",
+    "solutionImageCaption": "t=-(x+2)로 놓으면 PQ+PR=t+1/t+3이고 t=1, 즉 x=-3일 때 최소이므로 PQ+PR의 최솟값은 5이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -757,6 +757,10 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: f(x)=3x-2 (x≥0), x/5-2 (x<0)의 그래프(파랑)와 역함수 f⁻¹(x)의 그래프(주황), 직선 y=x가 그려져 있다. f(x)=0인 점 (2/3,0), 두 그래프와 y=x가 만나는 점 (1,1), (-5/2,-5/2)가 표시되어 있다.",
+    "solutionImageCaption": "f(x)=0에서 x=2/3, f(x)=f⁻¹(x)에서 x=1, -5/2이므로 모든 x의 값의 합은 2/3+1-5/2=-5/6이다.",
+    "solutionImageSize": "medium"
   }
 ];

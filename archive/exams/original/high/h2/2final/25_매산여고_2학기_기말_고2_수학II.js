@@ -343,7 +343,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: f′(x)=6x{2(x-1)²+2-a}의 괄호 안 식 y=2(x-1)²+2-a의 그래프를 a=1, 2, 3, 4에 대해 겹쳐 그렸다. a=2이면 x=1에서 x축에 접하고, a=4이면 x=0, x=2에서 x축과 만난다.",
+    "solutionImageCaption": "f′(x)=6x{2(x-1)²+2-a}에서 그림은 괄호 안 식 y=2(x-1)²+2-a의 그래프를 a=1, 2, 3, 4에 대해 겹쳐 그린 것이다. a=1은 x=0에서만, a=2는 x=0에서만(x=1은 부호 유지), a=4는 x=2에서만 f′의 부호가 바뀌어 극값이 하나이므로 1+2+4=7이고 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,

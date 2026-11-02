@@ -734,15 +734,16 @@ window.questionBank=[
     "wide": false,
     "content": "<div class=\"question-note-box\"><b>서술형 2</b></div><br>직선 $x=t$가 곡선 $y=x^3$, 직선 $y=x$와 만나는 점을 각각 $P$, $Q$라 하자. 선분 $PQ$를 $3:1$로 외분하는 점을 $R$이라 할 때, 점 $R$의 $y$좌표를 $f(t)$라 하자. 함수 $f(t)$의 극솟값과 극댓값을 구하시오. [6점]",
     "answer": "극솟값 −1, 극댓값 1",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q21-solution.svg",
-    "solutionImageAlt": "외분점 높이 함수의 극값: 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=x³과 직선 y=x, 직선 x=t(예: t=3/2)가 만나는 점 P, Q와 선분 PQ를 3:1로 외분하는 점 R이 표시되어 있다. R의 y좌표를 나타내는 함수 f(x)의 그래프가 함께 그려져 있고, x=-1에서 극소, x=1에서 극대인 점이 표시되어 있다.",
+    "solutionImageSize": "medium",
     "solution": "직선 $x=t$와 곡선 $y=x^3$, 직선 $y=x$의 교점은\n$P=(t,t^3)$,\n$Q=(t,t)$이다.\n\n점 $R$은 $P$와 $Q$를 $3:1$로 외분하므로 외분점 공식에 의해\n$R=\\left(\\dfrac{3t-t}{3-1},\\,\\dfrac{3t-t^3}{3-1}\\right)$\n$=\\left(t,\\dfrac{3t-t^3}{2}\\right)$이다.\n따라서 $R$의 $y$좌표 함수는\n$f(t)=\\dfrac{3t-t^3}{2}$이다.\n\n$f'(t)=\\dfrac{3-3t^2}{2}$\n$=\\dfrac32(1-t)(1+t)$이다.\n도함수의 영점은 $t=-1,1$이다.\n\n$t<-1$에서 $f'(t)<0$,\n$-1<t<1$에서 $f'(t)>0$,\n$t>1$에서 $f'(t)<0$이다.\n따라서 $t=-1$에서는 감소에서 증가로 바뀌어 극솟값을,\n$t=1$에서는 증가에서 감소로 바뀌어 극댓값을 갖는다.\n\n$f(-1)=\\dfrac{-3+1}{2}=-1$\n$f(1)=\\dfrac{3-1}{2}=1$이다.\n따라서 극솟값은 $-1$, 극댓값은 $1$이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "예: t=3/2일 때 P(t, t³), Q(t, t), R(t, (3t-t³)/2)이고 f(t)=(3t-t³)/2에서 f′(t)=0인 t=-1, 1에서 극값을 갖는다. 극솟값은 -1, 극댓값은 1이다."
   },
   {
     "id": 22,

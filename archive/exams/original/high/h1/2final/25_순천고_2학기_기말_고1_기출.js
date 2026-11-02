@@ -310,7 +310,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 증가하는 곡선 y=f(x)와 직선 y=x, x축 위의 a, b, c, d, e가 그려져 있다. a에서 곡선으로 올라가 y=x를 거쳐 b로 내려오는 점선(f(a)=b)과, c에서 곡선·y=x·곡선·y=x를 거쳐 e로 내려오는 색 경로(c→d→e)가 표시되어 있다.",
+    "solutionImageCaption": "f(a)=b, f(b)=c, f(c)=d, f(d)=e이므로 c에서 시작해 f를 두 번 취하면 c→d→e(색 경로)가 되어 (f∘f)(k)=e를 만족하는 k는 c이다(정답 ③).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -438,13 +442,13 @@ window.questionBank = [
     "answer": "④",
     "solution": "$x<0$일 때 $2-x>2$이므로\n$0<\\dfrac{1}{2-x}<\\dfrac12$이다.\n따라서 이 범위에서 함숫값은\n$a<y<a+\\dfrac12$이다.\n\n그래프가 제2사분면과 제3사분면을 모두 지나려면 $x<0$인 곳에서 $y>0$과 $y<0$이 모두 가능해야 한다.\n그러므로\n$a<0$, $a+\\dfrac12>0$,\n즉 $-\\dfrac12<a<0$이다.\n\n보기 중 이 조건을 만족하는 값은 $a=-\\dfrac14$뿐이다.\n이 값을 대입한 그래프의 사분면을 확인하자.\n$\\dfrac{1}{2-x}-\\dfrac14=0$에서\n$2-x=4$, $x=-2$이다.\n\n$x<-2$이면 $y<0$이므로 제3사분면,\n$-2<x<0$이면 $y>0$이므로 제2사분면을 지난다.\n$0<x<2$이면 $y>0$이므로 제1사분면,\n$x>2$이면 $y<0$이므로 제4사분면을 지난다.\n\n따라서 정답은 ④이다.",
 
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q14-solution.svg",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q14-solution-v2.svg",
 
-    "solutionImageAlt": "수직점근선 x=2, 수평점근선 y=−1/4를 가진 y=1/(2−x)−1/4의 그래프가 제1·2·3·4사분면을 모두 지나는 모습을 그린 좌표평면이다.",
+    "solutionImageAlt": "해설 그림: 유리함수의 그래프. 점근선은 점선이고 x절편 (-2,0)이 표시되어 있다. 곡선의 왼쪽 가지는 제3사분면에서 제2사분면으로 올라가 제1사분면까지 이어지고, 오른쪽 가지는 제4사분면에 있어 네 사분면을 모두 지난다(눈금 비율은 같지 않다).",
 
-    "solutionImageCaption": "a=−1/4일 때 −1/2<a<0이므로 네 사분면을 모두 지남을 확인한다.",
+    "solutionImageCaption": "x<0일 때 a<y<a+1/2이므로 -1/2<a<0이어야 하고, 보기 중 a=-1/4일 때 x절편이 (-2,0)이어서 네 사분면을 모두 지난다(정답 ④).",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -572,13 +576,13 @@ window.questionBank = [
     "answer": "$\\sqrt{14}$",
     "solution": "$u=x-1>0$으로 놓으면 두 교점은\n$(1+u,2+\\dfrac1u)$의 꼴이다.\n원 $(x-1)^2+(y-2)^2=9$에 대입하면\n$u^2+\\dfrac1{u^2}=9$이다.\n$v=u^2$로 놓으면\n$v^2-9v+1=0$이다. 판별식은 $81-4=77>0$이고, 두 근의 합은 9, 곱은 1이므로 두 근 $v_1,v_2$는 서로 다른 양수이다.\n이에 대응하는 양수 $u_1,u_2$는\n$u_1^2+u_2^2=9$,\n$u_1u_2=1$을 만족한다.\n또한 $1/u_1=u_2$, $1/u_2=u_1$이므로 두 교점의 좌표 차는 각각 $u_1-u_2$와 $u_2-u_1$이다.\n두 점 사이 거리의 제곱은\n$(u_1-u_2)^2+(u_2-u_1)^2$\n$=2(u_1^2+u_2^2-2u_1u_2)$\n$=2(9-2)=14$이다.\n\n따라서 거리는 $\\sqrt{14}$이다.",
 
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q18-solution.svg",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q18-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수와 원의 두 교점을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: x>1에서의 유리함수 y=1/(x-1)+2의 그래프(점근선 x=1, y=2)와 점근선의 교점 (1,2)를 중심으로 하는 반지름 3인 원이 그려져 있고, 곡선이 원과 만나는 두 점을 잇는 선분이 점선으로 표시되어 있다. 가로·세로 눈금이 같다.",
 
-    "solutionImageCaption": "중심 (1,2), 반지름 3인 원과 유리함수의 두 교점 사이 거리 √14를 확인한다.",
+    "solutionImageCaption": "u=x-1로 놓으면 두 교점은 (1+u,2+1/u) 꼴이고 u₁²+u₂²=9, u₁u₂=1이므로 두 점 사이 거리의 제곱은 2(9-2)=14이다. 따라서 거리는 √14이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

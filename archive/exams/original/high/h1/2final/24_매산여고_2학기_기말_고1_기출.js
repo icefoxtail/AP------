@@ -167,13 +167,13 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "분자를 분모에 맞추어 나누면\n$y=\\dfrac{2-3x}{x+1}$\n$=\\dfrac{5-3(x+1)}{x+1}$\n$=\\dfrac5{x+1}-3\\quad(x\\ne-1)$\n\n각 보기를 차례대로 판정한다.\n① $x=1$을 대입하면\n$y=\\dfrac5{1+1}-3=-\\dfrac12$이므로 옳다.\n② 두 점근선은 $x=-1$, $y=-3$이므로 옳다.\n③ 그래프의 중심은 $(-1,-3)$이고, 대칭축 중 하나는\n$y+3=x+1$\n$\\Rightarrow y=x-2$이므로 옳다.\n④ 비교할 함수는\n$\\dfrac{2x+3}{x-1}=\\dfrac5{x-1}+2$이다.\n분자의 평행이동형 계수가 모두 $5$로 같으므로 그래프를 오른쪽으로 $2$, 위로 $5$만큼 옮기면 겹친다. 따라서 옳다.\n⑤ $0\\lt x\\lt\\dfrac23$이면\n$2-3x\\gt0,\\quad x+1\\gt0$\n$\\Rightarrow x\\gt0,\\ y\\gt0$이다.\n따라서 그래프는 제1사분면도 지나므로 ⑤가 옳지 않다.\n\n따라서 정답은 ⑤이다.",
 
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q05-solution.svg",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q5-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수 y=−3+5/(x+1)의 그래프와 점근선 x=−1, y=−3, 대칭의 중심 (−1,−3), 그래프 위의 점 P를 표시한 좌표평면이다. 곡선이 제1사분면을 지나는 모습을 보여 준다.",
+    "solutionImageAlt": "해설 그림: 유리함수 y=(2-3x)/(x+1)의 그래프와 점근선 x=-1, y=-3, 중심 (-1,-3)을 지나는 점선 y=x-2. 0<x<2/3인 부분이 굵게 표시되어 제1사분면을 지나는 것이 보인다.",
 
-    "solutionImageCaption": "y=−3+5/(x+1)에서 점근선 x=−1, y=−3과 중심을 확인한다.",
+    "solutionImageCaption": "y=(2-3x)/(x+1)=5/(x+1)-3이므로 점근선은 x=-1, y=-3, 중심은 (-1,-3)이고 직선 y=x-2가 중심을 지나 대칭축이 된다. x=1일 때 y=-1/2이고, 0<x<2/3인 굵은 부분은 x>0, y>0이라 제1사분면을 지나므로 옳지 않은 것은 ⑤이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -206,13 +206,13 @@ window.questionBank = [
     "answer": "①",
     "solution": "두 그래프가 만나는 점의 $x$좌표를 $t$라 두자. 정의역 때문에 $5\\le t\\le8$이다.\n교점에서 두 함수값이 같으므로\n$\\dfrac{-2t+7}{t-2}=\\sqrt{2t}+k$\n$\\Rightarrow k=\\dfrac{-2t+7}{t-2}-\\sqrt{2t}$\n$=-2+\\dfrac3{t-2}-\\sqrt{2t}$\n\n$5\\le t\\le8$에서 $t$가 커질수록\n$\\dfrac3{t-2}$는 작아지고\n$\\sqrt{2t}$는 커진다.\n따라서 오른쪽 식 전체는 계속 감소하므로 같은 $k$값을 만드는 $t$는 많아야 하나이다.\n가장 작은 $k$는 $t=8$일 때 생긴다.\n$k_{\\min}=-2+\\dfrac3{8-2}-\\sqrt{16}$\n$=-2+\\dfrac12-4$\n$=-\\dfrac{11}{2}$\n\n이때 $t=8$에서 실제로 교점이 하나 생긴다.\n따라서 정답은 ①이다.",
 
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q06-solution.svg",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q6-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수와 무리함수의 끝점 교점을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 정의역 5≤x≤8에서 감소하는 유리함수 f(x)와 증가하는 무리함수 g(x)의 그래프가 x=8의 끝점에서 만나고, 그 점의 y좌표 -1.5가 y축에 점선으로 표시된 그림이다.",
 
-    "solutionImageCaption": "구간 [5,8]에서 한 교점과 k의 최솟값 −11/2를 확인한다.",
+    "solutionImageCaption": "f(x)=(-2x+7)/(x-2)는 5≤x≤8에서 감소하고 g(x)=√(2x)+k는 증가하므로 두 그래프는 많아야 한 점에서 만나며, k가 가장 작을 때는 x=8의 끝점 (8,-3/2)에서 만난다. 따라서 k의 최솟값은 -11/2이고 정답은 ①이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -532,7 +532,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 y=(x-3)/(x-2)와 왼쪽으로 열린 무리함수 y=√(k-x)의 그래프. 무리함수의 시작점이 x축 위의 점(유리함수의 x절편)에 있어 x<2와 x≥3에서 각각 한 번씩 만난다.",
+    "solutionImageCaption": "x<2에서는 y=√(k-x)와 y=(x-3)/(x-2)의 교점이 항상 1개이고, x≥3에서도 시작점이 x=k≥3이면 교점이 1개 더 생긴다(그림은 그 경우). 따라서 k가 정수일 때 f(k)=2가 되는 최솟값은 3이고 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
