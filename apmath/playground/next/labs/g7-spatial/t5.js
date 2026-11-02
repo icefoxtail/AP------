@@ -38,6 +38,7 @@
       model: (s) => { const q = s.spQ || o.q0, sol = solOf(q); return { q, sol, cur: st.geo(ab(st, s).a, ab(st, s).b), g0: st.geo(st.init.a, st.init.b), g1: st.geo(st.cex.a, st.cex.b) }; },
       draw(b, s, M, C) {
         const D = scene3(b, s, C);
+        if (o.tune && !C.problem) o.tune(D, b); // 장면별 맞춤 보정(공용 그림 틀 stmt.js 는 그대로 두고 여백·라벨 자리만 조절)
         if (C.problem) { o.drawProb(D, b, M, C); return; }
         const v = C.review ? abAt(st, C.t) : C.thumb ? st.cex : ab(st, s);
         render(D, st, v, C, { caption: true });
@@ -95,6 +96,12 @@
     formula: () => '<p>$l\\perp P$이고 $l$이 평면 $Q$에 포함 $\\Rightarrow$ $P\\perp Q$</p><p>문을 몇 도로 열어도 $Q$는 $l$을 포함하므로 바닥과 수직이에요.</p>',
     rule: '평면에 수직인 직선을 포함하는 평면은 그 평면과 수직이다',
     tips: ['교실 문이 얼마나 열리든 문짝은 바닥과 수직이에요. 경첩이 바닥에 수직이기 때문이에요.', '두 평면이 수직이면 한 평면의 직선이 다른 평면에 수직으로 서요.'],
+    tune: (D, b) => {
+      // 그림을 크게: 위 줄글 한 줄과 아래·양옆 여백만 남기고, '교선' 이름표는 직각 표시와 겹치지 않게 선 끝 아래쪽에 둡니다.
+      const fit0 = D.fitPts, lab0 = D.label, narrow = b.W < 560;
+      D.fitPts = (pts, op) => fit0(pts, Object.assign({}, op, { t: 40, b: narrow ? 30 : 56, l: narrow ? 26 : 44, r: narrow ? 26 : 44 }));
+      D.label = (p3, str, op = {}) => (str === '교선' ? lab0(p3, str, Object.assign({}, op, { dir: { x: 0, y: 1 }, gap: 16 })) : lab0(p3, str, op));
+    },
     drawProb: (D, b, M, C) => drawSolidFace(D, b, M, C, true),
     prob: (M) => {
       const { sol, q } = M, fi = q.face % sol.faces.length, f = sol.faces[fi], ans = perpFaces(sol, fi).length;
