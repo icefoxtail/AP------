@@ -18,7 +18,7 @@ test('Pretendard 글꼴 링크는 화면을 막지 않는다(4개 페이지)', (
         assert.ok(blocking.length >= 1, rel);
         for (const tag of blocking) {
             assert.match(tag, /media="print"/, `${rel}: 글꼴 링크가 media="print"로 시작해야 한다`);
-            assert.match(tag, /onload="this\.media='all'"/, `${rel}: 받으면 media를 all로 바꾼다`);
+            assert.match(tag, /onload="[^"]*requestIdleCallback[^"]*l\.media='all'|onload="[^"]*l\.media='all'[^"]*requestIdleCallback/, `${rel}: 받은 뒤 한가할 때 media를 all로 바꾼다`);
             assert.match(tag, /pretendard@v\d+\.\d+\.\d+\/dist\/web\/static\/pretendard-dynamic-subset\.min\.css/, `${rel}: 버전을 고정한 dynamic-subset`);
         }
         assert.match(html, /<link rel="preconnect" href="https:\/\/cdn\.jsdelivr\.net"/, `${rel}: preconnect`);
@@ -116,7 +116,7 @@ test('클리닉 출력 센터: 두 조회를 동시에 보내고, 미리보기 �
     assert.match(src, /setAttribute\('src', 'wrong_print_engine\.html\?preview=1'\)/);
 });
 
-test('모달 닫기 대기는 150ms 이하이고 CSS 전환과 맞는다', () => {
+test('모달 닫기 대기는 150ms 이하(현재 120ms)이고 CSS 전환과 맞는다', () => {
     const ui = read('apmath/js/ui.js');
     const ms = Number(ui.match(/const APMS_MODAL_CLOSE_MS = (\d+);/)?.[1]);
     assert.ok(ms > 0 && ms <= 150, `닫기 대기 ${ms}ms`);
