@@ -1761,7 +1761,7 @@ window.addEventListener('DOMContentLoaded', function () {
         steps: [
           `두 벡터 $\\vec a=(${ax},\\ ${ay})$, $\\vec b=(${bx},\\ ${by})$와 사잇각 $\\theta$를 그립니다.`,
           `성분으로 내적을 계산하면 $\\vec a\\cdot\\vec b=${ax}\\cdot${par(bx)}+${par(ay)}\\cdot${par(by)}=${d}$. $\\cos\\theta=\\dfrac{${d}}{\\sqrt{${na}}\\sqrt{${nb}}}=${cos}$이므로 $\\theta=${th}^\\circ$.`,
-          `$\\vec a$에 수직인 직선(내적 $=0$)을 기준으로 $\\vec b$가 ${d > 0 ? '같은 쪽에 있으므로 예각(내적 $>0$)' : d === 0 ? '그 직선 위에 있으므로 수직(내적 $=0$)' : '반대쪽에 있으므로 둔각(내적 $<0$)'}입니다.`
+          `$\\vec a$에 수직인 직선(내적 $=0$)을 기준으로 $\\vec b$가 ${d > 0 ? '같은 쪽에 있으므로 예각(내적 $\\gt 0$)' : d === 0 ? '그 직선 위에 있으므로 수직(내적 $=0$)' : '반대쪽에 있으므로 둔각(내적 $\\lt 0$)'}입니다.`
         ],
         quick: `$\\vec a\\cdot\\vec b=x_1x_2+y_1y_2=${d}$. $|\\vec a|=\\sqrt{${na}}$, $|\\vec b|=\\sqrt{${nb}}$이므로 $\\cos\\theta=${cos}$ ⇒ $\\theta=${th}^\\circ$.`
       };

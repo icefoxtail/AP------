@@ -1229,7 +1229,6 @@ window.addEventListener('DOMContentLoaded', function () {
     const cur = () => M.vary.cur();
     return {
       ...sc,
-      tabs: { compact: true },
       steps: () => M.steps(cur()),
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${M.text(cur())}</div>`,
       problem: { tag: d.tag, time: d.targetTime, text: () => cxProb(M.text(cur())), answer: () => M.answer(cur()) },

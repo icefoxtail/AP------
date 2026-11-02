@@ -1708,7 +1708,6 @@ ST[K('lineT')] = Math.max(0.5, Math.min(4.5, Math.round(mPos.y * 10) / 10));
         { id: 'twin', icon: 'wand', label: '숫자를 바꾼 문제', primary: true, run: (s) => { twin(s, m); VARY[m][j].next(); } }
       ],
       steps: md.stepDescs.map((d, i) => stepText(md.stepLabels[i] + ': ' + d.replace(/^Step\s*\d+\s*:\s*/, ''))),
-      tabs: { compact: true },
       vary: VARY[m][j],
       reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${rich(curOf(m, j).orig ? sc.problem : curOf(m, j).text)}</div>`,
       problem: {

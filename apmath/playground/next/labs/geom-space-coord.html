@@ -738,7 +738,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return {
       id: 'mode' + m, title: TITLES[m - 1], short: SHORT[m - 1],
       question: QUESTIONS[m - 1],
-      tabs: { compact: true }, // 휴대폰 문제 탭: 탐구 질문 카드를 접고 그림 무대를 낮춰 문제 글이 첫 화면에 오게 함
+      tabs: { status: true }, // 「빈 곳을 끌면 회전」 안내(상태 배지)를 문제 탭에도 둠
       guide: d.hint,
       enter: (s) => { const c = iso(); s.yaw = c.yaw; s.pitch = c.pitch; s.t1 = 1 / 3; s.t2 = 2 / 3; s.d = 3; s.th = TH4_TANGENT; s.lens = 'all'; },
       controls: () => [tParam, 'yaw', 'pitch'],

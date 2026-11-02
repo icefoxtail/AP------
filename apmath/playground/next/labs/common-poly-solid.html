@@ -590,7 +590,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return [
       `$V_1$은 밑면이 사다리꼴 $AEFP$, $V_2$는 밑면이 직각삼각형 $PFB$인 기둥이고 높이는 모두 $AD=a$이다: $V_1-V_2=\\dfrac12(AP+AB)a\\cdot a-\\dfrac12PB\\cdot a\\cdot a$`,
       `$AB=AP+PB$ 이므로 $AP+AB-PB=2AP$ → $V_1-V_2=a^2\\cdot AP$. 또 $AP=\\dfrac{AB}{a+1}$ 이고 $AB=(a+1)(${v.m === 1 ? '' : v.m}a+${v.n})$ 이므로 $AP=${v.m === 1 ? '' : v.m}a+${v.n}$ → $a^2(${v.m === 1 ? '' : v.m}a+${v.n})=${v.k}$`,
-      `$a=${v.a}$는 이 식을 만족하고 $a>0$에서 좌변은 증가하므로 $a=${v.a}$뿐이다. 따라서 $AP=${v.m === 1 ? '' : v.m}\\times${v.a}+${v.n}=${v.ans.val}$`
+      `$a=${v.a}$는 이 식을 만족하고 $a\\gt 0$에서 좌변은 증가하므로 $a=${v.a}$뿐이다. 따라서 $AP=${v.m === 1 ? '' : v.m}\\times${v.a}+${v.n}=${v.ans.val}$`
     ];
   };
   function scene5() {

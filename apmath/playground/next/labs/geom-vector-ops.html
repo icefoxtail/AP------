@@ -1406,7 +1406,6 @@ window.addEventListener('DOMContentLoaded', function () {
     vary.go = (i) => { vary.n++; vary._c = list[i]; return vary._c; }; vary.size = list.length; // 검사용
     const oldDraw = sc.draw, oldView = sc.view, oldSteps = sc.steps, oldSol = sc.solution;
     const away = () => !!(window.lab && window.lab.tab && window.lab.tab !== 'explore');
-    sc.tabs = { compact: true };
     sc.vary = vary;
     sc.steps = () => (away() ? cur().steps : oldSteps);
     sc.reviewTop = () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${cur().text}</div>`;

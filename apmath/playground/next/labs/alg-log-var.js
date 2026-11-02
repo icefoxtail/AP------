@@ -694,7 +694,6 @@
     ext(V, o = {}) {
       const probHTML = (body) => `${rich(body)}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-alv-new>새 문제</button></div>`;
       return {
-        tabs: { compact: true },
         startStep: 0,
         steps: () => V.cur().steps.map((t, i) => `${i + 1}단계 · ${t}`),
         reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${rich(V.cur().text)}</div>`,

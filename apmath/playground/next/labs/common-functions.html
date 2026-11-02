@@ -2847,7 +2847,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const tabX = (lab) => !!vary && !!lab && lab.tab !== 'explore';
     return {
       id: p.id, title: arrow(p.title), short: arrow(p.tabLabel), reviewTab: true, autoFit: true,
-      ...(vary ? { vary, tabs: { compact: true } } : {}),
+      ...(vary ? { vary } : {}),
       question: arrow(askOf(p)),
       notesTitle: '핵심 아이디어',
       startStep: 0,
