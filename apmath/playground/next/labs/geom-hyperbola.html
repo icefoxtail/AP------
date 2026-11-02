@@ -1527,6 +1527,252 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /*OVH-BEGIN*/
+  /* ---------- 옛 장면(12개)의 「문제」 탭과 「새 문제」 자료(쌍곡선 x²/a²−y²/b²=1, c=√(a²+b²)) ---------- */
+  const OVH = (() => {
+    const gc = (x, y) => (y ? gc(y, x % y) : Math.abs(x));
+    const fr = (n, d) => { const g = gc(n, d) || 1; n /= g; d /= g; return d === 1 ? `${n}` : `\\dfrac{${n}}{${d}}`; };
+    const eq = (a, b) => `\\dfrac{x^2}{${a * a}}-\\dfrac{y^2}{${b * b}}=1`;
+    const cOf = (a, b) => Math.round(Math.sqrt(a * a + b * b));
+    const B = {};
+    const FFt = (c) => `F(${c},\\ 0),\\ F'(-${c},\\ 0)`;
+    B['1-1'] = ([a, b, d]) => { const c = cOf(a, b), pf = d - 2 * a, per = d + pf + 2 * c; return {
+      a, b, c, d, pf, per, chk: { pf, per },
+      text: `쌍곡선 ${tex(eq(a, b))}의 두 초점을 ${tex(FFt(c))}이라 하자. 제1사분면에 있는 쌍곡선 위의 점 ${tex('P')}에 대하여 ${tex(`\\overline{PF'}=${d}`)}일 때, 선분 ${tex('\\overline{PF}')}의 길이와 삼각형 ${tex("PF'F")}의 둘레의 길이를 구하시오.`,
+      ans: `\\overline{PF}=${pf},\\ \\text{둘레 }${per}`,
+      steps: [`두 초점 $F$, $F'$과 쌍곡선 위의 점 $P$, 선분 $PF'$, $PF$를 그립니다.`, `쌍곡선의 정의 $|PF'-PF|=2a=${2 * a}$이고 $P$가 오른쪽 가지 위에 있으므로 $PF=${d}-${2 * a}=${pf}$.`, `$c=\\sqrt{${a * a}+${b * b}}=${c}$이므로 $FF'=2c=${2 * c}$. 둘레는 $${d}+${pf}+${2 * c}=${per}$.`],
+      quick: `$PF'-PF=2a=${2 * a}$ ⇒ $PF=${pf}$. 둘레 $=PF'+PF+2c=${d}+${pf}+${2 * c}=${per}$.` }; };
+    B['1-2'] = ([a, b]) => { const c = cOf(a, b); return {
+      a, b, c, chk: { S: b * b },
+      text: `쌍곡선 ${tex(eq(a, b))}의 두 초점을 ${tex(FFt(c))}이라 하자. 쌍곡선 위의 점 ${tex('K')}에서 ${tex("\\angle F'KF=90^\\circ")}일 때, 삼각형 ${tex("KF'F")}의 넓이를 구하시오.`,
+      ans: `${b * b}`,
+      steps: [`두 초점 $F$, $F'$과 점 $K$를 잡고 $\\angle F'KF=90^\\circ$가 되는 삼각형 $KF'F$를 그립니다. ($K$는 $F'F$를 지름으로 하는 원 위의 점)`, `$KF'^2+KF^2=(2c)^2=${4 * c * c}$, $(KF'-KF)^2=(2a)^2=${4 * a * a}$.`, `$2\\,KF'\\cdot KF=${4 * c * c}-${4 * a * a}=${4 * b * b}$이므로 $KF'\\cdot KF=${2 * b * b}$, 넓이 $S=\\dfrac12KF'\\cdot KF=${b * b}\\ (=b^2)$.`],
+      quick: `쌍곡선에서 $\\angle F'KF=90^\\circ$이면 삼각형의 넓이는 $b^2=${b * b}$입니다.` }; };
+    B['1-3'] = ([a, b]) => { const c = cOf(a, b), pf = 2 * c - 2 * a, per = 4 * c + pf; return {
+      a, b, c, pf, per, chk: { pf, per },
+      text: `${tex(`a=${a},\\ b=${b}`)}인 쌍곡선 ${tex(eq(a, b))}의 두 초점을 ${tex(FFt(c))}이라 하자. 오른쪽 가지 위의 점 ${tex('P')}에 대하여 ${tex(`\\overline{PF'}=\\overline{F'F}=2c=${2 * c}`)}이면 ${tex('\\overline{PF}')}의 길이와 삼각형 ${tex("PF'F")}의 둘레를 구하시오.`,
+      ans: `\\overline{PF}=${pf},\\ \\text{둘레 }${per}`,
+      steps: [`초점 $F'$을 중심으로 반지름 $F'F=${2 * c}$인 원 위의 점 $P$를 잡고 이등변삼각형 $PF'F$를 그립니다.`, `$PF'-PF=2a=${2 * a}$이므로 $PF=${2 * c}-${2 * a}=${pf}$.`, `세 변이 $${2 * c},\\ ${2 * c},\\ ${pf}$이므로 둘레는 $${per}$.`],
+      quick: `$PF=PF'-2a=${2 * c}-${2 * a}=${pf}$. 세 변은 $${2 * c},${2 * c},${pf}$ ⇒ 둘레 $${per}$.` }; };
+    B['2-1'] = ([a, b]) => { const c = cOf(a, b); return {
+      a, b, c, chk: { fh: b, oh: a, S: a * b / 2 },
+      text: `쌍곡선 ${tex(eq(a, b))}의 양의 초점 ${tex(`F(${c},\\ 0)`)}에서 양의 기울기를 갖는 점근선 ${tex(`y=${fr(b, a)}x`)}에 내린 수선의 발을 ${tex('H')}라 할 때, 선분 ${tex('\\overline{FH}')}와 ${tex('\\overline{OH}')}의 길이를 구하시오.`,
+      ans: `\\overline{FH}=${b},\\ \\overline{OH}=${a}`,
+      steps: [`쌍곡선의 두 점근선과 초점 $F(${c},\\ 0)$를 그립니다.`, `$F$에서 점근선 $bx-ay=0$에 내린 수선의 발 $H$를 잡습니다 ($\\angle OHF=90^\\circ$).`, `$FH=\\dfrac{|${b}\\cdot${c}|}{\\sqrt{${b}^2+${a}^2}}=${b}$ ($=b$), $OH=\\sqrt{OF^2-FH^2}=\\sqrt{${c * c}-${b * b}}=${a}$ ($=a$).`],
+      quick: `초점에서 점근선까지의 거리는 $b=${b}$이고, 직각삼각형 $OFH$에서 $OH=a=${a}$ ($OF=c=${c}$).` }; };
+    B['2-2'] = ([a]) => { const c = a; return {
+      a, chk: { ang: 90 },
+      text: `${tex(`a=b=${a}`)}인 쌍곡선 ${tex(`x^2-y^2=${a * a}`)}의 두 점근선이 이루는 각의 크기와 양의 초점 ${tex('F')}의 좌표를 구하시오.`,
+      ans: `90^\\circ,\\ F(${a}\\sqrt{2},\\ 0)`,
+      steps: [`점근선 $y=\\pm x$와 쌍곡선 $x^2-y^2=${a * a}$를 그립니다.`, `두 점근선의 방향벡터 $(1,1)$, $(1,-1)$의 내적은 $0$이므로 서로 수직입니다 ($a=b$이면 항상 $90^\\circ$).`, `$c=\\sqrt{a^2+b^2}=\\sqrt{${a * a}+${a * a}}=${a}\\sqrt2$이므로 $F(${a}\\sqrt2,\\ 0)$, 이심률 $e=\\sqrt2$.`],
+      quick: `$a=b$이면 점근선 $y=\\pm x$가 수직이고 $c=a\\sqrt2=${a}\\sqrt2$, 이심률 $\\sqrt2$.` }; };
+    B['2-3'] = ([a, b]) => { const c = cOf(a, b); return {
+      a, b, c, chk: { S: a * b, p: c * c },
+      text: `쌍곡선 ${tex(eq(a, b))} 위의 점 ${tex('P')}에서의 접선이 두 점근선과 만나는 점을 ${tex('M_1,\\ M_2')}라 할 때, 삼각형 ${tex('OM_1M_2')}의 넓이와 ${tex('\\overline{OM_1}\\times\\overline{OM_2}')}의 값을 구하시오.`,
+      ans: `\\text{넓이 }${a * b},\\ \\overline{OM_1}\\cdot\\overline{OM_2}=${c * c}`,
+      steps: [`점 $P$에서의 접선과 두 점근선을 그립니다.`, `접선이 점근선과 만나는 점 $M_1$, $M_2$에서 $P$는 선분 $M_1M_2$의 중점입니다.`, `삼각형 $OM_1M_2$의 넓이는 $ab=${a * b}$, $\\overline{OM_1}\\cdot\\overline{OM_2}=c^2=${a * a}+${b * b}=${c * c}$.`],
+      quick: `접선이 만드는 삼각형의 넓이는 $ab=${a * b}$, 두 변의 곱은 $c^2=${c * c}$로 점 $P$의 위치와 무관합니다.` }; };
+    B['3-1'] = ([a, b]) => { const c = cOf(a, b), v = fr(a * a * b * b, c * c); return {
+      a, b, c, chk: { v: a * a * b * b / (c * c) },
+      text: `쌍곡선 ${tex(eq(a, b))} 위의 점 ${tex('P')}에서 두 점근선에 내린 수선의 길이를 각각 ${tex('l_1,\\ l_2')}라 할 때, ${tex('l_1\\times l_2')}의 값을 구하시오.`,
+      ans: v,
+      steps: [`두 점근선 $y=\\pm\\dfrac{${b}}{${a}}x$와 점 $P$를 그립니다.`, `$P$에서 두 점근선에 내린 수선의 발을 $Q_1,Q_2$라 하면 $l_1=\\dfrac{|${b}x-${a}y|}{${c}}$, $l_2=\\dfrac{|${b}x+${a}y|}{${c}}$.`, `$l_1l_2=\\dfrac{|${b * b}x^2-${a * a}y^2|}{${c * c}}=\\dfrac{${a * a}\\cdot${b * b}}{${c * c}}=${v}$ ($P$가 쌍곡선 위의 점이므로 $b^2x^2-a^2y^2=a^2b^2$).`],
+      quick: `쌍곡선 위의 점에서 두 점근선까지의 거리의 곱은 $\\dfrac{a^2b^2}{c^2}=\\dfrac{${a * a * b * b}}{${c * c}}=${v}$로 일정합니다.` }; };
+    B['3-2'] = ([a, b]) => { const S = fr(a * b, 2), c = cOf(a, b); return {
+      a, b, c, chk: { S: a * b / 2 },
+      text: `쌍곡선 ${tex(eq(a, b))} 위의 점 ${tex('P')}를 지나 두 점근선에 각각 평행한 직선을 그어 두 점근선과 만나는 점을 ${tex('R_1,\\ R_2')}라 하자. 평행사변형 ${tex('OR_1PR_2')}의 넓이를 구하시오.`,
+      ans: S,
+      steps: [`두 점근선과 점 $P$, 점 $P$를 지나 각 점근선에 평행한 두 직선을 그립니다.`, `$\\overrightarrow{OP}=\\alpha(a,\\ b)+\\beta(a,\\ -b)$로 쓰면 $P$가 쌍곡선 위에 있으므로 $\\alpha\\beta=\\dfrac14$입니다.`, `평행사변형의 넓이 $=|\\det(\\alpha(a,b),\\ \\beta(a,-b))|=2ab\\alpha\\beta=\\dfrac{ab}{2}=${S}$.`],
+      quick: `점근선에 평행한 두 직선과 점근선이 만드는 평행사변형의 넓이는 $\\dfrac{ab}{2}=\\dfrac{${a}\\times${b}}{2}=${S}$로 일정합니다.` }; };
+    B['3-3'] = ([a, b]) => { const c = cOf(a, b), l = fr(a * b, c), pr = fr(a * a * b * b, c * c); return {
+      a, b, c, chk: { l: a * b / c, pr: a * a * b * b / (c * c) },
+      text: `쌍곡선 ${tex(eq(a, b))}의 꼭짓점 ${tex(`A(${a},\\ 0)`)}에서 두 점근선에 내린 수선의 길이를 각각 ${tex('l_1,\\ l_2')}라 할 때, ${tex('l_1')}과 ${tex('l_1\\times l_2')}의 값을 구하시오.`,
+      ans: `l_1=l_2=${l},\\ l_1l_2=${pr}`,
+      steps: [`꼭짓점 $A(${a},\\ 0)$와 두 점근선을 그립니다.`, `$A$에서 점근선 $y=\\pm\\dfrac{${b}}{${a}}x$까지의 거리는 $l_1=\\dfrac{|${b}\\cdot${a}|}{\\sqrt{${b}^2+${a}^2}}=\\dfrac{${a * b}}{${c}}$이고 대칭이므로 $l_2=l_1$.`, `$l_1=l_2=\\dfrac{ab}{c}=${l}$, $l_1l_2=\\left(\\dfrac{ab}{c}\\right)^2=${pr}$ (점 $P$를 움직여도 곱은 같습니다).`],
+      quick: `$A(a,0)$에서 두 점근선까지의 거리는 $\\dfrac{ab}{c}=\\dfrac{${a * b}}{${c}}=${l}$로 같고 곱은 $${pr}$입니다.` }; };
+    B['4-1'] = ([a, b, d, e]) => { const c = cOf(a, b), g = gc(d, e), r1 = d / g, r2 = e / g; return {
+      a, b, c, d, e, r1, r2, chk: { r: d / e },
+      text: `쌍곡선 ${tex(eq(a, b))} 위의 점 ${tex('P')}에서의 접선 ${tex('l')}이 ${tex('x')}축과 만나는 점을 ${tex('T')}라 하자. ${tex(`\\overline{PF'}=${d},\\ \\overline{PF}=${e}`)}일 때, ${tex("\\overline{F'T}:\\overline{TF}")}의 비를 구하시오. (단, ${tex(FFt(c))})`,
+      ans: `\\overline{F'T}:\\overline{TF}=${r1}:${r2}`,
+      steps: [`점 $P$, 접선 $l$과 $x$축의 교점 $T$를 그립니다.`, `쌍곡선의 접선은 $\\angle F'PF$를 이등분합니다.`, `각의 이등분선 정리에서 $\\overline{F'T}:\\overline{TF}=\\overline{PF'}:\\overline{PF}=${d}:${e}=${r1}:${r2}$.`],
+      quick: `접선이 $\\angle F'PF$의 이등분선이므로 $F'T:TF=PF':PF=${d}:${e}=${r1}:${r2}$.` }; };
+    B['4-2'] = ([a, b]) => { const c = cOf(a, b); return {
+      a, b, c, chk: { ff: 2 * a, oh: a },
+      text: `쌍곡선 ${tex(eq(a, b))} 위의 점 ${tex('P')}에서의 접선 ${tex('l')}에 대하여 초점 ${tex(`F(${c},\\ 0)`)}에서 ${tex('l')}에 내린 수선의 발을 ${tex('H_1')}, ${tex('F')}를 ${tex('l')}에 대하여 대칭이동한 점을 ${tex("F^{*}")}이라 하자. 선분 ${tex("F'F^{*}")}과 선분 ${tex('OH_1')}의 길이를 각각 구하시오.`,
+      ans: `F'F^{*}=${2 * a},\\ OH_1=${a}`,
+      steps: [`접점 $P$, 접선 $l$, 초점 $F$에서 $l$에 내린 수선의 발 $H_1$을 그립니다.`, `$F$를 $l$에 대칭이동한 $F^{*}$에서 $PF^{*}=PF$이고 $P$, $F'$, $F^{*}$는 한 직선 위에 있으므로 $F'F^{*}=|PF'-PF|=2a=${2 * a}$.`, `$O$는 $F'F$의 중점, $H_1$은 $FF^{*}$의 중점이므로 $OH_1=\\dfrac12F'F^{*}=${a}$.`],
+      quick: `$F'F^{*}=|PF'-PF|=2a=${2 * a}$, $OH_1=\\dfrac12F'F^{*}=a=${a}$.` }; };
+    B['4-3'] = ([a, b]) => { const c = cOf(a, b); return {
+      a, b, c, chk: { d: b * b },
+      text: `쌍곡선 ${tex(eq(a, b))} 위의 점 ${tex('P')}에서의 접선 ${tex('l')}이 있다. 두 초점 ${tex(FFt(c))}에서 접선 ${tex('l')}에 내린 수선의 길이를 각각 ${tex('d_1,\\ d_2')}라 할 때, ${tex('d_1\\times d_2')}의 값을 구하시오.`,
+      ans: `${b * b}`,
+      steps: [`점 $P$, 접선 $l$, 두 초점에서 $l$에 내린 수선 $d_1$, $d_2$를 그립니다.`, `접선 $\\dfrac{x_0x}{${a * a}}-\\dfrac{y_0y}{${b * b}}=1$까지의 거리를 두 초점에서 각각 구해 곱합니다.`, `$P$가 쌍곡선 위의 점이므로 곱은 $d_1d_2=b^2=${b * b}$로 일정합니다. (수선의 발은 원 $x^2+y^2=a^2$ 위의 점)`],
+      quick: `두 초점에서 접선까지의 거리의 곱은 $b^2=${b * b}$입니다.` }; };
+    const POOL = {
+      '1-1': [[3, 4, 11], [4, 3, 13], [8, 6, 19], [9, 12, 25], [6, 8, 18]],
+      '1-2': [[3, 4], [4, 3], [8, 6], [9, 12], [6, 8]],
+      '1-3': [[3, 4], [4, 3], [8, 6], [9, 12], [6, 8]],
+      '2-1': [[3, 4], [4, 3], [8, 6], [9, 12], [6, 8]],
+      '2-2': [[3], [2], [4], [5]],
+      '2-3': [[3, 4], [4, 3], [8, 6], [6, 8], [9, 12]],
+      '3-1': [[3, 4], [4, 3], [8, 6], [6, 8], [9, 12]],
+      '3-2': [[3, 4], [4, 3], [8, 6], [6, 8], [9, 12]],
+      '3-3': [[3, 4], [4, 3], [8, 6], [6, 8], [9, 12]],
+      '4-1': [[3, 4, 12, 6], [3, 4, 10, 4], [4, 3, 13, 5], [8, 6, 21, 5], [6, 8, 26, 14]],
+      '4-2': [[3, 4], [4, 3], [8, 6], [6, 8], [9, 12]],
+      '4-3': [[3, 4], [4, 3], [8, 6], [6, 8], [9, 12]]
+    };
+    const pf = (n, d) => { const g = gc(n, d) || 1; return d / g === 1 ? `${n / g}` : `${n / g}/${d / g}`; };
+    return { B, POOL, fr, pf };
+  })();
+  /*OVH-END*/
+
+  /* ---------- 옛 장면(12개)의 문제 탭·정리 탭 그림 ---------- */
+  const OVH_FIG = (() => {
+    const O = [0, 0];
+    const D = (b, p, name, color, from, o) => { const dx = p[0] - from[0], dy = p[1] - from[1], L = Math.hypot(dx, dy) || 1; if (Math.abs(p[1]) < 1e-9) dot(b, p, name, color, 0, 19, { align: 'center', ...(o || {}) }); else dot(b, p, name, color, Math.round(dx / L * 17), Math.round(-dy / L * 17), { align: 'center', ...(o || {}) }); };
+    const footOn = (n, p) => { const k = (n[0] * p[0] + n[1] * p[1] - 1) / (n[0] * n[0] + n[1] * n[1]); return [p[0] - k * n[0], p[1] - k * n[1]]; };
+    const footLine = (p, dir) => { const L = Math.hypot(...dir), u = [dir[0] / L, dir[1] / L], t = p[0] * u[0] + p[1] * u[1]; return [u[0] * t, u[1] * t]; };
+    const H = (b, v, asym, pt) => {
+      const a = v.a, bb = v.b, c = v.c, XM = Math.max(1.25 * c + 1, pt ? pt[0] + 1.6 : 0), ymax = bb * Math.sqrt(Math.max(0.2, (XM / a) ** 2 - 1));
+      curve(b, hyperPath(0, a, bb, 1, ymax), 'ink'); curve(b, hyperPath(0, a, bb, -1, ymax), 'ink');
+      if (asym) { const k = bb / a; seg(b, [-XM, -k * XM], [XM, k * XM], 'violet', 1.6, [6, 5]); seg(b, [-XM, k * XM], [XM, -k * XM], 'violet', 1.6, [6, 5]); }
+    };
+    const Pof = (v, d) => { const a = v.a, bb = v.b, c = v.c, x = (d - a) * a / c; return [x, bb * Math.sqrt(Math.max(0, x * x / (a * a) - 1))]; };
+    const Pu = (v, u) => [v.a * Math.cosh(u), v.b * Math.sinh(u)];
+    const F = {};
+    F['1-1'] = (b, st, v) => {
+      const { c, d, pf } = v, Fo = [c, 0], Fp = [-c, 0], P = Pof(v, d); H(b, v, false, P);
+      if (st(3)) b.poly([P, Fp, Fo], { fill: 'amber', fillAlpha: 0.14, color: 'amber', width: 2 });
+      seg(b, P, Fp, 'rose', 2.8); if (st(1)) seg(b, P, Fo, 'sky', 2.8);
+      segLabel(b, P, Fp, `PF' = ${d}`, 'rose', 15, 1, 13); if (st(2)) segLabel(b, P, Fo, `PF = ${pf}`, 'sky', 15, -1, 13);
+      if (st(3)) { seg(b, Fp, Fo, 'green', 4); T(b, O, `FF' = 2c = ${2 * c}`, 'green', 0, 22, 13); }
+      D(b, Fo, 'F', 'rose', O); D(b, Fp, "F'", 'rose', O); D(b, P, 'P', 'amber', O, { r: 5.2 });
+    };
+    F['1-2'] = (b, st, v) => {
+      const { a, b: bb, c } = v, Fo = [c, 0], Fp = [-c, 0], x = a * Math.sqrt(c * c + bb * bb) / c, K = [x, bb * bb / c]; H(b, v, false);
+      if (st(1)) b.path(ellipsePath(0, 0, c, c), { color: 'sky', width: 2.2, alpha: 0.85 });
+      if (st(3)) b.poly([K, Fp, Fo], { fill: 'amber', fillAlpha: 0.16, color: 'amber', width: 2 });
+      seg(b, K, Fp, 'rose', 2.8); seg(b, K, Fo, 'sky', 2.8); rt(b, K, Fp, Fo, 'amber', 11);
+      if (st(3)) T(b, [0, -c * 0.3], `S = b² = ${bb * bb}`, 'amber', 0, 0, 14);
+      D(b, Fo, `F(${c}, 0)`, 'rose', O); D(b, Fp, `F'(-${c}, 0)`, 'rose', O); D(b, K, 'K', 'amber', O, { r: 5.2 });
+    };
+    F['1-3'] = (b, st, v) => {
+      const { a, c, pf } = v, Fo = [c, 0], Fp = [-c, 0], P = Pof(v, 2 * c); H(b, v, false, P);
+      if (st(3)) b.poly([P, Fp, Fo], { fill: 'amber', fillAlpha: 0.14, color: 'amber', width: 2 });
+      seg(b, P, Fp, 'rose', 2.8); seg(b, Fp, Fo, 'rose', 2.8); tk(b, P, Fp, 'rose', 2); tk(b, Fp, Fo, 'rose', 2);
+      segLabel(b, P, Fp, `PF' = ${2 * c}`, 'rose', 15, 1, 13); T(b, [0, 0], `F'F = ${2 * c}`, 'rose', 0, 20, 13);
+      if (st(1)) seg(b, P, Fo, 'sky', 2.8); if (st(2)) segLabel(b, P, Fo, `PF = ${pf}`, 'sky', 15, -1, 13);
+      if (st(3)) T(b, [0, 0], `둘레 = ${v.per}`, 'amber', 0, 42, 14);
+      D(b, Fo, 'F', 'rose', O); D(b, Fp, "F'", 'rose', O); D(b, P, 'P', 'amber', O, { r: 5.2 });
+    };
+    F['2-1'] = (b, st, v) => {
+      const { a, b: bb, c } = v, Fo = [c, 0], n = [bb, -a], Hh = footLine(Fo, [a, bb]); H(b, v, true);
+      if (st(1)) { seg(b, Fo, Hh, 'sky', 3); seg(b, O, Hh, 'green', 3); rt(b, Hh, Fo, O, 'amber', 10); }
+      if (st(2)) T(b, [c / 2, -bb * 0.9], `FH = b = ${bb},  OH = a = ${a}`, 'amber', 0, 0, 13);
+      D(b, Fo, `F(${c}, 0)`, 'rose', O); if (st(1)) D(b, Hh, 'H', 'amber', Fo, { r: 4.6 });
+    };
+    F['2-2'] = (b, st, v) => {
+      const a = v.a, c = a * Math.SQRT2, Fo = [c, 0], w = Object.assign({}, v, { b: a, c }); H(b, w, true);
+      if (st(1)) { rt(b, O, [1, 1], [1, -1], 'amber', 14); T(b, [0, -a * 1.7], '두 점근선이 이루는 각 = 90°', 'amber', 0, 0, 13); }
+      if (st(2)) { const Hh = footLine(Fo, [1, 1]); seg(b, Fo, Hh, 'sky', 2.6); seg(b, O, Hh, 'green', 2.6); }
+      T(b, [0, a * 1.7], `a = b = ${a}`, 'muted', 0, 0, 13);
+      D(b, Fo, st(2) ? `F(${a}√2, 0)` : 'F', 'rose', O);
+    };
+    F['2-3'] = (b, st, v) => {
+      const { a, b: bb, c } = v, u = 0.75, P = Pu(v, u), x0 = P[0], y0 = P[1];
+      const xm1 = a / (x0 / a - y0 / bb), xm2 = a / (x0 / a + y0 / bb), M1 = [xm1, bb / a * xm1], M2 = [xm2, -bb / a * xm2]; H(b, v, true);
+      seg(b, M1, M2, 'amber', 2.8);
+      if (st(2)) b.poly([O, M1, M2], { fill: 'amber', fillAlpha: 0.16, color: 'amber', width: 2 });
+      if (st(1)) { D(b, M1, 'M₁', 'rose', O, { r: 4.4 }); D(b, M2, 'M₂', 'rose', O, { r: 4.4 }); }
+      if (st(3)) T(b, [0, -bb * 1.6], `넓이 = ab = ${a * bb},  OM₁ × OM₂ = c² = ${c * c}`, 'amber', 0, 0, 13);
+      D(b, P, 'P', 'amber', [P[0] - 2, P[1] + 3], { r: 5.2 });
+    };
+    F['3-1'] = (b, st, v) => {
+      const { a, b: bb } = v, P = Pu(v, 0.7), d1 = [a, bb], d2 = [a, -bb], Q1 = footLine(P, d1), Q2 = footLine(P, d2); H(b, v, true);
+      if (st(1)) { seg(b, P, Q1, 'sky', 2.8); seg(b, P, Q2, 'rose', 2.8); rt(b, Q1, P, O, 'amber', 9); rt(b, Q2, P, O, 'amber', 9); segLabel(b, P, Q1, 'l₁', 'sky', 13, 1, 13); segLabel(b, P, Q2, 'l₂', 'rose', 13, -1, 13); D(b, Q1, 'Q₁', 'sky', P, { r: 3.8 }); D(b, Q2, 'Q₂', 'rose', P, { r: 3.8 }); }
+      if (st(3)) T(b, [0, -bb * 1.6], `l₁ × l₂ = a²b² ÷ c² = ${OVH.pf(a * a * bb * bb, v.c * v.c)}`, 'amber', 0, 0, 13);
+      D(b, P, 'P', 'amber', O, { r: 5.2 });
+    };
+    F['3-2'] = (b, st, v) => {
+      const { a, b: bb } = v, P = Pu(v, 0.8), k = bb / a;
+      // P를 지나 기울기 −k, +k 인 직선과 점근선 y=kx, y=−kx 의 교점
+      const R1 = [(P[1] + k * P[0]) / (2 * k), (P[1] + k * P[0]) / 2], R2 = [(k * P[0] - P[1]) / (2 * k), -(k * P[0] - P[1]) / 2]; H(b, v, true);
+      if (st(1)) { seg(b, P, R1, 'sky', 2.6); seg(b, P, R2, 'rose', 2.6); D(b, R1, 'R₁', 'sky', O, { r: 4.4 }); D(b, R2, 'R₂', 'rose', O, { r: 4.4 }); }
+      if (st(2)) b.poly([O, R1, P, R2], { fill: 'amber', fillAlpha: 0.16, color: 'amber', width: 2 });
+      if (st(3)) T(b, [0, -bb * 1.7], `넓이 = ab ÷ 2 = ${v.chk.S}`, 'amber', 0, 0, 14);
+      D(b, P, 'P', 'amber', O, { r: 5.2 });
+    };
+    F['3-3'] = (b, st, v) => {
+      const { a, b: bb, c } = v, A = [a, 0], Q1 = footLine(A, [a, bb]), Q2 = footLine(A, [a, -bb]); H(b, v, true);
+      if (st(1)) { seg(b, A, Q1, 'sky', 2.8); seg(b, A, Q2, 'rose', 2.8); rt(b, Q1, A, O, 'amber', 9); rt(b, Q2, A, O, 'amber', 9); D(b, Q1, 'Q₁', 'sky', A, { r: 3.8 }); D(b, Q2, 'Q₂', 'rose', A, { r: 3.8 }); }
+      if (st(2)) { segLabel(b, A, Q1, 'l₁', 'sky', 13, -1, 13); segLabel(b, A, Q2, 'l₂', 'rose', 13, 1, 13); }
+      if (st(3)) T(b, [0, -bb * 1.7], `l₁ = l₂ = ab ÷ c = ${OVH.pf(a * bb, c)}`, 'amber', 0, 0, 13);
+      D(b, A, `A(${a}, 0)`, 'amber', O, { r: 5.2 });
+    };
+    F['4-1'] = (b, st, v) => {
+      const { a, c, d, e } = v, Fo = [c, 0], Fp = [-c, 0], P = Pof(v, d), n = [P[0] / (a * a), -P[1] / (v.b * v.b)], T0 = [a * a / P[0], 0]; H(b, v, false, P);
+      seg(b, P, Fp, 'rose', 2.8); seg(b, P, Fo, 'sky', 2.8); segLabel(b, P, Fp, `PF' = ${d}`, 'rose', 15, 1, 13); segLabel(b, P, Fo, `PF = ${e}`, 'sky', 15, -1, 13);
+      if (st(1)) { const dir = [-n[1], n[0]], L = Math.hypot(...dir), u = [dir[0] / L, dir[1] / L]; seg(b, [P[0] - u[0] * 4, P[1] - u[1] * 4], [P[0] + u[0] * 3, P[1] + u[1] * 3], 'violet', 2.2); }
+      if (st(2)) { b.angle(P, Fp, T0, { r: 26, color: 'amber' }); b.angle(P, T0, Fo, { r: 26, color: 'amber', rings: 2 }); }
+      if (st(3)) T(b, [0, -v.b * 1.7], `F'T : TF = PF' : PF = ${v.r1} : ${v.r2}`, 'amber', 0, 0, 13);
+      D(b, Fo, 'F', 'rose', O); D(b, Fp, "F'", 'rose', O); D(b, P, 'P', 'amber', O, { r: 5.2 }); if (st(1)) D(b, T0, 'T', 'green', [T0[0], 1], { r: 4.4 });
+    };
+    F['4-2'] = (b, st, v) => {
+      const { a, b: bb, c } = v, Fo = [c, 0], Fp = [-c, 0], P = Pu(v, 0.8), n = [P[0] / (a * a), -P[1] / (bb * bb)], Hh = footOn(n, Fo), Fs = [2 * Hh[0] - Fo[0], 2 * Hh[1] - Fo[1]]; H(b, v, false);
+      { const dir = [-n[1], n[0]], L = Math.hypot(...dir), u = [dir[0] / L, dir[1] / L]; seg(b, [P[0] - u[0] * 4, P[1] - u[1] * 4], [P[0] + u[0] * 4, P[1] + u[1] * 4], 'violet', 2.4); }
+      seg(b, Fo, Hh, 'sky', 2.4); rt(b, Hh, Fo, P, 'amber', 10);
+      if (st(1)) seg(b, Fo, Fs, 'sky', 1.8, [5, 5]);
+      if (st(2)) { seg(b, Fp, Fs, 'rose', 3); seg(b, O, Hh, 'green', 3); }
+      if (st(3)) T(b, [0, -bb * 1.8], `F'F* = 2a = ${2 * a},  OH₁ = a = ${a}`, 'amber', 0, 0, 13);
+      D(b, Fo, 'F', 'rose', O); D(b, Fp, "F'", 'rose', O); D(b, P, 'P', 'amber', O, { r: 5.2 }); D(b, Hh, 'H₁', 'sky', Fo, { r: 4 }); if (st(1)) D(b, Fs, 'F*', 'sky', Fo, { r: 4 });
+    };
+    F['4-3'] = (b, st, v) => {
+      const { a, b: bb, c } = v, Fo = [c, 0], Fp = [-c, 0], P = Pu(v, 0.8), n = [P[0] / (a * a), -P[1] / (bb * bb)], H1 = footOn(n, Fo), H2 = footOn(n, Fp); H(b, v, false);
+      { const dir = [-n[1], n[0]], L = Math.hypot(...dir), u = [dir[0] / L, dir[1] / L]; seg(b, [P[0] - u[0] * 5, P[1] - u[1] * 5], [P[0] + u[0] * 5, P[1] + u[1] * 5], 'violet', 2.4); }
+      if (st(1)) { seg(b, Fo, H1, 'sky', 2.8); seg(b, Fp, H2, 'rose', 2.8); rt(b, H1, Fo, P, 'amber', 9); rt(b, H2, Fp, P, 'amber', 9); segLabel(b, Fo, H1, 'd₁', 'sky', 13, 1, 13); segLabel(b, Fp, H2, 'd₂', 'rose', 13, -1, 13); D(b, H1, 'H₁', 'sky', Fo, { r: 3.6 }); D(b, H2, 'H₂', 'rose', Fp, { r: 3.6 }); }
+      if (st(3)) T(b, [0, -bb * 1.8], `d₁ × d₂ = b² = ${bb * bb}`, 'amber', 0, 0, 14);
+      D(b, Fo, 'F', 'rose', O); D(b, Fp, "F'", 'rose', O); D(b, P, 'P', 'amber', O, { r: 5.2 });
+    };
+    return F;
+  })();
+
+  function oldHyperUpgrade(sc, key, m, sub) {
+    const info = scenarios[m][sub - 1], list = OVH.POOL[key].map(OVH.B[key]);
+    const vr = varier(list, (x) => x);
+    const away = () => !!(window.lab && window.lab.tab && window.lab.tab !== 'explore');
+    const oSteps = sc.steps, oDraw = sc.draw, oView = sc.view, oSol = sc.solution, oProb = sc.problem;
+    const cur = () => vr.cur(), isOld = () => vr.idx() === 0;
+    const q0 = () => branchProblem(m, sub, 1);
+    sc.tabs = { compact: true };
+    sc.vary = vr;
+    sc.steps = (s) => (away() && !isOld() ? cur().steps : oSteps);
+    sc.reviewTop = () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${isOld() ? esc(q0().question) : cur().text}</div>`;
+    sc.problem = { tag: oProb.tag, time: oProb.time, text: () => probHTML(isOld() ? esc(q0().question) : cur().text), answer: () => (isOld() ? esc(q0().answer) : tex(cur().ans)) };
+    sc.solution = {
+      ...oSol,
+      standard: (s) => (isOld() ? oSol.standard(s) : { steps: cur().steps.map((t, i) => `${['①', '②', '③', '④'][i]} ${t}`).join('<br>'), warning: '정의와 도형의 성질로 먼저 선분의 관계를 정리한 뒤 값을 계산하세요.' }),
+      quick: (s) => (isOld() ? oSol.quick(s) : { steps: cur().quick, highlight: '핵심 성질을 쓰면 좌표 계산 없이 한두 줄로 끝납니다.' })
+    };
+    sc.view = (s, lab) => (lab && lab.tab !== 'explore' ? { chips: [] } : oView(s, lab));
+    sc.draw = (b, s, v, lab) => {
+      const tab = lab ? lab.tab : 'explore';
+      if (tab === 'explore') {
+        if (lab && lab.__ovk && lab.__ovk !== 'e') { b.setFocus(typeof sc.focus === 'function' ? sc.focus(s) : sc.focus, true); lab.__cqKey = ''; }
+        if (lab) lab.__ovk = 'e';
+        return oDraw(b, s, v, lab);
+      }
+      lab.__ovk = 'n';
+      v.tape = null; v.card = null;
+      const I = cur(), prob = tab === 'problem', stFull = () => true, stNow = prob ? () => false : (i) => s.step >= i;
+      const body = (fit, st) => { axes2(b, fit, false); OVH_FIG[key](b, st, I); };
+      autoView(b, lab, `${key}|v${vr.idx()}|${tab}`, () => body(true, stFull));
+      body(false, stNow);
+    };
+    return sc;
+  }
+  groups.forEach((g, gi) => g.scenes.forEach((sc, si) => oldHyperUpgrade(sc, `${gi + 1}-${si + 1}`, gi + 1, si + 1)));
+
   const KICE_GROUPS = [
     { id: 'q5', title: '[기출 핵심] 포물선과 쌍곡선이 초점을 공유 — PH = PF, PF′ − PF = 2a', short: '포물선+쌍곡선', scenes: [sceneH5()] },
     { id: 'q6', title: '[기출 핵심] 쌍곡선 위의 점 — PQ = PF 로 차를 합으로, 닮음', short: '차를 합으로', scenes: [sceneH6()] },

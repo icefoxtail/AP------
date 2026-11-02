@@ -272,7 +272,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if(state.steps[1]||VM===1)circle(C,r,'#38bdf8',0,true);if(state.steps[1])vec(ZERO,C,'#38bdf8','OC',1);
         if(state.steps[2]){vec(C,pp,'#f472b6','CP',2);vec(ZERO,pp,'#fbbf24','OP',3);}
         if(state.steps[3]&&d>1e-8){seg(ZERO,add(far,mul(u,.5)),'#fbbf24',1.4,true,3);if(dist(pp,far)>.18)dot(far,'최대 위치','#34d399',3,{x:10,y:29});if(dist(pp,near)>.18)dot(near,'최소 위치','#fb7185',3,{x:-95,y:26});}
-        dot(ZERO,'O','#fff');dot(C,ccl(C,r),'#38bdf8');dot(pp,d<1e-8?'P (거리는 항상 r)':dist(pp,far)<.18?'P = 최대 위치':dist(pp,near)<.18?'P = 최소 위치':'점 P','#fbbf24',3);
+        dot(ZERO,'O','#fff');dot(C,ccl(C,r),'#38bdf8');dot(pp,VM?'점 P':d<1e-8?'P (거리는 항상 r)':dist(pp,far)<.18?'P = 최대 위치':dist(pp,near)<.18?'P = 최소 위치':'점 P','#fbbf24',3);
         banner(`d=${fmt(d)}, r=${fmt(r)}  |  |OP|=${fmt(norm(pp))}`,d<1e-8?`d=0: 모든 P에서 |OP|=r=${fmt(r)} (일정)`:`최댓값 d+r=${fmt(d+r)} · 최솟값 |d−r|=${fmt(Math.abs(d-r))}`);
       }
       else if(id==='3-B'){
@@ -1396,7 +1396,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const CL0 = { '1-A': true, '1-B': false, '2-A': false, '2-B': true, '2-C': true, '3-A': true, '3-B': true, '3-C': true, '4-A': false, '4-B': false };
     const W0 = { '4-A': [2, 3, 5], '4-B': [2, 3, 5] };
     const v0 = {
-      patch: { ...pd.patch }, cl: CL0[id], w: W0[id], area: W0[id] ? 10 : 0,
+      patch: (id === '3-A' || id === '3-B') ? { ...pd.patch, th3: (pd.patch.th3 + 200) % 360 } : { ...pd.patch }, cl: CL0[id], w: W0[id], area: W0[id] ? 10 : 0,
       text: esc(inf.q), ans: esc(inf.a), steps: inf.steps, old: true,
       chips: [{ tex: inf.formula, color: 'amber' }]
     };
