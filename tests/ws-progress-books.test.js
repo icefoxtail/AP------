@@ -10,6 +10,7 @@ const repoRoot = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const classroomSource = read('apmath/js/classroom.js');
 const textbookSource = read('apmath/js/textbook.js');
+const uiSource = read('apmath/js/ui.js');
 const labelSource = read('apmath/js/apms-class-label.js');
 const wsSource = read('apmath/js/ws-progress-books.js');
 const themeCss = read('apmath/css/apms-theme-override.css');
@@ -276,21 +277,12 @@ test('서랍 교재관리: 모든 반 탭(숨김 반 맨 뒤) + 교재 관리 �
     assert.doesNotMatch(tabs, /중3 · |고1 · /, '학년이 두 번 보이지 않는다');
 });
 
-test('옛 교재 모달 3종은 새 교재 관리 모드를 여는 얇은 래퍼다', () => {
-    const context = makeContext();
-    const opened = [];
-    context.openClassRecordModal = (...args) => { opened.push(args); };
-    context.openTextbookManageModal();
-    context.openAddTextbookModal();
-    context.openEditTextbookModal('book-b');
-    assert.equal(opened.length, 3);
-    assert.equal(opened.every(args => args[2].mode === 'manage' && args[2].classScope === 'all'), true);
-    assert.equal(opened[1][2].addOpen, true);
-    assert.equal(opened[2][0], 'class-1');
-    assert.equal(opened[2][2].textbookId, 'book-b');
+test('옛 교재 모달 3종은 지워졌고 교재 관리는 새 관리 모드(openGlobalTextbookManage)뿐이다', () => {
     for (const name of ['openTextbookManageModal', 'openAddTextbookModal', 'openEditTextbookModal']) {
-        assert.ok(functionBody(textbookSource, name).split('\n').length <= 6, `${name} 래퍼는 짧다`);
+        assert.doesNotMatch(textbookSource, new RegExp(`function\\s+${name}\\b`), `${name} 삭제됨`);
+        assert.doesNotMatch(uiSource, new RegExp(`\\b${name}\\b`), `${name} 복귀 분기 삭제됨`);
     }
+    assert.doesNotMatch(uiSource, /textbookManage/, '옛 교재 관리 복귀 분기 없음');
 });
 
 test('결함 조건(소스): 저장 성공 경로에 전체 재조회·재오픈·모달 연쇄가 없다', () => {
