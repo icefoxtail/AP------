@@ -390,12 +390,12 @@
     steps.push({ id: 'a3', k: 'fig', lb: '각 구하기 ③', t: `$\\angle DCE$는 △BCD의 외각이므로 $\\angle B+\\angle CDB=x_0+${t(2)}=${t(3)}$예요.`.replace('x_0', t(1)), cap: `외각 ∠DCE=∠B+∠CDB=${V(3, `${c3}°`)}` });
     steps.push({ id: 'a4', k: 'fig', lb: '각 구하기 ④', t: `$${ov('CD')}=${ov('CE')}$이므로 $\\angle CDE=\\angle CED=\\frac{180^{\\circ}-${t(3)}}{2}=${cdeT}$예요.`, cap: `CD=CE → ∠CDE=∠CED=${sym ? '\\frac{180°−3x}{2}' : `\\frac{180°−${c3}°}{2}=${cde}°`}` });
     const arcs = {
-      B: (o) => SK.ang(B, Cc, A, { r: 40, ld: 66, lr: x / 2 + 12, ...o }),
-      ACB: (o) => SK.ang(Cc, A, B, { r: 26, ld: 44, ...o }),
-      CAD: (o) => SK.ang(A, Cc, D, { r: 30, ld: 52, rings: 2, ...o }), CDA: (o) => SK.ang(D, A, Cc, { r: 30, ld: 52, rings: 2, ...o }),
-      DCE: (o) => SK.ang(Cc, D, E, { r: 36, ld: 62, ...o }),
-      CDE: (o) => SK.ang(D, E, Cc, { r: 26, ld: 64, rings: 3, ...o }), CED: (o) => SK.ang(E, Cc, D, { r: 26, ld: 52, rings: 3, ...o }),
-      EDF: (o) => SK.ang(D, E, F, { r: 40, ld: 62, ...o })
+      B: (o) => SK.ang(B, Cc, A, { r: 34, ld: 48, lr: x / 2 + 12, ...o }),
+      ACB: (o) => SK.ang(Cc, A, B, { r: 24, ld: 38, ...o }),
+      CAD: (o) => SK.ang(A, Cc, D, { r: 28, ld: 42, rings: 2, ...o }), CDA: (o) => SK.ang(D, A, Cc, { r: 28, ld: 42, rings: 2, ...o }),
+      DCE: (o) => SK.ang(Cc, D, E, { r: 32, ld: 46, ...o }),
+      CDE: (o) => SK.ang(D, E, Cc, { r: 26, ld: 40, rings: 3, ...o }), CED: (o) => SK.ang(E, Cc, D, { r: 26, ld: 40, rings: 3, ...o }),
+      EDF: (o) => SK.ang(D, E, F, { r: 34, ld: 48, ...o })
     };
     const Gr = { col: 'green', size: 14, gl: true };
     if (v !== 2) items.push(arcs.B({ on: ['given'], col: 'sky', label: dg(x), size: 15, gl: true, glTo: 'a4' }));
@@ -408,11 +408,11 @@
       steps.push({ id: 'eq', k: 'eq', t: `$\\angle EDF=180^{\\circ}-\\angle CDA-\\angle CDE=180^{\\circ}-${dd(a2)}-${dd(cde)}=${dd(edf)}$ (점 D에서 일직선)`, cap: `x=180°−${a2}°−${cde}°=${edf}°` });
       steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(edf)}$`, cap: `x = ${edf}°` });
       steps.push({ id: 'trap', k: 'trap', t: `$\\angle CDE=${dd(cde)}$에서 멈추면 안 돼요. $\\angle EDF$는 일직선 $180^{\\circ}$에서 $\\angle CDA$와 $\\angle CDE$를 모두 뺀 각이에요.`, cap: `∠CDE=${cde}°에서 멈추면 안 돼요 → x=180°−${a2}°−${cde}°=${edf}°` });
-      items.push(arcs.EDF({ on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${edf}°` }, gl: true }));
+      items.push(arcs.EDF({ on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, gl: true }));
     } else if (v === 1) {
       steps.push({ id: 'eq', k: 'eq', t: `$x=\\angle CDE=\\frac{180^{\\circ}-${dd(c3)}}{2}=\\frac{${dd(180 - c3)}}{2}=${dd(cde)}$`, cap: `x=\\frac{180°−${c3}°}{2}=${cde}°` });
       steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(cde)}$`, cap: `x = ${cde}°` });
-      items.push(arcs.CDE({ on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${cde}°` }, gl: false, rings: 3 }));
+      items.push(arcs.CDE({ on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, gl: false, rings: 3 }));
     } else {
       steps.push({ id: 'eq', k: 'eq', lb: '식 세우기', t: `$\\angle EDF=180^{\\circ}-\\angle CDA-\\angle CDE=180^{\\circ}-2x-\\frac{180^{\\circ}-3x}{2}=90^{\\circ}-\\frac{x}{2}$이고, 이것이 $${dd(edf)}$이므로 $90^{\\circ}-\\frac{x}{2}=${dd(edf)}$`, cap: `90°−\\frac{x}{2}=${edf}°` });
       steps.push({ id: 'eq2', k: 'eq', lb: '식 풀기', t: `$\\frac{x}{2}=90^{\\circ}-${dd(edf)}=${dd(90 - edf)}$이므로 $x=${dd(x)}$`, cap: `\\frac{x}{2}=${90 - edf}° → x=${x}°` });
@@ -443,18 +443,18 @@
     if (v === 2) steps.push({ id: 'eq', k: 'eq', t: `$\\angle BAD=\\angle BAC+\\angle CAD=${dd(a)}+${dd(cad)}=${dd(bad)}$`, cap: `x=∠BAC+∠CAD=${a}°+${cad}°=${bad}°` });
     steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(x)}$`, cap: `x = ${x}°` });
     if (v === 2) steps.push({ id: 'trap', k: 'trap', t: `$\\angle CAD=${dd(cad)}$에서 멈추면 안 돼요. $\\angle BAD$는 $\\angle BAC=${dd(a)}$에 $\\angle CAD$를 더한 각이에요.`, cap: `∠CAD=${cad}°에서 멈추면 안 돼요 → ∠BAD=${a}°+${cad}°=${bad}°` });
-    const apex = (o) => SK.ang(A, B, Cc, { r: 32, ld: 56, ...o });
-    const angB = (o) => SK.ang(B, Cc, A, { r: 30, ld: 54, rings: 2, ...o }), angC = (o) => SK.ang(Cc, A, B, { r: 30, ld: 54, rings: 2, ...o });
+    const apex = (o) => SK.ang(A, B, Cc, { r: 20, ld: 33, ...o });
+    const angB = (o) => SK.ang(B, Cc, A, { r: 26, ld: 40, rings: 2, ...o }), angC = (o) => SK.ang(Cc, A, B, { r: 26, ld: 40, rings: 2, ...o });
     const outer = (o) => SK.ang(Cc, A, D, { r: 24, ld: 40, ...o });
     const CAD = (o) => SK.ang(A, Cc, D, { r: 36, rings: 3, ...o }), CDA = (o) => SK.ang(D, A, Cc, { r: 30, rings: 3, ...o });
     // 좁은 각(약 35° 이하)은 호만 그리고 값은 선 밖에 씁니다
     const outCAD = (str, o) => SK.txt(A, str, { dx: 52, dy: -12, size: 14, ...o }), outCDA = (str, o) => SK.txt(D, str, { dx: -36, dy: 20, size: 14, ...o });
-    if (v !== 1) items.push(apex({ on: ['given', 'outer'], col: 'sky', label: dg(a), gl: true, glTo: 'idea' }));
+    if (v !== 1) items.push(apex({ on: ['given', 'outer'], col: 'sky', label: dg(a), gl: true }));
     items.push(angB({ at: 'base', to: 'outer', col: 'green', cols: { outer: 'sky' }, label: v === 1 ? '' : dg(bb), labels: { outer: '' }, gl: true, glTo: 'base' }), angC({ at: 'base', col: 'green' }),
       outer({ at: 'outer', col: 'green', label: dg(a + bb), size: 15, gl: true, glTo: 'iso' }),
       CAD({ ...(v === 2 ? { on: ['iso', 'trap'], cols: { trap: 'rose' } } : { at: 'iso' }), col: 'green' }), outCAD(dg(cad), { at: 'iso', col: 'green', to: 'iso' }));
     if (v === 1) items.push(angB({ on: ['given'], col: 'sky', label: dg(bb), gl: true, glTo: 'outer' }));
-    if (v === 2) items.push(CDA({ at: 'iso', col: 'green' }), SK.ang(A, B, D, { r: 52, ld: 80, on: ['given', 'eq', 'ans'], col: 'amber', fa: 0.12, label: 'x', size: 17, labels: { ans: `x=${bad}°` }, gl: true }));
+    if (v === 2) items.push(CDA({ at: 'iso', col: 'green' }), SK.ang(A, B, D, { r: 46, ld: 60, on: ['given', 'eq', 'ans'], col: 'amber', fa: 0.12, label: 'x', size: 17, gl: true }));
     else items.push(CDA({ on: ['given', 'iso', 'ans'], col: 'amber', label: '', fa: 0.5 }), SK.fn((b, st, id) => { T(b, D, id === 'ans' ? `x=${cad}°` : 'x', { color: st === 'on' ? 'amber' : 'ink', size: id === 'ans' ? 16 : 17, dx: -40, dy: 22, alpha: st === 'on' ? undefined : 0.55 }); }, { on: ['given', 'iso', 'ans'] }));
     return {
       fit: [A, B, Cc, E, pt(B.x, 0.35)], steps, items, l: 44, r: 44,

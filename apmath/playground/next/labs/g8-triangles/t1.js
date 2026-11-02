@@ -152,8 +152,8 @@
     },
     prob: (M, s) => {
       const v = (s.trV || 0) % 3, a = M.a, bb = M.b;
-      if (v === 0) return numProb({ tag: '이등변삼각형의 밑각', key: `0:${a}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠A=${a}°일 때, $x$의 크기는?`, correct: bb, wrongs: [[a, '꼭지각 ∠A 그대로 썼어요. 밑각은 (180°−∠A)÷2예요.'], [180 - a, '두 밑각의 합을 구했어요. 하나로 나누어야 해요.'], [90 - a / 2, '밑각이 아니라 다른 각이에요.'], [bb + 10, '다시 계산해 보세요.'], [bb - 10, '다시 계산해 보세요.']], ...degOpts(5) });
-      if (v === 1) return numProb({ tag: '이등변삼각형의 꼭지각', key: `1:${bb}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠B=${bb}°일 때, $x$의 크기는?`, correct: a, wrongs: [[bb, '밑각 ∠B와 같다고 했어요.'], [180 - bb, '∠B의 보각을 구했어요.'], [180 - bb * 3, '내각의 합에서 ∠B를 한 번만 뺐어요. ∠C=∠B도 빼야 해요.'], [a + 10, '다시 계산해 보세요.'], [a - 10, '다시 계산해 보세요.']].filter((q) => q[0] !== a), ...degOpts(5) });
+      if (v === 0) return numProb({ tag: '이등변삼각형의 밑각', key: `0:${a}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠A=${a}°일 때, ∠B의 크기 $x$는?`, correct: bb, wrongs: [[a, '꼭지각 ∠A 그대로 썼어요. 밑각은 (180°−∠A)÷2예요.'], [180 - a, '두 밑각의 합을 구했어요. 하나로 나누어야 해요.'], [90 - a / 2, '밑각이 아니라 다른 각이에요.'], [bb + 10, '다시 계산해 보세요.'], [bb - 10, '다시 계산해 보세요.']], ...degOpts(5) });
+      if (v === 1) return numProb({ tag: '이등변삼각형의 꼭지각', key: `1:${bb}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠B=${bb}°일 때, ∠A의 크기 $x$는?`, correct: a, wrongs: [[bb, '밑각 ∠B와 같다고 했어요.'], [180 - bb, '∠B의 보각을 구했어요.'], [180 - bb * 3, '내각의 합에서 ∠B를 한 번만 뺐어요. ∠C=∠B도 빼야 해요.'], [a + 10, '다시 계산해 보세요.'], [a - 10, '다시 계산해 보세요.']].filter((q) => q[0] !== a), ...degOpts(5) });
       return numProb({ tag: '[함정] 이등변삼각형의 외각', key: `2:${a}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠A=${a}°이고, 변 BC의 연장선 위에 점 D를 잡았다. ∠ACD의 크기 $x$는?`, correct: 90 + a / 2, wrongs: [[bb, '밑각 ∠ACB를 구했어요. x는 그 바깥쪽의 외각이에요.'], [a + bb, '외각은 이웃하지 않는 두 내각의 합이에요. ∠A와 ∠B예요. 계산해 보세요.'], [180 - a, '∠A의 보각을 구했어요.'], [a, '꼭지각 그대로예요.'], [90 + a / 2 + 10, '다시 계산해 보세요.']].filter((q) => q[0] !== 90 + a / 2), ...degOpts(5) });
     },
     verify: (s) => { const M = i1.model(s), { A, B, C } = M.tri; return { ans: angBetween(B, A, C), model: M.b, extra: [[angBetween(C, A, B), M.b], [angBetween(A, B, C), M.a]] }; }
@@ -296,8 +296,8 @@
     }),
     prob: (M, s) => {
       const v = (s.trV || 0) % 3, { a, b: bb, h, m } = M;
-      if (v === 0) return numProb({ tag: '꼭지각의 이등분선과 밑각', key: `0:${a}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ${S('AD')}는 ∠A의 이등분선이고 ∠BAD=${h}°이다. $x=\\angle B$의 크기는?`, correct: bb, wrongs: [[h, '∠BAD 그대로 썼어요. 삼각형 ABD에서 ∠ADB=90°를 써야 해요.'], [180 - 2 * h, '∠A를 구했어요.'], [90 - h / 2, '다시 계산해 보세요.'], [a, '꼭지각이에요.'], [bb + 10, '다시 계산해 보세요.']], ...degOpts(5) });
-      if (v === 1) return numProb({ tag: '꼭지각의 이등분선과 수직', key: `1:${bb}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ${S('AD')}는 ∠A의 이등분선이다. ∠A=${a}°일 때, $x=\\angle ADB$의 크기는?`, correct: 90, wrongs: [[a, '꼭지각이에요.'], [h, '∠BAD예요.'], [bb, '밑각이에요.'], [180 - a, '다시 생각해 보세요.']], ...degOpts(5), pad: 15 });
+      if (v === 0) return numProb({ tag: '꼭지각의 이등분선과 밑각', key: `0:${a}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ${S('AD')}는 ∠A의 이등분선이고 ∠BAD=${h}°이다. ∠B의 크기 $x$는?`, correct: bb, wrongs: [[h, '∠BAD 그대로 썼어요. 삼각형 ABD에서 ∠ADB=90°를 써야 해요.'], [180 - 2 * h, '∠A를 구했어요.'], [90 - h / 2, '다시 계산해 보세요.'], [a, '꼭지각이에요.'], [bb + 10, '다시 계산해 보세요.']], ...degOpts(5) });
+      if (v === 1) return numProb({ tag: '꼭지각의 이등분선과 수직', key: `1:${bb}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ${S('AD')}는 ∠A의 이등분선이다. ∠A=${a}°일 때, ∠ADB의 크기 $x$는?`, correct: 90, wrongs: [[a, '꼭지각이에요.'], [h, '∠BAD예요.'], [bb, '밑각이에요.'], [180 - a, '다시 생각해 보세요.']], ...degOpts(5), pad: 15 });
       return numProb({ tag: '꼭지각의 이등분선과 중점', key: `2:${m}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ${S('AD')}는 ∠A의 이등분선이고 ${S('BD')}=${m} cm일 때, ${S('BC')}의 길이 $x$는?`, correct: 2 * m, wrongs: [[m, 'BD는 BC의 반이에요. D는 BC의 중점이에요.'], [3 * m, '다시 생각해 보세요.'], [m + 2, '다시 생각해 보세요.'], [m * 2 - 1, '다시 생각해 보세요.'], [m * 2 + 1, '다시 생각해 보세요.']], ...cmOpts });
     },
     verify: (s) => { const M = i3.model(s), g = M.g; return { ans: angBetween(g.B, g.A, g.C), model: M.b, extra: [[angBetween(g.D, g.A, g.B), 90], [angBetween(g.A, g.B, g.D), M.h]] }; }
@@ -368,7 +368,7 @@
       const v = (s.trV || 0) % 3, { m } = M;
       if (v === 0) return numProb({ tag: '직각이등변삼각형 · 빗변', key: `0:${m}`, stem: `그림과 같이 ∠A=90°, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC에서 점 D는 변 BC의 중점이다. ${S('AD')}=${m} cm일 때, ${S('BC')}의 길이 $x$는?`, correct: 2 * m, wrongs: [[m, 'AD의 길이 그대로 썼어요. BC=BD+CD=2AD예요.'], [m * 3, '다시 계산해 보세요.'], [m + 2, '다시 계산해 보세요.'], [m * 2 + 1, '다시 계산해 보세요.'], [m * 2 - 1, '다시 계산해 보세요.']], ...cmOpts });
       if (v === 1) return numProb({ tag: '직각이등변삼각형 · 중선', key: `1:${m}`, stem: `그림과 같이 ∠A=90°, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC에서 점 D는 변 BC의 중점이다. ${S('BC')}=${2 * m} cm일 때, ${S('AD')}의 길이 $x$는?`, correct: m, wrongs: [[2 * m, 'BC의 길이 그대로예요. AD는 BC의 반이에요.'], [m * 3, '다시 계산해 보세요.'], [m + 2, '다시 계산해 보세요.'], [m + 1, '다시 계산해 보세요.'], [m - 1, '다시 계산해 보세요.']], ...cmOpts });
-      return numProb({ tag: '직각이등변삼각형 · 각', key: `2:${m}`, stem: `그림과 같이 ∠A=90°, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC에서 점 D는 변 BC의 중점이다. $x=\\angle BAD$의 크기는?`, correct: 45, wrongs: [[90, '직각 ∠A예요.'], [30, '다시 생각해 보세요.'], [60, '다시 생각해 보세요.'], [135, '다시 생각해 보세요.'], [50, '다시 생각해 보세요.']], ...degOpts(15) });
+      return numProb({ tag: '직각이등변삼각형 · 각', key: `2:${m}`, stem: `그림과 같이 ∠A=90°, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC에서 점 D는 변 BC의 중점이다. ∠BAD의 크기 $x$는?`, correct: 45, wrongs: [[90, '직각 ∠A예요.'], [30, '다시 생각해 보세요.'], [60, '다시 생각해 보세요.'], [135, '다시 생각해 보세요.'], [50, '다시 생각해 보세요.']], ...degOpts(15) });
     },
     verify: (s) => { const M = i4.model(s), g = M.g; return { ans: dist(g.A, g.D), model: dist(g.B, g.D), extra: [[dist(g.D, g.C), dist(g.A, g.D)], [angBetween(g.A, g.B, g.C), 90]] }; }
   };
@@ -424,8 +424,8 @@
     }),
     prob: (M, s) => {
       const v = (s.trV || 0) % 2, { a, b: bb } = M;
-      if (v === 0) return numProb({ tag: '누운 이등변삼각형 · 밑각', key: `0:${a}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠A=${a}°일 때, $x=\\angle B$의 크기는?`, correct: bb, wrongs: [[a, '꼭지각 그대로예요.'], [180 - a, '두 밑각의 합이에요.'], [bb + 10, '다시 계산해 보세요.'], [bb - 10, '다시 계산해 보세요.'], [90 - a / 2 + 5, '다시 계산해 보세요.']], ...degOpts(5) });
-      return numProb({ tag: '누운 이등변삼각형 · 꼭지각', key: `1:${bb}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠B=${bb}°일 때, $x=\\angle A$의 크기는?`, correct: a, wrongs: [[bb, '밑각 그대로예요.'], [180 - bb, '다시 생각해 보세요.'], [180 - 3 * bb, '내각의 합에서 밑각 둘을 빼야 해요.'], [a + 10, '다시 계산해 보세요.'], [a - 10, '다시 계산해 보세요.']].filter((q) => q[0] !== a), ...degOpts(5) });
+      if (v === 0) return numProb({ tag: '누운 이등변삼각형 · 밑각', key: `0:${a}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠A=${a}°일 때, ∠B의 크기 $x$는?`, correct: bb, wrongs: [[a, '꼭지각 그대로예요.'], [180 - a, '두 밑각의 합이에요.'], [bb + 10, '다시 계산해 보세요.'], [bb - 10, '다시 계산해 보세요.'], [90 - a / 2 + 5, '다시 계산해 보세요.']], ...degOpts(5) });
+      return numProb({ tag: '누운 이등변삼각형 · 꼭지각', key: `1:${bb}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠B=${bb}°일 때, ∠A의 크기 $x$는?`, correct: a, wrongs: [[bb, '밑각 그대로예요.'], [180 - bb, '다시 생각해 보세요.'], [180 - 3 * bb, '내각의 합에서 밑각 둘을 빼야 해요.'], [a + 10, '다시 계산해 보세요.'], [a - 10, '다시 계산해 보세요.']].filter((q) => q[0] !== a), ...degOpts(5) });
     },
     verify: (s) => { const M = i5.model(s), g = M.g; return { ans: angBetween(g.B, g.A, g.C), model: M.b, extra: [[angBetween(g.A, g.B, g.C), M.a]] }; }
   };
