@@ -8,6 +8,7 @@ import vm from 'node:vm';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const classroomSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/classroom.js'), 'utf8');
 const textbookSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/textbook.js'), 'utf8');
+const wsTextbookSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/ws-progress-books.js'), 'utf8');
 const progressCss = fs.readFileSync(path.join(repoRoot, 'apmath/css/apms-theme-override.css'), 'utf8');
 
 function makeGroup(curriculumKey, level, courseKey, courseLabel = courseKey) {
@@ -121,6 +122,7 @@ function makeContext(gradeKey = '중1') {
     vm.createContext(context);
     vm.runInContext(classroomSource, context, { filename: 'apmath/js/classroom.js' });
     vm.runInContext(textbookSource, context, { filename: 'apmath/js/textbook.js' });
+    vm.runInContext(wsTextbookSource, context, { filename: 'apmath/js/ws-progress-books.js' });
     return context;
 }
 
@@ -409,13 +411,13 @@ test('opening another class reloads only that class textbook, daily progress, an
         '.ap-class-progress-context__title': classTitle,
         '.ap-class-progress-context__meta': classMeta,
         '.ap-class-progress-class-tabs': oldTabs,
-        '.ap-class-progress-layout': transitionLayout,
-        '.ap-class-progress-footer': transitionFooter
+        '.apms-workspace': transitionLayout
     };
     const openRoot = {
         classList: { add() {} },
         setAttribute() {},
-        querySelector(selector) { return nodes[selector] || null; }
+        querySelector(selector) { return nodes[selector] || null; },
+        querySelectorAll(selector) { return selector === '[data-ws-footer]' ? [transitionFooter] : []; }
     };
     context.document.querySelector = selector => selector === '.ap-class-progress-modal' ? openRoot : null;
     context._elements.set('modal-body', modalBody);
@@ -445,7 +447,7 @@ test('class return checks exact class ID and switch keeps a stable progress shel
     const uiSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/ui.js'), 'utf8');
     assert.ok(classroomSource.includes('data-class-id="${apEscapeHtml(String(cid))}"'));
     assert.ok(uiSource.includes("existingClassroom.getAttribute('data-class-id')"));
-    assert.ok(progressCss.includes('.ap-class-progress-modal.is-class-switching .ap-class-progress-layout'));
+    assert.ok(progressCss.includes('.ap-class-progress-modal.is-class-switching .apms-workspace'));
 });
 
 test('class tabs remain usable on desktop and become horizontally scrollable touch targets on mobile', () => {
@@ -680,7 +682,7 @@ test('an unbound textbook does not inherit another textbook course once bindings
     assert.match(boundHtml, /data-progress-group="2022\|middle\|M2-1"/);
 });
 
-test('inline textbook registration reuses handleAddTextbook and carries the apply draft through modal reopen', async () => {
+test('inline textbook registration reuses handleAddTextbook and updates the open screen in place (no full reload, no reopen)', async () => {
     const context = makeContext('고1');
     const modalState = context.state.ui.classProgressModalState;
     const key = '2022|high|공통수학2';
@@ -693,11 +695,12 @@ test('inline textbook registration reuses handleAddTextbook and carries the appl
     context._elements.set('class-progress-course-new-tb-class', { value: 'class-1' });
     context._elements.set('class-progress-course-new-tb-title', { value: '개념원리 공통수학2' });
     context._elements.set('class-progress-course-new-tb-start', { value: '2026-09-17' });
-    context.state.db.class_textbooks = [];
+    context.state.db.class_textbooks = [{ id: 'book-a', class_id: 'class-1', title: '학교부교재', status: 'active', start_date: '2026-03-01' }];
     context.state.ui.modalReturnView = { type: 'classDetail', classId: 'class-1' };
+    const calls = [];
     context.api = {
         post: async (path, payload) => {
-            context._addHandlerCalls.push({ path, payload, action: context.state.ui.classProgressInlineTextbookAction });
+            calls.push({ path, payload });
             return {
                 success: true,
                 item: {
@@ -713,22 +716,22 @@ test('inline textbook registration reuses handleAddTextbook and carries the appl
             };
         },
         patch: async (path, payload) => {
-            context._addHandlerCalls.push({ path, payload, action: context.state.ui.classProgressInlineTextbookAction });
+            calls.push({ path, payload });
             return { success: true, item: { id: path.split('/').pop(), class_id: 'class-1', ...payload } };
         }
     };
-    context.loadData = async () => {
-        context.state.db.class_textbooks.push({ id: 'book-new', class_id: 'class-1', title: '개념원리 공통수학2', status: 'active', start_date: '2026-09-17' });
-    };
+    let fullReloads = 0;
+    let reopened = 0;
+    context.loadData = async () => { fullReloads += 1; };
+    context.openClassRecordModal = () => { reopened += 1; };
     context.toast = () => {};
-    let reopened = null;
-    context.openClassRecordModal = (classId, date) => { reopened = [classId, date]; };
 
     await context.applyClassProgressCourseAndTextbooks();
 
-    assert.equal(context._addHandlerCalls.length, 2);
-    assert.equal(context._addHandlerCalls[0].path, 'class-textbooks');
-    assert.equal(JSON.stringify(context._addHandlerCalls[0].payload), JSON.stringify({
+    // 요청 순서와 payload는 예전과 같다: POST(과정 연결 포함) → 기존 교재 PATCH(과정 연결)
+    assert.equal(calls.length, 2, 'added book is not PATCHed again');
+    assert.equal(calls[0].path, 'class-textbooks');
+    assert.equal(JSON.stringify(calls[0].payload), JSON.stringify({
         class_id: 'class-1',
         title: '개념원리 공통수학2',
         start_date: '2026-09-17',
@@ -736,29 +739,23 @@ test('inline textbook registration reuses handleAddTextbook and carries the appl
         progress_level_key: 'high',
         progress_course_key: '공통수학2'
     }));
-    assert.equal(context._addHandlerCalls[1].path, 'class-textbooks/book-a');
-    assert.equal(context._addHandlerCalls[0].action.mode, 'add');
-    assert.equal(context._addHandlerCalls[0].action.courseApplyDraft.groupKey, key);
-    assert.deepEqual(Array.from(context._addHandlerCalls[0].action.courseApplyDraft.selectedBookIds), ['book-a']);
-    assert.equal(context._addHandlerCalls[0].action.courseApplyDraft.newTextbookTitle, '개념원리 공통수학2');
-    assert.deepEqual(reopened, ['class-1', '2026-09-17']);
-    assert.equal(context.state.ui.pendingClassProgressCourseApply.groupKey, key);
-    assert.equal(context.state.ui.pendingClassProgressCourseApply.addedTextbookId, 'book-new');
-
-    const progressByTextbook = {
-        'book-a': { progressText: '', isChecked: false },
-        'book-new': { progressText: '', isChecked: false }
-    };
-    const activeKeys = context.applyPendingClassProgressCourseApply(
-        'class-1',
-        '2026-09-17',
-        groups,
-        new Set(),
-        progressByTextbook,
-        context.state.db.class_textbooks
-    );
-    assert.equal(activeKeys.has(key), true);
-    assert.equal(progressByTextbook['book-a'].isChecked, true);
-    assert.equal(progressByTextbook['book-new'].isChecked, true);
-    assert.equal(context.state.ui.pendingClassProgressCourseApply, null);
+    assert.equal(calls[1].path, 'class-textbooks/book-a');
+    assert.equal(JSON.stringify(calls[1].payload), JSON.stringify({
+        progress_curriculum_key: '2022',
+        progress_level_key: 'high',
+        progress_course_key: '공통수학2'
+    }));
+    // 결함 조건: 전체 재조회 0, 진도 모달 재오픈 0, 전역 플래그 의존 0
+    assert.equal(fullReloads, 0);
+    assert.equal(reopened, 0);
+    assert.equal(context.state.ui.classProgressInlineTextbookAction, undefined);
+    assert.equal(context.state.ui.pendingClassProgressCourseApply, undefined);
+    // 같은 자리 갱신: 새 교재가 화면 상태에 들어오고, 선택한 과정과 두 교재가 체크된다.
+    assert.equal(context.state.db.class_textbooks.some(book => book.id === 'book-new'), true);
+    assert.equal(modalState.books.some(book => book.id === 'book-new'), true);
+    assert.equal(modalState.activeGroupKeys.includes(key), true);
+    assert.equal(modalState.progressByTextbook['book-a'].isChecked, true);
+    assert.equal(modalState.progressByTextbook['book-new'].isChecked, true);
+    assert.equal(modalState.courseAddOpen, false);
+    assert.equal(modalState.courseAddNewTextbookOpen, false);
 });
