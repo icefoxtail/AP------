@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>수열의 그래프와 점화식 · AP Math 실험실</title>
-<meta name="description" content="수열의 함수적 해석: 등차수열의 일반항과 항의 대칭, 합 Sₙ의 그래프, 절댓값을 씌운 합, Sₙ의 상수항 함정, 등비수열의 구간별 합, 시그마와 부분분수, 점화식과 주기, 점화식을 거꾸로 추적하는 방법을 조작하며 탐구합니다.">
+<meta name="description" content="수열의 함수적 해석: 등차수열의 일반항과 항의 대칭, 합 Sₙ의 그래프, 절댓값을 씌운 합, Sₙ의 상수항 함정, 등비수열의 구간별 합, 시그마와 부분분수, 점화식과 주기, 점화식을 거꾸로 추적하는 방법, 분기 점화식에서 가능한 첫째항 찾기, 표로 순환 시점 찾기, 좌표평면 점열의 삼각형 넓이와 Σ, 도형 반복 패턴과 등비급수(이전 교육과정)를 조작하며 탐구합니다.">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):'paper';document.documentElement.setAttribute('data-theme',t==='board'?'board':'paper')}catch(e){document.documentElement.setAttribute('data-theme','paper')}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -20,7 +20,7 @@
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
 <script>
 /* ==========================================================================
-   대수 · 수열의 그래프와 점화식 (AP Math Lab 2.0 이식본) — 8개 탐구관 × 문제 A·B = 16개 장면
+   대수 · 수열의 그래프와 점화식 (AP Math Lab 2.0 이식본) — 8개 탐구관 × 문제 A·B = 16개 장면 (+ 장면 9~12 추가: 아래 PLUS 블록)
    원본: labs/대수/part3.html
    - 문제·단계·교과서 풀이/간단한 풀이 문구(KILLER_MODES), 조절 막대 정의, 수식 줄·실시간 값(HUD), 숫자를 바꾼 문제 생성기,
      역추적 트리 계산(computeBackwardTree), 그리기 분기(renderType1~8)를 원본 글자 그대로 옮겼습니다.
@@ -1087,6 +1087,791 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     }))
   }));
 
+
+  /* ==========================================================================
+     장면 9~12 (추가) — 기출·킬러 모음식 보강. 기존 장면 1~8(원본 이식)은 그대로 두고 뒤에 이어 붙입니다.
+       9  분기 점화식: 가능한 a₁ 모두 찾기(나뭇가지)  — 점화식 76문항(최다 빈도) 중 홀짝·부호·배수로 갈라지는 유형
+       10 순환에 들어가는 시점: 표로 따라가기          — 항을 손으로 몇 개 적어 보고 반복 마디를 찾는 습관
+       11 좌표평면 위의 점열: 삼각형 넓이와 Σ          — (가) 이웃한 넓이의 차 소거, (나) 교점 Aₙ·Bₙ 삼각형 넓이의 합
+       12 [이전 교육과정] 도형 반복 패턴과 등비급수    — 2009 개정 나형. 극한은 지금 수학Ⅱ 범위라 「이전 교육과정」으로 표시
+     문항은 원문을 옮기지 않고 숫자·상황을 바꾼 변형이며, 정답은 node로 전수 검산했습니다(계산 부분은 ENGINE 블록).
+     ========================================================================== */
+  const PLUS = (function () {
+  const SUBD = '₀₁₂₃₄₅₆₇₈₉';
+  const sb = (n) => String(n).replace(/\d/g, (d) => SUBD[+d]); // 아랫첨자 숫자
+  const mn = (v) => (Number.isInteger(v) ? (v < 0 ? '−' + (-v) : String(v)) : String(Math.round(v * 100) / 100).replace('-', '−')); // 진짜 빼기 기호
+  const tn = (v) => (v < 0 ? '-' + (-v) : String(v)); // TeX 용
+  const sumTex = (arr) => arr.map((x, i) => (i === 0 ? tn(x) : x < 0 ? '-' + (-x) : '+' + x)).join('') || '0';
+  const toast = (m) => { try { APLab.toast(m); } catch (e) { /* 토스트가 없어도 그림은 그대로 */ } };
+
+  /* ====== 계산(ENGINE): 화면과 무관한 순수 계산 — node로 전수 검산합니다 ====== */
+  /* ==ENGINE-START== 순수 계산(화면과 무관): node로 전수 검산하는 부분 */
+  const FR = (function () {
+    const g = (a, b) => (b ? g(b, a % b) : Math.abs(a));
+    const mk = (n, d = 1) => { if (d < 0) { n = -n; d = -d; } const k = g(n, d) || 1; return { n: n / k, d: d / k }; };
+    return {
+      mk,
+      add: (x, y) => mk(x.n * y.d + y.n * x.d, x.d * y.d),
+      sub: (x, y) => mk(x.n * y.d - y.n * x.d, x.d * y.d),
+      mul: (x, y) => mk(x.n * y.n, x.d * y.d),
+      div: (x, y) => mk(x.n * y.d, x.d * y.n),
+      val: (x) => x.n / x.d,
+      tex: (x) => (x.d === 1 ? String(x.n) : (x.n < 0 ? '-' : '') + '\\dfrac{' + Math.abs(x.n) + '}{' + x.d + '}'),
+      txt: (x) => (x.d === 1 ? String(x.n) : x.n + '/' + x.d)
+    };
+  })();
+
+  /* ---------- 장면 9: 분기 점화식 (거꾸로 가지치기) ---------- */
+  // fwd: 앞으로 가는 규칙, back: y = a(n+1) 에서 앞 항 후보 두 개(조건을 만족하는지 ok)
+  const BR = {
+    par: {
+      fwd: (a, c) => (a % 2 === 0 ? a / 2 : a + c),
+      back: (y, c) => [
+        { v: 2 * y, rule: '×2', ok: true, why: '' },
+        { v: y - c, rule: '−' + c, ok: y - c >= 1 && (y - c) % 2 !== 0, why: y - c < 1 ? '1 미만' : '짝수' }
+      ]
+    },
+    sgn: {
+      fwd: (a, k) => (a >= 0 ? a - k : -2 * a),
+      back: (y, k) => [
+        { v: y + k, rule: '+' + k, ok: y + k >= 0, why: '음수' },
+        { v: -y / 2, rule: '÷(−2)', ok: y > 0 && y % 2 === 0, why: y <= 0 ? '음수 아님' : '정수 아님' }
+      ]
+    },
+    mul: {
+      fwd: (a, c) => (a % 3 === 0 ? a / 3 : a + c),
+      back: (y, c) => [
+        { v: 3 * y, rule: '×3', ok: true, why: '' },
+        { v: y - c, rule: '−' + c, ok: y - c >= 1 && (y - c) % 3 !== 0, why: y - c < 1 ? '1 미만' : '3의 배수' }
+      ]
+    }
+  };
+  // 가지 트리: a(m+1)=t 에서 m번 거꾸로. 조건에 맞지 않는 가지(ok=false)는 더 뻗지 않습니다.
+  function brTree(fam, c, t, m) {
+    const root = { v: t, level: 0, ok: true, rule: '', why: '', ch: [] };
+    (function ex(n) {
+      if (n.level >= m || !n.ok) return;
+      n.ch = BR[fam].back(n.v, c).map((q) => ({ v: q.v, level: n.level + 1, ok: q.ok, rule: q.rule, why: q.why, ch: [] }));
+      n.ch.forEach(ex);
+    })(root);
+    const leaves = [];
+    (function col(n) { if (n.level === m && n.ok) leaves.push(n.v); n.ch.forEach(col); })(root);
+    leaves.sort((x, y) => x - y);
+    return { root, a1: leaves };
+  }
+  const brFwd = (fam, c, a1, m) => { const p = [a1]; for (let i = 0; i < m; i++) p.push(BR[fam].fwd(p[i], c)); return p; };
+  // 앞으로 모두 대입해 보는 전수 검산(범위 안의 모든 a1)
+  function brBrute(fam, c, t, m, lo, hi) {
+    const r = [];
+    for (let a = lo; a <= hi; a++) { const p = brFwd(fam, c, a, m); if (p[m] === t) r.push(a); }
+    return r;
+  }
+  const BR_POOL = [
+    { fam: 'par', c: 5, t: 8, m: 3, ask: 'count', tag: '2025학년도 7월 학평(인천) 15번 · 2026학년도 7월 학평(인천) 22번 유형' },
+    { fam: 'sgn', c: 4, t: 4, m: 3, ask: 'sum', tag: '2026학년도 5월 학평(경기) 22번 · 2023학년도 3월 학평(서울) 20번 유형' },
+    { fam: 'mul', c: 2, t: 3, m: 3, ask: 'count', tag: '2017학년도 6월 모의평가 나형 20번 유형' },
+    { fam: 'par', c: 3, t: 3, m: 4, ask: 'sum', tag: '2024학년도 9월 모의평가 12번 · 2022학년도 6월 모의평가 9번 유형' },
+    { fam: 'sgn', c: 3, t: 2, m: 3, ask: 'count', tag: '2026학년도 5월 학평(경기) 22번 유형' },
+    { fam: 'mul', c: 4, t: 5, m: 3, ask: 'sum', tag: '2018학년도 6월 모의평가 나형 29번 · 2017학년도 6월 모의평가 나형 20번 유형' },
+    { fam: 'par', c: 7, t: 6, m: 4, ask: 'count', tag: '2025학년도 7월 학평(인천) 15번 유형' }
+  ];
+  const brAns = (q) => { const a = brTree(q.fam, q.c, q.t, q.m).a1; return q.ask === 'count' ? a.length : a.reduce((x, y) => x + y, 0); };
+
+  /* ---------- 장면 10: 순환에 들어가는 시점 (표로 따라가기) ---------- */
+  // a(n+1) = a(n)+k (a(n) ≤ 0), a(n) − d (a(n) > 0)
+  const cyF = (a, k, d) => (a <= 0 ? a + k : a - d);
+  function cyInfo(a1, k, d) {
+    const seen = new Map(); const seq = []; let a = a1, n = 1;
+    while (!seen.has(a)) { seen.set(a, n); seq.push(a); a = cyF(a, k, d); n++; }
+    const start = seen.get(a);
+    return { seq, start, period: n - start, L: seq.length, repeatAt: seq.length + 1 };
+  }
+  const cyTerm = (I, n) => (n < I.start ? I.seq[n - 1] : I.seq[I.start - 1 + ((n - I.start) % I.period)]);
+  // 문제 유형별 답과 계산 과정(꼬리 + 몫 × 한 마디 + 나머지)
+  function cyAnswer(q) {
+    const I = cyInfo(q.a1, q.k, q.d);
+    const pick = (x) => (q.ask === 'sum' ? x : x === q.X ? 1 : 0);
+    const tail = I.start - 1, cyc = I.seq.slice(I.start - 1);
+    const tailV = I.seq.slice(0, tail).reduce((s, x) => s + pick(x), 0);
+    const cycV = cyc.reduce((s, x) => s + pick(x), 0);
+    const rest = q.M - tail;
+    const qn = Math.floor(rest / I.period), r = rest % I.period;
+    const remV = cyc.slice(0, r).reduce((s, x) => s + pick(x), 0);
+    let val;
+    if (q.ask === 'val') val = cyTerm(I, q.M);
+    else val = tailV + qn * cycV + remV;
+    return { I, tail, tailV, cycV, qn, r, remV, val, cyc };
+  }
+  const CY_POOL = [
+    { k: 3, d: 2, a1: -5, M: 40, ask: 'sum', tag: '2026학년도 9월 고2 학평(인천) 29번 · 2019학년도 수능 나형 13번 유형' },
+    { k: 3, d: 2, a1: 6, M: 30, ask: 'count', X: 0, tag: '2026학년도 9월 고2 학평(인천) 29번 유형' },
+    { k: 4, d: 2, a1: -7, M: 50, ask: 'val', tag: '2026학년도 10월 학평(서울) 22번 · 2023학년도 6월 모의평가 15번 유형' },
+    { k: 5, d: 2, a1: -8, M: 37, ask: 'sum', tag: '2022학년도 4월 학평(경기) 21번 유형' },
+    { k: 3, d: 1, a1: -5, M: 36, ask: 'count', X: 0, tag: '2026학년도 9월 고2 학평(인천) 29번 유형' },
+    { k: 4, d: 2, a1: 7, M: 44, ask: 'sum', tag: '2019학년도 수능 나형 13번 유형' }
+  ];
+
+  /* ---------- 장면 11: 좌표평면 위의 점열과 삼각형 넓이 ---------- */
+  // (가) 곡선 y = x²/16 과 직선 y = (√n/4)x 의 교점 A_n = (4√n, n), 삼각형 O A_n B_n 의 넓이 S_n = 2 n√n
+  const PA_C = 4;
+  const paS = (n) => (PA_C / 2) * n * Math.sqrt(n);
+  const PA_POOL = [
+    { j: 1, N: 25, tag: '2026학년도 9월 고2 학평(인천) 15번 유형' },
+    { j: 1, N: 16, tag: '2026학년도 9월 고2 학평(인천) 15번 유형' },
+    { j: 4, N: 25, tag: '2026학년도 9월 고2 학평(인천) 15번 유형' },
+    { j: 9, N: 36, tag: '2026학년도 9월 고2 학평(인천) 15번 유형' },
+    { j: 4, N: 16, tag: '2026학년도 9월 고2 학평(인천) 15번 유형' }
+  ];
+  const paAns = (q) => paS(q.N) - paS(q.j);
+  // (나) f_n(x) = (x−a·n)(x+n) 과 직선 y = x+n 의 교점 A_n=(−n,0), B_n=(a·n+1,(a+1)n+1), S_n = n((a+1)n+1)/2
+  const pbS = (a, n) => FR.mk(n * ((a + 1) * n + 1), 2);
+  const pbSum = (a, M) => { let s = FR.mk(0); for (let k = 1; k <= M; k++) s = FR.add(s, pbS(a, k)); return s; };
+  const PB_POOL = [
+    { a: 3, M: 4, tag: '2025학년도 9월 고2 학평(인천) 15번 유형' },
+    { a: 4, M: 5, tag: '2025학년도 9월 고2 학평(인천) 15번 유형' },
+    { a: 3, M: 7, tag: '2025학년도 9월 고2 학평(인천) 15번 유형' },
+    { a: 4, M: 6, tag: '2022학년도 10월 학평(서울) 14번 · 2025학년도 9월 고2 학평(인천) 15번 유형' },
+    { a: 3, M: 8, tag: '2025학년도 9월 고2 학평(인천) 15번 유형' }
+  ];
+
+  /* ---------- 장면 12: (이전 교육과정) 정사각형 안의 삼각형을 되풀이하는 그림과 등비급수 ---------- */
+  // B₁E₁ = B₁F₁ = p·L. 삼각형 E₁F₁D₁ 안에 변 E₁F₁ 위에 두 꼭짓점을 둔 정사각형을 계속 그립니다.
+  const FRP = { p12: FR.mk(1, 2), p23: FR.mk(2, 3), p1: FR.mk(1, 1) };
+  function frCalc(p) { // L=1 일 때의 첫 번째 색칠 넓이 R1, 닮음의 넓이비 r, 극한 R1/(1−r)
+    const one = FR.mk(1);
+    const t = FR.div(FR.mul(p, FR.sub(FR.mk(2), p)), FR.mk(2)); // 삼각형 E F D 의 넓이 p(2−p)/2
+    const R1 = FR.sub(one, t);
+    const q = FR.div(FR.mul(p, FR.sub(FR.mk(2), p)), FR.add(p, FR.mk(2))); // s = q√2 L
+    const r = FR.mul(FR.mk(2), FR.mul(q, q));
+    const lim = FR.div(R1, FR.sub(one, r));
+    return { t, R1, q, r, lim };
+  }
+  const frSum = (C, n) => FR.mul(C.R1, FR.div(FR.sub(FR.mk(1), pw(C.r, n)), FR.sub(FR.mk(1), C.r)));
+  function pw(x, n) { let o = FR.mk(1); for (let i = 0; i < n; i++) o = FR.mul(o, x); return o; }
+  // 한 단계 안쪽 정사각형의 위치(실수 좌표): frame = {B, u, v, L}
+  function frFrames(pv, L0, count) {
+    const out = [];
+    let f = { B: [0, 0], u: [1, 0], v: [0, 1], L: L0 };
+    for (let j = 0; j < count; j++) {
+      const pt = (a, b) => [f.B[0] + f.L * (a * f.u[0] + b * f.v[0]), f.B[1] + f.L * (a * f.u[1] + b * f.v[1])];
+      const A = pt(0, 1), C = pt(1, 0), D = pt(1, 1), E = pt(0, pv), F = pt(pv, 0);
+      out.push({ ...f, A, Bp: f.B, C, D, E, F });
+      const M = [(E[0] + F[0]) / 2, (E[1] + F[1]) / 2];
+      const ex = F[0] - E[0], ey = F[1] - E[1], el = Math.hypot(ex, ey);
+      const e = [ex / el, ey / el];
+      const dx = D[0] - M[0], dy = D[1] - M[1], dl = Math.hypot(dx, dy);
+      const nv = [dx / dl, dy / dl];
+      const s = f.L * Math.SQRT2 * (pv * (2 - pv)) / (pv + 2);
+      f = { B: [M[0] - e[0] * s / 2, M[1] - e[1] * s / 2], u: e, v: nv, L: s };
+    }
+    return out;
+  }
+  const FR_POOL = [
+    { p: 'p23', L: 3, tag: '2017학년도 6월 모의평가 나형 17번 유형 (이전 교육과정)' },
+    { p: 'p1', L: 4, tag: '2018학년도 수능 나형 19번 · 2017학년도 6월 모의평가 나형 17번 유형 (이전 교육과정)' },
+    { p: 'p12', L: 4, tag: '2017학년도 6월 모의평가 나형 17번 유형 (이전 교육과정)' },
+    { p: 'p23', L: 6, tag: '2017학년도 6월 모의평가 나형 17번 유형 (이전 교육과정)' }
+  ];
+  const frAns = (q) => FR.mul(FR.mk(q.L * q.L), frCalc(FRP[q.p]).lim);
+  /* ==ENGINE-END== */
+
+
+  /* ====== 공통 도우미 ====== */
+  function varier(pool) {
+    let i = 0;
+    return { cur: () => pool[i], idx: () => i, set: (k) => { i = ((k % pool.length) + pool.length) % pool.length; },
+      next() { i = (i + 1 + Math.floor(Math.random() * (pool.length - 1))) % pool.length; return pool[i]; } };
+  }
+  const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-asq-new>새 문제 (숫자 바꾸기)</button></div>`;
+  document.addEventListener('click', (ev) => {
+    const hit = ev.target && ev.target.closest && ev.target.closest('[data-asq-new]');
+    if (!hit) return;
+    const lab = window.lab, sc = lab && lab.scene;
+    if (!sc || !sc.vary) return;
+    sc.vary.next();
+    lab.s.revealed = false;
+    lab.setStep(1);
+    try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+    lab.invalidate(true);
+    toast('숫자를 바꾼 새 문제가 만들어졌습니다');
+  });
+  const chipW = (b, text) => { const c = b.ctx; c.save(); c.font = `800 ${12 * b.fs}px ${b.font}`; const w = c.measureText(text).width + 16; c.restore(); return w; };
+  // 안쪽 구멍(inner)을 뺀 다각형 칠하기(짝홀 규칙) — 이웃한 삼각형 사이 조각, 정사각형에서 삼각형을 뺀 부분
+  function ringFill(b, outer, inner, color, alpha) {
+    const c = b.ctx;
+    c.save();
+    c.beginPath();
+    [outer, inner].forEach((pl) => { if (!pl) return; pl.forEach((p, i) => { const q = b.toS(p[0], p[1]); if (i) c.lineTo(q.x, q.y); else c.moveTo(q.x, q.y); }); c.closePath(); });
+    c.fillStyle = b.color(color, alpha);
+    c.fill('evenodd');
+    c.restore();
+  }
+  const keyBtn = (txt) => txt;
+
+  /* ====== 장면 9: 분기 점화식, 가능한 a₁ 모두 찾기 ====== */
+  const vary9 = varier(BR_POOL);
+  const FAMNAME = { par: '홀짝', sgn: '부호', mul: '3의 배수' };
+  const brRuleTex = (fam, c) => (fam === 'par' ? String.raw`a_{n+1}=\dfrac{a_n}{2}\ (\text{짝수}),\ a_n+${c}\ (\text{홀수})`
+    : fam === 'sgn' ? String.raw`a_{n+1}=a_n-${c}\ (a_n\ge 0),\ -2a_n\ (a_n<0)`
+      : String.raw`a_{n+1}=\dfrac{a_n}{3}\ (3\text{의 배수}),\ a_n+${c}\ (\text{아니면})`);
+  const brCases = (fam, c) => (fam === 'par' ? String.raw`a_{n+1}=\begin{cases}\dfrac{a_n}{2} & (a_n\text{이 짝수})\\ a_n+${c} & (a_n\text{이 홀수})\end{cases}`
+    : fam === 'sgn' ? String.raw`a_{n+1}=\begin{cases}a_n-${c} & (a_n\ge 0)\\ -2a_n & (a_n\lt 0)\end{cases}`
+      : String.raw`a_{n+1}=\begin{cases}\dfrac{a_n}{3} & (a_n\text{이 }3\text{의 배수})\\ a_n+${c} & (a_n\text{이 }3\text{의 배수가 아니다})\end{cases}`);
+  const brBack = (fam, c) => (fam === 'par'
+    ? `앞 항이 <b>짝수</b>이면 $x\\div 2=y$ → $x=2y$ (항상 짝수라서 통과), 앞 항이 <b>홀수</b>이면 $x+${c}=y$ → $x=y-${c}$ (그 값이 홀수인 자연수여야 통과)`
+    : fam === 'sgn'
+      ? `앞 항이 <b>0 이상</b>이면 $x-${c}=y$ → $x=y+${c}$ ($x\\ge 0$ 확인), 앞 항이 <b>음수</b>이면 $-2x=y$ → $x=-\\dfrac{y}{2}$ ($y$가 양의 짝수일 때만 정수이고 $x\\lt 0$)`
+      : `앞 항이 <b>3의 배수</b>이면 $x\\div 3=y$ → $x=3y$ (항상 3의 배수라서 통과), 3의 배수가 <b>아니면</b> $x+${c}=y$ → $x=y-${c}$ (그 값이 3의 배수가 아닌 자연수여야 통과)`);
+  const brDomain = (fam) => (fam === 'sgn' ? '모든 항이 정수인' : '모든 항이 자연수인');
+  const brText = (q) => `${brDomain(q.fam)} 수열 $\\{a_n\\}$이 모든 자연수 $n$에 대하여 $${brCases(q.fam, q.c)}$을 만족시킨다. $a_{${q.m + 1}}=${q.t}$이 되도록 하는 <b>모든 $a_1$의 ${q.ask === 'count' ? '개수' : '값의 합'}</b>을 구하시오. <small>(나뭇가지로 거꾸로 따라가 보세요)</small>`;
+  const brWarn = (fam, c) => (fam === 'par'
+    ? `거꾸로 구한 $y-${c}$가 <b>홀수인 자연수</b>인지 반드시 확인합니다. 짝수가 나오면 “홀수일 때만 $+${c}$” 규칙에 맞지 않으므로 지웁니다.`
+    : fam === 'sgn'
+      ? `$-\\dfrac{y}{2}$는 $y$가 <b>양의 짝수</b>일 때만 가능합니다($y=0$이면 $0\\ge 0$이라 첫째 식으로 가야 하고, $y$가 홀수이면 정수가 아닙니다). 또 $y+${c}\\ge 0$인지도 확인합니다.`
+      : `거꾸로 구한 $y-${c}$가 <b>3의 배수가 아닌 자연수</b>인지 확인합니다. 3의 배수이면 “÷3” 규칙을 써야 하므로 이 가지는 지웁니다.`);
+  function brLevelText(T, j, m) {
+    const parents = []; (function w(n) { if (n.level === j - 1 && n.ok) parents.push(n); else n.ch.forEach(w); })(T.root);
+    return parents.map((p) => `${p.v}→${p.ch.map((k) => (k.ok ? mn(k.v) : mn(k.v) + '(지움)')).join(', ')}`).join(' ; ');
+  }
+  function brSteps(q) {
+    const T = brTree(q.fam, q.c, q.t, q.m);
+    const out = [];
+    for (let j = 1; j <= q.m; j++) out.push(`$a_{${q.m + 1 - j}}$ 후보를 거꾸로 구해 조건을 확인합니다. ${brLevelText(T, j, q.m)}`);
+    out.push(`남은 $a_1$은 ${T.a1.length}개: $\\{${T.a1.map(tn).join(', ')}\\}$ → ${q.ask === 'count' ? `개수 ${T.a1.length}` : `합 ${T.a1.reduce((x, y) => x + y, 0)}`}`);
+    return out;
+  }
+  function brFit(b, D, T, showLv, final, tab, m, wantRule) {
+    const w = D.w, h = D.h, P = D.P;
+    const left = 36, availW = w - left - 6;
+    const txt = (n) => (n.ok ? mn(n.v) : '✕' + mn(n.v));
+    let leaves = [], cut = false;
+    const collect = (lv) => { const out = []; (function walk(n) { const kids = n.level < lv ? n.ch : []; if (!kids.length) out.push(n); else kids.forEach(walk); })(T.root); return out; };
+    const need = (ls) => ls.reduce((t, n) => t + chipW(b, txt(n)) + 4, 0);
+    // 가지가 많아 상자가 겹칠 만큼 좁으면 보이는 단계를 줄입니다(폰 화면)
+    while (true) { leaves = collect(showLv); if (need(leaves) <= availW || showLv <= 1) break; showLv--; cut = true; }
+    const unif = Math.min(92, availW / leaves.length);
+    const wid = leaves.map((n) => Math.max(unif, chipW(b, txt(n)) + 2));
+    let tot = wid.reduce((x, y) => x + y, 0);
+    const sc = tot > availW ? availW / tot : 1;
+    tot *= sc;
+    let x = left + (availW - tot) / 2;
+    leaves.forEach((n, i) => { const ww = wid[i] * sc; n.x = x + ww / 2; n.sw = ww; x += ww; });
+    (function pos(n) { if (n.x == null) { const kids = n.ch.filter((k) => k.level <= showLv); n.x = kids.reduce((s2, k) => s2 + (pos(k), k.x), 0) / kids.length; } else n.ch.forEach((k) => { if (k.level <= showLv) pos(k); }); })(T.root);
+    (function sw(n) { if (n.sw == null) n.sw = n.ch.filter((k) => k.level <= showLv).reduce((t, k) => t + (sw(k), k.sw), 0); })(T.root);
+    const top = 30, bot = h - 34;
+    const rowY = (l) => top + (m ? (l * (bot - top)) / m : 0);
+    const gap = m ? (bot - top) / m : 60;
+    // 단계(항) 이름
+    for (let l = 0; l <= m; l++) {
+      b.seg(P(left - 4, rowY(l) + 0.01), P(w - 4, rowY(l)), { color: 'muted', alpha: 0.18, width: 1 });
+      b.text(P(6, rowY(l)), `a${sb(m + 1 - l)}`, { color: 'muted', size: 13, weight: 800, align: 'left', baseline: 'middle' });
+    }
+    // 가지
+    (function edges(n) {
+      if (n.level >= showLv) return;
+      n.ch.forEach((k) => {
+        if (k.level > showLv) return;
+        b.seg(P(n.x, rowY(n.level) + 13), P(k.x, rowY(k.level) - 13), { color: k.ok ? 'green' : 'rose', alpha: k.ok ? 0.85 : 0.55, width: k.ok ? 2.3 : 1.6, dash: k.ok ? null : [4, 4] });
+        if (wantRule && k.sw && k.sw >= 52 && gap >= 46) b.text(P((n.x + k.x) / 2 + (k.x < n.x ? -10 : 10), (rowY(n.level) + rowY(k.level)) / 2), k.rule, { color: k.ok ? 'green' : 'rose', size: 12, weight: 800, align: k.x < n.x ? 'right' : 'left', baseline: 'middle' });
+        edges(k);
+      });
+    })(T.root);
+    // 값 상자
+    (function nodes(n) {
+      const isLeafValid = n.level === m && n.ok && final;
+      const col = n.level === 0 ? 'sky' : !n.ok ? 'rose' : isLeafValid ? 'amber' : 'green';
+      chip(b, D, n.x, rowY(n.level), txt(n), col);
+      if (!n.ok && n.sw >= 62 && gap >= 54) b.text(P(n.x, rowY(n.level) + 22), n.why, { color: 'rose', size: 12, weight: 700 });
+      n.ch.forEach((k) => { if (k.level <= showLv) nodes(k); });
+    })(T.root);
+    return { rowY, cut, lv: showLv };
+  }
+  function draw9(b, s, v, lab) {
+    const tab = lab.tab;
+    const q = tab === 'explore' ? { fam: s.br_fam, c: s.br_c, t: s.br_t, m: s.br_m } : vary9.cur();
+    const T = brTree(q.fam, q.c, q.t, q.m);
+    const showLv = tab === 'explore' ? q.m : tab === 'review' ? Math.min(s.step, q.m) : 0;
+    const final = tab === 'explore' || (tab === 'review' && s.step >= q.m + 1);
+    const D = design(b);
+    const r = brFit(b, D, T, showLv, final, tab, q.m, true);
+    if (tab === 'problem') {
+      chip(b, D, D.w / 2, r.rowY(q.m), 'a' + sb(1) + ' = ?', 'muted');
+    }
+    if (r.cut) chip(b, D, D.w / 2, D.h - 14, `가지가 많아 ${r.lv}단계까지만 그렸어요 (m을 줄여 보세요)`, 'muted');
+  }
+  function view9(s, lab) {
+    const tab = lab.tab;
+    const q = tab === 'explore' ? { fam: s.br_fam, c: s.br_c, t: s.br_t, m: s.br_m } : vary9.cur();
+    const T = brTree(q.fam, q.c, q.t, q.m);
+    const sum = T.a1.reduce((x, y) => x + y, 0);
+    let bad = 0; (function w(n) { if (!n.ok) bad++; n.ch.forEach(w); })(T.root);
+    const showAns = tab === 'explore' || (tab === 'review' && s.step >= q.m + 1);
+    const out = {
+      chips: [{ tex: brRuleTex(q.fam, q.c), color: 'amber' }, { html: `$a_{${q.m + 1}}=${q.t}$`, color: 'sky' }],
+      formula: brBack(q.fam, q.c),
+      notes: brWarn(q.fam, q.c)
+    };
+    if (tab === 'explore') {
+      const p0 = T.a1.length ? brFwd(q.fam, q.c, T.a1[0], q.m) : [];
+      out.status = { tone: T.a1.length ? 'key' : 'warn', text: `가능한 a₁ ${T.a1.length}개 · 지운 가지 ${bad}개` };
+      out.readouts = [
+        { label: '가능한 a₁의 개수', value: `${T.a1.length}개`, color: 'amber' },
+        { label: '가능한 a₁의 합', value: String(sum), color: 'amber' },
+        { label: '남은 a₁ 값', value: T.a1.length ? '{ ' + T.a1.map(mn).join(', ') + ' }' : '없음', color: 'green', wide: true },
+        { label: '조건에 맞지 않아 지운 후보', value: `${bad}개`, color: 'rose', note: '빨간 ✕ 상자' },
+        { label: '앞으로 대입해 확인(가장 작은 a₁)', value: p0.length ? p0.map(mn).join(' → ') : '없음', color: 'sky', wide: true, note: `마지막 값이 ${q.t}이어야 합니다` }
+      ];
+    }
+    if (showAns) out.tape = { title: `가능한 $a_1$: $\\{${T.a1.map(tn).join(', ')}\\}$ → ${T.a1.length}개, 합 ${sum}`, answer: true };
+    return out;
+  }
+  function scene9() {
+    const defs = { par: [5, 8, 3], sgn: [4, 4, 3], mul: [2, 3, 3] };
+    const pre = (fam, label) => ({ group: '점화식 고르기', label, apply: (st) => { st.br_fam = fam; [st.br_c, st.br_t, st.br_m] = defs[fam]; }, on: (st) => st.br_fam === fam });
+    return {
+      id: 'br-tree', title: '[필수] 분기 점화식: 가능한 a₁ 모두 찾기 (나뭇가지)', short: '가능한 a₁ 찾기',
+      tabs: { compact: true },
+      question: '규칙이 두 갈래로 갈라지는 점화식에서 a₄(또는 a₅)가 정해져 있을 때, 처음 항 a₁이 될 수 있는 값은 몇 개일까?',
+      guide: '맨 위 값 t에서 출발해 <b>앞 항이 될 수 있는 값</b>을 두 갈래로 거꾸로 구합니다. 조건에 맞지 않는 후보는 <b>빨간 표시</b>로 지우고, 아래 끝에 남은 <b>금색 값</b>이 가능한 a₁입니다. t·m·c 막대나 점화식 칩으로 바꿔 보세요.',
+      controls: ['br_t', 'br_m', 'br_c'],
+      presets: () => [pre('par', '홀짝 (짝수면 ÷2, 홀수면 +c)'), pre('sgn', '부호 (0 이상이면 −c, 음수면 ×(−2))'), pre('mul', '3의 배수 (배수면 ÷3, 아니면 +c)')],
+      focus: () => ({ x: [0, 100], y: [0, 100] }),
+      enter: (st) => { st.br_fam = 'par'; st.br_c = 5; st.br_t = 8; st.br_m = 3; },
+      vary: vary9,
+      steps: () => brSteps(vary9.cur()),
+      problem: {
+        tag: () => vary9.cur().tag, time: '목표 시간: 150초',
+        text: () => probHTML(brText(vary9.cur())),
+        answer: () => `$${brAns(vary9.cur())}$`,
+        snap: () => { const q = vary9.cur(); return { br_fam: q.fam, br_c: q.c, br_t: q.t, br_m: q.m }; }
+      },
+      solution: {
+        standardTitle: '앞에서부터 경우를 나누어 풀기', standardTag: '기본 풀이', quickTitle: '나뭇가지로 거꾸로 따라가기', quickTag: '10초 컷',
+        standard: () => {
+          const q = vary9.cur();
+          return { steps: `$a_1$을 미지수로 두고 $a_2,a_3,\\dots$를 앞에서부터 구하면, 매 단계마다 조건(${FAMNAME[q.fam]})에 따라 경우가 2배씩 늘어 ${q.m}번이면 ${2 ** q.m}가지를 모두 따져야 합니다.<br/>거꾸로 가면 후보가 정해집니다. ${brBack(q.fam, q.c)}<br/>${brSteps(q).map((x, i) => `${'①②③④⑤⑥'[i]} ${x}`).join('<br/>')}`, warning: brWarn(q.fam, q.c) };
+        },
+        quick: () => {
+          const q = vary9.cur(), T = brTree(q.fam, q.c, q.t, q.m), a = T.a1;
+          return { steps: `가지를 <b>${q.m}번</b> 거꾸로 펼치고 조건에 안 맞는 가지만 지우면 끝입니다. 남은 값은 $\\{${a.map(tn).join(', ')}\\}$.<br/>검산: 가장 작은 값 $a_1=${a[0]}$에서 앞으로 가면 ${brFwd(q.fam, q.c, a[0], q.m).map((x) => '$' + tn(x) + '$').join(' → ')}.`, highlight: '개수만 묻는 문제는 값 자체를 다 계산하지 않아도 됩니다. 어느 가지가 살아남는지만 세면 됩니다.' };
+        }
+      },
+      view: (s, lab) => view9(s, lab),
+      draw: (b, s, v, lab) => draw9(b, s, v, lab)
+    };
+  }
+
+  /* ====== 장면 10: 순환에 들어가는 시점 — 표로 따라가기 ====== */
+  const vary10 = varier(CY_POOL);
+  const CYN = 14;
+  const cyTexRule = (k, d) => String.raw`a_{n+1}=a_n+${k}\ (a_n\le 0),\ a_n-${d}\ (a_n>0)`;
+  const cyText = (q) => `수열 $\\{a_n\\}$이 $a_1=${tn(q.a1)}$이고, 모든 자연수 $n$에 대하여 $a_{n+1}=\\begin{cases}a_n+${q.k} & (a_n\\le 0)\\\\ a_n-${q.d} & (a_n>0)\\end{cases}$을 만족시킨다. `
+    + (q.ask === 'sum' ? `$\\sum_{i=1}^{${q.M}}a_i$의 값을 구하시오.` : q.ask === 'count' ? `$1\\le n\\le ${q.M}$인 자연수 $n$ 중에서 $a_n=${q.X}$인 $n$의 개수를 구하시오.` : `$a_{${q.M}}$의 값을 구하시오.`)
+    + ' <small>(표를 채우며 반복되는 마디를 찾아 보세요)</small>';
+  function cySteps(q) {
+    const A = cyAnswer(q), I = A.I;
+    const list = I.seq.map(tn).join(',\\ ');
+    const s1 = `$a_n$을 앞에서부터 차례로 구해 표를 채웁니다: $${list}$ 다음에 $a_{${I.repeatAt}}=${tn(I.seq[I.start - 1])}$이 다시 나옵니다.`;
+    const s2 = `$a_{${I.repeatAt}}=a_{${I.start}}=${tn(I.seq[I.start - 1])}$이므로 $a_{${I.start}}$부터 ${I.period}개 $[${A.cyc.map(tn).join(',\\ ')}]$가 반복됩니다(순환 전 항 ${A.tail}개).`;
+    let s3;
+    const rest = `$${q.M}-${A.tail}=${q.M - A.tail}=${I.period}\\times ${A.qn}+${A.r}$`;
+    const part = (arr) => (arr.length ? sumTex(arr) : '0');
+    if (q.ask === 'val') s3 = `$a_{${q.M}}$: 순환 전 ${A.tail}개를 빼면 ${rest}이므로 마디의 ${A.r === 0 ? '마지막(' + I.period + '번째)' : A.r + '번째'} 값, 곧 ${A.val}.`;
+    else {
+      const pick = (x) => (q.ask === 'sum' ? x : x === q.X ? 1 : 0);
+      const tl = I.seq.slice(0, A.tail).map(pick), cy = A.cyc.map(pick), rm = A.cyc.slice(0, A.r).map(pick);
+      s3 = `${rest}이므로 ${q.ask === 'sum' ? '합' : `$a_n=${q.X}$인 개수`}은 (순환 전) $${part(tl)}$ + (마디 ${A.qn}번) $${A.qn}\\times(${part(cy)})$ + (나머지 ${A.r}개) $${part(rm)}$ = ${A.val}.`;
+    }
+    return [s1, s2, s3];
+  }
+  function cyDraw(b, s, v, lab) {
+    const tab = lab.tab;
+    const q = tab === 'explore' ? { a1: s.cy_a1, k: s.cy_k, d: s.cy_d } : vary10.cur();
+    const I = cyInfo(q.a1, q.k, q.d);
+    const nShown = tab === 'explore' ? s.cy_n : tab === 'problem' ? 1 : Math.min(CYN, I.repeatAt);
+    const showCycle = nShown >= I.repeatAt && (tab !== 'review' || s.step >= 2);
+    const D = design(b), w = D.w, h = D.h, P = D.P;
+    const x0 = 30, cw = (w - x0 - 6) / CYN, cx = (n) => x0 + (n - 0.5) * cw;
+    const rowH = 24, yH = 14, yV = yH + 28;
+    const cls = (n) => (!showCycle ? 'ink' : n < I.start ? 'sky' : 'amber');
+    b.text(P(2, yH), 'n', { color: 'muted', size: 13, weight: 800, align: 'left', baseline: 'middle' });
+    b.text(P(2, yV), 'aₙ', { color: 'muted', size: 13, weight: 800, align: 'left', baseline: 'middle' });
+    for (let n = 1; n <= CYN; n++) {
+      const on = n <= nShown, col = on ? cls(n) : 'muted', x = cx(n), l = x - cw / 2 + 1, r = x + cw / 2 - 1;
+      b.text(P(x, yH), String(n), { color: n === I.start && showCycle ? 'amber' : 'muted', size: 12, weight: 800, baseline: 'middle' });
+      b.poly([P(l, yV - rowH / 2), P(r, yV - rowH / 2), P(r, yV + rowH / 2), P(l, yV + rowH / 2)], { fill: on ? col : 'muted', fillAlpha: on ? 0.16 : 0.05, color: col, alpha: on ? 0.95 : 0.35, width: on && showCycle && (n === I.repeatAt) ? 2.6 : 1.4 });
+      b.text(P(x, yV), on ? mn(cyTerm(I, n)) : '?', { color: col, size: 12, weight: 800, baseline: 'middle', alpha: on ? 1 : 0.5 });
+    }
+    // 반복 안내 상자
+    const noteY = yV + 34;
+    if (showCycle) chip(b, D, w / 2, noteY, `a${sb(I.repeatAt)} = a${sb(I.start)} = ${mn(I.seq[I.start - 1])} → a${sb(I.start)}부터 ${I.period}개씩 반복`, 'amber');
+    else if (tab === 'explore') chip(b, D, w / 2, noteY, `아직 반복이 안 보여요 · ${I.repeatAt}칸까지 채워 보세요`, 'muted');
+    else if (tab === 'problem') chip(b, D, w / 2, noteY, `a₁ = ${mn(q.a1)} · 표를 채워 반복을 찾으세요`, 'muted');
+    // 그래프: 가로는 표의 칸과 같은 번호
+    const pTop = noteY + 26, pBot = h - 10, VM = 9;
+    const yOf = (val) => pTop + ((VM - val) / (2 * VM)) * (pBot - pTop);
+    if (showCycle) {
+      const xa = cx(I.start) - cw / 2, xb = cx(I.repeatAt - 1) + cw / 2;
+      b.poly([P(xa, pTop), P(xb, pTop), P(xb, pBot), P(xa, pBot)], { fill: 'amber', fillAlpha: 0.12, color: null });
+      const xe = cx(Math.min(CYN, nShown)) + cw / 2;
+      if (xe > xb) b.poly([P(xb, pTop), P(xe, pTop), P(xe, pBot), P(xb, pBot)], { fill: 'amber', fillAlpha: 0.05, color: null });
+      if (I.start > 1) b.poly([P(x0, pTop), P(xa, pTop), P(xa, pBot), P(x0, pBot)], { fill: 'sky', fillAlpha: 0.08, color: null });
+    }
+    b.seg(P(x0, yOf(0)), P(w - 4, yOf(0)), { color: 'ink', alpha: 0.5, width: 1.4, dash: [5, 4] });
+    [-8, -4, 4, 8].forEach((tv) => b.text(P(x0 - 5, yOf(tv)), mn(tv), { color: 'muted', size: 12, weight: 700, align: 'right', baseline: 'middle' }));
+    b.text(P(x0 - 5, yOf(0)), '0', { color: 'ink', size: 12, weight: 800, align: 'right', baseline: 'middle' });
+    for (let n = 1; n < nShown; n++) b.seg(P(cx(n), yOf(cyTerm(I, n))), P(cx(n + 1), yOf(cyTerm(I, n + 1))), { color: cls(n + 1) === 'ink' ? 'ink' : cls(n + 1), alpha: 0.55, width: 1.8 });
+    for (let n = 1; n <= nShown; n++) {
+      const p = P(cx(n), yOf(cyTerm(I, n)));
+      if (n === 1 && tab === 'explore') continue;
+      b.point(p, { r: 4.2, color: cls(n), glow: false });
+    }
+    if (tab === 'explore') {
+      b.handle('cy_a1', P(cx(1), yOf(q.a1)), { color: 'amber', r: 8, ariaLabel: '첫째항 a₁ (위아래로 끌기)', drag: (wp) => { const yy = h - wp.y; s.cy_a1 = clamp(Math.round(VM - ((yy - pTop) / (pBot - pTop)) * 2 * VM), -8, 8); } });
+    }
+  }
+  function cyView(s, lab) {
+    const tab = lab.tab;
+    const q = tab === 'explore' ? { a1: s.cy_a1, k: s.cy_k, d: s.cy_d } : vary10.cur();
+    const I = cyInfo(q.a1, q.k, q.d);
+    const cycSum = I.seq.slice(I.start - 1).reduce((x, y) => x + y, 0);
+    const out = { chips: [{ tex: cyTexRule(q.k, q.d), color: 'amber' }] };
+    if (tab === 'explore') {
+      const known = s.cy_n >= I.repeatAt;
+      out.status = known ? { tone: 'key', text: `${I.repeatAt}번째 항 = ${I.start}번째 항 → 순환` } : { tone: 'info', text: `반복은 ${I.repeatAt}번째 항에서 처음 보여요 (지금 ${s.cy_n}칸)` };
+      out.readouts = [
+        { label: '순환이 시작되는 항', value: `a${sb(I.start)}`, color: 'amber', note: `${I.start}번째 항부터 반복` },
+        { label: '반복되는 마디의 항 수(주기)', value: `${I.period}개`, color: 'amber' },
+        { label: '순환 전의 항', value: I.start - 1 ? `${I.start - 1}개` : '없음', color: 'sky', note: I.start - 1 ? I.seq.slice(0, I.start - 1).map(mn).join(', ') : '첫째항부터 반복' },
+        { label: '한 마디의 합', value: String(cycSum), color: 'green', note: I.seq.slice(I.start - 1).map(mn).join(' + ').replace(/\+ −/g, '− ') },
+        { label: '처음 반복이 보이는 번호', value: `${I.repeatAt}번째`, color: 'rose', note: '이 번호까지 표를 채우면 충분' }
+      ];
+    }
+    if (tab === 'review' && s.step >= 3) { const A = cyAnswer(q); out.tape = { title: `$${q.ask === 'sum' ? `\\sum_{i=1}^{${q.M}}a_i` : q.ask === 'count' ? `\\#\\{n\\le ${q.M}:\\ a_n=${q.X}\\}` : `a_{${q.M}}`}=${A.val}$`, answer: true }; }
+    out.notes = '<b>순환 전의 항을 마디에 섞지 마세요.</b> 위 표에서 $a_1,a_2$처럼 한 번만 나오는 항은 파란색, 되풀이되는 마디는 금색입니다. 개수(몫·나머지)는 순환 전 항을 뺀 뒤에 세어야 합니다.';
+    out.formula = '$a_p=a_q\\ (p\\lt q)$이면 그 뒤로는 <b>같은 값이 같은 순서로</b> 되풀이됩니다. 처음 반복되는 값을 찾으면 순환이 시작되는 번호와 주기가 정해집니다.';
+    return out;
+  }
+  function scene10() {
+    return {
+      id: 'cyc-table', title: '[필수] 순환에 들어가는 시점: 표로 따라가기', short: '표로 따라가기',
+      tabs: { compact: true },
+      question: '항을 몇 개 직접 적어 보면 수열은 언제부터 같은 값을 되풀이할까? 순환이 시작되는 번호와 주기는 어떻게 찾을까?',
+      guide: '<b>금색 점</b>(a₁)을 위아래로 끌거나 「한 항 더 계산하기」를 눌러 표를 채워 보세요. 같은 값이 처음 다시 나오는 칸에서 <b>순환이 시작되는 항</b>과 <b>주기</b>가 보입니다.',
+      controls: ['cy_a1', 'cy_k', 'cy_d', 'cy_n'],
+      actions: [
+        { id: 'cy-next', icon: 'next', label: '한 항 더 계산하기', primary: true, run: (st) => { st.cy_n = Math.min(CYN, st.cy_n + 1); } },
+        { id: 'cy-reset', icon: 'back', label: '표 비우기', run: (st) => { st.cy_n = 1; } }
+      ],
+      focus: () => ({ x: [0, 100], y: [0, 100] }),
+      enter: (st) => { st.cy_a1 = -5; st.cy_k = 3; st.cy_d = 2; st.cy_n = 5; },
+      vary: vary10,
+      steps: () => cySteps(vary10.cur()),
+      problem: {
+        tag: () => vary10.cur().tag, time: '목표 시간: 120초',
+        text: () => probHTML(cyText(vary10.cur())),
+        answer: () => `$${cyAnswer(vary10.cur()).val}$`,
+        snap: () => { const q = vary10.cur(); return { cy_a1: q.a1, cy_k: q.k, cy_d: q.d, cy_n: Math.min(CYN, cyInfo(q.a1, q.k, q.d).repeatAt) }; }
+      },
+      solution: {
+        standardTitle: '표를 채워 순환 마디 찾기', standardTag: '기본 풀이', quickTitle: '꼬리 + (몫 × 마디) + 나머지', quickTag: '10초 컷',
+        standard: () => ({ steps: cySteps(vary10.cur()).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>'), warning: '$n$이 큰 문제를 한 항씩 구하려 하지 마세요. 처음 반복되는 값이 보일 때까지만 표를 채우고, 나머지는 몫과 나머지로 세면 됩니다.' }),
+        quick: () => { const q = vary10.cur(), A = cyAnswer(q); return { steps: `순환 전 <b>${A.tail}개</b>, 한 마디 <b>${A.I.period}개</b>. $${q.M}-${A.tail}=${q.M - A.tail}$를 ${A.I.period}로 나누면 몫 ${A.qn}, 나머지 ${A.r}. 값은 <b>${A.val}</b>.`, highlight: '순환 전 항을 마디에 넣지 않는 것이 핵심입니다. 표의 파란 칸은 한 번만, 금색 칸이 되풀이됩니다.' }; }
+      },
+      view: (s, lab) => cyView(s, lab),
+      draw: (b, s, v, lab) => cyDraw(b, s, v, lab)
+    };
+  }
+
+  /* ====== 장면 11: 좌표평면 위의 점열과 삼각형 넓이 ====== */
+  const varyA = varier(PA_POOL), varyB = varier(PB_POOL);
+  const FOC_A = { x: [-1.3, 13.6], y: [-1.7, 10.4] };
+  const FOC_A_TIGHT = { x: [-1.3, 11.4], y: [-1.7, 6.6] };
+  const A_TRI = (k) => { const x = PA_C * Math.sqrt(k), y = k; return [[0, 0], [x, y], [x, 0]]; };
+  const A_PT = (k) => [PA_C * Math.sqrt(k), k];
+  function drawA(b, s, v, lab) {
+    const tab = lab.tab;
+    const n = tab === 'explore' ? s.pa_n : 4, N = 9;
+    const stepN = tab === 'review' ? s.step : 0;
+    b.focus = tab === 'explore' || (tab === 'review' && stepN >= 2) ? FOC_A : FOC_A_TIGHT; // 문제·1단계는 n=4 한 개만 보이므로 그림을 크게
+    if (s.grid) b.grid();
+    b.axes();
+    b.plot((x) => (x * x) / 16, { color: 'ink', width: 2.4, glow: true, from: 0, to: 13.6 });
+    if (tab === 'explore' || (tab === 'review' && stepN >= 2)) b.text([12.7, 10.0], 'y = x²/16', { color: 'ink', size: 12, weight: 800, align: 'right', baseline: 'middle' });
+    else b.text([3.6, 4.7], 'y = x²/16', { color: 'ink', size: 12, weight: 800, align: 'center', baseline: 'middle' });
+    const showRings = tab === 'explore' ? true : tab === 'review' && stepN >= 2;
+    const upto = tab === 'explore' ? n : N;
+    if (showRings) {
+      const allRose = tab === 'review' && stepN >= 3;
+      b.poly(A_TRI(1), { fill: 'amber', fillAlpha: 0.3, color: null });
+      for (let k = 1; k < upto; k++) ringFill(b, A_TRI(k + 1), A_TRI(k), allRose ? 'rose' : k % 2 ? 'sky' : 'green', allRose ? 0.34 : 0.3);
+      for (let k = 1; k <= upto; k++) { b.poly(A_TRI(k), { color: allRose ? 'rose' : 'ink', alpha: 0.55, width: 1.3 }); }
+      if (!allRose) b.poly(A_TRI(1), { color: 'amber', width: 2.2 });
+    }
+    // 점과 직선
+    const cur = tab === 'explore' ? n : 4;
+    const showLines = tab === 'explore' || (tab === 'review');
+    const lineKs = tab === 'explore' ? Array.from({ length: n }, (_, i) => i + 1) : stepN >= 2 ? Array.from({ length: N }, (_, i) => i + 1) : [cur];
+    lineKs.forEach((k) => { const A = A_PT(k); b.seg([0, 0], A, { color: k === cur ? 'amber' : 'ink', alpha: k === cur ? 0.95 : 0.4, width: k === cur ? 2.6 : 1.2 }); });
+    if (showLines || tab === 'problem') {
+      const A = A_PT(cur);
+      b.seg(A, [A[0], 0], { color: 'amber', width: 2.2, dash: [5, 4] });
+      b.poly(A_TRI(cur), { color: 'amber', width: 2.4, fill: tab === 'explore' && !showRings ? 'amber' : null, fillAlpha: 0.2 });
+    }
+    // 점 이름
+    const nm = (k) => (tab === 'problem' ? 'n' : String(k));
+    const Ac = A_PT(cur);
+    if (tab === 'explore' && n > 1) { const A1 = A_PT(1); b.point(A1, { r: 4.5, color: 'amber', label: 'A₁', dx: -8, dy: -12, align: 'right', size: 13 }); }
+    if (tab === 'explore') b.handle('pa_n', Ac, { color: 'amber', r: 8, label: `A${sb(n)}`, dx: -12, dy: -10, align: 'right', size: 14, ariaLabel: '점 Aₙ (곡선을 따라 끌기)', drag: (w) => { s.pa_n = clamp(Math.round((w.x / PA_C) ** 2), 1, 9); } });
+    else b.point(Ac, { r: 5.5, color: 'amber', label: tab === 'problem' ? 'Aₙ' : `A${sb(4)}`, dx: -12, dy: -10, align: 'right', size: 14 });
+    b.point([Ac[0], 0], { r: 4.5, color: 'ink', label: tab === 'problem' ? 'Bₙ' : `B${sb(cur)}`, dx: 10, dy: -13, align: 'left', size: 14 });
+    b.point([0, 0], { r: 4, color: 'ink', label: 'O', dx: -10, dy: -13, align: 'right', size: 14 });
+    if (tab === 'review' && stepN >= 1 && stepN < 2) b.text([Ac[0] + 0.4, Ac[1] / 2 + 0.2], `A₄(${mn(Math.round(Ac[0]))}, 4)`, { color: 'amber', size: 13, weight: 800, align: 'left' });
+    if (tab === 'problem') b.text([9.2, 1.5], '(그림은 n = 4일 때)', { color: 'muted', size: 12, weight: 700, align: 'center' });
+    if (tab === 'review' && stepN >= 3) b.text([8.5, 8.6], 'S₉ − S₁ = 칠한 조각 전체', { color: 'rose', size: 13, weight: 800, align: 'center' });
+  }
+  const paSteps = (q) => {
+    const j = q.j, N = q.N, ex = `$S_n=\\dfrac{1}{2}\\cdot 4\\sqrt{n}\\cdot n=2n\\sqrt{n}$`;
+    return [
+      `$y=\\dfrac{x^2}{16}$과 $y=\\dfrac{\\sqrt n}{4}x$에서 $x=4\\sqrt n$이므로 $A_n(4\\sqrt n,\\ n)$, $B_n(4\\sqrt n,\\ 0)$. (그림은 $n=4$: $A_4(8,4)$) ${ex}`,
+      `삼각형 $OA_1B_1,\\ OA_2B_2,\\dots$는 큰 것이 작은 것을 포개 싼 모양입니다. 이웃한 두 삼각형 사이의 띠가 $S_{k+1}-S_k$입니다(그림은 $n=1\\sim 9$).`,
+      `$\\sum_{k=${j}}^{${N - 1}}(S_{k+1}-S_k)=(S_{${j + 1}}-S_{${j}})+\\cdots+(S_{${N}}-S_{${N - 1}})$에서 가운데 항이 모두 소거되어 $S_{${N}}-S_{${j}}$입니다.`
+    ];
+  };
+  const paText = (q) => `곡선 $y=\\dfrac{1}{16}x^2$과 직선 $y=\\dfrac{\\sqrt{n}}{4}x$가 제1사분면에서 만나는 점을 $A_n$, 점 $A_n$에서 $x$축에 내린 수선의 발을 $B_n$, 삼각형 $OA_nB_n$의 넓이를 $S_n$이라 할 때, $\\sum_{k=${q.j}}^{${q.N - 1}}\\left(S_{k+1}-S_k\\right)$의 값을 구하시오. (단, $O$는 원점이다.)`;
+  function viewA(s, lab) {
+    const tab = lab.tab, n = s.pa_n;
+    const out = { chips: [{ tex: String.raw`A_n\left(4\sqrt n,\ n\right),\quad S_n=2n\sqrt n`, color: 'amber', answer: true }] };
+    out.formula = '$S_{k+1}-S_k$는 이웃한 삼각형 사이의 띠의 넓이입니다. 띠를 $k=1,2,\\dots$ 차례로 쌓으면 <b>가운데 넓이가 모두 지워지고</b> 처음과 끝 삼각형의 넓이만 남습니다.';
+    out.notes = '합의 <b>끝 번호</b>를 조심하세요. $\\sum_{k=j}^{M}(S_{k+1}-S_k)=S_{M+1}-S_j$이므로 마지막 삼각형은 $M+1$번째, 처음은 $j$번째입니다.';
+    if (tab === 'explore') {
+      const sn = paS(n), s1 = paS(1);
+      out.status = { tone: 'info', text: `n = ${n} · 삼각형 ${n}개를 포개었습니다` };
+      out.readouts = [
+        { label: `Aₙ의 좌표 (n=${n})`, value: `(${mn(Math.round(PA_C * Math.sqrt(n) * 100) / 100)}, ${n})`, color: 'amber' },
+        { label: `Sₙ = 2n√n (n=${n})`, value: String(Math.round(sn * 1000) / 1000), color: 'amber' },
+        { label: `띠의 합 Σ(Sₖ₊₁−Sₖ), k=1~${n - 1}`, value: String(Math.round((sn - s1) * 1000) / 1000), color: 'rose' },
+        { label: `Sₙ − S₁`, value: String(Math.round((sn - s1) * 1000) / 1000), color: 'green', note: '두 값이 같습니다(가운데 항 소거)' }
+      ];
+    }
+    return out;
+  }
+  function sceneA() {
+    return {
+      id: 'pt-tri-diff', title: '[필수] 곡선 위의 점 Aₙ: 이웃한 삼각형 넓이의 차 (Sₖ₊₁ − Sₖ)', short: '넓이의 차 소거',
+      tabs: { compact: true },
+      question: '점 Aₙ이 곡선 위를 움직이며 삼각형 OAₙBₙ이 커질 때, 이웃한 삼각형의 넓이의 차를 모두 더하면 왜 처음과 끝만 남을까?',
+      guide: '<b>금색 점 Aₙ</b>을 곡선을 따라 끌거나 n 막대를 움직여 삼각형을 하나씩 포개 보세요. 이웃한 삼각형 사이의 띠(Sₖ₊₁−Sₖ)가 색칠되고, 띠를 다 합치면 <b>가장 큰 삼각형에서 가장 작은 삼각형을 뺀 모양</b>이 됩니다.',
+      controls: ['pa_n'],
+      focus: () => FOC_A,
+      enter: (st) => { st.pa_n = 6; },
+      vary: varyA,
+      steps: () => paSteps(varyA.cur()),
+      problem: { tag: () => varyA.cur().tag, time: '목표 시간: 90초', text: () => probHTML(paText(varyA.cur())), answer: () => `$${paAns(varyA.cur())}$`, snap: () => ({ pa_n: 4 }) },
+      solution: {
+        standardTitle: 'Sₙ을 구한 뒤 차를 하나씩 더하기', standardTag: '기본 풀이', quickTitle: '소거: Sₘ₊₁ − Sⱼ', quickTag: '10초 컷',
+        standard: () => { const q = varyA.cur(); return { steps: paSteps(q).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>') + `<br/>④ $S_{${q.N}}=2\\cdot ${q.N}\\sqrt{${q.N}}=${paS(q.N)}$, $S_{${q.j}}=${paS(q.j)}$이므로 <b>${paAns(q)}</b>.` }; },
+        quick: () => { const q = varyA.cur(); return { steps: `$\\sum_{k=${q.j}}^{${q.N - 1}}(S_{k+1}-S_k)=S_{${q.N}}-S_{${q.j}}=${paS(q.N)}-${paS(q.j)}=${paAns(q)}$`, highlight: '식을 일일이 전개하지 않고, 합의 처음과 끝만 보면 됩니다(마지막 번호는 M+1).' }; }
+      },
+      view: (s, lab) => viewA(s, lab),
+      draw: (b, s, v, lab) => drawA(b, s, v, lab)
+    };
+  }
+
+  const FOC_B = { x: [-5.5, 14.6], y: [-3.9, 17.6] };
+  const FOC_B_TIGHT = { x: [-4.6, 12.2], y: [-3.4, 12.6] };
+  // f_n(x) = (x−a·n)(x+n), 직선 y = x+n
+  const B_PTS = (a, n) => ({ A: [-n, 0], B: [a * n + 1, (a + 1) * n + 1] });
+  const bFun = (a, n) => (x) => (x - a * n) * (x + n);
+  function drawB(b, s, v, lab) {
+    const tab = lab.tab;
+    const q = tab === 'explore' ? { a: s.pb_a } : varyB.cur();
+    const a = q.a, n = tab === 'explore' ? s.pb_n : 2;
+    const stepN = tab === 'review' ? s.step : 0;
+    b.focus = tab === 'explore' ? FOC_B : FOC_B_TIGHT; // 문제·정리는 n=2 한 개만 보이므로 그림을 크게
+    if (s.grid) b.grid({ step: 2 });
+    b.axes();
+    const cl = (f) => (x) => { const y = f(x); return y > 18 || y < -4.5 ? NaN : y; };
+    // 지난 번호의 삼각형(희미하게)
+    if (tab === 'explore' || (tab === 'review' && stepN >= 3)) {
+      const upto = tab === 'explore' ? n : 3;
+      for (let k = 1; k < upto; k++) { const { A, B } = B_PTS(a, k); b.poly([[0, 0], A, B], { fill: 'sky', fillAlpha: 0.16, color: 'sky', alpha: 0.6, width: 1.4 }); }
+    }
+    b.plot(cl(bFun(a, n)), { color: 'ink', width: 2.4, glow: true, from: -6, to: 15 });
+    b.line([0, n], 1, { color: 'sky', width: 2.2, extent: [-6, 15] });
+    const { A, B } = B_PTS(a, n);
+    b.poly([[0, 0], A, B], { fill: 'amber', fillAlpha: 0.22, color: 'amber', width: 2.4 });
+    const showH = tab === 'explore' || (tab === 'review' && stepN >= 2);
+    if (showH) { b.seg(B, [B[0], 0], { color: 'rose', width: 2, dash: [5, 4] }); b.text([B[0] + 0.5, B[1] / 2], `높이 ${B[1]}`, { color: 'rose', size: 13, weight: 800, align: 'left' }); b.text([A[0] / 2, -2.6], `밑변 ${n}`, { color: 'rose', size: 13, weight: 800, align: 'center' }); }
+    const g = (nm) => (tab === 'problem' ? 'n' : tab === 'explore' ? String(n) : String(n));
+    const sym = (c) => (tab === 'problem' ? `${c}ₙ` : `${c}${sb(n)}`);
+    const ptLabel = (P, nameStr, extra) => (tab === 'review' && stepN >= 1 && stepN < 2 ? `${nameStr}(${mn(P[0])}, ${mn(P[1])})` : nameStr);
+    b.point(A, { r: 5, color: 'amber', label: ptLabel(A, sym('A')), dx: -9, dy: 14, align: 'right', size: 13 });
+    if (tab === 'explore') b.handle('pb_n', B, { color: 'amber', r: 8, label: ptLabel(B, sym('B')), dx: 12, dy: -8, align: 'left', size: 13, ariaLabel: '점 Bₙ (직선을 따라 끌기)', drag: (w) => { s.pb_n = clamp(Math.round((w.x - 1) / a), 1, 3); } });
+    else b.point(B, { r: 5.5, color: 'amber', label: ptLabel(B, sym('B')), dx: -12, dy: -10, align: 'right', size: 13 });
+    b.point([0, 0], { r: 4, color: 'ink', label: 'O', dx: 11, dy: -12, align: 'left', size: 14 });
+    if (tab === 'problem') b.text([8.6, -2.7], '(그림은 n = 2일 때)', { color: 'muted', size: 12, weight: 700, align: 'center' });
+    b.text(tab === 'explore' ? [-1.0, 16.2] : [-1.4, 11.7], `y = f${tab === 'problem' ? 'ₙ' : sb(n)}(x)`, { color: 'ink', size: 13, weight: 800, align: 'left' });
+    b.text([11.6, 11.6 + n - 3.4], 'y = x + n', { color: 'sky', size: 13, weight: 800, align: 'center' });
+  }
+  const pbText = (q) => `자연수 $n$에 대하여 곡선 $y=f_n(x)=x^2-${q.a - 1}nx-${q.a}n^2$과 직선 $y=x+n$이 만나는 서로 다른 두 점을 $A_n,\\ B_n$이라 하자. $x$좌표가 작은 점이 $A_n$이고, 삼각형 $OA_nB_n$의 넓이를 $S_n$이라 할 때, $\\sum_{k=1}^{${q.M}}S_k$의 값을 구하시오. (단, $O$는 원점이다.)`;
+  const pbSteps = (q) => {
+    const a = q.a, C = a + 1, ans = pbSum(a, q.M);
+    return [
+      `$f_n(x)=(x-${a}n)(x+n)$이고 $y=x+n$과 연립하면 $(x+n)(x-${a}n-1)=0$이므로 $A_n(-n,\\ 0)$, $B_n(${a}n+1,\\ ${C}n+1)$ (그림은 $n=2$).`,
+      `$A_n$이 $x$축 위에 있으므로 밑변 $OA_n=n$, 높이는 $B_n$의 $y$좌표 $${C}n+1$입니다. $S_n=\\dfrac{1}{2}\\cdot n\\cdot(${C}n+1)=\\dfrac{${C}n^2+n}{2}$.`,
+      `$\\sum_{k=1}^{${q.M}}S_k=\\dfrac{1}{2}\\left(${C}\\cdot\\dfrac{${q.M}\\cdot${q.M + 1}\\cdot${2 * q.M + 1}}{6}+\\dfrac{${q.M}\\cdot${q.M + 1}}{2}\\right)=${FR.tex(ans)}$.`
+    ];
+  };
+  function viewB(s, lab) {
+    const tab = lab.tab, a = tab === 'explore' ? s.pb_a : varyB.cur().a, n = s.pb_n;
+    const out = { chips: [{ tex: String.raw`A_n(-n,\ 0),\quad B_n(${a}n+1,\ ${a + 1}n+1)`, color: 'amber', answer: true }] };
+    out.formula = '교점의 $x$좌표는 <b>곡선과 직선의 식을 연립</b>해 인수분해하면 바로 나옵니다. 한 점이 $x$축 위에 있으면 그 점까지의 거리가 밑변, 다른 점의 $y$좌표가 높이입니다.';
+    out.notes = '$\\sum k^2=\\dfrac{m(m+1)(2m+1)}{6}$, $\\sum k=\\dfrac{m(m+1)}{2}$를 쓸 때 <b>$\\dfrac12$을 곱하는 것</b>을 빠뜨리기 쉽습니다. $S_n$ 자체가 $\\dfrac12\\times$밑변$\\times$높이입니다.';
+    if (tab === 'explore') {
+      const Sn = pbS(a, n), tot = pbSum(a, n);
+      out.status = { tone: 'info', text: `n = ${n} · 삼각형 ${n}개의 넓이를 쌓는 중` };
+      out.readouts = [
+        { label: `A${sb(n)}, B${sb(n)}`, value: `(${mn(-n)}, 0), (${a * n + 1}, ${(a + 1) * n + 1})`, color: 'amber', wide: true },
+        { label: `S${sb(n)} = 밑변 × 높이 ÷ 2`, value: FR.txt(Sn), color: 'amber', note: `${n} × ${(a + 1) * n + 1} ÷ 2` },
+        { label: `S₁+…+S${sb(n)}`, value: FR.txt(tot), color: 'green' }
+      ];
+      out.tape = { title: `$S_1+\\cdots+S_${n}=${FR.tex(tot)}$`, answer: true, segments: Array.from({ length: n }, (_, i) => ({ weight: FR.val(pbS(a, i + 1)), color: ['sky', 'green', 'amber'][i % 3], text: `S${sb(i + 1)}=${FR.txt(pbS(a, i + 1))}` })) };
+    } else if (tab === 'review' && s.step >= 3) out.tape = { title: `$\\sum_{k=1}^{${varyB.cur().M}}S_k=${FR.tex(pbSum(a, varyB.cur().M))}$`, answer: true };
+    return out;
+  }
+  function sceneB() {
+    const pre = (a, label) => ({ group: '곡선 모양', label, apply: (st) => { st.pb_a = a; }, on: (st) => st.pb_a === a });
+    return {
+      id: 'pt-tri-sum', title: '[필수] 곡선과 직선의 교점 Aₙ, Bₙ: 삼각형 넓이의 합 (Σ Sₖ)', short: '넓이의 합 Σ',
+      tabs: { compact: true },
+      question: 'n이 바뀔 때 곡선과 직선의 교점 Aₙ, Bₙ은 어떻게 움직이고, 삼각형의 넓이 Sₙ을 n의 식으로 나타내면 합 Σ Sₖ는 어떻게 구할까?',
+      guide: '<b>금색 점 Bₙ</b>을 직선 위로 끌거나 n 막대를 움직여 보세요. Aₙ은 항상 x축 위에 있어서 <b>밑변 = n</b>, 높이는 Bₙ의 y좌표입니다. 지난 번호의 삼각형이 희미하게 남아 Sₖ가 쌓이는 모양을 볼 수 있어요.',
+      controls: ['pb_n'],
+      presets: () => [pre(3, 'f(x) = x² − 2nx − 3n²'), pre(4, 'f(x) = x² − 3nx − 4n²')],
+      focus: () => FOC_B,
+      enter: (st) => { st.pb_n = 2; st.pb_a = 3; },
+      vary: varyB,
+      steps: () => pbSteps(varyB.cur()),
+      problem: { tag: () => varyB.cur().tag, time: '목표 시간: 120초', text: () => probHTML(pbText(varyB.cur())), answer: () => `$${FR.tex(pbSum(varyB.cur().a, varyB.cur().M))}$`, snap: () => ({ pb_a: varyB.cur().a, pb_n: 2 }) },
+      solution: {
+        standardTitle: '교점 → Sₙ → Σ 공식', standardTag: '기본 풀이', quickTitle: '밑변·높이로 바로 Sₙ', quickTag: '10초 컷',
+        standard: () => ({ steps: pbSteps(varyB.cur()).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>') }),
+        quick: () => { const q = varyB.cur(); return { steps: `인수분해 한 번으로 $A_n(-n,0)$, $B_n(${q.a}n+1,\\ ${q.a + 1}n+1)$. $S_n=\\dfrac{1}{2}n(${q.a + 1}n+1)$ → $\\sum_{k=1}^{${q.M}}S_k=${FR.tex(pbSum(q.a, q.M))}$.`, highlight: '근의 공식이 아니라 인수분해: 직선 y = x + n 이 곡선의 한 근 x = −n 을 지납니다.' }; }
+      },
+      view: (s, lab) => viewB(s, lab),
+      draw: (b, s, v, lab) => drawB(b, s, v, lab)
+    };
+  }
+
+  /* ====== 장면 12: [이전 교육과정] 도형 반복 패턴과 등비급수 ====== */
+  const varyF = varier(FR_POOL);
+  const FOC_F = { x: [-1.4, 11.4], y: [-1.9, 11.4] };
+  const FRN = { p12: '중점', p23: '2/3 지점', p1: '꼭짓점(대각선)' };
+  const frDescr = (q) => (q.p === 'p1'
+    ? `점 $E_1=A_1$, $F_1=C_1$로 잡고(삼각형 $E_1F_1D_1$은 삼각형 $A_1C_1D_1$)`
+    : `선분 $A_1B_1$, $B_1C_1$ 위에 $B_1E_1=B_1F_1=${q.p === 'p12' ? '\\dfrac{1}{2}' : '\\dfrac{2}{3}'}\\times ${q.L}$인 점 $E_1$, $F_1$을 잡고`);
+  const frText = (q) => `한 변의 길이가 $${q.L}$인 정사각형 $A_1B_1C_1D_1$에서 ${frDescr(q)} 정사각형에서 삼각형 $E_1F_1D_1$ 바깥 부분을 칠한 그림을 $R_1$이라 하자. 삼각형 $E_1F_1D_1$ 안에, 두 꼭짓점 $B_2$, $C_2$는 선분 $E_1F_1$ 위에, $A_2$는 선분 $D_1E_1$ 위에, $D_2$는 선분 $D_1F_1$ 위에 있는 정사각형 $A_2B_2C_2D_2$를 그리고, 이 정사각형에서도 같은 방법으로 $E_2$, $F_2$를 잡아 삼각형 $E_2F_2D_2$ 바깥 부분을 칠한 것을 $R_1$에 더한 그림을 $R_2$라 하자. 이 과정을 한없이 되풀이하여 $n$번째 그림 $R_n$에 칠해진 부분의 넓이를 $S_n$이라 할 때, $\\lim_{n\\to\\infty}S_n$의 값을 구하시오. <small>(이전 교육과정 · 극한 부분은 지금 수학Ⅱ 범위)</small>`;
+  function frSteps(q) {
+    const C = frCalc(FRP[q.p]), L2 = q.L * q.L, R1 = FR.mul(FR.mk(L2), C.R1), lim = frAns(q);
+    const pTex = q.p === 'p12' ? '\\dfrac12' : q.p === 'p23' ? '\\dfrac23' : '1';
+    return [
+      `$R_1$의 넓이 = 정사각형 − 삼각형 $E_1F_1D_1$ = $${L2}-${FR.tex(FR.mul(FR.mk(L2), C.t))}=${FR.tex(R1)}$ (정사각형 넓이 $${L2}$의 $${FR.tex(C.R1)}$배).`,
+      `삼각형 $E_1F_1D_1$에 변 $E_1F_1$ 위로 꼭짓점 둘을 놓은 정사각형은 한 변이 $s=\\sqrt2\\cdot ${FR.tex(C.q)}\\cdot ${q.L}$ ($=\\dfrac{bh}{b+h}$) 이므로 넓이의 비 $r=\\dfrac{s^2}{${q.L}^2}=${FR.tex(C.r)}$입니다. 이 비는 단계마다 같습니다.`,
+      `새로 칠해지는 넓이가 $R_1,\\ R_1r,\\ R_1r^2,\\dots$인 등비수열이므로 $S_n=\\dfrac{R_1(1-r^n)}{1-r}$, $\\lim_{n\\to\\infty}S_n=\\dfrac{R_1}{1-r}=\\dfrac{${FR.tex(R1)}}{${FR.tex(FR.sub(FR.mk(1), C.r))}}=${FR.tex(lim)}$ ($|r|\\lt 1$).`
+    ];
+  }
+  function drawF(b, s, v, lab) {
+    const tab = lab.tab;
+    const q = tab === 'explore' ? { p: s.fr_p, L: 1 } : varyF.cur();
+    const pv = FR.val(FRP[q.p]);
+    const nShow = tab === 'explore' ? s.fr_n : tab === 'problem' ? 2 : s.step <= 1 ? 1 : s.step === 2 ? 2 : 5;
+    const sc = 10;
+    const fr = frFrames(pv, sc, Math.max(nShow, 2)).slice(0, nShow);
+    fr.forEach((f, j) => {
+      const sq = [f.Bp, f.C, f.D, f.A], tri = [f.E, f.F, f.D];
+      ringFill(b, sq, tri, 'sky', 0.34);
+      b.poly(sq, { color: 'ink', alpha: j === 0 ? 0.9 : 0.7, width: j === 0 ? 2.2 : 1.6 });
+      b.poly(tri, { color: 'amber', alpha: j === 0 ? 1 : 0.85, width: j === 0 ? 2.2 : 1.6 });
+    });
+    const lbl = (P, name, f) => { const cx = (f.A[0] + f.C[0]) / 2, cy = (f.A[1] + f.C[1]) / 2; b.point(P, { r: 3.6, color: 'ink', label: name, toward: [cx, cy], size: 13, glow: false }); };
+    const f1 = fr[0];
+    lbl(f1.Bp, `B${sb(1)}`, f1); lbl(f1.C, `C${sb(1)}`, f1); lbl(f1.D, `D${sb(1)}`, f1); lbl(f1.A, `A${sb(1)}`, f1);
+    if (q.p !== 'p1') { lbl(f1.E, `E${sb(1)}`, f1); lbl(f1.F, `F${sb(1)}`, f1); }
+    if (nShow >= 2 && tab !== 'explore') { const f2 = fr[1]; ['A', 'B', 'C', 'D'].forEach((nm) => lbl(nm === 'B' ? f2.Bp : f2[nm], `${nm}${sb(2)}`, f2)); }
+    if (tab !== 'explore') {
+      b.text([2.7, -1.15], `한 변의 길이 ${q.L}`, { color: 'ink', size: 13, weight: 800, align: 'center' });
+      if (q.p !== 'p1') b.text([5, 10.95], `B${sb(1)}E${sb(1)} = B${sb(1)}F${sb(1)} = ${Math.round(pv * q.L * 100) / 100}`, { color: 'amber', size: 13, weight: 800, align: 'center' });
+    }
+  }
+  function viewF(s, lab) {
+    const tab = lab.tab;
+    const q = tab === 'explore' ? { p: s.fr_p, L: 1 } : varyF.cur(), C = frCalc(FRP[q.p]);
+    const out = { chips: [{ html: '<b>이전 교육과정</b> · 2009 개정 수학 나형 (등비급수)', color: 'violet' }] };
+    out.formula = '같은 모양이 일정한 <b>넓이의 비 r</b>로 줄어들며 되풀이되면, 새로 칠해지는 넓이는 첫째항 $R_1$, 공비 $r$인 등비수열이고 합은 $S_n=\\dfrac{R_1(1-r^n)}{1-r}$입니다. $|r|\\lt 1$이면 $n\\to\\infty$일 때 $\\dfrac{R_1}{1-r}$에 가까워집니다.';
+    out.notes = '<b>이전 교육과정 안내</b>: 이 유형은 2009 개정 교육과정 나형(2017~2019학년도 평가원·수능 16~19번)에서 나왔고, 극한은 지금 수학Ⅱ(미적분Ⅰ) 범위라 2022 개정 대수에서는 다루지 않습니다. 옛 기출을 풀다 막혔을 때 볼 수 있도록 남겨 둡니다. <b>공비는 길이의 비가 아니라 넓이의 비</b>(닮음비의 제곱)입니다.';
+    if (tab === 'explore') {
+      const n = s.fr_n, Sn = frSum(C, n);
+      out.status = { tone: 'info', text: `${n}번째 그림 · 칠한 넓이 ≈ ${(FR.val(Sn)).toFixed(4)}` };
+      out.readouts = [
+        { label: '정사각형 넓이를 1로 둘 때 R₁', value: FR.txt(C.R1), color: 'sky' },
+        { label: '넓이의 비 r (한 단계 안쪽)', value: FR.txt(C.r), color: 'amber', note: `≈ ${FR.val(C.r).toFixed(4)}` },
+        { label: `Sₙ (n=${n})`, value: FR.txt(Sn), color: 'green', note: `≈ ${FR.val(Sn).toFixed(4)}` },
+        { label: '극한 R₁ ÷ (1 − r)', value: FR.txt(C.lim), color: 'rose', note: `≈ ${FR.val(C.lim).toFixed(4)} · 남은 틈 ${(FR.val(C.lim) - FR.val(Sn)).toFixed(4)}` }
+      ];
+      const segs = Array.from({ length: n }, (_, i) => ({ weight: FR.val(C.R1) * FR.val(C.r) ** i, color: ['sky', 'green', 'amber'][i % 3], text: i < 3 ? `R${sb(i + 1)}` : '' }));
+      segs.push({ weight: Math.max(0.0001, FR.val(C.lim) - FR.val(Sn)), color: 'muted', text: '남은 틈' });
+      out.tape = { title: `$S_{${n}}=${FR.tex(Sn)}\\ \\to\\ ${FR.tex(C.lim)}$ (정사각형 넓이 $=1$)`, answer: true, segments: segs };
+    } else if (tab === 'review' && s.step >= 3) out.tape = { title: `$\\lim S_n=${FR.tex(frAns(q))}$`, answer: true };
+    return out;
+  }
+  function sceneF() {
+    const pre = (p, label) => ({ group: 'E, F의 위치', label, apply: (st) => { st.fr_p = p; }, on: (st) => st.fr_p === p });
+    return {
+      id: 'fig-repeat', title: '[이전 교육과정] 도형 반복 패턴과 등비급수 (넓이의 합이 수렴)', short: '도형 반복(이전 교육과정)',
+      tabs: { compact: true },
+      question: '같은 모양이 일정한 비로 줄어들며 계속 안쪽에 그려질 때, 칠한 넓이의 합 Sₙ은 n이 커지면 어떤 값에 가까워질까?',
+      guide: '<b>n 막대</b>로 단계를 하나씩 늘려 보세요. 안쪽 정사각형의 넓이는 매번 <b>같은 비 r</b>로 줄어들고, 아래 띠의 칠해진 칸이 늘어도 <b>남은 틈</b>이 줄어 한 값에 가까워집니다. E, F의 위치를 바꾸면 r이 달라집니다.',
+      controls: ['fr_n'],
+      presets: () => [pre('p12', 'E, F가 중점'), pre('p23', 'E, F가 2/3 지점'), pre('p1', 'E, F가 꼭짓점 (대각선)')],
+      focus: () => FOC_F,
+      enter: (st) => { st.fr_n = 3; st.fr_p = 'p23'; },
+      vary: varyF,
+      steps: () => frSteps(varyF.cur()),
+      problem: { tag: () => varyF.cur().tag, time: '목표 시간: 150초', text: () => probHTML(frText(varyF.cur())), answer: () => `$${FR.tex(frAns(varyF.cur()))}$`, snap: () => ({ fr_p: varyF.cur().p, fr_n: 2 }) },
+      solution: {
+        standardTitle: 'R₁과 공비 r로 등비급수의 합', standardTag: '기본 풀이', quickTitle: '넓이의 비 r만 구하기', quickTag: '10초 컷',
+        standard: () => ({ steps: frSteps(varyF.cur()).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>') }),
+        quick: () => { const q = varyF.cur(), C = frCalc(FRP[q.p]); return { steps: `정사각형 넓이 ${q.L * q.L}의 $R_1=${FR.tex(C.R1)}$배, 공비 $r=${FR.tex(C.r)}$ → $\\dfrac{R_1}{1-r}=${FR.tex(frAns(q))}$.`, highlight: '각 단계가 닮은 도형이면 첫 번째 칠한 넓이와 넓이의 비 두 개만 구하면 됩니다.' }; }
+      },
+      view: (s, lab) => viewF(s, lab),
+      draw: (b, s, v, lab) => drawF(b, s, v, lab)
+    };
+  }
+
+  /* ====== 조립 ====== */
+  const fi = (v) => String(v);
+  const P = {
+    br_t: { value: 8, min: 1, max: 12, step: 1, color: 'sky', label: '거꾸로 출발하는 값 t', format: fi },
+    br_m: { value: 3, min: 2, max: 4, step: 1, color: 'amber', label: '거꾸로 가는 횟수 m (aₘ₊₁ = t)', format: fi },
+    br_c: { value: 5, min: 1, max: 7, step: 1, color: 'amber', label: '규칙의 수 c', format: fi },
+    cy_a1: { value: -5, min: -8, max: 8, step: 1, color: 'amber', label: '첫째항 a₁', format: fi },
+    cy_k: { value: 3, min: 2, max: 5, step: 1, color: 'green', label: '0 이하일 때 더하는 수 k', format: fi },
+    cy_d: { value: 2, min: 1, max: 3, step: 1, color: 'rose', label: '0보다 클 때 빼는 수 d', format: fi },
+    cy_n: { value: 5, min: 1, max: CYN, step: 1, color: 'sky', label: '표를 채운 항의 수', format: fi },
+    pa_n: { value: 6, min: 1, max: 9, step: 1, color: 'amber', label: '번호 n (포갠 삼각형의 수)', format: fi },
+    pb_n: { value: 2, min: 1, max: 3, step: 1, color: 'amber', label: '번호 n', format: fi },
+    fr_n: { value: 3, min: 1, max: 8, step: 1, color: 'amber', label: '단계 n (그림 Rₙ)', format: fi }
+  };
+  const groups = [
+    { id: 'br-tree-g', title: '분기 점화식: 가능한 a₁ 모두 찾기', short: '가능한 a₁ 찾기', scenes: [scene9()] },
+    { id: 'cyc-table-g', title: '순환에 들어가는 시점: 표로 따라가기', short: '표로 따라가기', scenes: [scene10()] },
+    { id: 'pt-tri-g', title: '좌표평면 위의 점열: 삼각형 넓이와 Σ', short: '점열과 넓이 Σ', scenes: [sceneA(), sceneB()] },
+    { id: 'fig-repeat-g', title: '[이전 교육과정] 도형 반복 패턴과 등비급수', short: '도형 반복(이전)', scenes: [sceneF()] }
+  ];
+  return { params: P, groups };
+  })();
+
   APLab.createLab({
     id: 'alg-sequence',
     title: '수열의 그래프와 점화식',
@@ -1096,9 +1881,9 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     home: '../index.html#algebra',
     legacy: '../../labs/대수/part3.html',
     board: { kind: 'cartesian', focus: FOCUS[0] },
-    params,
+    params: Object.assign({}, params, PLUS.params),
     state: { cont: true, abs: false, stems: true },
-    groups
+    groups: groups.concat(PLUS.groups)
   });
 });
 </script>
