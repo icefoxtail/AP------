@@ -1,0 +1,18 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "VENN",
+  "universe": {"name": "U", "count": "40", "countUnit": "명"},
+  "sets": [
+   {"id": "M", "name": "M", "count": "19", "countUnit": "명"},
+   {"id": "A", "name": "A", "count": "25", "countUnit": "명"}
+  ],
+  "elements": [{"text": "5명", "in": []}],
+  "shade": "M∩A"
+ },
+ "caption": "전체 40명 중 M은 19명, A는 25명, 둘 다 선택하지 않은 학생이 5명이고, 색칠한 M∩A가 두 과목을 모두 선택한 학생이다. n(M∪A)=40-5=35, n(M∩A)=19+25-35=9, 미술만 25-9=16. 정답: 1) 35명 2) 9명 3) 16명",
+ "sourceConditions": [
+  {"id": "c1", "condition": "전체 학생 40명, n(M)=19, n(A)=25, 둘 다 선택하지 않은 학생 5명", "mappedTo": "diagram"}
+ ],
+ "newVisualInformation": ["전체집합 U(40명), 집합 M(19명), A(25명)과 교집합 M∩A 영역, 둘 다 선택하지 않은 학생 수 5"]
+}
