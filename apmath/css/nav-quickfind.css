@@ -1,0 +1,152 @@
+/* 빠른 찾기 (js/nav-quickfind.js). 공통 모달 P 등급(apms-modal--panel)을 그대로 쓰고, 이 파일은 헤더 버튼과 목록 모양만 더한다.
+   색은 토큰(--surface, --text, --border, --primary 등)만 읽어 라이트·다크가 함께 바뀐다. 새 !important 없음. */
+
+/* ── 헤더 돋보기 버튼 ─────────────────────────────────────── */
+.apms-qf-open[hidden] { display: none; }
+.apms-qf-open {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 44px;
+    height: 44px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--text);
+    font-family: inherit;
+    cursor: pointer;
+    flex: 0 0 auto;
+}
+.apms-qf-open:hover { background: var(--surface-2); }
+.apms-qf-open:active { transform: scale(0.96); }
+.apms-qf-open:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* 휴대폰 헤더: 오른쪽 칸을 돋보기 + 사용자 이름으로 나눈다. 왼쪽 칸(☰·←)은 건드리지 않는다. */
+header { grid-template-columns: 144px minmax(0, 1fr) 144px; }
+.mobile-header-right {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2px;
+    min-width: 0;
+}
+.mobile-header-right .mobile-header-user { width: auto; max-width: 88px; }
+body.ap-modal-open .apms-qf-open { visibility: hidden; }
+
+/* PC 상단 막대: 알약 모양(글자 + 단축키 안내). 이름 칸(#desktop-header-user)은 auto 여백으로 오른쪽에 붙으므로 order로 그 뒤에 둔다. */
+.desktop-topbar .apms-qf-open--pill {
+    order: 2;
+    gap: 8px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 12px;
+}
+.desktop-topbar #desktop-header-user { order: 1; }
+.desktop-topbar .apms-qf-open--pill:hover { background: var(--surface-2); }
+.apms-qf-open__kbd {
+    font-family: inherit;
+    font-size: 12px;
+    line-height: 1;
+    color: var(--secondary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px 6px;
+    background: var(--surface-2);
+}
+
+/* ── 찾기 화면 (P 등급 위에 얹는다) ───────────────────────── */
+/* PC·태블릿: 상단 가운데 작은 패널. 휴대폰(≤600px)은 공통 P의 전체 화면을 그대로 쓴다. */
+@media (min-width: 601px) {
+    body #modal-content:has(.apms-quickfind),
+    body.ap-drawer-expanded #modal-content:has(.apms-quickfind) {
+        top: 72px;
+        right: 0;
+        bottom: auto;
+        left: 0;
+        width: min(640px, calc(100vw - 32px));
+        height: auto;
+        max-height: min(600px, calc(100dvh - 96px));
+        margin: 0 auto;
+    }
+}
+
+.apms-qf { display: flex; flex-direction: column; gap: 10px; }
+.apms-qf__field { position: relative; }
+.apms-qf__icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary);
+    pointer-events: none;
+}
+.apms-qf__input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 48px;
+    padding: 0 14px 0 42px;
+    border: 1px solid var(--control-border, var(--border));
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 16px; /* iOS가 16px 미만 입력칸에서 화면을 확대하지 않게 */
+    font-weight: 500;
+}
+.apms-qf__input:focus { border-color: var(--primary); outline: 2px solid var(--primary); outline-offset: 0; }
+.apms-qf__input::placeholder { color: var(--secondary); }
+.apms-qf__status { min-height: 18px; font-size: 13px; color: var(--secondary); }
+.apms-qf__list { display: flex; flex-direction: column; gap: 6px; }
+
+.apms-qf__row {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 52px;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+.apms-qf__row:hover,
+.apms-qf__row.is-active { border-color: var(--primary); background: var(--primary-soft); }
+.apms-qf__row:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.apms-qf__badge {
+    flex: 0 0 auto;
+    min-width: 40px;
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-2);
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+}
+.apms-qf__text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.apms-qf__title,
+.apms-qf__sub { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.apms-qf__title { font-size: 15px; font-weight: 500; }
+.apms-qf__sub { font-size: 13px; color: var(--secondary); }
+.apms-qf__go { flex: 0 0 auto; font-size: 13px; color: var(--secondary); }
+
+@media (max-width: 600px) {
+    .apms-qf__row { min-height: 56px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .apms-qf-open:active { transform: none; }
+}
