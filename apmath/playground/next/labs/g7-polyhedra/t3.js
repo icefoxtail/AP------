@@ -129,7 +129,7 @@
           same.forEach((j) => done.add(j));
           const bad = showBad && same.some((j) => M.ovl[j]);
           if (!vis[i] && !bad) return;
-          D.label(cen3(p), same.map((j) => fLet(net, j)).sort().join('·'), { color: bad ? RED : 'muted', size: bad ? 20 : 19, at: [[0, 0]] });
+          D.label(cen3(p), same.map((j) => fLet(net, j)).sort().join('·'), { color: bad ? RED : 'ink', alpha: bad ? 1 : 0.78, size: 28, at: [[0, 0]] });
         });
       }
       if (C.txt && !C.problem) {
@@ -328,7 +328,7 @@
           }
           q.cl.pts.forEach((k, j) => {
             if (hiPts.has(k)) D.label(q.pos[j], ptName(net, k), { fig: true, color: AMB, size: 19, dir: unitTo(q.pos[j], cen), gap: 12 });
-            else if (q.vis) D.label(q.pos[j], ptName(net, k), { fig: true, color: 'muted', size: 14, dir: unitTo(q.pos[j], cen), gap: 9 });
+            else if (q.vis) D.label(q.pos[j], ptName(net, k), { fig: true, color: 'ink', alpha: 0.75, size: 18, dir: unitTo(q.pos[j], cen), gap: 9 });
           });
         });
       };
@@ -558,7 +558,7 @@
         if (fin && !vis[i] && !role[i]) return;
         const hi = role[i] === 'a' ? AMB : role[i] === 'p' ? SKY : null;
         if (fin && !vis[i]) { ghosts.push([p, hi, fLet(net, i)]); return; }
-        faceTxt(D, C, cen3(p), fLet(net, i), { color: hi || (C.problem ? 'ink' : 'muted'), size: hi || C.problem ? 22 : 19, at: [[0, 0], [0, -17], [0, 17], [-17, 0], [17, 0]] });
+        faceTxt(D, C, cen3(p), fLet(net, i), { color: hi || 'ink', alpha: hi || C.problem ? 1 : 0.78, size: 28, at: [[0, 0], [0, -17], [0, 17], [-17, 0], [17, 0]] });
       });
       ghosts.forEach(([p, hi, tx]) => { if (C.txt) ghostFace(D, p, faces, hi, tx); else D.panel(p, hi, 0, hi, 3, { dash: [7, 5], alpha: 0.9 }); }); // 가려진 고른 면은 맨 나중에(앞면 글자를 피해서)
       if (C.txt && !C.thumb) {
@@ -936,7 +936,7 @@
     if (document.getElementById('ph-t3-css')) return;
     const st = document.createElement('style');
     st.id = 'ph-t3-css';
-    st.textContent = '@media (max-width:859px){.apl-scene-head[data-tab="problem"] .apl-question{display:none}}';
+    st.textContent = '@media (max-width:859px){.apl-scene-head[data-tab="problem"] .apl-question{display:none}body:has(.apl-scene-head[data-tab="problem"]) .apl-stage{height:clamp(240px,36svh,560px)}}';
     document.head.append(st);
   })();
 })();

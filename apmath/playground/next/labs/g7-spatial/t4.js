@@ -346,7 +346,7 @@
         faces.forEach((p, i) => {
           const hi = role[i] ? ROLE4[role[i]].c : null;
           if (fin && !vis[i]) { if (!hi) return; Dr.panel(p, hi, 0.14, hi, 3, { dash: [7, 5], alpha: 0.9 }); }
-          Dr.label(cen(p), net.faceName[i], { color: hi || (C.problem ? 'ink' : 'muted'), size: hi || C.problem ? 22 : 19, badge: fin && !vis[i], at: [[0, 0], [0, -17], [0, 17], [-17, 0], [17, 0]] });
+          Dr.label(cen(p), net.faceName[i], { color: hi || 'ink', alpha: hi || C.problem ? 1 : 0.8, size: 32, badge: fin && !vis[i], at: [[0, 0], [0, -17], [0, 17], [-17, 0], [17, 0]] });
         });
         // 그림 위 글(2줄)
         const x = b.W / 2 - b.insets.right / 2, y0 = b.insets.top + 16, line = (y, str, color) => b.stext(x, y, str, { color, size: 15, weight: 800, align: 'center', baseline: 'middle' });
@@ -422,7 +422,7 @@
     if (document.getElementById('sp-t4-css')) return;
     const st = document.createElement('style');
     st.id = 'sp-t4-css';
-    st.textContent = '@media (max-width:859px){.apl-scene-head[data-tab="problem"] .apl-question{display:none}}';
+    st.textContent = '@media (max-width:859px){.apl-scene-head[data-tab="problem"] .apl-question{display:none}body:has(.apl-scene-head[data-tab="problem"]) .apl-stage{height:clamp(240px,36svh,560px)}}';
     document.head.append(st);
   })();
   window.APL_SP.netOf = netOf;
