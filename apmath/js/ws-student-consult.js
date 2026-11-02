@@ -223,7 +223,8 @@ function wsConsultRemoveRow(sid, cid) {
 // 저장 성공 뒤: 폼을 접고 탭만 그 자리에서 다시 그린다. row가 없으면(응답에 id가 없을 때만) 그 학생 상담만 다시 읽는다.
 async function wsConsultAfterSave(sid, mode, row) {
     const key = String(sid || '');
-    wsConsultReset();
+    // 응답을 기다리는 사이 다른 학생으로 바뀌었으면 그 학생의 폼 상태를 지우지 않는다.
+    if (wsConsult.sid === key) wsConsultReset();
     let selectedId = '';
     if (row && row.id) {
         wsConsultApplyRow(key, row);

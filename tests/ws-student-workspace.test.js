@@ -209,3 +209,21 @@ test('class label: grade is not repeated in the name, teacher only when same nam
     assert.deepEqual(ctx.wsClassLabel(A, [A]), { text: 'X', teacher: 'Y' });
     assert.doesNotMatch(wsClass, /ws-chip">\$\{wsClassEsc\(c\.grade/, 'grade chip next to the name was removed');
 });
+
+// ------------------------------------------------------------ 검수 지적 반영
+test('review fixes: no window.X assignment look-alikes, save for another student keeps the current form, history open state is per student', () => {
+    // 전역 표면 테스트 정규식(window.X =)이 비교(===)를 할당으로 세지 않도록 대괄호 표기를 쓴다
+    for (const src of [student, wsClass, consult, read('apmath/js/ws-student-history.js'), read('apmath/js/ws-student-restore.js')]) {
+        assert.doesNotMatch(stripComments(src), /window\.apmsClassLabel/);
+    }
+    assert.match(consult, /if \(wsConsult\.sid === key\) wsConsultReset\(\);/);
+    const ctx = { window: {}, state: { db: { consultations: [] }, ui: {} }, getStudentDetailLazyState: () => ({ loadedAt: '' }),
+        getStudentStatusHistoryRows: () => [], getStudentClassTransferHistoryRows: () => [],
+        renderStudentStatusHistoryModalHtml: () => '', renderStudentClassTransferHistoryModalHtml: () => '', apmsStudentDetailEsc: v => String(v), apmsStudentJsString: v => JSON.stringify(v),
+        document: { getElementById: () => null }, ensureStudentDetailLazyData: () => Promise.resolve() };
+    vm.createContext(ctx);
+    vm.runInContext(read('apmath/js/ws-student-history.js'), ctx);
+    ctx.wsHistoryToggle('s1', 'status', true);
+    assert.match(ctx.wsHistoryHtml('s1'), /data-ws-history="status" open/);
+    assert.doesNotMatch(ctx.wsHistoryHtml('s2'), / open /, 'another student opens collapsed');
+});

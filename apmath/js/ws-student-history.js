@@ -7,7 +7,8 @@
  * 데이터는 그대로 학생 상세가 이미 불러오는 lazy 데이터(detail-data)를 쓴다. 저장 없는 읽기 구역이라 payload·API 변경 없음.
  */
 
-var wsHistoryOpen = { status: false, transfer: false };
+// 펼친 상태는 학생 한 명에 대해서만 기억한다(다른 학생 상세는 닫힌 채 열린다).
+var wsHistoryOpen = { sid: '', status: false, transfer: false };
 
 var WS_HISTORY_KINDS = {
     status: { label: '상태 변경 이력', count: sid => getStudentStatusHistoryRows(sid).length, html: sid => renderStudentStatusHistoryModalHtml(sid) },
@@ -21,6 +22,7 @@ function wsHistoryJs(value) {
 // renderStudentOperationHistorySection가 버튼 두 개 대신 이 구역을 그린다.
 function wsHistoryHtml(sid) {
     const key = String(sid || '');
+    if (wsHistoryOpen.sid !== key) wsHistoryOpen = { sid: key, status: false, transfer: false };
     const lazy = typeof getStudentDetailLazyState === 'function' ? getStudentDetailLazyState(key) : { loadedAt: '' };
     return `
         <div class="ws-history-list">
@@ -49,6 +51,7 @@ function wsHistoryFill(sid, kind) {
 // <details>의 열림/닫힘. 이력 데이터가 아직이면 불러오고(다 오면 학생 상세가 알아서 그 자리를 다시 그린다) 본문을 채운다.
 function wsHistoryToggle(sid, kind, isOpen) {
     if (!WS_HISTORY_KINDS[kind]) return;
+    if (wsHistoryOpen.sid !== String(sid || '')) wsHistoryOpen = { sid: String(sid || ''), status: false, transfer: false };
     wsHistoryOpen[kind] = !!isOpen;
     if (!isOpen) return;
     wsHistoryFill(sid, kind);

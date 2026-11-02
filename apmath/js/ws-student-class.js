@@ -29,7 +29,7 @@ function wsClassArg(value) {
 // 이름에 그 학년 글자가 없을 때만 앞에 붙이고("고1 심화반"), 같은 이름이 다른 담당과 함께 보일 때만 담당을 보조로 단다.
 // 공통 함수 window.apmsClassLabel(cls, peers) → {text, teacher}가 있으면 그것을 먼저 쓴다.
 function wsClassLabel(cls, peers) {
-    if (typeof window !== 'undefined' && typeof window.apmsClassLabel === 'function') return window.apmsClassLabel(cls, peers);
+    if (typeof window !== 'undefined' && typeof window['apmsClassLabel'] === 'function') return window['apmsClassLabel'](cls, peers);
     const name = String((cls && cls.name) || '').trim();
     const grade = String((cls && cls.grade) || '').trim();
     const text = grade && !name.includes(grade) ? `${grade} ${name}`.trim() : name;
