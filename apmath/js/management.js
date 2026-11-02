@@ -317,7 +317,7 @@ async function toggleClassActive(cid, status) {
 async function handleDeleteClass(classId) {
     if (!classId || classMutationInFlight) return;
 
-    const first = confirm('이 학급을 보관 처리할까요?');
+    const first = confirm('이 반을 보관 처리할까요?');
     if (!first) return;
 
     const second = confirm('기존 출결, 성적, 시험 기록은 삭제되지 않습니다. 보관 처리 후 기본 목록에서는 숨겨집니다. 계속할까요?');
@@ -329,16 +329,16 @@ async function handleDeleteClass(classId) {
         const r = await api.delete('classes', classId);
 
         if (r?.success) {
-            toast('학급이 보관 처리되었습니다.', 'info');
+            toast('반이 보관 처리되었습니다.', 'info');
             // 서버는 행을 지우지 않고 is_active=0으로 바꾼다(mode: 'archived'). 같은 값을 로컬에 반영한다.
             wsClassAfterMutation('archive', { id: String(classId), is_active: 0 });
             return;
         }
 
-        toast(r?.message || r?.error || '학급 보관 처리에 실패했습니다.', 'warn');
+        toast(r?.message || r?.error || '반 보관 처리에 실패했습니다.', 'warn');
     } catch (e) {
         console.error('[handleDeleteClass] failed:', e);
-        toast('학급 보관 처리 중 오류가 발생했습니다.', 'warn');
+        toast('반 보관 처리 중 오류가 발생했습니다.', 'warn');
     } finally {
         classMutationInFlight = false;
         if (typeof wsClassSetBusy === 'function') wsClassSetBusy(false);

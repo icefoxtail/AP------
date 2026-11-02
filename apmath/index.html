@@ -662,8 +662,10 @@
             pointer-events: auto;
         }
 
-        /* Keep the app-level back action available above an open modal. */
-        body.ap-modal-open header,
+        /* Keep the app-level back action available above an open modal.
+           앱 맨 위 줄만 잡는다: `body > header`. (예전 `body.ap-modal-open header`는 모달 안의 모든 <header>
+           (학생 상세 머리줄 등)까지 잡아 pointer-events:none 이 되었다.) */
+        body.ap-modal-open > header,
         body.ap-modal-open .desktop-topbar {
             z-index: 1001;
             background: transparent;
@@ -683,6 +685,17 @@
         body.ap-modal-open .app-back-btn {
             visibility: visible;
             pointer-events: auto;
+        }
+
+        /* 휴대폰(≤600px) 화면 전체 모달(W·P·클리닉 전체 화면)은 모달 헤더의 "취소"가 같은 자리에 있다.
+           앱 ← 버튼이 그 옆에 겹쳐 보이므로 이 경우에만 ← 를 숨긴다(뒤로 가기는 기기 뒤로 가기·취소로 한다).
+           시트형(C·F)은 위쪽이 비어 있어 ← 가 겹치지 않으므로 그대로 둔다. */
+        @media (max-width: 600px) {
+            body.ap-modal-open:has(#modal-content :is(.apms-modal--workspace, .apms-modal--workspace-single, .apms-modal--panel)) .app-back-btn,
+            body.ap-modal-open:has(#modal-content.clinic-print-fullscreen) .app-back-btn {
+                visibility: hidden;
+                pointer-events: none;
+            }
         }
 
         #modal-content {
@@ -783,10 +796,17 @@
             gap: 8px;
         }
 
-        /* 모달이 열려 있으면 토스트를 화면 위쪽에 띄운다. 아래쪽은 하단 고정 액션줄(저장·취소)이 있어 가리면 누르기 어렵다. */
+        /* 모달이 열려 있으면 토스트를 모달 제목줄 아래로 띄운다(2026-11-02 N2). 위쪽 끝에 두면 제목·취소 버튼을 덮고,
+           아래쪽은 하단 고정 액션줄(저장·취소)을 덮는다. 정확한 위치는 ui.js toast()가 모달 헤더를 재서
+           --toast-top / --toast-left 로 넣는다. 아래 값은 재지 못했을 때의 대비값(휴대폰 전체 화면 모달의 헤더 높이쯤)이다.
+           눌러야 하는 곳을 가리지 않도록 토스트는 포인터를 받지 않는다. */
         body.ap-modal-open .toast-container {
             bottom: auto;
-            top: calc(12px + env(safe-area-inset-top));
+            top: var(--toast-top, calc(84px + env(safe-area-inset-top)));
+            left: var(--toast-left, 50%);
+            width: max-content;
+            max-width: calc(100vw - 32px);
+            pointer-events: none;
         }
 
         .toast {
@@ -975,11 +995,11 @@
     </style>
     <link rel="stylesheet" href="./css/apms-theme-override.css">
     <link rel="stylesheet" href="./css/apms-ui-foundation.css">
-    <link rel="stylesheet" href="./css/sidebar-foundation.css">
+    <link rel="stylesheet" href="./css/sidebar-foundation.css?v=20261102-nav-n1-2">
     <link id="dashboard-foundation-css" rel="stylesheet" href="./css/dashboard-foundation.css">
     <link rel="stylesheet" href="./css/classroom-foundation.css">
     <link rel="stylesheet" href="./css/apms-unified-modal.css">
-    <link rel="stylesheet" href="./css/ws-exam.css?v=20261102-1">
+    <link rel="stylesheet" href="./css/ws-exam.css?v=20261102-nav-n1-2">
     <link rel="stylesheet" href="./css/ws-student.css?v=20261102-ws-student-1">
     <link rel="stylesheet" href="./css/timetable-months.css">
     <!-- APMS 웜 테마: .apms-warm-scope 하위에 적용. <body>에 부여 → APMATH 앱 전체
@@ -989,6 +1009,7 @@
     <link rel="stylesheet" href="./css/apms-clinic-print.css">
     <link rel="stylesheet" href="./css/ws-progress.css">
     <link rel="stylesheet" href="./css/ws-clinic.css?v=20261102-ws-clinic-1">
+    <link rel="stylesheet" href="./css/nav-quickfind.css?v=20261102-n3-1">
 </head>
 <body class="apms-warm-scope">
     <header>
@@ -1003,7 +1024,12 @@
         <div class="brand mobile-header-brand" onclick="goHome()">
             <img class="app-header-logo" src="icon-192.png" alt="AP">
         </div>
-        <div class="mobile-header-user" id="mobile-header-user" aria-label="사용자"></div>
+        <div class="mobile-header-right">
+            <button id="apms-qf-open-mobile" class="apms-qf-open apms-qf-open--icon" type="button" onclick="apmsQuickFindOpen()" aria-label="빠른 찾기" title="빠른 찾기" hidden>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M21 21L16.65 16.65M10.8 18.1C6.77 18.1 3.5 14.83 3.5 10.8C3.5 6.77 6.77 3.5 10.8 3.5C14.83 3.5 18.1 6.77 18.1 10.8C18.1 14.83 14.83 18.1 10.8 18.1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="mobile-header-user" id="mobile-header-user" aria-label="사용자"></div>
+        </div>
     </header>
 
     <div class="desktop-topbar" aria-hidden="false">
@@ -1013,6 +1039,10 @@
             </svg>
         </button>
         <div class="desktop-topbar-title" onclick="goHome()"><img class="app-header-logo" src="icon-192.png" alt="AP"></div>
+        <button id="apms-qf-open-desktop" class="apms-qf-open apms-qf-open--pill" type="button" onclick="apmsQuickFindOpen()" aria-label="빠른 찾기" title="빠른 찾기 (Ctrl+K 또는 /)" hidden>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M21 21L16.65 16.65M10.8 18.1C6.77 18.1 3.5 14.83 3.5 10.8C3.5 6.77 6.77 3.5 10.8 3.5C14.83 3.5 18.1 6.77 18.1 10.8C18.1 14.83 14.83 18.1 10.8 18.1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="apms-qf-open__text">빠른 찾기</span><kbd class="apms-qf-open__kbd" aria-hidden="true">Ctrl K</kbd>
+        </button>
     </div>
 
     <main id="app-root"></main>
@@ -1020,7 +1050,7 @@
     <div id="modal-overlay" class="hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title" onpointerdown="handleModalBackdropPress(event)" onclick="handleModalBackdropClick(event)" onkeydown="handleModalKeyboard(event)">
         <div id="modal-content" onclick="event.stopPropagation()">
             <div id="modal-header">
-                <button id="modal-cancel-btn" onclick="closeModal()">취소</button>
+                <button id="modal-cancel-btn" onclick="requestCloseModal('cancel')">취소</button>
                 <h2 id="modal-title"></h2>
                 <button id="modal-action-btn" class="modal-top-action hidden"></button>
             </div>
@@ -1035,7 +1065,7 @@
     <script defer src="../shared/js/wangji-owner-auth-bridge.js"></script>
     <script defer src="js/core.js"></script>
     <script defer src="js/apms-class-label.js"></script>
-    <script defer src="js/ui.js?v=20261102-modal-foundation-1"></script>
+    <script defer src="js/ui.js?v=20261102-nav-history-2"></script>
     <script defer src="js/report-text.js"></script>
     <script defer src="../archive/archive-asset-base.js?v=20261030-s21-1"></script>
     <script defer src="js/archive-render.js"></script>
@@ -1072,6 +1102,7 @@
     <script defer src="js/dashboard-assistant-memos.js?v=2026.08.25.1"></script>
     <script defer src="js/dashboard.js"></script>
     <script defer src="js/study-material-wrong.js"></script>
+    <script defer src="js/nav-quickfind.js?v=20261102-n3-1"></script>
     <script defer src="app.js"></script>
     <script>
     if ('serviceWorker' in navigator) {

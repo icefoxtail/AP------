@@ -285,7 +285,9 @@ test('openOMR: 작업 화면이 있으면 그 화면의 학생 입력 칸으로,
 
 // ---------- 정적 결함 조건 ----------
 test('작업 화면 코드는 모달을 갈아 끼우거나 닫고 다시 열지 않는다', () => {
-    const code = (wsWorkspace + wsData).replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+    // 예외 하나: "표로 한 번에 입력"(wsxOpenOmrTable)은 다른 화면(일괄 OMR)으로 가므로 확인 뒤 닫는다(아래 N1 후속 테스트).
+    const withoutOmrTable = wsWorkspace.replace(/function wsxOpenOmrTable\(\) \{[\s\S]*?\n\}\n/, '');
+    const code = (withoutOmrTable + wsData).replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
     assert.doesNotMatch(code, /showModalStep|replaceModalStep/);
     assert.doesNotMatch(code, /closeModal\(/);
     assert.doesNotMatch(code, /refreshDataOnly|loadData\(|initial-data/);
@@ -336,4 +338,40 @@ test('반 화면 도구 줄: QR 진입은 유지하고 원내평가/OMR은 작�
     assert.match(bar, /openClassroomFeature\('\$\{cid\}', 'exam'\)">원내평가\/OMR<\/button>/);
     assert.match(sliceBetween(classroom, 'function openClassroomFeature(', 'function renderClassToolBarV4B('), /exam: \(\) => openExamGradeView\(classId\)/);
     assert.match(sliceBetween(planner, 'async function openExamGradeView(', 'async function downloadClassExamPdf('), /openExamWorkspace\(classId\)/);
+});
+
+// ---------- N1 후속(2026-11-02): 서랍에서 빠진 "OMR 입력"(전체 학생 한 표 일괄 입력)의 입구를 작업 화면 상단 바에 둔다 ----------
+function runBar(role, classes) {
+    const code = sliceBetween(wsWorkspace, 'function wsxBarHtml() {', 'function wsxListHtml() {');
+    const sandbox = {
+        state: { auth: { role } }, wsx: { classId: 'c1' },
+        wsxClasses: () => classes, wsxEsc: v => String(v), apJsArg: v => JSON.stringify(String(v)), window: {}, toast() {}
+    };
+    vm.createContext(sandbox);
+    vm.runInContext(code, sandbox);
+    return sandbox.wsxBarHtml();
+}
+
+test('상단 바: 선생님에게는 "표로 한 번에 입력" 보조 버튼이 있고 원장에게는 없다(반이 하나여도 둘이어도)', () => {
+    const one = [{ id: 'c1', name: '중3A' }];
+    const two = one.concat([{ id: 'c2', name: '중2B' }]);
+    for (const classes of [one, two]) {
+        const teacher = runBar('teacher', classes);
+        assert.match(teacher, /<button[^>]*id="wsx-omr-table"[^>]*onclick="wsxOpenOmrTable\(\)"[^>]*>표로 한 번에 입력<\/button>/);
+        assert.equal((teacher.match(/wsx-omr-table/g) || []).length, 1);
+        assert.doesNotMatch(runBar('admin', classes), /wsx-omr-table|표로 한 번에 입력/);
+    }
+    assert.match(runBar('teacher', two), /aria-label="반 전환"/, '반 전환 탭은 그대로');
+});
+
+test('표로 한 번에 입력: 작업 화면을 닫고 openOmrInput을 열며, 일괄 화면의 AP MATH 버튼은 그 반 작업 화면으로 돌아온다', () => {
+    const open = sliceBetween(wsWorkspace, 'function wsxOpenOmrTable() {', 'window.wsxOpenOmrTable');
+    assert.match(open, /closeModal\(true\)/);
+    assert.match(open, /openOmrInput\(\)/);
+    assert.match(open, /omrReturnClassId = classId/);
+    const home = sliceBetween(qrOmr, 'function goOmrInputHome() {', 'window.openOmrInput = openOmrInput;');
+    assert.match(home, /omrReturnClassId/);
+    assert.match(home, /renderClass\(returnClassId\)[\s\S]*openExamWorkspace\(returnClassId\)/);
+    assert.match(home, /goHome\(\)/, '돌아갈 반이 없으면 옛 동작(홈) 그대로');
+    assert.match(wsCss, /\.wsx \.wsx-bar__omr \{[^}]*margin-left: auto/);
 });
