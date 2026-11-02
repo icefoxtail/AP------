@@ -16,7 +16,8 @@ function apmsClassLabelText(cls) {
 }
 
 function apmsClassLabelTeacher(cls) {
-    return String(cls?.teacher_name ?? '').trim();
+    // 끝의 "선생님"은 떼고 비교·표시한다("박선생"과 "박선생 선생님"은 같은 담당). classroom.js와 같은 규칙.
+    return String(cls?.teacher_name ?? '').replace(/\s*선생님\s*$/g, '').trim();
 }
 
 function apmsClassLabel(cls, peers) {

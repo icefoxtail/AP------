@@ -362,6 +362,14 @@ test('반 이름 표시 규칙(apmsClassLabel): 학년 중복 없음, 동명 반
     assert.equal(label(y, [x1, x2, y]).teacher, '', '이름이 겹치지 않으면 표시 안 함');
     assert.equal(label(x1, [x1]).teacher, '');
     assert.equal(label({ id: 'z', name: '중3A', grade: '중3' }, [x1, x2]).teacher, '', '담당 이름이 없으면 비운다');
+    // 끝의 "선생님"은 떼고 비교·표시: "박선생"과 "박선생 선생님"은 같은 담당(오탐 표기 없음), 다른 담당이면 "선생님" 없이 표시
+    const t1 = { id: 't1', name: '중3A', grade: '중3', teacher_name: '박선생' };
+    const t2 = { id: 't2', name: '중3A', grade: '중3', teacher_name: '박선생 선생님' };
+    const t3 = { id: 't3', name: '중3A', grade: '중3', teacher_name: '김선생 선생님 ' };
+    assert.equal(label(t1, [t1, t2]).teacher, '', '같은 담당이면 표시 안 함');
+    assert.equal(label(t2, [t1, t2]).teacher, '');
+    assert.deepEqual(label(t2, [t2, t3]), { text: '중3A', teacher: '박선생' });
+    assert.deepEqual(label(t3, [t2, t3]), { text: '중3A', teacher: '김선생' });
     // HTML: 이스케이프 + 담당은 작은 보조 글자 span
     const html = ctx.apmsClassLabelHtml({ id: 'q', name: '<b>중3A', grade: '중3', teacher_name: '박<준성' }, [{ id: 'q', name: '<b>중3A', grade: '중3', teacher_name: '박<준성' }, { id: 'r', name: '<b>중3A', grade: '중3', teacher_name: '다른' }]);
     assert.match(html, /^&lt;b&gt;중3A <span class="apms-class-label__teacher">박&lt;준성<\/span>$/);
