@@ -41,11 +41,12 @@ function sourceMetaPath(sourceShard) {
   if (!normalized.startsWith('archive/generated/lite/v1/') || !normalized.includes('/shards/') || !normalized.endsWith('.js')) return null;
   return normalized.replace('/shards/', '/metadata/').slice(0, -3) + '.json';
 }
-function buildPlan(root = ROOT, { indexDocument = null } = {}) {
+function buildPlan(root = ROOT, { indexDocument = null, crosswalkDocument = null } = {}) {
   const indexBytes = fs.readFileSync(path.join(root, INDEX_REL));
   const index = indexDocument || JSON.parse(indexBytes.toString('utf8'));
   const cutover = jsonAt(root, CUTOVER_REL);
-  const crosswalkBytes = fs.readFileSync(path.join(root, CROSSWALK_REL));
+  // crosswalkDocument is a planning-only override (tests); writeAliases re-reads the real file.
+  const crosswalkBytes = crosswalkDocument ? Buffer.from(`${JSON.stringify(crosswalkDocument, null, 2)}\n`) : fs.readFileSync(path.join(root, CROSSWALK_REL));
   const crosswalk = JSON.parse(crosswalkBytes.toString('utf8'));
   const masterBytes = fs.readFileSync(path.join(root, RPM_MASTER_REL));
   const master = JSON.parse(masterBytes.toString('utf8'));
@@ -61,6 +62,8 @@ function buildPlan(root = ROOT, { indexDocument = null } = {}) {
   const metaCache = new Map();
   const extensionCache = new Map();
   const crosswalkSha = sha256(crosswalkBytes);
+  const sealed = fs.existsSync(path.join(root, RECEIPT_REL)) ? jsonAt(root, RECEIPT_REL).rpmCrosswalk : null;
+  const frozenCrosswalkSha = sealed?.path === CROSSWALK_REL && /^[a-f0-9]{64}$/.test(sealed.sha256 || '') ? sealed.sha256.toLowerCase() : null;
   const crosswalkBlob = gitBlobSha1(crosswalkBytes);
   const masterSha = sha256(masterBytes);
   const authority = {
@@ -129,8 +132,13 @@ function buildPlan(root = ROOT, { indexDocument = null } = {}) {
     };
     let alias = null;
     if (meta.rpmL4Namespace === 'RPM_EXISTING_DRAFT') {
-      if (meta.rpmDraftAuthorityRef !== CROSSWALK_REL || meta.rpmDraftAuthoritySha256?.toLowerCase() !== crosswalkSha.toLowerCase()) { fail('DRAFT_AUTHORITY_BYTES_MISMATCH'); continue; }
-      const checked = deriveMetaBrowsePath(common, xwalkRows, authority);
+      // The approved Meta pinned the whole crosswalk file digest of its time. The shared crosswalk only grows (rows for
+      // other questions are added or updated), so the pinned digest is accepted when it is the current digest or the
+      // digest this tool's own sealed receipt recorded. Whatever the digest, the row named by the Meta must still agree
+      // with the CURRENT crosswalk on parent unit, RPM labels and difficulty (deriveMetaBrowsePath below).
+      const pinned = meta.rpmDraftAuthoritySha256?.toLowerCase();
+      if (meta.rpmDraftAuthorityRef !== CROSSWALK_REL || !pinned || (pinned !== crosswalkSha.toLowerCase() && pinned !== frozenCrosswalkSha)) { fail('DRAFT_AUTHORITY_BYTES_MISMATCH'); continue; }
+      const checked = deriveMetaBrowsePath(common, xwalkRows, { ...authority, sha256: meta.rpmDraftAuthoritySha256 });
       if (checked.status !== 'EXACT_AUTHORITY_ALIAS') { fail(checked.reason || 'EXACT_RPM_CROSSWALK_REQUIRED'); continue; }
       alias = {
         status: 'EXACT_AUTHORITY_ALIAS', ...checked.metaBrowsePath,
