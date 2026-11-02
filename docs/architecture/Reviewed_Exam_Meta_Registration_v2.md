@@ -59,6 +59,21 @@ PT/TPL에는 확장 키를 받지 않는다. 확장 키는 정본 registry·comp
 기본 선택(`basicEligibility`)과 정본 부모(L1/L2)는 그대로라서, 확장 키 문항은 쓸 수 있지만 정본 고급(L3/L4) 승인으로 세지지 않는다.
 `--verify-projection`은 그 충돌을 "확장 키 때문"일 때만(등록기 `resolve()`로 문항 전체 분류를 다시 검증) 허용하고 `consumerLanes.generatedExtension`으로 센다. 다른 충돌은 그대로 막는다.
 
+### FINAL_QA 원본 재결속 `approval.sourceRebind` (2026-11-02)
+
+등록 뒤 원본 JS 바이트가 바뀌어(해설 그림·소제목 표기 등) 영수증 `sourceRawSha256`이 catalog 해시와 어긋나면 Archive2 영수증 루프가 그 시험지를 건너뛰어 고급(L3/L4) 승인이 0이 된다.
+이유: 이때 FINAL_QA 요청을 그대로 쓰면 META_PIPELINE_AUDIT로 등록된 행의 EVIDENCE_DEBT(difficulty/integrationPattern null)와 부모 L1/L2 증거를 채울 값이 없어 거절되고,
+승인값을 새로 만들면 검수 우회가 된다. 그래서 값을 하나도 바꾸지 않는 재결속만 따로 허용한다.
+
+- 요청: `approval.type: FINAL_QA`, `approval.sourceRebind: { priorReceiptRef: { path, sha256 } }`(같은 `evidenceRefs`에도 포함), `registryChanges` 없음, 모든 item은 `before: {}`, `after: {}`.
+- 등록기는 이전 영수증이 같은 시험·원본·문항 수이고 원본 바이트가 실제로 달라졌는지, 현재 메타 행이 이전 영수증 `appliedRecords`와 문항별로 완전히 같은지 확인한다.
+  허용되는 유일한 값 차이는 이후 5단계 난이도 intake(`register-difficulty5.mjs`)가 영수증의 null `difficultyBucket`을 채운 필드(`difficultyBucket/difficultyConfidence/difficultyBoundaryFlag/legacyLevelCompatibility`)다.
+- 문항 `sourceFingerprint`(지문·보기·정답·해설·image 결속)가 메타와 같아야 한다. 어느 하나라도 바뀐 문항이 있으면 요청 전체가 거절되므로 그 문항은 요청에서 빼고 재검수한다.
+  source JS의 `sourceFields`는 메타와 같아야 하며, 예외는 `subUnit` 표기가 같은 `subUnitKey`의 정본 라벨일 때뿐이다.
+- 기존 Runtime 행은 `metadataRevision`/`approvalEvidence`만 다르게 재사용한다. 갱신되는 것은 메타 행의 `metadataRevision`·`approvalEvidence`와 새 영수증·Runtime 행뿐이며,
+  `metadataApprovalType`, `fieldStatus`, `tagConfidence`, EVIDENCE_DEBT는 등록 당시 그대로 둔다(새 의미 검수를 했다고 기록하지 않는다).
+- 요청 근거로 승인 시점 바이트와 현재 바이트를 문항별로 비교한 `*.review.json`을 둔다(바뀐 필드 목록, 문항별 fingerprint 일치).
+
 ### `META_PIPELINE_AUDIT` 승인 유형
 
 `META_PIPELINE_AUDIT`는 Gemini의 심화 메타 감사 인계를 등록하는 별도 유형이다. 이 유형은 FINAL_QA 또는 REVIEW2로 변환하지 않으며, 시험지의 최종 수학·해설 QA 상태를 승인하지 않는다. 요청은 다음을 제공한다.
