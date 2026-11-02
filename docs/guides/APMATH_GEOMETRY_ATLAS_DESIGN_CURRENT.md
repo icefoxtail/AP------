@@ -15,7 +15,7 @@
 |---|---|---|
 | 실험실 | 눈으로 보고 움직이는 장면. 탐구·정리·문제 | 출시(실험실 54개) |
 | 노선 | 개념 노선(완행) + 빠른 풀이 노선(급행) | 개념 노선만 있음 |
-| 사전 | 도형별 정의·성질·판정 조건·서술형 문장 카드 | 설계 |
+| 사전 | 도형별 정의·성질·판정 조건·서술형 문장 카드 | 범위 조사 완료(초중고 196항목), 화면은 설계 |
 
 세 기둥은 서로 링크로 잇는다. 풀이에 나온 "마름모의 성질"을 누르면 사전 카드가 열리고, 카드에서 그 성질이 쓰이는 실험실 장면과 급행 노선 역으로 간다. 데이터(카탈로그·태그)로 쌓아 앱이나 초등 확장 때도 구조가 그대로 가게 한다.
 
@@ -57,6 +57,7 @@
 - 카드 구성: 정의 / 성질 / 판정 조건 / 그림(실험실 링크) / 이 성질이 쓰이는 곳(고등 문제·급행 역) / 서술형 문장 틀.
   - 예: 이등변삼각형 — 두 변의 길이가 같은 삼각형 / 두 밑각이 같다, 꼭지각의 이등분선은 밑변을 수직이등분한다 / "△ABC는 AB=AC인 이등변삼각형이므로 ∠B=∠C".
 - 풀이 속 도형 이름은 카드로 링크한다.
+- 범위: 초등 54·중등 69·고등 60·교과 외 도구 13, 카드 데이터는 `geometry-dictionary.json`. 교과 외 정리(메넬라우스·체바·각의 이등분선 정리 등)는 「교과 외 도구」로 표시하고, 서술형에는 닮음·넓이비로 풀어 쓰는 안전한 문장을 함께 둔다. 초등 학년 배치와 2022 개정 잔존 여부 일부는 EVIDENCE_DEBT(교과서 대조 필요).
 
 ## 5. 화면 기준
 
@@ -75,6 +76,7 @@
 
 ## 관련 문서
 
+- 도형 사전 범위(196항목, 카드 초안·계층도): [APMATH_GEOMETRY_DICTIONARY_SCOPE_CURRENT.md](APMATH_GEOMETRY_DICTIONARY_SCOPE_CURRENT.md), 데이터 [geometry-dictionary.json](geometry-dictionary.json)
 - 도형 빠른 접근 유형 지도(51유형, 실험실 판정·우선순위): [APMATH_GEOMETRY_SHORTCUT_MAP_CURRENT.md](APMATH_GEOMETRY_SHORTCUT_MAP_CURRENT.md)
 - 기출 분류표: [기하](APMATH_GEOMETRY_HIGH_KICE_INDEX_CURRENT.md), [대수](APMATH_ALGEBRA_KICE_INDEX_CURRENT.md), [미적분Ⅰ](APMATH_CALCULUS1_KICE_INDEX_CURRENT.md), [고1 공통수학](APMATH_COMMON_MATH_KICE_INDEX_CURRENT.md), [확률과 통계](APMATH_PROBSTAT_KICE_INDEX_CURRENT.md)
 - 중등 인계·겨냥도 기준: [APMATH_GEOMETRY_LAB_G8_G9_HANDOFF_CURRENT.md](APMATH_GEOMETRY_LAB_G8_G9_HANDOFF_CURRENT.md)
