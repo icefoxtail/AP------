@@ -155,7 +155,7 @@ def validate(spec):
             if not isinstance(obj.get('expression'),str): raise ValueError('EXPRESSION_REQUIRED')
             lo,hi=point(obj['domain'])
             if lo>=hi: raise ValueError('INVALID_DOMAIN')
-            if 'branch' in obj and obj['branch'] not in {'G_PIECE_1','G_PIECE_2','G_PIECE_3','G_PIECE_4','G_PIECE_5','G_PIECE_6','G_PIECE_7','G_PIECE_8','LEFT','RIGHT','PIECE_1','PIECE_2','PIECE_3','PIECE_4','PIECE_5','PIECE_6','PIECE_7','PIECE_8'} and not re.fullmatch(r'REF_[A-Za-z][A-Za-z0-9]{0,7}(?:_[1-4])?',str(obj['branch'])):raise ValueError('INVALID_GRAPH_BRANCH_TAG')
+            if 'branch' in obj and obj['branch'] not in {'LEFT','RIGHT'} and not re.fullmatch(r'(?:G_)?PIECE_(?:[1-9]|1[0-2])',str(obj['branch'])) and not re.fullmatch(r'REF_[A-Za-z][A-Za-z0-9]{0,7}(?:_[1-4])?',str(obj['branch'])):raise ValueError('INVALID_GRAPH_BRANCH_TAG')
         elif kind in {'EQUATION_LABEL','GRAPH_ANNOTATION','CONDITION_BOX'}:
             point(obj['at'])
             if kind=='CONDITION_BOX':

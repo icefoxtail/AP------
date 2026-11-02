@@ -668,7 +668,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 
 **직선·세로선.** `lines:[{"id":"g","slope":"-2","intercept":"0"}]`는 `y=slope*x+intercept`(slope 0 허용)를, `{"id":"k","x":"3"}`는 세로선 `x=3`을 그린다. 직선은 그림 영역에 맞춰 잘리고 식(`y=...`, `x=...`)이 직선 옆에 지시선으로 붙는다. 식 대신 다른 글자를 쓰려면 `label`을 준다(예: `"label":"x=k"`). (E31) `label`은 40자 이내의 식으로 수식 조판되고 관측기가 글리프를 읽는다(`OVERLAY_LABEL_TEXT_MISMATCH`). 등호가 하나인 식은 정확히 읽어 그려진 직선과 같은 직선인지 확인한다(`OVERLAY_LABEL_NOT_THE_LINE`; x²·xy는 `OVERLAY_LABEL_NOT_LINEAR`). 문자(`a`)가 들어 있으면 그림이 그린 값을 `"labelValues":{"a":"-2"}`로 주어 확인하거나, 주지 않아 기호식(그대로 보이고 비교하지 않음)으로 둔다(`OVERLAY_LABEL_VALUES_INVALID`, `OVERLAY_LABEL_VALUES_UNUSED`, `OVERLAY_LABEL_VALUES_WITHOUT_LABEL`, `OVERLAY_LABEL_VALUES_WITHOUT_EQUATION`). 등호가 없는 글은 이름으로 보고 비교하지 않는다. 세로선은 `{"id":"k","x":"1","label":"x-1=0"}`처럼 쓴다. 두 점을 잇는 *선분*은 직선이 아니므로 `segments`를 쓴다. (E31) 직선에 `"style":"DASHED"`를 주면 얇은 점선으로 그린다(다른 직선을 평행이동한 직선, 보조 직선; 기본 `SOLID`; 그 밖의 값은 `OVERLAY_LINE_STYLE_INVALID:<id>`). 식 라벨은 실선과 똑같이 놓이고 관측기가 최종 SVG의 점선 여부를 plan과 대조한다(`OVERLAY_LINE_STYLE_MISMATCH:<id>`). **한 점에서 뻗은 직선 묶음**(`y=ax+1`처럼 모두 P(0,1)을 지나는 직선, 점 P에서 두 점으로 가는 선분)의 식·기울기 라벨은 직선과 선분 사이 쐐기가 좁아 긴 글자(`기울기 8/3`)가 들어가지 않을 수 있다. 엔진은 선분·직선의 양 끝과 가운데를 훑고 상자를 옆으로 밀어 가며 지시선 자리까지 찾지만, 쐐기보다 넓은 라벨은 거절되니 짧은 수식 라벨(`8/3`, `y=2x+1`)을 쓰거나 캔버스를 키운다.
 
-**점.** `points`의 한 점은 다음 중 **하나**로 쓴다.
+**점.** `points`는 최대 12개다(정수 사이마다 x축과 만나는 근 10개를 이름 없는 점으로 찍는 경우 등). 한 점은 다음 중 **하나**로 쓴다.
 - `{"id":"A","curveX":"0"}`: 그은 곡선 위의 점(엔진이 y를 정확히 계산). exp-log pair는 `"curve":"<curves의 id>"`를 함께 쓴다. 삼각함수의 `ratePi`(계수 `[A,C]`)·`phase` 문법에서도 된다(`a·f(rate·x+phase)+c`로 계산).
 - `{"id":"P","intersect":["g","k"]}`: overlay 직선 두 개의 교점(평행·두 세로선은 거절).
 - `{"id":"C","axis":"x","value":"-1-sqrt(7)"}`: 축 위의 점(`axis`는 `x` 또는 `y`).
@@ -727,7 +727,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
  "caption":"x=1에서 좌극한 -2, 우극한 2, 함수값 f(1)=1인 불연속함수의 그래프."}
 ```
 
-- `pieces`는 왼쪽부터 1~8개다. 각 조각은 `{"coefficients":[상수, x, x²], "domain":[lo, hi], "start":"OPEN"|"CLOSED", "end":"OPEN"|"CLOSED"}`이고 계수는 3-4와 같은 정확한 문자열(정수·분수·`p+q*sqrt(r)`, 한 plan에 근호 하나)이다. 차수는 2 이하(일차식은 두 개, 상수는 한 개)다.
+- `pieces`는 왼쪽부터 1~12개다. 각 조각은 `{"coefficients":[상수, x, x²], "domain":[lo, hi], "start":"OPEN"|"CLOSED", "end":"OPEN"|"CLOSED"}`이고 계수는 3-4와 같은 정확한 문자열(정수·분수·`p+q*sqrt(r)`, 한 plan에 근호 하나)이다. 차수는 2 이하(일차식은 두 개, 상수는 한 개)다.
 - `domain`의 두 끝은 정확한 값 또는 `null`이다. `null`은 무한 구간이며 **첫 조각의 왼쪽 끝과 마지막 조각의 오른쪽 끝에만** 쓸 수 있다. 그 끝은 그림 패널 끝까지 그려진다.
 - `start`/`end`는 그 끝을 포함하는지다(기본 `CLOSED`). **조각은 자기 구간 위에만 그려지므로 점프한 두 조각 사이에 이어지는 선이 생기지 않는다.** 엔진이 열린 끝은 빈 점, 닫힌 끝은 채운 점으로 그린다. 저자는 점을 직접 쓰지 않는다.
 - **경계의 함수값은 정확히 하나로 정해져야 한다.** 같은 x에서 두 조각이 만날 때 한쪽 끝이 `CLOSED`이면 그 값이 함수값이고, 양쪽이 모두 `OPEN`이면 `jumpValues`에 `{"x","y"}`를 써야 한다(없으면 `PIECEWISE_DISCONTINUITY_UNDECLARED`). 쓴 값이 닫힌 끝의 값과 다르면 `PIECEWISE_VALUE_CONFLICT`이고, 같은 x에서 양쪽이 모두 `CLOSED`이면 `PIECEWISE_DOMAIN_OVERLAP`이다. 조각이 겹쳐도 `PIECEWISE_DOMAIN_OVERLAP`이다.
@@ -749,7 +749,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 ```
 
 한계와 오류 코드(가짜 지원 없이 거절):
-- 조각 9개 이상(계단 `step`은 7칸 이상) `PIECEWISE_TOO_MANY_PIECES`, 잘못된 조각 `PIECEWISE_DISCONTINUOUS_PIECE_INVALID:<n>`, 계수 문법 오류 `PIECEWISE_DISCONTINUOUS_COEFFICIENT_INVALID`, 잘못된 끝 상태 `PIECEWISE_ENDPOINT_STATE_INVALID:<n>`, 계단 구간 오류 `STEP_INTERVAL_INVALID`, 알 수 없는 필드 `PIECEWISE_DISCONTINUOUS_FIELD_UNKNOWN:<field>`.
+- 조각 13개 이상(계단 `step`은 7칸 이상) `PIECEWISE_TOO_MANY_PIECES`, 잘못된 조각 `PIECEWISE_DISCONTINUOUS_PIECE_INVALID:<n>`, 계수 문법 오류 `PIECEWISE_DISCONTINUOUS_COEFFICIENT_INVALID`, 잘못된 끝 상태 `PIECEWISE_ENDPOINT_STATE_INVALID:<n>`, 계단 구간 오류 `STEP_INTERVAL_INVALID`, 알 수 없는 필드 `PIECEWISE_DISCONTINUOUS_FIELD_UNKNOWN:<field>`.
 - **쓰지 않는 필드:** `formula`(불연속함수의 머리줄 식), `domain`, `viewport`는 받지 않는다. 필요하면 caption에 식을 쓰고, 두 함수가 모두 필요하면 아래 **두 함수·접근 화살표**를 쓴다. 그 밖의 경우는 EXEMPT/UNSUPPORTED로 쓴다.
 - 수직선, 세로선, 차수 3 이상 조각, 색칠 영역, 기울어진 기준선은 지원하지 않는다. UNSUPPORTED.
 - **곡선 이름 자리와 축 변수** (G12-4): `graphPlan.nameLabel:{"at":"END","side":"BELOW"}`(`at`은 `START|MID|END`, `side`는 `BELOW`(기본)|`ABOVE`; `functionName`이 있어야 한다)는 f의 이름 `f(x)`를 곡선의 그 쪽 끝·가운데 곁에 쓴다(없으면 왼쪽 끝 아래). `graphPlan.axisVariable:"m"`(소문자 한 글자, `y`·함수 이름은 안 됨)은 가로축 글자와 함수 이름을 `m`, `g(m)`으로 쓴다(`INVALID_AXIS_VARIABLE`, `CURVE_NAME_LABEL_INVALID`). 관측기는 축 글자·이름 글리프와 이름의 자리(곡선의 그 쪽, 그 쪽 면)를 읽는다(`AXIS_VARIABLE_LABEL_MISMATCH`, `AXIS_VARIABLE_NAME_MISMATCH:<이름>`, `CURVE_NAME_LABEL_NOT_AT_PLACE`). 단일 함수와 `SHARED`에서만 되고 `STACKED`는 `PAIR_STACKED_CURVE_FIELDS_UNSUPPORTED`다. 색(`curveColor`, g의 `color`)과 지시선 라벨(`overlays.callouts`)은 3-14의 G12 절. SHARED 예(`ops/golden/item105g12`): y축 위 점 `ya`·`yf`에 `callouts:[{"id":"cl","point":"ya","text":"a","direction":"W"}]`.

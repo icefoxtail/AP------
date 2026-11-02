@@ -2140,7 +2140,7 @@ def fit_piecewise_polynomial(plan):
 # CLOSED end or by jumpValues, and a jumpValue may also stand alone as an isolated point. A staircase is written as a step block.
 PIECEWISE_DISCONTINUOUS_FIELDS={'family','pieces','step','jumpValues','referenceLines','requiredPoints','exactCoordinates','axisTickValues','functionName','domain','viewport','plotHeightLimit','axisTitles','limitArrows','xWindow','sharedCurve','sharedFeatures','overlays','overlayAnchors','curveColor','nameLabel','axisVariable'}
 PIECEWISE_DISCONTINUOUS_OVERVIEW_POLICY='PIECEWISE_DISCONTINUOUS_OVERVIEW_v1'
-PIECEWISE_DISCONTINUOUS_MAX_PIECES=8   # a two-function solution figure restores a graph with its mirror image: 8 pieces
+PIECEWISE_DISCONTINUOUS_MAX_PIECES=12   # up to 12 pieces: a two-function solution figure restores a graph with its mirror image (8), and an even or periodic function joins integer points over [-4,6] (10)
 PIECEWISE_DISCONTINUOUS_MAX_STEPS=6
 PIECEWISE_DISCONTINUOUS_MAX_JUMP_VALUES=8
 PIECEWISE_DISCONTINUOUS_MAX_REQUIRED_POINTS=24
@@ -2605,7 +2605,7 @@ def fit_piecewise_discontinuous(plan,frame=None,probe=False):
 # segments to the axes, simple polygons and extra named points on the curve. Every coordinate is recomputed here exactly; the plan names
 # the points and the elements, never raw derived coordinates. The fitted plan carries overlaysFeatures (numeric, for the model/spec) and
 # the independent graph observer recomputes the same values from the raw overlays field and reads the FINAL SVG back.
-OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4,'quadrants':4,'circles':2,'circleRegions':2,'callouts':4}
+OVERLAY_LIMITS={'points':12,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4,'quadrants':4,'circles':2,'circleRegions':2,'callouts':4}
 # overlays.names: a plain Korean name (토끼, 거북이, 직선 l) written beside one overlay segment, overlay line or the drawn curve at curveX.
 OVERLAY_NAME_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,10}'
 OVERLAY_LATTICE_REGIONS=('BELOW_CURVE','ABOVE_CURVE')

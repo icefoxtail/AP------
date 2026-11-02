@@ -2211,7 +2211,7 @@ def _pd_pieces(plan):
         width=S.Rational(x_to-x_from,len(heights))
         return [{'coefficients':[height,S.Integer(0),S.Integer(0)],'a':S.Rational(x_from+index*width),'b':S.Rational(x_from+(index+1)*width),'start':'CLOSED','end':'CLOSED' if index==len(heights)-1 else 'OPEN'} for index,height in enumerate(heights)]
     raw=plan['pieces']
-    if not isinstance(raw,list) or not 1<=len(raw)<=8:raise ValueError('PIECEWISE_TOO_MANY_PIECES')
+    if not isinstance(raw,list) or not 1<=len(raw)<=12:raise ValueError('PIECEWISE_TOO_MANY_PIECES')
     pieces=[]
     for entry in raw:
         if isinstance(entry,dict) and entry.get('kind')=='ARC':

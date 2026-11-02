@@ -40,6 +40,17 @@ class Framing(unittest.TestCase):
         self.assertEqual([(row['coefficients'],row['interval'],row['start'],row['end']) for row in f['pieces']],
                          [(['1','0','0'],['0','1'],'CLOSED','OPEN'),(['2','0','0'],['1','2'],'CLOSED','OPEN'),(['1','0','0'],['2','3'],'CLOSED','CLOSED')])
         self.assertEqual([(row['x'],row['y'],row['state']) for row in f['markers']],[('0','1','CLOSED'),('1','1','OPEN'),('1','2','CLOSED'),('2','1','CLOSED'),('2','2','OPEN'),('3','1','CLOSED')])
+    def test_twelve_pieces_are_accepted_and_thirteen_refused(self):
+        # G13c: an even / periodic function joins integer points over [-4,6]: 10 pieces; the limit is 12
+        def joined(count):return {'family':'piecewise-discontinuous','pieces':[{'coefficients':['0'],'domain':[index,index+1],**({'start':'OPEN'} if index else {})} for index in range(count)],'requiredPoints':[],'axisTickValues':{'x':[],'y':[]}}
+        self.assertIsNone(refused(joined(12)))
+        self.assertEqual(refused(joined(13)),'PIECEWISE_TOO_MANY_PIECES')
+    def test_overlay_points_up_to_twelve(self):
+        # G13c: one unnamed dot per integer interval of [-4,6] (10) is more than the old limit of 8
+        def with_points(count):
+            p=copy.deepcopy(STEP);p['overlays']={'points':[{'id':'z%d'%i,'x':'0','y':'1','unnamed':True} for i in range(count)]};return p
+        self.assertIsNone(refused(with_points(12)))
+        self.assertEqual(refused(with_points(13)),'OVERLAY_TOO_MANY:points')
     def test_extrema_must_be_marked(self):
         g=fit_overview(EXTREMA)['graphPlan']
         self.assertEqual(g['piecewiseDiscontinuousFeatures']['extrema'],[{'x':'-1','y':'-2','kind':'MIN'}])
@@ -51,7 +62,7 @@ class Framing(unittest.TestCase):
         p=copy.deepcopy(JUMP);del p['jumpValues'];cases.append((p,'PIECEWISE_DISCONTINUITY_UNDECLARED:1'))
         p=copy.deepcopy(JUMP);p['pieces'][1]['domain']=['0','3'];cases.append((p,'PIECEWISE_DOMAIN_OVERLAP:0'))
         p=copy.deepcopy(JUMP);p['pieces'][0]['start']='HALF';cases.append((p,'PIECEWISE_ENDPOINT_STATE_INVALID:1'))
-        p=copy.deepcopy(JUMP);p['pieces']=[{'coefficients':['0'],'domain':[index,index+1]} for index in range(9)];cases.append((p,'PIECEWISE_TOO_MANY_PIECES'))
+        p=copy.deepcopy(JUMP);p['pieces']=[{'coefficients':['0'],'domain':[index,index+1]} for index in range(13)];cases.append((p,'PIECEWISE_TOO_MANY_PIECES'))
         p=copy.deepcopy(JUMP);p['referenceLines'][0]['intersectionX']=['-1'];cases.append((p,'PIECEWISE_INTERSECTION_MISMATCH:k:engine finds 2'))
         p=copy.deepcopy(JUMP);p['referenceLines'][0]['intersectionX']=['-2','1'];cases.append((p,'PIECEWISE_INTERSECTION_MISMATCH:k:engine finds 2'))
         p=copy.deepcopy(STEP);p['step']['xFrom']=4;cases.append((p,'STEP_INTERVAL_INVALID'))
