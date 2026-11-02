@@ -20,21 +20,21 @@ const readinessCheck = spawnSync(process.execPath, [
 assert.strictEqual(readinessCheck.status, 0, readinessCheck.stdout || readinessCheck.stderr);
 
 assert.strictEqual(runtime.packId, "DERIVATIVE");
-assert.strictEqual(runtime.records.length, 320);
-assert.strictEqual(runtime.taxonomyRows.length, 48);
+// 하한(기준일 2026-11-02): 등록이 늘면 자연히 증가하므로 정확한 개수 대신 "줄어들지 않음"만 검사한다.
+const total = runtime.records.length;
+assert(total >= 380, `derivative runtime records shrank: ${total}`);
+assert(runtime.taxonomyRows.length >= 68, `derivative taxonomy rows shrank: ${runtime.taxonomyRows.length}`);
 // These two pack-level join counts and the per-row repair flags preserve the original
-// promotion provenance; the current catalog join is separately recomputed below.
+// promotion provenance (immutable, not recomputed by the generator); the current catalog join is separately recomputed below.
 assert.strictEqual(runtime.counts.catalogUidDirectJoin, 241);
 assert.strictEqual(runtime.counts.catalogSourceIdentityRepairJoin, 79);
-assert.strictEqual(runtime.counts.defaultSelectable, 320);
-assert.strictEqual(runtime.counts.sourceHold, 144);
-assert.strictEqual(runtime.counts.automaticEligibleExpected, 176);
-assert.strictEqual(runtime.counts.currentCatalogUidDirectJoin, 320);
-assert.strictEqual(runtime.counts.currentCatalogSourceIdentityRepairJoin, 0);
+assert.strictEqual(runtime.records.filter((row) => row.catalogIdentityRepairVerified === true).length, runtime.counts.catalogSourceIdentityRepairJoin);
+assert.strictEqual(runtime.counts.defaultSelectable + runtime.counts.supplementary, total);
+assert.strictEqual(runtime.records.filter((row) => row.defaultSelectable === true).length, runtime.counts.defaultSelectable);
+assert.strictEqual(runtime.counts.sourceHold + runtime.counts.automaticEligibleExpected + runtime.counts.supplementary, total);
+assert.strictEqual(runtime.counts.currentCatalogUidDirectJoin + runtime.counts.currentCatalogSourceIdentityRepairJoin, total);
 assert.strictEqual(runtime.counts.currentCatalogJoinMismatch, 0);
-assert.strictEqual(runtime.counts.currentCatalogSourceHoldDirect, 144);
-assert.strictEqual(new Set(runtime.records.map((row) => row.questionUid)).size, 320);
-assert.strictEqual(runtime.records.filter((row) => row.catalogIdentityRepairVerified === true).length, 79);
+assert.strictEqual(new Set(runtime.records.map((row) => row.questionUid)).size, total);
 
 let direct = 0;
 let repaired = 0;
@@ -61,9 +61,12 @@ for (const overlay of runtime.records) {
     sourceReady += 1;
   }
 }
-assert.strictEqual(direct + repaired, 320);
-assert.strictEqual(sourceReady, 176);
-assert.strictEqual(sourceHold, 144);
+assert.strictEqual(direct + repaired, total);
+assert.strictEqual(sourceReady + sourceHold, total);
+assert.strictEqual(sourceReady, runtime.counts.automaticEligibleExpected);
+assert.strictEqual(sourceHold, runtime.counts.sourceHold);
+assert.strictEqual(sourceHold, runtime.counts.currentCatalogSourceHoldDirect);
+assert.strictEqual(repaired, runtime.counts.currentCatalogSourceIdentityRepairJoin);
 
 const newlyHeld = [
   {
@@ -88,8 +91,9 @@ const newlyHeld = [
   },
 ];
 const readiness = receipt.checked.currentCanonicalSourceReadinessV1;
-assert.strictEqual(readiness.packs.DERIVATIVE.sourceHoldCount, 144);
-assert.strictEqual(readiness.packs.DERIVATIVE.automaticEligibleExpected, 176);
+assert.strictEqual(readiness.packs.DERIVATIVE.sourceHoldCount, sourceHold);
+assert.strictEqual(readiness.packs.DERIVATIVE.automaticEligibleExpected, sourceReady);
+assert.strictEqual(readiness.packs.DERIVATIVE.heldRecords.length, sourceHold);
 for (const item of newlyHeld) {
   const base = bySource.get(sourceKey(item.sourceFile, item.ordinal));
   assert(base);
@@ -119,7 +123,11 @@ const combined = [
   ...readJson("archive/data/meta-foundation/runtime/integral-calculus-v1.json").records,
   ...runtime.records,
 ];
-assert.strictEqual(combined.length, 1983);
+// 하한(기준일 2026-11-02): 여섯 팩 합계. 등록이 늘면 자연히 증가한다.
+assert(combined.length >= 2122, `combined runtime records shrank: ${combined.length}`);
+const byPack = receipt.checked.existingRuntimeRecordsByPack;
+assert.strictEqual(combined.length, ["GEOMETRY_EQUATIONS", "SETS_PROPOSITIONS", "FUNCTIONS_GRAPHS", "LIMIT_CONTINUITY", "INTEGRAL_CALCULUS", "DERIVATIVE"]
+  .reduce((sum, id) => sum + byPack[id], 0));
 assert.strictEqual(new Set(combined.map((row) => row.questionUid)).size, combined.length);
 assert.strictEqual(new Set(combined.map((row) => sourceKey(row.sourceArchiveFile, row.sourceOrdinal))).size, combined.length);
 assert.strictEqual(receipt.checked.combinedRuntimeRecords, runtimeRecordCount);
@@ -127,7 +135,7 @@ assert.strictEqual(receipt.checked.combinedUniqueUid, runtimeRecordCount);
 assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, runtimeRecordCount);
 assert.strictEqual(receipt.checked.combinedRuntimeCatalogJoin, runtimeRecordCount);
 assert.strictEqual(receipt.checked.combinedRuntimeCatalogJoinMismatch, 0);
-assert.strictEqual(receipt.checked.derivativeRuntimeRecords, 320);
-assert.strictEqual(receipt.checked.derivativeAutomaticEligibleExpected, 176);
-assert.strictEqual(receipt.checked.derivativeSourceHold, 144);
+assert.strictEqual(receipt.checked.derivativeRuntimeRecords, total);
+assert.strictEqual(receipt.checked.derivativeAutomaticEligibleExpected, sourceReady);
+assert.strictEqual(receipt.checked.derivativeSourceHold, sourceHold);
 console.log("PASS MathII derivative Archive2 runtime bridge");
