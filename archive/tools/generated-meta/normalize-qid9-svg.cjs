@@ -1,7 +1,7 @@
 'use strict';
 
 function getAttribute(tag, name) {
-  const match = tag.match(new RegExp("\\b" + name + "\\s*=\\s*(?:\"([^\"]*)\"|'([^']*)'|([^\\s>]+))", "i"));
+  const match = tag.match(new RegExp("(?<![\\w:.-])" + name + "\\s*=\\s*(?:\"([^\"]*)\"|'([^']*)'|([^\\s>]+))", "i"));
   return match ? (match[1] ?? match[2] ?? match[3] ?? '') : '';
 }
 
@@ -72,7 +72,7 @@ function normalizeQid9Svg(input, uid, labels = {}) {
   rootMatch = svg.match(/<(?:(?<prefix>[A-Za-z_][\w.-]*):)?svg\b[^>]*>/i);
   const titleMatches = [...svg.matchAll(new RegExp('<' + escapeRegExp(tagPrefix) + 'title\\b[^>]*>', 'gi'))];
   const descMatches = [...svg.matchAll(new RegExp('<' + escapeRegExp(tagPrefix) + 'desc\\b[^>]*>', 'gi'))];
-  const allIds = [...svg.matchAll(/\bid\s*=\s*(["'])(.*?)\1/gi)].map(match => match[2]);
+  const allIds = [...svg.matchAll(/(?<![\w:.-])id\s*=\s*(["'])(.*?)\1/gi)].map(match => match[2]);
   const counts = new Map();
   for (const id of allIds) counts.set(id, (counts.get(id) || 0) + 1);
   const used = new Set(allIds);

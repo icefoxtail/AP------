@@ -8,6 +8,7 @@ import {pythonWorker} from '../production/worker.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {solveDiagram,setDiagramSize,setDiagramSpec,composeSetDiagramFigure,checkSetDiagramPlan,FIGURE_CAPABILITY} from '../production/set-diagram-v1.mjs';
+import {assertAccessibleNames} from './accessible-names.mjs';
 
 const observer=fileURLToPath(new URL('../production/set-diagram-observer-worker.py',import.meta.url));
 const code=expected=>error=>error.message===expected;
@@ -104,6 +105,7 @@ test('every figure composes, the independent observer passes it, and it catches 
       const p=plan(diagram),model=solveDiagram(diagram);
       const composed=await composeSetDiagramFigure({plan:p,model,identity:assetIdentity('25_테스트|'+n,'SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy,browser});
       assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+      assertAccessibleNames(composed.svg);
       assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
       assert.equal(composed.renderedLayout.status,'PASS',JSON.stringify(composed.renderedLayout.errors));
       assert.equal(composed.schemaVersion,'construction-candidate-svg-v1');

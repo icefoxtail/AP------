@@ -8,6 +8,7 @@ import {pythonWorker} from '../production/worker.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {solveStatChart,statChartSize,statChartSpec,composeStatChartFigure,checkStatChartPlan,FIGURE_CAPABILITY} from '../production/stat-chart-v1.mjs';
+import {assertAccessibleNames} from './accessible-names.mjs';
 
 const observer=fileURLToPath(new URL('../production/stat-chart-observer-worker.py',import.meta.url));
 const code=expected=>error=>error.message===expected;
@@ -93,6 +94,7 @@ test('every chart composes, the independent observer passes it, and it catches a
       const p=plan(chart),model=solveStatChart(chart);
       let composed=await composeStatChartFigure({plan:p,model,identity:assetIdentity('25_테스트|'+n,'SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy,browser});
       assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+      assertAccessibleNames(composed.svg);
       assert.equal(composed.staticAudit.status,'PASS');assert.equal(composed.renderedLayout.status,'PASS');
       assert.equal(composed.schemaVersion,'construction-candidate-svg-v1');
       return composed.svg;
@@ -198,6 +200,7 @@ test('the observer passes letter leaves, rank circles and class brackets, and ca
     const p=plan(letters),model=solveStatChart(letters);
     const composed=await composeStatChartFigure({plan:p,model,identity:assetIdentity('26_테스트|19','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy,browser});
     assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+    assertAccessibleNames(composed.svg);
     assert.equal(composed.staticAudit.status,'PASS');assert.equal(composed.renderedLayout.status,'PASS');
     const svg=composed.svg,audit=async(chart,text)=>(await pythonWorker({chart,svg:text},{script:observer})).result;
     const pass=await audit(letters,svg);assert.equal(pass.status,'PASS',JSON.stringify(pass.errors));
@@ -233,6 +236,7 @@ test('the key text takes 은 or 는 from the reading of the leaf digit, and the 
     const chart={kind:'STEM_LEAF',unitText:'개',values:[5,7,12,15,23],key:{stem:0,leaf:5}};
     const composed=await composeStatChartFigure({plan:plan(chart),model:solveStatChart(chart),identity:assetIdentity('26_테스트|21','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy,browser});
     assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+    assertAccessibleNames(composed.svg);
     assert.ok(composed.svg.includes('data-text="0 | 5는 5개"'));
     const audit=async text=>(await pythonWorker({chart,svg:text},{script:observer})).result;
     const pass=await audit(composed.svg);assert.equal(pass.status,'PASS',JSON.stringify(pass.errors));
@@ -346,6 +350,7 @@ test('the observer passes erased classes, restored bars, tones, marked points, c
     const compose=async(chart,n)=>{
       const composed=await composeStatChartFigure({plan:plan(wire(chart)),model:solveStatChart(chart),identity:assetIdentity('26_테스트|'+n,'SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy,browser});
       assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+      assertAccessibleNames(composed.svg);
       assert.equal(composed.staticAudit.status,'PASS');assert.equal(composed.renderedLayout.status,'PASS');
       return composed.svg;
     };
@@ -431,6 +436,7 @@ test('the observer passes order numbers above the circled leaves and catches a w
     const chart={kind:'STEM_LEAF',title:'대출한 책의 수',unitText:'권',values,marks:[{ranks:[11,12,13,14,15,16,17,18,19,20]}],rankLabels:'FROM_LARGEST',classGroups:[{from:'12',to:'14',label:'4'},{from:'20',to:'30',label:'4'}]};
     const composed=await composeStatChartFigure({plan:plan(chart),model:solveStatChart(chart),identity:assetIdentity('26_테스트|37','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:policy,browser});
     assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+    assertAccessibleNames(composed.svg);
     assert.equal(composed.staticAudit.status,'PASS');assert.equal(composed.renderedLayout.status,'PASS');
     const svg=composed.svg,audit=async(c,text)=>(await pythonWorker({chart:JSON.parse(JSON.stringify(c)),svg:text},{script:observer})).result;
     const ok=await audit(chart,svg);assert.equal(ok.status,'PASS',JSON.stringify(ok.errors));

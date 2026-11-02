@@ -14,6 +14,13 @@ import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mj
 // the FINAL SVG: it samples the shaded paths, checks every element label's region and every arrow's ends, never trusting the
 // engine's own numbers.
 export const FIGURE_CAPABILITY='set-diagram-figure-v1';
+// Korean accessible name of the figure (title and description, bound by aria-labelledby), the same ids the other figure engines write; fixed text per kind, so it never depends on plan prose.
+const ACCESSIBLE_NAMES={
+  VENN:['벤 다이어그램','집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.'],
+  MAPPING:['대응 그림','두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.'],
+  MEMBERSHIP_TABLE:['집합의 원소 표','각 원소가 어느 집합에 속하는지 표로 나타낸 그림이다.']
+};
+const accessibleNames=kind=>{const [title,desc]=ACCESSIBLE_NAMES[kind];return `<title id="visual-title">${title}</title><desc id="visual-desc">${desc}</desc>`;};
 export const MODEL_VERSION='SET_DIAGRAM_MODEL_v1',SPEC_VERSION='SET_DIAGRAM_SPEC_v1',SVG_VERSION='set-diagram-svg-v1';
 const OBSERVER_SCRIPT=fileURLToPath(new URL('set-diagram-observer-worker.py',import.meta.url));
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
@@ -746,7 +753,7 @@ export async function composeSetDiagramFigure({plan,model,identity,typographyPol
       const extra=Object.entries(label.extra??{}).map(([k,v])=>` data-${k}="${esc(v)}"`).join('');
       body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="COORDINATE_LABEL" data-label-role="${label.role}" data-priority="0" data-font-px="${font}" data-owner="${label.owner}"${extra}${label.kind==='MATH'?` data-tex="${esc(label.tex)}"`:` data-text="${esc(label.text)}"`} data-fragment-sha="${fragment.fragmentSha256}" data-box="${r6(box.x)},${r6(box.y)},${r6(box.width)},${r6(box.height)}" transform="translate(${r6(box.x)} ${r6(box.y)})">${fragment.svg}</g></g>`;
     }
-    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" data-set-diagram="${FIGURE_CAPABILITY}" data-kind="${model.kind}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="6" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="visual-title visual-desc" data-set-diagram="${FIGURE_CAPABILITY}" data-kind="${model.kind}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="6" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${accessibleNames(model.kind)}${body}</svg>`;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-set-diagram-'+Date.now()+'.svg',svg);
     let response;
