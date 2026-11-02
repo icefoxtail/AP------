@@ -155,8 +155,8 @@
       } else {
         b.arc(V, rw, e0, e1, { sector: true, fill: col, fillAlpha: o.fa == null ? 0.2 : o.fa, color: null, ccw: d < 0, ref: o.ref });
         const rings = o.rings || 1;
-        b.arc(V, rw, e0, e1, { color: col, width: 2.4, ccw: d < 0, ref: o.ref });
-        for (let i = 1; i < rings; i++) b.arc(V, rw - (i * 4.6) / k, e0, e1, { color: col, width: 2.2, ccw: d < 0, ref: o.ref });
+        b.arc(V, rw, e0, e1, { color: col, width: o.w || 2.4, ccw: d < 0, ref: o.ref, alpha: o.alpha });
+        for (let i = 1; i < rings; i++) b.arc(V, rw - (i * 4.6) / k, e0, e1, { color: col, width: o.w ? o.w * 0.9 : 2.2, ccw: d < 0, ref: o.ref, alpha: o.alpha });
       }
     }
     if (o.label) {
@@ -168,6 +168,8 @@
     }
     return { deg, mid: am };
   }
+  // 지난 단계의 각 표시: 가는 회색 호(값 글자는 label 을 줄 때만). 풀이 그림에서 지금 단계만 색으로 강조하기 위해 씁니다.
+  const faded = (b, V, A, B, o = {}) => ang(b, V, A, B, { color: 'ink', alpha: 0.38, w: 1.4, fa: 0, rings: o.rings, r: o.r || 24, label: o.label, labelDist: o.labelDist, labelRot: o.labelRot, size: o.size, labelColor: 'ink', noRight: o.noRight });
   function tick(b, p, q, count = 1, color = 'amber') { if (count > 0) b.ticks(p, q, { color, count, size: 9 }); }
   function par(b, p, q, count = 1, color = 'green', f = 0.5) {
     const k = b.k || 60, u = unit(sub(q, p)), n = { x: -u.y, y: u.x }, m = lerp(p, q, f), s = 8 / k;
@@ -384,6 +386,37 @@
     return `${NUM[i]} ${o.h != null ? o.h : '$' + o.t + '$'}`;
   }
 
+  /* ------------------------------------------------------------------ 풀이 흐름 (장면이 D.solve 를 줄 때만 쓰입니다)
+     탐구 · 문제 · 풀이. 문제는 5지선다 없이 발문과 그림만 · 「먼저 풀어 보세요」 · 「답 보기」(정답만) · 「풀이 보기」.
+     풀이는 같은 문제 상태(숫자 바꾸기로 둘이 함께 바뀜)로 그림 위에서 단계마다 새로 생기는 것만 강조합니다.
+     D.solve = { steps(M,s)→[{k:'given'|'idea'|'fig'|'eq'|'ans'|'trap', lb?, t, cap?, …}], draw(b,s,M,C,ST,idx), quick?(M,s)→{steps,note}, quickTitle? }
+     idx = -1 이면 문제 탭 그림(풀이 정보 없음), 0… 이면 그 단계까지의 풀이 그림. */
+  const SOLVE_LB = { given: '주어진 것', idea: '발상', eq: '식', ans: '답', trap: '흔한 실수' };
+  const stepText = (st) => `${st.lb || SOLVE_LB[st.k] || ''} · ${st.t}`;
+  function solveKey(D, s) { const Q = D.prob(D.model(s), s); return D.id + '|' + Q.key + '|' + (s.trSeed || 0); }
+  const stemHTML = (Q) => (Q.html ? Q.html : esc(Q.stem).replace(/&amp;/g, '&'));
+  function solveProblemHTML(D, s) {
+    const Q = D.prob(D.model(s), s), shown = s.trShow === solveKey(D, s);
+    const ok = Q.choices.find((o) => o.ok);
+    // 문제 종류 태그는 숫자를 바꿀 때마다 달라지므로(예: [함정]) 글 안에 함께 그립니다
+    let h = Q.tag ? `<div class="tr-tagline"><span class="apl-tag" style="--c:var(--m-amber)">${esc(Q.tag)}</span></div>` : '';
+    h += `<div class="tr-q">${stemHTML(Q)}</div>`;
+    h += '<div class="tr-try"><b>먼저 풀어 보세요.</b> 종이에 직접 풀어 본 뒤에 답을 확인해요.</div>';
+    if (shown) h += `<div class="tr-fb ok tr-ans"><span class="k">답</span> <span class="v">$x=${ok.t}$</span></div>`;
+    h += '<div class="tr-tools">';
+    if (!shown) h += '<button type="button" class="apl-btn sm" data-tr-show>답 보기</button>';
+    h += `<button type="button" class="apl-btn sm primary" data-tr-go="review">풀이 보기</button><button type="button" class="apl-btn sm ghost" data-tr-new>숫자 바꾸기</button></div>`;
+    if (Q.note) h += `<div class="tr-note" style="margin-top:6px">${esc(Q.note)}</div>`;
+    return h;
+  }
+  function solveRecapHTML(D, s) {
+    const Q = D.prob(D.model(s), s);
+    return `<div class="tr-recap"><div class="tr-recap-h">문제</div><div class="tr-recap-q">${stemHTML(Q)}</div><div class="tr-tools"><button type="button" class="apl-btn sm" data-tr-go="problem">문제로</button><button type="button" class="apl-btn sm ghost" data-tr-new>숫자 바꾸기</button></div></div>`;
+  }
+  // 풀이 그림의 아래 설명 줄(단계마다 한 줄). 종류별 색.
+  const SOLVE_COL = { given: 'sky', idea: 'violet', fig: 'green', eq: 'amber', ans: 'amber', trap: 'rose' };
+  const solveCol = (st) => st.col || SOLVE_COL[st.k] || 'sky';
+
   let curLab = null;
   function installClicks() {
     const root = document.documentElement;
@@ -392,14 +425,25 @@
     document.addEventListener('click', (ev) => {
       const lab = curLab || window.lab;
       if (!lab || !ev.target || !ev.target.closest) return;
-      const hit = ev.target.closest('[data-tr-pick],[data-tr-new]');
+      const hit = ev.target.closest('[data-tr-pick],[data-tr-new],[data-tr-show],[data-tr-go]');
       if (!hit) return;
       const sc = lab.scene;
       if (!sc || !sc.tr) return;
       const D = sc.tr, s = lab.s;
+      if (hit.hasAttribute('data-tr-show')) { // 풀이 흐름: 「답 보기」(정답만 보여 줍니다)
+        s.trShow = solveKey(D, s);
+        lab.invalidate(true);
+        return;
+      }
+      if (hit.hasAttribute('data-tr-go')) { // 풀이 흐름: 「풀이 보기」/「문제로」
+        const to = hit.getAttribute('data-tr-go');
+        if (to === 'review') lab.setStep(1);
+        lab.setTab(to);
+        return;
+      }
       if (hit.hasAttribute('data-tr-new')) {
         D.reroll(s);
-        s.trSeed = (s.trSeed || 0) + 1; s.trPick = null; s.revealed = false; s.playing = false;
+        s.trSeed = (s.trSeed || 0) + 1; s.trPick = null; s.trShow = null; s.revealed = false; s.playing = false;
         lab.setStep(1);
         try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
         lab.invalidate(true);
@@ -432,6 +476,14 @@
 .tr-fb.ok{border-left-color:var(--m-green)}
 .tr-fb.bad{border-left-color:var(--m-red)}
 .tr-tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.tr-tagline{margin-bottom:8px}
+.apl-scene-head[data-tab=problem] .apl-question,.apl-scene-head[data-tab=review] .apl-question{display:none}
+.tr-try{margin-top:10px;padding:8px 12px;border-radius:var(--r-md);background:var(--card-2);border-left:3px solid var(--m-amber);font-size:var(--fs-sm);line-height:1.7}
+.tr-ans{display:flex;gap:10px;align-items:center;font-size:var(--fs-md)}
+.tr-ans .k{font-weight:800;color:var(--m-green)}
+.tr-recap{padding:10px 12px;border-radius:var(--r-md);background:var(--card-2);border:1px solid var(--line)}
+.tr-recap-h{font-size:var(--fs-2xs);font-weight:800;color:var(--text-3);letter-spacing:.04em;margin-bottom:4px}
+.tr-recap-q{font-size:var(--fs-sm);line-height:1.75}
 .tr-note{font-size:var(--fs-xs);color:var(--text-3)}
 .tr-notes{margin:0;padding-left:18px;display:grid;gap:4px}`;
     document.head.append(st);
@@ -446,7 +498,7 @@
   // $…$ 안의 < > 는 HTML 로 이스케이프되어 수식 오류가 나므로 \lt \gt 로 바꿉니다.
   const texSafe = (t) => String(t == null ? t : t).replace(/\$([^$]+)\$/g, (m, x) => '$' + x.replace(/</g, '\\lt ').replace(/>/g, '\\gt ') + '$');
   function makeScene(D) {
-    const A = D.anim;
+    const A = D.anim, SV = D.solve;
     const actions = A ? () => [
       {
         id: 'play', play: true, primary: true, icon: (s) => (s.playing ? 'pause' : 'play'),
@@ -462,16 +514,22 @@
       controls: (s) => (typeof D.ctl === 'function' ? D.ctl(s) : D.ctl),
       presets: (s) => (D.presets ? D.presets(s) : []),
       actions,
-      steps: (s) => D.steps(D.model(s)).map((t) => texSafe(String(t).replace(/<\/?b>/g, ''))),
+      steps: (s) => (SV ? SV.steps(D.model(s), s).map((st) => texSafe(stepText(st))) : D.steps(D.model(s)).map((t) => texSafe(String(t).replace(/<\/?b>/g, '')))),
       notesTitle: '자주 틀리는 부분',
       problem: D.prob ? {
-        tag: (s) => D.prob(D.model(s), s).tag,
-        text: (s) => problemHTML(D, s),
-        answer: (s) => answerText(D, s)
+        tag: SV ? undefined : (s) => D.prob(D.model(s), s).tag,
+        text: (s) => (SV ? solveProblemHTML(D, s) : problemHTML(D, s)),
+        answer: (s) => answerText(D, s),
+        noAnswer: !!SV
       } : undefined,
+      // 풀이 흐름(opt-in): 탭 순서·이름을 탐구 · 문제 · 풀이 로, 풀이 탭 맨 위에 문제 다시 보기, 빠른 풀이는 접어서
+      tabs: SV ? { order: ['explore', 'problem', 'review'], labels: { review: '풀이' } } : undefined,
+      reviewTop: SV ? (s) => solveRecapHTML(D, s) : undefined,
+      reviewTitles: SV ? { steps: '풀이 · 단계마다 그림이 바뀌어요', solution: '빠른 풀이' } : undefined,
+      solution: SV && SV.quick ? { quickTitle: SV.quickTitle || '10초 컷', quickTag: '10초 컷', quick: (s) => SV.quick(D.model(s), s) } : undefined,
       enter: (s, lab) => {
         D.init(s);
-        s.trSeed = 0; s.trPick = null; s.playing = false;
+        s.trSeed = 0; s.trPick = null; s.trShow = null; s.playing = false;
         if (A) s[A.key] = A.start || 0;
         if (lab) curLab = lab;
       },
@@ -492,9 +550,13 @@
         const C = baseCtx(s, lab, false);
         const M = D.model(s);
         const v = D.view(M, C, s) || {};
+        if (SV) { // 풀이 흐름에서는 풀이 단계가 정리를 대신합니다. 성질 한 줄은 탐구 안내에 짧게 남깁니다.
+          if (v.rule && C.tab === 'explore') v.guide = `${v.guide || ''}<br><b>성질</b> · ${v.rule}`;
+          delete v.formula; delete v.rule; delete v.notes;
+        }
         ['formula', 'rule', 'notes', 'guide'].forEach((k) => { if (typeof v[k] === 'string') v[k] = texSafe(v[k]); });
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
-        else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
+        else if (C.tab === 'review') { const n = SV ? SV.steps(M, s).length : D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
         return v;
       },
       draw: (b, s, v, lab) => {
@@ -502,6 +564,11 @@
         if (b.thumb) C.step = 99;
         const M = D.model(s);
         C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
+        if (SV && !b.thumb && (C.problem || C.review)) { // 문제·풀이 그림은 같은 그리기(같은 숫자·같은 배치)로
+          const ST = SV.steps(M, s);
+          SV.draw(b, s, M, C, ST, C.problem ? -1 : clamp((s.step || 1) - 1, 0, ST.length - 1));
+          return;
+        }
         D.draw(b, s, M, C);
       }
     };
@@ -513,12 +580,18 @@
   const notes = (...li) => `<ul class="tr-notes">${li.map((x) => `<li>${x}</li>`).join('')}</ul>`;
   const rd = (label, value, color, note, ref, wide) => ({ label, value, color, note, ref, wide });
 
+  // 풀이 그림 아래 설명 한 줄 (그림 아래쪽 끝에 붙여 그립니다)
+  function solveCap(b, p, st, o = {}) {
+    if (!st || !st.cap) return;
+    rowT(b, p, st.cap, { dy: o.dy != null ? o.dy : (b.W < 560 ? 44 : 54), size: fs(b, o.size || 16), color: solveCol(st) });
+  }
+
   window.APL_TR = {
     PI, DEG, clamp, ease, seg01, NUM, LET, esc, r1, isInt, fmtN, dg, eqs, tx, texDeg, ol,
     pt, add, sub, mul, len, dist, unit, mid, lerp, polar, dirDeg, rotP, angBetween, cross, inter, polyArea, centroid, pick, rint, bboxOf, unionBox, shiftPts,
     triSSS, triSAS, triASA, sidesOf, anglesOf, sameTri,
-    textW, T, rowT, tagOut, vtx, sideTag, lenTag, ang, tick, par, fillPoly, line, poly, arcPart, drawTri, fit, P, degF, cmF,
+    textW, T, rowT, tagOut, vtx, sideTag, lenTag, ang, faded, tick, par, fillPoly, line, poly, arcPart, drawTri, fit, P, degF, cmF,
     josa, seeded, shuffle, mkChoices, mkTextChoices, baseCtx, showAt, makeScene, register, notes, rd,
-    triBC, dim, foot, circumcenter, incenter, extend, dots, segVal, fade, narrow, fs, mkStmtChoices, numProb, intOK, cmTex, cmOpts, degOpts, nm
+    triBC, dim, foot, circumcenter, incenter, extend, dots, segVal, fade, narrow, fs, mkStmtChoices, numProb, intOK, cmTex, cmOpts, degOpts, nm, solveCap, solveCol
   };
 })();
