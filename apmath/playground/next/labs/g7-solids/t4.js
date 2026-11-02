@@ -61,16 +61,20 @@
     const sw = R * Math.sin(rad(Math.min(x / 2, 90)));
     const A = N.sectorBox(R, x, 0, false);
     const cp = Math.cos(22 * DEG), sp = Math.sin(22 * DEG);
-    const cb = { x0: -r, x1: r, y0: -r * sp, y1: h * cp };
+    const ms = G.solidScale(b, 1.6);
+    const cb = { x0: -r * ms, x1: r * ms, y0: -r * sp * ms, y1: h * cp * ms };
     const off = arrange(b, A, cb, R * 0.35);
     let all = unionB(A, shiftB(cb, off.dx, off.dy));
     const bars = spec.bars ? 76 : 0;
     fit(b, all, { l: 34, r: 34, t: 44, b: 28 + bars });
-    return { A, off, all, h, mp: mapper(r, R, h, x), D: S3.ctx(b, s, { k: 1, ox: off.dx, oy: off.dy }), cone: S3.solid('cone', { R: r, h1: h }) };
+    return { A, off, all, h, mp: mapper(r, R, h, x), D: S3.ctx(b, s, { k: ms, ox: off.dx, oy: off.dy }), cone: S3.solid('cone', { R: r, h1: h }) };
   }
   // 막대 비교(가로): 같은 눈금에서 길이를 비교
   function bars(b, C, all, items, maxLen) {
-    const k = b.k, x0 = all.x0 + px(b, 8), Wd = Math.max(px(b, 90), (all.x1 - all.x0) * 0.4), y0 = all.y0 - px(b, 20);
+    const k = b.k, x0 = all.x0 + px(b, 8), y0 = all.y0 - px(b, 20);
+    // 막대 끝의 글자가 무대 밖으로 나가지 않게 막대 길이를 줄입니다
+    const textMax = Math.max(...items.map((it) => G.textW(`${it.label} ${it.text}`, 14))) + 14, rightW = b.toW(b.W - b.insets.right - 6, 0).x;
+    const Wd = Math.max(px(b, 40), Math.min(Math.max(px(b, 90), (all.x1 - all.x0) * 0.4), rightW - x0 - px(b, textMax)));
     items.forEach((it, i) => {
       const y = y0 - i * px(b, 22), len = Wd * it.len / maxLen;
       b.seg({ x: x0, y }, { x: x0 + len, y }, { color: it.color, width: it.hi ? 9 : 6, alpha: it.hi ? 1 : 0.55 });
@@ -330,9 +334,9 @@
     draw(b, s, M, C) {
       const prob = C.problem, r2 = prob ? M.qg : M.r2, r1 = prob ? Math.min(M.qf, r2 - 1) : M.r1, R2 = 6 * r2, R1 = 6 * r1, x = 60;
       const O = { x: 0, y: 0 }, a0 = -90 - x / 2, a1 = -90 + x / 2, A = pt(O, R2, a0), A2 = pt(O, R2, a1), Hf = Math.sqrt(R2 * R2 - r2 * r2), hF = (R2 - R1) * Hf / R2;
-      const sw = R2 * Math.sin(rad(30)), Ab = { x0: -sw, x1: sw, y0: -R2, y1: 0 }, cb = { x0: -r2, x1: r2, y0: -r2 * Math.sin(22 * DEG), y1: hF * Math.cos(22 * DEG) };
+      const sw = R2 * Math.sin(rad(30)), Ab = { x0: -sw, x1: sw, y0: -R2, y1: 0 }, ms = G.solidScale(b, 1.9), cb = { x0: -r2 * ms, x1: r2 * ms, y0: -r2 * Math.sin(22 * DEG) * ms, y1: hF * Math.cos(22 * DEG) * ms };
       const off = prob ? { dx: 0, dy: 0, below: false } : arrange(b, Ab, cb, R2 * 0.3);
-      const D = S3.ctx(b, s, { k: 1, ox: off.dx, oy: off.dy }), frus = S3.solid('frus', { R: r2, r: r1, h1: hF });
+      const D = S3.ctx(b, s, { k: prob ? 1 : ms, ox: off.dx, oy: off.dy }), frus = S3.solid('frus', { R: r2, r: r1, h1: hF });
       const mp = mapper(r2, R2, Hf, x);
       if (prob) { // 문제: 입체(점 A)만 보여 준다. 원래 큰 원뿔의 모선 R₂ 를 점선으로.
         const D0 = S3.ctx(b, s, {});

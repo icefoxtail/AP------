@@ -217,13 +217,208 @@
     verify: (s) => { const M = m1.model(s), g = M.g; return { ans: angBetween(g.B, g.C, g.O), model: M.obc, extra: [[angBetween(g.B, g.C, g.I), M.ibc], [angBetween(g.O, g.B, g.C), angBetween(g.O, g.C, g.B)]] }; }
   };
 
+  /* -------------------------------------------------------------------- 풀이 흐름: 장면별 풀이 (t7-2 ~ t7-5, 문제와 같은 상태·같은 숫자)
+     원칙: 그림 안에는 점 이름만 · 지금 단계만 색(앞 단계는 회색) · 좁은 각은 x 만 두고 값은 그림 아래 한 줄에 */
+  const SVB = G.svB, { stmtDyn, xLbl } = SVB; void xLbl;
+
+  /* ---------------------------------------------------------------- 2. 직각삼각형의 O와 I */
+  const m2Solve = {
+    steps: (M, s) => {
+      const v = (s.trV || 0) % 2, { a, b: bb, c, r, R, tri, circ } = M, out = [];
+      out.push({ k: 'given', f: 'given', t: v === 0 ? `∠C=90°이고 $\\overline{BC}=${a}$ cm, $\\overline{CA}=${bb}$ cm, $\\overline{AB}=${c}$ cm인 직각삼각형 ABC의 외심이 O, 내심이 I예요. 외접원에서 △ABC를 제외한 색칠한 부분의 넓이 $x$를 구해요.` : `∠C=90°이고 $\\overline{BC}=${a}$ cm, $\\overline{CA}=${bb}$ cm, $\\overline{AB}=${c}$ cm인 직각삼각형 ABC의 외심이 O, 내심이 I예요. 외접원의 반지름 R과 내접원의 반지름 r의 합 $x=R+r$을 구해요.`, cap: v === 0 ? `∠C=90°, BC=${a}, CA=${bb}, AB=${c} (cm), 색칠한 부분=x` : `∠C=90°, BC=${a}, CA=${bb}, AB=${c} (cm), R+r=x` });
+      out.push({ k: 'idea', f: 'idea', t: v === 0 ? '색칠한 부분은 (외접원의 넓이) − (삼각형의 넓이)예요. 직각삼각형의 외심은 빗변의 중점이라서, 외접원의 반지름 R은 빗변의 반이에요. 그러면 원의 넓이를 쉽게 구할 수 있어요.' : '직각삼각형은 R과 r을 따로 구하는 쉬운 길이 있어요. 외심은 빗변의 중점이라 R은 빗변의 반이고, 직각 꼭짓점 쪽의 정사각형을 이용하면 r은 (두 변의 합 − 빗변)의 반이에요.', cap: v === 0 ? '색칠한 부분 = 외접원의 넓이 − 삼각형의 넓이' : 'R=빗변의 반, r=(두 변의 합−빗변)÷2' });
+      out.push({ k: 'fig', f: 'R', lb: '외접원의 반지름', t: `∠C=90°이므로 외심 O는 빗변 AB의 중점이에요. $R=\\overline{OA}=\\overline{OB}=\\overline{OC}=\\frac{\\overline{AB}}{2}=\\frac{${c}}{2}=${R}$ (cm).`, cap: `R=\\frac{AB}{2}=\\frac{${c}}{2}=${R} cm` });
+      if (v === 0) {
+        out.push({ k: 'fig', f: 'circ', lb: '외접원의 넓이', t: `외접원의 넓이는 $\\pi R^2=\\pi\\times${R}^2=${circ}\\pi$ (cm²).`, cap: `외접원의 넓이=π×${R}²=${circ}π cm²` });
+        out.push({ k: 'fig', f: 'tri', lb: '삼각형의 넓이', t: `직각삼각형이라 두 직각변이 밑변과 높이예요: $\\frac{1}{2}\\times${a}\\times${bb}=${tri}$ (cm²).`, cap: `△ABC=\\frac{1}{2}×${a}×${bb}=${tri} cm²` });
+        out.push({ k: 'eq', f: 'eq', t: `$x=${circ}\\pi-${tri}$ (cm²)`, cap: `x=${circ}π−${tri} (cm²)` });
+        out.push({ k: 'ans', f: 'ans', t: `$x=${circ}\\pi-${tri}\\text{ cm}^2$`, cap: `x = ${circ}π−${tri} cm²` });
+      } else {
+        out.push({ k: 'fig', f: 'r', lb: '내접원의 반지름', t: `직각 꼭짓점 C 쪽에서 $\\overline{CD}=\\overline{CE}=r$이고 $\\overline{BD}=\\overline{BF}=${a}-r$, $\\overline{AE}=\\overline{AF}=${bb}-r$이므로 $\\overline{AB}=(${a}-r)+(${bb}-r)=${c}$. 그래서 $r=\\frac{${a}+${bb}-${c}}{2}=${r}$ (cm).`, cap: `r=\\frac{${a}+${bb}−${c}}{2}=${r} cm` });
+        out.push({ k: 'eq', f: 'eq', t: `$x=R+r=${R}+${r}=${R + r}$ (cm)`, cap: `x=R+r=${R}+${r}=${R + r} cm` });
+        out.push({ k: 'ans', f: 'ans', t: `$x=${R + r}\\text{ cm}$`, cap: `x = ${R + r} cm` });
+      }
+      return out;
+    },
+    draw: SVB.runner({
+      box: (M) => ({ x0: M.g.O.x - M.R, x1: M.g.O.x + M.R, y0: M.g.O.y - M.R, y1: M.g.O.y + M.R }),
+      base: (b, M, s, X) => { const { A, B, C: Cc, O, I } = M.g, sh = (s.trV || 0) % 2 === 0; b.circle(O, M.R, { color: 'amber', width: 2.2, alpha: 0.6, dash: [6, 5], fill: sh ? 'amber' : undefined, fillAlpha: X.xArc ? 0.24 : X.at('circ') ? 0.3 : 0.1 }); fillPoly(b, [A, B, Cc], 'sky', X.at('tri') ? 0.5 : 0.35); poly(b, [A, B, Cc], 'ink', 3.4); b.circle(I, M.r, { color: 'green', width: 2.2, alpha: 0.7 }); },
+      legend: (M, s) => `O: 외심 · I: 내심 · x: ${(s.trV || 0) % 2 === 0 ? '색칠한 부분의 넓이' : 'R+r'}`,
+      st: {
+        given: (L, M, s, X) => {
+          const { A, B, C: Cc, O, I } = M.g, q = fs(X.b, 15), v = (s.trV || 0) % 2;
+          L.ang(Cc, A, B, { color: 'sky', r: 26 }); L.ln(O, Cc, 'rose', 3); L.tk(A, O, 1, 'amber'); L.tk(O, B, 1, 'amber');
+          L.sd(Cc, B, pt(I.x, -50), `${M.a} cm`, { color: 'sky', size: q, gap: 8, keep: true }); L.sd(Cc, A, pt(80, I.y), `${M.b} cm`, { color: 'sky', size: q, gap: 8, keep: true }); L.sd(A, B, I, `${M.c} cm`, { color: 'sky', size: q, gap: 8, keep: true });
+        },
+        R: (L, M, s, X) => { const { A, B, C: Cc, O } = M.g; [[A, O], [O, B], [O, Cc]].forEach(([p, q]) => { L.ln(p, q, 'rose', 4.6); L.tk(p, q, 2, 'rose'); }); L.circ(O, M.R, 'rose', 3); L.sd(A, O, M.g.I, `R=${M.R}`, { color: 'rose', size: fs(X.b, 15), gap: 10 }); },
+        circ: (L, M) => { L.circ(M.g.O, M.R, 'amber', 3.4); },
+        tri: (L, M) => { const { A, B, C: Cc } = M.g; L.fl([A, B, Cc], 'sky', 0.4); },
+        r: (L, M, s, X) => { const { A, B, C: Cc, I } = M.g, D = pt(I.x, 0), E = pt(0, I.y); L.fl([Cc, D, I, E], 'green', 0.25); L.ln(I, D, 'green', 3.4); L.ln(I, E, 'green', 3.4); L.circ(I, M.r, 'green', 3.2); L.sd(I, D, pt(I.x + 50, I.y), 'r', { color: 'green', size: fs(X.b, 15), gap: 6 }); }
+      },
+      x: (b, M, s, X) => {
+        const { A, B, C: Cc, O, I } = M.g, v = (s.trV || 0) % 2, u = G.unit(G.sub(O, Cc));
+        const pos = G.add(O, G.mul(u, M.R * 0.5));
+        if (v === 0) {
+          T(b, pos, X.xVal ? `${M.circ}π−${M.tri}` : 'x', { size: fs(b, X.xVal ? 14 : 18), color: 'amber' });
+        } else T(b, pos, X.xVal ? `${M.R + M.r} cm` : 'x', { size: fs(b, X.xVal ? 16 : 18), color: 'amber' });
+      },
+      top: (b, M) => { const { A, B, C: Cc, O, I } = M.g; b.point(O, { color: 'rose', r: 5.5 }); b.point(I, { color: 'green', r: 5 }); [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4.5 })); T(b, O, 'O', { dx: 12, dy: 12, size: 17, color: 'rose' }); T(b, I, 'I', { dx: -10, dy: -12, size: 17, color: 'green' }); tagOut(b, A, O, 'A', { size: 18 }); tagOut(b, B, O, 'B', { size: 18 }); tagOut(b, Cc, O, 'C', { size: 18 }); }
+    })
+  };
+
+  /* ---------------------------------------------------------------- 3. 보기 판별 (문장이 참인지 그림으로 확인) */
+  const HA = '\\frac{1}{2}\\angle A';
+  const T7POOL = [
+    { h: '점 O에서 세 꼭짓점 A, B, C까지의 거리가 같다.', f: () => true, w: () => '외심 O는 세 변의 수직이등분선의 교점이고, 수직이등분선 위의 점은 선분의 두 끝점에서 같은 거리에 있어요.', c: () => 'OA=OB=OC (외접원의 반지름)', d: (L, M) => { const { O, A, B, C: Cc } = M.pg; [A, B, Cc].forEach((z) => { L.ln(O, z, 'rose', 3.6); L.tk(O, z, 2, 'rose'); }); } },
+    { h: '점 I에서 세 변까지의 거리가 같다.', f: () => true, w: () => '내심 I는 각의 이등분선 위의 점이고, 각의 이등분선 위의 점은 그 각의 두 변에서 같은 거리에 있어요. 세 각 모두 그래서 세 변까지의 거리가 같아요.', c: () => 'ID=IE=IF (내접원의 반지름)', d: (L, M) => { const { I, D, E, F } = M.pg; [D, E, F].forEach((z) => { L.ln(I, z, 'green', 3.6); L.tk(I, z, 1, 'green'); }); L.circ(I, dist(I, D), 'green', 2.6); } },
+    { h: '점 I는 삼각형 ABC의 내부에 있다.', f: () => true, w: () => '세 내각의 이등분선은 삼각형 안에서 만나기 때문에 내심은 늘 삼각형의 안쪽에 있어요.', c: () => '내심 I는 늘 삼각형의 안쪽', d: (L, M) => { const { A, B, C: Cc, I } = M.pg; L.fl([A, B, Cc], 'green', 0.2); [A, B, Cc].forEach((z) => L.ln(z, I, 'green', 3, { dash: [7, 5] })); } },
+    { h: '점 O는 세 변의 수직이등분선의 교점이다.', f: () => true, w: () => '외심의 뜻이 바로 이거예요. 세 변의 수직이등분선은 한 점 O에서 만나요.', c: () => '세 변의 수직이등분선 → 한 점 O', d: (L, M) => { const { A, B, C: Cc, O } = M.pg; [[A, B], [B, Cc], [Cc, A]].forEach(([p, q]) => { const m = mid(p, q); L.ln(m, O, 'rose', 3, { dash: [7, 5] }); L.tk(p, m, 1, 'amber'); L.tk(m, q, 1, 'amber'); L.ang(m, O, q, { color: 'rose', r: 14 }); }); } },
+    { h: '점 I는 세 내각의 이등분선의 교점이다.', f: () => true, w: () => '내심의 뜻이 바로 이거예요. 세 내각의 이등분선은 한 점 I에서 만나요.', c: () => '세 내각의 이등분선 → 한 점 I', d: (L, M) => { const { A, B, C: Cc, I } = M.pg; [A, B, Cc].forEach((z) => L.ln(z, I, 'green', 3.4, { dash: [7, 5] })); L.ang(A, B, I, { color: 'sky', r: 28, fa: 0.4 }); L.ang(A, I, Cc, { color: 'sky', r: 28, fa: 0.4 }); L.ang(B, A, I, { color: 'green', r: 28, rings: 2, fa: 0.4 }); L.ang(B, I, Cc, { color: 'green', r: 28, rings: 2, fa: 0.4 }); L.ang(Cc, B, I, { color: 'violet', r: 28, rings: 3, fa: 0.4 }); L.ang(Cc, I, A, { color: 'violet', r: 28, rings: 3, fa: 0.4 }); } },
+    { h: `$\\angle BIC=90^{\\circ}+${HA}$`, f: () => true, w: (M) => `△IBC에서 ∠IBC+∠ICB=½(∠B+∠C)=90°−½∠A이므로 ∠BIC=180°−(90°−½∠A)=90°+½∠A예요. 이 삼각형은 ∠A=${M.pa}°이고 ∠BIC=${90 + M.pa / 2}°예요.`, c: (M) => `∠A=${M.pa}° → ∠BIC=90°+\\frac{1}{2}×${M.pa}°=${90 + M.pa / 2}°`, d: (L, M) => { const { A, B, C: Cc, I } = M.pg; L.ang(A, B, Cc, { color: 'sky', r: 26, label: dg(M.pa), size: 14, labelDist: 46, fa: 0.4 }); L.ang(I, B, Cc, { color: 'green', r: 26, label: dg(90 + M.pa / 2), size: 14, labelDist: 46, fa: 0.4 }); } },
+    { h: '$\\overline{IA}=\\overline{IB}=\\overline{IC}$', f: (m) => near(dist(m.pg.I, m.pg.A), dist(m.pg.I, m.pg.B)) && near(dist(m.pg.I, m.pg.B), dist(m.pg.I, m.pg.C)), w: () => '내심에서 같은 거리인 것은 세 변까지의 거리예요. 꼭짓점까지의 거리 IA, IB, IC는 서로 달라요 (정삼각형일 때만 같아요).', c: () => 'IA, IB, IC의 길이가 서로 달라요 (반례)', d: (L, M) => { const { A, B, C: Cc, I } = M.pg; [A, B, Cc].forEach((z, i) => { L.ln(I, z, 'rose', 4); L.tk(I, z, i + 1, 'rose'); }); } },
+    { h: '점 O는 삼각형 ABC의 내부에 있다.', f: (m) => m.pg.oIn, w: (M) => { const g = M.pg, big = Math.max(g.a, g.b, g.c), nm = g.a === big ? 'A' : g.b === big ? 'B' : 'C'; return `∠${nm}=${big}°가 둔각이라서 외심 O가 삼각형의 바깥에 있어요 (반례). 외심은 예각삼각형일 때만 안에 있고, 직각삼각형이면 빗변 위, 둔각삼각형이면 바깥이에요.`; }, c: (M) => { const g = M.pg, big = Math.max(g.a, g.b, g.c), nm = g.a === big ? 'A' : g.b === big ? 'B' : 'C'; return `∠${nm}=${big}° 둔각 → O는 삼각형 바깥 (반례)`; }, d: (L, M) => { const { A, B, C: Cc, O } = M.pg; L.circ(O, dist(O, A), 'rose', 2.4, { dash: [6, 5] }); [A, B, Cc].forEach((z) => L.ln(O, z, 'rose', 3)); L.fl([A, B, Cc], 'rose', 0.14); } },
+    { h: '점 O에서 세 변까지의 거리가 같다.', f: (m) => { const g = m.pg, d1 = dist(g.O, foot(g.O, g.B, g.C)), d2 = dist(g.O, foot(g.O, g.C, g.A)), d3 = dist(g.O, foot(g.O, g.A, g.B)); return near(d1, d2) && near(d2, d3); }, w: () => '외심에서 같은 거리인 것은 세 꼭짓점까지의 거리예요. 세 변까지의 거리는 일반적으로 서로 달라요 (반례). 같은 거리가 되는 것은 내심이에요.', c: () => 'O에서 세 변까지의 거리가 서로 달라요 (반례)', d: (L, M) => { const { A, B, C: Cc, O } = M.pg; [[B, Cc], [Cc, A], [A, B]].forEach(([p, q], i) => { const f = foot(O, p, q); L.ln(O, f, 'rose', 3.6); L.tk(O, f, i + 1, 'rose'); }); } },
+    { h: '점 I는 세 변의 수직이등분선의 교점이다.', f: (m) => near(dist(m.pg.I, m.pg.O), 0), w: () => '세 변의 수직이등분선이 만나는 점은 외심 O예요. 내심 I는 이등분선의 교점이라서 O와 다른 점이에요 (반례).', c: () => '수직이등분선의 교점은 O, I는 다른 점 (반례)', d: (L, M) => { const { A, B, C: Cc, O, I } = M.pg; [[A, B], [B, Cc], [Cc, A]].forEach(([p, q]) => { L.ln(mid(p, q), O, 'rose', 3, { dash: [7, 5] }); }); L.circ(I, 0.09, 'green', 3); } },
+    { h: '$\\angle BOC=\\angle BIC$', f: (m) => near(angBetween(m.pg.O, m.pg.B, m.pg.C), angBetween(m.pg.I, m.pg.B, m.pg.C)), w: (M) => `∠BOC=${Math.round(angBetween(M.pg.O, M.pg.B, M.pg.C))}°이고 ∠BIC=${Math.round(angBetween(M.pg.I, M.pg.B, M.pg.C))}°로 서로 달라요 (반례).`, c: (M) => `∠BOC=${Math.round(angBetween(M.pg.O, M.pg.B, M.pg.C))}°, ∠BIC=${Math.round(angBetween(M.pg.I, M.pg.B, M.pg.C))}° — 달라요`, d: (L, M) => { const { B, C: Cc, O, I } = M.pg; L.ang(O, B, Cc, { color: 'rose', r: 24, label: dg(Math.round(angBetween(O, B, Cc))), size: 14, labelDist: 46, labelRot: SVB.rotTo(O, B, Cc, B, 38), fa: 0.4 }); L.ang(I, B, Cc, { color: 'green', r: 30, label: dg(Math.round(angBetween(I, B, Cc))), size: 14, labelDist: 50, labelRot: SVB.rotTo(I, B, Cc, Cc, 38), fa: 0.4 }); } }
+  ].map((x) => ({ ...x, h: x.h.replace('${HA}', HA) }));
+  const m3Solve = {
+    steps: (M, s) => { const Q = m3.prob(M, s); return SVB.stmtSteps(Q, T7POOL, M, /옳은 것은/.test(Q.stem), s); },
+    draw: SVB.runner({
+      box: (M) => bboxOf([M.pg.A, M.pg.B, M.pg.C, M.pg.O, M.pg.I]), padL: 56,
+      base: (b, M) => { const { A, B, C: Cc } = M.pg; fillPoly(b, [A, B, Cc], 'sky', 0.08); poly(b, [A, B, Cc], 'ink', 3.4); },
+      legend: () => 'O: 외심 · I: 내심',
+      dyn: (name, M, s) => stmtDyn(T7POOL, m3.prob)(name, M, s),
+      st: { given: () => {} },
+      top: (b, M) => { const { A, B, C: Cc, O, I } = M.pg, cen = pt((A.x + B.x + Cc.x) / 3, (A.y + B.y + Cc.y) / 3); b.point(O, { color: 'rose', r: 5.5 }); b.point(I, { color: 'green', r: 5.5 }); [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4.5 })); T(b, O, 'O', { dx: 14, dy: 12, size: 17, color: 'rose' }); T(b, I, 'I', { dx: -14, dy: -12, size: 17, color: 'green' }); [[A, 'A'], [B, 'B'], [Cc, 'C']].forEach(([p, nm]) => tagOut(b, p, cen, nm, { size: 18 })); }
+    })
+  };
+
+  /* ---------------------------------------------------------------- 4. 정삼각형의 O와 I */
+  const m4g = () => { const O = pt(0, 0), A = polar(O, 1, -90), B = polar(O, 1, 150), Cc = polar(O, 1, 30); return { O, A, B, C: Cc, D: mid(B, Cc) }; };
+  const m4Solve = {
+    quickTitle: '10초 컷 · 정삼각형은 R=2r, 높이=3r',
+    quick: (M, s) => { const v = (s.trV || 0) % 3; return { steps: v === 0 ? `<p>$R=2r=2\\times${M.r}=${M.R}$ (cm)</p>` : v === 1 ? `<p>$r=\\frac{R}{2}=\\frac{${M.R}}{2}=${M.r}$ (cm)</p>` : `<p>높이 $=3r=3\\times${M.r}=${M.h}$ (cm)</p>`, note: '정삼각형의 외접원의 반지름은 내접원의 반지름의 2배예요.' }; },
+    steps: (M, s) => {
+      const v = (s.trV || 0) % 3, { r, R, h } = M, out = [];
+      const ask = ['외접원의 반지름 $\\overline{OA}$의 길이 $x$', '내접원의 반지름 $\\overline{OD}$의 길이 $x$', '높이 $\\overline{AD}$의 길이 $x$'][v];
+      const gv = [`내접원의 반지름 $\\overline{OD}=${r}$ cm`, `외접원의 반지름 $\\overline{OA}=${R}$ cm`, `내접원의 반지름 $\\overline{OD}=${r}$ cm`][v], gc = [`OD=${r} cm`, `OA=${R} cm`, `OD=${r} cm`][v], xc = ['OA=x', 'OD=x', 'AD=x'][v];
+      out.push({ k: 'given', f: 'given', t: `점 O는 정삼각형 ABC의 외심이면서 내심이고, D는 변 BC의 중점이에요. ${gv}일 때 ${ask}를 구해요.`, cap: `${gc}, ${xc}` });
+      out.push({ k: 'idea', f: 'idea', t: '정삼각형에서는 외심과 내심이 같은 점 O예요. O가 내심이면 BO가 ∠B=60°를 이등분해서 ∠OBD=30°가 되고, 그러면 △OBD가 30°-60°-90° 직각삼각형이라 OD는 빗변 OB의 반이에요.', cap: 'BO는 ∠B=60°를 이등분 → ∠OBD=30°' });
+      out.push({ k: 'fig', f: 'half', lb: '이등분선', t: 'O는 내심이므로 BO는 ∠B=60°의 이등분선이에요. 그래서 $\\angle OBD=30^{\\circ}$.', cap: '∠OBD=\\frac{60°}{2}=30°' });
+      out.push({ k: 'fig', f: 'rt', lb: '30°-60°-90°', t: '$\\overline{OD}\\perp\\overline{BC}$이므로 △OBD는 ∠D=90°, ∠OBD=30°인 직각삼각형이에요. 30°의 마주 변 OD는 빗변 OB의 반이에요: $\\overline{OD}=\\frac{1}{2}\\overline{OB}$.', cap: 'OD=\\frac{1}{2}OB (OB=OA=외접원의 반지름)' });
+      if (v === 0) { out.push({ k: 'eq', f: 'eq', t: `$x=\\overline{OA}=\\overline{OB}=2\\times\\overline{OD}=2\\times${r}=${R}$ (cm)`, cap: `x=OA=OB=2×OD=2×${r}=${R} cm` }); out.push({ k: 'ans', f: 'ans', t: `$x=${R}\\text{ cm}$`, cap: `x = ${R} cm` }); }
+      else if (v === 1) { out.push({ k: 'eq', f: 'eq', t: `$x=\\overline{OD}=\\frac{1}{2}\\overline{OB}=\\frac{1}{2}\\times${R}=${r}$ (cm)`, cap: `x=OD=\\frac{1}{2}×${R}=${r} cm` }); out.push({ k: 'ans', f: 'ans', t: `$x=${r}\\text{ cm}$`, cap: `x = ${r} cm` }); }
+      else {
+        out.push({ k: 'fig', f: 'ad', lb: '높이', t: `$\\overline{OA}=\\overline{OB}=2\\times\\overline{OD}=${2 * r}$ cm이고, 높이 AD는 A에서 O를 지나 D까지이므로 $\\overline{AD}=\\overline{AO}+\\overline{OD}$.`, cap: `AD=AO+OD=${2 * r}+${r}` });
+        out.push({ k: 'eq', f: 'eq', t: `$x=\\overline{AO}+\\overline{OD}=${2 * r}+${r}=${h}$ (cm)`, cap: `x=${2 * r}+${r}=${h} cm` }); out.push({ k: 'ans', f: 'ans', t: `$x=${h}\\text{ cm}$`, cap: `x = ${h} cm` });
+      }
+      return out;
+    },
+    draw: SVB.runner({
+      box: () => ({ x0: -1.2, x1: 1.2, y0: -1.15, y1: 1.15 }), padT: 40,
+      base: (b, M) => { const { O, A, B, C: Cc } = m4g(); b.circle(O, 1, { color: 'rose', width: 2.4, alpha: 0.6 }); b.circle(O, 0.5, { color: 'green', width: 2.4, alpha: 0.8 }); fillPoly(b, [A, B, Cc], 'sky', 0.1); poly(b, [A, B, Cc], 'ink', 3.4); },
+      legend: () => 'O: 외심이자 내심 · D: BC의 중점',
+      st: {
+        given: (L, M, s, X) => {
+          const { O, A, B, C: Cc, D } = m4g(), v = (s.trV || 0) % 3, rr = fs(X.b, 15);
+          L.ln(A, D, 'ink', 2.4, { dash: [6, 5] }); [A, B, Cc].forEach((z) => { L.ln(O, z, 'rose', 3); L.tk(O, z, 1, 'amber'); }); L.ang(D, O, B, { color: 'sky', r: 14 });
+          if (v === 0 || v === 2) L.sd(O, D, pt(-50, 0), `${M.r} cm`, { color: 'green', size: rr, gap: 8, keep: true }); else L.sd(O, A, pt(50, 0), `${M.R} cm`, { color: 'rose', size: rr, gap: 8, keep: true });
+        },
+        half: (L, M) => { const { O, B, C: Cc } = m4g(); L.ln(O, B, 'rose', 4.4); L.ang(B, O, Cc, { color: 'green', r: 30, label: '30°', size: 15, labelDist: 52, fa: 0.4 }); },
+        rt: (L, M) => { const { O, B, D } = m4g(); L.fl([O, B, D], 'amber', 0.3); L.ln(O, D, 'green', 4.4); L.ln(O, B, 'rose', 4.4); L.ang(D, O, B, { color: 'sky', r: 14 }); L.tk(O, D, 1, 'green'); L.tk(O, B, 2, 'rose'); },
+        ad: (L, M) => { const { O, A, D } = m4g(); L.ln(A, O, 'rose', 5); L.ln(O, D, 'green', 5); L.tk(A, O, 2, 'rose'); }
+      },
+      x: (b, M, s, X) => {
+        const { O, A, D } = m4g(), v = (s.trV || 0) % 3, rr = fs(b, 15);
+        if (v === 0) G.sideTag(b, O, A, pt(50, 0), X.xVal ? `${M.R} cm` : 'x', { color: 'amber', size: fs(b, X.xVal ? 15 : 18), gap: 8 });
+        else if (v === 1) G.sideTag(b, O, D, pt(-50, 0), X.xVal ? `${M.r} cm` : 'x', { color: 'amber', size: fs(b, X.xVal ? 15 : 18), gap: 8 });
+        else G.sideTag(b, A, D, pt(50, 0), X.xVal ? `${M.h} cm` : 'x', { color: 'amber', size: fs(b, X.xVal ? 15 : 18), gap: 38 });
+        void rr;
+      },
+      top: (b, M) => { const { O, A, B, C: Cc, D } = m4g(); b.point(O, { color: 'rose', r: 6 }); [A, B, Cc, D].forEach((z) => b.point(z, { color: z === D ? 'green' : 'ink', r: 4.5 })); T(b, O, 'O', { dx: 18, dy: 6, size: 18, color: 'rose' }); T(b, A, 'A', { dy: -14, size: 18 }); T(b, B, 'B', { dx: -14, dy: 6, size: 18 }); T(b, Cc, 'C', { dx: 14, dy: 6, size: 18 }); T(b, D, 'D', { dy: 16, size: 17 }); }
+    })
+  };
+
+  /* ---------------------------------------------------------------- 5. 중점 D 와 수선의 발 D (외심 ↔ 내심) */
+  // 문제와 같은 삼각형: v0 외심(왼쪽)만, v1 내심(오른쪽)만(세 변 길이에 맞춘 삼각형), v2 둘 다
+  const m5geo = (M, s) => {
+    const v = (s.trV || 0) % 3, x = M.x;
+    let { A, B, C: Cc, O, I, DO, DI } = M;
+    if (v === 1) { const a = x[1] + x[2], bb = x[2] + x[0], c = x[0] + x[1], xx = (c * c - bb * bb + a * a) / (2 * a), hh = Math.sqrt(Math.max(1e-9, c * c - xx * xx)), k = 2 / a; B = pt(0, 0); Cc = pt(a * k, 0); A = pt(xx * k, -hh * k); I = incenter(A, B, Cc); DI = foot(I, B, Cc); O = circumcenter(A, B, Cc); DO = mid(B, Cc); }
+    const both = v === 2, wdt = Math.max(B.x, Cc.x) - Math.min(B.x, Cc.x) + 0.4, off = both ? wdt + 0.9 : 0, sh = (p) => pt(p.x + off, p.y);
+    return { v, both, L: { A, B, C: Cc, O, DO }, R: { A: sh(A), B: sh(B), C: sh(Cc), I: sh(I), D: sh(DI) }, showL: v !== 1, showR: v !== 0, off, gc: pt((A.x + B.x + Cc.x) / 3, (A.y + B.y + Cc.y) / 3) };
+  };
+  const M5POOL = [
+    { h: '외심에서 변에 내린 수선의 발은 그 변의 중점이다.', f: () => true, w: () => '외심 O에서 변 BC에 내린 수선의 발 D에서, OB=OC이므로 △OBC는 이등변삼각형이고 꼭지점에서 밑변에 내린 수선은 밑변을 이등분해요. 그래서 D는 BC의 중점이에요.', c: () => '외심의 D → BD=CD (중점)', d: (L, M, s) => { const g = m5geo(M, s), { B, C: Cc, O, DO } = g.L; L.ln(O, DO, 'rose', 4); L.ang(DO, O, B, { color: 'rose', r: 14 }); L.tk(B, DO, 1, 'amber'); L.tk(DO, Cc, 1, 'amber'); } },
+    { h: '내심에서 세 변까지의 거리는 같다.', f: () => true, w: () => '내심은 각의 이등분선 위의 점이라서 각의 두 변에서 같은 거리에 있어요. 세 각 모두 그래서 세 변까지의 거리가 모두 같아요.', c: () => '내심: ID=IE=IF (내접원의 반지름)', d: (L, M, s) => { const g = m5geo(M, s), { A, B, C: Cc, I, D } = g.R, E = foot(I, Cc, A), F = foot(I, A, B); [D, E, F].forEach((z) => { L.ln(I, z, 'green', 3.6); L.tk(I, z, 1, 'green'); }); L.circ(I, dist(I, D), 'green', 2.6); } },
+    { h: '외심에서 세 꼭짓점까지의 거리는 같다.', f: () => true, w: () => '외심은 세 변의 수직이등분선이 만나는 점이고, 수직이등분선 위의 점은 선분의 두 끝점에서 같은 거리에 있어요.', c: () => '외심: OA=OB=OC (외접원의 반지름)', d: (L, M, s) => { const g = m5geo(M, s), { A, B, C: Cc, O } = g.L; [A, B, Cc].forEach((z) => { L.ln(O, z, 'rose', 3.6); L.tk(O, z, 2, 'rose'); }); } },
+    { h: '내심에서 변에 내린 수선의 발에서 같은 점에서 그은 접선의 길이는 같다.', f: () => true, w: () => '내접원에서 한 꼭짓점에서 그은 두 접선의 길이는 같아요. 예: BD=BF, CD=CE, AE=AF.', c: () => '접선의 길이: BD=BF, CD=CE, AE=AF', d: (L, M, s) => { const g = m5geo(M, s), { A, B, C: Cc, I, D } = g.R, E = foot(I, Cc, A), F = foot(I, A, B); [[A, F, 'amber', 1], [A, E, 'amber', 1], [B, F, 'sky', 2], [B, D, 'sky', 2], [Cc, D, 'green', 3], [Cc, E, 'green', 3]].forEach(([p, q, col, n]) => { L.ln(p, q, col, 5); L.tk(p, q, n, col); }); } },
+    { h: '내심에서 변에 내린 수선의 발은 항상 그 변의 중점이다.', f: () => false, w: (M, s) => { const g = m5geo(M, s); return Math.abs(dist(g.R.B, g.R.D) - dist(g.R.C, g.R.D)) < 1e-6 ? '내심의 수선의 발 D는 BD=BF, CD=CE로 정해지는 접점이라서 AB≠AC인 삼각형에서는 BC의 중점이 아니에요 (이 그림은 우연히 AB=AC라 BD=CD가 되지만 늘 그런 건 아니에요).' : '내심의 수선의 발 D는 BD=BF, CD=CE로 정해지는 접점이에요. BF와 CE가 다르면 D는 BC의 중점이 아니에요 (반례). 이 그림에서도 BD와 CD가 달라요.'; }, c: (M, s) => { const g = m5geo(M, s); return Math.abs(dist(g.R.B, g.R.D) - dist(g.R.C, g.R.D)) < 1e-6 ? '내심의 D는 늘 중점이 아니에요 (AB≠AC이면 BD≠CD)' : '내심의 D는 중점이 아니에요 (BD≠CD, 반례)'; }, d: (L, M, s) => { const g = m5geo(M, s), { B, C: Cc, D } = g.R; L.ln(B, D, 'sky', 5); L.ln(D, Cc, 'green', 5); L.tk(B, D, 1, 'sky'); L.tk(D, Cc, 2, 'green'); L.circ(mid(B, Cc), 0.05, 'rose', 2.6); } },
+    { h: '외심에서 변에 내린 수선의 발은 변의 중점이 아닐 수 있다.', f: () => false, w: () => '외심에서 변에 내린 수선의 발은 이등변삼각형 OBC의 밑변에 내린 수선의 발이라 늘 BC의 중점이에요. 그래서 중점이 아닐 수 있다는 말은 거짓이에요.', c: () => '외심의 D는 늘 중점 → 이 문장은 거짓', d: (L, M, s) => { const g = m5geo(M, s), { B, C: Cc, O, DO } = g.L; L.ln(O, DO, 'rose', 4); L.ang(DO, O, B, { color: 'rose', r: 14 }); L.tk(B, DO, 1, 'amber'); L.tk(DO, Cc, 1, 'amber'); } },
+    { h: '내심에서 세 꼭짓점까지의 거리는 항상 같다.', f: () => false, w: () => '내심에서 같은 거리인 것은 세 변까지의 거리예요. 꼭짓점까지의 거리 IA, IB, IC는 일반적으로 서로 달라요 (반례).', c: () => 'IA, IB, IC의 길이가 달라요 (반례)', d: (L, M, s) => { const g = m5geo(M, s), { A, B, C: Cc, I } = g.R; [A, B, Cc].forEach((z, i) => { L.ln(I, z, 'rose', 4); L.tk(I, z, i + 1, 'rose'); }); } },
+    { h: '외심에서 세 변까지의 거리는 항상 같다.', f: () => false, w: () => '외심에서 같은 거리인 것은 세 꼭짓점까지의 거리예요. 세 변까지의 거리 OD, OE, OF는 일반적으로 서로 달라요 (반례).', c: () => 'OD, OE, OF의 길이가 달라요 (반례)', d: (L, M, s) => { const g = m5geo(M, s), { A, B, C: Cc, O } = g.L; [[B, Cc], [Cc, A], [A, B]].forEach(([p, q], i) => { const f = foot(O, p, q); L.ln(O, f, 'rose', 3.6); L.tk(O, f, i + 1, 'rose'); }); } }
+  ];
+  const m5Solve = {
+    steps: (M, s) => {
+      const v = (s.trV || 0) % 3, { m, x } = M, out = [];
+      if (v === 2) return SVB.stmtSteps(m5.prob(M, s), M5POOL, M, true, s);
+      if (v === 0) {
+        out.push({ k: 'given', f: 'given', t: `점 O는 △ABC의 외심이고 D는 O에서 변 BC에 내린 수선의 발이에요. $\\overline{BC}=${2 * m}$ cm일 때 $\\overline{BD}$의 길이 $x$를 구해요.`, cap: `BC=${2 * m} cm, BD=x` });
+        out.push({ k: 'idea', f: 'idea', t: '외심에서 B, C까지의 거리는 모두 반지름이라 OB=OC예요. 그러면 △OBC는 이등변삼각형이고, 이등변삼각형의 꼭지점 O에서 밑변 BC에 내린 수선은 밑변을 똑같이 둘로 나눠요.', cap: 'OB=OC → 꼭지점에서 밑변에 내린 수선은 밑변을 이등분' });
+        out.push({ k: 'fig', f: 'iso', lb: '이등변삼각형', t: '$\\overline{OB}=\\overline{OC}$ (둘 다 외접원의 반지름)이므로 △OBC는 O를 꼭지점으로 하는 이등변삼각형이에요.', cap: 'OB=OC → △OBC는 이등변삼각형' });
+        out.push({ k: 'fig', f: 'mid', lb: '밑변의 이등분', t: '$\\overline{OD}\\perp\\overline{BC}$이므로 D는 밑변 BC의 중점이에요. 그래서 $\\overline{BD}=\\overline{CD}$.', cap: 'OD⊥BC → BD=CD' });
+        out.push({ k: 'eq', f: 'eq', t: `$x=\\overline{BD}=\\frac{1}{2}\\overline{BC}=\\frac{${2 * m}}{2}=${m}$ (cm)`, cap: `x=BD=\\frac{BC}{2}=\\frac{${2 * m}}{2}=${m} cm` });
+        out.push({ k: 'ans', f: 'ans', t: `$x=${m}\\text{ cm}$`, cap: `x = ${m} cm` });
+      } else {
+        const [p, q, r] = x;
+        out.push({ k: 'given', f: 'given', t: `점 I는 △ABC의 내심이고 D는 I에서 변 BC에 내린 수선의 발이에요. $\\overline{AB}=${p + q}$ cm, $\\overline{BC}=${q + r}$ cm, $\\overline{CA}=${r + p}$ cm일 때 $\\overline{BD}$의 길이 $x$를 구해요.`, cap: `AB=${p + q}, BC=${q + r}, CA=${r + p} (cm), BD=x` });
+        out.push({ k: 'idea', f: 'idea', t: '내심의 수선의 발 D는 변의 중점이 아니라 내접원의 접점이에요(중점이 되는 건 외심일 때뿐). 그러니 BC의 반으로 구하면 안 되고, 한 점에서 그은 두 접선의 길이가 같다는 성질로 구해요.', cap: '내심의 D는 접점 → 접선의 길이로 구해요' });
+        out.push({ k: 'fig', f: 'tan', lb: '접선의 길이', t: '$\\overline{AF}=\\overline{AE}=p$, $\\overline{BF}=\\overline{BD}=q$, $\\overline{CD}=\\overline{CE}=r$로 놓아요. 구하는 것은 $x=\\overline{BD}=q$.', cap: 'AF=AE=p, BF=BD=q, CD=CE=r' });
+        out.push({ k: 'fig', f: 'sides', lb: '변을 합으로', t: `세 변은 $\\overline{AB}=p+q=${p + q}$, $\\overline{BC}=q+r=${q + r}$, $\\overline{CA}=r+p=${r + p}$예요.`, cap: `p+q=${p + q}, q+r=${q + r}, r+p=${r + p}` });
+        out.push({ k: 'eq', f: 'eq', t: `$(p+q)+(q+r)-(r+p)=2q$이므로 $x=q=\\frac{\\overline{AB}+\\overline{BC}-\\overline{CA}}{2}=\\frac{${p + q}+${q + r}-${r + p}}{2}=${q}$ (cm)`, cap: `x=q=\\frac{${p + q}+${q + r}−${r + p}}{2}=${q} cm` });
+        out.push({ k: 'ans', f: 'ans', t: `$x=${q}\\text{ cm}$`, cap: `x = ${q} cm` });
+        out.push({ k: 'trap', f: 'trap', t: `D를 BC의 중점으로 보고 $\\overline{BD}=\\frac{1}{2}\\overline{BC}=\\frac{${q + r}}{2}$로 구하면 틀려요. BC의 중점은 외심에서 내린 수선의 발이에요. 내심의 D는 BD=${q}, CD=${r}로 서로 달라요.`, cap: `중점이면 \\frac{${q + r}}{2}=${(q + r) / 2} (오답) · 실제 BD=${q} cm` });
+      }
+      return out;
+    },
+    draw: SVB.runner({
+      box: (M, s) => { const g = m5geo(M, s), pts = []; if (g.showL) pts.push(g.L.A, g.L.B, g.L.C, g.L.O, g.L.DO); if (g.showR) pts.push(g.R.A, g.R.B, g.R.C, g.R.I, g.R.D); return bboxOf(pts); }, padL: 44,
+      base: (b, M, s) => { const g = m5geo(M, s); if (g.v === 1) b.circle(g.R.I, dist(g.R.I, g.R.D), { color: 'green', width: 2.2, alpha: 0.7 }); if (g.showL) { const { A, B, C: Cc } = g.L; fillPoly(b, [A, B, Cc], 'sky', 0.08); poly(b, [A, B, Cc], 'ink', 3.4); } if (g.showR) { const { A, B, C: Cc } = g.R; fillPoly(b, [A, B, Cc], 'sky', 0.08); poly(b, [A, B, Cc], 'ink', 3.4); } },
+      legend: (M, s) => { const v = (s.trV || 0) % 3; return v === 0 ? 'O: 외심 · D: O에서 BC에 내린 수선의 발' : v === 1 ? 'I: 내심 · D: I에서 BC에 내린 수선의 발' : '왼쪽 O: 외심 · 오른쪽 I: 내심 · D: 수선의 발'; },
+      dyn: (name, M, s) => stmtDyn(M5POOL, m5.prob)(name, M, s),
+      st: {
+        given: (L, M, s, X) => {
+          const g = m5geo(M, s), v = g.v, q = fs(X.b, 15);
+          if (v === 0) { const { B, C: Cc, O, DO } = g.L; L.ln(O, DO, 'rose', 3); L.ang(DO, O, B, { color: 'rose', r: 14 }); L.tx(G.lerp(mid(B, Cc), Cc, 0.5), `BC = ${2 * M.m} cm`, { dy: 26, size: q, color: 'sky', keep: true }); }
+          else if (v === 1) { const { A, B, C: Cc, I, D } = g.R, E = foot(I, Cc, A), F = foot(I, A, B), [p, qq, r] = M.x; L.ln(I, D, 'green', 3); L.ang(D, I, B, { color: 'green', r: 14 }); const kp = !X.at('sides') && !X.at('trap'); L.sd(B, A, I, `${p + qq} cm`, { color: 'sky', size: q, gap: 8, keep: kp }); L.sd(B, Cc, I, `${qq + r} cm`, { color: 'sky', size: q, gap: 22, keep: kp }); L.sd(Cc, A, I, `${r + p} cm`, { color: 'sky', size: q, gap: 8, keep: kp }); void E; void F; }
+        },
+        iso: (L, M, s) => { const g = m5geo(M, s), { B, C: Cc, O } = g.L; L.fl([O, B, Cc], 'amber', 0.14); L.ln(O, B, 'rose', 4.4); L.ln(O, Cc, 'rose', 4.4); L.tk(O, B, 2, 'rose'); L.tk(O, Cc, 2, 'rose'); },
+        mid: (L, M, s) => { const g = m5geo(M, s), { B, C: Cc, O, DO } = g.L; L.ln(O, DO, 'rose', 4.4); L.ang(DO, O, B, { color: 'rose', r: 14 }); L.tk(B, DO, 1, 'amber'); L.tk(DO, Cc, 1, 'amber'); },
+        tan: (L, M, s) => { const g = m5geo(M, s), { A, B, C: Cc, I, D } = g.R, E = foot(I, Cc, A), F = foot(I, A, B); L.circ(I, dist(I, D), 'green', 2.6); [[A, F, 'amber', 1], [A, E, 'amber', 1], [B, F, 'sky', 2], [B, D, 'sky', 2], [Cc, D, 'green', 3], [Cc, E, 'green', 3]].forEach(([p, q, col, n]) => { L.ln(p, q, col, 5.4); L.tk(p, q, n, col); }); },
+        sides: (L, M, s, X) => { const g = m5geo(M, s), { A, B, C: Cc, I } = g.R, q = fs(X.b, 15), [p, qq, r] = M.x; L.pl([A, B, Cc], 'ink', 3.6); L.sd(B, A, I, `p+q=${p + qq}`, { color: 'ink', size: q, gap: 8 }); L.sd(B, Cc, I, `q+r=${qq + r}`, { color: 'ink', size: q, gap: 22 }); L.sd(Cc, A, I, `r+p=${r + p}`, { color: 'ink', size: q, gap: 8 }); },
+        eq: (L, M, s) => { const g = m5geo(M, s); if (g.v === 1) { const { B, D, I } = g.R; L.ln(I, D, 'green', 3); L.ln(B, D, 'sky', 6); } },
+        trap: (L, M, s) => { const g = m5geo(M, s), { B, C: Cc, D } = g.R, mm = mid(B, Cc); L.circ(mm, 0.05, 'rose', 3.4); L.ln(B, mm, 'rose', 4, { dash: [6, 5] }); L.tx(mm, 'BC의 중점', { dy: -24, size: 15, color: 'rose' }); void D; }
+      },
+      x: (b, M, s, X) => {
+        const g = m5geo(M, s), v = g.v;
+        if (v === 0) { const { B, DO } = g.L; if (!X.at('iso')) T(b, mid(B, DO), X.xVal ? `${M.m} cm` : 'x', { dy: 20, size: fs(b, X.xVal ? 15 : 18), color: 'amber' }); }
+        else if (v === 1) { const { B, D } = g.R; if (!X.at('tan') && !X.at('sides') && !X.at('trap')) T(b, mid(B, D), X.xVal ? `${M.x[1]} cm` : 'x', { dy: 20, size: fs(b, X.xVal ? 15 : 18), color: 'amber' }); }
+      },
+      top: (b, M, s, X) => {
+        const g = m5geo(M, s);
+        if (g.showL) { const { A, B, C: Cc, O, DO } = g.L; b.point(O, { color: 'rose', r: 5.5 }); b.point(DO, { color: 'rose', r: 4 }); [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4 })); T(b, O, 'O', { dx: 12, dy: -10, size: 17, color: 'rose' }); T(b, DO, 'D', { dy: 16, size: 17 }); [[A, 'A'], [B, 'B'], [Cc, 'C']].forEach(([p, nm]) => tagOut(b, p, g.gc, nm, { size: 17 })); }
+        if (g.showR) { const { A, B, C: Cc, I, D } = g.R, gc = pt(g.gc.x + g.off, g.gc.y); b.point(I, { color: 'green', r: 5.5 }); b.point(D, { color: 'green', r: 4 }); [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4 })); T(b, I, 'I', { dx: 12, dy: -10, size: 17, color: 'green' }); T(b, D, 'D', { dy: 16, size: 17 }); [[A, 'A'], [B, 'B'], [Cc, 'C']].forEach(([p, nm]) => tagOut(b, p, gc, nm, { size: 17 })); }
+      }
+    })
+  };
+
   /* ====================================================================== 2. 직각삼각형의 O와 I */
   function rtOI(a, b) {
     const C0 = pt(0, 0), B = pt(a, 0), A = pt(0, -b), c = Math.hypot(a, b), r = (a + b - c) / 2;
     return { A, B, C: C0, O: mid(A, B), R: c / 2, I: pt(r, -r), r };
   }
   const m2 = {
-    id: 't7-2', title: '직각삼각형의 외심 O와 내심 I', short: '직각삼각형의 O와 I',
+    id: 't7-2', title: '직각삼각형의 외심 O와 내심 I', short: '직각삼각형의 O와 I', solve: m2Solve,
     question: '직각삼각형의 외접원의 반지름 R과 내접원의 반지름 r은 세 변으로 어떻게 구할까?',
     ctl: ['trMi'],
     init: (s) => { s.trMi = 0; s.trV = 0; },
@@ -260,7 +455,7 @@
       `(외접원의 넓이) $=\\pi R^2=${M.circ}\\pi$, (삼각형의 넓이) $=${fr('1', 2)}\\times${M.a}\\times${M.b}=${M.tri}$이므로 색칠한 부분(외접원 − 삼각형)의 넓이는 $${M.circ}\\pi-${M.tri}$ (cm²)예요.`
     ],
     view: (M) => ({
-      guide: '막대로 <b>삼각형</b>을 골라 보세요(빗변이 짝수인 정수 직각삼각형이에요). 외심은 <b>빗변의 중점</b>(R=빗변÷2), 내접원의 반지름은 <b>r=(a+b−c)÷2</b>예요. 색칠한 부분은 외접원에서 삼각형을 뺀 부분이에요.',
+      guide: '막대로 <b>삼각형</b>을 골라 보세요(빗변이 짝수인 정수 직각삼각형이에요). 외심은 <b>빗변의 중점</b>(R=빗변÷2), 내접원의 반지름은 <b>r=(a+b−c)÷2</b>예요. 색칠한 부분은 외접원에서 삼각형을 뺀 부분이에요. 이 그림으로 문제를 풀어 보고, 풀이 탭에서 단계마다 확인해요.',
       readouts: [rd('빗변 c', `${M.c} cm`, 'sky'), rd('외접원의 반지름 R', `${M.R} cm`, 'rose', '빗변의 반'), rd('내접원의 반지름 r', `${M.r} cm`, 'green', '(a + b − c) ÷ 2'), rd('외접원 − 삼각형', `${M.circ}π − ${M.tri} cm²`, 'amber', null, null, true)],
       formula: `<p>$R=${fr(String(M.c), 2)}=${M.R}$, $r=${fr(`${M.a}+${M.b}-${M.c}`, 2)}=${M.r}$ (cm)</p><p>(색칠한 부분) $=\\pi\\times${M.R}^2-${fr('1', 2)}\\times${M.a}\\times${M.b}=${M.circ}\\pi-${M.tri}$ (cm²)</p>`,
       rule: '직각삼각형: 외심 = 빗변의 중점이므로 R = 빗변 ÷ 2, 내접원의 반지름 r = (직각을 낀 두 변의 합 − 빗변) ÷ 2.',
@@ -272,9 +467,9 @@
       if (v === 0) {
         const f = (p, q) => `${p}\\pi-${q}\\text{ cm}^2`;
         const items = [{ h: `$${f(circ, tri)}$`, ok: true }, { h: `$${f(circ, 2 * tri)}$`, hint: '삼각형의 넓이는 ½×밑변×높이예요. 2를 곱하지 않아요.' }, { h: `$${f(circ * 2, tri)}$`, hint: '외접원의 넓이는 πR²이에요. R은 빗변의 반이에요.' }, { h: `$${f(circ, tri / 2)}$`, hint: '삼각형의 넓이를 한 번 더 2로 나눴어요.' }, { h: `$${f((c * c) / 1, tri)}$`, hint: '빗변을 반지름으로 썼어요. 반지름 R은 빗변의 반이에요.' }].map((x) => ({ ...x, p: x.h.replace(/\$/g, '') }));
-        return { tag: '외접원과 삼각형 · 색칠한 부분의 넓이', key, stem: `${head} 외접원에서 삼각형 ABC를 제외한 색칠한 부분의 넓이는?`, ...txt(items, key) };
+        return { tag: '외접원과 삼각형 · 색칠한 부분의 넓이', key, stem: `${head} 외접원에서 삼각형 ABC를 제외한 색칠한 부분의 넓이 $x$는?`, ...txt(items, key) };
       }
-      return numProb({ tag: '외접원과 내접원의 반지름', key, stem: `${head} 외접원의 반지름 R과 내접원의 반지름 r의 합 $R+r$의 값은?`, correct: R + r, wrongs: [[R, 'R만 구했어요. r도 더해야 해요.'], [r, 'r만 구했어요. R도 더해야 해요.'], [R * 2 + r, 'R은 지름이 아니라 반지름이에요.'], [R + r + 1, '다시 계산해 보세요.'], [R + r - 1, '다시 계산해 보세요.']].filter((q) => q[0] !== R + r && q[0] > 0), ...cmOpts });
+      return numProb({ tag: '외접원과 내접원의 반지름', key, stem: `${head} 외접원의 반지름 R과 내접원의 반지름 r의 합 $x=R+r$의 값은?`, correct: R + r, wrongs: [[R, 'R만 구했어요. r도 더해야 해요.'], [r, 'r만 구했어요. R도 더해야 해요.'], [R * 2 + r, 'R은 지름이 아니라 반지름이에요.'], [R + r + 1, '다시 계산해 보세요.'], [R + r - 1, '다시 계산해 보세요.']].filter((q) => q[0] !== R + r && q[0] > 0), ...cmOpts });
     },
     verify: (s) => { const M = m2.model(s), g = M.g; return { ans: dist(g.O, g.C), model: dist(g.O, g.A), extra: [[dist(g.O, g.B), M.R], [dist(g.I, pt(g.I.x, 0)), M.r], [dist(g.I, pt(0, g.I.y)), M.r]] }; }
   };
@@ -296,7 +491,7 @@
     if (k === 0) return true; if (k === 1) return true; if (k === 2) return g.oIn; if (k === 3) return near(dist(g.I, g.A), dist(g.I, g.B)) && near(dist(g.I, g.B), dist(g.I, g.C)); return g.iIn;
   };
   const m3 = {
-    id: 't7-3', title: '외심·내심의 성질 판별', short: '보기 판별',
+    id: 't7-3', title: '외심·내심의 성질 판별', short: '보기 판별', solve: m3Solve,
     question: '외심과 내심에 대한 설명 ①~⑤ 중 어떤 것이 늘 옳을까? 반례를 찾아 보세요.',
     ctl: ['trMx', 'trMy'],
     presets: () => CHIPS.map((c, i) => ({ group: i === 0 ? '확인할 보기' : '', label: c.t, apply: (s) => { s.trMk = i; }, on: (s) => (s.trMk || 0) === i })),
@@ -347,7 +542,7 @@
     view: (M) => {
       const k = M.k, g = M.g, truth = chipTruth(k, g);
       return {
-        guide: '위의 칩에서 <b>보기 ①~⑤</b>를 하나씩 눌러 보세요. 해당 성질이 그림에 나타나요(참이면 초록, 거짓이면 분홍). 막대로 <b>∠A, ∠B</b>를 바꿔 <b>반례</b>(예: ∠A가 둔각)를 직접 만들어 보세요.',
+        guide: '위의 칩에서 <b>보기 ①~⑤</b>를 하나씩 눌러 보세요. 해당 성질이 그림에 나타나요(참이면 초록, 거짓이면 분홍). 막대로 <b>∠A, ∠B</b>를 바꿔 <b>반례</b>(예: ∠A가 둔각)를 직접 만들어 보세요. 이 그림으로 문제를 풀어 보고, 풀이 탭에서 단계마다 확인해요.',
         readouts: [rd('∠A · ∠B · ∠C', `${M.a}° · ${M.b}° · ${M.c}°`, 'sky'), rd('외심 O', g.oIn ? '삼각형의 안쪽' : '삼각형의 바깥', g.oIn ? 'green' : 'rose'), rd('이 삼각형에서 보기 ' + '①②③④⑤'[k], truth ? '참' : '거짓', truth ? 'green' : 'rose', null, null, true)],
         status: truth ? { tone: 'ok', text: `보기 ${'①②③④⑤'[k]} — 이 삼각형에서는 참` } : { tone: 'warn', text: `보기 ${'①②③④⑤'[k]} — 거짓 (반례)` },
         formula: `<p>외심 O: $\\overline{OA}=\\overline{OB}=\\overline{OC}$ (수직이등분선)</p><p>내심 I: $\\overline{ID}=\\overline{IE}=\\overline{IF}$ (각의 이등분선)</p>`,
@@ -357,13 +552,7 @@
     },
     prob: (M, s) => {
       const key = `q${s.trQi || 0}`, g = M.pg, ask = (s.trQi || 0) % 2 === 0;
-      const pool = [
-        { h: '점 O에서 세 꼭짓점 A, B, C까지의 거리가 같다.', f: () => true }, { h: '점 I에서 세 변까지의 거리가 같다.', f: () => true }, { h: '점 I는 삼각형 ABC의 내부에 있다.', f: () => true },
-        { h: '점 O는 세 변의 수직이등분선의 교점이다.', f: () => true }, { h: '점 I는 세 내각의 이등분선의 교점이다.', f: () => true }, { h: '$\\angle BIC=90^{\\circ}+${HA}$', f: () => true },
-        { h: '$\\overline{IA}=\\overline{IB}=\\overline{IC}$', f: (m) => near(dist(m.pg.I, m.pg.A), dist(m.pg.I, m.pg.B)) && near(dist(m.pg.I, m.pg.B), dist(m.pg.I, m.pg.C)) },
-        { h: '점 O는 삼각형 ABC의 내부에 있다.', f: (m) => m.pg.oIn }, { h: '점 O에서 세 변까지의 거리가 같다.', f: (m) => { const d1 = dist(m.pg.O, foot(m.pg.O, m.pg.B, m.pg.C)), d2 = dist(m.pg.O, foot(m.pg.O, m.pg.C, m.pg.A)), d3 = dist(m.pg.O, foot(m.pg.O, m.pg.A, m.pg.B)); return near(d1, d2) && near(d2, d3); } },
-        { h: '점 I는 세 변의 수직이등분선의 교점이다.', f: (m) => near(dist(m.pg.I, m.pg.O), 0) }, { h: '$\\angle BOC=\\angle BIC$', f: (m) => near(angBetween(m.pg.O, m.pg.B, m.pg.C), angBetween(m.pg.I, m.pg.B, m.pg.C)) }
-      ].map((x) => ({ ...x, h: x.h.replace('${HA}', `\\dfrac{1}{2}\\angle A`).replace('\\dfrac', '\\frac') }));
+      const pool = T7POOL; // 풀이 흐름의 문장 풀과 같은 목록(문장마다 이유·그림이 붙어 있어요)
       const r = mkStmtChoices(pool, M, key + (ask ? 'T' : 'F'), ask);
       return { tag: ask ? '외심·내심의 성질 · 옳은 것' : '[함정] 외심·내심의 성질 · 옳지 않은 것', key: key + (ask ? 'T' : 'F'), stem: `그림에서 점 O는 삼각형 ABC의 외심이고 점 I는 내심이다. 다음 중 ${ask ? '옳은' : '옳지 않은'} 것은?`, choices: r.choices, wide: true, note: '그림의 삼각형은 숫자 바꾸기를 누를 때마다 바뀌어요' };
     },
@@ -372,7 +561,7 @@
 
   /* ====================================================================== 4. 정삼각형의 O와 I */
   const m4 = {
-    id: 't7-4', title: '정삼각형에서는 O와 I가 같은 점', short: '정삼각형의 O와 I',
+    id: 't7-4', title: '정삼각형에서는 O와 I가 같은 점', short: '정삼각형의 O와 I', solve: m4Solve,
     question: '정삼각형의 외심과 내심은 어떤 관계이고, 외접원과 내접원의 반지름의 비는?',
     ctl: ['trMr'],
     init: (s) => { s.trMr = 3; s.trV = 0; },
@@ -413,7 +602,7 @@
       `높이 $\\overline{AD}=\\overline{AO}+\\overline{OD}=R+r=${M.R}+${M.r}=${M.h}$ cm, 즉 AD=3r이에요.`
     ],
     view: (M) => ({
-      guide: '막대로 <b>내접원의 반지름 r</b>을 바꿔 보세요. 정삼각형에서는 외심과 내심이 <b>같은 점 O</b>이고, 외접원의 반지름은 늘 내접원의 반지름의 <b>2배</b>(R=2r)예요. 높이 AD는 <b>3r</b>이에요.',
+      guide: '막대로 <b>내접원의 반지름 r</b>을 바꿔 보세요. 정삼각형에서는 외심과 내심이 <b>같은 점 O</b>이고, 외접원의 반지름은 늘 내접원의 반지름의 <b>2배</b>(R=2r)예요. 높이 AD는 <b>3r</b>이에요. 이 그림으로 문제를 풀어 보고, 풀이 탭에서 단계마다 확인해요.',
       readouts: [rd('내접원의 반지름 r', `${M.r} cm`, 'green'), rd('외접원의 반지름 R', `${M.R} cm`, 'rose', '2 × r'), rd('높이 AD', `${M.h} cm`, 'amber', 'R + r = 3r', null, true)],
       formula: `<p>$R=2r=2\\times${M.r}=${M.R}$ (cm)</p><p>$\\overline{AD}=R+r=3r=${M.h}$ (cm)</p>`,
       rule: '정삼각형의 외심과 내심은 일치하고, 외접원의 반지름 R = 2 × (내접원의 반지름 r), 높이 = 3r이다.',
@@ -431,11 +620,11 @@
 
   /* ====================================================================== 5. 중점 D, E, F 와 수선의 발 D, E, F */
   const m5 = {
-    id: 't7-5', title: '외심의 D·E·F와 내심의 D·E·F는 달라요', short: '중점과 수선의 발',
+    id: 't7-5', title: '외심의 D·E·F와 내심의 D·E·F는 달라요', short: '중점과 수선의 발', solve: m5Solve,
     question: '외심에서 변에 내린 점 D와 내심에서 변에 내린 점 D는 같은 위치일까? BD와 CD의 길이는?',
     ctl: ['trMs', 'trMt'],
     init: (s) => { s.trMs = 60; s.trMt = 70; s.trV = 0; s.trM = 6; s.trX = [4, 3, 5]; },
-    reroll: (s) => { s.trV = (s.trV + 1) % 3; s.trM = rint(3, 9); s.trX = [rint(2, 7), rint(2, 7), rint(2, 7)]; },
+    reroll: (s) => { s.trV = (s.trV + 1) % 3; s.trM = rint(3, 9); do { s.trX = [rint(2, 7), rint(2, 7), rint(2, 7)]; } while (s.trX[0] === s.trX[1] && s.trX[1] === s.trX[2]); /* 세 접선 길이가 모두 같으면 정삼각형이라 I=O 가 되어 구분이 사라져요 */ },
     model: (s) => {
       const a = clamp(Math.round(s.trMs / 2) * 2, 40, 80); let b = clamp(Math.round(s.trMt / 2) * 2, 40, 80); if (a === b) b = b >= 80 ? b - 2 : b + 2; const c = 180 - a - b;
       const [A, B, Cc] = triBC(2, b, c), O = circumcenter(A, B, Cc), I = incenter(A, B, Cc), DO = mid(B, Cc), DI = foot(I, B, Cc);
@@ -492,7 +681,7 @@
       `외심 ↔ 꼭짓점까지 같은 거리, D는 변의 중점. 내심 ↔ 변까지 같은 거리, D는 수선의 발. 같은 이름 D라도 위치와 뜻이 달라요.`
     ],
     view: (M) => ({
-      guide: '막대로 <b>∠A, ∠B</b>를 바꿔 보세요. 왼쪽은 <b>외심</b>의 D(변의 중점), 오른쪽은 <b>내심</b>의 D(수선의 발)예요. 두 점 D는 대부분 다른 위치이고, <b>BD=CD</b>는 외심의 D에서만 늘 성립해요.',
+      guide: '막대로 <b>∠A, ∠B</b>를 바꿔 보세요. 왼쪽은 <b>외심</b>의 D(변의 중점), 오른쪽은 <b>내심</b>의 D(수선의 발)예요. 두 점 D는 대부분 다른 위치이고, <b>BD=CD</b>는 외심의 D에서만 늘 성립해요. 이 그림으로 문제를 풀어 보고, 풀이 탭에서 단계마다 확인해요.',
       readouts: [rd('∠A · ∠B · ∠C', `${M.a}° · ${M.b}° · ${M.c}°`, 'sky'), rd('외심의 D', 'BD = CD (중점)', 'rose'), rd('내심의 D', '수선의 발 (BD ≠ CD)', 'green', '접선의 길이 BD=BF', null, true)],
       formula: `<p>외심: $\\overline{BD}=\\overline{CD}$ (D는 변의 중점)</p><p>내심: $\\overline{BD}=\\overline{BF}$ (접선의 길이), 일반적으로 $\\overline{BD}\\ne\\overline{CD}$</p>`,
       rule: '외심의 D·E·F는 변의 중점(수직이등분선과 변의 교점), 내심의 D·E·F는 변에 내린 수선의 발(접점)이다.',
@@ -502,15 +691,21 @@
       const { m, x } = M, v = (s.trV || 0) % 3, key = `${v}:${m}:${x.join(',')}`;
       if (v === 0) return numProb({ tag: '외심의 중점 D', key, stem: `그림에서 점 O는 삼각형 ABC의 외심이고, 점 D는 O에서 변 BC에 내린 수선의 발이다. ${S('BC')}=${2 * m} cm일 때, ${S('BD')}의 길이 $x$는?`, correct: m, wrongs: [[2 * m, 'BC의 길이예요. D는 BC의 중점이에요.'], [m + 1, '다시 생각해 보세요.'], [Math.max(1, m - 1), '다시 생각해 보세요.'], [m + 2, '다시 생각해 보세요.'], [3 * m, '다시 생각해 보세요.']], ...cmOpts });
       if (v === 1) return numProb({ tag: '[함정] 내심의 수선의 발 D', key, stem: `그림에서 점 I는 삼각형 ABC의 내심이고, 점 D는 I에서 변 BC에 내린 수선의 발이다. ${S('AB')}=${x[0] + x[1]} cm, ${S('BC')}=${x[1] + x[2]} cm, ${S('CA')}=${x[2] + x[0]} cm일 때, ${S('BD')}의 길이 $x$는?`, correct: x[1], wrongs: [[(x[1] + x[2]) / 2, 'BC의 반이에요. 내심의 D는 BC의 중점이 아니에요.'], [x[0], 'AF의 길이예요.'], [x[2], 'CD의 길이예요.'], [x[1] + 1, '다시 계산해 보세요.'], [Math.max(1, x[1] - 1), '다시 계산해 보세요.']].filter((q) => Number.isInteger(q[0]) && q[0] !== x[1] && q[0] > 0), ...cmOpts });
-      const pool = [
-        { h: '외심에서 변에 내린 수선의 발은 그 변의 중점이다.', f: () => true }, { h: '내심에서 세 변까지의 거리는 같다.', f: () => true }, { h: '외심에서 세 꼭짓점까지의 거리는 같다.', f: () => true }, { h: '내심에서 변에 내린 수선의 발에서 같은 점에서 그은 접선의 길이는 같다.', f: () => true }, { h: '내심에서 변에 내린 수선의 발은 항상 그 변의 중점이다.', f: () => false },
-        { h: '외심에서 변에 내린 수선의 발은 변의 중점이 아닐 수 있다.', f: () => false }, { h: '내심에서 세 꼭짓점까지의 거리는 항상 같다.', f: () => false }, { h: '외심에서 세 변까지의 거리는 항상 같다.', f: () => false }
-      ];
+      const pool = M5POOL; // 풀이 흐름의 문장 풀과 같은 목록
       const ask = true, r = mkStmtChoices(pool, M, key, ask);
       return { tag: '외심·내심의 D, E, F 구별 · 옳은 것', key, stem: '그림의 왼쪽은 삼각형 ABC의 외심 O를, 오른쪽은 내심 I를 나타낸 것이다. 다음 중 옳은 것은?', choices: r.choices, wide: true };
     },
     verify: (s) => { const M = m5.model(s); return { ans: dist(M.B, M.DO), model: dist(M.DO, M.C), extra: [[dist(M.O, M.A), dist(M.O, M.B)], [dist(M.I, M.DI), M.I === null ? 0 : dist(M.I, foot(M.I, M.C, M.A))]] }; }
   };
+
+
+  // 풀이 흐름: 보기가 글인 문제는 5지선다 대신 문장 ①~⑤ 를 발문 아래에 보여 줍니다. 식 답(색칠한 부분의 넓이)은 답을 글로 보여 줍니다.
+  const m2p = m2.prob;
+  m2.prob = (M, s) => { const Q = m2p(M, s); return (s.trV || 0) % 2 === 0 ? { ...Q, ansHtml: `$x=${Q.choices.find((c) => c.ok).h.replace(/\$/g, '')}$` } : Q; };
+  const m3p = m3.prob;
+  m3.prob = (M, s) => SVB.listStmts(m3p(M, s));
+  const m5p = m5.prob;
+  m5.prob = (M, s) => (((s.trV || 0) % 3 === 2) ? SVB.listStmts(m5p(M, s)) : m5p(M, s));
 
   G.register(70, 't7', '⑦ 외심·내심', '외심·내심', PARAMS, [m1, m2, m3, m4, m5]);
 })();

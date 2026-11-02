@@ -19,6 +19,8 @@
   const AMB = 'amber', SKY = 'sky', GRN = 'green', RED = 'red', VIO = 'violet';
   const span = (c, t) => `<b style="color:var(--m-${c})">${t}</b>`;
   const stepOf = (C) => (C.problem ? 0 : C.review ? C.step : 4);
+  // 맨 위 줄글(banner)이 차지하는 높이(px): n = 줄 수, sz = 글자 크기
+  const topFor = (n, sz = 15, extra = 8) => 16 + n * (sz + 9) + extra;
   const Y0 = -30 * DEG;
   const FR = { e1: v3(Math.cos(Y0), -Math.sin(Y0), 0), e2: v3(Math.sin(Y0), Math.cos(Y0), 0), e3: v3(0, 0, 1) };
   const NAME_N = { 3: '삼각형', 4: '사각형', 5: '오각형', 6: '육각형' };
@@ -89,7 +91,7 @@
   const T1 = {
     id: 'p4-1', title: '정육면체의 단면', short: '정육면체의 단면',
     question: '정육면체를 한 평면으로 자르면 단면은 어떤 모양이 될까? 단면판을 가로로 밀고 입체를 돌려 가며 단면의 모양을 알아보자.',
-    cam0: { yaw: -80, pitch: 0 },
+    cam0: { yaw: -70, pitch: 24 }, // 위에서 내려다보는 시점: 정육면체가 입체로 보이게
     ctl: () => ['phTa', 'phTb', 'phTd'].concat(['phYaw']),
     presets: () => PRE.map((p, i) => ({ group: i === 0 ? '단면의 모양' : '', label: p.label, apply: (st) => { st.phTa = p.a; st.phTb = p.b; st.phTd = p.d; }, on: (st) => Math.abs(st.phTa - p.a) < 0.5 && Math.abs(st.phTb - p.b) < 0.5 && Math.abs(st.phTd - p.d) < 0.02 })),
     init: (s) => { s.phTa = 45; s.phTb = 45; s.phTd = 0; s.phQ = rollTri(); },
@@ -99,8 +101,8 @@
       return { sec, name: shapeName(sec), k: sec.count, Q: s.phQ };
     },
     draw(b, s, M, C) {
-      const st = stepOf(C), cam = Object.assign({}, s, { phPitch: 0 });
-      const D = scene3(b, cam, C);
+      const st = stepOf(C);
+      const D = scene3(b, s, C);
       if (C.problem) {
         // 문제: 위에서 본 정육면체와 세 점 P, Q, R
         const D2 = scene3(b, Object.assign({}, s, { phYaw: -30, phPitch: 24 }), C), Q = M.Q;
@@ -117,9 +119,13 @@
       const dmax = Math.abs(n.x) + Math.abs(n.y) + Math.abs(n.z), d = s.phTd * dmax;
       void B;
       const wv = CV.map((p) => toWorld(Bs, p));
-      const L = 1.55;
-      const corners = [-1, 1].flatMap((sx) => [-1, 1].flatMap((sy) => [add3(mul3(FR.e1, sx * dmax), add3(mul3(FR.e2, sy * L), mul3(FR.e3, L))), add3(mul3(FR.e1, sx * dmax), add3(mul3(FR.e2, sy * L), mul3(FR.e3, -L)))]));
-      D.fitPts(wv.concat(corners), { t: 84, b: 40, l: 40, r: 40 });
+      const L = 1.45;
+      // 화면 틀: 입체 + 지금 놓인 단면판만 담습니다(판이 끝까지 가는 자리를 미리 잡지 않아 입체가 크게 보여요)
+      const corners = [-1, 1].flatMap((sy) => [-1, 1].map((sz2) => add3(mul3(FR.e1, d), add3(mul3(FR.e2, sy * L), mul3(FR.e3, sz2 * L)))));
+      const narrow = b.W < 560, boxSz = narrow ? 80 : 140, showBox = sec.count >= 3 && C.txt, keepBox = narrow && C.txt; // keepBox: 단면이 없을 때도 자리를 그대로 둬서 판을 밀어도 입체 크기가 변하지 않게
+      const nLines = st >= 1 && st <= 3 ? 2 : 1;
+      // 단면의 실제 모양 상자는 입체 아래(휴대폰)에 따로 자리를 둬서 입체의 모서리를 가리지 않게 합니다
+      D.fitPts(wv.concat(corners), { t: topFor(nLines, 17), b: keepBox ? boxSz + 24 : 40, l: 36, r: 36 });
       const S = solidOf(wv);
       const hit = (fi) => sec.faces.includes(fi);
       // 입체 면: 단면이 지나는 면을 강조
@@ -136,13 +142,13 @@
       }
       // 단면의 실제 모양(정면에서 본 그림)
       if (sec.count >= 3 && C.txt) {
-        const sz = b.W < 560 ? 104 : 140, x0 = b.insets.left + 12, y1 = b.H - b.insets.bottom - 12, y0 = y1 - sz, cx = x0 + sz / 2, cy = (y0 + y1) / 2;
+        const sz = boxSz, x0 = b.insets.left + 12, y1 = b.H - b.insets.bottom - 12, y0 = y1 - sz, cx = x0 + sz / 2, cy = (y0 + y1) / 2;
         sRect(b, x0, y0, x0 + sz, y1, SKY, 0.07, true);
         const p2 = sec.pts.map((p) => [dot3(p, Bs.u), dot3(p, Bs.w)]);
         const ext = Math.max(...p2.map((q) => Math.hypot(q[0], q[1])), 0.5), k = (sz / 2 - 16) / ext;
         const pc = p2.reduce((a, q) => [a[0] + q[0] / p2.length, a[1] + q[1] / p2.length], [0, 0]);
         b.path(p2.map((q) => b.toW(cx + (q[0] - pc[0]) * k, cy - (q[1] - pc[1]) * k)), { close: true, fill: AMB, fillAlpha: 0.45, color: AMB, width: 3 });
-        b.stext(x0 + sz / 2, y0 + 11, '단면의 실제 모양', { color: 'ink', size: 12, weight: 700, align: 'center', baseline: 'middle' });
+        b.stext(x0 + sz / 2, y0 + 11, narrow ? '실제 모양' : '단면의 실제 모양', { color: 'ink', size: 12, weight: 700, align: 'center', baseline: 'middle' });
       }
       if (C.txt) {
         const lines = [{ t: sec.count >= 3 ? `단면: ${M.name} (${sec.count}개의 변)` : '단면판이 입체 밖에 있어요', c: AMB, size: 17 }];
@@ -196,14 +202,14 @@
     draw(b, s, M, C) {
       const D = scene3(b, s, C), st = stepOf(C);
       const k = C.problem ? M.Q.k : M.k, I = PLAT[k], r = C.problem ? 1 / 3 : C.review ? 1 / 3 : M.r, S = truncS(platS(k), r);
-      D.fitPts(platS(k).V, { t: C.problem ? 40 : 96, b: 40, l: 50, r: 50 });
+      D.fitPts(platS(k).V, { t: C.problem ? 40 : 100, b: 36, l: 40, r: 40 });
       // 잘려 나간 부분(원래 입체의 윤곽)은 옅은 점선으로
       const O = platS(k);
-      drawPoly(D, O, { face: () => null, edge: () => ({ color: VIO, width: 1.6, alpha: 0.35, dash: [5, 5] }) });
+      drawPoly(D, O, { face: () => null, edge: (ei, vis) => (vis ? { color: VIO, width: 1.6, alpha: 0.35, dash: [5, 5] } : { skip: true }) }); // 앞쪽 윤곽만: 뒤쪽 점선이 겹쳐 복잡해지지 않게
       const cutEdge = (ei) => { const e = S.E[ei]; return e.f.some((fi) => S.F[fi].cut); };
       drawPoly(D, S, {
         face: (fi, vis) => (vis ? (S.F[fi].cut ? { c: AMB, a: st === 1 || st === 4 || C.problem ? 0.3 : 0.18 } : { c: 'green', a: 0.12 }) : null),
-        edge: (ei) => ({ color: st === 3 && cutEdge(ei) ? RED : st === 2 ? 'ink' : 'ink', width: st === 3 && cutEdge(ei) ? 4 : 2.8 })
+        edge: (ei, vis) => ({ color: st === 3 && cutEdge(ei) ? RED : 'ink', width: st === 3 && cutEdge(ei) ? 4 : 2.8, alpha: vis ? 1 : 0.5 })
       });
       if (st === 2) S.V.forEach((p) => D.dot(p, RED, 4));
       if (C.txt) {

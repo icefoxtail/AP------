@@ -332,13 +332,13 @@
     verify: (s) => { const M = r4.model(s), g = M.g; return { ans: angBetween(g.B, g.E, g.D), model: 90, extra: [[dist(g.E, g.B), dist(g.B, g.D)], [dist(g.B, g.C), M.p], [dist(g.C, g.D), M.q]] }; }
   };
 
-  /* ====================================================================== 5. 직선 l을 지나는 직각이등변삼각형 */
-  // 직선 l(가로)이 A를 지나고, B·C는 l 위쪽 양쪽. D,E 는 B,C에서 l에 내린 수선의 발. BD=m, CE=n, AD=n, AE=m
+  /* ====================================================================== 5. 직선 ℓ을 지나는 직각이등변삼각형 */
+  // 직선 l(가로)이 A를 지나고, B·C는 ℓ 위쪽 양쪽. D,E 는 B,C에서 ℓ에 내린 수선의 발. BD=m, CE=n, AD=n, AE=m
   const lineGeom = (m, n) => { const A = pt(0, 0), D = pt(-n, 0), E = pt(m, 0), B = pt(-n, -m), C = pt(m, -n); return { A, B, C, D, E }; };
   const vv5 = (M, s) => (((s.trV || 0) % 3 === 2 && (M.m + M.n) % 2) ? 0 : (s.trV || 0) % 3);
   const r5 = {
     id: 't3-5', title: '꼭짓점을 지나는 직선과 합동', short: '직선을 지나는 합동',
-    question: '직각이등변삼각형의 직각 꼭짓점 A를 지나는 직선 l에 B, C에서 수선을 그으면 어떤 합동이 생길까?',
+    question: '직각이등변삼각형의 직각 꼭짓점 A를 지나는 직선 ℓ에 B, C에서 수선을 그으면 어떤 합동이 생길까?',
     ctl: ['trLm', 'trLn'],
     init: (s) => { s.trLm = 3; s.trLn = 5; s.trV = 0; },
     reroll: (s) => { s.trLm = rint(2, 8); s.trLn = rint(2, 8); s.trV = (s.trV + 1) % 3; },
@@ -363,7 +363,7 @@
       }
       [A, B, Cc, D, E].forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
       tagOut(b, B, cen, 'B', { size: 18 }); tagOut(b, Cc, cen, 'C', { size: 18 }); T(b, A, 'A', { dy: -18, size: 18 }); T(b, D, 'D', { dy: 18, size: 18 }); T(b, E, 'E', { dy: 18, size: 18 });
-      T(b, pt(m + 0.5, 0), 'l', { dy: -14, dx: -6, size: 17, color: 'ink' });
+      T(b, pt(m + 0.5, 0), 'ℓ', { dy: -14, dx: -6, size: 17, color: 'ink' });
       if (!C.thumb && !C.problem) {
         let row, col = 'sky';
         if (C.review && st === 1) row = '∠BAD+∠CAE=90° → ∠ABD=∠CAE';
@@ -379,18 +379,18 @@
       `대응변의 길이가 같으므로 $\\overline{AE}=\\overline{BD}=${M.m}$ cm, $\\overline{AD}=\\overline{CE}=${M.n}$ cm. 따라서 $\\overline{DE}=\\overline{AD}+\\overline{AE}=${M.n}+${M.m}=${M.m + M.n}$ (cm)`
     ],
     view: (M) => ({
-      guide: '막대로 <b>BD</b>와 <b>CE</b>를 바꿔 보세요. 직선 l이 어떤 방향이어도 △ABD≡△CAE예요. 그래서 <b>AE=BD, AD=CE</b>이고 DE=BD+CE예요.',
+      guide: '막대로 <b>BD</b>와 <b>CE</b>를 바꿔 보세요. 직선 ℓ이 어떤 방향이어도 △ABD≡△CAE예요. 그래서 <b>AE=BD, AD=CE</b>이고 DE=BD+CE예요.',
       readouts: [rd('BD = AE', `${M.m} cm`, 'sky'), rd('CE = AD', `${M.n} cm`, 'green'), rd('DE', `${M.m + M.n} cm`, 'amber', 'BD + CE', null, true)],
       formula: `<p>△ABD≡△CAE (RHA)</p><p>$\\overline{DE}=\\overline{AD}+\\overline{AE}=\\overline{CE}+\\overline{BD}=${M.n}+${M.m}=${M.m + M.n}$</p>`,
       rule: '직각이등변삼각형의 직각 꼭짓점을 지나는 직선에 내린 두 수선의 발 D, E에서 △ABD≡△CAE이다.',
-      notes: notes('BD와 AE, AD와 CE를 짝지어요. <b>BD와 CE가 같은 것이 아니에요</b>.', '직선 l이 삼각형을 가로지르지 않을 때(B, C가 l의 같은 쪽)만 DE=BD+CE예요.')
+      notes: notes('BD와 AE, AD와 CE를 짝지어요. <b>BD와 CE가 같은 것이 아니에요</b>.', '직선 ℓ이 삼각형을 가로지르지 않을 때(B, C가 ℓ의 같은 쪽)만 DE=BD+CE예요.')
     }),
     prob: (M, s) => {
       const { m, n } = M, v = vv5(M, s);
-      if (v === 0) return numProb({ tag: '직각이등변삼각형과 수선 · DE', key: `0:${m}:${n}`, stem: `그림과 같이 $\\angle A=90^{\\circ}$, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC의 꼭짓점 A를 지나는 직선 l에 B, C에서 내린 수선의 발을 각각 D, E라 하자. ${S('BD')}=${m} cm, ${S('CE')}=${n} cm일 때, ${S('DE')}의 길이 $x$는?`, correct: m + n, wrongs: [[Math.abs(m - n) || m + 1, '두 길이를 빼지 않고 더해요. DE=AD+AE=CE+BD예요.'], [m, 'BD의 길이예요.'], [n, 'CE의 길이예요.'], [m * n, '곱하지 않고 더해요.'], [m + n + 1, '다시 계산해 보세요.']], ...cmOpts });
-      if (v === 1) return numProb({ tag: '직각이등변삼각형과 수선 · CE', key: `1:${m}:${n}`, stem: `그림과 같이 $\\angle A=90^{\\circ}$, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC의 꼭짓점 A를 지나는 직선 l에 B, C에서 내린 수선의 발을 각각 D, E라 하자. ${S('BD')}=${m} cm, ${S('AD')}=${n} cm일 때, ${S('CE')}의 길이 $x$는?`, correct: n, wrongs: [[m, 'BD의 길이예요. CE는 AD와 같아요.'], [m + n, 'DE의 길이예요.'], [Math.abs(m - n) || n + 2, '다시 생각해 보세요.'], [n + 1, '다시 계산해 보세요.'], [n + 2, '다시 계산해 보세요.']], ...cmOpts });
+      if (v === 0) return numProb({ tag: '직각이등변삼각형과 수선 · DE', key: `0:${m}:${n}`, stem: `그림과 같이 $\\angle A=90^{\\circ}$, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC의 꼭짓점 A를 지나는 직선 ℓ에 B, C에서 내린 수선의 발을 각각 D, E라 하자. ${S('BD')}=${m} cm, ${S('CE')}=${n} cm일 때, ${S('DE')}의 길이 $x$는?`, correct: m + n, wrongs: [[Math.abs(m - n) || m + 1, '두 길이를 빼지 않고 더해요. DE=AD+AE=CE+BD예요.'], [m, 'BD의 길이예요.'], [n, 'CE의 길이예요.'], [m * n, '곱하지 않고 더해요.'], [m + n + 1, '다시 계산해 보세요.']], ...cmOpts });
+      if (v === 1) return numProb({ tag: '직각이등변삼각형과 수선 · CE', key: `1:${m}:${n}`, stem: `그림과 같이 $\\angle A=90^{\\circ}$, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC의 꼭짓점 A를 지나는 직선 ℓ에 B, C에서 내린 수선의 발을 각각 D, E라 하자. ${S('BD')}=${m} cm, ${S('AD')}=${n} cm일 때, ${S('CE')}의 길이 $x$는?`, correct: n, wrongs: [[m, 'BD의 길이예요. CE는 AD와 같아요.'], [m + n, 'DE의 길이예요.'], [Math.abs(m - n) || n + 2, '다시 생각해 보세요.'], [n + 1, '다시 계산해 보세요.'], [n + 2, '다시 계산해 보세요.']], ...cmOpts });
       const area = (m * m + n * n) / 2;
-      return numProb({ tag: '[함정] 직각이등변삼각형과 수선 · 넓이', key: `2:${m}:${n}`, stem: `그림과 같이 $\\angle A=90^{\\circ}$, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC의 꼭짓점 A를 지나는 직선 l에 B, C에서 내린 수선의 발을 각각 D, E라 하자. ${S('BD')}=${m} cm, ${S('CE')}=${n} cm일 때, 사다리꼴 BDEC의 넓이 $x$는?`, correct: ((m + n) * (m + n)) / 2, wrongs: [[(m + n) * (m + n), '2로 나누지 않았어요.'], [m * n, '밑변과 높이만 곱했어요.'], [((m + n) * (m + n)) / 2 + 3, '다시 계산해 보세요.'], [((m + n) * (m + n)) / 2 - 3, '다시 계산해 보세요.'], [m + n, '넓이가 아니라 높이예요.']], tex: (v2) => `${v2}\\text{ cm}^2`, plain: (v2) => v2 + ' cm²', pad: 1, valid: (v2) => v2 > 0 && Number.isInteger(v2) });
+      return numProb({ tag: '[함정] 직각이등변삼각형과 수선 · 넓이', key: `2:${m}:${n}`, stem: `그림과 같이 $\\angle A=90^{\\circ}$, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC의 꼭짓점 A를 지나는 직선 ℓ에 B, C에서 내린 수선의 발을 각각 D, E라 하자. ${S('BD')}=${m} cm, ${S('CE')}=${n} cm일 때, 사다리꼴 BDEC의 넓이 $x$는?`, correct: ((m + n) * (m + n)) / 2, wrongs: [[(m + n) * (m + n), '2로 나누지 않았어요.'], [m * n, '밑변과 높이만 곱했어요.'], [((m + n) * (m + n)) / 2 + 3, '다시 계산해 보세요.'], [((m + n) * (m + n)) / 2 - 3, '다시 계산해 보세요.'], [m + n, '넓이가 아니라 높이예요.']], tex: (v2) => `${v2}\\text{ cm}^2`, plain: (v2) => v2 + ' cm²', pad: 1, valid: (v2) => v2 > 0 && Number.isInteger(v2) });
     },
     verify: (s) => { const M = r5.model(s), g = M.g; return { ans: dist(g.D, g.E), model: M.m + M.n, extra: [[dist(g.A, g.B), dist(g.A, g.C)], [angBetween(g.A, g.B, g.C), 90], [dist(g.A, g.E), dist(g.B, g.D)], [dist(g.A, g.D), dist(g.C, g.E)]] }; }
   };
@@ -469,12 +469,12 @@
       const { m, n, trap, tri } = M, v = (s.trV || 0) % 2;
       return v === 0
         ? { steps: `<p>(사다리꼴) − (합동인 두 삼각형) $=\\frac{(${m}+${n})^2}{2}-${m}\\times${n}=\\frac{${m}^2+${n}^2}{2}$ 이므로</p><p>$\\triangle ABC=\\frac{${m * m}+${n * n}}{2}=${tri}$ (cm²)</p>`, note: '직각이등변삼각형에서 수선의 길이 BD, CE만 알면 넓이는 (BD²+CE²)÷2로 바로 나와요.' }
-        : { steps: `<p>높이 $\\overline{DE}=\\overline{BD}+\\overline{CE}=${m + n}$을 바로 쓰면 $\\frac{(${m}+${n})^2}{2}=${trap}$ (cm²)</p>`, note: '합동을 찾아 DE=BD+CE만 알면 사다리꼴의 넓이는 (BD+CE)²÷2로 바로 나와요.' };
+        : { steps: `<p>높이 $\\overline{DE}=\\overline{BD}+\\overline{CE}=${m + n}$${G.josa(m + n, '을', '를')} 바로 쓰면 $\\frac{(${m}+${n})^2}{2}=${trap}$ (cm²)</p>`, note: '합동을 찾아 DE=BD+CE만 알면 사다리꼴의 넓이는 (BD+CE)²÷2로 바로 나와요.' };
     },
     steps: (M, s) => {
       const { m, n, trap, tri, small } = M, v = (s.trV || 0) % 2, out = [];
       out.push({ k: 'given', f: 'given', t: `$\\angle A=90^{\\circ}$, $\\overline{AB}=\\overline{AC}$이고 $\\overline{BD}\\perp\\overline{DE}$, $\\overline{CE}\\perp\\overline{DE}$예요. $\\overline{BD}=${m}$ cm, $\\overline{CE}=${n}$ cm. 구하는 것은 ${v === 0 ? '△ABC' : '사다리꼴 BDEC'}의 넓이 $x$.`, cap: `∠A=90°, AB=AC, BD=${m} cm, CE=${n} cm` });
-      out.push({ k: 'idea', f: 'idea', t: v === 0 ? '직각이등변삼각형과 두 직각이 있으면 RHA 합동인 두 삼각형(△ABD, △CAE)이 숨어 있어요.' : '사다리꼴의 높이 DE를 알아야 해요. 직각이등변삼각형과 두 직각 → RHA 합동으로 구해요.', cap: '직각이등변 + 두 직각 → RHA 합동 찾기' });
+      out.push({ k: 'idea', f: 'idea', t: v === 0 ? '직각이등변삼각형과 두 직각이 있으면 RHA 합동인 두 삼각형(△ABD, △CAE)가 숨어 있어요.' : '사다리꼴의 높이 DE를 알아야 해요. 직각이등변삼각형과 두 직각 → RHA 합동으로 구해요.', cap: '직각이등변 + 두 직각 → RHA 합동 찾기' });
       out.push({ k: 'fig', f: 'cong', lb: '합동 찾기', t: `$\\angle BAD+\\angle CAE=180^{\\circ}-90^{\\circ}=90^{\\circ}$이고 △ABD에서 $\\angle ABD+\\angle BAD=90^{\\circ}$이므로 $\\angle ABD=\\angle CAE$. △ABD와 △CAE에서 $\\angle D=\\angle E=90^{\\circ}$, $\\overline{AB}=\\overline{CA}$, $\\angle ABD=\\angle CAE$이므로 △ABD≡△CAE (RHA 합동).`, cap: '∠ABD=∠CAE, ∠D=∠E=90°, AB=CA → △ABD≡△CAE (RHA)' });
       out.push({ k: 'fig', f: 'len', lb: '길이 구하기', t: `합동이므로 $\\overline{AE}=\\overline{BD}=${m}$ cm, $\\overline{AD}=\\overline{CE}=${n}$ cm예요. 따라서 $\\overline{DE}=${n}+${m}=${m + n}$ (cm).`, cap: `AE=BD=${m}, AD=CE=${n} → DE=${m + n} cm` });
       if (v === 0) {
@@ -595,6 +595,235 @@
     },
     verify: (s) => { const M = r7.model(s), g = M.g; return { ans: G.polyArea([g.B, g.D, g.E, g.C].map((p) => pt(p.x, p.y))) * -1, model: M.trap, extra: [[Math.abs(G.polyArea([g.A, g.B, g.C])), M.tri], [angBetween(g.A, g.B, g.C), 90]] }; }
   };
+
+  /* ====================================================================== 풀이 흐름 (t3-1 ~ t3-6) */
+  const SK = G.SVK, mkSolve = G.mkSolve;
+  const ov = (n) => `\\overline{${n}}`;
+  const dd = (v) => `${v}^{\\circ}`;
+
+  /* ---- t3-1 RHA 합동 · v0: BC → EF · v1: ∠A=∠D → ∠E ---- */
+  const r1Plan = (M, s) => {
+    const { a, m } = M, v = (s.trV || 0) % 2, b90 = 90 - a;
+    const T1 = rtri(1, a, 0), U = rtri(1, a, cos(a) + 0.55), steps = [], items = [];
+    const cen1 = pt(T1.A.x * 0.4, T1.B.y * 0.4), cen2 = pt(U.A.x * 0.4 + U.C.x * 0.6, U.B.y * 0.4);
+    const g0 = `두 직각삼각형 ABC, DEF에서 $\\angle C=\\angle F=90^{\\circ}$, $${ov('AB')}=${ov('DE')}$, $\\angle A=\\angle D$예요.`;
+    steps.push({ id: 'given', k: 'given', t: v === 0 ? `${g0} $${ov('BC')}=${m}$ cm이고, 구하는 것은 $${ov('EF')}=x$.` : `${g0} $\\angle A=\\angle D=${dd(a)}$이고, 구하는 것은 $\\angle E=x$.`, cap: v === 0 ? `∠C=∠F=90°, AB=DE, ∠A=∠D, BC=${m} cm` : `∠C=∠F=90°, AB=DE, ∠A=∠D=${a}°` });
+    steps.push({ id: 'idea', k: 'idea', t: `두 삼각형이 합동이면 대응하는 ${v === 0 ? '변의 길이' : '각의 크기'}가 같아요. 먼저 직각, 빗변, 한 예각이 같은지 하나씩 확인해서 합동인지 살펴요.`, cap: `합동이면 대응${v === 0 ? '변' : '각'}이 같다 → 먼저 합동 조건 확인` });
+    steps.push({ id: 'R', k: 'fig', lb: '합동 조건 ①', t: '직각이 같아요: $\\angle C=\\angle F=90^{\\circ}$ (Right angle)', cap: '∠C=∠F=90° (R)' });
+    steps.push({ id: 'H', k: 'fig', lb: '합동 조건 ②', t: `빗변의 길이가 같아요: $${ov('AB')}=${ov('DE')}$ (Hypotenuse)`, cap: 'AB=DE (H)' });
+    steps.push({ id: 'A', k: 'fig', lb: '합동 조건 ③', t: '한 예각의 크기가 같아요: $\\angle A=\\angle D$ (Angle)', cap: '∠A=∠D (A)' });
+    steps.push({ id: 'cong', k: 'fig', lb: '합동', t: '직각삼각형에서 빗변의 길이와 한 예각의 크기가 각각 같으므로 △ABC≡△DEF (RHA 합동)이에요.', cap: '△ABC≡△DEF (RHA 합동)' });
+    if (v === 0) steps.push({ id: 'eq', k: 'eq', t: `대응변의 길이는 같으므로 $x=${ov('EF')}=${ov('BC')}=${m}$ cm`, cap: `EF=BC=${m} cm` });
+    else steps.push({ id: 'eq', k: 'eq', t: `$\\angle E$의 대응각은 $\\angle B$예요. △ABC에서 $\\angle B=180^{\\circ}-90^{\\circ}-${dd(a)}=${dd(b90)}$이므로 $x=\\angle E=\\angle B=${dd(b90)}$`, cap: `∠E=∠B=180°−90°−${a}°=${b90}°` });
+    steps.push({ id: 'ans', k: 'ans', t: v === 0 ? `$x=${m}\\text{ cm}$` : `$x=${dd(b90)}$`, cap: v === 0 ? `x = ${m} cm` : `x = ${b90}°` });
+    [[T1, cen1], [U, cen2]].forEach(([Tr]) => {
+      items.push(SK.ang(Tr.C, Tr.A, Tr.B, { r: 20, on: ['given', 'R'], col: 'sky', cols: { R: 'green' } }), SK.tick(Tr.A, Tr.B, 1, { on: ['given', 'H'], col: 'amber' }),
+        SK.ang(Tr.A, Tr.B, Tr.C, { r: 30, rings: 2, ld: 54, on: ['given', 'A'], col: 'sky', cols: { A: 'green' }, label: v === 1 && Tr === T1 ? dg(a) : '', gl: true, glTo: 'eq' }));
+    });
+    items.push(SK.fill([T1.A, T1.B, T1.C], { at: 'cong', to: 'eq', col: 'sky', a: 0.26 }), SK.fill([U.A, U.B, U.C], { at: 'cong', to: 'eq', col: 'green', a: 0.26 }));
+    if (v === 0) items.push(SK.len(T1.B, T1.C, cen1, `${m} cm`, { on: ['given', 'eq'], col: 'sky', size: 16, gap: 6 }), SK.len(U.B, U.C, cen2, 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, gap: 6, labels: { ans: `x=${m} cm` } }));
+    else items.push(SK.ang(U.B, U.C, U.A, { r: 28, ld: 50, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${b90}°` }, gl: true }), SK.ang(T1.B, T1.C, T1.A, { r: 28, ld: 50, at: 'eq', col: 'green', label: dg(b90), size: 15, gl: true }));
+    return {
+      fit: [T1.A, T1.B, T1.C, U.A, U.B, U.C], steps, items, l: 36, r: 36,
+      base: (b) => { G.poly(b, [T1.A, T1.B, T1.C], 'ink', 3.4); G.poly(b, [U.A, U.B, U.C], 'ink', 3.4); G.fillPoly(b, [T1.A, T1.B, T1.C], 'sky', 0.08); G.fillPoly(b, [U.A, U.B, U.C], 'sky', 0.08); },
+      names: (b) => [[T1, ['A', 'B', 'C'], cen1], [U, ['D', 'E', 'F'], cen2]].forEach(([Tr, nm, cc]) => G.dots(b, [Tr.A, Tr.B, Tr.C], nm, cc, { size: 17 }))
+    };
+  };
+  r1.solve = mkSolve(r1Plan);
+
+  /* ---- t3-2 RHS 합동 · v0: BD → BC · v1: ∠A → ∠B · v2: ∠B → ∠CAD ---- */
+  const r2Plan = (M, s) => {
+    const { bt, ad, m } = M, v = (s.trV || 0) % 3, hw = cos(bt), h = sin(bt);
+    const A = pt(0, -h), B = pt(-hw, 0), Cc = pt(hw, 0), D = pt(0, 0), cen = pt(0, -h * 0.4), steps = [], items = [];
+    const g0 = `$${ov('AB')}=${ov('AC')}$이고 $\\angle ADB=90^{\\circ}$예요.`;
+    steps.push({ id: 'given', k: 'given', t: v === 0 ? `${g0} $${ov('BD')}=${m}$ cm이고, 구하는 것은 $${ov('BC')}=x$.` : v === 1 ? `${g0} $\\angle A=${dd(2 * ad)}$이고, 구하는 것은 $\\angle B=x$.` : `${g0} $\\angle B=${dd(bt)}$이고, 구하는 것은 $\\angle CAD=x$.`, cap: v === 0 ? `AB=AC, AD⊥BC, BD=${m} cm` : v === 1 ? `AB=AC, AD⊥BC, ∠A=${2 * ad}°` : `AB=AC, AD⊥BC, ∠B=${bt}°` });
+    steps.push({ id: 'idea', k: 'idea', t: v === 0 ? 'BC=BD+CD이니까 CD의 길이가 필요해요. BD와 CD가 각각 들어 있는 두 직각삼각형 ABD, ACD가 합동이면 BD=CD예요.' : v === 1 ? '∠B는 직각삼각형 ABD의 예각이라서, ∠BAD를 알면 구해요. 두 직각삼각형 ABD, ACD가 합동이면 AD가 ∠A를 반으로 나눠요.' : '∠CAD는 ∠BAD와 같을 것 같아요. 두 직각삼각형 ABD, ACD가 합동이면 대응각이 같으니 ∠CAD=∠BAD이고, ∠BAD는 직각삼각형 ABD에서 구해요.', cap: '두 직각삼각형 ABD, ACD가 합동인지 확인' });
+    steps.push({ id: 'R', k: 'fig', lb: '합동 조건 ①', t: '$\\angle ADB=\\angle ADC=90^{\\circ}$ (Right angle)', cap: '∠ADB=∠ADC=90° (R)' });
+    steps.push({ id: 'H', k: 'fig', lb: '합동 조건 ②', t: `빗변의 길이가 같아요: $${ov('AB')}=${ov('AC')}$ (Hypotenuse)`, cap: 'AB=AC (H)' });
+    steps.push({ id: 'S', k: 'fig', lb: '합동 조건 ③', t: '다른 한 변이 공통이에요: $\\overline{AD}$는 공통 (Side)', cap: 'AD는 공통 (S)' });
+    steps.push({ id: 'cong', k: 'fig', lb: '합동', t: '직각삼각형에서 빗변과 다른 한 변이 각각 같으므로 △ABD≡△ACD (RHS 합동)이에요.', cap: '△ABD≡△ACD (RHS 합동)' });
+    if (v === 0) steps.push({ id: 'eq', k: 'eq', t: `대응변이므로 $${ov('CD')}=${ov('BD')}=${m}$ cm. 따라서 $x=${ov('BD')}+${ov('CD')}=${m}+${m}=${2 * m}$ (cm)`, cap: `x=BD+CD=${m}+${m}=${2 * m} cm` });
+    else if (v === 1) steps.push({ id: 'eq', k: 'eq', t: `대응각이므로 $\\angle BAD=\\angle CAD=\\frac{${dd(2 * ad)}}{2}=${dd(ad)}$. △ABD에서 $x=\\angle B=90^{\\circ}-${dd(ad)}=${dd(bt)}$`, cap: `∠BAD=\\frac{${2 * ad}°}{2}=${ad}° → x=90°−${ad}°=${bt}°` });
+    else steps.push({ id: 'eq', k: 'eq', t: `△ABD에서 $\\angle BAD=90^{\\circ}-${dd(bt)}=${dd(ad)}$이고, 대응각이므로 $x=\\angle CAD=\\angle BAD=${dd(ad)}$`, cap: `x=∠CAD=∠BAD=90°−${bt}°=${ad}°` });
+    const ans = v === 0 ? `${2 * m} cm` : dg(v === 1 ? bt : ad);
+    steps.push({ id: 'ans', k: 'ans', t: v === 0 ? `$x=${2 * m}\\text{ cm}$` : `$x=${dd(v === 1 ? bt : ad)}$`, cap: `x = ${ans}` });
+    items.push(SK.ang(D, A, B, { r: 20, on: ['given', 'R'], col: 'sky', cols: { R: 'green' } }), SK.ang(D, A, Cc, { r: 20, at: 'R', col: 'green' }),
+      SK.tick(A, B, 1, { on: ['given', 'H'], col: 'amber' }), SK.tick(A, Cc, 1, { on: ['given', 'H'], col: 'amber' }), SK.seg(A, D, { at: 'given', to: 'S', col: 'green', w: 3.6 }), SK.tick(A, D, 2, { at: 'S', col: 'rose' }),
+      SK.fill([A, B, D], { at: 'cong', to: 'eq', col: 'sky', a: 0.26 }), SK.fill([A, D, Cc], { at: 'cong', to: 'eq', col: 'violet', a: 0.26 }));
+    if (v === 0) items.push(SK.len(B, D, pt(0, -2), `${m} cm`, { on: ['given', 'eq'], col: 'sky', size: 16, gap: 8 }), SK.len(D, Cc, pt(0, -2), `${m} cm`, { at: 'eq', col: 'green', size: 16, gap: 8 }), SK.dim(B, Cc, cen, 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, off: 34, labels: { ans: `x=${2 * m} cm` } }));
+    else if (v === 1) items.push(SK.ang(A, B, Cc, { r: 34, ld: 62, lr: -ad / 2, on: ['given'], col: 'sky', label: dg(2 * ad), gl: true, glTo: 'cong' }), SK.ang(A, B, D, { r: 44, ld: 72, at: 'eq', col: 'green', label: dg(ad), size: 15 }), SK.ang(B, Cc, A, { r: 30, ld: 54, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${bt}°` }, gl: true }));
+    else items.push(SK.ang(B, Cc, A, { r: 30, ld: 54, on: ['given'], col: 'sky', label: dg(bt), gl: true, glTo: 'eq' }), SK.ang(A, B, D, { r: 40, ld: 64, at: 'eq', col: 'green', label: dg(ad), size: 15 }), SK.ang(A, D, Cc, { r: 40, ld: 64, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${ad}°` }, gl: true }));
+    return {
+      fit: [A, B, Cc, pt(0, v === 0 ? 0.55 : 0.12)], steps, items, l: 50, r: 50,
+      base: (b) => { G.fillPoly(b, [A, B, Cc], 'sky', 0.08); G.poly(b, [A, B, Cc], 'ink', 3.6); },
+      names: (b) => { G.dots(b, [A, B, Cc], ['A', 'B', 'C'], cen, { size: 18 }); b.point(D, { color: 'ink', r: 4.5 }); T(b, D, 'D', { dy: 18, size: 18 }); }
+    };
+  };
+  r2.solve = mkSolve(r2Plan);
+
+  /* ---- t3-3 합동이 될 수 있을까? (반례) · 「다음 조건이 같을 때 합동인가?」 ---- */
+  const ob = (n) => `\\overline{${n}}`;
+  const R3 = [
+    { id: 'rha1', h: `${ob('AB')}=${ob('DE')},\\ \\angle A=\\angle D`, cap: 'AB=DE, ∠A=∠D', cong: true, why: 'RHA 합동', m: { hyp: 1, ang: 'A' }, T2: null },
+    { id: 'rhs', h: `${ob('AB')}=${ob('DE')},\\ ${ob('AC')}=${ob('DF')}`, cap: 'AB=DE, AC=DF', cong: true, why: 'RHS 합동', m: { hyp: 1, legA: 2 }, T2: null },
+    { id: 'sas', h: `${ob('AC')}=${ob('DF')},\\ ${ob('BC')}=${ob('EF')}`, cap: 'AC=DF, BC=EF', cong: true, why: 'SAS 합동 (직각을 낀 두 변)', m: { legA: 2, legB: 3 }, T2: null },
+    { id: 'asa', h: `${ob('BC')}=${ob('EF')},\\ \\angle B=\\angle E`, cap: 'BC=EF, ∠B=∠E', cong: true, why: 'ASA 합동', m: { legB: 3, ang: 'B' }, T2: null },
+    { id: 'rha2', h: `${ob('AB')}=${ob('DE')},\\ \\angle B=\\angle E`, cap: 'AB=DE, ∠B=∠E', cong: true, why: 'RHA 합동', m: { hyp: 1, ang: 'B' }, T2: null },
+    { id: 'aa', h: '\\angle A=\\angle D,\\ \\angle B=\\angle E', cap: '∠A=∠D, ∠B=∠E', cong: false, why: '두 예각만 같아요', m: { ang: 'AB' }, T2: [6, 4.5], reason: '두 예각이 같아도 크기가 다른 닮은 삼각형을 만들 수 있어요.' },
+    { id: 'hyp', h: `${ob('AB')}=${ob('DE')}`, cap: 'AB=DE', cong: false, why: '빗변만 같아요', m: { hyp: 1 }, T2: [3, 4], reason: '빗변의 길이만 같으면 두 예각이 다른 삼각형을 만들 수 있어요.' },
+    { id: 'angA', h: '\\angle A=\\angle D', cap: '∠A=∠D', cong: false, why: '한 예각만 같아요', m: { ang: 'A' }, T2: [6, 4.5], reason: '한 예각만 같으면 크기가 다른 삼각형을 만들 수 있어요.' },
+    { id: 'legA', h: `${ob('AC')}=${ob('DF')}`, cap: 'AC=DF', cong: false, why: '한 직각변만 같아요', m: { legA: 2 }, T2: [4, 2], reason: '한 직각변만 같으면 다른 변이 달라질 수 있어요.' },
+    { id: 'legB', h: `${ob('BC')}=${ob('EF')}`, cap: 'BC=EF', cong: false, why: '한 직각변만 같아요', m: { legB: 3 }, T2: [2, 3], reason: '한 직각변만 같으면 다른 변이 달라질 수 있어요.' }
+  ];
+  const r3Pick = (s) => { const qi = s.trQi || 0, pool = R3.filter((c) => c.cong === (qi % 2 === 0)), rnd = G.seeded('r33|' + qi); return G.shuffle(pool, rnd)[0]; };
+  const rt3 = (p, q, ax) => ({ A: pt(ax, 0), B: pt(ax + p, -q), C: pt(ax + p, 0) });
+  const r3Plan = (M, s) => {
+    const c = r3Pick(s), P1 = 4, Q1 = 3, T1 = rt3(P1, Q1, 0), gap = 1.9, U = rt3(P1, Q1, P1 + gap), alt = c.T2 ? rt3(c.T2[0], c.T2[1], P1 + gap) : null;
+    const cen1 = pt(P1 * 0.6, -Q1 * 0.4), cen2 = pt(P1 + gap + P1 * 0.6, -Q1 * 0.4), steps = [], items = [];
+    steps.push({ id: 'given', k: 'given', t: `$\\angle C=\\angle F=90^{\\circ}$인 두 직각삼각형 ABC, DEF에서 $${c.h}$가 각각 같아요(그림의 같은 표시). 두 삼각형이 합동인지 알아봐요.`, cap: `∠C=∠F=90°, ${c.cap}` });
+    steps.push({ id: 'idea', k: 'idea', t: '직각삼각형은 직각이 이미 같으니, 합동 조건(RHA, RHS, 그리고 SAS, ASA)에 맞게 직각 말고 같은 것이 충분한지 세어 봐요. 같은 것이 하나뿐이면 모양을 바꿀 수 있어서 합동이 아닐 수 있어요.', cap: '직각 말고 같은 것이 충분한가?' });
+    steps.push({ id: 'R', k: 'fig', lb: '같은 것 ①', t: '직각이 같아요: $\\angle C=\\angle F=90^{\\circ}$', cap: '∠C=∠F=90°' });
+    steps.push({ id: 'same', k: 'fig', lb: '같은 것 ②', t: `문제에서 같다고 한 것: $${c.h}$ (같은 표시)`, cap: c.cap });
+    if (c.cong) {
+      steps.push({ id: 'cong', k: 'fig', lb: '합동 판정', t: `직각을 빼고도 같은 것이 합동 조건에 맞아요. 따라서 △ABC≡△DEF (${c.why})이에요.`, cap: `△ABC≡△DEF (${c.why})` });
+      steps.push({ id: 'ans', k: 'ans', t: `합동이에요 (${c.why})`, cap: `합동이다 (${c.why})` });
+    } else {
+      steps.push({ id: 'cong', k: 'fig', lb: '반례 찾기', t: `${c.reason} 그림의 점선 삼각형은 같은 표시를 그대로 두고 모양만 바꾼 삼각형이에요. 합동이 아니에요.`, cap: '같은 표시는 그대로, 모양은 다른 삼각형 → 합동이 아니에요' });
+      steps.push({ id: 'ans', k: 'ans', t: `합동이 아니에요 (${c.why})`, cap: `합동이 아니다 (${c.why})` });
+      steps.push({ id: 'trap', k: 'trap', t: '직각 하나만 같은 것으로는 부족해요. 합동 조건에 맞는 요소(변·각)이 충분한지 꼭 확인해요.', cap: '합동 조건에 맞는 요소가 충분한지 확인!' });
+    }
+    [[T1, 1], [U, 2]].forEach(([Tr]) => {
+      const mk = c.m;
+      items.push(SK.ang(Tr.C, Tr.A, Tr.B, { r: 18, on: ['given', 'R'], col: 'sky', cols: { R: 'green' } }));
+      if (mk.hyp) items.push(SK.tick(Tr.A, Tr.B, 1, { on: ['given', 'same'], col: 'amber' }));
+      if (mk.legA) items.push(SK.tick(Tr.A, Tr.C, mk.legA, { on: ['given', 'same'], col: 'rose' }));
+      if (mk.legB) items.push(SK.tick(Tr.B, Tr.C, mk.legB, { on: ['given', 'same'], col: 'violet' }));
+      if (mk.ang && mk.ang.includes('A')) items.push(SK.ang(Tr.A, Tr.B, Tr.C, { r: 28, rings: 2, on: ['given', 'same'], col: 'amber' }));
+      if (mk.ang && mk.ang.includes('B')) items.push(SK.ang(Tr.B, Tr.C, Tr.A, { r: 28, rings: mk.ang === 'AB' ? 3 : 2, on: ['given', 'same'], col: 'green' }));
+    });
+    items.push(SK.fill([T1.A, T1.B, T1.C], { at: 'cong', col: c.cong ? 'sky' : 'rose', a: 0.22 }), SK.fill([U.A, U.B, U.C], { at: 'cong', col: c.cong ? 'green' : 'rose', a: 0.22 }));
+    if (alt) items.push(SK.poly([alt.A, alt.B, alt.C], { at: 'cong', col: 'rose', dash: [8, 6], w: 3.4 }));
+    return {
+      fit: alt ? [T1.A, T1.B, T1.C, U.A, U.B, U.C, alt.B, alt.C, pt(U.A.x, -4.6)] : [T1.A, T1.B, T1.C, U.A, U.B, U.C], steps, items, l: 36, r: 36,
+      base: (b) => { G.fillPoly(b, [T1.A, T1.B, T1.C], 'sky', 0.08); G.fillPoly(b, [U.A, U.B, U.C], 'sky', 0.08); G.poly(b, [T1.A, T1.B, T1.C], 'ink', 3.4); G.poly(b, [U.A, U.B, U.C], 'ink', 3.4); },
+      names: (b) => [[T1, ['A', 'B', 'C'], cen1], [U, ['D', 'E', 'F'], cen2]].forEach(([Tr, nm, cc]) => G.dots(b, [Tr.A, Tr.B, Tr.C], nm, cc, { size: 17 }))
+    };
+  };
+  r3.solve = mkSolve(r3Plan);
+  r3.prob = (M, s) => {
+    const c = r3Pick(s), key = 'q' + (s.trQi || 0), ans = c.cong ? `합동이에요 (${c.why})` : `합동이 아니에요 (${c.why})`;
+    return {
+      tag: c.cong ? '직각삼각형의 합동 조건 · 합동이 되는 경우' : '[함정] 직각삼각형의 합동 조건 · 합동이 되지 않는 경우', key,
+      stem: `그림과 같이 $\\angle C=\\angle F=90^{\\circ}$인 두 직각삼각형 ABC, DEF에서 $${c.h}$이다. 두 삼각형은 합동인가? 합동이면 합동 조건을, 아니면 그 이유를 말하시오.`,
+      ansHTML: ans, choices: [{ t: '', p: ans, ok: true, hint: '' }]
+    };
+  };
+
+  /* ---- t3-4 사다리꼴 속 직각삼각형 · v0: AC · v1 [함정]: 사다리꼴 AEDC의 넓이 · v2: ∠CDB ---- */
+  const r4Plan = (M, s) => {
+    const { p, q, al } = M, v = vv4(M, s), P0 = v === 2 ? tan(al) : p, Q0 = v === 2 ? 1 : q, g = trapGeom(P0, Q0), { A, B, C: Cc, E, D } = g;
+    const cen = pt((A.x + Cc.x) / 2, -Math.max(P0, Q0) * 0.4), steps = [], items = [], area = ((p + q) * (p + q)) / 2;
+    const g0 = `$\\angle A=\\angle C=90^{\\circ}$, $\\angle EBD=90^{\\circ}$, $${ov('BE')}=${ov('BD')}$이고`;
+    steps.push({ id: 'given', k: 'given', t: v === 2 ? `${g0} $\\angle ABE=${dd(al)}$예요. 구하는 것은 $\\angle CDB=x$.` : `${g0} $${ov('AE')}=${p}$ cm, $${ov('AB')}=${q}$ cm예요. 구하는 것은 ${v === 0 ? `$${ov('AC')}=x$` : '사다리꼴 AEDC의 넓이 $x$'}.`, cap: v === 2 ? `∠A=∠C=∠EBD=90°, BE=BD, ∠ABE=${al}°` : `BE=BD, AE=${p} cm, AB=${q} cm` });
+    steps.push({ id: 'idea', k: 'idea', t: v === 2 ? '∠CDB는 직각삼각형 BCD의 예각이에요. ∠ABE와 같은지 알아보려고, 점 B에서 일직선으로 이어진 세 각의 합이 180°인 것을 이용해요.' : v === 0 ? 'AC=AB+BC인데 BC를 몰라요. BC는 △BCD의 한 변이니까, 직각삼각형 EAB와 BCD가 합동이면 BC=AE예요.' : '사다리꼴의 넓이는 (윗변+아랫변)×높이÷2예요. 평행한 두 변 AE, CD와 높이 AC가 필요한데, 합동인 직각삼각형 EAB와 BCD에서 CD=AB, BC=AE로 구해요.', cap: v === 2 ? '일직선 → ●+×=90°' : '직각삼각형 EAB와 BCD가 합동인지 확인' });
+    steps.push({ id: 'sum', k: 'fig', lb: '각 구하기 ①', t: '점 B에서 일직선이므로 $\\angle EBA+\\angle EBD+\\angle CBD=180^{\\circ}$이고 $\\angle EBD=90^{\\circ}$예요. 그래서 $\\angle EBA+\\angle CBD=90^{\\circ}$ (●+×=90°).', cap: '∠EBA+∠CBD=180°−90°=90° (●+×)' });
+    steps.push({ id: 'eqang', k: 'fig', lb: '각 구하기 ②', t: '△BCD에서 $\\angle CBD+\\angle BDC=90^{\\circ}$이므로 $\\angle EBA=\\angle BDC$예요.', cap: '∠CBD+∠BDC=90° → ∠EBA=∠BDC' });
+    if (v === 2) { steps.push({ id: 'eq', k: 'eq', t: `$x=\\angle CDB=\\angle ABE=${dd(al)}$`, cap: `x=∠CDB=∠ABE=${al}°` }); steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(al)}$`, cap: `x = ${al}°` }); steps.push({ id: 'trap', k: 'trap', t: `$\\angle CBD=90^{\\circ}-${dd(al)}=${dd(90 - al)}$를 답으로 하면 안 돼요. 구하는 각은 $\\angle CDB$이고, 이것은 $\\angle ABE$와 같아요.`, cap: `∠CBD=${90 - al}°는 답이 아니에요 → x=∠CDB=${al}°` }); }
+    else {
+      steps.push({ id: 'cong', k: 'fig', lb: '합동', t: '△EAB와 △BCD에서 $\\angle A=\\angle C=90^{\\circ}$, $\\overline{EB}=\\overline{BD}$, $\\angle EBA=\\angle BDC$이므로 △EAB≡△BCD (RHA 합동)이에요.', cap: '△EAB≡△BCD (RHA 합동)' });
+      steps.push({ id: 'len', k: 'fig', lb: '길이 구하기', t: `대응변이므로 $${ov('BC')}=${ov('AE')}=${p}$ cm, $${ov('CD')}=${ov('AB')}=${q}$ cm예요.`, cap: `BC=AE=${p} cm, CD=AB=${q} cm` });
+      if (v === 0) { steps.push({ id: 'eq', k: 'eq', t: `$x=${ov('AC')}=${ov('AB')}+${ov('BC')}=${q}+${p}=${p + q}$ (cm)`, cap: `x=AB+BC=${q}+${p}=${p + q} cm` }); steps.push({ id: 'ans', k: 'ans', t: `$x=${p + q}\\text{ cm}$`, cap: `x = ${p + q} cm` }); }
+      else {
+        steps.push({ id: 'eq', k: 'eq', t: `평행한 두 변은 $${ov('AE')}=${p}$, $${ov('CD')}=${q}$이고 높이는 $${ov('AC')}=${q}+${p}=${p + q}$이므로 $x=\\frac{(${p}+${q})\\times${p + q}}{2}=${area}$ (cm²)`, cap: `x=\\frac{(${p}+${q})×${p + q}}{2}=${area} cm²` });
+        steps.push({ id: 'ans', k: 'ans', t: `$x=${area}\\text{ cm}^2$`, cap: `x = ${area} cm²` });
+        steps.push({ id: 'trap', k: 'trap', t: `높이를 $${ov('AB')}=${q}$로 놓고 $\\frac{(${p}+${q})\\times${q}}{2}$로 구하면 틀려요. 높이는 두 평행한 변 사이의 거리인 $${ov('AC')}=${p + q}$예요.`, cap: `높이는 AB=${q}${G.josa(q, '이', '가')} 아니라 AC=${p + q}` });
+      }
+    }
+    items.push(SK.ang(A, B, E, { r: 22, on: ['given', 'cong'], col: 'sky', cols: { cong: 'green' } }), SK.ang(Cc, B, D, { r: 22, on: ['given', 'cong'], col: 'sky', cols: { cong: 'green' } }), SK.ang(B, E, D, { r: 26, on: ['given'], col: 'amber' }),
+      SK.tick(E, B, 2, { at: 'given', col: 'rose' }), SK.tick(B, D, 2, { at: 'given', col: 'rose' }),
+      SK.ang(B, A, E, { r: 36, ld: 58, on: ['sum', 'eqang', 'cong'], col: 'sky', label: v === 2 ? dg(al) : '', gl: true, glTo: 'eq' }), SK.ang(B, Cc, D, { r: 30, ld: 52, rings: 2, at: 'sum', col: 'green', label: v === 2 ? dg(90 - al) : '', gl: true, glTo: 'sum' }),
+      SK.ang(D, B, Cc, { r: 30, ld: 52, on: ['eqang', 'cong'], col: 'sky', gl: false }),
+      SK.fill([A, B, E], { at: 'cong', col: 'sky', a: 0.24 }), SK.fill([B, Cc, D], { at: 'cong', col: 'green', a: 0.24 }));
+    if (v === 0) items.push(SK.len(A, E, pt(50, 0), `${p} cm`, { on: ['given', 'len'], col: 'sky', size: 16, gap: 6 }), SK.len(A, B, pt(0, -5), `${q} cm`, { on: ['given', 'len'], col: 'sky', size: 16, gap: 8 }), SK.len(B, Cc, pt(0, -5), `${p} cm`, { at: 'len', col: 'green', size: 16, gap: 8 }), SK.len(Cc, D, pt(-50, -5), `${q} cm`, { at: 'len', col: 'green', size: 16, gap: 6 }), SK.dim(A, Cc, pt(0, -3), 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, off: 30, labels: { ans: `x=${p + q} cm` } }));
+    else if (v === 1) items.push(SK.fill([A, E, D, Cc], { on: ['given', 'eq', 'ans'], col: 'amber', a: 0.16 }), SK.len(A, E, pt(50, 0), `${p} cm`, { on: ['given', 'len', 'eq'], col: 'sky', size: 16, gap: 6 }), SK.len(A, B, pt(0, -5), `${q} cm`, { on: ['given', 'len'], col: 'sky', size: 16, gap: 8 }), SK.len(B, Cc, pt(0, -5), `${p} cm`, { at: 'len', col: 'green', size: 16, gap: 8 }), SK.len(Cc, D, pt(-50, -5), `${q} cm`, { at: 'len', to: 'eq', col: 'green', size: 16, gap: 6 }), SK.txt(pt((A.x + Cc.x) / 2, (A.y + (E.y + D.y) / 2) / 2), 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, labels: { ans: `x=${area} cm²` } }), SK.seg(A, B, { at: 'trap', col: 'rose', w: 5.4 }));
+    else items.push(SK.ang(D, B, Cc, { r: 34, ld: 56, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${al}°` }, gl: true }));
+    return {
+      fit: [A, B, Cc, E, D, pt(0, v === 0 ? 0.55 : 0.12)], steps, items, l: 44, r: 44,
+      base: (b) => { G.line(b, A, Cc, 'ink', 3.4); G.line(b, A, E, 'ink', 3.4); G.line(b, Cc, D, 'ink', 3.4); G.line(b, E, B, 'ink', 3.4); G.line(b, B, D, 'ink', 3.4); G.line(b, E, D, 'ink', 3.4, { alpha: 0.8 }); },
+      names: (b) => { [A, B, Cc, E, D].forEach((z) => b.point(z, { color: 'ink', r: 4.5 })); ['A', 'B', 'C', 'E', 'D'].forEach((nm, i) => G.tagOut(b, [A, B, Cc, E, D][i], cen, nm, { size: 18 })); }
+    };
+  };
+  r4.solve = mkSolve(r4Plan);
+
+  /* ---- t3-5 직선 ℓ 을 지나는 직각이등변삼각형 · v0: DE · v1: CE · v2 [함정]: 사다리꼴 BDEC 의 넓이 ---- */
+  const r5Plan = (M, s) => {
+    const { m, n, g } = M, { A, B, C: Cc, D, E } = g, v = vv5(M, s), cen = pt((D.x + E.x) / 2, -Math.max(m, n) * 0.5), steps = [], items = [], area = ((m + n) * (m + n)) / 2;
+    const g0 = `$\\angle A=90^{\\circ}$, $${ov('AB')}=${ov('AC')}$인 직각이등변삼각형이고, B, C에서 직선 $\\ell$에 내린 수선의 발이 D, E예요.`;
+    steps.push({ id: 'given', k: 'given', t: v === 0 ? `${g0} $${ov('BD')}=${m}$ cm, $${ov('CE')}=${n}$ cm이고, 구하는 것은 $${ov('DE')}=x$.` : v === 1 ? `${g0} $${ov('BD')}=${m}$ cm, $${ov('AD')}=${n}$ cm이고, 구하는 것은 $${ov('CE')}=x$.` : `${g0} $${ov('BD')}=${m}$ cm, $${ov('CE')}=${n}$ cm이고, 구하는 것은 사다리꼴 BDEC의 넓이 $x$.`, cap: v === 0 ? `AB=AC, ∠A=90°, BD=${m} cm, CE=${n} cm` : v === 1 ? `AB=AC, ∠A=90°, BD=${m} cm, AD=${n} cm` : `AB=AC, ∠A=90°, BD=${m} cm, CE=${n} cm` });
+    steps.push({ id: 'idea', k: 'idea', t: v === 0 ? 'DE=AD+AE이니까 AD, AE의 길이가 필요해요. BD, CE를 이용하도록, 이 둘을 변으로 가지는 두 직각삼각형 ABD, CAE가 합동인지 찾아요.' : v === 1 ? 'CE는 직각삼각형 CAE의 변이에요. △ABD와 합동이라면 CE가 AD와 같을 거예요. 두 직각삼각형 ABD, CAE가 합동인지 찾아요.' : '사다리꼴의 넓이는 (윗변+아랫변)×높이÷2예요. 평행한 두 변 BD, CE와 높이 DE가 필요하니, DE=AD+AE를 합동인 두 직각삼각형 ABD, CAE로 구해요.', cap: '직각삼각형 ABD, CAE가 합동인지 확인' });
+    steps.push({ id: 'sum', k: 'fig', lb: '각 구하기', t: '점 A에서 일직선이므로 $\\angle BAD+\\angle BAC+\\angle CAE=180^{\\circ}$이고 $\\angle BAC=90^{\\circ}$예요. 그래서 $\\angle BAD+\\angle CAE=90^{\\circ}$이고, △ABD에서 $\\angle ABD+\\angle BAD=90^{\\circ}$이므로 $\\angle ABD=\\angle CAE$.', cap: '∠BAD+∠CAE=90°, ∠ABD+∠BAD=90° → ∠ABD=∠CAE' });
+    steps.push({ id: 'cong', k: 'fig', lb: '합동', t: '△ABD와 △CAE에서 $\\angle D=\\angle E=90^{\\circ}$, $\\overline{AB}=\\overline{CA}$, $\\angle ABD=\\angle CAE$이므로 △ABD≡△CAE (RHA 합동)이에요.', cap: '△ABD≡△CAE (RHA 합동)' });
+    steps.push({ id: 'len', k: 'fig', lb: '길이 구하기', t: `대응변이므로 $${ov('AE')}=${ov('BD')}=${m}$ cm, $${ov('AD')}=${ov('CE')}=${n}$ cm예요.`, cap: `AE=BD=${m} cm, AD=CE=${n} cm` });
+    if (v === 0) { steps.push({ id: 'eq', k: 'eq', t: `$x=${ov('DE')}=${ov('AD')}+${ov('AE')}=${n}+${m}=${m + n}$ (cm)`, cap: `x=AD+AE=${n}+${m}=${m + n} cm` }); steps.push({ id: 'ans', k: 'ans', t: `$x=${m + n}\\text{ cm}$`, cap: `x = ${m + n} cm` }); }
+    else if (v === 1) { steps.push({ id: 'eq', k: 'eq', t: `$x=${ov('CE')}=${ov('AD')}=${n}$ cm`, cap: `x=CE=AD=${n} cm` }); steps.push({ id: 'ans', k: 'ans', t: `$x=${n}\\text{ cm}$`, cap: `x = ${n} cm` }); }
+    else {
+      steps.push({ id: 'eq', k: 'eq', t: `평행한 두 변은 $${ov('BD')}=${m}$, $${ov('CE')}=${n}$이고 높이는 $${ov('DE')}=${m + n}$이므로 $x=\\frac{(${m}+${n})\\times${m + n}}{2}=${area}$ (cm²)`, cap: `x=\\frac{(${m}+${n})×${m + n}}{2}=${area} cm²` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${area}\\text{ cm}^2$`, cap: `x = ${area} cm²` });
+      steps.push({ id: 'trap', k: 'trap', t: `높이를 $${ov('BD')}=${m}$로 놓고 $\\frac{(${m}+${n})\\times${m}}{2}$로 구하면 틀려요. 높이는 두 평행한 변 사이의 거리인 $${ov('DE')}=${m + n}$이에요.`, cap: `높이는 BD=${m}${G.josa(m, '이', '가')} 아니라 DE=${m + n}` });
+    }
+    items.push(SK.ang(A, B, Cc, { r: 28, on: ['given'], col: 'amber' }), SK.tick(A, B, 1, { at: 'given', col: 'amber' }), SK.tick(A, Cc, 1, { at: 'given', col: 'amber' }),
+      SK.ang(D, B, A, { r: 18, on: ['given', 'cong'], col: 'sky', cols: { cong: 'green' } }), SK.ang(E, Cc, A, { r: 18, on: ['given', 'cong'], col: 'sky', cols: { cong: 'green' } }),
+      SK.ang(A, B, D, { r: 34, rings: 2, at: 'sum', to: 'cong', col: 'green' }), SK.ang(Cc, A, E, { r: 34, rings: 2, at: 'sum', to: 'cong', col: 'green' }), SK.ang(B, A, D, { r: 34, at: 'sum', to: 'cong', col: 'sky' }), SK.ang(A, Cc, E, { r: 34, at: 'sum', to: 'cong', col: 'sky' }),
+      SK.fill([A, B, D], { at: 'cong', to: 'len', col: 'sky', a: 0.26 }), SK.fill([A, Cc, E], { at: 'cong', to: 'len', col: 'green', a: 0.26 }));
+    items.push(SK.len(B, D, pt(0, -2), `${m} cm`, { on: ['given', 'len'], col: 'sky', size: 16, gap: 6 }));
+    if (v !== 1) items.push(SK.len(Cc, E, pt(0, -2), `${n} cm`, { on: ['given', 'len'], col: 'green', size: 16, gap: 6 }));
+    items.push(SK.len(A, E, pt(0, -5), `${m} cm`, { at: 'len', col: 'sky', size: 16, gap: 8 }), SK.len(D, A, pt(0, -5), `${n} cm`, v === 1 ? { on: ['given', 'len'], col: 'green', size: 16, gap: 8 } : { at: 'len', col: 'green', size: 16, gap: 8 }));
+    if (v === 0) items.push(SK.dim(D, E, pt(0, -3), 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, off: 20, labels: { ans: `x=${m + n} cm` } }));
+    else if (v === 1) items.push(SK.len(Cc, E, pt(0, -2), 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, gap: 6, labels: { ans: `x=${n} cm` } }));
+    else items.push(SK.fill([B, D, E, Cc], { on: ['given', 'eq', 'ans'], col: 'amber', a: 0.14 }), SK.txt(pt((D.x + E.x) / 2, (B.y + Cc.y) / 4), 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, labels: { ans: `x=${area} cm²` } }), SK.seg(B, D, { at: 'trap', col: 'rose', w: 5.4 }), SK.dim(D, E, pt(0, -3), `${m + n} cm`, { at: 'len', to: 'eq', col: 'amber', size: 16, off: 20 }));
+    return {
+      fit: [B, Cc, D, E, pt(-n - 0.4, 0), pt(m + 0.4, 0), pt(0, v === 1 ? 0.2 : 0.7)], steps, items, l: 44, r: 44,
+      base: (b) => { G.line(b, pt(-n - 0.5, 0), pt(m + 0.5, 0), 'ink', 3, { alpha: 0.7 }); G.poly(b, [A, B, Cc], 'ink', 3.6); G.line(b, B, D, 'ink', 3.2); G.line(b, Cc, E, 'ink', 3.2); G.fillPoly(b, [A, B, Cc], 'amber', 0.06); },
+      names: (b) => { [A, B, Cc, D, E].forEach((z) => b.point(z, { color: 'ink', r: 4.5 })); G.tagOut(b, B, cen, 'B', { size: 18 }); G.tagOut(b, Cc, cen, 'C', { size: 18 }); T(b, A, 'A', { dy: -34, size: 18 }); T(b, D, 'D', { dy: 18, size: 18 }); T(b, E, 'E', { dy: 18, size: 18 }); T(b, pt(m + 0.5, 0), 'ℓ', { dy: -13, dx: 8, size: 17 }); }
+    };
+  };
+  r5.solve = mkSolve(r5Plan);
+
+  /* ---- t3-6 빗변을 공유하는 연 모양 · v0: ∠BAD → ∠BCD · v1: BC → CD · v2: ∠BAC → ∠ACD ---- */
+  const r6Plan = (M, s) => {
+    const { m, a, c, n } = M, v = (s.trV || 0) % 3, A = pt(0, 0), Cc = pt(1, 0), Bp = pt(cos(a) * cos(a), -cos(a) * sin(a)), Dp = pt(Bp.x, -Bp.y), cen = pt(0.5, 0), steps = [], items = [];
+    const g0 = `$\\angle B=\\angle D=90^{\\circ}$, $${ov('AB')}=${ov('AD')}$이고`;
+    steps.push({ id: 'given', k: 'given', t: v === 0 ? `${g0} $\\angle BAD=${dd(2 * a)}$예요. 구하는 것은 $\\angle BCD=x$.` : v === 1 ? `${g0} $${ov('BC')}=${n}$ cm예요. 구하는 것은 $${ov('CD')}=x$.` : `${g0} $\\angle BAC=${dd(a)}$예요. 구하는 것은 $\\angle ACD=x$.`, cap: v === 0 ? `∠B=∠D=90°, AB=AD, ∠BAD=${2 * a}°` : v === 1 ? `∠B=∠D=90°, AB=AD, BC=${n} cm` : `∠B=∠D=90°, AB=AD, ∠BAC=${a}°` });
+    steps.push({ id: 'idea', k: 'idea', t: '연 모양은 AC를 접는 선으로 위아래가 포개어지는 모양이에요. 그래서 △ABC와 △ADC가 합동인지 확인하면 대응변과 대응각이 모두 같아져요.', cap: '△ABC와 △ADC가 합동인지 확인 (AC로 접기)' });
+    steps.push({ id: 'R', k: 'fig', lb: '합동 조건 ①', t: '$\\angle B=\\angle D=90^{\\circ}$ (Right angle)', cap: '∠B=∠D=90° (R)' });
+    steps.push({ id: 'H', k: 'fig', lb: '합동 조건 ②', t: '$\\overline{AC}$는 두 직각삼각형의 빗변이면서 공통이에요 (Hypotenuse)', cap: 'AC는 공통인 빗변 (H)' });
+    steps.push({ id: 'S', k: 'fig', lb: '합동 조건 ③', t: `한 변의 길이가 같아요: $${ov('AB')}=${ov('AD')}$ (Side)`, cap: 'AB=AD (S)' });
+    steps.push({ id: 'cong', k: 'fig', lb: '합동', t: '직각삼각형에서 빗변과 다른 한 변이 각각 같으므로 △ABC≡△ADC (RHS 합동)이에요.', cap: '△ABC≡△ADC (RHS 합동)' });
+    if (v === 0) {
+      steps.push({ id: 'eq', k: 'eq', t: `대응각이므로 $\\angle BAC=\\angle DAC=\\frac{${dd(2 * a)}}{2}=${dd(a)}$. △ABC에서 $\\angle BCA=90^{\\circ}-${dd(a)}=${dd(c)}$이고 $\\angle DCA=\\angle BCA$이므로 $x=2\\times${dd(c)}=${dd(2 * c)}$`, cap: `∠BCA=90°−${a}°=${c}° → x=2×${c}°=${2 * c}°` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(2 * c)}$`, cap: `x = ${2 * c}°` });
+    } else if (v === 1) {
+      steps.push({ id: 'eq', k: 'eq', t: `대응변이므로 $x=${ov('CD')}=${ov('CB')}=${n}$ cm`, cap: `CD=CB=${n} cm` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${n}\\text{ cm}$`, cap: `x = ${n} cm` });
+    } else {
+      steps.push({ id: 'eq', k: 'eq', t: `△ABC에서 $\\angle ACB=90^{\\circ}-${dd(a)}=${dd(c)}$이고, 대응각이므로 $x=\\angle ACD=\\angle ACB=${dd(c)}$`, cap: `x=∠ACD=∠ACB=90°−${a}°=${c}°` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(c)}$`, cap: `x = ${c}°` });
+    }
+    items.push(SK.ang(Bp, A, Cc, { r: 20, on: ['given', 'R'], col: 'sky', cols: { R: 'green' } }), SK.ang(Dp, A, Cc, { r: 20, on: ['given', 'R'], col: 'sky', cols: { R: 'green' } }),
+      SK.tick(A, Bp, 1, { on: ['given', 'S'], col: 'amber' }), SK.tick(A, Dp, 1, { on: ['given', 'S'], col: 'amber' }), SK.seg(A, Cc, { at: 'H', col: 'green', w: 4 }),
+      SK.fill([A, Bp, Cc], { at: 'cong', to: 'eq', col: 'sky', a: 0.26 }), SK.fill([A, Dp, Cc], { at: 'cong', to: 'eq', col: 'green', a: 0.26 }));
+    if (v === 0) items.push(SK.ang(A, Bp, Dp, { r: 30, ld: 58, lr: -a / 2, on: ['given'], col: 'sky', label: dg(2 * a), gl: true, glTo: 'cong' }), SK.ang(Cc, Bp, Dp, { r: 34, ld: 60, lr: c / 2, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${2 * c}°` }, gl: true }), SK.ang(A, Bp, Cc, { r: 34, ld: 60, at: 'eq', col: 'green', label: dg(a), size: 15, gl: true }), SK.ang(Cc, Bp, A, { r: 26, at: 'eq', col: 'green' }));
+    else if (v === 1) items.push(SK.len(Bp, Cc, cen, `${n} cm`, { on: ['given', 'eq'], col: 'sky', size: 17, gap: 6 }), SK.len(Dp, Cc, cen, 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, gap: 6, labels: { ans: `x=${n} cm` } }), SK.tick(Bp, Cc, 2, { at: 'cong', col: 'rose' }), SK.tick(Dp, Cc, 2, { at: 'cong', col: 'rose' }));
+    else items.push(SK.ang(A, Bp, Cc, { r: 34, ld: 58, on: ['given'], col: 'sky', label: dg(a), gl: true, glTo: 'cong' }), SK.ang(Cc, Dp, A, { r: 30, ld: 50, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${c}°` }, gl: true }), SK.ang(Cc, A, Bp, { r: 30, ld: 50, at: 'eq', col: 'green', label: dg(c), size: 15, gl: true }));
+    return {
+      fit: [A, Cc, Bp, Dp], steps, items, l: 50, r: 54, t: 56,
+      base: (b) => { G.fillPoly(b, [A, Bp, Cc, Dp], 'sky', 0.08); G.poly(b, [A, Bp, Cc, Dp], 'ink', 3.6); },
+      names: (b) => { [A, Bp, Cc, Dp].forEach((z) => b.point(z, { color: 'ink', r: 4.5 })); G.tagOut(b, A, cen, 'A', { size: 18 }); G.tagOut(b, Bp, cen, 'B', { size: 18 }); G.tagOut(b, Cc, cen, 'C', { size: 18 }); G.tagOut(b, Dp, cen, 'D', { size: 18 }); }
+    };
+  };
+  r6.solve = mkSolve(r6Plan);
+
+  /* @@SOLVE-END */
 
   G.register(30, 't3', '③ 직각삼각형의 합동', '직각삼각형의 합동', PARAMS, [r1, r2, r3, r4, r5, r6, r7]);
 })();

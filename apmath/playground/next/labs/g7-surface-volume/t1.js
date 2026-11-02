@@ -302,16 +302,27 @@
       const D = scene3(b, s, C);
       const cylM = revolveMesh([[0, -hu / 2], [ru, -hu / 2], [ru, hu / 2], [0, hu / 2]], { axis: 'z', O: v3(xc, 0, 0), N: 44, tags: ['back', 'side', 'front'] });
       const st = C.step, lvC = !C.review ? 1 : st === 1 ? 2 : st === 2 ? 1 : 3, lvR = !C.review ? 1 : st === 1 ? 0 : st === 2 ? 2 : 3;
+      // 폰: 지금 보이는 원기둥을 무대 폭의 약 60%로 크게 잡고(굴러 가는 동안 화면이 따라가요), 전개도 조각은 입체 아래 한 줄로 화면 폭에 맞춰요
+      const isN = D.narrow && !b.thumb, ccn = [-1, 1].flatMap((i) => [-1, 1].map((j) => [-1, 1].map((k2) => v3(xc + i * ru, j * ru, k2 * hu / 2)))).flat();
+      let wvN = 0;
+      if (isN) wvN = D.fitCore(ccn, [], { l: 30, r: 30, t: 30, b: 30 }, { floor: 0.6, cap: 0.6 }).wv;
+      // 마지막 구간(진행 80~100%): 굴러간 옆면 띠 전체(출발선~원기둥)가 보이도록 화면이 부드럽게 물러나요
+      const wz = isN && !C.problem ? ease(lin01(C.t, 0.8, 1)) : 0, lerpN = (p, q) => p + (q - p) * wz;
+      const bbC = G.bboxOf(ccn.map(D.P)), fullPts = [xs - ru, -xs + ru].flatMap((xx) => [-1, 1].flatMap((j) => [-1, 1].map((k2) => v3(xx, j * ru, k2 * hu / 2)))), bbF = G.bboxOf(fullPts.map(D.P));
+      const LB = { x0: lerpN(bbC.x0, bbF.x0), x1: lerpN(bbC.x1, bbF.x1), y0: lerpN(bbC.y0, bbF.y0), y1: lerpN(bbC.y1, bbF.y1) };
+      const rowW = isN ? lerpN(Math.min(2 * PI * ru + 2 * ru, wvN * 0.9), 2 * PI * ru + 2 * ru) : 2 * PI * ru + 2 * ru;
       const row = C.problem ? null : layoutTiles([
         { w: 2 * r, h: 2 * r, shape: 'circle', fill: 'sky', label: plainVal(M.S), cap: 'πr² (밑면)', hl: lvC },
         { w: 2 * PI * r, h: h, shape: 'rect', fill: 'green', label: plainVal(M.L), cap: `2πr×h (옆면)`, hl: lvR },
         { w: 2 * r, h: 2 * r, shape: 'circle', fill: 'sky', label: plainVal(M.S), cap: 'πr² (밑면)', hl: lvC }
-      ], 2 * PI * ru + 2 * ru, 2.6, 0.5);
+      ], rowW, 2.6, 0.5);
       const xe = C.problem ? 0 : -xs, xb = C.problem ? 0 : xs;
-      const corners = [v3(xb - ru, -ru, -hu / 2), v3(xe + ru, -ru, -hu / 2), v3(xb - ru, ru, hu / 2), v3(xe + ru, ru, hu / 2), v3(xb, -ru, hu / 2), v3(xe, -ru, hu / 2)];
-      const bb = G.bboxOf(corners.map(D.P));
-      const extra = row ? [{ x: -row.total / 2, y: bb.y1 + 0.9 }, { x: row.total / 2, y: bb.y1 + 0.9 + row.height + 0.9 }] : [];
-      D.fit(corners, extra, { l: 36, r: 36, t: 36, b: 36 });
+      const corners = isN ? ccn : [v3(xb - ru, -ru, -hu / 2), v3(xe + ru, -ru, -hu / 2), v3(xb - ru, ru, hu / 2), v3(xe + ru, ru, hu / 2), v3(xb, -ru, hu / 2), v3(xe, -ru, hu / 2)];
+      const bb = isN ? LB : G.bboxOf(corners.map(D.P));
+      const ccx = isN ? (bb.x0 + bb.x1) / 2 : 0, rowGap = isN ? lerpN(0.9, 1.9) : 0.9;
+      const extra = row ? [{ x: ccx - row.total / 2, y: bb.y1 + rowGap }, { x: ccx + row.total / 2, y: bb.y1 + rowGap + row.height + 0.9 }] : [];
+      if (isN) D.fitCore(ccn, extra.concat(wz > 0 ? [{ x: LB.x0, y: LB.y0 }, { x: LB.x1, y: LB.y1 }] : []), { l: 30, r: 30, t: 30, b: 30 }, { floor: wz > 0 ? 0 : 0.6, cap: 0.6 });
+      else D.fit(corners, extra, { l: 36, r: 36, t: 36, b: 36 });
       // 굴러간 자리(옆면이 펼쳐진 직사각형)
       if (!C.problem && xc > xs + 1e-3) D.panel([v3(xs, -ru, -hu / 2), v3(xc, -ru, -hu / 2), v3(xc, -ru, hu / 2), v3(xs, -ru, hu / 2)], 'green', lvR === 2 ? 0.5 : 0.3, lvR === 2 ? 'amber' : 'green', 2.4);
       if (!C.problem) { D.line(v3(xs - ru * 1.2, -ru, -hu / 2), v3(-xs + ru * 1.2, -ru, -hu / 2), 'muted', 1.4, { alpha: 0.5 }); D.line(v3(xs - ru * 1.2, -ru, hu / 2), v3(-xs + ru * 1.2, -ru, hu / 2), 'muted', 1.4, { alpha: 0.5 }); }
@@ -328,12 +339,13 @@
       D.line(fc, add3(fc, v3(ru, 0, 0)), 'ink', 2.4);
       D.dot(fc, 'ink', 3.5);
       D.tag(add3(fc, v3(ru * 0.5, 0, 0)), `r=${r}`, { size: 14, dy: -11 });
-      D.line(v3(xe + (C.problem ? ru : 0), -ru, -hu / 2), v3(xe + (C.problem ? ru : 0), -ru, hu / 2), 'amber', 3);
-      D.elabel(v3(xe + (C.problem ? ru : 0), -ru, -hu / 2), v3(xe + (C.problem ? ru : 0), -ru, hu / 2), `h=${h}`, { side: { x: 1, y: 0 }, color: 'amber', gap: 8 });
+      const hx = isN && !C.problem ? xc + ru : xe + (C.problem ? ru : 0), hy = isN && !C.problem ? 0 : -ru;
+      D.line(v3(hx, hy, -hu / 2), v3(hx, hy, hu / 2), 'amber', 3);
+      D.elabel(v3(hx, hy, -hu / 2), v3(hx, hy, hu / 2), `h=${h}`, { side: { x: 1, y: 0 }, color: 'amber', gap: 8 });
       if (!C.problem) {
         const done = t > 0.985;
-        D.label(v3((xs + xc) / 2, -ru, hu / 2), done ? `옆면의 가로 2πr = ${plainVal(M.per)}` : t > 0.02 ? `한 바퀴의 ${Math.round(t * 100)}%` : '', { dir: { x: 0, y: 1 }, gap: 10, color: 'amber', size: 15 });
-        if (row) drawTiles(D, row, 0, bb.y1 + 0.9);
+        D.label(v3(isN ? lerpN(Math.max((xs + xc) / 2, xc - 0.3 * wvN), (xs + xc) / 2) : (xs + xc) / 2, -ru, hu / 2), done ? `옆면의 가로 2πr = ${plainVal(M.per)}` : t > 0.02 ? `한 바퀴의 ${Math.round(t * 100)}%` : '', { dir: { x: 0, y: 1 }, gap: 10, color: 'amber', size: 15 });
+        if (row) drawTiles(D, row, ccx, bb.y1 + rowGap);
       }
     };
     return {
@@ -395,7 +407,9 @@
       }
       const nDone = plates.filter((p) => p.loc >= 1).length;
       const pts = cube8(v3(0, 0, 0), Math.max(ext / 2, H / 2)).map((p) => v3(p.x, p.y, p.z)).concat([add3(v3(-ext / 2, y0, 0), D.hx(-slide))]);
-      D.fit(pts, [], { l: 40, r: 70, t: 36, b: 40 });
+      // 폰: 쌓인 기둥을 무대 폭의 약 55%로 크게(판이 날아 들어올 자리는 따로 확보하지 않고, 판은 화면 가장자리에서 들어와요)
+      if (D.narrow && !b.thumb) D.fitCore([-1, 1].flatMap((i) => [0, 1].flatMap((j) => [-1, 1].map((k2) => v3(i * ext / 2, y0 + j * H, k2 * ext / 2)))), [], { l: 30, r: 62, t: 36, b: 40 }, { floor: 0.55, cap: 0.55 });
+      else D.fit(pts, [], { l: 40, r: 70, t: 36, b: 40 });
       const hlS = !C.review ? 1 : st === 1 ? 2 : 1, hlH = !C.review ? 1 : st === 2 ? 2 : 1;
       if (!C.problem) D.body({ mesh: prismMesh(bm.shape === 'circ' ? G.circleBase(bm.r * sc, 32) : scaledPoly(bm, sc), y0, y0 + H), fill: null, edge: 'muted', edgeW: 1.6, hiddenAlpha: 0.5, hidden: true });
       plates.forEach((p) => D.body({ mesh: p.mesh, fill: hlH === 2 ? 'amber' : 'sky', alpha: p.fly ? 0.34 : 0.2, edge: 'ink', edgeW: 2.2, faceStyle: (f) => (p.k === 0 && f.tag === 'bot' ? {} : f.tag === 'top' && p.k === h - 1 && hlS === 2 ? { fill: 'amber', alpha: 0.5 } : {}) }));

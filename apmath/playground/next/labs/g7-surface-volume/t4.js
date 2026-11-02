@@ -247,7 +247,9 @@
       // 아래 원뿔은 제자리에서 뒤집어(회전) 밑면이 아래로, 위 원뿔은 오른쪽으로만 옮겨요
       const Tl = G.rotAbout(v3(0, (yy0 + yy0 + h1) / 2, 0), v3(0, 0, 1), PI * flip), lp = (p) => G.applyT(Tl, p);
       const lowM = xfMesh(low, Tl), upM = xfMesh(upm, shiftT(D.hx(sep)));
-      D.fit(cube8(v3(0, yy0 + h1 / 2, 0), Math.max(r, (h1 + h2) / 2)).concat(cube8(add3(D.hx(r * 2.6), v3(0, yy0 + h1 + h2 / 2 - (yy0 + h1 / 2), 0)), Math.max(r, (h1 + h2) / 2))), [], { l: 40, r: 40, t: 36, b: 40 });
+      // 지금 프레임의 입체만으로 맞춰요: 아래 원뿔(제자리에서 뒤집힘)과 위 원뿔(오른쪽으로 옮겨 가는 만큼). 처음엔 이중원뿔이 크게, 분해되면서 서서히 물러나요
+      const bx4 = (cx, y0, y1) => [-1, 1].flatMap((i) => [y0, y1].flatMap((yv) => [-1, 1].map((k2) => add3(v3(i * r, yv, k2 * r), cx))));
+      D.fit(bx4(v3(0, 0, 0), yy0, yMid).concat(bx4(D.hx(sep), yMid, yMid + h2)), [], { l: 40, r: 40, t: 36, b: 40 });
       const poly = [[0, yy0], [r, yMid], [0, yMid + h2]];
       if (sep < 0.01 && flip < 0.01) axisLine(D, yy0 - 0.5, yMid + h2 + 0.6);
       const faceS = (hot) => (f) => (f.tag === 'disc' ? { fill: 'red', alpha: sep > 0.2 ? 0.5 : 0.001 } : C.review && hot && f.tag === 'side' ? { fill: 'amber', alpha: 0.36 } : {});
@@ -262,7 +264,7 @@
         D.line(pa(0, yMid, ou), pa(r, yMid, ou), 'ink', 2.4);
         D.tag(lp(pa(r * 0.8, yMid)), `r=${M.r}`, { dy: 15, size: 14, color: 'amber' });
         D.tag(pa(r * 0.8, yMid, ou), `r=${M.r}`, { dy: 15, size: 14, color: 'amber' });
-        if (sep > 0.2 && !C.problem) { D.tag(v3(0, yMid, 0), '붙은 면(제외)', { dy: 34, size: 13, color: 'red' }); }
+        if (sep > 0.2 && !C.problem) { D.tag(lp(v3(0, yMid, 0)), '붙은 면(제외)', { dy: flip > 0.5 ? 26 : 34, size: 13, color: 'red' }); }
         if (!C.problem) { D.tag(lp(v3(0, yy0 + h1 * 0.4, 0)), `πRr=${plainVal(M.lat1)}`, { size: 14, dx: 4 }); D.tag(add3(v3(0, yMid + h2 * 0.4, 0), ou), `πRr=${plainVal(M.lat2)}`, { size: 14, dx: 4 }); }
       } else {
         const o = pa(0, yMid), pr = pa(r, yMid);
