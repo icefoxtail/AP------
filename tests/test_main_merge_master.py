@@ -328,6 +328,14 @@ class RpmPrimaryPathTests(unittest.TestCase):
             "L1": "미분", "L2": "도함수의 활용(2)", "L3": "가", "L4": "나",
             "parentChain": ["미분", "도함수의 활용(2)", "가", "나"], "crosswalkRecordIds": ["R1"]}})
 
+    def test_full_request_does_not_overwrite_an_already_registered_path(self):
+        registered = {"L1": "미분", "L2": "도함수의 활용(2)", "L3": "기존", "L4": "경로"}
+        files = self.build([self.row("R1", "가", "나")], {"rpmPrimaryRecordIds": ["R1"], "templateKey": "TPL_A",
+                                                          "curriculum": "2015", "courseKey": "수학II"}, registered_path=registered)
+        with redirect_stdout(io.StringIO()):
+            req = mm.generate_inbox_request(files)
+        self.assertNotIn("rpmPrimaryPath", req["items"][0]["after"])
+
     def test_full_request_also_carries_the_path_from_the_small_meta_record(self):
         files = self.build([self.row("R1", "가", "나")], {"rpmPrimaryRecordIds": ["R1"], "templateKey": "TPL_A",
                                                           "curriculum": "2015", "courseKey": "수학II"})

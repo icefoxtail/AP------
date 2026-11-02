@@ -461,8 +461,8 @@ def generate_inbox_request(files: dict, rpm_path_delta: bool = False) -> dict:
         # resolve_rpm_primary_path); a question whose record cannot be decided keeps no path (EVIDENCE_DEBT).
         basis = cur if rpm_path_delta else after
         rpm_path, rpm_crosswalk = None, None
-        if rpm_path_delta and cur.get("rpmPrimaryPath"):
-            rpm_path = None  # already registered: nothing to add
+        if cur.get("rpmPrimaryPath"):
+            rpm_path = None  # already registered: never overwritten by a crosswalk-derived value (an explicit small-meta path still flows through `after`)
         else:
             rpm_path, rpm_crosswalk = resolve_rpm_primary_path(
                 s_after, {"problemTypeKey": basis.get("problemTypeKey"), "templateKey": basis.get("templateKey")},
