@@ -222,8 +222,9 @@
   /* ====================================================================== [심화] 정다각형의 넓이 */
   function drawReg(b, n, R, o = {}) {
     const O = pt(0, 0), V = Array.from({ length: n }, (_, i) => polar(O, R, -90 + (360 * i) / n));
-    fit(b, bboxOf(V), { t: 58, b: 60 + (o.rows ? o.rows.length * 26 : 0), l: 54, r: 54 });
+    fit(b, bboxOf([pt(-R, -R), pt(R, R)]), { t: 58, b: 60 + (o.rows ? o.rows.length * 26 : 0), l: 54, r: 54 });
     const st = o.step == null ? 99 : o.step;
+    b.circle(O, R, { color: 'muted', width: 1.8 }); // 반지름 R 인 외접원
     fillPoly(b, V, 'sky', 0.1); poly(b, V, 'ink', 3.4);
     line(b, O, V[0], 'sky', 3.6);
     if (st >= 1) V.forEach((p0) => line(b, O, p0, 'violet', 2));
