@@ -802,7 +802,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "tags": []
+    "tags": [],
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 네 개가 2×2로 놓여 있다. ㄴ 좌변과 ㄴ 우변 A는 집합 A 전체가, ㄹ 좌변과 ㄹ 우변 B는 집합 B 전체가 각각 같은 모양으로 색칠되어 있다.",
+    "solutionImageCaption": "ㄴ과 ㄹ은 좌변과 우변이 나타내는 색칠한 영역이 같아 항상 옳고, ㄱ과 ㄷ은 반례가 있어 옳지 않다. 정답: 항상 옳은 것은 ㄴ, ㄹ의 2개이므로 ③",
+    "solutionImageSize": "large"
   },
   {
     "id": 17,

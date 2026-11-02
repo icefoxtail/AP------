@@ -882,7 +882,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U(40명) 안에 두 집합 M(19명), A(25명)의 벤다이어그램이 있고, 교집합 M∩A 영역이 색칠되어 있으며 두 집합 밖에 5명이라고 적혀 있다.",
+    "solutionImageCaption": "전체 40명 중 M은 19명, A는 25명, 둘 다 선택하지 않은 학생이 5명이고, 색칠한 M∩A가 두 과목을 모두 선택한 학생이다. n(M∪A)=40-5=35, n(M∩A)=19+25-35=9, 미술만 25-9=16이다. 정답: 1) 35명 2) 9명 3) 16명",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
