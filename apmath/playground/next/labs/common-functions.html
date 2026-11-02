@@ -121,9 +121,9 @@ window.addEventListener('DOMContentLoaded', function () {
       {
         id: 'adv-2',
         unit: 'Ⅳ. 무리함수와 역함수',
-        badge: '🔥 심화 2 · 5.0점 (불변 길이 2√2 심화)',
+        badge: '🔥 심화 2 · 5.0점 (불변 길이 심화)',
         tabLabel: '심화 2 · 무리함수와 역함수로 만든 사각형',
-        title: '[심화 2] 무리함수·역함수 대칭 사각형과 불변 길이(AB=2√2)',
+        title: '[심화 2] 무리함수·역함수 대칭 사각형과 불변 길이',
         statement: `
           <div>두 양수 $a, p$에 대하여 무리함수 $f(x) = \\sqrt{a(x - p)} + p + 2$의 그래프의 시작점을 $A$, 역함수 $y = f^{-1}(x)$의 시작점을 $B$, 두 그래프의 교점을 $C$라 하자.</div>
           <div class="mt-1.5 pl-2.5 border-l-2 border-amber-400 text-amber-100 text-xs space-y-0.5">
@@ -454,7 +454,7 @@ window.addEventListener('DOMContentLoaded', function () {
         unit: 'Ⅰ. 합성함수와 역함수',
         badge: '🌱 기본 1 · 일대일대응 직사각형 박스',
         tabLabel: '기본 1 · 그래프에서 일대일대응이 되는 조건',
-        title: '[기본 1] 일대일대응(역함수 존재) 직사각형 대각선 끝점 통과 원리',
+        title: '[기본 1] 정의역과 공역이 정해진 일차함수의 일대일대응(역함수 존재) 조건',
         statement: `
           <div>정의역 $X = \\{x \\mid 1 \\le x \\le 4\\}$에서 공역 $Y = \\{y \\mid 2 \\le y \\le 8\\}$로의 일차함수 $f(x) = ax + b$가 <strong>일대일대응(역함수 존재)</strong>이 되도록 하는 상수 $a, b$의 기하적 조건을 구하시오.</div>
         `,
@@ -619,7 +619,7 @@ window.addEventListener('DOMContentLoaded', function () {
         unit: 'Ⅰ. 합성함수와 역함수',
         badge: '🌱 기본 6 · 증가함수 역함수 교점·넓이',
         tabLabel: '기본 6 · 증가함수와 역함수의 교점과 넓이',
-        title: '[기본 6] 증가함수와 역함수의 교점 거리(√2|α-β|) 및 넓이 2배 원리',
+        title: '[기본 6] 증가함수와 역함수의 교점 거리 및 넓이 2배 원리',
         statement: `
           <div>증가하는 함수 $f(x) = \\dfrac{1}{3}(x - 1)^2 + 1$ ($x \\ge 1$)의 그래프와 그 역함수 $y = f^{-1}(x)$의 그래프가 만나는 두 점 $A, B$ 사이의 거리와 두 곡선으로 둘러싸인 넓이 관계를 탐구하시오.</div>
         `,
@@ -748,9 +748,9 @@ window.addEventListener('DOMContentLoaded', function () {
       {
         id: 'bas-10',
         unit: 'Ⅱ. 유리함수의 기하학',
-        badge: '🌱 기본 10 · 직사각형 넓이 |k| & 산술기하',
+        badge: '🌱 기본 10 · 직사각형 넓이와 산술기하',
         tabLabel: '기본 10 · 유리함수의 점근선으로 만든 직사각형',
-        title: '[기본 10] 점근선 직사각형 넓이(|k|) 불변과 둘레 최솟값(4√k) 정사각형 원리',
+        title: '[기본 10] 점근선 직사각형의 넓이 불변과 둘레 최솟값 정사각형 원리',
         statement: `
           <div>유리함수 $y = \\dfrac{4}{x - 1} + 1$ ($x > 1$)의 그래프 위의 점 $P$에서 두 점근선 $x = 1, y = 1$에 내린 수선의 발을 각각 $A, B$라 할 때, 직사각형 $CAPB$의 넓이와 둘레의 길이의 최솟값을 구하시오.</div>
         `,
@@ -847,9 +847,9 @@ window.addEventListener('DOMContentLoaded', function () {
       {
         id: 'bas-13',
         unit: 'Ⅲ. 유리함수와 직선',
-        badge: '🌱 기본 13 · 접선 D=0 & 점근선 평행 m=0 함정',
+        badge: '🌱 기본 13 · 유리함수와 직선이 한 점에서 만날 조건',
         tabLabel: '기본 13 · 유리함수와 직선이 한 점에서 만날 조건',
-        title: '[기본 13] 유리함수와 직선이 오직 한 점에서 만날 조건 (D=0 & m=0 함정)',
+        title: '[기본 13] 유리함수와 직선이 오직 한 점에서 만날 조건',
         statement: `
           <div>유리함수 $y = \\dfrac{2}{x - 1} + 2$의 그래프와 점 $(1, 0)$을 지나는 직선 $y = m(x - 1)$이 <strong>오직 한 점</strong>에서만 만나도록 하는 모든 실수 $m$의 값을 구하시오.</div>
         `,
@@ -1310,6 +1310,7 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ===== 원본 그대로: 교점 표시와 수학 표기 도우미 (원본 1630–1690행) ===== */
     function plotIntersections(k, ox, oy, sc, rational, showGhost = false) {
       let real = 0, ghost = 0;
+      const hideDots = state.fixed && state.auxStep < 1; // 문제 탭(풀이 전): 교점 개수가 답이므로 교점 점·라벨을 그리지 않음
       const eps = 1e-9;
       const d = 1 - k;
       if (d >= -eps) {
@@ -1320,7 +1321,7 @@ window.addEventListener('DOMContentLoaded', function () {
           const good = v >= -eps;
           if (good) {
             real++;
-            dDot(toScr(x, y, ox, oy, sc), state.auxStep >= 2 && !state.fixed ? `교점 (${(x + TX).toFixed(2)}, ${(y + TY).toFixed(2)})` : '교점', C.green, { x: 8, y: -12 });
+            if (!hideDots) dDot(toScr(x, y, ox, oy, sc), state.auxStep >= 2 && !state.fixed ? `교점 (${(x + TX).toFixed(2)}, ${(y + TY).toFixed(2)})` : '교점', C.green, { x: 8, y: -12 });
           } else {
             ghost++;
             if (showGhost) {
@@ -1505,7 +1506,9 @@ window.addEventListener('DOMContentLoaded', function () {
         if (step === 1 || step === 4) {
           dLine(toScr(-0.5, 1.5, ox, oy, sc), toScr(E1, E1 + 2, ox, oy, sc), 'rgba(56,189,248,0.5)', 2.2, [5, 4], true);
           dLine(toScr(1.5, -0.5, ox, oy, sc), toScr(E1 + 2, E1, ox, oy, sc), 'rgba(244,114,182,0.5)', 2.2, [5, 4], true);
-          drawDimension(A, B, -26, state.fixed ? 'AB = 2√2' : 'AB = 2√2 (p에 무관하게 일정!)', C.gold);
+          if (!state.fixed) drawDimension(A, B, -26, 'AB = 2√2 (p에 무관하게 일정!)', C.gold);
+          else if (step === 1) drawDimension(A, B, 46, 'AB = 2√2', C.gold);
+          else BOARD.text({ x: A.x - 14, y: A.y + 24 }, 'AB = 2√2', { color: C.gold, size: 12.5 * LSf(), weight: 800, align: 'right', baseline: 'middle' }); // 4단계: 상자를 쓰면 M·OM·MC 와 겹쳐 글자만 선분 곁에
         }
 
         if (step >= 2) {
@@ -1526,8 +1529,8 @@ window.addEventListener('DOMContentLoaded', function () {
           dPoly([M, Cx, Cpt], 'rgba(52, 211, 153, 0.22)', C.green, 2.2, true);
           drawRightAngle(Mx, O, M, 10, C.gold);
           drawRightAngle(Cx, M, Cpt, 10, C.green);
-          drawDimension(O, M, 24, state.vp ? `OM = ${pVal + 1}√2` : `OM = √2(${(pVal + 1).toFixed(1)})`, C.gold);
-          drawDimension(M, Cpt, 24, state.vp ? `MC = ${cVal - pVal - 1}√2` : `MC ≈ ${((cVal - pVal - 1) * Math.SQRT2).toFixed(2)}`, C.green);
+          drawDimension(O, M, state.fixed ? -38 : 24, state.vp ? `OM = ${pVal + 1}√2` : `OM = √2(${(pVal + 1).toFixed(1)})`, C.gold);
+          drawDimension(M, Cpt, state.fixed ? -38 : 24, state.vp ? `MC = ${cVal - pVal - 1}√2` : `MC ≈ ${((cVal - pVal - 1) * Math.SQRT2).toFixed(2)}`, C.green);
         }
 
         dCurve((x) => Math.sqrt(Math.max(0, aVal * (x - pVal))) + pVal + 2, pVal, X6, ox, oy, sc, C.cyan, 3.8);
@@ -2442,7 +2445,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       const k = state.fixed ? 0.5 : 1.4 - t * 2.2; // 문제 탭: 예시 직선(옮긴 그림 기준 k=0.5)
       const counts = plotIntersections(k, ox, oy, sc, false, step >= 3);
-      const isTwo = counts.real === 2;
+      const isTwo = counts.real === 2 && !(state.fixed && step < 1); // 풀이 전에는 교점 수를 색으로도 알리지 않음
       dLine(toScr(-3.5, -3.5 + k, ox, oy, sc), toScr(6, 6 + k, ox, oy, sc), isTwo ? C.green : C.gold, 3.8, [], true);
       const sk = VQ.q - VQ.p; // 시작점을 지나는 직선의 k
       dDot(toScr(1, 1, ox, oy, sc), step >= 1 ? `시작점 S(${VQ.p},${VQ.q}) [k=${sk}]` : `시작점 S(${VQ.p},${VQ.q})`, C.cyan, { x: 10, y: 15 });
