@@ -57,7 +57,7 @@
       FIT(b);
       circle(b, O, R, 'ink', 3.6, { fill: 'sky', fa: 0.04 });
       arcBetween(b, B, A, 'sky', 4.6);
-      line(b, Pp, A, 'ink', 3.2); line(b, Pp, B, 'ink', 3.2); line(b, O, A, 'ink', 2.6); line(b, O, B, 'ink', 2.6);
+      line(b, Pp, A, 'ink', 3.2); line(b, Pp, B, 'ink', 3.2); line(b, O, A, 'ink', 2.6); line(b, O, B, 'ink', 2.6); line(b, A, B, 'ink', 2.6);
       if (!pr && (ex ? false : st >= 1)) { line(b, Pp, Q, 'green', 2.6, { dash: [6, 5] }); dot(b, Q, 'green', 4.4); }
       pname(b, A, O, 'A'); pname(b, B, O, 'B'); pname(b, Pp, O, 'P'); dot(b, O, 'ink', 4.4);
       if (!C.txt) return;
@@ -279,6 +279,7 @@
       b.arc(O, R, Math.PI, 2 * Math.PI, { color: 'ink', width: 3.6 });
       b.arc(O, R, 0, Math.PI, { color: 'ink', width: 2, dash: [6, 6], alpha: 0.35 });
       line(b, A, B, 'ink', 3.4); line(b, A, Pp, 'ink', 3.2); line(b, B, Pp, 'ink', 3.2);
+      if (pr && q.kind === 2) line(b, O, Pp, 'ink', 2.6);
       if (!pr && (ex || st >= 2)) { line(b, O, Pp, 'green', 2.4, { dash: [6, 5] }); }
       b.right(Pp, A, B, { size: 14, color: pr ? 'sky' : 'rose' });
       pname(b, A, Pp, 'A'); pname(b, B, Pp, 'B'); pname(b, Pp, O, 'P'); dot(b, O, 'ink', 4.4);
@@ -407,8 +408,9 @@
       circle(b, O, R, 'ink', 3.6, { fill: 'sky', fa: 0.04 });
       line(b, A, B, 'ink', 3.4); line(b, Cc, D, 'ink', 3.4); line(b, A, D, 'ink', 3); line(b, O, A, 'ink', 1.6, { alpha: 0.4 });
       G.par(b, A, B, 1, 'amber', 0.25); G.par(b, Cc, D, 1, 'amber', 0.25);
-      if (pr) { if (q.kind === 0) { arcB(b, 0, g.dd, 'sky', 6); arcB(b, g.dd, 180 - g.dd, 'rose', 6); } if (q.kind === 1) arcB(b, g.dd, 180 - g.dd, 'rose', 6); if (q.kind === 2) arcB(b, 180 - g.dd, 180, 'rose', 6); }
+      if (pr) { if (q.kind === 0) { arcB(b, 0, g.dd, 'sky', 6); arcB(b, g.dd, 180 - g.dd, 'rose', 6); } if (q.kind === 1) arcB(b, g.dd, 180 - g.dd, 'rose', 6); }
       else { if (ex || st >= 1) { arcB(b, 180 - g.dd, 180, 'sky', 6); } if (ex || st >= 2) arcB(b, 0, g.dd, 'sky', 6); if (ex || st >= 3) arcB(b, g.dd, 180 - g.dd, 'rose', 6); }
+      if (pr && q.kind === 2) line(b, A, Cc, 'ink', 3);
       pname(b, A, O, 'A'); pname(b, B, O, 'B'); pname(b, Cc, O, 'C'); pname(b, D, O, 'D'); dot(b, O, 'ink', 4.4);
       if (!C.txt) return;
       T(b, O, 'O', { dx: 0, dy: 16, size: 16 });
@@ -416,7 +418,7 @@
         ang(b, D, A, Cc, { color: 'sky', rings: 1, label: dgx(q.th), r: 32, size: S(b) });
         if (q.kind === 0) { T(b, mp(O, R + 1.0, g.dd / 2), (q.k === 1 ? "π" : `${q.k}π`), { size: S(b), color: 'sky', noBig: true }); T(b, mp(O, R + 1.0, 90), 'x', { size: S(b) + 3, color: 'rose' }); }
         if (q.kind === 1) T(b, mp(O, R + 1.0, 90), 'x', { size: S(b) + 3, color: 'rose' });
-        if (q.kind === 2) T(b, mp(O, R + 1.0, 180 - g.dd / 2), 'x', { size: S(b) + 3, color: 'rose' });
+        if (q.kind === 2) ang(b, A, Cc, D, { color: 'rose', rings: 2, label: 'x', r: 26, size: S(b) + 3 });
         return;
       }
       ang(b, D, A, Cc, { color: 'sky', rings: 1, label: dgx(g.th), r: 32, size: S(b) });

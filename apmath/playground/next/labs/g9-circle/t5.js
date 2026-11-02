@@ -348,6 +348,7 @@
         const { A, B, C: Cc, D, E } = g;
         circle(b, O, R, 'ink', 3.4, { fill: 'sky', fa: 0.04, dash: [7, 6], alpha: 0.5 });
         b.path([A, B, Cc, D], { close: true, color: 'ink', width: 3.6 }); line(b, Cc, E, 'ink', 3); dot(b, E, 'ink');
+        if (q.kind === 2) { line(b, B, D, 'ink', 2.6); line(b, A, Cc, 'ink', 2.6); }
         pname(b, A, O, 'A'); pname(b, B, O, 'B'); pname(b, Cc, O, 'C'); pname(b, D, O, 'D'); tagOut(b, E, O, 'E', { size: 17 });
         if (!C.txt) return;
         if (q.kind === 0) { ang(b, B, A, Cc, { color: 'sky', rings: 1, label: dgx(q.a), r: 28, size: S(b) }); ang(b, D, A, Cc, { color: 'rose', rings: 1, label: 'x', r: 28, size: S(b) + 3 }); }
