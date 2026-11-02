@@ -294,6 +294,20 @@ class RpmPrimaryPathTests(unittest.TestCase):
         self.assertEqual(req["items"][1]["after"], {})
         self.assertIn("EVIDENCE_DEBT", req["items"][1]["reason"])
 
+    def test_request_tag_makes_a_second_delta_a_new_request_and_binds_extra_evidence(self):
+        files = self.build([self.row("R1", "가", "나")], {})
+        decision = self.root / "decision.review.json"
+        decision.write_text("{}", encoding="utf-8")
+        ref = {"path": "decision.review.json", "sha256": mm.sha256_file(decision)}
+        with redirect_stdout(io.StringIO()):
+            first = mm.generate_inbox_request(files, rpm_path_delta=True)
+            second = mm.generate_inbox_request(files, rpm_path_delta=True, request_tag="r2", extra_evidence=[ref])
+        self.assertNotEqual(first["requestId"], second["requestId"])
+        self.assertTrue(second["requestId"].startswith("req-rpmpath-"))
+        self.assertIn(ref, second["approval"]["evidenceRefs"])
+        self.assertIn(ref, second["items"][0]["evidenceRefs"])
+        self.assertNotIn(ref, first["approval"]["evidenceRefs"])
+
     def test_single_exact_candidate_decides_without_a_named_record(self):
         req = self.delta([self.row("R1", "가", "나"), self.row("R9", "다", "라", problemTypeKey="PT_OTHER")], {})
         self.assertEqual(req["items"][0]["after"]["rpmPrimaryPath"]["crosswalkRecordIds"], ["R1"])

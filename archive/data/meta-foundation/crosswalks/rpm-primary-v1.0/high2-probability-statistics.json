@@ -26,15 +26,15 @@
     "precedence": "source + verified final solution → RPM Primary path → this crosswalk → current ACTIVE canonical/binding validation"
   },
   "summary": {
-    "recordCount": 65,
-    "DIRECT_ACTIVE": 41,
+    "recordCount": 69,
+    "DIRECT_ACTIVE": 45,
     "FAMILY_ACTIVE": 2,
     "DIRECT_BINDING_GAP": 20,
     "FAMILY_BINDING_GAP": 0,
     "RPM_ONLY": 2,
     "byCurriculum": {
       "2015": {
-        "DIRECT_ACTIVE": 27,
+        "DIRECT_ACTIVE": 31,
         "FAMILY_ACTIVE": 1,
         "DIRECT_BINDING_GAP": 4,
         "FAMILY_BINDING_GAP": 0,
@@ -1681,6 +1681,114 @@
       "subUnitKey": null,
       "mappingStatus": "RPM_ONLY",
       "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-PS-RPM-066",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "조건부확률",
+        "l3": "사건의 독립",
+        "l4": "독립사건의 확률"
+      },
+      "standardUnitKey": "H15-PS-03",
+      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+      "problemTypeLabelKo": "사건의 독립과 종속",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+      "templateLabelKo": "독립·종속 판정",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-03",
+        "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-067",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "조건부확률",
+        "l3": "조건부확률",
+        "l4": "조건부확률 계산"
+      },
+      "standardUnitKey": "H15-PS-04",
+      "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "problemTypeLabelKo": "조건부확률",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "templateLabelKo": "분기·역조건 조건부확률",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-04",
+        "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-068",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "정규분포",
+        "l4": "정규분포 확률"
+      },
+      "standardUnitKey": "H15-PS-05",
+      "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "problemTypeLabelKo": "정규분포",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_BINOMIAL_NORMAL_RELATION",
+      "templateLabelKo": "이항분포와 정규분포의 관계",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-069",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "조건부확률",
+        "l3": "독립시행",
+        "l4": "반복 시행의 확률"
+      },
+      "standardUnitKey": "H15-PS-05",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "problemTypeLabelKo": "독립시행의 확률",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "templateLabelKo": "독립시행의 확률",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
     }
   ]
 }

@@ -373,13 +373,19 @@ def load_json_bank(js_file: Path) -> list:
     return json.loads(res.stdout)
 
 
-def generate_inbox_request(files: dict, rpm_path_delta: bool = False) -> dict:
+def generate_inbox_request(files: dict, rpm_path_delta: bool = False, request_tag: str | None = None,
+                           extra_evidence: list | None = None) -> dict:
     """Constructs official .archive-meta-register/inbox/[examUid].json conforming to v2 schema.
 
     `rpm_path_delta=True` builds a FINAL_QA request for an exam that is already registered: it adds only the RPM
     Primary path (`rpmPrimaryPath`) to the rows that lack it and changes no other value (empty before/after for rows
     whose path cannot be decided from the crosswalk). It keeps the original `targetParentRef` so the registrar derives
-    the same L1/L2."""
+    the same L1/L2.
+
+    `request_tag` makes the requestId differ from an earlier delta of the same exam (the registrar refuses the same
+    requestId with different content), e.g. a second delta after crosswalk rows were added for questions the first one
+    left without a path. `extra_evidence` ({path, sha256} refs, e.g. the reviewer's decision file) is added to the
+    approval and to every item."""
     stem = files["stem"]
     js_path = str(files["js"].relative_to(REPO_ROOT)).replace("\\", "/")
     source_archive_file = js_path.replace("archive/exams/", "")
@@ -421,7 +427,7 @@ def generate_inbox_request(files: dict, rpm_path_delta: bool = False) -> dict:
 
     evidence_refs = [
         {"path": receipt_rel, "sha256": receipt_sha}
-    ]
+    ] + [dict(ref) for ref in (extra_evidence or [])]
 
     value_fields = {
         "standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit", "level", "L3", "L4",
@@ -557,7 +563,8 @@ def generate_inbox_request(files: dict, rpm_path_delta: bool = False) -> dict:
         print(f" - NOTE: {len(sidecar_changes)} Generated-extension registryChanges entr(y/ies) are not registrar-schema "
               "canonical edits and are NOT forwarded (they stay in the small meta file).")
 
-    req_id = f"req-{'rpmpath' if rpm_path_delta else 'similar'}-{hashlib.sha1(stem.encode('utf-8')).hexdigest()[:16]}"
+    id_basis = f"{stem}|{request_tag}" if request_tag else stem
+    req_id = f"req-{'rpmpath' if rpm_path_delta else 'similar'}-{hashlib.sha1(id_basis.encode('utf-8')).hexdigest()[:16]}"
     request = {
         "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
         "requestId": req_id,
@@ -617,6 +624,12 @@ def main():
                              "path (rpmPrimaryPath) from the official crosswalk and changes no other value. Writes "
                              ".archive-meta-register/inbox/rpmpath-<exam>.json with --apply (no other file is staged); "
                              "otherwise use --out or the dry run. Skips the GATE_PASS harness (the exam is already on main).")
+    parser.add_argument("--request-tag", help="With --rpm-path-delta: a short label that changes the requestId and the inbox file "
+                                              "name (rpmpath-<exam>-<tag>.json), for a further delta of an exam whose first delta "
+                                              "is already registered.")
+    parser.add_argument("--evidence", action="append", default=[],
+                        help="Repository-relative path of a decision/evidence file to SHA-bind into the request "
+                             "(repeatable); added to the approval and to every item.")
     parser.add_argument("--out", help="Write the generated request JSON to this file and stop (no inbox write, no staging). "
                                       "The path must not be inside .archive-meta-register/inbox.")
 
@@ -656,7 +669,14 @@ def main():
     else:
         print("\n[GATE_PASS VERIFIED] All candidate artifacts satisfy quality contract.")
     try:
-        inbox_request = generate_inbox_request(files, rpm_path_delta=args.rpm_path_delta)
+        extra_evidence = []
+        for rel in args.evidence:
+            evidence_path = REPO_ROOT / rel
+            if not evidence_path.is_file():
+                raise RequestGenerationError(f"--evidence file not found: {rel}")
+            extra_evidence.append({"path": rel.replace("\\", "/"), "sha256": sha256_file(evidence_path)})
+        inbox_request = generate_inbox_request(files, rpm_path_delta=args.rpm_path_delta,
+                                               request_tag=args.request_tag, extra_evidence=extra_evidence)
     except RequestGenerationError as err:
         print(f"\n[REQUEST NOT GENERATED] {err}", file=sys.stderr)
         sys.exit(1)
@@ -674,7 +694,9 @@ def main():
 
     inbox_dir = REPO_ROOT / ".archive-meta-register" / "inbox"
     inbox_dir.mkdir(parents=True, exist_ok=True)
-    inbox_path = inbox_dir / (f"rpmpath-{files['stem']}.json" if args.rpm_path_delta else f"{files['stem']}.json")
+    inbox_name = (f"rpmpath-{files['stem']}{'-' + args.request_tag if args.request_tag else ''}.json"
+                  if args.rpm_path_delta else f"{files['stem']}.json")
+    inbox_path = inbox_dir / inbox_name
 
     whitelist = (get_whitelist_files(files, inbox_path) if not args.rpm_path_delta
                  else [str(inbox_path.relative_to(REPO_ROOT)).replace("\\", "/")])

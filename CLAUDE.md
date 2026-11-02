@@ -30,4 +30,5 @@
 ## JS Archive 메타 (GPT·Claude·Gemini 공통 CURRENT)
 
 - JS Archive 신규 CREATE/R1/R2/R3 또는 원본 메타를 다룰 때는 [단일 메타 Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)를 읽고 그대로 적용한다. 교육과정 내 학생용 풀이 → RPM Primary L1~L4 → CrossConcept/Condition/Integration을 판정하고, PT/TPL은 공식 Resolver 결과만 허용한다.
+- 맞는 PT/TPL/CrossConcept/Condition/크로스워크 행이 없으면 추정 금지이지 신설 금지가 아니다. 정식 registryChanges로 새 키를 만들고 같은 형태 문항이 재사용한다: [확장 원칙](docs/agents/metadata.md).
 - 실제 코드 명령: node archive/tools/meta-foundation/stage-meta-bridge.mjs --stage CREATE|R1|R2|R3 --input <stage-local decision.json> --out <stage-local evidence.json> (R1~R3은 candidate/relational/difficulty 증거 추가). 이 경로는 메타 전용이며 기존 Claude 메인·Sonnet 하위 검수/병합 역할이나 전체 학생 품질 PASS를 대신하지 않는다.

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "archive-rpm-path-crosswalk-decision-review-v1",
+  "date": "2026-11-02",
+  "reviewer": "Claude Sonnet subagent (user-directed: 맞는 크로스워크 행이 없으면 문항 내용을 보고 add-only로 추가하거나 지목 레코드를 정한다)",
+  "userDecision": "2026-11-02: PT·TPL·CrossConcept 등은 언제나 확장 가능하다. 유연하게 만들고 문서화하라.",
+  "documentation": "docs/agents/metadata.md 'PT·TPL·CrossConcept·Condition·크로스워크 행 확장 원칙'",
+  "background": "rpmpath-<시험지> 요청(req-rpmpath-92b1d189eaf50121, req-rpmpath-3c0663dfe2c130f3)은 소형 메타의 PT/TPL에 맞는 ACTIVE 크로스워크 행이 없거나 후보가 둘이라 8문항을 비워 두었다. 이름이 비슷하다고 고르지 않고 문항·해설을 보고 마스터(CANONICAL_MASTER)에 있는 RPM 리프를 정했다. 행은 add-only이며 기존 행은 바꾸지 않았다(summary 개수만 갱신).",
+  "method": "각 행은 문항 자신의 PT/TPL, 문항 자신의 standardUnitKey/subUnitKey(등록된 ACTIVE 바인딩이 있는 값)를 쓰고 rpmPath만 마스터 리프로 정한다(수II 유사 3종 H2-M2-RPM-100..109와 같은 방식). 같은 리프를 다른 TPL이 이미 쓰는 경우 행을 하나 더 두는 것이 맞는 이유: 크로스워크 행은 (리프, 단원, PT/TPL) 단위이고 main_merge_master는 PT/TPL로 행을 고른다.",
+  "decisions": [
+    {
+      "exam": "24_매산여고_2학기_기말_고2_수학II_유사", "ordinal": 13, "status": "FILLED",
+      "pt": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION", "tpl": "TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION",
+      "crosswalkRow": "H2-M2-RPM-110 (신규)", "rpmPath": "적분 > 정적분 > 정적분과 함수 > 미분과 적분 관계",
+      "reason": "f(x)=x^3-6x^2+9x+4∫_0^1 f(t)dt에서 정적분 값을 상수 A로 두어 f를 정한 뒤 도함수로 극값을 구한다. 적분 구간이 고정이므로 '상한이 변수인 적분' 리프가 아니고, 마스터의 정적분과 함수 리프 둘 중 '미분과 적분 관계'가 맞다. 소형 메타가 지목한 H2-M2-RPM-042는 같은 리프이지만 TPL이 TPL_DIFFERENTIATE_INTEGRAL_RELATION이라 이 문항의 TPL과 맞지 않았다."
+    },
+    {
+      "exam": "24_매산여고_2학기_기말_고2_수학II_유사", "ordinal": 14, "status": "FILLED",
+      "pt": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION", "tpl": "TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION",
+      "crosswalkRow": "H2-M2-RPM-110 (Q13과 공유)", "rpmPath": "적분 > 정적분 > 정적분과 함수 > 미분과 적분 관계",
+      "reason": "f(x)=4x^2+∫_0^1 (x-2t)f(t)dt에서 ∫f와 ∫tf를 두 상수로 두고 연립해 f를 정한 뒤 근과 계수의 관계를 쓴다. Q13과 같은 구조(정적분 값을 미지수로 두어 함수 결정)이다."
+    },
+    {
+      "exam": "25_금당고_2학기_기말_고2_확률과통계_유사", "ordinal": 10, "status": "FILLED",
+      "pt": "PT_CONDITIONAL_PROBABILITY", "tpl": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "crosswalkRow": "H2-PS-RPM-067 (신규)", "rpmPath": "확률 > 조건부확률 > 조건부확률 > 조건부확률 계산",
+      "reason": "불량품을 택했을 때 A공장 제품일 확률을 전확률로 분모를 만들어 P(A|D)로 구한다. 마스터의 조건부확률 개념에는 리프가 '조건부확률 계산' 하나뿐이고 결정 단계가 조건부확률의 계산이다. 기존 행 H2-PS-RPM-015는 같은 리프이지만 TPL_CONDITIONAL_PROBABILITY_DIRECT용이라 분기·역조건 TPL용 행을 따로 둔다."
+    },
+    {
+      "exam": "25_금당고_2학기_기말_고2_확률과통계_유사", "ordinal": 20, "status": "FILLED",
+      "pt": "PT_CONDITIONAL_PROBABILITY", "tpl": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "crosswalkRow": "H2-PS-RPM-067 (Q10과 공유)", "rpmPath": "확률 > 조건부확률 > 조건부확률 > 조건부확률 계산",
+      "reason": "공을 교환한 뒤 검은 공 4개·흰 공 2개라는 조건 아래 흰 공이 교환되지 않았을 확률을 (i,j) 경우로 나누어 구한다. 조건이 주어진 사건의 확률이므로 조건부확률 계산이 결정 단계이다."
+    },
+    {
+      "exam": "25_금당고_2학기_기말_고2_확률과통계_유사", "ordinal": 12, "status": "FILLED",
+      "pt": "PT_NORMAL_DISTRIBUTION", "tpl": "TPL_BINOMIAL_NORMAL_RELATION",
+      "crosswalkRow": "H2-PS-RPM-068 (신규)", "rpmPath": "통계 > 확률분포 > 정규분포 > 정규분포 확률",
+      "reason": "표본평균으로 불량 확률 0.02를 구한 뒤 이항분포 B(2500,0.02)를 N(50,7^2)으로 근사해 P(Z<=-2)=0.02에서 x를 역산한다. 마스터에 '정규근사' 전용 리프는 없고 결정 단계가 정규분포로 확률을 계산하는 것이므로 정규분포 > 정규분포 확률로 정했다(이항분포 > 평균·분산은 중간 계산)."
+    },
+    {
+      "exam": "25_금당고_2학기_기말_고2_확률과통계_유사", "ordinal": 13, "status": "FILLED",
+      "pt": "PT_SAMPLE_MEAN_DISTRIBUTION", "tpl": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crosswalkRow": "H2-PS-RPM-029 (기존, 지목)", "rpmPath": "통계 > 통계적 추정 > 모집단과 표본 > 표본분포",
+      "reason": "후보 H2-PS-RPM-028(표본평균)과 029(표본분포)는 PT/TPL이 같다. 이 문항은 표본평균의 평균·표준편차를 구한 뒤 N(m, σ^2/n)으로 표본평균의 분포를 세우고 표준화해 확률을 구하므로 결정 단계가 표본평균의 분포(표본분포)이다. 소형 메타에 rpmPrimaryRecordId로 지목했다."
+    },
+    {
+      "exam": "25_금당고_2학기_기말_고2_확률과통계_유사", "ordinal": 1, "status": "FILLED_WITH_UNIT_NOTE",
+      "pt": "PT_EVENT_INDEPENDENCE", "tpl": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+      "crosswalkRow": "H2-PS-RPM-066 (신규)", "rpmPath": "확률 > 조건부확률 > 사건의 독립 > 독립사건의 확률",
+      "reason": "두 사건이 독립일 때 P(A∩B)=P(A)P(B)를 적용한다. 마스터에서 사건의 독립은 조건부확률 중단원 아래이고 리프는 '독립사건의 확률'이다.",
+      "unitNote": "등록된 표준단원은 H15-PS-03 확률의 뜻과 활용이라 RPM 중단원(조건부확률)과 다르다. 값은 바꾸지 않았다(RPM 경로만 채움). 단원 재분류는 별도 결정이 필요하다."
+    },
+    {
+      "exam": "25_금당고_2학기_기말_고2_확률과통계_유사", "ordinal": 16, "status": "FILLED_WITH_UNIT_NOTE",
+      "pt": "PT_PROBABILITY_REPEATED_TRIALS", "tpl": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "crosswalkRow": "H2-PS-RPM-069 (신규)", "rpmPath": "확률 > 조건부확률 > 독립시행 > 반복 시행의 확률",
+      "reason": "이동 규칙을 성공 횟수 k=3으로 바꾼 뒤 5번 중 3번 성공할 확률 5C3(2/3)^3(1/3)^2를 구한다. 마스터의 독립시행 리프 둘('이항형 시행', '반복 시행의 확률') 중 독립시행의 확률 공식을 적용하는 '반복 시행의 확률'로 정했다.",
+      "unitNote": "등록된 표준단원은 H15-PS-05 확률분포라 RPM 중단원(조건부확률)과 다르다. 값은 바꾸지 않았다. 단원 재분류는 별도 결정이 필요하다."
+    }
+  ],
+  "left_blank": [],
+  "impact": "기존 크로스워크 행은 바꾸지 않았다(summary 개수만 갱신). 등록된 모든 문항 값은 그대로이고 8문항의 rpmPrimaryPath만 채운다. 이 요청과 main_merge_master는 행을 PT/TPL로 고르므로 기존 행을 쓰는 문항의 경로 결정은 달라지지 않는다.",
+  "resolverCaveat": "새 행 H2-M2-RPM-110(=042와 같은 리프·단원), H2-PS-RPM-067(=015와 같은 리프·단원), H2-PS-RPM-068(=027과 같은 리프·단원)은 같은 (리프, 단원)에 TPL만 다른 행을 하나 더 둔 것이다(수II 유사 3종 H2-M2-RPM-100..109 선례와 같다). Resolver(crosswalkMatch)는 리프+단원으로 행을 찾으므로 그 리프·단원에서 새 CREATE 문항을 Resolver로 돌리면 CROSSWALK_COMPATIBILITY_ROW_AMBIGUOUS(PROJECTION_PENDING)가 난다. 이미 등록된 문항에는 영향이 없다. 해결이 필요해지면 신흥중 M3-RPM-025처럼 그 리프를 후보 TPL을 가진 FAMILY_ACTIVE 한 행으로 합친다(단 FAMILY 행은 registrar의 targetParentRef.crosswalkRef로 쓸 수 없고 UNIT_LABEL 부모만 가능하다)."
+}
