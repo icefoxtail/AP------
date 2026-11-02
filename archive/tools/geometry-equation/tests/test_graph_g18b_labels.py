@@ -43,6 +43,14 @@ class Observer(unittest.TestCase):
         self.assertIn('ASYMPTOTE_LABEL_DETACHED:curve-f-asymptote-y',result['errors'])
         self.assertEqual(multi_curve_label_audit(PLAN,figure(70,170,asymptote_label_y=62),{})['errors'].count('ASYMPTOTE_LABEL_DETACHED:curve-f-asymptote-y'),0)
 
+    def test_a_label_the_engine_marked_no_room_is_judged_by_ownership_and_a_wider_reach(self):
+        far=figure(35,170,40)   # f's label 45 px above its curve: beyond the usual reach, still its own curve is the nearest
+        self.assertIn('LABEL_NEAREST_CURVE_MISMATCH:curve-f-equation',multi_curve_label_audit(PLAN,far,{})['errors'])
+        marked=far.replace('<g id="curve-f-equation" ','<g id="curve-f-equation" data-near-room="NONE" ')
+        self.assertEqual(multi_curve_label_audit(PLAN,marked,{})['errors'],[])
+        wrong=figure(175,170,40).replace('<g id="curve-f-equation" ','<g id="curve-f-equation" data-near-room="NONE" ')
+        self.assertIn('LABEL_NEAREST_CURVE_MISMATCH:curve-f-equation',multi_curve_label_audit(PLAN,wrong,{})['errors'])
+
     def test_older_quadratic_arcs_are_not_judged(self):
         plan={**PLAN,'multiCurveFeatures':{'curves':[{'id':'f','kind':'Y_OF_X'},{'id':'g','kind':'X_OF_Y'}]}}
         self.assertEqual(multi_curve_label_audit(plan,figure(175,170,40),{})['errors'],[])

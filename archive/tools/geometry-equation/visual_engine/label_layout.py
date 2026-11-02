@@ -388,6 +388,8 @@ NEAR_LINE_FAR_GAPS=(16,24,34)
 NEAR_CURVE_ANCHORS=(.62,.5,.74,.38,.86,.26,.94,.14,.56,.68,.44,.8,.32,.2,.08,.98)
 NEAR_CURVE_END_ANCHORS=(.9,.8,.7,.6,.5,.4,.3,.2,.1)
 NEAR_OTHER_MARGIN_PX=6.0
+NEAR_CURVE_REACH_PX=23.5   # just inside the observer's 24 px and 12.5 px reach: a box that only just fits still counts as beside its stroke
+NEAR_LINE_REACH_PX=12.0
 NEAR_SLIDES=(0.0,-.35,.35,-.7,.7)   # fractions of the box length a candidate is slid along the stroke
 
 def near_box_segment_distance(box,p,q):
@@ -759,7 +761,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
             w,h=finite(w),finite(h)
         if 'nearCurve' in label or 'nearLine' in label:
             # (G18b) the label's own stroke decides its place: candidate centres beside it, nearest first (see near_candidate_centers)
-            label={**{k:v for k,v in label.items() if k not in ('nearCurve','nearLine')},'_nearCenters':near_candidate_centers(label,w,h,safe_area)}
+            label={**{k:v for k,v in label.items() if k not in ('nearCurve','nearLine')},'_nearCenters':near_candidate_centers(label,w,h,safe_area),'_nearOwn':(label['nearCurve']['own'] if 'nearCurve' in label else [list(label['nearLine']['own'])]),'_nearReach':(NEAR_CURVE_REACH_PX if 'nearCurve' in label else NEAR_LINE_REACH_PX)}
         chosen=None;method=None;tick_callout=label.get('tickLabelCallout');leader_fallbacks=[];far_choice=None
         if tick_callout is not None:
             if (tick_owner is None or not isinstance(tick_callout,dict)
@@ -940,10 +942,15 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                             label['_selectedLeaderPath']=[list(start),list(end)]
                         chosen=box;method='FROZEN_OWNER_BASELINE';break
             if '_nearCenters' in label:
+                near_won=False
                 for x,y in label['_nearCenters']:
                     box=Box(x-w/2,y-h/2,w,h)
-                    if acceptable(box):chosen=box;method='NEAR_OWN_STROKE';default_gaps=();break
-                label={k:v for k,v in label.items() if k!='_nearCenters'}
+                    if acceptable(box):
+                        chosen=box;method='NEAR_OWN_STROKE';default_gaps=()
+                        near_won=min(near_box_polyline_distance(box,pts) for pts in label['_nearOwn'])<=label['_nearReach']   # a far-tier box beyond the observer's reach of its stroke still stands nearest to it, but is flagged
+                        break
+                # no room within reach of its own stroke (a tall fraction in a small window): the label stands at the nearest free place and says so on its group, so the observer judges it by ownership and a wider reach
+                label={**{k:v for k,v in label.items() if k not in ('_nearCenters','_nearOwn','_nearReach')},**({} if near_won else {'nearRoom':'NONE'})}
             if 'candidateCenters' in label:
                 from .publication import box_owned
                 for x, y in label['candidateCenters']:

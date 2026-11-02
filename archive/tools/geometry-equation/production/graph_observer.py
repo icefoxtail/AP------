@@ -4961,7 +4961,9 @@ def single_curve_label_audit(plan,svg,transform):
 
 OV_MC_LABEL_OWN_MAX_PX=24.0       # (G18b) a multi-curve figure's curve label stands within this many px of its own curve ...
 OV_MC_LABEL_OTHER_MARGIN_PX=2.0   # ... and every other curve is farther from it than its own, by at least this much
-OV_MC_ASYMPTOTE_LABEL_MAX_PX=12.5 # an asymptote value stands within this many px of its own dashed line, which is the nearest dashed line
+OV_MC_ASYMPTOTE_LABEL_MAX_PX=12.5
+OV_MC_NO_ROOM_CURVE_MAX_PX=64.0   # a label the engine marked data-near-room=NONE (no free spot beside its stroke: a tall fraction in a small window) is judged by ownership and this wider reach
+OV_MC_NO_ROOM_ASYMPTOTE_MAX_PX=40.0 # an asymptote value stands within this many px of its own dashed line, which is the nearest dashed line
 
 def multi_curve_label_audit(plan,svg,transform):
     """(G18b) Which stroke a multi-curve label belongs to, read from the final SVG: a curve's formula (curve-<id>-equation) is nearest to its own curve (within 20 px, no other curve as
@@ -4994,7 +4996,8 @@ def multi_curve_label_audit(plan,svg,transform):
         if box is not None and strokes[ident]:
             own=min(polyline_distance(box,points) for points in strokes[ident])
             closer=[other for other in ids if other!=ident and strokes[other] and min(polyline_distance(box,points) for points in strokes[other])<own+OV_MC_LABEL_OTHER_MARGIN_PX]
-            if own>OV_MC_LABEL_OWN_MAX_PX or closer:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
+            reach=OV_MC_NO_ROOM_CURVE_MAX_PX if groups[label_id].get('data-near-room')=='NONE' else OV_MC_LABEL_OWN_MAX_PX
+            if own>reach or closer:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
         for suffix,axis in (('x','V'),('y','H')):
             label_id='curve-'+ident+'-asymptote-'+suffix;box=_region_label_box(groups,label_id) if label_id in groups else None
             if box is None:continue
@@ -5002,7 +5005,8 @@ def multi_curve_label_audit(plan,svg,transform):
             if own_line is None:errors.append('ASYMPTOTE_LABEL_DETACHED:'+label_id);continue
             own=_ov_box_segment_distance(box,*own_line)
             closer=[key for key,line in dashed.items() if key!='ASYM_'+ident+'_'+axis and _ov_box_segment_distance(box,*line)<own+OV_MC_LABEL_OTHER_MARGIN_PX]
-            if own>OV_MC_ASYMPTOTE_LABEL_MAX_PX or closer:errors.append('ASYMPTOTE_LABEL_DETACHED:'+label_id)
+            reach=OV_MC_NO_ROOM_ASYMPTOTE_MAX_PX if groups[label_id].get('data-near-room')=='NONE' else OV_MC_ASYMPTOTE_LABEL_MAX_PX
+            if own>reach or closer:errors.append('ASYMPTOTE_LABEL_DETACHED:'+label_id)
     return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
 
 def audit(plan,svg,transform):
