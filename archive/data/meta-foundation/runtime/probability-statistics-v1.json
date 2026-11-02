@@ -24,7 +24,8 @@
     "reviewedExam_req-similar-57977f1342cf4cb2": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-57977f1342cf4cb2.json",
     "reviewedExam_req-similar-aa9bdf130235e586": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-aa9bdf130235e586.json",
     "reviewedExam_finalqa-jeil-25-2final-h2-probstat-source-rebind-20261102": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-jeil-25-2final-h2-probstat-source-rebind-20261102.json",
-    "reviewedExam_req-rpmpath-3c0663dfe2c130f3": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+    "reviewedExam_req-rpmpath-3c0663dfe2c130f3": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+    "reviewedExam_req-rpmpath-d2ea3d2e26e51ddb": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
   },
   "counts": {
     "canonicalAssignments": 704,
@@ -1548,19 +1549,6 @@
       "courseKey": "확률과통계",
       "L1": "통계",
       "L2": "확률분포",
-      "L3": "독립시행의 확률",
-      "L4": "독립시행의 확률",
-      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
-      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "supportingItemCount": 1
-    },
-    {
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "L1": "통계",
-      "L2": "확률분포",
       "L3": "확률변수와 확률분포",
       "L4": "연속확률변수와 확률밀도함수",
       "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
@@ -1626,10 +1614,10 @@
       "courseKey": "확률과통계",
       "L1": "확률",
       "L2": "조건부확률",
-      "L3": "독립시행의 확률",
-      "L4": "독립시행의 출현 횟수 홀짝 상태 분석",
-      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
-      "templateKey": "TPL_INDEPENDENT_TRIAL_STATE_PARITY",
+      "L3": "사건의 독립과 종속",
+      "L4": "독립·종속 판정",
+      "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+      "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
       "supportingItemCount": 1
@@ -1638,11 +1626,24 @@
       "curriculumKey": "2015",
       "courseKey": "확률과통계",
       "L1": "확률",
-      "L2": "확률의 뜻과 활용",
-      "L3": "사건의 독립과 종속",
-      "L4": "독립·종속 판정",
-      "problemTypeKey": "PT_EVENT_INDEPENDENCE",
-      "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+      "L2": "조건부확률",
+      "L3": "독립시행의 확률",
+      "L4": "독립시행의 확률",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "L1": "확률",
+      "L2": "조건부확률",
+      "L3": "독립시행의 확률",
+      "L4": "독립시행의 출현 횟수 홀짝 상태 분석",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_STATE_PARITY",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
       "supportingItemCount": 1
@@ -2527,11 +2528,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 2,
       "curriculum": "2015",
@@ -3054,11 +3056,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 2,
       "curriculum": "2015",
@@ -3300,11 +3303,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 4,
       "curriculum": "2015",
@@ -3671,11 +3675,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 1,
       "curriculum": "2015",
@@ -3956,11 +3961,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 3,
       "curriculum": "2015",
@@ -3983,6 +3989,21 @@
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "rpmPrimaryPath": {
+        "L1": "통계",
+        "L2": "통계적 추정",
+        "L3": "모집단과 표본",
+        "L4": "표본분포",
+        "parentChain": [
+          "통계",
+          "통계적 추정",
+          "모집단과 표본",
+          "표본분포"
+        ],
+        "crosswalkRecordIds": [
+          "H2-PS-RPM-029"
+        ]
+      },
       "sourceIdentity": "similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.js#13",
       "approvedSourceFingerprint": "6cf7765ba616bca64d3a07c57e292060db1e2a39dce85da5e5f69332bea3e97f",
       "legacyLevel": "중",
@@ -4915,11 +4936,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 2,
       "curriculum": "2015",
@@ -12311,11 +12333,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 2,
       "curriculum": "2015",
@@ -12338,6 +12361,21 @@
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "rpmPrimaryPath": {
+        "L1": "확률",
+        "L2": "조건부확률",
+        "L3": "조건부확률",
+        "L4": "조건부확률 계산",
+        "parentChain": [
+          "확률",
+          "조건부확률",
+          "조건부확률",
+          "조건부확률 계산"
+        ],
+        "crosswalkRecordIds": [
+          "H2-PS-RPM-066"
+        ]
+      },
       "sourceIdentity": "similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.js#10",
       "approvedSourceFingerprint": "95d287375559d061d40f494a80234741d1dae09719d6e5929fce3e62ad77534b",
       "legacyLevel": "중",
@@ -17090,11 +17128,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 2,
       "curriculum": "2015",
@@ -18124,11 +18163,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 4,
       "curriculum": "2015",
@@ -18151,6 +18191,21 @@
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "rpmPrimaryPath": {
+        "L1": "확률",
+        "L2": "조건부확률",
+        "L3": "조건부확률",
+        "L4": "조건부확률 계산",
+        "parentChain": [
+          "확률",
+          "조건부확률",
+          "조건부확률",
+          "조건부확률 계산"
+        ],
+        "crosswalkRecordIds": [
+          "H2-PS-RPM-066"
+        ]
+      },
       "sourceIdentity": "similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.js#20",
       "approvedSourceFingerprint": "9c3d779933a572f66d929a0c75da644967cee6a3a6032750847fd1d87b92b763",
       "legacyLevel": "상",
@@ -22937,11 +22992,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 1,
       "curriculum": "2015",
@@ -23386,11 +23442,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 2,
       "curriculum": "2015",
@@ -24271,11 +24328,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 1,
       "curriculum": "2015",
@@ -24850,11 +24908,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 4,
       "curriculum": "2015",
@@ -24877,6 +24936,21 @@
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "rpmPrimaryPath": {
+        "L1": "통계",
+        "L2": "확률분포",
+        "L3": "정규분포",
+        "L4": "정규분포 확률",
+        "parentChain": [
+          "통계",
+          "확률분포",
+          "정규분포",
+          "정규분포 확률"
+        ],
+        "crosswalkRecordIds": [
+          "H2-PS-RPM-067"
+        ]
+      },
       "sourceIdentity": "similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.js#12",
       "approvedSourceFingerprint": "819c1fd9a90cb00e8f6935268c4aa881befc723414db774a82caa70223c31138",
       "legacyLevel": "상",
@@ -27089,11 +27163,11 @@
       "sourceFingerprint": "464a514905cb3830c977590922784d3110c98ff94573cabf6109ddb03d417b25",
       "contentFingerprint": "3933c698a7537bebf47e77c49f8690636a758ee8a31ba034104796df19eb7808",
       "standardCourse": "확률과 통계",
-      "standardUnitKey": "H15-PS-05",
-      "standardUnit": "확률분포",
-      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-      "subUnit": "확률분포",
-      "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "standardUnitKey": "H15-PS-04",
+      "standardUnit": "조건부확률",
+      "subUnitKey": "H15-PS-04-CONDITIONAL_BASIC",
+      "subUnit": "조건부확률",
+      "conceptClusterKey": "H15_PS_04_CONDITIONAL_BASIC",
       "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
       "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
       "crossConceptKeys": [
@@ -27117,18 +27191,19 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 2,
       "curriculum": "2015",
       "curriculumKey": "2015",
       "courseKey": "확률과통계",
-      "L1": "통계",
-      "L2": "확률분포",
+      "L1": "확률",
+      "L2": "조건부확률",
       "L3": "독립시행의 확률",
       "L4": "독립시행의 확률",
       "level": "중",
@@ -27144,6 +27219,21 @@
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "rpmPrimaryPath": {
+        "L1": "확률",
+        "L2": "조건부확률",
+        "L3": "독립시행",
+        "L4": "반복 시행의 확률",
+        "parentChain": [
+          "확률",
+          "조건부확률",
+          "독립시행",
+          "반복 시행의 확률"
+        ],
+        "crosswalkRecordIds": [
+          "H2-PS-RPM-019"
+        ]
+      },
       "sourceIdentity": "similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.js#16",
       "approvedSourceFingerprint": "464a514905cb3830c977590922784d3110c98ff94573cabf6109ddb03d417b25",
       "legacyLevel": "중",
@@ -29032,11 +29122,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 4,
       "curriculum": "2015",
@@ -33287,11 +33378,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 2,
       "curriculum": "2015",
@@ -37084,11 +37176,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 3,
       "curriculum": "2015",
@@ -39162,11 +39255,11 @@
       "sourceFingerprint": "f789fb94fdac20affb4ffdd9522fa3f14c3c73400a1f8b009f1a03d5497a4e11",
       "contentFingerprint": "0fff8e7ec144c9be3ca98497e639e00ac901af9afb1841d7235419760a4b4759",
       "standardCourse": "확률과 통계",
-      "standardUnitKey": "H15-PS-03",
-      "standardUnit": "확률의 뜻과 활용",
-      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
-      "subUnit": "확률의 뜻과 활용",
-      "conceptClusterKey": "H15-PS-03-PROBABILITY_BASIC",
+      "standardUnitKey": "H15-PS-04",
+      "standardUnit": "조건부확률",
+      "subUnitKey": "H15-PS-04-INDEPENDENCE",
+      "subUnit": "독립사건과 곱셈정리",
+      "conceptClusterKey": "H15_PS_04_INDEPENDENCE",
       "problemTypeKey": "PT_EVENT_INDEPENDENCE",
       "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
       "crossConceptKeys": [],
@@ -39188,18 +39281,19 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 1,
       "curriculum": "2015",
       "curriculumKey": "2015",
       "courseKey": "확률과통계",
       "L1": "확률",
-      "L2": "확률의 뜻과 활용",
+      "L2": "조건부확률",
       "L3": "사건의 독립과 종속",
       "L4": "독립·종속 판정",
       "level": "하",
@@ -39215,6 +39309,21 @@
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "rpmPrimaryPath": {
+        "L1": "확률",
+        "L2": "조건부확률",
+        "L3": "사건의 독립",
+        "L4": "독립사건의 확률",
+        "parentChain": [
+          "확률",
+          "조건부확률",
+          "사건의 독립",
+          "독립사건의 확률"
+        ],
+        "crosswalkRecordIds": [
+          "H2-PS-RPM-017"
+        ]
+      },
       "sourceIdentity": "similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.js#1",
       "approvedSourceFingerprint": "f789fb94fdac20affb4ffdd9522fa3f14c3c73400a1f8b009f1a03d5497a4e11",
       "legacyLevel": "하",
@@ -40260,11 +40369,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 4,
       "curriculum": "2015",
@@ -43412,11 +43522,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-3c0663dfe2c130f3",
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.4:exam-final_qa-v2:req-rpmpath-d2ea3d2e26e51ddb",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-3c0663dfe2c130f3.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-3c0663dfe2c130f3.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-d2ea3d2e26e51ddb.json"
       ],
       "difficultyBucket": 2,
       "curriculum": "2015",
