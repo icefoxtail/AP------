@@ -1065,6 +1065,28 @@ window.APLab.catalog = {
    "legacy": "labs/기하와벡터/벡터로 나타낸 도형.html",
    "next": "next/labs/geom-vector-figure.html",
    "glyph": "<path d=\"M12 58 L48 18\" marker-end=\"url(#arr)\"/><path d=\"M32 62 L68 30\" stroke-dasharray=\"4 3\" marker-end=\"url(#arr2)\"/> <defs><marker id=\"arr\" markerWidth=\"6\" markerHeight=\"6\" refX=\"3\" refY=\"3\" orient=\"auto\"><path d=\"M0 0 L6 3 L0 6 Z\" fill=\"currentColor\"/></marker> <marker id=\"arr2\" markerWidth=\"6\" markerHeight=\"6\" refX=\"3\" refY=\"3\" orient=\"auto\"><path d=\"M0 0 L6 3 L0 6 Z\" fill=\"currentColor\"/></marker></defs>"
+  },
+  {
+   "id": "prob-stats",
+   "course": "probstat",
+   "unit": "통계",
+   "strand": "prob",
+   "order": 3,
+   "title": "통계 실험실",
+   "short": "통계",
+   "summary": "이산확률변수의 평균·분산, 이항분포가 정규곡선이 되는 모양, 정규분포의 표준화·대칭·꺾은선 확률밀도함수, 표본평균의 분포와 신뢰구간을 막대·곡선·시뮬레이션으로 직접 확인합니다.",
+   "keywords": "통계 확률분포 이산확률변수 평균 분산 표준편차 이항분포 정규분포 정규 근사 표준화 표준정규분포표 확률밀도함수 표본평균 신뢰구간 모평균 시뮬레이션 확률과 통계 수능 29번 30번",
+   "badge": "통계",
+   "scenes": [
+    "이산확률변수 분포 막대 (평균·분산·aX+b)",
+    "이항분포가 종 모양으로 (정규 근사)",
+    "정규분포 표준화·대칭·평행이동·꺾은선 밀도함수",
+    "표본평균의 분포 시뮬레이션 (σ/√n)",
+    "신뢰구간 (폭과 포함 비율)"
+   ],
+   "legacy": "next/labs/prob-stats.html",
+   "next": "next/labs/prob-stats.html",
+   "glyph": "<path d=\"M6 64 L74 64\"/><path d=\"M10 64 C26 64 30 16 40 16 C50 16 54 64 70 64\"/><path d=\"M40 16 L40 64\" stroke-dasharray=\"3 3\"/><path d=\"M22 64 V54 M30 64 V38 M50 64 V38 M58 64 V54\"/>"
   }
  ],
  "courses": [
@@ -1116,6 +1138,13 @@ window.APLab.catalog = {
    "level": "고등학교 2·3학년",
    "title": "이차곡선 · 공간도형 · 벡터",
    "hue": "pink"
+  },
+  {
+   "id": "probstat",
+   "name": "확률과 통계",
+   "level": "고등학교 2·3학년",
+   "title": "경우의 수 · 확률 · 통계",
+   "hue": "green"
   }
  ],
  "strands": [
@@ -1222,6 +1251,16 @@ window.APLab.catalog = {
    "hue": "green",
    "stations": [
     "alg-sequence"
+   ]
+  },
+  {
+   "id": "prob",
+   "name": "확률·통계 노선",
+   "hue": "green",
+   "stations": [
+    "prob-counting",
+    "prob-probability",
+    "prob-stats"
    ]
   }
  ]
