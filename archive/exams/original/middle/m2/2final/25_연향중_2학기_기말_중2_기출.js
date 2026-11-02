@@ -41,7 +41,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 닮은 두 삼각형 ABC와 DEF를 대응변끼리 같은 색(AB와 DE 파랑, BC와 EF 주황, CA와 FD 초록)으로 묶고 BC=24, CA=18, DE=10, EF=8, FD=6cm를 표시했다.",
+    "solutionImageCaption": "닮음비 3:1이므로 EF=8cm, FD=6cm이고 △DEF의 둘레는 10+8+6=24cm이다. 정답 ③.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -78,7 +82,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 보기 ②의 도형: A에서 만나는 두 직선 위에 AD=2, AB=6, AE=3, AC=9가 있다. 파랑(AD, AE)과 주황(AB, AC)은 같은 비 1:3인 대응하는 선분이고, DE와 BC에 평행 표시가 있다.",
+    "solutionImageCaption": "AD:AB=AE:AC=1:3으로 두 비가 같으므로 DE∥BC이다(정답 ②).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -106,7 +114,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 직각삼각형에서 빗변에 내린 높이로 생기는 삼각형들은 서로 닮음이다.\n$\\angle ADB=\\angle ABC=90^\\circ$이고 $\\angle A$가 공통이므로 $\\triangle ABD\\sim\\triangle ABC$이다. 따라서 $AB:AC=AD:AB$이므로 $6:AC=3:6$이다. 그러므로 $AC=12$이고 $DC=AC-AD=12-3=9$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q3.png",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q3-solution-v2.svg",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
@@ -121,7 +129,10 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 점 B의 수선의 발 D. 공통각 A(주황 호)와 두 직각 ∠ADB, ∠ABC(정사각 표시)로 △ABD∽△ABC를 보이고 AB=6, AD=3, AC=12를 적었다.",
+    "solutionImageCaption": "AB:AC=AD:AB에서 AC=12이므로 DC=AC−AD=12−3=9이다. 정답 ④.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -190,7 +201,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 사다리꼴의 두 대각선의 교점은 두 대각선을 평행한 두 밑변의 길이의 비로 나눈다.\n사다리꼴에서 두 대각선의 교점은 각 대각선을 두 밑변의 길이의 비로 나누므로 $AP:PC=AD:BC=4:8=1:2$이다. 따라서 $CP:CA=2:3$이다. $P$는 $AC$ 위, $Q$는 $DC$ 위에 있고 $PQ\\parallel AD$이므로 $\\triangle CPQ\\sim\\triangle CAD$이다. 그러므로 $PQ:AD=CP:CA=2:3$이고, $PQ=4\\times\\dfrac23=\\dfrac83\\rm\\,cm$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q5.png",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q5-solution-v2.svg",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
@@ -205,7 +216,10 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 사다리꼴 ABCD에서 AD∥PQ∥BC이고 같은 눈금 세 칸으로 AP:PC=1:2를 보였다. 닮은 △CPQ와 △CAD를 따로 그려 대응변을 같은 색으로 묶었다.",
+    "solutionImageCaption": "△CPQ∽△CAD이고 CP:CA=2:3이므로 PQ=4×2/3=8/3 cm이어서 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -275,7 +289,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 무게중심은 중선을 꼭짓점 쪽에서 $2:1$로 나눈다.\n정석 풀이: $D$는 $BC$의 중점이다. $G'$는 $\\triangle GBC$의 무게중심이므로 중선 $GD$에서 $GG':G'D=2:1$이다. $GG'=2\\rm\\,cm$이므로 $GD=3\\rm\\,cm$이다. 또한 $G$는 $\\triangle ABC$의 무게중심이므로 $AG:GD=2:1$이다. 따라서 $AG=2\\times3=6\\rm\\,cm$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q7.png",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q7-solution-v2.svg",
     "subUnitKey": "M2-06-TRIANGLE_CENTROID",
     "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -290,7 +304,10 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 왼쪽은 △ABC의 중선 AD에서 AG(주황)와 GD(파랑, 3cm)가 2:1로 나뉘는 모습이고, 오른쪽은 △GBC의 중선 GD에서 GG'(보라, 2cm)와 G'D(초록, 1cm)가 2:1로 나뉘는 모습이다.",
+    "solutionImageCaption": "GG':G'D=2:1이므로 GD=3cm이고 AG:GD=2:1이므로 AG=6cm이다. 정답 ②.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -318,7 +335,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 평행선으로 생기는 닮음에서 대각선 $BD$가 $P,Q$에 의해 삼등분되는 것을 먼저 찾는다.\n$M$은 $BC$의 중점이므로 $BM=\\dfrac12BC$이고 $AD=BC$이다. $AD\\parallel BM$이므로 $\\triangle APD\\sim\\triangle MPB$이고 $AD:BM=2:1$이다. 따라서 $DP:PB=2:1$, 즉 $BP=\\dfrac13BD$이다. 같은 방법으로 $N$은 $CD$의 중점이고 $DN\\parallel AB$이므로 $\\triangle DQN\\sim\\triangle BQA$에서 $DQ:BQ=1:2$, 따라서 $DQ=\\dfrac13DB$이다. $\\triangle BCD$의 넓이는 $72\\div2=36$이다. $\\triangle BPM$은 $\\triangle BCD$에서 $BP:BD=1:3$, $BM:BC=1:2$이므로 넓이가 $36\\times\\dfrac13\\times\\dfrac12=6$이다. $\\triangle DQN$도 같은 이유로 넓이가 $6$이다. 그러므로 오각형 $PMCNQ$의 넓이는 $36-6-6=24$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q8.png",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q8-solution-v2.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
@@ -335,7 +352,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 대각선 BD가 P, Q로 삼등분되고(초록 눈금), 같은 색 삼각형 BPM과 DQN은 넓이가 6으로 같으며 파란 오각형 PMCNQ가 나머지 부분이다.",
+    "solutionImageCaption": "△BCD=72÷2=36이고 △BPM=△DQN=6이므로 오각형 PMCNQ의 넓이는 36−6−6=24이다(정답 ①).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -363,7 +383,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 직사각형의 대각선과 피타고라스 정리를 이용하면 네 반원의 넓이의 합이 외접원의 넓이와 같아진다.\n정석 풀이: 직사각형의 두 변의 길이가 $8\\rm\\,cm$, $15\\rm\\,cm$이므로 대각선은 $\\sqrt{8^2+15^2}=17\\rm\\,cm$이다. 직사각형이 원에 내접하므로 이 대각선은 원의 지름이다. 네 반원의 넓이의 합은 지름 $8$인 반원 두 개와 지름 $15$인 반원 두 개의 합이므로 $\\dfrac\\pi4(8^2+15^2)=\\dfrac{289\\pi}{4}$이다. 이는 지름 $17$인 원의 넓이 $\\dfrac{289\\pi}{4}$와 같다. 따라서 원 안에서 직사각형 바깥의 네 부분과 반원 안의 겹치는 부분이 서로 상쇄되어, 어두운 네 부분의 넓이의 합은 직사각형의 넓이와 같다. 따라서 $8\\times15=120\\rm\\,cm^2$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q9.png",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q9-solution-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -378,7 +398,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD의 외접원과 각 변을 지름으로 하는 네 반원. 반원이 원 밖으로 나온 어두운 네 부분(주황)과 원의 지름인 대각선 AC=17을 보여 준다.",
+    "solutionImageCaption": "네 반원의 넓이의 합이 지름 17인 원의 넓이와 같으므로 어두운 부분의 넓이는 직사각형의 넓이 8×15=120 cm²이다. 정답 ⑤.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -406,7 +429,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 먼저 피타고라스 정리로 $AC$를 구하고, 빗변에 내린 높이로 생기는 닮음을 이용해 $C$ 쪽의 투영 길이를 구한다.\n정석 풀이: $\\angle A=90^\\circ$, $AB=8\\rm\\,cm$, $BC=10\\rm\\,cm$이므로 $AC=\\sqrt{10^2-8^2}=6\\rm\\,cm$이다. $A$에서 $BC$에 내린 수선의 발을 $M$이라 하면 $\\triangle ACM\\sim\\triangle CBA$이므로 $CM:AC=AC:BC$이다. 따라서 $CM=\\dfrac{AC^2}{BC}=\\dfrac{36}{10}=\\dfrac{18}{5}\\rm\\,cm$이다. 정사각형 $BCGF$에서 $CG\\perp BC$이므로 $\\triangle ACG$에서 밑변을 $CG=10\\rm\\,cm$로 잡을 때 높이는 $CM=\\dfrac{18}{5}\\rm\\,cm$와 같다. 따라서 넓이는 $\\dfrac12\\times10\\times\\dfrac{18}{5}=18\\rm\\,cm^2$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q10.png",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q10-solution-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -423,7 +446,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 세 변 위에 정사각형 ABDE, ACHI, BCGF를 그리고 △ACG를 색칠했다. 오른쪽에는 AB=8, BC=10, AC=6인 직각삼각형과 A에서 BC에 내린 수선 AM, CM=18/5 cm를 따로 크게 보였다.",
+    "solutionImageCaption": "△ACG의 밑변 CG=10 cm에 대한 높이가 CM=18/5 cm이므로 넓이는 1/2×10×18/5=18 cm²이어서 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -587,7 +613,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 다섯 점 A, B, C, D, E를 이은 모든 선분을 변 5개(파랑)와 대각선 5개(주황)로 구분해 그렸다.",
+    "solutionImageCaption": "두 점을 이은 선분은 변 5개와 대각선 5개로 모두 10개이다. 정답 ③.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -845,7 +875,7 @@ window.questionBank = [
     "answer": "(1) $\\triangle ABC$ (2) $6\\rm\\,cm$",
     "solution": "[키포인트] 평행선으로 생기는 AA 닮음과 중점 조건을 두 번 연결한다.\n(1) $DG\\parallel BF$이고 $B,C,F$가 한 직선 위에 있으므로 $DG\\parallel BC$이다. 따라서 $\\angle ADG=\\angle ABC$, $\\angle AGD=\\angle ACB$이다. 두 쌍의 대응각의 크기가 각각 같으므로 AA 닮음에 의해 $\\triangle ADG\\sim\\triangle ABC$이다.\n(2) $D,E,F$가 한 직선 위에 있고 $A,G,E,C$가 한 직선 위에 있으며 $DG\\parallel CF$이므로 $\\triangle DGE\\sim\\triangle FCE$이다. $DE=EF$이므로 닮음비가 $1:1$이어서 $DG=CF$이다. 또한 $AD=DB$이므로 $D$는 $AB$의 중점이고, $DG\\parallel BC$이므로 $G$는 $AC$의 중점이며 $DG=\\dfrac12BC$이다. 따라서 $BC=2DG$이고 $CF=DG$이므로 $BF=BC+CF=3DG$이다. $BF=18\\rm\\,cm$이므로 $DG=6\\rm\\,cm$이다.\n따라서 (1) $\\triangle ABC$, (2) $6\\rm\\,cm$이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q21.png",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q21-solution-v2.svg",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
@@ -860,7 +890,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 D는 AB의 중점, DE=EF, DG∥BC(초록)이고, 같은 색 삼각형 DGE와 FCE는 닮음비 1:1이어서 DG=CF이며 G는 AC의 중점이다. BF=18cm.",
+    "solutionImageCaption": "(1) △ADG∽△ABC(AA 닮음), (2) DG=CF이고 BC=2DG이므로 BF=3DG=18cm에서 DG=6cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -883,7 +916,7 @@ window.questionBank = [
     "answer": "(1) $10\\rm\\,cm$ (2) $16\\rm\\,cm$",
     "solution": "[키포인트] 무게중심의 $2:1$ 성질과 직각삼각형의 빗변의 중점 성질을 차례로 이용한다.\n(1) $G$는 무게중심이므로 중선 $AD$를 $AG:GD=2:1$로 나눈다. 따라서 $AD=3\\times GD=3\\times\\dfrac{10}{3}=10\\rm\\,cm$이다.\n(2) $D$는 $BC$의 중점이고 $\\angle A=90^\\circ$이므로 직각삼각형의 빗변의 중점 성질에 따라 $AD=BD=CD=10\\rm\\,cm$이다. 따라서 $BC=20\\rm\\,cm$이다. 피타고라스 정리를 적용하면 $AB^2+AC^2=BC^2$이므로 $AB^2+12^2=20^2$, $AB^2=256$이다. 길이는 양수이므로 $AB=16\\rm\\,cm$이다.\n따라서 (1) $10\\rm\\,cm$, (2) $16\\rm\\,cm$이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q22.png",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q22-solution-v2.svg",
     "subUnitKey": "M2-06-TRIANGLE_CENTROID",
     "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -900,7 +933,10 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: ∠A=90°인 직각삼각형 ABC에서 빗변 BC의 중점 D. 중선 AD, BD, DC가 같은 길이(파랑 눈금)이고 G는 AD를 2:1로 나누며 BC=20, AC=12를 적었다.",
+    "solutionImageCaption": "(1) AD=3×GD=10 cm. (2) AD=BD=CD=10이므로 BC=20, AB²=20²−12²=256에서 AB=16 cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -935,6 +971,10 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 서웅 합격 6/7, 불합격 1/7에서 갈라지고 각각 지호 합격 1/3, 불합격 2/3로 갈라지는 네 경로의 수형도. 두 사람 모두 합격하는 경로와 모두 불합격하는 경로가 굵은 선과 동그라미로 표시되어 있다.",
+    "solutionImageCaption": "(1) 모두 합격 6/7×1/3=2/7, (2) 모두 불합격 1/7×2/3=2/21, (3) 적어도 한 사람 합격은 1-2/21=19/21이다.",
+    "solutionImageSize": "medium"
   }
 ];
