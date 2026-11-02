@@ -7,7 +7,7 @@ import {pythonWorker} from '../production/worker.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {solveStatChart,solveStatPanel,statChartSize,FIGURE_CAPABILITY} from '../production/stat-chart-v1.mjs';
-import {compositePanels,compositePanelLayout,composeCompositeCandidate,compositeStackSize,isStatPanel} from '../production/composite-candidate-svg-v1.mjs';
+import {compositePanels,compositePanelLayout,composeCompositeCandidate,compositeStackSize,isStatPanel,isStatNormalPanel} from '../production/composite-candidate-svg-v1.mjs';
 import {FIGURE_CAPABILITY as SET_CAPABILITY} from '../production/set-diagram-v1.mjs';
 
 const observer=fileURLToPath(new URL('../production/stat-chart-observer-worker.py',import.meta.url));
@@ -60,5 +60,43 @@ test('four stat panels compose as one 2x2 composite whose panel bytes pass the s
     assert.ok((await read({kind:'HISTOGRAM'},first,true)).code==='STAT_PANEL_KIND_UNSUPPORTED');
     const wide=first.replace(/width="420"/,'width="430"');
     assert.ok((await read(four[0].plan.chart,wide,true)).errors.includes('SC_PANEL_WIDTH'));
+  }finally{await browser.close();}
+});
+
+// G19: normal-curve panels stack in one column (2 or 3), drawn at their own size, and take only each other
+const normal=chart=>({capability:FIGURE_CAPABILITY,chart:{kind:'NORMAL_CURVE',...chart}});
+const nx=normal({curves:[{id:'X',mean:'120',sd:'10',label:'X'}],ticks:['100','120'],shades:[{from:null,to:'100',tone:2}],areaLabels:[{shade:0,text:'0.02',source:'TABLE'}]});
+const ny=normal({curves:[{id:'Y',mean:'50',sd:'7',label:'Y'}],ticks:['50','64'],shades:[{from:'64',to:null,tone:2}],areaLabels:[{shade:0,text:'0.02',source:'TABLE'}]});
+test('normal-curve panels stack in one column, 2 or 3 of them, and are never mixed with dot or scatter panels',()=>{
+  const checked=compositePanels(composite([panel(nx,'패널1'),panel(ny,'패널2')]));
+  assert.ok(checked.every(item=>isStatNormalPanel(item.plan)));
+  const layout=compositePanelLayout(checked);assert.deepEqual([layout.kind,layout.columns,layout.rows],['STACK',1,2]);
+  assert.equal(compositePanels(composite([panel(nx,'1'),panel(ny,'2'),panel(nx,'3')])).length,3);
+  stop([panel(nx,'1'),panel(ny,'2'),panel(nx,'3'),panel(ny,'4')],'COMPOSITE_STAT_PANEL_COUNT');
+  stop([panel(nx,'1'),panel(dot([1,2]),'2')],'COMPOSITE_STAT_NORMAL_PANEL_MIXED_1');
+  stop([panel(dot([1,2]),'1'),panel(nx,'2')],'COMPOSITE_STAT_NORMAL_PANEL_MIXED_0');
+  stop([panel(nx,'1'),panel(normal({curves:[{id:'Y',mean:'50',sd:'7'}],ticks:['50'],shades:[{from:'64',to:null}]}),'2')],'PANEL_1:STAT_NORMAL_BOUNDARY_NOT_TICKED');
+  assert.equal(compositePanelLayout(compositePanels(composite(four.slice(0,2)))).kind,'GRID','dot panels keep the grid');
+  assert.ok(!('compact' in solveStatPanel(nx.chart)),'a normal panel is the standalone model');
+  assert.equal(statChartSize(solveStatPanel(nx.chart)).width,statChartSize(solveStatChart(nx.chart)).width);
+});
+
+test('two normal-curve panels compose as one stacked composite whose panels pass the stat-chart observer',async()=>{
+  const browser=await launchBrowser();
+  try{
+    const checked=compositePanels(composite([panel(nx,'패널1'),panel(ny,'패널2')]));
+    const panels=checked.map(item=>({plan:item.plan,model:solveStatPanel(item.plan.chart)}));
+    const {width}=compositeStackSize(panels.map(item=>statChartSize(item.model)),0,compositePanelLayout(checked));
+    const composed=await composeCompositeCandidate({plan:{...composite([panel(nx,'패널1'),panel(ny,'패널2')]),panels:checked.map(item=>({caption:item.caption,plan:item.plan}))},panels,
+      identity:assetIdentity('25_테스트|12','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:{baseFontPx:21,displayScale:Math.min(1,298/width),fontFloorCssPx:11},browser});   // a 548-wide stack is shown at about 0.54: its base font is the 21 that keeps 11 CSS px
+    assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+    assert.deepEqual([composed.layout.kind,composed.layout.columns,composed.layout.rows],['STACK',1,2]);
+    assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'&&item.renderedLayout.status==='PASS'),JSON.stringify(composed.panels.map(item=>item.staticAudit.errors)));
+    const {compositePanelBytes}=await import('../production/composite-candidate-svg-v1.mjs');
+    const bytes=compositePanelBytes(composed.svg);assert.equal(bytes.length,2);
+    const read=async(chart,svg)=>(await pythonWorker({chart,svg},{script:observer})).result;
+    assert.equal((await read(nx.chart,bytes[0].bytes.toString('utf8'))).status,'PASS');
+    assert.equal((await read(ny.chart,bytes[1].bytes.toString('utf8'))).status,'PASS');
+    assert.ok((await read(ny.chart,bytes[0].bytes.toString('utf8'))).status!=='PASS','the first panel is not the second plan');
   }finally{await browser.close();}
 });

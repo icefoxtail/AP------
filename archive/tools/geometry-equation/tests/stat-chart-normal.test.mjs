@@ -66,7 +66,8 @@ test('normal-curve plans that cannot be drawn faithfully are refused with their 
   refuse(c({curves:[{id:'X',mean:'50',sd:'sigma'}]}),'STAT_NORMAL_PARAM_INVALID');refuse(c({curves:[{id:'X',mean:'',sd:'2'}]}),'STAT_NORMAL_PARAM_INVALID');
   refuse(c({curves:[{id:'X',mean:'m',sd:'σ'},{id:'Y',mean:'0',sd:'1'}],ticks:[{z:'0'}]}),'STAT_NORMAL_SYMBOLIC_MULTI');
   refuse(c({curves:[{id:'X',mean:'0',sd:'1'},{id:'Y',mean:'7',sd:'1'}],ticks:['0']}),'STAT_NORMAL_WINDOW_TOO_WIDE');                  // the means are more than 6 sd apart
-  refuse(c({curves:[{id:'X',mean:'0',sd:'1'},{id:'Y',mean:'1',sd:'5'}],ticks:['0']}),'STAT_NORMAL_SD_RATIO');
+  refuse(c({curves:[{id:'X',mean:'0',sd:'1'},{id:'Y',mean:'1',sd:'11'}],ticks:['0']}),'STAT_NORMAL_SD_RATIO');
+  assert.doesNotThrow(()=>solveStatChart(c({curves:[{id:'X',mean:'50',sd:'1'},{id:'Y',mean:'50',sd:'8'}],ticks:['50']})));   // G19: the sample-mean curve (sd/sqrt(64)) is 8 times narrower
   refuse(c({span:'2'}),'STAT_NORMAL_SPAN_INVALID');refuse(c({span:'6'}),'STAT_NORMAL_SPAN_INVALID');
   refuse(c({curves:[{id:'X',mean:'50',sd:'2',label:'<b>'}]}),'STAT_NORMAL_LABEL_INVALID');
   // the marked positions
@@ -89,6 +90,12 @@ test('normal-curve plans that cannot be drawn faithfully are refused with their 
   refuse(c({shades:[{from:'47',to:'50'}],areaLabels:[{shade:0,text:'area'}]}),'STAT_NORMAL_AREA_LABEL_INVALID');
   refuse(c({shades:[{from:'47',to:'50'},{from:'50',to:'52'}],areaLabels:[{shade:0,text:'p'},{shade:1,text:'p'}]}),'STAT_NORMAL_AREA_SYMBOL_UNEQUAL');   // one letter, two different areas
   assert.doesNotThrow(()=>solveStatChart(c({shades:[{from:'47',to:'50'}],areaLabels:[{shade:0,text:'0.5-0.0668'}]})));              // 0.4332 written as a difference of table values
+  // G19: a table value the problem gives is rounded (source TABLE): 0.43 for 0.4332 within 0.01, 0.433 within 0.001, 0.4330 within 0.0005; without the source the 2e-4 rule stands
+  const tbl=(text,source='TABLE')=>c({shades:[{from:'47',to:'50'}],areaLabels:[{shade:0,text,...(source?{source}:{})}]});
+  assert.doesNotThrow(()=>solveStatChart(tbl('0.43')));assert.doesNotThrow(()=>solveStatChart(tbl('0.433')));assert.doesNotThrow(()=>solveStatChart(tbl('0.5-0.07')));assert.doesNotThrow(()=>solveStatChart(tbl('0.4330')));
+  assert.equal(solveStatChart(tbl('0.43')).shades[0].labelSource,'TABLE');assert.ok(!('labelSource' in solveStatChart(tbl('0.4332',null)).shades[0]));
+  refuse(tbl('0.43',null),'STAT_NORMAL_AREA_LABEL_MISMATCH');refuse(tbl('0.45'),'STAT_NORMAL_AREA_LABEL_MISMATCH');
+  refuse(tbl('0.4340'),'STAT_NORMAL_AREA_LABEL_MISMATCH');refuse(tbl('p'),'STAT_NORMAL_AREA_LABEL_INVALID');refuse(tbl('0.43','LIST'),'STAT_NORMAL_AREA_LABEL_INVALID');
   refuse(c({symmetry:[{pair:['47','52']}]}),'STAT_NORMAL_SYMMETRY_MISMATCH');refuse(c({symmetry:[{pair:['47']}]}),'STAT_NORMAL_SYMMETRY_INVALID');
   refuse(c({symmetry:[{pair:['47','47']}]}),'STAT_NORMAL_SYMMETRY_MISMATCH');
   assert.doesNotThrow(()=>solveStatChart(c({ticks:['48','50','52'],symmetry:[{pair:['48','52']}]})));
@@ -97,6 +104,18 @@ test('normal-curve plans that cannot be drawn faithfully are refused with their 
   refuse(c({zAxis:true,curves:[{id:'X',mean:'50',sd:'2',meanLine:false}],ticks:[{x:'47',hideZ:true}]}),'STAT_NORMAL_Z_AXIS_EMPTY');
   refuse(c({xLabel:'xx'}),'STAT_NORMAL_LABEL_INVALID');
   refuse(c({extra:1}),'STAT_CHART_PLAN_INVALID');
+  // G19: two letter curves (a population sd σ and the sample mean's σ/√n = σ/8) stand under one mean text and one letter sd, the later one scaled by sdScale; nothing else mixes letters
+  const bell=extra=>c({span:'3',curves:[{id:'X',mean:'8',sd:'σ',meanLine:true},{id:'Y',mean:'8',sd:'σ',sdScale:'1/8'}],ticks:[{z:'-2.4',curve:'Y',text:'7.5'},{z:'0'},{z:'2.4',text:'12'}],...extra});
+  const b=solveStatChart(bell());
+  assert.equal(b.framed,true);assert.deepEqual(b.curves.map(k=>k.sdScale),[undefined,'0.125']);assert.deepEqual(b.ticks.map(t=>[t.pos,t.text]),[['-0.3','7.5'],['0','8'],['2.4','12']]);
+  assert.equal(JSON.stringify(solveStatChart({kind:'NORMAL_CURVE',curves:[{id:'X',mean:'m',sd:'σ'}],ticks:[{z:'0'}]})).includes('sdScale'),false,'a plan without sdScale has the old model');
+  refuse(bell({curves:[{id:'X',mean:'8',sd:'σ'},{id:'Y',mean:'8',sd:'σ'}]}),'STAT_NORMAL_SYMBOLIC_MULTI');                         // two letter curves with no scale
+  refuse(bell({curves:[{id:'X',mean:'8',sd:'σ'},{id:'Y',mean:'9',sd:'σ',sdScale:'1/8'}]}),'STAT_NORMAL_SYMBOLIC_MULTI');                 // another mean
+  refuse(bell({curves:[{id:'X',mean:'8',sd:'σ'},{id:'Y',mean:'8',sd:'σ',sdScale:'1/11'}]}),'STAT_NORMAL_SD_RATIO');
+  refuse(bell({curves:[{id:'X',mean:'8',sd:'σ',sdScale:'1'},{id:'Y',mean:'8',sd:'σ',sdScale:'1/8'}]}),'STAT_NORMAL_SYMBOLIC_MULTI');        // the first curve is the reference
+  refuse(bell({curves:[{id:'X',mean:'8',sd:'2'},{id:'Y',mean:'8',sd:'2',sdScale:'1/8'}]}),'STAT_NORMAL_CURVE_INVALID');                     // numeric curves are written with their numbers instead
+  refuse(c({curves:[{id:'X',mean:'50',sd:'2',sdScale:'1/2'}]}),'STAT_NORMAL_CURVE_INVALID');                                             // sdScale belongs to letter curves
+  refuse(bell({curves:[{id:'X',mean:'8',sd:'σ'},{id:'Y',mean:'8',sd:'σ',sdScale:'0'}]}),'STAT_NORMAL_CURVE_INVALID');
 });
 
 test('the observer passes normal-curve figures and catches each wrong curve, area, mark or label',async()=>{
@@ -161,6 +180,18 @@ test('the observer passes normal-curve figures and catches each wrong curve, are
     assert.ok(has(await audit(twin,svg.replace(/(id="curve-Y"[^>]*) stroke-dasharray="8 4"/,'$1')),'SC_NORMAL_CURVE_STYLE_SAME'));
     assert.ok(has(await audit(twin,svg.replace(/(id="shade-1"[^>]*points=")([\d.]+),/,(m,head,x)=>head+(Number(x)+5)+',')),'SC_NORMAL_SHADE_'),'the tail starts at another position');
 
+    // ---- G19: a thin tail (0.0228 beyond 2 sd) has no place 16 px tall for a leader dot: the dot goes where the area holds most room and the label stands above the curve; a rounded table value (source TABLE) is the label
+    const thin={kind:'NORMAL_CURVE',curves:[{id:'X',mean:'120',sd:'10',label:'X'}],ticks:['100','120'],zAxis:true,shades:[{from:null,to:'100',tone:2}],areaLabels:[{shade:0,text:'0.02',source:'TABLE'}]};
+    svg=await compose(thin);
+    r=await pass(thin,svg);
+    assert.ok(/id="area-0-leader"/.test(svg)&&/id="area-0-dot"/.test(svg),'the 0.02 label stands off the thin tail with a leader and a dot');
+    assert.ok(caught(await audit({...thin,areaLabels:[{shade:0,text:'0.02'}]},svg)),'the same plan without source TABLE: 0.02 is not the integral within 2e-4');
+    assert.ok(has(await audit(thin,bump(svg,'area-0-dot','cy',-30)),'SC_NORMAL_AREA_DOT_OUTSIDE:0'),'the dot moved out of the tail');
+    // placement LEADER: a label that would fit inside its area is put outside all the same
+    const wide={kind:'NORMAL_CURVE',curves:[{id:'X',mean:'0',sd:'1'}],ticks:['-1','0','1'],shades:[{from:'-1',to:'1'}],areaLabels:[{shade:0,text:'0.6826',placement:'LEADER'}]};
+    svg=await compose(wide);r=await pass(wide,svg);assert.ok(/id="area-0-leader"/.test(svg),'placement LEADER draws the leader');
+    assert.ok(caught(await audit({...wide,areaLabels:[{shade:0,text:'0.6826',placement:'INSIDE'}]},svg)),'only LEADER is a placement');
+
     // ---- a framed curve: letters, the symmetric pair, a level line across the two tops
     svg=await compose(framed);
     r=await pass(framed,svg);
@@ -168,6 +199,13 @@ test('the observer passes normal-curve figures and catches each wrong curve, are
     assert.ok(has(await audit(framed,bump(svg,'sym-0-bar','y1',3).replace(/(id="sym-0-bar"[^>]*? y2=")([\d.]+)/,(m,head,y)=>head+(Number(y)+3))),'SC_NORMAL_SYMMETRY_BAR:0'));
     assert.ok(has(await audit(framed,svg.replace(/<g data-layer="28"><line id="sym-0-a"[^>]*\/><\/g>/,'')),'SC_NORMAL_SYMMETRY_LINE:0:a'));
     assert.ok(has(await audit({...framed,symmetry:[]},svg),'SC_NORMAL_LINE_SET'),'a symmetry the plan does not ask for');
+
+    // ---- G19: the population curve and the sample mean's curve 8 times narrower, both under the letter σ
+    const bell={kind:'NORMAL_CURVE',span:'3',curves:[{id:'X',mean:'8',sd:'σ',label:'X',meanLine:true},{id:'Y',mean:'8',sd:'σ',sdScale:'1/8',label:'표본평균'}],ticks:[{z:'-2.4',curve:'Y',text:'7.5'},{z:'0'},{z:'2.4',text:'12'}]};
+    svg=await compose(bell);
+    r=await pass(bell,svg);assert.equal(r.observed.curves,2);
+    assert.ok(caught(await audit({...bell,curves:[bell.curves[0],{...bell.curves[1],sdScale:'1/4'}]},svg)),'another scale of the narrow curve');
+    assert.ok(caught(await audit({...bell,curves:[bell.curves[0],{id:'Y',mean:'8',sd:'σ',label:'표본평균'}]},svg)),'the narrow curve without its scale');
 
     // ---- three curves
     svg=await compose(three);

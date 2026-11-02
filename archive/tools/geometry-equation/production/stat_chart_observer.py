@@ -1807,7 +1807,7 @@ def normal_plan(chart):
     if not isinstance(raw_curves, list) or not 1 <= len(raw_curves) <= 3: fail('STAT_NORMAL_CURVE_INVALID')
     curves, ids = [], set()
     for raw in raw_curves:
-        if not isinstance(raw, dict) or set(raw) - {'id', 'mean', 'sd', 'label', 'meanLine'}: fail('STAT_NORMAL_CURVE_INVALID')
+        if not isinstance(raw, dict) or set(raw) - {'id', 'mean', 'sd', 'label', 'meanLine', 'sdScale'}: fail('STAT_NORMAL_CURVE_INVALID')
         if not isinstance(raw.get('id'), str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,3}', raw['id']) or raw['id'] in ids: fail('STAT_NORMAL_CURVE_INVALID')
         ids.add(raw['id'])
         mean, sd = try_frac(raw.get('mean')), try_frac(raw.get('sd'))
@@ -1818,10 +1818,18 @@ def normal_plan(chart):
         if label is not None and (not isinstance(label, str) or not NORM_NAME.match(label)): fail('STAT_NORMAL_LABEL_INVALID')
         mean_text = raw['mean'] if mean is None else decimal_of(mean)
         if mean_text is None: fail('STAT_NORMAL_PARAM_INVALID')
+        # sdScale (G19): the sd of a letter-sd curve as a multiple of the first curve's letter sd (the sample-mean curve sigma/sqrt(n) is 1/8 of it when n = 64)
+        scale = Fraction(1)
+        if 'sdScale' in raw:
+            scale = try_frac(raw['sdScale'])
+            if scale is None or scale <= 0: fail('STAT_NORMAL_CURVE_INVALID')
         curves.append({'id': raw['id'], 'mean': mean, 'sd': sd, 'mean_text': mean_text, 'sd_text': raw['sd'] if sd is None else (decimal_of(sd) or str(sd)), 'label': label,
-                       'mean_line': raw['meanLine'] if 'meanLine' in raw else len(raw_curves) == 1})
+                       'mean_line': raw['meanLine'] if 'meanLine' in raw else len(raw_curves) == 1, 'scale': scale, 'scaled': 'sdScale' in raw})
     framed = any(c['mean'] is None or c['sd'] is None for c in curves)
-    if framed and len(curves) > 1: fail('STAT_NORMAL_SYMBOLIC_MULTI')
+    # several letter curves are only the sample-mean picture: one mean text, one letter sd, every curve after the first scaled (sdScale) relative to the first
+    if framed and len(curves) > 1 and not all(c['sd'] is None and c['mean_text'] == curves[0]['mean_text'] and c['sd_text'] == curves[0]['sd_text'] and c['scaled'] == (i > 0) for i, c in enumerate(curves)): fail('STAT_NORMAL_SYMBOLIC_MULTI')
+    if any(c['scaled'] for c in curves) and not framed: fail('STAT_NORMAL_CURVE_INVALID')
+    if framed and max(c['scale'] for c in curves) > 10 * min(c['scale'] for c in curves): fail('STAT_NORMAL_SD_RATIO')
     by_id = {c['id']: c for c in curves}
     span = Fraction(4)
     if 'span' in chart:
@@ -1830,7 +1838,7 @@ def normal_plan(chart):
     if framed: lo, hi = -span, span
     else:
         sd_min, sd_max = min(c['sd'] for c in curves), max(c['sd'] for c in curves)
-        if sd_max > 4 * sd_min: fail('STAT_NORMAL_SD_RATIO')
+        if sd_max > 10 * sd_min: fail('STAT_NORMAL_SD_RATIO')
         if max(c['mean'] for c in curves) - min(c['mean'] for c in curves) > 6 * sd_min: fail('STAT_NORMAL_WINDOW_TOO_WIDE')
         lo, hi = min(c['mean'] - span * c['sd'] for c in curves), max(c['mean'] + span * c['sd'] for c in curves)
     raw_ticks = chart.get('ticks')
@@ -1854,7 +1862,7 @@ def normal_plan(chart):
         if c is None: fail('STAT_NORMAL_TICK_INVALID')
         if framed:
             if 'x' in t: fail('STAT_NORMAL_TICK_INVALID')
-            u = z = frac(t['z'], 'STAT_NORMAL_TICK_INVALID')
+            z = frac(t['z'], 'STAT_NORMAL_TICK_INVALID'); u = z * c['scale']
         elif 'x' in t:
             u = frac(t['x'], 'STAT_NORMAL_TICK_INVALID'); z = (u - c['mean']) / c['sd']
         else:
@@ -1881,7 +1889,7 @@ def normal_plan(chart):
             for t in plan_ticks:
                 if t['text'] == r: return t
         return fail('STAT_NORMAL_BOUNDARY_NOT_TICKED')
-    z_of = (lambda c, u: u) if framed else (lambda c, u: (u - c['mean']) / c['sd'])
+    z_of = (lambda c, u: u / c['scale']) if framed else (lambda c, u: (u - c['mean']) / c['sd'])
     shades = []
     raw_shades = chart.get('shades', [])
     if not isinstance(raw_shades, list) or len(raw_shades) > 6: fail('STAT_NORMAL_SHADE_INVALID')
@@ -1901,13 +1909,19 @@ def normal_plan(chart):
     raw_labels = chart.get('areaLabels', [])
     if not isinstance(raw_labels, list) or len(raw_labels) > len(shades): fail('STAT_NORMAL_AREA_LABEL_INVALID')
     for raw in raw_labels:
-        if not isinstance(raw, dict) or set(raw) - {'shade', 'text'}: fail('STAT_NORMAL_AREA_LABEL_INVALID')
+        if not isinstance(raw, dict) or set(raw) - {'shade', 'text', 'source', 'placement'}: fail('STAT_NORMAL_AREA_LABEL_INVALID')
+        if 'placement' in raw and raw['placement'] != 'LEADER': fail('STAT_NORMAL_AREA_LABEL_INVALID')
         j, text = raw.get('shade'), raw.get('text')
         if isinstance(j, bool) or not isinstance(j, int) or not 0 <= j < len(shades) or shades[j]['label'] is not None or not isinstance(text, str): fail('STAT_NORMAL_AREA_LABEL_INVALID')
+        source = raw.get('source')
+        if 'source' in raw and (source != 'TABLE' or not NORM_AREA_SUM.match(text)): fail('STAT_NORMAL_AREA_LABEL_INVALID')
         if NORM_AREA_SUM.match(text):
-            if abs(float(label_value(text)) - shades[j]['area']) > NORM_AREA_TOL: fail('STAT_NORMAL_AREA_LABEL_MISMATCH')
+            tol = table_area_tol(text) if source == 'TABLE' else NORM_AREA_TOL
+            if abs(float(label_value(text)) - shades[j]['area']) > tol: fail('STAT_NORMAL_AREA_LABEL_MISMATCH')
+            shades[j]['label_tol'] = tol
         elif not NORM_AREA_SYMBOL.match(text): fail('STAT_NORMAL_AREA_LABEL_INVALID')
         shades[j]['label'] = text
+        if raw.get('placement') == 'LEADER': shades[j]['leader'] = True
     for i, a in enumerate(shades):
         for b in shades[i + 1:]:
             if a['label'] is not None and a['label'] == b['label'] and re.fullmatch(r'[A-Za-z]', a['label']) and abs(a['area'] - b['area']) > 1e-5: fail('STAT_NORMAL_AREA_SYMBOL_UNEQUAL')
@@ -1930,6 +1944,12 @@ def normal_plan(chart):
     for c in curves:
         if c['mean_line'] and not any(t['u'] == (0 if framed else c['mean']) for t in ticks): fail('STAT_NORMAL_MEAN_NOT_TICKED')
     return {'framed': framed, 'curves': curves, 'lo': lo, 'hi': hi, 'span': span, 'ticks': ticks, 'shades': shades, 'symmetry': symmetry, 'z_axis': z_axis, 'x_label': x_label}
+
+
+def table_area_tol(text):
+    """A table value the problem gives is rounded (0.34 for 0.3413): it may differ from the integral by 0.01 (2 decimals), 0.001 (3) or 0.0005 (4 or more), by the most decimals one of its terms writes."""
+    d = max([len(m) for m in re.findall(r'\d\.(\d+)', text)] or [0])
+    return 0.01 if d <= 2 else 0.001 if d == 3 else 0.0005
 
 
 def label_value(text):
@@ -1962,6 +1982,22 @@ def polygon_clearance(point, poly):
     return best
 
 
+def best_room(poly):
+    """The most room a polygon offers anywhere: the largest distance from an inside point to its outline (a scan of the polygon's vertical mid-lines, 1 px apart)."""
+    xs = [p[0] for p in poly]
+    best = 0.0
+    for k in range(int(math.floor(min(xs))), int(math.ceil(max(xs))) + 1):
+        ys = []
+        for (x0, y0), (x1, y1) in zip(poly, poly[1:] + poly[:1]):
+            if (x0 > k) != (x1 > k): ys.append(y0 + (k - x0) * (y1 - y0) / (x1 - x0))
+        ys.sort()
+        for a, b in zip(ys[0::2], ys[1::2]):
+            for step in range(1, 8):
+                pt = (float(k), a + (b - a) * step / 8)
+                best = max(best, polygon_clearance(pt, poly))
+    return best
+
+
 def segments_cross(a, b, c, d):
     """Do the segments a-b and c-d cross properly (not merely touch)?"""
     def orient(p, q, r): return (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0])
@@ -1979,7 +2015,7 @@ def audit_normal(chart, doc):
     if x_axis is None: fail('SC_AXIS_MISSING')
     base = num(x_axis, 'y1')
     lo, hi = plan['lo'], plan['hi']
-    sd_of = (lambda c: 1.0) if framed else (lambda c: float(c['sd']))
+    sd_of = (lambda c: float(c['scale'])) if framed else (lambda c: float(c['sd']))
     mean_of = (lambda c: 0.0) if framed else (lambda c: float(c['mean']))
     sd_min = min(sd_of(c) for c in curves)
     # the scale of the axis: the window of the plan against the two ends of the first curve's polyline
@@ -2084,15 +2120,16 @@ def audit_normal(chart, doc):
             x = px(u)
             if edge is None or abs(num(edge, 'x1') - x) > 0.05 or abs(num(edge, 'x2') - x) > 0.05 or abs(num(edge, 'y1') - base) > 0.05 or abs(num(edge, 'y2') - ycurve(c, x)) > 0.05: doc.err('SC_NORMAL_EDGE:%d:%s' % (j, side))
         # the area as drawn: the polygon's area against the whole bell (height x sd in pixels x sqrt(2 pi)), compared with the exact area inside the window
-        z_lo = float(lo) if framed else float((lo - c['mean']) / c['sd'])
-        z_hi = float(hi) if framed else float((hi - c['mean']) / c['sd'])
+        z_lo = float(lo / c['scale']) if framed else float((lo - c['mean']) / c['sd'])
+        z_hi = float(hi / c['scale']) if framed else float((hi - c['mean']) / c['sd'])
         exact = normal_area(max(z_lo, s['za']) if s['za'] is not None else z_lo, min(z_hi, s['zb']) if s['zb'] is not None else z_hi)
         drawn = shoelace(pts) / whole_bell(c)
         drawn_area[j], exact_window[j] = drawn, exact
         if abs(drawn - exact) > NORM_MEASURED_TOL: doc.err('SC_NORMAL_SHADE_AREA:%d' % j)
         if s['label'] is not None and NORM_AREA_SUM.match(s['label']):
             value = float(label_value(s['label']))
-            if abs(value - s['area']) > NORM_AREA_TOL or abs(value - drawn) > NORM_AREA_TOL + NORM_MEASURED_TOL + (s['area'] - exact): doc.err('SC_NORMAL_AREA_LABEL_VALUE:%d' % j)
+            tol = s.get('label_tol', NORM_AREA_TOL)
+            if abs(value - s['area']) > tol or abs(value - drawn) > tol + NORM_MEASURED_TOL + (s['area'] - exact): doc.err('SC_NORMAL_AREA_LABEL_VALUE:%d' % j)
     for i, a in enumerate(shades):
         for k, b in enumerate(shades[i + 1:], i + 1):
             if a['label'] is not None and a['label'] == b['label'] and re.fullmatch(r'[A-Za-z]', a['label']) and i in drawn_area and k in drawn_area:
@@ -2122,7 +2159,7 @@ def audit_normal(chart, doc):
         poly = polys[j]
         nx, ny = int(bw // 2) + 1, int(bh // 2) + 1
         samples = [(bx + k * 2.0, by) for k in range(nx)] + [(bx + bw, by)] + [(bx + k * 2.0, by + bh) for k in range(nx)] + [(bx + bw, by + bh)] + [(bx, by + k * 2.0) for k in range(ny)] + [(bx + bw, by + k * 2.0) for k in range(ny)]
-        whole = all(inside_polygon(p, poly) for p in samples)
+        whole = all(inside_polygon(p, poly) for p in samples) and not s.get('leader')
         dot, leader = dots.get(str(j)), leaders.get(str(j))
         if whole:
             if dot is not None or leader is not None: doc.err('SC_NORMAL_AREA_LEADER_UNEXPECTED:%d' % j)
@@ -2130,7 +2167,9 @@ def audit_normal(chart, doc):
             if dot is None or leader is None: doc.err('SC_NORMAL_AREA_LABEL_OUTSIDE:%d' % j); continue
             expected_lines.add('area-%d-leader' % j)
             d = (num(dot, 'cx'), num(dot, 'cy'))
-            if not inside_polygon(d, poly) or polygon_clearance(d, poly) < 4: doc.err('SC_NORMAL_AREA_DOT_OUTSIDE:%d' % j)
+            # the dot keeps 4 px from the outline of its area; a thin tail that has no such place (G19) takes its roomiest place (at least 1 px, and 0.8 of the most room the area has anywhere)
+            room = polygon_clearance(d, poly) if inside_polygon(d, poly) else -1.0
+            if room < 4 and (room < 1.0 or room < 0.8 * best_room(poly)): doc.err('SC_NORMAL_AREA_DOT_OUTSIDE:%d' % j)
             ends = [(num(leader, 'x1'), num(leader, 'y1')), (num(leader, 'x2'), num(leader, 'y2'))]
             if math.hypot(ends[1][0] - d[0], ends[1][1] - d[1]) > 0.05 or abs(box_distance((bx, by, bw, bh), ends[0]) - 2.0) > 0.1: doc.err('SC_NORMAL_AREA_LEADER:%d' % j)
             for other in list(doc.lines) + list(doc.root.iter(NS + 'polyline')) + list(doc.root.iter(NS + 'polygon')):
