@@ -1541,7 +1541,8 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
       if (cache[k]) return cache[k];
       const b = spec.build(spec.pool[k]);
       if (k === 0) { // 첫 문제는 원본 그대로(문항·풀이 문구 변경 금지). 7-B만 '위와 동일한 점화식'이 가리키는 식이 보이도록 식을 적었습니다.
-        if (!(mi === 6 && si === 1)) b.text = origText;
+        if (mi === 7 && si === 1) b.text += ' <small>(왼쪽 가지 ÷2한 값이 기준값 미만이어야 남습니다)</small>'; // 8-B 원본은 "문제 A에서 …"로 시작해 B만 열면 조건이 안 보여, 점화식·기준값·조건을 문장에 직접 적었습니다(수학 내용은 같음)
+        else if (!(mi === 6 && si === 1)) b.text = origText;
         b.std = origStd; b.quick = origQuick; b.tStd = null; b.tQuick = null;
       }
       b.p = Object.assign({}, b.params);

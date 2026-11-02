@@ -988,6 +988,7 @@ window.addEventListener('DOMContentLoaded', function () {
     let SS = null;       // 지금 프레임의 실험실 상태(lab.s)
     let CURRECT = { width: 1000, height: 700 };
     let METRIC = '';
+    let TABK = 'explore'; // 지금 그리는 탭(탐구·정리·문제): 문제 탭(휴대폰 compact 무대)에서만 그림을 키울 때 씁니다
     let dragPrev = null;
     const clamp01 = (v, lo = 0) => Math.max(lo, Math.min(1, v));
     function curProb() { return PROBLEMS[state.probIdx]; }
@@ -1268,7 +1269,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const leftCy = rect.height * 0.58 + state.panY;
         const secScale = (step >= 2
           ? Math.min(u * 0.64, rect.width * 0.028 * state.scale)
-          : u * 0.80) / ff;
+          : u * 0.80) * (TABK === 'problem' && rect.width < 600 ? 1.4 : 1) / ff; // 휴대폰 문제 탭: 부채꼴을 키움
 
         const centerPt = { x: leftCx, y: leftCy };
         state.centerPt = centerPt;
@@ -1732,7 +1733,8 @@ window.addEventListener('DOMContentLoaded', function () {
         const ox = rect.width * 0.48 + state.panX;
         const oy = rect.height * 0.68 + state.panY;
         const G8 = TVG('bas-8'); // 「새 문제」 변형의 두 변 AB = c, AC = b (원본은 6, 3)
-        const sc = u * 0.92 * Math.sqrt(63) / G8.a;
+        let sc = u * 0.92 * Math.sqrt(63) / G8.a;
+        if (TABK === 'problem' && rect.width < 600) sc = Math.min(0.66 * rect.width / G8.a, sc * 2.4); // 휴대폰 문제 탭: 삼각형이 무대 폭의 약 2/3가 되게(탐구 탭은 그대로)
         drawAxesWithTicks(rect, ox, oy, sc, false);
 
         const c = G8.c, b = G8.b, angleA = (2 * Math.PI) / 3;
@@ -1772,13 +1774,14 @@ window.addEventListener('DOMContentLoaded', function () {
 
         drawAngleArc(A, B, Cpt, step >= 2 ? 68 : 32, '2π/3', C.white);
         dLine(A, D, C.gold, 3.2, [], true);
-        drawDimension(A, B, -24, `AB = ${c}`, C.green);
-        drawDimension(A, Cpt, 24, `AC = ${b}`, C.cyan);
+        const flip8 = TABK === 'problem' && rect.width < 600 ? -1 : 1; // 휴대폰 문제 탭: 치수 상자를 삼각형 바깥쪽으로 빼 각 라벨과 닿지 않게
+        drawDimension(A, B, -24 * flip8, `AB = ${c}`, C.green);
+        drawDimension(A, Cpt, 24 * flip8, `AC = ${b}`, C.cyan);
 
         dDot(A, 'A (∠A = 2π/3)', C.white, { x: -38, y: -14 }, false, true);
         dDot(B, 'B', C.white, { x: -20, y: 14 }, false, true);
         dDot(Cpt, 'C', C.white, { x: 10, y: 14 }, false, true);
-        dDot(D, step >= 3 && isBisector ? `D (AD = ${G8.AD}) [드래그]` : `D (AD = ${lenAD.toFixed(2)}) [드래그]`, C.gold, { x: -45, y: -14 }, true, true);
+        dDot(D, step >= 3 && isBisector ? `D (AD = ${G8.AD}) [드래그]` : `D (AD = ${lenAD.toFixed(2)}) [드래그]`, C.gold, { x: -45, y: TABK === 'problem' && rect.width < 600 ? 34 : -14 }, true, true); // 휴대폰 문제 탭: D 이름을 BC 아래로 내려 AB 치수 상자와 닿지 않게
 
         setMetric(`현재 AD = ${fmtSurd(lenAD)} | S_ABC = ${G8.sTxt} = S_ABD + S_ACD (각의 이등분선일 때 AD = ${G8.AD})`);
         return;
@@ -2399,8 +2402,9 @@ window.addEventListener('DOMContentLoaded', function () {
     const VERB = { horizontal: '좌우로 끌어', vertical: '위아래로 끌어', angle: '돌려' };
     const initialOf = (p) => (typeof initialSlider === 'function' ? initialSlider(p) : p.defaultT);
 
-    function frame(idx, b, s, v) {
+    function frame(idx, b, s, v, lab) {
       BRD = b;
+      TABK = lab ? lab.tab : 'explore';
       SS = s;
       if (!s.dragging) dragPrev = null;
       state.probIdx = idx;
@@ -2454,7 +2458,7 @@ window.addEventListener('DOMContentLoaded', function () {
           if (step >= 3) out.notes = rm(p.aha);
           return out;
         },
-        draw: (b, s, v) => frame(idx, b, s, v)
+        draw: (b, s, v, lab) => frame(idx, b, s, v, lab)
       };
     }
     const isAdv = (p) => p.id.startsWith('adv-');
