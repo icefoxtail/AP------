@@ -136,14 +136,124 @@ def _fit_cubic_quartic(plan,coefficients):
     fitted={**plan,'domain':[lo,hi],'viewport':[lo,hi,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','overviewFeatures':features,'overviewFeaturePolicy':feature_policy,'overviewEndDirections':end_directions,**({'overviewWindowPolicy':'FEATURE_BAND'} if window_policy else {})}
     return {'graphPlan':fitted,'policy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
+# ---- graphPlan.hideLabels / graphPlan.formulaTex of a single rational or square-root curve (G18a) ---------------------------------------------------------
+# hideLabels: a list of the automatic texts the figure does not show. 'formula' = the curve's formula text, 'asymptotes' (rational) = the x=p and y=q texts
+# (the dashed lines stay), 'start' (square root) = the texts that name its start / end (domain and range inequalities, x=end). A point or a line is never hidden.
+# Why: a drawn asymptote value can be the answer of the question, the automatic form (1-2*x)/(x-3) can differ from the form of the solution, and a formula label
+# may find no room. formulaTex: the formula label in the author's own form (-\frac{8}{x-1}-4); it must be the same function as the plan, which framing and
+# the independent observer both check numerically.
+SINGLE_CURVE_HIDEABLE={'rational':('formula','asymptotes'),'sqrt-affine':('formula','start')}
+
+def tex_formula_ascii(text):
+    """The ASCII math string (the form the label machinery typesets) of a formula written in simple TeX; ValueError('FORMULA_TEX_INVALID') when it is not one."""
+    if not isinstance(text,str) or not text.strip() or len(text)>80:raise ValueError('FORMULA_TEX_INVALID')
+    try:value=_mc_label_ascii(text.strip(),'formula')
+    except ValueError:raise ValueError('FORMULA_TEX_INVALID') from None
+    value=re.sub(r'^(?:y|f\(x\))\s*=\s*','',value)
+    if not value or value!=value.strip():raise ValueError('FORMULA_TEX_INVALID')
+    return value
+
+def evaluate_formula_text(text,x_value):
+    """The value of an ASCII formula (digits, x, + - * / ^, parentheses, sqrt( ), implicit products such as 2x or 3(x-1)) at x, as a float; None where it is undefined.
+    Own recursive-descent reader, never eval."""
+    tokens=re.findall(r'sqrt|\d+(?:\.\d+)?|x|[-+*/^()]',text.replace(' ',''))
+    if ''.join(tokens)!=text.replace(' ',''):raise ValueError('FORMULA_TEX_INVALID')
+    position=[0]
+    def peek():return tokens[position[0]] if position[0]<len(tokens) else None
+    def take():
+        token=peek();position[0]+=1;return token
+    def starts_factor(token):return token is not None and (token in ('x','sqrt','(') or token[0].isdigit())
+    def expression():
+        value=term()
+        while peek() in ('+','-'):
+            sign=take();right=term();value=None if value is None or right is None else (value+right if sign=='+' else value-right)
+        return value
+    def term():
+        value=unary()
+        while peek() in ('*','/') or starts_factor(peek()):
+            operator=take() if peek() in ('*','/') else '*';right=unary()
+            if value is None or right is None:value=None
+            elif operator=='*':value=value*right
+            else:value=None if right==0 else value/right
+        return value
+    def unary():
+        if peek()=='-':take();value=unary();return None if value is None else -value
+        if peek()=='+':take();return unary()
+        return power()
+    def power():
+        base=atom()
+        if peek()=='^':
+            take();exponent=unary()
+            if base is None or exponent is None:return None
+            try:return base**exponent
+            except (ZeroDivisionError,OverflowError,ValueError):return None
+        return base
+    def atom():
+        token=take()
+        if token is None:raise ValueError('FORMULA_TEX_INVALID')
+        if token=='x':return x_value
+        if token[0].isdigit():return float(token)
+        if token=='(':
+            value=expression()
+            if take()!=')':raise ValueError('FORMULA_TEX_INVALID')
+            return value
+        if token=='sqrt':
+            if take()!='(':raise ValueError('FORMULA_TEX_INVALID')
+            value=expression()
+            if take()!=')':raise ValueError('FORMULA_TEX_INVALID')
+            return None if value is None or value<0 else math.sqrt(value)
+        raise ValueError('FORMULA_TEX_INVALID')
+    value=expression()
+    if position[0]!=len(tokens):raise ValueError('FORMULA_TEX_INVALID')
+    return value
+
+def single_curve_function(plan):
+    """A float function x -> y (None where undefined) of a rational or square-root plan, from its exact fields."""
+    if plan.get('family')=='rational':
+        n=[float(Fraction(v)) for v in plan['numerator']];d=[float(Fraction(v)) for v in plan['denominator']]
+        return lambda x_value:None if abs(d[0]+d[1]*x_value)<1e-12 else (n[0]+n[1]*x_value)/(d[0]+d[1]*x_value)
+    radicand=[pp_exact_float(v) for v in plan['radicand']];amplitude=pp_exact_float(plan.get('amplitude','1'));sign=plan.get('sign',1);offset=pp_exact_float(plan.get('offset','0'))
+    return lambda x_value:None if radicand[0]+radicand[1]*x_value<0 else offset+sign*amplitude*math.sqrt(radicand[0]+radicand[1]*x_value)
+
+def formula_text_matches(plan,ascii_text):
+    """True when the ASCII formula is the plan's function on a spread of x (at least five points where both are defined, relative error 1e-9)."""
+    function=single_curve_function(plan);compared=0
+    for step in range(-40,41):
+        x_value=step*0.37+0.0123
+        want=function(x_value)
+        try:got=evaluate_formula_text(ascii_text,x_value)
+        except (ValueError,OverflowError,ZeroDivisionError):return False
+        if want is None and got is None:continue
+        if want is None or got is None or abs(want-got)>1e-9*max(1.0,abs(want)):return False
+        compared+=1
+    return compared>=5
+
+def _with_label_options(plan,result):
+    """hideLabels / formulaTex (G18a) of a rational or square-root plan, validated; the fitted plan carries hideLabels and formulaAscii."""
+    hide=plan.get('hideLabels');tex=plan.get('formulaTex')
+    if hide is None and tex is None:return result
+    family=plan['family'];allowed=SINGLE_CURVE_HIDEABLE[family]
+    if hide is not None and (not isinstance(hide,list) or not hide or len(set(hide))!=len(hide) or any(item not in allowed for item in hide)):raise ValueError('HIDE_LABELS_INVALID')
+    if family=='rational' and (plan.get('numerator') or [None,None])[1] in ('0',0):raise ValueError('HIDE_LABELS_UNSUPPORTED_FOR_INVERSE_PROPORTION')
+    hidden=set(hide or [])
+    if 'asymptotes' in hidden and (plan.get('asymptoteLabelAt') is not None or plan.get('verticalAsymptoteLabelAt') not in (None,'NONE')):raise ValueError('HIDE_LABELS_INVALID')
+    fitted={**result['graphPlan']}
+    if hide is not None:fitted['hideLabels']=[item for item in allowed if item in hidden]
+    if tex is not None:
+        if 'formula' in hidden:raise ValueError('HIDE_LABELS_INVALID')
+        ascii_text=tex_formula_ascii(tex)
+        if not formula_text_matches(fitted,ascii_text):raise ValueError('FORMULA_TEX_NOT_THE_FUNCTION')
+        fitted['formulaAscii']=ascii_text
+    return {**result,'graphPlan':fitted}
+
 def _fit_overview_family(plan):
     if 'regions' in plan and plan.get('family')!='piecewise-polynomial':raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')
     if 'applicationAxes' in plan and not (plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL'):raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
     if 'axisScale' in plan and plan.get('family')!='piecewise-polynomial':raise ValueError('AXIS_SCALE_UNSUPPORTED_FAMILY')
     if 'displayWindow' in plan and plan.get('family')!='rational':raise ValueError('DISPLAY_WINDOW_UNSUPPORTED_FAMILY')
     if 'formulaAt' in plan and plan.get('family')!='rational':raise ValueError('FORMULA_AT_UNSUPPORTED_FAMILY')
-    if plan.get('family')=='rational':return _fit_rational_overview(plan)
-    if plan.get('family')=='sqrt-affine':return _fit_sqrt_affine_general_overview(plan) if _sqrt_affine_general_plan(plan) else _fit_sqrt_affine_overview(plan)
+    if plan.get('family')=='rational':return _with_label_options(plan,_fit_rational_overview(plan))
+    if plan.get('family')=='sqrt-affine':return _with_label_options(plan,_fit_sqrt_affine_general_overview(plan) if _sqrt_affine_general_plan(plan) else _fit_sqrt_affine_overview(plan))
     if plan.get('family')=='absolute-value':return _fit_absolute_value_overview(plan)
     if plan.get('family')=='piecewise-affine':return _fit_piecewise_affine_overview(plan)
     if plan.get('family')=='exponential-affine':return _fit_exponential_base_overview(plan) if plan.get('base') is not None or plan.get('shiftX') is not None else _fit_exponential_affine_overview(plan)

@@ -4774,11 +4774,120 @@ def _observed_curve_polylines_all(root):
     return rows
 
 
+SINGLE_CURVE_HIDEABLE_OBSERVED={'rational':('formula','asymptotes'),'sqrt-affine':('formula','start')}
+HIDDEN_LABEL_GROUPS={'formula':('formula',),'asymptotes':('horizontal-asymptote-label','vertical-asymptote-label'),'start':('sqrt-source-end-label','sqrt-domain-label','sqrt-range-label')}
+
+def _formula_ascii(text):
+    """(G18a) The ASCII formula of a simple-TeX formula (own conversion: \\frac{a}{b}, \\sqrt{a}, \\cdot, optional leading y= / f(x)=)."""
+    if not isinstance(text,str) or not text.strip() or len(text)>80:raise ValueError('FORMULA_TEX_INVALID')
+    value=text.strip()
+    def wrap(part):return part if re.fullmatch(r'[A-Za-z0-9.]+',part) else '('+part+')'
+    for _ in range(8):
+        changed=re.sub(r'\\frac\{([^{}]*)\}\{([^{}]*)\}',lambda m:wrap(m.group(1))+'/'+wrap(m.group(2)),value)
+        changed=re.sub(r'\\sqrt\{([^{}]*)\}',lambda m:'sqrt('+m.group(1)+')',changed)
+        if changed==value:break
+        value=changed
+    value=value.replace('\\cdot','*').replace('\\left','').replace('\\right','')
+    value=re.sub(r'^(?:y|f\(x\))\s*=\s*','',value)
+    if not value or not re.fullmatch(r'[0-9A-Za-z=+\-*/().^ ]{1,40}',value):raise ValueError('FORMULA_TEX_INVALID')
+    return value.replace(' ','')
+
+def _formula_value(text,x_value):
+    """The value of an ASCII formula at x by a precedence-climbing reader (implicit products allowed); None where it is undefined."""
+    tokens=re.findall(r'sqrt|\d+(?:\.\d+)?|x|[-+*/^()]',text)
+    if ''.join(tokens)!=text:raise ValueError('FORMULA_TEX_INVALID')
+    index=[0]
+    def look():return tokens[index[0]] if index[0]<len(tokens) else None
+    def eat():
+        token=look();index[0]+=1;return token
+    def begins_factor(token):return token is not None and (token in ('x','sqrt','(') or token[0].isdigit())
+    def add_sub():
+        left=mul_div()
+        while look() in ('+','-'):
+            sign=eat();right=mul_div()
+            left=None if left is None or right is None else left+right if sign=='+' else left-right
+        return left
+    def mul_div():
+        left=sign_part()
+        while look() in ('*','/') or begins_factor(look()):
+            operator=eat() if look() in ('*','/') else '*';right=sign_part()
+            if left is None or right is None:left=None
+            elif operator=='*':left=left*right
+            else:left=None if right==0 else left/right
+        return left
+    def sign_part():
+        if look()=='-':
+            eat();inner=sign_part();return None if inner is None else -inner
+        if look()=='+':eat();return sign_part()
+        base=primary()
+        if look()=='^':
+            eat();exponent=sign_part()
+            if base is None or exponent is None:return None
+            try:return base**exponent
+            except (ZeroDivisionError,OverflowError,ValueError):return None
+        return base
+    def primary():
+        token=eat()
+        if token is None:raise ValueError('FORMULA_TEX_INVALID')
+        if token=='x':return x_value
+        if token[0].isdigit():return float(token)
+        if token=='(':
+            inner=add_sub()
+            if eat()!=')':raise ValueError('FORMULA_TEX_INVALID')
+            return inner
+        if token=='sqrt':
+            if eat()!='(':raise ValueError('FORMULA_TEX_INVALID')
+            inner=add_sub()
+            if eat()!=')':raise ValueError('FORMULA_TEX_INVALID')
+            return None if inner is None or inner<0 else math.sqrt(inner)
+        raise ValueError('FORMULA_TEX_INVALID')
+    result=add_sub()
+    if index[0]!=len(tokens):raise ValueError('FORMULA_TEX_INVALID')
+    return result
+
+def _single_curve_y(plan):
+    """x -> y of the plan's own rational or square-root function from its exact fields (never from the label)."""
+    if plan.get('family')=='rational':
+        n=[float(_pp_coeff(v)) for v in plan['numerator']];d=[float(_pp_coeff(v)) for v in plan['denominator']]
+        return lambda x_value:None if abs(d[0]+d[1]*x_value)<1e-12 else (n[0]+n[1]*x_value)/(d[0]+d[1]*x_value)
+    r=[float(_pp_coeff(v)) for v in plan['radicand']];a=float(_pp_coeff(plan.get('amplitude','1')));sign=plan.get('sign',1);o=float(_pp_coeff(plan.get('offset','0')))
+    return lambda x_value:None if r[0]+r[1]*x_value<0 else o+sign*a*math.sqrt(r[0]+r[1]*x_value)
+
+def single_curve_label_audit(plan,svg,transform):
+    """(G18a) graphPlan.hideLabels and graphPlan.formulaTex of a rational or square-root curve. The formula in the author's form is the plan's function (compared at forty
+    points with the observer's own reading of the formula, never trusting the framed formulaAscii), and in the final SVG a hidden text is not there while a shown one is."""
+    hide=plan.get('hideLabels');tex=plan.get('formulaTex')
+    if plan.get('family') not in SINGLE_CURVE_HIDEABLE_OBSERVED or (hide is None and tex is None):return None
+    errors=[]
+    try:
+        allowed=SINGLE_CURVE_HIDEABLE_OBSERVED[plan['family']]
+        if hide is not None and (not isinstance(hide,list) or not hide or len(set(hide))!=len(hide) or any(item not in allowed for item in hide)):return {'status':'UNSUPPORTED','errors':['HIDE_LABELS_INVALID']}
+        hidden=set(hide or [])
+        if tex is not None:
+            ascii_text=_formula_ascii(tex)
+            if plan.get('formulaAscii')!=ascii_text:errors.append('FORMULA_TEX_ASCII_MISMATCH')
+            function=_single_curve_y(plan);compared=0
+            for step in range(-40,41):
+                x_value=step*0.37+0.0123;want=function(x_value);got=_formula_value(ascii_text,x_value)
+                if want is None and got is None:continue
+                if want is None or got is None or abs(want-got)>1e-9*max(1.0,abs(want)):errors.append('FORMULA_TEX_NOT_THE_FUNCTION');break
+                compared+=1
+            if compared<5:errors.append('FORMULA_TEX_NOT_THE_FUNCTION')
+        if 'data-label-kind' in svg:
+            root=ET.fromstring(svg)
+            groups={node.get('id') for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id') and node.get('data-label-kind')}
+            for name in allowed:
+                if name in hidden:
+                    if any(identifier in groups for identifier in HIDDEN_LABEL_GROUPS[name]):errors.append('HIDDEN_LABEL_SHOWN:'+name)
+            if 'formula' not in hidden and 'formula' not in groups:errors.append('FORMULA_LABEL_MISSING')
+    except (KeyError,TypeError,ValueError,ZeroDivisionError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['FORMULA_TEX_INVALID']}
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
+
 def audit(plan,svg,transform):
     """The family audit plus the optional graph overlays and axis titles: the observer re-derives every overlay element from the raw overlays
     field and reads the same element ids back from the model and the final SVG."""
     result=_audit_family(plan,svg,transform)
-    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform)) if part is not None]
+    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform),single_curve_label_audit(plan,svg,transform)) if part is not None]
     if not parts:return result
     errors=sorted(set([*(result.get('errors') or []),*(error for part in parts for error in (part.get('errors') or []))]))
     if result.get('status')=='UNSUPPORTED' or any(part.get('status')=='UNSUPPORTED' for part in parts):status='UNSUPPORTED'
