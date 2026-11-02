@@ -9,6 +9,8 @@
 (function () {
   'use strict';
   const PI = Math.PI, DEG = PI / 180;
+  // 기본 내려다보는 각(°): 밑면 타원의 세로/가로 = sin(각) ≈ 0.42. 22°일 때(0.37)보다 원기둥·원뿔 밑면이 덜 납작해 보입니다.
+  const PITCH0 = 25;
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const ease = (x) => { x = clamp(x, 0, 1); return x * x * (3 - 2 * x); };
   const seg01 = (t, a, b) => ease((t - a) / (b - a));
@@ -41,7 +43,7 @@
   /* ------------------------------------------------------------------ 그림 맞춤·글자 */
   const textW = (t, size) => { let w = 0; for (const ch of String(t)) { const c = ch.charCodeAt(0); w += c >= 0x1100 ? size * 1.0 : ch === ' ' ? size * 0.32 : size * 0.62; } return w; };
   // 그림 상자(box: 세계 좌표)를 무대에 꼭 맞춥니다. 글자·손잡이 자리는 화면 픽셀(l r t b)로 따로 줍니다.
-  function fit(b, box, o = {}) {
+  function fitScale(b, box, o = {}) {
     const narrow = b.W < 560;
     const aw = Math.max(10, b.W - b.insets.left - b.insets.right), ah = Math.max(10, b.H - b.insets.top - b.insets.bottom);
     const pp = b.pad * Math.min(aw, ah), W = aw - 2 * pp, H = ah - 2 * pp;
@@ -50,6 +52,11 @@
     const bw = Math.max(1e-6, box.x1 - box.x0), bh = Math.max(1e-6, box.y1 - box.y0);
     let k = Math.max(3, Math.min((W - pad.l - pad.r) / bw, (H - pad.t - pad.b) / bh));
     if (o.maxK) k = Math.min(k, o.maxK);
+    return { k, pad };
+  }
+  const fitK = (b, box, o) => fitScale(b, box, o).k;
+  function fit(b, box, o = {}) {
+    const { k, pad } = fitScale(b, box, o);
     // 상자를 가운데에 두되, 남는 쪽으로 균형 있게 퍼지도록 focus 를 잡습니다(기본 좌우·상하 가운데).
     b.focus = { x: [box.x0 - pad.l / k, box.x1 + pad.r / k], y: [box.y0 - pad.b / k, box.y1 + pad.t / k] };
     return b.k;
@@ -74,7 +81,7 @@
   const VIEW_PARAMS = {
     soYaw: P('좌우로 돌려 보기', -180, 180, 1, 0, { color: 'muted', format: (v) => Math.round(v) + '°' }),
     soYawL: P('좌우로 돌려 보기', -80, -10, 1, -32, { color: 'muted', format: (v) => Math.round(v) + '°' }),
-    soPitch: P('위아래로 기울여 보기', 6, 80, 1, 22, { color: 'muted', format: (v) => Math.round(v) + '°' })
+    soPitch: P('위아래로 기울여 보기', 6, 80, 1, PITCH0, { color: 'muted', format: (v) => Math.round(v) + '°' })
   };
   const VIEW = ['soYaw', 'soPitch'];
 
@@ -220,7 +227,7 @@
         answer: (s) => answerText(D, s)
       },
       enter: (s, lab) => {
-        const c0 = D.cam0 || (D.lay ? { yaw: -32, pitch: 0 } : { yaw: 0, pitch: 22 });
+        const c0 = D.cam0 || (D.lay ? { yaw: -32, pitch: 0 } : { yaw: 0, pitch: PITCH0 });
         s.soYaw = c0.yaw; s.soYawL = c0.yaw; s.soPitch = c0.pitch; s.soLay = !!D.lay; s.soFix = !!D.noView; s.soPO = !!D.pitchOnly;
         Object.keys(s).forEach((k) => { if (/^so[PQ]/.test(k) && k !== 'soPitch' && k !== 'soPsi') delete s[k]; }); // 문제용 상태는 장면마다 새로
         D.init(s);
@@ -275,6 +282,6 @@
 
   window.APL_SO = {
     PI, DEG, clamp, ease, seg01, NUM, esc, rint, pick, shuffle, sshuffle, texFix, fmtN, gcd, jo, piT, piTex, span, cm,
-    textW, bboxOf, fit, solidScale, FS, T, P, VIEW, VIEW_PARAMS, mkNum, mkText, baseCtx, makeScene, register, notes, rd
+    textW, bboxOf, fit, fitK, PITCH0, solidScale, FS, T, P, VIEW, VIEW_PARAMS, mkNum, mkText, baseCtx, makeScene, register, notes, rd
   };
 })();
