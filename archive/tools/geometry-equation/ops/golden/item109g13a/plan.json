@@ -1,0 +1,140 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "caption": "f(x)=(2/3)x³+2x²+x의 그래프 위 점 A, B에서의 두 접선이 점 C에서 직각으로 만나고, 빗변 AB를 지름으로 하는 원이 C를 지난다. AB²=10/9, 반지름의 제곱은 5/18이므로 외접원의 넓이는 5π/18, 정답 ⑤.",
+ "pointNames": {
+  "A": "A",
+  "B": "B",
+  "C": "C"
+ },
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "곡선 y=f(x) 위의 두 점 A(-2,2/3), B에서의 접선이 만나는 점 C에 대하여 삼각형 ABC는 ∠BCA=90°인 직각삼각형이다.",
+   "mappedTo": [
+    "graphPlan.pieces",
+    "graphPlan.overlays"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "문제 본문·보기·정답·풀이는 변경하지 않는다.",
+   "mappedTo": "PRESERVED_ARCHIVE_BANK"
+  }
+ ],
+ "newVisualInformation": [
+  "a=2/3일 때 A(-2,2/3), B(-1,1/3)와 두 접선의 교점 C(-5/3,1), 그리고 빗변 AB를 지름으로 하는 외접원이 C를 지남을 한 그림에서 보인다."
+ ],
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "0",
+     "1",
+     "2",
+     "2/3"
+    ]
+   }
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -2.4,
+   0.5
+  ],
+  "viewport": [
+   -2.8,
+   0.6,
+   -0.7,
+   1.7
+  ],
+  "functionName": "f",
+  "requiredPoints": [
+   {
+    "id": "M",
+    "x": "-1-sqrt(2)/2",
+    "y": "1/3+sqrt(2)/3",
+    "marker": "NONE"
+   },
+   {
+    "id": "N",
+    "x": "-1+sqrt(2)/2",
+    "y": "1/3-sqrt(2)/3",
+    "marker": "NONE"
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "circles": [
+    {
+     "id": "K",
+     "center": [
+      "-3/2",
+      "1/2"
+     ],
+     "radiusSquared": "5/18"
+    }
+   ],
+   "lines": [
+    {
+     "id": "TA",
+     "slope": "1",
+     "intercept": "8/3",
+     "label": "y=x+8/3",
+     "labelAt": "END"
+    },
+    {
+     "id": "TB",
+     "slope": "-1",
+     "intercept": "-2/3",
+     "label": "y=-x-2/3",
+     "labelAt": "END"
+    }
+   ],
+   "points": [
+    {
+     "id": "A",
+     "curveX": "-2",
+     "onCircle": "K",
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "curveX": "-1",
+     "onCircle": "K",
+     "coordinates": true
+    },
+    {
+     "id": "C",
+     "intersect": [
+      "TA",
+      "TB"
+     ],
+     "onCircle": "K",
+     "coordinates": true
+    }
+   ],
+   "segments": [
+    {
+     "id": "AB",
+     "from": "A",
+     "to": "B",
+     "dashed": true
+    }
+   ],
+   "rightAngles": [
+    {
+     "at": "C",
+     "from": [
+      "A",
+      "B"
+     ]
+    }
+   ]
+  }
+ }
+}

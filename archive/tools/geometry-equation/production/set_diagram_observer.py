@@ -267,6 +267,91 @@ def inside_contours(x, y, contours):
     return parity
 
 
+# --- counts (the opt-in headcount labels of a Venn diagram) ---------------------------------------------------------------------------------
+VENN_KEYS = ('kind', 'sets', 'elements', 'shade', 'subset', 'universe', 'countStyle')
+SET_KEYS = ('id', 'name', 'count', 'countUnit')
+UNIVERSE_KEYS = ('name', 'count', 'countUnit')
+COUNT_PATTERN = re.compile(r'^(0|[1-9][0-9]{0,3})$')
+COUNT_GROUP_GAP_MAX = 14.0
+LEADER_END_TOL = 1.5
+LEADER_START_TOL = 3.0
+COUNT_NEAR_MAX = 80.0
+
+
+def count_value(raw):
+    """The count the plan states, as a string (a non-negative integer), or None when the plan states none."""
+    if raw is None:
+        return None
+    if isinstance(raw, bool):
+        fail('SD_COUNT_INVALID')
+    if isinstance(raw, int):
+        raw = str(raw)
+    if not isinstance(raw, str) or not COUNT_PATTERN.match(raw):
+        fail('SD_COUNT_INVALID')
+    return raw
+
+
+def count_plan(plan):
+    """Style, per-set (count, unit) and the universe's name, count and unit, re-read from the plan with the observer's own code."""
+    if any(key not in VENN_KEYS for key in plan):
+        fail('SD_PLAN_KEYS')
+    style = plan.get('countStyle', 'paren')
+    if style not in ('paren', 'n'):
+        fail('SD_COUNT_INVALID')
+    per_set = {}
+    for raw in plan['sets']:
+        if any(key not in SET_KEYS for key in raw):
+            fail('SD_PLAN_KEYS')
+        count = count_value(raw.get('count'))
+        unit = raw.get('countUnit')
+        if unit is not None and (count is None or not isinstance(unit, str) or not 1 <= len(unit) <= 3):
+            fail('SD_COUNT_INVALID')
+        per_set[raw['id']] = (count, unit) if count is not None else None
+    universe = plan.get('universe')
+    uni = {'name': 'U', 'count': None, 'unit': None}
+    if universe is not None:
+        if not isinstance(universe, dict) or any(key not in UNIVERSE_KEYS for key in universe):
+            fail('SD_PLAN_KEYS')
+        uni['name'] = universe.get('name', 'U')
+        uni['count'] = count_value(universe.get('count'))
+        uni['unit'] = universe.get('countUnit')
+        if uni['unit'] is not None and (uni['count'] is None or not isinstance(uni['unit'], str) or not 1 <= len(uni['unit']) <= 3):
+            fail('SD_COUNT_INVALID')
+    return style, per_set, uni
+
+
+def count_text(style, count, unit):
+    """The text of the separate count label that follows the name: '(19명)' beside the name, or just the unit after n(M)=19."""
+    if style == 'n':
+        return unit
+    return '(%s%s)' % (count, unit or '')
+
+
+def box_distance(point, box):
+    x, y, w, h = box
+    dx = max(x - point[0], 0.0, point[0] - (x + w))
+    dy = max(y - point[1], 0.0, point[1] - (y + h))
+    return math.hypot(dx, dy)
+
+
+def outside_all(box, ellipses):
+    return all(box_relation(box, ellipse)[0] == 'OUTSIDE' for ellipse in ellipses)
+
+
+def clear_of_lines(box, ellipses, own=None):
+    """A label of a counted set crosses no circle's line; it is wholly outside its own circle (own = its index) and wholly in or out of the others."""
+    for index, ellipse in enumerate(ellipses):
+        relation = box_relation(box, ellipse)[0]
+        if relation == 'CROSSES' or (index == own and relation != 'OUTSIDE'):
+            return False
+    return True
+
+
+def boundary_distance(point, ellipse):
+    return min(math.hypot(point[0] - (ellipse['cx'] + ellipse['rx'] * math.cos(t / 90 * math.pi)),
+                          point[1] - (ellipse['cy'] + ellipse['ry'] * math.sin(t / 90 * math.pi))) for t in range(360))
+
+
 # --- Venn -----------------------------------------------------------------------------------------------------------------------------------
 def audit_venn(plan, doc):
     sets = [raw['id'] for raw in plan['sets']]
@@ -282,29 +367,114 @@ def audit_venn(plan, doc):
     if len(universal) != 1:
         fail('SD_UNIVERSAL_RECT')
     rect = (num(universal[0], 'x'), num(universal[0], 'y'), num(universal[0], 'width'), num(universal[0], 'height'))
-    # universal-set label
+    style, counts, uni = count_plan(plan)
+    if style == 'n' and uni['count'] is None and not any(counts.values()):
+        fail('SD_COUNT_INVALID')
+    # universal-set label (with its headcount when the plan gives one)
     universal_labels = doc.label_role('universal-name')
-    if len(universal_labels) != 1 or doc.shown_text(universal_labels[0]) != 'U':
+    want_universal = 'n(%s)=%s' % (uni['name'], uni['count']) if uni['count'] is not None and style == 'n' else uni['name']
+    if len(universal_labels) != 1 or doc.shown_text(universal_labels[0]) != want_universal:
         doc.err('SD_UNIVERSAL_LABEL')
-    # set labels
+    universal_counts = doc.label_role('universal-count')
+    want_universal_count = count_text(style, uni['count'], uni['unit']) if uni['count'] is not None else None
+    if want_universal_count is None:
+        if universal_counts:
+            doc.err('SD_UNIVERSAL_COUNT_UNEXPECTED')
+    elif len(universal_counts) != 1 or doc.shown_text(universal_counts[0]) != want_universal_count:
+        doc.err('SD_UNIVERSAL_COUNT')
+    elif len(universal_labels) == 1:
+        name_box, count_box = doc.label_box(universal_labels[0]), doc.label_box(universal_counts[0])
+        gap = count_box[0] - (name_box[0] + name_box[2])
+        if gap < -0.5 or gap > COUNT_GROUP_GAP_MAX or abs((name_box[1] + name_box[3] / 2) - (count_box[1] + count_box[3] / 2)) > 8:
+            doc.err('SD_UNIVERSAL_COUNT_GROUP')
+        for box in (name_box, count_box):
+            if not box_inside_rect(box, rect, 1.0) or not outside_all(box, ordered):
+                doc.err('SD_UNIVERSAL_COUNT_PLACE')
+                break
+    # set labels (a counted set also carries its headcount right after the name, or on a leader from the label to its own circle)
+    leaders = {}
+    for line in doc.role('line', 'set-leader'):
+        leaders.setdefault(line.get('data-set'), []).append(line)
+    for set_id in leaders:
+        if set_id not in sets or counts.get(set_id) is None:
+            doc.err('SD_SET_LEADER_UNEXPECTED:' + str(set_id))
     for set_id in sets:
         labels = [l for l in doc.label_role('set-name') if l.get('data-set') == set_id]
         if len(labels) != 1:
             doc.err('SD_SET_LABEL:' + set_id)
             continue
         label = labels[0]
-        if doc.shown_text(label) != names[set_id]:
+        counted = counts.get(set_id)
+        want_name = 'n(%s)=%s' % (names[set_id], counted[0]) if counted and style == 'n' else names[set_id]
+        if doc.shown_text(label) != want_name:
             doc.err('SD_SET_LABEL_TEXT:' + set_id)
         box, ellipse = doc.label_box(label), drawn[set_id]
+        group = [box]
+        count_labels = [l for l in doc.label_role('set-count') if l.get('data-set') == set_id]
+        want_count = count_text(style, counted[0], counted[1]) if counted else None
+        if want_count is None:
+            if count_labels:
+                doc.err('SD_SET_COUNT_UNEXPECTED:' + set_id)
+        elif len(count_labels) != 1 or doc.shown_text(count_labels[0]) != want_count:
+            doc.err('SD_SET_COUNT:' + set_id)
+        else:
+            count_box = doc.label_box(count_labels[0])
+            gap = count_box[0] - (box[0] + box[2])
+            if gap < -0.5 or gap > COUNT_GROUP_GAP_MAX or abs((box[1] + box[3] / 2) - (count_box[1] + count_box[3] / 2)) > 8:
+                doc.err('SD_SET_COUNT_GROUP:' + set_id)
+            if not box_inside_rect(count_box, rect, 1.0):
+                doc.err('SD_SET_LABEL_OUTSIDE:' + set_id)
+            group.append(count_box)
         centre = (box[0] + box[2] / 2, box[1] + box[3] / 2)
         if not box_inside_rect(box, rect, 1.0):
             doc.err('SD_SET_LABEL_OUTSIDE:' + set_id)
         if inside_ellipse(centre[0], centre[1], ellipse):
             doc.err('SD_SET_LABEL_INSIDE_SET:' + set_id)
-        nearest = min(math.hypot(centre[0] - (ellipse['cx'] + ellipse['rx'] * math.cos(t / 90 * math.pi)),
-                                 centre[1] - (ellipse['cy'] + ellipse['ry'] * math.sin(t / 90 * math.pi))) for t in range(360))
-        if nearest > 60:
-            doc.err('SD_SET_LABEL_NOT_NEXT_TO_SET:' + set_id)
+        if not counted:
+            if boundary_distance(centre, ellipse) > 60:
+                doc.err('SD_SET_LABEL_NOT_NEXT_TO_SET:' + set_id)
+            continue
+        # a counted set: every label of its group stands wholly outside the circles, and the group belongs to its own circle
+        for part in group:
+            if not clear_of_lines(part, ordered, sets.index(set_id)):
+                doc.err('SD_SET_COUNT_ON_CIRCLE:' + set_id)
+                break
+        lines = leaders.get(set_id, [])
+        if len(lines) > 1:
+            doc.err('SD_SET_LEADER:' + set_id)
+        elif len(lines) == 1:
+            line = lines[0]
+            start, end = (num(line, 'x1'), num(line, 'y1')), (num(line, 'x2'), num(line, 'y2'))
+            if min(box_distance(start, part) for part in group) > LEADER_START_TOL:
+                doc.err('SD_SET_LEADER_START:' + set_id)
+            if abs(math.sqrt(norm2(end[0], end[1], ellipse)) - 1) * min(ellipse['rx'], ellipse['ry']) > LEADER_END_TOL:
+                doc.err('SD_SET_LEADER_END:' + set_id)
+            subset = plan.get('subset')
+            for other in sets:
+                if other == set_id:
+                    continue
+                if subset and subset[0] == set_id and subset[1] == other:
+                    continue  # the inner set of B-in-A is reached across the outer circle's line
+                for k in range(1, 20):
+                    px, py = start[0] + (end[0] - start[0]) * k / 20, start[1] + (end[1] - start[1]) * k / 20
+                    if inside_ellipse(px, py, drawn[other]) != inside_ellipse(start[0], start[1], drawn[other]):
+                        doc.err('SD_SET_LEADER_CROSSES_SET:' + set_id)
+                        break
+            own_labels = [label] + count_labels
+            for other_label in doc.labels:
+                if any(other_label is own for own in own_labels):
+                    continue
+                ob = doc.label_box(other_label)
+                if segment_hits_box(start, end, (ob[0] + 1, ob[1] + 1, ob[2] - 2, ob[3] - 2)):
+                    doc.err('SD_SET_LEADER_CROSSES_LABEL:' + set_id)
+                    break
+        else:
+            near = min(boundary_distance((part[0] + part[2] / 2, part[1] + part[3] / 2), ellipse) for part in group)
+            if near > COUNT_NEAR_MAX:
+                doc.err('SD_SET_LABEL_NOT_NEXT_TO_SET:' + set_id)
+            others = [boundary_distance(centre, drawn[other]) for other in sets if other != set_id]
+            if others and boundary_distance(centre, ellipse) > min(others) + 10:
+                doc.err('SD_SET_COUNT_AMBIGUOUS:' + set_id)
     # element labels: each inside exactly the declared cell
     element_labels = {l.get('data-element'): l for l in doc.label_role('element')}
     if len(element_labels) != len(plan.get('elements') or []) or set(element_labels) != {str(i) for i in range(len(plan.get('elements') or []))}:

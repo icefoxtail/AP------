@@ -17,6 +17,7 @@ FIELDS={'curveStyle','id','kind','at','from','to','center','radius','centerPoint
 REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'TRACE_ARC':{'centerPoint','through'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'},'POLYGON':{'refs'},'GRAPH_REGION':{'upper','lower','domain','fill'},'DIMENSION_LINE':{'refs','side'},'PATH_LABEL':{'labelText','refs'},'QUADRANT':{'quadrant'}}
 
 FIELDS|={'labelWeight','extension','offsetPx','paths','pathMark','autoOffset','over','ownership','markStyle','closed'}   # E32 additions to the component fields (kept apart from the long set above)
+FIELDS|={'squareSize'}   # G13a: the leg of a right-angle square (px) on a graph, bigger than the plane-figure token so it reads on a phone
 FIELDS|={'guide','anchorAt'}   # E37: a light dotted guide line (a SEGMENT) from a point of the main figure to its pulled-out copy
 
 def parity(a,b):
@@ -81,7 +82,7 @@ def validate(spec):
         # color (C1): a palette colour of a segment, an angle mark or an equal / parallel mark group; an angle mark takes either a colour or an emphasisGroup, a guide / emphasised / dashed / arrow segment none
         if 'color' in obj:
             # (G12-2) a graph's overlay line or drawn curve wears a palette colour too (a curve keeps its own line style DASHED, but not the red ACCENT)
-            if obj['kind'] not in {'SEGMENT','ANGLE_MARK','EQUAL_MARK','PARALLEL_MARK','LINE','FUNCTION_GRAPH'} or obj['color'] not in PALETTE_NAMES:raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
+            if obj['kind'] not in {'SEGMENT','ANGLE_MARK','EQUAL_MARK','PARALLEL_MARK','LINE','FUNCTION_GRAPH','CIRCULAR_ARC'} or obj['color'] not in PALETTE_NAMES:raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
             if obj['kind']=='FUNCTION_GRAPH' and obj.get('curveStyle')=='ACCENT':raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
             if obj['kind']=='ANGLE_MARK' and 'emphasisGroup' in obj:raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
             if obj['kind']=='SEGMENT' and any(key in obj for key in ('guide','dash','arrow','emphasis')):raise ValueError('INVALID_COLOR:'+str(obj.get('id')))
@@ -122,6 +123,7 @@ def validate(spec):
         if 'paths' in obj and obj['kind']!='EQUAL_MARK':raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
         if 'markStyle' in obj and (obj['kind']!='EQUAL_MARK' or obj['markStyle']!='CIRCLE' or obj.get('count') not in {1,2} or 'paths' in obj):raise ValueError('EQUAL_MARK_STYLE_INVALID:'+str(obj.get('id')))
         if 'ownership' in obj and (obj['kind']!='EQUATION_LABEL' or obj['ownership']!='NEAREST' or not obj.get('lineOwned')):raise ValueError('SEGMENT_LABEL_OWNERSHIP_INVALID:'+str(obj.get('id')))
+        if 'squareSize' in obj and (obj['kind']!='ANGLE_MARK' or isinstance(obj['squareSize'],bool) or not isinstance(obj['squareSize'],(int,float)) or not 8<=obj['squareSize']<=40):raise ValueError('INVALID_SQUARE_SIZE:'+str(obj.get('id')))
         # (G11) arcScale PROPORTIONAL: the arcs of an angle mark grow with the drawn ray length; angleDimension {radiusFactor}: the angle as a dimension arc with an arrowhead at each end
         if 'arcScale' in obj and (obj['kind']!='ANGLE_MARK' or obj['arcScale']!='PROPORTIONAL'):raise ValueError('INVALID_ANGLE_ARC_SCALE:'+str(obj.get('id')))
         if 'angleDimension' in obj:
@@ -155,7 +157,7 @@ def validate(spec):
             if not isinstance(obj.get('expression'),str): raise ValueError('EXPRESSION_REQUIRED')
             lo,hi=point(obj['domain'])
             if lo>=hi: raise ValueError('INVALID_DOMAIN')
-            if 'branch' in obj and obj['branch'] not in {'G_PIECE_1','G_PIECE_2','G_PIECE_3','G_PIECE_4','G_PIECE_5','G_PIECE_6','G_PIECE_7','G_PIECE_8','LEFT','RIGHT','PIECE_1','PIECE_2','PIECE_3','PIECE_4','PIECE_5','PIECE_6','PIECE_7','PIECE_8'} and not re.fullmatch(r'REF_[A-Za-z][A-Za-z0-9]{0,7}(?:_[1-4])?',str(obj['branch'])):raise ValueError('INVALID_GRAPH_BRANCH_TAG')
+            if 'branch' in obj and obj['branch'] not in {'LEFT','RIGHT'} and not re.fullmatch(r'(?:G_)?PIECE_(?:[1-9]|1[0-2])',str(obj['branch'])) and not re.fullmatch(r'REF_[A-Za-z][A-Za-z0-9]{0,7}(?:_[1-4])?',str(obj['branch'])):raise ValueError('INVALID_GRAPH_BRANCH_TAG')
         elif kind in {'EQUATION_LABEL','GRAPH_ANNOTATION','CONDITION_BOX'}:
             point(obj['at'])
             if kind=='CONDITION_BOX':

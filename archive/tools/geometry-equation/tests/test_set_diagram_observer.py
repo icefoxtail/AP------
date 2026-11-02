@@ -173,6 +173,66 @@ class VennTamper(unittest.TestCase):
         self.assertIn('SD_SET_LABEL_TEXT:A',self.audit(swapped)['errors'])
 
 
+COUNT_PLAN={**VENN_PLAN,'universe':{'name':'U','count':'40','countUnit':'명'},
+            'sets':[{'id':'A','count':'19','countUnit':'명'},{'id':'B','count':'25','countUnit':'명'}]}
+
+
+def counted_svg(count_a=(81,76,40,18),count_b=(283,76,40,18),universe_count=(56,52,40,14),leader=None,drop=()):
+    """The two-circle Venn of venn_svg with headcount labels: U (40명), A (19명), B (25명)."""
+    svg=venn_svg(label_a=(60,76),label_b=(262,76))
+    extra=[]
+    if 'A' not in drop:
+        extra.append(label('set-count-A','set-count',count_a,'(19명)',' data-set="A"'))
+    extra.append(label('set-count-B','set-count',count_b,'(25명)',' data-set="B"'))
+    extra.append(label('universal-count','universal-count',universe_count,'(40명)'))
+    if leader:
+        extra.append('<line id="set-leader-A" data-role="set-leader" data-set="A" x1="%s" y1="%s" x2="%s" y2="%s" stroke="#444" stroke-width="1.1"/>'%leader)
+    return svg.replace('</svg>',''.join(extra)+'</svg>')
+
+
+class CountTamper(unittest.TestCase):
+    def audit(self,svg,plan=None):
+        return S.audit(plan or COUNT_PLAN,svg)
+
+    def test_a_faithful_counted_figure_passes(self):
+        result=self.audit(counted_svg())
+        self.assertEqual(result['status'],'PASS',result['errors'])
+
+    def test_a_wrong_missing_or_unexpected_count_is_caught(self):
+        wrong={**COUNT_PLAN,'sets':[{'id':'A','count':'20','countUnit':'명'},COUNT_PLAN['sets'][1]]}
+        self.assertIn('SD_SET_COUNT:A',self.audit(counted_svg(),wrong)['errors'])
+        self.assertIn('SD_SET_COUNT:A',self.audit(counted_svg(drop=('A',)))['errors'])
+        plain_a={**COUNT_PLAN,'sets':[{'id':'A'},COUNT_PLAN['sets'][1]]}
+        self.assertIn('SD_SET_COUNT_UNEXPECTED:A',self.audit(counted_svg(),plain_a)['errors'])
+        self.assertIn('SD_UNIVERSAL_COUNT',self.audit(counted_svg(),{**COUNT_PLAN,'universe':{'count':'41','countUnit':'명'}})['errors'])
+        self.assertIn('SD_UNIVERSAL_COUNT_UNEXPECTED',self.audit(counted_svg(),{k:v for k,v in COUNT_PLAN.items() if k!='universe'})['errors'])
+
+    def test_a_count_label_apart_from_its_name_or_on_a_circle_is_caught(self):
+        apart=self.audit(counted_svg(count_a=(200,60,40,18)))['errors']
+        self.assertIn('SD_SET_COUNT_GROUP:A',apart)
+        on_circle=self.audit(counted_svg(count_a=(81,100,40,18)))['errors']
+        self.assertTrue(any(e.startswith('SD_SET_COUNT_GROUP') or e.startswith('SD_SET_COUNT_ON_CIRCLE') for e in on_circle),on_circle)
+        self.assertIn('SD_UNIVERSAL_COUNT_GROUP',self.audit(counted_svg(universe_count=(120,52,40,14)))['errors'])
+
+    def test_a_leader_must_start_at_the_label_and_end_on_its_own_circle(self):
+        # A's group is far above-left of its circle on a leader that really ends on circle A (centre 120,170 r 70)
+        far=counted_svg(leader=(70,94,86,119.6))
+        # (86,119.6) is on circle A? distance from (120,170) is sqrt(34^2+50.4^2)=60.8: not on it, so the end is caught
+        self.assertIn('SD_SET_LEADER_END:A',self.audit(far)['errors'])
+        # a point on the circle: (120-70*sin(30deg), 170-70*cos(30deg)) = (85, 109.38)
+        good=counted_svg(leader=(78,94,85,109.38))
+        self.assertNotIn('SD_SET_LEADER_END:A',self.audit(good)['errors'])
+        self.assertNotIn('SD_SET_LEADER_START:A',self.audit(good)['errors'])
+        detached=counted_svg(leader=(78,140,85,109.38))
+        self.assertIn('SD_SET_LEADER_START:A',self.audit(detached)['errors'])
+        self.assertIn('SD_SET_LEADER_UNEXPECTED:A',self.audit(good,{**COUNT_PLAN,'sets':[{'id':'A'},COUNT_PLAN['sets'][1]]})['errors'])
+
+    def test_only_the_documented_plan_keys_are_read(self):
+        with self.assertRaises(ValueError): S.audit({**COUNT_PLAN,'extra':1},counted_svg())
+        with self.assertRaises(ValueError): S.audit({**COUNT_PLAN,'sets':[{'id':'A','count':'-1'},COUNT_PLAN['sets'][1]]},counted_svg())
+        with self.assertRaises(ValueError): S.audit({**COUNT_PLAN,'countStyle':'bold'},counted_svg())
+
+
 class MappingTamper(unittest.TestCase):
     def audit(self,svg,plan=None):
         return S.audit(plan or MAPPING_PLAN,svg)

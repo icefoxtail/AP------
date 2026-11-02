@@ -1168,8 +1168,10 @@ def audit_tree(chart, doc):
         kids = raw.get('children') or []
         if kids:
             given = ['p' in k for k in kids]
-            if len(kids) < 2 or any(g != given[0] for g in given): fail('STAT_TREE_INVALID')
+            if len(kids) > 5 or any(g != given[0] for g in given): fail('STAT_TREE_INVALID')
             ps = [frac(k['p'], 'SC_PLAN_INVALID') if g else None for k, g in zip(kids, given)]
+            # one child: a step that always happens (G13c), so its branch carries exactly p = 1
+            if len(kids) == 1 and (ps[0] is None or ps[0] != 1): fail('STAT_TREE_SINGLE_CHILD_NOT_CERTAIN')
             if given[0] and sum(ps) != 1: fail('STAT_TREE_BRANCH_PROBABILITY_SUM')
             for i, k in enumerate(kids):
                 nodes[[n['id'] for n in nodes].index(node_id)]['children'].append('%s.%d' % (node_id, i + 1))
@@ -1239,6 +1241,8 @@ def audit_tree(chart, doc):
         t1 = ((x1 - px) * (cx - px) + (y1 - py) * (cy - py)) / length ** 2
         t2 = ((x2 - px) * (cx - px) + (y2 - py) * (cy - py)) / length ** 2
         if off(x1, y1) > 0.3 or off(x2, y2) > 0.3 or not (0 < t1 < t2 < 1): doc.err('SC_BRANCH_NOT_BETWEEN_NODES:' + n['id'])
+        # a node with one child (p = 1): the branch runs straight on, parent and child at the same height
+        if len(by_id[n['parent']]['children']) == 1 and abs(cy - py) > 0.5: doc.err('SC_SINGLE_CHILD_NOT_LEVEL:' + n['id'])
         probs = [l for l in doc.label_role('branch-probability') if l.get('data-child') == n['id']]
         if has_p:
             if len(probs) != 1: doc.err('SC_BRANCH_PROBABILITY_COUNT:' + n['id']); continue

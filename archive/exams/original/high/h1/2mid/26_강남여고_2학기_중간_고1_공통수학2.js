@@ -752,10 +752,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "wide": false,
     "tags": ["도형"],
-    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q15-solution.svg",
-    "solutionImageAlt": "반지름 3과 1인 서로 떨어진 두 원의 중심 거리 5, 가장 가까운 점 두 개의 거리 1과 가장 먼 점 두 개의 거리 9를 표시한 그림",
-    "solutionImageCaption": "두 원의 중심 거리 5에 반지름의 합 4를 빼면 최솟값 1, 더하면 최댓값 9이다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q15-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽: 중심 O₁(2,4)인 반지름 3의 원과 중심 O₂인 반지름 1의 원, 두 원 위의 가장 가까운 두 점 P, Q와 반지름 3. 오른쪽: 중심선을 따로 펴서 점 이름은 중심선 오른쪽에 두고, 왼쪽 치수선으로 PQ=1, 중심거리 O₂O₁=5(d), 가장 먼 두 점 사이 9를 나타낸 그림.",
+    "solutionImageCaption": "두 원의 반지름은 3과 1이고 중심거리 d=5이므로 PQ의 최솟값은 1, 최댓값 M=9이다. 따라서 a+M=11이다. 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -802,7 +802,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "tags": []
+    "tags": [],
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 네 개가 2×2로 놓여 있다. ㄴ 좌변과 ㄴ 우변 A는 집합 A 전체가, ㄹ 좌변과 ㄹ 우변 B는 집합 B 전체가 각각 같은 모양으로 색칠되어 있다.",
+    "solutionImageCaption": "ㄴ과 ㄹ은 좌변과 우변이 나타내는 색칠한 영역이 같아 항상 옳고, ㄱ과 ㄷ은 반례가 있어 옳지 않다. 정답: 항상 옳은 것은 ㄴ, ㄹ의 2개이므로 ③",
+    "solutionImageSize": "large"
   },
   {
     "id": 17,
@@ -1006,7 +1010,7 @@ window.questionBank = [
       "도형"
     ],
     "visualDisposition": "PROBLEM_IMAGE_REQUIRED_SOURCE_PRESERVED_SOLUTION_IMAGE_NOT_REQUIRED",
-    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q20-solution-v2.svg",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q20-solution-v3.svg",
     "solutionImageAlt": "해설 그림: 원점 O를 중심으로 세 점 A, B, C를 지나는 원과, OA와 OC가 수직이라 AC가 지름인 삼각형 AOC의 외접원, 직선 y=x를 보인 좌표평면.",
     "solutionImageCaption": "a=√34이면 OA=OB=OC=√38이라 원점 O가 삼각형 ABC의 외심이고, OA⊥OC이므로 AC가 삼각형 AOC의 외접원의 지름이다. 따라서 a²=34이고 정답은 ①이다.",
     "solutionImageSize": "medium"

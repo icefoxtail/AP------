@@ -187,6 +187,11 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
           framedPanels.push({caption:panel.caption,plan:panelPlan});panelModels.push(m.result);
           panelSizes.push({width:spec.viewport.width,height:spec.viewport.height});continue;
         }
+        if(comp.isSetPanel(panel.plan)){
+          // A Venn panel: the exact regions derived once (like the standalone Venn), composed compact for the grid, read back by the set observer.
+          const solved=sdg.solveDiagram(panel.plan.diagram);
+          framedPanels.push({caption:panel.caption,plan:panel.plan});panelModels.push(solved);panelSizes.push(sdg.setDiagramSize(solved,{compact:true}));continue;
+        }
         if(comp.isSolidPanel(panel.plan)){
           const solved=sol.solveSolidFigure(panel.plan);
           framedPanels.push({caption:panel.caption,plan:panel.plan});panelModels.push(solved);panelSizes.push(sol.figurePanelSize(solved));continue;
