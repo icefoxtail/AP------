@@ -14,24 +14,22 @@
       "id": 1,
       "question": 19,
       "claim": "TPL 공통인수 조건으로 미정계수 결정 does not fit the question",
-      "verdict": "FACT",
+      "verdict": "FACT (mismatch confirmed); NOT CHANGED in this request",
       "evidence": "Q19 asks for the common factor of x^2+2xy-3y^2 and (x-1)^2-(y-1)^2 (solution: (x+3y)(x-y) and (x+y-2)(x-y), common factor x-y). No unknown coefficient exists. TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION is defined as 'determine coefficients by substituting the root of a common factor'. Its only registered supporter is 16_왕의중 Q19 (x+3 is a common factor of x^2y-Ay and 2x^2+5x+B), so the value was carried over from the same question number of another exam.",
-      "after": {
-        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
-        "L4": "공통인수로 인수분해 후 인수 판별"
-      },
-      "before": {
-        "templateKey": "TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION",
-        "L4": "공통인수 조건으로 미정계수 결정"
-      },
       "candidatesCompared": {
         "TPL_M3_COMMON_FACTOR_IDENTIFICATION": "factor the expressions, then tell which factors are (not) factors of an expression; closest to 'find the common factor' (also used by Q17)",
         "TPL_M3_GROUPING_FACTORIZATION": "grouping terms and extracting a common factor between groups; Q19 has no grouping step",
         "TPL_M3_FACTORIZATION_FORMULA_APPLICATION": "compare blanks of factorization identities; does not describe Q19",
         "TPL_M3_QUADRATIC_FACTORIZATION_SUM": "factor a quadratic and add two linear factors; Q20 style, not Q19"
       },
-      "evidenceDebt": "The official crosswalk row for the approved RPM leaf M3-RPM-025 is RPM_ONLY (NO_ACTIVE_MAPPING), so the official Resolver yields no PT/TPL for this question. The template is therefore a reviewer choice among ACTIVE templates of the existing PT, not a Resolver result. No registry template is created. A dedicated template ('factor two polynomials and find the common factor') would fit exactly and needs a registry decision.",
-      "officialRouteCheck": "Adding an ACTIVE crosswalk row for M3-RPM-025 in crosswalks/rpm-primary-v1.0/middle3.json is not possible add-only: the file already holds exactly one row with that rpmPath (M3-RPM-025, RPM_ONLY, normalised on purpose, 'no forced mapping'); the Resolver (crosswalkMatch in rpm-active-resolver.mjs) matches by curriculum+scope+rpmPath+standardUnitKey, so a second row would make every M3-RPM-025 question CROSSWALK_COMPATIBILITY_ROW_AMBIGUOUS (Q19 and Q20 share this leaf). Making it work needs a change of the existing row to FAMILY_ACTIVE with template candidates, which is a modification, not an addition. Also no ACTIVE template describes Q19 exactly: COMMON_FACTOR_IDENTIFICATION is defined as pulling a common factor out of terms and then telling factors from non-factors, while Q19 factors each polynomial by the cross-multiplication and difference-of-squares formulas and compares the factors. The label overlap (공통인수, 인수 판별) is the only fit. The template change is therefore a reviewer choice, not a Resolver result."
+      "evidenceDebt": "Open: Q19 still carries a template (미정계수 결정) that contradicts the question. A dedicated canonical TPL ('두 다항식을 각각 인수분해하여 공통인수 찾기', parent PT_M3_POLY_FACTORIZATION) and a crosswalk decision for M3-RPM-025 (existing RPM_ONLY row, shared with Q20) need a user decision.",
+      "officialRouteCheck": "Adding an ACTIVE crosswalk row for M3-RPM-025 in crosswalks/rpm-primary-v1.0/middle3.json is not possible add-only: the file already holds exactly one row with that rpmPath (M3-RPM-025, RPM_ONLY, normalised on purpose, 'no forced mapping'); the Resolver (crosswalkMatch in rpm-active-resolver.mjs) matches by curriculum+scope+rpmPath+standardUnitKey, so a second row would make every M3-RPM-025 question CROSSWALK_COMPATIBILITY_ROW_AMBIGUOUS (Q19 and Q20 share this leaf). Making it work needs a change of the existing row to FAMILY_ACTIVE with template candidates, which is a modification, not an addition. Also no ACTIVE template describes Q19 exactly: COMMON_FACTOR_IDENTIFICATION is defined as pulling a common factor out of terms and then telling factors from non-factors, while Q19 factors each polynomial by the cross-multiplication and difference-of-squares formulas and compares the factors. The label overlap (공통인수, 인수 판별) is the only fit. The template change is therefore a reviewer choice, not a Resolver result.",
+      "decision": "Q19 TPL 부적합은 사실이나 맞는 정본 TPL 없음 → 신규 TPL 정의 필요(사용자 결정), 이번엔 미변경. Q19 keeps templateKey TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION and L4 '공통인수 조건으로 미정계수 결정'. Reason: no ACTIVE canonical template describes Q19, and replacing it with an ill-fitting one by reviewer choice would violate the Resolver-only PT/TPL rule (the official crosswalk row M3-RPM-025 is RPM_ONLY). Q19's sub unit change (인수분해) is kept (finding 2).",
+      "proposedNotApplied": {
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+        "L4": "공통인수로 인수분해 후 인수 판별",
+        "note": "closest ACTIVE template, rejected as not exact"
+      }
     },
     {
       "id": 2,
