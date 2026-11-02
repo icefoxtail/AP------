@@ -64,7 +64,7 @@ function start() {
         s.phYaw = (s.phYaw || 0) + dx * 0.5;
         if (s.phYaw > 180) s.phYaw -= 360;
         if (s.phYaw < -180) s.phYaw += 360;
-        s.phPitch = clamp((s.phPitch == null ? 24 : s.phPitch) + dy * 0.4, -10, 80);
+        s.phPitch = clamp((s.phPitch == null ? 24 : s.phPitch) + dy * 0.4, s.phPmin == null ? 8 : s.phPmin, 80); // 아래 한계: 장면이 정한 최소 기울기(입체 8°, 전개도 28°)
       }
     },
     // 장면에 들어올 때마다 화면 범위를 처음 상태로 되돌립니다. 그림 맞춤은 장면 그리기에서 매번 합니다.

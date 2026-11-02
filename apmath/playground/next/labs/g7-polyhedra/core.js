@@ -53,7 +53,8 @@
 
   /* ------------------------------------------------------------------ 카메라(평행투영) */
   const camOf = (s) => {
-    const y = (s.phYaw == null ? -30 : s.phYaw) * DEG, p = (s.phPitch == null ? 24 : s.phPitch) * DEG;
+    // phPmin: 장면이 정한 최소 기울기(도). 입체 장면은 수평선에서 내려다보게(8°), 평평한 전개도 장면은 납작해지지 않게(더 크게) 둡니다.
+    const y = (s.phYaw == null ? -30 : s.phYaw) * DEG, p = Math.max(s.phPitch == null ? 24 : s.phPitch, s.phPmin == null ? -90 : s.phPmin) * DEG;
     return { cy: Math.cos(y), sy: Math.sin(y), cp: Math.cos(p), sp: Math.sin(p) };
   };
   function proj(cam, P) {
@@ -130,7 +131,7 @@
   /* 3차원 장면 그리기 상자: 투영·라벨 배치(겹치지 않게)·기본 도형 */
   function scene3(b, s, C) {
     const cam = camOf(s);
-    const D = { b, s, C, cam, boxes: [], queue: [] };
+    const D = { b, s, C, cam, boxes: [], queue: [], hulls: [] };
     const P2 = (p) => { const q = proj(cam, p); return { x: q.x, y: q.y }; };
     D.P = P2;
     D.depth = (p) => proj(cam, p).d;
@@ -141,6 +142,16 @@
     D.fill = (pts, color, alpha = 0.16, o = {}) => b.path(pts.map(P2), { close: true, fill: color, fillAlpha: alpha, color: null, ref: o.ref });
     D.panel = (pts, color, fa = 0.14, ec = null, ew = 2.2, o = {}) => b.path(pts.map(P2), { close: true, fill: color, fillAlpha: fa, color: ec === null ? color : ec, width: ew, dash: o.dash, alpha: o.alpha });
     D.dot = (p, color = 'ink', r = 4.5) => b.point(P2(p), { color, r });
+    // 입체 윤곽(화면 볼록껍질)을 기록해 두면 D.label 이 입체 바깥 자리를 우선합니다(선 위에 글자가 얹히지 않게).
+    D.addHull = (pts3) => {
+      const q = pts3.map((p) => { const t = b.toS(P2(p)); return { x: t.x, y: t.y }; }).sort((u, w) => u.x - w.x || u.y - w.y);
+      if (q.length < 3) return;
+      const cr = (o, a, c) => (a.x - o.x) * (c.y - o.y) - (a.y - o.y) * (c.x - o.x), lo = [], up = [];
+      q.forEach((p) => { while (lo.length >= 2 && cr(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop(); lo.push(p); });
+      for (let i = q.length - 1; i >= 0; i--) { const p = q[i]; while (up.length >= 2 && cr(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop(); up.push(p); }
+      D.hulls.push(lo.slice(0, -1).concat(up.slice(0, -1)));
+    };
+    const inHull = (x, y) => D.hulls.some((h) => { for (let i = 0; i < h.length; i++) { const a = h[i], c = h[(i + 1) % h.length]; if ((c.x - a.x) * (y - a.y) - (c.y - a.y) * (x - a.x) < 0) return false; } return true; });
     D.obstacle = (p, r = 8) => { const s0 = b.toS(P2(p)); D.boxes.push({ x0: s0.x - r, x1: s0.x + r, y0: s0.y - r, y1: s0.y + r }); };
     // 화살표(평행 표시): 선분 pq 의 f 위치에 count 개
     D.par = (p, q, count = 1, color = 'sky', f = 0.5) => {
@@ -185,7 +196,8 @@
       const s0 = b.toS(p);
       const bx = (cx, cy) => ({ x0: cx - w / 2, x1: cx + w / 2, y0: cy - h / 2, y1: cy + h / 2 });
       const area = (a, c) => Math.max(0, Math.min(a.x1, c.x1) - Math.max(a.x0, c.x0)) * Math.max(0, Math.min(a.y1, c.y1) - Math.max(a.y0, c.y0));
-      const lo = { x: b.insets.left + 3, y: b.insets.top + 3 }, hi = { x: b.W - b.insets.right - 3, y: b.H - b.insets.bottom - 3 };
+      const lo = { x: b.insets.left + 3, y: Math.max(b.insets.top + 3, D.top || 0) }, // D.top: 장면이 정한 위쪽 줄글 아래 경계(px) — 글자가 줄글과 겹치지 않게
+         hi = { x: b.W - b.insets.right - 3, y: b.H - b.insets.bottom - 3 };
       let cands = [];
       if (o.at) cands = o.at.map((q) => [s0.x + q[0], s0.y + q[1]]);
       else {
@@ -203,6 +215,7 @@
         const q = bx(c[0], c[1]);
         let sc = i * 2;
         D.boxes.forEach((r) => { sc += area(q, r) * 3; });
+        if (D.hulls.length && !o.inside) { let n = 0; [[0, 0], [-1, -1], [1, -1], [-1, 1], [1, 1]].forEach((k) => { if (inHull(c[0] + k[0] * w / 2, c[1] + k[1] * h / 2)) n++; }); sc += n * 14; }
         sc += (Math.max(0, lo.x - q.x0) + Math.max(0, q.x1 - hi.x) + Math.max(0, lo.y - q.y0) + Math.max(0, q.y1 - hi.y)) * 40;
         if (sc < bs) { bs = sc; best = c; }
       });
@@ -248,8 +261,8 @@
   /* ------------------------------------------------------------------ 조절 값 만들기 */
   const P = (label, min, max, step, value, o = {}) => ({ value, min, max, step, color: o.color || 'sky', label, hint: o.hint, format: o.format || ((v) => fmtN(v)) });
   const VIEW_PARAMS = {
-    phYaw: P('좌우로 돌려 보기', -180, 180, 1, -30, { color: 'muted', format: (v) => Math.round(v) + '°' }),
-    phPitch: P('위아래로 기울여 보기', -10, 80, 1, 24, { color: 'muted', format: (v) => Math.round(v) + '°' })
+    phYaw: P('좌우로 돌려 보기', -135, 135, 1, -30, { color: 'muted', format: (v) => Math.round(v) + '°' }),
+    phPitch: P('위아래로 기울여 보기', 8, 80, 1, 24, { color: 'muted', format: (v) => Math.round(v) + '°', onInput: (s) => { if (s.phPmin != null && s.phPitch < s.phPmin) s.phPitch = s.phPmin; } })
   };
   const VIEW = ['phYaw', 'phPitch'];
 
@@ -405,7 +418,7 @@
       },
       enter: (s, lab) => {
         const c0 = D.cam0 || { yaw: -30, pitch: 24 };
-        s.phYaw = c0.yaw; s.phPitch = c0.pitch; s.phSpin = false;
+        s.phYaw = c0.yaw; s.phPitch = c0.pitch; s.phSpin = false; s.phPmin = D.pmin == null ? 8 : D.pmin;
         D.init(s);
         s.phSeed = 0; s.phPick = null; s.playing = false;
         if (A) s[A.key] = A.start || 0;
