@@ -153,8 +153,8 @@ function toast(m, t='info') {
 
 let modalCloseTimer = null;
 // 모달 닫기 대기(ms). 이 시간이 지나야 모달이 완전히 닫히고 이전 화면으로 돌아간다. 길면 "눌렀는데 한참 뒤에 된다"로 느껴진다.
-// index.html의 #modal-overlay/#modal-content 전환 시간(0.15s)과 맞춘다. 모션 줄이기 설정이면 기다리지 않는다.
-const APMS_MODAL_CLOSE_MS = 150;
+// index.html의 #modal-overlay/#modal-content 전환 시간(0.12s)과 맞춘다. 모션 줄이기 설정이면 기다리지 않는다.
+const APMS_MODAL_CLOSE_MS = 120;
 function apmsModalCloseDelay() {
     try {
         if (typeof window !== 'undefined' && typeof window.matchMedia === 'function' &&
@@ -171,7 +171,7 @@ let modalLayerSeq = 0;              // 모달·상위 레이어가 열린 순서
 let modalOpenSeq = 0;               // 현재 모달이 열린 순서
 let modalBackdropPressed = false;   // 누르기 시작이 배경이었는가(안에서 끌어서 밖에서 놓은 경우 제외)
 const apmsEscapeLayers = [];        // 모달 위에 뜨는 다른 레이어의 Esc 닫기 등록부
-let apmsModalLogicalOpen = false;   // 모달이 "논리적으로" 열려 있는가(closeModal 즉시 false. DOM의 hidden은 260ms 뒤에 바뀐다)
+let apmsModalLogicalOpen = false;   // 모달이 "논리적으로" 열려 있는가(closeModal 즉시 false. DOM의 hidden은 APMS_MODAL_CLOSE_MS 뒤에 바뀐다)
 const apmsNavGuard = { traversing: false, timer: null, syncQueued: false, holdBoot: false }; // 브라우저 뒤로 가기 연결 상태(아래 "브라우저 뒤로 가기" 구역). holdBoot: 새로고침 직후 반 화면 복원 판단이 끝날 때까지 보호 항목을 걷지 않는다(N4)
 let appHistoryState = {
     currentView: null,
