@@ -250,7 +250,7 @@
 
   /* 넓은 화면: 과정 = 가로 칸, 노선 = 가로줄 */
   function mapWide(visible, searching, pulse) {
-    const DW = 1200, NAMEW = 76, PADR = 6, CGAP = 12, ROW = 84, TOPY = 76, FS = 12, LH = 13.5;
+    const DW = 1200, NAMEW = 76, PADR = 30, CGAP = 12, ROW = 84, TOPY = 76, FS = 12, LH = 13.5;
     const cs = CAT.courses;
     const slots = cs.map((c) => Math.max(1, ...LANES.map((r) => labsAt(c.id, r).length)));
     const SP = (DW - NAMEW - PADR - CGAP * (cs.length - 1)) / slots.reduce((a, b) => a + b, 0);
@@ -345,8 +345,10 @@
 
   /* 좁은 화면: 과정 = 위→아래 구역, 노선 = 나란한 세로줄 */
   function mapTall(visible, searching, pulse) {
-    const VW = 360, LX0 = 22, LS = 19, TX = 178, RH = 40, BH = 42, FS = 13.5;
+    const VW = 360, LX0 = 22, LS = 17, RH = 40, BH = 42, FS = 13.5;
     const laneX = (lane) => LX0 + LANE_AT[lane] * LS;
+    // 역 이름 글자는 가장 오른쪽 노선의 역 동그라미(반지름 7 + 테두리) 오른쪽 끝에서 16 띄워 시작합니다. 노선이 늘어도 첫 글자가 동그라미에 가려지지 않습니다.
+    const TX = LX0 + (LANES.length - 1) * LS + 25;
     const bands = [];
     const pos = {};
     let y = 4;
