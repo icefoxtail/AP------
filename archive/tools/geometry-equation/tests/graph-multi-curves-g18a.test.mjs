@@ -54,3 +54,14 @@ test('a plan without the new keys keeps the old objects and no marks',async()=>{
   assert.equal(spec.displayFacts.multiCurveMarks,undefined);
   assert.deepEqual(spec.objects.map(object=>Object.keys(object).filter(key=>['color','curveStyle','curveWeight'].includes(key)).length),[0,0]);
 });
+
+test('spec (G18a-4): an emphasised stretch is its own heavier coloured curve with open / closed end dots',async()=>{
+  const spec=await specOf({capability:'multi-curve-figure-v1',caption:'c',graphPlan:{family:'multi-curve',viewport:[-2,8,-6,5],axisTickValues:{x:[],y:[]},curves:[
+    {id:'f',kind:'Y_OF_X',coefficients:['0','4','-1'],domain:{from:'-1',to:'4'},emphasis:[{to:'2',toState:'CLOSED'}],hideLabel:true},
+    {id:'s',kind:'SQRT',radicand:['-2','3'],offset:'2',domain:['2/3','6'],emphasis:[{from:'2/3',fromState:'CLOSED',to:'2',toState:'OPEN',color:'GREEN'}],hideLabels:['formula','start']}]}});
+  const emphasis=spec.objects.filter(object=>object.branch?.startsWith('EMPH_'));
+  assert.deepEqual(emphasis.map(object=>[object.id,object.branch,object.domain,object.color,object.curveWeight]),[['e-f-1','EMPH_f_1',[-1,2],'WARM','BOLD'],['e-s-1','EMPH_s_1',[2/3,2],'GREEN','BOLD']]);
+  assert.deepEqual(spec.displayFacts.multiCurveMarks.filter(mark=>mark.kind==='ENDPOINT').map(mark=>[mark.curve,mark.which,mark.state,mark.x]),[['f','to','CLOSED',2],['s','from','CLOSED',2/3],['s','to','OPEN',2]]);
+  // the base curves keep their own whole draw interval
+  assert.deepEqual(spec.objects.find(object=>object.id==='f-f').domain,[-1,4]);
+});

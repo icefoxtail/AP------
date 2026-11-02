@@ -381,6 +381,35 @@ def _mc_free_expression(curve):
     if curve['kind']=='RATIONAL':return '('+_polynomial_text(curve['numerator'])+')/('+_polynomial_text(curve['denominator'])+')'
     return '('+curve['offset']+')+('+curve['amplitude']+')*sqrt('+_polynomial_text(curve['radicand'])+')'
 
+def _mc_row_y(row,x_value):
+    """y of a frozen LINE / quadratic Y_OF_X / RATIONAL / SQRT row at x (a float), for the end dots of an emphasised stretch."""
+    from graph_framing import pp_exact_float
+    kind=row['kind']
+    if kind in ('LINE','Y_OF_X'):return sum(pp_exact_float(value)*x_value**index for index,value in enumerate(row['coefficients']))
+    if kind=='RATIONAL':
+        n=[pp_exact_float(value) for value in row['numerator']];d=[pp_exact_float(value) for value in row['denominator']]
+        return (n[0]+n[1]*x_value)/(d[0]+d[1]*x_value)
+    r=[pp_exact_float(value) for value in row['radicand']]
+    return pp_exact_float(row.get('offset','0'))+pp_exact_float(row.get('amplitude','1'))*math.sqrt(max(0.0,r[0]+r[1]*x_value))
+
+def _mc_emphasis_parts(row,vp,sampling):
+    """(G18a-4) the heavier coloured polyline over each emphasised stretch of a curve (tag EMPH_<id>_<n>) and its open / closed end dots."""
+    from graph_framing import pp_exact_float
+    from xml.sax.saxutils import escape
+    parts=[];ident=escape(str(row['id']))
+    for number,emphasis in enumerate(row.get('emphasis') or [],1):
+        domain=[pp_exact_float(emphasis['from']),pp_exact_float(emphasis['to'])]
+        result=sample(_mc_free_expression(row),domain,vp,critical_x=list(domain))
+        if len(result['branches'])!=1:raise ValueError('MULTI_CURVE_SAMPLING_FAILED:'+str(row['id']))
+        sampling.append({'id':'emph-'+str(row['id'])+'-'+str(number),**{key:value for key,value in result.items() if key!='branches'}})
+        points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
+        parts.append(f'<polyline id="emph-{ident}-{number}" data-role="curve" data-branch="EMPH_{ident}_{number}" points="{points}" fill="none" stroke="{PALETTE[emphasis["color"]]["line"]}" stroke-width="3.2"/>')
+        for which,state,value in (('from',emphasis['fromState'],domain[0]),('to',emphasis['toState'],domain[1])):
+            if state not in ('OPEN','CLOSED'):continue
+            cx,cy=vp.screen((value,_mc_row_y(row,value)))
+            parts.append(f'<circle id="emphasis-{ident}-{number}-{which}" data-role="emphasis-endpoint" data-state="{state}" cx="{cx:.12g}" cy="{cy:.12g}" r="4" fill="{"#fff" if state=="OPEN" else "#111"}" stroke="black"/>')
+    return parts
+
 def _produce_multi_curve(plan,vp):
     """Two to six curves: independent quadratic arcs (each drawn only on its own branch interval), lines, rational and square-root curves, with the data-branch
     ids the final composed figure uses (CURVE_<id> for y=f(x), a line or a square root, CURVE_<id>_L / _R for the two sides of a rational's pole,
@@ -409,6 +438,7 @@ def _produce_multi_curve(plan,vp):
                 sampling.append({'id':'curve-'+str(ident)+suffix.lower(),**{key:value for key,value in result.items() if key!='branches'}})
                 points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
                 parts.append(f'<polyline id="curve-{escape(str(ident))}{suffix.lower()}" data-role="curve" data-branch="CURVE_{escape(str(ident))}{suffix}" points="{points}" fill="none" stroke={stroke}{look}/>')
+            extras.extend(_mc_emphasis_parts(curve,vp,sampling))
             asymptotes=curve.get('asymptotes') or {}
             xmin,xmax,ymin,ymax=vp.bounds
             if (asymptotes.get('vertical') or {}).get('drawn'):

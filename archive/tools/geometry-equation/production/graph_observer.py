@@ -4114,7 +4114,9 @@ def multi_curve_audit(plan,svg,transform):
     errors=[];unsupported=[]
     try:
         raw=plan.get('curves')
-        if not isinstance(raw,list) or not 2<=len(raw)<=6:raise ValueError('MULTI_CURVE_COUNT_INVALID')
+        minimum=1 if isinstance(raw,list) and any(isinstance(entry,dict) and entry.get('emphasis') for entry in raw) else 2
+        if not isinstance(raw,list) or not minimum<=len(raw)<=6:raise ValueError('MULTI_CURVE_COUNT_INVALID')
+        raw=[{**entry,'domain':[entry['domain'].get('from'),entry['domain'].get('to')]} if isinstance(entry,dict) and isinstance(entry.get('domain'),dict) and set(entry['domain'])=={'from','to'} else entry for entry in raw]
         curves=[];ids=set();by_id={}
         for entry in raw:
             if not isinstance(entry,dict):raise ValueError('MULTI_CURVE_CURVE_INVALID')
@@ -4321,6 +4323,65 @@ def multi_curve_audit(plan,svg,transform):
                         for (ax,ay),(bx,by) in zip(points,points[1:]):
                             midpoint=(ax+bx)/2
                             if abs((ay+by)/2-expected_y(midpoint))*sy*display>.35:errors.append('MULTI_CURVE_INTERIOR_BOUND_FAIL:'+tag);break
+        # G18a-4: the emphasised stretches (a heavier coloured polyline tagged EMPH_<id>_<n> and the open / closed end dots), each rebuilt from the plan
+        emph_nodes={}
+        for node in root.iter():
+            if node.tag.split('}')[-1]=='polyline' and node.get('data-role')=='curve' and str(node.get('data-branch') or '').startswith('EMPH_'):emph_nodes.setdefault(node.get('data-branch'),[]).append(node)
+        wanted_emph={};wanted_dots_emph={}
+        for curve in curves:
+            raw_emphasis=curve['entry'].get('emphasis');ident=curve['id']
+            row=frozen.get(ident) or {}
+            if raw_emphasis is None:
+                if row.get('emphasis'):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+ident)
+                continue
+            if curve['kind']=='X_OF_Y' or not isinstance(raw_emphasis,list) or not 1<=len(raw_emphasis)<=3:raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+            lo,hi=curve['interval'];previous=None;frozen_rows=row.get('emphasis') if isinstance(row.get('emphasis'),list) else []
+            if len(frozen_rows)!=len(raw_emphasis):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+ident)
+            for number,item in enumerate(raw_emphasis,1):
+                if not isinstance(item,dict) or set(item)-{'from','to','color','fromState','toState'}:raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+                start=lo if item.get('from') is None else _mc_obs_fraction(item['from'],'MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+                end=hi if item.get('to') is None else _mc_obs_fraction(item['to'],'MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+                if not (lo<=start<end<=hi) or (previous is not None and start<previous):raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+                previous=end;color=item.get('color','WARM');states=(item.get('fromState','NONE'),item.get('toState','NONE'))
+                if color not in GRAPH_COLOR_LINES or any(state not in ('NONE','OPEN','CLOSED') for state in states):raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+                if curve['kind']=='RATIONAL' and start<-curve['d'][0]/curve['d'][1]<end:raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+                if number<=len(frozen_rows):
+                    got=frozen_rows[number-1]
+                    try:same=isinstance(got,dict) and _pp_same(_pp_exact(got['from']),start) and _pp_same(_pp_exact(got['to']),end) and got.get('color')==color and (got.get('fromState'),got.get('toState'))==states
+                    except (KeyError,ValueError,TypeError):same=False
+                    if not same:errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+ident)
+                tag='EMPH_'+ident+'_'+str(number);wanted_emph[tag]=(curve,float(start),float(end),color)
+                for which,state,value in (('from',states[0],float(start)),('to',states[1],float(end))):
+                    if state!='NONE':wanted_dots_emph['emphasis-'+ident+'-'+str(number)+'-'+which]=(curve,value,state)
+        if set(emph_nodes)!=set(wanted_emph) or any(len(rows)!=1 for rows in emph_nodes.values()):errors.append('MULTI_CURVE_EMPHASIS_INVENTORY_MISMATCH')
+        def curve_y(curve,x_value):return _mc_obs_y(curve,Fraction(x_value).limit_denominator(10**9) if curve['kind'] in MC_FREE_KINDS else x_value)
+        for tag,(curve,start,end,color) in wanted_emph.items():
+            found=emph_nodes.get(tag) or []
+            if len(found)!=1:continue
+            node=found[0]
+            values=[float(value) for value in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
+            if len(values)<4 or len(values)%2 or not all(math.isfinite(value) for value in values):errors.append('MULTI_CURVE_EMPHASIS_POINTS_INVALID:'+tag);continue
+            points=[((values[i]-transform['originX'])/sx,(transform['originY']-values[i+1])/sy) for i in range(0,len(values),2)]
+            if node.get('stroke')!=GRAPH_COLOR_LINES[color]:errors.append('MULTI_CURVE_EMPHASIS_LOOK_MISMATCH:'+tag)
+            try:heavy=float(node.get('stroke-width'))>=3.0
+            except (TypeError,ValueError):heavy=False
+            if not heavy or node.get('stroke-dasharray'):errors.append('MULTI_CURVE_EMPHASIS_LOOK_MISMATCH:'+tag)
+            if any(right[0]<=left[0] for left,right in zip(points,points[1:])) or any(px<start-x_tol or px>end+x_tol for px,_ in points):errors.append('MULTI_CURVE_EMPHASIS_OUTSIDE_STRETCH:'+tag);continue
+            for end_point,want in ((points[0],start),(points[-1],end)):
+                if abs(end_point[0]-want)>x_tol and not (abs(end_point[1]-ymax)<=y_tol or abs(end_point[1]-ymin)<=y_tol):errors.append('MULTI_CURVE_EMPHASIS_COVERAGE_FAIL:'+tag);break
+            for px,py in points:
+                want_y=curve_y(curve,px)
+                if want_y is None or abs(py-want_y)*sy*display>.35:errors.append('MULTI_CURVE_EMPHASIS_WRONG_CURVE:'+tag);break
+        dots_emph={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='circle' and str(node.get('id') or '').startswith('emphasis-')}
+        if set(dots_emph)!=set(wanted_dots_emph):errors.append('MULTI_CURVE_EMPHASIS_DOT_INVENTORY_MISMATCH')
+        for ident,(curve,value,state) in wanted_dots_emph.items():
+            node=dots_emph.get(ident)
+            if node is None:continue
+            want_y=curve_y(curve,value)
+            try:got=((float(node.get('cx'))-transform['originX'])/sx,(transform['originY']-float(node.get('cy')))/sy)
+            except (TypeError,ValueError):errors.append('MULTI_CURVE_EMPHASIS_DOT_MISMATCH:'+ident);continue
+            filled=node.get('fill') not in ('#fff','#ffffff','white')
+            if want_y is None or abs(got[0]-value)*sx*display>.35 or abs(got[1]-want_y)*sy*display>.35 or node.get('data-state')!=state or filled!=(state=='CLOSED'):errors.append('MULTI_CURVE_EMPHASIS_DOT_MISMATCH:'+ident)
         # a bold curve is heavier than every plain one
         bold=[w for w,is_bold in widths.values() if is_bold];plain=[w for w,is_bold in widths.values() if not is_bold]
         if bold and plain and min(bold)<=max(plain):errors.append('MULTI_CURVE_WEIGHT_MISMATCH')

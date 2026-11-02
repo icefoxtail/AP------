@@ -3822,7 +3822,13 @@ MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plot
 MULTI_CURVE_KINDS=('Y_OF_X','X_OF_Y','LINE','RATIONAL','SQRT')
 MULTI_CURVE_FREE_KINDS=('LINE','RATIONAL','SQRT')
 MULTI_CURVE_KIND_KEYS={'Y_OF_X':{'coefficients','domain','branch'},'X_OF_Y':{'coefficients','domain','branch'},'LINE':{'coefficients','domain'},'RATIONAL':{'numerator','denominator','domain'},'SQRT':{'radicand','amplitude','offset','domain'}}
-MULTI_CURVE_LOOK_KEYS={'id','kind','label','color','weight','style','hideLabel','hideLabels','inverseOf'}
+MULTI_CURVE_LOOK_KEYS={'id','kind','label','color','weight','style','hideLabel','hideLabels','inverseOf','emphasis'}
+# G18a-4: emphasis:[{from?,to?,color?,fromState?,toState?}] draws only that x stretch of the curve heavier and in a colour, with an open or closed end dot (states OPEN | CLOSED | NONE);
+# domain may be written {from,to} as well as [from,to] (the curve is then not drawn outside it).
+MULTI_CURVE_EMPHASIS_KEYS={'from','to','color','fromState','toState'}
+MULTI_CURVE_EMPHASIS_STATES=('NONE','OPEN','CLOSED')
+MULTI_CURVE_EMPHASIS_MAX=3
+MULTI_CURVE_EMPHASIS_COLOR='WARM'
 MULTI_CURVE_HIDE_LABELS=('formula','asymptotes','start')
 MULTI_CURVE_WEIGHTS=('BOLD','NORMAL')
 MULTI_CURVE_STYLES=('SOLID','DASHED')
@@ -4012,7 +4018,9 @@ def multi_curve_source(plan):
     unknown=set(plan)-MULTI_CURVE_FIELDS
     if unknown:raise ValueError('MULTI_CURVE_FIELD_UNKNOWN:'+sorted(unknown)[0])
     raw=plan.get('curves')
-    if not isinstance(raw,list) or not MULTI_CURVE_MIN_CURVES<=len(raw)<=MULTI_CURVE_MAX_CURVES:raise ValueError('MULTI_CURVE_COUNT_INVALID')
+    minimum=1 if isinstance(raw,list) and any(isinstance(entry,dict) and entry.get('emphasis') for entry in raw) else MULTI_CURVE_MIN_CURVES   # a single curve is a figure when one stretch of it is the point
+    if not isinstance(raw,list) or not minimum<=len(raw)<=MULTI_CURVE_MAX_CURVES:raise ValueError('MULTI_CURVE_COUNT_INVALID')
+    raw=[{**entry,'domain':[entry['domain'].get('from'),entry['domain'].get('to')]} if isinstance(entry,dict) and isinstance(entry.get('domain'),dict) and set(entry['domain'])=={'from','to'} else entry for entry in raw]
     window=_mc_window(plan)
     curves=[];ids=set();by_id={}
     for entry in raw:
@@ -4075,7 +4083,35 @@ def multi_curve_source(plan):
     # The new kinds and the inverses get their branches here (a quadratic keeps the ones it was given).
     for curve in curves:
         if 'branches' not in curve:curve['branches']=_mc_free_branches(curve,window)
+    for entry,curve in zip(raw,curves):
+        curve['emphasis']=_mc_emphasis_rows(entry,curve)
     return curves
+
+def _mc_emphasis_rows(entry,curve):
+    """The emphasised stretches of a curve (G18a-4), exact: from/to default to the curve's own ends, lie inside its draw interval, are in order and do not overlap, and a
+    stretch of a rational never crosses its pole. Only a curve drawn as y(x) with exact ends can carry one."""
+    raw=entry.get('emphasis') if isinstance(entry,dict) else None
+    ident=curve['id']
+    if raw is None:return []
+    if not isinstance(raw,list) or not 1<=len(raw)<=MULTI_CURVE_EMPHASIS_MAX:raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+    if curve['kind']=='X_OF_Y':raise ValueError('MULTI_CURVE_EMPHASIS_UNSUPPORTED:'+ident)
+    try:lo,hi=(_mc_to_fraction(value,ident) for value in curve['interval'])
+    except ValueError:raise ValueError('MULTI_CURVE_EMPHASIS_UNSUPPORTED:'+ident) from None
+    rows=[];previous=None
+    for index,item in enumerate(raw,1):
+        if not isinstance(item,dict) or set(item)-MULTI_CURVE_EMPHASIS_KEYS:raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+        start=lo if item.get('from') is None else _mc_fraction(item['from'],'MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+        end=hi if item.get('to') is None else _mc_fraction(item['to'],'MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+        if not lo<=start<end<=hi or (previous is not None and start<previous):raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+        color=item.get('color',MULTI_CURVE_EMPHASIS_COLOR)
+        if color not in OVERLAY_COLOR_NAMES:raise ValueError('MULTI_CURVE_COLOR_INVALID:'+ident)
+        states=[item.get('fromState','NONE'),item.get('toState','NONE')]
+        if any(state not in MULTI_CURVE_EMPHASIS_STATES for state in states):raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+        if curve['kind']=='RATIONAL':
+            pole=-curve['denominator'][0]/curve['denominator'][1]
+            if start<pole<end:raise ValueError('MULTI_CURVE_EMPHASIS_ACROSS_POLE:'+ident)
+        rows.append({'from':start,'to':end,'color':color,'fromState':states[0],'toState':states[1]});previous=end
+    return rows
 
 def _mc_free_branches(curve,window):
     """The exact branches of a curve that has no vertex split: LINE, SQRT and a quadratic half are one branch; RATIONAL is split at its pole (LEFT / RIGHT)
@@ -4145,6 +4181,7 @@ def _mc_row(curve):
             row['start']={'x':_mc_text(boundary),'y':_mc_text(curve['offset']),'drawn':bool(start==boundary)}
     if curve.get('inverseOf') is not None:row['inverseOf']=curve['inverseOf']
     for key,value in (curve.get('look') or {}).items():row[key]=value
+    if curve.get('emphasis'):row['emphasis']=[{'from':_mc_text(value['from']),'to':_mc_text(value['to']),'color':value['color'],'fromState':value['fromState'],'toState':value['toState']} for value in curve['emphasis']]
     row['branches']=[]
     for branch in curve['branches']:
         entry={'side':branch['side'],'xInterval':[_pp_text(value) if not isinstance(value,Fraction) else _mc_text(value) for value in branch['xInterval']]}
@@ -4179,6 +4216,7 @@ def fit_multi_curve(plan):
         if 'label' in curve['look'] and entry.get('label')!=curve['look']['label']:entry={**entry,'label':curve['look']['label']}
         # the draw interval of a curve the author left to the window (or an inverse's image) is written down, so the observer reads the same interval the engine draws
         if 'domain' not in entry:entry={**entry,'domain':[_mc_text(value) for value in curve['interval']]}
+        elif isinstance(entry['domain'],dict):entry={**entry,'domain':[entry['domain']['from'],entry['domain']['to']]}
         labelled.append(entry)
     fitted['curves']=labelled
     fitted.update({'domain':[viewport[0],viewport[1]],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':MULTI_CURVE_OVERVIEW_POLICY,

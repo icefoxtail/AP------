@@ -32,7 +32,7 @@ function reserveCurveBranches(spec){
   const taken=new Set((spec.objects??[]).map(object=>object?.branch).filter(value=>typeof value==='string'));
   const tags=new Map();let index=1;
   const objects=(spec.objects??[]).map(object=>{
-    if(typeof object?.branch!=='string'||!object.branch.startsWith('CURVE_'))return object;
+    if(typeof object?.branch!=='string'||!(object.branch.startsWith('CURVE_')||object.branch.startsWith('EMPH_')))return object;
     let reserved;do{reserved='REF_MC'+String(index++);}while(taken.has(reserved));
     taken.add(reserved);tags.set(reserved,object.branch);
     return {...object,branch:reserved};
