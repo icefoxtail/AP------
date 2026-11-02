@@ -259,10 +259,10 @@
   }
 
   /* ------------------------------------------------------------------ 조절 값 만들기 */
-  const P = (label, min, max, step, value, o = {}) => ({ value, min, max, step, color: o.color || 'sky', label, hint: o.hint, format: o.format || ((v) => fmtN(v)) });
+  const P = (label, min, max, step, value, o = {}) => ({ value, min, max, step, color: o.color || 'sky', label, hint: o.hint, onInput: o.onInput, format: o.format || ((v) => fmtN(v)) });
   const VIEW_PARAMS = {
     phYaw: P('좌우로 돌려 보기', -135, 135, 1, -30, { color: 'muted', format: (v) => Math.round(v) + '°' }),
-    phPitch: P('위아래로 기울여 보기', 8, 80, 1, 24, { color: 'muted', format: (v) => Math.round(v) + '°', onInput: (s) => { if (s.phPmin != null && s.phPitch < s.phPmin) s.phPitch = s.phPmin; } })
+    phPitch: P('위아래로 기울여 보기', 8, 80, 1, 24, { color: 'muted', format: (v) => Math.round(v) + '°', onInput: (s, lab) => { if (s.phPmin != null && s.phPitch < s.phPmin) { s.phPitch = s.phPmin; try { lab.refs.controls.querySelector('input[aria-label^="위아래"]').value = s.phPmin; } catch (e) { /* 손잡이 위치만 못 맞춰도 숫자는 맞음 */ } } } })
   };
   const VIEW = ['phYaw', 'phPitch'];
 
@@ -400,7 +400,7 @@
         out.push({ id: 'reset', icon: 'reset', label: '처음으로', run: (s) => { s.playing = false; s[A.key] = 0; if (D.onAnim) D.onAnim(s, 0); } });
       }
       if (D.actions) D.actions(s).forEach((a) => out.push(a)); // 장면마다 더하는 버튼(예: 짝 보기)
-      if (D.spin !== false) out.push({ id: 'spin', icon: (s) => (s.phSpin ? 'pause' : 'play'), label: (s) => (s.phSpin ? '돌리기 멈춤' : '빙글 돌려 보기'), on: (s) => !!s.phSpin, run: (s) => { s.phSpin = !s.phSpin; } });
+      if (D.spin !== false) out.push({ id: 'spin', icon: (s) => (s.phSpin ? 'pause' : 'play'), label: (s) => (s.phSpin ? '돌리기 멈춤' : '빙글 돌려 보기'), on: (s) => !!s.phSpin, run: (s) => { s.phSpin = !s.phSpin; if (!s.phSpin) s.phYaw = clamp(s.phYaw || 0, -135, 135); } });
       return out.length ? out : undefined;
     };
     return {
