@@ -379,7 +379,7 @@ def axis_ratio_errors(plan,transform):
     axisRatio must repeat it and the observed final-SVG scale must follow it."""
     if 'axisScale' in plan:
         proportion=axis_scale_proportion(plan['axisScale'])
-        if proportion is None or plan.get('overviewPolicy')!='PIECEWISE_POLYNOMIAL_OVERVIEW_v1' or plan.get('axisSqueeze') not in (None,False):return ['AXIS_SCALE_INVALID']
+        if proportion is None or plan.get('overviewPolicy') not in ('PIECEWISE_POLYNOMIAL_OVERVIEW_v1','MULTI_CURVE_OVERVIEW_v1') or plan.get('axisSqueeze') not in (None,False):return ['AXIS_SCALE_INVALID']
         declared=float(proportion);recorded=plan.get('axisRatio')
         if isinstance(recorded,bool) or not isinstance(recorded,(int,float)) or abs(recorded-declared)>1e-9*declared:return ['AXIS_SCALE_RATIO_MISMATCH']
         return ['EQUAL_UNIT_SCALE_MISMATCH'] if abs(transform['sy']-declared*transform['sx'])>1e-6*transform['sx'] else []
@@ -2726,6 +2726,7 @@ def _ov_line(entry):
         if entry['color'] not in GRAPH_COLOR_LINES:raise ValueError('OVERLAY_COLOR_INVALID')
         extra['color']=entry['color']
     if entry.get('labelValues') is not None:extra['labelValues']=entry['labelValues']
+    if 'ownership' in entry and entry['ownership'] not in ('STRICT','NEAREST'):raise ValueError('OVERLAY_LINE_OWNERSHIP_INVALID')
     if 'x' in entry:
         if 'slope' in entry or 'intercept' in entry:raise ValueError('OVERLAY_LINE_INVALID')
         return {'id':entry.get('id'),'kind':'VERTICAL','x':_ov_reader(entry.get('x')),**extra}
@@ -4083,10 +4084,21 @@ def _mc_obs_free(entry,ident):
         if curve['r'][1]==0:raise ValueError(code)
         curve['a']=_mc_obs_fraction(entry.get('amplitude','1'),code);curve['o']=_mc_obs_fraction(entry.get('offset','0'),code)
         if curve['a']==0:raise ValueError(code)
+    curve['abs']=_mc_obs_abs(entry,ident)
     return curve
 
+def _mc_obs_abs(entry,ident):
+    """(G18c) abs:true on a curve entry: the figure draws y=|f(x)| (read again from the plan, never from the frozen row)."""
+    if 'abs' not in entry:return False
+    if entry['abs'] is not True and entry['abs'] is not False:raise ValueError('MULTI_CURVE_ABS_INVALID:'+ident)
+    return entry['abs']
+
 def _mc_obs_y(curve,x_value):
-    """y of a LINE / RATIONAL / SQRT / quadratic-Y_OF_X curve at x as a float, or None where it is undefined."""
+    """y of a LINE / RATIONAL / SQRT / quadratic-Y_OF_X curve at x as a float, or None where it is undefined; |f(x)| for an abs curve."""
+    value=_mc_obs_y_plain(curve,x_value)
+    return abs(value) if value is not None and curve.get('abs') else value
+
+def _mc_obs_y_plain(curve,x_value):
     kind=curve['kind']
     if kind=='LINE':return float(curve['c'][0]+curve['c'][1]*x_value)
     if kind=='RATIONAL':
@@ -4119,6 +4131,147 @@ def _mc_obs_inverse_definition(source,ident):
         return {'kind':'Y_OF_X','coefficients':[o*o*q2-c0/c1,-2*o*q2,q2]}
     return None
 
+MC_REGION_FIELDS={'id','between','under','from','to','halfPlane','and','fill','label'}
+
+def _mc_region_expected(plan,entry,by_id,viewport):
+    """(G18c) One declared region rebuilt from the plan's own fields: ('BETWEEN',names,start,end,[upper,lower]) with the upper / lower fixed by this observer's own
+    evaluation, or ('HALF_PLANE',box)."""
+    region_id=entry.get('id')
+    if set(entry)-MC_REGION_FIELDS:raise ValueError('GRAPH_REGION_FIELD_UNKNOWN:'+str(region_id))
+    shapes=[key for key in ('between','under','halfPlane') if key in entry]
+    if len(shapes)!=1:raise ValueError('GRAPH_REGION_FIELD_INVALID:'+str(region_id))
+    if shapes[0]=='halfPlane':
+        x0,x1,y0,y1=(float(value) for value in viewport)
+        sides=[entry['halfPlane']]+([entry['and']] if 'and' in entry else [])
+        seen=set()
+        for side in sides:
+            axis=[key for key in side if key in ('x','y')] if isinstance(side,dict) else []
+            if len(axis)!=1 or len(side)!=2 or axis[0] in seen or side[axis[0]] not in ('<','<=','>','>='):raise ValueError('GRAPH_REGION_FIELD_INVALID:'+str(region_id))
+            seen.add(axis[0]);value=float(_mc_obs_fraction(side['value'],'GRAPH_REGION_FIELD_INVALID:'+str(region_id)))
+            less=side[axis[0]] in ('<','<=')
+            if axis[0]=='x':
+                if not x0<value<x1:raise ValueError('GRAPH_REGION_EMPTY:'+str(region_id))
+                x1,x0=(value,x0) if less else (x1,value)
+            else:
+                if not y0<value<y1:raise ValueError('GRAPH_REGION_EMPTY:'+str(region_id))
+                y1,y0=(value,y0) if less else (y1,value)
+        return ('HALF_PLANE',[x0,x1,y0,y1])
+    names=[entry['under'],'axis'] if shapes[0]=='under' else entry['between']
+    if not isinstance(names,list) or len(names)!=2 or names[0]==names[1] or any(not isinstance(name,str) for name in names):raise ValueError('GRAPH_REGION_FIELD_INVALID:'+str(region_id))
+    start=_mc_obs_fraction(entry.get('from'),'GRAPH_REGION_DOMAIN_INVALID:'+str(region_id));end=_mc_obs_fraction(entry.get('to'),'GRAPH_REGION_DOMAIN_INVALID:'+str(region_id))
+    if not start<end:raise ValueError('GRAPH_REGION_DOMAIN_INVALID:'+str(region_id))
+    boundaries=[]
+    for name in names:
+        curve='axis' if name=='axis' else by_id.get(name)
+        if curve is None or (curve!='axis' and curve.get('kind')=='X_OF_Y'):raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+str(region_id)+':'+name)
+        if curve!='axis':
+            lo,hi=curve['interval']
+            if float(start)<float(lo)-1e-9 or float(end)>float(hi)+1e-9:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+str(region_id)+':'+name)
+            if curve['kind']=='RATIONAL' and start<=-curve['d'][0]/curve['d'][1]<=end:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+str(region_id)+':'+name)
+        boundaries.append(curve)
+    def value(curve,x_value):
+        if curve=='axis':return 0.0
+        return _mc_obs_y(curve,Fraction(x_value).limit_denominator(10**9) if curve['kind'] in MC_FREE_KINDS else float(x_value))
+    signs=set()
+    for index in range(1,41):
+        x_value=start+(end-start)*Fraction(index,41);a=value(boundaries[0],x_value);b=value(boundaries[1],x_value)
+        if a is None or b is None:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+str(region_id))
+        if abs(a-b)>1e-9:signs.add(a>b)
+    if not signs:raise ValueError('GRAPH_REGION_EMPTY:'+str(region_id))
+    if len(signs)>1:raise ValueError('GRAPH_REGION_BOUNDARIES_CROSS:'+str(region_id))
+    order=[0,1] if signs=={True} else [1,0]
+    return ('BETWEEN',[names[order[0]],names[order[1]]],start,end,[lambda x_value,c=boundaries[order[0]]:value(c,x_value),lambda x_value,c=boundaries[order[1]]:value(c,x_value)])
+
+def multi_curve_region_errors(plan,transform,root,by_id,features):
+    """(G18c) Independent check of graphPlan.regions on a multi-curve figure: each region is rebuilt from the plan's own fields; the fill path in the FINAL SVG must follow
+    both boundary curves between from and to (or fill exactly the frame piece of a half-plane), be painted beneath every stroke, carry the declared fill, hold its label
+    inside, and no undeclared fill may be drawn. The frozen rows must say the same."""
+    errors=[]
+    declared=plan.get('regions') or []
+    frozen=(features or {}).get('regions') or []
+    if not isinstance(declared,list) or not isinstance(frozen,list):return ['GRAPH_REGION_INVENTORY_REQUIRED']
+    frozen_by={row.get('id'):row for row in frozen if isinstance(row,dict)}
+    if sorted(frozen_by,key=str)!=sorted((row.get('id') for row in declared if isinstance(row,dict)),key=str):errors.append('GRAPH_REGION_INVENTORY_MISMATCH')
+    elements={node.get('id'):node for node in root.iter() if node.get('id')}
+    order={id(node):index for index,node in enumerate(root.iter())}
+    paths={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='path' and node.get('data-mark')=='graph-region'}
+    sx,sy,display=transform['sx'],transform['sy'],transform['displayScale']
+    xtol=GRAPH_REGION_BOUNDARY_TOLERANCE/max(1e-12,sx*display);ytol=GRAPH_REGION_BOUNDARY_TOLERANCE/max(1e-12,sy*display)
+    to_model=lambda px,py:((px-transform['originX'])/sx,(transform['originY']-py)/sy)
+    polygons=[];declared_ids=set()
+    for entry in declared:
+        if not isinstance(entry,dict):errors.append('GRAPH_REGION_INVENTORY_MISMATCH');continue
+        region_id=entry.get('id')
+        if not isinstance(region_id,str):errors.append('GRAPH_REGION_INVENTORY_MISMATCH');continue
+        declared_ids.add(region_id)
+        try:expected=_mc_region_expected(plan,entry,by_id,plan['viewport'])
+        except (ValueError,KeyError,TypeError,ZeroDivisionError) as error:
+            errors.append(str(error) if isinstance(error,ValueError) and str(error).startswith('GRAPH_REGION') else 'GRAPH_REGION_INVENTORY_MISMATCH:'+region_id);continue
+        fill=entry.get('fill','LIGHT')
+        if fill not in GRAPH_REGION_FILLS:errors.append('GRAPH_REGION_FILL_UNSUPPORTED:'+region_id)
+        row=frozen_by.get(region_id)
+        if row is None:errors.append('GRAPH_REGION_INVENTORY_MISMATCH:'+region_id)
+        else:
+            same=row.get('fill')==fill and row.get('label')==entry.get('label') and row.get('kind')==expected[0]
+            try:
+                if expected[0]=='BETWEEN':
+                    same=same and row.get('upper')==expected[1][0] and row.get('lower')==expected[1][1] and _pp_same(_pp_exact(row.get('from')),expected[2]) and _pp_same(_pp_exact(row.get('to')),expected[3])
+                else:same=same and isinstance(row.get('box'),list) and len(row['box'])==4 and all(abs(float(a)-float(b))<=1e-9*max(1,abs(float(b))) for a,b in zip(row['box'],expected[1]))
+            except (ValueError,TypeError):same=False
+            if not same:errors.append('GRAPH_REGION_INVENTORY_MISMATCH:'+region_id)
+        node=paths.get('region-'+region_id)
+        if node is None:errors.append('GRAPH_REGION_MISSING:'+region_id);continue
+        if node.get('fill')!=GRAPH_REGION_FILLS.get(fill) or (None if node.get('fill-opacity') is None else round(float(node.get('fill-opacity')),6))!=GRAPH_REGION_OPACITY.get(fill):errors.append('GRAPH_REGION_FILL_MISMATCH:'+region_id)
+        if node.get('fill-rule')!='evenodd':errors.append('GRAPH_REGION_FILL_RULE_MISMATCH:'+region_id)
+        if node.get('stroke') not in {None,'none'}:errors.append('GRAPH_REGION_STROKE_PRESENT:'+region_id)
+        try:polygon=[to_model(px,py) for px,py in _region_polygon(node)]
+        except ValueError as error:errors.append(str(error)+':'+region_id);continue
+        polygons.append((region_id,polygon))
+        if expected[0]=='HALF_PLANE':
+            x0,x1,y0,y1=expected[1]
+            if any(x<x0-xtol or x>x1+xtol or y<y0-ytol or y>y1+ytol for x,y in polygon):errors.append('GRAPH_REGION_OUTSIDE_INTERVAL:'+region_id)
+            if (abs(min(x for x,_ in polygon)-x0)>xtol or abs(max(x for x,_ in polygon)-x1)>xtol or abs(min(y for _,y in polygon)-y0)>ytol or abs(max(y for _,y in polygon)-y1)>ytol):errors.append('GRAPH_REGION_BOUNDARY_MISMATCH:'+region_id)
+            if not _region_inside(polygon,((x0+x1)/2,(y0+y1)/2)):errors.append('GRAPH_REGION_INTERIOR_MISSING:'+region_id)
+            area=abs(0.5*sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(polygon,polygon[1:]+polygon[:1])))
+            if abs(area-(x1-x0)*(y1-y0))>1e-3*(x1-x0)*(y1-y0):errors.append('GRAPH_REGION_BOUNDARY_MISMATCH:'+region_id)
+        else:
+            from_x,to_x=float(expected[2]),float(expected[3])
+            if abs(min(x for x,_ in polygon)-from_x)>xtol or abs(max(x for x,_ in polygon)-to_x)>xtol or any(x<from_x-xtol or x>to_x+xtol for x,_ in polygon):errors.append('GRAPH_REGION_OUTSIDE_INTERVAL:'+region_id)
+            for index in range(1,10):
+                x=from_x+(to_x-from_x)*index/10
+                yu=expected[4][0](x);yl=expected[4][1](x)
+                if yu is None or yl is None:errors.append('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id);break
+                if yu<=yl:errors.append('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id);break
+                crossings=_region_crossings(polygon,x)
+                if len(crossings)!=2:
+                    crossings=_region_crossings(polygon,x+1e-7*max(1,abs(x)))
+                    if len(crossings)!=2:errors.append('GRAPH_REGION_BOUNDARY_MISMATCH:'+region_id);continue
+                if abs(crossings[-1]-yu)>ytol or abs(crossings[0]-yl)>ytol:errors.append('GRAPH_REGION_BOUNDARY_MISMATCH:'+region_id)
+                band=max(abs(yu-yl),1e-9)
+                if not _region_inside(polygon,(x,(yu+yl)/2)):errors.append('GRAPH_REGION_INTERIOR_MISSING:'+region_id)
+                if _region_inside(polygon,(x,yu+max(4*ytol,GRAPH_REGION_OUTSIDE*band))) or _region_inside(polygon,(x,yl-max(4*ytol,GRAPH_REGION_OUTSIDE*band))):errors.append('GRAPH_REGION_OUTSIDE_BOUNDARY:'+region_id)
+        mine=order[id(node)]
+        if any(order[id(other)]<mine and (other.tag.split('}')[-1] in {'line','circle','polyline','polygon'} or (other.tag.split('}')[-1]=='path' and other.get('data-mark')!='graph-region')) for other in root.iter()):
+            errors.append('GRAPH_REGION_NOT_BENEATH_STROKES:'+region_id)
+        if entry.get('label') is not None:
+            box=_region_label_box(elements,'region-'+region_id+'-label')
+            if box is None:errors.append('GRAPH_REGION_LABEL_MISSING:'+region_id)
+            else:
+                x,y,w,h=box
+                corners=[to_model(x,y),to_model(x+w,y),to_model(x,y+h),to_model(x+w,y+h)]
+                if not _region_inside(polygon,to_model(x+w/2,y+h/2)) or any(not _region_inside(polygon,corner) for corner in corners):errors.append('GRAPH_REGION_LABEL_OUTSIDE:'+region_id)
+    for path_id in paths:
+        if path_id not in {'region-'+region_id for region_id in declared_ids}:errors.append('GRAPH_REGION_UNDECLARED:'+str(path_id))
+    for index,(left_id,left) in enumerate(polygons):
+        for right_id,right in polygons[index+1:]:
+            xs=sorted({point[0] for point in left});ys=sorted({point[1] for point in left});found=False
+            for i in range(1,10):
+                for j in range(1,10):
+                    point=(xs[0]+(xs[-1]-xs[0])*i/10,ys[0]+(ys[-1]-ys[0])*j/10)
+                    if _region_inside(left,point) and _region_inside(right,point):errors.append('GRAPH_REGION_OVERLAP:'+left_id+':'+right_id);found=True;break
+                if found:break
+    return sorted(set(errors))
+
 def multi_curve_audit(plan,svg,transform):
     """Independent multi-curve audit: every curve and branch is rebuilt from the plan's exact definitions, the frozen
     inventory is compared, and every final SVG polyline tagged CURVE_<id>[_POS|_NEG|_L|_R] is checked against the recomputed
@@ -4129,7 +4282,7 @@ def multi_curve_audit(plan,svg,transform):
     errors=[];unsupported=[]
     try:
         raw=plan.get('curves')
-        minimum=1 if isinstance(raw,list) and any(isinstance(entry,dict) and entry.get('emphasis') for entry in raw) else 2
+        minimum=1 if isinstance(raw,list) and (any(isinstance(entry,dict) and (entry.get('emphasis') or entry.get('abs') is True) for entry in raw) or (isinstance(plan.get('regions'),list) and plan['regions'])) else 2
         if not isinstance(raw,list) or not minimum<=len(raw)<=6:raise ValueError('MULTI_CURVE_COUNT_INVALID')
         raw=[{**entry,'domain':[entry['domain'].get('from'),entry['domain'].get('to')]} if isinstance(entry,dict) and isinstance(entry.get('domain'),dict) and set(entry['domain'])=={'from','to'} else entry for entry in raw]
         curves=[];ids=set();by_id={}
@@ -4141,7 +4294,7 @@ def multi_curve_audit(plan,svg,transform):
             look={key:entry[key] for key in ('color','weight','style') if key in entry}
             if entry.get('inverseOf') is not None:
                 source=by_id.get(entry['inverseOf'])
-                if source is None or source.get('inverse'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+                if source is None or source.get('inverse') or source.get('abs'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
                 definition=_mc_obs_inverse_definition(source,ident) if source['kind'] in MC_FREE_KINDS else None
                 if definition is None:
                     # a quadratic half: its inverse is a square root (own derivation, exact)
@@ -4206,7 +4359,7 @@ def multi_curve_audit(plan,svg,transform):
                     branches.append({'side':'NEGATIVE','xInterval':(min(xv,xe),max(xv,xe)),'yInterval':(lo,yv),'sign':-1,'vertex':(xv,yv)})
                 if not branches:raise ValueError('MULTI_CURVE_BRANCH_EMPTY:'+ident)
             else:raise ValueError('MULTI_CURVE_KIND_INVALID:'+ident)
-            curve={'id':ident,'kind':kind,'branch':branch_name,'c':(c0,c1,c2),'interval':(lo,hi),'branches':branches,'look':look,'inverse':False,'entry':entry}
+            curve={'id':ident,'kind':kind,'branch':branch_name,'c':(c0,c1,c2),'interval':(lo,hi),'branches':branches,'look':look,'inverse':False,'entry':entry,'abs':_mc_obs_abs(entry,ident)}
             if kind=='Y_OF_X':curve['f']=(float(c0),float(c1),float(c2))
             curves.append(curve);by_id[ident]=curve
         features=plan.get('multiCurveFeatures')
@@ -4239,6 +4392,7 @@ def multi_curve_audit(plan,svg,transform):
             for key in ('color','weight','style'):
                 if row.get(key)!=curve['look'].get(key):same=False
             if (row.get('inverseOf') or None)!=(curve['entry'].get('inverseOf') or None):same=False
+            if bool(row.get('abs'))!=bool(curve.get('abs')):same=False
             if not same:errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id'])
             rows=row.get('branches')
             if not isinstance(rows,list) or len(rows)!=len(curve['branches']):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id']);continue
@@ -4409,6 +4563,7 @@ def multi_curve_audit(plan,svg,transform):
         for curve in curves:
             if curve['kind']!='RATIONAL':continue
             lo,hi=curve['interval'];pole=-curve['d'][0]/curve['d'][1];horizontal=curve['n'][1]/curve['d'][1]
+            if curve.get('abs'):horizontal=abs(horizontal)
             if lo<pole<hi and pole!=0:wanted_lines['ASYM_'+curve['id']+'_V']=('V',float(pole))
             if horizontal!=0:wanted_lines['ASYM_'+curve['id']+'_H']=('H',float(horizontal))
             row=frozen.get(curve['id']) or {}
@@ -4440,6 +4595,7 @@ def multi_curve_audit(plan,svg,transform):
             try:got=((float(node.get('cx'))-transform['originX'])/sx,(transform['originY']-float(node.get('cy')))/sy)
             except (TypeError,ValueError):errors.append('MULTI_CURVE_START_DOT_MISMATCH:'+ident);continue
             if abs(got[0]-want_x)*sx*display>.35 or abs(got[1]-want_y)*sy*display>.35:errors.append('MULTI_CURVE_START_DOT_MISMATCH:'+ident)
+        errors.extend(multi_curve_region_errors(plan,transform,root,by_id,features))   # (G18c) shaded regions
         status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
         return {'status':status,'errors':sorted(set(errors+unsupported)),'curveCount':len(curves),'branchCount':sum(len(curve['branches']) for curve in curves),'mathMethod':'INDEPENDENT_EXACT_COEFFICIENTS_AND_FINAL_SVG_POLYLINES'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError) as error:

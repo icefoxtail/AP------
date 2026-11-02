@@ -247,9 +247,9 @@ def _with_label_options(plan,result):
     return {**result,'graphPlan':fitted}
 
 def _fit_overview_family(plan):
-    if 'regions' in plan and plan.get('family')!='piecewise-polynomial':raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')
+    if 'regions' in plan and plan.get('family') not in ('piecewise-polynomial','multi-curve'):raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')   # (G18c) a multi-curve figure shades its own regions
     if 'applicationAxes' in plan and not (plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL'):raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
-    if 'axisScale' in plan and plan.get('family')!='piecewise-polynomial':raise ValueError('AXIS_SCALE_UNSUPPORTED_FAMILY')
+    if 'axisScale' in plan and plan.get('family') not in ('piecewise-polynomial','multi-curve'):raise ValueError('AXIS_SCALE_UNSUPPORTED_FAMILY')   # (G18c) a multi-curve figure may stretch y too (horizontal lines a unit apart need room for their labels)
     if 'displayWindow' in plan and plan.get('family')!='rational':raise ValueError('DISPLAY_WINDOW_UNSUPPORTED_FAMILY')
     if 'formulaAt' in plan and plan.get('family')!='rational':raise ValueError('FORMULA_AT_UNSUPPORTED_FAMILY')
     if plan.get('family')=='rational':return _with_label_options(plan,_fit_rational_overview(plan))
@@ -3606,7 +3606,7 @@ def _overlay_features(plan):
     lines=[]
     for entry in raw.get('lines',[]):
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_LINE_INVALID','line')
-        if set(entry)-{'id','slope','intercept','x','label','labelAt','labelValues','style','color'}:_overlay_fail('OVERLAY_LINE_INVALID',entry.get('id'))
+        if set(entry)-{'id','slope','intercept','x','label','labelAt','labelValues','style','color','ownership'}:_overlay_fail('OVERLAY_LINE_INVALID',entry.get('id'))
         ident=_overlay_id(entry.get('id'),'line');claim('line:'+ident)
         if 'x' in entry:
             if 'slope' in entry or 'intercept' in entry:_overlay_fail('OVERLAY_LINE_INVALID',ident)
@@ -3626,6 +3626,10 @@ def _overlay_features(plan):
         if 'color' in entry:
             if entry['color'] not in OVERLAY_COLOR_NAMES:_overlay_fail('OVERLAY_COLOR_INVALID',ident)
             line['color']=entry['color']
+        # ownership (G18c): NEAREST lets the equation stand where its own line is the nearest one by a small margin (horizontal lines a unit apart); STRICT (default) keeps the clear margin
+        if 'ownership' in entry:
+            if entry['ownership'] not in ('STRICT','NEAREST'):_overlay_fail('OVERLAY_LINE_OWNERSHIP_INVALID',ident)
+            if entry['ownership']=='NEAREST':line['ownership']='NEAREST'
         line['text']=_overlay_line_text(line)
         if not _overlay_line_crosses_view(plan['viewport'],line):_overlay_fail('OVERLAY_LINE_OUTSIDE_VIEWPORT',ident)
         line['labelAt']=_overlay_label_anchor(plan['viewport'],line)
@@ -3857,13 +3861,13 @@ def _overlay_anchor_points(plan):
 # (vertical squeeze at most 1/2), freezes every branch's exact x interval and sampling expression, and refuses a
 # curve it cannot represent. The independent observer recomputes every branch from the same coefficients and reads
 # the final SVG; it never trusts a frozen expression.
-MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plotCanvas','axisSqueeze','plotHeightLimit','overlays','overlayAnchors','axisTitles'}
+MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plotCanvas','axisSqueeze','plotHeightLimit','overlays','overlayAnchors','axisTitles','regions','axisScale'}
 # G18a: besides the two quadratic kinds a curve may be LINE (y=c0+c1*x), RATIONAL (y=(a0+a1*x)/(d0+d1*x)) or SQRT (y=offset+amplitude*sqrt(c0+c1*x)), each with
 # its own look (color, weight, style, label, hideLabels), or the inverse of another curve (inverseOf). These kinds are not bounded by their own shape, so the
 # author names the window (graphPlan.viewport = [xmin,xmax,ymin,ymax]) and a curve is clipped to the frame built around that window.
 MULTI_CURVE_KINDS=('Y_OF_X','X_OF_Y','LINE','RATIONAL','SQRT')
 MULTI_CURVE_FREE_KINDS=('LINE','RATIONAL','SQRT')
-MULTI_CURVE_KIND_KEYS={'Y_OF_X':{'coefficients','domain','branch'},'X_OF_Y':{'coefficients','domain','branch'},'LINE':{'coefficients','domain'},'RATIONAL':{'numerator','denominator','domain'},'SQRT':{'radicand','amplitude','offset','domain'}}
+MULTI_CURVE_KIND_KEYS={'Y_OF_X':{'coefficients','domain','branch','abs'},'X_OF_Y':{'coefficients','domain','branch'},'LINE':{'coefficients','domain','abs'},'RATIONAL':{'numerator','denominator','domain','abs'},'SQRT':{'radicand','amplitude','offset','domain','abs'}}
 MULTI_CURVE_LOOK_KEYS={'id','kind','label','color','weight','style','hideLabel','hideLabels','inverseOf','emphasis'}
 # G18a-4: emphasis:[{from?,to?,color?,fromState?,toState?}] draws only that x stretch of the curve heavier and in a colour, with an open or closed end dot (states OPEN | CLOSED | NONE);
 # domain may be written {from,to} as well as [from,to] (the curve is then not drawn outside it).
@@ -3928,7 +3932,7 @@ def _mc_label_ascii(text,ident):
         changed=re.sub(r'\\sqrt\{([^{}]*)\}',lambda m:'sqrt('+m.group(1)+')',changed)
         if changed==value:break
         value=changed
-    value=value.replace('\\cdot','*').replace('\\left','').replace('\\right','')
+    value=value.replace('\\left|','abs(').replace('\\right|',')').replace('\\cdot','*').replace('\\left','').replace('\\right','')   # (G18c) |..| written \left|..\right| is the abs(..) the label machinery typesets
     if not re.fullmatch(MULTI_CURVE_LABEL_PATTERN,value):raise ValueError('MULTI_CURVE_LABEL_INVALID:'+ident)
     return value
 
@@ -3990,15 +3994,25 @@ def _mc_to_fraction(value,ident):
     if not getattr(value,'is_Rational',False):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
     return Fraction(int(value.p),int(value.q))
 
+def _mc_abs_flag(entry,ident):
+    """(G18c) abs:true draws y=|f(x)| for a LINE / RATIONAL / SQRT / quadratic curve (the part below the x-axis is folded up)."""
+    if 'abs' not in entry:return False
+    if entry['abs'] is not True and entry['abs'] is not False:raise ValueError('MULTI_CURVE_ABS_INVALID:'+ident)
+    return entry['abs']
+
 def mc_value(curve,x_value):
-    """y of a free-kind curve at x as a float (None where it is not defined)."""
+    """y of a free-kind curve at x as a float (None where it is not defined); |f(x)| for an abs curve."""
     kind=curve['kind']
-    if kind=='LINE':return float(curve['coefficients'][0]+curve['coefficients'][1]*x_value)
-    if kind=='RATIONAL':
+    if kind=='LINE':value=float(curve['coefficients'][0]+curve['coefficients'][1]*x_value)
+    elif kind=='RATIONAL':
         den=curve['denominator'][0]+curve['denominator'][1]*x_value
-        return None if den==0 else float(mc_rational_value(curve,x_value))
-    radicand=curve['radicand'][0]+curve['radicand'][1]*x_value
-    return None if radicand<0 else float(curve['offset'])+float(curve['amplitude'])*math.sqrt(float(radicand))
+        if den==0:return None
+        value=float(mc_rational_value(curve,x_value))
+    else:
+        radicand=curve['radicand'][0]+curve['radicand'][1]*x_value
+        if radicand<0:return None
+        value=float(curve['offset'])+float(curve['amplitude'])*math.sqrt(float(radicand))
+    return abs(value) if curve.get('abs') else value
 
 def _mc_free_curve(entry,ident,kind,window,look):
     """LINE / RATIONAL / SQRT from its own fields; the draw interval is the author's domain or the window's."""
@@ -4026,6 +4040,7 @@ def _mc_free_curve(entry,ident,kind,window,look):
         curve['offset']=_mc_fraction(entry.get('offset','0'),'MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
         if curve['amplitude']==0:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
     curve['intervalGiven']='domain' in entry
+    curve['abs']=_mc_abs_flag(entry,ident)
     if 'domain' in entry:curve['interval']=_mc_interval_fractions(entry['domain'],'MULTI_CURVE_DOMAIN_INVALID:'+ident)
     return curve
 
@@ -4034,6 +4049,7 @@ def _mc_inverse_curve(entry,ident,source,look):
     extra=set(entry)-MULTI_CURVE_LOOK_KEYS-{'domain'}
     if extra:raise ValueError('MULTI_CURVE_CURVE_INVALID:'+ident)
     kind=source['kind'];curve={'id':ident,'look':look,'inverseOf':source['id']}
+    if source.get('abs'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)   # |f| is not one-to-one
     if kind=='RATIONAL':
         a0,a1=source['numerator'];d0,d1=source['denominator']
         curve.update({'kind':'RATIONAL','numerator':[a0,-d0],'denominator':[-a1,d1]})
@@ -4060,7 +4076,7 @@ def multi_curve_source(plan):
     unknown=set(plan)-MULTI_CURVE_FIELDS
     if unknown:raise ValueError('MULTI_CURVE_FIELD_UNKNOWN:'+sorted(unknown)[0])
     raw=plan.get('curves')
-    minimum=1 if isinstance(raw,list) and any(isinstance(entry,dict) and entry.get('emphasis') for entry in raw) else MULTI_CURVE_MIN_CURVES   # a single curve is a figure when one stretch of it is the point
+    minimum=1 if isinstance(raw,list) and (any(isinstance(entry,dict) and (entry.get('emphasis') or entry.get('abs') is True) for entry in raw) or (isinstance(plan.get('regions'),list) and plan['regions'])) else MULTI_CURVE_MIN_CURVES   # a single curve is a figure when one stretch of it (or the region it bounds) is the point
     if not isinstance(raw,list) or not minimum<=len(raw)<=MULTI_CURVE_MAX_CURVES:raise ValueError('MULTI_CURVE_COUNT_INVALID')
     raw=[{**entry,'domain':[entry['domain'].get('from'),entry['domain'].get('to')]} if isinstance(entry,dict) and isinstance(entry.get('domain'),dict) and set(entry['domain'])=={'from','to'} else entry for entry in raw]
     window=_mc_window(plan)
@@ -4119,7 +4135,7 @@ def multi_curve_source(plan):
         branch=entry.get('branch','BOTH')
         if kind=='Y_OF_X' and 'branch' in entry:raise ValueError('MULTI_CURVE_BRANCH_INVALID:'+ident)
         if kind=='X_OF_Y' and branch not in MULTI_CURVE_BRANCHES:raise ValueError('MULTI_CURVE_BRANCH_INVALID:'+ident)
-        curve={'id':ident,'kind':kind,'coefficients':coefficients,'interval':interval,'branch':branch,'look':look}
+        curve={'id':ident,'kind':kind,'coefficients':coefficients,'interval':interval,'branch':branch,'look':look,'abs':_mc_abs_flag(entry,ident)}
         curve['branches']=_mc_sideways_branches(curve) if kind=='X_OF_Y' else [{'side':'FUNCTION','xInterval':interval,'yInterval':None}]
         curves.append(curve);by_id[ident]=curve
     # The new kinds and the inverses get their branches here (a quadratic keeps the ones it was given).
@@ -4178,7 +4194,7 @@ def _mc_bbox_points(curves,window=None):
                 if lo<vertex<hi:points.append((float(vertex),float(c0+c1*vertex+c2*vertex*vertex)))
             elif kind=='RATIONAL':
                 pole=-curve['denominator'][0]/curve['denominator'][1];horizontal=curve['numerator'][1]/curve['denominator'][1]
-                points.append((float(min(max(pole,lo),hi)),float(horizontal)))
+                points.append((float(min(max(pole,lo),hi)),float(abs(horizontal) if curve.get('abs') else horizontal)))
             else:
                 for edge in (lo,hi):
                     value=mc_value(curve,edge)
@@ -4186,9 +4202,10 @@ def _mc_bbox_points(curves,window=None):
             continue
         c0,c1,c2=curve['coefficients'];lo,hi=curve['interval']
         if curve['kind']=='Y_OF_X':
-            points.extend([(lo,c0+c1*lo+c2*lo*lo),(hi,c0+c1*hi+c2*hi*hi)])
+            fold=abs if curve.get('abs') else (lambda value:value)
+            points.extend([(lo,fold(c0+c1*lo+c2*lo*lo)),(hi,fold(c0+c1*hi+c2*hi*hi))])
             vertex=-c1/(2*c2)
-            if lo<vertex<hi:points.append((vertex,c0+c1*vertex+c2*vertex*vertex))
+            if lo<vertex<hi:points.append((vertex,fold(c0+c1*vertex+c2*vertex*vertex)))
         else:
             points.extend([(c0+c1*lo+c2*lo*lo,lo),(c0+c1*hi+c2*hi*hi,hi)])
             vertex=-c1/(2*c2)
@@ -4214,6 +4231,7 @@ def _mc_row(curve):
         elif kind=='RATIONAL':
             row['numerator']=[_mc_text(value) for value in curve['numerator']];row['denominator']=[_mc_text(value) for value in curve['denominator']]
             pole=-curve['denominator'][0]/curve['denominator'][1];horizontal=curve['numerator'][1]/curve['denominator'][1]
+            if curve.get('abs'):horizontal=abs(horizontal)   # the asymptote of |f| is |h|
             lo,hi=curve['interval']
             row['asymptotes']={'vertical':{'x':_mc_text(pole),'drawn':bool(lo<pole<hi and pole!=0)},'horizontal':{'y':_mc_text(horizontal),'drawn':bool(horizontal!=0)}}
         else:
@@ -4222,6 +4240,7 @@ def _mc_row(curve):
             start=lo if curve['radicand'][1]>0 else hi
             row['start']={'x':_mc_text(boundary),'y':_mc_text(curve['offset']),'drawn':bool(start==boundary)}
     if curve.get('inverseOf') is not None:row['inverseOf']=curve['inverseOf']
+    if curve.get('abs'):row['abs']=True
     for key,value in (curve.get('look') or {}).items():row[key]=value
     if curve.get('emphasis'):row['emphasis']=[{'from':_mc_text(value['from']),'to':_mc_text(value['to']),'color':value['color'],'fromState':value['fromState'],'toState':value['toState']} for value in curve['emphasis']]
     row['branches']=[]
@@ -4231,6 +4250,104 @@ def _mc_row(curve):
         if branch.get('expression') is not None:entry['expression']=branch['expression']
         row['branches'].append(entry)
     return row
+
+# ---- (G18c) shaded regions of a multi-curve figure: between two drawn curves, under a curve, or a half-plane / quadrant piece that runs to the frame ----
+MULTI_CURVE_REGION_FIELDS={'id','between','under','from','to','halfPlane','and','fill','label'}
+MULTI_CURVE_MAX_REGIONS=4
+MULTI_CURVE_HALF_PLANE_OPS=('<','<=','>','>=')
+MULTI_CURVE_REGION_SAMPLES=41
+
+def _mc_boundary_y(curve,x_value):
+    """y of a region boundary ('axis' or a drawn curve of the figure) at x as a float, None where the curve is not defined there."""
+    if curve=='axis':return 0.0
+    if curve['kind']=='Y_OF_X':
+        c0,c1,c2=(float(value) for value in curve['coefficients']);x=float(x_value)
+        value=c0+c1*x+c2*x*x
+        return abs(value) if curve.get('abs') else value
+    if curve['kind']=='X_OF_Y':return None
+    return mc_value(curve,Fraction(x_value))
+
+def _mc_region_boundary(curve,ident,region_id,start,end):
+    """The boundary must be defined over the whole closed [start,end] inside its own draw interval (no pole of a rational, no start of a square root outside it)."""
+    if curve=='axis':return
+    if curve['kind']=='X_OF_Y':raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+region_id+':'+ident)
+    lo,hi=curve['interval']
+    if float(start)<float(lo)-1e-9 or float(end)>float(hi)+1e-9:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':'+ident)
+    if curve['kind']=='RATIONAL':
+        pole=-curve['denominator'][0]/curve['denominator'][1]
+        if start<=pole<=end:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':'+ident)
+
+def _mc_regions(plan,curves,viewport):
+    """The frozen rows of graphPlan.regions (G18c): BETWEEN {upper,lower,from,to} (two curves, or a curve and 'axis'), or HALF_PLANE {box} (a quadrant piece cut by
+    the frame: halfPlane {x|y:'<'|'<='|'>'|'>=',value} and optionally 'and' with the other axis). Everything is recomputed here exactly; the independent observer
+    rebuilds it again from the plan."""
+    raw=plan.get('regions')
+    if raw is None:return []
+    if not isinstance(raw,list) or not 1<=len(raw)<=MULTI_CURVE_MAX_REGIONS:raise ValueError('GRAPH_REGION_COUNT_INVALID')
+    by_id={curve['id']:curve for curve in curves}
+    rows=[];ids=set()
+    for entry in raw:
+        if not isinstance(entry,dict):raise ValueError('GRAPH_REGION_FIELD_INVALID')
+        unknown=sorted(set(entry)-MULTI_CURVE_REGION_FIELDS)
+        if unknown:raise ValueError('GRAPH_REGION_FIELD_UNKNOWN:'+str(unknown[0]))
+        region_id=entry.get('id')
+        if not isinstance(region_id,str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9_-]{0,31}',region_id):raise ValueError('GRAPH_REGION_ID_INVALID')
+        if region_id in ids:raise ValueError('GRAPH_REGION_ID_DUPLICATE:'+region_id)
+        ids.add(region_id)
+        fill=entry.get('fill','LIGHT')
+        if fill not in PIECEWISE_POLY_REGION_FILLS:raise ValueError('GRAPH_REGION_FILL_UNSUPPORTED:'+region_id)
+        label=entry.get('label')
+        if label is not None and (not isinstance(label,str) or not label.strip() or len(label)>40):raise ValueError('GRAPH_REGION_LABEL_INVALID:'+region_id)
+        shapes=[key for key in ('between','under','halfPlane') if key in entry]
+        if len(shapes)!=1:raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+        row={'id':region_id,'fill':fill}
+        if label is not None:row['label']=label
+        if shapes[0]=='halfPlane':
+            if 'from' in entry or 'to' in entry:raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+            sides=[entry['halfPlane']]
+            if 'and' in entry:sides.append(entry['and'])
+            x0,x1,y0,y1=(float(value) for value in viewport)
+            seen=set()
+            for side in sides:
+                if not isinstance(side,dict) or len(side)!=2 or 'value' not in side:raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+                axis=[key for key in side if key in ('x','y')]
+                if len(axis)!=1 or axis[0] in seen or side[axis[0]] not in MULTI_CURVE_HALF_PLANE_OPS:raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+                seen.add(axis[0])
+                value=float(_mc_fraction(side['value'],'GRAPH_REGION_FIELD_INVALID:'+region_id))
+                low,high=(x0,x1) if axis[0]=='x' else (y0,y1)
+                if not low<value<high:raise ValueError('GRAPH_REGION_EMPTY:'+region_id)   # the boundary line must cross the frame, else the region is all or nothing
+                less=side[axis[0]] in ('<','<=')
+                if axis[0]=='x':x1,x0=(value,x0) if less else (x1,value)
+                else:y1,y0=(value,y0) if less else (y1,value)
+            row.update({'kind':'HALF_PLANE','box':[x0,x1,y0,y1]})
+            rows.append(row);continue
+        if shapes[0]=='under':
+            names=[entry['under'],'axis']
+            if not isinstance(entry['under'],str):raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+        else:
+            names=entry['between']
+            if not isinstance(names,list) or len(names)!=2 or any(not isinstance(name,str) for name in names) or names[0]==names[1]:raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+        if not {'from','to'}<=set(entry):raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+        start=_mc_fraction(entry['from'],'GRAPH_REGION_DOMAIN_INVALID:'+region_id);end=_mc_fraction(entry['to'],'GRAPH_REGION_DOMAIN_INVALID:'+region_id)
+        if not start<end:raise ValueError('GRAPH_REGION_DOMAIN_INVALID:'+region_id)
+        boundaries=[]
+        for name in names:
+            curve='axis' if name=='axis' else by_id.get(name)
+            if curve is None:raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+region_id+':'+name)
+            _mc_region_boundary(curve,name,region_id,start,end)
+            boundaries.append(curve)
+        signs=set()
+        for index in range(1,MULTI_CURVE_REGION_SAMPLES):
+            x_value=start+(end-start)*Fraction(index,MULTI_CURVE_REGION_SAMPLES)
+            a=_mc_boundary_y(boundaries[0],x_value);b=_mc_boundary_y(boundaries[1],x_value)
+            if a is None or b is None:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id)
+            if abs(a-b)>1e-9:signs.add(a>b)
+        if not signs:raise ValueError('GRAPH_REGION_EMPTY:'+region_id)
+        if len(signs)>1:raise ValueError('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id)
+        upper,lower=(names[0],names[1]) if signs=={True} else (names[1],names[0])
+        row.update({'kind':'BETWEEN','upper':upper,'lower':lower,'from':_mc_text(start),'to':_mc_text(end)})
+        rows.append(row)
+    return rows
 
 def fit_multi_curve(plan):
     curves=multi_curve_source(plan)
@@ -4251,6 +4368,8 @@ def fit_multi_curve(plan):
     else:raise ValueError('MULTI_CURVE_TOO_NARROW')
     rows=[_mc_row(curve) for curve in curves]
     features={'schemaVersion':'MULTI_CURVE_FEATURES_v1','curves':rows}
+    regions=_mc_regions(plan,curves,viewport)
+    if regions:features['regions']=regions
     fitted={key:value for key,value in plan.items() if key not in ('domain','viewport')}
     # A curve's label may have been written in TeX; the plan that travels on carries the ASCII form the label machinery typesets.
     labelled=[]

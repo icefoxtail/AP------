@@ -308,7 +308,7 @@ def validate(spec):
             if not isinstance(rows,list) or not rows: raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+obj['id'])
             cursor=lo
             for row in rows:
-                if not isinstance(row,dict) or set(row)!={'expression','domain'} or not isinstance(row.get('expression'),str) or not row['expression'].strip():
+                if not isinstance(row,dict) or not {'expression','domain'}<=set(row)<={'expression','domain','criticalX'} or not isinstance(row.get('expression'),str) or not row['expression'].strip() or not isinstance(row.get('criticalX',[]),list):
                     raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+obj['id'])
                 a,b=point(row['domain'])
                 if not a<b or a>cursor+1e-9 or b>hi+1e-9: raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+obj['id'])

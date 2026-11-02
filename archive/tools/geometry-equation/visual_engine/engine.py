@@ -62,7 +62,7 @@ def _sample_graph_boundary(rows,vp):
     rows are joined left to right. A boundary that leaves its declared rows is refused, never silently bridged."""
     points=[]
     for row in rows:
-        result=sample(row['expression'],row['domain'],vp,critical_x=[])
+        result=sample(row['expression'],row['domain'],vp,critical_x=list(row.get('criticalX') or []))   # (G18c) a row may name the x values a curve bends at (a square root's start, an |f| corner)
         if len(result['branches'])!=1 or not result['branches'][0]:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
         pts=[vp.screen(value) for value in result['branches'][0]]
         if points and pts and abs(points[-1][0]-pts[0][0])<=1e-9:pts=pts[1:]
