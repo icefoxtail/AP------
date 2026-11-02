@@ -1901,7 +1901,8 @@ def normal_plan(chart):
     raw_labels = chart.get('areaLabels', [])
     if not isinstance(raw_labels, list) or len(raw_labels) > len(shades): fail('STAT_NORMAL_AREA_LABEL_INVALID')
     for raw in raw_labels:
-        if not isinstance(raw, dict) or set(raw) - {'shade', 'text', 'source'}: fail('STAT_NORMAL_AREA_LABEL_INVALID')
+        if not isinstance(raw, dict) or set(raw) - {'shade', 'text', 'source', 'placement'}: fail('STAT_NORMAL_AREA_LABEL_INVALID')
+        if 'placement' in raw and raw['placement'] != 'LEADER': fail('STAT_NORMAL_AREA_LABEL_INVALID')
         j, text = raw.get('shade'), raw.get('text')
         if isinstance(j, bool) or not isinstance(j, int) or not 0 <= j < len(shades) or shades[j]['label'] is not None or not isinstance(text, str): fail('STAT_NORMAL_AREA_LABEL_INVALID')
         source = raw.get('source')
@@ -1912,6 +1913,7 @@ def normal_plan(chart):
             shades[j]['label_tol'] = tol
         elif not NORM_AREA_SYMBOL.match(text): fail('STAT_NORMAL_AREA_LABEL_INVALID')
         shades[j]['label'] = text
+        if raw.get('placement') == 'LEADER': shades[j]['leader'] = True
     for i, a in enumerate(shades):
         for b in shades[i + 1:]:
             if a['label'] is not None and a['label'] == b['label'] and re.fullmatch(r'[A-Za-z]', a['label']) and abs(a['area'] - b['area']) > 1e-5: fail('STAT_NORMAL_AREA_SYMBOL_UNEQUAL')
@@ -1969,6 +1971,22 @@ def polygon_clearance(point, poly):
         length2 = dx * dx + dy * dy
         t = max(0.0, min(1.0, ((point[0] - a[0]) * dx + (point[1] - a[1]) * dy) / length2)) if length2 else 0.0
         best = min(best, math.hypot(point[0] - (a[0] + t * dx), point[1] - (a[1] + t * dy)))
+    return best
+
+
+def best_room(poly):
+    """The most room a polygon offers anywhere: the largest distance from an inside point to its outline (a scan of the polygon's vertical mid-lines, 1 px apart)."""
+    xs = [p[0] for p in poly]
+    best = 0.0
+    for k in range(int(math.floor(min(xs))), int(math.ceil(max(xs))) + 1):
+        ys = []
+        for (x0, y0), (x1, y1) in zip(poly, poly[1:] + poly[:1]):
+            if (x0 > k) != (x1 > k): ys.append(y0 + (k - x0) * (y1 - y0) / (x1 - x0))
+        ys.sort()
+        for a, b in zip(ys[0::2], ys[1::2]):
+            for step in range(1, 8):
+                pt = (float(k), a + (b - a) * step / 8)
+                best = max(best, polygon_clearance(pt, poly))
     return best
 
 
@@ -2133,7 +2151,7 @@ def audit_normal(chart, doc):
         poly = polys[j]
         nx, ny = int(bw // 2) + 1, int(bh // 2) + 1
         samples = [(bx + k * 2.0, by) for k in range(nx)] + [(bx + bw, by)] + [(bx + k * 2.0, by + bh) for k in range(nx)] + [(bx + bw, by + bh)] + [(bx, by + k * 2.0) for k in range(ny)] + [(bx + bw, by + k * 2.0) for k in range(ny)]
-        whole = all(inside_polygon(p, poly) for p in samples)
+        whole = all(inside_polygon(p, poly) for p in samples) and not s.get('leader')
         dot, leader = dots.get(str(j)), leaders.get(str(j))
         if whole:
             if dot is not None or leader is not None: doc.err('SC_NORMAL_AREA_LEADER_UNEXPECTED:%d' % j)
@@ -2141,7 +2159,9 @@ def audit_normal(chart, doc):
             if dot is None or leader is None: doc.err('SC_NORMAL_AREA_LABEL_OUTSIDE:%d' % j); continue
             expected_lines.add('area-%d-leader' % j)
             d = (num(dot, 'cx'), num(dot, 'cy'))
-            if not inside_polygon(d, poly) or polygon_clearance(d, poly) < 4: doc.err('SC_NORMAL_AREA_DOT_OUTSIDE:%d' % j)
+            # the dot keeps 4 px from the outline of its area; a thin tail that has no such place (G19) takes its roomiest place (at least 1 px, and 0.8 of the most room the area has anywhere)
+            room = polygon_clearance(d, poly) if inside_polygon(d, poly) else -1.0
+            if room < 4 and (room < 1.0 or room < 0.8 * best_room(poly)): doc.err('SC_NORMAL_AREA_DOT_OUTSIDE:%d' % j)
             ends = [(num(leader, 'x1'), num(leader, 'y1')), (num(leader, 'x2'), num(leader, 'y2'))]
             if math.hypot(ends[1][0] - d[0], ends[1][1] - d[1]) > 0.05 or abs(box_distance((bx, by, bw, bh), ends[0]) - 2.0) > 0.1: doc.err('SC_NORMAL_AREA_LEADER:%d' % j)
             for other in list(doc.lines) + list(doc.root.iter(NS + 'polyline')) + list(doc.root.iter(NS + 'polygon')):

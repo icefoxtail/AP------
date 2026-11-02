@@ -818,7 +818,8 @@ function solveNormal(c){
   const labelsRaw=c.areaLabels===undefined?[]:c.areaLabels;
   if(!Array.isArray(labelsRaw)||labelsRaw.length>shades.length)bad('STAT_NORMAL_AREA_LABEL_INVALID');
   for(const raw of labelsRaw){
-    onlyKeys(raw,['shade','text','source'],'STAT_NORMAL_AREA_LABEL_INVALID');
+    onlyKeys(raw,['shade','text','source','placement'],'STAT_NORMAL_AREA_LABEL_INVALID');
+    if(raw.placement!==undefined&&raw.placement!=='LEADER')bad('STAT_NORMAL_AREA_LABEL_INVALID');   // placement LEADER: the label stands outside the area and a leader line points into it (G19)
     if(!Number.isInteger(raw.shade)||raw.shade<0||raw.shade>=shades.length||shades[raw.shade].label!==null||typeof raw.text!=='string')bad('STAT_NORMAL_AREA_LABEL_INVALID');
     if(raw.source!==undefined&&(raw.source!=='TABLE'||!NORM_AREA_SUM.test(raw.text)))bad('STAT_NORMAL_AREA_LABEL_INVALID');   // source TABLE: a value the problem gives (rounded), never a letter
     if(NORM_AREA_SUM.test(raw.text)){
@@ -827,6 +828,7 @@ function solveNormal(c){
     }else if(!NORM_AREA_SYMBOL.test(raw.text))bad('STAT_NORMAL_AREA_LABEL_INVALID');
     shades[raw.shade].label=raw.text;
     if(raw.source==='TABLE')shades[raw.shade].labelSource='TABLE';
+    if(raw.placement==='LEADER')shades[raw.shade].labelPlacement='LEADER';
   }
   for(const [i,a] of shades.entries())for(const b of shades.slice(i+1))if(a.label!==null&&a.label===b.label&&/^[A-Za-z]$/.test(a.label)&&Math.abs(a.area-b.area)>1e-5)bad('STAT_NORMAL_AREA_SYMBOL_UNEQUAL');
   // pairs symmetric about a mean
@@ -1457,6 +1459,16 @@ function dotSpec(m,ctx){
 // smallest sd, NORM_PEAK high; the others in the ratio of their sds), a labelled tick at every marked position, the shaded areas as polygons that end in vertical edges at their two positions (a tail
 // runs to the window end), dotted guides at the means and at symmetric pairs. Area labels and curve names are placed after typesetting (resolveNormal): inside their area when it fits, else outside
 // with a leader line that ends in a dot inside the area.
+const DOT_ROOM=4.3,MIN_ROOM=1.5;   // a leader's dot keeps DOT_ROOM px from its area's outline (the observer asks for 4); a thin tail may go down to MIN_ROOM
+const polygonRoom=(pt,ring)=>{ // the distance from a point to the outline of a polygon, negative outside it
+  let best=Infinity,inside=false;
+  for(let i=0;i<ring.length;i++){
+    const a=ring[i],b=ring[(i+1)%ring.length];
+    best=Math.min(best,pointSegDist(pt,a,b));
+    if((a[1]>pt[1])!==(b[1]>pt[1])&&pt[0]<a[0]+(pt[1]-a[1])*(b[0]-a[0])/(b[1]-a[1]))inside=!inside;
+  }
+  return inside?best:-best;
+};
 const LEADER_GAP=2,NAME_GAP=10,LABEL_APART=8; // a curve name keeps NAME_GAP px from the other labels so that it is not read as part of an area label
 const NORM_XL=44,NORM_XR=490,NORM_TIP=512,NORM_PEAK=140,NORM_TOP=58,NORM_STEP_MAX=2,NORM_STEP_MIN=0.5,NORM_Z_ROW=1.5;
 function normalSpec(m,ctx){
@@ -1520,7 +1532,7 @@ function normalSpec(m,ctx){
     const hangul=/[가-힣]/.test(c.label);
     labels.push({...(hangul?textLabel(`curve-${c.id}-name`,'curve-name',`curve-${c.id}`,c.label,'start','top',0,0,{curve:c.id,value:c.label}):math(`curve-${c.id}-name`,'curve-name',`curve-${c.id}`,DISPLAY+normalTeX(c.label),c.label,'start','top',0,0,{curve:c.id,value:c.label})),placement:'curve'});
   }
-  for(const [j,s] of m.shades.entries())if(s.label!==null)labels.push({...math(`area-${j}`,'area-value',`shade-${j}`,DISPLAY+normalTeX(s.label),s.label,'start','top',0,0,{shade:j,value:s.label}),placement:'area'});
+  for(const [j,s] of m.shades.entries())if(s.label!==null)labels.push({...math(`area-${j}`,'area-value',`shade-${j}`,DISPLAY+normalTeX(s.label),s.label,'start','top',0,0,{shade:j,value:s.label}),placement:'area',...(s.labelPlacement==='LEADER'?{leader:true}:{})});
   const H=Math.ceil((m.zAxis?zy:BASE+TICK+4)+rowH+SAFE);
   return {size:{width:W,height:H},prims,labels,normal:{base:BASE,curves:m.curves.map(c=>({id:c.id,peak:[px(meanOf(c)),yOf(c,meanOf(c))],right:[px(meanOf(c)+1.2*sdOf(c)),yOf(c,meanOf(c)+1.2*sdOf(c))],left:[px(meanOf(c)-1.2*sdOf(c)),yOf(c,meanOf(c)-1.2*sdOf(c))]})),regions}};
 }
@@ -1629,7 +1641,7 @@ function resolveNormal(spec,placed){
   for(const item of placed.filter(i=>i.label.placement==='area')){
     const region=regions[item.label.extra.shade],{width:w,height:h}=item.box,obs=lines();
     const inside=[];
-    for(let cx=region.xa+3+w/2;cx<=region.xb-3-w/2+1e-9;cx+=1.5)for(let row=0;row<4;row++){
+    if(!item.label.leader)for(let cx=region.xa+3+w/2;cx<=region.xb-3-w/2+1e-9;cx+=1.5)for(let row=0;row<4;row++){
       const box={x:r6(cx-w/2),y:r6(BASE-7-h-row*10),width:w,height:h};
       let fits=true;
       for(let x=box.x;x<=box.x+w+1e-9;x+=2)if(topAt(region.top,x)>box.y-3){fits=false;break;}
@@ -1642,6 +1654,13 @@ function resolveNormal(spec,placed){
     // outside with a leader: the dot goes where the area is tall enough to hold it (first at the weighted middle, then at other places along the area)
     const shade=item.label.extra.shade,peakX=curves.find(k=>k.id===region.curve).peak[0],list=spec.prims.find(prim=>prim.id===`curve-${region.curve}`).points;
     const spots=[region.pref,...[.5,.3,.7,.15,.85].map(f=>region.xa+f*(region.xb-region.xa))].filter(x=>BASE-topAt(region.top,x)>=16);
+    // A thin tail (G19) has no place 16 px tall: the dot then goes where the area holds the most room (a clearance of DOT_ROOM px from its outline when there is such a place, else the roomiest places down to MIN_ROOM px).
+    const ring=[[region.xa,BASE],...region.top,[region.xb,BASE]],roomAt=x=>{const y=(topAt(region.top,x)+BASE)/2;return polygonRoom([x,y],ring);};
+    const scan=[];for(let x=Math.ceil(region.xa)+1;x<region.xb-1;x++)scan.push([x,roomAt(x)]);
+    const spread=list=>{const out=[];for(const [x] of list)if(out.every(o=>Math.abs(o-x)>=5)){out.push(x);if(out.length>=8)break;}return out;};
+    const roomy=scan.filter(([,r])=>r>=DOT_ROOM).sort((a,b)=>Math.abs(a[0]-region.pref)-Math.abs(b[0]-region.pref)),thin=scan.filter(([,r])=>r>=MIN_ROOM).sort((a,b)=>b[1]-a[1]||Math.abs(a[0]-region.pref)-Math.abs(b[0]-region.pref));
+    const firstThin=spots.length;
+    spots.push(...spread(roomy.length?roomy:thin));
     let found=null,ax=0,ay=0;
     for(const spot of spots){
       ax=r6(spot);ay=r6((topAt(region.top,ax)+BASE)/2);
@@ -1653,18 +1672,24 @@ function resolveNormal(spec,placed){
       };
       // an area off to one side of its curve's peak puts its label beside the curve on that side (a level-ish leader); otherwise (and as a second choice) the label stands above the curves
       const side=ax>peakX+8?1:ax<peakX-8?-1:0;
-      if(side){
+      const trySide=()=>{
+        if(!side||found)return;
         let edge=side>0?Math.max(region.xb,ax):Math.min(region.xa,ax);
         for(const [x,y] of side>0?list.filter(([x])=>x>ax):[...list].reverse().filter(([x])=>x<ax))if(y>=ay){edge=side>0?Math.max(edge,x):Math.min(edge,x);break;}
         search:for(const shift of [0,-14,14,-28,28])for(const gap of [12,20,30]){
           const box={x:r6(side>0?edge+gap:edge-gap-w),y:r6(ay+shift-h/2),width:w,height:h};
           if(accept(box,r6(side>0?box.x-LEADER_GAP:box.x+w+LEADER_GAP),r6(box.y+h/2)))break search;
         }
-      }
-      if(!found)search:for(const gap of [14,22,32,44])for(const k of [0,-.7,.7,-1.4,1.4,-2.1,2.1,-2.8,2.8]){
-        const cx=ax+k*w,x=cx-w/2,y=curveMinY(x-4,x+w+4)-gap-h,box={x:r6(x),y:r6(y),width:w,height:h};
-        if(accept(box,r6(Math.max(box.x+4,Math.min(box.x+w-4,ax))),r6(box.y+h+LEADER_GAP)))break search;
-      }
+      };
+      const tryAbove=()=>{
+        if(found)return;
+        search:for(const gap of [14,22,32,44])for(const k of [0,-.7,.7,-1.4,1.4,-2.1,2.1,-2.8,2.8]){
+          const cx=ax+k*w,x=cx-w/2,y=curveMinY(x-4,x+w+4)-gap-h,box={x:r6(x),y:r6(y),width:w,height:h};
+          if(accept(box,r6(Math.max(box.x+4,Math.min(box.x+w-4,ax))),r6(box.y+h+LEADER_GAP)))break search;
+        }
+      };
+      // a thin tail's label (G19) stands above the curve, over its tail: beside the curve it would end up under the axis arrow and read as part of the x label
+      if(spots.indexOf(spot)>=firstThin){tryAbove();trySide();}else{trySide();tryAbove();}
       if(found)break;
     }
     if(!found)throw new Stop('STAT_NORMAL_AREA_LABEL_NO_ROOM',{shade});

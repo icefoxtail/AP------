@@ -167,6 +167,18 @@ test('the observer passes normal-curve figures and catches each wrong curve, are
     assert.ok(has(await audit(twin,svg.replace(/(id="curve-Y"[^>]*) stroke-dasharray="8 4"/,'$1')),'SC_NORMAL_CURVE_STYLE_SAME'));
     assert.ok(has(await audit(twin,svg.replace(/(id="shade-1"[^>]*points=")([\d.]+),/,(m,head,x)=>head+(Number(x)+5)+',')),'SC_NORMAL_SHADE_'),'the tail starts at another position');
 
+    // ---- G19: a thin tail (0.0228 beyond 2 sd) has no place 16 px tall for a leader dot: the dot goes where the area holds most room and the label stands above the curve; a rounded table value (source TABLE) is the label
+    const thin={kind:'NORMAL_CURVE',curves:[{id:'X',mean:'120',sd:'10',label:'X'}],ticks:['100','120'],zAxis:true,shades:[{from:null,to:'100',tone:2}],areaLabels:[{shade:0,text:'0.02',source:'TABLE'}]};
+    svg=await compose(thin);
+    r=await pass(thin,svg);
+    assert.ok(/id="area-0-leader"/.test(svg)&&/id="area-0-dot"/.test(svg),'the 0.02 label stands off the thin tail with a leader and a dot');
+    assert.ok(caught(await audit({...thin,areaLabels:[{shade:0,text:'0.02'}]},svg)),'the same plan without source TABLE: 0.02 is not the integral within 2e-4');
+    assert.ok(has(await audit(thin,bump(svg,'area-0-dot','cy',-30)),'SC_NORMAL_AREA_DOT_OUTSIDE:0'),'the dot moved out of the tail');
+    // placement LEADER: a label that would fit inside its area is put outside all the same
+    const wide={kind:'NORMAL_CURVE',curves:[{id:'X',mean:'0',sd:'1'}],ticks:['-1','0','1'],shades:[{from:'-1',to:'1'}],areaLabels:[{shade:0,text:'0.6826',placement:'LEADER'}]};
+    svg=await compose(wide);r=await pass(wide,svg);assert.ok(/id="area-0-leader"/.test(svg),'placement LEADER draws the leader');
+    assert.ok(caught(await audit({...wide,areaLabels:[{shade:0,text:'0.6826',placement:'INSIDE'}]},svg)),'only LEADER is a placement');
+
     // ---- a framed curve: letters, the symmetric pair, a level line across the two tops
     svg=await compose(framed);
     r=await pass(framed,svg);
