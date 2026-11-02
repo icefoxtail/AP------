@@ -364,7 +364,7 @@ def _span_plan(row_spec, values):
     """The spans a POINTS row asks for, read from the plan alone: [{from,to,style,side,label,kind}] (an invalid plan is the observer's error, not a figure's)."""
     raw = row_spec.get('spans')
     if raw is None: return None
-    if not isinstance(raw, list) or not 1 <= len(raw) <= 3: raise ValueError('NL_OBSERVER_PLAN_INVALID')
+    if not isinstance(raw, list) or not 1 <= len(raw) <= 6: raise ValueError('NL_OBSERVER_PLAN_INVALID')
     out, seen = [], set()
     for item in raw:
         if not isinstance(item, dict) or set(item) - {'from', 'to', 'label', 'style', 'side'}: raise ValueError('NL_OBSERVER_PLAN_INVALID')

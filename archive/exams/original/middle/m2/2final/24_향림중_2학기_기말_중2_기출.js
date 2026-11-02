@@ -69,8 +69,8 @@ window.questionBank = [
       "$30\\rm\\,cm^2$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 같은 높이를 갖는 삼각형의 넓이비와 평행선으로 생기는 닮음을 차례로 이용한다.\n그림에서 $B,A,D$는 한 직선 위에 있다. $\\triangle ABC$와 $\\triangle ACD$는 점 $C$에서 직선 $BD$에 내린 높이가 같으므로\n$AB:AD=16:10=8:5$이다. 따라서 $BA:BD=8:13$이다.\n$AC\\parallel DE$이므로 $\\triangle BAC\\sim\\triangle BDE$이고, $BC:BE=BA:BD=8:13$이다.\n$\\triangle ABC$와 $\\triangle ABE$는 밑변이 같은 직선 $BE$ 위에 있고 높이가 같으므로 넓이비도 $BC:BE=8:13$이다.\n따라서 $[\\triangle ABE]=16\\times\\dfrac{13}{8}=26\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q2-solution.svg",
+    "solution": "[키포인트] 평행한 두 직선 사이의 거리는 일정하므로 밑변이 같은 두 삼각형의 넓이가 같음을 이용한다.\n그림에서 $B,C,E$는 한 직선 위에 있다. $AC\\parallel DE$이므로 $\\triangle ACD$와 $\\triangle ACE$는 밑변 $AC$가 같고 높이도 같다.\n따라서 $\\triangle ACE=\\triangle ACD=10\\rm\\,cm^2$이다.\n$\\triangle ABE=\\triangle ABC+\\triangle ACE$이므로\n$16+10=26\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
+    "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q2-solution-v2.svg",
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q2.png",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
@@ -84,7 +84,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: B, C, E가 한 직선 위에 있고 AC∥DE인 그림. 왼쪽은 △ACD(파랑, 10)와 △ABC(주황, 16), 오른쪽은 평행선 때문에 넓이가 같은 △ACE(파랑, 10)를 보여 준다.",
+    "solutionImageCaption": "△ABE=△ABC+△ACE=16+10=26 cm²이다. 정답 ③.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -507,7 +510,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 두 중선을 이용하여 무게중심의 $2:1$ 분할 성질을 적용한다.\n$E$는 $AC$의 중점이므로 $BE$는 중선이고, $D$는 $AB$의 중점이므로 $CD$도 중선이다. 따라서 두 중선의 교점 $G$는 삼각형의 무게중심이다.\n무게중심은 중선을 꼭짓점 쪽과 중점 쪽의 비가 $2:1$이 되도록 나누므로 $BG:GE=2:1$이다. $GE=5\\rm\\,cm$이므로 $BE=15\\rm\\,cm$이다.\n또 $AB=AC$인 이등변삼각형에서는 대칭인 두 중선 $BE$, $CD$의 길이가 같으므로 $CD=15\\rm\\,cm$이다.\n따라서 $CG=\\dfrac23CD=10\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q12-solution-v2.svg",
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q12.png",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
@@ -521,7 +524,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC에서 D, E는 AB, AC의 중점(같은 길이 눈금), 두 중선 BE, CD(주황)의 교점 G가 무게중심이고, 오른쪽에 중선 BE를 펴서 BG=10, GE=5, BE=15cm를 표시했다.",
+    "solutionImageCaption": "BG:GE=2:1이므로 BE=15cm이고 CD=BE=15cm이다. CG=(2/3)×15=10cm이므로 정답 ⑤.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,

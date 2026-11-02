@@ -26,13 +26,15 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "작은 원이 직선 $AB$와 만나는 접점을 $M$이라 하자. 접점에서 반지름은 접선에 수직이므로 $OM\\perp AB$이다. 큰 원에서도 중심 $O$에서 현 $AB$에 내린 수선이므로 $M$은 $AB$의 중점이다.\n$AB=12$이므로 $AM=BM=6$이다.\n작은 원의 반지름을 $r$, 큰 원의 반지름을 $R$이라 하면 직각삼각형 $OMA$에서\n$R^2=r^2+6^2$\n$R^2-r^2=36$\n이다.\n색칠한 부분은 두 원의 넓이의 차이이므로\n$\\pi R^2-\\pi r^2=\\pi(R^2-r^2)=36\\pi$\n이다. 그러므로 정답은 ③이다.",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q1-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q1-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_연향중_2학기_기말_중3_기출/q1.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageAlt": "해설 그림: 같은 중심 O인 두 원에서 작은 원에 접하는 현 AB의 접점 M은 중점이라 AM=BM=6cm이고, 직각삼각형 OMA의 두 반지름 r, R로 색칠한 고리 영역을 나타낸다.",
+    "solutionImageCaption": "R²−r²=36이므로 색칠한 부분의 넓이는 πR²−πr²=π(R²−r²)=36π cm²이다. 정답 ③."
   },
   {
     "id": 2,
@@ -59,14 +61,16 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "중심 $O$에서 현 $AB$, $AC$까지의 거리가 각각 $OM$, $ON$이고 $OM=ON$이다. 중심에서 같은 거리에 있는 두 현의 길이는 같으므로\n$AB=AC$\n이다. 따라서 $\\triangle ABC$는 꼭짓점 $A$인 이등변삼각형이다.\n$\\angle BAC=38^\\circ$이므로 두 밑각의 크기는 같다.\n$x=\\dfrac{180^\\circ-38^\\circ}{2}=71^\\circ$\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q2-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q2-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_연향중_2학기_기말_중3_기출/q2.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O에서 OM⊥AB, ON⊥AC이고 OM=ON인 것을 같은 길이 색으로, 그 결과 같아지는 현 AB=AC와 이등변삼각형의 밑각 ∠B=∠C를 색으로 묶어 표시한다.",
+    "solutionImageCaption": "OM=ON이므로 두 현의 길이가 같아 AB=AC이고, △ABC는 꼭지각 ∠BAC=38°인 이등변삼각형이어서 밑각 ∠B=∠C이다. 따라서 x=(180°−38°)÷2=71°이고 정답은 ①이다."
   },
   {
     "id": 3,
@@ -93,14 +97,16 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "$E$는 $OD$와 $AB$의 교점이다. 중심 $O$에서 현 $AB$에 내린 수선은 현을 이등분하므로\n$AE=BE=\\dfrac{AB}{2}=3$\n이다. 또 $OA=6$이다.\n직각삼각형 $OEA$에서 피타고라스 정리를 쓰면\n$OE^2+AE^2=OA^2$\n$OE^2+3^2=6^2$\n$OE^2=27$\n이므로\n$OE=3\\sqrt3$\n이다. 따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q3-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q3-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_연향중_2학기_기말_중3_기출/q3.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O에 내접하는 이등변삼각형 ABC. 중심 O에서 AB에 내린 수선 OD가 AB와 E에서 직각으로 만나고, AE=BE=3(같은 길이, 주황), OA=6이며 직각삼각형 OEA가 파랑으로 칠해져 있다.",
+    "solutionImageCaption": "AE=BE=3, OA=6인 직각삼각형 OEA에서 OE²=6²−3²=27이므로 OE=3√3 (정답 ③)"
   },
   {
     "id": 4,
@@ -127,14 +133,16 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "한 점 $P$에서 원에 그은 두 접선의 길이는 같으므로 $PA=PB$이다. 또한 $OP$는 $\\angle APB$를 이등분하므로\n$\\angle BPO=\\dfrac{60^\\circ}{2}=30^\\circ$\n이다. 반지름 $OB$는 접선 $PB$에 수직이므로 $\\triangle PBO$는 직각삼각형이다.\n$\\tan30^\\circ=\\dfrac{OB}{PB}=\\dfrac{3}{PB}$\n$\\dfrac{1}{\\sqrt3}=\\dfrac{3}{PB}$\n$PB=3\\sqrt3$\n이다. 따라서 $PA=3\\sqrt3$이고\n$PA+PB=6\\sqrt3\\,\\mathrm{cm}$\n이다. 그러므로 정답은 ⑤이다.",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q4-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q4-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_연향중_2학기_기말_중3_기출/q4.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 점 P에서 원 O에 그은 두 접선 PA, PB(같은 길이, 분홍)와 OP가 60°를 30°씩 둘로 나누고 접점 B에서 반지름 OB=3cm가 접선과 직각을 이루는 그림.",
+    "solutionImageCaption": "한 점 P에서 원에 그은 두 접선의 길이는 같으므로 PA=PB이고, OP는 ∠APB를 이등분하므로 ∠BPO=30°이다. OB⊥PB이므로 tan30°=3/PB에서 PB=3√3 cm이고 PA+PB=6√3 cm이다. 정답 ⑤."
   },
   {
     "id": 5,
@@ -161,14 +169,16 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "같은 점에서 원에 그은 두 접선의 길이는 같다.\n점 $A$에서 그은 접선이므로\n$AF=AE=5$\n이다. 따라서\n$BF=AB-AF=9-5=4$\n$CE=AC-AE=7-5=2$\n이다.\n점 $B$, $C$에서도 같은 성질을 쓰면\n$BD=BF=4$, $CD=CE=2$\n이므로\n$BC=BD+DC=4+2=6\\,\\mathrm{cm}$\n이다. 따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q5-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q5-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_연향중_2학기_기말_중3_기출/q5.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원 O가 변과 만나는 접점 D, E, F가 있다. AF=AE=5, BF=BD=4, CE=CD=2인 접선의 길이가 같은 쌍이 각각 같은 색이다.",
+    "solutionImageCaption": "같은 점에서 그은 접선의 길이는 같다. AF=AE=5, BF=BD=4, CE=CD=2이므로 BC=BD+DC=4+2=6cm이고 정답은 ④이다."
   },
   {
     "id": 6,
@@ -195,14 +205,16 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "원주각의 크기는 그 원주각이 보는 호의 크기의 절반이다.\n$\\angle BCA=38^\\circ$이므로\n$\\wideparen{BA}=2\\times38^\\circ=76^\\circ$\n이다. $\\wideparen{AB}=\\wideparen{BC}$이므로 $\\wideparen{BC}=76^\\circ$이다.\n또 $\\angle ACD=63^\\circ$이므로\n$\\wideparen{AD}=2\\times63^\\circ=126^\\circ$\n이다. 따라서\n$\\wideparen{CD}=360^\\circ-(76^\\circ+76^\\circ+126^\\circ)=82^\\circ$\n이다.\n접선과 현 $CD$가 이루는 각은 호 $CD$를 보는 원주각과 같으므로\n$x=\\dfrac{82^\\circ}{2}=41^\\circ$\n이다. 따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q6-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q6-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_연향중_2학기_기말_중3_기출/q6.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD와 점 C에서의 접선 TT′이 있다. 호 AB와 호 BC는 76도로 같은 색이고 호 AD는 126도, 호 CD는 82도이며 각 BCA는 38도, 각 ACD는 63도, 접선과 현 CD가 이루는 각이 x이다.",
+    "solutionImageCaption": "∠BCA=38°이므로 호 AB=호 BC=76°이고 ∠ACD=63°이므로 호 AD=126°이다. 호 CD=360°−(76°+76°+126°)=82°이고 접선과 현 CD가 이루는 각은 호 CD의 원주각과 같으므로 x=82°÷2=41°이다. 정답은 ①이다."
   },
   {
     "id": 7,
@@ -229,14 +241,16 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "$\\angle ABC=30^\\circ$은 호 $AC$를 보는 원주각이므로\n$\\wideparen{AC}=2\\times30^\\circ=60^\\circ$\n이다. 조건에서 $\\wideparen{AC}=\\wideparen{BD}$이므로 $\\wideparen{BD}=60^\\circ$이다.\n두 현 $AB$, $CD$가 원 안의 점 $P$에서 만나므로\n$\\angle APC=\\dfrac{\\wideparen{AC}+\\wideparen{BD}}{2}$\n$=\\dfrac{60^\\circ+60^\\circ}{2}=60^\\circ$\n이다. 따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q7-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q7-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_연향중_2학기_기말_중3_기출/q7.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 위에서 호 AC와 호 BD를 같은 파랑으로 칠해 둘 다 60°임을 보이고, 두 현 AB, CD가 만나는 점 P에서 ∠APC를 따로 표시한다.",
+    "solutionImageCaption": "∠APC=(호 AC+호 BD)÷2=(60°+60°)÷2=60°이다. 정답 ⑤."
   },
   {
     "id": 8,
@@ -263,14 +277,16 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "중심각의 크기는 그 중심각이 보는 호의 크기와 같다. 따라서\n$\\wideparen{AC}=\\angle AOC=80^\\circ$\n이다.\n$\\wideparen{AB}=\\wideparen{BC}$이므로 두 호의 크기는 각각\n$\\wideparen{AB}=\\wideparen{BC}=40^\\circ$\n이다.\n$\\angle BQC$는 호 $BC$를 보는 원주각이므로\n$\\angle BQC=\\dfrac{40^\\circ}{2}=20^\\circ$\n이다. 따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q8-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q8-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_연향중_2학기_기말_중3_기출/q8.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O에서 ∠AOC=80°가 보는 호 AC 80°를 둘로 나눈 같은 길이의 호 AB, BC 40°를 같은 색으로, 호 AB와 BC를 보는 원주각 ∠APB, ∠BQC를 같은 색으로 표시한다.",
+    "solutionImageCaption": "중심각 ∠AOC=80°이므로 호 AC=80°이고, 호 AB=호 BC=40°이다. ∠BQC는 호 BC를 보는 원주각(∠APB와도 같음)이므로 40°÷2=20°이고 정답은 ②이다."
   },
   {
     "id": 9,
@@ -297,14 +313,16 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$OA=OB$이므로 $\\triangle AOB$는 이등변삼각형이다.\n$\\angle ABO=\\angle BAO=80^\\circ$\n이다.\n또 $OB=OC$이므로 $\\triangle BOC$도 이등변삼각형이어서\n$\\angle OBC=\\angle BCO=25^\\circ$\n이다.\n그림에서 $BC$는 $BA$와 $BO$ 사이에 있으므로\n$\\angle ABC=\\angle ABO-\\angle OBC$\n$=80^\\circ-25^\\circ=55^\\circ$\n이다.\n원에 내접하는 사각형의 마주 보는 두 각의 합은 $180^\\circ$이므로\n$\\angle ADC=180^\\circ-55^\\circ=125^\\circ$\n이다. 따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q9-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q9-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_연향중_2학기_기말_중3_기출/q9.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O에 내접하는 사각형 ABCD와 반지름 OA, OB, OC(초록, 같은 길이). ∠BAO와 ∠ABO(80°)는 파랑, ∠BCO와 ∠OBC(25°)는 주황으로 묶였고 ∠ABC=55°가 표시되어 있다.",
+    "solutionImageCaption": "∠ABC=∠ABO−∠OBC=80°−25°=55°이고 내접사각형의 마주 보는 각의 합은 180°이므로 ∠ADC=180°−55°=125° (정답 ④)"
   },
   {
     "id": 10,
@@ -331,14 +349,16 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "호 $AB$, $BC$, $CD$, $DA$의 크기를 차례로 $a,b,c,d$라 하자.\n점 $P$에서 두 할선이 이루는 각이 $30^\\circ$이므로\n$30^\\circ=\\dfrac{c-a}{2}$\n$c-a=60^\\circ$\n이다.\n점 $Q$에서도 같은 성질을 쓰면\n$40^\\circ=\\dfrac{b-d}{2}$\n$b-d=80^\\circ$\n이다.\n$c=a+60^\\circ$, $b=d+80^\\circ$이고 네 호의 합은 $360^\\circ$이므로\n$a+(d+80^\\circ)+(a+60^\\circ)+d=360^\\circ$\n$2(a+d)=220^\\circ$\n$a+d=110^\\circ$\n이다.\n$\\angle x=\\angle BCD$는 호 $BAD$를 보는 원주각이므로\n$x=\\dfrac{a+d}{2}=55^\\circ$\n이다. 따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q10-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q10-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_연향중_2학기_기말_중3_기출/q10.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD에서 P, Q에서 두 할선이 만드는 ∠P=30°, ∠Q=40°와 네 호의 크기 a, d+80°, a+60°, d, 그리고 호 a와 d를 보는 원주각 x를 나타낸 그림.",
+    "solutionImageCaption": "호 AB, BC, CD, DA를 a, b, c, d라 하면 P에서 30°=(c−a)/2이므로 c=a+60°, Q에서 40°=(b−d)/2이므로 b=d+80°이다. 네 호의 합이 360°이므로 a+d=110°이고 ∠x는 호 BAD를 보는 원주각이므로 x=(a+d)/2=55°이다. 정답 ③."
   },
   {
     "id": 11,
@@ -365,14 +385,16 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "두 접선 $PA$, $PB$가 이루는 각이 $50^\\circ$이므로 작은 호 $AB$의 중심각은\n$180^\\circ-50^\\circ=130^\\circ$\n이다. 따라서 작은 호 $AB$의 크기는 $130^\\circ$이다.\n접선과 현이 이루는 각의 성질을 쓰면\n$\\angle PAC=\\dfrac{1}{2}\\wideparen{AC}$\n$\\angle PBC=\\dfrac{1}{2}\\wideparen{BC}$\n이다. 점 $C$가 작은 호 $AB$ 위에 있으므로\n$\\wideparen{AC}+\\wideparen{CB}=\\wideparen{AB}=130^\\circ$\n이다. 따라서\n$\\angle PAC+\\angle PBC=\\dfrac{130^\\circ}{2}=65^\\circ$\n이다. 그러므로 정답은 ④이다.",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q11-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q11-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_연향중_2학기_기말_중3_기출/q11.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O의 접선 PA, PB가 P에서 만나 각 P는 50도이고 중심각 AOB는 130도이다. 점 C는 작은 호 AB 위에 있고 각 PAC는 호 AC의 절반, 각 PBC는 호 CB의 절반이다.",
+    "solutionImageCaption": "∠P=50°이므로 작은 호 AB=130°이다. ∠PAC=½호 AC, ∠PBC=½호 BC이고 호 AC+호 BC=130°이므로 ∠PAC+∠PBC=65°이고 정답은 ④이다."
   },
   {
     "id": 12,
@@ -428,7 +450,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 학생 11명이 본 영화 수의 점도표. 3편이 파란 점 3개로 가장 높고, 중앙값 b는 4, 평균 a는 5의 자리에 점선이 있다.",
+    "solutionImageCaption": "점 하나가 학생 한 명이다. 3이 점 3개(파란 점)로 가장 많아 최빈값 c=3이다. 작은 쪽에서 6번째 값 4가 중앙값 b이고, 합 55÷11=5가 평균 a이다. 따라서 a>b>c이므로 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -459,7 +485,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 수학 성적 줄기와 잎 그림. 작은 쪽 8번째 잎 76과 9번째 잎 80에 동그라미와 번호 8, 9가 있고, 줄기 8의 잎 0 세 개를 묶는 괄호 아래에 3이 쓰여 있다.",
+    "solutionImageCaption": "16개이므로 중앙값 a는 8번째 76과 9번째 80의 평균 78이고, 가장 많이 나온 값 b는 80(3번)이므로 b−a=80−78=2이다. 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -487,7 +517,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 자료 C의 점도표. 6과 10에 파란 점이 세 개씩 쌓여 있고 그 사이에는 점이 없으며, 가운데 8에 중앙값 점선이 있다.",
+    "solutionImageCaption": "점 하나가 자료 하나이다. 6과 10이 각각 세 번씩 나타나므로(파란 점) 최빈값은 6, 10이다. 작은 순서로 3번째·4번째 값이 6, 10이므로 중앙값은 (6+10)÷2=8(점선)이다. 따라서 중앙값이 9라고 한 ⑤가 옳지 않으므로 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -515,7 +549,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 주사위 눈 8개의 점도표. 1, 2, 3, 4, 7에는 점이 1개씩, 5에는 점이 3개 쌓여 있다.",
+    "solutionImageCaption": "합 32로 평균은 4(ㄱ 옳음), 4와 5의 평균인 중앙값은 4.5(ㄴ 옳지 않음), 5가 3번 나와 최빈값은 5(ㄷ 옳음), 편차 제곱의 합 26으로 분산 13/4, 표준편차 √13/2(ㄹ 옳음)이다. 옳은 것은 ㄱ, ㄷ, ㄹ의 3개이므로 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -571,7 +609,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 점도표 두 개. 왼쪽은 변량 1, 2, 6과 평균 M=3의 점선, 오른쪽은 3씩 더한 4, 5, 9와 평균 M+3=6의 점선이며 각 점 위의 평균과의 차 -2, -1, +3은 두 그림이 같다.",
+    "solutionImageCaption": "예: 변량 1, 2, 6의 평균이 M=3이고 각각 3을 더한 4, 5, 9의 평균은 M+3=6이다. 편차는 -2, -1, 3으로 그대로이므로 분산은 S²으로 변하지 않는다. 따라서 평균 M+3, 분산 S²이고 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -604,7 +646,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 필기·실기 점수 산점도. 필기 85점 이상 영역과 실기 85점 이상 영역이 칠해져 있고 그 안의 점 8개에 동그라미가 있으며, 실기 90점 가로선이 그어져 있다.",
+    "solutionImageCaption": "③은 필기 85점 이상 7명과 실기 85점 이상 중 나머지 1명을 합해 8명이므로 옳다. ⑤는 실기 90점 이상 6명의 필기 점수 85,90,90,95,95,100의 평균 92.5점이므로 옳다. ②는 5명으로 25%, ④는 3명으로 15%라 옳지 않다. 정답은 ③, ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -636,7 +682,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 수학·과학 성적 예시 산점도. 점들이 오른쪽 위로 띠 모양으로 모여 있고 점선 y=x 위쪽에 D, 아래쪽에 B, 띠의 오른쪽 위 끝에 A, 왼쪽 아래 끝에 C가 있다.",
+    "solutionImageCaption": "예: 점선은 수학 점수와 과학 점수가 같은 곳이다. D는 점선 위쪽(왼쪽 위)에 있어 과학 성적이 수학 성적보다 높으므로 ‘수학 성적이 더 우수하다’고 한 ③이 옳지 않다. 따라서 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -658,14 +708,16 @@ window.questionBank = [
     "choices": [],
     "answer": "$100\\pi\\,\\mathrm{cm}^2$",
     "solution": "먼저 $\\triangle AMC$에서 $CM$을 구한다. $CM\\perp AB$이므로 $\\triangle AMC$는 직각삼각형이다.\n$CM^2=CA^2-AM^2$\n$=(4\\sqrt5)^2-8^2$\n$=80-64=16$\n따라서 $CM=4$이다.\n$AM=BM$이므로 $M$은 현 $AB$의 중점이다. 원의 중심 $O$는 현 $AB$의 수직이등분선 위에 있으므로 $C,M,O$는 한 직선 위에 있다.\n$OM=x$라 하면\n$OC=x+4$\n이고, $OA=OC$는 모두 반지름이다.\n직각삼각형 $OMA$에서\n$OA^2=OM^2+AM^2=x^2+64$\n이고 $OA=x+4$이므로\n$(x+4)^2=x^2+64$\n$x^2+8x+16=x^2+64$\n$8x=48$\n$x=6$\n이다. 따라서 반지름은 $OC=6+4=10\\,\\mathrm{cm}$이다.\n원의 넓이는\n$\\pi\\times10^2=100\\pi\\,\\mathrm{cm}^2$\n이다. 그러므로 구하는 값은 $100\\pi\\,\\mathrm{cm}^2$이다.",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q21-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q21-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_연향중_2학기_기말_중3_기출/q21.png",
     "imageSize": "large",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 원 O의 현 AB의 중점 M에서 CM이 AB에 수직이고 C, M, O가 한 직선 위에 있다. AM=BM=8cm가 같은 색, CM=4cm, OM=6cm, CA=4√5cm이며 OA와 OC는 같은 반지름으로 같은 색이다.",
+    "solutionImageCaption": "△AMC에서 CM=4cm이고 직각삼각형 OMA에서 OM=6cm이므로 반지름 OC=6+4=10cm이다. 따라서 원 O의 넓이는 100πcm²이다."
   },
   {
     "id": 22,
@@ -687,14 +739,16 @@ window.questionBank = [
     "choices": [],
     "answer": "$6\\pi\\,\\mathrm{cm}$",
     "solution": "반지름이 $9\\,\\mathrm{cm}$이므로 원의 둘레는\n$2\\pi\\times9=18\\pi\\,\\mathrm{cm}$\n이다.\n호 $AB$의 길이가 $6\\pi$이므로 그 중심각은\n$360^\\circ\\times\\dfrac{6\\pi}{18\\pi}=120^\\circ$\n이고, 호 $CD$의 길이가 $3\\pi$이므로 그 중심각은\n$360^\\circ\\times\\dfrac{3\\pi}{18\\pi}=60^\\circ$\n이다.\n호 $AC$의 중심각을 $x^\\circ$, 호 $BD$의 중심각을 $y^\\circ$라 하자. 네 호의 중심각의 합이 $360^\\circ$이므로\n$x+y+120^\\circ+60^\\circ=360^\\circ$\n$x+y=180^\\circ$\n이다.\n원 밖의 점 $P$에서 두 할선이 이루는 각은 두 호의 차의 절반이므로\n$30^\\circ=\\dfrac{x-y}{2}$\n$x-y=60^\\circ$\n이다.\n두 식을 더하면\n$2x=240^\\circ$\n$x=120^\\circ$\n이다. 따라서 호 $AC$의 길이는\n$18\\pi\\times\\dfrac{120}{360}=6\\pi\\,\\mathrm{cm}$\n이다. 그러므로 구하는 값은 $6\\pi\\,\\mathrm{cm}$이다.",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q22-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q22-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_연향중_2학기_기말_중3_기출/q22.png",
     "imageSize": "large",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 반지름 9cm인 원에서 호 AB는 파랑 120°, 호 CD는 주황 60°로 칠하고, 두 호 사이의 호 AC와 호 BD를 x, y로 표시해 P에서 만나는 할선의 각 30°와 함께 보여 준다.",
+    "solutionImageCaption": "x+y=180°, x−y=60°에서 x=120°이므로 호 AC의 길이는 18π×120/360=6π cm이다."
   },
   {
     "id": 23,

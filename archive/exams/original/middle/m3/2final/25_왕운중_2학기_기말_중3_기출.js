@@ -31,9 +31,11 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q1-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q1-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O에서 길이 16 cm인 두 현에 내린 수선이 각 현을 8 cm씩 이등분하고, 반지름 10 cm와 수선 x, 현의 절반 8 cm가 직각삼각형을 이룬다.",
+    "solutionImageCaption": "중심 O에서 현에 내린 수선은 현을 이등분하므로 현의 절반은 8 cm이고, 반지름 10 cm를 빗변으로 하는 직각삼각형에서 x²+8²=10²이다. 따라서 x=6이고 정답은 ①이다."
   },
   {
     "id": 2,
@@ -58,16 +60,18 @@ window.questionBank = [
       "$4$",
       "$5$"
     ],
-    "answer": "④",
-    "solution": "점 $C$에서 원에 그은 두 접선의 길이는 같다.\n따라서 접선 $CA$와 $CE$에 대하여\n$CA=CE$이다.\n\n그림에서 $CE=4\\rm\\,cm$이므로\n$x=CA=4$이다.\n\n따라서 정답은 ④이다.",
+    "answer": "③",
+    "solution": "점 $C$에서 원에 그은 두 접선의 길이는 같으므로\n$CA=CE=x$이다.\n점 $D$에서 원에 그은 두 접선의 길이도 같으므로\n$DE=DB$이다.\n\n그림에서 $CD=CE+ED=4\\rm\\,cm$이므로\n$DB=DE=4-x$이다.\n\n점 $P$에서 원에 그은 두 접선의 길이는 같으므로 $PA=PB$이다.\n$PA=6+x$, $PB=8+(4-x)=12-x$이므로\n$6+x=12-x$\n$x=3$\n\n따라서 정답은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q2.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q2-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q2-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 점 P에서 원에 그은 두 접선 PA, PB와 접선 CD(접점 E)를 그린 그림. CA=CE=x, DE=DB=4−x를 같은 표시로 묶고 PC=6, PD=8을 적었다. 아래에 선분 CD를 따로 펴서 C에서 D까지 전체가 4 cm이고 CE=x, ED=4−x임을 보인다.",
+    "solutionImageCaption": "한 점에서 원에 그은 접선의 길이가 같아 CA=CE=x, DE=DB=4−x이고, PA=PB에서 6+x=8+(4−x)이므로 x=3이다. 정답은 ③이다."
   },
   {
     "id": 3,
@@ -99,9 +103,11 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q3-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q3-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O에 외접하는 사각형 ABCD. 꼭짓점 A, B, C, D에서 두 접점까지의 길이가 각각 같아 파랑, 주황, 초록, 분홍 네 색으로 묶여 있고, 변의 길이 AB=9, BC=10, AD=7, CD=3+x가 표시되어 있다.",
+    "solutionImageCaption": "한 점에서 원에 그은 두 접선의 길이는 같으므로 AB+CD=BC+AD, 9+(3+x)=10+7에서 x=5 (정답 ②)"
   },
   {
     "id": 4,
@@ -133,9 +139,11 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q4-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q4-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 점 P에서 원 O에 그은 접선 PA, PB와 접점의 직각 표시, ∠P=50°, 파랗게 칠한 사각형 OAPB, 호 AB(주황)를 보는 중심각 130°와 원주각 x를 나타낸 그림.",
+    "solutionImageCaption": "접점에서 반지름과 접선이 수직이므로 ∠OAP=∠OBP=90°이고 사각형 OAPB에서 ∠AOB=360°−90°−90°−50°=130°이다. ∠x는 호 AB를 보는 원주각이므로 x=130°÷2=65°이다. 정답 ④."
   },
   {
     "id": 5,
@@ -167,9 +175,11 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q5-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q5-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O의 지름 AB에서 각 AOC=62도, 각 BOC=118도이다. OB와 OC는 같은 반지름이어서 같은 색이고 삼각형 BOC의 두 밑각도 같은 색이다.",
+    "solutionImageCaption": "∠BOC=180°−62°=118°이고 OB=OC이므로 두 밑각은 같다. ∠BCO=(180°−118°)÷2=31°이므로 정답은 ⑤이다."
   },
   {
     "id": 6,
@@ -201,9 +211,11 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q6-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q6-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 왼쪽은 원 위의 사각형 ABCD(대각선 BD로 나눈 두 삼각형을 파랑·주황으로 칠함). 오른쪽은 사각형만 크게 그린 그림으로 AB=2, BC=2(같은 눈금), CD=√3, AD=3√3이 표시되고 꼭짓점 A와 C에 각 호가 그려져 있다(각의 크기 값은 글자로 적혀 있지 않다).",
+    "solutionImageCaption": "∠A=30°이므로 ∠C=180°−30°=150°이고, △ABD=½·2·3√3·sin30°=3√3/2, △BCD=½·2·√3·sin150°=√3/2이다. 따라서 사각형 ABCD의 넓이는 2√3이고 정답은 ③이다."
   },
   {
     "id": 7,
@@ -235,9 +247,11 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q7-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q7-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 세 반지름 OA, OB, OC를 같은 초록으로 표시해 이등변삼각형 AOC(밑각 18°)와 BOC(밑각 36°)를 보이고 중심각 144°, 108°와 구하는 ∠x를 O 둘레에 나타낸다.",
+    "solutionImageCaption": "점 O 둘레의 각의 합이 360°이므로 x=360°−144°−108°=108°이다. 정답 ④."
   },
   {
     "id": 8,
@@ -269,9 +283,11 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q8-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q8-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원에 내접한 오각형 ABCDE에서 ∠AED=100°가 보는 호 ABCD 200°와 나머지 호 DEA 160°를 표시하고, x=∠ABC와 y=∠CAD가 보는 호 DEA, DC를 색으로 구분한다.",
+    "solutionImageCaption": "∠AED=100°가 보는 호 ABCD=200°이므로 나머지 호 DEA=160°이다. x=∠ABC는 호 DEA와 호 DC를 보고 y=∠CAD는 호 DC를 보므로 x−y는 호 DEA의 절반이다. x−y=80°이고 정답은 ②이다."
   },
   {
     "id": 9,
@@ -302,7 +318,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 지름 AC와 현 BD가 P에서 만난다. ∠DBC=36°가 보는 호 DC=72°(보라), ∠BDC=28°가 보는 호 BC=56°(초록), 반원에서 호 AD=108°(주황), 호 AB=124°(파랑)가 표시되고 x는 호 AB를 보는 원주각, y는 ∠BPC이다.",
+    "solutionImageCaption": "x=½×124°=62°, y=½(호 BC+호 AD)=½(56°+108°)=82°이므로 x+y=144° (정답 ③)",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -334,9 +354,11 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q10-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q10-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 안의 두 현 AC, BD가 점 P에서 60°로 만나고, 이웃한 120°가 보는 두 호 AD, BC가 주황색으로 표시되며 합이 240°임을 나타낸 그림.",
+    "solutionImageCaption": "60°와 이웃한 각은 180°−60°=120°이고 이 각이 보는 두 호 AD, BC의 크기의 합은 2×120°=240°이다. 따라서 호 AD+호 BC의 길이는 2πr×240/360=4πr/3이다. 정답 ④."
   },
   {
     "id": 11,
@@ -368,9 +390,11 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q11-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q11-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O의 접선 CT와 현 CB가 이루는 각이 24도이고 호 BC는 48도, 호 AB는 144도, 점 B를 지나지 않는 호 AC는 168도로 서로 다른 색이다.",
+    "solutionImageCaption": "접선과 현의 각 24°에서 호 BC=48°, 호 AB=3×48°=144°이므로 B를 지나지 않는 호 AC=360°−192°=168°이다. ∠ABC=168°÷2=84°이므로 정답은 ①이다."
   },
   {
     "id": 12,
@@ -402,9 +426,11 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q12-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q12-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O의 접선 AT에서 CD는 지름이고 AT는 BT에 수직이다. AT와 BC는 같은 색으로 평행하고 점 A, B의 각을 주변에 따로 크게 그려 68도(초록), 22도(파랑), 직각을 보였다.",
+    "solutionImageCaption": "CD가 지름이므로 ∠CBD=90°이고 AT∥BC이므로 ∠BAT=∠ABC=68°이다. 접선과 현의 성질로 ∠BCA=68°이고 ∠ABD=90°−68°=22°이며 같은 호 AD의 원주각이므로 ∠ACD=22°이다. 따라서 ∠BCD=68°−22°=46°이고 정답은 ④이다."
   },
   {
     "id": 13,
@@ -516,7 +542,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 점도표 두 개(눈금 간격이 같다). 왼쪽은 변량 5, 7, 9, 11과 평균 8의 점선, 오른쪽은 2배 한 10, 14, 18, 22와 평균 16의 점선이며 오른쪽 각 점 위에 평균과의 차 -6, -2, +2, +6이 쓰여 있다. 오른쪽 점들이 왼쪽보다 두 배 넓게 퍼져 있다.",
+    "solutionImageCaption": "예: 변량 5, 7, 9, 11은 평균 8이고 편차는 -3, -1, 1, 3이다(왼쪽 그림에는 편차를 쓰지 않았다). 2배 한 10, 14, 18, 22는 평균 16이고 편차는 -6, -2, 2, 6으로 2배가 되므로(두 그림의 눈금 간격은 같다) 편차의 제곱은 4배, 분산은 4×5=20이다. 따라서 평균 16, 분산 20이고 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -546,7 +576,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 시청 시간 2가 3명, 4가 3명, 6이 7명, 8이 5명, 10이 2명인 점도표. 평균 6에 점선이 있고 각 열 위에 평균과의 차 −4, −2, 0, +2, +4가 쓰여 있다.",
+    "solutionImageCaption": "점 하나가 학생 한 명이다(모두 20명). 평균은 120÷20=6이고 그림의 숫자는 시청 시간에서 평균 6을 뺀 편차이다. 편차의 제곱에 도수를 곱하면 (−4)²·3+(−2)²·3+0²·7+2²·5+4²·2=48+12+0+20+32=112이고 분산은 112÷20=28/5이므로 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -577,7 +611,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 산점도. 점들이 왼쪽 아래에서 오른쪽 위로 넓은 띠 모양으로 모여 있어 x가 커질수록 y도 대체로 커진다.",
+    "solutionImageCaption": "예: 산점도의 점들이 오른쪽 위로 모여 있으므로 한 변량이 커질수록 다른 변량도 커지는 양의 상관관계이다. 여름철 실외 기온이 높을수록 냉방비도 대체로 커지므로 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -639,9 +677,11 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q20-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q20-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 접선 CT에 수직인 OT와 AH는 평행(파랑)이고, A와 O의 높이 차 7/2, 빗변 9/2인 직각삼각형(주황)에서 HT=2√2임을 보여 준다.",
+    "solutionImageCaption": "△AHT의 넓이는 ½×8×2√2=8√2이다. 정답 ①."
   },
   {
     "id": 21,
@@ -668,9 +708,11 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q21-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q21-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 반원 O의 접선 PT=10, BP=6에서 OB=OT=r을 같은 색으로, OP=r+6과 OT⊥PT인 직각삼각형 OPT를 표시한다.",
+    "solutionImageCaption": "반지름을 r라 하면 OB=OT=r, OP=r+6이고 OT⊥PT이므로 직각삼각형 OPT에서 (r+6)²=r²+10²이다. r=16/3, OP=22/3이므로 반원의 넓이는 ½π·(16/3)²=128π/9이다."
   },
   {
     "id": 22,
@@ -697,8 +739,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q22-solution.svg",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q22-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 원 O에 내접하는 육각형 ABCDEF. 여섯 호를 a~f로 나타내고 원을 a+b(파랑, ∠B 쪽), c+d(주황, ∠D 쪽), e+f(초록, ∠F 쪽) 세 부분으로 나누었다. ∠B가 보는 호는 파랑을 뺀 나머지 두 색, ∠D는 주황을 뺀 나머지 두 색, ∠F는 초록을 뺀 나머지 두 색이다.",
+    "solutionImageCaption": "2∠B=c+d+e+f, 2∠D=e+f+a+b, 2∠F=a+b+c+d를 더하면 2(∠B+∠D+∠F)=2(a+b+c+d+e+f)=2×360°이므로 ∠B+∠D+∠F=360°"
   },
   {
     "id": 23,
@@ -725,9 +769,11 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q23-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q23-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: △ABC의 외접원 O와 점 C의 접선 CD, 직선 AB와의 교점 D, ∠ADC의 이등분선 DE가 AC와 만나는 점 E가 있고 ∠BAC와 ∠BCD가 α로 같은 색, ∠ABC가 β로 표시된 그림.",
+    "solutionImageCaption": "∠ACB=56°이므로 α+β=124°이다. 접선과 현의 성질로 ∠BCD=∠BAC=α이고 삼각형 BCD에서 ∠ADC=β−α이므로 DE가 이등분하면 ∠ADE=(β−α)/2이다. 삼각형 AED에서 ∠AED=180°−α−(β−α)/2=180°−(α+β)/2=180°−62°=118°이다."
   },
   {
     "id": 24,
@@ -752,6 +798,10 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 자료 9, 10, 12, 12, 290의 점도표. 9부터 12 사이에 점 4개가 모여 있고 290은 가로축을 끊은 뒤 멀리 떨어진 점 1개이다.",
+    "solutionImageCaption": "점 하나가 자료 하나이다. 9~12에 4개가 모여 있고 290만 매우 멀리 떨어져 있다. 평균은 333÷5=66.6으로 290 때문에 커지고, 작은 순서로 9, 10, 12, 12, 290의 가운데 값 12가 중앙값, 가장 많은 값 12가 최빈값이다. (1) 평균 66.6, 중앙값 12, 최빈값 12 (2) 극단값 290의 영향이 작은 중앙값 12가 가장 적절하다.",
+    "solutionImageSize": "medium"
   }
 ];

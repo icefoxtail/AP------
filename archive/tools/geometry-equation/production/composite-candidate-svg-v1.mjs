@@ -9,14 +9,17 @@ import {NUMBER_LINE_CAPABILITY,composeNumberLinePanel} from './quadratic-inequal
 import {SOLID_CAPABILITY,GRID_PANEL_WIDTH,composeSolidFigurePanel} from './solid-figure-v1.mjs';
 import {isPlaneFigure} from './plane-marks.mjs';
 import {FIGURE_CAPABILITY as SET_DIAGRAM_CAPABILITY,solveDiagram as solveSetDiagram,composeSetDiagramFigure} from './set-diagram-v1.mjs';
+import {FIGURE_CAPABILITY as STAT_CHART_CAPABILITY,solveStatPanel,composeStatChartFigure} from './stat-chart-v1.mjs';
 export const isNumberLinePanel=plan=>plan?.capability===NUMBER_LINE_CAPABILITY;
 export const isSolidPanel=plan=>plan?.capability===SOLID_CAPABILITY;
 // A Venn panel (G13b): a set-diagram-figure-v1 plan, 2-4 of them in the same two-column grid; never mixed with the other panel kinds.
 export const isSetPanel=plan=>plan?.capability===SET_DIAGRAM_CAPABILITY;
+// A statistics panel (G16): a stat-chart-figure-v1 dot plot drawn compact, 2-4 of them in the same two-column grid; never mixed with the other panel kinds.
+export const isStatPanel=plan=>plan?.capability===STAT_CHART_CAPABILITY;
 // A plane-figure panel: the same axis-free PLANE_FIGURE_v1 construction plan authors already use for one figure.
 export const isPlanePanel=plan=>plan?.capability==='construction-spike-v1'&&plan.graphPlan===undefined&&isPlaneFigure(plan);
 // A grid panel is a plane figure or a solid figure (solid-figure-v1 solids or net): they share one two-column grid of equal cells.
-export const isGridPanel=plan=>isPlanePanel(plan)||isSolidPanel(plan)||isSetPanel(plan);
+export const isGridPanel=plan=>isPlanePanel(plan)||isSolidPanel(plan)||isSetPanel(plan)||isStatPanel(plan);
 
 export const COMPOSITE_SVG_VERSION='composite-candidate-svg-v1';
 export const COMPOSITE_CAPABILITY='composite-panels-v1';
@@ -42,6 +45,8 @@ export const COMPOSITE_MAX_PLANE_PANELS=5;
 export const COMPOSITE_MAX_SOLID_GRID_PANELS=6;
 // A grid of Venn panels is 2 to 4 panels (2x2): each is narrowed to a compact panel so two of them and the gap stay inside the 848-unit width the solution column allows.
 export const COMPOSITE_MIN_SET_PANELS=2,COMPOSITE_MAX_SET_PANELS=4;
+// A grid of statistics panels is 2 to 4 compact dot plots (420 units wide each, the same 848-unit width as the Venn grid).
+export const COMPOSITE_MIN_STAT_PANELS=2,COMPOSITE_MAX_STAT_PANELS=4;
 export const compositeGridColumns=count=>Math.min(Math.max(count,1),2);
 // Shared rows above a three-panel stack (line equations every panel draws the same): 34 apart, then a gap before the first caption.
 export const COMPOSITE_SHARED_ROW=56;// a shared line equation may carry a full-size fraction (about 41 px high)
@@ -71,16 +76,23 @@ export function compositePanels(plan){
     if(!setPanels.every(Boolean)){const first=setPanels.indexOf(true);throw new Stop('COMPOSITE_SET_PANEL_MIXED_'+first,{reason:'SET_PANEL_MIXED_'+first});}
     if(plan.panels.length<COMPOSITE_MIN_SET_PANELS||plan.panels.length>COMPOSITE_MAX_SET_PANELS)throw new Stop('COMPOSITE_SET_PANEL_COUNT',{reason:'SET_PANEL_COUNT'});
   }
+  // Statistics panels (stat-chart-figure-v1) likewise form their own grid: all of them, 2 to 4, and nothing else.
+  const statPanels=plan.panels.map(panel=>isStatPanel(panel?.plan)),statGrid=!setGrid&&statPanels.some(Boolean);
+  if(statGrid){
+    if(plan.chain!==undefined)bad('CHAIN');
+    if(!statPanels.every(Boolean)){const first=statPanels.indexOf(true);throw new Stop('COMPOSITE_STAT_PANEL_MIXED_'+first,{reason:'STAT_PANEL_MIXED_'+first});}
+    if(plan.panels.length<COMPOSITE_MIN_STAT_PANELS||plan.panels.length>COMPOSITE_MAX_STAT_PANELS)throw new Stop('COMPOSITE_STAT_PANEL_COUNT',{reason:'STAT_PANEL_COUNT'});
+  }
   const planePanels=plan.panels.map(panel=>isPlanePanel(panel?.plan)),solidPanels=plan.panels.map(panel=>isSolidPanel(panel?.plan));
   // The one-panel stack a standalone solid figure expands to (chain solid-figure-v1) keeps its own path; any other set of plane and solid panels is a grid.
   const solidChain=plan.chain===SOLID_CAPABILITY;
-  const grid=!setGrid&&!solidChain&&planePanels.length>0&&plan.panels.every((panel,index)=>planePanels[index]||solidPanels[index]);
+  const grid=!setGrid&&!statGrid&&!solidChain&&planePanels.length>0&&plan.panels.every((panel,index)=>planePanels[index]||solidPanels[index]);
   const withSolid=grid&&solidPanels.some(Boolean);
   if(grid){
     // A grid: no chain marker, 2-5 plane panels (2-6 when a solid panel is among them), every panel a PLANE_FIGURE_v1 construction plan or a solid figure.
     if(plan.chain!==undefined)bad('CHAIN');
     if(plan.panels.length<2||plan.panels.length>(withSolid?COMPOSITE_MAX_SOLID_GRID_PANELS:COMPOSITE_MAX_PLANE_PANELS))bad('PANELS');
-  }else if(!setGrid){
+  }else if(!setGrid&&!statGrid){
     // A plane or solid panel is never mixed into a graph/number-line stack: the layouts use different geometry units.
     if(planePanels.some(Boolean))bad('PANEL_PLANE_MIXED_'+planePanels.indexOf(true));
     if(!solidChain&&solidPanels.some(Boolean))bad('PANEL_SOLID_MIXED_'+solidPanels.indexOf(true));
@@ -88,7 +100,7 @@ export function compositePanels(plan){
   }
   // Three panels with their own formula headers cannot fit the 640 CSS px stack: each formula moves to its caption row and a line every
   // panel draws identically (same id, slope and intercept) is written once above the stack (phase2 compositeHeader / COMPOSITE_PANEL_CANVAS).
-  const three=!grid&&!setGrid&&plan.panels.length===3,lineKey=line=>JSON.stringify([line.id,line.slope,line.intercept]);
+  const three=!grid&&!setGrid&&!statGrid&&plan.panels.length===3,lineKey=line=>JSON.stringify([line.id,line.slope,line.intercept]);
   const checked=plan.panels.map((panel,index)=>{
     const caption=panel?.caption;
     if(!caption||typeof caption!=='object'||Array.isArray(caption)||Object.keys(caption).some(key=>!['math','text'].includes(key))||(!caption.math&&!caption.text)
@@ -99,6 +111,13 @@ export function compositePanels(plan){
       if(Object.keys(panelPlan).some(key=>!['capability','diagram'].includes(key)))throw code('SET_PANEL_PLAN_INVALID');
       if(!panelPlan.diagram||typeof panelPlan.diagram!=='object'||panelPlan.diagram.kind!=='VENN')throw code('SET_PANEL_KIND_UNSUPPORTED');
       try{solveSetDiagram(panelPlan.diagram);}catch(error){if(!isDomainCode(error))throw error;throw code(error.message);}
+      return {index,plan:panelPlan,caption};
+    }
+    if(statGrid){
+      // A statistics panel is only {capability,chart} (a DOT_PLOT chart): the composite owns the figure's caption, conditions and quote, the grid owns the panel width.
+      const panelPlan=panel.plan,code=reason=>new Stop('PANEL_'+index+':'+reason,{reason:'PANEL_'+index+':'+reason});
+      if(Object.keys(panelPlan).some(key=>!['capability','chart'].includes(key)))throw code('STAT_PANEL_PLAN_INVALID');
+      try{solveStatPanel(panelPlan.chart);}catch(error){if(!isDomainCode(error))throw error;throw code(error.message);}
       return {index,plan:panelPlan,caption};
     }
     if(grid&&solidPanels[index]){
@@ -138,7 +157,7 @@ export function compositePanels(plan){
     }
     return {index,plan:panel.plan,caption};
   });
-  if(grid||setGrid)return checked;
+  if(grid||setGrid||statGrid)return checked;
   const sharedLines=three?(checked[0].plan.graphPlan.lines??[]).filter(line=>checked.every(item=>(item.plan.graphPlan.lines??[]).some(other=>lineKey(other)===lineKey(line)))).map(line=>line.id):[];
   // Two cubic/quartic cases: their long formula has no room inside the panel beside the y-axis, so each panel keeps its own plot and gains
   // an 80 px header band above it where the formula is written (overviewHeaderBand -> phase2 CUBIC_COMPOSITE_PANEL_CANVAS).
@@ -232,6 +251,7 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
       const composed=isNumberLinePanel(panel.plan)?await composeNumberLinePanel({plan:given.plan,model:given.model,identity,typographyPolicy,browser:await chrome()})
         :isSolidPanel(panel.plan)?await composeSolidFigurePanel({plan:given.plan,model:given.model,identity,typographyPolicy,browser:await chrome()})
         :isSetPanel(panel.plan)?await composeSetDiagramFigure({plan:given.plan,model:given.model,identity,typographyPolicy,browser:await chrome(),compact:true})
+        :isStatPanel(panel.plan)?await composeStatChartFigure({plan:given.plan,model:given.model,identity,typographyPolicy,browser:await chrome()})
         :await composeConstructionCandidate({plan:given.plan,model:given.model,identity,typographyPolicy,repairContext,browser:await chrome(),compositePanel:true});
       state.panels.push({index:panel.index,status:composed.status,detail:composed.detail,lineage:composed.lineage,layoutRepairs:composed.layoutRepairs,staticAudit:composed.staticAudit,renderedLayout:composed.renderedLayout});
       if(composed.status!=='COMPOSED')throw new Stop('COMPOSITE_PANEL_NOT_COMPOSED',{panel:panel.index,status:composed.status,detail:composed.detail});
