@@ -194,6 +194,7 @@ def split_registry_changes(changes: list) -> tuple[list, list]:
 
 RPM_MASTER_REL = "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
 CROSSWALK_REL_DIR = "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0"
+UNIT_REALIGN_FIELDS = ("standardUnitKey", "standardUnit", "subUnitKey", "subUnit", "conceptClusterKey")
 
 
 def _compact_scope(value: str) -> str:
@@ -485,7 +486,7 @@ def generate_inbox_request(files: dict, rpm_path_delta: bool = False, request_ta
                 parent_assignment,
                 {"problemTypeKey": basis.get("problemTypeKey"), "templateKey": basis.get("templateKey")},
                 parent_notes)
-            if rpm_path_delta:
+            if rpm_path_delta and not s_item.get("unitRealign"):
                 if (cur.get("L1"), cur.get("L2")) != (parent_assignment["L1"], parent_assignment["L2"]):
                     raise RequestGenerationError(
                         f"#{ord_num}: parentAssignment {parent_assignment['L1']}>{parent_assignment['L2']} differs from the "
@@ -498,6 +499,14 @@ def generate_inbox_request(files: dict, rpm_path_delta: bool = False, request_ta
 
         if rpm_path_delta:
             after = {}
+            if s_item.get("unitRealign"):
+                # Reviewed realignment of the question to the curriculum unit its content belongs to (small meta item
+                # `unitRealign: true`): only the unit/sub-unit/parent fields whose reviewed value differs from the
+                # registered one are patched; every other value stays.
+                after = {k: s_after[k] for k in UNIT_REALIGN_FIELDS if k in s_after and s_after[k] != cur.get(k)}
+                if parent_assignment:
+                    after["L1"], after["L2"] = parent_assignment["L1"], parent_assignment["L2"]
+                    after = {k: v for k, v in after.items() if v != cur.get(k)}
         if rpm_path is not None and "rpmPrimaryPath" not in after:
             after["rpmPrimaryPath"] = rpm_path
             if rpm_crosswalk:
@@ -511,7 +520,10 @@ def generate_inbox_request(files: dict, rpm_path_delta: bool = False, request_ta
 
         reason = s_item.get("reason", "문항 분석 및 Gemini 독립 검수 완료")
         if rpm_path_delta:
-            if rpm_path is not None:
+            if rpm_path is not None and s_item.get("unitRealign"):
+                reason = (f"{s_item.get('unitRealignReason') or '표준단원/세부단원을 문항 내용이 속한 교육과정 단원으로 재정렬'} "
+                          f"+ RPM Primary 경로 추가: 크로스워크 {', '.join(rpm_path.get('crosswalkRecordIds') or [])}의 PT/TPL 정확 일치 행")
+            elif rpm_path is not None:
                 reason = (f"RPM Primary 경로만 추가(다른 승인 값 변경 없음): 크로스워크 "
                           f"{', '.join(rpm_path.get('crosswalkRecordIds') or [])}의 PT/TPL 정확 일치 행")
             elif cur.get("rpmPrimaryPath"):

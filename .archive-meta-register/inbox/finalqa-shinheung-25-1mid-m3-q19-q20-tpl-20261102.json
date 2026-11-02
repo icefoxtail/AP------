@@ -1,6 +1,6 @@
 {
   "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
-  "requestId": "finalqa-shinheung-25-1mid-m3-q19-tpl-20261102",
+  "requestId": "finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102",
   "examUid": "25_신흥중_1학기_중간_중3_기출",
   "sourceArchiveFile": "original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js",
   "expectedSourceBlobSha1": "35721cba81894b1eb120d4b1ef64e8b9df7ffed1",
@@ -8,15 +8,15 @@
   "approval": {
     "type": "FINAL_QA",
     "metadataReviewed": true,
-    "approvedBy": "USER_DIRECTED_EXPANSION_20261102: new general TPL TPL_M3_COMMON_FACTOR_BY_FACTORIZATION for Q19 (user decision 2026-11-02: PT/TPL may be created when none fits); Claude Sonnet subagent review",
+    "approvedBy": "USER_DIRECTED_EXPANSION_20261102: new general TPLs TPL_M3_COMMON_FACTOR_BY_FACTORIZATION (Q19) and TPL_M3_FIND_OTHER_FACTOR_BY_FACTORIZATION (Q20) (user decision 2026-11-02: PT/TPL may be created when none fits); Claude Sonnet subagent review",
     "evidenceRefs": [
       {
-        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-        "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+        "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
       },
       {
         "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-        "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+        "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
       }
     ]
   },
@@ -52,20 +52,68 @@
             "classificationRationale": "두 다항식 x^2+2xy-3y^2, (x-1)^2-(y-1)^2을 각각 이차식 인수분해와 합차 공식으로 인수분해한 뒤 공통인수 x-y를 고른다.",
             "decisiveEvidence": "$x^2+2xy-3y^2=(x+3y)(x-y)$이고 $(x-1)^2-(y-1)^2=(x+y-2)(x-y)$이다. 두 식의 공통인수는 $x-y$",
             "evidenceRef": {
-              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-              "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+              "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
             }
           }
         ]
       },
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_M3_FIND_OTHER_FACTOR_BY_FACTORIZATION"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_M3_FIND_OTHER_FACTOR_BY_FACTORIZATION",
+        "parentProblemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "canonicalLabelKo": "인수분해해 나머지 인수 구하기",
+        "definition": "하나의 다항식을 곱셈공식·인수분해 공식(이차식 인수분해 등)으로 인수분해한 뒤, 주어진 인수를 제외한 나머지 인수(또는 인수들)를 구한다.",
+        "internalSkeleton": "다항식을 인수분해해 인수를 드러낸 뒤 주어진 인수를 제외한 나머지 인수를 읽는다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE3",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_33a8eaf80de755d95d935c86ff4afbb8b50665851c8dfa21a2405b9dbe8a719e"
+        ],
+        "sourceUnits": [
+          "M3-02"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "FINAL_QA_USER_DIRECTED_EXPANSION_20261102",
+            "questionUid": "qid_v1_33a8eaf80de755d95d935c86ff4afbb8b50665851c8dfa21a2405b9dbe8a719e",
+            "sourceOrdinal": 20,
+            "classificationRationale": "6x^2-7x-20을 (3x+4)(2x-5)로 인수분해한 뒤 주어진 인수 3x+4를 제외한 나머지 인수 2x-5를 답으로 읽는다.",
+            "decisiveEvidence": "$6x^2-7x-20=(3x+4)(2x-5)$이다. 따라서 $3x+4$ 이외의 다른 인수는 $2x-5$",
+            "evidenceRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+              "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
+            }
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     }
@@ -79,12 +127,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -96,12 +144,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -113,12 +161,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -130,12 +178,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -147,12 +195,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -164,12 +212,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -181,12 +229,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -198,12 +246,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -215,12 +263,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -232,12 +280,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -249,12 +297,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -266,12 +314,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -283,12 +331,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -300,12 +348,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -317,12 +365,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -334,12 +382,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -351,12 +399,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -368,12 +416,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -388,32 +436,38 @@
         "templateKey": "TPL_M3_COMMON_FACTOR_BY_FACTORIZATION",
         "L4": "각 식을 인수분해해 공통인수 찾기"
       },
-      "reason": "TPL TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION (미정계수 결정; 다른 시험 Q19에서 번호만 보고 물려받은 값)는 이 문항(두 다항식을 각각 인수분해해 공통인수 찾기, 미정계수 없음)과 모순된다. 맞는 ACTIVE TPL이 없어 같은 PT 아래 일반화된 신규 TPL TPL_M3_COMMON_FACTOR_BY_FACTORIZATION를 추가하고 이 문항을 붙인다. 크로스워크 M3-RPM-025를 FAMILY_ACTIVE로 확장해 Resolver가 이 TPL을 결과로 낸다.",
+      "reason": "TPL TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION(미정계수 결정; 다른 시험 Q19에서 번호만 보고 물려받은 값)은 이 문항(두 다항식을 각각 인수분해해 공통인수 찾기, 미정계수 없음)과 모순된다. 맞는 ACTIVE TPL이 없어 같은 PT 아래 일반화된 신규 TPL을 추가하고 이 문항을 붙인다.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
     {
       "questionUid": "qid_v1_33a8eaf80de755d95d935c86ff4afbb8b50665851c8dfa21a2405b9dbe8a719e",
       "sourceOrdinal": 20,
-      "before": {},
-      "after": {},
-      "reason": "No metadata value change; re-stamped with the registered values of this exam.",
+      "before": {
+        "templateKey": "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
+        "L4": "이차식 인수분해 후 일차식 합 계산"
+      },
+      "after": {
+        "templateKey": "TPL_M3_FIND_OTHER_FACTOR_BY_FACTORIZATION",
+        "L4": "인수분해해 나머지 인수 구하기"
+      },
+      "reason": "TPL TPL_M3_QUADRATIC_FACTORIZATION_SUM(두 일차식의 합 계산)은 이 문항(인수분해 후 주어진 인수를 뺀 나머지 인수 구하기, 합 계산 없음)과 어긋난다. 맞는 ACTIVE TPL이 없어 같은 PT 아래 일반화된 신규 TPL을 추가하고 이 문항을 붙인다. 크로스워크 M3-RPM-025의 후보 목록에 추가해 Resolver가 이 TPL을 결과로 낸다.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -425,12 +479,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -442,12 +496,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -459,12 +513,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     },
@@ -476,12 +530,12 @@
       "reason": "No metadata value change; re-stamped with the registered values of this exam.",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json",
-          "sha256": "57916017828713ac10550b3ad369b49b9b200e2b3d2f708900b6ec825b898187"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+          "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
         },
         {
           "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-          "sha256": "35394bbb5d6083a07f7b03849d25537aedebcd727a13a201c022b126354a710d"
+          "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
         }
       ]
     }

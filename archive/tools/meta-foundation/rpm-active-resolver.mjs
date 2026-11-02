@@ -270,7 +270,18 @@ function crosswalkMatch(file, context, rpmPath, scopeRelation = 'CURRENT_SCOPE')
     }));
   if (scopeRelation === 'CURRENT_SCOPE') rows = rows.filter(row => row.standardUnitKey === context.standardUnitKey);
   if (!rows.length) return { doc, row: null, duplicate: false };
-  if (rows.length > 1) return { doc, row: null, duplicate: true };
+  if (rows.length > 1) {
+    // One RPM leaf in one unit may carry several ACTIVE rows, one per (PT, TPL) pair that real questions use
+    // (add-only growth: a new question shape gets its own row). Rows that name another sub unit/course do not apply to
+    // this context. If exactly one row is left it is the match; otherwise the caller selects among the candidates.
+    const applicable = scopeRelation === 'CURRENT_SCOPE'
+      ? rows.filter(item => (item.subUnitKey == null || item.subUnitKey === context.subUnitKey)
+        && (!item.standardCourse || !context.standardCourse || item.standardCourse === context.standardCourse))
+      : rows;
+    if (applicable.length === 1) return { doc, row: applicable[0], duplicate: false };
+    if (!applicable.length) return { doc, row: null, duplicate: false, l2Mismatch: true };
+    return { doc, row: null, duplicate: true, candidates: applicable };
+  }
   const row = rows[0];
   if (scopeRelation === 'CURRENT_SCOPE') {
     if (row.subUnitKey != null && row.subUnitKey !== context.subUnitKey) return { doc, row: null, duplicate: false, l2Mismatch: true };
@@ -517,10 +528,26 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
   let matched;
   try { matched = crosswalkMatch(path.join(root, crosswalkRef.path), context, rpmPath, scopeRelation); }
   catch { return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_COMPATIBILITY_DATA_UNAVAILABLE'); }
-  if (matched.duplicate) return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_COMPATIBILITY_ROW_AMBIGUOUS');
+  let selectedRow = null;
+  if (matched.duplicate) {
+    // Several rows share this leaf and unit. They are usable only when each is a complete ACTIVE DIRECT row; the
+    // question's decisive step then picks one row AFTER the crosswalk lookup (same rule as FAMILY_ACTIVE).
+    const candidates = matched.candidates || [];
+    const complete = candidates.length > 1 && candidates.every(item => item.mappingStatus === 'DIRECT_ACTIVE'
+      && item.bindingStatus === 'ACTIVE' && text(item.problemTypeKey) && text(item.templateKey));
+    if (!complete) return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_COMPATIBILITY_ROW_AMBIGUOUS');
+    const selection = input.familyTemplateSelection;
+    selectedRow = selection && selection.stage === 'POST_CROSSWALK' && selection.inputBundleSha === inputBundleSha
+      && text(selection.decisiveStepReason)
+      ? candidates.find(item => item.id === selection.crosswalkRecordId && item.templateKey === selection.templateKey) : null;
+    if (!selectedRow) {
+      return projectionPending(base, 'META_ONLY_COMPATIBILITY_PENDING', 'CROSSWALK_ROW_SELECTION_PENDING',
+        { mappedTemplateKeys: candidates.map(item => text(item.templateKey)) });
+    }
+  }
   if (matched.standardCourseMismatch) return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_STANDARD_COURSE_PROJECTION_MISMATCH');
   if (matched.l2Mismatch) return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_L2_PROJECTION_MISMATCH');
-  const row = matched.row;
+  const row = selectedRow || matched.row;
   if (!row) return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_PROJECTION_ROW_MISSING');
   const currentBase = { ...base, crosswalkRecordId: row.id || '', crosswalkStatus: row.mappingStatus || '' };
   const mappingStatus = text(row.mappingStatus);

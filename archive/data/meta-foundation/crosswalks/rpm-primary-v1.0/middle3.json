@@ -492,9 +492,13 @@
         {
           "templateKey": "TPL_M3_COMMON_FACTOR_BY_FACTORIZATION",
           "templateLabelKo": "각 식을 인수분해해 공통인수 찾기"
+        },
+        {
+          "templateKey": "TPL_M3_FIND_OTHER_FACTOR_BY_FACTORIZATION",
+          "templateLabelKo": "인수분해해 나머지 인수 구하기"
         }
       ],
-      "selectionRule": "인수분해 공식으로 이차식을 인수분해한 뒤 인수들의 합·값을 계산하면 이차식 인수분해 후 일차식 합 계산, 둘 이상의 다항식을 각각 인수분해해 공통으로 들어 있는 인수를 찾으면 각 식을 인수분해해 공통인수 찾기를 listed template 중 선택",
+      "selectionRule": "인수분해 공식으로 이차식을 인수분해한 뒤 인수들의 합·값을 계산하면 이차식 인수분해 후 일차식 합 계산, 둘 이상의 다항식을 각각 인수분해해 공통으로 들어 있는 인수를 찾으면 각 식을 인수분해해 공통인수 찾기, 하나의 다항식을 인수분해해 주어진 인수 외의 나머지 인수를 구하면 인수분해해 나머지 인수 구하기를 listed template 중 선택(맞는 후보가 없으면 새 TPL을 만들어 이 목록에 추가)",
       "bindingStatus": "ACTIVE",
       "binding": {
         "curriculum": "2015",
@@ -503,7 +507,7 @@
         "subUnitKey": "M3-02-FACTORIZATION",
         "ownerPack": "MIDDLE3"
       },
-      "expansionNote": "2026-11-02 RPM_ONLY -> FAMILY_ACTIVE: 신흥중 25 Q20(이차식 인수분해 후 일차식 합)과 Q19(각 식을 인수분해해 공통인수 찾기)가 이 리프를 함께 쓰므로 한 행에 후보 TPL 둘을 둔다(행 추가는 같은 리프 매칭이 모호해져 불가). Q20의 PT/TPL은 그대로다. 근거: archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-tpl-20261102.review.json"
+      "expansionNote": "2026-11-02 RPM_ONLY -> FAMILY_ACTIVE: 신흥중 25 Q19(각 식을 인수분해해 공통인수 찾기)와 Q20(인수분해해 나머지 인수 구하기)이 이 리프를 함께 쓰므로 한 행에 후보 TPL을 둔다(같은 리프·단원에 행을 더하면 모호해진다). 새 TPL이 이 리프에서 생기면 이 목록에 추가한다. 근거: archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json"
     },
     {
       "id": "M3-RPM-026",
