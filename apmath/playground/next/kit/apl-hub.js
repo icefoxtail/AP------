@@ -23,16 +23,14 @@
     return ROOT + p.split('?')[0].split('/').map(encodeURIComponent).join('/') + (p.includes('?') ? '?' + p.split('?')[1] : '');
   }
   function hrefOf(lab, sceneNo) {
-    if (lab.next) {
-      let u = rel(lab.next);
-      if (state.teach) u += '?teach=1';
-      if (sceneNo) u += '#n=' + sceneNo;
-      return u;
-    }
-    return rel(lab.legacy);
+    // 허브는 2.0(next/) 실험실로만 연결합니다. 카탈로그의 legacy(옛 labs/ 경로)는 쓰지 않습니다.
+    let u = rel(lab.next);
+    if (state.teach) u += '?teach=1';
+    if (sceneNo) u += '#n=' + sceneNo;
+    return u;
   }
   function remember(lab) {
-    APLab.pushRecent({ id: lab.id, title: lab.title, course: COURSE[lab.course].name, href: lab.next || lab.legacy });
+    APLab.pushRecent({ id: lab.id, title: lab.title, course: COURSE[lab.course].name, href: lab.next });
   }
   function glyphSVG(lab) {
     return `<svg viewBox="0 0 80 76" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${lab.glyph}</svg>`;
@@ -46,7 +44,7 @@
 
   /* ---------- 상단 ---------- */
   const search = h('input', { type: 'search', placeholder: '단원·개념·장면 검색 (예: 접선, 사분원, 정사영)', 'aria-label': '실험실 검색', autocomplete: 'off' });
-  const teachSw = h('button', { class: 'hub-switch', 'aria-pressed': String(state.teach), title: '켜면 2.0 실험실이 수업 모드(큰 글씨·굵은 선·단계 안내 줄)로 열립니다', html: `<span class="knob"></span><span class="txt">수업 모드로 열기</span>` });
+  const teachSw = h('button', { class: 'hub-switch', 'aria-pressed': String(state.teach), title: '켜면 실험실이 수업 모드(큰 글씨·굵은 선·단계 안내 줄)로 열립니다', html: `<span class="knob"></span><span class="txt">수업 모드로 열기</span>` });
   const themeBtn = h('button', { class: 'apl-icon-btn', 'aria-label': '테마 바꾸기' });
   const syncTheme = () => (themeBtn.innerHTML = icon(APLab.theme.current() === 'paper' ? 'moon' : 'sun'));
   syncTheme();
@@ -58,23 +56,21 @@
     render();
   });
   const top = h('header', { class: 'hub-top' }, h('div', { class: 'hub-top-in' },
-    h('a', { class: 'hub-brand', href: './index.html', html: `<span class="hub-mark"><svg viewBox="0 0 32 32" fill="none" stroke-linecap="round"><path d="M4 24c5 0 7-14 12-14s7 8 12 8" stroke="var(--m-ink)" stroke-width="2.6"/><path d="M5 17.5 27 7.5" stroke="var(--m-rose)" stroke-width="2.2"/><circle cx="16" cy="10.6" r="3.4" fill="var(--m-amber)"/></svg></span><span><b>AP Math 실험실</b><small>도형·함수 시각화 · 2.0 미리보기</small></span>` }),
+    h('a', { class: 'hub-brand', href: './index.html', html: `<span class="hub-mark"><svg viewBox="0 0 32 32" fill="none" stroke-linecap="round"><path d="M4 24c5 0 7-14 12-14s7 8 12 8" stroke="var(--m-ink)" stroke-width="2.6"/><path d="M5 17.5 27 7.5" stroke="var(--m-rose)" stroke-width="2.2"/><circle cx="16" cy="10.6" r="3.4" fill="var(--m-amber)"/></svg></span><span><b>AP Math 실험실</b><small>도형·함수 시각화</small></span>` }),
     h('div', { class: 'hub-search' }, APLab.iconEl('search'), search, h('span', { class: 'apl-kbd', text: '/' })),
     h('div', { class: 'hub-tools' }, teachSw, themeBtn)));
-  // 3D 우주(처음 화면)와 이전 허브로 가는 얇은 링크 줄. 머리글 위에 놓여 스크롤하면 사라집니다.
-  const trail = h('nav', { class: 'hub-trail', 'aria-label': '다른 화면' }, h('div', { class: 'hub-trail-in' },
-    h('a', { href: '../index.html', html: `${icon('back')}<span>AP Math Universe</span>` }),
-    h('a', { href: '../teacher-hub.html', text: '이전 실험실 목록' })));
+  // 3D 우주(입구 화면)로 돌아가는 얇은 링크 줄. 머리글 위에 놓여 스크롤하면 사라집니다.
+  const trail = h('nav', { class: 'hub-trail', 'aria-label': '입구 화면' }, h('div', { class: 'hub-trail-in' },
+    h('a', { href: '../index.html', html: `${icon('back')}<span>AP Math Universe</span>` })));
 
   /* ---------- 첫 안내(얇게): 노선도가 화면의 주인공입니다 ---------- */
   const total = CAT.labs.length;
   const sceneTotal = CAT.labs.reduce((n, l) => n + (l.sceneTotal || (l.scenes || []).length), 0);
-  const v2count = CAT.labs.filter((l) => l.next).length;
   const introEl = h('section', { class: 'hub-intro' },
     h('div', { class: 'hub-intro-text' },
       h('h1', { html: '그림을 움직이면, <em>개념이 보입니다.</em>' }),
       h('p', { text: '중1 기본 도형부터 미적분Ⅰ·기하까지. 점을 끌고, 풀이를 한 단계씩 그림에 드러내고, 수업에서는 크게 띄워 판서합니다. 같은 대상은 언제나 같은 색으로 연결됩니다.' }),
-      h('div', { class: 'hub-stats', html: `<span class="hub-stat"><b>${total}</b>실험실</span><span class="hub-stat"><b>${sceneTotal}</b>탐구 장면</span><span class="hub-stat"><b>${CAT.courses.length}</b>학년·과목</span><span class="hub-stat"><b>${v2count}</b>2.0 화면 적용</span>` })),
+      h('div', { class: 'hub-stats', html: `<span class="hub-stat"><b>${total}</b>실험실</span><span class="hub-stat"><b>${sceneTotal}</b>탐구 장면</span><span class="hub-stat"><b>${CAT.courses.length}</b>학년·과목</span>` })),
     h('div', { class: 'hub-cta', id: 'hubCta' }));
 
   /* ---------- 과정 선택 ---------- */
@@ -102,8 +98,7 @@
 
   const shelf = h('div', { class: 'hub-shelf' });
   const content = h('div', {});
-  const wrap = h('main', { class: 'hub-wrap' }, introEl, bar, shelf, content,
-    h('footer', { class: 'hub-foot-note', html: `<span>AP Math 실험실 2.0 미리보기 · 카탈로그 ${esc(CAT.version)} · 실험실 ${total}개</span><span><a href="./compare.html">기존 ↔ 2.0 비교</a> · <a href="../teacher-hub.html">이전 실험실 목록</a> · <a href="../index.html">AP Math Universe</a> · <a href="./README.md">설계·이식 안내</a></span>` }));
+  const wrap = h('main', { class: 'hub-wrap' }, introEl, bar, shelf, content);
   document.body.append(h('div', { class: 'hub' }, trail, top, wrap));
 
   /* ---------- 렌더 ---------- */
@@ -138,16 +133,15 @@
     const recent = store.get('recent', []).filter((r) => LAB[r.id]).slice(0, 6);
     const cta = document.getElementById('hubCta');
     cta.innerHTML = '';
-    if (recent.length) {
-      const r = recent[0];
-      const lab = LAB[r.id];
-      const a = h('a', { class: 'apl-btn primary', href: hrefOf(lab), html: `${icon('play')}<span>이어서 하기 · ${esc(lab.title)}</span>` });
+    // 주 행동은 하나: 최근 기록이 있으면 '이어서 하기', 없으면 지금 고른 학년(전체면 카탈로그 맨 처음)의 첫 실험실 '시작하기'.
+    const resume = recent.length ? LAB[recent[0].id] : null;
+    const first = resume ? null : CAT.labs.find((l) => state.course === 'all' || l.course === state.course);
+    const lab = resume || first;
+    if (lab) {
+      const a = h('a', { class: 'apl-btn primary', href: hrefOf(lab), html: `${icon('play')}<span>${resume ? '이어서 하기' : '시작하기'} · ${esc(lab.title)}</span>` });
       a.addEventListener('click', () => remember(lab));
       cta.append(a);
     }
-    const tour = LAB['calc1-tangent'];
-    cta.append(h('a', { class: 'apl-btn', href: hrefOf(tour), html: `${icon('spark')}<span>2.0 실험실 체험</span>` }));
-    cta.append(h('a', { class: 'apl-btn ghost', href: './compare.html', html: `${icon('split')}<span>기존과 비교</span>` }));
     if (pins.length) {
       shelf.append(h('h2', { html: `${icon('star')}내 수업 목록 <span style="color:var(--text-3);font-weight:650">· ★로 고정한 실험실</span>` }),
         h('div', { class: 'hub-shelf-row' }, ...pins.map((lab) => miniLink(null, lab, `${COURSE[lab.course].name} · ${lab.unit}`))));
@@ -177,12 +171,11 @@
     const main = h('a', { href: hrefOf(lab), text: lab.title });
     main.addEventListener('click', () => remember(lab));
     const foot = h('div', { class: 'hub-foot' },
-      h('a', { class: 'go', href: hrefOf(lab), html: `${lab.next ? '2.0 실험실 열기' : '실험실 열기'}${icon('next')}`, onclick: () => remember(lab) }),
-      lab.next ? h('a', { class: 'legacy', href: rel(lab.legacy), text: '기존 버전' }) : null,
-      ...(lab.extra || []).map((x) => h('a', { class: 'legacy', href: rel(x.href), text: x.label })),
+      h('a', { class: 'go', href: hrefOf(lab), html: `실험실 열기${icon('next')}`, onclick: () => remember(lab) }),
+      // 카탈로그 extra(원·부채꼴 '기초판')는 옛 labs/ 실험실로 가는 링크라 그리지 않습니다. 2.0에 같은 단계가 생기면 여기서 장면 해시로 매핑합니다.
       pin);
     return h('article', { class: 'hub-card', style: { '--hc': hue(c.hue) } },
-      h('div', { class: 'hub-thumb', html: glyphSVG(lab) + `<div class="hub-badges"><span>${lab.next ? '<span class="hub-badge v2">2.0</span>' : ''}${(lab.tags || []).map((t) => `<span class="hub-badge">${esc(t)}</span>`).join('')}</span><span>${n ? `<span class="hub-badge">${n}장면</span>` : ''}</span></div>` }),
+      h('div', { class: 'hub-thumb', html: glyphSVG(lab) + `<div class="hub-badges"><span>${(lab.tags || []).map((t) => `<span class="hub-badge">${esc(t)}</span>`).join('')}</span><span>${n ? `<span class="hub-badge">${n}장면</span>` : ''}</span></div>` }),
       h('div', { class: 'hub-body' },
         h('div', { class: 'hub-crumb', text: `${c.name} · ${lab.unit}` }),
         h('h3', {}, main),
@@ -226,7 +219,6 @@
   const LANE_AT = Object.fromEntries(LANES.map((id, i) => [id, i]));
   const STRANDS_AT = {};
   CAT.strands.forEach((s) => s.stations.forEach((id) => (STRANDS_AT[id] = STRANDS_AT[id] || []).push(s.id)));
-  const ALL_V2 = CAT.labs.every((l) => l.next);
   const MAP_LABS = CAT.labs.filter((l) => Object.prototype.hasOwnProperty.call(LANE_AT, l.strand) && COURSE[l.course]);
   const wideMQ = window.matchMedia('(min-width: 1140px)');
   const shortLevel = (c) => c.level.replace('고등학교 ', '고').replace('중학교 ', '중').replace('학년', '');
@@ -345,7 +337,6 @@
       svg += `<a href="${esc(hrefOf(l))}" data-id="${esc(l.id)}" data-hit="${on ? 1 : 0}" aria-label="${esc(l.title)}" opacity="${on ? 1 : 0.28}">`;
       svg += `<circle class="hit" cx="${rnd(p.x)}" cy="${rnd(p.y)}" r="17"/>`;
       svg += `<circle class="st" cx="${rnd(p.x)}" cy="${rnd(p.y)}" r="${R}" fill="${inter ? 'var(--m-ink)' : 'var(--stage)'}" stroke="${inter ? 'var(--stage)' : hue(s.hue)}" stroke-width="4"/>`;
-      if (l.next && !ALL_V2) svg += `<circle cx="${rnd(p.x)}" cy="${rnd(p.y)}" r="${R + 5}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/>`;
       svg += `<text class="st-name" text-anchor="${anchor}" x="${rnd(tx)}" y="${rnd(y0)}">${lines.map((t, i) => `<tspan x="${rnd(tx)}" dy="${i ? LH : 0}">${esc(t)}</tspan>`).join('')}</text></a>`;
     });
     svg += '</svg>';
@@ -398,7 +389,6 @@
       } else {
         svg += `<circle class="st" cx="${laneX(l.strand)}" cy="${p.y}" r="7" fill="var(--stage)" stroke="${hue(STRAND[l.strand].hue)}" stroke-width="4"/>`;
       }
-      if (l.next && !ALL_V2) svg += `<circle cx="${laneX(l.strand)}" cy="${p.y}" r="${inter ? 13 : 11}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/>`;
       svg += `<text class="st-name" x="${TX}" y="${p.y + 4.5}">${esc(labelOf(l))}</text></a>`;
     }));
     svg += '</svg>';
@@ -433,7 +423,7 @@
     const qNote = q ? h('div', { class: 'q-note', html: list.length ? `‘${esc(q)}’에 맞는 <b>${list.length}개</b> 역이 또렷하게 표시됩니다.` : `‘${esc(q)}’에 맞는 실험실이 없습니다. 다른 낱말(예: 접선, 넓이, 벡터, 정다면체)로 검색해 보세요.` }) : null;
     const box = h('div', { class: 'hub-metro ' + (wide ? 'is-wide' : 'is-tall') },
       qNote,
-      h('div', { class: 'legend', html: lanes + `<span>${xfer}환승역(두 노선이 만나는 개념)</span>` + (ALL_V2 ? '' : '<span><svg width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/></svg>2.0 화면 적용</span>') }),
+      h('div', { class: 'legend', html: lanes + `<span>${xfer}환승역(두 노선이 만나는 개념)</span>`  }),
       h('div', { class: 'metro-body', html: svg }),
       h('div', { class: 'note', text: '중1에서 고등학교 과목으로 학년이 올라갈수록 같은 개념이 깊어집니다. 역을 누르면 실험실이 열립니다. 검색하면 해당 역만 또렷하게 표시됩니다.' }));
     box.querySelectorAll('a[data-id]').forEach((a) => a.addEventListener('click', () => remember(LAB[a.dataset.id])));
