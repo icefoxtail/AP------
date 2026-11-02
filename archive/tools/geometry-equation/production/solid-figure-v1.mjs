@@ -1607,19 +1607,22 @@ function solveSolids(plan){
   if(plan.dims!==undefined){
     if(!Array.isArray(plan.dims)||plan.dims.length>10)bad('SOLID_DIMS_INVALID');
     plan.dims.forEach((d,k)=>{
-      onlyKeys(d,['from','to','edge','radius','height','slant','level','solid','label','side','half','direct','foot'],'SOLID_DIMS_INVALID');
+      onlyKeys(d,['from','to','edge','radius','height','slant','level','solid','label','side','half','direct','foot','line'],'SOLID_DIMS_INVALID');
       // direct:true (a pyramid's or frustum's height): the length is written beside the dashed line from the apex (top centre) straight down to the base plane, with no
       // dimension frame around it; foot:true | "<base vertex>": a right-angle mark at the foot of that line, between it and a dashed line in the base plane to a vertex (a
       // cone or cylinder: to the rim on the screen's right)
       if((d.direct!==undefined&&d.direct!==true)||(d.foot!==undefined&&d.foot!==true&&typeof d.foot!=='string')||((d.direct!==undefined||d.foot!==undefined)&&d.height===undefined))bad('SOLID_DIM_DIRECT_INVALID');
       // half:"+X" ... "-Z": which half axis of a cut sphere its radius lies along (it must belong to the piece and be seen)
       if(d.half!==undefined&&(d.radius!=='center'||typeof d.half!=='string'||!/^[+-][XYZ]$/.test(d.half)))bad('SOLID_DIMS_INVALID');
-      // side:"LEFT"|"RIGHT" of a round solid's height: the length is written on a dimension line outside the solid on that side (with extension lines) instead of on the axis;
+      // side:"LEFT"|"RIGHT" of a round solid's height or of a LEVEL height (the water level): the length is written on a dimension line outside the solid on that side (with extension lines) instead of on the axis;
       // side:"LEFT"|"RIGHT"|"TOP"|"BOTTOM" of an edge or segment length: the label stands on that side of the segment on the screen (the segment must not run along that direction)
       if(d.side!==undefined){
         const edgeDim=d.edge!==undefined||d.from!==undefined;
-        if(!(edgeDim?SEGMENT_SIDES:['LEFT','RIGHT']).includes(d.side)||(!edgeDim&&d.height===undefined))bad('SOLID_DIM_SIDE_INVALID');
+        if(!(edgeDim?SEGMENT_SIDES:['LEFT','RIGHT']).includes(d.side)||(!edgeDim&&d.height===undefined&&d.level===undefined))bad('SOLID_DIM_SIDE_INVALID');
       }
+      // line:1|2|3 (with side LEFT|RIGHT) of an edge or segment length: a dimension line parallel to the segment, outside the solid on that side, with an extension line from each end; 1 is the nearest tier, each
+      // further tier stands one step further out (the shorter dimensions inside, the longer outside), the label stands beyond the line
+      if(d.line!==undefined&&(!(d.edge!==undefined||d.from!==undefined)||!Number.isInteger(d.line)||d.line<1||d.line>3||(d.side!=='LEFT'&&d.side!=='RIGHT')))bad('SOLID_DIM_LINE_INVALID');
       if((d.from===undefined)!==(d.to===undefined))bad('SOLID_DIMS_INVALID');
       if([d.edge!==undefined,d.from!==undefined,d.radius!==undefined,d.height!==undefined,d.slant!==undefined,d.level!==undefined].filter(Boolean).length!==1)bad('SOLID_DIMS_INVALID');
       const code='d'+(k+1);
@@ -1636,7 +1639,7 @@ function solveSolids(plan){
           const pa=project(named.get(a).p),pb=project(named.get(b).p),dx=pb[0]-pa[0],dy=pb[1]-pa[1],l=Math.hypot(dx,dy),want=SIDE_DIRECTION[d.side];
           if(!(l>1e-9)||Math.abs((-dy*want[0]+dx*want[1])/l)<SIDE_FACING_MIN)bad('SOLID_DIM_SIDE_INVALID:'+code);
         }
-        dims.push({id:'dim-'+(k+1),type:'SEGMENT',from:a,to:b,...(d.side!==undefined?{side:d.side}:{}),...dimLabel(d.label,value,unitName,code,{words:true})});
+        dims.push({id:'dim-'+(k+1),type:'SEGMENT',from:a,to:b,...(d.side!==undefined?{side:d.side}:{}),...(d.line!==undefined?{line:d.line}:{}),...dimLabel(d.label,value,unitName,code,{words:true})});
       }else{
         const solid=solids.find(s=>s.id===(d.solid??(d.level!==undefined?section?.solid:d.radius!==undefined||d.slant!==undefined?solids.find(s2=>s2.category==='REV'||s2.category==='SPHERE')?.id:solids.find(s2=>s2.category==='REV'||s2.kind==='PYRAMID'||s2.kind==='FRUSTUM')?.id)));
         if(!solid)bad('SOLID_DIMS_INVALID');
@@ -1676,7 +1679,7 @@ function solveSolids(plan){
           const f=Number(fm[1])/Number(fm[2]);
           const side=d.level==='top'?'TOP':'BOTTOM';
           const value=side==='TOP'?solid.height*(1-f):solid.height*f;
-          dims.push({id:'dim-'+(k+1),type:'LEVEL',side,solid:solid.id,...dimLabel(d.label,value,unitName,code,{words:true})});
+          dims.push({id:'dim-'+(k+1),type:'LEVEL',side,solid:solid.id,...(d.side!==undefined?{outside:d.side}:{}),...dimLabel(d.label,value,unitName,code,{words:true})});
         }else if(d.height!==undefined){
           if(d.height!==true)bad('SOLID_DIMS_INVALID');
           if(solid.category==='SPHERE'&&solid.kind==='SPHERE')bad('SOLID_DIMS_INVALID');
@@ -2190,7 +2193,9 @@ export function figureFrame(model){
   const e=figureExtent(model),bw=e.x1-e.x0,bh=e.y1-e.y0;
   const grid=model.panelWidth!==undefined,W=grid?model.panelWidth:WIDTH,MX=grid?GRID_MARGIN_X:MARGIN_X;
   // an outside height dimension (dims[].side) takes room beside the solid for its line and its label
-  const roomL=model.mode==='SOLIDS'&&model.dims.some(d=>d.side==='LEFT')?SIDE_DIM_ROOM:0,roomR=model.mode==='SOLIDS'&&model.dims.some(d=>d.side==='RIGHT')?SIDE_DIM_ROOM:0;
+  const tiers=model.mode==='SOLIDS'?outsideTiers(model):new Map(),tierRoom=side=>OUTSIDE_STEP*Math.max(0,...[...tiers].filter(([id])=>outsideSide(model.dims.find(d=>d.id===id))===side).map(([,t])=>t));
+  const lineRoom=side=>{const ts=model.mode==='SOLIDS'?model.dims.filter(d=>d.type==='SEGMENT'&&d.line&&d.side===side).map(d=>d.line):[];return ts.length?SIDE_DIM_ROOM+8+OUTSIDE_STEP*(Math.max(...ts)-1):0;};
+  const roomL=Math.max(model.mode==='SOLIDS'&&(model.dims.some(d=>d.side==='LEFT')||model.dims.some(d=>outsideSide(d)==='LEFT'))?SIDE_DIM_ROOM+tierRoom('LEFT'):0,lineRoom('LEFT')),roomR=Math.max(model.mode==='SOLIDS'&&(model.dims.some(d=>d.side==='RIGHT')||model.dims.some(d=>outsideSide(d)==='RIGHT'))?SIDE_DIM_ROOM+tierRoom('RIGHT'):0,lineRoom('RIGHT'));
   const scale=r6(Math.min((W-2*MX-roomL-roomR)/bw,MAX_FIG_H/bh,MAX_SCALE));
   const height=Math.ceil(bh*scale+2*MARGIN_Y);
   return {scale,width:W,height,origin:[r6((W+roomL-roomR)/2-scale*(e.x0+e.x1)/2),r6(height/2+scale*(e.y0+e.y1)/2)],extent:e};
@@ -2236,13 +2241,61 @@ function footRightAngle(d,F,T,ctx){
  * and the two points on the solid's side that its extension lines end on (the base circle's and the top circle's extreme on that side; an apex stands on the axis).
  */
 function sideHeightDim(d,solid,ctx){
-  const {X,Y,frame}=ctx,sgn=d.side==='LEFT'?-1:1,cx=(solid.offset??0),R=Math.max(solid.r0,solid.r1);
-  const xs=X(cx+sgn*R),x=d.side==='LEFT'?Math.max(SAFE+2,xs-26):Math.min(frame.width-SAFE-2,xs+26);
+  const {X,Y,frame}=ctx,sgn=d.side==='LEFT'?-1:1,cx=(solid.offset??0),R=Math.max(solid.r0,solid.r1),tier=ctx.tiers?.get(d.id)??0;
+  const xs=X(cx+sgn*R),x=d.side==='LEFT'?Math.max(SAFE+2,xs-26-OUTSIDE_STEP*tier):Math.min(frame.width-SAFE-2,xs+26+OUTSIDE_STEP*tier);
   return {x:r6(x),bottom:[X(cx+sgn*solid.r0),Y(0)],top:[X(cx+sgn*solid.r1),Y(solid.height*cP)]};
+}
+/**
+ * The outside dimension of a LEVEL height (dims[].level with side, the height of the water): the same line as a height's, from the level the part starts at to the level it ends at (the base up to the
+ * water surface, or the surface up to the top), each end carrying an extension line to the solid's side at that level (the solid's radius there: the surface's ellipse reaches the side at its centre row).
+ */
+function sideLevelDim(d,solid,ctx,section){
+  const {X,Y,frame}=ctx,sgn=d.outside==='LEFT'?-1:1,cx=(solid.offset??0),R=Math.max(solid.r0,solid.r1),tier=ctx.tiers?.get(d.id)??0;
+  const [z0,z1]=d.side==='TOP'?[section.z,solid.height]:[0,section.z];
+  const radiusAt=z=>solid.r0+(solid.r1-solid.r0)*z/solid.height;
+  const xs=X(cx+sgn*R),x=d.outside==='LEFT'?Math.max(SAFE+2,xs-26-OUTSIDE_STEP*tier):Math.min(frame.width-SAFE-2,xs+26+OUTSIDE_STEP*tier);
+  return {x:r6(x),bottom:[X(cx+sgn*radiusAt(z0)),Y(z0*cP)],top:[X(cx+sgn*radiusAt(z1)),Y(z1*cP)]};
+}
+/**
+ * The dimension line of an edge or segment length written with line:1|2|3 (dims[].line), in px: the segment (a to b on the page) moved sideways, perpendicular to itself, to the LEFT or RIGHT by 22 px
+ * (tier 1) plus one step for each further tier; the extension lines join each end of the segment to the line.
+ */
+function segmentDimLine(a,b,side,tier){
+  const dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy)||1;
+  let n=[-dy/l,dx/l];
+  if(n[0]*(side==='LEFT'?-1:1)<0)n=[-n[0],-n[1]];
+  const off=SEGMENT_LINE_FIRST+OUTSIDE_STEP*(tier-1);
+  return {a:[r6(a[0]+n[0]*off),r6(a[1]+n[1]*off)],b:[r6(b[0]+n[0]*off),r6(b[1]+n[1]*off)]};
+}
+const SEGMENT_LINE_FIRST=22;
+/** The side (LEFT | RIGHT) a height or level dimension of a round solid is written outside on, or undefined. */
+const outsideSide=d=>d?.type==='HEIGHT'?d.side:d?.type==='LEVEL'?d.outside:undefined;
+const OUTSIDE_STEP=64;// how much further out each further dimension on the same side of one solid stands (short ones inside, long ones outside)
+/** dim id -> tier (0 = nearest the solid): the dimensions written outside one round solid on one side are layered by length, the shortest innermost. */
+function outsideTiers(model){
+  const groups=new Map();
+  for(const d of model.dims){
+    const side=outsideSide(d);
+    if(!side||d.onAxis)continue;
+    const solid=model.solids.find(s=>s.id===d.solid);
+    if(!solid||solid.category!=='REV')continue;
+    const span=d.type==='LEVEL'?(d.side==='TOP'?solid.height-model.section.z:model.section.z):solid.height;
+    const key=d.solid+'|'+side;
+    if(!groups.has(key))groups.set(key,[]);
+    groups.get(key).push({id:d.id,span});
+  }
+  const tiers=new Map();
+  for(const list of groups.values()){
+    if(list.length<2)continue;
+    list.sort((a,b)=>a.span-b.span||(Number(a.id.slice(4))-Number(b.id.slice(4))));
+    list.forEach((e,k)=>tiers.set(e.id,k));
+  }
+  return tiers;
 }
 const heightDimX=(solid,X)=>r6(Math.max(SAFE+2,Math.min(...solid.vertices.map(v=>X(project(v.p)[0])))-26));
 function spec3d(plan,model,ctx){
   const {S,X,Y,pt,prims,labels,line}=ctx;
+  ctx.tiers=outsideTiers(model);
   const named=pointTable(model.solids,model.space);
   const arcPrim=(id,role,e,u0,u1,vis,attrs={})=>prims.push({t:'arc',id,role,cx:X(e.cx),cy:Y(e.cy),rx:r6(S*e.a),ry:r6(S*e.b),u0:r6(u0),u1:r6(u1),vis,...attrs});
   const outline=[];// polylines for label obstacles are derived from prims later
@@ -2426,7 +2479,19 @@ function spec3d(plan,model,ctx){
     }else if(d.type==='LEVEL'){
       const solid=model.solids.find(s=>s.id===d.solid),sh=mulv(EX,solid.offset??0);
       const [z0,z1]=d.side==='TOP'?[model.section.z,solid.height]:[0,model.section.z];
-      line(d.id+'-line','dim-line',pt(project(add([0,0,z0],sh))),pt(project(add([0,0,z1],sh))),{solid:solid.id,dim:d.id,kind:'LEVEL',vis:'hidden'});
+      if(d.outside){
+        // outside the solid on its LEFT or RIGHT: a vertical dimension line from one level to the other with an extension line to the solid's side at each (a tier further out when a longer dimension shares the side)
+        const g=sideLevelDim(d,solid,ctx,model.section),[bx,by]=g.bottom,[tx,ty]=g.top;
+        line(d.id+'-line','dim-line',[g.x,by],[g.x,ty],{solid:solid.id,dim:d.id,kind:'LEVEL',vis:'solid'});
+        line(d.id+'-ext-bottom','dim-ext',[g.x,by],[bx,by],{solid:solid.id,dim:d.id,kind:'LEVEL',vis:'solid'});
+        line(d.id+'-ext-top','dim-ext',[g.x,ty],[tx,ty],{solid:solid.id,dim:d.id,kind:'LEVEL',vis:'solid'});
+      }else line(d.id+'-line','dim-line',pt(project(add([0,0,z0],sh))),pt(project(add([0,0,z1],sh))),{solid:solid.id,dim:d.id,kind:'LEVEL',vis:'hidden'});
+    }else if(d.type==='SEGMENT'&&d.line){
+      // a dimension line beside the edge, outside the solid, with an extension line from each end of the edge
+      const a=pt(project(named.get(d.from))),b=pt(project(named.get(d.to))),g=segmentDimLine(a,b,d.side,d.line);
+      line(d.id+'-line','dim-line',g.a,g.b,{dim:d.id,kind:'SEGMENT',vis:'solid'});
+      line(d.id+'-ext-a','dim-ext',a,g.a,{dim:d.id,kind:'SEGMENT',vis:'solid'});
+      line(d.id+'-ext-b','dim-ext',b,g.b,{dim:d.id,kind:'SEGMENT',vis:'solid'});
     }else if(d.type==='SLANT'){
       const solid=model.solids.find(s=>s.id===d.solid);
       void solid;
@@ -2544,7 +2609,8 @@ function spec3d(plan,model,ctx){
       const a=pt(project(named.get(d.from))),b=pt(project(named.get(d.to)));
       // side: the same direction on the page (y down) for the label placer
       const sideDir=d.side?{LEFT:[-1,0],RIGHT:[1,0],TOP:[0,-1],BOTTOM:[0,1]}[d.side]:undefined;
-      labels.push({...label,segment:[a,b],segmentOf:joinKeys([d.from,d.to]),...(sideDir?{sideDir}:{})});
+      const ln=d.line?segmentDimLine(a,b,d.side,d.line):null;
+      labels.push({...label,segment:ln?[ln.a,ln.b]:[a,b],segmentOf:joinKeys([d.from,d.to]),...(sideDir?{sideDir}:{})});
     }else if(d.type==='RADIUS'){
       const solid=model.solids.find(s=>s.id===d.solid);
       if(solid.cut){
@@ -2563,7 +2629,8 @@ function spec3d(plan,model,ctx){
     }else if(d.type==='LEVEL'){
       const solid=model.solids.find(s=>s.id===d.solid),sh=mulv(EX,solid.offset??0);
       const [z0,z1]=d.side==='TOP'?[model.section.z,solid.height]:[0,model.section.z];
-      labels.push({...label,segment:[pt(project(add([0,0,z0],sh))),pt(project(add([0,0,z1],sh)))],segmentOf:'level'});
+      if(d.outside){const g=sideLevelDim(d,solid,ctx,model.section);labels.push({...label,segment:[[g.x,g.bottom[1]],[g.x,g.top[1]]],segmentOf:'level',preferredSide:d.outside==='LEFT'?-1:1});}
+      else labels.push({...label,segment:[pt(project(add([0,0,z0],sh))),pt(project(add([0,0,z1],sh)))],segmentOf:'level'});
     }else if(d.type==='SLANT'){
       const solid=model.solids.find(s=>s.id===d.solid);
       const seg=d.part?slantPartSegment(S,solid,d.part,model.section):slantSegment(S,solid);

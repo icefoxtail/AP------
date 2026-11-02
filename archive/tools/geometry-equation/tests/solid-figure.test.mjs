@@ -3112,3 +3112,87 @@ test('G15: a cone frustum net passes the observer (a wide and a narrow ring); a 
   const r4=await audit(plan,smallFlip);
   assert.equal(r4.status,'FAIL');assert.ok(r4.errors.some(e=>e.startsWith('SOLID_NET_CIRCLE_NOT_TANGENT:small')),JSON.stringify(r4.errors));
 });
+
+// --- G15: the height of the water on a dimension line outside the vessel ----------------------------------------------------------------------------
+const levelSide=(dims,over={})=>figure({unit:'cm',solids:[{id:'s1',kind:'CYLINDER',radius:3,height:9}],section:{kind:'LEVEL',at:'1/3',fill:'BOTTOM'},dims,...over});
+const lineOf=(svg,id,role)=>{const m=svg.match(new RegExp(`<line id="${id}-${role}"[^>]*>`));return m?Object.fromEntries([...m[0].matchAll(/ (x1|y1|x2|y2)="([-\d.]+)"/g)].map(g=>[g[1],Number(g[2])])):null;};
+test('G15: a level dimension (dims[].level with side) stands on a line outside the vessel with an extension line level with each end',async()=>{
+  const plan=levelSide([{level:true,side:'LEFT'}]);
+  const m=solveSolidFigure(plan);
+  assert.equal(m.dims[0].outside,'LEFT');assert.equal(m.dims[0].side,'BOTTOM');
+  const c=await panel(plan);
+  assert.equal(c.status,'COMPOSED',JSON.stringify(c.detail));assert.equal(c.staticAudit.status,'PASS',JSON.stringify(c.staticAudit.errors));
+  const line=lineOf(c.svg,'dim-1','line'),bottom=lineOf(c.svg,'dim-1','ext-bottom'),top=lineOf(c.svg,'dim-1','ext-top');
+  assert.ok(line&&bottom&&top);
+  // vertical, to the left of the vessel, the extension lines horizontal and ending on the vessel's side
+  assert.equal(line.x1,line.x2);assert.equal(bottom.y1,bottom.y2);assert.equal(top.y1,top.y2);
+  assert.ok(bottom.x2>line.x1&&top.x2>line.x1);
+  assert.ok(line.y1>line.y2,'the line runs from the base up to the water surface');
+  assert.equal((await audit(plan,c.svg)).status,'PASS');
+  // tamper: the dimension line slides up so that it no longer starts level with the base; an extension line goes missing
+  const raw=c.svg.match(new RegExp(`<line id="dim-1-line"[^>]*>`))[0];
+  const r1=await audit(plan,c.svg.replace(raw,raw.replace(/ y1="([-\d.]+)"/,(a,v)=>` y1="${Number(v)-9}"`)));
+  assert.equal(r1.status,'FAIL');assert.ok(r1.errors.some(e=>e.startsWith('SOLID_DIM_LINE_MISMATCH:dim-1')),JSON.stringify(r1.errors));
+  const ext=c.svg.match(new RegExp(`<g data-layer="40"><line id="dim-1-ext-top"[^>]*/></g>`))[0];
+  const r2=await audit(plan,c.svg.replace(ext,''));
+  assert.equal(r2.status,'FAIL');assert.ok(r2.errors.some(e=>e.startsWith('SOLID_DIM_EXTENSION_MISMATCH:dim-1')),JSON.stringify(r2.errors));
+});
+test('G15: a level dimension of a cone vessel reaches the water surface at the side of its ellipse, and level:"top" the part above it',async()=>{
+  const plan=figure({unit:'cm',solids:[{id:'s1',kind:'CONE',radius:4,height:9,orientation:'APEX_DOWN'}],section:{kind:'LEVEL',at:'2/3'},dims:[{height:true,side:'LEFT'},{level:true,side:'LEFT'},{level:'top',side:'RIGHT'}]});
+  const c=await panel(plan);
+  assert.equal(c.status,'COMPOSED',JSON.stringify(c.detail));assert.equal(c.staticAudit.status,'PASS',JSON.stringify(c.staticAudit.errors));
+  assert.equal((await audit(plan,c.svg)).status,'PASS');
+});
+test('G15: dimensions of one vessel on one side stand in tiers, the shorter nearer the vessel',async()=>{
+  const both=levelSide([{height:true,side:'RIGHT'},{level:true,side:'RIGHT'}]);
+  const c=await panel(both);
+  assert.equal(c.status,'COMPOSED',JSON.stringify(c.detail));assert.equal(c.staticAudit.status,'PASS',JSON.stringify(c.staticAudit.errors));
+  const h=lineOf(c.svg,'dim-1','line'),w=lineOf(c.svg,'dim-2','line');
+  assert.ok(w.x1<h.x1,'the 3 cm water height is nearer the vessel than the 9 cm vessel height');
+  assert.ok(h.x1-w.x1>=60);
+  assert.equal((await audit(both,c.svg)).status,'PASS');
+  // the order of the dims does not decide: the shorter is always the inner one
+  const swapped=levelSide([{level:true,side:'RIGHT'},{height:true,side:'RIGHT'}]);
+  const c2=await panel(swapped);
+  assert.equal(c2.status,'COMPOSED',JSON.stringify(c2.detail));
+  assert.ok(lineOf(c2.svg,'dim-1','line').x1<lineOf(c2.svg,'dim-2','line').x1);
+  // a lone dimension keeps its place (no tier): one level line on the right is as near as a height line on the right
+  const lone=await panel(levelSide([{level:true,side:'RIGHT'}])),loneHeight=await panel(levelSide([{height:true,side:'RIGHT'}]));
+  assert.equal(lineOf(lone.svg,'dim-1','line').x1,lineOf(loneHeight.svg,'dim-1','line').x1);
+});
+test('G15: a level dimension takes only LEFT or RIGHT and only on a rotation solid',()=>{
+  assert.throws(()=>solveSolidFigure(levelSide([{level:true,side:'TOP'}])),code('SOLID_DIM_SIDE_INVALID'));
+  assert.throws(()=>solveSolidFigure(levelSide([{radius:'top',side:'LEFT'}])),code('SOLID_DIM_SIDE_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],section:{kind:'LEVEL',at:'1/3'},dims:[{level:true,side:'LEFT'}]})),code('SOLID_'));
+});
+
+test('G15: an edge length with line:1|2 stands on a dimension line outside the solid, the long bowl height and the short water height apart',async()=>{
+  const plan=figure({unit:'cm',solids:[{id:'s1',kind:'PRISM',base:{kind:'RECT',width:18,depth:12},height:9,names:'........'}],
+    space:{points:[{id:'P',at:{divide:['#b0','#t0'],ratio:'1:2'},hideName:true,hideDot:true}],segments:[{from:'#b0',to:'P',style:'AUTO'}]},
+    dims:[{edge:['#b2','#t2'],side:'RIGHT',line:1},{from:'#b0',to:'P',side:'LEFT',line:1}]});
+  const m=solveSolidFigure(plan);
+  assert.deepEqual(m.dims.map(d=>d.line),[1,1]);assert.deepEqual(m.dims.map(d=>d.text),['9','3']);
+  const c=await panel(plan);
+  assert.equal(c.status,'COMPOSED',JSON.stringify(c.detail));assert.equal(c.staticAudit.status,'PASS',JSON.stringify(c.staticAudit.errors));
+  const right=lineOf(c.svg,'dim-1','line'),left=lineOf(c.svg,'dim-2','line');
+  assert.equal(right.x1,right.x2);assert.equal(left.x1,left.x2);assert.ok(left.x1<right.x1);
+  assert.ok(lineOf(c.svg,'dim-1','ext-a')&&lineOf(c.svg,'dim-1','ext-b')&&lineOf(c.svg,'dim-2','ext-a')&&lineOf(c.svg,'dim-2','ext-b'));
+  assert.equal((await audit(plan,c.svg)).status,'PASS');
+  // tamper: the dimension line moves off its edge; an extension line goes missing
+  const raw=c.svg.match(/<line id="dim-1-line"[^>]*>/)[0];
+  const r1=await audit(plan,c.svg.replace(raw,raw.replace(/ x1="([-\d.]+)"/,(a,v)=>` x1="${Number(v)+6}"`)));
+  assert.equal(r1.status,'FAIL');assert.ok(r1.errors.some(e=>e.startsWith('SOLID_DIM_LINE_MISMATCH:dim-1')),JSON.stringify(r1.errors));
+  const ext=c.svg.match(/<g data-layer="40"><line id="dim-2-ext-a"[^>]*\/><\/g>/)[0];
+  const r2=await audit(plan,c.svg.replace(ext,''));
+  assert.equal(r2.status,'FAIL');assert.ok(r2.errors.some(e=>e.startsWith('SOLID_DIM_EXTENSION_MISMATCH:dim-2')),JSON.stringify(r2.errors));
+});
+test('G15: dim line tiers stand further out and line is refused without LEFT or RIGHT, on a radius, or beyond tier 3',async()=>{
+  const prism=dims=>figure({unit:'cm',solids:[cuboid({names:'........'})],dims});
+  const one=solveSolidFigure(prism([{edge:['#b0','#t0'],side:'LEFT',line:1}]));
+  assert.equal(one.dims[0].line,1);
+  assert.throws(()=>solveSolidFigure(prism([{edge:['#b0','#t0'],line:1}])),code('SOLID_DIM_LINE_INVALID'));
+  assert.throws(()=>solveSolidFigure(prism([{edge:['#b0','#t0'],side:'TOP',line:1}])),code('SOLID_DIM_LINE_INVALID'));
+  assert.throws(()=>solveSolidFigure(prism([{edge:['#b0','#t0'],side:'LEFT',line:4}])),code('SOLID_DIM_LINE_INVALID'));
+  assert.throws(()=>solveSolidFigure(prism([{edge:['#b0','#t0'],side:'LEFT',line:true}])),code('SOLID_DIM_LINE_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:1,height:2}],dims:[{radius:'top',side:'LEFT',line:1}]})),code('SOLID_DIM'));
+});

@@ -2703,6 +2703,53 @@ def check_height_feet_and_poly_lines(plan, ctx):
         for m in range(2): ctx['segments'].append((pts[m], pts[m + 1]))
 
 
+OUTSIDE_STEP = 64.0   # px: each further dimension on one side of one round solid stands this much further out
+SEGMENT_LINE_FIRST = 22.0   # px: the dimension line of an edge length written with dims[].line (tier 1) stands this far from the edge, sideways
+
+
+def segment_dim_line(a, b, side, tier):
+    """dims[].line:1|2|3 of an edge or segment (px a to b on the page): the segment moved perpendicular to itself to the LEFT or RIGHT by 22 px plus one step for each further tier"""
+    dx, dy = b[0] - a[0], b[1] - a[1]
+    length = math.hypot(dx, dy) or 1.0
+    n = (-dy / length, dx / length)
+    if n[0] * (-1.0 if side == 'LEFT' else 1.0) < 0: n = (-n[0], -n[1])
+    off = SEGMENT_LINE_FIRST + OUTSIDE_STEP * (tier - 1)
+    return (a[0] + n[0] * off, a[1] + n[1] * off), (b[0] + n[0] * off, b[1] + n[1] * off)
+
+
+
+def outside_tiers(plan, ctx, solids):
+    """dim index -> tier (0 = nearest the solid) of the height and level dimensions written outside a round solid (dims[].side LEFT|RIGHT): those of one solid on one side are layered by length, the shortest
+    innermost (ties: the earlier dim first). Worked out from the plan alone."""
+    section = plan.get('section') or {}
+    mm = re.fullmatch(r'(\d+)/(\d+)', section.get('at') or '')
+    groups = {}
+    for k, d in enumerate(plan.get('dims') or []):
+        side = d.get('side')
+        if side not in ('LEFT', 'RIGHT') or d.get('edge') is not None or d.get('from') is not None: continue
+        if d.get('height') is not None: kind = 'HEIGHT'
+        elif d.get('level') is not None: kind = 'LEVEL'
+        else: continue
+        sid = d.get('solid')
+        if sid is None and kind == 'LEVEL': sid = section.get('solid')
+        if sid is None: sid = next((x['id'] for x in solids.values() if x['cat'] == 'REV'), None)
+        solid = solids.get(sid)
+        if solid is None or solid['cat'] != 'REV' or solid.get('cut'): continue
+        if kind == 'HEIGHT':
+            if axis_carries(ctx, solid): continue
+            span = solid['height']
+        else:
+            if not mm: continue
+            f = int(mm.group(1)) / int(mm.group(2))
+            span = solid['height'] * (1 - f) if d.get('level') == 'top' else solid['height'] * f
+        groups.setdefault((sid, side), []).append((span, k))
+    tiers = {}
+    for items in groups.values():
+        if len(items) < 2: continue
+        for rank, (_, k) in enumerate(sorted(items)): tiers[k] = rank
+    return tiers
+
+
 def check_dim_lines(plan, ctx):
     """The level, level-radius and round height dimension lines run along the model's axis and the level circle."""
     root, frames, scale = ctx.get('root'), ctx.get('px') or {}, ctx.get('scale')
@@ -2711,12 +2758,32 @@ def check_dim_lines(plan, ctx):
     solids = {s['id']: s for s in (ctx.get('solids') or [])}
     section = plan.get('section') or {}
     dims = plan.get('dims') or []
+    tiers = outside_tiers(plan, ctx, solids)
     for el in root.iter(NS + 'line'):
         if el.get('data-role') != 'dim-line':
             continue
         kind = el.get('data-kind')
         dim = el.get('data-dim') or ''
         m = re.fullmatch(r'dim-(\d+)', dim)
+        if kind == 'SEGMENT' and m and int(m.group(1)) - 1 < len(dims):
+            # the dimension line of an edge length (dims[].line): the edge moved sideways, an extension line from each end of the edge up to it
+            d = dims[int(m.group(1)) - 1]
+            named = ctx.get('named') or {}
+            norm = ctx.get('norm') or (lambda x: x)
+            try:
+                a_name, b_name = (d['edge'][0], d['edge'][1]) if d.get('edge') is not None else (d['from'], d['to'])
+                A, B = named[norm(a_name)][1], named[norm(b_name)][1]
+                want = segment_dim_line(A, B, d['side'], int(d['line']))
+            except (KeyError, TypeError, ValueError):
+                ctx['errors'].append('SOLID_DIM_PLAN_UNRESOLVED:' + dim)
+                continue
+            got = ((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2')))
+            if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)): ctx['errors'].append('SOLID_DIM_LINE_MISMATCH:' + dim + ':SEGMENT')
+            exts = [e for e in root.iter(NS + 'line') if e.get('data-role') == 'dim-ext' and e.get('data-dim') == dim]
+            for start, end in ((A, want[0]), (B, want[1])):
+                if not any(_same_segment((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2')), start, end) for e in exts): ctx['errors'].append('SOLID_DIM_EXTENSION_MISMATCH:' + dim)
+            if len(exts) != 2: ctx['errors'].append('SOLID_DIM_EXTENSION_MISMATCH:' + dim)
+            continue
         if kind not in ('LEVEL', 'RADIUS', 'HEIGHT') or not m:
             continue
         k = int(m.group(1)) - 1
@@ -2747,7 +2814,8 @@ def check_dim_lines(plan, ctx):
                 sgn = -1.0 if d['side'] == 'LEFT' else 1.0
                 xs = Tx + sgn * scale * max(solid['r0'], solid['r1'])
                 width = float(root.get('width') or 0)
-                xd = max(SAFE_PX + 2, xs - 26) if sgn < 0 else min(width - SAFE_PX - 2, xs + 26)
+                tier = tiers.get(k, 0)
+                xd = max(SAFE_PX + 2, xs - 26 - OUTSIDE_STEP * tier) if sgn < 0 else min(width - SAFE_PX - 2, xs + 26 + OUTSIDE_STEP * tier)
                 want = ((xd, y_of(0.0)), (xd, y_of(solid['height'])))
                 exts = [e for e in root.iter(NS + 'line') if e.get('data-role') == 'dim-ext' and e.get('data-dim') == dim]
                 for z, rad in ((0.0, solid['r0']), (solid['height'], solid['r1'])):
@@ -2760,7 +2828,23 @@ def check_dim_lines(plan, ctx):
                 continue
             zl = int(mm.group(1)) / int(mm.group(2)) * solid['height']
             # level:"top" dimensions the part above the plane (apex/top down to the section)
-            want = ((Tx, y_of(zl)), (Tx, y_of(solid['height']))) if d.get('level') == 'top' else ((Tx, y_of(0.0)), (Tx, y_of(zl)))
+            z0, z1 = (zl, solid['height']) if d.get('level') == 'top' else (0.0, zl)
+            want = ((Tx, y_of(z0)), (Tx, y_of(z1)))
+            if d.get('side') in ('LEFT', 'RIGHT'):
+                # outside the solid on that side: the dimension line is 26 px (a tier of 64 px more for each shorter dimension on the same side) beyond the widest side, and an extension line, level with each end,
+                # runs from it to the solid's side at that level (the radius there: r0 + (r1 - r0) z / h)
+                sgn = -1.0 if d['side'] == 'LEFT' else 1.0
+                xs = Tx + sgn * scale * max(solid['r0'], solid['r1'])
+                width = float(root.get('width') or 0)
+                tier = tiers.get(k, 0)
+                xd = max(SAFE_PX + 2, xs - 26 - OUTSIDE_STEP * tier) if sgn < 0 else min(width - SAFE_PX - 2, xs + 26 + OUTSIDE_STEP * tier)
+                want = ((xd, y_of(z0)), (xd, y_of(z1)))
+                exts = [e for e in root.iter(NS + 'line') if e.get('data-role') == 'dim-ext' and e.get('data-dim') == dim]
+                for z in (z0, z1):
+                    rad = solid['r0'] + (solid['r1'] - solid['r0']) * z / solid['height']
+                    start, end = (xd, y_of(z)), (Tx + sgn * scale * rad, y_of(z))
+                    if not any(_same_segment((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2')), start, end) for e in exts): ctx['errors'].append('SOLID_DIM_EXTENSION_MISMATCH:' + dim)
+                if len(exts) != 2: ctx['errors'].append('SOLID_DIM_EXTENSION_MISMATCH:' + dim)
         else:
             if d.get('radius') in ('center', 'bottom', 'top'):
                 # a radius runs from the axis to the rim of its circle, level with that circle
@@ -3663,7 +3747,9 @@ def expected_dim_values(plan, ctx):
                 a, b = (d['edge'][0], d['edge'][1]) if d.get('edge') is not None else (d['from'], d['to'])
                 norm = ctx.get('norm') or (lambda x: x)
                 A, B = named[norm(a)], named[norm(b)]
-                out[ident] = (vlen(vsub(A[2], B[2])), (A[1], B[1]), symbolic)
+                seg_px = (A[1], B[1])
+                if d.get('line') is not None and d.get('side') in ('LEFT', 'RIGHT'): seg_px = segment_dim_line(A[1], B[1], d['side'], int(d['line']))   # the label stands beside the dimension line
+                out[ident] = (vlen(vsub(A[2], B[2])), seg_px, symbolic)
             else:
                 solid = None
                 want = d.get('solid')
