@@ -69,10 +69,11 @@ function makeServer(kind) {
 }
 
 function fixture(server) {
+    const dup = server.dupClass ? [['c6', '중3A', '중3', '2,4', '6:30~8:00', '박준성']] : [];
     const classes = [
         ['c1', '중3A', '중3', '1,3,5', '6:30~8:00'], ['c2', '중2B', '중2', '2,4', '4:50~6:20'], ['c3', '고1 심화', '고1', '1,4', '8:00~9:30'],
         ['c4', '중1C', '중1', '2,5', '6:30~8:00'], ['c5', '고2 미적', '고2', '3,6', '4:50~6:20']
-    ].map(([id, name, grade, days, time]) => ({ id, name, grade, subject: '수학', teacher_name: '김선생', schedule_days: days, time_label: time, is_active: 1 }));
+    ].concat(dup).map(([id, name, grade, days, time, teacher]) => ({ id, name, grade, subject: '수학', teacher_name: teacher || '김선생', schedule_days: days, time_label: time, is_active: 1 }));
     const names = ['김민수', '이서윤', '박지호', '최유나', '정도윤', '강하린'];
     const students = []; const class_students = [];
     classes.forEach((c, ci) => { for (let i = 0; i < 4; i++) { const id = `${c.id}s${i}`; students.push({ id, name: names[(i + ci) % names.length], grade: c.grade, school: '왕지중', status: '재원', phone: '010-0000-0000', guardian_phone: '010-1111-2222', enroll_date: '2026-03-02' }); class_students.push({ class_id: c.id, student_id: id }); } });
@@ -205,6 +206,27 @@ async function shoot(browser, base) {
         }
     }
     return problems;
+}
+
+// 동명 반 2개(담당 다름) 스크린샷: label-<기기>.png. 모든 반 범위로 열어 두 반이 한 탭 줄에 보이게 한다.
+async function labelShots(browser, base) {
+    fs.mkdirSync(shotDir, { recursive: true });
+    for (const device of [DEVICES[0], DEVICES[2]]) {
+        const server = makeServer('normal');
+        server.dupClass = true;
+        const { context, page, errors } = await openApp(browser, base, device, 'light', server);
+        try {
+            await page.evaluate(() => openClassRecordModal('c1', undefined, { classScope: 'all' }));
+            await page.waitForTimeout(1300);
+            const tabs = await page.evaluate(() => Array.from(document.querySelectorAll('.ap-class-progress-class-tab')).map(t => t.textContent.replace(/\s+/g, ' ').trim()));
+            const head = await page.evaluate(() => document.querySelector('.ap-class-progress-context').textContent.replace(/\s+/g, ' ').trim());
+            console.log(device.id, JSON.stringify(tabs), '|', head);
+            const result = await audit(page);
+            if (result.smallFonts.length || result.smallTargets.length) console.log('문제', result.smallFonts, result.smallTargets);
+            await page.screenshot({ path: path.join(shotDir, `label-${device.id}.png`) });
+            if (errors.length) console.log('오류', errors);
+        } finally { await context.close(); }
+    }
 }
 
 // ---- 흐름 검사 (수정 후 화면 기준) ----
@@ -408,6 +430,7 @@ async function main() {
     const browser = await chromium.launch({ channel: 'chrome', headless: true });
     try {
         if (flowMode) await flows(browser, base);
+        if (process.env.APMS_LABEL_SHOTS) await labelShots(browser, base);
         if (shotDir) {
             const problems = await shoot(browser, base);
             console.log(problems.length ? '문제 ' + problems.length + '건:\n' + problems.join('\n') : '스크린샷 모두 문제 없음');

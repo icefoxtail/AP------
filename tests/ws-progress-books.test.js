@@ -10,6 +10,7 @@ const repoRoot = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const classroomSource = read('apmath/js/classroom.js');
 const textbookSource = read('apmath/js/textbook.js');
+const labelSource = read('apmath/js/apms-class-label.js');
 const wsSource = read('apmath/js/ws-progress-books.js');
 const themeCss = read('apmath/css/apms-theme-override.css');
 const wsCss = read('apmath/css/ws-progress.css');
@@ -101,6 +102,7 @@ function makeContext() {
         _calls: calls
     };
     vm.createContext(context);
+    vm.runInContext(labelSource, context, { filename: 'apmath/js/apms-class-label.js' });
     vm.runInContext(classroomSource, context, { filename: 'apmath/js/classroom.js' });
     vm.runInContext(textbookSource, context, { filename: 'apmath/js/textbook.js' });
     vm.runInContext(wsSource, context, { filename: 'apmath/js/ws-progress-books.js' });
@@ -268,9 +270,10 @@ test('서랍 교재관리: 모든 반 탭(숨김 반 맨 뒤) + 교재 관리 �
     // 모든 반 범위에서는 담당 반이 아닌 반도 탭에 올라온다
     context.state.ui.classProgressModalState.classScope = 'all';
     const tabs = context.renderClassProgressClassTabs('class-1');
-    assert.match(tabs, /중3 · 중3A/);
-    assert.match(tabs, /고1 · 고1C/);
-    assert.match(tabs, /중2 · 중2B \(숨김\)/);
+    assert.match(tabs, />중3A</);
+    assert.match(tabs, />고1C</);
+    assert.match(tabs, /중2B \(숨김\)/);
+    assert.doesNotMatch(tabs, /중3 · |고1 · /, '학년이 두 번 보이지 않는다');
 });
 
 test('옛 교재 모달 3종은 새 교재 관리 모드를 여는 얇은 래퍼다', () => {
@@ -342,4 +345,34 @@ test('index.html: 새 파일은 정해진 자리에서 불러온다', () => {
     assert.ok(textbookAt > 0 && wsAt === textbookAt + '<script defer src="js/textbook.js"></script>\n    '.length, 'textbook.js 바로 다음 줄');
     assert.ok(indexHtml.indexOf('css/ws-progress.css') > indexHtml.indexOf('css/apms-unified-modal.css'));
     assert.ok(indexHtml.indexOf('css/ws-progress.css') > indexHtml.indexOf('css/apms-theme-override.css'));
+});
+
+test('반 이름 표시 규칙(apmsClassLabel): 학년 중복 없음, 동명 반에서만 담당, 이름 없을 때 대체', () => {
+    const ctx = { window: {} };
+    vm.createContext(ctx);
+    vm.runInContext(labelSource, ctx);
+    const label = (cls, peers) => JSON.parse(JSON.stringify(ctx.apmsClassLabel(cls, peers)));
+    // 학년 글자가 이름에 있으면 그대로, 없으면 앞에 붙인다
+    assert.equal(label({ id: 'a', name: '중3A', grade: '중3' }, []).text, '중3A');
+    assert.equal(label({ id: 'b', name: '심화반', grade: '고1' }, []).text, '고1 심화반');
+    assert.equal(label({ id: 'c', name: '월수금반' }, []).text, '월수금반');
+    // 이름 없을 때 대체: 학년 → id → '반'
+    assert.equal(label({ id: 'd', name: '', grade: '중2' }, []).text, '중2');
+    assert.equal(label({ id: 'e', name: ' ' }, []).text, 'e');
+    assert.equal(label({}, []).text, '반');
+    assert.equal(label(null, null).text, '반');
+    // 동명 반 + 담당 다름 → 담당 표시, 담당 같으면 표시 안 함, 단독이면 표시 안 함
+    const x1 = { id: 'x1', name: '중3A', grade: '중3', teacher_name: '박준성' };
+    const x2 = { id: 'x2', name: '중3A', grade: '중3', teacher_name: '김선생' };
+    const x3 = { id: 'x3', name: '중3A', grade: '중3', teacher_name: '박준성' };
+    const y = { id: 'y', name: '중2B', grade: '중2', teacher_name: '박준성' };
+    assert.deepEqual(label(x1, [x1, x2, y]), { text: '중3A', teacher: '박준성' });
+    assert.deepEqual(label(x2, [x1, x2, y]), { text: '중3A', teacher: '김선생' });
+    assert.equal(label(x1, [x1, x3]).teacher, '', '담당이 같으면 표시 안 함');
+    assert.equal(label(y, [x1, x2, y]).teacher, '', '이름이 겹치지 않으면 표시 안 함');
+    assert.equal(label(x1, [x1]).teacher, '');
+    assert.equal(label({ id: 'z', name: '중3A', grade: '중3' }, [x1, x2]).teacher, '', '담당 이름이 없으면 비운다');
+    // HTML: 이스케이프 + 담당은 작은 보조 글자 span
+    const html = ctx.apmsClassLabelHtml({ id: 'q', name: '<b>중3A', grade: '중3', teacher_name: '박<준성' }, [{ id: 'q', name: '<b>중3A', grade: '중3', teacher_name: '박<준성' }, { id: 'r', name: '<b>중3A', grade: '중3', teacher_name: '다른' }]);
+    assert.match(html, /^&lt;b&gt;중3A <span class="apms-class-label__teacher">박&lt;준성<\/span>$/);
 });

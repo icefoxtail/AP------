@@ -1895,8 +1895,7 @@ function renderClassroomSwitchTabs(classId) {
     return `<nav class="ap-classroom-switcher" aria-label="반 관리 담당 반 전환">
         <div class="ap-classroom-class-tabs" role="group">${classes.map(cls => {
             const selected = String(cls.id) === String(classId);
-            const label = [cls.grade, cls.name].filter(Boolean).join(' · ') || String(cls.name || cls.id);
-            return `<button type="button" class="ap-classroom-class-tab${selected ? ' is-active' : ''}" data-class-id="${apEscapeHtml(String(cls.id))}" aria-pressed="${selected ? 'true' : 'false'}" onclick="switchClassroomClass(${classProgressJsArg(cls.id)})">${apEscapeHtml(label)}</button>`;
+            return `<button type="button" class="ap-classroom-class-tab${selected ? ' is-active' : ''}" data-class-id="${apEscapeHtml(String(cls.id))}" aria-pressed="${selected ? 'true' : 'false'}" onclick="switchClassroomClass(${classProgressJsArg(cls.id)})">${apmsClassLabelHtml(cls, classes)}</button>`;
         }).join('')}</div>
     </nav>`;
 }
@@ -2461,9 +2460,8 @@ function renderClassProgressClassTabs(currentClassId) {
     if (!classes.length) return '';
     return `<nav class="ap-class-progress-class-tabs" aria-label="담당 반 전환" role="group">${classes.map(cls => {
         const selected = String(cls.id) === String(currentClassId);
-        const label = ([cls.grade, cls.name].filter(Boolean).join(' · ') || String(cls.name || cls.id || '반'))
-            + (Number(cls?.is_active) === 0 ? ' (숨김)' : '');
-        return `<button type="button" class="ap-class-progress-class-tab${selected ? ' is-active' : ''}" data-class-id="${apEscapeHtml(String(cls.id))}" aria-pressed="${selected ? 'true' : 'false'}"${modalState.isSaving ? ' disabled' : ''} onclick="requestClassProgressClassSwitch(${classProgressJsArg(cls.id)})">${apEscapeHtml(label)}</button>`;
+        const hidden = Number(cls?.is_active) === 0 ? ' (숨김)' : '';
+        return `<button type="button" class="ap-class-progress-class-tab${selected ? ' is-active' : ''}" data-class-id="${apEscapeHtml(String(cls.id))}" aria-pressed="${selected ? 'true' : 'false'}"${modalState.isSaving ? ' disabled' : ''} onclick="requestClassProgressClassSwitch(${classProgressJsArg(cls.id)})">${apmsClassLabelHtml(cls, classes)}${hidden}</button>`;
     }).join('')}</nav>`;
 }
 
@@ -3664,7 +3662,9 @@ async function openClassRecordModal(cid, requestedDate, options = {}) {
         openProgressModal.classList.add('is-class-switching');
         openProgressModal.setAttribute('aria-busy', 'true');
         const title = openProgressModal.querySelector('.ap-class-progress-context__title');
-        if (title) title.textContent = String(cls.name || '');
+        if (title) title.textContent = apmsClassLabel(cls, getClassProgressAssignedClasses(cid)).text;
+        const teacherNode = openProgressModal.querySelector('.ap-class-progress-context__teacher');
+        if (teacherNode) teacherNode.textContent = cls.teacher_name ? `담당 ${String(cls.teacher_name).trim()}` : '';
         const subtitle = openProgressModal.querySelector('.ap-class-progress-context__meta');
         if (subtitle) subtitle.textContent = wantManage ? '교재 관리' : '현재 수업 진도 · ' + todayStr;
         const tabs = openProgressModal.querySelector('.ap-class-progress-class-tabs');
@@ -3810,10 +3810,10 @@ async function openClassRecordModal(cid, requestedDate, options = {}) {
             <div class="apms-workspace__bar ws-progress__bar">
                 <div class="ap-class-progress-context">
                     <div class="ap-class-progress-context__main">
-                        <strong class="ap-class-progress-context__title">${apEscapeHtml(cls.name || '')}</strong>
+                        <strong class="ap-class-progress-context__title">${apEscapeHtml(apmsClassLabel(cls, getClassProgressAssignedClasses(cid)).text)}</strong>
                         <span class="ap-class-progress-context__meta">${wantManage ? '교재 관리' : `현재 수업 진도 · ${apEscapeHtml(todayStr)}`}</span>
                     </div>
-                    <span class="apms-muted">${apEscapeHtml(gradeKey || '')}</span>
+                    <span class="apms-muted ap-class-progress-context__teacher">${cls.teacher_name ? `담당 ${apEscapeHtml(String(cls.teacher_name).trim())}` : ''}</span>
                 </div>
                 ${renderClassProgressClassTabs(cid)}
             </div>

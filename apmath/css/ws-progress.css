@@ -271,3 +271,18 @@
     .ws-progress-editor__buttons .apms-button { flex: 1 1 100%; }
     .ws-progress-editor__save .apms-button { flex: 1 1 100%; }
 }
+
+/* ---- 반 이름 표시(apms-class-label.js): 동명 반이면 이름 옆에 작은 보조 글자로 담당 ---- */
+.apms-class-label__teacher {
+    margin-left: 4px;
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 400;
+}
+.ap-class-progress-class-tab.is-active .apms-class-label__teacher,
+.ap-classroom-class-tab.is-active .apms-class-label__teacher {
+    color: inherit;
+    opacity: 0.85;
+}
+.ap-class-progress-context__teacher { white-space: nowrap; font-size: 12px; }
+.ap-class-progress-context__teacher:empty { display: none; }

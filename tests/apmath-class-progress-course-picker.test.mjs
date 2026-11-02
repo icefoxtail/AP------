@@ -8,6 +8,7 @@ import vm from 'node:vm';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const classroomSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/classroom.js'), 'utf8');
 const textbookSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/textbook.js'), 'utf8');
+const labelSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/apms-class-label.js'), 'utf8');
 const wsTextbookSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/ws-progress-books.js'), 'utf8');
 const progressCss = fs.readFileSync(path.join(repoRoot, 'apmath/css/apms-theme-override.css'), 'utf8');
 
@@ -120,6 +121,7 @@ function makeContext(gradeKey = '중1') {
         _addHandlerCalls: []
     };
     vm.createContext(context);
+    vm.runInContext(labelSource, context, { filename: 'apmath/js/apms-class-label.js' });
     vm.runInContext(classroomSource, context, { filename: 'apmath/js/classroom.js' });
     vm.runInContext(textbookSource, context, { filename: 'apmath/js/textbook.js' });
     vm.runInContext(wsTextbookSource, context, { filename: 'apmath/js/ws-progress-books.js' });
