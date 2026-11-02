@@ -1,11 +1,12 @@
 {
-  "schemaVersion": "archive-basic-scope-rebind-request-v1",
+  "schemaVersion": "archive-basic-scope-rebind-registration-v1",
   "requestId": "basic-rebind-maesan-25-1mid-algebra-q18-20261102",
+  "requestSha256": "49927cca5c12fe27c4dea0a7914f06138cf1a6a55fa052906cdde42285573d9c",
   "examUid": "25_매산고_1학기_중간_고2_대수",
   "sourceArchiveFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js",
-  "expectedSourceBlobSha1": "ccaa72cb9ce32f577a14f3a7ec5a3217f8a91091",
+  "sourceBlobSha1": "ccaa72cb9ce32f577a14f3a7ec5a3217f8a91091",
   "previousSourceBlobSha1": "67fb8df5d341b19bf27cf3b5b70136290220bbdb",
-  "expectedQuestionCount": 21,
+  "sourceRawSha256": "b03c29a58c0c3fb13d16e457b16df5af44d6cd714fedef3e1120f9356b81048f",
   "approval": {
     "type": "BASIC_SCOPE_REBIND",
     "metadataReviewed": true,
@@ -17,7 +18,11 @@
       }
     ]
   },
-  "items": [
+  "metadataRegistrationStatus": "FINGERPRINT_REBOUND",
+  "metadataValuesChanged": false,
+  "consumerSearchStatus": "NOT_RUN",
+  "totalRebound": 1,
+  "applied": [
     {
       "questionUid": "qid_v1_25b798f33ac48e9f0f388d2406bde3b007e7791c928842c1874c0c12ff6feb96",
       "sourceOrdinal": 18,
@@ -29,12 +34,10 @@
         "sourceFingerprint": "cbd2b93ccabe658435215e7438a5362c84f2e9b9e44125ad950bfcab3ee560a7",
         "contentFingerprint": "6d1f436a556cb1894e6b38316cfcb7a1fcf7d01ebdec63da4b849ed5e528de4a"
       },
-      "contentEdits": [
-        {
-          "from": "길움을",
-          "to": "길이를"
-        }
-      ],
+      "contentRule": "PLACEHOLDER_REMOVED+TEXT_FIX",
+      "figureChanged": true,
+      "metadataValuesChanged": false,
+      "basicParentLink": "ADDED",
       "basicParent": {
         "grade": "고2",
         "curriculumKey": "2015",
@@ -42,13 +45,18 @@
         "L1": "삼각함수",
         "L2": "삼각함수"
       },
-      "reason": "Rebind the approved basic-scope metadata (values unchanged) to the current bytes: student figure attached, placeholder removed, one typo fixed; answer/solution/choices/classification identical.",
-      "evidenceRefs": [
-        {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/basic-rebind-maesan-25-1mid-algebra-q18-20261102.review.json",
-          "sha256": "e539eb665604483e6e783f142f7d09c77cbb5addc922b28b970e81e151406404"
-        }
-      ]
+      "nextLink": {
+        "grade": "고2",
+        "curriculumKey": "2015",
+        "courseKey": "수학I",
+        "sourceFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js",
+        "sourceOrdinal": 18,
+        "sourceFingerprint": "cbd2b93ccabe658435215e7438a5362c84f2e9b9e44125ad950bfcab3ee560a7",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "reason": "BASIC_SCOPE_REBIND basic-rebind-maesan-25-1mid-algebra-q18-20261102: approved sub-unit H15-M1-05-TRIGONOMETRIC_DEFINITION maps to this canonical parent; question bytes re-bound after a figure-only change",
+        "sourceBodyFingerprint": "6d1f436a556cb1894e6b38316cfcb7a1fcf7d01ebdec63da4b849ed5e528de4a"
+      }
     }
   ]
 }
