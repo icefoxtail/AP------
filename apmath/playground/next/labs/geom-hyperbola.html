@@ -1480,7 +1480,7 @@ window.addEventListener('DOMContentLoaded', function () {
         return [
           `곡선을 나눕니다: $|y|\\le ${m}$ 이면 타원(초점 $C$, $D$), $|y|\\ge ${m}$ 이면 쌍곡선 $y^2-\\dfrac{x^2}{a^2}=${m * m}$ (초점 $A$, $B$).`,
           `쌍곡선의 주축의 길이는 $${2 * m}$ 이므로 $|QA-QB|=${2 * m}$. $Q$는 위쪽 가지 위이므로 $QB-QA=${2 * m}$, $QA=${v.L}-${2 * m}=${v.QA}$.`,
-          `타원의 초점 $C$: $c^2=${m * m}(a^2-1)$, 쌍곡선의 초점 $A$: $(c+${m})^2=${m * m}(a^2+1)$. 두 식을 빼면 $${2 * m}c+${m * m}=${2 * m * m}$ ⇒ $c=${nf(v.c, 1)}$, $AB=2(c+${m})=${v.AB}$.`,
+          `타원의 초점 $C$: $c^2=${m * m}(a^2-1)$, 쌍곡선의 초점 $A$: $(c+${m})^2=${m * m}(a^2+1)$. 두 식을 빼면 $${2 * m}c+${m * m}=${2 * m * m}$ ⇒ $c=${frTex(v.m, 2)}$, $AB=2(c+${m})=${v.AB}$.`,
           `둘레 $=QA+QB+AB=${v.QA}+${v.L}+${v.AB}=${v.ans}$.`
         ];
       },
@@ -1492,7 +1492,7 @@ window.addEventListener('DOMContentLoaded', function () {
           const v = varH7.cur(), m = v.m;
           return {
             steps: `① ${tex(`y^2-${m * m}=\\pm\\dfrac{x^2}{a^2}`)}에서 ${tex(`|y|\\le ${m}`)}이면 ${tex(`\\dfrac{x^2}{${nf(m * m, 0)}a^2}+\\dfrac{y^2}{${m * m}}=1`)} (타원), ${tex(`|y|\\ge ${m}`)}이면 ${tex(`\\dfrac{y^2}{${m * m}}-\\dfrac{x^2}{${nf(m * m, 0)}a^2}=1`)} (쌍곡선).<br>
-② 타원: ${tex(`c^2=${m * m}a^2-${m * m}`)}, 쌍곡선: ${tex(`(c+${m})^2=${m * m}+${m * m}a^2`)}. 연립하면 ${tex(`c=${nf(v.c, 1)}`)}, ${tex(`AB=${v.AB}`)}.<br>
+② 타원: ${tex(`c^2=${m * m}a^2-${m * m}`)}, 쌍곡선: ${tex(`(c+${m})^2=${m * m}+${m * m}a^2`)}. 연립하면 ${tex(`c=${frTex(v.m, 2)}`)}, ${tex(`AB=${v.AB}`)}.<br>
 ③ ${tex(`QB=${v.L}`)}, ${tex(`QB-QA=${2 * m}`)}에서 ${tex(`QA=${v.QA}`)}. 둘레 ${tex(String(v.ans))}.`,
             warning: '곡선의 식에 절댓값이 있으면 y의 범위로 나눠서 각각 알려진 곡선 꼴로 바꿉니다. 하나의 식으로 계산하려 하면 막힙니다.'
           };
@@ -1500,7 +1500,7 @@ window.addEventListener('DOMContentLoaded', function () {
         quick: () => {
           const v = varH7.cur(), m = v.m;
           return {
-            steps: `주어진 합 ${tex('PC+PD=\\text{일정}')}은 타원 부분의 초점이 ${tex('C,\\ D')}임을 뜻하고, 쌍곡선 부분의 초점은 ${tex('A,\\ B')}입니다. 쌍곡선의 정의로 ${tex(`QB-QA=${2 * m}`)}, ${tex('AB=2(c+' + m + ')')}에서 ${tex(`c=${nf(v.c, 1)}`)}을 구해 ${tex(`2QB-${2 * m}+AB=2\\cdot ${v.L}-${2 * m}+${v.AB}=${v.ans}`)}.`,
+            steps: `주어진 합 ${tex('PC+PD=\\text{일정}')}은 타원 부분의 초점이 ${tex('C,\\ D')}임을 뜻하고, 쌍곡선 부분의 초점은 ${tex('A,\\ B')}입니다. 쌍곡선의 정의로 ${tex(`QB-QA=${2 * m}`)}, ${tex('AB=2(c+' + m + ')')}에서 ${tex(`c=${frTex(v.m, 2)}`)}을 구해 ${tex(`2QB-${2 * m}+AB=2\\cdot ${v.L}-${2 * m}+${v.AB}=${v.ans}`)}.`,
             highlight: '곡선 하나에 두 가지 정의가 섞여 있습니다. "어느 부분에 있는 점인가"를 y의 범위로 먼저 가르는 것이 시작입니다.'
           };
         }

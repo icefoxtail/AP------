@@ -2359,7 +2359,7 @@ window.addEventListener('DOMContentLoaded', function () {
       steps: () => {
         const v = varE6.cur();
         return [
-          `쌍곡선의 정의: $PF′-PF=2\\sqrt{${v.n}}=${2 * v.sn}$ ($P$는 오른쪽 가지 위, $PF<PF′$). 따라서 $PF′=${v.d}+${2 * v.sn}=${v.d + 2 * v.sn}$.`,
+          `쌍곡선의 정의: $PF′-PF=2\\sqrt{${v.n}}=${2 * v.sn}$ ($P$는 오른쪽 가지 위, $PF\\lt PF′$). 따라서 $PF′=${v.d}+${2 * v.sn}=${v.d + 2 * v.sn}$.`,
           `타원의 정의: $PF+PF′=2a$ 에서 $2a=${v.d}+${v.d + 2 * v.sn}=${2 * v.a}$, $a=${v.a}$, $a^2=${v.A}$.`,
           `두 초점이 같으므로 타원: $c^2=a^2-${v.m}=${v.c2}$, 쌍곡선: $c^2=${v.n}+b^2$ ⇒ $b^2=${v.c2}-${v.n}=${v.B}$.`,
           `$a^2+b^2=${v.A}+${v.B}=${v.ans}$.`

@@ -1480,13 +1480,13 @@ window.addEventListener('DOMContentLoaded', function () {
         return [
           `포물선 $(y-${k})^2=${4 * p}(x+${p})$ 은 꼭짓점 $(-${p},\\,${k})$, $4p=${4 * p}$ 이므로 $p=${p}$, 초점은 $(0,\\,${k})$. 즉 $A$가 초점이고 준선은 $x=-${2 * p}$.`,
           '$P$에서 준선에 내린 수선의 발을 $H$라 하면 $PA=PH$ (포물선의 정의). 따라서 $OP+PA=OP+PH$.',
-          `$OP+PH$ 는 $O$에서 준선까지의 거리 $OH_0=${2 * p}$ 이상이고, $P$가 선분 $OH_0$ 위(즉 $y=0$인 점 $P_0(${nf(v.x0, 3)},0)$)일 때 최소. 최솟값 $=\\overline{OP_0}+\\overline{P_0A}=${2 * p}$.`,
-          `$OQ+QA=${2 * p}$ 인 점 $Q$는 두 초점이 $O$, $A$이고 장축의 길이가 $${2 * p}$ 인 타원 위의 점. 중심 $(0,\\,${nf(k / 2, 1)})$, 장축이 $y$축 방향이므로 $y$는 $${nf(k / 2, 1)}\\pm ${p}$.`,
-          `$M=${nf(v.M, 1)}$, $m=${nf(v.m, 1)}$ ⇒ $M^2+m^2=${nf(v.ans, 1)}$.`
+          `$OP+PH$ 는 $O$에서 준선까지의 거리 $OH_0=${2 * p}$ 이상이고, $P$가 선분 $OH_0$ 위(즉 $y=0$인 점 $P_0(${frTex(k * k - 4 * p * p, 4 * p)},0)$)일 때 최소. 최솟값 $=\\overline{OP_0}+\\overline{P_0A}=${2 * p}$.`,
+          `$OQ+QA=${2 * p}$ 인 점 $Q$는 두 초점이 $O$, $A$이고 장축의 길이가 $${2 * p}$ 인 타원 위의 점. 중심 $(0,\\,${frTex(k, 2)})$, 장축이 $y$축 방향이므로 $y$는 $${frTex(k, 2)}\\pm ${p}$.`,
+          `$M=${frTex(2 * p + k, 2)}$, $m=${frTex(k - 2 * p, 2)}$ ⇒ $M^2+m^2=${frTex(4 * p * p + k * k, 2)}$.`
         ];
       },
       reviewTop: reviewTopOf(() => text6()),
-      problem: { tag: '2024학년도 6월 모의평가 27번 유형', time: '목표 시간: 45초', text: () => probHTML(text6()), answer: () => tex(nf(var6.cur().ans, 1)) },
+      problem: { tag: '2024학년도 6월 모의평가 27번 유형', time: '목표 시간: 45초', text: () => probHTML(text6()), answer: () => tex(frTex(4 * var6.cur().p * var6.cur().p + var6.cur().k * var6.cur().k, 2)) },
       solution: {
         standardTitle: '교과서식 풀이 (좌표로 계산)', standardTag: '기본 풀이', quickTitle: '10초 컷 · 초점을 알아보면 끝', quickTag: '10초 컷',
         standard: () => {
@@ -1494,16 +1494,16 @@ window.addEventListener('DOMContentLoaded', function () {
           return {
             steps: `① ${tex(`P\\left(\\dfrac{(y-${k})^2}{${4 * p}}-${p},\\ y\\right)`)}로 두고 ${tex('f(y)=OP+PA')}를 식으로 쓰면 두 제곱근의 합이 되어 최솟값을 직접 구하기 어렵습니다.<br>
 ② 포물선의 초점이 ${tex(`(0,${k})`)}임을 알아보면 ${tex('PA')}가 ${tex('P')}에서 준선 ${tex(`x=-${2 * p}`)}까지의 거리 ${tex('PH')}이므로 ${tex('OP+PH\\ge OH_0=' + 2 * p)}.<br>
-③ ${tex(`OQ+QA=${2 * p}`)}: ${tex(`O(0,0),\\ A(0,${k})`)}를 초점으로 하는 타원, ${tex(`2a=${2 * p},\\ c=${nf(k / 2, 1)}`)}.<br>
-④ 타원의 중심 ${tex(`(0,${nf(k / 2, 1)})`)}에서 ${tex('y')}방향 반지름 ${tex('a=' + p)}이므로 ${tex(`M=${nf(v.M, 1)},\\ m=${nf(v.m, 1)}`)}, ${tex(`M^2+m^2=${nf(v.ans, 1)}`)}.`,
+③ ${tex(`OQ+QA=${2 * p}`)}: ${tex(`O(0,0),\\ A(0,${k})`)}를 초점으로 하는 타원, ${tex(`2a=${2 * p},\\ c=${frTex(k, 2)}`)}.<br>
+④ 타원의 중심 ${tex(`(0,${frTex(k, 2)})`)}에서 ${tex('y')}방향 반지름 ${tex('a=' + p)}이므로 ${tex(`M=${frTex(2 * p + k, 2)},\\ m=${frTex(k - 2 * p, 2)}`)}, ${tex(`M^2+m^2=${frTex(4 * p * p + k * k, 2)}`)}.`,
             warning: '"A는 그냥 주어진 점"이라고 생각하면 막힙니다. 포물선 식을 평행이동 꼴 (y−k)²=4p(x−h)로 읽어 초점의 좌표부터 확인하세요.'
           };
         },
         quick: () => {
           const v = var6.cur(), p = v.p, k = v.k;
           return {
-            steps: `<strong class="text-pink-300">A = 초점</strong>, 준선 ${tex(`x=-${2 * p}`)}. ${tex('OP+PA=OP+PH')}의 최솟값은 ${tex('O')}에서 준선까지의 거리 ${tex(String(2 * p))}입니다. 따라서 ${tex('Q')}는 ${tex('O,\\ A')}를 초점으로 하고 장축이 ${tex(String(2 * p))}인 타원 위에 있고, ${tex('y')}좌표의 범위는 중심 ${tex(nf(k / 2, 1))}에서 ${tex('\\pm' + p)}만큼. ${tex(`M^2+m^2=2\\left(\\dfrac{${k}}{2}\\right)^2+2\\cdot ${p}^2=${nf(v.ans, 1)}`)}.`,
-            highlight: 'M² + m² = (c' + "'" + '+a)² + (c' + "'" + '−a)² = 2(c' + "'" + '² + a²) 꼴로 한 번에 계산합니다. 여기서 c' + "'" + '는 타원 중심의 높이 k/2.'
+            steps: `<strong class="text-pink-300">A = 초점</strong>, 준선 ${tex(`x=-${2 * p}`)}. ${tex('OP+PA=OP+PH')}의 최솟값은 ${tex('O')}에서 준선까지의 거리 ${tex(String(2 * p))}입니다. 따라서 ${tex('Q')}는 ${tex('O,\\ A')}를 초점으로 하고 장축이 ${tex(String(2 * p))}인 타원 위에 있고, ${tex('y')}좌표의 범위는 중심 ${tex(frTex(k, 2))}에서 ${tex('\\pm' + p)}만큼. ${tex(`M^2+m^2=2\\left(\\dfrac{${k}}{2}\\right)^2+2\\cdot ${p}^2=${frTex(4 * p * p + k * k, 2)}`)}.`,
+            highlight: 'M² + m² = (c'+'′'+'+a)² + (c'+'′'+'−a)² = 2(c'+'′'+'² + a²) 꼴로 한 번에 계산합니다. 여기서 c'+'′'+'는 타원 중심의 높이 k/2.'
           };
         }
       },
