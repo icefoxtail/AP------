@@ -1,0 +1,9 @@
+{"capability":"lattice-path-figure-v1",
+ "lattice":{"grid":{"cols":4,"rows":4},
+  "points":{"A":[0,0],"B":[4,4],"P":[2,2]},
+  "from":"A","to":"B",
+  "absent":[[[3,0],[4,0]],[[0,4],[1,4]],[[1,4],[2,4]],[[0,3],[0,4]],[[1,3],[1,4]],[[4,0],[4,1]]],
+  "exclude":["P"],"counts":true},
+ "caption":"그림의 도로망(없는 도로 6곳)에서 A부터 각 교차점까지 오른쪽·위쪽으로만 가는 최단 경로의 수. P를 지나면 안 되므로 P의 값은 0",
+ "sourceConditions":[{"id":"c1","condition":"A에서 B까지 오른쪽 또는 위쪽으로만 가는 최단 경로","mappedTo":"lattice"},{"id":"c2","condition":"왼쪽 위와 오른쪽 아래에는 도로가 없다","mappedTo":"absent"},{"id":"c3","condition":"P 지점을 지나지 않는다","mappedTo":"exclude"}],
+ "newVisualInformation":["P를 지나지 않는 경로만 센 교차점별 경로 수(P는 0)"]}
