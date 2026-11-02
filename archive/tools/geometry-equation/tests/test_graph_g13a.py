@@ -112,13 +112,25 @@ class AngleFraming(unittest.TestCase):
         with self.assertRaises(ValueError) as caught:_overlay_features({**framed,'axisRatio':0.5})
         self.assertEqual(str(caught.exception),'GRAPH_ANGLE_UNEQUAL_UNITS:ang1')
 
+class VerticalAsymptoteFraming(unittest.TestCase):
+    RATIONAL={'family':'rational','numerator':['-2','3'],'denominator':['2','1'],'sourceDomain':{'kind':'ALL_REALS'},'domain':[-9,3],'viewport':[-9,3,-6,10],'axisTickValues':{'x':[],'y':[]}}
+    def test_the_places_are_checked(self):
+        for place in ('TOP_LEFT','TOP_RIGHT','BOTTOM_LEFT','BOTTOM_RIGHT','NONE'):
+            self.assertEqual(fit_overview({**copy.deepcopy(self.RATIONAL),'verticalAsymptoteLabelAt':place})['graphPlan']['verticalAsymptoteLabelAt'],place)
+        for place in ('LEFT','top_left',None,3):
+            self.assertEqual(refused({**self.RATIONAL,'verticalAsymptoteLabelAt':place}),'VERTICAL_ASYMPTOTE_LABEL_AT_INVALID',place)
+        self.assertNotIn('verticalAsymptoteLabelAt',fit_overview(copy.deepcopy(self.RATIONAL))['graphPlan'])
+    def test_the_constant_numerator_form_takes_it_too(self):
+        plan={**copy.deepcopy(self.RATIONAL),'numerator':['3','0'],'denominator':['1','1'],'viewport':[-5,5,-5,5],'domain':[-5,5]}
+        self.assertEqual(fit_overview({**plan,'verticalAsymptoteLabelAt':'BOTTOM_RIGHT'})['graphPlan']['verticalAsymptoteLabelAt'],'BOTTOM_RIGHT')
+
 class Fixtures(unittest.TestCase):
     def errors(self,name,change=None,plan=None):
         fixed_plan,svg,transform=fixture(name)
         if change:svg=edit(svg,change)
         return audit(plan or fixed_plan,svg,transform)['errors']
     def test_every_stored_figure_is_clean(self):
-        for name in ('right-angle-tangents','equal-angles-bisector'):
+        for name in ('right-angle-tangents','equal-angles-bisector','vertical-asymptote-label','vertical-asymptote-label-none'):
             self.assertEqual(self.errors(name),[],name)
 
 class RightAngleObserver(Fixtures):
@@ -184,5 +196,23 @@ class EqualAnglesObserver(Fixtures):
         self.assertEqual(self.errors(self.name,plan=plan),[])          # one arc declared and drawn
         plan['overlays']['equalAngles'][0]['arcs']=2
         self.assertIn('GRAPH_ANGLE_MARK_MISSING:ang1',self.errors(self.name,plan=plan))
+
+class VerticalAsymptoteObserver(Fixtures):
+    def test_a_label_on_the_wrong_side_or_end_is_named(self):
+        plan,_,_=fixture('vertical-asymptote-label');plan=copy.deepcopy(plan);plan['verticalAsymptoteLabelAt']='TOP_RIGHT'
+        errors=self.errors('vertical-asymptote-label',plan=plan)
+        self.assertTrue({'VERTICAL_ASYMPTOTE_LABEL_WRONG_SIDE','VERTICAL_ASYMPTOTE_LABEL_WRONG_END','VERTICAL_ASYMPTOTE_LABEL_NO_ROOM'}<=set(errors),errors)
+    def test_a_label_far_from_the_line_is_named(self):
+        def far(root):
+            node(root,'vertical-asymptote-label').set('transform','translate(-150,0)')
+        errors=self.errors('vertical-asymptote-label',far)
+        self.assertTrue({'VERTICAL_ASYMPTOTE_LABEL_NOT_AT_LINE','VERTICAL_ASYMPTOTE_LABEL_NO_ROOM'} <= set(errors),errors)
+    def test_none_needs_some_label_that_reads_the_asymptote(self):
+        def drop(root):
+            for parent in root.iter():
+                for child in list(parent):
+                    if (child.get('id') or '').startswith('overlay-callout-cx'):parent.remove(child)
+        errors=self.errors('vertical-asymptote-label-none',drop)
+        self.assertIn('VERTICAL_ASYMPTOTE_LABEL_MISSING',errors)
 
 if __name__=='__main__':unittest.main()

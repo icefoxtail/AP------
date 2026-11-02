@@ -202,6 +202,7 @@ def _fit_overview_family(plan):
 
 # Quadratic graphs keep one scale on both axes (user direction 2026-10-22): the figure is the true shape, never squeezed to fill the canvas.
 QUADRATIC_PLOT_WIDTH=448
+VERTICAL_ASYMPTOTE_LABEL_PLACES=('TOP_LEFT','TOP_RIGHT','BOTTOM_LEFT','BOTTOM_RIGHT','NONE')   # (G13a) graphPlan.verticalAsymptoteLabelAt
 QUADRATIC_PLOT_HEIGHT=(160,640)
 EQUAL_UNIT_EDGE_PX=40
 EQUAL_UNIT_MIN_CURVE_PX=48
@@ -393,6 +394,9 @@ def _fit_rational_overview(plan):
     if 'asymptoteLabelAt' in plan:
         if plan['asymptoteLabelAt'] not in ('START','END'):raise ValueError('ASYMPTOTE_LABEL_AT_INVALID')
         if numerator[1]==0:raise ValueError('ASYMPTOTE_LABEL_AT_UNSUPPORTED')
+    # verticalAsymptoteLabelAt (G13a): TOP_LEFT | TOP_RIGHT | BOTTOM_LEFT | BOTTOM_RIGHT puts the label x=p on that side of the dashed vertical asymptote, at its top or bottom end; NONE draws
+    # no automatic label (the author writes it, for example as a callout). The default place is kept without the field.
+    if 'verticalAsymptoteLabelAt' in plan and plan['verticalAsymptoteLabelAt'] not in VERTICAL_ASYMPTOTE_LABEL_PLACES:raise ValueError('VERTICAL_ASYMPTOTE_LABEL_AT_INVALID')
     if numerator[1]==0:return _fit_rational_constant_numerator(plan,numerator[0],denominator,original_domain,original_viewport)
     if plan.get('displayWindow') is not None:raise ValueError('DISPLAY_WINDOW_REQUIRES_INVERSE_PROPORTION')
     if plan.get('formulaAt') is not None:raise ValueError('FORMULA_AT_REQUIRES_DISPLAY_WINDOW')

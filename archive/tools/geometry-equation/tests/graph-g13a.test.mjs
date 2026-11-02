@@ -49,3 +49,12 @@ test('lines that are not perpendicular are refused with their code',async()=>{
   assert.equal(framed.status,'ERROR');assert.equal(framed.result.code,'GRAPH_RIGHT_ANGLE_NOT_PERPENDICULAR:ra1');
 });
 
+test('verticalAsymptoteLabelAt puts the label beside the dashed line, and NONE draws none',async()=>{
+  const rational=place=>({capability:'rational-spike-v1',graphPlan:{family:'rational',numerator:['-2','3'],denominator:['2','1'],sourceDomain:{kind:'ALL_REALS'},domain:[-9,3],viewport:[-9,3,-6,10],axisTickValues:{x:[],y:[]},
+    ...(place?{verticalAsymptoteLabelAt:place}:{})},caption:'g13a'});
+  const label=async place=>(await prepare(rational(place))).spec.objects.find(object=>object.id==='vertical-asymptote-label');
+  const before=await label(undefined);assert.equal(before.directions,undefined);   // without the field: the old place, no direction
+  const left=await label('BOTTOM_LEFT');assert.deepEqual([left.text,left.directions[0],left.at[0]],['x=-2','W',-2]);assert.ok(left.at[1]<0);
+  const right=await label('TOP_RIGHT');assert.deepEqual([right.directions[0]],['E']);assert.ok(right.at[1]>0);
+  assert.equal(await label('NONE'),undefined);
+});

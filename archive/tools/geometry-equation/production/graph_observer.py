@@ -4506,6 +4506,51 @@ def asymptote_label_audit(plan,svg,transform):
     except (KeyError,TypeError,ValueError,ZeroDivisionError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['ASYMPTOTE_LABEL_SOURCE_INVALID']}
     return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
 
+OV_VASYM_LABEL_LINE_PX=40.0   # verticalAsymptoteLabelAt: the label stands within this many px (across) of the dashed line
+OV_VASYM_LABEL_CURVE_PX=3.0   # ... and keeps at least this many px from every curve branch and axis line
+
+def vertical_asymptote_label_audit(plan,svg,transform):
+    """(G13a) graphPlan.verticalAsymptoteLabelAt of a rational graph, read from the final SVG. Some label that reads x=p must exist (NONE: the author wrote it, for example as a callout).
+    With a place the automatic label stands beside the dashed asymptote on the named side and at the named end (top or bottom half), nearer the asymptote than the y-axis, and touches
+    no curve branch and no axis line (VERTICAL_ASYMPTOTE_LABEL_NO_ROOM otherwise)."""
+    place=plan.get('verticalAsymptoteLabelAt')
+    if place is None or 'data-label-kind' not in svg:return None
+    try:
+        if place not in ('TOP_LEFT','TOP_RIGHT','BOTTOM_LEFT','BOTTOM_RIGHT','NONE') or plan.get('family')!='rational':return {'status':'UNSUPPORTED','errors':['VERTICAL_ASYMPTOTE_LABEL_AT_INVALID']}
+        n=[_ov_reader(v) for v in plan['numerator']];d=[_ov_reader(v) for v in plan['denominator']]
+        if len(d)!=2 or d[1]==0 or len(n)>2:return {'status':'UNSUPPORTED','errors':['VERTICAL_ASYMPTOTE_LABEL_AT_UNSUPPORTED']}
+        pole=-d[0]/d[1]
+        if len(n)==2 and n[0]+n[1]*pole==0:return {'status':'UNSUPPORTED','errors':['VERTICAL_ASYMPTOTE_LABEL_AT_UNSUPPORTED']}
+        text='x='+(str(int(pole.p)) if pole.q==1 else str(int(pole.p))+'/'+str(int(pole.q)))
+        ox,oy,sx,sy=[transform[key] for key in ('originX','originY','sx','sy')]
+        root=ET.fromstring(svg);groups={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id')}
+        want=_ov_label_codes(text);errors=[]
+        def reads(node):
+            got=_ov_glyph_codes(node);return len(got)==len(want) and all(code in allowed for code,allowed in zip(got,want))
+        if not any(node.get('data-label-kind') and reads(node) for node in groups.values()):return {'status':'FAIL','errors':['VERTICAL_ASYMPTOTE_LABEL_MISSING']}
+        if place=='NONE':return {'status':'PASS','errors':[]}
+        node=groups.get('vertical-asymptote-label')
+        if node is None or not reads(node):return {'status':'FAIL','errors':['VERTICAL_ASYMPTOTE_LABEL_MISSING']}
+        box=_region_label_box(groups,'vertical-asymptote-label')
+        if box is None:return {'status':'FAIL','errors':['VERTICAL_ASYMPTOTE_LABEL_BOX_UNREADABLE']}
+        line_x=ox+float(S.N(pole,30))*sx;cx=box[0]+box[2]/2;cy=box[1]+box[3]/2
+        gap=max(box[0]-line_x,line_x-(box[0]+box[2]),0.0)
+        if gap>OV_VASYM_LABEL_LINE_PX:errors.append('VERTICAL_ASYMPTOTE_LABEL_NOT_AT_LINE')
+        if (cx<line_x)!=place.endswith('LEFT'):errors.append('VERTICAL_ASYMPTOTE_LABEL_WRONG_SIDE')
+        top=oy-plan['viewport'][3]*sy;bottom=oy-plan['viewport'][2]*sy
+        if (cy<(top+bottom)/2)!=place.startswith('TOP'):errors.append('VERTICAL_ASYMPTOTE_LABEL_WRONG_END')
+        if plan['viewport'][0]<0<plan['viewport'][1] and abs(line_x-ox)>1e-6:
+            axis_gap=max(box[0]-ox,ox-(box[0]+box[2]),0.0)
+            if axis_gap<=gap:errors.append('VERTICAL_ASYMPTOTE_LABEL_NEAR_Y_AXIS')
+        strokes=[(a,b) for _node,_branch,points in _observed_curve_polylines_all(root) for a,b in zip(points,points[1:])]
+        for node_id in ('x-axis','y-axis'):
+            axis=next((item for item in root.iter() if item.tag.split('}')[-1]=='line' and item.get('id')==node_id),None)
+            if axis is not None:strokes.append(((float(axis.get('x1')),float(axis.get('y1'))),(float(axis.get('x2')),float(axis.get('y2')))))
+        # the layout moved the label away from the chosen place (the curve or an axis holds it) or it touches a stroke: that place has no room
+        if errors or any(_ov_box_segment_distance(box,a,b)<OV_VASYM_LABEL_CURVE_PX for a,b in strokes):errors.append('VERTICAL_ASYMPTOTE_LABEL_NO_ROOM')
+    except (KeyError,TypeError,ValueError,ZeroDivisionError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['VERTICAL_ASYMPTOTE_LABEL_SOURCE_INVALID']}
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
+
 def _observed_curve_polylines_all(root):
     """Every drawn curve polyline (with or without a branch tag): (node, branch, [(x,y) px ...])."""
     rows=[]
@@ -4521,7 +4566,7 @@ def audit(plan,svg,transform):
     """The family audit plus the optional graph overlays and axis titles: the observer re-derives every overlay element from the raw overlays
     field and reads the same element ids back from the model and the final SVG."""
     result=_audit_family(plan,svg,transform)
-    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform)) if part is not None]
+    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform)) if part is not None]
     if not parts:return result
     errors=sorted(set([*(result.get('errors') or []),*(error for part in parts for error in (part.get('errors') or []))]))
     if result.get('status')=='UNSUPPORTED' or any(part.get('status')=='UNSUPPORTED' for part in parts):status='UNSUPPORTED'
