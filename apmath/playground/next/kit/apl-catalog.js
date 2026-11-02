@@ -454,6 +454,52 @@ window.APLab.catalog = {
    "sceneTotal": 30
   },
   {
+   "id": "common-coord",
+   "course": "common",
+   "unit": "도형의 방정식",
+   "strand": "coord",
+   "order": 2.1,
+   "title": "평면좌표",
+   "short": "평면좌표",
+   "summary": "두 점 사이의 거리와 중점, 내분점, 내분점·무게중심·내심으로 만드는 삼각형, 이등변삼각형이 되는 점, 좌표를 잡아 증명하기를 점을 움직이며 확인합니다. 이전 교육과정의 외분점도 함께 둡니다.",
+   "keywords": "평면좌표 두 점 사이의 거리 중점 내분점 외분점 무게중심 내심 이등변삼각형 중선정리 좌표로 증명 직사각형 공통수학 도형의 방정식 이전 교육과정",
+   "badge": "평면좌표",
+   "scenes": [
+    "두 점 사이의 거리와 중점",
+    "내분점 — 선분을 m : n으로 나누는 점",
+    "[기출 유형] 내분점·무게중심·내심 삼각형",
+    "[기출 유형] 이등변삼각형이 되는 점 찾기",
+    "[필수] 좌표를 잡아 증명하기 — 중선정리·직사각형",
+    "[이전 교육과정] 외분점 — 내분점이 선분 밖으로"
+   ],
+   "legacy": "next/labs/common-coord.html",
+   "next": "next/labs/common-coord.html",
+   "glyph": "<line x1=\"8\" y1=\"62\" x2=\"72\" y2=\"62\"/><line x1=\"16\" y1=\"70\" x2=\"16\" y2=\"8\"/><path d=\"M22 56 L62 22\"/><circle cx=\"22\" cy=\"56\" r=\"3.5\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"62\" cy=\"22\" r=\"3.5\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"42\" cy=\"39\" r=\"3.5\"/>",
+   "sceneTotal": 6
+  },
+  {
+   "id": "common-transform",
+   "course": "common",
+   "unit": "도형의 방정식",
+   "strand": "coord",
+   "order": 2.2,
+   "title": "도형의 이동",
+   "short": "도형의 이동",
+   "summary": "평행이동에서 식의 부호가 반대인 이유, x축·y축·원점·직선 y=x에 대한 대칭이동, 대칭이동으로 꺾인 경로를 펴는 최단거리, 평행이동과 대칭이동의 합성을 도형을 끌어 확인합니다.",
+   "keywords": "도형의 이동 평행이동 대칭이동 x축 y축 원점 직선 y=x 최단거리 빛의 반사 합성 접하는 순간 포물선 원 공통수학 도형의 방정식",
+   "badge": "도형의 이동",
+   "scenes": [
+    "평행이동 — 점·도형·방정식",
+    "대칭이동 — x축·y축·원점·직선 y = x",
+    "[기출 유형] 대칭이동과 최단거리",
+    "[기출 유형] 평행이동·대칭이동의 합성과 접하는 순간"
+   ],
+   "legacy": "next/labs/common-transform.html",
+   "next": "next/labs/common-transform.html",
+   "glyph": "<path d=\"M10 58 Q26 10 42 58\"/><path d=\"M38 58 Q54 10 70 58\" stroke-dasharray=\"3 3\"/><path d=\"M28 66 L56 66\"/><path d=\"M52 62 L58 66 L52 70\"/>",
+   "sceneTotal": 4
+  },
+  {
    "id": "common-circle-eq",
    "course": "common",
    "unit": "도형의 방정식",
@@ -1180,6 +1226,8 @@ window.APLab.catalog = {
    "hue": "blue",
    "stations": [
     "common-lines",
+    "common-coord",
+    "common-transform",
     "common-circle-eq",
     "geom-vector-ops",
     "geom-vector-dot",
