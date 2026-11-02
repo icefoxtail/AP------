@@ -716,7 +716,7 @@ function solveDotMarks(raw,points,total,segments){
 // of them (a tail when one end is null), the area labels the problem gives (a table value, a sum of table values, or a letter for equal areas) and pairs of positions that sit
 // symmetrically about a mean. mean and sd are exact numbers; one curve may instead be "framed" (a letter for mean and/or sd: m, σ): it is then drawn in units of σ and every position
 // is a z value (the figure shows the problem's own letters, never a number the problem does not give). A label that is a number is checked against the area the engine integrates.
-const NORM_MAX_CURVES=3,NORM_MAX_TICKS=10,NORM_MAX_SHADES=6,NORM_SD_RATIO=4,NORM_AREA_TOL=2e-4;
+const NORM_MAX_CURVES=3,NORM_MAX_TICKS=10,NORM_MAX_SHADES=6,NORM_SD_RATIO=10,NORM_AREA_TOL=2e-4;
 const NORM_SYMBOL=/^[A-Za-zμσ]$/,NORM_TEXT=/^[A-Za-z0-9μσ+\-=.()^]{1,10}$/,NORM_NAME=/^(?:[A-Za-z0-9μσ+\-=.()^, ]{1,14}|[가-힣][가-힣A-Za-z0-9 ()]{0,9})$/,NORM_PLAIN=/^-?\d{1,6}(?:\.\d{1,4})?$/;
 const NORM_AREA_SUM=/^\d(?:\.\d{1,4})?(?:[+-]\d(?:\.\d{1,4})?){0,2}$/,NORM_AREA_SYMBOL=/^[A-Za-z?]$/;
 // A table value the problem gives is rounded (0.34 for 0.3413, 0.477 for 0.4772): it may differ from the integral by 0.01 (2 decimals), 0.001 (3) or 0.0005 (4), by the most decimals one of its terms writes.
@@ -742,7 +742,7 @@ function solveNormal(c){
   if(!Array.isArray(c.curves)||c.curves.length<1||c.curves.length>NORM_MAX_CURVES)bad('STAT_NORMAL_CURVE_INVALID');
   const ids=new Set();
   const curves=c.curves.map(raw=>{
-    onlyKeys(raw,['id','mean','sd','label','meanLine'],'STAT_NORMAL_CURVE_INVALID');
+    onlyKeys(raw,['id','mean','sd','label','meanLine','sdScale'],'STAT_NORMAL_CURVE_INVALID');
     if(typeof raw.id!=='string'||!/^[A-Za-z][A-Za-z0-9]{0,3}$/.test(raw.id)||ids.has(raw.id))bad('STAT_NORMAL_CURVE_INVALID');
     ids.add(raw.id);
     if(typeof raw.mean!=='string'&&typeof raw.mean!=='number'||typeof raw.sd!=='string'&&typeof raw.sd!=='number')bad('STAT_NORMAL_PARAM_INVALID');
@@ -753,10 +753,16 @@ function solveNormal(c){
     if(raw.meanLine!==undefined&&typeof raw.meanLine!=='boolean')bad('STAT_NORMAL_CURVE_INVALID');
     const meanText=meanQ===null?raw.mean:decimalOf(meanQ);
     if(meanText===null)bad('STAT_NORMAL_PARAM_INVALID');
-    return {id:raw.id,meanQ,sdQ,meanText,sdText:sdQ===null?raw.sd:decimalOf(sdQ)??qstr(sdQ),label:raw.label??null,meanLine:raw.meanLine??c.curves.length===1};
+    // sdScale (G19): the sd of a letter-sd curve as a multiple of the first curve's letter sd (σ/√n with n=64 is "1/8"): the second curve of the sample mean under the same letter σ
+    let scaleQ=ONE;
+    if(raw.sdScale!==undefined){scaleQ=tryQ(raw.sdScale);if(scaleQ===null||qcmp(scaleQ,ZERO)<=0)bad('STAT_NORMAL_CURVE_INVALID');}
+    return {id:raw.id,meanQ,sdQ,meanText,sdText:sdQ===null?raw.sd:decimalOf(sdQ)??qstr(sdQ),label:raw.label??null,meanLine:raw.meanLine??c.curves.length===1,scaleQ,scaled:raw.sdScale!==undefined};
   });
   const framed=curves.some(k=>k.meanQ===null||k.sdQ===null),byId=new Map(curves.map(k=>[k.id,k]));
-  if(framed&&curves.length>1)bad('STAT_NORMAL_SYMBOLIC_MULTI');
+  // several letter curves are only the sample-mean picture: one mean text, one letter sd, every curve after the first scaled (sdScale) relative to the first
+  if(framed&&curves.length>1&&!curves.every((k,i)=>k.sdQ===null&&k.meanText===curves[0].meanText&&k.sdText===curves[0].sdText&&k.scaled===(i>0)))bad('STAT_NORMAL_SYMBOLIC_MULTI');
+  if(curves.some(k=>k.scaled)&&!framed)bad('STAT_NORMAL_CURVE_INVALID');
+  if(framed){const sc=curves.map(k=>k.scaleQ);if(qcmp(sc.reduce((a,b)=>qcmp(a,b)>=0?a:b),qmul(sc.reduce((a,b)=>qcmp(a,b)<=0?a:b),Q(BigInt(NORM_SD_RATIO))))>0)bad('STAT_NORMAL_SD_RATIO');}
   let span=Q(4n);
   if(c.span!==undefined){span=tryQ(c.span);if(span===null||qcmp(span,Q(5n,2n))<0||qcmp(span,Q(5n))>0)bad('STAT_NORMAL_SPAN_INVALID');}
   let lo,hi;
@@ -779,7 +785,7 @@ function solveNormal(c){
     const k=t.curve===undefined?curves[0]:byId.get(t.curve)??bad('STAT_NORMAL_TICK_INVALID');
     if(t.hideZ!==undefined&&typeof t.hideZ!=='boolean')bad('STAT_NORMAL_TICK_INVALID');
     let u,z;
-    if(framed){if(t.x!==undefined)bad('STAT_NORMAL_TICK_INVALID');u=z=parseQ(t.z,'STAT_NORMAL_TICK_INVALID');}
+    if(framed){if(t.x!==undefined)bad('STAT_NORMAL_TICK_INVALID');z=parseQ(t.z,'STAT_NORMAL_TICK_INVALID');u=qmul(z,k.scaleQ);}
     else if(t.x!==undefined){u=parseQ(t.x,'STAT_NORMAL_TICK_INVALID');z=zOfX(k,u);}
     else{z=parseQ(t.z,'STAT_NORMAL_TICK_INVALID');u=qadd(k.meanQ,qmul(z,k.sdQ));}
     if(qcmp(u,lo)<0||qcmp(u,hi)>0)bad('STAT_NORMAL_TICK_OUT_OF_WINDOW');
@@ -803,7 +809,7 @@ function solveNormal(c){
   // shaded areas
   const shadesRaw=c.shades===undefined?[]:c.shades;
   if(!Array.isArray(shadesRaw)||shadesRaw.length>NORM_MAX_SHADES)bad('STAT_NORMAL_SHADE_INVALID');
-  const zOf=(k,u)=>framed?u:zOfX(k,u);
+  const zOf=(k,u)=>framed?qdiv(u,k.scaleQ):zOfX(k,u);
   const shades=shadesRaw.map(raw=>{
     onlyKeys(raw,['curve','from','to','tone'],'STAT_NORMAL_SHADE_INVALID');
     const k=raw.curve===undefined?curves[0]:byId.get(raw.curve)??bad('STAT_NORMAL_SHADE_INVALID');
@@ -847,7 +853,7 @@ function solveNormal(c){
   if(c.zAxis===true){if(curves.length>1)bad('STAT_NORMAL_Z_AXIS_AMBIGUOUS');if(!ticks.some(t=>!t.hideZ))bad('STAT_NORMAL_Z_AXIS_EMPTY');}
   if(c.xLabel!==undefined&&(typeof c.xLabel!=='string'||!/^[A-Za-z]$/.test(c.xLabel)))bad('STAT_NORMAL_LABEL_INVALID');
   return {schemaVersion:MODEL_VERSION,kind:'NORMAL_CURVE',framed,span:qstr(span),window:{lo:qstr(lo),hi:qstr(hi)},xLabel:c.xLabel??'x',zAxis:c.zAxis===true,
-    curves:curves.map(k=>({id:k.id,mean:framed?k.meanText:qstr(k.meanQ),sd:framed?k.sdText:qstr(k.sdQ),label:k.label,meanLine:k.meanLine})),
+    curves:curves.map(k=>({id:k.id,mean:framed?k.meanText:qstr(k.meanQ),sd:framed?k.sdText:qstr(k.sdQ),label:k.label,meanLine:k.meanLine,...(k.scaled?{sdScale:qstr(k.scaleQ)}:{})})),
     ticks:ticks.map((t,i)=>({index:i,pos:qstr(t.u),z:framed||c.zAxis===true?qstr(t.z):null,text:t.text,tex:t.tex,curve:t.curve,hideZ:t.hideZ})),
     shades,symmetry};
 }
@@ -1475,7 +1481,7 @@ function normalSpec(m,ctx){
   const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,BASE=NORM_TOP+NORM_PEAK;
   const lo=N(m.window.lo),hi=N(m.window.hi),scale=(NORM_XR-NORM_XL)/(hi-lo);
   const px=u=>r6(NORM_XL+(u-lo)*scale);
-  const sdOf=c=>m.framed?1:N(c.sd),meanOf=c=>m.framed?0:N(c.mean),sdMin=Math.min(...m.curves.map(sdOf));
+  const sdOf=c=>m.framed?(c.sdScale===undefined?1:N(c.sdScale)):N(c.sd),meanOf=c=>m.framed?0:N(c.mean),sdMin=Math.min(...m.curves.map(sdOf));
   const byId=new Map(m.curves.map(c=>[c.id,c])),hOf=c=>NORM_PEAK*sdMin/sdOf(c);
   const yOf=(c,u)=>r6(BASE-hOf(c)*Math.exp(-(((u-meanOf(c))/sdOf(c))**2)/2));
   const prims=[],labels=[];
@@ -1700,9 +1706,22 @@ function resolveNormal(spec,placed){
     const c=curves.find(k=>k.id===item.label.extra.curve),{width:w,height:h}=item.box,obs=lines(),[px0,py0]=c.peak;
     const anchors=[[px0,py0,'peak'],[c.right[0],c.right[1],'right'],[c.left[0],c.left[1],'left']];
     let pick=null;
+    // curves of very different widths (G19: sigma and sigma/sqrt(n), up to 10 times): the first free place may sit on the flank of the narrow bell and read as its name, so the name takes the free place farthest from the other curves
+    const heights=curves.map(k=>BASE-k.peak[1]),farApart=curves.length>1&&Math.max(...heights)/Math.min(...heights)>4;
+    const others=spec.prims.filter(prim=>prim.role==='curve'&&prim.id!==`curve-${c.id}`),farOf=box=>Math.min(...others.map(prim=>Math.min(...prim.points.slice(1).map((q,i)=>segRectDist(prim.points[i],q,box)))));
+    const own=spec.prims.find(prim=>prim.id===`curve-${c.id}`),nearOf=box=>Math.min(...own.points.slice(1).map((q,i)=>segRectDist(own.points[i],q,box))),roomy=[];
     search:for(const [ax,ay,where] of anchors)for(const g of [6,12,20,30]){
       const d=g*.72,boxes=where==='peak'?[{x:ax-w/2,y:ay-g-h},{x:ax+d,y:ay-d-h},{x:ax-d-w,y:ay-d-h},{x:ax+g,y:ay-h/2},{x:ax-g-w,y:ay-h/2}]:where==='right'?[{x:ax+d,y:ay-d-h},{x:ax+g,y:ay-h/2},{x:ax-w/2,y:ay-g-h}]:[{x:ax-d-w,y:ay-d-h},{x:ax-g-w,y:ay-h/2},{x:ax-w/2,y:ay-g-h}];
-      for(const b of boxes){const box={x:r6(b.x),y:r6(b.y),width:w,height:h};if(clearance(box,obs,NAME_GAP)>=CLEAR){pick=box;break search;}}
+      for(const b of boxes){
+        const box={x:r6(b.x),y:r6(b.y),width:w,height:h};
+        if(clearance(box,obs,NAME_GAP)<CLEAR)continue;
+        if(!farApart){pick=box;break search;}
+        roomy.push({box,far:farOf(box),near:nearOf(box)});
+      }
+    }
+    if(farApart&&roomy.length){ // clear of the other curves by 25 px and as near as possible to its own; else the free place farthest from them
+      const clear=roomy.filter(r=>r.far>=25).sort((a,b)=>a.near-b.near);
+      pick=(clear[0]??roomy.reduce((a,b)=>b.far>a.far?b:a)).box;
     }
     if(!pick)throw new Stop('STAT_NORMAL_CURVE_NAME_NO_ROOM',{curve:c.id});
     item.box=pick;done.push(pick);
