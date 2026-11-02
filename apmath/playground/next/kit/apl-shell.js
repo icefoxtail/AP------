@@ -55,6 +55,8 @@
       this._bindKeys();
       this._restore();
       APLab.pushRecent({ id: this.id, title: def.title, course: def.courseName, href: location.pathname.split('/').slice(-3).join('/') });
+      // 실험실을 연 탭은 허브로 돌아와도 Universe로 되돌려 보내지 않습니다(next/index.html의 입구 확인과 짝).
+      try { sessionStorage.setItem('apl:viaUniverse', '1'); } catch (e) {}
     }
 
     /* ======================= DOM ======================= */
