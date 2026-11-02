@@ -1356,10 +1356,10 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "[서술형 2] 다음 그림에서 직선 $AT$가 원 $O$의 접선이고 네 점 $A, B, C, D$가 모두 원 $O$ 위에 있다. $\\angle BAT = 70^\\circ, \\angle DCB = 100^\\circ$일 때, $\\angle DBA = \\angle x$의 크기를 구하시오. (7점)",
+    "content": "[서술형 2] 다음 그림에서 직선 $AT$가 원 $O$의 접선이고 네 점 $A, B, C, D$가 모두 원 $O$ 위에 있다. 접선과 현 $AB$가 이루는 각 중 그림의 오른쪽 각이 $70^\\circ$이고 $\\angle DCB = 100^\\circ$일 때, $\\angle DBA = \\angle x$의 크기를 구하시오. (7점)",
     "choices": [],
     "answer": "30°",
-    "solution": "접선-현 정리로 ∠ADB=∠BAT=70°.\n\n내접사각형에서 ∠DAB=180-100=80°.\n\n삼각형 DAB에서 x=180-70-80=30°.",
+    "solution": "접선과 현 AB가 이루는 각 70°는 호 AB에 대한 원주각 ∠ADB와 같다(접선-현 정리). 따라서 ∠ADB=70°.\n\n내접사각형에서 ∠DAB=180-100=80°.\n\n삼각형 DAB에서 x=180-70-80=30°.",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
