@@ -306,7 +306,11 @@
       const isN = D.narrow && !b.thumb, ccn = [-1, 1].flatMap((i) => [-1, 1].map((j) => [-1, 1].map((k2) => v3(xc + i * ru, j * ru, k2 * hu / 2)))).flat();
       let wvN = 0;
       if (isN) wvN = D.fitCore(ccn, [], { l: 30, r: 30, t: 30, b: 30 }, { floor: 0.6, cap: 0.6 }).wv;
-      const rowW = isN ? Math.min(2 * PI * ru + 2 * ru, wvN * 0.9) : 2 * PI * ru + 2 * ru;
+      // 마지막 구간(진행 80~100%): 굴러간 옆면 띠 전체(출발선~원기둥)가 보이도록 화면이 부드럽게 물러나요
+      const wz = isN && !C.problem ? ease(lin01(C.t, 0.8, 1)) : 0, lerpN = (p, q) => p + (q - p) * wz;
+      const bbC = G.bboxOf(ccn.map(D.P)), fullPts = [xs - ru, -xs + ru].flatMap((xx) => [-1, 1].flatMap((j) => [-1, 1].map((k2) => v3(xx, j * ru, k2 * hu / 2)))), bbF = G.bboxOf(fullPts.map(D.P));
+      const LB = { x0: lerpN(bbC.x0, bbF.x0), x1: lerpN(bbC.x1, bbF.x1), y0: lerpN(bbC.y0, bbF.y0), y1: lerpN(bbC.y1, bbF.y1) };
+      const rowW = isN ? lerpN(Math.min(2 * PI * ru + 2 * ru, wvN * 0.9), 2 * PI * ru + 2 * ru) : 2 * PI * ru + 2 * ru;
       const row = C.problem ? null : layoutTiles([
         { w: 2 * r, h: 2 * r, shape: 'circle', fill: 'sky', label: plainVal(M.S), cap: 'πr² (밑면)', hl: lvC },
         { w: 2 * PI * r, h: h, shape: 'rect', fill: 'green', label: plainVal(M.L), cap: `2πr×h (옆면)`, hl: lvR },
@@ -314,10 +318,10 @@
       ], rowW, 2.6, 0.5);
       const xe = C.problem ? 0 : -xs, xb = C.problem ? 0 : xs;
       const corners = isN ? ccn : [v3(xb - ru, -ru, -hu / 2), v3(xe + ru, -ru, -hu / 2), v3(xb - ru, ru, hu / 2), v3(xe + ru, ru, hu / 2), v3(xb, -ru, hu / 2), v3(xe, -ru, hu / 2)];
-      const bb = G.bboxOf(corners.map(D.P));
-      const ccx = isN ? (bb.x0 + bb.x1) / 2 : 0;
-      const extra = row ? [{ x: ccx - row.total / 2, y: bb.y1 + 0.9 }, { x: ccx + row.total / 2, y: bb.y1 + 0.9 + row.height + 0.9 }] : [];
-      if (isN) D.fitCore(ccn, extra, { l: 30, r: 30, t: 30, b: 30 }, { floor: 0.6, cap: 0.6 });
+      const bb = isN ? LB : G.bboxOf(corners.map(D.P));
+      const ccx = isN ? (bb.x0 + bb.x1) / 2 : 0, rowGap = isN ? lerpN(0.9, 1.9) : 0.9;
+      const extra = row ? [{ x: ccx - row.total / 2, y: bb.y1 + rowGap }, { x: ccx + row.total / 2, y: bb.y1 + rowGap + row.height + 0.9 }] : [];
+      if (isN) D.fitCore(ccn, extra.concat(wz > 0 ? [{ x: LB.x0, y: LB.y0 }, { x: LB.x1, y: LB.y1 }] : []), { l: 30, r: 30, t: 30, b: 30 }, { floor: wz > 0 ? 0 : 0.6, cap: 0.6 });
       else D.fit(corners, extra, { l: 36, r: 36, t: 36, b: 36 });
       // 굴러간 자리(옆면이 펼쳐진 직사각형)
       if (!C.problem && xc > xs + 1e-3) D.panel([v3(xs, -ru, -hu / 2), v3(xc, -ru, -hu / 2), v3(xc, -ru, hu / 2), v3(xs, -ru, hu / 2)], 'green', lvR === 2 ? 0.5 : 0.3, lvR === 2 ? 'amber' : 'green', 2.4);
@@ -340,8 +344,8 @@
       D.elabel(v3(hx, hy, -hu / 2), v3(hx, hy, hu / 2), `h=${h}`, { side: { x: 1, y: 0 }, color: 'amber', gap: 8 });
       if (!C.problem) {
         const done = t > 0.985;
-        D.label(v3(isN ? Math.max((xs + xc) / 2, xc - 0.3 * wvN) : (xs + xc) / 2, -ru, hu / 2), done ? `옆면의 가로 2πr = ${plainVal(M.per)}` : t > 0.02 ? `한 바퀴의 ${Math.round(t * 100)}%` : '', { dir: { x: 0, y: 1 }, gap: 10, color: 'amber', size: 15 });
-        if (row) drawTiles(D, row, ccx, bb.y1 + 0.9);
+        D.label(v3(isN ? lerpN(Math.max((xs + xc) / 2, xc - 0.3 * wvN), (xs + xc) / 2) : (xs + xc) / 2, -ru, hu / 2), done ? `옆면의 가로 2πr = ${plainVal(M.per)}` : t > 0.02 ? `한 바퀴의 ${Math.round(t * 100)}%` : '', { dir: { x: 0, y: 1 }, gap: 10, color: 'amber', size: 15 });
+        if (row) drawTiles(D, row, ccx, bb.y1 + rowGap);
       }
     };
     return {
