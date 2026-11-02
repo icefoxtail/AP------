@@ -596,6 +596,12 @@ body.apl {
   .apl-tools .apl-icon-btn { width: 36px; height: 36px; }
   .apl-tools hr { display: none; }
 }
+/* 선택 사항: 장면이 sc.tabs = { compact: true } 를 주면 휴대폰 문제 탭에서 '탐구 질문' 카드(탐구 탭에서 이미 읽은 글)를 접고
+   그림 무대를 낮춰 문제 본문이 첫 화면(위에서 약 680px 안)에 오게 합니다. 쓰지 않는 실험실은 달라지지 않습니다. */
+@media (max-width: 859px) {
+  .apl-scene-head[data-tab="problem"][data-compact] .apl-question { display: none; }
+  body:has(.apl-scene-head[data-tab="problem"][data-compact]) .apl-stage { height: clamp(240px, 40svh, 560px); }
+}
 /* 터치 화면은 손가락으로 벌려 확대하므로 확대·축소 버튼을 줄입니다. */
 @media (max-width: 859px) and (pointer: coarse) {
   .apl-tools .apl-zoom-btn { display: none; }
