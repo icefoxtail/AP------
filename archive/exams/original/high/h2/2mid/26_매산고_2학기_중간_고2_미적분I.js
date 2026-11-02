@@ -519,9 +519,9 @@ window.questionBank = [
     "subUnit": "도형과 함수의 극한",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/26_매산고_2학기_중간_고2_미적분I/q15-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 포물선 y=4−x² 위의 점 A(−2,0), B(2,0), 예시 위치 P(1,3)으로 만든 삼각형 APB와 ∠APB의 이등분선 PQ(주황)를 그렸다. Q는 선분 AB 위에 있다. AP=3√2, PB=√10과 AQ:QB=AP:PB는 캡션에 있다.",
-    "solutionImageCaption": "예: t=1이면 P(1,3), AP=3√2, PB=√10이고, 각의 이등분선 정리로 AQ:QB=AP:PB이다. AP²−PB²=8t에서 OQ/t=16/(AP+PB)²이고 t→0+일 때 극한은 1/5, 정답 ④.",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고2_미적분I/q15-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=4−x² 위의 점 A(−2,0), B(2,0), 예시 위치 P(1,3)으로 만든 삼각형 APB와 ∠APB의 이등분선 PQ(주황). 이등분선이 나눈 두 각 ∠APQ와 ∠QPB는 같은 파란 호로 표시했다.",
+    "solutionImageCaption": "예: t=1이면 P(1,3), AP=3√2, PB=√10이다. PQ가 ∠APB의 이등분선이라 ∠APQ=∠QPB(같은 색 호)이므로 각의 이등분선 정리로 AQ:QB=AP:PB이다. AP²−PB²=8t에서 OQ/t=16/(AP+PB)²이고 t→0+일 때 극한은 1/5, 정답 ④.",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "solutionImageSize": "medium"
