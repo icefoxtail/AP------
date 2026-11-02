@@ -4,9 +4,9 @@
   "candidateJsPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사.js",
   "candidateMetaPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사.meta-q01-q23.json",
   "candidateGitBlobSha1": "245c219a21169c1e476fc45589f6c125bcd61a25",
-  "reviewTimestamp": "2026-11-01T00:00:00+09:00",
+  "reviewTimestamp": "2026-11-02T00:00:00+09:00",
   "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
-  "reviewRound": 1,
+  "reviewRound": 2,
   "overallVerdict": "PASS",
   "signOffStatus": "SIGNED_OFF_PASS_WITH_NOTES",
   "blindFirstPass": {
@@ -14,34 +14,39 @@
     "answerMatches": 23,
     "answerMismatches": 0,
     "ambiguousStems": 0,
-    "freezeFile": "scratchpad/rev1/blind_freeze.json",
-    "freezeFileSha1": "65d03f4ff0006aab91bfb8ed475555972edc5fcd",
-    "method": "Student-visible fields only (content, choices, figures q11 problem image rendered and viewed) dumped and solved with sympy/Node before any stored answer or solution was displayed; answers frozen to file (sha1 above) and then compared with stored answers. Q20 solved with the reading that '원점을 한 번만 지난다' forces a=b (touching counts as one pass).",
-    "disclosure": "Reviewer had read the generator-uncertainty list (Q6/Q23 unit, Q13/Q14 TPL, Q20/Q23 bucket, Q11 label, Q17 label) before solving, but no stored answers or solutions. Original answers were viewed only after the freeze.",
+    "freezeFile": "scratchpad/rev_maesan24_redo/blind_freeze.json",
+    "freezeFileSha1": "0441aa9918452afd4b9c68edccb9c34aa2a34fc0",
+    "method": "Student-visible fields only (content, choices, q11 problem figure rendered with rsvg-convert and viewed) dumped to student.txt and solved with sympy/python (solve.py, solve2.py) plus hand analysis for Q3 and Q20-Q23; all 23 answers frozen to blind_freeze.json (sha1 above) BEFORE the stored answer/solution/meta fields were opened, then compared with compare.mjs: 20/20 multiple-choice letters equal and Q21 45, Q22 a>21, Q23 16/3 equal to the stored subjective answers. Q20 solved with the reading that touching the origin counts as one pass (a=b).",
+    "disclosure": "Not fully blind for 18 items: before solving, a run of the release harness on the stale receipt printed the stored exam answers for the 17 MC items it flagged (Q1-Q10, Q12-Q17, Q19) and the head of the JS file showed Q1 = ③. Each of those was nevertheless re-derived from the stem by computation (not copied) and no solution text or meta was read. Q11 (figure), Q18, Q20 and the three subjective items were solved with no stored answer seen. No other exam folder or the old rev1 scratch folder was read or written.",
     "frozenAnswers": {
-      "1": "②",
-      "2": "④",
-      "3": "⑤",
-      "4": "①",
-      "5": "③",
-      "6": "①",
-      "7": "③",
-      "8": "④",
-      "9": "②",
-      "10": "④",
+      "1": "③",
+      "2": "②",
+      "3": "④",
+      "4": "④",
+      "5": "①",
+      "6": "⑤",
+      "7": "①",
+      "8": "⑤",
+      "9": "④",
+      "10": "②",
       "11": "③",
-      "12": "⑤",
-      "13": "①",
-      "14": "②",
-      "15": "④",
-      "16": "②",
-      "17": "①",
+      "12": "①",
+      "13": "②",
+      "14": "⑤",
+      "15": "②",
+      "16": "④",
+      "17": "③",
       "18": "③",
-      "19": "⑤",
-      "20": "5",
-      "21": "극솟값 -4, 극댓값 4",
-      "22": "21",
-      "23": "10"
+      "19": "①",
+      "20": "⑤",
+      "21": "45",
+      "22": "a>21",
+      "23": "16/3"
+    },
+    "subjectiveComparison": {
+      "21": "45 vs stored $45$",
+      "22": "a>21 vs stored $a\\gt21$",
+      "23": "16/3 vs stored $\\dfrac{16}3$"
     }
   },
   "originalComparison": {
@@ -66,7 +71,7 @@
     "⑤": 4,
     "note": "MC 1-20; max-min=0"
   },
-  "mathReview": "All 23 solutions re-derived with sympy/Node; solution logic, case analysis (Q7 two-root a values, Q16 f'(1)=0 then endpoint min, Q20 r=3 forced by distance condition, Q23 slope-matching on 3 segments) and curriculum (2015 수학II) OK. MC choices ascending, 5 distinct, unique correct. KaTeX: 755 formulas rendered with throwOnError, 0 real errors (one false alarm came from the checker's own tag stripping; engine escapes < inside math). $ parity OK.",
+  "mathReview": "Independent re-review: all 23 answers re-derived blind (see blindFirstPass) and equal to the stored answers (0 mismatches, 0 JS changes needed). Solutions then read in full for Q2-Q23 (Q1 trivial): logic, intermediate calculations, case analysis (Q7 two a-values, Q16 f'(1)=0 then endpoint minimum, Q20 a=b then r=3 forced by 나 and c from (c-1)^2(c-4)=0, Q23 three tangent segments with kinks excluded, alpha+gamma=4) and 2015 수학II scope (differentiation, indefinite/definite integrals, areas, velocity-distance) all OK; Q20 case r>3 wording is correct (distance 6-x(3)<6). MC choices ascending, five distinct, unique correct option; MC answer distribution 4/4/4/4/4. Earlier checks of the original reviewer (KaTeX 755 formulas rendered, $ parity) retained.",
   "reviewerEdits": [
     {
       "qid": 13,
@@ -144,7 +149,7 @@
       "q7,q11,q12,q13,q15,q16,q17,q19,q20,q21,q22,q23 solution"
     ],
     "unsupported": {},
-    "renderedViewed": "All 13 SVGs rendered to PNG (rsvg-convert) and viewed; coordinates, shading and labels agree with solutions. q11 problem figure shows v graph with vertices O,A,B,C,D and does not leak the answer.",
+    "renderedViewed": "Re-reviewer re-rendered with rsvg-convert and viewed the q11 problem figure and all 12 solution figures (q7,q11,q12,q13,q15,q16,q17,q19,q20,q21,q22,q23): coordinates, labels and shading agree with the solutions (e.g. Q15 M(1,5) N(3,1) tangent y=9x-31 at P(4,5); Q17 T(-2,20) N(1,-7); Q22 figure is F at a=21 with A(-1,0) B(1,32) C(2,27); Q23 tangents at A(1,2), T(3,2), plateau V(2,3)); problem figure q11 does not leak the answer. Original reviewer text: All 13 SVGs rendered to PNG and viewed.",
     "figureNotes": [
       "Q11 problem: 'P' is the moving point, not a point on the graph; harness 'P missing' is a tool limitation. Stem states axes x,y = t,v. Non-blocking.",
       "Engine fixes axis names to x,y and function name to f (or v); stems/solutions now carry a note for Q11, Q20, Q22 (and alt text for Q8-type items). Sufficient for students.",
@@ -153,13 +158,9 @@
     ]
   },
   "harness": {
-    "command": "node tools/harness/verify_similar_exam.mjs <js> --phase=draft",
-    "result": "GATE_FAIL 47 errors",
-    "classification": {
-      "toolLimit": "46 'unregistered problemTypeKey/templateKey in canonical taxonomy' errors: harness reads the middle-school taxonomy; verified directly against high canonical packs (all registered, TPL parent matches PT). 1 error 'P missing from q11.svg text labels': P is the moving point (see figureNotes).",
-      "fixed": "expectedSourceBlobSha1 refreshed after edits",
-      "realContentDefects": "none"
-    },
+    "command": "node tools/harness/verify_similar_exam.mjs 24_매산여고_2학기_기말_고2_수학II_유사",
+    "result": "GATE_PASS (23 questions, 100 pts, MCQ 4/4/4/4/4) at JS blob 245c219a21169c1e476fc45589f6c125bcd61a25 on origin/main 4d67fd52 (high-school support merged); warnings: VISUAL_SYMBOL_NOT_DECODABLE Q11 (P is the moving point, not a drawn label), RECEIPT_QUALIFIED_PASS (SIGNED_OFF_PASS_WITH_NOTES).",
+    "previousResult": "Original reviewer ran --phase=draft on an older harness (GATE_FAIL 47 errors: middle-school taxonomy and Q11 P label, both tool limits); superseded by the run above.",
     "runtimeGuard": "node tools/check-archive2-runtime.cjs fails at build-svg-accessibility-index on SVG_ACCESSIBILITY_DUPLICATE_ID for q11/q12/q17/q19 region SVGs: the language-contract regex counts data-mark-id as id. Identical to already merged region SVGs (25_강남 q12/q5/q8, 25_순천고 ...), i.e. pre-existing tool limitation/manifest sync step for the orchestrator, not a content defect. Shared tools not modified."
   },
   "structural": {
@@ -176,5 +177,170 @@
     "check-archive2-runtime full pass (blocked by pre-existing SVG guard limitation, see harness.runtimeGuard)",
     "Chrome print preview"
   ],
-  "defects": []
+  "defects": [],
+  "reissueNote": "Re-issued 2026-11-02 by an independent re-reviewer who had not seen this exam before. The earlier blindFirstPass.frozenAnswers was byte-identical (all 23 keys/values) to the 25_제일고 receipt, i.e. the original reviewer shared the scratch folder rev1/ with another reviewer and the freeze file was mixed up; its \"23/23 blind match\" had no evidential value and is REPLACED here. All other review sections are retained where still valid (the JS/meta/plan/SVG bytes were not changed by the re-review).",
+  "questionReviews": [
+    {
+      "qid": 1,
+      "blindAnswer": "③ (13)",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "f'(x)=6x^2-6x+1, f'(2)=24-12+1=13"
+    },
+    {
+      "qid": 2,
+      "blindAnswer": "② (9)",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "v=9t^2-14t+5 -> v(2)=13; a=18t-14 -> a(2)=22; a-v=9"
+    },
+    {
+      "qid": 3,
+      "blindAnswer": "④ ((4))",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "int 3dx=3x+C, int f'dx=f+C, product rule of integrals false, d/dx int f=f; only (4) is the definition of antiderivative"
+    },
+    {
+      "qid": 4,
+      "blindAnswer": "④ (15)",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "(x+2)f'=6x^2+8x-8=(x+2)(6x-4) -> f'=6x-4, f=3x^2-4x+3; f(2)=7, f'(2)=8 -> 15"
+    },
+    {
+      "qid": 5,
+      "blindAnswer": "① (-1)",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "odd terms vanish; 2*int_0^a 6x^2=4a^3=4/27 -> a=1/3 -> -3a=-1"
+    },
+    {
+      "qid": 6,
+      "blindAnswer": "⑤ (8)",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "continuity 2+a=b+4, derivative 3+a=2b+2 -> a=5,b=3 -> 8"
+    },
+    {
+      "qid": 7,
+      "blindAnswer": "① (18)",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "x^3+3x^2-9x-20=-a; local max 7 at x=-3, local min -25 at x=1 -> a=-7,25 -> sum 18"
+    },
+    {
+      "qid": 8,
+      "blindAnswer": "⑤ (9)",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "limit=(3f'(2)+f'(2))/2=2f'(2)=-6 -> f'(2)=-3 -> 12-24+a=-3 -> a=9"
+    },
+    {
+      "qid": 9,
+      "blindAnswer": "④ (190)",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "second integral=-int_{3+h}^5 9(y^2-3y+9)/(y-3); combine: (x^2-9)(x^2-3x+9)/(x-3)=x^3+27; int_3^5=190"
+    },
+    {
+      "qid": 10,
+      "blindAnswer": "② (35)",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "f' continuous: a=7, b-1=a -> b=8; f=7x+2 on (-1,2): f(-1)=-5,f(2)=16; f(3)=16+9=25; 7+8+25-5=35"
+    },
+    {
+      "qid": 11,
+      "blindAnswer": "③ (5)",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "figure O(0,0)A(1,4)B(2,4)C(4,-4)D(6,0); v=0 at t=3; position max at t=3 = k+8=11 -> k=3; pos(6)=k+2=5"
+    },
+    {
+      "qid": 12,
+      "blindAnswer": "① (64)",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "int_0^4 x(4-x)=32/3, int_4^8 x(x-4)=160/3, total 64"
+    },
+    {
+      "qid": 13,
+      "blindAnswer": "② (-10/3)",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "c=int_0^1 f -> c=-11/12; f=x^3-6x^2+9x-11/3; f(1)=1/3, f(3)=-11/3; sum -10/3"
+    },
+    {
+      "qid": 14,
+      "blindAnswer": "⑤ (-1/10)",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "A=int f=2/5, B=int t f=17/30; f=4x^2+2x/5-17/15; roots sum=-(2/5)/4=-1/10"
+    },
+    {
+      "qid": 15,
+      "blindAnswer": "② (3)",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "f'(1)=0,f'(4)=9,f(4)=5 -> a=-6,b=9,c=1; f''(1)=-6<0 (max ok); f(2)=3"
+    },
+    {
+      "qid": 16,
+      "blindAnswer": "④ (7)",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "f'(1)=0 -> a=-3; candidates f(-1)=b-5,f(0)=b,f(1)=b-1,f(2)=b+4; min b-5=-2 -> b=3; f(2)=7"
+    },
+    {
+      "qid": 17,
+      "blindAnswer": "③ (27/2)",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "f'=6(x+2)(x-1), a<0 -> a=-2, f(-2)=20, g=-3(x+2)^2+20; f-g=2(x-1)(x+2)^2; area=int_{-2}^1 (g-f)=27/2"
+    },
+    {
+      "qid": 18,
+      "blindAnswer": "③ (9/8)",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "LHS=x^3 f(x)+C=x^5-ax^4+3x^3 -> f=x^2-ax+3; int_0^3 f=9-9a/2+9=6 -> a=8/3 -> 3/a=9/8"
+    },
+    {
+      "qid": 19,
+      "blindAnswer": "① (16/3)",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "continuity+differentiability+f(k)=2f'(k) -> a=1,b=1,k=2; f=x (x<2), -(x-1)(x-4) (x>=2); area int_0^2 x + int_2^4 g = 2+10/3 = 16/3"
+    },
+    {
+      "qid": 20,
+      "blindAnswer": "⑤ (4)",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "(다) once through origin (touching counts) -> a=b; x=kt(t-a)^2, max 4ka^3/27=3; (나) forces x(3)=0 -> a=3,k=3/4; after t=3 distance 6, need x(c)=3: c(c-3)^2=4 -> (c-1)^2(c-4)=0, c>3 -> c=4"
+    },
+    {
+      "qid": 21,
+      "blindAnswer": "45",
+      "candidateAnswer": "$45$",
+      "blindMatch": true,
+      "blindDerivation": "f(0)=0, f'(x)=f'(0)+6x -> f=3x^2+cx; H'=(x+1)(6x+c) no extremum -> double root -> c=6; f(3)=27+18=45"
+    },
+    {
+      "qid": 22,
+      "blindAnswer": "a>21",
+      "candidateAnswer": "$a\\gt21$",
+      "blindMatch": true,
+      "blindDerivation": "f-g=3x^4-8x^3-6x^2+24x-2+a>0; h'=12(x+1)(x-1)(x-2); min h=h(-1)=-21 -> a>21"
+    },
+    {
+      "qid": 23,
+      "blindAnswer": "16/3",
+      "candidateAnswer": "$\\dfrac{16}3$",
+      "blindMatch": true,
+      "blindDerivation": "h: 0 (x<=0), 2x on [0,c], 2c on [c,4-c], 8-2x for x>=4-c; g tangent to 3 segments (left line slope 2, plateau at vertex x=2 so b=2c, right line slope -2); alpha+gamma=4, gamma=alpha+2 -> alpha=1,gamma=3; g'(1)=2 -> a=-1; g(1)=2 -> b=3 -> c=3/2; int_1^3 g = 16/3"
+    }
+  ],
+  "reReviewEdits": []
 }
