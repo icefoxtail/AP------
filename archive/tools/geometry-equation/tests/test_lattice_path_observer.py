@@ -43,5 +43,44 @@ class Counts(unittest.TestCase):
         with self.assertRaises(Exception): O.audit({'grid': {'cols': 3, 'rows': 3}}, '<svg')
 
 
+ABSENT13 = [[[3, 0], [4, 0]], [[0, 4], [1, 4]], [[1, 4], [2, 4]], [[0, 3], [0, 4]], [[1, 3], [1, 4]], [[4, 0], [4, 1]]]
+Q13 = {'grid': {'cols': 4, 'rows': 4}, 'points': {'A': [0, 0], 'B': [4, 4], 'P': [2, 2]}, 'absent': ABSENT13, 'exclude': ['P'], 'counts': True}
+
+
+class AbsentAndExclude(unittest.TestCase):
+    """22 hyocheon q13: six roads do not exist and the crossing P may not be used. The observer walks every path without those roads and without P."""
+
+    def test_walking_the_paths_without_the_absent_roads_and_without_p(self):
+        plan = O.Plan(Q13)
+        counts = plan.expected_counts()
+        self.assertEqual(plan.total, 28)
+        rows = [[1, 1, 1, 1], [1, 2, 3, 4, 4], [1, 3, None, 4, 8], [1, 4, 4, 8, 16], [None, None, 4, 12, 28]]
+        for y, row in enumerate(rows):
+            for x, c in enumerate(row):
+                if c is not None: self.assertEqual(counts[(x, y)], c, (x, y))
+        self.assertNotIn((2, 2), counts)             # nothing is counted at P
+        self.assertNotIn((4, 0), counts)             # no road reaches (4,0)
+        self.assertEqual(plan.shown_excluded(), {(2, 2)})
+        self.assertNotIn((4, 4), plan.shown(counts)) # the answer at B stays hidden
+        self.assertEqual(plan.absent, {O.Plan.edge(tuple(a), tuple(b)) for a, b in ABSENT13})
+
+    def test_the_complement_check_64_minus_6_times_6(self):
+        without_p = O.Plan({k: v for k, v in Q13.items() if k != 'exclude'})
+        without_p.expected_counts()
+        self.assertEqual(without_p.total, 64)
+        self.assertEqual(64 - 6 * 6, 28)
+
+    def test_a_counts_list_decides_whether_the_zero_is_written(self):
+        self.assertEqual(O.Plan({**Q13, 'counts': ['A']}).shown_excluded(), set())
+        self.assertEqual(O.Plan({**Q13, 'counts': ['P']}).shown_excluded(), {(2, 2)})
+        plain = O.Plan({k: v for k, v in Q13.items() if k not in ('exclude', 'absent')})
+        self.assertEqual(plain.shown_excluded(), set())
+
+    def test_plans_with_a_conflict_are_errors(self):
+        for extra in ({'forbidden': [[[3, 0], [4, 0]]]}, {'via': [[[3, 0], [4, 0]]]}, {'exclude': ['A']}, {'exclude': ['B']}):
+            with self.assertRaises(ValueError): O.Plan({**Q13, **extra})
+        with self.assertRaises(ValueError): O.Plan({**Q13, 'counts': False})
+
+
 if __name__ == '__main__':
     unittest.main()

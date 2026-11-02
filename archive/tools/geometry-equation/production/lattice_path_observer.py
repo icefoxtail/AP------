@@ -6,6 +6,9 @@ dropped, and the number written at a crossing must equal the number of distinct 
 valid path is not counted). The lattice scale is recovered from the drawn roads themselves (equally spaced distinct x and y values), every road must be
 drawn exactly once at its exact position and in the style of its class (plain, broken, bold), the named points and the highlighted path must sit on the
 right crossings, and no number may state the final answer when it is hidden.
+
+absent roads (roads that do not exist) must be drawn nowhere and every other road exactly once; an excluded crossing is removed from the walk (no path may enter it, so the
+numbers of the other crossings are the numbers of the paths that avoid it) and its written 0 must be a `count-excluded` label in the emphasis colour.
 """
 import hashlib
 import math
@@ -18,6 +21,8 @@ NS = '{http://www.w3.org/2000/svg}'
 TOL = 0.05
 CAPABILITY = 'lattice-path-figure-v1'
 PRIM_ROLES = {'road', 'road-forbidden', 'road-via', 'path', 'point'}
+EXCLUDED_COLOR = '#b85c00'    # the 0 of a crossing no counted path may use: the C1 WARM line colour (production/palette.mjs), written bold (\mathbf{0})
+EXCLUDED_TEX = '\\mathbf{0}'
 ROAD_ROLES = {'road', 'road-forbidden', 'road-via'}
 POINT_ID = re.compile("^[A-Z][0-9']?$")
 
@@ -43,6 +48,10 @@ class Plan:
             self.points[name] = (xy[0], xy[1])
         self.forbidden = {self.edge(a, b) for a, b in self.segs(lat.get('forbidden'))}
         self.via = [self.edge(a, b) for a, b in self.segs(lat.get('via'))]
+        # absent: roads that do not exist (not drawn, not walkable); exclude: crossings no counted path may use (their written value is 0)
+        self.absent = {self.edge(a, b) for a, b in self.segs(lat.get('absent'))}
+        if self.absent & (self.forbidden | set(self.via)): fail('LP_PLAN_INVALID')
+        self.exclude = {self.ref(r) for r in (lat.get('exclude') or [])}
         self.counts = lat.get('counts', False)
         self.hide_target = lat.get('hideTargetCount') is not False
         self.start = self.target = None
@@ -51,6 +60,7 @@ class Plan:
         if self.counts is not False or self.via:
             self.start, self.target = self.ref(lat.get('from', 'A')), self.ref(lat.get('to', 'B'))
         self.shown_filter = None if self.counts is True else ({self.ref(r) for r in self.counts} if isinstance(self.counts, list) else set())
+        if self.exclude and (self.start is None or self.start in self.exclude or self.target in self.exclude): fail('LP_PLAN_INVALID')
 
     def ref(self, r):
         if isinstance(r, str):
@@ -81,7 +91,7 @@ class Plan:
             for nxt in ((node[0] + dx, node[1]) if dx and node[0] != tx else None, (node[0], node[1] + dy) if dy and node[1] != ty else None):
                 if nxt is None: continue
                 e = self.edge(node, nxt)
-                if e in self.forbidden: continue
+                if e in self.forbidden or e in self.absent or nxt in self.exclude: continue
                 stack.append((nxt, path + (nxt,), used | ({e} if e in need else frozenset())))
         trie, per_node = {}, {}
         for path in paths:
@@ -94,6 +104,11 @@ class Plan:
                 parent = trie[k]
         self.total = len(paths)
         return per_node
+
+    def shown_excluded(self):
+        """The excluded crossings whose 0 is written (counts true, or a list that names them)."""
+        if self.counts is False: return set()
+        return set(self.exclude) if self.shown_filter is None else self.exclude & self.shown_filter
 
     def shown(self, counts):
         out = {}
@@ -163,6 +178,8 @@ def audit(lat, svg):
             prims.append((e.get('id'), 'seg', ((num(e, 'x1'), num(e, 'y1')), (num(e, 'x2'), num(e, 'y2')))))
         widths = {}
         for k, e in drawn.items():
+            if k in plan.absent:
+                errors.append('LP_ABSENT_ROAD_DRAWN:%s' % (k,)); continue
             want = 'road-forbidden' if k in plan.forbidden else 'road-via' if k in plan.via else 'road'
             if e.get('data-role') != want: errors.append('LP_ROAD_STYLE_MISMATCH:%s:%s' % (k, e.get('data-role')))
             if bool(e.get('stroke-dasharray')) != (want == 'road-forbidden'): errors.append('LP_FORBIDDEN_NOT_BROKEN:%s' % (k,))
@@ -170,8 +187,8 @@ def audit(lat, svg):
             except (TypeError, ValueError): errors.append('LP_ROAD_WIDTH_MISSING:%s' % (k,))
         if 'road-via' in widths and 'road' in widths and not widths['road-via'] > widths['road'] + 1: errors.append('LP_VIA_NOT_BOLD')
         every = {plan.edge((i, j), (i + 1, j)) for i in range(plan.cols) for j in range(plan.rows + 1)} | {plan.edge((i, j), (i, j + 1)) for i in range(plan.cols + 1) for j in range(plan.rows)}
-        for k in sorted(every - set(drawn)): errors.append('LP_ROAD_MISSING:%s' % (k,))
-        for k in plan.forbidden | set(plan.via):
+        for k in sorted(every - plan.absent - set(drawn)): errors.append('LP_ROAD_MISSING:%s' % (k,))
+        for k in plan.forbidden | set(plan.via) | plan.absent:
             if k not in every: errors.append('LP_SEGMENT_OFF_LATTICE:%s' % (k,))
         # highlighted path
         paths = [e for e in root.iter(NS + 'polyline') if e.get('data-role') == 'path']
@@ -185,14 +202,16 @@ def audit(lat, svg):
         # named points
         circles = {c.get('data-name'): c for c in root.iter(NS + 'circle') if c.get('data-role') == 'point'}
         if set(circles) != set(plan.points): errors.append('LP_POINT_SET_MISMATCH')
+        reached = {n for k in drawn if k not in plan.absent for n in (k[0], k[1])}          # a crossing no drawn road reaches carries no point, name or number
         for name, c in circles.items():
             if name in plan.points:
                 want = px(plan.points[name])
                 if abs(num(c, 'cx') - want[0]) > TOL or abs(num(c, 'cy') - want[1]) > TOL: errors.append('LP_POINT_MISPLACED:' + name)
+                if plan.points[name] not in reached: errors.append('LP_POINT_ISOLATED:' + name)
             prims.append((c.get('id'), 'circle', (num(c, 'cx'), num(c, 'cy'), num(c, 'r'))))
         # labels
         labels = [g for g in root.iter(NS + 'g') if g.get('data-label-role')]
-        seen, counts_drawn = set(), {}
+        seen, counts_drawn, excluded_drawn = set(), {}, {}
         for g in labels:
             role, lid = g.get('data-label-role'), g.get('id')
             if lid in seen: errors.append('LP_LABEL_DUPLICATE:' + str(lid))
@@ -210,6 +229,16 @@ def audit(lat, svg):
                 if g.get('data-count') != str(counts_drawn[(a, b)]): errors.append('LP_COUNT_ATTR_MISMATCH:%d,%d' % (a, b))
                 nx, ny = px((a, b))
                 if math.hypot(cxm - nx, cym - ny) > 0.75 * u: errors.append('LP_COUNT_FAR_FROM_NODE:%d,%d' % (a, b))
+            elif role == 'count-excluded':
+                try: a, b = (int(v) for v in g.get('data-node').split(','))
+                except Exception:
+                    errors.append('LP_COUNT_NODE_UNREADABLE:' + str(lid)); continue
+                if (a, b) in excluded_drawn: errors.append('LP_EXCLUDED_DUPLICATE:%d,%d' % (a, b))
+                excluded_drawn[(a, b)] = g
+                if g.get('data-tex') != EXCLUDED_TEX or g.get('data-count') != '0': errors.append('LP_EXCLUDED_NOT_ZERO:%d,%d' % (a, b))
+                if (g.get('color') or '').lower() != EXCLUDED_COLOR: errors.append('LP_EXCLUDED_NOT_EMPHASISED:%d,%d' % (a, b))
+                nx, ny = px((a, b))
+                if math.hypot(cxm - nx, cym - ny) > 0.75 * u: errors.append('LP_COUNT_FAR_FROM_NODE:%d,%d' % (a, b))
             elif role == 'point-name':
                 name = g.get('data-name')
                 if name not in plan.points or g.get('data-tex') != name:
@@ -225,6 +254,10 @@ def audit(lat, svg):
         for node in counts_drawn:
             if node not in want_shown:
                 errors.append(('LP_TARGET_COUNT_SHOWN:%d,%d' if plan.hide_target and node == plan.target else 'LP_COUNT_UNEXPECTED:%d,%d') % node)
+        want_excluded = plan.shown_excluded()
+        for node in sorted(want_excluded - set(excluded_drawn)): errors.append('LP_EXCLUDED_MISSING:%d,%d' % node)
+        for node in sorted(set(excluded_drawn) - want_excluded): errors.append('LP_EXCLUDED_UNEXPECTED:%d,%d' % node)
+        for node in sorted(set(excluded_drawn) & set(counts_drawn)): errors.append('LP_COUNT_DUPLICATE:%d,%d' % node)
         # layout: inside the figure, apart from each other and off every line
         w, h = num(root, 'width'), num(root, 'height')
         safe = float(root.get('data-safe-margin') or 12)
