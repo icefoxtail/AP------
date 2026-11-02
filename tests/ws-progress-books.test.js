@@ -332,9 +332,7 @@ test('결함 조건(CSS): 진도 구간에 12px 미만 글자가 없고, 옛 껍
 });
 
 test('index.html: 새 파일은 정해진 자리에서 불러온다', () => {
-    const textbookAt = indexHtml.indexOf('<script defer src="js/textbook.js"></script>');
-    const wsAt = indexHtml.indexOf('<script defer src="js/ws-progress-books.js"></script>');
-    assert.ok(textbookAt > 0 && wsAt === textbookAt + '<script defer src="js/textbook.js"></script>\n    '.length, 'textbook.js 바로 다음 줄');
+    assert.match(indexHtml, /<script defer src="js\/textbook\.js(\?v=[^"]*)?"><\/script>\n    <script defer src="js\/ws-progress-books\.js"><\/script>/, 'textbook.js 바로 다음 줄');
     assert.ok(indexHtml.indexOf('css/ws-progress.css') > indexHtml.indexOf('css/apms-unified-modal.css'));
     assert.ok(indexHtml.indexOf('css/ws-progress.css') > indexHtml.indexOf('css/apms-theme-override.css'));
 });
