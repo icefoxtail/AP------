@@ -30,11 +30,18 @@
         "TPL_M3_FACTORIZATION_FORMULA_APPLICATION": "compare blanks of factorization identities; does not describe Q19",
         "TPL_M3_QUADRATIC_FACTORIZATION_SUM": "factor a quadratic and add two linear factors; Q20 style, not Q19"
       },
-      "evidenceDebt": "The official crosswalk row for the approved RPM leaf M3-RPM-025 is RPM_ONLY (NO_ACTIVE_MAPPING), so the official Resolver yields no PT/TPL for this question. The template is therefore a reviewer choice among ACTIVE templates of the existing PT, not a Resolver result. No registry template is created. A dedicated template ('factor two polynomials and find the common factor') would fit exactly and needs a registry decision."
+      "evidenceDebt": "The official crosswalk row for the approved RPM leaf M3-RPM-025 is RPM_ONLY (NO_ACTIVE_MAPPING), so the official Resolver yields no PT/TPL for this question. The template is therefore a reviewer choice among ACTIVE templates of the existing PT, not a Resolver result. No registry template is created. A dedicated template ('factor two polynomials and find the common factor') would fit exactly and needs a registry decision.",
+      "officialRouteCheck": "Adding an ACTIVE crosswalk row for M3-RPM-025 in crosswalks/rpm-primary-v1.0/middle3.json is not possible add-only: the file already holds exactly one row with that rpmPath (M3-RPM-025, RPM_ONLY, normalised on purpose, 'no forced mapping'); the Resolver (crosswalkMatch in rpm-active-resolver.mjs) matches by curriculum+scope+rpmPath+standardUnitKey, so a second row would make every M3-RPM-025 question CROSSWALK_COMPATIBILITY_ROW_AMBIGUOUS (Q19 and Q20 share this leaf). Making it work needs a change of the existing row to FAMILY_ACTIVE with template candidates, which is a modification, not an addition. Also no ACTIVE template describes Q19 exactly: COMMON_FACTOR_IDENTIFICATION is defined as pulling a common factor out of terms and then telling factors from non-factors, while Q19 factors each polynomial by the cross-multiplication and difference-of-squares formulas and compares the factors. The label overlap (공통인수, 인수 판별) is the only fit. The template change is therefore a reviewer choice, not a Resolver result."
     },
     {
       "id": 2,
-      "questions": [17, 18, 19, 20, 23],
+      "questions": [
+        17,
+        18,
+        19,
+        20,
+        23
+      ],
       "claim": "sub unit is 다항식의 곱셈 although the questions are factorization",
       "verdict": "FACT for Q17, Q18, Q19, Q20; NOT A DEFECT for Q23",
       "evidence": {
@@ -65,10 +72,11 @@
       "question": 11,
       "claim": "figure labels a/b do not match the explanation",
       "verdict": "FACT",
-      "evidence": "Solution: a = 2*sqrt3 (short diagonal), b = 2 (side), perimeter 2a+4b. Original left figure labelled the left diagonal a (ok), the right diagonal b (wrong, it is also 2*sqrt3), and put a second a beside the vertical long diagonal (length 4, neither a nor b). The right (rearranged) figure already uses a on the two top sides and b on the bottom sides as in the solution.",
-      "change": "Left figure only: a on both short diagonals, b on the four sloping hexagon sides, stray a removed; label positions moved off the strokes. No geometry (lines, polygon) changed. Inline SVG in content, hand-written (not an engine product), so edited as source text; no new SVG asset.",
-      "renderedPng": "NOT COMMITTED (scratchpad only): q11-after-pc.png and q11-after-phone.png",
-      "evidenceDebt": "The right-hand rearranged figure is a schematic (angles and lengths are not to scale). The drawing alone does not prove the stated perimeter 2a+4b = 8+4*sqrt3 (answer 4). If the top two sides were read as the hypotenuses (4) of the two 30-60-90 pieces the drawn arrangement would have perimeter 16, which is not a choice. The original exam figure is not available here, so answer, solution and arrangement are unchanged and need a check against the original paper."
+      "evidence": "Solution: a = 2*sqrt3 (short diagonal), b = 2 (side), 'the outside of the new figure has 2 sides of length a and 4 sides of length b', perimeter 2a+4b = 8+4*sqrt3 (answer 4). Original left figure labelled the left diagonal a (ok), the right diagonal b (wrong, it is also 2*sqrt3), and put a second a beside the vertical long diagonal (length 4, neither a nor b). The original right (rearranged) figure drew two right triangles back to back along their short legs with two isosceles triangles below: its perimeter would be 4+4+4*2 = 16, which is not a choice and contradicts answer 4.",
+      "change": "Left figure: a on both short diagonals, b on the four sloping hexagon sides, stray a removed; labels moved off the strokes. Right figure redrawn (scale 25 px per cm like the left one) as the arrangement that realises 2a+4b: the two right triangles (2, 2*sqrt3, 4) glued along their hypotenuse 4 form a 2 x 2*sqrt3 rectangle; isosceles triangle A (2, 2, 2*sqrt3, apex 120 deg) is glued by its base 2*sqrt3 to the rectangle's 2*sqrt3 side; isosceles triangle B is glued by one leg 2 to the rectangle's side 2 (apex at the lower end of that side). Outer sides: rectangle bottom a and left b, A legs b and b, B leg b and base a => a x2, b x4 = 2*(2*sqrt3)+4*2 = 8+4*sqrt3, equal to answer 4 and to the solution sentence. Labels only on outer sides; internal glue lines (top edge, right edge, rectangle diagonal) unlabelled. Question text, choices, answer and solution are unchanged; only the inline SVG in content changed. Hand-written inline SVG (not an engine product), edited as source text.",
+      "renderedPng": "NOT COMMITTED (scratchpad only): q11-v2-pc.png (width 520) and q11-v2-phone.png (width 360); labels do not overlap strokes or each other.",
+      "evidenceDebt": "Original exam figure not available; the redrawn right figure should be compared with the original paper when it can be obtained. The answer and solution were not re-derived against the original wording.",
+      "arrangementSource": "Original exam paper figure NOT obtained. The arrangement is restored from the official answer and solution (perimeter 2a+4b with a=2*sqrt3, b=2) and the piece set stated in the question (two right triangles, two isosceles triangles cut along the hexagon diagonals); it is one arrangement that realises the stated answer, not a copy of the original drawing."
     },
     {
       "id": 4,
