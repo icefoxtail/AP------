@@ -1230,6 +1230,28 @@ window.APLab.catalog = {
    "next": "next/labs/prob-probability.html",
    "glyph": "<rect x=\"10\" y=\"12\" width=\"60\" height=\"56\" rx=\"4\"/><path d=\"M10 40 H70 M36 12 V68\"/><rect x=\"10\" y=\"40\" width=\"26\" height=\"28\" fill=\"currentColor\" fill-opacity=\".25\" stroke=\"none\"/>",
    "sceneTotal": 5
+  },
+  {
+   "id": "prob-stats",
+   "course": "probstat",
+   "unit": "통계",
+   "strand": "prob",
+   "order": 3,
+   "title": "통계 실험실",
+   "short": "통계",
+   "summary": "이산확률변수의 평균·분산, 이항분포가 정규곡선이 되는 모양, 정규분포의 표준화·대칭·꺾은선 확률밀도함수, 표본평균의 분포와 신뢰구간을 막대·곡선·시뮬레이션으로 직접 확인합니다.",
+   "keywords": "통계 확률분포 이산확률변수 평균 분산 표준편차 이항분포 정규분포 정규 근사 표준화 표준정규분포표 확률밀도함수 표본평균 신뢰구간 모평균 시뮬레이션 확률과 통계 수능 29번 30번",
+   "badge": "통계",
+   "scenes": [
+    "이산확률변수 분포 막대 (평균·분산·aX+b)",
+    "이항분포가 종 모양으로 (정규 근사)",
+    "정규분포 표준화·대칭·평행이동·꺾은선 밀도함수",
+    "표본평균의 분포 시뮬레이션 (σ/√n)",
+    "신뢰구간 (폭과 포함 비율)"
+   ],
+   "legacy": "next/labs/prob-stats.html",
+   "next": "next/labs/prob-stats.html",
+   "glyph": "<path d=\"M6 64 L74 64\"/><path d=\"M10 64 C26 64 30 16 40 16 C50 16 54 64 70 64\"/><path d=\"M40 16 L40 64\" stroke-dasharray=\"3 3\"/><path d=\"M22 64 V54 M30 64 V38 M50 64 V38 M58 64 V54\"/>"
   }
  ],
  "courses": [
