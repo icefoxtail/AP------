@@ -377,7 +377,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위 중선 AM에 세 점 A(1,5), G(5,1), M(7,-1)이 있고, A에서 G까지 두 칸, G에서 M까지 한 칸이 같은 파란색 눈금으로 나뉘어 AG:GM=2:1임을 보여 준다.",
+    "solutionImageCaption": "무게중심 G는 중선 AM을 2:1로 나누므로 M(7,-1)이고 a+b=6, 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -547,7 +551,11 @@ window.questionBank = [
     "integrationPattern": "INTERDEPENDENT",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 원 (x+5)²+(y−3)²=4의 중심 (−5,3), (3,−1)만큼 평행이동한 중심 (−2,2), 직선 y=x에 대칭인 원 C의 중심 (2,−2)가 화살표로 이어져 있고, 원 C는 x축·y축과 (2,0), (0,−2)에서 접한다.",
+    "solutionImageCaption": "원 C는 중심 (2,−2)이고 두 축에 접하므로 평행이동은 (a,b)=(3,−1)이고 a+b=2(정답 ②)이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -591,7 +599,11 @@ window.questionBank = [
     "integrationPattern": "CASE_BRANCH",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 x²+y²=4와 점 (2,6)에서 그은 두 접선 x-2=0, 4x-3y+10=0을 나타낸 그림. 두 접점에서 원점까지의 거리가 반지름 2로 같고, 접선의 x절편 (2,0), (-5/2,0)이 표시되어 있다.",
+    "solutionImageCaption": "두 접선의 x절편은 2, -5/2이므로 p+q=-1/2이다. 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -636,7 +648,11 @@ window.questionBank = [
     "integrationPattern": "REINTERPRETATION",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 A(-1,-2)와 직선족이 지나는 정점 P(2,4), 직선족의 한 직선(예시)에 내린 수선의 발 H와 직각삼각형 AHP, 그리고 AP에 수직으로 P에서 만나는 직선 x+2y-10=0을 보여 준다.",
+    "solutionImageCaption": "예: k=-2인 직선에서 AH<AP이고, 직선 x+2y-10=0(k=-7)이 AP에 수직일 때 AH=AP=3√5로 최대이므로 a+M²=38, 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -721,10 +737,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 5,
     "image": "assets/images/26_팔마고_2학기_중간_고1_기출/q17.svg",
-    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "반지름 6인 원과 접힌 원의 중심 O(0,0), O′(2,6), 현 PQ의 수직이등분선을 나타낸 도형",
-    "solutionImageCaption": "반지름 6인 원과 접힌 원의 중심 O(0,0), O′(2,6), 현 PQ의 수직이등분선을 나타낸 도형",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 x²+y²=36과 접힌 호 PQ(중심 O'(2,6))가 x축의 (2,0)에서 접하는 그림. OO'의 중점 M에서 OM⊥PQ, OM=√10이고 OP=O'P=6이 같은 색으로 표시되어 있다.",
+    "solutionImageCaption": "직선 PQ는 OO'의 수직이등분선이고 OM=√10, OP=6이므로 PM=√26, PQ=2√26이다. 정답은 ⑤이다.",
+    "solutionImageSize": "medium",
     "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
     "templateKey": "TT_FOLDING_REFLECTION",
     "crossConceptKeys": [
@@ -773,10 +789,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 5,
     "image": "assets/images/26_팔마고_2학기_중간_고1_기출/q18.svg",
-    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "사분원 위의 P와 원점 대칭점 A′ 및 관계를 나타낸 개념 도형",
-    "solutionImageCaption": "사분원 위의 P와 원점 대칭점 A′ 및 관계를 나타낸 개념 도형",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 사분원의 호 C, 점 A(−1,2)와 원점 대칭점 A'(1,−2), 호 위의 한 점 P(예)와 P+Q=A'로 정해진 점 Q가 있다. 길이 4로 같은 OP와 A'Q가 파란색으로 묶이고, PQ의 중점 (1/2,−1)과 삼각형 A'QP가 칠해져 있다.",
+    "solutionImageCaption": "예: P가 호 위 한 위치일 때 Q=A'−P이다. 삼각형 A'QP의 넓이 S=(2x+y)/2는 2≤S≤2√5이므로 Mm=4√5이고 ㄷ은 거짓이다(정답 ②).",
+    "solutionImageSize": "medium",
     "problemTypeKey": "PT_COORD_CENTROID",
     "templateKey": "TPL_CENTROID_APPLICATION",
     "crossConceptKeys": [
@@ -826,7 +842,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위 선분 AB(A(1,4), B(5,-2))의 중점 (3,1)에서 AM=MB를 같은 파란 눈금으로 표시하고, 그 점에서 AB에 수직인 수직이등분선과 AB의 기울기 -3/2를 보여 준다.",
+    "solutionImageCaption": "중점 M(3,1)을 지나는 수직이등분선의 기울기는 AB의 기울기 -3/2의 음의 역수 2/3이고, 방정식은 2x-3y-3=0이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -892,10 +912,10 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 5,
-    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "두 경계선에 대한 대칭이동과 직선거리 하한을 이용하는 최단 둘레 해석",
-    "solutionImageCaption": "두 경계선에 대한 대칭이동과 직선거리 하한을 이용하는 최단 둘레 해석",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 x²+y²=36의 호 AB 위의 점 P를 OA, OB에 대칭이동한 P₁, P₂와 직선 P₁P₂가 OA, OB와 만나는 점 R, Q를 나타낸 그림. PR=P₁R, PQ=P₂Q와 ∠AOB=45°, ∠P₁OP₂=90°, OP₁=OP₂=6이 표시되어 있다.",
+    "solutionImageCaption": "삼각형 PQR의 둘레는 P₁R+RQ+QP₂이고 P₁P₂=6√2 이상이므로 최솟값은 6√2이다.",
+    "solutionImageSize": "medium",
     "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
     "templateKey": "TT_SHORTEST_MULTI_LINE",
     "crossConceptKeys": [
@@ -948,6 +968,10 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 원 (x−3)²+(y−4)²=4와 직선 3x+4y−11=0이 있고, 중심 C(3,4)에서 직선에 내린 수선이 원과 만나는 가장 가까운 점까지 직선과의 거리 4/5, 수선 위 가장 먼 점까지 거리 24/5, 반지름 2가 표시되어 있다.",
+    "solutionImageCaption": "중심 C에서 직선까지 거리 14/5이고 반지름이 2이므로, 원 위의 점에서 직선까지 거리는 4/5 이상 24/5 이하이다(넓이 4≤S≤24). 1) 14/5, 2) 40개.",
+    "solutionImageSize": "medium"
   }
 ];
