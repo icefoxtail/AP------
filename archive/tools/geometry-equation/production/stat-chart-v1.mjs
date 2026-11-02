@@ -5,6 +5,7 @@ import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
+import {PALETTE,PALETTE_NAMES,isPaletteName} from './palette.mjs';
 
 // A standalone statistics / probability figure (stat-chart-figure-v1): histogram, frequency polygon (also over a histogram), relative-frequency graph,
 // stem-and-leaf plot, box plot, scatter plot, the 6x6 table of two dice and a probability tree. The author gives the data exactly (class boundaries and
@@ -79,16 +80,17 @@ const fiveNumbers=sorted=>{const n=sorted.length,h=Math.floor(n/2);return {min:s
 const NICE=[1,2,5,10,20,50,100,200,500,1000,2000,5000];
 
 // --- solving: the exact model --------------------------------------------------------------------------------------------------------------
-export function solveStatChart(chart){
+export function solveStatChart(chart,opts={}){
   if(!isPlain(chart))bad('STAT_CHART_PLAN_INVALID');
+  if(opts.compact===true&&chart.kind!=='DOT_PLOT'&&chart.kind!=='SCATTER')bad('STAT_PANEL_KIND_UNSUPPORTED');   // a panel of a composite (G16) is a compact dot plot or scatter plot
   switch(chart.kind){
     case 'HISTOGRAM':case 'FREQUENCY_POLYGON':return solveFreq(chart);
     case 'STEM_LEAF':return solveStem(chart);
     case 'BOX_PLOT':return solveBox(chart);
-    case 'SCATTER':return solveScatter(chart);
+    case 'SCATTER':return solveScatter(chart,opts);
     case 'DICE_TABLE':return solveDice(chart);
     case 'TREE':return solveTree(chart);
-    case 'DOT_PLOT':return solveDot(chart);
+    case 'DOT_PLOT':return solveDot(chart,opts);
     case 'NORMAL_CURVE':return solveNormal(chart);
     default:return bad('STAT_KIND_UNSUPPORTED');
   }
@@ -453,8 +455,37 @@ function solveBox(c){
   return {schemaVersion:MODEL_VERSION,kind:'BOX_PLOT',xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID',''),showValues:c.showValues===true,step:qstr(step),ticks,
     series:series.map(s=>({name:s.name,n:s.n,five:Object.fromEntries(Object.entries(s.five).map(([k,v])=>[k,qstr(v)]))}))};
 }
-function solveScatter(c){
-  onlyKeys(c,['kind','points','xRange','yRange','xStep','yStep','labelEvery','xTitle','yTitle','grid','diagonal','refLines','regions'],'STAT_CHART_PLAN_INVALID');
+// Exact geometry of a scatter plot's straight lines and half planes (G16): the line a x + b y = c cut by the plotted range, a polygon cut by a half plane.
+const SCATTER_LINE_LABEL=/^[A-Za-z0-9+\-=.() ]{1,14}$/;
+const qzero=a=>a[0]===0n;
+function clipLine(a,b,c,xr,yr){ // the two ends of the line inside the rectangle xr x yr, left end first (lower end first when vertical), or null (misses it or only touches a corner)
+  const ends=[];
+  const add=(x,y)=>{if(qcmp(x,xr[0])>=0&&qcmp(x,xr[1])<=0&&qcmp(y,yr[0])>=0&&qcmp(y,yr[1])<=0&&!ends.some(e=>qcmp(e[0],x)===0&&qcmp(e[1],y)===0))ends.push([x,y]);};
+  if(!qzero(b))for(const x of xr)add(x,qdiv(qsub(c,qmul(a,x)),b));
+  if(!qzero(a))for(const y of yr)add(qdiv(qsub(c,qmul(b,y)),a),y);
+  if(ends.length!==2)return null;
+  return ends.sort((u,v)=>qcmp(u[0],v[0])||qcmp(u[1],v[1]));
+}
+function parseLine(g,xr,yr){
+  const a=parseQ(g.a,'STAT_SCATTER_LINE_INVALID'),b=parseQ(g.b,'STAT_SCATTER_LINE_INVALID'),c=parseQ(g.c,'STAT_SCATTER_LINE_INVALID');
+  if(qzero(a)&&qzero(b))bad('STAT_SCATTER_LINE_INVALID');
+  const ends=clipLine(a,b,c,xr,yr);
+  if(!ends)bad('STAT_SCATTER_LINE_INVALID');
+  const k=qzero(a)?b:a,key=[a,b,c].map(v=>qstr(qdiv(v,k))).join(',');   // the same line written with other multiples has the same key
+  return {a,b,c,ends,key};
+}
+const shoelace=poly=>poly.reduce((t,p,i)=>{const q=poly[(i+1)%poly.length];return qadd(t,qsub(qmul(p[0],q[1]),qmul(q[0],p[1])));},ZERO);
+function clipHalfPlane(poly,val){ // Sutherland-Hodgman against the closed half plane val(p) >= 0 (val: exact signed value)
+  const out=[];
+  poly.forEach((p,i)=>{
+    const q=poly[(i+1)%poly.length],vp=val(p),vq=val(q),sp=qcmp(vp,ZERO),sq=qcmp(vq,ZERO);
+    if(sp>=0)out.push(p);
+    if((sp>0&&sq<0)||(sp<0&&sq>0)){const t=qdiv(vp,qsub(vp,vq));out.push([qadd(p[0],qmul(t,qsub(q[0],p[0]))),qadd(p[1],qmul(t,qsub(q[1],p[1])))]);}
+  });
+  return out.filter((p,i)=>!out.slice(0,i).some(o=>qcmp(o[0],p[0])===0&&qcmp(o[1],p[1])===0));
+}
+function solveScatter(c,opts={}){
+  onlyKeys(c,['kind','points','xRange','yRange','xStep','yStep','labelEvery','xTitle','yTitle','grid','diagonal','refLines','regions','pointGroups','trendArrow'],'STAT_CHART_PLAN_INVALID');
   if(!Array.isArray(c.points)||c.points.length<1||c.points.length>40)bad('STAT_SCATTER_POINTS_INVALID');
   const range=(r,code)=>{if(!Array.isArray(r)||r.length!==2)bad(code);const x=r.map(v=>parseQ(v,code));if(qcmp(x[0],ZERO)<0||qcmp(x[0],x[1])>=0)bad(code);return x;};
   const xr=range(c.xRange,'STAT_RANGE_INVALID'),yr=range(c.yRange,'STAT_RANGE_INVALID');
@@ -482,6 +513,16 @@ function solveScatter(c){
     if(!Array.isArray(c.refLines)||c.refLines.length<1||c.refLines.length>4)bad('STAT_SCATTER_GUIDE_INVALID');
     const seen=new Set();
     extra.refLines=c.refLines.map(g=>{
+      if(isPlain(g)&&g.kind!==undefined){ // a general straight line ax+by=c (G16), clipped to the plotted range
+        onlyKeys(g,['kind','a','b','c','label','style'],'STAT_SCATTER_LINE_INVALID');
+        if(g.kind!=='LINE')bad('STAT_SCATTER_LINE_INVALID');
+        const line=parseLine(g,xr,yr);
+        if(g.label!==undefined&&(typeof g.label!=='string'||!SCATTER_LINE_LABEL.test(g.label)))bad('STAT_SCATTER_LINE_INVALID');
+        if(g.style!==undefined&&g.style!=='SOLID'&&g.style!=='DASHED')bad('STAT_SCATTER_LINE_INVALID');
+        const key='LINE'+line.key;
+        if(seen.has(key))bad('STAT_SCATTER_GUIDE_INVALID');seen.add(key);
+        return {type:'LINE',a:qstr(line.a),b:qstr(line.b),c:qstr(line.c),label:g.label??null,style:g.style??'SOLID',from:line.ends[0].map(qstr),to:line.ends[1].map(qstr)};
+      }
       onlyKeys(g,['type','value'],'STAT_SCATTER_GUIDE_INVALID');
       if(!['x=k','y=k','y=x'].includes(g.type))bad('STAT_SCATTER_GUIDE_INVALID');
       if(g.type==='y=x'){if(g.value!==undefined||c.diagonal===true)bad('STAT_SCATTER_GUIDE_INVALID');}
@@ -501,6 +542,20 @@ function solveScatter(c){
   if(c.regions!==undefined){
     if(!Array.isArray(c.regions)||c.regions.length<1||c.regions.length>3)bad('STAT_SCATTER_REGION_INVALID');
     extra.regions=c.regions.map(g=>{
+      if(isPlain(g)&&g.kind!==undefined){ // a half plane ax+by>=c (G16): the part of the plotted range on that side of the line
+        onlyKeys(g,['kind','a','b','c','side','countLabel','countUnit','markPoints','tone'],'STAT_SCATTER_REGION_INVALID');
+        if(g.kind!=='HALF_PLANE'||!['GE','LE','GT','LT'].includes(g.side))bad('STAT_SCATTER_REGION_INVALID');
+        for(const k of ['countLabel','markPoints'])if(g[k]!==undefined&&typeof g[k]!=='boolean')bad('STAT_SCATTER_REGION_INVALID');
+        if(g.tone!==undefined&&g.tone!==1&&g.tone!==2)bad('STAT_SCATTER_REGION_INVALID');
+        if(g.countUnit!==undefined&&(g.countLabel!==true||typeof g.countUnit!=='string'||!/^[가-힣]{1,3}$/.test(g.countUnit)))bad('STAT_SCATTER_REGION_INVALID');
+        const line=parseLine(g,xr,yr,true),greater=g.side==='GE'||g.side==='GT',strict=g.side==='GT'||g.side==='LT';
+        const val=p=>{const v=qsub(qadd(qmul(line.a,p[0]),qmul(line.b,p[1])),line.c);return greater?v:qsub(ZERO,v);};   // > 0 inside the half plane, 0 on the line
+        const polygon=clipHalfPlane([[xr[0],yr[0]],[xr[1],yr[0]],[xr[1],yr[1]],[xr[0],yr[1]]],val);
+        if(polygon.length<3||qcmp(shoelace(polygon),ZERO)===0)bad('STAT_SCATTER_REGION_EMPTY');
+        const inside=points.map((p,i)=>{const v=qcmp(val([p.x,p.y]),ZERO);return v>0||(!strict&&v===0)?i:-1;}).filter(i=>i>=0);
+        if(!inside.length)bad('STAT_SCATTER_REGION_EMPTY');
+        return {kind:'HALF_PLANE',a:qstr(line.a),b:qstr(line.b),c:qstr(line.c),side:g.side,polygon:polygon.map(q=>q.map(qstr)),edge:strict?[line.ends[0].map(qstr),line.ends[1].map(qstr)]:null,countLabel:g.countLabel===true,countUnit:g.countUnit??null,markPoints:g.markPoints===true,tone:g.tone??1,inside,count:inside.length};
+      }
       onlyKeys(g,['xMin','xMax','yMin','yMax','countLabel','countUnit','markPoints','tone'],'STAT_SCATTER_REGION_INVALID');
       if(['xMin','xMax','yMin','yMax'].every(k=>g[k]===undefined))bad('STAT_SCATTER_REGION_INVALID');
       for(const k of ['countLabel','markPoints'])if(g[k]!==undefined&&typeof g[k]!=='boolean')bad('STAT_SCATTER_REGION_INVALID');
@@ -520,7 +575,39 @@ function solveScatter(c){
       return {xMin:qstr(x0),xMax:qstr(x1),yMin:qstr(y0),yMax:qstr(y1),countLabel:g.countLabel===true,countUnit:g.countUnit??null,markPoints:g.markPoints===true,tone:g.tone??1,inside,count:inside.length};
     });
   }
-  return {schemaVersion:MODEL_VERSION,kind:'SCATTER',...extra,xRange:xr.map(qstr),yRange:yr.map(qstr),xStep:qstr(xs),yStep:qstr(ys),labelEvery:every,grid:c.grid!==false,diagonal:c.diagonal===true,
+  if(c.pointGroups!==undefined){ // points recoloured in a palette colour (G16): the coordinates must be points of the data
+    if(!Array.isArray(c.pointGroups)||c.pointGroups.length<1||c.pointGroups.length>4)bad('STAT_SCATTER_GROUP_INVALID');
+    const taken=new Set();
+    extra.pointGroups=c.pointGroups.map(g=>{
+      onlyKeys(g,['points','color','label'],'STAT_SCATTER_GROUP_INVALID');
+      if(!isPaletteName(g.color)||!Array.isArray(g.points)||g.points.length<1||g.points.length>40)bad('STAT_SCATTER_GROUP_INVALID');
+      if(g.label!==undefined&&(opts.compact===true||typeof g.label!=='string'||!/^[가-힣A-Za-z0-9 ()=<>+-]{1,8}$/.test(g.label)))bad('STAT_SCATTER_GROUP_INVALID');   // a panel has no room for a legend
+      const idx=new Set();
+      for(const e of g.points){
+        if(!Array.isArray(e)||e.length!==2)bad('STAT_SCATTER_GROUP_INVALID');
+        const x=parseQ(e[0],'STAT_SCATTER_GROUP_INVALID'),y=parseQ(e[1],'STAT_SCATTER_GROUP_INVALID');
+        const hit=points.map((p,i)=>qcmp(p.x,x)===0&&qcmp(p.y,y)===0?i:-1).filter(i=>i>=0);
+        if(!hit.length)bad('STAT_SCATTER_GROUP_POINT_UNKNOWN');
+        for(const i of hit){if(taken.has(i)&&!idx.has(i))bad('STAT_SCATTER_GROUP_INVALID');idx.add(i);taken.add(i);}
+      }
+      return {color:g.color,label:g.label??null,points:[...idx].sort((u,v)=>u-v)};
+    });
+  }
+  if(c.trendArrow!==undefined){ // an arrow along the least-squares line of the points: up for a positive correlation, down for a negative one (G16)
+    onlyKeys(c.trendArrow,['direction'],'STAT_SCATTER_TREND_INVALID');
+    if(c.trendArrow.direction!=='UP'&&c.trendArrow.direction!=='DOWN')bad('STAT_SCATTER_TREND_INVALID');
+    if(points.length<3)bad('STAT_SCATTER_TREND_INVALID');
+    const n=Q(BigInt(points.length)),mx=qdiv(points.reduce((t,p)=>qadd(t,p.x),ZERO),n),my=qdiv(points.reduce((t,p)=>qadd(t,p.y),ZERO),n);
+    const sxx=points.reduce((t,p)=>qadd(t,qmul(qsub(p.x,mx),qsub(p.x,mx))),ZERO),sxy=points.reduce((t,p)=>qadd(t,qmul(qsub(p.x,mx),qsub(p.y,my))),ZERO);
+    if(qcmp(sxx,ZERO)===0||qcmp(sxy,ZERO)===0)bad('STAT_SCATTER_TREND_INVALID');
+    if((qcmp(sxy,ZERO)>0)!==(c.trendArrow.direction==='UP'))bad('STAT_SCATTER_TREND_MISMATCH');
+    const slope=qdiv(sxy,sxx);
+    const xs0=points.map(p=>p.x).reduce((u,v)=>qcmp(u,v)<=0?u:v),xs1=points.map(p=>p.x).reduce((u,v)=>qcmp(u,v)>=0?u:v);
+    const line=clipLine(slope,Q(-1n),qsub(qmul(slope,mx),my),[xs0,xs1],yr);   // y = at(x): slope*x - y = slope*mx - my, kept inside the data's x extent and the y range
+    if(!line)bad('STAT_SCATTER_TREND_INVALID');
+    extra.trendArrow={direction:c.trendArrow.direction,from:line[0].map(qstr),to:line[1].map(qstr)};
+  }
+  return {schemaVersion:MODEL_VERSION,kind:'SCATTER',...(opts.compact===true?{compact:true}:{}),...extra,xRange:xr.map(qstr),yRange:yr.map(qstr),xStep:qstr(xs),yStep:qstr(ys),labelEvery:every,grid:c.grid!==false,diagonal:c.diagonal===true,
     xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID',''),yTitle:titleText(c.yTitle,'STAT_TITLE_INVALID',''),
     points:points.map(p=>({x:qstr(p.x),y:qstr(p.y),name:p.name,onDiagonal:qcmp(p.x,p.y)===0})),onDiagonal:points.filter(p=>qcmp(p.x,p.y)===0).length};
 }
@@ -533,10 +620,14 @@ const dotSegments=(points,br,step)=>{
   return groups.map(g=>{const lo=Math.max(0,Math.floor((g[0].v-1)/step)*step),hi=Math.ceil((g.at(-1).v+1)/step)*step;return {lo,hi};});
 };
 // where the line is cut the two end numbers next to the break need room: the gap is half the width of each (14.5 px a digit) and 8 px
-const dotGapPx=segments=>segments.length>1?14.5*(String(segments[0].hi).length+String(segments[1].lo).length)/2+8:0;
-const dotUnitPx=segments=>(DOT_MAPR-DOT_MAPL-dotGapPx(segments))/segments.reduce((t,g)=>t+g.hi-g.lo,0);
-function solveDot(c){
-  onlyKeys(c,['kind','values','counts','step','xTitle','axisBreak'],'STAT_CHART_PLAN_INVALID');
+// A panel of a composite (G16) is narrower (420 units: two of them and the gap stay inside the 848 units the solution column allows) and is laid out for the largest font the Archive policy
+// gives a composite (32 units, so a number is 23.2 units a digit): a fixed assumption, so that the panel's size and step never depend on the measured font.
+const PANEL_FONT_PX=32,PANEL_W=420;   // (the geometry objects DOT_GEO and DOT_GEO_PANEL follow the shared chart geometry below)
+const dotGapPx=(segments,geo=DOT_GEO)=>segments.length>1?geo.digit*(String(segments[0].hi).length+String(segments[1].lo).length)/2+8:0;
+const dotUnitPx=(segments,geo=DOT_GEO)=>(geo.mapr-geo.mapl-dotGapPx(segments,geo))/segments.reduce((t,g)=>t+g.hi-g.lo,0);
+function solveDot(c,opts={}){
+  const geo=opts.compact===true?DOT_GEO_PANEL:DOT_GEO;
+  onlyKeys(c,['kind','values','counts','step','xTitle','axisBreak','marks'],'STAT_CHART_PLAN_INVALID');
   if((c.values===undefined)===(c.counts===undefined))bad('STAT_DOT_PLOT_INVALID');
   const whole=v=>{const n=typeof v==='string'&&/^\d{1,4}$/.test(v)?Number(v):v;return intIn(n,0,9999,'STAT_DOT_VALUE_INVALID');};
   const tally=new Map();
@@ -566,15 +657,60 @@ function solveDot(c){
   }
   // the labelled ticks must leave room for their numbers: a step is wide enough when it is more than the longest number of the line (14.5 px a digit and 6 px between) apart
   const fits=step=>{
-    const seg=dotSegments(points,br,step),unit=dotUnitPx(seg);
-    return (seg.length<2||seg[0].hi<seg[1].lo)&&seg.every(g=>g.hi-g.lo>=step&&(g.hi-g.lo)/step+1<=DOT_MAX_TICKS&&(step*unit>=14.5*String(g.hi).length+6||(g.hi-g.lo)/step<1))&&unit>=DOT_MIN_UNIT_PX;
+    const seg=dotSegments(points,br,step),unit=dotUnitPx(seg,geo);
+    return (seg.length<2||seg[0].hi<seg[1].lo)&&seg.every(g=>g.hi-g.lo>=step&&(g.hi-g.lo)/step+1<=DOT_MAX_TICKS&&(step*unit>=geo.digit*String(g.hi).length+6||(g.hi-g.lo)/step<1))&&unit>=DOT_MIN_UNIT_PX;
   };
   let step;
   if(c.step!==undefined){step=intIn(c.step,1,500,'STAT_DOT_STEP_INVALID');if(!fits(step))bad('STAT_DOT_PLOT_TOO_DENSE');}
   else{step=DOT_STEPS.find(fits)??bad('STAT_DOT_PLOT_TOO_DENSE');}
   const segments=dotSegments(points,br,step);
+  const marks=c.marks===undefined?null:solveDotMarks(c.marks,points,total,segments);
   return {schemaVersion:MODEL_VERSION,kind:'DOT_PLOT',step,xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID',''),total,maxStack:Math.max(...points.map(p=>p.count)),
-    points:points.map(p=>({value:String(p.v),count:p.count})),segments,...(br?{axisBreak:br}:{})};
+    points:points.map(p=>({value:String(p.v),count:p.count})),segments,...(br?{axisBreak:br}:{}),...(marks?{marks}:{}),...(opts.compact===true?{compact:true}:{})};
+}
+// Marks on a dot plot (G16, opt-in; a plan without marks is exactly the plan it always was): a dashed vertical line at the mean and/or the median (the value is checked against the data,
+// so a figure cannot show a mean the data do not have), single columns recoloured in a C1 palette colour (the lowest `count` dots of a value, default all of them) and the deviation (value - mean)
+// written over every column. A line must fall on the drawn part of the number line (not in a break).
+const DOT_MARK_LABEL=/^[0-9A-Za-z가-힣+=.()\/ -]{1,14}$/;
+function solveDotMarks(raw,points,total,segments){
+  onlyKeys(raw,['meanLine','medianLine','highlight','deviations'],'STAT_DOT_MARKS_INVALID');
+  if(Object.keys(raw).length<1)bad('STAT_DOT_MARKS_INVALID');
+  const sum=points.reduce((t,p)=>qadd(t,Q(BigInt(p.v*p.count))),ZERO),mean=qdiv(sum,Q(BigInt(total)));
+  const expanded=points.flatMap(p=>Array(p.count).fill(Q(BigInt(p.v)))),med=median(expanded);
+  const onAxis=v=>segments.some(g=>qcmp(v,Q(BigInt(g.lo)))>=0&&qcmp(v,Q(BigInt(g.hi)))<=0);
+  const line=(key,truth,mismatch,word)=>{
+    const e=raw[key];
+    if(e===undefined)return undefined;
+    onlyKeys(e,['value','label'],'STAT_DOT_MARKS_INVALID');
+    if(e.value===undefined)bad('STAT_DOT_MARKS_INVALID');
+    const value=parseQ(e.value,'STAT_DOT_MARKS_INVALID');
+    if(qcmp(value,truth)!==0)bad(mismatch);
+    if(!onAxis(value))bad('STAT_DOT_MARK_OFF_AXIS');
+    if(e.label!==undefined&&(typeof e.label!=='string'||!DOT_MARK_LABEL.test(e.label)||e.label.trim()!==e.label))bad('STAT_DOT_MARKS_INVALID');
+    return {value:qstr(value),label:e.label??`${word} ${qstr(value)}`};
+  };
+  const out={};
+  const meanLine=line('meanLine',mean,'STAT_DOT_MEAN_MISMATCH','평균'),medianLine=line('medianLine',med,'STAT_DOT_MEDIAN_MISMATCH','중앙값');
+  if(meanLine)out.meanLine=meanLine;
+  if(medianLine)out.medianLine=medianLine;
+  if(raw.highlight!==undefined){
+    if(!Array.isArray(raw.highlight)||raw.highlight.length<1||raw.highlight.length>6)bad('STAT_DOT_HIGHLIGHT_INVALID');
+    const seen=new Set();
+    out.highlight=raw.highlight.map(h=>{
+      onlyKeys(h,['value','count','color'],'STAT_DOT_HIGHLIGHT_INVALID');
+      if(!isPaletteName(h.color))bad('STAT_DOT_HIGHLIGHT_INVALID');
+      const v=Number.isInteger(h.value)?h.value:bad('STAT_DOT_HIGHLIGHT_INVALID'),point=points.find(p=>p.v===v);
+      if(!point)bad('STAT_DOT_HIGHLIGHT_UNKNOWN_VALUE');
+      if(seen.has(v))bad('STAT_DOT_HIGHLIGHT_INVALID');seen.add(v);
+      const count=h.count===undefined?point.count:intIn(h.count,1,point.count,'STAT_DOT_HIGHLIGHT_INVALID');
+      return {value:String(v),count,color:h.color};
+    }).sort((a,b)=>Number(a.value)-Number(b.value));
+  }
+  if(raw.deviations!==undefined){
+    if(raw.deviations!==true)bad('STAT_DOT_MARKS_INVALID');
+    out.deviations=points.map(p=>{const d=qsub(Q(BigInt(p.v)),mean);return {value:String(p.v),deviation:qstr(d),tex:(qcmp(d,ZERO)>0?'+':'')+qtex(d)};});
+  }
+  return out;
 }
 // Normal curves (E36): the bell curve of N(mean, sd^2) drawn from the exact density, 1 to 3 curves on one x axis, with marked positions (ticks), shaded areas under a curve between two
 // of them (a tail when one end is null), the area labels the problem gives (a table value, a sum of table values, or a letter for equal areas) and pairs of positions that sit
@@ -710,7 +846,9 @@ function solveNormal(c){
     shades,symmetry};
 }
 // The dice predicate: a small expression grammar (integers, the two die letters, + - *, parentheses) compared to numbers; any/all/not combine.
+const dice_normalize=text=>text.replace(/(\d)\s*([a-z(])/g,'$1*$2');   // a cell expression may write 2a for 2*a (a number directly before a letter or a bracket)
 function exprTokens(text){
+  text=dice_normalize(text);
   const tokens=text.replace(/\s+/g,'').match(/\d+|[a-z]|[+\-*()]/g)||[];
   if(tokens.join('')!==text.replace(/\s+/g,''))bad('STAT_DICE_EXPR_INVALID');
   return tokens;
@@ -755,10 +893,16 @@ function predicate(p,vars,env){
 // highlightGroups [{highlight: condition | cells: [[col,row]...], tone: 1|2}] (E34): groups of cells in different greys (a cell in two groups is refused). colVar / rowVar: a lowercase letter
 // (written in the corner and used in conditions), null (nothing written) or a Hangul phrase (written beside the table); one that is not a letter is called a (across) or b (down) in conditions.
 function solveDice(c){
-  onlyKeys(c,['kind','faces','cell','highlight','highlightGroups','colVar','rowVar'],'STAT_CHART_PLAN_INVALID');
-  const faces=c.faces===undefined?6:intIn(c.faces,2,8,'STAT_DICE_FACES_INVALID');
+  onlyKeys(c,['kind','faces','cell','highlight','highlightGroups','colVar','rowVar','rowFaces','colFaces','cellExpr'],'STAT_CHART_PLAN_INVALID');
+  // a rectangular table (G16): colFaces and rowFaces list the values across and down (1 to 8 whole numbers each); without them the table is the square of `faces`
+  const rect=c.rowFaces!==undefined||c.colFaces!==undefined;
+  if(rect&&(c.faces!==undefined||c.rowFaces===undefined||c.colFaces===undefined))bad('STAT_DICE_FACES_INVALID');
+  const faces=rect?0:c.faces===undefined?6:intIn(c.faces,2,8,'STAT_DICE_FACES_INVALID');
+  const listOf=v=>{if(!Array.isArray(v)||v.length<1||v.length>8||new Set(v).size!==v.length)bad('STAT_DICE_FACES_INVALID');return v.map(x=>intIn(x,1,99,'STAT_DICE_FACES_INVALID'));};
+  const cols=rect?listOf(c.colFaces):[...Array(faces).keys()].map(i=>i+1),rows=rect?listOf(c.rowFaces):[...Array(faces).keys()].map(i=>i+1);
   const cell=c.cell===undefined?'PAIR':c.cell;
-  if(!['PAIR','SUM','PRODUCT','NONE'].includes(cell))bad('STAT_DICE_CELL_INVALID');
+  if(!['PAIR','SUM','PRODUCT','NONE','EXPR'].includes(cell))bad('STAT_DICE_CELL_INVALID');
+  if((cell==='EXPR')!==(c.cellExpr!==undefined)||(c.cellExpr!==undefined&&(typeof c.cellExpr!=='string'||c.cellExpr.length>20)))bad('STAT_DICE_CELL_INVALID');
   const nameOf=(v,fallback)=>{
     if(v===undefined)return {letter:fallback,show:'LETTER'};
     if(v===null)return {letter:fallback,show:'NONE'};
@@ -779,19 +923,21 @@ function solveDice(c){
       const tone=g.tone===undefined?1:g.tone;
       if(tone!==1&&tone!==2)bad('STAT_DICE_GROUP_INVALID');
       if(g.highlight!==undefined){checkPredicate(g.highlight,[colVar,rowVar]);return {tone,highlight:g.highlight};}
-      if(!Array.isArray(g.cells)||g.cells.length<1||g.cells.length>faces*faces)bad('STAT_DICE_GROUP_INVALID');
+      if(!Array.isArray(g.cells)||g.cells.length<1||g.cells.length>cols.length*rows.length)bad('STAT_DICE_GROUP_INVALID');
       const seen=new Set();
       for(const e of g.cells){
         if(!Array.isArray(e)||e.length!==2)bad('STAT_DICE_GROUP_INVALID');
-        const a=intIn(e[0],1,faces,'STAT_DICE_GROUP_INVALID'),b=intIn(e[1],1,faces,'STAT_DICE_GROUP_INVALID');
+        const a=intIn(e[0],1,99,'STAT_DICE_GROUP_INVALID'),b=intIn(e[1],1,99,'STAT_DICE_GROUP_INVALID');
+        if(!cols.includes(a)||!rows.includes(b))bad('STAT_DICE_GROUP_INVALID');
         if(seen.has(a*100+b))bad('STAT_DICE_GROUP_INVALID');
         seen.add(a*100+b);
       }
       return {tone,cells:g.cells.map(e=>[e[0],e[1]])};
     });
   }
+  if(cell==='EXPR')exprEval(dice_normalize(c.cellExpr),[colVar,rowVar],{[colVar]:1,[rowVar]:1});
   const cells=[];
-  for(let r=1;r<=faces;r++)for(let k=1;k<=faces;k++){
+  for(const r of rows)for(const k of cols){
     const env={[colVar]:k,[rowVar]:r};
     let highlighted=c.highlight===undefined?false:predicate(c.highlight,[colVar,rowVar],env),tone=0;
     if(groups){
@@ -799,11 +945,11 @@ function solveDice(c){
       if(hit.length>1)bad('STAT_DICE_GROUP_OVERLAP');
       highlighted=hit.length===1;tone=highlighted?hit[0].tone:0;
     }
-    cells.push({col:k,row:r,text:cell==='PAIR'?`(${k},${r})`:cell==='SUM'?String(k+r):cell==='PRODUCT'?String(k*r):'',highlighted,...(groups&&highlighted?{tone}:{})});
+    cells.push({col:k,row:r,text:cell==='PAIR'?`(${k},${r})`:cell==='SUM'?String(k+r):cell==='PRODUCT'?String(k*r):cell==='EXPR'?String(exprEval(dice_normalize(c.cellExpr),[colVar,rowVar],env)):'',highlighted,...(groups&&highlighted?{tone}:{})});
   }
   if(groups&&groups.some(g=>!cells.some(x=>x.highlighted&&x.tone===g.tone&&(g.highlight?predicate(g.highlight,[colVar,rowVar],{[colVar]:x.col,[rowVar]:x.row}):g.cells.some(e=>e[0]===x.col&&e[1]===x.row)))))bad('STAT_DICE_GROUP_EMPTY');
-  return {schemaVersion:MODEL_VERSION,kind:'DICE_TABLE',faces,cell,colVar,rowVar,...(col.show!=='LETTER'?{colLabel:col.show==='TEXT'?col.text:null}:{}),...(row.show!=='LETTER'?{rowLabel:row.show==='TEXT'?row.text:null}:{}),
-    highlight:c.highlight??null,...(groups?{highlightGroups:groups}:{}),cells,highlightedCount:cells.filter(x=>x.highlighted).length,total:faces*faces};
+  return {schemaVersion:MODEL_VERSION,kind:'DICE_TABLE',...(rect?{cols,rows}:{faces}),cell,...(cell==='EXPR'?{cellExpr:c.cellExpr}:{}),colVar,rowVar,...(col.show!=='LETTER'?{colLabel:col.show==='TEXT'?col.text:null}:{}),...(row.show!=='LETTER'?{rowLabel:row.show==='TEXT'?row.text:null}:{}),
+    highlight:c.highlight??null,...(groups?{highlightGroups:groups}:{}),cells,highlightedCount:cells.filter(x=>x.highlighted).length,total:cols.length*rows.length};
 }
 function solveTree(c){
   onlyKeys(c,['kind','root','showPathProbability','highlightPaths','pathColumn'],'STAT_CHART_PLAN_INVALID');
@@ -841,19 +987,23 @@ function solveTree(c){
   // every leaf at the same depth is not required, but the path probabilities of the leaves must add up to 1.
   if(hasP&&qcmp(leaves.map(n=>n.path).reduce(qadd,ZERO),ONE)!==0)bad('STAT_TREE_BRANCH_PROBABILITY_SUM');
   // highlightPaths [[label, label, ...]] (E34): each path names the labels from the root's child down to a leaf; its branches are drawn heavy and its leaf is ringed
-  const lit=[];
+  // an entry may also be {path:[labels],color} (G16): the path's last branch and its leaf ring are drawn in that C1 palette colour; a branch that several highlighted paths share is
+  // coloured only when all of them have the same colour (otherwise it stays the plain heavy line)
+  const lit=[],litColor=new Map();
   if(c.highlightPaths!==undefined){
     if(!Array.isArray(c.highlightPaths)||c.highlightPaths.length<1||c.highlightPaths.length>12)bad('STAT_TREE_HIGHLIGHT_INVALID');
-    for(const path of c.highlightPaths){
+    for(const entry of c.highlightPaths){
+      let path=entry,color=null;
+      if(isPlain(entry)){onlyKeys(entry,['path','color'],'STAT_TREE_HIGHLIGHT_INVALID');path=entry.path;if(entry.color!==undefined){if(!isPaletteName(entry.color))bad('STAT_TREE_HIGHLIGHT_INVALID');color=entry.color;}}
       if(!Array.isArray(path)||path.length<1||path.length>3||path.some(x=>typeof x!=='string'))bad('STAT_TREE_HIGHLIGHT_INVALID');
       let cur=byId.get('n0');
       for(const label of path){const next=cur.children.map(id=>byId.get(id)).filter(n=>n.label===label);if(next.length!==1)bad('STAT_TREE_HIGHLIGHT_INVALID');cur=next[0];}
       if(cur.children.length||lit.includes(cur.id))bad('STAT_TREE_HIGHLIGHT_INVALID');
-      lit.push(cur.id);
+      lit.push(cur.id);if(color)litColor.set(cur.id,color);
     }
     lit.sort((a,b)=>leaves.findIndex(n=>n.id===a)-leaves.findIndex(n=>n.id===b));
   }
-  return {schemaVersion:MODEL_VERSION,kind:'TREE',showPathProbability:c.showPathProbability===true,hasProbabilities:hasP,maxDepth:Math.max(...nodes.map(n=>n.depth)),...(lit.length?{highlightLeaves:lit}:{}),...(c.pathColumn===true?{pathColumn:true}:{}),
+  return {schemaVersion:MODEL_VERSION,kind:'TREE',showPathProbability:c.showPathProbability===true,hasProbabilities:hasP,maxDepth:Math.max(...nodes.map(n=>n.depth)),...(lit.length?{highlightLeaves:lit}:{}),...(litColor.size?{highlightColors:Object.fromEntries([...litColor.entries()].sort())}:{}),...(c.pathColumn===true?{pathColumn:true}:{}),
     nodes:nodes.map(n=>({id:n.id,parent:n.parent,depth:n.depth,label:n.label,p:n.p&&qstr(n.p),path:hasP&&!n.children.length?qstr(n.path):null,children:n.children})),leaves:leaves.map(n=>n.id)};
 }
 
@@ -872,6 +1022,7 @@ const textWidth=(text,fontPx)=>labelSize({kind:'TEXT',text},fontPx).width;
 
 // --- geometry shared by the charts -------------------------------------------------------------------------------------------------------
 const W=548,SAFE=12,MAPL=76,MAPR=422,ARROW_TIP=434,TITLE_X=442,AXIS_TOP=54,TICK=5,LABEL_BELOW=34;
+const DOT_GEO={digit:14.5,mapl:DOT_MAPL,mapr:DOT_MAPR,tip:ARROW_TIP},DOT_GEO_PANEL={digit:14.5*PANEL_FONT_PX/20,mapl:DOT_MAPL,mapr:PANEL_W-SAFE-24,tip:PANEL_W-SAFE-2};
 const STYLE={
   axis:'stroke="#111" stroke-width="1.2" fill="none"',tick:'stroke="#111" stroke-width="1.2" fill="none"',grid:'stroke="#b4b4b4" stroke-width="0.8" fill="none" stroke-dasharray="3 3"',
   arrow:'fill="#111" stroke="none"',bar:'fill="#ececec" stroke="#111" stroke-width="1.2"',barHi:'fill="#b5b5b5" stroke="#111" stroke-width="1.2"',
@@ -888,7 +1039,11 @@ const STYLE={
   region1:'fill="#111" fill-opacity="0.12" stroke="none"',region2:'fill="#111" fill-opacity="0.26" stroke="none"',refline:'stroke="#333" stroke-width="1.8" fill="none"',
   ncurve0:'stroke="#111" stroke-width="2" fill="none"',ncurve1:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="8 4"',ncurve2:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="2 4"',
   shade1:'fill="#111" fill-opacity="0.16" stroke="none"',shade2:'fill="#111" fill-opacity="0.34" stroke="none"',guide:'stroke="#444" stroke-width="1.2" fill="none" stroke-dasharray="4 3"',
-  leader:'stroke="#333" stroke-width="1" fill="none"'
+  leader:'stroke="#333" stroke-width="1" fill="none"',
+  reflineDash:'stroke="#333" stroke-width="1.8" fill="none" stroke-dasharray="7 4"',trend:'stroke="#555" stroke-width="3.2" fill="none"',trendHead:'fill="#555" stroke="none"',
+  meanLine:'stroke="#333" stroke-width="1.6" fill="none" stroke-dasharray="6 4"',medianLine:'stroke="#333" stroke-width="1.6" fill="none" stroke-dasharray="2 3"',
+  ...Object.fromEntries(PALETTE_NAMES.map(name=>['dot'+name,`fill="${PALETTE[name].line}" stroke="none"`])),
+  ...Object.fromEntries(PALETTE_NAMES.flatMap(name=>[['branchHi'+name,`stroke="${PALETTE[name].line}" stroke-width="3" fill="none"`],['markRing'+name,`fill="none" stroke="${PALETTE[name].line}" stroke-width="1.8"`]]))
 };
 const L=(id,role,cls,x1,y1,x2,y2,data={},layer=30)=>({t:'line',id,role,cls,x1:r6(x1),y1:r6(y1),x2:r6(x2),y2:r6(y2),data,layer});
 const rect=(id,role,cls,x,y,width,height,data={},layer=40)=>({t:'rect',id,role,cls,x:r6(x),y:r6(y),width:r6(width),height:r6(height),data,layer});
@@ -910,6 +1065,7 @@ const breakMark=(prims,axis,x,y)=>{
 
 // --- the charts: spec = ordered primitives + labels at anchors (positions need no label widths; the tree's branch ends are placed when labels are typeset) --------
 // A class-sum bracket sits under the x tick labels: the first row's bottom line is SUM_Y0 below the axis, each further row (brackets that would overlap) SUM_PITCH lower; its text hangs beneath it.
+const TREND_HEAD_LEN=16,TREND_HEAD_HALF=7,GROUP_DOT_R=4.4; // a recoloured scatter point is a little larger than a plain one so that the colour reads
 const SUM_Y0=36,SUM_PITCH=44,SUM_INSET=2.5,SUM_ARM=5,SUM_TEXT_H=33,SUM_TEXT_GAP=3;
 const SUM_JOIN_DROP=10; // a group of class runs (classSums[].classes): each run's bracket sends a stem this far down to one joining line, the label hangs beneath it
 const UNKNOWN_BAR_FRACTION=0.4; // a hidden class drawn as a dotted outline this fraction of the plot high: a place-holder, not a value
@@ -1089,10 +1245,14 @@ function boxSpec(m){
   }
   return {size:{width:W,height:H},prims,labels};
 }
+// A scatter plot as a panel of a composite (G16): 420 units wide, laid out for the largest composite font (PANEL_FONT_PX), the x title under the numbers and a taller room for the y title above the axis.
+const SC_PANEL={mapl:88,mapr:PANEL_W-SAFE-30,tip:PANEL_W-SAFE-4,top:76,plotH:220};
 function scatterSpec(m,ctx){
-  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,xlo=N(m.xRange[0]),xhi=N(m.xRange[1]),ylo=N(m.yRange[0]),yhi=N(m.yRange[1]),xs=N(m.xStep),ys=N(m.yStep);
-  const dxLo=xlo>0?xlo-.8*xs:0,dxHi=xhi+.6*xs,dyLo=ylo>0?ylo-.8*ys:0,dyHi=yhi+.5*ys,PLOT_H=250,PT=AXIS_TOP+18,BASE=PT+PLOT_H,H=BASE+TICK+4+LABEL_BELOW+SAFE;
-  const px=u=>r6(MAPL+(u-dxLo)/(dxHi-dxLo)*(MAPR-MAPL)),py=v=>r6(BASE-(v-dyLo)/(dyHi-dyLo)*PLOT_H),yAxisPx=px(dxLo);
+  const compact=m.compact===true;
+  const fontPx=compact?PANEL_FONT_PX:(ctx?.fontPx??DEFAULT_FONT_PX),xlo=N(m.xRange[0]),xhi=N(m.xRange[1]),ylo=N(m.yRange[0]),yhi=N(m.yRange[1]),xs=N(m.xStep),ys=N(m.yStep);
+  const mapl=compact?SC_PANEL.mapl:MAPL,mapr=compact?SC_PANEL.mapr:MAPR,axisTop=compact?SC_PANEL.top:AXIS_TOP,tickRow=compact?Math.ceil(1.5*fontPx):LABEL_BELOW,titleRow=compact&&m.xTitle?Math.ceil(1.45*fontPx)+2:0;
+  const dxLo=xlo>0?xlo-.8*xs:0,dxHi=xhi+.6*xs,dyLo=ylo>0?ylo-.8*ys:0,dyHi=yhi+.5*ys,PLOT_H=compact?SC_PANEL.plotH:250,PT=axisTop+18,BASE=PT+PLOT_H,H=BASE+TICK+4+tickRow+titleRow+SAFE;
+  const px=u=>r6(mapl+(u-dxLo)/(dxHi-dxLo)*(mapr-mapl)),py=v=>r6(BASE-(v-dyLo)/(dyHi-dyLo)*PLOT_H),yAxisPx=px(dxLo);
   const prims=[],labels=[];
   const ticks=(lo,hi,s)=>{const t=[];for(let k=Math.round(lo/s);k<=Math.round(hi/s);k++)t.push({v:k*s,k,idx:k-Math.round(lo/s)});return t;};
   const xt=ticks(xlo,xhi,xs),yt=ticks(ylo,yhi,ys);
@@ -1101,7 +1261,7 @@ function scatterSpec(m,ctx){
     for(const t of xt)prims.push(L(`grid-x-${t.k}`,'grid','grid',px(t.v),py(ylo),px(t.v),py(yhi),{value:xv(t.k)},20));
     for(const t of yt)prims.push(L(`grid-y-${t.k}`,'grid','grid',px(xlo),py(t.v),px(xhi),py(t.v),{value:yv(t.k)},20));
   }
-  arrows(prims,{xStartPx:yAxisPx,yAxisPx,base:BASE});
+  arrows(prims,compact?{xStartPx:yAxisPx,yAxisPx,base:BASE,tipX:SC_PANEL.tip,tipY:axisTop}:{xStartPx:yAxisPx,yAxisPx,base:BASE});
   if(xlo>0)breakMark(prims,'x',px(xlo-.45*xs),BASE);
   if(ylo>0)breakMark(prims,'y',yAxisPx,py(ylo-.45*ys));
   for(const t of xt){
@@ -1115,10 +1275,21 @@ function scatterSpec(m,ctx){
     labels.push(math(`y-tick-${t.k}-label`,'y-tick',`y-tick-${t.k}`,DISPLAY+qtex(P(yv(t.k))),yv(t.k),'end','middle',yAxisPx-TICK-4,py(t.v),{value:yv(t.k)}));
   }
   if(xlo>0||ylo>0)labels.push(math('origin','origin','x-axis','O','O','end','top',yAxisPx-6,BASE+4));
-  if(m.xTitle)labels.push(textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
-  if(m.yTitle)labels.push(textLabel('y-title','axis-title','y-axis',m.yTitle,'center','bottom',yAxisPx,AXIS_TOP-4));
+  if(m.xTitle)labels.push(compact?textLabel('x-title','axis-title','x-axis',m.xTitle,'end','top',PANEL_W-SAFE,BASE+TICK+4+tickRow):textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
+  if(m.yTitle)labels.push(textLabel('y-title','axis-title','y-axis',m.yTitle,'center','bottom',yAxisPx,axisTop-4));
   if(m.diagonal){const t0=Math.max(xlo,ylo),t1=Math.min(xhi,yhi);prims.push(L('diagonal','diagonal','diagonal',px(t0),py(t0),px(t1),py(t1),{},35));}
   for(const [j,g] of (m.regions??[]).entries()){
+    if(g.kind==='HALF_PLANE'){ // a half plane: the polygon the plotted range keeps (G16); a strict side (GT, LT) draws its boundary dotted
+      const pts=g.polygon.map(([x,y])=>[px(N(x)),py(N(y))]),cx=pts.reduce((t,q)=>t+q[0],0)/pts.length,cy=pts.reduce((t,q)=>t+q[1],0)/pts.length;
+      prims.push({t:'polygon',id:`region-${j}`,role:'scatter-region',cls:`region${g.tone}`,points:pts,data:{index:j,kind:'HALF_PLANE',a:g.a,b:g.b,c:g.c,side:g.side,tone:g.tone},layer:18});
+      if(g.edge)prims.push(L(`region-${j}-edge`,'region-edge','guide',px(N(g.edge[0][0])),py(N(g.edge[0][1])),px(N(g.edge[1][0])),py(N(g.edge[1][1])),{index:j},36));
+      if(g.markPoints)for(const i of g.inside)prims.push({t:'circle',id:`ring-${j}-${i}`,role:'point-ring',cls:'markRing',cx:px(N(m.points[i].x)),cy:py(N(m.points[i].y)),r:7.6,data:{region:j,point:i},layer:72});
+      if(g.countLabel){
+        const text=String(g.count)+(g.countUnit??'');
+        labels.push({...(g.countUnit?textLabel(`region-${j}-count`,'count-value',`region-${j}`,text,'center','middle',cx,cy,{region:j,value:String(g.count)}):math(`region-${j}-count`,'count-value',`region-${j}`,DISPLAY+String(g.count),String(g.count),'center','middle',cx,cy,{region:j,value:String(g.count)})),place:{x:cx,y:cy,gap:4}});
+      }
+      continue;
+    }
     const x0=px(N(g.xMin)),x1=px(N(g.xMax)),y0=py(N(g.yMax)),y1=py(N(g.yMin));
     prims.push(rect(`region-${j}`,'scatter-region',`region${g.tone}`,x0,y0,x1-x0,y1-y0,{index:j,xmin:g.xMin,xmax:g.xMax,ymin:g.yMin,ymax:g.yMax,tone:g.tone},18));
     if(g.markPoints)for(const i of g.inside)prims.push({t:'circle',id:`ring-${j}-${i}`,role:'point-ring',cls:'markRing',cx:px(N(m.points[i].x)),cy:py(N(m.points[i].y)),r:7.6,data:{region:j,point:i},layer:72});
@@ -1130,37 +1301,59 @@ function scatterSpec(m,ctx){
   for(const [i,g] of (m.refLines??[]).entries()){
     if(g.type==='x=k'){const x=px(N(g.value));prims.push(L(`ref-${i}`,'ref-line','refline',x,py(ylo),x,py(yhi),{type:g.type,value:g.value},36));}
     else if(g.type==='y=k'){const y=py(N(g.value));prims.push(L(`ref-${i}`,'ref-line','refline',px(xlo),y,px(xhi),y,{type:g.type,value:g.value},36));}
+    else if(g.type==='LINE'){ // ax+by=c cut by the plotted range (G16); its name stands at the upper end, stepping aside from dots and lines
+      const [e0,e1]=[g.from,g.to].map(([x,y])=>[px(N(x)),py(N(y))]);
+      prims.push(L(`ref-${i}`,'ref-line',g.style==='DASHED'?'reflineDash':'refline',e0[0],e0[1],e1[0],e1[1],{type:'LINE',a:g.a,b:g.b,c:g.c,style:g.style},36));
+      if(g.label){const top=e0[1]<=e1[1]?e0:e1;labels.push({...math(`ref-${i}-label`,'ref-label',`ref-${i}`,DISPLAY+g.label,g.label,'center','bottom',top[0],top[1]-6,{value:g.label}),place:{x:top[0],y:top[1],gap:6}});}
+    }
     else{const t0=Math.max(xlo,ylo),t1=Math.min(xhi,yhi);prims.push(L(`ref-${i}`,'ref-line','refline',px(t0),py(t0),px(t1),py(t1),{type:g.type},36));}
   }
+  if(m.trendArrow){ // a thick arrow along the least-squares line of the points, from the left end to the right end; its head is a filled triangle
+    const [e0,e1]=[m.trendArrow.from,m.trendArrow.to].map(([x,y])=>[px(N(x)),py(N(y))]),len=Math.hypot(e1[0]-e0[0],e1[1]-e0[1]),ux=(e1[0]-e0[0])/len,uy=(e1[1]-e0[1])/len;
+    const bx=e1[0]-TREND_HEAD_LEN*ux,by=e1[1]-TREND_HEAD_LEN*uy;
+    prims.push(L('trend-arrow','trend-arrow','trend',e0[0],e0[1],bx,by,{direction:m.trendArrow.direction},60));
+    prims.push({t:'polygon',id:'trend-arrow-head',role:'trend-arrow-head',cls:'trendHead',points:[[e1[0],e1[1]],[bx-TREND_HEAD_HALF*uy,by+TREND_HEAD_HALF*ux],[bx+TREND_HEAD_HALF*uy,by-TREND_HEAD_HALF*ux]],data:{direction:m.trendArrow.direction},layer:60});
+  }
+  const colourOf=new Map();
+  for(const g of m.pointGroups??[])for(const i of g.points)colourOf.set(i,g.color);
+  (m.pointGroups??[]).forEach((g,j)=>{ // a group with a label stands in a legend at the top right
+    if(!g.label)return;
+    const y=PT+14+j*Math.ceil(1.5*fontPx);
+    prims.push({t:'circle',id:`legend-${j}-dot`,role:'legend-dot',cls:'dot'+g.color,cx:TITLE_X+5,cy:y,r:GROUP_DOT_R,data:{group:j},layer:70});
+    labels.push(textLabel(`legend-${j}-label`,'legend',`legend-${j}-dot`,g.label,'start','middle',TITLE_X+16,y,{group:j,value:g.label}));
+  });
   m.points.forEach((p,i)=>{
-    prims.push({t:'circle',id:`pt-${i}`,role:'point',cls:'dot',cx:px(N(p.x)),cy:py(N(p.y)),r:3.6,data:{index:i},layer:70});
+    prims.push({t:'circle',id:`pt-${i}`,role:'point',cls:colourOf.has(i)?'dot'+colourOf.get(i):'dot',cx:px(N(p.x)),cy:py(N(p.y)),r:colourOf.has(i)?GROUP_DOT_R:3.6,data:{index:i},layer:70});
     if(p.name)labels.push(math(`pt-${i}-name`,'point-name',`pt-${i}`,p.name,p.name,'start','middle',px(N(p.x))+9,py(N(p.y)),{index:i,value:p.name}));
   });
-  const extraWidth=m.xTitle?Math.max(0,Math.ceil(TITLE_X+textWidth(m.xTitle,fontPx)+SAFE)-W):0;   // an x title longer than the room right of the arrow widens the frame (E36); a title that fits leaves the figure as it was
-  return {size:{width:W+extraWidth,height:H},prims,labels};
+  const legendRight=Math.max(0,...(m.pointGroups??[]).filter(g=>g.label).map(g=>TITLE_X+16+textWidth(g.label,fontPx)));
+  const extraWidth=Math.max(m.xTitle?Math.max(0,Math.ceil(TITLE_X+textWidth(m.xTitle,fontPx)+SAFE)-W):0,legendRight?Math.max(0,Math.ceil(legendRight+SAFE)-W):0);   // an x title longer than the room right of the arrow widens the frame (E36); a title that fits leaves the figure as it was
+  return {size:{width:compact?PANEL_W:W+extraWidth,height:H},prims,labels};
 }
 function diceSpec(m,ctx){
-  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,CELL=m.cell==='PAIR'?54:40,n=m.faces;
+  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,CELL=m.cell==='PAIR'?54:40,cols=m.cols??[...Array(m.faces).keys()].map(i=>i+1),rows=m.rows??[...Array(m.faces).keys()].map(i=>i+1),nc=cols.length,nr=rows.length;
   // a variable written beside the table (a Hangul phrase) takes a band above the columns or left of the rows; letters stand in the corner
   const colText=typeof m.colLabel==='string',rowText=typeof m.rowLabel==='string',lineH=Math.ceil(1.5*fontPx);
-  const x0=SAFE+14+(rowText?Math.ceil(textWidth(m.rowLabel,fontPx))+10:0),y0=SAFE+14+(colText?lineH+6:0),width=x0+(n+1)*CELL+SAFE+14,height=y0+(n+1)*CELL+SAFE+14;
+  const x0=SAFE+14+(rowText?Math.ceil(textWidth(m.rowLabel,fontPx))+10:0),y0=SAFE+14+(colText?lineH+6:0),width=x0+(nc+1)*CELL+SAFE+14,height=y0+(nr+1)*CELL+SAFE+14;
   const colLetter=m.colLabel===undefined,rowLetter=m.rowLabel===undefined;
   const prims=[],labels=[];
   prims.push(rect('corner','head','head',x0,y0,CELL,CELL,{},40));
   if(colLetter||rowLetter)prims.push(L('corner-diagonal','rule','rule',x0,y0,x0+CELL,y0+CELL,{},41));
   if(colLetter)labels.push(math('corner-col','var','corner',m.colVar,m.colVar,'center','middle',x0+CELL*.72,y0+CELL*.3,{value:m.colVar,axis:'col'}));
   if(rowLetter)labels.push(math('corner-row','var','corner',m.rowVar,m.rowVar,'center','middle',x0+CELL*.28,y0+CELL*.7,{value:m.rowVar,axis:'row'}));
-  if(colText)labels.push(textLabel('name-col','var-name','corner',m.colLabel,'center','bottom',x0+CELL+n*CELL/2,y0-4,{value:m.colLabel,axis:'col'}));
-  if(rowText)labels.push(textLabel('name-row','var-name','corner',m.rowLabel,'end','middle',x0-8,y0+CELL+n*CELL/2,{value:m.rowLabel,axis:'row'}));
-  for(let k=1;k<=n;k++){
-    prims.push(rect(`head-col-${k}`,'head','head',x0+k*CELL,y0,CELL,CELL,{axis:'col',value:k},40),rect(`head-row-${k}`,'head','head',x0,y0+k*CELL,CELL,CELL,{axis:'row',value:k},40));
-    labels.push(math(`head-col-${k}-label`,'head-value',`head-col-${k}`,String(k),String(k),'center','middle',x0+(k+.5)*CELL,y0+CELL/2,{value:String(k),axis:'col'}));
-    labels.push(math(`head-row-${k}-label`,'head-value',`head-row-${k}`,String(k),String(k),'center','middle',x0+CELL/2,y0+(k+.5)*CELL,{value:String(k),axis:'row'}));
+  if(colText)labels.push(textLabel('name-col','var-name','corner',m.colLabel,'center','bottom',x0+CELL+nc*CELL/2,y0-4,{value:m.colLabel,axis:'col'}));
+  if(rowText)labels.push(textLabel('name-row','var-name','corner',m.rowLabel,'end','middle',x0-8,y0+CELL+nr*CELL/2,{value:m.rowLabel,axis:'row'}));
+  for(let i=0;i<Math.max(nc,nr);i++){   // the column and the row head of one position together (the order a square table always drew them in)
+    if(i<nc){const k=cols[i];prims.push(rect(`head-col-${k}`,'head','head',x0+(i+1)*CELL,y0,CELL,CELL,{axis:'col',value:k},40));}
+    if(i<nr){const k=rows[i];prims.push(rect(`head-row-${k}`,'head','head',x0,y0+(i+1)*CELL,CELL,CELL,{axis:'row',value:k},40));}
+    if(i<nc){const k=cols[i];labels.push(math(`head-col-${k}-label`,'head-value',`head-col-${k}`,String(k),String(k),'center','middle',x0+(i+1.5)*CELL,y0+CELL/2,{value:String(k),axis:'col'}));}
+    if(i<nr){const k=rows[i];labels.push(math(`head-row-${k}-label`,'head-value',`head-row-${k}`,String(k),String(k),'center','middle',x0+CELL/2,y0+(i+1.5)*CELL,{value:String(k),axis:'row'}));}
   }
   for(const c of m.cells){
     const id=`cell-${c.col}-${c.row}`;
-    prims.push(rect(id,'cell',c.highlighted?(c.tone===2?'cellHi2':'cellHi'):'cell',x0+c.col*CELL,y0+c.row*CELL,CELL,CELL,{col:c.col,row:c.row,highlight:c.highlighted?(c.tone??1):0},40));
-    if(c.text)labels.push(math(id+'-label','cell-value',id,c.text,c.text,'center','middle',x0+(c.col+.5)*CELL,y0+(c.row+.5)*CELL,{value:c.text,col:c.col,row:c.row}));
+    const ci=cols.indexOf(c.col)+1,ri=rows.indexOf(c.row)+1;
+    prims.push(rect(id,'cell',c.highlighted?(c.tone===2?'cellHi2':'cellHi'):'cell',x0+ci*CELL,y0+ri*CELL,CELL,CELL,{col:c.col,row:c.row,highlight:c.highlighted?(c.tone??1):0},40));
+    if(c.text)labels.push(math(id+'-label','cell-value',id,c.text,c.text,'center','middle',x0+(ci+.5)*CELL,y0+(ri+.5)*CELL,{value:c.text,col:c.col,row:c.row}));
   }
   return {size:{width,height},prims,labels};
 }
@@ -1177,7 +1370,9 @@ function treeSpec(m,ctx){
   const fontPx=ctx?.fontPx??DEFAULT_FONT_PX;
   const rowH=treeRow(m,fontPx),c=treeCenters(m,rowH),leaves=m.leaves.length,width0=TREE_X0+m.maxDepth*TREE_COLW+(m.showPathProbability?190:80),height=TREE_TOP*2+(leaves-1)*rowH;
   const labels=[],prims=[],byIdNode=new Map(m.nodes.map(n=>[n.id,n])),lit=new Set(m.highlightLeaves??[]),litBranch=new Set();
-  for(const id of lit)for(let cur=byIdNode.get(id);cur&&cur.parent!==null;cur=byIdNode.get(cur.parent))litBranch.add(cur.id);
+  const branchColors=new Map();   // branch (by its child node) -> the colours of the highlighted leaves below it ('' for a leaf without a colour)
+  for(const id of lit)for(let cur=byIdNode.get(id);cur&&cur.parent!==null;cur=byIdNode.get(cur.parent)){litBranch.add(cur.id);if(!branchColors.has(cur.id))branchColors.set(cur.id,new Set());branchColors.get(cur.id).add(m.highlightColors?.[id]??'');}
+  const branchColor=id=>{const set=branchColors.get(id);return set&&set.size===1&&[...set][0]!==''?[...set][0]:null;};
   const pathTex=n=>{const chain=[];for(let id=n.id;id;id=byIdNode.get(id).parent)chain.unshift(byIdNode.get(id));return DISPLAY+chain.slice(1).map(x=>qfrac(P(x.p))).join('\\times ')+'='+qfrac(P(n.path));};
   // a frame too narrow for a leaf's label and its path probability (a product of three fractions is wide) grows to hold them
   let need=0;
@@ -1194,9 +1389,9 @@ function treeSpec(m,ctx){
       const asMath=/^[A-Za-z0-9]{1,3}$/.test(n.label);
       labels.push(asMath?math(`node-${n.id}`,'node',n.id,n.label,n.label,'center','middle',p.x,p.y,{node:n.id,cx:p.x,cy:p.y,value:n.label}):textLabel(`node-${n.id}`,'node',n.id,n.label,'center','middle',p.x,p.y,{node:n.id,cx:p.x,cy:p.y,value:n.label}));
     }else prims.push({t:'circle',id:`node-${n.id}`,role:'point',cls:'dot',cx:p.x,cy:p.y,r:4,data:{node:n.id},layer:70});
-    if(lit.has(n.id))prims.push({t:'ellipse',id:`leaf-ring-${n.id}`,role:'leaf-ring',cls:'markRing',cx:p.x,cy:p.y,rx:9,ry:9,data:{leaf:n.id},layer:65});
+    if(lit.has(n.id))prims.push({t:'ellipse',id:`leaf-ring-${n.id}`,role:'leaf-ring',cls:'markRing'+(m.highlightColors?.[n.id]??''),cx:p.x,cy:p.y,rx:9,ry:9,data:{leaf:n.id},layer:65});
     if(n.parent!==null){
-      prims.push({t:'branch',id:`branch-${n.id}`,role:'branch',cls:litBranch.has(n.id)?'branchHi':'branch',parent:n.parent,child:n.id,data:{parent:n.parent,child:n.id,...(litBranch.has(n.id)?{highlight:1}:{})},layer:30});
+      prims.push({t:'branch',id:`branch-${n.id}`,role:'branch',cls:litBranch.has(n.id)?'branchHi'+(branchColor(n.id)??''):'branch',parent:n.parent,child:n.id,data:{parent:n.parent,child:n.id,...(litBranch.has(n.id)?{highlight:1}:{})},layer:30});
       if(m.hasProbabilities)labels.push({id:`branch-${n.id}-p`,role:'branch-probability',owner:`branch-${n.id}`,kind:'MATH',tex:DISPLAY+qfrac(P(n.p)),plain:n.p,anchor:{x:0,y:0,ax:'center',ay:'middle'},extra:{value:n.p,child:n.id},placement:'branch'});
     }
     if(!n.children.length&&m.showPathProbability){
@@ -1209,13 +1404,20 @@ function treeSpec(m,ctx){
 // DOT_FIRST above the line, the others one pitch (a diameter and DOT_GAP) apart; the dot radius follows the length of a unit so that neighbours never touch.
 const DOT_FIRST=7,DOT_GAP=1.5,DOT_MAX_R=5.5,DOT_MINOR=3;
 function dotSpec(m,ctx){
-  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,segs=m.segments,gap=dotGapPx(segs);
-  const unit=dotUnitPx(segs),r=r6(Math.min(DOT_MAX_R,.45*unit)),pitch=2*r+DOT_GAP;
-  const stackH=DOT_FIRST+m.maxStack*pitch+10,BASE=r6(SAFE+20+stackH),H=Math.ceil(BASE+TICK+4+LABEL_BELOW+SAFE);
-  const right=m.xTitle?TITLE_X+textWidth(m.xTitle,fontPx):0,extraWidth=Math.max(0,Math.ceil(right+SAFE)-W);
-  const px=v=>{const k=segs.findIndex(g=>v>=g.lo&&v<=g.hi);return r6(DOT_MAPL+(k?(segs[0].hi-segs[0].lo)*unit+gap:0)+(v-segs[k].lo)*unit);};
+  const compact=m.compact===true,geo=compact?DOT_GEO_PANEL:DOT_GEO;
+  const fontPx=compact?PANEL_FONT_PX:(ctx?.fontPx??DEFAULT_FONT_PX),segs=m.segments,gap=dotGapPx(segs,geo);
+  const unit=dotUnitPx(segs,geo),r=r6(Math.min(DOT_MAX_R,.45*unit)),pitch=2*r+DOT_GAP;
+  const stackH=DOT_FIRST+m.maxStack*pitch+10;
+  const mk=m.marks??{},lineMarks=[['mean-line','meanLine','meanLine'],['median-line','medianLine','medianLine']].filter(([,key])=>mk[key]);
+  // room for what the marks add above the tallest stack: a row of deviations and a row for the names of the lines
+  const devH=mk.deviations?Math.ceil(1.45*fontPx)+4:0,nameRow=lineMarks.length?Math.ceil(1.45*fontPx)+6:0;
+  const px=v=>{const k=segs.findIndex(g=>v>=g.lo&&v<=g.hi);return r6(geo.mapl+(k?(segs[0].hi-segs[0].lo)*unit+gap:0)+(v-segs[k].lo)*unit);};
+  // a panel has no room right of the arrow: its x title stands under the tick numbers, at the right end
+  const tickRow=compact?Math.ceil(1.5*fontPx):LABEL_BELOW,titleRow=compact&&m.xTitle?Math.ceil(1.45*fontPx)+2:0;
+  const BASE=r6(SAFE+20+stackH+devH+nameRow),H=Math.ceil(BASE+TICK+4+tickRow+titleRow+SAFE);
+  const right=m.xTitle&&!compact?TITLE_X+textWidth(m.xTitle,fontPx):0,extraWidth=compact?0:Math.max(0,Math.ceil(right+SAFE)-W);
   const prims=[],labels=[];
-  arrows(prims,{xStartPx:SAFE+14,yAxisPx:null,base:BASE});
+  arrows(prims,{xStartPx:SAFE+14,yAxisPx:null,base:BASE,tipX:geo.tip});
   if(segs.length>1)breakMark(prims,'x',r6((px(segs[0].hi)+px(segs[1].lo))/2),BASE);
   for(const g of segs)for(let v=g.lo;v<=g.hi;v++){
     const x=px(v);
@@ -1224,9 +1426,28 @@ function dotSpec(m,ctx){
       labels.push(math(`x-tick-${v}-label`,'x-tick',`x-tick-${v}`,DISPLAY+String(v),String(v),'center','top',x,BASE+TICK+4,{value:String(v)}));
     }else prims.push(L(`x-minor-${v}`,'x-minor','tick',x,BASE,x,BASE+DOT_MINOR,{axis:'x',value:String(v)}));
   }
-  for(const p of m.points)for(let j=0;j<p.count;j++)prims.push({t:'circle',id:`dot-${p.value}-${j+1}`,role:'dot',cls:'dot',cx:px(Number(p.value)),cy:r6(BASE-DOT_FIRST-r-j*pitch),r,data:{value:p.value,index:j+1},layer:70});
-  if(m.xTitle)labels.push(textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
-  return {size:{width:W+extraWidth,height:H},prims,labels};
+  const hi=new Map((mk.highlight??[]).map(h=>[h.value,h]));
+  for(const p of m.points)for(let j=0;j<p.count;j++){const h=hi.get(p.value);prims.push({t:'circle',id:`dot-${p.value}-${j+1}`,role:'dot',cls:h&&j<h.count?'dot'+h.color:'dot',cx:px(Number(p.value)),cy:r6(BASE-DOT_FIRST-r-j*pitch),r,data:{value:p.value,index:j+1},layer:70});}
+  // the dashed lines at the mean / median reach from the number line to a row above the stacks (and the deviations); the name stands over the line's top
+  const lineTop=BASE-stackH-devH;
+  // one line: its name centred over it; two lines whose names would run into each other: the left one's name ends at its line and the right one's starts at its line, so no line crosses a name
+  const lx=lineMarks.map(([,key])=>px(N(mk[key].value)));
+  const close=lineMarks.length===2&&Math.abs(lx[0]-lx[1])<(textWidth(mk[lineMarks[0][1]].label,fontPx)+textWidth(mk[lineMarks[1][1]].label,fontPx))/2+8;
+  const leftFirst=lx[0]<=lx[1],mid=lineMarks.length===2?(lx[0]+lx[1])/2:0;
+  lineMarks.forEach(([id,key,cls],i)=>{
+    const e=mk[key],x=lx[i],top=r6(lineTop);
+    prims.push(L(id,id,cls,x,BASE,x,top,{value:e.value},35));
+    const isLeft=leftFirst?i===0:i===1;
+    labels.push(close?(isLeft?textLabel(id+'-label','mark-label',id,e.label,'end','bottom',Math.min(x+2,mid-1),top-2,{value:e.value}):textLabel(id+'-label','mark-label',id,e.label,'start','bottom',Math.max(x-2,mid+1),top-2,{value:e.value}))
+      :textLabel(id+'-label','mark-label',id,e.label,'center','bottom',x,top-2,{value:e.value}));
+  });
+  // deviations (value - mean) over their columns; a label that would touch a dot or a line steps aside (resolveValueLabels)
+  for(const d of mk.deviations??[]){
+    const p=m.points.find(q=>q.value===d.value),x=px(Number(d.value)),topY=r6(BASE-DOT_FIRST-2*r-(p.count-1)*pitch);
+    labels.push({...math(`dev-${d.value}`,'deviation',`dot-${d.value}-${p.count}`,DISPLAY+d.tex,d.deviation,'center','bottom',x,topY-3,{value:d.deviation,column:d.value}),place:{x,y:topY,gap:3}});
+  }
+  if(m.xTitle)labels.push(compact?textLabel('x-title','axis-title','x-axis',m.xTitle,'end','top',PANEL_W-SAFE,BASE+TICK+4+tickRow):textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
+  return {size:{width:compact?PANEL_W:W+extraWidth,height:H},prims,labels};
 }
 // Normal curves (E36): the x axis along the bottom, the window the curves' mean ± span·sd (a framed curve: ± span, in σ units), each curve a polyline of the exact density (the tallest, the one with the
 // smallest sd, NORM_PEAK high; the others in the ratio of their sds), a labelled tick at every marked position, the shaded areas as polygons that end in vertical edges at their two positions (a tail
@@ -1303,11 +1524,15 @@ const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stem
 export const statChartSize=(model,ctx)=>({...SPEC_BY_KIND[model.kind](model,ctx).size});
 export function statChartSpec(plan,model,ctx){
   if(plan?.capability!==FIGURE_CAPABILITY||!isPlain(plan.chart))bad('STAT_CHART_PLAN_INVALID');
-  if(objectSha(solveStatChart(plan.chart))!==objectSha(model))bad('STAT_MODEL_MISMATCH');
+  if(objectSha(solveStatChart(plan.chart,{compact:model?.compact===true}))!==objectSha(model))bad('STAT_MODEL_MISMATCH');
   const spec=SPEC_BY_KIND[model.kind](model,ctx);
   return {schemaVersion:SPEC_VERSION,...spec};
 }
 
+/** A dot plot as a panel of a composite (G16): the compact model, its size, its canonical spec and the plain texts of its labels (what the composite observation expects to read). */
+export const solveStatPanel=chart=>solveStatChart(chart,{compact:true});
+export const statChartPanelSpec=(plan,model)=>JSON.parse(JSON.stringify(statChartSpec(plan,model,{})));
+export const statChartLabelTexts=spec=>spec.labels.map(label=>label.plain);
 // --- value labels: a label that would touch a polygon line, a dot or ring, an axis, a bracket or another label is moved to the nearest free place around its point ---
 const strokeOf=cls=>{const st=STYLE[cls]??'',mm=/stroke-width="([\d.]+)"/.exec(st);return !mm||/stroke="none"/.test(st)?0:Number(mm[1]);};
 const rectDist=(x,y,b)=>Math.hypot(Math.max(b.x-x,0,x-b.x-b.width),Math.max(b.y-y,0,y-b.y-b.height));
@@ -1334,7 +1559,7 @@ function obstacles(prims){ // every line, polyline, dot and bar edge a label mus
     const pad=strokeOf(p.cls)/2;
     if(p.t==='line')out.push({segs:[[[p.x1,p.y1],[p.x2,p.y2]]],pad});
     else if(p.t==='polyline')out.push({segs:p.points.slice(1).map((q,i)=>[p.points[i],q]),pad});
-    else if(p.t==='polygon')out.push({segs:p.points.map((q,i)=>[q,p.points[(i+1)%p.points.length]]),pad});
+    else if(p.t==='polygon'&&p.role!=='scatter-region')out.push({segs:p.points.map((q,i)=>[q,p.points[(i+1)%p.points.length]]),pad});
     else if(p.t==='circle')out.push({circle:[p.cx,p.cy,p.r],pad});
     else if(p.t==='rect'&&p.role==='bar'){const c=[[p.x,p.y],[p.x+p.width,p.y],[p.x+p.width,p.y+p.height],[p.x,p.y+p.height]];out.push({segs:c.map((q,i)=>[q,c[(i+1)%4]]),pad});}
   }
@@ -1366,7 +1591,7 @@ function resolveValueLabels(spec,placed){
     // the default place stays when it is free (PREFER is 0 for a chart that uses none of the newer marks, so its old figure is unchanged); otherwise the first candidate with room, else the roomiest one
     let pick=scores[0]>PREFER?0:scores.findIndex(s=>s>=2.5);
     if(pick<0){const best=Math.max(...scores);pick=best>0.3?scores.indexOf(best):-1;}
-    if(pick<0)throw new Stop('STAT_VALUE_LABEL_NO_ROOM',{labelId:item.label.id});
+    if(pick<0)throw new Stop(item.label.role==='deviation'?'STAT_DOT_DEVIATION_NO_ROOM':'STAT_VALUE_LABEL_NO_ROOM',{labelId:item.label.id});
     item.box=boxes[pick];
   }
 }
@@ -1572,7 +1797,7 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-stat-chart-'+Date.now()+'.svg',svg);
     let response;
-    try{response=await pythonWorker({chart:plan.chart,svg},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'statChartAudit',code:String(error?.message??error)});}
+    try{response=await pythonWorker({chart:plan.chart,svg,...(model.compact===true?{compact:true}:{})},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'statChartAudit',code:String(error?.message??error)});}
     if(response?.status!=='OK')throw new Stop('WORKER_ERROR',{stage:'statChartAudit',code:response?.result?.code??null});
     const audit=response.result;lineage.staticAuditSha256=objectSha(audit);
     const errors=[...(audit.errors??[])];
