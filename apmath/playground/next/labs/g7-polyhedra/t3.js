@@ -629,6 +629,45 @@
     void sol;
     return { tag: '전개도에서 꼬인 위치', key: key + ref.key, stem: `그림은 ${name}의 전개도이다. 이 전개도를 접어 만든 입체에서 모서리 $${ov(ref.name)}$${jo(ref.name, 'wa')} 꼬인 위치에 있는 모서리는? (같은 문자는 접으면 한 점으로 모인다.)`, choices: mkText(order.map((e) => ({ h: `$${ov(e.name)}$`, p: e.name, ok: e.rel === 'skew', hint: hint(e) }))) };
   }
+  /* 접은 정사면체·정팔면체를 교과서 그림처럼 세워 보이게 하는 회전(모양은 그대로, 보는 방향만 맞춥니다).
+     정사면체: 밑면이 아래, 꼭대기가 위. 정팔면체: 위·아래 꼭짓점이 세로. 그런 다음 세로축 둘레로 돌려, 기본 시점(pitch 20°·yaw -28°)에서
+     꼭짓점들이 서로 떨어지고 한 꼭짓점이 다른 모서리 위에 겹치지 않으며, 정사면체는 마주 보는 모서리(꼬인 위치)가 화면에서도 교차하지 않는 방위를 찾습니다. */
+  function uprightOf(net, isOcta) {
+    if (net._upr) return net._upr;
+    const V = Object.values(net.sol.verts), ctr = net.sol.ctr, Z = v3(0, 0, 1);
+    let a = Z;
+    if (isOcta) { let bd = -1; for (let i = 0; i < V.length; i++) for (let j = i + 1; j < V.length; j++) { const d = len3(sub3(V[j], V[i])); if (d > bd) { bd = d; a = unit3(sub3(V[j], V[i])); } } if (a.z < 0) a = mul3(a, -1); }
+    else { const top = V.reduce((m, v) => (v.z > m.z ? v : m), V[0]); a = unit3(sub3(top, cen3(V.filter((v) => v !== top)))); }
+    const cr = cross3(a, Z), sn = len3(cr), ang = Math.atan2(sn, dot3(a, Z)), k = sn < 1e-9 ? Z : mul3(cr, 1 / sn);
+    const cam = camOf({ phYaw: -28, phPitch: 20 }), edges = net.sol.edges, names = Object.keys(net.sol.verts);
+    const segD = (p0, a0, c0) => { const dx = c0.x - a0.x, dy = c0.y - a0.y, l2 = dx * dx + dy * dy || 1, t = clamp(((p0.x - a0.x) * dx + (p0.y - a0.y) * dy) / l2, 0, 1); return Math.hypot(p0.x - a0.x - dx * t, p0.y - a0.y - dy * t); };
+    const side = (a0, b0, c0) => Math.sign((b0.x - a0.x) * (c0.y - a0.y) - (b0.y - a0.y) * (c0.x - a0.x));
+    let best = 0, bs = -1e9;
+    for (let f = 0; f < 360; f += 3) {
+      const Q = {}; names.forEach((n) => { const q = proj(cam, rotAxis(rotAxis(net.sol.verts[n], ctr, k, ang), ctr, Z, f * DEG)); Q[n] = { x: q.x, y: q.y }; });
+      let minSep = 1e9, minTri = 1e9, cross = 0, hid = 0;
+      for (let i = 0; i < names.length; i++) for (let j = i + 1; j < names.length; j++) {
+        minSep = Math.min(minSep, Math.hypot(Q[names[i]].x - Q[names[j]].x, Q[names[i]].y - Q[names[j]].y));
+        for (let m = 0; m < names.length; m++) if (m !== i && m !== j) minTri = Math.min(minTri, segD(Q[names[m]], Q[names[i]], Q[names[j]]));
+      }
+      if (!isOcta) {
+        // 정사면체: 보이는 면(앞쪽 법선) 판정 → 가려진 모서리 수(교과서 그림은 1개)와, 보이는 모서리끼리의 교차 수
+        const P3 = {}; names.forEach((n) => { P3[n] = rotAxis(rotAxis(net.sol.verts[n], ctr, k, ang), ctr, Z, f * DEG); });
+        const faceVis = {};
+        for (let i = 0; i < names.length; i++) for (let j = i + 1; j < names.length; j++) for (let m = j + 1; m < names.length; m++) {
+          let n = cross3(sub3(P3[names[j]], P3[names[i]]), sub3(P3[names[m]], P3[names[i]]));
+          if (dot3(n, sub3(cen3([P3[names[i]], P3[names[j]], P3[names[m]]]), ctr)) < 0) n = mul3(n, -1);
+          faceVis[[names[i], names[j], names[m]].join('')] = facing(cam, n);
+        }
+        const hidden = (e) => !Object.keys(faceVis).some((key) => faceVis[key] && key.includes(e.u) && key.includes(e.v));
+        edges.forEach((e1, i) => { if (hidden(e1)) hid++; edges.forEach((e2, j) => { if (j <= i || e1.u === e2.u || e1.u === e2.v || e1.v === e2.u || e1.v === e2.v || hidden(e1) || hidden(e2)) return; const A1 = Q[e1.u], B1 = Q[e1.v], A2 = Q[e2.u], B2 = Q[e2.v]; if (side(A1, B1, A2) * side(A1, B1, B2) < 0 && side(A2, B2, A1) * side(A2, B2, B1) < 0) cross++; }); });
+      }
+      const sc = (isOcta ? 0 : (hid === 1 ? 200 : 0) - 100 * cross) + minSep + minTri;
+      if (sc > bs) { bs = sc; best = f; }
+    }
+    const phi = best * DEG;
+    return (net._upr = { rot: (p, t) => rotAxis(rotAxis(p, ctr, k, ang * t), ctr, Z, phi * t) });
+  }
   const A4 = {
     id: 'p3-4', title: '정다면체에서 꼬인 위치의 모서리', short: '꼬인 위치',
     question: '정육면체·정사면체·정팔면체에서 모서리 하나를 정하면 꼬인 위치에 있는 모서리는 몇 개일까? 접은 입체에서 모서리를 하나씩 분류해 보자.',
@@ -645,10 +684,12 @@
     },
     draw(b, s, M, C) {
       const st = C.problem ? 0 : C.review ? C.step + 0 : 4, t = C.problem ? 0 : C.review ? C.t : (C.thumb ? 0.6 : s.phFold);
-      const MM = C.problem ? M.qM : M, net = MM.net, ref = MM.ref, c = MM.c, sdName = C.problem ? M.qsd.name : M.sd.name;
+      const MM = C.problem ? M.qM : M, net0 = MM.net, ref = MM.ref, c = MM.c, sdName = C.problem ? M.qsd.name : M.sd.name;
+      const sdi = SOLIDS.indexOf(C.problem ? M.qsd : M.sd), upr = sdi > 0 && !C.problem ? uprightOf(net0, sdi === 2) : null;
+      const net = upr ? Object.assign({}, net0, { at: (tt) => net0.at(tt).map((f) => f.map((q) => upr.rot(q, tt))) }) : net0;
       classify(MM.sol, ref);
-      const oct = (C.problem ? M.qsd : M.sd) === SOLIDS[2]; // 정팔면체는 꼭짓점 셋이 일직선으로 겹쳐 보이지 않게 더 낮고 비스듬한 시점에서 봅니다
-      const camA4 = (s0, t0) => (C.problem ? Object.assign({}, s0, { phYaw: 0, phPitch: 84 }) : oct ? camFold(s0, t0, 44, 30) : camFold(s0, t0, 12, -16));
+      // 정사면체·정팔면체는 세워서(uprightOf) 낮은 시점(pitch 약 20°)에서 비스듬히(yaw 약 -28°) 봅니다. 정육면체 시점은 그대로.
+      const camA4 = (s0, t0) => (C.problem ? Object.assign({}, s0, { phYaw: 0, phPitch: 84 }) : sdi === 1 ? camFold(s0, t0, 46, -24) : sdi === 2 ? camFold(s0, t0, 48, -24) : camFold(s0, t0, 12, -16));
       fitNet(b, s, net, C, C.problem ? { t: 62, b: 36 } : { t: C.thumb ? 5 : 70, b: 20 }, camA4, C.problem ? 0 : t);
       const D = scene3(b, camA4(s, t), C);
       const fin = t >= 0.97;
@@ -668,11 +709,16 @@
         if (r === 'skew') return st === 4 || st === 3 ? { color: GRN, width: 5.6, glow: st === 3 } : { color: 'ink', width: 3 };
         return { color: 'ink', width: 3 };
       };
-      faces.forEach((pts, fi) => pts.forEach((p, vi) => {
+      // 모서리: 가려진 것(점선) → 앞쪽 모서리 아래 바탕색 띠(정사면체·정팔면체: 점선이 앞 모서리에 끊겨 보여 '만나지 않음'이 드러남) → 앞쪽 모서리
+      const drawE = (pass) => faces.forEach((pts, fi) => pts.forEach((p, vi) => {
         const q = pts[(vi + 1) % pts.length], key = edgeNm(net, fi, vi), e = byKey[key], s0 = sty(e), hid = fin && !visKey.has(key) && e.rel !== 'ref';
-        D.line(p, q, s0.color, hid ? Math.max(1.8, s0.width * 0.7) : s0.width, { alpha: (s0.alpha == null ? 1 : s0.alpha) * (hid ? 0.8 : 1), glow: s0.glow && !hid, dash: hid ? [6, 5] : undefined });
-        if (C.txt) edgeObs(D, b.toS(D.P(p)), b.toS(D.P(q)));
+        if (pass === 'hid' ? !hid : hid) return;
+        if (pass === 'gap') { D.line(p, q, 'stage', s0.width + 6, { alpha: 0.95 }); return; }
+        D.line(p, q, s0.color, hid ? (sdi > 0 ? Math.max(2.4, s0.width * 0.75) : Math.max(1.8, s0.width * 0.7)) : s0.width, { alpha: (s0.alpha == null ? 1 : s0.alpha) * (hid ? (sdi > 0 ? 0.9 : 0.8) : 1), glow: s0.glow && !hid, dash: hid ? (sdi > 0 ? [7, 6] : [6, 5]) : undefined });
+        if (C.txt && pass !== 'hid') edgeObs(D, b.toS(D.P(p)), b.toS(D.P(q)));
       }));
+      drawE('hid'); if (sdi > 0) drawE('gap'); drawE('vis');
+      if (C.txt) faces.forEach((pts, fi) => pts.forEach((p, vi) => { if (!(fin && !visKey.has(edgeNm(net, fi, vi)))) return; edgeObs(D, b.toS(D.P(p)), b.toS(D.P(pts[(vi + 1) % pts.length]))); }));
       const seen = [], cc = cen3(faces.flat());
       faces.forEach((pts, fi) => pts.forEach((p, vi) => {
         const nmv = net.cname[net.clOf[fi][vi]], sp = D.P(p), sc = b.toS(sp), isR = nmv === ref.u || nmv === ref.v;
