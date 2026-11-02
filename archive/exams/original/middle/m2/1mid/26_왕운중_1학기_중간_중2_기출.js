@@ -673,7 +673,7 @@ window.questionBank=[
       "$x>-1$"
     ],
     "answer": "①",
-    "solution": "먼저 양변에서 $2x$를 빼고 $3$을 뺀다.<br>$4x+3>2x-5$<br>$2x+3>-5$<br>$2x>-8$<br>양변을 양수 $2$로 나누므로 부등호의 방향은 바뀌지 않는다.<br>$x>-4$<br>따라서 정답은 ①이다.",
+    "solution": "먼저 양변에서 $2x$를 빼고 $3$을 뺀다.\n$4x+3>2x-5$\n$2x+3>-5$\n$2x>-8$\n양변을 양수 $2$로 나누므로 부등호의 방향은 바뀌지 않는다.\n$x>-4$\n따라서 정답은 ①이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
