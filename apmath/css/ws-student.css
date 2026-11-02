@@ -173,3 +173,28 @@
     .ws-consult-form__grid { grid-template-columns: minmax(0, 1fr); }
     .ws-consult-form__actions .btn { flex: 1 1 0; }
 }
+
+/* ---- 학생 상세 · 상태 변경 이력 / 반 이동 이력 접이식 (ws-student-history.js) ---- */
+.ws-history-list { display: flex; flex-direction: column; gap: 8px; }
+.ws-history { border: 1px solid var(--border); border-radius: var(--ap-ui-radius-panel, 8px); background: var(--surface); }
+.ws-history > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 12px;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+}
+.ws-history > summary::-webkit-details-marker { display: none; }
+.ws-history > summary::after { content: '보기'; margin-left: 8px; color: var(--secondary); font-size: 12px; font-weight: 500; }
+.ws-history[open] > summary::after { content: '접기'; }
+.ws-history > summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.ws-history__count { margin-left: auto; color: var(--secondary); font-size: 12px; font-weight: 500; }
+.ws-history__body { padding: 0 12px 12px; }
+.ws-history__loading { padding: 14px 4px; color: var(--secondary); font-size: 13px; text-align: center; }
+.ws-history__body .card { margin: 0; }

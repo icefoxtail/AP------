@@ -558,6 +558,39 @@ async function behaviourConsult(browser, base) {
     }
 }
 
+// ------------------------------------------------------------------ M6 이력 (기본 탭 안 접이식)
+async function behaviourHistory(browser, base) {
+    const { context, page, errors, calls } = await openApp(browser, base, DEVICES[3], 'light', 'admin', { classCount: 5, studentLevel: 'many' });
+    try {
+        await page.evaluate(() => openStudentDetail('c1s0', { mode: 'view', tab: 'basic' }));
+        await page.waitForTimeout(900);
+        assert.equal(await page.locator('.ws-history').count(), 2, '이력 접이식 두 개');
+        assert.equal(await page.locator('#modal-body button', { hasText: /^상태 변경 이력$/ }).count(), 0, '이력 모달 버튼이 없다');
+        const reads = calls.length;
+        await page.locator('.ws-history[data-ws-history="status"] > summary').click();
+        await page.waitForTimeout(300);
+        assert.equal(await page.locator('.ws-history[data-ws-history="status"] .ws-history__body .card').count(), 6, '상태 이력 6건이 그 자리에 보임');
+        assert.equal(await page.evaluate(() => modalStepStack.length), 0, '모달 단계 없음');
+        assert.equal(calls.length, reads, '펼치는 데 새 요청 없음(이미 읽은 데이터)');
+        // 옛 열기 함수도 모달이 아니라 그 자리를 펼친다
+        await page.evaluate(() => openStudentClassTransferHistoryModal('c1s0'));
+        await page.waitForTimeout(300);
+        assert.equal(await page.locator('.ws-history[data-ws-history="transfer"][open]').count(), 1);
+        assert.equal(await page.evaluate(() => modalStepStack.length), 0);
+        assert.equal(await page.locator('.ap-student-detail-shell').count(), 1);
+        // 탭을 갔다 와도 펼친 상태 유지
+        await page.evaluate(() => renderStudentDetailTab('c1s0', 'cns'));
+        await page.evaluate(() => renderStudentDetailTab('c1s0', 'basic'));
+        await page.waitForTimeout(200);
+        assert.equal(await page.locator('.ws-history[open]').count(), 2, '펼친 상태가 유지된다');
+        const info = await inspect(page);
+        assert.deepEqual(info.smallText, [], '12px 미만 글자 없음: ' + info.smallText.join(' | '));
+        assert.deepEqual(errors, [], 'page errors: ' + errors.join(' | '));
+    } finally {
+        await context.close();
+    }
+}
+
 // ------------------------------------------------------------------ 스크린샷
 async function shoot(browser, base) {
     fs.mkdirSync(shotDir, { recursive: true });
@@ -639,6 +672,8 @@ if (require.main === module) (async () => {
             console.log('M4 재등원 같은 자리 폼 동작 검사 통과');
             await behaviourConsult(browser, base);
             console.log('M6 상담 탭 인라인 폼 동작 검사 통과');
+            await behaviourHistory(browser, base);
+            console.log('M6 이력 접이식 동작 검사 통과');
             if (typeof global.__wsStudentBehaviour === 'function') {
                 await global.__wsStudentBehaviour(browser, base, { openApp, isOpen, initialDataCalls, writeCalls, DEVICES });
                 console.log('M6 학생 상세 동작 검사 통과');

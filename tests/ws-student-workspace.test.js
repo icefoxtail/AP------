@@ -160,3 +160,17 @@ test('M6 consultation edit/delete controls are real buttons (touch target), not 
     }
     assert.match(read('apmath/css/ws-student.css'), /\.ws-link-btn \{[^}]*min-height: 44px/);
 });
+
+// ------------------------------------------------------------ M6 학생 상세 · 이력
+test('M6 history: status/transfer history are inline details, not modal steps', () => {
+    const history = read('apmath/js/ws-student-history.js');
+    assert.doesNotMatch(stripComments(history), /showModal\(|showModalStep\(|replaceModalStep\(|closeModal\(/);
+    const section = slice(student, 'function renderStudentOperationHistorySection(', 'function openStudentPortalPreview(');
+    assert.doesNotMatch(section, /openStudentStatusHistoryModal|openStudentClassTransferHistoryModal/, 'section no longer opens history modals');
+    assert.match(section, /wsHistoryHtml\(sid\)/);
+    // 옛 열기 함수는 이력 구역이 화면에 있으면 그 자리를 펼치고, 없을 때만 옛 모달로 간다(얇은 래퍼 규칙)
+    assert.match(slice(student, 'async function openStudentStatusHistoryModal(', 'async function openStudentClassTransferHistoryModal('), /wsHistoryOpenInline\('status', sid\)\) return;/);
+    assert.match(slice(student, 'async function openStudentClassTransferHistoryModal(', 'async function ensureStudentParentContactDataLoaded('), /wsHistoryOpenInline\('transfer', sid\)\) return;/);
+    assert.match(index, /js\/ws-student-history\.js/);
+    assert.match(read('apmath/css/ws-student.css'), /\.ws-history > summary \{[^}]*min-height: 44px/);
+});

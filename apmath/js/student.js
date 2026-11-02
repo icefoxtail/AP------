@@ -563,9 +563,8 @@ function renderStudentOperationHistorySection(sid) {
             </div>
             <div class="ap-student-management-actions">
                 ${canEdit ? `<button type="button" class="btn apms-button apms-button--primary ap-student-preview-btn" onclick="openStudentPortalPreview(${apmsStudentJsString(sid)})">학생 화면 확인 ↗</button>` : ''}
-                <button type="button" class="btn apms-button apms-button--quiet ap-student-history-btn" onclick="openStudentStatusHistoryModal(${apmsStudentJsString(sid)})">상태 변경 이력</button>
-                <button type="button" class="btn apms-button apms-button--quiet ap-student-history-btn" onclick="openStudentClassTransferHistoryModal(${apmsStudentJsString(sid)})">반 이동 이력</button>
             </div>
+            ${typeof wsHistoryHtml === 'function' ? wsHistoryHtml(sid) : ''}
             ${lazy.loading ? '<div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5;">학생 이력 데이터를 불러오는 중입니다.</div>' : ''}
             ${lazy.error ? '<div style="font-size:12px; color:var(--warning); font-weight:500; line-height:1.5;">학생 이력 데이터를 다시 확인해 주세요.</div>' : ''}
         </div>
@@ -596,10 +595,10 @@ function renderStudentStatusHistoryModalHtml(sid) {
                 <div class="card apms-card" style="padding:14px; border:1px solid var(--border); border-radius:14px; box-shadow:none; background:var(--surface);">
                     <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:8px;">
                         <div style="font-size:13px; color:var(--text); font-weight:500; line-height:1.5;">${apEscapeHtml(statusLabel(row.old_status) || '이전 상태')} → ${apEscapeHtml(statusLabel(row.new_status) || '상태 확인')}</div>
-                        <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5; white-space:nowrap;">${apEscapeHtml(formatStudentFoundationHistoryDate(row))}</div>
+                        <div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5; white-space:nowrap;">${apEscapeHtml(formatStudentFoundationHistoryDate(row))}</div>
                     </div>
                     ${row.reason ? `<div style="font-size:12px; color:var(--text); font-weight:500; line-height:1.6; white-space:pre-wrap;">${apEscapeHtml(row.reason)}</div>` : '<div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.6;">사유 기록 없음</div>'}
-                    ${row.changed_by ? `<div style="margin-top:8px; font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5;">처리자 ${apEscapeHtml(row.changed_by)}</div>` : ''}
+                    ${row.changed_by ? `<div style="margin-top:8px; font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5;">처리자 ${apEscapeHtml(row.changed_by)}</div>` : ''}
                 </div>
             `).join('') : '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500; line-height:1.6;">상태 변경 이력이 없습니다.</div>'}
         </div>
@@ -617,10 +616,10 @@ function renderStudentClassTransferHistoryModalHtml(sid) {
                     <div class="card apms-card" style="padding:14px; border:1px solid var(--border); border-radius:14px; box-shadow:none; background:var(--surface);">
                         <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:8px;">
                             <div style="font-size:13px; color:var(--text); font-weight:500; line-height:1.5;">${apEscapeHtml(fromClass)} → ${apEscapeHtml(toClass)}</div>
-                            <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5; white-space:nowrap;">${apEscapeHtml(formatStudentFoundationHistoryDate(row))}</div>
+                            <div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5; white-space:nowrap;">${apEscapeHtml(formatStudentFoundationHistoryDate(row))}</div>
                         </div>
                         ${row.reason ? `<div style="font-size:12px; color:var(--text); font-weight:500; line-height:1.6; white-space:pre-wrap;">${apEscapeHtml(row.reason)}</div>` : '<div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.6;">사유 기록 없음</div>'}
-                        ${row.changed_by ? `<div style="margin-top:8px; font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5;">처리자 ${apEscapeHtml(row.changed_by)}</div>` : ''}
+                        ${row.changed_by ? `<div style="margin-top:8px; font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5;">처리자 ${apEscapeHtml(row.changed_by)}</div>` : ''}
                     </div>
                 `;
             }).join('') : '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500; line-height:1.6;">반 이동 이력이 없습니다.</div>'}
@@ -629,6 +628,8 @@ function renderStudentClassTransferHistoryModalHtml(sid) {
 }
 
 async function openStudentStatusHistoryModal(sid) {
+    // 기본 탭의 이력 구역이 화면에 있으면 모달 대신 그 자리에서 펼친다(ws-student-history.js).
+    if (typeof wsHistoryOpenInline === 'function' && wsHistoryOpenInline('status', sid)) return;
     const lazy = getStudentDetailLazyState(sid);
     if (!lazy.loadedAt) {
         showStudentDetailSubModalStep('status-history', sid, '상태 변경 이력', '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500; line-height:1.6;">학생 이력 데이터를 불러오는 중입니다.</div>');
@@ -641,6 +642,7 @@ async function openStudentStatusHistoryModal(sid) {
 }
 
 async function openStudentClassTransferHistoryModal(sid) {
+    if (typeof wsHistoryOpenInline === 'function' && wsHistoryOpenInline('transfer', sid)) return;
     const lazy = getStudentDetailLazyState(sid);
     if (!lazy.loadedAt) {
         showStudentDetailSubModalStep('class-transfer-history', sid, '반 이동 이력', '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500; line-height:1.6;">학생 이력 데이터를 불러오는 중입니다.</div>');
