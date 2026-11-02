@@ -605,7 +605,7 @@ window.questionBank = [
       "25"
     ],
     "answer": "②",
-    "solution": "밑각이 같으므로 $2x+3y=10x-6y$에서 $8x=9y$이다. 내각의 합에서 $(2x+3y)+(10x-6y)+12y=180$이므로 $12x+9y=180$이다. $9y=8x$를 대입하면 $20x=180$, $x=9$이고 $y=8$이다. 따라서 $x+y=17$이므로 정답은 ②이다.",
+    "solution": "$AB=AC$인 이등변삼각형이 되려면 두 밑각 $\\angle B$와 $\\angle C$가 같아야 한다.\n\n그림의 밑각을 비교하면\n$$2x+3y=10x-6y$$\n이므로\n$$9y=8x$$\n이다.\n\n또 삼각형의 세 내각의 합이 $180^\\circ$이므로\n$$\\begin{aligned}\n(2x+3y)+(10x-6y)+12y&=180\\\\\n12x+9y&=180\n\\end{aligned}$$\n이다.\n\n$9y=8x$를 대입하면\n$$12x+8x=180$$\n$$20x=180$$\n$$x=9$$\n이다.\n\n따라서\n$$9y=8\\times9=72$$\n$$y=8$$\n이다.\n\n그러므로\n$$x+y=9+8=17$$\n이므로 정답은 **②**이다.",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -655,7 +655,7 @@ window.questionBank = [
       "$36\\,\\mathrm{cm}^2$"
     ],
     "answer": "①",
-    "solution": "$AC=BC$, $\\angle C=90^\\circ$이므로 $\\angle ABC=45^\\circ$이다. $D$는 $AB$ 위에 있고 $DE\\perp AB$이므로 $\\triangle BDE$는 $\\angle B=45^\\circ$, $\\angle D=90^\\circ$인 직각이등변삼각형이다. 따라서 $BD=DE$이고 $\\angle BED=45^\\circ$이다. 한편 $AD=AC$이고 $\\angle CAD=45^\\circ$이므로 이등변삼각형 $ACD$에서 $\\angle ACD=\\angle CDA=(180^\\circ-45^\\circ)/2=67.5^\\circ$이다. $\\angle ACB=90^\\circ$이므로 $\\angle DCE=90^\\circ-67.5^\\circ=22.5^\\circ$이다. $B,E,C$가 일직선 위에 있으므로 $\\angle DEC=180^\\circ-45^\\circ=135^\\circ$, 따라서 $\\angle CDE=180^\\circ-135^\\circ-22.5^\\circ=22.5^\\circ$이다. $\\triangle CDE$에서 $\\angle DCE=\\angle CDE$이므로 $DE=CE=6\\,\\mathrm{cm}$이다. 따라서 $BD=DE=6\\,\\mathrm{cm}$이고 $\\triangle BDE$의 넓이는 $\\frac12\\times6\\times6=18\\,\\mathrm{cm}^2$이다. 따라서 정답은 ①이다.",
+    "solution": "$AC=BC$이고 $\\angle C=90^\\circ$이므로 $\\triangle ABC$는 직각이등변삼각형이다. 따라서\n$$\\angle BAC=\\angle ABC=\\dfrac{180^\\circ-90^\\circ}{2}=45^\\circ$$\n이다.\n\n점 $D$가 $AB$ 위에 있고 $DE\\perp AB$이므로\n$$\\angle BDE=90^\\circ,\\qquad \\angle DBE=45^\\circ$$\n이다. 따라서\n$$\\angle BED=45^\\circ$$\n이고, $\\triangle BDE$는 직각이등변삼각형이므로\n$$BD=DE$$\n이다.\n\n또 $AD=AC$이고 $\\angle CAD=\\angle CAB=45^\\circ$이므로 $\\triangle ACD$는 이등변삼각형이다. 따라서\n$$\\angle ACD=\\angle CDA=\\dfrac{180^\\circ-45^\\circ}{2}=67.5^\\circ$$\n이다.\n\n그림에서 $D$는 $\\angle ACB$ 안쪽에 있으므로\n$$\\angle DCE=90^\\circ-67.5^\\circ=22.5^\\circ$$\n이다.\n\n점 $B,E,C$가 이 순서로 한 직선 위에 있으므로\n$$\\angle DEC=180^\\circ-\\angle BED=135^\\circ$$\n이다. 따라서 $\\triangle CDE$에서\n$$\\begin{aligned}\n\\angle CDE\n&=180^\\circ-135^\\circ-22.5^\\circ\\\\\n&=22.5^\\circ\n\\end{aligned}$$\n이다.\n\n$\\angle DCE=\\angle CDE$이므로 $\\triangle CDE$도 이등변삼각형이고\n$$DE=CE=6\\,\\mathrm{cm}$$\n이다.\n\n따라서 $BD=DE=6\\,\\mathrm{cm}$이므로 직각삼각형 $BDE$의 넓이는\n$$\\begin{aligned}\n[\\triangle BDE]\n&=\\dfrac12\\times BD\\times DE\\\\\n&=\\dfrac12\\times6\\times6\\\\\n&=18\\,\\mathrm{cm}^2\n\\end{aligned}$$\n이다.\n\n따라서 정답은 **①**이다.",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
