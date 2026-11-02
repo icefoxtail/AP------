@@ -28,14 +28,14 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-03",
         "standardUnit": "확률의 뜻과 활용",
         "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
         "subUnit": "확률의 뜻과 활용",
         "conceptClusterKey": "H15-PS-03-PROBABILITY_BASIC",
         "L1": "확률",
-        "L2": "확률의 뜻과 활용",
+        "L2": "조건부확률",
         "L3": "사건의 독립과 종속",
         "L4": "독립·종속 판정",
         "rpmPrimaryRecordIds": [],
@@ -63,7 +63,38 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q1 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "확률",
+        "L2": "조건부확률",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "BLOCKED_NEEDS_REGISTRAR_SUPPORT",
+        "crosswalkRecordId": "H2-PS-RPM-016",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "확률/확률의 뜻과 활용"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "사건의 독립 판정(마스터 개념: 확률>조건부확률>사건의 독립). 표준단원 키는 확률의 뜻과 활용(PS-03)이라 화면 상위 단원과 표준단원이 다름 [현 등록기: 크로스워크 PT/TPL 정확 일치 또는 단원 라벨=중단원 요구로 거부 예상]",
+        "confidence": "MED",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.L2",
+            "before": "확률의 뜻과 활용",
+            "after": "조건부확률"
+          },
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 2,
@@ -73,7 +104,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-05",
         "standardUnit": "확률분포",
         "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
@@ -110,7 +141,33 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q2 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "통계",
+        "L2": "확률분포",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-022",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "통계/확률분포"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=기댓값과 분산; PT/TPL(PT_EXPECTATION_VARIANCE,TPL_EXPECTATION_TRANSFORM)이 크로스워크 H2-PS-RPM-022와 정확히 일치 → 통계>확률분포",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 3,
@@ -120,7 +177,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-05",
         "standardUnit": "확률분포",
         "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
@@ -157,7 +214,33 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q3 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "통계",
+        "L2": "확률분포",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-065",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "통계/확률분포"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=확률변수와 확률분포; PT/TPL(PT_RANDOM_VARIABLE_DISTRIBUTION,TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY)이 크로스워크 H2-PS-RPM-065와 정확히 일치 → 통계>확률분포",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 4,
@@ -167,7 +250,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-05",
         "standardUnit": "확률분포",
         "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
@@ -204,7 +287,33 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q4 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "통계",
+        "L2": "확률분포",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-025",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "통계/확률분포"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=이항분포; PT/TPL(PT_BINOMIAL_DISTRIBUTION,TPL_BINOMIAL_PARAMETER_MOMENTS)이 크로스워크 H2-PS-RPM-025와 정확히 일치 → 통계>확률분포",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 5,
@@ -214,7 +323,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-05",
         "standardUnit": "확률분포",
         "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
@@ -253,7 +362,33 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q5 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "통계",
+        "L2": "확률분포",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-023",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "통계/확률분포"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=기댓값과 분산; PT/TPL(PT_EXPECTATION_VARIANCE,TPL_VARIANCE_STANDARD_DEVIATION)이 크로스워크 H2-PS-RPM-023와 정확히 일치 → 통계>확률분포",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 6,
@@ -263,7 +398,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-04",
         "standardUnit": "조건부확률",
         "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
@@ -300,7 +435,33 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q6 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "확률",
+        "L2": "조건부확률",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-015",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "확률/조건부확률"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=조건부확률; PT/TPL(PT_CONDITIONAL_PROBABILITY,TPL_CONDITIONAL_PROBABILITY_DIRECT)이 크로스워크 H2-PS-RPM-015와 정확히 일치 → 확률>조건부확률",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 7,
@@ -310,7 +471,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-05",
         "standardUnit": "확률분포",
         "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
@@ -347,7 +508,33 @@
         "visualSolution": "UNSUPPORTED"
       },
       "reason": "원본 q7 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "통계",
+        "L2": "확률분포",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-065",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "통계/확률분포"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=확률변수와 확률분포; PT/TPL(PT_RANDOM_VARIABLE_DISTRIBUTION,TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY)이 크로스워크 H2-PS-RPM-065와 정확히 일치 → 통계>확률분포",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 8,
@@ -357,7 +544,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-05",
         "standardUnit": "확률분포",
         "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
@@ -394,7 +581,33 @@
         "visualSolution": "UNSUPPORTED"
       },
       "reason": "원본 q8 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "통계",
+        "L2": "확률분포",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-027",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "통계/확률분포"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=정규분포; PT/TPL(PT_NORMAL_DISTRIBUTION,TPL_NORMAL_DISTRIBUTION_APPLICATION)이 크로스워크 H2-PS-RPM-027와 정확히 일치 → 통계>확률분포",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 9,
@@ -404,7 +617,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-06",
         "standardUnit": "통계적 추정",
         "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
@@ -444,7 +657,33 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q9 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "통계",
+        "L2": "통계적 추정",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-031",
+        "candidateCountSubUnit": 0,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "통계/통계적 추정"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=모평균 추정; PT/TPL(PT_STATISTICAL_ESTIMATION,TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE)이 크로스워크 H2-PS-RPM-031와 정확히 일치 → 통계>통계적 추정",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 10,
@@ -454,7 +693,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-04",
         "standardUnit": "조건부확률",
         "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
@@ -489,7 +728,33 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q10 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "확률",
+        "L2": "조건부확률",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": null,
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "확률/조건부확률"
+        ],
+        "method": "AUTHOR_RPM_RECORD_PT_ONLY",
+        "basis": "결정 단계=조건부확률; PT/TPL 조합은 크로스워크에 없으나 소형 메타의 RPM 레코드(-)·PT 동일 레코드가 확률>조건부확률를 가리킴",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 11,
@@ -499,7 +764,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-05",
         "standardUnit": "확률분포",
         "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
@@ -536,7 +801,33 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q11 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "통계",
+        "L2": "확률분포",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-026",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "통계/확률분포"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=정규분포; PT/TPL(PT_NORMAL_DISTRIBUTION,TPL_NORMAL_STANDARDIZATION)이 크로스워크 H2-PS-RPM-026와 정확히 일치 → 통계>확률분포",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 12,
@@ -546,14 +837,14 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-05",
         "standardUnit": "확률분포",
         "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
         "subUnit": "이항분포와 정규분포",
         "conceptClusterKey": "H15-PS-05-BINOMIAL_NORMAL",
         "L1": "통계",
-        "L2": "이항분포와 정규분포",
+        "L2": "확률분포",
         "L3": "정규분포",
         "L4": "이항분포와 정규분포의 관계",
         "rpmPrimaryRecordIds": [],
@@ -583,7 +874,38 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q12 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "통계",
+        "L2": "확률분포",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": null,
+        "candidateCountSubUnit": 0,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "통계/확률분포"
+        ],
+        "method": "AUTHOR_RPM_RECORD_PT_ONLY",
+        "basis": "결정 단계=정규분포; PT/TPL 조합은 크로스워크에 없으나 소형 메타의 RPM 레코드(-)·PT 동일 레코드가 통계>확률분포를 가리킴",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.L2",
+            "before": "이항분포와 정규분포",
+            "after": "확률분포"
+          },
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 13,
@@ -593,7 +915,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-06",
         "standardUnit": "통계적 추정",
         "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
@@ -631,7 +953,33 @@
         "visualSolution": "UNSUPPORTED"
       },
       "reason": "원본 q13 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "통계",
+        "L2": "통계적 추정",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-028",
+        "candidateCountSubUnit": 0,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "통계/통계적 추정"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=모집단과 표본; PT/TPL(PT_SAMPLE_MEAN_DISTRIBUTION,TPL_SAMPLE_MEAN_DISTRIBUTION)이 크로스워크 H2-PS-RPM-028와 정확히 일치 → 통계>통계적 추정",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 14,
@@ -641,7 +989,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-05",
         "standardUnit": "확률분포",
         "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
@@ -680,7 +1028,33 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q14 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "통계",
+        "L2": "확률분포",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-023",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "통계/확률분포"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=기댓값과 분산; PT/TPL(PT_EXPECTATION_VARIANCE,TPL_VARIANCE_STANDARD_DEVIATION)이 크로스워크 H2-PS-RPM-023와 정확히 일치 → 통계>확률분포",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 15,
@@ -690,7 +1064,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-05",
         "standardUnit": "확률분포",
         "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
@@ -727,7 +1101,33 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q15 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "통계",
+        "L2": "확률분포",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-026",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "통계/확률분포"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=정규분포; PT/TPL(PT_NORMAL_DISTRIBUTION,TPL_NORMAL_STANDARDIZATION)이 크로스워크 H2-PS-RPM-026와 정확히 일치 → 통계>확률분포",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 16,
@@ -737,14 +1137,14 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-05",
         "standardUnit": "확률분포",
         "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
         "subUnit": "확률분포",
         "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-        "L1": "통계",
-        "L2": "확률분포",
+        "L1": "확률",
+        "L2": "조건부확률",
         "L3": "독립시행의 확률",
         "L4": "독립시행의 확률",
         "rpmPrimaryRecordIds": [],
@@ -774,7 +1174,43 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q16 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "확률",
+        "L2": "조건부확률",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "BLOCKED_NEEDS_REGISTRAR_SUPPORT",
+        "crosswalkRecordId": "H2-PS-RPM-018",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "통계/확률분포"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "독립시행의 확률(마스터 개념: 확률>조건부확률>독립시행). 표준단원 키는 확률분포(PS-05)라 화면 상위 단원과 표준단원이 다름 [현 등록기: 크로스워크 PT/TPL 정확 일치 또는 단원 라벨=중단원 요구로 거부 예상]",
+        "confidence": "MED",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.L1",
+            "before": "통계",
+            "after": "확률"
+          },
+          {
+            "field": "after.L2",
+            "before": "확률분포",
+            "after": "조건부확률"
+          },
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 17,
@@ -784,7 +1220,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-05",
         "standardUnit": "확률분포",
         "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
@@ -821,7 +1257,33 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q17 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "통계",
+        "L2": "확률분포",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-025",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "통계/확률분포"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=이항분포; PT/TPL(PT_BINOMIAL_DISTRIBUTION,TPL_BINOMIAL_PARAMETER_MOMENTS)이 크로스워크 H2-PS-RPM-025와 정확히 일치 → 통계>확률분포",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 18,
@@ -831,7 +1293,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-05",
         "standardUnit": "확률분포",
         "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
@@ -870,7 +1332,33 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q18 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "통계",
+        "L2": "확률분포",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-023",
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "통계/확률분포"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=기댓값과 분산; PT/TPL(PT_EXPECTATION_VARIANCE,TPL_VARIANCE_STANDARD_DEVIATION)이 크로스워크 H2-PS-RPM-023와 정확히 일치 → 통계>확률분포",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 19,
@@ -880,7 +1368,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-06",
         "standardUnit": "통계적 추정",
         "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
@@ -920,7 +1408,33 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q19 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "통계",
+        "L2": "통계적 추정",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-031",
+        "candidateCountSubUnit": 0,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "통계/통계적 추정"
+        ],
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계=모평균 추정; PT/TPL(PT_STATISTICAL_ESTIMATION,TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE)이 크로스워크 H2-PS-RPM-031와 정확히 일치 → 통계>통계적 추정",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     },
     {
       "questionUid": 20,
@@ -930,7 +1444,7 @@
         "standardCourse": "확률과 통계",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "확률과 통계",
+        "courseKey": "확률과통계",
         "standardUnitKey": "H15-PS-04",
         "standardUnit": "조건부확률",
         "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
@@ -967,7 +1481,33 @@
         "visualSolution": "EXEMPT"
       },
       "reason": "원본 q20 1:1 유사문항 신규 제작 및 정답 직접 검산(Python) 완료; 유사 풀이에 맞춰 메타 재판정",
-      "evidenceRefs": []
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "확률",
+        "L2": "조건부확률",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": null,
+        "candidateCountSubUnit": 1,
+        "candidateCountUnit": 1,
+        "candidateParentsUnit": [
+          "확률/조건부확률"
+        ],
+        "method": "AUTHOR_RPM_RECORD_PT_ONLY",
+        "basis": "결정 단계=조건부확률; PT/TPL 조합은 크로스워크에 없으나 소형 메타의 RPM 레코드(-)·PT 동일 레코드가 확률>조건부확률를 가리킴",
+        "confidence": "HIGH",
+        "assignedBy": "claude-parent-assign-v1",
+        "assignedAt": "2026-11-02",
+        "fieldChanges": [
+          {
+            "field": "after.courseKey",
+            "before": "확률과 통계",
+            "after": "확률과통계"
+          }
+        ]
+      }
     }
   ]
 }

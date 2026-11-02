@@ -110,6 +110,70 @@ class GenerateInboxRequestTests(unittest.TestCase):
         self.assertIn("evidenceRefs", req["registryChanges"][0])
 
 
+class ParentAssignmentTests(unittest.TestCase):
+    """The registrar fills L1/L2 from standard-unit labels unless the request carries an evidence-bound parent
+    reference; `parentAssignment` in the small meta is turned into `targetParentRef` (+ evidence)."""
+    MASTER = "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+    CROSS = "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        self.addCleanup(self.tmp.cleanup)
+        patcher = mock.patch.multiple(mm, REPO_ROOT=self.root, CANON_DIR=self.root / "archive/data/meta-foundation/canonical")
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def generate(self, assignment, cross_record_parent=("미분", "도함수의 활용(2)")):
+        files = build_tree(self.root)
+        master = self.root / self.MASTER
+        master.parent.mkdir(parents=True)
+        master.write_text(json.dumps({"records": [
+            {"curriculum": "2015", "scope": "수학II", "majorUnit": "미분", "midUnit": "도함수의 활용(2)"},
+            {"curriculum": "2015", "scope": "수학II", "majorUnit": "적분", "midUnit": "정적분"}]}), encoding="utf-8")
+        cross = self.root / self.CROSS
+        cross.parent.mkdir(parents=True)
+        cross.write_text(json.dumps({"records": [{"id": "H2-M2-RPM-023", "rpmPath": {
+            "majorUnit": cross_record_parent[0], "midUnit": cross_record_parent[1]}}]}), encoding="utf-8")
+        meta = json.loads(files["meta"].read_text(encoding="utf-8"))
+        meta["items"][0]["parentAssignment"] = assignment
+        meta["items"][0]["after"].update({"L1": "도함수의 활용", "L2": "도함수의 활용"})
+        files["meta"].write_text(json.dumps(meta), encoding="utf-8")
+        with redirect_stdout(io.StringIO()):
+            return mm.generate_inbox_request(files)
+
+    def assignment(self, **kwargs):
+        base = {"L1": "미분", "L2": "도함수의 활용(2)", "curriculum": "2015", "scope": "수학II",
+                "parentRefMode": "CROSSWALK_EXACT", "crosswalkRecordId": "H2-M2-RPM-023"}
+        base.update(kwargs)
+        return base
+
+    def test_assignment_sets_l1_l2_and_a_sha_bound_parent_reference(self):
+        req = self.generate(self.assignment())
+        item = req["items"][0]
+        self.assertEqual((item["after"]["L1"], item["after"]["L2"]), ("미분", "도함수의 활용(2)"))
+        ref = item["targetParentRef"]
+        self.assertEqual((ref["path"], ref["scope"], ref["majorUnit"], ref["midUnit"]), (self.MASTER, "수학II", "미분", "도함수의 활용(2)"))
+        self.assertEqual(ref["crosswalkRef"]["recordId"], "H2-M2-RPM-023")
+        evidence = {e["path"]: e["sha256"] for e in item["evidenceRefs"]}
+        self.assertEqual(evidence[self.MASTER], mm.sha256_file(self.root / self.MASTER))
+        self.assertEqual(evidence[self.CROSS], ref["crosswalkRef"]["sha256"])
+        self.assertNotIn("targetParentRef", req["items"][1])
+
+    def test_unit_label_mode_has_no_crosswalk_reference(self):
+        req = self.generate(self.assignment(L1="적분", L2="정적분", parentRefMode="UNIT_LABEL", crosswalkRecordId=None))
+        self.assertNotIn("crosswalkRef", req["items"][0]["targetParentRef"])
+        self.assertEqual(req["items"][0]["after"]["L2"], "정적분")
+
+    def test_parent_missing_from_canonical_master_is_refused(self):
+        with self.assertRaisesRegex(mm.RequestGenerationError, "not exactly one canonical RPM master parent"):
+            self.generate(self.assignment(L2="도함수 그 자체", parentRefMode="UNIT_LABEL", crosswalkRecordId=None))
+
+    def test_crosswalk_record_pointing_elsewhere_is_refused(self):
+        with self.assertRaisesRegex(mm.RequestGenerationError, "points at"):
+            self.generate(self.assignment(), cross_record_parent=("적분", "정적분"))
+
+
 class SplitRegistryChangesTests(unittest.TestCase):
     def test_requires_path_before_after(self):
         native, sidecar = mm.split_registry_changes([
