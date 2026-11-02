@@ -290,3 +290,22 @@
 
 /* 시험 목록이 길어 칸이 줄어들면 제목·설명이 줄 밖으로 겹쳐 보인다(옛 출력 센터 그대로의 결함). 줄은 줄어들지 않고 목록이 스크롤한다. */
 .ws-clinic__view--print .clinic-print-exam-row { flex-shrink: 0; }
+
+/* 다른 반(대강·보강) 선택 칸: 내 반이 아닌 활성 반을 임시 탭으로 연다. 글자 16px(휴대폰 확대 방지). */
+.ws-clinic-otherclass {
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    min-height: 36px;
+    max-width: 160px;
+    padding: 4px 10px;
+    border: 1px solid var(--control-border, var(--border));
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 16px;
+}
+@media (max-width: 900px) { .ws-clinic-otherclass { min-height: 44px; } }
+@media (max-width: 600px) {
+    .ws-clinic-otherclass { flex: 1 1 100%; max-width: none; }
+}

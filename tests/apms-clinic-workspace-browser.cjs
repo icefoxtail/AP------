@@ -50,8 +50,8 @@ function buildData(scale) {
     const today = dateBefore(0);
     const classes = [
         ['c1', '중3A', '중3', '1,3,5', '6:30~8:00'], ['c2', '중2B', '중2', '2,4', '4:50~6:20'], ['c3', '고1 심화', '고1', '1,4', '8:00~9:30'],
-        ['c4', '중1C', '중1', '2,5', '6:30~8:00'], ['c5', '고2 미적', '고2', '3,6', '4:50~6:20']
-    ].map(([id, name, grade, days, time]) => ({ id, name, grade, subject: '수학', teacher_name: '김선생', schedule_days: days, time_label: time, is_active: 1 }));
+        ['c4', '중1C', '중1', '2,5', '6:30~8:00'], ['c5', '고2 미적', '고2', '3,6', '4:50~6:20'], ['c6', '중3A', '중3', '2,4', '8:00~9:30']
+    ].map(([id, name, grade, days, time]) => ({ id, name, grade, subject: '수학', teacher_name: id === 'c6' ? '박선생' : '김선생', schedule_days: days, time_label: time, is_active: 1 })); // c6: 다른 선생님 반(이름 중복) — 선생님 탭에는 안 보이고 "다른 반"으로 연다
     const names = ['김민수', '이서윤', '박지호', '최유나', '정도윤', '강하린', '조현우', '윤서아', '장민재', '임채원', '한지우', '오세린'];
     const students = [];
     const class_students = [];
@@ -233,6 +233,11 @@ const OPEN = {
             const tab = page.locator('.ws-clinic-subtab', { hasText: '유사문항 추천' });
             if (await tab.count()) { await tab.click(); await page.waitForTimeout(600); }
         },
+        // 다른 반 선택 칸이 보이는 위쪽 줄
+        other: async page => {
+            await page.evaluate(() => openClinicCenter('c1'));
+            await page.waitForTimeout(500);
+        },
         // 바구니 보기(후보 2개 담은 뒤)
         basket: async page => {
             await page.evaluate(() => openClinicCenter('c1'));
@@ -277,6 +282,11 @@ async function behaviour(browser, base) {
         assert.equal((await measureModal(page)).cancelButtons, 1, '취소 버튼은 헤더 하나만 보인다');
         assert.match(await page.locator('#clinic-print-summary').innerText(), /선택 시험/);
         assert.ok(apiCalls.some(c => c.startsWith('exam-sessions/by-class?class=c1')), '출력 센터가 반 시험 기록을 불러온다');
+
+        // 1a) 내 반(5개)만 탭에 있고, 다른 선생님 반은 "다른 반" 선택 칸에 있다(같은 이름은 담당을 붙여 구분)
+        assert.equal(await page.locator('.ws-clinic-classtab', { hasText: '박선생' }).count(), 0);
+        assert.deepEqual(await page.locator('.ws-clinic-otherclass option').allTextContents(), ['다른 반', '중3A · 박선생']);
+        assert.equal(await page.locator('.ws-clinic-otherclass').getAttribute('data-apms-nodirty'), '');
 
         // 1b) 반 표기: 학년을 겹쳐 쓰지 않고, 같은 이름 + 다른 담당일 때만 담당 이름을 붙인다
         const labels = await page.evaluate(() => {
@@ -390,6 +400,25 @@ async function behaviour(browser, base) {
         await page.evaluate(() => { api.get = window.__origGet; closeModal(true); });
         await settle(500);
 
+        // 9b) 다른 선생님 반(대강·보강): 선택 칸에서 고르면 임시 탭으로 열리고, 다른 반을 보고 돌아와도 탭이 남는다
+        await page.evaluate(() => openClinicPrintCenter('c1'));
+        await page.waitForSelector('.ws-clinic .ws-clinic-otherclass', { timeout: 8000 });
+        await page.waitForSelector('#clinic-print-summary', { timeout: 8000 });
+        await page.locator('.ws-clinic-otherclass').selectOption('c6');
+        await page.waitForFunction(() => document.querySelector('.ws-clinic-classtab[aria-pressed="true"]')?.dataset.classId === 'c6', null, { timeout: 8000 });
+        assert.match(await page.locator('.ws-clinic-classtab[aria-pressed="true"]').innerText(), /중3A\s*박선생/);
+        await page.waitForSelector('#clinic-print-summary', { timeout: 8000 });
+        assert.equal(await page.locator('.ws-clinic-otherclass').count(), 0, '연 반은 선택 칸에서 빠지고, 고를 반이 없으면 선택 칸도 없다');
+        await page.locator('.ws-clinic-classtab[data-class-id="c1"]').click();
+        await page.waitForFunction(() => document.querySelector('.ws-clinic-classtab[aria-pressed="true"]')?.dataset.classId === 'c1', null, { timeout: 8000 });
+        assert.equal(await page.locator('.ws-clinic-classtab[data-class-id="c6"]').count(), 1, '임시 탭이 남는다');
+        await page.evaluate(() => closeModal(true));
+        await settle(500);
+        await page.evaluate(() => openClinicCenter('c6')); // 반 화면에서 다른 선생님 반으로 들어온 경우
+        await page.waitForSelector('.ws-clinic-classtab[data-class-id="c6"][aria-pressed="true"]', { timeout: 8000 });
+        await page.evaluate(() => closeModal(true));
+        await settle(500);
+
         // 10) 고른 내용이 있으면 반·탭을 바꾸기 전에 묻는다. 취소하면 그대로, 확인하면 바뀐다.
         await page.evaluate(() => openClinicPrintCenter('c1'));
         await page.waitForSelector('.ws-clinic input[name="clinic-print-exam"]', { timeout: 8000 });
@@ -398,7 +427,7 @@ async function behaviour(browser, base) {
         await page.locator('.ws-clinic-classtab', { hasText: '중2B' }).click();
         await page.waitForTimeout(500);
         assert.equal(dialogs.length, askedBefore + 1, '고른 내용이 있으면 반을 바꾸기 전에 묻는다');
-        assert.equal(await page.locator('.ws-clinic-classtab[aria-pressed="true"]').innerText().then(t => t.trim()), '중3A', '취소하면 그 반에 그대로 있다');
+        assert.equal(await page.locator('.ws-clinic-classtab[aria-pressed="true"]').getAttribute('data-class-id'), 'c1', '취소하면 그 반에 그대로 있다');
         acceptNext = true;
         await page.locator('.ws-clinic-classtab', { hasText: '중2B' }).click();
         await page.waitForFunction(() => document.querySelector('.clinic-print-summary-card__title')?.textContent.trim() === '중2B', null, { timeout: 8000 });
@@ -414,12 +443,13 @@ async function behaviour(browser, base) {
 async function shoot(browser, base) {
     fs.mkdirSync(shotDir, { recursive: true });
     const problems = [];
-    const views = flow === 'legacy' ? ['menu', 'picker', 'print', 'similar', 'detail'] : ['print', 'similar', 'detail', 'basket'];
+    const views = flow === 'legacy' ? ['menu', 'picker', 'print', 'similar', 'detail'] : ['print', 'similar', 'detail', 'basket', 'other'];
     for (const device of DEVICES) {
         for (const theme of ['light', 'dark']) {
             if (theme === 'dark' && device.id !== 'phone-390x844') continue; // 다크는 대표 1기기(휴대폰)
             for (const scale of STATES) {
                 for (const view of views) {
+                    if (view === 'other' && (device.id !== 'phone-390x844' || scale !== 'normal' || theme !== 'light')) continue;
                     if ((view === 'menu' || view === 'picker') && scale !== 'normal') continue;
                     const name = `${flow}-${view}-${scale}-${device.id}-${theme}`;
                     if (only && !only.some(piece => name.includes(piece))) continue;

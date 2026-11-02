@@ -11,23 +11,33 @@
  * - 출제·출력 로직(clinicPrint*), 출제 payload·배정은 건드리지 않는다. 이 파일은 껍데기와 반 전환만 다룬다.
  * 공통 부품(.apms-modal*, .apms-workspace*, ui.js 닫기 정책)은 읽기만 한다. 스타일은 ws-clinic.css.
  */
-let wsClinicState = { seq: 0, classId: '', view: 'print' };
+let wsClinicState = { seq: 0, classId: '', view: 'print', extras: [] }; // extras: "다른 반"으로 연 반(임시 탭)
 
 function wsClinicJsArg(value) {
     return apEscapeHtml(JSON.stringify(String(value ?? '')));
 }
 
-// 반 전환 탭에 보일 반: 현재 사용자가 볼 수 있는 활성 반(+ 지금 열려는 반).
+// 활성 반 전체(옛 반 고르기 모달이 보여 주던 범위).
+function wsClinicGetAllActiveClasses() {
+    return (state.db?.classes || []).filter(cls => Number(cls?.is_active ?? 1) !== 0);
+}
+
+// 반 전환 탭에 보일 반: 현재 사용자가 볼 수 있는 활성 반(원장은 전체) + "다른 반"으로 연 임시 탭 + 지금 열려는 반.
+// 그 밖의 활성 반(대강·보강)은 탭 줄 끝 "다른 반" 선택 칸에서 고른다.
 function wsClinicGetClassTabs(extraClassId = '') {
-    const all = (state.db?.classes || []).filter(cls => Number(cls?.is_active ?? 1) !== 0);
-    let visible = all.filter(cls => typeof isClassVisibleForCurrentTeacher === 'function' ? isClassVisibleForCurrentTeacher(cls) : true);
-    const extra = all.find(cls => String(cls.id) === String(extraClassId));
-    if (extra && !visible.some(cls => String(cls.id) === String(extra.id))) visible = [extra, ...visible];
-    if (typeof sortClassesForDashboard === 'function') return sortClassesForDashboard(visible);
-    return visible.sort((a, b) =>
-        String(a.grade || '').localeCompare(String(b.grade || ''), 'ko') ||
-        String(a.name || '').localeCompare(String(b.name || ''), 'ko')
-    );
+    const all = wsClinicGetAllActiveClasses();
+    const visible = all.filter(cls => typeof isClassVisibleForCurrentTeacher === 'function' ? isClassVisibleForCurrentTeacher(cls) : true);
+    const sorted = typeof sortClassesForDashboard === 'function'
+        ? sortClassesForDashboard(visible)
+        : visible.sort((a, b) =>
+            String(a.grade || '').localeCompare(String(b.grade || ''), 'ko') ||
+            String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
+    const extraIds = [...(wsClinicState.extras || []), String(extraClassId || '')].filter(Boolean);
+    extraIds.forEach(id => {
+        const cls = all.find(row => String(row.id) === String(id));
+        if (cls && !sorted.some(row => String(row.id) === String(cls.id))) sorted.push(cls);
+    });
+    return sorted;
 }
 
 // 열 반 정하기: 지정한 반 → 지금 보고 있는 반 → 마지막으로 연 반 → 첫 반.
@@ -75,10 +85,20 @@ function wsClinicBarHtml(classId, view) {
         const label = wsClinicClassLabel(cls, tabs);
         return `<button type="button" class="ws-clinic-classtab${selected ? ' is-active' : ''}" data-class-id="${apEscapeHtml(String(cls.id))}" aria-pressed="${selected ? 'true' : 'false'}" onclick="wsClinicSwitchClass(${wsClinicJsArg(cls.id)})">${apEscapeHtml(label.text)}${label.teacher ? `<span class="ws-clinic-classtab__teacher">${apEscapeHtml(label.teacher)}</span>` : ''}</button>`;
     }).join('');
+    const all = wsClinicGetAllActiveClasses();
+    const others = all.filter(cls => !tabs.some(tab => String(tab.id) === String(cls.id)));
+    const otherSelect = others.length ? `
+            <select class="ws-clinic-otherclass" data-apms-nodirty aria-label="다른 반 열기" onchange="wsClinicPickOtherClass(this)">
+                <option value="">다른 반</option>
+                ${others.map(cls => {
+                    const label = wsClinicClassLabel(cls, all);
+                    return `<option value="${apEscapeHtml(String(cls.id))}">${apEscapeHtml(label.teacher ? `${label.text} · ${label.teacher}` : label.text)}</option>`;
+                }).join('')}
+            </select>` : '';
     return `
         <div class="ws-clinic__bar apms-workspace__bar">
             <div class="ws-clinic__viewtabs" role="tablist" aria-label="클리닉 보기">${viewTabs}</div>
-            <nav class="ws-clinic__classtabs" role="group" aria-label="반 전환">${classTabs}</nav>
+            <nav class="ws-clinic__classtabs" role="group" aria-label="반 전환">${classTabs}</nav>${otherSelect}
         </div>`;
 }
 
@@ -87,6 +107,11 @@ function wsClinicBarHtml(classId, view) {
 function wsClinicShow(classId, view, viewHtml) {
     wsClinicState.seq += 1;
     wsClinicState.classId = String(classId || '');
+    // 내 반이 아닌 반을 열었으면 임시 탭으로 남겨, 다른 반을 보고 돌아와도 탭이 유지된다.
+    if (wsClinicState.classId && !wsClinicState.extras.includes(wsClinicState.classId) &&
+        !wsClinicGetClassTabs().some(cls => String(cls.id) === wsClinicState.classId)) {
+        wsClinicState.extras.push(wsClinicState.classId);
+    }
     wsClinicState.view = view === 'similar' ? 'similar' : 'print';
     const isSimilar = wsClinicState.view === 'similar';
     const viewBox = isSimilar
@@ -170,4 +195,11 @@ function wsClinicSwitchView(view) {
     if (target === wsClinicState.view) return;
     if (!wsClinicConfirmLeave()) return;
     wsClinicOpen(wsClinicState.classId, target);
+}
+
+// "다른 반" 선택 칸: 고른 반을 임시 탭으로 열고, 선택 칸은 처음 상태로 되돌린다.
+function wsClinicPickOtherClass(select) {
+    const id = String(select && select.value || '');
+    if (select) select.value = '';
+    if (id) wsClinicSwitchClass(id);
 }

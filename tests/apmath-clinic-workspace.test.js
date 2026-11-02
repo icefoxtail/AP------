@@ -122,6 +122,16 @@ check('반 탭 표기: 공통 함수 apmsClassLabel 을 먼저 쓰고 학년을 
     assert.equal(/' · '/.test(functionBody(shell, 'function wsClinicBarHtml(')), false, '탭에 "학년 · 이름"을 겹쳐 쓰지 않는다');
 });
 
+check('내 반이 아닌 활성 반(대강·보강)도 "다른 반" 선택 칸으로 열 수 있고, 선택 칸은 변경 감지에서 빠진다', () => {
+    const bar = functionBody(shell, 'function wsClinicBarHtml(');
+    assert.match(bar, /wsClinicGetAllActiveClasses\(\)/);
+    assert.match(bar, /<select class="ws-clinic-otherclass" data-apms-nodirty/);
+    assert.match(bar, /wsClinicClassLabel\(cls, all\)/);
+    assert.match(functionBody(shell, 'function wsClinicPickOtherClass('), /wsClinicSwitchClass\(id\)/);
+    assert.match(functionBody(shell, 'function wsClinicShow('), /wsClinicState\.extras\.push/);
+    assert.match(wsCss, /\.ws-clinic-otherclass[\s\S]*?font-size: 16px/);
+});
+
 check('index.html 은 clinic-print.js 바로 뒤에 새 스크립트를, 클리닉 CSS 뒤에 새 CSS를 불러온다', () => {
     const order = ['js/clinic-print.js', 'js/ws-clinic-shell.js', 'js/ws-clinic-similar.js'].map(f => indexHtml.indexOf(`src="${f}`));
     assert.ok(order.every(i => i > 0) && order[0] < order[1] && order[1] < order[2], '스크립트 순서');
