@@ -319,7 +319,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "정규분포의 그래프는 평균 $m$을 중심으로 좌우 대칭이다.\n왼쪽의 $48$ 이상인 넓이와 오른쪽의 $52$ 이하인 넓이가 같으려면 두 경계점은 평균에서 같은 거리만큼 떨어져야 한다.\n$m-48=52-m$\n$2m=100$\n$m=50$\n따라서 정답은 ③이다.",
+    "solution": "정규분포의 그래프는 평균 $m$을 중심으로 좌우 대칭이다.\n$P(X\\ge48)=P(X\\le52)$의 양쪽에서 공통인 $48\\le X\\le52$ 부분을 빼면 $P(X\\lt 48)=P(X\\gt 52)$이므로, 두 경계점 $48$과 $52$는 평균에서 같은 거리만큼 떨어져 있다.\n$m-48=52-m$\n$2m=100$\n$m=50$\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q07-solution.svg",
     "solutionImageAlt": "평균의 좌우에 같은 간격으로 있는 48과 52",
     "solutionImageCaption": "48과 52의 가운데가 평균 50",
