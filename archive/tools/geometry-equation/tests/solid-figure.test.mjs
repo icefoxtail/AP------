@@ -3084,7 +3084,7 @@ test('G15: a cone frustum net is refused when it cannot be a frustum, and takes 
   assert.throws(()=>solveSolidFigure(frustumNet({slant:undefined})),code('SOLID_PARAM_INVALID'));
   assert.throws(()=>solveSolidFigure(frustumNet({dims:[{part:'angle'}]})),code('SOLID_DIMS_INVALID'));
   assert.throws(()=>solveSolidFigure(frustumNet({dims:[{part:'slant',label:'6'}]})),code('SOLID_DIM_VALUE_MISMATCH'));
-  assert.throws(()=>solveSolidFigure(frustumNet({highlights:[{face:'side'}]})),code('SOLID_NET_EMPHASIS_UNSUPPORTED'));
+  assert.throws(()=>solveSolidFigure(frustumNet({segments:[{face:'side',edge:0}]})),code('SOLID_NET_EMPHASIS_UNSUPPORTED'));
   assert.throws(()=>solveSolidFigure(figure({net:{kind:'CONE',radius:3,topRadius:1,slant:5}})),code('SOLID_NET_INVALID'));
   assert.throws(()=>solveSolidFigure(frustumNet({faceLabels:[{face:'rect'}]})),code('SOLID_NET_FACE_UNKNOWN'));
 });
@@ -3231,4 +3231,22 @@ test('G15: a diameter is refused when it is not a circle of a rotation solid or 
   assert.throws(()=>solveSolidFigure(trapezoid([{diameter:'top',radius:'top'}])),code('SOLID_DIMS_INVALID'));
   assert.throws(()=>solveSolidFigure(trapezoid([{diameter:'top',side:'LEFT'}])),code('SOLID_DIM_SIDE_INVALID'));
   assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],dims:[{diameter:'top'}]})),code('SOLID_DIMS_INVALID'));
+});
+
+test('G15: a cone frustum net tints its ring and circles with highlights, and the observer reads each tint back',async()=>{
+  const plan=frustumNet({highlights:[{face:'side',fill:'LIGHT'},{face:'small',fill:'WARM'},{face:'large',fill:'GREEN'}],dims:[{part:'slant'}]},{solidCaption:{text:'원뿔대 전개도'}});
+  assert.deepEqual(solveSolidFigure(plan).highlights.map(h=>h.fill),['LIGHT','WARM','GREEN']);
+  const c=await panel(plan);
+  assert.equal(c.status,'COMPOSED',JSON.stringify(c.detail));assert.equal(c.staticAudit.status,'PASS',JSON.stringify(c.staticAudit.errors));
+  assert.match(c.svg,/id="net-circle-small"[^>]*data-fill="WARM"/);assert.match(c.svg,/id="net-circle-large"[^>]*data-fill="GREEN"/);assert.match(c.svg,/id="net-ring"[^>]*data-fill="LIGHT"/);
+  assert.equal((await audit(plan,c.svg)).status,'PASS');
+  // tamper: the small circle's tint is turned into the large circle's colour; a tint is removed
+  const small=c.svg.match(/<circle id="net-circle-small"[^>]*\/>/)[0];
+  const r1=await audit(plan,c.svg.replace(small,small.replace('data-fill="WARM"','data-fill="GREEN"')));
+  assert.equal(r1.status,'FAIL');assert.ok(r1.errors.some(e=>e.startsWith('SOLID_NET_HIGHLIGHT_')),JSON.stringify(r1.errors));
+  const r2=await audit(plan,c.svg.replace(small,small.replace(/ data-fill="WARM"/,'').replace(/ fill-opacity="[\d.]+"/,'')));
+  assert.equal(r2.status,'FAIL');assert.ok(r2.errors.some(e=>e.startsWith('SOLID_NET_HIGHLIGHT_MISMATCH:small')),JSON.stringify(r2.errors));
+  assert.throws(()=>solveSolidFigure(frustumNet({highlights:[{face:'rect'}]})),code('SOLID_NET_FACE_UNKNOWN'));
+  assert.throws(()=>solveSolidFigure(frustumNet({highlights:[{face:'side'},{face:'side'}]})),code('SOLID_NET_HIGHLIGHT_INVALID'));
+  assert.throws(()=>solveSolidFigure(frustumNet({highlights:[{face:'side',fill:'RED'}]})),code('SOLID_NET_HIGHLIGHT_INVALID'));
 });

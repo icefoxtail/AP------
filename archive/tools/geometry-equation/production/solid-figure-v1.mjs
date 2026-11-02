@@ -2059,9 +2059,22 @@ function solveNet(plan){
   if(net.kind==='CONE_FRUSTUM'){
     // The net of a cone frustum (radius = the wide circle, topRadius = the narrow one, slant or height): one ring-shaped sector (the big sector of the cone minus the small one cut off at its point) of
     // outer radius slant*R/(R-r), inner radius slant*r/(R-r) and central angle 360*(R-r)/slant, the wide circle touching the outer arc from outside and the narrow circle the inner arc from the apex side.
-    if(net.highlights!==undefined||net.segments!==undefined)bad('SOLID_NET_EMPHASIS_UNSUPPORTED:'+net.kind);
+    if(net.segments!==undefined)bad('SOLID_NET_EMPHASIS_UNSUPPORTED:'+net.kind);
     if(net.edgeLabels!==undefined)bad('SOLID_EDGE_LABEL_UNSUPPORTED:'+net.kind);
     if(net.rightAngles!==undefined)bad('SOLID_NET_RIGHT_ANGLE_UNSUPPORTED:'+net.kind);
+    // highlights:[{face:"side"|"large"|"small",fill?}] tints the ring or one of the circles (the colour that ties a net part to the same face of the solid drawn beside it)
+    const highlights=[];
+    if(net.highlights!==undefined){
+      if(!Array.isArray(net.highlights)||net.highlights.length<1||net.highlights.length>3)bad('SOLID_NET_HIGHLIGHT_INVALID');
+      for(const h of net.highlights){
+        onlyKeys(h,['face','fill'],'SOLID_NET_HIGHLIGHT_INVALID');
+        if(typeof h.face!=='string')bad('SOLID_NET_HIGHLIGHT_INVALID');
+        if(!['side','large','small'].includes(h.face))bad('SOLID_NET_FACE_UNKNOWN');
+        const fill=h.fill??'LIGHT';
+        if(!NET_FILLS.includes(fill)||highlights.some(x=>x.face===h.face))bad('SOLID_NET_HIGHLIGHT_INVALID');
+        highlights.push({face:h.face,fill});
+      }
+    }
     const R=pos(net.radius,'SOLID_PARAM_INVALID'),r=pos(net.topRadius,'SOLID_PARAM_INVALID');
     if(!(r<R))bad('SOLID_NET_FRUSTUM_INVALID:TOP_NOT_SMALLER');
     if(net.slant===undefined&&net.height===undefined)bad('SOLID_PARAM_INVALID');
@@ -2078,7 +2091,7 @@ function solveNet(plan){
       dims.push({id:'dim-'+(k+1),type:'NETPART',part:d.part,...dimLabel(d.label,value,unit,'d'+(k+1))});
     }
     const faceLabels=netFaceLabels(net,new Map([['side',Math.PI*(R+r)*l],['large',Math.PI*R*R],['small',Math.PI*r*r]]),unit),excluded=netExcluded(net,['large','small']);
-    return {schemaVersion:SOLID_MODEL_VERSION,mode:'NET',unit,netKind:'CONE_FRUSTUM',radius:R,topRadius:r,slant:r6(l),shapes,dims,...(faceLabels.length?{faceLabels}:{}),...(excluded.length?{excluded}:{})};
+    return {schemaVersion:SOLID_MODEL_VERSION,mode:'NET',unit,netKind:'CONE_FRUSTUM',radius:R,topRadius:r,slant:r6(l),shapes,dims,...(highlights.length?{highlights}:{}),...(faceLabels.length?{faceLabels}:{}),...(excluded.length?{excluded}:{})};
   }
   if(net.kind!==undefined)bad('SOLID_NET_UNSUPPORTED:'+String(net.kind).slice(0,24));
   if(!isPlain(net.solid)||!POLY_KINDS.includes(net.solid.kind))bad('SOLID_NET_INVALID');
@@ -3044,6 +3057,7 @@ function specNet(plan,model,ctx){
     const [o1,o2,i1,i2]=[at(Ro,-1),at(Ro,1),at(Ri,-1),at(Ri,1)];
     prims.push({t:'ring',id:'net-ring',role:'net-face',face:'side',apex:pt([0,0]),o1:pt(o1),o2:pt(o2),i1:pt(i1),i2:pt(i2),outer:r6(S*Ro),inner:r6(S*Ri),large:ring.angleDeg>180?1:0,angleDeg:ring.angleDeg});
     circle('net-circle-large','large',large);circle('net-circle-small','small',small);
+    for(const h of model.highlights??[]){const pr=prims.find(q=>h.face==='side'?q.id==='net-ring':q.id==='net-circle-'+h.face);pr.fill=h.fill;}
     const arcMid=R=>[[-0.12*R,-R],[0.12*R,-R]];
     for(const d of model.dims){
       const seg={slant:[i2,o2],'arc-outer':arcMid(Ro),'arc-inner':arcMid(Ri),'radius-large':[[large.cx,large.cy],[large.cx+large.r,large.cy]],'radius-small':[[small.cx,small.cy],[small.cx+small.r,small.cy]]}[d.part];
@@ -3270,8 +3284,8 @@ function renderPrims(spec,model){
   // fills first
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-face'))body+=`<g data-layer="10"><polygon id="${p.id}" data-role="net-face" data-face="${p.face}" fill="#f4f6fa" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='sector'))body+=`<g data-layer="10"><path id="${p.id}" data-role="net-face" data-face="sector" data-angle="${p.angleDeg}" data-radius-px="${p.radius}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" d="M ${p.apex.join(' ')} L ${p.p1.join(' ')} A ${p.radius} ${p.radius} 0 ${p.large} 0 ${p.p2.join(' ')} Z"/></g>`;
-  for(const p of spec.prims.filter(p=>p.t==='ring'))body+=`<g data-layer="10"><path id="${p.id}" data-role="net-face" data-face="side" data-angle="${p.angleDeg}" data-outer-px="${p.outer}" data-inner-px="${p.inner}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" d="M ${p.i1.join(' ')} L ${p.o1.join(' ')} A ${p.outer} ${p.outer} 0 ${p.large} 0 ${p.o2.join(' ')} L ${p.i2.join(' ')} A ${p.inner} ${p.inner} 0 ${p.large} 1 ${p.i1.join(' ')} Z"/></g>`;
-  for(const p of spec.prims.filter(p=>p.t==='circle'))body+=`<g data-layer="12"><circle id="${p.id}" data-role="net-circle" data-part="${p.part}"${p.excluded?' data-excluded="1"':''} fill="${p.excluded?'#fff':'#f4f6fa'}" stroke="${p.excluded?'#888':'#111'}" stroke-width="1.6"${p.excluded?' stroke-dasharray="5 4"':''} cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='ring'))body+=`<g data-layer="10"><path id="${p.id}" data-role="net-face" data-face="side" data-angle="${p.angleDeg}" data-outer-px="${p.outer}" data-inner-px="${p.inner}"${p.fill?` data-fill="${p.fill}"`:''} fill="${p.fill?HIGHLIGHT_FILLS[p.fill][0]:'#f4f6fa'}"${p.fill?` fill-opacity="${HIGHLIGHT_FILLS[p.fill][1]}"`:''} stroke="#111" stroke-width="1.6" d="M ${p.i1.join(' ')} L ${p.o1.join(' ')} A ${p.outer} ${p.outer} 0 ${p.large} 0 ${p.o2.join(' ')} L ${p.i2.join(' ')} A ${p.inner} ${p.inner} 0 ${p.large} 1 ${p.i1.join(' ')} Z"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='circle'))body+=`<g data-layer="12"><circle id="${p.id}" data-role="net-circle" data-part="${p.part}"${p.excluded?' data-excluded="1"':''}${p.fill?` data-fill="${p.fill}"`:''} fill="${p.fill?HIGHLIGHT_FILLS[p.fill][0]:p.excluded?'#fff':'#f4f6fa'}"${p.fill?` fill-opacity="${HIGHLIGHT_FILLS[p.fill][1]}"`:''} stroke="${p.excluded?'#888':'#111'}" stroke-width="1.6"${p.excluded?' stroke-dasharray="5 4"':''} cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-highlight'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="net-highlight" data-face="${p.face}" data-fill="${p.fill}" fill="${HIGHLIGHT_FILLS[p.fill][0]}" fill-opacity="${HIGHLIGHT_FILLS[p.fill][1]}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='space-plane')){
     const [color,opacity]=HIGHLIGHT_FILLS[p.fill];

@@ -2711,6 +2711,7 @@ def check_height_feet_and_poly_lines(plan, ctx):
         for m in range(2): ctx['segments'].append((pts[m], pts[m + 1]))
 
 
+HIGHLIGHT_COLOURS = {'LIGHT': ('#7fa6e8', 0.32), 'MEDIUM': ('#7fa6e8', 0.55), 'WARM': ('#f2a65a', 0.42), 'GREEN': ('#6fcf97', 0.42), 'ROSE': ('#e98aa8', 0.42), 'VIOLET': ('#a78bdb', 0.42)}
 OUTSIDE_STEP = 64.0   # px: each further dimension on one side of one round solid stands this much further out
 SEGMENT_LINE_FIRST = 22.0   # px: the dimension line of an edge length written with dims[].line (tier 1) stands this far from the edge, sideways
 
@@ -4029,6 +4030,15 @@ def audit_cone_frustum_net(plan, ctx, declared):
     if abs(math.hypot(xl - ax, yl - ay) - (Ro + rl)) > POS_TOL * 1.5 or abs((xl - ax) * axis[1] - (yl - ay) * axis[0]) > POS_TOL * 1.5: errors.append('SOLID_NET_CIRCLE_NOT_TANGENT:large')
     if abs(math.hypot(xs - ax, ys - ay) - (Ri - rs)) > POS_TOL * 1.5 or abs((xs - ax) * axis[1] - (ys - ay) * axis[0]) > POS_TOL * 1.5 or (xs - ax) * axis[0] + (ys - ay) * axis[1] < -POS_TOL: errors.append('SOLID_NET_CIRCLE_NOT_TANGENT:small')
     check_excluded_circles(net, circles, ['large', 'small'], errors)
+    # net.highlights: exactly the listed parts are tinted with the listed fill (data-fill and the colour of the fill), the others stay plain
+    want_fill = {}
+    for h in net.get('highlights') or []:
+        if h.get('face') not in ('side', 'large', 'small') or h.get('face') in want_fill or (h.get('fill') or 'LIGHT') not in HIGHLIGHT_COLOURS: errors.append('SOLID_NET_HIGHLIGHT_PLAN_INVALID')
+        else: want_fill[h['face']] = h.get('fill') or 'LIGHT'
+    for face, el in (('side', ring), ('large', circles['large']), ('small', circles['small'])):
+        fill = el.get('data-fill')
+        if fill != want_fill.get(face): errors.append('SOLID_NET_HIGHLIGHT_MISMATCH:' + face)
+        elif fill is not None and ((el.get('fill') or '').lower() != HIGHLIGHT_COLOURS[fill][0] or abs(float(el.get('fill-opacity') or 0) - HIGHLIGHT_COLOURS[fill][1]) > 1e-9): errors.append('SOLID_NET_HIGHLIGHT_COLOUR:' + face)
     ctx['face_label_plan'] = {e.get('face'): e for e in net.get('faceLabels') or []}
     ctx['face_areas'] = {'side': math.pi * (R + r) * l, 'large': math.pi * R * R, 'small': math.pi * r * r}
     a1 = math.atan2(o1[1] - ay, o1[0] - ax)
