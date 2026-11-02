@@ -622,6 +622,11 @@ body.dark #app-drawer .drw-item:focus-visible {
         backdrop-filter: blur(12px) !important;
         -webkit-backdrop-filter: blur(12px) !important;
     }
+    /* ☰ 버튼이 56x58 칸 전체라 기본 포커스 링(바깥 2px)이 서랍 가장자리에서 잘린다. 칸 안쪽으로 그린다. */
+    #app-drawer:not(.drw-expanded) .drw-rail-toggle:focus-visible {
+        outline: 2px solid var(--primary) !important;
+        outline-offset: -3px !important;
+    }
     #app-drawer.drw-expanded .drw-top-tools {
         position: sticky !important;
         top: 0 !important;
