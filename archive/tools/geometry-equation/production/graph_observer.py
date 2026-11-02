@@ -2580,6 +2580,9 @@ def _ov_curve_value(plan,value,curve_id=None):
     if family=='sqrt-affine':
         radicand=sum((_ov_reader(c)*value**i for i,c in enumerate(plan['radicand'])),S.Integer(0))
         if radicand<0:raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+        if any(plan.get(key) is not None for key in ('amplitude','sign','offset')):
+            # (G18b) the general square root y = offset + sign*amplitude*sqrt(radicand): the point of curveX is on that curve, not on the bare root
+            fields=_sqrt_general_fields(plan);return fields[4]+fields[5]*S.sqrt(radicand)
         return S.sqrt(radicand)
     if family=='absolute-value':
         b,a,scale,offset=(_ov_reader(item) for item in plan['coefficients'])

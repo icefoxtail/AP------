@@ -3071,6 +3071,9 @@ def _overlay_curve_exact(plan,x_value,curve_id=None):
         if family=='sqrt-affine':
             radicand=sum((_overlay_exact(c,'curve')*x_value**i for i,c in enumerate(plan['radicand'])),S.Integer(0))
             if radicand<0:_overlay_fail('OVERLAY_POINT_NOT_ON_CURVE',str(x_value))
+            if any(plan.get(key) is not None for key in ('amplitude','sign','offset')):
+                # (G18b) the general square root y = offset + sign*amplitude*sqrt(radicand): the point of curveX is on that curve, not on the bare root
+                fields=_sqrt_affine_general_fields(plan);return fields[4]+fields[5]*S.sqrt(radicand)
             return S.sqrt(radicand)
         if family=='absolute-value':
             b,a,scale,offset=(_overlay_exact(value,'curve') for value in plan['coefficients'])
