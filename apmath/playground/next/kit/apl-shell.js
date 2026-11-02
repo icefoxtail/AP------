@@ -291,21 +291,31 @@
       }
       // 탭
       ui.tabs.innerHTML = '';
-      const avail = TABS.filter((t) => this._tabAvailable(t.id));
+      // 장면이 sc.tabs = { order: ['explore','problem','review'], labels: { review: '풀이' } } 를 주면 탭 순서·이름을 바꿉니다(선택 사항 · 생략하면 탐구·정리·문제).
+      const tcfg = sc.tabs || {};
+      const tabOrder = tcfg.order ? tcfg.order.map((id) => TABS.find((t) => t.id === id)).filter(Boolean) : TABS;
+      const avail = tabOrder.filter((t) => this._tabAvailable(t.id));
       ui.tabs.hidden = avail.length < 2;
       for (const t of avail) {
         const n = t.id === 'review' && sc.steps ? `<span class="cnt">${call(sc.steps, this.s).length}단계</span>` : '';
-        ui.tabs.append(h('button', { class: 'apl-tab', role: 'tab', 'aria-selected': String(this.tab === t.id), 'aria-controls': 'apl-pane-' + t.id, html: `${t.label}${n}`, onclick: () => this.setTab(t.id) }));
+        const lbl = (tcfg.labels && tcfg.labels[t.id]) || t.label;
+        ui.tabs.append(h('button', { class: 'apl-tab', role: 'tab', 'aria-selected': String(this.tab === t.id), 'aria-controls': 'apl-pane-' + t.id, html: `${lbl}${n}`, onclick: () => this.setTab(t.id) }));
       }
       for (const t of TABS) ui.panes[t.id].hidden = this.tab !== t.id;
       this._buildExplore();
       this._buildReview();
       this._buildProblem();
+      this._syncTabAttr();
       this._dirtyPanel = true;
+    }
+    // 선택 사항: sc.tabs 를 쓰는 장면은 머리말에 data-tab 을 달아 탭마다 머리말 모양을 달리할 수 있게 합니다
+    _syncTabAttr() {
+      if (this.scene && this.scene.tabs) this.ui.head.dataset.tab = this.tab; else delete this.ui.head.dataset.tab;
     }
     setTab(id) {
       if (!this._tabAvailable(id)) return;
       this.tab = id;
+      this._syncTabAttr();
       APLab.$$('.apl-tab', this.ui.tabs).forEach((b) => b.setAttribute('aria-selected', String(b.getAttribute('aria-controls') === 'apl-pane-' + id)));
       for (const t of TABS) this.ui.panes[t.id].hidden = this.tab !== t.id;
       this.invalidate(true);
@@ -416,12 +426,15 @@
       const r = this.refs;
       const steps = call(sc.steps, this.s);
       r.stepsSig = JSON.stringify(steps || null); // 마지막으로 만든 단계 글: _renderPanel이 현재 글과 비교해 달라졌을 때만 다시 만듭니다
+      const rt = sc.reviewTitles || {}; // 선택 사항: { steps, solution } 소제목 바꾸기
+      r.top = null;
+      if (sc.reviewTop) { r.top = h('div', { class: 'apl-section apl-review-top' }); r.top.__h = null; pane.append(r.top); } // 선택 사항: 풀이 탭 맨 위에 문제 다시 보기
       if (steps && steps.length) {
         r.steps = h('div', { class: 'apl-steps' });
         r.stepPrev = h('button', { class: 'apl-btn sm', html: icon('prev') + '<span>이전</span>', onclick: () => this.stepBy(-1) });
         r.stepNext = h('button', { class: 'apl-btn sm primary', html: '<span>다음 단계</span>' + icon('next'), onclick: () => this.stepBy(1) });
         r.stepAll = h('button', { class: 'apl-btn sm ghost', text: '모두 보기', onclick: () => this.setStep(steps.length) });
-        pane.append(this._section('단계별로 그림에 나타내기', 'layers', r.steps, h('div', { class: 'apl-step-ctl' }, r.stepPrev, r.stepNext, r.stepAll)));
+        pane.append(this._section(rt.steps || '단계별로 그림에 나타내기', 'layers', r.steps, h('div', { class: 'apl-step-ctl' }, r.stepPrev, r.stepNext, r.stepAll)));
         steps.forEach((t, i) => {
           const b = h('button', { class: 'apl-step', html: `<span class="n">${i + 1}</span><span>${APLab.renderMath(APLab.esc(String(t).replace(/^Step\s*\d+\s*·\s*/, '')).replace(/&amp;/g, '&'))}</span>`, onclick: () => this.setStep(i + 1) });
           r.steps.append(b);
@@ -443,10 +456,10 @@
           if (open) this._fillSolution(body, sol[key]);
           return det;
         };
-        r.solution.append(
-          h('h3', { class: 'apl-section-h', html: `<span>${icon('bulb')}두 가지 풀이 비교</span>` }),
+        r.solution.append(...[
+          h('h3', { class: 'apl-section-h', html: `<span>${icon('bulb')}${APLab.esc(rt.solution || '두 가지 풀이 비교')}</span>` }),
           mk('standard', sol.standardTitle || '기본 풀이', sol.standardTag || '기본', 'sky', false),
-          mk('quick', sol.quickTitle || '빠른 풀이 · 핵심 원리', sol.quickTag || '핵심', 'amber', false));
+          mk('quick', sol.quickTitle || '빠른 풀이 · 핵심 원리', sol.quickTag || '핵심', 'amber', false)].filter(Boolean)); // 한쪽 풀이만 있으면 빈 칸(null)을 붙이지 않습니다
         pane.append(r.solution);
       }
       Array.from(pane.querySelectorAll('details.apl-acc')).forEach((d, i) => { if (openSol[i]) d.open = true; });
@@ -478,7 +491,7 @@
         meta.append(r.timerBtn);
       }
       r.problemText = h('div', { class: 'apl-problem-text' });
-      r.answer = h('div', { class: 'apl-answer' });
+      r.answer = pr.noAnswer ? null : h('div', { class: 'apl-answer' }); // pr.noAnswer: 잠긴 정답 칸을 만들지 않습니다(문제 글이 정답 보기 단추를 직접 둡니다)
       const snapBtn = pr.snap ? h('button', { class: 'apl-btn block', html: icon('target') + '<span>문제 조건으로 그림 맞추기</span>', onclick: () => this.snap() }) : null;
       pane.append(h('div', { class: 'apl-card apl-problem' }, meta, r.problemText, snapBtn, r.answer));
       if (pr.note) pane.append(h('div', { class: 'apl-note-line', html: APLab.renderMath(call(pr.note, this.s)) }));
@@ -781,6 +794,17 @@
         });
         r.stepPrev.disabled = s.step <= 0;
         r.stepNext.disabled = s.step >= steps.length;
+        // 선택 사항(sc.reviewTop 을 쓰는 풀이 흐름): 단계가 바뀌면 지금 단계가 화면 안에 보이도록 페이지를 조금 옮깁니다
+        if (sc.reviewTop && this.tab === 'review' && r.__stepSeen !== s.step) {
+          r.__stepSeen = s.step;
+          const cur = r.steps.querySelector('.cur');
+          if (cur) {
+            const rc = cur.getBoundingClientRect(), vh = window.innerHeight;
+            const topLim = NARROW.matches ? this.ui.stage.getBoundingClientRect().bottom + 8 : 60;
+            if (rc.bottom > vh - 8) window.scrollBy({ top: rc.bottom - vh + 16, behavior: 'instant' });
+            else if (rc.top < topLim) window.scrollBy({ top: rc.top - topLim - 8, behavior: 'instant' });
+          }
+        }
       }
       const formula = v.formula;
       r.formulaSec.hidden = !formula;
@@ -793,9 +817,12 @@
       r.notesSec.hidden = !v.notes;
       if (v.notes) APLab.setHTML(r.notes, v.notes);
       // 문제 탭
+      if (r.top && sc.reviewTop) APLab.setHTML(r.top, call(sc.reviewTop, s));
       const pr = sc.problem;
       if (pr && r.problemText) {
         APLab.setHTML(r.problemText, call(pr.text, s));
+      }
+      if (pr && r.problemText && r.answer) {
         const open = this._answerOpen();
         r.answer.classList.toggle('open', open);
         const html = open
