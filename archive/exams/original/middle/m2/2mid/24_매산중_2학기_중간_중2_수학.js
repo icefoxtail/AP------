@@ -389,7 +389,7 @@ window.questionBank = [
     "content": "다음 사각형 중 평행사변형이 아닌 것은? [4점]",
     "choices": [],
     "answer": "⑤",
-    "solution": "[키포인트] 평행사변형 판정 조건을 보기마다 확인하고, ③은 보조점을 잡아 두 번째 대각선도 이등분됨을 증명한다.\n①은 두 쌍의 대변의 길이가 각각 같으므로 평행사변형이다. ②는 두 $80^\\circ$가 엇각이므로 왼쪽 변과 오른쪽 변이 평행하고, 두 $20^\\circ$도 엇각이므로 윗변과 아랫변이 평행하다. 따라서 평행사변형이다. ③에서 $AO=OC$이고 $OE=OD$이므로 사각형 $AECD$의 두 대각선 $AC$, $ED$는 서로를 이등분한다. 따라서 $AECD$는 평행사변형이고 $EC=AD=5$이다. 한편 $BC=5$이므로 $EC=BC$이다. 또 $B$와 $E$는 모두 반직선 $OB$ 위에 있고 $CO=2\\lt5$이므로 점 $O$는 중심이 $C$이고 반지름이 $5$인 원의 내부에 있다. 원의 내부에 있는 점에서 시작한 반직선은 원과 진행 방향에서 한 점에서만 만나므로 $E$와 $B$는 같은 점이다. 따라서 $OB=OE=OD$이다. 이미 $AO=OC$이므로 사각형 $ABCD$의 두 대각선은 서로를 이등분하고, $ABCD$는 평행사변형이다. ④는 한 쌍의 대변의 길이가 모두 $6$이고, 두 $70^\\circ$가 엇각이므로 그 두 대변이 평행하다. 따라서 한 쌍의 대변이 평행하고 그 길이도 같으므로 평행사변형이다. ⑤는 한 쌍의 이웃각의 합이 $55^\\circ+125^\\circ=180^\\circ$이지만, 이 조건만으로는 두 쌍의 대변이 모두 평행하다고 할 수 없다.\n따라서 정답은 ⑤이다.",
+    "solution": "평행사변형이 되는 조건을 각 그림에서 확인한다.\n\n① 두 쌍의 대변의 길이가 각각 같으므로 평행사변형이다.\n\n② 두 $80^\\circ$가 엇각으로 같으므로 왼쪽 변과 오른쪽 변이 평행하다.\n두 $20^\\circ$도 엇각으로 같으므로 윗변과 아랫변이 평행하다.\n따라서 두 쌍의 대변이 각각 평행하여 평행사변형이다.\n\n③ $AO=OC$, $OE=OD$이므로 사각형 $AECD$의 두 대각선 $AC$, $ED$는 서로를 이등분한다.\n따라서 $AECD$는 평행사변형이고 $EC=AD=5$이다.\n그런데 $BC=5$이므로 $EC=BC$이다.\n또 $B$, $E$는 모두 반직선 $OB$ 위에 있고 $CO=2\\lt5$이다.\n점 $O$는 중심이 $C$이고 반지름이 $5$인 원의 내부에 있으므로, 반직선 $OB$가 이 원과 만나는 점은 한 개뿐이다.\n$CE=CB=5$이므로 두 점은 일치하여 $E=B$이다.\n따라서 $OB=OE=OD$이고, 이미 $AO=OC$이다.\n사각형 $ABCD$의 두 대각선이 서로를 이등분하므로 평행사변형이다.\n\n④ 한 쌍의 대변 길이가 모두 $6$이고, 두 $70^\\circ$가 엇각으로 같아 그 두 대변이 평행하다.\n따라서 한 쌍의 대변이 평행하고 그 길이도 같으므로 평행사변형이다.\n\n⑤ 이웃한 두 각의 합은 $55^\\circ+125^\\circ=180^\\circ$이지만, 이 조건은 한 쌍의 대변만 평행해도 성립한다.\n따라서 두 쌍의 대변이 평행하다고 단정할 수 없다.\n\n그러므로 평행사변형이 아닌 것은 ⑤이다.",
     "image": "assets/images/24_매산중_2학기_중간_중2_수학/q10.png",
     "imageSize": "tall",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
@@ -758,7 +758,7 @@ window.questionBank = [
       "$22\\mathrm{cm}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 서로 수직인 두 쌍의 직선에서 생기는 닮은 직각삼각형을 두 번 이용한다.\n$\\angle DCE=\\angle FBE=90^\\circ$이다. 또 $DE\\perp EF$, $CE\\perp BF$이므로 $\\angle CED=\\angle BFE$이다. 따라서 $\\triangle CDE\\sim\\triangle BFE$이다. 대응변에서 $CD:BE=CE:BF$이므로 $18:15=9:BF$이다. 따라서 $BF=\\dfrac{15}{2}\\mathrm{cm}$이다. 그러므로 $AF=18-\\dfrac{15}{2}=\\dfrac{21}{2}\\mathrm{cm}$이다. 이제 $AF$와 $BF$는 같은 직선 위에 있고 $AH\\parallel BE$이므로 $\\triangle AFH\\sim\\triangle BFE$이다. 따라서 $AH:BE=AF:BF=\\dfrac{21}{2}:\\dfrac{15}{2}=7:5$이다. $BE=15$이므로 $AH=15\\times\\dfrac{7}{5}=21\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
+    "solution": "직사각형에서 $BC=24\\mathrm{cm}$이고 $BE:CE=5:3$이므로\n$BE=24\\cdot\\dfrac58=15\\mathrm{cm}$,\n$CE=24\\cdot\\dfrac38=9\\mathrm{cm}$이다.\n\n먼저 $\\triangle CDE$와 $\\triangle BFE$를 비교한다.\n$\\angle DCE=\\angle FBE=90^\\circ$이다.\n또 $DE\\perp EF$, $CE\\perp BF$이므로 $\\angle CED=\\angle BFE$이다.\n따라서 두 삼각형은 AA 닮음이다.\n\n대응변의 길이의 비를 쓰면\n$CD:BE=CE:BF$\n$18:15=9:BF$\n$18\\cdot BF=135$\n$BF=\\dfrac{15}{2}\\mathrm{cm}$이다.\n따라서\n$AF=AB-BF=18-\\dfrac{15}{2}=\\dfrac{21}{2}\\mathrm{cm}$이다.\n\n다음으로 $AH\\parallel BE$, $AF$와 $BF$는 같은 직선 위에 있고 $H,E,F$도 한 직선 위에 있으므로\n$\\triangle AFH\\sim\\triangle BFE$이다.\n대응변의 비에서\n$AH:BE=AF:BF$\n$AH:15=\\dfrac{21}{2}:\\dfrac{15}{2}=7:5$\n$AH=15\\cdot\\dfrac75=21\\mathrm{cm}$이다.\n\n따라서 정답은 ④이다.",
     "image": "assets/images/24_매산중_2학기_중간_중2_수학/q19.png",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
@@ -799,7 +799,7 @@ window.questionBank = [
       "$7:2$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 정삼각형의 $60^\\circ$와 $\\angle ADE=60^\\circ$를 이용해 $\\triangle ADC$와 $\\triangle EDB$의 닮음을 만든다.\n$\\angle BAD=\\alpha$라 하자. 그러면 $\\angle CAD=60^\\circ-\\alpha$이다. 삼각형 $ABD$에서 $\\angle ADB=120^\\circ-\\alpha$이고, $\\angle ADE=60^\\circ$이므로 $\\angle BDE=60^\\circ-\\alpha$이다. 또 삼각형 $ADE$에서 $\\angle AED=120^\\circ-\\alpha$이므로 $A,E,B$가 한 직선 위에 있는 것을 이용하면 $\\angle BED=60^\\circ+\\alpha$이다. 한편 삼각형 $ADC$에서 $\\angle ACD=60^\\circ$, $\\angle CAD=60^\\circ-\\alpha$이므로 $\\angle ADC=60^\\circ+\\alpha$이다. 따라서 $\\triangle ADC\\sim\\triangle EDB$이다. $DC=1$, $BD=2$로 두면 정삼각형의 한 변 $AC=BC=3$이다. 닮음에서 $AC:DB=DC:EB$이므로 $3:2=1:EB$이고 $EB=\\dfrac{2}{3}$이다. 따라서 $AE=AB-EB=3-\\dfrac{2}{3}=\\dfrac{7}{3}$이므로 $AE:EB=\\dfrac{7}{3}:\\dfrac{2}{3}=7:2$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "정삼각형 $ABC$의 세 각은 모두 $60^\\circ$이다.\n$\\angle BAD=\\alpha$라 놓으면\n$\\angle CAD=60^\\circ-\\alpha$이다.\n\n$\\triangle ABD$에서\n$\\angle ADB=180^\\circ-60^\\circ-\\alpha=120^\\circ-\\alpha$이다.\n$\\angle ADE=60^\\circ$이므로\n$\\angle BDE=(120^\\circ-\\alpha)-60^\\circ=60^\\circ-\\alpha$이다.\n\n한편 $\\triangle ADE$에서\n$\\angle AED=180^\\circ-\\alpha-60^\\circ=120^\\circ-\\alpha$이다.\n$A,E,B$가 한 직선 위에 있으므로\n$\\angle BED=180^\\circ-(120^\\circ-\\alpha)=60^\\circ+\\alpha$이다.\n또 $\\triangle ADC$에서\n$\\angle ADC=180^\\circ-60^\\circ-(60^\\circ-\\alpha)=60^\\circ+\\alpha$이다.\n\n따라서 $\\angle EBD=\\angle DCA=60^\\circ$,\n$\\angle BED=\\angle CDA=60^\\circ+\\alpha$이므로\n$\\triangle EBD\\sim\\triangle DCA$이다. (AA 닮음)\n\n$BD:DC=2:1$이므로 $DC=1$, $BD=2$로 놓으면\n정삼각형의 한 변은 $BC=AB=AC=3$이다.\n닮음비에서\n$EB:DC=BD:CA$\n$EB:1=2:3$\n$EB=\\dfrac23$이다.\n\n따라서\n$AE=AB-EB=3-\\dfrac23=\\dfrac73$이고,\n$AE:EB=\\dfrac73:\\dfrac23=7:2$이다.\n정답은 ⑤이다.",
     "image": "assets/images/24_매산중_2학기_중간_중2_수학/q20.png",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
