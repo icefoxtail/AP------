@@ -1,0 +1,78 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "5",
+   "3"
+  ],
+  "denominator": [
+   "2",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -9,
+   5
+  ],
+  "viewport": [
+   -9,
+   5,
+   -4,
+   10
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "asymptoteLabelAt": "END",
+  "overlays": {
+   "lines": [
+    {
+     "id": "l1",
+     "slope": "1",
+     "intercept": "5",
+     "label": "y=x+5",
+     "color": "BLUE"
+    },
+    {
+     "id": "l2",
+     "slope": "-1",
+     "intercept": "1",
+     "label": "y=-x+1",
+     "color": "BLUE"
+    }
+   ],
+   "points": [
+    {
+     "id": "C",
+     "x": "-2",
+     "y": "3",
+     "coordinates": true
+    }
+   ]
+  },
+  "verticalAsymptoteLabelAt": "BOTTOM_LEFT",
+  "equalUnits": true,
+  "hideLabels": [
+   "formula"
+  ]
+ },
+ "pointNames": {
+  "C": "C"
+ },
+ "caption": "a=-2일 때 y=(3x+5)/(x+2)=3-1/(x+2)의 중심 C(-2,3)을 두 대칭축 y=x+5, y=-x+1이 지난다.",
+ "sourceQuote": "두 점근선은 $x=a$, $y=3$이므로 중심은",
+ "sourceConditions": [
+  "y=(3x+5)/(x-a)=3+(3a+5)/(x-a)",
+  "중심 (a,3)",
+  "a=-2"
+ ],
+ "newVisualInformation": [
+  "점근선 x=-2, y=3",
+  "중심 C(-2,3)",
+  "대칭축이 중심을 지남"
+ ]
+}
