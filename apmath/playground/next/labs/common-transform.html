@@ -99,6 +99,9 @@ window.addEventListener('DOMContentLoaded', function () {
   const dot = (b, p, label, color = 'ink', o = {}) => b.point(p, { color, r: 5, label, size: 13, ...o });
   const par = (v) => (v < 0 ? `(${nt(v)})` : nt(v)); // 수식 속 음수는 괄호로 감쌉니다
   const sgn = (v, name) => (v === 0 ? name : v > 0 ? `${name}-${nt(v)}` : `${name}+${nt(-v)}`); // x − a 꼴 문자열 (a=−2이면 x+2)
+  /** 화면 왼쪽 위에 색깔 범례(선의 이름표). 그림이 좁아도 선 이름이 가려지지 않게 화면 좌표로 씁니다. */
+  function legend(b, items) { const y0 = (b.insets.top || 0) + 18; items.forEach(([c, t], i) => b.stext(10, y0 + i * 17, t, { color: c, size: 12.5, align: 'left' })); }
+  const plainEq = (t) => String(t).replace(/\^2/g, '²').replace(/-/g, '−').replace(/=/g, ' = ').replace(/\\/g, '');
   const REF = { x: (p) => P(p.x, -p.y), y: (p) => P(-p.x, p.y), o: (p) => P(-p.x, -p.y), d: (p) => P(p.y, p.x) };
   const RNAME = { x: 'x축', y: 'y축', o: '원점', d: '직선 y = x' };
 
@@ -143,7 +146,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const [vx, vy] = v(p, q), [wx, wy] = v(p2, q2), eqT = (pp, qq) => `y=x^2${pp === 0 ? '' : pp > 0 ? `+${pp === 1 ? '' : pp}x` : `-${pp === -1 ? '' : -pp}x`}${qq === 0 ? '' : qq > 0 ? `+${qq}` : `${qq}`}`;
     const vf = (x0, y0) => `y=(${sgn(x0, 'x')})^2${y0 === 0 ? '' : y0 > 0 ? `+${y0}` : `${y0}`}`;
     return {
-      kind: 'find', orig: { t: 'para', vx, vy }, img: { t: 'para', vx: wx, vy: wy }, a, b: bb, ans: a + bb, box: { x: [Math.min(vx, wx) - 4.5, Math.max(vx, wx) + 4.5], y: [Math.min(vy, wy) - 2.5, Math.max(vy, wy) + 7] },
+      kind: 'find', origLab: plainEq(eqT(p, q)), imgLab: plainEq(eqT(p2, q2)), orig: { t: 'para', vx, vy }, img: { t: 'para', vx: wx, vy: wy }, a, b: bb, ans: a + bb, box: { x: [Math.min(vx, wx) - 4.5, Math.max(vx, wx) + 4.5], y: [Math.min(vy, wy) - 2.5, Math.max(vy, wy) + 7] },
       text: `이차함수 ${tex(eqT(p, q))}의 그래프를 ${tex('x')}축의 방향으로 ${tex('a')}만큼, ${tex('y')}축의 방향으로 ${tex('b')}만큼 평행이동하였더니 이차함수 ${tex(eqT(p2, q2))}의 그래프가 되었다. ${tex('a+b')}의 값을 구하시오.`,
       steps: [
         `두 포물선의 꼭짓점을 비교합니다. $${vf(vx, vy)}$ → 꼭짓점 $${pT(P(vx, vy))}$, 이동 후 $${vf(wx, wy)}$ → 꼭짓점 $${pT(P(wx, wy))}$`,
@@ -167,7 +170,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (ask === 'ab') {
       const img = `(${sgn(nc.x, 'x')})^2+(${sgn(nc.y, 'y')})^2=${r * r}`;
       return {
-        kind: 'find', orig: { t: 'circ', cx, cy, r }, img: { t: 'circ', cx: nc.x, cy: nc.y, r }, a, b: bb, ans: a + bb, box: boxOf([P(cx, cy), nc, P(cx - r, cy - r), P(nc.x + r, nc.y + r)], 3),
+        kind: 'find', origLab: '원 ' + plainEq(std), imgLab: '원 ' + plainEq(img), orig: { t: 'circ', cx, cy, r }, img: { t: 'circ', cx: nc.x, cy: nc.y, r }, a, b: bb, ans: a + bb, box: boxOf([P(cx, cy), nc, P(cx - r, cy - r), P(nc.x + r, nc.y + r)], 3),
         text: `원 ${tex(std)}을 ${tex('x')}축의 방향으로 ${tex('a')}만큼, ${tex('y')}축의 방향으로 ${tex('b')}만큼 평행이동하였더니 원 ${tex(img)}이 되었다. ${tex('a+b')}의 값을 구하시오.`,
         steps: [
           `두 원의 중심을 비교합니다. 이동 전 중심 $${pT(P(cx, cy))}$, 이동 후 중심 $${pT(nc)}$ (반지름 ${r}은 그대로)`,
@@ -182,7 +185,7 @@ window.addEventListener('DOMContentLoaded', function () {
       };
     }
     return {
-      kind: 'ask', orig: { t: 'circ', cx, cy, r }, img: { t: 'circ', cx: nc.x, cy: nc.y, r }, a, b: bb, nc, ans: nc.x + nc.y + r, box: boxOf([P(cx, cy), nc, P(cx - r, cy - r), P(nc.x + r, nc.y + r)], 2.6),
+      kind: 'ask', origLab: '원 ' + plainEq(std), imgLab: '이동한 원', orig: { t: 'circ', cx, cy, r }, img: { t: 'circ', cx: nc.x, cy: nc.y, r }, a, b: bb, nc, ans: nc.x + nc.y + r, box: boxOf([P(cx, cy), nc, P(cx - r, cy - r), P(nc.x + r, nc.y + r)], 2.6),
       text: `원 ${tex(gen)}을 ${mv}평행이동한 원의 중심을 ${tex('(p,\\ q)')}, 반지름을 ${tex('r')}이라 할 때, ${tex('p+q+r')}의 값을 구하시오.`,
       steps: [
         `표준형으로 고칩니다: $${std}$ → 중심 $${pT(P(cx, cy))}$, 반지름 $${r}$`,
@@ -209,8 +212,13 @@ window.addEventListener('DOMContentLoaded', function () {
     drawShape(b, co, { color: 'ink', width: 3 });
     const given = q.kind === 'find';
     if (given || st >= 2) drawShape(b, q.img, { color: 'amber', width: 3 });
-    b.text(co.t === 'para' ? P(co.vx + 2.1, co.vy + 4.4) : P(cc.x - co.r * 0.75, cc.y - co.r * 0.95), '이동 전', { color: 'ink', size: 12.5, dy: 14 });
-    if (given || st >= 2) b.text(q.img.t === 'para' ? P(q.img.vx + 2.1, q.img.vy + 4.4) : P(ci.x + q.img.r * 0.75, ci.y + q.img.r * 0.95), '이동 후', { color: 'amber', size: 12.5, dy: -10 });
+    const lab1 = q.origLab || '이동 전', lab2 = q.imgLab || '이동 후';
+    if (co.t === 'para') {
+      b.text(P(co.vx + 2.2, co.vy + 4.84), lab1, { color: 'ink', size: 12.5, dx: 8, align: 'left' });
+      if (given || st >= 2) b.text(P(q.img.vx + 2.6, q.img.vy + 6.76), lab2, { color: 'amber', size: 12.5, dx: 8, align: 'left' });
+    } else {
+      legend(b, [['ink', '검은 ' + lab1], ...((given || st >= 2) ? [['amber', '주황 ' + lab2]] : [])]);
+    }
     if (st >= 1) {
       const up = q.b >= 0, nmv = co.t === 'para' ? '꼭짓점' : '중심';
       b.point(cc, { color: 'ink', r: 5, label: `${nmv}${pS(cc)}`, dx: 0, dy: up ? 20 : -20, align: 'center', size: 12.5 });
@@ -273,10 +281,11 @@ window.addEventListener('DOMContentLoaded', function () {
   const RCOL = { x: 'sky', y: 'rose', o: 'violet', d: 'green' };
   function mirrorDraw(b, key, o = {}) {
     const col = o.color || RCOL[key], w = o.width || 3, al = o.alpha == null ? 0.9 : o.alpha;
-    if (key === 'x') b.hline(0, { color: col, width: w, alpha: al, ref: o.ref });
-    else if (key === 'y') b.vline(0, { color: col, width: w, alpha: al, ref: o.ref });
+    const vbm = b.viewBox(), fx = vbm.x1 - (vbm.x1 - vbm.x0) * 0.1, fy = vbm.y1 - (vbm.y1 - vbm.y0) * 0.07;
+    if (key === 'x') { b.hline(0, { color: col, width: w, alpha: al, ref: o.ref }); b.text(P(fx, 0), 'x축', { color: col, size: 13, dy: -12, align: 'right' }); }
+    else if (key === 'y') { b.vline(0, { color: col, width: w, alpha: al, ref: o.ref }); b.text(P(0, fy), 'y축', { color: col, size: 13, dx: 10, align: 'left' }); }
     else if (key === 'd') { b.line(P(0, 0), 1, { color: col, width: w, alpha: al, dash: true, ref: o.ref }); const vb = b.viewBox(), t = vb.x1 - (vb.x1 - vb.x0) * 0.1; b.text(P(Math.min(t, vb.y1 - 0.5), Math.min(t, vb.y1 - 0.5)), 'y = x', { color: col, size: 13, dx: -4, dy: 16, align: 'right' }); }
-    else b.point(P(0, 0), { color: col, r: 7, ref: o.ref });
+    else { b.point(P(0, 0), { color: col, r: 7, ref: o.ref }); b.text(P(0, 0), '원점 O', { color: col, size: 13, dx: 11, dy: 20, align: 'left' }); }
   }
   function drawReflect(b, s) {
     const k = s.ref, P0 = P(s.rp.x, s.rp.y), P1 = REF[k](P0), C0 = P(s.rc.x, s.rc.y), C1 = REF[k](C0), M = midP(P0, P1), col = RCOL[k];
@@ -367,8 +376,9 @@ window.addEventListener('DOMContentLoaded', function () {
     } else if (q.kind === 'ctr') {
       mirrorDraw(b, q.m, { color: 'green' });
       b.circle(P(q.cx, q.cy), q.r, { color: 'ink', width: 3 });
+      b.text(P(q.cx, q.cy + q.r), `원 ${plainEq(`(${sgn(q.cx, 'x')})^2+(${sgn(q.cy, 'y')})^2=${q.r * q.r}`)}`, { color: 'ink', size: 12.5, dy: -10 });
       if (st >= 1) { b.seg(P(q.cx, q.cy), q.C1, { color: 'green', width: 1.5, dash: true }); b.point(P(q.cx, q.cy), { color: 'ink', r: 4.5, label: pS(P(q.cx, q.cy)), ...away(P(q.cx, q.cy), q.C1, 18), size: 12.5 }); b.point(q.C1, { color: 'amber', r: 5, label: pS(q.C1), ...away(q.C1, P(q.cx, q.cy), 18), size: 12.5 }); }
-      if (st >= 2) b.circle(q.C1, q.r, { color: 'amber', width: 3, fill: 'amber', fillAlpha: 0.1, glow: true });
+      if (st >= 2) { b.circle(q.C1, q.r, { color: 'amber', width: 3, fill: 'amber', fillAlpha: 0.1, glow: true }); b.text(P(q.C1.x, q.C1.y - q.r), '대칭이동한 원', { color: 'amber', size: 12.5, dy: 16 }); }
     } else {
       mirrorDraw(b, q.m1, { color: 'sky' }); if (q.m2 !== q.m1) mirrorDraw(b, q.m2, { color: 'green' });
       const cen = cenOf(q.A, q.B, q.C);
@@ -444,7 +454,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const Ps = crossMir(m, A2, T), Pstar = circ ? crossMir(m, A2, T) : Ps;
     mirrorDraw(b, m, { color: RCOL[m], width: 3 });
     const end = circ && Pp ? (() => { const d = distP(Pp, T) || 1; return P(T.x + (r * (Pp.x - T.x)) / d, T.y + (r * (Pp.y - T.y)) / d); })() : T;
-    if (circ) b.circle(T, r, { color: 'rose', width: 2.6, fill: 'rose', fillAlpha: 0.1 });
+    if (circ) { b.circle(T, r, { color: 'rose', width: 2.6, fill: 'rose', fillAlpha: 0.1 }); b.text(P(T.x, T.y + r), `원 ${plainEq(`(${sgn(T.x, 'x')})^2+(${sgn(T.y, 'y')})^2=${r * r}`)}`, { color: 'rose', size: 12.5, dy: -10 }); }
     if (Pp) {
       b.seg(A, Pp, { color: 'sky', width: 3.2, ref: 'ap' });
       b.seg(Pp, end, { color: 'rose', width: 3.2, ref: 'pb' });
@@ -460,7 +470,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     b.point(A, { color: 'ink', r: 5.5, label: `A${pS(A)}`, ...away(A, A2, 20), size: 13 });
     if (!circ) b.point(T, { color: 'ink', r: 5.5, label: `B${pS(T)}`, ...away(T, A, 20), size: 13 });
-    else b.point(T, { color: 'rose', r: 4.5, label: `C${pS(T)}`, dx: 0, dy: 0, ...{ dx: 0, dy: -r * 0 - 22 }, align: 'center', size: 13 });
+    else b.point(T, { color: 'rose', r: 4.5, label: `C${pS(T)}`, dx: 0, dy: 20, align: 'center', size: 13 });
     if (handle && Pp) b.handle('P', Pp, { color: 'amber', r: 7.5, label: 'P', dx: 0, dy: m === 'x' ? 22 : -18, align: 'center', drag: handle });
     if (circ && Pp && handle) b.point(end, { color: 'rose', r: 4.5, label: 'Q', ...away(end, T, 16), size: 13 });
   }
@@ -649,7 +659,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const lt = `y=${m === 1 ? '' : m === -1 ? '-' : m}x${n === 0 ? '' : n > 0 ? `+${n}` : `${n}`}`;
       const cF = { vx: a, vy: bb, sg: -1 };
       return {
-        kind, m, n, bb, a, xt, yt, ans: a, box: { x: [Math.min(-3, a - 4, xt - 2), Math.max(3, a + 4, xt + 2)], y: [Math.min(-5, yt - 3), Math.max(bb, yt, 4) + 3] },
+        kind, m, n, bb, a, xt, yt, lt, ans: a, box: { x: [Math.min(-3, a - 4, xt - 2), Math.max(3, a + 4, xt + 2)], y: [Math.min(-5, yt - 3), Math.max(bb, yt, 4) + 3] },
         text: `포물선 ${tex('y=x^2')}을 ${tex('x')}축에 대하여 대칭이동한 후, ${tex('x')}축의 방향으로 ${tex('a')}만큼, ${tex('y')}축의 방향으로 ${tex(nt(bb))}만큼 평행이동한 포물선이 직선 ${tex(lt)}에 접할 때, ${tex('a')}의 값을 구하시오.`,
         steps: [
           `$x$축 대칭: $y=x^2\\to y=-x^2$ (아래로 볼록 → 위로 볼록)`,
@@ -702,18 +712,21 @@ window.addEventListener('DOMContentLoaded', function () {
       b.plot((x) => x * x, { color: 'ink', width: 3 });
       b.text(P(1.6, 2.6), 'y = x²', { color: 'ink', size: 13, dx: 12, align: 'left' });
       b.line(P(0, q.n), q.m, { color: 'sky', width: 2.6 });
+      b.text(P(q.xt - 1.2, q.m * (q.xt - 1.2) + q.n), plainEq(q.lt), { color: 'sky', size: 13, dx: -8, align: 'right' });
       if (st >= 1) { b.plot((x) => -x * x, { color: 'muted', width: 2.2, dash: true }); b.text(P(1.8, -3.2), 'y = −x²', { color: 'muted', size: 12.5, dx: 12, align: 'left' }); }
       if (st >= 2) {
         b.plot((x) => -((x - q.a) ** 2) + q.bb, { color: 'amber', width: 3.4, glow: true });
+        b.text(P(q.a + 1.5, -2.25 + q.bb), plainEq(vtex({ vx: q.a, vy: q.bb, sg: -1 })), { color: 'amber', size: 12.5, dx: 8, align: 'left' });
         b.point(P(q.a, q.bb), { color: 'amber', r: 5, label: `(${n2(q.a)}, ${n2(q.bb)})`, dx: 0, dy: -18, align: 'center', size: 12.5 });
         b.seg(P(0, 0), P(q.a, 0), { color: 'sky', width: 2.4, dash: true }); b.seg(P(q.a, 0), P(q.a, q.bb), { color: 'rose', width: 2.4, dash: true });
       }
       if (st >= 3) b.point(P(q.xt, q.yt), { color: 'green', r: 6.5, label: `접점${pS(P(q.xt, q.yt))}`, dx: 14, dy: 16, align: 'left', size: 12.5 });
     } else {
       b.plot(parab(q.orig), { color: 'ink', width: 3 });
+      legend(b, [['ink', '검은 곡선: ' + plainEq(vtex(q.orig))], ...(st >= 1 ? [['muted', '회색 점선: ' + plainEq(vtex(q.mid)) + ' (첫 이동 뒤)']] : []), ...(st >= 2 ? [['amber', '주황 곡선: y = (x − c)²']] : [])]);
       b.point(P(q.h, 0), { color: 'ink', r: 5, label: `(${n2(q.h)}, 0)`, dx: 0, dy: 20, align: 'center', size: 12.5 });
-      if (st >= 1) { b.plot(parab(q.mid), { color: 'muted', width: 2.4, dash: true }); b.point(P(q.mid.vx, 0), { color: 'muted', r: 4.5, label: `(${n2(q.mid.vx)}, 0)`, dx: 0, dy: 40, align: 'center', size: 12.5 }); }
-      if (st >= 2) { b.plot(parab(q.fin), { color: 'amber', width: 3.4, glow: true }); b.point(P(q.fin.vx, 0), { color: 'amber', r: 5.5, label: `(${n2(q.fin.vx)}, 0)`, dx: 0, dy: 20, align: 'center', size: 12.5 }); }
+      if (st >= 1) { b.plot(parab(q.mid), { color: 'muted', width: 2.4, dash: true });  b.point(P(q.mid.vx, 0), { color: 'muted', r: 4.5, label: `(${n2(q.mid.vx)}, 0)`, dx: 0, dy: 40, align: 'center', size: 12.5 }); }
+      if (st >= 2) { b.plot(parab(q.fin), { color: 'amber', width: 3.4, glow: true });  b.point(P(q.fin.vx, 0), { color: 'amber', r: 5.5, label: `(${n2(q.fin.vx)}, 0)`, dx: 0, dy: 20, align: 'center', size: 12.5 }); }
     }
   }
   function scene10() {

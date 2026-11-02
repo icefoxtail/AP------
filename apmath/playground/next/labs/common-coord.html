@@ -60,6 +60,8 @@ window.addEventListener('DOMContentLoaded', function () {
     if (Math.abs(ux) > 0.5) return { dx: ux > 0 ? 16 : -16, dy: uy * d * 0.7, align: ux > 0 ? 'left' : 'right' };
     return { dx: 0, dy: uy >= 0 ? d : -d, align: 'center' };
   }
+  /** 화면 왼쪽 위에 색깔 범례(선의 이름표). 그림이 좁아도 선 이름이 가려지지 않게 화면 좌표로 씁니다. */
+  function legend(b, items) { const y0 = (b.insets.top || 0) + 18; items.forEach(([c, t], i) => b.stext(10, y0 + i * 17, t, { color: c, size: 12.5, align: 'left' })); }
   /** 점들을 모두 담는 무대 범위(여백 포함) */
   function boxOf(pts, pad = 1.5) {
     const xs = pts.map((p) => p.x), ys = pts.map((p) => p.y);
@@ -521,6 +523,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (st >= 2) {
         b.circle(I, r, { color: 'green', width: 2, fill: 'green', fillAlpha: 0.1 });
         b.point(I, { color: 'green', r: 6, label: `I${pS(I)}`, toward: A, size: 13 });
+        b.text(P(I.x, I.y - r), '내접원', { color: 'green', size: 12, dy: 14 });
       }
       if (st >= 3 && q.ansTex.includes('sqrt')) b.seg(A, I, { color: 'amber', width: 3, glow: true });
       lab(A, 'A', 'ink', cen); lab(B, 'B', 'ink', cen); lab(C, 'C', 'ink', cen);
@@ -649,9 +652,10 @@ window.addEventListener('DOMContentLoaded', function () {
     const show = (type) => st >= { A: 1, B: 2, M: 3 }[type];
     b.hline(k, { color: 'ink', width: 2.2, alpha: 0.85 });
     b.text(P(vb.x1 - (vb.x1 - vb.x0) * 0.04, k), k === 0 ? 'x축 (C는 이 위의 점)' : `직선 y = ${n2(k)} (C는 이 위의 점)`, { color: 'ink', size: 12.5, dy: 34, align: 'right' });
-    if (show('A')) { b.circle(A, R, { color: 'sky', width: 2.2, dash: true, ref: 'cA' }); }
-    if (show('B')) { b.circle(B, R, { color: 'rose', width: 2.2, dash: true, ref: 'cB' }); }
+    if (show('A')) b.circle(A, R, { color: 'sky', width: 2.2, dash: true, ref: 'cA' });
+    if (show('B')) b.circle(B, R, { color: 'rose', width: 2.2, dash: true, ref: 'cB' });
     if (show('M')) drawBisector(b, A, B, { dash: true, ref: 'cM' });
+    legend(b, [['sky', show('A') ? '파란 원: AB = AC (A 중심, 반지름 AB)' : null], ['rose', show('B') ? '분홍 원: BA = BC (B 중심, 반지름 AB)' : null], ['green', show('M') ? '초록 직선: AC = BC (AB의 수직이등분선)' : null]].filter((x) => x[1]));
     if (o.C) {
       // 탐구: 지금 C로 만든 삼각형
       const C = o.C, ab = R, ac = distP(A, C), bc = distP(B, C), eps = 0.011;
