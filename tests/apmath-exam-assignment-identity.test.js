@@ -6,7 +6,9 @@ const root = path.resolve(__dirname, '..');
 const assessment = fs.readFileSync(path.join(root, 'archive', 'assessment', 'assessment-mvp.html'), 'utf8');
 const mixedEngine = fs.readFileSync(path.join(root, 'archive', 'mixed_engine.html'), 'utf8');
 const examsRoute = fs.readFileSync(path.join(root, 'apmath', 'worker-backup', 'worker', 'routes', 'exams.js'), 'utf8');
-const classroomPlanner = fs.readFileSync(path.join(root, 'apmath', 'js', 'classroom-planner.js'), 'utf8');
+// 시험 묶기·정체성 판정은 통합 작업 화면의 자료 계산(ws-exam-data.js)으로 옮겨졌다(계산식은 그대로).
+const classroomPlanner = fs.readFileSync(path.join(root, 'apmath', 'js', 'classroom-planner.js'), 'utf8') +
+  fs.readFileSync(path.join(root, 'apmath', 'js', 'ws-exam-data.js'), 'utf8');
 const qrOmr = fs.readFileSync(path.join(root, 'apmath', 'js', 'qr-omr.js'), 'utf8');
 const migration = fs.readFileSync(path.join(root, 'apmath', 'worker-backup', 'worker', 'migrations', '20260616_class_exam_assignment_identity.sql'), 'utf8');
 

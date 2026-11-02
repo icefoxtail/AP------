@@ -18,6 +18,52 @@
         return (nodeWidth > 0 && Number(node.scrollWidth || 0) > nodeWidth + 2)
             || (containerWidth > 0 && Number(container.scrollWidth || 0) > containerWidth + 2);
     }
+    // Narrow-column fit (2026-11-02): a solution that overflows the 83mm half
+    // column is no longer promoted to a full-width page (one box silently turned
+    // its whole page into 1 column on some PCs). The overflow is solved inside the
+    // half column instead: first let long formulas/words wrap and cap fixed-width
+    // images/tables to the column (class sol-fit-narrow, see engine.html CSS), then
+    // step the explanation font size down (data-sol-fit 1..SOL_FIT_MAX_LEVEL).
+    // Nothing is clipped. Explicit full-width solutions (solutionImageLayout:
+    // 'fullwidth') are unaffected.
+    // LAST RESORT: if no fit step makes the box fit the half column, that single
+    // box is promoted to full width exactly as before (promoteSolutionToFullWidth),
+    // with a console.warn. The user decision was to remove overflow-driven promotion,
+    // but an unfittable box left in the half column fails the hard page gate
+    // SNAPSHOT_COMMON_HARD_GATE:S12 and the whole exam renders nothing, which is
+    // worse for students than one 1-column page.
+    const SOL_FIT_MAX_LEVEL = 4;
+    function fitSolutionToNarrowColumn(box, column) {
+        if (!hasHorizontalSolutionOverflow(box, column)) return true;
+        box.classList.add('sol-fit-narrow');
+        let level = Number(box.dataset.solFit || 0);
+        while (hasHorizontalSolutionOverflow(box, column)) {
+            if (level >= SOL_FIT_MAX_LEVEL) return false;
+            level += 1;
+            box.dataset.solFit = String(level);
+        }
+        return true;
+    }
+    function describeHorizontalOverflow(box, column) {
+        const boxRight = box.getBoundingClientRect().right;
+        const offenders = [...box.querySelectorAll('*')]
+            .map(node => ({ node, over: node.getBoundingClientRect().right - boxRight }))
+            .filter(item => item.over > 2)
+            .sort((a, b) => b.over - a.over).slice(0, 3)
+            .map(({ node, over }) => `${node.tagName.toLowerCase()}${node.className && typeof node.className === 'string' ? '.' + node.className.trim().split(/\s+/).join('.') : ''}+${Math.round(over)}px "${String(node.textContent || '').trim().slice(0, 30)}"`);
+        return { boxScrollWidth: box.scrollWidth, boxClientWidth: box.clientWidth,
+            columnScrollWidth: column?.scrollWidth, columnClientWidth: column?.clientWidth, offenders };
+    }
+    function promoteSolutionToFullWidth(box, column, block, originalStyle) {
+        try {
+            console.warn('[archive-solution] half-width fit failed; promoting this solution to full width as a last resort',
+                { sourceRef: box.dataset.sourceRef, blockId: block.blockId, fitLevel: box.dataset.solFit || '0', ...describeHorizontalOverflow(box, column) });
+        } catch (error) { /* diagnostics must never break rendering */ }
+        box.classList.remove('sol-fit-narrow');
+        delete box.dataset.solFit;
+        box.style.cssText = originalStyle;
+        block.fullWidth = true;
+    }
     function assertQuestionImagesReady(root, deps) {
         const readiness = deps.validateQuestionImageReadiness?.(root);
         if (readiness && !readiness.ok) {
@@ -105,9 +151,8 @@
                 const originalStyle = box.style.cssText;
                 let rawHeight = flowHeight(box, fullWidth);
                 if (!fullWidth && hasHorizontalSolutionOverflow(box, cols[0])) {
-                    fullWidth = true;
-                    blocks[index].fullWidth = true;
-                    rawHeight = flowHeight(box, true);
+                    if (fitSolutionToNarrowColumn(box, cols[0])) rawHeight = flowHeight(box, false);
+                    else { promoteSolutionToFullWidth(box, cols[0], blocks[index], originalStyle); fullWidth = true; rawHeight = flowHeight(box, true); }
                 }
                 if (fullWidth && hasHorizontalSolutionOverflow(box, wideCol)) {
                     throw new Error(`SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH:${blocks[index].blockId}`);
@@ -116,16 +161,24 @@
                 let compressedHeight = flowHeight(box, fullWidth);
                 let compressedStyle = box.style.cssText;
                 if (!fullWidth && hasHorizontalSolutionOverflow(box, cols[0])) {
-                    fullWidth = true;
-                    blocks[index].fullWidth = true;
-                    box.style.cssText = originalStyle;
-                    rawHeight = flowHeight(box, true);
-                    if (hasHorizontalSolutionOverflow(box, wideCol)) {
-                        throw new Error(`SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH:${blocks[index].blockId}`);
+                    // Rare: still overflowing after the compress pass. Fit further in the
+                    // half column and re-measure both heights; promote only as a last resort.
+                    if (fitSolutionToNarrowColumn(box, cols[0])) {
+                        compressedHeight = flowHeight(box, false);
+                        compressedStyle = box.style.cssText;
+                        box.style.cssText = originalStyle;
+                        rawHeight = flowHeight(box, false);
+                    } else {
+                        promoteSolutionToFullWidth(box, cols[0], blocks[index], originalStyle);
+                        fullWidth = true;
+                        rawHeight = flowHeight(box, true);
+                        if (hasHorizontalSolutionOverflow(box, wideCol)) {
+                            throw new Error(`SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH:${blocks[index].blockId}`);
+                        }
+                        deps.autoCompress(box);
+                        compressedHeight = flowHeight(box, true);
+                        compressedStyle = box.style.cssText;
                     }
-                    deps.autoCompress(box);
-                    compressedHeight = flowHeight(box, true);
-                    compressedStyle = box.style.cssText;
                 }
                 if (fullWidth && hasHorizontalSolutionOverflow(box, wideCol)) {
                     throw new Error(`SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH:${blocks[index].blockId}`);
@@ -192,6 +245,8 @@
                 }
                 const shell = query.primary ? deps.makeLongSolutionShell(record.box, 0, false) : continuationBox(record.box, document);
                 shell.style.cssText = record.compressedStyle;
+                if (record.box.dataset.solFit) shell.dataset.solFit = record.box.dataset.solFit;
+                if (record.box.classList.contains('sol-fit-narrow')) shell.classList.add('sol-fit-narrow');
                 const exp = shell.querySelector('.sol-exp');
                 const heights = [];
                 for (let index = query.start; index < record.chunks.length; index += 1) {

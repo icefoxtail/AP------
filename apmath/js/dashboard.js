@@ -955,25 +955,6 @@ function openRiskStudentReport(studentId) {
     toast('보고 문구 모듈을 불러오지 못했습니다.', 'warn');
 }
 
-function renderAdminStudentSearch() {
-    const keyword = document.getElementById('admin-search-input').value.trim().toLowerCase();
-    const resultArea = document.getElementById('admin-search-results');
-    if (!keyword) { resultArea.innerHTML = `<div style="color:var(--secondary); font-size:13px; text-align:center; padding:10px;">검색어를 입력하세요.</div>`; return; }
-    
-    const results = state.db.students.filter(s => s.name.toLowerCase().includes(keyword));
-    if (results.length === 0) { resultArea.innerHTML = `<div style="color:var(--secondary); font-size:13px; text-align:center; padding:10px;">일치하는 학생이 없습니다.</div>`; return; }
-    
-    resultArea.innerHTML = results.map(s => {
-        const cName = state.db.classes.find(c => c.id === state.db.class_students.find(m => m.student_id === s.id)?.class_id)?.name || '미배정';
-        return `
-            <div style="padding:10px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
-                <div><span style="font-size:13px; color:var(--text);; font-weight:500;">${apEscapeHtml(s.name)}</span> <span style="font-size:11px; color:var(--secondary); margin-left:6px;">${apEscapeHtml(cName)} | ${apEscapeHtml(s.status)}</span></div>
-                <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="openStudentDetail('${s.id}', { mode: 'view', returnTo: { type: 'dashboard' } })">상세 보기</button>
-            </div>
-        `;
-    }).join('');
-}
-
 
 // --- Teacher Dashboard 공통 함수 ---
 
@@ -1008,18 +989,9 @@ function renderAdminStudentSearch() {
 
 
 // [Phase 4/5] 글로벌 진입점
+// 반 고르기 모달은 없앴다. 원내평가·OMR 작업 화면 맨 위의 반 전환 탭이 그 일을 한다(ws-exam-workspace.js).
 function openGlobalExamGradeView() {
-    const classes = state.db.classes.filter(c => Number(c.is_active) !== 0);
-    const rows = classes.map(c => `
-        <button class="btn" style="width:100%; justify-content:space-between; padding:16px; margin-bottom:10px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); if(typeof openExamGradeView==='function') openExamGradeView('${c.id}')">
-            <span style="font-weight:500; font-size:15px; color:var(--text);">${apEscapeHtml(c.name)}</span>
-            <span style="font-size:12px; font-weight:500; color:var(--text); background:var(--surface-2); border:1px solid var(--border); padding:4px 10px; border-radius:8px;">${apEscapeHtml(c.grade)}</span>
-        </button>
-    `).join('');
-    showModal('반별 원내평가', `
-        <div style="margin-bottom:16px; font-size:13px; color:var(--secondary); font-weight:500;">조회할 반을 선택하세요.</div>
-        <div style="max-height:60vh; overflow-y:auto; padding-right:4px;">${rows || `<div style="text-align:center; color:var(--secondary); padding:30px; font-size:13px; font-weight:500;">담당 반이 없습니다.</div>`}</div>
-    `);
+    return openExamWorkspace('');
 }
 
 function openOperationMenu() {
@@ -1931,7 +1903,7 @@ function renderDashboard() {
 
     const classStatus = `
         <div class="ap-dashboard-section-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
-            <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">학급관리</h3>
+            <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">반 관리</h3>
         </div>
         ${tabHtml}
         <div class="ap-dashboard-class-list" style="display:flex; flex-direction:column; gap:8px; margin-bottom:40px;">${filteredClasses.map(c => renderClassSummaryCard(c, data)).join('')}</div>
@@ -2142,45 +2114,6 @@ function setTodayExamConfig(title, q) {
     const today = new Date().toLocaleDateString('sv-SE');
     const validQ = parseInt(q, 10) || 20;
     localStorage.setItem('AP_TODAY_EXAM', JSON.stringify({ date: today, title: String(title), q: validQ }));
-}
-
-// [RESTORE] clearTodayExamConfig: 원본 복구
-function clearTodayExamConfig() {
-    localStorage.removeItem('AP_TODAY_EXAM');
-    if(state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') renderAdminControlCenter();
-    else renderDashboard();
-}
-
-function openTodayExamSetModal() {
-    const cfg = getTodayExamConfig();
-    showModal('오늘 시험 설정', `
-        <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="font-size:12px; color:var(--secondary); background:var(--surface-2); padding:10px; border-radius:8px; line-height:1.5;">오늘 전체 학급에 적용될 시험 기준을 설정합니다.<br>(QR 코드 생성 시에도 자동 연동됩니다)</div>
-            <div style="display:flex; gap:6px; flex-wrap:wrap; margin:4px 0;">
-                <button class="btn" style="padding:6px 10px; font-size:11px; background:var(--surface-2); border:none;" onclick="document.getElementById('set-exam-title').value='쪽지시험'">쪽지시험</button>
-                <button class="btn" style="padding:6px 10px; font-size:11px; background:var(--surface-2); border:none;" onclick="document.getElementById('set-exam-title').value='단원평가'">단원평가</button>
-                <button class="btn" style="padding:6px 10px; font-size:11px; background:var(--surface-2); border:none;" onclick="document.getElementById('set-exam-title').value='월말평가'">월말평가</button>
-                <button class="btn" style="padding:6px 10px; font-size:11px; background:var(--surface-2); border:none;" onclick="document.getElementById('set-exam-title').value='모의고사'">모의고사</button>
-            </div>
-            <input id="set-exam-title" class="btn" placeholder="시험명 직접 입력" value="${cfg?.title || ''}" style="text-align:left; width:100%; background:var(--surface-2); border:none;">
-            <input id="set-exam-q" type="number" class="btn" placeholder="문항 수 (기본 20)" value="${cfg?.q || 20}" min="1" max="50" style="text-align:left; width:100%; background:var(--surface-2); border:none;">
-            <div style="display:flex; gap:8px; margin-top:12px;">
-                <button class="btn" style="flex:1; padding:12px; font-size:12px; color:var(--error); background:rgba(255,71,87,0.1); border:none; font-weight:500;" onclick="clearTodayExamConfig(); closeModal();">시험 없음</button>
-                <button class="btn btn-primary" style="flex:1.5; padding:12px; font-size:12px; font-weight:500;" onclick="handleSetTodayExam()">저장 및 적용</button>
-            </div>
-        </div>
-    `);
-}
-
-function handleSetTodayExam() {
-    const t = document.getElementById('set-exam-title').value.trim();
-    const q = parseInt(document.getElementById('set-exam-q').value, 10) || 20;
-    if (!t) { toast('시험명을 입력하세요.', 'warn'); return; }
-    setTodayExamConfig(t, q); 
-    toast('오늘 시험이 설정되었습니다.', 'info'); 
-    closeModal(); 
-    if(state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') renderAdminControlCenter();
-    else renderDashboard();
 }
 
 function extractJournalUnitAndNote(rawNote) {

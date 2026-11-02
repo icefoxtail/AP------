@@ -38,20 +38,31 @@ assert(
   'clinic print should refresh assignments without showing an internal loading message'
 );
 
+const wsShell = fs.readFileSync(path.join(root, 'apmath', 'js', 'ws-clinic-shell.js'), 'utf8');
+const wsSimilar = fs.readFileSync(path.join(root, 'apmath', 'js', 'ws-clinic-similar.js'), 'utf8');
+
+// 2026-11-02(M7): 클리닉 2버튼 메뉴·반 고르기 모달은 반 전환 탭 + 보기 탭(오답 출력 | 유사문항) 작업 화면 하나로 바뀌었다.
+// 옛 열기 함수는 호출처가 있어 얇은 래퍼로 남고, 모두 같은 작업 화면을 연다.
 assert(
   clinicPrint.includes('function openClinicClassPicker') &&
-    clinicPrint.includes('clinicPrintGetActiveClasses') &&
-    clinicPrint.includes("onclick=\"openClinicCenter('${safeClassId}')\"") &&
-    clinicPrint.includes("onclick=\"clinicPrintOpenSimilarMenu('${safeClassIdForJs}')\""),
-  'sidebar clinic entry should let users pick a class and then choose wrong-print or similar-question mode'
+    clinicPrint.includes('function openClinicCenter') &&
+    clinicPrint.includes('return wsClinicOpen(classId)') &&
+    !clinicPrint.includes('clinic-print-menu-btn') &&
+    !clinicPrint.includes('clinic-print-class-btn') &&
+    wsShell.includes('function wsClinicGetClassTabs') &&
+    wsShell.includes('wsClinicSwitchClass') &&
+    wsShell.includes("['print', '오답 출력'], ['similar', '유사문항']"),
+  'sidebar clinic entry should open one workspace with class tabs and wrong-print / similar-question view tabs (no menu or class-picker modal)'
 );
 
 assert(
-  clinicPrint.includes("typeof openClinicSimilarForClass === 'function'") &&
+  clinicPrint.includes('function clinicPrintOpenSimilarMenu') &&
+    clinicPrint.includes("typeof openClinicSimilarForClass === 'function'") &&
     core.includes('async function openClinicSimilarForClass') &&
-    core.includes('computeClassWeakUnits(classId)') &&
-    core.includes('renderWeakUnitSummary(weakUnits'),
-  'clinic similar-question entry should build class weak-unit recommendations before opening the basket'
+    core.includes('return wsClinicOpenSimilar(classId)') &&
+    wsSimilar.includes('computeClassWeakUnits(classId)') &&
+    wsSimilar.includes('ensureBlueprintsForSessions'),
+  'clinic similar-question entry should build class weak-unit recommendations inside the clinic workspace'
 );
 
 assert(

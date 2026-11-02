@@ -6,13 +6,13 @@
  * 현재 사이드바 원칙:
  * - 홈 메뉴는 드로어에 두지 않는다. AP MATH 로고의 goHome()이 홈 역할을 담당한다.
  * - 햄버거(openAppDrawer)는 드로어 열기/닫기 전용이다.
- * - PC 닫힘 상태는 56px 미니 레일이며 햄버거만 표시한다.
- * - PC 열림 상태는 260px 텍스트 사이드바다.
+ * - PC 닫힘 상태는 56px 미니 레일이며 햄버거와 항목 아이콘(이름은 title·aria-label)을 표시한다.
+ * - PC 열림 상태는 260px 아이콘+텍스트 사이드바다.
  * - 모바일 drawer 내부에는 AP MATH OS 브랜드를 반복 표시하지 않는다.
  * - 다크모드 토글은 drawer 최상단 우측에 둔다.
  * - 햄버거, 메뉴 글자, 로그아웃은 같은 왼쪽 16px x축에 정렬한다.
  * - 다크모드 토글 오른쪽 끝은 drawer 오른쪽 16px 기준으로 정렬한다.
- * - 메뉴는 아이콘 없이 텍스트만 사용한다.
+ * - 메뉴 항목은 아이콘(DRAWER_ICON_SVG)과 이름을 함께 쓰고, 지금 열린 화면의 항목에 aria-current="page"를 단다(drawerMark).
  * - 로그아웃은 drawer 하단에 둔다.
  */
 
@@ -115,10 +115,30 @@ if (document.readyState === 'loading') {
 // ============================================================
 // [UI Components] 토스트 및 모달
 // ============================================================
+// 모달이 열려 있으면 토스트를 모달 제목줄 바로 아래(본문 맨 위)에 띄운다. 제목·헤더 버튼·하단 액션줄을 가리지 않는다.
+// 위치는 모달 헤더 실측으로 정하고(CSS 변수 --toast-top/--toast-left), 모달이 없으면 변수를 지워 화면 아래 기본 위치로 돌아간다.
+function apmsPlaceToastContainer(c) {
+    try {
+        const header = document.getElementById('modal-header');
+        const content = document.getElementById('modal-content');
+        const open = typeof isModalOpen === 'function' && isModalOpen() && header && content;
+        if (!open) {
+            c.style.removeProperty('--toast-top');
+            c.style.removeProperty('--toast-left');
+            return;
+        }
+        const h = header.getBoundingClientRect();
+        const m = content.getBoundingClientRect();
+        c.style.setProperty('--toast-top', Math.round(h.bottom + 8) + 'px');
+        c.style.setProperty('--toast-left', Math.round(m.left + m.width / 2) + 'px');
+    } catch (error) { /* 위치를 못 재면 CSS 기본값 */ }
+}
+
 function toast(m, t='info') {
     const c = document.getElementById('toast-container');
     if (!c) return;
 
+    apmsPlaceToastContainer(c);
     const el = document.createElement('div');
     el.className = `toast ${t}`;
     el.innerText = m;
@@ -141,6 +161,8 @@ let modalLayerSeq = 0;              // 모달·상위 레이어가 열린 순서
 let modalOpenSeq = 0;               // 현재 모달이 열린 순서
 let modalBackdropPressed = false;   // 누르기 시작이 배경이었는가(안에서 끌어서 밖에서 놓은 경우 제외)
 const apmsEscapeLayers = [];        // 모달 위에 뜨는 다른 레이어의 Esc 닫기 등록부
+let apmsModalLogicalOpen = false;   // 모달이 "논리적으로" 열려 있는가(closeModal 즉시 false. DOM의 hidden은 260ms 뒤에 바뀐다)
+const apmsNavGuard = { traversing: false, timer: null, syncQueued: false, holdBoot: false }; // 브라우저 뒤로 가기 연결 상태(아래 "브라우저 뒤로 가기" 구역). holdBoot: 새로고침 직후 반 화면 복원 판단이 끝날 때까지 보호 항목을 걷지 않는다(N4)
 let appHistoryState = {
     currentView: null,
     backStack: [],
@@ -206,18 +228,32 @@ function updateAppBackButtons() {
 
 function appHistoryRecordView(nextView) {
     if (!nextView || !nextView.type) return;
-    const current = appHistoryState.currentView;
+    // 학생 상세는 화면이 아니라 모달이다(자기 닫기·복귀 경로가 있다). 화면 이력에 넣으면 모달을 닫은 뒤
+    // 뒤로 가기가 같은 학생 상세를 다시 여는 "한 번 더" 문제가 생기므로 이력에서 뺀다.
+    if (nextView.type === 'studentDetail') return;
+    let current = appHistoryState.currentView;
+    // 첫 대시보드 그리기가 화면 이동 감싸기보다 먼저 끝난 경우(자료가 스크립트 로딩보다 빨리 온 경우)에는 현재 화면이 기록되지 않았다.
+    // 로그인한 상태에서 대시보드 아닌 화면으로 처음 이동하면 직전 화면은 첫 화면(대시보드)이었다고 본다. 아니면 반 화면에서 뒤로 갈 곳이 없다.
+    if (!current && !appHistoryState.restoring && state?.auth?.role && nextView.type !== 'dashboard' && nextView.type !== 'adminDashboard') {
+        current = appHistoryBuildView('renderDashboard');
+    }
     const currentKey = appHistoryViewKey(current);
     const nextKey = appHistoryViewKey(nextView);
 
-    if (!appHistoryState.restoring && current && currentKey && currentKey !== nextKey) {
+    const isRootView = nextView.type === 'dashboard' || nextView.type === 'adminDashboard';
+    if (!appHistoryState.restoring && isRootView) {
+        // 첫 화면(대시보드)으로 직접 돌아오면 쌓인 이력을 비운다. 그래야 첫 화면에서 뒤로 가기가 앱 종료(기본 동작)가 된다.
+        appHistoryState.backStack.length = 0;
+    } else if (!appHistoryState.restoring && current && currentKey && currentKey !== nextKey) {
         const stack = appHistoryState.backStack;
         if (appHistoryViewKey(stack[stack.length - 1]) !== currentKey) stack.push(current);
         if (stack.length > 50) stack.shift();
     }
 
     appHistoryState.currentView = nextView;
+    apmsClassHashApply();
     updateAppBackButtons();
+    apmsNavScheduleSync();
 }
 
 function appHistoryRestoreView(view) {
@@ -263,29 +299,38 @@ function appHistoryRestoreView(view) {
     return false;
 }
 
-function appHistoryBack() {
+// 앱 ← 버튼과 기기 뒤로 가기가 공유하는 "모달 한 겹 닫기". 단계 모달이면 한 단계만 돌아간다.
+function closeModalForAppBack() {
     if (modalStepStack.length) {
         closeModal();
         updateAppBackButtons();
-        return true;
+        return;
     }
+    const returnCtx = state.ui?.modalReturnView;
+    const hasClassReturn = returnCtx?.type === 'classDetail' ||
+        (returnCtx?.type === 'studentDetail' && state.ui?.currentStudentDetailReturnTo?.type === 'classDetail');
+    // The app back button must not discard a classroom-origin modal's return route.
+    closeModal(!hasClassReturn);
+    window.setTimeout(updateAppBackButtons, 280);
+}
 
-    if (isModalOpen()) {
-        const returnCtx = state.ui?.modalReturnView;
-        const hasClassReturn = returnCtx?.type === 'classDetail' ||
-            (returnCtx?.type === 'studentDetail' && state.ui?.currentStudentDetailReturnTo?.type === 'classDetail');
-        // The app back button must not discard a classroom-origin modal's return route.
-        closeModal(!hasClassReturn);
-        window.setTimeout(updateAppBackButtons, 280);
-        return true;
+// options.fromHistory: 브라우저 뒤로 가기(popstate)에서 불렀다. 할 일이 없을 때 history.back()·홈 이동으로 되돌리지 않는다.
+function appHistoryBack(options) {
+    const fromHistory = !!(options && options.fromHistory === true);
+    if (modalStepStack.length || apmsNavModalOpen()) {
+        // 헤더 "취소"·Esc와 같은 확인: 입력 중이면 "닫을까요?"를 묻고, 아니오면 그대로 둔다.
+        return requestCloseModal('back');
     }
 
     const previous = appHistoryState.backStack.pop();
     if (previous) {
         const restored = appHistoryRestoreView(previous);
         if (!restored) updateAppBackButtons();
+        apmsNavScheduleSync();
         return restored;
     }
+
+    if (fromHistory) return false;
 
     if (appHistoryCanUseBrowserBack()) {
         window.history.back();
@@ -301,6 +346,239 @@ function appHistoryBack() {
 
     updateAppBackButtons();
     return false;
+}
+
+// ============================================================
+// [브라우저 뒤로 가기 연결] 휴대폰·태블릿 뒤로 가기 = 모달 닫기 / 앱 ← (2026-11-02 N2)
+// 방식: "뒤로 갈 곳이 있는 동안"(열린 모달·단계 모달·위 레이어·화면 이력) 브라우저 이력에 보호 항목(guard) 한 칸만 둔다.
+//   - 뒤로 가기(popstate): 보호 항목이 소모된다. 그때 한 겹만 닫는다(맨 위 레이어 → 모달/단계 → 화면 이력 한 칸 = 앱 ← 버튼과 같다).
+//     입력 중이면 Esc처럼 "닫을까요?"를 묻고, 아니오면 닫지 않는다. 뒤로 갈 곳이 남았으면 보호 항목을 다시 채운다.
+//   - 코드가 닫을 때(저장 성공 closeModal(true) 등): 뒤로 갈 곳이 0이 되면 보호 항목을 history.go(-1)로 걷어 낸다.
+//     그래서 "뒤로 가기를 두 번 눌러야 하는" 일이 없다. 갈 곳이 남아 있으면 보호 항목은 그대로다.
+//   - 뒤로 갈 곳이 없으면(첫 화면) 보호 항목도 없으므로 뒤로 가기는 기본 동작(앱 종료·이전 사이트) 그대로다.
+// 주소에는 아무것도 남기지 않는다: pushState(state, '', location.href).
+// 보호 항목은 사용자가 화면을 누른 뒤에만 쌓인다(모달·화면 열기는 모두 누르기에서 시작). 크롬의 "누르지 않은 페이지의 이력 건너뛰기"에 걸리지 않는다.
+// ============================================================
+// 지금 열려 있는 모달이 있는가. 닫는 중(closeModal 뒤 260ms)은 닫힌 것으로 본다. DOM을 직접 열어 쓰는 옛 화면도 열린 것으로 친다.
+// 실제 DOM과 맞춘다: closeModal 없이 #modal-overlay를 직접 숨긴 코드(report-center 등)가 있어도 논리 상태가 true로 남지 않게 고친다.
+function apmsNavModalOpen() {
+    const domOpen = isModalOpen();
+    if (!domOpen) {
+        if (apmsModalLogicalOpen) { apmsModalLogicalOpen = false; apmsNavScheduleSync(); }
+        return false;
+    }
+    return apmsModalLogicalOpen || !modalCloseTimer;
+}
+
+// 로그인 화면(로그아웃·세션 없음)으로 가면 이전 사용자의 화면 이력·모달 상태를 모두 버린다.
+// 안 그러면 기기 뒤로 가기가 이전 사용자의 대시보드를 로그인 없이 다시 그린다.
+function apmsNavReset() {
+    appHistoryState.backStack.length = 0;
+    appHistoryState.currentView = null;
+    if (typeof state !== 'undefined' && state && state.ui) state.ui.currentClassId = null; // 로그인 화면에서는 열려 있던 반을 버린다(다른 계정이 로그인해도 앞 사용자의 반이 다시 그려지지 않게)
+    modalStepStack = [];
+    apmsEscapeLayers.length = 0;
+    if (apmsModalLogicalOpen || isModalOpen()) closeModal(true);
+    apmsModalLogicalOpen = false;
+    apmsNavScheduleSync();
+}
+
+function apmsNavLoginVisible() {
+    return !!(typeof document !== 'undefined' && document.querySelector && document.querySelector('.ap-login-fullscreen'));
+}
+
+function apmsNavDepth() {
+    return modalStepStack.length + (apmsNavModalOpen() ? 1 : 0) + apmsEscapeLayers.length + appHistoryState.backStack.length;
+}
+
+function apmsNavHasGuard() {
+    try { return !!(window.history.state && window.history.state.apmsGuard); } catch (error) { return false; }
+}
+
+function apmsNavSync() {
+    if (typeof window === 'undefined' || !window.history || typeof window.history.pushState !== 'function') return;
+    if (apmsNavGuard.traversing) return; // 걷어 내는 중. popstate가 오면 다시 맞춘다.
+    if (apmsNavGuard.holdBoot) return; // 새로고침 직후: 반 화면을 복원할지 정하는 중이다.
+    const want = apmsNavDepth() > 0;
+    const has = apmsNavHasGuard();
+    if (want && !has) {
+        try { window.history.pushState({ apmsGuard: true }, '', window.location.href); } catch (error) { console.warn('[nav] pushState failed:', error); }
+    } else if (!want && has) {
+        apmsNavGuard.traversing = true;
+        clearTimeout(apmsNavGuard.timer);
+        // popstate가 끝내 안 오면 잠금이 풀리지 않으므로 안전 장치를 둔다.
+        apmsNavGuard.timer = setTimeout(() => { apmsNavGuard.traversing = false; apmsNavSync(); }, 700);
+        try { window.history.go(-1); } catch (error) { apmsNavGuard.traversing = false; }
+    }
+}
+
+// 같은 처리 흐름 안에서 닫고 바로 여는 경우(closeModal 뒤 showModal 등)에는 이력을 건드리지 않도록 한 번에 모아 맞춘다.
+function apmsNavScheduleSync() {
+    if (apmsNavGuard.syncQueued) return;
+    apmsNavGuard.syncQueued = true;
+    Promise.resolve().then(() => { apmsNavGuard.syncQueued = false; apmsNavSync(); });
+}
+
+// 기기 뒤로 가기 한 번이 닫을 한 겹. 닫았으면 true.
+function apmsNavBackStep() {
+    const topLayer = apmsEscapeLayers.length ? apmsEscapeLayers[apmsEscapeLayers.length - 1] : null;
+    if (topLayer && (!apmsNavModalOpen() || topLayer.seq > modalOpenSeq)) {
+        if (typeof topLayer.close === 'function') topLayer.close();
+        return true;
+    }
+    return appHistoryBack({ fromHistory: true }) !== false;
+}
+
+function apmsNavOnPopState(event) {
+    if (apmsNavGuard.traversing) { // 우리가 걷어 낸 이동. 할 일 없음.
+        apmsNavGuard.traversing = false;
+        clearTimeout(apmsNavGuard.timer);
+        apmsClassHashApply(); // 걷어 낸 자리의 주소 해시가 낡았을 수 있다(예: 반 화면에서 대시보드로 직접 이동)
+        apmsNavSync();
+        return;
+    }
+    // 방어: 로그인 화면에서는 아무것도 복원하지 않는다(이전 사용자의 화면이 로그인 없이 보이는 것을 막는다).
+    if (apmsNavLoginVisible()) { apmsNavReset(); apmsNavSync(); return; }
+    const landedOnGuard = !!(event && event.state && event.state.apmsGuard);
+    // 보호 항목으로 "앞으로 가기"로 들어왔다면 되돌릴 일만 맞춘다. 보호 항목에서 밖으로 나왔다면(뒤로 가기) 한 겹 닫는다.
+    if (!landedOnGuard && apmsNavDepth() > 0) apmsNavBackStep();
+    apmsClassHashApply();
+    apmsNavSync();
+}
+
+if (typeof window !== 'undefined' && typeof window.addEventListener === 'function' && !window.__apmsNavHistoryBound) {
+    window.__apmsNavHistoryBound = true;
+    try {
+        // 새로고침으로 옛 보호 항목 위에서 시작한 경우: 보호 항목을 일반 항목으로 바꿔 둔다(앱 상태는 처음부터라 갈 곳이 없다).
+        // 단 주소에 #class=가 있고 로그인 세션이 있으면 반 화면을 복원할 수 있다. 그때는 이 항목을 그대로 보호 항목으로 쓴다
+        // (그래야 [앞 화면, 기본 항목, 보호 항목]이 유지되어 뒤로 1번 = 대시보드, 2번 = 앱 종료). 복원하지 않기로 하면 apmsClassHashBootDone이 일반 항목으로 바꾼다.
+        if (window.history.state && window.history.state.apmsGuard) {
+            if (apmsClassHashRead() && apmsClassHashHasStoredSession()) {
+                apmsNavGuard.holdBoot = true;
+                setTimeout(() => { if (apmsNavGuard.holdBoot) apmsClassHashBootDone(false); }, 15000); // 자료를 못 받아 복원 판단이 안 오면 포기한다
+            } else {
+                window.history.replaceState({ apmsBase: true }, '', window.location.href);
+            }
+        }
+    } catch (error) { /* 이력 접근이 막힌 환경 */ }
+    window.addEventListener('popstate', apmsNavOnPopState);
+}
+
+// ============================================================
+// [새로고침 시 반 화면 복원] 주소 해시 #class=<반 id> (2026-11-02 N4, 결정 D3: 반 화면만)
+//   - 반 화면에 있는 동안 주소에 #class=<id>만 남기고, 다른 화면(대시보드 등)으로 가면 지운다. 모달 상태는 넣지 않는다.
+//   - 이력 칸을 늘리지 않는다: history.replaceState만 쓴다(보호 항목 pushState는 location.href를 그대로 써 해시를 따라간다).
+//   - hashchange는 듣지 않는다. 뒤로 가기·history.go(-1)는 popstate가 처리하고, 이동한 자리의 해시는 popstate 끝에서 현재 화면에 맞춘다.
+//   - 새로고침(또는 그 주소로 열기) 뒤 loadData가 apmsClassHashRestoreTarget으로 판단한다: 접근 가능한 반이면 열고, 아니면 조용히 대시보드 + 해시 제거.
+//     복원할 때는 화면 이력에 대시보드를 먼저 남긴다(뒤로 1번 = 대시보드).
+//   - 로그인 전이면 해시를 그대로 두었다가 로그인한 사용자가 해시를 쓴 사용자와 같을 때만 복원한다(탭 단위 sessionStorage에 쓴 사용자 id를 기록).
+//   - 로그아웃(apmsClassHashForget)은 해시·기록·열린 반을 모두 지운다.
+// ============================================================
+const APMS_CLASS_HASH_OWNER_KEY = 'APMS_CLASS_HASH_OWNER';
+let apmsClassHashBootHadSession = null; // 첫 loadData 호출 때 로그인 세션이 있었는가(주소로 바로 연 경우와 로그인 뒤 복원을 구분)
+
+function apmsClassHashRead() {
+    try {
+        const m = /^#class=([^&]+)$/.exec(window.location.hash || '');
+        return m ? decodeURIComponent(m[1]) : '';
+    } catch (error) { return ''; }
+}
+
+function apmsClassHashHasStoredSession() {
+    try { return !!JSON.parse(localStorage.getItem('APMATH_SESSION')); } catch (error) { return false; }
+}
+
+function apmsClassHashOwner(value) {
+    try {
+        if (value === undefined) return sessionStorage.getItem(APMS_CLASS_HASH_OWNER_KEY) || '';
+        if (value) sessionStorage.setItem(APMS_CLASS_HASH_OWNER_KEY, value); else sessionStorage.removeItem(APMS_CLASS_HASH_OWNER_KEY);
+    } catch (error) { /* sessionStorage가 막힌 환경 */ }
+    return '';
+}
+
+function apmsClassHashWrite(id) {
+    try {
+        const next = window.location.pathname + window.location.search + (id ? '#class=' + encodeURIComponent(id) : '');
+        const cur = window.location.pathname + window.location.search + window.location.hash;
+        if (next !== cur) window.history.replaceState(window.history.state, '', next);
+    } catch (error) { /* 이력 접근이 막힌 환경 */ }
+}
+
+function apmsClassHashClear(forgetOwner) {
+    apmsClassHashWrite('');
+    if (forgetOwner) apmsClassHashOwner('');
+}
+
+// 지금 화면(appHistoryState.currentView)에 주소 해시를 맞춘다. 학생 상세(모달)는 appHistoryRecordView가 걸러내므로 해시는 그대로다.
+function apmsClassHashApply() {
+    if (typeof window === 'undefined' || !window.history) return;
+    // 로그인 화면: 세션 만료라면(해시 주인 기록이 남아 있음) 로그인 뒤 복원을 위해 해시를 그대로 둔다. 주인이 없으면(로그아웃·낯선 주소) 남은 낡은 해시를 지운다.
+    if (apmsNavLoginVisible()) { if (!apmsClassHashOwner()) apmsClassHashClear(false); return; }
+    const view = appHistoryState.currentView;
+    if (!view || !view.type) return; // 아직 화면이 없다(부팅 중). 주소는 loadData의 복원 판단이 정한다.
+    if (view.type === 'classDetail' && view.classId) {
+        const sameClass = String(state?.ui?.currentClassId || '') === String(view.classId);
+        const ok = sameClass && typeof isClassroomClassAccessible === 'function' && isClassroomClassAccessible(view.classId);
+        if (ok) {
+            apmsClassHashWrite(view.classId);
+            apmsClassHashOwner(String(state?.auth?.id ?? ''));
+            return;
+        }
+    }
+    apmsClassHashClear(false);
+}
+
+// loadData가 맨 앞에서 부른다: 첫 호출이 부팅이다.
+function apmsClassHashNoteLoad(session) {
+    if (apmsClassHashBootHadSession === null) {
+        apmsClassHashBootHadSession = !!session;
+        if (!session) apmsClassHashBootDone(false);
+    }
+}
+
+// 복원할 반 id를 돌려준다(없으면 ''). 접근 불가·없는 반·다른 사용자의 해시는 조용히 지운다. state.db가 채워진 뒤에 부른다.
+function apmsClassHashRestoreTarget(session) {
+    const id = apmsClassHashRead();
+    if (!id) return '';
+    const owner = apmsClassHashOwner();
+    const sid = String(session?.id ?? '');
+    const allowed = owner ? owner === sid : apmsClassHashBootHadSession === true;
+    const accessible = allowed && typeof isClassroomClassAccessible === 'function' && isClassroomClassAccessible(id);
+    if (!accessible) { apmsClassHashClear(true); return ''; }
+    return id;
+}
+
+// 복원 판단이 끝났다. 복원하지 않으면 새로고침으로 물려받은 보호 항목은 일반 항목으로 바꾼다.
+function apmsClassHashBootDone(restored) {
+    const wasHeld = apmsNavGuard.holdBoot;
+    apmsNavGuard.holdBoot = false;
+    if (wasHeld && !restored) {
+        try { if (window.history.state && window.history.state.apmsGuard) window.history.replaceState({ apmsBase: true }, '', window.location.href); } catch (error) { /* 이력 접근이 막힌 환경 */ }
+    }
+    apmsNavScheduleSync();
+}
+
+// 복원: 화면 이력에 대시보드를 남기고(뒤로 1번 = 대시보드) 반 화면을 연다. 반 화면이 안 열리면 대시보드로 둔다.
+function apmsClassHashRestore(id) {
+    if (!appHistoryState.currentView && state?.auth?.role) appHistoryState.currentView = appHistoryBuildView('renderDashboard');
+    const result = typeof window.renderClass === 'function' ? window.renderClass(id) : false;
+    const view = appHistoryState.currentView;
+    if (result !== false && !(view && view.type === 'classDetail')) appHistoryRecordView(appHistoryBuildView('renderClass', [id])); // 화면 이동 감싸기가 아직 안 붙은 경우
+    const opened = result !== false && !!document.querySelector('.ap-classroom-shell');
+    if (!opened) {
+        apmsClassHashClear(true);
+        appHistoryState.currentView = null;
+        appHistoryState.backStack.length = 0;
+        if (state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') renderAdminControlCenter(); else renderDashboard();
+    }
+    apmsClassHashBootDone(opened);
+}
+
+// 로그아웃: 앞 사용자의 반 위치를 지운다.
+function apmsClassHashForget() {
+    apmsClassHashClear(true);
+    if (typeof state !== 'undefined' && state && state.ui) state.ui.currentClassId = null;
+    appHistoryState.currentView = null;
 }
 
 function appHistoryWrapGlobal(name, meta) {
@@ -374,6 +652,7 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
     if (!titleEl || !bodyEl || !overlay) return;
 
     document.body?.classList?.add('ap-modal-open');
+    apmsModalLogicalOpen = true;
 
     if (modalCloseTimer) {
         clearTimeout(modalCloseTimer);
@@ -431,6 +710,7 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
             overlay.classList.add('show');
         });
     }
+    apmsNavScheduleSync();
 }
 
 // 등급 모달(.apms-modal)에 헤더 행동(showModal의 at/af)이 넘어오면 저장 버튼을 하단 오른쪽 액션줄로 옮겨 그린다.
@@ -444,7 +724,10 @@ function adoptHeaderActionIntoModalActions(bodyEl, at, af) {
     const bar = document.createElement('div');
     bar.className = 'apms-modal__actions';
     bar.setAttribute('data-modal-action-proxy', '1');
-    bar.innerHTML = '<button type="button" class="btn apms-button apms-button--quiet apms-unified-quiet" onclick="closeModal()">취소</button>' +
+    // 모달 헤더에 "취소"(#modal-cancel-btn)가 있으면 하단에 취소를 또 만들지 않는다(헤더·하단 중복 금지, 사용자 결정 2026-11-02).
+    // 헤더 취소가 없는 화면에서만 하단 취소를 둔다.
+    const headerCancel = typeof document.getElementById === 'function' ? document.getElementById('modal-cancel-btn') : null;
+    bar.innerHTML = (headerCancel ? '' : '<button type="button" class="btn apms-button apms-button--quiet apms-unified-quiet" onclick="requestCloseModal(\'cancel\')">취소</button>') +
         '<button type="button" class="btn apms-button apms-button--primary btn-primary apms-unified-primary" onclick="document.getElementById(\'modal-action-btn\').click()"></button>';
     bar.lastChild.textContent = String(at);
     root.appendChild(bar);
@@ -522,7 +805,8 @@ function getModalTier() {
     return 'form';
 }
 
-// 순수 판정: source 'escape' | 'backdrop' → 'close' | 'confirm' | 'ignore'
+// 순수 판정: source 'escape' | 'cancel'(헤더 취소) | 'back'(앱 ← · 기기 뒤로 가기) | 'backdrop' → 'close' | 'confirm' | 'ignore'
+// escape·cancel·back은 같은 규칙이다: 변경이 있으면 확인, 없으면 닫음(작업 화면·전체 화면 등급도 같다).
 function decideModalClose(source, tier, dirty) {
     if (source === 'backdrop') {
         if (tier === 'workspace' || tier === 'panel') return 'ignore';
@@ -542,7 +826,9 @@ function requestCloseModal(source) {
     const action = decideModalClose(source, getModalTier(), isModalDirty());
     if (action === 'ignore') return false;
     if (action === 'confirm' && !confirmDiscardModalChanges()) return false;
-    closeModal();
+    // 'back'(앱 ← 버튼·기기 뒤로 가기)은 반 화면 등으로 돌아가는 경로를 지키는 전용 닫기를 쓴다. 'escape'·'cancel'은 closeModal().
+    if (source === 'back' && typeof closeModalForAppBack === 'function') closeModalForAppBack();
+    else closeModal();
     return true;
 }
 
@@ -551,9 +837,11 @@ function requestCloseModal(source) {
 function registerEscapeLayer(closeFn) {
     const layer = { seq: ++modalLayerSeq, close: closeFn };
     apmsEscapeLayers.push(layer);
+    if (typeof apmsNavScheduleSync === 'function') apmsNavScheduleSync();
     return function unregisterEscapeLayer() {
         const index = apmsEscapeLayers.indexOf(layer);
         if (index >= 0) apmsEscapeLayers.splice(index, 1);
+        if (typeof apmsNavScheduleSync === 'function') apmsNavScheduleSync();
     };
 }
 
@@ -667,7 +955,6 @@ function returnToPreviousManagementView(fallback = 'dashboard', ctx = null) {
 
     if (view.type === 'addressBook' && typeof openAddressBook === 'function') return openAddressBook();
     if (view.type === 'classManage' && typeof openClassManageModal === 'function') return openClassManageModal();
-    if (view.type === 'textbookManage' && typeof openTextbookManageModal === 'function') return openTextbookManageModal({ returnTo: view.parentReturn || null });
     if (view.type === 'classDetail' && view.classId && typeof renderClass === 'function') {
         closeModal(true);
         // Do not confuse the previous class screen with the class selected in progress.
@@ -717,6 +1004,7 @@ function closeModal(suppressReturn = false) {
         const previous = modalStepStack.pop();
         restoreModalSnapshot(previous);
         updateAppBackButtons();
+        apmsNavScheduleSync();
         return;
     }
 
@@ -736,6 +1024,8 @@ function closeModal(suppressReturn = false) {
     overlay.classList.remove('show');
     modalDirtyTouched = false;
     modalDirtyChecker = null;
+    apmsModalLogicalOpen = false;
+    apmsNavScheduleSync();
     modalCloseTimer = setTimeout(() => {
         overlay.classList.add('hidden');
         document.body?.classList?.remove('ap-modal-open');
@@ -976,6 +1266,7 @@ const DRAWER_ICON_SVG = {
     school: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10 12 5l8 5-8 5z"/><path d="M7 12v5c2.8 1.7 7.2 1.7 10 0v-5"/></svg>',
     exam: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h7l3 3v13H7z"/><path d="M14 4v4h4"/><path d="M9.5 13.5l1.5 1.5 3.5-4"/></svg>',
     omr: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="2"/><circle cx="9" cy="9" r="1"/><circle cx="9" cy="13" r="1"/><circle cx="9" cy="17" r="1"/><path d="M12 9h4"/><path d="M12 13h4"/><path d="M12 17h4"/></svg>',
+    report: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V10"/><path d="M12 20V4"/><path d="M19 20v-7"/><path d="M3.5 20h17"/></svg>',
     sync: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5"/><path d="M4 17v-5h5"/><path d="M18.5 9A7 7 0 0 0 6.7 6.4"/><path d="M5.5 15a7 7 0 0 0 11.8 2.6"/></svg>',
     manual: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H20v14H6.5A2.5 2.5 0 0 1 4 15.5z"/><path d="M8 8h8"/><path d="M8 12h7"/><path d="M8 16h6"/></svg>',
     discharged: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 19c0-2.2-1.8-4-4-4s-4 1.8-4 4"/><circle cx="12" cy="8" r="3"/><path d="M17 12h4"/></svg>',
@@ -991,16 +1282,108 @@ function drawerIcon(icon) {
     return DRAWER_ICON_SVG[key] || DRAWER_ICON_SVG.default;
 }
 
-function drawerItem(icon, label, action, extraClass = '') {
+function drawerItem(icon, label, action, extraClass = '', navKey = '') {
     if (String(action || '').indexOf('renderTimetableMonths') !== -1) return '';
     const safeLabel = (typeof apEscapeHtml === 'function') ? apEscapeHtml(String(label || '')) : String(label || '');
     const iconHtml = drawerIcon(icon);
+    // aria-label·title: 레일(56px)에서는 이름 글자가 숨겨지므로 이 둘이 이름 역할을 한다.
+    const navAttr = navKey ? ` data-nav="${navKey}"` : '';
     return `
-        <button class="drw-item ${extraClass}" onclick="${action}">
+        <button type="button" class="drw-item ${extraClass}"${navAttr} aria-label="${safeLabel}" title="${safeLabel}" onclick="${action}">
             <span class="drw-icon" aria-hidden="true">${iconHtml}</span>
             <span class="drw-label">${safeLabel}</span>
         </button>
     `;
+}
+
+// ------------------------------------------------------------
+// 현재 위치 표시 (aria-current="page")
+// - 서랍 항목을 누르면 drawerMark(key, kind)가 그 항목을 현재 위치로 표시한다.
+//   kind 'modal': 모달·작업 화면(W)이 열려 있는 동안만 표시하고, 닫히면 해제한다.
+//   kind 'page' : 시간표·출석부·학교성적처럼 본 화면을 바꾸는 항목. 이후는 appHistoryState.currentView로 따라간다.
+// - 대시보드·반 화면에서 모달이 열리면 표시는 없다(서랍 항목이 없는 일).
+// ------------------------------------------------------------
+const DRAWER_PAGE_NAV_KEYS = { timetable: 'timetable', attendance: 'attendance', schoolExam: 'school' };
+const drawerNavState = { intent: null, timer: null, observer: null };
+
+function drawerOverlayOpen() {
+    const modal = document.getElementById('modal-overlay');
+    if (modal && !modal.classList.contains('hidden') && modal.classList.contains('show')) return true;
+    const wide = document.getElementById('report-center-wide-overlay');
+    return !!(wide && wide.classList.contains('show'));
+}
+
+function drawerPageNavKey() {
+    try {
+        const view = appHistoryState && appHistoryState.currentView;
+        return (view && DRAWER_PAGE_NAV_KEYS[view.type]) || '';
+    } catch (e) {
+        return '';
+    }
+}
+
+function drawerResolveCurrentKey() {
+    return drawerNavState.intent ? drawerNavState.intent.key : drawerPageNavKey();
+}
+
+function drawerRefreshCurrent() {
+    const drw = document.getElementById('app-drawer');
+    if (!drw) return '';
+    const key = drawerResolveCurrentKey();
+    drw.querySelectorAll('.drw-item[data-nav]').forEach(btn => {
+        const on = !!key && btn.getAttribute('data-nav') === key;
+        btn.classList.toggle('drw-active', on);
+        if (on) btn.setAttribute('aria-current', 'page');
+        else btn.removeAttribute('aria-current');
+    });
+    return key;
+}
+
+function drawerNavTick() {
+    const intent = drawerNavState.intent;
+    if (intent) {
+        const age = Date.now() - intent.at;
+        const open = drawerOverlayOpen();
+        if (open) intent.seen = true;
+        // 모달형: 한 번 열렸다가 닫히면 해제. 열리지 않으면 3초 뒤 해제. 본 화면형: 3초 뒤 currentView에 맡긴다.
+        const done = intent.kind === 'modal' ? (!open && (intent.seen || age > 3000)) : age > 3000;
+        if (done) drawerNavState.intent = null;
+    }
+    if (!drawerNavState.intent && drawerNavState.timer) {
+        clearInterval(drawerNavState.timer);
+        drawerNavState.timer = null;
+    }
+    drawerRefreshCurrent();
+}
+
+function drawerMark(key, kind) {
+    drawerNavState.intent = { key: String(key || ''), kind: kind === 'page' ? 'page' : 'modal', at: Date.now(), seen: false };
+    if (!drawerNavState.timer) drawerNavState.timer = setInterval(drawerNavTick, 300);
+    drawerRefreshCurrent();
+}
+
+// 서랍·레일이 스크롤될 때 아래에 더 있음을 알리는 페이드(.drw-scroll-more, CSS가 그린다). 끝까지 내리면 사라진다.
+function drawerUpdateScrollHint() {
+    const drw = document.getElementById('app-drawer');
+    if (!drw) return;
+    const more = drw.scrollHeight - drw.clientHeight - drw.scrollTop > 4;
+    drw.classList.toggle('drw-scroll-more', more);
+}
+
+function drawerBindScrollHint(drw) {
+    if (!drw || drw.__apScrollHint) return;
+    drw.__apScrollHint = true;
+    drw.addEventListener('scroll', drawerUpdateScrollHint, { passive: true });
+    window.addEventListener('resize', drawerUpdateScrollHint);
+}
+
+function drawerBindNavObserver() {
+    if (drawerNavState.observer || typeof MutationObserver === 'undefined') return;
+    const root = document.getElementById('app-root');
+    if (!root) return;
+    // 본 화면이 바뀌면(대시보드 버튼으로 시간표를 연 경우 포함) 표시를 다시 계산한다.
+    drawerNavState.observer = new MutationObserver(() => drawerRefreshCurrent());
+    drawerNavState.observer.observe(root, { childList: true });
 }
 
 function drawerSection(label) {
@@ -1013,67 +1396,63 @@ function openManualCenter() {
     if (!opened) window.location.href = url;
 }
 
-function openExamScoreMenu() {
-    showModal('원내평가', `
-        <div style="display:flex; flex-direction:column; gap:10px;">
-            <button class="btn btn-primary" style="width:100%; min-height:48px; padding:12px 14px; font-size:14px; font-weight:700; border-radius:14px;" onclick="closeModal(); openGlobalExamGradeView();">원내평가</button>
-            <button class="btn" style="width:100%; min-height:48px; padding:12px 14px; font-size:14px; font-weight:700; border-radius:14px; background:var(--surface-2); border:1px solid var(--border); color:var(--text);" onclick="closeModal(); if(typeof openSchoolExamLedger==='function') openSchoolExamLedger(); else openCumulativeOpsModal('school');">학교 성적표</button>
-        </div>
-    `);
-}
-
 function buildDrawerMenu(roleKey) {
     const isAdminDrawer = roleKey === 'admin';
 
+    // 원장 서랍: 항목 구성은 그대로 두고(결정 D1) 이름 통일·현재 위치 표시·아이콘만 적용한다.
     if (isAdminDrawer) {
         return `
             ${drawerSection('학생 관리')}
-            ${drawerItem('students', '학생관리', "closeAppDrawer(); openAddressBook();")}
-            ${drawerItem('class', '학급관리', "closeAppDrawer(); openClassManageModal();")}
+            ${drawerItem('students', '학생 관리', "closeAppDrawer(); drawerMark('students'); openAddressBook();", '', 'students')}
+            ${drawerItem('class', '반 관리', "closeAppDrawer(); drawerMark('class'); openClassManageModal();", '', 'class')}
 
             ${drawerSection('운영')}
-            ${drawerItem('schedule', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
-            ${drawerItem('timetable', '시간표', "closeAppDrawer(); if(typeof openLiveTimetable==='function') openLiveTimetable(); else if(typeof renderTimetable==='function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');")}
-            ${drawerItem('discharged', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') openDischargedStudents(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
-            ${drawerItem('exam', '진단평가', "closeAppDrawer(); if(typeof openAdminDiagnosticPanel==='function') openAdminDiagnosticPanel(); else toast('진단평가 기능을 불러오지 못했습니다.', 'warn');")}
+            ${drawerItem('schedule', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') { drawerMark('schedule'); openExamScheduleModal(); } else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');", '', 'schedule')}
+            ${drawerItem('timetable', '시간표', "closeAppDrawer(); if(typeof openLiveTimetable==='function') { drawerMark('timetable', 'page'); openLiveTimetable(); } else if(typeof renderTimetable==='function') { drawerMark('timetable', 'page'); renderTimetable(); } else toast('시간표 기능을 불러오지 못했습니다.', 'warn');", '', 'timetable')}
+            ${drawerItem('discharged', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') { drawerMark('discharged'); openDischargedStudents(); } else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');", '', 'discharged')}
+            ${drawerItem('exam', '진단평가', "closeAppDrawer(); if(typeof openAdminDiagnosticPanel==='function') { drawerMark('diagnostic'); openAdminDiagnosticPanel(); } else toast('진단평가 기능을 불러오지 못했습니다.', 'warn');", '', 'diagnostic')}
 
             ${drawerSection('수업 자료')}
             ${drawerItem('archive', '아카이브', "closeAppDrawer(); if(typeof openDashboardArchiveWindow==='function') openDashboardArchiveWindow(event); else toast('아카이브를 불러오지 못했습니다.', 'warn');")}
             ${drawerItem('playground', '도형·함수 실험실', "closeAppDrawer(); window.open('./playground/index.html', '_blank', 'noopener');")}
 
             ${drawerSection('지원')}
-            ${drawerItem('manage', '관리', "closeAppDrawer(); if(typeof openAdminOperationMenu==='function') openAdminOperationMenu(); else toast('관리 기능을 불러오지 못했습니다.', 'warn');")}
-            ${drawerItem('sync', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}
+            ${drawerItem('manage', '관리', "closeAppDrawer(); if(typeof openAdminOperationMenu==='function') { drawerMark('manage'); openAdminOperationMenu(); } else toast('관리 기능을 불러오지 못했습니다.', 'warn');", '', 'manage')}
+            ${drawerItem('sync', '시스템 동기화', "closeAppDrawer(); drawerMark('sync'); openOperationMenu();", '', 'sync')}
             ${drawerItem('manual', '사용설명서', "closeAppDrawer(); openManualCenter();")}
         `;
     }
 
+    // 선생님 서랍: 자주 쓰는 순서(수업 → 반·학생 → 기록 → 평가·리포트 → 자료 → 지원). 항목은 빼지 않고 묶음만 옮겼다.
     return `
-        ${drawerSection('수업 관리')}
-        ${drawerItem('timetable', '시간표', "closeAppDrawer(); if(typeof openLiveTimetable==='function') openLiveTimetable(); else if(typeof renderTimetable==='function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('attendance', '출석부', "closeAppDrawer(); if(typeof openAttendanceLedger==='function') openAttendanceLedger(); else if(typeof renderAttendanceLedger==='function') renderAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('journal', '일지', "closeAppDrawer(); openDailyJournalModal();")}
-        ${drawerItem('memo', '메모', "closeAppDrawer(); openTodoMemoModal();")}
-        ${drawerItem('class', '학급관리', "closeAppDrawer(); openClassManageModal();")}
-        ${drawerItem('students', '학생관리', "closeAppDrawer(); openAddressBook();")}
-        ${drawerItem('discharged', '퇴원생', "closeAppDrawer(); if(typeof openWithdrawalReport==='function') openWithdrawalReport(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('schedule', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerSection('수업')}
+        ${drawerItem('timetable', '시간표', "closeAppDrawer(); if(typeof openLiveTimetable==='function') { drawerMark('timetable', 'page'); openLiveTimetable(); } else if(typeof renderTimetable==='function') { drawerMark('timetable', 'page'); renderTimetable(); } else toast('시간표 기능을 불러오지 못했습니다.', 'warn');", '', 'timetable')}
+        ${drawerItem('attendance', '출석부', "closeAppDrawer(); if(typeof openAttendanceLedger==='function') { drawerMark('attendance', 'page'); openAttendanceLedger(); } else if(typeof renderAttendanceLedger==='function') { drawerMark('attendance'); renderAttendanceLedger(); } else toast('출석부 기능을 불러오지 못했습니다.', 'warn');", '', 'attendance')}
+        ${drawerItem('textbook', '진도·교재', "closeAppDrawer(); if(typeof openGlobalTextbookManage==='function') { drawerMark('textbook'); openGlobalTextbookManage(); } else toast('진도·교재 기능을 불러오지 못했습니다.', 'warn');", '', 'textbook')}
+        ${drawerItem('clinic', '클리닉', "closeAppDrawer(); if(typeof openClinicCenter==='function') { drawerMark('clinic'); openClinicCenter(); } else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');", '', 'clinic')}
+        ${drawerItem('exam', '원내평가·OMR', "closeAppDrawer(); if(typeof openExamWorkspace==='function') { drawerMark('exam-omr'); openExamWorkspace(''); } else toast('원내평가·OMR 기능을 불러오지 못했습니다.', 'warn');", '', 'exam-omr')}
 
-        ${drawerSection('수업 자료')}
-        ${drawerItem('textbook', '교재관리', "closeAppDrawer(); if(typeof openGlobalTextbookManage==='function') openGlobalTextbookManage(); else toast('교재관리 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('material', '수업자료', "closeAppDrawer(); if(typeof openStudyMaterialWrongCenter==='function') openStudyMaterialWrongCenter(); else toast('수업자료 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('exam', '시험지 보관함', "closeAppDrawer(); window.open(appendArchiveSessionToUrlForUi('../archive/assessment/assessment-mvp.html'), '_blank', 'noopener');")}
-        ${drawerItem('clinic', '클리닉', "closeAppDrawer(); if(typeof openClinicCenter==='function') openClinicCenter(); else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerSection('반·학생')}
+        ${drawerItem('manage', '반 관리', "closeAppDrawer(); drawerMark('class'); openClassManageModal();", '', 'class')}
+        ${drawerItem('students', '학생 관리', "closeAppDrawer(); drawerMark('students'); openAddressBook();", '', 'students')}
+        ${drawerItem('discharged', '퇴원생', "closeAppDrawer(); if(typeof openWithdrawalReport==='function') { drawerMark('discharged'); openWithdrawalReport(); } else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');", '', 'discharged')}
+
+        ${drawerSection('기록')}
+        ${drawerItem('journal', '일지', "closeAppDrawer(); drawerMark('journal'); openDailyJournalModal();", '', 'journal')}
+        ${drawerItem('memo', '메모', "closeAppDrawer(); drawerMark('memo'); openTodoMemoModal();", '', 'memo')}
+        ${drawerItem('schedule', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') { drawerMark('schedule'); openExamScheduleModal(); } else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');", '', 'schedule')}
+
+        ${drawerSection('평가·리포트')}
+        ${drawerItem('report', '리포트 센터', "closeAppDrawer(); if(typeof openReportCenterHome==='function') { drawerMark('report'); openReportCenterHome(); } else toast('리포트 센터를 불러오지 못했습니다.', 'warn');", '', 'report')}
+        ${drawerItem('school', '학교성적', "closeAppDrawer(); if(typeof openSchoolExamLedger==='function') { drawerMark('school', 'page'); openSchoolExamLedger(); } else if(typeof openCumulativeOpsModal==='function') { drawerMark('school'); openCumulativeOpsModal('school'); } else toast('학교성적 기능을 불러오지 못했습니다.', 'warn');", '', 'school')}
+
+        ${drawerSection('자료')}
+        ${drawerItem('material', '수업자료', "closeAppDrawer(); if(typeof openStudyMaterialWrongCenter==='function') { drawerMark('material'); openStudyMaterialWrongCenter(); } else toast('수업자료 기능을 불러오지 못했습니다.', 'warn');", '', 'material')}
+        ${drawerItem('archive', '시험지 보관함', "closeAppDrawer(); window.open(appendArchiveSessionToUrlForUi('../archive/assessment/assessment-mvp.html'), '_blank', 'noopener');")}
         ${drawerItem('playground', '도형·함수 실험실', "closeAppDrawer(); window.open('./playground/index.html', '_blank', 'noopener');")}
 
-        ${drawerSection('평가')}
-        ${drawerItem('report', '리포트 센터', "closeAppDrawer(); if(typeof openReportCenterHome==='function') openReportCenterHome(); else toast('리포트 센터를 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('school', '학교성적', "closeAppDrawer(); if(typeof openSchoolExamLedger==='function') openSchoolExamLedger(); else if(typeof openCumulativeOpsModal==='function') openCumulativeOpsModal('school'); else toast('학교성적 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('exam', '원내평가', "closeAppDrawer(); if(typeof openGlobalExamGradeView==='function') openGlobalExamGradeView(); else toast('원내평가 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('omr', 'OMR 입력', "closeAppDrawer(); if(typeof openOmrInput==='function') openOmrInput(); else toast('OMR 입력 기능을 불러오지 못했습니다.', 'warn');")}
-
         ${drawerSection('지원')}
-        ${drawerItem('sync', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}
+        ${drawerItem('sync', '시스템 동기화', "closeAppDrawer(); drawerMark('sync'); openOperationMenu();", '', 'sync')}
         ${drawerItem('manual', '사용설명서', "closeAppDrawer(); openManualCenter();")}
     `;
 }
@@ -1138,6 +1517,11 @@ function renderAppDrawer(force = false) {
         document.body.appendChild(wrapper.firstChild);
     }
 
+    drawerBindNavObserver();
+    drawerRefreshCurrent();
+    drawerBindScrollHint(document.getElementById('app-drawer'));
+    drawerUpdateScrollHint();
+    window.setTimeout(drawerUpdateScrollHint, 300);
     applyTheme(getTheme());
 }
 
@@ -1161,6 +1545,8 @@ function openAppDrawer() {
         return;
     }
     renderAppDrawer();
+    drawerRefreshCurrent();
+    drawerUpdateScrollHint();
     const drw = document.getElementById('app-drawer');
     const ovl = document.getElementById('app-drawer-overlay');
     if (!drw) return;
@@ -1362,7 +1748,7 @@ function installDrawerSizeLock() {
 
         #app-drawer .drw-item {
             width: 100% !important;
-            min-height: 38px !important;
+            min-height: 44px !important; /* N1: 터치 목표 44px */
             margin: 1px 0 !important;
             padding: 9px var(--ap-drawer-x) !important;
             box-sizing: border-box !important;

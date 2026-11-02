@@ -1,0 +1,220 @@
+/* ws-student.css — M4 반 관리 · M6 학생 상세 작업 화면 전용 선택자.
+ * 공통 부품(.apms-modal*, .apms-workspace*)은 apms-unified-modal.css가 가진다. 여기서는 그 위에 이 묶음만의
+ * 모양을 얹는다. 색은 라이트/다크 토큰(--surface, --text, --border …)만 쓴다. 글자 12px 이상, 누르는 영역 44px(최소 24px).
+ * 대상 기기: 휴대폰 390×844 · 태블릿 800×1280/1280×800 · PC 1440×900. */
+
+/* 칩 (학년·숨김·상태 표시) */
+.ws-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 20px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: var(--primary-soft, var(--surface-2));
+    color: var(--text);
+    border: 1px solid var(--border);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+.ws-chip--muted { background: var(--surface-2); color: var(--secondary); }
+
+/* ---- 반 관리 ---- */
+.ws-class__bar { justify-content: space-between; }
+.ws-class__summary { color: var(--secondary); font-size: 13px; font-weight: 500; }
+.ws-class__add { min-height: 44px; padding: 10px 16px; border-radius: var(--ap-ui-radius-control, 8px); font-size: 14px; font-weight: 500; }
+.ws-class__section-title { margin: 6px 2px 0; color: var(--secondary); font-size: 13px; font-weight: 600; }
+.ws-class__section-title:first-child { margin-top: 0; }
+.ws-class__empty { padding: 14px 4px; color: var(--secondary); font-size: 13px; }
+.ws-class__item { display: flex; flex-direction: column; align-items: stretch; gap: 4px; flex: 0 0 auto; } /* 반이 많아도 줄어들어 글자가 상자 밖으로 나가지 않게 */
+.ws-class__item.is-hidden { opacity: .8; }
+.ws-class__item-head { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; }
+.ws-class__item-name { color: var(--text); font-size: 15px; font-weight: 600; line-height: 1.35; }
+.ws-class__item-count { margin-left: auto; color: var(--secondary); font-size: 12px; white-space: nowrap; }
+.ws-class__item-meta { color: var(--secondary); font-size: 12px; line-height: 1.45; }
+.ws-class__item.is-active .ws-class__item-meta,
+.ws-class__item.is-active .ws-class__item-count { color: var(--text); }
+
+.ws-class__detail { display: flex; flex-direction: column; gap: 14px; }
+.ws-class__placeholder { padding: 28px 8px; color: var(--secondary); font-size: 14px; line-height: 1.6; text-align: center; }
+.ws-class__detail-head { display: flex; flex-direction: column; gap: 4px; }
+.ws-class__detail-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.ws-class__back { display: none; align-self: flex-start; min-height: 44px; padding: 8px 12px; font-size: 13px; }
+.ws-class__open { min-height: 44px; padding: 8px 12px; font-size: 13px; }
+.ws-class__form { display: flex; flex-direction: column; gap: 6px; }
+.ws-class__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px 12px; }
+.ws-class__grid .apms-unified-label { margin-bottom: 4px; }
+.ws-class__days { display: flex; flex-wrap: wrap; gap: 6px; }
+.ws-class__days .apms-unified-day { min-height: 44px; padding: 8px 14px; font-size: 13px; }
+.ws-class__state { display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid var(--border); }
+.ws-class__state-title { font-size: 13px; font-weight: 600; color: var(--text); }
+.ws-class__state-note { color: var(--secondary); font-size: 12px; line-height: 1.5; }
+.ws-class__state-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.ws-class__state-actions .btn { min-height: 44px; padding: 8px 16px; font-size: 13px; font-weight: 500; }
+.ws-class__danger { color: var(--error); border-color: var(--error); }
+.ws-class__actions[hidden] { display: none; }
+
+@media (max-width: 600px) {
+    .ws-class__back { display: inline-flex; }
+    .ws-class__detail[data-empty="true"] { display: none; }
+    .ws-class__list { overflow: visible; }
+    .ws-class__grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---- 퇴원생 현황 목록 안 재등원 폼 (ws-student-restore.js) + 이 목록의 작은 글자(11px)를 12px로 ---- */
+.ap-withdrawal-filters label { font-size: 12px; }
+.ap-withdrawal-filters select { font-size: 13px; }
+.ap-withdrawal-row__actions .btn { font-size: 12px; }
+.ap-withdrawal-row > .ws-restore {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--ap-ui-radius-panel, 8px);
+    background: var(--surface-2);
+}
+.ws-restore__note { color: var(--secondary); font-size: 12px; line-height: 1.5; }
+.ws-restore__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px 12px; }
+.ws-restore .apms-unified-control {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    text-align: left;
+    background: var(--surface);
+    border: 1px solid var(--control-border, var(--border));
+    border-radius: var(--ap-ui-radius-control, 8px);
+    color: var(--text);
+    font-size: 13px;
+}
+.ws-restore__actions { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+.ws-restore__actions .btn { min-height: 44px; padding: 8px 16px; font-size: 13px; font-weight: 500; }
+@media (max-width: 600px) {
+    .ws-restore__actions .btn { flex: 1 1 0; }
+}
+
+/* ---- 학생 상세 · 상담 탭 (ws-student-consult.js) ---- */
+/* 수정·삭제는 글자 span이 아니라 버튼이다(누르는 영역 44px, 글자 12px 이상). */
+.ws-link-btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0 8px;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: var(--ap-ui-radius-control, 8px);
+}
+.ws-link-btn--danger { color: var(--error); }
+.ws-link-btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+
+.ws-consult-form-host:empty { display: none; }
+.ws-consult-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 0 12px;
+    padding: 12px;
+    border: 1px solid var(--primary);
+    border-radius: var(--ap-ui-radius-panel, 8px);
+    background: var(--surface);
+}
+.ws-consult-form__title { font-size: 14px; font-weight: 600; color: var(--text); }
+.ws-consult-form__grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 8px 12px; }
+.ws-consult-form .apms-unified-control {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 12px;
+    text-align: left;
+    background: var(--surface);
+    border: 1px solid var(--control-border, var(--border));
+    border-radius: var(--ap-ui-radius-control, 8px);
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 400;
+    font-family: inherit;
+}
+.ws-consult-form textarea.ws-consult-form__content { min-height: 140px; resize: vertical; }
+.ws-consult-form textarea.ws-consult-form__action { min-height: 72px; resize: vertical; }
+.ws-consult-form__actions { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+.ws-consult-form__actions .btn { min-height: 44px; padding: 8px 16px; font-size: 13px; font-weight: 500; }
+.ws-consult-thread {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0 0 12px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--ap-ui-radius-panel, 8px);
+    background: var(--surface);
+}
+.ws-consult-thread__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.ws-consult-thread__head .btn { min-height: 44px; padding: 8px 14px; font-size: 13px; }
+
+/* 상담 탭·학생 상세 구간의 작은 글자(11px)를 12px로. 학생 상세 껍데기 안에서만 적용한다. */
+.ap-student-detail-shell .ap-student-consult-type,
+.ap-student-detail-shell .ap-student-section-head span,
+.ap-student-detail-shell .ap-student-management-desc,
+.ap-student-detail-shell .ap-student-management-counts,
+.ap-student-detail-shell .ap-student-edit-help,
+.ap-student-detail-shell .ap-student-field span,
+.ap-student-detail-shell .std-badge { font-size: 12px; }
+.ap-student-detail-shell .ap-student-mini-btn { font-size: 13px; }
+.ap-student-detail-shell .ap-student-consult-all summary::after,
+.ap-student-detail-shell .ap-student-consult-date-btn { font-size: 13px; }
+@media (max-width: 600px) {
+    .ws-consult-form__grid { grid-template-columns: minmax(0, 1fr); }
+    .ws-consult-form__actions .btn { flex: 1 1 0; }
+}
+
+/* ---- 학생 상세 · 상태 변경 이력 / 반 이동 이력 접이식 (ws-student-history.js) ---- */
+.ws-history-list { display: flex; flex-direction: column; gap: 8px; }
+.ws-history { border: 1px solid var(--border); border-radius: var(--ap-ui-radius-panel, 8px); background: var(--surface); }
+.ws-history > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 12px;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+}
+.ws-history > summary::-webkit-details-marker { display: none; }
+.ws-history > summary::after { content: '보기'; margin-left: 8px; color: var(--secondary); font-size: 12px; font-weight: 500; }
+.ws-history[open] > summary::after { content: '접기'; }
+.ws-history > summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.ws-history__count { margin-left: auto; color: var(--secondary); font-size: 12px; font-weight: 500; }
+.ws-history__body { padding: 0 12px 12px; }
+.ws-history__loading { padding: 14px 4px; color: var(--secondary); font-size: 13px; text-align: center; }
+.ws-history__body .card { margin: 0; }
+
+/* ---- 학생 상세 껍데기: W 단열 (데스크톱·태블릿 720px 한 칸, 휴대폰 화면 전체 드릴다운) ---- */
+.ws-student-detail { padding-top: 8px; gap: 0; } /* 좌우 패딩은 공통 부품 값(20px/16px)을 그대로 둔다: 하단 액션줄 음수 여백이 이 값에 맞춰져 있다 */
+.ws-student-detail > .apms-workspace { gap: 0; }
+.ws-student-detail .ws-student-detail__body { padding: 0; border: 0; background: transparent; }
+/* 학생 상세 머리줄은 <header> 요소다. index.html의 `body.ap-modal-open header`(앱 맨 위 뒤로 가기를 모달 위에 남기는 규칙)가
+ * 이 머리줄까지 잡아 pointer-events:none · 투명 배경 · z-index 1001을 걸었다. 그 결과 머리줄의 [수정] 버튼이 눌리지 않았고,
+ * 스크롤하면 아래 내용이 비쳐 이름과 겹쳐 보였다. 학생 상세 머리줄만 원래 값으로 되돌린다(공통 규칙은 건드리지 않는다). */
+body.ap-modal-open .ap-student-detail-shell > .ap-student-profile-head {
+    pointer-events: auto;
+    z-index: 24;
+    background: var(--surface);
+    border-bottom-color: var(--border);
+}
+.ws-student-detail .ap-student-detail-shell { padding: 0 0 12px; }
+/* 보호자 정보(전화번호 + 관계) 두 입력이 한 칸 폭을 나눠 쓴다. 옛 규칙은 둘째 칸이 100%를 차지해 첫 입력이 18px로 눌렸다. */
+.ws-student-detail .ap-student-edit-inline:has(> input + input) { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+@media (max-width: 600px) {
+    .ws-student-detail { padding-top: 0; }
+}

@@ -320,7 +320,6 @@ function openQrGenerator(cid) {
                 </div>
             </div>
             <div class="apms-modal__actions">
-                <button type="button" class="btn apms-button apms-button--quiet apms-unified-quiet" onclick="closeModal()">닫기</button>
                 <button type="button" class="btn apms-button apms-button--primary btn-primary apms-unified-primary" onclick="generateQrCode()">생성</button>
             </div>
         </div>
@@ -416,134 +415,29 @@ function copyQrUrl() {
 }
 
 /**
- * 학급의 시험 제출 통계 계산
+ * openOMR의 인자 순서가 호출처마다 달랐던 흔적(세션 자리에 원문 파일이나 날짜가 오는 경우)을 바로잡는다.
  */
-function computeQrSubmitStatus(classId, examTitle, examDate) {
-    const classStudents = state.db.class_students || [];
-    const students = state.db.students || [];
-    const examSessions = state.db.exam_sessions || [];
-
-    const ids = classStudents.filter(m => String(m.class_id) === String(classId)).map(m => String(m.student_id));
-    const active = students.filter(s => ids.includes(String(s.id)) && s.status === '재원');
-    const aIds = active.map(s => String(s.id));
-    const sessions = examSessions.filter(es => es.exam_date === examDate && es.exam_title === examTitle && aIds.includes(String(es.student_id)));
-    const submittedIds = new Set(sessions.map(es => String(es.student_id)));
-    const submitted = active.filter(s => submittedIds.has(String(s.id))).map(s => {
-        const sess = sessions.find(ts => String(ts.student_id) === String(s.id));
-        return { ...s, score: sess?.score ?? '' };
-    });
-    const pending = active.filter(s => !submittedIds.has(String(s.id)));
-    return { submitted, pending };
-}
-
-/**
- * 특정 시험의 문항 수를 DB에서 추론하는 헬퍼 함수
- */
-function findExamQuestionCount(examTitle = '', classId = '') {
-    if (!examTitle) return 0;
-    const ids = classId
-        ? state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id)
-        : state.db.students.map(s => s.id);
-
-    const found = state.db.exam_sessions.find(es =>
-        es.exam_title === examTitle &&
-        ids.includes(es.student_id) &&
-        parseInt(es.question_count) > 0
-    );
-
-    return found ? parseInt(found.question_count) : 0;
-}
-
-/**
- * 시험 제출 현황 모달 오픈
- */
-function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
-    const today = new Date().toLocaleDateString('sv-SE');
-    const cls = state.db.classes.find(c => c.id === classId);
-    const safeDate = examDate || today;
-
-    if (!examTitle) {
-        const lastExam = localStorage.getItem('AP_LAST_EXAM_NAME') || '';
-        showModal('제출 현황 조회', `
-            <div style="display:flex;flex-direction:column;gap:12px;">
-                <p style="margin:0;font-size:13px;color:var(--secondary);font-weight:500;">조회할 시험명을 입력하세요.</p>
-                <input id="qr-status-exam" class="btn" placeholder="시험명 입력 (예: 단원평가)" value="${lastExam}" style="width:100%;text-align:left;background:var(--bg);border:none;padding:16px;border-radius:12px;font-size:14px;">
-                <input id="qr-status-date" type="date" class="btn" value="${safeDate}" style="width:100%;background:var(--bg);border:none;padding:16px;border-radius:12px;font-size:14px;font-weight:500;">
-            </div>
-        `, '조회', () => {
-            const title = document.getElementById('qr-status-exam').value.trim();
-            const date = document.getElementById('qr-status-date').value;
-            if (!title) {
-                toast('시험명을 입력하세요.', 'warn');
-                return;
-            }
-            localStorage.setItem('AP_LAST_EXAM_NAME', title);
-            openQrSubmitStatus(classId, title, date);
-        });
-        return;
-    }
-
-    const { submitted, pending } = computeQrSubmitStatus(classId, examTitle, safeDate);
-    const safeExamTitleForJs = String(examTitle).replace(/'/g, "\\'");
-    const qCount = findExamQuestionCount(examTitle, classId) || 20;
-    const archiveFile = resolveOmrArchiveFile({
-        classId,
-        examTitle,
-        examDate: safeDate,
-        questionCount: qCount
-    });
-    const safeArchiveFileForJs = String(archiveFile || '').replace(/'/g, "\\'");
-
-    showModal('제출 현황', `
-        <div style="background:var(--bg);padding:14px 18px;border-radius:14px;font-size:13px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;">
-            <div>
-                <div style="font-weight:500;color:var(--text);font-size:15px;margin-bottom:2px;">${examTitle}</div>
-                <div style="font-size:12px;color:var(--secondary);font-weight:500;">${safeDate}</div>
-            </div>
-            <div style="text-align:right;">
-                <div style="font-size:11px;color:var(--secondary);font-weight:500;margin-bottom:2px;">전체 ${submitted.length + pending.length}명</div>
-                <div style="font-size:15px;color:var(--primary);font-weight:500;">${submitted.length}명 제출</div>
-            </div>
-        </div>
-
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-            <span style="width:8px;height:8px;border-radius:50%;background:var(--success);"></span>
-            <h4 style="margin:0;font-size:14px;font-weight:500;color:var(--text);">제출 완료 (${submitted.length})</h4>
-        </div>
-        <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:8px 0;margin-bottom:28px;">
-            <table style="width:100%;font-size:14px;">
-                ${submitted.map(s => `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:500;color:var(--text);">${s.name}</td><td style="padding:12px 20px;text-align:right;font-weight:500;color:var(--primary);">${s.score}점</td></tr>`).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:500;">제출한 학생이 없습니다.</td></tr>'}
-            </table>
-        </div>
-
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-            <span style="width:8px;height:8px;border-radius:50%;background:var(--error);"></span>
-            <h4 style="margin:0;font-size:14px;font-weight:500;color:var(--text);">미제출 (${pending.length})</h4>
-        </div>
-        <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:8px 0;">
-            <table style="width:100%;font-size:14px;">
-                ${pending.map(s => `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:500;color:var(--text);">${s.name}</td><td style="padding:10px 16px;text-align:right;"><button class="btn apms-button apms-button--primary btn-primary" style="min-height:36px;padding:8px 14px;font-size:12px;font-weight:500;border-radius:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}', ${qCount}, '${classId}', '', '${safeArchiveFileForJs}', 'qrStatus', '${safeDate}')">\uC131\uC801 \uC785\uB825</button></td></tr>`).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:500;">\uBBF8\uC81C\uCD9C \uD559\uC0DD\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.</td></tr>'}
-            </table>
-        </div>
-    `);
-}
-
-/**
- * 성적 직접 입력 모달 (OMR) 오픈
- */
-async function openOMR(sid, presetTitle = '', presetQuestionCount = null, presetClassId = '', presetSessionId = '', presetArchiveFile = '', returnMode = '', presetExamDate = '', presetAssignmentId = '') {
+function normalizeOmrOpenArgs(presetSessionId = '', presetArchiveFile = '', returnMode = '', presetExamDate = '') {
     if (returnMode && isQrArchiveLike(presetSessionId) && /^\d{4}-\d{2}-\d{2}$/.test(String(presetArchiveFile || ''))) {
-        presetExamDate = presetArchiveFile;
-        presetArchiveFile = presetSessionId;
-        presetSessionId = '';
-    } else if (!presetArchiveFile && isQrArchiveLike(presetSessionId)) {
-        presetArchiveFile = presetSessionId;
-        presetSessionId = '';
+        return { presetSessionId: '', presetArchiveFile: presetSessionId, presetExamDate: presetArchiveFile };
     }
+    if (!presetArchiveFile && isQrArchiveLike(presetSessionId)) {
+        return { presetSessionId: '', presetArchiveFile: presetSessionId, presetExamDate };
+    }
+    return { presetSessionId, presetArchiveFile, presetExamDate };
+}
+
+/**
+ * OMR 입력 한 건의 맥락(시험명·날짜·문항 수·원문 파일·세션/배정 ID·기존 오답)을 한 곳에서 정한다.
+ * 옛 "성적 직접 입력" 모달(openOMR)과 원내평가·OMR 작업 화면(ws-exam-workspace.js)이 같이 쓴다.
+ * options.session / options.wrongIds: state.db에 없는 세션(시험별 조회로 받은 행)을 직접 넘길 때.
+ */
+async function resolveOmrContext(sid, presetTitle = '', presetQuestionCount = null, presetClassId = '', presetSessionId = '', presetArchiveFile = '', returnMode = '', presetExamDate = '', presetAssignmentId = '', options = {}) {
+    ({ presetSessionId, presetArchiveFile, presetExamDate } = normalizeOmrOpenArgs(presetSessionId, presetArchiveFile, returnMode, presetExamDate));
 
     const todayExam = getTodayExamConfig();
     const selectedSession = presetSessionId
-        ? (state.db?.exam_sessions || []).find(row => String(row.id || '') === String(presetSessionId))
+        ? (options.session || (state.db?.exam_sessions || []).find(row => String(row.id || '') === String(presetSessionId)))
         : null;
     const defaultTitle = presetTitle || selectedSession?.exam_title || todayExam?.title || '단원평가';
     const mapObj = (state.db.class_students || []).find(m => String(m.student_id) === String(sid));
@@ -570,12 +464,30 @@ async function openOMR(sid, presetTitle = '', presetQuestionCount = null, preset
     });
     const defaultQ = Math.min(Math.max(parseInt(selectedSession?.question_count || defaultQResolved.count, 10) || 20, 1), 80);
 
+    const wrongSource = Array.isArray(options.wrongIds) ? options.wrongIds : (state.db?.wrong_answers || [])
+        .filter(row => selectedSession && String(row.session_id || '') === String(selectedSession.id))
+        .map(row => row.question_id);
     const checkedWrongIds = selectedSession
-        ? Array.from(new Set((state.db?.wrong_answers || [])
-            .filter(row => String(row.session_id || '') === String(selectedSession.id))
-            .map(row => String(row.question_id || '').trim())
+        ? Array.from(new Set(wrongSource
+            .map(value => String(value ?? '').trim())
             .filter(value => /^\d+$/.test(value) && Number(value) >= 1 && Number(value) <= defaultQ)))
         : [];
+
+    return {
+        sid, defaultTitle, classId, defaultExamDate, defaultArchiveFile, defaultQ, defaultQResolved,
+        presetSessionId, selectedSession, selectedAssignmentId, checkedWrongIds
+    };
+}
+
+async function openOMR(sid, presetTitle = '', presetQuestionCount = null, presetClassId = '', presetSessionId = '', presetArchiveFile = '', returnMode = '', presetExamDate = '', presetAssignmentId = '') {
+    ({ presetSessionId, presetArchiveFile, presetExamDate } = normalizeOmrOpenArgs(presetSessionId, presetArchiveFile, returnMode, presetExamDate));
+
+    // 원내평가·OMR 작업 화면(ws-exam-workspace.js)이 있으면 모달을 따로 열지 않고 그 화면의 학생 입력 칸으로 보낸다.
+    if (typeof openExamWorkspaceForOmr === 'function'
+        && await openExamWorkspaceForOmr(sid, presetTitle, presetQuestionCount, presetClassId, presetSessionId, presetArchiveFile, returnMode, presetExamDate, presetAssignmentId)) return;
+
+    const ctx = await resolveOmrContext(sid, presetTitle, presetQuestionCount, presetClassId, presetSessionId, presetArchiveFile, returnMode, presetExamDate, presetAssignmentId);
+    const { defaultTitle, classId, defaultExamDate, defaultArchiveFile, defaultQ, defaultQResolved, selectedAssignmentId, checkedWrongIds } = ctx;
 
     showModal('성적 직접 입력', `
         <div style="display:flex;flex-direction:column;gap:18px;">
@@ -658,39 +570,46 @@ function rebuildOmrGrid() {
     if (wrap) wrap.innerHTML = `<div class="omr-grid" style="gap:14px;">${buildOmrItems(q, currentChecked)}</div>`;
 }
 
-async function handleOMRSave(sid) {
-    const title = document.getElementById('omr-title').value.trim();
-    const wrs = Array.from(document.querySelectorAll('.omr-q:checked')).map(el => el.value);
-    const savedExamDate = document.getElementById('omr-exam-date-hidden')?.value || new Date().toLocaleDateString('sv-SE');
-    
-    const selectedSessionId = String(document.getElementById('omr-session-id-hidden')?.value || '').trim();
+/**
+ * OMR 성적 한 건을 저장한다(PATCH exam-sessions/new). payload를 만드는 곳은 여기 한 군데다.
+ * 옛 모달(handleOMRSave)과 원내평가·OMR 작업 화면이 같이 쓰므로 어느 화면에서 저장해도 payload가 같다.
+ * input: { sid, title, wrongIds, examDate, sessionId, assignmentId, classId, archiveFile, questionCount }
+ * 반환: { success, payload, score, q, id }
+ */
+async function submitOmrResult(input = {}) {
+    const sid = input.sid;
+    const title = String(input.title || '').trim();
+    const wrs = (input.wrongIds || []).map(value => String(value));
+    const savedExamDate = input.examDate || new Date().toLocaleDateString('sv-SE');
+
+    const selectedSessionId = String(input.sessionId || '').trim();
     const selectedSession = selectedSessionId
         ? (state.db?.exam_sessions || []).find(row => String(row.id || '') === selectedSessionId)
         : null;
-    let classId = String(document.getElementById('omr-class-id-hidden')?.value || selectedSession?.class_id || '').trim();
+    let classId = String(input.classId || selectedSession?.class_id || '').trim();
     if (!classId) classId = state.ui?.currentClassId;
     if (!classId) {
         const mapObj = (state.db.class_students || []).find(m => String(m.student_id) === String(sid));
         classId = mapObj ? mapObj.class_id : null;
     }
 
+    const enteredQuestionCount = parseInt(input.questionCount, 10) || 0;
     const archiveFile = resolveOmrArchiveFile({
-        presetArchiveFile: document.getElementById('omr-archiveFile')?.value || '',
+        presetArchiveFile: input.archiveFile || '',
         classId,
         examTitle: title,
         examDate: savedExamDate,
-        questionCount: parseInt(document.getElementById('omr-q')?.value, 10) || 0,
-        sessionId: document.getElementById('omr-session-id-hidden')?.value || ''
+        questionCount: enteredQuestionCount,
+        sessionId: selectedSessionId
     });
     const resolvedQ = await resolveOmrQuestionCount({
         archiveFile,
-        presetQ: parseInt(document.getElementById('omr-q')?.value, 10) || 0,
+        presetQ: enteredQuestionCount,
         classId,
         examTitle: title,
         examDate: savedExamDate,
-        sessionId: document.getElementById('omr-session-id-hidden')?.value || ''
+        sessionId: selectedSessionId
     });
-    const enteredQuestionCount = parseInt(document.getElementById('omr-q')?.value, 10) || 0;
     const q = Math.max(1, Math.min(80, Number(selectedSessionId
         ? (enteredQuestionCount || selectedSession?.question_count || resolvedQ.count)
         : resolvedQ.count) || 20));
@@ -706,7 +625,7 @@ async function handleOMRSave(sid) {
         class_id: classId
     };
 
-    const selectedAssignmentId = String(document.getElementById('omr-assignment-id-hidden')?.value || '').trim();
+    const selectedAssignmentId = String(input.assignmentId || '').trim();
     if (selectedSessionId) payload.session_id = selectedSessionId;
     if (selectedAssignmentId) payload.assignment_id = selectedAssignmentId;
 
@@ -716,13 +635,28 @@ async function handleOMRSave(sid) {
     
     const endpoint = 'exam-sessions/new';
     const r = await api.patch(endpoint, payload);
-    
-    if (!r?.success) {
+    return { success: !!r?.success, payload, score, q, id: r?.id || selectedSessionId || '' };
+}
+
+async function handleOMRSave(sid) {
+    const result = await submitOmrResult({
+        sid,
+        title: document.getElementById('omr-title').value,
+        wrongIds: Array.from(document.querySelectorAll('.omr-q:checked')).map(el => el.value),
+        examDate: document.getElementById('omr-exam-date-hidden')?.value,
+        sessionId: document.getElementById('omr-session-id-hidden')?.value,
+        assignmentId: document.getElementById('omr-assignment-id-hidden')?.value,
+        classId: document.getElementById('omr-class-id-hidden')?.value,
+        archiveFile: document.getElementById('omr-archiveFile')?.value,
+        questionCount: document.getElementById('omr-q')?.value
+    });
+
+    if (!result.success) {
         toast('저장실패', 'warn');
         return;
     }
     
-    toast(`저장완료 (${score}점)`, 'info'); 
+    toast(`저장완료 (${result.score}점)`, 'info'); 
     closeModal(); 
     
     // 전체 loadData() 대신 부분 갱신 및 가벼운 라우팅으로 성능 최적화
@@ -1442,6 +1376,13 @@ async function saveOmrInputBulk(button) {
 
 function goOmrInputHome() {
     if (typeof leaveTimetableWideMode === 'function') leaveTimetableWideMode();
+    // 원내평가·OMR 작업 화면의 "표로 한 번에 입력"으로 들어왔다면 그 반의 작업 화면으로 돌아간다.
+    const returnClassId = String(state?.ui?.omrReturnClassId || '');
+    if (state?.ui) state.ui.omrReturnClassId = '';
+    if (returnClassId && typeof renderClass === 'function' && typeof openExamWorkspace === 'function') {
+        renderClass(returnClassId);
+        return openExamWorkspace(returnClassId);
+    }
     if (typeof goHome === 'function') return goHome();
     if (typeof renderDashboard === 'function') return renderDashboard();
 }

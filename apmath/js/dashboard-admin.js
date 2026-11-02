@@ -585,7 +585,7 @@ function renderWithdrawalReportModal() {
                 <button class="btn" type="button" onclick="hideDischargedStudent('${apEscapeHtml(student.id)}')">숨김</button>
             </div>` : '';
         return `
-            <article class="ap-withdrawal-row">
+            <article class="ap-withdrawal-row" data-student-id="${apEscapeHtml(student.id)}">
                 <div class="ap-withdrawal-row__date">${apEscapeHtml(row.withdrawnDate)}</div>
                 <div class="ap-withdrawal-row__body">
                     <div class="ap-withdrawal-row__name">${apEscapeHtml(student.name || '')}</div>
@@ -1560,16 +1560,6 @@ function adminSearchIncludes(values, keyword) {
     return values.some(value => adminNormalizeSearchValue(value).includes(key));
 }
 
-function adminGetSearchClassNameByStudentId(studentId) {
-    const cls = adminGetStudentClass(studentId);
-    return cls ? String(cls.name || '') : '미배정';
-}
-
-function adminGetSearchClassNameByClassId(classId) {
-    const cls = adminGetClassById(classId);
-    return cls ? String(cls.name || '') : '미배정';
-}
-
 function adminGetAssignmentTypeLabel(row) {
     const sourceType = String(row?.source_type || '').trim().toLowerCase();
     const archiveFile = String(row?.archive_file || '').trim();
@@ -1579,79 +1569,62 @@ function adminGetAssignmentTypeLabel(row) {
     return '자료';
 }
 
+// 원장 대시보드 검색 패널: 검색은 공통 빠른 찾기 코어(js/nav-quickfind.js apmsQuickFindSearch)를 쓰고,
+// 여기서는 패널이 그리는 모양({type,label,meta,desc,actionLabel,...})으로만 바꿔 준다. 결과를 눌렀을 때의 동작은 그대로다.
 function adminBuildGlobalSearchResults(keyword) {
     const key = String(keyword || '').trim();
     if (!key) return [];
+    if (typeof apmsQuickFindSearch !== 'function' || typeof apmsQfBuildContext !== 'function') return [];
 
-    const results = [];
-    const students = state.db.students || [];
-    const classes = state.db.classes || [];
-    const examSchedules = state.db.exam_schedules || [];
-    const assignments = state.db.class_exam_assignments || [];
-
-    students.forEach(s => {
-        const className = adminGetSearchClassNameByStudentId(s.id);
-        if (!adminSearchIncludes([s.name, s.school_name, s.grade, s.status, s.phone, className], key)) return;
-        results.push({
-            type: 'student',
-            label: s.name || '학생',
-            meta: `${className} · ${s.school_name || ''} ${s.grade || ''}`.trim(),
-            desc: adminNormalizeStatus(s.status),
-            actionLabel: '학생 보기',
-            studentId: s.id
-        });
+    const found = apmsQuickFindSearch(key, apmsQfBuildContext(), {
+        types: ['student', 'class', 'exam', 'assignment'],
+        limit: 18
     });
 
-    classes.forEach(c => {
-        if (Number(c.is_active) === 0) return;
-        if (!adminSearchIncludes([c.name, c.grade, c.teacher_name], key)) return;
-        const count = adminGetClassStudentIds(c.id)
-            .filter(id => students.some(s => String(s.id) === String(id) && adminNormalizeStatus(s.status) === '재원'))
-            .length;
-        results.push({
-            type: 'class',
-            label: c.name || '반',
-            meta: `${c.grade || ''} · ${c.teacher_name || '담당 미지정'}`,
-            desc: `재원 ${count}명`,
-            actionLabel: '반 열기',
-            classId: c.id
-        });
-    });
-
-    examSchedules.forEach(e => {
-        if (!adminSearchIncludes([e.school_name, e.grade, e.exam_name, e.exam_date], key)) return;
-        results.push({
-            type: 'exam',
-            label: `${e.school_name || '학교'} ${e.exam_name || '시험'}`.trim(),
-            meta: `${e.grade || '학교공통'} · ${e.exam_date || ''}`,
-            desc: '시험일정',
-            actionLabel: '일정 보기',
-            examDate: e.exam_date
-        });
-    });
-
-    assignments.forEach(row => {
-        const className = adminGetSearchClassNameByClassId(row.class_id);
-        if (!adminSearchIncludes([row.exam_title, row.exam_date, row.archive_file, row.source_type, className], key)) return;
-        results.push({
+    return found.items.map(item => {
+        if (item.type === 'student') {
+            const s = item.ref;
+            return {
+                type: 'student',
+                label: s.name || '학생',
+                meta: `${item.className} · ${s.school_name || ''} ${s.grade || ''}`.trim(),
+                desc: adminNormalizeStatus(s.status),
+                actionLabel: '학생 보기',
+                studentId: s.id
+            };
+        }
+        if (item.type === 'class') {
+            const c = item.ref;
+            return {
+                type: 'class',
+                label: item.title,
+                meta: `${c.grade || ''} · ${c.teacher_name || '담당 미지정'}`,
+                desc: `재원 ${item.count}명`,
+                actionLabel: '반 열기',
+                classId: c.id
+            };
+        }
+        if (item.type === 'exam') {
+            const e = item.ref;
+            return {
+                type: 'exam',
+                label: item.title,
+                meta: `${e.grade || '학교공통'} · ${e.exam_date || ''}`,
+                desc: '시험일정',
+                actionLabel: '일정 보기',
+                examDate: e.exam_date
+            };
+        }
+        const row = item.ref;
+        return {
             type: 'assignment',
             label: row.exam_title || '배정 자료',
-            meta: `${className} · ${row.exam_date || ''}`,
+            meta: `${item.className} · ${row.exam_date || ''}`,
             desc: `${adminGetAssignmentTypeLabel(row)} · ${Number(row.question_count || 0) ? `${row.question_count}문항` : '문항 수 없음'}`,
             actionLabel: '반 열기',
             classId: row.class_id
-        });
+        };
     });
-
-    const typeOrder = { student: 0, class: 1, exam: 2, assignment: 3 };
-    results.sort((a, b) => {
-        const ao = typeOrder[a.type] ?? 99;
-        const bo = typeOrder[b.type] ?? 99;
-        if (ao !== bo) return ao - bo;
-        return String(a.label || '').localeCompare(String(b.label || ''), 'ko');
-    });
-
-    return results.slice(0, 18);
 }
 
 function adminSearchTypeLabel(type) {

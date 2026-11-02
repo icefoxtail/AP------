@@ -5,6 +5,9 @@ const vm = require('vm');
 
 const root = path.resolve(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'apmath/js/classroom-planner.js'), 'utf8');
+// 원내평가·OMR 통합 작업 화면(2026-11-02): 시험 목록·상세는 이 두 파일이 그리고, classroom-planner.js의 옛 진입은 그 화면을 연다.
+const wsData = fs.readFileSync(path.join(root, 'apmath/js/ws-exam-data.js'), 'utf8');
+const wsWorkspace = fs.readFileSync(path.join(root, 'apmath/js/ws-exam-workspace.js'), 'utf8');
 const manualTitle = 'student-manual-title';
 const archiveA = 'archive/exams/original/middle/m3/1final/25_yeonhyang_m3_final.js';
 const archiveB = 'archive/exams/original/middle/m3/1final/25_other_m3_final.js';
@@ -81,7 +84,11 @@ const context = {
 
 context.window = context;
 vm.createContext(context);
+context.toast = () => {};
+context.confirm = () => true;
 vm.runInContext(source, context, { filename: 'classroom-planner.js' });
+vm.runInContext(wsData, context, { filename: 'ws-exam-data.js' });
+vm.runInContext(wsWorkspace, context, { filename: 'ws-exam-workspace.js' });
 
 async function renderListWith({ sessions = [], assignments = [] } = {}) {
   apiPayload = { sessions, assignments };
@@ -97,10 +104,10 @@ async function renderListWith({ sessions = [], assignments = [] } = {}) {
     assignments: [makeAssignment()]
   });
   assert(html.includes('25_yeonhyang_m3_final'), 'combined row should show archive file name first');
-  assert(!html.includes(`line-height: 1.4;">${manualTitle}</div>`), 'combined row should not show manual title in visible title slot');
+  assert(!html.includes(`wsx-exam-item__title">${manualTitle}<`), 'combined row should not show manual title in visible title slot');
 
   await context.openExamDetail('c1', manualTitle, '2026-07-02', archiveA);
-  assert.strictEqual(lastModal.title, '25_yeonhyang_m3_final', 'detail modal title should show archive file name first');
+  assert(lastModal.html.includes('wsx-detail__title">25_yeonhyang_m3_final'), 'detail heading should show archive file name first');
 
   html = await renderListWith({ assignments: [makeAssignment()] });
   assert(html.includes('25_yeonhyang_m3_final'), 'assignment-only row should show archive file name first');
@@ -121,7 +128,7 @@ async function renderListWith({ sessions = [], assignments = [] } = {}) {
   });
   html = await renderListWith({ assignments: [unitPastAssignment] });
   assert(html.includes('원의 방정식 · 단원별 기출'), 'unit-past assignment should show its human-readable unit title');
-  assert(!html.includes('classroom-exam-history-title">unitpast_h1-through-2final-v2_H22-C2-03_102fc077'), 'unit-past internal snapshot key should not be shown as the card title');
+  assert(!html.includes('wsx-exam-item__title">unitpast_h1-through-2final-v2_H22-C2-03_102fc077'), 'unit-past internal snapshot key should not be shown as the card title');
   assert.strictEqual(
     context.getClassroomExamDisplayTitle({
       exam_title: unitPastAssignment.exam_title,

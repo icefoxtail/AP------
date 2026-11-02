@@ -7,6 +7,7 @@ import vm from 'node:vm';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const classroomSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/classroom.js'), 'utf8');
+const labelSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/apms-class-label.js'), 'utf8');
 const coreSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/core.js'), 'utf8');
 
 function makeContext({
@@ -120,6 +121,7 @@ function makeContext({
     context.closeModal = () => context._closeCalls.push(true);
     context._elements.set('record-special-note', { value: '' });
     vm.createContext(context);
+    vm.runInContext(labelSource, context, { filename: 'apmath/js/apms-class-label.js' });
     vm.runInContext(classroomSource, context, { filename: 'apmath/js/classroom.js' });
     return context;
 }

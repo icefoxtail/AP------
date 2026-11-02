@@ -320,8 +320,6 @@ function mergeStudentScopedRows(tableName, studentId, rows = []) {
 async function loadStudentFoundationDetails(studentId, options = {}) {
     const sid = String(studentId || '').trim();
     if (!sid) return {
-        parent_contacts: [],
-        message_logs: [],
         student_status_history: [],
         class_transfer_history: []
     };
@@ -334,8 +332,6 @@ async function loadStudentFoundationDetails(studentId, options = {}) {
 
     if (!force && cached?.loadedAt && (Date.now() - cached.loadedAt) < maxAgeMs) {
         return cached.rows || {
-            parent_contacts: (state.db.parent_contacts || []).filter(row => String(row?.student_id || '') === sid),
-            message_logs: (state.db.message_logs || []).filter(row => String(row?.student_id || '') === sid),
             student_status_history: (state.db.student_status_history || []).filter(row => String(row?.student_id || '') === sid),
             class_transfer_history: (state.db.class_transfer_history || []).filter(row => String(row?.student_id || '') === sid)
         };
@@ -354,8 +350,6 @@ async function loadStudentFoundationDetails(studentId, options = {}) {
 
     const query = `student_id=${encodeURIComponent(sid)}&limit=${encodeURIComponent(String(limit))}`;
     const targets = [
-        { table: 'parent_contacts', path: `parent-foundation/contacts?${query}`, keys: ['contacts', 'parent_contacts'] },
-        { table: 'message_logs', path: `foundation-logs/messages?${query}`, keys: ['messages', 'message_logs'] },
         { table: 'student_status_history', path: `foundation-logs/status-history?${query}`, keys: ['student_status_history', 'status_history'] },
         { table: 'class_transfer_history', path: `foundation-logs/class-transfers?${query}`, keys: ['class_transfer_history', 'class_transfers'] }
     ];
@@ -385,8 +379,6 @@ async function loadStudentFoundationDetails(studentId, options = {}) {
         })
         .catch(err => {
             const fallback = {
-                parent_contacts: (state.db.parent_contacts || []).filter(row => String(row?.student_id || '') === sid),
-                message_logs: (state.db.message_logs || []).filter(row => String(row?.student_id || '') === sid),
                 student_status_history: (state.db.student_status_history || []).filter(row => String(row?.student_id || '') === sid),
                 class_transfer_history: (state.db.class_transfer_history || []).filter(row => String(row?.student_id || '') === sid)
             };
@@ -595,6 +587,7 @@ function removeSyncQueueTask(task) {
 
 // [UI Standard Applied]: 로그인 화면
 function renderLogin() {
+    if (typeof apmsNavReset === 'function') apmsNavReset(); // 이전 사용자의 뒤로 가기 이력·모달 상태 폐기
     const root = document.getElementById('app-root');
     const scopeBtn = document.querySelector('header nav button');
     const logoutBtn = document.getElementById('btn-logout');
@@ -801,12 +794,14 @@ async function logout() {
     }
     state.auth = { id: null, name: null, role: null };
     state.ui.userName = '';
+    if (typeof apmsClassHashForget === 'function') apmsClassHashForget(); // 주소 #class= 와 열린 반을 지운다(다른 계정이 로그인해도 앞 사용자의 반이 열리지 않게)
     renderLogin();
     toast('로그아웃 되었습니다.', 'info');
 }
 
 async function loadData(isInitial = false) {
     const session = getSession();
+    if (typeof apmsClassHashNoteLoad === 'function') apmsClassHashNoteLoad(session); // N4: 첫 호출이 부팅. 새로고침 시 반 화면 복원 판단용
     if (!session) { renderLogin(); return; }
 
     state.auth = { id: session.id, name: session.name, role: session.role };
@@ -881,9 +876,15 @@ async function loadData(isInitial = false) {
     apmsInvalidateDataIndexes();
     apmsGetDataIndexes();
     
+    // N4: 부팅·로그인 직후(isInitial)이고 열린 반이 없으면, 주소의 #class=<id>로 반 화면을 복원한다(접근 가능한 반만).
+    const restoreClassId = (isInitial && !state.ui.currentClassId && typeof apmsClassHashRestoreTarget === 'function')
+        ? apmsClassHashRestoreTarget(session) : '';
     if (state.ui.currentClassId) {
         renderClass(state.ui.currentClassId);
+    } else if (restoreClassId) {
+        apmsClassHashRestore(restoreClassId);
     } else {
+        if (typeof apmsClassHashBootDone === 'function') apmsClassHashBootDone(false);
         if (state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') {
             renderAdminControlCenter();
         } else {
@@ -1905,58 +1906,12 @@ function openClinicBasketForClass(classId) {
     openClinicBasketByKey(key);
 }
 
+// 반 유사문항. 예전엔 모달 연쇄(목록 → 단원 → 추천 → 바구니)의 첫 모달이었다.
+// 지금은 클리닉 작업 화면(반 전환 탭 + 보기 탭)의 "유사문항" 보기를 연다(js/ws-clinic-similar.js, 2026-11-02 M7).
 async function openClinicSimilarForClass(classId) {
-    const cls = (state.db.classes || []).find(c => String(c.id) === String(classId));
-    if (!cls) {
-        toast('반 정보를 찾을 수 없습니다.', 'warn');
-        return;
-    }
-
-    const studentIds = new Set((state.db.class_students || [])
-        .filter(row => String(row.class_id) === String(classId))
-        .map(row => String(row.student_id)));
-    const sessions = (state.db.exam_sessions || [])
-        .filter(session => studentIds.has(String(session.student_id)) && String(session.archive_file || '').trim());
-
-    showModal('유사문항', `
-        <div style="padding:24px 18px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">
-            반 오답 단원을 확인하는 중입니다.
-        </div>
-    `);
-
-    await ensureBlueprintsForSessions(sessions);
-    const weakUnits = computeClassWeakUnits(classId);
-    const context = { targetType: 'class', targetId: classId, targetLabel: cls.name || '반' };
-    const basketKey = makeClinicContextKey(context);
-    const cartCount = getClinicCartItemsForContext(basketKey).length;
-
-    if (!weakUnits.length) {
-        showModal('유사문항', `
-            <div style="background:var(--bg); border:1px solid transparent; border-radius:12px; padding:12px 14px; margin-bottom:12px;">
-                <div style="font-size:16px; font-weight:700; color:var(--primary); line-height:1.3;">${apEscapeHtml(cls.name || '반')}</div>
-                <div style="font-size:11px; color:var(--secondary); margin-top:4px; line-height:1.5; font-weight:600;">제출된 OMR 오답과 단원 정보가 있어야 유사문항 추천 기준을 만들 수 있습니다.</div>
-            </div>
-            <div style="font-size:12px; color:var(--secondary); background:var(--bg); border:1px dashed var(--border); border-radius:12px; padding:16px; text-align:center; font-weight:600; line-height:1.5;">
-                아직 추천 가능한 오답 단원이 없습니다.
-            </div>
-            <button class="btn" style="width:100%; margin-top:12px; min-height:44px; padding:10px 14px; font-size:13px; font-weight:700; background:var(--primary); color:#fff; border:none; border-radius:12px; line-height:1.2;" onclick="openClinicBasketByKey('${basketKey}')">클리닉 바구니 보기</button>
-        `);
-        return;
-    }
-
-    showModal('유사문항', `
-        <div style="background:var(--bg); border:1px solid transparent; border-radius:12px; padding:12px 14px; margin-bottom:12px;">
-            <div style="font-size:16px; font-weight:700; color:var(--primary); line-height:1.3;">${apEscapeHtml(cls.name || '반')}</div>
-            <div style="font-size:11px; color:var(--secondary); margin-top:4px; line-height:1.5; font-weight:600;">오답이 많은 단원을 선택하면 JS아카이브에서 유사문항을 찾습니다. 현재 바구니 ${cartCount}개</div>
-            <button class="btn" style="width:100%; margin-top:10px; min-height:44px; padding:10px 14px; font-size:13px; font-weight:700; background:var(--primary); color:#fff; border:none; border-radius:12px; line-height:1.2;" onclick="openClinicBasketByKey('${basketKey}')">클리닉 바구니 보기</button>
-        </div>
-        ${renderWeakUnitSummary(weakUnits, '추천 기준이 될 오답 단원이 없습니다.', {
-            clickable: true,
-            mode: 'class',
-            titlePrefix: `${cls.name || '반'} 유사문항`,
-            context
-        })}
-    `);
+    if (typeof wsClinicOpenSimilar === 'function') return wsClinicOpenSimilar(classId);
+    toast('유사문항 화면을 불러오지 못했습니다. 새로고침 후 다시 시도하세요.', 'warn');
+    return false;
 }
 
 function openClinicBasketForStudent(studentId) {

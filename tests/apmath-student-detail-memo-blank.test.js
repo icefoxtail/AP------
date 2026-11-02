@@ -14,7 +14,7 @@ function functionBlock(source, name, nextName) {
 }
 
 const profileDeck = functionBlock(studentSource, 'renderApmsStudentProfileDeck', 'normalizeStudentDetailTab');
-const basicTab = functionBlock(studentSource, 'renderStudentBasicTab', 'renderStudentContactHistoryTab');
+const basicTab = functionBlock(studentSource, 'renderStudentBasicTab', 'normalizeStudentDetailTab');
 const editBody = functionBlock(studentEditSource, 'renderStudentEditBody', 'handleEditStudent');
 const editHandler = functionBlock(studentEditSource, 'handleEditStudent', 'openAddStudentModal');
 
