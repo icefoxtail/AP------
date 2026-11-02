@@ -29,16 +29,18 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "확률과통계",
-        "standardUnitKey": "H15-PS-03",
-        "standardUnit": "확률의 뜻과 활용",
-        "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
-        "subUnit": "확률의 뜻과 활용",
-        "conceptClusterKey": "H15-PS-03-PROBABILITY_BASIC",
+        "standardUnitKey": "H15-PS-04",
+        "standardUnit": "조건부확률",
+        "subUnitKey": "H15-PS-04-INDEPENDENCE",
+        "subUnit": "독립사건과 곱셈정리",
+        "conceptClusterKey": "H15_PS_04_INDEPENDENCE",
         "L1": "확률",
-        "L2": "확률의 뜻과 활용",
+        "L2": "조건부확률",
         "L3": "사건의 독립과 종속",
         "L4": "독립·종속 판정",
-        "rpmPrimaryRecordIds": [],
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-017"
+        ],
         "problemTypeKey": "PT_EVENT_INDEPENDENCE",
         "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
         "crossConceptKeys": [],
@@ -46,12 +48,13 @@
         "integrationPattern": "NONE",
         "level": "하",
         "difficultyBucket": 1,
-        "standardUnitOrder": 3,
+        "standardUnitOrder": 4,
         "rpmSemanticStatus": "SELF_CHECKED",
-        "rpmMatchStatus": "ACTIVE_BINDING_NO_EXACT_RPM_TEMPLATE",
+        "rpmMatchStatus": "ACTIVE_BINDING_RPM_MATCH",
         "sourceQid": 1,
         "variationType": "STRICT_VARIANT",
-        "provenance": "25_금당고_2학기_기말_고2_확률과통계#q1 1:1 유사문항(수치·조건·상황 변형, 신규 제작)"
+        "provenance": "25_금당고_2학기_기말_고2_확률과통계#q1 1:1 유사문항(수치·조건·상황 변형, 신규 제작)",
+        "rpmPrimaryRecordId": "H2-PS-RPM-017"
       },
       "judgement": {
         "levelReason": "독립 정의 P(A∩B)=P(A)P(B)를 한 번 적용하는 단일 계산이다.",
@@ -67,53 +70,38 @@
       "parentAssignment": {
         "schemaVersion": "similar-high-parent-assignment-v1",
         "L1": "확률",
-        "L2": "확률의 뜻과 활용",
+        "L2": "조건부확률",
         "curriculum": "2015",
         "scope": "확률과통계",
-        "parentRefMode": "UNIT_LABEL",
-        "crosswalkRecordId": null,
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-017",
         "candidateCountSubUnit": 1,
         "candidateCountUnit": 1,
         "candidateParentsUnit": [
-          "확률/확률의 뜻과 활용"
+          "확률/조건부확률"
         ],
-        "method": "REASSIGN_UNIT_LABEL_PARENT",
-        "basis": "사건의 독립 판정 문항. 표준단원이 확률의 뜻과 활용(PS-03)이고, 마스터에 같은 이름의 중단원 확률>확률의 뜻과 활용이 있다. 학생이 단원 이름으로 찾는 위치와 일치하며 핵심 개념(사건의 독립)과 같은 확률 대단원이다.",
-        "confidence": "MED",
-        "assignedBy": "claude-parent-assign-v1",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "두 사건이 독립일 때 P(A∩B)=P(A)P(B)를 쓰는 문항이다. 2015 확률과 통계에서 사건의 독립은 조건부확률 단원(마스터: 확률>조건부확률>사건의 독립>독립사건의 확률)에 속하고, 같은 PT/TPL의 승인 문항 4개도 H15-PS-04-INDEPENDENCE에 있다. PT_EVENT_INDEPENDENCE의 ACTIVE 바인딩(H15-PS-04/H15-PS-04-INDEPENDENCE, L1 확률, L2 조건부확률)과 크로스워크 H2-PS-RPM-017이 정확히 일치한다.",
+        "confidence": "HIGH",
+        "assignedBy": "claude-unit-realign-v1",
         "assignedAt": "2026-11-02",
-        "fieldChanges": [
-          {
-            "field": "after.courseKey",
-            "before": "확률과 통계",
-            "after": "확률과통계"
-          },
-          {
-            "field": "after.L1",
-            "before": "확률",
-            "after": "확률"
-          },
-          {
-            "field": "after.L2",
-            "before": "조건부확률",
-            "after": "확률의 뜻과 활용"
-          }
-        ],
+        "fieldChanges": [],
         "reassignment": {
           "previous": {
             "L1": "확률",
-            "L2": "조건부확률",
-            "parentRefMode": "BLOCKED_NEEDS_REGISTRAR_SUPPORT",
-            "crosswalkRecordId": "H2-PS-RPM-016",
-            "method": "CROSSWALK_PT_TPL_EXACT",
-            "confidence": "MED",
-            "basis": "사건의 독립 판정(마스터 개념: 확률>조건부확률>사건의 독립). 표준단원 키는 확률의 뜻과 활용(PS-03)이라 화면 상위 단원과 표준단원이 다름 [현 등록기: 크로스워크 PT/TPL 정확 일치 또는 단원 라벨=중단원 요구로 거부 예상]"
+            "L2": "확률의 뜻과 활용",
+            "parentRefMode": "UNIT_LABEL",
+            "crosswalkRecordId": null,
+            "method": "REASSIGN_UNIT_LABEL_PARENT",
+            "basis": "사건의 독립 판정 문항. 표준단원이 확률의 뜻과 활용(PS-03)이고, 마스터에 같은 이름의 중단원 확률>확률의 뜻과 활용이 있다. 학생이 단원 이름으로 찾는 위치와 일치하며 핵심 개념(사건의 독립)과 같은 확률 대단원이다."
           },
-          "reason": "이전 배정(확률>조건부확률)은 크로스워크 행의 PT/TPL이 문항과 달라(또는 bindingStatus MISSING) 등록기가 거부한다. 등록기를 완화하지 않고, 단원 라벨(UNIT_LABEL)로 통과하는 정본 부모로 재배정했다. 사건의 독립 판정 문항. 표준단원이 확률의 뜻과 활용(PS-03)이고, 마스터에 같은 이름의 중단원 확률>확률의 뜻과 활용이 있다. 학생이 단원 이름으로 찾는 위치와 일치하며 핵심 개념(사건의 독립)과 같은 확률 대단원이다.",
+          "reason": "문항 내용이 속한 2015 교육과정 단원(조건부확률)과 등록된 표준단원이 달라 단원과 RPM 경로가 어긋났다. 단원을 내용 기준으로 재정렬한다.",
           "reassignedAt": "2026-11-02",
-          "reassignedBy": "claude-parent-reassign-v1"
+          "reassignedBy": "claude-unit-realign-v1"
         }
-      }
+      },
+      "unitRealign": true,
+      "unitRealignReason": "표준단원/세부단원을 문항 내용이 속한 2015 교육과정 단원으로 재정렬: 두 사건이 독립일 때 P(A∩B)=P(A)P(B)를 쓰는 문항이다. 2015 확률과 통계에서 사건의 독립은 조건부확률 단원(마스터: 확률>조건부확률>사건의 독립>독립사건의 확률)에 속하고, 같은 PT/TPL의 승인 문항 4개도 H15-PS-04-INDEPENDENCE에 있다. PT_EVENT_INDEPENDENCE의 ACTIVE 바인딩(H15-PS-04/H15-PS-04-INDEPENDENCE, L1 확률, L2 조건부확률)과 크로스워크 H2-PS-RPM-017이 정확히 일치한다."
     },
     {
       "questionUid": 2,
@@ -948,6 +936,7 @@
           "H2-PS-RPM-028",
           "H2-PS-RPM-029"
         ],
+        "rpmPrimaryRecordId": "H2-PS-RPM-029",
         "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
         "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
         "crossConceptKeys": [],
@@ -1157,16 +1146,18 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "확률과통계",
-        "standardUnitKey": "H15-PS-05",
-        "standardUnit": "확률분포",
-        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-        "subUnit": "확률분포",
-        "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-        "L1": "통계",
-        "L2": "확률분포",
+        "standardUnitKey": "H15-PS-04",
+        "standardUnit": "조건부확률",
+        "subUnitKey": "H15-PS-04-CONDITIONAL_BASIC",
+        "subUnit": "조건부확률",
+        "conceptClusterKey": "H15_PS_04_CONDITIONAL_BASIC",
+        "L1": "확률",
+        "L2": "조건부확률",
         "L3": "독립시행의 확률",
         "L4": "독립시행의 확률",
-        "rpmPrimaryRecordIds": [],
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-019"
+        ],
         "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
         "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
         "crossConceptKeys": [
@@ -1176,12 +1167,13 @@
         "integrationPattern": "REINTERPRETATION",
         "level": "중",
         "difficultyBucket": 2,
-        "standardUnitOrder": 5,
+        "standardUnitOrder": 4,
         "rpmSemanticStatus": "SELF_CHECKED",
-        "rpmMatchStatus": "ACTIVE_BINDING_NO_EXACT_RPM_TEMPLATE",
+        "rpmMatchStatus": "ACTIVE_BINDING_RPM_MATCH",
         "sourceQid": 16,
         "variationType": "STRICT_VARIANT",
-        "provenance": "25_금당고_2학기_기말_고2_확률과통계#q16 1:1 유사문항(수치·조건·상황 변형, 신규 제작)"
+        "provenance": "25_금당고_2학기_기말_고2_확률과통계#q16 1:1 유사문항(수치·조건·상황 변형, 신규 제작)",
+        "rpmPrimaryRecordId": "H2-PS-RPM-019"
       },
       "judgement": {
         "levelReason": "이동 규칙을 성공 횟수 조건식으로 번역해 독립시행 확률을 계산한다.",
@@ -1196,54 +1188,39 @@
       "evidenceRefs": [],
       "parentAssignment": {
         "schemaVersion": "similar-high-parent-assignment-v1",
-        "L1": "통계",
-        "L2": "확률분포",
+        "L1": "확률",
+        "L2": "조건부확률",
         "curriculum": "2015",
         "scope": "확률과통계",
-        "parentRefMode": "UNIT_LABEL",
-        "crosswalkRecordId": null,
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-PS-RPM-019",
         "candidateCountSubUnit": 1,
         "candidateCountUnit": 1,
         "candidateParentsUnit": [
-          "통계/확률분포"
+          "확률/조건부확률"
         ],
-        "method": "REASSIGN_UNIT_LABEL_PARENT",
-        "basis": "독립시행의 확률 문항. 표준단원이 확률분포(PS-05)이고, 마스터에 같은 이름의 중단원 통계>확률분포가 있다. 독립시행은 이항분포로 이어지는 개념이라 학생이 확률분포 단원에서 찾는다.",
-        "confidence": "MED",
-        "assignedBy": "claude-parent-assign-v1",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "이동 규칙을 성공 횟수 k=3으로 바꾼 뒤 5C3(2/3)^3(1/3)^2를 계산하는 독립시행의 확률 문항이다(이항분포의 확률변수·평균·분산을 쓰지 않는다). 2015 확률과 통계에서 독립시행은 조건부확률 단원(마스터: 확률>조건부확률>독립시행>반복 시행의 확률)에 속하고, 같은 PT/TPL의 승인 문항 6개도 H15-PS-04-CONDITIONAL_BASIC에 있다. ACTIVE 바인딩(H15-PS-04/H15-PS-04-CONDITIONAL_BASIC, L1 확률, L2 조건부확률)과 크로스워크 H2-PS-RPM-019가 정확히 일치한다.",
+        "confidence": "HIGH",
+        "assignedBy": "claude-unit-realign-v1",
         "assignedAt": "2026-11-02",
-        "fieldChanges": [
-          {
-            "field": "after.courseKey",
-            "before": "확률과 통계",
-            "after": "확률과통계"
-          },
-          {
-            "field": "after.L1",
-            "before": "확률",
-            "after": "통계"
-          },
-          {
-            "field": "after.L2",
-            "before": "조건부확률",
-            "after": "확률분포"
-          }
-        ],
+        "fieldChanges": [],
         "reassignment": {
           "previous": {
-            "L1": "확률",
-            "L2": "조건부확률",
-            "parentRefMode": "BLOCKED_NEEDS_REGISTRAR_SUPPORT",
-            "crosswalkRecordId": "H2-PS-RPM-018",
-            "method": "CROSSWALK_PT_TPL_EXACT",
-            "confidence": "MED",
-            "basis": "독립시행의 확률(마스터 개념: 확률>조건부확률>독립시행). 표준단원 키는 확률분포(PS-05)라 화면 상위 단원과 표준단원이 다름 [현 등록기: 크로스워크 PT/TPL 정확 일치 또는 단원 라벨=중단원 요구로 거부 예상]"
+            "L1": "통계",
+            "L2": "확률분포",
+            "parentRefMode": "UNIT_LABEL",
+            "crosswalkRecordId": null,
+            "method": "REASSIGN_UNIT_LABEL_PARENT",
+            "basis": "독립시행의 확률 문항. 표준단원이 확률분포(PS-05)이고, 마스터에 같은 이름의 중단원 통계>확률분포가 있다. 독립시행은 이항분포로 이어지는 개념이라 학생이 확률분포 단원에서 찾는다."
           },
-          "reason": "이전 배정(확률>조건부확률)은 크로스워크 행의 PT/TPL이 문항과 달라(또는 bindingStatus MISSING) 등록기가 거부한다. 등록기를 완화하지 않고, 단원 라벨(UNIT_LABEL)로 통과하는 정본 부모로 재배정했다. 독립시행의 확률 문항. 표준단원이 확률분포(PS-05)이고, 마스터에 같은 이름의 중단원 통계>확률분포가 있다. 독립시행은 이항분포로 이어지는 개념이라 학생이 확률분포 단원에서 찾는다.",
+          "reason": "문항 내용이 속한 2015 교육과정 단원(조건부확률)과 등록된 표준단원이 달라 단원과 RPM 경로가 어긋났다. 단원을 내용 기준으로 재정렬한다.",
           "reassignedAt": "2026-11-02",
-          "reassignedBy": "claude-parent-reassign-v1"
+          "reassignedBy": "claude-unit-realign-v1"
         }
-      }
+      },
+      "unitRealign": true,
+      "unitRealignReason": "표준단원/세부단원을 문항 내용이 속한 2015 교육과정 단원으로 재정렬: 이동 규칙을 성공 횟수 k=3으로 바꾼 뒤 5C3(2/3)^3(1/3)^2를 계산하는 독립시행의 확률 문항이다(이항분포의 확률변수·평균·분산을 쓰지 않는다). 2015 확률과 통계에서 독립시행은 조건부확률 단원(마스터: 확률>조건부확률>독립시행>반복 시행의 확률)에 속하고, 같은 PT/TPL의 승인 문항 6개도 H15-PS-04-CONDITIONAL_BASIC에 있다. ACTIVE 바인딩(H15-PS-04/H15-PS-04-CONDITIONAL_BASIC, L1 확률, L2 조건부확률)과 크로스워크 H2-PS-RPM-019가 정확히 일치한다."
     },
     {
       "questionUid": 17,

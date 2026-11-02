@@ -1,0 +1,885 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "req-rpmpath-d2ea3d2e26e51ddb",
+  "examUid": "25_금당고_2학기_기말_고2_확률과통계_유사",
+  "sourceArchiveFile": "similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.js",
+  "expectedSourceBlobSha1": "4cbce9f0a42f445a642bf786fde3d4480ba1d787",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "FINAL_QA",
+    "metadataReviewed": true,
+    "approvedBy": "13th-route-main-merge-master: RPM Primary path delta (crosswalk-derived; no other value changes)",
+    "evidenceRefs": [
+      {
+        "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+        "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+        "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+      }
+    ]
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": "qid_v1_d112858bf77539badb07fb633862f95715ff2b9860311c0875db0d3feab94e3d",
+      "sourceOrdinal": 1,
+      "before": {
+        "standardUnitKey": "H15-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 활용",
+        "conceptClusterKey": "H15-PS-03-PROBABILITY_BASIC",
+        "L2": "확률의 뜻과 활용",
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "standardUnitKey": "H15-PS-04",
+        "standardUnit": "조건부확률",
+        "subUnitKey": "H15-PS-04-INDEPENDENCE",
+        "subUnit": "독립사건과 곱셈정리",
+        "conceptClusterKey": "H15_PS_04_INDEPENDENCE",
+        "L2": "조건부확률",
+        "rpmPrimaryPath": {
+          "L1": "확률",
+          "L2": "조건부확률",
+          "L3": "사건의 독립",
+          "L4": "독립사건의 확률",
+          "parentChain": [
+            "확률",
+            "조건부확률",
+            "사건의 독립",
+            "독립사건의 확률"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-017"
+          ]
+        }
+      },
+      "reason": "표준단원/세부단원을 문항 내용이 속한 2015 교육과정 단원으로 재정렬: 두 사건이 독립일 때 P(A∩B)=P(A)P(B)를 쓰는 문항이다. 2015 확률과 통계에서 사건의 독립은 조건부확률 단원(마스터: 확률>조건부확률>사건의 독립>독립사건의 확률)에 속하고, 같은 PT/TPL의 승인 문항 4개도 H15-PS-04-INDEPENDENCE에 있다. PT_EVENT_INDEPENDENCE의 ACTIVE 바인딩(H15-PS-04/H15-PS-04-INDEPENDENCE, L1 확률, L2 조건부확률)과 크로스워크 H2-PS-RPM-017이 정확히 일치한다. + RPM Primary 경로 추가: 크로스워크 H2-PS-RPM-017의 PT/TPL 정확 일치 행",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "확률",
+        "midUnit": "조건부확률",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-017"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_82a464d813818b5d789c3a354a9ae0c2a0aa30121bdf22ffe9f6b1313a13d882",
+      "sourceOrdinal": 2,
+      "before": {},
+      "after": {},
+      "reason": "RPM Primary 경로가 이미 등록되어 있어 값을 바꾸지 않음",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-022"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_7aec709e624609415b392d5d7b316991964505b9569732b3111e3959f1962062",
+      "sourceOrdinal": 3,
+      "before": {},
+      "after": {},
+      "reason": "RPM Primary 경로가 이미 등록되어 있어 값을 바꾸지 않음",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-065"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_09954bdf2c90196d5254c74ab66a677f17ec233e7160a770c78faba7dd577928",
+      "sourceOrdinal": 4,
+      "before": {},
+      "after": {},
+      "reason": "RPM Primary 경로가 이미 등록되어 있어 값을 바꾸지 않음",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-025"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_10cf35c1bd83facd4ad44fd566ba15cb6ef16ad9aae403df129338fb9eeb607c",
+      "sourceOrdinal": 5,
+      "before": {},
+      "after": {},
+      "reason": "RPM Primary 경로가 이미 등록되어 있어 값을 바꾸지 않음",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-023"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_06759819b3ce294f8f2a560fa3d0fc4380597e6d2ad20cbde62181aeced26116",
+      "sourceOrdinal": 6,
+      "before": {},
+      "after": {},
+      "reason": "RPM Primary 경로가 이미 등록되어 있어 값을 바꾸지 않음",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "확률",
+        "midUnit": "조건부확률",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-015"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_589bfe3513f1456ab89e11b679f5077794c709923b894a70abb796670143227a",
+      "sourceOrdinal": 7,
+      "before": {},
+      "after": {},
+      "reason": "RPM Primary 경로가 이미 등록되어 있어 값을 바꾸지 않음",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-065"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_af69e0c5175393261859aa3346b9414da687e66bce1e0a6051f2e2e26dcb16f8",
+      "sourceOrdinal": 8,
+      "before": {},
+      "after": {},
+      "reason": "RPM Primary 경로가 이미 등록되어 있어 값을 바꾸지 않음",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-027"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_e7b8bd2b590f3ec0a526b5dfe6fa04d5ac97955401bd816fac4638e4138ce399",
+      "sourceOrdinal": 9,
+      "before": {},
+      "after": {},
+      "reason": "RPM Primary 경로가 이미 등록되어 있어 값을 바꾸지 않음",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "통계",
+        "midUnit": "통계적 추정",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-031"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_390da22089ea8e1ff21621911335c059d22f9302f8d6bf3b0c3bf4c3e7e3a2f6",
+      "sourceOrdinal": 10,
+      "before": {
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "rpmPrimaryPath": {
+          "L1": "확률",
+          "L2": "조건부확률",
+          "L3": "조건부확률",
+          "L4": "조건부확률 계산",
+          "parentChain": [
+            "확률",
+            "조건부확률",
+            "조건부확률",
+            "조건부확률 계산"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-066"
+          ]
+        }
+      },
+      "reason": "RPM Primary 경로만 추가(다른 승인 값 변경 없음): 크로스워크 H2-PS-RPM-066의 PT/TPL 정확 일치 행",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "확률",
+        "midUnit": "조건부확률"
+      }
+    },
+    {
+      "questionUid": "qid_v1_02bab3649e987678b5658d11d8ecac342d7cc5663ec8d4c7a1822d7f7661c623",
+      "sourceOrdinal": 11,
+      "before": {},
+      "after": {},
+      "reason": "RPM Primary 경로가 이미 등록되어 있어 값을 바꾸지 않음",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-026"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_8587d35aed6ddd04233136f7a5e4cc6366a27ecf43c5d0a4a686e89830dc5014",
+      "sourceOrdinal": 12,
+      "before": {
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "확률분포",
+          "L3": "정규분포",
+          "L4": "정규분포 확률",
+          "parentChain": [
+            "통계",
+            "확률분포",
+            "정규분포",
+            "정규분포 확률"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-067"
+          ]
+        }
+      },
+      "reason": "RPM Primary 경로만 추가(다른 승인 값 변경 없음): 크로스워크 H2-PS-RPM-067의 PT/TPL 정확 일치 행",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "통계",
+        "midUnit": "확률분포"
+      }
+    },
+    {
+      "questionUid": "qid_v1_0b9f3fd99b4617d84c6e6213a5954b17198fb90aea469f89c304a6e9c5ba0300",
+      "sourceOrdinal": 13,
+      "before": {
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "rpmPrimaryPath": {
+          "L1": "통계",
+          "L2": "통계적 추정",
+          "L3": "모집단과 표본",
+          "L4": "표본분포",
+          "parentChain": [
+            "통계",
+            "통계적 추정",
+            "모집단과 표본",
+            "표본분포"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-029"
+          ]
+        }
+      },
+      "reason": "RPM Primary 경로만 추가(다른 승인 값 변경 없음): 크로스워크 H2-PS-RPM-029의 PT/TPL 정확 일치 행",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "통계",
+        "midUnit": "통계적 추정",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-028"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_07f2152e118ca811e1dcb86b79c226f4e98a72684c07bf5186481ed99f828405",
+      "sourceOrdinal": 14,
+      "before": {},
+      "after": {},
+      "reason": "RPM Primary 경로가 이미 등록되어 있어 값을 바꾸지 않음",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-023"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_98afb3435ec699ae33a40fe98c9c2387d8c8a76eab4c09b1af5e22d29862195e",
+      "sourceOrdinal": 15,
+      "before": {},
+      "after": {},
+      "reason": "RPM Primary 경로가 이미 등록되어 있어 값을 바꾸지 않음",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-026"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_8e3ccdf8ba65843c857b9514bff8cbc2983ea12770c66003dca965bb4487fc27",
+      "sourceOrdinal": 16,
+      "before": {
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "subUnit": "확률분포",
+        "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "L1": "통계",
+        "L2": "확률분포",
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "standardUnitKey": "H15-PS-04",
+        "standardUnit": "조건부확률",
+        "subUnitKey": "H15-PS-04-CONDITIONAL_BASIC",
+        "subUnit": "조건부확률",
+        "conceptClusterKey": "H15_PS_04_CONDITIONAL_BASIC",
+        "L1": "확률",
+        "L2": "조건부확률",
+        "rpmPrimaryPath": {
+          "L1": "확률",
+          "L2": "조건부확률",
+          "L3": "독립시행",
+          "L4": "반복 시행의 확률",
+          "parentChain": [
+            "확률",
+            "조건부확률",
+            "독립시행",
+            "반복 시행의 확률"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-019"
+          ]
+        }
+      },
+      "reason": "표준단원/세부단원을 문항 내용이 속한 2015 교육과정 단원으로 재정렬: 이동 규칙을 성공 횟수 k=3으로 바꾼 뒤 5C3(2/3)^3(1/3)^2를 계산하는 독립시행의 확률 문항이다(이항분포의 확률변수·평균·분산을 쓰지 않는다). 2015 확률과 통계에서 독립시행은 조건부확률 단원(마스터: 확률>조건부확률>독립시행>반복 시행의 확률)에 속하고, 같은 PT/TPL의 승인 문항 6개도 H15-PS-04-CONDITIONAL_BASIC에 있다. ACTIVE 바인딩(H15-PS-04/H15-PS-04-CONDITIONAL_BASIC, L1 확률, L2 조건부확률)과 크로스워크 H2-PS-RPM-019가 정확히 일치한다. + RPM Primary 경로 추가: 크로스워크 H2-PS-RPM-019의 PT/TPL 정확 일치 행",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "확률",
+        "midUnit": "조건부확률",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-019"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_7c047e37c82ce7b0aa751ed3528aa67eb2fd232323db621c2cb41f4c30c1a811",
+      "sourceOrdinal": 17,
+      "before": {},
+      "after": {},
+      "reason": "RPM Primary 경로가 이미 등록되어 있어 값을 바꾸지 않음",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-025"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_c485487b39819fa328977da6d5f812edb2942c80650baa6747602d0033d91639",
+      "sourceOrdinal": 18,
+      "before": {},
+      "after": {},
+      "reason": "RPM Primary 경로가 이미 등록되어 있어 값을 바꾸지 않음",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-023"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_d73e5908a0f2b0aa97cb1f377556501fb7ad6ebc415ec0fa246ec934a4503bd7",
+      "sourceOrdinal": 19,
+      "before": {},
+      "after": {},
+      "reason": "RPM Primary 경로가 이미 등록되어 있어 값을 바꾸지 않음",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "통계",
+        "midUnit": "통계적 추정",
+        "crosswalkRef": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb",
+          "recordId": "H2-PS-RPM-031"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_5e1fec6cd759964909e17d8ac0378f62d22fe8e4c5551a024c838cd6ace27e3a",
+      "sourceOrdinal": 20,
+      "before": {
+        "rpmPrimaryPath": null
+      },
+      "after": {
+        "rpmPrimaryPath": {
+          "L1": "확률",
+          "L2": "조건부확률",
+          "L3": "조건부확률",
+          "L4": "조건부확률 계산",
+          "parentChain": [
+            "확률",
+            "조건부확률",
+            "조건부확률",
+            "조건부확률 계산"
+          ],
+          "crosswalkRecordIds": [
+            "H2-PS-RPM-066"
+          ]
+        }
+      },
+      "reason": "RPM Primary 경로만 추가(다른 승인 값 변경 없음): 크로스워크 H2-PS-RPM-066의 PT/TPL 정확 일치 행",
+      "evidenceRefs": [
+        {
+          "path": "archive/exams/similar/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계_유사.review-receipt.json",
+          "sha256": "b18cfc718b199c4ba43b33174cc00d3228ab2aeb57f360a09b2ce459d3519893"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-8q-crosswalk-decisions-20261102.review.json",
+          "sha256": "4a022e901cd743c9571b0962faaf529c9cd7fec2115d708eb0411ccf3c87f68e"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+          "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "확률과통계",
+        "majorUnit": "확률",
+        "midUnit": "조건부확률"
+      }
+    }
+  ]
+}
