@@ -71,7 +71,9 @@
       // 연장하면 만나는 모서리: 만나는 점
       const exts = g.ext.map((e) => ({ e, X: lineMeetPoint(A, B, sol.verts[e.u], sol.verts[e.v]) })).filter((q) => q.X);
       const extAt = C.problem || st === 0 ? 0 : C.review ? (st >= 1 ? 1 : 0) : s.spExt;
-      D.fitPts(sol.order.map((k) => sol.verts[k]).concat(extAt > 0.02 ? exts.map((q) => q.X) : []), { t: C.problem ? 44 : 58, b: 54, l: exts.length ? 64 : 40, r: exts.length ? 64 : 40 });
+      const lean = !!cfg.lean; // 정보가 많은 장면: 첫 화면(탐구)에서는 번호를 빼고 '만나요'를 점 위에 두어 입체를 크게 보입니다
+      const lr = exts.length ? (lean ? 40 : 64) : 40;
+      D.fitPts(sol.order.map((k) => sol.verts[k]).concat(extAt > 0.02 ? exts.map((q) => q.X) : []), { t: C.problem ? 44 : lean && st === 4 ? 40 : 58, b: lean ? 44 : 54, l: lr, r: lr });
       const style = (e) => {
         const r = e.rel;
         if (r === 'ref') return { color: AMB, width: 6.4, glow: true };
@@ -93,7 +95,7 @@
           });
           if (extAt > 0.98) { b.point(D.P(X), { color: VIO, r: 6 }); D.obstacle(X, 9); }
         });
-        if (extAt > 0.98) exts.forEach(({ X }) => D.label(X, '만나요', { color: VIO, size: 15, dir: D.out(X, sol.ctr), gap: 10 }));
+        if (extAt > 0.98) exts.forEach(({ X }) => D.label(X, '만나요', { color: VIO, size: 15, dir: lean ? { x: D.out(X, sol.ctr).x * 0.8, y: -0.7 } : D.out(X, sol.ctr), gap: 8 }));
       }
       // 평행 표시(화살표)
       if (!C.problem && (st === 4 || st === 2 || (st === 3 && false))) {
@@ -101,7 +103,7 @@
       }
       drawVerts(D, sol, { hot: (k) => k === ref.u || k === ref.v });
       // 꼬인 위치 번호 (모서리 가운데에 놓고, 겹치면 비켜 놓음)
-      if (C.txt && (st === 4 || st === 3)) g.skew.forEach((e) => D.label(mid3(sol.verts[e.u], sol.verts[e.v]), String(e.idx), { color: GREEN, size: 18, at: [[0, 0], [0, -15], [0, 15], [-15, 0], [15, 0], [11, -11], [-11, 11], [11, 11], [-11, -11]] }));
+      if (C.txt && (st === 4 || st === 3) && !(lean && st === 4)) g.skew.forEach((e) => D.label(mid3(sol.verts[e.u], sol.verts[e.v]), String(e.idx), { color: GREEN, size: 18, at: [[0, 0], [0, -15], [0, 15], [-15, 0], [15, 0], [11, -11], [-11, 11], [11, 11], [-11, -11]] }));
       // 기준 모서리 이름표
       if (C.txt) D.label(mid3(A, B), `기준 ${ref.name}`, { color: AMB, size: 16, dir: D.out(mid3(A, B), sol.ctr), gap: 14 });
       // 두 모서리 판별(s1-7): 고른 둘째 모서리
@@ -205,7 +207,7 @@
     notes: (M) => notes('사다리꼴의 평행하지 않은 두 변(다리)은 <b>늘이면 한 점에서 만나요</b>. 같은 평면 위에 있으므로 꼬인 위치가 아니에요.', '막대로 모서리를 늘여서 만나는 점을 꼭 확인하세요.')
   }));
   S.push(skewScene({
-    id: 's1-4', title: '[함정] 정육각기둥에서 꼬인 위치', short: '[함정] 육각기둥', kind: 'prism', n: 6, n0: 6, trap: true,
+    id: 's1-4', title: '[함정] 정육각기둥에서 꼬인 위치', short: '[함정] 육각기둥', kind: 'prism', n: 6, n0: 6, trap: true, lean: true,
     question: '정육각기둥은 모서리가 18개예요. 밑면의 모서리 $\\overline{AB}$와 이웃하지 않은 같은 밑면의 모서리는 모두 꼬인 위치일까?',
     refs: baseSide('t0', 's0'),
     notes: (M) => notes('같은 밑면에서 이웃하지 않은 모서리는 평행하거나 <b>늘이면 만나요</b>. 모두 한 평면 위에 있으므로 꼬인 위치가 아니에요.', '꼬인 위치는 반대쪽 밑면의 모서리와 옆모서리 중에 있어요.')

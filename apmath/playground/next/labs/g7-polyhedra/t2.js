@@ -20,6 +20,8 @@
   const AMB = 'amber', SKY = 'sky', GRN = 'green', RED = 'red', VIO = 'violet';
   const span = (c, t) => `<b style="color:var(--m-${c})">${t}</b>`;
   const stepOf = (C) => (C.problem ? 0 : C.review ? C.step : 4);
+  // 맨 위 줄글(banner)이 차지하는 높이(px): 그림 위 여백을 줄 수에 맞춰 잡습니다. n = 줄 수, sz = 글자 크기
+  const topFor = (n, sz = 15, extra = 8) => 16 + n * (sz + 9) + extra;
   const PNAME = { 3: '정삼각형', 4: '정사각형', 5: '정오각형', 6: '정육각형' };
   const PKEY = { '3-3': 'tetra', '4-3': 'cube', '3-4': 'octa', '5-3': 'dodeca', '3-5': 'icosa' };
   const interior = (p) => 180 - 360 / p;
@@ -252,13 +254,12 @@
     draw(b, s, M, C) {
       const D = scene3(b, s, C), st = stepOf(C), F = frameOf(s), a = 2.4;
       const ex = C.problem ? 'bi' : M.ex, join = C.problem ? 1 : C.review ? (st === 1 ? 0 : 1) : M.join;
-      const tt = tetraLocal(F, 0, 1, a);
       const vcount = [];
       if (ex === 'bi') {
         const gap = (1 - join) * 2.8;
         const A = tetraLocal(F, 0, -1, a), B = tetraLocal(F, gap, 1, a);
-        const ptsAll = A.tri.concat([A.apex, loc(F, tt.h + 2.8, 0, -tt.r / 2)]);
-        D.fitPts(ptsAll.concat(B.tri), { t: C.problem ? 30 : 90, b: 60, l: 40, r: 40 });
+        // 지금 그려지는 두 정사면체만 담습니다(막대 끝의 먼 자리까지 미리 잡지 않아 붙인 모양이 크게 보여요)
+        D.fitPts(A.tri.concat([A.apex], B.tri, [B.apex]), { t: C.problem ? 30 : topFor(join > 0.995 ? 3 : 2, 15, 24), b: 56, l: 40, r: 40 });
         if (join > 0.995) {
           const S = solidOf(A.tri.concat([A.apex, B.apex]));
           const info = drawPoly(D, S, { face: (fi, vis) => (vis ? { c: 'green', a: 0.18 } : null), edge: () => ({ color: 'ink', width: 3.2 }) });
@@ -277,7 +278,7 @@
         // 정사각뿔: 밑면 정사각형 + 정삼각형 4개 (옆모서리 = 밑변)
         const h = a / Math.SQRT2, V = [loc(F, -a / 2, -a / 2, -h / 2), loc(F, a / 2, -a / 2, -h / 2), loc(F, a / 2, a / 2, -h / 2), loc(F, -a / 2, a / 2, -h / 2), loc(F, 0, 0, h / 2)];
         const S = solidOf(V);
-        D.fitPts(V, { t: 100, b: 60, l: 50, r: 50 });
+        D.fitPts(V, { t: topFor(2, 15, 28), b: 56, l: 44, r: 44 });
         const bot = S.F.findIndex((f) => f.n.z < -0.999);
         drawPoly(D, S, { face: (fi, vis) => (vis ? (fi === bot ? { c: SKY, a: 0.3 } : { c: 'green', a: 0.2 }) : null), edge: () => ({ color: 'ink', width: 3.2 }) });
         S.V.forEach((p, vi) => { const q = S.vf[vi].length; D.dot(p, q === 4 ? RED : SKY, 6); D.label(p, String(q), { color: q === 4 ? RED : SKY, size: 17, dir: D.out(p, S.ctr), gap: 11 }); });
@@ -328,7 +329,7 @@
       const hv = C.problem ? -1 : M.hv, hf = C.problem ? -1 : M.hf;
       drawPoly(D, S, {
         face: (fi, vis) => { if (!vis && !(hf === fi)) return null; if (fi === hf && (st === 1 || st === 4)) return { c: SKY, a: 0.42, hidden: true }; if (hv >= 0 && S.vf[hv].includes(fi) && (st === 2 || st === 4)) return { c: AMB, a: 0.36, hidden: true }; return vis ? { c: 'green', a: 0.1 } : null; },
-        edge: () => ({ color: 'ink', width: 3 })
+        edge: (ei, vis) => ({ color: 'ink', width: 3, alpha: vis ? 1 : 0.55 }) // 뒤쪽 모서리는 흐리게: 앞쪽 입체가 먼저 보이게
       });
       if (!C.problem) {
         S.V.forEach((p, vi) => { if (vi !== hv) D.dot(p, 'ink', 3.2); });

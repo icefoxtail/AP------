@@ -54,6 +54,8 @@
     b.focus = { x: [box.x0 - pad.l / k, box.x1 + pad.r / k], y: [box.y0 - pad.b / k, box.y1 + pad.t / k] };
     return b.k;
   }
+  // 전개도와 함께 있는 입체(원뿔·원기둥)는 휴대폰에서 전개도 크기에 끌려 작아지므로, 입체만 따로 키워 그립니다(전개도와 입체는 비율을 재는 그림이 아니라 모양을 보는 그림).
+  const solidScale = (b, f = 1.4) => (b.W < 560 && !b.thumb ? f : 1);
   const bboxOf = (pts, pad = 0) => {
     let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
     pts.forEach((p) => { x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); y0 = Math.min(y0, p.y); y1 = Math.max(y1, p.y); });
@@ -273,6 +275,6 @@
 
   window.APL_SO = {
     PI, DEG, clamp, ease, seg01, NUM, esc, rint, pick, shuffle, sshuffle, texFix, fmtN, gcd, jo, piT, piTex, span, cm,
-    textW, bboxOf, fit, FS, T, P, VIEW, VIEW_PARAMS, mkNum, mkText, baseCtx, makeScene, register, notes, rd
+    textW, bboxOf, fit, solidScale, FS, T, P, VIEW, VIEW_PARAMS, mkNum, mkText, baseCtx, makeScene, register, notes, rd
   };
 })();

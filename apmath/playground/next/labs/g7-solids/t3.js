@@ -101,12 +101,13 @@
       }
       const { r, h, t, sol } = M, w = 2 * PI * r, cp = Math.cos(22 * DEG), sp = Math.sin(22 * DEG);
       // 오른쪽(또는 아래)에 펼친 옆면의 자리: 입체의 밑면 높이에 맞춰 놓습니다.
-      const cb = { x0: -r, x1: r, y0: -r * sp, y1: h * cp + r * sp };
+      const ms = G.solidScale(b);
+      const cb = { x0: -r * ms, x1: r * ms, y0: -r * sp * ms, y1: (h * cp + r * sp) * ms };
       const rb = { x0: 0, x1: w, y0: 0, y1: h };
       const off = arrange(b, cb, rb, Math.max(r, h) * 0.5);
       const rx = off.dx, ry = off.dy; // 직사각형 왼쪽 아래 모서리의 위치
       fit(b, unionB(cb, shiftB(rb, rx, ry)), { l: 30, r: 30, t: 40, b: 30 });
-      const D = S3.ctx(b, s, {});
+      const D = S3.ctx(b, s, { k: ms });
       S3.drawSolid(D, sol, {});
       const a = 2 * PI * t, n = Math.max(2, Math.ceil(a / (5 * DEG)));
       for (let i = 0; i < n; i++) { // 입체 옆면에서 펼쳐지는 부분(같은 색)
@@ -159,17 +160,17 @@
   // 원뿔 위의 점은 입체를 바로 세워 그립니다. 밑면의 중심이 (ox, oy).
   function coneDraw3D(b, s, r, R, ox, oy, o = {}) {
     const h = Math.sqrt(Math.max(0.01, R * R - r * r));
-    const D = S3.ctx(b, s, { k: 1, ox, oy }), sol = S3.solid('cone', { R: r, h1: h });
+    const D = S3.ctx(b, s, { k: G.solidScale(b), ox, oy }), sol = S3.solid('cone', { R: r, h1: h });
     S3.drawSolid(D, sol, {});
     if (o.prog != null) { D.g.path(S3.ringP(D, r, 0, 0, 2 * PI * o.prog, 72), { color: AMB, width: 7 }); }
     return { D, h, sol };
   }
-  const coneBox = (s, r, R) => { const h = Math.sqrt(Math.max(0.01, R * R - r * r)), cp = Math.cos(22 * DEG), sp = Math.sin(22 * DEG); return { x0: -r, x1: r, y0: -r * sp, y1: h * cp + r * sp * 0.0 + 0.0 }; };
+  const coneBox = (s, r, R, ms = 1) => { const h = Math.sqrt(Math.max(0.01, R * R - r * r)), cp = Math.cos(22 * DEG), sp = Math.sin(22 * DEG); return { x0: -r * ms, x1: r * ms, y0: -r * sp * ms, y1: h * cp * ms }; };
   const xOf = (r, R) => 360 * r / R;
   function netScene(b, s, C, r, R, o = {}) {
     const x = xOf(r, R), G0 = netGeom(R, r, x), A = sectorBox(R, x, r, true);
     let all = A, off = null;
-    const cb = coneBox(s, r, R);
+    const cb = coneBox(s, r, R, G.solidScale(b));
     if (!o.noCone) { off = arrange(b, A, cb, Math.max(r, R) * 0.45); all = unionB(A, shiftB(cb, off.dx, off.dy)); }
     if (o.extraBottom) all = unionB(all, { x0: all.x0, x1: all.x1, y0: all.y0 - o.extraBottom, y1: all.y1 });
     fit(b, all, { l: 34, r: 34, t: 46, b: o.extraBottom ? 30 + o.extraBottom : 30 });
@@ -411,7 +412,7 @@
       const O = { x: 0, y: 0 }, a0 = -90 - x / 2, a1 = -90 + x / 2, sw = R2 * Math.sin(rad(Math.min(x / 2, 90))), shiftX = g * (sw + R1 * Math.sin(rad(Math.min(x / 2, 90))) + 1.4);
       const sb5 = sectorBox(R2, x, 0, false), A = { x0: sb5.x0, x1: sb5.x1 + shiftX, y0: sb5.y0 - 0.6, y1: Math.max(0.2, sb5.y1 + 0.2) };
       const fh = Math.sqrt(Math.max(0.01, (k * (r2 - r1)) ** 2 - (r2 - r1) ** 2));
-      const cb = { x0: -r2, x1: r2, y0: -r2 * Math.sin(22 * DEG), y1: fh * Math.cos(22 * DEG) };
+      const ms = G.solidScale(b, 1.9), cb = { x0: -r2 * ms, x1: r2 * ms, y0: -r2 * Math.sin(22 * DEG) * ms, y1: fh * Math.cos(22 * DEG) * ms };
       let all = A, off = null;
       if (!prob) { off = arrange(b, { x0: -sw, x1: sw + (shiftX > 0 ? Math.min(shiftX, sw * 1.0 + R1 * 0.5) : 0), y0: A.y0, y1: A.y1 }, cb, R2 * 0.4); all = unionB(A, shiftB(cb, off.dx, off.dy)); }
       fit(b, all, { l: 36, r: 36, t: 40, b: 30 });
@@ -443,7 +444,7 @@
         }
       }
       if (off) {
-        const frus = S3.solid('frus', { R: r2, r: r1, h1: fh }), D = S3.ctx(b, s, { k: 1, ox: off.dx, oy: off.dy });
+        const frus = S3.solid('frus', { R: r2, r: r1, h1: fh }), D = S3.ctx(b, s, { k: G.solidScale(b, 1.9), ox: off.dx, oy: off.dy });
         S3.drawSolid(D, frus, {});
         if (C.txt) { T(b, D.P({ x: r2 / 2, y: 0, z: 0 }), `${r2}`, SKY, { dy: 18, size: 15 }); T(b, D.P({ x: r1 / 2, y: fh, z: 0 }), `${r1}`, AMB, { dy: -16, size: 15 }); D.line({ x: r2, y: 0, z: 0 }, { x: r1, y: fh, z: 0 }, SKY, 3.4); }
       }

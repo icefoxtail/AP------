@@ -44,7 +44,8 @@
     const sweep = 2 * PI * clamp(C.t, 0, 1), full = sweep >= 2 * PI - 1e-3;
     const ext = 0.55;
     const box = S3.boxOf(D, sol, [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + ext, z: 0 })]);
-    fit(b, box, { t: 52, r: 78, l: 74, b: 44 });
+    if (b.W < 560) fit(b, box, { t: 44, r: 78, l: 56, b: 40 }); // 휴대폰: 글자 자리를 줄여 입체를 더 크게
+    else fit(b, box, { t: 52, r: 78, l: 74, b: 44 });
     S3.drawRevolve(D, sol, full ? 2 * PI : sweep, {});
     S3.drawAxis(D, sol.ymin, sol.ymax, { ext, label: '회전축 l', dx: o.axisDx || 0 });
     if (C.review && C.step === 2) D.line({ x: 0, y: sol.ymin, z: 0 }, { x: 0, y: sol.ymax, z: 0 }, ROSE, 5);
@@ -525,10 +526,18 @@
       const D = S3.ctx(b, { soYaw: -25, soPitch: 20 });
       const rev = M.rev, kind = M.k;
       const narrow = b.W < b.H * 1.1;
-      const body = [{ x: -2.2, y: -0.4 }, { x: 2.2, y: 3.4 }];
-      const ins = narrow ? { x: 0, y: -3.6 } : { x: 4.3, y: 1.4 };
-      const pts = body.concat([{ x: ins.x - 1.2, y: ins.y - 1.7 }, { x: ins.x + 1.2, y: ins.y + 1.7 }]);
-      fit(b, bboxOf(pts), { l: 30, r: 30, t: 36, b: 36 });
+      const body = kind === 'sphere' ? [{ x: -2.2, y: -1.8 }, { x: 2.2, y: 1.8 }] : [{ x: -2.2, y: -0.4 }, { x: 2.2, y: 3.4 }]; // 구는 중심이 원점이라 위아래로 퍼져요
+      let ins = narrow ? { x: 0, y: -3.6 } : { x: 4.3, y: 1.4 }, kt = 0.62, th = 1.2; // 위에서 본 모양 그림의 자리·배율·글줄 간격(세계 좌표)
+      if (narrow && !b.thumb) {
+        // 휴대폰: 입체를 위에 크게, 위에서 본 모양은 읽을 만큼만(고정 크기 px) 아래에 둡니다
+        const blockH = 104, c0 = { il: b.insets.left, ir: b.insets.right, ib: b.insets.bottom };
+        fit(b, bboxOf(body), { l: 30, r: 30, t: 30, b: blockH + 38 });
+        const c = b.toW((b.W + c0.il - c0.ir) / 2, b.H - c0.ib - 8 - blockH / 2);
+        ins = { x: c.x, y: c.y }; th = 50 / b.k; kt = 34 / (b.k * 1.8);
+      } else {
+        const pts = body.concat([{ x: ins.x - 1.2, y: ins.y - 1.7 }, { x: ins.x + 1.2, y: ins.y + 1.7 }]);
+        fit(b, bboxOf(pts), { l: 30, r: 30, t: 36, b: 36 });
+      }
       if (rev) { S3.drawSolid(D, S3.solid(kind, K7D[kind]), {}); }
       else {
         const ph = S3.polyhedron(kind), gh = S3.drawPolyhedron(S3.nullCtx(D), ph, 0, {});
@@ -536,22 +545,22 @@
         if (Math.abs(M.rot) > 1e-6 && Math.abs(M.rot - 2 * PI) > 1e-6) D.g.path(gh, { close: true, color: AMB, width: 2.2, dash: [6, 5] });
       }
       // 위에서 본 모양
-      const k = 0.62;
-      if (C.txt) T(b, { x: ins.x, y: ins.y + 1.2 }, '위에서 본 모양', 'ink', { dy: -6, size: 15 });
+      const k = kt;
+      if (C.txt) T(b, { x: ins.x, y: ins.y + th }, '위에서 본 모양', 'ink', { dy: -6, size: 15 });
       if (rev) {
         const R = K7D[kind].R * k;
         const circ = (R2) => { const q = []; for (let i = 0; i <= 48; i++) q.push({ x: ins.x + R2 * Math.cos(2 * PI * i / 48), y: ins.y + R2 * Math.sin(2 * PI * i / 48) }); return q; };
         b.path(circ(R), { close: true, fill: SKY, fillAlpha: 0.2, color: SKY, width: 3 });
         if (kind === 'frus') b.path(circ(K7D.frus.r * k), { close: true, color: SKY, width: 2.2 });
-        if (C.txt) T(b, { x: ins.x, y: ins.y - 1.2 }, '원 — 돌려도 같아요', GRN, { dy: 8, size: 15 });
+        if (C.txt) T(b, { x: ins.x, y: ins.y - th }, '원 — 돌려도 같아요', GRN, { dy: 8, size: 15 });
       } else {
         const g0 = top7(kind, 0, ins.x, ins.y, k), g1 = top7(kind, M.rot, ins.x, ins.y, k);
         b.path(g0, { close: true, color: AMB, width: 2.2, dash: [6, 5] });
         b.path(g1, { close: true, fill: SKY, fillAlpha: 0.2, color: SKY, width: 3 });
-        if (C.txt) T(b, { x: ins.x, y: ins.y - 1.2 }, '돌리면 모양이 달라져요', 'rose', { dy: 8, size: 15 });
+        if (C.txt) T(b, { x: ins.x, y: ins.y - th }, '돌리면 모양이 달라져요', 'rose', { dy: 8, size: 15 });
       }
       if (C.txt && C.review) {
-        if (C.step >= 2) T(b, { x: 0, y: -0.9 }, rev ? '곡면이 있고 회전축이 있어요' : '평평한 면(다각형)만 있어요', rev ? GRN : 'rose', { size: 16 });
+        if (C.step >= 2) T(b, { x: 0, y: narrow && !b.thumb ? ins.y + th + 26 / b.k : -0.9 }, rev ? '곡면이 있고 회전축이 있어요' : '평평한 면(다각형)만 있어요', rev ? GRN : 'rose', { size: 16 });
       }
     },
     steps: (M) => [
