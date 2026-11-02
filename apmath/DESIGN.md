@@ -96,6 +96,17 @@ components:
     textColor: "{colors.text}"
     rounded: "{rounded.card}"
     width: "720px"
+  modal-confirm:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.card}"
+    width: "500px"
+  modal-workspace:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.card}"
+    width: "1180px"
+    height: "860px"
   modal-context:
     backgroundColor: "{colors.surface-2}"
     textColor: "{colors.text}"
@@ -326,7 +337,21 @@ APMS는 선생님이 하루에 여러 번 열어 출결·숙제·성적·클리�
 - **액션줄 `.apms-unified-actions`**: 오른쪽 정렬, 간격 8px, 위쪽 패딩 10px + 1px 윗선. 버튼은 `.apms-unified-quiet`(보조)·`.apms-unified-primary`(주요, 웜 테마가 near-black으로 칠함) 각 최소 44px, 패딩 10px 14px, 13px/500, 8px 모서리(`:112-134`).
 - 현재 이 양식을 쓰는 모달은 4개다: 새 반 추가·반 수정(`management.js:239, 295`), 숙제 등록(`classroom.js:944`), QR 생성기(`qr-omr.js:262`). 옮길 때 지키는 것: 입력 ID, 저장 함수, 돌아갈 화면(`tests/apmath-modal-design-family.test.js`).
 - **저장 버튼 위치가 둘이다.** 반 추가·수정은 헤더 오른쪽 "추가/저장", 숙제 등록은 본문 안 `.apms-unified-actions`의 "저장". 하나로 정하지 않았다(미정 6번).
-- **전용 큰 모달**: 진도 모달 `.ap-class-progress-modal`(너비 최대 1180px, 높이 860px, `apms-theme-override.css:1036-1049`), 교재 관리, 상담 전체 보기 등은 `#modal-content:has(...)` 규칙으로 따로 크기를 정한다. 클리닉 출력은 `clinic-print-fullscreen`(`apms-clinic-print.css:1008-`)으로 전체 화면이다.
+- **전용 큰 모달**: 진도 모달 `.ap-class-progress-modal`(너비 최대 1180px, 높이 860px, `apms-theme-override.css:1036-1049`), 교재 관리, 상담 전체 보기 등은 `#modal-content:has(...)` 규칙으로 따로 크기를 정한다. 클리닉 출력은 `clinic-print-fullscreen`(`apms-clinic-print.css:1008-`)으로 전체 화면이다. 상담 전체 보기(`dashboard-foundation.css:1379`)와 플래너(`classroom-planner.js:1588`)는 1080px, 전역 교재 관리는 폭 규칙이 없어 기본 500px이다.
+
+### 모달 등급 (제안 — 사용자 결정 전, 미정 11)
+모달 약 98종의 크기가 제각각이므로(기본 500px / 통합 720px / 진도 1180px / 상담·플래너 1080px / 클리닉 전체 화면) 4등급으로 묶는다. **값은 위 현재 CSS에서 가져왔고**, "제안"만 지금 없는 동작이다. 98종 배정과 근거 줄은 `docs/plans/2026-11-02-apms-modal-consolidation-appendix.md`, 통합 묶음은 `docs/plans/2026-11-02-apms-ui-upgrade-plan-v0.1.md` 3절(내용은 v0.2).
+
+| 등급 | 쓰는 곳 | 데스크톱 너비 · 최대 높이 | 휴대폰(≤600px) | 닫기 | 저장 위치 |
+|---|---|---|---|---|---|
+| **C 확인·선택** | 한 문장+값 나열+버튼 2~3개, 항목 고르기 | `max-width 500px` · `90vh`(`index.html:692-706`) | 아래 시트 100vw, 위 모서리 16px, `92vh - safe-area`(`index.html:931-938`) | 제안: Esc·바깥 클릭 | 제안: 하단 액션줄 오른쪽 |
+| **F 폼** | 입력 1~8개, 짧은 읽기 목록 | `min(720px, 100vw - 32px)` · `100dvh - 32px`(`apms-unified-modal.css:4-9`) | 시트 100vw · 92dvh, 컨트롤 44px · 글자 16px(`:138-150`) | 제안: Esc는 입력 있으면 확인, 바깥 클릭은 입력 있으면 무시 | 제안: 하단 액션줄 오른쪽 |
+| **W 작업 화면** | 목록+상세(+같은 자리 추가·수정). 진도 모달형. 단열 변형은 너비 720px | `min(1180px, 100vw - 32px)` · `min(860px, 100vh - 32px)`, 목록 `minmax(300px, 0.38fr)` + 상세 `1fr`(`apms-theme-override.css:1036-1041, 1091-1097`) | 현재 ≤760px: 거의 전체, 목록 위·상세 아래 한 열(`:1605-1625`). 제안: 화면 전체 | 제안: Esc는 미저장 변경 확인, 바깥 클릭 무시 | 인라인 폼은 폼 하단, 일괄 저장은 하단 고정 막대 |
+| **P 전체 화면 패널** | 컨트롤 많은 독립 도구(클리닉 출력 센터, 교재 오답) | 가장자리 14px 안쪽, 왼쪽 70px(드로어 펼치면 274px)(`apms-clinic-print.css:1008-1035`) | 현재 ≤880px 세로 쌓기(`:1090-1100`). 제안: 100vw × 100dvh | 제안: 바깥 클릭 없음, Esc 확인 | 본문 안 주요 버튼 |
+
+현재 공통 동작(코드 사실): Esc로 닫는 코드가 없고(`handleModalKeyboard` `js/ui.js:428`은 Tab만), 바깥 클릭은 `closeModal()`(`index.html:1014`)이라 입력 중인 폼도 확인 없이 닫힌다. 모달 연쇄에는 대부분 뒤로 가기가 없다(`showModalStep`은 일정·시간표·학생 상세만 사용).
+
+**통합 작업 화면 패턴(W)** — 진도 모달(`classroom.js:3626`)에서 뽑은 규칙: 대상 하나 + 전환 탭, 목록/상세 한 쌍(선택은 서버 호출 없이), 추가·수정은 인라인 폼·행 펼침, 모달 연쇄 금지·미저장 변경 확인, 늦은 응답 가드, 모달 먼저 열고 자리에서 로딩, 저장 응답으로 로컬 상태 갱신(전체 `loadData()`·재오픈 지양). 근거 줄은 계획서 3.1.
 
 ### Inputs
 - 통합 모달: 위 "컨트롤". 일반: `.cls-input`(computed 최소 48px, 14px, 14px 모서리), 모달별 인라인(`min-height:42px` + 10px 모서리 등), `class="btn"`을 입력에 붙인 것(교재 등록 등). 입력칸 바탕·선은 `--surface`·`--border`(`apms-theme-override.css:178-186`), 포커스는 4px 파랑 14% 고리(대비 표 참고).
@@ -362,6 +387,7 @@ APMS는 선생님이 하루에 여러 번 열어 출결·숙제·성적·클리�
 - **Do** 색은 `var(--surface)`·`var(--text)`·`var(--border)`·`var(--action-primary)` 같은 토큰으로 읽어 라이트·다크가 함께 바뀌게 한다.
 - **Do** 주요 행동은 `--action-primary`(near-black), 파랑은 링크·포커스·선택으로 한정한다.
 - **Do** 새 모달은 통합 모달 양식(`apms-unified-modal` + `-form` + `-context` + `-control` + `-actions`)으로 만들고 입력 ID·저장 함수·돌아갈 화면을 지킨다(`tests/apmath-modal-design-family.test.js`).
+- **Do** (제안) 같은 대상을 목록·상세·추가·수정으로 앞뒤로 다루면 모달을 여러 개 잇지 말고 작업 화면(W) 하나로 만든다(위 "모달 등급").
 - **Do** 모달의 입력은 라벨을 달고(`.apms-unified-label`), 휴대폰에서 글자 16px·높이 44px을 지킨다.
 - **Do** 의미색을 글자로 쓰면 본문 4.5:1을 맞춘 짙은 값을 쓴다(대비 표의 미달 조합 참고).
 - **Do** 화면을 바꾼 뒤 PC와 휴대폰(390px)에서 가려지거나 넘치는 내용이 없는지 연다.
@@ -388,3 +414,11 @@ APMS는 선생님이 하루에 여러 번 열어 출결·숙제·성적·클리�
 8. **옛 토큰 정리 범위**: `--ap-*` 슬레이트 토큰과 쓰이지 않는 `--shadow-modal`, 인라인 `:root`(`index.html:14-76`)·`apms-theme-override.css:6-` 중 무엇을 남길지.
 9. **독립 화면 포함 여부**: `apmath/wangji-student-management.html`(`css/wangji-student-management.css`, `wsm-*`)와 `apmath/wrong_print_engine.html`은 `apmath/` 아래라 이 문서의 영향을 받지만 별도 체계다. 이 문서에 넣을지.
 10. **입력칸 테두리·포커스 고리** 대비(UI 3:1)를 올릴지: 현재 라이트 테두리 1.26:1, 일반 포커스 고리 1.22:1. 올리면 전체 화면 모양이 바뀐다.
+
+### 모달 통합 관련 (2026-11-02 추가, 설계: `docs/plans/2026-11-02-apms-ui-upgrade-plan-v0.1.md` 3절)
+11. **모달 4등급(C·F·W·P)과 W 단열 변형 확정**, W 기본 너비를 진도 모달 1180px로 할지 상담 센터·플래너 1080px로 할지(제안 1180px).
+12. **작업 화면(W)의 휴대폰 동작**: 목록 위·상세 아래로 쌓기(진도 모달의 현재 방식, 제안) 대 목록 → 상세 화면 전환.
+13. **Esc 키·바깥 클릭 정책**: 지금은 Esc가 없고 바깥 클릭이 입력 중인 폼도 닫는다. 등급별로 바꿀지(제안은 위 표). 저장 위치는 6번과 함께: C·F 하단 액션줄 일원화(제안).
+14. **호출처 없는 모달 17종 삭제 승인**(계획서 부록 4절, 의심 단계). 숨김이 테스트로 고정된 것(숙제 링크·QR 2종, EIE 보호자 관리 1종)은 테스트를 같이 고쳐야 한다.
+15. **통합 묶음 8개와 PR 순서 승인**(숙제 · 선생님 계정 · 원내평가·OMR · 반·학생 관리 · 플래너 · 클리닉 · 학생 상세 · 진도·교재). 학생 상세와 진도·교재는 매일 쓰는 화면이라 동작이 눈에 띄게 달라진다.
+16. **전역 교재 관리를 진도 작업 화면의 교재 관리 모드로 합칠지**, **클리닉 2버튼 메뉴·반 고르기 모달을 탭으로 대체할지**.
