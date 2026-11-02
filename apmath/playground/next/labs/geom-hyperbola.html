@@ -1744,7 +1744,6 @@ window.addEventListener('DOMContentLoaded', function () {
     const oSteps = sc.steps, oDraw = sc.draw, oView = sc.view, oSol = sc.solution, oProb = sc.problem;
     const cur = () => vr.cur(), isOld = () => vr.idx() === 0;
     const q0 = () => branchProblem(m, sub, 1);
-    sc.tabs = { compact: true };
     sc.vary = vr;
     sc.steps = (s) => (away() && !isOld() ? cur().steps : oSteps);
     sc.reviewTop = () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${isOld() ? esc(q0().question) : cur().text}</div>`;

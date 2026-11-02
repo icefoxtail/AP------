@@ -2428,7 +2428,6 @@ window.addEventListener('DOMContentLoaded', function () {
         title: p.title,
         short: SHORT[p.id],
         get question() { return rm(p.statement); },
-        tabs: { compact: true }, // 휴대폰 문제 탭: 탐구 질문 카드를 접고 그림 무대를 낮춰 문제 글이 첫 화면에 오게 함
         vary,
         guide: `<b>${p.sliderTitle.replace(/[:：]\s*$/, '')}</b> — 조절 막대를 움직이거나 그림의 <b>테두리가 빛나는 점</b>을 ${VERB[p.dragMode] || '끌어'} 보세요. <b>정리</b> 탭에서 단계 단추를 누르면 보조선이 하나씩 나타나고, 3단계까지 보면 정답이 열립니다.`,
         startStep: 0,

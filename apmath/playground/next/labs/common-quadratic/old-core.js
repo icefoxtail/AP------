@@ -124,7 +124,6 @@
     if (!spec) return sc;
     const DEF = (opts && opts.focus) || { x: [-6, 8], y: [-5.4, 6.9] };
     const origDraw = sc.draw, origView = sc.view;
-    sc.tabs = { compact: true };
     // 키트는 단계 목록(steps)을 글자로만 넣습니다(태그가 그대로 보임). 그래서 강조·줄바꿈 태그는 여기서 걷어 냅니다. 풀이 칸(quick/std)과 reviewTop 은 HTML 이라 그대로 둡니다.
     const plain = (t) => String(t).replace(/<br\s*\/?>/gi, ' ').replace(/<\/?(?:strong|em|b|i|u|sub|sup|small)>/gi, '');
     sc.steps = () => spec.steps(spec.vary.cur()).map(plain);

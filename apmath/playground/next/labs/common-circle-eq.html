@@ -1620,7 +1620,6 @@ window.addEventListener('DOMContentLoaded', function () {
       const V = varier(d.pool);
       const view0 = sc.view, draw0 = sc.draw;
       const isEx = (lab) => !lab || lab.tab === 'explore';
-      sc.tabs = { compact: true };
       sc.vary = V;
       sc.reviewTop = () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${V.cur().text}</div>`;
       sc.problem = { tag: d.tag, time: d.time, text: () => probHTML(V.cur().text), answer: () => tex(V.cur().ans) };
@@ -1709,9 +1708,9 @@ window.addEventListener('DOMContentLoaded', function () {
         geo: [
           `완전제곱식으로 고치면 중심은 $C${pT(C)}$입니다. $k=0$이면 원은 원점 $O$를 지나므로 $r^2=OC^2=${par(p)}^2+${par(q)}^2=${Tt}$ (그림의 직각삼각형).`,
           `$k$가 커질수록 $r^2=${Tt}-k$가 줄어 원이 작아지고, $k=${Tt}$이면 반지름이 $0$인 점 $C$ 하나만 남습니다.`,
-          `원이 되려면 $r^2=${Tt}-k>0$ ⇒ $k\\lt ${Tt}$. 정수 $k$의 최댓값은 $${kmax}$ ($r=1$).`
+          `원이 되려면 $r^2=${Tt}-k\\gt 0$ ⇒ $k\\lt ${Tt}$. 정수 $k$의 최댓값은 $${kmax}$ ($r=1$).`
         ],
-        alg: `$(x${p < 0 ? '+' + (-p) : '-' + p})^2+(y${q < 0 ? '+' + (-q) : '-' + q})^2=${Tt}-k$ 로 고쳐 (우변) $>0$ 을 풉니다.`,
+        alg: `$(x${p < 0 ? '+' + (-p) : '-' + p})^2+(y${q < 0 ? '+' + (-q) : '-' + q})^2=${Tt}-k$ 로 고쳐 (우변) $\\gt 0$ 을 풉니다.`,
         warn: '우변이 0이면 점 하나, 음수이면 그려지지 않습니다. "원이 되려면" r² > 0 (등호 없음)입니다.',
         hl: '일반형은 중심 (−A/2, −B/2)와 O까지 거리의 제곱 (A²+B²)/4 에서 k를 뺀 것이 r²입니다.'
       });
@@ -1910,7 +1909,7 @@ window.addEventListener('DOMContentLoaded', function () {
           `주어진 직선과 $y=x$의 교점: $${a}x+${bq}x=${c}$ ⇒ $x=${nt(r1)}$ ⇒ 중심 $${pT(C1)}$, 반지름 $${nt(r1)}$.`,
           `주어진 직선과 $y=-x$의 교점: $${a}x-${bq}x=${c}$ ⇒ $x=${nt(x2)}$ ⇒ 중심 $${pT(C2)}$, 반지름 $${nt(r2)}$. 합은 $${nt(r1)}+${nt(r2)}=${sum}$`
         ],
-        alg: `중심을 $(\\pm r,\\ \\pm r)$ 네 가지로 놓고 직선의 방정식에 대입해 $r>0$인 것만 고릅니다.`,
+        alg: `중심을 $(\\pm r,\\ \\pm r)$ 네 가지로 놓고 직선의 방정식에 대입해 $r\\gt 0$인 것만 고릅니다.`,
         warn: '부호 네 가지 중 r > 0이 되는 것은 두 개뿐입니다. 음수가 나온 경우는 버립니다.',
         hl: '두 축에 접하는 원의 중심은 y = x 또는 y = −x 위. 직선과 이 두 직선의 교점이 곧 중심입니다.'
       });
@@ -2027,8 +2026,8 @@ window.addEventListener('DOMContentLoaded', function () {
           dot(b, A, `A${pS(A)}`, 'ink', { toward: C }); dot(b, C, `C${pS(C)}`, 'amber', { dx: 0, dy: 18, align: 'center' });
         },
         geo: [
-          `원의 중심 $C${pT(C)}$와 $A$를 잇고 그 중점을 $C'$이라 하면 $C'${pT(C2)}$. 삼각형 $ACP$에서 $C'$, $M$은 각각 $AC$, $AP$의 중점입니다.`,
-          `중점연결정리: $C'M=\\dfrac12\\,CP=\\dfrac12\\cdot ${r}=${nt(s)}$ (그림의 파란 선). $P$가 원 위를 돌아도 $C'M$은 늘 ${nt(s)}이므로 $M$은 $C'$을 중심으로 반지름 ${nt(s)}인 원 위를 움직입니다.`,
+          `원의 중심 $C${pT(C)}$와 $A$를 잇고 그 중점을 $C^{\\prime}$이라 하면 $C^{\\prime}${pT(C2)}$. 삼각형 $ACP$에서 $C^{\\prime}$, $M$은 각각 $AC$, $AP$의 중점입니다.`,
+          `중점연결정리: $C^{\\prime}M=\\dfrac12\\,CP=\\dfrac12\\cdot ${r}=${nt(s)}$ (그림의 파란 선). $P$가 원 위를 돌아도 $C^{\\prime}M$은 늘 ${nt(s)}이므로 $M$은 $C^{\\prime}$을 중심으로 반지름 ${nt(s)}인 원 위를 움직입니다.`,
           `$h=${nt(C2.x)},\\ k=${nt(C2.y)},\\ s^2=${nt(s * s)}$ ⇒ $h+k+s^2=${nt(ans)}$`
         ],
         alg: `$P(x_0,y_0)$로 놓고 $M\\left(\\dfrac{x_0+${nt(A.x)}}{2},\\ \\dfrac{y_0+${nt(A.y)}}{2}\\right)$ 의 좌표를 $x_0,y_0$에 대한 식으로 풀어 원의 방정식에 대입합니다.`,
@@ -2302,9 +2301,9 @@ window.addEventListener('DOMContentLoaded', function () {
           dot(b, T0, 'T', 'violet', { dx: 0, dy: -16, align: 'center' }); dot(b, C, `C${pS(C)}`, 'amber', { toward: Cp, r: 4.5 });
         },
         geo: [
-          `접힌 호는 반지름이 $${r}$이고 $T$에서 $x$축에 접하는 원의 일부입니다. 접점에서 반지름은 $x$축에 수직이므로 그 원의 중심은 $T$ 바로 위 $C'(${t},\\ ${r})$ (그림의 점선 원).`,
-          `접는 것은 원 $C$를 접는 선에 대해 대칭이동하는 것이라, 접는 선은 $CC'$의 수직이등분선이고 접은 자국 $AB$는 반지름이 같은 두 원의 공통현입니다. $CC'=${radTex(d * d)}$, 중점 $M$.`,
-          `직각삼각형 $CMA$에서 $CA=${r}$, $CM=\\dfrac12 CC'$ ⇒ $AM=\\sqrt{${r}^2-\\dfrac{${d * d}}{4}}$, $AB=2AM=\\sqrt{${4 * r * r}-${d * d}}=${radTex(4 * r * r - d * d)}$`
+          `접힌 호는 반지름이 $${r}$이고 $T$에서 $x$축에 접하는 원의 일부입니다. 접점에서 반지름은 $x$축에 수직이므로 그 원의 중심은 $T$ 바로 위 $C^{\\prime}(${t},\\ ${r})$ (그림의 점선 원).`,
+          `접는 것은 원 $C$를 접는 선에 대해 대칭이동하는 것이라, 접는 선은 $CC^{\\prime}$의 수직이등분선이고 접은 자국 $AB$는 반지름이 같은 두 원의 공통현입니다. $CC^{\\prime}=${radTex(d * d)}$, 중점 $M$.`,
+          `직각삼각형 $CMA$에서 $CA=${r}$, $CM=\\dfrac12 CC^{\\prime}$ ⇒ $AM=\\sqrt{${r}^2-\\dfrac{${d * d}}{4}}$, $AB=2AM=\\sqrt{${4 * r * r}-${d * d}}=${radTex(4 * r * r - d * d)}$`
         ],
         alg: `두 원 $${circTex(C, r * r)}$, $${circTex(Cp, r * r)}$의 식을 빼서 접는 선(공통현)의 방정식을 구하고 한 원의 중심에서 그 직선까지 거리로 현의 길이를 구합니다.`,
         warn: '접힌 호가 x축에 접하는 것은 새 원(C′)입니다. 원래 원 C가 x축에 접하는 것이 아닙니다.',
@@ -2602,9 +2601,9 @@ window.addEventListener('DOMContentLoaded', function () {
           dot(b, A, `A${pS(A)}`, 'ink', { dx: -11, dy: -13, align: 'right' }); dot(b, C, `C${pS(C)}`, 'amber', { dx: 0, dy: -19, align: 'center', r: 4.5 });
         },
         geo: [
-          `$x$축에 대하여 원 $C$를 대칭이동한 원 $C'${pT(Cp)}$를 그립니다. 점 $Q$의 대칭점을 $Q'$이라 하면 $PQ=PQ'$입니다 (그림).`,
-          `$AP+PQ=AP+PQ'\\ge AQ'$ — 세 점 $A,\\ P,\\ Q'$이 한 직선 위에 있을 때 최소이고, $AQ'\\ge AC'-r$ (선분 $AC'$가 원 $C'$와 만나는 점이 $Q'$).`,
-          `$AC'=\\sqrt{(${nt(Cp.x - A.x)})^2+(${nt(Cp.y - A.y)})^2}=${nt(d)}$ (가로 ${nt(Math.abs(Cp.x - A.x))}, 세로 ${nt(Math.abs(Cp.y - A.y))}인 직각삼각형의 빗변) ⇒ 최솟값 $=${nt(d)}-${r}=${nt(val)}$`
+          `$x$축에 대하여 원 $C$를 대칭이동한 원 $C^{\\prime}${pT(Cp)}$를 그립니다. 점 $Q$의 대칭점을 $Q^{\\prime}$이라 하면 $PQ=PQ^{\\prime}$입니다 (그림).`,
+          `$AP+PQ=AP+PQ^{\\prime}\\ge AQ^{\\prime}$ — 세 점 $A,\\ P,\\ Q^{\\prime}$이 한 직선 위에 있을 때 최소이고, $AQ^{\\prime}\\ge AC^{\\prime}-r$ (선분 $AC^{\\prime}$가 원 $C^{\\prime}$와 만나는 점이 $Q^{\\prime}$).`,
+          `$AC^{\\prime}=\\sqrt{(${nt(Cp.x - A.x)})^2+(${nt(Cp.y - A.y)})^2}=${nt(d)}$ (가로 ${nt(Math.abs(Cp.x - A.x))}, 세로 ${nt(Math.abs(Cp.y - A.y))}인 직각삼각형의 빗변) ⇒ 최솟값 $=${nt(d)}-${r}=${nt(val)}$`
         ],
         alg: `$P(t,\\ 0)$으로 놓고 $\\overline{AP}+\\overline{PC}-r$를 $t$에 대한 식으로 쓰면 제곱근이 두 개라 최솟값을 구하기 어렵습니다. 대칭이동이 정석입니다.`,
         warn: '원의 반지름을 한 번만 빼면 됩니다 (AC′ − r). 점 A와 원이 x축의 같은 쪽에 있을 때만 대칭이동을 씁니다.',

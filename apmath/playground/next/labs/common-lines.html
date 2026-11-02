@@ -2630,7 +2630,6 @@ window.addEventListener('DOMContentLoaded', function () {
   ]);
 
   const probPart = (PB) => ({
-    tabs: { compact: true },
     steps: () => PB.V.cur().steps.map((t) => t.replace(/\$([^$]+)\$/g, (m0, q) => '$' + q.replace(/''/g, "^{\\prime\\prime}").replace(/'/g, '^{\\prime}') + '$')),
     reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${PB.V.cur().text}</div>`,
     vary: PB.V,
