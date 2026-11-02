@@ -172,15 +172,15 @@
       ang(b, A, B, Cc, { color: 'amber', r: 18 });
       [[A, 'A', -1, 1], [B, 'B', 1, 1], [Cc, 'C', -1, -1], [D, 'D', 0, 1], [E, 'E', -1, 0]].forEach(([q2, nm, dx, dy]) => { b.point(q2, { color: nm === 'D' || nm === 'E' ? 'rose' : 'ink', r: 4.5 }); T(b, q2, nm, { dx: dx * 14, dy: dy * 15, size: 17 }); });
       if (!prob) {
-        T(b, mid(B, E), L2('BE', BE2), { dx: 8, dy: -14, size: 14, color: 'sky' }); T(b, mid(Cc, D), L2('CD', CD2), { dx: 22, dy: -4, size: 14, color: 'green' });
-        T(b, mid(A, B), `${p}`, { dy: 36, size: 15, color: 'sky' }); sideTag(b, A, Cc, B, `${q}`, { color: 'green', size: 15, gap: 12 });
-        T(b, mid(D, E), L2('DE', DE2), { dx: -8, dy: -12, size: 13, color: 'rose' });
+        T(b, lerp(B, E, 0.35), L2('BE', BE2), { dx: 16, dy: -12, size: 14, color: 'sky' }); T(b, lerp(Cc, D, (q - n) / q < 0.45 ? 0.5 : 0.3), L2('CD', CD2), { dx: (q - n) / q < 0.45 ? 28 : -17, dy: 0, size: 14, color: 'green' });
+        T(b, mid(A, B), `${p}`, { dy: 36, size: 15, color: 'sky' }); (n > q / 2 ? sideTag(b, A, lerp(A, Cc, 0.4), B, `${q}`, { color: 'green', size: 15, gap: 12 }) : sideTag(b, lerp(A, Cc, 0.6), Cc, B, `${q}`, { color: 'green', size: 15, gap: 12 }));
+        T(b, mid(D, E), L2('DE', DE2), { dx: -28, dy: 2, size: 14, color: 'rose' });
         sideTag(b, B, Cc, A, L2('BC', BC2), { color: 'amber', size: 14, gap: 12 });
         if (st(2)) T(b, pt(p * 0.55, -q * 0.9), `${BE2}+${CD2}=${BE2 + CD2}`, { size: 14, color: 'ink' });
       } else {
         // 문제: BC, DE 는 길이로 주어지고 BE²+CD² 를 구함
-        T(b, mid(B, Cc), `${isq(BC2)}`, { dx: 12, dy: -10, size: 16, color: 'amber' }); T(b, mid(D, E), `${isq(DE2)}`, { dx: -8, dy: -12, size: 16, color: 'rose' });
-        T(b, lerp(B, E, 0.5), 'BE', { dx: 8, dy: -12, size: 14, color: 'sky' }); T(b, lerp(Cc, D, 0.5), 'CD', { dx: 22, dy: -4, size: 14, color: 'green' });
+        sideTag(b, B, Cc, A, `${isq(BC2)}`, { color: 'amber', size: 16, gap: 12 }); T(b, mid(D, E), `${isq(DE2)}`, { dx: -8, dy: -12, size: 16, color: 'rose' });
+        T(b, lerp(B, E, 0.5), 'BE', { dx: 8, dy: -12, size: 14, color: 'sky' }); T(b, lerp(Cc, D, (q - n) / q < 0.45 ? 0.5 : 0.3), 'CD', { dx: (q - n) / q < 0.45 ? 20 : -17, dy: 0, size: 14, color: 'green' });
       }
     },
     steps: (M) => [

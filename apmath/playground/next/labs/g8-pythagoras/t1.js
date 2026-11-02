@@ -13,7 +13,7 @@
   'use strict';
   const G = window.APL_PY;
   if (!G) return;
-  const { clamp, pt, add, sub, mul, mid, unit, lerp, rotP, centroid, pick, rint, bboxOf, T, tagOut, sideTag, tick, line, poly, fillPoly, ang, fit, P, mkChoices, rd, notes, fmtN, isSqN, isq, rtTri, squareOn, cenOf, drawSq, TRIPLES } = G;
+  const { clamp, pt, add, sub, mul, mid, unit, lerp, rotP, centroid, pick, rint, bboxOf, T, tagOut, sideTag, tick, line, poly, fillPoly, ang, fit, P, mkChoices, rd, notes, fmtN, texRat, plainRat, isSqN, isq, rtTri, squareOn, cenOf, drawSq, TRIPLES } = G;
 
   const PARAMS = {
     pyA: P('변 a (BC)', 2, 12, 1, 3, { color: 'sky', format: (v) => `${v}` }),
@@ -63,9 +63,12 @@
     fillPoly(b, [A, B, Cc], 'ink', 0.06);
     poly(b, [A, B, Cc], 'ink', 3.4);
     ang(b, Cc, B, A, { color: 'amber', r: 22 });
+    // 납작하거나 홀쭉한 삼각형: 빗변 글자가 직각변 글자와 붙으면 빗변 글자를 바깥쪽으로 보냅니다.
+    const dS = (u, v) => Math.hypot(u.x - v.x, u.y - v.y);
+    const cOut = !sqs && !o.labOut && Math.min(dS(b.toS(B), b.toS(Cc)), dS(b.toS(Cc), b.toS(A))) < 150;
     [[B, Cc, 'a', sqs && cenOf(sqs.a)], [Cc, A, 'b', sqs && cenOf(sqs.b)], [A, B, 'c', sqs && cenOf(sqs.c)]].forEach(([p, q, k, sc]) => {
       const t = o.lab && o.lab[k];
-      if (t && !(small && o.sqLab && o.sqLab[k] && sh('s' + k))) sideTag(b, k === 'c' ? lerp(p, q, 0.25) : p, q, sc || (o.labOut ? cen : add(mul(mid(p, q), 2), mul(cen, -1))), t, { color: COL[k], size: o.size || 16, gap: o.gap == null ? 11 : o.gap });
+      if (t && !(small && o.sqLab && o.sqLab[k] && sh('s' + k))) sideTag(b, k === 'c' ? lerp(p, q, 0.25) : p, q, sc || (o.labOut || (cOut && k === 'c') ? cen : add(mul(mid(p, q), 2), mul(cen, -1))), t, { color: COL[k], size: o.size || 16, gap: o.gap == null ? 11 : o.gap });
       if (o.hi === k) line(b, p, q, COL[k], 6, { alpha: 0.9 });
     });
     const nm = o.names || ['A', 'B', 'C'];
@@ -320,7 +323,7 @@
       T(b, lerp(Ap, Bp, 0.5), C.problem ? 'x' : `x=${x}`, { dx: C.problem ? -14 : -26, size: 17, color: 'amber' });
       T(b, lerp(Bp, Dp, 0.5), `${m}`, { dy: 18, size: 16, color: 'sky' });
       T(b, lerp(Dp, Cp, 0.5), `${n}`, { dy: 18, size: 16, color: 'green' });
-      sideTag(b, Ap, Cp, pt(m + n, 0), zi ? `${zi}` : `z²=${z2}`, { color: 'green', size: 16, gap: 12 });
+      sideTag(b, Ap, Cp, pt(0, 0), zi ? `${zi}` : `z²=${z2}`, { color: 'green', size: 16, gap: 12 });
       sideTag(b, Ap, Dp, Cp, C.problem ? 'y' : (yi ? `y=${yi}` : `y²=${y2}`), { color: 'amber', size: 16, gap: 12 });
     },
     steps: (M) => [
@@ -384,7 +387,7 @@
         return {
           tag: '[기본] 직각삼각형의 넓이', key: `a${a}-${bb}`,
           stem: `다음 직각삼각형에서 빗변의 길이가 $${c}$이고 한 직각변의 길이가 $${a}$일 때, 이 삼각형의 넓이는?`,
-          choices: mkChoices(area, [[a * bb, '2로 나누어야 해요(삼각형의 넓이).'], [area + c, '다시 계산해 보세요.'], [a * c / 2, '빗변이 아니라 나머지 직각변을 써요.'], [area + 1, '다시 계산해 보세요.'], [area - 1, '다시 계산해 보세요.'], [(a + bb + c), '둘레예요. 넓이를 구해요.']], { tex: (v) => `${fmtN(v)}`, plain: (v) => `${fmtN(v)}` })
+          choices: mkChoices(area, [[a * bb, '2로 나누어야 해요(삼각형의 넓이).'], [area + c, '다시 계산해 보세요.'], [a * c / 2, '빗변이 아니라 나머지 직각변을 써요.'], [area + 1, '다시 계산해 보세요.'], [area - 1, '다시 계산해 보세요.'], [(a + bb + c), '둘레예요. 넓이를 구해요.']], { tex: (v) => texRat(v), plain: (v) => plainRat(v) })
         };
       }
       return {

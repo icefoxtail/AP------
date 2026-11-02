@@ -70,7 +70,7 @@
       if (pp > 0.5) { b.point(Dp, { color: 'amber', r: 4.5 }); T(b, Dp, 'E', { dx: 0, dy: 17, size: 17, color: 'amber' }); b.right(Dp, A, F, { size: 10, color: 'amber' }); tick(b, A, D, 2, 'amber'); tick(b, A, Dp, 2, 'amber'); tick(b, D, F, 1, 'sky'); tick(b, Dp, F, 1, 'sky'); }
       b.right(B, A, Cc, { size: 10, color: 'ink' }); b.right(Cc, B, D, { size: 10, color: 'ink' });
       // 주어진 길이 (그림 안)
-      sideTag(b, A, B, Cc, `${h}`, { color: 'green', size: 17, gap: 12 }); T(b, mid(A, D), `${w}`, { dy: -14, size: 17, color: 'sky' });
+      sideTag(b, A, B, Cc, `${h}`, { color: 'green', size: 17, gap: 12 }); T(b, mid(A, D), `${w}`, { dy: -24, size: 17, color: 'sky' });
       if (!prob) {
         if (pp > 0.5) {
           T(b, mid(B, E), `${be}`, { dy: 16, size: 15, color: 'sky' }); T(b, mid(E, Cc), `${ec}`, { dy: 16, size: 15, color: 'green' });
@@ -194,7 +194,7 @@
       const tt = prob ? d / 2 : t;
       const A = pt(0, -p), B = pt(d, -q), H = pt(0, 0), K = pt(d, 0), Pp = pt(tt, 0), A2 = pt(0, p);
       const showMirror = !prob && (!C.review || C.step >= 2);
-      fit(b, { x0: -1, x1: d + 1, y0: -Math.max(p, q) - 0.2, y1: showMirror ? p + 0.4 : 1.4 }, { t: 40, b: 44, l: 36, r: 36 });
+      fit(b, { x0: -1, x1: d + 1, y0: -Math.max(p, q) - 0.2, y1: showMirror ? p + 0.4 : 1.4 }, { t: 40, b: 70, l: 36, r: 36 });
       const st = (n) => !C.review || C.step >= n;
       line(b, pt(-1, 0), pt(d + 1, 0), 'ink', 3); T(b, pt(d + 1, 0), 'ℓ', { dx: -4, dy: 16, size: 18 });
       line(b, A, H, 'muted', 2, { dash: [5, 5] }); line(b, B, K, 'muted', 2, { dash: [5, 5] }); b.right(H, K, A, { size: 9, color: 'ink' }); b.right(K, H, B, { size: 9, color: 'ink' });
@@ -206,7 +206,7 @@
       else b.handle('P', Pp, { color: 'amber', r: 8, ariaLabel: '점 P 끌기', drag: (w) => { s.pyLt = clamp(Math.round(w.x * 10) / 10, 0, d); } });
       if (!prob) T(b, Pp, 'P', { dx: 0, dy: 26, size: 16, color: 'amber' });
       // 길이: 그림 안
-      T(b, mid(A, H), `${p}`, { dx: 12, size: 16, color: 'green' }); T(b, mid(B, K), `${q}`, { dx: 12, size: 16, color: 'rose' }); T(b, mid(H, K), `${d}`, { dy: 18, size: 16, color: 'sky' });
+      T(b, mid(A, H), `${p}`, { dx: 12, size: 16, color: 'green' }); T(b, mid(B, K), `${q}`, { dx: 12, size: 16, color: 'rose' }); T(b, mid(H, K), `${d}`, { dy: 48, size: 16, color: 'sky' });
       if (!prob && C.txt) T(b, pt(d / 2, -Math.max(p, q) - 0.2), `AP+PB ${best && mini ? '=' : '≈'} ${best && mini ? mini : fmtN(Math.round(tot * 10) / 10)}`, { dy: -14, size: 18, color: best ? 'green' : 'sky' });
     },
     steps: (M) => [
