@@ -1922,7 +1922,7 @@ function renderDashboard() {
 
     const classStatus = `
         <div class="ap-dashboard-section-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
-            <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">학급관리</h3>
+            <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">반 관리</h3>
         </div>
         ${tabHtml}
         <div class="ap-dashboard-class-list" style="display:flex; flex-direction:column; gap:8px; margin-bottom:40px;">${filteredClasses.map(c => renderClassSummaryCard(c, data)).join('')}</div>
