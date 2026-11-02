@@ -3834,7 +3834,8 @@ def _overlay_anchor_points(plan):
             # A declared point outside the author's reviewed draw interval or viewport is not a frame anchor: the framer must not
             # enlarge its window to make an invalid claim look valid (the overlay validator then refuses it).
             if on_curve and isinstance(domain,list) and len(domain)==2 and not (domain[0]-1e-9<=xf<=domain[1]+1e-9):continue
-            if isinstance(viewport,list) and len(viewport)==4 and not (viewport[0]-1e-9<=xf<=viewport[1]+1e-9 and viewport[2]-1e-9<=yf<=viewport[3]+1e-9):continue
+            # (G18b) a multi-curve figure's viewport is only the window the curves are cut by: a declared point (an intersection of a line with the curves, say) outside it widens the frame instead of being refused
+            if plan.get('family')!='multi-curve' and isinstance(viewport,list) and len(viewport)==4 and not (viewport[0]-1e-9<=xf<=viewport[1]+1e-9 and viewport[2]-1e-9<=yf<=viewport[3]+1e-9):continue
             anchors.append((xf,yf))
         except (ValueError,KeyError,TypeError,ZeroDivisionError):continue
     # The lattice points are part of the figure: the family framer must reach them (a bad entry is refused later with its own code).

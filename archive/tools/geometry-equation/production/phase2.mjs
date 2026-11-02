@@ -1378,17 +1378,17 @@ function multiCurveSpec(plan,id){
           const pole=-exactValue(curve.denominator[0])/exactValue(curve.denominator[1]),horizontal=exactValue(curve.numerator[1])/exactValue(curve.denominator[1]);
           const farRight=hi-pole>=pole-lo;x=farRight?pole+(hi-pole)*.8:pole-(pole-lo)*.8;y=valueOf(curve,x);y+=(y>=horizontal?1:-1)*spanY*.06;
         }else{x=lo+(hi-lo)*(curve.kind==='SQRT'?.7:.62);y=valueOf(curve,x)+(curve.kind==='SQRT'&&exactValue(curve.amplitude)<0?-1:1)*spanY*.06;}
-        objects.push({id:'curve-'+curve.id+'-equation',kind:'EQUATION_LABEL',text,at:[clampX(x),clampY(y)],priority:0});
+        objects.push({id:'curve-'+curve.id+'-equation',kind:'EQUATION_LABEL',text,at:[clampX(x),clampY(y)],priority:0,nearCurve:curve.id,...(curve.kind==='LINE'?{nearEnd:'END'}:{})});
       }
       if(curve.kind==='RATIONAL'){
         const vertical=curve.asymptotes.vertical,horizontal=curve.asymptotes.horizontal;
         if(vertical.drawn){
           marks.push({kind:'ASYMPTOTE',curve:curve.id,axis:'vertical',value:exactValue(vertical.x)});
-          if(!hides(curve,'asymptotes'))objects.push({id:'curve-'+curve.id+'-asymptote-x',kind:'GRAPH_ANNOTATION',text:'x='+vertical.x,at:[exactValue(vertical.x)+spanX*.05,v[3]-spanY*(.07+.07*verticalLabels++)],math:true,priority:0});
+          if(!hides(curve,'asymptotes'))objects.push({id:'curve-'+curve.id+'-asymptote-x',kind:'GRAPH_ANNOTATION',text:'x='+vertical.x,at:[exactValue(vertical.x)+spanX*.05,v[3]-spanY*(.07+.07*verticalLabels++)],math:true,priority:0,nearLine:'asymptote-'+curve.id+'-v',nearEnd:'END'});
         }
         if(horizontal.drawn){
           marks.push({kind:'ASYMPTOTE',curve:curve.id,axis:'horizontal',value:exactValue(horizontal.y)});
-          if(!hides(curve,'asymptotes'))objects.push({id:'curve-'+curve.id+'-asymptote-y',kind:'GRAPH_ANNOTATION',text:'y='+horizontal.y,at:[v[1]-spanX*.1,exactValue(horizontal.y)+spanY*(.06+.07*horizontalLabels++)],math:true,priority:0});
+          if(!hides(curve,'asymptotes'))objects.push({id:'curve-'+curve.id+'-asymptote-y',kind:'GRAPH_ANNOTATION',text:'y='+horizontal.y,at:[v[1]-spanX*.1,exactValue(horizontal.y)+spanY*(.06+.07*horizontalLabels++)],math:true,priority:0,nearLine:'asymptote-'+curve.id+'-h',nearEnd:'END'});
         }
       }
       if(curve.kind==='SQRT'&&curve.start?.drawn){

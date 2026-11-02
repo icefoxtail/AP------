@@ -381,6 +381,72 @@ def visible_owner_leader(start,box,occupied,incident,near_start=False,start_tole
            for o in occupied):return None
     return end
 
+NEAR_CURVE_GAPS=(8,10,12,15,18,21)        # (G18b) px between a curve label's box and its own curve, nearest first
+NEAR_CURVE_FAR_GAPS=(28,38)        # tried only when none of the above is free (the observer then judges the result)
+NEAR_LINE_GAPS=(6,8,10,12)           # px between an asymptote value's box and its own dashed line
+NEAR_LINE_FAR_GAPS=(16,24,34)
+NEAR_CURVE_ANCHORS=(.62,.5,.74,.38,.86,.26,.94,.14,.56,.68,.44,.8,.32,.2,.08,.98)
+NEAR_CURVE_END_ANCHORS=(.9,.8,.7,.6,.5,.4,.3,.2,.1)
+NEAR_OTHER_MARGIN_PX=6.0
+NEAR_SLIDES=(0.0,-.35,.35,-.7,.7)   # fractions of the box length a candidate is slid along the stroke
+
+def near_box_segment_distance(box,p,q):
+    """Distance from the box to the segment p-q (0 when they touch)."""
+    if segment_hits_box(p,q,box):return 0.0
+    corners=((box.x,box.y),(box.right,box.y),(box.right,box.bottom),(box.x,box.bottom))
+    return min(min(box_point_distance(box,p),box_point_distance(box,q)),min(point_segment_distance(c,p,q) for c in corners))
+
+def near_box_polyline_distance(box,points):
+    return min((near_box_segment_distance(box,a,b) for a,b in zip(points,points[1:])),default=math.inf)
+
+def _polyline_at(points,fraction):
+    """The point at the arc-length fraction of a polyline, and the unit tangent there."""
+    lengths=[math.dist(a,b) for a,b in zip(points,points[1:])];total=sum(lengths)
+    if total<=1e-9:return points[0],(1.0,0.0)
+    target=fraction*total;run=0.0
+    for (a,b),length in zip(zip(points,points[1:]),lengths):
+        if run+length>=target-1e-9 and length>1e-9:
+            t=(target-run)/length;return (a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t),((b[0]-a[0])/length,(b[1]-a[1])/length)
+        run+=length
+    a,b=points[-2],points[-1];length=math.dist(a,b) or 1.0
+    return b,((b[0]-a[0])/length,(b[1]-a[1])/length)
+
+def near_candidate_centers(label,w,h,safe=None):
+    """(G18b) Ordered label centres beside the label's own curve (nearCurve) or at the end of its own dashed asymptote (nearLine): the nearest gap first, the preferred anchors first and
+    the side with no other stroke first. A centre whose box would be as close to another stroke as to its own is left out of the near gaps; the far gaps keep a fallback."""
+    near=label['nearCurve'] if 'nearCurve' in label else label['nearLine']
+    others=near['others']
+    if 'nearCurve' in label:
+        polylines=sorted(near['own'],key=lambda pts:-sum(math.dist(a,b) for a,b in zip(pts,pts[1:])))
+        base=[sorted(pts,key=lambda point:point[0]) for pts in polylines[:1]]
+        anchors=NEAR_CURVE_END_ANCHORS if near['end'] else NEAR_CURVE_ANCHORS;gaps=NEAR_CURVE_GAPS;far_gaps=NEAR_CURVE_FAR_GAPS
+    else:
+        a,b=near['own']
+        if a[0]>b[0] or (a[0]==b[0] and a[1]<b[1]):a,b=b,a   # a = left (lower) end, b = right (upper) end
+        base=[[a,b]];anchors=(.97,.9,.8,.7,.6,.5,.4,.3,.2,.1) if near['end']!='START' else (.03,.1,.2,.3,.4,.5,.6,.7,.8,.9);gaps=NEAR_LINE_GAPS;far_gaps=NEAR_LINE_FAR_GAPS
+    own_points=base[0]
+    out=[];far=[]
+    def own_distance(box):
+        return min(near_box_polyline_distance(box,pts) for pts in (near['own'] if 'nearCurve' in label else [own_points]))
+    for tier,tier_gaps in ((out,gaps),(far,far_gaps)):
+        for gap in tier_gaps:
+            for fraction in anchors:
+                point,tangent=_polyline_at(own_points,fraction)
+                normal=(-tangent[1],tangent[0])
+                probes=[(side,min((math.dist((point[0]+side*normal[0]*40,point[1]+side*normal[1]*40),q) for pts in others for q in pts),default=math.inf)) for side in (1,-1)]
+                for side,slide in [(side,slide) for side,_ in sorted(probes,key=lambda row:-row[1]) for slide in NEAR_SLIDES]:
+                    extent=abs(normal[0])*w/2+abs(normal[1])*h/2
+                    shift=slide*(abs(tangent[0])*w+abs(tangent[1])*h)   # slid along the stroke: the box stays beside it but not centred on the anchor
+                    cx=point[0]+side*normal[0]*(gap+extent)+tangent[0]*shift;cy=point[1]+side*normal[1]*(gap+extent)+tangent[1]*shift
+                    if safe is not None:   # a box at the end of a line is slid back inside the drawing area (still beside the same stroke)
+                        cx=min(max(cx,safe.x+w/2+.5),safe.right-w/2-.5);cy=min(max(cy,safe.y+h/2+.5),safe.bottom-h/2-.5)
+                    if tier is out:
+                        box=Box(cx-w/2,cy-h/2,w,h);mine=own_distance(box)
+                        if any(near_box_polyline_distance(box,pts)<mine+NEAR_OTHER_MARGIN_PX for pts in others):continue
+                    if [cx,cy] not in tier:tier.append([cx,cy])
+    return out+far
+
+
 def point_box_has_unambiguous_owner(box,owner,competitors):
     """Require every measured box corner to stay inside its owner's Voronoi cell."""
     ox,oy=owner['geometry'][:2]
@@ -691,6 +757,9 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
         else:
             w,h=measurements.get(label['id'],approximate_size(label.get('layoutText',label['text']),label.get('font',13.25)))
             w,h=finite(w),finite(h)
+        if 'nearCurve' in label or 'nearLine' in label:
+            # (G18b) the label's own stroke decides its place: candidate centres beside it, nearest first (see near_candidate_centers)
+            label={**{k:v for k,v in label.items() if k not in ('nearCurve','nearLine')},'_nearCenters':near_candidate_centers(label,w,h,safe_area)}
         chosen=None;method=None;tick_callout=label.get('tickLabelCallout');leader_fallbacks=[];far_choice=None
         if tick_callout is not None:
             if (tick_owner is None or not isinstance(tick_callout,dict)
@@ -870,6 +939,11 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                                 continue
                             label['_selectedLeaderPath']=[list(start),list(end)]
                         chosen=box;method='FROZEN_OWNER_BASELINE';break
+            if '_nearCenters' in label:
+                for x,y in label['_nearCenters']:
+                    box=Box(x-w/2,y-h/2,w,h)
+                    if acceptable(box):chosen=box;method='NEAR_OWN_STROKE';default_gaps=();break
+                label={k:v for k,v in label.items() if k!='_nearCenters'}
             if 'candidateCenters' in label:
                 from .publication import box_owned
                 for x, y in label['candidateCenters']:

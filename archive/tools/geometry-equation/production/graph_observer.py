@@ -4959,11 +4959,57 @@ def single_curve_label_audit(plan,svg,transform):
     except (KeyError,TypeError,ValueError,ZeroDivisionError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['FORMULA_TEX_INVALID']}
     return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
 
+OV_MC_LABEL_OWN_MAX_PX=24.0       # (G18b) a multi-curve figure's curve label stands within this many px of its own curve ...
+OV_MC_LABEL_OTHER_MARGIN_PX=2.0   # ... and every other curve is farther from it than its own, by at least this much
+OV_MC_ASYMPTOTE_LABEL_MAX_PX=12.5 # an asymptote value stands within this many px of its own dashed line, which is the nearest dashed line
+
+def multi_curve_label_audit(plan,svg,transform):
+    """(G18b) Which stroke a multi-curve label belongs to, read from the final SVG: a curve's formula (curve-<id>-equation) is nearest to its own curve (within 20 px, no other curve as
+    close), an asymptote's value (curve-<id>-asymptote-x / -y) is within 12 px of its own dashed line and no other dashed line is as close. Hidden labels are not there to read."""
+    if plan.get('family')!='multi-curve' or not isinstance(plan.get('curves'),list):return None
+    errors=[]
+    try:root=ET.fromstring(svg)
+    except ET.ParseError:return None
+    groups={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id')}
+    ids=[entry.get('id') for entry in plan['curves'] if isinstance(entry,dict) and isinstance(entry.get('id'),str)]
+    strokes={ident:[] for ident in ids};dashed={}
+    def points_of(node):
+        try:values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
+        except ValueError:return []
+        return [(values[i],values[i+1]) for i in range(0,len(values)-1,2)]
+    for node in root.iter():
+        tag=node.tag.split('}')[-1];branch=node.get('data-branch') or ''
+        if tag=='polyline' and node.get('data-role')=='curve':
+            for ident in ids:
+                if branch==f'CURVE_{ident}' or branch.startswith(f'CURVE_{ident}_') or branch.startswith(f'EMPH_{ident}_'):strokes[ident].append(points_of(node))
+        elif tag=='line' and node.get('data-role')=='asymptote' and branch.startswith('ASYM_'):
+            try:dashed[branch]=((float(node.get('x1')),float(node.get('y1'))),(float(node.get('x2')),float(node.get('y2'))))
+            except (TypeError,ValueError):pass
+    def polyline_distance(box,points):
+        return min((_ov_box_segment_distance(box,a,b) for a,b in zip(points,points[1:])),default=math.inf)
+    # the curve formulas of the kinds G18a added (LINE, RATIONAL, SQRT) are placed beside their own stroke; the older quadratic arcs keep their old placement and are not judged here
+    inventory=plan.get('multiCurveFeatures');free_kinds={row.get('id') for row in (inventory.get('curves') if isinstance(inventory,dict) else None) or [] if isinstance(row,dict) and row.get('kind') in ('LINE','RATIONAL','SQRT')}
+    for ident in ids:
+        label_id='curve-'+ident+'-equation';box=_region_label_box(groups,label_id) if label_id in groups and ident in free_kinds else None
+        if box is not None and strokes[ident]:
+            own=min(polyline_distance(box,points) for points in strokes[ident])
+            closer=[other for other in ids if other!=ident and strokes[other] and min(polyline_distance(box,points) for points in strokes[other])<own+OV_MC_LABEL_OTHER_MARGIN_PX]
+            if own>OV_MC_LABEL_OWN_MAX_PX or closer:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
+        for suffix,axis in (('x','V'),('y','H')):
+            label_id='curve-'+ident+'-asymptote-'+suffix;box=_region_label_box(groups,label_id) if label_id in groups else None
+            if box is None:continue
+            own_line=dashed.get('ASYM_'+ident+'_'+axis)
+            if own_line is None:errors.append('ASYMPTOTE_LABEL_DETACHED:'+label_id);continue
+            own=_ov_box_segment_distance(box,*own_line)
+            closer=[key for key,line in dashed.items() if key!='ASYM_'+ident+'_'+axis and _ov_box_segment_distance(box,*line)<own+OV_MC_LABEL_OTHER_MARGIN_PX]
+            if own>OV_MC_ASYMPTOTE_LABEL_MAX_PX or closer:errors.append('ASYMPTOTE_LABEL_DETACHED:'+label_id)
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
+
 def audit(plan,svg,transform):
     """The family audit plus the optional graph overlays and axis titles: the observer re-derives every overlay element from the raw overlays
     field and reads the same element ids back from the model and the final SVG."""
     result=_audit_family(plan,svg,transform)
-    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform),single_curve_label_audit(plan,svg,transform)) if part is not None]
+    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform),single_curve_label_audit(plan,svg,transform),multi_curve_label_audit(plan,svg,transform)) if part is not None]
     if not parts:return result
     errors=sorted(set([*(result.get('errors') or []),*(error for part in parts for error in (part.get('errors') or []))]))
     if result.get('status')=='UNSUPPORTED' or any(part.get('status')=='UNSUPPORTED' for part in parts):status='UNSUPPORTED'
