@@ -120,8 +120,6 @@
         [ref].concat(g.par).forEach((e) => { if (vis(e)) D.par(sol.verts[e.u], sol.verts[e.v], 1, BLUE, 0.5); });
       }
       drawVerts(D, sol, { hot: (k) => k === ref.u || k === ref.v });
-      // 꼬인 위치 번호 (모서리 가운데에 놓고, 겹치면 비켜 놓음)
-      if (C.txt && (st === 4 || st === 3) && !(lean && st === 4)) g.skew.forEach((e) => D.label(mid3(sol.verts[e.u], sol.verts[e.v]), String(e.idx), { color: GREEN, size: 18, at: [[0, 0], [0, -15], [0, 15], [-15, 0], [15, 0], [11, -11], [-11, 11], [11, 11], [-11, -11]] }));
       // 기준 모서리 이름표
       if (C.txt) D.label(mid3(A, B), `기준 ${ref.name}`, { color: AMB, size: 16, dir: D.out(mid3(A, B), sol.ctr), gap: 14 });
       // 두 모서리 판별(s1-7): 고른 둘째 모서리
@@ -133,7 +131,9 @@
       }
       // 맨 위 설명 한 줄
       if (C.txt) {
-        const cap = C.problem ? null : st === 1 ? `① 만나는 모서리 ${M.nMeet + M.nExt}개 지우기` : st === 2 ? `② 평행한 모서리 ${M.nPar}개 지우기` : st === 3 ? `③ 남은 ${M.nSkew}개 = 꼬인 위치` : null;
+        // 번호 대신 색과 이름으로: 꼬인 모서리는 이름을 나열하고 개수를 붙입니다(5개 넘으면 개수만, 이름은 풀이 문장에)
+        const names = g.skew.map((e) => e.name);
+        const cap = C.problem ? null : st === 1 ? `만나는 모서리 ${M.nMeet + M.nExt}개 지우기` : st === 2 ? `평행한 모서리 ${M.nPar}개 지우기` : st === 3 ? (names.length <= 5 ? `꼬인 위치: ${names.join(', ')} → ${M.nSkew}개` : `남은 ${M.nSkew}개 = 꼬인 위치`) : null;
         if (cap) b.stext(b.W / 2 - b.insets.right / 2, b.insets.top + 20, cap, { color: st === 1 ? RED : st === 2 ? BLUE : GREEN, size: 17, weight: 800, align: 'center', baseline: 'middle' });
       }
       D.flush();
@@ -153,7 +153,7 @@
       return [
         `기준 모서리 $${r}$${jo(ref.name, 'wa')} 만나는 모서리를 지워요. 끝점에서 만나는 것이 $${nMeet}$개${nExt ? `, 늘이면 한 점에서 만나는 것이 $${nExt}$개이니 모두 $${nMeet + nExt}$개예요` : '예요'}.`,
         `$${r}$${jo(ref.name, 'wa')} 평행한 모서리 $${nPar}$개도 지워요.`,
-        `남은 모서리 $${total}-1-${nMeet + nExt}-${nPar}=${nSkew}$개가 $${r}$${jo(ref.name, 'wa')} 꼬인 위치예요.`
+        `남은 모서리 $${total}-1-${nMeet + nExt}-${nPar}=${nSkew}$개가 $${r}$${jo(ref.name, 'wa')} 꼬인 위치예요. 꼬인 위치: ${M.g.skew.map((e) => `$${ov(e.name)}$`).join(', ')} → $${nSkew}$개`
       ];
     }
 

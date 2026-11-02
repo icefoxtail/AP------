@@ -207,20 +207,6 @@
     return { faces };
   }
 
-  /* 모서리 번호 (꼬인 위치) */
-  function numberSkews(D, M, faces, C, st) {
-    const { net, sol, c } = M;
-    if (!C.txt || !(st === 4 || st === 3)) return;
-    const done = new Set();
-    faces.forEach((pts, fi) => pts.forEach((p, vi) => {
-      const e = sol.edges.find((x) => x.key === edgeNm(net, fi, vi));
-      if (!e || e.rel !== 'skew') return;
-      const q = pts[(vi + 1) % pts.length], m = mid3(p, q), sc = D.b.toS(D.P(m)), k = e.key + '@' + Math.round(sc.x / 8) + ',' + Math.round(sc.y / 8);
-      if (done.has(k)) return; done.add(k);
-      D.label(m, String(e.idx), { color: 'green', size: 17, at: [[0, 0], [0, -15], [0, 15], [-15, 0], [15, 0]] });
-    }));
-  }
-
   /* ---------------- 공통: 장면 틀 (전개도 모서리 판별 scene: s4-1, s4-3, s4-4) */
   function edgeScene(o) {
     const D = {
@@ -242,9 +228,9 @@
         const t = C.problem ? 0 : C.review ? C.t : (C.thumb ? 0.6 : s.spFold);
         const Dr = scene3(b, camFold(s, t), C); // 접을수록 시점이 낮아져(위에서 → 비스듬히) 입체가 잘 보여요
         const { faces } = drawNet(Dr, M, C, st, t, { noRef: false });
-        numberSkews(Dr, M, faces, C, st);
         if (C.txt && !C.problem) {
-          const cap = C.review ? (st === 1 ? `① 접으면 만나는 모서리 ${M.c.nMeet}개 지우기` : st === 2 ? `② 평행한 모서리 ${M.c.nPar}개 지우기` : st === 3 ? `③ 남은 ${M.c.nSkew}개 = 꼬인 위치` : '') : '';
+          const nm = M.c.g.skew.map((e) => e.name);
+          const cap = C.review ? (st === 1 ? `접으면 만나는 모서리 ${M.c.nMeet}개 지우기` : st === 2 ? `평행한 모서리 ${M.c.nPar}개 지우기` : st === 3 ? (nm.length <= 5 ? `꼬인 위치: ${nm.join(', ')} → ${M.c.nSkew}개` : `남은 ${M.c.nSkew}개 = 꼬인 위치`) : '') : '';
           if (cap) b.stext(b.W / 2 - b.insets.right / 2, b.insets.top + 20, cap, { color: st === 1 ? 'red' : st === 2 ? 'sky' : 'green', size: 17, weight: 800, align: 'center', baseline: 'middle' });
         }
         Dr.flush();
@@ -276,7 +262,7 @@
   const stepsSkew = (M, r) => [
     `전개도를 접어 입체를 만들어요. 같은 문자의 꼭짓점이 한 점으로 모여요. 기준 모서리 $${r}$${jo(M.ref.name, 'wa')} 끝점에서 만나는 모서리 $${M.c.nMeet + M.c.nExt}$개를 지워요.`,
     `$${r}$${jo(M.ref.name, 'wa')} 평행한 모서리 $${M.c.nPar}$개도 지워요.`,
-    `남은 모서리 $${M.c.total}-1-${M.c.nMeet + M.c.nExt}-${M.c.nPar}=${M.c.nSkew}$개가 꼬인 위치예요.`
+    `남은 모서리 $${M.c.total}-1-${M.c.nMeet + M.c.nExt}-${M.c.nPar}=${M.c.nSkew}$개가 꼬인 위치예요. 꼬인 위치: ${M.c.g.skew.map((e) => `$${ov(e.name)}$`).join(', ')} → $${M.c.nSkew}$개`
   ];
   // 5지선다: 꼬인 위치인 모서리 이름 고르기 / 개수 고르기
   const probSkewName = (M, shape, key) => {
