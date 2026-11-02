@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "archive-basic-scope-rebind-request-v1",
+  "requestId": "basic-rebind-maesan-25-1mid-algebra-q18-20261102",
+  "examUid": "25_매산고_1학기_중간_고2_대수",
+  "sourceArchiveFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js",
+  "expectedSourceBlobSha1": "ccaa72cb9ce32f577a14f3a7ec5a3217f8a91091",
+  "previousSourceBlobSha1": "67fb8df5d341b19bf27cf3b5b70136290220bbdb",
+  "expectedQuestionCount": 21,
+  "approval": {
+    "type": "BASIC_SCOPE_REBIND",
+    "metadataReviewed": true,
+    "approvedBy": "USER_DIRECTED_RECOVERY_20261102: Claude Sonnet subagent review of q18 (figure-only change after basic-scope approval; issue #1183)",
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/basic-rebind-maesan-25-1mid-algebra-q18-20261102.review.json",
+        "sha256": "e539eb665604483e6e783f142f7d09c77cbb5addc922b28b970e81e151406404"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_25b798f33ac48e9f0f388d2406bde3b007e7791c928842c1874c0c12ff6feb96",
+      "sourceOrdinal": 18,
+      "before": {
+        "sourceFingerprint": "497b81384b4e56cccc49d12327a39a0d406767d5b7f42c8be651b574c45255b5",
+        "contentFingerprint": "8a9f19b6fda5a32ff1f9942a76b924b5f2b681144180a1e1a6cc152059c8abf5"
+      },
+      "after": {
+        "sourceFingerprint": "cbd2b93ccabe658435215e7438a5362c84f2e9b9e44125ad950bfcab3ee560a7",
+        "contentFingerprint": "6d1f436a556cb1894e6b38316cfcb7a1fcf7d01ebdec63da4b849ed5e528de4a"
+      },
+      "contentEdits": [
+        {
+          "from": "길움을",
+          "to": "길이를"
+        }
+      ],
+      "basicParent": {
+        "grade": "고2",
+        "curriculumKey": "2015",
+        "courseKey": "수학I",
+        "L1": "삼각함수",
+        "L2": "삼각함수"
+      },
+      "reason": "Rebind the approved basic-scope metadata (values unchanged) to the current bytes: student figure attached, placeholder removed, one typo fixed; answer/solution/choices/classification identical.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/basic-rebind-maesan-25-1mid-algebra-q18-20261102.review.json",
+          "sha256": "e539eb665604483e6e783f142f7d09c77cbb5addc922b28b970e81e151406404"
+        }
+      ]
+    }
+  ]
+}
