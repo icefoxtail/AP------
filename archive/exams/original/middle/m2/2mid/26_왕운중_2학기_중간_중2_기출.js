@@ -247,7 +247,7 @@ window.questionBank = [
       "점 $O\\prime$은 $\\triangle AOC$의 외심이다."
     ],
     "answer": "④",
-    "solution": "그림에서 외심 $O$가 변 $BC$에 대해 점 $A$와 반대쪽에 있으므로 $\\angle A$는 둔각이고, $\\angle BOC=360^\\circ-2\\angle BAC=160^\\circ$에서 $\\angle BAC=100^\\circ$이다. $\\angle ABC=45^\\circ$이므로 $\\angle ACB=180^\\circ-45^\\circ-100^\\circ=35^\\circ$이다. $AD\\perp BC$, $\\angle ABD=45^\\circ$이므로 $\\angle BAD=45^\\circ$, 따라서 $\\angle DAC=100^\\circ-45^\\circ=55^\\circ$이다. 직각삼각형 $ADC$의 외심 $O'$은 빗변 $AC$의 중점이므로 $O'A=O'C=O'D$이고, 따라서 ①은 참이며 $\\angle DCO'=\\angle ACB=35^\\circ$이므로 ④는 거짓이다. 또 $\\angle AOB=2\\angle ACB=70^\\circ$이고 $OA=OB$이므로 $\\angle BAO=55^\\circ$, 따라서 $\\angle DAO=\\angle BAO-\\angle BAD=10^\\circ$라서 ②도 참이다. 한편 $\\angle AOC=2\\angle ABC=90^\\circ$이고 $O'$은 $AC$의 중점이므로 $O'$은 직각삼각형 $AOC$의 외심이다. 따라서 ⑤가 참이고 $O'O=O'A=O'D$이므로 ③도 참이다. 그러므로 옳지 않은 것은 ④이다.",
+    "solution": "먼저 $O$는 $\\triangle ABC$의 외심이고, 그림에서 변 $BC$의 아래쪽에 있다. 따라서 $\\angle BAC$는 둔각이다. 이때 작은 중심각 $\\angle BOC=160^\\circ$이므로\n$$\\begin{aligned}\n2\\angle BAC&=360^\\circ-160^\\circ=200^\\circ\\\\\n\\angle BAC&=100^\\circ\n\\end{aligned}$$\n이다.\n\n$D$는 $BC$ 위에 있고 $\\angle ABD=45^\\circ$이므로 $\\angle ABC=45^\\circ$이다. 따라서\n$$\\angle ACB=180^\\circ-100^\\circ-45^\\circ=35^\\circ$$\n이다.\n\n또 $AD\\perp BC$이므로 $\\triangle ABD$에서\n$$\\angle BAD=180^\\circ-90^\\circ-45^\\circ=45^\\circ$$\n이고,\n$$\\angle DAC=100^\\circ-45^\\circ=55^\\circ$$\n이다.\n\n이제 각 보기를 차례로 확인하자.\n\n① $\\triangle ADC$는 $D$에서 직각이고 $O'$은 외심이므로 빗변 $AC$의 중점이다. 따라서 $O'C=O'D$이므로 $\\triangle CO'D$는 이등변삼각형이다. **참이다.**\n\n② $\\angle AOB=2\\angle ACB=70^\\circ$이다. $OA=OB$이므로\n$$\\angle BAO=\\dfrac{180^\\circ-70^\\circ}{2}=55^\\circ$$\n이다. 그림에서 $AD$가 $\\angle BAO$의 내부에 있으므로\n$$\\angle DAO=55^\\circ-45^\\circ=10^\\circ$$\n이다. **참이다.**\n\n③ $\\angle AOC=2\\angle ABC=90^\\circ$이므로 $\\triangle AOC$는 $O$에서 직각이다. $O'$은 빗변 $AC$의 중점이므로\n$$O'O=O'A=O'C$$\n이다. 한편 ①에서 $O'D=O'C$이므로 $DO'=OO'$이다. **참이다.**\n\n④ $O'$은 $AC$ 위에 있으므로\n$$\\angle DCO'=\\angle DCA=\\angle ACB=35^\\circ$$\n이다. 따라서 $30^\\circ$라는 설명은 **거짓이다.**\n\n⑤ ③에서 $O'O=O'A=O'C$이므로 점 $O'$은 $\\triangle AOC$의 외심이다. **참이다.**\n\n따라서 옳지 않은 것은 **④**이다.",
     "sourceQuestionNo": "4",
     "displayNo": "4",
     "sourceOrdinal": 4,
@@ -533,7 +533,7 @@ window.questionBank = [
       "$26^\\circ$"
     ],
     "answer": "①",
-    "solution": "$\\angle BIC=90^\\circ+\\dfrac{\\angle A}{2}=108^\\circ$이므로 $\\angle A=36^\\circ$, 따라서 $\\angle B=72^\\circ$이다. 외심에서 $\\angle BOC=2\\angle A=72^\\circ$이므로 이등변삼각형 $BOC$에서 $\\angle OBC=54^\\circ$. 또 $BI$는 $\\angle B$의 이등분선이므로 $\\angle IBC=36^\\circ$. 따라서 $\\angle OBI=18^\\circ$. 정답은 ①.",
+    "solution": "점 $I$는 $\\triangle ABC$의 내심이므로\n$$\\angle BIC=90^\\circ+\\dfrac12\\angle A$$\n이다.\n\n조건 $\\angle BIC=108^\\circ$를 대입하면\n$$\\begin{aligned}\n108^\\circ&=90^\\circ+\\dfrac12\\angle A\\\\\n\\dfrac12\\angle A&=18^\\circ\\\\\n\\angle A&=36^\\circ\n\\end{aligned}$$\n이다.\n\n$AB=AC$인 이등변삼각형이므로 두 밑각의 크기가 같고\n$$\\angle ABC=\\angle ACB=\\dfrac{180^\\circ-36^\\circ}{2}=72^\\circ$$\n이다.\n\n점 $O$는 외심이므로 호 $BC$에 대한 중심각은\n$$\\angle BOC=2\\angle BAC=72^\\circ$$\n이다. 또 $OB=OC$이므로 $\\triangle BOC$는 이등변삼각형이다. 따라서\n$$\\angle OBC=\\dfrac{180^\\circ-72^\\circ}{2}=54^\\circ$$\n이다.\n\n$BI$는 $\\angle ABC$의 이등분선이므로\n$$\\angle IBC=\\dfrac{72^\\circ}{2}=36^\\circ$$\n이다.\n\n그림에서 $BI$는 $\\angle OBC$ 안에 있으므로\n$$\\angle OBI=54^\\circ-36^\\circ=18^\\circ$$\n이다.\n\n따라서 정답은 **①**이다.",
     "sourceQuestionNo": "8",
     "displayNo": "8",
     "sourceOrdinal": 8,
@@ -1506,7 +1506,7 @@ window.questionBank = [
     "content": "다음 그림에서 점 $I$는 $\\triangle ABC$의 내심이고, $\\triangle ABC$의 넓이는 $84$일 때, $\\triangle ABC$의 내접원의 넓이를 구하시오. [5점]",
     "choices": [],
     "answer": "$16\\pi$",
-    "solution": "내심 $I$에서 세 변에 내린 수선의 길이는 모두 내접원의 반지름 $r$이다. 따라서 $\\triangle ABC$의 넓이는 세 작은 삼각형의 넓이의 합이므로 $84=\\dfrac12r(14+13+15)=21r$이다. 그러므로 $r=4$이고, 내접원의 넓이는 $\\pi r^2=16\\pi$이다.",
+    "solution": "점 $I$가 $\\triangle ABC$의 내심이므로, $I$에서 세 변에 내린 수선의 길이는 모두 내접원의 반지름 $r$이다.\n\n삼각형을 점 $I$와 세 꼭짓점을 이은 세 삼각형으로 나누면 각 삼각형의 높이는 모두 $r$이다. 따라서\n$$\\begin{aligned}\n[\\triangle ABC]\n&=[\\triangle ABI]+[\\triangle BCI]+[\\triangle CAI]\\\\\n&=\\dfrac12\\times14\\times r+\\dfrac12\\times15\\times r+\\dfrac12\\times13\\times r\\\\\n&=\\dfrac12(14+15+13)r\\\\\n&=21r\n\\end{aligned}$$\n이다.\n\n조건에서 $\\triangle ABC$의 넓이는 $84$이므로\n$$21r=84$$\n$$r=4$$\n이다.\n\n따라서 내접원의 넓이는\n$$\\pi r^2=\\pi\\times4^2=16\\pi$$\n이다.\n\n정답은 $\\boxed{16\\pi}$이다.",
     "sourceQuestionNo": "서술형2",
     "displayNo": "서술형2",
     "sourceOrdinal": 22,
