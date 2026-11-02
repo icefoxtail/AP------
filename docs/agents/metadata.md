@@ -7,6 +7,11 @@
 
 - 신규 기출 CREATE/R1/R2/R3에서 Primary RPM L1~L4 + CrossConcept/Condition/Integration을 교육과정 내 실제 풀이로 판정하고, PT/TPL은 [단일 진입·Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)의 공식 명령/ACTIVE 바인딩으로만 투영한다. 작업자가 PT/TPL을 자유 추정하거나 CrossConcept으로 Primary를 대체하지 않는다. 모델 공통 규칙이며 사후 FINAL QA의 기존 PT/TPL 재검 제외·예약 Git writer 금지/현재 캠페인 설정은 유지한다.
 
+## CURRENT — 유사시험지 RPM Primary 경로(rpmPrimaryPath) 등록 (2026-11-02)
+
+- 등록기가 읽는 RPM 경로 필드는 `rpmPrimaryPath`(L1~L4, crosswalkRecordIds)뿐이다. 소형 메타가 `rpmPrimary{recordId}`·`rpmPrimaryL1~4`로만 적으면 등록 요청 생성기(`tools/main_merge_master.py`)가 버려 학생 검색 카드에 "RPM L1~L4 미지정"이 나온다(24 매산여고·25 제일고 수II, 25 금당고 확통이 그랬다). 이제 생성기가 공식 크로스워크에서 경로를 정해 `rpmPrimaryPath`로 싣는다: 같은 교육과정·과목·PT·TPL의 ACTIVE 행 중 소형 메타가 지목한 레코드이거나, 후보 경로가 하나뿐일 때만. 후보가 없거나 여럿인데 지목이 없거나 지목 레코드의 PT/TPL이 다르면 그 문항은 비워 둔다(EVIDENCE_DEBT, 이름이 비슷하다고 추정하지 않는다). 이유: RPM Primary는 Resolver/크로스워크 결과만 쓴다.
+- 이미 등록된 시험지에 경로만 추가: `python3 tools/main_merge_master.py --exam <시험지> --rpm-path-delta --apply` → `.archive-meta-register/inbox/rpmpath-<시험지>.json`(FINAL_QA, 다른 승인 값 변경 없음, 기존 `targetParentRef` 유지, 경로를 못 정한 문항은 빈 패치). 이유: 같은 requestId로 다시 등록하면 "requestId reused with different content"로 거부된다.
+
 ## CURRENT — Generated 확장 키(EXT-*) 등록 (2026-11-02, 사용자 결정)
 
 - 소형 메타가 `EXT-CROSS-*`/`EXT-COND-*`를 쓰면 등록기(`reviewed-exam-registration-v2.mjs`)가 색인·원본 registry·정본 부모·교육과정/과목 범위를 확인하고 받는다. 정본 승격은 일어나지 않는다(정본 registry, compiled, RPM LOCKED, 색인은 바뀌지 않음). 미등록·부모 없음·승격 주장·`GENERATED_ACTIVE` 아님은 계속 거부한다. 이유: 확장 키 하나 때문에 시험지 전체 등록이 막혔다. 상세: [등록 v2](../architecture/Reviewed_Exam_Meta_Registration_v2.md).

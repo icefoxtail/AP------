@@ -227,6 +227,116 @@ class ParentAssignmentTests(unittest.TestCase):
         self.assertEqual(req["items"][0]["targetParentRef"]["crosswalkRef"]["recordId"], "H2-M2-RPM-099")
 
 
+class RpmPrimaryPathTests(unittest.TestCase):
+    """The registrar only reads `rpmPrimaryPath`; small metas that name the crosswalk record as `rpmPrimary {recordId}` /
+    `rpmPrimaryRecordId` lost their RPM path in registration (search card: "RPM L1~L4 미지정"). The path is taken from the
+    official crosswalk only; a question whose record cannot be decided keeps none (EVIDENCE_DEBT)."""
+    CROSS = "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        self.addCleanup(self.tmp.cleanup)
+        patcher = mock.patch.multiple(mm, REPO_ROOT=self.root, CANON_DIR=self.root / "archive/data/meta-foundation/canonical")
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    @staticmethod
+    def row(record_id, l3, l4, **kwargs):
+        row = {"id": record_id, "curriculum": "2015", "scope": "수학II", "bindingStatus": "ACTIVE",
+               "problemTypeKey": "PT_A", "templateKey": "TPL_A",
+               "rpmPath": {"majorUnit": "미분", "midUnit": "도함수의 활용(2)", "l3": l3, "l4": l4}}
+        row.update(kwargs)
+        return row
+
+    def build(self, rows, hint, registered_path=None, second_pt="PT_A"):
+        files = build_tree(self.root)
+        cross = self.root / self.CROSS
+        cross.parent.mkdir(parents=True)
+        cross.write_text(json.dumps({"status": "ACTIVE_REFERENCE", "records": rows}), encoding="utf-8")
+        meta = json.loads(files["meta"].read_text(encoding="utf-8"))
+        meta["items"][0]["after"].update(hint)
+        files["meta"].write_text(json.dumps(meta), encoding="utf-8")
+        metadata = self.root / "archive/data/question_metadata.json"
+        doc = json.loads(metadata.read_text(encoding="utf-8"))
+        for record in doc["records"]:
+            record.update({"curriculum": "2015", "courseKey": "수학II", "problemTypeKey": "PT_A", "templateKey": "TPL_A",
+                           "L1": "미분", "L2": "도함수의 활용(2)"})
+        doc["records"][1]["problemTypeKey"] = second_pt
+        if registered_path:
+            doc["records"][0]["rpmPrimaryPath"] = registered_path
+        metadata.write_text(json.dumps(doc), encoding="utf-8")
+        return files
+
+    def delta(self, *args, **kwargs):
+        files = self.build(*args, **kwargs)
+        with redirect_stdout(io.StringIO()):
+            return mm.generate_inbox_request(files, rpm_path_delta=True)
+
+    def test_named_record_among_the_exact_candidates_decides_the_path(self):
+        req = self.delta([self.row("R1", "가", "나"), self.row("R2", "다", "라")],
+                         {"rpmPrimary": {"l1": "미분", "l2": "도함수의 활용(2)", "l3": "다", "l4": "라", "recordId": "R2"}})
+        item = req["items"][0]
+        self.assertEqual(item["before"], {"rpmPrimaryPath": None})
+        self.assertEqual(item["after"], {"rpmPrimaryPath": {
+            "L1": "미분", "L2": "도함수의 활용(2)", "L3": "다", "L4": "라",
+            "parentChain": ["미분", "도함수의 활용(2)", "다", "라"], "crosswalkRecordIds": ["R2"]}})
+        evidence = {e["path"]: e["sha256"] for e in item["evidenceRefs"]}
+        self.assertEqual(evidence[self.CROSS], mm.sha256_file(self.root / self.CROSS))
+
+    def test_delta_changes_no_other_value_and_is_a_separate_request(self):
+        req = self.delta([self.row("R1", "가", "나")], {}, second_pt="PT_NO_CROSSWALK_ROW")
+        self.assertTrue(req["requestId"].startswith("req-rpmpath-"))
+        self.assertEqual(req["registryChanges"], [])
+        self.assertEqual(list(req["items"][0]["after"]), ["rpmPrimaryPath"])
+        # A row without a decidable record is carried with an empty patch (the registrar needs every question).
+        self.assertEqual(req["items"][1]["before"], {})
+        self.assertEqual(req["items"][1]["after"], {})
+        self.assertIn("EVIDENCE_DEBT", req["items"][1]["reason"])
+
+    def test_single_exact_candidate_decides_without_a_named_record(self):
+        req = self.delta([self.row("R1", "가", "나"), self.row("R9", "다", "라", problemTypeKey="PT_OTHER")], {})
+        self.assertEqual(req["items"][0]["after"]["rpmPrimaryPath"]["crosswalkRecordIds"], ["R1"])
+
+    def test_several_paths_without_a_named_record_is_evidence_debt_not_a_guess(self):
+        with self.assertRaisesRegex(mm.RequestGenerationError, "no question gained an RPM Primary path"):
+            self.delta([self.row("R1", "가", "나"), self.row("R2", "다", "라")], {})
+
+    def test_named_record_that_is_not_an_exact_pt_tpl_row_is_not_used(self):
+        # Question 1 names R2, whose TPL differs: it keeps no path although R1 would fit (nothing is substituted);
+        # question 2 names nothing and has exactly one candidate path.
+        req = self.delta([self.row("R1", "가", "나"), self.row("R2", "다", "라", templateKey="TPL_OTHER")],
+                         {"rpmPrimaryRecordId": "R2"})
+        self.assertEqual(req["items"][0]["after"], {})
+        self.assertEqual(req["items"][1]["after"]["rpmPrimaryPath"]["crosswalkRecordIds"], ["R1"])
+
+    def test_declared_labels_that_disagree_with_the_record_are_not_used(self):
+        with self.assertRaisesRegex(mm.RequestGenerationError, "no question gained"):
+            self.delta([self.row("R1", "가", "나"), self.row("R2", "다", "라")],
+                       {"rpmPrimaryRecordId": "R2", "rpmPrimaryL1": "미분", "rpmPrimaryL2": "도함수의 활용(2)",
+                        "rpmPrimaryL3": "가", "rpmPrimaryL4": "나"})
+
+    def test_other_curriculum_or_inactive_rows_are_not_candidates(self):
+        with self.assertRaisesRegex(mm.RequestGenerationError, "no question gained"):
+            self.delta([self.row("R1", "가", "나", curriculum="2022"), self.row("R2", "다", "라", bindingStatus="MISSING")], {})
+
+    def test_already_registered_path_is_left_alone(self):
+        registered = {"L1": "미분", "L2": "도함수의 활용(2)", "L3": "가", "L4": "나"}
+        req = self.delta([self.row("R1", "가", "나")], {}, registered_path=registered)
+        self.assertEqual(req["items"][0]["after"], {})
+        self.assertEqual(req["items"][1]["after"], {"rpmPrimaryPath": {
+            "L1": "미분", "L2": "도함수의 활용(2)", "L3": "가", "L4": "나",
+            "parentChain": ["미분", "도함수의 활용(2)", "가", "나"], "crosswalkRecordIds": ["R1"]}})
+
+    def test_full_request_also_carries_the_path_from_the_small_meta_record(self):
+        files = self.build([self.row("R1", "가", "나")], {"rpmPrimaryRecordIds": ["R1"], "templateKey": "TPL_A",
+                                                          "curriculum": "2015", "courseKey": "수학II"})
+        with redirect_stdout(io.StringIO()):
+            req = mm.generate_inbox_request(files)
+        self.assertEqual(req["requestId"], "req-similar-" + req["requestId"].split("-")[-1])
+        self.assertEqual(req["items"][0]["after"]["rpmPrimaryPath"]["L4"], "나")
+
+
 class SplitRegistryChangesTests(unittest.TestCase):
     def test_requires_path_before_after(self):
         native, sidecar = mm.split_registry_changes([
