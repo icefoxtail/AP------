@@ -613,6 +613,8 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ----- 문제 글·정답(숫자 바꾸기 값에 따라 바뀝니다) ----- */
+  // 숫자 읽기의 받침에 맞는 조사(숫자가 바뀌어도 맞게): 0·1·3·6·7·8(영·일·삼·육·칠·팔)은 받침이 있고 2·4·5·9는 없습니다.
+  const josa = (n, withFinal, without) => ('013678'.includes(String(n).replace(/\D/g, '').slice(-1)) ? withFinal : without);
   const answer5 = (s) => { const v = V5[s.v5], k = v.e / 6, n = k * k; return `[\\triangle ${v.sub}]=${coef(3 * n)}\\sqrt{3},\\; S'=${coef(3 * n)}\\sqrt{3}\\times\\dfrac{1}{3}=${coef(n)}\\sqrt{3}`; };
   const answer7 = (s) => { const v = V7[s.v7], n = v.e * v.e / 4; return `\\triangle ${v.face}=${coef(n)}\\sqrt{3},\\; \\cos\\theta=\\dfrac{\\sqrt{6}}{3},\\; S'=${coef(n)}\\sqrt{3}\\times\\dfrac{\\sqrt{6}}{3}=${coef(n)}\\sqrt{2}`; };
   Object.assign(examData, {
@@ -650,7 +652,7 @@ window.addEventListener('DOMContentLoaded', function () {
       note: '출처 유형: 22 매산고 1학기 기말 16번과 같은 구조(정육면체의 단면과 밑면이 이루는 각)를 숫자만 바꿔 다시 만든 문항입니다.',
       question: (s) => {
         const v = V6[s.v6];
-        const where = v.mid ? `모서리 ${tex('CG')}의 중점을 ${tex('N')}이라 하자.` : `모서리 ${tex('CG')} 위의 점 ${tex('N')}이 ${tex('\\overline{CN}=' + v.cn)}을 만족한다.`;
+        const where = v.mid ? `모서리 ${tex('CG')}의 중점을 ${tex('N')}이라 하자.` : `모서리 ${tex('CG')} 위의 점 ${tex('N')}이 ${tex('\\overline{CN}=' + v.cn)}${josa(v.cn, '을', '를')} 만족한다.`;
         return `한 모서리의 길이가 ${tex(String(v.a))}인 정육면체 ${tex('ABCD-EFGH')}에서 ${where} 평면 ${tex('BDN')}과 밑면 ${tex('ABCD')}가 이루는 예각의 크기를 ${tex('\\theta')}라 할 때, ${tex('\\cos\\theta')}의 값을 구하시오.${newBtn(6)}`;
       },
       answerBadge: (s) => { const v = V6[s.v6]; return tex(`\\cos\\theta=\\dfrac{CP}{NP}=\\dfrac{${v.cp}}{${v.np}}=${v.cos}`); },

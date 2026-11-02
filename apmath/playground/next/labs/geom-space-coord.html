@@ -823,6 +823,8 @@ window.addEventListener('DOMContentLoaded', function () {
   const fVal = (f) => f.n / f.d;
   function sq(n) { let c = 1, d = n; for (let f = 2; f * f <= d; f++) while (d % (f * f) === 0) { d /= f * f; c *= f; } return { c, d }; }   // √n = c√d
   const sqTex = (n) => { const q = sq(n); return q.d === 1 ? String(q.c) : (q.c > 1 ? q.c : '') + '\\sqrt{' + q.d + '}'; };
+  // 구의 반지름 표기: R² = 0 이면 점, R² < 0 이면 구가 아님 (√0, √음수가 화면에 나오지 않게)
+  const rTxt6 = (R2) => (R2 < 0 ? '구가 아님' : R2 === 0 ? '0, 점' : sqTxt(R2));
   const sqTxt = (n) => { const q = sq(n); return q.d === 1 ? String(q.c) : (q.c > 1 ? q.c : '') + '√' + q.d; };
   function rng(seed) { let a = (seed * 2654435761 + 12345) >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
   const rint = (r, lo, hi) => lo + Math.floor(r() * (hi - lo + 1));
@@ -1147,18 +1149,21 @@ window.addEventListener('DOMContentLoaded', function () {
     const sph = { c: C, R: Rfit };
     const bpts = [P3(C.x + Rfit, C.y, C.z), P3(C.x - Rfit, C.y, C.z), P3(C.x, C.y + Rfit, C.z), P3(C.x, C.y - Rfit, C.z), P3(C.x, C.y, C.z + Rfit), P3(C.x, C.y, C.z - Rfit)];
     const ext = extPts(bpts, 3, 2);
+    // 평면 판은 구가 들어갈 만큼만(구 지름 + 0.3): 윗변이 무대 위 가장자리에 걸치지 않도록 맞춤에도 넣습니다
+    const extP = { x: [Rfit + 0.3 - C.x, C.x + Rfit + 0.3], y: [Rfit + 0.3 - C.y, C.y + Rfit + 0.3], z: [Math.max(0.3, Rfit + 0.3 - C.z), C.z + Rfit + 0.3] };
+    const quadPts = (explore ? [s.sel6 | 0] : [q.tp, q.op]).flatMap((j) => planeQuad(j, extP));
     const probTab = tab === 'problem';
     const circle = (j, r, col, fill) => { const { H, u, v } = sec6(C, j); draw3DCircle(H, r, u, v, col, fill, 3); };
     const dimR = (ck, str, a, b2, dx, dy) => tag3(mid3(a, b2), str, rgb(ck), dx, dy, { low: false, center: true });
     return {
-      pts: [C], ext, sphere: sph, noAxisFit: true,
+      pts: [C, ...quadPts], ext, sphere: sph, noAxisFit: true,
       paint: () => {
         axes3(ext);
         if (s.grid) gridXY(ext);
         if (explore) {
           const d = Math.abs(nrm[selP]), d2 = d * d;
           const { H, u, v } = sec6(C, selP);
-          planeHi(selP, ext, 'amber', PLN6[selP], 0.1);
+          planeHi(selP, extP, 'amber', PLN6[selP], 0.1);
           if (R > 0.01) draw3DSphereWireframe(C, R);
           if (R2 > d2) {
             const r = Math.sqrt(R2 - d2);
@@ -1187,7 +1192,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const HT = sec6(C, q.tp).H, so = sec6(C, q.op);
         layer(s, lab, 1, () => { draw3DSphereWireframe(C, R); if (!probTab) pt3(C, 6.5, '#f472b6', ptxt('C', C), P3(0, 0, 0)); });
         layer(s, lab, 2, () => {
-          planeHi(q.tp, ext, 'sky', PLN6[q.tp]);
+          planeHi(q.tp, extP, 'sky', PLN6[q.tp]);
           if (!probTab) {
             draw3DLine(C, HT, rgb('rose'), 3.2, false, true);
             dimR('rose', `d = ${dT}`, C, HT, -26, 4);
@@ -1196,7 +1201,7 @@ window.addEventListener('DOMContentLoaded', function () {
           } else draw3DPoint(HT, 6, '#34d399', '', { x: 0, y: 0 });
         });
         layer(s, lab, 3, () => {
-          planeHi(q.op, ext, 'amber', PLN6[q.op], 0.1);
+          planeHi(q.op, extP, 'amber', PLN6[q.op], 0.1);
           circle(q.op, r, '#fbbf24', 'rgba(251,191,36,.22)');
           if (!probTab) {
             const X = add3(so.H, mul3(so.u, r));
@@ -1297,7 +1302,7 @@ window.addEventListener('DOMContentLoaded', function () {
         // 정리·문제
         tri();
         layer(s, lab, 1, () => {
-          medians(0.8);
+          if (!probTab) medians(0.8); // 중선(무게중심 작도선)은 풀이의 중간 과정이라 문제 그림에서는 그리지 않습니다
           pt3(G, 6.5, '#34d399', probTab ? 'G' : rpt('G', q.G), O3);
         });
         layer(s, lab, 2, () => {
@@ -1504,9 +1509,10 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       return {
         chips,
-        status: rel === 1 ? { tone: 'key', text: `R = d: ${PLN6[sel]}에 접합니다 (k = ${k})` } : rel === 2 ? { tone: 'warn', text: `R < d: ${PLN6[sel]}과 만나지 않습니다` } : { tone: 'info', text: viewStatus(s) },
+        alert: R2 < 0 ? { tone: 'warn', text: 'k > 14이면 R² = 14 − k < 0 이라서 구가 아닙니다(그릴 수 있는 구가 없어요).' } : R2 === 0 ? { tone: 'info', text: 'k = 14이면 R = 0, 구가 한 점(중심 C)으로 줄어듭니다.' } : undefined,
+        status: R2 < 0 ? { tone: 'bad', text: 'k > 14: 구가 아닙니다' } : R2 === 0 ? { tone: 'warn', text: 'R = 0: 구가 아니라 점입니다' } : rel === 1 ? { tone: 'key', text: `R = d: ${PLN6[sel]}에 접합니다 (k = ${k})` } : rel === 2 ? { tone: 'warn', text: `R < d: ${PLN6[sel]}과 만나지 않습니다` } : { tone: 'info', text: viewStatus(s) },
         readouts: [
-          { label: '중심 C / 반지름 R', value: `C(2, −1, 3) | R² = 14 − k = ${R2} (R = ${sqTxt(R2)})`, color: 'sky' },
+          { label: '중심 C / 반지름 R', value: `C(2, −1, 3) | R² = 14 − k = ${R2} (R = ${rTxt6(R2)})`, color: 'sky' },
           { label: `${PLN6[sel]}까지의 거리 d`, value: `d = |${['z', 'x', 'y'][sel]}좌표| = ${d}`, color: 'rose' },
           { label: 'R과 d 비교', value: rel === 0 ? `R² = ${R2} > d² = ${d2} → 원이 생김` : rel === 1 ? `R² = d² = ${d2} → 접함` : `R² = ${R2} < d² = ${d2} → 만나지 않음`, color: 'amber' },
           { label: '단면 원', value: rel === 0 ? `r² = ${R2} − ${d2} = ${R2 - d2} → 넓이 ${R2 - d2}π` : rel === 1 ? '반지름 0 (접점 한 점)' : '교점 없음', color: 'green' }
@@ -1731,7 +1737,7 @@ window.addEventListener('DOMContentLoaded', function () {
       px: { value: 3, min: -6, max: 6, step: 1, color: 'rose', label: '점 P의 x좌표', hint: '정수 좌표로 움직입니다', format: (v) => `x = ${mnum(v)}` },
       py: { value: -2, min: -6, max: 6, step: 1, color: 'green', label: '점 P의 y좌표', format: (v) => `y = ${mnum(v)}` },
       pz: { value: 5, min: -6, max: 6, step: 1, color: 'sky', label: '점 P의 z좌표', format: (v) => `z = ${mnum(v)}` },
-      k6: { value: 5, min: -4, max: 14, step: 1, color: 'amber', label: '상수항 k', hint: 'R² = 14 − k. k = 5, 10, 13이면 각각 xy, yz, zx평면에 접합니다', format: (v) => `k = ${mnum(v)} (R² = ${14 - v}, R = ${sqTxt(14 - v)})` },
+      k6: { value: 5, min: -4, max: 16, step: 1, color: 'amber', label: '상수항 k', hint: 'R² = 14 − k. k = 5, 10, 13이면 각각 xy, yz, zx평면에 접합니다', format: (v) => `k = ${mnum(v)} (R² = ${14 - v}, R = ${rTxt6(14 - v)})` },
       m7: { value: 2, min: 1, max: 4, step: 1, color: 'sky', label: '비 m (AX 쪽)', format: (v) => `m = ${v}` },
       n7: { value: 1, min: 1, max: 4, step: 1, color: 'rose', label: '비 n (XB 쪽)', hint: 'AX : XB = m : n', format: (v) => `n = ${v}` },
       u8: { value: 2, min: 0, max: 6, step: 1, color: 'amber', label: '점 P의 위치 (대각선 AG 위)', hint: 'P(u, u, 6−u): u가 클수록 G에 가깝습니다', format: (v) => { const u = Math.round(v), g = gcdI(u, 6 - u) || 1; return `P(${u}, ${u}, ${6 - u}) · ${u === 0 ? 'P = A' : u === 6 ? 'P = G' : `AP : PG = ${u / g} : ${(6 - u) / g}`}`; } },

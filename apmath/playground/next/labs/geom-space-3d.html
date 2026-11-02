@@ -812,9 +812,27 @@ window.addEventListener('DOMContentLoaded', function () {
     const h2 = l * l - 2 * k * k, ok = h2 > 1e-9, h = ok ? Math.sqrt(h2) : 0;
     return { k, l, h, h2, ok, A: V(0, h, 0), B: V(-k, 0, k), C: V(k, 0, k), D: V(k, 0, -k), E: V(-k, 0, -k), O: V(0, 0, 0), BO: k * Math.SQRT2 };
   }
+  // 한 꼭짓점에서 만나는 두 모서리가 화면에서 거의 한 직선으로 겹쳐 보이지 않는 시점(yaw 20~35°, pitch 15~28°) 중 가장 여유 있는 것
+  function pyrMinAngle(k, l, yaw, pit) {
+    const g = pyrGeo(k, l), Pj = (p) => projPt({ yaw: yaw / R2D, pitch: pit / R2D }, p), ed = ['AB', 'AC', 'AD', 'AE', 'BC', 'CD', 'DE', 'EB'];
+    let m = 180;
+    for (let i = 0; i < ed.length; i++) for (let j = i + 1; j < ed.length; j++) {
+      const sh = [...ed[i]].find((c) => ed[j].includes(c));
+      if (!sh) continue;
+      const o = ed[i][0] === sh ? ed[i][1] : ed[i][0], q = ed[j][0] === sh ? ed[j][1] : ed[j][0], s0 = Pj(g[sh]), u = Pj(g[o]), w = Pj(g[q]);
+      let d = Math.abs(Math.atan2(u.y - s0.y, u.x - s0.x) - Math.atan2(w.y - s0.y, w.x - s0.x)) * R2D % 360;
+      m = Math.min(m, Math.min(d, 360 - d));
+    }
+    return m;
+  }
+  function bestPyrCam(k, l, sign = 1) {
+    let best = { a: -1, yaw: 30, pitch: 22 };
+    for (let pit = 15; pit <= 28; pit++) for (let yaw = 20; yaw <= 35; yaw++) { const a = pyrMinAngle(k, l, yaw, pit); if (a > best.a) best = { a, yaw, pitch: pit }; }
+    return { yaw: sign * best.yaw, pitch: best.pitch };
+  }
   const pyrFaces = (g) => [[g.B, g.C, g.D, g.E], [g.A, g.B, g.C], [g.A, g.C, g.D], [g.A, g.D, g.E], [g.A, g.E, g.B]];
   const plainRoot = (a, r) => { const [o, i] = sqrtSimp(r); a *= o; return i === 1 ? `${a}` : `${a === 1 ? '' : a}√${i}`; };
-  const PYR6 = [[6, 5], [4, 3], [8, 6], [6, 6], [8, 7], [10, 8], [12, 10], [4, 4], [6, 7]]; // [밑면 한 변 s, 옆모서리 l], 모두 l > s/√2
+  const PYR6 = [[6, 5], [6, 6], [8, 7], [10, 9], [12, 10], [4, 4], [6, 7], [4, 5], [6, 8], [8, 8]]; // [밑면 한 변 s, 옆모서리 l], 모두 l > s/√2. 너무 납작해 모서리가 포개져 보이는 뿔((4,3)·(8,6)·(10,8))은 뺐습니다
   const var6 = varier((prev) => {
     const c = prev ? pickOf(PYR6, prev.c) : PYR6[0];
     const ask = prev ? (rint(2) ? 'cos' : 'sin') : 'cos';
@@ -868,7 +886,7 @@ window.addEventListener('DOMContentLoaded', function () {
     body();
   }
   function scene6() {
-    const ISO = { yaw: 30, pitch: 22 }, SEC = { yaw: 45, pitch: 0 };
+    const ISO = bestPyrCam(3, 5), SEC = { yaw: 45, pitch: 0 }; // ISO: AB·BE·BC 등이 포개지지 않는 시점
     const D2 = 3 * Math.SQRT2;
     return baseScene({
       id: 'mode6', title: '[필수] 직선과 평면이 이루는 각 — 정사각뿔', short: '직선·평면의 각',
@@ -928,7 +946,7 @@ window.addEventListener('DOMContentLoaded', function () {
         };
       },
       notes: '"AB와 평면 BCDE가 이루는 각"은 그림자 BO와의 각 ∠ABO입니다. 밑면 모서리와의 각 ∠ABC를 구하지 않도록 주의하세요.',
-      vary: var6,
+      vary: Object.assign(var6, { onNext: (s) => { const v = var6.cur(), c = bestPyrCam(v.k, v.l); s.yaw = c.yaw; s.pitch = c.pitch; } }),
       draw: draw6
     });
   }
@@ -940,7 +958,7 @@ window.addEventListener('DOMContentLoaded', function () {
     C: { L1: ['E', 'G'], L2: ['A', 'B'], mv: ['A', 'E'], tri: ['E', 'F', 'G'], tr: 1 },
     D: { L1: ['C', 'E'], L2: ['A', 'B'], mv: ['A', 'E'], tri: ['E', 'F', 'C'], tr: 1 }
   };
-  const PYR7 = [[6, 5], [4, 3], [10, 8], [8, 6], [12, 10]];
+  const PYR7 = [[6, 5], [8, 7], [12, 10], [4, 4], [10, 9]];
   const PAIR_NAME = { A: 'AC와 BG', B: 'AG와 BH', C: 'AB와 EG', D: 'AB와 CE', P: 'AB와 CD' };
   function geo7(key, t, ps = [6, 5]) {
     const pyr = key === 'P';
@@ -963,7 +981,8 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   const var7 = varier((prev) => {
     const pool = [...['A', 'B', 'C', 'D'].map((k) => ({ key: k })), ...PYR7.map((c) => ({ key: 'P', c }))];
-    const cur = prev ? pickOf(pool, prev.item) : pool[0];
+    const same = (x, y) => x.key === y.key && JSON.stringify(x.c) === JSON.stringify(y.c);
+    const cur = prev ? pickOf(pool.filter((x) => !same(x, prev.item))) : pool[0]; // pool을 매번 새로 만들므로 값으로 비교
     const key = cur.key, c = cur.c || [6, 5];
     let ans, ask;
     if (key === 'A') { ans = { tex: '60^\\circ', val: Math.cos(Math.PI / 3) }; ask = 'deg'; }
@@ -981,7 +1000,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (v.key === 'D') return `${cube} 두 직선 ${tex('AB')}와 ${tex('CE')}가 이루는 예각의 크기를 ${tex('\\theta')}라 할 때, ${tex('\\cos\\theta')}의 값을 구하시오.`;
     return `밑면이 한 변의 길이가 ${tex(String(v.c[0]))}인 정사각형 ${tex('BCDE')}이고 옆모서리의 길이가 모두 ${tex(String(v.c[1]))}인 정사각뿔 ${tex('A\\text{-}BCDE')}에서 두 직선 ${tex('AB')}와 ${tex('CD')}가 이루는 각의 크기를 ${tex('\\theta')}라 할 때, ${tex('\\cos\\theta')}의 값을 구하시오.`;
   };
-  const CAM7 = { cube: { yaw: 25, pitch: 18 }, pyr: { yaw: -30, pitch: 20 } };
+  const CAM7 = { cube: { yaw: 25, pitch: 18 }, pyr: bestPyrCam(3, 5, -1) };
   function draw7(b, s0, v, lab) {
     B = b; LAB = lab; PROB = lab.tab === 'problem';
     const tab = lab.tab, s = APLab.problemState(lab, s0, {}), vr = var7.cur();
@@ -1088,7 +1107,7 @@ window.addEventListener('DOMContentLoaded', function () {
       },
       formula: '<b>꼬인 두 직선이 이루는 각</b>: 한 직선을 평행이동하여 두 직선이 <b>한 점에서 만나도록</b> 하고, 그 점에서 이루는 <b>예각(또는 직각)</b>의 크기를 구합니다. 평행이동해도 각은 변하지 않습니다.',
       notes: '삼각형의 각이 둔각이면 두 직선이 이루는 각은 그 보각(예각)입니다. AG와 BH처럼 이미 만나는 두 직선도 예각이 되도록 주의하세요.',
-      vary: Object.assign(var7, { geoAt: (tt) => geo7(var7.cur().key, tt, var7.cur().c), onNext: (s) => { const k = var7.cur().key; const c = k === 'P' ? CAM7.pyr : CAM7.cube; s.yaw = c.yaw; s.pitch = c.pitch; } }),
+      vary: Object.assign(var7, { geoAt: (tt) => geo7(var7.cur().key, tt, var7.cur().c), onNext: (s) => { const v = var7.cur(); const c = v.key === 'P' ? bestPyrCam(v.c[0] / 2, v.c[1], -1) : CAM7.cube; s.yaw = c.yaw; s.pitch = c.pitch; } }),
       draw: draw7
     });
   }
@@ -1119,6 +1138,7 @@ window.addEventListener('DOMContentLoaded', function () {
     let H, O, P;
     if (ex && s.st8 === 3) { H = V(0, 0, 0); O = V(0, 0, OZ3); P = V(0, s.h8, s.pz8); }
     else if (ex) { P = V(s.px8, s.h8, s.pz8); O = V(s.px8, 0, s.pz8); H = V(s.px8, 0, 0); }
+    else if (tab === 'problem') { H = V(0, 0, 0); O = V(0, 0, 3); P = V(0, 2.7, 1.4); } // 문제 그림은 개념도: P를 O·H 어느 쪽 바로 위에도 두지 않아 답(수선의 발)이 그림에서 드러나지 않게
     else ({ H, O, P } = vr.geo);
     const fit = ex ? [V(-3.2, 0, 0), V(3.2, 0, 0), V(0, 4.2, 1.2), V(0, 0, 3.7), V(0, 0, -1.2)] : [V(-3.2, 0, 0), V(3.2, 0, 0), P, O, H, V(0, 0, -1.2), V(0, 0, O.z + 1.2)];
     const foot = vr.foot, hi = tab === 'review' && st(3);
@@ -1179,8 +1199,8 @@ window.addEventListener('DOMContentLoaded', function () {
         if (st(2)) SP.line(V(-3.6, 0, 0), V(3.6, 0, 0), { color: 'green', width: 3.8, glow: true });
         if (st(3)) { const F = foot === 'H' ? H : O; seg(P, F, 'violet', 5, { glow: true }); SP.point(F, { r: 9, color: 'violet', hollow: true, dim: false }); }
       }
-      const off = foot === 'H' ? { po: [32, 0], oh: [-34, 6], ph: [-34, -2] } : { po: [-34, 0], oh: [22, 14], ph: [8, -14] };
-      lbl(mul(add(P, O), 0.5), `PO = ${vr.po}`, 'rose', off.po[0], off.po[1], 12.5);
+      const off = tab === 'problem' ? { po: [-42, -2], oh: [18, 16], ph: [40, -4] } : foot === 'H' ? { po: [32, 0], oh: [-34, 6], ph: [-34, -2] } : { po: [-34, 0], oh: [22, 14], ph: [8, -14] };
+      lbl(tab === 'problem' ? add(P, mul(sub(O, P), 0.28)) : mul(add(P, O), 0.5), `PO = ${vr.po}`, 'rose', off.po[0], off.po[1], 12.5); // 문제 그림: 직선 l이 글자를 가로지르지 않게 P 쪽에 둡니다
       lbl(mul(add(O, H), 0.5), `OH = ${vr.oh}`, 'sky', off.oh[0], off.oh[1], 12.5);
       lbl(mul(add(P, H), 0.5), `PH = ${vr.ph}`, 'amber', off.ph[0], off.ph[1], 12.5);
       SP.point(P, { r: 5.5, color: 'rose', label: 'P', toward: SP.P(O), size: 15 });
@@ -1328,8 +1348,8 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       if (PROB || tab === 'review' || ex) {
         // 문제에 주어진 각: l과 PA, l과 PB
-        arcL(g.P, X1, g.A, 1.0, 'green', `${a}°`, 0.45, false, { dx: 6, dy: 10 });
-        arcL(g.P, X1, g.B, 1.0, 'sky', `${bb}°`, 0.45, false, { dx: -8, dy: -4 });
+        arcL(g.P, X1, g.A, 0.3 * norm(g.M), 'green', `${a}°`, 0.12 * norm(g.M), false, a >= 50 ? { dx: -18, dy: 12 } : { dx: -4, dy: 6 }); // 라벨이 점 M에 닿지 않게 |PM|에 비례
+        arcL(g.P, X1, g.B, 0.9, 'sky', `${bb}°`, 0.4, false, { dx: -8, dy: -4 });
       }
       SP.point(g.P, { r: 5.5, color: 'ink', label: 'P', dx: -16, dy: 4, size: 15 });
       SP.point(g.A, { r: 5.5, color: 'green', label: 'A', dx: 10, dy: 12, size: 15 });
