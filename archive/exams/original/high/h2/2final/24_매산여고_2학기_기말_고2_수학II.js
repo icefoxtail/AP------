@@ -167,7 +167,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: x=1에서 직선 y=-4x+4(x≤1)와 포물선 y=3x²-10x+7(x>1)이 점 (1,0)에서 기울기 -4로 매끄럽게 이어지는 그래프.",
+    "solutionImageCaption": "a=-2, b=4이면 x=1에서 함수값 0, 좌우 기울기 -4로 이어지므로 a+b=2이다. 정답 ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -321,9 +325,10 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "image": "assets/images/24_매산여고_2학기_기말_고2_수학II/q11.png",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q11-solution.svg",
-    "solutionImageAlt": "a=2로 확정된 속도 그래프와 t=3, t=5에서의 위치 계산에 쓰는 삼각형 넓이를 나타낸 해설 그래프",
-    "solutionImageCaption": "속도 그래프의 부호 있는 넓이로 위치를 계산한다."
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 속도 v(t) 그래프에서 시간축과 만나는 t=3, t=5와 꺾임점 t=2, 4를 표시하고, 시간축 위 두 삼각형(넓이 2, 1)은 파란색, 아래 두 삼각형(넓이 -1, -1)은 주황색으로 칠한 그림. t=3에서의 위치 x(3)=3도 적혀 있다.",
+    "solutionImageCaption": "a=2일 때 t=0부터 3까지 부호 있는 넓이는 2+1=3이므로 x(3)=3이고, 3부터 5까지는 -1-1=-2이므로 x(5)=3-2=1이다. 정답 ①",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -354,9 +359,9 @@ window.questionBank = [
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q12-solution.svg",
-    "solutionImageAlt": "곡선 y=x|x−3|와 x=3을 경계로 나뉘는 두 넓이",
-    "solutionImageCaption": "절댓값 곡선과 두 영역의 넓이",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=x|x−3|과 x축, 직선 x=6으로 둘러싸인 도형을 x=3에서 두 부분 S₁(0~3)과 S₂(3~6)으로 나누어 서로 다른 색으로 칠했다.",
+    "solutionImageCaption": "x=3을 경계로 0≤x≤3에서는 y=3x−x², 3≤x≤6에서는 y=x²−3x이다. S₁=9/2, S₂=45/2이므로 전체 넓이는 27이다. 정답 ③",
     "solutionImageSize": "medium"
   },
   {
@@ -388,9 +393,9 @@ window.questionBank = [
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q13-solution.svg",
-    "solutionImageAlt": "f(x)=x³−12x+23/3의 극대 71/3과 극소 −25/3",
-    "solutionImageCaption": "삼차함수의 극대·극소",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 f(x)=x³−12x+23/3의 그래프. x=−2에서 극대(극댓값 71/3), x=2에서 극소(극솟값 −25/3)이고 두 점에서 x축까지 점선이 내려와 있다.",
+    "solutionImageCaption": "f(x)=x³−12x+23/3은 x=−2에서 극댓값 71/3, x=2에서 극솟값 −25/3을 가지므로 모든 극값의 합은 46/3, 정답은 ②이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -450,9 +455,9 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q15-solution.svg",
-    "solutionImageAlt": "삼차함수와 (−2,28)에서 기울기 −9인 접선, 극대점 (−3,33)",
-    "solutionImageCaption": "접점의 접선과 극대점",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 f의 그래프에서 극대점 (-3,33)과 접점 (-2,28)이 표시되고 접점에서 기울기 -9인 접선 y=-9x+10이 그려져 있다.",
+    "solutionImageCaption": "a=3, b=-9, c=6이므로 f(x)=x³+3x²-9x+6이고 f(1)=1이다. 정답 ①",
     "solutionImageSize": "medium"
   },
   {
@@ -518,10 +523,10 @@ window.questionBank = [
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q17-solution-v3.svg",
-    "solutionImageAlt": "삼차곡선 y=f(x)=−x³+3x와 이차곡선 y=g(x)=−x²−2x−3을 함께 그린 그래프이다. 두 곡선이 점 T(−1,−2)에서 접하고 x=3에서 다시 만나며, 그 사이의 영역 S가 색칠되어 있다.",
-    "solutionImageCaption": "곡선 y=f(x)와 y=g(x)는 x=−1에서 접하고 x=3에서 다시 만난다. 두 곡선 사이의 영역 S가 구하는 부분이다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: f(x)=-x³+3x와 이차함수 g(x)=-x²-2x-3이 접점 (-1,-2)와 점 (3,-18)에서 만나며, 두 곡선 사이 영역 S를 색칠한 그래프.",
+    "solutionImageCaption": "접점 x=-1과 교점 x=3 사이에서 f가 g보다 위에 있고, 둘러싼 넓이는 64/3이다. 정답 ③",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -643,9 +648,9 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q21-solution.svg",
-    "solutionImageAlt": "H'(x)=4(x−2)²는 x=2에서 0이지만 양옆에서 모두 양수",
-    "solutionImageCaption": "극값이 없는 도함수의 부호",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: y=H′(x)=4(x−2)²의 그래프가 x=2에서 x축에 접하며 부호가 바뀌지 않는 모습. 점 (2,0)에 '부호 변화 없음'이 표시되어 있다.",
+    "solutionImageCaption": "m=−8일 때 H′(x)=(x−2)(4x−8)=4(x−2)²≥0이므로 x=2에서 x축에 접하고 부호가 바뀌지 않아 극값이 없다. f(x)=2x²−8x이고 f(5)=10이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -672,9 +677,9 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q22-solution.svg",
-    "solutionImageAlt": "a=38일 때 f−g는 x=2에서 0에 접하고, a>38이면 모든 x에서 양수",
-    "solutionImageCaption": "차함수의 전역 최솟값",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예시로 a=50일 때 y=F(x)의 그래프. x=−1과 x=2에서 극소(F(−1)=a−11, F(2)=a−38), x=0에서 극대이고, 최솟값 F(2)가 x축보다 위에 있다.",
+    "solutionImageCaption": "F′(x)=12x(x+1)(x−2)이므로 F는 x=−1, x=2에서 극소이고 최솟값은 F(2)=a−38이다(그림은 예시 a=50). 최솟값이 양수이어야 하므로 a−38>0이다. 따라서 a>38이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -701,8 +706,9 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q23-solution.svg",
-    "solutionImageAlt": "c=3/4일 때의 꺾은선 y=h(x)와 포물선 y=-(x-1)^2+3/4, 세 접점 alpha=1/2, beta=1, gamma=3/2를 표시한 해설 그래프",
-    "solutionImageCaption": "세 접점의 위치와 기울기 조건을 한 그림에서 확인한다."
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 꺾은선 h(x)와 포물선 g(x)=−x²+2x−1/4의 그래프. 두 그래프가 x=1/2, x=1, x=3/2인 세 점에서 접하고, 점마다 x축까지 점선이 내려와 있으며 h의 수평 구간 높이는 3/4이다.",
+    "solutionImageCaption": "접점의 x좌표는 α=1/2, β=1, γ=3/2이고 a=−1, b=c=3/4이므로 g(x)=−(x−1)²+3/4이며, 구하는 ∫ g(x)dx를 1/2부터 3/2까지 계산한 값은 2/3이다.",
+    "solutionImageSize": "medium"
   }
 ];

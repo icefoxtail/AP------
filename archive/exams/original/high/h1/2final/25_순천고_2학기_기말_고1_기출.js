@@ -178,7 +178,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-06-CORE",
     "subUnit": "명제 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: P가 Q 안에 들어 있는 두 원 그림. 안쪽 원 P를 색칠했고, 안쪽 원 안에 P, 바깥 원과 안쪽 원 사이 고리 부분에 Q를 적었다.",
+    "solutionImageCaption": "p가 q이기 위한 충분조건이면 P는 Q의 부분집합이므로 P는 Q 안에 들어간다. 색칠한 P와 Q의 공통 부분은 P이고, P와 Q를 합친 부분은 바깥 원 Q 전체이다. 정답: ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -206,7 +210,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: y=√(x-5)-3의 그래프가 끝점 (5,-3)에서 오른쪽 위로 뻗고, 세로 점선 x=5와 가로 점선 y=-3이 끝점에서 만나는 그림.",
+    "solutionImageCaption": "y=√(x-5)-3의 그래프는 끝점 (5,-3)에서 오른쪽 위로 뻗는다. 점선 x=5의 오른쪽이 정의역 x≥5이고, 점선 y=-3의 위쪽이 치역 y≥-3이다. 따라서 a=5, b=-3이고 a+b=2이므로 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -330,7 +338,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-06-CORE",
     "subUnit": "명제 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 그림 세 개. 첫째는 P가 R 안에 들어 있고 색칠되어 있다. 둘째는 R과 Q가 떨어져 있어 Q가 R 밖(U−R)에만 있고 Q가 색칠되어 있다. 셋째는 P와 Q가 서로 떨어진 두 원이고 둘 다 색칠되어 있다.",
+    "solutionImageCaption": "P−R=∅이므로 P⊂R이고, Q∩R=∅이므로 Q는 U−R 안에 있다(R와 Q는 서로 떨어져 있다). 따라서 P와 Q는 서로소이다. 정답: ㄱ, ㄷ이 항상 참이므로 ③",
+    "solutionImageSize": "large"
   },
   {
     "id": 12,

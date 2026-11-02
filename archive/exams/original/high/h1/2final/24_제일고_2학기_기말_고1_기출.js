@@ -93,7 +93,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 그림 네 개. S가 R 안에, P가 Q 안에 들어 있고 색칠되어 있다. R과 Q는 서로 떨어진 두 원으로 둘 다 색칠되어 있고, 마지막 그림에서는 S와 Q가 떨어져 있고 Q만 색칠되어 있다.",
+    "solutionImageCaption": "S⊂R, P⊂Q이고 R와 Q는 서로 겹치지 않는다(R∩Q=∅). S⊂R이므로 S와 Q도 겹치지 않아 s이면 ~q가 성립하지만, Q의 원소는 S에 속하지 않으므로 q이면 s는 성립하지 않는다. 정답: ⑤",
+    "solutionImageSize": "large"
   },
   {
     "id": 4,
@@ -381,13 +385,13 @@ window.questionBank = [
     "answer": "③",
     "solution": "$f(x)=-\\sqrt{2(x+2)}+1$이다.\n① 제곱근 안이 음수가 아니어야 하므로\n$2(x+2)\\ge0$, 즉 $x\\ge-2$이다.\n② $\\sqrt{2x+4}\\ge0$이므로 $f(x)\\le1$이고, 시작점 $(-2,1)$에서 $1$을 갖는다.\n③ $y=-\\sqrt{2x}$에서 $x$를 $x+2$로 바꾸었으므로 왼쪽으로 $2$만큼, 위쪽으로 $1$만큼 이동한 것이다. 오른쪽으로 $2$만큼이라는 설명은 틀리다.\n④ $x\\gt0$이면 $\\sqrt{2x+4}\\gt2$이므로\n$f(x)\\lt-1\\lt0$이다. 제1사분면을 지나지 않는다.\n\n⑤ 역함수는 $x$와 $y$를 바꾸어 구한다.\n$y-1=-\\sqrt{2x+4}$에서 $y\\le1$이고,\n$(y-1)^2=2x+4$\n$x=\\dfrac{(y-1)^2}{2}-2$이다.\n따라서 $f^{-1}(x)=\\dfrac{(x-1)^2}{2}-2$의 정의역은 $x\\le1$이다.\n따라서 정답은 ③이다.",
 
-    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q12-solution.svg",
+    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q12-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수의 끝점·절편·정의역을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 점선 곡선 y=-√(2x)를 왼쪽으로 2, 위로 1만큼 옮긴 파란 곡선 y=f(x)의 그래프. 시작점 (-2,1), y절편 (0,-1)과 이동한 거리 2와 1을 점선으로 보인다.",
 
-    "solutionImageCaption": "끝점 (−2,1), x절편 (−3/2,0), 정의역과 치역을 확인한다.",
+    "solutionImageCaption": "f(x)=-√(2(x+2))+1의 그래프(파랑)는 y=-√(2x)의 그래프(점선)를 x축 방향으로 -2만큼(왼쪽으로 2), y축 방향으로 1만큼 평행이동한 것이며 시작점은 (-2,1), y절편은 (0,-1)이다. 오른쪽으로 2만큼이라는 ③이 옳지 않으므로 정답은 ③이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -525,9 +529,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "수직점근선은 $x=-c$이고 수평점근선은 $y=a$이므로\n$-c=3$, $a=-2$이다.\n따라서\n$c=-3$, $a=-2$이다.\n\n함수를 표준형으로 고치면\n$y=\\dfrac{-2x+b}{x-3}$\n$=-2+\\dfrac{b-6}{x-3}$이다.\n$y=-\\dfrac3x$의 그래프를 평행이동하면 분수의 분자 상수 $-3$은 변하지 않는다.\n그러므로\n$b-6=-3$\n$b=3$이다.\n따라서\n$a+b+c=-2+3-3=-2$이므로 정답은 ⑤이다.",
-    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "유리함수의 점근선과 이동 관계를 표시한 해설 그래프",
-    "solutionImageCaption": "수직점근선 x=3, 수평점근선 y=−2와 분자 상수 −3을 확인한다.",
+    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점근선 x=3, y=-2의 교점 (3,-2)를 가운데로 하는 유리함수 y=(-2x+3)/(x-3)의 그래프.",
+    "solutionImageCaption": "y=(-2x+b)/(x-3)=-2+(b-6)/(x-3)의 그래프는 y=-3/x의 그래프를 평행이동한 것이므로 b-6=-3이고, 점근선 x=3, y=-2의 교점 (3,-2)가 y=-3/x의 원점 자리이다. 따라서 a=-2, b=3, c=-3이고 a+b+c=-2이므로 정답은 ⑤이다.",
     "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
@@ -626,7 +630,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROOF",
     "subUnit": "증명과 절대부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 x²+y²=5와 점선 직선 y=2x가 만나는 두 점에서 원에 접하는 두 직선(주황)을 나타낸 그림. 접선의 식은 그림에 쓰지 않았다.",
+    "solutionImageCaption": "원 x²+y²=5와 직선 y=2x의 두 교점에서 직선 x+2y=k가 원에 접하며, 이때 k가 최대·최소가 된다. 접하는 두 직선(주황)은 x+2y=5, x+2y=-5이므로 최댓값은 (x,y)=(1,2)일 때 5, 최솟값은 (x,y)=(-1,-2)일 때 -5이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,

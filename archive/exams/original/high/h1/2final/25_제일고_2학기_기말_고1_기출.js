@@ -212,10 +212,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "점 $(-1,2)$을 지나는 접선 중 수직선이 있는지 먼저 확인한다.\n수직선 $x=-1$과 원의 중심 $(3,-2)$ 사이의 거리는\n$|3-(-1)|=4$이다.\n반지름은 2이므로 $x=-1$은 접선이 아니다.\n따라서 두 접선은 모두 기울기를 가지며\n$y-2=m(x+1)$\n로 나타낼 수 있다.\n일반형으로 쓰면\n$mx-y+m+2=0$이다.\n중심 $(3,-2)$에서 이 직선까지의 거리가 반지름 2와 같아야 하므로\n$\\dfrac{|3m+2+m+2|}{\\sqrt{m^2+1}}=2$이다.\n따라서\n$\\dfrac{|4m+4|}{\\sqrt{m^2+1}}=2$,\n$16(m+1)^2=4(m^2+1)$이다.\n정리하면\n$3m^2+8m+3=0$이다.\n두 접선의 기울기를 $m_1,m_2$라 하면 근과 계수의 관계에서\n$m_1m_2=\\dfrac{3}{3}=1$이다.\n\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q07-solution.svg",
-    "solutionImageAlt": "점 (-1,2)에서 중심 (3,-2)의 원에 그은 두 접선과 두 기울기를 나타낸 그림",
-    "solutionImageCaption": "외부점에서 그은 두 접선의 기울기를 거리 조건으로 구해 곱한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 (3,-2), 반지름 2인 원과 원 밖의 점 P(-1,2), P에서 원에 그은 두 접선과 접점 Q1, Q2를 나타낸 그림이다.",
+    "solutionImageCaption": "점 P(-1,2)에서 그은 두 접선 y-2=m(x+1)의 기울기 m₁, m₂는 3m²+8m+3=0의 두 근이므로 m₁m₂=1이며 정답은 ③이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-03-TANGENT",
     "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -646,13 +646,13 @@ window.questionBank = [
     "answer": "$(2,2)$",
     "solution": "$f(x)=\\sqrt{x+2}$의 정의역은 $x\\ge-2$, 치역은 $y\\ge0$이다.\n$f$는 정의역에서 증가하므로 일대일 대응으로 생각할 수 있고 역함수가 존재한다.\n\n$y=\\sqrt{x+2}$에서 $y\\ge0$이므로\n$y^2=x+2$\n$x=y^2-2$이다.\n따라서 역함수는\n$g(x)=x^2-2\\quad(x\\ge0)$이다.\n\n두 그래프의 교점을 $(u,v)$라 하면\n$v=f(u)$, $u=f(v)$이다.\n만약 $u<v$라면 $f$가 증가함수이므로 $f(u)<f(v)$, 곧 $v<u$가 되어 모순이다.\n$u>v$라고 해도 같은 이유로 모순이다.\n따라서 반드시 $u=v$이고 교점은 직선 $y=x$ 위에 있다.\n\n$x=\\sqrt{x+2}$에서 $x\\ge0$이어야 하므로\n$x^2=x+2$\n$x^2-x-2=0$\n$(x-2)(x+1)=0$이다.\n$x=-1$은 $x\\ge0$에 맞지 않으므로 $x=2$이다.\n\n따라서 두 그래프의 교점은 $(2,2)$이다.",
 
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q20-solution-v2.svg",
 
-    "solutionImageAlt": "함수와 역함수의 그래프 및 교점 A를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: y=f(x)=√(x+2)와 그 역함수 y=g(x)=x²-2(x≥0)의 그래프가 직선 y=x에 대하여 대칭이고, 두 그래프의 교점이 직선 y=x 위에 있는 그림이다.",
 
-    "solutionImageCaption": "함수와 역함수는 y=x에 대하여 대칭이고 교점은 A=(2,2)임을 확인한다.",
+    "solutionImageCaption": "f(x)=√(x+2)와 역함수 g(x)=x²-2(x≥0)의 그래프는 y=x에 대하여 대칭이어서 교점은 y=x 위에 있으며 x=√(x+2)에서 교점은 (2,2)이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

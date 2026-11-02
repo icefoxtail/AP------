@@ -342,7 +342,11 @@ window.questionBank = [
       }
     },
     "tags": [],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 그림 두 개. 왼쪽은 Q가 R 안에 들어 있고 Q가 색칠되어 있다. 오른쪽은 P와 Q가 서로 떨어진 두 원이고 P가 색칠되어 있다.",
+    "solutionImageCaption": "(가)에서 Q⊂R이고 (나)에서 P⊂U−Q, 즉 P와 Q는 서로 겹치지 않는다(P∩Q=∅). P의 원소는 Q에 속하지 않으므로 p이면 ~q이다. 정답: ②",
+    "solutionImageSize": "large"
   },
     {
   "number": 6,
@@ -765,7 +769,11 @@ window.questionBank = [
       }
     },
     "tags": [],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²-4x에서 x≥4 부분을 굵게 표시하고 꼭짓점 (2,-4)와 시작점 (4,0)을 나타낸 그림.",
+    "solutionImageCaption": "y=(x-2)²-4에서 일대일이 되려면 a≥2이고, 굵게 표시한 x≥4 부분은 (4,0)에서 시작해 치역이 y≥0이므로 a=4이다. 따라서 값들의 합은 4이고 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 12,
@@ -1282,9 +1290,9 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-solution.svg",
-    "solutionImageAlt": "함수 f(u)와 직선 y=2-u가 u=1/2, 2에서 만나는 그래프",
-    "solutionImageCaption": "f(u)=2-u의 교점을 구한 다음 f(x)=u를 다시 푼다.",
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 꺾은선 y=f(x)의 그래프와 수평선 y=1/2, y=2가 만나는 점 (7/4,1/2), (1,2)를 나타낸 그림으로, u=1/2, u=2에 대한 f(x)=u의 해를 읽는다.",
+    "solutionImageCaption": "f(u)=2-u의 해 u=1/2, u=2에 대하여 f(x)=1/2의 해는 x=7/4, f(x)=2의 해는 x=1이므로 모든 실근의 합은 11/4이며 정답은 ⑤이다.",
     "solutionImageSize": "medium"
   },
   {

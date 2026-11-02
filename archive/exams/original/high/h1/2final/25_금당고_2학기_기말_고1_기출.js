@@ -304,7 +304,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "함수 $y=\\dfrac{k}{x-p}+q$의 수직 점근선은 $x=p$, 수평 점근선은 $y=q$이다.\n주어진 점근선에서\n$p=1$, $q=-4$이다.\n그래프가 $(0,4)$를 지나므로\n$4=\\dfrac{k}{0-1}-4$이다.\n양변에 $4$를 더하면 $8=-k$이므로 $k=-8$이다.\n따라서\n$k-p+q=-8-1-4=-13$이다.",
 
-    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q9-solution-v2.svg",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q9-solution-v3.svg",
 
     "solutionImageAlt": "해설 그림: 점근선 x=1, y=-4를 점선으로 보이고 점 (0,4)를 지나는 유리함수 y=(-4x-4)/(x-1)=-8/(x-1)-4의 그래프",
 
@@ -525,13 +525,13 @@ window.questionBank = [
     "answer": "②",
     "solution": "$x\\ge6$에서\n$f(x)=x^2-12x+42=(x-6)^2+6$이므로\n$f(x)\\ge6$이고 치역은 $[6,\\infty)$이다.\n이 구간에서 $f$는 증가하므로 일대일 대응이다.\n따라서 역함수 $f^{-1}$도 존재하고 정의역과 치역이 모두 $[6,\\infty)$이다.\n두 그래프의 교점을 $(u,v)$라 하면\n$v=f(u)$,\n$u=f(v)$이다.\n만약 $u<v$라면 증가함수이므로\n$v=f(u)<f(v)=u$가 되어 모순이다.\n만약 $u>v$라면\n$v=f(u)>f(v)=u$가 되어 모순이다.\n따라서 두 교점은 모두 $y=x$ 위에 있고, 좌표는 $f(x)=x$를 풀어 구한다.\n$x^2-12x+42=x$,\n$x^2-13x+42=0$,\n$(x-6)(x-7)=0$이다.\n두 해 $6,7$은 모두 정의역을 만족하므로 교점은 $(6,6)$, $(7,7)$이다.\n두 점 사이의 거리는\n$\\sqrt{(7-6)^2+(7-6)^2}=\\sqrt2$이다.",
 
-    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q15-solution.svg",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q15-solution-v2.svg",
 
-    "solutionImageAlt": "함수와 역함수의 그래프, y=x, 두 교점을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: x≥6에서 파란 곡선 y=f(x)와 주황 역함수 곡선 x=f(y)가 점선 y=x 위의 두 점 P(6,6), Q(7,7)에서 만나고 두 곡선이 y=x에 대칭인 모양.",
 
-    "solutionImageCaption": "증가함수와 역함수의 공통점 P=(6,6), Q=(7,7)을 확인한다.",
+    "solutionImageCaption": "파란 곡선은 y=f(x), 주황 곡선은 그 역함수 x=f(y)이고 점선은 y=x이다. 두 곡선은 y=x에 대하여 대칭이어서 교점은 모두 y=x 위에 있으므로 f(x)=x에서 P(6,6), Q(7,7)이고 선분 PQ의 길이는 √2이며 정답은 ②이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -717,10 +717,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "첫째 구간 $x<1$에서 $f(x)=x+4$는 $(-\\infty,5)$의 모든 값을 한 번씩 갖는다.\n역함수가 존재하려면 둘째 구간 $x\\ge1$이 $[5,\\infty)$의 값을 각각 한 번씩 가져야 한다. 첫째 구간의 값과 겹치지 않으면서 $5$부터 이어져야 하므로\n$f(1)=5$,\n$a+b+7=5$,\n$a+b=-2$이다.\n\n둘째 식은 큰 $x$에서 $[5,\\infty)$의 큰 값도 가져야 하므로 $a>0$이어야 한다. 또 꼭짓점이 $x>1$에 있으면 식이 감소했다가 증가하여 같은 함숫값을 두 번 갖는다. 따라서 꼭짓점은 $x=1$ 또는 그 왼쪽에 있어야 한다.\n꼭짓점의 $x$좌표는 $-\\dfrac{b}{2a}$이므로\n$-\\dfrac{b}{2a}\\le1$,\n$2a+b\\ge0$이다.\n$b=-a-2$를 대입하면\n$a-2\\ge0$,\n$a\\ge2$이다.\n$a$의 최솟값은 2이고, 그때 $b=-4$이다. 이 경우 둘째 식은 $2x^2-4x+7$로 $x\\ge1$에서 5부터 증가하여 $[5,\\infty)$의 값을 한 번씩 갖는다.\n따라서\n$g(3)=2\\cdot3^2-4\\cdot3+7=13$이다.",
-    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "구간별 일차함수와 포물선의 치역이 이어지는 일대일 대응 그래프",
-    "solutionImageCaption": "x<1에서 치역 (−∞,5), x≥1에서 치역 [5,∞)이므로 전체에서 일대일 대응이다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x<1에서는 직선 y=x+4, x≥1에서는 포물선 y=2x²-4x+7이 점 (1,5)에서 이어지는 그래프로, 왼쪽 조각의 함숫값은 5보다 작고 오른쪽 조각의 함숫값은 5 이상이다.",
+    "solutionImageCaption": "x<1에서 y=x+4는 y<5, x≥1에서 y=2x²-4x+7은 y≥5의 값을 가지며 (1,5)에서 이어지므로 일대일대응이고, g(3)=13이므로 정답은 ③이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

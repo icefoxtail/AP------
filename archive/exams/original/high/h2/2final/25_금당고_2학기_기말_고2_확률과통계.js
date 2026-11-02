@@ -512,7 +512,7 @@ window.questionBank = [
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q11-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 평균 320, 표준편차 25인 정규분포 곡선에서 합격 최저 점수 a가 표준화 값 Z=1에 해당하는 자리에 있고, a 오른쪽 꼬리(상위 16%)를 칠한 그림",
     "solutionImageCaption": "상위 16%는 P(Z≥1)=0.5-0.34=0.16이므로 (a-320)/25=1에서 a=345이고 정답은 ①이다.",
     "solutionImageSize": "medium"
@@ -561,8 +561,8 @@ window.questionBank = [
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q12-solution.svg",
-    "solutionImageAlt": "해설 그림: 표준정규분포 곡선에서 왼쪽 Z=-2 이하(S가 100 이하)와 오른쪽 Z=2 이상(Y가 x 이상)의 두 꼬리를 같은 색으로 칠한 그림이다.",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선에서 왼쪽 Z=-2 이하(S가 100 이하)와 오른쪽 Z=2 이상(Y가 x 이상)의 두 꼬리를 칠하고, 각 꼬리의 넓이 0.02를 지시선으로 보인 그림이다.",
     "solutionImageCaption": "S~N(120, 10²)에서 100은 Z=-2이므로 불량 확률은 칠한 꼬리의 넓이 0.5-0.48=0.02이고, Y~N(50, 7²)에서 P(Y≥x)=0.02인 같은 넓이의 꼬리이므로 (x-50)/7=2이다. 정답 ② 64.",
     "solutionImageSize": "medium"
   },
@@ -875,7 +875,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균이 같은 두 정규분포 곡선. 표준편차 σ인 모집단 X는 넓고 낮은 곡선이고, 표본평균 X̄는 σ/√n인 가는 봉우리이며, 평균 8의 오른쪽에 12, 왼쪽에 7.5가 표시되어 있다.",
+    "solutionImageCaption": "(가)에서 m=8이다. P(X≥12)+P(X̄≥7.5)=1이므로 4/σ=0.5√n/σ에서 √n=8, n=64이다. (다)에서 2·σ/8=1이므로 σ=4이다. 따라서 m+σ+n=8+4+64=76이다. 정답 76.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,

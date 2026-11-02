@@ -104,7 +104,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
     "subUnit": "역함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 개의 X를 잇는 대응도. 왼쪽 두 집합 사이의 파란 화살표는 f(2→4, 3→2, 4→3), 오른쪽 두 집합 사이의 주황 화살표는 g(2→2, 3→4, 4→3)이다. f의 2→4와 g의 4→3을 이은 경로가 초록색 굵은 선이다.",
+    "solutionImageCaption": "f(2)=4이므로 f⁻¹(4)=2이고(굵은 화살표를 거꾸로 읽는다), g(4)=3이므로 f⁻¹(4)+g(4)=2+3=5이다. 정답: ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -134,10 +138,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "주어진 함수를\n$y=-\\dfrac{5}{x-3}-2$\n로 나타내면 점근선은\n$x=3$, $y=-2$이다.\n$x<0$이면 $3-x>3$이므로\n$0<\\dfrac{5}{3-x}<\\dfrac53$이다.\n따라서 $y<0$이어서 제3사분면을 지난다.\n$0<x<3$에서는\n$y=0$일 때\n$\\dfrac{5}{3-x}=2$,\n$x=\\dfrac12$이다.\n따라서\n$0<x<\\dfrac12$에서는 제4사분면,\n$\\dfrac12<x<3$에서는 제1사분면을 지난다.\n$x>3$이면 $\\dfrac{5}{3-x}<0$이므로\n$y<-2$이다.\n따라서 제4사분면을 지난다.\n제2사분면은 지나지 않으므로 정답은 ③이다.",
-    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q04-solution.svg",
-    "solutionImageAlt": "유리함수의 점근선과 사분면 통과를 나타낸 해설 그래프",
-    "solutionImageCaption": "점근선 x=3, y=−2와 x절편을 기준으로 그래프가 지나는 사분면을 확인한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점근선 x=3, y=-2를 점선으로 보이고 x절편 (1/2,0), y절편 (0,-1/3)을 지나는 유리함수 y=5/(3-x)-2의 그래프.",
+    "solutionImageCaption": "x절편 (1/2,0), y절편 (0,-1/3)이고 점근선이 x=3, y=-2인 y=5/(3-x)-2의 그래프는 제3, 4, 1사분면을 지나므로 정답은 ③이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -250,7 +254,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: y=(4x-1)/(x+1)의 그래프. 점근선 x=-1, y=4, x=0일 때의 점 (0,k)와 증가하여 x=4에서 최댓값 3을 갖는 점 (4,3)을 표시했다.",
+    "solutionImageCaption": "정의역 0 이상 4 이하에서 y=4+(k-4)/(x+1)은 점근선 y=4보다 작은 값을 가지므로 k-4가 음수이고 증가하여, 최댓값 3은 x=4에서 생긴다. 따라서 (16+k)/5=3이고 k=-1이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -603,7 +611,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 예 a=1, c=-5에서 x<1일 때 y=x-5, x≥1일 때 y=(x-1)²-4가 점 (1,-4)에서 이어지는 함수 f(x)의 그래프이다.",
+    "solutionImageCaption": "예: a=1, c=-5일 때 b=1에서 두 조각이 점 (1,-4)에서 이어져 역함수가 존재하며, 이때 a+c=-4이므로 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -640,9 +652,9 @@ window.questionBank = [
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에서 P(0,2), A(4,4), B(7,2), Q(3,0)로 이루어진 평행사변형 PABQ(파랑)와 삼각형 POQ(주황), 가로 7·세로 4인 직사각형을 나타낸 그림.",
-    "solutionImageCaption": "곡선 PA를 (3,-2)만큼 옮기면 곡선 QB와 겹쳐 곡선 사이의 띠가 평행사변형 PABQ와 같은 넓이가 되고, 가로 7·세로 4인 직사각형에서 바깥 네 직각삼각형(합 14)을 빼면 PABQ=14, 삼각형 POQ=3이다. 따라서 구하는 넓이는 14+3=17이므로 정답은 ③이다.",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 무리함수 f(x)=√x+2와 g(x)=√(x-3)의 곡선이 직선과 A(4,4), B(7,2)에서 만나고 P(0,2), Q(3,0)이 곡선의 시작점이다. 점선 PQ와 가로 7, 세로 4인 직사각형의 윗변·오른쪽 변이 점선으로 있다.",
+    "solutionImageCaption": "곡선 PA를 오른쪽 3, 아래 2만큼 옮기면 곡선 QB와 겹쳐 곡선 사이의 띠가 평행사변형 PABQ와 같은 넓이가 된다. 가로 7, 세로 4인 직사각형에서 바깥 네 직각삼각형(합 14)을 빼면 PABQ=14이고 삼각형 POQ=3이므로, 구하는 넓이는 14+3=17이고 정답은 ③이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -708,13 +720,13 @@ window.questionBank = [
     "answer": "$0$",
     "solution":"$f(x)=-(x-2)^2+4$의 그래프는 꼭짓점이 $(2,4)$이고 $x\\le2$에서 증가한다.\n정의역이 $(-\\infty,k]$일 때 $k>2$이면 꼭짓점의 양쪽을 모두 포함하므로 같은 함수값을 만드는 서로 다른 두 $x$가 생긴다.\n따라서 일대일이 되려면\n$k\\le2$\n이어야 한다.\n$k\\le2$이면 정의역 전체에서 함수가 증가하고, $x$가 작아질수록 함수값은 제한 없이 작아진다.\n따라서 치역은\n$(-\\infty,f(k)]$\n이다.\n공역 $X=(-\\infty,k]$와 치역이 같아야 하므로\n$f(k)=k$이다.\n$-(k-2)^2+4=k$\n$-k^2+4k=k$\n$k(k-3)=0$이다.\n따라서\n$k=0$ 또는 $k=3$이다.\n일대일 조건 $k\\le2$를 만족하는 값은\n$k=0$\n뿐이다.\n\n따라서 구하는 값은 $0$이다.",
 
-    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q20-solution-v2.svg",
 
-    "solutionImageAlt": "정의역 제한 이차함수의 그래프를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선 f(x)=-(x-2)²+4와 직선 y=x. 증가하는 x≤2 부분을 굵게 표시하고 꼭짓점 (2,4)와 교점 (0,0), (3,3)을 점으로 나타냈다.",
 
-    "solutionImageCaption": "k=0에서 f=−(x−2)²+4가 x≤0에서 일대일대응임을 확인한다.",
+    "solutionImageCaption": "f(x)=-(x-2)²+4의 꼭짓점은 (2,4)이고 x≤2(굵게 표시한 부분)에서 증가하며 직선 y=x와 (0,0), (3,3)에서 만난다. 일대일대응이 되려면 k≤2이고 f(k)=k이므로 k의 값은 0이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

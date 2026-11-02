@@ -220,7 +220,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-06-CORE",
     "subUnit": "명제 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 그림 세 개. 보기 ㄱ과 ㄷ은 Q가 P 안에 들어 있고 Q가 색칠되어 있으며, 보기 ㄱ에는 P에만 속하는 4와 Q 안의 8이 적혀 있다. 보기 ㄴ은 P와 Q가 같아 하나의 원에 P=Q를 적고 색칠했다.",
+    "solutionImageCaption": "p의 해집합 P, q의 해집합 Q라 하자. 보기 ㄱ·ㄷ은 Q가 P 안에 들어가고 P와 Q가 같지 않으므로 p는 q의 필요조건이지만 충분조건이 아니고, 보기 ㄴ은 P=Q이므로 필요충분조건이다. (보기 ㄱ의 4는 P에만, 8은 P와 Q에 모두 속하는 원소의 예이다.) 정답: ㄱ, ㄷ이므로 ③",
+    "solutionImageSize": "large"
   },
   {
     "id": 8,
@@ -436,7 +440,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 출발점 (-1,2)에서 시작하는 무리함수 y=-√(a(x+1))+2의 그래프를 a=1, a=4, a=9일 때 비교한 그림으로, a=4는 원점을 지나고 a=9는 x절편 (-5/9,0)이 음수여서 제3사분면을 지난다.",
+    "solutionImageCaption": "예: 출발점 (-1,2)에서 a=1, a=4(원점 통과)는 제3사분면을 지나지 않고 a=9는 x절편 (-5/9,0)이 음수여서 제3사분면을 지나므로 0<a≤4이고 a+b+c의 최댓값은 5, 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -467,7 +475,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-06-CORE",
     "subUnit": "명제 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 진리집합의 포함관계를 두 장의 벤다이어그램으로 보인다. 왼쪽은 C가 Q 안에, Q가 B 안에 차례로 들어 있고, 오른쪽은 A와 Q가 일부만 겹친다.",
+    "solutionImageCaption": "조건 p1, p2, p3, q의 진리집합을 각각 A, B, C, Q라 하면 C는 Q 안에, Q는 B 안에 들어가고, A와 Q는 일부만 겹친다(예: (2,2,2)는 p1만 참, (0,2,2)는 p1과 q가 모두 참, (0,0,0)은 q만 참). N(p1)=4, N(p2)=1, N(p3)=0. 정답: ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,

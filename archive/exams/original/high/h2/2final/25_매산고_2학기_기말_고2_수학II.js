@@ -24,14 +24,15 @@ window.questionBank=[
       "$5$"
     ],
     "answer": "①",
-    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q1-solution.svg",
-    "solutionImageAlt": "삼차함수 f(x)=x³−3x+5의 그래프가 극대 (−1,7)과 극소 (1,3)을 지나고, x=1을 지날 때 f′의 부호가 음에서 양으로 바뀌어 극솟값 3을 가짐을 보여준다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: f(x)=x³−3x+5의 그래프. x=−1에서 극대인 점 (−1,7), x=1에서 극소인 점 (1,3)이 있고, 극소점의 왼쪽은 감소, 오른쪽은 증가한다.",
+    "solutionImageSize": "medium",
     "solution": "극솟값을 가지는 점에서는 도함수가 $0$이고, 그 점을 지날 때 도함수의 부호가 음에서 양으로 바뀐다.\n$f'(x)=3x^2-3a$\n$f'(1)=0$에서\n$3-3a=0$\n$a=1$이다.\n이때 도함수는\n$f'(x)=3x^2-3=3(x+1)(x-1)$이다.\n$-1<x<1$에서는 $f'(x)<0$이고, $x>1$에서는 $f'(x)>0$이다.\n따라서 $x=1$에서 감소하다가 증가하여 실제로 극솟값을 가진다.\n정답은 ①이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "a=1이면 f′(x)=3(x+1)(x−1)이고, x=1을 지날 때 f′의 부호가 음에서 양으로 바뀌어(감소에서 증가로) x=1에서 극소이다. 정답 ①"
   },
   {
     "id": 2,
@@ -150,14 +151,15 @@ window.questionBank=[
       "$8$"
     ],
     "answer": "⑤",
-    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q5-solution.svg",
-    "solutionImageAlt": "삼차함수 h(x)=2x³−6x²+4+a의 그래프가 a=0일 때 x=0에서 극댓값 4, x=2에서 극솟값 −4이고, 서로 다른 세 실근을 갖도록 하는 a의 범위가 −4<a<4임을 보여준다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 h(x)의 그래프(예: a=0). x=0에서 극대(값 a+4), x=2에서 극소(값 a−4)이고 x축과 서로 다른 세 점에서 만난다.",
+    "solutionImageSize": "medium",
     "solution": "방정식을 $h(x)=0$의 꼴로 나타낸다.\n$h(x)=2x^3-6x^2+a+4$\n$h'(x)=6x^2-12x=6x(x-2)$이다.\n도함수의 부호는 $x<0$에서 양, $0<x<2$에서 음, $x>2$에서 양이다.\n그러므로 $x=0$에서 극대, $x=2$에서 극소이다.\n$h(0)=a+4$\n$h(2)=16-24+a+4=a-4$이다.\n서로 다른 세 실근을 가지려면 극댓값은 양수, 극솟값은 음수여야 한다.\n$a+4>0,\\qquad a-4<0$\n$-4<a<4$이다.\n$m=-4,\\ n=4$이므로\n$n-m=4-(-4)=8$이다.\n정답은 ⑤이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "예: a=0인 경우로 그렸다. 서로 다른 세 실근을 가지려면 극댓값 a+4가 양수, 극솟값 a−4가 음수여야 하므로 −4와 4 사이의 a이고, n−m=4−(−4)=8, 정답은 ⑤이다."
   },
   {
     "id": 6,
@@ -183,10 +185,10 @@ window.questionBank=[
       "$5$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q6-solution.svg",
-    "solutionImageAlt": "포물선 y=-2x²+6x와 직선 y=-4x 사이의 넓이, 교점 x=0과 x=5를 나타낸 해설 그래프",
-    "solutionImageCaption": "교점의 오른쪽 좌표가 m+3=5이므로 적분 넓이는 125/3이고 m=2이다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 곡선 f(x)=-2x²+6x와 직선 y=-2mx가 x=0과 x=5에서 만나고 두 교점 사이의 영역 S가 색칠되어 있다. 직선 아래로 내려가는 영역이므로 세로 눈금을 압축해 그렸다.",
+    "solutionImageCaption": "f(x)=-2x²+6x, 직선 y=-2mx이고 교점 x=0, x=m+3 사이의 넓이가 (m+3)³/3=125/3이므로 m+3=5, m=2이다. 정답 ②",
+    "solutionImageSize": "medium",
     "solution": "두 곡선의 교점에서 $x$좌표를 먼저 구한다.\n$-2x^2+6x=-2mx$\n$2x(m+3-x)=0$\n$x=0$ 또는 $x=m+3$이다.\n$m>0$이므로 $0<x<m+3$에서\n$(-2x^2+6x)-(-2mx)=2x(m+3-x)>0$이다.\n따라서 두 곡선 사이의 넓이는\n$S=\\displaystyle\\int_0^{m+3}2x(m+3-x)\\,dx$\n$=\\left[(m+3)x^2-\\dfrac23x^3\\right]_0^{m+3}$\n$=(m+3)^3-\\dfrac23(m+3)^3$\n$=\\dfrac{(m+3)^3}{3}$이다.\n$S=\\dfrac{125}{3}$이므로\n$(m+3)^3=125,\\quad m+3=5$\n$m=2$이다.\n정답은 ②이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
@@ -311,14 +313,15 @@ window.questionBank=[
       "$6$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q10-solution.svg",
-    "solutionImageAlt": "n=4인 경우 h(x)=x⁴−4x+9의 그래프가 x=1에서 최솟값 6을 가져 모든 실수에서 h(x)≥6임을 보여주는 그래프이다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x≥1에서 n=3일 때의 h(x)=x³-3x+4 그래프는 (1,2)에서 시작해 증가한다. x축 위의 점 (1,0)은 n=2일 때 (x-1)²의 x=1에서의 값 0을 나타낸다.",
+    "solutionImageSize": "medium",
     "solution": "$n$은 $2$ 이상의 자연수이므로 작은 값부터 조사한다.\n$n=2$이면\n$x^2-2x+1=(x-1)^2$이고,\n$x=1$에서 $0$이므로 항상 양수는 아니다.\n$n=3$일 때 $h(x)=x^3-3x+4$라 하면\n$h'(x)=3x^2-3=3(x-1)(x+1)$이다.\n$x\\ge1$에서 $h'(x)\\ge0$이므로 $h(x)$는 증가하고,\n$h(x)\\ge h(1)=1-3+4=2>0$이다.\n따라서 처음으로 조건을 만족하는 값은 $n=3$이다.\n정답은 ②이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "n=2이면 (x-1)²이 x=1에서 0이 되어 항상 양수가 아니고, n=3이면 h(x)≥h(1)=2>0이다. 따라서 n의 최솟값은 3이다. 정답 ②"
   },
   {
     "id": 11,
@@ -442,14 +445,15 @@ window.questionBank=[
       "$15$"
     ],
     "answer": "①",
-    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q14-solution.svg",
-    "solutionImageAlt": "u=g(x)≥1에서 사차함수 f(u)=u⁴−14u²+24u+3의 그래프가 u=1에서 14, u=2에서 최솟값 11을 가짐을 보여준다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: u가 1 이상일 때 사차함수 y=f(u)=u⁴−14u²+24u+3의 그래프. u=1에서 시작해 u=2의 극소점까지 감소하고 그 뒤 증가하며, 극소점에 '극소'가 표시되어 있다.",
+    "solutionImageSize": "medium",
     "solution": "먼저 안쪽 함수 $g$의 치역을 구한다.\n$x\\ne0$에서\n$x^2+\\dfrac4{x^2}-4=\\dfrac{(x^2-2)^2}{x^2}\\ge0$이다.\n등호는 $x^2=2$일 때 성립하므로\n$g(x)=x^2+\\dfrac4{x^2}-3\\ge1$이고,\n$g$의 치역은 $[1,\\infty)$이다.\n$u=g(x)$라 두면 $u\\ge1$에서\n$f(u)=u^4-14u^2+24u+3$의 최솟값을 구하면 된다.\n$f'(u)=4u^3-28u+24$\n$=4(u-1)(u-2)(u+3)$이다.\n$1<u<2$에서 $f'(u)<0$, $u>2$에서 $f'(u)>0$이다.\n따라서 $u=2$에서 최솟값을 가지며\n$f(2)=16-56+48+3=11$이다.\n$u=2$도 실제 $g$의 치역에 속하므로 구하는 최솟값은 $11$이다.\n정답은 ①이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "u=g(x)가 1 이상이므로 f(u)=u⁴−14u²+24u+3을 u≥1에서 보면, f′(u)=4(u−1)(u−2)(u+3)에서 u=2가 극소이고 이 극솟값이 최솟값이다. f(2)=11이므로 k의 최솟값은 11이다. 정답 ①"
   },
   {
     "id": 15,
@@ -475,14 +479,15 @@ window.questionBank=[
       "$16$"
     ],
     "answer": "⑤",
-    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q15-solution.svg",
-    "solutionImageAlt": "t>0에서 K(t)=10t−3t²−8/t의 그래프가 t=2에서 최댓값 4를 가져 p=4, p²=16임을 보여준다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축 t, 세로축 위치 x의 그래프. P의 위치 곡선 x=10t²−3t³과 Q의 위치 직선 x=8+kt가 t=2인 점 (2,16)에서 접하고, 직선은 (0,8)을 지난다.",
+    "solutionImageSize": "medium",
     "solution": "시각 $t$에서 두 점의 위치를 각각 구한다.\n$P$는 원점에서 출발하므로\n$x_P(t)=\\displaystyle\\int_0^t(20s-9s^2)\\,ds$\n$=\\left[10s^2-3s^3\\right]_0^t=10t^2-3t^3$이다.\n$Q$는 위치 $8$에서 속도 $k$로 움직이므로\n$x_Q(t)=8+kt$이다.\n$t>0$에서 만나려면\n$10t^2-3t^3=8+kt$\n$k=10t-3t^2-\\dfrac8t$이다.\n$K(t)=10t-3t^2-\\dfrac8t$라 두면\n$K'(t)=10-6t+\\dfrac8{t^2}$\n$=\\dfrac{-2(t-2)(3t^2+t+2)}{t^2}$이다.\n$t>0$에서 $3t^2+t+2>0$이므로 $K'(t)$는 $0<t<2$에서 양, $t>2$에서 음이다.\n따라서 최댓값은 $t=2$에서\n$p=K(2)=20-12-4=4$이다.\n$p^2=16$이므로 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "P의 위치는 곡선 x=10t²−3t³, Q의 위치는 직선 x=8+kt이다. 두 점이 만나는 k의 최댓값은 직선이 곡선에 접할 때이며, t=2에서 접하고 이때 k=4이므로 p²=16이다. 정답 ⑤"
   },
   {
     "id": 16,
@@ -611,14 +616,15 @@ window.questionBank=[
     "wide": false,
     "content": "[서답형 4번] 원점에서 출발하여 수직선 위를 움직이는 점 P의 시각 $t$에서의 위치 $x$가 $x=3t^3-\\dfrac{27}{2}t^2+18t$이다. 점 P가 $x=a$, $x=b$에서 운동방향을 바꾼다고 할 때, $a+b$의 값을 구하고 그 과정을 서술하시오. (단, $a\\ne b$이다.) [5점]",
     "answer": "$\\dfrac{27}{2}$",
-    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q20-solution.svg",
-    "solutionImageAlt": "속도 v(t)=9(t−1)(t−2)의 그래프가 t=1과 t=2에서 부호가 +에서 −, −에서 +로 바뀌고, 그때 위치가 x=15/2, x=6이므로 a+b=27/2임을 보여준다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위치 x(t)=3t³-27t²/2+18t의 그래프. t=1에서 극대 위치 15/2, t=2에서 극소 위치 6으로, 두 시각에서 운동 방향이 바뀐다.",
+    "solutionImageSize": "medium",
     "solution": "운동 방향이 바뀌려면 속도의 부호가 바뀌어야 한다.\n위치:\n$x(t)=3t^3-\\dfrac{27}{2}t^2+18t$\n속도:\n$v(t)=x'(t)=9t^2-27t+18$\n$=9(t-1)(t-2)$이다.\n$t<1$에서는 $v(t)>0$, $1<t<2$에서는 $v(t)<0$, $t>2$에서는 $v(t)>0$이다.\n따라서 $t=1$과 $t=2$에서 실제로 운동 방향을 바꾼다.\n각 시각의 위치는\n$x(1)=3-\\dfrac{27}{2}+18=\\dfrac{15}{2}$\n$x(2)=24-54+36=6$이다.\n그러므로 $\\{a,b\\}=\\{\\dfrac{15}{2},6\\}$이고\n$a+b=\\dfrac{15}{2}+6=\\dfrac{27}{2}$이다.\n구하는 값은 $\\dfrac{27}{2}$이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "t=1, 2에서 운동 방향이 바뀌고 위치는 15/2와 6이므로 a+b=27/2이다."
   },
   {
     "id": 21,

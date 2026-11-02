@@ -26,7 +26,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: f(x)=x²-2x의 [0,2] 구간 그래프. 양 끝 (0,0), (2,0)의 함숫값이 같고, 그 사이 한 점에서 접선이 수평이며 그 x좌표를 c로 표시했다.",
+    "solutionImageCaption": "양 끝 f(0)=f(2)=0이므로 롤의 정리에 의해 f′(c)=2c-2=0, c=1이다. 정답 ①",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -174,7 +178,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=f(x)=x²−2x−1 위의 두 점 (0,−1), (3,2)를 잇는 할선(기울기 1, 파란색)과, 이와 평행하게 곡선에 접하는 접선(기울기 1, 주황색)의 접점 x=c를 보여 주는 그림.",
+    "solutionImageCaption": "점 (0,−1)과 (3,2)를 잇는 할선의 기울기는 1이고, 이와 평행한 접선의 접점 x=c에서 f′(c)=1이다. 따라서 c=3/2이다. 정답 ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -198,14 +206,15 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "⑤",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q7-solution.svg",
-    "solutionImageAlt": "삼차함수 f(x)=−x³+3x+1의 그래프에 극소점 (−1,−1)과 극대점 (1,3)을 표시하여, 극솟값 −1과 극댓값 3의 합이 2임을 보여 준다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: f(x)=-x³+3x+1의 그래프. x=-1에서 극소인 점 (-1,-1), x=1에서 극대인 점 (1,3)이 표시되어 있다.",
+    "solutionImageSize": "medium",
     "solution": "극값의 위치는 도함수의 부호 변화로 찾는다.\n$f(x)=-x^3+3x+1$\n$f'(x)=-3x^2+3=-3(x+1)(x-1)$\n$x<-1$에서 $f'(x)<0$이므로 감소한다.\n$-1<x<1$에서 $f'(x)>0$이므로 증가한다.\n$x>1$에서 $f'(x)<0$이므로 다시 감소한다.\n따라서 $x=-1$에서 극소, $x=1$에서 극대이다.\n$m=f(-1)=1-3+1=-1$\n$M=f(1)=-1+3+1=3$\n$M+m=3+(-1)=2$\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "f′(x)=−3(x+1)(x−1)이므로 x=−1에서 극소(극솟값 m=−1), x=1에서 극대(극댓값 M=3)이다. 따라서 M+m=2이다. 정답 ⑤"
   },
   {
     "id": 8,
@@ -233,14 +242,15 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "③",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q8-solution.svg",
-    "solutionImageAlt": "속도 그래프가 (0,0)에서 (2,−4)까지 내려갔다가 (4,0)에서 t축을 지나 (5,2)를 거쳐 (6,0)에서 끝나며, t축 아래 넓이 −8과 위 넓이 +2를 표시한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 속도 v(t)의 그래프. 0부터 4까지는 t축 아래의 진한 삼각형(넓이 8), 4부터 6까지는 t축 위의 연한 삼각형(넓이 2)이고, t=2에서 −4, t=5에서 2의 값을 가진다.",
+    "solutionImageSize": "medium",
     "solution": "속도 그래프에서 $t$축 위쪽 넓이는 양수, 아래쪽 넓이는 음수로 계산한다.\n$0\\le t\\le4$의 아래쪽 넓이의 크기는\n$S_-=\\dfrac12\\cdot2\\cdot4+\\dfrac12\\cdot2\\cdot4$\n$=4+4=8$\n$4\\le t\\le6$의 위쪽 넓이는\n$S_+=\\dfrac12\\cdot1\\cdot2+\\dfrac12\\cdot1\\cdot2$\n$=1+1=2$\n위치의 변화량은 부호를 포함하여 더하므로\n$a=-S_-+S_+=-8+2=-6$\n움직인 거리는 넓이의 크기를 모두 더하므로\n$b=S_-+S_+=8+2=10$\n$a+b=-6+10=4$\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "t축 아래 넓이 8과 위 넓이 2에서 위치의 변화량 a=−8+2=−6, 움직인 거리 b=8+2=10이므로 a+b=4, 정답은 ③이다."
   },
   {
     "id": 9,
@@ -324,14 +334,15 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q11-solution.svg",
-    "solutionImageAlt": "a=4일 때 h(x)=(x−1)²(x+1)의 그래프가 x=1에서 x축에 접하며 최솟값 0을 가지므로, x>0에서 h(x)≥0이 되어 a의 최댓값이 4임을 보여 준다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x>0에서 h(x)=x³-x²-x+5-a의 그래프(예: a=4). x=1까지 감소하다 증가하며 x=1에서 최솟값 4-a를 갖고, a=4이면 이 점이 x축에 접한다.",
+    "solutionImageSize": "medium",
     "solution": "모든 $x>0$에서 $f(x)\\ge g(x)$이므로 $h(x)=f(x)-g(x)$가 항상 $0$ 이상이어야 한다.\n$h(x)=x^3-x^2-x+5-a$\n$h'(x)=3x^2-2x-1=(3x+1)(x-1)$\n$x>0$에서 $3x+1>0$이므로\n$0<x<1$에서는 $h'(x)<0$: 감소\n$x>1$에서는 $h'(x)>0$: 증가\n따라서 $x=1$에서 최솟값을 갖는다.\n$h(1)=1-1-1+5-a=4-a$\n모든 $x>0$에서 $h(x)\\ge0$이 되려면\n$4-a\\ge0$\n$\\Rightarrow a\\le4$\n실제로 $a=4$이면\n$h(x)=x^3-x^2-x+1=(x-1)^2(x+1)\\ge0\\quad(x>0)$\n이므로 최댓값 $4$는 가능하다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "예: a=4. x>0에서 h(x)는 x=1에서 최솟값 4-a를 가지므로 4-a≥0, 즉 a≤4이다. 따라서 a의 최댓값은 4이다. 정답 ②"
   },
   {
     "id": 12,
@@ -450,14 +461,15 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "⑤",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q15-solution.svg",
-    "solutionImageAlt": "점 (1,−3)과 (4,9)를 지나는 직선 f(x)=4x−7을 그려, 기울기 4인 경계 함수에서 f(4)의 최솟값이 9임을 확인시켜 준다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점 (1,−3)을 지나는 기울기 4의 직선 y=4x−7과, f′(x)가 4 이상인 예시 곡선 y=f(x)를 그린 그림. 구간 [1,4]에서 곡선이 직선보다 위에 있는 영역이 파란색으로 칠해져 있다.",
+    "solutionImageSize": "medium",
     "solution": "$f(x)$는 $[1,4]$에서 연속이고 $(1,4)$에서 미분가능하므로 평균값 정리를 적용할 수 있다.\n어떤 $c\\in(1,4)$에서\n$\\dfrac{f(4)-f(1)}{4-1}=f'(c)$\n가 성립한다.\n$f'(c)\\ge4$, $f(1)=-3$이므로\n$\\dfrac{f(4)+3}{3}\\ge4$\n$f(4)+3\\ge12$\n$\\Rightarrow f(4)\\ge9$\n\n이 하한이 실제로 가능한지 확인한다.\n$f(x)=4x-7$이면 $f(1)=-3$이고 모든 $x$에서 $f'(x)=4$이다.\n또 $f(4)=16-7=9$이므로 주어진 조건을 만족하면서 하한을 갖는다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "예: f(x)=x²+2x−6 (f′(x)=2x+2는 4 이상, f(1)=−3). f′(x)가 4 이상이면 [1,4]에서 f는 점 (1,−3)을 지나는 기울기 4의 직선 y=4x−7보다 위에 있으므로 f(4)는 4·4−7=9 이상이고 최솟값은 9이다. 정답 ⑤"
   },
   {
     "id": 16,
@@ -518,7 +530,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 함수 f를 오른쪽으로 2, 4, 6만큼 옮긴 f(x−2), f(x−4), f(x−6)의 그래프. 구간 [0,2], [2,4], [4,6], [6,8]의 아치 모양 넓이가 모두 2로 같은 색으로 칠해져 있다.",
+    "solutionImageCaption": "예: f(x)=−3/2x²+3x일 때 f(x−2k)를 2k만큼 옮겨도 구간 [2k, 2k+2]의 넓이는 2로 같으므로 25개 항의 합은 25·2=50, 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -575,14 +591,15 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q19-solution.svg",
-    "solutionImageAlt": "t=4/3일 때 포물선 y=−x²+2tx 위의 점 C(2/3,4/3), D(2,4/3)와 x축 위의 O(0,0), A(2/3,0), B(2,0), P(8/3,0)를 잡아 AB=AC=4/3인 정사각형을 표시한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=-x²+8x/3이 원점 O와 P(8/3,0)를 지나고, x축 위의 A(2/3,0), B(2,0)에서 올린 수선이 포물선과 만나는 C, D로 만든 정사각형 ABDC의 변 AB와 AC가 모두 4/3이다.",
+    "solutionImageSize": "medium",
     "solution": "시각 $t>0$에서 점 $P$는 원점에서 매초 $2$씩 이동하므로\n$P=(2t,0)$이다.\n이차항의 계수가 $-1$이고 $x$절편이 $0$, $2t$인 포물선은\n$y=-x(x-2t)=-x^2+2tx$\n이다.\n\n선분 $OP$를 사등분하므로\n$A=\\left(\\dfrac t2,0\\right),\\quad B=\\left(\\dfrac{3t}{2},0\\right)$\n따라서 밑변의 길이는\n$AB=\\dfrac{3t}{2}-\\dfrac t2=t$\n이다.\n\n점 $C$는 $x=t/2$에서의 포물선 위에 있으므로\n$AC=-\\left(\\dfrac t2\\right)^2+2t\\cdot\\dfrac t2$\n$=-\\dfrac{t^2}{4}+t^2=\\dfrac{3t^2}{4}$\n대칭성에 의해 $BD=AC$이므로 사각형 $ABDC$는 직사각형이다.\n정사각형이 되려면\n$AB=AC$\n$t=\\dfrac{3t^2}{4}$\n$t(3t-4)=0$\n이다. $t=0$이면 도형이 한 점으로 줄어들므로 제외하고\n$t=\\dfrac43$\n이다.\n\n사각형의 넓이를 $S(t)$라 하면\n$S(t)=AB\\cdot AC=t\\cdot\\dfrac{3t^2}{4}=\\dfrac{3t^3}{4}$\n$\\dfrac{dS}{dt}=\\dfrac{9t^2}{4}$\n따라서 정사각형이 되는 순간의 넓이의 변화율은\n$\\left.\\dfrac{dS}{dt}\\right|_{t=4/3}=\\dfrac94\\left(\\dfrac43\\right)^2$\n$=\\dfrac94\\cdot\\dfrac{16}{9}=4$\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "t=4/3일 때 사각형 ABDC는 한 변이 4/3인 정사각형이며, 이때 넓이의 변화율은 4이다. 정답 ②"
   },
   {
     "id": 20,
@@ -693,14 +710,15 @@ window.questionBank = [
     "content": "서술형2. 함수 $f(x)=2x^3+3x^2+ax+b$가 $x=-2$에서 $x$축에 접할 때, 극솟값을 구하시오. (단, $a$, $b$는 상수이다.) [5점]",
     "choices": [],
     "answer": "-27",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q23-solution.svg",
-    "solutionImageAlt": "삼차함수 f(x)=(x+2)²(2x−5)의 그래프가 (−2,0)에서 x축에 접하고, x=1에서 극솟값 −27을 가지며 x축과 2.5에서도 만나는 모습을 표시한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: f(x)=2x³+3x²-12x-20의 그래프. x=-2에서 x축에 접하며 극대이고, x=1에서 극소가 된다.",
+    "solutionImageSize": "medium",
     "solution": "곡선이 $x=-2$에서 $x$축에 접하므로\n$f(-2)=0,\\quad f'(-2)=0$\n이다.\n$f(x)=2x^3+3x^2+ax+b$에서\n$f'(x)=6x^2+6x+a$\n이므로\n$f'(-2)=6\\cdot4+6\\cdot(-2)+a$\n$=12+a=0$\n$\\Rightarrow a=-12$\n이다.\n\n이 값을 $f(-2)=0$에 대입하면\n$2(-2)^3+3(-2)^2-12(-2)+b=0$\n$-16+12+24+b=0$\n$20+b=0\\ \\Rightarrow\\ b=-20$\n이다.\n\n따라서\n$f(x)=2x^3+3x^2-12x-20$\n$f'(x)=6x^2+6x-12=6(x+2)(x-1)$\n이다.\n$x<-2$에서는 $f'(x)>0$: 증가\n$-2<x<1$에서는 $f'(x)<0$: 감소\n$x>1$에서는 $f'(x)>0$: 증가\n이므로 $x=-2$에서 극대이고 $x=1$에서 극소이다.\n\n극솟값은\n$f(1)=2+3-12-20=-27$\n따라서 구하는 극솟값은 $-27$이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "f′(x)=6(x+2)(x-1)이므로 x=-2에서 극대, x=1에서 극소이고 극솟값은 f(1)=-27이다."
   },
   {
     "id": 24,
@@ -720,14 +738,15 @@ window.questionBank = [
     "content": "서술형3. 함수 $f(x)=\\displaystyle\\int_0^x(t^2-2t-3)dt$는 $x=a$에서 극솟값 $b$를 갖는다. 상수 $a$, $b$에 대하여 $a+b$의 값을 구하시오. [5점]",
     "choices": [],
     "answer": "-6",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q24-solution.svg",
-    "solutionImageAlt": "삼차함수 f(x)=x³/3−x²−3x의 그래프에 극대점 (−1,5/3)과 극소점 (3,−9)을 표시하여, x=3에서 극솟값 b=−9이고 a+b=−6임을 보여 준다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: f(x)=x³/3-x²-3x의 그래프에서 x=-1의 극대점 (-1, 5/3)과 x=3의 극소점 (3, -9)을 점선과 지시선 라벨로 나타낸 그림. f(x) 이름은 오른쪽 곡선에 붙었다.",
+    "solutionImageSize": "medium",
     "solution": "적분으로 정의된 함수는 미분하면 피적분함수에 $t=x$를 대입한 식이 된다.\n$f(x)=\\displaystyle\\int_0^x(t^2-2t-3)\\,dt$\n$f'(x)=x^2-2x-3=(x+1)(x-3)$\n이다.\n\n도함수의 부호를 조사하면\n$x<-1$에서 $f'(x)>0$: 증가\n$-1<x<3$에서 $f'(x)<0$: 감소\n$x>3$에서 $f'(x)>0$: 증가\n이므로 $x=3$에서 극솟값을 갖는다.\n따라서 $a=3$이다.\n\n극솟값 $b$를 구하면\n$b=f(3)=\\displaystyle\\int_0^3(t^2-2t-3)\\,dt$\n$=\\left[\\dfrac{t^3}{3}-t^2-3t\\right]_0^3$\n$=\\left(\\dfrac{27}{3}-9-9\\right)-0$\n$=9-18=-9$\n$a+b=3+(-9)=-6$\n따라서 구하는 값은 $-6$이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "f′(x)=(x+1)(x-3)의 부호가 x=-1에서 +에서 -로, x=3에서 -에서 +로 바뀌므로 x=-1에서 극대, x=3에서 극소이다. 따라서 a=3, b=f(3)=-9이고 a+b=-6이다."
   },
   {
     "id": 25,

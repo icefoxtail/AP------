@@ -293,8 +293,8 @@ window.questionBank = [
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q10-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 평균 40, 표준편차 3인 X의 정규분포 곡선에서 가운데 구간(Z=-1~1)은 진하게, 왼쪽 a~37(Z=-2~-1)과 오른쪽 43~46(Z=1~2)은 같은 넓이 q로 연하게 칠했고, 눈금 아래에 Z=-2, -1, 0, 1, 2가 적혀 있다.",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q10-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 위쪽은 표준정규분포 곡선에서 -1≤Z≤1(진하게)과 1≤Z≤2(연하게, 넓이 q)를 칠한 그림이고, 아래쪽은 평균 40, 표준편차 3인 X의 곡선에서 a(Z=-2)부터 37(Z=-1)까지(연하게, 넓이 q)와 37부터 43(Z=1)까지(진하게)를 칠한 그림이다. 눈금 아래에 Z값이 적혀 있다.",
     "solutionImageCaption": "문제의 -1≤Z≤2는 가운데와 오른쪽 조각이고 a≤X≤43은 왼쪽 조각과 가운데이며, 좌우 대칭이라 두 조각의 넓이가 같으므로 a는 Z=-2에 대응하여 (a-40)/3=-2이다. 정답 ③ 34.",
     "solutionImageSize": "medium"
   },
@@ -325,9 +325,9 @@ window.questionBank = [
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q11-solution.svg",
-    "solutionImageAlt": "확률밀도함수에서 0에서 k까지 직사각형과 k에서 3k까지 감소하는 직선 및 k에서 2k까지의 사다리꼴을 표시한 그래프",
-    "solutionImageCaption": "k부터 2k까지의 사다리꼴 넓이가 확률이다.",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 0≤x≤3k에서 정의된 확률밀도함수 f의 그래프로, 0~k는 높이 k인 수평선, k~3k는 직선으로 줄어들어 3k에서 0이 된다. x=k부터 x=2k까지 곡선 아래 사다리꼴이 색칠되어 있고 x=2k에서 f(2k)=k/2이다.",
+    "solutionImageCaption": "k=√2/2이므로 확률밀도함수는 0≤x≤3k에서 정의되고 3k=3√2/2이다. 전체 넓이 k²+k²=1에서 k²=1/2이고, 색칠한 사다리꼴의 넓이는 (1/2)(k+k/2)×k=3/8이다. 정답 ③",
     "solutionImageSize": "medium"
   },
   {

@@ -115,14 +115,15 @@ window.questionBank = [
       "$-12$"
     ],
     "answer": "⑤",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q4-solution.svg",
-    "solutionImageAlt": "속도 v(t)=−3(t−3)(t+1) 그래프에서 정지 시각 t=3과 가속도 −12",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 속도 v(t)=−3(t−3)(t+1)의 그래프(t≥0)에서 속도가 0이 되는 t=3인 점과 그 점에서의 접선(주황색)을 그린 그림. 접선의 기울기가 그 순간의 가속도 a(3)이다.",
+    "solutionImageSize": "medium",
     "solution": "위치를 시간에 따라 미분하면 속도이다.\n$x(t)=-t^3+3t^2+9t-10$\n$v(t)=x'(t)=-3t^2+6t+9$\n$=-3(t-3)(t+1)$이다.\n$v(t)=0$인 시각은 $t=3$ 또는 $t=-1$인데, 시각은 $t\\ge0$이므로 $t=3$을 택한다.\n가속도는 속도를 미분하여\n$a(t)=v'(t)=-6t+6$이다.\n따라서\n$a(3)=-6\\cdot3+6=-12$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageCaption": "v(t)=x′(t)=−3(t−3)(t+1)이 0이 되는 순간은 t=3이고, 그 점에서 v(t)의 접선 기울기가 가속도 a(3)이다. a(t)=v′(t)=−6t+6이므로 a(3)=−12이다. 정답 ⑤"
   },
   {
     "id": 5,
@@ -148,14 +149,15 @@ window.questionBank = [
       "$-1$"
     ],
     "answer": "④",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q5-solution.svg",
-    "solutionImageAlt": "접선 y=−2x+4 위의 접점 (1,2)와 기울기 −2를 나타낸 좌표 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=f(x) 위의 점 (1,2)에서 접선 y=−2x+4가 접한다. 접점의 y좌표 f(1)=2이고 접선의 기울기 f′(1)=−2이다.",
+    "solutionImageSize": "medium",
     "solution": "접점 $(1,2)$가 $y=f(x)$ 위에 있으므로\n$f(1)=2$이다.\n접선 $y=-2x+4$의 기울기는 $-2$이므로\n$f'(1)=-2$이다.\n$g(x)=(x^2-5x+2)f(x)$를 곱의 미분법으로 미분하면\n$g'(x)=(2x-5)f(x)+(x^2-5x+2)f'(x)$이다.\n$x=1$을 대입하여\n$g'(1)=(2-5)\\cdot2+(1-5+2)\\cdot(-2)$\n$=(-3)\\cdot2+(-2)\\cdot(-2)$\n$=-6+4=-2$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageCaption": "접점 (1,2)에서 f(1)=2이고 접선 y=−2x+4의 기울기가 f′(1)=−2이다(곡선의 모양은 예시). g′(1)=(2−5)·2+(1−5+2)·(−2)=−2이다. 정답 ④"
   },
   {
     "id": 6,
@@ -181,15 +183,15 @@ window.questionBank = [
       "$\\dfrac{29}{5}$"
     ],
     "answer": "①",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q6-solution-v2.svg",
-    "solutionImageAlt": "삼차곡선 y=f(x)=x³+1과 점 (1,2)에서 접하는 접선 y=3x−1을 함께 그린 그래프이다. 두 경계가 x=−2에서 만나고 x=1에서 접하며, 그 사이의 영역 S가 색칠되어 있다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q6-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=x³+1과 점 (1,2)에서의 접선 y=3x−1의 그래프. 두 그래프가 (−2,−7)과 접점 (1,2)에서 만나고, 그 사이 영역 S가 칠해져 있다.",
+    "solutionImageSize": "medium",
     "solution": "$f(x)=x^3+1$이면 $f'(x)=3x^2$이다.\n$x=1$에서 접선의 기울기는 $3$이므로\n$y-2=3(x-1)$\n$y=3x-1$이다.\n곡선과 접선의 교점에서는\n$x^3+1=3x-1$\n$x^3-3x+2=0$\n$(x-1)^2(x+2)=0$이다.\n따라서 두 경계의 $x$좌표는 $-2,\\ 1$이다.\n$-2\\le x\\le1$에서\n$(x^3+1)-(3x-1)=(x-1)^2(x+2)\\ge0$이므로 곡선이 위쪽이다.\n구하는 넓이는\n$S=\\displaystyle\\int_{-2}^{1}(x^3-3x+2)dx$\n$=\\left[\\dfrac14x^4-\\dfrac32x^2+2x\\right]_{-2}^{1}$\n$=\\left(\\dfrac14-\\dfrac32+2\\right)-\\left(4-6-4\\right)$\n$=\\dfrac34+6=\\dfrac{27}{4}$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImageCaption": "곡선 y=f(x)=x³+1과 점 (1,2)에서의 접선 y=3x−1은 x=−2, x=1에서 만난다. 두 경계 사이의 영역 S가 구하는 도형이다."
+    "solutionImageCaption": "곡선과 접선은 x=−2와 접점 x=1에서 만나고 그 사이에서 곡선이 위쪽이므로 S=∫(x³−3x+2)dx를 −2부터 1까지 계산한 값 27/4이고, 정답은 ①이다."
   },
   {
     "id": 7,
@@ -243,14 +245,15 @@ window.questionBank = [
       "$18$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q8-solution.svg",
-    "solutionImageAlt": "a=15일 때 도함수 g′(t)=6t(6−t)가 0<t<6에서 양수인 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 f의 그래프 위 점 (t,f(t))에서 접선을 그리고, 접선이 y축과 만나는 점의 y좌표를 g(t)로 나타낸 그림이다.",
+    "solutionImageSize": "medium",
     "solution": "접점 $(t,f(t))$에서의 접선은\n$y-f(t)=f'(t)(x-t)$이다.\n$x=0$을 대입하면 $y$절편은\n$g(t)=f(t)-tf'(t)$이다.\n$f'(t)=3t^2-2(a+3)t+2a$이므로\n$g(t)=t^3-(a+3)t^2+2at$\n$\\quad-t\\{3t^2-2(a+3)t+2a\\}$\n$=-2t^3+(a+3)t^2$이다.\n이제 증가 조건을 확인한다.\n$g'(t)=-6t^2+2(a+3)t$\n$=2t(a+3-3t)$이다.\n$0<t<6$에서 $2t>0$이므로 $a+3-3t\\ge0$이어야 한다.\n$t$가 $6$에 한없이 가까워질 수 있으므로\n$a+3\\ge18$, 즉 $a\\ge15$이다.\n$a=15$이면\n$g'(t)=6t(6-t)>0\\quad(0<t<6)$이므로 실제로 증가한다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageCaption": "예: a=0, t=1로 그렸다. g(t)=f(t)-tf′(t)=-2t³+(a+3)t²이고, g가 (0,6)에서 증가하려면 a≥15이므로 a의 최솟값은 15이다. 정답 ②"
   },
   {
     "id": 9,
@@ -490,14 +493,15 @@ window.questionBank = [
       "$25$"
     ],
     "answer": "④",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q16-solution.svg",
-    "solutionImageAlt": "삼차함수 y=x³−6x²+30의 극대 30과 극소 −2, 두 수평선 y=2와 y=−2",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 y=f(x)=x³−6x²+30의 그래프에 극대점 (0,30)과 극소점 (4,−2)가 표시되고, 점선 y=2와 y=−2가 그려져 있다. y=−2는 x=−2에서 곡선과 만나고 x=4에서 접해 모두 2개의 점에서 만나고, y=2는 곡선과 세 점에서 만난다.",
+    "solutionImageSize": "medium",
     "solution": "삼차함수의 최고차항 계수가 $1$이고 $x=0$에서 극댓값이 $30$이므로\n$f(x)=x^3+px^2+30$으로 둘 수 있다.\n$f'(x)=3x^2+2px=x(3x+2p)$이다.\n$x=0$이 극대점이려면 $p<0$이어야 한다.\n다른 극점의 $x$좌표를 $c$라 하면\n$c=-\\dfrac{2p}{3}>0$이고, 이 점에서 극솟값 $m=f(c)$를 갖는다.\n$p=-\\dfrac32c$를 대입하면\n$m=f(c)=c^3-\\dfrac32c^3+30$\n$=30-\\dfrac12c^3<30$이다.\n\n$|f(x)|=2$는 $f(x)=2$와 $f(x)=-2$의 교점 수를 더한 것이다.\n극댓값 $30$, 극솟값 $m$인 삼차함수에서 극값 사이의 수평선은 세 점과 만나고, $y=m$은 두 점과 만나며, $y<m$은 한 점과 만난다.\n이를 두 수평선에 적용하면\n$m<-2$일 때 $y=2$와 $y=-2$가 각각 세 점과 만나 총 $6$개,\n$m=-2$일 때 각각 세 점과 두 점에서 만나 총 $5$개,\n$-2<m<2$일 때 각각 세 점과 한 점에서 만나 총 $4$개,\n$m=2$일 때 각각 두 점과 한 점에서 만나 총 $3$개,\n$m>2$일 때 각각 한 점씩 만나 총 $2$개이다.\n따라서 서로 다른 실근이 $5$개라는 조건은 $m=-2$임을 뜻한다.\n\n$m=f(c)=30-\\dfrac12c^3=-2$이므로\n$\\dfrac12c^3=32$\n$c^3=64,\\quad c=4$이다.\n따라서\n$p=-\\dfrac32\\cdot4=-6$이고\n$f(x)=x^3-6x^2+30$이다.\n이제\n$f(-1)=(-1)^3-6(-1)^2+30$\n$=-1-6+30=23$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageCaption": "x=0에서 극댓값 30, x=4에서 극솟값 −2이면 y=−2와는 두 점(x=−2와 접점 x=4), y=2와는 세 점에서 만나 |f(x)|=2의 서로 다른 실근이 5개이다. f(x)=x³−6x²+30이므로 f(−1)=23이다. 정답 ④"
   },
   {
     "id": 17,
@@ -523,14 +527,15 @@ window.questionBank = [
       "$\\dfrac{4}{3}$"
     ],
     "answer": "⑤",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q17-solution.svg",
-    "solutionImageAlt": "포물선 y=(x−3)(x−5)가 x축 아래에 있는 3부터 5까지의 넓이",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: f(x)=x²−8x+15=(x−3)(x−5)의 그래프. 2≤x≤3에서 x축 위의 영역 S₁과 3≤x≤5에서 x축 아래의 영역 S₂를 색칠했고, 두 영역의 넓이가 같아 ∫₂⁵f(x)dx=0이 된다.",
+    "solutionImageSize": "medium",
     "solution": "두 정적분의 상한이 같으므로\n$\\displaystyle\\int_2^{2025}f(x)dx-\\int_5^{2025}f(x)dx=\\int_2^5f(x)dx=0$이다.\n$f(x)$는 최고차항 계수가 $1$이고 $f(5)=0$인 이차함수이므로\n$f(x)=(x-5)(x-r)$로 놓는다.\n전개하여 적분하면\n$\\displaystyle\\int_2^5(x-5)(x-r)dx$\n$=\\int_2^5\\{x^2-(r+5)x+5r\\}dx$\n$=\\left[\\dfrac13x^3-\\dfrac{r+5}{2}x^2+5rx\\right]_2^5$\n$=\\dfrac92(r-3)=0$이다.\n따라서 $r=3$이고\n$f(x)=(x-3)(x-5)$이다.\n$3<x<5$에서는 $f(x)<0$이므로 둘러싸인 넓이는\n$S=-\\displaystyle\\int_3^5(x^2-8x+15)dx$\n$=-\\left[\\dfrac13x^3-4x^2+15x\\right]_3^5$\n$=-\\left(\\dfrac{50}{3}-18\\right)$\n$=\\dfrac43$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageCaption": "f(x)=(x−3)(x−5)이므로 ∫₂⁵f(x)dx=0은 2≤x≤3에서 x축 위의 넓이 S₁과 3≤x≤5에서 x축 아래의 넓이 S₂가 같다는 뜻이다. 둘러싸인 부분의 넓이는 S₂=4/3이다. 정답 ⑤"
   },
   {
     "id": 18,
@@ -556,14 +561,15 @@ window.questionBank = [
       "$\\dfrac{11}{4}$"
     ],
     "answer": "③",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q18-solution.svg",
-    "solutionImageAlt": "삼차함수 y=2x³−6x²+3과 접선 y=3, 점 A B P H가 만드는 최대 넓이 삼각형",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=f(x)=2x³−6x²+3과 점 A에서의 접선 l(수평선)이 점 B에서 다시 만나는 그림. 곡선 위의 점 P(예: x좌표 2)에서 l에 내린 수선의 발 H가 있고 직각삼각형 APH가 칠해져 있다.",
+    "solutionImageSize": "medium",
     "solution": "$f(x)=2x^3-6x^2+3$이므로\n$f'(x)=6x^2-12x$이다.\n점 $A(0,3)$에서의 기울기는 $f'(0)=0$이므로 접선은 $l:y=3$이다.\n다른 교점을 구하면\n$f(x)=3$\n$2x^3-6x^2=0$\n$2x^2(x-3)=0$이므로 $B(3,3)$이다.\n\n$P=(x,f(x))$로 놓으면 $0\\le x\\le3$이고, 수선의 발은 $H=(x,3)$이다.\n$AH=x$,\n$PH=3-f(x)=6x^2-2x^3=2x^2(3-x)$이다.\n따라서 삼각형의 넓이는\n$S(x)=\\dfrac12\\cdot AH\\cdot PH$\n$=\\dfrac12\\cdot x\\cdot2x^2(3-x)$\n$=3x^3-x^4$이다.\n미분하면\n$S'(x)=9x^2-4x^3=x^2(9-4x)$이다.\n$0<x<\\dfrac94$에서는 $S'(x)>0$,\n$\\dfrac94<x<3$에서는 $S'(x)<0$이다.\n또 양 끝에서 넓이는 $0$이므로 $x=\\dfrac94$에서 최대가 된다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageCaption": "예: P의 x좌표가 2인 경우이다. AH=x, PH=3−f(x)=6x²−2x³이므로 넓이 S(x)=3x³−x⁴이고 S′(x)=x²(9−4x)에서 넓이가 최대가 되는 P의 x좌표는 9/4, 정답은 ③이다."
   },
   {
     "id": 19,
@@ -617,14 +623,15 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q20-solution.svg",
-    "solutionImageAlt": "속도 v₁(t)=3t²/4+1, v₂(t)=2t−4와 4t−4의 그래프 및 방향 전환점",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: m=2일 때와 m=4일 때 점 Q의 속도 그래프와 t축 사이 넓이를 나타낸 두 그림이다. m=2일 때 넓이는 4, m=4일 때는 2와 2이며 P의 이동거리 4와 같다.",
+    "solutionImageSize": "medium",
     "solution": "$P$의 속도는\n$v_1(t)=\\dfrac34t^2+1>0$이므로 이동거리는\n$\\displaystyle\\int_0^2\\left(\\dfrac34t^2+1\\right)dt$\n$=\\left[\\dfrac14t^3+t\\right]_0^2$\n$=2+2=4$이다.\n\n$Q$의 이동거리는 $\\displaystyle\\int_0^2|mt-4|dt$이다.\n\n$m\\le2$이면 $0\\le t\\le2$에서 $mt-4\\le0$이므로\n$\\displaystyle\\int_0^2(4-mt)dt$\n$=[4t-\\dfrac m2t^2]_0^2$\n$=8-2m$이다.\n이를 $4$와 같게 두면 $m=2$로, 이 경우 조건에 맞는다.\n\n$m>2$이면 속도가 $0$이 되는 시각은 $t=\\dfrac4m$이고 $0<\\dfrac4m<2$이다.\n따라서 이동거리는\n$\\displaystyle\\int_0^{4/m}(4-mt)dt+\\int_{4/m}^2(mt-4)dt$\n$=\\dfrac8m+\\left(2m-8+\\dfrac8m\\right)$\n$=2m-8+\\dfrac{16}{m}$이다.\n이를 $4$와 같게 두면\n$2m-8+\\dfrac{16}{m}=4$\n$m^2-6m+8=0$\n$(m-2)(m-4)=0$이다.\n$m>2$를 만족하는 해는 $m=4$이다.\n\n따라서 가능한 값은 $2,4$이고 합은 $6$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageCaption": "P의 이동거리는 4이고, Q의 이동거리는 m=2일 때 4, m=4일 때 2+2=4이므로 m의 합은 2+4=6이다. 정답 ②"
   },
   {
     "id": 21,
@@ -675,10 +682,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$0\\lt k\\lt 4$",
     "solution": "절댓값 안의 부호부터 판단한다.\n$f(x)+x=\\dfrac12x^3-3x^2+\\dfrac{17}{2}x$\n$=\\dfrac12x\\{(x-3)^2+8\\}$이다.\n괄호 안은 항상 양수이므로 $f(x)+x$의 부호는 $x$의 부호와 같다.\n\n$x<0$이면 $|f(x)+x|=-f(x)-x$이므로\n$f(x)-f(x)-x=7x+k$\n$-8x=k,\\quad x=-\\dfrac{k}{8}$이다.\n이 해가 $x<0$에 있으려면 $k>0$이어야 하므로 음의 구간에서는 $k>0$일 때 해가 하나, $k\\le0$일 때 해가 없다.\n\n$x\\ge0$이면 $|f(x)+x|=f(x)+x$이다.\n따라서\n$2f(x)+x=7x+k$\n$2f(x)-6x=k$\n$x^3-6x^2+9x=k$\n$x(x-3)^2=k$이다.\n$y=\\phi(x)=x(x-3)^2$ $(x\\ge0)$라 두면\n$\\phi'(x)=3(x-1)(x-3)$이고\n$\\phi(0)=0,\\quad\\phi(1)=4,\\quad\\phi(3)=0$이다.\n따라서 $[0,1]$에서 증가, $[1,3]$에서 감소, $[3,\\infty)$에서 증가한다.\n그래프와 $y=k$의 교점 수는\n$k<0$일 때 $0$개,\n$k=0$일 때 $x=0,3$의 $2$개,\n$0<k<4$일 때 $3$개,\n$k=4$일 때 $x=1$과 $x=4$의 $2$개,\n$k>4$일 때 $1$개이다.\n\n음의 구간의 해 수까지 더하면 $k<0$일 때 총 $0$개, $k=0$일 때 총 $2$개,\n$0<k<4$일 때 $3+1=4$개, $k=4$일 때 $2+1=3$개, $k>4$일 때 $1+1=2$개이다.\n따라서 서로 다른 실근이 $4$개가 되는 범위는\n$0<k<4$이다.",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q22-solution.svg",
-    "solutionImageAlt": "x<0에서 y=-8x, x≥0에서 y=x(x-3)^2의 그래프와 극대값 4를 나타낸 해설 그래프",
-    "solutionImageCaption": "음의 해 하나와 비음의 해 세 개가 생기는 조건은 0<k<4이다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x<0에서 y=-8x, x≥0에서 y=x(x-3)²를 이은 그래프와 수평선 y=k. 극대점 (1,4), 극소점 (3,0)이 있고, 0<k<4일 때 수평선이 그래프와 서로 다른 네 점에서 만난다.",
+    "solutionImageCaption": "예: 0<k<4인 k의 수평선 y=k는 서로 다른 네 점에서 만난다. 따라서 구하는 범위는 0<k<4이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",

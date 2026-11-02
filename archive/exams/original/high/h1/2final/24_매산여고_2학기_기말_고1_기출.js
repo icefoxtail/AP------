@@ -562,7 +562,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 예 p=4, r=-1, q=16일 때 y=√(4x+16)-1 (x≥0)의 그래프로, 시작점 (0,3)에서 오른쪽 위로 올라가고 치역이 y≥3임을 점선 y=3으로 나타낸 그림이다.",
+    "solutionImageCaption": "예: p=4, r=-1, q=16일 때 y=√(4x+16)-1 (x≥0)은 시작점 (0,3)에서 올라가 치역이 y≥3이며, 일부 구간만 그렸다. q-4r²의 최댓값은 12이므로 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,

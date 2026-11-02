@@ -329,7 +329,7 @@ window.questionBank = [
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q7-solution-v2.svg",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q7-solution-v3.svg",
     "solutionImageAlt": "해설 그림: 평균 m, 표준편차 0.5인 표본평균의 정규분포 곡선에서 평균부터 160까지의 넓이 0.4772와 160 이상의 진한 오른쪽 꼬리가 칠해져 있고, 160은 Z=2에 대응한다.",
     "solutionImageCaption": "표본평균의 표준편차는 5/√100=0.5이고 P(X̄≥160)=0.0228이므로 160은 Z=2에 대응하여 (160-m)/0.5=2이다. 정답 ④ 159.",
     "solutionImageSize": "medium"
@@ -577,7 +577,7 @@ window.questionBank = [
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q12-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 평균 300, 표준편차 0.5인 표본평균의 정규분포 곡선에서 a 이상을 칠한 그림. a는 평균 왼쪽 표준화 값 Z=-2에 해당하는 자리에 있다.",
     "solutionImageCaption": "P(X̄≥a)=0.98=0.5+0.48이므로 a는 Z=-2에 대응하고, (a-300)/0.5=-2에서 a=299이므로 정답은 ②이다.",
     "solutionImageSize": "medium"
@@ -1117,7 +1117,7 @@ window.questionBank = [
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q23-solution-v2.svg",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q23-solution-v3.svg",
     "solutionImageAlt": "해설 그림: 평균 3240, 표준편차 45인 정규분포 곡선에서 3240부터 3330까지와 3330 이상의 진한 오른쪽 꼬리를 칠한 그림이고, 3330은 Z=2에 대응한다.",
     "solutionImageCaption": "T는 B(8640, 3/8)이라 평균 3240, 표준편차 45인 정규분포로 근사하며 3330은 Z=2이므로 진한 꼬리의 넓이는 k=0.5-0.477=0.023이다. 정답 23(1000×k).",
     "solutionImageSize": "medium"

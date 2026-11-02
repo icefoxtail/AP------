@@ -435,9 +435,9 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "sourcePdf": "2025_제일고2_확통_2기말.pdf",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q13-solution.svg",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q13-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 수직선 위에 같은 표본평균을 중심으로 한 신뢰도 95%의 구간과 신뢰도 99%의 구간을 위아래로 나타낸 그림. 99% 구간 안의 자연수 38부터 62까지가 점으로 찍혀 있다.",
-    "solutionImageCaption": "구간의 끝은 201/5=40.2, 299/5=59.8, 371/10=37.1, 629/10=62.9이다. 99% 구간 37.1≤m≤62.9에 속하는 자연수는 38, 39, …, 62이므로 62-38+1=25개이고 정답은 ⑤이다.",
+    "solutionImageCaption": "구간의 끝은 40.2, 59.8, 37.1, 62.9이다. 99% 구간 37.1≤m≤62.9에 속하는 자연수는 38, 39, …, 62이므로 62-38+1=25개이고 정답은 ⑤이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -508,7 +508,11 @@ window.questionBank = [
     "subUnit": "확률분포",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 패널의 정규분포 곡선. 위쪽은 키위 무게 X(평균 50, 표준편차 5)에서 평균~60(z 0~2)의 옅은 넓이 0.48과 60 이상(z 2 이상)의 진한 꼬리 p를, 아래쪽은 1등급 개수 Y의 근사(평균 50, 표준편차 7)에서 평균~57(z 0~1)의 옅은 넓이 0.34와 57 이상(z 1 이상)의 진한 꼬리 물음표를 보였다.",
+    "solutionImageCaption": "옅은 부분은 평균부터 경계까지의 넓이(표 값), 진한 부분은 경계 이상의 꼬리이다. 위쪽에서 1등급 확률은 p=P(X≥60)=P(Z≥2)=0.5-0.48=0.02이고, 2500개 중 1등급 개수 Y는 B(2500, 0.02)이므로 평균 50, 표준편차 7인 정규분포로 근사해 아래쪽 진한 꼬리 P(Y≥57)=P(Z≥1)=0.5-0.34를 구한다. 정답은 ④ 0.16이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
