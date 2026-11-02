@@ -491,12 +491,11 @@
     },
     draw(b, s, M, C, ST, idx) {
       const { m, n, g, trap, tri } = M, { A, B, C: Cc, D, E } = g, v = (s.trV || 0) % 2, cur = idx >= 0 ? ST[idx] : null, f = cur ? cur.f : 'problem', K = cur ? cur.k : 'problem';
-      const ph = (nm) => r7Order.indexOf(f) >= r7Order.indexOf(nm) && r7Order.indexOf(f) >= 0, at = (nm) => f === nm;
-      fit(b, bboxOf([B, Cc, D, E, pt(-n - 0.5, 0), pt(m + 0.5, 0)]), { t: 54, b: 128, l: 44, r: 44 });
+      const ph = (nm) => r7Order.indexOf(f) >= r7Order.indexOf(nm) && r7Order.indexOf(f) >= 0, at = (nm) => f === nm, FD = G.faded;
+      fit(b, bboxOf([B, Cc, D, E, pt(-n - 0.5, 0), pt(m + 0.5, 0)]), { t: 54, b: b.W < 560 ? 120 : 128, l: 44, r: 44 });
       const cen = pt((D.x + E.x) / 2, -Math.max(m, n) * 0.5);
-      const same = m === n, colCE = ph('cong') && !same ? 'green' : 'sky';
-      const gv = at('given');
-      // 영역 색칠: 이번 단계에 새로 나오는 것이 가장 진하게
+      const same = m === n, gv = at('given') || f === 'problem', early = f === 'problem' || at('given') || at('idea') || at('cong') || at('len');
+      // 원칙: 그림 안에는 점 이름·값만 · 지금 단계가 다루는 것만 색 · 지난 단계는 가는 회색 · 한 꼭짓점에 색 호는 하나
       if (v === 0 && !ph('trapz')) fillPoly(b, [A, B, Cc], 'amber', 0.16);
       if (v === 1 && !ph('trapz')) fillPoly(b, [B, D, E, Cc], 'amber', 0.1);
       if (at('idea')) { fillPoly(b, [A, B, D], 'sky', 0.22); fillPoly(b, [A, Cc, E], 'green', 0.22); }
@@ -508,39 +507,39 @@
       if (at('trap')) { if (v === 0) { fillPoly(b, [A, B, Cc], 'amber', 0.2); fillPoly(b, [B, D, E, Cc], 'rose', 0.12); } else fillPoly(b, [B, D, E, Cc], 'amber', 0.14); }
       line(b, pt(-n - 0.5, 0), pt(m + 0.5, 0), 'ink', 3, { alpha: 0.7 });
       poly(b, [B, D, E, Cc], 'ink', 3.4); line(b, A, B, 'ink', 3.4); line(b, A, Cc, 'ink', 3.4);
-      if (gv) { [[A, B], [A, Cc], [B, D], [Cc, E]].forEach(([p, q]) => line(b, p, q, 'sky', 4.6)); }
+      if (at('given')) { [[A, B], [A, Cc], [B, D], [Cc, E]].forEach(([p, q]) => line(b, p, q, 'sky', 4.6)); }
       if (at('trap') && v === 0) poly(b, [B, D, E, Cc], 'rose', 3.4, { dash: [8, 6] });
       if (at('trap') && v === 1) line(b, B, D, 'rose', 5.2);
-      ang(b, A, B, Cc, { color: 'amber', r: 28, fa: gv ? 0.5 : 0.2 }); ang(b, D, B, A, { color: 'sky', r: 20, fa: gv ? 0.5 : 0.2 }); ang(b, E, Cc, A, { color: 'sky', r: 20, fa: gv ? 0.5 : 0.2 });
+      // 직각: 주어진 것에서는 색(문제 그림도), 합동 찾기에서는 ∠D·∠E 만 색, 나머지 단계는 가는 회색
+      const rc = (V, P, Q, col, now) => (now ? ang(b, V, P, Q, { color: col, r: V === A ? 28 : 20, fa: 0.5 }) : FD(b, V, P, Q, { r: V === A ? 28 : 20 }));
+      rc(A, B, Cc, 'amber', gv); rc(D, B, A, 'sky', gv || at('cong')); rc(E, Cc, A, 'sky', gv || at('cong'));
       tick(b, A, B, 1, 'amber'); tick(b, A, Cc, 1, 'amber');
-      if (at('cong')) { // 같은 각: ∠BAD=∠ACE (호 1개), ∠ABD=∠CAE (호 2개)
-        ang(b, A, D, B, { color: 'sky', r: 34, rings: 1, fa: 0.4 }); ang(b, Cc, A, E, { color: 'sky', r: 34, rings: 1, fa: 0.4 });
+      if (at('cong')) { // 합동 조건의 같은 각: ∠ABD=∠CAE (호 2개). ∠A=90° 직각은 회색이라 꼭짓점 A의 색 호는 하나
         ang(b, B, A, D, { color: 'green', r: 34, rings: 2, fa: 0.4 }); ang(b, A, Cc, E, { color: 'green', r: 34, rings: 2, fa: 0.4 });
-      }
-      if (ph('len')) { // 합동인 변: BD=AE (눈금 2개), CE=AD (눈금 3개). m=n 이면 네 변이 모두 같아요.
+      } else if (ph('len')) { FD(b, B, A, D, { rings: 2, r: 34 }); FD(b, A, Cc, E, { rings: 2, r: 34 }); }
+      const colCE = ph('cong') && !same ? 'green' : 'sky';
+      if (at('len')) { // 합동인 변: BD=AE (눈금 2개), CE=AD (눈금 3개). m=n 이면 네 변이 모두 같아요.
         const t1 = 2, t2 = same ? 2 : 3;
         tick(b, B, D, t1, 'sky'); tick(b, A, E, t1, 'sky'); tick(b, Cc, E, t2, colCE); tick(b, D, A, t2, colCE);
       }
-      const lg = ph('len') ? 16 : 6; // 눈금이 생기면 길이 글자를 눈금 밖으로
-      G.sideTag(b, B, D, pt(0, -2), `${m} cm`, { color: 'sky', size: fs(b, 16), gap: lg }); G.sideTag(b, Cc, E, pt(0, -2), `${n} cm`, { color: colCE, size: fs(b, 16), gap: lg });
-      if (ph('len')) {
-        G.sideTag(b, A, E, pt(0, -5), `${m} cm`, { color: 'sky', size: fs(b, 16), gap: 16 }); G.sideTag(b, D, A, pt(0, -5), `${n} cm`, { color: colCE, size: fs(b, 16), gap: 16 });
-        dim(b, D, E, pt(0, -3), `${m + n} cm`, { color: 'amber', size: fs(b, 16), off: 44 });
-      }
-      if (at('sub')) {
-        const ctr = (Q) => pt((Q[0].x + Q[1].x + Q[2].x) / 3, (Q[0].y + Q[1].y + Q[2].y) / 3);
-        T(b, ctr([A, B, D]), `\\frac{${m}×${n}}{2}`, { color: 'green', size: fs(b, 20) }); T(b, ctr([A, Cc, E]), `\\frac{${m}×${n}}{2}`, { color: 'green', size: fs(b, 20) });
+      // 길이 글자: 길이를 다루는 단계(주어진 것~길이 구하기)에서 색, 이후는 회색
+      const lg = ph('len') ? 16 : 6, lenA = early ? 1 : 0.5, lc = (c) => (early ? c : 'ink');
+      G.sideTag(b, B, D, pt(0, -2), `${m} cm`, { color: lc('sky'), size: fs(b, 16), gap: lg, alpha: lenA }); G.sideTag(b, Cc, E, pt(0, -2), `${n} cm`, { color: lc(colCE), size: fs(b, 16), gap: lg, alpha: lenA });
+      if (ph('len') && !at('sub') && !at('ans') && !(at('trap') && v === 0)) {
+        G.sideTag(b, A, E, pt(0, -5), `${m} cm`, { color: lc('sky'), size: fs(b, 16), gap: 16, alpha: lenA }); G.sideTag(b, D, A, pt(0, -5), `${n} cm`, { color: lc(colCE), size: fs(b, 16), gap: 16, alpha: lenA });
+        dim(b, D, E, pt(0, -3), `${m + n} cm`, { color: at('len') || at('trapz') || at('trap') ? 'amber' : 'ink', size: fs(b, 16), off: 44 });
       }
       [A, B, Cc, D, E].forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
       tagOut(b, B, cen, 'B', { size: 18 }); tagOut(b, Cc, cen, 'C', { size: 18 }); T(b, A, 'A', { dy: 18, size: 18 }); T(b, D, 'D', { dx: -12, dy: 16, size: 18 }); T(b, E, 'E', { dx: 12, dy: 16, size: 18 });
-      const what = v === 0 ? '△ABC의 넓이' : '사다리꼴 BDEC의 넓이';
-      let txt = `${what} x`, tc = 'amber';
-      if (K === 'ans') txt = `${what} x = ${v === 0 ? tri : trap} cm²`;
-      if (K === 'trap') { if (v === 0) { txt = `사다리꼴 전체 ${trap} cm² (△ABC 아님)`; tc = 'rose'; } else { txt = `${what} x = ${trap} cm²`; } }
-      G.sideTag(b, B, Cc, A, txt, { color: tc, size: fs(b, 15), gap: 8 }); // 변 BC 바깥쪽(선과 겹치지 않게)
+      // 구하는 넓이 x: 글자 x 만 영역 안에 (값은 답 단계에서)
+      const xp = G.lerp(mid(B, Cc), A, v === 0 ? 0.62 : 0.4), val = v === 0 ? tri : trap;
+      if (K === 'ans') T(b, xp, `x = ${val} cm²`, { size: fs(b, 16), color: 'amber' });
+      else if (K === 'trap' && v === 0) T(b, xp, `${trap} cm²`, { size: fs(b, 15), color: 'rose' });
+      else T(b, xp, 'x', { size: fs(b, 18), color: 'amber' });
       if (cur) solveCap(b, pt((D.x + E.x) / 2, 0), cur, { dy: ph('len') ? (b.W < 560 ? 84 : 96) : (b.W < 560 ? 62 : 76), size: 16 });
     }
   };
+
   const r7 = {
     id: 't3-7', title: '합동으로 구하는 넓이', short: '합동과 넓이', solve: r7Solve,
     question: '직각이등변삼각형 ABC의 넓이를 BD, CE만으로 구할 수 있을까?',

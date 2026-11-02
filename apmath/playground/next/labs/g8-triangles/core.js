@@ -155,8 +155,8 @@
       } else {
         b.arc(V, rw, e0, e1, { sector: true, fill: col, fillAlpha: o.fa == null ? 0.2 : o.fa, color: null, ccw: d < 0, ref: o.ref });
         const rings = o.rings || 1;
-        b.arc(V, rw, e0, e1, { color: col, width: 2.4, ccw: d < 0, ref: o.ref });
-        for (let i = 1; i < rings; i++) b.arc(V, rw - (i * 4.6) / k, e0, e1, { color: col, width: 2.2, ccw: d < 0, ref: o.ref });
+        b.arc(V, rw, e0, e1, { color: col, width: o.w || 2.4, ccw: d < 0, ref: o.ref, alpha: o.alpha });
+        for (let i = 1; i < rings; i++) b.arc(V, rw - (i * 4.6) / k, e0, e1, { color: col, width: o.w ? o.w * 0.9 : 2.2, ccw: d < 0, ref: o.ref, alpha: o.alpha });
       }
     }
     if (o.label) {
@@ -168,6 +168,8 @@
     }
     return { deg, mid: am };
   }
+  // 지난 단계의 각 표시: 가는 회색 호(값 글자는 label 을 줄 때만). 풀이 그림에서 지금 단계만 색으로 강조하기 위해 씁니다.
+  const faded = (b, V, A, B, o = {}) => ang(b, V, A, B, { color: 'ink', alpha: 0.38, w: 1.4, fa: 0, rings: o.rings, r: o.r || 24, label: o.label, labelDist: o.labelDist, labelRot: o.labelRot, size: o.size, labelColor: 'ink', noRight: o.noRight });
   function tick(b, p, q, count = 1, color = 'amber') { if (count > 0) b.ticks(p, q, { color, count, size: 9 }); }
   function par(b, p, q, count = 1, color = 'green', f = 0.5) {
     const k = b.k || 60, u = unit(sub(q, p)), n = { x: -u.y, y: u.x }, m = lerp(p, q, f), s = 8 / k;
@@ -588,7 +590,7 @@
     PI, DEG, clamp, ease, seg01, NUM, LET, esc, r1, isInt, fmtN, dg, eqs, tx, texDeg, ol,
     pt, add, sub, mul, len, dist, unit, mid, lerp, polar, dirDeg, rotP, angBetween, cross, inter, polyArea, centroid, pick, rint, bboxOf, unionBox, shiftPts,
     triSSS, triSAS, triASA, sidesOf, anglesOf, sameTri,
-    textW, T, rowT, tagOut, vtx, sideTag, lenTag, ang, tick, par, fillPoly, line, poly, arcPart, drawTri, fit, P, degF, cmF,
+    textW, T, rowT, tagOut, vtx, sideTag, lenTag, ang, faded, tick, par, fillPoly, line, poly, arcPart, drawTri, fit, P, degF, cmF,
     josa, seeded, shuffle, mkChoices, mkTextChoices, baseCtx, showAt, makeScene, register, notes, rd,
     triBC, dim, foot, circumcenter, incenter, extend, dots, segVal, fade, narrow, fs, mkStmtChoices, numProb, intOK, cmTex, cmOpts, degOpts, nm, solveCap, solveCol
   };

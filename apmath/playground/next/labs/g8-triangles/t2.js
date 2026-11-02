@@ -78,9 +78,9 @@
       return out;
     },
     draw(b, s, M, C, ST, idx) {
-      const { n, x: a, pts, ext, ans } = M, v = c1v(s), L = nameOf, cur = idx >= 0 ? ST[idx] : null, K = cur ? cur.k : 'problem';
+      const { n, x: a, pts, ext, ans } = M, v = c1v(s), L = nameOf, cur = idx >= 0 ? ST[idx] : null, K = cur ? cur.k : 'problem', FD = G.faded;
       const all = pts.concat([ext, add(pts[n], mul(unit(sub(pts[n], pts[0])), 0.5))]);
-      fit(b, bboxOf(all), { t: 52, b: 96, l: 42, r: 50 });
+      fit(b, bboxOf(all), { t: 52, b: b.W < 560 ? 100 : 96, l: 42, r: 50 });
       const cen = pt((pts[0].x + pts[n].x) / 2, (pts[0].y + pts[n].y) / 2 + 0.2);
       const reach = [0, 0];
       for (let k = 1; k <= n; k++) { const r = (k - 1) % 2; reach[r] = Math.max(reach[r], dist(pts[0], pts[k])); }
@@ -88,47 +88,54 @@
       [0, 1].forEach((r) => line(b, pts[0], add(pts[0], mul(M.u[r], reach[r] + 0.3)), 'ink', 3, { alpha: 0.75 }));
       const hiSeg = K === 'given';
       for (let k = 1; k <= n; k++) { line(b, pts[k - 1], pts[k], hiSeg ? 'sky' : 'ink', hiSeg ? 4.4 : 3.6); tick(b, pts[k - 1], pts[k], 1, 'amber'); }
+      // 원칙: 그림 안에는 점 이름과 값만 · 지금 단계가 다루는 각만 색 · 지난 단계는 가는 회색 · 한 꼭짓점에 색 호는 하나
       const cols = ['sky', 'green', 'violet'], col = (j) => cols[(j - 1) % 3];
       const lbl = (k) => (v === 0 ? dg(k * a) : xs(k));
-      const done = idx >= 2 ? Math.min(n - 1, idx - 1) : 0, now = cur && cur.k === 'fig' ? cur.j : 0; // 지금까지 나온 연쇄 단계 수 · 이번 단계
-      const after = idx > n - 0 && idx >= 2 + (n - 1); // 연쇄가 모두 끝난 뒤(식·답·실수)
-      const eqNow = K === 'eq';
-      // 이번 단계에 새로 나오는 이등변삼각형만 색을 칠합니다
+      const done = idx >= 2 ? Math.min(n - 1, idx - 1) : 0, now = cur && cur.k === 'fig' ? cur.j : 0, eqNow = K === 'eq', ansNow = K === 'ans', trapNow = K === 'trap';
+      if (K === 'idea') fillPoly(b, [pts[0], pts[1], pts[2]], 'violet', 0.16);
       if (now) fillPoly(b, [pts[now - 1], pts[now], pts[now + 1]], col(now), 0.2);
+      const last = pts[n - 1], A0 = pts[0], first = pts[1], second = pts[2];
+      // 연쇄로 구한 밑각: 이번 단계(색, 값은 한 곳에만) / 지난 단계(회색, 값 없음)
       for (let j = 1; j <= done; j++) {
-        const isNow = j === now, fa = isNow ? 0.42 : 0.12;
-        if (j === 1) ang(b, pts[2], pts[1], pts[0], { color: col(1), rings: 1, r: 28, label: lbl(1), size: 15, labelDist: 54, fa });
-        else {
-          // 휴대폰에서는 연쇄가 좁아 두 밑각의 글자가 겹치므로, 같은 호 개수로 같은 각을 보이고 글자는 오른쪽 끝 한 곳에만 씁니다
-          ang(b, pts[j - 1], pts[j], pts[j + 1], { color: col(j), rings: j, r: 28 + (j % 2) * 4, label: b.W < 560 ? '' : lbl(j), size: 15, labelDist: 54, fa });
-          ang(b, pts[j + 1], pts[j], pts[j - 1], { color: col(j), rings: j, r: 28, label: lbl(j), size: 15, labelDist: 54, fa });
+        const isNow = j === now, recol = eqNow && j === n - 1; // 식 단계에서는 ∠AED 만 다시 색을 입힙니다
+        const r1 = 28 + (j % 2) * 4;
+        if (j === 1) { if (isNow) ang(b, pts[2], pts[1], pts[0], { color: col(1), rings: 1, r: 28, label: lbl(1), size: 15, labelDist: 54, fa: 0.42 }); else FD(b, pts[2], pts[1], pts[0], { rings: 1, r: 28 }); continue; }
+        if (isNow) {
+          ang(b, pts[j - 1], pts[j], pts[j + 1], { color: col(j), rings: j, r: r1, fa: 0.42 }); // 같은 호 개수로 같은 각 표시
+          ang(b, pts[j + 1], pts[j], pts[j - 1], { color: col(j), rings: j, r: 28, label: lbl(j), size: 15, labelDist: 54, fa: 0.42 });
+        } else {
+          FD(b, pts[j - 1], pts[j], pts[j + 1], { rings: j, r: r1 });
+          if (recol) ang(b, pts[j + 1], pts[j], pts[j - 1], { color: col(j), rings: j, r: 28, label: lbl(j), size: 15, labelDist: 54, fa: 0.42 }); else FD(b, pts[j + 1], pts[j], pts[j - 1], { rings: j, r: 28 });
         }
       }
-      // 주어진 각 / 구하는 각 (문제 그림과 같은 자리)
-      const last = pts[n - 1], A0 = pts[0], first = pts[1], second = pts[2];
-      const Aang = (color, label, fa) => ang(b, A0, first, second, { color, r: 36, label, size: label.length > 1 ? 17 : 18, labelDist: 74, labelRot: -(a / 2 + 12), fa });
-      const Eang = (color, label, fa) => ang(b, last, pts[n], ext, { color, r: 38, label, size: label.length > 1 ? 16 : 18, labelDist: label.length > 3 ? 74 : 62, fa });
-      const ansNow = K === 'ans' || K === 'trap';
+      // ∠BAC=A (꼭짓점 A) 와 바깥각 (마지막 꼭짓점) — 주어진 값 또는 구하는 x
+      const Aang = (o) => ang(b, A0, first, second, { r: 36, labelDist: 74, labelRot: -(a / 2 + 12), ...o });
+      const Eang = (o) => ang(b, last, pts[n], ext, { r: 38, labelDist: o.label && o.label.length > 3 ? 74 : 62, ...o });
+      const subj = K === 'problem' || K === 'given' || eqNow || ansNow; // 이 단계에서 주어진 각/구하는 각이 주인공인가
+      const xl = (val) => ({ label: val, size: val.length > 1 ? 17 : 18 });
       if (v === 0) {
-        Aang('sky', dg(a), K === 'given' || eqNow ? 0.42 : 0.2);
-        Eang('amber', ansNow ? `x=${ans}°` : 'x', ansNow || eqNow ? 0.42 : 0.2);
-      } else {
-        Aang('amber', ansNow ? `x=${a}°` : 'x', ansNow || eqNow ? 0.42 : 0.2);
-        Eang('sky', dg(ans), K === 'given' || eqNow ? 0.42 : 0.2);
-      }
-      if (eqNow && n >= 2) ang(b, pts[n], pts[n - 1], pts[0], { color: col(n - 1), rings: n - 1, r: 28, fa: 0.42, noMark: false }); // 식에 쓰이는 안쪽 밑각 ∠AED 다시 강조
-      // 흔한 실수 그림
-      if (K === 'trap') {
-        if (v === 0) { // 안쪽 각 ∠(A, last, P_n): 라벨은 바로 앞 선분과 마지막 선분 사이 틈에 둡니다(선과 겹치지 않게)
+        // 주어진 ∠A=a: 주어진 것·식에서 색, 그 밖에는 값만 남긴 회색
+        if (K === 'problem' || K === 'given' || eqNow) Aang({ color: 'sky', ...xl(dg(a)), fa: K === 'given' || eqNow ? 0.42 : 0.2 }); else Aang({ color: 'ink', alpha: 0.38, w: 1.4, fa: 0, labelColor: 'ink', ...xl(dg(a)) });
+        // 구하는 x(바깥각): 호는 주인공일 때만, 아니면 글자 x 만
+        if (K === 'problem' || K === 'given' || eqNow) Eang({ color: 'amber', ...xl('x'), fa: eqNow ? 0.42 : 0.22 });
+        else if (ansNow) Eang({ color: 'amber', ...xl(`x=${ans}°`), fa: 0.42 });
+        else Eang({ color: 'amber', noMark: true, ...xl(trapNow ? `x=${ans}°` : 'x') });
+        if (trapNow) { // 흔한 실수: 안쪽 각 ∠ADE 를 구해 버림 (라벨은 바로 앞 선분과 마지막 선분 사이)
           const dr = (p) => Math.atan2(p.y - last.y, p.x - last.x), wr = (d) => ((d + 3 * Math.PI) % (2 * Math.PI)) - Math.PI;
           const a0 = dr(pts[0]), a1 = dr(pts[n]), ap = dr(pts[Math.max(0, n - 2)]), am = a0 + wr(a1 - a0) / 2, cw = ap + wr(a1 - ap) / 2;
           ang(b, last, pts[0], pts[n], { color: 'rose', r: 24, label: dg(180 - ans), size: 15, labelDist: 56, labelRot: wr(cw - am) / DEG, fa: 0.3 });
         }
-        else ang(b, pts[n], pts[n - 1], pts[0], { color: 'rose', r: 28, rings: Math.max(1, n - 1), label: xs(n - 1), size: 15, labelDist: 54, fa: 0.4 });
+      } else {
+        if (K === 'problem' || K === 'given' || eqNow) Aang({ color: 'amber', ...xl('x'), fa: eqNow ? 0.42 : 0.22 });
+        else if (ansNow) Aang({ color: 'amber', ...xl(`x=${a}°`), fa: 0.42 });
+        else { Aang({ color: 'ink', alpha: 0.38, w: 1.4, fa: 0, labelColor: 'ink' }); Aang({ color: 'amber', noMark: true, ...xl('x') }); }
+        if (K === 'problem' || K === 'given' || eqNow) Eang({ color: 'sky', ...xl(dg(ans)), fa: K === 'given' || eqNow ? 0.42 : 0.2 }); else Eang({ color: 'ink', alpha: 0.38, w: 1.4, fa: 0, labelColor: 'ink', ...xl(dg(ans)) });
+        if (trapNow) ang(b, pts[n], pts[n - 1], pts[0], { color: 'rose', r: 28, rings: Math.max(1, n - 1), label: xs(n - 1), size: 15, labelDist: 54, fa: 0.4 });
       }
+      // 식 단계: 식에 쓰이는 안쪽 밑각 ∠AED 와 (v1) 바깥각 값을 색으로 다시
+      void subj;
       pts.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); tagOut(b, p, cen, L(i), { size: 18, gap: 11 }); });
       b.point(ext, { color: 'ink', r: 3.5 }); T(b, ext, L(n + 1), { dx: 10, dy: -12, size: 18 });
-      void after;
       if (cur) solveCap(b, pt((pts[0].x + pts[n].x) / 2, 0), cur, { dy: b.W < 560 ? 40 : 52 });
     }
   };
