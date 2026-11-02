@@ -87,15 +87,39 @@ function wsxSet(id, html) {
 
 function wsxBarHtml() {
     const classes = wsxClasses();
+    let left = '';
     if (classes.length < 2) {
         const only = classes[0];
-        return only ? `<span class="apms-unified-context__name wsx-bar__name">${wsxEsc(only.name)}</span>` : '';
+        left = only ? `<span class="apms-unified-context__name wsx-bar__name">${wsxEsc(only.name)}</span>` : '';
+    } else {
+        left = `<div class="wsx-tabs" role="group" aria-label="반 전환">${classes.map(c => {
+            const active = String(c.id) === String(wsx.classId);
+            return `<button type="button" class="wsx-tab${active ? ' is-active' : ''}" aria-pressed="${active}" onclick="wsxSwitchClass(${apJsArg(c.id)})">${wsxEsc(c.name)}</button>`;
+        }).join('')}</div>`;
     }
-    return `<div class="wsx-tabs" role="group" aria-label="반 전환">${classes.map(c => {
-        const active = String(c.id) === String(wsx.classId);
-        return `<button type="button" class="wsx-tab${active ? ' is-active' : ''}" aria-pressed="${active}" onclick="wsxSwitchClass(${apJsArg(c.id)})">${wsxEsc(c.name)}</button>`;
-    }).join('')}</div>`;
+    // 옛 OMR 일괄 입력 화면(전체 학생 한 표 O/X)의 입구. 그 화면은 선생님 전용이라 원장에게는 숨긴다.
+    const omrTable = (typeof state !== 'undefined' && state.auth && state.auth.role === 'admin')
+        ? ''
+        : '<button type="button" class="btn apms-unified-quiet wsx-btn wsx-bar__omr" id="wsx-omr-table" onclick="wsxOpenOmrTable()">표로 한 번에 입력</button>';
+    return left + omrTable;
 }
+
+// 작업 화면을 닫고 일괄 OMR 입력 화면(openOmrInput)을 연다. 그 화면의 "AP MATH" 버튼은 이 반의 작업 화면으로 돌아온다(goOmrInputHome).
+function wsxOpenOmrTable() {
+    if (typeof openOmrInput !== 'function') { if (typeof toast === 'function') toast('OMR 일괄 입력 화면을 불러오지 못했습니다.', 'warn'); return; }
+    if (!wsxConfirmLeave()) return;
+    const classId = wsx ? String(wsx.classId || '') : '';
+    if (typeof state !== 'undefined' && state.ui) {
+        state.ui.omrReturnClassId = classId;
+        if (typeof ensureOmrInputState === 'function') {
+            const omr = ensureOmrInputState();
+            if (classId && !omr.classId) omr.classId = classId;
+        }
+    }
+    if (typeof closeModal === 'function') closeModal(true);
+    window.setTimeout(() => openOmrInput(), 280);
+}
+window.wsxOpenOmrTable = wsxOpenOmrTable;
 
 function wsxListHtml() {
     const exams = wsxView();
