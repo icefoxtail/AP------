@@ -1547,8 +1547,8 @@ window.questionBank = [
     "semanticBoundaryReason": null,
     "boundaryStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
     "solutionImage": "assets/images/21_팔마중_1학기_중간_중2_기출/q22-solution.svg",
-    "solutionImageAlt": "반지름 a, 높이 3a인 원기둥과 반지름 2a, 높이 h인 원뿔의 부피가 같음을 나타낸 해설 도형",
-    "solutionImageCaption": "물의 부피 보존: 3πa³ = (4/3)πa²h",
+    "solutionImageAlt": "해설 그림: 반지름 a, 높이 3a인 원기둥과 반지름 2a, 높이 h인 원뿔을 나란히 놓고, 둘 다 물이 가득 찬 같은 양의 물(같은 파란색)임을 부피 3πa³과 (4/3)πa²h로 보인 그림. 두 부피가 같아 h=9a/4",
+    "solutionImageCaption": "원기둥의 물 3πa³을 원뿔에 부어 가득 찼으므로 두 부피가 같다: 3πa³=(4/3)πa²h. 정답 h=9a/4",
     "solutionImageSize": "full"
   },
   {
