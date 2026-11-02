@@ -88,6 +88,16 @@ function buildFixture({ classCount = 5, studentLevel = 'normal' } = {}) {
             if (studentLevel === 'many') parent_contacts.push({ id: `pc-${s.id}-2`, student_id: s.id, name: '김아버지', relation: '부', phone: '010-3333-4444', is_primary: 0 });
         });
     }
+    const student_status_history = [], class_transfer_history = [];
+    if (studentLevel !== 'few') {
+        students.slice(0, 3).forEach(st => {
+            const n = studentLevel === 'many' ? 6 : 1;
+            for (let k = 0; k < n; k++) {
+                student_status_history.push({ id: `sh-${st.id}-${k}`, student_id: st.id, old_status: k % 2 ? '휴원' : '재원', new_status: k % 2 ? '재원' : '휴원', changed_at: `2026-0${(k % 9) + 1}-1${k % 9} 10:00:00`, reason: k % 2 ? '복귀' : '개인 사정으로 휴원', changed_by: '원장' });
+                class_transfer_history.push({ id: `ct-${st.id}-${k}`, student_id: st.id, from_class_name: classes[k % Math.max(1, classes.length)]?.name || '', to_class_name: classes[(k + 1) % Math.max(1, classes.length)]?.name || '', changed_at: `2026-0${(k % 9) + 1}-0${k % 9 + 1} 09:00:00`, reason: '수준 조정', changed_by: '김선생' });
+            }
+        });
+    }
     return {
         success: true, classes, students, class_students, attendance: [], homework: [],
         consultations, operation_memos: [], exam_sessions: [], wrong_answers: [], class_exam_assignments: [], exam_schedules: [], academy_schedules: [], journals: [],
@@ -96,7 +106,7 @@ function buildFixture({ classCount = 5, studentLevel = 'normal' } = {}) {
         class_progress_taxonomy: [], class_progress_snapshots: [], class_progress_items: [], class_progress_phases: [],
         attendance_history: [], homework_history: [], wrong_clinic_status: [], report_exam_cohort_stats: [], exam_blueprints: [],
         exam_question_reviews: [], exam_analysis_meta: [], school_exam_records: [], parent_contacts, message_logs: [],
-        student_status_history: [], class_transfer_history: [], timetable_conflict_logs: [], timetable_conflict_overrides: []
+        student_status_history, class_transfer_history, timetable_conflict_logs: [], timetable_conflict_overrides: []
     };
 }
 
@@ -121,7 +131,31 @@ async function openApp(browser, base, device, theme, role, fixtureOptions, hooks
         calls.push({ method, path: apiPath, body });
         let response = hooks.respond ? hooks.respond({ method, apiPath, body, fixtureData }) : undefined;
         if (response === undefined) {
+            let m;
             if (apiPath === 'initial-data') response = fixtureData;
+            else if (method === 'GET' && apiPath === 'consultations') {
+                const sid = url.searchParams.get('student_id');
+                const rows = fixtureData.consultations.filter(c => !sid || c.student_id === sid);
+                response = { success: true, data: rows, consultations: rows };
+            } else if (method === 'POST' && apiPath === 'consultations') {
+                const id = `cns_new_${calls.length}`;
+                fixtureData.consultations.push({ id, student_id: body.studentId, date: body.date, type: body.type, content: body.content, next_action: body.nextAction, created_at: '2026-11-02 06:30:00' });
+                response = { success: true, id };
+            } else if (method === 'PATCH' && (m = /^consultations\/(.+)$/.exec(apiPath))) {
+                const row = fixtureData.consultations.find(c => c.id === m[1]);
+                if (row) Object.assign(row, { date: body.date, type: body.type, content: body.content, next_action: body.nextAction });
+                response = { success: true };
+            } else if (method === 'DELETE' && (m = /^consultations\/(.+)$/.exec(apiPath))) {
+                fixtureData.consultations = fixtureData.consultations.filter(c => c.id !== m[1]);
+                response = { success: true };
+            } else if (method === 'GET' && apiPath === 'parent-foundation/contacts') {
+                const sid = url.searchParams.get('student_id');
+                response = { success: true, contacts: fixtureData.parent_contacts.filter(c => !sid || c.student_id === sid) };
+            } else if (method === 'GET' && apiPath === 'parent-foundation/consents') response = { success: true, consents: [] };
+            else if (method === 'GET' && apiPath === 'parent-foundation/messages') response = { success: true, messages: [] };
+            else if (method === 'GET' && (m = /^students\/([^/]+)\/detail-data$/.exec(apiPath))) {
+                response = { success: true, parent_contacts: fixtureData.parent_contacts.filter(c => c.student_id === m[1]), student_status_history: fixtureData.student_status_history.filter(r => r.student_id === m[1]), class_transfer_history: fixtureData.class_transfer_history.filter(r => r.student_id === m[1]) };
+            }
             else if (method === 'POST' && apiPath === 'classes') {
                 const id = `cls_new_${calls.length}`;
                 response = { success: true, id, class: { id, name: body.name, grade: body.grade, subject: body.subject || '수학', teacher_name: body.teacher_name, schedule_days: body.schedule_days, textbook: '', is_active: 1, day_group: '', time_label: body.time_label } };
@@ -397,6 +431,133 @@ async function behaviourRestore(browser, base) {
     }
 }
 
+// ------------------------------------------------------------------ M6 상담 탭 (같은 자리 인라인 폼)
+async function behaviourConsult(browser, base) {
+    const { context, page, errors, calls } = await openApp(browser, base, DEVICES[3], 'light', 'admin', { classCount: 5, studentLevel: 'many' });
+    try {
+        const dialogs = [];
+        page.on('dialog', async dialog => { dialogs.push(dialog.message()); await dialog.dismiss(); });
+        const baseline = initialDataCalls(calls);
+        const getConsults = () => calls.filter(c => c.method === 'GET' && c.path === 'consultations').length;
+        await page.evaluate(() => openStudentDetail('c1s0', { mode: 'view', tab: 'cns' }));
+        await page.waitForTimeout(900);
+        assert.equal(await page.locator('.ap-student-detail-shell').count(), 1);
+        const loads = getConsults();
+        const depth = () => page.evaluate(() => modalStepStack.length);
+        const countRows = () => page.evaluate(() => getStudentConsultationsFromState('c1s0').length);
+        const before = await countRows();
+        assert.ok(before >= 12);
+
+        // + 상담: 모달이 쌓이지 않고 상담 탭 안에 폼이 펼쳐진다
+        await page.locator('.ap-student-consult-pinned').getByRole('button', { name: '+ 상담', exact: true }).click();
+        await page.waitForTimeout(250);
+        assert.equal(await page.locator('#cns-content').count(), 1, '인라인 폼');
+        assert.equal(await depth(), 0, '모달 단계가 쌓이지 않는다');
+        assert.equal(await page.locator('.ap-student-detail-shell').count(), 1, '상세가 그대로 열려 있다');
+        const unlabeled = await page.evaluate(() => Array.from(document.querySelectorAll('[data-ws-consult-form] input, [data-ws-consult-form] select, [data-ws-consult-form] textarea')).filter(el => !document.querySelector(`label[for="${el.id}"]`)).map(el => el.id));
+        assert.deepEqual(unlabeled, [], '라벨 없는 입력 없음');
+        assert.equal(await page.locator('#consultation-ai-panel-wrap #consultation-ai-generate-btn').count(), 1, 'AI 요약 패널 유지');
+
+        // 비어 있으면 보내지 않는다
+        let start = calls.length;
+        await page.locator('[data-ws-consult-save]').click();
+        await page.waitForTimeout(200);
+        assert.equal(writeCalls(calls, start).length, 0, '내용이 없으면 전송하지 않음');
+
+        // 작성 중 다른 탭으로 가면 확인, 취소하면 입력 유지
+        await page.fill('#cns-content', '새 상담 내용입니다');
+        await page.getByRole('button', { name: '기본', exact: true }).first().click();
+        await page.waitForTimeout(200);
+        assert.equal(dialogs.length >= 1, true, '작성 중 탭 이동 → 확인');
+        assert.equal(await page.inputValue('#cns-content'), '새 상담 내용입니다', '확인에서 취소 → 입력 유지');
+        // 다시 그려도(다른 상담 선택 등) 입력은 살아 있다
+        await page.evaluate(() => renderStudentDetailTab('c1s0', 'cns'));
+        assert.equal(await page.inputValue('#cns-content'), '새 상담 내용입니다', '다시 그려도 입력 유지');
+
+        // 저장: payload 필드 고정, 두 번 눌러도 한 번, 재조회 없음, 상세가 닫히지 않음
+        await page.fill('#cns-action', '다음 주 확인');
+        await page.selectOption('#cns-type', '성적');
+        start = calls.length;
+        await page.evaluate(() => { const b = document.querySelector('[data-ws-consult-save]'); b.click(); b.click(); });
+        await page.waitForTimeout(500);
+        const w = writeCalls(calls, start);
+        assert.equal(w.length, 1, '더블 클릭해도 저장 한 번');
+        assert.equal(w[0].method, 'POST');
+        assert.equal(w[0].path, 'consultations');
+        assert.deepEqual(Object.keys(w[0].body).sort(), ['clientRequestId', 'content', 'date', 'nextAction', 'studentId', 'type']);
+        assert.equal(w[0].body.type, '성적');
+        assert.ok(w[0].body.clientRequestId, '중복 저장 방지 clientRequestId 유지');
+        assert.equal(getConsults(), loads, '저장 뒤 GET consultations 재조회 없음');
+        assert.equal(initialDataCalls(calls), baseline);
+        assert.equal(await isOpen(page), true);
+        assert.equal(await page.locator('.ap-student-detail-shell').count(), 1, '상세를 닫았다 열지 않고 같은 자리 갱신');
+        assert.equal(await page.locator('#cns-content').count(), 0, '저장 뒤 폼이 접힘');
+        assert.equal(await countRows(), before + 1);
+        assert.match(await page.locator('#ap-student-consult-preview-c1s0').innerText(), /새 상담 내용입니다/, '방금 쓴 상담이 최근 상담에 보임');
+        assert.equal(await depth(), 0);
+
+        // 수정: 폼이 값으로 채워지고, PATCH payload 고정
+        await page.locator('#ap-student-consult-preview-c1s0').getByRole('button', { name: '수정', exact: true }).click();
+        await page.waitForTimeout(250);
+        assert.equal(await page.inputValue('#edit-cns-content'), '새 상담 내용입니다');
+        await page.fill('#edit-cns-content', '고친 상담 내용');
+        start = calls.length;
+        await page.locator('[data-ws-consult-save]').click();
+        await page.waitForTimeout(400);
+        const e = writeCalls(calls, start);
+        assert.equal(e.length, 1);
+        assert.equal(e[0].method, 'PATCH');
+        assert.match(e[0].path, /^consultations\/cns_new/);
+        assert.deepEqual(Object.keys(e[0].body).sort(), ['content', 'date', 'nextAction', 'type']);
+        assert.equal(getConsults(), loads, '수정 뒤 재조회 없음');
+        assert.match(await page.locator('#ap-student-consult-preview-c1s0').innerText(), /고친 상담 내용/);
+
+        // 삭제: 확인창 수락 → DELETE, 재조회 없음
+        page.removeAllListeners('dialog');
+        page.on('dialog', dialog => dialog.accept());
+        start = calls.length;
+        await page.locator('#ap-student-consult-preview-c1s0').getByRole('button', { name: '삭제', exact: true }).click();
+        await page.waitForTimeout(400);
+        assert.equal(writeCalls(calls, start)[0].method, 'DELETE');
+        assert.equal(await countRows(), before, '삭제한 상담이 목록에서 빠짐');
+        assert.equal(getConsults(), loads, '삭제 뒤 재조회 없음');
+
+        // 흐름 요약: 모달 단계 없이 탭 안 패널
+        await page.getByRole('button', { name: '흐름 요약', exact: true }).click();
+        await page.waitForTimeout(500);
+        assert.equal(await page.locator('.ws-consult-thread').count(), 1, '흐름 요약 패널');
+        assert.equal(await depth(), 0);
+        assert.equal(await page.locator('.ap-student-detail-shell').count(), 1);
+
+        // 입력 중 Esc는 확인(취소하면 유지)
+        page.removeAllListeners('dialog');
+        dialogs.length = 0;
+        page.on('dialog', async dialog => { dialogs.push(dialog.message()); await dialog.dismiss(); });
+        await page.locator('.ap-student-consult-pinned').getByRole('button', { name: '+ 상담', exact: true }).click();
+        await page.fill('#cns-content', '쓰는 중');
+        await page.keyboard.press('Escape');
+        await page.waitForTimeout(300);
+        assert.equal(dialogs.length, 1, '작성 중 Esc → 닫을까요? 확인');
+        assert.equal(await isOpen(page), true);
+        // 접기(변경 있음 → 확인, 취소하면 유지)
+        await page.getByRole('button', { name: '접기', exact: true }).first().click();
+        assert.equal(await page.locator('#cns-content').count(), 1);
+
+        // 학생 상세가 열려 있지 않을 때(반 화면의 상담 버튼)는 옛 단일 모달 폼 그대로
+        page.removeAllListeners('dialog');
+        page.on('dialog', dialog => dialog.accept());
+        await page.evaluate(() => closeModal(true));
+        await page.waitForTimeout(450);
+        await page.evaluate(() => openAddConsultationModal('c1s1'));
+        await page.waitForTimeout(450);
+        assert.equal(await page.locator('#cns-content').count(), 1);
+        assert.equal(await page.locator('[data-ws-consult-form]').count(), 0, '상세 없이 부르면 옛 모달 폼');
+        assert.deepEqual(errors, [], 'page errors: ' + errors.join(' | '));
+    } finally {
+        await context.close();
+    }
+}
+
 // ------------------------------------------------------------------ 스크린샷
 async function shoot(browser, base) {
     fs.mkdirSync(shotDir, { recursive: true });
@@ -442,15 +603,31 @@ async function shoot(browser, base) {
                 await page.locator('#modal-body .ap-withdrawal-row').first().getByRole('button', { name: '재등원', exact: true }).click();
             }, 700);
             for (const level of studentStates) {
-                const scenario = global.__wsStudentScenarios && global.__wsStudentScenarios[0];
-                if (scenario) await scenario(run, level);
+                const opts = { classCount: 5, studentLevel: level };
+                await run(`student-basic-${level}`, opts, 'admin', page => page.evaluate(() => openStudentDetail('c1s0', { mode: 'view', tab: 'basic' })), 1000);
+                await run(`student-cns-${level}`, opts, 'admin', page => page.evaluate(() => openStudentDetail('c1s0', { mode: 'view', tab: 'cns' })), 1000);
+                if (before) continue;
+                await run(`student-cns-form-${level}`, opts, 'admin', async page => {
+                    await page.evaluate(() => openStudentDetail('c1s0', { mode: 'view', tab: 'cns' }));
+                    await page.waitForTimeout(800);
+                    await page.locator('.ap-student-consult-pinned').getByRole('button', { name: '+ 상담', exact: true }).click();
+                    await page.fill('#cns-content', '최근 성적 변화와 숙제 수행 정도를 이야기함. 다음 시험 대비 계획 공유.');
+                }, 500);
+                await run(`student-history-${level}`, opts, 'admin', async page => {
+                    await page.evaluate(() => openStudentDetail('c1s0', { mode: 'view', tab: 'basic' }));
+                    await page.waitForTimeout(800);
+                    await page.evaluate(() => { document.querySelectorAll('.ws-history').forEach(d => { d.open = true; }); });
+                    await page.evaluate(() => { const el = document.querySelector('.ws-history'); if (el) el.scrollIntoView({ block: 'center' }); });
+                }, 500);
             }
         }
     }
     return problems;
 }
 
-(async () => {
+module.exports = { startServer, openApp, inspect, summarizeProblems, buildFixture, DEVICES, isOpen, initialDataCalls, writeCalls };
+
+if (require.main === module) (async () => {
     const server = await startServer();
     const base = `http://127.0.0.1:${server.address().port}`;
     const browser = await chromium.launch({ channel: 'chrome', headless: true });
@@ -460,6 +637,8 @@ async function shoot(browser, base) {
             console.log('M4 반 관리 작업 화면 동작 검사 통과');
             await behaviourRestore(browser, base);
             console.log('M4 재등원 같은 자리 폼 동작 검사 통과');
+            await behaviourConsult(browser, base);
+            console.log('M6 상담 탭 인라인 폼 동작 검사 통과');
             if (typeof global.__wsStudentBehaviour === 'function') {
                 await global.__wsStudentBehaviour(browser, base, { openApp, isOpen, initialDataCalls, writeCalls, DEVICES });
                 console.log('M6 학생 상세 동작 검사 통과');

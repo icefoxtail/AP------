@@ -1065,6 +1065,7 @@ function consultationThreadSummaryModalHtml() {
 }
 
 function renderConsultationThreadSummaryModal(useStep = false) {
+    if (typeof wsConsultRenderThread === 'function' && wsConsultRenderThread()) return;
     const sid = ensureConsultationThreadAiUiState().studentId;
     if (useStep) {
         showStudentDetailSubModalStep('consultation-thread-summary', sid, '상담 흐름 요약', consultationThreadSummaryModalHtml());
@@ -1074,6 +1075,8 @@ function renderConsultationThreadSummaryModal(useStep = false) {
 }
 
 async function openConsultationThreadSummaryModal(sid) {
+    // 학생 상세가 열려 있으면 모달 대신 상담 탭 안 패널로 연다(ws-student-consult.js).
+    if (typeof wsConsultOpenThread === 'function' && await wsConsultOpenThread(sid)) return;
     setStudentDetailSubModal('consultation-thread-summary', sid);
     await ensureStudentConsultationsLoaded(sid);
     const rows = getStudentConsultationsFromState(sid);
@@ -1285,6 +1288,8 @@ function returnStudentEditToView(sid, options = {}) {
 
 async function openStudentDetail(sid, options = {}) {
     const studentId = String(sid || '');
+    // 상담 폼에 작성 중인 내용이 있으면(다른 학생·수정 화면으로 가기 전에) 확인한다.
+    if (typeof wsConsultGuardLeave === 'function' && !wsConsultGuardLeave(studentId, options.mode === 'edit' ? 'edit' : normalizeStudentDetailTab(options.tab || ''))) return;
     if (!state.ui) state.ui = {};
     const requestToken = `${studentId}:${Date.now()}:${Math.random()}`;
     state.ui.studentTimetableDetailRequestToken = requestToken;
@@ -1906,8 +1911,8 @@ function renderStudentPinnedConsultationPreviewHtml(sid, consultationId) {
                     <span class="ap-student-consult-type">${apmsStudentDetailEsc(selected.type || '상담')}</span>
                 </div>
                 ${canEdit ? `<div style="display:flex;align-items:center;gap:10px;">
-                    <span style="cursor:pointer;color:#334155;font-size:12px;font-weight:600;" onclick="openEditConsultation(${apmsStudentJsString(selected.id)},${apmsStudentJsString(sid)})">수정</span>
-                    <span style="cursor:pointer;color:var(--error);font-size:12px;font-weight:600;" onclick="handleDeleteConsultation(${apmsStudentJsString(selected.id)},${apmsStudentJsString(sid)})">삭제</span>
+                    <button type="button" class="ws-link-btn" onclick="openEditConsultation(${apmsStudentJsString(selected.id)},${apmsStudentJsString(sid)})">수정</button>
+                    <button type="button" class="ws-link-btn ws-link-btn--danger" onclick="handleDeleteConsultation(${apmsStudentJsString(selected.id)},${apmsStudentJsString(sid)})">삭제</button>
                 </div>` : ''}
             </div>
             <p class="ap-student-consult-text">${apmsStudentDetailEsc(selected.content || '상담 내용이 없습니다.')}</p>
@@ -1974,6 +1979,7 @@ if (typeof window !== 'undefined') {
 
 function renderStudentConsultationPinnedCard(sid, selectedConsultationId = '') {
     const key = String(sid || '');
+    if (typeof wsConsultCaptureDraft === 'function') wsConsultCaptureDraft(key);
     const student = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(row => String(row.id) === key);
     const canEdit = student?.timetable_can_edit !== false;
     if (!state.ui) state.ui = {};
@@ -2005,6 +2011,7 @@ function renderStudentConsultationPinnedCard(sid, selectedConsultationId = '') {
                 <h3>최근 상담</h3>
                 ${canEdit ? `<button class="btn ap-student-mini-btn is-primary" onclick="openAddConsultationModal(${apmsStudentJsString(key)})">+ 상담</button>` : ''}
             </div>
+            ${typeof wsConsultFormHtml === 'function' ? wsConsultFormHtml(key) : ''}
             ${cnsState.loading ? '<div style="margin-bottom:8px;font-size:11px;color:var(--secondary);font-weight:600;">불러오는 중</div>' : ''}
             ${rows.length >= 2 && dateButtons ? `<div class="ap-student-consult-date-row">${dateButtons}</div>` : ''}
             ${cnsState.error ? '<div style="margin-bottom:10px;color:var(--warning);font-size:12px;font-weight:700;">상담 기록을 다시 확인해 주세요.</div>' : ''}
@@ -2419,6 +2426,7 @@ function renderStudentDetailTabs(sid, activeTab = 'basic') {
  */
 function renderStudentDetailShell(sid, options = {}) {
     injectStudentStyles();
+    if (typeof wsConsultCaptureDraft === 'function') wsConsultCaptureDraft(sid);
     if (!state.ui) state.ui = {};
     const mode = options.mode === 'edit' ? 'edit' : 'view';
     const s = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(st => String(st.id) === String(sid));
@@ -2522,6 +2530,7 @@ function renderStudentDetailShell(sid, options = {}) {
  * shouldRefreshCurrentStudentDetailTab의 edit guard가 호출 자체를 막는다.
  */
 function renderStudentDetailTab(sid, tab = 'basic') {
+    if (typeof wsConsultGuardLeave === 'function' && !wsConsultGuardLeave(sid, normalizeStudentDetailTab(tab))) return;
     if (renderStudentDetailTabInPlace(sid, tab)) return;
     return renderStudentDetailShell(sid, {
         mode: 'view',
@@ -2532,6 +2541,7 @@ function renderStudentDetailTab(sid, tab = 'basic') {
 
 function renderStudentDetailTabInPlace(sid, tab = 'basic') {
     const key = String(sid || '');
+    if (typeof wsConsultCaptureDraft === 'function') wsConsultCaptureDraft(key); // 입력 중이던 상담 폼 내용을 다시 그린 뒤에도 살린다
     const nextTab = normalizeStudentDetailTab(tab);
     if (!key || String(state.ui?.currentStudentDetailId || '') !== key || state.ui?.currentStudentDetailMode !== 'view') return false;
 
@@ -3003,11 +3013,11 @@ function apStudentConsultationCardHtml(c, sid) {
             <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 9px;">
                 <div style="display: flex; align-items: center; gap: 8px;">
                     <span style="font-size: 12px; font-weight:600; color: var(--secondary); line-height: 1.5;">${c.date}</span>
-                    <span class="std-badge" style="background: rgba(110,102,201,0.10); color: #6E66C9; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight:600; border: 1px solid rgba(110,102,201,0.18);">${c.type}</span>
+                    <span class="std-badge" style="background: rgba(110,102,201,0.10); color: #6E66C9; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight:600; border: 1px solid rgba(110,102,201,0.18);">${c.type}</span>
                 </div>
                 ${canEdit ? `<div style="display: flex; gap: 10px;">
-                    <span style="cursor: pointer; color: #334155; font-size: 12px; font-weight:600;" onclick="openEditConsultation('${c.id}', '${sid}')">수정</span>
-                    <span style="cursor: pointer; color: var(--error); font-size: 12px; font-weight:600;" onclick="handleDeleteConsultation('${c.id}', '${sid}')">삭제</span>
+                    <button type="button" class="ws-link-btn" onclick="openEditConsultation('${c.id}', '${sid}')">수정</button>
+                    <button type="button" class="ws-link-btn ws-link-btn--danger" onclick="handleDeleteConsultation('${c.id}', '${sid}')">삭제</button>
                 </div>` : ''}
             </div>
             <div style="font-size: 13.5px; font-weight:500; line-height: 1.6; color: var(--text); white-space: pre-wrap;">${apEscapeHtml(c.content)}</div>
@@ -3015,7 +3025,7 @@ function apStudentConsultationCardHtml(c, sid) {
                 <div style="margin-top: 10px; padding: 9px 10px; background: rgba(217,118,6,0.07); border: 1px solid rgba(217,118,6,0.18); border-radius: 10px; font-size: 12px; color: #92400E; font-weight:600; line-height: 1.55;">
                     <span style="font-weight:700;">조치:</span> ${apEscapeHtml(c.next_action)}
                 </div>` : ''}
-            ${c.created_at ? `<div style="margin-top: 9px; font-size: 11px; color: var(--secondary); font-weight:500; line-height: 1.5;">등록 시각 ${apEscapeHtml(c.created_at)}</div>` : ''}
+            ${c.created_at ? `<div style="margin-top: 9px; font-size: 12px; color: var(--secondary); font-weight:500; line-height: 1.5;">등록 시각 ${apEscapeHtml(c.created_at)}</div>` : ''}
         </div>
     `;
 }
@@ -3056,6 +3066,7 @@ function renderCnsTab(sid) {
             <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
                 ${canEdit ? `<button class="btn ap-student-mini-btn" onclick="openConsultationThreadSummaryModal('${key}')">흐름 요약</button>` : ''}
             </div>
+            ${typeof wsConsultThreadHtml === 'function' ? wsConsultThreadHtml(key) : ''}
             ${cnsState.loading ? '<div style="font-size: 12px; color: var(--secondary); font-weight:600;">상담 기록을 불러오는 중입니다.</div>' : ''}
             <details class="ap-student-consult-all">
                 <summary><span id="ap-student-consult-others-summary-${key}">다른 상담 (${others.length})</span></summary>
@@ -3333,6 +3344,8 @@ function renderConsultationTypeOptions(currentType = '') {
 }
 
 function openAddConsultationModal(sid) {
+    // 학생 상세가 열려 있으면 모달을 쌓지 않고 상담 탭 안 인라인 폼으로 연다(ws-student-consult.js).
+    if (typeof wsConsultOpenInline === 'function' && wsConsultOpenInline('add', sid)) return;
     setStudentDetailSubModal('consultation-add', sid);
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
     resetConsultationAiUiState('add', sid, '');
@@ -3373,7 +3386,8 @@ async function handleSaveConsultation(sid) {
     const guardKey = `new_${sid}`;
     if (_consultSaveInFlight.has(guardKey)) return;
     _consultSaveInFlight.add(guardKey);
-    const btn = document.getElementById('modal-action-btn');
+    const inline = typeof wsConsultIsInline === 'function' && wsConsultIsInline('add', sid);
+    const btn = inline ? document.querySelector('#modal-body [data-ws-consult-save]') : document.getElementById('modal-action-btn');
     const origText = btn ? btn.textContent : null;
     if (btn) { btn.disabled = true; btn.textContent = '저장 중...'; }
 
@@ -3396,6 +3410,11 @@ async function handleSaveConsultation(sid) {
         const r = await api.post('consultations', { studentId: sid, date, type, content, nextAction, clientRequestId });
         if (r?.success) {
             toast('상담 기록이 저장되었습니다.', 'success');
+            if (inline) {
+                // 저장 응답의 id와 보낸 값으로 로컬 상태를 고치고 탭만 다시 그린다(상세를 닫았다 열지 않음, 재조회 없음).
+                await wsConsultAfterSave(sid, 'add', r.id ? { id: r.id, student_id: sid, date, type, content, next_action: nextAction } : null);
+                return;
+            }
             closeModal(true);
             await ensureStudentConsultationsLoaded(sid, { force: true });
             renderStudentDetailTab(sid, 'cns');
@@ -3481,6 +3500,7 @@ function applyConsultationAiNextAction(mode) {
 }
 
 function openEditConsultation(cid, sid) {
+    if (typeof wsConsultOpenInline === 'function' && wsConsultOpenInline('edit', sid, cid)) return;
     setStudentDetailSubModal('consultation-edit', sid);
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
     resetConsultationAiUiState('edit', sid, cid);
@@ -3525,7 +3545,8 @@ function openEditConsultation(cid, sid) {
 async function handleEditConsultation(cid, sid) {
     if (_consultSaveInFlight.has(cid)) return;
     _consultSaveInFlight.add(cid);
-    const btn = document.getElementById('modal-action-btn');
+    const inline = typeof wsConsultIsInline === 'function' && wsConsultIsInline('edit', sid, cid);
+    const btn = inline ? document.querySelector('#modal-body [data-ws-consult-save]') : document.getElementById('modal-action-btn');
     const origText = btn ? btn.textContent : null;
     if (btn) { btn.disabled = true; btn.textContent = '저장 중...'; }
 
@@ -3545,6 +3566,10 @@ async function handleEditConsultation(cid, sid) {
         const r = await api.patch(`consultations/${cid}`, { date, type, content, nextAction });
         if (r?.success) {
             toast('상담 기록이 수정되었습니다.', 'info');
+            if (inline) {
+                await wsConsultAfterSave(sid, 'edit', { id: cid, student_id: sid, date, type, content, next_action: nextAction });
+                return;
+            }
             closeModal(true);
             await ensureStudentConsultationsLoaded(sid, { force: true });
             renderStudentDetailTab(sid, 'cns');
@@ -3567,7 +3592,12 @@ async function handleDeleteConsultation(cid, sid) {
         const r = await api.delete('consultations', cid);
         if (r?.success) {
             toast('상담 기록이 삭제되었습니다.', 'info');
-            await ensureStudentConsultationsLoaded(sid, { force: true });
+            if (typeof wsConsultRemoveRow === 'function') {
+                // 삭제 응답이 곧 결과이므로 그 상담만 로컬에서 지우고 탭을 그 자리에서 다시 그린다(재조회 없음).
+                wsConsultRemoveRow(sid, cid);
+            } else {
+                await ensureStudentConsultationsLoaded(sid, { force: true });
+            }
             renderStudentDetailTab(sid, 'cns');
             return;
         }

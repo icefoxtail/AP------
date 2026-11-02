@@ -17,8 +17,9 @@ assert(
   pinnedPreview.includes('handleDeleteConsultation(${apmsStudentJsString(selected.id)},${apmsStudentJsString(sid)})'),
   'pinned recent consultation preview should expose a delete action'
 );
+// 2026-11-02 M6: 글자 span(누르는 영역 약 12px)을 실제 버튼(44px)으로 바꿨다. 삭제 동작과 라벨은 그대로다.
 assert(
-  pinnedPreview.includes('>삭제</span>'),
+  pinnedPreview.includes('>삭제</button>') && pinnedPreview.includes('ws-link-btn--danger'),
   'pinned recent consultation preview should label the delete action'
 );
 

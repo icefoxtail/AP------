@@ -110,3 +110,53 @@ test('M4 re-enrollment opens inline in the withdrawal report instead of replacin
     assert.match(slice(edit, 'handleRestore.confirm = async', 'function sortClassesForStudentModal('), /if \(inlineSave && typeof wsRestoreAfterSave === 'function'\)/);
     assert.match(index, /js\/ws-student-restore\.js/);
 });
+
+// ------------------------------------------------------------ M6 학생 상세 · 상담 탭
+const student = read('apmath/js/student.js');
+const consult = read('apmath/js/ws-student-consult.js');
+
+test('M6 consultation tab: inline form never opens a modal or closes the detail', () => {
+    const code = stripComments(consult);
+    assert.doesNotMatch(code, /showModal\(|showModalStep\(|replaceModalStep\(|closeModal\(/, 'no modal calls in the inline consultation module');
+    // 열기 함수는 학생 상세가 열려 있으면 인라인으로 가고, 아니면(반 화면에서 직접 호출) 옛 단일 모달 폼으로 간다
+    assert.match(slice(student, 'function openAddConsultationModal(sid)', 'const _consultSaveInFlight'), /wsConsultOpenInline\('add', sid\)\) return;[\s\S]*showStudentDetailSubModalStep\('consultation-add'/);
+    assert.match(slice(student, 'function openEditConsultation(cid, sid)', 'async function handleEditConsultation('), /wsConsultOpenInline\('edit', sid, cid\)\) return;/);
+});
+
+test('M6 consultation save paths: inline success does not close the detail or refetch; payloads and dedupe unchanged', () => {
+    const save = slice(student, 'async function handleSaveConsultation(sid)', 'async function generateConsultationAiSummary(');
+    assert.match(save, /api\.post\('consultations', \{ studentId: sid, date, type, content, nextAction, clientRequestId \}\)/);
+    assert.match(save, /_consultSaveInFlight\.has\(guardKey\)/);
+    assert.match(save, /clientRequestId = \(typeof crypto/);
+    const inlineBranch = slice(save, 'if (inline) {', 'closeModal(true);');
+    assert.doesNotMatch(inlineBranch, /closeModal|ensureStudentConsultationsLoaded|renderStudentDetailTab\(/);
+    assert.match(inlineBranch, /wsConsultAfterSave\(sid, 'add'/);
+    const edit = slice(student, 'async function handleEditConsultation(cid, sid)', 'async function handleDeleteConsultation(');
+    assert.match(edit, /api\.patch\(`consultations\/\$\{cid\}`, \{ date, type, content, nextAction \}\)/);
+    assert.match(edit, /_consultSaveInFlight\.has\(cid\)/);
+    assert.doesNotMatch(slice(edit, 'if (inline) {', 'closeModal(true);'), /closeModal|ensureStudentConsultationsLoaded/);
+    const del = slice(student, 'async function handleDeleteConsultation(', 'async function handleDeleteSession(');
+    assert.match(del, /api\.delete\('consultations', cid\)/);
+    assert.match(del, /wsConsultRemoveRow\(sid, cid\);\s*\} else \{\s*await ensureStudentConsultationsLoaded/, 'delete updates local state; refetch only as fallback');
+});
+
+test('M6 consultation inline form: every field labelled, AI panel and hooks present', () => {
+    const form = slice(consult, 'function wsConsultFormHtml(', 'function wsConsultRefreshHost(');
+    const ids = [...form.matchAll(/<(?:input|select|textarea)[^>]*\sid="([^"]+)"/g)].map(m => m[1]);
+    assert.ok(ids.length >= 5);
+    for (const id of ids) assert.ok(form.includes(`for="${id}"`), 'label for ' + id);
+    assert.match(form, /consultation-ai-panel-wrap/);
+    assert.match(student, /wsConsultFormHtml\(key\)/);
+    assert.match(student, /wsConsultThreadHtml\(key\)/);
+    assert.match(slice(student, 'function renderStudentDetailTab(', 'function renderStudentDetailTabInPlace('), /wsConsultGuardLeave/);
+    assert.match(index, /js\/ws-student-consult\.js/);
+});
+
+test('M6 consultation edit/delete controls are real buttons (touch target), not clickable text', () => {
+    for (const fn of ['renderStudentPinnedConsultationPreviewHtml', 'apStudentConsultationCardHtml']) {
+        const body = slice(student, 'function ' + fn + '(', '\nfunction ');
+        assert.match(body, /<button type="button" class="ws-link-btn" onclick="openEditConsultation/);
+        assert.doesNotMatch(body, /<span[^>]*onclick="(?:openEditConsultation|handleDeleteConsultation)/);
+    }
+    assert.match(read('apmath/css/ws-student.css'), /\.ws-link-btn \{[^}]*min-height: 44px/);
+});

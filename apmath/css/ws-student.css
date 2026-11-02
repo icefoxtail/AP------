@@ -95,3 +95,81 @@
 @media (max-width: 600px) {
     .ws-restore__actions .btn { flex: 1 1 0; }
 }
+
+/* ---- 학생 상세 · 상담 탭 (ws-student-consult.js) ---- */
+/* 수정·삭제는 글자 span이 아니라 버튼이다(누르는 영역 44px, 글자 12px 이상). */
+.ws-link-btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0 8px;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: var(--ap-ui-radius-control, 8px);
+}
+.ws-link-btn--danger { color: var(--error); }
+.ws-link-btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+
+.ws-consult-form-host:empty { display: none; }
+.ws-consult-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 0 12px;
+    padding: 12px;
+    border: 1px solid var(--primary);
+    border-radius: var(--ap-ui-radius-panel, 8px);
+    background: var(--surface);
+}
+.ws-consult-form__title { font-size: 14px; font-weight: 600; color: var(--text); }
+.ws-consult-form__grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 8px 12px; }
+.ws-consult-form .apms-unified-control {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 12px;
+    text-align: left;
+    background: var(--surface);
+    border: 1px solid var(--control-border, var(--border));
+    border-radius: var(--ap-ui-radius-control, 8px);
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 400;
+    font-family: inherit;
+}
+.ws-consult-form textarea.ws-consult-form__content { min-height: 140px; resize: vertical; }
+.ws-consult-form textarea.ws-consult-form__action { min-height: 72px; resize: vertical; }
+.ws-consult-form__actions { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+.ws-consult-form__actions .btn { min-height: 44px; padding: 8px 16px; font-size: 13px; font-weight: 500; }
+.ws-consult-thread {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0 0 12px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--ap-ui-radius-panel, 8px);
+    background: var(--surface);
+}
+.ws-consult-thread__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.ws-consult-thread__head .btn { min-height: 44px; padding: 8px 14px; font-size: 13px; }
+
+/* 상담 탭·학생 상세 구간의 작은 글자(11px)를 12px로. 학생 상세 껍데기 안에서만 적용한다. */
+.ap-student-detail-shell .ap-student-consult-type,
+.ap-student-detail-shell .ap-student-section-head span,
+.ap-student-detail-shell .ap-student-management-desc,
+.ap-student-detail-shell .ap-student-management-counts,
+.ap-student-detail-shell .ap-student-edit-help,
+.ap-student-detail-shell .ap-student-field span,
+.ap-student-detail-shell .std-badge { font-size: 12px; }
+.ap-student-detail-shell .ap-student-mini-btn { font-size: 13px; }
+.ap-student-detail-shell .ap-student-consult-all summary::after,
+.ap-student-detail-shell .ap-student-consult-date-btn { font-size: 13px; }
+@media (max-width: 600px) {
+    .ws-consult-form__grid { grid-template-columns: minmax(0, 1fr); }
+    .ws-consult-form__actions .btn { flex: 1 1 0; }
+}
