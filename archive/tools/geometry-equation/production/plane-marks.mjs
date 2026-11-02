@@ -73,7 +73,7 @@ const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','
   angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight','over','arcScale','angleDimension','color'],
   equalLengths:['id','count','segments','pathMark','markStyle','color'],parallels:['id','count','segments','lines','color'],
   expressionLabels:['id','ownerSegment','text','factRole','labelKind','labelWeight','unit','labelAt','ownership','side'],
-  arcs:['id','circle','center','from','to','side','label','labelKind','labelWeight','unit','labelPlacement','highlight','factRole'],
+  arcs:['id','circle','center','from','to','side','label','labelKind','labelWeight','unit','labelPlacement','highlight','factRole','color'],
   traces:['id','center','radius','through','spanDeg','span','labelAt','label','labelKind','labelWeight','unit','factRole'],
   facts:['kind','circle','points','center','contact','tangent']};
 const FACT_ROLES=['GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'];
@@ -662,6 +662,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
   }
 
   // --- highlighted circle arcs
+  const arcColorLengths=new Map();
   for(const row of list(marks.arcs,'arcs')){
     if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:arcs');
     keysOk(row,KEYS.arcs,'arcs');claim(row.id,'arcs');
@@ -683,6 +684,15 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(kind==='TEXT'&&row.label!==undefined)plainTextOk(String(row.label),'arcs.label',row.id);
     const unit=unitOf(row,kind,row.label!==undefined,'arcs');
     const object={id:row.id,kind:'CIRCULAR_ARC',centerPoint:row.center,startPoint:row.from,endPoint:row.to,sweep,highlight:row.highlight!==false};
+    // color (G13c, C1): a palette colour for the arc's line; arcs of one colour are one relation, so they must have the same length (radius x angle, relative 1e-6). An arc that is not drawn (highlight false) has no colour.
+    if(row.color!==undefined){
+      if(!isPaletteName(row.color)||row.highlight===false)bad('ARC_COLOR_INVALID:'+row.id);
+      const length=r*(sweep==='CCW'?ccw:2*Math.PI-ccw);
+      const same=arcColorLengths.get(row.color);
+      if(same&&Math.abs(same.length-length)>1e-6*Math.max(1,same.length))bad('ARC_COLOR_GROUP_MISMATCH:'+same.id+'&'+row.id+':'+row.color);
+      if(!same)arcColorLengths.set(row.color,{id:row.id,length});
+      object.color=row.color;
+    }
     // labelPlacement LEADER (E32): the label stands anywhere free, outside or inside the circle, on a leader that starts on this arc (a thin arc, several arcs of one circle); AUTO (default) is unchanged
     if(row.labelPlacement!==undefined){
       if(!ARC_LABEL_PLACEMENTS.includes(row.labelPlacement))bad('ARC_LABEL_PLACEMENT_INVALID:'+row.id);

@@ -790,7 +790,8 @@ def prepare(spec):
                        'token':'axisOverlapShape' if obj.get('highlight') else 'mainShape','layer':46 if obj.get('highlight') else 40,'role':'circularArc',
                        'ownerPoints':[obj['startPoint'],obj['endPoint']],
                        'centerPoint':obj['centerPoint'],'ownerRadius':value.radius,'sweep':value.sweep,
-                       **({'mark':'arc','markId':oid} if obj.get('highlight') else {})},'curve')
+                       **({'mark':'arc','markId':oid} if obj.get('highlight') else {}),
+                       **({'stroke':PALETTE[obj['color']]['line']} if obj.get('color') else {})},'curve')   # color (G13c, C1): the arc wears the palette line colour
             if obj.get('labelText') is not None:
                 middle=value.start_angle+value.sweep_radians/2;outward=vp.screen((value.center[0]+value.radius*math.cos(middle),value.center[1]+value.radius*math.sin(middle)))
                 centre=vp.screen(value.center);ox,oy=outward[0]-centre[0],outward[1]-centre[1];norm=math.hypot(ox,oy)

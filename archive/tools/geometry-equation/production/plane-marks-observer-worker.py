@@ -1266,8 +1266,10 @@ def audit(p):
                 if any(other is not row and other.get('circle')==row.get('circle') and other.get('center')==row.get('center') and arc_gap(other,angle)+1e-9<mine for other in marks.get('arcs',[])):errors.append('ARC_LABEL_AMBIGUOUS_OWNER:'+oid)
         kind=row.get('labelKind','MATH' if row.get('unit') else 'DEGREE')
         if kind=='TEXT' or row.get('unit'):label_content(oid+'-label',kind,row['label'],row.get('unit'),row.get('labelWeight'))
+    arc_color_lengths={}     # (G13c) palette colour -> (arc id, arc length in model units): arcs of one colour are one relation and have one length
     for row in marks.get('arcs',[]):
         oid=row['id'];nodes=by_mark.get(('arc',oid),[])
+        if row.get('color') is not None and (row['color'] not in PALETTE_LINES or row.get('highlight',True) is False):errors.append('ARC_COLOR_INVALID:'+oid)
         if row.get('highlight',True) is not True and row.get('highlight') is not None:continue
         if len(nodes)!=1:errors.append('ARC_MARK_MISSING:'+oid);continue
         center=peer_point(row['center']);start=peer_point(row['from']);end=peer_point(row['to']);radius=norm(sub(start,center))
@@ -1283,6 +1285,12 @@ def audit(p):
         if want is None:want=min(ccw,360.0-ccw) if row.get('side','MINOR')=='MINOR' else max(ccw,360.0-ccw)
         if abs(abs(total)-want)>ANGLE_TOLERANCE:errors.append('ARC_SIDE_MISMATCH:'+oid+':drawn=%.3f:expected=%.3f'%(abs(total),want))
         observations.append({'id':oid,'type':'ARC','drawnDegrees':abs(total),'radius':radius})
+        # color (G13c): the arc is stroked in the palette line colour the plan names, and arcs of one colour have the same length
+        if row.get('color') in PALETTE_LINES:
+            if str(nodes[0].get('stroke') or '').lower()!=PALETTE_LINES[row['color']]:errors.append('ARC_COLOR_MISMATCH:'+oid)
+            length=radius*math.radians(want)
+            earlier=arc_color_lengths.setdefault(row['color'],(oid,length))
+            if abs(earlier[1]-length)>LENGTH_RELATIVE*max(1.0,earlier[1]):errors.append('ARC_COLOR_GROUP_MISMATCH:'+earlier[0]+'&'+oid+':'+row['color'])
         if row.get('label') is not None:audit_arc_label(row)
     # a label on an arc that is only part of the drawn circle (highlight false) still stands beside its own arc
     for row in marks.get('arcs',[]):
