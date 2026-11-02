@@ -2775,7 +2775,14 @@ window.addEventListener('DOMContentLoaded', function () {
   function refocusV(L) {
     const sc = L && L.scene;
     if (!sc || !sc.vary) return;
-    try { const f = L._measureFocus(sc); if (f) L.board.setFocus(f, true); L.invalidate(true); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+    try {
+      let f = L._measureFocus(sc);
+      // 기울기가 큰 직선 그래프는 보이는 범위 끝까지 그려져 재는 범위가 수백 배로 커집니다(그림이 사라지고 눈금이 끝없이 이어짐). 그럴 땐 장면의 고정 범위를 씁니다.
+      const wide = (r) => !r || !Array.isArray(r) || !(Math.abs(r[1] - r[0]) <= 200);
+      if (f && (wide(f.x) || wide(f.y))) f = typeof sc.focus === 'function' ? sc.focus(L.s) : sc.focus;
+      if (f) L.board.setFocus(f, true);
+      L.invalidate(true);
+    } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
   }
   // 장면 제목에 식이 들어 있는 장면(VSPEC.vtitle): 문제·정리 탭에서 「새 문제」 변형을 보는 동안은 제목도 그 식으로 바꿔 보여 줍니다.
   function titleV(L) {
@@ -2840,7 +2847,8 @@ window.addEventListener('DOMContentLoaded', function () {
     const stmtOf = () => (isVar() ? vs.text(vary.cur()) : p.statement);
     const hintsOf = () => (!isVar() ? p.auxHints : [
       '💡 [문제 그림] 문제에 주어진 값과 점이 그림에 표시되어 있습니다. 「다음 단계」를 눌러 보조선과 풀이를 한 단계씩 따라가 보세요.',
-      ...stepsOf().map((x) => `🪄 [${x.title}] ${x.desc.replace(/<br\s*\/?>/g, ' ')}`),
+      // 보조선 안내는 글로 들어가 이스케이프되므로, 수식 안의 < > 는 KaTeX 기호(\lt \gt)로 바꿔 '&gt;' 글자가 그대로 보이지 않게 합니다.
+      ...stepsOf().map((x) => `🪄 [${x.title}] ${x.desc.replace(/<br\s*\/?>/g, ' ').replace(/\$[^$]*\$/g, (m) => m.replace(/</g, '\\lt ').replace(/>/g, '\\gt '))}`),
       '✨ [전체 보조선 보기] 풀이에 쓴 보조선과 길이 표시가 모두 나옵니다.'
     ]);
     const stepsHtml = () => stepsOf().map((st) => `<div style="margin-bottom:10px"><b>${st.title}</b><br/>${st.desc}</div>`).join('');
