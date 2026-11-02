@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 380" width="480" height="380" role="img" aria-labelledby="q24-title q24-desc">
+  <title id="q24-title">정사각형 대각선 교점에서의 회전과 넓이 다이어그램</title>
+  <desc id="q24-desc">한 변이 10cm인 정사각형 ABCD의 대각선 교점 O에 꼭짓점을 둔 두 정사각형이 회전하여 생기는 겹친 영역 OPCQ의 넓이</desc>
+  <rect width="480" height="380" fill="#ffffff"/>
+  <!-- 정사각형 ABCD: A(140,50), B(140,290), C(380,290), D(380,50) -> 중심 O(260,170) -->
+  <polygon points="140,50 140,290 380,290 380,50" fill="#ffffff" stroke="#0f172a" stroke-width="2.5"/>
+  <!-- 대각선 AC, BD -->
+  <line x1="140" y1="50" x2="380" y2="290" stroke="#94a3b8" stroke-dasharray="3,3" stroke-width="1.5"/>
+  <line x1="140" y1="290" x2="380" y2="50" stroke="#94a3b8" stroke-dasharray="3,3" stroke-width="1.5"/>
+  <!-- 겹친 영역 사각형 OPCQ 색칠: O(260,170), P(310,290), C(380,290), Q(380,220) -->
+  <polygon points="260,170 310,290 380,290 380,220" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <!-- 반대편 겹친 영역 사각형: O(260,170), (210,50), (140,50), (140,120) -->
+  <polygon points="260,170 210,50 140,50 140,120" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <!-- 회전된 정사각형 OHIJ (우하단) 윤곽 -->
+  <polygon points="260,170 310,290 430,240 380,120" fill="none" stroke="#2563eb" stroke-width="1.8"/>
+  <!-- 회전된 정사각형 OEFG (좌상단) 윤곽 -->
+  <polygon points="260,170 210,50 90,100 140,220" fill="none" stroke="#2563eb" stroke-width="1.8"/>
+  <!-- 점 표시 -->
+  <circle cx="260" cy="170" r="4.5" fill="#0f172a"/>
+  <circle cx="310" cy="290" r="4" fill="#2563eb"/>
+  <circle cx="380" cy="220" r="4" fill="#2563eb"/>
+  <!-- 꼭짓점 라벨 -->
+  <g font-family="sans-serif" font-size="15" font-weight="bold" fill="#0f172a">
+    <text x="125" y="45">A</text>
+    <text x="125" y="305">B</text>
+    <text x="390" y="305">C</text>
+    <text x="390" y="45">D</text>
+    <text x="250" y="165">O</text>
+    <text x="310" y="312" fill="#2563eb" text-anchor="middle">P</text>
+    <text x="395" y="225" fill="#2563eb">Q</text>
+  </g>
+  <!-- 정사각형 한 변 10cm 라벨 -->
+  <text x="260" y="40" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">10 cm</text>
+</svg>

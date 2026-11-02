@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 240" width="460" height="240" role="img" aria-labelledby="q15-title q15-desc">
+  <title id="q15-title">평행선과 각 다이어그램</title>
+  <desc id="q15-desc">두 평행선 l, m 사이에서 55도의 엇각 a와 115도의 같은 쪽 내각 b</desc>
+  <rect width="460" height="240" fill="#ffffff"/>
+  <!-- 평행선 l, m -->
+  <line x1="30" y1="60" x2="430" y2="60" stroke="#0f172a" stroke-width="2"/>
+  <text x="20" y="65" font-family="sans-serif" font-size="15" font-weight="bold" fill="#0f172a">l</text>
+  <line x1="30" y1="180" x2="430" y2="180" stroke="#0f172a" stroke-width="2"/>
+  <text x="20" y="185" font-family="sans-serif" font-size="15" font-weight="bold" fill="#0f172a">m</text>
+  
+  <!-- 교차선 1 (왼쪽: 55도) (195,60)과 (95,180)을 지남 -->
+  <line x1="220" y1="30" x2="70" y2="210" stroke="#2563eb" stroke-width="2"/>
+  <!-- 55도 호: 중심 (195,60), 아래-왼쪽 interior -->
+  <path d="M 165 60 A 30 30 0 0 0 176 83" fill="none" stroke="#2563eb" stroke-width="2"/>
+  <text x="145" y="85" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2563eb">55°</text>
+  <!-- 각 a 호: 중심 (95,180), 위-오른쪽 interior (엇각) -->
+  <path d="M 125 180 A 30 30 0 0 0 114 157" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <text x="130" y="168" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ef4444">a</text>
+  
+  <!-- 교차선 2 (오른쪽: 115도) (297,60)과 (363,180)을 지남 -->
+  <line x1="280" y1="30" x2="380" y2="210" stroke="#0f172a" stroke-width="2"/>
+  <!-- 115도 호: 중심 (297,60), 아래-왼쪽 interior -->
+  <path d="M 272 60 A 25 25 0 0 0 309 82" fill="none" stroke="#0f172a" stroke-width="2"/>
+  <text x="275" y="90" font-family="sans-serif" font-size="13" font-weight="bold" fill="#0f172a">115°</text>
+  <!-- 각 b 호: 중심 (363,180), 위-왼쪽 interior (동측내각) -->
+  <path d="M 338 180 A 25 25 0 0 1 351 158" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <text x="330" y="170" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ef4444">b</text>
+</svg>
