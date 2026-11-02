@@ -63,7 +63,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 1,
-    "difficultyConfidence": "high"
+    "difficultyConfidence": "high",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고2_미적분I/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 y=f(x)의 그래프에서 점 (1,-1)은 x축 아래, 점 (2,1)은 x축 위에 있고 두 점 사이에서 그래프가 x축을 지난다.",
+    "solutionImageCaption": "f(1)<0, f(2)>0이므로 (1,2)에 f(x)=0의 실근이 존재한다. 정답 ②.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -161,7 +165,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high"
+    "difficultyConfidence": "high",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고2_미적분I/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: f(x)=2x+5 (x<-1), x²+4x+6 (x≥-1)의 그래프. 이음점 (-1,3)에서 주황색 직선 y=2x+5가 왼쪽 조각이면서 오른쪽 곡선의 접선이 되어, 두 조각의 기울기가 2로 같음을 보인다.",
+    "solutionImageCaption": "a=5, b=1일 때 f(x)는 (-1,3)에서 이어지고 두 조각의 접선 기울기가 2로 같다. 따라서 ab=5이다(정답 ⑤).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -193,7 +201,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 1,
-    "difficultyConfidence": "high"
+    "difficultyConfidence": "high",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고2_미적분I/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간 [-2,0]의 양 끝 (-2,-3), (0,-3)을 잇는 수평 점선과 꼭짓점 (-1,-4)의 수평 접선 y=-4를 보여 준다.",
+    "solutionImageCaption": "양 끝의 함수값이 같고 꼭짓점에서 접선이 수평이므로 c=-1이다. 정답 ①.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -225,7 +237,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 1,
-    "difficultyConfidence": "high"
+    "difficultyConfidence": "high",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고2_미적분I/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌구간 [1,4]의 그래프와 양 끝 (1,6), (4,9), 꼭짓점 (2,5), x=1과 x=4의 세로 점선을 보여 준다.",
+    "solutionImageCaption": "최댓값 M=9, 최솟값 m=5이므로 M+m=14이다. 정답 ②.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -289,7 +305,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium"
+    "difficultyConfidence": "medium",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고2_미적분I/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=f(x)=x^3+3x^2-5x+4와 기울기가 4인 평행한 두 접선. 파란 접선 y=4x-1은 접점 (1,3)에서, 주황 접선 y=4x+31은 접점 (-3,19)에서 곡선에 닿는다.",
+    "solutionImageCaption": "기울기 4인 접선 중 y절편이 음수인 것은 y=4x-1뿐이고, 이 직선이 x=2에서 지나는 점의 y좌표 k=7이므로 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -354,7 +374,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium"
+    "difficultyConfidence": "medium",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고2_미적분I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에 대하여 대칭인 삼차함수 그래프(예시)와 점 (-2,-3), (2,3). 두 점에서의 접선은 기울기가 같아 평행하고, (2,3)에서의 접선이 나머지 R(x)=2x-1이다.",
+    "solutionImageCaption": "원점 대칭이고 f(−2)=−3, f′(−2)=2이므로 f(x)=x³/16+5x/4로 정해지고, f(2)=3, f′(2)=2에서 (2,3)에서의 접선이 R(x)=2x−1이다. R(4)=7, 정답 ⑤.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -386,7 +410,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 4,
-    "difficultyConfidence": "medium"
+    "difficultyConfidence": "medium",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고2_미적분I/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 y=9x²−12x+4가 x축에 접하는 경계 상황의 그림. 꼭짓점 (2/3,0)이 x축 위에 있고 점선 x=2/3이 대칭축이다.",
+    "solutionImageCaption": "c=4이면 f(x)=9x²−12x+4가 x축에 (2/3,0)에서 접해 1/f(x)가 불연속이다. 실근이 없으려면 c>4이어야 하므로 f(0)=c의 최솟값은 5, 정답 ⑤.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -418,7 +446,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 5,
-    "difficultyConfidence": "medium"
+    "difficultyConfidence": "medium",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고2_미적분I/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 조각함수 g(x)의 그래프. 연결점 A(2,5), B(5,11) 사이 가운데 조각은 기울기 2인 직선이고, 직선 x=1, x=6, y=3과 곡선 사이의 영역이 파랗게 칠해져 있다.",
+    "solutionImageCaption": "가운데 조각은 g(x)=2x+1이고, 세 직선 x=1, x=6, y=3과 곡선으로 둘러싸인 넓이는 25이다(정답 ⑤).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -451,7 +483,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 5,
-    "difficultyConfidence": "medium"
+    "difficultyConfidence": "medium",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고2_미적분I/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: g(x)=|2x²-1| (x<1), (x-3)²/4 (x≥1)의 그래프. 점 (1,1), (3,0), (5,1)과 수평선 y=1(주황), x축 y=0이 보이고, 세 곳의 최저점(x축 위)과 극대점 (0,1)이 y=0, y=1 높이에 놓인다.",
+    "solutionImageCaption": "b(k)는 수평선 y=k가 지나는 교점 수가 달라지는 k=0, k=1에서 불연속이고, f(x)=(x-3)²/4이므로 g(7)=4이다(정답 ③).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -483,11 +519,12 @@ window.questionBank = [
     "subUnit": "도형과 함수의 극한",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/26_매산고_2학기_중간_고2_미적분I/q15-solution.svg",
-    "solutionImageAlt": "t가 1인 경우 포물선 위의 P에서 AB로 내린 각의 이등분선 PQ와 점 A, B, O의 위치",
-    "solutionImageCaption": "각의 이등분선 정리 AQ:QB=AP:PB를 실제 좌표로 표현한 예시이다.",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고2_미적분I/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=4−x² 위의 점 A(−2,0), B(2,0), 예시 위치 P(1,3)으로 만든 삼각형 APB와 ∠APB의 이등분선 PQ(주황)를 그렸다. Q는 선분 AB 위에 있다. AP=3√2, PB=√10과 AQ:QB=AP:PB는 캡션에 있다.",
+    "solutionImageCaption": "예: t=1이면 P(1,3), AP=3√2, PB=√10이고, 각의 이등분선 정리로 AQ:QB=AP:PB이다. AP²−PB²=8t에서 OQ/t=16/(AP+PB)²이고 t→0+일 때 극한은 1/5, 정답 ④.",
     "difficultyBucket": 4,
-    "difficultyConfidence": "medium"
+    "difficultyConfidence": "medium",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
