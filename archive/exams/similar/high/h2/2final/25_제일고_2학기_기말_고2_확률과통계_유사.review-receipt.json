@@ -1,0 +1,299 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "25_제일고_2학기_기말_고2_확률과통계_유사",
+  "candidateJsPath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_유사.meta-q01-q23.json",
+  "candidateGitBlobSha1": "ceecaee1322d285e656ae6089901c5fbe207ea82",
+  "reviewTimestamp": "2026-11-01T19:49:23.000Z",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "overallVerdict": "PASS",
+  "signOffStatus": "SIGNED_OFF_PASS",
+  "blindFirstPass": {
+    "frozenBeforeViewingAnswerSolutionMeta": true,
+    "freezeArtifact": "scratchpad/rev_jeil/blind_freeze.json (발문·보기·표만 보고 sympy/Node/mpmath로 풀어 저장 정답·해설·메타 열람 전에 동결)",
+    "totalSolved": 23,
+    "answerMatches": 23,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "correctedByReviewer": 0
+  },
+  "executiveSummary": {
+    "structure": {
+      "questionCount": 23,
+      "sequential": "1..23",
+      "mcCount": 20,
+      "descriptiveCount": 3,
+      "choicesPerMc": 5,
+      "mcAnswerDistribution": "①4 ②4 ③4 ④4 ⑤4",
+      "choicesAscending": "PASS (20/20, 숫자 보기는 값 오름차순)",
+      "scoreSum": 100,
+      "scoreSumOriginalEquals": true,
+      "scoreNote": "points 배열 23개가 원본 발문 [n점] 배열과 문항별 완전 일치(합 100)"
+    },
+    "curriculum": "2015 개정 확률과 통계(확률분포·이항분포·정규분포·표본평균·모평균 추정) 범위 내. 정규근사에 연속성 보정을 쓰지 않는 교과서 관례를 일관 사용(Q15는 정확 이항값 0.837이 보기 0.77/0.82 중 0.82 쪽이라 보기 구분 무리 없음).",
+    "standardNormalTable": "표준정규분포표가 필요한 문항은 모두 발문에 표/값을 제시. Q15·Q17·Q21은 원본처럼 소수 둘째/셋째 자리 표를 제시하고 해설이 그 값만 사용.",
+    "originalComparison": "23문항 모두 원본과 1:1 유형·배점·형식 대응(STRICT_VARIANT). 객관식 정답 값은 원본과 전부 다르고(보기 번호가 우연히 같은 Q5 ②는 값 2508→1229, Q18 ④는 'ㄱ,ㄷ'→'ㄴ,ㄷ'), 서술형 정답도 144→162, 8/15→5/7, 54→86으로 다르다. Q2는 발문 문장이 원본과 같지만 일반적인 분류 질문이라 허용, 보기는 전부 새 상황. Q8은 원본의 그림 대신 꺾인선 설명을 글로 완결한 설계 변경이며 풀이 구조(넓이 3조건으로 a,b,c 결정)는 동일."
+  },
+  "defects": [],
+  "reviewerEdits": [],
+  "metaReview": {
+    "fieldCoverage": "24개 필드 x 23문항 = 552/552 채움(누락 0, 스크립트 계산)",
+    "jsVsMetaParity": "JS 문항 메타 22개 필드와 소형 메타 after 23문항 전부 일치",
+    "keyExistence": "PT 5종·TPL 10종·CC 21종·COND 5종 canonical ACTIVE 레지스트리(concepts/*.json, packs/*/taxonomy.json, condition_registry.json)에서 직접 조회 전부 실재, TPL의 parentProblemTypeKey가 문항 PT와 일치(위반 0). 확장 키 2개 중 EXT-CROSS-NORMAL_LINEAR_TRANSFORM은 기존 강남여고 확통 레지스트리 재사용.",
+    "extensionKeys": {
+      "reusedExtensionCount": 1,
+      "newExtensionCount": 1,
+      "kept": [
+        {
+          "key": "EXT-CROSS-TAIL_PROBABILITY_SUM_EXPECTATION",
+          "usedIn": [
+            18
+          ],
+          "parent": "CC_DISCRETE_EXPECTATION",
+          "parentExists": true,
+          "verdict": "유지: canonical에 E(X)=ΣP(X≥k) 꼬리확률 합 표현·평균 논법 개념이 없음(CC_DISCRETE_EXPECTATION은 Σxp만, CC_CUMULATIVE_DISTRIBUTION_COMPLEMENT는 여사건 관계만). 기댓값 정의를 재해석하는 개념이므로 parent CC_DISCRETE_EXPECTATION(ACTIVE, 이산확률변수의 기댓값) 적절. 필수 항목 전부 존재, 학교명 없음, canonicalRpmPromotion=false."
+        }
+      ]
+    },
+    "aliasProposals": {
+      "count": 3,
+      "verdict": "CC_EXPECTATION_LINEARITY→CC_LINEAR_EXPECTATION_PROPERTY, CC_Z_SCORE_STANDARDIZATION→CC_NORMAL_DISTRIBUTION_STANDARDIZATION, CC_STANDARD_NORMAL_DISTRIBUTION→CC_STANDARD_NORMAL_TABLE_READING: 정의·라벨 대조 결과 모두 동의어 쌍(canonical 양쪽 ACTIVE 실재). registry aliasProposals에만 기록되어 규칙 준수."
+    },
+    "unitRejudgement": "Q6만 원본(확률분포)과 단원이 다름: 상자에서 2개 추출한 표본평균의 평균=모평균(E(X̄)=m)이 결정 단계이므로 통계적 추정(H15-PS-06) 재판정이 타당. Q11은 원본 단원(확률분포) 유지, 풀이가 표본평균 분포를 거치므로 통계적 추정으로도 볼 수 있으나 어느 쪽이든 학생 사용에 지장 없음(비차단 메모).",
+    "evidenceDebt": 0,
+    "levelAndBucket": "단일 공식(Q2,3,5,6:1), 2단계(Q1,4,7,12:2), 3단계(Q9~11,13~17,19,20:3 등), 다단계 서술형·상 문항(Q8,21,22,23:4), 비정형 존재 논증(Q18:5)로 풀이 단계 수와 일치",
+    "nonBlockingMetaNotes": "Q10 COND_RANGE(0<p<1은 P(X=0)>0 보장 정도)와 Q14 COND_POSITIVE(σ>0은 결정적 선택이 아님)는 약한 태깅이나 오류는 아님. Q3·Q12는 cross []이며 PT/TPL이 개념을 모두 포함해 비해당 근거가 기록됨."
+  },
+  "planSvgReview": {
+    "plans": "23문항 x 2(problem/solution) = 46개 plan 전부 유효 JSON",
+    "active": [
+      "q08-solution(piecewise-polynomial-spike-v1)"
+    ],
+    "activeChecks": "graphPlan 두 조각(x/6, 2-x/2)과 꺾임점 (3,1/2), 도메인 [0,4], 색칠 0~2가 해설의 a=4,b=3,c=1/2·P(X≤2)=1/3과 일치. sourceQuote가 해설 본문에 실재. 에셋 바이트가 evidence/figure-solution.svg와 동일. title/desc/role=img 존재, raw LaTeX 없음, 글자는 경로 글리프. Chrome으로 PNG 렌더해 눈으로 확인(원점·(3,1/2)·(4,0)·x=2,3,4 눈금·색칠 영역이 해설과 일치, 순백 배경).",
+    "exemptOrUnsupported": "발문 그림 23개 EXEMPT(Q8은 꺾인선 세 점을 글로 완전 서술해 그림 없이 풀 수 있음), 해설 그림 22개 EXEMPT(계산·표 중심, 사유 기록), UNSUPPORTED 0.",
+    "engineEvidenceBindingNote": "q08-solution engineEvidence의 meta.sourcePath/identity가 원본 Q8(호스트 문항)에 결속되어 있음(render-plan이 문제 이미지가 있는 호스트 문항을 요구). 도구 수정 금지 규정에 따라 변경하지 않음."
+  },
+  "harness": {
+    "command": "node tools/harness/verify_similar_exam.mjs <JS> --phase=draft",
+    "result": "GATE_FAIL 46건(진단 전용)",
+    "classification": {
+      "toolLimitMiddleTaxonomy": "unregistered problemTypeKey/templateKey 46건(23문항 x PT·TPL) — 하네스가 중등 taxonomy pack만 조회. 해당 키는 canonical packs/probability-statistics/taxonomy.json에 ACTIVE로 실재(직접 확인).",
+      "realContentDefects": 0
+    },
+    "nodeCheck": "node --check PASS"
+  },
+  "notRun": [
+    "엔진(engine.html) 실화면 렌더(헤드리스 Chrome에서 자료 로딩 상태에서 멈춰 NOT_RUN; 대신 KaTeX throwOnError로 발문·보기·해설 전 수식 660개 파싱 오류 0 확인)",
+    "인쇄 미리보기",
+    "정식(non-draft) 하네스 및 main 병합"
+  ],
+  "questionsReview": [
+    {
+      "qid": 1,
+      "type": "객관식",
+      "score": 3.5,
+      "derivedAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "method": "75p(1-p)=12 -> p=1/5"
+    },
+    {
+      "qid": 2,
+      "type": "객관식",
+      "score": 3.4,
+      "derivedAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "운동장 한 바퀴 시간만 연속"
+    },
+    {
+      "qid": 3,
+      "type": "객관식",
+      "score": 3.7,
+      "derivedAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "match": true,
+      "method": "z=1.5(사회), 2.5(과학), 0.5(영어) -> 과학, 영어"
+    },
+    {
+      "qid": 4,
+      "type": "객관식",
+      "score": 3.7,
+      "derivedAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "method": "a=7/2, E(X)=2/3, E(6X-1)=3"
+    },
+    {
+      "qid": 5,
+      "type": "객관식",
+      "score": 3.7,
+      "derivedAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "V=48/12=4, E(X̄²)=4+35²=1229"
+    },
+    {
+      "qid": 6,
+      "type": "객관식",
+      "score": 3.7,
+      "derivedAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "match": true,
+      "method": "모평균 17/5, 5·17/5+1=18"
+    },
+    {
+      "qid": 7,
+      "type": "객관식",
+      "score": 4,
+      "derivedAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "method": "σ/8, 24/σ=1.5 -> σ=16"
+    },
+    {
+      "qid": 8,
+      "type": "객관식",
+      "score": 4,
+      "derivedAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "method": "P(X≤b)=3/4, b=6c, c=1/2 -> a=4,b=3 -> abc=6 (sympy)"
+    },
+    {
+      "qid": 9,
+      "type": "객관식",
+      "score": 4,
+      "derivedAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "method": "4^3=64, 치역 크기 분포 4/36/24, E=37/16, +3/16=5/2 (열거)"
+    },
+    {
+      "qid": 10,
+      "type": "객관식",
+      "score": 4,
+      "derivedAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "match": true,
+      "method": "np/(1-p)=12, np=8 -> p=1/3,n=24 -> 26"
+    },
+    {
+      "qid": 11,
+      "type": "객관식",
+      "score": 4,
+      "derivedAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "method": "합 평균 960, 표준편차 16, z=1.5 -> 0.9332"
+    },
+    {
+      "qid": 12,
+      "type": "객관식",
+      "score": 4,
+      "derivedAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "method": "ㄱ 참 ㄴ 참 ㄷ 거짓(1/2배)"
+    },
+    {
+      "qid": 13,
+      "type": "객관식",
+      "score": 4,
+      "derivedAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "중심 70, σ/4=4, 오차 10.32 -> 59.68~80.32 자연수 21개"
+    },
+    {
+      "qid": 14,
+      "type": "객관식",
+      "score": 4.2,
+      "derivedAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "method": "m=15, σ=10, P(Y>25)=0.6915"
+    },
+    {
+      "qid": 15,
+      "type": "객관식",
+      "score": 4.2,
+      "derivedAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "match": true,
+      "method": "p=0.02, N(50,7²), z -1~2 -> 0.34+0.48=0.82 (정확 이항 0.837, 보기 .77/.82 구분)"
+    },
+    {
+      "qid": 16,
+      "type": "객관식",
+      "score": 4.2,
+      "derivedAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "method": "a=m+9, 표본평균 sd 2, z=2.5 -> 0.0062"
+    },
+    {
+      "qid": 17,
+      "type": "객관식",
+      "score": 4.2,
+      "derivedAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "L=2z, l=4, 새 L=2 -> z=1 -> 68"
+    },
+    {
+      "qid": 18,
+      "type": "객관식",
+      "score": 4.5,
+      "derivedAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "method": "V=20 ㄱ 거짓, ㄴ 참, ㄷ x=(2j+1)/4 30쌍 합 <30 (mpmath 40자리 정확 계산: 0.9902<1 확인) -> ㄴ,ㄷ"
+    },
+    {
+      "qid": 19,
+      "type": "객관식",
+      "score": 4.5,
+      "derivedAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "method": "m=60, σ=4, 표본평균 sd 1, P(Z≤-0.5)=0.3085"
+    },
+    {
+      "qid": 20,
+      "type": "객관식",
+      "score": 4.5,
+      "derivedAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "method": "(1/2.5)·5=2"
+    },
+    {
+      "qid": 21,
+      "type": "서술형",
+      "score": 6,
+      "derivedAnswer": "162",
+      "candidateAnswer": "162",
+      "match": true,
+      "method": "p=1/3, 18/√(2n)≥1 -> n≤162"
+    },
+    {
+      "qid": 22,
+      "type": "서술형",
+      "score": 7,
+      "derivedAnswer": "5/7",
+      "candidateAnswer": "5/7",
+      "match": true,
+      "method": "카드1 1/3: E=3/7, 카드2 2/3: E=6/7 -> 5/7 (분포 8/21,11/21,2/21 열거)"
+    },
+    {
+      "qid": 23,
+      "type": "서술형",
+      "score": 7,
+      "derivedAnswer": "86",
+      "candidateAnswer": "86",
+      "match": true,
+      "method": "σ=15, x̄=46, a=40, b=46 -> 86"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-4",
+          "5",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -0.6,
+      4.6
+    ],
+    "viewport": [
+      -1.5,
+      5.5,
+      -1.5,
+      3.5
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "axis",
+        "from": "2",
+        "to": "4",
+        "fill": "MEDIUM",
+        "label": "S_2"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "P",
+        "x": 2,
+        "y": 2
+      },
+      {
+        "id": "V",
+        "x": 2.5,
+        "y": 2.25
+      },
+      {
+        "id": "Q",
+        "x": 4,
+        "y": 0
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "2",
+        "2"
+      ],
+      "V": [
+        "5/2",
+        "9/4"
+      ],
+      "Q": [
+        "4",
+        "0"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "k=2, a=b=1일 때 y=x와 y=-x²+5x-4는 점 (2,2)에서 부드럽게 이어지고, x축과 둘러싸인 부분이 S₁과 S₂이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "f(x)=x (x<2), f(x)=-x²+5x-4 (x≥2)이고 x=2에서 미분가능하다.",
+      "mappedTo": [
+        "graphPlan.pieces"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "넓이 S₁=2, S₂=10/3이다.",
+      "mappedTo": [
+        "graphPlan.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "미분가능하게 이어지는 연결점 (2,2)와 x축 사이 두 영역을 보여 준다."
+  ],
+  "sourceQuote": "둘러싸인 넓이를 $x=2$에서 나누어 계산한다.",
+  "assetPath": "assets/images/24_매산여고_2학기_기말_고2_수학II_유사/q19-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q19-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q19-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q19-solution.svg"
+  }
+}

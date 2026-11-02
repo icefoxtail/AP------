@@ -1,0 +1,143 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "2",
+          "0"
+        ]
+      },
+      {
+        "coefficients": [
+          "8",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-7",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "2"
+      },
+      {
+        "x": "3",
+        "y": "2"
+      },
+      {
+        "x": "5",
+        "y": "-2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "7"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "v",
+    "domain": [
+      0,
+      7
+    ],
+    "viewport": [
+      -1,
+      8,
+      -3,
+      3
+    ],
+    "axisTitles": {
+      "x": "t",
+      "y": "v"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 2,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 2
+      },
+      {
+        "id": "C",
+        "x": 5,
+        "y": -2
+      },
+      {
+        "id": "D",
+        "x": 7,
+        "y": 0
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "2",
+        "2"
+      ],
+      "B": [
+        "3",
+        "2"
+      ],
+      "C": [
+        "5",
+        "-2"
+      ],
+      "D": [
+        "7",
+        "0"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "속도 v(t)의 그래프는 점 (0,0), (2,2), (3,2), (5,-2), (7,0)을 차례로 이은 꺾인 선이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "0≤t≤7에서 v(t)의 그래프가 그림과 같다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "속도 그래프의 꺾이는 점의 좌표와 t축을 지나는 위치를 읽을 수 있게 한다."
+  ],
+  "sourceQuote": "속도 $v(t)$의 그래프가 그림과 같다.",
+  "assetPath": "assets/images/25_제일고_2학기_기말_고2_수학II_유사/q7.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q07-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q07-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q07-problem.svg"
+  }
+}

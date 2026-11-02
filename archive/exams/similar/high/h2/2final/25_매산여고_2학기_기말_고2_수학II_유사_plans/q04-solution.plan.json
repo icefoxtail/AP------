@@ -1,0 +1,66 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$v(t)=0$인 시각은 $t=5$ 또는 $t=-1$인데",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "15",
+      "12",
+      "-3"
+    ],
+    "domain": [
+      0,
+      6.2
+    ],
+    "viewport": [
+      -1,
+      7,
+      -8,
+      30
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisVariable": "t",
+    "functionName": "v",
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": 27
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "속도 v(t)=-3t²+12t+15의 그래프는 t=5에서 t축과 만나 속도가 0이 된다.",
+  "sourceConditions": [
+    {
+      "id": "q4-c1",
+      "condition": "v(t)=-3(t-5)(t+1)에서 t≥0이므로 v=0인 시각은 t=5",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "시각 t≥0 범위에서 속도 그래프가 t=5에서 0이 되는 순간을 보인다."
+  ],
+  "assetPath": "assets/images/25_매산여고_2학기_기말_고2_수학II_유사/q4-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q04-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q04-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/25_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q04-solution.svg",
+    "renderCarrier": {
+      "sourcePath": "archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
+      "ordinal": 4,
+      "note": "render-plan.mjs의 measure 단계는 archive/exams/original/ 경로만 받으므로(SOURCE_SCOPE) 같은 번호의 원본 문항을 크기 측정용 carrier로 사용했다. 그림 내용은 이 plan의 graphPlan에서만 결정된다."
+    }
+  }
+}

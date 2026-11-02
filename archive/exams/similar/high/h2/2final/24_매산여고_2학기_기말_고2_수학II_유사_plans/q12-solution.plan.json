@@ -1,0 +1,139 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "4",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "4",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "formula": "x*abs(x-4)",
+    "domain": [
+      -0.6,
+      8.6
+    ],
+    "viewport": [
+      -1.5,
+      10,
+      -6,
+      38
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "4",
+        "fill": "LIGHT",
+        "label": "S_1"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "axis",
+        "from": "4",
+        "to": "8",
+        "fill": "MEDIUM",
+        "label": "S_2"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": 4
+      },
+      {
+        "id": "A",
+        "x": 4,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 8,
+        "y": 32
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "2",
+        "4"
+      ],
+      "A": [
+        "4",
+        "0"
+      ],
+      "B": [
+        "8",
+        "32"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "k",
+          "x": "8"
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "곡선 y=x|x-4|는 x=4에서 x축과 만나며, 0≤x≤4의 넓이 S₁과 4≤x≤8의 넓이 S₂를 더한 것이 구하는 넓이이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "0≤x≤4에서 y=4x-x²이고 y≥0이다.",
+      "mappedTo": [
+        "graphPlan.regions"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "4≤x≤8에서 y=x²-4x이고 y≥0이다.",
+      "mappedTo": [
+        "graphPlan.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 곡선이 x=4를 경계로 두 부분으로 나뉘고 두 영역 모두 x축 위쪽임을 보여 준다."
+  ],
+  "sourceQuote": "$4\\le x\\le8$에서는",
+  "assetPath": "assets/images/24_매산여고_2학기_기말_고2_수학II_유사/q12-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q12-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q12-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q12-solution.svg"
+  }
+}

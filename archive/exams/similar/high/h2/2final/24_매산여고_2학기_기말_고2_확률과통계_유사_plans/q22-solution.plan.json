@@ -1,0 +1,47 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "150",
+        "sd": "10",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      "150",
+      "160"
+    ],
+    "zAxis": true,
+    "shades": [
+      {
+        "curve": "X",
+        "from": "160",
+        "to": null
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.5-0.3413"
+      }
+    ]
+  },
+  "caption": "점수가 930점 이상인 사건은 3의 배수의 눈이 160번 이상 나오는 사건이다.",
+  "sourceQuote": "시행 횟수가 충분히 커서 정규분포로 근사하면",
+  "sourceConditions": [
+    {
+      "id": "q22-c1",
+      "condition": "문항의 해설 풀이에 쓰인 값과 관계를 그림으로 옮긴다."
+    }
+  ],
+  "newVisualInformation": "정규근사한 분포에서 160 이상인 오른쪽 꼬리와 z=1에 해당하는 위치",
+  "assetPath": "archive/assets/images/24_매산여고_2학기_기말_고2_확률과통계_유사/q22-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계_유사_plans/evidence/q22-solution/figure-result.json",
+    "statePath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계_유사_plans/evidence/q22-solution/figure-state.json",
+    "svgPath": "archive/exams/similar/high/h2/2final/24_매산여고_2학기_기말_고2_확률과통계_유사_plans/evidence/q22-solution/figure-solution.svg"
+  }
+}
