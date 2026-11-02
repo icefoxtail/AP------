@@ -352,3 +352,7 @@ test('포커스 표시는 2px 실선 --primary 고리다(옛 4px 14% 고리는 U
     assert.ok(contrast(light.primary, light.surface) >= 3);
     assert.ok(contrast(dark.primary, dark.surface) >= 3);
 });
+
+test('모달이 열려 있으면 토스트가 화면 위쪽으로 올라가 하단 액션줄을 가리지 않는다', () => {
+    assert.match(index, /body\.ap-modal-open \.toast-container\s*\{[^}]*bottom:\s*auto;[^}]*top:\s*calc\(12px \+ env\(safe-area-inset-top\)\)/);
+});

@@ -783,6 +783,12 @@
             gap: 8px;
         }
 
+        /* 모달이 열려 있으면 토스트를 화면 위쪽에 띄운다. 아래쪽은 하단 고정 액션줄(저장·취소)이 있어 가리면 누르기 어렵다. */
+        body.ap-modal-open .toast-container {
+            bottom: auto;
+            top: calc(12px + env(safe-area-inset-top));
+        }
+
         .toast {
             background: rgba(25, 31, 40, 0.9);
             backdrop-filter: blur(8px);
