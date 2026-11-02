@@ -371,3 +371,216 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     }
   });
 });
+
+// ---------------------------------------------------------------------------
+// High school similar exams (h1/h2/h3). Fixtures are copied under a scratch ".../similar/high/..." tree so no
+// repository file is modified; engine evidence and assets are still read from the repository.
+// ---------------------------------------------------------------------------
+const HIGH_DIR = 'archive/exams/similar/high/h2/2final';
+const HS = '25_제일고_2학기_기말_고2_확률과통계_유사'; // questionsReview receipt, clean PASS
+const HS_MATH2 = '25_제일고_2학기_기말_고2_수학II_유사'; // blindFirstPass.frozenAnswers receipt, PASS_WITH_NOTES
+const HS_DEBT = '25_매산여고_2학기_기말_고2_수학II_유사'; // UNSUPPORTED solution figures + VISUAL_DEBT receipt
+const HS_STAT = '24_매산여고_2학기_기말_고2_확률과통계_유사'; // stat-chart-figure-v1 plans
+const HS_SET = '25_순천여고_2학기_기말_고1_공통수학2_유사'; // set-diagram-figure-v1, h1
+
+function stageHighFixture(stem, name, dirRel = HIGH_DIR) {
+  const dir = path.join(TEST_SCRATCH, name, 'similar', 'high', 'h2', '2final');
+  fs.mkdirSync(dir, { recursive: true });
+  for (const f of fs.readdirSync(path.join(REPO_ROOT, dirRel))) {
+    if (!f.startsWith(stem)) continue;
+    fs.cpSync(path.join(REPO_ROOT, dirRel, f), path.join(dir, f), { recursive: true });
+  }
+  const file = (suffix) => path.join(dir, `${stem}${suffix}`);
+  return {
+    dir,
+    js: file('.js'),
+    receipt: file('.review-receipt.json'),
+    meta: fs.readdirSync(dir).map((f) => path.join(dir, f)).find((f) => f.includes('.meta-')),
+    plan: (n) => path.join(dir, `${stem}_plans`, n),
+    run: (opts = {}) => verifySimilarExam({ jsPath: file('.js'), strictAuthoring: true, ...opts })
+  };
+}
+const readJson = (p) => JSON.parse(fs.readFileSync(p, 'utf8'));
+const writeJson = (p, o) => fs.writeFileSync(p, JSON.stringify(o, null, 2), 'utf8');
+
+describe('High school similar exams: grade-aware harness', () => {
+  test('stem lookup finds high-school exams and passes the clean release gate', () => {
+    const res = verifySimilarExam({ stem: HS, strictAuthoring: true });
+    assert.equal(res.ok, true, res.errors.join('; '));
+    assert.equal(res.totalQuestions, 23);
+  });
+
+  test('PT/TPL are checked against the course packs (수학II -> derivative/integral-calculus), not middle1', () => {
+    const res = verifySimilarExam({ stem: HS_MATH2, strictAuthoring: true });
+    assert.equal(res.ok, true, res.errors.join('; '));
+    assert.ok(!res.errors.some((e) => e.includes('unregistered')));
+  });
+
+  test('stat-chart-figure-v1 / set-diagram-figure-v1 plans and their title-less engine SVGs are supported', () => {
+    const stat = verifySimilarExam({ stem: HS_STAT, strictAuthoring: true });
+    assert.equal(stat.ok, true, stat.errors.join('; '));
+    const set = verifySimilarExam({ stem: HS_SET, strictAuthoring: true });
+    assert.equal(set.ok, true, set.errors.join('; '));
+    assert.ok(set.warnings.some((w) => w.includes('VISUAL_DEBT_ACKNOWLEDGED')), 'debt must stay visible');
+  });
+
+  test('PASS_WITH_* receipt statuses are accepted and surfaced as a qualified PASS', () => {
+    const res = verifySimilarExam({ stem: HS_DEBT, strictAuthoring: true });
+    assert.equal(res.ok, true, res.errors.join('; '));
+    assert.ok(res.warnings.some((w) => w.includes('RECEIPT_QUALIFIED_PASS')));
+  });
+
+  test('Fault Injection: non-PASS receipt status or non-PASS verdict is blocked', () => {
+    const fx = stageHighFixture(HS, 'status');
+    const base = readJson(fx.receipt);
+    assert.equal(fx.run().ok, true, 'control copy must pass');
+    for (const patch of [{ signOffStatus: 'SIGNED_OFF_FAIL' }, { signOffStatus: 'PASS_WITH_FAIL' }, { signOffStatus: 'NEEDS_REVISION' }, { overallVerdict: 'FAIL' }]) {
+      writeJson(fx.receipt, { ...base, ...patch });
+      const res = fx.run();
+      assert.equal(res.ok, false, JSON.stringify(patch));
+      assert.ok(res.errors.some((e) => e.includes('not a PASS-family status')), JSON.stringify(patch));
+    }
+  });
+
+  test('Fault Injection: receipt JS blob hash tamper is blocked', () => {
+    const fx = stageHighFixture(HS, 'blob');
+    const r = readJson(fx.receipt);
+    r.candidateGitBlobSha1 = '0'.repeat(40);
+    writeJson(fx.receipt, r);
+    const res = fx.run();
+    assert.equal(res.ok, false);
+    assert.ok(res.errors.some((e) => e.includes('Receipt candidateGitBlobSha1 mismatch')));
+  });
+
+  test('Fault Injection: changing an exam answer breaks the blob binding and the receipt answer binding', () => {
+    const fx = stageHighFixture(HS, 'answer');
+    const js = fs.readFileSync(fx.js, 'utf8');
+    const m = js.match(/"answer": "([①②③④⑤])"/);
+    const swapped = m[1] === '①' ? '②' : '①';
+    fs.writeFileSync(fx.js, js.replace(m[0], `"answer": "${swapped}"`), 'utf8');
+    const res = fx.run();
+    assert.equal(res.ok, false);
+    assert.ok(res.errors.some((e) => e.includes('Receipt candidateGitBlobSha1 mismatch')));
+    assert.ok(res.errors.some((e) => e.includes('differs from the exam answer')), 'receipt candidateAnswer must be bound to the exam answer');
+  });
+
+  test('Fault Injection: receipt derivation that disagrees with the exam answer or says match=false is blocked', () => {
+    const fx = stageHighFixture(HS, 'derived');
+    const r = readJson(fx.receipt);
+    const mcs = r.questionsReview.filter((x) => x.type === '객관식');
+    mcs[0].match = false;
+    mcs[1].derivedAnswer = mcs[1].derivedAnswer === '①' ? '②' : '①';
+    writeJson(fx.receipt, r);
+    const res = fx.run();
+    assert.equal(res.ok, false);
+    assert.ok(res.errors.some((e) => e.includes('review receipt match is false')));
+    assert.ok(res.errors.some((e) => e.includes('independently derived')));
+  });
+
+  test('Fault Injection: frozenAnswers-only receipt cannot carry answers that differ from the exam', () => {
+    const fx = stageHighFixture(HS_MATH2, 'frozen');
+    assert.equal(fx.run().ok, true, 'control copy must pass');
+    const r = readJson(fx.receipt);
+    const f = typeof r.blindFirstPass.frozenAnswers === 'string' ? JSON.parse(r.blindFirstPass.frozenAnswers) : r.blindFirstPass.frozenAnswers;
+    f['1'] = f['1'] === '①' ? '②' : '①';
+    r.blindFirstPass.frozenAnswers = f;
+    writeJson(fx.receipt, r);
+    const res = fx.run();
+    assert.equal(res.ok, false);
+    assert.ok(res.errors.some((e) => e.includes('receipt frozen answer')));
+  });
+
+  test('Fault Injection: receipt with no per-question evidence is blocked', () => {
+    const fx = stageHighFixture(HS, 'noevidence');
+    const r = readJson(fx.receipt);
+    delete r.questionsReview;
+    delete r.blindFirstPass;
+    writeJson(fx.receipt, r);
+    const res = fx.run();
+    assert.equal(res.ok, false);
+    assert.ok(res.errors.some((e) => e.includes('no per-question review evidence')));
+  });
+
+  test('Fault Injection: unregistered PT, and a PT from an unrelated course, are blocked', () => {
+    const fx = stageHighFixture(HS, 'tax');
+    const meta = readJson(fx.meta);
+    meta.items[0].after.problemTypeKey = 'PT_FAKE_UNREGISTERED_MATH_KEY';
+    meta.items[1].after.problemTypeKey = 'PT_CIRCLE_TANGENT'; // middle-school key owned by no 확률과통계 pack
+    writeJson(fx.meta, meta);
+    const res = fx.run();
+    assert.equal(res.ok, false);
+    assert.ok(res.errors.some((e) => e.includes('unregistered problemTypeKey (PT_FAKE_UNREGISTERED_MATH_KEY)')));
+    assert.ok(res.errors.some((e) => e.includes('PT_CIRCLE_TANGENT') || e.includes('does not belong')), res.errors.join('; '));
+  });
+
+  test('Fault Injection: unknown or unverified engine capability is an explicit error, never a silent pass', () => {
+    const fx = stageHighFixture(HS_STAT, 'cap');
+    const p = fx.plan('q04-problem.plan.json');
+    const plan = readJson(p);
+    writeJson(p, { ...plan, capability: 'made-up-figure-v1' });
+    let res = fx.run();
+    assert.ok(res.errors.some((e) => e.includes("missing or invalid 'capability' (made-up-figure-v1)")));
+    writeJson(p, { ...plan, capability: 'solid-figure-v1' });
+    res = fx.run();
+    assert.ok(res.errors.some((e) => e.includes('HARNESS_CAPABILITY_LIMIT')));
+    const noChart = { ...plan };
+    delete noChart.chart;
+    writeJson(p, noChart);
+    res = fx.run();
+    assert.ok(res.errors.some((e) => e.includes("requires 'chart'")));
+  });
+
+  test('Fault Injection: title-less engine stat-chart SVG needs a real plan caption', () => {
+    const fx = stageHighFixture(HS_STAT, 'caption');
+    const p = fx.plan('q04-problem.plan.json');
+    const plan = readJson(p);
+    plan.caption = '';
+    writeJson(p, plan);
+    const res = fx.run();
+    assert.equal(res.ok, false);
+    assert.ok(res.errors.some((e) => e.includes('no <title>/<desc>') && e.includes('caption')));
+  });
+
+  test('Fault Injection: UNSUPPORTED solution figure is only accepted under an explicit, blob-bound VISUAL_DEBT sign-off', () => {
+    const fx = stageHighFixture(HS_DEBT, 'debt');
+    assert.equal(fx.run().ok, true, 'control copy must pass');
+    const r = readJson(fx.receipt);
+    r.signOffStatus = 'SIGNED_OFF_PASS';
+    writeJson(fx.receipt, r);
+    const res = fx.run();
+    assert.equal(res.ok, false);
+    assert.ok(res.errors.some((e) => e.includes('UNSUPPORTED cannot be used as a production-visual PASS')));
+    r.signOffStatus = 'SIGNED_OFF_PASS_WITH_VISUAL_DEBT';
+    r.candidateGitBlobSha1 = '1'.repeat(40);
+    writeJson(fx.receipt, r);
+    const res2 = fx.run();
+    assert.equal(res2.ok, false);
+    assert.ok(res2.errors.some((e) => e.includes('UNSUPPORTED cannot be used')));
+  });
+
+  test('Fault Injection: UNSUPPORTED problem figure is never accepted by a VISUAL_DEBT sign-off', () => {
+    const fx = stageHighFixture(HS_DEBT, 'debtproblem');
+    writeJson(fx.plan('q09-problem.plan.json'), { status: 'UNSUPPORTED', reason: '문제 그림을 엔진이 그리지 못함' });
+    const res = fx.run();
+    assert.equal(res.ok, false);
+    assert.ok(res.errors.some((e) => e.includes('q09-problem.plan.json UNSUPPORTED cannot be used')));
+  });
+
+  test('Label symbols: bare math capitals are reported, explicit "점 X" references stay enforced for graph figures', () => {
+    const fx = stageHighFixture(HS_SET, 'point', 'archive/exams/similar/high/h1/2final');
+    assert.equal(fx.run().ok, true, 'control copy must pass');
+    assert.ok(!fx.run().warnings.some((w) => w.includes('VISUAL_SYMBOL_NOT_DECODABLE: Q15')), 'P, Q, O are declared by the plan');
+    // Plan no longer declares Q: a bare math capital is a recorded limitation (warning), not a silent pass.
+    const p = fx.plan('q15-problem.plan.json');
+    writeJson(p, JSON.parse(fs.readFileSync(p, 'utf8').replace(/"Q"/g, '"R"')));
+    const bare = fx.run();
+    assert.ok(bare.warnings.some((w) => w.includes('VISUAL_SYMBOL_NOT_DECODABLE: Q15') && w.includes('Q')), bare.warnings.join('; '));
+    // The stem now names the point explicitly ("점 Q"): that must be backed by a decodable label.
+    const js = fs.readFileSync(fx.js, 'utf8');
+    assert.ok(js.includes('두 점 $P, Q$에서'));
+    fs.writeFileSync(fx.js, js.replace('두 점 $P, Q$에서', '점 Q에서'), 'utf8');
+    const explicit = fx.run();
+    assert.equal(explicit.ok, false);
+    assert.ok(explicit.errors.some((e) => e.includes("Point/symbol 'Q'")), explicit.errors.join('; '));
+  });
+});
