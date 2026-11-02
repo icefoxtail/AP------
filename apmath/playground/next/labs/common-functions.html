@@ -45,6 +45,10 @@
    - 그림 안의 점(후광이 있는 점)을 끌면 원본과 같은 규칙(끈 방향·거리만큼)으로 조절 막대가 움직임
    - 캔버스를 직접 그리던 2곳(원 채우기, 두 무리함수 사이 영역)을 무대 호출로 교체. 곡선은 자동 맞춤 범위에 넣지 않음
    - 그림 크기가 화면에 맞춰지므로 휴대폰에서도 점과 이름표가 잘리지 않고, 점 이름표가 서로 겹치면 한 줄씩 비켜 놓음
+   - [2026-11-02] 옛 24문항 중 20문항(심화 1·2·5·6·7·8, 기본 1·2·3·4·6·8·9·10·11·12·13·14·15·16)에 「새 문제」를 붙임 — 아래 VSPEC.
+     첫 문제는 원본 PROBLEMS 그대로이고, 「새 문제」는 같은 구조·같은 학습 포인트에서 숫자만 바꾼 변형입니다(VSPEC.pool 의 첫 값 = 원본).
+     탐구 탭은 그대로이고, 문제·정리 탭의 그림만 탐구 슬라이더 위치가 아니라 변형의 조건대로 그립니다(drawScene 의 VQ = 변형 값, state.fixed).
+     심화 3·4, 기본 5·7은 숫자만 바꾸면 학습 포인트(복합 조건·반례 증명·계단 작도)가 흐려져 「새 문제」를 붙이지 않았습니다.
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
 
@@ -117,9 +121,9 @@ window.addEventListener('DOMContentLoaded', function () {
       {
         id: 'adv-2',
         unit: 'Ⅳ. 무리함수와 역함수',
-        badge: '🔥 심화 2 · 5.0점 (불변 길이 2√2 심화)',
+        badge: '🔥 심화 2 · 5.0점 (불변 길이 심화)',
         tabLabel: '심화 2 · 무리함수와 역함수로 만든 사각형',
-        title: '[심화 2] 무리함수·역함수 대칭 사각형과 불변 길이(AB=2√2)',
+        title: '[심화 2] 무리함수·역함수 대칭 사각형과 불변 길이',
         statement: `
           <div>두 양수 $a, p$에 대하여 무리함수 $f(x) = \\sqrt{a(x - p)} + p + 2$의 그래프의 시작점을 $A$, 역함수 $y = f^{-1}(x)$의 시작점을 $B$, 두 그래프의 교점을 $C$라 하자.</div>
           <div class="mt-1.5 pl-2.5 border-l-2 border-amber-400 text-amber-100 text-xs space-y-0.5">
@@ -450,7 +454,7 @@ window.addEventListener('DOMContentLoaded', function () {
         unit: 'Ⅰ. 합성함수와 역함수',
         badge: '🌱 기본 1 · 일대일대응 직사각형 박스',
         tabLabel: '기본 1 · 그래프에서 일대일대응이 되는 조건',
-        title: '[기본 1] 일대일대응(역함수 존재) 직사각형 대각선 끝점 통과 원리',
+        title: '[기본 1] 정의역과 공역이 정해진 일차함수의 일대일대응(역함수 존재) 조건',
         statement: `
           <div>정의역 $X = \\{x \\mid 1 \\le x \\le 4\\}$에서 공역 $Y = \\{y \\mid 2 \\le y \\le 8\\}$로의 일차함수 $f(x) = ax + b$가 <strong>일대일대응(역함수 존재)</strong>이 되도록 하는 상수 $a, b$의 기하적 조건을 구하시오.</div>
         `,
@@ -615,7 +619,7 @@ window.addEventListener('DOMContentLoaded', function () {
         unit: 'Ⅰ. 합성함수와 역함수',
         badge: '🌱 기본 6 · 증가함수 역함수 교점·넓이',
         tabLabel: '기본 6 · 증가함수와 역함수의 교점과 넓이',
-        title: '[기본 6] 증가함수와 역함수의 교점 거리(√2|α-β|) 및 넓이 2배 원리',
+        title: '[기본 6] 증가함수와 역함수의 교점 거리 및 넓이 2배 원리',
         statement: `
           <div>증가하는 함수 $f(x) = \\dfrac{1}{3}(x - 1)^2 + 1$ ($x \\ge 1$)의 그래프와 그 역함수 $y = f^{-1}(x)$의 그래프가 만나는 두 점 $A, B$ 사이의 거리와 두 곡선으로 둘러싸인 넓이 관계를 탐구하시오.</div>
         `,
@@ -744,9 +748,9 @@ window.addEventListener('DOMContentLoaded', function () {
       {
         id: 'bas-10',
         unit: 'Ⅱ. 유리함수의 기하학',
-        badge: '🌱 기본 10 · 직사각형 넓이 |k| & 산술기하',
+        badge: '🌱 기본 10 · 직사각형 넓이와 산술기하',
         tabLabel: '기본 10 · 유리함수의 점근선으로 만든 직사각형',
-        title: '[기본 10] 점근선 직사각형 넓이(|k|) 불변과 둘레 최솟값(4√k) 정사각형 원리',
+        title: '[기본 10] 점근선 직사각형의 넓이 불변과 둘레 최솟값 정사각형 원리',
         statement: `
           <div>유리함수 $y = \\dfrac{4}{x - 1} + 1$ ($x > 1$)의 그래프 위의 점 $P$에서 두 점근선 $x = 1, y = 1$에 내린 수선의 발을 각각 $A, B$라 할 때, 직사각형 $CAPB$의 넓이와 둘레의 길이의 최솟값을 구하시오.</div>
         `,
@@ -843,9 +847,9 @@ window.addEventListener('DOMContentLoaded', function () {
       {
         id: 'bas-13',
         unit: 'Ⅲ. 유리함수와 직선',
-        badge: '🌱 기본 13 · 접선 D=0 & 점근선 평행 m=0 함정',
+        badge: '🌱 기본 13 · 유리함수와 직선이 한 점에서 만날 조건',
         tabLabel: '기본 13 · 유리함수와 직선이 한 점에서 만날 조건',
-        title: '[기본 13] 유리함수와 직선이 오직 한 점에서 만날 조건 (D=0 & m=0 함정)',
+        title: '[기본 13] 유리함수와 직선이 오직 한 점에서 만날 조건',
         statement: `
           <div>유리함수 $y = \\dfrac{2}{x - 1} + 2$의 그래프와 점 $(1, 0)$을 지나는 직선 $y = m(x - 1)$이 <strong>오직 한 점</strong>에서만 만나도록 하는 모든 실수 $m$의 값을 구하시오.</div>
         `,
@@ -1004,9 +1008,15 @@ window.addEventListener('DOMContentLoaded', function () {
     return num;
   };
 
+    // TX, TY: 같은 모양을 옮겨 그리는 변형(bas-15·16)에서만 0이 아닙니다(drawBasicScene 래퍼가 정하고 돌려놓음).
+    let TX = 0, TY = 0;
     function toScr(mx, my, ox, oy, u) {
-      return { x: ox + mx * u, y: oy - my * u };
+      return { x: ox + (mx + TX) * u, y: oy - (my + TY) * u };
     }
+    const nf = (v) => (Math.abs(v - Math.round(v)) < 1e-9 ? String(Math.round(v)) : v.toFixed(1));
+    const f1 = (v) => (state.fixed ? nf(v) : v.toFixed(1));
+    // 문제·정리 탭(고정 그림)에서는 휴대폰에서도 라벨이 12px 아래로 줄지 않게, 무대가 줄이는 만큼(_ts) 되돌려 키웁니다.
+    const LSf = () => (state.fixed && BOARD ? 1 / BOARD._ts() : 1);
 
   /* 좌표평면(격자·축·눈금): 원본 drawAxesWithTicks (1398행) */
   function drawAxesWithTicks(rect, ox, oy, u) {
@@ -1036,7 +1046,7 @@ window.addEventListener('DOMContentLoaded', function () {
     c.stroke();
     if (!b.thumb) {
       const every = [1, 2, 5, 10, 20].find((n) => n * step >= 30) || 20;
-      c.font = `600 ${11.5 * b.fs}px ${b.font}`;
+      c.font = `600 ${(state.fixed ? 12.5 : 11.5) * b.fs}px ${b.font}`;
       c.fillStyle = b.colors.tick;
       c.textAlign = 'center';
       c.textBaseline = 'top';
@@ -1086,7 +1096,8 @@ window.addEventListener('DOMContentLoaded', function () {
     const A = B.toS(a.x, a.y), Bb = B.toS(b.x, b.y); // 자동 맞춤에서는 길이 표시선 양 끝이 범위에 들어갑니다
     const mx = (A.x + Bb.x) / 2, my = (A.y + Bb.y) / 2;
     const str = B.thumb ? '' : cv(label);
-    if (B._bbox) { B._text(mx, my, str, { color: col, size: 11.5, weight: 800, align: 'center', baseline: 'middle', halo: false }); return; }
+    const dsz = state.fixed ? 12.5 * LSf() : 11.5;
+    if (B._bbox) { B._text(mx, my, str, { color: col, size: dsz, weight: 800, align: 'center', baseline: 'middle', halo: false }); return; }
     const P1 = scr(p1.x, p1.y), P2 = scr(p2.x, p2.y);
     c.save();
     c.strokeStyle = B.color(col, 0.4);
@@ -1119,7 +1130,7 @@ window.addEventListener('DOMContentLoaded', function () {
     c.closePath();
     c.fill();
     if (str) {
-      const size = 11.5 * B.fs * B._ts();
+      const size = dsz * B.fs * B._ts();
       c.font = `800 ${size}px ${B.font}`;
       const tw = c.measureText(str).width;
       c.fillStyle = B.colors.stage;
@@ -1131,7 +1142,7 @@ window.addEventListener('DOMContentLoaded', function () {
       c.stroke();
     }
     c.restore();
-    B._text(mx, my, str, { color: col, size: 11.5, weight: 800, align: 'center', baseline: 'middle', halo: false });
+    B._text(mx, my, str, { color: col, size: dsz, weight: 800, align: 'center', baseline: 'middle', halo: false });
   }
 
   function dLine(a, b, col = C.gold, w = 2.6, dash = [], glow = false) {
@@ -1175,7 +1186,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const str = B.thumb ? '' : cv(label);
     let dy = off.y;
     if (str && !B._bbox) {
-      const s = scr(p.x, p.y), size = 12.5 * B.fs * B._ts(), c = B.ctx;
+      const s = scr(p.x, p.y), size = 12.5 * B.fs * B._ts() * LSf(), c = B.ctx;
       c.save();
       c.font = `800 ${size}px ${B.font}`;
       const w = c.measureText(str).width;
@@ -1189,8 +1200,8 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       placedLabels.push(box(dy));
     }
-    const o = { color: col, label: str, dx: off.x, dy, align: 'left', baseline: 'alphabetic' };
-    if (isHandle && !B.thumb) {
+    const o = { color: col, label: str, dx: off.x, dy, align: 'left', baseline: 'alphabetic', ...(state.fixed ? { size: 12.5 * LSf() } : {}) };
+    if (isHandle && !B.thumb && !state.fixed) {
       const S = CUR, id = 'h' + HN++, pos = { x: p.x, y: p.y };
       // 원본 moveDrag 와 같은 규칙: 끈 방향·거리(오른쪽·위쪽이 +)만큼 조절 막대 값 t 가 움직입니다.
       B.handle(id, p, {
@@ -1299,6 +1310,7 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ===== 원본 그대로: 교점 표시와 수학 표기 도우미 (원본 1630–1690행) ===== */
     function plotIntersections(k, ox, oy, sc, rational, showGhost = false) {
       let real = 0, ghost = 0;
+      const hideDots = state.fixed && state.auxStep < 1; // 문제 탭(풀이 전): 교점 개수가 답이므로 교점 점·라벨을 그리지 않음
       const eps = 1e-9;
       const d = 1 - k;
       if (d >= -eps) {
@@ -1309,11 +1321,11 @@ window.addEventListener('DOMContentLoaded', function () {
           const good = v >= -eps;
           if (good) {
             real++;
-            dDot(toScr(x, y, ox, oy, sc), state.auxStep >= 2 ? `교점 (${x.toFixed(2)}, ${y.toFixed(2)})` : '교점', C.green, { x: 8, y: -12 });
+            if (!hideDots) dDot(toScr(x, y, ox, oy, sc), state.auxStep >= 2 && !state.fixed ? `교점 (${(x + TX).toFixed(2)}, ${(y + TY).toFixed(2)})` : '교점', C.green, { x: 8, y: -12 });
           } else {
             ghost++;
             if (showGhost) {
-              dDot(toScr(x, y, ox, oy, sc), `× 무연근 (${x.toFixed(2)}, ${y.toFixed(2)})`, C.red, { x: 8, y: 17 });
+              dDot(toScr(x, y, ox, oy, sc), `× 무연근 (${(x + TX).toFixed(2)}, ${(y + TY).toFixed(2)})`, C.red, { x: 8, y: 17 });
             }
           }
         }
@@ -1365,6 +1377,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       const prob = curProb();
       const id = prob.id;
+      const VQ = state.vp || DEFP[id] || {}; // 문제·정리 탭에서는 「새 문제」 변형 값, 탐구 탭에서는 원본 값
       const step = state.auxStep;
       const t = state.sliderT;
       const anim = state.animT;
@@ -1381,12 +1394,13 @@ window.addEventListener('DOMContentLoaded', function () {
         const sc = u * 0.9;
         drawAxesWithTicks(rect, ox, oy, sc);
 
-        const k = 12;
-        dLine(toScr(2, -1, ox, oy, sc), toScr(2, 9.5, ox, oy, sc), 'rgba(251,191,36,0.45)', 2, [5, 4]);
-        dLine(toScr(-1, 2, ox, oy, sc), toScr(10.5, 2, ox, oy, sc), 'rgba(251,191,36,0.45)', 2, [5, 4]);
-        dCurve((x) => k / (x - 2) + 2, 2.32, 10.2, ox, oy, sc, C.cyan, 3.8);
+        const k = VQ.a * VQ.b;
+        const ext = state.vp ? VQ.b + 3 : 9.5;
+        dLine(toScr(2, -1, ox, oy, sc), toScr(2, ext, ox, oy, sc), 'rgba(251,191,36,0.45)', 2, [5, 4]);
+        dLine(toScr(-1, 2, ox, oy, sc), toScr(ext + 1, 2, ox, oy, sc), 'rgba(251,191,36,0.45)', 2, [5, 4]);
+        dCurve((x) => k / (x - 2) + 2, 2.32, ext + 0.7, ox, oy, sc, C.cyan, 3.8);
 
-        const a = 3.4625 - t * 2.25;
+        const a = state.vp ? VQ.a : 3.4625 - t * 2.25;
         const b = k / a;
         const Cpt = toScr(2, 2, ox, oy, sc);
         const P = toScr(2 + a, 2 + b, ox, oy, sc);
@@ -1418,9 +1432,13 @@ window.addEventListener('DOMContentLoaded', function () {
           : `Q ≈ (${(2 + b).toFixed(2)}, ${(2 + a).toFixed(2)})`;
 
         dPoly([Cpt, P, Q], 'rgba(56, 189, 248, 0.20)', C.cyan, 2.8, step === 0);
+        if (state.fixed) { // 문제에 주어진 값(PQ 길이, 삼각형 넓이)을 그림에도 표시
+          if (step !== 1 && step !== 4) drawDimension(P, Q, -26, pqExact, C.gold);
+          if (step <= 1) BOARD.text({ x: (Cpt.x + P.x + Q.x) / 3, y: (Cpt.y + P.y + Q.y) / 3 }, `넓이 ${Math.round((a + b) * gap / 2)}`, { color: C.cyan, size: 12.5 * LSf(), weight: 800, align: 'center', baseline: 'middle' });
+        }
 
         if (step === 1 || step === 4) {
-          dLine(toScr(0, 0, ox, oy, sc), toScr(9.2, 9.2, ox, oy, sc), C.gold, 2.4, [6, 4], true);
+          dLine(toScr(0, 0, ox, oy, sc), toScr(ext - 0.3, ext - 0.3, ox, oy, sc), C.gold, 2.4, [6, 4], true);
           dPoly([P, H, Q], 'rgba(251, 191, 36, 0.22)', C.gold, 2.4, true);
           drawRightAngle(H, P, Q, 11, C.gold);
           drawRightAngle(M, Cpt, P, 10, C.gold);
@@ -1474,28 +1492,32 @@ window.addEventListener('DOMContentLoaded', function () {
         const sc = u * 1.02;
         drawAxesWithTicks(rect, ox, oy, sc);
 
-        const pVal = 0.3 + t * 2.0;
-        const aVal = pVal;
+        const pVal = state.vp ? VQ.p : 0.3 + t * 2.0;
+        const aVal = state.vp ? 1 : pVal;
         const cVal = pVal + 2 + (aVal + Math.sqrt(aVal * aVal + 8 * aVal)) / 2;
         const O = toScr(0, 0, ox, oy, sc);
         const A = toScr(pVal, pVal + 2, ox, oy, sc);
         const B = toScr(pVal + 2, pVal, ox, oy, sc);
         const M = toScr(pVal + 1, pVal + 1, ox, oy, sc);
         const Cpt = toScr(cVal, cVal, ox, oy, sc);
+        const E1 = state.vp ? cVal + 0.6 : 5.2, E2 = state.vp ? cVal + 0.8 : 6.6, X6 = state.vp ? cVal + 1.5 : 6.5;
+        if (state.vp && step <= 1) BOARD.text({ x: O.x + 14, y: O.y + 26 }, `OACB 넓이 ${2 * (pVal + 4)}`, { color: C.green, size: 12.5 * LSf(), weight: 800, align: 'left', baseline: 'middle' });
 
         if (step === 1 || step === 4) {
-          dLine(toScr(-0.5, 1.5, ox, oy, sc), toScr(5.2, 7.2, ox, oy, sc), 'rgba(56,189,248,0.5)', 2.2, [5, 4], true);
-          dLine(toScr(1.5, -0.5, ox, oy, sc), toScr(7.2, 5.2, ox, oy, sc), 'rgba(244,114,182,0.5)', 2.2, [5, 4], true);
-          drawDimension(A, B, -26, 'AB = 2√2 (p에 무관하게 일정!)', C.gold);
+          dLine(toScr(-0.5, 1.5, ox, oy, sc), toScr(E1, E1 + 2, ox, oy, sc), 'rgba(56,189,248,0.5)', 2.2, [5, 4], true);
+          dLine(toScr(1.5, -0.5, ox, oy, sc), toScr(E1 + 2, E1, ox, oy, sc), 'rgba(244,114,182,0.5)', 2.2, [5, 4], true);
+          if (!state.fixed) drawDimension(A, B, -26, 'AB = 2√2 (p에 무관하게 일정!)', C.gold);
+          else if (step === 1) drawDimension(A, B, 46, 'AB = 2√2', C.gold);
+          else BOARD.text({ x: A.x - 14, y: A.y + 24 }, 'AB = 2√2', { color: C.gold, size: 12.5 * LSf(), weight: 800, align: 'right', baseline: 'middle' }); // 4단계: 상자를 쓰면 M·OM·MC 와 겹쳐 글자만 선분 곁에
         }
 
         if (step >= 2) {
           dPoly([O, A, B], 'rgba(56, 189, 248, 0.26)', C.cyan, 2.5, step === 2);
           dPoly([A, Cpt, B], 'rgba(244, 114, 182, 0.26)', C.pink, 2.5, step === 2);
-          dLine(toScr(-0.5, -0.5, ox, oy, sc), toScr(6.6, 6.6, ox, oy, sc), C.gold, 2.5, [6, 4], true);
+          dLine(toScr(-0.5, -0.5, ox, oy, sc), toScr(E2, E2, ox, oy, sc), C.gold, 2.5, [6, 4], true);
           drawRightAngle(M, O, A, 11, C.gold);
           drawRightAngle(M, Cpt, B, 11, C.gold);
-          dDot(M, `M(${(pVal + 1).toFixed(1)}, ${(pVal + 1).toFixed(1)})`, C.gold, { x: 10, y: 15 });
+          dDot(M, state.fixed && step < 3 ? 'M' : `M(${f1(pVal + 1)}, ${f1(pVal + 1)})`, C.gold, { x: 10, y: 15 });
         } else {
           dPoly([O, A, Cpt, B], 'rgba(52, 211, 153, 0.18)', C.green, 2.4);
         }
@@ -1507,18 +1529,18 @@ window.addEventListener('DOMContentLoaded', function () {
           dPoly([M, Cx, Cpt], 'rgba(52, 211, 153, 0.22)', C.green, 2.2, true);
           drawRightAngle(Mx, O, M, 10, C.gold);
           drawRightAngle(Cx, M, Cpt, 10, C.green);
-          drawDimension(O, M, 24, `OM = √2(${(pVal + 1).toFixed(1)})`, C.gold);
-          drawDimension(M, Cpt, 24, `MC ≈ ${((cVal - pVal - 1) * Math.SQRT2).toFixed(2)}`, C.green);
+          drawDimension(O, M, state.fixed ? -38 : 24, state.vp ? `OM = ${pVal + 1}√2` : `OM = √2(${(pVal + 1).toFixed(1)})`, C.gold);
+          drawDimension(M, Cpt, state.fixed ? -38 : 24, state.vp ? `MC = ${cVal - pVal - 1}√2` : `MC ≈ ${((cVal - pVal - 1) * Math.SQRT2).toFixed(2)}`, C.green);
         }
 
-        dCurve((x) => Math.sqrt(Math.max(0, aVal * (x - pVal))) + pVal + 2, pVal, 6.5, ox, oy, sc, C.cyan, 3.8);
-        dCurve((x) => (x - pVal - 2) ** 2 / aVal + pVal, pVal + 2, 6.5, ox, oy, sc, C.pink, 3.8);
+        dCurve((x) => Math.sqrt(Math.max(0, aVal * (x - pVal))) + pVal + 2, pVal, X6, ox, oy, sc, C.cyan, 3.8);
+        dCurve((x) => (x - pVal - 2) ** 2 / aVal + pVal, pVal + 2, X6, ox, oy, sc, C.pink, 3.8);
         dLine(A, B, C.gold, 4.0, [], step === 1);
 
         dDot(O, 'O(0,0)', C.white, { x: -45, y: 16 });
-        dDot(A, `A(${pVal.toFixed(1)}, ${(pVal + 2).toFixed(1)})`, C.cyan, { x: -110, y: -10 }, true);
-        dDot(B, `B(${(pVal + 2).toFixed(1)}, ${pVal.toFixed(1)})`, C.pink, { x: 10, y: 15 });
-        dDot(Cpt, step >= 3 ? `C(${cVal.toFixed(1)}, ${cVal.toFixed(1)})` : '교점 C', C.gold, { x: 10, y: -8 });
+        dDot(A, state.fixed && step < 3 ? 'A' : `A(${f1(pVal)}, ${f1(pVal + 2)})`, C.cyan, state.fixed && step < 3 ? { x: -22, y: -8 } : { x: -110, y: -10 }, true);
+        dDot(B, state.fixed && step < 3 ? 'B' : `B(${f1(pVal + 2)}, ${f1(pVal)})`, C.pink, { x: 10, y: 15 });
+        dDot(Cpt, step >= 3 ? `C(${f1(cVal)}, ${f1(cVal)})` : '교점 C', C.gold, { x: 10, y: -8 });
 
         setMetric(
           `현재 p = ${pVal.toFixed(2)} (탐구 예시 a=p) | AB = 2√2 (불변) | 사각형 넓이 ≈ ${(2 * cVal).toFixed(2)}`,
@@ -1659,46 +1681,48 @@ window.addEventListener('DOMContentLoaded', function () {
         const sc = u * 0.94;
         drawAxesWithTicks(rect, ox, oy, sc);
 
-        dLine(toScr(1, -2, ox, oy, sc), toScr(1, 7, ox, oy, sc), 'rgba(251,191,36,0.4)', 1.8, [5, 4]);
-        dLine(toScr(-3, 2, ox, oy, sc), toScr(8, 2, ox, oy, sc), 'rgba(251,191,36,0.4)', 1.8, [5, 4]);
+        const uu = VQ.u, kk = uu * uu, cx0 = VQ.cx, cy0 = VQ.cx + 1, rad = VQ.s * Math.SQRT2; // 곡선 kk/(x-1)+2, 원 중심 (cx0, cy0)(대칭축 y=x+1 위), 반지름 rad
+        dLine(toScr(1, cy0 - 2, ox, oy, sc), toScr(1, uu + 5, ox, oy, sc), 'rgba(251,191,36,0.4)', 1.8, [5, 4]);
+        dLine(toScr(cx0 - 2, 2, ox, oy, sc), toScr(uu + 6, 2, ox, oy, sc), 'rgba(251,191,36,0.4)', 1.8, [5, 4]);
 
-        const centerA = toScr(-1, 0, ox, oy, sc);
+        const centerA = toScr(cx0, cy0, ox, oy, sc);
         // [2.0] 캔버스에 직접 그리던 원을 무대 호출로 교체
-        dCircle(centerA, Math.SQRT2 * sc, C.pink, 'rgba(244, 114, 182, 0.20)', 3);
+        dCircle(centerA, rad * sc, C.pink, 'rgba(244, 114, 182, 0.20)', 3);
 
-        dCurve((x) => 4 / (x - 1) + 2, 1.45, 8.2, ox, oy, sc, C.cyan, 3.8);
+        dCurve((x) => kk / (x - 1) + 2, 1.45, uu + 6.2, ox, oy, sc, C.cyan, 3.8);
 
         if (step >= 1) {
-          dLine(toScr(-2.5, -1.5, ox, oy, sc), toScr(6, 7, ox, oy, sc), C.gold, 2.5, [6, 4], true);
+          dLine(toScr(cx0 - 1.5, cx0 - 0.5, ox, oy, sc), toScr(uu + 4, uu + 5, ox, oy, sc), C.gold, 2.5, [6, 4], true);
         }
         if (step >= 2) {
           dPoly(
-            [toScr(1, 2, ox, oy, sc), toScr(3, 2, ox, oy, sc), toScr(3, 4, ox, oy, sc), toScr(1, 4, ox, oy, sc)],
+            [toScr(1, 2, ox, oy, sc), toScr(1 + uu, 2, ox, oy, sc), toScr(1 + uu, 2 + uu, ox, oy, sc), toScr(1, 2 + uu, ox, oy, sc)],
             'rgba(52, 211, 153, 0.24)',
             C.green,
             2.4,
             step === 2
           );
-          drawRightAngle(toScr(3, 2, ox, oy, sc), toScr(1, 2, ox, oy, sc), toScr(3, 4, ox, oy, sc), 10, C.green);
+          drawRightAngle(toScr(1 + uu, 2, ox, oy, sc), toScr(1, 2, ox, oy, sc), toScr(1 + uu, 2 + uu, ox, oy, sc), 10, C.green);
         }
 
-        const px = 1.605 + t * 3.1;
-        const py = 4 / (px - 1) + 2;
+        // 문제 탭에서는 2단계(꼭짓점 찾기) 전까지 점 P 를 최소점이 아닌 임의의 위치에 둡니다(답 노출 방지).
+        const px = state.vp ? (step >= 2 ? 1 + uu : 1 + 0.55 * uu) : 1.605 + t * 3.1;
+        const py = kk / (px - 1) + 2;
         const P = toScr(px, py, ox, oy, sc);
-        const distAP = Math.hypot(px + 1, py);
-        const qx = -1 + ((px + 1) / distAP) * Math.SQRT2;
-        const qy = (py / distAP) * Math.SQRT2;
+        const distAP = Math.hypot(px - cx0, py - cy0);
+        const qx = cx0 + ((px - cx0) / distAP) * rad;
+        const qy = cy0 + ((py - cy0) / distAP) * rad;
         const Q = toScr(qx, qy, ox, oy, sc);
 
         dLine(P, Q, C.green, 3.8, [], true);
         if (step >= 3) {
-          drawDimension(Q, P, -24, `현재 PQ ≈ ${(distAP - Math.SQRT2).toFixed(2)} (최솟값 3√2)`, C.green);
+          drawDimension(Q, P, -24, state.vp ? `PQ = ${1 + uu - cx0 - VQ.s}√2` : `현재 PQ ≈ ${(distAP - Math.SQRT2).toFixed(2)} (최솟값 3√2)`, C.green);
         }
 
-        dDot(centerA, '원 중심 (-1,0)', C.pink, { x: -95, y: 18 });
+        dDot(centerA, `원 중심 (${cx0},${cy0})`, C.pink, { x: -95, y: 18 });
         dDot(toScr(1, 2, ox, oy, sc), '점근선 교점 (1,2)', C.gold, { x: -68, y: -8 });
         dDot(Q, 'Q', C.pink, { x: 8, y: 14 });
-        dDot(P, `P(${px.toFixed(1)}, ${py.toFixed(1)})`, C.white, { x: 10, y: -8 }, true);
+        dDot(P, state.vp ? (step >= 2 ? `P(${nf(px)}, ${nf(py)})` : 'P') : `P(${px.toFixed(1)}, ${py.toFixed(1)})`, C.white, { x: 10, y: -8 }, true);
 
         setMetric(
           `현재 P(${px.toFixed(2)}, ${py.toFixed(2)}) | 선분 PQ 길이 ≈ ${(distAP - Math.SQRT2).toFixed(2)}`,
@@ -1716,41 +1740,45 @@ window.addEventListener('DOMContentLoaded', function () {
         const sc = u * 0.88;
         drawAxesWithTicks(rect, ox, oy, sc);
 
-        dLine(toScr(3, -3, ox, oy, sc), toScr(3, 6.5, ox, oy, sc), 'rgba(251,191,36,0.45)', 2, [5, 4]);
+        const ap = VQ.p, ac = VQ.c, aq = VQ.q, x0 = ap + ac / aq, xL = ap - 5, xR = x0 + 4.5; // f(x) = |ac/(x-ap) - aq|, x축과 만나는 점 x0
+        dLine(toScr(ap, -aq - 1, ox, oy, sc), toScr(ap, aq + 4.5, ox, oy, sc), 'rgba(251,191,36,0.45)', 2, [5, 4]);
 
         if (step >= 1) {
-          dLine(toScr(-2, -2, ox, oy, sc), toScr(9.5, -2, ox, oy, sc), 'rgba(148,163,184,0.35)', 1.8, [4, 4]);
-          dLine(toScr(-2, 2, ox, oy, sc), toScr(9.5, 2, ox, oy, sc), C.red, 3.0, [6, 4], true);
+          dLine(toScr(xL, -aq, ox, oy, sc), toScr(xR, -aq, ox, oy, sc), 'rgba(148,163,184,0.35)', 1.8, [4, 4]);
+          dLine(toScr(xL, aq, ox, oy, sc), toScr(xR, aq, ox, oy, sc), C.red, 3.0, [6, 4], true);
         }
 
         const colFold = step >= 2 ? C.pink : C.cyan;
-        dCurve((x) => Math.abs(4 / (x - 3) - 2), -2, 2.3, ox, oy, sc, colFold, 3.6);
-        dCurve((x) => 4 / (x - 3) - 2, 3.6, 5.0, ox, oy, sc, C.cyan, 3.8);
-        dCurve((x) => -(4 / (x - 3) - 2), 5.0, 9.5, ox, oy, sc, colFold, 3.8);
+        dCurve((x) => Math.abs(ac / (x - ap) - aq), xL, ap - 0.7, ox, oy, sc, colFold, 3.6);
+        dCurve((x) => ac / (x - ap) - aq, ap + 0.6, x0, ox, oy, sc, C.cyan, 3.8);
+        dCurve((x) => -(ac / (x - ap) - aq), x0, xR, ox, oy, sc, colFold, 3.8);
 
         // [P0 수리] t=0.40에서 정확히 yT=1.00 및 AB=8/3 달성
-        const yT = t <= 0.4 ? 0.2 + 2 * t : t <= 0.75 ? 1 + (t - 0.4) / 0.35 : 2 + 0.5 * (t - 0.75) / 0.17;
-        dLine(toScr(-2, yT, ox, oy, sc), toScr(9.5, yT, ox, oy, sc), C.gold, 3.2, [], true);
+        // 문제 탭에서는 3단계(AB 길이로 t 찾기) 전까지 직선 y = t 를 임의의 높이에 둡니다(답 노출 방지).
+        const yT = state.vp ? (step >= 3 ? VQ.t : (VQ.t < aq / 2 ? 0.75 * aq : 0.3 * aq)) : t <= 0.4 ? 0.2 + 2 * t : t <= 0.75 ? 1 + (t - 0.4) / 0.35 : 2 + 0.5 * (t - 0.75) / 0.17;
+        dLine(toScr(xL, yT, ox, oy, sc), toScr(xR, yT, ox, oy, sc), C.gold, 3.2, [], true);
+        if (state.vp) BOARD.text(toScr(xL + 0.3, yT, ox, oy, sc), '직선 y = t', { color: C.gold, size: 12.5 * LSf(), weight: 800, align: 'left', dy: -10 });
 
         let abText = '교점 1개';
-        if (Math.abs(yT - 2) > 1e-4) {
-          const x1 = yT < 2 ? 3 + 4 / (2 + yT) : 3 + 4 / (2 - yT);
-          const x2 = yT < 2 ? 3 + 4 / (2 - yT) : 3 + 4 / (2 + yT);
+        if (Math.abs(yT - aq) > 1e-4) {
+          const x1 = yT < aq ? ap + ac / (aq + yT) : ap + ac / (aq - yT);
+          const x2 = yT < aq ? ap + ac / (aq - yT) : ap + ac / (aq + yT);
           const A = toScr(x1, yT, ox, oy, sc);
           const B = toScr(x2, yT, ox, oy, sc);
           const distAB = Math.abs(x2 - x1);
           abText = `교점 2개, AB ≈ ${distAB.toFixed(2)}`;
           dLine(A, B, C.green, 4.2, [], step >= 2);
-          if (step >= 2) {
-            drawDimension(A, B, -22, `AB ≈ ${distAB.toFixed(2)}${Math.abs(yT - 1.0) < 1e-9 ? ' (8/3)' : ''}`, C.green);
+          if (state.vp ? step >= 3 : step >= 2) {
+            const abq = shortRational(distAB);
+            drawDimension(A, B, state.vp ? 34 : -22, state.vp ? `AB = ${abq ? rationalText(abq) : distAB.toFixed(2)}` : `AB ≈ ${distAB.toFixed(2)}${Math.abs(yT - 1.0) < 1e-9 ? ' (8/3)' : ''}`, C.green);
           }
           dDot(A, 'A', C.cyan, { x: -14, y: -10 });
           dDot(B, 'B', C.pink, { x: 8, y: -10 }, true);
         } else {
-          dDot(toScr(4, 2, ox, oy, sc), '유일한 교점 (4,2)', C.green, { x: 9, y: -12 }, true);
+          dDot(toScr(ap + ac / (2 * aq), aq, ox, oy, sc), `유일한 교점 (${nf(ap + ac / (2 * aq))},${aq})`, C.green, { x: 9, y: -12 }, true);
         }
 
-        dDot(toScr(5, 0, ox, oy, sc), '(5, 0)', C.white, { x: -12, y: 18 });
+        dDot(toScr(x0, 0, ox, oy, sc), `(${nf(x0)}, 0)`, C.white, { x: -12, y: 18 });
         setMetric(
           `가로선 y = ${yT.toFixed(2)} | ${abText}`,
           `접혀 올라온 점근선 k = 2 (교점 1개), t = 1 일 때 AB = 8/3 ➔ k+t = 3`
@@ -1764,26 +1792,31 @@ window.addEventListener('DOMContentLoaded', function () {
       if (id === 'adv-7') {
         const ox = rect.width * 0.20 + state.panX, oy = rect.height * 0.78 + state.panY, sc = u * 0.94;
         drawAxesWithTicks(rect, ox, oy, sc);
-        const shift = 4 * t;
+        const shift = state.vp ? VQ.d : 4 * t;
+        const cc = VQ.c, ww = VQ.w, hh = cc * Math.sqrt(ww); // 곡선 y = cc√x (0≤x≤ww), 높이 hh
         const pt = (x, y) => toScr(x, y, ox, oy, sc);
-        if (step >= 1) dPoly([pt(0, 0), pt(shift, 0), pt(shift + 4, 4), pt(4, 4)], 'rgba(251,191,36,.15)', C.gold, 2);
+        if (step >= 1) dPoly([pt(0, 0), pt(shift, 0), pt(shift + ww, hh), pt(ww, hh)], 'rgba(251,191,36,.15)', C.gold, 2);
         // [2.0] 캔버스에 직접 그리던 두 곡선 사이 영역을 무대 호출로 교체
         {
           const region = [];
-          for (let i = 0; i <= 80; i++) { let y = 4 * i / 80; region.push(pt(y * y / 4, y)); }
-          for (let i = 80; i >= 0; i--) { let y = 4 * i / 80; region.push(pt(y * y / 4 + shift, y)); }
+          for (let i = 0; i <= 80; i++) { let y = hh * i / 80; region.push(pt(y * y / (cc * cc), y)); }
+          for (let i = 80; i >= 0; i--) { let y = hh * i / 80; region.push(pt(y * y / (cc * cc) + shift, y)); }
           dFill(region, 'rgba(52,211,153,.24)');
         }
-        dCurve(x => 2 * Math.sqrt(x), 0, 4, ox, oy, sc, C.cyan, 4);
-        dCurve(x => 2 * Math.sqrt(x - shift), shift, shift + 4, ox, oy, sc, C.pink, 4);
+        dCurve(x => cc * Math.sqrt(x), 0, ww, ox, oy, sc, C.cyan, 4);
+        dCurve(x => cc * Math.sqrt(x - shift), shift, shift + ww, ox, oy, sc, C.pink, 4);
         dLine(pt(0, 0), pt(shift, 0), C.white, 2);
-        dLine(pt(4, 4), pt(4 + shift, 4), C.white, 2);
+        dLine(pt(ww, hh), pt(ww + shift, hh), C.white, 2);
         if (step >= 2) {
-          for (let y of [1, 2, 3]) dLine(pt(y * y / 4, y), pt(y * y / 4 + shift, y), C.gold, 2, [5, 3]);
+          for (let y of [hh / 4, hh / 2, 3 * hh / 4]) dLine(pt(y * y / (cc * cc), y), pt(y * y / (cc * cc) + shift, y), C.gold, 2, [5, 3]);
+        }
+        if (state.vp) { // 문제에 주어진 값: 평행이동 거리와 위쪽 직선
+          drawDimension(pt(ww, hh), pt(ww + shift, hh), 26, `평행이동 ${shift}`, C.white);
+          BOARD.text(pt(ww / 2, hh), `y = ${hh}`, { color: C.white, size: 12.5 * LSf(), weight: 800, align: 'center', dy: -12 });
         }
         dDot(pt(0, 0), '(0,0)', C.white, { x: -38, y: 16 });
-        dDot(pt(4, 4), '(4,4)', C.cyan, { x: -35, y: -10 });
-        dDot(pt(shift + 4, 4), `(${(shift + 4).toFixed(1)}, 4)`, C.pink, { x: 8, y: -10 }, true);
+        dDot(pt(ww, hh), `(${ww},${hh})`, C.cyan, { x: -35, y: -10 });
+        dDot(pt(shift + ww, hh), `(${f1(shift + ww)}, ${hh})`, C.pink, { x: 8, y: -10 }, true);
         setMetric(
           `평행이동 거리 d = ${shift.toFixed(2)} | 같은 높이의 가로 간격 = ${shift.toFixed(2)}`,
           `d = 4일 때 둘러싸인 넓이 = 4 × 4 = 16`
@@ -1794,17 +1827,19 @@ window.addEventListener('DOMContentLoaded', function () {
       // -----------------------------------------------------------------------
       // 🔥 [심화 8] adv-8: 두 직선으로 이루어진 함수에서 f(f(x))=f(x) vs f(f(x))=x 비교
       // -----------------------------------------------------------------------
+      const L8 = VQ.h / 2, H8 = VQ.h; // 원본 그림(h=2)의 L8 배 확대 모양
+      const toS8 = (x, y, o1, o2, s2) => toScr(x * L8, y * L8, o1, o2, s2);
       const ox = rect.width * 0.3 + state.panX;
       const oy = rect.height * 0.78 + state.panY;
       const sc = u * 1.15;
       drawAxesWithTicks(rect, ox, oy, sc);
 
-      const p0 = toScr(0, 0, ox, oy, sc);
-      const p2 = toScr(2, 4, ox, oy, sc);
-      const p4 = toScr(4, 0, ox, oy, sc);
+      const p0 = toS8(0, 0, ox, oy, sc);
+      const p2 = toS8(2, 4, ox, oy, sc);
+      const p4 = toS8(4, 0, ox, oy, sc);
       dLine(p0, p2, C.cyan, 4.0);
       dLine(p2, p4, C.cyan, 4.0);
-      dLine(toScr(-0.4, -0.4, ox, oy, sc), toScr(4.4, 4.4, ox, oy, sc), 'rgba(255,255,255,0.45)', 2.2, [5, 4]);
+      dLine(toS8(-0.4, -0.4, ox, oy, sc), toS8(4.4, 4.4, ox, oy, sc), 'rgba(255,255,255,0.45)', 2.2, [5, 4]);
 
       // [P1 수리] 슬라이더 t에 반응하도록 동기화
       const showStep1 = step >= 1 || t >= 0.15;
@@ -1812,33 +1847,33 @@ window.addEventListener('DOMContentLoaded', function () {
       const showStep3 = step >= 3 || t > 0.75;
 
       if (showStep1) {
-        dDot(toScr(0, 0, ox, oy, sc), 't₁=0', C.gold, { x: -35, y: 16 });
-        dDot(toScr(8 / 3, 8 / 3, ox, oy, sc), 't₂ = 8/3', C.gold, { x: 10, y: -8 });
+        dDot(toS8(0, 0, ox, oy, sc), 't₁=0', C.gold, { x: -35, y: 16 });
+        dDot(toS8(8 / 3, 8 / 3, ox, oy, sc), `t₂ = ${frV(4 * H8, 3)}`, C.gold, { x: 10, y: -8 });
       }
       if (showStep2) {
-        dLine(toScr(2, -0.4, ox, oy, sc), toScr(2, 4.4, ox, oy, sc), 'rgba(251,191,36,0.55)', 2, [4, 4]);
-        dLine(toScr(-0.3, 8 / 3, ox, oy, sc), toScr(4.3, 8 / 3, ox, oy, sc), C.gold, 3.0, [], true);
-        const r1 = toScr(4 / 3, 8 / 3, ox, oy, sc);
-        const r2 = toScr(8 / 3, 8 / 3, ox, oy, sc);
-        dDot(r1, 'x₁=4/3', C.gold, { x: -48, y: -10 });
-        drawDimension(r1, r2, -22, '대칭축 x=2 대칭 ➔ 두 근의 합 = 4', C.gold);
+        dLine(toS8(2, -0.4, ox, oy, sc), toS8(2, 4.4, ox, oy, sc), 'rgba(251,191,36,0.55)', 2, [4, 4]);
+        dLine(toS8(-0.3, 8 / 3, ox, oy, sc), toS8(4.3, 8 / 3, ox, oy, sc), C.gold, 3.0, [], true);
+        const r1 = toS8(4 / 3, 8 / 3, ox, oy, sc);
+        const r2 = toS8(8 / 3, 8 / 3, ox, oy, sc);
+        dDot(r1, `x₁=${frV(2 * H8, 3)}`, C.gold, { x: -48, y: -10 });
+        drawDimension(r1, r2, -22, `대칭축 x=${H8} 대칭 ➔ 두 근의 합 = ${2 * H8}`, C.gold);
       }
       if (showStep3) {
-        const q0 = toScr(0, 0, ox, oy, sc);
-        const q1 = toScr(1, 4 * anim, ox, oy, sc);
-        const q2 = toScr(2, 0, ox, oy, sc);
-        const q3 = toScr(3, 4 * anim, ox, oy, sc);
-        const q4 = toScr(4, 0, ox, oy, sc);
+        const q0 = toS8(0, 0, ox, oy, sc);
+        const q1 = toS8(1, 4 * anim, ox, oy, sc);
+        const q2 = toS8(2, 0, ox, oy, sc);
+        const q3 = toS8(3, 4 * anim, ox, oy, sc);
+        const q4 = toS8(4, 0, ox, oy, sc);
         dLine(q0, q1, C.pink, 3.4, [5, 3], true);
         dLine(q1, q2, C.pink, 3.4, [5, 3], true);
         dLine(q2, q3, C.pink, 3.4, [5, 3], true);
         dLine(q3, q4, C.pink, 3.4, [5, 3], true);
         [0, 8 / 5, 8 / 3, 16 / 5].forEach((rx, idx) => {
-          dDot(toScr(rx, rx, ox, oy, sc), `교점${idx + 1}`, C.green, { x: 8, y: 14 });
+          dDot(toS8(rx, rx, ox, oy, sc), `교점${idx + 1}`, C.green, { x: 8, y: 14 });
         });
       }
 
-      dDot(p2, '꼭대기 (2, 4)', C.cyan, { x: -32, y: -12 }, true);
+      dDot(p2, `꼭대기 (${H8}, ${2 * H8})`, C.cyan, { x: -32, y: -12 }, true);
       setMetric(
         `슬라이더 상태: ${t < 0.35 ? '1단계 f(t)=t' : t <= 0.75 ? '2단계 수평선 y=8/3' : '3단계 합성함수 y=f(f(x))'}`,
         `f(f(x))=f(x) 실근의 합 S₁ = 8 | f(f(x))=x 실근 개수 q = 4개 ➔ S₁+q = 12`
@@ -1847,7 +1882,14 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* ===== 원본 그대로: 기본 16문항 그리기 (원본 2196–2737행) ===== */
     function drawBasicScene(rect, id, step, t, u) {
+      const V0 = state.vp || DEFP[id] || {};
+      TX = id === 'bas-15' || id === 'bas-16' ? V0.p - 1 : 0;
+      TY = id === 'bas-15' ? V0.q - 1 : 0;
+      try { return drawBasicScene0(rect, id, step, t, u); } finally { TX = 0; TY = 0; }
+    }
+    function drawBasicScene0(rect, id, step, t, u) {
       const anim = state.animT;
+      const VQ = state.vp || DEFP[id] || {};
 
       // -----------------------------------------------------------------------
       // 🌱 [기본 1] bas-1: 일대일대응 직사각형 대각선 원리
@@ -1858,36 +1900,37 @@ window.addEventListener('DOMContentLoaded', function () {
         const sc = u * 0.78;
         drawAxesWithTicks(rect, ox, oy, sc);
 
-        const p12 = toScr(1, 2, ox, oy, sc);
-        const p42 = toScr(4, 2, ox, oy, sc);
-        const p48 = toScr(4, 8, ox, oy, sc);
-        const p18 = toScr(1, 8, ox, oy, sc);
+        const { x1, x2, y1, y2 } = VQ, a1 = (y2 - y1) / (x2 - x1);
+        const p12 = toScr(x1, y1, ox, oy, sc);
+        const p42 = toScr(x2, y1, ox, oy, sc);
+        const p48 = toScr(x2, y2, ox, oy, sc);
+        const p18 = toScr(x1, y2, ox, oy, sc);
 
         dPoly([p12, p42, p48, p18], 'rgba(255, 255, 255, 0.06)', 'rgba(251, 191, 36, 0.55)', 2.2);
         if (step >= 1) {
           drawRightAngle(p42, p12, p48, 11, C.gold);
-          drawDimension(p12, p42, 24, '정의역 폭 Δx = 3', C.gold);
-          drawDimension(p42, p48, -28, '공역 폭 Δy = 6', C.gold);
+          drawDimension(p12, p42, 24, `정의역 폭 Δx = ${x2 - x1}`, C.gold);
+          drawDimension(p42, p48, -28, `공역 폭 Δy = ${y2 - y1}`, C.gold);
         }
 
-        if (step === 0 && Math.abs(t - 0.5) < 0.15) {
+        if (!state.fixed && step === 0 && Math.abs(t - 0.5) < 0.15) {
           const p45 = toScr(4, 5, ox, oy, sc);
           dLine(p12, p45, C.red, 3.8, [], true);
           drawDimension(p45, p48, 26, '남는 공역 (치역 ≠ 공역)', C.red);
           dDot(p45, '(4, 5) [치역 부족]', C.red, { x: 10, y: 4 }, true);
         } else {
-          if ((step === 0 && t < 0.5) || step >= 2) {
+          if ((!state.fixed && step === 0 && t < 0.5) || step >= 2) {
             dLine(p12, p48, C.cyan, 4.0, [], true);
           }
-          if ((step === 0 && t > 0.5) || step >= 3) {
+          if ((!state.fixed && step === 0 && t > 0.5) || step >= 3) {
             dLine(p18, p42, C.pink, 4.0, [], true);
           }
         }
 
-        dDot(p12, '(1, 2)', C.cyan, { x: -42, y: 16 });
-        dDot(p48, step >= 2 ? '(4, 8) [a=2]' : '(4, 8)', C.cyan, { x: 10, y: -8 }, t < 0.4);
-        dDot(p18, step >= 3 ? '(1, 8) [a=-2]' : '(1, 8)', C.pink, { x: -85, y: -8 }, t > 0.6);
-        dDot(p42, '(4, 2)', C.pink, { x: 10, y: 16 });
+        dDot(p12, `(${x1}, ${y1})`, C.cyan, { x: -42, y: 16 });
+        dDot(p48, step >= 2 ? `(${x2}, ${y2}) [a=${a1}]` : `(${x2}, ${y2})`, C.cyan, { x: 10, y: -8 }, t < 0.4);
+        dDot(p18, step >= 3 ? `(${x1}, ${y2}) [a=-${a1}]` : `(${x1}, ${y2})`, C.pink, { x: -85, y: -8 }, t > 0.6);
+        dDot(p42, `(${x2}, ${y1})`, C.pink, { x: 10, y: 16 });
 
         setMetric(
           `정의역 [1, 4] × 공역 [2, 8] 직사각형 영역`,
@@ -1905,26 +1948,27 @@ window.addEventListener('DOMContentLoaded', function () {
         const sc = u * 0.95;
         drawAxesWithTicks(rect, ox, oy, sc);
 
-        const m2raw = -1.5 + t * 3.5;
+        const m2raw = state.fixed ? (step >= 3 ? 1 : -1) : -1.5 + t * 3.5; // 문제 탭: 2단계까지는 기울기 음수 예시, 3단계부터 양수
         const m2 = Math.abs(m2raw) < 1e-9 ? 0 : m2raw;
-        const P0 = toScr(0, 1, ox, oy, sc);
-        const PLeft = toScr(-3.5, -6, ox, oy, sc);
-        const PRight = toScr(3.8, 1 + 3.8 * m2, ox, oy, sc);
+        const c2 = VQ.c, m1 = VQ.m1;
+        const P0 = toScr(0, c2, ox, oy, sc);
+        const PLeft = toScr(-3.5, c2 - 3.5 * m1, ox, oy, sc);
+        const PRight = toScr(3.8, c2 + 3.8 * m2, ox, oy, sc);
 
         dLine(PLeft, P0, C.cyan, 3.8);
         dLine(P0, PRight, m2 > 0 ? C.green : C.red, 4.0, [], true);
 
         if (step >= 2) {
-          const yTest = m2 < 0 ? -1.5 : 2.5;
+          const yTest = m2 < 0 ? c2 - 1.25 * m1 : c2 + 1.5;
           dLine(toScr(-4.5, yTest, ox, oy, sc), toScr(4.5, yTest, ox, oy, sc), C.gold, 2.2, [5, 4], true);
           if (m2 < 0) {
-            dDot(toScr((yTest - 1) / 2, yTest, ox, oy, sc), '교점1', C.red, { x: -45, y: -8 });
-            dDot(toScr((yTest - 1) / m2, yTest, ox, oy, sc), '교점2 (일대일 위반!)', C.red, { x: 10, y: -8 });
+            dDot(toScr((yTest - c2) / m1, yTest, ox, oy, sc), '교점1', C.red, { x: -45, y: -8 });
+            dDot(toScr((yTest - c2) / m2, yTest, ox, oy, sc), '교점2 (일대일 위반!)', C.red, { x: 10, y: -8 });
           }
         }
 
-        dDot(P0, '연결점 (0, 1)', C.gold, { x: -85, y: -8 });
-        dDot(toScr(2.5, 1 + 2.5 * m2, ox, oy, sc), `기울기 m₂=${m2.toFixed(1)}`, m2 > 0 ? C.green : C.red, { x: 10, y: -8 }, true);
+        dDot(P0, `연결점 (0, ${c2})`, C.gold, { x: -85, y: -8 });
+        dDot(toScr(2.5, c2 + 2.5 * m2, ox, oy, sc), state.fixed ? `오른쪽 기울기 a−${VQ.s}` : `기울기 m₂=${m2.toFixed(1)}`, m2 > 0 ? C.green : C.red, { x: 10, y: -8 }, true);
 
         setMetric(
           `왼쪽 기울기 m₁ = +2 | 오른쪽 기울기 m₂ = ${m2.toFixed(2)}`,
@@ -1942,9 +1986,10 @@ window.addEventListener('DOMContentLoaded', function () {
         const sc = u * 1.15;
         drawAxesWithTicks(rect, ox, oy, sc);
 
+        const hh = VQ.h || 2; // f(x) = 2hh − 2|x − hh| (0 ≤ x ≤ 2hh)
         const p0 = toScr(0, 0, ox, oy, sc);
-        const p2 = toScr(2, 4, ox, oy, sc);
-        const p4 = toScr(4, 0, ox, oy, sc);
+        const p2 = toScr(hh, 2 * hh, ox, oy, sc);
+        const p4 = toScr(2 * hh, 0, ox, oy, sc);
 
         if (id === 'bas-5') {
           dLine(toScr(-0.4, -0.4, ox, oy, sc), toScr(4.5, 4.5, ox, oy, sc), C.gold, 2.4, [6, 4]);
@@ -1984,26 +2029,26 @@ window.addEventListener('DOMContentLoaded', function () {
 
         dLine(p0, p2, C.cyan, 3.8);
         dLine(p2, p4, C.cyan, 3.8);
-        dDot(p2, '(2, 4)', C.cyan, { x: -18, y: -10 });
+        dDot(p2, `(${hh}, ${2 * hh})`, C.cyan, { x: -18, y: -10 });
 
         if (id === 'bas-3') {
-          const kVal = Math.abs(t - 0.5) < 0.04 ? 2.0 : Math.abs(t - 1.0) < 0.04 ? 4.0 : 0.4 + t * 3.6;
-          dLine(toScr(-0.4, kVal, ox, oy, sc), toScr(4.4, kVal, ox, oy, sc), C.gold, 3.2, [], true);
-          dDot(toScr(0, kVal, ox, oy, sc), `y = ${kVal.toFixed(1)}`, C.gold, { x: -95, y: -6 }, true);
+          const kVal = state.fixed ? VQ.c : Math.abs(t - 0.5) < 0.04 ? 2.0 : Math.abs(t - 1.0) < 0.04 ? 4.0 : 0.4 + t * 3.6;
+          dLine(toScr(-0.4, kVal, ox, oy, sc), toScr(2 * hh + 0.4, kVal, ox, oy, sc), C.gold, 3.2, [], true);
+          dDot(toScr(0, kVal, ox, oy, sc), `y = ${f1(kVal)}`, C.gold, { x: -95, y: -6 }, true);
 
           const t1 = kVal / 2;
-          const t2 = 4 - kVal / 2;
+          const t2 = 2 * hh - kVal / 2;
           if (step >= 1) {
-            dDot(toScr(t1, kVal, ox, oy, sc), `t₁=${t1.toFixed(1)}`, C.gold, { x: -45, y: -10 });
-            dDot(toScr(t2, kVal, ox, oy, sc), `t₂=${t2.toFixed(1)}`, C.gold, { x: 10, y: -10 });
+            dDot(toScr(t1, kVal, ox, oy, sc), `t₁=${f1(t1)}`, C.gold, { x: -45, y: -10 });
+            dDot(toScr(t2, kVal, ox, oy, sc), `t₂=${f1(t2)}`, C.gold, { x: 10, y: -10 });
           }
           if (step >= 2) {
-            dLine(toScr(-0.4, t1, ox, oy, sc), toScr(4.4, t1, ox, oy, sc), C.green, 2.4, [5, 4], true);
-            dLine(toScr(-0.4, t2, ox, oy, sc), toScr(4.4, t2, ox, oy, sc), C.pink, 2.4, [5, 4], true);
+            dLine(toScr(-0.4, t1, ox, oy, sc), toScr(2 * hh + 0.4, t1, ox, oy, sc), C.green, 2.4, [5, 4], true);
+            dLine(toScr(-0.4, t2, ox, oy, sc), toScr(2 * hh + 0.4, t2, ox, oy, sc), C.pink, 2.4, [5, 4], true);
           }
           if (step >= 3) {
-            dLine(toScr(2, -0.4, ox, oy, sc), toScr(2, 4.4, ox, oy, sc), 'rgba(251,191,36,0.55)', 2, [4, 4]);
-            drawDimension(toScr(t1, kVal, ox, oy, sc), toScr(t2, kVal, ox, oy, sc), -24, '대칭축 x=2 대칭 (두 근의 합 = 4)', C.gold);
+            dLine(toScr(hh, -0.4, ox, oy, sc), toScr(hh, 2 * hh + 0.4, ox, oy, sc), 'rgba(251,191,36,0.55)', 2, [4, 4]);
+            drawDimension(toScr(t1, kVal, ox, oy, sc), toScr(t2, kVal, ox, oy, sc), state.fixed ? 30 : -24, `대칭축 x=${hh} 대칭 (두 근의 합 = ${2 * hh})`, C.gold);
           }
           setMetric(
             `현재 1차 수평선 y = ${kVal.toFixed(1)} ➔ 교점 x좌표 t₁ = ${t1.toFixed(2)}, t₂ = ${t2.toFixed(2)}`,
@@ -2014,29 +2059,29 @@ window.addEventListener('DOMContentLoaded', function () {
 
         // [P2 수리] bas-4에서 step >= 3 이후에도 슬라이더 조작 연동
         if (step >= 1) {
-          dLine(toScr(-0.4, 2, ox, oy, sc), toScr(4.4, 2, ox, oy, sc), C.gold, 2.2, [5, 4]);
+          dLine(toScr(-0.4, hh, ox, oy, sc), toScr(2 * hh + 0.4, hh, ox, oy, sc), C.gold, 2.2, [5, 4]);
         }
         if (step >= 2) {
-          [1, 2, 3].forEach((xv) => {
-            dLine(toScr(xv, 0, ox, oy, sc), toScr(xv, 4, ox, oy, sc), 'rgba(52,211,153,0.45)', 1.8, [4, 4]);
+          [hh / 2, hh, 3 * hh / 2].forEach((xv) => {
+            dLine(toScr(xv, 0, ox, oy, sc), toScr(xv, 2 * hh, ox, oy, sc), 'rgba(52,211,153,0.45)', 1.8, [4, 4]);
           });
         }
         // 합성 진행률은 조절 막대 t 하나로 정합니다. 단계가 3 이상으로 올라가면 막대가 함께 100%로 이동하므로(STEP_T),
         // 애니메이션이 끝나도 처음 함수로 되돌아가지 않고, 이후에도 막대를 움직여 변환 과정을 다시 볼 수 있습니다.
-        const mT = t;
+        const mT = state.fixed ? (step >= 3 ? 1 : 0) : t;
         if (mT > 0.01 || step >= 3) {
           const q0 = toScr(0, 0, ox, oy, sc);
-          const q1 = toScr(1, 2 + 2 * mT, ox, oy, sc);
-          const q2 = toScr(2, 4 - 4 * mT, ox, oy, sc);
-          const q3 = toScr(3, 2 + 2 * mT, ox, oy, sc);
-          const q4 = toScr(4, 0, ox, oy, sc);
+          const q1 = toScr(hh / 2, hh + hh * mT, ox, oy, sc);
+          const q2 = toScr(hh, 2 * hh - 2 * hh * mT, ox, oy, sc);
+          const q3 = toScr(3 * hh / 2, hh + hh * mT, ox, oy, sc);
+          const q4 = toScr(2 * hh, 0, ox, oy, sc);
           dLine(q0, q1, C.pink, 3.8, [], true);
           dLine(q1, q2, C.pink, 3.8, [], true);
           dLine(q2, q3, C.pink, 3.8, [], true);
           dLine(q3, q4, C.pink, 3.8, [], true);
-          dDot(q1, `(1, ${(2 + 2 * mT).toFixed(1)})`, C.pink, { x: -18, y: -12 }, true);
-          dDot(q2, `(2, ${(4 - 4 * mT).toFixed(1)})`, C.pink, { x: -18, y: 18 });
-          dDot(q3, `(3, ${(2 + 2 * mT).toFixed(1)})`, C.pink, { x: -18, y: -12 });
+          dDot(q1, `(${hh / 2}, ${f1(hh + hh * mT)})`, C.pink, { x: -18, y: -12 }, true);
+          dDot(q2, `(${hh}, ${f1(2 * hh - 2 * hh * mT)})`, C.pink, { x: -18, y: 18 });
+          dDot(q3, `(${3 * hh / 2}, ${f1(hh + hh * mT)})`, C.pink, { x: -18, y: -12 });
         }
         setMetric(
           `처음 함수 y = f(x) (청색) | 합성 변환 진행률 ${Math.round(mT * 100)}%`,
@@ -2054,22 +2099,23 @@ window.addEventListener('DOMContentLoaded', function () {
         const sc = u * 1.05;
         drawAxesWithTicks(rect, ox, oy, sc);
 
-        dLine(toScr(-0.5, -0.5, ox, oy, sc), toScr(5.2, 5.2, ox, oy, sc), C.gold, 2.4, [6, 4]);
-        const A = toScr(1, 1, ox, oy, sc), B = toScr(4, 4, ox, oy, sc), H = toScr(4, 1, ox, oy, sc);
+        const cc = VQ.c; // f(x) = (x−1)²/cc + 1 (x ≥ 1): 교점 A(1,1), B(1+cc, 1+cc)
+        dLine(toScr(-0.5, -0.5, ox, oy, sc), toScr(cc + 2.2, cc + 2.2, ox, oy, sc), C.gold, 2.4, [6, 4]);
+        const A = toScr(1, 1, ox, oy, sc), B = toScr(1 + cc, 1 + cc, ox, oy, sc), H = toScr(1 + cc, 1, ox, oy, sc);
 
         if (step >= 2) {
           dPoly([A, H, B], 'rgba(251, 191, 36, 0.20)', C.gold, 2.2);
           drawRightAngle(H, A, B, 11, C.gold);
-          drawDimension(A, B, -26, '두 교점 거리 = √2(4-1) = 3√2', C.gold);
+          drawDimension(A, B, -26, `두 교점 거리 = √2(${1 + cc}-1) = ${cc}√2`, C.gold);
         }
 
-        dCurve((x) => ((x - 1) ** 2) / 3 + 1, 1, 5.0, ox, oy, sc, C.cyan, 3.8);
-        if (t > 0.05 || step >= 3) {
-          dCurve((x) => Math.sqrt(Math.max(0, 3 * (x - 1))) + 1, 1, 5.0, ox, oy, sc, C.pink, 3.8);
+        dCurve((x) => ((x - 1) ** 2) / cc + 1, 1, cc + 2, ox, oy, sc, C.cyan, 3.8);
+        if (state.fixed || t > 0.05 || step >= 3) {
+          dCurve((x) => Math.sqrt(Math.max(0, cc * (x - 1))) + 1, 1, cc + 2, ox, oy, sc, C.pink, 3.8);
         }
 
-        dDot(A, 'A(1, 1)', C.gold, { x: -48, y: 16 });
-        dDot(B, step >= 2 ? 'B(4, 4) [AB=3√2]' : 'B(4, 4)', C.gold, { x: 10, y: -8 }, true);
+        dDot(A, state.fixed && step < 1 ? 'A' : 'A(1, 1)', C.gold, { x: -48, y: 16 });
+        dDot(B, state.fixed && step < 1 ? 'B' : step >= 2 ? `B(${1 + cc}, ${1 + cc}) [AB=${cc}√2]` : `B(${1 + cc}, ${1 + cc})`, C.gold, { x: 10, y: -8 }, true);
         setMetric(
           `증가함수 y = f(x)와 역함수 y = f⁻¹(x) 비교`,
           `교점 A(1,1), B(4,4) | 선분 AB = 3√2, 넓이는 y=x 사이 넓이의 2배`
@@ -2124,22 +2170,25 @@ window.addEventListener('DOMContentLoaded', function () {
 
         // [P2 수리] bas-9에서 처음 함수와 역함수 동시 비교 표시
         if (id === 'bas-9') {
-          const p = 1, q = 2, kVal = 3;
+          const p = VQ.c, q = VQ.a, kVal = VQ.b + VQ.a * VQ.c; // f(x) = (ax+b)/(x−c) = kVal/(x−p) + q
+          const hide9 = state.fixed && step < 1; // 문제 탭: 1단계(표준형) 전에는 점근선·중심을 그리지 않음
           dLine(toScr(-3, -3, ox, oy, sc), toScr(6, 6, ox, oy, sc), C.gold, 2.2, [6, 4]);
 
-          dLine(toScr(p, -5, ox, oy, sc), toScr(p, 7, ox, oy, sc), 'rgba(56,189,248,0.4)', 2.0, [5, 4]);
-          dLine(toScr(-5, q, ox, oy, sc), toScr(7, q, ox, oy, sc), 'rgba(56,189,248,0.4)', 2.0, [5, 4]);
+          if (!hide9) {
+            dLine(toScr(p, -5, ox, oy, sc), toScr(p, 7, ox, oy, sc), 'rgba(56,189,248,0.4)', 2.0, [5, 4]);
+            dLine(toScr(-5, q, ox, oy, sc), toScr(7, q, ox, oy, sc), 'rgba(56,189,248,0.4)', 2.0, [5, 4]);
+          }
           dCurve((x) => kVal / (x - p) + q, -5, p - 0.2, ox, oy, sc, C.cyan, 3.8);
           dCurve((x) => kVal / (x - p) + q, p + 0.2, 7, ox, oy, sc, C.cyan, 3.8);
-          dDot(toScr(p, q, ox, oy, sc), 'C(1, 2) [처음 함수]', C.cyan, { x: -110, y: -10 });
+          if (!hide9) dDot(toScr(p, q, ox, oy, sc), `C(${p}, ${q}) [처음 함수]`, C.cyan, { x: -110, y: -10 });
 
           if (t > 0.1 || step >= 2) {
-            const pInv = 2, qInv = 1;
+            const pInv = VQ.a, qInv = VQ.c;
             dLine(toScr(pInv, -5, ox, oy, sc), toScr(pInv, 7, ox, oy, sc), 'rgba(244,114,182,0.4)', 2.0, [5, 4]);
             dLine(toScr(-5, qInv, ox, oy, sc), toScr(7, qInv, ox, oy, sc), 'rgba(244,114,182,0.4)', 2.0, [5, 4]);
             dCurve((x) => kVal / (x - pInv) + qInv, -5, pInv - 0.2, ox, oy, sc, C.pink, 3.6, [5, 3]);
             dCurve((x) => kVal / (x - pInv) + qInv, pInv + 0.2, 7, ox, oy, sc, C.pink, 3.6, [5, 3]);
-            dDot(toScr(pInv, qInv, ox, oy, sc), "C'(2, 1) [역함수]", C.pink, { x: 10, y: 15 });
+            dDot(toScr(pInv, qInv, ox, oy, sc), `C'(${pInv}, ${qInv}) [역함수]`, C.pink, { x: 10, y: 15 });
           }
 
           setMetric(
@@ -2149,13 +2198,16 @@ window.addEventListener('DOMContentLoaded', function () {
           return;
         }
 
-        const p = 1, q = 2;
-        const kVal = id === 'bas-8' ? (t < 0.4 ? -4 : t >= 0.8 ? 8 : 4) : 4;
+        const p = VQ.p, q = VQ.q;
+        const kVal = state.fixed ? VQ.k : id === 'bas-8' ? (t < 0.4 ? -4 : t >= 0.8 ? 8 : 4) : 4;
         const Cpt = toScr(p, q, ox, oy, sc);
+        const hideAs = state.fixed && id === 'bas-8' && step < 1; // 문제 탭(bas-8): 1단계(점근선) 전에는 점근선·중심을 그리지 않음
 
-        dLine(toScr(p, -5, ox, oy, sc), toScr(p, 7, ox, oy, sc), C.gold, 2.2, [5, 4]);
-        dLine(toScr(-5, q, ox, oy, sc), toScr(7, q, ox, oy, sc), C.gold, 2.2, [5, 4]);
-        drawRightAngle(Cpt, toScr(p + 2, q, ox, oy, sc), toScr(p, q + 2, ox, oy, sc), 10, C.gold);
+        if (!hideAs) {
+          dLine(toScr(p, q - 7, ox, oy, sc), toScr(p, q + 5, ox, oy, sc), C.gold, 2.2, [5, 4]);
+          dLine(toScr(p - 6, q, ox, oy, sc), toScr(p + 6, q, ox, oy, sc), C.gold, 2.2, [5, 4]);
+          drawRightAngle(Cpt, toScr(p + 2, q, ox, oy, sc), toScr(p, q + 2, ox, oy, sc), 10, C.gold);
+        }
 
         if (id === 'bas-8' && step >= 2) {
           dLine(toScr(-4, -4 - p + q, ox, oy, sc), toScr(6, 6 - p + q, ox, oy, sc), C.cyan, 2.4, [4, 4], true);
@@ -2164,20 +2216,24 @@ window.addEventListener('DOMContentLoaded', function () {
           }
         }
 
-        dCurve((x) => kVal / (x - p) + q, -5, p - 0.2, ox, oy, sc, C.green, 3.8);
-        dCurve((x) => kVal / (x - p) + q, p + 0.2, 7, ox, oy, sc, C.green, 3.8);
-        dDot(Cpt, `점근선 교점 C(${p}, ${q})`, C.gold, { x: 10, y: 16 }, true);
+        dCurve((x) => kVal / (x - p) + q, p - 6, p - 0.2, ox, oy, sc, C.green, 3.8);
+        dCurve((x) => kVal / (x - p) + q, p + 0.2, p + 6, ox, oy, sc, C.green, 3.8);
+        if (!hideAs) dDot(Cpt, `점근선 교점 C(${p}, ${q})`, C.gold, { x: 10, y: 16 }, true);
 
         // [P2 수리] bas-11에서 step=0에서도 프리셋 선택에 따라 약수 쌍 정상 필터링
         if (id === 'bas-11') {
-          const pairs = [[-3, 1], [-1, 0], [0, -2], [2, 6], [3, 4], [5, 3]];
+          const dv = [];
+          for (let i = 1; i <= VQ.k; i++) if (VQ.k % i === 0) dv.push(i); // k의 양의 약수(작은 것부터)
+          const pairs = [];
+          dv.forEach((d) => { pairs.push([p - d, q - VQ.k / d]); pairs.push([p + d, q + VQ.k / d]); });
+          const d1 = dv[0], d2 = dv[1] == null ? dv[0] : dv[1]; // 1단계: 가장 작은 약수 쌍, 2단계: 그다음 쌍
           pairs.forEach(([gx, gy]) => {
-            const diff = Math.abs(gx - 1);
-            const showThis = step >= 3 || (step === 1 && diff === 1) || (step === 2 && diff === 2) || (step === 0 && (t >= 0.8 || (t < 0.45 && diff === 1) || (t >= 0.45 && t < 0.8 && diff === 2)));
+            const diff = Math.abs(gx - p);
+            const showThis = step >= 3 || (step === 1 && diff === d1) || (step === 2 && diff === d2) || (!state.fixed && step === 0 && (t >= 0.8 || (t < 0.45 && diff === d1) || (t >= 0.45 && t < 0.8 && diff === d2)));
             if (!showThis) return;
             const G = toScr(gx, gy, ox, oy, sc);
-            if ((step >= 2 || (step === 0 && t >= 0.45)) && diff === 2) {
-              dPoly([Cpt, toScr(gx, 2, ox, oy, sc), G, toScr(1, gy, ox, oy, sc)], 'rgba(56,189,248,0.2)', C.cyan, 1.8);
+            if ((step >= 2 || (!state.fixed && step === 0 && t >= 0.45)) && diff === d2) {
+              dPoly([Cpt, toScr(gx, q, ox, oy, sc), G, toScr(p, gy, ox, oy, sc)], 'rgba(56,189,248,0.2)', C.cyan, 1.8);
             }
             dDot(G, `(${gx},${gy})`, C.cyan, { x: 8, y: -6 });
           });
@@ -2201,35 +2257,37 @@ window.addEventListener('DOMContentLoaded', function () {
         const sc = u * 1.02;
         drawAxesWithTicks(rect, ox, oy, sc);
 
-        dLine(toScr(1, -2, ox, oy, sc), toScr(1, 7.5, ox, oy, sc), C.gold, 2.2, [5, 4]);
-        dLine(toScr(-2, 1, ox, oy, sc), toScr(8.5, 1, ox, oy, sc), C.gold, 2.2, [5, 4]);
-        dCurve((x) => 4 / (x - 1) + 1, 1.35, 8.2, ox, oy, sc, C.cyan, 3.8);
+        const kk = VQ.k, p0 = VQ.p, q0 = VQ.q, rt = Math.sqrt(kk); // y = kk/(x−p0) + q0 (x > p0)
+        dLine(toScr(p0, q0 - 3, ox, oy, sc), toScr(p0, q0 + 6.5, ox, oy, sc), C.gold, 2.2, [5, 4]);
+        dLine(toScr(p0 - 3, q0, ox, oy, sc), toScr(p0 + 7.5, q0, ox, oy, sc), C.gold, 2.2, [5, 4]);
+        dCurve((x) => kk / (x - p0) + q0, p0 + 0.35, p0 + 2.2 * rt + 2.8, ox, oy, sc, C.cyan, 3.8);
 
-        const px = 1.6 + t * 4.0;
-        const py = 4 / (px - 1) + 1;
-        const Cpt = toScr(1, 1, ox, oy, sc);
+        // 문제 탭에서는 3단계(정사각형) 전까지 점 P 를 정사각형이 아닌 위치에 둡니다(답 노출 방지).
+        const px = state.vp ? (step >= 3 ? p0 + rt : p0 + VQ.g) : p0 + 0.6 + t * 4.0;
+        const py = kk / (px - p0) + q0;
+        const Cpt = toScr(p0, q0, ox, oy, sc);
         const P = toScr(px, py, ox, oy, sc);
-        const A = toScr(px, 1, ox, oy, sc);
-        const B = toScr(1, py, ox, oy, sc);
+        const A = toScr(px, q0, ox, oy, sc);
+        const B = toScr(p0, py, ox, oy, sc);
 
         dPoly([Cpt, A, P, B], 'rgba(56, 189, 248, 0.26)', C.cyan, 3.0, true);
         drawRightAngle(A, Cpt, P, 10, C.cyan);
         drawRightAngle(B, Cpt, P, 10, C.cyan);
 
         if (step >= 1) {
-          drawDimension(Cpt, A, 24, `가로 a = ${(px - 1).toFixed(2)}`, C.cyan);
-          drawDimension(Cpt, B, -28, `세로 b = ${(py - 1).toFixed(2)}`, C.cyan);
+          drawDimension(Cpt, A, state.fixed ? 54 : 24, `가로 a = ${state.fixed ? nf(px - p0) : (px - p0).toFixed(2)}`, C.cyan);
+          drawDimension(Cpt, B, state.fixed ? -44 : -28, `세로 b = ${state.fixed ? nf(py - q0) : (py - q0).toFixed(2)}`, C.cyan);
         }
         if (step >= 2) dLine(Cpt, P, C.cyan, 2, [4, 4]);
         if (step >= 3) {
-          dLine(toScr(0, 0, ox, oy, sc), toScr(6.5, 6.5, ox, oy, sc), C.green, 2.4, [5, 4], true);
+          dLine(toScr(p0 - 1, q0 - 1, ox, oy, sc), toScr(p0 + 5.5, q0 + 5.5, ox, oy, sc), C.green, 2.4, [5, 4], true);
           dLine(Cpt, P, C.gold, 3.2, [], true);
         }
 
-        dDot(Cpt, 'C(1, 1)', C.gold, { x: -48, y: 16 });
+        dDot(Cpt, `C(${p0}, ${q0})`, C.gold, { x: -48, y: 16 });
         dDot(A, 'A', C.cyan, { x: -6, y: 18 });
         dDot(B, 'B', C.cyan, { x: -18, y: 4 });
-        dDot(P, `P(${px.toFixed(1)}, ${py.toFixed(1)})`, C.pink, { x: 10, y: -8 }, true);
+        dDot(P, state.vp ? (step >= 3 ? `P(${nf(px)}, ${nf(py)})` : 'P') : `P(${px.toFixed(1)}, ${py.toFixed(1)})`, C.pink, { x: 10, y: -8 }, true);
 
         const perim = 2 * (px - 1 + py - 1);
         setMetric(
@@ -2248,26 +2306,33 @@ window.addEventListener('DOMContentLoaded', function () {
         const sc = u * 0.95;
         drawAxesWithTicks(rect, ox, oy, sc);
 
-        dCurve((x) => 4 / (x - 1) + 1, 1.35, 7.5, ox, oy, sc, 'rgba(56,189,248,0.32)', 2.4);
-        dCurve((x) => 4 / (x - 1) + 1, 2, 4, ox, oy, sc, C.gold, 5.5, [], true);
+        const { k: kc, x1: xa, x2: xb, q: qc } = VQ; // y = kc/(x−1) + qc (xa ≤ x ≤ xb), 직선 y = mx + qc
+        const yA = kc / (xa - 1) + qc, yB = kc / (xb - 1) + qc;
+        const mHi = kc / (xa * (xa - 1)), mLo = kc / (xb * (xb - 1));
+        dCurve((x) => kc / (x - 1) + qc, 1.35, xb + 3.5, ox, oy, sc, 'rgba(56,189,248,0.32)', 2.4);
+        dCurve((x) => kc / (x - 1) + qc, xa, xb, ox, oy, sc, C.gold, 5.5, [], true);
 
-        const P0 = toScr(0, 1, ox, oy, sc);
-        const A = toScr(2, 5, ox, oy, sc);
-        const B = toScr(4, 7 / 3, ox, oy, sc);
+        const P0 = toScr(0, qc, ox, oy, sc);
+        const A = toScr(xa, yA, ox, oy, sc);
+        const B = toScr(xb, yB, ox, oy, sc);
+        const A15 = toScr(1.5 * xa, qc + 1.5 * (yA - qc), ox, oy, sc); // 정점에서 끝점 A, B 를 지나 뻗은 선
+        const B15 = toScr(1.5 * xb, qc + 1.5 * (yB - qc), ox, oy, sc);
 
         if (step >= 2) {
-          dPoly([P0, toScr(3, 7, ox, oy, sc), toScr(6, 3, ox, oy, sc)], 'rgba(251, 191, 36, 0.15)', null, 0);
-          dLine(P0, toScr(3, 7, ox, oy, sc), C.cyan, 2.4, [5, 4], true);
+          dPoly([P0, A15, B15], 'rgba(251, 191, 36, 0.15)', null, 0);
+          dLine(P0, A15, C.cyan, 2.4, [5, 4], true);
         }
         if (step >= 3) {
-          dLine(P0, toScr(6, 3, ox, oy, sc), C.pink, 2.4, [5, 4], true);
+          dLine(P0, B15, C.pink, 2.4, [5, 4], true);
         }
 
-        const m = 1 / 3 + t * (5 / 3);
-        dLine(toScr(-1, 1 - m, ox, oy, sc), toScr(6, 1 + 6 * m, ox, oy, sc), C.green, 3.8, [], true);
-        dDot(P0, '정점 P₀(0,1)', C.white, { x: -95, y: -6 });
-        dDot(A, step >= 2 ? '끝점 A(2,5) [최대 m=2]' : '끝점 A(2,5)', C.cyan, { x: 10, y: -8 }, true);
-        dDot(B, step >= 3 ? '끝점 B(4,7/3) [최소 m=1/3]' : '끝점 B(4, 7/3)', C.pink, { x: 10, y: 15 });
+        // 문제 탭에서는 두 끝 기울기의 한가운데 기울기로 예시 직선을 그립니다(범위의 끝을 보여 주지 않음).
+        const m = state.fixed ? (mLo + mHi) / 2 : 1 / 3 + t * (5 / 3);
+        dLine(toScr(-1, qc - m, ox, oy, sc), toScr(xb + 2, qc + (xb + 2) * m, ox, oy, sc), C.green, 3.8, [], true);
+        const ptxt = (n, d) => frV(n, d);
+        dDot(P0, `정점 P₀(0,${qc})`, C.white, { x: -95, y: -6 });
+        dDot(A, state.fixed && step < 1 ? '끝점 A' : step >= 2 ? `끝점 A(${xa},${ptxt(kc + qc * (xa - 1), xa - 1)}) [최대 m=${ptxt(kc, xa * (xa - 1))}]` : `끝점 A(${xa},${ptxt(kc + qc * (xa - 1), xa - 1)})`, C.cyan, { x: 10, y: -8 }, true);
+        dDot(B, state.fixed && step < 1 ? '끝점 B' : step >= 3 ? `끝점 B(${xb},${ptxt(kc + qc * (xb - 1), xb - 1)}) [최소 m=${ptxt(kc, xb * (xb - 1))}]` : `끝점 B(${xb}, ${ptxt(kc + qc * (xb - 1), xb - 1)})`, C.pink, { x: 10, y: 15 });
 
         setMetric(
           `현재 직선 기울기 m = ${m.toFixed(2)}`,
@@ -2282,30 +2347,33 @@ window.addEventListener('DOMContentLoaded', function () {
         const sc = u * 0.92;
         drawAxesWithTicks(rect, ox, oy, sc);
 
-        dLine(toScr(1, -3, ox, oy, sc), toScr(1, 7, ox, oy, sc), C.gold, 1.8, [5, 4]);
-        dLine(toScr(-5, 2, ox, oy, sc), toScr(7, 2, ox, oy, sc), C.gold, 1.8, [5, 4]);
-        dCurve((x) => 2 / (x - 1) + 2, -5, 0.7, ox, oy, sc, C.cyan, 3.8);
-        dCurve((x) => 2 / (x - 1) + 2, 1.3, 7, ox, oy, sc, C.cyan, 3.8);
+        const k13 = VQ.k, q13 = VQ.q, mt13 = -(q13 * q13) / (4 * k13); // y = k13/(x−1) + q13, 접선 기울기 mt13
+        const tx13 = 1 - 2 * k13 / q13, ty13 = q13 / 2, x013 = 1 - k13 / q13;
+        dLine(toScr(1, -3, ox, oy, sc), toScr(1, q13 + 5, ox, oy, sc), C.gold, 1.8, [5, 4]);
+        dLine(toScr(-5, q13, ox, oy, sc), toScr(7, q13, ox, oy, sc), C.gold, 1.8, [5, 4]);
+        dCurve((x) => k13 / (x - 1) + q13, -5, 0.7, ox, oy, sc, C.cyan, 3.8);
+        dCurve((x) => k13 / (x - 1) + q13, 1.3, 7, ox, oy, sc, C.cyan, 3.8);
 
         if (step >= 2) {
-          dLine(toScr(-4, 2.5, ox, oy, sc), toScr(6, -2.5, ox, oy, sc), C.gold, 2.2, [5, 4]);
-          dDot(toScr(-1, 1, ox, oy, sc), '접점 (-1,1) [m=-1/2]', C.gold, { x: -125, y: -10 });
+          if (state.fixed) dLine(toScr(tx13 - 1.5, mt13 * (tx13 - 2.5), ox, oy, sc), toScr(3.5, mt13 * 2.5, ox, oy, sc), C.gold, 2.2, [5, 4]);
+          else dLine(toScr(-4, 2.5, ox, oy, sc), toScr(6, -2.5, ox, oy, sc), C.gold, 2.2, [5, 4]);
+          dDot(toScr(tx13, ty13, ox, oy, sc), `접점 (${nf(tx13)},${nf(ty13)}) [m=${frV(-(q13 * q13), 4 * k13)}]`, C.gold, { x: -125, y: -10 });
         }
         if (step >= 3) {
           dLine(toScr(-5, 0, ox, oy, sc), toScr(7, 0, ox, oy, sc), C.red, 2.6, [5, 4], true);
-          dDot(toScr(0, 0, ox, oy, sc), '교점 (0,0) [m=0 점근선 평행]', C.red, { x: -165, y: 18 });
+          dDot(toScr(x013, 0, ox, oy, sc), `교점 (${nf(x013)},0) [m=0 점근선 평행]`, C.red, { x: -165, y: 18 });
         }
 
-        const m = Math.abs(t - 0.35) < 0.08 ? -0.5 : Math.abs(t - 0.65) < 0.08 ? 0 : -1.0 + t * 2.0;
+        const m = state.fixed ? 0.5 : Math.abs(t - 0.35) < 0.08 ? -0.5 : Math.abs(t - 0.65) < 0.08 ? 0 : -1.0 + t * 2.0; // 문제 탭: 예시 직선(m=1/2)
         const isOne = Math.abs(m + 0.5) < 1e-9 || Math.abs(m) < 1e-9;
         const cnt = isOne ? 1 : (m > -0.5 ? 2 : 0);
-        dLine(toScr(-4.5, -5.5 * m, ox, oy, sc), toScr(6.5, 5.5 * m, ox, oy, sc), isOne ? C.green : C.pink, 3.8, [], true);
+        if (!(state.fixed && step >= 2)) dLine(toScr(-4.5, -5.5 * m, ox, oy, sc), toScr(6.5, 5.5 * m, ox, oy, sc), isOne ? C.green : C.pink, 3.8, [], true);
         dDot(toScr(1, 0, ox, oy, sc), '정점 (1,0)', C.white, { x: 10, y: 16 });
 
         // [P2 수리] 회전하는 직선 위의 점에 조작 핸들을 달아 지렛대 회전 직관성 부여
         const guideX = 3.5;
         const guideY = m * (guideX - 1);
-        dDot(toScr(guideX, guideY, ox, oy, sc), `기울기 m=${m.toFixed(2)}`, isOne ? C.green : C.pink, { x: 10, y: -8 }, true);
+        if (!(state.fixed && step >= 2)) dDot(toScr(guideX, guideY, ox, oy, sc), state.fixed ? '직선 y = m(x − 1)' : `기울기 m=${m.toFixed(2)}`, isOne ? C.green : C.pink, { x: 10, y: -8 }, true);
 
         setMetric(
           `현재 기울기 m = ${m.toFixed(2)} ➔ 교점 ${cnt}개`,
@@ -2323,20 +2391,21 @@ window.addEventListener('DOMContentLoaded', function () {
       drawAxesWithTicks(rect, ox, oy, sc);
 
       if (id === 'bas-14') {
-        dCurve((x) => Math.sqrt(Math.max(0, 2 * (x - 1))) + 1, 1, 6.8, ox, oy, sc, C.cyan, 4.2);
+        const bp = VQ.p, bq = VQ.q, ba = VQ.a; // 시작점 S(bp, bq), 네 함수 y = ±√(±ba(x−bp)) + bq
+        dCurve((x) => Math.sqrt(Math.max(0, ba * (x - bp))) + bq, bp, bp + 5.8, ox, oy, sc, C.cyan, 4.2);
         if (step >= 2 || t >= 0.5) {
-          dCurve((x) => Math.sqrt(Math.max(0, -2 * (x - 1))) + 1, -4.8, 1, ox, oy, sc, C.pink, 3.8);
-          dCurve((x) => -Math.sqrt(Math.max(0, -2 * (x - 1))) + 1, -4.8, 1, ox, oy, sc, C.green, 3.8);
-          dCurve((x) => -Math.sqrt(Math.max(0, 2 * (x - 1))) + 1, 1, 6.8, ox, oy, sc, C.gold, 3.8);
+          dCurve((x) => Math.sqrt(Math.max(0, -ba * (x - bp))) + bq, bp - 5.8, bp, ox, oy, sc, C.pink, 3.8);
+          dCurve((x) => -Math.sqrt(Math.max(0, -ba * (x - bp))) + bq, bp - 5.8, bp, ox, oy, sc, C.green, 3.8);
+          dCurve((x) => -Math.sqrt(Math.max(0, ba * (x - bp))) + bq, bp, bp + 5.8, ox, oy, sc, C.gold, 3.8);
         }
         if (step >= 3 || t >= 0.9) {
           // 네 무리함수의 합동을 설명하는 두 반사축.
-          dLine(toScr(1, -4, ox, oy, sc), toScr(1, 6.5, ox, oy, sc), 'rgba(251,191,36,0.5)', 1.8, [5, 5]);
-          dLine(toScr(-5, 1, ox, oy, sc), toScr(7, 1, ox, oy, sc), 'rgba(251,191,36,0.5)', 1.8, [5, 5]);
-          dLine(toScr(-2, -2, ox, oy, sc), toScr(6, 6, ox, oy, sc), 'rgba(255,255,255,0.45)', 2, [5, 4]);
-          dCurve((x) => 0.5 * (x - 1) ** 2 + 1, 1, 4.5, ox, oy, sc, C.purple, 3.5, [5, 3], true);
+          dLine(toScr(bp, bq - 5, ox, oy, sc), toScr(bp, bq + 5.5, ox, oy, sc), 'rgba(251,191,36,0.5)', 1.8, [5, 5]);
+          dLine(toScr(bp - 6, bq, ox, oy, sc), toScr(bp + 6, bq, ox, oy, sc), 'rgba(251,191,36,0.5)', 1.8, [5, 5]);
+          dLine(toScr(Math.min(bp, bq) - 3, Math.min(bp, bq) - 3, ox, oy, sc), toScr(Math.max(bp, bq) + 5, Math.max(bp, bq) + 5, ox, oy, sc), 'rgba(255,255,255,0.45)', 2, [5, 4]);
+          dCurve((x) => (x - bq) ** 2 / ba + bp, bq, bq + 3.5, ox, oy, sc, C.purple, 3.5, [5, 3], true);
         }
-        dDot(toScr(1, 1, ox, oy, sc), '시작점 S(1, 1)', C.white, { x: -45, y: -12 }, true);
+        dDot(toScr(bp, bq, ox, oy, sc), `시작점 S(${bp}, ${bq})`, C.white, { x: -45, y: -12 }, true);
         setMetric(
           `시작점 S(1,1) 기준 부호쌍 (±, ±)에 따른 그래프 방향`,
           `(+,+) 우상향 · (-,+) 좌상향 · (-,-) 좌하향 · (+,-) 우하향`
@@ -2352,11 +2421,11 @@ window.addEventListener('DOMContentLoaded', function () {
         dCurve((x) => 2 * Math.sqrt(Math.abs(x - 1)), -4.8, 1, ox, oy, sc, C.cyan, 3.8);
         dCurve((x) => 2 * Math.sqrt(Math.abs(x - 1)), 1, 6.8, ox, oy, sc, C.cyan, 3.8);
 
-        const k = 0.4 - t * 1.8;
+        const k = state.fixed ? (step >= 3 ? -0.5 : 0.6) : 0.4 - t * 1.8; // 문제 탭: 3단계 전에는 교점 1개인 예시 직선
         const isThree = k > -1.0 && k < 0.0;
         const cnt = k > 0 ? 1 : (Math.abs(k) < 1e-9 || Math.abs(k + 1) < 1e-9 ? 2 : (isThree ? 3 : 1));
         dLine(toScr(-4, -4 + k, ox, oy, sc), toScr(6, 6 + k, ox, oy, sc), isThree ? C.green : C.gold, 3.8, [], true);
-        dDot(toScr(1, 0, ox, oy, sc), step >= 2 ? '점 (1,0) [k=-1]' : '점 (1,0)', C.gold, { x: -45, y: 18 }, true);
+        dDot(toScr(1, 0, ox, oy, sc), step >= 2 ? `점 (${VQ.p},0) [k=${-VQ.p}]` : `점 (${VQ.p},0)`, C.gold, { x: -45, y: 18 }, true);
 
         setMetric(
           `직선 y = x + (${k.toFixed(2)}) ➔ 교점 ${cnt}개`,
@@ -2374,15 +2443,16 @@ window.addEventListener('DOMContentLoaded', function () {
 
       dCurve((x) => 2 * Math.sqrt(Math.max(0, x - 1)) + 1, 1, 6.8, ox, oy, sc, C.cyan, 4.2);
 
-      const k = 1.4 - t * 2.2;
+      const k = state.fixed ? 0.5 : 1.4 - t * 2.2; // 문제 탭: 예시 직선(옮긴 그림 기준 k=0.5)
       const counts = plotIntersections(k, ox, oy, sc, false, step >= 3);
-      const isTwo = counts.real === 2;
+      const isTwo = counts.real === 2 && !(state.fixed && step < 1); // 풀이 전에는 교점 수를 색으로도 알리지 않음
       dLine(toScr(-3.5, -3.5 + k, ox, oy, sc), toScr(6, 6 + k, ox, oy, sc), isTwo ? C.green : C.gold, 3.8, [], true);
-      dDot(toScr(1, 1, ox, oy, sc), step >= 1 ? '시작점 S(1,1) [k=0]' : '시작점 S(1,1)', C.cyan, { x: 10, y: 15 });
+      const sk = VQ.q - VQ.p; // 시작점을 지나는 직선의 k
+      dDot(toScr(1, 1, ox, oy, sc), step >= 1 ? `시작점 S(${VQ.p},${VQ.q}) [k=${sk}]` : `시작점 S(${VQ.p},${VQ.q})`, C.cyan, { x: 10, y: 15 });
       if (step >= 2) {
-        dDot(toScr(2, 3, ox, oy, sc), '접점 (2,3) [k=1]', C.gold, { x: -105, y: -8 }, true);
+        dDot(toScr(2, 3, ox, oy, sc), `접점 (${VQ.p + 1},${VQ.q + 2}) [k=${sk + 1}]`, C.gold, { x: -105, y: -8 }, true);
       } else {
-        dDot(toScr(0, k, ox, oy, sc), `y절편 k=${k.toFixed(2)}`, isTwo ? C.green : C.gold, { x: -110, y: -8 }, true);
+        dDot(toScr(0, k, ox, oy, sc), state.fixed ? '직선 y = x + k' : `y절편 k=${k.toFixed(2)}`, isTwo ? C.green : C.gold, { x: -110, y: -8 }, true);
       }
 
       setMetric(
@@ -2391,10 +2461,350 @@ window.addEventListener('DOMContentLoaded', function () {
       );
     }
 
+  /* ==========================================================================
+     「새 문제」 변형 (옛 장면 → 문제 탭·정리 탭 전용). 탐구 탭의 그림·문구·조작은 그대로입니다.
+     - 각 장면의 첫 문제는 원본 PROBLEMS 의 문제 그대로(pool[0] = 원본 값). 「새 문제」는 같은 구조에서 숫자만 바꾼 변형입니다.
+     - 변형은 원래 문제가 노린 학습 포인트(비율·대칭·도형 관계)가 그대로 살아 있는 것만 둡니다.
+     - 문제·정리 탭의 그림은 탐구 슬라이더가 아니라 변형의 조건대로 그립니다(drawScene 안의 P = 변형 값).
+     ========================================================================== */
+  /*VARDATA-BEGIN*/
+  const gcdV = (x, y) => (y ? gcdV(y, x % y) : x);
+  const frNorm = (n, d) => { const g = gcdV(Math.abs(n), Math.abs(d)) || 1; n /= g; d /= g; if (d < 0) { n = -n; d = -d; } return [n, d]; };
+  const frV = (n, d) => { const [a, b] = frNorm(n, d); return b === 1 ? String(a) : `${a}/${b}`; };                                          // 보통 글(쓴 그대로) 분수
+  const frT = (n, d) => { const [a, b] = frNorm(n, d); return b === 1 ? String(a) : `${a < 0 ? '-' : ''}\\dfrac{${Math.abs(a)}}{${b}}`; }; // 수식($…$) 안의 쌓은 분수
+  const VSPEC = {
+    'adv-1': {
+      pool: [{ a: 2, b: 6 }, { a: 1, b: 5 }, { a: 3, b: 7 }, { a: 1, b: 7 }, { a: 2, b: 8 }], // 간격 b−a ≥ 4 만(작으면 라벨이 겹침)
+      text: (P) => `<div>$x > 2$에서 정의된 유리함수 $f(x) = \\dfrac{k}{x - 2} + 2$ ($k > 0$)의 그래프가 있다. 두 점근선의 교점을 $C$라 하고, 곡선 $y = f(x)$ 위의 서로 다른 두 점 $P, Q$를 지나는 직선의 기울기가 $-1$일 때, 다음 조건을 만족시킨다.</div>
+        <div class="mt-1.5 pl-2.5 border-l-2 border-amber-400 text-amber-100 text-xs space-y-0.5"><div>(가) $\\overline{PQ} = ${P.b - P.a === 1 ? '' : P.b - P.a}\\sqrt{2}$</div><div>(나) 삼각형 $CPQ$의 넓이는 $${(P.b * P.b - P.a * P.a) / 2}$이다.</div></div>
+        <div class="mt-1.5 font-bold text-amber-300">상수 $k$의 값을 구하시오.</div>`,
+      ans: (P) => `정답: k = ${P.a * P.b}  (a = ${P.a}, b = ${P.b})`,
+      steps: (P) => { const d = P.b - P.a, s = P.a + P.b, A = d * s / 2; return [
+        { title: '1단계. 대칭축 y = x 와 1 : 1 : √2 직각이등변삼각형', desc: `점근선의 교점을 원점으로 옮겨 $u=x-2$, $v=y-2$라 하면 곡선은 $uv=k$입니다. 기울기가 $-1$인 직선에서는 $u+v$가 일정하므로 두 교점은 $(a,b)$, $(b,a)$로 쓸 수 있습니다 ($0<a<b$, $ab=k$). 원래 좌표의 가로·세로 차는 모두 $b-a$이므로 $PQ=\\sqrt2(b-a)$입니다. 주어진 $PQ=${d}\\sqrt2$에서 $b-a=${d}$입니다.` },
+        { title: '2단계. 넓이 불변(k/2) 삼각형 치환 ➔ 사다리꼴로 바꾸기', desc: `점근선 $y=2$에 내린 수선의 발 $P_1, Q_1$에 대하여 $\\triangle CPP_1=\\triangle CQQ_1=\\dfrac{k}{2}$이므로 $\\triangle CPQ$의 넓이는 사다리꼴 $P_1PQQ_1$의 넓이와 같습니다. 따라서 사다리꼴의 넓이가 $${A}$입니다.` },
+        { title: `3단계. 사다리꼴 넓이 공식으로 a=${P.a}, b=${P.b}, k=${P.a * P.b} 구하기`, desc: `사다리꼴 넓이 $=\\dfrac{1}{2}(a+b)(b-a)=\\dfrac{1}{2}(a+b)\\times ${d}=${A}$에서 $a+b=${s}$. $b-a=${d}$, $a+b=${s}$를 연립하면 $a=${P.a}$, $b=${P.b}$ ⇒ $k=ab=${P.a * P.b}$.` }
+      ]; },
+      alg: (P) => `<div class="font-bold text-rose-300 mb-1">⚠️ 일반적인 대수 풀이 비교</div><div>직선 $y=-x+m$과 $\\dfrac{k}{x-2}+2=-x+m$을 연립해 이차방정식을 세우고, 근과 계수의 관계로 $PQ$를 쓴 다음 점 $C$와 직선 사이의 거리로 넓이를 다시 세워야 해서 계산이 길어집니다.</div>`,
+      aha: () => `교점 좌표를 근의 공식으로 구하지 마세요! 점근선에 내린 두 직각삼각형($\\triangle CPP_1 = \\triangle CQQ_1 = \\frac{k}{2}$)을 치환하면 **$\\triangle CPQ$의 넓이가 곧 사다리꼴 $P_1PQQ_1$의 넓이**로 바뀝니다.`
+    }
+    ,
+    'adv-2': {
+      pool: [{ p: 1 }, { p: 2 }, { p: 3 }, { p: 5 }, { p: 8 }], // a = 1, C(p+4, p+4): (가) 넓이 2(p+4), (나) 비 3/(p+1)
+      ratio: (P) => { const n = 3, d = P.p + 1, g = gcdV(n, d); return [n / g, d / g]; },
+      text: (P) => { const [n, d] = VSPEC['adv-2'].ratio(P); const rt = d === 1 ? `$\\triangle OAB$의 넓이와 같다` : `$\\triangle OAB$의 넓이의 $\\dfrac{${n}}{${d}}$배이다`;
+        return `<div>두 양수 $a, p$에 대하여 무리함수 $f(x) = \\sqrt{a(x - p)} + p + 2$의 그래프의 시작점을 $A$, 역함수 $y = f^{-1}(x)$의 시작점을 $B$, 두 그래프의 교점을 $C$라 하자.</div>
+        <div class="mt-1.5 pl-2.5 border-l-2 border-amber-400 text-amber-100 text-xs space-y-0.5"><div>(가) 사각형 $OACB$의 넓이는 $${2 * (P.p + 4)}$이다. (단, $O$는 원점)</div><div>(나) $\\triangle ABC$의 넓이는 ${d === 1 ? '$\\triangle OAB$의 넓이와 같다.' : rt + '.'}</div></div>
+        <div class="mt-1.5 font-bold text-amber-300">$f(${P.p + 9})$의 값을 구하시오.</div>`; },
+      ans: (P) => `정답: f(${P.p + 9}) = ${P.p + 5}  (p = ${P.p}, a = 1, C(${P.p + 4}, ${P.p + 4}))`,
+      steps: (P) => { const p = P.p, S = 2 * (p + 4), T = 2 * (p + 1), [n, d] = VSPEC['adv-2'].ratio(P); const rr = d === 1 ? '' : `\\frac{${n}}{${d}}`; return [
+        { title: '1단계. 시작점 A(p, p+2), B(p+2, p)와 불변 길이 AB = 2√2', desc: `근호 안이 0인 점은 $A(p,p+2)$입니다. 역함수 그래프는 $y=x$에 대칭이므로 그 시작점은 $B(p+2,p)$입니다. $AB=\\sqrt{2^2+(-2)^2}=2\\sqrt2$, 중점은 $M(p+1,p+1)$입니다. 선분 $AB$는 $y=x$에 수직입니다.` },
+        { title: `2단계. 직교 대각선 분할로 △OAB = ${T}, △ABC = 6 확정`, desc: `$a>0$이므로 $f$는 증가함수이고, 증가함수와 그 역함수의 교점은 $y=x$ 위에 있습니다. 따라서 $C$는 $y=x$ 위의 점입니다. 대각선 $AB$로 사각형 $OACB$를 나눕니다. $\\triangle OAB$의 넓이를 $T$라 하면 $\\triangle ABC$는 ${d === 1 ? '$T$' : `$${rr}T$`}이므로 $T+${d === 1 ? 'T' : rr + 'T'}=${S}$에서 $T=${T}$입니다. 다른 삼각형의 넓이는 $${S}-${T}=6$입니다. 두 삼각형은 밑변 $AB$가 같고 $AB$가 $y=x$에 수직이므로 각 높이는 $OM$과 $MC$입니다.` },
+        { title: `3단계. 수직 높이 OM = ${p + 1}√2, MC = 3√2 에서 p = ${p}, C(${p + 4}, ${p + 4}), a = 1`, desc: `$${T}=(1/2)(2\\sqrt2)\\,OM$에서 $OM=${p + 1}\\sqrt2$입니다. $M$은 원점의 오른쪽 위에 있으므로 $M=(${p + 1},${p + 1})$, $p=${p}$입니다. $6=(1/2)(2\\sqrt2)\\,MC$에서 $MC=3\\sqrt2$이고 $C$는 $M$의 오른쪽 위이므로 $C=(${p + 4},${p + 4})$입니다. $${p + 4}=\\sqrt{a(${p + 4}-${p})}+${p + 2}$에서 $\\sqrt{4a}=2$, $a=1$입니다. 따라서 $f(${p + 9})=\\sqrt{${9}}+${p + 2}=\\mathbf{${p + 5}}$입니다.` }
+      ]; },
+      alg: () => `<div class="font-bold text-rose-300 mb-1">⚠️ 대수적 연립 풀이의 한계</div><div>미지수 $a, p$가 둘 다 남아 있는 상태에서 $\\sqrt{a(x-p)}+p+2 = x$를 제곱하여 근의 공식으로 교점 $C$를 구하려고 하면 근호 안에 $a, p$가 얽혀 넓이 식을 풀기 어렵습니다.</div>`,
+      aha: () => `미지수 $p$를 구하려고 연립방정식을 세우지 마세요! 시작점 $A(p, p+2)$와 $B(p+2, p)$ 사이의 거리가 **$p$에 관계없이 항상 $\\overline{AB} = 2\\sqrt{2}$로 고정**되어 있다는 일정한 길이가 풀이의 핵심입니다.`
+    },
+    'adv-5': {
+      pool: [{ u: 2, cx: -1, s: 1 }, { u: 3, cx: -1, s: 1 }, { u: 3, cx: -1, s: 2 }, { u: 4, cx: -1, s: 1 }, { u: 4, cx: -2, s: 1 }, { u: 2, cx: 0, s: 1 }], // 곡선 u²/(x−1)+2, 원 중심 (cx, cx+1)(대칭축 y=x+1 위), 반지름 s√2
+      text: (P) => { const cy = P.cx + 1, hx = P.cx === 0 ? 'x^2' : `(x ${P.cx < 0 ? '+' : '-'} ${Math.abs(P.cx)})^2`, hy = cy === 0 ? 'y^2' : `(y ${cy < 0 ? '+' : '-'} ${Math.abs(cy)})^2`;
+        return `<div>유리함수 $f(x) = \\dfrac{${P.u * P.u}}{x - 1} + 2$ ($x > 1$)의 그래프 위의 점 $P$와 원 $C : ${hx} + ${hy} = ${2 * P.s * P.s}$ 위의 점 $Q$에 대하여, 선분 $PQ$의 길이의 최솟값을 $m$, 그때의 점 $P$의 좌표를 $(a, b)$라 하자.</div>
+        <div class="mt-1.5 font-bold text-amber-300">$\\dfrac{m}{\\sqrt{2}} + a + b$의 값을 구하시오.</div>`; },
+      ans: (P) => { const mm = 1 + P.u - P.cx - P.s; return `정답: ${mm + 3 + 2 * P.u}  (m = ${mm}√2, a = ${1 + P.u}, b = ${2 + P.u})`; },
+      steps: (P) => { const cy = P.cx + 1, a = 1 + P.u, b = 2 + P.u, ap = 1 + P.u - P.cx, mm = ap - P.s, cs = (v) => (v < 0 ? `(${v})` : v); return [
+        { title: `1단계. 원의 중심 A(${P.cx}, ${cy})와 점근선 교점 C'(1, 2)의 기울기 = +1`, desc: `기울기 $=\\dfrac{2-${cs(cy)}}{1-${cs(P.cx)}}=+1$이므로 두 점은 유리함수의 선대칭축 $\\mathbf{y=x+1}$ 위에 있습니다.` },
+        { title: `2단계. 대칭축 위 정사각형 꼭짓점 P(${a}, ${b}) 구하기`, desc: `곡선 위 점을 $P=(1+w,\;2+\\frac{${P.u * P.u}}{w})$ ($w>0$)로 놓으면 $s=w+${1 - P.cx}$, $t=\\frac{${P.u * P.u}}{w}+${1 - P.cx}$로 $AP^2=s^2+t^2\\ge\\frac{(s+t)^2}{2}$입니다. 산술·기하평균으로 $w+\\frac{${P.u * P.u}}{w}\\ge${2 * P.u}$이므로 $AP^2\\ge\\frac{(${2 * P.u}+${2 - 2 * P.cx})^2}{2}=${ap * ap * 2}$입니다. 등호는 $w=\\frac{${P.u * P.u}}{w}$, 즉 $w=${P.u}$일 때 성립하므로 $P=(${a},${b})$, $AP_{\\min}=${ap}\\sqrt2$입니다.` },
+        { title: `3단계. 중심거리 AP = ${ap}√2 에서 반지름 r = ${P.s === 1 ? '' : P.s}√2 차감`, desc: `$AP\\ge${ap}\\sqrt2>r$이므로 $P$는 원 밖에 있고 $PQ\\ge AP-AQ=AP-${P.s === 1 ? '' : P.s}\\sqrt2$입니다. $Q$가 선분 $AP$ 위의 원과 만나는 점일 때 등호가 성립하므로 $m=${ap}\\sqrt2-${P.s === 1 ? '' : P.s}\\sqrt2=${mm}\\sqrt2$이고 $a=${a}$, $b=${b}$이므로 $m/\\sqrt2+a+b=${mm}+${a}+${b}=\\mathbf{${mm + a + b}}$입니다.` }
+      ]; },
+      alg: () => `<div class="font-bold text-rose-300 mb-1">⚠️ 대수적 거리 제곱 풀이 비교</div><div>대칭축 위의 점이 최소 후보라는 짐작만으로는 충분하지 않습니다. 모든 $w>0$에 대한 거리 하한과 등호 조건을 2단계처럼 확인해야 합니다.</div>`,
+      aha: () => `원의 중심과 점근선 교점 $C'(1, 2)$를 이어 보세요! 기울기가 $+1$이므로 **유리함수의 대칭축 $y = x + 1$ 위에 원의 중심·점근선 교점·곡선 꼭짓점이 일직선으로 정렬**됩니다.`
+    },
+    'adv-6': {
+      pool: [{ p: 3, c: 4, q: 2, t: 1 }, { p: 3, c: 6, q: 3, t: 1 }, { p: 2, c: 8, q: 4, t: 2 }, { p: 1, c: 10, q: 5, t: 3 }, { p: 5, c: 3, q: 3, t: 2 }], // |c/(x−p) − q|, 가로선 y=t, AB = 2ct/(q²−t²)
+      ab: (P) => { const n = 2 * P.c * P.t, d = P.q * P.q - P.t * P.t, g = gcdV(n, d); return [n / g, d / g]; },
+      abTex: (P) => { const [n, d] = VSPEC['adv-6'].ab(P); return d === 1 ? String(n) : `\\dfrac{${n}}{${d}}`; },
+      text: (P) => `<div>함수 $f(x) = \\left|\\dfrac{${P.c}}{x ${P.p === 0 ? '' : '- ' + P.p}} - ${P.q}\\right|$의 그래프와 직선 $y = t$ ($t > 0$)가 오직 한 점에서만 만나도록 하는 실수 $t$의 값을 $k$라 하자. $0 < t < k$인 실수 $t$에 대하여 직선 $y = t$가 함수 $y = f(x)$의 그래프와 만나는 두 점 $A, B$ 사이의 거리가 $\\overline{AB} = ${VSPEC['adv-6'].abTex(P)}$일 때, $k + t$의 값을 구하시오.</div>`,
+      ans: (P) => `정답: k + t = ${P.q + P.t}  (k = ${P.q}, t = ${P.t})`,
+      steps: (P) => { const { p, c, q, t } = P, ab = VSPEC['adv-6'].abTex(P); return [
+        { title: `1단계. 접혀 올라온 점근선 y = |-${q}| = ${q} 에서 k = ${q} 확정`, desc: `$|${c}/(x-${p})-${q}|=t$ ($t>0$)는 $${c}/(x-${p})-${q}=t$ 또는 $${c}/(x-${p})-${q}=-t$입니다. 첫째는 항상 $x=${p}+${c}/(${q}+t)$ 한 해를 갖습니다. 둘째는 $t\\ne${q}$일 때 $x=${p}+${c}/(${q}-t)$ 한 해를 갖고, $t=${q}$일 때는 해가 없습니다. 두 해는 $t>0$에서 서로 다르므로 오직 한 점에서 만나는 높이는 $\\mathbf{k=${q}}$입니다.` },
+        { title: `2단계. 점근선 x = ${p} 기준 두 교점 A, B의 상대 위치 표현`, desc: `$0<t<${q}$이면 $${q}+t>0$, $${q}-t>0$이므로 두 점 모두 점근선 $x=${p}$의 오른쪽에 있습니다. 원래 식이 $t$인 점은 $x_A=${p}+${c}/(${q}+t)$, $-t$인 점은 $x_B=${p}+${c}/(${q}-t)$입니다. 그림에서 각 점까지의 가로 거리를 비교해 보세요.` },
+        { title: `3단계. 선분 AB = (x₂ - ${p}) - (x₁ - ${p}) = ${VSPEC['adv-6'].ab(P).join('/').replace(/\/1$/, '')} 풀이`, desc: `$AB=x_B-x_A=\\frac{${c}}{${q}-t}-\\frac{${c}}{${q}+t}=\\frac{${2 * c}t}{${q * q}-t^2}$입니다. $AB=${ab}$를 대입하고 $0<t<${q}$에서 분모가 양수이므로 정리하면 $t=${t}$만 가능합니다(다른 근은 $0<t<${q}$ 밖). 따라서 $k+t=${q}+${t}=\\mathbf{${q + t}}$입니다.` }
+      ]; },
+      alg: (P) => `<div class="font-bold text-rose-300 mb-1">⚠️ 계산 단축 팁: 평행이동 상수 소거</div><div>$x_1, x_2$를 각각 통분하지 말고 **$(x - ${P.p})$을 하나의 변수**로 보아 $\\overline{AB} = (x_2 - ${P.p}) - (x_1 - ${P.p})$으로 계산하면 상수 $${P.p}$가 자동 소거되어 계산 실수가 줄어듭니다.</div>`,
+      aha: (P) => `절댓값 유리함수 $y = |f(x)|$에서는 **$x$축 아래의 수평점근선 $y = -${P.q}$도 함께 접혀 올라와 $y = ${P.q}$가 된다**는 사실을 그래프에서 보면 $k = ${P.q}$가 즉시 구해집니다!`
+    },
+    'adv-7': {
+      pool: [{ c: 2, w: 4, d: 4 }, { c: 2, w: 4, d: 3 }, { c: 2, w: 4, d: 5 }, { c: 3, w: 4, d: 2 }, { c: 1, w: 9, d: 4 }, { c: 3, w: 4, d: 3 }, { c: 2, w: 9, d: 2 }], // y=c√x (0≤x≤w), 높이 h=c√w, 평행이동 d → 넓이 d·h
+      h: (P) => P.c * Math.sqrt(P.w),
+      text: (P) => { const cx = P.c === 1 ? '' : P.c, h = VSPEC['adv-7'].h(P); return `<div>곡선 $C_1: y=${cx}\\sqrt{x}$ ($0\\le x\\le${P.w}$)와 이 곡선을 $x$축의 방향으로 $${P.d}$만큼 평행이동한 곡선 $C_2: y=${cx}\\sqrt{x-${P.d}}$ ($${P.d}\\le x\\le${P.w + P.d}$)가 있다.</div><div class="mt-1.5 font-bold text-amber-300">두 곡선과 직선 $y=0$, $y=${h}$로 둘러싸인 도형의 넓이를 구하시오.</div>`; },
+      ans: (P) => `정답: ${P.d * VSPEC['adv-7'].h(P)}`,
+      steps: (P) => { const h = VSPEC['adv-7'].h(P), c = P.c, cx = c === 1 ? '' : c, d = P.d; return [
+        { title: '1단계. 같은 높이의 두 점 비교', desc: `$y=${cx}\\sqrt{x}$에서 $y\\ge0$이므로 제곱하여 $x=y^2/${c * c}$를 얻습니다. 두 번째 곡선은 오른쪽으로 ${d}만큼 이동했으므로 같은 높이에서 $x=y^2/${c * c}+${d}$입니다. 두 식은 모두 $0\\le y\\le${h}$에서 사용합니다.` },
+        { title: '2단계. 평행이동으로 활꼴 조각 치환', desc: `같은 높이에서 오른쪽 좌표와 왼쪽 좌표의 차는 $(y^2/${c * c}+${d})-y^2/${c * c}=${d}$입니다. 각 수평 단면의 길이가 항상 ${d}이므로 그림의 곡선 부분을 평행이동하여 잘라 붙이면 밑변 ${d}, 높이 ${h}인 평행사변형과 넓이가 같습니다.` },
+        { title: '3단계. 평행사변형 넓이 계산', desc: `수평 단면의 길이가 일정하고 높이는 $${h}-0=${h}$이므로 넓이는 $${d}\\times${h}=\\mathbf{${d * h}}$입니다. 곡선이 휘어져 있어도 양쪽의 휘어진 부분이 평행이동으로 정확히 겹치기 때문에 이렇게 넓이가 같은 도형으로 바꿀 수 있습니다.` }
+      ]; },
+      alg: (P) => `별도의 넓이 공식 없이도 평행이동에 의한 합동을 이용하여 넓이가 같은 도형으로 바꾸면 곡선으로 둘러싸인 넓이를 평행사변형 넓이 $${P.d}\\times${VSPEC['adv-7'].h(P)}=${P.d * VSPEC['adv-7'].h(P)}$로 바로 구할 수 있습니다.`,
+      aha: (P) => `같은 높이 $y$에서 두 곡선 사이의 가로 거리가 항상 평행이동 거리인 $${P.d}$로 일정합니다!`
+    }
+    ,
+    'bas-1': {
+      pool: [{ x1: 1, x2: 4, y1: 2, y2: 8 }, { x1: 1, x2: 3, y1: 3, y2: 9 }, { x1: 2, x2: 5, y1: 1, y2: 10 }, { x1: 2, x2: 4, y1: 3, y2: 9 }, { x1: 1, x2: 4, y1: 3, y2: 12 }],
+      text: (P) => `<div>정의역 $X = \\{x \\mid ${P.x1} \\le x \\le ${P.x2}\\}$에서 공역 $Y = \\{y \\mid ${P.y1} \\le y \\le ${P.y2}\\}$로의 일차함수 $f(x) = ax + b$가 <strong>일대일대응(역함수 존재)</strong>이 되도록 하는 상수 $a, b$의 기하적 조건을 구하시오.</div>`,
+      ans: (P) => { const a = (P.y2 - P.y1) / (P.x2 - P.x1); return `a>0: (a,b)=(${a},${P.y1 - a * P.x1})  |  a<0: (a,b)=(${-a},${P.y2 + a * P.x1})`; },
+      steps: (P) => { const { x1, x2, y1, y2 } = P, w = x2 - x1, h = y2 - y1, a = h / w; return [
+        { title: `1단계. 정의역 [${x1}, ${x2}] × 공역 [${y1}, ${y2}] 직사각형 작도`, desc: `일대일대응이면 서로 다른 입력의 출력이 달라야 하고, 공역 $[${y1},${y2}]$의 모든 값이 출력되어야 합니다. $a=0$은 상수함수이므로 제외합니다. 그림의 가로 길이는 $${x2}-${x1}=${w}$, 세로 길이는 $${y2}-${y1}=${h}$입니다. 일차함수는 증가 또는 감소하므로 양 끝점에서 공역의 두 끝값을 얻어야 합니다.` },
+        { title: `2단계. a > 0 일 때: 우상향 대각선 (${x1}, ${y1}) ➔ (${x2}, ${y2})`, desc: `$a>0$이면 최솟값은 $f(${x1})$, 최댓값은 $f(${x2})$입니다. 치역이 공역 전체가 되려면 $f(${x1})=${y1}$, $f(${x2})=${y2}$이어야 합니다. 따라서 $a=(${y2}-${y1})/(${x2}-${x1})=${a}$이고 $${y1}=${a}\\times${x1}+b$에서 $b=${y1 - a * x1}$입니다.` },
+        { title: `3단계. a < 0 일 때: 우하향 대각선 (${x1}, ${y2}) ➔ (${x2}, ${y1})`, desc: `$a<0$이면 반대로 $f(${x1})=${y2}$, $f(${x2})=${y1}$입니다. 따라서 $a=(${y1}-${y2})/(${x2}-${x1})=${-a}$, $${y2}=${-a}\\times${x1}+b$에서 $b=${y2 + a * x1}$입니다. 두 직선은 각각 단조이고 끝점 사이의 모든 값을 한 번씩 지나므로 답은 $(a,b)=(${a},${y1 - a * x1}),(${-a},${y2 + a * x1})$입니다.` }
+      ]; },
+      alg: () => `만약 직선이 대각선 끝점을 지나지 않고 옆면을 통과하면, 공역 중에서 대응되지 않고 남는 $y$값이 생겨(치역 $\\ne$ 공역) 일대일함수는 되어도 **일대일대응은 될 수 없습니다.**`,
+      aha: () => `제한된 박스 구간에서 일차함수가 일대일대응(역함수 존재)이 되려면, 반드시 **직사각형 박스의 양 끝 대각선 모서리 꼭짓점**을 통과해야 합니다!`
+    },
+    'bas-2': {
+      pool: [{ m1: 2, c: 1, s: 1 }, { m1: 3, c: 2, s: 2 }, { m1: 1, c: 3, s: 4 }, { m1: 4, c: -1, s: 3 }, { m1: 2, c: 2, s: 5 }], // x<0: m1·x + c, x≥0: (a−s)x + c
+      cs: (P) => `${P.c < 0 ? '- ' + (-P.c) : '+ ' + P.c}`,
+      text: (P) => `<div>실수 전체의 집합에서 정의된 함수 $f(x) = \\begin{cases} ${P.m1 === 1 ? '' : P.m1}x ${VSPEC['bas-2'].cs(P)} & (x < 0) \\\\ (a - ${P.s})x ${VSPEC['bas-2'].cs(P)} & (x \\ge 0) \\end{cases}$의 <strong>역함수가 존재</strong>하도록 하는 실수 $a$의 값의 범위를 구하시오.</div>`,
+      ans: (P) => `역함수 존재 조건: m₁m₂ > 0  ➔  a > ${P.s}`,
+      steps: (P) => [
+        { title: '1단계. 경계 x = 0 에서 연결 확인', desc: `$x<0$에서는 $f(x)=${P.m1 === 1 ? '' : P.m1}x${VSPEC['bas-2'].cs(P).replace(/ /g, '')}$이고 $x$가 0에 가까워지면 함숫값은 ${P.c}에 가까워집니다. $x=0$에서는 오른쪽 식으로 $f(0)=${P.c}$입니다. 따라서 두 조각은 그림처럼 경계에서 이어집니다.` },
+        { title: '2단계. 계속 증가하거나 계속 감소할 조건', desc: `오른쪽 기울기 $a-${P.s}=0$이면 $x\\ge0$의 모든 점에서 함숫값이 ${P.c}이므로 일대일이 아닙니다. $a-${P.s}<0$이면 오른쪽에서도 ${P.c}보다 작은 값이 나오고, 이 함숫값들은 왼쪽에서도 나오므로 역시 일대일이 아닙니다.` },
+        { title: '3단계. 양쪽 기울기의 곱 > 0 적용', desc: `왼쪽 기울기 $${P.m1}>0$이므로 $a-${P.s}>0$이면 오른쪽의 치역은 $[${P.c},\\infty)$이고 왼쪽의 치역은 $(-\\infty,${P.c})$입니다. 각 조각은 증가하고 두 치역도 겹치지 않으므로 모든 실수 출력에 입력이 정확히 하나씩 대응합니다. 따라서 $\\mathbf{a>${P.s}}$입니다.` }
+      ],
+      alg: () => `두 조각이 이 문제처럼 경계에서 이어지고 양쪽에 반직선으로 뻗어 있을 때에는 두 기울기의 부호가 같은지 확인할 수 있습니다. 연결되지 않는 다른 함수에서는 치역의 겹침도 따로 확인해야 합니다.`,
+      aha: () => `이 문제에서는 두 조각이 경계에서 연결됩니다. 왼쪽 치역과 오른쪽 치역이 겹치지 않도록 오른쪽 기울기의 부호를 확인하세요.`
+    },
+    'bas-3': {
+      pool: [{ h: 2, c: 2 }, { h: 3, c: 3 }, { h: 4, c: 4 }, { h: 3, c: 2 }, { h: 4, c: 6 }], // f(x)=2h−2|x−h| (0≤x≤2h), f(f(x))=c, 0<c<2h → 근 4개, 합 4h
+      text: (P) => `<div>구간 $[0, ${2 * P.h}]$에서 정의된 두 직선으로 이루어진 함수 $f(x) = ${2 * P.h} - 2|x - ${P.h}|$에 대하여 방정식 $f(f(x)) = ${P.c}$의 서로 다른 실근의 개수와 모든 실근의 합을 구하시오.</div>`,
+      ans: (P) => `실근 개수 = 4개  |  모든 실근의 합 = ${4 * P.h}`,
+      steps: (P) => { const { h, c } = P, t1 = frV(c, 2), t2 = frV(4 * h - c, 2), t1T = frT(c, 2), t2T = frT(4 * h - c, 2), r = (a, b) => frT(a, b); return [
+        { title: `1단계. 안쪽 함수 치환 f(x) = t ➔ f(t) = ${c} 풀이`, desc: `$t=f(x)$로 놓으면 먼저 $f(t)=${c}$를 풉니다. $${2 * h}-2|t-${h}|=${c}$에서 $|t-${h}|=${frT(2 * h - c, 2)}$이므로 $t=${t1T}$ 또는 $t=${t2T}$입니다. 둘 다 $f$의 치역 $[0,${2 * h}]$에 속합니다.` },
+        { title: `2단계. 2차 가로선 y = ${t1}, y = ${t2} 교점 개수 세기`, desc: `이제 $f(x)=${t1T}$ 또는 $f(x)=${t2T}$를 풉니다. 각각 $|x-${h}|=${frT(4 * h - c, 4)}$, $|x-${h}|=${frT(c, 4)}$이므로 $x=${r(4 * h - (4 * h - c), 4)},${r(4 * h + (4 * h - c), 4)}$와 $x=${r(4 * h - c, 4)},${r(4 * h + c, 4)}$를 얻습니다. 네 값은 서로 다르고 모두 정의역에 있으므로 실근은 4개입니다.` },
+        { title: `3단계. 대칭축 x = ${h} 를 이용한 실근의 합 계산`, desc: `그래프는 $x=${h}$에 대칭이므로 같은 높이의 두 교점의 $x$좌표 합은 $${h}+${h}=${2 * h}$입니다. 두 높이에서 각각 한 쌍씩 얻었으므로 모든 근의 합은 $${2 * h}+${2 * h}=\\mathbf{${4 * h}}$입니다.` }
+      ]; },
+      alg: (P) => `만약 $k = ${2 * P.h}$ (꼭대기)이면 $f(t) = ${2 * P.h}$에서 $t = ${P.h}$ 하나뿐이므로, 2차 가로선은 $f(x) = ${P.h}$ 하나만 그어져 실근은 $2$개(합 $= ${2 * P.h}$)가 됩니다.`,
+      aha: () => `$f(f(x)) = k$는 **$f(t) = k$로 $t$를 구한 뒤 가로선 $y = t$를 다시 긋는 2단계 수평선 풀이**로 해결하고, 실근의 합은 개별 근을 구하지 않고 **대칭축 $\\times 2$**로 계산합니다!`
+    },
+    'bas-4': {
+      pool: [{ h: 2 }, { h: 4 }, { h: 6 }, { h: 8 }], // f(x)=2h−2|x−h| (0≤x≤2h): f(f(x))는 x=h/2, h, 3h/2 에서 꺾임
+      text: (P) => `<div>구간 $[0, ${2 * P.h}]$에서 정의된 두 직선으로 이루어진 함수 $f(x) = ${2 * P.h} - 2|x - ${P.h}|$에 대하여 합성함수 $y = f(f(x))$의 그래프가 꺾이는 $x$좌표를 모두 찾고 그래프를 작도하시오.</div>`,
+      ans: (P) => `꺾이는 점: x = ${P.h / 2}, ${P.h}, ${3 * P.h / 2}  (봉우리가 2개인 꺾인선 그래프)`,
+      steps: (P) => { const h = P.h; return [
+        { title: `1단계. 바깥 함수 f가 꺾이는 높이 y = ${h}`, desc: `$f$는 $x=${h}$에서만 꺾이므로, 합성함수 $f(f(x))$는 안쪽 값 $f(x)$가 $${h}$일 때 꺾입니다. 그림의 가로선 $y=${h}$가 그 높이입니다.` },
+        { title: `2단계. f(x) = ${h} 를 만족하는 x 와 안쪽 꺾임 x = ${h}`, desc: `$${2 * h}-2|x-${h}|=${h}$에서 $|x-${h}|=${h / 2}$이므로 $x=${h / 2}$ 또는 $x=${3 * h / 2}$입니다. 안쪽 함수 자체가 꺾이는 $x=${h}$도 꺾이는 점입니다.` },
+        { title: `3단계. 세 점에서 꺾이는 꺾인선 작도`, desc: `$f(f(0))=0$, $f(f(${h / 2}))=f(${h})=${2 * h}$, $f(f(${h}))=f(${2 * h})=0$, $f(f(${3 * h / 2}))=${2 * h}$, $f(f(${2 * h}))=0$입니다. 이 점들을 이으면 $x=${h / 2},${h},${3 * h / 2}$에서 꺾이고 봉우리가 2개인 그래프가 됩니다.` }
+      ]; },
+      alg: () => `합성함수를 구간별로 직접 식으로 쓰면 $f(x)$의 두 직선이 다시 $f$의 두 직선에 들어가 4개의 구간식이 필요합니다. 꺾이는 높이를 먼저 찾으면 이 계산을 줄일 수 있습니다.`,
+      aha: () => `합성함수의 꺾임은 **안쪽 함수가 꺾이는 곳**과 **안쪽 함수의 값이 바깥 함수의 꺾임 높이가 되는 곳**에서 생깁니다.`
+    },
+    'bas-6': {
+      pool: [{ c: 3 }, { c: 2 }, { c: 4 }, { c: 5 }, { c: 6 }], // f(x)=(x−1)²/c+1 (x≥1): f(x)=x → A(1,1), B(1+c,1+c), AB=c√2
+      text: (P) => `<div>증가하는 함수 $f(x) = \\dfrac{1}{${P.c}}(x - 1)^2 + 1$ ($x \\ge 1$)의 그래프와 그 역함수 $y = f^{-1}(x)$의 그래프가 만나는 두 점 $A, B$ 사이의 거리를 구하시오.</div>`,
+      ans: (P) => `두 교점 A(1,1), B(${P.c + 1},${P.c + 1})  |  선분 AB 길이 = ${P.c}√2`,
+      steps: (P) => { const c = P.c; return [
+        { title: '1단계. f(x) = f⁻¹(x) 대신 f(x) = x 방정식 풀기', desc: `증가함수의 그래프와 역함수의 교점 $(u,v)$에서는 $f(u)=v$, $f(v)=u$입니다. 만약 $u<v$이면 증가성에 의해 $f(u)<f(v)$, 즉 $v<u$가 되어 모순입니다. $u>v$도 마찬가지이므로 $u=v$입니다. 따라서 $f(x)=x$를 풀면 $(x-1)^2=${c}(x-1)$, $(x-1)(x-${c + 1})=0$입니다. 두 값은 모두 정의역에 속하여 $A(1,1)$, $B(${c + 1},${c + 1})$입니다.` },
+        { title: '2단계. 1 : 1 : √2 직각이등변삼각형 빗변 공식', desc: `두 점 사이의 가로 차와 세로 차는 각각 ${c}입니다. 피타고라스 정리로 $AB=\\sqrt{${c}^2+${c}^2}=${c}\\sqrt2$입니다.` },
+        { title: '3단계. 둘러싸인 넓이 = 2 × (f(x)와 y = x 사이 넓이)', desc: `처음 함수와 역함수는 $y=x$에 대칭이고 두 교점은 이 직선 위에 있습니다. 두 곡선 사이 영역은 $y=x$로 나뉜 두 부분이 서로 대칭이므로 넓이가 같습니다. 따라서 전체 넓이는 처음 함수와 $y=x$ 사이 넓이의 두 배입니다.` }
+      ]; },
+      alg: () => `무리함수나 이차함수의 역함수를 직접 구해 연립하면 4차방정식이 되어 계산이 복잡해집니다. 직선 $y = x$를 기준으로 식을 세우세요.`,
+      aha: () => `증가함수와 역함수의 교점 문제를 풀 때는 역함수 식을 직접 구하지 않고 **교점은 $f(x) = x$로 구하며, 넓이는 $y = x$와의 넓이를 2배**하여 구합니다.`
+    },
+    'bas-8': {
+      vtitle: (P) => `[기본 8] 유리함수 y = ${P.k}/(${P.p === 0 ? 'x' : P.p < 0 ? 'x + ' + (-P.p) : 'x - ' + P.p}) ${P.q < 0 ? '- ' + (-P.q) : '+ ' + P.q} 의 점근선 교점과 세 가지 대칭 구조`,
+      pool: [{ p: 1, q: 2, k: 4 }, { p: 2, q: -1, k: 3 }, { p: -2, q: 1, k: -6 }, { p: 3, q: 4, k: 2 }, { p: 0, q: -2, k: -4 }],
+      lineS: (a, b) => `y = ${a < 0 ? '-' : ''}x${b === 0 ? '' : b < 0 ? ' - ' + (-b) : ' + ' + b}`,
+      text: (P) => `<div>유리함수 $y = \\dfrac{${P.k}}{x ${P.p === 0 ? '' : P.p < 0 ? '+ ' + (-P.p) : '- ' + P.p}} ${P.q < 0 ? '- ' + (-P.q) : '+ ' + P.q}$의 그래프가 <strong>점대칭인 점 $C$의 좌표</strong>와, <strong>기울기가 $\\pm 1$인 두 선대칭 직선의 방정식</strong>을 기하적으로 구하시오.</div>`,
+      ans: (P) => `점대칭: (${P.p}, ${P.q})  |  선대칭: ${VSPEC['bas-8'].lineS(1, P.q - P.p)}, ${VSPEC['bas-8'].lineS(-1, P.p + P.q)}`,
+      steps: (P) => { const { p, q, k } = P, xp = p === 0 ? 'x' : p < 0 ? `x+${-p}` : `x-${p}`; return [
+        { title: '1단계. 점근선 방정식과 정의역·치역', desc: `$k\\ne0$이므로 $x\\ne${p}$에서 $${k}/(${xp})$는 0이 될 수 없습니다. 따라서 정의역은 $x\\ne${p}$, 치역은 $y\\ne${q}$입니다. $x=${p}$와 $y=${q}$가 각각 수직·수평 점근선이고 두 직선의 교점은 $C(${p},${q})$입니다.` },
+        { title: `2단계. 점대칭의 중심 C(p, q) = (${p}, ${q})`, desc: `$X=x-${p < 0 ? '(' + p + ')' : p}$, $Y=y-${q < 0 ? '(' + q + ')' : q}$로 좌표를 옮기면 그래프는 $XY=${k}$입니다. 중심 $C$에 대한 점대칭은 $(X,Y)\\mapsto(-X,-Y)$이고 곱이 $(-X)(-Y)=XY=${k}$로 유지됩니다. 따라서 $C(${p},${q})$가 대칭의 중심입니다.` },
+        { title: '3단계. 선대칭 직선 2개 (기울기 ±1 고정)', desc: `$Y=X$에 대한 대칭은 $(X,Y)\\mapsto(Y,X)$, $Y=-X$에 대한 대칭은 $(X,Y)\\mapsto(-Y,-X)$입니다. 어느 경우에도 좌표의 곱이 ${k}이므로 그래프가 그대로 겹칩니다. 원래 좌표로 돌아가면 $y-${q < 0 ? '(' + q + ')' : q}=\\pm(x-${p < 0 ? '(' + p + ')' : p})$, 즉 두 축은 $${VSPEC['bas-8'].lineS(1, q - p)}$, $${VSPEC['bas-8'].lineS(-1, p + q)}$입니다.` }
+      ]; },
+      alg: () => `문제에서 “유리함수가 두 직선 $y = x + a, y = -x + b$에 대칭이다”라고 주어지면, 두 직선의 교점이 곧 점근선의 교점 $(p, q)$입니다.`,
+      aha: () => `유리함수의 모든 기하적 성질은 **점근선의 교점 $(p, q)$**에서 출발합니다! 선대칭 직선 2개는 **기울기가 $\\pm 1$이고 점 $(p, q)$를 지나는 직선** $y = \\pm(x - p) + q$입니다.`
+    },
+    'bas-9': {
+      vtitle: (P) => `[기본 9] 일반형 y = (${P.a === 1 ? '' : P.a}x + ${P.b})/(${P.c < 0 ? 'x + ' + (-P.c) : 'x - ' + P.c}) 의 표준형 변형과 역함수 대칭`,
+      pool: [{ a: 2, b: 1, c: 1 }, { a: 3, b: 1, c: 1 }, { a: 1, b: 2, c: 2 }, { a: 3, b: 2, c: 2 }, { a: 2, b: 5, c: -1 }], // f(x)=(ax+b)/(x−c) = k/(x−c)+a (k=b+ac), 역함수 (cx+b)/(x−a)
+      cx: (c) => (c < 0 ? `x + ${-c}` : `x - ${c}`),
+      text: (P) => `<div>일반형 유리함수 $f(x) = \\dfrac{${P.a === 1 ? '' : P.a}x ${P.b < 0 ? '- ' + (-P.b) : '+ ' + P.b}}{${VSPEC['bas-9'].cx(P.c)}}$을 표준형으로 변형하는 원리와, 역함수 $y = f^{-1}(x)$의 그래프와 식을 구하는 원리를 확인하시오.</div>`,
+      ans: (P) => `표준형: ${P.b + P.a * P.c}/(${VSPEC['bas-9'].cx(P.c)})+${P.a}  |  역함수: (${P.c === 1 ? '' : P.c === -1 ? '-' : P.c}x+${P.b})/(${VSPEC['bas-9'].cx(P.a)})`,
+      steps: (P) => { const { a, b, c } = P, k = b + a * c, cx = VSPEC['bas-9'].cx(c); return [
+        { title: '1단계. 분자를 분모로 나누어 표준형 만들기', desc: `분자 $${a === 1 ? '' : a}x${b < 0 ? '' : '+'}${b}$를 분모 $${cx}$로 나누면 몫 $${a}$, 나머지 $${k}$입니다. 따라서 $f(x)=\\dfrac{${k}}{${cx}}+${a}$이고, 점근선은 $x=${c}$, $y=${a}$이며 중심은 $(${c},${a})$입니다.` },
+        { title: `2단계. 역함수: x와 y를 바꾸면 중심이 (${a}, ${c})로 바뀜`, desc: `$y=\\dfrac{${k}}{x-${c < 0 ? '(' + c + ')' : c}}+${a}$에서 $x$와 $y$를 바꾸면 $x=\\dfrac{${k}}{y-${c < 0 ? '(' + c + ')' : c}}+${a}$이므로 $y=\\dfrac{${k}}{x-${a}}+${c}$입니다. 역함수의 그래프는 $y=x$에 대칭이고 점근선 교점도 $(${c},${a})$에서 $(${a},${c})$로 옮겨집니다.` },
+        { title: '3단계. 두 그래프의 대칭 확인', desc: `처음 함수의 중심 $(${c},${a})$와 역함수의 중심 $(${a},${c})$는 직선 $y=x$에 대칭이고, 분자 상수 $${k}$는 그대로입니다. 역함수를 일반형으로 정리하면 $f^{-1}(x)=\\dfrac{${c === 1 ? '' : c === -1 ? '-' : c}x+${b}}{${VSPEC['bas-9'].cx(a)}}$입니다.` }
+      ]; },
+      alg: () => `역함수를 일반형으로 구할 때는 $y=\\dfrac{ax+b}{x-c}$를 $x$에 대해 풀어 $x=\\dfrac{cy+b}{y-a}$를 얻은 뒤 $x, y$를 바꿉니다.`,
+      aha: () => `표준형에서 점근선의 교점 $(p, q)$는 역함수에서 **$(q, p)$로 서로 바뀝니다.** 분자 상수 $k$는 변하지 않습니다.`
+    }
+    ,
+    'bas-10': {
+      pool: [{ k: 4, p: 1, q: 1, g: 1 }, { k: 9, p: 1, q: 1, g: 1 }, { k: 16, p: 1, q: 1, g: 2 }, { k: 9, p: 2, q: 3, g: 1 }, { k: 16, p: 0, q: 2, g: 8 }], // g: 문제 탭에서 처음 그려 두는 가로 길이(최소점이 아닌 임의 위치)
+      px: (p) => (p < 0 ? `x + ${-p}` : p === 0 ? 'x' : `x - ${p}`),
+      text: (P) => `<div>유리함수 $y = \\dfrac{${P.k}}{${VSPEC['bas-10'].px(P.p)}} ${P.q < 0 ? '- ' + (-P.q) : '+ ' + P.q}$ ($x > ${P.p}$)의 그래프 위의 점 $P$에서 두 점근선 $x = ${P.p}, y = ${P.q}$에 내린 수선의 발을 각각 $A, B$라 할 때, 직사각형 $CAPB$의 넓이와 둘레의 길이의 최솟값을 구하시오. (단, $C$는 두 점근선의 교점)</div>`,
+      ans: (P) => `넓이 = ${P.k} (불변) | 최소 둘레 = ${4 * Math.sqrt(P.k)}`,
+      steps: (P) => { const { k, p, q } = P, s = Math.sqrt(k); return [
+        { title: `1단계. 직사각형 넓이 = |k| = ${k} 불변성`, desc: `$u=x-${p < 0 ? '(' + p + ')' : p}>0$으로 놓으면 그래프에서 $y-${q < 0 ? '(' + q + ')' : q}=${k}/u$입니다. 점근선까지의 거리가 직사각형의 두 변이므로 넓이는 $u\\cdot(${k}/u)=${k}$로 일정합니다.` },
+        { title: `2단계. 산술·기하평균: 둘레 최솟값 = 4√k = ${4 * s}`, desc: `둘레는 $2(u+${k}/u)$입니다. $u>0$이므로 산술·기하평균에서 $u+${k}/u\\ge2\\sqrt{u(${k}/u)}=${2 * s}$입니다. 따라서 둘레는 ${4 * s} 이상입니다.` },
+        { title: `3단계. 등호 성립 조건과 정사각형에서 최소 둘레 ${4 * s}`, desc: `산술·기하평균의 등호는 $u=\\frac{${k}}{u}$일 때 성립하므로 $u^2=${k}$, $u=${s}$이고 가로 길이 $u=${s}$, 세로 길이 $\\frac{${k}}{u}=${s}$입니다. 따라서 정사각형일 때 최소 둘레를 얻습니다. 점 $P$의 좌표는 $(${p + s},${q + s})$이고 실제 둘레는 $2(${s}+${s})=${4 * s}$입니다. 한편 넓이는 점을 어디로 움직여도 $u\\cdot\\frac{${k}}{u}=${k}$입니다. 따라서 구하는 넓이는 ${k}, 둘레의 최솟값은 ${4 * s}입니다.` }
+      ]; },
+      alg: () => `산술·기하평균의 등호 성립 조건($a=b$)은 기하학적으로 직사각형의 가로와 세로가 같은 **한 변이 $\\sqrt{|k|}$인 정사각형**을 의미합니다.`,
+      aha: () => `넓이가 $|k|$로 일정한 직사각형의 둘레와 대각선 길이는 **직사각형이 한 변 $\\sqrt{|k|}$인 ‘정사각형’(기울기 $+1$ 대칭축 위의 꼭짓점)이 될 때 최소**가 됩니다!`
+    },
+    'bas-11': {
+      pool: [{ k: 4, p: 1, q: 2 }, { k: 6, p: 1, q: 2 }, { k: 8, p: 1, q: 2 }, { k: 3, p: 1, q: 2 }, { k: 6, p: 2, q: 1 }], // 좌표가 모두 정수인 점 = k의 약수 × 2
+      divs: (k) => { const d = []; for (let i = 1; i <= k; i++) if (k % i === 0) d.push(i); return d; },
+      pts: (P) => { const out = []; for (const d of VSPEC['bas-11'].divs(P.k)) { out.push([P.p - d, P.q - P.k / d]); out.push([P.p + d, P.q + P.k / d]); } return out; },
+      text: (P) => `<div>유리함수 $y = \\dfrac{${P.k}}{${VSPEC['bas-10'].px(P.p)}} ${P.q < 0 ? '- ' + (-P.q) : '+ ' + P.q}$의 그래프 위에 있는 점 중에서 $x$좌표와 $y$좌표가 모두 정수인 점의 개수를 구하고 그 대칭 구조를 확인하시오.</div>`,
+      ans: (P) => `좌표가 모두 정수인 점 = ${2 * VSPEC['bas-11'].divs(P.k).length}개`,
+      steps: (P) => { const { k, p, q } = P, ds = VSPEC['bas-11'].divs(P.k), all = ds.concat(ds.map((d) => -d)).sort((a, b) => a - b), pts = VSPEC['bas-11'].pts(P).sort((a, b) => a[0] - b[0]); return [
+        { title: `1단계. 표준형에서 분자 상수 k = ${k} 확인`, desc: `$x$가 정수이면 $x-${p}$도 정수이며 0이 아닙니다. $y-${q}=${k}/(x-${p})$가 정수가 되려면 $x-${p}$가 ${k}를 나누어야 합니다. 반대로 정수 약수를 선택하면 $x$와 $y$가 모두 정수가 됩니다.` },
+        { title: `2단계. ${k}의 양·음의 약수 나열`, desc: `${k}의 양의 약수는 $${ds.join(',')}$이고 음의 약수까지 포함하면 $x-${p}=${all.join(',')}$입니다. 각 약수마다 서로 다른 $x$가 하나씩 정해지므로 총 ${all.length}개입니다.` },
+        { title: `3단계. ${all.length}개 정수 좌표 점 확정`, desc: `각 값을 $x=${p}+(x-${p})$, $y=${q}+${k}/(x-${p})$에 대입하면 ${pts.map((a) => `$(${a[0]},${a[1]})$`).join(', ')}입니다. 양·음의 약수에서 얻은 두 점은 중심 $(${p},${q})$에 관하여 서로 점대칭입니다.` }
+      ]; },
+      alg: () => `만약 문제에서 **“$x, y$가 모두 자연수인 점”**이라고 조건을 걸면, 정수 좌표 점 중에서 $x > 0, y > 0$인 점만 따로 골라야 합니다.`,
+      aha: () => `표준형 $y = \\dfrac{k}{x-p} + q$ ($p, q, k$는 정수, $k \\ne0$) 위의 좌표가 모두 정수인 점의 개수는 **$|k|$의 양의 약수의 개수 $\\times 2$개**입니다!`
+    },
+    'bas-12': {
+      vtitle: (P) => `[기본 12] 정의역 [${P.x1}, ${P.x2}]에서 유리함수와 직선 y = mx + ${P.q} 이 만날 기울기 범위`,
+      pool: [{ k: 4, x1: 2, x2: 4, q: 1 }, { k: 6, x1: 2, x2: 3, q: 1 }, { k: 6, x1: 2, x2: 4, q: 1 }, { k: 8, x1: 3, x2: 4, q: 1 }, { k: 8, x1: 2, x2: 4, q: 2 }], // y=k/(x−1)+q, 직선 y=mx+q: m=k/(x(x−1)) 감소 → [m(x2), m(x1)]
+      mm: (P) => [frV(P.k, P.x2 * (P.x2 - 1)), frV(P.k, P.x1 * (P.x1 - 1))],
+      mt: (P) => [frT(P.k, P.x2 * (P.x2 - 1)), frT(P.k, P.x1 * (P.x1 - 1))],
+      text: (P) => `<div>정의역이 $\\{x \\mid ${P.x1} \\le x \\le ${P.x2}\\}$인 유리함수 $y = \\dfrac{${P.k}}{x - 1} + ${P.q}$의 그래프와 직선 $y = mx + ${P.q}$가 한 점 이상에서 만나도록 하는 실수 $m$의 값의 범위를 구하시오.</div>`,
+      ans: (P) => `만날 기울기 범위: ${VSPEC['bas-12'].mm(P)[0]} ≤ m ≤ ${VSPEC['bas-12'].mm(P)[1]}`,
+      steps: (P) => { const { k, x1, x2, q } = P, [lo, hi] = VSPEC['bas-12'].mt(P), yA = k / (x1 - 1) + q, yB = frV(k + q * (x2 - 1), x2 - 1); return [
+        { title: `1단계. 직선의 회전 중심(정점) (0, ${q}) 확인`, desc: `직선 $y=mx+${q}$은 항상 $(0,${q})$을 지납니다. 곡선과 만나는 점의 가로 좌표를 $x$라 하면 문제의 정의역에 따라 $${x1}\\le x\\le${x2}$입니다. 그 점을 지나는 직선의 기울기 $m$을 $x$로 나타내어 범위를 구합니다.` },
+        { title: `2단계. 왼쪽 끝점 A(${x1}, ${yA}) 대입 ➔ 최대 기울기 m = ${frV(k, x1 * (x1 - 1))}`, desc: `두 식을 같게 놓으면 $mx+${q}=${k}/(x-1)+${q}$입니다. $x>1$이므로 나누어 $m=${k}/[x(x-1)]$입니다. $${x1}\\le x\\le${x2}$에서 $x$가 커지면 분모가 증가하므로 $m$은 감소합니다. 따라서 최대는 $x=${x1}$에서 $m=${hi}$입니다.` },
+        { title: `3단계. 오른쪽 끝점 B(${x2}, ${yB}) 대입 ➔ 최소 기울기 m = ${frV(k, x2 * (x2 - 1))}`, desc: `최소는 $x=${x2}$에서 $m=${k}/(${x2}\\cdot${x2 - 1})=${lo}$입니다. $m=${k}/[x(x-1)]$은 구간에서 끊어지지 않고 이어지므로 끝값 사이의 모든 값도 얻습니다. 양 끝점이 정의역에 포함되어 답은 $\\mathbf{${lo}\\le m\\le${hi}}$입니다.` }
+      ]; },
+      alg: () => `이 유형에서 판별식 $D \\ge 0$만 쓰면 계산이 복잡할 뿐만 아니라 구간 바깥에서 만나는 기울기까지 포함되어 오답이 됩니다.`,
+      aha: (P) => `이 문제에서 $m=\\dfrac{${P.k}}{x(x-1)}$은 주어진 구간에서 감소하므로 구간의 양 끝점 $A, B$를 지날 때의 기울기가 최댓값과 최솟값이 됩니다.`
+    },
+    'bas-13': {
+      pool: [{ k: 2, q: 2 }, { k: 1, q: 2 }, { k: 4, q: 2 }, { k: 4, q: 4 }, { k: 2, q: 4 }], // y=k/(x−1)+q, 직선 y=m(x−1): 접선 m=−q²/(4k), m=0 → (1−k/q, 0)
+      mT: (P) => [-(P.q * P.q), 4 * P.k],
+      text: (P) => `<div>유리함수 $y = \\dfrac{${P.k}}{x - 1} + ${P.q}$의 그래프와 점 $(1, 0)$을 지나는 직선 $y = m(x - 1)$이 <strong>오직 한 점</strong>에서만 만나도록 하는 모든 실수 $m$의 값을 구하시오.</div>`,
+      ans: (P) => `오직 한 점 교차 조건: m = ${frV(-(P.q * P.q), 4 * P.k)} (접선) 또는 m = 0 (점근선 평행)`,
+      steps: (P) => { const { k, q } = P, mt = frT(-(q * q), 4 * k), tx = 1 - 2 * k / q, ty = q / 2, x0 = 1 - k / q; return [
+        { title: `1단계. 연립방정식 정리: m(x - 1)² - ${q}(x - 1) - ${k} = 0`, desc: `$t=x-1$로 치환하면 분모가 0이 되지 않도록 $t\\ne0$입니다. 두 식을 같게 놓으면 $${k}/t+${q}=mt$이고, $t$를 곱해 $mt^2-${q}t-${k}=0$을 얻습니다. 이 식에 $t=0$을 넣으면 $-${k}\\ne0$이므로 이후 얻는 근은 모두 허용됩니다.` },
+        { title: '2단계. m ≠ 0 일 때: 이차방정식 접선 조건 D = 0', desc: `$m\\ne0$이면 이차방정식이며 판별식은 $D=${q * q}+${4 * k}m$입니다. 서로 다른 교점이 한 개일 조건 $D=0$에서 $m=${mt}$입니다. 이때 접점은 $(${tx},${ty})$입니다.` },
+        { title: '3단계. [필수 체크] m = 0 일 때: 일차방정식 실근 1개', desc: `$m=0$은 이차방정식이 아니므로 따로 확인합니다. $-${q}t-${k}=0$에서 $t=${frT(-k, q)}$, 따라서 $(x,y)=(${frT(q - k, q)},0)$ 한 점입니다. 이 경우와 앞의 접선 경우를 합치면 답은 $\\mathbf{m=${mt}\\text{ 또는 }0}$입니다.` }
+      ]; },
+      alg: (P) => `반대로 점근선의 교점 $(1, ${P.q})$를 지나는 직선 $y = m(x-1)+${P.q}$에서는 $m = 0$일 때 직선이 수평점근선 $y = ${P.q}$ 자체가 되어버리므로 교점이 **0개**가 됩니다. 정점의 위치에 따라 그래프에서 $m=0$을 꼭 확인하세요.`,
+      aha: (P) => `유리함수와 직선을 연립한 식 $mt^2 - ${P.q}t - ${P.k} = 0$에서 **최고차항 계수 $m = 0$일 때(수평점근선과 평행할 때)** 이차방정식이 일차방정식으로 바뀌며 실근 1개를 갖는 경우를 반드시 확인해야 합니다!`
+    },
+    'bas-15': {
+      vtitle: (P) => `[기본 15] 무리함수 y = 2√(${P.p < 0 ? 'x + ' + (-P.p) : 'x - ' + P.p}) ${P.q < 0 ? '- ' + (-P.q) : '+ ' + P.q} 과 직선 y = x + k 의 교점 개수`,
+      pool: [{ p: 1, q: 1 }, { p: 1, q: 3 }, { p: 2, q: 1 }, { p: 2, q: 3 }, { p: 3, q: -1 }], // y=2√(x−p)+q, 직선 y=x+k: q−p ≤ k < q−p+1
+      text: (P) => `<div>무리함수 $y = 2\\sqrt{x ${P.p < 0 ? '+ ' + (-P.p) : '- ' + P.p}} ${P.q < 0 ? '- ' + (-P.q) : '+ ' + P.q}$의 그래프와 직선 $y = x + k$가 <strong>서로 다른 두 점</strong>에서 만나도록 하는 실수 $k$의 값의 범위를 구하고, 왜 판별식 $D > 0$만 쓰면 틀리는지 규명하시오.</div>`,
+      ans: (P) => `서로 다른 두 점 교차: ${P.q - P.p} ≤ k < ${P.q - P.p + 1}  |  한 점 교차: k = ${P.q - P.p + 1} 또는 k < ${P.q - P.p}`,
+      steps: (P) => { const { p, q } = P, lo = q - p; return [
+        { title: `1단계. 시작점 (${p}, ${q}) 대입 ➔ 아래 경계 k = ${lo} (등호 포함)`, desc: `$v=\\sqrt{x-${p}}\\ge0$으로 놓으면 $x=${p}+v^2$입니다. 교점 조건 $2v+${q}=${p}+v^2+k$에서 $v^2-2v+(k${lo === 0 ? '' : lo < 0 ? '+' + (-lo) : '-' + lo})=0$입니다. 서로 다른 교점은 서로 다른 음이 아닌 $v$와 일대일로 대응하므로 음의 근은 사용할 수 없습니다. 그래프의 시작점 $(${p},${q})$을 직선이 지나는 경계에서는 $${q}=${p}+k$이므로 $k=${lo}$이고, 이때 $v=0,2$로 교점은 실제 두 개입니다. 따라서 아래 경계 $k=${lo}$는 포함됩니다.` },
+        { title: `2단계. 접할 조건 D = 0 ➔ 위 경계 k = ${lo + 1} (등호 제외)`, desc: `완전제곱하면 $(v-1)^2=${lo + 1}-k$입니다. $k<${lo + 1}$일 때 두 근 $v=1\\pm\\sqrt{${lo + 1}-k}$가 서로 다르고, $k=${lo + 1}$일 때는 $v=1$ 하나뿐입니다. 따라서 두 교점을 얻으려면 우선 $k<${lo + 1}$이어야 합니다.` },
+        { title: `3단계. k < ${lo} 구간(교점 1개) 제외 후 최종 해 구하기`, desc: `작은 근도 허용되려면 $1-\\sqrt{${lo + 1}-k}\\ge0$이어야 하므로 $k\\ge${lo}$입니다. $k=${lo}$에서는 작은 근이 0으로 시작점도 실제 교점입니다. $k<${lo}$이면 작은 근이 음수라 원래 근호값이 될 수 없습니다. 따라서 답은 $\\mathbf{${lo}\\le k<${lo + 1}}$입니다.` }
+      ]; },
+      alg: () => `**등호 포함 여부 판단:** 시작점은 실제 그래프 위의 점이므로 지날 때 교점이 2개가 되어 등호($\\le$)가 들어가고, 접할 때는 교점이 1개뿐이므로 두 점 조건에서 등호($<$)가 빠집니다.`,
+      aha: () => `이 문제에서는 $v=\\sqrt{x-p}\\ge0$으로 치환하여 두 근이 모두 음이 아닌지 확인해야 합니다. 시작점 경계는 포함하고 접선 경계는 제외합니다.`
+    },
+    'bas-16': {
+      vtitle: (P) => `[기본 16] 절댓값 무리함수 y = 2√|${P.p === 0 ? 'x' : P.p < 0 ? 'x + ' + (-P.p) : 'x - ' + P.p}| 과 직선 y = x + k 의 교점 3개 조건`,
+      pool: [{ p: 1 }, { p: 2 }, { p: 3 }, { p: 0 }, { p: -1 }], // y=2√|x−p|, 직선 y=x+k: 서로 다른 세 점 ⇔ −p < k < 1−p
+      text: (P) => `<div>절댓값 기호가 포함된 무리함수 $y = 2\\sqrt{|x ${P.p < 0 ? '+ ' + (-P.p) : P.p === 0 ? '' : '- ' + P.p}|}$의 그래프와 직선 $y = x + k$가 <strong>서로 다른 세 점</strong>에서 만나도록 하는 실수 $k$의 값의 범위를 구하시오.</div>`,
+      ans: (P) => `서로 다른 세 점 교차 조건: ${-P.p} < k < ${1 - P.p}`,
+      steps: (P) => { const p = P.p, lo = -p, hi = 1 - p, xs = p < 0 ? `x+${-p}` : p === 0 ? 'x' : `x-${p}`; return [
+        { title: `1단계. 왼쪽 부분(x < ${p})와 직선의 교점 = 1개`, desc: `$x<${p}$에서 $u=\\sqrt{${p}-x}>0$으로 놓으면 $x=${p}-u^2$입니다. 교점 조건은 $2u=${p}-u^2+k$, 즉 $(u+1)^2=${1 + p}+k$입니다. $u>0$인 해는 $k>${lo}$일 때 정확히 하나이고, $k\\le${lo}$이면 없습니다.` },
+        { title: `2단계. 점 (${p}, 0) 대입 ➔ 아래 경계 k = ${lo}`, desc: `$x\\ge${p}$에서 $v=\\sqrt{${xs}}\\ge0$으로 놓으면 $x=${p}+v^2$이고 교점 조건은 $(v-1)^2=${hi}-k$입니다. $k=${lo}$에서는 $v=0,2$로 두 점이 생깁니다. $v=0$은 꼭짓점 $(${p},0)$이며 왼쪽에 따로 세지 않습니다.` },
+        { title: `3단계. 오른쪽 부분 접선 D = 0 ➔ 위 경계 k = ${hi}`, desc: `오른쪽에 서로 다른 두 교점이 생기려면 $${lo}\\le k<${hi}$입니다. 왼쪽 교점도 하나 생기는 조건 $k>${lo}$와 겹치면 $\\mathbf{${lo}<k<${hi}}$입니다. $k=${hi}$에서는 오른쪽 두 점이 접점 하나로 합쳐지고, $k=${lo}$에서는 왼쪽 교점이 없으므로 양 끝은 제외합니다.` }
+      ]; },
+      alg: () => `일반 무리함수의 2교점 문제에서는 시작점에 등호가 들어가지만, **절댓값이 있는 무리함수의 3교점 문제에서는 꼭짓점을 지날 때 교점이 2개뿐이므로 양쪽 모두 등호가 빠진다**는 점을 비교해 두세요.`,
+      aha: () => `이 문제에서는 좌우 부분의 교점 개수를 따로 세고, 공통 꼭짓점을 중복하지 않도록 확인합니다.`
+    }
+    ,
+    'adv-8': {
+      pool: [{ h: 2 }, { h: 3 }, { h: 4 }, { h: 6 }], // f(x)=2x (0≤x<h), −2x+4h (h≤x≤2h): S₁ = 4h, q = 4 (원본 그림을 h/2 배로 키운 같은 꼴)
+      text: (P) => `<div>정의역이 $\\{x \\mid 0 \\le x \\le ${2 * P.h}\\}$인 함수 $f(x) = \\begin{cases} 2x & (0 \\le x < ${P.h}) \\\\ -2x + ${4 * P.h} & (${P.h} \\le x \\le ${2 * P.h}) \\end{cases}$에 대하여 방정식 $f(f(x)) = f(x)$의 모든 실근의 합을 $S_1$, 방정식 $f(f(x)) = x$의 서로 다른 실근의 개수를 $q$라 할 때, $S_1 + q$의 값을 구하시오.</div>`,
+      ans: (P) => `정답: S₁ + q = ${4 * P.h + 4}  (S₁ = ${4 * P.h}, q = 4)`,
+      steps: (P) => { const h = P.h, t2 = frT(4 * h, 3); return [
+        { title: `1단계. f(f(x)) = f(x) ➔ t = f(x) 치환으로 f(t) = t 해 구하기`, desc: `$t=f(x)$로 놓으면 $f(t)=t$입니다. $0\\le t<${h}$에서는 $2t=t$이므로 $t=0$, $${h}\\le t\\le${2 * h}$에서는 $-2t+${4 * h}=t$이므로 $t=${t2}$입니다. 두 값 모두 $f$의 치역에 있습니다.` },
+        { title: `2단계. 가로선 y = 0, y = ${frV(4 * h, 3)} 과 대칭축(x = ${h})으로 S₁ = ${4 * h} 계산`, desc: `$f(x)=0$의 해는 $0,${2 * h}$이고, $f(x)=${t2}$의 해는 $${frT(2 * h, 3)},${frT(4 * h, 3)}$입니다. 그래프는 $x=${h}$에 대칭이므로 같은 높이의 두 근의 합은 $${2 * h}$입니다. 서로 겹치지 않는 네 해의 합은 $${2 * h}+${2 * h}=\\mathbf{${4 * h}}$입니다.` },
+        { title: `3단계. 합성함수 y = f(f(x))와 y = x 의 교점 q = 4개 확인`, desc: `$f(f(x))$는 $x=${h / 2},${h},${3 * h / 2}$ 등에서 꺾이는 봉우리 2개짜리 그래프이고(정의역 $[0,${2 * h}]$), 그래프가 $y=x$와 서로 다른 네 점에서 만나는 것을 그림에서 확인할 수 있습니다. 따라서 $q=4$이고 $S_1+q=${4 * h}+4=\\mathbf{${4 * h + 4}}$입니다.` }
+      ]; },
+      alg: (P) => `<div class="font-bold text-rose-300 mb-1">⚠️ 실전 시간 단축 포인트</div><div>$f(x) = ${frT(4 * P.h, 3)}$를 만족하는 두 실근을 직접 구하지 않아도, 그래프가 $x = ${P.h}$에 대칭이라는 사실에서 두 근의 합 $= ${2 * P.h}$가 바로 나옵니다.</div>`,
+      aha: (P) => `$f(f(x)) = f(x)$는 **$t = f(x)$ 치환 후 가로선 긋기 + 대칭축($x=${P.h}$) 합 성질**로 풀고, $f(f(x)) = x$는 **합성함수 $y=f(f(x))$와 $y=x$의 교점 개수**로 풉니다!`
+    },
+    'bas-14': {
+      vtitle: (P) => `[기본 14] 무리함수 y = ±√(±${P.a}(${P.p === 0 ? 'x' : P.p < 0 ? 'x + ' + (-P.p) : 'x - ' + P.p})) ${P.q < 0 ? '- ' + (-P.q) : '+ ' + P.q} 의 시작점과 4사분면 방향`,
+      pool: [{ p: 1, q: 1, a: 2 }, { p: 2, q: -1, a: 3 }, { p: -1, q: 2, a: 1 }, { p: 0, q: 0, a: 4 }, { p: 3, q: 1, a: 2 }],
+      xt: (p) => (p === 0 ? 'x' : p < 0 ? `x + ${-p}` : `x - ${p}`),
+      text: (P) => `<div>시작점이 $S(${P.p}, ${P.q})$인 네 무리함수 $y = \\pm\\sqrt{\\pm ${P.a}(${VSPEC['bas-14'].xt(P.p)})} ${P.q === 0 ? '' : P.q < 0 ? '- ' + (-P.q) : '+ ' + P.q}$의 그래프가 각각 어느 방향으로 뻗어 나가는지 부호 원리와 평행·대칭이동 합동 조건을 확인하시오.</div>`,
+      ans: (P) => `시작점 (${P.p},${P.q}) + 부호쌍 (±,±) 방향 | 합동조건: |a| 일치`,
+      steps: (P) => [
+        { title: `1단계. 시작점 (p, q) = (${P.p}, ${P.q}) 구하기`, desc: `근호 안이 0이 되는 $x=${P.p}$에서 네 함수의 값은 모두 ${P.q}이므로 시작점은 $S(${P.p},${P.q})$입니다. 안쪽 부호가 $+$이면 $x\\ge${P.p}$, $-$이면 $x\\le${P.p}$이고, 바깥 부호가 $+$이면 $y\\ge${P.q}$, $-$이면 $y\\le${P.q}$입니다.` },
+        { title: '2단계. (x 앞 부호, 근호 앞 부호) = (가로 방향, 세로 방향)', desc: `안쪽 부호가 가로 방향, 바깥 부호가 세로 방향을 정합니다. $(+,+)$는 오른쪽 위, $(-,+)$는 왼쪽 위, $(-,-)$는 왼쪽 아래, $(+,-)$는 오른쪽 아래입니다. 네 그래프는 시작점을 지나는 수직선 또는 수평선에 대한 대칭으로 서로 겹칩니다.` },
+        { title: `3단계. x=${P.p}과 y=${P.q}에 대한 대칭으로 네 그래프의 합동 확인`, desc: `기본 그래프 $y=\\sqrt{${P.a}(${VSPEC['bas-14'].xt(P.p)})}${P.q < 0 ? '' : '+'}${P.q}$는 시작점에서 오른쪽 위로 뻗습니다. 수직선 $x=${P.p}$에 대칭이동하면 $x-${P.p < 0 ? '(' + P.p + ')' : P.p}$ 대신 $${P.p < 0 ? '(' + P.p + ')' : P.p}-x$를 써서 왼쪽 위로 뻗고, 수평선 $y=${P.q}$에 대칭이동하면 근호 앞에 마이너스가 붙어 오른쪽 아래로 뻗습니다. 두 대칭이동을 모두 적용하면 왼쪽 아래로 뻗습니다. 대칭이동은 모양과 길이를 보존하므로 네 그래프는 합동입니다.` }
+      ],
+      alg: () => `풀이를 쓸 때 무리함수의 역함수를 구할 때 이차함수 식만 쓰고 **정의역 조건 $(x \\ge q)$**을 생략하면 포물선 전체가 되어 일대일대응이 아니게 되므로 주의해야 합니다.`,
+      aha: () => `무리함수들이 평행이동·대칭이동으로 포개어지려면, 근호 밖 숫자를 근호 안으로 제곱해 넣었을 때 **$x$의 계수의 절댓값 $|a|$가 일치**해야 합니다!`
+    }
+    /*VARDATA-NEXT*/
+  };
+  /*VARDATA-END*/
+
   /* ======================================================================
      2.0 셸 연결 (새로 작성한 부분)
      ====================================================================== */
   const MAX_STEP = 4; // 원본 보조선 단계: 0 처음 그림 · 1~3 보조선 · 4 전체 보기
+  const rintV = (n) => Math.floor(Math.random() * n);
+  const VARY = {};
+  const DEFP = {};
+  Object.keys(VSPEC).forEach((id) => {
+    const S = VSPEC[id];
+    let cur = S.pool[0];
+    DEFP[id] = S.pool[0];
+    VARY[id] = {
+      cur: () => cur,
+      isBase: () => cur === S.pool[0],
+      size: S.pool.length,
+      set: (i) => { cur = S.pool[i]; return cur; }, // 검사용: 변형 번호로 고르기
+      next: () => { let n, i = 0; do { n = S.pool[rintV(S.pool.length)]; } while (n === cur && ++i < 40); return (cur = n); } // 직전과 같은 문제가 연달아 나오지 않게
+    };
+  });
+  state.vp = null;    // 문제·정리 탭에서 그릴 변형 값(탐구 탭은 null → 원본 값 DEFP)
+  state.fixed = false; // 문제·정리 탭의 고정 그림(끌 수 있는 점 없음)
+  const probHTMLV = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-old-new>새 문제</button></div>`;
+  const probBoxV = (h) => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${h}</div>`;
+  // 문제·정리 탭에서 장면 범위를 지금 탭(변형)의 그림에 다시 맞춥니다.
+  function refocusV(L) {
+    const sc = L && L.scene;
+    if (!sc || !sc.vary) return;
+    try { const f = L._measureFocus(sc); if (f) L.board.setFocus(f, true); L.invalidate(true); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+  }
+  // 장면 제목에 식이 들어 있는 장면(VSPEC.vtitle): 문제·정리 탭에서 「새 문제」 변형을 보는 동안은 제목도 그 식으로 바꿔 보여 줍니다.
+  function titleV(L) {
+    const sc = L && L.scene;
+    if (!sc || !sc.vary) return;
+    const el = L.ui && L.ui.head && L.ui.head.querySelector('.apl-scene-title');
+    if (!el) return;
+    if (el.dataset.orig == null) el.dataset.orig = el.innerHTML;
+    const S = VSPEC[sc.id];
+    try {
+      if (L.tab !== 'explore' && !sc.vary.isBase() && S && S.vtitle) {
+        const tt = APLab.splitFlag(arrow(S.vtitle(sc.vary.cur())));
+        el.innerHTML = (tt.flag ? `<span class="apl-tag" style="--c:var(--m-rose);margin-right:6px;vertical-align:3px">${APLab.esc(tt.flag)}</span>` : '') + APLab.renderMath(APLab.esc(tt.text));
+      } else el.innerHTML = el.dataset.orig;
+    } catch (e) { /* 제목은 그대로 */ }
+  }
+  document.addEventListener('click', (ev) => {
+    const hit = ev.target && ev.target.closest && ev.target.closest('[data-old-new]');
+    if (!hit) return;
+    const lab = window.lab, sc = lab && lab.scene;
+    if (!sc || !sc.vary) return;
+    sc.vary.next();
+    lab.s.revealed = false;
+    lab.setStep(0);
+    try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+    refocusV(lab);
+    titleV(lab);
+  });
+
   const clampStep = (s) => Math.min(Math.max(s.step || 0, 0), MAX_STEP);
   const pOf = (id) => PROBLEMS.find((p) => p.id === id) || PROBLEMS[0];
   function sync(s, idx) {
@@ -2423,9 +2833,21 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function sceneOf(p, idx) {
     const solT = solutionSlider(p.id);
-    const stepsHtml = p.steps.map((st) => `<div style="margin-bottom:10px"><b>${st.title}</b><br/>${st.desc}</div>`).join('');
+    const vs = VSPEC[p.id], vary = VARY[p.id];
+    const isVar = () => !!vary && !vary.isBase();
+    // 「새 문제」가 있는 장면: 첫 문제는 원본 그대로, 이후는 변형(vs.*). 문제·정리 탭에서만 변형을 씁니다.
+    const stepsOf = () => (isVar() ? vs.steps(vary.cur()) : p.steps);
+    const stmtOf = () => (isVar() ? vs.text(vary.cur()) : p.statement);
+    const hintsOf = () => (!isVar() ? p.auxHints : [
+      '💡 [문제 그림] 문제에 주어진 값과 점이 그림에 표시되어 있습니다. 「다음 단계」를 눌러 보조선과 풀이를 한 단계씩 따라가 보세요.',
+      ...stepsOf().map((x) => `🪄 [${x.title}] ${x.desc.replace(/<br\s*\/?>/g, ' ')}`),
+      '✨ [전체 보조선 보기] 풀이에 쓴 보조선과 길이 표시가 모두 나옵니다.'
+    ]);
+    const stepsHtml = () => stepsOf().map((st) => `<div style="margin-bottom:10px"><b>${st.title}</b><br/>${st.desc}</div>`).join('');
+    const tabX = (lab) => !!vary && !!lab && lab.tab !== 'explore';
     return {
       id: p.id, title: arrow(p.title), short: arrow(p.tabLabel), reviewTab: true, autoFit: true,
+      ...(vary ? { vary, tabs: { compact: true } } : {}),
       question: arrow(askOf(p)),
       notesTitle: '핵심 아이디어',
       startStep: 0,
@@ -2442,26 +2864,29 @@ window.addEventListener('DOMContentLoaded', function () {
         set: { t: sn.t }, ms: 500,
         on: (st) => Math.abs(st.t - sn.t) < 0.03
       })),
-      steps: () => p.auxHints.slice(1).map((h) => cv(arrow(h))),
+      steps: () => hintsOf().slice(1).map((h) => cv(arrow(h))),
       solution: {
         standardTitle: p.id === 'adv-3' ? '오답 함정 분석' : '풀이 비교 (대수적 풀이)',
         standardTag: p.id === 'adv-3' ? '함정' : '대수',
         quickTitle: geoLabel(p),
         quickTag: '도형',
-        standard: () => ({ steps: arrow(p.alg) }),
-        quick: () => ({ steps: arrow(stepsHtml), highlight: arrow(p.aha) })
+        standard: () => ({ steps: arrow(isVar() ? vs.alg(vary.cur()) : p.alg) }),
+        quick: () => ({ steps: arrow(stepsHtml()), highlight: arrow(isVar() ? vs.aha(vary.cur()) : p.aha) })
       },
+      ...(vary ? { reviewTop: () => probBoxV(arrow(stmtOf())) } : {}),
       problem: {
         tag: cv(arrow(p.badge)),
-        text: arrow(p.statement),
-        answer: arrow(p.answer),
-        ...(solT != null ? { snap: () => ({ t: solT }) } : {})
+        text: vary ? () => probHTMLV(arrow(stmtOf())) : arrow(p.statement),
+        answer: vary ? () => arrow(isVar() ? vs.ans(vary.cur()) : p.answer) : arrow(p.answer),
+        ...(solT != null && !vary ? { snap: () => ({ t: solT }) } : {})
       },
-      view: (s) => {
-        const step = clampStep(s);
-        const v = { guide: cv(arrow(p.auxHints[step] || p.auxHints[0])) };
-        if (step >= 3) v.notes = arrow(p.aha); // 원본: 3단계부터 '핵심 아이디어'이 열림
-        if (step > 0 && solT != null && Math.abs(s.t - solT) > 0.025) {
+      view: (s, lab) => {
+        const fx = tabX(lab);
+        const step = fx && lab.tab === 'problem' ? 0 : clampStep(s);
+        const hs = fx ? hintsOf() : p.auxHints;
+        const v = { guide: cv(arrow(hs[step] || hs[0])) };
+        if (step >= 3) v.notes = arrow(fx && isVar() ? vs.aha(vary.cur()) : p.aha); // 원본: 3단계부터 '핵심 아이디어'이 열림
+        if (!fx && step > 0 && solT != null && Math.abs(s.t - solT) > 0.025) {
           v.alert = { tone: 'info', text: '지금 그림은 조절 막대로 움직인 자유 탐구 위치입니다. 풀이는 문제에 주어진 조건 위치를 기준으로 설명합니다.' };
         }
         return v;
@@ -2469,6 +2894,16 @@ window.addEventListener('DOMContentLoaded', function () {
       draw: (b, s, v, lab) => {
         BOARD = b;
         CUR = s;
+        // 문제·정리 탭(「새 문제」가 있는 장면): 탐구 슬라이더 위치가 아니라 변형의 조건대로, 끌 점 없이 그립니다.
+        if (tabX(lab) && !b.thumb) {
+          state.vp = vary.cur();
+          state.fixed = true;
+          const paint2 = (st) => { sync({ ...s, step: st, t: 0, anim: 1 }, idx); HN = 0; placedLabels = []; drawScene(); };
+          try {
+            if (b._bbox) { for (let st = 0; st <= MAX_STEP; st++) paint2(st); } else paint2(lab.tab === 'problem' ? 0 : clampStep(s));
+          } finally { state.vp = null; state.fixed = false; }
+          return;
+        }
         const paint = (st) => {
           sync(st, idx);
           HN = 0;
@@ -3041,6 +3476,25 @@ window.addEventListener('DOMContentLoaded', function () {
     params,
     groups
   });
+
+  /* 「새 문제」가 있는 장면: 탭을 바꿀 때마다 그 탭의 그림에 장면 범위를 다시 맞춥니다(탐구 탭은 항상 원래 범위). */
+  const L = window.lab;
+  if (L && Object.keys(VARY).length) {
+    const goScene0 = L.goScene.bind(L);
+    let exploreFocus = null; // 장면에 들어올 때 정해진 탐구 탭의 범위(탐구 탭으로 돌아오면 그대로 되돌림)
+    L.goScene = (i, o = {}) => {
+      if (!o.keepTab) L.tab = 'explore';
+      const r = goScene0(i, o);
+      try { exploreFocus = L.scene.vary && L.tab === 'explore' ? JSON.parse(JSON.stringify(L.board.focus)) : null; } catch (e) { exploreFocus = null; }
+      return r;
+    };
+    const setTab0 = L.setTab.bind(L);
+    L.setTab = (id) => {
+      setTab0(id);
+      titleV(L);
+      if (id === 'explore' && exploreFocus && L.scene.vary) { try { L.board.setFocus(JSON.parse(JSON.stringify(exploreFocus)), true); L.invalidate(true); } catch (e) { /* 그대로 */ } } else refocusV(L);
+    };
+  }
 });
 </script>
 </body>
