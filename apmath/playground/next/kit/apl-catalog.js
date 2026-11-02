@@ -541,11 +541,59 @@ window.APLab.catalog = {
     "합성함수와 역함수",
     "유리함수의 기하학",
     "유리함수와 직선",
-    "무리함수"
+    "무리함수",
+    "화살표로 합성함수·역함수 값 따라가기",
+    "구간별 일차함수와 일대일대응(가로선 시험)",
+    "y=x를 거울삼아 합성·역함수 값 읽기",
+    "자기 자신이 역함수: f=f⁻¹",
+    "두 식 중 하나를 골라 일대일 만들기"
    ],
    "legacy": "labs/공통수학/합성함수·유리함수·무리함수.html",
    "next": "next/labs/common-functions.html",
    "glyph": "<path d=\"M8 68 Q20 10 40 38 Q60 66 72 8\"/><circle cx=\"8\" cy=\"68\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"72\" cy=\"8\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
+  },
+  {
+   "id": "common-rational",
+   "course": "common",
+   "unit": "함수와 그래프",
+   "strand": "func",
+   "order": 4.1,
+   "title": "유리함수",
+   "short": "유리함수",
+   "summary": "유리함수의 평행이동과 점근선, 점대칭·직선대칭, 직선과의 교점 개수(접하는 순간), 구간의 최댓값·최솟값과 격자점을 움직이며 탐구합니다.",
+   "keywords": "유리함수 점근선 평행이동 분수꼴 대칭 점대칭 직선대칭 직선과의 교점 접선 판별식 정의역 치역 최댓값 최솟값 격자점 공통수학 함수",
+   "badge": "함수",
+   "scenes": [
+    "평행이동과 점근선",
+    "점대칭·직선대칭",
+    "직선과 교점 개수",
+    "구간 최대최소·격자점"
+   ],
+   "legacy": "next/labs/common-rational.html",
+   "next": "next/labs/common-rational.html",
+   "glyph": "<path d=\"M10 40 Q18 40 34 38 Q38 20 38 8\"/><path d=\"M70 40 Q62 40 46 42 Q42 60 42 72\"/><line x1=\"40\" y1=\"6\" x2=\"40\" y2=\"74\" stroke-dasharray=\"3 3\"/><line x1=\"6\" y1=\"40\" x2=\"74\" y2=\"40\" stroke-dasharray=\"3 3\"/>",
+   "sceneTotal": 4
+  },
+  {
+   "id": "common-irrational",
+   "course": "common",
+   "unit": "함수와 그래프",
+   "strand": "func",
+   "order": 4.2,
+   "title": "무리함수",
+   "short": "무리함수",
+   "summary": "무리함수의 평행이동·대칭이동, 직선과의 교점 개수(접할 때와 끝점), 역함수와 y=x의 대칭을 움직이며 탐구합니다.",
+   "keywords": "무리함수 제곱근 평행이동 대칭이동 시작점 직선과의 교점 접선 끝점 역함수 y=x 대칭 감소함수 공통수학 함수",
+   "badge": "함수",
+   "scenes": [
+    "평행이동·대칭이동",
+    "직선과 교점 개수",
+    "역함수와 y=x"
+   ],
+   "legacy": "next/labs/common-irrational.html",
+   "next": "next/labs/common-irrational.html",
+   "glyph": "<path d=\"M10 62 Q22 26 66 18\"/><line x1=\"10\" y1=\"70\" x2=\"70\" y2=\"10\" stroke-dasharray=\"3 3\"/><circle cx=\"10\" cy=\"62\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>",
+   "sceneTotal": 3
   },
   {
    "id": "alg-explog",
@@ -1267,6 +1315,8 @@ window.APLab.catalog = {
    "stations": [
     "common-quadratic",
     "common-functions",
+    "common-rational",
+    "common-irrational",
     "alg-explog",
     "alg-exp-deep",
     "alg-log",

@@ -2526,6 +2526,508 @@ window.addEventListener('DOMContentLoaded', function () {
     scenes: PROBLEMS.map((p, i) => ({ p, i })).filter((x) => unitOf(x.p) === ui).sort((a, b) => rank(a.p) - rank(b.p)).map((x) => sceneOf(x.p, x.i))
   }));
 
+  /* ==========================================================================
+     B9 추가 장면 5개 (합성함수 · 역함수 · 일대일대응) — 고1 학평·학교 기출(공통수학2 함수 단원)에서 반복된 유형의 기출 변형
+     새로 작성한 장면입니다(원본 24문항 코드는 건드리지 않음). 수학 좌표 무대(boardKind:'cartesian')를 장면별로 씁니다.
+       ① 화살표 대응에서 합성함수·역함수 값 따라가기  ② 구간별 일차함수의 일대일대응(가로선 시험)
+       ③ y=x를 거울삼아 합성·역함수 값 읽기(거미줄)  ④ 자기 자신이 역함수인 함수 f=f⁻¹  ⑤ 두 식 중 하나를 골라 일대일 만들기
+     ========================================================================== */
+  const B9 = (function () {
+    const tex = APLab.tex, clamp = APLab.clamp;
+    const rint = (n) => Math.floor(Math.random() * n);
+    const pickOf = (arr, prev) => { if (arr.length < 2) return arr[0]; let x; do { x = arr[rint(arr.length)]; } while (x === prev); return x; };
+    const mn = (n) => String(Math.round(n * 100) / 100).replace('-', '−');
+    const addT = (n) => (n > 0 ? '+' + n : n < 0 ? '-' + (-n) : '');
+    const lin = (a, b, v = 'x') => { let s = ''; if (a !== 0) s += a === 1 ? v : a === -1 ? '-' + v : a + v; if (b !== 0) s += s ? (b > 0 ? '+' + b : '-' + (-b)) : String(b); return s || '0'; };
+    function varier(gen) { // 직전과 같은 문제가 연달아 나오지 않게 합니다
+      const key = (v) => JSON.stringify(v, (k, val) => (k === 'tv' || k === 'ans' || k === 'src' ? undefined : val));
+      let cur = gen(null);
+      return { cur: () => cur, next: () => { let n, i = 0; do { n = gen(cur); } while (key(n) === key(cur) && ++i < 40); return (cur = n); } };
+    }
+    const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-b9-new>새 문제</button></div>`;
+    document.addEventListener('click', (ev) => {
+      const hit = ev.target && ev.target.closest && ev.target.closest('[data-b9-new]');
+      if (!hit) return;
+      const lab = window.lab, sc = lab && lab.scene;
+      if (!sc || !sc.vary) return;
+      sc.vary.next();
+      lab.s.revealed = false;
+      lab.setStep(1);
+      try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+      lab.invalidate(true);
+    });
+    const stepOf = (lab, s) => (lab.tab === 'problem' ? 0 : lab.tab === 'review' ? s.step : 99);
+    const probBox = (v) => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${v}</div>`;
+    const fixLT = (t) => (typeof t === 'string' ? t.replace(/\$[^$]*\$/g, (m) => m.replace(/</g, '\\lt ').replace(/>/g, '\\gt ')) : t);
+    const fixObj = (o) => (o ? { ...o, steps: fixLT(o.steps), warning: fixLT(o.warning), highlight: fixLT(o.highlight) } : o);
+    const scene = (o) => ({
+      boardKind: 'cartesian', tabs: { compact: true }, ...o,
+      steps: o.steps && (() => o.steps().map(fixLT)),
+      solution: o.solution && { ...o.solution, standard: () => fixObj(o.solution.standard()), quick: () => fixObj(o.solution.quick()) }
+    });
+    const axesOf = (b) => { b.grid({ step: 1 }); b.axes({ tickStep: b.k < 32 ? 2 : 1 }); };
+    function arrowTo(b, p, q, o = {}) { // p → q 화살표(끝에 화살촉)
+      const dx = q[0] - p[0], dy = q[1] - p[1], L = Math.hypot(dx, dy) || 1, ux = dx / L, uy = dy / L, h = 0.3, w = 0.13;
+      b.seg(p, [q[0] - ux * h * 0.6, q[1] - uy * h * 0.6], o);
+      b.poly([[q[0] - ux * h - uy * w, q[1] - uy * h + ux * w], q, [q[0] - ux * h + uy * w, q[1] - uy * h - ux * w]], { color: o.color, fill: o.color, fillAlpha: o.alpha == null ? 1 : o.alpha, width: 1, alpha: o.alpha, ref: o.ref });
+    }
+
+    /* ======================== ① 화살표 대응: 합성함수·역함수 값 따라가기 ======================== */
+    const XS = [1, 2, 3, 4], YS = ['a', 'b', 'c', 'd'], ZS = [5, 6, 7, 8];
+    const colX = 1.7, colY = 5, colZ = 8.3, rowY = [6.2, 4.6, 3, 1.4];
+    const nodeXY = (col, i) => [col === 0 ? colX : col === 1 ? colY : colZ, rowY[i]];
+    const lab1 = (col, i) => (col === 0 ? XS[i] : col === 1 ? YS[i] : ZS[i]);
+    const shuffle = (n) => { const a = [...Array(n).keys()]; for (let i = n - 1; i > 0; i--) { const j = rint(i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+    const F1_0 = { f: [2, 0, 3, 1], g: [2, 0, 3, 1] }; // f: 1→c 2→a 3→d 4→b, g: a→7 b→5 c→8 d→6
+    const inv = (p) => { const q = []; p.forEach((v, i) => { q[v] = i; }); return q; };
+    // 항: kind 'gf'(x) (g∘f)(x) · 'finv'(y) f⁻¹(y) · 'gfinv'(z) (g∘f)⁻¹(z) · 'ginv'(z) g⁻¹(z)
+    const termVal = (v, t) => {
+      const fi = inv(v.f), gi = inv(v.g);
+      if (t.k === 'gf') return { tex: `(g\\circ f)(${XS[t.i]})`, val: ZS[v.g[v.f[t.i]]], path: [['f', t.i, v.f[t.i]], ['g', v.f[t.i], v.g[v.f[t.i]]]], num: true };
+      if (t.k === 'finv') return { tex: `f^{-1}(${YS[t.i]})`, val: XS[fi[t.i]], path: [['f', fi[t.i], t.i]], num: true };
+      if (t.k === 'gfinv') return { tex: `(g\\circ f)^{-1}(${ZS[t.i]})`, val: XS[fi[gi[t.i]]], path: [['g', gi[t.i], t.i], ['f', fi[gi[t.i]], gi[t.i]]], num: true };
+      return { tex: `g^{-1}(${ZS[t.i]})`, val: YS[gi[t.i]], path: [['g', gi[t.i], t.i]], num: false };
+    };
+    const var1 = varier((prev) => {
+      let f = F1_0.f, g = F1_0.g, terms = [{ k: 'gf', i: 2 }, { k: 'finv', i: 3 }]; // 처음 문제: (g∘f)(3)+f⁻¹(d)
+      if (prev) {
+        f = shuffle(4); g = shuffle(4);
+        const kinds = ['gf', 'finv', 'gfinv'], a = kinds[rint(3)]; let b2; do { b2 = kinds[rint(3)]; } while (b2 === a);
+        terms = [{ k: a, i: rint(4) }, { k: b2, i: rint(4) }];
+      }
+      const v = { f, g, terms }, tv = terms.map((t) => termVal(v, t)), sum = tv[0].val + tv[1].val;
+      return { ...v, tv, ans: { tex: String(sum), val: sum } };
+    });
+    const text1 = (v) => `그림은 일대일대응 ${tex('f:X\\to Y')}, ${tex('g:Y\\to Z')}의 대응을 나타낸 것이다. ${tex(`${v.tv[0].tex}+${v.tv[1].tex}`)}의 값을 구하시오.`;
+    function drawF1(b, v, hl, showNums, hlColor) {
+      const cols = [[colX, 'X'], [colY, 'Y'], [colZ, 'Z']];
+      cols.forEach(([cx, nm]) => { b.poly([[cx - 0.95, 7.1], [cx + 0.95, 7.1], [cx + 0.95, 0.7], [cx - 0.95, 0.7]], { color: 'muted', dash: [4, 4], width: 1.4, fill: 'muted', fillAlpha: 0.07, alpha: 0.7 }); b.text([cx, 7.1], nm, { color: 'ink', size: 15, dy: -12, weight: 800 }); });
+      b.text([(colX + colY) / 2, 7.1], 'f', { color: 'sky', size: 15, dy: -12 }); b.text([(colY + colZ) / 2, 7.1], 'g', { color: 'amber', size: 15, dy: -12 });
+      const arrows = [];
+      v.f.forEach((j, i) => arrows.push(['f', i, j, nodeXY(0, i), nodeXY(1, j), 'sky']));
+      v.g.forEach((j, i) => arrows.push(['g', i, j, nodeXY(1, i), nodeXY(2, j), 'amber']));
+      const on = (a) => hl.some((h) => h[0] === a[0] && h[1] === a[1] && h[2] === a[2]);
+      arrows.forEach((a) => { const [p, q] = [a[3], a[4]], u = [q[0] - p[0], q[1] - p[1]], L = Math.hypot(u[0], u[1]); const s0 = [p[0] + (u[0] / L) * 0.42, p[1] + (u[1] / L) * 0.42], e0 = [q[0] - (u[0] / L) * 0.45, q[1] - (u[1] / L) * 0.45]; const h = on(a); arrowTo(b, s0, e0, { color: h ? (hlColor || 'rose') : a[5], width: h ? 3.6 : 1.8, alpha: h ? 1 : 0.5, glow: h }); });
+      const nodeOn = new Set(); hl.forEach((h) => { nodeOn.add((h[0] === 'f' ? 0 : 1) + ':' + h[1]); nodeOn.add((h[0] === 'f' ? 1 : 2) + ':' + h[2]); });
+      [0, 1, 2].forEach((c) => [0, 1, 2, 3].forEach((i) => { const p = nodeXY(c, i), h = nodeOn.has(c + ':' + i); b.point(p, { r: 15, hollow: true, color: h ? (hlColor || 'rose') : 'ink', glow: false }); b.text(p, String(lab1(c, i)), { color: h ? (hlColor || 'rose') : 'ink', size: 15, baseline: 'middle', halo: false, weight: 800 }); }));
+    }
+    function sceneF1() {
+      const reset = (s) => { s.b1m = 0; s.b1x = 2; s.b1z = 0; };
+      return scene({
+        id: 'b9-1', title: '[B9] 화살표로 합성함수·역함수 값 따라가기', short: '화살표 대응',
+        question: '(g∘f)⁻¹(z)는 화살표를 어느 쪽으로 어떤 순서로 따라가야 할까?',
+        guide: '「앞으로」는 <b>x → f → g</b> 순서로 화살표를 따라 <b>(g∘f)(x)</b>를 읽습니다. 「거꾸로」는 <b>z에서 g의 화살표를 거슬러 y로, 다시 f를 거슬러 x로</b> 갑니다 — 그래서 $(g\\circ f)^{-1}=f^{-1}\\circ g^{-1}$ 로 <b>순서가 뒤집힙니다</b>.',
+        enter: reset, focus: { x: [0, 10], y: [0, 8] },
+        controls: () => [],
+        presets: (s) => [
+          { group: '따라가는 방향', label: '앞으로 x → y → z', color: 'sky', apply: (st) => { st.b1m = 0; }, on: (st) => st.b1m === 0 },
+          { group: '따라가는 방향', label: '거꾸로 z → y → x', color: 'rose', apply: (st) => { st.b1m = 1; }, on: (st) => st.b1m === 1 },
+          ...(s.b1m === 1 ? ZS.map((z, i) => ({ group: '출발하는 z', label: String(z), apply: (st) => { st.b1z = i; }, on: (st) => st.b1z === i })) : XS.map((x, i) => ({ group: '출발하는 x', label: String(x), apply: (st) => { st.b1x = i; }, on: (st) => st.b1x === i })))
+        ],
+        steps: () => { const v = var1.cur(); return [`$${v.tv[0].tex}$: ${v.tv[0].path.map((p) => `${p[0] === 'f' ? 'f' : 'g'}의 화살표 ${p[0] === 'f' ? `${XS[p[1]]}→${YS[p[2]]}` : `${YS[p[1]]}→${ZS[p[2]]}`}`).join(', ')} ⇒ ${v.tv[0].val}`, `$${v.tv[1].tex}$: ${v.tv[1].path.map((p) => `${p[0] === 'f' ? 'f' : 'g'}의 화살표 ${p[0] === 'f' ? `${XS[p[1]]}→${YS[p[2]]}` : `${YS[p[1]]}→${ZS[p[2]]}`}`).join(', ')} ⇒ ${v.tv[1].val}`, `$${v.tv[0].val}+${v.tv[1].val}=${v.ans.tex}$`]; },
+        reviewTop: () => probBox(text1(var1.cur())),
+        problem: { tag: '20 금당고 · 20 매산고 기출 유형 (그림으로 합성·역함수)', time: '목표 시간: 20초', text: () => probHTML(text1(var1.cur())), answer: () => tex(var1.cur().ans.tex) },
+        solution: {
+          standardTitle: '화살표를 따라가기', standardTag: '기본 풀이', quickTitle: '거꾸로는 순서를 뒤집어', quickTag: '핵심',
+          standard: () => { const v = var1.cur(); return { steps: `$${v.tv[0].tex}=${v.tv[0].val}$, $${v.tv[1].tex}=${v.tv[1].val}$ ⇒ ${v.ans.tex}`, warning: '(g∘f)⁻¹(z)는 g⁻¹을 먼저, 그다음 f⁻¹을 적용합니다. f⁻¹(g⁻¹(z))로 읽으세요(순서가 뒤집힘).' }; },
+          quick: () => ({ steps: '역함수의 값은 화살표를 <b>반대 방향</b>으로 읽으면 됩니다. 일대일대응이라 거꾸로 가는 길이 하나뿐입니다.', highlight: '(g∘f)⁻¹ = f⁻¹∘g⁻¹' })
+        },
+        view: (s, lab) => {
+          if (lab.tab !== 'explore') { const v = var1.cur(); return { chips: [{ html: `<b>${v.tv[0].val}</b> + <b>${v.tv[1].val}</b> = <b>${v.ans.tex}</b>`, color: 'amber', answer: true }] }; }
+          const v = { f: F1_0.f, g: F1_0.g }, fi = inv(v.f), gi = inv(v.g);
+          if (s.b1m === 0) { const x = s.b1x, y = v.f[x], z = v.g[y]; return { chips: [{ tex: `(g\\circ f)(${XS[x]})=g(${YS[y]})=${ZS[z]}`, color: 'rose' }], status: { tone: 'info', text: `${XS[x]} → ${YS[y]} → ${ZS[z]}` }, readouts: [{ label: `f(${XS[x]})`, value: YS[y], color: 'sky' }, { label: `g(${YS[y]})`, value: String(ZS[z]), color: 'amber' }, { label: `(g∘f)(${XS[x]})`, value: String(ZS[z]), color: 'rose', wide: true }] }; }
+          const z = s.b1z, y = gi[z], x = fi[y];
+          return { chips: [{ tex: `(g\\circ f)^{-1}(${ZS[z]})=f^{-1}(g^{-1}(${ZS[z]}))=f^{-1}(${YS[y]})=${XS[x]}`, color: 'rose' }], status: { tone: 'key', text: `${ZS[z]} ⇒ ${YS[y]} ⇒ ${XS[x]} (거꾸로)` }, readouts: [{ label: `g⁻¹(${ZS[z]})`, value: YS[y], color: 'amber', note: '먼저 g의 화살표를 거슬러' }, { label: `f⁻¹(${YS[y]})`, value: String(XS[x]), color: 'sky', note: '다음에 f의 화살표를 거슬러' }, { label: `(g∘f)⁻¹(${ZS[z]})`, value: String(XS[x]), color: 'rose', wide: true }] };
+        },
+        vary: var1,
+        draw: (b, s, v, lab) => {
+          if (lab.tab === 'explore') {
+            const F = { f: F1_0.f, g: F1_0.g }, gi = inv(F.g), fi = inv(F.f);
+            let hl; if (s.b1m === 0) { const x = s.b1x, y = F.f[x]; hl = [['f', x, y], ['g', y, F.g[y]]]; } else { const z = s.b1z, y = gi[z], x = fi[y]; hl = [['g', y, z], ['f', x, y]]; }
+            drawF1(b, F, hl, true, s.b1m === 0 ? 'rose' : 'rose'); return;
+          }
+          const vv = var1.cur(), st = stepOf(lab, s), hl = [];
+          if (st >= 1) hl.push(...vv.tv[0].path); if (st >= 2) hl.push(...vv.tv[1].path);
+          drawF1(b, vv, st >= 1 ? hl : [], false, 'rose');
+        }
+      });
+    }
+
+    /* ======================== ② 구간별 일차함수의 일대일대응 (가로선 시험) ======================== */
+    const slopes2 = (P, a) => [P.B1 - a, P.A2 * a + P.B2]; // [x≥0 쪽, x<0 쪽]
+    const f2fn = (P, a) => { const [s1, s2] = slopes2(P, a); return (x) => (x >= 0 ? s1 * x + P.c : s2 * x + P.c); };
+    const P2_0 = { B1: 2, A2: 2, B2: 5, c: 4 }; // (2−a)x+4 (x≥0), (2a+5)x+4 (x<0)
+    const P2L = [];
+    for (const B1 of [2, 3, 4, 5, 6]) for (const A2 of [2, 3, 4]) for (const B2 of [1, 3, 5, 7, 9]) for (const c of [3, 4, 5, -2, -3, 2]) {
+      if (B1 === 2 && A2 === 2 && B2 === 5 && c === 4) continue;
+      const n = cnt2({ B1, A2, B2 }); if (n >= 3 && n <= 9) P2L.push({ B1, A2, B2, c });
+    }
+    function cnt2(P) { let n = 0; for (let a = -40; a <= 40; a++) { const [s1, s2] = slopes2(P, a); if (s1 * s2 > 0) n++; } return n; }
+    const var2 = varier((prev) => { const P = !prev ? P2_0 : pickOf(P2L, prev.P), n = cnt2(P); return { P, n, ans: { tex: String(n), val: n } }; });
+    const s1T = (P) => `${P.B1}-a`, s2T = (P) => lin(P.A2, P.B2, 'a');
+    const pieces = (P) => `\\begin{cases}(${s1T(P)})x${addT(P.c)} & (x\\ge0)\\\\(${s2T(P)})x${addT(P.c)} & (x<0)\\end{cases}`;
+    const text2 = (v) => `실수 전체의 집합에서 정의된 함수 ${tex(`f(x)=${pieces(v.P)}`)}의 역함수가 존재하도록 하는 정수 ${tex('a')}의 개수를 구하시오.`;
+    const rootsP = (P) => ({ r1: P.B1, r2: -P.B2 / P.A2 });
+    const intsBetween = (P) => { const { r1, r2 } = rootsP(P), lo = Math.min(r1, r2), hi = Math.max(r1, r2), z = []; for (let a = Math.floor(lo) + 1; a < hi; a++) z.push(a); return z; };
+    const steps2 = () => {
+      const v = var2.cur(), P = v.P, { r2 } = rootsP(P), ints = intsBetween(P);
+      const fr = Number.isInteger(r2) ? String(r2) : `-\\dfrac{${P.B2}}{${P.A2}}`;
+      return [
+        `두 조각이 모두 $x=0$에서 $y=${P.c}$를 지나 이어져 있습니다. 이어진 두 직선으로 된 함수가 역함수를 가지려면(일대일대응) 두 직선이 모두 증가하거나 모두 감소해야 합니다. 기울기가 반대 부호이면 가로선이 두 번 만납니다.`,
+        `두 기울기 $${s1T(P)}$, $${s2T(P)}$의 부호가 같아야 하므로 $(${s1T(P)})(${s2T(P)})>0$ 입니다. (기울기가 $0$이면 그 조각이 상수함수라 일대일이 아닙니다.)`,
+        `기울기가 $0$이 되는 $a$는 $a=${P.B1}$, $a=${fr}$ 이고, $a^2$의 계수가 음수이므로 곱이 양수인 범위는 두 값 사이입니다: $${fr}<a<${P.B1}$`,
+        `이 범위의 정수 $a$는 $${ints.join(',\\,')}$ ⇒ ${v.ans.tex}개`
+      ];
+    };
+    function drawF2(b, P, a, tline, st, mode) {
+      axesOf(b);
+      const f = f2fn(P, a), [s1, s2] = slopes2(P, a), vb = b.viewBox();
+      b.plot((x) => f(x), { color: 'sky', width: 3.6, glow: true, from: 0 }); b.plot((x) => f(x), { color: 'sky', width: 3.6, glow: true, to: 0 - 1e-6 });
+      b.point([0, P.c], { r: 5, color: 'violet', label: `(0, ${P.c})`, dx: 10, dy: -10, size: 12 });
+      return { f, s1, s2, vb };
+    }
+    function sceneF2() {
+      const reset = (s) => { s.f2a = 0; s.f2t = 6; };
+      const P = P2_0;
+      return scene({
+        id: 'b9-2', title: '[B9] 구간별 일차함수와 일대일대응 — 가로선 시험', short: '구간별 일대일대응',
+        question: '두 직선을 이어 붙인 함수가 역함수를 가지려면 기울기는 어떤 관계여야 할까?',
+        guide: '가로선 <b>y=t</b>(노란 점)를 위아래로 끌어 <b>그래프와 만나는 점의 수</b>를 보세요. 모든 가로선이 <b>정확히 한 번</b>씩 만나면 일대일대응이고 역함수가 있습니다. 슬라이더로 <b>a</b>를 바꾸면 두 기울기 $2-a$, $2a+5$의 부호가 바뀌는 순간이 보입니다.',
+        enter: reset, focus: { x: [-8, 8], y: [-4, 12] },
+        controls: () => ['f2a'],
+        presets: () => [{ group: '바로 가기', label: 'a = 0 (둘 다 증가)', set: { f2a: 0 }, ms: 400, on: (s) => Math.abs(s.f2a) < 0.03 }, { group: '바로 가기', label: 'a = 2 (한쪽이 수평)', set: { f2a: 2 }, ms: 400, on: (s) => Math.abs(s.f2a - 2) < 0.03 }, { group: '바로 가기', label: 'a = 3 (기울기 반대)', set: { f2a: 3 }, ms: 400, on: (s) => Math.abs(s.f2a - 3) < 0.03 }, { group: '바로 가기', label: 'a = −2.5', set: { f2a: -2.5 }, ms: 400, on: (s) => Math.abs(s.f2a + 2.5) < 0.03 }],
+        steps: steps2,
+        reviewTop: () => probBox(text2(var2.cur())),
+        problem: { tag: '19 금당고 기출 유형 (구간별 함수가 역함수를 가질 조건)', time: '목표 시간: 20초', text: () => probHTML(text2(var2.cur())), answer: () => tex(var2.cur().ans.tex) },
+        solution: {
+          standardTitle: '기울기의 곱', standardTag: '기본 풀이', quickTitle: '그림: 가로선이 한 번씩', quickTag: '그림으로',
+          standard: () => { const v = var2.cur(); return { steps: `$(${s1T(v.P)})(${s2T(v.P)})>0$ 을 만족하는 정수 $a$의 개수 ⇒ ${v.ans.tex}`, warning: '기울기가 0이 되는 a(양 끝 값)는 포함하지 않습니다. 수평인 조각은 일대일이 아닙니다.' }; },
+          quick: () => ({ steps: '이어진 꺾인 직선은 <b>한쪽으로만 뻗어야</b>(증가 또는 감소) 모든 가로선이 한 번만 만납니다. 그래서 두 기울기는 같은 부호입니다.', highlight: '이어 붙인 지점이 같을 때만 쓸 수 있는 기준입니다. 이어지지 않으면 값의 범위가 겹치는지도 봐야 합니다.' })
+        },
+        view: (s, lab) => {
+          if (lab.tab !== 'explore') { const v = var2.cur(); return { chips: [{ tex: `a\\in\\{${intsBetween(v.P).join(',\\,')}\\}`, color: 'amber', answer: true }] }; }
+          const [s1, s2] = slopes2(P, s.f2a), t = s.f2t, pr = s1 * s2, flat = Math.abs(s1) < 1e-9 || Math.abs(s2) < 1e-9, ok = pr > 1e-9;
+          let n = 0; if (Math.abs(s1) > 1e-9 && (t - P.c) / s1 >= 0) n++; if (Math.abs(s2) > 1e-9 && (t - P.c) / s2 < 0) n++;
+          return {
+            chips: [{ html: `기울기 <b>${mn(s1)}</b> (x≥0) · <b>${mn(s2)}</b> (x<0)`, color: 'sky' }],
+            status: { tone: ok ? 'ok' : 'warn', text: ok ? '일대일대응 — 역함수가 있습니다' : flat ? '한쪽이 수평 — 일대일이 아닙니다' : '기울기가 반대 부호 — 가로선이 두 번 만납니다' },
+            readouts: [
+              { label: '기울기 (x ≥ 0)', value: mn(s1), color: s1 > 0 ? 'green' : s1 < 0 ? 'rose' : 'amber', note: `${P.B1} − a` },
+              { label: '기울기 (x < 0)', value: mn(s2), color: s2 > 0 ? 'green' : s2 < 0 ? 'rose' : 'amber', note: s2T(P) },
+              { label: `가로선 y=${mn(t)}와의 교점`, value: flat && Math.abs(t - P.c) < 1e-9 ? '무수히 많음' : `${n}개`, color: n === 1 ? 'green' : 'rose', wide: true },
+              { label: '두 기울기의 곱', value: mn(pr), color: ok ? 'green' : 'rose', note: ok ? '곱 > 0 ⇒ 같은 부호' : '곱 ≤ 0 ⇒ 일대일 아님' }
+            ]
+          };
+        },
+        vary: var2,
+        draw: (b, s, v, lab) => {
+          if (lab.tab === 'explore') {
+            const a = s.f2a, t = s.f2t, { f, s1, s2, vb } = drawF2(b, P, a);
+            b.hline(t, { color: 'amber', dash: [6, 5], width: 2.2 });
+            const pts = []; if (Math.abs(s1) > 1e-9 && (t - P.c) / s1 >= 0) pts.push([(t - P.c) / s1, t]); if (Math.abs(s2) > 1e-9 && (t - P.c) / s2 < 0) pts.push([(t - P.c) / s2, t]);
+            pts.forEach((p) => b.point(p, { r: 5.5, color: pts.length === 1 ? 'green' : 'rose' }));
+            b.handle('T', [vb.x1 - 1.3, t], { color: 'amber', r: 7, label: `y=${mn(t)}`, dx: -10, dy: -12, align: 'right', size: 12, ariaLabel: '가로선 (위아래로 끌기)', drag: (w) => { s.f2t = clamp(Math.round(w.y * 4) / 4, -5, 13); } });
+            return;
+          }
+          const vv = var2.cur(), st = stepOf(lab, s), PP = vv.P, aB = PP.B1 + 1;
+          const aS = 0; // 예시 그래프
+          axesOf(b);
+          const g = f2fn(PP, aS);
+          b.plot(g, { color: 'sky', width: 3.6, glow: true, from: 0 }); b.plot(g, { color: 'sky', width: 3.6, glow: true, to: -1e-6 });
+          b.point([0, PP.c], { r: 5, color: 'violet', label: `(0, ${PP.c})`, dx: 10, dy: -10, size: 12 });
+          b.text([b.viewBox().x1, b.viewBox().y1], '예: a=0일 때의 그래프', { color: 'muted', size: 12, align: 'right', dx: -8, dy: 66 });
+          if (st >= 2) {
+            const h = f2fn(PP, aB), [q1, q2] = slopes2(PP, aB);
+            b.plot(h, { color: 'rose', width: 3, dash: [7, 5], from: 0 }); b.plot(h, { color: 'rose', width: 3, dash: [7, 5], to: -1e-6 });
+            const t0 = PP.c + 2 * q1 * 0 + 6; // 가로선
+            const tt = PP.c + 4; b.hline(tt, { color: 'amber', dash: [5, 4], width: 1.8 });
+            [[(tt - PP.c) / q1, tt], [(tt - PP.c) / q2, tt]].forEach((p) => { if (Math.abs(p[0]) < 30) b.point(p, { r: 5, color: 'rose' }); });
+            b.text([-7.5, tt], '두 번 만남', { color: 'rose', size: 12, align: 'left', dy: -10 });
+          }
+        }
+      });
+    }
+
+    /* ======================== ③ y=x를 거울삼아 합성·역함수 값 읽기 ======================== */
+    // 마디 N[0..5]: f(N[i]) = N[i+1] 인 증가함수(꺾은선). 정의역 [N0, N4], 치역 [N1, N5]
+    const N3_0 = [1, 2, 4, 5, 7, 8];
+    const fv = (N, x) => { if (x < N[0] - 1e-9 || x > N[4] + 1e-9) return NaN; let i = 0; while (i < 3 && x > N[i + 1]) i++; return N[i + 1] + ((x - N[i]) / (N[i + 1] - N[i])) * (N[i + 2] - N[i + 1]); };
+    const gv = (N, y) => { if (y < N[1] - 1e-9 || y > N[5] + 1e-9) return NaN; let i = 1; while (i < 4 && y > N[i + 1]) i++; return N[i - 1] + ((y - N[i]) / (N[i + 1] - N[i])) * (N[i] - N[i - 1]); };
+    function web(N, start, n, back) { // 거미줄 경로의 꼭짓점들과 각 단계의 값
+      const pts = [], vals = [start]; let cur = start;
+      if (!back) { pts.push([cur, 0]); for (let i = 0; i < n; i++) { const y = fv(N, cur); if (!Number.isFinite(y)) break; pts.push([cur, y], [y, y]); vals.push(y); cur = y; } }
+      else { pts.push([0, cur]); for (let i = 0; i < n; i++) { const x = gv(N, cur); if (!Number.isFinite(x)) break; pts.push([x, cur], [x, x]); vals.push(x); cur = x; } }
+      return { pts, vals };
+    }
+    const T3K = (N, t) => { // 문제 항: ff(i) f(f(N_i)) · inv(j) f⁻¹(N_j) · ffinv(j) (f∘f)⁻¹(N_j)
+      if (t.k === 'ff') return { tex: `(f\\circ f)(${N[t.i]})`, val: N[t.i + 2], start: N[t.i], n: 2, back: false };
+      if (t.k === 'inv') return { tex: `f^{-1}(${N[t.i]})`, val: N[t.i - 1], start: N[t.i], n: 1, back: true };
+      return { tex: `(f\\circ f)^{-1}(${N[t.i]})`, val: N[t.i - 2], start: N[t.i], n: 2, back: true };
+    };
+    const var3 = varier((prev) => {
+      let N = N3_0, terms = [{ k: 'ff', i: 1 }, { k: 'inv', i: 4 }];
+      if (prev) {
+        const pool = [1, 2, 3, 4, 5, 6, 7, 8, 9]; N = []; const bag = pool.slice(); while (N.length < 6) N.push(bag.splice(rint(bag.length), 1)[0]); N.sort((a, b) => a - b);
+        const mk = () => { const k = ['ff', 'inv', 'ffinv'][rint(3)]; return k === 'ff' ? { k, i: rint(4) } : k === 'inv' ? { k, i: 1 + rint(5) } : { k, i: 2 + rint(4) }; };
+        const a = mk(); let b2 = mk(); while (b2.k === a.k) b2 = mk(); terms = [a, b2];
+      }
+      const tv = terms.map((t) => T3K(N, t)), sum = tv[0].val + tv[1].val;
+      return { N, tv, ans: { tex: String(sum), val: sum } };
+    });
+    const text3 = (v) => `정의역이 ${tex(`\\{x\\mid ${v.N[0]}\\le x\\le ${v.N[4]}\\}`)}인 일대일대응 ${tex('y=f(x)')}의 그래프와 직선 ${tex('y=x')}가 그림과 같다. ${tex(`${v.tv[0].tex}+${v.tv[1].tex}`)}의 값을 구하시오. (단, 그래프는 꺾은선이고 꺾이는 점의 좌표는 정수이다.)`;
+    const steps3 = () => { const v = var3.cur(); return [
+      `$y=x$를 거울로 씁니다. $f(x)$의 값을 $x$축의 수에 옮기려면 그 점에서 <b>$y=x$까지 수평으로</b> 간 뒤 수직으로 내려갑니다.`.replace(/<\/?b>/g, ''),
+      `$${v.tv[0].tex}$: ${v.tv[0].back ? '그래프를 거꾸로(가로로 가서 그래프에 닿은 뒤 y=x로 올라가며) ' : '그래프 → y=x → 그래프 순으로 '}따라가면 값은 $${v.tv[0].val}$입니다.`,
+      `$${v.tv[1].tex}$: 같은 방법으로 $${v.tv[1].val}$.`,
+      `$${v.tv[0].val}+${v.tv[1].val}=${v.ans.tex}$`
+    ]; };
+    function drawF3(b, N, paths, showNodes) {
+      axesOf(b);
+      const vb = b.viewBox();
+      b.line([0, 0], 1, { color: 'violet', dash: [7, 5], width: 2 }); b.text([Math.min(vb.x1, vb.y1) - 0.9, Math.min(vb.x1, vb.y1) - 0.9], 'y=x', { color: 'violet', size: 13, align: 'right', dy: 14 });
+      const pts = []; for (let i = 0; i < 5; i++) pts.push([N[i], N[i + 1]]);
+      b.path(pts, { color: 'sky', width: 3.6, glow: true });
+      pts.forEach((p) => b.point(p, { r: 4.5, color: 'sky' }));
+      paths.forEach((p, k) => {
+        const col = p.color;
+        for (let i = 0; i + 1 < p.pts.length; i++) arrowTo(b, p.pts[i], p.pts[i + 1], { color: col, width: 2.6, dash: [5, 4] });
+        p.pts.forEach((q, i) => { if (i % 2 === 0 || i === 0) b.point(q, { r: 4.5, color: col }); });
+        if (p.label) b.text(p.pts[p.pts.length - 1], p.label, { color: col, size: 13, dx: 8, dy: -10, align: 'left' });
+      });
+    }
+    function sceneF3() {
+      const reset = (s) => { s.f3m = 0; s.f3n = 2; s.f3s = 1; };
+      const N = N3_0;
+      return scene({
+        id: 'b9-3', title: '[B9] y=x를 거울삼아 합성·역함수 값 읽기', short: 'y=x로 따라가기',
+        question: '그래프와 y=x만으로 f(f(x))와 f⁻¹(b)를 어떻게 읽을까?',
+        guide: '시작 값을 <b>슬라이더</b>로 옮기세요. 「앞으로」는 <b>그래프 → y=x → 그래프</b>로 올라가며 <b>f(x), f(f(x)), …</b>를, 「거꾸로」는 y축의 값에서 <b>가로로 그래프까지, 세로로 y=x까지</b> 가며 <b>f⁻¹(b), f⁻¹(f⁻¹(b)), …</b>를 읽습니다. 꺾이는 점의 좌표는 f(1)=2, f(2)=4, f(4)=5, f(5)=7, f(7)=8입니다.',
+        enter: reset, focus: { x: [-0.5, 9.5], y: [-0.5, 9.5] },
+        controls: () => ['f3s'],
+        presets: (s) => [
+          { group: '방향', label: '앞으로 f', color: 'sky', apply: (st) => { st.f3m = 0; st.f3s = clamp(st.f3s, N[0], N[4]); }, on: (st) => st.f3m === 0 },
+          { group: '방향', label: '거꾸로 f⁻¹', color: 'rose', apply: (st) => { st.f3m = 1; st.f3s = clamp(st.f3s, N[1], N[5]); }, on: (st) => st.f3m === 1 },
+          { group: '반복 횟수', label: '1번', apply: (st) => { st.f3n = 1; }, on: (st) => st.f3n === 1 },
+          { group: '반복 횟수', label: '2번', apply: (st) => { st.f3n = 2; }, on: (st) => st.f3n === 2 },
+          { group: '반복 횟수', label: '3번', apply: (st) => { st.f3n = 3; }, on: (st) => st.f3n === 3 },
+          { group: '마디 점으로', label: `시작 ${s.f3m === 0 ? N[0] : N[1]}`, set: { f3s: s.f3m === 0 ? N[0] : N[1] }, ms: 400 }
+        ],
+        steps: steps3,
+        reviewTop: () => probBox(text3(var3.cur())),
+        problem: { tag: '19 복성고 · 20 복성고 기출 유형 (그래프와 y=x로 합성·역함수 읽기)', time: '목표 시간: 15초', text: () => probHTML(text3(var3.cur())), answer: () => tex(var3.cur().ans.tex) },
+        solution: {
+          standardTitle: '마디 점의 좌표 따라가기', standardTag: '기본 풀이', quickTitle: '거울(y=x)로 옮기기', quickTag: '핵심',
+          standard: () => { const v = var3.cur(); return { steps: `$f(${v.N[0]})=${v.N[1]},\\ f(${v.N[1]})=${v.N[2]},\\ f(${v.N[2]})=${v.N[3]},\\ f(${v.N[3]})=${v.N[4]},\\ f(${v.N[4]})=${v.N[5]}$ ⇒ $${v.tv[0].val}+${v.tv[1].val}=${v.ans.tex}$`, warning: '역함수 값은 f의 값이 아니라 f의 "입력"입니다. f⁻¹(b)=a 이면 f(a)=b 입니다.' }; },
+          quick: () => ({ steps: 'y=x에 닿을 때마다 <b>세로축의 값이 가로축의 값으로 옮겨집니다</b>. 앞으로는 위로, 거꾸로는 아래로 한 칸씩 이동합니다.', highlight: '(f∘f)⁻¹ = f⁻¹∘f⁻¹ : 거꾸로 두 번' })
+        },
+        view: (s, lab) => {
+          if (lab.tab !== 'explore') { const v = var3.cur(); return { chips: [{ html: `<b>${v.tv[0].val}</b> + <b>${v.tv[1].val}</b> = <b>${v.ans.tex}</b>`, color: 'amber', answer: true }] }; }
+          const back = s.f3m === 1, w = web(N, s.f3s, s.f3n, back), r2 = (x) => mn(Math.round(x * 100) / 100);
+          const names = back ? w.vals.map((_, i) => (i === 0 ? 'b' : `f⁻¹${i > 1 ? `×${i}` : ''}(b)`)) : w.vals.map((_, i) => (i === 0 ? 'x' : `f${i > 1 ? `^${i}` : ''}(x)`));
+          return {
+            chips: [{ html: `${back ? '거꾸로' : '앞으로'} : ${w.vals.map(r2).join(' → ')}`, color: back ? 'rose' : 'sky' }],
+            status: { tone: 'info', text: w.vals.length - 1 < s.f3n ? '정의역(치역) 밖으로 나가 여기서 멈춥니다' : `${s.f3n}번 ${back ? '거꾸로' : '앞으로'} 따라갔습니다` },
+            readouts: w.vals.map((x, i) => ({ label: names[i], value: r2(x), color: i === 0 ? 'ink' : back ? 'rose' : 'sky', note: i === 0 ? '출발 값' : '' }))
+          };
+        },
+        vary: var3,
+        draw: (b, s, v, lab) => {
+          if (lab.tab === 'explore') {
+            const back = s.f3m === 1, w = web(N, s.f3s, s.f3n, back); drawF3(b, N, [{ pts: w.pts, color: back ? 'rose' : 'amber' }], true); return;
+          }
+          const vv = var3.cur(), st = stepOf(lab, s), paths = [];
+          if (st >= 2) { const t = vv.tv[0]; paths.push({ pts: web(vv.N, t.start, t.n, t.back).pts, color: 'rose', label: String(t.val) }); }
+          if (st >= 3) { const t = vv.tv[1]; paths.push({ pts: web(vv.N, t.start, t.n, t.back).pts, color: 'amber', label: String(t.val) }); }
+          drawF3(b, vv.N, paths, false);
+        }
+      });
+    }
+
+    /* ======================== ④ 자기 자신이 역함수인 함수 f = f⁻¹ ======================== */
+    const rf = (a, b, c) => (x) => (a * x + b) / (x + c);
+    const rinv = (a, b, c) => (x) => (-c * x + b) / (x - a);
+    function drawRatCurve(b, f, p, o) { b.plot(f, { ...o, to: p - 1e-3 }); b.plot(f, { ...o, from: p + 1e-3 }); }
+    const rTex = (a, b, c) => `f(x)=\\dfrac{${lin(a, b)}}{${lin(1, c)}}`;
+    const T4 = [{ a: 1, b: 2, pts: [[2, 4], [-2, 0]] }];
+    for (const a of [-3, -2, -1, 1, 2, 3, 4]) for (const bb of [-6, -4, -3, -2, -1, 1, 2, 3, 4, 6]) {
+      const K = bb + a * a; if (K === 0 || Math.abs(K) > 12) continue;
+      const pts = []; for (let d = -12; d <= 12; d++) { if (d === 0 || K % d !== 0) continue; const x = a + d, y = a + K / d; if (Math.abs(x) <= 7 && Math.abs(y) <= 6) pts.push([x, y]); }
+      for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) if (pts[i][0] + pts[i][1] !== pts[j][0] + pts[j][1]) T4.push({ a, b: bb, pts: [pts[i], pts[j]] });
+    }
+    const var4 = varier((prev) => {
+      const it = !prev ? T4[0] : pickOf(T4.slice(1), prev.src), { a, b: bb, pts } = it, c = -a, K = bb + a * a, ans = a * bb * c;
+      return { src: it, a, b: bb, c, K, pts, ans: { tex: String(ans), val: ans } };
+    });
+    const text4 = (v) => `함수 ${tex('f(x)=\\dfrac{ax+b}{x+c}')}의 그래프가 두 점 ${tex(`(${v.pts[0][0]},\\,${v.pts[0][1]})`)}, ${tex(`(${v.pts[1][0]},\\,${v.pts[1][1]})`)}을 지나고 ${tex('f=f^{-1}')}이다. 상수 ${tex('a,\\,b,\\,c')}에 대하여 ${tex('abc')}의 값을 구하시오.`;
+    const steps4 = () => {
+      const v = var4.cur(), [p1, p2] = v.pts, num = p1[0] * p1[1] - p2[0] * p2[1], den = p1[0] + p1[1] - p2[0] - p2[1];
+      return [
+        `$f=f^{-1}$이면 그래프가 직선 $y=x$에 대하여 대칭입니다. $f$의 점근선 $x=-c$, $y=a$의 교점 $(-c,\\,a)$가 $y=x$ 위에 있어야 하므로 $-c=a$, 곧 $c=-a$입니다.`,
+        `$f(x)=\\dfrac{ax+b}{x-a}=a+\\dfrac{K}{x-a}$ ($K=b+a^2$)이므로 $(x-a)(y-a)=K$.`,
+        `두 점을 대입하면 $(${p1[0]}-a)(${p1[1]}-a)=(${p2[0]}-a)(${p2[1]}-a)$. $a^2$이 소거되어 $${p1[0] * p1[1]}-${p1[0] + p1[1]}a=${p2[0] * p2[1]}-${p2[0] + p2[1]}a$ ⇒ $a=\\dfrac{${num}}{${den}}=${v.a}$`,
+        `$K=(${p1[0]}-${v.a})(${p1[1]}-${v.a})=${v.K}$ ⇒ $b=K-a^2=${v.b}$, $c=-a=${v.c}$ ⇒ $abc=${v.ans.tex}$`
+      ].map((x) => x.replace(/--/g, '+'));
+    };
+    function sceneF4() {
+      const reset = (s) => { s.f4a = 1; s.f4b = 2; s.f4c = -2; s.f4u = 3; };
+      return scene({
+        id: 'b9-4', title: '[B9] 자기 자신이 역함수 — f = f⁻¹ 이려면', short: 'f=f⁻¹ (y=x 대칭)',
+        question: '어떤 함수의 그래프가 y=x에 대칭이면 그 함수는 자기 자신의 역함수일까?',
+        guide: '점 <b>P</b>를 끌어 보세요. 역함수의 그래프(초록 점선)는 <b>y=x에 대칭인 점 Q</b>로 그립니다. <b>a, b, c</b>를 바꿔 <b>f와 f⁻¹이 완전히 겹치는 순간</b>을 찾아 보세요. 겹칠 때 점근선의 교점이 직선 <b>y=x 위</b>에 놓입니다.',
+        enter: reset, focus: { x: [-8, 8], y: [-6.5, 7.5] },
+        controls: () => ['f4a', 'f4b', 'f4c'],
+        presets: () => [{ group: '바로 가기', label: 'f ≠ f⁻¹ (a=1, b=2, c=−2)', apply: (s) => { s.f4a = 1; s.f4b = 2; s.f4c = -2; } }, { group: '바로 가기', label: 'f = f⁻¹ (a=2, b=3, c=−2)', color: 'green', apply: (s) => { s.f4a = 2; s.f4b = 3; s.f4c = -2; } }, { group: '바로 가기', label: 'f = f⁻¹ (a=−1, b=2, c=1)', color: 'green', apply: (s) => { s.f4a = -1; s.f4b = 2; s.f4c = 1; } }],
+        steps: steps4,
+        reviewTop: () => probBox(text4(var4.cur())),
+        problem: { tag: '23 고1 11월 경기 15번 · 24 제일고 기출 유형 (자기 역함수)', time: '목표 시간: 25초', text: () => probHTML(text4(var4.cur())), answer: () => tex(var4.cur().ans.tex) },
+        solution: {
+          standardTitle: '역함수를 구해서', standardTag: '기본 풀이', quickTitle: '점근선의 교점이 y=x 위', quickTag: '10초 컷',
+          standard: () => { const v = var4.cur(); return { steps: `$f^{-1}(x)=\\dfrac{-cx+b}{x-a}$ 와 $f(x)=\\dfrac{ax+b}{x+c}$ 가 같으려면 $c=-a$. 두 점을 대입해 $a=${v.a}$, $b=${v.b}$ ⇒ $abc=${v.ans.tex}$`, warning: 'c=−a 만으로는 부족합니다. a와 b는 지나는 두 점으로 정해집니다.' }; },
+          quick: () => ({ steps: '자기 역함수 ⇔ 그래프가 y=x에 대칭 ⇔ <b>점근선의 교점이 y=x 위</b> ⇔ $-c=a$. 이 조건으로 미지수 하나를 먼저 줄입니다.', highlight: '(x−a)(y−a)=K 로 쓰면 두 점의 대입에서 a² 항이 사라집니다.' })
+        },
+        view: (s, lab) => {
+          if (lab.tab !== 'explore') { const v = var4.cur(); return { chips: [{ tex: `a=${v.a},\\ b=${v.b},\\ c=${v.c}`, color: 'amber', answer: true }] }; }
+          const { f4a: a, f4b: bb, f4c: c } = s, det = a * c - bb, same = a + c === 0, flat = det === 0;
+          return {
+            chips: [{ tex: flat ? `f(x)=${mn(a)}\\ (\\text{상수})` : rTex(a, bb, c), color: 'sky' }, { tex: flat ? '' : `f^{-1}(x)=\\dfrac{${lin(-c, bb)}}{${lin(1, -a)}}`, color: 'green' }].filter((x) => x.tex),
+            status: { tone: flat ? 'warn' : same ? 'key' : 'info', text: flat ? '분자가 분모의 배수 — 상수함수(역함수 없음)' : same ? 'f = f⁻¹ ! 점근선의 교점이 y=x 위' : `a + c = ${mn(a + c)} ≠ 0 — f와 f⁻¹은 다릅니다` },
+            readouts: [
+              { label: 'f의 점근선', value: `x = ${mn(-c)},  y = ${mn(a)}`, color: 'sky' },
+              { label: 'f⁻¹의 점근선', value: `x = ${mn(a)},  y = ${mn(-c)}`, color: 'green', note: 'x와 y가 서로 바뀜' },
+              { label: '자기 역함수 조건', value: same ? 'a + c = 0 ✓' : `a + c = ${mn(a + c)}`, color: same ? 'green' : 'rose', wide: true, note: 'f(x)=f⁻¹(x) 이려면 a+c=0' }
+            ]
+          };
+        },
+        vary: var4,
+        draw: (b, s, v, lab) => {
+          axesOf(b);
+          const vb = b.viewBox();
+          if (lab.tab === 'explore') {
+            const { f4a: a, f4b: bb, f4c: c } = s, det = a * c - bb, same = a + c === 0;
+            b.vline(-c, { color: 'amber', dash: [5, 5], width: 1.3, alpha: 0.55 }); b.hline(a, { color: 'rose', dash: [5, 5], width: 1.3, alpha: 0.55 });
+            b.line([0, 0], 1, { color: 'violet', dash: [7, 5], width: 2 }); b.text([Math.min(vb.x1, vb.y1) - 0.9, Math.min(vb.x1, vb.y1) - 0.9], 'y=x', { color: 'violet', size: 13, align: 'right', dy: 14 });
+            if (det === 0) { b.hline(a, { color: 'sky', width: 3.4 }); return; }
+            drawRatCurve(b, rinv(a, bb, c), a, { color: 'green', width: 3.2, dash: [8, 4] });
+            drawRatCurve(b, rf(a, bb, c), -c, { color: 'sky', width: same ? 4.4 : 3.6, glow: true });
+            let u = s.f4u; if (Math.abs(u + c) < 0.3) u = -c + (u >= -c ? 0.3 : -0.3);
+            const P = [u, rf(a, bb, c)(u)], Q = [P[1], P[0]];
+            b.seg(P, Q, { color: 'muted', dash: [3, 4], width: 1.5 });
+            if (Math.abs(Q[0]) < 30) b.point(Q, { r: 5, color: 'green', label: 'Q', dx: 9, dy: 14, size: 13 });
+            b.handle('P', P, { color: 'amber', r: 7, label: 'P', dx: 10, dy: -10, size: 13, ariaLabel: '곡선 위의 점 P (끌어서 이동)', drag: (w) => { s.f4u = clamp(w.x, -9, 9); } });
+            return;
+          }
+          const vv = var4.cur(), st = stepOf(lab, s);
+          drawRatCurve(b, rf(vv.a, vv.b, vv.c), -vv.c, { color: 'sky', width: 3.6, glow: true });
+          vv.pts.forEach((p, i) => b.point(p, { r: 5.5, color: 'amber', label: `(${p[0]}, ${p[1]})`.replace(/-/g, '−'), dx: p[0] >= vv.a ? 10 : -10, dy: p[1] >= vv.a ? -12 : 16, align: p[0] >= vv.a ? 'left' : 'right', size: 13 }));
+          if (st >= 1) { b.line([0, 0], 1, { color: 'violet', dash: [7, 5], width: 2 }); b.vline(vv.a, { color: 'amber', dash: [5, 5], width: 1.6 }); b.hline(vv.a, { color: 'rose', dash: [5, 5], width: 1.6 }); b.point([vv.a, vv.a], { r: 6, color: 'violet', label: `(${String(vv.a).replace('-', '−')}, ${String(vv.a).replace('-', '−')})`, dx: vv.a > 0 ? -10 : 10, dy: vv.a > 0 ? 18 : -14, align: vv.a > 0 ? 'right' : 'left', size: 13 }); }
+        }
+      });
+    }
+
+    /* ======================== ⑤ 두 식 중 하나를 골라 일대일 만들기 ======================== */
+    const ruleA = (P, x) => -x * x + P.al, ruleB = (P, x) => -P.k * x;
+    function valid5(P) { // 모든 배정의 일대일 여부
+      const n = P.X.length, out = [];
+      for (let m = 0; m < 1 << n; m++) { const vals = P.X.map((x, i) => ((m >> i) & 1 ? ruleB(P, x) : ruleA(P, x))); if (new Set(vals).size === n) out.push(m); }
+      return out;
+    }
+    const mask2s = (P, m) => P.X.map((_, i) => ((m >> i) & 1 ? 'B' : 'A')).join('');
+    const P5_0 = { X: [1, 2, 3, 4], al: 5, k: 4 };
+    const P5L = [];
+    {
+      const pool = [-3, -2, -1, 1, 2, 3, 4, 5];
+      for (let t = 0; t < 400; t++) {
+        const X = []; const bag = pool.slice(); while (X.length < 4) X.push(bag.splice(rint(bag.length), 1)[0]); X.sort((a, b) => a - b);
+        const P = { X, al: [3, 4, 5, 6, 8][rint(5)], k: [2, 3, 4, 5][rint(4)] }, n = valid5(P).length;
+        if (n >= 3 && n <= 10) P5L.push(P);
+      }
+    }
+    const var5 = varier((prev) => { const P = !prev ? P5_0 : pickOf(P5L, prev.P), ok = valid5(P); return { P, ok, ans: { tex: String(ok.length), val: ok.length } }; });
+    const text5 = (v) => `집합 ${tex(`X=\\{${v.P.X.join(',\\,')}\\}`)}에서 정의된 함수 ${tex('f')}가 각 ${tex('x\\in X')}에 대하여 ${tex(`f(x)=-x^2${addT(v.P.al)}`)} 또는 ${tex(`f(x)=-${v.P.k}x`)} 중 하나의 값을 갖는다. ${tex('f')}가 일대일함수가 되도록 하는 함수 ${tex('f')}의 개수를 구하시오.`;
+    function layout5(P) {
+      const vals = [...new Set(P.X.flatMap((x) => [ruleA(P, x), ruleB(P, x)]))].sort((a, b) => b - a), m = vals.length;
+      const xr = P.X.map((_, i) => 6.4 - i * (5.2 / Math.max(1, P.X.length - 1))), vr = vals.map((_, i) => 7.2 - i * (6.4 / Math.max(1, m - 1)));
+      return { vals, xr, vr, yOf: (v) => vr[vals.indexOf(v)] };
+    }
+    function drawF5(b, P, choice, opt) { // choice[i] = 0(A) / 1(B) / -1(고르지 않음)
+      const L = layout5(P), xc = 2.4, vc = 7.8;
+      b.poly([[xc - 0.95, 7.4], [xc + 0.95, 7.4], [xc + 0.95, 0.4], [xc - 0.95, 0.4]], { color: 'muted', dash: [4, 4], width: 1.4, fill: 'muted', fillAlpha: 0.07, alpha: 0.7 });
+      b.poly([[vc - 0.95, 7.9], [vc + 0.95, 7.9], [vc + 0.95, 0.0], [vc - 0.95, 0.0]], { color: 'muted', dash: [4, 4], width: 1.4, fill: 'muted', fillAlpha: 0.07, alpha: 0.7 });
+      b.text([xc, 7.4], 'X', { size: 15, dy: -12, weight: 800 }); b.text([vc, 7.9], 'f(x)의 값', { size: 14, dy: -12, weight: 800 });
+      const cnt = {}; choice.forEach((c, i) => { if (c >= 0) { const v = c ? ruleB(P, P.X[i]) : ruleA(P, P.X[i]); cnt[v] = (cnt[v] || 0) + 1; } });
+      P.X.forEach((x, i) => [0, 1].forEach((r) => {
+        const v = r ? ruleB(P, x) : ruleA(P, x), p = [xc + 0.45, L.xr[i]], q = [vc - 0.5, L.yOf(v)], u = [q[0] - p[0], q[1] - p[1]], d = Math.hypot(u[0], u[1]);
+        const picked = choice[i] === r, bad = picked && cnt[v] > 1, col = bad ? 'red' : r ? 'green' : 'sky';
+        if (!opt.all && !picked) return;
+        arrowTo(b, p, [q[0] - (u[0] / d) * 0.05, q[1] - (u[1] / d) * 0.05], { color: col, width: picked ? 3.4 : 1.6, alpha: picked ? 1 : 0.55, glow: picked });
+      }));
+      P.X.forEach((x, i) => { const p = [xc, L.xr[i]]; b.point(p, { r: 15, hollow: true, color: 'ink', glow: false }); b.text(p, String(x).replace('-', '−'), { size: 14, baseline: 'middle', halo: false, weight: 800 }); });
+      L.vals.forEach((v, i) => { const p = [vc, L.vr[i]], bad = cnt[v] > 1, on = cnt[v] === 1; b.point(p, { r: 17, hollow: true, color: bad ? 'red' : on ? 'green' : 'ink', glow: false }); b.text(p, String(v).replace('-', '−'), { size: 13, baseline: 'middle', halo: false, weight: 800, color: bad ? 'red' : on ? 'green' : 'ink' }); });
+      if (opt.rules) { b.text([5.1, 7.9], 'A: −x²+' + P.al, { color: 'sky', size: 13, dy: -12 }); b.text([5.1, 7.4], 'B: −' + P.k + 'x', { color: 'green', size: 13, dy: -12 }); }
+    }
+    const steps5 = () => {
+      const v = var5.cur(), P = v.P, tbl = P.X.map((x) => `$x=${x}$: A $${ruleA(P, x)}$ / B $${ruleB(P, x)}$`).join(', ');
+      const conf = []; P.X.forEach((x, i) => P.X.forEach((y, j) => { if (i < j) [[0, 0], [0, 1], [1, 0], [1, 1]].forEach(([r, s2]) => { const v1 = r ? ruleB(P, x) : ruleA(P, x), v2 = s2 ? ruleB(P, y) : ruleA(P, y); if (v1 === v2) conf.push(`($x=${x}$:${r ? 'B' : 'A'}, $x=${y}$:${s2 ? 'B' : 'A'}) 모두 ${v1}`); }); }));
+      return [
+        `각 원소의 두 후보값을 구합니다. ${tbl}.`,
+        conf.length ? `같은 값이 되는 선택(충돌): ${conf.join(' ; ')}. 이 두 선택을 동시에 하면 일대일이 아닙니다.` : '충돌하는 선택이 없어 모든 배정이 일대일입니다.',
+        `충돌을 피하는 선택을 모두 세면 ${v.ok.map((m) => mask2s(P, m)).join(', ')} (순서: ${P.X.join(',')} 의 선택) ⇒ <b>${v.ans.tex}개</b>`.replace(/<\/?b>/g, '')
+      ];
+    };
+    function sceneF5() {
+      const reset = (s) => { s.b5 = [0, 0, 0, 0]; };
+      const P = P5_0;
+      return scene({
+        id: 'b9-5', title: '[B9] 두 식 중 하나를 골라 일대일 만들기', short: '두 식 중 하나 선택',
+        question: '각 원소마다 두 식 중 하나를 고를 때, 두 화살표가 같은 값에 꽂히지 않게 하려면?',
+        guide: '원소마다 <b>A(−x²+5)</b>와 <b>B(−4x)</b> 중 하나를 고르세요. 두 화살표가 <b>같은 값으로 모이면 빨강</b>이 되어 일대일이 깨집니다. 「전체 보기」로 두 후보 화살표를 모두 확인하고, 일대일이 되는 선택이 몇 가지인지 아래에서 읽으세요.',
+        enter: reset, focus: { x: [0, 10], y: [0, 8.6] },
+        controls: () => [],
+        presets: (s) => [
+          ...P.X.flatMap((x, i) => [{ group: `x = ${x}`, label: `A (${ruleA(P, x)})`, color: 'sky', apply: (st) => { st.b5 = st.b5.slice(); st.b5[i] = 0; }, on: (st) => st.b5[i] === 0 }, { group: `x = ${x}`, label: `B (${ruleB(P, x)})`, color: 'green', apply: (st) => { st.b5 = st.b5.slice(); st.b5[i] = 1; }, on: (st) => st.b5[i] === 1 }]),
+          { group: '도움', label: '두 후보 모두 보기', apply: (st) => { st.b5all = !st.b5all; }, on: (st) => !!st.b5all }
+        ],
+        steps: steps5,
+        reviewTop: () => probBox(text5(var5.cur())),
+        problem: { tag: '23 고1 11월 경기 29번 유형 (두 식 중 선택하는 일대일함수)', time: '목표 시간: 40초', text: () => probHTML(text5(var5.cur())), answer: () => tex(var5.cur().ans.tex) },
+        solution: {
+          standardTitle: '충돌 피하기', standardTag: '기본 풀이', quickTitle: '충돌 쌍을 먼저 찾기', quickTag: '핵심',
+          standard: () => { const v = var5.cur(); return { steps: `충돌하는 선택을 피하는 배정: ${v.ok.map((m) => mask2s(v.P, m)).join(', ')} ⇒ ${v.ans.tex}개`, warning: '한 원소의 A와 B가 같은 값이 되는 경우, 같은 값을 갖는 서로 다른 원소의 선택도 함께 확인하세요.' }; },
+          quick: () => ({ steps: '두 후보 화살표가 <b>같은 값 칸</b>에 모이는 쌍을 먼저 표시하면, 그 쌍을 동시에 고르지 않는 경우만 세면 됩니다.', highlight: '2ⁿ가지 배정을 다 쓰지 말고 충돌 쌍으로 걸러내세요.' })
+        },
+        view: (s, lab) => {
+          if (lab.tab !== 'explore') { const v = var5.cur(); return { chips: [{ html: `일대일인 선택 <b>${v.ans.tex}가지</b>`, color: 'amber', answer: true }] }; }
+          const ch = s.b5, vals = ch.map((c, i) => (c ? ruleB(P, P.X[i]) : ruleA(P, P.X[i]))), dup = vals.some((v, i) => vals.indexOf(v) !== i), ok = valid5(P);
+          return {
+            chips: [{ html: `f = (${vals.map((v) => String(v).replace('-', '−')).join(', ')})`, color: dup ? 'rose' : 'green' }],
+            status: { tone: dup ? 'warn' : 'ok', text: dup ? '같은 값이 두 번 — 일대일이 아닙니다' : '모든 값이 서로 다름 — 일대일입니다' },
+            readouts: [
+              { label: '지금 선택', value: ch.map((c) => (c ? 'B' : 'A')).join(' '), color: 'ink', note: `x = ${P.X.join(', ')}` },
+              { label: '일대일인 선택의 수', value: `${ok.length}가지 (전체 ${1 << P.X.length}가지 중)`, color: 'amber', wide: true, note: ok.map((m) => mask2s(P, m)).join(' · ') }
+            ]
+          };
+        },
+        vary: var5,
+        draw: (b, s, v, lab) => {
+          if (lab.tab === 'explore') { drawF5(b, P, s.b5, { all: !!s.b5all, rules: true }); return; }
+          const vv = var5.cur(), st = stepOf(lab, s), ch = vv.P.X.map(() => -1);
+          drawF5(b, vv.P, ch, { all: true, rules: true });
+          if (st >= 2) { /* 충돌 값 강조 */ const L = layout5(vv.P); const m = {}; vv.P.X.forEach((x) => [ruleA(vv.P, x), ruleB(vv.P, x)].forEach((val) => { m[val] = (m[val] || 0) + 1; })); L.vals.forEach((val, i) => { if (m[val] > 1) b.point([7.8, L.vr[i]], { r: 21, hollow: true, color: 'red', glow: false }); }); }
+        }
+      });
+    }
+
+    return [sceneF1(), sceneF2(), sceneF3(), sceneF4(), sceneF5()];
+  })();
+  Object.assign(params, {
+    f2a: { value: 0, min: -5, max: 4, step: 0.5, color: 'amber', label: 'a (두 기울기를 함께 바꿈)', hint: '기울기 2−a 와 2a+5', format: (v) => (Math.round(v * 100) / 100).toString().replace('-', '−') },
+    f3s: { value: 1, min: 1, max: 8, step: 0.05, color: 'amber', label: '시작 값', hint: '앞으로는 정의역 [1, 7], 거꾸로는 치역 [2, 8] 안에서', format: (v) => (Math.round(v * 100) / 100).toString() },
+    f4a: { value: 1, min: -4, max: 4, step: 1, color: 'rose', label: 'a (분자의 x 계수)', hint: '수평 점근선 y = a', format: (v) => String(v).replace('-', '−') },
+    f4b: { value: 2, min: -8, max: 8, step: 1, color: 'sky', label: 'b (분자의 상수항)', format: (v) => String(v).replace('-', '−') },
+    f4c: { value: -2, min: -4, max: 4, step: 1, color: 'amber', label: 'c (분모의 상수항)', hint: '수직 점근선 x = −c', format: (v) => String(v).replace('-', '−') }
+  });
+  groups[0].scenes.push(...B9);
+
   APLab.createLab({
     id: 'common-functions',
     title: '합성함수 · 유리 · 무리함수',
