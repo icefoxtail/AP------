@@ -261,17 +261,17 @@ window.addEventListener('DOMContentLoaded', function () {
         source: '두 지수함수의 그래프와 원점을 지나는 직선',
         params: { ratioK: 2, tVal: 1.0 },
         snapParams: { ratioK: 2, tVal: 1.0 },
-        problem: '원점 $O$를 지나는 직선이 두 곡선 $y = a^x$, $y = b^x$ ($1 < b < a$)와 제1사분면에서 만나는 점을 각각 $P, Q$라 하자. 점 $P$가 선분 $OQ$의 중점($\\overline{OP}:\\overline{PQ}=1:1$)이고 점 $P$의 $x$좌표가 $1$, $y$좌표가 $2$일 때, $a + b^2$의 값을 구하시오.',
+        problem: '원점 $O$를 지나는 직선이 두 곡선 $y = a^x$, $y = b^x$ ($1 < b < a$)와 제1사분면에서 만나는 점을 각각 $P, Q$라 하자. 점 $P$가 선분 $OQ$의 중점($\\overline{OP}:\\overline{PQ}=1:1$)이고 점 $P$의 $x$좌표가 $1$, $y$좌표가 $3$일 때, $a + b^2$의 값을 구하시오.',
         textbookTitle: '직선의 방정식을 구하여 연립하기',
         textbookSteps: [
-          '1) 점 $P(1, 2)$가 $y = a^x$ 위의 점이므로 $a^1 = 2 \\implies a = 2$.',
-          '2) 원점과 $P(1,2)$를 지나는 직선은 $y = 2x$이고, $P$가 $\\overline{OQ}$의 중점이므로 $Q(2, 4)$이다.',
-          '3) $Q(2, 4)$를 $y = b^x$에 대입하면 $b^2 = 4$이므로 $a + b^2 = 2 + 4 = 6$.'
+          '1) 점 $P(1, 3)$이 $y = a^x$ 위의 점이므로 $a^1 = 3 \\implies a = 3$.',
+          '2) 원점과 $P(1,3)$을 지나는 직선은 $y = 3x$이고, $P$가 $\\overline{OQ}$의 중점이므로 $Q(2, 6)$이다.',
+          '3) $Q(2, 6)$을 $y = b^x$에 대입하면 $b^2 = 6$ ($b=\\sqrt6$, $1<b<a$)이므로 $a + b^2 = 3 + 6 = 9$.'
         ],
         secretTitle: 'OP : OQ = 1 : k이면 Q의 좌표는 P의 좌표의 k배',
         secretSteps: [
           '원점을 지나는 직선 위의 점은 $x$좌표와 $y$좌표가 같은 비율로 변합니다. $P$가 $\\overline{OQ}$의 중점이면 $Q$의 좌표는 $P$의 좌표의 $2$배인 $(2t, 2y_P)$입니다.',
-          '$P(t, a^t)$이면 $Q(2t, 2a^t)$이고, 이 점이 곡선 $y=b^x$ 위에 있으므로 $b^{2t} = 2a^t$입니다. 이 문제에서는 $t=1$, $a=2$이므로 $b^2 = 4$입니다.'
+          '$P(t, a^t)$이면 $Q(2t, 2a^t)$이고, 이 점이 곡선 $y=b^x$ 위에 있으므로 $b^{2t} = 2a^t$입니다. 이 문제에서는 $t=1$, $a=3$이므로 $b^2 = 6$이고 $a + b^2 = 9$입니다.'
         ]
       },
       {
@@ -512,7 +512,7 @@ window.addEventListener('DOMContentLoaded', function () {
     ['$\\overline{AB}=2\\sqrt{5}$', '$S=6$'],
     ['$k=6$, 삼각형 $OAB$의 넓이 $6$', '$\\overline{AB}=2\\sqrt{2}$'],
     ['$x_1x_2=1$, $t=2$', '자연수 $t$의 합 $6$, $x_1+x_2=\\log_2 12$'],
-    ['$a+b^2=6$', '$y_P+y_Q=6$ ($y_P=2,\\ y_Q=4$)'],
+    ['$a+b^2=9$', '$y_P+y_Q=6$ ($y_P=2,\\ y_Q=4$)'],
     ['$P>Q>R$, $\\dfrac{P}{R}=2$', '$S_{\\text{trap}}-S_{\\text{mid}}=2$ ($S_{\\text{trap}}>S_{\\text{mid}}$)'],
     ['$k=6$', '$14$개'],
     ['$\\alpha+\\beta=3$, $2^{2\\alpha}+2^{2\\beta}=20$', '정수 $p=5,\\ 6$ / $p=6$이면 두 근의 곱 $6$, 판별식 $1$']
@@ -1712,7 +1712,7 @@ function solveExpLineIntersection(k, shift = 0) {
       ]
     };
   }
-  VARS[4][0] = [v5a(2, 1, true), v5a(3, 1), v5a(4, 1), v5a(3, 2), v5a(4, 2), v5a(5, 1)];
+  VARS[4][0] = [v5a(3, 1, true), v5a(4, 1), v5a(5, 1), v5a(3, 2), v5a(4, 2), v5a(6, 1)];
   function v5b(n, ask, orig) { // OP:OQ = 1:n, P=(1,a), Q=(n, n·a), a^(n-1) = n
     const a = Math.pow(n, 1 / (n - 1)), yP = n === 2 ? '2' : '\\sqrt{3}', yQ = n === 2 ? '4' : '3\\sqrt{3}';
     const val = ask === 'sum' ? (n === 2 ? '6' : '4\\sqrt{3}') : (n === 2 ? '2' : '2\\sqrt{3}');
