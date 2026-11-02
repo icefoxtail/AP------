@@ -29,12 +29,12 @@
     "precedence": "source + verified final solution → RPM Primary path → this crosswalk → current ACTIVE canonical/binding validation"
   },
   "summary": {
-    "recordCount": 272,
-    "DIRECT_ACTIVE": 196,
-    "FAMILY_ACTIVE": 15,
-    "DIRECT_BINDING_GAP": 28,
+    "recordCount": 284,
+    "DIRECT_ACTIVE": 210,
+    "FAMILY_ACTIVE": 16,
+    "DIRECT_BINDING_GAP": 26,
     "FAMILY_BINDING_GAP": 5,
-    "RPM_ONLY": 28,
+    "RPM_ONLY": 27,
     "byScope": {
       "수학_상": {
         "DIRECT_ACTIVE": 57,
@@ -44,11 +44,11 @@
         "RPM_ONLY": 9
       },
       "수학_하": {
-        "DIRECT_ACTIVE": 42,
-        "FAMILY_ACTIVE": 3,
-        "DIRECT_BINDING_GAP": 3,
+        "DIRECT_ACTIVE": 56,
+        "FAMILY_ACTIVE": 4,
+        "DIRECT_BINDING_GAP": 1,
         "FAMILY_BINDING_GAP": 1,
-        "RPM_ONLY": 5
+        "RPM_ONLY": 4
       },
       "공통수학1": {
         "DIRECT_ACTIVE": 48,
@@ -3172,8 +3172,29 @@
       },
       "standardUnitKey": "H15-SB-04",
       "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "problemTypeLabelKo": "함수의 최댓값·최솟값",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+          "templateLabelKo": "거리·넓이·둘레의 최댓값·최솟값"
+        },
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+          "templateLabelKo": "구간 끝점과 함수의 최댓값·최솟값"
+        }
+      ],
+      "selectionRule": "최대·최소를 구하는 대상이 구간 끝점의 함숫값인지, 거리·넓이·둘레 같은 도형의 양인지에 따라 listed template 선택",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-04",
+        "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      }
     },
     {
       "id": "H1-RPM-114",
@@ -3272,13 +3293,20 @@
       },
       "standardUnitKey": "H15-SB-05",
       "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
-      "mappingStatus": "DIRECT_BINDING_GAP",
+      "mappingStatus": "DIRECT_ACTIVE",
       "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
       "problemTypeLabelKo": "정의역·공역·치역",
       "ownerPack": "FUNCTIONS_GRAPHS",
       "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
       "templateLabelKo": "정의역·치역 직접 구하기",
-      "bindingStatus": "MISSING"
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+        "ownerPack": "H1_ORIGINAL_SOURCE"
+      }
     },
     {
       "id": "H1-RPM-118",
@@ -3365,13 +3393,20 @@
       },
       "standardUnitKey": "H15-SB-05",
       "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
-      "mappingStatus": "DIRECT_BINDING_GAP",
+      "mappingStatus": "DIRECT_ACTIVE",
       "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
       "problemTypeLabelKo": "함수 그래프의 교점",
       "ownerPack": "FUNCTIONS_GRAPHS",
       "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
       "templateLabelKo": "두 함수 그래프의 교점",
-      "bindingStatus": "MISSING"
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      }
     },
     {
       "id": "H1-RPM-122",
@@ -7405,6 +7440,342 @@
         "standardCourse": "공통수학2",
         "standardUnitKey": "H22-C2-09",
         "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      }
+    },
+    {
+      "id": "H1-RPM-273",
+      "curriculum": "2015",
+      "scope": "수학_하",
+      "standardCourse": "수학(하)",
+      "rpmPath": {
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "합성함수",
+        "l4": "합성함수 계산"
+      },
+      "standardUnitKey": "H15-SB-03",
+      "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_ITERATED_COMPOSITION",
+      "problemTypeLabelKo": "반복합성",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_ITERATION_PERIOD",
+      "templateLabelKo": "반복합성의 주기",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      }
+    },
+    {
+      "id": "H1-RPM-274",
+      "curriculum": "2015",
+      "scope": "수학_하",
+      "standardCourse": "수학(하)",
+      "rpmPath": {
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "합성함수",
+        "l4": "합성함수 계산"
+      },
+      "standardUnitKey": "H15-SB-03",
+      "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_INVERSE_COMPOSITION",
+      "problemTypeLabelKo": "역함수와 합성함수",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_INVERSE_COMPOSITION_VALUE",
+      "templateLabelKo": "역함수와 합성함수의 값 계산",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      }
+    },
+    {
+      "id": "H1-RPM-275",
+      "curriculum": "2015",
+      "scope": "수학_하",
+      "standardCourse": "수학(하)",
+      "rpmPath": {
+        "majorUnit": "함수",
+        "midUnit": "무리함수",
+        "l3": "정의역과 치역",
+        "l4": "그래프 위치"
+      },
+      "standardUnitKey": "H15-SB-05",
+      "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "problemTypeLabelKo": "함수의 최댓값·최솟값",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "templateLabelKo": "구간 끝점과 함수의 최댓값·최솟값",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      }
+    },
+    {
+      "id": "H1-RPM-276",
+      "curriculum": "2015",
+      "scope": "수학_하",
+      "standardCourse": "수학(하)",
+      "rpmPath": {
+        "majorUnit": "함수",
+        "midUnit": "무리함수",
+        "l3": "무리함수의 그래프",
+        "l4": "평행이동"
+      },
+      "standardUnitKey": "H15-SB-05",
+      "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "problemTypeLabelKo": "함수 그래프와 도형",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+      "templateLabelKo": "그래프와 직선으로 둘러싸인 넓이",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      }
+    },
+    {
+      "id": "H1-RPM-277",
+      "curriculum": "2015",
+      "scope": "수학_하",
+      "standardCourse": "수학(하)",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "조합",
+        "l3": "조합의 뜻과 계산",
+        "l4": "조합 계산"
+      },
+      "standardUnitKey": "H15-SB-08",
+      "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "problemTypeLabelKo": "조합·중복조합",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+      "templateLabelKo": "순열·조합 관계로 매개변수 결정",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-08",
+        "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
+        "ownerPack": "H1_FOUNDATION"
+      }
+    },
+    {
+      "id": "H1-RPM-278",
+      "curriculum": "2015",
+      "scope": "수학_하",
+      "standardCourse": "수학(하)",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "경우의 수와 순열",
+        "l3": "합·곱의 법칙",
+        "l4": "단계별 선택"
+      },
+      "standardUnitKey": "H15-SB-06",
+      "subUnitKey": "H15-SB-06-COUNTING_APPLICATION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "problemTypeLabelKo": "경우의 수의 합·곱 법칙",
+      "ownerPack": "H1_FOUNDATION",
+      "templateKey": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+      "templateLabelKo": "경로·그래프·색칠 경우의 수",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-06",
+        "subUnitKey": "H15-SB-06-COUNTING_APPLICATION",
+        "ownerPack": "H1_FOUNDATION"
+      }
+    },
+    {
+      "id": "H1-RPM-279",
+      "curriculum": "2015",
+      "scope": "수학_하",
+      "standardCourse": "수학(하)",
+      "rpmPath": {
+        "majorUnit": "함수",
+        "midUnit": "유리함수",
+        "l3": "점근선과 위치",
+        "l4": "그래프의 사분면"
+      },
+      "standardUnitKey": "H15-SB-04",
+      "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+      "problemTypeLabelKo": "함수 그래프와 사분면",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+      "templateLabelKo": "매개변수에 따른 사분면 조건",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-04",
+        "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      }
+    },
+    {
+      "id": "H1-RPM-280",
+      "curriculum": "2015",
+      "scope": "수학_하",
+      "standardCourse": "수학(하)",
+      "rpmPath": {
+        "majorUnit": "함수",
+        "midUnit": "무리함수",
+        "l3": "무리함수의 활용",
+        "l4": "식 결정"
+      },
+      "standardUnitKey": "H15-SB-05",
+      "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_FUNCTION_RECOVERY",
+      "problemTypeLabelKo": "함수식 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH",
+      "templateLabelKo": "그래프의 특징으로 함수식 구하기",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      }
+    },
+    {
+      "id": "H1-RPM-281",
+      "curriculum": "2015",
+      "scope": "수학_하",
+      "standardCourse": "수학(하)",
+      "rpmPath": {
+        "majorUnit": "함수",
+        "midUnit": "무리함수",
+        "l3": "무리함수의 활용",
+        "l4": "무리함수의 교점"
+      },
+      "standardUnitKey": "H15-SB-05",
+      "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "problemTypeLabelKo": "함수 그래프와 도형",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+      "templateLabelKo": "그래프와 직선으로 둘러싸인 넓이",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      }
+    },
+    {
+      "id": "H1-RPM-282",
+      "curriculum": "2015",
+      "scope": "수학_하",
+      "standardCourse": "수학(하)",
+      "rpmPath": {
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "역함수",
+        "l4": "그래프 대칭"
+      },
+      "standardUnitKey": "H15-SB-03",
+      "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "problemTypeLabelKo": "역함수의 그래프",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "templateLabelKo": "함수와 역함수의 교점·접점",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      }
+    },
+    {
+      "id": "H1-RPM-283",
+      "curriculum": "2015",
+      "scope": "수학_하",
+      "standardCourse": "수학(하)",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "경우의 수와 순열",
+        "l3": "순열",
+        "l4": "일렬 배열"
+      },
+      "standardUnitKey": "H15-SB-07",
+      "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "problemTypeLabelKo": "순열",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
+      "templateLabelKo": "사전식 순열 순위·역순위",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+        "ownerPack": "H1_FOUNDATION"
+      }
+    },
+    {
+      "id": "H1-RPM-284",
+      "curriculum": "2015",
+      "scope": "수학_하",
+      "standardCourse": "수학(하)",
+      "rpmPath": {
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수"
+      },
+      "standardUnitKey": "H15-SB-03",
+      "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "problemTypeLabelKo": "함수의 개수",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+      "templateLabelKo": "증가·감소 조건이 있는 함수의 개수",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
         "ownerPack": "FUNCTIONS_GRAPHS"
       }
     }

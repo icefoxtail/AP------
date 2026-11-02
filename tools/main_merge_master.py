@@ -209,6 +209,16 @@ def _crosswalk_scope_matches(row: dict, scope: str) -> bool:
     return bool(wanted) and wanted in {_compact_scope(row.get("scope")), _compact_scope(row.get("standardCourse"))}
 
 
+def _crosswalk_row_offers_template(row: dict, template_key: str) -> bool:
+    """The row maps the question's TPL: its own `templateKey`, or - for a FAMILY_ACTIVE row of the same PT, which lists the
+    templates the decisive step may select (Resolver `familyTemplateSelection`) - one of its `templateCandidates`."""
+    if row.get("templateKey"):
+        return row["templateKey"] == template_key
+    if row.get("mappingStatus") == "FAMILY_ACTIVE":
+        return template_key in {c.get("templateKey") for c in row.get("templateCandidates") or []}
+    return False
+
+
 def _crosswalk_row_fits(doc_status, row: dict, assignment: dict, classification: dict | None) -> bool:
     """Same conditions the registrar (withTargetParent) applies to a `crosswalkRef` row, except the course scope
     (which the registrar re-derives from the ACTIVE binding owner pack): ACTIVE_REFERENCE document, ACTIVE binding,
@@ -316,7 +326,7 @@ def resolve_rpm_primary_path(small_after: dict, classification: dict, curriculum
     """RPM Primary L1-L4 for one question from the official crosswalk only (never from name similarity).
 
     Candidates are the ACTIVE rows of an ACTIVE_REFERENCE crosswalk with the question's own curriculum, course scope,
-    PT and TPL (the same conditions the registrar applies to a `crosswalkRef`). The path is decided when
+    PT and TPL (a FAMILY_ACTIVE row counts when its `templateCandidates` list the question's TPL). The path is decided when
       - the small meta names a record id that is one of the candidates (the question's own final-solution pick), or
       - there is exactly one candidate path.
     Otherwise (no candidate, several different paths without a named record, a named record that is not a candidate, or
@@ -343,7 +353,7 @@ def resolve_rpm_primary_path(small_after: dict, classification: dict, curriculum
         for row in doc.get("records", []):
             if (row.get("bindingStatus") == "ACTIVE" and row.get("curriculum") == curriculum
                     and _crosswalk_scope_matches(row, scope)
-                    and row.get("problemTypeKey") == pt and row.get("templateKey") == tpl):
+                    and row.get("problemTypeKey") == pt and _crosswalk_row_offers_template(row, tpl)):
                 candidates.append((crosswalk_file, row))
     record_id, declared = _rpm_hint(small_after)
     if record_id:

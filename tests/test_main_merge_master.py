@@ -273,7 +273,9 @@ class RpmPrimaryPathTests(unittest.TestCase):
         with redirect_stdout(io.StringIO()):
             return mm.generate_inbox_request(files, rpm_path_delta=True)
 
-    def resolve_in(self, rows, course, curriculum="2015"):
+    def resolve_in(self, rows, course, curriculum="2015", scope_alias=None):
+        if scope_alias:
+            rows = [{**r, "scope": scope_alias[0], "standardCourse": scope_alias[1]} for r in rows]
         cross = self.root / "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json"
         cross.parent.mkdir(parents=True, exist_ok=True)
         cross.write_text(json.dumps({"status": "ACTIVE_REFERENCE", "records": rows}), encoding="utf-8")
@@ -306,6 +308,24 @@ class RpmPrimaryPathTests(unittest.TestCase):
                 self.row("H1-B", "다", "라", scope="수학_하", standardCourse="수학(하)", bindingStatus="MISSING")]
         path, _ = self.resolve_in(rows, "수학(하)")
         self.assertIsNone(path)
+
+    def test_family_row_counts_only_for_a_template_it_lists(self):
+        family = self.row("F1", "가", "나", mappingStatus="FAMILY_ACTIVE",
+                          templateCandidates=[{"templateKey": "TPL_A"}, {"templateKey": "TPL_B"}])
+        del family["templateKey"]
+        path, notes = self.resolve_in([family], "수학(하)", scope_alias=("수학_하", "수학(하)"))
+        self.assertEqual(path["crosswalkRecordIds"], ["F1"])
+        family["templateCandidates"] = [{"templateKey": "TPL_B"}]
+        path, notes = self.resolve_in([family], "수학(하)", scope_alias=("수학_하", "수학(하)"))
+        self.assertIsNone(path)
+        self.assertTrue(any("EVIDENCE_DEBT" in n for n in notes))
+        # A row that is not FAMILY_ACTIVE never matches through candidates, and a non-ACTIVE binding never matches.
+        plain = self.row("F2", "가", "나", templateCandidates=[{"templateKey": "TPL_A"}])
+        del plain["templateKey"]
+        self.assertIsNone(self.resolve_in([plain], "수학(하)", scope_alias=("수학_하", "수학(하)"))[0])
+        family["templateCandidates"] = [{"templateKey": "TPL_A"}]
+        family["bindingStatus"] = "MISSING"
+        self.assertIsNone(self.resolve_in([family], "수학(하)", scope_alias=("수학_하", "수학(하)"))[0])
 
     def test_named_record_among_the_exact_candidates_decides_the_path(self):
         req = self.delta([self.row("R1", "가", "나"), self.row("R2", "다", "라")],
