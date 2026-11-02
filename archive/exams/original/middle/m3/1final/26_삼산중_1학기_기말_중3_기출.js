@@ -107,7 +107,7 @@ window.questionBank = [
       "$(-1,-3)$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $y=a(x-p)^2+q$의 꼭짓점은 $(p,q)$이다.\n$y=(x-1)^2+3$의 꼭짓점은 $(1,3)$이다.\n따라서 정답은 ①이다.",
+    "solution": "$y=a(x-p)^2+q$의 꼭짓점은 $(p,q)$이다.\n$y=(x-1)^2+3$의 꼭짓점은 $(1,3)$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -135,7 +135,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 근과 최고차항의 계수로 인수형을 만든다.\n$3x^2+ax+b=3(x-\\dfrac23)(x-2)=(3x-2)(x-2)=3x^2-8x+4$이다.\n따라서 $a=-8,b=4$이고 $a-b=-12$이다. 정답은 ②이다.",
+    "solution": "두 근과 최고차항의 계수로 인수형을 만든다.\n$3x^2+ax+b=3(x-\\dfrac23)(x-2)=(3x-2)(x-2)=3x^2-8x+4$이다.\n따라서 $a=-8,b=4$이고 $a-b=-12$이다. 정답은 ②이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -163,7 +163,7 @@ window.questionBank = [
       "$(1+3\\sqrt5)/2$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 각 방정식의 양수인 해만 선택한다.\n$4x^2-5=0$에서 $a=\\dfrac{\\sqrt5}{2}$이다. $(2x-1)^2=20$에서 양수인 해는 $b=\\dfrac{1+2\\sqrt5}{2}$이다.\n따라서 $a+b=\\dfrac{1+3\\sqrt5}{2}$이고 정답은 ⑤이다.",
+    "solution": "각 방정식의 양수인 해만 선택한다.\n$4x^2-5=0$에서 $a=\\dfrac{\\sqrt5}{2}$이다. $(2x-1)^2=20$에서 양수인 해는 $b=\\dfrac{1+2\\sqrt5}{2}$이다.\n따라서 $a+b=\\dfrac{1+3\\sqrt5}{2}$이고 정답은 ⑤이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -191,7 +191,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "②",
-    "solution": "[키포인트] 근의 공식의 판별식 부분을 비교한다.\n$6x^2+5x+k=0$의 해는 $\\dfrac{-5\\pm\\sqrt{25-24k}}{12}$이다. 주어진 해와 비교하면 $25-24k=97$이므로 $k=-3$이다.\n따라서 정답은 ②이다.",
+    "solution": "근의 공식의 판별식 부분을 비교한다.\n$6x^2+5x+k=0$의 해는 $\\dfrac{-5\\pm\\sqrt{25-24k}}{12}$이다. 주어진 해와 비교하면 $25-24k=97$이므로 $k=-3$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -219,7 +219,7 @@ window.questionBank = [
       "$y=-2x^2$과 $x$축에 대칭이다."
     ],
     "answer": "④",
-    "solution": "[키포인트] $y=ax^2$에서 $a>0$이면 아래로 볼록하고 $|a|$가 클수록 폭이 좁다.\n$y=2x^2$은 원점이 꼭짓점이고 $(1,2)$를 지나며 아래로 볼록하다. $y=x^2$보다 폭은 좁고 $y=-2x^2$과 $x$축 대칭이다.\n따라서 옳지 않은 것은 ④이다.",
+    "solution": "$y=ax^2$에서 $a>0$이면 아래로 볼록하고 $|a|$가 클수록 폭이 좁다.\n$y=2x^2$은 원점이 꼭짓점이고 $(1,2)$를 지나며 아래로 볼록하다. $y=x^2$보다 폭은 좁고 $y=-2x^2$과 $x$축 대칭이다.\n따라서 옳지 않은 것은 ④이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -247,7 +247,7 @@ window.questionBank = [
       "$1/9$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $x$축 대칭에서는 함수값의 부호가 바뀐다.\n대칭이동한 식은 $y=-ax^2$이다. $(3,1)$을 대입하면 $1=-9a$이므로 $a=-\\dfrac19$이다.\n따라서 정답은 ①이다.",
+    "solution": "$x$축 대칭에서는 함수값의 부호가 바뀐다.\n대칭이동한 식은 $y=-ax^2$이다. $(3,1)$을 대입하면 $1=-9a$이므로 $a=-\\dfrac19$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -277,7 +277,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "①",
-    "solution": "[키포인트] 그래프의 방향은 $a$의 부호, 폭은 $|a|$로 판단한다.\n$a>0$인 것은 4개이므로 $m=4$이다. $|-2|=2$보다 절댓값이 큰 계수는 $5,6$ 두 개이므로 $n=2$이다.\n따라서 $m+n=6$이고 정답은 ①이다.",
+    "solution": "그래프의 방향은 $a$의 부호, 폭은 $|a|$로 판단한다.\n$a>0$인 것은 4개이므로 $m=4$이다. $|-2|=2$보다 절댓값이 큰 계수는 $5,6$ 두 개이므로 $n=2$이다.\n따라서 $m+n=6$이고 정답은 ①이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -305,7 +305,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "③",
-    "solution": "[키포인트] 평행이동한 식에 주어진 점을 대입한다.\n오른쪽으로 2, 아래로 1만큼 옮기면 $y=a(x-2)^2-1$이다. $(3,3)$을 대입하면 $3=a-1$이므로 $a=4$이다.\n따라서 정답은 ③이다.",
+    "solution": "평행이동한 식에 주어진 점을 대입한다.\n오른쪽으로 2, 아래로 1만큼 옮기면 $y=a(x-2)^2-1$이다. $(3,3)$을 대입하면 $3=a-1$이므로 $a=4$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -333,7 +333,7 @@ window.questionBank = [
       "$-6$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 두 그래프의 꼭짓점 좌표 차이가 평행이동량이다.\n꼭짓점은 각각 $(-1,2)$, $(-2,-3)$이므로 $p=-1,q=-5$이다.\n따라서 $p+q=-6$이고 정답은 ⑤이다.",
+    "solution": "두 그래프의 꼭짓점 좌표 차이가 평행이동량이다.\n꼭짓점은 각각 $(-1,2)$, $(-2,-3)$이므로 $p=-1,q=-5$이다.\n따라서 $p+q=-6$이고 정답은 ⑤이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -361,7 +361,7 @@ window.questionBank = [
       "18"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 완전제곱식으로 바꾸어 꼭짓점의 높이를 확인한다.\n$y=2(x+3)^2+k-18$이므로 꼭짓점은 $(-3,k-18)$이다. 꼭짓점이 $x$축 위에 있으므로 $k-18=0$, 즉 $k=18$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "완전제곱식으로 바꾸어 꼭짓점의 높이를 확인한다.\n$y=2(x+3)^2+k-18$이므로 꼭짓점은 $(-3,k-18)$이다. 꼭짓점이 $x$축 위에 있으므로 $k-18=0$, 즉 $k=18$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -389,7 +389,7 @@ window.questionBank = [
       "4"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 그래프의 꼭짓점을 좌표로 나타내고 기울기 공식을 쓴다.\n꼭짓점은 $(1,a)$, $(b,1)$이다. 기울기가 1이므로 $\\dfrac{1-a}{b-1}=1$, 따라서 $a+b=2$이다.\n정답은 ③이다.",
+    "solution": "두 그래프의 꼭짓점을 좌표로 나타내고 기울기 공식을 쓴다.\n꼭짓점은 $(1,a)$, $(b,1)$이다. 기울기가 1이므로 $\\dfrac{1-a}{b-1}=1$, 따라서 $a+b=2$이다.\n정답은 ③이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -419,7 +419,7 @@ window.questionBank = [
       "20"
     ],
     "answer": "②",
-    "solution": "[키포인트] 그림의 두 $x$절편과 한 점으로 함수식을 세운다.\n$A=(-1,0),C=(3,0)$이고 $(0,-3)$을 지나므로 $y=(x+1)(x-3)=x^2-2x-3$이다. 꼭짓점은 $B=(1,-4)$이다.\n$AC=4$이고 높이가 4이므로 넓이는 $\\dfrac12\\times4\\times4=8$이다. 정답은 ②이다.",
+    "solution": "그림의 두 $x$절편과 한 점으로 함수식을 세운다.\n$A=(-1,0),C=(3,0)$이고 $(0,-3)$을 지나므로 $y=(x+1)(x-3)=x^2-2x-3$이다. 꼭짓점은 $B=(1,-4)$이다.\n$AC=4$이고 높이가 4이므로 넓이는 $\\dfrac12\\times4\\times4=8$이다. 정답은 ②이다.",
     "image": "assets/images/26_삼산중_1학기_기말_중3_기출/q15.png",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
@@ -448,7 +448,7 @@ window.questionBank = [
       "8"
     ],
     "answer": "③",
-    "solution": "[키포인트] 완전제곱식으로 꼭짓점형을 만든다.\n$y=-2x^2+4x+5=-2(x-1)^2+7$이다. 따라서 $a=-2,p=1,q=7$이고 $a+p+q=6$이다.\n정답은 ③이다.",
+    "solution": "완전제곱식으로 꼭짓점형을 만든다.\n$y=-2x^2+4x+5=-2(x-1)^2+7$이다. 따라서 $a=-2,p=1,q=7$이고 $a+p+q=6$이다.\n정답은 ③이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -478,7 +478,7 @@ window.questionBank = [
       "㉠ $100$, ㉡ $x^2+20x+100=(x+10)^2$, ㉢ $(x+10)^2=625$, ㉣ $15$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $x^2+20x$를 완전제곱식으로 만들기 위해 $100$을 더한다.\n$x^2+20x+100=(x+10)^2$이고 $(x+10)^2=225$이다. 길이이므로 $x+10=15$, $x=5$이다.\n따라서 ㉠~㉣은 $100,(x+10)^2,(x+10)^2=225,5$이며 정답은 ④이다.",
+    "solution": "$x^2+20x$를 완전제곱식으로 만들기 위해 $100$을 더한다.\n$x^2+20x+100=(x+10)^2$이고 $(x+10)^2=225$이다. 길이이므로 $x+10=15$, $x=5$이다.\n따라서 ㉠~㉣은 $100,(x+10)^2,(x+10)^2=225,5$이며 정답은 ④이다.",
     "image": "assets/images/26_삼산중_1학기_기말_중3_기출/q17.png",
     "imageSize": "tall",
     "hasVisualAsset": true,
@@ -511,7 +511,7 @@ window.questionBank = [
       "11"
     ],
     "answer": "③",
-    "solution": "[키포인트] 가장 작은 정사각형의 한 변을 $x$로 둔다.\n$x^2+(x+3)^2+(x+5)^2=238$에서 $3x^2+16x-204=0$, 즉 $(x-6)(3x+34)=0$이다. 길이는 양수이므로 $x=6$이다.\n따라서 정답은 ③이다.",
+    "solution": "가장 작은 정사각형의 한 변을 $x$로 둔다.\n$x^2+(x+3)^2+(x+5)^2=238$에서 $3x^2+16x-204=0$, 즉 $(x-6)(3x+34)=0$이다. 길이는 양수이므로 $x=6$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
     "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -541,7 +541,7 @@ window.questionBank = [
       "3"
     ],
     "answer": "③",
-    "solution": "[키포인트] 포물선의 대칭, 삼각형 넓이, 선분비를 차례로 이용한다.\n$B=(1,a)$이면 $A=(-1,a)$이다. $\\dfrac12\\times2\\times a=2$이므로 $a=2$이다. $BD=2$이고 $BD:CD=2:3$이므로 $CD=3$, 그림에서 $C=(1,-3)$이다. 따라서 $b=-3$이다.\n그러므로 $a+b=-1$이고 정답은 ③이다.",
+    "solution": "포물선의 대칭, 삼각형 넓이, 선분비를 차례로 이용한다.\n$B=(1,a)$이면 $A=(-1,a)$이다. $\\dfrac12\\times2\\times a=2$이므로 $a=2$이다. $BD=2$이고 $BD:CD=2:3$이므로 $CD=3$, 그림에서 $C=(1,-3)$이다. 따라서 $b=-3$이다.\n그러므로 $a+b=-1$이고 정답은 ③이다.",
     "image": "assets/images/26_삼산중_1학기_기말_중3_기출/q19.png",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
@@ -572,7 +572,7 @@ window.questionBank = [
       "그래프가 $(4,0)$을 지난다."
     ],
     "answer": "④",
-    "solution": "[키포인트] 그림의 대칭축과 한 $x$절편으로 다른 절편을 찾는다.\n대칭축이 $x=2$, 한 절편이 $-1$이므로 다른 절편은 $5$이다. $y=a(x+1)(x-5)$, $a<0$이고 $b=-4a,c=-5a$이다.\n$a+2b+3c=-22a>0$이므로 정답은 ④이다.",
+    "solution": "그림의 대칭축과 한 $x$절편으로 다른 절편을 찾는다.\n대칭축이 $x=2$, 한 절편이 $-1$이므로 다른 절편은 $5$이다. $y=a(x+1)(x-5)$, $a<0$이고 $b=-4a,c=-5a$이다.\n$a+2b+3c=-22a>0$이므로 정답은 ④이다.",
     "image": "assets/images/26_삼산중_1학기_기말_중3_기출/q20.png",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
@@ -622,7 +622,7 @@ window.questionBank = [
     "content": "[서술형 2] 세로의 길이가 가로의 길이보다 $5$ 더 긴 직사각형 모양의 종이에서 네 귀퉁이를 한 변의 길이가 $2$인 정사각형 모양으로 잘라내어 뚜껑 없는 상자를 만들었더니 상자의 부피가 $352$가 되었다. 이때 처음 종이의 세로 길이를 구하고, 그 과정을 서술하시오. [5점, 부분점수 있음]<br><div class='note-box'>&lt;조건&gt;<br>· 무엇을 미지수 $x$로 두는지 풀이 과정에 반드시 포함할 것.<br>· 이차방정식을 세워 풀고, 문제 상황에 맞게 답을 구하는 과정을 반드시 포함할 것.</div>",
     "choices": [],
     "answer": "$20$",
-    "solution": "[키포인트] 처음 종이의 가로를 $x$로 두고 상자의 세 변을 나타낸다.\n처음 세로는 $x+5$, 접은 상자의 높이는 2, 밑면은 $x-4$와 $x+1$이다. $2(x-4)(x+1)=352$에서 $x^2-3x-180=0$, $(x-15)(x+12)=0$이다.\n길이는 양수이므로 $x=15$, 처음 세로는 $20$이다.",
+    "solution": "처음 종이의 가로를 $x$로 두고 상자의 세 변을 나타낸다.\n처음 세로는 $x+5$, 접은 상자의 높이는 2, 밑면은 $x-4$와 $x+1$이다. $2(x-4)(x+1)=352$에서 $x^2-3x-180=0$, $(x-15)(x+12)=0$이다.\n길이는 양수이므로 $x=15$, 처음 세로는 $20$이다.",
     "image": "assets/images/26_삼산중_1학기_기말_중3_기출/q22.png",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
@@ -648,7 +648,7 @@ window.questionBank = [
     "content": "[서술형 3] 그림과 같은 그래프를 나타내는 이차함수의 식을 구하고, 그 과정을 서술하시오. [4점, 부분점수 있음]",
     "choices": [],
     "answer": "$y=-x^2+9$",
-    "solution": "[키포인트] 그림의 두 $x$절편으로 인수형을 세우고 $y$절편으로 계수를 정한다.\n$x$절편이 $-3,3$이므로 $y=a(x+3)(x-3)$이다. $(0,9)$를 대입하면 $9=-9a$이므로 $a=-1$이다.\n따라서 $y=-x^2+9$이다.",
+    "solution": "그림의 두 $x$절편으로 인수형을 세우고 $y$절편으로 계수를 정한다.\n$x$절편이 $-3,3$이므로 $y=a(x+3)(x-3)$이다. $(0,9)$를 대입하면 $9=-9a$이므로 $a=-1$이다.\n따라서 $y=-x^2+9$이다.",
     "image": "assets/images/26_삼산중_1학기_기말_중3_기출/q23.png",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
