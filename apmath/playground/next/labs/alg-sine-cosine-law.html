@@ -2610,6 +2610,848 @@ window.addEventListener('DOMContentLoaded', function () {
       };
     }
 
+    /*@@SCL-VAR-START*/
+    /* ==========================================================================
+       새 문제(변형) — 기본 8선·심화 8선 (2026-11-02 선생님 지시: 옛 장면도 문제 탭에 「새 문제」를 붙인다)
+       - 탐구 탭의 그림·문구·조작은 그대로입니다(위의 drawScene). 정리·문제 탭은 변형의 조건대로 그린 그림을 따로 그립니다.
+       - 첫 문제는 원본 문제·풀이 그대로이고, 「새 문제」를 누르면 같은 구조(같은 학습 포인트)에서 숫자만 바꾼 변형이 나옵니다.
+       - 문제 탭 그림: 지문에 주어진 값과 점 이름만. 답과 답으로 가는 보조선은 정리 탭 풀이 단계에서만 나타납니다.
+       ========================================================================== */
+    const gN = (a, b) => (b ? gN(b, a % b) : Math.abs(a));
+    const frT = (n, d) => { const g = gN(n, d) || 1; n /= g; d /= g; if (d < 0) { n = -n; d = -d; } return d === 1 ? String(n) : `\\dfrac{${n}}{${d}}`; };
+    const frP = (n, d) => { const g = gN(n, d) || 1; n /= g; d /= g; if (d < 0) { n = -n; d = -d; } return d === 1 ? String(n) : `${n}/${d}`; };
+    const sq2 = (n) => { let o = 1, i = n; for (let f = 2; f * f <= i; f++) while (i % (f * f) === 0) { i /= f * f; o *= f; } return [o, i]; };
+    const rtT = (n) => { const [o, i] = sq2(n); return i === 1 ? String(o) : (o === 1 ? '' : String(o)) + `\\sqrt{${i}}`; };
+    const rtP = (n) => { const [o, i] = sq2(n); return i === 1 ? String(o) : (o === 1 ? '' : String(o)) + `√${i}`; };
+    const mkVar = (list, build) => {
+      let idx = 0, cur = build(list[0], 0);
+      return {
+        cur: () => cur, idx: () => idx, count: list.length,
+        set: (i) => { idx = i; cur = build(list[i], i); return cur; },
+        next: () => { let i; do { i = rintL(list.length); } while (list.length > 1 && i === idx); idx = i; cur = build(list[i], i); return cur; }
+      };
+    };
+    const P0 = (id) => PROBLEMS.find((p) => p.id === id);
+    // 원본 문제(첫 문제)의 글을 그대로 씁니다
+    const origOf = (id) => { const p = P0(id); return { text: p.statement, steps: p.steps.map((s) => s.desc), names: p.steps.map(stepName), ans: p.answer, alg: p.alg, aha: p.aha }; };
+    const hyp = (a, b) => Math.hypot(a, b);
+
+    // ---- 그림 도우미 ----
+    // 점들(수학 좌표)이 가상 캔버스의 가운데 영역에 꽉 차게(1:1) 들어가도록 맞춥니다. o.b: 아래쪽에 남길 자리(치수선·결과 줄)
+    function FIT(rect, pts, o = {}) {
+      const L = o.l ?? 46, R = o.r ?? 46, T = o.t ?? 38, Bt = o.b ?? 90;
+      let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+      pts.forEach((p) => { x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); y0 = Math.min(y0, p.y); y1 = Math.max(y1, p.y); });
+      const bw = Math.max(1e-6, x1 - x0), bh = Math.max(1e-6, y1 - y0);
+      const aw = Math.max(40, rect.width - L - R), ah = Math.max(40, rect.height - T - Bt);
+      const u = Math.min(aw / bw, ah / bh);
+      const ox = L + aw / 2 - ((x0 + x1) / 2) * u, oy = T + ah / 2 + ((y0 + y1) / 2) * u;
+      return { u, S: (x, y) => toScr(x, y, ox, oy, u), P: (p) => toScr(p.x, p.y, ox, oy, u) };
+    }
+    // 변 PQ 가까이(도형 바깥쪽)에 놓는 길이 배지
+    function eBadge(P, Q, text, col, cen, extra = 8, t = 0.5) {
+      const mx = P.x + (Q.x - P.x) * t, my = P.y + (Q.y - P.y) * t;
+      let nx = -(Q.y - P.y), ny = Q.x - P.x; const l = Math.hypot(nx, ny) || 1; nx /= l; ny /= l;
+      if ((mx - cen.x) * nx + (my - cen.y) * ny < 0) { nx = -nx; ny = -ny; }
+      const fs = 12 * BRD.fs, w = frWidth(txt(text), fs).w + 16, h = fs * 1.4 + 10;
+      const off = extra + Math.abs(nx) * w / 2 + Math.abs(ny) * h / 2;
+      dBadge(mx + nx * off, my + ny * off, text, col);
+    }
+    // 변 PQ 가까이(도형 안쪽)에 놓는 배지
+    function iBadge(P, Q, text, col, cen, d = 26) {
+      const mx = (P.x + Q.x) / 2, my = (P.y + Q.y) / 2; let nx = cen.x - mx, ny = cen.y - my; const l = Math.hypot(nx, ny) || 1; nx /= l; ny /= l;
+      dBadge(mx + nx * d, my + ny * d, text, col);
+    }
+    // 꼭짓점 이름: 도형 가운데에서 바깥쪽으로
+    function nameV(Pt, name, cen, col = C.white, d = 15) {
+      let dx = Pt.x - cen.x, dy = Pt.y - cen.y; const l = Math.hypot(dx, dy) || 1; dx = (dx / l) * d; dy = (dy / l) * d;
+      dVertex(Pt, name, col, { x: dx, y: dy, align: 'center' });
+    }
+    const centOf = (arr) => ({ x: arr.reduce((a, p) => a + p.x, 0) / arr.length, y: arr.reduce((a, p) => a + p.y, 0) / arr.length });
+    // 아래쪽 결과 줄(문장 한 줄은 짧게: 폰에서도 12px을 지키려면 약 30자 이내)
+    function banner(rect, lines, col = C.gold) {
+      lines.forEach((t, i) => dBadge(rect.width / 2, rect.height - 20 - (lines.length - 1 - i) * 33, t, col));
+    }
+    // 왼쪽 위 모서리의 조건 배지(n번째 줄): 그림 위가 복잡할 때 주어진 값·각을 모아 둡니다
+    function cornerBadge(n, text, col) { const w = frWidth(txt(text), 12 * BRD.fs).w + 16; dBadge(10 + w / 2, 20 + n * 34, text, col); }
+    function cornerBadgeR(n, text, col) { const w = frWidth(txt(text), 12 * BRD.fs).w + 16, W = BRD.W - insets().left - insets().right; dBadge(W - 10 - w / 2, 20 + n * 34, text, col); }
+    const footPt = (P, U, Vv) => { const dx = Vv.x - U.x, dy = Vv.y - U.y, k = ((P.x - U.x) * dx + (P.y - U.y) * dy) / (dx * dx + dy * dy); return { x: U.x + k * dx, y: U.y + k * dy }; };
+    // 삼각형 ABC를 변의 길이로 놓기: B = (0,0), C = (a,0), A는 위쪽
+    function triBy(a, b, c) { const xA = (c * c - b * b + a * a) / (2 * a); return { B: { x: 0, y: 0 }, C: { x: a, y: 0 }, A: { x: xA, y: Math.sqrt(Math.max(0, c * c - xA * xA)) } }; }
+    const SPEC = {};
+    // 수선 AH의 길이 배지: 변 B·C 쪽 중 넓은 쪽(수선의 발 H 기준)에 놓아 변 AB·AC와 겹치지 않게
+    function ahBadge(H, A, B, Cp, text) {
+      const w = frWidth(txt(text), 12 * BRD.fs).w + 16, left = H.x - B.x >= Cp.x - H.x;
+      dBadge(H.x + (left ? -1 : 1) * (w / 2 + 10), H.y + (A.y - H.y) * 0.5, text, C.gold);
+    }
+    const GAP = { right: 12 };
+
+    // ---------- 기본 1 · 수선의 발 ----------
+    SPEC['bas-1'] = {
+      list: [{ AB: 5, BH: 3, AH: 4, CH: 2 }, { AB: 5, BH: 4, AH: 3, CH: 1 }, { AB: 10, BH: 6, AH: 8, CH: 4 }, { AB: 13, BH: 5, AH: 12, CH: 9 }, { AB: 10, BH: 8, AH: 6, CH: 3 }],
+      build(q, i) {
+        const { AB, BH, AH, CH } = q, AC2 = AH * AH + CH * CH, BC = BH + CH, S2 = BC * AH;
+        const V = { q, val: [BC, S2 / 2], acP: rtP(AC2), cosP: frP(BH, AB) };
+        if (i === 0) return Object.assign(V, origOf('bas-1'));
+        const cosT = frT(BH, AB), sinT = frT(AH, AB), acT = rtT(AC2), Sx = S2 % 2 === 0 ? String(S2 / 2) : frT(S2, 2);
+        const small = BH > CH ? BH - CH : null;
+        V.text = `<div>예각삼각형 $ABC$에서 $\\overline{AB} = ${AB}$, $\\cos B = ${cosT}$, $\\overline{AC} = ${acT}$일 때, 선분 $BC$의 길이와 삼각형 $ABC$의 넓이를 구하시오.</div>`;
+        V.names = P0('bas-1').steps.map(stepName);
+        V.steps = [
+          `직각삼각형 $ABH$ ($\\angle AHB = \\dfrac{\\pi}{2}$)에서 $\\overline{AB}=${AB}, \\cos B = ${cosT}$이므로<br/>$\\overline{BH} = ${AB} \\times ${cosT} = \\mathbf{${BH}}$, $\\sin B = ${sinT}$에서 높이 $\\overline{AH} = ${AB} \\times ${sinT} = \\mathbf{${AH}}$입니다.`,
+          `직각삼각형 $ACH$에서 빗변 $\\overline{AC} = ${acT}$, 높이 $\\overline{AH} = ${AH}$이므로<br/>$\\overline{CH} = \\sqrt{(${acT})^2 - ${AH}^2} = \\sqrt{${AC2} - ${AH * AH}} = \\mathbf{${CH}}$입니다.`,
+          `예각삼각형이므로 수선의 발 $H$는 선분 $BC$ 위에 놓입니다.<br/>$\\therefore \\overline{BC} = \\overline{BH} + \\overline{CH} = ${BH} + ${CH} = \\mathbf{${BC}}$, 넓이 $S = \\dfrac{1}{2} \\times ${BC} \\times ${AH} = \\mathbf{${Sx}}$`
+        ];
+        V.ans = `BC = ${BC}, 넓이 = ${S2 % 2 === 0 ? S2 / 2 : '$' + frT(S2, 2) + '$'}`;
+        V.alg = `<div class="font-bold text-amber-300 mb-1">코사인법칙을 이용한 풀이와 오답 함정</div><div>1) $\\overline{BC} = x$라 하고 $\\triangle ABC$에서 코사인법칙을 쓰면 $(${acT})^2 = x^2 + ${AB}^2 - 2 \\cdot x \\cdot ${AB} \\cdot ${cosT}$에서 $x^2 - ${2 * BH}x + ${AB * AB - AC2} = 0$이므로 $x = ${BC}$ 또는 $x = ${BH - CH}$입니다.</div><div>2) ${small ? `<strong>[주의할 함정]</strong> $x = ${small}$이면 $\\overline{AB}^2 = ${AB * AB} > \\overline{BC}^2 + \\overline{AC}^2 = ${small * small + AC2}$가 되어 $\\angle C$가 둔각이므로 예각삼각형 조건에 모순입니다.` : `$x = ${BH - CH}$는 음수라 길이가 될 수 없습니다.`} 수선의 발을 내리면 $x = ${BH} + ${CH} = ${BC}$만 자연스럽게 선택됩니다.</div>`;
+        V.aha = `미지수 $\\overline{BC}=x$로 놓고 코사인법칙 이차방정식을 세우는 대신, 꼭짓점 $A$에서 **수선의 발 $H$**를 내리면 $(${BH}:${AH}:${AB})$ 직각삼각형과 $(${CH}:${AH}:${acT})$ 직각삼각형 두 개로 나뉘어 길이가 바로 구해집니다.`;
+        return V;
+      },
+      draw(V, st, rect) {
+        const { BH, AH, CH, AB } = V.q;
+        const F = FIT(rect, [{ x: -BH, y: 0 }, { x: CH, y: 0 }, { x: 0, y: AH }], { b: 118 });
+        const A = F.S(0, AH), B = F.S(-BH, 0), Cp = F.S(CH, 0), H = F.S(0, 0), cen = centOf([A, B, Cp]);
+        dPoly([A, B, Cp], 'rgba(56, 189, 248, 0.12)', C.cyan, 2.8);
+        eBadge(A, B, `AB = ${AB}`, C.green, cen);
+        eBadge(A, Cp, `AC = ${V.acP}`, C.cyan, cen);
+        dArcAngle(B, Cp, A, `cos B = ${V.cosP}`, C.green, 28);
+        if (st >= 1) {
+          dPoly([A, B, H], 'rgba(52, 211, 153, 0.18)', C.green, 2.4);
+          dLine(A, H, C.gold, 2.8, [6, 4], true);
+          drawRightAngle(H, B, A, 12, C.gold);
+          dVertex(H, 'H', C.gold, { x: 0, y: 17, align: 'center' });
+          drawDimension(B, H, 24, `BH = ${BH}`, C.green);
+          ahBadge(H, A, B, Cp, `AH = ${AH}`);
+        }
+        if (st >= 2) {
+          dPoly([A, H, Cp], 'rgba(251, 191, 36, 0.16)', C.gold, 2.4);
+          drawRightAngle(H, Cp, A, 12, C.gold);
+          drawDimension(H, Cp, 24, `CH = ${CH}`, C.cyan);
+        }
+        if (st >= 3) drawDimension(B, Cp, 56, `BC = ${BH} + ${CH} = ${BH + CH}`, C.gold);
+        nameV(B, 'B', cen); nameV(A, 'A', cen); nameV(Cp, 'C', cen);
+        if (st >= 3) banner(rect, [`넓이 = ½ × ${BH + CH} × ${AH} = ${frP((BH + CH) * AH, 2)}`]);
+      }
+    };
+
+    // ---------- 기본 2 · 세 변과 높이 ----------
+    SPEC['bas-2'] = {
+      list: [{ BH: 5, CH: 9, AH: 12 }, { BH: 16, CH: 5, AH: 12 }, { BH: 8, CH: 20, AH: 15 }, { BH: 6, CH: 15, AH: 8 }, { BH: 7, CH: 10, AH: 24 }],
+      build(q, i) {
+        const { BH, CH, AH } = q, BC = BH + CH, AB = Math.round(hyp(BH, AH)), AC = Math.round(hyp(CH, AH));
+        const V = { q, AB, AC, BC, val: [AH, BC * AH / 2] };
+        if (i === 0) return Object.assign(V, origOf('bas-2'));
+        const S = BC * AH / 2;
+        V.text = `<div>세 변의 길이가 $\\overline{AB} = ${AB}$, $\\overline{BC} = ${BC}$, $\\overline{CA} = ${AC}$인 삼각형 $ABC$가 있다. 꼭짓점 $A$에서 변 $BC$에 내린 수선의 발을 $H$라 할 때, 선분 $AH$의 길이와 삼각형 $ABC$의 넓이를 구하시오.</div>`;
+        V.names = [`수선의 발 H로 밑변을 x와 ${BC} - x로 분할하기`, `두 피타고라스 직각삼각형으로 높이 AH = ${AH} 구하기`, '삼각형 ABC의 넓이를 계산합니다.'];
+        V.steps = [
+          `$\\overline{BH} = x$라 하면 $\\overline{CH} = ${BC} - x$입니다.<br/>두 직각삼각형 $ABH, ACH$에서 공통 높이 $\\overline{AH}$에 대하여 $${AB}^2 - x^2 = ${AC}^2 - (${BC} - x)^2$이 성립합니다.`,
+          `$${AB * AB} - x^2 = ${AC * AC} - (${BC * BC} - ${2 * BC}x + x^2) \\implies ${2 * BC}x = ${AB * AB - AC * AC + BC * BC} \\implies \\mathbf{x = ${BH}}$.<br/>따라서 $\\overline{BH} = ${BH}, \\overline{CH} = ${CH}$이고, $\\overline{AH} = \\sqrt{${AB}^2 - ${BH}^2} = \\mathbf{${AH}}$입니다.`,
+          `밑변 $\\overline{BC} = ${BC}$, 높이 $\\overline{AH} = ${AH}$이므로<br/>$\\text{넓이 } S = \\dfrac{1}{2} \\times ${BC} \\times ${AH} = \\mathbf{${S}}$입니다.`
+        ];
+        V.ans = `AH = ${AH}, 넓이 = ${S}`;
+        V.alg = `<div class="font-bold text-amber-300 mb-1">헤론의 공식과 비교</div><div>$s = \\dfrac{${AB}+${BC}+${AC}}{2} = ${(AB + BC + AC) / 2}$이므로 $S = \\sqrt{${(AB + BC + AC) / 2}(${(AB + BC + AC) / 2 - AB})(${(AB + BC + AC) / 2 - BC})(${(AB + BC + AC) / 2 - AC})} = ${S}$입니다. 그러나 수선의 발로 나누면 직각삼각형 $(${BH}:${AH}:${AB})$, $(${CH}:${AH}:${AC})$가 보여서 식을 거의 세우지 않고도 $AH = ${AH}$를 얻습니다.</div>`;
+        V.aha = `세 변이 $${AB}, ${BC}, ${AC}$인 삼각형은 꼭짓점 $A$에서 수선의 발 $H$를 내리면 밑변 $${BC}$가 **$${BH} + ${CH} = ${BC}$**로 나뉘며, **$(${BH}:${AH}:${AB})$**와 **$(${CH}:${AH}:${AC})$** 피타고라스 직각삼각형 두 개로 정확히 쪼개집니다.`;
+        return V;
+      },
+      draw(V, st, rect) {
+        const { BH, CH, AH } = V.q, BC = V.BC;
+        const F = FIT(rect, [{ x: 0, y: 0 }, { x: BC, y: 0 }, { x: BH, y: AH }], { b: 118 });
+        const A = F.S(BH, AH), B = F.S(0, 0), Cp = F.S(BC, 0), H = F.S(BH, 0), cen = centOf([A, B, Cp]);
+        dPoly([A, B, Cp], 'rgba(56, 189, 248, 0.12)', C.cyan, 2.8);
+        eBadge(A, B, `AB = ${V.AB}`, C.green, cen);
+        eBadge(A, Cp, `AC = ${V.AC}`, C.cyan, cen);
+        if (st >= 1) {
+          dLine(A, H, C.gold, 2.6, [6, 4]);
+          drawRightAngle(H, B, A, 11, C.gold);
+          dVertex(H, 'H', C.gold, { x: 0, y: 17, align: 'center' });
+          drawDimension(B, H, 24, st >= 2 ? `BH = ${BH}` : 'BH = x', C.green);
+          drawDimension(H, Cp, 24, st >= 2 ? `CH = ${CH}` : `CH = ${BC} - x`, C.cyan);
+        } else drawDimension(B, Cp, 24, `BC = ${BC}`, C.white);
+        if (st >= 2) {
+          dPoly([A, B, H], 'rgba(52, 211, 153, 0.18)', C.green, 2.2);
+          dPoly([A, H, Cp], 'rgba(56, 189, 248, 0.18)', C.cyan, 2.2);
+          drawRightAngle(H, Cp, A, 11, C.gold);
+          ahBadge(H, A, B, Cp, `AH = ${AH}`);
+        }
+        if (st >= 3) drawDimension(B, Cp, 56, `BC = ${BH} + ${CH} = ${BC}`, C.gold);
+        nameV(B, 'B', cen); nameV(A, 'A', cen); nameV(Cp, 'C', cen);
+        if (st >= 3) banner(rect, [`넓이 = ½ × ${BC} × ${AH} = ${BC * AH / 2}`]);
+      }
+    };
+
+    // ---------- 두 외접원 (기본 3·4 공통 그림) ----------
+    function twoCircles(rect, o, st) {
+      const { R1, R2, h } = o;
+      const d1 = Math.sqrt(R1 * R1 - h * h), d2 = Math.sqrt(R2 * R2 - h * h);
+      const Bm = { x: -d1 - R1 * Math.cos(0.22), y: R1 * Math.sin(0.22) }, Dm = { x: d2 + R2 * Math.cos(-0.18), y: R2 * Math.sin(-0.18) };
+      const F = FIT(rect, [{ x: -d1 - R1, y: -R1 }, { x: -d1 - R1, y: R1 }, { x: d2 + R2, y: R2 }, { x: d2 + R2, y: -R2 }], { l: 40, r: 40, t: 40, b: 100 });
+      const O1 = F.S(-d1, 0), O2 = F.S(d2, 0), A = F.S(0, h), Cp = F.S(0, -h), B = F.P(Bm), D = F.P(Dm);
+      dCircle(O1, R1 * F.u, 'rgba(52, 211, 153, 0.7)', 'rgba(52, 211, 153, 0.05)', 2.4);
+      dCircle(O2, R2 * F.u, 'rgba(56, 189, 248, 0.7)', 'rgba(56, 189, 248, 0.05)', 2.4);
+      dLine(A, B, C.green, 2.5); dLine(Cp, B, C.green, 2.5); dLine(A, D, C.cyan, 2.5); dLine(Cp, D, C.cyan, 2.5);
+      dLine(A, Cp, st >= 1 ? C.red : 'rgba(248,250,252,0.55)', st >= 1 ? 3.6 : 1.8, st >= 1 ? [] : [5, 4], st >= 1);
+      return { F, O1, O2, A, Cp, B, D, d1, d2 };
+    }
+
+    // ---------- 기본 3 · 공통현과 두 외접원 ----------
+    SPEC['bas-3'] = {
+      list: [{ p: 3, q: 4, R2: 3 }, { p: 2, q: 3, R2: 4 }, { p: 3, q: 5, R2: 5 }, { p: 5, q: 6, R2: 6 }, { p: 4, q: 5, R2: 5 }],
+      build(q, i) {
+        const { p, q: qq, R2 } = q, R1n = R2 * qq, g = gN(R1n, p), R1 = R1n / p;
+        const V = { q, R1, val: [R1] };
+        if (i === 0) return Object.assign(V, origOf('bas-3'));
+        const ratio = `\\dfrac{${p}}{${qq}}`, inv = `\\dfrac{${qq}}{${p}}`, R1t = frT(R1n, p);
+        V.text = `<div>선분 $AC$를 공유하는 두 삼각형 $ABC$와 $ADC$의 외접원의 반지름의 길이를 각각 $R_1, R_2$라 하자. $\\dfrac{\\sin B}{\\sin D} = ${ratio}$이고 $R_2 = ${R2}$일 때, $R_1$의 값을 구하시오.</div>`;
+        V.names = P0('bas-3').steps.map(stepName);
+        V.steps = [
+          '선분 $AC$는 왼쪽 외접원($O_1$, 반지름 $R_1$)의 현이면서 동시에 오른쪽 외접원($O_2$, 반지름 $R_2=' + R2 + '$)의 현입니다.',
+          `$\\triangle ABC$에서 $\\overline{AC} = 2R_1\\sin B$이고, $\\triangle ADC$에서 $\\overline{AC} = 2R_2\\sin D$이므로<br/>$\\mathbf{R_1\\sin B = R_2\\sin D}$가 성립합니다.`,
+          `$\\dfrac{R_1}{R_2} = \\dfrac{\\sin D}{\\sin B} = ${inv}$이고 $R_2 = ${R2}$이므로<br/>$R_1 = ${R2} \\times ${inv} = \\mathbf{${R1t}}$입니다.`
+        ];
+        V.ans = `R₁ = ${Number.isInteger(R1) ? R1 : '$' + R1t + '$'}`;
+        V.alg = `<div class="font-bold text-amber-300 mb-1">공통현의 길이를 먼저 구하면?</div><div>공통현 $AC$의 길이를 모르는 채로도 $R_1\\sin B = R_2\\sin D$ 한 줄이면 됩니다. 비 $\\sin B : \\sin D = ${p} : ${qq}$이므로 $R_1 : R_2 = ${qq} : ${p}$(반비례)이고 $R_1 = ${R2} \\times \\dfrac{${qq}}{${p}} = ${R1t}$입니다.</div>`;
+        V.aha = `두 삼각형이 한 선분 $AC$(공통현)를 공유하면 사인법칙에 의해 $\\overline{AC} = 2R_1\\sin B = 2R_2\\sin D$이므로, 공통현의 길이를 직접 구할 필요 없이 **$R_1\\sin B = R_2\\sin D$** 관계식 하나로 해결됩니다.`;
+        return V;
+      },
+      draw(V, st, rect) {
+        const { p, q: qq, R2 } = V.q, R1 = V.R1;
+        const G = twoCircles(rect, { R1, R2, h: 0.75 * R2 }, st), { F, O1, O2, A, Cp, B, D } = G;
+        const rr = (O, R, ang) => ({ x: O.x + R * F.u * Math.cos(ang), y: O.y - R * F.u * Math.sin(ang) });
+        const r1p = rr(O1, R1, (225 * Math.PI) / 180), r2p = rr(O2, R2, (-45 * Math.PI) / 180);
+        dLine(O1, r1p, 'rgba(52,211,153,0.85)', 1.8, [4, 3]); dLine(O2, r2p, 'rgba(56,189,248,0.85)', 1.8, [4, 3]);
+        BRD.point(O1, { color: C.green, r: 3.5 }); BRD.point(O2, { color: C.cyan, r: 3.5 });
+        dBadge((O1.x + r1p.x) / 2 - 4, (O1.y + r1p.y) / 2 + 14, 'R₁', C.green);
+        dBadge((O2.x + r2p.x) / 2 + 6, (O2.y + r2p.y) / 2 + 14, `R₂ = ${R2}`, C.cyan);
+        dBadge(rect.width / 2, 20, `sin B / sin D = ${p}/${qq}`, C.gold);
+        if (st >= 1) dBadge(A.x, Cp.y + 26, '공통현 AC', C.red);
+        if (st >= 2) {
+          dArcAngle(B, Cp, A, '', C.green, 26);
+          dArcAngle(D, A, Cp, '', C.cyan, 26);
+          dBadge(O1.x, F.S(0, 0).y - 0 - R1 * F.u - 14, 'AC = 2R₁ sin B', C.green);
+          dBadge(O2.x, F.S(0, 0).y - R2 * F.u - 14, 'AC = 2R₂ sin D', C.cyan);
+        }
+        if (st >= 3) banner(rect, [`R₁ = ${R2} × ${frP(qq, p)} = ${frP(R2 * qq, p)}`]);
+        const cen = { x: (O1.x + O2.x) / 2, y: O1.y };
+        nameV(A, 'A', cen, C.white, 14); nameV(Cp, 'C', cen, C.white, 14); nameV(B, 'B', cen, C.green); nameV(D, 'D', cen, C.cyan);
+      }
+    };
+
+    // ---------- 기본 4 · 두 외접원의 반지름과 원주각의 사인 ----------
+    SPEC['bas-4'] = {
+      // R1 = r1n/2 (분수 허용), sinB = sbn/sbd
+      list: [{ r1n: 9, R2: 3, sbn: 5, sbd: 9 }, { r1n: 8, R2: 6, sbn: 3, sbd: 4 }, { r1n: 10, R2: 4, sbn: 3, sbd: 10 }, { r1n: 12, R2: 9, sbn: 1, sbd: 2 }, { r1n: 15, R2: 5, sbn: 2, sbd: 5 }],
+      build(q, i) {
+        const { r1n, R2, sbn, sbd } = q, R1 = r1n / 2, AC = (r1n * sbn) / sbd, sdn = AC, sdd = 2 * R2;
+        const V = { q, R1, AC, sdT: frP(sdn, sdd), val: [AC, sdn / sdd] };
+        if (i === 0) return Object.assign(V, origOf('bas-4'));
+        const R1T = frT(r1n, 2), sb = frT(sbn, sbd), sd = frT(sdn, sdd), rat = frT(r1n, 2 * R2);
+        V.text = `<div>선분 $AC$를 공유하는 두 삼각형 $ABC$와 $ADC$의 외접원의 반지름의 길이가 각각 $R_1 = ${R1T}$, $R_2 = ${R2}$이다. $\\sin B = ${sb}$일 때, $\\sin D$의 값을 구하시오. (단, $0 < \\angle D < \\dfrac{\\pi}{2}$)</div>`;
+        V.names = P0('bas-4').steps.map(stepName);
+        V.steps = [
+          `$\\triangle ABC$의 외접원의 반지름이 $R_1 = ${R1T}$이고 $\\sin B = ${sb}$이므로 사인법칙에 의해<br/>$\\overline{AC} = 2R_1\\sin B = 2 \\times ${R1T} \\times ${sb} = \\mathbf{${AC}}$입니다.`,
+          `$\\triangle ADC$의 외접원의 반지름이 $R_2 = ${R2}$이므로 사인법칙에 의해<br/>$\\overline{AC} = 2R_2\\sin D = ${2 * R2}\\sin D$입니다.`,
+          `$${2 * R2}\\sin D = ${AC} \\implies \\mathbf{\\sin D = ${sd}}$입니다.<br/>(또는 $\\sin D = \\dfrac{R_1}{R_2}\\sin B = ${rat} \\times ${sb} = ${sd}$로 바로 계산할 수 있습니다.)`
+        ];
+        V.ans = `sin D = ${frP(sdn, sdd)}`;
+        V.alg = `<div class="font-bold text-amber-300 mb-1">두 풀이 비교 (공통현 계산 vs 반지름 비 직결)</div><div>1) <strong>기본 풀이</strong>: $\\overline{AC} = 2R_1\\sin B = ${AC}$를 먼저 구한 뒤 $\\sin D = \\dfrac{\\overline{AC}}{2R_2} = ${sd}$를 구합니다.</div><div>2) <strong>비례식 풀이</strong>: $R_1\\sin B = R_2\\sin D$에서 $\\sin D = \\dfrac{R_1}{R_2}\\sin B = ${rat} \\times ${sb} = ${sd}$입니다.</div>`;
+        V.aha = `$R_1\\sin B = R_2\\sin D$에 주어진 반지름 $R_1 = ${R1T}, R_2 = ${R2}$와 $\\sin B = ${sb}$를 대입하면 공통현 $\\overline{AC}=${AC}$와 함께 $\\sin D = ${sd}$가 곧바로 구해집니다.`;
+        return V;
+      },
+      draw(V, st, rect) {
+        const { R2 } = V.q, R1 = V.R1, AC = V.AC, sb = frP(V.q.sbn, V.q.sbd), r1t = frP(V.q.r1n, 2);
+        const G = twoCircles(rect, { R1, R2, h: AC / 2 }, st), { F, O1, O2, A, Cp, B, D } = G;
+        const rr = (O, R, ang) => ({ x: O.x + R * F.u * Math.cos(ang), y: O.y - R * F.u * Math.sin(ang) });
+        const r1p = rr(O1, R1, (225 * Math.PI) / 180), r2p = rr(O2, R2, (-45 * Math.PI) / 180);
+        dLine(O1, r1p, 'rgba(52,211,153,0.85)', 1.8, [4, 3]); dLine(O2, r2p, 'rgba(56,189,248,0.85)', 1.8, [4, 3]);
+        BRD.point(O1, { color: C.green, r: 3.5 }); BRD.point(O2, { color: C.cyan, r: 3.5 });
+        dBadge((O1.x + r1p.x) / 2 - 4, (O1.y + r1p.y) / 2 + 14, `R₁ = ${r1t}`, C.green);
+        dBadge((O2.x + r2p.x) / 2 + 6, (O2.y + r2p.y) / 2 + 14, `R₂ = ${R2}`, C.cyan);
+        dArcAngle(B, Cp, A, '', C.green, 26);
+        dBadge(rect.width / 2, 20, `sin B = ${sb}` + (st >= 3 ? `,  sin D = ${V.sdT}` : ''), C.gold);
+        if (st >= 1) dBadge(A.x, Cp.y + 26, `AC = 2R₁ sin B = ${AC}`, C.red);
+        if (st >= 2) {
+          dArcAngle(D, A, Cp, '', C.cyan, 26);
+          dBadge(O2.x, O2.y - R2 * F.u - 14, `AC = 2R₂ sin D = ${2 * R2} sin D`, C.cyan);
+        }
+        if (st >= 3) banner(rect, [`${2 * R2} sin D = ${AC}  →  sin D = ${V.sdT}`]);
+        const cen = { x: (O1.x + O2.x) / 2, y: O1.y };
+        nameV(A, 'A', cen); nameV(Cp, 'C', cen); nameV(B, 'B', cen, C.green); nameV(D, 'D', cen, C.cyan);
+      }
+    };
+
+    // ---------- 기본 5 · 두 수선의 발과 외접원 / 심화 1 · 넓이의 비 (공통 그림) ----------
+    function orthicGeom(a, cosA) {
+      const sinA = Math.sqrt(1 - cosA * cosA), Rs = a / (2 * sinA), Oy = Rs * cosA, off = 0.13;
+      const Bm = { x: -a / 2, y: 0 }, Cm = { x: a / 2, y: 0 }, Am = { x: Rs * Math.sin(off), y: Oy + Rs * Math.cos(off) };
+      return { Am, Bm, Cm, Dm: footPt(Bm, Am, Cm), Em: footPt(Cm, Am, Bm) };
+    }
+    function drawOrthic(V, st, rect, o) {
+      const { a, cosA, angLabel } = o, G = orthicGeom(a, cosA);
+      const F = FIT(rect, o.kind === 'bas-5' ? [G.Am, G.Bm, G.Cm, G.Dm, G.Em, { x: 0, y: -a / 2 }] : [G.Am, G.Bm, G.Cm, G.Dm, G.Em], { b: o.kind === 'bas-5' ? 76 : 120, l: 52, r: 52 });
+      const A = F.P(G.Am), B = F.P(G.Bm), Cp = F.P(G.Cm), D = F.P(G.Dm), E = F.P(G.Em), M = F.S(0, 0), cen = centOf([A, B, Cp]);
+      dPoly([A, B, Cp], 'rgba(56, 189, 248, 0.10)', C.cyan, 2.6);
+      dLine(B, D, 'rgba(251, 191, 36, 0.75)', 2.0, [5, 4]); dLine(Cp, E, 'rgba(251, 191, 36, 0.75)', 2.0, [5, 4]);
+      if (o.deAt > st) dLine(D, E, 'rgba(248,250,252,0.6)', 1.6, [4, 4]);
+      dArcAngle(A, B, Cp, '', C.gold, 24);
+      { const w = frWidth(txt(angLabel), 12 * BRD.fs).w + 16; dBadge(10 + w / 2, 20, angLabel, C.gold); }
+      if (!(o.kind === 'bas-5' && st >= 2)) drawDimension(B, Cp, 26, `BC = ${a}`, C.cyan);
+      if (st >= 1) { drawRightAngle(D, A, B, 11, C.gold); drawRightAngle(E, A, Cp, 11, C.gold); }
+      if (o.kind === 'bas-5' && st >= 2) {
+        dCircle(M, (a / 2) * F.u, C.purple, 'rgba(192, 132, 252, 0.08)', 2.6, [6, 4]);
+        dBadge(M.x, M.y + 0.45 * (a / 2) * F.u + 8, `지름 BC = ${a},  R = ${a / 2}`, C.purple);
+        BRD.point(M, { color: C.purple, r: 3.5 });
+      }
+      if (o.kind === 'adv-1' && st >= 1) {
+        eBadge(A, D, 'AD = AB cos A', C.green, cen, 2);
+        eBadge(A, E, 'AE = AC cos A', C.green, cen, 2);
+      }
+      if (st >= (o.deAt)) {
+        dPoly([A, D, E], 'rgba(251, 191, 36, 0.22)', C.gold, 2.8, true);
+        dArcAngle(D, A, E, 'x', C.cyan, 18); dArcAngle(B, A, Cp, 'x', C.cyan, 22);
+        dArcAngle(E, A, D, 'y', C.pink, 18, 2); dArcAngle(Cp, A, B, 'y', C.pink, 22, 2);
+        dLine(D, E, C.red, 3.0);
+        cornerBadgeR(0, `DE = ${o.deLabel}`, C.red);
+      }
+      nameV(B, 'B', cen); nameV(Cp, 'C', cen); nameV(A, 'A', cen);
+      dVertex(D, 'D', C.red, { x: 12, y: -4, align: 'left' }); dVertex(E, 'E', C.red, { x: -12, y: -4, align: 'right' });
+      if (st >= 3) banner(rect, o.final);
+    }
+    SPEC['bas-5'] = {
+      list: [{ a: 6, aT: '\\dfrac{\\pi}{3}', aP: 'π/3', rad: Math.PI / 3, c: ['1', '2'], de: '3', deT: '3' }, { a: 8, aT: '\\dfrac{\\pi}{3}', aP: 'π/3', rad: Math.PI / 3, c: ['1', '2'], de: '4', deT: '4' },
+        { a: 10, aT: '\\dfrac{\\pi}{4}', aP: 'π/4', rad: Math.PI / 4, c: ['\\sqrt{2}', '2'], de: '5√2', deT: '5\\sqrt{2}' }, { a: 12, aT: '\\dfrac{\\pi}{6}', aP: 'π/6', rad: Math.PI / 6, c: ['\\sqrt{3}', '2'], de: '6√3', deT: '6\\sqrt{3}' }, { a: 6, aT: '\\dfrac{\\pi}{4}', aP: 'π/4', rad: Math.PI / 4, c: ['\\sqrt{2}', '2'], de: '3√2', deT: '3\\sqrt{2}' }],
+      build(q, i) {
+        const V = { q, val: [q.a / 2, q.a * Math.cos(q.rad)] };
+        if (i === 0) return Object.assign(V, origOf('bas-5'));
+        const { a, aT, c, deT } = q, cosTx = `\\dfrac{${c[0]}}{${c[1]}}`, cosS = c[1] === '2' && c[0] === '1' ? '\\dfrac{1}{2}' : cosTx;
+        V.text = `<div>예각삼각형 $ABC$에서 $\\overline{BC} = ${a}$, $\\angle A = ${aT}$이다. 두 꼭짓점 $B, C$에서 변 $AC, AB$에 내린 수선의 발을 각각 $D, E$라 할 때, 네 점 $B, C, D, E$를 지나는 원의 반지름의 길이 $R$와 선분 $DE$의 길이를 구하시오.</div>`;
+        V.names = P0('bas-5').steps.map(stepName);
+        V.steps = [
+          '점 $B, C$에서 내린 수선의 발이 $D, E$이므로 $\\angle BDC = \\dfrac{\\pi}{2}$, $\\angle BEC = \\dfrac{\\pi}{2}$입니다.',
+          `선분 $BC$에 대한 원주각이 $\\dfrac{\\pi}{2}$이므로 네 점 $B, C, D, E$를 지나는 원의 **지름은 $\\overline{BC} = ${a}$**입니다.<br/>따라서 반지름 $R = \\dfrac{${a}}{2} = \\mathbf{${a / 2}}$입니다.`,
+          `직각삼각형 $ABD, ACE$에서 $\\dfrac{\\overline{AD}}{\\overline{AB}} = \\dfrac{\\overline{AE}}{\\overline{AC}} = \\cos A$이고 $\\angle A$가 공통이므로 $\\triangle ADE \\sim \\triangle ABC$입니다.<br/>$\\therefore \\overline{DE} = \\overline{BC}\\cos${aT} = ${a} \\times ${cosS} = \\mathbf{${deT}}$`
+        ];
+        V.ans = `반지름 R = ${a / 2}, DE = ${q.de.includes('√') ? '$' + deT + '$' : q.de}`;
+        V.alg = `<div class="font-bold text-amber-300 mb-1">코사인법칙을 이용한 대수적 증명 비교</div><div>$\\overline{AD} = c\\cos A$, $\\overline{AE} = b\\cos A$를 $\\triangle ADE$의 코사인법칙에 대입하면 $\\overline{DE}^2 = (b^2 + c^2 - 2bc\\cos A)\\cos^2 A = \\overline{BC}^2\\cos^2 A$가 되어 $\\overline{DE} = \\overline{BC}\\cos A = ${deT}$를 얻습니다. 닮음을 쓰면 이 계산이 한 줄로 끝납니다.</div>`;
+        V.aha = P0('bas-5').aha;
+        return V;
+      },
+      draw(V, st, rect) {
+        const { a, rad, aP, de } = V.q;
+        drawOrthic(V, st, rect, { kind: 'bas-5', a, cosA: Math.cos(rad), angLabel: `∠A = ${aP}`, deAt: 3, deLabel: `BC cos A = ${de}`, final: [`R = ${a / 2},  DE = ${a} cos ${aP} = ${de}`] });
+      }
+    };
+
+    // ---------- 기본 6 · 중선 / 심화 2 · 내분점 (공통 그림) ----------
+    function drawCevian(V, st, rect, o) {
+      const { a, b, c, BD } = o, T = triBy(a, b, c);
+      const F = FIT(rect, [T.A, T.B, T.C], { b: 124, l: 50, r: 50 });
+      const A = F.P(T.A), B = F.P(T.B), Cp = F.P(T.C), D = F.S(BD, 0), cen = centOf([A, B, Cp]);
+      dPoly([A, B, Cp], 'rgba(56, 189, 248, 0.12)', C.cyan, 2.6);
+      dLine(A, D, C.gold, 3.2, [], st >= 3);
+      eBadge(A, B, `AB = ${c}`, C.green, cen);
+      eBadge(A, Cp, `AC = ${b}`, C.cyan, cen);
+      if (o.mark === 'mid' && st >= 0) { markTick(B, D, 1, C.gold); markTick(D, Cp, 1, C.gold); }
+      if (o.mark === 'ratio') { markTick(B, D, 1, C.gold); markTick(D, Cp, 2, C.gold); }
+      if (st >= 1) {
+        drawDimension(B, D, 26, o.left, C.green); drawDimension(D, Cp, 26, o.right, C.cyan);
+      } else {
+        drawDimension(B, Cp, o.mark === 'mid' ? 46 : 26, `BC = ${a}`, C.white);
+        if (o.ratioText) dBadge(D.x, D.y + 62, o.ratioText, C.gold);
+      }
+      if (st >= 2) { dArcAngle(D, A, B, 'θ', C.red, 22); dArcAngle(D, Cp, A, 'π - θ', C.cyan, 28); }
+      nameV(B, 'B', cen); nameV(Cp, 'C', cen); nameV(A, 'A', cen);
+      dVertex(D, o.dName, C.gold, { x: 0, y: 17, align: 'center' });
+      if (st >= 3) banner(rect, o.final);
+    }
+    SPEC['bas-6'] = {
+      list: [{ c: 5, b: 7, a: 6 }, { c: 7, b: 9, a: 8 }, { c: 9, b: 13, a: 10 }, { c: 6, b: 10, a: 8 }, { c: 13, b: 11, a: 8 }],
+      build(q, i) {
+        const { c, b, a } = q, h = a / 2, AM2 = (c * c + b * b) / 2 - h * h;
+        const V = { q, AM2, val: [Math.sqrt(AM2)] };
+        if (i === 0) return Object.assign(V, origOf('bas-6'));
+        const aT = rtT(AM2);
+        V.text = `<div>삼각형 $ABC$에서 $\\overline{AB} = ${c}$, $\\overline{AC} = ${b}$, $\\overline{BC} = ${a}$이다. 변 $BC$의 중점을 $M$이라 할 때, 선분 $AM$의 길이를 구하시오.</div>`;
+        V.names = P0('bas-6').steps.map((s) => stepName(s).replace('(BM = CM = 3)', `(BM = CM = ${h})`));
+        V.names[0] = `중점 M에 의한 밑변 이등분 (BM = CM = ${h})`;
+        V.steps = [
+          `점 $M$이 $\\overline{BC}=${a}$의 중점이므로 $\\overline{BM} = \\overline{CM} = ${h}$입니다. 구하는 중선의 길이를 $\\overline{AM} = x$라 놓습니다.`,
+          `$\\angle AMB = \\theta$라 하면 $\\angle AMC = \\pi - \\theta$이므로<br/>$\\triangle ABM$: $${c}^2 = x^2 + ${h}^2 - ${2 * h}x\\cos\\theta$, $\\quad\\triangle ACM$: $${b}^2 = x^2 + ${h}^2 + ${2 * h}x\\cos\\theta$`,
+          `두 식을 변끼리 더하면 $${c * c} + ${b * b} = 2(x^2 + ${h * h}) \\implies ${c * c + b * b} = 2x^2 + ${2 * h * h}$<br/>$\\implies x^2 = ${AM2} \\implies \\mathbf{\\overline{AM} = ${aT}}$입니다.`
+        ];
+        V.ans = `AM = ${aT.includes('sqrt') ? '$' + aT + '$' : aT}`;
+        const cosB = frT(c * c + a * a - b * b, 2 * c * a);
+        V.alg = `<div class="font-bold text-amber-300 mb-1">전체 삼각형에서 cos B를 먼저 구하는 풀이</div><div>1) $\\triangle ABC$에서 코사인법칙으로 $\\cos B = \\dfrac{${c}^2 + ${a}^2 - ${b}^2}{2 \\times ${c} \\times ${a}} = ${cosB}$를 구합니다.</div><div>2) $\\triangle ABM$에서 다시 코사인법칙을 쓰면 $\\overline{AM}^2 = ${c}^2 + ${h}^2 - 2 \\times ${c} \\times ${h} \\times ${cosB} = ${AM2}$로 동일한 결과를 얻습니다. 중선정리($c^2 + b^2 = 2(AM^2 + BM^2)$)를 쓰면 한 번에 끝납니다.</div>`;
+        V.aha = P0('bas-6').aha;
+        return V;
+      },
+      draw(V, st, rect) {
+        const { c, b, a } = V.q, h = a / 2, aP = rtP(V.AM2);
+        drawCevian(V, st, rect, { a, b, c, BD: h, mark: 'mid', left: `BM = ${h}`, right: `CM = ${h}`, dName: 'M', final: [`${c * c} + ${b * b} = 2(AM² + ${h * h})`, `AM = ${aP}`] });
+      }
+    };
+
+    // ---------- 기본 7 · 내접원 ----------
+    SPEC['bas-7'] = {
+      list: [{ c: 5, a: 6, b: 7 }, { c: 13, a: 14, b: 15 }, { c: 8, a: 15, b: 17 }, { c: 9, a: 10, b: 17 }, { c: 14, a: 13, b: 15 }],
+      build(q, i) {
+        const { c, a, b } = q, s = (a + b + c) / 2, S2 = s * (s - a) * (s - b) * (s - c), S = Math.sqrt(S2), r = S / s;
+        const V = { q, s, S, r, AF: s - a, val: [s - a, r] };
+        { const [o, ii] = sq2(S2); const perfect = ii === 1; const g = gN(o, s), nu = o / g, de = s / g;
+          V.SP = perfect ? String(S) : `${o === 1 ? '' : o}√${ii}`;
+          V.rP = perfect ? frP(S, s) : `\\frac{${nu === 1 ? '' : nu}√${ii}}{${de}}`; }
+        if (i === 0) return Object.assign(V, origOf('bas-7'));
+        V.text = `<div>세 변의 길이가 $\\overline{AB} = ${c}$, $\\overline{BC} = ${a}$, $\\overline{CA} = ${b}$인 삼각형 $ABC$에 내접하는 원이 세 변 $AB, BC, CA$와 만나는 접점을 각각 $F, D, E$라 하자. 선분 $AF$의 길이와 내접원의 반지름의 길이 $r$를 구하시오.</div>`;
+        V.names = P0('bas-7').steps.map(stepName);
+        V.steps = [
+          `$\\overline{AF}=\\overline{AE}=x, \\overline{BF}=\\overline{BD}=y, \\overline{CD}=\\overline{CE}=z$라 하면<br/>$x + y + z = \\dfrac{${c} + ${a} + ${b}}{2} = \\mathbf{${s}}\;(=s)$입니다.`,
+          `$y + z = \\overline{BC} = ${a}$이므로<br/>$\\overline{AF} = x = (x + y + z) - (y + z) = ${s} - ${a} = \\mathbf{${s - a}}$입니다.`,
+          `$s = ${s}$이므로 헤론의 공식으로 $S = \\sqrt{${s} \\cdot ${s - a} \\cdot ${s - b} \\cdot ${s - c}} = ${S}$입니다.<br/>$S = ${s}r = ${S} \\implies \\mathbf{r = ${frT(S, s)}}$`
+        ];
+        V.ans = `AF = ${s - a}, r = ${Number.isInteger(r) ? r : '$' + frT(S, s) + '$'}`;
+        V.alg = `<div class="font-bold text-amber-300 mb-1">외접원 반지름 R와 내접원 반지름 r 구별법</div><div>1) <strong>내접원의 반지름 $r$</strong>: 세 삼각형 $\\triangle IAB, \\triangle IBC, \\triangle ICA$의 넓이의 합 $S = \\dfrac{1}{2}r(a+b+c) = rs$로 구합니다. 여기서는 $S = ${S}$, $s = ${s}$이므로 $r = ${frT(S, s)}$입니다.</div><div>2) <strong>외접원의 반지름 $R$</strong>은 사인법칙 $\\dfrac{a}{\\sin A} = 2R$로 구합니다.</div>`;
+        V.aha = P0('bas-7').aha;
+        return V;
+      },
+      draw(V, st, rect) {
+        const { c, a, b } = V.q, s = V.s, T = triBy(a, b, c), r = V.r;
+        const Im = { x: (a * T.A.x + b * T.B.x + c * T.C.x) / (a + b + c), y: (a * T.A.y + b * T.B.y + c * T.C.y) / (a + b + c) };
+        const Dm = footPt(Im, T.B, T.C), Em = footPt(Im, T.A, T.C), Fm = footPt(Im, T.A, T.B);
+        const F = FIT(rect, [T.A, T.B, T.C], { b: 118 });
+        const A = F.P(T.A), B = F.P(T.B), Cp = F.P(T.C), I = F.P(Im), D = F.P(Dm), E = F.P(Em), Fp = F.P(Fm), cen = centOf([A, B, Cp]);
+        dPoly([A, B, Cp], 'rgba(52, 211, 153, 0.10)', C.green, 2.5);
+        dCircle(I, r * F.u, C.gold, 'rgba(251, 191, 36, 0.10)', 2.6);
+        eBadge(A, B, `AB = ${c}`, C.green, cen, 8, 0.3); eBadge(A, Cp, `CA = ${b}`, C.cyan, cen, 8, 0.3);
+        if (st < 2) drawDimension(B, Cp, 26, `BC = ${a}`, C.white);
+        if (st >= 1) {
+          dLine(I, D, C.red, 2.2, [4, 3]); dLine(I, E, C.red, 2.2, [4, 3]); dLine(I, Fp, C.red, 2.2, [4, 3]);
+          drawRightAngle(D, B, I, 9, C.red); drawRightAngle(E, A, I, 9, C.red); drawRightAngle(Fp, A, I, 9, C.red);
+          BRD.point(I, { color: C.red, r: 3.5 });
+          dVertex(I, 'I', C.red, { x: -12, y: -10, align: 'right' });
+        }
+        if (st >= 2) {
+          dLine(A, Fp, C.gold, 3.6); dLine(A, E, C.gold, 3.6); dLine(B, Fp, C.green, 3.4); dLine(B, D, C.green, 3.4); dLine(Cp, D, C.cyan, 3.4); dLine(Cp, E, C.cyan, 3.4);
+          markTick(A, Fp, 1, C.gold); markTick(A, E, 1, C.gold); markTick(B, Fp, 2, C.green); markTick(B, D, 2, C.green); markTick(Cp, D, 3, C.cyan); markTick(Cp, E, 3, C.cyan);
+          drawDimension(B, D, 26, `BD = ${s - b}`, C.green); drawDimension(D, Cp, 26, `CD = ${s - c}`, C.cyan);
+          iBadge(A, Fp, `AF = ${s - a}`, C.gold, cen);
+        }
+        nameV(B, 'B', cen); nameV(Cp, 'C', cen); nameV(A, 'A', cen);
+        dVertex(D, 'D', C.red, { x: 0, y: -14, align: 'center' }); dVertex(E, 'E', C.red, { x: 13, y: -3, align: 'left' }); dVertex(Fp, 'F', C.red, { x: -13, y: -3, align: 'right' });
+        if (st >= 3) banner(rect, [`S = ${V.SP} = ${s}r  →  r = ${V.rP}`]);
+      }
+    };
+
+    // ---------- 기본 8 · 직각삼각형의 외접원과 내접원 ----------
+    SPEC['bas-8'] = {
+      list: [{ c: 6, b: 8 }, { c: 12, b: 16 }, { c: 10, b: 24 }, { c: 5, b: 12 }, { c: 9, b: 12 }],
+      build(q, i) {
+        const { c, b } = q, a = Math.round(hyp(c, b)), r = (c + b - a) / 2;
+        const V = { q, a, r, val: [a / 2 + r] };
+        if (i === 0) return Object.assign(V, origOf('bas-8'));
+        const Rt = frT(a, 2), sum = frT(a + 2 * r, 2);
+        V.text = `<div>$\\overline{AB} = ${c}$, $\\overline{AC} = ${b}$, $\\angle A = \\dfrac{\\pi}{2}$인 직각삼각형 $ABC$의 외접원의 반지름의 길이를 $R$, 내접원의 반지름의 길이를 $r$라 할 때, $R + r$의 값을 구하시오.</div>`;
+        V.names = ['피타고라스 정리와 빗변 지름으로 외접원 반지름 R 구하기', P0('bas-8').steps[1].title.replace(/^\d+단계\.\s*/, ''), 'R + r의 값을 계산합니다.'];
+        V.steps = [
+          `$\\overline{BC} = \\sqrt{${c}^2 + ${b}^2} = ${a}$이고, $\\angle A = \\dfrac{\\pi}{2}$인 직각삼각형의 외접원의 지름은 빗변 $\\overline{BC}$이므로<br/>$2R = ${a} \\implies \\mathbf{R = ${Rt}}$입니다.`,
+          `내접원의 접점 $E, F$에서 $\\angle A = \\angle AFI = \\angle AEI = \\dfrac{\\pi}{2}$이고 $\\overline{IF}=\\overline{IE}=r$이므로 사각형 $AFIE$는 정사각형입니다.<br/>따라서 $r = \\overline{AF} = \\dfrac{${c} + ${b} - ${a}}{2} = \\mathbf{${r}}$입니다.`,
+          `$R = ${Rt}, r = ${r}$이므로<br/>$\\therefore R + r = ${Rt} + ${r} = \\mathbf{${sum}}$`
+        ];
+        V.ans = `R = ${Number.isInteger(a / 2) ? a / 2 : '$' + Rt + '$'}, r = ${r}  →  R + r = ${Number.isInteger(a / 2 + r) ? a / 2 + r : '$' + sum + '$'}`;
+        V.alg = `<div class="font-bold text-amber-300 mb-1">삼각형의 넓이 공식 S = ½ r(a+b+c)를 이용한 검산</div><div>직각삼각형 $ABC$의 넓이는 $S = \\dfrac{1}{2} \\times ${c} \\times ${b} = ${c * b / 2}$입니다. 내접원의 반지름 $r$에 대하여 $S = \\dfrac{1}{2}r(${c} + ${b} + ${a}) = ${(c + b + a) / 2}r$이므로 $r = ${r}$가 되어 정사각형 접선 공식과 정확히 일치합니다.</div>`;
+        V.aha = P0('bas-8').aha;
+        return V;
+      },
+      draw(V, st, rect) {
+        const { c, b } = V.q, a = V.a, R = a / 2, r = V.r;
+        const F = FIT(rect, [{ x: b / 2 - R, y: c / 2 - R }, { x: b / 2 + R, y: c / 2 + R }, { x: 0, y: 0 }, { x: b, y: 0 }, { x: 0, y: c }], { b: 100, l: 50, r: 50 });
+        const A = F.S(0, 0), B = F.S(0, c), Cp = F.S(b, 0), M = F.S(b / 2, c / 2), I = F.S(r, r), E = F.S(r, 0), Fp = F.S(0, r), cen = centOf([A, B, Cp]);
+        dCircle(M, R * F.u, 'rgba(56, 189, 248, 0.7)', 'rgba(56, 189, 248, 0.05)', 2.4, [6, 4]);
+        dPoly([A, B, Cp], 'rgba(52, 211, 153, 0.12)', C.green, 2.8);
+        drawRightAngle(A, Cp, B, 12, C.white);
+        dCircle(I, r * F.u, C.gold, 'rgba(251, 191, 36, 0.14)', 2.6);
+        eBadge(A, B, `AB = ${c}`, C.green, cen); drawDimension(A, Cp, 24, `AC = ${b}`, C.green);
+        if (st >= 1) {
+          BRD.point(M, { color: C.cyan, r: 3.5 }); markTick(B, M, 2, C.cyan); markTick(M, Cp, 2, C.cyan);
+          dLine(B, Cp, C.cyan, 3.2);
+          eBadge(B, Cp, `BC = ${a}  (지름)`, C.cyan, cen, 14);
+        }
+        if (st >= 2) {
+          dPoly([A, E, I, Fp], 'rgba(251, 191, 36, 0.28)', C.gold, 2.2);
+          drawRightAngle(E, A, I, 9, C.gold); drawRightAngle(Fp, A, I, 9, C.gold);
+          markTick(A, E, 1, C.white); markTick(E, I, 1, C.white); markTick(I, Fp, 1, C.white); markTick(Fp, A, 1, C.white);
+          BRD.point(I, { color: C.gold, r: 3.5 });
+          dBadge(I.x + 26, I.y - 14, `r = ${r}`, C.gold);
+        }
+        nameV(B, 'B', cen); nameV(Cp, 'C', cen);
+        dVertex(A, 'A', C.white, { x: -12, y: 14, align: 'right' });
+        if (st >= 3) banner(rect, [`R = ${frP(a, 2)},  r = ${r}  →  R + r = ${frP(a + 2 * r, 2)}`]);
+      }
+    };
+
+    // ---------- 심화 1 · 두 수선의 발과 넓이의 비 ----------
+    SPEC['adv-1'] = {
+      list: [{ a: 5, cn: 3, cd: 5 }, { a: 10, cn: 4, cd: 5 }, { a: 13, cn: 5, cd: 13 }, { a: 25, cn: 7, cd: 25 }, { a: 15, cn: 3, cd: 5 }],
+      build(q, i) {
+        const { a, cn, cd } = q, de = (a * cn) / cd;
+        const V = { q, de, val: [de, (cn * cn) / (cd * cd)] };
+        if (i === 0) return Object.assign(V, origOf('adv-1'));
+        const cosT = frT(cn, cd), rT = frT(cn * cn, cd * cd);
+        V.text = `<div>예각삼각형 $ABC$에서 $\\overline{BC} = ${a}$, $\\cos A = ${cosT}$이다. 두 꼭짓점 $B, C$에서 변 $AC, AB$에 내린 수선의 발을 각각 $D, E$라 할 때, 선분 $DE$의 길이와 두 삼각형 $ADE, ABC$의 넓이의 비 $\\dfrac{\\text{넓이}(\\triangle ADE)}{\\text{넓이}(\\triangle ABC)}$를 구하시오.</div>`;
+        V.names = ['직각삼각형에서 AD, AE를 cos A로 나타내기', `SAS 닮음(닮음비 cos A = ${frP(cn, cd)})으로 DE의 길이 구하기`, '닮음비의 제곱으로 넓이의 비 구하기'];
+        V.steps = [
+          P0('adv-1').steps[0].desc,
+          `$\\triangle ADE$와 $\\triangle ABC$에서 $\\dfrac{\\overline{AD}}{\\overline{AB}} = \\dfrac{\\overline{AE}}{\\overline{AC}} = \\cos A = ${cosT}$이고 $\\angle A$가 공통이므로 $\\triangle ADE \\sim \\triangle ABC$입니다.<br/>$\\therefore \\overline{DE} = \\overline{BC}\\cos A = ${a} \\times ${cosT} = \\mathbf{${de}}$`,
+          `닮음인 두 평면도형의 넓이의 비는 닮음비의 제곱과 같으므로<br/>$\\dfrac{\\text{넓이}(\\triangle ADE)}{\\text{넓이}(\\triangle ABC)} = \\cos^2 A = \\left(${cosT}\\right)^2 = \\mathbf{${rT}}$입니다.`
+        ];
+        V.ans = `DE = ${de}, 넓이의 비 = ${frP(cn * cn, cd * cd)}`;
+        V.alg = `<div class="font-bold text-amber-300 mb-1">삼각형의 넓이 공식 S = ½ bc sin A를 이용한 직접 계산 비교</div><div>1) $\\text{넓이}(\\triangle ABC) = \\dfrac{1}{2}\\overline{AB}\\cdot\\overline{AC}\\sin A$입니다.</div><div>2) $\\text{넓이}(\\triangle ADE) = \\dfrac{1}{2}(\\overline{AB}\\cos A)(\\overline{AC}\\cos A)\\sin A$이므로 넓이의 비는 $\\cos^2 A = ${rT}$입니다. 닮음비를 보면 이 계산 없이 바로 나옵니다.</div>`;
+        V.aha = P0('adv-1').aha;
+        return V;
+      },
+      draw(V, st, rect) {
+        const { a, cn, cd } = V.q, cosP = frP(cn, cd);
+        drawOrthic(V, st, rect, {
+          kind: 'adv-1', a, cosA: cn / cd, angLabel: `cos A = ${cosP}`, deAt: 2, deLabel: `${a} × ${cosP} = ${V.de}`,
+          final: [`닮음비 ${cosP}  →  넓이의 비 = (${cosP})² = ${frP(cn * cn, cd * cd)}`]
+        });
+      }
+    };
+
+    // ---------- 심화 2 · 내분점 ----------
+    SPEC['adv-2'] = {
+      list: [{ c: 5, b: 6, a: 6, m: 1, n: 2 }, { c: 4, b: 7, a: 9, m: 1, n: 2 }, { c: 6, b: 10, a: 12, m: 1, n: 3 }, { c: 7, b: 8, a: 9, m: 1, n: 2 }, { c: 5, b: 6, a: 3, m: 1, n: 2 }],
+      build(q, i) {
+        const { c, b, a, m, n } = q, BD = (a * m) / (m + n), CD = a - BD;
+        const N = n * c * c + m * b * b, AD2n = N * (m + n) - m * n * a * a, AD2d = (m + n) * (m + n); // AD² = AD2n / AD2d
+        const V = { q, BD, CD, AD2: AD2n / AD2d, val: [AD2n / AD2d] };
+        if (i === 0) return Object.assign(V, origOf('adv-2'));
+        const adT = frT(AD2n, AD2d);
+        V.text = `<div>삼각형 $ABC$에서 $\\overline{AB} = ${c}$, $\\overline{AC} = ${b}$, $\\overline{BC} = ${a}$이다. 변 $BC$를 $${m} : ${n}$으로 내분하는 점을 $D$라 할 때, 선분 $AD$의 길이의 제곱 $\\overline{AD}^2$의 값을 구하시오.</div>`;
+        V.names = [`${m} : ${n} 내분점 D에 의한 밑변 길이 분할 (BD = ${BD}, CD = ${CD})`, '인접한 두 보각 θ와 π - θ에서 코사인법칙 세우기', `${n}×㉠ + ${m}×㉡으로 cos θ를 소거하여 AD² 구하기`];
+        V.steps = [
+          `$\\overline{BC} = ${a}$를 $${m} : ${n}$으로 내분하므로 $\\overline{BD} = ${BD}$, $\\overline{CD} = ${CD}$입니다. 구하는 길이를 $\\overline{AD} = x$라 놓습니다.`,
+          `$\\angle ADB = \\theta, \\angle ADC = \\pi - \\theta$라 하면<br/>$\\triangle ABD$: $${c}^2 = x^2 + ${BD}^2 - ${2 * BD}x\\cos\\theta$ $\\cdots$ ㉠, $\\quad\\triangle ACD$: $${b}^2 = x^2 + ${CD}^2 + ${2 * CD}x\\cos\\theta$ $\\cdots$ ㉡`,
+          `$${n}\\times ${c * c} + ${m}\\times ${b * b} = ${n}(x^2 + ${BD * BD}) + ${m}(x^2 + ${CD * CD}) \\implies ${N} = ${m + n}x^2 + ${n * BD * BD + m * CD * CD}$<br/>$\\implies ${m + n}x^2 = ${N - n * BD * BD - m * CD * CD} \\implies \\mathbf{\\overline{AD}^2 = ${adT}}$입니다.`
+        ];
+        V.ans = `AD² = ${frP(AD2n, AD2d)}`;
+        const cosB = frT(c * c + a * a - b * b, 2 * c * a);
+        V.alg = `<div class="font-bold text-amber-300 mb-1">전체 삼각형의 cos B 대입법과 인접 보각을 이용한 풀이 비교</div><div>1) <strong>cos B 대입 풀이</strong>: $\\triangle ABC$에서 $\\cos B = \\dfrac{${c}^2+${a}^2-${b}^2}{2\\cdot ${c}\\cdot ${a}} = ${cosB}$를 구한 뒤, $\\triangle ABD$에서 $\\overline{AD}^2 = ${c}^2 + ${BD}^2 - 2\\cdot ${c}\\cdot ${BD}\\cdot ${cosB} = ${adT}$를 얻습니다.</div><div>2) <strong>인접 보각을 이용한 풀이</strong>: 두 식에서 $\\cos\\theta$ 항이 서로 소거되도록 곱해 더하면 전체 삼각형의 각을 구하지 않고도 같은 값이 나옵니다.</div>`;
+        V.aha = P0('adv-2').aha;
+        return V;
+      },
+      draw(V, st, rect) {
+        const { c, b, a, m, n } = V.q;
+        drawCevian(V, st, rect, {
+          a, b, c, BD: V.BD, mark: 'ratio', left: `BD = ${V.BD}`, right: `CD = ${V.CD}`, dName: 'D', ratioText: `BD : DC = ${m} : ${n}`,
+          final: [`${n}×(위 식) + ${m}×(아래 식) → ${(m + n)}AD² = ${n * c * c + m * b * b - n * V.BD * V.BD - m * V.CD * V.CD}`, `AD² = ${frP(V.AD2 * (m + n) * (m + n), (m + n) * (m + n))}`]
+        });
+      }
+    };
+
+    // ---------- 심화 3 · 접선과 할선 ----------
+    SPEC['adv-3'] = {
+      list: [{ R2: 12, PO: 6 }, { R2: 9, PO: 5 }, { R2: 25, PO: 13 }, { R2: 36, PO: 10 }, { R2: 16, PO: 8 }],
+      build(q, i) {
+        const { R2, PO } = q, PT2 = PO * PO - R2;
+        const V = { q, PT2, Rt: rtT(R2), RP: rtP(R2), val: [Math.sqrt(PT2), PT2] };
+        if (i === 0) return Object.assign(V, origOf('adv-3'));
+        const Rt = rtT(R2), ptT = rtT(PT2);
+        V.text = `<div>반지름의 길이가 $R = ${Rt}$인 원의 중심 $O$로부터의 거리가 $\\overline{PO} = ${PO}$인 원 밖의 점 $P$가 있다. 점 $P$에서 원에 그은 접선의 접점을 $T$라 하고, 점 $P$를 지나는 직선이 원과 만나는 두 점을 $A, B$라 할 때, 선분 $PT$의 길이와 $\\overline{PA} \\cdot \\overline{PB}$의 값을 구하시오.</div>`;
+        V.names = P0('adv-3').steps.map(stepName);
+        V.steps = [
+          `원의 접선과 반지름은 접점 $T$에서 수직($\\angle PTO = \\dfrac{\\pi}{2}$)이므로 피타고라스 정리에 의해<br/>$\\overline{PT}^2 = \\overline{PO}^2 - R^2 = ${PO}^2 - (${Rt})^2 = ${PO * PO} - ${R2} = ${PT2} \\implies \\mathbf{\\overline{PT} = ${ptT}}$입니다.`,
+          `$\\angle APO = \\theta$라 하고 원 위의 교점까지의 거리를 $x$라 하면 코사인법칙에 의해<br/>$(${Rt})^2 = x^2 + ${PO}^2 - 2\\cdot ${PO}\\cdot x\\cos\\theta \\implies x^2 - (${2 * PO}\\cos\\theta)x + ${PT2} = 0$입니다.`,
+          `위 이차방정식의 두 근이 $\\overline{PA}, \\overline{PB}$이므로 근과 계수의 관계에 의해<br/>$\\mathbf{\\overline{PA} \\cdot \\overline{PB} = ${PT2}}\;(=\\overline{PT}^2)$로 할선의 각도와 관계없이 일정합니다.`
+        ];
+        V.ans = `PT = ${ptT.includes('sqrt') ? '$' + ptT + '$' : ptT}, PA · PB = ${PT2}`;
+        V.alg = `<div class="font-bold text-amber-300 mb-1">두 근의 합(PA + PB)의 기하적 의미 비교</div><div>1) <strong>두 근의 곱</strong>: $\\overline{PA} \\cdot \\overline{PB} = \\overline{PT}^2 = \\overline{PO}^2 - R^2 = ${PT2}$입니다.</div><div>2) <strong>두 근의 합</strong>: $\\overline{PA} + \\overline{PB} = 2\\overline{PO}\\cos\\theta$이므로 할선의 각에 따라 달라지지만, 곱은 변하지 않습니다.</div>`;
+        V.aha = P0('adv-3').aha;
+        return V;
+      },
+      draw(V, st, rect) {
+        const { R2, PO } = V.q, R = Math.sqrt(R2), PT = Math.sqrt(V.PT2);
+        const sinp = (0.5 * R) / PO, ph = Math.asin(sinp), dPerp = PO * sinp, pm = PO * Math.cos(ph), hc = Math.sqrt(R * R - dPerp * dPerp);
+        const Pm = { x: -PO, y: 0 }, Om = { x: 0, y: 0 };
+        const Am = { x: Pm.x + (pm - hc) * Math.cos(ph), y: (pm - hc) * Math.sin(ph) }, Bm = { x: Pm.x + (pm + hc) * Math.cos(ph), y: (pm + hc) * Math.sin(ph) };
+        const tt = Math.asin(R / PO), Tm = { x: Pm.x + PT * Math.cos(tt), y: -PT * Math.sin(tt) };
+        const F = FIT(rect, [Pm, { x: R, y: R }, { x: R, y: -R }, { x: -R, y: R }, Tm, Bm], { b: 100, l: 40, r: 40 });
+        const P = F.P(Pm), O = F.P(Om), A = F.P(Am), B = F.P(Bm), T = F.P(Tm), cen = O;
+        dCircle(O, R * F.u, 'rgba(56, 189, 248, 0.7)', 'rgba(56, 189, 248, 0.05)', 2.4);
+        dLine(P, O, 'rgba(255, 255, 255, 0.4)', 1.8, [5, 4]);
+        dLine(P, B, C.gold, 2.8);
+        dLine(P, T, C.red, 2.4);
+        const rEnd = F.S(R, 0);
+        dLine(O, rEnd, 'rgba(56,189,248,0.9)', 1.8, [4, 3]);
+        dBadge((O.x + rEnd.x) / 2 + 6, O.y + 20, `R = ${V.RP}`, C.cyan);
+        dBadge((P.x + O.x) / 2, P.y + 20, `PO = ${PO}`, C.white);
+        if (st >= 1) {
+          dPoly([P, O, T], 'rgba(251, 113, 133, 0.14)', C.red, 2.2);
+          drawRightAngle(T, P, O, 11, C.red);
+          dBadge((P.x + T.x) / 2 - 24, (P.y + T.y) / 2 + 22, `PT = ${rtP(V.PT2)}`, C.red);
+        }
+        if (st >= 2) {
+          dLine(O, A, C.cyan, 1.8, [4, 3]); dLine(O, B, C.cyan, 1.8, [4, 3]);
+          markTick(O, A, 1, C.cyan); markTick(O, B, 1, C.cyan); markTick(O, T, 1, C.cyan);
+          dArcAngle(P, O, B, 'θ', C.gold, 30);
+        }
+        dVertex(O, 'O', C.white, { x: 0, y: -16, align: 'center' });
+        nameV(P, 'P', cen); nameV(A, 'A', cen, C.gold); nameV(B, 'B', cen, C.gold); nameV(T, 'T', cen, C.red);
+        if (st >= 3) banner(rect, [`x² - (${2 * PO} cosθ)x + ${V.PT2} = 0 의 두 근 PA, PB`, `PA · PB = PT² = ${V.PT2}`]);
+      }
+    };
+
+    // ---------- 심화 4 · 두 할선 ----------
+    SPEC['adv-4'] = {
+      list: [{ PA: 3, PB: 8, PC: 4 }, { PA: 2, PB: 9, PC: 3 }, { PA: 3, PB: 10, PC: 5 }, { PA: 4, PB: 10, PC: 5 }, { PA: 5, PB: 12, PC: 6 }],
+      build(q, i) {
+        const { PA, PB, PC } = q, PD = (PA * PB) / PC;
+        const V = { q, PD, val: [PD, PA / PC] };
+        if (i === 0) return Object.assign(V, origOf('adv-4'));
+        const rt = frT(PA, PC);
+        V.text = `<div>원 밖의 한 점 $P$에서 원에 그은 두 할선이 원과 만나는 점을 각각 $A, B$ ($\\overline{PA} < \\overline{PB}$)와 $C, D$ ($\\overline{PC} < \\overline{PD}$)라 하자. $\\overline{PA} = ${PA}$, $\\overline{PB} = ${PB}$, $\\overline{PC} = ${PC}$일 때, 선분 $PD$의 길이와 두 선분 $AD, BC$의 길이의 비 $\\dfrac{\\overline{AD}}{\\overline{BC}}$를 구하시오.</div>`;
+        V.names = P0('adv-4').steps.map(stepName);
+        V.steps = [
+          P0('adv-4').steps[0].desc,
+          `대응변의 길이의 비가 같으므로 $\\overline{PA} \\cdot \\overline{PB} = \\overline{PC} \\cdot \\overline{PD}$입니다.<br/>$${PA} \\times ${PB} = ${PC} \\times \\overline{PD} \\implies \\mathbf{\\overline{PD} = ${PD}}$입니다.`,
+          `$\\triangle PAD \\sim \\triangle PCB$의 닮음비는 $\\overline{PA} : \\overline{PC} = ${PA} : ${PC}$이므로<br/>$\\therefore \\mathbf{\\dfrac{\\overline{AD}}{\\overline{BC}} = \\dfrac{\\overline{PA}}{\\overline{PC}} = ${rt}}$`
+        ];
+        V.ans = `PD = ${PD}, AD / BC = ${frP(PA, PC)}`;
+        V.alg = `<div class="font-bold text-amber-300 mb-1">오답 함정 분석 (닮음 대응점 순서 주의)</div><div>1) $\\overline{PA} \\times \\overline{AB}$가 아니라 원 밖의 점 $P$에서부터 잰 **$\\overline{PA} \\times \\overline{PB} = \\overline{PC} \\times \\overline{PD}$**입니다.</div><div>2) $\\triangle PAD$와 $\\triangle PCB$는 $A \\leftrightarrow C$, $D \\leftrightarrow B$가 엇갈려 대응하므로 $\\overline{AD} : \\overline{BC}$는 $\\overline{PA} : \\overline{PB}$가 아니라 **$\\overline{PA} : \\overline{PC} = ${PA} : ${PC}$**입니다.</div>`;
+        V.aha = `사각형 $ABDC$가 원에 내접하므로 내대각 성질에 의해 **$\\angle PAD = \\angle PCB$**입니다. 따라서 공통각 $\\angle P$를 공유하는 **$\\triangle PAD$와 $\\triangle PCB$는 뒤집힌 AA 닮음**이며, 닮음비는 $\\overline{PA} : \\overline{PC} = ${PA} : ${PC}$입니다.`;
+        return V;
+      },
+      draw(V, st, rect) {
+        const { PA, PB, PC } = V.q, PD = V.PD, k = PA * PB, PO = (Math.max(PA + PB, PC + PD) / 2) * 1.12, R = Math.sqrt(PO * PO - k);
+        const t1 = Math.acos((PA + PB) / (2 * PO)), t2 = Math.acos((PC + PD) / (2 * PO));
+        const Pm = { x: 0, y: 0 }, Om = { x: PO, y: 0 };
+        const pol = (d, t, sg) => ({ x: d * Math.cos(t), y: sg * d * Math.sin(t) });
+        const Am = pol(PA, t1, 1), Bm = pol(PB, t1, 1), Cm = pol(PC, t2, -1), Dm = pol(PD, t2, -1);
+        const F = FIT(rect, [Pm, { x: PO + R, y: R }, { x: PO + R, y: -R }, { x: PO - R, y: R }, { x: PO - R, y: -R }], { b: 110, l: 50, r: 40, t: 70 });
+        const P = F.P(Pm), O = F.P(Om), A = F.P(Am), B = F.P(Bm), Cp = F.P(Cm), D = F.P(Dm), cen = O;
+        dCircle(O, R * F.u, 'rgba(56, 189, 248, 0.65)', 'rgba(56, 189, 248, 0.04)', 2.3);
+        dLine(P, B, C.gold, 2.6); dLine(P, D, C.green, 2.6);
+        if (st < 1) { dLine(A, D, 'rgba(248,250,252,0.55)', 1.5, [4, 4]); dLine(Cp, B, 'rgba(248,250,252,0.55)', 1.5, [4, 4]); }
+        dBadge(A.x - 6, A.y - 28, `PA = ${PA}`, C.gold); dBadge(B.x, B.y - 34, `PB = ${PB}`, C.gold);
+        { const w = frWidth(txt(`PC = ${PC}`), 12 * BRD.fs).w + 16; dBadge(Cp.x - w / 2 - 8, Cp.y + 26, `PC = ${PC}`, C.green); }
+        if (st >= 1) {
+          dPoly([A, B, D, Cp], 'rgba(56, 189, 248, 0.08)', 'rgba(56, 189, 248, 0.45)', 1.6, false);
+          dArcAngle(A, P, D, '', C.gold, 20); dArcAngle(Cp, P, B, '', C.gold, 20);
+        }
+        if (st >= 2) {
+          dPoly([P, A, D], 'rgba(251, 191, 36, 0.16)', C.gold, 2.5); dPoly([P, Cp, B], 'rgba(52, 211, 153, 0.16)', C.green, 2.5);
+          dArcAngle(P, B, D, '', C.cyan, 40, 2);
+          dBadge(D.x, D.y + 32, `PD = ${PD}`, C.green);
+        }
+        nameV(P, 'P', cen); nameV(A, 'A', cen, C.gold); nameV(B, 'B', cen, C.gold); nameV(Cp, 'C', cen, C.green); nameV(D, 'D', cen, C.green);
+        if (st >= 3) banner(rect, [`PA·PB = PC·PD  →  PD = ${PD}`, `AD : BC = PA : PC = ${PA} : ${PC}`]);
+      }
+    };
+
+    // ---------- 심화 5 · 내접 정삼각형과 원 위의 점 ----------
+    SPEC['adv-5'] = {
+      list: [{ pa: 3, pc: 5 }, { pa: 7, pc: 8 }, { pa: 5, pc: 16 }, { pa: 11, pc: 24 }],
+      build(q, i) {
+        const { pa, pc } = q, AC2 = pa * pa + pc * pc + pa * pc, AC = Math.round(Math.sqrt(AC2));
+        const V = { q, AC, val: [AC, pa + pc] };
+        if (i === 0) return Object.assign(V, origOf('adv-5'));
+        const PB = pa + pc;
+        V.text = `<div>원에 내접하는 정삼각형 $ABC$에서 꼭짓점 $B$를 포함하지 않는 호 $AC$ 위의 한 점 $P$에 대하여 $\\overline{PA} = ${pa}$, $\\overline{PC} = ${pc}$이다. 정삼각형 $ABC$의 한 변의 길이와 선분 $PB$의 길이를 구하시오.</div>`;
+        V.names = ['∠APC = 2π/3와 코사인법칙으로 한 변의 길이 AC 구하기', `선분 PB 위에 PK = PA = ${pa}인 점 K 잡아 정삼각형 APK 만들기`, `△ABK ≡ △CBP (SAS 합동)로 PB = PA + PC = ${PB}를 구합니다.`];
+        V.steps = [
+          `내접사각형 $ABCP$에서 $\\angle APC = \\pi - \\dfrac{\\pi}{3} = \\dfrac{2\\pi}{3}$이므로 $\\triangle APC$에서 코사인법칙을 쓰면<br/>$\\overline{AC}^2 = ${pa}^2 + ${pc}^2 - 2\\cdot ${pa}\\cdot ${pc}\\cos\\dfrac{2\\pi}{3} = ${pa * pa} + ${pc * pc} + ${pa * pc} = ${AC2} \\implies \\mathbf{\\overline{AC} = ${AC}}$입니다.`,
+          `호 $BC$에 대한 원주각으로 $\\angle APB = \\angle ACB = \\dfrac{\\pi}{3}$이므로,<br/>$\\overline{PK} = \\overline{PA} = ${pa}$인 점 $K$를 잡으면 $\\triangle APK$는 한 변의 길이가 $${pa}$인 정삼각형입니다.`,
+          `$\\overline{AB}=\\overline{CB}=${AC}$, $\\overline{AK}=\\overline{AP}=${pa}$, $\\angle BAK = \\dfrac{\\pi}{3} - \\angle KAC = \\angle BCP$이므로 $\\triangle ABK \\equiv \\triangle CBP$입니다.<br/>따라서 $\\overline{BK} = \\overline{PC} = ${pc}$이므로 $\\mathbf{\\overline{PB} = \\overline{PK} + \\overline{BK} = ${pa} + ${pc} = ${PB}}$입니다.`
+        ];
+        V.ans = `한 변 AC = ${AC}, PB = ${PB}`;
+        V.alg = `<div class="font-bold text-amber-300 mb-1">코사인법칙 이차방정식 풀이 및 닮은 삼각형을 이용한 풀이 비교</div><div>1) <strong>코사인법칙 풀이</strong>: $\\triangle APB$에서 $\\overline{PB}=x, \\angle APB = \\dfrac{\\pi}{3}$로 놓고 $${AC}^2 = ${pa}^2 + x^2 - 2\\cdot ${pa}\\cdot x\\cos\\dfrac{\\pi}{3} \\implies x^2 - ${pa}x - ${AC2 - pa * pa} = 0 \\implies (x-${PB})(x+${pc})=0$에서 $x = ${PB}$을 얻습니다.</div><div>2) <strong>참고(내접사각형 대각선 관계식)</strong>: 한 변의 길이 $L=${AC}$에 대하여 $L\\cdot\\overline{PA} + L\\cdot\\overline{PC} = L\\cdot\\overline{PB}$를 약분하면 $\\overline{PA} + \\overline{PC} = \\overline{PB} = ${PB}$입니다.</div>`;
+        V.aha = P0('adv-5').aha;
+        return V;
+      },
+      draw(V, st, rect) {
+        const { pa, pc } = V.q, AC = V.AC, R = AC / Math.sqrt(3), PBv = pa + pc;
+        const pt = (deg) => ({ x: R * Math.cos((deg * Math.PI) / 180), y: R * Math.sin((deg * Math.PI) / 180) });
+        const Am = pt(210), Bm = pt(90), Cm = pt(330);
+        const degP = 210 + (2 * Math.asin(pa / (2 * R)) * 180) / Math.PI, Pm = pt(degP);
+        const uPB = { x: (Bm.x - Pm.x) / PBv, y: (Bm.y - Pm.y) / PBv }, Km = { x: Pm.x + pa * uPB.x, y: Pm.y + pa * uPB.y };
+        const F = FIT(rect, [{ x: -R, y: -R }, { x: R, y: R }], { b: 130, l: 52, r: 52 });
+        const O = F.S(0, 0), A = F.P(Am), B = F.P(Bm), Cp = F.P(Cm), P = F.P(Pm), K = F.P(Km), cen = O;
+        dCircle(O, R * F.u, 'rgba(56, 189, 248, 0.65)', 'rgba(56, 189, 248, 0.04)', 2.3);
+        dPoly([A, B, Cp], 'rgba(52, 211, 153, 0.12)', C.green, 2.6);
+        dLine(P, A, C.cyan, 2.8); dLine(P, Cp, C.cyan, 2.8);
+        dLine(P, B, st >= 3 ? C.gold : 'rgba(251,191,36,0.7)', st >= 3 ? 3.2 : 2, st >= 3 ? [] : [5, 4]);
+        eBadge(P, A, `PA = ${pa}`, C.cyan, cen, 2); eBadge(P, Cp, `PC = ${pc}`, C.cyan, cen, 2);
+        if (st >= 1) {
+          dArcAngle(P, Cp, A, '', C.cyan, 30);
+          markTick(A, B, 2, C.green); markTick(B, Cp, 2, C.green); markTick(A, Cp, 2, C.green);
+          cornerBadge(0, `한 변 AC = ${AC}`, C.green); cornerBadge(1, '∠APC = 120°', C.cyan);
+        }
+        if (st >= 2) {
+          dArcAngle(P, A, B, '', C.gold, 22);
+          cornerBadge(2, '∠APB = 60°', C.gold);
+          dPoly([A, P, K], 'rgba(251, 191, 36, 0.24)', C.gold, 2.4, true);
+          markTick(P, A, 1, C.gold); markTick(P, K, 1, C.gold); markTick(A, K, 1, C.gold);
+          dVertex(K, 'K', C.gold, { x: 12, y: 8, align: 'left' });
+        }
+        if (st >= 3) {
+          dPoly([A, B, K], 'rgba(244, 114, 182, 0.18)', C.pink, 2.2); dPoly([Cp, B, P], 'rgba(56, 189, 248, 0.14)', C.cyan, 2.2);
+        }
+        nameV(B, 'B', cen); nameV(A, 'A', cen); nameV(Cp, 'C', cen); nameV(P, 'P', cen, C.gold);
+        if (st >= 3) banner(rect, ['△ABK ≡ △CBP  →  BK = PC = ' + pc, `PB = PK + BK = ${pa} + ${pc} = ${PBv}`]);
+      }
+    };
+
+    // ---------- 심화 6 · 내접사각형과 대각선의 곱 ----------
+    SPEC['adv-6'] = {
+      list: [{ AB: 3, BC: 5, CD: 8, DA: 3, AC: 7 }, { AB: 5, BC: 3, CD: 8, DA: 3, AC: 7 }, { AB: 7, BC: 8, CD: 15, DA: 8, AC: 13 }, { AB: 5, BC: 16, CD: 21, DA: 16, AC: 19 }],
+      build(q, i) {
+        const { AB, BC, CD, DA, AC } = q, num = AB * CD + BC * DA, BD = num / AC;
+        const V = { q, BD, val: [BD] };
+        if (i === 0) return Object.assign(V, origOf('adv-6'));
+        const bdT = frT(num, AC);
+        V.text = `<div>원에 내접하는 사각형 $ABCD$에서 $\\overline{AB} = ${AB}$, $\\overline{BC} = ${BC}$, $\\overline{CD} = ${CD}$, $\\overline{DA} = ${DA}$이고 대각선 $\\overline{AC} = ${AC}$일 때, 다른 대각선 $\\overline{BD}$의 길이를 구하시오.</div>`;
+        V.names = P0('adv-6').steps.map(stepName);
+        V.steps = [
+          P0('adv-6').steps[0].desc,
+          P0('adv-6').steps[1].desc,
+          `두 식을 더하면 $\\overline{AB}\\cdot\\overline{CD} + \\overline{BC}\\cdot\\overline{DA} = \\overline{BD}(\\overline{AK}+\\overline{KC}) = \\overline{AC}\\cdot\\overline{BD}$입니다.<br/>$${AB}\\times ${CD} + ${BC}\\times ${DA} = ${AC}\\times\\overline{BD} \\implies ${num} = ${AC}\\overline{BD} \\implies \\mathbf{\\overline{BD} = ${bdT}}$`
+        ];
+        V.ans = `BD = ${frP(num, AC)}`;
+        const cosB = frT(AB * AB + BC * BC - AC * AC, 2 * AB * BC);
+        V.alg = `<div class="font-bold text-amber-300 mb-1">코사인법칙으로 확인하기와 닮은 삼각형을 이용한 풀이 비교</div><div>1) <strong>코사인법칙 검산</strong>: $\\triangle ABC$에서 $\\cos B = \\dfrac{${AB}^2+${BC}^2-${AC}^2}{2\\cdot ${AB}\\cdot ${BC}} = ${cosB}$이고, 내접사각형 성질 $\\angle D = \\pi - B$에서 $\\triangle ADC$로 다시 계산해도 $\\overline{AC} = ${AC}$로 일치합니다.</div><div>2) <strong>닮은 삼각형을 이용한 보조선 풀이</strong>: 각을 구하지 않고도 $\\overline{AB}\\cdot\\overline{CD} + \\overline{BC}\\cdot\\overline{DA} = \\overline{AC}\\cdot\\overline{BD}$(톨레미 정리)로 $\\overline{BD} = ${bdT}$입니다.</div>`;
+        V.aha = P0('adv-6').aha;
+        return V;
+      },
+      draw(V, st, rect) {
+        const { AB, BC, CD, DA, AC } = V.q, num = AB * CD + BC * DA;
+        const xb = (AB * AB - BC * BC + AC * AC) / (2 * AC), yb = Math.sqrt(AB * AB - xb * xb);
+        const xd = (DA * DA - CD * CD + AC * AC) / (2 * AC), yd = -Math.sqrt(DA * DA - xd * xd);
+        const Am = { x: 0, y: 0 }, Cm = { x: AC, y: 0 }, Bm = { x: xb, y: yb }, Dm = { x: xd, y: yd };
+        // 외접원 (A, B, C 지나는 원)
+        const cx = AC / 2, cyc = (xb * xb + yb * yb - AC * xb) / (2 * yb), Rc = Math.hypot(cx, cyc);
+        const F = FIT(rect, [{ x: cx - Rc, y: cyc - Rc }, { x: cx + Rc, y: cyc + Rc }], { b: 112, l: 44, r: 44 });
+        const O = F.S(cx, cyc), A = F.P(Am), B = F.P(Bm), Cp = F.P(Cm), D = F.P(Dm), cen = O;
+        dCircle(O, Rc * F.u, 'rgba(56, 189, 248, 0.65)', 'rgba(56, 189, 248, 0.04)', 2.3);
+        dPoly([A, B, Cp, D], 'rgba(52, 211, 153, 0.10)', C.green, 2.5);
+        dLine(A, Cp, C.cyan, 2.6);
+        dLine(B, D, st >= 3 ? C.gold : 'rgba(251,191,36,0.75)', st >= 3 ? 3 : 2, st >= 3 ? [] : [5, 4]);
+        eBadge(A, B, `AB = ${AB}`, C.green, cen, 2); eBadge(B, Cp, `BC = ${BC}`, C.green, cen, 2);
+        eBadge(Cp, D, `CD = ${CD}`, C.green, cen, 2); eBadge(D, A, `DA = ${DA}`, C.green, cen, 2);
+        cornerBadge(0, `대각선 AC = ${AC}`, C.cyan);
+        let K = null;
+        if (st >= 1) { const Km = constructPtolemyPoint(Am, Bm, Cm, Dm); if (Km) K = F.P(Km); }
+        if (st >= 1 && K) {
+          dLine(B, K, C.purple, 2.8, [5, 4], true);
+          dArcAngle(B, A, D, '', C.purple, 22); dArcAngle(B, K, Cp, '', C.purple, 22);
+          dVertex(K, 'K', C.purple, { x: 0, y: 17, align: 'center' });
+        }
+        if (st >= 2 && K) {
+          dPoly([B, K, Cp], 'rgba(192, 132, 252, 0.18)', C.purple, 2.2); dPoly([A, B, D], 'rgba(251, 191, 36, 0.14)', C.gold, 2.2);
+        }
+        nameV(A, 'A', cen); nameV(B, 'B', cen); nameV(Cp, 'C', cen); nameV(D, 'D', cen);
+        if (st >= 3) banner(rect, [`AB·CD + BC·DA = AC·BD`, `${num} = ${AC} × BD  →  BD = ${frP(num, AC)}`]);
+      }
+    };
+
+    // ---------- 심화 7 · 평행사변형의 대각선 ----------
+    SPEC['adv-7'] = {
+      list: [{ AB: 3, BC: 5, AC: 7 }, { AB: 4, BC: 7, AC: 9 }, { AB: 8, BC: 9, AC: 13 }, { AB: 3, BC: 5, AC: 6 }, { AB: 7, BC: 9, AC: 14 }],
+      build(q, i) {
+        const { AB, BC, AC } = q, BD2 = 2 * (AB * AB + BC * BC) - AC * AC;
+        const V = { q, BD2, val: [Math.sqrt(BD2)] };
+        if (i === 0) return Object.assign(V, origOf('adv-7'));
+        const bdT = rtT(BD2), cosB = frT(AB * AB + BC * BC - AC * AC, 2 * AB * BC), cosA = frT(-(AB * AB + BC * BC - AC * AC), 2 * AB * BC);
+        V.text = `<div>이웃하는 두 변의 길이가 $\\overline{AB} = ${AB}$, $\\overline{BC} = ${BC}$이고 한 대각선의 길이가 $\\overline{AC} = ${AC}$인 평행사변형 $ABCD$에서 다른 대각선 $BD$의 길이를 구하시오.</div>`;
+        V.names = P0('adv-7').steps.map(stepName);
+        V.steps = [
+          `평행사변형 $ABCD$에서 $\\overline{AD} = \\overline{BC} = ${BC}$이고, 평행선의 동측내각 성질에 의해<br/>$\\angle A = \\pi - \\angle B \\implies \\cos A = \\cos(\\pi - B) = -\\cos B$입니다.`,
+          `$\\triangle ABC$: $\\overline{AC}^2 = ${AB}^2 + ${BC}^2 - 2\\cdot ${AB}\\cdot ${BC}\\cos B = ${AB * AB + BC * BC} - ${2 * AB * BC}\\cos B$ $\\cdots$ ㉠<br/>$\\triangle ABD$: $\\overline{BD}^2 = ${AB}^2 + ${BC}^2 - 2\\cdot ${AB}\\cdot ${BC}\\cos(\\pi - B) = ${AB * AB + BC * BC} + ${2 * AB * BC}\\cos B$ $\\cdots$ ㉡`,
+          `두 식을 더하면 $\\overline{AC}^2 + \\overline{BD}^2 = 2(${AB}^2 + ${BC}^2) = ${2 * (AB * AB + BC * BC)}$입니다.<br/>$${AC}^2 + \\overline{BD}^2 = ${2 * (AB * AB + BC * BC)} \\implies \\overline{BD}^2 = ${BD2} \\implies \\mathbf{\\overline{BD} = ${bdT}}$`
+        ];
+        V.ans = `BD = ${bdT.includes('sqrt') ? '$' + bdT + '$' : bdT}`;
+        V.alg = `<div class="font-bold text-amber-300 mb-1">cos B의 값을 직접 구하여 대입하는 풀이 비교</div><div>1) $\\triangle ABC$에서 $${AC}^2 = ${AB}^2 + ${BC}^2 - 2\\cdot ${AB}\\cdot ${BC}\\cos B$로 $\\cos B = ${cosB}$를 구합니다.</div><div>2) $\\cos A = ${cosA}$이므로 $\\triangle ABD$에서 $\\overline{BD}^2 = ${AB}^2 + ${BC}^2 - 2\\cdot ${AB}\\cdot ${BC}\\cdot ${cosA} = ${BD2}$로 일치합니다. 두 식을 더해 $\\cos B$를 소거하면 이 과정이 필요 없습니다.</div>`;
+        V.aha = P0('adv-7').aha;
+        return V;
+      },
+      draw(V, st, rect) {
+        const { AB, BC, AC } = V.q, cosB = (AB * AB + BC * BC - AC * AC) / (2 * AB * BC), sinB = Math.sqrt(1 - cosB * cosB);
+        const Bm = { x: 0, y: 0 }, Am = { x: AB, y: 0 }, Cm = { x: BC * cosB, y: BC * sinB }, Dm = { x: Am.x + Cm.x, y: Am.y + Cm.y };
+        const F = FIT(rect, [Am, Bm, Cm, Dm], { b: 118, l: 50, r: 50 });
+        const A = F.P(Am), B = F.P(Bm), Cp = F.P(Cm), D = F.P(Dm), cen = centOf([A, B, Cp, D]);
+        dPoly([A, B, Cp, D], 'rgba(52, 211, 153, 0.14)', C.green, 2.6);
+        markTick(A, B, 1, C.white); markTick(D, Cp, 1, C.white); markTick(A, D, 2, C.white); markTick(B, Cp, 2, C.white);
+        dLine(A, Cp, C.cyan, 2.8);
+        dLine(B, D, st >= 3 ? C.gold : 'rgba(251,191,36,0.75)', st >= 3 ? 3.2 : 2, st >= 3 ? [] : [5, 4], st >= 3);
+        eBadge(A, B, `AB = ${AB}`, C.green, cen, 2); eBadge(B, Cp, `BC = ${BC}`, C.green, cen, 2);
+        dBadge(A.x + (Cp.x - A.x) * 0.3 + 26, A.y + (Cp.y - A.y) * 0.3 + 6, `AC = ${AC}`, C.cyan);
+        if (st >= 1) { dArcAngle(B, A, Cp, '∠B', C.red, 24); dArcAngle(A, D, B, 'π - B', C.cyan, 28); }
+        if (st >= 2) { dPoly([A, B, Cp], 'rgba(56, 189, 248, 0.14)', null, 0); dPoly([A, B, D], 'rgba(251, 191, 36, 0.12)', null, 0); }
+        nameV(A, 'A', cen); nameV(B, 'B', cen); nameV(Cp, 'C', cen); nameV(D, 'D', cen);
+        if (st >= 2) banner(rect, st >= 3 ? ['AC² + BD² = 2(AB² + BC²)', `${AC * AC} + BD² = ${2 * (AB * AB + BC * BC)}  →  BD = ${rtP(V.BD2)}`] : ['두 식을 더하면 cos B가 사라진다']);
+      }
+    };
+
+    // ---------- 심화 8 · 대각선의 평행이동 ----------
+    const ANG8 = { 'π/3': { rad: Math.PI / 3, sT: '\\dfrac{\\sqrt{3}}{2}', surd: '\\sqrt{3}', k: 1 }, 'π/6': { rad: Math.PI / 6, sT: '\\dfrac{1}{2}', surd: '', k: 0.5 }, 'π/4': { rad: Math.PI / 4, sT: '\\dfrac{\\sqrt{2}}{2}', surd: '\\sqrt{2}', k: 1 }, '2π/3': { rad: (2 * Math.PI) / 3, sT: '\\dfrac{\\sqrt{3}}{2}', surd: '\\sqrt{3}', k: 1 } };
+    SPEC['adv-8'] = {
+      list: [{ AB: 4, AD: 3, ang: 'π/3' }, { AB: 6, AD: 5, ang: 'π/6' }, { AB: 6, AD: 4, ang: 'π/4' }, { AB: 5, AD: 4, ang: '2π/3' }, { AB: 8, AD: 3, ang: 'π/6' }],
+      build(q, i) {
+        const { AB, AD, ang } = q, g = ANG8[ang], AE = 2 * AB, coef = (AB * AD * (g.surd ? 1 : 1)) / 2; // 넓이 = (AB·AD/2)·√ (π/6은 AB·AD/2)
+        const area = g.surd ? AB * AD * Math.sqrt(g.surd === '\\sqrt{3}' ? 3 : 2) / 2 : (AB * AD) / 2;
+        const V = { q, AE, val: [AE, area] };
+        const areaT = g.surd ? `${coef}${g.surd}` : String(coef), areaP = areaT.replace('\\sqrt{3}', '√3').replace('\\sqrt{2}', '√2');
+        V.areaP = areaP;
+        if (i === 0) return Object.assign(V, origOf('adv-8'));
+        const angTex = '\\dfrac{' + ang.split('/')[0].replace('π', '\\pi') + '}{' + ang.split('/')[1] + '}';
+        V.text = `<div>$\\overline{AB} = ${AB}$, $\\overline{AD} = ${AD}$, $\\angle DAB = ${angTex}$인 평행사변형 $ABCD$에서, 꼭짓점 $C$를 지나고 대각선 $BD$에 평행한 직선이 반직선 $AB$와 만나는 점을 $E$라 하자. 선분 $AE$의 길이와 삼각형 $ACE$의 넓이를 구하시오.</div>`;
+        V.names = P0('adv-8').steps.map(stepName);
+        V.steps = [
+          `$\\overline{DC} \\parallel \\overline{BE}$이고 $\\overline{BD} \\parallel \\overline{CE}$이므로 사각형 $DBEC$는 평행사변형입니다.<br/>따라서 $\\overline{BE} = \\overline{DC} = \\overline{AB} = ${AB}$이므로 $\\mathbf{\\overline{AE} = \\overline{AB} + \\overline{BE} = ${AB} + ${AB} = ${AE}}$입니다.`,
+          P0('adv-8').steps[1].desc,
+          `평행사변형 $ABCD$의 넓이는 $\\overline{AB}\\cdot\\overline{AD}\\sin${angTex} = ${AB} \\times ${AD} \\times ${g.sT} = ${areaT}$이므로<br/>$\\therefore \\mathbf{\\text{넓이}(\\triangle ACE) = ${areaT}}$입니다.`
+        ];
+        V.ans = `AE = ${AE}, 넓이(△ACE) = ${g.surd ? '$' + areaT + '$' : areaT}`;
+        V.alg = `<div class="font-bold text-amber-300 mb-1">삼각형 ACE의 밑변과 높이로 직접 구하는 풀이 비교</div><div>1) 꼭짓점 $C$에서 직선 $AE$까지의 높이 $h$는 평행사변형 $ABCD$의 높이와 같으므로 $h = \\overline{BC}\\sin${angTex} = ${AD} \\times ${g.sT}$입니다.</div><div>2) 따라서 $\\text{넓이}(\\triangle ACE) = \\dfrac{1}{2} \\times ${AE} \\times h = ${areaT}$으로 등적변형 결과와 정확히 일치합니다.</div>`;
+        V.aha = `대각선 $\\overline{BD}$를 평행이동하여 점 $C$에서 시작하는 $\\overline{CE}$를 그으면 사각형 $DBEC$가 평행사변형이 되어 **$\\overline{BE} = \\overline{DC} = ${AB}$**이고, 평행선 사이의 넓이 보존($\\triangle BCD = \\triangle BCE$)에 의해 **$\\triangle ACE$의 넓이는 평행사변형 $ABCD$의 넓이와 정확히 같습니다.**`;
+        return V;
+      },
+      draw(V, st, rect) {
+        const { AB, AD, ang } = V.q, g = ANG8[ang], AE = V.AE, aP = ang;
+        const Am = { x: 0, y: 0 }, Bm = { x: AB, y: 0 }, Dm = { x: AD * Math.cos(g.rad), y: AD * Math.sin(g.rad) }, Cm = { x: Bm.x + Dm.x, y: Dm.y }, Em = { x: AE, y: 0 };
+        const F = FIT(rect, [Am, Bm, Cm, Dm, Em], { b: 118, l: 46, r: 46 });
+        const A = F.P(Am), B = F.P(Bm), Cp = F.P(Cm), D = F.P(Dm), E = F.P(Em), cen = centOf([A, B, Cp, D]);
+        dPoly([A, B, Cp, D], 'rgba(52, 211, 153, 0.14)', C.green, 2.6);
+        markTick(A, B, 1, C.white); markTick(D, Cp, 1, C.white); markTick(A, D, 2, C.white); markTick(B, Cp, 2, C.white);
+        dLine(B, D, 'rgba(56, 189, 248, 0.7)', 2, [5, 4]);
+        dLine(B, E, 'rgba(248,250,252,0.55)', 1.6, [4, 4]);
+        dLine(Cp, E, C.cyan, 3.2, [], true);
+        markPar(B, D, 2, C.cyan); markPar(Cp, E, 2, C.cyan);
+        eBadge(A, B, `AB = ${AB}`, C.green, cen, 2); eBadge(A, D, `AD = ${AD}`, C.green, cen, 2);
+        dArcAngle(A, B, D, '', C.gold, 26); cornerBadge(0, `∠DAB = ${aP}`, C.gold);
+        if (st >= 1) {
+          dPoly([D, B, E, Cp], 'rgba(56, 189, 248, 0.10)', null, 0);
+          dLine(D, Cp, C.gold, 2, [4, 4]);
+          markTick(B, E, 1, C.white);
+          drawDimension(B, E, 24, `BE = DC = ${AB}`, C.cyan);
+        }
+        if (st >= 2) {
+          dPoly([B, Cp, D], 'rgba(56, 189, 248, 0.18)', C.cyan, 2.2); dPoly([B, Cp, E], 'rgba(244, 114, 182, 0.18)', C.pink, 2.2);
+          dLine(A, Cp, C.red, 2.8);
+        }
+        if (st >= 3) { dPoly([A, Cp, E], 'rgba(251, 191, 36, 0.20)', C.gold, 2.8, true); drawDimension(A, E, 54, `AE = ${AB} + ${AB} = ${AE}`, C.gold); }
+        nameV(A, 'A', cen); nameV(B, 'B', cen); nameV(Cp, 'C', cen); nameV(D, 'D', cen); nameV(E, 'E', cen, C.cyan);
+        if (st >= 2) banner(rect, st >= 3 ? [`넓이(△ACE) = 넓이(▱ABCD) = ${AB} × ${AD} × sin ${ {'π/3':'60°','π/6':'30°','π/4':'45°','2π/3':'120°'}[aP] }`, `= ${V.areaP}`] : ['△BCD = △BCE (BD ∥ CE)']);
+      }
+    };
+
+    PROBLEMS.forEach((p) => { const sp = SPEC[p.id]; sp.vary = mkVar(sp.list, (q, i) => sp.build(q, i)); });
+    function frameVar(id, b, s, v, lab) {
+      BRD = b; SS = s; handleN = 0;
+      const rect = layoutRect(b), sp = SPEC[id];
+      const st = lab && lab.tab === 'problem' ? 0 : Math.min(3, s.step || 0); // 문제 탭: 주어진 값만 / 정리 탭: 풀이 단계만큼
+      sp.draw(sp.vary.cur(), st, rect);
+    }
+
+    /*@@SCL-VAR-END*/
     function frame(idx, b, s, v) {
       BRD = b;
       SS = s;
@@ -2625,8 +3467,8 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     function sceneOf(p) {
-      const idx = PROBLEMS.indexOf(p);
-      const stepsHtml = p.steps.map((st) => `<p><strong>${st.step}단계. ${rm(stepName(st))}</strong><br>${rm(st.desc)}</p>`).join('');
+      const idx = PROBLEMS.indexOf(p), vr = SPEC[p.id].vary;
+      const stepsHtml = (V) => V.steps.map((d, i) => `<p><strong>${i + 1}단계. ${rm(V.names[i])}</strong><br>${rm(d)}</p>`).join('');
       return {
         id: p.id,
         title: p.title,
@@ -2636,7 +3478,7 @@ window.addEventListener('DOMContentLoaded', function () {
         startStep: 0,
         controls: ['t'],
         presets: (s) => (s.step >= 3 ? p.snaps.map((sn) => ({ label: sn.label, set: { t: sn.t }, ms: 450, on: (st) => Math.abs(st.t - sn.t) < 0.003 })) : []),
-        steps: p.steps.map(stepName),
+        steps: () => vr.cur().names,
         notesTitle: '핵심 발견',
         enter: (s, lab) => {
           s.cur = p.id;
@@ -2644,14 +3486,17 @@ window.addEventListener('DOMContentLoaded', function () {
           lastStep[p.id] = 0;
           if (lab && s === lab.s) lab.params.t.label = p.sliderTitle.replace(/[:：]\s*$/, ''); // 실제 장면 입장일 때만 조절 막대의 이름을 바꿉니다
         },
+        // 문제·정리 탭은 「새 문제」 변형을 따릅니다(탐구 탭은 원래 그림 그대로)
+        reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${rm(vr.cur().text)}</div>`,
+        vary: vr,
         solution: {
           standardTitle: APLab.stripEmoji(p.strategyLabel) || '풀이', standardTag: '단계별',
           quickTitle: '풀이 비교', quickTag: '비교',
-          standard: { steps: stepsHtml },
-          quick: { steps: rm(p.alg) }
+          standard: () => ({ steps: stepsHtml(vr.cur()) }),
+          quick: () => ({ steps: rm(vr.cur().alg) })
         },
-        problem: { tag: p.badge, text: rm(p.statement), answer: p.answer, snap: () => ({ t: p.defaultT }) },
-        view: (s) => {
+        problem: { tag: p.badge, text: () => probHTML(rm(vr.cur().text)), answer: () => vr.cur().ans },
+        view: (s, lab) => {
           const step = Math.min(3, s.step || 0);
           // 원본 setAuxStep의 심화 8 특수 처리: 단계를 켜면 평행이동 정도를 정답 위치로, 끄면 처음 위치로
           if (p.id === 'adv-8' && lastStep[p.id] !== step) {
@@ -2660,11 +3505,17 @@ window.addEventListener('DOMContentLoaded', function () {
           }
           lastStep[p.id] = step;
           const out = {};
-          if (step >= 1) { const st = p.steps[step - 1]; out.formula = `<p><strong>${st.step}단계. ${rm(stepName(st))}</strong><br>${rm(st.desc)}</p>`; }
-          if (step >= 3) out.notes = rm(p.aha);
+          if (!lab || lab.tab === 'explore') {
+            if (step >= 1) { const st = p.steps[step - 1]; out.formula = `<p><strong>${st.step}단계. ${rm(stepName(st))}</strong><br>${rm(st.desc)}</p>`; }
+            if (step >= 3) out.notes = rm(p.aha);
+          } else {
+            const V = vr.cur();
+            if (step >= 1) out.formula = `<p><strong>${step}단계. ${rm(V.names[step - 1])}</strong><br>${rm(V.steps[step - 1])}</p>`;
+            if (step >= 3) out.notes = rm(V.aha);
+          }
           return out;
         },
-        draw: (b, s, v) => frame(idx, b, s, v)
+        draw: (b, s, v, lab) => (lab && lab.tab !== 'explore' ? frameVar(p.id, b, s, v, lab) : frame(idx, b, s, v))
       };
     }
     const isAdv = (p) => p.id.startsWith('adv-');
