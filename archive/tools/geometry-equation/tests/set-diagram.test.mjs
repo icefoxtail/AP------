@@ -41,6 +41,11 @@ const mapback={kind:'MAPPING',columns:[{id:'X',elements:['1','2','3','4']},{id:'
 const mapSigned={kind:'MAPPING',columns:[{id:'X',elements:['-2','-1','0','1/2','√2']},{id:'Y',elements:['-4','-1','1','2√3']}],
   arrows:[{from:{column:0,element:0},to:{column:1,element:0}},{from:{column:0,element:1},to:{column:1,element:1}},{from:{column:0,element:2},to:{column:1,element:2}},
     {from:{column:0,element:3},to:{column:1,element:2}},{from:{column:0,element:4},to:{column:1,element:3}}]};
+// G17: columns of different lengths (24 매산여고 고1 q21: X has 5 elements, Y has 8), and X→Y→Z with 2, 4 and 3 elements
+const mapUneven={kind:'MAPPING',columns:[{id:'X',elements:['1','2','3','4','5']},{id:'Y',elements:['2','3','4','5','6','7','8','9']}],
+  arrows:[0,1,2,3,4].map(k=>({from:{column:0,element:k},to:{column:1,element:7-k}})),highlight:{arrows:[2]}};
+const mapUneven3={kind:'MAPPING',columns:[{id:'X',elements:['1','2']},{id:'Y',elements:['a','b','c','d']},{id:'Z',elements:['p','q','r']}],
+  arrows:[{from:{column:0,element:0},to:{column:1,element:3}},{from:{column:0,element:1},to:{column:1,element:0}},{from:{column:1,element:3},to:{column:2,element:0}},{from:{column:1,element:0},to:{column:2,element:2}}]};
 
 test('the engine derives every atomic region and the truth of the set expression itself',()=>{
   const m=solveDiagram(venn2);
@@ -58,6 +63,11 @@ test('the engine derives every atomic region and the truth of the set expression
   const signed=solveDiagram(mapSigned);
   assert.deepEqual(signed.columns[0].elements.map(e=>[e.text,e.math,e.tex??null]),[['\u22122',true,'-2'],['\u22121',true,'-1'],['0',true,null],['1/2',true,'1/2'],['\u221a2',true,'\\sqrt{2}']]);
   assert.equal(solveDiagram({...mapSigned,columns:[{id:'X',elements:['12','가나']},{id:'Y',elements:['ab']}],arrows:[{from:{column:0,element:0},to:{column:1,element:0}}]}).columns[0].elements[0].math,false);
+  const uneven=solveDiagram(mapUneven),layout=setDiagramSpec(plan(mapUneven),uneven).layout;
+  assert.deepEqual(setDiagramSize(uneven),{width:460,height:50+8*34+44+24});
+  assert.equal(layout.columns[0].ry,layout.columns[1].ry);assert.equal(layout.columns[0].cy,layout.columns[1].cy);
+  // equal columns keep their old element rows exactly
+  assert.deepEqual(setDiagramSpec(plan(map2),solveDiagram(map2)).labels.filter(l=>l.role==='element'&&l.extra.column===0).map(l=>l.anchor.y),[89,123,157]);
   assert.deepEqual(setDiagramSize(solveDiagram(venn2)),{width:470,height:330});
   assert.deepEqual(setDiagramSize(solveDiagram(map2)),{width:460,height:220});
   // a four-set membership table keeps every declared membership as its own cell truth
@@ -166,6 +176,12 @@ test('every figure composes, the independent observer passes it, and it catches 
     assert.ok(svg.includes('data-tex="-2"')&&svg.includes('data-tex="\\sqrt{2}"'));
     assert.ok(has(await audit(mapSigned,svg.replace('data-tex="-2"','data-tex="2"')),'SD_ELEMENT_TEXT:0:0'));
     assert.ok(has(await audit({...mapSigned,columns:[{id:'X',elements:['-3','-1','0','1/2','√2']},mapSigned.columns[1]]},svg),'SD_ELEMENT_TEXT:0:0'));
+    // columns of different lengths: equal ovals, the shorter column centred, observer passes; a block moved off centre is caught
+    svg=await compose(mapUneven,9);
+    const unevenAudit=await audit(mapUneven,svg);assert.equal(unevenAudit.status,'PASS',JSON.stringify(unevenAudit.errors));
+    svg=await compose(mapUneven3,10);
+    const uneven3Audit=await audit(mapUneven3,svg);assert.equal(uneven3Audit.status,'PASS',JSON.stringify(uneven3Audit.errors));
+    assert.ok(has(await audit(mapUneven3,svg.replace(/(id="oval-X"[^>]*ry=")([\d.]+)/,(m,head,ry)=>`${head}${Number(ry)-30}`)),'SD_OVAL_HEIGHT'));
     // f and its reverse g between the same two sets
     svg=await compose(mapback,6);
     const reverse=await audit(mapback,svg);assert.equal(reverse.status,'PASS',JSON.stringify(reverse.errors));

@@ -632,6 +632,13 @@ def audit_mapping(plan, doc):
             if centre_y <= last_y:
                 doc.err('SD_ELEMENT_ORDER:%d' % c)
             last_y = centre_y
+    # G17: all ovals are as tall as the longest column needs, and each column's element block (first to last label) is centred vertically in its oval
+    if len({round(oval['ry'], 1) for oval in ordered}) != 1:
+        doc.err('SD_OVAL_HEIGHT')
+    for c, column in enumerate(columns):
+        ys = [element_boxes[(c, e)][1] + element_boxes[(c, e)][3] / 2 for e in range(len(column['elements'])) if (c, e) in element_boxes]
+        if ys and abs((ys[0] + ys[-1]) / 2 - ordered[c]['cy']) > 3:
+            doc.err('SD_ELEMENT_BLOCK_CENTRE:%d' % c)
     arrows = {}
     for poly in doc.role('polyline', 'arrow'):
         index = int(poly.get('data-arrow', -1))

@@ -346,8 +346,9 @@ function mappingLayout(model){
   const centers=model.columns.length===2?[120,width-120]:[110,width/2,width-110];
   const ovalH=rowMax*MAPPING_ROW+2*MAPPING_PAD,top=MAPPING_TOP,height=top+ovalH+24;
   return {size:{width,height},top,ovalH,rowMax,
-    columns:model.columns.map((column,index)=>({cx:centers[index],cy:top+ovalH/2,ry:(rows[index]*MAPPING_ROW+2*MAPPING_PAD)/2,rx:MAPPING_RX,
-      nameY:MAPPING_TOP-18,elementY:top+MAPPING_PAD+MAPPING_ROW*0.5}))};
+    // G17: every oval has the height of the longest column; a shorter column's elements keep the row spacing and sit centred vertically in their oval
+    columns:model.columns.map((column,index)=>({cx:centers[index],cy:top+ovalH/2,ry:ovalH/2,rx:MAPPING_RX,
+      nameY:MAPPING_TOP-18,elementY:top+ovalH/2-(rows[index]-1)*MAPPING_ROW/2}))};
 }
 const TABLE_MARGIN=18,TABLE_HEADER=42,TABLE_ROW=40,TABLE_ELEMENT_COL=96,TABLE_SET_COL=56;
 function tableLayout(model){
