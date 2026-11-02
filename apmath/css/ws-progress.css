@@ -1,0 +1,288 @@
+/* M8 진도·교재 작업 화면 (W 등급) — 진도 모달 전용 보정.
+ * 껍데기·열 배치·액션줄·휴대폰 쌓기는 공통 부품(apms-unified-modal.css 의 .apms-modal--workspace, .apms-workspace*,
+ * .apms-modal__actions)이 맡는다. 이 파일은 그 안의 진도 전용 부분만 다듬는다:
+ *   위 줄(반·탭) / 목록 열(교재 카드·교재 관리 목록) / 상세 열 / 특이사항 / 모드별 하단 버튼.
+ * 내부 부품 모양(.ap-class-progress-*)은 apms-theme-override.css 의 진도 구간에 있다.
+ * 대상 기기: 휴대폰 390×844 · 태블릿 800×1280/1280×800 · PC 1440×900. 글자 12px 이상, 누르는 영역 24px 이상(휴대폰·태블릿 44px). */
+
+/* ---- 위 줄: 반 이름 + 반 전환 탭 ---- */
+.ws-progress__bar {
+    flex-direction: column;
+    flex-wrap: nowrap;   /* 줄바꿈(wrap)이면 한 줄의 폭이 내용 폭이 되어 탭 줄이 스크롤되지 않고 잘린다 */
+    align-items: stretch;
+    gap: 0;
+}
+.ws-progress__bar .ap-class-progress-context { margin: 0; }
+.ws-progress__bar .ap-class-progress-class-tabs { margin: 0; }
+.ws-progress [data-ws-footer][hidden] { display: none; }
+
+/* ---- 목록 열: 한 장의 패널로 보이게, 안쪽 스크롤은 열 하나만 ---- */
+.ws-progress__list {
+    gap: 0;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--ap-ui-radius-panel, 8px);
+    background: var(--surface);
+}
+.ws-progress__list .ap-class-progress-panel-head {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: var(--ap-ui-radius-panel, 8px) var(--ap-ui-radius-panel, 8px) 0 0;
+}
+.ws-progress__list .ap-class-progress-panel-actions { flex-wrap: wrap; }
+.ws-progress__list .ap-class-progress-panel-actions .apms-button {
+    min-height: 36px;
+    padding: 6px 12px;
+    font-size: 13px;
+}
+.ws-progress__list .ap-class-progress-panel-actions .apms-button[aria-pressed="true"] {
+    border-color: var(--primary);
+    background: var(--primary-soft);
+    color: var(--text);
+}
+.ws-progress .ap-class-progress-books__list {
+    flex: 0 0 auto;
+    max-height: none;
+    overflow: visible;
+}
+
+/* ---- 상세 열: 안쪽 여백은 내용 쪽 규칙이 갖고 있으므로 칸 자체는 0 ---- */
+.ws-progress__detail {
+    padding: 0;
+    scroll-margin-top: 64px;   /* 휴대폰에서 고정된 반 탭 줄 아래로 맞춘다 */
+}
+.ws-progress .ap-class-progress-detail-inner,
+.ws-progress .ws-progress-editor {
+    height: auto;
+    min-height: 0;
+}
+.ws-progress #record-progress-detail { min-width: 0; }
+.ws-progress #record-progress-course-panels {
+    flex: none;
+    overflow: visible;
+    padding-right: 0;
+}
+
+/* ---- 교재 카드(진도 입력 모드): 진도 칸·체크 영역을 손가락 크기로 ---- */
+.ws-progress .ap-class-progress-book__select { min-height: 36px; }
+.ws-progress .ap-class-progress-book__editor,
+.ws-progress .ap-class-progress-book__readonly { min-height: 36px; }
+.ws-progress .ap-class-progress-book__editor-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    flex: 0 0 auto;
+}
+.ws-progress .ap-class-progress-book__editor-label { gap: 6px; }
+.ws-progress .ap-class-progress-detail-progress__row input,
+.ws-progress .ap-class-progress-phase-select,
+.ws-progress .ap-class-progress-course-add .cls-input {
+    min-height: 40px;
+    font-size: 13px;
+}
+.ws-progress .ap-class-progress-course-add--compact .apms-button,
+.ws-progress .ap-class-progress-course__remove {
+    min-height: 36px;
+    padding: 6px 12px;
+    font-size: 13px;
+}
+.ws-progress .ap-class-progress-unit { min-height: 44px; }
+
+/* ---- 새 교재 등록 폼(목록 위): 라벨 + 통합 컨트롤 ---- */
+.ws-progress .ap-class-progress-inline-form {
+    margin: 8px;
+    gap: 6px;
+}
+.ws-progress .ap-class-progress-inline-form .apms-unified-label { margin-top: 2px; }
+.ws-progress .ap-class-progress-inline-form .apms-unified-control,
+.ws-progress .ws-progress-editor .apms-unified-control {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid var(--control-border, var(--border));
+    border-radius: var(--ap-ui-radius-control, 8px);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 13px;
+}
+.ws-progress .ap-class-progress-inline-form__head .apms-button { min-height: 36px; padding: 6px 12px; font-size: 13px; }
+.ws-progress .ap-class-progress-inline-form > .apms-button { min-height: 44px; font-size: 13px; }
+
+/* ---- 교재 관리 모드: 목록(상태별) + 상세(수정·상태·삭제) ---- */
+.ws-progress-manage-section + .ws-progress-manage-section { margin-top: 10px; }
+.ws-progress-manage-section__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 2px 6px;
+}
+.ws-progress-manage-section__head h4 {
+    margin: 0;
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 600;
+}
+.ws-progress-manage-section__head span {
+    color: var(--secondary);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+}
+.ws-progress-manage-item {
+    margin-bottom: 6px;
+    border: 1px solid var(--border);
+    border-radius: var(--ap-ui-radius-panel, 8px);
+    background: var(--surface);
+}
+.ws-progress-manage-item.is-selected {
+    border-color: var(--primary);
+    background: var(--primary-soft);
+}
+.ws-progress-manage-item__select {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2px 8px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 52px;
+    padding: 9px 12px;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    text-align: left;
+    cursor: pointer;
+}
+.ws-progress-manage-item__select .ap-class-progress-status { align-self: start; justify-self: end; white-space: nowrap; }
+.ws-progress-manage-item__select:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; border-radius: var(--ap-ui-radius-panel, 8px); }
+.ws-progress-manage-item__title {
+    min-width: 0;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+.ws-progress-manage-item__meta {
+    grid-column: 1 / -1;
+    color: var(--secondary);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.ws-progress-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 14px;
+}
+.ws-progress-editor__head.ap-class-progress-detail-head { padding: 14px 14px 0; }
+.ws-progress-editor__form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 14px;
+}
+.ws-progress-editor__save { display: flex; justify-content: flex-end; margin-top: 6px; }
+.ws-progress-editor__save .apms-button { min-height: 44px; padding: 10px 16px; font-size: 13px; }
+.ws-progress-editor__section {
+    padding: 12px 14px 0;
+    border-top: 1px solid var(--border);
+}
+.ws-progress-editor__section h4 {
+    margin: 0 0 8px;
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 600;
+}
+.ws-progress-editor__buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+.ws-progress-editor__buttons .apms-button,
+.ws-progress-editor__section .apms-button { min-height: 44px; padding: 10px 16px; font-size: 13px; }
+.ws-progress-danger { color: var(--error); }
+.ws-progress-editor__note,
+.ws-progress-editor--empty .apms-empty {
+    margin: 0;
+    padding: 0 14px;
+    color: var(--secondary);
+    font-size: 13px;
+    line-height: 1.5;
+}
+.ws-progress-editor--empty { padding-top: 14px; }
+
+/* ---- 특이사항 + 하단 액션줄 ---- */
+.ws-progress__note {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 4px 10px;
+}
+.ws-progress__note .apms-unified-label { margin: 0; font-size: 13px; }
+.ws-progress__note .apms-unified-control {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid var(--control-border, var(--border));
+    border-radius: var(--ap-ui-radius-control, 8px);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 13px;
+    resize: vertical;
+}
+/* 모드별로 맞는 버튼만 보인다: 진도 입력 = 진도 저장하기, 교재 관리 = 진도 입력으로(교재는 폼마다 바로 저장) */
+.ws-progress[data-ws-mode="progress"] .ws-progress-exit-manage,
+.ws-progress[data-ws-mode="manage"] .ap-class-progress-save,
+.ws-progress[data-ws-mode="manage"] .ws-progress__note { display: none; }
+
+/* ---- 태블릿 세로(≤900px): 두 열 유지, 목록이 좁아지므로 카드 안쪽을 줄인다 ---- */
+@media (max-width: 900px) {
+    .ws-progress .ap-class-progress-book__editor,
+    .ws-progress .ap-class-progress-book__readonly {
+        grid-template-columns: auto minmax(0, 1fr);
+        row-gap: 2px;
+    }
+    .ws-progress .ap-class-progress-book__editor-date { grid-column: 1 / -1; }
+}
+
+/* ---- 휴대폰(≤600px): 입력 글자 16px(iOS 자동 확대 방지), 누르는 영역 44px ---- */
+@media (max-width: 600px) {
+    .ws-progress__note { grid-template-columns: minmax(0, 1fr); }
+    .ws-progress input:not([type="checkbox"]):not([type="radio"]),
+    .ws-progress select,
+    .ws-progress textarea { font-size: 16px; }
+    .ws-progress .ap-class-progress-detail-progress__row input,
+    .ws-progress .ap-class-progress-phase-select,
+    .ws-progress .ap-class-progress-course-add .cls-input,
+    .ws-progress .ap-class-progress-inline-form .apms-unified-control,
+    .ws-progress .ws-progress-editor .apms-unified-control,
+    .ws-progress__note .apms-unified-control { min-height: 44px; font-size: 16px; }
+    .ws-progress .ap-class-progress-book__select,
+    .ws-progress .ap-class-progress-book__editor,
+    .ws-progress .ap-class-progress-book__readonly { min-height: 44px; }
+    .ws-progress__list .ap-class-progress-panel-actions { width: 100%; }
+    .ws-progress__list .ap-class-progress-panel-actions .apms-button { flex: 1 1 0; min-height: 44px; }
+    .ws-progress .ap-class-progress-course-add--compact .apms-button,
+    .ws-progress .ap-class-progress-course__remove { min-height: 44px; }
+    .ws-progress .ap-class-progress-inline-form__head .apms-button { min-height: 44px; }
+    .ws-progress__layout { gap: 12px; }
+    .ws-progress-editor__buttons .apms-button { flex: 1 1 100%; }
+    .ws-progress-editor__save .apms-button { flex: 1 1 100%; }
+}
+
+/* ---- 반 이름 표시(apms-class-label.js): 동명 반이면 이름 옆에 작은 보조 글자로 담당 ---- */
+.apms-class-label__teacher {
+    margin-left: 4px;
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 400;
+}
+.ap-class-progress-class-tab.is-active .apms-class-label__teacher,
+.ap-classroom-class-tab.is-active .apms-class-label__teacher {
+    color: inherit;
+    opacity: 0.85;
+}
+.ap-class-progress-context__teacher { white-space: nowrap; font-size: 12px; }
+.ap-class-progress-context__teacher:empty { display: none; }
