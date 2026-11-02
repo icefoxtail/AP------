@@ -113,7 +113,7 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "2",
-    "solution": "평균변화율은 $\\displaystyle\\frac{f(a+1)-f(1)}{(a+1)-1}$이다.\n이차함수 $f(x)=x^2+3x+1$의 두 점 $x=1$, $x=a+1$ 사이 평균변화율은 $1+(a+1)+3=a+5$가 된다.\n따라서 $a+5=9$이므로 $a=4$이며 양수 조건도 만족한다.\n따라서 정답은 ②이다."
+    "solution": "평균변화율은 $\\displaystyle\\frac{f(a+1)-f(1)}{a}$이다.\n$f(a+1)=(a+1)^2+3(a+1)+1=a^2+5a+5$이고, $f(1)=5$이다.\n따라서 평균변화율은\n$\\displaystyle\\frac{a^2+5a+5-5}{a}=\\frac{a(a+5)}a=a+5$이다. (단, $a>0$)\n$a+5=9$이므로 $a=4$이며, 정답은 ②이다."
   },
   {
     "id": 5,
@@ -444,7 +444,7 @@ window.questionBank = [
       "$-2$"
     ],
     "answer": "3",
-    "solution": "평균값 정리에 의해 $\\displaystyle f'(c)=\\frac{f(2)-f(a)}{2-a}$이다.\n$f'(x)=2x+3$이므로 $f'(-1)=1$이다.\n이차함수의 두 점 $a,2$ 사이의 평균변화율은 $a+2+3=a+5$이므로 $a+5=1$이다.\n따라서 $a=-4$이고 $a\\lt-1$도 만족한다.\n따라서 정답은 ③이다.",
+    "solution": "평균값 정리에 의해 $f'(c)=\\displaystyle\\frac{f(2)-f(a)}{2-a}$이다.\n$f'(x)=2x+3$이므로 $f'(-1)=1$이다.\n$f(2)=4$, $f(a)=a^2+3a-6$이므로\n$\\displaystyle\\frac{f(2)-f(a)}{2-a}=\\frac{4-(a^2+3a-6)}{2-a}$\n$=\\displaystyle\\frac{-(a-2)(a+5)}{2-a}=a+5$이다.\n따라서 $a+5=1$에서 $a=-4$를 얻는다.\n$a<-1$을 만족하므로 정답은 ③이다.",
     "solutionImage": "assets/images/26_강남여고_2학기_중간_고2_미적분I/q15-solution.svg",
     "solutionImageAlt": "해설 그림: y=f(x)=x²+3x−6의 그래프. 구간 양 끝점 (a, f(a))와 (2,4)를 잇는 현과, x=−1인 점 (−1,−8)에서의 접선 y=x−7이 같은 색의 평행선으로 그려져 있다.",
     "solutionImageCaption": "두 끝점을 잇는 현의 기울기와 x=−1에서의 접선의 기울기가 1로 같으므로 a+5=1, 즉 a=−4이다. 정답 ③",
