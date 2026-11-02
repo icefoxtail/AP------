@@ -82,7 +82,7 @@ const NICE=[1,2,5,10,20,50,100,200,500,1000,2000,5000];
 // --- solving: the exact model --------------------------------------------------------------------------------------------------------------
 export function solveStatChart(chart,opts={}){
   if(!isPlain(chart))bad('STAT_CHART_PLAN_INVALID');
-  if(opts.compact===true&&chart.kind!=='DOT_PLOT'&&chart.kind!=='SCATTER')bad('STAT_PANEL_KIND_UNSUPPORTED');   // a panel of a composite (G16) is a compact dot plot or scatter plot
+  if(opts.compact===true&&chart.kind!=='DOT_PLOT'&&chart.kind!=='SCATTER'&&chart.kind!=='NORMAL_CURVE')bad('STAT_PANEL_KIND_UNSUPPORTED');   // a panel of a composite (G16) is a compact dot plot or scatter plot; a normal curve (G19) is drawn at its own size
   switch(chart.kind){
     case 'HISTOGRAM':case 'FREQUENCY_POLYGON':return solveFreq(chart);
     case 'STEM_LEAF':return solveStem(chart);

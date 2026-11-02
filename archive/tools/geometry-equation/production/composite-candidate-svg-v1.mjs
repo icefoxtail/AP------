@@ -16,6 +16,8 @@ export const isSolidPanel=plan=>plan?.capability===SOLID_CAPABILITY;
 export const isSetPanel=plan=>plan?.capability===SET_DIAGRAM_CAPABILITY;
 // A statistics panel (G16): a stat-chart-figure-v1 dot plot drawn compact, 2-4 of them in the same two-column grid; never mixed with the other panel kinds.
 export const isStatPanel=plan=>plan?.capability===STAT_CHART_CAPABILITY;
+// A normal-curve panel (G19) is a stat panel whose chart is a NORMAL_CURVE: it is drawn at its standalone size (about 548 wide) and 2-3 of them are stacked in one column (never the two-column grid, never mixed with dot or scatter panels).
+export const isStatNormalPanel=plan=>isStatPanel(plan)&&plan.chart?.kind==='NORMAL_CURVE';
 // A plane-figure panel: the same axis-free PLANE_FIGURE_v1 construction plan authors already use for one figure.
 export const isPlanePanel=plan=>plan?.capability==='construction-spike-v1'&&plan.graphPlan===undefined&&isPlaneFigure(plan);
 // A grid panel is a plane figure or a solid figure (solid-figure-v1 solids or net): they share one two-column grid of equal cells.
@@ -47,6 +49,8 @@ export const COMPOSITE_MAX_SOLID_GRID_PANELS=6;
 export const COMPOSITE_MIN_SET_PANELS=2,COMPOSITE_MAX_SET_PANELS=4;
 // A grid of statistics panels is 2 to 4 compact dot plots (420 units wide each, the same 848-unit width as the Venn grid).
 export const COMPOSITE_MIN_STAT_PANELS=2,COMPOSITE_MAX_STAT_PANELS=4;
+// A stack of normal-curve panels is 2 or 3 panels (one column): each is a full bell curve with its tick row, so a taller stack would not fit one Archive page.
+export const COMPOSITE_MAX_STAT_NORMAL_PANELS=3;
 export const compositeGridColumns=count=>Math.min(Math.max(count,1),2);
 // Shared rows above a three-panel stack (line equations every panel draws the same): 34 apart, then a gap before the first caption.
 export const COMPOSITE_SHARED_ROW=56;// a shared line equation may carry a full-size fraction (about 41 px high)
@@ -82,6 +86,12 @@ export function compositePanels(plan){
     if(plan.chain!==undefined)bad('CHAIN');
     if(!statPanels.every(Boolean)){const first=statPanels.indexOf(true);throw new Stop('COMPOSITE_STAT_PANEL_MIXED_'+first,{reason:'STAT_PANEL_MIXED_'+first});}
     if(plan.panels.length<COMPOSITE_MIN_STAT_PANELS||plan.panels.length>COMPOSITE_MAX_STAT_PANELS)throw new Stop('COMPOSITE_STAT_PANEL_COUNT',{reason:'STAT_PANEL_COUNT'});
+    // Normal-curve panels (G19) stack in one column and take only each other: 2 or 3 of them.
+    const normalPanels=plan.panels.map(panel=>isStatNormalPanel(panel?.plan));
+    if(normalPanels.some(Boolean)){
+      if(!normalPanels.every(Boolean)){const first=normalPanels.indexOf(false);throw new Stop('COMPOSITE_STAT_NORMAL_PANEL_MIXED_'+first,{reason:'STAT_NORMAL_PANEL_MIXED_'+first});}
+      if(plan.panels.length>COMPOSITE_MAX_STAT_NORMAL_PANELS)throw new Stop('COMPOSITE_STAT_PANEL_COUNT',{reason:'STAT_NORMAL_PANEL_COUNT'});
+    }
   }
   const planePanels=plan.panels.map(panel=>isPlanePanel(panel?.plan)),solidPanels=plan.panels.map(panel=>isSolidPanel(panel?.plan));
   // The one-panel stack a standalone solid figure expands to (chain solid-figure-v1) keeps its own path; any other set of plane and solid panels is a grid.
@@ -173,8 +183,8 @@ export function compositePanels(plan){
     return {...item,plan:{...item.plan,graphPlan:{...item.plan.graphPlan,plotHeightLimit,...(three?{compositeHeader:{formula:'CAPTION',sharedLines}}:twoCubic?{overviewHeaderBand:true}:{})}}};
   });
 }
-/** The stack or grid layout of the checked panels: graph/number-line stacks (and the one solid panel) stay one column; plane and solid panels become a grid. */
-export const compositePanelLayout=checked=>checked.length>1&&checked.every(item=>isGridPanel(item.plan))
+/** The stack or grid layout of the checked panels: graph/number-line stacks (and the one solid panel) and normal-curve panels (G19) stay one column; plane, solid, Venn, dot and scatter panels become a grid. */
+export const compositePanelLayout=checked=>checked.length>1&&checked.every(item=>isGridPanel(item.plan))&&!checked.every(item=>isStatNormalPanel(item.plan))
   ?{kind:'GRID',columns:compositeGridColumns(checked.length),rows:Math.ceil(checked.length/compositeGridColumns(checked.length))}
   :{kind:'STACK',columns:1,rows:checked.length};
 /** The stacked/gridded size for panels of the given sizes (top margin, caption row per panel, gaps between panels): what the Archive policy must be measured for. */
