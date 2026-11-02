@@ -30,7 +30,7 @@ window.questionBank = [
       "$\\dfrac{15}{17}$"
     ],
     "answer": "④",
-    "solution": "피타고라스 정리로 $AC=8$이다. 따라서 $\\sin B=AC/BC=8/17$. 정답은 ④.",
+    "solution": "직각삼각형 $ABC$에서 빗변은 $BC=17$, 한 변은 $AB=15$이다.\n피타고라스 정리에 따라\n$$AB^2+AC^2=BC^2$$\n$$AC^2=17^2-15^2$$\n$$=289-225=64$$\n따라서 $AC=8$이다.\n각 $B$의 맞은편 변은 $AC$이므로\n$$\\sin B=\\dfrac{AC}{BC}=\\dfrac8{17}$$\n정답은 ④이다.",
     "sourceQuestionNo": "1",
     "displayNo": "1",
     "sourceOrdinal": 1,
