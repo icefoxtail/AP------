@@ -1343,14 +1343,12 @@ function diceSpec(m,ctx){
   if(rowLetter)labels.push(math('corner-row','var','corner',m.rowVar,m.rowVar,'center','middle',x0+CELL*.28,y0+CELL*.7,{value:m.rowVar,axis:'row'}));
   if(colText)labels.push(textLabel('name-col','var-name','corner',m.colLabel,'center','bottom',x0+CELL+nc*CELL/2,y0-4,{value:m.colLabel,axis:'col'}));
   if(rowText)labels.push(textLabel('name-row','var-name','corner',m.rowLabel,'end','middle',x0-8,y0+CELL+nr*CELL/2,{value:m.rowLabel,axis:'row'}));
-  cols.forEach((k,i)=>{
-    prims.push(rect(`head-col-${k}`,'head','head',x0+(i+1)*CELL,y0,CELL,CELL,{axis:'col',value:k},40));
-    labels.push(math(`head-col-${k}-label`,'head-value',`head-col-${k}`,String(k),String(k),'center','middle',x0+(i+1.5)*CELL,y0+CELL/2,{value:String(k),axis:'col'}));
-  });
-  rows.forEach((k,j)=>{
-    prims.push(rect(`head-row-${k}`,'head','head',x0,y0+(j+1)*CELL,CELL,CELL,{axis:'row',value:k},40));
-    labels.push(math(`head-row-${k}-label`,'head-value',`head-row-${k}`,String(k),String(k),'center','middle',x0+CELL/2,y0+(j+1.5)*CELL,{value:String(k),axis:'row'}));
-  });
+  for(let i=0;i<Math.max(nc,nr);i++){   // the column and the row head of one position together (the order a square table always drew them in)
+    if(i<nc){const k=cols[i];prims.push(rect(`head-col-${k}`,'head','head',x0+(i+1)*CELL,y0,CELL,CELL,{axis:'col',value:k},40));}
+    if(i<nr){const k=rows[i];prims.push(rect(`head-row-${k}`,'head','head',x0,y0+(i+1)*CELL,CELL,CELL,{axis:'row',value:k},40));}
+    if(i<nc){const k=cols[i];labels.push(math(`head-col-${k}-label`,'head-value',`head-col-${k}`,String(k),String(k),'center','middle',x0+(i+1.5)*CELL,y0+CELL/2,{value:String(k),axis:'col'}));}
+    if(i<nr){const k=rows[i];labels.push(math(`head-row-${k}-label`,'head-value',`head-row-${k}`,String(k),String(k),'center','middle',x0+CELL/2,y0+(i+1.5)*CELL,{value:String(k),axis:'row'}));}
+  }
   for(const c of m.cells){
     const id=`cell-${c.col}-${c.row}`;
     const ci=cols.indexOf(c.col)+1,ri=rows.indexOf(c.row)+1;
