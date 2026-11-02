@@ -52,16 +52,16 @@
       }[kind];
       const ideaCap = { obi: '외심: ∠BOC=2∠A · 내심: BI는 ∠B의 이등분선', obc: '외심 → OB=OC, ∠BOC=2∠A', diff: '외심: ∠BOC=2∠A · 내심: ∠BIC=90°+\\frac{1}{2}∠A', ibc: '내심 → BI는 ∠B를 이등분' }[kind];
       out.push({ k: 'idea', f: 'idea', t: idea, cap: ideaCap });
-      const base = { k: 'fig', f: 'base', lb: '각 구하기', t: `$\\overline{AB}=\\overline{AC}$이므로 $\\angle B=\\angle C=\\frac{180^{\\circ}-${a}^{\\circ}}{2}=${bb}^{\\circ}$.`, cap: `AB=AC → ∠B=∠C=\\frac{180−${a}}{2}=${bb}°` };
+      const base = { k: 'fig', f: 'base', lb: '각 구하기', t: `$\\overline{AB}=\\overline{AC}$이므로 $\\angle B=\\angle C=\\frac{180^{\\circ}-${a}^{\\circ}}{2}=${bb}^{\\circ}$.`, cap: `AB=AC → ∠B=∠C=\\frac{180°−${a}°}{2}=${bb}°` };
       const oc = { k: 'fig', f: 'oc', lb: '외심', t: kind === 'diff' ? `외심 O에서 $\\angle BOC=2\\angle A=2\\times${a}^{\\circ}=${boc}^{\\circ}$.` : `외심 O에서 $\\angle BOC=2\\angle A=${boc}^{\\circ}$이고 $\\overline{OB}=\\overline{OC}$예요.`, cap: kind === 'diff' ? `∠BOC=2∠A=${boc}°` : `∠BOC=2∠A=${boc}°, OB=OC` };
       const inn = { k: 'fig', f: 'in', lb: '내심', t: kind === 'diff' ? `내심 I에서 $\\angle IBC=\\angle ICB=\\frac{1}{2}\\times${bb}^{\\circ}=${ibc}^{\\circ}$이므로 $\\angle BIC=180^{\\circ}-2\\times${ibc}^{\\circ}=${bic}^{\\circ}$ ($=90^{\\circ}+\\frac{1}{2}\\angle A$).` : kind === 'ibc' ? `BI는 $\\angle B$의 이등분선이므로 $\\angle ABI=\\angle IBC$예요.` : `내심 I에서 BI는 $\\angle B$의 이등분선이므로 $\\angle IBC=\\frac{1}{2}\\angle B=\\frac{1}{2}\\times${bb}^{\\circ}=${ibc}^{\\circ}$.`, cap: kind === 'diff' ? `∠IBC=∠ICB=${ibc}° → ∠BIC=180−2×${ibc}=${bic}°` : kind === 'ibc' ? 'BI는 ∠B의 이등분선 → ∠ABI=∠IBC' : `BI는 ∠B의 이등분선 → ∠IBC=\\frac{1}{2}×${bb}°=${ibc}°` };
       if (kind === 'obi') {
-        out.push(base, { ...oc, t: `외심 O에서 $\\angle BOC=2\\angle A=${boc}^{\\circ}$이고 △OBC는 $\\overline{OB}=\\overline{OC}$인 이등변삼각형이므로 $\\angle OBC=\\frac{180^{\\circ}-${boc}^{\\circ}}{2}=${obc}^{\\circ}$.`, cap: `∠BOC=2∠A=${boc}°, OB=OC → ∠OBC=\\frac{180−${boc}}{2}=${obc}°` }, inn);
+        out.push(base, { ...oc, t: `외심 O에서 $\\angle BOC=2\\angle A=${boc}^{\\circ}$이고 △OBC는 $\\overline{OB}=\\overline{OC}$인 이등변삼각형이므로 $\\angle OBC=\\frac{180^{\\circ}-${boc}^{\\circ}}{2}=${obc}^{\\circ}$.`, cap: `∠BOC=2∠A=${boc}°, OB=OC → ∠OBC=\\frac{180°−${boc}°}{2}=${obc}°` }, inn);
         out.push({ k: 'eq', f: 'eq', t: `BO, BI는 모두 $\\angle B$ 안에 있으므로 $x=\\angle OBI=${bigOBC ? `\\angle OBC-\\angle IBC=${obc}^{\\circ}-${ibc}^{\\circ}` : `\\angle IBC-\\angle OBC=${ibc}^{\\circ}-${obc}^{\\circ}`}=${obi}^{\\circ}$.`, cap: `x=${bigOBC ? `∠OBC−∠IBC=${obc}°−${ibc}°` : `∠IBC−∠OBC=${ibc}°−${obc}°`}=${obi}°` });
         out.push({ k: 'ans', f: 'ans', t: `$x=${obi}^{\\circ}$`, cap: `x = ${obi}°` });
         out.push({ k: 'trap', f: 'trap', t: `$\\angle BOC=2\\angle A=${boc}^{\\circ}$는 외심의 성질이고, 내심은 $\\angle BIC=90^{\\circ}+\\frac{1}{2}\\angle A=${bic}^{\\circ}$예요. 내심 I에 $2\\angle A$를 쓰면 $\\angle IBC=\\frac{180^{\\circ}-${boc}^{\\circ}}{2}=${obc}^{\\circ}$가 되어 외심의 $\\angle OBC$와 같아져 버려요.`, cap: `O는 2∠A=${boc}°, I는 90°+\\frac{1}{2}∠A=${bic}° — 서로 바꿔 쓰면 틀려요` });
       } else if (kind === 'obc') {
-        out.push(oc, { k: 'eq', f: 'eq', t: `△OBC에서 $\\angle OBC=\\frac{180^{\\circ}-\\angle BOC}{2}=\\frac{180^{\\circ}-${boc}^{\\circ}}{2}=${obc}^{\\circ}$ ($=90^{\\circ}-\\angle A$).`, cap: `x=∠OBC=\\frac{180−${boc}}{2}=${obc}°` });
+        out.push(oc, { k: 'eq', f: 'eq', t: `△OBC에서 $\\angle OBC=\\frac{180^{\\circ}-\\angle BOC}{2}=\\frac{180^{\\circ}-${boc}^{\\circ}}{2}=${obc}^{\\circ}$ ($=90^{\\circ}-\\angle A$).`, cap: `x=∠OBC=\\frac{180°−${boc}°}{2}=${obc}°` });
         out.push({ k: 'ans', f: 'ans', t: `$x=${obc}^{\\circ}$`, cap: `x = ${obc}°` });
         out.push({ k: 'trap', f: 'trap', t: `$\\angle B=${bb}^{\\circ}$를 $\\angle OBC$로 착각하면 안 돼요. $\\angle B$는 BA와 BC 사이의 각이고, $\\angle OBC$는 BO와 BC 사이의 각이에요.`, cap: `∠B=${bb}°는 ∠OBC가 아니에요 → ∠OBC=${obc}°` });
       } else if (kind === 'diff') {
@@ -127,9 +127,9 @@
       if (kind === 'ibc') { if (xArc && !(at('eq') && false)) ang(b, B, I, Cc, { color: 'amber', r: 38, label: xl, size: xs, labelDist: 60, fa: 0.3 }); else dirX(-ibc / 2 * DEG, 60, xl); }
       else if (kind === 'obi') {
         // ∠OBI 는 작은 각이라 글자 x 를 선 밖으로 빼고 짧은 선으로 이어요(값은 그림 아래 한 줄에)
-        const th = -(obc + ibc) / 2 * DEG, from = pt(B.x + px(100) * Math.cos(th), B.y + px(100) * Math.sin(th)), to = pt(from.x + px(6), from.y - px(30));
+        const th = -(obc + ibc) / 2 * DEG, from = pt(B.x + px(66) * Math.cos(th), B.y + px(66) * Math.sin(th)), to = pt(from.x + px(2), B.y + px(7)); // x 는 B의 각이므로 O에서 먼 변 BC 아래에 둡니다
         if (xArc) ang(b, B, O, I, { color: 'amber', r: 52, fa: 0.4 });
-        if (K !== 'trap') { line(b, from, to, 'amber', 1.8); T(b, to, xl, { dx: 4, dy: -12, size: xs, color: 'amber' }); }
+        if (K !== 'trap') { line(b, from, to, 'amber', 1.8); T(b, to, xl, { dx: 2, dy: 13, size: xs, color: 'amber' }); }
       } else if (kind === 'obc') { if (xArc) ang(b, B, O, Cc, { color: 'amber', r: 34, label: xl, size: xs, labelDist: 52, fa: 0.3 }); else dirX(-obc / 2 * DEG, 52, xl); }
       // 흔한 실수 그림
       if (K === 'trap') {
