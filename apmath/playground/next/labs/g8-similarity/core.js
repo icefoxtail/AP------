@@ -194,20 +194,27 @@
   function mkChoices(correct, wrongs, o = {}) {
     const tex = o.tex || ((v) => tx(v)), plain = o.plain || ((v) => fmtN(v)), valid0 = o.valid || ((v) => v > 0), valid = (v) => valid0(v) && Math.abs(v - Math.round(v)) < 1e-9; // 보기는 모두 정수
     const same = (a, b) => Math.abs(a - b) < 1e-6;
-    const list = [{ v: correct, ok: true, hint: '' }];
+    const cands = [];
     for (const w of wrongs) {
       const v = w[0];
-      if (!Number.isFinite(v) || !valid(v) || list.some((x) => same(x.v, v))) continue;
-      list.push({ v, ok: false, hint: w[1] || '' });
-      if (list.length === 5) break;
+      if (!Number.isFinite(v) || !valid(v) || same(v, correct) || cands.some((x) => same(x.v, v))) continue;
+      cands.push({ v, ok: false, hint: w[1] || '' });
     }
     const gap = o.pad || 1;
-    for (let k = 1; list.length < 5 && k < 80; k++) {
+    for (let k = 1; k < 80 && cands.length < 14; k++) {
       for (const sg of [1, -1]) {
         const v = correct + sg * gap * k;
-        if (list.length < 5 && valid(v) && !list.some((x) => same(x.v, v))) list.push({ v, ok: false, hint: '풀이 순서대로 다시 계산해 보세요.' });
+        if (valid(v) && !same(v, correct) && !cands.some((x) => same(x.v, v))) cands.push({ v, ok: false, hint: '풀이 순서대로 다시 계산해 보세요.' });
       }
     }
+    // 정답이 늘 가운데에 오지 않도록, 정답보다 작은 보기의 개수를 문제마다 0~4 사이에서 달리한다(값으로 정해 문제마다 안정적)
+    const below = cands.filter((x) => x.v < correct), above = cands.filter((x) => x.v > correct);
+    let h = Math.round(Math.abs(correct) * 31) + cands.length * 17;
+    cands.slice(0, 4).forEach((x) => { h += Math.round(Math.abs(x.v) * 7); });
+    let lo = h % 5; lo = Math.min(lo, below.length); let hi = 4 - lo;
+    if (hi > above.length) { hi = above.length; lo = Math.min(below.length, 4 - hi); }
+    const list = [{ v: correct, ok: true, hint: '' }].concat(below.slice(0, lo), above.slice(0, hi));
+    for (const x of cands) { if (list.length >= 5) break; if (!list.includes(x)) list.push(x); }
     list.sort((a, b) => a.v - b.v);
     return list.map((x) => ({ t: tex(x.v), p: plain(x.v), ok: x.ok, hint: x.hint }));
   }
@@ -325,6 +332,48 @@
            anim?:{key,dur,label,start}, stepT?(n,M) }
      pk 는 gen(seed)가 만든 문제 값입니다(첫 문제도 enter 에서 gen(1)로 채워져 숫자 바꾸기 전에도 완전합니다). */
   const texSafe = (t) => String(t == null ? t : t).replace(/\$([^$]+)\$/g, (m, x) => '$' + x.replace(/</g, '\\lt ').replace(/>/g, '\\gt ') + '$');
+  /* ------------------------------------------------------------------ 글자 겹침 풀기
+     한 장면을 그리는 동안 b.text 를 모아 두었다가 마지막에 한꺼번에 그린다. 점 이름(대문자 한 글자)이 먼저 자리를 잡고,
+     길이·각·넓이 같은 값 글자는 점 이름, 점(원), 이미 놓인 다른 글자와 겹치면 가까운 빈자리로 조금(최대 ~44px) 비켜 놓는다. */
+  const recW = (str, size) => (/\\frac|\\dfrac/.test(String(str)) ? size * 1.9 : textW(str, size));
+  function drawResolved(b, run) {
+    if (b.thumb) { run(); return; }
+    const oText = b.text, oPoint = b.point, hadT = Object.prototype.hasOwnProperty.call(b, 'text'), hadP = Object.prototype.hasOwnProperty.call(b, 'point');
+    const q = [], marks = [];
+    b.text = (p, str, o = {}) => { if (str == null || str === '') return; q.push({ p, str, o }); };
+    b.point = function (p, o = {}) { marks.push({ p, r: (o.r || 5) }); return oPoint.call(b, p, o); };
+    try { run(); } finally {
+      if (hadT) b.text = oText; else delete b.text;
+      if (hadP) b.point = oPoint; else delete b.point;
+    }
+    const k = b.k || 60;
+    const isName = (e) => /^[A-Z][′'’]?$/.test(String(e.str));
+    const rectOf = (e, ox, oy) => {
+      const size = e.o.size || 16, w = recW(e.str, size) + 4, h = size * 1.12, al = e.o.align || 'center';
+      const cx = e.p.x * k + (e.o.dx || 0) + ox, cy = e.p.y * k + (e.o.dy || 0) + oy;
+      const x0 = al === 'left' || al === 'start' ? cx : al === 'right' || al === 'end' ? cx - w : cx - w / 2;
+      return { x0, x1: x0 + w, y0: cy - h / 2, y1: cy + h / 2 };
+    };
+    const hit = (a, c) => a.x0 < c.x1 && a.x1 > c.x0 && a.y0 < c.y1 && a.y1 > c.y0;
+    const mrect = marks.map((m) => ({ x0: m.p.x * k - m.r - 1, x1: m.p.x * k + m.r + 1, y0: m.p.y * k - m.r - 1, y1: m.p.y * k + m.r + 1, px: m.p.x, py: m.p.y }));
+    const ring = [[0, 0]];
+    for (let d = 7; d <= 44; d += 7) [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [-1, 1], [1, -1], [-1, -1]].forEach(([a, c]) => ring.push([a * d * (a && c ? 0.72 : 1), c * d * (a && c ? 0.72 : 1)]));
+    const placed = [];
+    const place = (e) => {
+      const own = (m) => Math.abs(m.px - e.p.x) < 1e-6 && Math.abs(m.py - e.p.y) < 1e-6;
+      let best = [0, 0];
+      for (const [ox, oy] of ring) {
+        const r = rectOf(e, ox, oy);
+        if (!placed.some((c) => hit(r, c)) && !mrect.some((m) => !own(m) && hit(r, m))) { best = [ox, oy]; break; }
+      }
+      e.ox = best[0]; e.oy = best[1];
+      placed.push(rectOf(e, best[0], best[1]));
+    };
+    q.filter(isName).forEach(place);
+    q.filter((e) => !isName(e)).forEach(place);
+    q.forEach((e) => oText.call(b, e.p, e.str, { ...e.o, dx: (e.o.dx || 0) + (e.ox || 0), dy: (e.o.dy || 0) + (e.oy || 0) }));
+  }
+
   function makeScene(D) {
     const A = D.anim;
     const actions = A ? () => [
@@ -385,7 +434,7 @@
         if (b.thumb) C.step = 99;
         const M = model(s);
         C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : 1)) : 1;
-        D.draw(b, s, M, C);
+        drawResolved(b, () => D.draw(b, s, M, C));
       }
     };
   }

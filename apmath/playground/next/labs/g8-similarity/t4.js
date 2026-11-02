@@ -186,7 +186,7 @@
     model: (s) => ({ ...efGeo(clamp(Math.round(s.smEm), 1, 3), clamp(Math.round(s.smEn), 1, 3)) }),
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, st = C.step, g = prob ? efGeo(pk.m, pk.n) : M;
-      fit(b, bboxOf([g.A, g.B, g.C, g.D]), { t: 44, b: 60, l: 52, r: 52 });
+      fit(b, bboxOf([g.A, g.B, g.C, g.D]), { t: 44, b: 84, l: 52, r: 52 });
       const cen = centroid([g.A, g.B, g.C, g.D]);
       fillPoly(b, [g.A, g.D, g.O], 'sky', 0.22); fillPoly(b, [g.B, g.C, g.O], 'green', 0.18);
       poly(b, [g.A, g.B, g.C, g.D], 'ink', 3.6); line(b, g.A, g.C, 'ink', 3.0); line(b, g.B, g.D, 'ink', 3.0);
@@ -195,7 +195,7 @@
       const lb = (p, q, c, t, col, gap) => t != null && sideTag(b, p, q, c, t, { color: col, size: sz, gap: gap || 11 });
       if (prob) {
         lb(g.A, g.D, cen, String(g.AD), 'sky'); lb(g.B, g.C, cen, String(g.BC), 'green');
-        if (pk.kind === 0) T(b, lerp(g.E, g.F, 0.22), 'x', { size: 18, color: 'amber', dy: -15 }); else T(b, lerp(g.E, g.O, 0.5), 'x', { size: 18, color: 'amber', dy: -15 });
+        if (pk.kind === 0) dim(b, g.E, g.F, pt((g.E.x + g.F.x) / 2, g.E.y - 100), 'x', { color: 'amber', off: 30, size: 18 }); else T(b, lerp(g.E, g.O, 0.5), 'x', { size: 18, color: 'amber', dy: -15 });
       } else {
         lb(g.A, g.D, cen, String(g.AD), 'sky'); lb(g.B, g.C, cen, String(g.BC), 'green');
         T(b, lerp(g.E, g.O, 0.5), String(g.EO), { size: 16, color: 'amber', dy: -15 });
@@ -516,7 +516,7 @@
       const sz = 16, lb = (p, q, c, t, col, gap) => t != null && sideTag(b, p, q, c, t, { color: col, size: sz, gap: gap || 11 });
       if (prob) {
         lb(g.A, g.B, cen, String(g.AB), 'sky'); lb(g.A, g.C, cen, String(g.AC), 'green'); lb(g.B, g.C, cen, String(g.BC), 'ink');
-        if (pk.kind === 0) T(b, mid(g.C, g.D), 'x', { dy: 20, size: 18, color: 'amber' }); else { lb(g.C, g.D, cen, String(g.CD), 'green', 12); dim(b, g.B, g.D, pt(cen.x, cen.y - 5), 'x', { color: 'amber', off: 30, size: 18 }); }
+        if (pk.kind === 0) T(b, mid(g.C, g.D), 'x', { dy: 20, size: 18, color: 'amber' }); else { dim(b, g.B, g.D, pt(cen.x, cen.y - 5), 'x', { color: 'amber', off: 30, size: 18 }); } // BD 를 구하는 문제: 풀이 중간값 CD 는 그리지 않는다
       } else {
         lb(g.A, g.B, cen, String(g.AB), 'sky'); lb(g.A, g.C, cen, String(g.AC), 'green'); lb(g.B, g.C, cen, String(g.BC), 'ink');
         T(b, mid(g.C, g.D), String(g.CD), { dy: 20, size: 16, color: 'green' });

@@ -395,11 +395,10 @@
       line(b, g.A, ray, 'ink', 2.6, { dash: [7, 6], alpha: 0.7 });
       line(b, g.A, g.B, 'ink', 3.6);
       ang(b, g.A, g.B, ray, { color: 'rose', r: 28, label: `${g.aDeg}°`, size: 15 });
-      if (!prob) {
-        // 컴퍼스 호: B 를 중심으로 반지름 a
-        const a0 = -140, a1 = -20;
-        arcIn(g.B, g.a, a0, a1, { color: 'amber', width: 2.4, dash: [6, 5] });
-      } else if (pk.kind === 0) arcIn(g.B, g.a, -140, -20, { color: 'amber', width: 2.4, dash: [6, 5] });
+      // 컴퍼스 호: B 를 중심으로 반지름 a. 반직선과 만나는 점(C, C′)이 모두 들어오도록 각 범위를 잡는다.
+      const crossAng = [g.C1, g.C2].filter(Boolean).map((q) => Math.atan2(q.y - g.B.y, q.x - g.B.x) / DEG);
+      const arcLo = crossAng.length ? Math.min(...crossAng) - 28 : -140, arcHi = crossAng.length ? Math.max(...crossAng) + 28 : -20;
+      if (!prob || pk.kind === 0) arcIn(g.B, g.a, arcLo, arcHi, { color: 'amber', width: 2.4, dash: [6, 5] });
       const cA = [g.C1, g.C2].filter(Boolean);
       const col = ['amber', 'green'];
       const showT = !prob;
@@ -480,11 +479,11 @@
       if (done) {
         tick(b, g.D, g.E, 1, 'amber'); tick(b, g.E, g.F, 1, 'amber'); tick(b, g.A, g.D, 2, 'amber'); tick(b, g.A, g.F, 2, 'amber');
         if (prob) {
-          lb(g.A, g.B, cen, String(g.AB), 'sky'); lb(g.B, g.F, cen, String(g.BF), 'sky'); lb(g.F, g.C, cen, String(g.FC), 'sky');
+          lb(g.A, g.B, cen, String(g.AB), 'sky'); lb(g.B, g.F, cen, String(g.BF), 'sky'); lb(g.F, g.C, cen, String(g.FC), 'sky', 20);
           lb(g.E, g.C, cen, pk.kind === 0 ? 'x' : String(g.CE), pk.kind === 0 ? 'amber' : 'sky', 9);
           if (pk.kind === 1) lb(g.D, g.E, cen, 'x', 'amber', 9);
         } else {
-          lb(g.A, g.B, cen, String(g.AB), 'sky'); lb(g.B, g.F, cen, String(g.BF), 'amber'); lb(g.F, g.C, cen, String(g.FC), 'green');
+          lb(g.A, g.B, cen, String(g.AB), 'sky'); lb(g.B, g.F, cen, String(g.BF), 'amber'); lb(g.F, g.C, cen, String(g.FC), 'green', 20);
           lb(g.E, g.C, cen, String(g.CE), 'rose', 9); lb(g.D, g.E, cen, String(g.DE), 'ink', 9);
         }
       }
@@ -554,8 +553,8 @@
       if (done) {
         if (prob) {
           lb(g.B, g.D, cen, String(g.BD), 'sky'); lb(g.B, g.F, cen, String(g.BF), 'sky');
-          if (pk.kind === 0) { lb(g.F, g.C, cen, String(g.FC), 'sky'); lb(g.C, g.E, cen, 'x', 'amber'); }
-          else { lb(g.D, g.A, cen, String(g.DA), 'sky'); lb(g.E, g.F, cen, 'x', 'amber'); T(b, pt((g.B.x + g.C.x) / 2, 0), '', {}); }
+          if (pk.kind === 0) { lb(g.F, g.C, cen, String(g.FC), 'sky'); lb(g.C, g.E, cen, 'x', 'amber', 16); }
+          else { lb(g.D, g.A, cen, String(g.DA), 'sky'); lb(g.E, g.F, g.D, 'x', 'amber', 16); T(b, pt((g.B.x + g.C.x) / 2, 0), '', {}); }
         } else {
           lb(g.B, g.D, cen, String(g.BD), 'sky'); lb(g.B, g.F, cen, String(g.BF), 'amber'); lb(g.F, g.C, cen, String(g.FC), 'green'); lb(g.C, g.E, cen, String(g.CE), 'rose');
         }

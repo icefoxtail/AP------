@@ -119,7 +119,7 @@
     model: (s) => ({ u: clamp(Math.round(s.smGu), 1, 8), S: 6 * clamp(Math.round(s.smGu), 1, 8) }),
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, st = C.step, g = sixGeo(s, prob, prob ? pk.u : M.u);
-      fit(b, bboxOf([g.A, g.B, g.C]), { t: 44, b: 60, l: 54, r: 54 });
+      fit(b, bboxOf([g.A, g.B, g.C]), { t: 44, b: 84, l: 54, r: 54 });
       const cen = centroid([g.A, g.B, g.C]);
       const T6 = [[g.A, g.F, g.G], [g.F, g.B, g.G], [g.B, g.D, g.G], [g.D, g.C, g.G], [g.C, g.E, g.G], [g.E, g.A, g.G]];
       T6.forEach((Tr, i) => fillPoly(b, Tr, !prob && (!C.review || st >= 3) ? (i % 2 ? 'green' : 'sky') : 'sky', 0.22));
@@ -128,9 +128,9 @@
       const sz = 15;
       if (prob) {
         const k = pk.kind, u = pk.u;
-        if (k === 0) { T(b, cen, `△ABC의 넓이 ${6 * u}`, { size: phone(b) ? 12 : 14, color: 'sky', dy: 56 }); T(b, centroid(T6[2]), 'x', { size: 18, color: 'amber' }); }
-        else if (k === 1) { T(b, centroid(T6[2]), String(u), { size: 17, color: 'sky' }); T(b, cen, '△ABC의 넓이 x', { size: phone(b) ? 12 : 14, color: 'amber', dy: 56 }); }
-        else { T(b, cen, `△ABC의 넓이 ${6 * u}`, { size: phone(b) ? 12 : 14, color: 'sky', dy: 56 }); fillPoly(b, [g.A, g.F, g.G, g.E], 'amber', 0.34); T(b, centroid([g.A, g.F, g.G, g.E]), 'x', { size: 18, color: 'amber' }); }
+        if (k === 0) { T(b, pt((g.B.x + g.C.x) / 2, 0), `△ABC의 넓이 ${6 * u}`, { size: phone(b) ? 13 : 15, color: 'sky', dy: 50 }); T(b, centroid(T6[2]), 'x', { size: 18, color: 'amber' }); }
+        else if (k === 1) { T(b, centroid(T6[2]), String(u), { size: 17, color: 'sky' }); T(b, pt((g.B.x + g.C.x) / 2, 0), '△ABC의 넓이 x', { size: phone(b) ? 13 : 15, color: 'amber', dy: 50 }); }
+        else { T(b, pt((g.B.x + g.C.x) / 2, 0), `△ABC의 넓이 ${6 * u}`, { size: phone(b) ? 13 : 15, color: 'sky', dy: 50 }); fillPoly(b, [g.A, g.F, g.G, g.E], 'amber', 0.34); T(b, centroid([g.A, g.F, g.G, g.E]), 'x', { size: 18, color: 'amber' }); }
         if (k === 2) { /* 사각형 AFGE 의 넓이 */ }
       } else if (!C.review || st >= 3) T6.forEach((Tr, i) => T(b, centroid(Tr), String(M.u), { size: sz, color: i % 2 ? 'green' : 'sky' }));
       [[g.A, 'A'], [g.B, 'B'], [g.C, 'C'], [g.D, 'D'], [g.E, 'E'], [g.F, 'F']].forEach(([p, nm]) => vtx(b, p, cen, nm, { size: 17, gap: 12 }));
@@ -243,7 +243,7 @@
     model: (s) => { const c = clamp(Math.round(s.smGc), 1, 3); return { c, S: 18 * c, S3: 6 * c, S9: 2 * c, S18: c }; },
     draw(b, s, M, C) {
       const prob = C.problem, pk = M.pk, st = C.step, g = chGeo(s, prob, prob ? pk.c : M.c);
-      fit(b, bboxOf([g.A, g.B, g.C]), { t: 44, b: 60, l: 54, r: 54 });
+      fit(b, bboxOf([g.A, g.B, g.C]), { t: 44, b: 84, l: 54, r: 54 });
       const cen = centroid([g.A, g.B, g.C]);
       const show3 = prob || !C.review || st >= 1, show9 = !prob && (!C.review || st >= 2), show18 = prob || !C.review || st >= 3;
       fillPoly(b, [g.G, g.B, g.C], 'sky', show3 && !prob ? 0.2 : 0.1); if (show9) fillPoly(b, [g.Gq, g.B, g.C], 'green', 0.22);
@@ -252,8 +252,8 @@
       tick(b, g.B, g.D, 1, 'amber'); tick(b, g.D, g.C, 1, 'amber');
       const sz = 15;
       if (prob) {
-        if (pk.kind === 0) { T(b, cen, `△ABC의 넓이 ${18 * pk.c}`, { size: phone(b) ? 12 : 14, color: 'sky', dy: 58 }); T(b, centroid([g.Gq, g.B, g.D]), 'x', { size: 17, color: 'amber', dy: 3 }); }
-        else { T(b, centroid([g.Gq, g.B, g.D]), String(pk.c), { size: 16, color: 'amber', dy: 3 }); T(b, cen, '△ABC의 넓이 x', { size: phone(b) ? 12 : 14, color: 'amber', dy: 58 }); }
+        if (pk.kind === 0) { T(b, pt((g.B.x + g.C.x) / 2, 0), `△ABC의 넓이 ${18 * pk.c}`, { size: phone(b) ? 13 : 15, color: 'sky', dy: 54 }); T(b, centroid([g.Gq, g.B, g.D]), 'x', { size: 17, color: 'amber', dy: 3 }); }
+        else { T(b, centroid([g.Gq, g.B, g.D]), String(pk.c), { size: 16, color: 'amber', dy: 3 }); T(b, pt((g.B.x + g.C.x) / 2, 0), '△ABC의 넓이 x', { size: phone(b) ? 13 : 15, color: 'amber', dy: 54 }); }
       } else {
         const sd = (p, t, col, size, dy, dir) => T(b, p, t, { size, color: col, dx: dir * (textW(t, size) / 2 + 12), dy });
         const fz = phone(b) ? 12 : 14;
@@ -268,7 +268,7 @@
       dragA(b, s, g, C);
       if (C.txt && !prob) {
         const msg = st >= 3 ? `△G′BD = △G′BC ÷ 2 = ${M.S9} ÷ 2 = ${M.S18}  (△ABC의 18분의 1)` : st >= 2 ? `△G′BC = △GBC ÷ 3 = ${M.S3} ÷ 3 = ${M.S9}` : st >= 1 ? `△GBC = △ABC ÷ 3 = ${M.S3}` : '△ABC → G → △GBC → G′';
-        T(b, pt((g.B.x + g.C.x) / 2, 0), msg, { dy: 40, size: phone(b) ? 13 : 16, color: 'amber' });
+        T(b, pt((g.B.x + g.C.x) / 2, 0), msg, { dy: 56, size: phone(b) ? 13 : 16, color: 'amber' });
       }
     },
     steps: (M) => [
