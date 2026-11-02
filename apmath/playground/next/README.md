@@ -90,6 +90,7 @@ window.addEventListener('DOMContentLoaded', () => APLab.createLab({
 - 색 이름: `ink · sky · rose · amber · green · violet · red · orange · muted` (테마에 따라 자동으로 바뀜)
 - 장면 데이터: `question · guide · controls · presets · actions · steps · problem{tag,time,text,answer,snap} · solution{standard,quick} · view(s) · draw(b,s,v)`
 - 변하는 내용은 `view(s)`가 돌려줍니다: `chips · status · alert · readouts · parts · summary · rule · formula · notes · card · tape`
+- 문제 탭 기본 동작(키트가 처리, 실험실별 설정 불필요): ① 휴대폰에서 '탐구 질문' 카드를 접습니다(장면이 `tabs:{compact:false}`를 주면 접지 않음). 접고도 문제 글이 첫 화면(약 760px) 밖인 장면만 무대를 54svh→44svh로 낮추고, `tabs:{compact:true}`를 준 장면은 40svh입니다. ② 무대 상태 배지(`view.status`)는 숨깁니다(답·판정 노출 방지). 의도적으로 보이려면 장면에 `tabs:{status:true}`. ③ `problem.snap`이 있으면 탐구·정리 탭에서 문제 탭으로 들어올 때 한 번 자동으로 적용해 그림을 지문 조건에 맞춥니다(`thumbSnap:false` 또는 `problem.autoSnap:false`면 생략).
 - 끝으로 `kit/apl-catalog.js`의 해당 항목에 `"next": "next/labs/파일.html"`을 적으면 허브에 2.0 배지와 장면 바로가기가 생깁니다.
 
 ### 3.1 무대 축척: 기본 1:1, 필요할 때만 `aspect:'free'`

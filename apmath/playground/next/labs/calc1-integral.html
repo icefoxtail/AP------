@@ -1018,7 +1018,7 @@ window.addEventListener('DOMContentLoaded', function () {
       `우함수 $E$ 는 $y$축 대칭이라 왼쪽을 접으면 오른쪽에 포개지므로 $\\int_{-${v.k}}^{${v.k}} E\\,dx = 2\\int_0^{${v.k}} E\\,dx = ${frac(v.ans)}$ 입니다.`
     ];
     if (p.t === 2) return [
-      `삼차함수의 그래프는 변곡점에 대하여 점대칭입니다. $f''(x) = 0$ 에서 $x = ${v.p}$, 대칭의 중심은 $C(${v.p}, ${v.q})$ 입니다.`,
+      `삼차함수의 그래프는 변곡점에 대하여 점대칭입니다. $f^{\\prime\\prime}(x) = 0$ 에서 $x = ${v.p}$, 대칭의 중심은 $C(${v.p}, ${v.q})$ 입니다.`,
       `구간 $[${v.x0}, ${v.x1}]$ 은 $x = ${v.p}$ 를 가운데로 한 대칭 구간입니다. 직선 $y = ${v.q}$ 와 곡선 사이의 왼쪽 부분을 $C$ 둘레로 $180^\\circ$ 돌리면 오른쪽 부분에 포개집니다.`,
       `위·아래로 넘친 만큼 서로 메우므로 곡선 아래 넓이는 높이 $${v.q}$, 가로 $${2 * v.h}$ 인 직사각형의 넓이 $${2 * v.h} \\times ${v.q} = ${v.ans}$ 와 같습니다.`
     ];
@@ -1429,8 +1429,514 @@ window.addEventListener('DOMContentLoaded', function () {
   scenes.push(...newScenes);
 
   /* ---------- 5. 실험실 등록 ---------- */
+
+
+
+
+
+
+
+
+
+  /* OU-BEGIN */
+  (function () {
+  const { tex, fmt, clamp } = APLab;
+  /* ==========================================================================
+     옛 장면 1~5에 「새 문제」 변형과 문제·풀이 단계 그림을 얹는 공용 부품 (2026-11)
+     - 탐구 탭(끌기·슬라이더·문구·그림)은 원래 장면 그대로 두고, 정리·문제 탭만 변형 문제를 따라가게 합니다.
+     - 첫 문제는 원래 문제 그대로이고, 「새 문제」를 누르면 같은 구조에서 숫자·상황만 바꾼 문제가 나옵니다(연속 중복 없음).
+     - 문제 탭 그림은 지문에 주어진 값만 그리고, 답과 보조선은 풀이 단계를 누른 뒤에만 나옵니다.
+     ========================================================================== */
+  const ouRint = (n) => Math.floor(Math.random() * n);
+  const ouPick = (arr) => arr[ouRint(arr.length)];
+  const ouGcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) { const t = a % b; a = b; b = t; } return a || 1; };
+  class QQ {
+    constructor(n, d) { this.n = n; this.d = d; }
+    add(o) { o = ouQq(o); return ouQ(this.n * o.d + o.n * this.d, this.d * o.d); }
+    sub(o) { o = ouQq(o); return ouQ(this.n * o.d - o.n * this.d, this.d * o.d); }
+    mul(o) { o = ouQq(o); return ouQ(this.n * o.n, this.d * o.d); }
+    div(o) { o = ouQq(o); return ouQ(this.n * o.d, this.d * o.n); }
+    neg() { return ouQ(-this.n, this.d); }
+    get v() { return this.n / this.d; }
+    get int() { return this.d === 1; }
+    get sgn() { return Math.sign(this.n); }
+    get tex() { return this.d === 1 ? String(this.n) : (this.n < 0 ? '-' : '') + `\\dfrac{${Math.abs(this.n)}}{${this.d}}`; }
+    get ptex() { return this.n < 0 ? `(${this.tex})` : this.tex; }
+    get txt() { return (this.n < 0 ? '−' : '') + (this.d === 1 ? String(Math.abs(this.n)) : `${Math.abs(this.n)}/${this.d}`); }
+  }
+  function ouQ(n, d = 1) { if (d < 0) { n = -n; d = -d; } const g = ouGcd(n, d); return new QQ(n / g, d / g); }
+  const ouQq = (x) => (x instanceof QQ ? x : ouQ(x));
+  // 다항식 TeX. co: 높은 차수부터의 계수(정수 또는 QQ)
+  function ouPoly(co, v = 'x') {
+    const n = co.length;
+    let out = '';
+    co.forEach((c0, i) => {
+      const c = ouQq(c0);
+      if (!c.n) return;
+      const deg = n - 1 - i, a = ouQ(Math.abs(c.n), c.d);
+      const t = deg === 0 ? '' : deg === 1 ? v : `${v}^${deg}`;
+      const body = t ? (a.n === 1 && a.d === 1 ? t : a.tex + t) : a.tex;
+      out += (c.n < 0 ? '-' : out ? '+' : '') + body;
+    });
+    return out || '0';
+  }
+  const ouEv = (co, x) => { let y = 0; for (let i = 0; i < co.length; i++) y = y * x + ouQq(co[i]).v; return y; };
+  const ouEvQ = (co, x) => { let y = ouQ(0); for (let i = 0; i < co.length; i++) y = y.mul(x).add(co[i]); return y; };
+  const ouDer = (co) => { const n = co.length - 1; return co.slice(0, n).map((c, i) => ouQq(c).mul(n - i)); };
+  const ouMul = (a, b) => { const out = Array(a.length + b.length - 1).fill(0).map(() => ouQ(0)); a.forEach((x, i) => b.forEach((y, j) => { out[i + j] = out[i + j].add(ouQq(x).mul(y)); })); return out; };
+  const ouAdd = (a, b) => { const n = Math.max(a.length, b.length), out = []; for (let i = 0; i < n; i++) out.push(ouQq(a[a.length - n + i] === undefined ? 0 : a[a.length - n + i]).add(b[b.length - n + i] === undefined ? 0 : b[b.length - n + i])); return out; };
+  // (x − r) 인수 TeX: 0 → x, 양수 r → (x-r), 음수 → (x+|r|)
+  const ouFac = (r) => (r === 0 ? 'x' : r > 0 ? `(x-${r})` : `(x+${-r})`);
+  const ouSg = (n) => (n < 0 ? `-${-n}` : `+${n}`); // 부호 있는 항
+  const ouPar = (n) => (n < 0 ? `(${n})` : String(n));
+  const ouMinus = (s) => String(s).replace(/-/g, '−');
+  // √(n/d)를 k√m/d' 꼴로: { tex, txt, val, rat }
+  function ouSqrt(n, d) {
+    const nd = n * d;
+    let k = 1, m = nd;
+    for (let t = Math.floor(Math.sqrt(nd)); t >= 1; t--) if (nd % (t * t) === 0) { k = t; m = nd / (t * t); break; }
+    const g = ouGcd(k, d), kk = k / g, dd = d / g, val = Math.sqrt(n / d);
+    if (m === 1) { const q = ouQ(kk, dd); return { tex: q.tex, txt: q.txt, val, rat: q }; }
+    const c = kk === 1 ? '' : String(kk);
+    return { tex: dd > 1 ? `\\dfrac{${c}\\sqrt{${m}}}{${dd}}` : `${c}\\sqrt{${m}}`, txt: `${c}√${m}` + (dd > 1 ? `/${dd}` : ''), val, rat: null };
+  }
+  // 점들이 모두 들어오는 창(여백 포함)
+  function ouWin(pts, o = {}) {
+    let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    pts.forEach((p) => { x0 = Math.min(x0, p[0]); x1 = Math.max(x1, p[0]); y0 = Math.min(y0, p[1]); y1 = Math.max(y1, p[1]); });
+    const mx = o.mx == null ? 0.9 : o.mx, my = o.my == null ? 0.9 : o.my;
+    x0 -= mx; x1 += mx; y0 -= my; y1 += my;
+    const minW = o.minW || 6, minH = o.minH || 4.4;
+    if (x1 - x0 < minW) { const c = (x0 + x1) / 2; x0 = c - minW / 2; x1 = c + minW / 2; }
+    if (y1 - y0 < minH) { const c = (y0 + y1) / 2; y0 = c - minH / 2; y1 = c + minH / 2; }
+    return { x: [x0, x1], y: [y0, y1] };
+  }
+  // 함수들이 [최소 x, 최대 x] 구간에서 지나는 높이와 점들을 모두 담는 창
+  function ouWinF(fs, xs, o = {}) {
+    const a = Math.min(...xs), c = Math.max(...xs), pts = (o.pts || []).slice();
+    fs.forEach((f) => { const r = ouRange(f, a, c, 80); if (Number.isFinite(r[0])) pts.push([a, r[0]], [c, r[1]]); });
+    return ouWin(pts, o);
+  }
+  // 함수 f가 [x0,x1]에서 지나는 높이 범위(점으로 표본)
+  function ouRange(f, x0, x1, n = 60) {
+    let lo = Infinity, hi = -Infinity;
+    for (let i = 0; i <= n; i++) { const y = f(x0 + ((x1 - x0) * i) / n); if (Number.isFinite(y)) { lo = Math.min(lo, y); hi = Math.max(hi, y); } }
+    return [lo, hi];
+  }
+  // 장면·문제가 바뀔 때만 보이는 범위를 맞춥니다(끌어서 확대한 것은 그대로 둡니다)
+  function ouFocus(b, key, box) { if (!box || b._ouKey === key) return; b._ouKey = key; b.setFocus(box, true); }
+  // 글자 라벨: 화면 안으로 밀어 넣고, 이미 그려진 글자와 겹치면 위·아래로 비켜 놓습니다
+  function ouHook(b) {
+    if (b._ouHooked) return;
+    b._ouHooked = true;
+    const orig = b._text;
+    b._text = function (x, y, str, o = {}, screen) {
+      if (str != null && str !== '' && this._ouBoxes && !this._bbox) {
+        const c = this.ctx, size = (o.size || 13) * this.fs * (this.thumb ? 0.78 : this._ts());
+        c.save(); c.font = `${o.weight || 750} ${size}px ${this.font}`;
+        const w = c.measureText(String(str)).width; c.restore();
+        const al = o.align || 'center', bl = o.baseline || 'alphabetic';
+        const x0 = x + (al === 'center' ? -w / 2 : al === 'right' || al === 'end' ? -w : 0), y0 = y + (bl === 'middle' ? -size / 2 : bl === 'top' ? 0 : bl === 'bottom' ? -size : -size * 0.8);
+        this._ouBoxes.push({ x0, x1: x0 + w, y0, y1: y0 + size });
+      }
+      return orig.call(this, x, y, str, o, screen);
+    };
+    // 점 이름표도 먼저 그려진 글자와 겹치면 다른 쪽으로 비켜 놓습니다
+    const origPL = b._pointLabel;
+    b._pointLabel = function (sp, o) {
+      if (this._ouBoxes && !this._bbox && o.label != null && o.dx != null && o.dy != null) {
+        const c = this.ctx, size = (o.size || 12.5) * this.fs * this._ts();
+        c.save(); c.font = `800 ${size}px ${this.font}`; const w = c.measureText(String(o.label)).width; c.restore();
+        const flip = (a) => (a === 'left' ? 'right' : a === 'right' ? 'left' : a), al0 = o.align || 'left';
+        const cands = [[o.dx, o.dy, al0], [o.dx, -o.dy, al0], [-o.dx, o.dy, flip(al0)], [-o.dx, -o.dy, flip(al0)], [o.dx, o.dy * 2.3, al0], [o.dx, -o.dy * 2.3, al0], [-o.dx, o.dy * 2.3, flip(al0)], [-o.dx, -o.dy * 2.3, flip(al0)]];
+        for (const [dx, dy, al] of cands) {
+          const x0 = sp.x + dx - (al === 'right' ? w : al === 'center' ? w / 2 : 0), y0 = sp.y + dy - size / 2, q = { x0, x1: x0 + w, y0, y1: y0 + size };
+          if (q.x0 < 4 || q.x1 > this.W - 4 || q.y0 < 4 || q.y1 > this.H - 4) continue;
+          if (!this._ouBoxes.some((r) => Math.min(q.x1, r.x1) - Math.max(q.x0, r.x0) > 2 && Math.min(q.y1, r.y1) - Math.max(q.y0, r.y0) > 2)) return origPL.call(this, sp, { ...o, dx, dy, align: al });
+        }
+      }
+      return origPL.call(this, sp, o);
+    };
+  }
+  function ouTag(b, p, str, o = {}) {
+    const c = b.ctx, size = (o.size || 12.5) * b.fs;
+    c.save();
+    c.font = `800 ${size}px ${b.font}`;
+    const w = c.measureText(String(str)).width;
+    c.restore();
+    const s = b.toS(Array.isArray(p) ? { x: p[0], y: p[1] } : p), al = o.align || 'center';
+    const boxes = b._ouBoxes || [];
+    const pos = (oy) => {
+      const dy = (o.dy || 0) + oy, want = s.x + (o.dx || 0) - (al === 'right' ? w : al === 'left' ? 0 : w / 2);
+      const left = Math.max(6, Math.min(want, Math.max(6, b.W - 6 - w)));
+      return { dy, left, box: { x0: left, x1: left + w, y0: s.y + dy - size * 0.8, y1: s.y + dy + size * 0.2 } };
+    };
+    const hit = (q) => boxes.some((r) => Math.min(q.x1, r.x1) - Math.max(q.x0, r.x0) > 2 && Math.min(q.y1, r.y1) - Math.max(q.y0, r.y0) > 2);
+    let pick = pos(0);
+    for (const oy of [0, -size * 1.5, size * 1.5, -size * 3, size * 3, -size * 4.5, size * 4.5]) { const t = pos(oy); if (t.box.y0 > 2 && t.box.y1 < b.H - 2 && !hit(t.box)) { pick = t; break; } }
+    b.text(p, str, { size: o.size || 12.5, weight: 800, ...o, align: 'left', dx: pick.left - s.x, dy: pick.dy });
+  }
+  // 곡선 이름표: 보이는 범위 안에서 곡선이 지나는 곳에 붙입니다.
+  function ouCurveTag(b, f, text, color, o = {}) {
+    const vb = b.viewBox();
+    const yl = vb.y0 + (vb.y1 - vb.y0) * 0.1, yh = vb.y1 - (vb.y1 - vb.y0) * 0.1;
+    const right = o.side !== 'left';
+    for (let i = 0; i <= 90; i++) {
+      const x = right ? vb.x1 - (vb.x1 - vb.x0) * 0.06 - i * (vb.x1 - vb.x0) * 0.008 : vb.x0 + (vb.x1 - vb.x0) * 0.06 + i * (vb.x1 - vb.x0) * 0.008;
+      const y = f(x);
+      const clash = (o.skip || []).some((q) => Math.hypot(x - q[0], y - q[1]) < (q[2] || 1.2));
+      let busy = false;
+      if (Number.isFinite(y) && b._ouBoxes && b._ouBoxes.length) {
+        const c = b.ctx, size = 13 * b.fs; c.save(); c.font = `800 ${size}px ${b.font}`; const w = c.measureText(text).width; c.restore();
+        const sp = b.toS(x, y), dx = right ? -8 : 8, dy = o.dy == null ? -12 : o.dy, x0 = sp.x + dx - (right ? w : 0), y0 = sp.y + dy - size * 0.8, q = { x0, x1: x0 + w, y0, y1: y0 + size };
+        busy = b._ouBoxes.some((r) => Math.min(q.x1, r.x1) - Math.max(q.x0, r.x0) > 2 && Math.min(q.y1, r.y1) - Math.max(q.y0, r.y0) > 2);
+      }
+      if (Number.isFinite(y) && y > yl && y < yh && !clash && !busy && !(o.axis && Math.abs(y) < o.axis)) {
+        b.text([x, y], text, { color, size: 13, weight: 800, align: right ? 'right' : 'left', dx: right ? -8 : 8, dy: o.dy == null ? -12 : o.dy, ref: o.ref });
+        return;
+      }
+    }
+  }
+  // f가 g보다 위인(또는 아래인) 구간마다 색칠 (부호가 바뀌는 곳에서 조각을 나눔). pos·neg 색을 따로 줄 수 있습니다.
+  function ouBetween(b, f, g, x0, x1, o = {}) {
+    if (!(x1 - x0 > 1e-6)) return;
+    const N = 200;
+    let piece = null;
+    const flush = () => { if (piece && piece.t.length > 1 && piece.sign) b.poly(piece.t.concat(piece.b.slice().reverse()), { fill: piece.sign > 0 ? (o.pos || 'rose') : (o.neg || 'sky'), fillAlpha: o.alpha == null ? 0.3 : o.alpha, color: null, ref: piece.sign > 0 ? o.refPos : o.refNeg }); piece = null; };
+    let px = x0, pd = f(x0) - g(x0);
+    const add = (x) => { if (!piece) piece = { t: [], b: [], sign: 0 }; piece.t.push([x, f(x)]); piece.b.push([x, g(x)]); };
+    add(x0);
+    if (pd) piece.sign = pd > 0 ? 1 : -1;
+    for (let i = 1; i <= N; i++) {
+      const x = x0 + ((x1 - x0) * i) / N, d = f(x) - g(x);
+      if (d) {
+        const sg = d > 0 ? 1 : -1;
+        if (!piece.sign) piece.sign = sg;
+        else if (sg !== piece.sign) {
+          const xc = px + ((x - px) * Math.abs(pd)) / (Math.abs(pd) + Math.abs(d));
+          piece.t.push([xc, f(xc)]); piece.b.push([xc, g(xc)]);
+          flush(); add(xc); piece.sign = sg;
+        }
+      }
+      add(x); px = x; pd = d;
+    }
+    flush();
+  }
+  // 변형 생성기: gen(이전)이 새 변형을 돌려주거나 null(다시 뽑기). 첫 변형 gen(null)은 원래 문제입니다.
+  let ouSerial = 0;
+  function ouVarier(gen) {
+    let cur = gen(null);
+    cur.first = true; cur.sid = ++ouSerial;
+    const firstKey = cur.key;
+    return {
+      ou: true,
+      cur: () => cur,
+      next: () => {
+        for (let i = 0; i < 600; i++) {
+          const v = gen(cur);
+          if (v && v.key !== cur.key && v.key !== firstKey) { v.first = false; v.sid = ++ouSerial; cur = v; break; }
+        }
+        return cur;
+      }
+    };
+  }
+  const ouProb = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-ou-new>새 문제</button></div>`;
+  document.addEventListener('click', (ev) => {
+    const hit = ev.target && ev.target.closest && ev.target.closest('[data-ou-new]');
+    if (!hit) return;
+    const lab = window.lab, sc = lab && lab.scene;
+    if (!sc || !sc.vary || !sc.vary.ou) return;
+    sc.vary.next();
+    lab.s.revealed = false;
+    lab.setStep(0);
+    try { lab._buildProblem(); lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+    lab.invalidate(true);
+  });
+  // 지금 그림에 보여 줄 풀이 단계: 정리 탭은 s.step, 문제 탭은 정답이 열렸을 때만 끝까지
+  const ouStepOf = (lab, s, n) => (lab && lab.tab === 'review' ? s.step : lab && lab.tab === 'problem' ? (lab._answerOpen && lab._answerOpen() ? n : 0) : n);
+  // 원래 장면 1~5에 문제·변형·풀이 단계 그림을 얹습니다. spec: { m, gen, text, ans, steps, core, draw }
+  const ouFix = (t) => String(t).replace(/'/g, '^{\\prime}').replace(/</g, '\\lt ').replace(/>/g, '\\gt '); // 단계 글은 esc를 거치므로 ' < > 를 수식 기호로 바꿉니다
+  function ouUpgrade(sc, spec) {
+    const ex = examData[spec.m], V = ouVarier(spec.gen);
+    const body = (v) => (v.first ? ex.question() : spec.text(v));
+    const pr0 = sc.problem || {}, origView = sc.view, origDraw = sc.draw, origPanes = sc.panes, focus0 = sc.focus;
+    const inExplore = (lab) => !lab || !lab.tab || lab.tab === 'explore';
+    // 탐구 탭은 원래대로: 원래 단계(1~3)가 그림에 드러나도록 단계 값을 1~3으로 맞춰 그립니다.
+    const withStep = (s, fn) => { const k = s.step; s.step = Math.max(1, Math.min(3, k)); try { return fn(); } finally { s.step = k; } };
+    const stepsOf = (v) => spec.steps(v).map(ouFix);
+    const stepsHtml = (v) => stepsOf(v).map((t, i) => `<b>${i + 1}.</b> ${t}`).join('<br>');
+    sc.startStep = 0;
+    sc.steps = () => stepsOf(V.cur());
+    sc.reviewTop = () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${body(V.cur())}</div>`;
+    sc.problem = { tag: pr0.tag, time: pr0.time, text: () => ouProb(body(V.cur())), answer: () => (V.cur().first ? ex.answerBadge() : spec.ans(V.cur())) };
+    sc.vary = V;
+    const sol0 = sc.solution || {};
+    sc.solution = {
+      ...sol0,
+      standard: () => (V.cur().first ? ex.textbook() : { steps: stepsHtml(V.cur()) }),
+      quick: () => (V.cur().first ? ex.shortcut() : { highlight: spec.core })
+    };
+    sc.view = (s, lab) => (inExplore(lab) ? (origView ? withStep(s, () => origView(s, lab)) : {}) : { formula: spec.core });
+    if (origPanes) sc.panes = (s) => { const L = window.lab; return L && L.tab && L.tab !== 'explore' ? null : origPanes(s); };
+    sc.draw = (b, s, v, lab) => {
+      if (b.thumb || inExplore(lab)) {
+        if (!b.thumb) ouFocus(b, 'e:' + spec.m, typeof focus0 === 'function' ? focus0(s) : focus0 || (lab && lab.def && lab.def.board && lab.def.board.focus));
+        const vv = origView ? withStep(s, () => origView(s, lab)) : v;
+        return withStep(s, () => origDraw(b, s, vv, lab));
+      }
+      const cur = V.cur(), st = ouStepOf(lab, s, stepsOf(cur).length);
+      ouFocus(b, 'v:' + cur.sid, cur.win);
+      ouHook(b); b._ouBoxes = [];
+      if (s.grid) b.grid();
+      b.axes();
+      spec.draw(b, s, cur, st, lab);
+    };
+  }
+  // 변수 항: 계수 c, 문자 t → '', '-' 접두 처리 (1·p → p, -1·p → -p, 3·p → 3p)
+  const ouCo = (c) => (c === 1 ? '' : c === -1 ? '-' : String(c));
+  const ouCoQ = (c) => (c.n === 1 && c.d === 1 ? '' : c.n === -1 && c.d === 1 ? '-' : c.tex);
+  const ouTerm = (c, t) => (c === 0 ? '0' : `${ouCo(c)}${t}`);
+  // a + k·h 꼴 (a=0이면 kh)
+  const ouLin = (a, k, v = 'h') => { const t = (Math.abs(k) === 1 ? '' : Math.abs(k)) + v; return a === 0 ? (k < 0 ? '-' : '') + t : `${a}${k < 0 ? '-' : '+'}${t}`; };
+  // 곡선 위의 점 이름표를 곡선이 없는 쪽(위)에 놓는 자리
+  const ouSide = (m) => (m >= 0 ? { dx: -10, dy: -14, align: 'right' } : { dx: 10, dy: -14, align: 'left' });
+  // 곡선(기울기 m) 위의 점 이름표 자리: 곡선이 없는 쪽. pos: 'L'(맨 왼쪽 점) · 'R'(맨 오른쪽 점) · 'M'(가운데 점)
+  const ouPlace = (m, pos) => {
+    const up = m >= 0;
+    if (pos === 'L') return up ? { dx: -10, dy: -14, align: 'right' } : { dx: -10, dy: 16, align: 'right' };
+    if (pos === 'R') return up ? { dx: 10, dy: 16, align: 'left' } : { dx: 10, dy: -14, align: 'left' };
+    return up ? { dx: -10, dy: -18, align: 'right' } : { dx: 10, dy: -18, align: 'left' };
+  };
+  const ouPos = (xs, x) => { const a = Math.min(...xs), c = Math.max(...xs); return x === a ? 'L' : x === c ? 'R' : 'M'; };
+  const ouSlope = (f, x) => (f(x + 0.01) - f(x - 0.01)) / 0.02;
+  // 그림 왼쪽 위 모서리에 놓는 한 줄 요약(축·곡선과 덜 겹칩니다)
+  const ouTop = (b, str, o = {}) => { const vb = b.viewBox(); ouTag(b, [vb.x0, vb.y1 - (vb.y1 - vb.y0) * 0.07], str, { align: 'left', dx: 12, ...o }); };
+
+  /* ========== 정적분과 넓이 장면 1~5 ========== */
+  const polyEv = (co) => (x) => ouEv(co, x);
+  const lbl = (b, p, str, o) => ouTag(b, p, str, o);
+
+  /* 장면 1 · 정적분의 값과 실제 넓이 */
+  ouUpgrade(scenes[0], {
+    m: 1,
+    gen: (prev) => {
+      let a, p, c;
+      if (!prev) { a = 1; p = 0; c = 2; } else { a = ouPick([1, 2, 3, -1, -2]); c = ouPick([2, 2, 4]); p = ouPick([0, 0, -1, 1]); }
+      const bb = p + (3 * c) / 2, co = [a, -a * (2 * p + c), a * p * (p + c)], f = polyEv(co);
+      const win = ouWinF([f], [p, bb], { pts: [[p, 0], [bb, f(bb)], [p + c / 2, f(p + c / 2)]], mx: 1.2, my: 1.4, minW: 6, minH: 5 });
+      if (prev && win.y[1] - win.y[0] > 17) return null;
+      const part = ouQ(Math.abs(a) * c * c * c, 6), S = part.mul(2);
+      return { a, p, c, bb, co, f, part, S, win, key: [a, p, c].join(), chk: { co, p, bb, S: S.v, part: part.v } };
+    },
+    text: (v) => `이차함수 ${tex('f(x)=' + ouPoly(v.co))} 에 대하여 구간 ${tex(`[${v.p}, ${v.bb}]`)}에서의 정적분 ${tex(`I = \\displaystyle\\int_{${v.p}}^{${v.bb}} f(x)\\,dx`)} 의 값과, 곡선 ${tex('y = f(x)')}와 ${tex('x')}축으로 둘러싸인 넓이 ${tex(`S = \\displaystyle\\int_{${v.p}}^{${v.bb}} |f(x)|\\,dx`)} 의 값을 각각 구하시오.`,
+    ans: (v) => `정적분 ${tex('I = 0')}, 실제 넓이 ${tex('S = ' + v.S.tex)}`,
+    steps: (v) => {
+      const F = [ouQ(v.a, 3), ouQ(-v.a * (2 * v.p + v.c), 2), ouQ(v.a * v.p * (v.p + v.c))], Fb = ouEvQ(F, v.bb), Fp = ouEvQ(F, v.p);
+      const small = v.a > 0 ? 'S_2' : 'S_1', big = v.a > 0 ? 'S_1' : 'S_2';
+      return [
+        `$f(x)=${ouCo(v.a)}${ouFac(v.p)}${ouFac(v.p + v.c)}$ 이므로 $f(x)=0$ 의 해는 $x=${v.p}$, $x=${v.p + v.c}$ 입니다. $x=${v.p + v.c}$ 에서 부호가 바뀌므로 구간을 둘로 나눕니다. x축 위쪽 부분의 넓이를 $S_1$(분홍), 아래쪽 부분을 $S_2$(하늘)이라 하면 $I=S_1-S_2$, $S=S_1+S_2$ 입니다.`,
+        `근 $${v.p}$, $${v.p + v.c}$ 사이의 넓이는 포물선 넓이 공식 $\\dfrac{|a|}{6}(\\beta-\\alpha)^3=\\dfrac{${Math.abs(v.a)}}{6}\\cdot ${v.c}^3=${v.part.tex}$ 입니다. 이 부분이 $${small}$ 입니다.`,
+        `$F(x)=${ouPoly(F)}$ 이므로 $I=F(${v.bb})-F(${v.p})=${Fb.tex}-${Fp.ptex}=0$. 따라서 $S_1=S_2$ 이고 $${big}=${v.part.tex}$ 이므로 $S=S_1+S_2=2\\times ${v.part.ptex}=${v.S.tex}$.`
+      ];
+    },
+    core: '<b>정적분의 값과 넓이는 다릅니다</b><br>$x$ 축 위쪽 넓이를 $S_1$, 아래쪽 넓이를 $S_2$ 라 하면 $\\int f\\,dx=S_1-S_2$ 이고 넓이는 $S_1+S_2$ 입니다. $f(x)=a\\,x(x-2k)$ 를 $0$ 에서 $3k$ 까지 적분하면 $S_1=S_2$ 라 정적분은 $0$ 이지만 넓이는 $0$ 이 아닙니다.',
+    draw: (b, s, v, st) => {
+      const f = v.f, rootX = v.p + v.c, left = v.a > 0 ? 'sky' : 'rose';
+      b.plot(f, { color: 'ink', width: 3.2, glow: true });
+      [v.p, v.bb].forEach((x) => b.seg([x, 0], [x, f(x)], { color: 'amber', width: 1.6, dash: true, alpha: 0.8 }));
+      lbl(b, [v.p, 0], `x = ${v.p}`, { color: 'amber', dy: v.a > 0 ? -16 : 20, dx: -4, align: 'right' });
+      lbl(b, [v.bb, 0], `x = ${v.bb}`, { color: 'amber', dy: v.a > 0 ? 20 : -16, dx: 4, align: 'left' });
+      if (st >= 1) {
+        ouBetween(b, f, () => 0, v.p, v.bb, { pos: 'rose', neg: 'sky', alpha: 0.32 });
+        if (st < 2) lbl(b, [v.p + v.c / 2, f(v.p + v.c / 2) / 2], v.a > 0 ? 'S₂' : 'S₁', { color: left, size: 14 });
+        if (st < 3) lbl(b, [rootX + (v.bb - rootX) / 2, f(rootX + (v.bb - rootX) / 2) / 2], v.a > 0 ? 'S₁' : 'S₂', { color: v.a > 0 ? 'rose' : 'sky', size: 14 });
+      }
+      if (st >= 2) {
+        b.point([rootX, 0], { hollow: true, color: 'ink', r: 5.5, label: `x = ${rootX}`, dy: v.a > 0 ? -16 : 20, dx: 0, align: 'center' });
+        lbl(b, [v.p + v.c / 2, f(v.p + v.c / 2) / 2], `${v.a > 0 ? 'S₂' : 'S₁'} = ${v.part.txt}`, { color: left, size: 13 });
+      }
+      if (st >= 3) {
+        const vb = b.viewBox(), rc = rootX + (v.bb - rootX) / 2;
+        lbl(b, [rc, f(rc) / 2], `${v.a > 0 ? 'S₁' : 'S₂'} = ${v.part.txt}`, { color: v.a > 0 ? 'rose' : 'sky', size: 13 });
+        ouTop(b, `I = S₁ − S₂ = 0 ,  S = S₁ + S₂ = ${v.S.txt}`, { color: 'green', size: 13 });
+      }
+    }
+  });
+
+  /* 장면 2 · 포물선과 직선 사이의 넓이 이등분 */
+  ouUpgrade(scenes[1], {
+    m: 2,
+    gen: (prev) => {
+      let L, kind;
+      if (!prev) { L = 3; kind = 'half'; } else { L = ouPick([2, 3, 4, 5, 6]); kind = ouPick(['half', 'half', 'eighth']); }
+      const r = kind === 'half' ? ouQ(1, 2) : ouQ(1, 8), S0 = ouQ(L * L * L, 6), cube = r.mul(L * L * L);
+      const xq = kind === 'half' ? L * Math.cbrt(0.5) : L / 2, m = L - xq, mq = kind === 'eighth' ? ouQ(L, 2) : null;
+      const f = (x) => -x * x + L * x;
+      const win = ouWin([[0, 0], [L, 0], [L / 2, (L * L) / 4]], { mx: 1.3, my: 1.3, minW: 6, minH: 5 });
+      return { L, kind, S0, cube, xq, m, mq, f, win, key: [L, kind].join(), chk: { L, kind, S0: S0.v, cube: cube.v, m: mq ? mq.v : null } };
+    },
+    text: (v) => `곡선 ${tex('y = -x^2 + ' + ouTerm(v.L, 'x'))} 와 ${tex('x')}축으로 둘러싸인 부분의 넓이 ${tex('S_0')}를 구하고, ` + (v.kind === 'half'
+      ? `원점을 지나는 직선 ${tex('y = mx')} 가 이 넓이를 이등분할 때 상수 ${tex(`(${v.L} - m)^3`)} 의 값을 구하시오.`
+      : `원점을 지나는 직선 ${tex('y = mx')} 와 곡선으로 둘러싸인 부분의 넓이가 ${tex('S_0')} 의 ${tex('\\dfrac{1}{8}')} 일 때 ${tex(`(${v.L} - m)^3`)} 의 값과 상수 ${tex('m')}의 값을 구하시오. (단, ${tex(`0 < m < ${v.L}`)})`),
+    ans: (v) => `전체 넓이 ${tex('S_0 = ' + v.S0.tex)}, ` + (v.kind === 'half' ? `이등분 조건 ${tex(`(${v.L} - m)^3 = ${v.cube.tex}`)}` : `${tex(`(${v.L} - m)^3 = ${v.cube.tex}`)}, ${tex('m = ' + v.mq.tex)}`),
+    steps: (v) => [
+      `곡선과 $x$축의 교점은 $x=0$, $x=${v.L}$ 이고 간격은 ${v.L} 입니다. 전체 넓이는 $S_0=\\dfrac{1}{6}\\cdot ${v.L}^3=${v.S0.tex}$.`,
+      `직선 $y=mx$ 와 곡선의 교점은 $x=0$, $x=${v.L}-m$ 이므로 교점 간격은 $${v.L}-m$ 이고, 둘러싸인 부분의 넓이는 $S_1=\\dfrac{1}{6}(${v.L}-m)^3$ 입니다. (넓이는 간격의 세제곱에 비례합니다)`,
+      v.kind === 'half' ? `$S_1=\\dfrac{1}{2}S_0$ 이므로 $\\dfrac{1}{6}(${v.L}-m)^3=\\dfrac{1}{2}\\cdot ${v.S0.tex}$, 즉 $(${v.L}-m)^3=${v.cube.tex}$.` : `$S_1=\\dfrac{1}{8}S_0$ 이므로 $(${v.L}-m)^3=\\dfrac{1}{8}\\cdot ${v.L}^3=${v.cube.tex}$, 따라서 $${v.L}-m=\\dfrac{${v.L}}{2}$ 에서 $m=${v.mq.tex}$.`
+    ],
+    core: '<b>포물선과 직선 사이의 넓이는 간격의 세제곱에 비례합니다</b><br>이차항의 계수가 $a$ 인 포물선과 직선이 $x=\\alpha,\\beta$ 에서 만나면 둘러싸인 넓이는 $\\dfrac{|a|}{6}(\\beta-\\alpha)^3$ 입니다. 넓이를 이등분하면 새 교점 간격의 세제곱이 처음 간격의 세제곱의 절반이 됩니다.',
+    draw: (b, s, v, st) => {
+      const f = v.f, line = (x) => v.m * x;
+      ouBetween(b, f, () => 0, 0, v.L, { pos: 'amber', neg: 'amber', alpha: 0.16 });
+      b.plot(f, { color: 'ink', width: 3.2, glow: true });
+      ouCurveTag(b, f, `y = −x² + ${ouTerm(v.L, 'x')}`, 'ink', { side: 'left', dy: -6, skip: [] });
+      if (st >= 1) {
+        b.point([0, 0], { color: 'ink', r: 5, label: 'O', dx: -8, dy: 16, align: 'right' });
+        b.point([v.L, 0], { color: 'ink', r: 5.5, label: `(${v.L}, 0)`, dx: 4, dy: 20, align: 'left' });
+        lbl(b, [v.L * 0.78, v.f(v.L * 0.78) / 3], `S₀ = ${v.S0.txt}`, { color: 'amber', size: 13 });
+      }
+      if (st >= 2) {
+        ouBetween(b, f, line, 0, v.xq, { pos: 'rose', neg: 'rose', alpha: 0.38 });
+        b.line([0, 0], v.m, { extent: [-0.4, v.L + 0.3], color: 'sky', width: 2.6, glow: true });
+        b.point([v.xq, line(v.xq)], { color: 'sky', r: 6, label: `x = ${v.L} − m`, dx: 10, dy: -14, align: 'left' });
+        lbl(b, [v.xq / 2, (f(v.xq / 2) + line(v.xq / 2)) / 2], 'S₁', { color: 'rose', size: 14 });
+      }
+      if (st >= 3) { const vb = b.viewBox(); ouTop(b, `(${v.L} − m)³ = ${v.cube.txt}`, { color: 'green', size: 13 }); }
+    }
+  });
+
+  /* 장면 3 · 삼차함수 S₁ = S₂ */
+  ouUpgrade(scenes[2], {
+    m: 3,
+    gen: (prev) => {
+      let a, al, ga;
+      if (!prev) { a = ouQ(1, 2); al = -1; ga = 3; }
+      else { a = ouPick([ouQ(1, 2), ouQ(1, 1), ouQ(2, 1), ouQ(-1, 1), ouQ(-1, 2), ouQ(-2, 1)]); [al, ga] = ouPick([[-1, 3], [-2, 4], [0, 4], [1, 5], [-3, 1], [-2, 2], [0, 2], [-1, 1], [-3, 3]]); }
+      const be = (al + ga) / 2, d = (ga - al) / 2, S = a.mul(a.sgn).mul(d * d * d * d).div(4);
+      const f = (x) => a.v * (x - al) * (x - be) * (x - ga);
+      const bex = al + (ga - al) / 3, ghost = (x) => a.v * (x - al) * (x - bex) * (x - ga);
+      const win = ouWinF([f, ghost], [al, ga], { pts: [[al, 0], [ga, 0]], mx: 1.2, my: 1.4, minW: 6, minH: 4.6 });
+      if (prev && win.y[1] - win.y[0] > 16) return null;
+      return { a, al, ga, be, d, S, f, ghost, win, key: [a.txt, al, ga].join(), chk: { a: a.v, al, ga, be, S: S.v } };
+    },
+    text: (v) => `삼차함수 ${tex(`f(x) = ${ouCoQ(v.a)}${ouFac(v.al)}(x - \\beta)${ouFac(v.ga)} \; (${v.al} < \\beta < ${v.ga})`)} 의 그래프와 ${tex('x')}축으로 둘러싸인 두 부분의 넓이 ${tex('S_1, S_2')}가 서로 같을 때(${tex('S_1 = S_2')}), 상수 ${tex('\\beta')}의 값과 ${tex('S_1')}의 넓이를 구하시오.`,
+    ans: (v) => `${tex(`\\beta = ${v.be}`)} (${v.al}과 ${v.ga}의 한가운데), 한쪽 넓이 ${tex('S_1 = S_2 = ' + v.S.tex)}`,
+    steps: (v) => [
+      `세 교점 $x=${v.al}$, $\\beta$, $x=${v.ga}$ 에서 곡선이 $x$축과 만나고, 왼쪽 부분을 $S_1$, 오른쪽 부분을 $S_2$ 라 합니다. 두 부분은 $x$축의 위·아래에 있으므로 $S_1=S_2$ 이면 $\\int_{${v.al}}^{${v.ga}} f(x)\\,dx=0$ 입니다.`,
+      `이 조건을 만족하는 $\\beta$ 는 두 끝 교점의 한가운데입니다. 그래프가 점 $(\\beta,0)$ 에 대하여 대칭이 되므로 $\\beta=\\dfrac{${v.al}+${ouPar(v.ga)}}{2}=${v.be}$ 입니다.`,
+      `간격 $d=\\beta-(${v.al})=${v.d}$ 이므로 한쪽 넓이는 $S_1=\\dfrac{|a|}{4}d^4=\\dfrac{${v.a.abs ? '' : ''}${Math.abs(v.a.n)}${v.a.d === 1 ? '' : '/' + v.a.d}}{4}\\cdot ${v.d}^4=${v.S.tex}$.`
+    ],
+    core: '<b>S₁ = S₂ 이면 가운데 교점은 한가운데</b><br>삼차함수 $y=a(x-\\alpha)(x-\\beta)(x-\\gamma)$ 의 그래프와 $x$축으로 둘러싸인 두 부분의 넓이가 같으면 $\\int_\\alpha^\\gamma f\\,dx=0$ 이고 $\\beta=\\dfrac{\\alpha+\\gamma}{2}$ 입니다. 한쪽 넓이는 $\\dfrac{|a|}{4}d^4$ ($d=\\beta-\\alpha$) 입니다.',
+    draw: (b, s, v, st) => {
+      const top = (v.a.v > 0) ? 'rose' : 'sky';
+      b.point([v.al, 0], { color: 'ink', r: 5.5, label: `(${v.al}, 0)`, dx: -6, dy: 20, align: 'right' });
+      b.point([v.ga, 0], { color: 'ink', r: 5.5, label: `(${v.ga}, 0)`, dx: 6, dy: 20, align: 'left' });
+      if (st === 0) {
+        b.plot(v.ghost, { from: v.al, to: v.ga, color: 'muted', width: 2.4, dash: true });
+        const vb = b.viewBox();
+        ouTop(b, '점선은 예시입니다. β의 위치에 따라 모양이 달라집니다', { color: 'muted', size: 12.5 });
+      } else {
+        ouBetween(b, v.f, () => 0, v.al, v.ga, { pos: 'rose', neg: 'sky', alpha: 0.32 });
+        b.plot(v.f, { color: 'ink', width: 3.2, glow: true });
+        const c1 = (v.al + v.be) / 2, c2 = (v.be + v.ga) / 2;
+        lbl(b, [c1, v.f(c1) / 2], 'S₁', { color: v.a.v > 0 ? 'rose' : 'sky', size: 14 });
+        lbl(b, [c2, v.f(c2) / 2], 'S₂', { color: v.a.v > 0 ? 'sky' : 'rose', size: 14 });
+      }
+      if (st >= 2) {
+        b.seg([v.be, v.win.y[0]], [v.be, v.win.y[1]], { color: 'amber', width: 1.5, dash: true, alpha: 0.7 });
+        b.point([v.be, 0], { color: 'amber', r: 6.5, label: `β = ${v.be}`, dx: 0, dy: v.a.v > 0 ? 22 : -18, align: 'center' });
+      }
+      if (st >= 3) { const vb = b.viewBox(); ouTop(b, `S₁ = S₂ = ${v.S.txt}`, { color: 'green', size: 13 }); }
+    }
+  });
+
+  /* 장면 4 · 두 곡선 사이의 넓이와 h = f − g */
+  ouUpgrade(scenes[3], {
+    m: 4,
+    gen: (prev) => {
+      let a, al, be, g;
+      if (!prev) { a = ouQ(1, 2); al = 0; be = 1; g = [ouQ(1, 2), ouQ(-1, 2), ouQ(1)]; }
+      else { a = ouPick([ouQ(1, 2), ouQ(1), ouQ(2), ouQ(-1), ouQ(3)]); al = ouPick([-1, 0, 1]); be = al + ouPick([1, 2, -1, -2, 3]); g = [ouPick([ouQ(1), ouQ(-1), ouQ(2), ouQ(1, 2)]), ouQ(ouPick([-2, -1, 0, 1, 2])), ouQ(ouPick([0, 1, 2, 3]))]; }
+      const h = ouMul(ouMul([a], [1, -al]), ouMul([1, -al], [1, -be])).slice(-4), hco = ouMul([a], ouMul(ouMul([1, -al], [1, -al]), [1, -be]));
+      const fco = ouAdd(hco, g), F = polyEv(fco), G = polyEv(g), H = polyEv(hco);
+      const lo = Math.min(al, be), hi = Math.max(al, be), S = ouQ(1, 12).mul(a.sgn * a.n === a.n ? a : a.neg()).mul(Math.pow(be - al, 4));
+      const win = ouWinF([F, G], [lo, hi], { mx: 0.9, my: 0.45, minW: 3.4, minH: 2.2 });
+      if (prev && win.y[1] - win.y[0] > 11) return null;
+      return { a, al, be, g, hco, fco, F, G, H, lo, hi, S, win, key: [a.txt, al, be, g.map((q) => q.txt)].join(), chk: { fco: fco.map((q) => q.v), g: g.map((q) => q.v), al, be, S: S.v } };
+    },
+    text: (v) => `삼차함수 ${tex('f(x)=' + ouPoly(v.fco))} 과 이차함수 ${tex('g(x)=' + ouPoly(v.g))} 의 그래프로 둘러싸인 부분의 넓이 ${tex('S')}를 두 함수의 차 ${tex('h(x) = f(x) - g(x)')} 를 이용하여 구하시오.`,
+    ans: (v) => `접점 ${tex('x = ' + v.al)} (중근), 교점 ${tex('x = ' + v.be)} ${tex('\\implies S = ' + v.S.tex)}`,
+    steps: (v) => [
+      `두 함수의 차를 구하면 $h(x)=f(x)-g(x)=${ouPoly(v.hco)}=${ouCoQ(v.a)}${v.al === 0 ? 'x^2' : ouFac(v.al) + '^2'}${ouFac(v.be)}$ 입니다.`,
+      `두 곡선이 만나는 곳은 $h(x)=0$ 인 $x=${v.al}$ (제곱 인수이므로 접합니다)와 $x=${v.be}$ (교점)입니다. 그림에서 두 곡선 사이의 색칠한 부분의 세로 길이가 $|h(x)|$ 이므로, 이 넓이는 $y=h(x)$ 와 $x$축 사이의 넓이와 같습니다.`,
+      `$h(x)=a(x-\\alpha)^2(x-\\beta)$ 꼴의 넓이 공식 $S=\\dfrac{|a|}{12}(\\beta-\\alpha)^4$ 에서 $S=\\dfrac{${v.a.abs ? '' : ''}${Math.abs(v.a.n)}${v.a.d === 1 ? '' : '/' + v.a.d}}{12}\\cdot ${Math.abs(v.be - v.al)}^4=${v.S.tex}$.`
+    ],
+    core: '<b>두 곡선 사이의 넓이는 h(x) = f(x) − g(x)</b><br>두 곡선 사이의 세로 길이는 $|f(x)-g(x)|$ 이므로 넓이는 $h=f-g$ 의 그래프와 $x$축 사이의 넓이와 같습니다. $h$ 를 인수분해해 $a(x-\\alpha)(x-\\beta)$ 이면 $\\dfrac{|a|}{6}(\\beta-\\alpha)^3$, $a(x-\\alpha)^2(x-\\beta)$ 이면 $\\dfrac{|a|}{12}(\\beta-\\alpha)^4$ 입니다.',
+    draw: (b, s, v, st) => {
+      b.plot(v.G, { color: 'sky', width: 3, glow: true });
+      b.plot(v.F, { color: 'ink', width: 3.2, glow: true });
+      ouCurveTag(b, v.F, 'y = f(x)', 'ink', { side: 'right', dy: -10, skip: [[v.al, v.F(v.al), 1.2], [v.be, v.F(v.be), 1.2]] });
+      ouCurveTag(b, v.G, 'y = g(x)', 'sky', { side: 'left', dy: 16, skip: [[v.al, v.G(v.al), 1.2], [v.be, v.G(v.be), 1.2]] });
+      if (st >= 1) ouBetween(b, v.F, v.G, v.lo, v.hi, { pos: 'rose', neg: 'rose', alpha: 0.34 });
+      if (st >= 2) {
+        b.point([v.al, v.F(v.al)], { hollow: true, color: 'violet', r: 6, label: `x = ${v.al}`, dx: -10, dy: -16, align: 'right' });
+        b.point([v.be, v.F(v.be)], { color: 'violet', r: 6, label: `x = ${v.be}`, dx: 10, dy: -16, align: 'left' });
+        [0.25, 0.5, 0.75].forEach((t) => { const x = v.lo + (v.hi - v.lo) * t; b.seg([x, v.F(x)], [x, v.G(x)], { color: 'violet', width: 2.2 }); });
+        const xm = (v.lo + v.hi) / 2;
+        lbl(b, [xm, Math.max(v.F(xm), v.G(xm))], '세로 길이 = |h(x)|', { color: 'violet', size: 12.5, dy: -14 });
+      }
+      if (st >= 3) ouTop(b, `S = ∫|h(x)|dx = ${v.S.txt}`, { color: 'green', size: 13 });
+    }
+  });
+
+  /* 장면 5 · 역함수의 정적분과 직사각형 */
+  ouUpgrade(scenes[4], {
+    m: 5,
+    gen: (prev) => {
+      let p, q, a, bb;
+      if (!prev) { p = ouQ(1, 4); q = ouQ(1, 2); a = 1; bb = 2; }
+      else { p = ouPick([ouQ(1, 4), ouQ(1, 2), ouQ(1)]); q = ouPick([ouQ(1, 2), ouQ(1), ouQ(2), ouQ(3, 4)]); [a, bb] = ouPick([[1, 2], [0, 2], [0, 1], [1, 2], [0, 2]]); }
+      const co = [p, 0, q, 0], f = polyEv(co), fa = ouEvQ(co, a), fb = ouEvQ(co, bb), ans = fb.mul(bb).sub(fa.mul(a));
+      if (prev && fb.v > 8.5) return null;
+      const win = ouWin([[0, 0], [bb, fb.v]], { mx: 1.2, my: 1.2, minW: 6, minH: 4.6 });
+      return { p, q, a, bb, co, f, fa, fb, ans, win, key: [p.txt, q.txt, a, bb].join(), chk: { p: p.v, q: q.v, a, bb, ans: ans.v } };
+    },
+    text: (v) => `함수 ${tex('f(x)=' + ouPoly(v.co))} 의 역함수를 ${tex('f^{-1}(x)')}라 할 때, 정적분의 합 ${tex(`\\displaystyle\\int_{${v.a}}^{${v.bb}} f(x)\\,dx + \\int_{${v.fa.tex}}^{${v.fb.tex}} f^{-1}(x)\\,dx`)} 의 값을 구하시오.`,
+    ans: (v) => tex(`${v.bb} \\times ${v.fb.ptex} - ${v.a} \\times ${v.fa.ptex} = ${v.ans.tex}`),
+    steps: (v) => [
+      `$f$ 는 증가함수라 역함수가 있고, $f(${v.a})=${v.fa.tex}$, $f(${v.bb})=${v.fb.tex}$ 이므로 두 번째 정적분의 구간 $[${v.fa.tex},\\,${v.fb.tex}]$ 은 $f$ 의 $y$ 값의 구간입니다.`,
+      `$\\int_{${v.a}}^{${v.bb}} f(x)\\,dx$ 는 곡선 아래를 세로로 자른 분홍색 넓이, $\\int_{${v.fa.tex}}^{${v.fb.tex}} f^{-1}(y)\\,dy$ 는 곡선 왼쪽을 가로로 자른 하늘색 넓이입니다. 둘을 합치면 큰 직사각형에서 작은 직사각형을 뺀 ㄱ자 모양입니다.`,
+      `합은 $b\\cdot f(b)-a\\cdot f(a)=${v.bb}\\times ${v.fb.ptex}-${v.a}\\times ${v.fa.ptex}=${v.ans.tex}$ 입니다.`
+    ],
+    core: '<b>역함수의 정적분은 직사각형에서 뺍니다</b><br>$f$ 가 증가하는 함수일 때 $\\displaystyle\\int_a^b f(x)\\,dx+\\int_{f(a)}^{f(b)} f^{-1}(x)\\,dx=b\\,f(b)-a\\,f(a)$ 입니다. 역함수를 구하지 않고 그림의 직사각형 넓이로 끝납니다.',
+    draw: (b, s, v, st) => {
+      const f = v.f, pts = [];
+      for (let i = 0; i <= 60; i++) { const x = v.a + ((v.bb - v.a) * i) / 60; pts.push([x, f(x)]); }
+      if (st >= 1) b.poly([[v.a, 0], ...pts, [v.bb, 0]], { fill: 'rose', fillAlpha: 0.3, color: null });
+      if (st >= 2) b.poly([[0, v.fa.v], ...pts, [0, v.fb.v]], { fill: 'sky', fillAlpha: 0.3, color: null });
+      b.plot(f, { color: 'ink', width: 3.2, glow: true });
+      b.line([0, 0], 1, { color: 'muted', width: 1.4, dash: true, alpha: 0.6 });
+      [[v.a, v.fa], [v.bb, v.fb]].forEach(([x, q]) => { b.seg([x, 0], [x, q.v], { color: 'amber', width: 1.6, dash: true }); b.seg([0, q.v], [x, q.v], { color: 'amber', width: 1.6, dash: true }); });
+      lbl(b, [v.a, 0], `x = ${v.a}`, { color: 'amber', dy: 20, dx: v.a === 0 ? 14 : 0, align: v.a === 0 ? 'left' : 'center' });
+      lbl(b, [v.bb, 0], `x = ${v.bb}`, { color: 'amber', dy: 20 });
+      if (v.fa.v > 0) lbl(b, [0, v.fa.v], `y = ${v.fa.txt}`, { color: 'amber', dx: -8, dy: 0, align: 'right' });
+      lbl(b, [0, v.fb.v], `y = ${v.fb.txt}`, { color: 'amber', dx: -8, dy: 0, align: 'right' });
+      if (st >= 1) { const xm = v.a + (v.bb - v.a) * 0.72; lbl(b, [xm, f(xm) * 0.4], '∫ f(x)dx', { color: 'rose', size: 12.5 }); }
+      if (st >= 2) lbl(b, [Math.max(0.35, v.a * 0.5), (v.fa.v + v.fb.v) / 2 + 0.2], '∫ f⁻¹(y)dy', { color: 'sky', size: 12.5, dx: 6, align: 'left' });
+      if (st >= 3) {
+        b.poly([[0, 0], [v.bb, 0], [v.bb, v.fb.v], [0, v.fb.v]], { color: 'green', width: 2.2, alpha: 0.9 });
+        if (v.a > 0) b.poly([[0, 0], [v.a, 0], [v.a, v.fa.v], [0, v.fa.v]], { color: 'green', width: 2.2, alpha: 0.9, dash: true });
+        ouTop(b, `${v.bb}·${v.fb.txt} − ${v.a}·${v.fa.txt} = ${v.ans.txt}`, { color: 'green', size: 13 });
+      }
+    }
+  });
+
+  })();
+  /* OU-END */
+
   APLab.createLab({
     id: 'calc1-integral',
+    stackFractions: true, // 패널·칩·값 칸 글 속 숫자 분수(1/2, 3/5)를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr). 그림 글은 무대가 쌓습니다.
     title: '정적분과 넓이',
     courseName: '미적분Ⅰ',
     unit: '적분 · 정적분과 넓이',

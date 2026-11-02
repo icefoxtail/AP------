@@ -1524,8 +1524,196 @@ window.addEventListener('DOMContentLoaded', function () {
     return sc;
   }
 
+  /* ======================================================================
+     옛 장면 1~4의 「문제」 탭과 「새 문제」 (탐구 탭은 그대로)
+     - 첫 문제는 원래 문제(프리셋)와 같은 조건·정답입니다. 「새 문제」는 같은 구조에서 숫자만 바꾼 변형입니다.
+     - 문제·정리 탭의 그림은 문제의 조건으로 그립니다(문제 탭은 주어진 것만, 정리 탭은 단계마다 보조선).
+     ====================================================================== */
+  /*OV-BEGIN*/
+  const OVF = (() => {
+    const T = (s) => `$${s}$`;
+    const V = (n) => `\\overrightarrow{${n}}`;
+    const stdOf = (steps) => steps.map((t, i) => `${['①', '②', '③', '④'][i]} ${t}`).join('<br>');
+    const gcd = (a, b) => (b ? gcd(b, a % b) : Math.abs(a));
+    const fr = (n, d) => { const g = gcd(n, d); n /= g; d /= g; return d === 1 ? `${n}` : `\\dfrac{${n}}{${d}}`; };
+    const pt = (p) => `(${p[0]},\\ ${p[1]})`;
+    const par = (x) => (x < 0 ? `(${x})` : `${x}`);
+    // ---- 1: 세 점이 한 직선 위에 있을 조건 (m+n=1)
+    const g1 = ([A, B, mn, md]) => {
+      const kn = md - mn, k = fr(kn, md), m = fr(mn, md), rt = `${kn}:${mn}`;
+      return {
+        A, B, mn, md, kn, k, rt, val: kn / md,
+        text: `평면 위의 서로 다른 세 점 ${APLab.tex(`O,\\ A${pt(A)},\\ B${pt(B)}`)}에 대하여 점 ${APLab.tex('P')}가 ${APLab.tex(`${V('OP')}=${m.startsWith('\\') ? m : m}${V('OA')}+k${V('OB')}`)}를 만족시킨다. 점 ${APLab.tex('P')}가 직선 ${APLab.tex('AB')} 위에 있을 때 상수 ${APLab.tex('k')}의 값과 선분 길이의 비 ${APLab.tex('\\overline{AP}:\\overline{PB}')}를 구하시오.`,
+        ans: `k=${k},\\ \\overline{AP}:\\overline{PB}=${rt}`,
+        steps: [
+          `두 위치벡터 $${V('OA')}=${pt(A)}$, $${V('OB')}=${pt(B)}$와 직선 $AB$를 그립니다.`,
+          `직선 $AB$ 위의 점은 $${V('OP')}=(1-t)${V('OA')}+t${V('OB')}$ (계수의 합 $=1$)로 나타냅니다.`,
+          `계수를 비교하면 $1-t=${m}$이므로 $t=k=${k}$. $${V('AP')}=${k}${V('AB')}$이므로 $\\overline{AP}:\\overline{PB}=${rt}$ (내분점).`
+        ],
+        quick: `세 점 $A,B,P$가 한 직선 위에 있으면 계수의 합이 $1$입니다: $${m}+k=1\\Rightarrow k=${k}$. 내분비는 계수가 엇갈려 $\\overline{AP}:\\overline{PB}=(OB\\text{의 계수}):(OA\\text{의 계수})=${rt}$.`
+      };
+    };
+    // ---- 2: 계수 합의 범위와 자취의 넓이
+    const g2 = ([S, k1, k2]) => {
+      const val = (k2 * k2 - k1 * k1) * S;
+      return {
+        S, k1, k2, val,
+        text: `넓이가 ${APLab.tex(`S=${S}`)}인 삼각형 ${APLab.tex('OAB')}에 대하여 점 ${APLab.tex('P')}가 다음 조건을 만족시킨다.<br/>${APLab.tex(`${V('OP')}=m${V('OA')}+n${V('OB')}\\quad(m\\ge0,\\ n\\ge0,\\ ${k1}\\le m+n\\le${k2})`)}<br/>이때 점 ${APLab.tex('P')}가 존재하는 영역의 넓이를 구하시오.`,
+        ans: `${k2 * k2 - k1 * k1}S=${k2 * k2 - k1 * k1}\\times${S}=${val}`,
+        steps: [
+          `기본 삼각형 $\\triangle OAB$ ($m+n\\le1$ 영역)의 넓이는 $S=${S}$입니다.`,
+          `$m+n=k$이면 $A^{\\prime}=kA,\\ B^{\\prime}=kB$에 대하여 $P$는 선분 $A^{\\prime}B^{\\prime}$ 위에 있습니다. 경계는 $k=${k1}$, $k=${k2}$인 선분입니다.`,
+          `$m+n\\le k$ 영역은 닮음비 $1:k$인 삼각형이므로 넓이 $k^2S$. 따라서 $(${k2}^2-${k1}^2)S=${k2 * k2 - k1 * k1}\\times${S}=${val}$.`
+        ],
+        quick: `$m,n\\ge0$, $m+n\\le k$인 영역은 $\\triangle OAB$의 $k$배 닮은꼴이라 넓이가 $k^2S$입니다. 두 경계 사이의 띠는 $(${k2}^2-${k1}^2)S=${val}$.`
+      };
+    };
+    // ---- 3: 직선의 벡터방정식 (방향벡터·법선벡터)
+    const g3 = ([A, u, xp]) => {
+      const t = (xp - A[0]) / u[0], k = A[1] + u[1] * t, n = [u[1], -u[0]];
+      return {
+        A, u, xp, t, k, n, val: k,
+        text: `점 ${APLab.tex(`A${pt(A)}`)}를 지나고 방향벡터가 ${APLab.tex(`${V('u')}=${pt(u)}`)}인 직선 ${APLab.tex('l')}이 있다. 이 직선 ${APLab.tex('l')}의 법선벡터 ${APLab.tex(`${V('n')}`)}을 구하고, 직선 ${APLab.tex('l')}이 점 ${APLab.tex(`P(${xp},\\ k)`)}를 지날 때 상수 ${APLab.tex('k')}의 값을 구하시오.`,
+        ans: `${V('n')}=${pt(n)},\\ k=${k}`,
+        steps: [
+          `기준점 $A${pt(A)}$와 방향벡터 $${V('u')}=${pt(u)}$를 표시합니다.`,
+          `$${V('u')}$에 수직인 법선벡터는 $${V('n')}=(b,\\ -a)=${pt(n)}$이고, 직선은 $(${V('OP')}-${V('OA')})\\cdot${V('n')}=0$입니다.`,
+          `$P=A+t${V('u')}=(${A[0]}+${par(u[0])}t,\\ ${A[1]}+${par(u[1])}t)$에서 $x=${xp}$이면 $t=${t}$이므로 $k=${A[1]}+${par(u[1])}\\times${t}=${k}$.`
+        ],
+        quick: `$${V('u')}=(a,b)$이면 $${V('n')}=(b,-a)=${pt(n)}$. $P=A+t${V('u')}$에서 $x$좌표가 $${xp}$인 $t=${t}$를 $y$좌표에 대입하면 $k=${k}$.`
+      };
+    };
+    // ---- 4: 원의 벡터방정식 (PA·PB=0)
+    const g4 = ([A, B]) => {
+      const d2 = (B[0] - A[0]) ** 2 + (B[1] - A[1]) ** 2, M = [(A[0] + B[0]) / 2, (A[1] + B[1]) / 2];
+      const rt = (() => { let o = 1, i = d2; for (let f = 2; f * f <= i; f++) while (i % (f * f) === 0) { i /= f * f; o *= f; } return [o, i]; })();
+      const d = Math.sqrt(d2), isInt = Number.isInteger(d);
+      // 지름 d=|AB|: 둘레 πd, 넓이 πd²/4
+      let per, area;
+      if (isInt) { per = `${d}\\pi`; area = `${fr(d2, 4)}\\pi`; }
+      else { per = `${rt[0] === 1 ? '' : rt[0]}\\sqrt{${rt[1]}}\\pi`; area = `${fr(d2, 4)}\\pi`; }
+      const Mx = M[0] % 1 === 0 ? `${M[0]}` : fr(M[0] * 2, 2), My = M[1] % 1 === 0 ? `${M[1]}` : fr(M[1] * 2, 2);
+      return {
+        A, B, M, d2, d, val: d2,
+        text: `좌표평면 위의 두 점 ${APLab.tex(`A${pt(A)},\\ B${pt(B)}`)}에 대하여 벡터방정식<br/>${APLab.tex(`(${V('OP')}-${V('OA')})\\cdot(${V('OP')}-${V('OB')})=0`)}<br/>을 만족시키는 점 ${APLab.tex('P')}가 나타내는 도형의 둘레의 길이와 넓이를 구하시오.`,
+        ans: `\\text{둘레 }${per},\\ \\text{넓이 }${area}`,
+        steps: [
+          `두 점 $A${pt(A)}$, $B${pt(B)}$와 선분 $AB$(길이 $${isInt ? d : `\\sqrt{${d2}}`}$)를 그립니다.`,
+          `$${V('OP')}-${V('OA')}=${V('AP')}$, $${V('OP')}-${V('OB')}=${V('BP')}$이므로 조건은 $${V('AP')}\\cdot${V('BP')}=0$, 곧 $\\angle APB=90^\\circ$입니다.`,
+          `지름에 대한 원주각은 $90^\\circ$이므로 $P$는 $AB$를 지름으로 하는 원 위의 점입니다. 지름 $AB=${isInt ? d : `\\sqrt{${d2}}`}$이므로 둘레 $${per}$, 넓이 $${area}$.`
+        ],
+        quick: `$(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot(\\overrightarrow{OP}-\\overrightarrow{OB})=0$은 $AB$를 지름으로 하는 원입니다. 지름 $AB=${isInt ? d : `\\sqrt{${d2}}`}$ ⇒ 둘레 $${per}$, 넓이 $${area}$.`
+      };
+    };
+    const POOL = {
+      1: [[[-2, 4], [4, 2], 2, 5], [[-3, 1], [5, 3], 1, 4], [[-4, 2], [3, 5], 3, 7], [[-2, -1], [4, 4], 1, 3], [[-3, 3], [5, 1], 3, 5]],
+      2: [[4, 1, 2], [2, 1, 3], [3, 2, 3], [5, 1, 2], [2, 2, 4]],
+      3: [[[1, 2], [3, 2], 7], [[2, 1], [2, 3], 8], [[-1, 3], [4, 1], 7], [[0, -2], [2, 3], 6], [[3, 1], [1, 2], 6]],
+      4: [[[-3, -1], [3, 3]], [[-2, 1], [4, 9]], [[-4, 0], [4, 6]], [[1, -2], [5, 1]], [[0, -3], [6, 5]]]
+    };
+    return { POOL, G: { 1: g1, 2: g2, 3: g3, 4: g4 }, stdOf };
+  })();
+  /*OV-END*/
+
+  function figOverlay(sc, m) {
+    const { P, add, sub, mul, len, lerp } = NQ;
+    const G = OVF.G[m], list = OVF.POOL[m].map(G);
+    const V = (n) => `\\overrightarrow{${n}}`;
+    const Q = (a) => P(a[0], a[1]);
+    const FIG = {
+      1: (b, step, I) => {
+        const L = NQ.labels(b), O = P(0, 0), A = Q(I.A), Bq = Q(I.B), Pp = add(A, mul(sub(Bq, A), I.kn / I.md));
+        L.line(A, Bq, { color: 'ink', width: 2.6 });
+        if (step >= 1) { L.vec(O, A, { color: 'sky', width: 3 }); L.vec(O, Bq, { color: 'rose', width: 3 }); }
+        if (step >= 2) { L.vec(O, Pp, { color: 'amber', width: 3.2 }); L.pt(Pp, { color: 'amber', r: 5 }); }
+        L.pt(O, { color: 'ink' }).pt(A, { color: 'sky' }).pt(Bq, { color: 'rose' });
+        L.O();
+        L.at(A, `A(${I.A[0]}, ${I.A[1]})`, { color: 'sky', away: lerp(A, Bq, 0.5) });
+        L.at(Bq, `B(${I.B[0]}, ${I.B[1]})`, { color: 'rose', away: lerp(A, Bq, 0.5) });
+        if (step >= 2) L.at(Pp, 'P', { color: 'amber', away: O });
+        if (step >= 3) L.along(A, Bq, `AP : PB = ${I.rt}`, { color: 'green', side: 1, off: 18, at: 0.5, toward: P(0, 0) });
+      },
+      2: (b, step, I) => {
+        const L = NQ.labels(b), O = P(0, 0), A = P(4, 1), Bq = P(1, 3), sc = (k) => [mul(A, k), mul(Bq, k)];
+        const [a1, b1] = sc(I.k1), [a2, b2] = sc(I.k2);
+        if (step >= 2) b.poly([a1, a2, b2, b1], { fill: 'amber', fillAlpha: 0.22, color: 'amber', width: 2 });
+        b.poly([O, A, Bq], { fill: 'sky', fillAlpha: 0.12, color: 'ink', width: 2.4 });
+        L.poly([O, A, Bq]);
+        if (step >= 1) {
+          L.line(a2, b2, { color: 'rose', width: 2.4, dash: [6, 5] }); L.line(O, a2, { color: 'ink', width: 1.4, dash: [4, 5], alpha: 0.6 }); L.line(O, b2, { color: 'ink', width: 1.4, dash: [4, 5], alpha: 0.6 });
+          if (I.k1 !== 1) L.line(a1, b1, { color: 'green', width: 2.4, dash: [6, 5] });
+          L.pt(a2, { color: 'rose', r: 4 }).pt(b2, { color: 'rose', r: 4 });
+        }
+        L.pt(O, { color: 'ink' }).pt(A, { color: 'sky' }).pt(Bq, { color: 'rose' });
+        L.at(O, 'O', { color: 'ink', dirDeg: 200 }); L.at(A, 'A', { color: 'sky', dirDeg: -30 }); L.at(Bq, 'B', { color: 'rose', dirDeg: 150 });
+        L.at(P(1.6, 1.3), `S = ${I.S}`, { color: 'ink', dirDeg: 0, size: 14, rmin: 0 });
+        if (step >= 1) { L.at(a2, "A′ (=" + I.k2 + "A)", { color: 'rose', away: O }); L.at(b2, "B′ (=" + I.k2 + "B)", { color: 'rose', away: O }); L.along(a2, b2, `m+n = ${I.k2}`, { color: 'rose', side: 1, off: 16, at: 0.5, toward: O }); }
+        if (step >= 1 && I.k1 !== 1) L.along(a1, b1, `m+n = ${I.k1}`, { color: 'green', side: -1, off: 16, at: 0.5, toward: O });
+        else if (step >= 1) L.along(A, Bq, 'm+n = 1', { color: 'green', side: -1, off: 16, at: 0.5, toward: O });
+      },
+      3: (b, step, I) => {
+        const L = NQ.labels(b), O = P(0, 0), A = Q(I.A), u = Q(I.u), n = Q(I.n), un = mul(u, 1 / len(u)), nn = mul(n, 1 / len(n)), Pp = P(I.xp, I.k);
+        L.inf(A, u, { color: 'ink', width: 2.4, dash: [8, 5] });
+        L.vec(A, add(A, u), { color: 'sky', width: 3.4 });
+        if (step >= 1) { L.vec(O, A, { color: 'ink', width: 2.2, alpha: 0.8 }); }
+        if (step >= 2) { L.vec(A, add(A, n), { color: 'rose', width: 3.4 }); b.right(A, add(A, un), add(A, nn), { color: 'amber', size: 10 }); }
+        if (step >= 3) { L.line(P(I.xp, I.k), P(I.xp, 0), { color: 'amber', width: 1.4, dash: [5, 5] }); L.pt(Pp, { color: 'amber', r: 5 }); }
+        L.pt(A, { color: 'ink' });
+        L.O();
+        L.at(A, `A(${I.A[0]}, ${I.A[1]})`, { color: 'ink', dirDeg: 120 });
+        L.along(A, add(A, u), `u = (${I.u[0]}, ${I.u[1]})`, { color: 'sky', side: 1, off: 16, at: 0.7 });
+        if (step >= 2) L.along(A, add(A, n), `n = (${I.n[0]}, ${I.n[1]})`, { color: 'rose', side: -1, off: 16, at: 0.7 });
+        if (step >= 3) L.at(Pp, `P(${I.xp}, ${I.k})`, { color: 'amber', dirDeg: -30 });
+      },
+      4: (b, step, I) => {
+        const L = NQ.labels(b), A = Q(I.A), Bq = Q(I.B), M = Q(I.M), r = Math.sqrt(I.d2) / 2, base = Math.atan2(Bq.y - A.y, Bq.x - A.x) * 180 / Math.PI;
+        const Pp = NQ.polar(M, r, base + 115);
+        if (step >= 3) { b.circle(M, r, { color: 'sky', width: 2.8, fill: 'sky', fillAlpha: 0.08 }); L.circ(M, r); }
+        if (step >= 1) L.line(A, Bq, { color: 'ink', width: 3 });
+        if (step >= 2) { L.vec(Pp, A, { color: 'sky', width: 2.8 }); L.vec(Pp, Bq, { color: 'rose', width: 2.8 }); b.right(Pp, A, Bq, { color: 'amber', size: 11 }); L.pt(Pp, { color: 'amber' }); }
+        L.pt(A, { color: 'sky' }).pt(Bq, { color: 'rose' });
+        if (step >= 3) L.pt(M, { color: 'green', r: 4 });
+        L.O();
+        L.at(A, `A(${I.A[0]}, ${I.A[1]})`, { color: 'sky', away: M }); L.at(Bq, `B(${I.B[0]}, ${I.B[1]})`, { color: 'rose', away: M });
+        if (step >= 2) L.at(Pp, 'P', { color: 'amber', away: M });
+        if (step >= 3) L.at(M, 'M', { color: 'green', dirDeg: 90 });
+      }
+    };
+    const nq = NQ.scene({
+      id: sc.id, title: sc.title, short: sc.short, question: sc.question, guide: '', init: () => ({}), explore: () => {}, view: () => ({}),
+      axes: m !== 2, gen: (prev) => (prev ? NQ.pickOf(list, prev) : list[0]),
+      tag: ['세 점이 한 직선 위에 있을 조건', '자취의 넓이 킬러', '직선의 벡터방정식', '원의 벡터방정식 킬러'][m - 1], time: '목표 시간: 30초',
+      text: (I) => I.text, answer: (I) => I.ans, figure: FIG[m], steps: (I) => I.steps,
+      std: (I) => OVF.stdOf(I.steps), quick: (I) => I.quick,
+      warning: ['세 점이 한 직선 위에 있으려면 계수의 합이 1이어야 합니다. 내분비는 계수가 엇갈려 대응합니다.', 'm+n=k 선분은 선분 AB를 k배 한 것입니다. 영역의 넓이는 닮음비의 제곱(k²S)으로 계산하세요.', '방향벡터 (a,b)에 수직인 법선벡터는 (b,−a)입니다. 직선 위의 점은 한 문자 t로 나타내면 편합니다.', '(OP−OA)·(OP−OB)=0은 AP·BP=0, 곧 지름이 AB인 원입니다(P=A 또는 B인 점 포함).'][m - 1],
+      highlight: ['A, B, P가 한 직선 위 ⇔ 계수의 합 m+n=1', 'm,n≥0일 때 m+n≤k 영역의 넓이는 k²S', '점 A(x₁,y₁)을 지나고 방향벡터 (a,b)인 직선 위의 점은 (x₁+at, y₁+bt)', '지름이 AB인 원: 둘레 π·AB, 넓이 π·AB²/4'][m - 1],
+      reviewChips: (I) => [{ tex: I.ans, color: 'green' }],
+      fbox: m === 1 ? (I) => { const xs = [0, I.A[0], I.B[0]], ys = [0, I.A[1], I.B[1]]; return [P(Math.min(...xs) - 1.2, Math.min(...ys) - 0.8), P(Math.max(...xs) + 1.2, Math.max(...ys) + 0.8)]; } : undefined
+    });
+    const oSteps = sc.steps, oDraw = sc.draw, oView = sc.view;
+    const away = () => !!(window.lab && window.lab.tab && window.lab.tab !== 'explore');
+    const vary = nq.vary;
+    vary.go = (i) => { vary.n++; vary._c = list[i]; return vary._c; }; vary.size = list.length;
+    sc.tabs = nq.tabs; sc.vary = vary; sc.reviewTop = nq.reviewTop;
+    sc.problem = { ...nq.problem, text: () => `${vary.cur().text}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-nq-new>새 문제</button></div>` };
+    sc.steps = (s) => (away() ? nq.steps(s) : (typeof oSteps === 'function' ? oSteps(s) : oSteps));
+    sc.solution = { ...sc.solution, ...nq.solution };
+    sc.view = (s, lab) => (lab && lab.tab !== 'explore' ? nq.view(s, lab) : oView(s, lab));
+    sc.draw = (b, s, v, lab) => {
+      if (!lab || lab.tab === 'explore') {
+        if (b.__ovk && b.__ovk !== 'e') { b.setFocus(sc.focus, true); b.__nq = ''; }
+        b.__ovk = 'e';
+        return oDraw(b, s, v, lab);
+      }
+      b.__ovk = 'n'; v.tape = null;
+      return nq.draw(b, s, v, lab);
+    };
+    return sc;
+  }
+
   APLab.createLab({
     id: 'geom-vector-figure',
+    stackFractions: true, // 패널·칩·값 칸 글 속 숫자 분수(1/2, 3/5)를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr). 그림 글은 무대가 쌓습니다.
     title: '벡터로 나타낸 도형',
     courseName: '기하',
     unit: '벡터 · 벡터로 나타낸 도형',
@@ -1545,7 +1733,7 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     state: { sid: '1', lens: 'all', preset2: 'trap', animDir: 1 },
     persist: ['lens', 'preset2'],
-    scenes: [1, 2, 3, 4].map(sceneOf).concat([sceneCnd(), sceneAng()])
+    scenes: [1, 2, 3, 4].map((m) => figOverlay(sceneOf(m), m)).concat([sceneCnd(), sceneAng()])
   });
 });
 </script>

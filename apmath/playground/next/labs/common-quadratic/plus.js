@@ -182,11 +182,10 @@
     drawPieces(b, P, { x0: box.x[0] - 0.5, x1: box.x[1] + 0.5 });
     b.text([P.be + 1.5, P.f(P.be + 1.5) + 0.5], 'f', { color: 'sky', size: 14, weight: 800 });
     b.text([P.c, Math.min(P.d + 0.55, box.y[1] - 0.6)], 'g', { color: 'rose', size: 14, weight: 800 });
-    // 이어 붙인 점과 꼭짓점
-    if (shown(tab, s, 1) && tab !== 'problem') {
-      dot(b, [P.al, P.pa], 'ink', `(${sgnTxt(P.al)}, ${sgnTxt(P.pa)})`, -10, -13, { align: 'right', hollow: true });
-      dot(b, [P.be, P.pb], 'ink', `(${sgnTxt(P.be)}, ${sgnTxt(P.pb)})`, 10, -13, { hollow: true });
-    }
+    // 이어 붙인 두 점: 지문의 α, β(x좌표)를 점 이름으로 늘 보여 줍니다. 좌표값은 풀이에서 구하는 값이라 문제 탭과 풀이 전에는 숨깁니다.
+    const coords = shown(tab, s, 1) && tab !== 'problem';
+    dot(b, [P.al, P.pa], 'ink', coords ? `α (${sgnTxt(P.al)}, ${sgnTxt(P.pa)})` : 'α', -10, -13, { align: 'right', hollow: true, size: 14 });
+    dot(b, [P.be, P.pb], 'ink', coords ? `β (${sgnTxt(P.be)}, ${sgnTxt(P.pb)})` : 'β', 24, -12, { hollow: true, size: 14 });
     if (shown(tab, s, 2) && tab !== 'problem') dot(b, [P.a, P.b], 'ink', `(${sgnTxt(P.a)}, ${sgnTxt(P.b)})`, -12, 17, { align: 'right', hollow: true });
     if (!ex && tab === 'review' && s.step >= 2) [P.b, P.u, P.v].forEach((hh) => b.hline(hh, { color: 'muted', width: 1.6, dash: [4, 5], alpha: 0.8 }));
     if (!ex && tab === 'review' && s.step >= 3) {

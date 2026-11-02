@@ -15,6 +15,7 @@
 <script defer src="../kit/apl-core.js"></script>
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="alg-log-var.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -34,6 +35,9 @@
      1·3단계(정점 P₁·P₂ / 교점 A·B·중점 M·원)가 그림에 없던 것도 함께 그림.
    - 원본의 단계 버튼은 설명 글만 바꾸고 그림에는 영향이 없었음 → 셸의 단계(그림에 보조선이 나타남)로 바꿈.
    - 원본 하단의 흩어진 칠판 배지(drawBadge)는 무대 카드로 옮겨 그림을 가리지 않게 함.
+   - [2026-11 문제 탭 보강] 탐구 탭(그림·문구·조작)은 그대로 두고, 문제·정리 탭에 「새 문제」 변형 생성기(alg-log-var.js)를 붙였습니다.
+     첫 문제는 옛 문제·풀이 그대로이고, 새 문제는 같은 구조에서 숫자만 바꾼 변형(정답이 정수·간단한 분수·근호)입니다. 문제 그림은 변형의 조건대로 그리고,
+     답과 보조선은 정리 탭의 풀이 단계에서만 나옵니다. 탐구 탭의 그림 단계는 시작 단계로 고정했습니다.
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
   const { fmt, clamp } = APLab;
@@ -97,6 +101,8 @@ window.addEventListener('DOMContentLoaded', function () {
     };
   }
 
+  // 탐구 탭 그림은 옛 장면 그대로입니다(시작할 때의 보조선 단계 고정). 문제·정리 탭은 변형 문제를 따로 그립니다(alg-log-var.js).
+  const EXPST = 3;
   function draw(mo, b, s, v) {
     const p = pv(s, mo);
     const sink = [];
@@ -109,7 +115,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const dy = Math.log2(p.multK);
       const fn1 = (x) => Math.log2(x), fn2 = (x) => Math.log2(p.multK * x);
       // 3단계: 두 절단선 사이에 둘러싸인 영역 (= 가로 × log₂k 직사각형과 넓이가 같음)
-      if (s.step >= 3) {
+      if (EXPST >= 3) {
         const pts = [];
         for (let x = p.xCut1; x <= p.xCut2 + 1e-9; x += 0.05) pts.push([x, fn1(x)]);
         for (let x = p.xCut2; x >= p.xCut1 - 1e-9; x -= 0.05) pts.push([x, fn2(x)]);
@@ -119,7 +125,7 @@ window.addEventListener('DOMContentLoaded', function () {
       drawCurve(fn1, '#34d399', 2.8, [], 0.06, 9.5);
       drawCurve(fn2, '#38bdf8', 2.8, [], 0.06, 9.5);
       const y1A = fn1(p.xCut1), y1B = fn2(p.xCut1), y2A = fn1(p.xCut2), y2B = fn2(p.xCut2);
-      if (s.step >= 2) {
+      if (EXPST >= 2) {
         drawSeg(p.xCut1, y1A, p.xCut1, y1B, '#fbbf24', [], 3.4);
         drawSeg(p.xCut2, y2A, p.xCut2, y2B, '#fb7185', [], 3.4);
       }
@@ -129,7 +135,7 @@ window.addEventListener('DOMContentLoaded', function () {
     } else if (t === 'log_abs') {
       const x1 = p.shiftP + Math.pow(2, -p.lineT), x2 = p.shiftP + Math.pow(2, p.lineT), midM = (x1 + x2) / 2;
       // [2.0 수정] 1단계: log₂(x²) = 2log₂|x| 양날개 (원본에는 없었음)
-      if (s.step >= 1) {
+      if (EXPST >= 1) {
         drawCurve((x) => 2 * Math.log2(x), 'rgba(192,132,252,0.7)', 1.8, [5, 4], 0.05, 9.5);
         drawCurve((x) => 2 * Math.log2(-x), 'rgba(192,132,252,0.7)', 1.8, [5, 4], -9.5, -0.05);
         badge('점선: y = log₂(x²) = 2log₂|x| (y축에 대하여 대칭인 두 부분)', '#c084fc');
@@ -138,12 +144,12 @@ window.addEventListener('DOMContentLoaded', function () {
       drawCurve((x) => -Math.log2(x - p.shiftP), '#fb7185', 2.8, [], p.shiftP + 0.05, p.shiftP + 1);
       drawCurve((x) => Math.log2(x - p.shiftP), '#34d399', 2.8, [], p.shiftP + 1, 9);
       drawSeg(-2, p.lineT, 9, p.lineT, '#fbbf24', [], 2.2);
-      if (s.step >= 2) {
+      if (EXPST >= 2) {
         drawSeg(x1, p.lineT, x1, 0, '#fb7185', [4, 3], 1.6);
         drawSeg(x2, p.lineT, x2, 0, '#34d399', [4, 3], 1.6);
         badge(`교점 곱 (x₁−${p.shiftP})(x₂−${p.shiftP}) = ${(Math.pow(2, -p.lineT) * Math.pow(2, p.lineT)).toFixed(3)}`, '#fbbf24');
       }
-      if (s.step >= 3) {
+      if (EXPST >= 3) {
         drawSeg(midM, p.lineT, midM, 0, '#38bdf8', [4, 3], 2.0);
         drawPt(midM, 0, `중점 M=${midM.toFixed(2)}`, '#38bdf8', 6);
         badge(`두 교점의 x좌표의 평균 M(${midM.toFixed(2)}) > 꺾인 점의 x좌표(${p.shiftP + 1})`, '#38bdf8');
@@ -159,20 +165,20 @@ window.addEventListener('DOMContentLoaded', function () {
       const cShift = 0.5 * ((p.expN - p.expM) + (p.logQ - p.logP));
       const mid0 = { x: 0.5 * (P1.x + P2.x), y: 0.5 * (P1.y + P2.y) };
       // 1단계: 두 정점 P₁(지수), P₂(로그)와 정점의 중점 (원본 설명에만 있고 그림에는 없었음)
-      if (s.step >= 1) {
+      if (EXPST >= 1) {
         drawSeg(P1.x, P1.y, P2.x, P2.y, 'rgba(251,113,133,0.7)', [4, 3], 2.0);
         drawPt(P1.x, P1.y, `지수함수의 점(${P1.x}, ${P1.y})`, '#34d399', 6);
         drawPt(P2.x, P2.y, `로그함수의 점(${P2.x}, ${P2.y})`, '#38bdf8', 6);
         drawPt(mid0.x, mid0.y, `두 점의 중점(${mid0.x.toFixed(1)}, ${mid0.y.toFixed(1)})`, '#fb7185', 5.5);
       }
-      if (s.step >= 2) {
+      if (EXPST >= 2) {
         drawCurve((x) => x + cShift, '#c084fc', 2.4, [6, 4], -3, 8);
         badge(`대칭축: y = x ${cShift >= 0 ? '+ ' + cShift.toFixed(1) : '− ' + Math.abs(cShift).toFixed(1)}`, '#c084fc');
       }
       drawCurve((x) => -x + p.lineK, '#fbbf24', 2.2, [], -2, 8);
       const mx = 0.5 * (p.lineK - cShift), my = 0.5 * (p.lineK + cShift);
       // 3단계: 직선과 곡선의 교점 A(지수)·B(대칭점)와 A를 지나는 원 x²+y²=r²
-      if (s.step >= 3) {
+      if (EXPST >= 3) {
         const xA = solveExpLine(2, p.expM, p.expN, p.lineK), yA = p.lineK - xA;
         const B = { x: yA - cShift, y: xA + cShift }; // A 를 y = x + C 에 대칭이동한 점
         b.circle([0, 0], Math.hypot(xA, yA), { color: 'violet', alpha: 0.55, width: 2, dash: [5, 4] });
@@ -186,13 +192,13 @@ window.addEventListener('DOMContentLoaded', function () {
       drawCurve((x) => Math.log2(x), '#34d399', 2.8, [], 0.2, 14);
       let total = 0;
       for (let y = 1; Math.pow(2, y) <= K; y++) {
-        if (s.step >= 3) drawSeg(Math.pow(2, y), y, K, y, '#fb7185', [], 3);
-        if (s.step >= 1) for (let x = Math.pow(2, y); x <= K; x++) drawPt(x, y, '', '#fbbf24', 5);
+        if (EXPST >= 3) drawSeg(Math.pow(2, y), y, K, y, '#fb7185', [], 3);
+        if (EXPST >= 1) for (let x = Math.pow(2, y); x <= K; x++) drawPt(x, y, '', '#fbbf24', 5);
         total += K - Math.pow(2, y) + 1;
       }
       // 2단계: 세로줄 x = n 을 하나씩 잘라 센 점의 수
-      if (s.step >= 2) for (let x = 2; x <= K; x++) drawSeg(x, 0, x, Math.floor(Math.log2(x) + 1e-9), '#38bdf8', [3, 3], 1.2);
-      if (s.step >= 3) badge(`가로줄별 개수의 합 = ${total}개 (K = ${K})`, '#fb7185');
+      if (EXPST >= 2) for (let x = 2; x <= K; x++) drawSeg(x, 0, x, Math.floor(Math.log2(x) + 1e-9), '#38bdf8', [3, 3], 1.2);
+      if (EXPST >= 3) badge(`가로줄별 개수의 합 = ${total}개 (K = ${K})`, '#fb7185');
       drawPt(K, Math.log2(K), `K=${K}`, '#fbbf24', 8, (w) => { p.maxX = clamp(Math.round(w.x), 4, 13); });
     }
 
@@ -249,6 +255,11 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  /* 문제·정리 탭: 「새 문제」 변형 생성기. 첫 문제는 옛 문제 그대로(글·풀이 원문), 눌러서 숫자·상황이 바뀝니다. */
+  const KIND = ['vert', 'absM', 'xlat', 'latt'];
+  const POOL = [ALV.POOLS.vertS, ALV.POOLS.mixWingAbs, ALV.POOLS.xlatCMg, ALV.POOLS.lattA];
+  const VARY = PART.modes.map((mo, i) => ALV.make(KIND[i], POOL[i], { text: mo.problem, std: mo.textbook, quick: mo.secret }));
+
   const scenes = PART.modes.map((mo, i) => ({
     id: mo.id,
     title: rich(mo.shortTitle),
@@ -256,34 +267,32 @@ window.addEventListener('DOMContentLoaded', function () {
     question: Q[i],
     guide: GUIDE[i],
     controls: mo.sliders.filter((d) => params[mo.id + '_' + d.key]).map((d) => mo.id + '_' + d.key),
-    steps: mo.stepLabels.map((l, k) => `${k + 1}단계 · ${rich(l)}`),
-    startStep: 3,
     notesTitle: '함정 주의보',
     focus: () => FOCUS[mo.renderType],
     enter: (s) => { Object.keys(mo.params).forEach((k) => { s[mo.id + '_' + k] = mo.params[k]; }); },
-    problem: {
-      tag: '조건과 그래프 탐구',
-      text: () => rich(mo.problem),
-      answer: () => '풀이와 결과는 정리 탭의 「두 가지 풀이 비교」에서 확인하세요.',
-      snap: () => { const o = {}; Object.keys(mo.snapParams).forEach((k) => { o[mo.id + '_' + k] = mo.snapParams[k]; }); return o; }
-    },
-    solution: {
-      standardTitle: '교과서 풀이', standardTag: '기본 풀이',
-      quickTitle: '10초 컷 · 그래프의 성질을 이용한 간단한 풀이', quickTag: '10초 컷',
-      standard: () => ({ steps: mo.textbook.map((x) => `<div>${rich(x)}</div>`).join('') }),
-      quick: () => ({ steps: mo.secret.map((x) => `<div>${rich(x)}</div>`).join('') })
-    },
-    view: (s) => {
+    ...ALV.ext(VARY[i], { tag: '조건과 그래프 탐구', standardTitle: '교과서 풀이', quickTitle: '10초 컷 · 그래프의 성질을 이용한 간단한 풀이' }),
+    view: (s, lab) => {
+      if (lab && lab.tab !== 'explore') return { notes: rich(mo.trap) };
       const p = pv(s, mo);
       if (mo.renderType === 'log_misinv') tie(p);
       return {
         chips: [{ html: rich(eqOf(mo, p)) }],
         readouts: readoutsOf(mo, p),
-        formula: s.step >= 1 ? rich(mo.stepDescs[Math.min(s.step, 3) - 1]) : `$${PART.formulaTex}$`,
+        formula: EXPST >= 1 ? rich(mo.stepDescs[Math.min(EXPST, 3) - 1]) : `$${PART.formulaTex}$`,
         notes: rich(mo.trap)
       };
     },
-    draw: (b, s, v) => draw(mo, b, s, v)
+    draw: (b, s, v, lab) => {
+      if (b.thumb || !lab || lab.tab === 'explore') {
+        if (!b.thumb) ALV.focus(b, 'e' + mo.id, FOCUS[mo.renderType]);
+        draw(mo, b, s, v);
+        return;
+      }
+      const cv = VARY[i].cur();
+      ALV.focus(b, 'v' + cv.sid, cv.win);
+      ALV.gridAxes(b, s, cv);
+      ALV.draw(b, cv, lab.tab === 'review' ? s.step : 0, v);
+    }
   }));
 
   APLab.createLab({
