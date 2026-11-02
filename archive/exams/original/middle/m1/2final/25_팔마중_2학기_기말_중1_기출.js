@@ -508,16 +508,16 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B34",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q11-solution.svg",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q11-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:280ba388058b55f946d34c253ea9763402249fa13a19e7b4b00318f315615906",
       "difficultyEvidenceSha": "sha256:7ebdc7d27814aac5f60e19bc955c0837cc61d56f26d2912d69fb97d1f48d57de",
-      "solutionImageAlt": "회전 후 겉면을 바깥 원기둥의 옆면, 아래 원, 안쪽 반구 곡면으로 나눈 도식",
-      "solutionImageCaption": "세 표면의 넓이 18π, 9π, 18π를 더해 45π cm²를 얻는다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 단면 ABCD에서 회전축 CD를 기준으로 AB(옆면 18π, 파랑), BC(밑면 9π, 주황), 호 AC(반구 18π, 초록)를 색으로 구분해 보여 준다.",
+      "solutionImageCaption": "겉넓이는 18π+9π+18π=45π cm²이다. 정답 ⑤.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 12,
@@ -787,9 +787,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:798d110f44e515b50f5defd94aa639356c6581bebe6d821d37980667133daba9",
       "difficultyEvidenceSha": "sha256:cdb83a1912e8c55a8856d13844fa3ab4b0c32a3ff7a1854548efe6c1d22c3c13",
-      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q17-solution.svg",
-      "solutionImageAlt": "해설 그림: A동아리 남학생(실선)과 여학생(점선)의 윗몸일으키기 횟수를 나타낸 두 도수분포다각형. 남학생의 120회 이상 140회 미만 계급 2명과 100회 이상 120회 미만 계급 5명을 그래프에서 읽을 수 있다.",
-      "solutionImageCaption": "남학생과 여학생의 도수분포다각형을 한 그래프에 나타낸 그림",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q17-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 남학생(실선)과 여학생(점선)의 윗몸일으키기 횟수 도수분포다각형. 남학생 100~120회 점(5명)은 큰 점, 120~140회 점(2명)은 동그라미이며 100~140회 아래에 '큰 쪽부터 1-3번째' 괄호가 있다.",
+      "solutionImageCaption": "큰 쪽부터 센 순서로, 남학생 1·2번째는 120~140회 계급(2명, 동그라미)에 있고 3번째는 바로 아래 100~120회 계급(5명, 큰 점)에 있다. 정답 ④",
       "solutionImageSize": "medium"
     },
     {
@@ -1006,9 +1006,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:78e65762f00c91e633d4842181a325b43178082f7656d1eb6e3212882250fb5b",
       "difficultyEvidenceSha": "sha256:c1c7d61ffbb9e79dd3561757b55765648512942e748f89e96adbbe53a2fd79ca",
-      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q22-solution.svg",
-      "solutionImageAlt": "해설 그림: 반지름 3cm인 구를 중심을 지나는 평면으로 한 번 자르면 두 조각에 원판 모양의 단면이 하나씩 생기고, 서로 수직인 세 평면으로 자른 8조각 중 한 조각에는 4분원 모양의 단면 3개가 있음을 나란히 보여 주는 그림이다.",
-      "solutionImageCaption": "한 번 자른 두 조각과 8조각 중 한 조각의 단면 (반지름 3 cm)",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q22-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽은 구를 중심을 지나게 한 번 자른 두 반구, 오른쪽은 수직인 평면 세 개로 자른 8조각 중 한 조각(반지름 3cm, 4분원 단면 3개)을 보여 주는 그림이다.",
+      "solutionImageCaption": "원래 구 36π에 한 번 자를 때마다 원판 두 개(18π)가 늘어 36π + 3×18π = 90π cm²이다.",
       "solutionImageSize": "medium"
     },
     {
@@ -1087,9 +1087,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:7a3be09da6a004f7a41bcf26791e99120879105c0b310e9b941a385b7ea46341",
       "difficultyEvidenceSha": "sha256:42a96af742ae7d54f7417b0eb9440e720002ca9dc99019f6aed72017916bd87e",
-      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q24-solution.svg",
-      "solutionImageAlt": "해설 그림: A반(실선)과 B반(점선)의 수학 성적을 나타낸 두 도수분포다각형. 80점 이상 계급의 도수를 두 반에서 같은 눈금으로 읽을 수 있다.",
-      "solutionImageCaption": "A반과 B반의 도수분포다각형을 한 그래프에 나타낸 그림",
+      "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q24-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: A반(실선)과 B반(점선)의 수학 성적 도수분포다각형. 80점 이상 구간에서 A반은 80~90점 3명(큰 점)과 90~100점 1명, B반은 4명과 2명에 동그라미가 있고, 아래에 A반 (상위 2명)과 B반 6명 괄호가 있다.",
+      "solutionImageCaption": "A반 상위 10%는 20×0.1=2명이다. 90~100점에 1명이 있고 두 번째 학생은 80~90점 계급(큰 점)에 있으므로 경계는 80점 이상이다. B반 80점 이상은 4+2=6명이고 6÷20×100=30(%)이다. 정답 30%",
       "solutionImageSize": "medium"
     }
   ];

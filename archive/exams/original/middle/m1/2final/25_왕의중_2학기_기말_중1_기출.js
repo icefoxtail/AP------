@@ -356,9 +356,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:3b49f9faba360a00cc30860fcb76ef1ab19167978cca94910a6de6587fa0960a",
       "difficultyEvidenceSha": "sha256:df371ca682ef94164aefca6b6117cb79696f4be87c66e413336dca6dea489ff4",
-      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q8-solution.svg",
-      "solutionImageAlt": "해설 그림: 한 변이 5cm인 정사각형 ABCD에서 꼭짓점을 중심으로 하는 호 4개와 정삼각형 DCP, DAQ를 그려 각 호가 30°씩 세 부분으로 나뉘고, 색칠한 도형의 둘레는 굵은 호 8개(중심각 합 240°), 안쪽의 호는 가는 선임을 보여 주는 그림이다.",
-      "solutionImageCaption": "각 호는 정삼각형 덕분에 30°씩 세 부분으로 나뉘고, 가운데 부분은 안쪽에 있어 둘레에는 양 끝의 30° 호 8개가 들어간다.",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q8-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 정사각형 한 변 5cm와 각 꼭짓점을 중심으로 하는 호가 만드는 정삼각형 DCP·DAQ(60°), 둘레를 이루는 30° 호 8개(주황)와 안쪽 30° 호(검정 가는 선)를 구분해 보여 준다.",
+      "solutionImageCaption": "둘레는 30° 호 8개(합 240°)이므로 2π×5×240/360=20π/3 cm이다. 정답 ④.",
       "solutionImageSize": "medium"
     },
     {
@@ -490,9 +490,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:325030cda8b3f9e21e8d2b38becee56dc827eb92c2774c444a93f7a5d104944f",
       "difficultyEvidenceSha": "sha256:49bbfc280cfe9aa6b5b19f1de3d1aa50c88a04d78f6f8ada4b4ccb33a2cb2e37",
-      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q11-solution.svg",
-      "solutionImageAlt": "해설 그림: 반지름 5cm인 구를 중심 O를 지나는 서로 수직인 두 평면으로 4등분한 입체도형으로, 곡면의 일부와 반원 모양의 단면 2개(색칠)가 겉면을 이루는 모습을 보여 주는 그림이다.",
-      "solutionImageCaption": "구를 4등분한 입체도형 (반지름 5 cm)",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q11-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 왼쪽은 구를 4등분한 입체의 곡면(구 겉넓이의 1/4, 25π), 오른쪽은 잘라 낸 자리에 생긴 반원 단면 2개(각 25π/2, 반지름 5cm)를 보여 주는 그림이다.",
+      "solutionImageCaption": "곡면 25π와 반원 두 개의 합 25π를 더해 겉넓이는 50π cm²(①)이다.",
       "solutionImageSize": "medium"
     },
     {
@@ -573,7 +573,7 @@ window.questionBank = [
       "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q13.png",
       "subUnitConfidence": "existing_preserved",
       "subUnitClassificationDepth": "complete_documented",
-      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q13-solution.svg",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q13-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SPHERE_IN_CYLINDER_VOLUME_CONSTRAINT",
       "crossConceptKeys": [],
@@ -587,9 +587,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:fcabafcbec25dbcf2f1bcdace430649fb8151493fe4a982020aa3b740b33f8c9",
       "difficultyEvidenceSha": "sha256:1c95cf1f599f28fde91720a338b4ca6e1e46f752717dac628839d6ab93d616a2",
-      "solutionImageAlt": "반지름 r인 공 3개가 높이 6r인 원기둥 안에 위아래로 꼭 맞게 놓인 그림",
-      "solutionImageCaption": "원기둥 부피 조건에서 r을 구한 뒤 공 하나의 겉넓이를 계산한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 원기둥 안에 같은 공 3개가 두 밑면과 옆면에 꼭 맞게 세로로 쌓여 있고, 원기둥의 반지름이 r, 높이가 6r임을 보여 주는 그림이다.",
+      "solutionImageCaption": "6πr³ = 384π에서 r = 4이므로 공 하나의 겉넓이는 4π×4² = 64π cm²(②)이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 14,
@@ -813,7 +813,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:78c74abb2d381f6ab7e34a052565002687980c832bc28573bba7f53d1703ecad",
-      "difficultyEvidenceSha": "sha256:63c9d9d57d79d4dee743c32b178b2c76f43fddb733c93a1d05927f64431f6813"
+      "difficultyEvidenceSha": "sha256:63c9d9d57d79d4dee743c32b178b2c76f43fddb733c93a1d05927f64431f6813",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q18-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 하루 평균 대화 시간 줄기와 잎 그림: 줄기 0~4의 잎이 각각 4개, 6개, 5개, 3개, 2개이고 줄기마다 잎 개수를 괄호와 숫자로 표시했다.",
+      "solutionImageCaption": "줄기 하나가 한 계급이다. 0줄기는 0분 이상 10분 미만 4명, 1줄기 10~20분 6명, 2줄기 20~30분 5명, 3줄기 30~40분 3명, 4줄기 40~50분 2명이고 합은 4+6+5+3+2=20명이다. 마지막 계급이 40분 이상 50분 미만이므로 d=50이다. 정답 ④",
+      "solutionImageSize": "medium"
     },
     {
       "id": 19,

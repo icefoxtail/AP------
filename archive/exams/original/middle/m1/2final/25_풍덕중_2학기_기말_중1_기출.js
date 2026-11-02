@@ -83,9 +83,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:372860cd9d6e9bb1a7290ff617b0cda3a233c8df6ffce6a8ba8cf69b404ad460",
     "difficultyEvidenceSha": "sha256:409e09b811386ceca48df7b22fd4423f71b209657dd0c734fe3f72202f73f369",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 오각뿔대의 위·아래 두 밑면(오각형)을 색칠해 보이고, 나머지 옆면 5개는 사다리꼴임을 보여 주는 그림이다.",
-    "solutionImageCaption": "두 밑면(오각형)과 옆면 5개(사다리꼴)로 이루어진 오각뿔대",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 오각뿔대의 두 밑면(파랑), 오른쪽은 전개도로 밑면 2개(⑥⑦, 파랑)와 사다리꼴 옆면 5개(①~⑤, 주황)에 번호를 붙여 면이 모두 7개임을 보여 주는 그림이다.",
+    "solutionImageCaption": "면은 밑면 2개 + 옆면 5개 = 7개이므로 오면체가 아니라 칠면체이고, 옳지 않은 것은 ④이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -416,7 +416,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:12627475eb4d31310be03f3372dc6bae8d1f2c7d7868c29a6dfa64ca18afb45f",
-    "difficultyEvidenceSha": "sha256:52b4098549cb20a92e10e5c74f5a1cf686954dbc254cabe4538772bbb1f22f96"
+    "difficultyEvidenceSha": "sha256:52b4098549cb20a92e10e5c74f5a1cf686954dbc254cabe4538772bbb1f22f96",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 반지름 r, 높이 2r인 원기둥에 구가 꼭 맞게 든 모습, 오른쪽은 구를 꺼낸 뒤 원기둥의 전체 높이 2r 중 아래 1/3(높이 2r/3)까지 남은 물을 칠한 그림이다.",
+    "solutionImageCaption": "원기둥의 부피에서 구의 부피를 뺀 (2/3)πr³ = 18π에서 r³ = 27이므로 r = 3 cm(②)이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -461,9 +465,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:f04a3555f7178dea1f20bdd77d0bf7b51499b99fe1fa8294dd6c08e13ed55bd7",
     "difficultyEvidenceSha": "sha256:177090fdfba335178a80369ff46ce6109d791a1c2eef4d28c57e27c4c8794eb9",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 원뿔 모양 고깔모자의 전개도로 옆면인 부채꼴만 그린 그림이다. 부채꼴의 반지름 (나)는 모선의 길이 20cm이고, 호 (가)의 길이는 밑면의 둘레 2π×8=16π cm이다.",
-    "solutionImageCaption": "고깔모자의 전개도(옆면): 반지름 (나) 20cm, 호의 길이 (가) 16π cm",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 밑면 반지름 8cm, 모선 20cm인 고깔모자(원뿔), 오른쪽은 모선 20cm가 반지름이고 호의 길이가 16π cm인 부채꼴 전개도(밑면 원은 점선)를 보여 주는 그림이다.",
+    "solutionImageCaption": "옆넓이 π×8×20 = 160π cm²(③)이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -776,9 +780,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:7a9b670556dc22745e1c4318f95167f189bc0f75339a201727c962af7ae02134",
     "difficultyEvidenceSha": "sha256:cb9d314388ecab04212c4437fd7a7176d29d9663cef52ff53c45de685f17a2b5",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 팔굽혀 펴기 기록의 히스토그램과 도수분포다각형에서 35회 미만의 세 계급과 45회 이상의 마지막 계급을 진하게 칠한 그림",
-    "solutionImageCaption": "35회 미만과 45회 이상 계급을 진하게 나타낸 히스토그램과 도수분포다각형",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 팔굽혀 펴기 기록 히스토그램과 도수분포다각형: 도수 2,5,6,12,10,5명. 20~35회 세 막대는 연한 회색 괄호 13명, 45~50회 막대는 진한 회색 괄호 5명이다.",
+    "solutionImageCaption": "전체 2+5+6+12+10+5=40명이다. 연한 회색은 35회 미만(2+5+6=13명), 진한 회색은 45회 이상(5명)이고 5÷40×100=12.5(%)이다. 정답 ⑤",
     "solutionImageSize": "medium"
   },
   {
@@ -872,9 +876,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:f070b4f34eb953dbb67d2112d093f97fc1d32a1490d0a8ef20df63c4603ae539",
     "difficultyEvidenceSha": "sha256:c707371d6543aacda37a0eb430cd2153d9a3a3d437bb773b2d9b41ba0051cd66",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: A 중학교(실선)와 B 중학교(점선)의 키에 대한 상대도수 분포를 130~180cm 계급에서 두 꺾은선으로 비교한 그림",
-    "solutionImageCaption": "두 학교의 키에 대한 상대도수 분포를 비교한 그림",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: A중학교(실선)와 B중학교(점선) 키의 상대도수 분포 다각형. 130~140cm는 A 0.15·B 0.05, 140~150cm는 A 0.2·B 0.2에 값이 있고, 140~150cm 아래 괄호에 A중 20명, B중 40명이 적혀 있다.",
+    "solutionImageCaption": "점의 값은 상대도수이고 괄호 아래 숫자는 그 계급의 학생 수이다. 140~150cm는 A중 100×0.2=20명, B중 200×0.2=40명으로 같지 않다. 140 미만(130~140cm)은 A중 100×0.15=15명, B중 200×0.05=10명이다. 정답 ⑤",
     "solutionImageSize": "medium"
   },
   {

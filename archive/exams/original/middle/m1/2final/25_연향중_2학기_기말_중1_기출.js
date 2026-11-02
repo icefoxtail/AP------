@@ -78,9 +78,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:484501079d31ab68813abe742124421432c46440dfed61ba1963e330ac53fb29",
     "difficultyEvidenceSha": "sha256:42aa166ed0cb0c8a059f046ef27de4b7c08f091c8fe7a13df4a5672c350ab7e2",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 한 직선 위에 이웃한 두 각의 쌍이 두 곳에 있다. 아래쪽 점의 85°와 x, 위쪽 점의 95°와 y이며, 호의 개수로 x와 95°, y와 85°가 같은 크기임이 짝지어 보인다.",
-    "solutionImageCaption": "한 직선 위의 이웃한 두 각의 합은 180°이다.",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위 이웃한 두 각의 합 180°를 반원 호로 표시하고, 85°인 두 각은 파랑, 95°인 두 각은 주황으로 묶어 x=95°, y=85°를 보여 준다.",
+    "solutionImageCaption": "85°+x=180°, 95°+y=180°에서 x=95°, y=85°이므로 x−y=10°이다. 정답 ③.",
     "solutionImageSize": "medium"
   },
   {
@@ -126,9 +126,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:c7b826bd3f9f81a211e0cdb6839e0571485e5cebee8f69eb05898056d666c3f7",
     "difficultyEvidenceSha": "sha256:7a27036ca06b8cbf90d36512fcf106ba850d3c8d061c1a9fe8f2bd6194dbbe52",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 별 모양의 다섯 꼭짓점의 각이 30°, 40°, 40°, 40°, z로 표시되어 있고, 오른쪽 삼각형(색칠)의 세 각이 40°, 180°-x, y로 표시되어 있어 x-y의 관계를 삼각형의 내각의 합으로 읽게 한다.",
-    "solutionImageCaption": "꼭짓점의 각의 합과 오른쪽 삼각형의 내각의 합을 이용한다.",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 별 모양의 꼭짓점 각 30°·40°·40°·40°·z(=30°)를 같은 크기끼리 같은 색으로 묶고, 오른쪽 삼각형의 세 각 40°, 180°−x, y를 강조했다.",
+    "solutionImageCaption": "꼭짓점 각의 합 180°에서 z=30°, (180°−x)+y+40°=180°에서 x−y=40°이므로 x−y−z=10°이다. 정답 ③.",
     "solutionImageSize": "medium"
   },
   {
@@ -172,7 +172,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:0b1b26aad42946a17ad347007205662033a7f06955b5932b350d0df5d876ee49",
-    "difficultyEvidenceSha": "sha256:f2427cf7ba93a1fbc0793ee593eb84f72f69e982c0c97012520e428da9a5f96a"
+    "difficultyEvidenceSha": "sha256:f2427cf7ba93a1fbc0793ee593eb84f72f69e982c0c97012520e428da9a5f96a",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 같은 반원을 왼쪽은 두 반지름과 호로 이루어진 부채꼴(파랑), 오른쪽은 지름인 현과 호로 이루어진 활꼴(주황)로 나누어 보여 준다.",
+    "solutionImageCaption": "반원은 부채꼴이면서 활꼴이고, 지름은 가장 긴 현이다. 정답 ①, ③.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -292,10 +296,10 @@ window.questionBank = [
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q7-solution.svg",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "한 바퀴 굴리는 직사각형에서 꼭짓점 A가 B, C, D를 중심으로 반지름 6 cm, 10 cm, 8 cm의 90도 원호를 따라 움직이고 마지막 A 중심 회전에서는 움직이지 않는 그림",
-    "solutionImageCaption": "세 사분원호의 길이를 더하면 꼭짓점 A의 이동 거리는 12π cm이다.",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q7-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 직사각형을 직선 위에서 굴릴 때 꼭짓점 A가 B, C, D를 중심으로 그리는 반지름 6, 10, 8인 90° 원호 세 개와 호의 길이 3π, 5π, 4π를 한 줄에 보여 준다.",
+    "solutionImageCaption": "호의 길이 3π+5π+4π=12π cm이다. 정답 ④.",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
     "crossConceptKeys": [],
@@ -352,7 +356,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:a6471f962307489741808183f377a008ffaffcaac9b343360cf8be2f0634811c",
-    "difficultyEvidenceSha": "sha256:3df2276be177b51ba58afbfa005fc3d3147a025e5e18b068a2f77fa18a068651"
+    "difficultyEvidenceSha": "sha256:3df2276be177b51ba58afbfa005fc3d3147a025e5e18b068a2f77fa18a068651",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 변 4cm인 정사각형에서 색칠한 부분의 둘레를 이루는 직선 변(파랑)과 반지름 2cm인 사분원호 8개(주황)를 두 색으로 구분해 보여 준다.",
+    "solutionImageCaption": "직선 부분은 4×4=16 cm, 원호 8개는 원 2개의 둘레 8π cm이므로 둘레는 (16+8π) cm이다. 정답 ④.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -393,7 +401,11 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:da8180fae1fe4a7ecb65febe5d79fd5d9238f1cdf75974874e1faf6bf786ff31",
-    "difficultyEvidenceSha": "sha256:0a9ec3b8aea8d887bcaa3c6c6396a8b5b95efa7318079e6f7582701da089572a"
+    "difficultyEvidenceSha": "sha256:0a9ec3b8aea8d887bcaa3c6c6396a8b5b95efa7318079e6f7582701da089572a",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 육각뿔대의 옆면 6개를 주황색, 위·아래 밑면 2개를 파란색으로 칠해 면이 8개임을 보이고, 숨은 모서리를 점선으로 그린 정사면체의 네 면을 서로 다른 색으로 칠해 합동인 정삼각형 4개임을 보인 세 그림이다.",
+    "solutionImageCaption": "정사면체의 면은 정삼각형이지 정사각형이 아니므로 옳지 않은 것은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -433,9 +445,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:a41c3fefd4185fd6edec31a063f0cb80be41c7f24e9692b1d6d38a1ff01eddd7",
     "difficultyEvidenceSha": "sha256:20fdd027bed0ffb9f8c6ebc94ace6ce9e44e111e1a668178f0db806717354310",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 회전축에 붙은 직각사다리꼴 ⑤(큰 밑면, 작은 밑면, 옆면)와, 이를 1회전시켜 얻은 원뿔대의 두 밑면과 회전축을 지나는 단면(사다리꼴)을 나란히 보인 그림",
-    "solutionImageCaption": "직각사다리꼴 ⑤를 회전축으로 1회전시키면 크기가 다른 두 밑면을 가진 원뿔대가 된다",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 작은 원, 큰 원, 고리 모양 부채꼴로 된 전개도와, 이를 접어 만든 원뿔대를 나란히 그린 그림이다. 작은 원은 작은 밑면, 큰 원은 큰 밑면, 고리 부채꼴은 옆면에 대응한다.",
+    "solutionImageCaption": "두 밑면이 크기가 다른 원이고 옆면이 고리 모양 부채꼴이므로 원뿔대의 전개도이다. 회전시켜 원뿔대가 되는 평면도형은 ⑤이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -464,7 +476,11 @@ window.questionBank = [
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 육각뿔대의 꼭짓점에 1부터 12까지 번호를 붙인 그림과, 정십이면체에서 한 면(주황)과 그 면의 모서리 5개(빨강)를 표시한 그림이다.",
+    "solutionImageCaption": "a=12, b=12×5÷2=30이므로 a+b=42이고 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -509,9 +525,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:e507c0dfa948f7469e752101e34bd5a2c13c053b5a99220d4f07776667661648",
     "difficultyEvidenceSha": "sha256:4b4d6073f1776c1f1badabc99cc2f37e2f6e337f4d2cc01af99a7934cf30c423",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q12-solution.svg",
-    "solutionImageAlt": "해설 그림: 중심 O, 반지름 l인 원이 지름으로 두 반원 호로 나뉘고, 각 호에 밑면의 둘레와 같은 6π cm가 적혀 있어 원뿔을 두 바퀴 굴린 자국의 둘레가 6π+6π임을 보여 준다.",
-    "solutionImageCaption": "반지름 l인 원의 둘레가 밑면의 둘레 6π인 두 호로 나뉜다.",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 밑면 반지름 3cm, 모선 6cm인 원뿔과 그 옆면 부채꼴(호의 길이 6π, 중심각 180°), 그리고 꼭짓점 O를 중심으로 2바퀴 구른 길을 반지름 6cm인 원(위·아래 반원이 각각 6π)으로 나타낸 그림이다.",
+    "solutionImageCaption": "페인트가 묻은 부분은 반지름 6cm인 원이므로 넓이는 π×6²=36π cm²이고 정답은 ②이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -605,9 +621,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:8f54ce392519a2e44dab170df0bfc87225af97492438a5fb17784810bf900d0a",
     "difficultyEvidenceSha": "sha256:7f1247b7140d38a4b1bcbf9d813bd9ce26bc0e30fd989e045fcf4c39b7f140b3",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 반지름 6cm인 구에서 8등분 한 조각을 잘라 내고 남은 7/8 입체도형으로, 잘라 낸 자리에 중심에서 서로 수직으로 만나는 4분원 모양의 평면 3개(색칠)가 보이고 반지름 6cm가 표시된 그림이다.",
-    "solutionImageCaption": "구의 1/8을 잘라낸 입체도형 (반지름 6 cm)",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 구의 7/8 곡면(126π), 오른쪽은 잘라 낸 자리에 새로 생긴 4분원 단면 3개(반지름 6cm, 합 27π)를 보여 주는 두 그림이다.",
+    "solutionImageCaption": "구면 7/8은 126π, 새 단면 3개는 합 27π이므로 겉넓이는 153π cm²(④)이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -653,9 +669,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:414ee05203f23896224668c832809dc523b34adca3fefbfa444e853d30d5dfb4",
     "difficultyEvidenceSha": "sha256:00a53834fc7504c6834c6e03c537f34984ac701c09bbf0149f65b91ec5af69c5",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q15-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: (가)는 밑면이 두 변 6cm, 7cm인 직각삼각형이고 높이가 4cm인 삼각뿔 모양의 물, (나)는 밑면이 두 변 6cm, x cm인 직각삼각형이고 높이가 4cm인 삼각기둥 모양의 물을 나란히 보인 그림",
-    "solutionImageCaption": "(가)의 물은 삼각뿔, (나)의 물은 삼각기둥 모양이며 각 모서리의 길이를 나타낸 그림",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q15-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: (가)는 밑면이 6cm·4cm인 직각삼각형(파랑)이고 높이가 7cm인 삼각뿔, (나)는 같은 삼각형(파랑)을 밑면으로 하고 높이가 x인 삼각기둥이다.",
+    "solutionImageCaption": "같은 삼각형을 밑면으로 하여 ⅓×7 = x, 곧 7 = 3x이므로 x = 7/3(③)이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -875,7 +891,11 @@ window.questionBank = [
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 꼭짓점 A에서 그은 대각선 4개가 칠각형을 서로 다른 색의 삼각형 5개로 나누는 예이다(번호 1~5).",
+    "solutionImageCaption": "예: 칠각형이면 a=4, b=5이고, 일반적으로 a=n−3, b=n−2이므로 n=20, 내각의 합은 3240°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -902,10 +922,10 @@ window.questionBank = [
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q22-solution-v2.svg",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q22-solution-v3.svg",
     "solutionImageSize": "medium",
-    "solutionImageAlt": "해설 그림: 원 O의 지름 AB의 연장선 위 점 P와 현 CD의 연장선에서 DO=DP 표식, ∠AOC=48°, ∠COD=116°, ∠DOP=∠OPD=16°, ∠ODC=∠OCD=32° 각 표식을 나타내고 호 AC=12cm와 호 BD·CD를 굵게 보인 그림",
-    "solutionImageCaption": "DO=DP로 ∠DOP=∠OPD=16°, ∠ODC=∠OCD=32°, ∠COD=116°를 표시하고 호 BD, CD를 굵게 나타낸 그림",
+    "solutionImageAlt": "해설 그림: 원 O에서 중심각과 호를 색으로 짝지어 보여 준다: 호 AC·∠AOC=48°(파랑), 호 CD·∠COD=116°(주황), 호 BD·∠BOD=16°(초록)이고 DO=DP이다.",
+    "solutionImageCaption": "원 둘레 90 cm에서 호 BD=4 cm, 호 CD=29 cm이다.",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "crossConceptKeys": [],

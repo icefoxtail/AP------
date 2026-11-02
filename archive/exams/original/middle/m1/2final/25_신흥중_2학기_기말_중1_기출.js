@@ -208,7 +208,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 두 색칠 부분이 같다는 조건에서, 두 도형이 겹친 부분을 공통으로 제거하면 직사각형 전체와 부채꼴 전체의 넓이가 같다는 식을 얻는다.\n\n$BC=x\\rm\\,cm$라고 하면 직사각형의 넓이는 $AB\\times BC=6x\\rm\\,cm^2$이다.\n\n부채꼴 $ABE$의 반지름은 $AB=6\\rm\\,cm$이고, 중심각은 직각이므로 넓이는\n$\\pi\\times6^2\\times\\dfrac{90}{360}=9\\pi\\rm\\,cm^2$이다.\n\n두 도형이 겹치는 넓이를 $S$라 두자. 직사각형에만 속한 색칠 부분은 $6x-S$, 부채꼴에만 속한 색칠 부분은 $9\\pi-S$이다.\n\n두 색칠 부분의 넓이가 같으므로\n$6x-S=9\\pi-S$이다. 양쪽에서 공통인 $-S$를 없애면 $6x=9\\pi$이다.\n\n$x=\\dfrac{9\\pi}{6}=\\dfrac32\\pi\\rm\\,cm$이다.\n\n따라서 정답은 ②이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q5.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q5-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q5-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
     "crossConceptKeys": [],
@@ -218,9 +218,9 @@ window.questionBank = [
     "sourcePage": 2,
     "sourceQuestionNo": "5",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "겹치는 넓이 소거: 직사각형 = 부채꼴, 6×BC = 9π, BC = 9π÷6",
-    "solutionImageCaption": "3π/2 cm"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD와 사분원 ABE에서 겹친 부분 S는 파랑, 겹치지 않는 두 색칠 부분 6x−S와 9π−S는 같은 주황색으로 칠해 공통 넓이를 빼면 6x=9π임을 보여 준다.",
+    "solutionImageCaption": "두 색칠 부분이 같으면 공통인 S를 빼도 같으므로 6x=9π이고 BC=3π/2 cm이다. 정답 ②."
   },
   {
     "id": 6,
@@ -309,10 +309,11 @@ window.questionBank = [
     "sourceQuestionNo": "7",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 정이십면체와 정육면체 세 개를 나란히 그린 그림. 정이십면체는 한 꼭짓점에 모인 정삼각형 5개를 주황색으로 칠했다. 정육면체 세 개는 각각 위쪽 모서리 4개, 아래쪽 모서리 4개, 위아래를 잇는 모서리 4개를 빨갛게 표시했다.",
-    "solutionImageCaption": "한 꼭짓점에 정삼각형이 5개 모이는 정다면체는 정이십면체이고, 정육면체의 모서리는 위쪽 4개, 아래쪽 4개, 위아래를 잇는 4개로 모두 12개이다.",
+    "solutionImageAlt": "해설 그림: 정이십면체는 한 꼭짓점에 정삼각형 면 5개가 모이고 면이 모두 20개이며, 정육면체의 모서리를 위쪽 4개·아래쪽 4개·위아래를 잇는 4개로 나누어 센 네 그림이다.",
+    "solutionImageCaption": "x=20(정이십면체의 면), y=12(정육면체의 모서리 4+4+4)이므로 x+2y=20+24=44, 정답은 ③이다.",
     "solutionImageSize": "medium",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q7-solution-v2.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q7-solution-v2.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q7-solution-v3.svg"
   },
   {
     "id": 8,
@@ -353,7 +354,11 @@ window.questionBank = [
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 2,
     "sourceQuestionNo": "8",
-    "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60"
+    "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원기둥을 축을 지나는 평면으로 자른 직사각형 단면, 구를 중심을 지나지 않는 평면으로 자른 원 모양 단면, 원뿔을 회전축을 포함하는 평면으로 자른 좌우 대칭 단면의 세 그림이다.",
+    "solutionImageCaption": "회전축에 평행한 평면의 단면은 직사각형이 될 수 있어 ②는 옳지 않고, 구는 어떤 평면으로 잘라도 단면이 원이므로 ③도 옳지 않다. 정답은 ②, ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -429,7 +434,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 두 반구의 곡면을 합하면 구의 겉넓이가 되고, 원기둥에서는 옆면만 바깥에 드러난다.\n\n반지름은 $4\\rm\\,cm$, 원기둥 높이는 $6\\rm\\,cm$이다.\n\n두 반구의 곡면 넓이의 합은 구의 겉넓이와 같으므로\n$4\\pi\\times4^2=64\\pi\\rm\\,cm^2$이다.\n\n원기둥의 옆넓이는\n$2\\pi\\times4\\times6=48\\pi\\rm\\,cm^2$이다.\n\n붙인 두 원형 면은 겉으로 드러나지 않으므로 더하지 않는다.\n따라서 겉넓이는\n$64\\pi+48\\pi=112\\pi\\rm\\,cm^2$이므로 정답은 ④이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q10.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q10-solution-v3.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q10-solution-v4.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
     "crossConceptKeys": [],
@@ -440,8 +445,8 @@ window.questionBank = [
     "sourceQuestionNo": "10",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
-    "solutionImageAlt": "해설 그림: 두 반구를 합친 반지름 4cm인 구, 원기둥 옆면의 전개도(가로 8π cm, 세로 6 cm, 위아래 원은 겉면이 아니라 점선과 회색으로 표시), 맞붙인 반구의 단면 두 개를 나란히 보여, 곡면 두 개와 옆면만 겉넓이에 넣고 맞붙은 원은 제외함을 나타낸 그림.",
-    "solutionImageCaption": "두 반구의 곡면은 구 하나의 겉면이고, 원기둥은 옆면(가로 8π, 세로 6인 직사각형)만 겉넓이에 들어가며 맞붙인 원은 제외한다."
+    "solutionImageAlt": "해설 그림: 반지름 4cm인 두 반구와 높이 6cm인 원기둥을 붙인 입체, 두 반구의 곡면을 합친 구, 붙인 두 원을 점선으로 제외한 원기둥 옆면의 세 그림이다.",
+    "solutionImageCaption": "겉넓이는 두 반구의 곡면 64π와 원기둥 옆면 48π를 더한 112π cm²이다(붙인 두 원은 제외). 정답은 ④이다."
   },
   {
     "id": 11,
@@ -473,7 +478,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 기둥과 뿔은 같은 정사각형 밑면을 공유한다. 각각의 부피를 구한 다음 더한다.\n\n밑면은 한 변이 $6\\rm\\,cm$인 정사각형이므로 넓이는\n$6\\times6=36\\rm\\,cm^2$이다.\n\n사각기둥의 높이는 $3\\rm\\,cm$이므로 부피는\n$36\\times3=108\\rm\\,cm^3$이다.\n\n사각뿔의 높이 $4\\rm\\,cm$는 꼭짓점에서 밑면으로 내린 수선의 길이이다. 옆으로 기울어진 모서리 길이와 혼동하지 않는다.\n사각뿔의 부피는 $\\dfrac13\\times36\\times4=48\\rm\\,cm^3$이다.\n\n두 도형은 내부에서 겹치지 않고 밑면만 맞닿아 있으므로 부피를 더하면 된다.\n$108+48=156\\rm\\,cm^3$이다.\n\n따라서 정답은 ③이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q11.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q11-solution-v3.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q11-solution-v4.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM",
     "crossConceptKeys": [],
@@ -484,8 +489,8 @@ window.questionBank = [
     "sourceQuestionNo": "11",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
-    "solutionImageAlt": "해설 그림: 사각기둥과 사각뿔을 나누어 보인 그림. 왼쪽 사각기둥은 밑면이 한 변 6cm인 정사각형이고 높이는 3cm이며, 오른쪽 사각뿔은 같은 정사각형 밑면(한 변 6cm)과 꼭짓점에서 밑면에 내린 수선의 길이 4cm를 보인다. 두 입체가 맞닿는 정사각형 밑면은 파랗게 칠했다.",
-    "solutionImageCaption": "사각기둥(밑면 6×6, 높이 3)과 사각뿔(밑면 6×6, 수선의 길이 4)로 나누어 부피를 구한다."
+    "solutionImageAlt": "해설 그림: 한 변이 6cm인 정사각형 밑면을 주황색으로 칠한 높이 3cm인 사각기둥과, 같은 밑면에 꼭짓점에서 내린 수선의 높이 4cm를 점선과 직각 표시로 나타낸 사각뿔을 나란히 그린 그림이다.",
+    "solutionImageCaption": "기둥 36×3=108, 뿔 36×4÷3=48이므로 부피는 108+48=156 cm³, 정답은 ③이다."
   },
   {
     "id": 12,
@@ -517,7 +522,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] '빈 공간'은 원기둥 전체 부피에서 들어 있는 구 두 개의 부피를 뺀 값이다.\n\n원기둥 밑면의 지름이 $6\\rm\\,cm$이고 구가 꼭 맞으므로 구와 원기둥 밑면의 반지름은 모두 $3\\rm\\,cm$이다.\n\n구 한 개의 높이는 지름 $6\\rm\\,cm$이고 두 구가 위아래로 맞닿으므로 원기둥 높이는 $6\\times2=12\\rm\\,cm$이다.\n\n원기둥 부피는 $\\pi\\times3^2\\times12=108\\pi\\rm\\,cm^3$이다.\n\n구 한 개의 부피는 $\\dfrac43\\pi\\times3^3=36\\pi\\rm\\,cm^3$이고, 두 구의 부피는 $72\\pi\\rm\\,cm^3$이다.\n\n따라서 빈 공간의 부피는 $108\\pi-72\\pi=36\\pi\\rm\\,cm^3$이다.\n\n정답은 ①이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q12.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q12-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q12-solution-v2.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
     "crossConceptKeys": [],
@@ -527,9 +532,9 @@ window.questionBank = [
     "sourcePage": 3,
     "sourceQuestionNo": "12",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "원기둥 − 구 2개: 높이 = 6×2 = 12, 원기둥 = 108π, 구 둘 = 72π",
-    "solutionImageCaption": "36π cm³"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 밑면의 반지름 3cm, 높이 12cm인 원기둥 안에 반지름 3cm인 구 두 개가 위아래로 꼭 맞게 들어 있는 그림과, 원기둥 하나, 구 두 개를 따로 그리고 부피를 적은 그림이다.",
+    "solutionImageCaption": "빈 공간의 부피는 원기둥 108π에서 구 두 개 72π를 뺀 36π cm³이므로 정답은 ①이다."
   },
   {
     "id": 13,
@@ -561,7 +566,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 구를 넣을 때 넘친 물의 부피는 구의 부피와 같다. 구를 꺼낸 뒤의 물은 처음 물의 부피에서 넘친 양을 뺀 것이다.\n\n구의 반지름을 $r\\rm\\,cm$라고 하자. 구가 원기둥에 꼭 맞고 원기둥의 높이가 지름과 같으므로 원기둥 밑면 반지름은 $r$, 높이는 $2r$이다.\n\n처음 가득 찼을 때 물의 부피는 원기둥 부피인 $\\pi r^2\\times2r=2\\pi r^3$이다.\n\n구를 완전히 넣으면 구의 부피 $\\dfrac43\\pi r^3$만큼 물이 넘친다. 구를 꺼내도 넘친 물은 돌아오지 않으므로 남아 있는 물의 부피는\n$2\\pi r^3-\\dfrac43\\pi r^3=\\dfrac23\\pi r^3$이다.\n\n그림의 남은 물의 높이는 $4\\rm\\,cm$이므로 같은 부피를 원기둥 부피로 나타내면 $\\pi r^2\\times4=4\\pi r^2$이다.\n\n$4\\pi r^2=\\dfrac23\\pi r^3$이고 $r\\gt0$이므로 $\\pi r^2$로 나누면 $4=\\dfrac23r$이다.\n따라서 $r=6\\rm\\,cm$이다.\n\n정답은 ④이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q13.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q13-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q13-solution-v2.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
     "crossConceptKeys": [],
@@ -571,9 +576,9 @@ window.questionBank = [
     "sourcePage": 3,
     "sourceQuestionNo": "13",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "물의 부피 보존: 원기둥 = 2πr³, 구 = 4πr³/3, 남은 물 = 4πr²",
-    "solutionImageCaption": "r = 6 cm"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 반지름 r, 높이 2r인 원기둥이 물로 가득 찬 모습, 그 안에 꼭 맞는 구를 넣은 모습, 구를 꺼낸 뒤 높이 4cm만큼 남은 물을 색으로 나타낸 세 그림이다.",
+    "solutionImageCaption": "남은 물 2πr³÷3이 높이 4cm인 원기둥 모양의 부피 4πr²과 같으므로 r=6 cm이고 정답은 ④이다."
   },
   {
     "id": 14,
@@ -651,7 +656,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 10장 이상인 학생의 수부터 구하고 남은 학생 수에서 5장 미만을 뺀다.\n\n전체 학생이 $30$명이므로 10장 이상인 학생은\n$30\\times\\dfrac{70}{100}=21$명이다.\n\n10장 미만인 학생은\n$30-21=9$명이다.\n\n그중 $0$장 이상 $5$장 미만인 학생은 $3$명이므로\n$5$장 이상 $10$장 미만인 학생은\n$9-3=6$명이다.\n\n따라서 정답은 ①이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q15.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q15-solution-v2.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q15-solution-v3.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
     "crossConceptKeys": [],
@@ -662,8 +667,8 @@ window.questionBank = [
     "sourceQuestionNo": "15",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
-    "solutionImageAlt": "해설 그림: 칭찬 스티커 수의 히스토그램. 0~5장, 5~10장 막대는 연하게, 10장 이상인 10~15, 15~20, 20~25장 세 막대는 진하게 칠해 전체 30명 중 10장 이상 학생을 구별한 그림",
-    "solutionImageCaption": "10장 이상인 세 계급을 진하게 표시한 칭찬 스티커 수 히스토그램"
+    "solutionImageAlt": "해설 그림: 스티커 수 히스토그램: 0~5장 3명, 15~20장 14명, 20~25장 2명 막대만 있고 5~10장·10~15장 계급은 빈 자리이다. 0~10장 아래에 9명, 10장 이상 아래에 21명 괄호가 있다.",
+    "solutionImageCaption": "막대가 없는 5~10장·10~15장 계급은 표에서 ?로 가려진 계급이다. 전체 30명 중 10장 이상은 30×0.7=21명, 10장 미만은 9명이므로 5장 이상 10장 미만은 9−3=6명이다. 정답 ①(6명)"
   },
   {
     "id": 16,
@@ -696,7 +701,7 @@ window.questionBank = [
     "answer": "③, ⑤",
     "solution": "[키포인트] 히스토그램에서는 막대의 너비가 계급의 크기이고 막대의 높이가 도수이다. '몇 번째로 많이'는 오른쪽 계급부터 센다.\n\n그림의 계급은 $0$ 이상 $10$ 미만부터 $60$ 이상 $70$ 미만까지 7개이고, 계급의 크기는 모두 $10\\rm\\,km$이다.\n왼쪽부터 도수는 $2,5,8,4,2,3,1$명이다.\n\n① 계급이 7개이므로 참이다.\n② 계급 너비가 $10\\rm\\,km$이므로 참이다.\n③ $20\\rm\\,km$ 미만은 앞 두 계급이므로 $2+5=7$명이다. 8명이라는 설명은 거짓이다.\n④ 가장 작은 도수는 $1$명이며 $60$ 이상 $70$ 미만 계급이므로 참이다.\n⑤ 거리 순서로 가장 큰 계급에 1명, 그다음 계급인 $50$ 이상 $60$ 미만에 3명이 있다. 따라서 4번째로 많이 걸은 회원은 두 번째 계급에 속하고 그 계급의 도수는 3명이다. 2명이 아니므로 거짓이다.\n\n따라서 정답은 ③, ⑤이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q16.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q16-solution-v2.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q16-solution-v3.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
     "crossConceptKeys": [],
@@ -707,8 +712,8 @@ window.questionBank = [
     "sourceQuestionNo": "16",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
-    "solutionImageAlt": "해설 그림: 걸은 거리의 히스토그램(도수 2, 5, 8, 4, 2, 3, 1명). 20 km 미만인 왼쪽 두 막대(2명, 5명)와 큰 쪽부터 센 오른쪽 두 막대(1명, 3명)를 진하게 표시한 그림",
-    "solutionImageCaption": "20 km 미만 계급과 큰 쪽부터 세는 계급을 진하게 표시한 히스토그램"
+    "solutionImageAlt": "해설 그림: 걸은 거리 히스토그램: 도수 2,5,8,4,2,3,1명. 0~20 km 두 막대 아래에 미만 2+5=7명 괄호, 50~70 km 아래에 큰쪽 1+3=4명 괄호가 있고 50~60 km 막대가 가장 진하다.",
+    "solutionImageCaption": "연한 회색 두 막대는 20 km 미만(2+5=7명), 진한 막대는 큰 쪽에서 4번째 회원이 속한 50~60 km 계급(1+3=4이므로 3명)이다. 정답 ③, ⑤"
   },
   {
     "id": 17,
@@ -741,7 +746,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 5번째로 큰 기록이 어느 계급에 속하는지 오른쪽부터 누적 도수를 세고, 그 계급의 상대도수를 백분율로 바꾼다.\n\n그래프에서 $0$ 이상 $10$ 미만부터 $40$ 이상 $50$ 미만까지 도수는 차례로 $2,3,5,6,4$명이다.\n전체 학생 수는 $2+3+5+6+4=20$명이다.\n\n가장 큰 기록인 $40$개 이상 $50$개 미만 계급에 4명이 있다. 따라서 1번째부터 4번째까지의 학생이 이 계급에 속하고, 5번째 학생은 바로 왼쪽의 $30$개 이상 $40$개 미만 계급에 속한다.\n\n따라서 $a=30$, $b=40$이다. 이 계급의 도수는 6명이므로\n$c=\\dfrac6{20}\\times100=30$이다.\n\n$a+b+c=30+40+30=100$이다.\n\n따라서 정답은 ①이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q17.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q17-solution-v2.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q17-solution-v3.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
     "crossConceptKeys": [],
@@ -752,8 +757,8 @@ window.questionBank = [
     "sourceQuestionNo": "17",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
-    "solutionImageAlt": "해설 그림: 팔 굽혀 펴기 기록의 히스토그램과 도수분포다각형(도수 2, 3, 5, 6, 4명). 큰 기록 쪽의 30~40개(6명), 40~50개(4명) 두 막대를 진하게 표시해 5번째 학생의 계급을 찾게 한 그림",
-    "solutionImageCaption": "큰 쪽의 두 계급을 진하게 표시한 히스토그램과 도수분포다각형"
+    "solutionImageAlt": "해설 그림: 팔 굽혀 펴기 도수분포다각형: 도수 2,3,5,6,4명. 40~50개 점(4명)은 큰 점, 30~40개 점(6명)은 동그라미이고 30~40개 아래에 '큰 쪽부터 5번째' 괄호가 있다.",
+    "solutionImageCaption": "큰 쪽부터 센 순서로, 1~4번째 학생은 40~50개 계급(4명, 큰 점)에 있고 5번째 학생은 30~40개 계급(6명, 동그라미)에 있다. 전체는 2+3+5+6+4=20명이고 6÷20×100=30(%)이다. 정답 ①(a+b+c=30+40+30=100)"
   },
   {
     "id": 18,
@@ -864,7 +869,7 @@ window.questionBank = [
     "answer": "정다면체가 아니다. 각 꼭짓점에 모인 면의 개수가 모두 같지 않기 때문이다.",
     "solution": "[키포인트] 정다면체가 되려면 모든 면이 합동인 정다각형이어야 할 뿐 아니라 각 꼭짓점에 모인 면의 개수도 같아야 한다.\n\n그림은 정삼각형 면 10개가 만나는 위아래 두 꼭짓점과 가운데 둘레의 꼭짓점들로 이루어진다.\n\n위 꼭짓점에는 정삼각형이 5개 모이고 아래 꼭짓점에도 5개 모인다.\n그러나 가운데 둘레의 꼭짓점에는 위쪽 삼각형 2개와 아래쪽 삼각형 2개, 모두 4개만 모인다.\n\n따라서 모든 면이 합동인 정삼각형이어도 꼭짓점마다 모인 면의 개수가 $5$개와 $4$개로 다르므로 정다면체의 조건을 만족하지 못한다.\n\n따라서 정다면체가 아니다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q20.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q20-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q20-solution-v2.svg",
     "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
     "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
     "crossConceptKeys": [],
@@ -874,9 +879,9 @@ window.questionBank = [
     "sourcePage": 5,
     "sourceQuestionNo": "서술형 2",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "꼭짓점별 모인 면: 위쪽 꼭짓점: 5개, 아래쪽 꼭짓점: 5개, 가운데 꼭짓점: 4개",
-    "solutionImageCaption": "정다면체 아님"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 정삼각형 10개로 된 오각쌍뿔에서 위 꼭짓점과 아래 꼭짓점에 모인 면 5개를 주황색으로, 가운데 둘레의 한 꼭짓점에 모인 면 4개를 파란색으로 나타낸 세 그림이다.",
+    "solutionImageCaption": "위·아래 꼭짓점에는 면이 5개, 가운데 꼭짓점에는 4개 모여 개수가 다르므로 정다면체가 아니다."
   },
   {
     "id": 21,
@@ -903,7 +908,7 @@ window.questionBank = [
     "answer": "원뿔대, $188\\pi\\rm\\,cm^2$",
     "solution": "[키포인트] 사다리꼴을 회전축 $l$ 주위로 돌리면 위쪽과 아래쪽 반지름이 다른 원뿔대가 된다. 겉넓이는 위아래 원의 넓이와 곡면의 넓이를 더한다.\n\n회전축에서 위쪽 끝까지 거리가 $4\\rm\\,cm$, 아래쪽 끝까지 거리가 $8\\rm\\,cm$이므로 두 원형 밑면의 반지름은 각각 $4\\rm\\,cm$, $8\\rm\\,cm$이다.\n\n곡면을 계산하려고 기울어진 변을 위로 연장해 꼭짓점이 있는 큰 원뿔을 생각하자. 위쪽의 작은 원뿔과 전체 큰 원뿔은 닮음이고 반지름의 비가 $4:8=1:2$이므로 모선의 길이 비도 $1:2$이다.\n\n원뿔대 모선이 $9\\rm\\,cm$이므로 작은 원뿔 모선을 $x$라 하면 큰 원뿔 모선은 $2x$이고, 차이는 $2x-x=9$이다. 따라서 작은 원뿔 모선은 $9\\rm\\,cm$, 큰 원뿔 모선은 $18\\rm\\,cm$이다.\n\n원뿔의 옆넓이는 밑면의 반지름과 모선의 길이와 $\\pi$를 곱하여 구한다.\n큰 원뿔 옆넓이: $\\pi\\times8\\times18=144\\pi\\rm\\,cm^2$,\n작은 원뿔 옆넓이: $\\pi\\times4\\times9=36\\pi\\rm\\,cm^2$이다.\n\n따라서 원뿔대의 옆넓이는 $144\\pi-36\\pi=108\\pi\\rm\\,cm^2$이다.\n두 원형 밑면 넓이의 합은 $\\pi\\times8^2+\\pi\\times4^2=80\\pi\\rm\\,cm^2$이다.\n\n겉넓이는 $108\\pi+80\\pi=188\\pi\\rm\\,cm^2$이다.\n따라서 이름은 원뿔대이고, 구하는 겉넓이는 $188\\pi\\rm\\,cm^2$이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q21.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q21-solution.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q21-solution-v2.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
     "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
     "crossConceptKeys": [],
@@ -913,9 +918,9 @@ window.questionBank = [
     "sourcePage": 6,
     "sourceQuestionNo": "서술형 3",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "큰 원뿔 − 작은 원뿔: 큰 옆넓이 = 144π, 작은 옆넓이 = 36π, 밑면 둘 = 80π",
-    "solutionImageCaption": "188π cm²"
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 반지름 8cm, 4cm이고 모선 9cm인 원뿔대와, 이를 연장한 모선 18cm인 큰 원뿔(위의 작은 원뿔 모선 9cm를 주황색으로 표시), 반지름 4cm 모선 9cm인 작은 원뿔을 나란히 그린 그림이다.",
+    "solutionImageCaption": "원뿔대의 옆넓이 144π−36π=108π와 두 밑면 80π를 더하면 겉넓이는 188π cm²이다. 입체의 이름은 원뿔대이다."
   },
   {
     "id": 22,
@@ -943,7 +948,7 @@ window.questionBank = [
     "answer": "(1) 평균 20개, 중앙값 10.5개, 최빈값 5개. (2) 중앙값이 적절하다.",
     "solution": "[키포인트] 평균은 전체 합을 자료 수로 나눈 값, 중앙값은 크기순으로 놓았을 때 가운데 값, 최빈값은 가장 자주 나타나는 값이다. 극단적으로 큰 자료가 있을 때 어떤 대표값이 적절한지도 판단한다.\n\n(1) 자료는 $7,15,11,114,5,5,13,10,8,12$로 모두 10개이다.\n평균: 합계가 $7+15+11+114+5+5+13+10+8+12=200$이므로\n$200\\div10=20$개이다.\n\n중앙값: 작은 수부터 나열하면\n$5,5,7,8,10,11,12,13,15,114$이다.\n10개 자료의 중앙값은 가운데 두 값인 5번째 $10$과 6번째 $11$의 평균이므로\n$\\dfrac{10+11}{2}=10.5$개이다.\n\n최빈값: $5$개가 두 번 나오고 다른 값은 한 번씩 나오므로 최빈값은 $5$개이다.\n\n(2) 이 자료의 대표값으로는 중앙값 $10.5$개가 더 적절하다.\n평균 $20$개는 다른 학생보다 매우 많은 $114$개라는 자료 하나에 크게 끌려 올라가 대부분 학생의 기록을 잘 나타내지 못한다.\n최빈값 $5$개는 가장 자주 나타나기는 하지만 10명 가운데 2명에게만 해당하며 낮은 쪽에 치우쳐 전체의 가운데 위치를 나타내기 어렵다.\n반면 중앙값은 크기순으로 가운데에 있는 두 학생의 기록으로 결정되므로 $114$개처럼 매우 큰 값 하나의 영향을 덜 받는다.\n\n따라서 (1) 평균은 $20$개, 중앙값은 $10.5$개, 최빈값은 $5$개이고, (2) 대표값으로 중앙값을 선택한다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q22.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q22-solution-v2.svg",
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q22-solution-v3.svg",
     "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
     "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
     "crossConceptKeys": [],
@@ -954,7 +959,7 @@ window.questionBank = [
     "sourceQuestionNo": "서술형 4",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
-    "solutionImageAlt": "해설 그림: 문자 메시지 개수 10개의 줄기와 잎 그림. 가운데 두 값 10, 11과 줄기 11에 홀로 떨어진 114를 동그라미로 표시해 114가 나머지 자료에서 멀리 있음을 보인 그림",
-    "solutionImageCaption": "가운데 두 값과 멀리 떨어진 값 114를 동그라미로 표시한 줄기와 잎 그림"
+    "solutionImageAlt": "해설 그림: 문자 메시지 개수 점도표: 5가 점 2개, 7·8·10·11·12·13·15가 점 1개씩, 114는 가로축을 끊은 뒤 멀리 떨어진 점 1개로 모두 10개이다.",
+    "solutionImageCaption": "점 하나가 학생 한 명의 자료이다. 5가 2개(최빈값), 작은 쪽에서 5번째·6번째 점 10과 11이 가운데 두 값(중앙값 (10+11)÷2), 114는 나머지보다 매우 큰 값이다. 합 200÷10=20이므로 평균 20개, 중앙값 10.5개, 최빈값 5개"
   }
 ];
