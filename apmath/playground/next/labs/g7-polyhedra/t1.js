@@ -170,7 +170,7 @@
       id: isP ? 'p1-1' : 'p1-2', title: isP ? 'n각기둥의 면·모서리·꼭짓점' : 'n각뿔의 면·모서리·꼭짓점', short: isP ? 'n각기둥' : 'n각뿔',
       question: isP ? '각기둥의 밑면이 n각형이면 면·모서리·꼭짓점은 각각 몇 개일까? 밑면을 가로로 밀어내고 옆면을 세어 보자.' : '각뿔의 밑면이 n각형이면 면·모서리·꼭짓점은 각각 몇 개일까? 밑면을 가로로 밀어내고 옆면을 세어 보자.',
       ctl: () => ['phN', 'phSplit'].concat(VIEW),
-      init: (s) => { s.phN = 5; s.phSplit = isP ? 0 : 1; s.phQ = rollCount(kind); },
+      init: (s) => { s.phN = 5; s.phSplit = isP ? 0.55 : 1; s.phQ = rollCount(kind); },
       reroll: (s) => { s.phQ = rollCount(kind); },
       model: (s) => {
         const n = clamp(Math.round(s.phN), 3, 12), S = solid(n), c = countsOf(kind, n);
