@@ -1,0 +1,63 @@
+/* ws-student.css — M4 반 관리 · M6 학생 상세 작업 화면 전용 선택자.
+ * 공통 부품(.apms-modal*, .apms-workspace*)은 apms-unified-modal.css가 가진다. 여기서는 그 위에 이 묶음만의
+ * 모양을 얹는다. 색은 라이트/다크 토큰(--surface, --text, --border …)만 쓴다. 글자 12px 이상, 누르는 영역 44px(최소 24px).
+ * 대상 기기: 휴대폰 390×844 · 태블릿 800×1280/1280×800 · PC 1440×900. */
+
+/* 칩 (학년·숨김·상태 표시) */
+.ws-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 20px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: var(--primary-soft, var(--surface-2));
+    color: var(--text);
+    border: 1px solid var(--border);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+.ws-chip--muted { background: var(--surface-2); color: var(--secondary); }
+
+/* ---- 반 관리 ---- */
+.ws-class__bar { justify-content: space-between; }
+.ws-class__summary { color: var(--secondary); font-size: 13px; font-weight: 500; }
+.ws-class__add { min-height: 44px; padding: 10px 16px; border-radius: var(--ap-ui-radius-control, 8px); font-size: 14px; font-weight: 500; }
+.ws-class__section-title { margin: 6px 2px 0; color: var(--secondary); font-size: 13px; font-weight: 600; }
+.ws-class__section-title:first-child { margin-top: 0; }
+.ws-class__empty { padding: 14px 4px; color: var(--secondary); font-size: 13px; }
+.ws-class__item { display: flex; flex-direction: column; align-items: stretch; gap: 4px; }
+.ws-class__item.is-hidden { opacity: .8; }
+.ws-class__item-head { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; }
+.ws-class__item-name { color: var(--text); font-size: 15px; font-weight: 600; line-height: 1.35; }
+.ws-class__item-count { margin-left: auto; color: var(--secondary); font-size: 12px; white-space: nowrap; }
+.ws-class__item-meta { color: var(--secondary); font-size: 12px; line-height: 1.45; }
+.ws-class__item.is-active .ws-class__item-meta,
+.ws-class__item.is-active .ws-class__item-count { color: var(--text); }
+
+.ws-class__detail { display: flex; flex-direction: column; gap: 14px; }
+.ws-class__placeholder { padding: 28px 8px; color: var(--secondary); font-size: 14px; line-height: 1.6; text-align: center; }
+.ws-class__detail-head { display: flex; flex-direction: column; gap: 4px; }
+.ws-class__detail-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.ws-class__back { display: none; align-self: flex-start; min-height: 44px; padding: 8px 12px; font-size: 13px; }
+.ws-class__open { min-height: 44px; padding: 8px 12px; font-size: 13px; }
+.ws-class__form { display: flex; flex-direction: column; gap: 6px; }
+.ws-class__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px 12px; }
+.ws-class__grid .apms-unified-label { margin-bottom: 4px; }
+.ws-class__days { display: flex; flex-wrap: wrap; gap: 6px; }
+.ws-class__days .apms-unified-day { min-height: 44px; padding: 8px 14px; font-size: 13px; }
+.ws-class__state { display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid var(--border); }
+.ws-class__state-title { font-size: 13px; font-weight: 600; color: var(--text); }
+.ws-class__state-note { color: var(--secondary); font-size: 12px; line-height: 1.5; }
+.ws-class__state-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.ws-class__state-actions .btn { min-height: 44px; padding: 8px 16px; font-size: 13px; font-weight: 500; }
+.ws-class__danger { color: var(--error); border-color: var(--error); }
+.ws-class__actions[hidden] { display: none; }
+
+@media (max-width: 600px) {
+    .ws-class__back { display: inline-flex; }
+    .ws-class__detail[data-empty="true"] { display: none; }
+    .ws-class__list { overflow: visible; }
+    .ws-class__grid { grid-template-columns: minmax(0, 1fr); }
+}
