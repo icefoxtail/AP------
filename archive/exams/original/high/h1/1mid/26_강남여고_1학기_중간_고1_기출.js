@@ -401,7 +401,7 @@ window.questionBank = [
       "$\\dfrac54$"
     ],
     "answer": "④",
-    "solution": "이차방정식의 두 근을 $\\alpha$, $\\beta$라고 하자.\n근과 계수의 관계에 의해\n$\\alpha+\\beta=2(k-2)$,\n$\\alpha\\beta=k^2-1$이다.\n두 근의 차가 $2$이므로 $(\\alpha-\\beta)^2=4$이다.\n$(\\alpha-\\beta)^2=(\\alpha+\\beta)^2-4\\alpha\\beta$를 이용하면\n$4=\\{2(k-2)\\}^2-4(k^2-1)$\n$=4\\{(k-2)^2-k^2+1\\}$\n$=4(-4k+5)$이다.\n따라서\n$-4k+5=1$\n$-4k=-4$\n$k=1$이다.\n\n정답은 ④이다.",
+    "solution": "이차방정식의 두 근을 $\\alpha$, $\\beta$라고 하자.\n근과 계수의 관계에 의해\n$\\alpha+\\beta=2(k-2)$,\n$\\alpha\\beta=k^2-1$이다.\n두 근의 차가 $2$이므로 $(\\alpha-\\beta)^2=4$이다.\n$(\\alpha-\\beta)^2=(\\alpha+\\beta)^2-4\\alpha\\beta$를 이용하면\n$4=\\left(2(k-2)\\right)^2-4(k^2-1)$\n$=4\\left((k-2)^2-k^2+1\\right)$\n$=4(-4k+5)$이다.\n따라서\n$-4k+5=1$\n$-4k=-4$\n$k=1$이다.\n\n정답은 ④이다.",
     "subUnitKey": "H22-C-04-COMPLEX_ROOT",
     "subUnit": "복소수와 이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
