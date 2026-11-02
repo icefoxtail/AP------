@@ -118,7 +118,7 @@ vm.runInContext(source, context, { filename: 'eie-timetable.js' });
 
 function assertApmathHeaderTrimmed() {
   const basicStart = apmathStudentSource.indexOf('function renderStudentBasicTab');
-  const basicEnd = apmathStudentSource.indexOf('function renderStudentContactHistoryTab', basicStart);
+  const basicEnd = apmathStudentSource.indexOf('function normalizeStudentDetailTab', basicStart);
   const shellStart = apmathStudentSource.indexOf('function renderStudentDetailShell');
   const shellEnd = apmathStudentSource.indexOf('function renderStudentDetailTab', shellStart);
   const basicBody = apmathStudentSource.slice(basicStart, basicEnd);
@@ -127,7 +127,9 @@ function assertApmathHeaderTrimmed() {
   assert(basicStart >= 0 && basicEnd > basicStart, 'APMATH student basic tab renderer should exist');
   assert(shellStart >= 0 && shellEnd > shellStart, 'APMATH student detail shell renderer should exist');
   assert(!basicBody.includes('보호자 관리'), 'APMATH student basic tab should not render guardian-management button');
-  assert(!basicBody.includes('openStudentParentManageModal'), 'APMATH basic tab should not expose guardian-management entry');
+  assert(!basicBody.includes('openStudentParentManageModal') && !basicBody.includes('renderParentContactSection'), 'APMATH basic tab should not expose guardian-management entry');
+  // 보호자 연락처 화면 자체를 삭제했다(2026-11-02). 어디서도 다시 생기지 않아야 한다.
+  assert(!/function\s+(renderParentContactSection|openStudentParentManageModal|openAddParentContactModal|openEditParentContactModal|openParentConsentModal|openParentMessageHistoryModal)\b/.test(apmathStudentSource), 'APMATH guardian-management screens should stay removed');
   assert(shellBody.includes("const modalTitle = '';"), 'APMATH student detail modal should not render the student-name profile title');
   assert(!shellBody.includes('`${s.name} 프로필`'), 'APMATH student detail shell should not build the removed profile title');
 }

@@ -316,38 +316,6 @@ function ensureConsultationThreadAiUiState() {
     return state.ui.consultationThreadAi;
 }
 
-const PARENT_CONTACT_CONSENT_BRANCH = 'apmath';
-const PARENT_CONTACT_BASE_CONSENT_TYPES = ['attendance', 'payment', 'notice', 'report', 'marketing'];
-const PARENT_CONTACT_CONSENT_ORDER = ['attendance', 'payment', 'notice', 'report', 'consultation', 'homework', 'exam', 'marketing'];
-const PARENT_CONTACT_CONSENT_LABELS = {
-    attendance: '출결 알림',
-    payment: '수납 알림',
-    notice: '공지 알림',
-    report: '리포트 알림',
-    consultation: '상담 알림',
-    homework: '숙제/과제 알림',
-    exam: '시험 알림',
-    marketing: '홍보성 동의'
-};
-
-function sortParentContacts(rows = []) {
-    return [...rows].sort((a, b) => {
-        const primaryDiff = Number(b?.is_primary || 0) - Number(a?.is_primary || 0);
-        if (primaryDiff !== 0) return primaryDiff;
-        const createdDiff = String(b?.created_at || '').localeCompare(String(a?.created_at || ''));
-        if (createdDiff !== 0) return createdDiff;
-        return String(b?.id || '').localeCompare(String(a?.id || ''));
-    });
-}
-
-function ensureParentContactUiState() {
-    if (!state.ui) state.ui = {};
-    if (!state.ui.parentContactUi) {
-        state.ui.parentContactUi = { byStudent: {} };
-    }
-    return state.ui.parentContactUi;
-}
-
 function ensureStudentDetailLazyUiState() {
     if (!state.ui) state.ui = {};
     if (!state.ui.studentDetailLazyData) {
@@ -365,7 +333,6 @@ function getStudentDetailLazyState(studentId) {
             loadedAt: '',
             error: '',
             inFlight: null,
-            parent_contacts: [],
             student_status_history: [],
             class_transfer_history: []
         };
@@ -440,7 +407,6 @@ async function ensureStudentDetailLazyData(studentId, options = {}) {
     const promise = api.get(`students/${encodeURIComponent(key)}/detail-data`)
         .then(res => {
             if (res?.success) {
-                entry.parent_contacts = Array.isArray(res.parent_contacts) ? sortParentContacts(res.parent_contacts) : entry.parent_contacts;
                 entry.student_status_history = Array.isArray(res.student_status_history) ? res.student_status_history : entry.student_status_history;
                 entry.class_transfer_history = Array.isArray(res.class_transfer_history) ? res.class_transfer_history : entry.class_transfer_history;
                 entry.loadedAt = new Date().toISOString();
@@ -466,25 +432,6 @@ async function ensureStudentDetailLazyData(studentId, options = {}) {
     return promise;
 }
 
-function getStudentParentContactsFromState(sid) {
-    const lazyRows = getStudentDetailLazyRows(sid, 'parent_contacts');
-    if (lazyRows.length) return sortParentContacts(lazyRows);
-    return sortParentContacts((state.db.parent_contacts || []).filter(row => String(row?.student_id || '') === String(sid)));
-}
-
-function getStudentMessageLogsFromState(sid) {
-    const timetableRows = state.ui?.timetableStudentDetails?.[String(sid)]?.message_logs;
-    const rows = Array.isArray(timetableRows)
-        ? timetableRows
-        : (state.db.message_logs || []).filter(row => String(row?.student_id || '') === String(sid));
-    return [...rows]
-        .sort((a, b) => {
-            const createdDiff = String(b?.created_at || '').localeCompare(String(a?.created_at || ''));
-            if (createdDiff !== 0) return createdDiff;
-            return String(b?.id || '').localeCompare(String(a?.id || ''));
-        });
-}
-
 function mergeStudentRows(tableName, sid, rows) {
     const key = String(sid || '');
     const existing = Array.isArray(state.db?.[tableName]) ? state.db[tableName] : [];
@@ -493,35 +440,6 @@ function mergeStudentRows(tableName, sid, rows) {
     state.db[tableName] = others.concat(scopedRows);
     return scopedRows;
 }
-
-function getStudentParentMessageState(sid) {
-    const store = ensureParentContactUiState();
-    const key = String(sid || '');
-    if (!store.byStudent[key]) {
-        store.byStudent[key] = { loadedAt: 0, loading: false, inFlight: null, error: '', consents: [] };
-    }
-    const entry = store.byStudent[key];
-    if (typeof entry.messagesLoadedAt !== 'number') entry.messagesLoadedAt = 0;
-    if (typeof entry.messageLoading !== 'boolean') entry.messageLoading = false;
-    if (!('messageInFlight' in entry)) entry.messageInFlight = null;
-    if (typeof entry.messageError !== 'string') entry.messageError = '';
-    return entry;
-}
-
-function getStudentParentContactBundle(sid) {
-    const entry = getStudentParentMessageState(sid);
-    return {
-        contacts: getStudentParentContactsFromState(sid),
-        consents: Array.isArray(entry.consents) ? entry.consents : [],
-        messages: getStudentMessageLogsFromState(sid),
-        loading: !!entry.loading,
-        error: entry.error || '',
-        messagesLoadedAt: Number(entry.messagesLoadedAt || 0),
-        messageLoading: !!entry.messageLoading,
-        messageError: entry.messageError || ''
-    };
-}
-
 
 function getStudentStatusHistoryRows(sid) {
     return [...getStudentDetailLazyRows(sid, 'student_status_history')]
@@ -652,337 +570,6 @@ async function openStudentClassTransferHistoryModal(sid) {
         return;
     }
     showStudentDetailSubModalStep('class-transfer-history', sid, '반 이동 이력', renderStudentClassTransferHistoryModalHtml(sid));
-}
-
-async function ensureStudentParentContactDataLoaded(sid, options = {}) {
-    const store = ensureParentContactUiState();
-    const key = String(sid || '');
-    if (!key) return getStudentParentContactBundle(key);
-
-    const entry = getStudentParentMessageState(key);
-    const force = !!options.force;
-    const maxAgeMs = Number.isFinite(Number(options.maxAgeMs)) ? Number(options.maxAgeMs) : 60 * 1000;
-    if (!force && entry.loadedAt && (Date.now() - entry.loadedAt) < maxAgeMs) {
-        return getStudentParentContactBundle(key);
-    }
-    if (entry.inFlight) return entry.inFlight;
-
-    entry.loading = true;
-    entry.error = '';
-    const query = `student_id=${encodeURIComponent(key)}&limit=200`;
-
-    const promise = Promise.allSettled([
-        api.get(`parent-foundation/contacts?${query}`),
-        api.get(`parent-foundation/consents?${query}`)
-    ]).then(results => {
-        const [contactsRes, consentsRes] = results;
-        const errors = [];
-
-        if (contactsRes.status === 'fulfilled' && contactsRes.value?.success && Array.isArray(contactsRes.value.contacts)) {
-            mergeStudentRows('parent_contacts', key, contactsRes.value.contacts);
-        } else {
-            errors.push('contacts');
-        }
-
-        if (consentsRes.status === 'fulfilled' && consentsRes.value?.success && Array.isArray(consentsRes.value.consents)) {
-            entry.consents = consentsRes.value.consents.filter(row => String(row?.student_id || '') === key);
-        } else {
-            errors.push('consents');
-        }
-
-        entry.loadedAt = Date.now();
-        entry.loading = false;
-        entry.error = errors.join(',');
-        if (options.refresh !== false && shouldRefreshCurrentStudentDetailTab(key, ['basic'])) {
-            renderStudentDetailTab(key, 'basic');
-        }
-        return getStudentParentContactBundle(key);
-    }).catch(err => {
-        entry.loading = false;
-        entry.error = String(err?.message || err || 'parent contact load failed');
-        return getStudentParentContactBundle(key);
-    }).finally(() => {
-        entry.inFlight = null;
-    });
-
-    entry.inFlight = promise;
-    return promise;
-}
-
-async function ensureStudentParentMessageLogsLoaded(sid, options = {}) {
-    const key = String(sid || '');
-    if (!key) return getStudentParentContactBundle(key);
-
-    const entry = getStudentParentMessageState(key);
-    const force = !!options.force;
-    const maxAgeMs = Number.isFinite(Number(options.maxAgeMs)) ? Number(options.maxAgeMs) : 60 * 1000;
-    if (!force && entry.messagesLoadedAt && (Date.now() - entry.messagesLoadedAt) < maxAgeMs) {
-        return getStudentParentContactBundle(key);
-    }
-    if (entry.messageInFlight) return entry.messageInFlight;
-
-    entry.messageLoading = true;
-    entry.messageError = '';
-    const query = `student_id=${encodeURIComponent(key)}&limit=200`;
-
-    const promise = api.get(`parent-foundation/messages?${query}`)
-        .then(res => {
-            if (res?.success && Array.isArray(res.messages)) {
-                mergeStudentRows('message_logs', key, res.messages);
-                entry.messagesLoadedAt = Date.now();
-                entry.messageError = '';
-            } else {
-                entry.messageError = String(res?.message || res?.error || 'parent message logs load failed');
-            }
-            return getStudentParentContactBundle(key);
-        })
-        .catch(err => {
-            entry.messageError = String(err?.message || err || 'parent message logs load failed');
-            return getStudentParentContactBundle(key);
-        })
-        .finally(() => {
-            entry.messageLoading = false;
-            entry.messageInFlight = null;
-            if (options.refresh !== false && shouldRefreshCurrentStudentDetailTab(key, ['basic'])) {
-                renderStudentDetailTab(key, 'basic');
-            }
-        });
-
-    entry.messageInFlight = promise;
-    return promise;
-}
-
-function buildEffectiveConsentMap(contact, consentRows = []) {
-    const scopedRows = consentRows.filter(row => String(row?.parent_contact_id || '') === String(contact?.id || ''));
-    const explicitTypes = [...new Set(scopedRows.map(row => String(row?.consent_type || '').trim()).filter(Boolean))];
-    const types = PARENT_CONTACT_CONSENT_ORDER.filter(type => explicitTypes.includes(type) || PARENT_CONTACT_BASE_CONSENT_TYPES.includes(type));
-    return types.map(type => {
-        const exact = scopedRows.find(row => String(row?.branch || 'all') === PARENT_CONTACT_CONSENT_BRANCH && String(row?.consent_type || '') === type);
-        const all = scopedRows.find(row => String(row?.branch || 'all') === 'all' && String(row?.consent_type || '') === type);
-        const row = exact || all || null;
-        let isAllowed;
-        let source = 'legacy';
-
-        if (row) {
-            isAllowed = Number(row.is_allowed) ? 1 : 0;
-            source = exact ? 'scoped' : 'all';
-        } else {
-            if (type === 'attendance') isAllowed = Number(contact?.receive_attendance ?? 1) ? 1 : 0;
-            else if (type === 'payment') isAllowed = Number(contact?.receive_payment ?? 1) ? 1 : 0;
-            else if (type === 'notice') isAllowed = Number(contact?.receive_notice ?? 1) ? 1 : 0;
-            else if (type === 'report') isAllowed = Number(contact?.receive_report ?? 1) ? 1 : 0;
-            else if (type === 'marketing') isAllowed = Number(contact?.receive_marketing ?? 0) ? 1 : 0;
-            else isAllowed = Number(contact?.receive_notice ?? 1) ? 1 : 0;
-        }
-
-        return {
-            type,
-            label: PARENT_CONTACT_CONSENT_LABELS[type] || type,
-            is_allowed: isAllowed ? 1 : 0,
-            source,
-            row
-        };
-    });
-}
-
-function formatParentMessageDate(row) {
-    return String(row?.sent_at || row?.delivered_at || row?.queued_at || row?.created_at || '').trim();
-}
-
-function summarizeParentMessage(row) {
-    const title = String(row?.title || '').trim();
-    if (title) return title;
-    const content = String(row?.content || '').trim().replace(/\s+/g, ' ');
-    return content.length > 80 ? `${content.slice(0, 80)}...` : content;
-}
-
-function getParentContactMessages(contactId, messageRows = []) {
-    return [...(Array.isArray(messageRows) ? messageRows : [])].filter(row => String(row?.parent_contact_id || '') === String(contactId || ''));
-}
-
-function renderParentMessageHistoryRows(rows = []) {
-    return rows.map(row => `
-        <div style="padding:12px 0; border-top:1px solid rgba(0,0,0,0.05);">
-            <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:6px;">
-                <div style="display:flex; gap:6px; flex-wrap:wrap;">
-                    <span class="std-badge" style="background:var(--surface-2); color:var(--secondary); border:1px solid var(--border);">${apEscapeHtml(row.channel || '기록')}</span>
-                    <span class="std-badge" style="background:rgba(26,92,255,0.08); color:var(--primary); border:1px solid rgba(26,92,255,0.15);">${apEscapeHtml(row.message_type || '기타')}</span>
-                    <span class="std-badge" style="background:rgba(255,165,2,0.08); color:var(--warning); border:1px solid rgba(255,165,2,0.15);">${apEscapeHtml(row.status || '확인 필요')}</span>
-                </div>
-                <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5;">${apEscapeHtml(formatParentMessageDate(row) || '시각 없음')}</div>
-            </div>
-            <div style="font-size:12px; color:var(--text); font-weight:500; line-height:1.5; margin-bottom:6px;">${apEscapeHtml(summarizeParentMessage(row) || '기록 내용 없음')}</div>
-            <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5;">수신자 ${apEscapeHtml(row.recipient_name_snapshot || row.relation_snapshot || '미기록')}${row.recipient_phone_snapshot ? ` · ${apEscapeHtml(row.recipient_phone_snapshot)}` : ''}</div>
-            ${row.error_message ? `<div style="margin-top:6px; font-size:11px; color:var(--error); font-weight:500; line-height:1.5;">실패 사유: ${apEscapeHtml(row.error_message)}</div>` : ''}
-        </div>
-    `).join('');
-}
-
-function openParentConsentModal(sid, contactId) {
-    setStudentDetailSubModal('parent-consent', sid);
-    const bundle = getStudentParentContactBundle(sid);
-    const contact = (bundle.contacts || []).find(row => String(row?.id || '') === String(contactId || ''));
-    if (!contact) {
-        toast('보호자 연락처 정보를 다시 불러와 주세요.', 'warn');
-        return;
-    }
-
-    const consentItems = buildEffectiveConsentMap(contact, bundle.consents);
-    const primaryTypes = ['attendance', 'payment', 'notice', 'report'];
-    const primaryItems = primaryTypes
-        .map(type => consentItems.find(item => item.type === type))
-        .filter(Boolean);
-    const scopedTypes = new Set((bundle.consents || [])
-        .filter(row => String(row?.parent_contact_id || '') === String(contact.id || ''))
-        .map(row => String(row?.consent_type || '').trim())
-        .filter(Boolean));
-    const extraItems = consentItems.filter(item => scopedTypes.has(item.type) && !primaryTypes.includes(item.type));
-
-    const primaryHtml = primaryItems.map(item => `
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 0; border-top:1px solid rgba(0,0,0,0.05);">
-            <div style="min-width:0;">
-                <div style="font-size:12px; color:var(--text); font-weight:500; line-height:1.5;">${apEscapeHtml(item.label)}</div>
-                <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5;">현재 ${item.is_allowed ? '동의' : '미동의'}${item.source === 'legacy' ? ' · 기본값' : item.source === 'all' ? ' · 전체 공통' : ''}</div>
-            </div>
-            <button class="btn apms-button apms-button--quiet" style="min-height:34px; padding:6px 10px; font-size:11px; font-weight:500; border-radius:10px;" onclick="toggleParentConsent('${sid}','${contact.id}','${item.type}',${item.is_allowed ? 0 : 1},'consent')">${item.is_allowed ? '미동의' : '동의'}</button>
-        </div>
-    `).join('');
-
-    const extraHtml = extraItems.map(item => `
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 0; border-top:1px solid rgba(0,0,0,0.05);">
-            <div style="min-width:0;">
-                <div style="font-size:12px; color:var(--text); font-weight:500; line-height:1.5;">${apEscapeHtml(item.label)}</div>
-                <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5;">현재 ${item.is_allowed ? '동의' : '미동의'}</div>
-            </div>
-            <button class="btn apms-button apms-button--quiet" style="min-height:34px; padding:6px 10px; font-size:11px; font-weight:500; border-radius:10px;" onclick="toggleParentConsent('${sid}','${contact.id}','${item.type}',${item.is_allowed ? 0 : 1},'consent')">${item.is_allowed ? '미동의' : '동의'}</button>
-        </div>
-    `).join('');
-
-    showStudentDetailSubModalStep('parent-consent', sid, '연락 설정', `
-        <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="padding:12px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2);">
-                <div style="font-size:13px; color:var(--text); font-weight:500; line-height:1.5;">${apEscapeHtml(contact.name || '이름 미입력')}</div>
-                <div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5;">${apEscapeHtml(contact.relation || '관계 미입력')}${contact.phone ? ` · ${apEscapeHtml(contact.phone)}` : ''}</div>
-            </div>
-            <div style="padding:2px 0;">
-                ${primaryHtml || '<div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5;">확인 가능한 연락 설정이 없습니다.</div>'}
-            </div>
-            ${extraHtml ? `
-                <details style="border:1px solid var(--border); border-radius:12px; background:var(--surface-2); padding:10px 12px;">
-                    <summary style="cursor:pointer; font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5;">기타 설정</summary>
-                    <div style="margin-top:8px;">${extraHtml}</div>
-                </details>
-            ` : ''}
-        </div>
-    `);
-}
-
-async function openParentMessageHistoryModal(sid, contactId = '') {
-    setStudentDetailSubModal('parent-message-history', sid);
-    const messageState = getStudentParentMessageState(sid);
-    if (!messageState.messagesLoadedAt) {
-        showStudentDetailSubModalStep('parent-message-history', sid, '연락 이력', '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500; line-height:1.6;">연락 이력을 불러오는 중입니다.</div>');
-        await ensureStudentParentMessageLogsLoaded(sid);
-        if (!isStudentDetailSubModal('parent-message-history', sid)) return;
-    }
-
-    const bundle = getStudentParentContactBundle(sid);
-    const contact = contactId
-        ? (bundle.contacts || []).find(row => String(row?.id || '') === String(contactId || ''))
-        : null;
-    const rows = contactId ? getParentContactMessages(contactId, bundle.messages) : [...(bundle.messages || [])];
-    replaceStudentDetailSubModal('parent-message-history', sid, '연락 이력', `
-        <div style="display:flex; flex-direction:column; gap:12px;">
-            ${contact ? `
-                <div style="padding:12px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2);">
-                    <div style="font-size:13px; color:var(--text); font-weight:500; line-height:1.5;">${apEscapeHtml(contact.name || '이름 미입력')}</div>
-                    <div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5;">${apEscapeHtml(contact.relation || '관계 미입력')}${contact.phone ? ` · ${apEscapeHtml(contact.phone)}` : ''}</div>
-                </div>
-            ` : ''}
-            ${bundle.messageError ? '<div style="font-size:12px; color:var(--warning); font-weight:500; line-height:1.5;">연락 이력을 다시 확인해 주세요.</div>' : ''}
-            <div>
-                ${rows.length ? renderParentMessageHistoryRows(rows) : '<div style="padding:20px 4px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">연락 이력이 없습니다.</div>'}
-            </div>
-        </div>
-    `);
-}
-
-function renderParentContactSection(sid) {
-    const student = [...(state.db.students || []), ...(state.db.timetable_students || [])].find(st => String(st.id) === String(sid));
-    const canEdit = student?.timetable_can_edit !== false;
-    const bundle = getStudentParentContactBundle(sid);
-    const fallbackPhone = String(student?.parent_phone || '').trim();
-    const fallbackRelation = String(student?.guardian_relation || '').trim();
-    const fallbackCard = !bundle.contacts.length && fallbackPhone ? `
-        <div class="card apms-card" style="padding:12px; border:1px solid var(--border); border-radius:14px; box-shadow:none; background:var(--surface-2);">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:8px;">
-                <div style="font-size:13px; font-weight:500; color:var(--text); line-height:1.5;">기본 보호자 연락처</div>
-                <span class="std-badge" style="background:rgba(26,92,255,0.08); color:var(--primary); border:1px solid rgba(26,92,255,0.15);">기본 연락처</span>
-            </div>
-            <div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5; margin-bottom:2px;">관계 ${apEscapeHtml(fallbackRelation || '미지정')}</div>
-            <div style="font-size:13px; color:var(--primary); font-weight:500; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber(${apJsArg(fallbackPhone)})">${apEscapeHtml(fallbackPhone)}</div>
-        </div>
-    ` : '';
-
-    const contactCards = bundle.contacts.map(contact => {
-        const historyButtonHtml = `<button class="btn apms-button apms-button--quiet" style="min-height:32px; padding:6px 10px; font-size:11px; font-weight:500; border-radius:10px;" onclick="openParentMessageHistoryModal('${sid}','${contact.id}')">연락 이력 보기</button>`;
-
-        return `
-            <div class="card apms-card" style="padding:12px; margin-bottom:10px; border:1px solid var(--border); border-radius:14px; box-shadow:none; background:var(--surface);">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:8px;">
-                    <div style="min-width:0;">
-                        <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
-                            <div style="font-size:14px; font-weight:500; color:var(--text); line-height:1.5;">${apEscapeHtml(contact.name || '이름 미입력')}</div>
-                            ${Number(contact.is_primary) ? '<span class="std-badge" style="background:rgba(26,92,255,0.08); color:var(--primary); border:1px solid rgba(26,92,255,0.15);">대표 연락처</span>' : ''}
-                        </div>
-                        <div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5;">${apEscapeHtml(contact.relation || '관계 미입력')}</div>
-                    </div>
-                    ${canEdit ? `<div style="display:flex; gap:10px; flex-wrap:wrap;">
-                        <span style="cursor:pointer; color:var(--primary); font-size:12px; font-weight:500;" onclick="openEditParentContactModal('${sid}','${contact.id}')">수정</span>
-                        <span style="cursor:pointer; color:var(--error); font-size:12px; font-weight:500;" onclick="handleDeleteParentContact('${sid}','${contact.id}')">삭제</span>
-                    </div>` : ''}
-                </div>
-                <div style="font-size:13px; color:var(--primary); font-weight:500; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber(${apJsArg(contact.phone || '')})">${apEscapeHtml(contact.phone || '미등록')}</div>
-                <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:10px;">
-                    ${canEdit ? `<button class="btn apms-button apms-button--quiet" style="min-height:32px; padding:6px 10px; font-size:11px; font-weight:500; border-radius:10px;" onclick="openParentConsentModal('${sid}','${contact.id}')">연락 설정</button>` : ''}
-                    ${historyButtonHtml}
-                </div>
-            </div>
-        `;
-    }).join('');
-
-    const historySummaryHtml = bundle.messages.length
-        ? `<div style="display:flex; justify-content:flex-end; margin-top:8px;"><button class="btn apms-button apms-button--quiet" style="min-height:32px; padding:6px 10px; font-size:11px; font-weight:500; border-radius:10px;" onclick="openParentMessageHistoryModal('${sid}')">연락 이력 보기</button></div>`
-        : '';
-
-    return `
-        <div style="margin-top:24px; display:flex; flex-direction:column; gap:16px;">
-            <div>
-                <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:10px; flex-wrap:wrap;">
-                    <div style="font-size:16px; font-weight:500; color:var(--text); line-height:1.3;">보호자 연락처</div>
-                    ${canEdit ? `<button class="btn apms-button apms-button--quiet" style="min-height:38px; padding:8px 12px; font-size:12px; font-weight:500; border-radius:12px;" onclick="openAddParentContactModal('${sid}')">보호자 연락처 추가</button>` : ''}
-                </div>
-                ${bundle.loading ? '<div style="margin-bottom:10px; font-size:12px; color:var(--secondary); font-weight:500;">보호자 연락처 데이터를 불러오는 중입니다.</div>' : ''}
-                ${bundle.error ? '<div style="margin-bottom:10px; font-size:12px; color:var(--warning); font-weight:500;">일부 보호자 연락 데이터를 다시 확인해 주세요.</div>' : ''}
-                ${bundle.messageLoading ? '<div style="margin-bottom:10px; font-size:12px; color:var(--secondary); font-weight:500;">연락 이력을 불러오는 중입니다.</div>' : ''}
-                ${contactCards || fallbackCard || '<div style="padding:18px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500; border:1px solid var(--border); border-radius:14px; background:var(--surface-2);">등록된 보호자 연락처가 없습니다.</div>'}
-                ${historySummaryHtml}
-            </div>
-        </div>
-    `;
-}
-
-// 보기모드 기본 탭의 [보호자 관리] 진입점.
-// 별도 섹션을 제거하면서도 다중 연락처/동의/연락 이력 등 기존 보호자 관리 기능을
-// 그대로 사용할 수 있도록 기존 renderParentContactSection을 서브 모달로 띄운다.
-function openStudentParentManageModal(sid) {
-    void ensureStudentParentContactDataLoaded(sid, { force: false });
-    showStudentDetailSubModalStep('parent-manage', sid, '보호자 관리', `
-        <div class="apms-student-contrast">${renderParentContactSection(sid)}</div>
-    `);
-}
-if (typeof window !== 'undefined') {
-    window.openStudentParentManageModal = openStudentParentManageModal;
 }
 
 function resetConsultationAiUiState(mode = '', studentId = '', consultationId = '') {
@@ -1329,8 +916,6 @@ async function openStudentDetail(sid, options = {}) {
                     mergeStudentRows('homework', studentId, detail.homework);
                     mergeStudentRows('wrong_answers', studentId, detail.wrong_answers);
                     mergeStudentRows('school_exam_records', studentId, detail.school_exam_records);
-                    mergeStudentRows('parent_contacts', studentId, detail.parent_contacts);
-                    mergeStudentRows('message_logs', studentId, detail.message_logs);
                     mergeStudentRows('student_status_history', studentId, detail.student_status_history);
                     mergeStudentRows('class_transfer_history', studentId, detail.class_transfer_history);
                 }
@@ -1340,17 +925,10 @@ async function openStudentDetail(sid, options = {}) {
                     state.db.class_daily_records = otherRecords.concat(detail.class_daily_records);
                 }
                 const lazy = getStudentDetailLazyState(studentId);
-                lazy.parent_contacts = Array.isArray(detail.parent_contacts) ? sortParentContacts(detail.parent_contacts) : [];
                 lazy.student_status_history = Array.isArray(detail.student_status_history) ? detail.student_status_history : [];
                 lazy.class_transfer_history = Array.isArray(detail.class_transfer_history) ? detail.class_transfer_history : [];
                 lazy.loadedAt = new Date().toISOString();
                 lazy.error = '';
-                const parentState = getStudentParentMessageState(studentId);
-                parentState.consents = Array.isArray(detail.parent_contact_consents) ? detail.parent_contact_consents : [];
-                parentState.loadedAt = Date.now();
-                parentState.messagesLoadedAt = Date.now();
-                parentState.error = '';
-                parentState.messageError = '';
                 if (typeof ensureEnrollmentFoundationState === 'function') {
                     const enrollmentStore = ensureEnrollmentFoundationState();
                     enrollmentStore.byScope[`student:${studentId}`] = {
@@ -1426,8 +1004,6 @@ async function openStudentDetail(sid, options = {}) {
     if (s.timetable_scope_only !== true) {
         void ensureStudentDetailLazyData(sid, { refresh: false });
         void ensureStudentConsultationsLoaded(sid, { refresh: false });
-        void ensureStudentParentContactDataLoaded(sid, { refresh: false });
-        void ensureStudentParentMessageLogsLoaded(sid, { refresh: false });
         void loadStudentOnboardingDetails(sid, { refresh: false });
     }
 }
@@ -2103,19 +1679,6 @@ async function autoGenerateStudentPin(sid) {
 
 if (typeof window !== 'undefined') {
     window.autoGenerateStudentPin = autoGenerateStudentPin;
-}
-
-function renderStudentContactHistoryTab(sid) {
-    return `
-        <div class="ap-student-tab-body">
-            <section class="ap-student-card">
-                ${renderParentContactSection(sid)}
-            </section>
-            <section class="ap-student-card">
-                ${renderStudentOperationHistorySection(sid)}
-            </section>
-        </div>
-    `;
 }
 
 // 최종 탭은 기본 / 상담 / 성적 3개. 과거 'weak'/'contact' 진입점은
@@ -3144,199 +2707,6 @@ function drawGradeChart(sid) {
             }
         }
     });
-}
-
-/**
- * 알림톡 문구 미리보기 (CTA 및 입력창 규격)
- */
-function openReportPreview(sid) {
-    if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
-    const s = state.db.students.find(st => st.id === sid);
-    const mIds = state.db.class_students.find(m => String(m.student_id) === String(sid));
-    
-    const lastRecord = (state.db.class_daily_records || [])
-        .filter(r => String(r.class_id) === String(mIds?.class_id))
-        .sort((a,b) => b.date.localeCompare(a.date))[0];
-    
-    let progressText = '정규 수업을 진행했습니다.';
-    if (lastRecord) {
-        const progresses = (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(lastRecord.id));
-        if (progresses.length > 0) {
-            progressText = progresses.map(p => `${p.textbook_title_snapshot} ${p.progress_text}`).join(', ') + '를 학습했습니다.';
-        }
-    }
-
-    const lastCns = (state.db.consultations || []).filter(c => c.student_id === sid).sort((a,b) => b.date.localeCompare(a.date))[0];
-    let cnsText = lastCns ? `\n\n[학습 피드백]\n${lastCns.content}` : '';
-
-    const lastExam = (typeof apmsGetExamSessionsForStudent === 'function'
-        ? apmsGetExamSessionsForStudent(sid)
-        : (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(sid))
-    ).slice().sort((a,b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')))[0];
-    let examText = lastExam ? `\n\n[최근 평가]\n${lastExam.exam_title}: ${lastExam.score}점` : '';
-
-    const template = `안녕하세요 학부모님, AP수학입니다.\n\n오늘 ${s.name}이는 ${progressText}${examText}${cnsText}\n\n궁금하신 점은 언제든 편하게 문의주세요. 감사합니다!`;
-
-    showModal('알림톡 문구 미리보기', `
-        <div style="background: var(--surface-2); border: 1px solid var(--border); padding: 16px; border-radius: 18px; margin-bottom: 16px;">
-            <p style="margin: 0 0 10px 4px; font-size: 12px; color: var(--secondary); font-weight:500; line-height: 1.5;">내용을 확인하고 필요하면 수정하세요.</p>
-            <textarea id="report-preview-text" class="std-input-base" style="height: 280px; text-align: left; background: var(--surface); border: 1px solid var(--border); line-height: 1.7; resize: none; font-size: 14px;">${template}</textarea>
-        </div>
-    `, '최종 복사하기', () => {
-        const text = document.getElementById('report-preview-text').value;
-        navigator.clipboard.writeText(text).then(() => {
-            toast('문구가 복사되었습니다!', 'success');
-            closeModal();
-        }).catch(() => {
-            toast('복사에 실패했습니다.', 'warn');
-        });
-    });
-}
-
-function openAddParentContactModal(sid) {
-    setStudentDetailSubModal('parent-contact-add', sid);
-    if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
-    showStudentDetailSubModalStep('parent-contact-add', sid, '보호자 연락처 추가', `
-        <div style="display:flex; flex-direction:column; gap:12px;">
-            <input id="parent-contact-name" class="std-input-base" placeholder="보호자 이름">
-            <input id="parent-contact-relation" class="std-input-base" placeholder="관계">
-            <input id="parent-contact-phone" class="std-input-base" placeholder="연락처 (필수)">
-            <label style="display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500; color:var(--text); cursor:pointer;">
-                <input type="checkbox" id="parent-contact-primary" checked style="width:16px; height:16px; accent-color:#6E66C9; cursor:pointer;">
-                <span>대표 연락처</span>
-            </label>
-            <textarea id="parent-contact-memo" class="std-input-base" placeholder="비고 (선택)" style="height:80px;"></textarea>
-        </div>
-    `, '저장', () => handleSaveParentContact(sid));
-}
-
-async function handleSaveParentContact(sid) {
-    const payload = {
-        student_id: sid,
-        name: document.getElementById('parent-contact-name')?.value.trim() || '',
-        relation: document.getElementById('parent-contact-relation')?.value.trim() || '',
-        phone: document.getElementById('parent-contact-phone')?.value.trim() || '',
-        is_primary: document.getElementById('parent-contact-primary')?.checked ? 1 : 0,
-        memo: document.getElementById('parent-contact-memo')?.value.trim() || ''
-    };
-    if (!payload.phone) return toast('연락처를 입력하세요.', 'warn');
-
-    try {
-        const result = await api.post('parent-foundation/contacts', payload);
-        if (result?.success) {
-            toast('보호자 연락처가 저장되었습니다.', 'success');
-            closeModal(true);
-            await ensureStudentParentContactDataLoaded(sid, { force: true });
-            renderStudentDetailTab(sid, 'contact');
-            return;
-        }
-        toast(result?.message || result?.error || '보호자 연락처 저장에 실패했습니다.', 'error');
-    } catch (e) {
-        console.error('[handleSaveParentContact] failed:', e);
-        toast('보호자 연락처 저장 중 오류가 발생했습니다.', 'error');
-    }
-}
-
-function openEditParentContactModal(sid, contactId) {
-    setStudentDetailSubModal('parent-contact-edit', sid);
-    if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
-    const contact = getStudentParentContactsFromState(sid).find(row => String(row.id) === String(contactId));
-    if (!contact) return toast('보호자 연락처를 찾을 수 없습니다.', 'warn');
-
-    showStudentDetailSubModalStep('parent-contact-edit', sid, '보호자 연락처 수정', `
-        <div style="display:flex; flex-direction:column; gap:12px;">
-            <input id="edit-parent-contact-name" class="std-input-base" value="${studentAttr(contact.name || '')}" placeholder="보호자 이름">
-            <input id="edit-parent-contact-relation" class="std-input-base" value="${studentAttr(contact.relation || '')}" placeholder="관계">
-            <input id="edit-parent-contact-phone" class="std-input-base" value="${studentAttr(contact.phone || '')}" placeholder="연락처 (필수)">
-            <label style="display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500; color:var(--text); cursor:pointer;">
-                <input type="checkbox" id="edit-parent-contact-primary" ${Number(contact.is_primary) ? 'checked' : ''} style="width:16px; height:16px; accent-color:#6E66C9; cursor:pointer;">
-                <span>대표 연락처</span>
-            </label>
-            <textarea id="edit-parent-contact-memo" class="std-input-base" placeholder="비고 (선택)" style="height:80px;">${apEscapeHtml(contact.memo || '')}</textarea>
-        </div>
-    `, '수정 완료', () => handleEditParentContact(sid, contactId));
-}
-
-async function handleEditParentContact(sid, contactId) {
-    const payload = {
-        name: document.getElementById('edit-parent-contact-name')?.value.trim() || '',
-        relation: document.getElementById('edit-parent-contact-relation')?.value.trim() || '',
-        phone: document.getElementById('edit-parent-contact-phone')?.value.trim() || '',
-        is_primary: document.getElementById('edit-parent-contact-primary')?.checked ? 1 : 0,
-        memo: document.getElementById('edit-parent-contact-memo')?.value.trim() || ''
-    };
-    if (!payload.phone) return toast('연락처를 입력하세요.', 'warn');
-
-    try {
-        const result = await api.patch(`parent-foundation/contacts/${contactId}`, payload);
-        if (result?.success) {
-            toast('보호자 연락처가 수정되었습니다.', 'info');
-            closeModal(true);
-            await ensureStudentParentContactDataLoaded(sid, { force: true });
-            renderStudentDetailTab(sid, 'contact');
-            return;
-        }
-        toast(result?.message || result?.error || '보호자 연락처 수정에 실패했습니다.', 'error');
-    } catch (e) {
-        console.error('[handleEditParentContact] failed:', e);
-        toast('보호자 연락처 수정 중 오류가 발생했습니다.', 'error');
-    }
-}
-
-async function handleDeleteParentContact(sid, contactId) {
-    if (!confirm('보호자 연락처를 삭제하시겠습니까?')) return;
-
-    try {
-        const result = await api.delete('parent-foundation/contacts', contactId);
-        if (result?.success) {
-            toast('보호자 연락처가 삭제되었습니다.', 'info');
-            await ensureStudentParentContactDataLoaded(sid, { force: true });
-            renderStudentDetailTab(sid, 'contact');
-            return;
-        }
-        toast(result?.message || result?.error || '보호자 연락처 삭제에 실패했습니다.', 'error');
-    } catch (e) {
-        console.error('[handleDeleteParentContact] failed:', e);
-        toast('보호자 연락처 삭제 중 오류가 발생했습니다.', 'error');
-    }
-}
-
-async function toggleParentConsent(sid, contactId, consentType, nextValue, returnModal = '') {
-    const bundle = getStudentParentContactBundle(sid);
-    const existing = (bundle.consents || []).find(row =>
-        String(row?.parent_contact_id || '') === String(contactId) &&
-        String(row?.consent_type || '') === String(consentType) &&
-        String(row?.branch || 'all') === PARENT_CONTACT_CONSENT_BRANCH
-    );
-
-    const payload = {
-        parent_contact_id: contactId,
-        student_id: sid,
-        branch: PARENT_CONTACT_CONSENT_BRANCH,
-        consent_type: consentType,
-        is_allowed: nextValue ? 1 : 0
-    };
-
-    try {
-        const result = existing?.id
-            ? await api.patch(`parent-foundation/consents/${existing.id}`, payload)
-            : await api.post('parent-foundation/consents', payload);
-        if (result?.success) {
-            toast('수신동의 상태가 저장되었습니다.', 'success');
-            await ensureStudentParentContactDataLoaded(sid, { force: true });
-            if (returnModal === 'consent') {
-                renderStudentDetailTab(sid, 'contact');
-                openParentConsentModal(sid, contactId);
-                return;
-            }
-            renderStudentDetailTab(sid, 'contact');
-            return;
-        }
-        toast(result?.message || result?.error || '수신동의 저장에 실패했습니다.', 'error');
-    } catch (e) {
-        console.error('[toggleParentConsent] failed:', e);
-        toast('수신동의 저장 중 오류가 발생했습니다.', 'error');
-    }
 }
 
 /**

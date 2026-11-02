@@ -32,19 +32,19 @@
 | 3 | `openHomeworkPhotoOverviewModal` | `classroom.js:1071` | 선택 숙제의 학생별 제출 현황, 마감·삭제 | W 작업 화면 | 숙제 | 작업 화면 우측 현황 |
 | 4 | `openHomeworkPhotoSubmissionFilesModal` | `classroom.js:882` | 제출한 학생의 사진 목록 | W 작업 화면 | 숙제 | 현황 행 아래로 펼침 |
 | 5 | `openHomeworkPhotoImageViewer` | `classroom.js:932` | 사진 확대 보기 | C 확인·선택 | 숙제 | 작업 화면 안 큰 보기로 흡수(별도 모달 폐지) |
-| 6 | `loadHomeworkPhotoLinksModal` | `classroom.js:1022` | 학생별 링크 불러오기(로딩) | C 확인·선택 | 숙제 | UI 어디에서도 호출 안 됨. 테스트가 목록의 링크 버튼 노출 금지를 고정(`homework-assignment-save-only.test.js`) |
-| 7 | `openHomeworkPhotoLinksModal` | `classroom.js:1036` | 학생별 제출 링크·QR 목록 | W 작업 화면 | 숙제 | 위와 같음(숨김 고정). 삭제 여부는 사용자 결정 |
+| 6 | `loadHomeworkPhotoLinksModal` | `classroom.js:1022` | 학생별 링크 불러오기(로딩) | C 확인·선택 | 숙제 | UI 어디에서도 호출 안 됨. 테스트가 목록의 링크 버튼 노출 금지를 고정(`homework-assignment-save-only.test.js`) **보류: 사용자 결정(숨김 고정 테스트가 경계로 씀)** |
+| 7 | `openHomeworkPhotoLinksModal` | `classroom.js:1036` | 학생별 제출 링크·QR 목록 | W 작업 화면 | 숙제 | 위와 같음(숨김 고정). 삭제 여부는 사용자 결정 **보류: 사용자 결정(6행과 한 묶음)** |
 | 8 | `openAdminTeacherAccountManage` | `dashboard-admin.js:2450` | 선생님 계정 목록 불러오기(GET teachers) | W 작업 화면(단열) | 선생님 계정 | 목록+인라인 폼 단열 작업 화면 |
 | 9 | `renderAdminTeacherAccountManage` | `dashboard-admin.js:2465` | 계정 목록 그리기(같은 모달 재그리기) | W 작업 화면(단열) | 선생님 계정 | 위와 같은 모달 |
 | 10 | `openAdminCreateTeacherModal` | `dashboard-admin.js:2503` | 새 계정(이름·ID·초기 비밀번호·역할) | F 폼 | 선생님 계정 | 입력 3개 placeholder만. 목록 위 인라인 폼으로 흡수 |
 | 11 | `openAdminEditTeacherModal` | `dashboard-admin.js:2542` | 계정 수정(이름·역할) | F 폼 | 선생님 계정 | 행 아래 인라인 폼으로 흡수 |
 | 12 | `openAdminResetTeacherPasswordModal` | `dashboard-admin.js:2578` | 비밀번호 초기화 | F 폼 | 선생님 계정 | 행 아래 인라인 폼으로 흡수 |
 | 13 | `openGlobalExamGradeView` | `dashboard.js:1011` | 원내평가: 반 고르기 | C 확인·선택 | 원내평가·OMR | 반 전환 탭으로 대체(서랍 `ui.js:897`) |
-| 14 | `openExamScoreMenu` | `ui.js:841` | 점수 메뉴(반별 원내평가 진입) | C 확인·선택 | 원내평가·OMR | 호출처 없음(의심). 정리 후보 |
+| 14 | `openExamScoreMenu` | `ui.js:841` | 점수 메뉴(반별 원내평가 진입) | C 확인·선택 | 원내평가·OMR | 호출처 없음(의심). 정리 후보 **삭제됨(정리 PR)** |
 | 15 | `openExamGradeView` | `classroom-planner.js:285` | 반의 시험 이력(평균·응시) | W 작업 화면 | 원내평가·OMR | 작업 화면 좌측 목록 |
 | 16 | `openExamDetail` | `classroom-planner.js:443` | 시험 상세: 학생별 점수·오답·제외·삭제 | W 작업 화면 | 원내평가·OMR | 작업 화면 우측. 인라인 style 36개·11px 8곳 |
 | 17 | `openOMR` | `qr-omr.js:530` | 학생 1명 OMR 성적 입력(문항 격자) | W 작업 화면 | 원내평가·OMR | 작업 화면 우측 입력 패널. 저장 후 반 화면으로 나감(`qr-omr.js:722-731`) |
-| 18 | `openQrSubmitStatus` | `qr-omr.js:456` | QR 시험 제출 현황 조회 | F 폼 | 원내평가·OMR | 자기 자신 외 호출처 없음(의심). 정리 후보 |
+| 18 | `openQrSubmitStatus` | `qr-omr.js:456` | QR 시험 제출 현황 조회 | F 폼 | 원내평가·OMR | 자기 자신 외 호출처 없음(의심). 정리 후보 **삭제됨(정리 PR)** |
 | 19 | `openClassManageModal` | `management.js:218` | 학급관리: 활성·숨김 반 목록 | W 작업 화면(단열) | 반·학생 관리 | 목록+인라인 폼 단열 |
 | 20 | `openAddClassModal` | `management.js:239` | 새 반 추가 | F 폼 | 반·학생 관리 | 이미 통합 양식. 라벨 없음. 인라인 폼으로 흡수(테스트가 ID·헤더 '추가' 고정) |
 | 21 | `openEditClassModal` | `management.js:295` | 반 수정 | F 폼 | 반·학생 관리 | 이미 통합 양식. 인라인 폼으로 흡수. 반 화면에서도 호출(`classroom.js:1932`) |
@@ -59,11 +59,11 @@
 | 30 | `renderStudentDetailShell` | `student.js:2420` | 학생 상세: 기본·상담·성적·오답 탭, 보기·수정 | W 작업 화면(단열) | 학생 상세 | 기본 껍데기 500px 단열(폭 규칙 없음) |
 | 31 | `openStudentStatusHistoryModal` | `student.js:631` | 상태 변경 이력(읽기) | F 폼 | 학생 상세 | 기본 탭의 접이식 구역으로 흡수 |
 | 32 | `openStudentClassTransferHistoryModal` | `student.js:643` | 반 이동 이력(읽기) | F 폼 | 학생 상세 | 위와 같음 |
-| 33 | `openParentConsentModal` | `student.js:819` | 보호자 연락 설정(동의 토글) | F 폼 | 학생 상세 | 보호자 행 아래 펼침 |
-| 34 | `openParentMessageHistoryModal` | `student.js:878` | 보호자 연락 이력(읽기) | F 폼 | 학생 상세 | 보호자 행 아래 펼침 |
-| 35 | `openStudentParentManageModal` | `student.js:976` | 보호자 관리(탭의 구역을 모달로 복제) | F 폼 | 학생 상세 | 호출처 없음. EIE 테스트가 기본 탭 노출 금지를 고정(`eie-timetable-student-profile-ap-parity.test.js:130`). 정리 후보 |
-| 36 | `openAddParentContactModal` | `student.js:3177` | 보호자 연락처 추가 | F 폼 | 학생 상세 | 인라인 폼으로 흡수 |
-| 37 | `openEditParentContactModal` | `student.js:3221` | 보호자 연락처 수정 | F 폼 | 학생 상세 | 인라인 폼으로 흡수 |
+| 33 | `openParentConsentModal` | `student.js:819` | 보호자 연락 설정(동의 토글) | F 폼 | 학생 상세 | 보호자 행 아래 펼침 **삭제됨(정리 PR, 보호자 화면)** |
+| 34 | `openParentMessageHistoryModal` | `student.js:878` | 보호자 연락 이력(읽기) | F 폼 | 학생 상세 | 보호자 행 아래 펼침 **삭제됨(정리 PR, 보호자 화면)** |
+| 35 | `openStudentParentManageModal` | `student.js:976` | 보호자 관리(탭의 구역을 모달로 복제) | F 폼 | 학생 상세 | 호출처 없음. EIE 테스트가 기본 탭 노출 금지를 고정(`eie-timetable-student-profile-ap-parity.test.js:130`). 정리 후보 **삭제됨(정리 PR)** |
+| 36 | `openAddParentContactModal` | `student.js:3177` | 보호자 연락처 추가 | F 폼 | 학생 상세 | 인라인 폼으로 흡수 **삭제됨(정리 PR, 보호자 화면)** |
+| 37 | `openEditParentContactModal` | `student.js:3221` | 보호자 연락처 수정 | F 폼 | 학생 상세 | 인라인 폼으로 흡수 **삭제됨(정리 PR, 보호자 화면)** |
 | 38 | `renderConsultationThreadSummaryModal` | `student.js:1067` | 상담 AI 요약 | F 폼 | 학생 상세 | 상담 탭 우측 접이식 패널 |
 | 39 | `openAddConsultationModal` | `student.js:3335` | 상담 기록 추가 | F 폼 | 학생 상세 | 반 화면에서도 직접 호출(`classroom.js:544`), 테스트가 반 복귀 고정 |
 | 40 | `openEditConsultation` | `student.js:3483` | 상담 수정 | F 폼 | 학생 상세 | 인라인 폼으로 흡수 |
@@ -76,14 +76,14 @@
 | 47 | `openClinicBasketByKey` | `core.js:2038` | 클리닉 바구니(후보 담기) | W 작업 화면 | 클리닉 | 우측 탭/패널 |
 | 48 | `openClassRecordModal` | `classroom.js:3626` | 진도관리(교재별 진도+과정+특이사항) | W 작업 화면 | 진도·교재 | 본보기. 매일 쓰는 화면 |
 | 49 | `openGlobalTextbookManage` | `textbook.js:214` | 전체 교재 관리(반 목록→반 패널, 인라인 추가) | W 작업 화면 | 진도·교재 | 진도 모달과 같은 부품이지만 폭 규칙 없음(기본 500px) |
-| 50 | `openTextbookManageModal` | `textbook.js:381` | 옛 교재 관리 목록 | W 작업 화면 | 진도·교재 | `returnToPreviousManagementView`(`ui.js:502`)로만 도달. 정리 후보 |
-| 51 | `openAddTextbookModal` | `textbook.js:393` | 옛 교재 등록 폼 | F 폼 | 진도·교재 | 위 모달에서만 도달. 정리 후보 |
-| 52 | `openEditTextbookModal` | `textbook.js:469` | 옛 교재 수정 폼 | F 폼 | 진도·교재 | 옛 목록(`groupAndSortBooks`)에서만 도달. 정리 후보 |
-| 53 | `openAttendanceMetaModal` | `classroom.js:619` | 출결 메모·태그 | F 폼 | 등급만 | 호출처 없음(의심). 정리 후보. 저장 버튼이 본문 아래 |
+| 50 | `openTextbookManageModal` | `textbook.js:381` | 옛 교재 관리 목록 | W 작업 화면 | 진도·교재 | `returnToPreviousManagementView`(`ui.js:502`)로만 도달. 정리 후보 **삭제됨(정리 PR)** |
+| 51 | `openAddTextbookModal` | `textbook.js:393` | 옛 교재 등록 폼 | F 폼 | 진도·교재 | 위 모달에서만 도달. 정리 후보 **삭제됨(정리 PR)** |
+| 52 | `openEditTextbookModal` | `textbook.js:469` | 옛 교재 수정 폼 | F 폼 | 진도·교재 | 옛 목록(`groupAndSortBooks`)에서만 도달. 정리 후보 **삭제됨(정리 PR)** |
+| 53 | `openAttendanceMetaModal` | `classroom.js:619` | 출결 메모·태그 | F 폼 | 등급만 | 호출처 없음(의심). 정리 후보. 저장 버튼이 본문 아래 **삭제됨(정리 PR)** |
 | 54 | `openClassroomStudentMovePicker` | `classroom.js:1954` | 학생 이동: 학생 고르기 | C 확인·선택 | 등급만 | `openClassroomManagementAction`에서 호출. 학생 수정으로 이어짐 |
-| 55 | `openStudentActionSheetV4` | `classroom.js:1854` | 학생 관리 3버튼 시트 | C 확인·선택 | 등급만 | 호출처 없음(의심). 정리 후보 |
+| 55 | `openStudentActionSheetV4` | `classroom.js:1854` | 학생 관리 3버튼 시트 | C 확인·선택 | 등급만 | 호출처 없음(의심). 정리 후보 **삭제됨(정리 PR)** |
 | 56 | `renderAttendanceLedger` | `classroom-planner.js:30` | 출석부 표 | W 작업 화면 | 등급만 | 서랍 진입. 표 중심 |
-| 57 | `openSchoolExamRecordModal` | `cumulative.js:2231` | 학교시험 성적 1건 입력(11개 입력) | F 폼 | 등급만 | 자기 자신 외 호출처 못 찾음(의심). 라벨 0 |
+| 57 | `openSchoolExamRecordModal` | `cumulative.js:2231` | 학교시험 성적 1건 입력(11개 입력) | F 폼 | 등급만 | 자기 자신 외 호출처 못 찾음(의심). 라벨 0 **삭제됨(정리 PR)** |
 | 58 | `openQrGenerator` | `qr-omr.js:262` | QR 생성기(시험명·문항 수·날짜) | F 폼 | 등급만 | 이미 통합 양식. 반 화면 6기능 진입 중 하나(`classroom.js:1741`). M3와 연결만 |
 | 59 | `openExamScheduleModal` | `schedule.js:800` | 일정 관리(달력+목록+입력) | W 작업 화면 | 등급만 | 저장 6곳이 `loadData()`+재오픈. 수정만 단계(스택) |
 | 60 | `openEditUnifiedScheduleModal` | `schedule.js:972` | 일정 수정(단계) | F 폼 | 등급만 | `showModalStep` |
@@ -97,17 +97,17 @@
 | 68 | `openOperationMenu` | `dashboard.js:1025` | 시스템·동기화 상태 | C 확인·선택 | 등급만 | 상태 2줄+버튼 |
 | 69 | `openTodayCloseModal` | `dashboard.js:2109` | 예외 현황(3단계) | F 폼 | 등급만 | 단계마다 `showModal` 재호출 |
 | 70 | `openDailyJournalModal` | `dashboard.js:2792` | 일지 작성 | F 폼 | 등급만 | 매일 사용 |
-| 71 | `openTodayExamSetModal` | `dashboard.js:2154` | 오늘 시험 설정 | F 폼 | 등급만 | 호출처 없음(의심). 정리 후보 |
+| 71 | `openTodayExamSetModal` | `dashboard.js:2154` | 오늘 시험 설정 | F 폼 | 등급만 | 호출처 없음(의심). 정리 후보 **삭제됨(정리 PR)** |
 | 72 | `openTodoMemoModal` | `memo.js:91` | 메모: 입력+목록 | F 폼 | 등급만 | 이미 같은 자리 추가. 수정만 별도 모달. 매일 사용 |
 | 73 | `openEditTodoMemoModal` | `memo.js:226` | 메모 수정 | F 폼 | 등급만 | 저장 뒤 `openTodoMemoModal()`로 복귀 |
 | 74 | `openStudentReportModal` | `report-text.js:803` | 보고 문구 종류 고르기 | C 확인·선택 | 등급만 | `openRiskStudentReport`에서만 호출 |
 | 75 | `copyReportLegacy` | `report-text.js:345` | 보고 문구 편집·복사(본문 2열) | W 작업 화면 | 등급만 | `window.copyReport`가 이것(`:1447`) |
-| 76 | `copyReport` | `report-text.js:1284` | 보고 문구(옛 정의) | F 폼 | 등급만 | `window.copyReport = copyReportLegacy`로 덮어써 실행 안 됨. 정리 후보 |
+| 76 | `copyReport` | `report-text.js:1284` | 보고 문구(옛 정의) | F 폼 | 등급만 | `window.copyReport = copyReportLegacy`로 덮어써 실행 안 됨. 정리 후보 **삭제됨(정리 PR)** |
 | 77 | `requestAiReport` | `report-text.js:1339` | AI 보고 문구 요청→결과 | F 폼 | 등급만 | 로딩→결과 2번 `showModal` |
-| 78 | `openClassReportBatchModal` | `report-text.js:1201` | 반 전체 보고 문구 | W 작업 화면 | 등급만 | `buildClassReportBatchHtml`(자기 자신)에서만 호출. 정리 후보 |
-| 79 | `openReportPreview` | `student.js:3133` | 리포트 미리보기 | F 폼 | 등급만 | 호출처 없음(의심). 정리 후보 |
+| 78 | `openClassReportBatchModal` | `report-text.js:1201` | 반 전체 보고 문구 | W 작업 화면 | 등급만 | `buildClassReportBatchHtml`(자기 자신)에서만 호출. 정리 후보 **삭제됨(정리 PR)** |
+| 79 | `openReportPreview` | `student.js:3133` | 리포트 미리보기 | F 폼 | 등급만 | 호출처 없음(의심). 정리 후보 **삭제됨(정리 PR)** |
 | 80 | `renderStudentExportModal` | `student-export.js:273` | 명단 출력 옵션 | F 폼 | 등급만 | `openAddressBook`에 버튼을 덧붙이는 래퍼(`student-export.js:322`) |
-| 81 | `openDischargedStudents` | `student-edit.js:812` | 퇴원생 관리 목록(옛) | F 폼 | 등급만 | `dashboard-admin.js:218`이 같은 이름으로 덮어써 실행 안 됨. 정리 후보 |
+| 81 | `openDischargedStudents` | `student-edit.js:812` | 퇴원생 관리 목록(옛) | F 폼 | 등급만 | `dashboard-admin.js:218`이 같은 이름으로 덮어써 실행 안 됨. 정리 후보 **삭제됨(정리 PR)** |
 | 82 | `openAdminOperationMenu` | `dashboard-admin.js:322` | 원장 관리 메뉴 | C 확인·선택 | 등급만 | 버튼 4 |
 | 83 | `openAdminPinBatchModal` | `dashboard-admin.js:354` | PIN 일괄 배분 결과 | F 폼 | 등급만 |  |
 | 84 | `openAdminStudentList` | `dashboard-admin.js:249` | 원장: 학생 목록(필터) | W 작업 화면 | 등급만 | 버튼 8 |
@@ -123,7 +123,7 @@
 | 94 | `openAdminRecentTeacherJournals` | `dashboard-admin.js:2286` | 원장: 최근 선생님 일지 | F 폼 | 등급만 | 읽기 목록 |
 | 95 | `openPublicInquiryList` | `dashboard-admin.js:2772` | 공개 문의 목록 | F 폼 | 등급만 | 읽기 목록 |
 | 96 | `renderBillingAccountingFoundationModal` | `management.js:2016` | 수납·회계(탭) | W 작업 화면 | 등급만 | 탭+표. 최대 높이 60vh |
-| 97 | `openGlobalPinManagement` | `management.js:128` | PIN 관리: 반 고르기 | C 확인·선택 | 등급만 | 호출처 없음(의심). 정리 후보 |
+| 97 | `openGlobalPinManagement` | `management.js:128` | PIN 관리: 반 고르기 | C 확인·선택 | 등급만 | 호출처 없음(의심). 정리 후보 **삭제됨(정리 PR)** |
 | 98 | `openStudyMaterialWrongCenter / openStudyMaterialManage` | `study-material-wrong.js:531` | 교재 오답(준비·입력·보기 탭, 입력 27개) | P 전체 화면 | 등급만 | `render()`가 `showModal`. 표 최소 폭 520px(`:99`) |
 
 ## 3. 집계
@@ -187,3 +187,17 @@
 
 - **보호자 연락처 화면은 정리 후보로 삭제한다.** `renderParentContactSection`과 그것만 부르는 `renderStudentContactHistoryTab`·`openStudentParentManageModal`(위 35번), 보호자 연락처 추가·수정·연락 설정·연락 이력 모달이 대상이다. 화면에서 닿는 입구가 없고(M6 작업 중 확인), 보호자 번호는 학생 수정 폼(`student-edit.js`)에서 고친다. 삭제는 정리 후보 삭제 PR에서 하고, 그때 `eie-timetable-student-profile-ap-parity.test.js`의 노출 금지 검사는 "구역 없음"으로 바뀌어도 의미가 유지되는지 확인한다. 이유: 사용자 결정 — 쓰지 않는 화면을 인라인으로 옮기는 것은 선생님에게 도움이 안 됨.
 - 모달 통합 4묶음이 남긴 추가 정리 후보: `openExamScoreMenu`(ui.js), `openQrSubmitStatus`(qr-omr.js), 옛 교재 모달 3종(지금은 교재 관리 모드 래퍼), `openClassAttendance`·`openClassHomework`·`openClassroomMoreMenu`(classroom.js), `openParentReport`(report-print.js), `renderAdminStudentSearch`(dashboard.js), `student-edit.js`의 `openDischargedStudents`(dashboard-admin.js 정의에 덮임).
+
+## 정리 PR 결과 (2026-11-02)
+
+삭제한 것(모두 호출처·동적 호출·다른 페이지 로드 없음 확인, 서버 API·worker 코드는 그대로):
+- 보호자 연락처 화면 일체(`student.js`): 구역·관리 모달·연락처 추가/수정/삭제·연락 설정·연락 이력과 보조 함수·상수. 보호자 번호는 학생 수정 폼에서 고친다. 데이터 불러오기(`ensureStudentParentContactDataLoaded` 등)는 학생 상세를 열 때 미리 부르는 코드라 그대로 둠(별도 판단).
+- `openExamScoreMenu`, `openQrSubmitStatus`(+`computeQrSubmitStatus`, `findExamQuestionCount`), 옛 교재 모달 3종과 `returnToPreviousManagementView`의 `textbookManage` 분기(그 값을 만드는 곳이 없음).
+- `openClassAttendance`, `openClassHomework`, `openClassroomMoreMenu`(+`renderClassroomMoreButton`), `openAttendanceMetaModal`(+`saveAttendanceMeta`), `openStudentActionSheetV4`, `handleBatchGeneratePins`(PIN 관리 모달 전용; 원장 전체 배분 `openAdminPinBatchModal`은 그대로).
+- `report-print.js`의 `openParentReport`(+`showParentReportModal`, `saveParentReportImage`, `buildReportCardNextPoint`), `renderAdminStudentSearch`, `student-edit.js`의 `openDischargedStudents`(+CSS `.apms-discharged-student-row`).
+- `openSchoolExamRecordModal`(+`saveSchoolExamRecord`, `deleteSchoolExamRecord`), `openTodayExamSetModal`(+`handleSetTodayExam`, `clearTodayExamConfig`; `getTodayExamConfig`·`setTodayExamConfig`는 QR 생성기가 씀), `copyReport`(옛 정의, `window.copyReport = copyReportLegacy`가 덮음), `openClassReportBatchModal` 묶음(`buildClassReportBatchHtml`, `copyClassStudentReport`, `copyAllClassReports`, `getClassReportStudents`, `makeClassReportTextId`), `openReportPreview`, `openGlobalPinManagement`.
+
+보류:
+- `loadHomeworkPhotoLinksModal`, `openHomeworkPhotoLinksModal`(6·7행): "링크·QR 버튼 숨김"은 사용자가 정한 것이고 `homework-assignment-save-only.test.js`가 이 함수를 경계로 쓴다. 기능을 되살릴지 지울지 사용자 결정이 필요하다.
+- `loadHtml2CanvasOnce`(`core.js`): 학부모 리포트 이미지 저장이 지워져 쓰는 곳이 없어졌지만 vendor 로더 3종(xlsx/chart/html2canvas) 한 벌이라 그대로 둠.
+- `getSchoolExamRecordForCell`(`cumulative.js`): 이번 삭제와 무관하게 이미 호출처 없음. 다음 정리에서.

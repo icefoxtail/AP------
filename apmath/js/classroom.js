@@ -441,15 +441,6 @@ function renderClassroomConsultationButton(studentId, classId, date) {
     return `<button class="btn cls-v4-status tag consult ${on ? 'on' : ''}" title="상담" onclick="openClassroomConsultation('${studentId}', '${classId}', '${date}')">${on ? '○' : ''}</button>`;
 }
 
-// 구버전 호환: 이전 패치의 … 버튼 호출이 남아 있어도 상담으로 바로 연결한다.
-function renderClassroomMoreButton(studentId, classId, date) {
-    return renderClassroomConsultationButton(studentId, classId, date);
-}
-
-function openClassroomMoreMenu(studentId, classId, date) {
-    openClassroomConsultation(studentId, classId, date);
-}
-
 function renderAttendanceLedgerCellIfOpen(studentId, date) {
     const sid = String(studentId);
     const d = String(date || '');
@@ -616,65 +607,6 @@ async function toggleAttendanceTag(studentId, date, tag) {
     }
 }
 
-function openAttendanceMetaModal(studentId, date, options = {}) {
-    const sid = String(studentId);
-    const d = normalizeClassroomDate(date) || getClassroomOperationDate();
-    const student = typeof apmsGetStudentById === 'function'
-        ? apmsGetStudentById(sid)
-        : (state.db.students || []).find(s => String(s.id) === sid);
-    const meta = getAttendanceMetaForStudentDate(sid, d);
-    const status = meta.record?.status || '미기록';
-    const tagSet = new Set(meta.tags);
-
-    const tagInput = function(tag, label) {
-        const checked = tagSet.has(tag) ? 'checked' : '';
-        return `<label style="display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2);font-size:13px;font-weight:500;color:var(--text);">
-            <input type="checkbox" class="att-meta-tag" value="${apEscapeHtml(tag)}" ${checked} style="accent-color:var(--primary);">${label}
-        </label>`;
-    };
-
-    showModal('출결 메모', `
-        <div style="display:flex;flex-direction:column;gap:12px;">
-            <div style="padding:12px;border-radius:14px;background:var(--surface-2);border:1px solid var(--border);">
-                <div style="font-size:15px;font-weight:500;color:var(--text);line-height:1.4;">${apEscapeHtml(student?.name || '학생')}</div>
-                <div style="font-size:12px;font-weight:500;color:var(--secondary);margin-top:4px;line-height:1.4;">${apEscapeHtml(d)} · 현재 출결 ${apEscapeHtml(status)}</div>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-                ${tagInput('지각', '지각')}
-                ${tagInput('보강', '보강')}
-            </div>
-            <textarea id="att-meta-memo" class="cls-input" placeholder="출결 관련 메모" style="height:110px;resize:none;line-height:1.6;">${apEscapeHtml(meta.memo)}</textarea>
-            <button class="btn apms-button apms-button--primary btn-primary" style="width:100%;min-height:50px;font-size:14px;font-weight:500;border-radius:14px;" onclick="saveAttendanceMeta('${sid}', '${d}', { source: '${apEscapeHtml(options.source || 'classroom')}' })">저장</button>
-        </div>
-    `);
-}
-
-async function saveAttendanceMeta(studentId, date, options = {}) {
-    const sid = String(studentId);
-    const d = normalizeClassroomDate(date) || getClassroomOperationDate();
-    const prev = getAttendanceMetaForStudentDate(sid, d);
-    const tags = Array.from(document.querySelectorAll('.att-meta-tag:checked')).map(el => el.value);
-    const memo = document.getElementById('att-meta-memo')?.value.trim() || '';
-    const tagText = stringifyAttendanceTags(tags);
-
-    syncAttendanceMetaToState(sid, d, tags, memo);
-    if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
-    const cell = document.getElementById(`att-cell-${sid}-${d}`);
-    if (cell && typeof renderAttendanceCellContent === 'function') cell.innerHTML = renderAttendanceCellContent(sid, d);
-
-    try {
-        const r = await api.patch('attendance', { studentId: sid, date: d, tags: tagText, memo });
-        if (!r?.success) throw new Error('fail');
-        toast('저장 완료', 'success');
-        closeModal(true);
-    } catch (e) {
-        syncAttendanceMetaToState(sid, d, prev.tags, prev.memo);
-        if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
-        if (cell && typeof renderAttendanceCellContent === 'function') cell.innerHTML = renderAttendanceCellContent(sid, d);
-        toast('저장 실패', 'warn');
-    }
-}
-
 function rerenderClassPreserveScroll(classId) {
     const y = window.scrollY || window.pageYOffset || 0;
     renderClass(classId);
@@ -775,18 +707,6 @@ async function changeClassOperationDate(cid, dateStr) {
     renderClass(cid);
 }
 
-// [5G-2] PIN 일괄 배분 기능
-async function handleBatchGeneratePins(classId) {
-    if (!confirm('이 반에서 PIN이 아직 없는 학생들에게 고유 PIN을 일괄 배분하시겠습니까? (기존 PIN은 유지됨)')) return;
-    const r = await api.post('students/batch-pins', { class_id: classId });
-    if (r.success) {
-        toast(`총 ${r.count}명의 학생에게 PIN이 자동 배분되었습니다.`, 'info');
-        await loadData();
-    } else {
-        toast(r.message || '일괄 배분에 실패했습니다.', 'error');
-    }
-}
-
 // [Phase 4/5] 요약 계산
 function computeClassTodaySummary(classId, dateStr = '') {
     const today = normalizeClassroomDate(dateStr) || getClassroomOperationDate();
@@ -826,12 +746,6 @@ function computeClassTodaySummary(classId, dateStr = '') {
         test = testedIds.size;
     }
     return { att: attCount, hw: hwCount, test, total, isScheduled };
-}
-
-function openClassAttendance(cid) {
-    state.ui.classDefaultTab = 'att';
-    if (typeof openDashboardClass === 'function') openDashboardClass(cid);
-    else renderClass(cid);
 }
 
 function getHomeworkPhotoQrSrc(url) {
@@ -1154,12 +1068,6 @@ async function deleteHomeworkPhotoAssignment(assignmentId, classId = '') {
         console.error('[deleteHomeworkPhotoAssignment] failed:', e);
         toast('숙제 삭제 중 오류가 발생했습니다.', 'error');
     }
-}
-
-function openClassHomework(cid) {
-    state.ui.classDefaultTab = 'hw';
-    if (typeof openDashboardClass === 'function') openDashboardClass(cid);
-    else renderClass(cid);
 }
 
 // [UI Standard Applied]: 학급 메인 화면
@@ -1850,21 +1758,6 @@ function updateStudentRowDOM(sid, cid) {
     updateClassSummaryDOM(cid);
     return true;
 }
-
-window.openStudentActionSheetV4 = function(sid, cid, hasPlanner) {
-    const plannerOn = hasPlanner === true || String(hasPlanner) === 'true';
-    const s = state.db.students.find(st => String(st.id) === String(sid));
-    const sname = s?.name || '학생';
-    const html = `
-        <div style="display:flex; flex-direction:column; gap:10px;">
-            <div style="font-size:14px; font-weight:500; color:var(--text); margin-bottom:4px; text-align:center;">${apEscapeHtml(sname)} 학생 관리</div>
-            <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); openStudentDetail('${sid}', { mode: 'view', returnTo: { type: 'classDetail', classId: '${cid}' } })">상세 정보 열기</button>
-            <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="closeModal(true); if(typeof openOMR==='function') openOMR('${sid}', '단원평가', 20, '${cid}', '', '', 'class')">OMR / 성적 입력</button>
-            ${plannerOn ? `<button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer; color:var(--primary); border-color:rgba(var(--primary-rgb),0.22);" onclick="closeModal(true); copyPlannerStudentLink('${sid}')">플래너 링크 복사</button>` : ''}
-        </div>
-    `;
-    showModal('학생 관리', html);
-};
 
 function isClassroomClassAccessible(classId) {
     const id = String(classId || '');
