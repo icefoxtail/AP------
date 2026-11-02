@@ -10,6 +10,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
 <link rel="stylesheet" href="../kit/apl.css">
+<style>
+/* 휴대폰 문제 탭: 탐구 질문 카드는 접되(compact) 그림 무대는 탐구 탭과 같은 높이(54svh)로 유지합니다. */
+@media (max-width: 859px) {
+  body:has(.apl-scene-head[data-tab="problem"][data-compact]) .apl-stage { height: clamp(300px, 54svh, 560px); }
+}
+</style>
 <script defer src="../kit/vendor/katex/katex.min.js"></script>
 <script defer src="../kit/vendor/qrcode.js"></script>
 <script defer src="../kit/apl-core.js"></script>
@@ -410,7 +416,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function scene1() {
     const sol = () => sol1();
     return {
-      id: 'grid', title: '표본공간 격자와 덧셈정리', short: '격자 색칠·덧셈정리',
+      id: 'grid', tabs: { compact: true }, title: '표본공간 격자와 덧셈정리', short: '격자 색칠·덧셈정리',
       question: '조건에 맞는 칸을 칠하면 확률의 분자가 그대로 세어질까? 두 사건을 합치면 칸 수는 어떻게 될까?',
       guide: '가로가 첫 번째 눈 <b>a</b>, 세로가 두 번째 눈 <b>b</b>인 36칸이 표본공간입니다. <b>사건 A·B</b>를 고르면 조건에 맞는 칸이 칠해지고, <b>보기</b>를 바꾸면 구하는 칸(합사건·곱사건·여사건)만 밝아집니다. 오른쪽(아래) 사각형은 36칸 전체를 넓이 1로 보고 A·B의 칸을 폭으로 옮긴 것이라, <b>겹친 폭</b>이 덧셈정리에서 빼는 부분입니다.',
       controls: ['sweep'],
@@ -737,7 +743,7 @@ window.addEventListener('DOMContentLoaded', function () {
       ['표 읽기(20명)', [6, 6, 3, 5], null], ['독립인 표', [4, 6, 4, 6], null]
     ];
     return {
-      id: 'cond', title: '조건부확률과 넓이 사각형', short: '조건부확률·독립',
+      id: 'cond', tabs: { compact: true }, title: '조건부확률과 넓이 사각형', short: '조건부확률·독립',
       question: '조건이 주어지면 왜 분모가 바뀔까? 독립이면 사각형은 어떤 모양이 될까?',
       guide: '분할표를 <b>넓이 사각형</b>으로 바꿨습니다. 칸 수가 넓이입니다. <b>조건 걸기</b> 막대를 오른쪽으로 움직이면 조건 영역만 남아 전체가 되고, 그 안에서 칠한 부분의 비율이 조건부확률입니다. <b>후광이 있는 점</b>을 끌어 칸 수를 바꿔 보세요. 점선과 두 경계선이 한 직선이 되면 독립입니다.',
       controls: ['cnd'],
@@ -1168,7 +1174,7 @@ window.addEventListener('DOMContentLoaded', function () {
       return arr;
     };
     return {
-      id: `rep-${kind}`, title: TITLE3[kind], short: SHORT3[kind],
+      id: `rep-${kind}`, tabs: { compact: true }, title: TITLE3[kind], short: SHORT3[kind],
       question: Q3[kind], guide: GUIDE3[kind],
       controls: kind === 'walk' ? ['nW', 'thW'] : kind === 'ball' ? ['nB', 'TB'] : ['h0', 'nC'],
       presets,
