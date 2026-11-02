@@ -959,7 +959,7 @@ def prepare(spec):
             pts=[(v[0]+tokens['angleArcRadius']*math.cos(start+delta*i/32),v[1]+tokens['angleArcRadius']*math.sin(start+delta*i/32)) for i in range(33)]
             if oid in spec['displayFacts'].get('squareAngleIds',[]):
                 if abs(obj['value']-90)>1e-9:raise ValueError('SQUARE_REQUIRES_RIGHT_ANGLE')
-                size=tokens['rightAngleSize'];u=[(a[i]-v[i])/math.dist(a,v)*size for i in range(2)];w=[(b[i]-v[i])/math.dist(b,v)*size for i in range(2)]
+                size=obj.get('squareSize',tokens['rightAngleSize']);u=[(a[i]-v[i])/math.dist(a,v)*size for i in range(2)];w=[(b[i]-v[i])/math.dist(b,v)*size for i in range(2)]
                 pts=[(v[0]+u[0],v[1]+u[1]),(v[0]+u[0]+w[0],v[1]+u[1]+w[1]),(v[0]+w[0],v[1]+w[1])]
                 if obj.get('labelText') is not None:
                     # an expression beside the right angle mark (3x, 3x=90°): inside the right angle next to the square, or on a leader from the square's far corner
@@ -1006,7 +1006,7 @@ def prepare(spec):
                     middle=start+delta/2;anchor=(v[0]+outer_radius*math.cos(middle),v[1]+outer_radius*math.sin(middle))
                     labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),anchor,{'wedgeSearch':{'vertex':list(v),'bisector':middle,'start':start,'delta':delta,'rMin':outer_radius+4.0,'rMax':max(outer_radius+12.0,min(outer_radius+44.0,.9*rays)),'rFar':max(outer_radius+12.0,.92*rays),'arcRadius':outer_radius,'farDistance':ANGLE_LABEL_FAR_DISTANCE_PX,**({'forceLeader':True} if obj.get('labelPlacement')=='LEADER' else {})},'gaps':(24,32,48,64),'leaderOwned':[oid+'-arc-'+str(k+1) for k in range(count)]}))
                 continue
-            primitive({'id':oid,'kind':'polyline','points':pts,'token':'indicator','layer':60,'role':'indicator'},'curve')
+            primitive({'id':oid,'kind':'polyline','points':pts,'token':'secondaryShape' if 'squareSize' in obj else 'indicator','layer':60,'role':'indicator'},'curve')
         elif kind=='DIMENSION_LINE':
             if not vp.equal:raise ValueError('DIMENSION_REQUIRES_EQUAL_UNITS')
             p,q=vp.screen(value['from']),vp.screen(value['to']);style=obj.get('style','BAR')
