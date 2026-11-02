@@ -27,7 +27,7 @@ JS = """window.questionBank = [
 """
 
 
-def build_tree(root: Path, cross_keys='["CC_A"]', meta_rows=2, identity_rows=2, register_changes=None):
+def build_tree(root: Path, cross_keys='["CC_A"]', meta_rows=2, identity_rows=2, register_changes=None, extension_defs=None):
     exam_dir = root / "archive" / "exams" / "similar" / "high" / "h2" / "2final"
     exam_dir.mkdir(parents=True)
     js = exam_dir / "x_유사.js"
@@ -53,6 +53,9 @@ def build_tree(root: Path, cross_keys='["CC_A"]', meta_rows=2, identity_rows=2, 
     (canon / "concepts" / "algebra.json").write_text(json.dumps({"concepts": [
         {"conceptKey": "CC_A", "status": "ACTIVE"}, {"conceptKey": "CC_OLD", "status": "RETIRED"}]}), encoding="utf-8")
     (canon / "condition_registry.json").write_text(json.dumps({"conditions": []}), encoding="utf-8")
+    if extension_defs is not None:
+        (data / "archive2-extension-keys.json").write_text(json.dumps(
+            {"schemaVersion": "archive2-extension-keys-v1", "definitions": extension_defs}), encoding="utf-8")
     return {"stem": "x_유사", "js": js, "receipt": receipt, "meta": meta, "plans": None, "assets": None}
 
 
@@ -61,7 +64,8 @@ class GenerateInboxRequestTests(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.root = Path(self.tmp.name)
         self.addCleanup(self.tmp.cleanup)
-        patcher = mock.patch.multiple(mm, REPO_ROOT=self.root, CANON_DIR=self.root / "archive/data/meta-foundation/canonical")
+        patcher = mock.patch.multiple(mm, REPO_ROOT=self.root, CANON_DIR=self.root / "archive/data/meta-foundation/canonical",
+                                      EXTENSION_INDEX=self.root / "archive/data/archive2-extension-keys.json")
         patcher.start()
         self.addCleanup(patcher.stop)
 
@@ -86,9 +90,29 @@ class GenerateInboxRequestTests(unittest.TestCase):
         with self.assertRaisesRegex(mm.RequestGenerationError, "identity_map records=1"):
             self.generate(identity_rows=1)
 
-    def test_generated_only_extension_key_is_refused_not_rewritten(self):
+    def test_unregistered_extension_key_is_refused_not_rewritten(self):
         with self.assertRaisesRegex(mm.RequestGenerationError, "EXT-CROSS-NEW"):
             self.generate(cross_keys='["EXT-CROSS-NEW"]')
+
+    def _refused_extension(self, **definition):
+        with self.assertRaisesRegex(mm.RequestGenerationError, "EXT-CROSS-NEW"):
+            self.generate(cross_keys='["EXT-CROSS-NEW"]', extension_defs=[
+                {"key": "EXT-CROSS-NEW", "kind": "cross", "status": "GENERATED_ACTIVE", "canonicalPromoted": False, **definition}])
+
+    def test_extension_key_that_is_not_generated_active_is_refused(self):
+        self._refused_extension(status="GENERATED_CANDIDATE_BRANCH_ONLY")
+
+    def test_extension_key_claiming_canonical_promotion_is_refused(self):
+        self._refused_extension(canonicalPromoted=True)
+
+    def test_extension_key_of_the_wrong_kind_is_refused(self):
+        self._refused_extension(kind="cond")
+
+    def test_registered_generated_active_extension_key_is_carried_unchanged(self):
+        req = self.generate(cross_keys='["EXT-CROSS-NEW"]', extension_defs=[
+            {"key": "EXT-CROSS-NEW", "kind": "cross", "status": "GENERATED_ACTIVE", "canonicalPromoted": False}])
+        self.assertEqual(req["items"][0]["after"]["crossConceptKeys"], ["EXT-CROSS-NEW"])
+        self.assertEqual(req["registryChanges"], [], "an extension is never turned into a canonical registry change")
 
     def test_retired_canonical_key_is_refused(self):
         with self.assertRaisesRegex(mm.RequestGenerationError, "CC_OLD"):

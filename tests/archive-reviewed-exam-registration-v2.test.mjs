@@ -1374,3 +1374,162 @@ test("replace an in-use template and remove its old definition in the same appro
   assert.deepEqual(f.read(base).templates.map(t => t.templateKey), [replacement.templateKey]);
   assert.equal(f.read(META).records[0].templateKey, replacement.templateKey);
 });
+
+// ---- Generated extension keys (EXT-*): accepted only when registered, GENERATED_ACTIVE, unpromoted, parented ----
+const EXT_INDEX = "archive/data/archive2-extension-keys.json";
+const EXT_REGISTRY = "archive/data/meta-foundation/extensions/similar-high/x.registry.json";
+
+// The mutate* hooks change the registry entry / index definition / registry file before they are written.
+function extensionFixture(t, { cross = ["EXT-CROSS-X"], cond = [], mutateEntry, mutateDefinition, mutateRegistry, scope = {}, registerKinds = {} } = {}) {
+  const f = fixture(t, "확률과통계", "2015");
+  const entry = { key: "EXT-CROSS-X", kind: "CROSS", status: "GENERATED_ACTIVE", canonicalRpmPromotion: false, label: "확장 연결 개념",
+    parent: { conceptKey: "CC_NEW" }, standardCourse: "확률과통계", curriculumKey: "2015", ...scope };
+  const condEntry = { key: "EXT-COND-X", status: "GENERATED_ACTIVE", canonicalRpmPromotion: false, labelKo: "확장 조건", parentKey: "COND_NEW",
+    standardCourse: "확률과통계", curriculum: "2015", ...scope };
+  mutateEntry?.(entry, condEntry);
+  const registry = { schemaVersion: "similar-high-generated-extension-registry-v1", status: "GENERATED_ACTIVE", extensions: [entry], generatedConditions: [condEntry] };
+  mutateRegistry?.(registry);
+  f.put(EXT_REGISTRY, registry);
+  const definitions = [
+    { key: "EXT-CROSS-X", kind: registerKinds.cross ?? "cross", status: "GENERATED_ACTIVE", canonicalPromoted: false, file: EXT_REGISTRY },
+    { key: "EXT-COND-X", kind: registerKinds.cond ?? "cond", status: "GENERATED_ACTIVE", canonicalPromoted: false, file: EXT_REGISTRY }
+  ];
+  if (mutateDefinition) for (const definition of definitions) mutateDefinition(definition);
+  f.put(EXT_INDEX, { schemaVersion: "archive2-extension-keys-v1", status: "DERIVED_READ_ONLY", definitions });
+  setItemKeys(f, { crossConceptKeys: ["CC_NEW", ...cross], conditionKeys: [...cond] });
+  return f;
+}
+
+// Keep the source JS, its blob hash and the request item in agreement (the registrar binds all three).
+function setItemKeys(f, fields) {
+  Object.assign(f.q, fields);
+  Object.assign(f.request.items[0].after, fields);
+  const text = `window.questions = ${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, text);
+  f.request.expectedSourceBlobSha1 = blob(text);
+}
+
+test("EXT: a registered GENERATED_ACTIVE extension CrossConcept and Condition register without canonical promotion", t => {
+  const f = extensionFixture(t, { cond: ["EXT-COND-X"] });
+  const before = { index: fs.readFileSync(path.join(f.root, EXT_INDEX)), registry: fs.readFileSync(path.join(f.root, EXT_REGISTRY)) };
+  const dry = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.equal(dry.totalQuestions, 1);
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.runtimeMaterialized, 1);
+  const row = f.read(META).records[0];
+  assert.deepEqual(row.crossConceptKeys, ["CC_NEW", "EXT-CROSS-X"]);
+  assert.deepEqual(row.conditionKeys, ["EXT-COND-X"]);
+  assert.equal(row.reviewStatus, "reviewed_pass");
+  // The extension never enters a canonical registry, the compiled registries, the index or its source registry.
+  const registries = result.plannedPaths.filter(file => file.startsWith("archive/data/meta-foundation/") && /\/(canonical|compiled)\//.test(file));
+  assert.ok(registries.length > 0, "canonical/compiled registries were written for the fixture");
+  for (const file of registries) assert.equal(/EXT-/.test(fs.readFileSync(path.join(f.root, file), "utf8")), false, `${file} must not mention an extension key`);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, EXT_INDEX)), before.index);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, EXT_REGISTRY)), before.registry);
+  // The receipt records exactly which extension definitions backed the registration.
+  const receipt = f.read(`archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${f.request.requestId}.json`);
+  assert.deepEqual(receipt.generatedExtensionKeys.map(use => [use.key, use.kind, use.canonicalRpmPromotion, use.parentKey, use.registryPath, use.questionUids]), [
+    ["EXT-COND-X", "cond", false, "COND_NEW", EXT_REGISTRY, ["uid1"]],
+    ["EXT-CROSS-X", "cross", false, "CC_NEW", EXT_REGISTRY, ["uid1"]]
+  ]);
+  assert.equal(receipt.generatedExtensionKeys[0].registrySha256, hash(before.registry));
+  // The runtime pack carries the same keys, and replay still verifies.
+  const runtime = f.read("archive/data/meta-foundation/runtime/new-course-v1.json").records[0];
+  assert.deepEqual(runtime.crossConceptKeys, ["CC_NEW", "EXT-CROSS-X"]);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+});
+
+test("EXT: a canonical-only request does not need the extension index at all", t => {
+  const f = fixture(t);
+  assert.equal(fs.existsSync(path.join(f.root, EXT_INDEX)), false);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
+});
+
+test("EXT: an extension key missing from the index is refused", t => {
+  const f = extensionFixture(t, { cross: ["EXT-CROSS-NOT-REGISTERED"] });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /unregistered extension key \(crossConceptKeys\): EXT-CROSS-NOT-REGISTERED/);
+});
+
+test("EXT: a missing extension index refuses every extension key", t => {
+  const f = extensionFixture(t);
+  fs.rmSync(path.join(f.root, EXT_INDEX));
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /extension key index missing/);
+});
+
+for (const [name, options, pattern] of [
+  ["index status other than GENERATED_ACTIVE", { mutateDefinition: d => { d.status = "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY"; } }, /is not GENERATED_ACTIVE/],
+  ["index status missing", { mutateDefinition: d => { delete d.status; } }, /is not GENERATED_ACTIVE/],
+  ["index claiming canonical promotion", { mutateDefinition: d => { d.canonicalPromoted = true; } }, /canonical promotion/],
+  ["index omitting the promotion flag", { mutateDefinition: d => { delete d.canonicalPromoted; } }, /canonical promotion/],
+  ["index kind that does not fit the field", { registerKinds: { cross: "cond" } }, /kind mismatch/],
+  ["index kind conflict", { mutateDefinition: d => { d.kindConflicts = ["l4"]; } }, /kind mismatch/],
+  ["source registry outside the extensions directory", { mutateDefinition: d => { d.file = "archive/data/meta-foundation/canonical/condition_registry.json"; } }, /not defined in archive\/data\/meta-foundation\/extensions\//],
+  ["source registry that is not GENERATED_ACTIVE", { mutateRegistry: r => { r.status = "SUPERSEDED"; } }, /registry is not GENERATED_ACTIVE/],
+  ["source entry status other than GENERATED_ACTIVE", { mutateEntry: e => { e.status = "GENERATED_CANDIDATE_BRANCH_ONLY"; } }, /entry is not GENERATED_ACTIVE/],
+  ["source entry canonicalRpmPromotion true", { mutateEntry: e => { e.canonicalRpmPromotion = true; } }, /canonicalRpmPromotion false/],
+  ["source entry canonicalRpmPromotion missing", { mutateEntry: e => { delete e.canonicalRpmPromotion; } }, /canonicalRpmPromotion false/],
+  ["source entry of the wrong kind", { mutateEntry: e => { e.kind = "COND"; } }, /registry kind mismatch/],
+  ["source entry without a parent", { mutateEntry: e => { delete e.parent; } }, /parent is not an ACTIVE canonical cross/],
+  ["source entry with a parent that is not canonical", { mutateEntry: e => { e.parent = { conceptKey: "CC_DOES_NOT_EXIST" }; } }, /parent is not an ACTIVE canonical cross/],
+  ["source entry whose parent is itself an extension key", { mutateEntry: e => { e.parent = { conceptKey: "EXT-CROSS-OTHER" }; } }, /parent is not an ACTIVE canonical cross/],
+  ["source entry for another curriculum", { scope: { curriculumKey: "2022" } }, /scope mismatch/],
+  ["source entry for another course", { scope: { standardCourse: "수학II" } }, /scope mismatch/],
+  ["source entry without a scope", { mutateEntry: e => { delete e.standardCourse; } }, /scope mismatch/],
+  ["source registry defining the key twice", { mutateRegistry: r => { r.extensions.push({ ...r.extensions[0] }); } }, /exactly once/],
+  ["source registry that does not define the indexed key", { mutateRegistry: r => { r.extensions[0].key = "EXT-CROSS-RENAMED"; } }, /exactly once/]
+]) {
+  test(`EXT: refused - ${name}`, t => {
+    const f = extensionFixture(t, options);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), pattern);
+    assert.equal(f.read(META).records[0].reviewStatus, "review_required", "nothing is written when an extension key is refused");
+  });
+}
+
+test("EXT: a condition key is refused for the same reasons (parent must be an ACTIVE canonical Condition)", t => {
+  const f = extensionFixture(t, { cross: [], cond: ["EXT-COND-X"], mutateEntry: (_, c) => { c.parentKey = "COND_DOES_NOT_EXIST"; } });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /parent is not an ACTIVE canonical cond/);
+  const g = extensionFixture(t, { cross: [], cond: ["EXT-COND-X"], mutateEntry: (_, c) => { c.canonicalRpmPromotion = true; } });
+  assert.throws(() => registerReviewedExamV2({ root: g.root, request: g.request }), /canonicalRpmPromotion false/);
+});
+
+// The catalog builder only knows canonical concept/condition keys, so it flags a record that carries a registered extension key
+// with `foundationTaxonomy` and keeps it out of the strict advanced lane (never promoted). --verify-projection must accept exactly that.
+function registeredExtensionConsumer(t, conflicts) {
+  const f = extensionFixture(t, { cond: ["EXT-COND-X"] });
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  const catalogRow = { ...row, sourceFile: row.sourceArchiveFile, metadataConflicts: conflicts };
+  delete catalogRow.L3; delete catalogRow.L4;
+  f.put("archive/question-index.js", `window.questionIndex=${JSON.stringify([{ ...row, sourceFile: row.sourceArchiveFile, course: row.standardCourse }])};`);
+  const records = f.read(META).records;
+  const runtime = f.read("archive/data/meta-foundation/runtime/new-course-v1.json").records;
+  return { f, records, runtime, catalog: { records: [catalogRow] } };
+}
+
+test("EXT: --verify-projection accepts the foundationTaxonomy flag of a registered extension record and reports the lane", t => {
+  const { f, records, runtime, catalog } = registeredExtensionConsumer(t, ["foundationTaxonomy"]);
+  assert.deepEqual(verifyConsumerValues(f.root, records, runtime, catalog), { canonical: 1, usableMetaLane: 0, generatedExtension: 1 });
+});
+
+test("EXT: the foundationTaxonomy waiver does not hide other conflicts or an extension that stopped being valid", t => {
+  const { f, records, runtime, catalog } = registeredExtensionConsumer(t, ["foundationTaxonomy", "templateKey"]);
+  assert.throws(() => verifyConsumerValues(f.root, records, runtime, catalog), /Consumer metadata conflict/);
+  const plain = registeredExtensionConsumer(t, ["foundationTaxonomy"]);
+  // A canonical-only record keeps the previous behaviour: any foundationTaxonomy conflict blocks.
+  const canonicalOnly = structuredClone(plain.records); canonicalOnly[0].crossConceptKeys = ["CC_NEW"]; canonicalOnly[0].conditionKeys = [];
+  const canonicalRuntime = structuredClone(plain.runtime); canonicalRuntime[0].crossConceptKeys = ["CC_NEW"]; canonicalRuntime[0].conditionKeys = [];
+  const canonicalCatalog = structuredClone(plain.catalog); canonicalCatalog.records[0].crossConceptKeys = ["CC_NEW"]; canonicalCatalog.records[0].conditionKeys = [];
+  assert.throws(() => verifyConsumerValues(plain.f.root, canonicalOnly, canonicalRuntime, canonicalCatalog), /Consumer metadata conflict/);
+  // The extension was demoted after registration: the waiver re-validates it and refuses.
+  const index = plain.f.read(EXT_INDEX); index.definitions[0].status = "SUPERSEDED_NOT_TO_RELEASE"; plain.f.put(EXT_INDEX, index);
+  assert.throws(() => verifyConsumerValues(plain.f.root, plain.records, plain.runtime, plain.catalog), /is not GENERATED_ACTIVE/);
+});
+
+test("EXT: extension keys are not accepted for PT/TPL, and canonical keys keep the previous refusal", t => {
+  const f = extensionFixture(t);
+  setItemKeys(f, { problemTypeKey: "EXT-CROSS-X" });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /inactive\/missing PT: EXT-CROSS-X/);
+  const g = fixture(t);
+  setItemKeys(g, { crossConceptKeys: ["CC_NEW", "CC_NOT_REGISTERED"] });
+  assert.throws(() => registerReviewedExamV2({ root: g.root, request: g.request }), /inactive\/missing crossConceptKeys: CC_NOT_REGISTERED/);
+});
