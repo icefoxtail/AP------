@@ -119,8 +119,8 @@
       const sz = 16, lb = (p, q, c, t, col, gap) => t != null && sideTag(b, p, q, c, t, { color: col, size: sz, gap: gap || 11 });
       if (prob) {
         lb(g.A, g.D, cen, String(g.AD), 'sky'); if (pk.kind !== 1) lb(g.B, g.C, cen, String(g.BC), 'green');
-        if (pk.kind === 0) { lb(g.A, g.E, cen, String(g.AE), 'rose'); lb(g.E, g.B, cen, String(g.EB), 'violet'); T(b, lerp(g.E, g.F, 0.3), 'x', { size: 18, color: 'amber', dy: -14 }); }
-        else { lb(g.A, g.E, cen, String(g.AE), 'rose'); lb(g.E, g.B, cen, String(g.EB), 'violet'); lb(g.B, g.C, cen, 'x', 'amber'); T(b, lerp(g.E, g.F, 0.3), String(g.EF), { size: 16, color: 'sky', dy: -14 }); }
+        if (pk.kind === 0) { lb(g.A, g.E, cen, String(g.AE), 'rose'); lb(g.E, g.B, cen, String(g.EB), 'violet'); T(b, lerp(g.E, g.F, 0.35), 'EF = x', { size: 17, color: 'amber', dy: -15 }); }
+        else { lb(g.A, g.E, cen, String(g.AE), 'rose'); lb(g.E, g.B, cen, String(g.EB), 'violet'); lb(g.B, g.C, cen, 'x', 'amber'); T(b, lerp(g.E, g.F, 0.35), `EF = ${g.EF}`, { size: 16, color: 'sky', dy: -15 }); }
         if (pk.kind === 1) { /* BC 는 구하는 값, AD 와 EF 가 주어짐 */ }
       } else {
         lb(g.A, g.D, cen, String(g.AD), 'sky'); lb(g.B, g.C, cen, String(g.BC), 'green'); lb(g.A, g.E, cen, String(g.AE), 'rose'); lb(g.E, g.B, cen, String(g.EB), 'violet');
@@ -177,8 +177,8 @@
       const sz = 16, lb = (p, q, c, t, col, gap) => t != null && sideTag(b, p, q, c, t, { color: col, size: sz, gap: gap || 11 });
       if (prob) {
         lb(g.A, g.D, cen, String(g.AD), 'sky'); if (pk.kind !== 1) lb(g.B, g.C, cen, String(g.BC), 'green');
-        if (pk.kind === 0) T(b, lerp(g.E, g.F, 0.5), 'x', { size: 18, color: 'amber', dy: -15 });
-        else if (pk.kind === 1) { T(b, lerp(g.E, g.F, 0.5), String(g.EF), { size: 16, color: 'sky', dy: -15 }); lb(g.B, g.C, cen, 'x', 'amber'); }
+        if (pk.kind === 0) T(b, lerp(g.E, g.F, 0.35), 'EF = x', { size: 17, color: 'amber', dy: -15 });
+        else if (pk.kind === 1) { T(b, lerp(g.E, g.F, 0.35), `EF = ${g.EF}`, { size: 16, color: 'sky', dy: -15 }); lb(g.B, g.C, cen, 'x', 'amber'); }
         else { /* BC, AD 모두 주어지고 PQ 를 구함 */ T(b, lerp(g.Pp, g.Qp, 0.5), 'x', { size: 18, color: 'amber', dy: -15 }); }
       } else {
         lb(g.A, g.D, cen, String(g.AD), 'sky'); lb(g.B, g.C, cen, String(g.BC), 'green');
