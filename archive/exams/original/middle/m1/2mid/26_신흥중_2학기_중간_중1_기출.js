@@ -34,7 +34,7 @@ window.questionBank = [
       "$\\overrightarrow{CA}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 반직선은 시작점과 뻗어나가는 방향이 같으면 같은 반직선입니다.\n\n$\\overrightarrow{BD}$는 점 $B$에서 시작하여 점 $D$ 방향으로 뻗는 반직선입니다. 점 $C$는 $B$와 $D$ 사이에 있으므로 $\\overrightarrow{BC}$도 시작점이 $B$이고 같은 방향으로 뻗습니다. $\\overrightarrow{CD}$는 시작점이 다릅니다.\n\n따라서 정답은 ①이다.",
+    "solution": "$\\overrightarrow{BD}$는 점 $B$에서 시작하여 점 $D$ 방향으로 뻗는 반직선입니다. 점 $C$는 $B$와 $D$ 사이에 있으므로 $\\overrightarrow{BC}$도 시작점이 $B$이고 같은 방향으로 뻗습니다. $\\overrightarrow{CD}$는 시작점이 다릅니다.\n\n따라서 정답은 ①이다.",
     "score": 3,
     "difficultyBucket": 1,
     "sourceQuestionNo": "1",
@@ -100,7 +100,7 @@ window.questionBank = [
       "$60^\\circ$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 평행선에서 동위각은 같고, 한 직선 위에 놓인 이웃각의 합은 $180^\\circ$입니다.\n\n위 직선 $l$과 아래 직선 $m$은 평행하므로, $x=60^\\circ+40^\\circ=100^\\circ$입니다. 다른 횡단선에서 $y=180^\\circ-40^\\circ=140^\\circ$입니다. 따라서 $y-x=140^\\circ-100^\\circ=40^\\circ$입니다.\n\n따라서 정답은 ③이다.",
+    "solution": "위 직선 $l$과 아래 직선 $m$은 평행하므로, $x=60^\\circ+40^\\circ=100^\\circ$입니다. 다른 횡단선에서 $y=180^\\circ-40^\\circ=140^\\circ$입니다. 따라서 $y-x=140^\\circ-100^\\circ=40^\\circ$입니다.\n\n따라서 정답은 ③이다.",
     "score": 3,
     "difficultyBucket": 2,
     "sourceQuestionNo": "2",
@@ -171,7 +171,7 @@ window.questionBank = [
       "점 $A$에서 $\\overleftrightarrow{BC}$에 내린 수선의 발은 점 $C$이다."
     ],
     "answer": "②, ④",
-    "solution": "[키포인트] 그림의 직각 표시와 교점, 사다리꼴의 평행한 두 밑변을 확인합니다.\n\n① 대각선 $AC$와 $BD$는 점 $O$에서 만나지만 직각 표시는 없으므로 수직이라고 단정할 수 없습니다.\n② 두 직선 $AD$와 $BC$는 서로 평행하므로 옳습니다.\n③ 두 직선 $AB,CD$는 같은 평면에 있으므로 꼬인 위치가 아닙니다.\n④ 두 직선 $AC,CD$는 점 $C$에서 만나므로 옳습니다.\n⑤ $AB\\perp BC$이므로 점 $A$에서 $BC$에 내린 수선의 발은 $B$입니다.\n\n따라서 정답은 ②, ④이다.",
+    "solution": "① 대각선 $AC$와 $BD$는 점 $O$에서 만나지만 직각 표시는 없으므로 수직이라고 단정할 수 없습니다.\n② 두 직선 $AD$와 $BC$는 서로 평행하므로 옳습니다.\n③ 두 직선 $AB,CD$는 같은 평면에 있으므로 꼬인 위치가 아닙니다.\n④ 두 직선 $AC,CD$는 점 $C$에서 만나므로 옳습니다.\n⑤ $AB\\perp BC$이므로 점 $A$에서 $BC$에 내린 수선의 발은 $B$입니다.\n\n따라서 정답은 ②, ④이다.",
     "score": 4,
     "difficultyBucket": 2,
     "sourceQuestionNo": "3",
@@ -241,7 +241,7 @@ window.questionBank = [
       "작도순서는 ㉠ → ㉤ → ㉡ → ㉣ → ㉥ → ㉢이다."
     ],
     "answer": "①, ⑤",
-    "solution": "[키포인트] 작도에 사용한 두 원호는 같은 반지름으로 그리지만, 임의의 호 위 두 점 사이의 선분 길이가 반지름과 같지는 않습니다.\n\n① $PD$는 원호를 그린 반지름이고 $CD$는 서로 다른 호 위의 두 점 사이의 거리이므로 같다고 할 수 없습니다. 거짓입니다.\n② $PC,QB$는 같은 반지름으로 잡으므로 같습니다.\n③ 작도 때 각을 옮겨 $\\angle AQB=\\angle CPD$가 됩니다.\n④ 대응하는 동위각이 같음을 이용하여 새 직선이 $l$과 평행함을 보입니다.\n⑤ 실제 원호와 교점의 생성 순서가 제시된 순서와 다릅니다.\n\n따라서 정답은 ①, ⑤이다.",
+    "solution": "① $PD$는 원호를 그린 반지름이고 $CD$는 서로 다른 호 위의 두 점 사이의 거리이므로 같다고 할 수 없습니다. 거짓입니다.\n② $PC,QB$는 같은 반지름으로 잡으므로 같습니다.\n③ 작도 때 각을 옮겨 $\\angle AQB=\\angle CPD$가 됩니다.\n④ 대응하는 동위각이 같음을 이용하여 새 직선이 $l$과 평행함을 보입니다.\n⑤ 실제 원호와 교점의 생성 순서가 제시된 순서와 다릅니다.\n\n따라서 정답은 ①, ⑤이다.",
     "score": 4,
     "difficultyBucket": 3,
     "sourceQuestionNo": "4",
@@ -310,7 +310,7 @@ window.questionBank = [
       "77개"
     ],
     "answer": "④",
-    "solution": "[키포인트] $n$각형의 한 꼭짓점에서 그을 수 있는 대각선은 $n-3$개입니다.\n\n$n-3=10$이므로 $n=13$입니다. 모든 꼭짓점에서 각각 10개를 세면 한 대각선을 두 번씩 세므로 전체 대각선 수는 $\\dfrac{13\\times10}{2}=65$개입니다.\n\n따라서 정답은 ④이다.",
+    "solution": "$n-3=10$이므로 $n=13$입니다. 모든 꼭짓점에서 각각 10개를 세면 한 대각선을 두 번씩 세므로 전체 대각선 수는 $\\dfrac{13\\times10}{2}=65$개입니다.\n\n따라서 정답은 ④이다.",
     "score": 4,
     "difficultyBucket": 2,
     "sourceQuestionNo": "5",
@@ -375,7 +375,7 @@ window.questionBank = [
       "12 cm"
     ],
     "answer": "②",
-    "solution": "[키포인트] 같은 원에서 호의 길이는 중심각의 크기에 정비례합니다.\n\n중심각 $45^\\circ$에 대응하는 호가 $3\\mathrm{cm}$이고 중심각 $135^\\circ$에 대응하는 호가 $x\\mathrm{cm}$입니다. $x:3=135:45=3:1$이므로 $x=9\\mathrm{cm}$입니다.\n\n따라서 정답은 ②이다.",
+    "solution": "중심각 $45^\\circ$에 대응하는 호가 $3\\mathrm{cm}$이고 중심각 $135^\\circ$에 대응하는 호가 $x\\mathrm{cm}$입니다. $x:3=135:45=3:1$이므로 $x=9\\mathrm{cm}$입니다.\n\n따라서 정답은 ②이다.",
     "score": 3,
     "difficultyBucket": 1,
     "sourceQuestionNo": "6",
@@ -444,7 +444,7 @@ window.questionBank = [
       "15 cm"
     ],
     "answer": "②",
-    "solution": "[키포인트] 중점이므로 $BM=\\frac12 AB$, $BN=\\frac12 BC$입니다.\n\n$BC=x$라 놓으면 $AB=2x$, $BM=x$, $BN=\\frac{x}{2}$. 점의 순서는 $A,M,B,N,C$이므로 $MN=MB+BN=\\dfrac{3x}{2}=9$입니다. 따라서 $x=6$, $AB=2x=12\\mathrm{cm}$입니다.\n\n따라서 정답은 ②이다.",
+    "solution": "$BC=x$라 놓으면 $AB=2x$, $BM=x$, $BN=\\frac{x}{2}$. 점의 순서는 $A,M,B,N,C$이므로 $MN=MB+BN=\\dfrac{3x}{2}=9$입니다. 따라서 $x=6$, $AB=2x=12\\mathrm{cm}$입니다.\n\n따라서 정답은 ②이다.",
     "score": 4,
     "difficultyBucket": 2,
     "sourceQuestionNo": "7",
@@ -515,7 +515,7 @@ window.questionBank = [
       "11"
     ],
     "answer": "③",
-    "solution": "[키포인트] 수직인 모서리는 실제로 만나면서 직각을 이루어야 하고, 꼬인 위치의 모서리는 평행하지도 만나지도 않으며 한 평면 위에 있지 않아야 합니다.\n\n절단면 $MNPQ$는 직사각형입니다. $MQ$와 수직인 모서리는 절단면에서 $M,Q$를 지나는 $MN,PQ$로 $a=2$입니다.\n\n$MQ$와 꼬인 위치인 모서리는 $AB,BN,BF,EF,FG,GP,GH$의 7개입니다. 같은 뒤쪽 면 위에 놓인 모서리 및 $MQ$와 평행인 $NP$는 제외합니다. 따라서 $b=7$입니다.\n\n$a+b=2+7=9$이므로 정답은 ③이다.",
+    "solution": "절단면 $MNPQ$는 직사각형입니다. $MQ$와 수직인 모서리는 절단면에서 $M,Q$를 지나는 $MN,PQ$로 $a=2$입니다.\n\n$MQ$와 꼬인 위치인 모서리는 $AB,BN,BF,EF,FG,GP,GH$의 7개입니다. 같은 뒤쪽 면 위에 놓인 모서리 및 $MQ$와 평행인 $NP$는 제외합니다. 따라서 $b=7$입니다.\n\n$a+b=2+7=9$이므로 정답은 ③이다.",
     "score": 4,
     "difficultyBucket": 4,
     "sourceQuestionNo": "8",
@@ -585,7 +585,7 @@ window.questionBank = [
       "$110^\\circ$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 평행한 두 직선 사이에 꺾은선이 있을 때는 각 꼭짓점을 지나는 보조 평행선을 생각해 각을 나눕니다.\n\n위쪽에서 내려오는 선분이 직선 $l$과 이루는 예각은 $30^\\circ$입니다. 왼쪽 꺾이는 점에서 오른쪽으로 내려가는 선분이 수평선과 이루는 예각을 $t^\\circ$라고 놓습니다. 그러면 왼쪽의 각은 $x=30^\\circ+t^\\circ$입니다.\n\n오른쪽 꺾이는 점을 지나는 수평선도 $l,m$과 평행합니다. 이 점에서 주어진 $75^\\circ$의 각은 $t^\\circ$와 아래쪽의 $y$를 더한 각이므로 $t+y=75^\\circ$입니다.\n\n따라서 $x+y=(30+t)+y=30+75=105^\\circ$입니다. 따라서 정답은 ④이다.",
+    "solution": "위쪽에서 내려오는 선분이 직선 $l$과 이루는 예각은 $30^\\circ$입니다. 왼쪽 꺾이는 점에서 오른쪽으로 내려가는 선분이 수평선과 이루는 예각을 $t^\\circ$라고 놓습니다. 그러면 왼쪽의 각은 $x=30^\\circ+t^\\circ$입니다.\n\n오른쪽 꺾이는 점을 지나는 수평선도 $l,m$과 평행합니다. 이 점에서 주어진 $75^\\circ$의 각은 $t^\\circ$와 아래쪽의 $y$를 더한 각이므로 $t+y=75^\\circ$입니다.\n\n따라서 $x+y=(30+t)+y=30+75=105^\\circ$입니다. 따라서 정답은 ④이다.",
     "score": 4,
     "difficultyBucket": 3,
     "sourceQuestionNo": "9",
@@ -653,7 +653,7 @@ window.questionBank = [
       "$\\angle A=30^\\circ,\\ \\angle B=70^\\circ,\\ \\angle C=80^\\circ$"
     ],
     "answer": "②, ④",
-    "solution": "[키포인트] 세 변, 두 변과 그 끼인각, 또는 한 변과 그 양 끝각이 정해지면 삼각형이 하나로 정해집니다.\n\n① $3+4=7$이어서 삼각형을 만들 수 없습니다.\n② 두 변 $BC,CA$와 그 끼인각 $C$가 주어졌으므로 하나로 정해집니다.\n③ 두 변과 끼인각이 아닌 각만 주어져 꼭짓점의 위치가 두 가지가 될 수 있으므로 하나라고 할 수 없습니다.\n④ $B=180^\\circ-100^\\circ-30^\\circ=50^\\circ$입니다. 한 변과 그 양 끝각을 알므로 하나로 정해집니다.\n⑤ 세 각만으로는 크기가 다른 닮은 삼각형을 무수히 그릴 수 있습니다.\n\n따라서 정답은 ②, ④이다.",
+    "solution": "① $3+4=7$이어서 삼각형을 만들 수 없습니다.\n② 두 변 $BC,CA$와 그 끼인각 $C$가 주어졌으므로 하나로 정해집니다.\n③ 두 변과 끼인각이 아닌 각만 주어져 꼭짓점의 위치가 두 가지가 될 수 있으므로 하나라고 할 수 없습니다.\n④ $B=180^\\circ-100^\\circ-30^\\circ=50^\\circ$입니다. 한 변과 그 양 끝각을 알므로 하나로 정해집니다.\n⑤ 세 각만으로는 크기가 다른 닮은 삼각형을 무수히 그릴 수 있습니다.\n\n따라서 정답은 ②, ④이다.",
     "score": 4,
     "difficultyBucket": 4,
     "sourceQuestionNo": "10",
@@ -722,7 +722,7 @@ window.questionBank = [
       "8가지"
     ],
     "answer": "①",
-    "solution": "[키포인트] 세 변을 짧은 것부터 $a\\le b\\le c$로 정하면 중복 없이 세고 $a+b>c$ 조건을 확인할 수 있습니다.\n\n$a+b+c=13$, $a,b,c$는 2 이상의 자연수입니다. 세 변의 조합을 열거하면 $(2,5,6)$, $(3,4,6)$, $(3,5,5)$, $(4,4,5)$만 가능합니다. 예를 들어 $(2,4,7)$은 $2+4\\le7$이므로 삼각형이 되지 않습니다.\n\n따라서 서로 다른 삼각형은 $4$가지이므로 정답은 ①이다.",
+    "solution": "$a+b+c=13$, $a,b,c$는 2 이상의 자연수입니다. 세 변의 조합을 열거하면 $(2,5,6)$, $(3,4,6)$, $(3,5,5)$, $(4,4,5)$만 가능합니다. 예를 들어 $(2,4,7)$은 $2+4\\le7$이므로 삼각형이 되지 않습니다.\n\n따라서 서로 다른 삼각형은 $4$가지이므로 정답은 ①이다.",
     "score": 4,
     "difficultyBucket": 3,
     "sourceQuestionNo": "11",
@@ -788,7 +788,7 @@ window.questionBank = [
       "$\\overline{AC}+\\overline{CE}=\\overline{DC}+\\overline{CB}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 정삼각형의 각은 $60^\\circ$이고 같은 길이의 변을 이용하여 두 삼각형을 합동으로 비교합니다.\n\n$AC=CD$, $CE=CB$, 그리고 $\\angle ACE=\\angle DCB=120^\\circ$입니다. 따라서 $\\triangle ACE\\equiv\\triangle DCB$ (SAS 합동)입니다. 대응변 $AE=DB$이므로 ①과 ③은 옳습니다. 두 정삼각형의 위치에서 직선 $AE,BD$가 이루는 예각은 $60^\\circ$이므로 ②도 옳습니다. $AC=DC$, $CE=CB$이므로 ⑤도 옳습니다.\n\n합동에서 $\\angle AEC$에 대응하는 각은 $\\angle DBC$이지 $\\angle BDC$가 아니므로 ④는 옳지 않습니다.\n\n따라서 정답은 ④이다.",
+    "solution": "$AC=CD$, $CE=CB$, 그리고 $\\angle ACE=\\angle DCB=120^\\circ$입니다. 따라서 $\\triangle ACE\\equiv\\triangle DCB$ (SAS 합동)입니다. 대응변 $AE=DB$이므로 ①과 ③은 옳습니다. 두 정삼각형의 위치에서 직선 $AE,BD$가 이루는 예각은 $60^\\circ$이므로 ②도 옳습니다. $AC=DC$, $CE=CB$이므로 ⑤도 옳습니다.\n\n합동에서 $\\angle AEC$에 대응하는 각은 $\\angle DBC$이지 $\\angle BDC$가 아니므로 ④는 옳지 않습니다.\n\n따라서 정답은 ④이다.",
     "score": 4,
     "difficultyBucket": 4,
     "sourceQuestionNo": "12",
@@ -858,7 +858,7 @@ window.questionBank = [
       "$\\angle e=117^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 정오각형과 정팔각형의 내각을 구한 뒤, 교점 $L$을 포함하는 사각형 $CDKL$의 내각의 합을 이용합니다.\n\n정오각형의 한 내각은 $(5-2)\\times180^\\circ\\div5=108^\\circ$이고 정팔각형의 한 내각은 $(8-2)\\times180^\\circ\\div8=135^\\circ$입니다. 따라서 $a=108^\\circ$, $b=135^\\circ$이고, 정오각형의 외각은 $c=72^\\circ$, 정팔각형의 외각은 $d=45^\\circ$입니다.\n\n점 $L$은 변 $BC$의 연장선 위에 있으므로 $\\angle DCL=180^\\circ-108^\\circ=72^\\circ$입니다. 점 $D$의 둘레에서 정오각형의 각 $108^\\circ$와 정팔각형의 각 $135^\\circ$를 제외하면 $\\angle CDK=360^\\circ-108^\\circ-135^\\circ=117^\\circ$입니다. 또 정팔각형의 외각으로부터 $\\angle DKL=45^\\circ$입니다.\n\n사각형 $CDKL$의 내각의 합은 $360^\\circ$이므로 $e=360^\\circ-(72^\\circ+117^\\circ+45^\\circ)=126^\\circ$입니다. 따라서 $e=117^\\circ$라고 한 ⑤가 옳지 않습니다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "정오각형의 한 내각은 $(5-2)\\times180^\\circ\\div5=108^\\circ$이고 정팔각형의 한 내각은 $(8-2)\\times180^\\circ\\div8=135^\\circ$입니다. 따라서 $a=108^\\circ$, $b=135^\\circ$이고, 정오각형의 외각은 $c=72^\\circ$, 정팔각형의 외각은 $d=45^\\circ$입니다.\n\n점 $L$은 변 $BC$의 연장선 위에 있으므로 $\\angle DCL=180^\\circ-108^\\circ=72^\\circ$입니다. 점 $D$의 둘레에서 정오각형의 각 $108^\\circ$와 정팔각형의 각 $135^\\circ$를 제외하면 $\\angle CDK=360^\\circ-108^\\circ-135^\\circ=117^\\circ$입니다. 또 정팔각형의 외각으로부터 $\\angle DKL=45^\\circ$입니다.\n\n사각형 $CDKL$의 내각의 합은 $360^\\circ$이므로 $e=360^\\circ-(72^\\circ+117^\\circ+45^\\circ)=126^\\circ$입니다. 따라서 $e=117^\\circ$라고 한 ⑤가 옳지 않습니다.\n\n따라서 정답은 ⑤이다.",
     "score": 4,
     "difficultyBucket": 4,
     "sourceQuestionNo": "13",
@@ -927,7 +927,7 @@ window.questionBank = [
       "$1440^\\circ$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 정다각형의 모든 외각의 합은 $360^\\circ$입니다.\n\n한 외각이 $45^\\circ$이므로 꼭짓점 수는 $360\\div45=8$입니다. 즉 정팔각형입니다. 내각의 합은 $(8-2)\\times180^\\circ=1080^\\circ$입니다.\n\n따라서 정답은 ③이다.",
+    "solution": "한 외각이 $45^\\circ$이므로 꼭짓점 수는 $360\\div45=8$입니다. 즉 정팔각형입니다. 내각의 합은 $(8-2)\\times180^\\circ=1080^\\circ$입니다.\n\n따라서 정답은 ③이다.",
     "score": 4,
     "difficultyBucket": 2,
     "sourceQuestionNo": "14",
@@ -993,7 +993,7 @@ window.questionBank = [
       "$50^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 같은 원에서 호의 길이와 중심각의 크기는 비례합니다. 또한 평행 조건을 이용하여 중심각의 관계를 만듭니다.\n\n$\\angle AOC=x^\\circ$라고 놓습니다. $OC\\parallel BD$이므로 이등변삼각형 $OBD$에서 $\\angle BOD=180^\\circ-2x^\\circ$입니다.\n\n호 $AC$와 호 $BD$의 길이비는 각각의 중심각 비와 같으므로 $\\dfrac{x}{180-2x}=\\dfrac{10}{16}$. 따라서 $16x=1800-20x$, $36x=1800$, $x=50$입니다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "$\\angle AOC=x^\\circ$라고 놓습니다. $OC\\parallel BD$이므로 이등변삼각형 $OBD$에서 $\\angle BOD=180^\\circ-2x^\\circ$입니다.\n\n호 $AC$와 호 $BD$의 길이비는 각각의 중심각 비와 같으므로 $\\dfrac{x}{180-2x}=\\dfrac{10}{16}$. 따라서 $16x=1800-20x$, $36x=1800$, $x=50$입니다.\n\n따라서 정답은 ⑤이다.",
     "score": 4,
     "difficultyBucket": 4,
     "sourceQuestionNo": "15",
@@ -1063,7 +1063,7 @@ window.questionBank = [
       "$9\\pi\\mathrm{cm}^2$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 이등변삼각형의 밑각과 반지름이 같은 삼각형을 이용해 중심각을 구합니다.\n\n$ABC$는 이등변삼각형이고 꼭지각이 $50^\\circ$이므로 밑각은 $(180^\\circ-50^\\circ)\\div2=65^\\circ$입니다. 반원의 지름 $BC$에 대한 원주각 $BDC, BEC$는 각각 $90^\\circ$입니다. 따라서 $OD=OB$이므로 이등변삼각형 $BOD$에서 $\\angle BOD=180^\\circ-2\\times65^\\circ=50^\\circ$입니다. 마찬가지로 $OE=OC$이므로 $\\angle EOC=50^\\circ$입니다. 반원의 중심각 $180^\\circ$에서 양쪽 $50^\\circ$를 빼면 $\\angle DOE=80^\\circ$입니다.\n\n반지름은 $6\\mathrm{cm}$이므로 넓이는 $\\pi\\times6^2\\times\\dfrac{80}{360}=8\\pi\\mathrm{cm}^2$입니다.\n\n따라서 정답은 ④이다.",
+    "solution": "$ABC$는 이등변삼각형이고 꼭지각이 $50^\\circ$이므로 밑각은 $(180^\\circ-50^\\circ)\\div2=65^\\circ$입니다. 반원의 지름 $BC$에 대한 원주각 $BDC, BEC$는 각각 $90^\\circ$입니다. 따라서 $OD=OB$이므로 이등변삼각형 $BOD$에서 $\\angle BOD=180^\\circ-2\\times65^\\circ=50^\\circ$입니다. 마찬가지로 $OE=OC$이므로 $\\angle EOC=50^\\circ$입니다. 반원의 중심각 $180^\\circ$에서 양쪽 $50^\\circ$를 빼면 $\\angle DOE=80^\\circ$입니다.\n\n반지름은 $6\\mathrm{cm}$이므로 넓이는 $\\pi\\times6^2\\times\\dfrac{80}{360}=8\\pi\\mathrm{cm}^2$입니다.\n\n따라서 정답은 ④이다.",
     "score": 4,
     "difficultyBucket": 4,
     "sourceQuestionNo": "16",
@@ -1132,7 +1132,7 @@ window.questionBank = [
       "$l\\parallel m,\\ l\\parallel n$이면 $m\\parallel n$이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 공간에서는 두 직선이 만나지 않으면서 평행하지도 않은 꼬인 위치가 가능하므로 평면에서 성립하는 성질을 무조건 적용하면 안 됩니다.\n\n⑤ 직선 $l$과 평행한 두 서로 다른 직선 $m,n$은 서로 방향이 같으므로 평행합니다.\n\n① $l$과 $m$이 직각 방향이어도 실제로 만나지 않는 꼬인 위치일 수 있어 두 직선이 수직이라고 할 수 없습니다.\n② $l$이 $P$와 어떤 위치에 있는지는 정해지지 않습니다.\n③ 한 직선에 수직인 두 직선이 공간에서 서로 평행할 필요는 없습니다.\n④ $m,n$이 만나지 않을 수 있으므로 수직 관계가 보장되지 않습니다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "⑤ 직선 $l$과 평행한 두 서로 다른 직선 $m,n$은 서로 방향이 같으므로 평행합니다.\n\n① $l$과 $m$이 직각 방향이어도 실제로 만나지 않는 꼬인 위치일 수 있어 두 직선이 수직이라고 할 수 없습니다.\n② $l$이 $P$와 어떤 위치에 있는지는 정해지지 않습니다.\n③ 한 직선에 수직인 두 직선이 공간에서 서로 평행할 필요는 없습니다.\n④ $m,n$이 만나지 않을 수 있으므로 수직 관계가 보장되지 않습니다.\n\n따라서 정답은 ⑤이다.",
     "score": 5,
     "difficultyBucket": 4,
     "sourceQuestionNo": "17",
@@ -1201,7 +1201,7 @@ window.questionBank = [
       "$160^\\circ$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 두 정삼각형의 끼인각이 같음을 이용하여 합동인 두 삼각형을 만들고, 점 $D$ 둘레의 각을 합합니다.\n\n정삼각형 $ABC$에서 $CA=CB$, 정삼각형 $CDE$에서 $CD=CE$입니다. 또 $\\angle ACD=\\angle BCE$이므로 $\\triangle ACD\\equiv\\triangle BCE$ (SAS 합동)입니다. 따라서 $\\angle ADC=\\angle BEC$입니다.\n\n그림에서 $\\angle DBC+\\angle CBE=\\angle DBE=80^\\circ$이고, $\\angle BCD+\\angle BCE=\\angle DCE=60^\\circ$입니다. 삼각형 $BCD$, $BCE$ 각각에 내각의 합을 적용하여 더하면\n$\\angle BDC+\\angle BEC=360^\\circ-80^\\circ-60^\\circ=220^\\circ$입니다.\n\n따라서 $\\angle BDC+\\angle ADC=220^\\circ$입니다. 점 $D$ 둘레에서 세 반직선 $DA,DB,DC$가 만드는 각을 합하면 $360^\\circ$이므로 $\\angle ADB=360^\\circ-220^\\circ=140^\\circ$입니다.\n\n따라서 정답은 ①이다.",
+    "solution": "정삼각형 $ABC$에서 $CA=CB$, 정삼각형 $CDE$에서 $CD=CE$입니다. 또 $\\angle ACD=\\angle BCE$이므로 $\\triangle ACD\\equiv\\triangle BCE$ (SAS 합동)입니다. 따라서 $\\angle ADC=\\angle BEC$입니다.\n\n그림에서 $\\angle DBC+\\angle CBE=\\angle DBE=80^\\circ$이고, $\\angle BCD+\\angle BCE=\\angle DCE=60^\\circ$입니다. 삼각형 $BCD$, $BCE$ 각각에 내각의 합을 적용하여 더하면\n$\\angle BDC+\\angle BEC=360^\\circ-80^\\circ-60^\\circ=220^\\circ$입니다.\n\n따라서 $\\angle BDC+\\angle ADC=220^\\circ$입니다. 점 $D$ 둘레에서 세 반직선 $DA,DB,DC$가 만드는 각을 합하면 $360^\\circ$이므로 $\\angle ADB=360^\\circ-220^\\circ=140^\\circ$입니다.\n\n따라서 정답은 ①이다.",
     "score": 5,
     "difficultyBucket": 5,
     "sourceQuestionNo": "18",
@@ -1271,7 +1271,7 @@ window.questionBank = [
       "$400^\\circ$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 직선 $AD$와 $BE$가 만나는 점을 $X$라 놓고 아래 사각형과 위 두 삼각형의 각을 따로 더합니다.\n\n사각형 $BXDC$의 내각의 합에서 $\\angle B+\\angle C+\\angle D=360^\\circ-\\angle BXD$입니다. 맞꼭지각이므로 $\\angle BXD=\\angle AXE$입니다. 이 각을 $t^\\circ$라고 놓으면 $B+C+D=360^\\circ-t^\\circ$입니다.\n\n삼각형 $AXF$와 $EXF$의 내각의 합을 더합니다. 점 $F$에서 두 각의 합은 주어진 $\\angle AFE=20^\\circ$입니다. 점 $X$에서는 두 삼각형의 각의 합이 $\\angle AXE$를 제외한 나머지 둘레각, 즉 $360^\\circ-t^\\circ$입니다. 따라서\n$A+E+20^\\circ+(360^\\circ-t^\\circ)=360^\\circ$에서 $A+E=t^\\circ-20^\\circ$입니다.\n\n그러므로 $A+B+C+D+E=(t-20)+(360-t)=340^\\circ$입니다. 따라서 정답은 ②이다.",
+    "solution": "사각형 $BXDC$의 내각의 합에서 $\\angle B+\\angle C+\\angle D=360^\\circ-\\angle BXD$입니다. 맞꼭지각이므로 $\\angle BXD=\\angle AXE$입니다. 이 각을 $t^\\circ$라고 놓으면 $B+C+D=360^\\circ-t^\\circ$입니다.\n\n삼각형 $AXF$와 $EXF$의 내각의 합을 더합니다. 점 $F$에서 두 각의 합은 주어진 $\\angle AFE=20^\\circ$입니다. 점 $X$에서는 두 삼각형의 각의 합이 $\\angle AXE$를 제외한 나머지 둘레각, 즉 $360^\\circ-t^\\circ$입니다. 따라서\n$A+E+20^\\circ+(360^\\circ-t^\\circ)=360^\\circ$에서 $A+E=t^\\circ-20^\\circ$입니다.\n\n그러므로 $A+B+C+D+E=(t-20)+(360-t)=340^\\circ$입니다. 따라서 정답은 ②이다.",
     "score": 4,
     "difficultyBucket": 4,
     "sourceQuestionNo": "19",
@@ -1342,7 +1342,7 @@ window.questionBank = [
       "$\\dfrac{121}{4}\\pi\\mathrm{m}^2$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 줄이 울타리를 통과하지 못하므로 꼭짓점 $A$에서 직접 닿는 영역과 옆 모서리를 돌아 닿는 영역을 나누어 계산합니다.\n\n① 울타리가 차지하는 한 사분면을 제외한 $A$ 중심의 반지름 $6$인 원의 $\\frac34$ 넓이: $\\frac34\\times36\\pi=27\\pi$.\n② 가로 $4$ m의 벽을 따라 이동하여 반대쪽 꼭짓점에 닿으면 남은 끈 $6-4=2$ m이고, 추가 영역은 반지름 $2$의 원의 $\\frac14$ 넓이 $\\pi$입니다.\n③ 세로 $3$ m의 벽을 따라 돌아가면 남은 끈 $6-3=3$ m이고 추가 영역은 $\\frac14\\times9\\pi=\\frac94\\pi$입니다.\n\n세 영역의 내부가 겹치지 않으므로 합은 $27\\pi+\\pi+\\frac94\\pi=\\frac{121}{4}\\pi\\mathrm{m}^2$입니다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "① 울타리가 차지하는 한 사분면을 제외한 $A$ 중심의 반지름 $6$인 원의 $\\frac34$ 넓이: $\\frac34\\times36\\pi=27\\pi$.\n② 가로 $4$ m의 벽을 따라 이동하여 반대쪽 꼭짓점에 닿으면 남은 끈 $6-4=2$ m이고, 추가 영역은 반지름 $2$의 원의 $\\frac14$ 넓이 $\\pi$입니다.\n③ 세로 $3$ m의 벽을 따라 돌아가면 남은 끈 $6-3=3$ m이고 추가 영역은 $\\frac14\\times9\\pi=\\frac94\\pi$입니다.\n\n세 영역의 내부가 겹치지 않으므로 합은 $27\\pi+\\pi+\\frac94\\pi=\\frac{121}{4}\\pi\\mathrm{m}^2$입니다.\n\n따라서 정답은 ⑤이다.",
     "score": 5,
     "difficultyBucket": 5,
     "sourceQuestionNo": "20",
@@ -1405,7 +1405,7 @@ window.questionBank = [
     "content": "[서술형 1] 한 직선 위에 세 점 $A,B,C$가 차례대로 있다. $\\overline{AB}:\\overline{BC}=2:3$이고 $\\overline{AB}$의 중점을 $M$, $\\overline{BC}$의 중점을 $N$이라 할 때, $\\overline{MN}:\\overline{BC}$를 구하고 그 과정을 서술하시오. (5점)<br><div class=\"note-box\">조건 1. $\\overline{MN}$과 $\\overline{BC}$의 비는 자연수의 비로 나타낸다.<br>조건 2. 구하는 과정을 그림과 식으로 나타낸다.</div>",
     "choices": [],
     "answer": "$5:6$",
-    "solution": "[키포인트] 중점 사이 거리 $MN$은 $MB$와 $BN$의 합입니다.\n\n$AB:BC=2:3$이므로 $AB=2k$, $BC=3k$로 놓습니다. $M$은 $AB$의 중점이므로 $MB=k$이고, $N$은 $BC$의 중점이므로 $BN=\\frac{3k}{2}$입니다.\n\n점의 순서가 $A,M,B,N,C$이므로 $MN=MB+BN=k+\\frac{3k}{2}=\\frac{5k}{2}$입니다. 따라서 $MN:BC=\\frac{5k}{2}:3k=5:6$입니다.\n\n그림에는 $A-M-B-N-C$의 순서로 점을 표시하고, 두 중점을 각각 표시합니다. 따라서 구하는 비는 $5:6$이다.",
+    "solution": "$AB:BC=2:3$이므로 $AB=2k$, $BC=3k$로 놓습니다. $M$은 $AB$의 중점이므로 $MB=k$이고, $N$은 $BC$의 중점이므로 $BN=\\frac{3k}{2}$입니다.\n\n점의 순서가 $A,M,B,N,C$이므로 $MN=MB+BN=k+\\frac{3k}{2}=\\frac{5k}{2}$입니다. 따라서 $MN:BC=\\frac{5k}{2}:3k=5:6$입니다.\n\n그림에는 $A-M-B-N-C$의 순서로 점을 표시하고, 두 중점을 각각 표시합니다. 따라서 구하는 비는 $5:6$이다.",
     "score": 5,
     "difficultyBucket": 3,
     "sourceQuestionNo": "1",
@@ -1468,7 +1468,7 @@ window.questionBank = [
     "content": "[서술형 2] 다음 그림에서 세 점 $A,O,B$는 한 직선 위에 있고, $\\dfrac{1}{3}\\angle AOD=\\angle COD$, $\\dfrac{1}{3}\\angle BOD=\\angle DOE$일 때, $\\angle COE$의 크기를 구하고 그 과정을 서술하시오. (4점)",
     "choices": [],
     "answer": "$60^\\circ$",
-    "solution": "[키포인트] 한 직선 위의 네 각을 부분으로 나누면 합은 $180^\\circ$입니다.\n\n$\\angle COD=x$, $\\angle DOE=y$라 놓으면, $\\angle AOD=3x$이므로 $\\angle AOC=2x$입니다. 마찬가지로 $\\angle BOD=3y$이므로 $\\angle EOB=2y$입니다.\n\n$\\angle AOB=2x+x+y+2y=3(x+y)=180^\\circ$이므로 $x+y=60^\\circ$입니다.\n\n$\\angle COE=x+y$이므로 따라서 구하는 각의 크기는 $60^\\circ$이다.",
+    "solution": "$\\angle COD=x$, $\\angle DOE=y$라 놓으면, $\\angle AOD=3x$이므로 $\\angle AOC=2x$입니다. 마찬가지로 $\\angle BOD=3y$이므로 $\\angle EOB=2y$입니다.\n\n$\\angle AOB=2x+x+y+2y=3(x+y)=180^\\circ$이므로 $x+y=60^\\circ$입니다.\n\n$\\angle COE=x+y$이므로 따라서 구하는 각의 크기는 $60^\\circ$이다.",
     "score": 4,
     "difficultyBucket": 3,
     "sourceQuestionNo": "2",
@@ -1533,7 +1533,7 @@ window.questionBank = [
     "content": "[서술형 3] 다음 그림은 한 변의 길이가 $8\\mathrm{cm}$인 정사각형 $ABCD$에서 두 점 $A,B$를 중심으로 하는 부채꼴을 각각 그린 것이다. 이때 색칠한 부분의 둘레의 길이와 넓이를 구하고 그 과정을 서술하시오. (5점)",
     "choices": [],
     "answer": "둘레 $8+\\dfrac{16\\pi}{3}\\mathrm{cm}$, 넓이 $\\dfrac{64\\pi}{3}-16\\sqrt3\\mathrm{cm}^2$",
-    "solution": "[키포인트] 두 원호의 교점 $E$는 $AE=BE=AB=8$을 만족하므로 $\\triangle ABE$는 정삼각형입니다.\n\n따라서 $\\angle BAE=\\angle ABE=60^\\circ$입니다. 색칠한 부분의 경계는 길이 $8$인 선분 $AB$와 중심 $A,B$, 반지름 $8$, 중심각 $60^\\circ$인 두 원호로 이루어집니다. 원호 하나의 길이는 $2\\pi\\times8\\times\\frac{60}{360}=\\frac{8\\pi}{3}$이므로 둘레는 $8+\\frac{16\\pi}{3}\\mathrm{cm}$입니다.\n\n색칠한 부분의 넓이는 반지름 $8$, 중심각 $60^\\circ$인 부채꼴 두 개의 넓이에서 정삼각형 $ABE$의 넓이를 뺀 것입니다.\n\n$2\\times\\pi\\times8^2\\times\\frac{60}{360}-\\frac12\\times8\\times8\\times\\frac{\\sqrt3}{2}=\\frac{64\\pi}{3}-16\\sqrt3$.\n\n따라서 구하는 둘레는 $8+\\frac{16\\pi}{3}\\mathrm{cm}$이고 넓이는 $(\\frac{64\\pi}{3}-16\\sqrt3)\\mathrm{cm}^2$이다.",
+    "solution": "따라서 $\\angle BAE=\\angle ABE=60^\\circ$입니다. 색칠한 부분의 경계는 길이 $8$인 선분 $AB$와 중심 $A,B$, 반지름 $8$, 중심각 $60^\\circ$인 두 원호로 이루어집니다. 원호 하나의 길이는 $2\\pi\\times8\\times\\frac{60}{360}=\\frac{8\\pi}{3}$이므로 둘레는 $8+\\frac{16\\pi}{3}\\mathrm{cm}$입니다.\n\n색칠한 부분의 넓이는 반지름 $8$, 중심각 $60^\\circ$인 부채꼴 두 개의 넓이에서 정삼각형 $ABE$의 넓이를 뺀 것입니다.\n\n$2\\times\\pi\\times8^2\\times\\frac{60}{360}-\\frac12\\times8\\times8\\times\\frac{\\sqrt3}{2}=\\frac{64\\pi}{3}-16\\sqrt3$.\n\n따라서 구하는 둘레는 $8+\\frac{16\\pi}{3}\\mathrm{cm}$이고 넓이는 $(\\frac{64\\pi}{3}-16\\sqrt3)\\mathrm{cm}^2$이다.",
     "score": 5,
     "difficultyBucket": 5,
     "sourceQuestionNo": "3",
@@ -1598,7 +1598,7 @@ window.questionBank = [
     "content": "[서술형 4] 다음 그림과 같이 정삼각형 $ABC$에서 $\\overline{BD}=\\overline{CE}$이고 점 $P$는 $\\overline{AD}$와 $\\overline{BE}$의 교점일 때, $\\angle PBD+\\angle PDB$의 크기를 구하려고 한다. 다음 물음에 답하시오. (6점)<br>(1) 합동인 두 삼각형을 찾아 합동인 이유를 설명하시오. (3점)<br>(2) $\\angle PBD+\\angle PDB$의 크기를 구하고 그 이유를 서술하시오. (3점)",
     "choices": [],
     "answer": "(1) $\\triangle ABD\\equiv\\triangle BCE$ (SAS), (2) $120^\\circ$",
-    "solution": "[키포인트] 정삼각형의 같은 변과 $60^\\circ$인 끼인각을 이용하면 두 삼각형의 합동을 증명할 수 있습니다.\n\n(1) $ABC$가 정삼각형이므로 $AB=BC$이고 $\\angle ABD=\\angle BCE=60^\\circ$입니다. 또 조건에서 $BD=CE$이므로 두 변과 그 끼인각이 각각 같습니다. 따라서 $\\triangle ABD\\equiv\\triangle BCE$ (SAS 합동)입니다.\n\n(2) 합동에서 $\\angle ADB=\\angle BEC$입니다. 점 $P$는 $AD,BE$ 위에 있으므로 $\\angle PDB=\\angle ADB$, $\\angle PBD=\\angle EBC$입니다. $\\triangle BCE$의 내각의 합을 이용하면 $\\angle BEC+\\angle EBC=180^\\circ-\\angle BCE=180^\\circ-60^\\circ=120^\\circ$입니다.\n\n따라서 구하는 $\\angle PBD+\\angle PDB$의 크기는 $120^\\circ$이다.",
+    "solution": "(1) $ABC$가 정삼각형이므로 $AB=BC$이고 $\\angle ABD=\\angle BCE=60^\\circ$입니다. 또 조건에서 $BD=CE$이므로 두 변과 그 끼인각이 각각 같습니다. 따라서 $\\triangle ABD\\equiv\\triangle BCE$ (SAS 합동)입니다.\n\n(2) 합동에서 $\\angle ADB=\\angle BEC$입니다. 점 $P$는 $AD,BE$ 위에 있으므로 $\\angle PDB=\\angle ADB$, $\\angle PBD=\\angle EBC$입니다. $\\triangle BCE$의 내각의 합을 이용하면 $\\angle BEC+\\angle EBC=180^\\circ-\\angle BCE=180^\\circ-60^\\circ=120^\\circ$입니다.\n\n따라서 구하는 $\\angle PBD+\\angle PDB$의 크기는 $120^\\circ$이다.",
     "score": 6,
     "difficultyBucket": 4,
     "sourceQuestionNo": "4",
