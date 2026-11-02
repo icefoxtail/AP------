@@ -541,21 +541,107 @@ describe('High school similar exams: grade-aware harness', () => {
     assert.ok(res.errors.some((e) => e.includes('no <title>/<desc>') && e.includes('caption')));
   });
 
-  test('Fault Injection: UNSUPPORTED solution figure is only accepted under an explicit, blob-bound VISUAL_DEBT sign-off', () => {
+  test('UNSUPPORTED solution figure with a stated reason and a written solution is a warning, with or without a VISUAL_DEBT receipt', () => {
     const fx = stageHighFixture(HS_DEBT, 'debt');
-    assert.equal(fx.run().ok, true, 'control copy must pass');
+    const control = fx.run();
+    assert.equal(control.ok, true, 'control copy must pass');
+    assert.ok(control.warnings.some((w) => w.includes('VISUAL_DEBT_ACKNOWLEDGED')), 'receipt-acknowledged debt stays visible');
+    // A plain sign-off (no VISUAL_DEBT) used to turn every UNSUPPORTED solution figure into an error.
     const r = readJson(fx.receipt);
     r.signOffStatus = 'SIGNED_OFF_PASS';
     writeJson(fx.receipt, r);
     const res = fx.run();
+    assert.equal(res.ok, true, res.errors.join('; '));
+    assert.ok(res.warnings.some((w) => w.includes('SOLUTION_FIGURE_UNSUPPORTED_TEXT_COMPLETE')), 'must stay visible as a warning');
+  });
+
+  test('Fault Injection: UNSUPPORTED solution figure without a reason, or without a written solution, still fails', () => {
+    const fx = stageHighFixture(HS_DEBT, 'debtreason');
+    const r = readJson(fx.receipt);
+    r.signOffStatus = 'SIGNED_OFF_PASS'; // no VISUAL_DEBT: the plan itself has to justify the missing figure
+    writeJson(fx.receipt, r);
+    const p = fx.plan('q09-solution.plan.json');
+    const plan = readJson(p);
+    assert.equal(plan.status, 'UNSUPPORTED');
+    writeJson(p, { status: 'UNSUPPORTED' });
+    let res = fx.run();
     assert.equal(res.ok, false);
-    assert.ok(res.errors.some((e) => e.includes('UNSUPPORTED cannot be used as a production-visual PASS')));
-    r.signOffStatus = 'SIGNED_OFF_PASS_WITH_VISUAL_DEBT';
+    assert.ok(res.errors.some((e) => e.includes('q09-solution.plan.json') && e.includes('UNSUPPORTED')), res.errors.join('; '));
+    writeJson(p, plan);
+    assert.equal(fx.run().ok, true, 'restored plan passes again');
+    // Solution reduced to a stub: the text no longer completes the explanation.
+    const js = fs.readFileSync(fx.js, 'utf8');
+    const bank = new Function('const window={};' + js + ';return window.questionBank;')();
+    const stub = bank[8].solution;
+    fs.writeFileSync(fx.js, js.replace(JSON.stringify(stub), JSON.stringify('풀이 생략함.')), 'utf8');
+    res = fx.run();
+    assert.equal(res.ok, false);
+    assert.ok(res.errors.some((e) => e.includes('q09-solution.plan.json UNSUPPORTED cannot be used')), res.errors.join('; '));
+  });
+
+  test('Fault Injection: a stale receipt blob still blocks a text-complete UNSUPPORTED solution exam', () => {
+    const fx = stageHighFixture(HS_DEBT, 'debtblob');
+    const r = readJson(fx.receipt);
+    r.signOffStatus = 'SIGNED_OFF_PASS';
     r.candidateGitBlobSha1 = '1'.repeat(40);
     writeJson(fx.receipt, r);
-    const res2 = fx.run();
-    assert.equal(res2.ok, false);
-    assert.ok(res2.errors.some((e) => e.includes('UNSUPPORTED cannot be used')));
+    const res = fx.run();
+    assert.equal(res.ok, false);
+    assert.ok(res.errors.some((e) => e.includes('Receipt candidateGitBlobSha1 mismatch')));
+  });
+
+  test('단답형 questions are matched as a no-choice, free-answer type; unknown types and 단답형 with choices still fail', () => {
+    const fx = stageHighFixture(HS, 'short');
+    const js = fs.readFileSync(fx.js, 'utf8');
+    const marker = '"questionType": "서술형"';
+    assert.ok(js.includes(marker), 'fixture must contain a 서술형 question');
+    fs.writeFileSync(fx.js, js.replace(marker, '"questionType": "단답형"'), 'utf8');
+    let res = fx.run();
+    assert.ok(!res.errors.some((e) => e.includes('invalid questionType')), res.errors.join('; '));
+    assert.ok(!res.errors.some((e) => e.includes('단답형 question')), res.errors.join('; '));
+    fs.writeFileSync(fx.js, js.replace(marker, '"questionType": "주관식"'), 'utf8');
+    res = fx.run();
+    assert.ok(res.errors.some((e) => e.includes('invalid questionType (주관식)')));
+    // Same question, now a 단답형 that also carries choices (its own empty "choices" follows the type line).
+    const withChoices = js.replace(marker, () => '"questionType": "단답형"');
+    const at = withChoices.indexOf('"questionType": "단답형"');
+    const emptyAt = withChoices.indexOf('"choices": [],', at);
+    fs.writeFileSync(fx.js, withChoices.slice(0, emptyAt) + '"choices": ["$1$", "$2$"],' + withChoices.slice(emptyAt + '"choices": [],'.length), 'utf8');
+    res = fx.run();
+    assert.ok(res.errors.some((e) => e.includes('단답형 question must have 0 choices')), res.errors.join('; '));
+  });
+
+  test('Engine glyph-outline SVG: labels are decoded from data-owner, title/desc fall back to the plan caption, real omissions still fail', () => {
+    const fx = stageHighFixture('24_효천고_2학기_기말_고1_수학_유사', 'glyph', 'archive/exams/similar/high/h1/2final');
+    const svgRel = 'assets/images/24_효천고_2학기_기말_고1_수학_유사/q23.svg';
+    const svgSrc = fs.readFileSync(path.join(REPO_ROOT, 'archive', svgRel), 'utf8');
+    assert.ok(/data-outline-width=[^>]*data-owner="point-A"/.test(svgSrc) && !/<text\b/.test(svgSrc), 'fixture: glyph labels, no <text>');
+    const svgPath = path.join(TEST_SCRATCH, 'glyph-q23.svg');
+    // Point Q23 at a scratch copy of its SVG (an absolute image path is read as is); later calls only rewrite the SVG.
+    const js = fs.readFileSync(fx.js, 'utf8');
+    assert.ok(js.includes(`"${svgRel}"`), 'image ref must exist in the fixture');
+    fs.writeFileSync(fx.js, js.replace(`"${svgRel}"`, () => JSON.stringify(svgPath)), 'utf8');
+    const useSvg = (content) => fs.writeFileSync(svgPath, content, 'utf8');
+    const q23 = (res) => res.errors.filter((e) => e.startsWith('Q23:') && e.includes('SVG'));
+    const q23Labels = (res) => res.errors.filter((e) => e.includes("Point/symbol"));
+
+    useSvg(svgSrc);
+    let res = fx.run();
+    assert.deepEqual(q23(res).filter((e) => /<title>|<desc>|Point\/symbol/.test(e)), [], q23(res).join('; '));
+
+    // The label of B is no longer drawn: must be reported, not silently accepted.
+    useSvg(svgSrc.replace(/data-owner="point-B"/g, 'data-owner="gridline-B"'));
+    res = fx.run();
+    assert.ok(q23Labels(res).some((e) => e.includes("'B'")), 'missing B label must fail');
+    assert.ok(!q23Labels(res).some((e) => e.includes("'A'")), 'A is still drawn');
+
+    // No caption to stand in for the missing <title>/<desc>: must fail.
+    const p = fx.plan('q23-problem.plan.json');
+    const plan = readJson(p);
+    writeJson(p, { ...plan, caption: '' });
+    useSvg(svgSrc);
+    res = fx.run();
+    assert.ok(res.errors.some((e) => e.startsWith('Q23:') && e.includes('no <title>/<desc>') && e.includes('caption')), res.errors.join('; '));
   });
 
   test('Fault Injection: UNSUPPORTED problem figure is never accepted by a VISUAL_DEBT sign-off', () => {
