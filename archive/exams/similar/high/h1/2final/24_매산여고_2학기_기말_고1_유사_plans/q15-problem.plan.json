@@ -1,0 +1,98 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "3",
+      "1"
+    ],
+    "denominator": [
+      "-2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      9
+    ],
+    "viewport": [
+      -4,
+      9,
+      -3,
+      9
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "4"
+        },
+        {
+          "id": "M",
+          "x": "2",
+          "y": "7/2"
+        },
+        {
+          "id": "N",
+          "x": "4",
+          "y": "1"
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "1"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "R",
+          "points": [
+            "P",
+            "N",
+            "Q",
+            "M"
+          ]
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P",
+    "M": "M",
+    "N": "N",
+    "Q": "Q"
+  },
+  "caption": "곡선 위의 점 P에서 두 점근선 x=2, y=1에 내린 수선의 발을 M, N이라 하고 두 점근선의 교점을 Q라 할 때 사각형 PNQM은 직사각형이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "함수 y=5/(x-2)+1의 그래프 위의 점 P에서 두 점근선에 내린 수선의 발 M, N",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "두 점근선의 교점 Q와 사각형 PNQM",
+      "mappedTo": [
+        "graphPlan.overlays.polygons"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "그래프 위의 점 P, 점근선 위의 수선의 발 M, N, 두 점근선의 교점 Q와 사각형 PNQM의 위치를 보여 준다."
+  ],
+  "sourceQuote": "사각형 $PNQM$의 둘레의 길이의 최솟값",
+  "assetPath": "assets/images/24_매산여고_2학기_기말_고1_유사/q15.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/2final/24_매산여고_2학기_기말_고1_유사_plans/engine_evidence/q15-problem-result.json",
+    "statePath": "archive/exams/similar/high/h1/2final/24_매산여고_2학기_기말_고1_유사_plans/engine_evidence/q15-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h1/2final/24_매산여고_2학기_기말_고1_유사_plans/engine_evidence/q15-problem.svg"
+  }
+}

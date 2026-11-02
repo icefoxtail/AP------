@@ -1,0 +1,360 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "24_매산여고_2학기_기말_고1_유사",
+  "candidateJsPath": "archive/exams/similar/high/h1/2final/24_매산여고_2학기_기말_고1_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h1/2final/24_매산여고_2학기_기말_고1_유사.meta-q01-q23.json",
+  "candidateGitBlobSha1": "ff8927b051d358c0356ecfe3816e242a8ab8773e",
+  "reviewTimestamp": "2026-11-02T00:00:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "reviewRound": 1,
+  "overallVerdict": "PASS",
+  "signOffStatus": "PASS_WITH_OPEN_DEFECTS_AND_VISUAL_DEBT",
+  "blindFirstPass": {
+    "totalSolved": 23,
+    "answerMatches": 23,
+    "answerMismatches": 0,
+    "ambiguousStems": 0,
+    "freezeFile": "scratchpad/rev_maesan/freeze_blind.json (sha256 ba0d0e0eeb15c4a088198713031a091749bdc2d2c6f19afa3700b75865a48504), solver scratchpad/rev_maesan/blind.py",
+    "method": "Student-visible fields only (content/choices; Q15 figure not needed) were dumped without answer/solution; all 23 solved by hand and cross-checked by brute force (python: derangements, lexicographic rank, dice enumeration, coprime count, nPr equation scan, seating enumeration, alternating-parity password enumeration, monotone-function count, numeric intersection scans for Q6/Q7/Q16/Q18). Frozen first, then compared to stored answers.",
+    "disclosure": "Reviewer had read the task brief naming the PT binding registryChanges and Q17 binding MISSING, but no answer or solution text before freezing.",
+    "frozenAnswers": {
+      "1": "④",
+      "2": "①",
+      "3": "⑤",
+      "4": "①",
+      "5": "⑤",
+      "6": "②",
+      "7": "③",
+      "8": "③",
+      "9": "③",
+      "10": "④",
+      "11": "⑤",
+      "12": "②",
+      "13": "③",
+      "14": "②",
+      "15": "④",
+      "16": "①",
+      "17": "⑤",
+      "18": "①",
+      "19": "②",
+      "20": "④",
+      "21": "60",
+      "22": "6 integers: 7,8,9,10,11,12",
+      "23": "1) f^-1(x)=(x^2-8)/2 (x>=0); 2) 45/8"
+    }
+  },
+  "questionReviews": [
+    {
+      "qid": 1,
+      "blindAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "a<3: x>=0 range (-inf,5]; x<0 needs decreasing slope a-3<0 so range (5,inf)"
+    },
+    {
+      "qid": 2,
+      "blindAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "fog=-2x+2k-3, gof=-2x+3+k => k=6, g(1)=5"
+    },
+    {
+      "qid": 3,
+      "blindAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "y=-3+10/(x+2): a=10,b=-2,c=-3 => 5"
+    },
+    {
+      "qid": 4,
+      "blindAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "c=2, b=2a, 0=-sqrt(b)+2 => b=4,a=2 => 8"
+    },
+    {
+      "qid": 5,
+      "blindAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "y=4+7/(x-2); x<0 gives y in (0.5,4)>0 so passes quadrant II; others true"
+    },
+    {
+      "qid": 6,
+      "blindAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "y1 decreasing 7->2, y2 increasing; diff k-5..k+1 => -1<=k<=5, min -1"
+    },
+    {
+      "qid": 7,
+      "blindAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "N(0)=1,N(1)=2,N(3)=1,N(5)=2 => 6"
+    },
+    {
+      "qid": 8,
+      "blindAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "200-100-66+33=67"
+    },
+    {
+      "qid": 9,
+      "blindAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "derangements D6=265"
+    },
+    {
+      "qid": 10,
+      "blindAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "7P2=7*6=42, 9C9=1 (all chosen) => 43"
+    },
+    {
+      "qid": 11,
+      "blindAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "48+6+4+0+0+1=59"
+    },
+    {
+      "qid": 12,
+      "blindAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "t=n-3: t^2(t^2-1)=240 => n=7,m=12 => 19"
+    },
+    {
+      "qid": 13,
+      "blindAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "z=1:3,z=2:3,z=3:3,z=4:2 => 11"
+    },
+    {
+      "qid": 14,
+      "blindAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "C(18,2)-7=146"
+    },
+    {
+      "qid": 15,
+      "blindAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "rectangle perimeter 2(u+5/u)>=4sqrt5 at u=sqrt5, P in Q1 ok"
+    },
+    {
+      "qid": 16,
+      "blindAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "f(k)=2 for k<=2, f(k)=1 for k>=3 => max k=2"
+    },
+    {
+      "qid": 17,
+      "blindAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "range [4,inf) needs r<=4, q<=(4-r)^2 => q-2r^2<=32-(r+4)^2 => 32 at r=-4"
+    },
+    {
+      "qid": 18,
+      "blindAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "right branch tangent k=-3/4, left branch k<5 => a+b=17/4"
+    },
+    {
+      "qid": 19,
+      "blindAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "teacher position sets 3*6+1*5=23; 23*3!*5!=A*5! => A=138"
+    },
+    {
+      "qid": 20,
+      "blindAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "OEOEO? O-E-O-E-O: P(5,3)P(4,2)=720; E-O-E-O-E: P(4,3)P(5,2)=480 => 1200"
+    },
+    {
+      "qid": 21,
+      "blindAnswer": "60",
+      "blindMatch": true,
+      "blindDerivation": "f(1)>f(2)>7: C(3,2)=3; f(4)>f(5)>f(6) from 1..6: C(6,3)=20 => 60"
+    },
+    {
+      "qid": 22,
+      "blindAnswer": "6 integers: 7,8,9,10,11,12",
+      "blindMatch": true,
+      "blindDerivation": "cond1 k>6; cond2 k<=12"
+    },
+    {
+      "qid": 23,
+      "blindAnswer": "1) f^-1(x)=(x^2-8)/2 (x>=0); 2) 45/8",
+      "blindMatch": true,
+      "blindDerivation": "A=(4,4), B=(1/2,3), C=(3,1/2); area=1/2*(5/2)sqrt2*(9/2)/sqrt2=45/8"
+    }
+  ],
+  "originalComparison": {
+    "questionCount": "23 vs 23",
+    "pointsSum": "100 vs 100",
+    "questionTypes": "20 MC + 3 서술형 in both",
+    "levels": "all 23 levels equal to the original",
+    "answerValueCollisionWithOriginal": "none (all numeric/MC values differ from the original; only some choice letters coincide)",
+    "notes": [
+      "Q4 original read a drawn graph; similar gives end point and origin in words (no problem figure needed, engine would print a,b,c labels). Same decisive skill (end point -> a,b,c).",
+      "Q9 original 5 students D5=44; similar 6 students D6=265 with clarified wording (own paper excluded, each paper marked once) - slightly harder, level 중 kept, acceptable.",
+      "Q16 flips min->max and the monotone/sign structure is preserved; Q17/Q18/Q22/Q23 keep original structure with new numbers.",
+      "Q14 adds 4 non-couples, stays direct complement counting."
+    ]
+  },
+  "answerDistribution": {
+    "①": 4,
+    "②": 4,
+    "③": 4,
+    "④": 4,
+    "⑤": 4,
+    "note": "20 MC items, perfectly balanced"
+  },
+  "mathReview": "All 23 stored solutions re-derived and compared line by line; every intermediate claim (Q6 monotone k-range [-1,5], Q7 N values, Q9 cycle types 120+90+40+15, Q11 48+6+4, Q12 t^2(t^2-1)=240, Q15 x_P>2 only, Q16 f(k)=2 iff k<=2, Q17 q<=(4-r)^2, Q18 branch ranges k<=-3/4 or k>=5, Q19 18+5 teacher placements, Q22 k>6 and k<=12, Q23 A(4,4) B(1/2,3) C(3,1/2) area 45/8) is correct. Curriculum 2015 수학(상)/(하) respected (Q15 AM-GM, Q23 point-line distance are 수학(상) content, earlier course). No stem ambiguity found; choices unique.",
+  "reviewerEdits": [],
+  "reviewerEditsNote": "No content edit was needed, so the JS blob is unchanged. Meta file only: added reviewFlag OPEN_DEFECT (+kind, reason) on Q7, Q11, Q15, Q21, Q23, top-level openDefects and independentReview block.",
+  "metaReview": {
+    "coverage": {
+      "items": 23,
+      "requiredFieldsFilled": "all 23: course/unit/subUnit, conceptCluster, RPM L1-L4 + recordId, PT/TPL, crossConceptKeys, conditionKeys, integrationPattern, level, difficultyBucket, sourceQid, variationType, provenance, levelBasis/difficultyBasis, metaRationale, visualNecessity. Q14 crossConceptKeys=[] with stated reason (direct complement subtraction; no matching canonical CC). conditionKeys [] on Q3/4/5/7/10/11/14 with 'no special condition' rationale.",
+      "jsMetaParity": "0 differences (PT/TPL/CC/COND/pattern/level/difficulty/unit/RPM record/sourceQid/variationType)",
+      "script": "scratchpad/rev_maesan/metacheck.py, resolve.mjs"
+    },
+    "directKeyLookup": "All PT (318 canonical) / TPL (857) / CrossConcept (725) / Condition (57) keys used exist in canonical packs; every TPL belongs to its PT; RPM recordIds exist in high1 crosswalk and L1-L4 labels match; unit/subUnit equal crosswalk record for all 23.",
+    "officialResolver": "rpm-active-resolver.mjs resolveMetaRoute run for all 23 (decision input = meta RPM path): 16 PROJECTION_REUSE identical to meta; Q6/Q16/Q18 PROJECTION_BINDING_PENDING (EXACT_ACTIVE_BINDING_PENDING) -> resolved by generator registryChanges; Q17 PROJECTION_REUSE (binding exists); Q11/Q21 REUSE but a different TPL/PT than meta; Q15 RPM_ONLY empty.",
+    "registryChangeReview": {
+      "row": "functions-graphs/bindings.json add-only, before=null, PT_FUNCTION_GRAPH_INTERSECTION x 2015/수학(하)/H15-SB-05/H15-SB-05-IRRATIONAL_BASIC",
+      "verdict": "VALID",
+      "evidence": [
+        "PT and TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS are canonical ACTIVE (parent matches); crosswalk H1-RPM-121 names exactly this PT/TPL with DIRECT_BINDING_GAP/MISSING, i.e. only the binding row was absent",
+        "row fields (subUnitLabelKo '무리함수의 뜻과 계산', CORE, defaultSelectable, ownerPack FUNCTIONS_GRAPHS, ACTIVE) are identical in form to sibling rows (e.g. PT_DOMAIN_RANGE_SURJECTIVITY at the same subUnit)",
+        "supportingQuestionUids = questionUidForSource(Q6,Q16,Q18) exactly; Q6/Q16/Q18 are all graph-intersection (count/range/existence) problems",
+        "no existing row/PT/TPL modified"
+      ]
+    },
+    "q17Binding": "Crosswalk H1-RPM-117 says MISSING but canonical bindings already hold an ACTIVE CORE row (2015/수학(하)/H15-SB-05/H15-SB-05-IRRATIONAL_GRAPH/PT_DOMAIN_RANGE_SURJECTIVITY, owner h1-original-source); official resolver returns PROJECTION_REUSE with the same PT/TPL as meta. No registryChange needed; crosswalk status is stale (shared file, not edited).",
+    "newExtensionKeys": 0,
+    "extensionL4Items": 0,
+    "resolverDivergence": [
+      {
+        "qid": 11,
+        "meta": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
+        "resolver": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "assessment": "meta is canonical ACTIVE and equals the original 24 매산 Q11 production metadata and 20 매산 Q20; semantics (lexicographic rank) correct; crosswalk lacks an add-only row"
+      },
+      {
+        "qid": 15,
+        "meta": "PT_FUNCTION_EXTREMUM / TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+        "resolver": "empty (H1-RPM-113 RPM_ONLY)",
+        "assessment": "canonical ACTIVE, exact binding exists, same unit used by 19 금당고/20 매산고/20 효천고; not a Resolver output"
+      },
+      {
+        "qid": 21,
+        "meta": "PT_FUNCTION_COUNTING / TPL_MONOTONE_FUNCTION_COUNT",
+        "resolver": "PT_ONE_TO_ONE_BIJECTION / TPL_BIJECTION_JUDGMENT_CONDITION",
+        "assessment": "meta semantically more exact (count strictly decreasing functions) and matches 19 팔마고 usage; crosswalk add-only row needed"
+      }
+    ],
+    "toolLimitNote": "These divergences come from crosswalk coverage, not from a wrong key; reviewer is forbidden to edit the shared crosswalk/registry, so they remain open as LOW meta items."
+  },
+  "visualReview": {
+    "plans": "46 plan files (23 problem + 23 solution) valid JSON. Active: q15-problem (rational-spike-v1), q03/q04/q05-solution. UNSUPPORTED: q07-solution, q23-solution. All others EXEMPT with reasons. Active plans have capability, graphPlan, caption, sourceQuote found in the stated item text, assetPath and engineEvidence (ARCHIVE_BOUND; svg bytes identical to attached assets, cmp verified).",
+    "rendered": "4 SVGs rendered to PNG and read: white background (#fff rect), title+desc, role=img, glyph-path text (no raw LaTeX), labels P,M,N,Q / asymptotes / endpoints present, shading on PNQM; Q15 figure shows P at u=2 (not the optimum), no answer leakage; Q3/Q5 curves and asymptotes correct (Q3 right branch crosses x-axis at 4/3, Q5 left branch crosses y-axis above 0 into quadrant II). Minor: engine places asymptote labels (x=-2, y=-3, y=4) in the margin away from the dashed lines; Q15 curve label is (x+3)/(x-2), equivalent to 5/(x-2)+1. Non-blocking.",
+    "visualDebt": [
+      "q07-solution UNSUPPORTED (no official plan for |rational| with many horizontal lines; solution complete algebraically)",
+      "q23-solution UNSUPPORTED (no official plan for sqrt, inverse, y=x, line l, triangle together; solution complete via coordinates)"
+    ]
+  },
+  "harness": {
+    "command": "node tools/harness/verify_similar_exam.mjs <js> --phase=draft",
+    "result": "GATE_FAIL with exactly 2 errors: Q7 and Q23 solution plan UNSUPPORTED 'without independently approved fallback' - these are the declared visual debt, acknowledged by signOffStatus PASS_WITH_VISUAL_DEBT (harness VISUAL_DEBT_ACKNOWLEDGED path in release mode). WARN: TAXONOMY_CROSS_PACK_REFERENCE (PT/TPL registered in probability-statistics pack) is benign.",
+    "classification": "visual debt, not a content defect",
+    "releaseRun": "NOT_RUN by reviewer after receipt (merge is orchestrator scope)"
+  },
+  "runtimeCheck": {
+    "engineHtml": "engine.html?data=exams/similar/high/h1/2final/<stem>.js&assetBase=off in Chrome (Playwright): exam mode 23 question blocks on 6 pages, Q15 figure loaded, math typeset, no render error; sol mode 12 pages, 3 solution figures loaded, no render error; ans mode 3 pages no error. img.wangjiedu.com (R2) not reachable in sandbox, R2 upload NOT_RUN.",
+    "NOT_RUN": [
+      "print/PDF output",
+      "mobile-width render",
+      "R2 upload of the 4 SVG assets"
+    ]
+  },
+  "defects": [
+    {
+      "qid": 7,
+      "kind": "VISUAL_DEBT_SOLUTION_UNSUPPORTED",
+      "reason": "No official plan for the solution figure; solution is self-contained",
+      "severity": "LOW",
+      "round": 1,
+      "status": "OPEN"
+    },
+    {
+      "qid": 23,
+      "kind": "VISUAL_DEBT_SOLUTION_UNSUPPORTED",
+      "reason": "No official plan for the solution figure; solution is self-contained",
+      "severity": "LOW",
+      "round": 1,
+      "status": "OPEN"
+    },
+    {
+      "qid": 11,
+      "kind": "META_RESOLVER_DIVERGENCE",
+      "reason": "TPL differs from crosswalk/Resolver (canonical ACTIVE, equals original's metadata); crosswalk add-only row needed",
+      "severity": "LOW",
+      "round": 1,
+      "status": "OPEN"
+    },
+    {
+      "qid": 15,
+      "kind": "META_RESOLVER_DIVERGENCE",
+      "reason": "H1-RPM-113 RPM_ONLY: PT/TPL not Resolver output; crosswalk DIRECT_ACTIVE row needed or null PT/TPL",
+      "severity": "LOW",
+      "round": 1,
+      "status": "OPEN"
+    },
+    {
+      "qid": 21,
+      "kind": "META_RESOLVER_DIVERGENCE",
+      "reason": "PT/TPL differ from crosswalk row of H1-RPM-106; crosswalk add-only row needed",
+      "severity": "LOW",
+      "round": 1,
+      "status": "OPEN"
+    }
+  ],
+  "unresolvedDefects": [
+    {
+      "qid": 7,
+      "kind": "VISUAL_DEBT_SOLUTION_UNSUPPORTED",
+      "reason": "No official plan for the solution figure; solution is self-contained",
+      "severity": "LOW",
+      "round": 1,
+      "status": "OPEN"
+    },
+    {
+      "qid": 23,
+      "kind": "VISUAL_DEBT_SOLUTION_UNSUPPORTED",
+      "reason": "No official plan for the solution figure; solution is self-contained",
+      "severity": "LOW",
+      "round": 1,
+      "status": "OPEN"
+    },
+    {
+      "qid": 11,
+      "kind": "META_RESOLVER_DIVERGENCE",
+      "reason": "TPL differs from crosswalk/Resolver (canonical ACTIVE, equals original's metadata); crosswalk add-only row needed",
+      "severity": "LOW",
+      "round": 1,
+      "status": "OPEN"
+    },
+    {
+      "qid": 15,
+      "kind": "META_RESOLVER_DIVERGENCE",
+      "reason": "H1-RPM-113 RPM_ONLY: PT/TPL not Resolver output; crosswalk DIRECT_ACTIVE row needed or null PT/TPL",
+      "severity": "LOW",
+      "round": 1,
+      "status": "OPEN"
+    },
+    {
+      "qid": 21,
+      "kind": "META_RESOLVER_DIVERGENCE",
+      "reason": "PT/TPL differ from crosswalk row of H1-RPM-106; crosswalk add-only row needed",
+      "severity": "LOW",
+      "round": 1,
+      "status": "OPEN"
+    }
+  ]
+}
