@@ -362,14 +362,14 @@
       c.lineWidth = 1;
       const lines = (isMajor) => {
         c.beginPath();
-        for (let x = Math.ceil(vb.x0 / step) * step; x <= vb.x1; x += step) {
+        for (let x = Math.ceil(vb.x0 / step) * step; x <= vb.x1 && (vb.x1 - vb.x0) / step <= 600; x += step) {
           const m = Math.abs(x / major - Math.round(x / major)) < 1e-6;
           if (m !== isMajor) continue;
           const s = this.toS(x, 0).x;
           c.moveTo(Math.round(s) + 0.5, r.y);
           c.lineTo(Math.round(s) + 0.5, r.y + r.h);
         }
-        for (let y = Math.ceil(vb.y0 / stepY) * stepY; y <= vb.y1; y += stepY) {
+        for (let y = Math.ceil(vb.y0 / stepY) * stepY; y <= vb.y1 && (vb.y1 - vb.y0) / stepY <= 600; y += stepY) {
           const m = Math.abs(y / majorY - Math.round(y / majorY)) < 1e-6;
           if (m !== isMajor) continue;
           const s = this.toS(0, y).y;
@@ -427,7 +427,7 @@
         c.textAlign = 'center';
         c.textBaseline = 'top';
         const ty = clamp(org.y + 6, r.y + 4, r.y + r.h - 18);
-        for (let x = Math.ceil(vb.x0 / step) * step; x <= vb.x1; x += step) {
+        for (let x = Math.ceil(vb.x0 / step) * step; x <= vb.x1 && (vb.x1 - vb.x0) / step <= 600; x += step) {
           if (Math.abs(x) < step / 2) continue;
           const s = this.toS(x, 0).x;
           c.fillText(fmtTick(x, step), s, ty);
@@ -436,7 +436,7 @@
         c.textAlign = 'right';
         c.textBaseline = 'middle';
         const tx = clamp(org.x - 7, r.x + 26, r.x + r.w - 4);
-        for (let y = Math.ceil(vb.y0 / stepY) * stepY; y <= vb.y1; y += stepY) {
+        for (let y = Math.ceil(vb.y0 / stepY) * stepY; y <= vb.y1 && (vb.y1 - vb.y0) / stepY <= 600; y += stepY) {
           if (Math.abs(y) < stepY / 2) continue;
           const s = this.toS(0, y).y;
           c.fillText(fmtTick(y, stepY), tx, s);

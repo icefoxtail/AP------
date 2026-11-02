@@ -1540,20 +1540,20 @@ window.addEventListener('DOMContentLoaded', function () {
       a, b, c, d, pf, per, chk: { pf, per },
       text: `쌍곡선 ${tex(eq(a, b))}의 두 초점을 ${tex(FFt(c))}이라 하자. 제1사분면에 있는 쌍곡선 위의 점 ${tex('P')}에 대하여 ${tex(`\\overline{PF'}=${d}`)}일 때, 선분 ${tex('\\overline{PF}')}의 길이와 삼각형 ${tex("PF'F")}의 둘레의 길이를 구하시오.`,
       ans: `\\overline{PF}=${pf},\\ \\text{둘레 }${per}`,
-      steps: [`두 초점 $F$, $F'$과 쌍곡선 위의 점 $P$, 선분 $PF'$, $PF$를 그립니다.`, `쌍곡선의 정의 $|PF'-PF|=2a=${2 * a}$이고 $P$가 오른쪽 가지 위에 있으므로 $PF=${d}-${2 * a}=${pf}$.`, `$c=\\sqrt{${a * a}+${b * b}}=${c}$이므로 $FF'=2c=${2 * c}$. 둘레는 $${d}+${pf}+${2 * c}=${per}$.`],
-      quick: `$PF'-PF=2a=${2 * a}$ ⇒ $PF=${pf}$. 둘레 $=PF'+PF+2c=${d}+${pf}+${2 * c}=${per}$.` }; };
+      steps: [`두 초점 $F$, $F^{\\prime}$과 쌍곡선 위의 점 $P$, 선분 $PF^{\\prime}$, $PF$를 그립니다.`, `쌍곡선의 정의 $|PF^{\\prime}-PF|=2a=${2 * a}$이고 $P$가 오른쪽 가지 위에 있으므로 $PF=${d}-${2 * a}=${pf}$.`, `$c=\\sqrt{${a * a}+${b * b}}=${c}$이므로 $FF^{\\prime}=2c=${2 * c}$. 둘레는 $${d}+${pf}+${2 * c}=${per}$.`],
+      quick: `$PF^{\\prime}-PF=2a=${2 * a}$ ⇒ $PF=${pf}$. 둘레 $=PF^{\\prime}+PF+2c=${d}+${pf}+${2 * c}=${per}$.` }; };
     B['1-2'] = ([a, b]) => { const c = cOf(a, b); return {
       a, b, c, chk: { S: b * b },
       text: `쌍곡선 ${tex(eq(a, b))}의 두 초점을 ${tex(FFt(c))}이라 하자. 쌍곡선 위의 점 ${tex('K')}에서 ${tex("\\angle F'KF=90^\\circ")}일 때, 삼각형 ${tex("KF'F")}의 넓이를 구하시오.`,
       ans: `${b * b}`,
-      steps: [`두 초점 $F$, $F'$과 점 $K$를 잡고 $\\angle F'KF=90^\\circ$가 되는 삼각형 $KF'F$를 그립니다. ($K$는 $F'F$를 지름으로 하는 원 위의 점)`, `$KF'^2+KF^2=(2c)^2=${4 * c * c}$, $(KF'-KF)^2=(2a)^2=${4 * a * a}$.`, `$2\\,KF'\\cdot KF=${4 * c * c}-${4 * a * a}=${4 * b * b}$이므로 $KF'\\cdot KF=${2 * b * b}$, 넓이 $S=\\dfrac12KF'\\cdot KF=${b * b}\\ (=b^2)$.`],
-      quick: `쌍곡선에서 $\\angle F'KF=90^\\circ$이면 삼각형의 넓이는 $b^2=${b * b}$입니다.` }; };
+      steps: [`두 초점 $F$, $F^{\\prime}$과 점 $K$를 잡고 $\\angle F^{\\prime}KF=90^\\circ$가 되는 삼각형 $KF^{\\prime}F$를 그립니다. ($K$는 $F^{\\prime}F$를 지름으로 하는 원 위의 점)`, `$KF^{\\prime}^2+KF^2=(2c)^2=${4 * c * c}$, $(KF^{\\prime}-KF)^2=(2a)^2=${4 * a * a}$.`, `$2\\,KF^{\\prime}\\cdot KF=${4 * c * c}-${4 * a * a}=${4 * b * b}$이므로 $KF^{\\prime}\\cdot KF=${2 * b * b}$, 넓이 $S=\\dfrac12KF^{\\prime}\\cdot KF=${b * b}\\ (=b^2)$.`],
+      quick: `쌍곡선에서 $\\angle F^{\\prime}KF=90^\\circ$이면 삼각형의 넓이는 $b^2=${b * b}$입니다.` }; };
     B['1-3'] = ([a, b]) => { const c = cOf(a, b), pf = 2 * c - 2 * a, per = 4 * c + pf; return {
       a, b, c, pf, per, chk: { pf, per },
       text: `${tex(`a=${a},\\ b=${b}`)}인 쌍곡선 ${tex(eq(a, b))}의 두 초점을 ${tex(FFt(c))}이라 하자. 오른쪽 가지 위의 점 ${tex('P')}에 대하여 ${tex(`\\overline{PF'}=\\overline{F'F}=2c=${2 * c}`)}이면 ${tex('\\overline{PF}')}의 길이와 삼각형 ${tex("PF'F")}의 둘레를 구하시오.`,
       ans: `\\overline{PF}=${pf},\\ \\text{둘레 }${per}`,
-      steps: [`초점 $F'$을 중심으로 반지름 $F'F=${2 * c}$인 원 위의 점 $P$를 잡고 이등변삼각형 $PF'F$를 그립니다.`, `$PF'-PF=2a=${2 * a}$이므로 $PF=${2 * c}-${2 * a}=${pf}$.`, `세 변이 $${2 * c},\\ ${2 * c},\\ ${pf}$이므로 둘레는 $${per}$.`],
-      quick: `$PF=PF'-2a=${2 * c}-${2 * a}=${pf}$. 세 변은 $${2 * c},${2 * c},${pf}$ ⇒ 둘레 $${per}$.` }; };
+      steps: [`초점 $F^{\\prime}$을 중심으로 반지름 $F^{\\prime}F=${2 * c}$인 원 위의 점 $P$를 잡고 이등변삼각형 $PF^{\\prime}F$를 그립니다.`, `$PF^{\\prime}-PF=2a=${2 * a}$이므로 $PF=${2 * c}-${2 * a}=${pf}$.`, `세 변이 $${2 * c},\\ ${2 * c},\\ ${pf}$이므로 둘레는 $${per}$.`],
+      quick: `$PF=PF^{\\prime}-2a=${2 * c}-${2 * a}=${pf}$. 세 변은 $${2 * c},${2 * c},${pf}$ ⇒ 둘레 $${per}$.` }; };
     B['2-1'] = ([a, b]) => { const c = cOf(a, b); return {
       a, b, c, chk: { fh: b, oh: a, S: a * b / 2 },
       text: `쌍곡선 ${tex(eq(a, b))}의 양의 초점 ${tex(`F(${c},\\ 0)`)}에서 양의 기울기를 갖는 점근선 ${tex(`y=${fr(b, a)}x`)}에 내린 수선의 발을 ${tex('H')}라 할 때, 선분 ${tex('\\overline{FH}')}와 ${tex('\\overline{OH}')}의 길이를 구하시오.`,
@@ -1593,15 +1593,15 @@ window.addEventListener('DOMContentLoaded', function () {
     B['4-1'] = ([a, b, d, e]) => { const c = cOf(a, b), g = gc(d, e), r1 = d / g, r2 = e / g; return {
       a, b, c, d, e, r1, r2, chk: { r: d / e },
       text: `쌍곡선 ${tex(eq(a, b))} 위의 점 ${tex('P')}에서의 접선 ${tex('l')}이 ${tex('x')}축과 만나는 점을 ${tex('T')}라 하자. ${tex(`\\overline{PF'}=${d},\\ \\overline{PF}=${e}`)}일 때, ${tex("\\overline{F'T}:\\overline{TF}")}의 비를 구하시오. (단, ${tex(FFt(c))})`,
-      ans: `\\overline{F'T}:\\overline{TF}=${r1}:${r2}`,
-      steps: [`점 $P$, 접선 $l$과 $x$축의 교점 $T$를 그립니다.`, `쌍곡선의 접선은 $\\angle F'PF$를 이등분합니다.`, `각의 이등분선 정리에서 $\\overline{F'T}:\\overline{TF}=\\overline{PF'}:\\overline{PF}=${d}:${e}=${r1}:${r2}$.`],
-      quick: `접선이 $\\angle F'PF$의 이등분선이므로 $F'T:TF=PF':PF=${d}:${e}=${r1}:${r2}$.` }; };
+      ans: `\\overline{F^{\\prime}T}:\\overline{TF}=${r1}:${r2}`,
+      steps: [`점 $P$, 접선 $l$과 $x$축의 교점 $T$를 그립니다.`, `쌍곡선의 접선은 $\\angle F^{\\prime}PF$를 이등분합니다.`, `각의 이등분선 정리에서 $\\overline{F^{\\prime}T}:\\overline{TF}=\\overline{PF^{\\prime}}:\\overline{PF}=${d}:${e}=${r1}:${r2}$.`],
+      quick: `접선이 $\\angle F^{\\prime}PF$의 이등분선이므로 $F^{\\prime}T:TF=PF^{\\prime}:PF=${d}:${e}=${r1}:${r2}$.` }; };
     B['4-2'] = ([a, b]) => { const c = cOf(a, b); return {
       a, b, c, chk: { ff: 2 * a, oh: a },
       text: `쌍곡선 ${tex(eq(a, b))} 위의 점 ${tex('P')}에서의 접선 ${tex('l')}에 대하여 초점 ${tex(`F(${c},\\ 0)`)}에서 ${tex('l')}에 내린 수선의 발을 ${tex('H_1')}, ${tex('F')}를 ${tex('l')}에 대하여 대칭이동한 점을 ${tex("F^{*}")}이라 하자. 선분 ${tex("F'F^{*}")}과 선분 ${tex('OH_1')}의 길이를 각각 구하시오.`,
-      ans: `F'F^{*}=${2 * a},\\ OH_1=${a}`,
-      steps: [`접점 $P$, 접선 $l$, 초점 $F$에서 $l$에 내린 수선의 발 $H_1$을 그립니다.`, `$F$를 $l$에 대칭이동한 $F^{*}$에서 $PF^{*}=PF$이고 $P$, $F'$, $F^{*}$는 한 직선 위에 있으므로 $F'F^{*}=|PF'-PF|=2a=${2 * a}$.`, `$O$는 $F'F$의 중점, $H_1$은 $FF^{*}$의 중점이므로 $OH_1=\\dfrac12F'F^{*}=${a}$.`],
-      quick: `$F'F^{*}=|PF'-PF|=2a=${2 * a}$, $OH_1=\\dfrac12F'F^{*}=a=${a}$.` }; };
+      ans: `F^{\\prime}F^{*}=${2 * a},\\ OH_1=${a}`,
+      steps: [`접점 $P$, 접선 $l$, 초점 $F$에서 $l$에 내린 수선의 발 $H_1$을 그립니다.`, `$F$를 $l$에 대칭이동한 $F^{*}$에서 $PF^{*}=PF$이고 $P$, $F^{\\prime}$, $F^{*}$는 한 직선 위에 있으므로 $F^{\\prime}F^{*}=|PF^{\\prime}-PF|=2a=${2 * a}$.`, `$O$는 $F^{\\prime}F$의 중점, $H_1$은 $FF^{*}$의 중점이므로 $OH_1=\\dfrac12F^{\\prime}F^{*}=${a}$.`],
+      quick: `$F^{\\prime}F^{*}=|PF^{\\prime}-PF|=2a=${2 * a}$, $OH_1=\\dfrac12F^{\\prime}F^{*}=a=${a}$.` }; };
     B['4-3'] = ([a, b]) => { const c = cOf(a, b); return {
       a, b, c, chk: { d: b * b },
       text: `쌍곡선 ${tex(eq(a, b))} 위의 점 ${tex('P')}에서의 접선 ${tex('l')}이 있다. 두 초점 ${tex(FFt(c))}에서 접선 ${tex('l')}에 내린 수선의 길이를 각각 ${tex('d_1,\\ d_2')}라 할 때, ${tex('d_1\\times d_2')}의 값을 구하시오.`,

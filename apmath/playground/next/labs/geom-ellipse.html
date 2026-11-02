@@ -2427,8 +2427,8 @@ window.addEventListener('DOMContentLoaded', function () {
         a, b, c, d, pf, per, chk: { pf, per },
         text: `타원 ${tex(eq(a, b))}의 두 초점을 ${tex("F,\\ F'")}이라 하자. 타원 위의 점 ${tex('P')}에 대하여 ${tex(`\\overline{PF'}=${d}`)}일 때, 선분 ${tex('\\overline{PF}')}의 길이와 삼각형 ${tex("PF'F")}의 둘레의 길이를 구하시오.`,
         ans: `\\overline{PF}=${pf},\\ \\text{둘레 }${per}`,
-        steps: [`두 초점 $F(${c},\\ 0)$, $F'(-${c},\\ 0)$와 타원 위의 점 $P$, 선분 $PF'$, $PF$를 그립니다.`, `타원의 정의 $PF+PF'=2a=${2 * a}$이므로 $PF=${2 * a}-${d}=${pf}$.`, `$a^2=b^2+c^2$에서 $c=${c}$이므로 $FF'=2c=${2 * c}$. 둘레는 $PF'+PF+FF'=${d}+${pf}+${2 * c}=${per}$.`],
-        quick: `$PF+PF'=2a=${2 * a}$ ⇒ $PF=${pf}$. 둘레 $=2a+2c=${2 * a}+${2 * c}=${per}$ ($c=\\sqrt{${a * a}-${b * b}}=${c}$).`
+        steps: [`두 초점 $F(${c},\\ 0)$, $F^{\\prime}(-${c},\\ 0)$와 타원 위의 점 $P$, 선분 $PF^{\\prime}$, $PF$를 그립니다.`, `타원의 정의 $PF+PF^{\\prime}=2a=${2 * a}$이므로 $PF=${2 * a}-${d}=${pf}$.`, `$a^2=b^2+c^2$에서 $c=${c}$이므로 $FF^{\\prime}=2c=${2 * c}$. 둘레는 $PF^{\\prime}+PF+FF^{\\prime}=${d}+${pf}+${2 * c}=${per}$.`],
+        quick: `$PF+PF^{\\prime}=2a=${2 * a}$ ⇒ $PF=${pf}$. 둘레 $=2a+2c=${2 * a}+${2 * c}=${per}$ ($c=\\sqrt{${a * a}-${b * b}}=${c}$).`
       };
     };
     // 1-B : ∠F'PF=90°, 넓이 b²
@@ -2438,8 +2438,8 @@ window.addEventListener('DOMContentLoaded', function () {
         a, b, c, chk: { S: b * b },
         text: `타원 ${tex(eq(a, b))}의 두 초점 ${tex(FF(c))}를 지름의 양 끝으로 하는 원 ${tex(`x^2+y^2=${c * c}`)}과 타원의 교점을 ${tex('P')}라 할 때, 직각삼각형 ${tex("PF'F")}의 넓이를 구하시오.`,
         ans: `${b * b}`,
-        steps: [`두 초점 $F$, $F'$과 이를 지름으로 하는 원, 그 원과 타원의 교점 $P$를 그립니다.`, `지름에 대한 원주각이므로 $\\angle F'PF=90^\\circ$입니다. 타원의 정의 $PF+PF'=2a=${2 * a}$, 피타고라스 $PF^2+PF'^2=(2c)^2=${4 * c * c}$.`, `$PF\\cdot PF'=\\dfrac{(PF+PF')^2-(PF^2+PF'^2)}{2}=\\dfrac{${4 * a * a}-${4 * c * c}}{2}=${2 * b * b}$이므로 넓이 $S=\\dfrac12\\cdot PF\\cdot PF'=${b * b}\\ (=b^2)$.`],
-        quick: `$\\angle F'PF=90^\\circ$이면 삼각형의 넓이는 $b^2$입니다: $S=b^2=${b * b}$.`
+        steps: [`두 초점 $F$, $F^{\\prime}$과 이를 지름으로 하는 원, 그 원과 타원의 교점 $P$를 그립니다.`, `지름에 대한 원주각이므로 $\\angle F^{\\prime}PF=90^\\circ$입니다. 타원의 정의 $PF+PF^{\\prime}=2a=${2 * a}$, 피타고라스 $PF^2+PF^{\\prime}^2=(2c)^2=${4 * c * c}$.`, `$PF\\cdot PF^{\\prime}=\\dfrac{(PF+PF^{\\prime})^2-(PF^2+PF^{\\prime}^2)}{2}=\\dfrac{${4 * a * a}-${4 * c * c}}{2}=${2 * b * b}$이므로 넓이 $S=\\dfrac12\\cdot PF\\cdot PF^{\\prime}=${b * b}\\ (=b^2)$.`],
+        quick: `$\\angle F^{\\prime}PF=90^\\circ$이면 삼각형의 넓이는 $b^2$입니다: $S=b^2=${b * b}$.`
       };
     };
     // 1-C : 초점을 지나는 현, 삼각형 PQF'의 둘레 4a
@@ -2449,7 +2449,7 @@ window.addEventListener('DOMContentLoaded', function () {
         a, b, c, chk: { per: 4 * a },
         text: `타원 ${tex(eq(a, b))}의 초점 ${tex(`F(${c},\\ 0)`)}을 지나는 직선이 타원과 만나는 두 점을 ${tex('P,\\ Q')}라 할 때, 다른 초점 ${tex(`F'(-${c},\\ 0)`)}에 대하여 삼각형 ${tex("PQF'")}의 둘레의 길이를 구하시오.`,
         ans: `${4 * a}`,
-        steps: [`초점 $F$를 지나는 현 $PQ$와 다른 초점 $F'$, 삼각형 $PQF'$를 그립니다.`, `타원의 정의로 $PF+PF'=2a=${2 * a}$, $QF+QF'=2a=${2 * a}$.`, `$PQ=PF+QF$이므로 둘레 $=PF'+QF'+PQ=(PF+PF')+(QF+QF')=4a=${4 * a}$. 직선의 기울기와 무관합니다.`],
+        steps: [`초점 $F$를 지나는 현 $PQ$와 다른 초점 $F^{\\prime}$, 삼각형 $PQF^{\\prime}$를 그립니다.`, `타원의 정의로 $PF+PF^{\\prime}=2a=${2 * a}$, $QF+QF^{\\prime}=2a=${2 * a}$.`, `$PQ=PF+QF$이므로 둘레 $=PF^{\\prime}+QF^{\\prime}+PQ=(PF+PF^{\\prime})+(QF+QF^{\\prime})=4a=${4 * a}$. 직선의 기울기와 무관합니다.`],
         quick: `현이 초점 $F$를 지나면 둘레는 $4a=4\\times${a}=${4 * a}$로 일정합니다.`
       };
     };
@@ -2494,9 +2494,9 @@ window.addEventListener('DOMContentLoaded', function () {
       return {
         a, b, c, deg, chk: { ff: 2 * a, oh: a },
         text: `타원 ${tex(eq(a, b))} 위의 점 ${tex('P')}에서의 접선 ${tex('l')}에 대하여 초점 ${tex(`F(${c},\\ 0)`)}에서 내린 수선의 발을 ${tex('H_1')}, ${tex('F')}를 접선 ${tex('l')}에 대하여 대칭이동한 점을 ${tex("F''")}이라 할 때, 선분 ${tex("F'F''")}과 선분 ${tex('OH_1')}의 길이를 각각 구하시오. (단, ${tex("F'")}은 다른 초점)`,
-        ans: `F'F''=${2 * a},\\ OH_1=${a}`,
-        steps: [`접점 $P$, 접선 $l$, 초점 $F$에서 $l$에 내린 수선의 발 $H_1$을 그립니다.`, `$F$를 $l$에 대칭이동한 $F''$을 잡으면 $PF''=PF$이고 $F',P,F''$는 한 직선 위에 있습니다. 따라서 $F'F''=PF'+PF=2a=${2 * a}$.`, `$O$는 $FF'$의 중점, $H_1$은 $FF''$의 중점이므로 중점연결정리에서 $OH_1=\\dfrac12F'F''=${a}$.`],
-        quick: `$F'F''=PF'+PF=2a=${2 * a}$, $OH_1=\\dfrac12F'F''=a=${a}$ (점 $P$의 위치와 무관).`
+        ans: `F^{\\prime}F^{\\prime\\prime}=${2 * a},\\ OH_1=${a}`,
+        steps: [`접점 $P$, 접선 $l$, 초점 $F$에서 $l$에 내린 수선의 발 $H_1$을 그립니다.`, `$F$를 $l$에 대칭이동한 $F^{\\prime\\prime}$을 잡으면 $PF^{\\prime\\prime}=PF$이고 $F^{\\prime},P,F^{\\prime\\prime}$는 한 직선 위에 있습니다. 따라서 $F^{\\prime}F^{\\prime\\prime}=PF^{\\prime}+PF=2a=${2 * a}$.`, `$O$는 $FF^{\\prime}$의 중점, $H_1$은 $FF^{\\prime\\prime}$의 중점이므로 중점연결정리에서 $OH_1=\\dfrac12F^{\\prime}F^{\\prime\\prime}=${a}$.`],
+        quick: `$F^{\\prime}F^{\\prime\\prime}=PF^{\\prime}+PF=2a=${2 * a}$, $OH_1=\\dfrac12F^{\\prime}F^{\\prime\\prime}=a=${a}$ (점 $P$의 위치와 무관).`
       };
     };
     // 3-B : 두 초점에서 접선까지의 거리의 곱 b²
@@ -2506,7 +2506,7 @@ window.addEventListener('DOMContentLoaded', function () {
         a, b, c, deg, chk: { d1d2: b * b },
         text: `타원 ${tex(eq(a, b))} 위의 임의의 점 ${tex('P')}에서의 접선 ${tex('l')}이 있다. 두 초점 ${tex(FF(c))}에서 접선 ${tex('l')}에 내린 수선의 길이를 각각 ${tex('d_1,\\ d_2')}라 할 때, ${tex('d_1\\times d_2')}의 값을 구하시오.`,
         ans: `${b * b}`,
-        steps: [`타원 위의 점 $P$와 접선 $l$, 두 초점 $F$, $F'$에서 $l$에 내린 수선 $d_1$, $d_2$를 그립니다.`, `접선 $\\dfrac{x_0x}{${a * a}}+\\dfrac{y_0y}{${b * b}}=1$까지의 거리를 두 초점에서 각각 계산하면 $d_1=\\dfrac{|\\,${c}x_0/${a * a}-1\\,|}{k}$, $d_2=\\dfrac{|\\,-${c}x_0/${a * a}-1\\,|}{k}$ ($k$는 법선벡터의 크기).`, `곱하면 $d_1d_2=\\dfrac{1-${c * c}x_0^2/${a * a * a * a}}{k^2}$이고 $P$가 타원 위의 점이므로 $d_1d_2=b^2=${b * b}$로 일정합니다.`],
+        steps: [`타원 위의 점 $P$와 접선 $l$, 두 초점 $F$, $F^{\\prime}$에서 $l$에 내린 수선 $d_1$, $d_2$를 그립니다.`, `접선 $\\dfrac{x_0x}{${a * a}}+\\dfrac{y_0y}{${b * b}}=1$까지의 거리를 두 초점에서 각각 계산하면 $d_1=\\dfrac{|\\,${c}x_0/${a * a}-1\\,|}{k}$, $d_2=\\dfrac{|\\,-${c}x_0/${a * a}-1\\,|}{k}$ ($k$는 법선벡터의 크기).`, `곱하면 $d_1d_2=\\dfrac{1-${c * c}x_0^2/${a * a * a * a}}{k^2}$이고 $P$가 타원 위의 점이므로 $d_1d_2=b^2=${b * b}$로 일정합니다.`],
         quick: `두 초점에서 접선까지의 거리의 곱은 점의 위치와 관계없이 $b^2=${b * b}$입니다.`
       };
     };
@@ -2516,9 +2516,9 @@ window.addEventListener('DOMContentLoaded', function () {
       return {
         a, c, d, pf, b2, r1, r2, chk: { r: d / pf, nx: (d - a) * c / a },
         text: `타원 ${tex(`\\dfrac{x^2}{${a * a}}+\\dfrac{y^2}{${b2}}=1`)}의 두 초점을 ${tex("F,\\ F'")}이라 하자. 타원 위의 점 ${tex('P')}에서의 접선에 수직인 법선이 ${tex('x')}축과 만나는 점을 ${tex('N')}이라 할 때, ${tex(`\\overline{PF'}=${d}`)}인 지점에서 선분의 길이의 비 ${tex("\\overline{F'N}:\\overline{NF}")}를 구하시오.`,
-        ans: `\\overline{F'N}:\\overline{NF}=${r1}:${r2}`,
-        steps: [`타원 위의 점 $P$와 선분 $PF'=${d}$, $PF$를 그립니다. 정의에서 $PF=${2 * a}-${d}=${pf}$.`, `점 $P$에서의 법선은 $\\angle F'PF$의 이등분선(내각의 이등분선)이고, 접선은 외각의 이등분선입니다.`, `각의 이등분선 정리에서 $\\overline{F'N}:\\overline{NF}=\\overline{PF'}:\\overline{PF}=${d}:${pf}=${r1}:${r2}$.`],
-        quick: `법선은 $\\angle F'PF$의 이등분선이므로 $F'N:NF=PF':PF=${d}:${2 * a - d}=${r1}:${r2}$.`
+        ans: `\\overline{F^{\\prime}N}:\\overline{NF}=${r1}:${r2}`,
+        steps: [`타원 위의 점 $P$와 선분 $PF^{\\prime}=${d}$, $PF$를 그립니다. 정의에서 $PF=${2 * a}-${d}=${pf}$.`, `점 $P$에서의 법선은 $\\angle F^{\\prime}PF$의 이등분선(내각의 이등분선)이고, 접선은 외각의 이등분선입니다.`, `각의 이등분선 정리에서 $\\overline{F^{\\prime}N}:\\overline{NF}=\\overline{PF^{\\prime}}:\\overline{PF}=${d}:${pf}=${r1}:${r2}$.`],
+        quick: `법선은 $\\angle F^{\\prime}PF$의 이등분선이므로 $F^{\\prime}N:NF=PF^{\\prime}:PF=${d}:${2 * a - d}=${r1}:${r2}$.`
       };
     };
     // 4-B : 서로 수직인 두 접선의 교점의 자취 (x²+y²=a²+b²)
