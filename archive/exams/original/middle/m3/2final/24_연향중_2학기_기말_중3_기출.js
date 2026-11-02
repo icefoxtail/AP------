@@ -222,7 +222,7 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "$AC$는 원 $O$의 지름이므로\n$\\angle ABC=90^\\circ$이다.\n삼각형 $ABC$에서\n$\\angle BAC=32^\\circ$이므로\n$\\angle ACB=180^\\circ-90^\\circ-32^\\circ=58^\\circ$이다.\n$\\angle ACB$는 호 $AB$를 보는 원주각이므로\n같은 호를 보는 중심각은\n$\\angle AOB=2\\times58^\\circ=116^\\circ$이다.\n두 접선 $PA$, $PB$가 이루는 각은\n,80^\\circ-\\angle AOB$이므로\n$\\angle APB=180^\\circ-116^\\circ=64^\\circ$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "$AC$는 원 $O$의 지름이므로\n$\\angle ABC=90^\\circ$이다.\n삼각형 $ABC$에서\n$\\angle BAC=32^\\circ$이므로\n$\\angle ACB=180^\\circ-90^\\circ-32^\\circ=58^\\circ$이다.\n$\\angle ACB$는 호 $AB$를 보는 원주각이므로\n같은 호를 보는 중심각은\n$\\angle AOB=2\\times58^\\circ=116^\\circ$이다.\n두 접선 $PA$, $PB$가 이루는 각은\n$180^\\circ-\\angle AOB$이므로\n$\\angle APB=180^\\circ-116^\\circ=64^\\circ$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q7.svg"
   },
   {
@@ -318,7 +318,7 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "$AB$가 지름이므로\n호 $AB$인 반원의 크기는 ,80^\\circ$이다.\n또\n$\\wideparen{AC}=\\wideparen{CD}=\\wideparen{DE}=\\wideparen{EB}$이므로\n각 호의 크기는\n,80^\\circ\\div4=45^\\circ$이다.\n원주각의 크기는 그 원주각이 보는 호의 크기의 절반이므로\n$x=\\dfrac{45^\\circ}{2}=22.5^\\circ$,\n$y=\\dfrac{45^\\circ}{2}=22.5^\\circ$이다.\n따라서\n$x+y=22.5^\\circ+22.5^\\circ=45^\\circ$이다.\n따라서 정답은 ②이다.",
+    "solution": "$AB$가 지름이므로\n호 $AB$인 반원의 크기는 $180^\\circ$이다.\n또\n$\\wideparen{AC}=\\wideparen{CD}=\\wideparen{DE}=\\wideparen{EB}$이므로\n각 호의 크기는\n$180^\\circ\\div4=45^\\circ$이다.\n원주각의 크기는 그 원주각이 보는 호의 크기의 절반이므로\n$x=\\dfrac{45^\\circ}{2}=22.5^\\circ$,\n$y=\\dfrac{45^\\circ}{2}=22.5^\\circ$이다.\n따라서\n$x+y=22.5^\\circ+22.5^\\circ=45^\\circ$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q10.svg"
   },
   {
@@ -410,7 +410,7 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "학생 수가 $50$명이므로 중앙값은\n크기순으로 나열했을 때 $25$번째와 $26$번째 값의 평균이다.\n표의 누적도수를 계산하면\n$5$시간 이하가 $3$명,\n$6$시간 이하가 3$명,\n$7$시간 이하가 $25$명,\n$8$시간 이하가 $42$명이다.\n따라서\n$25$번째 값은 $7$시간,\n$26$번째 값은 $8$시간이다.\n그러므로\n$a=\\dfrac{7+8}{2}=7.5$이다.\n도수가 가장 큰 값은 $8$시간이므로\n$b=8$이다.\n따라서\n$a+b=7.5+8=15.5$이다.\n따라서 정답은 ⑤이다."
+    "solution": "학생 수가 $50$명이므로 중앙값은\n크기순으로 나열했을 때 $25$번째와 $26$번째 값의 평균이다.\n표의 누적도수를 계산하면\n$5$시간 이하가 $3$명,\n$6$시간 이하가 $13$명,\n$7$시간 이하가 $25$명,\n$8$시간 이하가 $42$명이다.\n따라서\n$25$번째 값은 $7$시간,\n$26$번째 값은 $8$시간이다.\n그러므로\n$a=\\dfrac{7+8}{2}=7.5$이다.\n도수가 가장 큰 값은 $8$시간이므로\n$b=8$이다.\n따라서\n$a+b=7.5+8=15.5$이다.\n따라서 정답은 ⑤이다."
   },
   {
     "id": 14,
@@ -623,7 +623,7 @@ window.questionBank = [
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "산점도의 가로축을 사회 점수,\n세로축을 과학 점수라 하자.\n사회 점수보다 과학 점수가 높다는 것은\n$y>x$인 점을 뜻한다.\n즉 직선 $y=x$보다 위쪽에 있는 점을 세면 된다.\n산점도에서 이 조건을 만족하는 점은 $4$개이다.\n전체 학생은 5$명이므로\n구하는 비율은\n$\\dfrac4{15}$이다.\n따라서 정답은 ③이다."
+    "solution": "산점도의 가로축을 사회 점수,\n세로축을 과학 점수라 하자.\n사회 점수보다 과학 점수가 높다는 것은\n$y>x$인 점을 뜻한다.\n즉 직선 $y=x$보다 위쪽에 있는 점을 세면 된다.\n산점도에서 이 조건을 만족하는 점은 $4$개이다.\n전체 학생은 $15$명이므로\n구하는 비율은\n$\\dfrac4{15}$이다.\n따라서 정답은 ③이다."
   },
   {
     "id": 21,
