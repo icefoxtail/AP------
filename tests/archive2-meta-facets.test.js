@@ -561,5 +561,6 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   const clinic = fs.readFileSync(path.join(root, 'apmath/js/clinic-print.js'), 'utf8');
   assert.match(clinic, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(clinic, new RegExp('problem-bank-meta\\.js\\?v=' + version));
-  assert.match(fs.readFileSync(path.join(root, 'apmath/index.html'), 'utf8'), /clinic-print\.js\?v=20261030-release-sync-1/);
+  // APMS moved clinic-print.js on with the clinic workspace (M7, 2026-11-02).
+  assert.match(fs.readFileSync(path.join(root, 'apmath/index.html'), 'utf8'), /clinic-print\.js\?v=20261102-ws-clinic-1/);
 });
