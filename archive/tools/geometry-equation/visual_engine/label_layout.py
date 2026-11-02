@@ -359,6 +359,8 @@ def owner_incident_ids(start,owner_marker,occupied):
         and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
         and any(point_segment_distance(start,c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
     incident|={o.get('id') for o in occupied if o.get('kind')=='circle' and abs(math.dist(start,o['geometry'][:2])-o['geometry'][2])<=1e-3}
+    # (G18b) another dot drawn on the very same place (the end dot of a square root under a declared overlay point, say) is part of the point: the leader starts inside it
+    incident|={o.get('id') for o in occupied if o.get('kind') in {'point','circle'} and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=3 and math.dist(start,o['geometry'][:2])<=1e-3 and o['geometry'][2]<=12}
     return incident
 
 def line_between(start,box,occupied,incident):
@@ -1070,7 +1072,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 if chosen:break
         if chosen is None and tick_owner is None and label.get('allowSuppress',False) and priority>=3:
             suppressed.append(label['id']);trace.append({'id':label['id'],'fallback':'LOW_PRIORITY_SUPPRESSION'});continue
-        if chosen is None and tick_owner is None and panel is not None and panel.width>0 and label['kind']!='POINT_NAME' and label.get('allowPanel', True):
+        if chosen is None and tick_owner is None and panel is not None and panel.width>0 and label['kind']!='POINT_NAME' and label.get('allowPanel', True) and not (leader_only and str(label['id']).startswith('overlay-callout-')):   # (G18b) a point callout stands on a leader from its point, never in the side panel
             text=label.get('panelText',label['text'])
             if require_measurements:
                 if text!=label['text'] or label.get('panelPrefix'):raise ValueError('BROWSER_PANEL_VARIANT_MEASUREMENT_REQUIRED:'+label['id'])
@@ -1094,18 +1096,23 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
             if leader_only and label.get('directions'):
                 heading={'E':0,'SE':45,'S':90,'SW':135,'W':180,'NW':225,'N':270,'NE':315}.get(label['directions'][0])
                 if heading is not None:ring_steps=sorted(range(48),key=lambda k:(min((k*7.5-heading)%360,(heading-k*7.5)%360),k))
-            for radius in POINT_NAME_RING_RADII:
-                for step in ring_steps:
-                    angle=math.radians(step*7.5)
-                    box=Box(at[0]+radius*math.cos(angle)-w/2,at[1]+radius*math.sin(angle)-h/2,w,h)
-                    if leader_only and box_point_distance(box,at)<LEADER_ONLY_MIN_PX:continue
-                    if not leader_only and acceptable(box):ring=box;ring_method='POINT_NAME_RING';break
-                    if owner_marker is None or not acceptable(box,owner_check=False):continue
-                    incident=incident or owner_incident_ids(at,owner_marker,occupied)
-                    end=visible_owner_leader(at,box,occupied,incident,skip_ids=leader_skip)
-                    if end is None:continue
-                    tie_to_owner(end);ring=box
-                    ring_method='OWNER_LEADER_'+('E','SE','S','SW','W','NW','N','NE')[int(((step*7.5+22.5)%360)//45)];break
+            # (G18b) A point callout's leader (overlay-callout-*) first looks for a place whose leader crosses no axis and no tick (the rendered-layout audit refuses a callout leader across them);
+            # only when no such place is free does it fall back to the leaderOnly rule that lets it cross them. Other labels run the one pass they always did.
+            skip_passes=(frozenset(o['id'] for o in obstacles if isinstance(o.get('id'),str) and (re.search(r'-guide(-[xy])?$',o['id']) or o['id'].startswith('overlay-guide-'))),leader_skip) if leader_only and str(label['id']).startswith('overlay-callout-') else (leader_skip,)
+            for pass_skip in skip_passes:
+                for radius in POINT_NAME_RING_RADII:
+                    for step in ring_steps:
+                        angle=math.radians(step*7.5)
+                        box=Box(at[0]+radius*math.cos(angle)-w/2,at[1]+radius*math.sin(angle)-h/2,w,h)
+                        if leader_only and box_point_distance(box,at)<LEADER_ONLY_MIN_PX:continue
+                        if not leader_only and acceptable(box):ring=box;ring_method='POINT_NAME_RING';break
+                        if owner_marker is None or not acceptable(box,owner_check=False):continue
+                        incident=incident or owner_incident_ids(at,owner_marker,occupied)
+                        end=visible_owner_leader(at,box,occupied,incident,skip_ids=pass_skip)
+                        if end is None:continue
+                        tie_to_owner(end);ring=box
+                        ring_method='OWNER_LEADER_'+('E','SE','S','SW','W','NW','N','NE')[int(((step*7.5+22.5)%360)//45)];break
+                    if ring is not None:break
                 if ring is not None:break
             if ring is None and label['kind'] in {'COORDINATE_LABEL','EQUATION_LABEL'} and label.get('ringLeader'):
                 # (G6c) Nothing outside the strokes is free for a wide coordinate label: the leader may then cross the point's own circle (never another stroke, label or point)

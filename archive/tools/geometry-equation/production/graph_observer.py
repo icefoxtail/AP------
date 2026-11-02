@@ -3103,8 +3103,8 @@ def _ov_expected(plan):
         ident=entry.get('id');text=entry.get('text');ref=entry.get('point')
         if not isinstance(ident,str) or ident in seen_callouts or not isinstance(ref,str) or not isinstance(text,str) or text!=text.strip() or not text:raise ValueError('OVERLAY_CALLOUT_INVALID')
         seen_callouts.add(ident)
-        kind=entry.get('labelKind') or ('TEXT' if re.search('[가-힣]',text) else 'MATH')
-        if kind not in ('TEXT','MATH') or (kind=='TEXT' and not re.fullmatch(OV_NAME_PATTERN,text)) or (kind=='MATH' and not re.fullmatch(r'[0-9A-Za-z=+\-*/().^ ]{1,12}',text)):raise ValueError('OVERLAY_CALLOUT_INVALID')
+        kind=entry.get('labelKind') or ('TEXT' if re.search('[가-힣]',text) or any(mark in text for mark in ',αβγθ′√') else 'MATH')
+        if kind not in ('TEXT','MATH') or (kind=='TEXT' and not re.fullmatch(r'[가-힣A-Za-z0-9 (),.+\-=αβγθ′√]{1,14}' if any(mark in text for mark in ',αβγθ′√') else OV_NAME_PATTERN,text)) or (kind=='MATH' and not re.fullmatch(r'[0-9A-Za-z=+\-*/().^ ]{1,12}',text)):raise ValueError('OVERLAY_CALLOUT_INVALID')
         if ref in points:dot=ref;at=(float(S.N(points[ref][0],30)),float(S.N(points[ref][1],30)))
         else:
             index=next((i for i,point in enumerate(required_rows) if isinstance(point,dict) and point.get('id')==ref),None)

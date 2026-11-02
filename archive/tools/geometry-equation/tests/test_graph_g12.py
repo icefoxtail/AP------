@@ -52,7 +52,7 @@ class Framing(unittest.TestCase):
         self.assertEqual(bad({'id':'c','point':'A','text':'a'},{'id':'c','point':'A','text':'b'}),'OVERLAY_ID_DUPLICATE:callout:c')
         hidden=with_overlays(callouts=[{'id':'c','point':'N','text':'극소'}]);hidden['requiredPoints'][1]['marker']='NONE'
         self.assertEqual(refused(hidden),'OVERLAY_CALLOUT_POINT_HIDDEN:c')
-        self.assertEqual(refused(with_overlays(callouts=[{'id':str(i),'point':'A','text':'a'} for i in range(5)])),'OVERLAY_TOO_MANY:callouts')
+        self.assertEqual(refused(with_overlays(callouts=[{'id':str(i),'point':'A','text':'a'} for i in range(7)])),'OVERLAY_TOO_MANY:callouts')
     def test_marker_none_is_only_none_and_is_kept_by_the_framing(self):
         plan=copy.deepcopy(CUBIC);plan['requiredPoints'][0]['marker']='NONE'
         rows=fit_overview(plan)['graphPlan']['requiredPoints']

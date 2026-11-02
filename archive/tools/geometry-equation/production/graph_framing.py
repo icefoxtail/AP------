@@ -2759,9 +2759,11 @@ def fit_piecewise_discontinuous(plan,frame=None,probe=False):
 # segments to the axes, simple polygons and extra named points on the curve. Every coordinate is recomputed here exactly; the plan names
 # the points and the elements, never raw derived coordinates. The fitted plan carries overlaysFeatures (numeric, for the model/spec) and
 # the independent graph observer recomputes the same values from the raw overlays field and reads the FINAL SVG back.
-OVERLAY_LIMITS={'points':12,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4,'quadrants':4,'circles':2,'circleRegions':2,'callouts':4,'rightAngles':3,'angles':4,'equalAngles':2}
+OVERLAY_LIMITS={'points':12,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4,'quadrants':4,'circles':2,'circleRegions':2,'callouts':6,'rightAngles':3,'angles':4,'equalAngles':2}
 # overlays.names: a plain Korean name (토끼, 거북이, 직선 l) written beside one overlay segment, overlay line or the drawn curve at curveX.
 OVERLAY_NAME_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,10}'
+OVERLAY_CALLOUT_TEXT_PATTERN=r'[가-힣A-Za-z0-9 (),.+\-=αβγθ′√]{1,14}'   # (G18b) a plain-text callout may carry commas (a coordinate pair), Greek letters and a prime
+OVERLAY_CALLOUT_PLAIN_MARKS=',αβγθ′√'
 OVERLAY_LATTICE_REGIONS=('BELOW_CURVE','ABOVE_CURVE')
 OVERLAY_LATTICE_FIELDS={'region','xRange','yMin','yMax','strict','counts','curve'}
 OVERLAY_LATTICE_MAX_POINTS=40
@@ -3413,8 +3415,8 @@ def _overlay_callouts(plan,rows,claim,by_point):
         kind=entry.get('labelKind')
         if kind is not None and kind not in ('TEXT','MATH'):_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
         if not isinstance(text,str) or text!=text.strip() or not text:_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
-        if kind is None:kind='TEXT' if re.search('[가-힣]',text) else 'MATH'
-        if kind=='TEXT' and re.fullmatch(OVERLAY_NAME_PATTERN,text) is None:_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
+        if kind is None:kind='TEXT' if re.search('[가-힣]',text) or any(mark in text for mark in OVERLAY_CALLOUT_PLAIN_MARKS) else 'MATH'
+        if kind=='TEXT' and re.fullmatch(OVERLAY_CALLOUT_TEXT_PATTERN if any(mark in text for mark in OVERLAY_CALLOUT_PLAIN_MARKS) else OVERLAY_NAME_PATTERN,text) is None:_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
         if kind=='MATH' and (TEXT_PATTERN.fullmatch(text) is None or len(text)>12):_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
         row={'id':ident,'point':ref,'dot':dot,'at':at,'text':text,'labelKind':kind}
         if 'direction' in entry:
