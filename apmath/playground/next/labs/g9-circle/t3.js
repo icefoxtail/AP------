@@ -40,10 +40,10 @@
     const D = lerp(A, B, (s - a) / c), E = lerp(B, C, (s - b) / a), F = lerp(C, A, (s - c) / b);
     return { a, b, c, A, B, C, I, r, s, area, D, E, F, x: s - a, y: s - b, z: s - c };
   }
-  const clampTri = (s) => { const a = clamp(Math.round(s.c3a), 4, 14); let b = clamp(Math.round(s.c3b), 4, 14), c = clamp(Math.round(s.c3c), 4, 14); b = clamp(b, Math.abs(a - c) + 1, a + c - 1); c = clamp(c, Math.abs(a - b) + 1, a + b - 1); s.c3a = a; s.c3b = b; s.c3c = c; return [a, b, c]; };
-  const triFit = (b, g, C) => fit(b, { x0: Math.min(0, g.A.x) - 0.2, x1: Math.max(g.a, g.A.x) + 0.2, y0: g.A.y - 0.2, y1: 0.2 }, { t: 60, b: 46, l: 40, r: 40 });
-  const inName = (b, p, I, name, size = 16) => tagOut(b, p, add(p, sub(p, I)), name, { size, gap: 15 });
-  const triNames = (b, g) => { tagOut(b, g.A, g.I, 'A', { size: 17 }); tagOut(b, g.B, g.I, 'B', { size: 17 }); tagOut(b, g.C, g.I, 'C', { size: 17 }); inName(b, g.D, g.I, 'D'); inName(b, g.E, g.I, 'E'); inName(b, g.F, g.I, 'F'); T(b, g.I, 'O', { dx: 13, dy: -12, size: 16 }); };
+  const clampTri = (s) => { const a = clamp(Math.round(s.c3a), 4, 14); let b = clamp(Math.round(s.c3b), 4, 14), c = clamp(Math.round(s.c3c), 4, 14); b = clamp(b, Math.max(4, Math.abs(a - c) + 3), Math.min(14, a + c - 3)); c = clamp(c, Math.max(4, Math.abs(a - b) + 3), Math.min(14, a + b - 3)); s.c3a = a; s.c3b = b; s.c3c = c; return [a, b, c]; };
+  const triFit = (b, g, C) => fit(b, { x0: Math.min(0, g.A.x) - 0.2, x1: Math.max(g.a, g.A.x) + 0.2, y0: g.A.y - 0.2, y1: 0.2 }, { t: 60, b: 46, l: 56, r: 64 });
+  const inName = (b, p, I, name, size = 16) => (dist(p, I) * (b.k || 60) < 50 ? tagOut(b, p, I, name, { size, gap: 13 }) : tagOut(b, p, add(p, sub(p, I)), name, { size, gap: 15 }));
+  const triNames = (b, g) => { tagOut(b, g.A, g.I, 'A', { size: 17 }); tagOut(b, g.B, g.I, 'B', { size: 17 }); tagOut(b, g.C, g.I, 'C', { size: 17 }); inName(b, g.D, g.I, 'D'); inName(b, g.E, g.I, 'E'); inName(b, g.F, g.I, 'F'); T(b, g.I, 'O', { dx: 0, dy: -16, size: 16 }); };
   function drawTri(b, g, o) {
     fillPoly(b, [g.A, g.B, g.C], 'sky', 0.05);
     circle(b, g.I, g.r, 'ink', 3.2, { fill: 'green', fa: 0.06 });
@@ -134,7 +134,7 @@
     model(s, C) { if (C.problem) { const q = s.ciPk; return { q, g: rtG(q.p, q.q) }; } return { g: rtG(clamp(Math.round(s.c3p), 3, 15), clamp(Math.round(s.c3q), 3, 15)) }; },
     draw(b, s, M, C) {
       const { g, q } = M, st = C.step, pr = C.problem, ex = C.tab === 'explore', { A, B, C: Cc, I, r } = g;
-      fit(b, { x0: -0.3, x1: (pr ? g.q : 15) + 0.3, y0: -(pr ? g.p : 15) - 0.3, y1: 0.3 }, { t: 60, b: 46, l: 40, r: 40 });
+      fit(b, { x0: -0.3, x1: g.q + 0.3, y0: -g.p - 0.3, y1: 0.3 }, { t: 60, b: 46, l: 40, r: 40 });
       fillPoly(b, [A, B, Cc], 'sky', 0.05);
       circle(b, I, r, 'ink', 3.2, { fill: 'green', fa: 0.07 });
       b.path([A, B, Cc], { close: true, color: 'ink', width: 3.6 });
@@ -143,17 +143,18 @@
       if (ex || st >= 1) fillPoly(b, [B, g.D, I, g.E], 'green', 0.12);
       [A, B, Cc].forEach((p) => dot(b, p, 'ink', 4.6)); [g.D, g.E, g.F].forEach((p) => dot(b, p, 'amber', 4.4)); dot(b, I, 'ink', 4.2);
       if (!C.txt) return;
-      tagOut(b, A, I, 'A', { size: 17 }); tagOut(b, B, I, 'B', { size: 17 }); tagOut(b, Cc, I, 'C', { size: 17 }); T(b, I, 'O', { dx: -13, dy: -13, size: 16 });
+      tagOut(b, A, I, 'A', { size: 17 }); tagOut(b, B, I, 'B', { size: 17 }); tagOut(b, Cc, I, 'C', { size: 17 }); T(b, I, 'O', { dx: 0, dy: -16, size: 16 });
+      const sg = dist(g.D, I) * (b.k || 60) < 50 ? 28 : 12;
       inName(b, g.D, I, 'D'); inName(b, g.E, I, 'E'); inName(b, g.F, I, 'F');
       if (pr) {
-        segTag(b, A, B, q.kind === 1 ? String(q.p) : String(q.p), { away: I, color: 'sky', size: S(b), gap: 12 });
-        segTag(b, B, Cc, q.kind === 0 ? String(q.q) : '', { away: I, color: 'sky', size: S(b), gap: 12 });
-        if (q.kind === 1) segTag(b, A, Cc, String(q.h), { away: I, color: 'sky', size: S(b), gap: 12 });
-        if (q.kind === 2) segTag(b, A, Cc, 'x', { away: I, gap: 12 });
+        segTag(b, A, B, q.kind === 1 ? String(q.p) : String(q.p), { away: I, color: 'sky', size: S(b), gap: sg });
+        segTag(b, B, Cc, q.kind === 0 ? String(q.q) : '', { away: I, color: 'sky', size: S(b), gap: sg });
+        if (q.kind === 1) segTag(b, A, Cc, String(q.h), { away: I, color: 'sky', size: S(b), gap: sg });
+        if (q.kind === 2) segTag(b, A, Cc, 'x', { away: I, gap: sg });
         segTag(b, I, g.E, q.kind === 2 ? String((q.p + q.q - q.h) / 2) : 'x', { toward: pt(g.E.x + 3, g.E.y - 3), color: 'sky', gap: 10, size: S(b) });
         return;
       }
-      segTag(b, A, B, cv(g.p), { away: I, color: 'sky', size: S(b), gap: 12 }); segTag(b, B, Cc, cv(g.q), { away: I, color: 'sky', size: S(b), gap: 12 }); segTag(b, A, Cc, cv(g.h), { away: I, color: 'sky', size: S(b), gap: 12 });
+      segTag(b, A, B, cv(g.p), { away: I, color: 'sky', size: S(b), gap: sg }); segTag(b, B, Cc, cv(g.q), { away: I, color: 'sky', size: S(b), gap: sg }); segTag(b, A, Cc, cv(g.h), { away: I, color: 'sky', size: S(b), gap: sg });
       if (ex || st >= 1) T(b, mid(I, g.E), 'r=' + cv(r), { dx: 14, dy: -2, size: S(b) - 1, color: 'rose' });
     },
     steps: (M) => {

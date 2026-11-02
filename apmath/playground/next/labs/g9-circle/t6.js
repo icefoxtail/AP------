@@ -188,12 +188,12 @@
       if (!C.txt) return;
       T(b, O, 'O', { dy: 17, size: 16 }); tagOut(b, Tt, O, 'T', { size: 17 }); T(b, Pp, 'P', { dy: 18, size: 17 });
       if (pr) {
-        if (q.kind === 0) { ang(b, Pp, Tt, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 40, size: S(b), labelRot: 180, labelDist: 48 }); ang(b, A, Tt, B, { color: 'rose', rings: 2, label: 'x', r: 30, size: S(b) + 3 }); }
-        if (q.kind === 1) { ang(b, Pp, Tt, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 40, size: S(b), labelRot: 180, labelDist: 48 }); ang(b, Tt, A, Pp, { color: 'rose', rings: 3, label: 'x', r: 28, size: S(b) + 3 }); }
-        if (q.kind === 2) { ang(b, Tt, B, Pp, { color: 'sky', rings: 2, label: dgx(45 - q.th / 2), r: 28, size: S(b) }); ang(b, Pp, Tt, B, { color: 'rose', rings: 1, label: 'x', r: 40, size: S(b) + 3, labelRot: 180, labelDist: 48 }); }
+        if (q.kind === 0) { ang(b, Pp, Tt, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 28, size: S(b), labelRot: 180, labelDist: 34 }); ang(b, A, Tt, B, { color: 'rose', rings: 2, label: 'x', r: 30, size: S(b) + 3 }); }
+        if (q.kind === 1) { ang(b, Pp, Tt, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 28, size: S(b), labelRot: 180, labelDist: 34 }); ang(b, Tt, A, Pp, { color: 'rose', rings: 3, label: 'x', r: 28, size: S(b) + 3 }); }
+        if (q.kind === 2) { ang(b, Tt, B, Pp, { color: 'sky', rings: 2, label: dgx(45 - q.th / 2), r: 28, size: S(b) }); ang(b, Pp, Tt, B, { color: 'rose', rings: 1, label: 'x', r: 28, size: S(b) + 3, labelRot: 180, labelDist: 34 }); }
         return;
       }
-      ang(b, Pp, Tt, B, { color: 'rose', rings: 1, label: dgx(g.th), r: 40, size: S(b), labelRot: 180, labelDist: 48 });
+      ang(b, Pp, Tt, B, { color: 'rose', rings: 1, label: dgx(g.th), r: 28, size: S(b), labelRot: 180, labelDist: 34 });
       if (ex || st >= 1) ang(b, O, Tt, B, { color: 'sky', rings: 2, label: dgx(g.f), r: 26, size: S(b) - 1 });
       if (ex || st >= 2) ang(b, A, Tt, B, { color: 'green', rings: 2, label: dgx(g.f / 2), r: 28, size: S(b) - 1 });
       if (ex || st >= 3) ang(b, Tt, B, Pp, { color: 'green', rings: 2, label: dgx(g.f / 2), r: 28, size: S(b) - 1 });
@@ -449,7 +449,7 @@
       if (pr) {
         if (q.kind !== 1) L(Pp, A, 'PA=' + q.a, 'sky', 0.45); else L(Pp, A, 'PA=x', 'sky', 0.45);
         if (q.kind !== 2) L(Pp, B, 'PB=' + q.b, 'sky', (q.a + q.b) / (2 * q.b));
-        else segTag(b, A, B, 'AB=x', { away: Pp, color: 'rose', size: S(b, 18), gap: 14 });
+        else segTag(b, A, B, 'x', { away: Pp, color: 'rose', size: S(b, 18), gap: 14 });
         L(Pp, Cc, 'PC=' + q.c, 'sky', 0.55); L(Pp, D, q.kind === 0 ? 'PD=x' : 'PD=' + q.d, 'sky', (q.c + q.d) / (2 * q.d));
         return;
       }
@@ -514,7 +514,7 @@
       if (pr) {
         segTag(b, Pp, A, q.kind === 1 ? 'PA=x' : 'PA=' + q.a, { toward: c, color: 'sky', size: S(b), gap: 12 });
         if (q.kind !== 2) segTag(b, Pp, B, 'PB=' + q.b, { toward: c, f: 0.7, color: 'sky', size: S(b), gap: 12 });
-        else segTag(b, A, B, 'AB=x', { toward: c, color: 'rose', size: S(b, 18), gap: 14 });
+        else segTag(b, A, B, 'x', { toward: c, color: 'rose', size: S(b, 18), gap: 14 });
         segTag(b, Pp, Tt, q.kind === 0 ? 'PT=x' : 'PT=' + q.t, { away: c, color: 'sky', size: S(b), gap: 12 });
         return;
       }

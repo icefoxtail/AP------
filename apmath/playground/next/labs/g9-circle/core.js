@@ -67,12 +67,13 @@
   const shiftPts = (P, dx, dy = 0) => P.map((p) => pt(p.x + dx, p.y + dy));
 
   /* ------------------------------------------------------------------ 그리기 도우미 */
-  const textW = (t, size) => { let w = 0; for (const ch of String(t)) { const c = ch.charCodeAt(0); w += c >= 0x1100 ? size * 1.0 : ch === ' ' ? size * 0.32 : size * 0.62; } return w; };
+  const hasFrac = (t) => /\\frac\{/.test(String(t));
+  const textW = (t, size0) => { const hf = hasFrac(t), size = hf ? size0 * 1.25 : size0; t = String(t).replace(/\\frac\{([^{}]*)\}\{([^{}]*)\}/g, (m, x, y) => (x.length >= y.length ? x : y)).replace(/\\sqrt\{([^{}]*)\}/g, '√$1').replace(/\\pi/g, 'π'); let w = 0; for (const ch of String(t)) { const c = ch.charCodeAt(0); w += c >= 0x1100 ? size * 1.0 : ch === ' ' ? size * 0.32 : size * 0.62; } return w; };
   // 구하는 값 x 가 들어간 글자(x · AB=x …)는 자동으로 분홍·크게 그립니다.
   function T(b, p, str, o = {}) {
     if (str == null || str === '') return;
     const isX = str === 'x' || /=x$/.test(String(str)) || /^x=/.test(String(str));
-    b.text(p, str, { dx: o.dx || 0, dy: o.dy || 0, color: isX ? 'rose' : o.color || 'ink', size: isX ? Math.max(o.size && o.size > 17 ? o.size : 0, 19) : o.size || 16, weight: 800, align: o.align || 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref });
+    b.text(p, str, { dx: o.dx || 0, dy: o.dy || 0, color: isX ? 'rose' : o.color || 'ink', size: (isX ? Math.max(o.size && o.size > 17 ? o.size : 0, 19) : o.size || 16) * (hasFrac(str) ? 1.25 : 1), weight: 800, align: o.align || 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref });
   }
   function tagOut(b, p, c, str, o = {}) {
     const u = unit(sub(p, c)), size = o.size || 17, w = textW(str, size), g = o.gap == null ? 12 : o.gap;
@@ -113,7 +114,7 @@
     if (o.label) {
       const size = o.size || 15;
       const need = (textW(o.label, size) / 2 + 5) / Math.max(0.2, Math.sin(clamp(Math.abs(d) / 2, 0.12, 1.5)));
-      const dst = o.labelDist != null ? o.labelDist : Math.max(r + 14, Math.min(need, r + 70));
+      const dst = o.labelDist != null ? o.labelDist : Math.max(r + 14, Math.min(need, r + 34));
       const la = am + (o.labelRot || 0) * DEG;
       T(b, V, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha });
     }

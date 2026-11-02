@@ -319,7 +319,7 @@
     },
     draw(b, s, M, C) {
       const { g, q } = M, st = C.step, pr = C.problem, ex = C.tab === 'explore', { H, W, r } = g;
-      fit(b, { x0: -0.2, x1: W + 0.2, y0: -0.2, y1: H + 0.2 }, { t: 54, b: 52, l: 38, r: 38 });
+      fit(b, { x0: -0.2, x1: W + 0.2, y0: -0.2, y1: H + 0.2 }, { t: 54, b: 52, l: 38, r: 70 });
       fillPoly(b, [g.A, g.D, g.Cc, g.B], 'sky', 0.05);
       b.path([g.A, g.D, g.Cc, g.B], { close: true, color: 'ink', width: 3.4 });
       circle(b, g.O, r, 'ink', 3.4, { fill: 'sky', fa: 0.06 });
@@ -501,7 +501,7 @@
       const up = pt(g.O.x, g.O.y), dn = g.Op;
       if (pr) {
         segTag(b, g.P, g.A, q.kind === 0 ? 'PA=x' : `PA=${cv(g.pa)}`, { toward: pt(g.A.x, g.A.y - 5), color: 'sky', size: S(b), gap: 13 });
-        segTag(b, g.A, g.B, q.kind === 2 ? 'AB=x' : '', { toward: pt(g.A.x, g.A.y - 5), color: 'rose', size: S(b), gap: 13 });
+        segTag(b, g.A, g.B, q.kind === 2 ? 'x' : '', { toward: g.O, f: 0.6, color: 'rose', size: S(b), gap: 18 });
         segTag(b, g.P, g.B, q.kind === 1 ? 'PB=x' : `PB=${q.pbFull}`, { away: pt(g.A.x, g.A.y - 5), color: 'sky', size: S(b), gap: 13 });
         T(b, pt(-R * 0.1, R * 0.62), `R=${R}, r=${r}`, { size: S(b), color: 'sky' });
         return;

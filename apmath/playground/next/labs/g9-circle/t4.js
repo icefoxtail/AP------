@@ -29,8 +29,8 @@
   const arcBetween = (b, from, to, col = 'rose', w = 6) => arcB(b, degOf(O, from), degOf(O, to), col, w);
 
   const PARAMS = {
-    c4t: P('호 AB의 크기 (∠AOB)', 40, 160, 10, 100, { color: 'sky', format: degF }),
-    c4u: P('점 P의 위치', 20, 320, 5, 200, { color: 'amber', hint: '호 위에서 점 P를 움직여요', format: (v) => Math.round(v) + '°' }),
+    c4t: P('호 AB의 크기 (∠AOB)', 40, 120, 10, 100, { color: 'sky', format: degF }),
+    c4u: P('점 P의 위치', 45, 275, 5, 200, { color: 'amber', hint: '호 위에서 점 P를 움직여요', format: (v) => Math.round(v) + '°' }),
     c4a: P('호 AB의 크기', 20, 60, 2, 40, { color: 'sky', format: degF }),
     c4k: P('호 CD = k × 호 AB', 1, 3, 1, 2, { color: 'rose', format: (v) => (v === 1 ? '1배 (같다)' : fmtN(v) + '배') }),
     c4p: P('점 P의 위치', 15, 165, 5, 70, { color: 'amber', hint: '반원 위에서 점 P를 움직여요', format: (v) => Math.round(v) + '°' }),
@@ -48,10 +48,10 @@
     id: 'c4-1', title: '원주각과 중심각', short: '원주각과 중심각',
     question: '호 AB에 대한 원주각 ∠APB는 중심각 ∠AOB와 어떤 관계일까? 점 P를 호 위에서 움직이면 중심 O가 각의 안쪽, 한 변 위, 바깥에 놓이는 세 경우가 나와. 모두 같은 관계일까?',
     ctl: ['c4t', 'c4u'],
-    presets: () => [['in', 'O가 ∠APB의 안쪽'], ['side', 'O가 한 변 위(PA가 지름)'], ['out', 'O가 바깥']].map(([id, label], i) => ({ group: i === 0 ? '세 가지 경우' : '', label, apply: (s) => { const th = s.c4t; s.c4u = id === 'in' ? 180 + th / 2 : id === 'side' ? 180 + th : 100; s.c4u = clamp(Math.round(s.c4u / 5) * 5, 20, 320); }, on: (s) => casesOf(s.c4t, s.c4u) === id })),
+    presets: () => [['in', 'O가 ∠APB의 안쪽'], ['side', 'O가 한 변 위(PB가 지름)'], ['out', 'O가 바깥']].map(([id, label], i) => ({ group: i === 0 ? '세 가지 경우' : '', label, apply: (s) => { const th = s.c4t; s.c4u = id === 'in' ? (180 + (315 - th)) / 2 : id === 'side' ? 180 : 100; s.c4u = clamp(Math.round(s.c4u / 5) * 5, 45, 315 - th); }, on: (s) => casesOf(s.c4t, s.c4u) === id })),
     init: (s) => { s.c4t = 100; s.c4u = 200; },
-    gen(rnd, n) { const kind = n % 3, th = pickR(rnd, [60, 70, 80, 100, 110, 120, 140]), u = pickR(rnd, [100, 130, 180 + th / 2, 180 + th / 2 + 20, 180 + th + 30]); return { kind, th, u: Math.min(u, 345 - th), key: `a${kind}.${th}.${u}` }; },
-    model(s, C) { if (C.problem) { const q = s.ciPk; return { q, g: abpG(q.th, q.u) }; } const th = clamp(s.c4t, 40, 160), u = clamp(s.c4u, 20, 340 - th); return { g: abpG(th, u) }; },
+    gen(rnd, n) { const kind = n % 3, th = pickR(rnd, [60, 70, 80, 100, 110, 120]), hi = 315 - th, u0 = pickR(rnd, [60, 100, 130, 180, Math.round((180 + hi) / 10) * 5]), u = clamp(u0, 55, hi); return { kind, th, u, key: `a${kind}.${th}.${u}` }; },
+    model(s, C) { if (C.problem) { const q = s.ciPk; return { q, g: abpG(q.th, q.u) }; } const th = clamp(s.c4t, 40, 120), u = clamp(s.c4u, 45, 315 - th); return { g: abpG(th, u) }; },
     draw(b, s, M, C) {
       const { g, q } = M, st = C.step, pr = C.problem, ex = C.tab === 'explore', { A, B, P: Pp, Q } = g;
       FIT(b);
@@ -80,7 +80,7 @@
     steps: (M) => {
       const g = M.g, cs = g.cs;
       return [
-        `점 P에서 지름 $\\overline{PQ}$를 그어요. ${cs === 'in' ? '중심 O가 ∠APB의 안쪽에 있는 경우예요.' : cs === 'side' ? '이 경우 PA가 지름이라서 Q=A예요.' : '중심 O가 ∠APB의 바깥에 있는 경우예요.'}`,
+        `점 P에서 지름 $\\overline{PQ}$를 그어요. ${cs === 'in' ? '중심 O가 ∠APB의 안쪽에 있는 경우예요.' : cs === 'side' ? '이 경우 PA 또는 PB가 지름이라서 Q가 A 또는 B와 같아요.' : '중심 O가 ∠APB의 바깥에 있는 경우예요.'}`,
         '삼각형 OPA는 $\\overline{OP}=\\overline{OA}$(반지름)인 이등변삼각형이에요. $\\angle OPA=\\angle OAP$이고 외각의 성질로 $\\angle AOQ=2\\angle APQ$.',
         '삼각형 OPB도 마찬가지로 $\\angle BOQ=2\\angle BPQ$.',
         cs === 'out' ? '두 식을 빼면 $\\angle AOB=2\\angle APQ-2\\angle BPQ=2\\angle APB$.' : '두 식을 더하면 $\\angle AOB=\\angle AOQ+\\angle BOQ=2(\\angle APQ+\\angle BPQ)=2\\angle APB$.',
@@ -200,7 +200,7 @@
     model(s, C) { if (C.problem) { const q = s.ciPk; return { q, g: arcG(2 * q.th, q.k) }; } return { g: arcG(clamp(s.c4a, 20, 60), clamp(Math.round(s.c4k), 1, 3)) }; },
     draw(b, s, M, C) {
       const { g, q } = M, st = C.step, pr = C.problem, ex = C.tab === 'explore', { A, B, C: Cc, D, P: Pp } = g;
-      FIT(b);
+      if (pr) FIT(b, { b: 92 }); else FIT(b);
       circle(b, O, R, 'ink', 3.6, { fill: 'sky', fa: 0.04 });
       arcB(b, g.aB, g.aA, 'sky', 6); arcB(b, g.aD, g.aC, g.k === 1 && !pr ? 'sky' : 'rose', 6);
       line(b, A, Cc, 'ink', 3); line(b, B, D, 'ink', 3);
@@ -211,8 +211,8 @@
       const th = g.a / 2, kth = g.k * g.a / 2, rk = g.k === 1 ? 1 : 2;
       if (pr) {
         // 호 AB 에 대한 원주각 ∠ADB, 호 CD 에 대한 원주각 ∠CAD / ∠CBD
-        if (q.kind === 0) { ang(b, D, A, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 26, size: S(b) }); ang(b, Pp, A, D, { color: 'rose', rings: 3, label: 'x', r: 24, size: S(b) + 3 }); T(b, mp(O, R * 0.68, 270), `호 CD = ${q.k === 1 ? '호 AB' : q.k + '×호 AB'}`, { size: S(b) - 1, color: 'rose', noBig: true }); }
-        if (q.kind === 1) { ang(b, D, A, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 26, size: S(b) }); ang(b, A, Cc, D, { color: 'rose', rings: 2, label: 'x', r: 28, size: S(b) + 3 }); T(b, mp(O, R * 0.68, 270), `호 CD = ${q.k === 1 ? '호 AB' : q.k + '×호 AB'}`, { size: S(b) - 1, color: 'sky', noBig: true }); }
+        if (q.kind === 0) { ang(b, D, A, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 26, size: S(b) }); ang(b, Pp, A, D, { color: 'rose', rings: 3, label: 'x', r: 24, size: S(b) + 3 }); T(b, mp(O, R, 270), `호 CD = ${q.k === 1 ? '호 AB' : q.k + '×호 AB'}`, { dy: 50, size: S(b), color: 'rose', noBig: true }); }
+        if (q.kind === 1) { ang(b, D, A, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 26, size: S(b) }); ang(b, A, Cc, D, { color: 'rose', rings: 2, label: 'x', r: 28, size: S(b) + 3 }); T(b, mp(O, R, 270), `호 CD = ${q.k === 1 ? '호 AB' : q.k + '×호 AB'}`, { dy: 50, size: S(b), color: 'sky', noBig: true }); }
         if (q.kind === 2) { ang(b, D, A, B, { color: 'sky', rings: 1, label: dgx(q.th), r: 26, size: S(b) }); ang(b, B, Cc, D, { color: 'sky', rings: 2, label: dgx(q.k * q.th), r: 28, size: S(b) }); ang(b, Pp, A, B, { color: 'rose', rings: 3, label: 'x', r: 24, size: S(b) + 3 }); }
         return;
       }
@@ -414,7 +414,7 @@
       T(b, O, 'O', { dx: 0, dy: 16, size: 16 });
       if (pr) {
         ang(b, D, A, Cc, { color: 'sky', rings: 1, label: dgx(q.th), r: 32, size: S(b) });
-        if (q.kind === 0) { T(b, mp(O, R + 1.0, g.dd / 2), `${q.k}π`, { size: S(b), color: 'sky', noBig: true }); T(b, mp(O, R + 1.0, 90), 'x', { size: S(b) + 3, color: 'rose' }); }
+        if (q.kind === 0) { T(b, mp(O, R + 1.0, g.dd / 2), (q.k === 1 ? "π" : `${q.k}π`), { size: S(b), color: 'sky', noBig: true }); T(b, mp(O, R + 1.0, 90), 'x', { size: S(b) + 3, color: 'rose' }); }
         if (q.kind === 1) T(b, mp(O, R + 1.0, 90), 'x', { size: S(b) + 3, color: 'rose' });
         if (q.kind === 2) T(b, mp(O, R + 1.0, 180 - g.dd / 2), 'x', { size: S(b) + 3, color: 'rose' });
         return;
@@ -443,7 +443,7 @@
       const pre = '그림에서 $\\overline{AB}$는 원 O의 지름이고 $\\overline{AB}\\parallel\\overline{CD}$이다.';
       if (q.kind === 0) {
         const arc = ((180 - 4 * th) / (2 * th)) * q.k; tag = '평행한 현 · 호의 길이'; ans = arc; meas = (g.arcCD / (2 * th)) * q.k;
-        stem = `${pre} $\\angle ADC=${th}^{\\circ}$, $\\widehat{DB}=${q.k}\\pi$일 때, $\\widehat{CD}$의 길이 $x$는?`;
+        stem = `${pre} $\\angle ADC=${th}^{\\circ}$, $\\widehat{DB}=${q.k === 1 ? "" : q.k}\\pi$일 때, $\\widehat{CD}$의 길이 $x$는?`;
         const fr = (v) => (Number.isInteger(v) ? v : v);
         wr = [[q.k, '호 CD와 호 DB는 길이가 달라요. 크기의 비를 이용해요.'], [q.k * 2, '크기의 비 호 CD : 호 DB를 이용해요.'], [arc + q.k, '크기의 비를 이용해요.'], [arc * 2, '크기의 비를 이용해요.'], [Math.max(1, Math.round(arc / 2)), '크기의 비를 이용해요.'], [arc + 2, '크기의 비를 이용해요.'], [arc - 1, '크기의 비를 이용해요.']].map(([v, h]) => [fr(v), h]);
         ch = mkPi(ans, wr, { pad: 1 });
