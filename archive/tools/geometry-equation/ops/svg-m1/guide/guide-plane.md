@@ -126,6 +126,50 @@
 - **한계.** 관측기는 경계의 모양만 보고 **넓이 값 자체는 검산하지 않는다**: `label`의 수치는 원문·해설과 맞는지 사람이 확인한다(색칠이 넓이 계산을 대신하지 않는다). 한 영역은 even-odd path 하나이므로 도형이 겹치면 칠이 상쇄된다(겹침 금지). 같은 점에서 여러 획이 만나는 중심에 점 이름을 두면 자리가 없어 지시선이 붙을 수 있다. 영역 라벨이 들어갈 안쪽 여백이 없으면 `LAYOUT_INVENTORY_INCOMPLETE`로 실패하니 라벨을 줄이거나 값을 밖으로 뺀다.
 
 
+### 3-9-색. 같은 것은 같은 색으로: 색 묶음 (`fill`·`color`·`equalAreas`·`equalAngles`·`segmentColors`)
+
+해설 그림의 핵심은 "어느 것과 어느 것이 같은가"다(넓이가 같은 두 조각, 합동인 두 삼각형, 크기가 같은 각, 대응하는 변, 같은 길이, 평행). **같은 묶음은 같은 색, 다른 묶음은 다른 색**으로 그리면 학생이 눈으로 짝을 찾는다. 회색 `LIGHT`·`MEDIUM`(영역 칠)과 빨강 선 강조(`emphasis`)는 그대로 있고(색값 불변), 아래 5색은 옵트인으로 더해진다. 입체도형의 강조 색(`solid-figure-v1`의 `HIGHLIGHT_FILLS`)과 같은 칠·투명도다.
+
+| 이름 | 칠(영역·각 부채꼴) | 선(선분·각 호·눈금·화살표) | 
+|---|---|---|
+| `BLUE` | `#7fa6e8` 투명도 0.32 (입체의 `LIGHT` 파랑) | `#1f5fa8` |
+| `WARM` | `#f2a65a` 0.42 | `#b85c00` |
+| `GREEN` | `#6fcf97` 0.42 | `#2e7d32` |
+| `ROSE` | `#e98aa8` 0.42 | `#b8325f` |
+| `VIOLET` | `#a78bdb` 0.42 | `#6b46b3` |
+
+칠은 반투명이라 그 위의 **검정 라벨은 그대로 읽힌다**(라벨 글자는 항상 검정; 색은 칠·선·호에만). 선 색은 흰 배경에서 3:1 이상으로 진하다. 화면에서 또렷한 조합은 `BLUE`와 `WARM`(파랑·주황)이므로 **주로 쓰는 두 묶음은 이 둘**로 하고, 나머지는 세 번째 묶음부터 쓴다. 흑백 인쇄에서의 명도 차는 테스트가 경고만 한다(화면이 우선).
+
+```json
+"planeMarks":{
+ "regions":[
+  {"id":"rBase","fill":"BLUE","shapes":[{"polygon":["A","B","D","P"]}]},
+  {"id":"wA","fill":"WARM","shapes":[{"polygon":["A","P","E"]}]},
+  {"id":"wD","fill":"WARM","shapes":[{"polygon":["D","P","C"]}]}],
+ "equalAreas":[["wA","wD"]],
+ "angles":[{"id":"a1","refs":["A","O","D"],"value":60,"noLabel":true},{"id":"a2","refs":["B","O","C"],"value":60,"noLabel":true}],
+ "equalAngles":[{"angles":["a1","a2"],"color":"GREEN"}],
+ "parallels":[{"id":"p1","count":1,"segments":["sAD","sEC"],"color":"VIOLET"}],
+ "equalLengths":[{"id":"e1","count":1,"segments":["sOA","sOB"],"color":"ROSE"}],
+ "segmentColors":[{"segments":["sAB","sEF"],"color":"BLUE"},{"segments":["sBC","sFG"],"color":"WARM"}]
+}
+```
+
+| 필드 | 뜻 |
+|---|---|
+| `regions[].fill` | `LIGHT`·`MEDIUM`(회색, 기본 `LIGHT`) 또는 위 5색 이름. 그래프의 `graphPlan.regions[].fill`도 같은 이름을 받는다 |
+| `equalAreas:[["w1","w2"],...]` | 같은 넓이인 영역 id 묶음(묶음 3개까지). **넓이가 실제로 같아야** 하고(상대 오차 1e-6, 경계의 점·호로 정확히 계산: 신발끈·부채꼴 공식, 구멍은 뺀다) 묶음 영역은 **같은 팔레트 색**이어야 하며 그 색을 묶음 밖 영역이 쓰면 안 된다 |
+| `angles[].color` | 한 각의 부채꼴 칠과 호 선 색(5색). `emphasisGroup`과 함께 못 쓴다. 평각(`straight`)에는 못 쓴다 |
+| `equalAngles:[{"angles":["a1","a2"],"color":"GREEN"}]` | **크기가 같은 각 모둠 전체**를 한 색으로. 같은 색의 각은 크기가 같아야 한다(0.5°). 기존 `equalGroup`(호 개수)과 함께 써도 된다 |
+| `equalLengths[].color`, `parallels[].color` | 그 모둠의 **선분과 눈금·화살표**가 같은 색이 된다. 같은 길이/평행임은 원래 검사에 더해 색 묶음으로도 다시 확인한다 |
+| `segmentColors:[{"segments":["sAB","sEF"],"color":"BLUE"}]` | 그려진 선분(`displaySegments` id)을 그 색의 진한 선색, 조금 굵게(2.4px) 그린다. 닮음·합동의 **대응변**처럼 길이가 달라도 한 묶음인 것에 쓴다. 같은 선분은 한 묶음에만 들어간다 |
+
+- **권장: 한 색 = 한 관계, 묶음은 2~3개까지.** 색 묶음에는 관계 표식(눈금·호 겹수)도 함께 쓴다(색만으로 구분하지 않는다). 한 그림에서 같은 색을 영역 묶음 둘에, 또는 선분 묶음 둘에 쓰지 않는다. 합성 그림(`composite-panels-v1`)은 패널마다 `segmentColors`를 쓰고 두 패널에서 **같은 색 = 같은 대응**이 되게 한다.
+- 색을 쓰는 선분은 `emphasis`·`dashed`·`arrow`와 같이 쓸 수 없다(색이 강조를 대신한다).
+- 오류 코드: `REGION_FILL_INVALID`(문자가 아닌 fill), `REGION_FILL_UNSUPPORTED`(모르는 색 이름), `REGION_EQUAL_AREA_INVALID`(`equalAreas` 모양), `REGION_EQUAL_AREA_UNKNOWN_REGION`, `REGION_EQUAL_AREA_MISMATCH`(넓이가 다름), `REGION_EQUAL_AREA_COLOR_MISMATCH`(묶음의 색이 다르거나 회색), `REGION_COLOR_GROUP_AMBIGUOUS`(한 색을 두 묶음 또는 묶음 밖 영역에 씀), `ANGLE_COLOR_INVALID`(색 이름·`equalAngles` 모양·`emphasisGroup`과 중복), `ANGLE_COLOR_GROUP_MISMATCH`(같은 색인데 크기가 다른 각, 한 각이 두 모둠에), `ANGLE_COLOR_MISMATCH`(관측기: 호·부채꼴 색이 plan과 다름), `SEGMENT_COLOR_INVALID`, `SEGMENT_COLOR_UNKNOWN_SEGMENT`, `SEGMENT_COLOR_DUPLICATE`, `SEGMENT_COLOR_GROUP_MISMATCH`(같은 색을 두 관계에 씀, 또는 같은 색 모둠의 선분이 실제로 같은 길이·평행이 아님), `SEGMENT_COLOR_MISMATCH`(관측기: 선·눈금 색·굵기가 plan과 다름), `SEGMENT_COLOR_UNDECLARED`(선언하지 않은 선분이 색으로 그려짐).
+- 관측기는 최종 SVG에서 칠 색·투명도(`fill-opacity`)·선 색·굵기를 읽어 plan의 이름과 맞추고, `equalAreas`의 넓이를 Cindy 점에서 **독립 계산**해(정확한 식은 SymPy `nsimplify`로 보고) 같은지, 같은 색 각의 크기와 같은 색 모둠 선분의 길이·평행을 다시 계산해 확인한다.
+
+
 ### 3-10. 좌표 그림의 각 표시: 축이 있는 작도에 같은 표식 (`SOURCE_COORDINATE_AXES_v1`, `planeMarks`)
 
 일반각·삼각함수의 정의, 두 동경이 이루는 각, 좌표평면 위 삼각형의 각처럼 **좌표축을 그대로 두고 각·직각·같은 길이·평행·호를 표시해야 하는** 문항에 쓴다. 그림은 이미 쓰고 있는 좌표 작도 plan(`construction-spike-v1` + `mathPlan.realization:{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false}`, `SOURCE_COORDINATES`, 축·눈금이 그려진다) 그대로이고, 3-8절의 `planeMarks`와 `displaySegments`의 `dashed`/`arrow`를 **같은 키·같은 관측기**로 쓸 수 있다. 별도의 축 없는 평면도형(`PLANE_FIGURE_v1`)으로 바꾸지 않는다: 점 좌표와 축은 원문 그대로 두고 표식만 더한다.
@@ -181,6 +225,28 @@
 ```
 
 
+### 3-17. 도로망·격자 최단 경로 (`lattice-path-figure-v1`)
+
+원문이 **정사각형(격자) 도로망에서 A에서 B까지 가는 경로의 수**를 묻고, 해설이 "지나지 않는 길을 빼고 센다 / 반드시 지나는 길로 나눠 센다 / 교차점마다 경로 수를 더해 간다"를 그림으로 보이면 쓴다. 도로망을 한 장의 그림으로 그리고, 끊긴 길·꼭 지나는 길·한 경로의 예·교차점별 경로 수를 plan 필드로 정한다.
+
+```json
+{"capability":"lattice-path-figure-v1",
+ "lattice":{"grid":{"cols":6,"rows":3},
+  "points":{"A":[0,0],"B":[6,3],"P":[4,1],"Q":[4,2]},
+  "from":"A","to":"B","forbidden":[["P","Q"]],"counts":true},
+ "caption":"...","sourceConditions":[...],"newVisualInformation":[...]}
+```
+
+- `grid`: 칸의 수 `cols`(1~10)·`rows`(1~8). 교차점은 **왼쪽 아래가 [0,0]**이고 오른쪽이 x, 위쪽이 y이다. `points`는 이름(대문자 한 자와 숫자·프라임 하나)과 교차점 좌표 `[x,y]`이다(12개 이하, 한 교차점에 이름 하나). 도로(선분)는 격자선 한 칸 단위로 엔진이 모두 그린다.
+- `forbidden:[["P","Q"],...]`: **지나지 않는 구간**. 이웃한 두 교차점(이름 또는 `[x,y]`)이며 점선(끊김)으로 그려진다. `via:[["P","Q"]]`: **반드시 지나는 구간**(3개 이하). 굵은 선으로 그려지고, 시작점·도착점이 이루는 직사각형 안에 있어야 한다.
+- `counts:true`: 엔진이 `from`(기본 `"A"`)에서 `to`(기본 `"B"`)까지 **오른쪽·위쪽(도착점 쪽)으로만** 가는 최단 경로를 직접 세어 **교차점마다 그 교차점까지 오는 경로 수**를 작은 숫자로 쓴다. 금지·경유 구간을 지켜 완성할 수 있는 경로만 센다. 값은 저자가 쓰지 않는다(`counts:["P","Q"]`처럼 이름·좌표 목록을 주면 그 교차점만 쓴다).
+- **도착점의 최종 경로 수(정답)는 기본으로 쓰지 않는다**(`hideTargetCount` 기본 true). 도착점 앞 두 교차점의 수를 더하면 정답이므로, 해설이 그 합을 보이게 하려는 문항에만 `counts`를 쓰고, 그림이 정답을 그대로 드러내면 안 되는 면에서는 `counts:false`(기본)로 둔다. `hideTargetCount:false`는 정답이 이미 문제나 해설 본문에 있을 때만 쓴다.
+- `highlightPath`: 한 경로의 예. 이웃한 교차점을 잇는 이름·좌표의 열(2~40개)이며 점선 굵은 선으로 그려진다. **왼쪽으로 가거나 되돌아가는 경로도 그릴 수 있다**(같은 길을 두 번 쓰거나 `forbidden` 길을 쓰면 거절). 이때 최단 경로 수는 세지 않으므로 `counts`와 함께 쓰는 것은 자유이지만, 되돌아가는 문항에는 `counts`를 쓰지 않는다.
+- 이 그림은 **오른쪽·위쪽 한 방향 최단 경로**의 수만 센다. 대각선 도로, 한 방향이 막힌 부분 격자(직사각형이 아닌 도로망), 되돌아가는 경로의 수는 세지 않는다(원문에 그려진 도로망이 직사각형 격자가 아니면 `UNSUPPORTED`).
+- **독립 검수.** `lattice_path_observer.py`는 plan만 보고 시작점에서 도착점까지의 모든 최단 경로를 **하나씩 걸어서** 금지·경유 조건을 거른 뒤 교차점마다 서로 다른 앞부분 경로를 세어, **최종 SVG**에 적힌 숫자와 대조한다. 그려진 도로의 간격으로 격자 배율을 되찾아 모든 도로가 정확한 위치에 하나씩 있는지, 끊긴 길이 점선인지, 꼭 지나는 길이 더 굵은지, 이름 점과 `highlightPath`가 제 교차점에 있는지, 숨긴 최종 수가 적히지 않았는지 확인한다.
+- 오류 코드: `LATTICE_PLAN_INVALID`(허용하지 않는 키), `LATTICE_GRID_INVALID`(범위 밖), `LATTICE_POINT_INVALID`/`LATTICE_POINT_ID_INVALID`/`LATTICE_POINT_OUT_OF_GRID`/`LATTICE_POINT_POSITION_DUPLICATE`, `LATTICE_SEGMENT_INVALID`/`LATTICE_SEGMENT_NOT_ADJACENT`/`LATTICE_SEGMENT_DUPLICATE`, `LATTICE_VIA_TOO_MANY`/`LATTICE_VIA_FORBIDDEN_CONFLICT`/`LATTICE_VIA_UNREACHABLE`, `LATTICE_ENDPOINT_INVALID`(시작점·도착점 없음·같음), `LATTICE_NO_PATH`(조건을 만족하는 경로 없음), `LATTICE_COUNTS_INVALID`, `LATTICE_HIGHLIGHT_PATH_INVALID`, `LATTICE_LABEL_NO_ROOM`(숫자·이름이 들어갈 자리 없음: 칸을 줄이거나 `counts` 목록으로 일부만 쓴다).
+
+
 ### 3-41. 두 원의 호로 이루어진 영역(렌즈·활꼴): 중심이 다른 호를 한 `loop`에 잇기
 
 두 원(또는 두 반원)의 호가 만드는 **렌즈(공통 부분)**·**활꼴(초승달)** 처럼 한 영역의 경계가 **중심이 다른 원호 두 개**인 경우에는 3-9절의 `loop`를 그대로 쓰되 각 `step.arc.center`에 다른 점을 적는다. `displayCircles`로 원을 통째로 그리면 원문에 없는 반대쪽 호까지 보이므로, 원문이 반원만 보여 주면 `planeMarks.arcs`를 `highlight:false`(일반 굵기 실선)로 써서 필요한 호만 긋고 그 호를 영역 경계로 쓴다. 정답지 `item39`(23_금당중 2학기 중간 중2 q21, 히포크라테스의 활꼴)가 이 구성을 실제로 검증한다.
@@ -197,6 +263,67 @@
 - **여러 조각을 한 영역으로.** 서로 겹치지 않는 두 활꼴은 같은 region의 shapes에 넣는다. 내부 라벨은 한 조각의 넓이로 오해될 수 있으므로 전체 합계 54 cm²를 한 조각 안에 쓰지 않는다. 바깥쪽 합계 표기가 지원되지 않으면 SVG에는 두 조각과 원래 조건을 남기고, 해설 본문에서 전체 합계를 설명한다.
 - **관측기.** `plane-marks-observer-worker.py` → `plane_regions_observer.py`가 Cindy 점에서 각 호의 중심·반지름·sweep을 다시 계산해 `<path>`의 `A` 명령과 맞추고, 모든 변이 실제 획으로 그려졌는지, 칠이 모든 획·라벨 아래인지, 라벨이 영역 안인지 확인한다(`REGION_ARC_SIDE_MISMATCH`, `REGION_ARC_RADIUS_MISMATCH`, `REGION_BOUNDARY_NOT_DRAWN`, `REGION_LABEL_OUTSIDE`). `highlight:false`인 호는 강조 표식으로 세지 않고 경계 획으로만 검사한다.
 - **한계.** 넓이 자체는 원문·해설과 독립 대조한다. `(가)`·`(나)` 같은 한글 영역 표지와 빗금(해칭)은 3-46절의 `labelKind`·`pattern`으로 그린다.
+
+
+
+### 3-45. 축에 나란한 타원: 초점·꼭짓점·지름의 현·접선 (`ellipse-figure-v1`)
+
+원문 문항의 이차곡선이 **축에 나란한 타원**(장축이 x축 또는 y축)이고 저장된 풀이가 초점, 타원 위의 점, 중심을 지나는 현, 삼각형, 접선을 실제로 쓸 때 이 capability를 쓴다. **타원 하나 또는 한 좌표평면 위의 타원 두 개**를 그린다. 두 타원은 하나의 공통 좌표평면·공통 배율로 그리고 패널을 나누지 않는다(`ellipses` 배열). 세 개 이상의 타원, 회전한 타원, 원은 대상이 아니다. **포물선은 루트 `conic` 필드로 같은 capability가 그리고**(아래 `conic` 항목, G2a), 쌍곡선은 G2b 예정이다. `capability:"ellipse-figure-v1"`.
+
+```json
+{"capability":"ellipse-figure-v1",
+ "ellipse":{"center":["0","0"],"semiAxisSquared":{"major":"16","minor":"4"},"majorAxis":"X"},
+ "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},
+           {"id":"P","kind":"ON_ELLIPSE","x":"sqrt(3)","branch":"POS"},{"id":"Q","kind":"OPPOSITE","of":"P"},
+           {"id":"O","kind":"ORIGIN"}],
+ "segments":[{"id":"s1","from":"P","to":"F'"},{"id":"s2","from":"F'","to":"Q"},{"id":"s3","from":"P","to":"Q"}],
+ "polygons":[{"id":"t1","points":["P","F'","Q"],"fill":"LIGHT"}],
+ "caption":"타원 x²/16+y²/4=1에서 중심 O를 지나는 지름 PQ와 두 초점 F, F′로 만든 삼각형 PF′Q를 나타낸 그림",
+ "sourceConditions":[...],"newVisualInformation":[...]}
+```
+
+- `ellipse`는 `center`(정확한 값 두 개), `semiAxisSquared{major,minor}`(=a², b²), `majorAxis`(`"X"` 또는 `"Y"`)만 받는다. 모든 수는 정확한 문자열(`"-2"`, `"42/5"`, `"sqrt(3)"`)이고 소수를 쓰지 않는다.
+- **두 타원**이면 `ellipse` 대신 `ellipses`에 정확히 두 항목을 쓴다. 각 항목은 `id`(영문 시작 1~8자, 중복 금지)와 위와 같은 `center`·`semiAxisSquared`·`majorAxis`를 갖는다. `FOCUS`·`VERTEX`·`ON_ELLIPSE`는 `ellipseId`가 필수이고, `OPPOSITE`는 대상 점이 속한 타원의 중심에 대해 대칭이며, `POINT`·`ORIGIN`은 `ellipseId`를 생략할 수 있다. `lines`의 `tangent`는 `ellipseId`(기본 첫 타원)가 가리키는 타원에서 검증한다. 두 타원은 같은 배율과 같은 bbox를 쓰고 좌표축은 하나만 그린다. 예:
+```json
+{"capability":"ellipse-figure-v1",
+ "ellipses":[
+  {"id":"C1","center":["0","-4"],"semiAxisSquared":{"major":"81","minor":"45"},"majorAxis":"Y"},
+  {"id":"C2","center":["0","0"],"semiAxisSquared":{"major":"9","minor":"5"},"majorAxis":"Y"}],
+ "points":[
+  {"id":"F","kind":"FOCUS","side":1,"ellipseId":"C1"},
+  {"id":"F'","kind":"FOCUS","side":-1,"ellipseId":"C1"},
+  {"id":"P","kind":"ON_ELLIPSE","ellipseId":"C1","y":"-17/2","branch":"POS"},
+  {"id":"Q","kind":"ON_ELLIPSE","ellipseId":"C2","y":"-3/2","branch":"POS"},
+  {"id":"O","kind":"ORIGIN"}],
+ "segments":[{"id":"s1","from":"F'","to":"F","label":"12"},{"id":"s2","from":"F","to":"P","label":"12"}],
+ "caption":"두 타원 C′와 x²/5+y²/9=1을 한 좌표평면에 나타낸 그림",
+ "sourceConditions":[...],"newVisualInformation":[...]}
+```
+- **회전 타원은 표현할 필드가 없다.** `rotation`·`hyperbola` 같은 키를 넣으면 `ELLIPSE_PLAN_INVALID`, `majorAxis`가 X/Y가 아니면 `ELLIPSE_MAJOR_AXIS_UNSUPPORTED`다. 원(a=b)은 `ELLIPSE_AXES_INVALID`, major<minor도 같은 코드로 거절한다(원은 기존 작도·평면 경로를 쓴다).
+- 장반지름·단반지름·초점거리는 엔진이 SymPy로 계산한다(c²=a²−b², 초점 (cx±c, cy) 또는 (cx, cy±c)). **저자는 초점·꼭짓점 좌표를 직접 쓰지 않는다.** 그림 범위도 축·꼭짓점·선언한 점·접점에서 자동으로 잡는다.
+- `points`는 최대 10개다. `id`는 대문자 한 글자 + 선택적 숫자·프라임(`A`, `T1`, `F'`)이고 **id가 그대로 점 이름으로 그려진다**(아래첨자 이름·`pointNames`는 이 capability에 없다). `label:false`면 이름을 그리지 않는다. 종류는 다음과 같다.
+  - `FOCUS`: `side:1|-1`. 1은 장축의 양의 방향 초점이다.
+  - `VERTEX`: `end:"MAJOR_POS"|"MAJOR_NEG"|"MINOR_POS"|"MINOR_NEG"`.
+  - `ON_ELLIPSE`: `x` 또는 `y` 중 **정확히 하나**와 `branch:"POS"|"NEG"`(기본 POS). x를 주면 그 x에서의 위/아래 가지, y를 주면 좌/우 가지다. 타원 밖의 값이면 `ELLIPSE_POINT_NOT_ON_ELLIPSE`다.
+  - `OPPOSITE`: `of`에 다른 점 id. 타원 **중심**에 대한 대칭점이다(지름의 다른 끝).
+  - `ORIGIN`: 좌표평면의 원점 (0,0)이다(타원 중심이 아님).
+  - `POINT`: `x`,`y`를 직접 준다(접선의 접점 등).
+- `segments`는 `from`/`to`(선언한 점 id), 선택 `label`(길이·값, MathJax 수식 문자열), 선택 `dashed`다. 라벨은 선분 중점 곁에 놓인다. 같은 값이 둘 이상의 선분에 반복되면 각 라벨에서 자기 선분 중점까지 1:1 leader를 그리며, 독립 관측기가 소유 선분·라벨 상자 anchor와 connector 교차를 최종 SVG에서 확인한다.
+- `polygons`는 점 3~6개와 `fill:"LIGHT"|"MEDIUM"|"NONE"`(기본 LIGHT)이다. 넓이가 0인 다각형은 `ELLIPSE_POLYGON_INVALID`다. 영역 색칠은 이 다각형 채우기만 지원한다(타원 내부·외부 부등식 영역은 지원하지 않는다).
+- `lines`는 `slope`·`intercept` 정확값과 선택 `tangent:true`다. `tangent:true`이면 판별식이 0인지 엔진이 대수적으로 확인하고, 접점을 선언한 점과 대조한다(접점이 없으면 `TANGENCY_POINT_NOT_DECLARED`). **직선 식 라벨(`label`)은 지원하지 않는다**(`ELLIPSE_LINE_LABEL_UNSUPPORTED`). 직선은 그림 범위 안으로 잘리고, 화면 밖이면 `ELLIPSE_LINE_OUTSIDE_VIEWPORT`다.
+- **포물선 `conic` (G2a).** `ellipse`·`ellipses` 대신 루트에 `"conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"15/8","axis":"X"}`를 쓴다(식 `(y-k)²=4p(x-h)`, axis `X`는 좌우로 열리고 p<0이면 왼쪽, axis `Y`는 `(x-h)²=4p(y-k)`). 초점 `(h+p,k)`·준선 `x=h-p`는 엔진이 계산하므로 저자가 쓰지 않는다. 곡선은 그림 창 안의 `<path data-curve="PARABOLA">`로 그려지고 그림 창은 꼭짓점·초점·선언한 점·준선·원점(축)과 곡선이 조금 보이는 범위로 잡힌다. 같은 plan에 `ellipse`를 함께 쓰면 `CONIC_PLAN_CONFLICT`, p=0·형식 오류는 `CONIC_PARAMETER_INVALID`, 알 수 없는 kind는 `CONIC_KIND_UNSUPPORTED`다(쌍곡선은 아래 G2b). **p 같은 문자 계수는 대표값으로 그리고** 라벨에는 문자 이름만 쓰며 caption에 "한 예"임을 밝힌다.
+- conic의 점 종류: `FOCUS`(`side` 없음), `VERTEX`, `ORIGIN`, `POINT`, `{"id":"A","kind":"ON_CONIC","x":"25/8","branch":"POS"}`(포물선 위의 점. 축에 수직인 좌표를 주면 `branch` 없이 하나로 정해지고, 아니면 `branch` POS·NEG로 둘 중 하나를 고른다. 해가 없으면 `CONIC_POINT_NOT_ON_CURVE`), `{"id":"B","kind":"LINE_CONIC","line":"k1","which":1}`(직선 `k1`과 포물선의 교점. x가 작은 쪽이 1, 큰 쪽이 2, 세로선이면 y 기준. 교점이 없으면 `CONIC_LINE_NO_INTERSECTION`, 하나뿐인데 2를 쓰면 `CONIC_INTERSECTION_INDEX_INVALID`), `{"id":"M","kind":"FOOT","from":"A","onto":"l","rightAngle":true}`(A에서 직선 `l`에 내린 수선의 발. `onto`가 없는 직선이면 `CONIC_FOOT_INVALID`, `rightAngle`이면 직각 표시를 한다). 같은 자리의 두 점에 이름을 모두 달면 `CONIC_POINT_COINCIDENT`다(꼭짓점을 `ORIGIN`으로 선언했으면 `VERTEX`에는 `label:false`).
+- conic의 `lines`: `{"id":"l","role":"DIRECTRIX","label":"l"}`(준선. 포물선이 아닌 곳에서 `role`을 쓰면 `CONIC_DIRECTRIX_REQUIRES_PARABOLA`), `{"id":"m","x":"3"}`(세로선, `y`는 가로선), `{"id":"k1","through":["A","F"],"hidden":true}`(두 점을 지나는 직선. `hidden`이면 교점 계산에만 쓰고 그리지 않는다), `slope`+`intercept`, `dashed`. `label`은 짧은 이름(`l`, `m`, `x=-1` 꼴 MathJax 40자 이내, 아니면 `CONIC_LINE_LABEL_INVALID`)만 받고 직선 옆에 놓이며 자리가 없으면 지시선으로 끌어낸다. 직선 `label`은 conic 도형에서만 허용되고 `ellipse` plan은 그대로 `ELLIPSE_LINE_LABEL_UNSUPPORTED`다. 예(문항 `26_제일고_1학기_중간_고2_기하` q2, `ops/golden/item90g2a`): `{"conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"15/8","axis":"X"},"points":[{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"25/8","branch":"POS"},{"id":"B","kind":"LINE_CONIC","line":"k1","which":1},{"id":"M","kind":"FOOT","from":"A","onto":"l","rightAngle":true}],"lines":[{"id":"l","role":"DIRECTRIX","label":"l"},{"id":"k1","through":["A","F"],"hidden":true}],"segments":[{"id":"sAM","from":"A","to":"M","label":"5"},{"id":"sAF","from":"A","to":"F","label":"5"}]}`.
+- **쌍곡선 `conic` (G2b).** `"conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"12","bSquared":"12","transverse":"X"}`(transverse X는 `(x-h)²/a²-(y-k)²/b²=1`, Y는 `(y-k)²/a²-(x-h)²/b²=1`; a²·b²≤0이면 `CONIC_PARAMETER_INVALID`). 초점 c²=a²+b²·꼭짓점·점근선은 엔진이 계산하고 두 가지를 각각 `<path data-curve="HYPERBOLA" data-branch="POS|NEG">`로 그린다. 점: `{"id":"F","kind":"FOCUS","side":1}`·`VERTEX`(쌍곡선은 `side` 1·-1 필수, 포물선은 쓰면 오류), `ON_CONIC`(transverse 좌표를 주면 `sign` POS·NEG로 다른 좌표의 부호를, 다른 좌표를 주면 `branch` POS·NEG로 가지를 고른다. 모순이면 `CONIC_POINT_NOT_ON_CURVE`). 점근선은 `lines:[{"id":"s1","role":"ASYMPTOTE","sign":1,"dashed":true,"label":"y=x"}]`(sign ±1, 쌍곡선이 아니면 `CONIC_ASYMPTOTE_REQUIRES_HYPERBOLA`; 쌍곡선에서 `DIRECTRIX`는 `CONIC_DIRECTRIX_REQUIRES_PARABOLA`)이고 쓰지 않으면 그리지 않는다. 두 직선의 교점은 `{"id":"A","kind":"LINE_LINE","lines":["k1","s1"]}`(평행·일치하면 `CONIC_LINES_PARALLEL`). `LINE_CONIC`·`FOOT`·`through`는 쌍곡선에서도 같다(점근선과 평행한 직선은 교점 1개라 which 2는 `CONIC_INTERSECTION_INDEX_INVALID`). 예(문항 `26_매산고_1학기_중간_고2_기하` q13, `ops/golden/item92g2b`). 접선의 판별은 아직 없으므로(G2c) 접선은 문제 문장 그대로 caption에만 쓰고 직선은 `slope`·`intercept`나 `through`로 그린다. 쌍곡선 관측기는 두 가지 모두의 표본이 식 위인지(`CONIC_CURVE_OFF_EQUATION`), 가지 두 개가 각자 쪽에 있는지(`CONIC_HYPERBOLA_BRANCH_MISSING`), 점근선이 중심을 지나고 기울기 0.3° 이내인지(`CONIC_ASYMPTOTE_MISMATCH`), LINE_LINE 점이 두 직선 위인지(`CONIC_LINE_LINE_MISMATCH`), 정의 ||PF|-|PF'||=2a(`CONIC_DEFINITION_MISMATCH`)를 확인한다.
+- **원·타원·곡선 2개·접선 (G2c).** conic(또는 conics 안)에 `{"kind":"CIRCLE","center":["0","0"],"rSquared":"25"}`와 `{"kind":"ELLIPSE","center":["0","0"],"aSquared":"36","bSquared":"16","major":"X"}`(aSquared가 긴 축, a=b·0 이하는 `CONIC_PARAMETER_INVALID`)를 쓸 수 있다. 점 `CENTER`, 타원 `FOCUS`·`VERTEX`(`side` ±1), `ON_CONIC`(`x`나 `y` + `branch` POS·NEG). 기존 `ellipse`/`ellipses` 경로는 그대로다.
+- **곡선 2개.** `conic` 대신 `"conics":[{"id":"c1",...},{"id":"c2",...}]`(최대 2, 셋 이상 `CONIC_TOO_MANY_CURVES`, `conic`과 같이 쓰면 `CONIC_PLAN_CONFLICT`). 곡선 하나에만 속한 점(`FOCUS`·`VERTEX`·`CENTER`·`ON_CONIC`·`LINE_CONIC`·`TANGENT_FROM`)과 `role`·`tangent` 직선은 `"curve":"c1"`로 곡선을 밝힌다(없으면 `CONIC_CURVE_REQUIRED`, 모르는 id는 `CONIC_CURVE_UNKNOWN`). 곡선끼리의 교점은 `{"id":"P","kind":"CONIC_CONIC","curves":["c1","c2"],"which":1}`(x 오름차순, 같으면 y 오름차순, 1~4, 범위 밖 `CONIC_INTERSECTION_INDEX_INVALID`).
+- **접선.** `{"id":"t","tangent":true,"at":"P","curve":"c1"}`은 곡선 위 점 P에서의 접선을 엔진이 계산한다. `{"id":"t","slope":"2","intercept":"-6","tangent":true}`나 `through`에 `tangent:true`를 붙이면 주어진 직선이 접선이라는 주장을 판별식=0으로 검증한다(아니면 `CONIC_TANGENT_CLAIM_FALSE`). 접점은 선언된 점이어야 한다(관측기 `TANGENCY_POINT_NOT_DECLARED`). 곡선 밖의 점 Q에서의 접점은 `{"id":"T1","kind":"TANGENT_FROM","from":"Q","which":1}`(x 작은 쪽이 1)이고 Q가 곡선 위·안쪽이면 `CONIC_TANGENT_FROM_INVALID`이다. 곡선 이름은 `conics[].label`(짧은 이름이나 `y^2=4x` 같은 식, 40자 이하, a·b 값은 쓰지 않는다)로 달며 곡선 위 한 점에서 지시선으로 이어진다(관측기 `CONIC_CURVE_LABEL_MISMATCH`). 접선에는 `lines[].label`로 `l_1` 같은 이름을 단다. 관측기는 `CONIC_CIRCLE_NOT_ROUND`·`CONIC_CONIC_INTERSECTION_MISMATCH`·`CONIC_TANGENT_FROM_MISMATCH`와 타원 정의 |PF|+|PF'|=2a도 다시 확인한다.
+- **점 좌표 라벨(conic).** conic 점에 `"coordinates":true`를 쓰면 이름 대신 `A(6,6)`, `B(-3/4, 3√3/2)`처럼 정확한 좌표를 쓴다(정수·분수·`p√q` 꼴). 점 옆에 자리가 없으면 빈자리에 두고 점에서 지시선으로 잇는다(`coordinates`가 있는 도형은 바깥 여백이 넓어진다). 관측기가 라벨 글자를 숫자로 다시 읽어 plan에서 계산한 점과 대조한다(`LABEL_COORDINATES_MISMATCH`). 선분 길이는 기존대로 `segments`의 `label`에 값을 직접 쓴다. 풀이 중간값(길이·좌표·기울기)은 학생에게 도움이 되면 그린다.
+- conic 독립 검수: `conic_figure_observer.py`가 초점·준선·교점·수선의 발을 자기 코드(SymPy `solve`)로 다시 계산해 최종 SVG를 대조한다. 곡선의 모든 표본이 식 위에 있는지(0.6px, `CONIC_CURVE_OFF_EQUATION`), 준선 위치(`CONIC_DIRECTRIX_MISMATCH`), 곡선 위 점(`CONIC_POINT_OFF_CURVE`), 교점이 which번째인지(`CONIC_INTERSECTION_MISMATCH`), 수선의 발 위치·직각(0.5° 이내)·직각 표시(`CONIC_FOOT_MISMATCH`), 직선 이름 글자·소유(`CONIC_LINE_LABEL_MISMATCH`), 정의 |PF|=준선까지의 거리(`CONIC_DEFINITION_MISMATCH`)를 확인한다.
+- 배치는 두 축 **같은 배율**이다(세로 압축 없음). 좌표축과 화살촉은 엔진이 그리고 눈금·좌표 띠는 없다. 그림 영역 상한(약 460×360 px, 가장자리 0.75단위 여백)보다 타원·점이 크면 `ELLIPSE_FIGURE_TOO_LARGE`다. 좌표가 큰 문항은 억지로 줄이지 말고 UNSUPPORTED로 남긴다.
+- 점 이름은 자기 점 옆에 붙되 곡선·선분·직선·축·다각형 변·다른 이름을 피해 자동 배치된다. 놓을 자리가 없으면 `ELLIPSE_LABEL_NO_ROOM`이다. 이름·길이 라벨은 실제 조판 조각으로 그려지고 최종 SVG에 `data-tex`로 남는다.
+- **독립 검수.** `ellipse_figure_observer.py`는 plan만 보고 초점·꼭짓점·현·접선·접점을 자기 코드로 다시 계산해 **최종 SVG**와 대조한다: 축·화살촉 방향, 각 타원의 중심·두 반지름·공통 배율과 장축 방향, 모든 점 표식의 위치, 선분 끝점, 다각형 꼭짓점·채우기, 직선이 식 위에 있는지, 접선 주장의 재증명과 접점 선언, 이름·길이 라벨의 존재·문자·위치, 선언하지 않은 점·선·다각형·타원이 없는지. 하나라도 어긋나면 FAIL이다.
+- 한계·오류 코드: `ELLIPSE_PLAN_INVALID`, `ELLIPSE_CENTER_INVALID`, `ELLIPSE_AXES_INVALID`, `ELLIPSE_MAJOR_AXIS_UNSUPPORTED`, `ELLIPSE_PAIR_COUNT_INVALID`, `ELLIPSE_ELLIPSE_ID_INVALID`, `ELLIPSE_ELLIPSE_ID_DUPLICATE`, `ELLIPSE_POINT_INVALID`, `ELLIPSE_POINT_ID_INVALID`, `ELLIPSE_POINT_ID_DUPLICATE`, `ELLIPSE_POINT_ELLIPSE_ID_REQUIRED`, `ELLIPSE_POINT_ELLIPSE_ID_INVALID`, `ELLIPSE_POINT_UNKNOWN`, `ELLIPSE_POINT_NOT_ON_ELLIPSE`, `ELLIPSE_SEGMENT_INVALID`, `ELLIPSE_POLYGON_INVALID`, `ELLIPSE_POLYGON_UNKNOWN_POINT`, `ELLIPSE_LINE_INVALID`, `ELLIPSE_LINE_ELLIPSE_ID_INVALID`, `ELLIPSE_LINE_LABEL_UNSUPPORTED`, `ELLIPSE_LINE_NOT_TANGENT`, `ELLIPSE_LINE_OUTSIDE_VIEWPORT`, `ELLIPSE_FIGURE_TOO_LARGE`, `ELLIPSE_LABEL_NO_ROOM`. 세 번째 이상의 타원, 회전 타원, 원, 쌍곡선(G2b 예정), 곡선 눈금, 벡터 화살표는 이 capability의 지원 범위가 아니다. 포물선(conic)의 오류 코드는 위 `conic` 항목에 있다.
 
 
 
