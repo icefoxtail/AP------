@@ -6,6 +6,7 @@ const vm = require('node:vm');
 
 const root = path.resolve(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'apmath/js/classroom.js'), 'utf8');
+const labelSource = fs.readFileSync(path.join(root, 'apmath/js/apms-class-label.js'), 'utf8');
 const css = fs.readFileSync(path.join(root, 'apmath/css/classroom-foundation.css'), 'utf8');
 
 function makeContext() {
@@ -36,6 +37,7 @@ function makeContext() {
         toast() {}
     };
     vm.createContext(context);
+    vm.runInContext(labelSource, context, { filename: 'apms-class-label.js' });
     vm.runInContext(source, context, { filename: 'classroom.js' });
     return context;
 }
