@@ -72,7 +72,7 @@
       const v = (s.trV || 0) % 3;
       let E = null;
       if (C.problem && v === 2) E = pt(Cc.x + 0.7, 0);
-      fit(b, gen ? bboxOf([A, B, Cc]) : { x0: -1.05, x1: 1.05, y0: -1.02, y1: 0.05 }, { t: 40, b: C.problem ? 40 : 88, l: 40, r: C.problem && v === 2 ? 60 : 44 });
+      fit(b, gen ? bboxOf([A, B, Cc]) : { x0: -1.05, x1: C.problem && v === 2 ? Math.max(1.05, Cc.x + 0.9) : 1.05, y0: -1.02, y1: 0.05 }, { t: 40, b: C.problem ? 40 : 88, l: 40, r: C.problem && v === 2 ? 30 : 44 });
       const cen = pt(0, A.y * 0.4);
       fillPoly(b, [A, B, Cc], 'sky', 0.1);
       poly(b, [A, B, Cc], 'ink', 3.6);

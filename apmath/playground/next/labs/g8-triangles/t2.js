@@ -215,7 +215,7 @@
       if (C.problem) {
         if (v === 0) { ang(b, A, B, Cc, { color: 'sky', r: 34, label: dg(a), size: 16, labelDist: 56 }); ang(b, Dd, Cc, A, { color: 'amber', r: 30, label: 'x', size: 17, labelDist: 50 }); }
         else if (v === 1) { ang(b, B, Cc, A, { color: 'sky', r: 30, label: dg(bb), size: 16, labelDist: 52 }); ang(b, Dd, Cc, A, { color: 'amber', r: 30, label: 'x', size: 17, labelDist: 50 }); }
-        else { ang(b, A, B, Cc, { color: 'sky', r: 30, label: dg(a), size: 16, labelDist: 48 }); ang(b, A, B, Dd, { color: 'amber', r: 50, label: 'x', size: 17, labelDist: 86 }); }
+        else { ang(b, A, B, Cc, { color: 'sky', r: 26, label: dg(a), size: 16, labelDist: 66, labelRot: 6 }); ang(b, A, B, Dd, { color: 'amber', r: 54 }); { const uc = unit(sub(Cc, A)), ud = unit(sub(Dd, A)), um = unit(add(uc, ud)); T(b, A, 'x', { dx: um.x * 84, dy: um.y * 84, size: 17, color: 'amber' }); } }
       } else {
         ang(b, A, B, Cc, { color: 'sky', r: 32, rings: 1, label: dg(a), size: 15, labelDist: 54 });
         ang(b, B, Cc, A, { color: 'green', r: 30, rings: 2, label: dg(bb), size: 15, labelDist: 54 });

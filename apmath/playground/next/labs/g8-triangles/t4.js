@@ -418,7 +418,7 @@
         tick(b, Mm, D, 2, 'rose'); tick(b, Mm, E, 2, 'rose');
         if (v === 0) { ang(b, B, Cc, A, { color: 'sky', r: 34, label: dg(M.b), size: 16, labelDist: 54 }); ang(b, Cc, A, B, { color: 'amber', r: 34, label: 'x', size: 17, labelDist: 54 }); }
         else if (v === 1) { ang(b, A, B, Cc, { color: 'sky', r: 40, label: dg(180 - 2 * M.b), size: 16, labelDist: 62 }); ang(b, B, A, Cc, { color: 'amber', r: 34, label: 'x', size: 17, labelDist: 56 }); }
-        else { G.sideTag(b, A, B, cen, `${M.m} cm`, { color: 'sky', size: fs(b, 16), gap: 6 }); G.sideTag(b, A, Cc, cen, 'x', { color: 'amber', size: fs(b, 18), gap: 6 }); }
+        else { G.sideTag(b, A, B, cen, `${M.m} cm`, { color: 'sky', size: fs(b, 16), gap: 8, dy: -22 }); G.sideTag(b, A, Cc, cen, 'x', { color: 'amber', size: fs(b, 18), gap: 8, dy: -22 }); }
       } else {
         ang(b, B, Cc, A, { color: eq ? 'green' : 'sky', r: 32, rings: 2, label: dg(bd), size: 15, labelDist: 52 });
         ang(b, Cc, A, B, { color: eq ? 'green' : 'rose', r: 32, rings: eq ? 2 : 3, label: dg(cd), size: 15, labelDist: 52 });
