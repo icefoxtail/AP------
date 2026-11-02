@@ -1937,12 +1937,8 @@ function renderStudentPinnedConsultationPreview(sid, consultationId) {
         target.innerHTML = renderStudentPinnedConsultationPreviewHtml(key, consultationId);
         target.classList.add('is-updated');
         setTimeout(() => target.classList.remove('is-updated'), 900);
-        const modalBody = target.closest('#modal-body');
-        if (modalBody) {
-            const top = target.offsetTop - modalBody.offsetTop - 12;
-            modalBody.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
-        } else if (typeof target.scrollIntoView === 'function') {
-            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (typeof target.scrollIntoView === 'function') {
+            target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
     }
 
@@ -2478,10 +2474,18 @@ function renderStudentDetailShell(sid, options = {}) {
     // basic 편집 탭에서만 저장 버튼 노출 (cns/grade 탭은 별도 저장 흐름 없음)
     const showSaveBtn = mode === 'edit' && editTab === 'basic';
     const modalTitle = '';
+    // M6: 학생 상세는 W 단열(작업 화면 한 칸) 등급이다. 데스크톱·태블릿은 720px 한 칸, 휴대폰은 화면 전체(반 목록·시간표에서
+    // 학생을 누르면 전체 화면 상세로 들어가고 "취소"로 돌아오는 드릴다운)다. 본문 스크롤은 .apms-workspace__detail이 맡는다.
     const shellHtml = `
-        <div class="apms-student-contrast apms-student-profile-view ap-student-detail-shell" data-student-detail-mode="${mode}">
-            ${renderStudentDetailHeader(sid, mode)}
-            ${bodyHtml}
+        <div class="apms-modal apms-modal--workspace-single ws-student-detail">
+            <div class="apms-workspace apms-workspace--single">
+                <div class="apms-workspace__detail ws-student-detail__body">
+                    <div class="apms-student-contrast apms-student-profile-view ap-student-detail-shell" data-student-detail-mode="${mode}">
+                        ${renderStudentDetailHeader(sid, mode)}
+                        ${bodyHtml}
+                    </div>
+                </div>
+            </div>
         </div>
     `;
 
@@ -2502,6 +2506,8 @@ function renderStudentDetailShell(sid, options = {}) {
         if (typeof updateAppBackButtons === 'function') updateAppBackButtons();
     } else {
         showModal(modalTitle, shellHtml, showSaveBtn ? '저장' : null, showSaveBtn ? () => handleEditStudent(sid) : null);
+        // 헤더 "취소"가 이미 있다(수정 중에는 보기로 돌아간다). 하단 저장 줄에 같은 이름의 취소를 또 두지 않는다.
+        document.querySelector('#modal-body .apms-modal__actions[data-modal-action-proxy] .apms-unified-quiet')?.remove();
     }
 
     const cancelBtn = document.getElementById('modal-cancel-btn');

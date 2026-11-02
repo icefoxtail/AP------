@@ -174,3 +174,19 @@ test('M6 history: status/transfer history are inline details, not modal steps', 
     assert.match(index, /js\/ws-student-history\.js/);
     assert.match(read('apmath/css/ws-student.css'), /\.ws-history > summary \{[^}]*min-height: 44px/);
 });
+
+// ------------------------------------------------------------ M6 학생 상세 껍데기 (W 단열)
+test('M6 student detail shell is a W single-column modal with one cancel and a working header', () => {
+    const shell = slice(student, 'function renderStudentDetailShell(', 'function renderStudentDetailTab(');
+    assert.match(shell, /apms-modal apms-modal--workspace-single ws-student-detail/);
+    assert.match(shell, /apms-workspace apms-workspace--single/);
+    assert.match(shell, /apms-workspace__detail ws-student-detail__body/);
+    // 저장은 옛 방식(헤더 행동 → 공통 부품이 하단 줄로 옮김) 그대로, 같은 이름의 하단 취소만 지운다
+    assert.match(shell, /showModal\(modalTitle, shellHtml, showSaveBtn \? '저장' : null, showSaveBtn \? \(\) => handleEditStudent\(sid\) : null\);/);
+    assert.match(shell, /apms-modal__actions\[data-modal-action-proxy\] \.apms-unified-quiet'\)\?\.remove\(\)/);
+    assert.match(shell, /cancelBtn\.onclick = mode === 'edit'/);
+    // 머리줄(<header>)이 `body.ap-modal-open header { pointer-events: none }`에 잡혀 [수정]이 눌리지 않던 문제
+    const css = read('apmath/css/ws-student.css');
+    assert.match(css, /body\.ap-modal-open \.ap-student-detail-shell > \.ap-student-profile-head \{[^}]*pointer-events: auto/);
+    assert.match(read('apmath/index.html'), /body\.ap-modal-open header,[\s\S]*?pointer-events: none;/, 'the global rule that causes it still exists, so the scoped override is needed');
+});

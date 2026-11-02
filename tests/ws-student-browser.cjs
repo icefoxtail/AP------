@@ -591,6 +591,60 @@ async function behaviourHistory(browser, base) {
     }
 }
 
+// ------------------------------------------------------------------ M6 학생 상세 껍데기 (W 단열)
+async function behaviourShell(browser, base) {
+    const { context, page, errors, calls } = await openApp(browser, base, DEVICES[3], 'light', 'admin', { classCount: 5, studentLevel: 'normal' });
+    try {
+        const dialogs = [];
+        page.on('dialog', async dialog => { dialogs.push(dialog.message()); await dialog.dismiss(); });
+        const baseline = initialDataCalls(calls);
+        await page.evaluate(() => openStudentDetail('c1s0', { mode: 'view' }));
+        await page.waitForTimeout(900);
+        assert.equal(await page.locator('#modal-body .apms-modal--workspace-single .ap-student-detail-shell').count(), 1, '학생 상세는 W 단열');
+        const box = await page.locator('#modal-content').boundingBox();
+        assert.ok(box.width <= 721 && box.width >= 600, '단열 폭 720px 이내: ' + box.width);
+        // 바깥 클릭은 닫지 않고, 변경 없이 Esc는 닫는다
+        await page.mouse.click(1420, 450);
+        await page.waitForTimeout(300);
+        assert.equal(await isOpen(page), true, '바깥 클릭으로 닫히지 않음');
+        // 수정 모드: 취소는 헤더 하나, 하단에는 저장 하나
+        await page.getByRole('button', { name: '수정', exact: true }).first().click();
+        await page.waitForTimeout(600);
+        const names = await page.evaluate(() => Array.from(document.querySelectorAll('#modal-content button')).filter(b => b.offsetParent).map(b => b.textContent.trim()));
+        assert.equal(names.filter(n => n === '취소').length, 1, '취소 버튼은 헤더 하나뿐: ' + names.join('|'));
+        assert.equal(names.filter(n => n === '저장').length, 1, '저장은 하단 하나: ' + names.join('|'));
+        const bar = await page.locator('.apms-modal__actions').boundingBox();
+        const modal = await page.locator('#modal-content').boundingBox();
+        assert.ok(Math.abs((bar.y + bar.height) - (modal.y + modal.height)) < 3, '저장 줄이 모달 맨 아래에 고정');
+        // 입력 후 Esc → 확인, 취소하면 유지
+        await page.fill('#edit-name', '김민수2');
+        await page.keyboard.press('Escape');
+        await page.waitForTimeout(300);
+        assert.equal(dialogs.length, 1, '변경 중 Esc → 확인');
+        assert.equal(await isOpen(page), true);
+        // 하단 저장: 한 번만 PATCH students/:id, 닫히지 않고 보기 모드로
+        const start = calls.length;
+        await page.evaluate(() => { const b = document.querySelector('.apms-modal__actions button'); b.click(); b.click(); });
+        await page.waitForTimeout(900);
+        const w = writeCalls(calls, start).filter(c => /^students\/c1s0$/.test(c.path));
+        assert.equal(w.length, 1, '저장은 한 번');
+        assert.equal(w[0].method, 'PATCH');
+        assert.equal(w[0].body.name, '김민수2');
+        for (const key of ['name', 'school_name', 'grade', 'class_id', 'student_phone', 'parent_phone', 'guardian_relation', 'student_address', 'vehicle_info', 'memo', 'student_pin']) assert.ok(key in w[0].body, key + ' payload 유지');
+        assert.equal(await isOpen(page), true, '저장 뒤 같은 자리(보기 모드)');
+        assert.equal(await page.locator('.ap-student-detail-shell[data-student-detail-mode="view"]').count(), 1);
+        assert.equal(initialDataCalls(calls), baseline, '반이 안 바뀌면 전체 재조회 없음');
+        // 깨끗하면 Esc로 닫힘
+        page.removeAllListeners('dialog');
+        await page.keyboard.press('Escape');
+        await page.waitForTimeout(450);
+        assert.equal(await isOpen(page), false);
+        assert.deepEqual(errors, [], 'page errors: ' + errors.join(' | '));
+    } finally {
+        await context.close();
+    }
+}
+
 // ------------------------------------------------------------------ 스크린샷
 async function shoot(browser, base) {
     fs.mkdirSync(shotDir, { recursive: true });
@@ -674,6 +728,8 @@ if (require.main === module) (async () => {
             console.log('M6 상담 탭 인라인 폼 동작 검사 통과');
             await behaviourHistory(browser, base);
             console.log('M6 이력 접이식 동작 검사 통과');
+            await behaviourShell(browser, base);
+            console.log('M6 학생 상세 껍데기(W 단열) 동작 검사 통과');
             if (typeof global.__wsStudentBehaviour === 'function') {
                 await global.__wsStudentBehaviour(browser, base, { openApp, isOpen, initialDataCalls, writeCalls, DEVICES });
                 console.log('M6 학생 상세 동작 검사 통과');

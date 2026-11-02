@@ -198,3 +198,23 @@
 .ws-history__body { padding: 0 12px 12px; }
 .ws-history__loading { padding: 14px 4px; color: var(--secondary); font-size: 13px; text-align: center; }
 .ws-history__body .card { margin: 0; }
+
+/* ---- 학생 상세 껍데기: W 단열 (데스크톱·태블릿 720px 한 칸, 휴대폰 화면 전체 드릴다운) ---- */
+.ws-student-detail { padding-top: 8px; gap: 0; } /* 좌우 패딩은 공통 부품 값(20px/16px)을 그대로 둔다: 하단 액션줄 음수 여백이 이 값에 맞춰져 있다 */
+.ws-student-detail > .apms-workspace { gap: 0; }
+.ws-student-detail .ws-student-detail__body { padding: 0; border: 0; background: transparent; }
+/* 학생 상세 머리줄은 <header> 요소다. index.html의 `body.ap-modal-open header`(앱 맨 위 뒤로 가기를 모달 위에 남기는 규칙)가
+ * 이 머리줄까지 잡아 pointer-events:none · 투명 배경 · z-index 1001을 걸었다. 그 결과 머리줄의 [수정] 버튼이 눌리지 않았고,
+ * 스크롤하면 아래 내용이 비쳐 이름과 겹쳐 보였다. 학생 상세 머리줄만 원래 값으로 되돌린다(공통 규칙은 건드리지 않는다). */
+body.ap-modal-open .ap-student-detail-shell > .ap-student-profile-head {
+    pointer-events: auto;
+    z-index: 24;
+    background: var(--surface);
+    border-bottom-color: var(--border);
+}
+.ws-student-detail .ap-student-detail-shell { padding: 0 0 12px; }
+/* 보호자 정보(전화번호 + 관계) 두 입력이 한 칸 폭을 나눠 쓴다. 옛 규칙은 둘째 칸이 100%를 차지해 첫 입력이 18px로 눌렸다. */
+.ws-student-detail .ap-student-edit-inline:has(> input + input) { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+@media (max-width: 600px) {
+    .ws-student-detail { padding-top: 0; }
+}
