@@ -98,6 +98,139 @@ window.addEventListener('DOMContentLoaded', function () {
       white: '#f8fafc'
     };
 
+
+    /* ==========================================================================
+       「새 문제 (숫자 바꾸기)」 변형 — 기본 01·03·06·08
+         - 0번 변형은 원본 문항 그대로이고, 「새 문제」를 누르면 같은 구조에서 숫자만 바뀐 변형이 나옵니다(연속 중복 없음).
+         - 원래 문항이 노린 학습 포인트가 유지되는 숫자만 골랐습니다.
+             기본 01: 둘레가 일정할 때 2r = l 에서 넓이 최대(중심각은 둘레와 관계없이 2 rad)
+             기본 03: 봉우리 대칭축 3π/4 에 대한 짝짓기(계수가 x₁·x₄ 같고 x₂·x₃ 같은 합은 k와 관계없이 일정)
+             기본 06: 지름 보조선으로 원주각을 옮겨 직각삼각형(2R sin A, 2R cos A)
+             기본 08: 각 A = 2π/3 의 이등분선 → 넓이 분할 S = S₁ + S₂
+         - 그림(조절 막대·보조선·치수)·문제 글·단계 풀이·정답이 변형의 숫자를 함께 따라갑니다. 계산(ENGINE)은 node로 전수 검산합니다.
+       ========================================================================== */
+    /* ==TRIGV-ENGINE-START== 순수 계산(화면과 무관): node로 전수 검산하는 부분 */
+    const TRIGV = (function () {
+      const gcd = (a, b) => (b ? gcd(b, a % b) : Math.abs(a));
+      const num = (x) => String(+x.toFixed(2));
+      const sq = (n) => { let k = 1, m = n; for (let i = 2; i * i <= m; i++) while (m % (i * i) === 0) { m /= i * i; k *= i; } return { k, m }; }; // √n = k√m
+      const sr = (k, m) => (m === 1 ? String(k) : (k === 1 ? '' : String(k)) + '√' + m);               // 화면 글자
+      const srTex = (k, m) => (m === 1 ? String(k) : (k === 1 ? '' : String(k)) + `\\sqrt{${m}}`);       // TeX
+      const frT = (n, d, tail) => { const g = gcd(n, d); n /= g; d /= g; return d === 1 ? `${n === 1 && tail ? '' : n}${tail || ''}` : `\\dfrac{${n === 1 && tail ? '' : n}${tail || ''}}{${d}}`; };
+      const frP = (n, d, tail) => { const g = gcd(n, d); n /= g; d /= g; return d === 1 ? `${n}${tail}` : `${n}${tail}/${d}`; }; // 화면 글자의 분수(n√3/d)
+      const ro = (n) => (n % 3 === 0 || n % 10 === 0 ? '으로' : '로');
+
+      /* ---------- 기본 01: 둘레 P 가 일정한 부채꼴 ---------- */
+      const B1 = {
+        pool: [{ P: 20 }, { P: 12 }, { P: 24 }, { P: 16 }, { P: 28 }],
+        solve: (it) => ({ r: it.P / 4, l: it.P / 2, theta: 2, S: it.P * it.P / 16 }),
+        build(it) {
+          const P = it.P, s = this.solve(it), f = P / 20;
+          const x = (v) => num(v * f);
+          return {
+            g: { P, f },
+            statement: `<div>둘레의 길이가 $${P}$${ro(P)} 일정한 부채꼴 중에서 그 넓이가 최대인 부채꼴의 반지름의 길이 $r$, 호의 길이 $l$, 중심각의 크기 $\\theta\\,(\\text{rad})$ 및 넓이의 최댓값 $S_{\\max}$를 구하시오.</div>`,
+            answer: `r = ${s.r}, l = ${s.l}, θ = 2 rad, 넓이 최댓값 = ${s.S}`,
+            snaps: [
+              { t: 0.2, label: `좁고 긴 부채꼴 (r = ${x(3.2)}, l = ${num(P - 6.4 * f)})` },
+              { t: 0.5, label: `🎯 넓이 최대! (r = ${s.r}, l = ${s.l}, θ = 2 rad)` },
+              { t: 0.8, label: `넓고 짧은 부채꼴 (r = ${x(6.8)}, l = ${num(P - 13.6 * f)})` }
+            ],
+            steps: [
+              { title: `1단계. 둘레 조건 2r + l = ${P} 에서 호의 길이 l 을 r 로 나타내기`, desc: `부채꼴의 둘레의 길이는 반지름 $2$개와 호의 길이 $1$개의 합이므로 $2r + l = ${P} \\implies \\mathbf{l = ${P} - 2r}$ ($0 < r < ${P / 2}$이고, 중심각 $\\theta \\le 2\\pi$인 부채꼴의 경우 $r \\ge \\dfrac{${P}}{2+2\\pi}$)입니다.` },
+              { title: '2단계. 넓이 S(r) 이차함수의 대칭축에서 최댓값 구하기', desc: `부채꼴의 넓이 공식 $S = \\dfrac{1}{2}rl$에 대입하면<br/>$S(r) = \\dfrac{1}{2}r(${P} - 2r) = -r^2 + ${P / 2}r = -(r - ${s.r})^2 + ${s.S}$이므로, 대칭축 **$\\mathbf{r = ${s.r}}$에서 최댓값 $\\mathbf{S_{\\max} = ${s.S}}$**를 갖습니다.` },
+              { title: `3단계. 그때의 호의 길이 l = ${s.l} 과 중심각 θ = 2 rad 확인`, desc: `$r = ${s.r}$일 때 호의 길이는 $l = ${P} - 2(${s.r}) = \\mathbf{${s.l}}$이고,<br/>호도법 정의 $l = r\\theta$에 의해 중심각의 크기는 $\\theta = \\dfrac{l}{r} = \\dfrac{${s.l}}{${s.r}} = \\mathbf{2\\,(\\text{rad})}$입니다.` }
+            ],
+            alg: `<div class="font-bold text-amber-300 mb-1">📖 이차함수 완전제곱식 vs 산술·기하평균 비교</div><div>1) <strong>이차함수를 이용한 풀이:</strong> $S(r) = -r^2 + ${P / 2}r = -(r-${s.r})^2 + ${s.S}$로 묶어 꼭짓점 $(${s.r}, ${s.S})$를 찾습니다.</div><div>2) <strong>산술·기하평균 구조 풀이:</strong> 합 $2r + l = ${P}$가 일정하므로 곱 $2r \\cdot l$은 $2r = l = ${s.l}$일 때 최대입니다. 따라서 $r = ${s.r}, l = ${s.l}, \\theta = \\dfrac{l}{r} = 2\\text{ rad}$, $S_{\\max} = \\dfrac{1}{2} \\times ${s.r} \\times ${s.l} = ${s.S}$를 즉시 얻을 수 있습니다.</div>`
+          };
+        }
+      };
+
+      /* ---------- 기본 03: y = sin 2x 와 y = k 의 네 교점, 계수 (a, b, b, a) ---------- */
+      const co = (c) => (c === 1 ? '' : String(c));
+      const B3 = {
+        pool: [{ a: 1, b: 2 }, { a: 1, b: 1 }, { a: 2, b: 3 }, { a: 1, b: 3 }, { a: 2, b: 1 }],
+        solve: (it) => ({ n: 3 * (it.a + it.b), S: Math.PI * 3 * (it.a + it.b) / 2 }),   // 합 = (a+b)·(3π/2) = n π / 2
+        build(it) {
+          const { a, b } = it, n = 3 * (a + b), ans = n % 2 === 0 ? `${n / 2}π` : `${n}π/2`, ansTex = n % 2 === 0 ? `${n / 2}\\pi` : `\\dfrac{${n}\\pi}{2}`;
+          const sum = `${co(a)}x_1 + ${co(b)}x_2 + ${co(b)}x_3 + ${co(a)}x_4`;
+          return {
+            g: { a, b, ans },
+            statement: `<div>$0 \\le x \\le 2\\pi$에서 정의된 함수 $f(x) = \\sin 2x$의 그래프와 직선 $y = k$ ($0 < k < 1$)가 만나는 네 점의 $x$좌표를 작은 것부터 차례로 $x_1, x_2, x_3, x_4$라 할 때,</div><div class="mt-1.5 font-bold text-amber-300">$${sum}$의 값을 구하시오.</div>`,
+            answer: `정답: ${ans}  (x₁+x₄ = 3π/2, x₂+x₃ = 3π/2)`,
+            snaps: [
+              { t: 0.192307692308, label: 'k = 0.30 (낮은 수평선)' },
+              { t: 0.448717948718, label: `🎯 k = 1/2 (특수각 교점 확인: 합 = ${ans} 불변!)` },
+              { t: 0.917981286903, label: `k = √3/2 (높은 수평선: 합 = ${ans} 불변!)` }
+            ],
+            steps: [
+              null, null,
+              { title: `3단계. ${a === 1 ? '' : a}(x₁ + x₄) + ${b === 1 ? '' : b}(x₂ + x₃) 로 묶어 ${ans}를 구합니다.`, desc: `$x_1 + x_4 = 2S = \\dfrac{3\\pi}{2}$이고, $x_2 + x_3 = 2S = \\dfrac{3\\pi}{2}$이므로,<br/>$${sum} = ${co(a)}(x_1 + x_4) + ${co(b)}(x_2 + x_3) = ${co(a)}\\times\\dfrac{3\\pi}{2} + ${co(b)}\\times \\dfrac{3\\pi}{2} = \\mathbf{${ansTex}}$입니다.` }
+            ],
+            alg: `<div class="font-bold text-amber-300 mb-1">📖 첫 번째 근 α 설정 풀이 vs 가운데 대칭축 풀이 비교</div><div>1) <strong>교과서 $\\alpha$ 설정 풀이:</strong> $x_1 = \\alpha$라 두면 $x_2 = \\dfrac{\\pi}{2}-\\alpha$, $x_3 = \\pi+\\alpha$, $x_4 = \\dfrac{3\\pi}{2}-\\alpha$이므로 대입하여 정리하면 $${co(a)}\\alpha + ${co(b)}\\left(\\dfrac{\\pi}{2}-\\alpha\\right) + ${co(b)}(\\pi+\\alpha) + ${co(a)}\\left(\\dfrac{3\\pi}{2}-\\alpha\\right) = ${ansTex}$가 됩니다.</div><div>2) <strong>대칭축 짝짓기 풀이:</strong> 계수가 대칭($${a}, ${b}, ${b}, ${a}$)이므로 가운데 대칭축 $S = \\dfrac{3\\pi}{4}$에 계수의 합 $(${a}+${b}+${b}+${a})=${2 * (a + b)}$를 곱해 $${2 * (a + b)} \\times \\dfrac{3\\pi}{4} = ${ansTex}$로 즉시 구합니다.</div>`
+          };
+        }
+      };
+
+      /* ---------- 기본 06: 반지름 R, 각 A 인 외접원 (BC = 2R sin A, A'C = 2R cos A) ---------- */
+      const ANG = { '3': { s: [1, 3, 2], c: [1, 1, 2], tex: '\\dfrac{\\pi}{3}', txt: 'π/3', rad: Math.PI / 3 }, '6': { s: [1, 1, 2], c: [1, 3, 2], tex: '\\dfrac{\\pi}{6}', txt: 'π/6', rad: Math.PI / 6 }, '4': { s: [1, 2, 2], c: [1, 2, 2], tex: '\\dfrac{\\pi}{4}', txt: 'π/4', rad: Math.PI / 4 } };
+      // sin·cos 값 = (계수 k)·√m / d  (π/3 : sin √3/2, cos 1/2 …)
+      const trig6 = (key) => ({ '3': { sin: [1, 3, 2], cos: [1, 1, 2] }, '6': { sin: [1, 1, 2], cos: [1, 3, 2] }, '4': { sin: [1, 2, 2], cos: [1, 2, 2] } }[key]);
+      const side6 = (R, v) => { const k = 2 * R * v[0] / v[2]; return { k, m: v[1] }; };  // 2R·sin = k√m (k 는 정수가 되게 R 선택)
+      const B6 = {
+        pool: [{ R: 4, A: '3' }, { R: 4, A: '6' }, { R: 6, A: '3' }, { R: 6, A: '4' }, { R: 6, A: '6' }],
+        solve: (it) => { const t = trig6(it.A), bc = side6(it.R, t.sin), ac = side6(it.R, t.cos); return { bc, ac, d: 2 * it.R }; },
+        build(it) {
+          const R = it.R, key = it.A, an = ANG[key], s = this.solve(it);
+          const bc = srTex(s.bc.k, s.bc.m), ac = srTex(s.ac.k, s.ac.m), bcT = sr(s.bc.k, s.bc.m), acT = sr(s.ac.k, s.ac.m), d = s.d;
+          return {
+            g: { R, A: an.rad, as: an.txt, d, bcT, acT },
+            statement: `<div>반지름의 길이가 $R = ${R}$인 원에 내접하는 삼각형 $ABC$에서 $\\angle A = ${an.tex}$일 때, 선분 $BC$의 길이를 구하고, 원주 위의 점 $B$에서 외접원의 중심 $O$를 지나는 지름 $BA'$을 그었을 때 직각삼각형 $A'BC$의 선분 $A'C$의 길이를 구하시오.</div>`,
+            answer: `BC = ${bcT},  A'C = ${acT}  (지름 A'B = 2R = ${d})`,
+            snaps: [
+              { t: 0.0, label: "🎯 지름 끝점 A' 일치 (∠A'CB = 90° 직각삼각형!)" },
+              { t: 0.5, label: `중앙 위치 A (원주각 ∠A = ${an.txt} 불변)` },
+              { t: 0.85, label: `오른쪽 호 위치 A (원주각 ∠A = ${an.txt} 불변)` }
+            ],
+            steps: [
+              { title: `1단계. 외접원의 반지름 R = ${R} 와 지름 2R = ${d} 확인`, desc: `외접원의 반지름이 $R = ${R}$이므로, 점 $B$에서 외심 $O$를 지나는 지름 $A'B$를 그으면 빗변의 길이는 $\\overline{A'B} = 2R = \\mathbf{${d}}$입니다.` },
+              { title: `2단계. 원주각 이동(∠A' = ∠A = ${an.txt})과 반원의 원주각(∠A'CB = π/2)`, desc: `호 $BC$에 대한 원주각의 크기는 일정하므로 $\\angle A' = \\angle A = ${an.tex}$이고, 지름 $A'B$에 대한 원주각이므로 **$\\angle A'CB = \\dfrac{\\pi}{2}$($90^\\circ$)**입니다.` },
+              { title: `3단계. 직각삼각형 A'BC 에서 BC = ${bcT}, A'C = ${acT}를 구합니다.`, desc: `빗변 $\\overline{A'B} = ${d}$, $\\angle A' = ${an.tex}$인 직각삼각형 $A'BC$에서<br/>$\\overline{BC} = ${d}\\sin${an.tex} = \\mathbf{${bc}}$, $\\overline{A'C} = ${d}\\cos${an.tex} = \\mathbf{${ac}}$입니다.` }
+            ],
+            alg: null
+          };
+        }
+      };
+
+      /* ---------- 기본 08: AB = c, AC = b, ∠A = 2π/3 의 이등분선 ---------- */
+      const B8 = {
+        pool: [{ c: 6, b: 3 }, { c: 12, b: 6 }, { c: 6, b: 6 }, { c: 4, b: 12 }, { c: 10, b: 15 }],
+        solve: (it) => { const { c, b } = it, a2 = c * c + b * b + c * b, q = sq(a2), g = gcd(c, b); return { AD: c * b / (c + b), a2, k: q.k, m: q.m, BD: c * q.k / (c + b), DC: b * q.k / (c + b), rc: c / g, rb: b / g }; },
+        build(it) {
+          const { c, b } = it, s = this.solve(it), x = s.AD, S = c * b;
+          const sTex = (n) => frT(n, 4, '\\sqrt{3}');
+          return {
+            g: { c, b, a: Math.sqrt(s.a2), bdT: sr(s.BD, s.m), dcT: sr(s.DC, s.m), rc: s.rc, rb: s.rb, AD: x, sTxt: frP(S, 4, '√3') },
+            statement: `<div>$\\overline{AB} = ${c}$, $\\overline{AC} = ${b}$, $\\angle A = \\dfrac{2\\pi}{3}$인 삼각형 $ABC$에서 $\\angle A$의 이등분선이 변 $BC$와 만나는 점을 $D$라 할 때, 선분 $AD$의 길이를 구하시오.</div>`,
+            answer: `정답: AD = ${x}  (S_ABD = ${frP(c * x, 4, '√3')}, S_ACD = ${frP(b * x, 4, '√3')})`,
+            snaps: [
+              { t: 0.25, label: `왼쪽 치우친 분할선 (BD : DC ≠ ${s.rc} : ${s.rb})` },
+              { t: 0.5, label: `🎯 각의 이등분선! (∠BAD = ∠CAD = π/3 ➔ AD = ${x})` },
+              { t: 0.75, label: `오른쪽 치우친 분할선 (BD : DC ≠ ${s.rc} : ${s.rb})` }
+            ],
+            steps: [
+              { title: '1단계. 전체 삼각형 ABC 의 넓이 S 구하기', desc: `두 변의 길이 $${c}, ${b}$과 끼인각 $\\angle A = \\dfrac{2\\pi}{3}$를 알므로,<br/>$\\text{넓이}(\\triangle ABC) = \\dfrac{1}{2} \\times ${c} \\times ${b} \\times \\sin\\dfrac{2\\pi}{3} = ${S / 2} \\times \\dfrac{\\sqrt{3}}{2} = \\mathbf{${sTex(S)}}$입니다.` },
+              { title: '2단계. 이등분된 각(π/3, π/3)을 이용해 두 부분 삼각형 넓이 S₁, S₂ 표현', desc: `$\\overline{AD} = x$라 하면 $\\angle BAD = \\angle CAD = \\dfrac{\\pi}{3}$이므로,<br/>$\\text{넓이}(\\triangle ABD) = \\dfrac{1}{2}\\cdot ${c}x\\sin\\dfrac{\\pi}{3} = ${sTex(c)}x$, $\\text{넓이}(\\triangle ACD) = \\dfrac{1}{2}\\cdot ${b}x\\sin\\dfrac{\\pi}{3} = ${sTex(b)}x$입니다.` },
+              { title: `3단계. 넓이 합 등식 S = S₁ + S₂ 로부터 AD = ${x}를 구합니다.`, desc: `$${sTex(c)}x + ${sTex(b)}x = ${sTex(c + b)}x = ${sTex(S)}$에서 양변을 $${sTex(c + b)}$으로 나누면 **$\\mathbf{x = \\overline{AD} = ${x}}$**입니다.` }
+            ],
+            alg: `<div class="font-bold text-amber-300 mb-1">📖 넓이 합 풀이 vs 코사인법칙·내분비 풀이 대조</div><div>1) <strong>넓이 분할 풀이:</strong> $\\dfrac{1}{2}bc\\sin A = \\dfrac{1}{2}(b+c)\\overline{AD}\\sin\\dfrac{A}{2}$를 사용하여 빠르게 $\\overline{AD}=${x}$를 얻습니다.</div><div>2) <strong>코사인법칙 & 내분비 대조:</strong> 코사인법칙으로 $\\overline{BC} = \\sqrt{${c * c}+${b * b}-2(${S})(-1/2)} = ${srTex(s.k, s.m)}$을 구하고, 내분비 $${s.rc}:${s.rb}$로 $\\overline{BD}=${srTex(s.BD, s.m)}, \\overline{CD}=${srTex(s.DC, s.m)}$을 구한 뒤 $\\triangle ABD$와 $\\triangle ACD$에서 $\\cos(\\angle ADB) + \\cos(\\angle ADC) = 0$을 연립해도 $\\overline{AD}^2 = ${c}\\times ${b} - ${srTex(s.BD, s.m)}\\times${srTex(s.DC, s.m)} = ${S} - ${s.BD * s.DC * s.m} = ${x * x} \\implies \\overline{AD} = ${x}$로 정확히 일치합니다.</div>`
+          };
+        }
+      };
+      return { B1, B3, B6, B8, sq, sr, gcd };
+    })();
+    /* ==TRIGV-ENGINE-END== */
+
     const PROBLEMS = [
       // -----------------------------------------------------------------------
       // 🌱 기본 01 ~ 기본 08 (개념 본질 & 핵심 기하 메커니즘)
@@ -107,7 +240,7 @@ window.addEventListener('DOMContentLoaded', function () {
         unit: 'Ⅱ-1. 호도법과 부채꼴의 호의 길이·넓이',
         badge: '🌱 기본 01 · 둘레가 일정한 부채꼴의 최대 넓이',
         tabLabel: '기본 01 · 부채꼴의 둘레가 일정할 때 넓이의 최댓값 구하기',
-        title: '[기본 01] 둘레의 길이가 20으로 일정한 부채꼴의 넓이의 최댓값과 중심각',
+        title: '[기본 01] 둘레의 길이가 일정한 부채꼴의 넓이의 최댓값과 중심각',
         solType: '🎯 효율적인 풀이',
         dragMode: 'horizontal',
         statement: `
@@ -1124,17 +1257,18 @@ window.addEventListener('DOMContentLoaded', function () {
       // 🌱 [기본 01] bas-1: 둘레가 20으로 일정한 부채꼴의 최대 넓이
       // -----------------------------------------------------------------------
       if (id === 'bas-1') {
-        const r = 2.0 + t * 6.0;
-        const l = 20 - 2 * r;
+        const GP = TVG('bas-1'), PP = GP.P, ff = GP.f; // 「새 문제」 변형의 둘레 P (원본은 20, ff = 1)
+        const r = (2.0 + t * 6.0) * ff;
+        const l = PP - 2 * r;
         const theta = l / r;
         const area = 0.5 * r * l;
 
         // 2단계 이상에서 좌측 부채꼴과 우측 이차함수 그래프가 절대 겹치지 않도록 반응형 스케일 분리
         const leftCx = rect.width * (step >= 2 ? 0.23 : 0.48) + state.panX;
         const leftCy = rect.height * 0.58 + state.panY;
-        const secScale = step >= 2
+        const secScale = (step >= 2
           ? Math.min(u * 0.64, rect.width * 0.028 * state.scale)
-          : u * 0.80;
+          : u * 0.80) / ff;
 
         const centerPt = { x: leftCx, y: leftCy };
         state.centerPt = centerPt;
@@ -1143,11 +1277,11 @@ window.addEventListener('DOMContentLoaded', function () {
         const endA = theta * 0.5 + Math.PI * 0.5;
 
         if (step >= 1) {
-          const optRPx = 5 * secScale;
+          const optRPx = (PP / 4) * secScale;
           dSector(centerPt, optRPx, Math.PI * 0.5 - 1.0, Math.PI * 0.5 + 1.0, 'rgba(251,191,36,0.5)', 'rgba(251,191,36,0.06)', 1.8);
         }
 
-        const isOptimal = Math.abs(r - 5) < 0.08;
+        const isOptimal = Math.abs(r - PP / 4) < 0.08 * ff;
         dSector(
           centerPt,
           rPx,
@@ -1171,23 +1305,23 @@ window.addEventListener('DOMContentLoaded', function () {
         dDot(A, 'A [드래그]', C.white, { x: 12, y: 16 }, true, true); // [2.0 수정] 점 A 라벨을 오른쪽으로: 작은 부채꼴에서 θ 라벨과 겹치지 않게
         dDot(B, 'B', C.white, { x: -24, y: 6 }, false, true);
         if (step >= 1) {
-          dDot(arcTop, `l = 20 - 2r = ${l.toFixed(1)}`, C.cyan, { x: -52, y: -12 }, false, true);
+          dDot(arcTop, `l = ${PP} - 2r = ${l.toFixed(1)}`, C.cyan, { x: -52, y: -12 }, false, true);
         }
 
         if (step >= 2) {
           const gOx = rect.width * 0.58 + state.panX;
           const gOy = rect.height * 0.78 + state.panY;
-          const ux = Math.min(u * 0.40, rect.width * 0.033 * state.scale);
-          const uy = u * 0.18;
+          const ux = Math.min(u * 0.40, rect.width * 0.033 * state.scale) * (10.6 / (PP / 2 + 0.6));
+          const uy = u * 0.18 * (27 / (PP * PP / 16 + 2));
 
-          dLine({ x: gOx - 12, y: gOy }, { x: gOx + 10.6 * ux, y: gOy }, 'rgba(255,255,255,0.45)', 1.8);
-          dLine({ x: gOx, y: gOy + 12 }, { x: gOx, y: gOy - 27 * uy }, 'rgba(255,255,255,0.45)', 1.8);
+          dLine({ x: gOx - 12, y: gOy }, { x: gOx + (PP / 2 + 0.6) * ux, y: gOy }, 'rgba(255,255,255,0.45)', 1.8);
+          dLine({ x: gOx, y: gOy + 12 }, { x: gOx, y: gOy - (PP * PP / 16 + 2) * uy }, 'rgba(255,255,255,0.45)', 1.8);
 
-          const symTop = toScr(5, 25, gOx, gOy, ux, uy);
-          const symBot = toScr(5, 0, gOx, gOy, ux, uy);
+          const symTop = toScr(PP / 4, PP * PP / 16, gOx, gOy, ux, uy);
+          const symBot = toScr(PP / 4, 0, gOx, gOy, ux, uy);
           dLine(symBot, symTop, C.gold, 2.0, [5, 4]);
 
-          dCurve((rv) => -rv * rv + 10 * rv, 0, 10, gOx, gOy, ux, uy, C.pink, 3.2, [], true);
+          dCurve((rv) => -rv * rv + (PP / 2) * rv, 0, PP / 2, gOx, gOy, ux, uy, C.pink, 3.2, [], true);
 
           const curGraphPt = toScr(r, area, gOx, gOy, ux, uy);
           const curGraphBase = toScr(r, 0, gOx, gOy, ux, uy);
@@ -1195,11 +1329,11 @@ window.addEventListener('DOMContentLoaded', function () {
           dDot(curGraphPt, `S(${r.toFixed(1)}) = ${area.toFixed(1)}`, C.cyan, { x: 8, y: 14 }, false, true);
 
           if (step >= 3) {
-            dDot(symTop, '최댓값 (r=5, S=25)', C.green, { x: -55, y: -14 }, false, true);
+            dDot(symTop, `최댓값 (r=${PP / 4}, S=${PP * PP / 16})`, C.green, { x: -55, y: -14 }, false, true);
           }
         }
 
-        setMetric(`반지름 r = ${r.toFixed(2)}, 호 l = ${l.toFixed(2)}, 중심각 θ = ${theta.toFixed(2)} rad ➔ 넓이 S = ${area.toFixed(2)} (최대: r=5, θ=2 rad, S=25)`);
+        setMetric(`반지름 r = ${r.toFixed(2)}, 호 l = ${l.toFixed(2)}, 중심각 θ = ${theta.toFixed(2)} rad ➔ 넓이 S = ${area.toFixed(2)} (최대: r=${PP / 4}, θ=2 rad, S=${PP * PP / 16})`);
         return;
       }
 
@@ -1324,7 +1458,8 @@ window.addEventListener('DOMContentLoaded', function () {
           dDot(pt, step >= 3 ? `x_${i + 1}=${fmtPi(xv)}` : `x_${i + 1}`, i === 0 || i === 3 ? C.gold : C.green, { x: -16, y: i % 2 === 0 ? 20 : -12 }, i === 1, true);
         });
 
-        setMetric(`직선 y = ${fmtSurd(k)} | x₁+x₄ = 3π/2, x₂+x₃ = 3π/2 ➔ x₁ + 2x₂ + 2x₃ + x₄ = 9π/2 (불변!)`);
+        const G3 = TVG('bas-3'), cz = (c) => (c === 1 ? '' : c);
+        setMetric(`직선 y = ${fmtSurd(k)} | x₁+x₄ = 3π/2, x₂+x₃ = 3π/2 ➔ ${cz(G3.a)}x₁ + ${cz(G3.b)}x₂ + ${cz(G3.b)}x₃ + ${cz(G3.a)}x₄ = ${G3.ans} (불변!)`);
         return;
       }
 
@@ -1455,16 +1590,17 @@ window.addEventListener('DOMContentLoaded', function () {
       if (id === 'bas-6') {
         const ox = rect.width * 0.5 + state.panX;
         const oy = rect.height * 0.54 + state.panY;
-        const sc = u * 0.88;
+        const G6 = TVG('bas-6'); // 「새 문제」 변형의 반지름 R · 각 A (원본은 R = 4, A = π/3)
+        const sc = u * 0.88 * 4 / G6.R;
         drawAxesWithTicks(rect, ox, oy, sc, false);
 
-        const R = 4;
+        const R = G6.R;
         const O = toScr(0, 0, ox, oy, sc);
         state.centerPt = O;
         dCircle(O, R * sc, C.cyan, 2.6);
 
-        const angB = -Math.PI * 0.5 - Math.PI / 3;
-        const angC = -Math.PI * 0.5 + Math.PI / 3;
+        const angB = -Math.PI * 0.5 - G6.A;
+        const angC = -Math.PI * 0.5 + G6.A;
         const B = toScr(R * Math.cos(angB), R * Math.sin(angB), ox, oy, sc);
         const Cpt = toScr(R * Math.cos(angC), R * Math.sin(angC), ox, oy, sc);
 
@@ -1477,26 +1613,26 @@ window.addEventListener('DOMContentLoaded', function () {
 
         if (step >= 1) {
           dLine(B, Ap, C.gold, 2.4, [6, 4], true);
-          drawDimension(B, Ap, -26, '지름 2R = 8', C.gold);
+          drawDimension(B, Ap, -26, `지름 2R = ${G6.d}`, C.gold);
         }
 
         if (step >= 2) {
           dPoly([Ap, B, Cpt], 'rgba(251, 191, 36, 0.16)', C.gold, 2.2, step === 2);
           drawRightAngle(Cpt, Ap, B, 12, C.gold);
           if (!isAtDiameterEnd) {
-            drawAngleArc(Ap, B, Cpt, 24, 'π/3', C.cyan); // [표시 보강] 같은 현 BC의 원주각 ∠A = ∠A' = π/3 → 같은 청색 호
+            drawAngleArc(Ap, B, Cpt, 24, G6.as, C.cyan); // [표시 보강] 같은 현 BC의 원주각 ∠A = ∠A' = π/3 → 같은 청색 호
             dDot(Ap, "A'(지름 끝점)", C.gold, { x: 10, y: -10 }, false);
           }
         }
 
         if (step >= 3) {
-          drawDimension(Ap, Cpt, 24, "A'C = 8 cos(π/3) = 4", C.green);
+          drawDimension(Ap, Cpt, 24, `A'C = ${G6.d} cos(${G6.as}) = ${G6.acT}`, C.green);
         }
 
         dPoly([A, B, Cpt], 'rgba(56, 189, 248, 0.20)', C.cyan, 2.8);
         dLine(B, Cpt, C.pink, 3.4);
-        drawAngleArc(A, B, Cpt, 24, '∠A = π/3', C.cyan);
-        drawDimension(B, Cpt, 26, step >= 3 ? '현 BC = 8 sin(π/3) = 4√3' : '현 BC = a', C.pink);
+        drawAngleArc(A, B, Cpt, 24, `∠A = ${G6.as}`, C.cyan);
+        drawDimension(B, Cpt, 26, step >= 3 ? `현 BC = ${G6.d} sin(${G6.as}) = ${G6.bcT}` : '현 BC = a', C.pink);
 
         dDot(O, 'O(외심)', C.gold, { x: 8, y: 15 }, false, true);
         dDot(B, 'B', C.white, { x: -22, y: 14 }, false, true);
@@ -1510,7 +1646,7 @@ window.addEventListener('DOMContentLoaded', function () {
           true
         );
 
-        setMetric(`외접원 R = 4 (지름 2R = 8), ∠A = π/3 ➔ 현 BC = 2R sin(π/3) = 4√3, 직각변 A'C = 4`);
+        setMetric(`외접원 R = ${R} (지름 2R = ${G6.d}), ∠A = ${G6.as} ➔ 현 BC = 2R sin(${G6.as}) = ${G6.bcT}, 직각변 A'C = ${G6.acT}`);
         return;
       }
 
@@ -1595,10 +1731,11 @@ window.addEventListener('DOMContentLoaded', function () {
       if (id === 'bas-8') {
         const ox = rect.width * 0.48 + state.panX;
         const oy = rect.height * 0.68 + state.panY;
-        const sc = u * 0.92;
+        const G8 = TVG('bas-8'); // 「새 문제」 변형의 두 변 AB = c, AC = b (원본은 6, 3)
+        const sc = u * 0.92 * Math.sqrt(63) / G8.a;
         drawAxesWithTicks(rect, ox, oy, sc, false);
 
-        const c = 6, b = 3, angleA = (2 * Math.PI) / 3;
+        const c = G8.c, b = G8.b, angleA = (2 * Math.PI) / 3;
         const a = Math.sqrt(c * c + b * b - 2 * c * b * Math.cos(angleA));
         const cosB = (a * a + c * c - b * b) / (2 * a * c);
         const sinB = Math.sqrt(1 - cosB * cosB);
@@ -1607,7 +1744,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const mC = { x: a * 0.5, y: 0 };
         const mA = { x: mB.x + c * cosB, y: c * sinB };
 
-        const ratioBD = 0.35 + (t - 0.5) * 0.6 + (2 / 3 - 0.35);
+        const ratioBD = 0.35 + (t - 0.5) * 0.6 + (c / (b + c) - 0.35);
         const mD = { x: mB.x + a * ratioBD, y: 0 };
 
         const A = toScr(mA.x, mA.y, ox, oy, sc);
@@ -1629,21 +1766,21 @@ window.addEventListener('DOMContentLoaded', function () {
           // [표시 보강] 각의 이등분(π/3 = π/3)이면 두 각은 같은 금색 호·같은 반지름, 전체 ∠A = 2π/3 는 바깥 호
           drawAngleArc(A, B, D, isBisector ? 30 : 26, isBisector ? 'π/3' : 'α', isBisector ? C.gold : C.green);
           drawAngleArc(A, D, Cpt, isBisector ? 30 : 32, isBisector ? 'π/3' : '2π/3-α', isBisector ? C.gold : C.cyan);
-          drawDimension(B, D, 24, isBisector && step >= 3 ? 'BD = 2√7 (비율 2)' : `BD = ${(a * ratioBD).toFixed(2)}`, C.green);
-          drawDimension(D, Cpt, 24, isBisector && step >= 3 ? 'DC = √7 (비율 1)' : `DC = ${(a * (1 - ratioBD)).toFixed(2)}`, C.cyan);
+          drawDimension(B, D, 24, isBisector && step >= 3 ? `BD = ${G8.bdT} (비율 ${G8.rc})` : `BD = ${(a * ratioBD).toFixed(2)}`, C.green);
+          drawDimension(D, Cpt, 24, isBisector && step >= 3 ? `DC = ${G8.dcT} (비율 ${G8.rb})` : `DC = ${(a * (1 - ratioBD)).toFixed(2)}`, C.cyan);
         }
 
         drawAngleArc(A, B, Cpt, step >= 2 ? 68 : 32, '2π/3', C.white);
         dLine(A, D, C.gold, 3.2, [], true);
-        drawDimension(A, B, -24, 'AB = 6', C.green);
-        drawDimension(A, Cpt, 24, 'AC = 3', C.cyan);
+        drawDimension(A, B, -24, `AB = ${c}`, C.green);
+        drawDimension(A, Cpt, 24, `AC = ${b}`, C.cyan);
 
         dDot(A, 'A (∠A = 2π/3)', C.white, { x: -38, y: -14 }, false, true);
         dDot(B, 'B', C.white, { x: -20, y: 14 }, false, true);
         dDot(Cpt, 'C', C.white, { x: 10, y: 14 }, false, true);
-        dDot(D, step >= 3 && isBisector ? 'D (AD = 2) [드래그]' : `D (AD = ${lenAD.toFixed(2)}) [드래그]`, C.gold, { x: -45, y: -14 }, true, true);
+        dDot(D, step >= 3 && isBisector ? `D (AD = ${G8.AD}) [드래그]` : `D (AD = ${lenAD.toFixed(2)}) [드래그]`, C.gold, { x: -45, y: -14 }, true, true);
 
-        setMetric(`현재 AD = ${fmtSurd(lenAD)} | S_ABC = 9√3/2 = S_ABD + S_ACD (각의 이등분선일 때 AD = 2)`);
+        setMetric(`현재 AD = ${fmtSurd(lenAD)} | S_ABC = ${G8.sTxt} = S_ABD + S_ACD (각의 이등분선일 때 AD = ${G8.AD})`);
         return;
       }
 
@@ -2197,9 +2334,50 @@ window.addEventListener('DOMContentLoaded', function () {
       .replace(/\$([^$]+)\$/g, (_, m) => tex(m)) : '');
     const stepName = (st) => st.title.replace(/^(?:Step\s*|\d+단계)\s*\d*\.\s*/, '');
 
+    /* ===== 변형 생성기 연결: 문항 객체(p)의 문제 글·정답·단계·풀이 비교·스냅을 변형의 것으로 바꿔 끼웁니다 ===== */
+    const TVS = { 'bas-1': TRIGV.B1, 'bas-3': TRIGV.B3, 'bas-6': TRIGV.B6, 'bas-8': TRIGV.B8 };
+    const TV = {};
+    Object.keys(TVS).forEach((pid) => {
+      const spec = TVS[pid], p = PROBLEMS.find((q) => q.id === pid), cache = [];
+      const orig = { statement: p.statement, answer: p.answer, snaps: p.snaps.map((x) => ({ ...x })), steps: p.steps.map((x) => ({ ...x })), alg: p.alg };
+      const get = (k) => {
+        if (cache[k]) return cache[k];
+        const b = spec.build(spec.pool[k]);
+        if (k === 0) Object.assign(b, orig); // 첫 문제는 원본 그대로(문항·정답·풀이 변경 금지)
+        else {
+          b.steps = b.steps.map((st, i) => (st ? { step: i + 1, title: arrow(st.title), desc: arrow(st.desc) } : orig.steps[i]));
+          b.alg = b.alg || orig.alg;
+          b.snaps = b.snaps.map((sn) => ({ ...sn, label: arrow(sn.label) }));
+          b.answer = arrow(b.answer);
+        }
+        return (cache[k] = b);
+      };
+      let i = 0;
+      const apply = () => { const b = get(i); p.statement = b.statement; p.answer = b.answer; p.snaps = b.snaps; p.steps = b.steps; p.alg = b.alg; };
+      TV[pid] = { cur: () => get(i), idx: () => i, next() { i = (i + 1 + Math.floor(Math.random() * (spec.pool.length - 1))) % spec.pool.length; apply(); return get(i); } };
+    });
+    const TVG = (pid) => TV[pid].cur().g; // 그림이 따라가는 변형의 숫자
+    const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-asq-new>새 문제 (숫자 바꾸기)</button></div>`;
+    document.addEventListener('click', (ev) => {
+      const hit = ev.target && ev.target.closest && ev.target.closest('[data-asq-new]');
+      if (!hit) return;
+      const lab = window.lab, sc = lab && lab.scene;
+      if (!sc || !sc.vary) return;
+      sc.vary.next();
+      const p = PROBLEMS.find((q) => q.id === lab.s.cur);
+      lab.s.revealed = false;
+      lab.s.t = initialOf(p);
+      lab.setStep(0);
+      const qe = lab.ui.head.querySelector('.apl-question');
+      if (qe) qe.innerHTML = '<small>탐구 질문</small>' + APLab.renderMath(rm(p.statement));
+      try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+      lab.invalidate(true);
+      try { APLab.toast('숫자를 바꾼 새 문제가 만들어졌습니다'); } catch (e) { /* 토스트가 없어도 그림은 그대로 */ }
+    });
+
     // 슬라이더 옆에 보이는 값 (원본 syncSliderReadout)
     const READOUT = {
-      'bas-1': (t) => `r=${(2 + 6 * t).toFixed(2)}`,
+      'bas-1': (t) => `r=${((2 + 6 * t) * TVG('bas-1').f).toFixed(2)}`,
       'bas-2': (t) => `θ=${fmtPi(0.15 + 1.20366 * t)}`,
       'bas-3': (t) => `k=${(0.15 + 0.78 * t).toFixed(3)}`,
       'bas-4': (t) => `t=${(4.5 * t).toFixed(2)}`,
@@ -2239,17 +2417,20 @@ window.addEventListener('DOMContentLoaded', function () {
     function sceneOf(p) {
       const idx = PROBLEMS.indexOf(p);
       const trap = TRAP.includes(p.id);
-      const stepsHtml = p.steps.map((st) => `<p><strong>${st.step}단계. ${rm(stepName(st))}</strong><br>${rm(st.desc)}</p>`).join('');
+      const stepsHtml = () => p.steps.map((st, i) => `<p><strong>${i + 1}단계. ${rm(stepName(st))}</strong><br>${rm(st.desc)}</p>`).join('');
+      const vary = TV[p.id];
       return {
         id: p.id,
         title: p.title,
         short: SHORT[p.id],
-        question: rm(p.statement),
+        get question() { return rm(p.statement); },
+        tabs: { compact: true }, // 휴대폰 문제 탭: 탐구 질문 카드를 접고 그림 무대를 낮춰 문제 글이 첫 화면에 오게 함
+        vary,
         guide: `<b>${p.sliderTitle.replace(/[:：]\s*$/, '')}</b> — 조절 막대를 움직이거나 그림의 <b>테두리가 빛나는 점</b>을 ${VERB[p.dragMode] || '끌어'} 보세요. <b>정리</b> 탭에서 단계 단추를 누르면 보조선이 하나씩 나타나고, 3단계까지 보면 정답이 열립니다.`,
         startStep: 0,
         controls: ['t'],
         presets: (s) => (s.step >= 3 ? p.snaps.map((sn) => ({ label: sn.label, set: { t: sn.t }, ms: 450, on: (st) => Math.abs(st.t - sn.t) < 0.003 })) : []),
-        steps: p.steps.map(stepName),
+        steps: () => p.steps.map(stepName),
         notesTitle: '핵심 발견',
         enter: (s, lab) => {
           s.cur = p.id;
@@ -2262,10 +2443,10 @@ window.addEventListener('DOMContentLoaded', function () {
         solution: {
           standardTitle: APLab.stripEmoji(p.solType), standardTag: '단계별',
           quickTitle: trap ? '오답 함정 분석' : '풀이 비교', quickTag: trap ? '함정' : '비교',
-          standard: { steps: stepsHtml },
-          quick: { steps: rm(p.alg) }
+          standard: () => ({ steps: stepsHtml() }),
+          quick: () => ({ steps: rm(p.alg) })
         },
-        problem: { tag: p.badge, text: rm(p.statement), answer: p.answer, snap: () => ({ t: p.defaultT }) },
+        problem: { tag: p.badge, text: () => (vary ? probHTML(rm(p.statement)) : rm(p.statement)), answer: () => p.answer, snap: () => ({ t: p.defaultT }) },
         view: (s) => {
           const step = Math.min(3, s.step || 0);
           const out = {};
