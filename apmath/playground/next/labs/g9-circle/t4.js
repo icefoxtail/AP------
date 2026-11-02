@@ -241,15 +241,15 @@
       const q = s.ciPk, key = q.key + '#' + (s.ciSeed || 0), th = q.th, k = q.k, g = M.g;
       let stem, ans, wr, meas, tag;
       const ang3 = (V, X, Y) => { const u = sub(X, V), v = sub(Y, V); return Math.acos((u.x * v.x + u.y * v.y) / (Math.hypot(u.x, u.y) * Math.hypot(v.x, v.y))) / DEG; };
-      const kk = k === 1 ? '호 CD의 길이는 호 AB의 길이와 같다' : `호 CD의 길이는 호 AB의 길이의 ${k}배이다`;
+      const kk = k === 1 ? '호 CD의 길이는 호 AB의 길이와 같고' : `호 CD의 길이는 호 AB의 길이의 ${k}배이고`;
       const pre = '그림에서 두 현 AC, BD의 교점을 P라 하자.';
       if (q.kind === 0) {
         tag = '호와 원주각의 비 · ∠APD'; ans = 180 - th * (1 + k); meas = ang3(g.P, g.A, g.D);
-        stem = `${pre} ${kk}고 $\\angle ADB=${th}^{\\circ}$일 때, $\\angle APD$의 크기 $x$는?`;
+        stem = `${pre} ${kk} $\\angle ADB=${th}^{\\circ}$일 때, $\\angle APD$의 크기 $x$는?`;
         wr = [[th * (1 + k), '이것은 ∠APB예요. ∠APD=180°−∠APB.'], [th * k, '이것은 ∠CAD예요.'], [180 - th, '호 CD에 대한 원주각도 더해야 해요.'], [90 - th, '∠APB=∠ADB+∠CAD를 먼저 구해요.'], [ans + 10, '∠APD=180°−(∠ADB+∠CAD)예요.']];
       } else if (q.kind === 1) {
         tag = '호와 원주각의 비 · ∠CAD'; ans = k * th; meas = ang3(g.A, g.Cc || g.C, g.D);
-        stem = `${pre} ${kk}고 $\\angle ADB=${th}^{\\circ}$일 때, $\\angle CAD$의 크기 $x$는?`;
+        stem = `${pre} ${kk} $\\angle ADB=${th}^{\\circ}$일 때, $\\angle CAD$의 크기 $x$는?`;
         wr = [[th, k === 1 ? '호가 같으므로 원주각도 같아요(이 문제는 다른 변형).' : '호가 k배이면 원주각도 k배예요.'], [th * (1 + k), '이것은 두 원주각의 합이에요.'], [2 * th * k, '원주각은 호의 절반이에요. 호가 아니라 원주각을 구해요.'], [th * k + 10, '호가 k배이면 원주각도 k배예요.'], [th * k - 4, '호가 k배이면 원주각도 k배예요.']];
       } else {
         tag = '호와 원주각의 비 · ∠APB'; ans = th * (1 + k); meas = ang3(g.P, g.A, g.B);

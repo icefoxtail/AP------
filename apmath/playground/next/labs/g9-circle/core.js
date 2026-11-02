@@ -216,7 +216,7 @@
   const mkNum = (correct, wrongs, o = {}) => mkChoices(correct, wrongs, { tex: (v) => nt(v) + (o.unit ? `\\,\\mathrm{${o.unit}}` : ''), plain: (v) => npl(v) + (o.unit ? o.unit : ''), valid: (v) => v > 0 && exactQ(v), pad: o.pad || 1 });
   const Pi = (k) => (k === 1 ? '\\pi' : `${k}\\pi`);
   // 넓이 보기: k π
-  const mkPi = (correct, wrongs, o = {}) => mkChoices(correct, wrongs, { tex: (v) => (Number.isInteger(v) ? `${v === 1 ? '' : v}\\pi` : `${nt(v)}\\pi`), plain: (v) => `${v}π`, valid: (v) => v > 0 && exactQ(v), pad: o.pad || 2 });
+  const mkPi = (correct, wrongs, o = {}) => mkChoices(correct, wrongs, { tex: (v) => (Number.isInteger(v) ? `${v === 1 ? '' : v}\\pi` : `${nt(v)}\\pi`), plain: (v) => (v === 1 ? 'π' : `${v}π`), valid: (v) => v > 0 && exactQ(v), pad: o.pad || 2 });
 
   /* ------------------------------------------------------------------ 조절 값 만들기 */
   const P = (label, min, max, step, value, o = {}) => ({ value, min, max, step, color: o.color || 'sky', label, hint: o.hint, format: o.format || ((v) => fmtN(v)) });

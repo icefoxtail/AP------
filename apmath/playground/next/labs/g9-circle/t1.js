@@ -97,11 +97,11 @@
         wr = [[am, '현의 반(AM)과 OM을 헷갈렸어요.'], [R - am, '길이를 빼면 안 돼요. 피타고라스 정리를 써요.'], [ab, '중심에서 현까지의 거리를 구해야 해요.'], [Math.sqrt(Math.abs(R * R - ab * ab)), '현 전체가 아니라 반쪽 AM을 써야 해요.'], [R + am, '길이를 더하면 안 돼요.']];
       } else if (q.kind === 1) {
         tag = '현의 수직이등분 · 현의 길이'; ans = 2 * Math.sqrt(R * R - om * om); meas = dist(M.g.A, M.g.B);
-        stem = `원 O의 반지름의 길이가 ${R} cm이다. 중심 O에서 현 AB에 내린 수선의 발을 M이라 하면 $\\overline{OM}=${om}$ cm일 때, 현 AB의 길이는?`;
+        stem = `원 O의 반지름의 길이가 ${R} cm이다. 중심 O에서 현 AB에 내린 수선의 발을 M이라 할 때 $\\overline{OM}=${om}$ cm이다. 현 AB의 길이는?`;
         wr = [[am, '구한 AM은 현의 반쪽이에요. 2배 해야 해요.'], [R + om, '피타고라스 정리를 써요.'], [2 * om, 'OM이 아니라 AM을 구해야 해요.'], [R, '반지름은 현의 길이가 아니에요.'], [2 * R, '지름은 가장 긴 현이에요. OM이 0이 아니면 더 짧아요.']];
       } else {
         tag = '현의 수직이등분 · 반지름 구하기'; ans = Math.sqrt(am * am + om * om); meas = dist(O, M.g.A);
-        stem = `원 O의 현 AB의 길이가 ${ab} cm이고 중심 O에서 현 AB에 내린 수선의 발을 M이라 하면 $\\overline{OM}=${om}$ cm이다. 이 원의 반지름의 길이는?`;
+        stem = `원 O의 현 AB의 길이가 ${ab} cm이고 중심 O에서 현 AB에 내린 수선의 발을 M이라 할 때 $\\overline{OM}=${om}$ cm이다. 이 원의 반지름의 길이는?`;
         wr = [[ab + om, '길이를 더하면 안 돼요. 직각삼각형 OAM에서 피타고라스 정리를 써요.'], [Math.sqrt(ab * ab + om * om), '현 전체가 아니라 반쪽 AM을 써야 해요.'], [am + om, '두 변의 합이 아니라 빗변이에요.'], [ab, '현의 길이와 반지름은 달라요.'], [am, '구한 길이는 반지름이 아니라 현의 반쪽이에요.']];
       }
       return { tag, key, stem, choices: mkNum(ans, wr, { unit: 'cm' }), chk: [meas, ans] };
@@ -506,11 +506,11 @@
         wr = [[R, '반지름이에요.'], [R / 3, '접힌 호가 O를 지나면 OM=R의 절반이에요.'], [R / 4, '접힌 호가 O를 지나면 OM=R의 절반이에요.'], [R * r3 / 2, 'AM이에요.'], [2 * R, '반지름보다 짧아요.']];
       } else if (q.kind === 1) {
         tag = '접는 위치 · AB'; ans = 2 * r3 * k; meas = dist(F.A, F.B);
-        stem = `원 O의 호 AB를 접었더니 접힌 호가 원의 중심 O를 지났다. 중심 O에서 현 AB에 내린 수선의 발을 M이라 하면 $\\overline{OM}=${k}$ cm일 때, $\\overline{AB}$의 길이는?`;
+        stem = `원 O의 호 AB를 접었더니 접힌 호가 원의 중심 O를 지났다. 중심 O에서 현 AB에 내린 수선의 발을 M이라 할 때 $\\overline{OM}=${k}$ cm이다. $\\overline{AB}$의 길이는?`;
         wr = [[r3 * k, 'AM이에요. 2배 해야 해요.'], [2 * k, 'OM의 2배는 반지름이에요.'], [4 * k, '지름이에요.'], [3 * k, 'AB=√3R이에요.'], [k * Math.sqrt(2) * 2, '30°, 60°, 90° 삼각형을 써요.']];
       } else {
         tag = '접는 위치 · 반지름'; ans = R; meas = dist(O, F.Op);
-        stem = `원 O의 호 AB를 접었더니 접힌 호가 원의 중심 O를 지났다. 중심 O에서 현 AB에 내린 수선의 발을 M이라 하면 $\\overline{OM}=${k}$ cm일 때, 원 O의 반지름의 길이는?`;
+        stem = `원 O의 호 AB를 접었더니 접힌 호가 원의 중심 O를 지났다. 중심 O에서 현 AB에 내린 수선의 발을 M이라 할 때 $\\overline{OM}=${k}$ cm이다. 원 O의 반지름의 길이는?`;
         wr = [[k, 'OM은 반지름의 절반이에요.'], [3 * k, 'R=2·OM이에요.'], [4 * k, 'R=2·OM이에요.'], [k * r3, 'AM이에요.'], [k / 2, 'R=2·OM이에요.']];
       }
       return { tag, key, stem, choices: mkNum(ans, wr, { unit: 'cm' }), chk: [meas, ans] };

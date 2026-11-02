@@ -184,11 +184,11 @@
         wr = [[(p + qq) / 2, '빗변을 빼야 해요. r=(AB+BC−AC)÷2예요.'], [h - r, 'r=(AB+BC−AC)÷2예요.'], [p * qq / (2 * r) || 1, 'r=(AB+BC−AC)÷2예요.'], [r + 1, 'r=(AB+BC−AC)÷2예요.'], [r * 2, '반지름은 지름의 절반이에요. r=(AB+BC−AC)÷2예요.']];
       } else if (q.kind === 1) {
         tag = '직각삼각형의 내접원 · 빗변과 한 변으로 r'; ans = r; meas = g.r;
-        stem = `${pre} $\\overline{AB}=${p}$, $\\overline{AC}=${h}$일 때, 내접원 O의 반지름의 길이 $x$는? (단, ∠B=90°)`;
+        stem = `${pre} $\\overline{AB}=${p}$, $\\overline{AC}=${h}$일 때, 내접원 O의 반지름의 길이 $x$는?`;
         wr = [[(p + h) / 2 - 1, 'BC를 먼저 피타고라스 정리로 구해요.'], [h - p, '먼저 BC를 구한 뒤 r=(AB+BC−AC)÷2를 써요.'], [qq, '이것은 BC예요.'], [r + 1, 'BC=√(AC²−AB²)를 구한 뒤 r=(AB+BC−AC)÷2예요.'], [r * 2, 'r=(AB+BC−AC)÷2예요.']];
       } else {
         tag = '직각삼각형의 내접원 · 빗변'; ans = h; meas = dist(g.A, g.C);
-        stem = `${pre} 내접원의 반지름이 ${r}이고 $\\overline{AB}=${p}$일 때, 빗변 $\\overline{AC}$의 길이 $x$는? (단, ∠B=90°)`;
+        stem = `${pre} 내접원의 반지름이 ${r}이고 $\\overline{AB}=${p}$일 때, 빗변 $\\overline{AC}$의 길이 $x$는?`;
         wr = [[p + r, '빗변은 (AB−r)+(BC−r)로 나타나요.'], [p + qq, '이것은 AB+BC예요. 빗변은 그보다 짧아요.'], [h + 1, 'AC=(AB−r)+(BC−r), AC²=AB²+BC²를 연립해요.'], [h - 1, 'AC=(AB−r)+(BC−r), AC²=AB²+BC²를 연립해요.'], [qq, '이것은 BC예요.']];
       }
       return { tag, key, stem, choices: mkNum(ans, wr, { unit: 'cm' }), chk: [meas, ans] };
@@ -251,10 +251,10 @@
     prob(M, s) {
       const q = s.ciPk, key = q.key + '#' + (s.ciSeed || 0), { a, b, c, r } = q, g = M.g, per = a + b + c, S0 = (per * r) / 2;
       let stem, ans, wr, meas, tag;
-      const pre = `삼각형 ABC의 내접원 O의 반지름을 r이라 하자. $\\overline{AB}=${c}$, $\\overline{BC}=${a}$, $\\overline{CA}=${b}$일 때,`;
+      const pre = `삼각형 ABC의 내접원 O의 반지름을 r이라 하자. $\\overline{AB}=${c}$, $\\overline{BC}=${a}$, $\\overline{CA}=${b}$이다.`;
       if (q.kind === 0) {
         tag = '내접원과 넓이 · r'; ans = r; meas = g.r;
-        stem = `${pre} 삼각형 ABC의 넓이가 ${S0}이다. r의 값 $x$는?`;
+        stem = `${pre} 삼각형 ABC의 넓이가 ${S0}일 때, r의 값 $x$는?`;
         wr = [[S0 / per, '넓이=r×(둘레)÷2이에요. r=2×넓이÷둘레.'], [per / S0, 'r=2×넓이÷둘레예요.'], [r + 1, 'r=2×넓이÷둘레예요.'], [r - 1, 'r=2×넓이÷둘레예요.'], [r * 2, 'r=2×넓이÷둘레예요. 2를 곱하고 둘레로 나눠요.']];
         return { tag, key, stem, choices: mkNum(ans, wr, {}), chk: [meas, ans] };
       } else if (q.kind === 1) {
@@ -264,7 +264,7 @@
         return { tag, key, stem, choices: mkNum(ans, wr, {}), chk: [meas, ans] };
       }
       tag = '내접원과 넓이 · r (넓이 주어짐)'; ans = r; meas = g.r;
-      stem = `${pre} 삼각형 ABC의 넓이가 ${S0}이다. 내접원의 반지름 $x$는?`;
+      stem = `${pre} 삼각형 ABC의 넓이가 ${S0}일 때, 내접원의 반지름 $x$는?`;
       wr = [[S0 / per, 'r=2×넓이÷둘레예요.'], [per / S0, 'r=2×넓이÷둘레예요.'], [r + 1, 'r=2×넓이÷둘레예요.'], [r - 1, 'r=2×넓이÷둘레예요.'], [r * 2, 'r=2×넓이÷둘레예요.']];
       return { tag, key, stem, choices: mkNum(ans, wr, {}), chk: [meas, ans] };
     }

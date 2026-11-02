@@ -535,7 +535,7 @@
     prob(M, s) {
       const q = s.ciPk, key = q.key + '#' + (s.ciSeed || 0), g = M.g;
       let stem, ans, wr, meas, tag;
-      const pre = '원 밖의 점 P에서 원에 그은 접선의 접점을 T, 할선이 원과 만나는 두 점을 A, B(A가 P에서 더 가까운 점)이라 하자.';
+      const pre = '원 밖의 점 P에서 원에 그은 접선의 접점을 T, 할선이 원과 만나는 두 점을 A, B라 하자. (A가 P에서 더 가까운 점)';
       if (q.kind === 0) {
         tag = '[심화] 접선과 할선 · PT'; ans = q.t; meas = dist(g.P, g.T);
         stem = `${pre} $\\overline{PA}=${q.a}$, $\\overline{PB}=${q.b}$일 때, $\\overline{PT}$의 길이 $x$는?`;

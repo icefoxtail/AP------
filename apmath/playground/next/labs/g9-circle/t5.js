@@ -105,7 +105,7 @@
       tag = '내접사각형의 대각 · 방정식'; ans = q.x; meas = g.A0 - q.a1;
       stem = `${pre} $\\angle A=(x+${q.a1})^{\\circ}$, $\\angle C=(${q.c1 >= 0 ? '2x+' + q.c1 : '2x-' + (-q.c1)})^{\\circ}$일 때, $x$의 값은?`;
       wr = [[q.x + 5, '∠A+∠C=180°로 식을 세워요.'], [q.x - 5, '∠A+∠C=180°로 식을 세워요.'], [q.x + 10, '∠A+∠C=180°로 식을 세워요.'], [Math.round((360 - q.a1 - q.c1) / 3), '∠A+∠C=180°예요(360°가 아니에요).'], [q.x - 10, '∠A+∠C=180°로 식을 세워요.']];
-      return { tag, key, stem, choices: mkDeg(ans, wr), chk: [meas, ans] };
+      return { tag, key, stem, choices: mkChoices(ans, wr, { pad: 5, tex: (v) => String(v), plain: (v) => String(v), valid: (v) => v > 0 && Number.isInteger(v) }), chk: [meas, ans] };
     }
   };
 
