@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>함수의 극한과 연속 · AP Math 실험실</title>
-<meta name="description" content="미적분Ⅰ 함수의 극한과 연속: 좌극한·우극한과 연속 판정, 0/0 꼴의 극한과 접선의 기울기의 비, 곱함수의 연속, 교점의 개수 g(t), 사잇값 정리를 직접 조작하며 탐구합니다.">
+<meta name="description" content="미적분Ⅰ 함수의 극한과 연속: 좌극한·우극한과 연속 판정, 0/0 꼴의 극한과 접선의 기울기의 비, 곱함수의 연속, 교점의 개수 g(t), 사잇값 정리에 더해 움직이는 직선·창이 만드는 g(t), 영점 배치와 극한의 존재, 도형의 비의 극한을 직접 조작하며 탐구합니다.">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):'paper';document.documentElement.setAttribute('data-theme',t==='board'?'board':'paper')}catch(e){document.documentElement.setAttribute('data-theme','paper')}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -590,6 +590,1063 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   ];
 
+  /* ======================================================================
+     장면 6~9 (확장) · 움직이는 점·직선·창이 만드는 g(t) 계열 — 평가원·학평 킬러에서 반복되는 유형
+     기존 장면 1~5의 문제·풀이·그림은 그대로 두고, 아래에서 새 장면만 더합니다.
+     ====================================================================== */
+  /*MATH-BEGIN*/
+  const E9 = 1e-9, INF = Infinity;
+  const nfa = (v, d = 2) => String(+(+v).toFixed(d)); // 수식(tex)용: ASCII 마이너스
+  const nf = (v, d = 2) => (Math.abs(v) < 1e-9 ? '0' : nfa(v, d).replace('-', '−')); // 화면 글자용
+  // 오름차순 계수 배열 → tex 다항식 (예: [2,2,-1] → -x^2+2x+2)
+  function polyTex(c, v = 'x') {
+    let s = '';
+    for (let i = c.length - 1; i >= 0; i--) {
+      const k = c[i];
+      if (!k) continue;
+      const ab = Math.abs(k);
+      const body = i === 0 ? String(ab) : (ab === 1 ? '' : String(ab)) + (i === 1 ? v : `${v}^{${i}}`);
+      s += (s ? (k < 0 ? ' - ' : ' + ') : (k < 0 ? '-' : '')) + body;
+    }
+    return s || '0';
+  }
+  const linTex = (p, v = 'x') => (p === 0 ? v : p > 0 ? `${v}-${p}` : `${v}+${-p}`); // x-p
+  const gcd = (a, b) => (b ? gcd(b, a % b) : Math.abs(a));
+  const ratTex = (n, d) => { const g = gcd(n, d) || 1; n /= g; d /= g; if (d < 0) { n = -n; d = -d; } return d === 1 ? `${n}` : `${n < 0 ? '-' : ''}\\dfrac{${Math.abs(n)}}{${d}}`; };
+
+  /* ---- 장면 6: 곡선과 움직이는 직선의 교점의 개수 g(p) (조각별 이차식 + 직선 y=p 또는 y=p·x) ---- */
+  function qroots(a, b, c) {
+    if (Math.abs(a) < E9) { if (Math.abs(b) < E9) return []; return [-c / b]; }
+    const D = b * b - 4 * a * c;
+    const sc = Math.max(1, b * b, Math.abs(4 * a * c));
+    if (Math.abs(D) < 1e-9 * sc) return [-b / (2 * a)];
+    if (D < 0) return [];
+    const q = Math.sqrt(D);
+    return [(-b - q) / (2 * a), (-b + q) / (2 * a)];
+  }
+  const pieceAt = (pc, x) => pc.c[0] + pc.c[1] * x + pc.c[2] * x * x;
+  const inPiece = (pc, x) => x > pc.lo - E9 && x < pc.hi + E9 && (x > pc.lo + E9 || pc.loC) && (x < pc.hi - E9 || pc.hiC);
+  function cross6(pieces, kind, p) { // 서로 다른 교점의 x좌표
+    const pts = [];
+    const l0 = kind === 'hor' ? p : 0, l1 = kind === 'hor' ? 0 : p;
+    for (const pc of pieces) {
+      qroots(pc.c[2], pc.c[1] - l1, pc.c[0] - l0).forEach((x) => {
+        if (inPiece(pc, x) && !pts.some((q) => Math.abs(q - x) < 1e-7)) pts.push(x);
+      });
+    }
+    return pts.sort((a, b) => a - b);
+  }
+  const g6 = (pieces, kind, p) => cross6(pieces, kind, p).length;
+  // g가 불연속이 되는 p(접함 · 끝점을 지남 · 기울기가 같아짐)를 정확히 찾습니다. pts = 그 순간 직선이 곡선과 만나는 특별한 점들
+  function events6(pieces, kind) {
+    const ev = [];
+    const add = (p, type, pt) => {
+      if (!Number.isFinite(p)) return;
+      let e = ev.find((q) => Math.abs(q.p - p) < 1e-7);
+      if (!e) { e = { p, types: [], pts: [] }; ev.push(e); }
+      if (!e.types.includes(type)) e.types.push(type);
+      if (pt) e.pts.push(pt);
+    };
+    for (const pc of pieces) {
+      const [c0, c1, c2] = pc.c;
+      const ends = [pc.lo, pc.hi].filter(Number.isFinite);
+      if (kind === 'hor') {
+        if (Math.abs(c2) > E9) { const xv = -c1 / (2 * c2); if (xv > pc.lo - E9 && xv < pc.hi + E9) add(pieceAt(pc, xv), 'tangent', [xv, pieceAt(pc, xv)]); }
+        ends.forEach((x) => add(pieceAt(pc, x), 'end', [x, pieceAt(pc, x)]));
+      } else {
+        ends.forEach((x) => { if (Math.abs(x) > E9) add(pieceAt(pc, x) / x, 'end', [x, pieceAt(pc, x)]); });
+        if (Math.abs(c2) < E9) add(c1, 'parallel');
+        else {
+          const q = c2 * c0;
+          if (q >= 0) [1, -1].forEach((sg) => { const m = c1 + sg * 2 * Math.sqrt(q); const xt = -(c1 - m) / (2 * c2); if (xt > pc.lo - E9 && xt < pc.hi + E9) add(m, 'tangent', [xt, m * xt]); });
+        }
+      }
+    }
+    const d = 1e-5;
+    return ev.map((e) => ({ ...e, L: g6(pieces, kind, e.p - d), M: g6(pieces, kind, e.p), R: g6(pieces, kind, e.p + d) }))
+      .filter((e) => !(e.L === e.M && e.M === e.R)).sort((a, b) => a.p - b.p);
+  }
+  // 구간별 이차식 조각 만들기
+  const horPieces = ([h, A, c, q, B]) => [
+    { c: [A - h * h, 2 * h, -1], lo: -INF, hi: c, loC: true, hiC: true },
+    { c: [q * q - B, -2 * q, 1], lo: c, hi: INF, loC: false, hiC: true }];
+  const rotPieces = ([a, b, c]) => [ // f(x) = a x + b + |x - c|
+    { c: [b + c, a - 1, 0], lo: -INF, hi: c, loC: false, hiC: false },
+    { c: [b - c, a + 1, 0], lo: c, hi: INF, loC: true, hiC: true }];
+
+  /* ---- 장면 7: 분모의 영점에서 극한이 존재할 조건 (최고차 계수 1, 영점 목록은 중복도만큼 반복) ---- */
+  function lim7(nr, dr, z) {
+    const eq = (u) => Math.abs(u - z) < 1e-3;
+    const mN = nr.filter(eq).length, mD = dr.filter(eq).length;
+    if (mN < mD) return { ok: false, mN, mD };
+    if (mN > mD) return { ok: true, val: 0, mN, mD };
+    const num = nr.filter((r) => !eq(r)).reduce((p, r) => p * (z - r), 1);
+    const den = dr.filter((r) => !eq(r)).reduce((p, r) => p * (z - r), 1);
+    return { ok: true, val: num / den, mN, mD };
+  }
+  const prodAt = (roots, x) => roots.reduce((p, r) => p * (x - r), 1);
+
+  /* ---- 장면 8: 포물선 y=x² 과 직선이 만드는 도형의 비 ---- */
+  // kind: len0 = (AH−CH)/t (t→0+), area0 = S(t)/t (t→0+), inf = g(t)/t² (t→∞, 현의 길이 2t)
+  function geo8(kind, m, t) {
+    if (kind === 'inf') {
+      const k = t * t / (1 + m * m) - m * m / 4, w = 2 * t / Math.sqrt(1 + m * m);
+      const al = (m + w) / 2, be = (m - w) / 2;
+      return { k, al, be, A: [al, al * al], B: [be, be * be], ratio: k / (t * t) };
+    }
+    const w = Math.sqrt(m * m + 4 * t), al = (m + w) / 2, be = (m - w) / 2;
+    const out = { k: t, al, be, A: [al, al * al], B: [be, be * be], w };
+    if (kind === 'len0') { out.C = [-al, al * al]; out.H = [be, al * al]; out.AH = al - be; out.CH = al + be; out.ratio = (out.AH - out.CH) / t; }
+    else { out.S = 0.5 * t * w; out.ratio = out.S / t; }
+    return out;
+  }
+  const lim8 = (kind, m) => (kind === 'len0' ? 2 / m : kind === 'area0' ? m / 2 : 1 / (1 + m * m));
+
+  /* ---- 장면 9: 길이 a인 창 [t, t+a] 안에서 f(또는 |f|)의 최댓값 g(t) ---- */
+  const polyAt = (c, x) => { let y = 0; for (let i = c.length - 1; i >= 0; i--) y = y * x + c[i]; return y; };
+  const polyDer = (c) => c.slice(1).map((v, i) => v * (i + 1));
+  const crit9 = (c) => qroots(3 * c[3], 2 * c[2], c[1]).sort((x, y) => x - y); // f'(x) = 0 (삼차함수)
+  function win9(c, a, t, abs) { // 창 안의 최댓값과 그 위치(왼쪽 끝 / 오른쪽 끝 / 안쪽 극점)
+    const F = (x) => (abs ? Math.abs(polyAt(c, x)) : polyAt(c, x));
+    const b = [F(t), F(t + a)];
+    const cp = crit9(c);
+    cp.forEach((x) => b.push(x > t && x < t + a ? F(x) : -INF));
+    let k = 0;
+    b.forEach((v, i) => { if (v > b[k] + 1e-12) k = i; });
+    return { v: b[k], k, x: k === 0 ? t : k === 1 ? t + a : cp[k - 2] };
+  }
+  // g의 꺾이는 점(좌·우 미분계수가 다른 점): 최댓값을 주는 곳이 바뀌는 순간을 찾아 이분법으로 정밀화
+  function kinks9(c, a, abs, t0, t1, h = 0.002) {
+    const G = (t) => win9(c, a, t, abs).v;
+    const out = [];
+    let prev = win9(c, a, t0, abs).k, tp = t0;
+    for (let t = t0 + h; t <= t1; t += h) {
+      const w = win9(c, a, t, abs);
+      if (w.k !== prev) {
+        let lo = tp, hi = t;
+        for (let i = 0; i < 50; i++) { const mid = (lo + hi) / 2; if (win9(c, a, mid, abs).k === prev) lo = mid; else hi = mid; }
+        const r = (lo + hi) / 2, e = 1e-6;
+        const sL = (G(r) - G(r - e)) / e, sR = (G(r + e) - G(r)) / e;
+        if (Math.abs(sR - sL) > 1e-3 && !out.some((o) => Math.abs(o.t - r) < 1e-4)) out.push({ t: r, sL, sR });
+      }
+      prev = w.k; tp = t;
+    }
+    return out;
+  }
+  /*MATH-END*/
+
+  /* ---------- 확장 장면 공통 부품 ---------- */
+  const NARROWQ = () => !!(window.matchMedia && window.matchMedia('(max-width: 859px)').matches); // apl.css 모바일 기준과 같은 값
+  const tabOf = (lab) => (lab && lab.tab) || 'explore';
+  function varier(gen) { let cur = gen(null); return { cur: () => cur, next: () => (cur = gen(cur)) }; }
+  const pickOf = (pool, prev) => { const c = pool.filter((x) => x !== prev); return c[Math.floor(Math.random() * c.length)]; };
+  const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-c1-new>새 문제</button></div>`;
+  document.addEventListener('click', (ev) => {
+    const hit = ev.target && ev.target.closest && ev.target.closest('[data-c1-new]');
+    if (!hit) return;
+    const lab = window.lab, sc = lab && lab.scene;
+    if (!sc || !sc.vary) return;
+    sc.vary.next();
+    if (sc.vary.onNext) sc.vary.onNext(lab.s);
+    lab.s.revealed = false;
+    lab.setStep(1);
+    try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+    lab.invalidate(true);
+  });
+  const sameBox = (a, b) => a && b && a.x[0] === b.x[0] && a.x[1] === b.x[1] && a.y[0] === b.y[0] && a.y[1] === b.y[1];
+  function ensureFocus(b, box) { // 레이아웃(옆/아래)이나 탭이 바뀌면 그림 전체가 들어오도록 맞춤 범위를 다시 정합니다
+    const bx = { x: [+box.x[0].toFixed(3), +box.x[1].toFixed(3)], y: [+box.y[0].toFixed(3), +box.y[1].toFixed(3)] };
+    if (!sameBox(b.focus, bx)) b.setFocus(bx, true);
+  }
+  // 그래프 상자(frame): 정의역 안의 좌표(x, y)를 세계 좌표로 옮겨, 한 무대에 그래프를 둘 이상 나란히(또는 위아래로) 둡니다. sx·sy는 가로·세로 배율(기본 1:1).
+  function mkFrame(dom, o) {
+    const F = Object.assign({ x0: dom.x[0], x1: dom.x[1], y0: dom.y[0], y1: dom.y[1], sx: 1, sy: 1, ox: 0, oy: 0, tx: 1, ty: 1 }, o || {});
+    F.w = (F.x1 - F.x0) * F.sx;
+    F.h = (F.y1 - F.y0) * F.sy;
+    F.P = (x, y) => [F.ox + (x - F.x0) * F.sx, F.oy + (y - F.y0) * F.sy];
+    F.Q = (w) => ({ x: (w.x - F.ox) / F.sx + F.x0, y: (w.y - F.oy) / F.sy + F.y0 });
+    return F;
+  }
+  function arrange(F1, F2, side) { // 두 상자의 세계 좌표 배치와 무대 맞춤 범위(라벨 여백 포함)
+    let W, H;
+    if (!F2) { F1.ox = 0; F1.oy = 0; W = F1.w; H = F1.h; }
+    else if (side) { F1.ox = 0; F1.oy = 0; F2.ox = F1.w + 2.1; F2.oy = 0; W = F1.w + 2.1 + F2.w; H = Math.max(F1.h, F2.h); }
+    else { W = Math.max(F1.w, F2.w); F2.ox = (W - F2.w) / 2; F2.oy = 0; F1.ox = (W - F1.w) / 2; F1.oy = F2.h + 1.4; H = F2.h + 1.4 + F1.h; }
+    return { x: [-1.6, W + 0.7], y: [-1.4, H + (F2 ? 0.8 : 0.6)] };
+  }
+  function clipTo(b, F, fn) {
+    const c = b.ctx, A = b.toS({ x: F.ox, y: F.oy + F.h }), B = b.toS({ x: F.ox + F.w, y: F.oy });
+    c.save();
+    c.beginPath();
+    c.rect(Math.min(A.x, B.x), Math.min(A.y, B.y), Math.abs(B.x - A.x), Math.abs(B.y - A.y));
+    c.clip();
+    fn();
+    c.restore();
+  }
+  const fseg = (b, F, p, q, o) => b.seg(F.P(p[0], p[1]), F.P(q[0], q[1]), o);
+  const fdot = (b, F, x, y, o) => b.point(F.P(x, y), o);
+  const ftext = (b, F, x, y, str, o) => b.text(F.P(x, y), str, o);
+  function fplot(b, F, fn, o) {
+    const lo = Math.max(o.from == null ? -INF : o.from, F.x0), hi = Math.min(o.to == null ? INF : o.to, F.x1);
+    if (!(hi > lo)) return;
+    b.plot((X) => { const y = fn((X - F.ox) / F.sx + F.x0); return Number.isFinite(y) ? F.oy + (y - F.y0) * F.sy : y; },
+      { ...o, from: F.ox + (lo - F.x0) * F.sx, to: F.ox + (hi - F.x0) * F.sx });
+  }
+  function drawFrame(b, F, s, o) { // 배경 상자 · 격자 · 축 · 눈금 · 축 이름 · 제목
+    o = o || {};
+    const A = F.P(F.x0, F.y0), B = F.P(F.x1, F.y1);
+    b.poly([A, [B[0], A[1]], B, [A[0], B[1]]], { fill: 'halo', fillAlpha: 0.3, color: 'ink', alpha: 0.3, width: 1.2 });
+    const ax = o.ax != null ? o.ax : Math.min(Math.max(0, F.x0), F.x1);
+    const ay = o.ay != null ? o.ay : Math.min(Math.max(0, F.y0), F.y1);
+    const xs = [], ys = [];
+    for (let x = Math.ceil(F.x0 / F.tx - 1e-9) * F.tx; x <= F.x1 + 1e-9; x += F.tx) xs.push(+x.toFixed(6));
+    for (let y = Math.ceil(F.y0 / F.ty - 1e-9) * F.ty; y <= F.y1 + 1e-9; y += F.ty) ys.push(+y.toFixed(6));
+    clipTo(b, F, () => {
+      if (s.grid) {
+        xs.forEach((x) => fseg(b, F, [x, F.y0], [x, F.y1], { color: 'ink', alpha: 0.08, width: 1 }));
+        ys.forEach((y) => fseg(b, F, [F.x0, y], [F.x1, y], { color: 'ink', alpha: 0.08, width: 1 }));
+      }
+      fseg(b, F, [F.x0, ay], [F.x1, ay], { color: 'ink', alpha: 0.7, width: 1.5 });
+      fseg(b, F, [ax, F.y0], [ax, F.y1], { color: 'ink', alpha: 0.7, width: 1.5 });
+    });
+    xs.forEach((x) => { if (Math.abs(x - ax) > 1e-9) { const hot = o.hot && o.hot(x); ftext(b, F, x, ay, nf(x), { dy: 13, size: 12, color: hot ? 'red' : 'muted', weight: hot ? 900 : 700 }); } });
+    ys.forEach((y) => { if (Math.abs(y - ay) > 1e-9) ftext(b, F, ax, y, nf(y), { dx: -7, size: 12, color: 'muted', align: 'right', baseline: 'middle', weight: 700 }); });
+    if (o.xn !== false) ftext(b, F, F.x1, ay, o.xn || 'x', { dx: 9, dy: 0, size: 13, color: 'muted', align: 'left', baseline: 'middle', weight: 800 });
+    if (o.yn !== false) ftext(b, F, ax, F.y1, o.yn || 'y', ax <= F.x0 + 1e-9 ? { dx: -8, dy: -8, size: 13, color: 'muted', align: 'right', weight: 800 } : { dx: 0, dy: -10, size: 13, color: 'muted', align: 'center', weight: 800 });
+    if (o.origin) ftext(b, F, 0, 0, 'O', { dx: -8, dy: -9, size: 12, color: 'muted', align: 'right', weight: 700 });
+    if (o.title) ftext(b, F, F.x0, F.y1, o.title, { dy: -10, size: 12.5, color: o.tc || 'ink', align: 'left', weight: 800 });
+  }
+  const palStep = (n) => (n >= 3 ? 'green' : n === 2 ? 'amber' : 'sky'); // 교점 개수별 색
+
+  /* ======================================================================
+     장면 6 · 직선을 돌리거나 밀며 센 교점의 개수 g와 그 불연속 (C02)
+     ====================================================================== */
+  const T6 = { tangent: '접하는 순간', end: '끝점을 지나는 순간', parallel: '기울기가 같아지는 순간' };
+  function cfg6(kind, args) {
+    const pieces = kind === 'hor' ? horPieces(args) : rotPieces(args);
+    const evs = events6(pieces, kind);
+    let dom, prange;
+    if (kind === 'hor') {
+      const [h, A, c, q, B] = args;
+      dom = { x: [Math.min(h, c, q) - 2.4, Math.max(h, c, q) + 2.4], y: [-B - 0.8, A + 0.8] };
+      prange = dom.y;
+    } else {
+      dom = { x: [-2, 5], y: [-2.2, 5.6] };
+      prange = [Math.floor(evs[0].p - 1.5), Math.ceil(evs[evs.length - 1].p + 1.5)];
+    }
+    const gmax = Math.max(...evs.flatMap((e) => [e.L, e.M, e.R]));
+    return { kind, args, pieces, evs, dom, prange, gmax, v: kind === 'hor' ? 't' : 'm' };
+  }
+  const H6 = [[1, 3, 2, 3, 2], [0, 4, 1, 2, 1], [1, 2, 2, 3, 3], [0, 5, 1, 3, 2], [1, 5, 2, 4, 3], [-1, 3, 0, 1, 1]];
+  const R6 = [[1, 0, 2], [2, 0, 1], [1, 2, 1], [0, 2, 1], [-1, 0, 2]];
+  const EXP6 = { hor: cfg6('hor', H6[0]), rot: cfg6('rot', R6[0]) };
+    EXP6.rot.prange = [-1.5, 3.5];
+  const curveTex6 = (C) => {
+    if (C.kind === 'hor') {
+      const [h, A, c, q, B] = C.args;
+      return `f(x)=\\begin{cases} ${polyTex(C.pieces[0].c)} & (x \\le ${c}) \\\\ ${polyTex(C.pieces[1].c)} & (x > ${c}) \\end{cases}`;
+    }
+    const [a, b, c] = C.args;
+    return `f(x)=${polyTex([b, a])} + |${linTex(c)}|`;
+  };
+  const pName6 = (C) => (C.kind === 'hor' ? 't' : 'm');
+  const lineTex6 = (C) => (C.kind === 'hor' ? 'y=t' : 'y=mx');
+  const gAt6 = (C, p) => g6(C.pieces, C.kind, p);
+  const evAt6 = (C, p) => C.evs.find((e) => Math.abs(e.p - p) < 1e-6) || null;
+  // 변형 문제: 곡선·직선의 조합과 묻는 값을 바꿉니다(처음에는 기출 유형 그대로 = 첫 항목)
+  const var6 = varier((prev) => {
+    const pool = [...H6.map((a) => ({ kind: 'hor', a })), ...R6.map((a) => ({ kind: 'rot', a }))];
+    const it = prev ? pickOf(pool, prev.item) : pool[0];
+    const C = cfg6(it.kind, it.a);
+    const n = C.evs.length;
+    const ask = prev ? (Math.random() < 0.5 ? 'prod' : 'sum') : 'prod';
+    const sum = C.evs.reduce((p, e) => p + e.p, 0);
+    let k = 0;
+    for (const cand of [0, 1, -1, 2, 3, -2, 4]) { const v = C.evs.reduce((p, e) => p * (cand - e.p), 1); if (v !== 0 && Math.abs(v) <= 80) { k = cand; break; } }
+    const prodV = C.evs.reduce((p, e) => p * (k - e.p), 1);
+    const ans = ask === 'prod' ? { tex: String(Math.round(prodV)), val: Math.round(prodV) } : { tex: String(Math.round(sum)), val: Math.round(sum) };
+    const start = C.kind === 'hor' ? +((C.prange[0] + C.prange[1]) / 2 + 0.3).toFixed(1) : +((C.prange[0] + C.prange[1]) / 2 + 0.3).toFixed(1);
+    return { item: it, C, n, ask, k, ans, start, sum };
+  });
+  const degName = (n) => ['', '일차', '이차', '삼차', '사차'][n] || `${n}차`;
+  const text6 = (v) => {
+    const C = v.C, pv = C.v;
+    const head = C.kind === 'hor'
+      ? `함수 ${tex(curveTex6(C))} 의 그래프와 직선 ${tex('y=t')} 가 만나는 점의 개수를 ${tex('g(t)')} 라 하자.`
+      : `함수 ${tex(curveTex6(C))} 의 그래프와 원점을 지나는 직선 ${tex('y=mx')} 가 만나는 점의 개수를 ${tex('g(m)')} 이라 하자.`;
+    const ask = v.ask === 'prod'
+      ? ` 함수 ${tex(`g(${pv})h(${pv})`)} 가 실수 전체의 집합에서 연속이 되도록 하는 최고차항의 계수가 1인 ${degName(v.n)}함수 ${tex(`h(${pv})`)} 에 대하여 ${tex(`h(${v.k})`)} 의 값을 구하시오.`
+      : ` 함수 ${tex(`g(${pv})`)} 가 불연속이 되는 모든 ${tex(pv)} 의 값의 합을 구하시오.`;
+    return head + ask;
+  };
+  // 구간별 g 값 표(풀이용): t<e1 → n, t=e1 → n, …
+  function table6(C) {
+    const pv = C.v, rows = [];
+    const E = C.evs;
+    rows.push(`${tex(`${pv}<${nfa(E[0].p)}`)} ⇒ ${E[0].L}개`);
+    E.forEach((e, i) => {
+      rows.push(`${tex(`${pv}=${nfa(e.p)}`)} ⇒ ${e.M}개 <span style="opacity:.75">(${T6[e.types[0]]})</span>`);
+      const nxt = E[i + 1];
+      rows.push(nxt ? `${tex(`${nfa(e.p)}<${pv}<${nfa(nxt.p)}`)} ⇒ ${e.R}개` : `${tex(`${pv}>${nfa(e.p)}`)} ⇒ ${e.R}개`);
+    });
+    return rows.join('<br/>');
+  }
+  const evList6 = (C) => C.evs.map((e) => nfa(e.p)).join(', ');
+  const steps6 = () => {
+    const v = var6.cur(), C = v.C, pv = C.v;
+    if (C.kind === 'hor') {
+      const [h, A, c, q, B] = C.args;
+      return [
+        `곡선의 꼭짓점과 끊어진 곳을 찾습니다: 위 조각의 꼭짓점 $(${h}, ${A})$, 끝점 $(${c}, ${pieceAt(C.pieces[0], c)})$(속이 찬 점), 아래 조각의 끝점 $(${c}, ${pieceAt(C.pieces[1], c)})$(속이 빈 점), 꼭짓점 $(${q}, ${-B})$.`,
+        `수평선 $y=t$가 이 높이 ${C.evs.map((e) => '$' + nfa(e.p) + '$').join(', ')} 를 지날 때(접하거나 끝점을 지날 때) 교점의 개수가 달라질 수 있습니다. 각 높이 사이에서 개수를 셉니다.`,
+        `$g(t)$의 그래프를 그리면 좌극한·우극한·함숫값이 모두 같지 않은 곳, 즉 불연속점은 $t=${C.evs.map((e) => nfa(e.p)).join(', ')}$입니다. ${v.ask === 'prod' ? `각 불연속점에서 $h=0$이어야 하므로 $h(t)=${C.evs.map((e) => '(' + linTex(e.p, 't') + ')').join('')}$ 입니다.` : `합은 $${C.evs.map((e) => nfa(e.p)).join(' + ')}$ 입니다.`}`
+      ];
+    }
+    const [a, b, c] = C.args;
+    const s1 = a - 1, s2 = a + 1;
+    return [
+      `직선 $y=mx$는 원점을 지나고 기울기 $m$만 바뀝니다. 곡선의 꼭짓점 $(${c}, ${a * c + b})$와 두 직선 부분의 기울기 $${s1}$, $${s2}$를 읽습니다.`,
+      `직선이 곡선의 한 부분과 평행해지는 순간(기울기 ${nfa(s1)}, ${nfa(s2)})${C.evs.some((e) => e.types.includes('end')) ? '과 꼭짓점을 지나는 순간' : ''}에 교점의 개수가 달라질 수 있습니다. 후보 $m=${C.evs.map((e) => nfa(e.p)).join(', ')}$ 사이에서 개수를 셉니다.`,
+      `$g(m)$의 그래프를 그리면 불연속점은 $m=${C.evs.map((e) => nfa(e.p)).join(', ')}$입니다.${C.kind === 'rot' && !C.evs.some((e) => e.types.includes('end')) ? ` (꼭짓점을 지나는 $m=${nfa((a * c + b) / c)}$에서는 개수가 변하지 않아 연속입니다.)` : ''} ${v.ask === 'prod' ? `각 불연속점에서 $h=0$이어야 하므로 $h(m)=${C.evs.map((e) => '(' + linTex(e.p, 'm') + ')').join('')}$ 입니다.` : `합은 $${C.evs.map((e) => nfa(e.p)).join(' + ')}$ 입니다.`}`
+    ];
+  };
+  const solStd6 = () => {
+    const v = var6.cur(), C = v.C, pv = C.v;
+    const fin = v.ask === 'prod'
+      ? `⑤ 불연속점 ${tex(`${pv}=${C.evs.map((e) => nfa(e.p)).join(', ')}`)} 마다 ${tex(`g(${pv})h(${pv})`)} 가 연속이려면 ${tex(`h=0`)} 이어야 하므로 ${tex(`h(${pv})=${C.evs.map((e) => '(' + linTex(e.p, pv) + ')').join('')}`)} 입니다.<br/>⑥ ${tex(`h(${v.k})=${C.evs.map((e) => '(' + nfa(v.k - e.p) + ')').join('')}=${v.ans.tex}`)}`
+      : `⑤ 불연속점은 ${tex(`${pv}=${C.evs.map((e) => nfa(e.p)).join(', ')}`)} 이므로 합은 ${tex(`${C.evs.map((e) => nfa(e.p)).join(' + ')}=${v.ans.tex}`)}`;
+    return {
+      steps: `① 곡선의 조각마다 직선과의 방정식을 세워 교점을 구합니다(꼭짓점·끝점·기울기를 먼저 읽기).<br/>
+② 교점의 개수가 바뀔 수 있는 ${C.kind === 'hor' ? '높이(접하는 높이와 끝점의 높이)' : '기울기(평행한 기울기와 꼭짓점을 지나는 기울기)'}를 모두 찾습니다: ${tex(`${pv}=${C.evs.map((e) => nfa(e.p)).join(', ')}`)}${C.kind === 'rot' && !C.evs.some((e) => e.types.includes('end')) ? '(꼭짓점을 지나도 개수가 같은 값은 제외)' : ''}.<br/>
+③ 각 순간과 그 사이의 개수를 셉니다.<br/>${table6(C)}<br/>
+④ 개수가 바뀌는 순간마다 좌극한·함숫값·우극한을 비교하면 모두 불연속입니다.<br/>${fin}`,
+      warning: '불연속점에서는 g(t) 값이 좌극한·우극한 어느 쪽과도 같지 않을 수 있습니다. 접하는 점이나 끝점이 교점으로 세어지는지(속이 찬 점인지 빈 점인지) 꼭 확인하세요.'
+    };
+  };
+  const solQuick6 = () => {
+    const v = var6.cur(), C = v.C, pv = C.v;
+    return {
+      steps: `교점의 개수는 ${C.kind === 'hor' ? '직선이 곡선에 접하거나 곡선의 끝점을 지나는 순간' : '직선이 곡선의 한 부분과 평행해지거나 꼭짓점을 지나는 순간'}에만 바뀝니다. 그 값 ${tex(`${pv}=${C.evs.map((e) => nfa(e.p)).join(', ')}`)} 만 후보로 놓고 좌·우의 개수를 비교하면 됩니다. ${v.ask === 'prod' ? `불연속점마다 ${tex('h=0')} 이므로 ${tex(`h(${v.k})=${C.evs.map((e) => '(' + nfa(v.k - e.p) + ')').join('')}=${v.ans.tex}`)}.` : `합은 ${tex(`${C.evs.map((e) => nfa(e.p)).join(' + ')}=${v.ans.tex}`)}.`}`,
+      highlight: 'g(t)h(t)가 연속이 되려면 g가 불연속인 모든 점에서 h의 값이 0이어야 합니다 (최고차항이 1인 n차함수면 h는 (t−α₁)…(t−αₙ)로 정해집니다).'
+    };
+  };
+  // 오른쪽(또는 아래) g 그래프의 정답 계단: 구간별 수평선과 불연속점의 속이 찬/빈 점
+  function stairs6(b, F, C, s) {
+    const xs = [F.x0, ...C.evs.map((e) => e.p), F.x1];
+    for (let i = 0; i < xs.length - 1; i++) {
+      const val = gAt6(C, (xs[i] + xs[i + 1]) / 2);
+      fseg(b, F, [Math.max(xs[i], F.x0), val], [Math.min(xs[i + 1], F.x1), val], { color: 'sky', width: 3.2, glow: true });
+    }
+    C.evs.forEach((e) => {
+      if (e.L !== e.M) fdot(b, F, e.p, e.L, { hollow: true, color: 'sky', r: 5 });
+      if (e.R !== e.M && e.R !== e.L) fdot(b, F, e.p, e.R, { hollow: true, color: 'sky', r: 5 });
+      fdot(b, F, e.p, e.M, { color: 'red', r: 5.5 });
+    });
+  }
+  function exitPt(F, m) { // 원점을 지나는 직선 y = m x 가 상자를 나가는 점(라벨 위치)
+    let x = F.x1, y = m * x;
+    if (y > F.y1) { y = F.y1; x = m !== 0 ? y / m : F.x1; }
+    if (y < F.y0) { y = F.y0; x = m !== 0 ? y / m : F.x1; }
+    return [x, y];
+  }
+  function draw6(b, s0, v, lab) {
+    quiet(b);
+    const tab = tabOf(lab), prob = tab === 'problem', explore = tab === 'explore' || !!b.thumb;
+    const s = prob ? { ...s0, step: 0 } : s0;
+    const C = explore ? EXP6[s.k6] : var6.cur().C;
+    const key = explore ? (C.kind === 'hor' ? 'th' : 'sl') : 'pv6';
+    const p = clamp(s[key], C.prange[0], C.prange[1]);
+    const setP = (val) => {
+      let q = clamp(val, C.prange[0], C.prange[1]);
+      for (const e of C.evs) if (Math.abs(q - e.p) < 0.09) q = e.p; // 불연속 순간 근처에서는 자석처럼 붙습니다
+      s0[key] = +q.toFixed(3);
+    };
+    const gp = gAt6(C, p), ev = evAt6(C, p), pn = pName6(C);
+    // 상자 배치
+    const F1 = mkFrame(C.dom, { tx: 1, ty: 1 });
+    const side = !NARROWQ();
+    const F2 = prob ? null : mkFrame({ x: C.prange, y: [0, C.gmax + 0.5] }, { tx: 1, ty: 1, sx: side ? 0.8 : 1 });
+    ensureFocus(b, arrange(F1, F2, side));
+    const showAll = b.thumb || (explore ? s.show6 === 'all' : s.step >= 3);
+    const st = explore ? 3 : s.step; // 탐구는 모든 보조 표시, 정리(풀이)는 단계에 따라
+    drawFrame(b, F1, s, { origin: C.kind === 'rot', xn: 'x', yn: 'y' });
+    // ---- 왼쪽: 곡선 · 직선 · 교점 ----
+    clipTo(b, F1, () => {
+      // 풀이 2단계 이상: 교점의 개수가 바뀌는 순간의 직선(점선)
+      if (!explore && st >= 2) C.evs.forEach((e) => {
+        if (C.kind === 'hor') fseg(b, F1, [F1.x0, e.p], [F1.x1, e.p], { color: 'rose', alpha: 0.55, width: 1.5, dash: true });
+        else fseg(b, F1, [F1.x0, F1.x0 * e.p], [F1.x1, F1.x1 * e.p], { color: 'rose', alpha: 0.55, width: 1.5, dash: true });
+      });
+      C.pieces.forEach((pc) => fplot(b, F1, (x) => pieceAt(pc, x), { from: pc.lo, to: pc.hi, color: 'ink', width: 3.2, glow: true }));
+      if (C.kind === 'hor') fseg(b, F1, [F1.x0, p], [F1.x1, p], { color: 'amber', width: 2.6, glow: true, ref: 'line' });
+      else fseg(b, F1, [F1.x0, p * F1.x0], [F1.x1, p * F1.x1], { color: 'amber', width: 2.6, glow: true, ref: 'line' });
+    });
+    // 끊어진 곳의 끝점(속이 찬/빈 점)
+    C.pieces.forEach((pc, i) => [pc.lo, pc.hi].forEach((x, j) => {
+      if (!Number.isFinite(x) || x < F1.x0 || x > F1.x1) return;
+      const other = C.pieces[1 - i], yv = pieceAt(pc, x);
+      if (Math.abs(pieceAt(other, x) - yv) < 1e-9) return; // 이어진 곳(꼭짓점)에는 표시하지 않습니다
+      fdot(b, F1, x, yv, { hollow: !(j === 0 ? pc.loC : pc.hiC), color: 'ink', r: 5.5 });
+    }));
+    if (!explore && st >= 1) { // 풀이 1단계: 읽어야 할 점(꼭짓점·끝점)을 이름과 함께 표시
+      if (C.kind === 'hor') {
+        const [h, A, c, q, B] = C.args;
+        fdot(b, F1, h, A, { color: 'violet', r: 5 });
+        ftext(b, F1, h, A, `(${h}, ${A})`, { dx: 9, dy: -11, size: 12, color: 'violet', align: 'left' });
+        fdot(b, F1, q, -B, { color: 'violet', r: 5 });
+        ftext(b, F1, q, -B, `(${q}, ${-B})`, { dx: 0, dy: 16, size: 12, color: 'violet' });
+        ftext(b, F1, c, pieceAt(C.pieces[0], c), `(${c}, ${pieceAt(C.pieces[0], c)})`, { dx: 10, dy: -10, size: 12, color: 'ink', align: 'left' });
+        ftext(b, F1, c, pieceAt(C.pieces[1], c), `(${c}, ${pieceAt(C.pieces[1], c)})`, { dx: -10, dy: 15, size: 12, color: 'ink', align: 'right' });
+      } else {
+        const [a, bb, c] = C.args;
+        fdot(b, F1, c, a * c + bb, { color: 'violet', r: 5 });
+        ftext(b, F1, c, a * c + bb, `(${c}, ${a * c + bb})`, { dx: 9, dy: 14, size: 12, color: 'violet', align: 'left' });
+      }
+    }
+    if (!explore && st >= 2) C.evs.forEach((e) => { // 직선이 곡선과 접하거나 끝점·꼭짓점을 지나는 점
+      e.pts.forEach((pt) => fdot(b, F1, pt[0], pt[1], { color: 'red', r: 4.5 }));
+      if (C.kind === 'rot') { const lp = exitPt(F1, e.p); ftext(b, F1, lp[0], lp[1], `${pn}=${nf(e.p)}`, { dx: -4, dy: -9, size: 12, color: 'rose', align: 'right' }); }
+    });
+    // 지금 직선과 곡선의 교점
+    cross6(C.pieces, C.kind, p).forEach((x) => fdot(b, F1, x, C.kind === 'hor' ? p : p * x, { color: 'rose', r: 5, ref: 'line' }));
+    // 끌 수 있는 직선 손잡이
+    if (C.kind === 'hor') {
+      b.handle('p6', F1.P(F1.x1 - 0.45, p), { color: 'amber', r: 7.5, ref: 'line', label: `y=${nf(p, 1)}`, dx: -12, dy: -14, align: 'right', priority: 2,
+        drag: (w) => setP(F1.Q(w).y) });
+    } else {
+      const th = Math.atan(p), r = Math.min(3.4, F1.x1 - 0.7), hx = Math.min(r * Math.cos(th), F1.x1 - 0.5), hy = hx * p;
+      b.handle('p6', F1.P(hx, hy), { color: 'amber', r: 7.5, ref: 'line', label: `m=${nf(p, 1)}`, dx: 12, dy: 14, align: 'left', priority: 2,
+        drag: (w) => { const q = F1.Q(w); const a = Math.atan2(q.y, Math.max(q.x, 1e-6)); setP(Math.tan(Math.max(-1.5, Math.min(1.5, a)))); } });
+    }
+    // ---- 오른쪽(아래): g 그래프 ----
+    if (F2) {
+      drawFrame(b, F2, s, { ax: F2.x0, ay: F2.y0, xn: pn, yn: 'g', title: `교점의 개수 g(${pn})의 그래프`, tc: 'sky', hot: (x) => showAll && !(!explore && st < 3) && C.evs.some((e) => Math.abs(e.p - x) < 1e-6) });
+      const emptyHint = !explore && st < 3;
+      if (showAll && !emptyHint) stairs6(b, F2, C, s);
+      else if (explore) { // 직접 그려 보기: 직선을 움직인 만큼 점이 쌓입니다
+        if (!b.thumb) s0.tr6 = s0.tr6 || {};
+        if (!b.thumb) s0.tr6[Math.round(p * 20)] = gp;
+        Object.keys(s.tr6 || {}).forEach((k) => fdot(b, F2, +k / 20, s.tr6[k], { color: palStep(s.tr6[k]), r: 2.6, glow: false }));
+      }
+      if (!explore && st >= 2 && st < 3) C.evs.forEach((e) => { // 2단계: 나눠야 할 순간을 g 가로축에 표시
+        fseg(b, F2, [e.p, F2.y0], [e.p, F2.y1], { color: 'rose', alpha: 0.5, width: 1.3, dash: true });
+      });
+      fseg(b, F2, [p, F2.y0], [p, gp], { color: 'amber', alpha: 0.6, width: 1.4, dash: true });
+      b.handle('t6', F2.P(p, gp), { color: 'amber', r: 7, ref: 'line', label: `g=${gp}`, dx: ev ? (p > (C.prange[0] + C.prange[1]) / 2 ? -12 : 12) : 0, dy: ev ? -12 : -16, align: ev ? (p > (C.prange[0] + C.prange[1]) / 2 ? 'right' : 'left') : 'center', priority: 2,
+        drag: (w) => setP(F2.Q(w).x) });
+    }
+  }
+
+  const SCENE6 = {
+    id: 'count-move', title: '[킬러] 직선을 밀고 돌리며 센 교점 개수 g의 불연속', short: '움직이는 직선 g',
+    question: '직선을 위아래로 밀거나 원점 둘레로 돌리면 교점의 개수는 언제 바뀌고, 그때 g의 그래프는 어떻게 끊길까?',
+    guide: (s) => (s.k6 === 'hor'
+      ? '<b>노란 점</b>을 끌어 수평선 $y=t$를 위아래로 움직여 보세요. 교점의 개수가 <b>g(t)</b> 그래프에 점으로 쌓입니다. 곡선의 <b>꼭짓점(접함)</b>이나 <b>끊어진 곳의 끝점</b>을 지나는 순간 개수가 뛰는지 찾아 보세요. 다 그려 보면 「정답 그래프 보기」로 확인합니다.'
+      : '<b>노란 점</b>을 끌어 원점을 지나는 직선 $y=mx$를 돌려 보세요. 교점의 개수가 <b>g(m)</b> 그래프에 점으로 쌓입니다. 곡선의 한 부분과 <b>평행해지는 순간</b>이나 <b>꼭짓점을 지나는 순간</b> 개수가 어떻게 달라지는지 찾아 보세요.'),
+    tabs: { compact: true },
+    controls: (s) => [s.k6 === 'hor' ? 'th' : 'sl'],
+    presets: () => [
+      { group: '곡선과 직선', label: '수평선 y=t를 밀기 (구간별 곡선)', color: 'amber', apply: (st) => { st.k6 = 'hor'; st.tr6 = {}; }, on: (st) => st.k6 === 'hor' },
+      { group: '곡선과 직선', label: '원점 둘레로 돌리기 (꺾인 곡선)', color: 'amber', apply: (st) => { st.k6 = 'rot'; st.tr6 = {}; }, on: (st) => st.k6 === 'rot' },
+      { group: 'g의 그래프', label: '점으로 직접 그려 보기', color: 'sky', apply: (st) => { st.show6 = 'trace'; st.tr6 = {}; }, on: (st) => st.show6 === 'trace' },
+      { group: 'g의 그래프', label: '정답 그래프 보기', color: 'green', apply: (st) => { st.show6 = 'all'; }, on: (st) => st.show6 === 'all' }
+    ],
+    actions: [playAction('자동으로 직선 움직이기')],
+    steps: steps6,
+    reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text6(var6.cur())}</div>`,
+    problem: { tag: '24학년도 수능 14번 · 22학년도 3월 학평(서울) 20번 유형', time: '목표 시간: 40초', text: () => probHTML(text6(var6.cur())), answer: () => tex(var6.cur().ans.tex), snap: () => ({ pv6: var6.cur().start }) },
+    solution: { standardTitle: '교과서식 풀이 · 구간별로 직접 세기', standardTag: '정석 · 3분', quickTitle: '10초 컷 · 바뀌는 순간만 보기', quickTag: '10초 컷', standard: solStd6, quick: solQuick6 },
+    enter: (s) => { s.k6 = 'hor'; s.th = 0.5; s.sl = 0.5; s.show6 = 'trace'; s.tr6 = {}; s.pv6 = var6.cur().start; s.animDir = 1; },
+    vary: Object.assign(var6, { onNext: (s) => { s.pv6 = var6.cur().start; } }),
+    focus: () => arrange(mkFrame(EXP6.hor.dom), mkFrame({ x: EXP6.hor.prange, y: [0, EXP6.hor.gmax + 0.5] }, { sx: NARROWQ() ? 1 : 0.8 }), !NARROWQ()),
+    tick: (s, dt) => { if (!s.playing) return false; const C = EXP6[s.k6]; bounce(s, s.k6 === 'hor' ? 'th' : 'sl', 1.5, C.prange[0], C.prange[1], dt); return true; },
+    view: (s, lab) => {
+      const tab = tabOf(lab), explore = tab === 'explore';
+      const C = explore ? EXP6[s.k6] : var6.cur().C;
+      const key = explore ? (C.kind === 'hor' ? 'th' : 'sl') : 'pv6';
+      const p = clamp(s[key], C.prange[0], C.prange[1]);
+      const gp = gAt6(C, p), ev = evAt6(C, p), pn = pName6(C);
+      if (tab === 'problem') return {};
+      const showList = explore ? s.show6 === 'all' : s.step >= 3;
+      return {
+        status: !explore && s.step < 2 ? undefined : ev ? { tone: 'key', text: `g가 뛰는 순간 (${T6[ev.types[0]]}) · 좌 ${ev.L} · 값 ${ev.M} · 우 ${ev.R}` } : { tone: 'info', text: `교점 ${gp}개 · g가 이어지는 구간` },
+        readouts: [
+          { label: C.kind === 'hor' ? '수평선의 높이 t' : '직선의 기울기 m', value: `${pn} = ${fmt(p, 1)}`, color: 'amber', ref: 'line' },
+          { label: `교점의 개수 g(${pn})`, value: `${gp}개`, color: 'green', ref: 'line' },
+          { label: `g가 불연속인 ${pn}의 값`, value: showList ? `${evList6(C).replace(/-/g, '−')} (${C.evs.length}개)` : '그래프를 그린 뒤 확인', color: 'red' },
+          { label: '지금 위치', value: ev ? `${pn}=${nf(ev.p)}에서 좌극한 ${ev.L}, 함숫값 ${ev.M}, 우극한 ${ev.R}` : '개수가 바뀌지 않는 구간', color: ev ? 'rose' : 'muted', wide: true }
+        ],
+        notes: C.kind === 'rot' && !C.evs.some((e) => e.types.includes('end'))
+          ? '꼭짓점을 지나는 순간에도 교점의 개수가 그대로이면 g는 그곳에서 연속입니다. 모든 불연속점에서 g·h가 연속이려면 h는 그 점에서 0이어야 합니다.'
+          : '개수가 바뀌는 순간(접함 · 끝점 · 평행)이 모두 불연속점이 되는 것은 아닙니다. 좌극한·함숫값·우극한이 모두 같은지 확인하세요. g·h가 연속이면 불연속점마다 h=0 입니다.'
+      };
+    },
+    draw: draw6
+  };
+
+  /* ======================================================================
+     장면 7 · 분모·분자의 영점 배치와 극한의 존재 (C05)
+     ====================================================================== */
+  const D7 = { two: [1, 3], dbl: [2, 2] }; // 탐구의 분모 영점(중복도만큼 반복)
+  const snap7 = (k, v) => { for (const z of D7[k]) if (Math.abs(v - z) < 0.13) return z; return v; };
+  const T7B = [[1, 2, 0], [2, 1, 0], [1, -2, 2], [-1, 3, 1], [2, 3, 1]]; // [p, L, k] : 분모 (x-p)^2
+  const T7A = [[2, 3, 0], [1, -2, 4], [3, 2, 0], [-1, 4, 1], [2, -1, -1]]; // [p, L, k] : 분모 x-p
+  const T7C = [[1, 3, 2, 0], [1, 3, -1, 4], [0, 2, 1, 3], [-1, 2, 3, 0], [2, 4, 1, 0]]; // [p, q, L, k] : 분모 (x-p)(x-q)
+  const var7 = varier((prev) => {
+    const pool = [...T7B.map((a) => ({ type: 'B', a })), ...T7A.map((a) => ({ type: 'A', a })), ...T7C.map((a) => ({ type: 'C', a }))];
+    const it = prev ? pickOf(pool, prev.item) : pool[0];
+    let p, q, L, k, r, froots, droots;
+    if (it.type === 'A') { [p, L, k] = it.a; r = p - L; froots = [p, r]; droots = [p]; }
+    else if (it.type === 'B') { [p, L, k] = it.a; r = p - L; froots = [p, p, r]; droots = [p, p]; }
+    else { [p, q, L, k] = it.a; r = p - L; froots = [p, q, r]; droots = [p, q]; }
+    const ans = Math.round(prodAt(froots, k));
+    const zs = [...new Set(droots)];
+    const xsAll = [...froots, ...droots];
+    return { item: it, type: it.type, p, q, L, k, r, froots, droots, zs, ans: { tex: String(ans), val: ans }, xlo: Math.min(...xsAll), xhi: Math.max(...xsAll) };
+  });
+  const lim7Tex = (z) => `\\lim_{x\\to ${z}}`;
+  const dTex7 = (v) => (v.type === 'A' ? linTex(v.p) : v.type === 'B' ? `(${linTex(v.p)})^{2}` : `(${linTex(v.p)})(${linTex(v.q)})`);
+  const text7 = (v) => {
+    if (v.type === 'A') return `최고차항의 계수가 1인 이차함수 ${tex('f(x)')} 가 ${tex(`${lim7Tex(v.p)} \\dfrac{f(x)}{${dTex7(v)}}=${v.L}`)} 을 만족시킬 때, ${tex(`f(${v.k})`)} 의 값을 구하시오.`;
+    if (v.type === 'B') return `최고차항의 계수가 1인 삼차함수 ${tex('f(x)')} 가 ${tex(`${lim7Tex(v.p)} \\dfrac{f(x)}{${dTex7(v)}}=${v.L}`)} 을 만족시킬 때, ${tex(`f(${v.k})`)} 의 값을 구하시오.`;
+    return `최고차항의 계수가 1인 삼차함수 ${tex('f(x)')} 에 대하여 두 극한 ${tex(`${lim7Tex(v.p)} \\dfrac{f(x)}{${dTex7(v)}}`)}, ${tex(`${lim7Tex(v.q)} \\dfrac{f(x)}{${dTex7(v)}}`)} 가 모두 존재하고 ${tex(`${lim7Tex(v.p)} \\dfrac{f(x)}{${dTex7(v)}}=${v.L}`)} 일 때, ${tex(`f(${v.k})`)} 의 값을 구하시오.`;
+  };
+  const fTex7 = (v) => (v.type === 'A' ? `(${linTex(v.p)})(${linTex(v.r)})` : v.type === 'B' ? `(${linTex(v.p)})^{2}(${linTex(v.r)})` : `(${linTex(v.p)})(${linTex(v.q)})(${linTex(v.r)})`);
+  const fkTex7 = (v) => `f(${v.k})=${v.froots.map((z) => `(${nfa(v.k - z)})`).join('')}=${v.ans.tex}`;
+  const steps7 = () => {
+    const v = var7.cur();
+    if (v.type === 'A') return [
+      `$x\\to ${v.p}$일 때 분모 $${dTex7(v)}\\to 0$ 이고 극한값이 있으므로 분자도 $0$으로 가야 합니다: $f(${v.p})=0$.`,
+      `$f(x)=(${linTex(v.p)})(x-r)$로 쓰면 $\\dfrac{f(x)}{${dTex7(v)}}=x-r$ ($x\\ne ${v.p}$) 이므로 극한값은 $${v.p}-r=${v.L}$ 입니다. 그림의 구멍 $(${v.p}, ${v.L})$을 지나는 기울기 $1$인 직선입니다.`,
+      `$r=${v.r}$ 이므로 $f(x)=${fTex7(v)}$, $${fkTex7(v)}$.`
+    ];
+    if (v.type === 'B') return [
+      `분모 $(${linTex(v.p)})^2$이 $x=${v.p}$에서 이중으로 $0$이고 극한이 유한하므로, 분자 $f$도 $x=${v.p}$에서 이중근이어야 합니다(그래프가 $x$축에 접합니다).`,
+      `$f(x)=(${linTex(v.p)})^2(x-r)$이면 $\\dfrac{f(x)}{(${linTex(v.p)})^2}=x-r$ ($x\\ne ${v.p}$) 이므로 극한값 $${v.p}-r=${v.L}$. 그림의 구멍 $(${v.p}, ${v.L})$을 지나는 기울기 $1$인 직선입니다.`,
+      `$r=${v.r}$ 이므로 $f(x)=${fTex7(v)}$, $${fkTex7(v)}$.`
+    ];
+    return [
+      `두 극한이 모두 존재하려면 분모 $(${linTex(v.p)})(${linTex(v.q)})$가 $0$이 되는 $x=${v.p}$, $x=${v.q}$에서 분자 $f$도 $0$이어야 합니다: $f(${v.p})=f(${v.q})=0$.`,
+      `$f(x)=(${linTex(v.p)})(${linTex(v.q)})(x-r)$이면 $\\dfrac{f(x)}{${dTex7(v)}}=x-r$ ($x\\ne ${v.p}, ${v.q}$). $x\\to ${v.p}$의 극한 $${v.p}-r=${v.L}$. 구멍 두 개 $(${v.p}, ${v.L})$, $(${v.q}, ${v.q - v.r})$가 한 직선 위에 있습니다.`,
+      `$r=${v.r}$ 이므로 $f(x)=${fTex7(v)}$, $${fkTex7(v)}$.`
+    ];
+  };
+  const solStd7 = () => {
+    const v = var7.cur();
+    const a = v.type === 'A' ? `① ${tex(`x\\to ${v.p}`)} 에서 분모 ${tex(dTex7(v))} 가 ${tex('0')} 으로 가므로 극한이 존재하려면 ${tex(`f(${v.p})=0`)}. 최고차항이 1인 이차함수이므로 ${tex(`f(x)=(${linTex(v.p)})(x-r)`)}.`
+      : v.type === 'B' ? `① 분모가 이중근 ${tex(`(${linTex(v.p)})^2`)} 이므로 분자도 ${tex(`x=${v.p}`)} 에서 ${tex('0')} 이 두 번(이중근) 이상이어야 합니다. 최고차항이 1인 삼차함수이므로 ${tex(`f(x)=(${linTex(v.p)})^2(x-r)`)}.`
+        : `① 분모의 영점 ${tex(`x=${v.p}, ${v.q}`)} 에서 모두 극한이 존재하므로 ${tex(`f(${v.p})=f(${v.q})=0`)}. 최고차항이 1인 삼차함수이므로 ${tex(`f(x)=(${linTex(v.p)})(${linTex(v.q)})(x-r)`)}.`;
+    return {
+      steps: `${a}<br/>
+② ${tex(`\\dfrac{f(x)}{${dTex7(v)}}=x-r`)} (${tex(v.type === 'C' ? `x\\ne ${v.p}, ${v.q}` : `x\\ne ${v.p}`)}) 이므로 ${tex(`${lim7Tex(v.p)} \\dfrac{f(x)}{${dTex7(v)}}=${v.p}-r=${v.L}`)}, 따라서 ${tex(`r=${v.r}`)}.<br/>
+③ ${tex(`f(x)=${fTex7(v)}`)} 이므로 ${tex(fkTex7(v))}.`,
+      warning: '분모만 보고 “0이 되니 극한이 없다”고 하면 안 됩니다. 분자도 같은 점에서 0이면 약분되어 극한값이 생깁니다 (그림의 구멍).'
+    };
+  };
+  const solQuick7 = () => {
+    const v = var7.cur();
+    const t = v.type === 'A' ? `${tex(`f(${v.p})=0`)} 이고 극한값 ${tex(String(v.L))} 은 ${tex(`f'(${v.p})`)} 입니다. 그래서 ${tex(`f(x)=(${linTex(v.p)})(x-${nfa(v.p - v.L)})`)}.`
+      : v.type === 'B' ? `분모가 이중근이면 ${tex(`f(${v.p})=f'(${v.p})=0`)} 이고 극한값은 ${tex(`\\dfrac{f''(${v.p})}{2}=${v.L}`)}. 그래서 ${tex(`f(x)=(${linTex(v.p)})^2(x-${nfa(v.p - v.L)})`)}.`
+        : `분모의 영점마다 분자도 0 이어야 하므로 ${tex(`f(x)=(${linTex(v.p)})(${linTex(v.q)})(x-r)`)} 이고, 약분한 ${tex('x-r')} 에 ${tex(`x=${v.p}`)} 을 넣으면 ${tex(String(v.L))} 이므로 ${tex(`r=${v.r}`)}.`;
+    return { steps: `${t} ${tex(fkTex7(v))}.`, highlight: '분모의 영점 하나하나에서 “분자의 중복도 ≥ 분모의 중복도”여야 극한이 존재합니다. 같으면 극한값은 0이 아닌 값, 분자가 더 많이 겹치면 0입니다.' };
+  };
+  function legend7(b, items) { // 화면 왼쪽 위의 작은 범례(점 색 · 뜻)
+    const c = b.ctx;
+    items.forEach((it, i) => {
+      const x = 14, y = b.insets.top + 16 + i * 19;
+      c.save();
+      c.beginPath(); c.arc(x, y, 5, 0, Math.PI * 2);
+      if (it.hollow) { c.fillStyle = b.colors.halo; c.fill(); c.lineWidth = 2.2; c.strokeStyle = b.color(it.color); c.stroke(); }
+      else { c.fillStyle = b.color(it.color); c.fill(); }
+      c.restore();
+      b.stext(x + 12, y, it.text, { color: it.color, size: 12, align: 'left', baseline: 'middle', weight: 800 });
+    });
+  }
+  function drawExp7(b, s) {
+    ensureFocus(b, { x: [-1.8, 5.8], y: [-4.6, 5.4] });
+    const k = s.k7, Dr = D7[k], Nr = [s.a7, s.b7];
+    const R = (x) => prodAt(Nr, x) / prodAt(Dr, x);
+    const zs = [...new Set(Dr)];
+    if (s.grid) b.grid();
+    b.axes();
+    zs.forEach((z) => { if (!lim7(Nr, Dr, z).ok) b.vline(z, { color: 'red', alpha: 0.7, width: 1.8, dash: true, ref: 'D' }); });
+    b.plot(R, { color: 'ink', width: 3.2, glow: true, ref: 'R' });
+    zs.forEach((z) => {
+      const L = lim7(Nr, Dr, z);
+      if (L.ok) b.point([z, L.val], { hollow: true, color: 'green', r: 6.5, label: `극한 ${nf(L.val)}`, dx: 12, dy: -13, ref: 'hole' });
+      b.point([z, 0], { color: 'red', r: 4.5, ref: 'D' });
+    });
+    const sn = (v) => snap7(k, clamp(+v.toFixed(2), -1, 5));
+    b.handle('a7', [s.a7, 0], { color: 'sky', r: 7.5, ref: 'N', label: `a=${nf(s.a7, 1)}`, dx: -10, dy: -16, align: 'right', priority: 2, drag: (w) => { s.a7 = sn(w.x); } });
+    b.handle('b7', [s.b7, 0], { color: 'violet', r: 7.5, ref: 'N', label: `b=${nf(s.b7, 1)}`, dx: 10, dy: 22, align: 'left', priority: 1, drag: (w) => { s.b7 = sn(w.x); } });
+    legend7(b, [{ color: 'red', text: '분모의 영점' }, { color: 'sky', text: '분자의 영점 a, b (끌기)' }, { color: 'green', hollow: true, text: '약분되어 생긴 구멍' }]);
+  }
+  function drawProb7(b, s) {
+    const v = var7.cur(), st = s.step;
+    const W = Math.max(8, v.xhi - v.xlo + 6.4), x0 = (v.xlo + v.xhi) / 2 - W / 2, hgt = W * 0.95;
+    ensureFocus(b, { x: [x0, x0 + W], y: [-hgt * 0.45, hgt * 0.55] });
+    const Df = (x) => prodAt(v.droots, x), Ff = (x) => prodAt(v.froots, x);
+    if (s.grid) b.grid();
+    b.axes();
+    b.plot(Df, { color: 'red', width: 2.4, dash: true, alpha: 0.85, ref: 'D' }); // 문제에 주어진 분모의 그래프
+    const dLab = v.type === 'A' ? `y = ${plainLin(v.p)}` : v.type === 'B' ? `y = (${plainLin(v.p)})²` : `y = (${plainLin(v.p)})(${plainLin(v.q)})`;
+    v.zs.forEach((z) => b.point([z, 0], { hollow: true, color: 'red', r: 6, ref: 'D', label: `x=${nf(z)}`, dx: 0, dy: 20, align: 'center' }));
+    if (st >= 1) v.zs.forEach((z) => b.point([z, 0], { color: 'sky', r: 4.5, ref: 'F' }));
+    if (st >= 2) {
+      b.line([0, -v.r], 1, { color: 'green', width: 2.6, dash: true, glow: true, ref: 'R' });
+      v.zs.forEach((z, i) => b.point([z, z - v.r], { hollow: true, color: 'green', r: 6.5, label: i === 0 ? `극한 ${nf(z - v.r)}` : `${nf(z - v.r)}`, dx: -12, dy: -14, align: 'right', ref: 'R' }));
+    }
+    legend7(b, [{ color: 'red', text: `분모 ${dLab}` }, { color: 'amber', text: `주어진 극한값 ${v.L}` }, ...(st >= 2 ? [{ color: 'green', hollow: true, text: 'f ÷ 분모 (약분한 식)' }] : []), ...(st >= 3 ? [{ color: 'sky', text: '분자 y = f(x)' }, { color: 'amber', text: `f(${nf(v.k)}) = ${nf(v.ans.val)}` }] : [])]);
+    if (st >= 3) {
+      b.plot(Ff, { color: 'sky', width: 3, glow: true, ref: 'F' });
+      const vb = b.viewBox(), yk = Ff(v.k);
+      if (v.k > vb.x0 + 0.3 && v.k < vb.x1 - 1.6 && yk > vb.y0 + 0.5 && yk < vb.y1 - 0.5) b.point([v.k, yk], { color: 'amber', r: 6, label: `f(${nf(v.k)})=${nf(v.ans.val)}`, dx: 12, dy: -12, ref: 'F' });
+    }
+  }
+  const fac7 = (p) => (p === 0 ? 'x' : `(${linTex(p)})`);
+  const plainLin = (p) => (p === 0 ? 'x' : p > 0 ? `x − ${p}` : `x + ${-p}`);
+  const SCENE7 = {
+    id: 'zero-pole', title: '[킬러] 분모·분자의 영점 배치와 극한의 존재', short: '영점 배치와 극한',
+    question: '분모가 0이 되는 점에서 극한이 존재하려면 분자는 어떻게 놓여야 할까? 영점이 겹치는 횟수(중복도)는 왜 중요할까?',
+    guide: (s) => (s.k7 === 'two'
+      ? '분모 $(x-1)(x-3)$의 영점은 <b>빨간 점</b>입니다. <b>하늘색 점 a</b>, <b>보라색 점 b</b>(분자의 영점)를 끌어 빨간 점에 겹쳐 보세요. 겹친 곳에서는 그래프에 <b>구멍(속이 빈 초록 점)</b>이 생겨 극한이 존재하고, 겹치지 않은 곳에는 <b>점근선(빨간 점선)</b>이 서서 극한이 존재하지 않습니다.'
+      : '분모 $(x-2)^2$은 $x=2$에서 <b>이중으로</b> 0입니다. 분자의 영점 a, b를 하나만 2에 놓으면 여전히 점근선이 서고, <b>둘 다 2에 놓아야</b>(중복도가 같아야) 구멍이 생기며 극한이 존재합니다.'),
+    tabs: { compact: true },
+    controls: ['a7', 'b7'],
+    presets: () => [
+      { group: '분모', label: '(x−1)(x−3) · 단순한 영점 두 개', color: 'red', apply: (st) => { st.k7 = 'two'; st.a7 = 0; st.b7 = 4.5; }, on: (st) => st.k7 === 'two' },
+      { group: '분모', label: '(x−2)² · 이중근', color: 'red', apply: (st) => { st.k7 = 'dbl'; st.a7 = 2; st.b7 = 4.5; }, on: (st) => st.k7 === 'dbl' },
+      { group: '분자의 영점 놓기', label: '둘 다 분모의 영점에 맞추기', color: 'green', apply: (st) => { if (st.k7 === 'two') { st.a7 = 1; st.b7 = 3; } else { st.a7 = 2; st.b7 = 2; } }, on: (st) => (st.k7 === 'two' ? st.a7 === 1 && st.b7 === 3 : st.a7 === 2 && st.b7 === 2) },
+      { group: '분자의 영점 놓기', label: '하나만 맞추기', color: 'amber', apply: (st) => { if (st.k7 === 'two') { st.a7 = 1; st.b7 = 4.5; } else { st.a7 = 2; st.b7 = 4.5; } }, on: (st) => (st.k7 === 'two' ? st.a7 === 1 && st.b7 !== 3 : st.a7 === 2 && st.b7 !== 2) }
+    ],
+    steps: steps7,
+    reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text7(var7.cur())}</div>`,
+    problem: { tag: '25학년도 수능 21번 · 27학년도 9월 모평 15번 유형', time: '목표 시간: 30초', text: () => probHTML(text7(var7.cur())), answer: () => tex(var7.cur().ans.tex) },
+    solution: { standardTitle: '교과서식 풀이 · 인수로 쓰고 약분', standardTag: '정석 · 2분', quickTitle: '10초 컷 · 영점의 중복도', quickTag: '10초 컷', standard: solStd7, quick: solQuick7 },
+    enter: (s) => { s.k7 = 'two'; s.a7 = 0; s.b7 = 4.5; },
+    vary: var7,
+    focus: () => ({ x: [-1.8, 5.8], y: [-4.6, 5.4] }),
+    view: (s, lab) => {
+      const tab = tabOf(lab);
+      if (tab !== 'explore') return {};
+      const Dr = D7[s.k7], Nr = [s.a7, s.b7], zs = [...new Set(Dr)];
+      const rows = zs.map((z) => ({ z, L: lim7(Nr, Dr, z) }));
+      const allOk = rows.every((r) => r.L.ok);
+      return {
+        chips: [{ k: '식', tex: `\\dfrac{${fac7(+nfa(s.a7, 1))}${fac7(+nfa(s.b7, 1))}}{${s.k7 === 'two' ? '(x-1)(x-3)' : '(x-2)^{2}'}}`, color: 'ink' }],
+        status: allOk ? { tone: 'ok', text: '분모의 모든 영점에서 극한이 존재합니다' } : { tone: 'bad', text: '극한이 존재하지 않는 점이 있습니다 (점근선)' },
+        readouts: [
+          ...rows.map((r) => ({ label: `x → ${r.z} 일 때`, value: r.L.ok ? `극한 ${fmt(r.L.val, 2)}` : '발산 (극한 없음)', note: `분자 영점 ${r.L.mN}개 · 분모 영점 ${r.L.mD}개`, color: r.L.ok ? 'green' : 'red', ref: r.L.ok ? 'hole' : 'D' })),
+          { label: '분자의 영점', value: `a = ${fmt(s.a7, 1)}, b = ${fmt(s.b7, 1)}`, color: 'sky', ref: 'N' },
+          { label: '판정', value: allOk ? '극한 존재' : '극한 없음', color: allOk ? 'green' : 'red' }
+        ],
+        notes: '분모가 0이 되는 점에서 분자의 영점 개수(중복 포함)가 분모의 영점 개수 이상이어야 극한이 있습니다. 같으면 0이 아닌 값, 분자가 더 많으면 0입니다.'
+      };
+    },
+    draw: (b, s0, v, lab) => {
+      quiet(b);
+      const tab = tabOf(lab);
+      if (tab === 'explore' || b.thumb) drawExp7(b, s0);
+      else drawProb7(b, tab === 'problem' ? { ...s0, step: 0 } : s0);
+    }
+  };
+
+  /* ======================================================================
+     장면 8 · 움직이는 점·직선이 만든 도형의 길이·넓이 비의 극한 (C01)
+     ====================================================================== */
+  const M8 = [{ n: 1, d: 2 }, { n: 1, d: 1 }, { n: 3, d: 2 }, { n: 2, d: 1 }]; // 직선의 기울기 m = n/d
+  const mv8 = (m) => m.n / m.d;
+  const mT8 = (m) => ratTex(m.n, m.d);
+  const m2T8 = (m) => ratTex(m.n * m.n, m.d * m.d);
+  const limTex8 = (kind, m) => (kind === 'len0' ? ratTex(2 * m.d, m.n) : kind === 'area0' ? ratTex(m.n, 2 * m.d) : ratTex(m.d * m.d, m.d * m.d + m.n * m.n));
+  const K8 = { len0: { t: [0, 1.5], tmax: 1.5, tmin: 0.02 }, area0: { t: [0, 1.5], tmax: 1.5, tmin: 0.02 }, inf: { t: [0.5, 3], tmax: 2.5, tmin: 0.5 } };
+  function dom8(kind, m) { // 왼쪽 그림의 정의역·치역: t 범위에서 점 A, B, C 가 모두 들어오는 만큼만 잡습니다
+    const kk = K8[kind];
+    let ma = 0;
+    for (let i = 0; i <= 20; i++) { const g = geo8(kind, m, kk.tmin + (kk.tmax - kk.tmin) * i / 20); ma = Math.max(ma, Math.abs(g.A[0]), Math.abs(g.B[0]), g.C ? Math.abs(g.C[0]) : 0); }
+    return { x: [-Math.max(2.5, Math.ceil((ma + 0.7) * 2) / 2), Math.max(2.5, Math.ceil((ma + 0.7) * 2) / 2)], y: [-1, Math.max(4, Math.ceil(ma * ma + 1))] };
+  }
+  const niceStep8 = (span) => [0.1, 0.25, 0.5, 1, 2].find((s) => span / s <= 5.2) || 2;
+  function f2dom8(kind, m) { // 오른쪽(아래) 비율 그래프의 정의역·치역·배율
+    const lim = lim8(kind, m), [t0, t1] = K8[kind].t;
+    let lo = INF, hi = -INF;
+    for (let i = 0; i <= 40; i++) { const t = Math.max(t0, 0.001) + (t1 - Math.max(t0, 0.001)) * i / 40, r = geo8(kind, m, t).ratio; lo = Math.min(lo, r); hi = Math.max(hi, r); }
+    lo = Math.min(lo, 0, lim); hi = Math.max(hi, lim);
+    const pad = (hi - lo) * 0.14, ty = niceStep8(hi - lo + 2 * pad);
+    const y0 = Math.floor((lo - pad) / ty) * ty, y1 = Math.ceil((hi + pad) / ty) * ty;
+    return { dom: { x: [t0, t1], y: [y0, y1] }, ty, tx: kind === 'inf' ? 1 : 0.5, sx: 5.6 / (t1 - t0), sy: 3.6 / (y1 - y0) };
+  }
+  const var8 = varier((prev) => {
+    const pool = [];
+    ['len0', 'area0', 'inf'].forEach((kind) => M8.forEach((m) => pool.push({ kind, m })));
+    const it = prev ? pickOf(pool, prev.item) : pool.find((x) => x.kind === 'len0' && x.m.n === 1 && x.m.d === 1);
+    const lv = lim8(it.kind, mv8(it.m));
+    return { item: it, kind: it.kind, m: it.m, mv: mv8(it.m), lim: lv, ans: { tex: limTex8(it.kind, it.m), val: lv }, start: it.kind === 'inf' ? 1.8 : 1.0 };
+  });
+  const text8 = (v) => {
+    const ml = `${mT8(v.m) === '1' ? '' : mT8(v.m)}x`;
+    if (v.kind === 'len0') return `실수 ${tex('t')} ${tex('(t>0)')} 에 대하여 직선 ${tex(`y=${ml}+t`)} 와 곡선 ${tex('y=x^{2}')} 이 만나는 두 점을 ${tex('A')}, ${tex('B')} 라 하자. 점 ${tex('A')} 를 지나고 ${tex('x')}축에 평행한 직선이 곡선 ${tex('y=x^{2}')} 과 만나는 점 중 ${tex('A')} 가 아닌 점을 ${tex('C')}, 점 ${tex('B')} 에서 선분 ${tex('AC')} 에 내린 수선의 발을 ${tex('H')} 라 할 때, ${tex('\\displaystyle\\lim_{t\\to 0+}\\dfrac{\\overline{AH}-\\overline{CH}}{t}')} 의 값을 구하시오. (단, 점 ${tex('A')} 의 ${tex('x')}좌표는 양수이다.)`;
+    if (v.kind === 'area0') return `실수 ${tex('t')} ${tex('(t>0)')} 에 대하여 직선 ${tex(`y=${ml}+t`)} 와 곡선 ${tex('y=x^{2}')} 이 만나는 두 점을 ${tex('A')}, ${tex('B')} 라 하고, 원점을 ${tex('O')} 라 하자. 삼각형 ${tex('OAB')} 의 넓이를 ${tex('S(t)')} 라 할 때, ${tex('\\displaystyle\\lim_{t\\to 0+}\\dfrac{S(t)}{t}')} 의 값을 구하시오.`;
+    return `곡선 ${tex('y=x^{2}')} 과 기울기가 ${tex(mT8(v.m))} 인 직선 ${tex('l')} 이 서로 다른 두 점 ${tex('A')}, ${tex('B')} 에서 만난다. 양의 실수 ${tex('t')} 에 대하여 선분 ${tex('AB')} 의 길이가 ${tex('2t')} 가 되도록 하는 직선 ${tex('l')} 의 ${tex('y')}절편을 ${tex('g(t)')} 라 할 때, ${tex('\\displaystyle\\lim_{t\\to\\infty}\\dfrac{g(t)}{t^{2}}')} 의 값을 구하시오.`;
+  };
+  const steps8 = () => {
+    const v = var8.cur(), mT = mT8(v.m), m2 = m2T8(v.m), L = limTex8(v.kind, v.m);
+    if (v.kind === 'len0') return [
+      `$A, B$의 $x$좌표를 $\\alpha, \\beta$ $(\\alpha\\gt 0\\gt\\beta)$라 하면 $x^2=${mT}x+t$ 에서 $\\alpha+\\beta=${mT}$, $\\alpha\\beta=-t$, $\\alpha-\\beta=\\sqrt{${m2}+4t}$.`,
+      `$C(-\\alpha, \\alpha^2)$, $H(\\beta, \\alpha^2)$ 이므로 $\\overline{AH}=\\alpha-\\beta=\\sqrt{${m2}+4t}$, $\\overline{CH}=\\alpha+\\beta=${mT}$. 따라서 $\\dfrac{\\overline{AH}-\\overline{CH}}{t}=\\dfrac{\\sqrt{${m2}+4t}-${mT}}{t}$ (오른쪽 그래프).`,
+      `분자를 유리화하면 $\\dfrac{4}{\\sqrt{${m2}+4t}+${mT}}$ 이고 $t\\to0+$ 일 때 $\\dfrac{4}{2\\cdot ${mT}}=${L}$ 입니다.`
+    ];
+    if (v.kind === 'area0') return [
+      `$A, B$의 $x$좌표를 $\\alpha, \\beta$ $(\\alpha\\gt 0\\gt\\beta)$라 하면 $\\alpha-\\beta=\\sqrt{${m2}+4t}$. 직선이 $y$축과 만나는 점을 $D(0,t)$라 하면 삼각형 $OAB$는 삼각형 $ODA$와 $ODB$로 나뉩니다.`,
+      `$S(t)=\\dfrac{1}{2}\\cdot t\\cdot\\alpha+\\dfrac{1}{2}\\cdot t\\cdot(-\\beta)=\\dfrac{1}{2}t\\sqrt{${m2}+4t}$ 이므로 $\\dfrac{S(t)}{t}=\\dfrac{1}{2}\\sqrt{${m2}+4t}$ (오른쪽 그래프).`,
+      `$t\\to0+$ 일 때 $\\dfrac{1}{2}\\sqrt{${m2}}=${L}$ 입니다.`
+    ];
+    return [
+      `직선의 기울기 $m=${mT}$, $y$절편을 $k=g(t)$라 하면 $x^2=mx+k$ 에서 $\\alpha+\\beta=m$, $\\alpha\\beta=-k$ 이고 $\\overline{AB}=\\sqrt{1+m^2}\\,(\\alpha-\\beta)=\\sqrt{1+m^2}\\sqrt{m^2+4k}=2t$.`,
+      `양변을 제곱하면 $(1+m^2)(m^2+4k)=4t^2$ 이므로 $g(t)=k=\\dfrac{t^2}{1+m^2}-\\dfrac{m^2}{4}$ (오른쪽 그래프는 $\\dfrac{g(t)}{t^2}$).`,
+      `$\\dfrac{g(t)}{t^2}=\\dfrac{1}{1+m^2}-\\dfrac{m^2}{4t^2}$ 에서 $t\\to\\infty$ 이면 $\\dfrac{1}{1+m^2}=${L}$ 입니다.`
+    ];
+  };
+  const solStd8 = () => {
+    const v = var8.cur(), mT = mT8(v.m), m2 = m2T8(v.m), L = limTex8(v.kind, v.m);
+    const body = v.kind === 'len0'
+      ? `① ${tex('A, B')} 의 ${tex('x')}좌표 ${tex('\\alpha>0>\\beta')} 는 ${tex(`x^2=${mT}x+t`)} 의 두 근이므로 ${tex(`\\alpha+\\beta=${mT}`)}, ${tex('\\alpha-\\beta=')}${tex(`\\sqrt{${m2}+4t}`)}.<br/>
+② ${tex('C(-\\alpha,\\alpha^2)')}, ${tex('H(\\beta,\\alpha^2)')} 이므로 ${tex(`\\overline{AH}=\\alpha-\\beta`)}, ${tex(`\\overline{CH}=\\alpha+\\beta=${mT}`)}.<br/>
+③ ${tex(`\\dfrac{\\overline{AH}-\\overline{CH}}{t}=\\dfrac{\\sqrt{${m2}+4t}-${mT}}{t}=\\dfrac{4}{\\sqrt{${m2}+4t}+${mT}}`)}.<br/>
+④ ${tex(`t\\to0+`)} 이면 ${tex(`\\dfrac{4}{2\\cdot ${mT}}=${L}`)}.`
+      : v.kind === 'area0'
+        ? `① ${tex(`\\alpha-\\beta=\\sqrt{${m2}+4t}`)} (근과 계수의 관계).<br/>
+② 직선의 ${tex('y')}절편 ${tex('D(0,t)')} 를 밑변으로 보면 ${tex(`S(t)=\\dfrac{1}{2}\\cdot t\\cdot(\\alpha-\\beta)=\\dfrac{1}{2}t\\sqrt{${m2}+4t}`)}.<br/>
+③ ${tex(`\\dfrac{S(t)}{t}=\\dfrac{1}{2}\\sqrt{${m2}+4t}`)} 이고 ${tex('t\\to0+')} 이면 ${tex(`\\dfrac{1}{2}\\sqrt{${m2}}=${L}`)}.`
+        : `① 기울기 ${tex(`m=${mT}`)}, ${tex('y')}절편 ${tex('k=g(t)')} 라 하면 ${tex(`x^2-mx-k=0`)} 에서 ${tex('(\\alpha-\\beta)^2=m^2+4k')}.<br/>
+② ${tex('\\overline{AB}^2=(1+m^2)(\\alpha-\\beta)^2=(1+m^2)(m^2+4k)=4t^2')}.<br/>
+③ ${tex(`g(t)=k=\\dfrac{t^2}{1+m^2}-\\dfrac{m^2}{4}`)} 이므로 ${tex(`\\dfrac{g(t)}{t^2}=\\dfrac{1}{1+m^2}-\\dfrac{m^2}{4t^2}`)}.<br/>
+④ ${tex('t\\to\\infty')} 이면 ${tex(`\\dfrac{1}{1+m^2}=${L}`)}.`;
+    return { steps: body, warning: '극한값이 0/0 꼴이면 식을 정리(유리화)한 뒤 t→0+ 를 넣습니다. 그림에서 도형이 줄어드는 모습과 표의 비가 한 값으로 모이는 것을 함께 확인하세요.' };
+  };
+  const solQuick8 = () => {
+    const v = var8.cur(), mT = mT8(v.m), m2 = m2T8(v.m), L = limTex8(v.kind, v.m);
+    const q = v.kind === 'len0'
+      ? `${tex(`t`)} 가 아주 작으면 ${tex(`\\sqrt{${m2}+4t}\\approx ${mT}+\\dfrac{2t}{${mT}}`)} 이므로 ${tex('\\overline{AH}-\\overline{CH}\\approx')} ${tex(`\\dfrac{2t}{${mT}}`)}. 따라서 비는 ${tex(`\\dfrac{2}{${mT}}=${L}`)}.`
+      : v.kind === 'area0'
+        ? `${tex('t\\to0+')} 이면 ${tex('B')} 는 ${tex('O')} 로, ${tex('A')} 의 ${tex('x')}좌표는 ${tex(`${mT}`)} 로 가므로 ${tex('S(t)\\approx\\dfrac{1}{2}\\cdot t\\cdot')}${tex(mT)}. 비는 ${tex(`\\dfrac{1}{2}\\cdot ${mT}=${L}`)}.`
+        : `${tex('t')} 가 매우 크면 ${tex('\\dfrac{m^2}{4}')} 는 ${tex('\\dfrac{t^2}{1+m^2}')} 에 비해 무시되므로 ${tex('g(t)\\approx\\dfrac{t^2}{1+m^2}')}. 비는 ${tex(`\\dfrac{1}{1+m^2}=${L}`)}.`;
+    return { steps: q, highlight: '“가장 큰(또는 가장 작은) 차수의 항만 남긴다”는 눈으로 표를 읽으면, 식을 세우기 전에 극한값을 먼저 짐작할 수 있습니다.' };
+  };
+  function draw8(b, s0, v, lab) {
+    quiet(b);
+    const tab = tabOf(lab), prob = tab === 'problem', explore = tab === 'explore' || !!b.thumb;
+    const s = prob ? { ...s0, step: 0 } : s0;
+    const V = explore ? null : var8.cur();
+    const kind = explore ? s.k8 : V.kind;
+    const m = explore ? s.m8 : V.mv;
+    const tkey = explore ? (kind === 'inf' ? 'ti8' : 't8') : 'pv8';
+    const kk = K8[kind], t = clamp(s[tkey], kk.tmin, kk.tmax);
+    const setT = (val) => { s0[tkey] = +clamp(val, kk.tmin, kk.tmax).toFixed(3); };
+    const g = geo8(kind, m, t);
+    const side = !NARROWQ(), st = explore ? 3 : s.step;
+    const F1 = mkFrame(dom8(kind, m), { tx: 1, ty: 1 });
+    const fd = f2dom8(kind, m);
+    const F2 = prob ? null : mkFrame(fd.dom, { tx: fd.tx, ty: fd.ty, sx: side ? fd.sx : Math.min(fd.sx, 5.2 / (fd.dom.x[1] - fd.dom.x[0])), sy: fd.sy });
+    ensureFocus(b, arrange(F1, F2, side));
+    drawFrame(b, F1, s, { origin: false, xn: 'x', yn: 'y' });
+    ftext(b, F1, 0, 0, 'O', { dx: 10, dy: 14, size: 12, color: 'muted', weight: 700 });
+    clipTo(b, F1, () => {
+      if (kind !== 'inf' && explore) [1.5, 1, 0.5, 0.25].forEach((tt) => { if (Math.abs(tt - t) > 0.05) fseg(b, F1, [F1.x0, m * F1.x0 + tt], [F1.x1, m * F1.x1 + tt], { color: 'amber', alpha: 0.22, width: 1.2 }); });
+      if (kind !== 'inf' && explore) fseg(b, F1, [F1.x0, m * F1.x0], [F1.x1, m * F1.x1], { color: 'violet', alpha: 0.6, width: 1.5, dash: true });
+      fplot(b, F1, (x) => x * x, { color: 'ink', width: 3, glow: true });
+      if (kind === 'area0') b.poly([F1.P(0, 0), F1.P(g.A[0], g.A[1]), F1.P(g.B[0], g.B[1])], { fill: 'violet', fillAlpha: 0.22, color: 'violet', width: 1.8 });
+      fseg(b, F1, [F1.x0, m * F1.x0 + g.k], [F1.x1, m * F1.x1 + g.k], { color: 'amber', width: 2.6, glow: true, ref: 'line' });
+      if (kind === 'len0') {
+        fseg(b, F1, [g.C[0], g.C[1]], [g.A[0], g.A[1]], { color: 'ink', alpha: 0.55, width: 1.4, dash: true });
+        fseg(b, F1, g.B, g.H, { color: 'ink', alpha: 0.55, width: 1.4, dash: true });
+        fseg(b, F1, g.H, g.A, { color: 'rose', width: 4, ref: 'AH' });
+        fseg(b, F1, g.C, g.H, { color: 'green', width: 4, ref: 'CH' });
+      }
+      if (kind === 'inf') fseg(b, F1, g.A, g.B, { color: 'rose', width: 4, ref: 'AB' });
+    });
+    if (kind === 'area0' && !explore && st >= 1) { fdot(b, F1, 0, t, { color: 'violet', r: 4.5 }); ftext(b, F1, 0, t, 'D', { dx: -9, dy: -8, size: 12.5, color: 'violet', align: 'right' }); }
+    fdot(b, F1, g.A[0], g.A[1], { color: 'rose', r: 5, label: 'A', dx: 10, dy: -10, ref: 'AH' });
+    fdot(b, F1, g.B[0], g.B[1], { color: 'sky', r: 5, label: 'B', dx: -12, dy: -2, align: 'right', ref: 'line' });
+    if (kind === 'len0') {
+      fdot(b, F1, g.C[0], g.C[1], { color: 'green', r: 5, label: 'C', dx: -10, dy: -10, align: 'right', ref: 'CH' });
+      fdot(b, F1, g.H[0], g.H[1], { color: 'ink', r: 4.5, label: 'H', dx: 10, dy: -11, ref: 'AH' });
+    }
+    if (kind === 'inf') ftext(b, F1, (g.A[0] + g.B[0]) / 2, (g.A[1] + g.B[1]) / 2, '2t', { dx: 14, dy: 16, size: 12.5, color: 'rose' });
+    // 끌 수 있는 손잡이: y절편(= t, 또는 inf 에서는 g(t))
+    b.handle('p8', F1.P(0, g.k), { color: 'amber', r: 7.5, ref: 'line', label: kind === 'inf' ? `t=${nf(t, 2)}` : `t=${nf(t, 2)}`, dx: 14, dy: -12, align: 'left', priority: 2,
+      drag: (w) => { const q = F1.Q(w).y; setT(kind === 'inf' ? Math.sqrt(Math.max(0, (1 + m * m) * (q + m * m / 4))) : q); } });
+    if (F2) {
+      drawFrame(b, F2, s, { xn: 't', yn: false, title: `${kind === 'len0' ? '(AH−CH)/t' : kind === 'area0' ? 'S(t)/t' : 'g(t)/t²'} 의 그래프`, tc: 'sky' });
+      const ratio = (tt) => geo8(kind, m, tt).ratio, lim = lim8(kind, m);
+      if (st >= 2) {
+        clipTo(b, F2, () => fplot(b, F2, ratio, { from: Math.max(F2.x0, 0.004), color: 'sky', width: 3, glow: true, ref: 'R' }));
+        fseg(b, F2, [t, F2.y0], [t, ratio(t)], { color: 'amber', alpha: 0.55, width: 1.3, dash: true });
+        b.handle('t8', F2.P(t, ratio(t)), { color: 'amber', r: 7, ref: 'line', label: `${nf(ratio(t), 2)}`, dx: 0, dy: -16, priority: 2, drag: (w) => setT(F2.Q(w).x) });
+      }
+      if (st >= 3) {
+        fseg(b, F2, [F2.x0, lim], [F2.x1, lim], { color: 'green', alpha: 0.8, width: 1.6, dash: true });
+        if (kind !== 'inf') fdot(b, F2, 0, lim, { hollow: true, color: 'green', r: 5.5 });
+        ftext(b, F2, kind === 'inf' ? F2.x1 : 0, lim, `극한 ${nf(lim, 2)}`, { dx: kind === 'inf' ? -6 : 10, dy: -9, size: 12, color: 'green', align: kind === 'inf' ? 'right' : 'left' });
+      }
+    }
+  }
+  const SCENE8 = {
+    id: 'ratio-limit', title: '[필수] 움직이는 점·직선이 만든 도형의 비의 극한', short: '도형의 비의 극한',
+    question: '직선을 움직여 도형이 줄어들거나 커질 때, 두 양의 비는 어떤 값에 가까워질까? 식을 세우기 전에 눈으로 먼저 짐작해 볼 수 있을까?',
+    guide: (s) => (s.k8 === 'len0'
+      ? '<b>노란 점</b>(직선의 $y$절편 $t$)을 아래로 끌어 $t\\to0+$ 로 보내 보세요. 연한 노란 선들이 보라색 점선 $y=mx$로 모이고, $\\overline{AH}$(분홍)와 $\\overline{CH}$(초록)의 차가 줄어듭니다. 아래 표에서 비 $\\dfrac{\\overline{AH}-\\overline{CH}}{t}$ 가 한 값으로 모이는 것을 확인하세요.'
+      : s.k8 === 'area0'
+        ? '<b>노란 점</b>을 끌어 $t\\to0+$ 로 보내 보세요. 삼각형 $OAB$가 납작하게 줄어듭니다. 넓이는 $0$으로 가지만 $\\dfrac{S(t)}{t}$ 는 한 값으로 모입니다.'
+        : '<b>노란 점</b>으로 현 $AB$의 길이 $2t$를 키워 보세요. $y$절편 $g(t)$는 $t^2$ 꼴로 커지고 $\\dfrac{g(t)}{t^2}$ 은 한 값으로 모입니다. 표는 $t=10, 100, 1000$ 입니다.'),
+    tabs: { compact: true },
+    controls: (s) => [s.k8 === 'inf' ? 'ti8' : 't8', 'm8'],
+    presets: () => [
+      { group: '도형', label: '길이의 차 (AH−CH)/t · t→0+', color: 'amber', apply: (st) => { st.k8 = 'len0'; st.t8 = 1; }, on: (st) => st.k8 === 'len0' },
+      { group: '도형', label: '삼각형 넓이 S(t)/t · t→0+', color: 'amber', apply: (st) => { st.k8 = 'area0'; st.t8 = 1; }, on: (st) => st.k8 === 'area0' },
+      { group: '도형', label: '현의 길이 2t · g(t)/t² · t→∞', color: 'amber', apply: (st) => { st.k8 = 'inf'; st.ti8 = 1.8; }, on: (st) => st.k8 === 'inf' }
+    ],
+    actions: [{ id: 'shrink', icon: 'play', label: (s) => (s.playing ? '일시 정지' : s.k8 === 'inf' ? '자동으로 t 키우기' : '자동으로 t→0+ 보내기'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }],
+    steps: steps8,
+    reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text8(var8.cur())}</div>`,
+    problem: { tag: '23학년도 9월 모평 12번 · 24학년도 3월 학평(서울) 12번 유형', time: '목표 시간: 30초', text: () => probHTML(text8(var8.cur())), answer: () => tex(var8.cur().ans.tex), snap: () => ({ pv8: var8.cur().start }) },
+    solution: { standardTitle: '교과서식 풀이 · 근과 계수의 관계', standardTag: '정석 · 3분', quickTitle: '10초 컷 · 가장 큰 항만 보기', quickTag: '10초 컷', standard: solStd8, quick: solQuick8 },
+    enter: (s) => { s.k8 = 'len0'; s.t8 = 1; s.ti8 = 1.8; s.m8 = 1; s.pv8 = var8.cur().start; s.animDir = -1; },
+    vary: Object.assign(var8, { onNext: (s) => { s.pv8 = var8.cur().start; } }),
+    focus: () => arrange(mkFrame(dom8('len0', 1)), mkFrame(f2dom8('len0', 1).dom, { sx: 5.6 / 1.5 * (NARROWQ() ? 0.93 : 1), sy: f2dom8('len0', 1).sy }), !NARROWQ()),
+    tick: (s, dt) => {
+      if (!s.playing) return false;
+      if (s.k8 === 'inf') { s.ti8 += 0.6 * dt; if (s.ti8 > 2.5) s.ti8 = 0.5; }
+      else { s.t8 *= Math.pow(0.4, dt); if (s.t8 < 0.02) s.t8 = 1.5; }
+      return true;
+    },
+    view: (s, lab) => {
+      const tab = tabOf(lab);
+      if (tab === 'problem') return {};
+      const explore = tab === 'explore', V = explore ? null : var8.cur();
+      const kind = explore ? s.k8 : V.kind, m = explore ? s.m8 : V.mv;
+      const kk = K8[kind], t = clamp(s[explore ? (kind === 'inf' ? 'ti8' : 't8') : 'pv8'], kk.tmin, kk.tmax);
+      const g = geo8(kind, m, t), lim = lim8(kind, m);
+      const nm = kind === 'len0' ? '(AH−CH)/t' : kind === 'area0' ? 'S(t)/t' : 'g(t)/t²';
+      const extra = (gg) => (kind === 'len0' ? `AH−CH = ${fmt(gg.AH - gg.CH, 5)}` : kind === 'area0' ? `S = ${fmt(gg.S, 5)}` : `g(t) = ${fmt(gg.k, 1)}`);
+      const rowsT = kind === 'inf' ? [10, 100, 1000] : [1, 0.1, 0.01, 0.001];
+      return {
+        status: explore || s.step >= 3 ? { tone: Math.abs(g.ratio - lim) < 0.03 ? 'ok' : 'info', text: `${nm} = ${fmt(g.ratio, 4)}  (극한값 ${fmt(lim, 4)})` } : { tone: 'info', text: `${nm} = ${fmt(g.ratio, 4)}` },
+        readouts: [
+          { label: `지금 t = ${fmt(t, 3)}`, value: fmt(g.ratio, 4), note: extra(g), color: 'amber', ref: 'line' },
+          ...rowsT.map((tt) => { const gg = geo8(kind, m, tt); return { label: `t = ${tt}`, value: fmt(gg.ratio, 4), note: extra(gg), color: 'sky', ref: 'R' }; }),
+          { label: '극한값', value: fmt(lim, 4), note: kind === 'len0' ? '2 ÷ 기울기 m' : kind === 'area0' ? '기울기 m ÷ 2' : '1 ÷ (1 + m²)', color: 'green', ref: 'R' }
+        ],
+        notes: '표의 값이 t를 줄일수록(키울수록) 같은 수로 모입니다. 그 수가 극한값입니다. 식을 세우기 전에 값을 먼저 짐작하고, 정석 풀이로 확인하세요.'
+      };
+    },
+    draw: draw8
+  };
+
+  /* ======================================================================
+     장면 9 · 길이 a인 창 [t, t+a]를 밀며 만드는 g(t) (구간의 최댓값) (C04)
+     ====================================================================== */
+  const kc9 = {};
+  const kinksC = (c, a, abs) => { const key = `${c.join(',')}|${a}|${abs}`; return kc9[key] || (kc9[key] = kinks9(c, a, abs, -7, 7).map((k) => ({ ...k, t: Math.abs(k.t) < 1e-6 ? 0 : +k.t.toFixed(6) }))); };
+  const F9 = (c, abs) => (x) => (abs ? Math.abs(polyAt(c, x)) : polyAt(c, x));
+  const G9 = (c, a, abs) => (t) => win9(c, a, t, abs).v;
+  const tie9 = (c, a, abs, t) => { // 꺾이는 순간 최댓값을 함께 주는 곳들
+    const F = F9(c, abs), v = win9(c, a, t, abs).v, out = [];
+    [t, t + a, ...crit9(c).filter((x) => x > t && x < t + a)].forEach((x) => { if (Math.abs(F(x) - v) < 1e-7 && !out.some((o) => Math.abs(o - x) < 1e-9)) out.push(x); });
+    return out;
+  };
+  const W9 = [[[0, -3, 0, 1], 2], [[2, 0, -3, 1], 2], [[-2, 0, 3, 1], 2], [[-2, 9, -6, 1], 2], [[0, -3, 0, 1], 3], [[2, 0, -3, 1], 3]];
+  const rng9 = (c, a, abs) => { // 문제 그림의 정의역·치역(꺾이는 점·극점·영점이 모두 들어오게)
+    const ks = kinksC(c, a, abs).map((k) => k.t);
+    const xs = [...ks, ...ks.map((t) => t + a), ...crit9(c)];
+    const F = F9(c, false);
+    const xl = Math.min(...xs) - 1.5, xr = Math.max(...xs) + 1.5;
+    let lo = INF, hi = -INF;
+    for (let i = 0; i <= 80; i++) { const y = F(xl + (xr - xl) * i / 80); lo = Math.min(lo, y); hi = Math.max(hi, Math.abs(y)); }
+    lo = Math.max(lo, -3.4); hi = Math.min(hi, 3.4);
+    return { x: [Math.floor(xl * 2) / 2, Math.ceil(xr * 2) / 2], y: [Math.floor(Math.min(lo, 0) - 0.4), Math.ceil(hi + 0.4)] };
+  };
+  const var9 = varier((prev) => {
+    const pool = W9.map((w) => ({ c: w[0], a: w[1] }));
+    const it = prev ? pickOf(pool, prev.item) : pool[0];
+    const { c, a } = it, abs = true;
+    const ks = kinksC(c, a, abs).map((k) => Math.round(k.t));
+    const G = G9(c, a, abs);
+    const asks = ['sum', 'gsum', 'val'];
+    const ask = prev ? asks[Math.floor(Math.random() * asks.length)] : 'sum';
+    let k = 0;
+    for (const cand of [0, 1, -1, 2, -2, 3]) { const val = G(cand); if (val >= 1 && val <= 12 && !ks.includes(cand)) { k = cand; break; } }
+    const sum = ks.reduce((p, x) => p + x, 0), gsum = ks.reduce((p, x) => p + G(x), 0), gk = G(k);
+    const val = ask === 'sum' ? sum : ask === 'gsum' ? gsum : gk;
+    const dom = rng9(c, a, abs);
+    return { item: it, c, a, abs, ks, ask, k, ans: { tex: String(Math.round(val)), val: Math.round(val) }, dom, start: +(ks[0] + 0.6).toFixed(1), kinks: kinksC(c, a, abs) };
+  });
+  const text9 = (v) => {
+    const head = `함수 ${tex(`f(x)=${polyTex(v.c)}`)} 에 대하여 실수 ${tex('t')} 에 대하여 닫힌구간 ${tex(`[t,\\ t+${v.a}]`)} 에서 ${tex('|f(x)|')} 의 최댓값을 ${tex('g(t)')} 라 하자.`;
+    if (v.ask === 'sum') return `${head} 함수 ${tex('g(t)')} 가 미분가능하지 않은 모든 ${tex('t')} 의 값의 합을 구하시오.`;
+    if (v.ask === 'gsum') return `${head} 함수 ${tex('g(t)')} 가 미분가능하지 않은 점이 ${tex('t=\\alpha,\\ \\beta')} 뿐일 때, ${tex('g(\\alpha)+g(\\beta)')} 의 값을 구하시오.`;
+    return `${head} 함수 ${tex('g(t)')} 가 미분가능하지 않은 점이 ${tex('t=\\alpha,\\ \\beta')} 뿐일 때, ${tex(`g(${v.k})`)} 의 값을 구하시오.`;
+  };
+  const brName9 = (v, k, t, gv) => {
+    if (k === 0) return `${tex(`g(t)=|f(t)|`)}`;
+    if (k === 1) return `${tex(`g(t)=|f(t+${v.a})|`)}`;
+    return `${tex(`g(t)=${nfa(gv)}`)} (극점이 창 안)`;
+  };
+  function table9(v) { // 구간별로 최댓값이 놓이는 곳
+    const ks = v.ks, rows = [], G = G9(v.c, v.a, v.abs);
+    const mids = [ks[0] - 1, ...ks.slice(0, -1).map((x, i) => (x + ks[i + 1]) / 2), ks[ks.length - 1] + 1];
+    const ranges = [`t<${nfa(ks[0])}`, ...ks.slice(0, -1).map((x, i) => `${nfa(x)}<t<${nfa(ks[i + 1])}`), `t>${nfa(ks[ks.length - 1])}`];
+    mids.forEach((m, i) => { const w = win9(v.c, v.a, m, v.abs); rows.push(`${tex(ranges[i])} ⇒ ${brName9(v, w.k, m, w.v)}`); });
+    return rows.join('<br/>');
+  }
+  const steps9 = () => {
+    const v = var9.cur(), cp = crit9(v.c), F = F9(v.c, false);
+    const ex = cp.map((x) => `$f(${nfa(x)})=${nfa(F(x))}$`).join(', ');
+    return [
+      `$y=|f(x)|$의 그래프를 그립니다. $f$의 극값은 ${ex}이고 $x$축 아래 부분은 위로 뒤집습니다.`,
+      `길이 $${v.a}$인 창 $[t, t+${v.a}]$를 오른쪽으로 밀 때, 최댓값을 주는 곳(왼쪽 끝 · 오른쪽 끝 · 창 안의 극점)이 바뀌는 순간을 찾습니다. 그 순간 창의 두 곳의 높이가 같습니다(점선): $t=${v.ks.join(', ')}$.`,
+      `$g(t)$의 그래프에서 꺾이는 점은 $t=${v.ks.join(', ')}$ 입니다. ${v.ask === 'sum' ? `합은 $${v.ks.join(' + ')}=${v.ks.reduce((p, x) => p + x, 0)}$ 입니다.` : v.ask === 'gsum' ? `$g(${v.ks[0]})+g(${v.ks[1]})=${G9(v.c, v.a, true)(v.ks[0])}+${G9(v.c, v.a, true)(v.ks[1])}=${v.ans.tex}$ 입니다.` : `$g(${v.k})=${v.ans.tex}$ 입니다.`}`
+    ];
+  };
+  const solStd9 = () => {
+    const v = var9.cur(), cp = crit9(v.c), F = F9(v.c, false);
+    return {
+      steps: `① ${tex(`f'(x)=0`)} 에서 극점 ${cp.map((x) => tex(`x=${nfa(x)}`)).join(', ')}, 극값 ${cp.map((x) => tex(`f(${nfa(x)})=${nfa(F(x))}`)).join(', ')}.<br/>
+② ${tex('y=|f(x)|')} 의 그래프를 그리고 창 ${tex(`[t,\\ t+${v.a}]`)} 안의 최댓값이 놓이는 곳을 구간별로 찾습니다.<br/>${table9(v)}<br/>
+③ 최댓값을 주는 곳이 바뀌는 순간 ${tex(`t=${v.ks.join(', ')}`)} 에서 왼쪽 미분계수와 오른쪽 미분계수가 달라 ${tex('g')} 는 미분가능하지 않습니다.<br/>
+④ ${v.ask === 'sum' ? `합: ${tex(`${v.ks.join(' + ')}=${v.ans.tex}`)}` : v.ask === 'gsum' ? `${tex(`g(${v.ks[0]})+g(${v.ks[1]})=${G9(v.c, v.a, true)(v.ks[0])}+${G9(v.c, v.a, true)(v.ks[1])}=${v.ans.tex}`)}` : `${tex(`g(${v.k})`)}: 창 ${tex(`[${v.k},\\ ${v.k + v.a}]`)} 에서 ${tex('|f|')} 의 최댓값 ${tex(v.ans.tex)}`}.`,
+      warning: '최댓값을 주는 곳이 바뀌어도 매끄럽게 이어지면(극점이 창에 들어오거나 나갈 때) 미분가능합니다. 서로 다른 두 곳의 높이가 같아지는 순간만 꺾입니다.'
+    };
+  };
+  const solQuick9 = () => {
+    const v = var9.cur();
+    return {
+      steps: `창을 밀 때 ${tex('g')} 가 꺾이는 순간은 “최댓값을 주는 두 곳의 높이가 같아지는 순간”입니다. 창의 양 끝 높이 ${tex('|f(t)|=|f(t+' + v.a + ')|')} 이거나 끝의 높이가 극점의 높이와 같아지는 ${tex(`t=${v.ks.join(', ')}`)} 만 찾으면 됩니다. ${v.ask === 'sum' ? `합은 ${tex(v.ans.tex)}.` : v.ask === 'gsum' ? `${tex('g(\\alpha)+g(\\beta)=' + v.ans.tex)}.` : `${tex(`g(${v.k})=${v.ans.tex}`)}.`}`,
+      highlight: '창 [t, t+a]의 g(t)는 “창 안의 가장 높은 점”입니다. 창을 밀며 가장 높은 점이 다른 점으로 옮겨 가는 순간이 꺾이는 점입니다.'
+    };
+  };
+  const EXP9 = { c: [0, -3, 0, 1] };
+  const DOM9 = { x: [-3.4, 3.4], y: [-3.4, 3.4] }; // 탐구의 왼쪽 그림(f)
+  function g9dom(c, a, abs, dom) { // 오른쪽(아래) g 그림의 치역과 세로 배율: 꺾이는 점 근처가 잘 보이도록 위쪽은 잘라 냅니다
+    const G = G9(c, a, abs), ks = kinksC(c, a, abs);
+    const top = Math.max(2, ...ks.map((k) => G(k.t)));
+    const yhi = Math.ceil(top + 2.5), ylo = abs ? 0 : -3;
+    return { y: [ylo, yhi], sy: 3.6 / (yhi - ylo), ty: yhi - ylo > 8 ? 4 : 2 };
+  }
+  function draw9(b, s0, vw, lab) {
+    quiet(b);
+    const tab = tabOf(lab), prob = tab === 'problem', explore = tab === 'explore' || !!b.thumb;
+    const s = prob ? { ...s0, step: 0 } : s0;
+    const V = explore ? null : var9.cur();
+    const c = explore ? EXP9.c : V.c;
+    const abs = explore ? s.k9 === 'abs' : true;
+    const a = explore ? s.a9 : V.a;
+    const tkey = explore ? 't9' : 'pv9';
+    const dom = explore ? DOM9 : V.dom;
+    const side = !NARROWQ();
+    const gd = g9dom(c, a, abs, dom);
+    const F1 = mkFrame(dom, { tx: 1, ty: 1 });
+    const F2 = prob ? null : mkFrame({ x: dom.x, y: gd.y }, { tx: 1, ty: gd.ty, sy: gd.sy, sx: side ? 0.85 : 1 });
+    ensureFocus(b, arrange(F1, F2, side));
+    const t = clamp(s[tkey], dom.x[0], dom.x[1]);
+    const setT = (val) => { s0[tkey] = +clamp(val, dom.x[0], dom.x[1]).toFixed(2); };
+    const F = F9(c, false), FA = F9(c, true), G = G9(c, a, abs);
+    const ks = kinksC(c, a, abs);
+    const st = explore ? 3 : s.step;
+    const w = win9(c, a, t, abs), gv = w.v;
+    const showAll = b.thumb || (explore ? s.show9 === 'all' : st >= 3);
+    drawFrame(b, F1, s, { origin: false, xn: 'x', yn: 'y' });
+    clipTo(b, F1, () => {
+      b.poly([F1.P(t, F1.y0), F1.P(t + a, F1.y0), F1.P(t + a, F1.y1), F1.P(t, F1.y1)], { fill: 'amber', fillAlpha: 0.14, color: null, ref: 'win' });
+      fseg(b, F1, [t, F1.y0], [t, F1.y1], { color: 'amber', alpha: 0.85, width: 1.6, dash: true, ref: 'win' });
+      fseg(b, F1, [t + a, F1.y0], [t + a, F1.y1], { color: 'amber', alpha: 0.85, width: 1.6, dash: true, ref: 'win' });
+      if (abs && (explore || st >= 1)) fplot(b, F1, FA, { color: 'violet', width: 2, alpha: 0.9, dash: true, ref: 'abs' });
+      fplot(b, F1, F, { color: 'ink', width: 3, glow: true, ref: 'f' });
+      if (!explore && st >= 2) ks.forEach((k) => { // 꺾이는 순간: 최댓값을 함께 주는 두 곳의 높이가 같습니다
+        const hv = G(k.t);
+        fseg(b, F1, [F1.x0, hv], [F1.x1, hv], { color: 'rose', alpha: 0.5, width: 1.3, dash: true });
+        fseg(b, F1, [k.t, F1.y0], [k.t, F1.y1], { color: 'rose', alpha: 0.35, width: 1.2, dash: true });
+        fseg(b, F1, [k.t + a, F1.y0], [k.t + a, F1.y1], { color: 'rose', alpha: 0.35, width: 1.2, dash: true });
+      });
+      fseg(b, F1, [F1.x0, gv], [F1.x1, gv], { color: 'amber', alpha: 0.6, width: 1.3, dash: true, ref: 'win' });
+    });
+    if (!explore && st >= 2) ks.forEach((k) => tie9(c, a, abs, k.t).forEach((x) => fdot(b, F1, x, G(k.t), { color: 'red', r: 4.5 })));
+    if (gv >= F1.y0 && gv <= F1.y1 && w.x >= F1.x0 && w.x <= F1.x1) fdot(b, F1, w.x, gv, { color: 'amber', r: 5, ref: 'win' });
+    // 창의 왼쪽 끝 손잡이(왼쪽 그림에서도 끌 수 있음)
+    b.handle('w9', F1.P(t, F1.y1 - 0.55), { color: 'amber', r: 7, ref: 'win', label: `t=${nf(t, 2)}`, dx: 12, dy: 0, align: 'left', baseline: 'middle', priority: 1, drag: (wp) => setT(F1.Q(wp).x) });
+    if (F2) {
+      drawFrame(b, F2, s, { ax: F2.x0, xn: 't', yn: 'g', title: 'g(t)의 그래프 (창 안의 최댓값)', tc: 'rose' });
+      if (showAll) {
+        clipTo(b, F2, () => fplot(b, F2, G, { color: 'rose', width: 3.4, glow: true, ref: 'g' }));
+        ks.forEach((k) => { if (G(k.t) <= F2.y1) fdot(b, F2, k.t, G(k.t), { color: 'red', r: 5.5, ref: 'g' }); ftext(b, F2, k.t, F2.y0, `t=${nf(k.t, 2)}`, { color: 'red', size: 12, dy: 28, weight: 800 }); });
+      } else if (explore) {
+        if (!b.thumb) { s0.tr9 = s0.tr9 || {}; s0.tr9[Math.round(t * 20)] = gv; }
+        Object.keys(s.tr9 || {}).forEach((k) => { const yv = s.tr9[k]; if (yv <= F2.y1 && yv >= F2.y0) fdot(b, F2, +k / 20, yv, { color: 'rose', r: 2.6, glow: false }); });
+      }
+      fseg(b, F2, [t, F2.y0], [t, Math.min(gv, F2.y1)], { color: 'amber', alpha: 0.6, width: 1.4, dash: true });
+      const labRight = t > (dom.x[0] + dom.x[1]) / 2;
+      b.handle('t9', F2.P(t, clamp(gv, F2.y0, F2.y1)), { color: 'rose', r: 7.5, ref: 'win', label: `g=${nf(gv, 2)}${gv > F2.y1 ? '↑' : ''}`, dx: labRight ? -12 : 12, dy: gv > F2.y1 ? 18 : -15, align: labRight ? 'right' : 'left', priority: 2, drag: (wp) => setT(F2.Q(wp).x) });
+    }
+  }
+  const SCENE9 = {
+    id: 'window-max', title: '[킬러] 길이 a인 창을 밀며 만드는 g(t) (구간의 최댓값)', short: '창을 미는 g(t)',
+    question: '길이가 일정한 창 [t, t+a]를 오른쪽으로 밀면, 창 안의 가장 높은 점은 어디로 옮겨 가고 g(t)는 어디서 꺾일까?',
+    guide: (s) => `<b>노란 점이나 빨간 점</b>을 좌우로 끌어 창(연한 노란 띠 $[t,\\ t+a]$)을 밀어 보세요. 창 안의 <b>가장 높은 점</b>(왼쪽 그림의 노란 점)의 높이가 $g(t)$이고, 오른쪽 그림에 그려집니다. g가 점으로 쌓이는 모양에서 <b>뾰족하게 꺾이는 곳</b>을 찾아 보세요. ${s.k9 === 'abs' ? '$|f|$의 최댓값이면 보라색 점선($y=|f(x)|$)에서 가장 높은 점을 봅니다.' : '이 그래프에서는 극점이 창에 들어오거나 나갈 때는 매끄럽고, 양 끝 높이가 같아지는 순간 꺾입니다.'}`,
+    tabs: { compact: true },
+    controls: ['t9', 'a9'],
+    presets: () => [
+      { group: '최댓값의 대상', label: '|f(x)|의 최댓값', color: 'violet', apply: (st) => { st.k9 = 'abs'; st.tr9 = {}; }, on: (st) => st.k9 === 'abs' },
+      { group: '최댓값의 대상', label: 'f(x)의 최댓값', color: 'violet', apply: (st) => { st.k9 = 'max'; st.tr9 = {}; }, on: (st) => st.k9 === 'max' },
+      { group: 'g의 그래프', label: '점으로 직접 그려 보기', color: 'rose', apply: (st) => { st.show9 = 'trace'; st.tr9 = {}; }, on: (st) => st.show9 === 'trace' },
+      { group: 'g의 그래프', label: '정답 그래프 보기', color: 'green', apply: (st) => { st.show9 = 'all'; }, on: (st) => st.show9 === 'all' }
+    ],
+    actions: [playAction('자동으로 창 밀기')],
+    steps: steps9,
+    reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text9(var9.cur())}</div>`,
+    problem: { tag: '25학년도 3월 학평(서울) 22번 · 23학년도 6월 모평 20번 유형', time: '목표 시간: 40초', text: () => probHTML(text9(var9.cur())), answer: () => tex(var9.cur().ans.tex), snap: () => ({ pv9: var9.cur().start }) },
+    solution: { standardTitle: '교과서식 풀이 · 구간별로 최댓값 찾기', standardTag: '정석 · 3분', quickTitle: '10초 컷 · 꺾이는 순간만 보기', quickTag: '10초 컷', standard: solStd9, quick: solQuick9 },
+    enter: (s) => { s.k9 = 'abs'; s.show9 = 'trace'; s.tr9 = {}; s.t9 = -2.8; s.a9 = 2; s.pv9 = var9.cur().start; s.animDir = 1; },
+    vary: Object.assign(var9, { onNext: (s) => { s.pv9 = var9.cur().start; } }),
+    focus: () => arrange(mkFrame(DOM9), mkFrame({ x: DOM9.x, y: [0, 5] }, { sy: 3.6 / 5, sx: NARROWQ() ? 1 : 0.85 }), !NARROWQ()),
+    tick: (s, dt) => { if (!s.playing) return false; bounce(s, 't9', 1.1, -3.4, 3.4, dt); return true; },
+    view: (s, lab) => {
+      const tab = tabOf(lab);
+      if (tab === 'problem') return {};
+      const explore = tab === 'explore', V = explore ? null : var9.cur();
+      const c = explore ? EXP9.c : V.c, abs = explore ? s.k9 === 'abs' : true, a = explore ? s.a9 : V.a;
+      const t = explore ? s.t9 : s.pv9;
+      const w = win9(c, a, t, abs), ks = kinksC(c, a, abs);
+      const near = ks.find((k) => Math.abs(k.t - t) < 0.06);
+      const showList = explore ? s.show9 === 'all' : s.step >= 3;
+      return {
+        status: near ? { tone: 'key', text: `꺾이는 점! 왼쪽 기울기 ${fmt(near.sL, 1)} ≠ 오른쪽 기울기 ${fmt(near.sR, 1)}` } : { tone: 'info', text: `창 [${fmt(t, 2)}, ${fmt(t + a, 2)}] 의 최댓값 g = ${fmt(w.v, 2)}` },
+        readouts: [
+          { label: '창의 왼쪽 끝 t', value: `t = ${fmt(t, 2)}`, color: 'amber', ref: 'win' },
+          { label: `창 [t, t+${fmt(a, 1)}] 안의 최댓값 g(t)`, value: fmt(w.v, 2), color: 'rose', ref: 'win' },
+          { label: '최댓값이 놓인 곳', value: w.k === 0 ? '창의 왼쪽 끝' : w.k === 1 ? '창의 오른쪽 끝' : `창 안의 극점 x = ${fmt(w.x, 2)}`, color: 'amber', ref: 'win' },
+          { label: '꺾이는 점 (미분 불가)', value: showList ? (ks.length ? ks.map((k) => `t = ${fmt(k.t, 2)}`).join(', ') : '없음') : '그래프를 그린 뒤 확인', color: 'red', ref: 'g' }
+        ],
+        notes: '창 안의 최댓값을 주는 점이 서로 다른 두 곳에서 같은 높이가 되는 순간에 g(t)가 꺾입니다. 극점이 창에 들어오거나 나갈 때는 매끄럽게 이어집니다.'
+      };
+    },
+    draw: draw9
+  };
+
+  /* ---------- 확장 장면의 조절 막대·상태 ---------- */
+  const EXTRA_PARAMS = {
+    th: { value: 0.5, min: -2.8, max: 3.8, step: 0.1, color: 'amber', label: '수평선의 높이 t', hint: '꼭짓점·끝점의 높이를 지나갈 때 교점의 개수를 살펴보세요', format: (v) => `t = ${fmt(v, 1)}` },
+    sl: { value: 0.5, min: -1.5, max: 3.5, step: 0.1, color: 'amber', label: '직선의 기울기 m (원점을 지남)', hint: '곡선의 한 부분과 기울기가 같아지는 순간을 살펴보세요', format: (v) => `m = ${fmt(v, 1)}` },
+    a7: { value: 0, min: -1, max: 5, step: 0.1, color: 'sky', label: '분자의 영점 a', hint: '분모의 영점(빨간 점)에 가까이 보내 보세요', format: (v) => `a = ${fmt(v, 1)}` },
+    b7: { value: 4.5, min: -1, max: 5, step: 0.1, color: 'violet', label: '분자의 영점 b', format: (v) => `b = ${fmt(v, 1)}` },
+    t8: { value: 1, min: 0.02, max: 1.5, step: 0.01, color: 'amber', label: '직선의 y절편 t (t → 0+)', hint: 't를 0에 가까이 보내며 표의 값을 보세요', format: (v) => `t = ${fmt(v, 2)}` },
+    ti8: { value: 1.8, min: 0.5, max: 2.5, step: 0.05, color: 'amber', label: '현의 길이의 절반 t (AB = 2t)', hint: 't가 커질 때 g(t)/t²을 보세요', format: (v) => `t = ${fmt(v, 2)}` },
+    m8: { value: 1, min: 0.5, max: 2, step: 0.25, color: 'violet', label: '직선의 기울기 m', hint: '기울기가 바뀌면 극한값도 바뀝니다', format: (v) => `m = ${fmt(v, 2)}` },
+    t9: { value: -2.8, min: -3.4, max: 3.4, step: 0.05, color: 'rose', label: '창의 왼쪽 끝 t (창 = [t, t+a])', hint: '창을 밀며 g(t)가 꺾이는 곳을 찾아 보세요', format: (v) => `t = ${fmt(v, 2)}` },
+    a9: { value: 2, min: 1, max: 3, step: 0.5, color: 'amber', label: '창의 길이 a', hint: 'a가 바뀌면 꺾이는 점의 위치도 바뀝니다', format: (v) => `a = ${fmt(v, 1)}` }
+  };
+  const EXTRA_STATE = { k6: 'hor', show6: 'trace', tr6: {}, pv6: 0, k7: 'two', k8: 'len0', pv8: 1, k9: 'abs', show9: 'trace', tr9: {}, pv9: 0 };
+  scenes.push(SCENE6, SCENE7, SCENE8, SCENE9);
+
   /* ---------- 5. 실험실 등록 ---------- */
   APLab.createLab({
     id: 'calc1-limits',
@@ -601,6 +1658,7 @@ window.addEventListener('DOMContentLoaded', function () {
     legacy: '../../labs/미적분1/함수의 극한·연속.html',
     board: { kind: 'cartesian', focus: { x: [-1.2, 3.2], y: [-2.3, 4.7] }, pad: 0.04 },
     params: {
+      ...EXTRA_PARAMS,
       gap: { value: 0, min: -2.0, max: 2.5, step: 0.05, color: 'sky', label: '오른쪽 식의 높이 변화 Δh (우극한 = 2 + Δh)', hint: 'Δh = 0 이면 좌극한과 우극한이 같아집니다', format: (v) => `Δh = ${fmt(v)}` },
       k: { value: 2, min: -2.0, max: 3.0, step: 0.05, color: 'rose', label: '함숫값 f(1) = k', hint: 'k = 2 이면 극한값과 함숫값이 같아집니다', format: (v) => `f(1) = ${fmt(v)}` },
       d: { value: 0.65, min: 0.08, max: 0.95, step: 0.01, color: 'amber', label: '1에서 떨어진 거리 d (x = 1 ± d)', hint: 'd를 줄이면 x → 1 로 접근합니다', format: (v) => `d = ${fmt(v)}` },
@@ -610,7 +1668,7 @@ window.addEventListener('DOMContentLoaded', function () {
       a: { value: 1, min: -1.6, max: 2.2, step: 0.05, color: 'amber', label: '구간의 한 끝 a', hint: 'f(a)·f(b) < 0 이면 사이에 실근이 있습니다', format: (v) => `a = ${fmt(v)}` },
       b: { value: 2, min: -1.6, max: 2.2, step: 0.05, color: 'violet', label: '구간의 다른 끝 b', format: (v) => `b = ${fmt(v)}` }
     },
-    state: { dual: false, animDir: -1 },
+    state: { dual: false, animDir: -1, ...EXTRA_STATE },
     persist: ['dual'],
     scenes
   });
