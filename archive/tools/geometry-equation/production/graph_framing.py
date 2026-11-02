@@ -317,6 +317,7 @@ QUADRATIC_PLOT_HEIGHT=(160,640)
 EQUAL_UNIT_EDGE_PX=40
 EQUAL_UNIT_MIN_CURVE_PX=48
 EQUAL_UNIT_MIN_NATURAL_PX=24
+EQUAL_UNITS_MIN_SCALE_PX=10   # G18b equalUnits on a rational / square root: fewer px per unit than this is refused (EQUAL_UNITS_WINDOW_TOO_WIDE)
 
 def plot_height_limit(plan):
     """plotHeightLimit is set by composite-candidate-svg-v1 for panels of a stack; a single figure may be up to 640 high."""
@@ -547,9 +548,18 @@ def _fit_rational_overview(plan):
     # and every dashed asymptote, branch end and clip edge missed the audit. Keep (0,1) comfortably inside the planned frame, so the two frames stay one.
     if ymax<1.0+.005*(ymax-ymin):ymax=1.0+.12*(ymax-ymin)   # same trigger as the engine (ymax<=1) plus a hair, so frames of rationals whose ymax is already above 1 are untouched
     if not all(math.isfinite(value) and abs(value)<=1e6 for value in (lo,hi,ymin,ymax)):raise ValueError('UNSUPPORTED_RATIONAL_NUMERIC_SCOPE')
+    equal_fields={}
+    if plan.get('equalUnits') is not None:
+        # G18b: equalUnits:true draws one x unit and one y unit the same length (y=x at 45 degrees, a circle a circle). The window is the one above, framed at one scale (the plot
+        # grows taller, up to the height limit, or the x range widens); a window that would need more than the limit to keep the pole, the curve ends and the origin readable is refused.
+        if plan.get('equalUnits') is not True or 'axisScale' in plan or plan.get('axisSqueeze') not in (None,False):raise ValueError('EQUAL_UNITS_INVALID')
+        viewport,height,scale=equal_unit_frame([(lo,ymin),(hi,ymax),(0.0,0.0),(0.0,1.0),(1.0,0.0)],plot_height_limit(plan),1.0)
+        if scale<EQUAL_UNITS_MIN_SCALE_PX or min(singularity_x-viewport[0],viewport[1]-singularity_x)*scale<EQUAL_UNIT_MIN_CURVE_PX:raise ValueError('EQUAL_UNITS_WINDOW_TOO_WIDE')
+        lo,hi,ymin,ymax=viewport[0],viewport[1],viewport[2],viewport[3]
+        equal_fields={'equalUnits':True,'axisRatio':1.0,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height},'clipRefine':True}
     features={'schemaVersion':'RATIONAL_LINEAR_OVER_LINEAR_FEATURES_v1','singularity':singularity,'horizontalAsymptoteY':_fraction_text(horizontal),'xIntercept':x_intercept}
     policy={'schemaVersion':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_POLICY_v1','sourceDomain':'ALL_REALS_WITH_DENOMINATOR_EXCLUSION','degreeGrammar':'LINEAR_OVER_LINEAR','singularityPolicy':'ONE_SIMPLE_REAL_POLE_OR_ONE_REMOVABLE_HOLE','horizontalAsymptotePolicy':'EXACT_LEADING_COEFFICIENT_RATIO','minimumFeatureSeparationCssPx':1,'holeMarkerRadiusIntrinsicPx':4,'minimumHoleMarkerDiameterCssPx':4.5}
-    fitted={**plan,'domain':[lo,hi],'viewport':[lo,hi,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_v1','rationalFeatures':features,'rationalFeaturePolicy':policy}
+    fitted={**plan,'domain':[lo,hi],'viewport':[lo,hi,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_v1','rationalFeatures':features,'rationalFeaturePolicy':policy,**equal_fields}
     return {'graphPlan':fitted,'policy':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
 # ---- inverse proportion y=k/(d0+d1*x): a nonzero CONSTANT numerator over a linear denominator (middle school 반비례, y=k/x) ----------------
@@ -669,6 +679,30 @@ def _sqrt_coefficients(values):
     if slope<=0:raise ValueError('UNSUPPORTED_SQRT_AFFINE_SLOPE')
     return constant,slope
 
+def _sqrt_overlay_window(plan,xmin,xmax,ymin,ymax):
+    """(G18b) A square-root figure with overlays shows both axes: the engine draws an axis only when the window reaches it, and an overlay line is cut by the window the figure is drawn in,
+    which the observer recomputes from the plan's window. So the window of a plan with overlays holds the origin and the unit points (1,0), (0,1) strictly inside (widened by 8 % of
+    the span otherwise, the rule of visual_engine/viewport.py). Plans without overlays keep their window."""
+    if not isinstance(plan.get('overlays'),dict):return [xmin,xmax,ymin,ymax]
+    unit_points=((0.0,0.0),(1.0,0.0),(0.0,1.0))
+    anchors=[(float(x),float(y)) for x,y in plan.get('overlayAnchors',[])]   # the declared overlay points: the window reaches them too
+    if all(xmin<x<xmax and ymin<y<ymax for x,y in unit_points+tuple(anchors)):return [xmin,xmax,ymin,ymax]
+    xs=[xmin,xmax]+[x for x,_ in unit_points+tuple(anchors)];ys=[ymin,ymax]+[y for _,y in unit_points+tuple(anchors)]
+    lo_x,hi_x,lo_y,hi_y=min(xs),max(xs),min(ys),max(ys);dx=(hi_x-lo_x)*.08;dy=(hi_y-lo_y)*.08
+    return [lo_x-dx,hi_x+dx,lo_y-dy,hi_y+dy]
+
+def _sqrt_equal_units(plan,xmin,xmax,ymin,ymax,lo,hi):
+    """(G18b) equalUnits on a square-root curve: the window above reframed at one scale on both axes (the origin and the unit points stay inside). Returns the viewport and the plan
+    fields; refuses a window that would need fewer than EQUAL_UNITS_MIN_SCALE_PX px per unit."""
+    xmin,xmax,ymin,ymax=_sqrt_overlay_window(plan,xmin,xmax,ymin,ymax)
+    refine={'clipRefine':True} if isinstance(plan.get('overlays'),dict) else {}   # the widened window of a square root with overlays is sampled finely (see function_sampling.sample clip_refine)
+    if plan.get('equalUnits') is None:return [xmin,xmax,ymin,ymax],refine
+    if plan.get('equalUnits') is not True or 'axisScale' in plan or plan.get('axisSqueeze') not in (None,False):raise ValueError('EQUAL_UNITS_INVALID')
+    points=[(xmin,ymin),(xmax,ymax),(0.0,0.0),(1.0,0.0),(0.0,1.0)]+[(x,y) for x,y in plan.get('overlayAnchors',[])]
+    viewport,height,scale=equal_unit_frame(points,plot_height_limit(plan),1.0)
+    if scale<EQUAL_UNITS_MIN_SCALE_PX or (hi-lo)*scale<EQUAL_UNIT_MIN_CURVE_PX:raise ValueError('EQUAL_UNITS_WINDOW_TOO_WIDE')
+    return viewport,{'equalUnits':True,'axisRatio':1.0,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height},'clipRefine':True}
+
 def _fit_sqrt_affine_overview(plan):
     constant,slope=_sqrt_coefficients(plan.get('radicand'))
     boundary=-constant/slope
@@ -727,7 +761,8 @@ def _fit_sqrt_affine_overview(plan):
     if not all(math.isfinite(value) and abs(value)<=1e6 for value in (lo,hi,xmin,xmax,ymin,ymax)):raise ValueError('UNSUPPORTED_SQRT_NUMERIC_SCOPE')
     features={'schemaVersion':'SQRT_AFFINE_FEATURES_v1','radicandBoundaryX':_fraction_text(boundary),'sourceEndpoints':endpoints,'rightTailDirection':'UP'}
     policy={'schemaVersion':'SQRT_AFFINE_FEATURE_POLICY_v1','sourceDomainMode':mode,'boundaryPolicy':'NATURAL_NONNEGATIVE_RADICAND','endpointState':'CLOSED','rightTailDirection':'UP','endpointMarkerRadiusIntrinsicPx':4,'minimumEndpointMarkerDiameterCssPx':3,'minimumEndpointToTailSpanCssPx':48}
-    fitted={**plan,'domain':[lo,hi],'viewport':[xmin,xmax,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'SQRT_AFFINE_ENDPOINT_OVERVIEW_v1','sqrtFeatures':features,'sqrtFeaturePolicy':policy,'requiredPoints':required_points}
+    window,equal_fields=_sqrt_equal_units(plan,xmin,xmax,ymin,ymax,lo,hi)
+    fitted={**plan,'domain':[lo,hi],'viewport':window,'shapeIntent':'OVERVIEW','overviewPolicy':'SQRT_AFFINE_ENDPOINT_OVERVIEW_v1','sqrtFeatures':features,'sqrtFeaturePolicy':policy,'requiredPoints':required_points,**equal_fields}
     return {'graphPlan':fitted,'policy':'SQRT_AFFINE_ENDPOINT_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
 # ---- General square-root functions y = s*k*sqrt(a(x-p)) + q (sqrt-affine family, GENERAL policy) -------------
@@ -849,7 +884,8 @@ def _fit_sqrt_affine_general_overview(plan):
     tail_direction='UP' if scale>0 else 'DOWN'
     features={'schemaVersion':'SQRT_AFFINE_GENERAL_FEATURES_v1','endpoint':{'x':pp_surd_text(boundary),'y':pp_surd_text(offset)},'radicandBoundaryX':pp_surd_text(boundary),'branchDirection':'RIGHT' if right else 'LEFT','tailDirection':tail_direction,'rangeDirection':'ABOVE' if scale>0 else 'BELOW','sourceEndpoints':endpoints}
     policy={'schemaVersion':'SQRT_AFFINE_GENERAL_FEATURE_POLICY_v1','sourceDomainMode':mode,'boundaryPolicy':'NATURAL_NONNEGATIVE_RADICAND','endpointState':'CLOSED','branchDirection':features['branchDirection'],'tailDirection':tail_direction,'rangeDirection':features['rangeDirection'],'endpointMarkerRadiusIntrinsicPx':4,'minimumEndpointMarkerDiameterCssPx':3,'minimumEndpointToTailSpanCssPx':48}
-    fitted={**plan,'domain':[lo,hi],'viewport':[xmin,xmax,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'SQRT_AFFINE_GENERAL_OVERVIEW_v1','sqrtFeatures':features,'sqrtFeaturePolicy':policy,'requiredPoints':required_points}
+    window,equal_fields=_sqrt_equal_units(plan,xmin,xmax,ymin,ymax,lo,hi)
+    fitted={**plan,'domain':[lo,hi],'viewport':window,'shapeIntent':'OVERVIEW','overviewPolicy':'SQRT_AFFINE_GENERAL_OVERVIEW_v1','sqrtFeatures':features,'sqrtFeaturePolicy':policy,'requiredPoints':required_points,**equal_fields}
     return {'graphPlan':fitted,'policy':'SQRT_AFFINE_GENERAL_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
 def _fit_absolute_value_overview(plan):

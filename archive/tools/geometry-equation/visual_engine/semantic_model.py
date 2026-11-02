@@ -18,6 +18,8 @@ REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'tar
 
 FIELDS|={'labelWeight','extension','offsetPx','paths','pathMark','autoOffset','over','ownership','markStyle','closed'}   # E32 additions to the component fields (kept apart from the long set above)
 FIELDS|={'squareSize'}   # G13a: the leg of a right-angle square (px) on a graph, bigger than the plane-figure token so it reads on a phone
+FIELDS|={'clipRefine'}   # G18b: a FUNCTION_GRAPH whose frame-cut ends are refined to about a pixel (equalUnits on a rational or a square root)
+FIELDS|={'nearCurve','nearLine','nearEnd'}   # G18b: a multi-curve label stands beside its own curve (nearCurve = curve id) or at the end of its own dashed asymptote (nearLine = asymptote primitive id)
 FIELDS|={'guide','anchorAt'}   # E37: a light dotted guide line (a SEGMENT) from a point of the main figure to its pulled-out copy
 
 def parity(a,b):

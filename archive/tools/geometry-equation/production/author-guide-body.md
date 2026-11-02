@@ -859,6 +859,8 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 독립 관측기는 곡선마다 색·점선·굵기, 점근선 선 위치, 시작점 점, 가지 끝(틀에 잘린 곳 포함)을 다시 확인한다. 굵은 곡선은 다른 곡선보다 굵어야 한다.
 - 오류 코드: `MULTI_CURVE_WINDOW_REQUIRED:<id>`, `MULTI_CURVE_WINDOW_INVALID`, `MULTI_CURVE_COLOR_INVALID:<id>`, `MULTI_CURVE_WEIGHT_INVALID:<id>`, `MULTI_CURVE_STYLE_INVALID:<id>`, `MULTI_CURVE_HIDE_LABELS_INVALID:<id>`, `MULTI_CURVE_RATIONAL_DEGENERATE:<id>`, `MULTI_CURVE_INVERSE_UNSUPPORTED:<id>`.
 
+**가로·세로 눈금을 같게 `equalUnits` (G18b).** 유리함수(일차/일차)와 무리함수 한 개의 그림은 기본 틀이 가로·세로 눈금 길이가 다르다. `y=x` 대칭, 기울기 ±1인 직선, 정사각형·원이 중요한 풀이는 `graphPlan.equalUnits:true`를 쓴다. 가로 한 칸과 세로 한 칸이 같은 길이가 되고(관측기가 ±1px로 확인), 그림은 필요한 만큼 세로로 길어지거나(최대 640) 가로 범위가 넓어진다. `true`만 쓸 수 있고 `axisScale`·`axisSqueeze`와는 함께 못 쓴다(`EQUAL_UNITS_INVALID`). 극점·곡선 끝·원점이 한 눈금 비에서 한 칸 10px 이상, 극점 양쪽 곡선 48px 이상으로 안 담기면 `EQUAL_UNITS_WINDOW_TOO_WIDE`로 거절한다(극점이나 필요한 점을 원점 가까이로 잡거나 쓰지 않는다). 이차·다항·구간별·multi-curve는 원래 한 눈금 비다. `equalUnits`를 쓰지 않은 plan의 그림은 그대로다.
+
 ### 3-41. 두 원의 호로 이루어진 영역(렌즈·활꼴): 중심이 다른 호를 한 `loop`에 잇기
 
 두 원(또는 두 반원)의 호가 만드는 **렌즈(공통 부분)**·**활꼴(초승달)** 처럼 한 영역의 경계가 **중심이 다른 원호 두 개**인 경우에는 3-9절의 `loop`를 그대로 쓰되 각 `step.arc.center`에 다른 점을 적는다. `displayCircles`로 원을 통째로 그리면 원문에 없는 반대쪽 호까지 보이므로, 원문이 반원만 보여 주면 `planeMarks.arcs`를 `highlight:false`(일반 굵기 실선)로 써서 필요한 호만 긋고 그 호를 영역 경계로 쓴다. 정답지 `item39`(23_금당중 2학기 중간 중2 q21, 히포크라테스의 활꼴)가 이 구성을 실제로 검증한다.

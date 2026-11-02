@@ -666,6 +666,16 @@ def rational_constant_overview_audit(plan,points,transform,topology,svg_root):
             elif group.get('data-owner')!='required-point-'+str(index):errors.append('RATIONAL_REQUIRED_POINT_COORDINATES_OWNER_MISMATCH:'+str(ident))
     return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'features':expected,'plotCssSize':[width,height],'topology':{'poles':pole_list,'holes':hole_list,'visibleIntervals':topology.get('visibleIntervals')},'asymptoteLines':len(asymptote_lines),'branchSideCounts':[len(left_points),len(right_points)],'mathMethod':'EXACT_CONSTANT_OVER_LINEAR_RATIONAL_TOPOLOGY'}
 
+def equal_units_opt_in_errors(plan,transform):
+    """(G18b) graphPlan.equalUnits on a rational or square-root figure: the plan records ratio 1 and the plot canvas, and the final figure draws one x unit and one y unit the same
+    length (+-1 px over the plot). Plans without the field are untouched."""
+    if 'equalUnits' not in plan:return []
+    errors=[];plot=plan.get('plotCanvas')
+    if plan.get('equalUnits') is not True or plan.get('axisRatio')!=1 or not isinstance(plot,dict) or set(plot)!={'width','height'}:errors.append('EQUAL_UNIT_DECLARATION_MISSING')
+    x0,x1,y0,y1=plan['viewport']
+    if abs(transform['sy']-transform['sx'])*max(x1-x0,y1-y0)*transform['displayScale']>1.0:errors.append('EQUAL_UNIT_SCALE_MISMATCH')
+    return errors
+
 def rational_overview_audit(plan,poly,points,transform,topology,svg_root):
     errors=[]
     if plan.get('sourceDomain')!={'kind':'ALL_REALS'}:return {'status':'UNSUPPORTED','errors':['RATIONAL_SOURCE_DOMAIN_REQUIRES_ALL_REALS']}
@@ -683,6 +693,7 @@ def rational_overview_audit(plan,poly,points,transform,topology,svg_root):
     policy={'schemaVersion':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_POLICY_v1','sourceDomain':'ALL_REALS_WITH_DENOMINATOR_EXCLUSION','degreeGrammar':'LINEAR_OVER_LINEAR','singularityPolicy':'ONE_SIMPLE_REAL_POLE_OR_ONE_REMOVABLE_HOLE','horizontalAsymptotePolicy':'EXACT_LEADING_COEFFICIENT_RATIO','minimumFeatureSeparationCssPx':1,'holeMarkerRadiusIntrinsicPx':4,'minimumHoleMarkerDiameterCssPx':4.5}
     if plan.get('rationalFeatures')!=expected:errors.append('RATIONAL_FEATURE_INVENTORY_MISMATCH')
     if plan.get('rationalFeaturePolicy')!=policy:errors.append('RATIONAL_FEATURE_POLICY_MISMATCH')
+    errors+=equal_units_opt_in_errors(plan,transform)
     x0,x1,y0,y1=plan['viewport'];lo,hi=plan['domain'];sx=transform['sx']*transform['displayScale'];sy=transform['sy']*transform['displayScale']
     width=(x1-x0)*sx;height=(y1-y0)*sy
     pole=float(singularity_x);asym=float(horizontal);root_x=float(numerator_root)
@@ -753,6 +764,7 @@ def rational_overview_audit(plan,poly,points,transform,topology,svg_root):
 
 def sqrt_affine_overview_audit(plan,poly,points,transform,topology,svg_root):
     errors=[];unsupported=[]
+    errors+=equal_units_opt_in_errors(plan,transform)
     try:radicand=polynomial(plan.get('radicand'),1)
     except (ValueError,TypeError):return {'status':'UNSUPPORTED','errors':['SQRT_AFFINE_GRAMMAR_REQUIRED']}
     if radicand.degree()!=1 or radicand.nth(1)<=0:return {'status':'UNSUPPORTED','errors':['SQRT_AFFINE_POSITIVE_SLOPE_REQUIRED']}
@@ -816,7 +828,7 @@ def sqrt_affine_overview_audit(plan,poly,points,transform,topology,svg_root):
 def sqrt_affine_general_overview_audit(plan,points,transform,topology,svg_root):
     """y = q + s*k*sqrt(a*(x-p)): the endpoint, branch side, monotone direction, range side, endpoints/markers and key points are all
     recomputed from the plan's exact coefficients and checked against the final polyline."""
-    errors=[];unsupported=[]
+    errors=equal_units_opt_in_errors(plan,transform);unsupported=[]
     try:constant,slope,amplitude,sign,offset,scale,root_x=_sqrt_general_fields(plan)
     except (ValueError,TypeError):return {'status':'UNSUPPORTED','errors':['SQRT_AFFINE_GENERAL_GRAMMAR_REQUIRED']}
     right=slope>0

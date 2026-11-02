@@ -943,7 +943,7 @@ def prepare(spec):
                 label['candidateCenters']=_region_label_centres([polygon],obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(polygon[0])
                 labels.append(label)
         elif kind=='FUNCTION_GRAPH':
-            result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]))
+            result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]),clip_refine=obj.get('clipRefine') is True)
             sampling.append({'id':oid,**{k:v for k,v in result.items() if k!='branches'}})
             # The pieces of one piecewise function (branch PIECE_n) are all the main curve, not a first curve and secondary ones.
             main=graph_index==0 or str(obj.get('branch','')).startswith(('PIECE_','G_PIECE_'))

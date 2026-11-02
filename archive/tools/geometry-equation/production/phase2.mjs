@@ -696,19 +696,19 @@ function specForFamily(plan,model,id){
       const offsetText=offset==='0'?'':(String(offset).startsWith('-')?offset:'+'+offset);
       formulaText=factor+'sqrt('+radicandText+')'+offsetText;
       expression='('+offset+')+('+sign+')*('+amplitude+')*sqrt('+radicandText+')';
-      const boundary=number(features.radicandBoundaryX),slope=number(p.radicand[1]),scale=number(p.amplitude??'1')*(p.sign??1),plotSy=256/(v[3]-v[2]);
+      const boundary=number(features.radicandBoundaryX),slope=number(p.radicand[1]),scale=number(p.amplitude??'1')*(p.sign??1),plotSy=(p.equalUnits===true?p.plotCanvas.height:256)/(v[3]-v[2]);
       const step=(1.2/(plotSy*Math.abs(scale)*Math.sqrt(Math.abs(slope))))**2;
       const boundaryProbe=boundary+(slope>0?step:-step);if(boundaryProbe>p.domain[0]&&boundaryProbe<p.domain[1])criticalX.push(boundaryProbe);
       criticalX.push(...(p.requiredPoints||[]).map(point=>point.x));
     }else{
-      const boundary=exactNumber(features.radicandBoundaryX),start=exactNumber(features.sourceEndpoints[0].x),slope=exactNumber(p.radicand[1]),plotSy=256/(v[3]-v[2]);
+      const boundary=exactNumber(features.radicandBoundaryX),start=exactNumber(features.sourceEndpoints[0].x),slope=exactNumber(p.radicand[1]),plotSy=(p.equalUnits===true?p.plotCanvas.height:256)/(v[3]-v[2]);
       const boundaryStep=(1.2/(plotSy*Math.sqrt(slope)))**2;
       if(Math.abs(start-boundary)<1e-10&&boundary+boundaryStep<p.domain[1])criticalX.push(boundary+boundaryStep);
     }
     // graphPlan.hideLabels (G18a): 'formula' leaves out the formula text, 'start' the texts that name the start and the end of the curve (x=end, the domain and range inequalities); the dots stay.
     // graphPlan.formulaAscii is the author's own form of the formula (formulaTex).
     const hiddenTexts=new Set(p.hideLabels??[]);
-    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX},...(hiddenTexts.has('formula')?[]:[{id:'formula',kind:'EQUATION_LABEL',text:'y='+(p.formulaAscii??formulaText),at:[v[0]+(v[1]-v[0])*(general?.72:.22),v[3]-(v[3]-v[2])*.12],priority:0}])];
+    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX,...(p.clipRefine===true?{clipRefine:true}:{})},...(hiddenTexts.has('formula')?[]:[{id:'formula',kind:'EQUATION_LABEL',text:'y='+(p.formulaAscii??formulaText),at:[v[0]+(v[1]-v[0])*(general?.72:.22),v[3]-(v[3]-v[2])*.12],priority:0}])];
     if(features.sourceEndpoints.length>1&&!hiddenTexts.has('start')){const end=features.sourceEndpoints[features.sourceEndpoints.length-1];objects.push({id:'sqrt-source-end-label',kind:'GRAPH_ANNOTATION',text:'x='+end.x,at:[number(end.x)-(v[1]-v[0])*.08,end.y+(v[3]-v[2])*.08],math:true,priority:0});}
     if(general&&p.domainRangeLabels===true&&!hiddenTexts.has('start')){
       const text=value=>String(value),endpoint=features.endpoint,spanX=v[1]-v[0],spanY=v[3]-v[2];
@@ -732,7 +732,7 @@ function specForFamily(plan,model,id){
         if(coordinates)objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:coordinates});
       }
     }
-    return {id,visualType:'function_graph',viewport:{xMin:v[0],xMax:v[1],yMin:v[2],yMax:v[3],width:general?610:384,height:320,panel:140},axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{sqrtFeatures:features,sqrtFeaturePolicy:p.sqrtFeaturePolicy,...(general?axisTickDisplayFacts(p):{})},objects};
+    return {id,visualType:'function_graph',viewport:p.equalUnits===true?{...graphViewport(v,expLogEqualCanvas(p)),...((p.axisRatio??1)===1?{equalUnits:true}:{})}:{xMin:v[0],xMax:v[1],yMin:v[2],yMax:v[3],width:general?610:384,height:320,panel:140},axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{sqrtFeatures:features,sqrtFeaturePolicy:p.sqrtFeaturePolicy,...(general?axisTickDisplayFacts(p):{})},objects};
   }
   if(plan.capability==='rational-spike-v1'){
     const p=plan.graphPlan,v=p.viewport,features=p.rationalFeatures;
@@ -743,7 +743,7 @@ function specForFamily(plan,model,id){
     // graphPlan.hideLabels (G18a): 'formula' leaves out the formula text, 'asymptotes' the x=p and y=q texts (the dashed lines stay); graphPlan.formulaAscii is the author's own form of the formula (formulaTex).
     const hiddenTexts=new Set(p.hideLabels??[]);
     const singularity=features.singularity,xSingularity=exactNumber(singularity.x),yAsymptote=exactNumber(features.horizontalAsymptoteY),objects=[
-      {id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,breaks:[xSingularity],criticalX:features.xIntercept===null?[]:[exactNumber(features.xIntercept)]},
+      {id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,breaks:[xSingularity],criticalX:features.xIntercept===null?[]:[exactNumber(features.xIntercept)],...(p.clipRefine===true?{clipRefine:true}:{})},
       ...(hiddenTexts.has('formula')?[]:[{id:'formula',kind:'EQUATION_LABEL',text:'y='+(p.formulaAscii??expression),at:[v[0]+(v[1]-v[0])*.25,v[3]-(v[3]-v[2])*.12],priority:0}]),
       ...(hiddenTexts.has('asymptotes')?[]:[{id:'horizontal-asymptote-label',kind:'GRAPH_ANNOTATION',text:'y='+features.horizontalAsymptoteY,...asymptoteLabelPlace(p,v,exactNumber,yAsymptote),math:true,priority:0}])
     ];
@@ -752,7 +752,7 @@ function specForFamily(plan,model,id){
       const place=verticalAsymptoteLabel(p,v,xSingularity,{at:[xSingularity+(v[1]-v[0])*.07,v[3]-(v[3]-v[2])*.08]});
       if(place)objects.push({id:'vertical-asymptote-label',kind:'GRAPH_ANNOTATION',text:'x='+singularity.x,...place,math:true,priority:0});
     }else if(singularity.kind==='REMOVABLE_HOLE')objects.push({id:'removable-hole-label',kind:'GRAPH_ANNOTATION',text:'뚫린 점',at:[xSingularity+(v[1]-v[0])*.08,exactNumber(singularity.y)+(v[3]-v[2])*.08],priority:0});
-    return {id,visualType:'function_graph',viewport:graphViewport(v,RATIONAL_OVERVIEW_CANVAS),axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),rationalGraphFeatures:features,rationalGraphPolicy:p.rationalFeaturePolicy},objects};
+    return {id,visualType:'function_graph',viewport:p.equalUnits===true?{...graphViewport(v,expLogEqualCanvas(p)),...((p.axisRatio??1)===1?{equalUnits:true}:{})}:graphViewport(v,RATIONAL_OVERVIEW_CANVAS),axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),rationalGraphFeatures:features,rationalGraphPolicy:p.rationalFeaturePolicy},objects};
   }
   if(plan.capability==='piecewise-polynomial-spike-v1')return piecewisePolynomialSpec(plan,id);
   if(plan.capability==='piecewise-discontinuous-spike-v1')return piecewiseDiscontinuousSpec(plan,id);
