@@ -192,6 +192,62 @@ def split_registry_changes(changes: list) -> tuple[list, list]:
     return native, sidecar
 
 
+RPM_MASTER_REL = "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+CROSSWALK_REL_DIR = "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0"
+
+
+def _compact_scope(value: str) -> str:
+    return "".join(str(value or "").split()).replace("Ⅱ", "II").replace("Ⅰ", "I")
+
+
+def build_target_parent_ref(assignment: dict) -> tuple[dict, list]:
+    """Build the registrar `targetParentRef` (+ the evidence refs it needs) from a small-meta `parentAssignment`.
+
+    Without a parent reference the registrar fills the student-screen parent (L1/L2) from the standard-unit
+    labels (e.g. "도함수의 활용/도함수의 활용"), which is not a canonical RPM parent, so the Consumer cannot
+    assign the question to a unit (`canonical_parent_missing`). `parentAssignment` holds the parent chosen per
+    question: {L1, L2, curriculum, scope, parentRefMode, crosswalkRecordId}. The registrar
+    (reviewed-exam-registration-v2.mjs withTargetParent) accepts the reference when
+      - the (curriculum, scope, L1, L2) row exists in the canonical RPM master, and
+      - L2 is the standard unit / sub-unit label, or an ACTIVE crosswalk row with the same PT/TPL
+        points at that exact L1/L2 (`crosswalkRef`).
+    parentRefMode UNIT_LABEL therefore carries no crosswalkRef; every other mode carries the recorded crosswalk row
+    so a request is never silently downgraded to the unit-label parent.
+    """
+    L1, L2 = assignment["L1"], assignment["L2"]
+    curriculum = assignment["curriculum"]
+    master_path = REPO_ROOT / RPM_MASTER_REL
+    master = json.loads(master_path.read_text(encoding="utf-8"))
+    rows = [r for r in master["records"]
+            if r.get("curriculum") == curriculum and _compact_scope(r.get("scope")) == _compact_scope(assignment["scope"])
+            and r.get("majorUnit") == L1 and r.get("midUnit") == L2]
+    if len(rows) != 1:
+        raise RequestGenerationError(
+            f"parentAssignment {curriculum}/{assignment['scope']}/{L1}/{L2} is not exactly one canonical RPM master parent "
+            f"(found {len(rows)}).")
+    ref = {"path": RPM_MASTER_REL, "curriculum": curriculum, "scope": rows[0]["scope"], "majorUnit": L1, "midUnit": L2}
+    evidence = [{"path": RPM_MASTER_REL, "sha256": sha256_file(master_path)}]
+    record_id = assignment.get("crosswalkRecordId")
+    if record_id and assignment.get("parentRefMode") != "UNIT_LABEL":
+        crosswalk_dir = REPO_ROOT / CROSSWALK_REL_DIR
+        found = []
+        for crosswalk_file in sorted(crosswalk_dir.glob("*.json")):
+            doc = json.loads(crosswalk_file.read_text(encoding="utf-8"))
+            found += [(crosswalk_file, row) for row in doc.get("records", []) if row.get("id") == record_id]
+        if len(found) != 1:
+            raise RequestGenerationError(f"parentAssignment crosswalk record {record_id} not found exactly once.")
+        crosswalk_file, row = found[0]
+        if (row.get("rpmPath") or {}).get("majorUnit") != L1 or (row.get("rpmPath") or {}).get("midUnit") != L2:
+            raise RequestGenerationError(
+                f"parentAssignment crosswalk record {record_id} points at "
+                f"{(row.get('rpmPath') or {}).get('majorUnit')}>{(row.get('rpmPath') or {}).get('midUnit')}, not {L1}>{L2}.")
+        cross_rel = f"{CROSSWALK_REL_DIR}/{crosswalk_file.name}"
+        cross_sha = sha256_file(crosswalk_file)
+        ref["crosswalkRef"] = {"path": cross_rel, "sha256": cross_sha, "recordId": record_id}
+        evidence.append({"path": cross_rel, "sha256": cross_sha})
+    return ref, evidence
+
+
 def load_json_bank(js_file: Path) -> list:
     cmd = ["node", "-e", f"""
     const fs = require('fs');
@@ -281,18 +337,33 @@ def generate_inbox_request(files: dict) -> dict:
             if f in q:
                 after[f] = q[f]
 
+        # Per-question parent unit (student-screen L1/L2). The registrar only accepts L1/L2 that equal the parent
+        # it derives from the evidence-bound reference, so the same assignment sets both after.L1/L2 and the reference.
+        parent_assignment = s_item.get("parentAssignment")
+        parent_ref = None
+        item_evidence = list(evidence_refs)
+        if parent_assignment:
+            parent_ref, parent_evidence = build_target_parent_ref(parent_assignment)
+            after["L1"], after["L2"] = parent_assignment["L1"], parent_assignment["L2"]
+            for ev in parent_evidence:
+                if ev not in item_evidence:
+                    item_evidence.append(ev)
+
         before = {}
         for k in after.keys():
             before[k] = cur.get(k, None)
 
-        req_items.append({
+        req_item = {
             "questionUid": q_uid,
             "sourceOrdinal": ord_num,
             "before": before,
             "after": after,
             "reason": s_item.get("reason", "문항 분석 및 Gemini 독립 검수 완료"),
-            "evidenceRefs": evidence_refs
-        })
+            "evidenceRefs": item_evidence
+        }
+        if parent_ref:
+            req_item["targetParentRef"] = parent_ref
+        req_items.append(req_item)
 
     # Generated-extension keys (EXT-*) are accepted by the v2 registrar only when the extension index lists them as
     # GENERATED_ACTIVE (and the registrar's own source-registry/parent/scope checks pass). They are carried unchanged
