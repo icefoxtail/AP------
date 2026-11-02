@@ -81,7 +81,9 @@
     const { b } = D;
     const W = 2.5, S = 2.9;
     const page = (th, w0 = -W, w1 = W) => { const w = wdir(th); return [add3(v3(-S, 0, 0), mul3(w, w0)), add3(v3(S, 0, 0), mul3(w, w0)), add3(v3(S, 0, 0), mul3(w, w1)), add3(v3(-S, 0, 0), mul3(w, w1))]; };
-    D.fitPts([v3(-S, -W, -W), v3(S, W, W)].concat(F.pts.map((q) => q.p), F.lines.flatMap((l) => [l.p, l.q])), { t: C.problem ? 50 : 64, b: 56, l: 40, r: 40 });
+    // 책장의 네 쪽(0·45·90·135°)의 양 끝을 모두 담습니다(양 끝점 두 개만 담으면 옆에서 볼 때 판이 화면 밖으로 잘려요).
+    const fanCorners = [0, 45, 90, 135].flatMap((th) => [wdir(th), mul3(wdir(th), -1)].flatMap((w) => [add3(v3(-S, 0, 0), mul3(w, W)), add3(v3(S, 0, 0), mul3(w, W))]));
+    D.fitPts(fanCorners.concat(F.pts.map((q) => q.p), F.lines.flatMap((l) => [l.p, l.q])), { t: C.problem ? 50 : 64, b: 56, l: 40, r: 40 });
     // 책장처럼 펼친 평면들(연하게)
     if (o.fan !== false) {
       const ths = [0, 45, 90, 135];
@@ -99,7 +101,7 @@
     // 시험 평면이 지나지 못하는 직선: 평면을 뚫는 점
     if (o.pierce && F.objs[0].k === 'ln' && !ok) {
       const ob = F.objs[0], n = cross3(U, wdir(theta)), den = dot3(n, ob.d);
-      if (Math.abs(den) > 0.03) { const t = -dot3(n, ob.p) / den, X = add3(ob.p, mul3(ob.d, t)); if (len3(X) < 4) { b.point(D.P(X), { color: 'rose', r: 6 }); D.obstacle(X, 8); if (C.txt && F.type === 'skew') D.label(X, '한 점에서만 만나요', { color: 'rose', size: 15, dir: { x: 0, y: -1 }, gap: 12 }); } }
+      if (Math.abs(den) > 0.03) { const t = -dot3(n, ob.p) / den, X = add3(ob.p, mul3(ob.d, t)); if (len3(X) < 4) { b.point(D.P(X), { color: 'rose', r: 6 }); D.obstacle(X, 8); if (C.txt && F.type === 'skew') D.label(X, '한 점에서만 만나요', { color: 'rose', size: 15, dir: { x: 0, y: -1 }, gap: 12, leader: true }); } }
     }
     // 글자
     if (C.txt) {
