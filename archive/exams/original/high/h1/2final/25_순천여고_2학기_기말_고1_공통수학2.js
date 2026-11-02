@@ -270,7 +270,11 @@ window.questionBank = [
       }
     },
     "tags": [],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 바깥 원 Q 안에 작은 원 P=R이 들어 있고 작은 원 안에 원소 (0,0)이 적힌 벤다이어그램.",
+    "solutionImageCaption": "P={(0,0)}과 R={(0,0)}은 같은 집합이고 Q={(x,y)|xy≥0}에 포함되므로 P=R⊆Q이다. 정답: ④",
+    "solutionImageSize": "medium"
   },
       {
     "number": 5,
@@ -618,7 +622,11 @@ window.questionBank = [
     "tags": [
       "도형"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: X→X→X 대응도. 왼쪽에서 가운데로 가는 화살표는 f, 가운데에서 오른쪽으로 가는 화살표는 g로 이름이 붙어 있다. 초록 굵은 경로 3→1→4는 f(3)=1, g(1)=4를 보이고, 주황 굵은 화살표는 f(4)=3을 보인다.",
+    "solutionImageCaption": "초록 경로 3→1→4에서 f(3)=1, g(1)=4이므로 (f⁻¹∘g⁻¹)⁻¹(3)=g(f(3))=4이다. (f∘g)⁻¹(3)은 f(g(x))=3인 x이다. 초록 화살표에서 g(1)=4, 주황 화살표에서 f(4)=3이므로 x=1이고, g(1)=4이다. 따라서 4+4=8이고 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
     {
   "number": 10,
@@ -825,7 +833,11 @@ window.questionBank = [
       }
     },
     "tags": [],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 점근선 x=-2, y=3과 그 교점인 대칭 중심 (-2,3), 그래프 위의 점 (2,1)을 나타낸 그림이다.",
+    "solutionImageCaption": "점근선 x=-2, y=3의 교점 (-2,3)이 대칭 중심이고 그래프가 점 (2,1)을 지나므로 a=2, b=-2, c=3이다. 따라서 a-b+c=7이고 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 13,
@@ -1043,7 +1055,11 @@ window.questionBank = [
     "tags": [
       "그래프"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: y=k/x와 직선 y=-x+10의 두 교점 P, Q와 삼각형 OPQ(넓이 44), 두 교점의 x좌표 u, v를 나타낸 그림(그림은 풀이로 얻은 k의 값으로 그림)",
+    "solutionImageCaption": "교점의 x좌표 u, v는 x²-10x+k=0의 두 근이고 삼각형 OPQ의 넓이 5|u-v|=44에서 |u-v|=44/5이므로 100-4k=(44/5)²이고 k=141/25이다. 정답 ①",
+    "solutionImageSize": "medium"
   },
   {
     "number": 16,
@@ -1333,7 +1349,11 @@ window.questionBank = [
     "tags": [
       "서술형"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: x<2에서 아래로 볼록, x≥2에서 위로 볼록인 두 조각이 점 (2,4)에서 이어지는 f의 그래프와 y=4, 점 (1,5), f(5)의 위치를 나타낸 그림.",
+    "solutionImageCaption": "y=4를 경계로 x<2에서는 f의 값이 4보다 크고 x≥2에서는 4 이하이므로 f는 일대일대응이고, f(1)=5이며 f(5)가 a의 값이다. 따라서 a=(f∘f)(1)=-5이다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 20,
@@ -1468,9 +1488,9 @@ window.questionBank = [
   },
   "tags": ["함수", "역함수", "정의역", "그래프"],
   "wide": false,
-  "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q21-solution.svg",
-  "solutionImageAlt": "역함수 y=2+√(x−1)와 직선 y=x−2의 한 교점 P를 나타낸 좌표 그래프",
-  "solutionImageCaption": "제곱하기 전에 x≥4를 확인하면 교점 P의 x좌표만 해가 된다.",
+  "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q21-solution-v2.svg",
+  "solutionImageAlt": "해설 그림: 가파른 곡선 f(x)=(x-2)²+1(x≥2)와 완만한 역함수 곡선 y=2+√(x-1)이 직선 y=x에 대칭이고, 직선 y=x-2가 역함수와 만나는 점 P.",
+  "solutionImageCaption": "가파른 곡선이 f, 완만한 곡선이 역함수 y=2+√(x-1)이며 둘은 y=x에 대하여 대칭이다. 역함수와 직선 y=x-2의 교점 P의 x좌표가 구하는 값 (9+√13)/2이다.",
   "solutionImageSize": "medium"
 }
 ];

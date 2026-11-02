@@ -59,7 +59,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 U 안의 두 원 P, Q에서 Q의 바깥(여집합)을 색칠하고, P와 Q가 겹치는 부분에 ∅를 적어 비어 있음을 보인다.",
+    "solutionImageCaption": "p⇒~q이므로 P⊆Qᶜ이다. 그림에서 P는 Q 바깥(Qᶜ, 색칠한 부분)에만 있고 P와 Q가 겹치는 부분에는 원소가 없다(∅). 정답: ①",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -119,7 +123,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선의 꼭짓점 (1,0)이 x축에 닿아 있고 곡선이 x축 아래로 내려가지 않는 그림.",
+    "solutionImageCaption": "예: k=2이면 y=(x-1)²+k-2=(x-1)²의 꼭짓점 (1,0)이 x축에 닿아 그래프가 x축 아래로 내려가지 않는다. 모든 x에서 (x-1)²+k-2≥0이 되는 k의 최솟값은 2이므로 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -179,7 +187,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
     "subUnit": "필요조건과 충분조건",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 P=(-2,4)와 a=2일 때, a=4일 때의 Q를 겹쳐 비교한 그림이다.",
+    "solutionImageCaption": "P=(-2,4)이고 Q의 끝이 ±√2(a=2)이면 P 안에 들어가지만, 끝이 ±2(a=4)이면 -2가 P에 속하지 않아 포함되지 않으므로 a<4이다. 따라서 정수 a의 최댓값은 3이고 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -208,9 +220,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "바깥 영역까지 합쳐 $5$개 영역이다. 바깥 색은 $4$가지이고, 이 색은 안쪽 $A,B,C,D$에 쓸 수 없다.\n안쪽은 나머지 $3$색으로 칠한다.\n선분을 공유하는 $A-B$, $B-C$, $C-D$, $D-A$만 서로 달라야 한다. 점 하나에서만 만나는 $A-C$, $B-D$는 인접하지 않는다.\n\n$A$: $3$가지\n$B$: $A$와 달라야 하므로 $2$가지\n\n$C=A$인 경우 $D$는 $A,C$와 다른 $2$가지이다.\n$C\\ne A$인 경우 $C$는 $A,B$와 다른 $1$가지, $D$는 $A,C$와 다른 $1$가지이다.\n따라서 안쪽 색칠은\n$3\\times2\\times(2+1)=18$가지이다.\n\n바깥 색 $4$가지까지 곱하면\n$4\\times18=72$가지이다.\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q7-solution.svg",
-    "solutionImageAlt": "다섯 영역의 인접 관계를 나타낸 해설 그림",
-    "solutionImageCaption": "바깥 영역은 안쪽 네 영역과 인접하고, 안쪽은 A-B-C-D-A 순서로 인접한다.",
+    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직사각형이 A, B, C, D 네 영역으로 나뉘고 둘레의 바깥이 회색의 다섯 번째 영역으로 표시된다. 주황 선분 A-B, B-C, C-D, D-A는 이웃한 경계이고 네 영역은 가운데 점 하나에서만 함께 만난다.",
+    "solutionImageCaption": "바깥 영역(5번째)은 A, B, C, D와 모두 맞닿아 4가지이고, 안쪽은 선분을 공유하는 A-B, B-C, C-D, D-A만 달라야 하므로 3×2×(2+1)=18가지이다. 따라서 4×18=72가지이므로 정답은 ①이다.",
     "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-06-COUNTING_APPLICATION",
     "subUnit": "경우의 수의 활용",
@@ -408,13 +420,13 @@ window.questionBank = [
     "answer": "④",
     "solution": "제4사분면에 있는 점은 $x\\gt0$, $y\\lt0$을 만족한다.\n주어진 함수에서 $x\\gt0$이면\n$x+3\\gt0$이므로 함수값의 부호는\n$4x-2k+15$의 부호로 정해진다.\n제4사분면을 지나지 않으려면 모든 $x\\gt0$에서\n$4x-2k+15\\ge0$이어야 한다.\n\n$4x$는 $x\\gt0$에서 양수이며 $x$를 $0$에 가깝게 할 수 있으므로\n$15-2k\\ge0$이어야 하고, 이 조건이면 충분하다.\n$2k\\le15$\n$k\\le\\dfrac{15}{2}$이다.\n자연수 $k$는 $1,2,3,4,5,6,7$의 $7$개이다.\n따라서 정답은 ④이다.",
 
-    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q13-solution.svg",
+    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q13-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수의 점근선과 사분면 조건을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: k=7인 예 y=(4x+1)/(x+3)의 그래프: 점근선 x=-3, y=4와 y절편 (0, 1/3)이 보이고 색칠한 제4사분면(x>0, y<0)에는 곡선이 들어가지 않는다",
 
-    "solutionImageCaption": "k=4 대표 그래프와 자연수 k=1,…,7 조건을 확인한다.",
+    "solutionImageCaption": "예: k=7일 때 y=(4x+1)/(x+3)의 그래프는 x>0에서 y>0이어서 색칠한 제4사분면을 지나지 않고, 일반적으로 x>0에서 4x-2k+15≥0이려면 k≤15/2이므로 자연수 k는 1부터 7까지 7개이다. 정답 ④",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -448,7 +460,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: y=5-√(x+3)의 그래프와 그 위의 두 점 (1,3), (6,2), 점 (0,1). 점 (0,1)에서 (1,3)으로 가는 주황 선분과 (6,2)로 가는 파랑 선분이 그려져 있다.",
+    "solutionImageCaption": "점 (0,1)과 곡선 위의 두 끝점 (1,3), (6,2)를 이은 선분의 기울기가 각각 2와 1/6로, (4-√(x+3))/x의 최댓값 2와 최솟값 1/6이어서 a-b의 최댓값은 1/6-2=-11/6이다(정답 ②).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -680,9 +696,9 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "n=3일 때 두 무리함수와 x=3, x=9가 만드는 점 A, C, D, B의 사다리꼴",
-    "solutionImageCaption": "n=3일 때 사각형 ACDB의 두 평행한 변 AB와 CD",
+    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 곡선 y=√(3x), y=√x와 x=n, x=n+6이 만나는 점 A, B, C, D로 만든 사다리꼴 ACDB에서 평행한 두 변 AB, CD를 같은 색으로, 두 변 사이 거리 6을 점선으로 나타낸 그림",
+    "solutionImageCaption": "A, B는 x=n, C, D는 x=n+6에서 곡선과 만나는 점이고 위쪽 곡선은 y=√(3x), 아래쪽 곡선은 y=√x이다. AB=(√3-1)√n, CD=(√3-1)√(n+6)이 평행하며(같은 색) 밑변의 길이는 6이므로 사다리꼴 ACDB의 넓이는 3(√3-1)(√n+√(n+6))이고, 넓이가 6√3이면 n=3이다.",
     "solutionImageSize": "medium",
     "content": "두 함수 $f(x)=\\sqrt{3x}$, $g(x)=\\sqrt{x}$의 그래프와 직선 $x=n$이 만나는 점을 각각 A, B라 하고, 직선 $x=n+6$이 만나는 점을 각각 C, D라 할 때, 사각형 ACDB의 넓이가 $6\\sqrt3$일 때, $n$의 값을 구하는 과정을 서술하시오. (단, $n$은 자연수) [6점]",
     "choices": [],

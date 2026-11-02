@@ -27,7 +27,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: ①~⑤ 다섯 그래프에 y축에 평행한 점선 수직선을 그어 만나는 점을 표시한 다섯 개의 작은 그림.",
+    "solutionImageCaption": "수직선을 그어 보면 ①은 1점, ②는 한 x에 점이 여러 개, ③은 2점, ④는 열린 점과 닫힌 점이 구분되어 1점, ⑤는 x=1에 점 2개이다. 따라서 함수의 그래프인 것은 ①, ④이다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 2,
@@ -61,7 +65,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
     "subUnit": "합성함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: X→X→X 대응도. 왼쪽에서 가운데로 가는 화살표는 f, 가운데에서 오른쪽으로 가는 화살표는 g로 이름이 붙어 있다. 파랑 굵은 화살표는 f의 2→4, 주황 굵은 화살표는 g의 2→2이다.",
+    "solutionImageCaption": "파랑 굵은 화살표가 f(2)=4, 주황 굵은 화살표가 g(2)=2이다. (f∘g)(2)=f(g(2))=f(2)=4이다. 정답: ④",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -167,7 +175,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 끝점 (4,2)와 y절편 (0,4)를 지나 왼쪽 위로 뻗는 y=√(4-x)+2의 그래프와 x=-12인 곡선 위의 점.",
+    "solutionImageCaption": "끝점 (4,2)와 y절편 (0,4)로 f(x)=√(4-x)+2를 구한 뒤 x=-12인 점(그림)에서 f(-12)=6이므로 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -366,13 +378,13 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "$x\\ge3$에서\n$f(x)=x^2-6x+a=(x-3)^2+a-9$\n이므로 $f$는 증가한다.\n증가함수와 그 역함수의 그래프가 만나는 점은 직선 $y=x$ 위에 있으므로\n교점의 $x$좌표는\n$f(x)=x$\n를 만족한다.\n두 그래프가 한 점에서 접하려면 이 방정식이 중근을 가져야 한다.\n$x^2-6x+a=x$이므로\n$x^2-7x+a=0$이다.\n판별식이 $0$이어야 하므로\n$49-4a=0$이다.\n따라서\n$a=\\dfrac{49}{4}$이다.\n이때 중근은\n$x=\\dfrac72\\ge3$\n이므로 정의역 조건도 만족한다.\n정답은 ⑤이다.",
 
-    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q11-solution-v2.svg",
 
-    "solutionImageAlt": "함수와 역함수의 접점 및 y=x를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: x≥3에서 증가하는 이차함수 y=f(x)와 그 역함수 y=f⁻¹(x)의 그래프가 직선 y=x에 대하여 대칭이고, 점 T(7/2, 7/2)에서 y=x 위에서 접하는 그림",
 
-    "solutionImageCaption": "f(x)=x의 중근 (7/2,7/2)을 표시하여 두 그래프의 접점을 확인한다.",
+    "solutionImageCaption": "x≥3에서 f는 증가하므로 y=f(x)와 y=f⁻¹(x)의 그래프는 y=x에 대하여 대칭이고, 접점 T(7/2, 7/2)는 y=x 위에 있어 방정식 f(x)=x, 곧 x²-7x+a=0이 중근을 가져야 하므로 a=49/4이다. 정답 ⑤",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -475,13 +487,13 @@ window.questionBank = [
     "answer": "①",
     "solution": "각 보기를 차례로 판단한다.\n\nㄱ. $f(x)=\\dfrac1x$는 정의역과 공역이 모두 $0$을 제외한 실수 전체이고 일대일대응이다.\n또\n$f(f(x))=x$\n이므로\n$f^{-1}(x)=\\dfrac1x$이다.\n따라서 ㄱ은 참이다.\n\nㄴ. $y=\\dfrac1x$의 그래프는 제1사분면과 제3사분면을 지난다.\n따라서 ㄴ은 거짓이다.\n\nㄷ. $f=f^{-1}$이므로 두 그래프는 완전히 일치한다.\n따라서 두 그래프의 교점은 무수히 많다.\n반면\n$f(x)=x$이면\n$\\dfrac1x=x$,\n$x^2=1$이므로\n$x=\\pm1$의 두 실근만 가진다.\n따라서 ㄷ은 거짓이다.\n\n그러므로 옳은 것은 ㄱ뿐이고 정답은 ①이다.",
 
-    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q14-solution.svg",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q14-solution-v2.svg",
 
-    "solutionImageAlt": "함수 y=1/x의 두 가지 그래프와 좌표축을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: y=1/x의 그래프(제1사분면과 제3사분면)와 직선 y=x, 두 그래프의 교점 (1,1)과 (-1,-1)을 나타낸 좌표평면 그림",
 
-    "solutionImageCaption": "y=1/x는 자기 자신이 역함수이고 제1·3사분면을 지나며 좌표축은 점근선이다.",
+    "solutionImageCaption": "f(x)=1/x의 역함수도 1/x이므로 y=f(x)와 y=f⁻¹(x)의 그래프가 일치하여 직선 y=x에 대하여 대칭이고, 그래프는 제1·3사분면을 지나며 f(x)=x의 실근은 x=±1뿐이므로 ㄱ만 옳다. 정답 ①",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -519,7 +531,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
     "subUnit": "합성함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: f(x)=(3x+1)/(x-3)의 그래프. 점근선 x=3, y=3과 교점 (3,3), 직선 y=x가 있고, 점 (1,-2)와 (-2,1)이 y=x에 대하여 서로 대칭이다.",
+    "solutionImageCaption": "a=-3이면 f의 그래프는 점근선의 교점 (3,3)을 지나는 직선 y=x에 대하여 대칭(예: (1,-2)와 (-2,1))이어서 f⁻¹=f이고, f⁻¹(13)=f(13)=4이다(정답 ③).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -623,7 +639,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 P(0,2), A(4,4), B(7,2), Q(3,0)로 이루어진 평행사변형 PABQ(파랑)와 삼각형 POQ(주황), 가로 7·세로 4인 직사각형을 나타낸 그림.",
+    "solutionImageCaption": "곡선 PA를 (3,-2)만큼 옮기면 곡선 QB와 겹쳐 곡선 사이의 띠가 평행사변형 PABQ와 같은 넓이가 되고, 가로 7·세로 4인 직사각형에서 바깥 네 직각삼각형(합 14)을 빼면 PABQ=14, 삼각형 POQ=3이다. 따라서 구하는 넓이는 14+3=17이므로 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -658,7 +678,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 y=f(x)=x²+x-2의 그래프와 수평선 y=-2, y=1. y=-2와의 교점 (-1,-2), (0,-2)와 y=1과의 교점 두 개를 점으로 나타냄",
+    "solutionImageCaption": "f(f(x))=0이면 f(x)=-2 또는 f(x)=1이다. y=-2와의 교점은 x=0, -1이고 y=1과의 교점은 x²+x-3=0의 두 근(합 -1)이므로 서로 다른 모든 실근의 합은 0+(-1)+(-1)=-2이고 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,

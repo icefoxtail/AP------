@@ -83,7 +83,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄: x≥3, x≤5, 두 범위가 겹친 3≤x≤5와 그 안의 정수점 3, 4, 5",
+    "solutionImageCaption": "x-3≥0에서 x≥3, 10-2x≥0에서 x≤5이므로 공통 범위는 3≤x≤5이고 정수 3, 4, 5의 개수는 5-3+1=3이어서 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -114,7 +118,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
     "subUnit": "합성함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: X→Y→Z 대응도. f는 1→5, 2→6, 3→4이고 g는 4→7, 5→9, 6→8이다. 2에서 6을 거쳐 8로 가는 두 화살표가 굵고 2, 6, 8에 바탕이 칠해져 있다.",
+    "solutionImageCaption": "f(2)=6이고 g(6)=8이므로 굵은 경로 2→6→8을 따라가면 (g∘f)(2)=g(f(2))=g(6)=8이다. 정답: ④",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -226,7 +234,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 끝점 (4,4)에서 끝나는 직선 f와 x=4, y=4로 이어지는 점선을 좌표평면에 나타낸 그림이다.",
+    "solutionImageCaption": "f(4)=12-a가 치역 y≤4의 최댓값 4와 같아야 하므로 a=8이다. 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -254,7 +266,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: x가 2보다 작은 구간의 포물선 조각과 x가 2 이상인 구간의 직선 y=-x+8이 점 (2,6)에서 만나고, 수평선 y=6을 경계로 포물선 조각은 위쪽, 직선은 아래쪽에 있다.",
+    "solutionImageCaption": "x가 2보다 작은 구간에서 포물선 조각의 값은 6보다 크고 끝점 (2,6)은 비어 있으며, x가 2 이상인 구간에서 y=-x+8의 값은 6 이하이므로 두 치역이 y=6에서 맞닿아 b=6이고, a=1일 때 a+b의 최솟값은 7이다. 따라서 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -372,13 +388,13 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "분자의 값이 $0$이 되는 곳이 $x$절편이므로\n$-5+a=0$,\n$a=5$이다.\n수평 점근선은 분자와 분모의 $x$의 계수의 비이므로\n$\\dfrac1b=1$,\n$b=1$이다.\n분모가 $0$이 되는 $x=-\\dfrac cb$가 수직 점근선이다. 따라서\n$-\\dfrac c1=-3$,\n$c=3$이다.\n그러므로\n$a+b+c=5+1+3=9$이다.",
 
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q13-solution.svg",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q13-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수 y=(x+5)/(x+3)의 그래프와 x절편 (−5,0), 수직점근선 x=−3, 수평점근선 y=1을 함께 표시한 좌표평면이다.",
+    "solutionImageAlt": "해설 그림: y=(x+5)/(x+3)의 그래프와 점근선 x=-3, y=1, x절편 (-5,0), y절편 (0,5/3)을 나타낸 그림",
 
-    "solutionImageCaption": "x절편 −5, 점근선 x=−3, y=1을 이용해 a=5, b=1, c=3을 확인한다.",
+    "solutionImageCaption": "x절편 -5에서 a=5, 수평 점근선 y=1에서 b=1, 수직 점근선 x=-3에서 c=3이므로 y=(x+5)/(x+3)이고 a+b+c=9이다. 정답 ⑤",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -668,10 +684,10 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) 끝점 $(1,2)$인 왼쪽 가지와 시작점 $(2,3)$인 오른쪽 가지, (2) $k=1$",
     "solution": "(1) 먼저 정의역에 맞추어 두 그래프를 따로 그린다.\n\n$x\\le1$에서 $y=2-\\sqrt{1-x}$이다.\n오른쪽 끝점 $(1,2)$를 찍고,\n$x=0$일 때 $(0,1)$,\n$x=-3$일 때 $(-3,0)$을 지난다.\n따라서 끝점 $(1,2)$에서 왼쪽 아래로 뻗는 가지를 그린다.\n\n$x\\ge2$에서 $y=\\sqrt{x-2}+3$이다.\n왼쪽 시작점 $(2,3)$을 찍고,\n$(3,4)$, $(6,5)$를 지나는 오른쪽 위 가지를 그린다.\n$1<x<2$에는 정의된 점이 없다.\n\n(2) 직선 $y=x+k$와 각 가지가 서로 다른 두 점씩 만나야 총 네 교점이 된다.\n\n첫째 가지에서는 $t=\\sqrt{1-x}\\ge0$이라 두면\n$x=1-t^2$, $y=2-t$이다.\n$2-t=1-t^2+k$,\n즉 $t^2-t+(1-k)=0$이다.\n\n서로 다른 두 비음수 근을 가지려면\n판별식 $4k-3>0$이고,\n두 근의 합 $1>0$, 곱 $1-k\\ge0$이어야 한다.\n따라서 $\\dfrac34<k\\le1$이다.\n\n둘째 가지에서는 $s=\\sqrt{x-2}\\ge0$이라 두면\n$x=s^2+2$, $y=s+3$이다.\n$s+3=s^2+2+k$,\n즉 $s^2-s+(k-1)=0$이다.\n서로 다른 두 비음수 근 조건은\n판별식 $5-4k>0$과 곱 $k-1\\ge0$이므로\n$1\\le k<\\dfrac54$이다.\n\n두 범위를 동시에 만족하는 값은 $k=1$뿐이다.\n실제로 이때 첫째 식의 근은 $t=0,1$이고,\n둘째 식의 근은 $s=0,1$이다.\n교점은 각각\n$(1,2)$, $(0,1)$, $(2,3)$, $(3,4)$로 모두 서로 다르다.\n\n따라서 (1)의 그래프는 위의 두 가지이고, (2)의 구하는 값은 $k=1$이다.",
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q23-solution.svg",
-    "solutionImageAlt": "두 무리함수의 조각 그래프와 직선, 네 교점을 나타낸 해설 그래프",
-    "solutionImageCaption": "왼쪽 가지의 오른쪽 끝점 (1,2)과 오른쪽 가지의 시작점 (2,3)을 표시하고 k=1일 때 네 교점을 확인한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 끝점 (1,2)에서 왼쪽 아래로 뻗는 y=2-√(1-x)의 가지와 시작점 (2,3)에서 오른쪽 위로 뻗는 y=√(x-2)+3의 가지, 이 둘과 서로 다른 네 점 (0,1), (1,2), (2,3), (3,4)에서 만나는 직선 y=x+k",
+    "solutionImageCaption": "(1) y=2-√(1-x)(x≤1)는 끝점 (1,2)에서 왼쪽 아래로, y=√(x-2)+3(x≥2)는 시작점 (2,3)에서 오른쪽 위로 뻗고 1<x<2에는 그래프가 없다. (2) 직선 y=x+k가 두 가지와 두 점씩 모두 네 점 (0,1), (1,2), (2,3), (3,4)에서 만나는 경우이며 k=1이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

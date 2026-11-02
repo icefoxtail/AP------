@@ -163,7 +163,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-06-CORE",
     "subUnit": "명제 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체집합 안에 P={1,3,9}가 있고, 그 안쪽에 Q={1,3}이 들어 있어 9만 P의 바깥쪽 영역에 있는 벤다이어그램.",
+    "solutionImageCaption": "p의 진리집합 P={1,3,9} 안에 q의 진리집합 Q={1,3}이 들어 있고, 9는 P에만 속한다. q이면 p이므로 p는 q이기 위한 필요조건이지만 충분조건은 아니다. 정답: ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -200,7 +204,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 X의 -1,0,1,2에서 집합 Y의 0,1,2,3으로 가는 화살표. -1과 1이 모두 1로 가고 0은 0, 2는 3으로 간다. Y의 0,1,3에는 바탕이 칠해져 있고 2는 화살표를 받지 않는다.",
+    "solutionImageCaption": "바탕을 칠한 0, 1, 3이 치역이고 공역의 2는 치역에 없다. -1과 1이 모두 1로 가므로 일대일 대응이 아니어서 역함수가 없다. 정답: 옳지 않은 것은 ⑤",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -296,13 +304,13 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "함수 $y=\\dfrac{k}{x-p}+q$의 수직 점근선은 $x=p$, 수평 점근선은 $y=q$이다.\n주어진 점근선에서\n$p=1$, $q=-4$이다.\n그래프가 $(0,4)$를 지나므로\n$4=\\dfrac{k}{0-1}-4$이다.\n양변에 $4$를 더하면 $8=-k$이므로 $k=-8$이다.\n따라서\n$k-p+q=-8-1-4=-13$이다.",
 
-    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q09-solution.svg",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q9-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수의 점근선과 주어진 점을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 점근선 x=1, y=-4를 점선으로 보이고 점 (0,4)를 지나는 유리함수 y=(-4x-4)/(x-1)=-8/(x-1)-4의 그래프",
 
-    "solutionImageCaption": "점근선 x=1, y=−4와 점 (0,4)를 확인하여 k=−8을 구한다.",
+    "solutionImageCaption": "점근선 x=1, y=-4에서 p=1, q=-4이고 점 (0,4)를 지나므로 k=-8이어서 곡선은 y=-8/(x-1)-4=(-4x-4)/(x-1)이며, k-p+q=-13이므로 정답은 ⑤이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -339,7 +347,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄: x≥-3, x≤3, 그리고 두 해의 공통 범위 -3≤x≤3과 그 안의 정수점 -3부터 3까지.",
+    "solutionImageCaption": "두 조건 x≥-3, x≤3의 공통 범위 -3≤x≤3 안의 정수는 -3, -2, -1, 0, 1, 2, 3의 7개이므로 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -372,7 +384,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 원이 차례로 안에 들어 있는 벤다이어그램. 가장 안쪽 원 2의 약수에 1과 2가 있고, 가운데 원은 n의 약수이며, 가장 바깥 원 24의 약수의 나머지 부분에 3, 4, 6, 8, 12, 24가 적혀 있다.",
+    "solutionImageCaption": "A₂={1,2}는 A₂₄={1,2,3,4,6,8,12,24} 안에 들어 있다. A₂ ⊆ Aₙ ⊆ A₂₄이므로 n의 약수집합은 이 둘 사이에 놓이고, n은 2의 배수이면서 24의 약수이다. 정답: ④",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -473,7 +489,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
     "subUnit": "합성함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 X의 0,1,2에서 X로 가는 함수 f의 대응도. 0은 0, 1은 1, 2는 1로 간다. 2→1과 1→1 화살표가 굵고 1에 바탕이 칠해져 있다.",
+    "solutionImageCaption": "굵은 화살표처럼 f(2)=1, f(1)=1이므로 f의 값이 1이 되면 계속 1이다. 따라서 f²(2)=f³(2)=f⁴(2)=1이고 합은 1+1+1=3이다. 정답: ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -548,10 +568,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "유리함수의 분모가 $0$이 되는 곳이 수직 점근선이고, $x$가 커질 때 두 일차식의 계수의 비가 수평 점근선이 된다.\n수직 점근선이 $x=-2$이므로\n$-c=-2$,\n$c=2$이다.\n수평 점근선이 $y=3$이므로 $a=3$이다.\n그래프가 $(0,1)$을 지나므로\n$1=\\dfrac{b}{0+2}$,\n$b=2$이다.\n무리함수는\n$y=\\sqrt{3x+2}+2$이다.\n제곱근 안이 $0$ 이상이어야 하므로\n$3x+2\\ge0$,\n$x\\ge-\\dfrac23$이다. 또한 $y\\ge2$이므로 그래프는 $x<0$일 때 제2사분면, $x>0$일 때 제1사분면을 지난다.\n정답은 제1, 제2사분면인 ①이다.",
-    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "무리함수의 시작점, 정의역과 치역, 제1·2사분면을 나타낸 좌표 그래프",
-    "solutionImageCaption": "x≥−2/3, y≥2이며 (−2/3,2)에서 시작하여 제2사분면과 제1사분면을 지난다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 무리함수 y=√(3x+2)+2의 그래프가 점 (-2/3, 2)에서 시작해 y축과 (0, 2+√2)에서 만나며 제2사분면에서 제1사분면으로 이어지는 그림",
+    "solutionImageCaption": "유리함수의 점근선이 x=-2, y=3이고 (0,1)을 지나므로 a=3, b=2, c=2이며, 무리함수 y=√(3x+2)+2는 (-2/3, 2)에서 시작해 y축과 (0, 2+√2)에서 만나 제2사분면과 제1사분면을 지난다. 정답 ①",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -616,10 +636,10 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "$\\angle APB=90^\\circ$인 점 $P$는 선분 $AB$를 지름으로 하는 원 위에 있다.\n$AB=\\sqrt{(1-(-1))^2+(-3-3)^2}=2\\sqrt{10}$이므로 그 원의 중심은 $A,B$의 중점 $(0,0)$이고 반지름은 $\\sqrt{10}$이다.\n직선 $l$을 일반형으로 쓰면\n$2x-y-k=0$이다.\n원점에서 이 직선까지의 거리는\n$\\dfrac{|k|}{\\sqrt{2^2+(-1)^2}}=\\dfrac{|k|}{\\sqrt5}$이다.\n직선과 원이 만나려면 이 거리가 반지름보다 크지 않아야 하므로\n$\\dfrac{|k|}{\\sqrt5}\\le\\sqrt{10}$,\n$|k|\\le5\\sqrt2$이다.\n$7<5\\sqrt2<8$이므로 가능한 정수는 $-7,-6,\\ldots,6,7$이다. 모두 $|k|<5\\sqrt2$이어서 각 직선은 원과 두 점에서 만난다. 따라서 교점 중 $A$ 또는 $B$가 포함되는 경우에도 다른 점을 $P$로 고를 수 있다.\n가능한 정수 $k$는 $15$개이다.",
-    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "선분 AB를 지름으로 하는 원과 직선 2x-y=k의 만남 조건을 나타낸 그림",
-    "solutionImageCaption": "직선과 탈레스 원이 만나는지 확인한 뒤 |k|의 범위와 정수 개수를 센다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원점 중심 반지름 √10인 원(AB가 지름, A(-1,3), B(1,-3))과 기울기 2인 두 접선 2x-y=±5√2를 그린 좌표평면 그림",
+    "solutionImageCaption": "AB를 지름으로 하는 원(반지름 √10)과 만나려면 직선 2x-y=k가 두 접선 k=±5√2 사이에 있어야 하므로 |k|≤5√2이고, 정수 k는 −7부터 7까지 15개이다. 정답 ⑤",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
     "subUnit": "원의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -657,10 +677,10 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "함숫값이 상수 $k$가 되려면 $k\\ge0$이고\n$|x^2-6x+4|=k$를 만족하는 서로 다른 $x$가 네 개 있어야 한다.\n완전제곱식으로 나타내면\n$x^2-6x+4=(x-3)^2-5$이다.\n절댓값 식은 다음 두 식으로 나뉜다.\n$(x-3)^2-5=k$이면\n$(x-3)^2=5+k$이다. $k\\ge0$일 때 서로 다른 두 실근이 생긴다.\n$(x-3)^2-5=-k$이면\n$(x-3)^2=5-k$이다. 서로 다른 두 실근을 얻으려면 $5-k>0$, 즉 $k<5$여야 한다.\n$0<k<5$이면 $5+k$와 $5-k$가 서로 다른 양수이므로 이 두 식에서 나오는 두 쌍의 근은 서로 겹치지 않는다. 따라서 네 실근을 얻는다.\n$k=0$이면 두 식이 같아 근은 두 개뿐이다. $k=5$이면 둘째 식에서 $x=3$ 한 개만 더 얻어 총 세 개이고, $k>5$이면 둘째 식에 실근이 없다.\n따라서 서로 다른 네 실근을 만드는 정수는 $1,2,3,4$이고 합은\n$1+2+3+4=10$이다.",
-    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "절댓값 이차함수와 y=2가 만나는 네 점을 나타낸 해설 그래프",
-    "solutionImageCaption": "0<k<5일 때 수평선 y=k가 네 점에서 만나며, k=0은 두 점, k=5는 세 점이다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: y=|(x-3)^2-5|의 그래프. 꼭짓점 V(3,5), x축과 만나는 점 A(3-√5,0)·B(3+√5,0)이 표시되고, 수평선 y=k가 그래프와 네 점에서 만난다.",
+    "solutionImageCaption": "예: k=4일 때 수평선 y=k가 그래프와 네 점에서 만나고(0<k<5이면 네 점), 이런 정수 k는 1, 2, 3, 4이므로 합은 10이다(정답 ⑤).",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -732,7 +752,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 서로 떨어진 두 원 A, B의 벤다이어그램. 1, 2는 A 안에, 3, 4는 B 안에 있고 두 원은 겹치지 않는다.",
+    "solutionImageCaption": "서로소인 두 집합은 공통 원소가 없다. 예를 들어 A={1,2}, B={3,4}이면 두 원이 겹치지 않아 A∩B=∅이다. 정답: 서로소는 A∩B=∅인 두 집합이고, 예는 {1,2}와 {3,4}, {a}와 {b,c}",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,

@@ -185,7 +185,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-06-CORE",
     "subUnit": "명제 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 집합 P, Q, R의 벤다이어그램에서 P는 R과 겹치는 색칠한 부분에만 원소가 있고, P만 있는 부분과 Q와 겹치는 부분은 ∅로 비어 있음을 보인다.",
+    "solutionImageCaption": "P∩R=P에서 P⊆R이고, P∪Qᶜ=Qᶜ에서 P⊆Qᶜ이므로 P와 Q는 겹치지 않는다. 그림에서 P는 R과만 겹치는 색칠한 부분에 있고, ∅로 표시한 부분에는 P의 원소가 없다. 정답: ③",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -246,13 +250,13 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "제곱근 안이 0 이상이어야 하므로 정의역은 $x\\le2$이다.\n$x=2$에서 제곱근이 0이 되어 함수값은 4이고, 제곱근 앞의 부호가 음수이므로 이 값이 최댓값이다. 치역도 $y\\le4$이다.\n$y=-\\sqrt{x+2}+4$에서 x를 $-x$로 바꾸면 $y=-\\sqrt{-x+2}+4$가 되므로 ④도 옳다.\n실제로 $x=1$이면 $y=3$이어서 제1사분면을 지나고, $x=-1$이면 $y=4-\\sqrt3>0$이어서 제2사분면을 지난다. $x=-20$이면 $y=4-\\sqrt{22}<0$이어서 제3사분면도 지난다.\n한편 $x\\ge0$인 정의역에서는 $x\\le2$이고\n$y=4-\\sqrt{2-x}\\ge4-\\sqrt2>0$이다.\n따라서 제4사분면은 지나지 않는다. 모든 사분면을 지난다는 ⑤가 옳지 않다.\n따라서 정답은 ⑤이다.",
 
-    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q08-solution.svg",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q8-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수의 끝점·정의역·치역·사분면을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 무리함수 y=-√(-x+2)+4의 그래프가 끝점 (2,4)에서 왼쪽으로 뻗어 y축과 (0, 4-√2), x축과 (-14, 0)에서 만나고, 곡선이 지나지 않는 제4사분면을 색칠한 그림",
 
-    "solutionImageCaption": "끝점 (2,4)와 x절편 (−14,0)을 기준으로 제4사분면을 지나지 않음을 확인한다.",
+    "solutionImageCaption": "y=-√(-x+2)+4는 끝점 (2,4)에서 왼쪽으로 뻗어 y축과 (0, 4-√2), x축과 (-14, 0)에서 만나며, x≥0에서는 y≥4-√2>0이므로 색칠한 제4사분면을 지나지 않아 모든 사분면을 지난다는 ⑤가 옳지 않다. 정답 ⑤",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -494,7 +498,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: a=2, b=3인 예에서 x<3일 때 y=3x+3, x≥3일 때 y=4x인 두 직선 조각이 점 (3,12)에서 이어지는 함수의 그래프.",
+    "solutionImageCaption": "예: a=2, b=3이면 x<3에서 y=3x+3, x≥3에서 y=4x이고 두 조각이 점 (3,12)에서 이어져 일대일대응이 된다. 이어지려면 b=6a-9이므로 a+b=7a-9이고, 정수 a의 최솟값 -1에서 a+b의 최솟값은 -16이므로 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -525,7 +533,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점과 (4,0)에서 x축에 닿는 W꼴 그래프 y=|2x(x-4)|와 수평선 y=k가 꼭짓점을 지나며 서로 다른 세 점에서 만나는 모습",
+    "solutionImageCaption": "y=|2x(x-4)|의 그래프와 수평선 y=k가 서로 다른 세 점에서 만나려면 위로 볼록한 부분의 꼭짓점을 지나야 하므로(2x(x-4)=-k가 중근) k의 최댓값은 8이고 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -670,7 +682,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-06-CORE",
     "subUnit": "명제 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 a=2일 때 y=x²-2x+3이 x축 위에 있는 모양(꼭짓점 (1,2)), 아래 패널은 a=2√3일 때 y=x²-2√3x+3이 x축에 접하는 모양(접점 (√3,0)).",
+    "solutionImageCaption": "모든 실수 x에서 x²-ax+3이 0 이상이려면 그래프가 x축 위에 있거나 접해야 하므로, a=2일 때는 x축 위에 있고 a=2√3일 때는 x축에 접하며, -2√3≤a≤2√3을 만족하는 정수 a는 -3부터 3까지 7개이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,

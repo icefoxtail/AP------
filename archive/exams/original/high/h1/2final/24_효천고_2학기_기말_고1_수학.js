@@ -358,10 +358,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "제곱근의 값이 실수가 되려면 근호 안의 식이 각각 $0$ 이상이어야 한다.\n첫 번째 근호에서\n$3x+5\\ge0$\n$3x\\ge-5$\n$x\\ge-\\dfrac53$\n두 번째 근호에서\n$2-x\\ge0$\n$-x\\ge-2$\n$x\\le2$\n이다.\n따라서 두 조건을 동시에 만족하는 범위는\n$-\\dfrac53\\le x\\le2$\n이다. 양 끝값은 근호 안이 $0$이어도 허용되므로 포함한다.\n이 범위 안의 정수는 $-1,0,1,2$이다.\n따라서 정수의 개수는 $4$개이고 정답은 ④이다.",
-    "solutionImage": "assets/images/24_효천고_2학기_기말_고1_수학/q05-solution.svg",
-    "solutionImageAlt": "-5/3 이상 2 이하인 수직선과 정수 네 개",
-    "solutionImageCaption": "두 근호의 정의역을 동시에 만족하는 정수를 센다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/24_효천고_2학기_기말_고1_수학/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 x≥-5/3, x≤2, 그 공통 범위와 공통 범위 안의 정수점 -1, 0, 1, 2를 보인다.",
+    "solutionImageCaption": "공통 범위 -5/3≤x≤2에 정수는 -1, 0, 1, 2의 4개이다(정답 ④).",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -1019,10 +1019,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "역함수가 존재하므로 $f:X\\to X$는 다섯 원소를 서로 다른 다섯 원소로 대응시키는 함수이다.\n(가)의 두 항은 모두 $X=\\{-2,-1,0,1,2\\}$의 원소이다.\n둘의 합이 $4$가 되려면 각각 $2$여야 한다.\n$f(f(-1))=2$ ①\n$f^{-1}(-2)=2\\ \\Rightarrow\\ f(2)=-2$ ②\n$u=f(-1)$이라 놓으면 ①에서 $f(u)=2$이다.\n가능한 $u$를 하나씩 따져 보자.\n$u=2$: $f(2)=-2$인데 $f(u)=2$여야 하므로 불가능하다.\n$u=-1$: $f(-1)=-1$과 $f(-1)=2$가 동시에 필요하여 불가능하다.\n$u=-2$: $f(-1)=-2=f(2)$가 되어 일대일 대응에 어긋난다.\n$u=1$: $f(-1)=1,\\ f(1)=2$이므로 (나)의 $f(1)f(-1)\\le0$에 어긋난다.\n따라서 $u=0$만 가능하고\n$f(-1)=0,\\quad f(0)=2$이다.\n(나)에서 $k=0$을 넣으면\n$f(0)f(-2)\\le0$\n$2f(-2)\\le0$\n$f(-2)\\le0$이다.\n$0$은 이미 $f(-1)$의 값이므로 일대일 대응에서 $f(-2)=0$일 수 없다.\n따라서 $f(-2)<0$이다.\n$-2$는 이미 $f(2)$의 값이므로 $f(-2)=-1$이다.\n남은 입력 $1$에는 남은 출력 $1$이 대응되어\n$f(1)=1$이다.\n$3f(1)+f(2)+f(-1)$\n$=3\\times1+(-2)+0=1$\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/24_효천고_2학기_기말_고1_수학/q13-solution.svg",
-    "solutionImageAlt": "집합 X의 다섯 입력과 다섯 출력의 일대일 대응",
-    "solutionImageCaption": "함숫값을 하나씩 결정해 남는 출력이 f(1)=1임을 본다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/24_효천고_2학기_기말_고1_수학/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: X에서 X로의 대응도. 실선 화살표는 (가)에서 정해진 f(2), f(-1), f(0), 점선 화살표는 (나)와 일대일대응 조건으로 정해진 f(-2), f(1)을 나타낸다.",
+    "solutionImageCaption": "실선은 (가)에서 정해진 f(2)=-2, f(-1)=0, f(0)=2이고, 점선은 (나)와 일대일대응 조건으로 정해진 f(-2)=-1, f(1)=1이다. 3f(1)+f(2)+f(-1)의 값은 1이다. 정답: ③",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "candidate_evidence",
@@ -1191,10 +1191,10 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "한 단의 높이는 $30\\,\\mathrm{cm}=0.3\\,\\mathrm m$이다.\n전체 높이가 $3\\,\\mathrm m$이므로 단의 수는\n$3\\div0.3=10$\n개이다.\n각 단의 폭을 $0.6\\,\\mathrm m$의 몇 배인지 나타내는 양의 정수를 $x_1,x_2,\\ldots,x_{10}$이라 하자.\n전체 폭은 $7.8\\,\\mathrm m$이므로\n$0.6x_1+0.6x_2+\\cdots+0.6x_{10}=7.8$\n$x_1+x_2+\\cdots+x_{10}=13$\n이다.\n각 폭은 양수이므로 먼저 모든 단에 $1$단위씩 준다.\n각 단에 추가할 단위 수를 $y_i=x_i-1$이라 놓으면 $y_i\\ge0$이고\n$(y_1+1)+(y_2+1)+\\cdots+(y_{10}+1)=13$\n$y_1+y_2+\\cdots+y_{10}+10=13$\n$y_1+y_2+\\cdots+y_{10}=3$\n이다.\n즉 남은 $3$단위를 $10$개의 단에 나누어 주면 된다.\n추가하는 단위 수의 모양은 $3$, $2+1$, $1+1+1$의 세 가지뿐이다.\n\n① 한 단에 $3$단위를 모두 추가하는 경우\n추가할 단을 $10$개 중 하나 고르므로 $10$가지이다.\n② 한 단에 $2$단위, 다른 한 단에 $1$단위를 추가하는 경우\n$2$단위를 받을 단은 $10$가지,\n$1$단위를 받을 단은 나머지 $9$가지이다.\n$10\\times9=90$\n가지이다. 두 단이 받는 양이 다르므로 역할을 바꾼 경우는 다른 계단이다.\n③ 서로 다른 세 단에 $1$단위씩 추가하는 경우\n$10$개의 단 중 세 단을 고르면 된다.\n$\\binom{10}{3}=\\dfrac{10\\times9\\times8}{3\\times2\\times1}$\n$=120$\n가지이다. 세 단이 받는 양은 모두 같으므로 고르는 순서를 구별하지 않는다.\n\n세 경우는 서로 겹치지 않으므로\n$10+90+120=220$\n가지이다.\n위에서 아래로 어느 단의 폭이 얼마인지가 정해지면 계단 하나가 정해지므로 추가로 나누지 않는다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/24_효천고_2학기_기말_고1_수학/q15-solution.svg",
-    "solutionImageAlt": "열 단에 폭 단위 하나씩 준 뒤 남은 세 단위",
-    "solutionImageCaption": "양의 정수 열 개의 합 13을 남는 세 단위의 배분으로 바꾼다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/24_효천고_2학기_기말_고1_수학/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: B에서 A까지 오르는 10단 계단을 옆에서 본 그림. 한 단의 높이는 30cm이고 전체 높이 AC는 3m(30cm×10단), 밑변 BC는 7.8m(60cm×13)이다. 각 단의 폭은 60cm의 배수이며 주황 세 단은 폭이 120cm인 예이다.",
+    "solutionImageCaption": "단의 수는 3m÷30cm=10이고, 각 단의 폭이 60cm의 몇 배인지를 나타내는 양의 정수 10개의 합이 7.8m÷60cm=13이다. 모든 단에 1씩 주고 남은 3을 10개 단에 나누면 10+90+120=220가지이므로 정답은 ⑤이다. (그림은 폭이 120cm인 세 단을 둔 한 예이다.)",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-08-COMBINATION_APPLICATION",
     "subUnit": "조합의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -1393,10 +1393,10 @@ window.questionBank = [
       "solutionVisualRef": "assets/images/24_효천고_2학기_기말_고1_수학/q17-solution.svg",
       "solutionVisualSha256": "58c87422c89dc1d6c2ca59698b3b6a16dd00b67a783d02f9c0128b8621391c45"
     },
-    "solutionImage": "assets/images/24_효천고_2학기_기말_고1_수학/q17-solution.svg",
-    "solutionImageAlt": "f(a)의 가능한 세 값과 각각의 실수 a 개수",
-    "solutionImageCaption": "네 개, 네 개, 두 개의 원상 개수를 겹치지 않게 합한다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/24_효천고_2학기_기말_고1_수학/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: y=f(x)=½|x²-6x|의 그래프와 수평선 y=2, y=4, y=3+√17. 극대점 (3,9/2)가 표시되어 있고 수평선과 만나는 점의 개수는 각각 4개, 4개, 2개이다.",
+    "solutionImageCaption": "f(a)=t의 t는 2, 4, 3+√17이고, 수평선 y=2, y=4, y=3+√17과 y=f(x)의 교점은 각각 4개, 4개, 2개이므로 (f∘f)(a)=4를 만족하는 실수 a는 모두 10개이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -1513,10 +1513,10 @@ window.questionBank = [
     "choices": [],
     "answer": "0",
     "solution": "원래 함수 $y=f(x)$와 역함수 $y=f^{-1}(x)$는 직선 $y=x$에 대하여 대칭이다.\n따라서 역함수의 점 $(3,9)$는 원래 함수의 점 $(9,3)$과 대응한다.\n먼저 원래 함수가 $(3,1)$을 지나므로\n$f(3)=1$\n$\\sqrt{3a+b}-1=1$\n$\\sqrt{3a+b}=2$\n$3a+b=4$ ①\n이다.\n역함수의 점을 바꿔 얻은 $(9,3)$도 원래 함수 위에 있으므로\n$f(9)=3$\n$\\sqrt{9a+b}-1=3$\n$\\sqrt{9a+b}=4$\n$9a+b=16$ ②\n이다.\n②에서 ①을 빼면\n$(9a+b)-(3a+b)=16-4$\n$6a=12$\n$a=2$\n이다. 이를 ①에 대입한다.\n$3\\times2+b=4$\n$6+b=4$\n$b=-2$\n이다.\n따라서 $a+b=2+(-2)=0$이다.\n구하는 값은 $0$이다.",
-    "solutionImage": "assets/images/24_효천고_2학기_기말_고1_수학/q19-solution.svg",
-    "solutionImageAlt": "f의 두 점과 역함수의 두 대칭점",
-    "solutionImageCaption": "(3,1),(9,3)의 좌표를 교환하여 역함수 점을 얻는다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/24_효천고_2학기_기말_고1_수학/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: y=f(x)의 점 (3,1), (9,3)과 역함수 y=f⁻¹(x)의 점 (1,3), (3,9)가 직선 y=x에 대하여 대칭인 그림",
+    "solutionImageCaption": "y=f(x)의 점 (3,1), (9,3)과 역함수 y=f⁻¹(x)의 점 (1,3), (3,9)가 직선 y=x에 대하여 서로 대칭이므로 f(3)=1, f(9)=3에서 a=2, b=-2이다. a+b=0",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "candidate_evidence",
@@ -1791,10 +1791,10 @@ window.questionBank = [
       "solutionVisualRef": "assets/images/24_효천고_2학기_기말_고1_수학/q22-solution.svg",
       "solutionVisualSha256": "4ac599b4d1fe805af013339523a352881faa9ce73ac633c4acda8475ce94b72e"
     },
-    "solutionImage": "assets/images/24_효천고_2학기_기말_고1_수학/q22-solution.svg",
-    "solutionImageAlt": "중앙 E와 A,B,C,D의 실제 맞닿은 영역 그림",
-    "solutionImageCaption": "바깥 고리 A-D-C-B-A에서 C=A 여부로 경우를 나눈다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/24_효천고_2학기_기말_고1_수학/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 서술형 4의 영역 A, B, C, D, E를 같은 배치로 그린 그림 네 개. E는 A, B, C, D 모두와 인접하고 바깥 네 영역은 A-B-C-D 순으로 이웃하며 A와 C, B와 D는 닿지 않는다. A와 C가 같은 색인 경우와 다른 색인 경우의 영역별 선택 수가 색과 함께 적혀 있다.",
+    "solutionImageCaption": "E의 색 5가지를 고르고 나머지 네 영역은 남은 4색으로 칠한다. A와 C가 같은 색이면 4×3×1×3=36가지, 다르면 4×3×2×2=48가지이므로 36+48=84가지이고, 5×84=420가지이다. 따라서 답은 420이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -1877,9 +1877,9 @@ window.questionBank = [
       "solutionVisualRef": "assets/images/24_효천고_2학기_기말_고1_수학/q23-solution.svg",
       "solutionVisualSha256": "186d6fabe7c2f7a38d406bef54403e0de1a724cf6c060f23d14aed6ade1fc232"
     },
-    "solutionImage": "assets/images/24_효천고_2학기_기말_고1_수학/q23-solution.svg",
-    "solutionImageAlt": "원본 길의 수직 단절과 경계별 도달 수",
-    "solutionImageCaption": "다섯 경계를 순서대로 지나며 마지막 네 출구의 160가지를 합한다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/24_효천고_2학기_기말_고1_수학/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: A에서 B까지의 격자 길을 문제 그림과 같게 그리고, 세로 경계 1~5의 길마다 그 길 바로 아래에 지나는 경로 수를 적은 그림. 경계 1은 1, 경계 2는 4, 경계 3은 16, 경계 4는 위 두 길 32와 아래 두 길 48, 경계 5는 160이다. 경계 3과 4 사이의 세로 길이 끊어진 위쪽은 주황, 아래쪽은 파랑으로 구분했다.",
+    "solutionImageCaption": "각 길 바로 아래의 수는 그 길을 지나는 경로 수이다. 경계 3과 4 사이의 세로 길은 위쪽(주황)에서 16+16=32, 아래쪽(파랑)에서 16×3=48로 따로 이어지고, 경계 4의 수를 모두 더한 160이 경계 5의 네 길에 각각 들어간다. 따라서 160×4=640이므로 답은 640이다.",
+    "solutionImageSize": "medium"
   }
 ];

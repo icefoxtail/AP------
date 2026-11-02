@@ -697,9 +697,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q13-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 둘 다 세 집합 A, B, C를 그렸고 A∩B 영역에는 공집합 기호가 있으며 B만 속한 영역에 x가 적혀 있다. 왼쪽은 (A∪C)∩(B∪C), 오른쪽은 C가 색칠되어 있고 A∩B가 비어 있으므로 같은 영역이다.",
-    "solutionImageCaption": "(가)에서 A∩B=∅(∅로 표시한 영역은 비어 있음)이므로 (A∪C)∩(B∪C)=C이다. n(B-C)=x라 하면 (나)에서 n(C)=3x이므로 n(B∪C)=3x+x=16, x=4이다. 정답: n(C)=12이므로 ③",
+    "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q13-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 벤다이어그램 두 개가 나란히 있다. 둘 다 세 집합 A, B, C를 그렸고 A와 B는 서로 떨어져 겹치지 않으며 B만 속한 영역에 x가 적혀 있다. 왼쪽은 (A∪C)∩(B∪C), 오른쪽은 C가 색칠되어 있고 A∩B가 비어 있으므로 같은 영역이다.",
+    "solutionImageCaption": "(가)에서 A∩B=∅(두 원이 겹치지 않음)이므로 (A∪C)∩(B∪C)=C이다. n(B-C)=x라 하면 (나)에서 n(C)=3x이므로 n(B∪C)=3x+x=16, x=4이다. 정답: n(C)=12이므로 ③",
     "solutionImageSize": "large"
   },
   {

@@ -29,7 +29,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: a=0일 때 x≥0에서 y=x+3(점 (0,3)에서 시작)과 x<0에서 기울기 2인 직선이 점선 y=3 아래로 (0,3)에 다가가는 그래프.",
+    "solutionImageCaption": "예: a=0이면 x≥0에서 y=x+3은 점 (0,3)에서 시작하고, x<0에서 기울기 2-a>0인 직선은 y=3보다 아래에서 (0,3)에 다가가 두 부분의 함수값이 겹치지 않는다. 따라서 a<2이므로 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -88,13 +92,13 @@ window.questionBank = [
     "answer": "④",
     "solution": "평행이동량을 알아보려면 분모가 $x-b$인 꼴로 고친다.\n$2x+5=2(x-1)+7$이므로\n$y=\\dfrac{2x+5}{x-1}$\n$=\\dfrac{2(x-1)+7}{x-1}$\n$=\\dfrac7{x-1}+2\\quad(x\\ne1)$\n\n$y=\\dfrac7x$를 오른쪽으로 $1$, 위로 $2$만큼 평행이동한 그래프이다.\n점근선도 $x=0$, $y=0$에서 $x=1$, $y=2$로 이동한다.\n\n$a=7,\\quad b=1,\\quad c=2$\n$a+b+c=7+1+2=10$\n\n따라서 정답은 ④이다.",
 
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q03-solution.svg",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q3-solution-v2.svg",
 
-    "solutionImageAlt": "평행이동된 유리함수의 점근선과 그래프를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: y=(2x+5)/(x-1)=7/(x-1)+2의 그래프, 점근선 x=1·y=2와 새 중심 (1,2), 원점 O에서 (1,2)로 옮겨 간 평행이동을 점선으로 나타낸 그림",
 
-    "solutionImageCaption": "y=2+7/(x−1)로 고쳐 y=7/x에서 (1,2)만큼 이동했음을 확인한다.",
+    "solutionImageCaption": "y=(2x+5)/(x-1)=7/(x-1)+2는 y=7/x를 x축 방향으로 1, y축 방향으로 2만큼 평행이동한 것이어서 점근선이 x=0, y=0에서 x=1, y=2로 옮겨 가므로 a=7, b=1, c=2이다. 따라서 a+b+c=10이고 정답은 ④이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -130,7 +134,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: y=-√(-4x+4)+1의 그래프가 끝점 (1,1)에서 시작해 점 (0,-1)을 지나 왼쪽 아래로 뻗고, 끝점에서 두 축으로 점선이 내려오는 그림.",
+    "solutionImageCaption": "끝점 (1,1)에서 근호 안의 값이 0이고 점 (0,-1)을 지나므로 a=-2, b=4, c=1이다. 따라서 a+b+c=3이고 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -277,7 +285,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수의 기본 원리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 전체 100개 중 2의 배수 50개와 5의 배수 20개를 두 원으로 나타내고, 겹치는 부분 10개와 두 원의 합집합을 색칠한 벤다이어그램.",
+    "solutionImageCaption": "1부터 100까지 2의 배수는 50개, 5의 배수는 20개이고 둘 다의 배수인 10의 배수가 10개이므로 2의 배수 또는 5의 배수는 50+20-10=60개이다. 100에서 60개를 빼면 10과 서로소인 수의 개수이다. 정답: ①",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -669,7 +681,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: X={1,2,3,4,5}에서 Y={2,3,4,5,6,7,8,9}로 가는 대응도의 한 예. 1→8, 2→7, 3→6, 4→4, 5→3이고 3→6 화살표가 굵으며 6에 바탕이 칠해져 있다.",
+    "solutionImageCaption": "예: f(1)=8, f(2)=7, f(3)=6, f(4)=4, f(5)=3. 6보다 큰 7, 8, 9 중 두 값을 골라 큰 값을 f(1), 작은 값을 f(2)로 하고(3가지), 6보다 작은 2, 3, 4, 5 중 두 값을 골라 큰 값을 f(4), 작은 값을 f(5)로 한다(6가지). 구하는 개수: 3×6=18",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -692,13 +708,13 @@ window.questionBank = [
     "answer": "$k=5,6,7,8,9$",
     "solution": "첫 그래프는 모든 사분면을 지나야 하고, 둘째 그래프는 제3사분면을 지나면 안 된다. 각각의 조건을 구한 뒤 공통 범위를 찾는다.\n\n① $y=\\dfrac{k}{x+2}-2$\n이 그래프가 제1사분면을 지나려면 어떤 $x\\gt0$에서 $y\\gt0$이어야 한다.\n$\\dfrac{k}{x+2}-2\\gt0$\n$\\Rightarrow k\\gt2(x+2)=2x+4$\n$x\\gt0$인 수가 존재할 조건은 $k\\gt4$이다.\n이때 $x\\to-2$의 양쪽과 충분히 큰 양의 $x$를 살펴보면 제2, 제3, 제4사분면도 각각 지나므로, 첫째 조건은 $k\\gt4$이다.\n\n② $y=\\dfrac{k}{x-3}+3$\n첫째 조건에 따라 $k\\gt4\\gt0$만 생각하면 된다.\n제3사분면은 $x\\lt0,\\ y\\lt0$인 부분이다.\n$x\\lt0$에서\n$\\dfrac{k}{x-3}+3\\lt0$\n$\\Leftrightarrow k\\gt3(3-x)=9-3x$이다.\n$x\\lt0$인 수 중 이를 만족하는 것이 존재하려면 $k\\gt9$이어야 한다.\n그러므로 제3사분면을 지나지 않을 조건은 $k\\le9$이다.\n\n두 조건을 합치면\n$4\\lt k\\le9$이다.\n정수 $k$는 $5,6,7,8,9$이다.\n\n따라서 구하는 값은 $k=5,6,7,8,9$이다.",
 
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q22-solution.svg",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q22-solution-v2.svg",
 
-    "solutionImageAlt": "두 유리함수의 사분면 조건을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 경계값 k=9일 때 y=3x/(x-3), 곧 y=9/(x-3)+3의 그래프가 점근선 x=3, y=3을 갖고 원점을 지나며 색칠한 제3사분면에 들어가지 않는 모양.",
 
-    "solutionImageCaption": "k=7 대표 그래프와 허용 정수 5,6,7,8,9를 확인한다.",
+    "solutionImageCaption": "경계값 k=9일 때 y=9/(x-3)+3의 그래프는 원점을 지나 색칠한 제3사분면에 들어가지 않으므로 둘째 조건은 k≤9이다. 첫째 조건 k>4와 합하면 4<k≤9이므로 구하는 정수 k는 5, 6, 7, 8, 9이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -724,10 +740,10 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $f^{-1}(x)=\\dfrac{x^2-4}{3}\\;(x\\ge0)$, (2) $\\dfrac{20}{9}$",
     "solution": "(1) 역함수의 식과 정의역\n$f(x)=\\sqrt{3x+4}$의 정의역은 $x\\ge-\\dfrac43$, 치역은 $y\\ge0$이다.\n$y=\\sqrt{3x+4}$\n$\\Rightarrow y^2=3x+4$\n$\\Rightarrow x=\\dfrac{y^2-4}{3}$\n여기서 $x$와 $y$를 서로 바꾸면\n$f^{-1}(x)=\\dfrac{x^2-4}{3}\\quad(x\\ge0)$이다.\n역함수의 정의역은 원래 함수의 치역이므로 $x\\ge0$임에 유의한다.\n\n(2) 삼각형 $ABC$의 넓이\n$f$는 증가함수이므로 $f$와 $f^{-1}$의 교점 $A$는 대칭축 $y=x$ 위에서 찾는다.\n$\\sqrt{3x+4}=x\\quad(x\\ge0)$\n$\\Rightarrow 3x+4=x^2$\n$\\Rightarrow(x-4)(x+1)=0$\n$x\\ge0$이므로 $x=4$이다.\n$\\Rightarrow A=(4,4)$\n\n점 $B(\\dfrac53,3)$을 지나고 기울기가 $-1$인 직선 $l$은\n$y-3=-\\left(x-\\dfrac53\\right)$\n$\\Rightarrow y=-x+\\dfrac{14}{3}$\n$\\Rightarrow x+y-\\dfrac{14}{3}=0$이다.\n\n$l$과 $f^{-1}$의 교점 $C$에서는\n$\\dfrac{x^2-4}{3}=-x+\\dfrac{14}{3}$\n$\\Rightarrow x^2+3x-18=0$\n$\\Rightarrow(x-3)(x+6)=0$\n역함수의 정의역 $x\\ge0$에 따라 $x=3$이다.\n$\\Rightarrow C=(3,\\dfrac53)$\n\n$B$와 $C$는 모두 직선 $l$ 위에 있으므로 선분 $BC$를 밑변으로 잡는다.\n$BC=\\sqrt{\\left(3-\\dfrac53\\right)^2+\\left(\\dfrac53-3\\right)^2}$\n$=\\sqrt{\\dfrac{16}{9}+\\dfrac{16}{9}}$\n$=\\dfrac{4\\sqrt2}{3}$\n\n높이는 점 $A(4,4)$에서 직선 $x+y-\\dfrac{14}{3}=0$까지의 거리이다.\n$h=\\dfrac{|4+4-\\dfrac{14}{3}|}{\\sqrt{1^2+1^2}}$\n$=\\dfrac{10}{3\\sqrt2}$\n$=\\dfrac{5\\sqrt2}{3}$\n\n따라서 삼각형의 넓이는\n$\\dfrac12\\cdot BC\\cdot h$\n$=\\dfrac12\\cdot\\dfrac{4\\sqrt2}{3}\\cdot\\dfrac{5\\sqrt2}{3}$\n$=\\dfrac{20}{9}$이다.\n\n따라서 (1) $f^{-1}(x)=\\dfrac{x^2-4}{3}\\ (x\\ge0)$, (2) 삼각형 $ABC$의 넓이는 $\\dfrac{20}{9}$이다.",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q23-solution.svg",
-    "solutionImageAlt": "함수와 역함수, y=x, 삼각형 ABC를 나타낸 해설 그래프",
-    "solutionImageCaption": "역함수의 정의역과 y=x 위의 교점 A, 직선 l 위의 B·C를 표시하여 넓이를 확인한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 함수 y=√(3x+4)와 그 역함수 y=(x²-4)/3(x≥0)의 그래프, 직선 y=x, 두 그래프의 교점 A, 직선 l 위의 점 B, C, 삼각형 ABC와 A에서 l에 내린 수선",
+    "solutionImageCaption": "y=√(3x+4)와 역함수 y=(x²-4)/3(x≥0)의 교점은 y=x 위의 A(4,4)이고, 직선 l: y=-x+14/3은 B(5/3,3)과 C(3,5/3)을 지난다. 밑변 BC=4√2/3, A에서 l까지의 높이 5√2/3이므로 (1) f⁻¹(x)=(x²-4)/3 (x≥0), (2) 삼각형 ABC의 넓이는 20/9이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
     "subUnit": "무리함수와 역함수",
     "subUnitConfidence": "category_or_cue_inferred",
