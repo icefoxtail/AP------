@@ -406,6 +406,31 @@ window.APLab.catalog = {
    "sceneTotal": 45
   },
   {
+   "id": "common-poly-solid",
+   "course": "common",
+   "unit": "다항식",
+   "strand": "space",
+   "order": 0.5,
+   "title": "다항식과 입체",
+   "short": "다항식과 입체",
+   "summary": "(a+b)², (a−b)²를 정사각형 조각으로, (a+b)³을 정육면체 조각 8개로 나누어 보고, 직육면체를 잘라 낸 입체에서 모서리 길이의 합·겉넓이·부피가 a+b+c, ab+bc+ca, a²+b²+c²와 어떻게 이어지는지 입체 그림을 돌려 보며 확인합니다.",
+   "keywords": "다항식 곱셈공식 곱셈 공식 (a+b)^2 (a+b)^3 합의 제곱 합의 세제곱 정사각형 정육면체 조각 직육면체 모서리 길이의 합 겉넓이 대각선 부피 사면체 삼각기둥 잘라 낸 입체 단면 항등식 변형 a+b+c ab+bc+ca 공통수학 입체",
+   "badge": "입체",
+   "scenes": [
+    "(a+b)², (a−b)² 정사각형 조각",
+    "(a+b)³ 정육면체 조각",
+    "직육면체: 모서리 합 · 겉넓이 · 대각선",
+    "사면체를 잘라 낸 입체",
+    "삼각기둥을 잘라 낸 입체의 부피"
+   ],
+   "legacy": "next/labs/common-poly-solid.html",
+   "next": "next/labs/common-poly-solid.html",
+   "glyph": "<path d=\"M10 30 L40 14 L70 30 L40 46 Z\"/><path d=\"M10 30 L10 56 L40 72 L40 46\"/><path d=\"M70 30 L70 56 L40 72\"/><path d=\"M10 30 L70 30\" stroke-dasharray=\"3 3\"/>",
+   "tags": [
+    "입체"
+   ]
+  },
+  {
    "id": "common-quadratic",
    "course": "common",
    "unit": "방정식과 부등식",
@@ -594,6 +619,30 @@ window.APLab.catalog = {
    "next": "next/labs/common-irrational.html",
    "glyph": "<path d=\"M10 62 Q22 26 66 18\"/><line x1=\"10\" y1=\"70\" x2=\"70\" y2=\"10\" stroke-dasharray=\"3 3\"/><circle cx=\"10\" cy=\"62\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>",
    "sceneTotal": 3
+  },
+  {
+   "id": "common-counting",
+   "course": "common",
+   "unit": "경우의 수",
+   "strand": "prob",
+   "order": 5,
+   "title": "순열과 조합",
+   "short": "순열과 조합",
+   "summary": "합의 법칙·곱의 법칙을 수형도로 세고, 순열의 자리 채우기(이웃하는·이웃하지 않는 조건 포함), 조합(순서를 지우면 r!개가 하나로 겹침), 원 위의 점과 평행선이 만드는 도형의 개수, 표·상자에 놓는 경우의 수(경우 나누기), 원순열(이전 교육과정)을 직접 세어 보며 확인합니다.",
+   "keywords": "경우의 수 합의 법칙 곱의 법칙 수형도 순열 조합 nPr nCr 팩토리얼 이웃하는 이웃하지 않는 일렬로 세우기 자리 채우기 도형의 개수 삼각형 대각선 평행사변형 표 상자 공 경우 나누기 원순열 원탁 이전 교육과정 공통수학",
+   "badge": "경우의 수",
+   "scenes": [
+    "합의 법칙·곱의 법칙과 수형도",
+    "순열 nPr · 자리 채우기",
+    "이웃하는 · 이웃하지 않는 순열",
+    "조합 nCr · 순서를 지우면",
+    "도형의 개수 세기",
+    "[기출 킬러] 표·상자에 놓는 경우의 수",
+    "[이전 교육과정] 원순열"
+   ],
+   "legacy": "next/labs/common-counting.html",
+   "next": "next/labs/common-counting.html",
+   "glyph": "<circle cx=\"16\" cy=\"40\" r=\"6\"/><circle cx=\"56\" cy=\"18\" r=\"6\"/><circle cx=\"56\" cy=\"40\" r=\"6\"/><circle cx=\"56\" cy=\"62\" r=\"6\"/><path d=\"M22 38 L50 20 M22 40 L50 40 M22 42 L50 60\"/>"
   },
   {
    "id": "alg-explog",
@@ -1372,6 +1421,7 @@ window.APLab.catalog = {
     "g7-polyhedra",
     "g7-surface-volume",
     "g7-solids",
+    "common-poly-solid",
     "geom-space",
     "geom-projection",
     "geom-space-coord"
@@ -1436,6 +1486,7 @@ window.APLab.catalog = {
    "name": "확률·통계 노선",
    "hue": "green",
    "stations": [
+    "common-counting",
     "prob-counting",
     "prob-probability",
     "prob-stats"
