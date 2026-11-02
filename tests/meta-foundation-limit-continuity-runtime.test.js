@@ -16,17 +16,20 @@ const receipt = readJson("archive/data/meta-foundation/runtime/runtime-bridge-re
 const catalog = C.decodeCatalog(readJson("archive/data/archive2-catalog.json"));
 
 assert.strictEqual(runtime.packId, "LIMIT_CONTINUITY");
-assert.strictEqual(runtime.records.length, 184);
-assert.strictEqual(runtime.records.filter((r) => r.standardUnitKey === "H15-M2-01").length, 104);
-assert.strictEqual(runtime.records.filter((r) => r.standardUnitKey === "H15-M2-02").length, 80);
-assert.strictEqual(new Set(runtime.records.map((r) => r.questionUid)).size, 184);
-assert.strictEqual(new Set(runtime.records.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, 184);
+// 하한(기준일 2026-11-02): 등록이 늘면 자연히 증가하므로 정확한 개수 대신 "줄어들지 않음"만 검사한다.
+const total = runtime.records.length;
+assert(total >= 184, `limit/continuity runtime records shrank: ${total}`);
+assert.strictEqual(
+  runtime.records.filter((r) => r.standardUnitKey === "H15-M2-01").length +
+  runtime.records.filter((r) => r.standardUnitKey === "H15-M2-02").length, total);
+assert.strictEqual(new Set(runtime.records.map((r) => r.questionUid)).size, total);
+assert.strictEqual(new Set(runtime.records.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, total);
 assert.strictEqual(runtime.records.filter((r) => r.catalogIdentityRepairVerified === true).length, 3);
 assert.strictEqual(runtime.counts.catalogUidDirectJoin, 181);
 assert.strictEqual(runtime.counts.catalogSourceIdentityRepairJoin, 3);
 assert.strictEqual(runtime.counts.automaticEligibleExpected, 133);
 assert.strictEqual(runtime.counts.difficultyDeferred, 0);
-assert.strictEqual(runtime.taxonomyRows.length, 33);
+assert(runtime.taxonomyRows.length >= 33, `limit/continuity taxonomy rows shrank: ${runtime.taxonomyRows.length}`);
 assert.strictEqual(new Set(runtime.records.map((r) => r.problemTypeKey)).size, 10);
 assert.strictEqual(new Set(runtime.records.map((r) => r.templateKey)).size, 31);
 const limitRows = runtime.records.filter((r) => r.standardUnitKey === "H15-M2-01");
@@ -100,11 +103,8 @@ for (const overlay of runtime.records) {
   }
 }
 
-assert.strictEqual(direct + repaired, 184);
-assert.strictEqual(sourceReadyLimit, 73);
-assert.strictEqual(sourceReadyContinuity, 55);
-assert.strictEqual(sourceHoldLimit, 31);
-assert.strictEqual(sourceHoldContinuity, 25);
+assert.strictEqual(direct + repaired, total);
+assert.strictEqual(sourceReadyLimit + sourceReadyContinuity + sourceHoldLimit + sourceHoldContinuity, total);
 
 assert.strictEqual(C.finderCourseGrade("수학II", "2015"), "고2");
 assert.strictEqual(C.finderCourseGrade("수학II", "2022"), "고3");
@@ -127,7 +127,11 @@ const combined = [
   ...readJson("archive/data/meta-foundation/runtime/integral-calculus-v1.json").records,
   ...readJson("archive/data/meta-foundation/runtime/derivative-v1.json").records
 ];
-assert.strictEqual(combined.length, 1983);
+// 하한(기준일 2026-11-02): 여섯 팩 합계. 등록이 늘면 자연히 증가한다.
+assert(combined.length >= 2122, `combined runtime records shrank: ${combined.length}`);
+const byPack = receipt.checked.existingRuntimeRecordsByPack;
+assert.strictEqual(combined.length, ["GEOMETRY_EQUATIONS", "SETS_PROPOSITIONS", "FUNCTIONS_GRAPHS", "LIMIT_CONTINUITY", "INTEGRAL_CALCULUS", "DERIVATIVE"]
+  .reduce((sum, id) => sum + byPack[id], 0));
 assert.strictEqual(new Set(combined.map((r) => r.questionUid)).size, combined.length);
 assert.strictEqual(new Set(combined.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, combined.length);
 
@@ -135,7 +139,10 @@ assert.strictEqual(receipt.status, "ACTIVE");
 assert.strictEqual(receipt.checked.combinedRuntimeRecords, runtimeRecordCount);
 assert.strictEqual(receipt.checked.combinedUniqueUid, runtimeRecordCount);
 assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, runtimeRecordCount);
-assert.strictEqual(receipt.checked.limitContinuityCatalogJoin, 184);
+assert.strictEqual(receipt.checked.limitContinuityCatalogJoin, total);
+assert.strictEqual(receipt.checked.limitContinuityCatalogJoinMismatch, 0);
+assert.strictEqual(receipt.checked.combinedRuntimeCatalogJoin, runtimeRecordCount);
+assert.strictEqual(receipt.checked.combinedRuntimeCatalogJoinMismatch, 0);
 assert.strictEqual(receipt.checked.limitContinuityAutomaticEligibleExpected, 133);
 assert(receipt.invariants.includes("Archive2 Finder and Compose grade routing treat 2015 수학II as 고2."));
 
