@@ -2344,6 +2344,236 @@ window.addEventListener('DOMContentLoaded', function () {
     const initialSlider = (p) => (p.initialT !== undefined ? p.initialT : p.defaultT);
     let lastStep = {};
 
+    /* ==========================================================================
+       기출 확장 (2026-11-02 선생님 결정): 외접원 위 점 이동과 사인법칙 (기출 41문항, 최근 23)
+         [기출 1] 외접원 위의 점 A를 움직여도 같은 호 BC에 대한 원주각은 일정 → a / sin A = 2R 이 유지됨
+         [기출 2] 외접원 위의 점 P → 삼각형 PBC 넓이의 최댓값 (4점형, 2025학년도 수능 14번 유형의 숫자·상황을 바꾼 변형)
+       - 기본 8선·심화 8선은 그대로 두고 세 번째 묶음 '기출 확장'으로 뒤에 붙였습니다.
+       - 새 장면은 탭에 따라 그림이 다릅니다: 탐구 = 조작하는 그림 전체 · 정리 = 풀이 단계(보조선) · 문제 = 주어진 값만(답·보조선은 풀이 단계 전에는 없음).
+       - 문제 탭의 「새 문제」: (R, BC) 조합을 바꿔(R=5·13·10·15, 변의 길이가 정수가 되게) 정답과 문제 그림을 함께 바꿉니다.
+       ========================================================================== */
+    const gcdL = (a, b) => (b ? gcdL(b, a % b) : Math.abs(a));
+    const rintL = (n) => Math.floor(Math.random() * n);
+    const pickL = (arr, not) => { let x; do x = arr[rintL(arr.length)]; while (arr.length > 1 && x === not); return x; };
+    function varierL(gen) { let cur = gen(null); return { cur: () => cur, next: () => (cur = gen(cur)) }; }
+    const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-ls-new>새 문제</button></div>`;
+    document.addEventListener('click', (ev) => {
+      const hit = ev.target && ev.target.closest && ev.target.closest('[data-ls-new]');
+      if (!hit) return;
+      const lab = window.lab, sc = lab && lab.scene;
+      if (!sc || !sc.vary) return;
+      sc.vary.next();
+      lab.s.revealed = false;
+      lab.setStep(1);
+      try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+      lab.invalidate(true);
+    });
+    const TAUL = 2 * Math.PI, EPSL = 0.16;
+    const RA = [[5, 6], [5, 8], [13, 10], [13, 24], [10, 12], [10, 16], [15, 18], [15, 24]];   // [R, BC]: 중심에서 BC까지의 거리 d = √(R² − (BC/2)²) 가 정수
+    function geomL(R, a) {
+      const d = Math.sqrt(R * R - a * a / 4), g = gcdL(a, 2 * R);
+      return { R, a, d, sn: a / g, sd: 2 * R / g, phB: Math.atan2(-d, -a / 2), phC: Math.atan2(-d, a / 2) };
+    }
+    const tToPhi = (G, t) => G.phB + EPSL + t * (TAUL - 2 * EPSL);
+    function phiToT(G, phi) {
+      while (phi < G.phB) phi += TAUL;
+      while (phi >= G.phB + TAUL) phi -= TAUL;
+      return Math.max(0, Math.min(1, (phi - G.phB - EPSL) / (TAUL - 2 * EPSL)));
+    }
+    const angAt = (V, P1, P2) => {
+      const a = { x: P1.x - V.x, y: P1.y - V.y }, b = { x: P2.x - V.x, y: P2.y - V.y };
+      return Math.acos(Math.max(-1, Math.min(1, (a.x * b.x + a.y * b.y) / (Math.hypot(a.x, a.y) * Math.hypot(b.x, b.y)))));
+    };
+    const degL = (r) => r * 180 / Math.PI;
+    const varL1 = varierL((prev) => {
+      const set = prev ? pickL(RA, prev.set) : RA[0];
+      return { set, R: set[0], a: set[1], obtuse: prev ? Math.random() < 0.4 : false, ans: set[0] };
+    });
+    const varL2 = varierL((prev) => {
+      const set = prev ? pickL(RA, prev.set) : RA[0], G = geomL(set[0], set[1]);
+      return { set, R: set[0], a: set[1], d: G.d, ans: set[1] * (set[0] + G.d) / 2 };
+    });
+    const sinTexL = (G) => `\\dfrac{${G.sn}}{${G.sd}}`;
+    const texL = APLab.tex;
+    const text1 = (v) => { const G = geomL(v.R, v.a); return `삼각형 ABC에서 ${texL('\\overline{BC}=' + v.a)}, ${texL('\\sin A=' + sinTexL(G))}이고 ${v.obtuse ? '각 A가 둔각일 때' : '각 A가 예각일 때'}, 삼각형 ABC의 외접원의 반지름의 길이를 구하시오.`; };
+    const text2 = (v) => { const G = geomL(v.R, v.a); return `삼각형 ABC의 외접원 ${texL('O')}의 반지름의 길이가 ${texL(String(v.R))}이고 ${texL('\\sin A=' + sinTexL(G))}이다(단, 각 A는 예각). 원 ${texL('O')} 위의 점 ${texL('\\mathrm{P}')}에 대하여 삼각형 ${texL('\\mathrm{PBC}')}의 넓이의 최댓값을 구하시오.`; };
+    function stepsL(kind, v) {
+      const G = geomL(v.R, v.a), tex = (x) => '$' + x + '$', sn = sinTexL(G);
+      if (kind === 'e1') {
+        return [
+          `삼각형 ABC의 외접원 ${tex('O')}를 그립니다. 변 BC에 대한 원주각이 A이므로 사인법칙 ${tex('\\dfrac{\\overline{\\mathrm{BC}}}{\\sin A}=2R')}이 성립합니다.`,
+          `${tex(`2R=\\dfrac{${G.a}}{${sn}}=${2 * G.R}`)}이므로 ${tex(`R=${G.R}`)}입니다.`,
+          `점 A가 호 BC 위 어디에 있어도(예각이든 둔각이든) ${tex('\\sin A')}는 같습니다(둔각이면 ${tex('\\sin A=\\sin(180^\\circ-A)')}). 그래서 ${v.obtuse ? '둔각' : '예각'}이라는 조건은 R을 바꾸지 않고, ${tex(`R=${G.R}`)}입니다.`
+        ];
+      }
+      return [
+        `사인법칙에서 ${tex(`\\overline{\\mathrm{BC}}=2R\\sin A=2\\times ${G.R}\\times ${sn}=${G.a}`)}입니다.`,
+        `중심 O에서 BC까지의 거리는 ${tex(`\\sqrt{${G.R}^2-${G.a / 2}^2}=${G.d}`)}입니다. 점 P에서 BC까지의 높이는 P가 BC에서 가장 먼 점 ${tex('\\mathrm{P}^*')}(OM의 연장선과 원의 교점)일 때 최대이고 ${tex(`h=R+${G.d}=${G.R + G.d}`)}입니다.`,
+        `${tex(`\\dfrac12\\times ${G.a}\\times ${G.R + G.d}=${v.ans}`)}이 넓이의 최댓값입니다.`
+      ];
+    }
+    function drawExt(kind, rect, s, labx) {
+      const tab = labx ? labx.tab : 'explore', ex = tab === 'explore', E1 = kind === 'e1';
+      const V = (E1 ? varL1 : varL2).cur(), G = ex ? geomL(5, 6) : geomL(V.R, V.a);
+      const st = tab === 'problem' ? 0 : Math.min(s.step, 3);
+      const sc = Math.min(rect.width, rect.height) * 0.37 / G.R, ox = rect.width * 0.5, oy = rect.height * 0.49;
+      drawSubtleGrid(rect, ox, oy, sc * (G.R >= 10 ? 2 : 1));
+      const S = (m) => toScr(m.x, m.y, ox, oy, sc);
+      const Bm = { x: -G.a / 2, y: -G.d }, Cm = { x: G.a / 2, y: -G.d };
+      const O = S({ x: 0, y: 0 }), B = S(Bm), Cp = S(Cm);
+      const outv = (m, k = 20) => { const l = Math.hypot(m.x, m.y) || 1; return { x: (m.x / l) * k, y: (-m.y / l) * k, align: 'center' }; };
+      const circ = () => dCircle(O, G.R * sc, 'rgba(56, 189, 248, 0.7)', 'rgba(56, 189, 248, 0.05)', 2.4);
+      const metric = (t) => { METRIC = t; };
+      if (E1) {
+        // ---------- 기출 1: 점 A 이동과 사인법칙 ----------
+        const phiA = ex ? tToPhi(G, s.t) : (V.obtuse ? -Math.PI / 2 : 2 * Math.PI / 3);
+        const Am = { x: G.R * Math.cos(phiA), y: G.R * Math.sin(phiA) }, A = S(Am), major = Am.y > -G.d + 1e-9;
+        const angA = angAt(Am, Bm, Cm), sinA = Math.sin(angA);
+        if (ex || st >= 1) circ();
+        dPoly([A, B, Cp], 'rgba(52, 211, 153, 0.12)', C.green, 2.6);
+        dLine(B, Cp, C.red, 3.4);
+        if (ex && major) {
+          dLine(O, B, 'rgba(192, 132, 252, 0.6)', 2, [5, 4]); dLine(O, Cp, 'rgba(192, 132, 252, 0.6)', 2, [5, 4]);
+          dArcAngle(O, B, Cp, `${degL(2 * angA).toFixed(1)}°`, C.purple, 24);
+        }
+        dArcAngle(A, B, Cp, '', C.gold, 22);
+        if (ex || st >= 1) { BRD.point(O, { color: C.white, r: 3.5, label: 'O', dx: -8, dy: -13, align: 'right' }); }
+        dVertex(B, 'B', C.white, outv(Bm));
+        dVertex(Cp, 'C', C.white, outv(Cm));
+        if (ex) {
+          dVertex(A, 'A', C.gold, outv(Am), true, (sPos) => {
+            const m = toMath(sPos.x, sPos.y, ox, oy, sc);
+            onExtT(phiToT(G, Math.atan2(m.y, m.x)));
+          });
+          dBadge(ox, oy + G.R * sc + 40, `a / sin A = ${G.a} / ${sinA.toFixed(3)} = ${(G.a / sinA).toFixed(2)} = 2R`, C.gold);
+          if (!major) dBadge(ox, oy - G.R * sc - 30, `작은 호 위: ∠A = 180° − ${degL(Math.PI - angA).toFixed(1)}° = ${degL(angA).toFixed(1)}° (둔각), sin A는 같다`, C.cyan);
+          metric(`∠A = ${degL(angA).toFixed(1)}° (노랑 호), sin A = ${sinA.toFixed(3)} | a / sin A = ${(G.a / sinA).toFixed(2)} = 2R (점 A가 어디에 있어도 같음)${major ? ` | 중심각 ∠BOC = 2∠A = ${degL(2 * angA).toFixed(1)}°` : ''}`);
+        } else {
+          dVertex(A, 'A', C.white, outv(Am));
+          drawDimension(B, Cp, (V.obtuse || st >= 3) ? -28 : 28, `BC = ${G.a}`, C.red);
+          dBadge(A.x + outv(Am, 1).x * 52, A.y + outv(Am, 1).y * 52, `sin A = ${G.sn}/${G.sd}`, C.gold);
+          if (st >= 2) {
+            const L = S({ x: -G.R, y: 0 }), Rr = S({ x: G.R, y: 0 });
+            drawDimension(L, Rr, V.obtuse ? -22 : 22, `지름 2R = ${G.a} ÷ ${G.sn}/${G.sd} = ${2 * G.R}`, C.gold);
+          }
+          if (st >= 3) {
+            const phi2 = V.obtuse ? Math.PI / 2 : -Math.PI / 2, A2m = { x: G.R * Math.cos(phi2), y: G.R * Math.sin(phi2) }, A2 = S(A2m);
+            dPoly([A2, B, Cp], 'rgba(244, 114, 182, 0.07)', 'rgba(244, 114, 182, 0.75)', 2, false);
+            dArcAngle(A2, B, Cp, '', C.pink, 20);
+            BRD.point(A2, { color: C.pink, r: 5, hollow: true, label: 'A′', dx: outv(A2m).x, dy: outv(A2m).y, align: 'center' });
+            dBadge(ox, V.obtuse ? oy - G.R * sc - 30 : oy + G.R * sc + 38, `A′: ∠A′ = 180° − ∠A, 그래도 sin A′ = sin A → R = ${G.R}`, C.pink);
+          }
+          metric(st >= 2 ? `2R = BC / sin A = ${2 * G.R}, R = ${G.R}` : '');
+        }
+        return;
+      }
+      // ---------- 기출 2: 원 위의 점 P, 삼각형 PBC 넓이 ----------
+      const phiA = 2 * Math.PI / 3, Am = { x: G.R * Math.cos(phiA), y: G.R * Math.sin(phiA) }, A = S(Am);
+      const phiP = ex ? tToPhi(G, s.t) : (st >= 2 ? Math.PI / 2 : 190 * Math.PI / 180);
+      const Pm = { x: G.R * Math.cos(phiP), y: G.R * Math.sin(phiP) }, Pp = S(Pm);
+      const h = Pm.y + G.d, Sx = G.a * Math.abs(h) / 2, Smax = G.a * (G.R + G.d) / 2;
+      circ();
+      BRD.point(O, { color: C.white, r: 3.5, label: 'O', dx: -8, dy: -13, align: 'right' });
+      dVertex(B, 'B', C.white, outv(Bm));
+      dVertex(Cp, 'C', C.white, outv(Cm));
+      if (ex) {
+        const top = Math.abs(phiP - Math.PI / 2) < 1e-6;
+        const F = S({ x: Pm.x, y: -G.d });
+        dPoly([Pp, B, Cp], top ? 'rgba(52, 211, 153, 0.22)' : 'rgba(251, 191, 36, 0.16)', top ? C.green : C.gold, 2.6, top);
+        dLine(Pp, F, C.gold, 2.2, [5, 4]);
+        if (F.x < B.x - 1) dLine(B, F, 'rgba(251, 191, 36, 0.55)', 1.6, [3, 4]);
+        if (F.x > Cp.x + 1) dLine(Cp, F, 'rgba(251, 191, 36, 0.55)', 1.6, [3, 4]);
+        if (Math.abs(F.x - Pp.x) < 1 && Math.abs(Pp.y - F.y) > 8) drawRightAngle(F, Pp, F.x <= O.x ? Cp : B, 10, C.gold);
+        dLine(B, Cp, C.red, 3.4);
+        dVertex(Pp, top ? 'P (최대 위치)' : 'P', C.gold, outv(Pm, top ? 26 : 20), true, (sPos) => {
+          const m = toMath(sPos.x, sPos.y, ox, oy, sc);
+          let ph = Math.atan2(m.y, m.x);
+          if (Math.abs(ph - Math.PI / 2) < 0.07) ph = Math.PI / 2;
+          onExtT(phiToT(G, ph));
+        });
+        dBadge(ox, oy + G.R * sc + 40, `S(P) = ½ · ${G.a} · ${Math.abs(h).toFixed(2)} = ${Sx.toFixed(2)}   (최댓값 ${Smax})`, top ? C.green : C.gold);
+        metric(`BC = ${G.a}, 점 P에서 BC까지의 높이 h = ${Math.abs(h).toFixed(2)} | S(P) = ${Sx.toFixed(2)} | 가장 큰 넓이 = ½·${G.a}·(R + ${G.d}) = ${Smax}  (P가 BC의 수직이등분선과 원의 위쪽 교점일 때)`);
+        return;
+      }
+      // 문제·정리: 주어진 것 — 원 O(반지름 R), 삼각형 ABC와 sin A, 점 P
+      dPoly([A, B, Cp], 'rgba(52, 211, 153, 0.08)', C.green, 2.4);
+      dLine(B, Cp, C.red, 3);
+      dVertex(A, 'A', C.white, outv(Am));
+      dBadge(A.x + outv(Am, 1).x * 52, A.y + outv(Am, 1).y * 52, `sin A = ${G.sn}/${G.sd}`, C.gold);
+      const Rr = S({ x: G.R * Math.cos(0.1), y: G.R * Math.sin(0.1) });
+      dLine(O, Rr, 'rgba(56, 189, 248, 0.8)', 2, [5, 4]);
+      dBadge((O.x + Rr.x) / 2 + 20, (O.y + Rr.y) / 2 + 18, `R = ${G.R}`, C.cyan);
+      if (st < 2) { dLine(Pp, B, 'rgba(244, 114, 182, 0.6)', 2); dLine(Pp, Cp, 'rgba(244, 114, 182, 0.6)', 2); dVertex(Pp, 'P', C.pink, outv(Pm)); }
+      if (st >= 1) drawDimension(B, Cp, 26, `BC = 2R sin A = ${G.a}`, C.red);
+      if (st >= 2) {
+        const M = S({ x: 0, y: -G.d }), Ps = S({ x: 0, y: G.R });
+        dLine(O, M, C.cyan, 2.2, [5, 4]);
+        drawRightAngle(M, O, Cp, 10, C.cyan);
+        dBadge(O.x + 40, (O.y + M.y) / 2, `OM = ${G.d}`, C.cyan);
+        dLine(Ps, M, C.gold, 2.4, [6, 4]);
+        dPoly([Ps, B, Cp], 'rgba(251, 191, 36, 0.2)', C.gold, 2.6, true);
+        dVertex(Ps, 'P* (넓이 최대)', C.gold, { x: 0, y: -18, align: 'center' });
+        dBadge(ox, oy + G.R * sc + 40, st >= 3 ? `S = ½ · ${G.a} · ${G.R + G.d} = ${Smax}` : `높이 h = R + OM = ${G.R} + ${G.d} = ${G.R + G.d}`, C.gold);
+      }
+      metric(st >= 3 ? `삼각형 PBC 넓이의 최댓값 = ½ · ${G.a} · ${G.R + G.d} = ${Smax}` : '');
+    }
+    const onExtT = (t) => { if (window.lab) { window.lab.s.t = t; } };
+    function extScene(kind) {
+      const E1 = kind === 'e1', varr = E1 ? varL1 : varL2, id = E1 ? 'ext-1' : 'ext-2';
+      const textF = E1 ? text1 : text2;
+      const label = E1 ? '점 A 움직이기 (원 위를 한 바퀴)' : '점 P 움직이기 (원 위를 한 바퀴)';
+      const t0 = (() => { const G = geomL(5, 6); return phiToT(G, E1 ? 2 * Math.PI / 3 : 150 * Math.PI / 180); })();
+      return {
+        id,
+        title: E1 ? '[기출 1] 외접원 위의 점 A 이동 — 원주각이 같으면 a/sin A = 2R' : '[기출 2] 외접원 위의 점 P — 삼각형 PBC 넓이의 최댓값 (4점)',
+        short: E1 ? '[기출1] 점 A 이동' : '[기출2] 점 P 최대 넓이',
+        question: E1 ? rm('외접원 위의 점 $A$를 호 $BC$ 위에서 움직이면 $\\angle A$와 $\\sin A$는 어떻게 변할까? 사인법칙 $\\dfrac{a}{\\sin A}=2R$ 은 언제나 성립할까?')
+          : rm('외접원 위의 점 $P$가 움직이면 삼각형 $PBC$의 넓이는 어떻게 바뀔까? 넓이가 가장 클 때 $P$는 어디에 있을까?'),
+        guide: E1 ? `<b>${label}</b> — 노랑 점 A를 원 위에서 끌어 보세요. 큰 호 위(밑변 BC 위쪽)에서는 <b>∠A가 늘 같고</b>(원주각, 중심각 ∠BOC의 절반), 작은 호 위로 넘어가면 <b>둔각</b>이 되지만 <b>sin A는 그대로</b>입니다. 그래서 <b>a / sin A = 2R</b>이 어디서나 같은 값입니다.`
+          : `<b>${label}</b> — 노랑 점 P를 원 위에서 끌어 보세요. 밑변 BC는 그대로이므로 넓이는 <b>높이(점 P에서 BC까지의 거리)</b>가 정합니다. 높이가 가장 큰 곳은 <b>원의 중심에서 BC에 내린 수선을 위로 연장한 곳</b>(P가 BC의 수직이등분선 위)입니다. 그 근처에서 점이 달라붙습니다.`,
+        startStep: 0,
+        controls: ['t'],
+        enter: (s, lab) => {
+          s.cur = id;
+          s.t = t0;
+          if (lab && s === lab.s) lab.params.t.label = label;
+        },
+        presets: (s) => (E1
+          ? [{ group: '점 A의 위치', label: '큰 호 위 (예각)', set: { t: t0 }, ms: 450, on: (st) => Math.abs(st.t - t0) < 0.003 }, { group: '점 A의 위치', label: '작은 호 위 (둔각)', set: { t: 0.1 }, ms: 450, on: (st) => Math.abs(st.t - 0.1) < 0.003 }]
+          : [{ group: '점 P의 위치', label: '넓이가 최대인 곳', set: { t: phiToT(geomL(5, 6), Math.PI / 2) }, ms: 450, on: (st) => Math.abs(st.t - phiToT(geomL(5, 6), Math.PI / 2)) < 0.003 }]),
+        steps: () => stepsL(kind, varr.cur()),
+        reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${textF(varr.cur())}</div>`,
+        vary: varr,
+        problem: {
+          tag: E1 ? '2025학년도 6월 모의평가 10번 · 2025학년도 9월 모의평가 10번 유형' : '2025학년도 수능 14번 · 2026학년도 수능 14번 유형 (원 위 점 P의 넓이 최대)',
+          time: E1 ? '목표 시간: 60초' : '목표 시간: 240초',
+          text: () => probHTML(textF(varr.cur())),
+          answer: () => texL(String(varr.cur().ans))
+        },
+        solution: {
+          standardTitle: APLab.stripEmoji('교과서식 풀이'), standardTag: '단계별', quickTitle: '10초 컷 · 핵심 원리', quickTag: '10초 컷',
+          standard: () => ({ steps: stepsL(kind, varr.cur()).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>'), warning: E1 ? '둔각이라고 해서 sin A가 달라지지 않습니다. 사인법칙의 sin A는 각 A가 예각이든 둔각이든 같은 식에 그대로 넣습니다.' : '높이가 최대인 곳은 "BC에서 가장 먼 원 위의 점"입니다. O에서 BC까지의 거리를 반지름에 더하는 것(R + OM)을 잊지 마세요.' }),
+          quick: () => (E1
+            ? { steps: '<strong class="text-amber-300">변과 그 대각의 sin의 비가 지름</strong>: a / sin A = 2R. 호 BC에 대한 원주각은 어디서나 같거나 서로 보각이라 sin 값이 같습니다.', highlight: 'R을 구하는 문제에서는 각 A가 예각인지 둔각인지 걱정하지 말고 sin A만 대입하세요. 각 A의 종류는 cos A의 부호에서만 중요합니다.' }
+            : { steps: '밑변 BC가 정해지면 넓이는 높이가 정합니다. <strong class="text-amber-300">BC = 2R sin A</strong>, 최대 높이 = <strong>R + (O에서 BC까지의 거리)</strong>.', highlight: '원 위의 점에서 직선까지의 거리의 최댓값은 (중심에서 직선까지의 거리) + 반지름입니다. 이 한 줄이 4점 문제의 핵심입니다.' })
+        },
+        view: (s, lab) => {
+          const out = {};
+          const tab = lab ? lab.tab : 'explore';
+          if (tab !== 'problem' && s.step >= 1 && tab === 'review') { const st = stepsL(kind, varr.cur()); out.formula = `<p>${rm(st[Math.min(s.step, 3) - 1])}</p>`; }
+          return out;
+        },
+        draw: (b, s, v, lab) => {
+          BRD = b; SS = s; handleN = 0;
+          state.auxStep = Math.min(3, s.step || 0); state.sliderT = s.t; state.animT = 1;
+          const rect = layoutRect(b);
+          METRIC = '';
+          drawExt(kind, rect, s, lab);
+          if (METRIC) v.summary = METRIC.replace(/➔/g, '→');
+        }
+      };
+    }
+
     function frame(idx, b, s, v) {
       BRD = b;
       SS = s;
@@ -2404,7 +2634,8 @@ window.addEventListener('DOMContentLoaded', function () {
     const isAdv = (p) => p.id.startsWith('adv-');
     const groups = [
       { id: 'bas', title: '기본 8선', short: '기본 8', scenes: PROBLEMS.filter((p) => !isAdv(p)).map(sceneOf) },
-      { id: 'adv', title: '심화 8선', short: '심화 8', scenes: PROBLEMS.filter(isAdv).map(sceneOf) }
+      { id: 'adv', title: '심화 8선', short: '심화 8', scenes: PROBLEMS.filter(isAdv).map(sceneOf) },
+      { id: 'ext', title: '기출 확장 · 외접원 위의 점', short: '기출 확장', scenes: [extScene('e1'), extScene('e2')] }
     ];
 
     APLab.createLab({
@@ -2424,7 +2655,7 @@ window.addEventListener('DOMContentLoaded', function () {
           onInput: (s) => {
             if (s.step >= 3) {
               const p = PROBLEMS.find((q) => q.id === s.cur);
-              for (const sn of p.snaps) if (Math.abs(s.t - sn.t) < 0.025) { s.t = sn.t; break; }
+              if (p) for (const sn of p.snaps) if (Math.abs(s.t - sn.t) < 0.025) { s.t = sn.t; break; }   // 기출 확장 장면(PROBLEMS에 없음)은 달라붙지 않음
             }
           }
         }

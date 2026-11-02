@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>정적분과 넓이 · AP Math 실험실</title>
-<meta name="description" content="미적분Ⅰ 정적분과 넓이: 정적분의 값과 실제 넓이의 차이, 포물선과 직선 사이의 넓이와 이등분, 삼차함수의 그래프와 x축 사이의 넓이 S₁=S₂ 조건, 두 곡선 사이의 넓이와 f(x)−g(x), 역함수의 정적분과 직사각형의 넓이를 직접 조작하며 탐구합니다.">
+<meta name="description" content="미적분Ⅰ 정적분과 넓이: 정적분의 값과 실제 넓이의 차이, 포물선과 직선 사이의 넓이와 이등분, 삼차함수의 그래프와 x축 사이의 넓이 S₁=S₂ 조건, 두 곡선 사이의 넓이와 f(x)−g(x), 역함수의 정적분과 직사각형의 넓이, 직선으로 잘린 두 영역 A·B의 넓이 비교와 넓이함수 G(t), 우함수·기함수·점대칭·주기를 이용한 대칭 정적분, 이전 교육과정의 구분구적법(직사각형의 합)을 직접 조작하며 탐구합니다.">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):'paper';document.documentElement.setAttribute('data-theme',t==='board'?'board':'paper')}catch(e){document.documentElement.setAttribute('data-theme','paper')}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -29,6 +29,8 @@
    - 장면 1·3·5의 ‘하단 동기화 뷰’는 원본에서 위와 같은 f를 다시 그릴 뿐이라 두지 않고,
      차함수 h(x) = f(x) − g(x) 가 의미 있는 장면 2·4에만 두었습니다.
    - 장면 4의 원본 라벨은 m ≠ −0.5 에서도 ‘접점(0,1)·교점(1,1)’이라고 적었으나, 접점·교점 표시는 m = −0.5 일 때만 합니다.
+   - 장면 6~8은 원본에 없던 추가 장면입니다(최근 기출 반복 유형 C07 두 영역 넓이 비교, C09 대칭 정적분, 이전 교육과정 P03 구분구적법).
+     장면 1~5와 문제는 그대로 두었고, 새 장면은 탐구·정리·문제 탭마다 그림을 따로 그립니다(lab.tab). 「새 문제」는 변형 생성기(sc.vary)가 문제와 그림을 함께 바꿉니다.
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
   const { tex, fmt, clamp } = APLab;
@@ -707,6 +709,725 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   ];
 
+
+  /* ==========================================================================
+     장면 6~8 (추가) — 최근 기출에서 반복되는 유형: 넓이 비교 · 대칭 · 구분구적법
+     기존 장면 1~5와 문제는 그대로 두고 뒤에 붙였습니다.
+     새 장면은 탐구·정리·문제 탭마다 그림을 따로 그립니다(lab.tab).
+       - 탐구: 끌기·슬라이더로 바꿔 보는 그림
+       - 정리: 풀이 단계(s.step)가 올라갈 때마다 보조선이 드러나는 그림
+       - 문제: 지문에 주어진 것만(풀이 전) → 정답이 열리면 풀이 끝 그림
+     ========================================================================== */
+  const tabOf = (lab) => (lab && lab.tab) || 'explore';
+  // 지금 그림에 보여 줄 풀이 단계 수: 탐구는 전부, 정리는 s.step, 문제는 정답이 열렸을 때만 끝까지
+  const shown = (lab, s, n) => {
+    const t = tabOf(lab);
+    if (t === 'explore') return 99;
+    if (t === 'review') return s.step;
+    return lab && lab._answerOpen && lab._answerOpen() ? n : 0;
+  };
+  // 탭·모드·문제 변형이 바뀔 때만 그림 범위를 다시 맞춥니다(끌어서 확대한 것은 그대로 둡니다).
+  function focusOnce(lab, key, box) {
+    if (!lab || !lab.board || !lab.scene) return;
+    const k = lab.scene.id + '|' + key;
+    if (lab.__fk !== k) { lab.__fk = k; lab.board.setFocus(box, true); }
+  }
+  const resetFocus = (s, lab) => { if (lab) lab.__fk = null; };
+  // 변형 생성기: gen(이전 변형|null) → 새 변형. 처음에는 기출 유형 그대로(gen(null)).
+  function varier(gen) { let cur = gen(null); return { cur: () => cur, next: () => (cur = gen(cur)) }; }
+  const pickIdx = (n, prev) => { let i = Math.floor(Math.random() * n); if (prev != null && n > 1 && i === prev) i = (i + 1 + Math.floor(Math.random() * (n - 1))) % n; return i; };
+  const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-ci-new>새 문제</button></div>`;
+  document.addEventListener('click', (ev) => {
+    const hit = ev.target && ev.target.closest && ev.target.closest('[data-ci-new]');
+    if (!hit) return;
+    const lab = window.lab, sc = lab && lab.scene;
+    if (!sc || !sc.vary) return;
+    sc.vary.next();
+    lab.s.revealed = false;
+    lab.__fk = null;
+    lab.setStep(0);
+    try { lab._buildProblem(); lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+    lab.invalidate(true);
+  });
+  const reviewTopOf = (textFn) => () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${textFn()}</div>`;
+  // 정수·간단한 분수를 TeX로 (분모 ≤ 60)
+  function frac(x) {
+    const neg = x < 0, v = Math.abs(x);
+    for (let q = 1; q <= 60; q++) {
+      const p = Math.round(v * q);
+      if (Math.abs(v * q - p) < 1e-7) {
+        const g = (a, b) => (b ? g(b, a % b) : a), d = g(p, q) || 1, n = p / d, dd = q / d;
+        return (neg && n ? '-' : '') + (dd === 1 ? `${n}` : `\\dfrac{${n}}{${dd}}`);
+      }
+    }
+    return num(x, 3);
+  }
+  // f − g 의 부호가 같은 구간마다 닫힌 다각형 조각으로 나눕니다(부호가 바뀌는 곳에서 자름).
+  function pieces(f, g, x0, x1, N = 140) {
+    const out = [];
+    if (!(x1 - x0 > 1e-6)) return out;
+    let top = [], bot = [], sign = 0;
+    const push = (x) => { top.push([x, f(x)]); bot.push([x, g(x)]); };
+    const flush = () => { if (top.length > 1 && sign !== 0) out.push({ sign, pts: top.concat(bot.slice().reverse()) }); top = []; bot = []; sign = 0; };
+    let px = x0, pd = f(x0) - g(x0);
+    push(x0);
+    if (pd !== 0) sign = pd > 0 ? 1 : -1;
+    for (let i = 1; i <= N; i++) {
+      const x = x0 + ((x1 - x0) * i) / N, d = f(x) - g(x);
+      if (d !== 0) {
+        const sg = d > 0 ? 1 : -1;
+        if (sign === 0) sign = sg;
+        else if (sg !== sign) {
+          const xc = px + ((x - px) * Math.abs(pd)) / (Math.abs(pd) + Math.abs(d));
+          push(xc);
+          flush();
+          push(xc);
+          sign = sg;
+        }
+      }
+      push(x);
+      px = x; pd = d;
+    }
+    flush();
+    return out;
+  }
+  // 조각 그리기: T(점)로 옮긴(접은·돌린·밀어 붙인) 복사본을 그릴 수도 있습니다.
+  function drawPieces(b, list, o = {}) {
+    const T = o.T || ((p) => p);
+    list.forEach((pc) => {
+      const col = o.color || (pc.sign > 0 ? o.pos || 'rose' : o.neg || 'sky');
+      const ref = o.refs ? (pc.sign > 0 ? o.refs[0] : o.refs[1]) : o.ref;
+      const pts = pc.pts.map(T);
+      if (o.ghost) b.poly(pts, { fill: col, fillAlpha: o.alpha == null ? 0.3 : o.alpha, color: col, dash: [6, 4], width: 1.8, ref });
+      else b.poly(pts, { fill: col, fillAlpha: o.alpha == null ? 0.3 : o.alpha, color: null, ref });
+    });
+  }
+  const sgn = (v) => (v > 0 ? 1 : v < 0 ? -1 : 0);
+  const fv = (v, d = 2) => fmt(v, d);
+  const nm = (x) => String(Math.round(x * 100) / 100);          // 필요한 만큼만 소수 자리
+  // 그림 속 글자용 분수(−1/2 꼴)
+  function fracTxt(x) {
+    const neg = x < 0, v = Math.abs(x);
+    for (let q = 1; q <= 60; q++) { const p = Math.round(v * q); if (Math.abs(v * q - p) < 1e-7) { const g = (a, c) => (c ? g(c, a % c) : a), d = g(p, q) || 1; return (neg ? '−' : '') + (q / d === 1 ? `${p / d}` : `${p / d}/${q / d}`); } }
+    return nm(x);
+  }
+
+  /* ==================================================================
+     장면 6 · 직선·벽으로 잘린 두 영역 A, B의 넓이 비교 (C07)
+     곡선 f(x) = a x³ + b x, 점 (0, c)를 지나는 직선 ℓ(x) = m x + c, 벽 x = t
+     A = (ℓ가 위인 영역), B = (f가 위인 영역).  B − A = ∫₀ᵗ (f − ℓ) dx = G(t)
+     ================================================================== */
+  const V6 = { a: 1 / 9, b: 1 / 3, c: 2, w: 3 };          // 탐구 기본값(문제 변형과 별개)
+  const M6 = -0.5;                                        // 탐구 기본값에서 A = B 가 되는 기울기
+  const f6 = (v) => (x) => v.a * x * x * x + v.b * x;
+  const l6 = (v, m) => (x) => m * x + v.c;
+  const If6 = (v, t) => (v.a * t * t * t * t) / 4 + (v.b * t * t) / 2;            // ∫₀ᵗ f
+  const G6 = (v, m, t) => If6(v, t) - ((m * t * t) / 2 + v.c * t);                // ∫₀ᵗ (f − ℓ)
+  function alpha6(v, m) {                                                        // f = ℓ 인 첫 교점의 x좌표
+    const h = (x) => f6(v)(x) - l6(v, m)(x);
+    let x = 0.0;
+    for (; x < 4.5; x += 0.01) if (h(x + 0.01) >= 0) break;
+    if (x >= 4.5) return null;
+    let lo = x, hi = x + 0.01;
+    for (let i = 0; i < 40; i++) { const mid = (lo + hi) / 2; if (h(mid) < 0) lo = mid; else hi = mid; }
+    return (lo + hi) / 2;
+  }
+  function areas6(v, m, t) {                                                     // 벽 x = t 까지의 A, B
+    const al = alpha6(v, m);
+    if (al == null || al >= t) return { al, A: -G6(v, m, t), B: 0 };
+    return { al, A: -G6(v, m, al), B: G6(v, m, t) - G6(v, m, al) };
+  }
+  // 문제 변형: 곡선 f = a x³ + b x, 직선 y = m x + c, 벽 x = w.  B − A = d 일 때 m 은?
+  const P6 = [
+    { a: 1 / 4, b: 1, c: 2, w: 2, d: 0, ftex: '\\dfrac{1}{4}x^{3}+x' },
+    { a: 1 / 2, b: 1 / 2, c: 3, w: 2, d: 1, ftex: '\\dfrac{1}{2}x^{3}+\\dfrac{1}{2}x' },
+    { a: 1 / 9, b: 1 / 3, c: 2, w: 3, d: 3 / 4, ftex: '\\dfrac{1}{9}x^{3}+\\dfrac{1}{3}x' },
+    { a: 1 / 4, b: 0, c: 2, w: 2, d: -1 / 2, ftex: '\\dfrac{1}{4}x^{3}' },
+    { a: 1 / 9, b: 0, c: 2, w: 3, d: 0, ftex: '\\dfrac{1}{9}x^{3}' }
+  ];
+  P6.forEach((p, i) => { p.i = i; p.m = (If6(p, p.w) - p.c * p.w - p.d) / ((p.w * p.w) / 2); p.mtex = frac(p.m); p.dtex = frac(Math.abs(p.d)); });
+  const var6 = varier((prev) => P6[prev ? pickIdx(P6.length, prev.i) : 0]);
+  const cond6 = (p) => (p.d === 0 ? `${tex('A = B')}` : p.d > 0 ? `${tex('B - A = ' + p.dtex)}` : `${tex('A - B = ' + p.dtex)}`);
+  const text6 = (p) => `곡선 ${tex('y = ' + p.ftex)} 와 직선 ${tex('y = mx + ' + p.c)} 및 ${tex('y')}축으로 둘러싸인 부분의 넓이를 ${tex('A')}, 이 곡선과 두 직선 ${tex('y = mx + ' + p.c)}, ${tex('x = ' + p.w)} 로 둘러싸인 부분의 넓이를 ${tex('B')} 라 하자. ${cond6(p)} 일 때, 상수 ${tex('m')} 의 값을 구하시오. (단, 직선과 곡선은 ${tex('0 < x < ' + p.w)} 에서 한 점에서 만난다.)`;
+  const modes6 = [['line', '① 직선 돌리기 · A와 B 비교'], ['wall', '② 벽 x = t 움직이기 · G(t)']];
+
+  function view6(s, lab) {
+    const tab = tabOf(lab);
+    if (tab === 'explore') {
+      const mode = s.mode6;
+      focusOnce(lab, 'x' + mode, mode === 'wall' ? { x: [-0.9, 3.9], y: [-3.5, 4.7] } : { x: [-0.9, 3.9], y: [-1.5, 4.9] });
+      const m = s.m6, t = mode === 'wall' ? s.t6 : V6.w, ar = areas6(V6, m, t), G = G6(V6, m, t);
+      const eq = Math.abs(ar.A - ar.B) < 0.02 && ar.A > 0.05;
+      const h = f6(V6)(t) - l6(V6, m)(t);
+      const base = { tone: 'info', text: '' };
+      let status = base;
+      if (mode === 'line') status = eq ? { tone: 'ok', text: `A = B ! 이때 ∫₀³(f − ℓ)dx = ${fv(G)} ≈ 0` } : { tone: 'info', text: `A ${fv(ar.A)} · B ${fv(ar.B)} → ${ar.A > ar.B ? 'A가 더 큽니다' : 'B가 더 큽니다'} (B − A = ${fv(G)})` };
+      else status = eq ? { tone: 'ok', text: `G(t) = ∫₀ᵗ(f − ℓ)dx = ${fv(G)} ≈ 0 → A = B` } : { tone: 'info', text: `G(t) = B − A = ${fv(G)} · 기울기 G′(t) = f(t) − ℓ(t) = ${fv(h)}` };
+      const reads = mode === 'line' ? [
+        { label: '직선 y = mx + 2 의 기울기', value: `m = ${fv(m)}`, color: 'amber', ref: 'line' },
+        { label: '넓이 A(분홍) | B(하늘)', value: `${fv(ar.A)} | ${fv(ar.B)}`, color: 'rose', ref: 'A' },
+        { label: 'B − A = ∫₀³ (f − ℓ) dx', value: fv(G), color: 'sky', ref: 'G', note: 'A = B 이면 0' },
+        { label: '교점의 x좌표', value: ar.al == null ? '없음' : fv(ar.al), color: 'green', ref: 'cross' }
+      ] : [
+        { label: '벽의 위치 x = t', value: `t = ${fv(t)}`, color: 'amber', ref: 'wall' },
+        { label: '넓이 A | B (x = 0 ~ t)', value: `${fv(ar.A)} | ${fv(ar.B)}`, color: 'rose', ref: 'A' },
+        { label: 'G(t) = B − A', value: fv(G), color: 'sky', ref: 'G', note: 'G(t) = 0 이면 A = B' },
+        { label: '높이 차 f(t) − ℓ(t) = G′(t)', value: fv(h), color: 'violet', ref: 'gap', note: 'G 의 접선의 기울기' }
+      ];
+      return {
+        chips: [{ k: '곡선', tex: 'f(x) = \\dfrac{1}{9}x^3 + \\dfrac{1}{3}x', color: 'ink' }, { k: '직선', tex: `\\ell(x) = ${num(m)}x + 2`, color: 'rose' }],
+        status,
+        readouts: reads,
+        tape: { title: `A = ${fv(ar.A)}  ·  B = ${fv(ar.B)}  →  ${eq ? 'A = B (∫(f − ℓ) = 0)' : 'A ≠ B'}`, segments: [{ text: `A ${fv(ar.A)}`, weight: Math.max(0.06, ar.A), color: 'rose' }, { text: `B ${fv(ar.B)}`, weight: Math.max(0.06, ar.B), color: 'sky' }] }
+      };
+    }
+    const p = var6.cur();
+    const ys = [0, p.c, f6(p)(p.w), p.m * p.w + p.c];
+    focusOnce(lab, tab + p.i, { x: [-0.9, p.w + 1.0], y: [Math.min(...ys, -0.6) - 0.7, Math.max(...ys) + 0.9] });
+    return {
+      chips: [{ k: '곡선', tex: 'y = ' + p.ftex, color: 'ink' }, { k: '직선', tex: `y = mx + ${p.c}`, color: 'rose' }],
+      formula: `<b>두 영역의 넓이 차는 정적분 한 번</b><br>${tex('A')}에서는 직선이 위(${tex('\\ell > f')}), ${tex('B')}에서는 곡선이 위(${tex('f > \\ell')})입니다. 아래 위가 바뀌는 곳(교점)에서 구간을 나누지 않고, 세로 길이 ${tex('f(x) - \\ell(x)')} 를 <b>부호 있는 채로</b> 적분하면 ${tex('B - A = \\displaystyle\\int_{0}^{' + p.w + '} \\{f(x) - \\ell(x)\\}\\,dx')} 입니다.<br>그래서 ${tex('A = B')} 는 ${tex('\\displaystyle\\int_{0}^{' + p.w + '} (f - \\ell)\\,dx = 0')} 과 같은 말입니다.`,
+      notes: '교점의 x좌표(삼차방정식의 근)를 구하려 하지 마세요. 넓이의 차는 교점을 몰라도 ∫₀ʷ(f − ℓ)dx 하나로 계산됩니다. 직선 아래 넓이는 적분하지 말고 사다리꼴(윗변+아랫변)×높이÷2 로 구하면 빠릅니다.'
+    };
+  }
+  function steps6() {
+    const p = var6.cur(), If = If6(p, p.w), trap = p.c * p.w, slope = (p.w * p.w) / 2;
+    return [
+      `곡선과 직선이 만나는 점의 $x$좌표 $\\alpha$ 에서 두 영역이 갈라집니다. 왼쪽 $A$(분홍)와 오른쪽 $B$(하늘)을 색칠합니다.`,
+      `$A$에서는 $f - \\ell \\lt 0$, $B$에서는 $f - \\ell \\gt 0$ 이므로 세로 길이 $f - \\ell$ 을 부호 있게 모으면 $B - A = \\int_0^{${p.w}} (f - \\ell)\\,dx$ 입니다.`,
+      `$\\int_0^{${p.w}} f\\,dx = ${frac(If)}$, 직선 아래 넓이(사다리꼴) $= ${nm(slope)}m + ${trap}$ 이므로 $${frac(If)} - (${nm(slope)}m + ${trap}) = ${p.d === 0 ? '0' : frac(p.d)}$ 에서 $m = ${p.mtex}$ 입니다.`
+    ];
+  }
+  function draw6(b, s, v, lab) {
+    const tab = tabOf(lab), mode = tab === 'explore' ? s.mode6 : 'line';
+    const P = tab === 'explore' ? null : var6.cur();
+    const V = P || V6, m = P ? P.m : s.m6, t = P ? P.w : mode === 'wall' ? s.t6 : V6.w;
+    const st = shown(lab, s, 3), nr = narrow(b);
+    const f = f6(V), l = l6(V, m), ar = areas6(V, m, t), al = ar.al;
+    stage(b, s, 'main');
+    // A, B 색칠
+    drawPieces(b, pieces(f, l, 0, t), { pos: 'sky', neg: 'rose', alpha: 0.32, refs: ['B', 'A'] });
+    // 정리 2단계: 세로 길이 f − ℓ 의 막대(부호 있게)
+    if (tab !== 'explore' && st >= 2) {
+      const K = 12;
+      for (let i = 0; i <= K; i++) {
+        const x = (t * (i + 0.5)) / K, hh = f(x) - l(x);
+        b.seg([x, l(x)], [x, f(x)], { color: hh >= 0 ? 'sky' : 'rose', width: 2, alpha: 0.9, ref: 'gap' });
+      }
+    }
+    // 정리 3단계: 곡선 아래 넓이와 직선 아래 사다리꼴
+    if (tab !== 'explore' && st >= 3) {
+      b.poly([[0, 0], [t, 0], [t, l(t)], [0, l(0)]], { color: 'violet', dash: [6, 4], width: 2, ref: 'trap' });
+      if (!nr) tag(b, [t * 0.5, -0.6], `직선 아래 사다리꼴 ${nm(t * t / 2)}m + ${V.c * t}`, { color: 'violet', size: 12.5, ref: 'trap' });
+    }
+    // 곡선, 직선, 벽
+    b.plot(f, { color: 'ink', width: 3.2, glow: true, from: -0.4, to: t + (tab === 'explore' ? 0.6 : 0.5) });
+    b.line([0, V.c], m, { color: 'rose', width: 2.6, glow: true, ref: 'line', extent: [-0.3, t + 0.5] });
+    b.seg([t, Math.min(0, l(t)) - 0.3], [t, Math.max(f(t), l(t)) + 0.3], { color: 'amber', width: 2.2, dash: true, ref: 'wall' });
+    b.point([0, V.c], { color: 'violet', r: 5.5, ref: 'line' });
+    tag(b, [0, V.c], tab === 'explore' ? 'P(0, 2)' : `(0, ${V.c})`, { color: 'violet', dx: 10, dy: -14, align: 'left' });
+    if (al != null && al < t) b.point([al, f(al)], { color: 'green', r: 5, ref: 'cross' });
+    // 영역 이름
+    const ya = (x) => (f(x) + l(x)) / 2;
+    if (al != null) {
+      const xa = Math.min(al, t) * 0.5;
+      const showVal = tab === 'explore' && !nr;
+      if (ar.A > 0.02) tag(b, [xa, ya(xa)], showVal ? `A = ${fv(ar.A)}` : 'A', { color: 'rose', size: 13.5, ref: 'A' });
+      if (al < t - 0.15) { const xb = (al + t) / 2; tag(b, [xb, Math.max(f(xb), l(xb)) + 0.25], showVal ? `B = ${fv(ar.B)}` : 'B', { color: 'sky', size: 13.5, dy: -8, ref: 'B' }); }
+    }
+    // 탐구 ②: G(x) = ∫₀ˣ (f − ℓ) 의 그래프, 높이 차, 접선
+    if (tab === 'explore' && mode === 'wall') {
+      const Gf = (x) => G6(V, m, x);
+      b.plot(Gf, { color: 'amber', width: 3, glow: true, from: 0, to: 3.7, ref: 'G' });
+      const h = f(t) - l(t);
+      b.seg([t, l(t)], [t, f(t)], { color: 'violet', width: 3.6, ref: 'gap' });
+      const sl = (x0) => [x0 - 0.45, Gf(t) + h * (x0 - 0.45 - t)];
+      b.seg(sl(t), [t + 0.45, Gf(t) + h * 0.45], { color: 'violet', width: 2.2, ref: 'gap' });
+      // G = 0 이 되는 두 번째 점(A = B 가 되는 벽의 위치)
+      let z = null;
+      for (let x = Math.max(al || 0, 0.05); x < 3.7; x += 0.01) if (Gf(x) < 0 && Gf(x + 0.01) >= 0) { z = x + 0.005; break; }
+      if (z != null) {
+        b.point([z, 0], { color: 'green', r: 6, ref: 'G' });
+        tag(b, [z, 0], nr ? 'G=0' : 'G = 0 (A = B)', { color: 'green', dy: 36 });
+      }
+      b.point([t, Gf(t)], { color: 'amber', r: 6.5, ref: 'G' });
+      tag(b, [3.7, Gf(3.7)], nr ? 'G' : 'G(x) = ∫₀ˣ(f−ℓ)', { color: 'amber', dx: -4, dy: -14, align: 'right' });
+      b.handle('t', [t, 0], { color: 'amber', ref: 'wall', label: nr ? 't' : 'x = t', dx: 12, dy: -18, drag: (w) => { s.t6 = clamp(round05(w.x), 0.3, 3.4); } });
+    } else if (tab === 'explore') {
+      b.handle('m', [t, l(t)], { color: 'amber', ref: 'line', label: nr ? `m=${fv(m)}` : `기울기 m = ${fv(m)}`, dx: 12, dy: -14, drag: (w) => { let mm = (w.y - V.c) / t; if (Math.abs(mm - M6) < 0.03) mm = M6; s.m6 = clamp(R(mm), -1.0, 0.1); } });
+      tag(b, [t, Math.max(f(t), l(t)) + 0.3], 'x = 3', { color: 'amber', dx: 8, dy: -4, align: 'left' });
+    } else {
+      tag(b, [t, Math.max(f(t), l(t)) + 0.35], `x = ${t}`, { color: 'amber', dx: 8, dy: -4, align: 'left', ref: 'wall' });
+      if (!nr) tag(b, [t * 0.55, l(t * 0.55)], `y = mx + ${V.c}`, { color: 'rose', dy: -16, align: 'center', ref: 'line' });
+      tag(b, [t * 0.9, f(t * 0.9)], 'y = f(x)', { color: 'ink', dx: -10, dy: -10, align: 'right' });
+      if (st >= 3) {
+        if (nr) tag(b, [t + 0.05, l(t) + 0.5], `m = ${fracTxt(P.m)}`, { color: 'rose', size: 14, dy: -6, align: 'left', ref: 'line' });
+        else tag(b, [t * 0.55, l(t * 0.55)], `m = ${fracTxt(P.m)}`, { color: 'rose', size: 14, dy: -38, align: 'center', ref: 'line' });
+      }
+    }
+    paneEnd(b);
+  }
+
+  /* ==================================================================
+     장면 7 · 대칭을 이용하는 정적분 (C09)
+       ① 우함수·기함수: 왼쪽 반을 거울로 접거나(우함수) 180° 돌려(기함수) 오른쪽에 포갭니다.
+       ② 점대칭 삼차함수: 중심 C 둘레로 한쪽 로브를 돌려 반대쪽에 포개면 넓이가 직사각형 2h·q 가 됩니다.
+       ③ 주기 함수: 한쪽 끝의 조각을 한 주기만큼 밀어 붙여도 넓이가 같습니다.
+     ================================================================== */
+  const ZERO0 = () => 0;
+  const rotAbout = (cx, cy, th) => (p) => { const dx = p[0] - cx, dy = p[1] - cy; return [cx + dx * Math.cos(th) - dy * Math.sin(th), cy + dx * Math.sin(th) + dy * Math.cos(th)]; };
+  const mirrorY = (th) => (p) => [p[0] * Math.cos(th), p[1]];                // y축 거울 접기(0 → π)
+  const shiftX = (dx) => (p) => [p[0] + dx, p[1]];
+  const gper = (c) => (x) => { const r = x - 2 * Math.floor(x / 2); return c * r * (2 - r); };  // 주기 2, 0≤x≤2 에서 c x (2 − x)
+  const lens7 = [['all', '전체 f = 우함수 + 기함수'], ['even', '우함수 부분 접기'], ['odd', '기함수 부분 돌리기']];
+  const modes7 = [['eo', '① 우함수·기함수'], ['pt', '② 점대칭 삼차함수'], ['per', '③ 주기 함수 옮겨 붙이기']];
+  // 문제 변형
+  const T1 = [
+    { c: [1 / 2, 3 / 4, -1, 1], k: 2, ftex: '\\dfrac{1}{2}x^{3}+\\dfrac{3}{4}x^{2}-x+1', etex: '\\dfrac{3}{4}x^{2}+1', otex: '\\dfrac{1}{2}x^{3}-x' },
+    { c: [1 / 2, 3 / 2, -2, 1], k: 2, ftex: '\\dfrac{1}{2}x^{3}+\\dfrac{3}{2}x^{2}-2x+1', etex: '\\dfrac{3}{2}x^{2}+1', otex: '\\dfrac{1}{2}x^{3}-2x' },
+    { c: [1 / 2, -3 / 4, -1, 2], k: 2, ftex: '\\dfrac{1}{2}x^{3}-\\dfrac{3}{4}x^{2}-x+2', etex: '-\\dfrac{3}{4}x^{2}+2', otex: '\\dfrac{1}{2}x^{3}-x' }
+  ];
+  T1.forEach((v) => { const [c3, c2, c1, c0] = v.c; v.f = (x) => c3 * x * x * x + c2 * x * x + c1 * x + c0; v.E = (x) => c2 * x * x + c0; v.O = (x) => c3 * x * x * x + c1 * x; v.half = (c2 * v.k * v.k * v.k) / 3 + c0 * v.k; v.ans = 2 * v.half; });
+  const T2 = [
+    { p: 1, m: 3, q: 4, h: 2 }, { p: 2, m: 3, q: 3, h: 2 }, { p: -1, m: 3, q: 2, h: 2 }, { p: 0, m: 3, q: 3, h: 2 }
+  ];
+  const polyTex = (cs) => { let out = ''; cs.forEach((c, i) => { const e = cs.length - 1 - i; if (!c) return; const a = Math.abs(c), sg = c < 0 ? '-' : (out ? '+' : ''); out += sg + (a === 1 && e > 0 ? '' : a) + (e === 0 ? '' : e === 1 ? 'x' : `x^{${e}}`); }); return out || '0'; };
+  T2.forEach((v) => {
+    v.cs = [1, -3 * v.p, 3 * v.p * v.p - v.m, -v.p * v.p * v.p + v.m * v.p + v.q];
+    v.f = (x) => ((x - v.p) ** 3 - v.m * (x - v.p) + v.q);
+    v.ftex = polyTex(v.cs); v.x0 = v.p - v.h; v.x1 = v.p + v.h; v.ans = 2 * v.h * v.q;
+  });
+  const T3 = [{ c: 3, a: -3, b: 2, ctex: '3' }, { c: 3 / 2, a: -2, b: 5, ctex: '\\dfrac{3}{2}' }, { c: 3, a: -1, b: 4, ctex: '3' }, { c: 3 / 2, a: -3, b: 3, ctex: '\\dfrac{3}{2}' }];
+  T3.forEach((v) => { v.g = gper(v.c); v.unit = (2 * v.c) / 3; v.n = v.b - v.a; v.ans = v.n * v.unit; });
+  const P7 = [{ t: 1, v: T1[0] }, { t: 2, v: T2[0] }, { t: 3, v: T3[0] }, { t: 1, v: T1[1] }, { t: 2, v: T2[1] }, { t: 3, v: T3[1] }, { t: 1, v: T1[2] }, { t: 2, v: T2[2] }, { t: 3, v: T3[2] }, { t: 2, v: T2[3] }, { t: 3, v: T3[3] }];
+  P7.forEach((p, i) => { p.i = i; });
+  const var7 = varier((prev) => P7[prev ? pickIdx(P7.length, prev.i) : 0]);
+  const ansTex7 = (p) => frac(p.v.ans);
+  function text7(p) {
+    const v = p.v;
+    if (p.t === 1) return `함수 ${tex('f(x) = ' + v.ftex)} 에 대하여 ${tex('\\displaystyle\\int_{-' + v.k + '}^{' + v.k + '} f(x)\\,dx')} 의 값을 구하시오.`;
+    if (p.t === 2) return `함수 ${tex('f(x) = ' + v.ftex)} 에 대하여 ${tex('\\displaystyle\\int_{' + v.x0 + '}^{' + v.x1 + '} f(x)\\,dx')} 의 값을 구하시오.`;
+    return `함수 ${tex('g(x)')} 는 모든 실수 ${tex('x')} 에 대하여 ${tex('g(x+2) = g(x)')} 이고, ${tex('0 \\le x \\le 2')} 에서 ${tex('g(x) = ' + (v.c === 3 ? '3' : '\\dfrac{3}{2}') + 'x(2-x)')} 이다. ${tex('\\displaystyle\\int_{' + v.a + '}^{' + v.b + '} g(x)\\,dx')} 의 값을 구하시오.`;
+  }
+  const tagOf7 = (p) => (p.t === 1 ? '2026학년도 6월 모의평가 9번 유형' : p.t === 2 ? '2022학년도 10월 학평(서울) 20번 유형' : '2022학년도 6월 모의평가 11번 유형');
+  function steps7() {
+    const p = var7.cur(), v = p.v;
+    if (p.t === 1) return [
+      `$f$ 를 짝수 차수 항 $E(x) = ${v.etex}$ (우함수)와 홀수 차수 항 $O(x) = ${v.otex}$ (기함수)로 나눕니다.`,
+      `기함수 $O$ 는 원점 대칭입니다. 왼쪽 넓이를 $180^\\circ$ 돌리면 오른쪽에 포개지고 부호만 반대이므로 $\\int_{-${v.k}}^{${v.k}} O\\,dx = 0$ 입니다.`,
+      `우함수 $E$ 는 $y$축 대칭이라 왼쪽을 접으면 오른쪽에 포개지므로 $\\int_{-${v.k}}^{${v.k}} E\\,dx = 2\\int_0^{${v.k}} E\\,dx = ${frac(v.ans)}$ 입니다.`
+    ];
+    if (p.t === 2) return [
+      `삼차함수의 그래프는 변곡점에 대하여 점대칭입니다. $f''(x) = 0$ 에서 $x = ${v.p}$, 대칭의 중심은 $C(${v.p}, ${v.q})$ 입니다.`,
+      `구간 $[${v.x0}, ${v.x1}]$ 은 $x = ${v.p}$ 를 가운데로 한 대칭 구간입니다. 직선 $y = ${v.q}$ 와 곡선 사이의 왼쪽 부분을 $C$ 둘레로 $180^\\circ$ 돌리면 오른쪽 부분에 포개집니다.`,
+      `위·아래로 넘친 만큼 서로 메우므로 곡선 아래 넓이는 높이 $${v.q}$, 가로 $${2 * v.h}$ 인 직사각형의 넓이 $${2 * v.h} \\times ${v.q} = ${v.ans}$ 와 같습니다.`
+    ];
+    return [
+      `구간 $[${v.a}, ${v.b}]$ 을 길이 $1$ 인 조각 $${v.n}$ 개로 나눕니다(정수에서 자름).`,
+      `$g$ 는 주기가 $2$ 이고 $x = 1$ 에 대하여 좌우 대칭이므로, 어느 조각이든 한 조각을 밀거나 접으면 $[0, 1]$ 의 조각과 포개집니다. 한 조각의 넓이는 $\\int_0^1 g\\,dx = ${frac(v.unit)}$ 로 모두 같습니다.`,
+      `따라서 $\\int_{${v.a}}^{${v.b}} g\\,dx = ${v.n} \\times ${frac(v.unit)} = ${frac(v.ans)}$ 입니다.`
+    ];
+  }
+  function view7(s, lab) {
+    const tab = tabOf(lab);
+    if (tab === 'explore') {
+      const mode = s.mode7;
+      if (mode === 'eo') {
+        focusOnce(lab, 'eo', { x: [-3.1, 3.1], y: [-3.7, 4.5] });
+        const K = s.kk7, E = (2 * s.a7 * K * K * K) / 3;
+        const fl = { all: '전체', even: '우함수', odd: '기함수' }[s.lens7];
+        return {
+          chips: [{ k: '함수', tex: `f(x) = ${num(s.a7)}x^2 ${s.b7 < 0 ? '-' : '+'} ${num(Math.abs(s.b7))}x^3`, color: 'ink' }, { k: '구간', tex: `[-${num(K, 1)}, ${num(K, 1)}]`, color: 'amber' }],
+          status: { tone: 'info', text: `${fl} 보기 · ∫₋ₖᵏ f dx = ${fv(E)}  (x³ 항의 계수 b = ${fv(s.b7)} 는 값에 영향이 없습니다)` },
+          readouts: [
+            { label: '우함수 부분 ∫₋ₖᵏ ax² dx = 2∫₀ᵏ ax² dx', value: fv(E), color: 'sky', ref: 'E', note: '좌우가 같아 두 배' },
+            { label: '기함수 부분 ∫₋ₖᵏ bx³ dx', value: '0.00', color: 'rose', ref: 'O', note: '좌우가 부호만 반대 → 상쇄' },
+            { label: '전체 ∫₋ₖᵏ f dx', value: fv(E), color: 'green', ref: 'F' },
+            { label: '접은 정도 (0 → 1)', value: s.lens7 === 'all' ? '— (부분을 고르세요)' : fv(s.u7), color: 'amber', ref: 'ghost' }
+          ]
+        };
+      }
+      if (mode === 'pt') {
+        focusOnce(lab, 'pt', { x: [-1.6, 3.6], y: [-3.4, 5.4] });
+        const h = s.h7, q = s.q7, val = 2 * h * q;
+        return {
+          chips: [{ k: '함수', tex: `f(x) = (x-1)^3 - 3(x-1) + ${num(q)}`, color: 'ink' }, { k: '대칭의 중심', tex: `C(1, ${num(q)})`, color: 'violet' }],
+          status: { tone: 'info', text: `구간 [1 − h, 1 + h] 의 정적분 = 2h·q = ${fv(val)} (중심의 높이 q 와 폭 h 로 정해집니다)` },
+          readouts: [
+            { label: '구간 [1 − h, 1 + h]', value: `[${fv(1 - h)}, ${fv(1 + h)}]`, color: 'amber', ref: 'rect' },
+            { label: '대칭의 중심 C 의 높이 q', value: fv(q), color: 'violet', ref: 'C' },
+            { label: '곡선 아래 넓이 ∫ f dx', value: fv(val), color: 'sky', ref: 'rect', note: '직사각형 2h × q 와 같다' },
+            { label: '돌려서 포갠 정도 (0 → 1)', value: fv(s.u7), color: 'green', ref: 'ghost' }
+          ]
+        };
+      }
+      focusOnce(lab, 'per', { x: [-2.3, 5.9], y: [-0.8, 2.7] });
+      const s0 = s.s7, j = 2 * Math.ceil(s0 / 2 - 1e-9), g = gper(2);
+      const area = (a, c) => computeIntegralStats(g, a, c, 240).signed;
+      const tot = area(s0, s0 + 2), left = j > s0 ? area(s0, j) : 0, right = area(j, s0 + 2);
+      return {
+        chips: [{ k: '함수', tex: 'g(x+2) = g(x), \\quad g(x) = 2x(2-x) \\quad (0 \\le x \\le 2)', color: 'ink' }, { k: '창', tex: `[${num(s0)}, ${num(s0 + 2)}]`, color: 'amber' }],
+        status: { tone: 'info', text: `창의 길이 = 한 주기 2 → ∫ g dx = ${fv(tot)} (창을 어디로 옮겨도 같습니다)` },
+        readouts: [
+          { label: '창 [s, s+2] 의 넓이 ∫ g dx', value: fv(tot), color: 'sky', ref: 'win', note: '8/3 ≈ 2.67' },
+          { label: '자른 조각 [s, 주기 경계] | 남은 조각', value: `${fv(left)} | ${fv(right)}`, color: 'rose', ref: 'cut' },
+          { label: '옮긴 뒤 한 주기 [경계, 경계+2]', value: fv(left + right), color: 'green', ref: 'ghost', note: '조각을 +2 만큼 밀어 붙임' },
+          { label: '옮긴 정도 (0 → 1)', value: fv(s.u7), color: 'amber' }
+        ]
+      };
+    }
+    const p = var7.cur(), v = p.v;
+    if (p.t === 1) focusOnce(lab, tab + p.i, { x: [-v.k - 1.2, v.k + 1.2], y: [Math.min(0, v.f(-v.k), v.f(v.k)) - 1.6, Math.max(v.f(-v.k), v.f(v.k), v.E(v.k)) + 2.4] });
+    else if (p.t === 2) focusOnce(lab, tab + p.i, { x: [v.x0 - 1.0, v.x1 + 1.0], y: [Math.min(0, v.q - 2.4) - 0.6, v.q + 2.6] });
+    else focusOnce(lab, tab + p.i, { x: [v.a - 1.0, v.b + 1.0], y: [-0.8, v.c + 1.0] });
+    const form = p.t === 1
+      ? `<b>우함수·기함수로 나누기</b><br>짝수 차수 항(우함수)은 ${tex('y')}축 대칭이라 ${tex('\\displaystyle\\int_{-k}^{k} E\\,dx = 2\\int_0^{k} E\\,dx')}, 홀수 차수 항(기함수)은 원점 대칭이라 ${tex('\\displaystyle\\int_{-k}^{k} O\\,dx = 0')} 입니다. 상수항은 우함수에 속합니다.`
+      : p.t === 2
+        ? `<b>점대칭 삼차함수</b><br>삼차함수는 변곡점 ${tex('C(p, q)')} 에 대하여 점대칭입니다(${tex('f(p+x) + f(p-x) = 2q')}). 그래서 ${tex('p')} 를 가운데로 한 구간에서 ${tex('\\displaystyle\\int_{p-h}^{p+h} f(x)\\,dx = 2h \\cdot q')} 입니다.`
+        : `<b>주기·대칭으로 조각 옮기기</b><br>주기가 ${tex('T')} 이면 ${tex('\\displaystyle\\int_{a}^{a+T} g\\,dx')} 는 ${tex('a')} 에 관계없이 같고, 좌우 대칭이면 반으로 나눈 조각도 서로 포개집니다. 구간을 같은 모양의 조각으로 나눈 뒤 <b>개수 × 한 조각의 넓이</b> 로 셉니다.`;
+    return {
+      chips: [p.t === 3 ? { k: '주기', tex: 'T = 2', color: 'amber' } : { k: '구간', tex: p.t === 1 ? `[-${v.k}, ${v.k}]` : `[${v.x0}, ${v.x1}]`, color: 'amber' }],
+      formula: form,
+      notes: p.t === 1 ? '상수항 c₀ 를 기함수에 넣거나 x²·x 항의 짝·홀 판단을 바꿔 쓰지 마세요. 거듭제곱의 지수가 짝수이면 우함수, 홀수이면 기함수입니다.'
+        : p.t === 2 ? '모든 삼차함수가 아니라 변곡점을 중심으로 점대칭입니다. 구간의 가운데가 변곡점의 x좌표가 아니면 이 방법을 바로 쓸 수 없습니다.'
+          : '조각의 폭이 주기와 같을 때만 주기 하나의 넓이로 바꿀 수 있습니다. 한 주기 안에서 좌우 대칭이 있는지도 먼저 확인합니다.'
+    };
+  }
+  function draw7(b, s, v, lab) {
+    const tab = tabOf(lab), nr = narrow(b);
+    const p = tab === 'explore' ? null : var7.cur();
+    const st = shown(lab, s, 3);
+    stage(b, s, 'main');
+    const mode = tab === 'explore' ? s.mode7 : p.t === 1 ? 'eo' : p.t === 2 ? 'pt' : 'per';
+    const ref = (r) => r;
+    if (mode === 'eo') {
+      let K, E, O, F, lens;
+      if (tab === 'explore') { K = s.kk7; E = (x) => s.a7 * x * x; O = (x) => s.b7 * x * x * x; F = (x) => E(x) + O(x); lens = s.lens7; }
+      else { K = p.v.k; E = p.v.E; O = p.v.O; F = p.v.f; lens = st >= 3 ? 'even' : st >= 2 ? 'odd' : 'all'; }
+      const th = tab === 'explore' ? Math.PI * s.u7 : Math.PI; // 정리·문제 탭은 포갠 상태로
+      const eStage = tab !== 'explore' && st >= 1;
+      if (lens === 'all') {
+        drawPieces(b, pieces(F, ZERO0, -K, K), { pos: 'rose', neg: 'sky', alpha: 0.22, ref: 'F' });
+      } else if (lens === 'even') {
+        drawPieces(b, pieces(E, ZERO0, -K, 0), { pos: 'sky', neg: 'sky', alpha: 0.25, ref: 'E' });
+        drawPieces(b, pieces(E, ZERO0, 0, K), { pos: 'sky', neg: 'sky', alpha: 0.25, ref: 'E' });
+        drawPieces(b, pieces(E, ZERO0, -K, 0), { color: 'amber', alpha: 0.28, ghost: true, T: mirrorY(th), ref: 'ghost' });
+      } else {
+        drawPieces(b, pieces(O, ZERO0, -K, K), { pos: 'rose', neg: 'sky', alpha: 0.25, ref: 'O' });
+        drawPieces(b, pieces(O, ZERO0, -K, 0), { color: 'amber', alpha: 0.28, ghost: true, T: rotAbout(0, 0, th), ref: 'ghost' });
+      }
+      b.plot(F, { color: 'ink', width: 3.2, glow: true, from: -K - 0.7, to: K + 0.7, ref: 'F' });
+      if (tab === 'explore' ? lens !== 'odd' : eStage) b.plot(E, { color: 'sky', width: 2.4, dash: [7, 5], from: -K - 0.7, to: K + 0.7, ref: 'E' });
+      if (tab === 'explore' ? lens !== 'even' : eStage) b.plot(O, { color: 'rose', width: 2.4, dash: [7, 5], from: -K - 0.7, to: K + 0.7, ref: 'O' });
+      [-K, K].forEach((x) => { b.seg([x, -0.25], [x, 0.25], { color: 'amber', width: 2.6 }); });
+      tag(b, [-K, 0], nr ? `−${nm(K)}` : `x = −${nm(K)}`, { color: 'amber', dy: 38 });
+      tag(b, [K, 0], nr ? nm(K) : `x = ${nm(K)}`, { color: 'amber', dy: 38 });
+      if (tab === 'explore') {
+        if (lens !== 'odd') tag(b, [K * 0.62, E(K * 0.62) * 0.55 + 0.1], 'E (우함수)', { color: 'sky', size: 12.5, ref: 'E' });
+        if (lens !== 'even') tag(b, [-K * 0.45, O(-K * 0.45) - 0.75], 'O (기함수)', { color: 'rose', size: 12.5, ref: 'O' });
+        b.handle('b', [K, F(K)], { color: 'rose', ref: 'F', label: nr ? 'f' : 'y = f(x)', dx: 10, dy: -14, drag: (w) => { s.b7 = clamp(Math.round(((w.y - E(K)) / (K * K * K)) * 20) / 20, -0.25, 0.25); } });
+      } else {
+        if (st >= 1) { tag(b, [K * 0.8, E(K * 0.8) + 0.45], 'E', { color: 'sky', size: 13.5 }); tag(b, [K * 0.72, O(K * 0.72) - 0.55], 'O', { color: 'rose', size: 13.5 }); }
+        const top = Math.max(p.v.f(-K), p.v.f(K), p.v.E(K)) + 1.6;
+        if (st >= 2) tag(b, [-K - 0.9, top], '∫O = 0 (넓이는 같고 부호만 반대 → 상쇄)', { color: 'amber', size: 12.5, align: 'left', ref: 'ghost' });
+        if (st >= 3) tag(b, [-K - 0.9, top - 0.75], `∫E = 2∫₀ᵏE, ∫f = ${nm(p.v.ans)}`, { color: 'sky', size: 13, align: 'left', ref: 'E' });
+      }
+    } else if (mode === 'pt') {
+      const q = tab === 'explore' ? s.q7 : p.v.q, pp = tab === 'explore' ? 1 : p.v.p, h = tab === 'explore' ? s.h7 : p.v.h;
+      const F = tab === 'explore' ? (x) => (x - 1) ** 3 - 3 * (x - 1) + q : p.v.f;
+      const Cq = () => q;
+      const th = tab === 'explore' ? Math.PI * s.u7 : Math.PI;
+      const x0 = pp - h, x1 = pp + h;
+      if (tab === 'explore' || st >= 2) {
+        drawPieces(b, pieces(F, Cq, x0, x1), { pos: 'rose', neg: 'sky', alpha: 0.24, ref: 'lobe' });
+        drawPieces(b, pieces(F, Cq, x0, pp), { color: 'amber', alpha: 0.3, ghost: true, T: rotAbout(pp, q, th), ref: 'ghost' });
+      } else {
+        drawPieces(b, pieces(F, ZERO0, x0, x1), { pos: 'rose', neg: 'sky', alpha: 0.22 });
+      }
+      if (tab === 'explore' || st >= 3) {
+        b.poly([[x0, 0], [x1, 0], [x1, q], [x0, q]], { color: 'green', dash: [6, 4], width: 2.2, fill: 'green', fillAlpha: 0.1, ref: 'rect' });
+        tag(b, [x0, q * 0.35], tab === 'explore' ? (nr ? `2h·q` : `직사각형 2h × q = ${nm(2 * h * q)}`) : `${nm(2 * h)} × ${nm(q)} = ${nm(2 * h * q)}`, { color: 'green', size: 12.5, dx: 8, align: 'left', ref: 'rect' });
+      }
+      b.plot(F, { color: 'ink', width: 3.2, glow: true, from: x0 - 0.8, to: x1 + 0.8 });
+      if (tab === 'explore' || st >= 1) {
+        b.seg([x0 - 0.6, q], [x1 + 0.6, q], { color: 'violet', width: 1.8, dash: [5, 5], ref: 'C' });
+        if (tab === 'explore') b.handle('C', [pp, q], { color: 'violet', ref: 'C', label: nr ? 'C' : `중심 C(1, ${nm(q)})`, dx: 12, dy: -16, drag: (w) => { s.q7 = clamp(Math.round(w.y * 2) / 2, -1, 3); } });
+        else { b.point([pp, q], { color: 'violet', r: 6.5, ref: 'C' }); tag(b, [pp, q], `C(${pp}, ${q})`, { color: 'violet', dx: 10, dy: -16, align: 'left' }); }
+      }
+      [x0, x1].forEach((x) => { b.seg([x, -0.2], [x, 0.2], { color: 'amber', width: 2.6 }); });
+      tag(b, [x0, 0], tab === 'explore' ? (nr ? '1−h' : 'x = 1 − h') : `${x0}`, { color: 'amber', dy: 38 });
+      tag(b, [x1, 0], tab === 'explore' ? (nr ? '1+h' : 'x = 1 + h') : `${x1}`, { color: 'amber', dy: 38 });
+    } else {
+      const c = tab === 'explore' ? 2 : p.v.c, g = gper(c);
+      if (tab === 'explore') {
+        const s0 = s.s7, j = 2 * Math.ceil(s0 / 2 - 1e-9);
+        const dx = 2 * s.u7;
+        drawPieces(b, pieces(g, ZERO0, s0, s0 + 2, 200), { color: 'rose', alpha: 0.26, ref: 'win' });
+        if (j > s0 + 1e-6) {
+          drawPieces(b, pieces(g, ZERO0, s0, j, 120), { color: 'amber', alpha: 0.3, ghost: true, T: shiftX(dx), ref: 'ghost' });
+          tag(b, [(s0 + j) / 2, c * 0.4], nr ? '조각' : '자른 조각', { color: 'amber', size: 12.5, ref: 'cut' });
+        }
+        b.plot(g, { color: 'ink', width: 3.2, glow: true, from: -2.2, to: 5.8 });
+        [s0, s0 + 2].forEach((x) => b.seg([x, -0.12], [x, 0.12], { color: 'rose', width: 2.6 }));
+        tag(b, [s0, 0], 's', { color: 'rose', dy: 38 });
+        tag(b, [s0 + 2, 0], 's+2', { color: 'rose', dy: 38 });
+        for (let x = -2; x <= 5; x += 2) b.seg([x, -0.1], [x, 0.1], { color: 'muted', width: 1.4 });
+        b.handle('s', [s0, 0], { color: 'rose', ref: 'win', label: nr ? '' : '창의 왼쪽 끝', dx: -6, dy: -18, align: 'right', drag: (w) => { s.s7 = clamp(round05(w.x), -1.5, 2.5); } });
+      } else {
+        const xs = [];
+        for (let x = p.v.a; x <= p.v.b; x++) xs.push(x);
+        const unit = p.v.unit;
+        for (let i = 0; i < p.v.n; i++) {
+          const x0 = p.v.a + i, x1 = x0 + 1;
+          drawPieces(b, pieces(g, ZERO0, x0, x1, 40), { color: st >= 1 && i % 2 ? 'sky' : 'rose', alpha: st >= 1 ? 0.3 : 0.2, ref: 'win' });
+          if (st >= 2) tag(b, [x0 + 0.5, g(x0 + 0.5) * 0.45], nm(unit), { color: 'ink', size: 12.5 });
+        }
+        b.plot(g, { color: 'ink', width: 3.2, glow: true, from: p.v.a - 0.8, to: p.v.b + 0.8 });
+        if (st >= 1) xs.forEach((x) => b.seg([x, 0], [x, g(x) > 0.01 ? g(x) : 0.2 + c * 0.9], { color: 'amber', width: 1.6, dash: [4, 4] }));
+        [p.v.a, p.v.b].forEach((x) => { b.seg([x, -0.12], [x, 0.12], { color: 'amber', width: 2.6 }); tag(b, [x, 0], `${x}`, { color: 'amber', dy: 38 }); });
+        if (st >= 3) tag(b, [(p.v.a + p.v.b) / 2, c + 0.55], `${p.v.n} × ${nm(unit)} = ${nm(p.v.ans)}`, { color: 'green', size: 14 });
+      }
+    }
+    paneEnd(b);
+  }
+
+  /* ==================================================================
+     장면 8 · 구분구적법 — 직사각형 n개의 합이 넓이(정적분)로 다가가는 모습 (이전 교육과정)
+     f(x) = x²/4, [0, 4] 를 n 등분: 윗합 Sₙ(오른쪽 끝) ≥ ∫ ≥ 아랫합 sₙ(왼쪽 끝), 정적분 = 16/3
+     ================================================================== */
+  const F8 = (x) => (x * x) / 4;
+  const X8 = 4;
+  const N8MAX = 60;
+  function sums8(n) {
+    const dx = X8 / n;
+    let up = 0, lo = 0;
+    for (let k = 1; k <= n; k++) up += F8(k * dx) * dx;
+    for (let k = 0; k < n; k++) lo += F8(k * dx) * dx;
+    return { dx, up, lo };
+  }
+  const modes8 = [['both', '윗합·아랫합 함께'], ['up', '윗합(오른쪽 끝)만'], ['low', '아랫합(왼쪽 끝)만']];
+  // 문제 변형: 'c' = (1/n) f(ck/n),  's' = ((b−a)/n) f(a + (b−a)k/n)
+  const P8 = [
+    { type: 'c', c: 2, f: (x) => 0.75 * x * x + 0.5 * x, ftex: '\\dfrac{3}{4}x^{2}+\\dfrac{1}{2}x', I: 3, tag: '2020학년도 대학수학능력시험 나형 11번 유형' },
+    { type: 'c', c: 3, f: (x) => (x * x) / 3 + (2 * x) / 3, ftex: '\\dfrac{1}{3}x^{2}+\\dfrac{2}{3}x', I: 6, tag: '2020학년도 대학수학능력시험 나형 11번 유형' },
+    { type: 's', a: 1, b: 3, f: (x) => x * x / 2, ftex: '\\dfrac{1}{2}x^{2}', I: 13 / 3, tag: '2017학년도 7월 학평(인천) 나형 28번 유형' },
+    { type: 'c', c: 1, f: (x) => x * x, ftex: 'x^{2}', I: 1 / 3, tag: '2017학년도 9월 모의평가 나형 28번 유형' },
+    { type: 'c', c: 1, f: (x) => x * x * x, ftex: 'x^{3}', I: 1 / 4, tag: '2017학년도 9월 모의평가 나형 28번 유형' }
+  ];
+  P8.forEach((p, i) => {
+    p.i = i; p.x0 = p.type === 's' ? p.a : 0; p.x1 = p.type === 's' ? p.b : p.c;
+    p.ans = p.type === 'c' ? p.I / p.c : p.I;
+  });
+  const var8 = varier((prev) => P8[prev ? pickIdx(P8.length, prev.i) : 0]);
+  function text8(p) {
+    const lim = '\\displaystyle\\lim_{n\\to\\infty}\\sum_{k=1}^{n}';
+    if (p.type === 's') return `함수 ${tex('f(x) = ' + p.ftex)} 에 대하여 ${tex(lim + '\\dfrac{2}{n}\\,f\\!\\left(1 + \\dfrac{2k}{n}\\right)')} 의 값을 구하시오. <small style="color:var(--text-3)">(이전 교육과정)</small>`;
+    const arg = p.c === 1 ? '\\dfrac{k}{n}' : `\\dfrac{${p.c}k}{n}`;
+    return `함수 ${tex('f(x) = ' + p.ftex)} 에 대하여 ${tex(lim + '\\dfrac{1}{n}\\,f\\!\\left(' + arg + '\\right)')} 의 값을 구하시오. <small style="color:var(--text-3)">(이전 교육과정)</small>`;
+  }
+  function steps8() {
+    const p = var8.cur(), L = p.x1 - p.x0;
+    return [
+      `구간 $[${p.x0}, ${p.x1}]$ 을 $n$ 등분하면 $\\Delta x = \\dfrac{${L}}{n}$, $x_k = ${p.x0 === 0 ? '' : p.x0 + ' + '}k\\Delta x$ 입니다. 가로 $\\Delta x$, 세로 $f(x_k)$ 인 직사각형 $n$ 개를 그립니다(그림은 $n = 8$).`,
+      p.type === 's'
+        ? `합 $\\sum \\dfrac{2}{n} f(x_k) = \\sum f(x_k)\\Delta x$ 는 이 직사각형들의 넓이의 합 그대로입니다.`
+        : p.c === 1
+          ? `합 $\\sum \\dfrac{1}{n} f(x_k) = \\sum f(x_k)\\Delta x$ 는 이 직사각형들의 넓이의 합 그대로입니다.`
+          : `합 $\\sum \\dfrac{1}{n} f(x_k)$ 의 $\\dfrac{1}{n} = \\dfrac{\\Delta x}{${p.c}}$ 이므로 직사각형 넓이의 합의 $\\dfrac{1}{${p.c}}$ 배입니다.`,
+      p.type === 'c' && p.c !== 1
+        ? `$n \\to \\infty$ 이면 직사각형의 합은 $\\int_0^{${p.c}} f\\,dx = ${frac(p.I)}$ 로 다가가므로 구하는 값은 $\\dfrac{1}{${p.c}} \\times ${frac(p.I)} = ${frac(p.ans)}$ 입니다.`
+        : `$n \\to \\infty$ 이면 직사각형의 합은 $\\int_{${p.x0}}^{${p.x1}} f\\,dx = ${frac(p.I)}$ 로 다가가므로 구하는 값은 $${frac(p.ans)}$ 입니다.`
+    ];
+  }
+  function view8(s, lab) {
+    const tab = tabOf(lab);
+    if (tab === 'explore') {
+      focusOnce(lab, 'x', { x: [-0.8, 5.0], y: [-1.2, 4.9] });
+      const n = Math.round(s.n8), { dx, up, lo } = sums8(n), I = 16 / 3;
+      return {
+        chips: [{ k: '함수', tex: 'f(x) = \\dfrac{x^2}{4}', color: 'ink' }, { k: '구간', tex: '[0, 4]', color: 'amber' }, { k: '윗합', tex: 'S_n = \\dfrac{8}{3}\\left(1 + \\dfrac{1}{n}\\right)\\left(2 + \\dfrac{1}{n}\\right)', color: 'rose' }],
+        status: { tone: n >= 40 ? 'ok' : 'info', text: n >= 40 ? `n = ${n}: 윗합 ${fv(up, 3)}, 아랫합 ${fv(lo, 3)} → 둘 다 16/3 ≈ ${fv(I, 3)} 에 가까워집니다` : `n = ${n}: 아랫합 ${fv(lo, 3)} ≤ 16/3 ≤ 윗합 ${fv(up, 3)}` },
+        readouts: [
+          { label: '직사각형 개수 n | 가로 Δx = 4/n', value: `${n} | ${fv(dx, 3)}`, color: 'amber', ref: 'dx' },
+          { label: '윗합 Sₙ (오른쪽 끝, 분홍)', value: fv(up, 3), color: 'rose', ref: 'up' },
+          { label: '아랫합 sₙ (왼쪽 끝, 하늘)', value: fv(lo, 3), color: 'sky', ref: 'low' },
+          { label: '정적분 ∫₀⁴ x²/4 dx (n → ∞ 의 값)', value: '16/3 ≈ 5.333', color: 'green', ref: 'I' },
+          { label: '윗합 − 아랫합 = 16/n', value: fv(up - lo, 3), color: 'violet', ref: 'gap', wide: true, note: 'n 이 커질수록 0 에 가까워집니다' }
+        ],
+        tape: { title: `윗합 = 아랫합 + 틈  (틈 16/n = ${fv(up - lo, 3)})`, segments: [{ text: `아랫합 ${fv(lo, 2)}`, weight: Math.max(0.06, lo), color: 'sky' }, { text: `틈 ${fv(up - lo, 2)}`, weight: Math.max(0.06, up - lo), color: 'rose' }] }
+      };
+    }
+    const p = var8.cur(), ys = [0, p.f(p.x0), p.f(p.x1)];
+    focusOnce(lab, tab + p.i, { x: [p.x0 - 0.8, p.x1 + 0.9], y: [-1.3, Math.max(...ys) + 0.9] });
+    return {
+      chips: [{ k: '함수', tex: 'f(x) = ' + p.ftex, color: 'ink' }, { k: '구간', tex: `[${p.x0}, ${p.x1}]`, color: 'amber' }],
+      formula: `<b>구분구적법 → 정적분</b><br>구간 ${tex('[a, b]')} 를 ${tex('n')} 등분하면 ${tex('\\Delta x = \\dfrac{b-a}{n}')}, ${tex('x_k = a + k\\Delta x')} 이고 ${tex('\\displaystyle\\lim_{n\\to\\infty}\\sum_{k=1}^{n} f(x_k)\\Delta x = \\int_a^b f(x)\\,dx')} 입니다.<br>합의 모양을 ${tex('\\Delta x \\cdot f(x_k)')} 로 읽는 것이 풀이의 시작입니다. ${tex('\\dfrac{1}{n}')} 이 ${tex('\\Delta x')} 가 되지 않으면 상수배를 맞춥니다.`,
+      notes: '이전 교육과정(구분구적법) 내용입니다. 지금 교육과정에서는 정적분을 곧바로 정의하지만, 옛 기출을 풀 때 Σ 꼴을 정적분으로 읽는 연습이 됩니다. (b − a)/n 와 f 안의 k 앞 계수가 같아야 구간이 [a, b] 로 정해집니다.'
+    };
+  }
+  function draw8(b, s, v, lab) {
+    const tab = tabOf(lab), nr = narrow(b);
+    const st = shown(lab, s, 3);
+    stage(b, s, 'main');
+    if (tab === 'explore') {
+      const n = Math.round(s.n8), dx = X8 / n, mode = s.mode8;
+      const out = n <= 30;
+      if (mode !== 'low') for (let k = 1; k <= n; k++) b.poly([[(k - 1) * dx, 0], [k * dx, 0], [k * dx, F8(k * dx)], [(k - 1) * dx, F8(k * dx)]], { fill: 'rose', fillAlpha: 0.22, color: out ? 'rose' : null, width: 1.2, alpha: 0.8, ref: 'up' });
+      if (mode !== 'up') for (let k = 0; k < n; k++) b.poly([[k * dx, 0], [(k + 1) * dx, 0], [(k + 1) * dx, F8(k * dx)], [k * dx, F8(k * dx)]], { fill: 'sky', fillAlpha: 0.34, color: out ? 'sky' : null, width: 1.2, alpha: 0.9, ref: 'low' });
+      b.plot(F8, { color: 'ink', width: 3.2, glow: true, from: -0.5, to: 4.5 });
+      b.seg([X8, 0], [X8, F8(X8)], { color: 'amber', width: 1.8, dash: [5, 5] });
+      tag(b, [X8, 0], 'x = 4', { color: 'amber', dy: 36 });
+      tag(b, [3.2, F8(3.2)], 'y = x²/4', { color: 'ink', dx: -10, dy: -16, align: 'right' });
+      // Δx 표시
+      b.seg([0, -0.5], [dx, -0.5], { color: 'amber', width: 3 });
+      tag(b, [0, -0.5], nr ? 'Δx' : `Δx = 4/${n}`, { color: 'amber', dx: 0, dy: 20, align: 'left', ref: 'dx' });
+      b.handle('dx', [dx, 0], { color: 'amber', ref: 'dx', priority: 1, ariaLabel: '직사각형 가로 Δx (끌어서 n 바꾸기)', drag: (w) => { s.n8 = clamp(Math.round(X8 / clamp(w.x, X8 / N8MAX, X8)), 1, N8MAX); } });
+      paneEnd(b);
+      return;
+    }
+    const p = var8.cur(), N = 8, d = (p.x1 - p.x0) / N;
+    const ymax = Math.max(p.f(p.x0), p.f(p.x1));
+    // 문제: 곡선과 구간만. 풀이 1단계: 직사각형 8개, 3단계: 넓이 전체
+    if (st >= 3) b.poly([[p.x0, 0], ...Array.from({ length: 61 }, (_, i) => [p.x0 + ((p.x1 - p.x0) * i) / 60, p.f(p.x0 + ((p.x1 - p.x0) * i) / 60)]), [p.x1, 0]], { fill: 'amber', fillAlpha: 0.26, color: null, ref: 'I' });
+    if (st >= 1) for (let k = 1; k <= N; k++) { const x1 = p.x0 + k * d, x0 = x1 - d; b.poly([[x0, 0], [x1, 0], [x1, p.f(x1)], [x0, p.f(x1)]], { fill: 'rose', fillAlpha: st >= 3 ? 0.12 : 0.26, color: 'rose', width: 1.3, alpha: 0.9, ref: 'up' }); }
+    b.plot(p.f, { color: 'ink', width: 3.2, glow: true, from: p.x0 - 0.5, to: p.x1 + 0.6 });
+    [p.x0, p.x1].forEach((x) => { b.seg([x, 0], [x, p.f(x)], { color: 'amber', width: 1.8, dash: [5, 5] }); });
+    tag(b, [p.x1, p.f(p.x1)], 'y = f(x)', { color: 'ink', dx: -8, dy: -16, align: 'right' });
+    if (st >= 1) { b.seg([p.x0, -0.55], [p.x0 + d, -0.55], { color: 'rose', width: 3, ref: 'up' }); tag(b, [p.x0, -0.55], nr ? 'Δx' : 'Δx = ' + (p.x1 - p.x0) + '/n', { color: 'rose', dy: 20, align: 'left', ref: 'up' }); }
+    if (st >= 3) tag(b, [(p.x0 + p.x1) / 2, ymax * 0.18], `∫ = ${fracTxt(p.I)}`, { color: 'amber', size: 14, ref: 'I' });
+    paneEnd(b);
+  }
+
+  /* ---------- 새 장면 정의 (장면 6~8) ---------- */
+  const modePresets = (key, list, extra) => (s) => [
+    ...list.map(([k, label]) => ({ group: '탐구 고르기', label, apply: (st) => { st[key] = k; if (extra) extra(st, k); }, on: (st) => st[key] === k }))
+  ];
+  const playAction = (label) => [{ id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : label), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }];
+  const newScenes = [
+    /* ===== 장면 6 · A·B 넓이 비교 (C07) ===== */
+    {
+      id: 'areaab', title: '직선으로 잘린 두 영역 A, B의 넓이 비교', short: 'A·B 넓이 비교',
+      question: '직선을 돌리면 두 영역 A, B의 넓이는 어떻게 바뀔까? A = B 가 되는 순간을 식으로 쓰면 무엇일까?',
+      tabs: { compact: true },
+      guide: (s) => (s.mode6 === 'wall'
+        ? '금색 점(벽 <b>x = t</b>)을 좌우로 끌어 보세요. 금색 곡선 <b>G(x) = ∫₀ˣ(f − ℓ)dx</b> 위의 점이 곧 <b>B − A</b>이고, 보라색 세로선(높이 차 f − ℓ)이 G 의 <b>접선의 기울기</b>입니다. G 가 0 이 되는 곳(초록 점)이 A = B 가 되는 벽입니다.'
+        : '금색 점(직선의 오른쪽 끝)을 위아래로 끌어 직선을 돌려 보세요. <b style="color:var(--m-rose)">A</b>와 <b style="color:var(--m-sky)">B</b>의 넓이가 실시간으로 바뀌고, <b>m = −0.5</b> 근처에서 A = B 가 됩니다(자석처럼 붙습니다). 그때 ∫₀³(f − ℓ)dx = 0 입니다.'),
+      enter: (s, lab) => { resetFocus(s, lab); s.mode6 = 'line'; s.m6 = 0.1; s.t6 = 2.0; },
+      focus: { x: [-0.9, 3.9], y: [-1.5, 4.9] },
+      controls: (s) => (s.mode6 === 'wall' ? ['t6', 'm6'] : ['m6']),
+      presets: modePresets('mode6', modes6, (st, k) => { st.playing = false; if (k === 'wall') { st.m6 = M6; st.t6 = 2.0; } }),
+      actions: (s) => playAction(s.mode6 === 'wall' ? '벽 t 움직이기' : '직선 돌리기'),
+      tick: (s, dt) => { if (!s.playing) return false; if (s.mode6 === 'wall') bounce(s, 't6', 0.8, 0.3, 3.4, dt); else bounce(s, 'm6', 0.35, -1.0, 0.1, dt); return true; },
+      steps: steps6,
+      reviewTop: reviewTopOf(() => text6(var6.cur())),
+      problem: { tag: '2025학년도 6월 모의평가 13번 · 2023학년도 수능 10번 유형', time: '목표 시간: 60초', text: () => probHTML(text6(var6.cur())), answer: () => tex('m = ' + var6.cur().mtex) },
+      solution: {
+        standardTitle: '교점을 잡아 A, B를 따로 구하기', standardTag: '정석', quickTitle: 'B − A = ∫(f − ℓ) 한 번', quickTag: '10초 컷',
+        standard: () => {
+          const p = var6.cur();
+          return {
+            steps: `① 교점의 $x$좌표를 $\\alpha$ 라 하면 $A = \\int_0^{\\alpha} (\\ell - f)\\,dx$, $B = \\int_{\\alpha}^{${p.w}} (f - \\ell)\\,dx$ 입니다.<br>
+② $B - A = \\int_{\\alpha}^{${p.w}} (f - \\ell)\\,dx + \\int_0^{\\alpha} (f - \\ell)\\,dx = \\int_0^{${p.w}} (f - \\ell)\\,dx$ — 교점 $\\alpha$ 가 식에서 사라집니다.<br>
+③ $\\int_0^{${p.w}} f\\,dx = ${frac(If6(p, p.w))}$, $\\int_0^{${p.w}} (mx + ${p.c})\\,dx = ${nm(p.w * p.w / 2)}m + ${p.c * p.w}$ 이므로 $${frac(If6(p, p.w))} - (${nm(p.w * p.w / 2)}m + ${p.c * p.w}) = ${p.d === 0 ? '0' : frac(p.d)}$ → $m = ${p.mtex}$.`,
+            warning: '교점 α 는 삼차방정식의 근이라 구하기 어렵습니다. 처음부터 α 를 구하려 하지 말고 ②처럼 α 가 없어지는 식을 만드세요.'
+          };
+        },
+        quick: () => {
+          const p = var6.cur();
+          return {
+            steps: `${tex('A = B')} 이든 ${tex('B - A = d')} 이든 <strong class="text-sky-300">${tex('B - A = \\int_0^{' + p.w + '} (f - \\ell)\\,dx')}</strong> 하나로 끝납니다. 곡선 아래 ${tex(frac(If6(p, p.w)))} 에서 직선 아래 사다리꼴 ${tex(nm(p.w * p.w / 2) + 'm + ' + p.c * p.w)} 를 빼면 되므로 <strong class="text-amber-300">${tex('m = ' + p.mtex)}</strong>.`,
+            highlight: '두 영역이 곡선·직선의 위아래로 갈라져도 "아래 − 위"를 부호째 한 번에 적분하면 넓이의 차가 됩니다.'
+          };
+        }
+      },
+      view: view6, draw: draw6, vary: var6
+    },
+
+    /* ===== 장면 7 · 대칭 정적분 (C09) ===== */
+    {
+      id: 'symint', title: '대칭을 이용하는 정적분 · 넓이 옮겨 붙이기', short: '대칭 정적분',
+      question: '넓이를 직접 계산하지 않고, 좌우를 접거나 돌려 포개면 정적분이 어떻게 쉬워질까?',
+      tabs: { compact: true },
+      guide: (s) => (s.mode7 === 'pt'
+        ? '금색 점 <b>C</b>(대칭의 중심)를 위아래로 끌고 구간의 폭 h 를 바꿔 보세요. <b>돌려서 포갠 정도</b>를 1 로 하면 왼쪽 로브가 C 둘레로 180° 돌아 오른쪽 로브에 포개집니다. 넘친 만큼 메우므로 곡선 아래 넓이는 <b>직사각형 2h × q</b> 와 같습니다.'
+        : s.mode7 === 'per'
+          ? '창 <b>[s, s+2]</b>(길이 = 한 주기)의 왼쪽 끝을 끌어 보세요. 주기 경계에서 잘린 <b>왼쪽 조각</b>을 <b>한 주기(2)만큼 밀어 붙이면</b>(옮긴 정도 → 1) 한 주기 전체가 되어, 창을 어디에 놓아도 넓이가 같습니다.'
+          : '<b>우함수</b> 부분을 고르면 왼쪽 반이 y축 거울로 접혀 오른쪽에 포개지고, <b>기함수</b> 부분을 고르면 왼쪽 반이 원점 둘레로 180° 돌아 오른쪽에 포개집니다(부호만 반대). 접은 정도를 0 → 1 로 움직여 보세요.'),
+      enter: (s, lab) => { resetFocus(s, lab); s.mode7 = 'eo'; s.lens7 = 'all'; s.a7 = 0.4; s.b7 = 0.15; s.kk7 = 2; s.h7 = 1.8; s.q7 = 1.5; s.s7 = 0.5; s.u7 = 0; },
+      focus: { x: [-3.1, 3.1], y: [-4.9, 5.2] },
+      controls: (s) => (s.mode7 === 'pt' ? ['h7', 'q7', 'u7'] : s.mode7 === 'per' ? ['s7', 'u7'] : s.lens7 === 'all' ? ['a7', 'b7', 'kk7'] : ['a7', 'b7', 'kk7', 'u7']),
+      presets: (s) => [
+        ...modePresets('mode7', modes7, (st) => { st.playing = false; st.u7 = 0; })(s),
+        ...(s.mode7 === 'eo' ? lens7.map(([k, label]) => ({ group: '볼 부분', label, apply: (st) => { st.lens7 = k; st.u7 = 0; }, on: (st) => st.lens7 === k })) : [])
+      ],
+      actions: (s) => (s.mode7 === 'eo' && s.lens7 === 'all' ? [] : playAction(s.mode7 === 'per' ? '조각 옮기기' : s.mode7 === 'pt' ? '돌려서 포개기' : '접기·돌리기 애니메이션')),
+      tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'u7', 0.4, 0, 1, dt); return true; },
+      steps: steps7,
+      reviewTop: reviewTopOf(() => text7(var7.cur())),
+      problem: { tag: () => tagOf7(var7.cur()), time: '목표 시간: 40초', text: () => probHTML(text7(var7.cur())), answer: () => tex(ansTex7(var7.cur())) },
+      solution: {
+        standardTitle: '정석 · 계산으로 풀기', standardTag: '정석', quickTitle: '대칭으로 계산 없이', quickTag: '10초 컷',
+        standard: () => {
+          const p = var7.cur(), v = p.v;
+          if (p.t === 1) return { steps: `① 부정적분 $F(x) = ${frac(v.c[0] / 4)}x^4 + ${frac(v.c[1] / 3)}x^3 + ${frac(v.c[2] / 2)}x^2 + ${frac(v.c[3])}x$ 를 구해 $F(${v.k}) - F(-${v.k})$ 를 계산합니다.<br>② 짝수 차수 항은 두 번 더해지고 홀수 차수 항은 서로 지워져 $2\\left(${frac(v.c[1] / 3)}\\cdot ${v.k ** 3} + ${frac(v.c[3])}\\cdot ${v.k}\\right) = ${frac(v.ans)}$ 입니다.`, warning: '모든 항을 대입하면 계산이 길고 부호 실수가 잦습니다. 홀수 차수 항은 처음부터 버리세요.' };
+          if (p.t === 2) {
+            const F = (x) => x ** 4 / 4 + (v.cs[1] * x ** 3) / 3 + (v.cs[2] * x * x) / 2 + v.cs[3] * x;
+            return { steps: `① $F(x) = \\dfrac{x^4}{4} + ${frac(v.cs[1] / 3)}x^3 + ${frac(v.cs[2] / 2)}x^2 + ${frac(v.cs[3])}x$.<br>② $F(${v.x1}) - F(${v.x0}) = ${frac(F(v.x1))} - (${frac(F(v.x0))}) = ${frac(v.ans)}$.`, warning: '큰 수의 네제곱 계산이 섞입니다. 변곡점을 찾으면 계산 없이 끝납니다.' };
+          }
+          return { steps: `① 한 주기 $\\int_0^2 g\\,dx = \\int_0^2 ${v.c === 3 ? '3' : '\\tfrac{3}{2}'}x(2-x)\\,dx = ${frac(4 * v.c / 3)}$.<br>② 구간 $[${v.a}, ${v.b}]$ 의 길이 $${v.n}$ 은 주기 $2$ 의 $${frac(v.n / 2)}$ 배이고, 좌우 대칭이라 반 주기의 넓이는 $${frac(2 * v.c / 3)}$ 이므로 $${v.n} \\times ${frac(v.unit)} = ${frac(v.ans)}$.`, warning: '주기 단위로 구간을 쪼갤 때 시작점이 주기 경계가 아니면 조각을 옮겨 붙여 계산합니다.' };
+        },
+        quick: () => {
+          const p = var7.cur(), v = p.v;
+          return {
+            steps: p.t === 1 ? `홀수 차수 항 ${tex(v.otex)} 은 버리고 짝수 차수 항 ${tex(v.etex)} 만 ${tex('2\\int_0^{' + v.k + '}')} 로 계산: <strong class="text-amber-300">${tex(frac(v.ans))}</strong>.`
+              : p.t === 2 ? `대칭의 중심은 변곡점 ${tex('C(' + v.p + ', ' + v.q + ')')}. 구간의 가운데가 ${tex('x = ' + v.p)} 이므로 넓이는 높이 ${tex(String(v.q))}, 가로 ${tex(String(2 * v.h))} 의 직사각형: <strong class="text-amber-300">${tex(String(v.ans))}</strong>.`
+                : `구간을 길이 1 인 같은 조각 ${tex(String(v.n))} 개로 보고 <strong class="text-amber-300">${tex(v.n + ' \\times ' + frac(v.unit) + ' = ' + frac(v.ans))}</strong>.`,
+            highlight: '정적분 문제에서 구간이 0 을 기준으로 좌우 대칭이거나 어떤 점을 기준으로 대칭이면 계산을 시작하기 전에 대칭부터 확인하세요.'
+          };
+        }
+      },
+      view: view7, draw: draw7, vary: var7
+    },
+
+    /* ===== 장면 8 · 구분구적법 (이전 교육과정) ===== */
+    {
+      id: 'riemann', title: '[이전 교육과정] 구분구적법 · 직사각형의 합과 정적분', short: '[이전 교육과정] 구분구적법',
+      question: '직사각형을 더 가늘게, 더 많이 그리면 합은 어디로 다가갈까? 이것이 정적분의 뜻일까?',
+      tabs: { compact: true },
+      guide: '조절 막대나 금색 점(첫 직사각형의 오른쪽 아래)을 끌어 <b>n</b>을 키워 보세요. <b style="color:var(--m-rose)">분홍 윗합</b>은 아래로, <b style="color:var(--m-sky)">하늘 아랫합</b>은 위로 다가가 둘 다 <b>16/3</b>으로 모입니다. 「직사각형 늘리기」로 n을 1 → 60 까지 자동으로 키울 수 있습니다.',
+      enter: (s, lab) => { resetFocus(s, lab); s.mode8 = 'both'; s.n8 = 6; },
+      focus: { x: [-0.8, 5.0], y: [-1.2, 4.9] },
+      controls: ['n8'],
+      presets: modePresets('mode8', modes8),
+      actions: [{ id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '직사각형 늘리기'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; if (s.playing && s.n8 >= N8MAX - 1) s.n8 = 1; } }],
+      tick: (s, dt) => { if (!s.playing) return false; s.n8 = Math.min(N8MAX, s.n8 + 7 * dt); if (s.n8 >= N8MAX) s.playing = false; return true; },
+      steps: steps8,
+      reviewTop: reviewTopOf(() => text8(var8.cur())),
+      problem: { tag: () => var8.cur().tag + ' · 이전 교육과정', time: '목표 시간: 30초', text: () => probHTML(text8(var8.cur())), answer: () => tex(frac(var8.cur().ans)) },
+      solution: {
+        standardTitle: '합을 정적분으로 읽기', standardTag: '정석', quickTitle: '10초 컷 · Σ → ∫', quickTag: '10초 컷',
+        standard: () => {
+          const p = var8.cur(), L = p.x1 - p.x0;
+          return {
+            steps: `① $\\Delta x = \\dfrac{${L}}{n}$, $x_k = ${p.x0 === 0 ? '' : p.x0 + ' + '}\\dfrac{${L}k}{n}$ 이므로 합의 꼴을 $f(x_k)\\Delta x$ 로 고칩니다${p.type === 'c' && p.c !== 1 ? ` (${tex('\\dfrac{1}{n} = \\dfrac{1}{' + p.c + '}\\Delta x')})` : ''}.<br>
+② ${p.type === 'c' && p.c !== 1 ? `$\\dfrac{1}{${p.c}}\\int_0^{${p.c}} f(x)\\,dx$` : `$\\int_{${p.x0}}^{${p.x1}} f(x)\\,dx$`} 를 계산하면 $${p.type === 'c' && p.c !== 1 ? `\\dfrac{1}{${p.c}} \\times ${frac(p.I)} = ` : ''}${frac(p.ans)}$ 입니다.`,
+            warning: 'Σ 안의 1/n 만 보고 구간을 [0, 1] 로 단정하지 마세요. f 안의 k/n 앞의 상수가 위끝을 정하고, 앞의 1/n 과 Δx 의 차이는 상수배로 맞춥니다.'
+          };
+        },
+        quick: () => {
+          const p = var8.cur();
+          return {
+            steps: p.type === 'c' && p.c !== 1 ? `${tex('\\lim \\sum \\dfrac{1}{n} f\\!\\left(\\dfrac{' + p.c + 'k}{n}\\right) = \\dfrac{1}{' + p.c + '}\\int_0^{' + p.c + '} f(x)\\,dx')} → <strong class="text-amber-300">${tex(frac(p.ans))}</strong>`
+              : `${tex('\\lim \\sum f(x_k)\\Delta x = \\int_{' + p.x0 + '}^{' + p.x1 + '} f(x)\\,dx')} → <strong class="text-amber-300">${tex(frac(p.ans))}</strong>`,
+            highlight: '(위끝 − 아래끝)/n 이 Δx. k/n 앞의 상수가 위끝, 1/n 앞뒤의 상수는 정적분 앞의 배수입니다.'
+          };
+        }
+      },
+      view: view8, draw: draw8, vary: var8
+    }
+  ];
+  scenes.push(...newScenes);
+
   /* ---------- 5. 실험실 등록 ---------- */
   APLab.createLab({
     id: 'calc1-integral',
@@ -726,9 +1447,19 @@ window.addEventListener('DOMContentLoaded', function () {
       a5: { value: 1, min: 0.2, max: 1.6, step: 0.05, color: 'amber', label: '아래끝 a', format: (v, s) => `a = ${fmt(v)} (f(a) = ${fmt(F5(v))})`,
         onInput: (s) => { if (s.b5 < s.a5 + 0.3) s.b5 = R(s.a5 + 0.3); } },
       b5: { value: 2, min: 0.5, max: 2.2, step: 0.05, color: 'sky', label: '위끝 b', format: (v) => `b = ${fmt(v)} (f(b) = ${fmt(F5(v))})`,
-        onInput: (s) => { if (s.b5 < s.a5 + 0.3) s.a5 = Math.max(0.2, R(s.b5 - 0.3)); } }
+        onInput: (s) => { if (s.b5 < s.a5 + 0.3) s.a5 = Math.max(0.2, R(s.b5 - 0.3)); } },
+      m6: { value: 0.1, min: -1.0, max: 0.1, step: 0.01, color: 'amber', label: '직선 y = mx + 2 의 기울기 m', hint: 'm = −0.5 에서 A = B (∫₀³(f − ℓ)dx = 0)', format: (v) => `m = ${fmt(v)}` },
+      t6: { value: 2, min: 0.3, max: 3.4, step: 0.05, color: 'amber', label: '벽의 위치 x = t', hint: 'm = −0.5 이면 t = 3 에서 G(t) = 0 (A = B)', format: (v) => `t = ${fmt(v)}` },
+      a7: { value: 0.4, min: -0.6, max: 0.6, step: 0.05, color: 'sky', label: '우함수 부분 ax² 의 a', format: (v) => `a = ${fmt(v)}` },
+      b7: { value: 0.15, min: -0.25, max: 0.25, step: 0.05, color: 'rose', label: '기함수 부분 bx³ 의 b', hint: 'b 를 바꿔도 ∫₋ₖᵏ f dx 는 변하지 않습니다', format: (v) => `b = ${fmt(v)}` },
+      kk7: { value: 2, min: 0.5, max: 2.5, step: 0.1, color: 'amber', label: '구간 [−k, k] 의 k', format: (v) => `k = ${fmt(v, 1)}` },
+      h7: { value: 1.8, min: 0.5, max: 2, step: 0.1, color: 'amber', label: '구간의 폭 h  (구간 [1 − h, 1 + h])', format: (v) => `h = ${fmt(v, 1)}` },
+      q7: { value: 1.5, min: -1, max: 3, step: 0.5, color: 'violet', label: '대칭의 중심 C 의 높이 q', format: (v) => `q = ${fmt(v, 1)}` },
+      s7: { value: 0.5, min: -1.5, max: 2.5, step: 0.05, color: 'rose', label: '창 [s, s+2] 의 왼쪽 끝 s', format: (v) => `s = ${fmt(v)}` },
+      u7: { value: 0, min: 0, max: 1, step: 0.01, color: 'green', label: '접기·돌리기·옮기기 (0 → 1)', hint: '1 이면 조각이 목표 자리에 정확히 포개집니다', format: (v) => `${fmt(v)}` },
+      n8: { value: 6, min: 1, max: 60, step: 1, color: 'amber', label: '직사각형의 개수 n', hint: 'n 이 커질수록 윗합과 아랫합이 16/3 에 가까워집니다', format: (v) => `n = ${Math.round(v)}` }
     },
-    state: { dual: false, animDir: -1 },
+    state: { dual: false, animDir: -1, mode6: 'line', mode7: 'eo', lens7: 'all', mode8: 'both' },
     persist: ['dual'],
     scenes
   });
