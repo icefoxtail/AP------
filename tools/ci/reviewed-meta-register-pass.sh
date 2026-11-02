@@ -35,6 +35,7 @@ fi
 if [[ ${#reqs[@]} -gt 0 ]]; then
   has_legacy_finalqa=false
   has_difficulty5=false
+  has_basic_rebind=false
   for request in "${reqs[@]}"; do
     schema="$(jq -r '.schemaVersion // ""' "$request")"
     if [[ "$schema" == "archive-finalqa-nonpt-register-request-v1" ]]; then
@@ -43,8 +44,14 @@ if [[ ${#reqs[@]} -gt 0 ]]; then
     if [[ "$schema" == "archive-difficulty5-register-request-v1" ]]; then
       has_difficulty5=true
     fi
+    if [[ "$schema" == "archive-basic-scope-rebind-request-v1" ]]; then
+      has_basic_rebind=true
+    fi
   done
   node --test tests/archive-reviewed-exam-registration-v2.test.mjs
+  if [[ "$has_basic_rebind" == "true" ]]; then
+    node --test tests/archive-basic-scope-rebind.test.mjs
+  fi
   if [[ "$has_difficulty5" == "true" ]]; then
     node --test tests/archive-difficulty5-register.test.mjs
   fi
@@ -91,7 +98,7 @@ for round in 1 2; do
   verify_failed=(); verify_errors=()
   for request in "${applied[@]}"; do
     schema="$(jq -r .schemaVersion "$request")"
-    if [[ "$schema" == "archive-reviewed-exam-meta-register-request-v2" || "$schema" == "archive-finalqa-pinpoint-register-request-v1" || "$schema" == "archive-finalqa-nonpt-register-request-v1" || "$schema" == "archive-difficulty5-register-request-v1" ]]; then
+    if [[ "$schema" == "archive-reviewed-exam-meta-register-request-v2" || "$schema" == "archive-finalqa-pinpoint-register-request-v1" || "$schema" == "archive-finalqa-nonpt-register-request-v1" || "$schema" == "archive-difficulty5-register-request-v1" || "$schema" == "archive-basic-scope-rebind-request-v1" ]]; then
       verify_rc=0
       out="$(node "$registrar" --request "$request" --verify-projection 2>&1)" || verify_rc=$?
       if [[ "$verify_rc" -ne 0 ]]; then

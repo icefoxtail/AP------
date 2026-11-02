@@ -24,11 +24,11 @@
     },
     {
       "source": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
-      "sha256": "5ec3d26c01717f59957c15e295e6a9d79fb51b5731ac4356eec5e2a392f874ae"
+      "sha256": "f3cc60b05a8dd7f953d71d77e56861c610185b15115d78f2fa655f61d6531792"
     },
     {
       "source": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
-      "sha256": "b9010a4d7fe896fc0584c43c99a4ba627787d1cf7ce9dca9cd15e4d368c57be8"
+      "sha256": "ba77b53201ac54358c4c4ef70c4fd212479f27571d9139364404cc0ef4d980bb"
     },
     {
       "source": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
@@ -40,11 +40,11 @@
     },
     {
       "source": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
-      "sha256": "3655220c4dd9f43933897f8a2101665e8a31a9a806ebfca78e92eb3fd5884743"
+      "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
     },
     {
       "source": "archive/data/basic-scope-source-links.json",
-      "sha256": "39c60b043f6ba94ea1cb0ee74eefdd40c4659814deaa30b9fe5d60484e94933c"
+      "sha256": "7cd39b9c25235b94c27a97f471bbe21ddafd9b6faf649c94e42d7cec371895f9"
     },
     {
       "source": "archive/data/meta-foundation/exam-scoped/25_금당고_2학기_중간_고2_확률과통계.parent-links.json",
@@ -57,7 +57,7 @@
   ],
   "policy": "Basic display and selection use only L1/L2 parent links, source identity and fingerprint. L3/L4 and difficulty are optional capabilities and cannot gate basic linkage.",
   "generatedAgainst": {
-    "authorityInputsSha256": "c5c90a027a2b5e7596c021d565f4ec2d372251fcc6e8ebba24dd5a5b7185fb22"
+    "authorityInputsSha256": "fd4ef379536b4cdbc56db56095eed4f4c71c376e427647c44fe4a9b758176a37"
   },
   "records": [
     {
@@ -1850,6 +1850,15 @@
       "subUnitKey": "",
       "L1": "통계",
       "L2": "통계적 추정"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "standardUnitKey": "H15-PS-05",
+      "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+      "L1": "통계",
+      "L2": "확률분포"
     },
     {
       "grade": "중1",
@@ -5626,6 +5635,32 @@
     {
       "grade": "고2",
       "curriculumKey": "2015",
+      "courseKey": "수학I",
+      "sourceFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js",
+      "sourceOrdinal": 11,
+      "sourceFingerprint": "1e547f001ae8022efe6725b7ade7460fd3818f2b6fa5eec0445652586eb65226",
+      "L1": "삼각함수",
+      "L2": "삼각함수의 그래프",
+      "reason": "BASIC_SCOPE_REBIND basic-rebind-maesan-25-1mid-algebra-q11-20261102: approved sub-unit H15-M1-06-TRIGONOMETRIC_GRAPH maps to this canonical parent; question bytes re-bound after a figure-only change",
+      "sourceBodyFingerprint": "abf3ee2ce81736f4765dc878fb4ce0fa0ad5055c21346d75906d806cd07608a4",
+      "assignmentFingerprint": "abf3ee2ce81736f4765dc878fb4ce0fa0ad5055c21346d75906d806cd07608a4"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "수학I",
+      "sourceFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js",
+      "sourceOrdinal": 18,
+      "sourceFingerprint": "cbd2b93ccabe658435215e7438a5362c84f2e9b9e44125ad950bfcab3ee560a7",
+      "L1": "삼각함수",
+      "L2": "삼각함수",
+      "reason": "BASIC_SCOPE_REBIND basic-rebind-maesan-25-1mid-algebra-q18-20261102: approved sub-unit H15-M1-05-TRIGONOMETRIC_DEFINITION maps to this canonical parent; question bytes re-bound after a figure-only change",
+      "sourceBodyFingerprint": "6d1f436a556cb1894e6b38316cfcb7a1fcf7d01ebdec63da4b849ed5e528de4a",
+      "assignmentFingerprint": "6d1f436a556cb1894e6b38316cfcb7a1fcf7d01ebdec63da4b849ed5e528de4a"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
       "courseKey": "확률과통계",
       "sourceFile": "original/high/h2/2mid/25_금당고_2학기_중간_고2_확률과통계.js",
       "sourceOrdinal": 1,
@@ -5781,744 +5816,6 @@
     }
   ],
   "sourceParents": [
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_9b9a235109fe82405b6cabc63118f87bfaf0e035e23e9cc4bf0b3dcd8216c407",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 1,
-      "sourceFingerprint": "eb140844a7566bacfb5bee55808937d39c1c0632cdac34ac1a4357ea5f985b37",
-      "assignmentFingerprint": "5b47c26eda18a9b43d4ba0cf37ab7a4290f6ece966914e6157ffcaeaff03373f",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_209791b06fd24818c0e2e944bdbeb5a3d882f2f1e977ae2b0aaba6c97f913580",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 2,
-      "sourceFingerprint": "c5cebf596bf47b6171150dd842200ec5df76e986ecc15fe59870c6021eb276e7",
-      "assignmentFingerprint": "4d158310a9683e94541e5625759e56d6efa601b3d9fd42ab9154f3fb50b5abac",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_1cd68d607b283c2e247e9067837236dcdd34fee143e3db9f3804d9be6c10c0e1",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 3,
-      "sourceFingerprint": "53de81a8dd1f38bad985fa2065e2bd2e91313b131a7b3865f7e5091a2eb0fb64",
-      "assignmentFingerprint": "8b47199484aee35102dfdf087a3ffbf5d357773e2f12f4075f53ae255eb14266",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_56166234a7d8d0d81956cfaccbc59f857f6114af8dcbaee30fb5fb97b155ed5b",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 4,
-      "sourceFingerprint": "3ee6a5e04947236c29f03ee185901511caaa4c42fe79bc685396d1a02f60c221",
-      "assignmentFingerprint": "4fce69c03a096bcd794a717bc2fff81361dcab42086d5755d07dcca73f7e779c",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_b7a4ff1ce895a7b3d5b6aa0b8360791942ce2e70e72cfc8af1082a0fb570911f",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 5,
-      "sourceFingerprint": "5294cfcadf0ffbce562ea04d4a5f66a82ab6ef6afab735e01118976a92434ed5",
-      "assignmentFingerprint": "be5c38c556cc1678b76166dbbec194cbfb6b3b75e68d2dac270bbf7adc257688",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_41be27617373631bb2a39767775fb1d4fad55e33da52b304c0876949096b6721",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 6,
-      "sourceFingerprint": "0e85f6f3d1140256719bdee36315d95819c3a32dfa9e3ff6630bbabdc7fe6e52",
-      "assignmentFingerprint": "669c68718c37ab613f64652dadf9ca40c0fee20811387d9050dcd86ed7028182",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_cb66fb1afec5d4017c6c5356f6fa62813720814ecadda1a7b11d8adacc02e34c",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 7,
-      "sourceFingerprint": "a3cc054ea8118d7e26e28d0cbb83791f132857df4b0f73da3ea123384e587176",
-      "assignmentFingerprint": "a5c06e8b00fb5bb62eaf076ae5517dcb759a48ecb7349be26660cbcd67c73d74",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선의 접선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선의 접선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_361d64346a2a345e5eca63f9167ec5553dc38efb2845cdca593eb1f41a324ef2",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 8,
-      "sourceFingerprint": "869b28d64e468ed979cd1fb1d8d34a4aca13a0286b8e766e633883ee4489b794",
-      "assignmentFingerprint": "103595db77186b3f3c5c2495b69daf9b32a3b599a659006596d2381d0c949b5f",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선의 접선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선의 접선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_4361ef0809ba9a0debfcfb3d939717371e6c7dbf19a0374199cee844a2b0d3e8",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 9,
-      "sourceFingerprint": "68fea672d971a1407cf7b19ae1ade8ea46b16e52e934a2a81c7a01ec2620476f",
-      "assignmentFingerprint": "721c75740691e5a8e4c806ce9ec4540fbe7b0c1426f3e0d286be09aae517c410",
-      "metadataParent": [
-        "기하",
-        "공간도형과 공간좌표",
-        "공간도형"
-      ],
-      "L1": "공간도형과 공간좌표",
-      "L2": "공간도형",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_846d35f626add25bb3a7d9e1d2d6f6b4be50e46236028ca36e450307e9b0c40c",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 10,
-      "sourceFingerprint": "4ef4b857223154a159172c0bfe8b8993d0d5945dd34ef62ff5ef23d879332ad7",
-      "assignmentFingerprint": "2d469d63aa87e6ee820cf31745ea4b1e67156b61dfd25780bd40f7ced9cde12b",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선의 접선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선의 접선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_6436d8791e8bae5b309bf717fa4882d1f67c9d6f3d33e5b03f5c13e4e7825c90",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 11,
-      "sourceFingerprint": "59c9cadb509bfb752528ffdc19ee571a770954c2f53e27a2d4e1954772492b12",
-      "assignmentFingerprint": "8e14caee6c8f0a8d5d82271b80813b3e7d100dbb931845783ef5653ac681aa46",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_660efd7ad4465b0f48e17a9df4baea312b7e890067d71204bd8bed59d4bce69a",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 12,
-      "sourceFingerprint": "e791a6aa17330b67a6ac2b028d1b96739f1e7a02585195251f975392f7212332",
-      "assignmentFingerprint": "148f308e34c7dd021da471612f4400253a51cda77e93d3eb6bb707f55f6c17c0",
-      "metadataParent": [
-        "기하",
-        "공간도형과 공간좌표",
-        "공간도형"
-      ],
-      "L1": "공간도형과 공간좌표",
-      "L2": "공간도형",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_ce13a1fa7478db8de36d573dee1cac485cb6a3f5156dab44521b409581791848",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 13,
-      "sourceFingerprint": "d3ea8b9fc753bc4bd1c81a0ff194382fa6f235a912825a3dcec7b281ab722ccc",
-      "assignmentFingerprint": "b17a49612f3520dc66145b9b69e6298f336bd699814d836390e934d679737e56",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선의 접선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선의 접선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_e152a8afe2e7a4c7646e71fa887a7881bb326ae59c77cc380784f0729cc958e3",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 14,
-      "sourceFingerprint": "dc2a7c3495822e7ac84ea9b7c258171a1fee20e62fdbf7296ae76a88000c3dae",
-      "assignmentFingerprint": "5c401c2d7746b1e7a70856735c471e26a3b526645085cb62b2ba28e02363664c",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선의 접선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선의 접선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_37a103a13c67b4e42264d211744c60990dca54784f06214f77b311e0797ba538",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 15,
-      "sourceFingerprint": "9971702cb78522b756a4d5abe17cb08458ea72b4c253588fd4fdf79d7c895f5d",
-      "assignmentFingerprint": "bb67806cea209ed1f2b46db66874794527a230eac8c185a59176eba22dd20098",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_79a03ec54b0fb2b549f0e7e154e15305f64b5287479fb0590726a63fe0d9e811",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 16,
-      "sourceFingerprint": "049287bbbbf56876a601f4b6f11532bebe933034d75ffcf69ce1fe4dcc4be995",
-      "assignmentFingerprint": "58332c588f365e37fe2bafc3df8ea80285436e52b1a39ca32863aac194eed21a",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_dedb624c3c9bc2b3327e794785d6d5e473c37b20187575ca0aa1995cc85dc647",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 17,
-      "sourceFingerprint": "4636fb46a49ff0ad47d64490ecd14ed4ff1c529d7cfe4687cd167e320395d706",
-      "assignmentFingerprint": "4c8487d79da7bd41e68951d79ecab9780bbf8164b1e166b8990541595518d514",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선의 접선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선의 접선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_0b15226abbc5f9c75848f6b9b766b1df7104d8c18bc4993798c77323b315e07f",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 18,
-      "sourceFingerprint": "a697c0fc1eeb895d115c3af15d27cb7c43ce00e2cdb3d7186423c0df7c00102a",
-      "assignmentFingerprint": "bcac0e379c01e7c208898cd4d1d54f55f6d96c34049e0eb6b8fe3dbdb492b1f9",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선의 접선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선의 접선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_3d70b0e89164c85008adce98ed5ab2bce0f75be741b2f6003b871177f2b37dd9",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 19,
-      "sourceFingerprint": "5c92c144ad10aed94c195ad78703ce2b9d9234fde35c4e87b35959c05689ef57",
-      "assignmentFingerprint": "cd9d85f815d3532830c398d298b034c0b0a910c3c5325889c9687a01a1e7d0db",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_8a32d3d87b6a8b2f314019195de0b463ea59bf013c59c0121feaba6330288fdf",
-      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
-      "sourceOrdinal": 20,
-      "sourceFingerprint": "23c2702110002741ca17b3ec2361bc808381d19b0d12ccec512d3e1ec7f91529",
-      "assignmentFingerprint": "045a0ba9ffdb472061fa3d13b1d9ed76b601f2ad12ee5e199cac190a22912720",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선의 접선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선의 접선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_58ab56744ba4419899ff371c42bc9562f3617d549ddeb6fe76cfd91efaf02aef",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 1,
-      "sourceFingerprint": "a821187a10f2a075654d1e1e5ebdb206d6f354792693bc600bfb6f7bdb7ac100",
-      "assignmentFingerprint": "877303dce709b94a4d839b2fbd7411bcfa8e855e8ab3ffb507c971e706058928",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_1d78fa557a7dd288f7bc80a218d36b44510b122bca71b60d49fd8a59fd60d08e",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 2,
-      "sourceFingerprint": "e15ac9eaf00f47e9f39383282a91f2413e0867fc468d887eff2faddfc0688f6f",
-      "assignmentFingerprint": "66a8ce7e1f457b1062311ebebaacf085182cef9d08b39c87339a10aabc40de8e",
-      "metadataParent": [
-        "기하",
-        "공간도형과 공간좌표",
-        "공간도형"
-      ],
-      "L1": "공간도형과 공간좌표",
-      "L2": "공간도형",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_83b56270b9fedfe119a4db28ab0e3934e4a9a00a2470805f392d43bc631f277b",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 3,
-      "sourceFingerprint": "180bfd24712ac6e60666cc511c601cd6ac24efcc72fb79b476cd7ec91bbb56e1",
-      "assignmentFingerprint": "8dea50e1c58dc55fb046f1765a78eaf8ab1aa8274a73eec72602e12369481d61",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_02fd9bef765ef4db02b555d58507478c1fcec109660e8fa303ac166c46054cf1",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 4,
-      "sourceFingerprint": "db0d3b11b61b152445d8b7489a9d8375af1a9fa732424ad5fc796259371061dc",
-      "assignmentFingerprint": "101ff4a2cd4652c305e955abe4506983278bd11cc91da8972a4e25317b504676",
-      "metadataParent": [
-        "기하",
-        "공간도형과 공간좌표",
-        "공간도형"
-      ],
-      "L1": "공간도형과 공간좌표",
-      "L2": "공간도형",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_6b10bc59f229c54e7c3ea91ebe046a73e11cd0d774d5196fecd9c6099ad591b0",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 5,
-      "sourceFingerprint": "56d80627c3872ea9c927510dd7eba4dac7a59bdeb3828643bb4c6b8fe464c204",
-      "assignmentFingerprint": "fa377d98a78716d16df63f59c0af42a5ba26ec8f908029bf548cae41dfde7dd2",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선의 접선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선의 접선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_cc7352e4d4a636168d1d61c2535866a1003f15fdc8dcc1d93572ffd11432adfe",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 6,
-      "sourceFingerprint": "dd37c28f810206abc45e37d50a2ee9abb18307c7b86c4ad5be0c404732c4f56e",
-      "assignmentFingerprint": "24fcaa50b1c01f2871c42d8bb4705a0c219a84f573618f21d0885b36e47b0010",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선의 접선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선의 접선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_c09253670e488485e6f032c5a9fb1360d68394e839a1399894d1be96d651d32f",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 7,
-      "sourceFingerprint": "fee58ea884de6bb617afefc3f48a3f36872f8dd23121f836d485eff14845b239",
-      "assignmentFingerprint": "d09505bf2dbae2e318f98e9e09404a57cde41e10a8b5c9f413374a248c3f06a1",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_e63d362a45dcb3a64cacdf75a5c8a168cb0278d043b8da0af01993e92bacc321",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 8,
-      "sourceFingerprint": "ea4e48e48b45352e05d298e3cb7a26feddbf0cc026617a6351955844ddb5e439",
-      "assignmentFingerprint": "89ef669919b2c74acc349fe9479f17f350edf426b49ecf888b39bc97657d83a1",
-      "metadataParent": [
-        "기하",
-        "공간도형과 공간좌표",
-        "공간도형"
-      ],
-      "L1": "공간도형과 공간좌표",
-      "L2": "공간도형",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_91ee362c82497dde7f503f46a5aff96ec36e56b7e11a2e1d3bdf2df1d25309dd",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 9,
-      "sourceFingerprint": "4155d8e5c07b6be613831f59f06e999dfce934b1369f9b941008a0f1cef375d3",
-      "assignmentFingerprint": "f5e2dc85ea40491799d751664493fb7007b1635df641cbf380186fc7c06de056",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선의 접선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선의 접선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_dce398ad609ec0c0833118d50e4d5bf6b159ca7e805b5b07ee152b016d088161",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 10,
-      "sourceFingerprint": "13e7b0b9e342b447eede9b8642167df767e1f133a162b73e00ce9d52fca714bc",
-      "assignmentFingerprint": "781823d25cac7852812a4b099b36192de26871a8eb3f28778329a915aefc1da4",
-      "metadataParent": [
-        "기하",
-        "공간도형과 공간좌표",
-        "공간도형"
-      ],
-      "L1": "공간도형과 공간좌표",
-      "L2": "공간도형",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_bfad171a9af2c10ba044baee209295bd9c5a50822e8a488a1527fbefe2a2a219",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 11,
-      "sourceFingerprint": "4506631281d3723858b35c77736803f62fe7396440d4a9a25c8accfb40dcefb3",
-      "assignmentFingerprint": "a6695d39204032e6656369ae408f46b0b5a3ada952863352ee953ede206ba7e6",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선의 접선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선의 접선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_352b1d4c0a41c48e48b3d5efc8242ec16fecfd829c220cf281be0568d671b1ea",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 12,
-      "sourceFingerprint": "c7e4569fadbd9b50a7ae51edf0f9cf46e74c1f3da62ef8b6d96c35cf0e9f5339",
-      "assignmentFingerprint": "553110be06e4bc7656e519a3ec4ef33d4441eba6505ac3386f942678eca5ea0f",
-      "metadataParent": [
-        "기하",
-        "공간도형과 공간좌표",
-        "공간도형"
-      ],
-      "L1": "공간도형과 공간좌표",
-      "L2": "공간도형",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_6856c64b5312ce7b6e1be4ed32249202f97ccc3275e5251acdec0e88992af302",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 13,
-      "sourceFingerprint": "0e5edef2d38140ea9db8a91d4e8cfdbeb3424e177b4f3f552cb30cbaab486949",
-      "assignmentFingerprint": "ada02612031d25db111ffa490adf243883415053df9ca29b252c9ede4387ceb7",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선의 접선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선의 접선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_643e53817b9136e3480884f5a5ccc53f93a087bebbf0c71b99f7a4123c25af5d",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 14,
-      "sourceFingerprint": "2bcc48561b4c87134d66194b1b23ff0bb2a27c7840f1052d118fdeabe149305a",
-      "assignmentFingerprint": "bd07a18144ffad2065fb8b3730d0bb255e5e3fd84a9ae936997b9479f64baa7c",
-      "metadataParent": [
-        "기하",
-        "공간도형과 공간좌표",
-        "공간도형"
-      ],
-      "L1": "공간도형과 공간좌표",
-      "L2": "공간도형",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_8c9d03d04c2a0418dc9adcbee619b4b5703dfefae5b87d3b38d24eba94859f82",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 15,
-      "sourceFingerprint": "1e27ed829105912909eff0a51fe5ccd8482a1ced361122ed3692a18551578c1e",
-      "assignmentFingerprint": "c9700cb7c84849f4a993433b1668965904a88290d40668f1d132ecef58f80152",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_c388e9a07c2b3dbb89ff404b1c77000108e447eb088c4ffbbd2a8eb6fdc51122",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 16,
-      "sourceFingerprint": "ad305109a600de39864e54b60d391a68f661ef86847389a92ce66d369574aea3",
-      "assignmentFingerprint": "d9d61316e264bbe6ac8bbb728d616abf0eb835c5d76d901a2e56a7351078d4d6",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선의 접선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선의 접선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_71a77b52ceaeebcb53c8100354a37913561f90f303311335b063f6565dcb3aa6",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 17,
-      "sourceFingerprint": "df710f3c023cf23416369d5302c27f465661ddbefcf0ab34f57faf5b232e3217",
-      "assignmentFingerprint": "702ff80d93724d4e916f37df87110c7cafe901996ab46eebd3d91280caaa3f80",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선의 접선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선의 접선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_f66a5875b174286c10a36e6f1dac00e0a11ac1e44e41161958a082e7ed8dc3c1",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 18,
-      "sourceFingerprint": "ab2c6b659c8d4ebfda5ad4ce6581947690d9ce1213a31ad8022b3056a923d547",
-      "assignmentFingerprint": "cb0a28fd5955d2c66c94dddbc347e6e1bb9a35d5845fd855264963e800158e74",
-      "metadataParent": [
-        "기하",
-        "공간도형과 공간좌표",
-        "공간도형"
-      ],
-      "L1": "공간도형과 공간좌표",
-      "L2": "공간도형",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_52e0979a0a16ef7f94c1cc9c1a633dba2a4b45359dd9beece5fe069b0944956b",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 19,
-      "sourceFingerprint": "8aa126e9fb69e8ba6ae1a4010f3f71a99794a16865bf3650fc296120e3092b14",
-      "assignmentFingerprint": "e4dbee3ccfe9fb73c2c5ea57588da1b2ad690a2c17e0622e48ccd9af3410f856",
-      "metadataParent": [
-        "기하",
-        "공간도형과 공간좌표",
-        "공간도형"
-      ],
-      "L1": "공간도형과 공간좌표",
-      "L2": "공간도형",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_38a7a8f0dbb940a43cc31649eee61bb1e0f13cd62bf36fbf2c2750a0903b4b7e",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 20,
-      "sourceFingerprint": "e91aa5d6733f3cbb8d58105a95536cc30d95d6816821d408e359165c380cbd9a",
-      "assignmentFingerprint": "6973419fe92339a65768b3a570b3f3b9f00503b85e90515cb6f441da72ed347d",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선의 접선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선의 접선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2022",
-      "courseKey": "기하",
-      "questionUid": "qid_v1_30352a311a812c7ba76f1c0b0c5becf744337e84bdfc59fa1df681cb293075fd",
-      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
-      "sourceOrdinal": 21,
-      "sourceFingerprint": "eb686f74cc2aec40890bcf48b638bde442cc17ef50b69bd3d1f62576574323e2",
-      "assignmentFingerprint": "4f4cc268dd0b06bac7638424c9392cfc708dbffef21ec8e8e7f9b147bae2d5af",
-      "metadataParent": [
-        "기하",
-        "이차곡선",
-        "이차곡선"
-      ],
-      "L1": "이차곡선",
-      "L2": "이차곡선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
     {
       "grade": "고2",
       "curriculumKey": "2022",
@@ -6931,420 +6228,6 @@
       ],
       "L1": "이차곡선",
       "L2": "이차곡선",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_f7a5214297e71800c52bfd25e179467347a074768b7186dcf44f27f93d2feb84",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 1,
-      "sourceFingerprint": "cf686561fa91987e607e9956bc3f18ba2247e1d475b325b33c204ae780103fa5",
-      "assignmentFingerprint": "fc237db8c24412c0cd6c3f6066a7a9f69a0d0208696ff45fb230981ae9349ec7",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "확률분포"
-      ],
-      "L1": "통계",
-      "L2": "확률분포",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_0ebdd6fe9d84dfdabe028b65497f690deedcc09247bf6ab3ca6dc357d755c9d1",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 2,
-      "sourceFingerprint": "6af59f44b8c5f45d5753de8b930aa94603f73fa9cf8d337562b162a4dff4bf7b",
-      "assignmentFingerprint": "1d92de9869c040c24fffec74d124aeb4e4a7d1670649bc655d9c0f00b5a1f24b",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "확률분포"
-      ],
-      "L1": "통계",
-      "L2": "확률분포",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_cb6b07fe83036aa7f16ef3d95fffbb2ec25048c53e4df671a1764a59678b64d1",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 3,
-      "sourceFingerprint": "a8afef0961200c70ee50e1499d0cdc905cb61ecefce28fba5d8c27bdcc7cf46e",
-      "assignmentFingerprint": "68eac76c791f97419658f3eb9339185ee57b3f7d8872f74b08343f3b5d76a9fa",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "확률분포"
-      ],
-      "L1": "통계",
-      "L2": "확률분포",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_d43a05e8d1c39d074550ff25a6cf9bf796d47ef5f4407d05bd344795cfb1daaf",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 4,
-      "sourceFingerprint": "aa9f2759595d3308937f7c3e12f9ae1aca345959740dd1cc3aa168d514b2a97d",
-      "assignmentFingerprint": "762d27071565f7d50f16c56a3b4c4c8150053e2f4c40be1afdbe3d1387dc8847",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "확률분포"
-      ],
-      "L1": "통계",
-      "L2": "확률분포",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_7a1c21588a95b983155eccaf0aa1487a4f44c875a0188c8c4e4bf885c9c4d87c",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 5,
-      "sourceFingerprint": "a822a77db10be193907991c7affde3bcb36059bc771a5c4b8ebe6644085c746a",
-      "assignmentFingerprint": "146b898aa7d7ca0c1a840ef8f77e5a7328fe22cc4780d0b3c175c861ed7745f2",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "통계적 추정"
-      ],
-      "L1": "통계",
-      "L2": "통계적 추정",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_472415aa863ddfc10f689fc23baf7bf4bdcc8f6f9adcec46a9e37c5d24434799",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 6,
-      "sourceFingerprint": "5a14359649bd3453a07182ae7368bd85ae1b65dbc788aaf44afb99168d64dc63",
-      "assignmentFingerprint": "c196a2c263978912cdcdd41b70650995d77cfaf1d3bc048d17b3785f77b48cb5",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "확률분포"
-      ],
-      "L1": "통계",
-      "L2": "확률분포",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_7540a322462ba13c1fc63fdcf5340fd8f68a4e6c5d5cea511466ff813baacccf",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 7,
-      "sourceFingerprint": "a9b5782a3d61ca47e85453e61b1aec216d7d4d4603583696a30ed715c24c2847",
-      "assignmentFingerprint": "d08a44b276b4b90ea9794d856218fc0ae33edace7bc96fa93b01f0090943bee6",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "통계적 추정"
-      ],
-      "L1": "통계",
-      "L2": "통계적 추정",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_9dcd80adce68a170ca96318e118e8283867783d6d2e167151d908aea3d5b4cc2",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 8,
-      "sourceFingerprint": "cdfbc050183e5fd78a00ec883898fc04c49eebd9ea07be47425dd1aec7c366c3",
-      "assignmentFingerprint": "0983961ecc74ca88434af60b72d693a860d3b9fe180a80e1dda4005cb27648a2",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "확률분포"
-      ],
-      "L1": "통계",
-      "L2": "확률분포",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_62e2e95ede4430ebeb285e269ddfae40916f8c1834dec296c47305365a16fab7",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 9,
-      "sourceFingerprint": "a0fb586ca3247cd01e6b358ea6d4b2fb563b638aab3fed741403f997bd340bc8",
-      "assignmentFingerprint": "ffdcaaf8f102c9ef8e69ae3a9469a15b8529350e817d381d20514d4c3de3102a",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "확률분포"
-      ],
-      "L1": "통계",
-      "L2": "확률분포",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_36fa0519251b2e71e8b7c9896035f43a94b4940fd271cb9a6895fcd956458b12",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 10,
-      "sourceFingerprint": "5f7f2ea1f45ab446eda8eb932b5c1ae2e2af29170ec98e4831e36c58bfbce448",
-      "assignmentFingerprint": "1ad7dc5da007bf3a8a18dc6a47cb05f7b891b821a8e016402d35c033852e9ded",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "확률분포"
-      ],
-      "L1": "통계",
-      "L2": "확률분포",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_53a7ed535e95213d28934823655d092c364edad376dcfc157b66ae378726908b",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 11,
-      "sourceFingerprint": "4ea8471d31a0876a9d9618105880529225a1838c28d3c5e4eeaa6bd5a0907ef6",
-      "assignmentFingerprint": "0004a64a91c0011c42ea7abe6c7ea11488d0e9e87975ee61784420c4f7384423",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "확률분포"
-      ],
-      "L1": "통계",
-      "L2": "확률분포",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_f628a0336d33a33f8cb2e9cefad4734794bd9ee832dff5104ba1cb21562775b1",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 12,
-      "sourceFingerprint": "f45649e2d6faccc431addb8fe2a9aa09283a6a6526d498819024da91078900d4",
-      "assignmentFingerprint": "87ad36296d1e6176555ad6bfa6c444a67971cf17fd3edc11a3050c3021d36263",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "통계적 추정"
-      ],
-      "L1": "통계",
-      "L2": "통계적 추정",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_7c60827a9aeb89cfa0aba4237478e567931d1ae81ffbfd6a0f094f67b7f866ec",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 13,
-      "sourceFingerprint": "d591059912b15807f0190bb4f89daa7a53910e67552ef8129a52082ba2925178",
-      "assignmentFingerprint": "b55164e5c19e5661803d7c3d3e82311eac7153ac0aa8c4691caafad40181f224",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "통계적 추정"
-      ],
-      "L1": "통계",
-      "L2": "통계적 추정",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_2f4280db7d121afd06d42cd4ff122068cb6301d1ab3193a780de851bfc85275a",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 14,
-      "sourceFingerprint": "38d72f371b37977dbbb3efeb352ee8a8242f68b3c65ff7f189dd3e9996d921b7",
-      "assignmentFingerprint": "881d93d639cc9f7411592a4a1ad76e36b039165bb8a943fb9a075b4f3fe12b9c",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "확률분포"
-      ],
-      "L1": "통계",
-      "L2": "확률분포",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_82e464b32bee49a105b35a15998798363ca1a2f3a97f52f4b3fe70150975d2a7",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 15,
-      "sourceFingerprint": "cd64f3a96386f8ce69fcbd4fb008a26b641ea25def86d3ff9b9ea6ab8430ea0c",
-      "assignmentFingerprint": "c93cc2f4a3ed8467d401d4fa2fae0e043ce41e5810b692b71de28505c51b71a1",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "확률분포"
-      ],
-      "L1": "통계",
-      "L2": "확률분포",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_09540ac4e65c0dae328f72fac94c3a58fa2a19cbb20fa5b9f648075ade4fff46",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 16,
-      "sourceFingerprint": "997b9a3fcac52f9616e90e6502eb16d87bb444ea1a586d4ab01de5ce78cb9dd1",
-      "assignmentFingerprint": "cac292c45a120ac885cd9d0c834aee536a818a59b1ca37cc57a207880f1bfa38",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "통계적 추정"
-      ],
-      "L1": "통계",
-      "L2": "통계적 추정",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_7bcdfc73f20998b5f07f4d31accd17c028d2ffcfd12f152d469c3a0bb4ff96a5",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 17,
-      "sourceFingerprint": "b2f1b8616f15a634e843fe47f6b7299e2f6cb7b0275282916ca8e9e0fcd76961",
-      "assignmentFingerprint": "e7ac22f22f0574929a6aab1c77690fcb0588b94e199a699ee9d507143b893750",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "통계적 추정"
-      ],
-      "L1": "통계",
-      "L2": "통계적 추정",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_ea8f2ee72148ebc6c70800c9e3ea5fdd1402469af6bacac2dbf52b480820d640",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 18,
-      "sourceFingerprint": "0d4573193fe5368712dfec8051c3a6adfcc867fc3d650e175e44e20ca4c149ee",
-      "assignmentFingerprint": "9ec083af3b4307c932a4f6b58f84699fcf73b8226970287d0fc96e644423ade8",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "확률분포"
-      ],
-      "L1": "통계",
-      "L2": "확률분포",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_8bf38e90143eb1179fa3f43ad3f2b1179ab911192cb73bf89ceb179b6303ab72",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 19,
-      "sourceFingerprint": "682f448478dfc93072bd1fe8d7996598e6909df1e0441b19c3f9a5de2c0198d3",
-      "assignmentFingerprint": "6a22c1ce215be8904db259de02ef9340740894636d2ef92d31ed630e58e03433",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "통계적 추정"
-      ],
-      "L1": "통계",
-      "L2": "통계적 추정",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_376f6ac11fe5dea00aa865c7d2d3b811b2228bcd35f3572b8c499f61ea55bbc9",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 20,
-      "sourceFingerprint": "dae862f8f7354c49f25b621d539d9739b585f1d2464e06c10ca782e753096e2d",
-      "assignmentFingerprint": "1e86e29a9f0e402ada84f72215fdf1d6938e077ae4cbf138ae6d93668f6929de",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "통계적 추정"
-      ],
-      "L1": "통계",
-      "L2": "통계적 추정",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_b07b8a8305473bbd886137e6fd06012843e1d8389a3af98b2cf8f3824a80c530",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 21,
-      "sourceFingerprint": "8cd371fbcab22a3c0a6fd114d9ee9b21a89a6fce975d8512b3133ca770d17a5a",
-      "assignmentFingerprint": "f290c0ec8c4f629a2f003a6312f2f98ed8a8721df8500728ad243dd61be5e76f",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "확률분포"
-      ],
-      "L1": "통계",
-      "L2": "확률분포",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_e882e3659f48fe8c15de82824380b4cffb825583966ac2d522ef90a7e6035cb8",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 22,
-      "sourceFingerprint": "5f71ed66e0b2d382a4fdc50f1662547529f35e05c9b1d188089dadc2bc46fe5c",
-      "assignmentFingerprint": "2cd2edc04b9d8c215c21ed2e379b88fa10220a4398aa430eba36405304b1d893",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "확률분포"
-      ],
-      "L1": "통계",
-      "L2": "확률분포",
-      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
-    },
-    {
-      "grade": "고2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과통계",
-      "questionUid": "qid_v1_a3aca28c6b105ac1c50cfdfbbb91450ae7b5d112c6f44bc7f548dbff6abac22c",
-      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
-      "sourceOrdinal": 23,
-      "sourceFingerprint": "d40a1649c881de8527e055b8737e4921e4cc948c44ccf79e8b2b970758f5263e",
-      "assignmentFingerprint": "7008bbd185e9ff66345f0c82b4a76bb55fba54ca83752212d0daa9f646dc607b",
-      "metadataParent": [
-        "확률과통계",
-        "통계",
-        "통계적 추정"
-      ],
-      "L1": "통계",
-      "L2": "통계적 추정",
       "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
     },
     {
@@ -9739,6 +8622,1158 @@
       ],
       "L1": "다항식의 곱셈과 인수분해",
       "L2": "인수분해",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_9b9a235109fe82405b6cabc63118f87bfaf0e035e23e9cc4bf0b3dcd8216c407",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 1,
+      "sourceFingerprint": "eb140844a7566bacfb5bee55808937d39c1c0632cdac34ac1a4357ea5f985b37",
+      "assignmentFingerprint": "5b47c26eda18a9b43d4ba0cf37ab7a4290f6ece966914e6157ffcaeaff03373f",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_209791b06fd24818c0e2e944bdbeb5a3d882f2f1e977ae2b0aaba6c97f913580",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 2,
+      "sourceFingerprint": "c5cebf596bf47b6171150dd842200ec5df76e986ecc15fe59870c6021eb276e7",
+      "assignmentFingerprint": "4d158310a9683e94541e5625759e56d6efa601b3d9fd42ab9154f3fb50b5abac",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_1cd68d607b283c2e247e9067837236dcdd34fee143e3db9f3804d9be6c10c0e1",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 3,
+      "sourceFingerprint": "53de81a8dd1f38bad985fa2065e2bd2e91313b131a7b3865f7e5091a2eb0fb64",
+      "assignmentFingerprint": "8b47199484aee35102dfdf087a3ffbf5d357773e2f12f4075f53ae255eb14266",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_56166234a7d8d0d81956cfaccbc59f857f6114af8dcbaee30fb5fb97b155ed5b",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 4,
+      "sourceFingerprint": "3ee6a5e04947236c29f03ee185901511caaa4c42fe79bc685396d1a02f60c221",
+      "assignmentFingerprint": "4fce69c03a096bcd794a717bc2fff81361dcab42086d5755d07dcca73f7e779c",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_b7a4ff1ce895a7b3d5b6aa0b8360791942ce2e70e72cfc8af1082a0fb570911f",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 5,
+      "sourceFingerprint": "5294cfcadf0ffbce562ea04d4a5f66a82ab6ef6afab735e01118976a92434ed5",
+      "assignmentFingerprint": "be5c38c556cc1678b76166dbbec194cbfb6b3b75e68d2dac270bbf7adc257688",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_41be27617373631bb2a39767775fb1d4fad55e33da52b304c0876949096b6721",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 6,
+      "sourceFingerprint": "0e85f6f3d1140256719bdee36315d95819c3a32dfa9e3ff6630bbabdc7fe6e52",
+      "assignmentFingerprint": "669c68718c37ab613f64652dadf9ca40c0fee20811387d9050dcd86ed7028182",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_cb66fb1afec5d4017c6c5356f6fa62813720814ecadda1a7b11d8adacc02e34c",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 7,
+      "sourceFingerprint": "a3cc054ea8118d7e26e28d0cbb83791f132857df4b0f73da3ea123384e587176",
+      "assignmentFingerprint": "a5c06e8b00fb5bb62eaf076ae5517dcb759a48ecb7349be26660cbcd67c73d74",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선의 접선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선의 접선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_361d64346a2a345e5eca63f9167ec5553dc38efb2845cdca593eb1f41a324ef2",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 8,
+      "sourceFingerprint": "869b28d64e468ed979cd1fb1d8d34a4aca13a0286b8e766e633883ee4489b794",
+      "assignmentFingerprint": "103595db77186b3f3c5c2495b69daf9b32a3b599a659006596d2381d0c949b5f",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선의 접선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선의 접선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_4361ef0809ba9a0debfcfb3d939717371e6c7dbf19a0374199cee844a2b0d3e8",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 9,
+      "sourceFingerprint": "68fea672d971a1407cf7b19ae1ade8ea46b16e52e934a2a81c7a01ec2620476f",
+      "assignmentFingerprint": "721c75740691e5a8e4c806ce9ec4540fbe7b0c1426f3e0d286be09aae517c410",
+      "metadataParent": [
+        "기하",
+        "공간도형과 공간좌표",
+        "공간도형"
+      ],
+      "L1": "공간도형과 공간좌표",
+      "L2": "공간도형",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_846d35f626add25bb3a7d9e1d2d6f6b4be50e46236028ca36e450307e9b0c40c",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 10,
+      "sourceFingerprint": "4ef4b857223154a159172c0bfe8b8993d0d5945dd34ef62ff5ef23d879332ad7",
+      "assignmentFingerprint": "2d469d63aa87e6ee820cf31745ea4b1e67156b61dfd25780bd40f7ced9cde12b",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선의 접선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선의 접선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_6436d8791e8bae5b309bf717fa4882d1f67c9d6f3d33e5b03f5c13e4e7825c90",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 11,
+      "sourceFingerprint": "59c9cadb509bfb752528ffdc19ee571a770954c2f53e27a2d4e1954772492b12",
+      "assignmentFingerprint": "8e14caee6c8f0a8d5d82271b80813b3e7d100dbb931845783ef5653ac681aa46",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_660efd7ad4465b0f48e17a9df4baea312b7e890067d71204bd8bed59d4bce69a",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 12,
+      "sourceFingerprint": "e791a6aa17330b67a6ac2b028d1b96739f1e7a02585195251f975392f7212332",
+      "assignmentFingerprint": "148f308e34c7dd021da471612f4400253a51cda77e93d3eb6bb707f55f6c17c0",
+      "metadataParent": [
+        "기하",
+        "공간도형과 공간좌표",
+        "공간도형"
+      ],
+      "L1": "공간도형과 공간좌표",
+      "L2": "공간도형",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_ce13a1fa7478db8de36d573dee1cac485cb6a3f5156dab44521b409581791848",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 13,
+      "sourceFingerprint": "d3ea8b9fc753bc4bd1c81a0ff194382fa6f235a912825a3dcec7b281ab722ccc",
+      "assignmentFingerprint": "b17a49612f3520dc66145b9b69e6298f336bd699814d836390e934d679737e56",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선의 접선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선의 접선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_e152a8afe2e7a4c7646e71fa887a7881bb326ae59c77cc380784f0729cc958e3",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 14,
+      "sourceFingerprint": "dc2a7c3495822e7ac84ea9b7c258171a1fee20e62fdbf7296ae76a88000c3dae",
+      "assignmentFingerprint": "5c401c2d7746b1e7a70856735c471e26a3b526645085cb62b2ba28e02363664c",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선의 접선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선의 접선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_37a103a13c67b4e42264d211744c60990dca54784f06214f77b311e0797ba538",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 15,
+      "sourceFingerprint": "9971702cb78522b756a4d5abe17cb08458ea72b4c253588fd4fdf79d7c895f5d",
+      "assignmentFingerprint": "bb67806cea209ed1f2b46db66874794527a230eac8c185a59176eba22dd20098",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_79a03ec54b0fb2b549f0e7e154e15305f64b5287479fb0590726a63fe0d9e811",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 16,
+      "sourceFingerprint": "049287bbbbf56876a601f4b6f11532bebe933034d75ffcf69ce1fe4dcc4be995",
+      "assignmentFingerprint": "58332c588f365e37fe2bafc3df8ea80285436e52b1a39ca32863aac194eed21a",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_dedb624c3c9bc2b3327e794785d6d5e473c37b20187575ca0aa1995cc85dc647",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 17,
+      "sourceFingerprint": "4636fb46a49ff0ad47d64490ecd14ed4ff1c529d7cfe4687cd167e320395d706",
+      "assignmentFingerprint": "4c8487d79da7bd41e68951d79ecab9780bbf8164b1e166b8990541595518d514",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선의 접선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선의 접선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_0b15226abbc5f9c75848f6b9b766b1df7104d8c18bc4993798c77323b315e07f",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 18,
+      "sourceFingerprint": "a697c0fc1eeb895d115c3af15d27cb7c43ce00e2cdb3d7186423c0df7c00102a",
+      "assignmentFingerprint": "bcac0e379c01e7c208898cd4d1d54f55f6d96c34049e0eb6b8fe3dbdb492b1f9",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선의 접선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선의 접선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_3d70b0e89164c85008adce98ed5ab2bce0f75be741b2f6003b871177f2b37dd9",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 19,
+      "sourceFingerprint": "5c92c144ad10aed94c195ad78703ce2b9d9234fde35c4e87b35959c05689ef57",
+      "assignmentFingerprint": "cd9d85f815d3532830c398d298b034c0b0a910c3c5325889c9687a01a1e7d0db",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_8a32d3d87b6a8b2f314019195de0b463ea59bf013c59c0121feaba6330288fdf",
+      "sourceFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "sourceOrdinal": 20,
+      "sourceFingerprint": "23c2702110002741ca17b3ec2361bc808381d19b0d12ccec512d3e1ec7f91529",
+      "assignmentFingerprint": "045a0ba9ffdb472061fa3d13b1d9ed76b601f2ad12ee5e199cac190a22912720",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선의 접선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선의 접선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_58ab56744ba4419899ff371c42bc9562f3617d549ddeb6fe76cfd91efaf02aef",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 1,
+      "sourceFingerprint": "a821187a10f2a075654d1e1e5ebdb206d6f354792693bc600bfb6f7bdb7ac100",
+      "assignmentFingerprint": "877303dce709b94a4d839b2fbd7411bcfa8e855e8ab3ffb507c971e706058928",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_1d78fa557a7dd288f7bc80a218d36b44510b122bca71b60d49fd8a59fd60d08e",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 2,
+      "sourceFingerprint": "e15ac9eaf00f47e9f39383282a91f2413e0867fc468d887eff2faddfc0688f6f",
+      "assignmentFingerprint": "66a8ce7e1f457b1062311ebebaacf085182cef9d08b39c87339a10aabc40de8e",
+      "metadataParent": [
+        "기하",
+        "공간도형과 공간좌표",
+        "공간도형"
+      ],
+      "L1": "공간도형과 공간좌표",
+      "L2": "공간도형",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_83b56270b9fedfe119a4db28ab0e3934e4a9a00a2470805f392d43bc631f277b",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 3,
+      "sourceFingerprint": "180bfd24712ac6e60666cc511c601cd6ac24efcc72fb79b476cd7ec91bbb56e1",
+      "assignmentFingerprint": "8dea50e1c58dc55fb046f1765a78eaf8ab1aa8274a73eec72602e12369481d61",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_02fd9bef765ef4db02b555d58507478c1fcec109660e8fa303ac166c46054cf1",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 4,
+      "sourceFingerprint": "db0d3b11b61b152445d8b7489a9d8375af1a9fa732424ad5fc796259371061dc",
+      "assignmentFingerprint": "101ff4a2cd4652c305e955abe4506983278bd11cc91da8972a4e25317b504676",
+      "metadataParent": [
+        "기하",
+        "공간도형과 공간좌표",
+        "공간도형"
+      ],
+      "L1": "공간도형과 공간좌표",
+      "L2": "공간도형",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_6b10bc59f229c54e7c3ea91ebe046a73e11cd0d774d5196fecd9c6099ad591b0",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 5,
+      "sourceFingerprint": "56d80627c3872ea9c927510dd7eba4dac7a59bdeb3828643bb4c6b8fe464c204",
+      "assignmentFingerprint": "fa377d98a78716d16df63f59c0af42a5ba26ec8f908029bf548cae41dfde7dd2",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선의 접선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선의 접선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_cc7352e4d4a636168d1d61c2535866a1003f15fdc8dcc1d93572ffd11432adfe",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 6,
+      "sourceFingerprint": "dd37c28f810206abc45e37d50a2ee9abb18307c7b86c4ad5be0c404732c4f56e",
+      "assignmentFingerprint": "24fcaa50b1c01f2871c42d8bb4705a0c219a84f573618f21d0885b36e47b0010",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선의 접선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선의 접선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_c09253670e488485e6f032c5a9fb1360d68394e839a1399894d1be96d651d32f",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 7,
+      "sourceFingerprint": "fee58ea884de6bb617afefc3f48a3f36872f8dd23121f836d485eff14845b239",
+      "assignmentFingerprint": "d09505bf2dbae2e318f98e9e09404a57cde41e10a8b5c9f413374a248c3f06a1",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_e63d362a45dcb3a64cacdf75a5c8a168cb0278d043b8da0af01993e92bacc321",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 8,
+      "sourceFingerprint": "ea4e48e48b45352e05d298e3cb7a26feddbf0cc026617a6351955844ddb5e439",
+      "assignmentFingerprint": "89ef669919b2c74acc349fe9479f17f350edf426b49ecf888b39bc97657d83a1",
+      "metadataParent": [
+        "기하",
+        "공간도형과 공간좌표",
+        "공간도형"
+      ],
+      "L1": "공간도형과 공간좌표",
+      "L2": "공간도형",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_91ee362c82497dde7f503f46a5aff96ec36e56b7e11a2e1d3bdf2df1d25309dd",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 9,
+      "sourceFingerprint": "4155d8e5c07b6be613831f59f06e999dfce934b1369f9b941008a0f1cef375d3",
+      "assignmentFingerprint": "f5e2dc85ea40491799d751664493fb7007b1635df641cbf380186fc7c06de056",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선의 접선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선의 접선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_dce398ad609ec0c0833118d50e4d5bf6b159ca7e805b5b07ee152b016d088161",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 10,
+      "sourceFingerprint": "13e7b0b9e342b447eede9b8642167df767e1f133a162b73e00ce9d52fca714bc",
+      "assignmentFingerprint": "781823d25cac7852812a4b099b36192de26871a8eb3f28778329a915aefc1da4",
+      "metadataParent": [
+        "기하",
+        "공간도형과 공간좌표",
+        "공간도형"
+      ],
+      "L1": "공간도형과 공간좌표",
+      "L2": "공간도형",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_bfad171a9af2c10ba044baee209295bd9c5a50822e8a488a1527fbefe2a2a219",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 11,
+      "sourceFingerprint": "4506631281d3723858b35c77736803f62fe7396440d4a9a25c8accfb40dcefb3",
+      "assignmentFingerprint": "a6695d39204032e6656369ae408f46b0b5a3ada952863352ee953ede206ba7e6",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선의 접선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선의 접선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_352b1d4c0a41c48e48b3d5efc8242ec16fecfd829c220cf281be0568d671b1ea",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 12,
+      "sourceFingerprint": "c7e4569fadbd9b50a7ae51edf0f9cf46e74c1f3da62ef8b6d96c35cf0e9f5339",
+      "assignmentFingerprint": "553110be06e4bc7656e519a3ec4ef33d4441eba6505ac3386f942678eca5ea0f",
+      "metadataParent": [
+        "기하",
+        "공간도형과 공간좌표",
+        "공간도형"
+      ],
+      "L1": "공간도형과 공간좌표",
+      "L2": "공간도형",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_6856c64b5312ce7b6e1be4ed32249202f97ccc3275e5251acdec0e88992af302",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 13,
+      "sourceFingerprint": "0e5edef2d38140ea9db8a91d4e8cfdbeb3424e177b4f3f552cb30cbaab486949",
+      "assignmentFingerprint": "ada02612031d25db111ffa490adf243883415053df9ca29b252c9ede4387ceb7",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선의 접선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선의 접선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_643e53817b9136e3480884f5a5ccc53f93a087bebbf0c71b99f7a4123c25af5d",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 14,
+      "sourceFingerprint": "2bcc48561b4c87134d66194b1b23ff0bb2a27c7840f1052d118fdeabe149305a",
+      "assignmentFingerprint": "bd07a18144ffad2065fb8b3730d0bb255e5e3fd84a9ae936997b9479f64baa7c",
+      "metadataParent": [
+        "기하",
+        "공간도형과 공간좌표",
+        "공간도형"
+      ],
+      "L1": "공간도형과 공간좌표",
+      "L2": "공간도형",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_8c9d03d04c2a0418dc9adcbee619b4b5703dfefae5b87d3b38d24eba94859f82",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 15,
+      "sourceFingerprint": "1e27ed829105912909eff0a51fe5ccd8482a1ced361122ed3692a18551578c1e",
+      "assignmentFingerprint": "c9700cb7c84849f4a993433b1668965904a88290d40668f1d132ecef58f80152",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_c388e9a07c2b3dbb89ff404b1c77000108e447eb088c4ffbbd2a8eb6fdc51122",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 16,
+      "sourceFingerprint": "ad305109a600de39864e54b60d391a68f661ef86847389a92ce66d369574aea3",
+      "assignmentFingerprint": "d9d61316e264bbe6ac8bbb728d616abf0eb835c5d76d901a2e56a7351078d4d6",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선의 접선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선의 접선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_71a77b52ceaeebcb53c8100354a37913561f90f303311335b063f6565dcb3aa6",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 17,
+      "sourceFingerprint": "df710f3c023cf23416369d5302c27f465661ddbefcf0ab34f57faf5b232e3217",
+      "assignmentFingerprint": "702ff80d93724d4e916f37df87110c7cafe901996ab46eebd3d91280caaa3f80",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선의 접선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선의 접선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_f66a5875b174286c10a36e6f1dac00e0a11ac1e44e41161958a082e7ed8dc3c1",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 18,
+      "sourceFingerprint": "ab2c6b659c8d4ebfda5ad4ce6581947690d9ce1213a31ad8022b3056a923d547",
+      "assignmentFingerprint": "cb0a28fd5955d2c66c94dddbc347e6e1bb9a35d5845fd855264963e800158e74",
+      "metadataParent": [
+        "기하",
+        "공간도형과 공간좌표",
+        "공간도형"
+      ],
+      "L1": "공간도형과 공간좌표",
+      "L2": "공간도형",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_52e0979a0a16ef7f94c1cc9c1a633dba2a4b45359dd9beece5fe069b0944956b",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 19,
+      "sourceFingerprint": "8aa126e9fb69e8ba6ae1a4010f3f71a99794a16865bf3650fc296120e3092b14",
+      "assignmentFingerprint": "e4dbee3ccfe9fb73c2c5ea57588da1b2ad690a2c17e0622e48ccd9af3410f856",
+      "metadataParent": [
+        "기하",
+        "공간도형과 공간좌표",
+        "공간도형"
+      ],
+      "L1": "공간도형과 공간좌표",
+      "L2": "공간도형",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_38a7a8f0dbb940a43cc31649eee61bb1e0f13cd62bf36fbf2c2750a0903b4b7e",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 20,
+      "sourceFingerprint": "e91aa5d6733f3cbb8d58105a95536cc30d95d6816821d408e359165c380cbd9a",
+      "assignmentFingerprint": "6973419fe92339a65768b3a570b3f3b9f00503b85e90515cb6f441da72ed347d",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선의 접선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선의 접선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "questionUid": "qid_v1_30352a311a812c7ba76f1c0b0c5becf744337e84bdfc59fa1df681cb293075fd",
+      "sourceFile": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sourceOrdinal": 21,
+      "sourceFingerprint": "eb686f74cc2aec40890bcf48b638bde442cc17ef50b69bd3d1f62576574323e2",
+      "assignmentFingerprint": "4f4cc268dd0b06bac7638424c9392cfc708dbffef21ec8e8e7f9b147bae2d5af",
+      "metadataParent": [
+        "기하",
+        "이차곡선",
+        "이차곡선"
+      ],
+      "L1": "이차곡선",
+      "L2": "이차곡선",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_f7a5214297e71800c52bfd25e179467347a074768b7186dcf44f27f93d2feb84",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 1,
+      "sourceFingerprint": "cf686561fa91987e607e9956bc3f18ba2247e1d475b325b33c204ae780103fa5",
+      "assignmentFingerprint": "fc237db8c24412c0cd6c3f6066a7a9f69a0d0208696ff45fb230981ae9349ec7",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "확률분포"
+      ],
+      "L1": "통계",
+      "L2": "확률분포",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_0ebdd6fe9d84dfdabe028b65497f690deedcc09247bf6ab3ca6dc357d755c9d1",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 2,
+      "sourceFingerprint": "6af59f44b8c5f45d5753de8b930aa94603f73fa9cf8d337562b162a4dff4bf7b",
+      "assignmentFingerprint": "1d92de9869c040c24fffec74d124aeb4e4a7d1670649bc655d9c0f00b5a1f24b",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "확률분포"
+      ],
+      "L1": "통계",
+      "L2": "확률분포",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_cb6b07fe83036aa7f16ef3d95fffbb2ec25048c53e4df671a1764a59678b64d1",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 3,
+      "sourceFingerprint": "a8afef0961200c70ee50e1499d0cdc905cb61ecefce28fba5d8c27bdcc7cf46e",
+      "assignmentFingerprint": "68eac76c791f97419658f3eb9339185ee57b3f7d8872f74b08343f3b5d76a9fa",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "확률분포"
+      ],
+      "L1": "통계",
+      "L2": "확률분포",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_d43a05e8d1c39d074550ff25a6cf9bf796d47ef5f4407d05bd344795cfb1daaf",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 4,
+      "sourceFingerprint": "aa9f2759595d3308937f7c3e12f9ae1aca345959740dd1cc3aa168d514b2a97d",
+      "assignmentFingerprint": "762d27071565f7d50f16c56a3b4c4c8150053e2f4c40be1afdbe3d1387dc8847",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "확률분포"
+      ],
+      "L1": "통계",
+      "L2": "확률분포",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_7a1c21588a95b983155eccaf0aa1487a4f44c875a0188c8c4e4bf885c9c4d87c",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 5,
+      "sourceFingerprint": "a822a77db10be193907991c7affde3bcb36059bc771a5c4b8ebe6644085c746a",
+      "assignmentFingerprint": "146b898aa7d7ca0c1a840ef8f77e5a7328fe22cc4780d0b3c175c861ed7745f2",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "통계적 추정"
+      ],
+      "L1": "통계",
+      "L2": "통계적 추정",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_472415aa863ddfc10f689fc23baf7bf4bdcc8f6f9adcec46a9e37c5d24434799",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 6,
+      "sourceFingerprint": "5a14359649bd3453a07182ae7368bd85ae1b65dbc788aaf44afb99168d64dc63",
+      "assignmentFingerprint": "c196a2c263978912cdcdd41b70650995d77cfaf1d3bc048d17b3785f77b48cb5",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "확률분포"
+      ],
+      "L1": "통계",
+      "L2": "확률분포",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_7540a322462ba13c1fc63fdcf5340fd8f68a4e6c5d5cea511466ff813baacccf",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 7,
+      "sourceFingerprint": "a9b5782a3d61ca47e85453e61b1aec216d7d4d4603583696a30ed715c24c2847",
+      "assignmentFingerprint": "d08a44b276b4b90ea9794d856218fc0ae33edace7bc96fa93b01f0090943bee6",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "통계적 추정"
+      ],
+      "L1": "통계",
+      "L2": "통계적 추정",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_9dcd80adce68a170ca96318e118e8283867783d6d2e167151d908aea3d5b4cc2",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 8,
+      "sourceFingerprint": "cdfbc050183e5fd78a00ec883898fc04c49eebd9ea07be47425dd1aec7c366c3",
+      "assignmentFingerprint": "0983961ecc74ca88434af60b72d693a860d3b9fe180a80e1dda4005cb27648a2",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "확률분포"
+      ],
+      "L1": "통계",
+      "L2": "확률분포",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_62e2e95ede4430ebeb285e269ddfae40916f8c1834dec296c47305365a16fab7",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 9,
+      "sourceFingerprint": "a0fb586ca3247cd01e6b358ea6d4b2fb563b638aab3fed741403f997bd340bc8",
+      "assignmentFingerprint": "ffdcaaf8f102c9ef8e69ae3a9469a15b8529350e817d381d20514d4c3de3102a",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "확률분포"
+      ],
+      "L1": "통계",
+      "L2": "확률분포",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_36fa0519251b2e71e8b7c9896035f43a94b4940fd271cb9a6895fcd956458b12",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 10,
+      "sourceFingerprint": "5f7f2ea1f45ab446eda8eb932b5c1ae2e2af29170ec98e4831e36c58bfbce448",
+      "assignmentFingerprint": "1ad7dc5da007bf3a8a18dc6a47cb05f7b891b821a8e016402d35c033852e9ded",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "확률분포"
+      ],
+      "L1": "통계",
+      "L2": "확률분포",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_53a7ed535e95213d28934823655d092c364edad376dcfc157b66ae378726908b",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 11,
+      "sourceFingerprint": "4ea8471d31a0876a9d9618105880529225a1838c28d3c5e4eeaa6bd5a0907ef6",
+      "assignmentFingerprint": "0004a64a91c0011c42ea7abe6c7ea11488d0e9e87975ee61784420c4f7384423",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "확률분포"
+      ],
+      "L1": "통계",
+      "L2": "확률분포",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_f628a0336d33a33f8cb2e9cefad4734794bd9ee832dff5104ba1cb21562775b1",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 12,
+      "sourceFingerprint": "f45649e2d6faccc431addb8fe2a9aa09283a6a6526d498819024da91078900d4",
+      "assignmentFingerprint": "87ad36296d1e6176555ad6bfa6c444a67971cf17fd3edc11a3050c3021d36263",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "통계적 추정"
+      ],
+      "L1": "통계",
+      "L2": "통계적 추정",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_7c60827a9aeb89cfa0aba4237478e567931d1ae81ffbfd6a0f094f67b7f866ec",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 13,
+      "sourceFingerprint": "d591059912b15807f0190bb4f89daa7a53910e67552ef8129a52082ba2925178",
+      "assignmentFingerprint": "b55164e5c19e5661803d7c3d3e82311eac7153ac0aa8c4691caafad40181f224",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "통계적 추정"
+      ],
+      "L1": "통계",
+      "L2": "통계적 추정",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_2f4280db7d121afd06d42cd4ff122068cb6301d1ab3193a780de851bfc85275a",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 14,
+      "sourceFingerprint": "38d72f371b37977dbbb3efeb352ee8a8242f68b3c65ff7f189dd3e9996d921b7",
+      "assignmentFingerprint": "881d93d639cc9f7411592a4a1ad76e36b039165bb8a943fb9a075b4f3fe12b9c",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "확률분포"
+      ],
+      "L1": "통계",
+      "L2": "확률분포",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_82e464b32bee49a105b35a15998798363ca1a2f3a97f52f4b3fe70150975d2a7",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 15,
+      "sourceFingerprint": "cd64f3a96386f8ce69fcbd4fb008a26b641ea25def86d3ff9b9ea6ab8430ea0c",
+      "assignmentFingerprint": "c93cc2f4a3ed8467d401d4fa2fae0e043ce41e5810b692b71de28505c51b71a1",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "확률분포"
+      ],
+      "L1": "통계",
+      "L2": "확률분포",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_09540ac4e65c0dae328f72fac94c3a58fa2a19cbb20fa5b9f648075ade4fff46",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 16,
+      "sourceFingerprint": "997b9a3fcac52f9616e90e6502eb16d87bb444ea1a586d4ab01de5ce78cb9dd1",
+      "assignmentFingerprint": "cac292c45a120ac885cd9d0c834aee536a818a59b1ca37cc57a207880f1bfa38",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "통계적 추정"
+      ],
+      "L1": "통계",
+      "L2": "통계적 추정",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_7bcdfc73f20998b5f07f4d31accd17c028d2ffcfd12f152d469c3a0bb4ff96a5",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 17,
+      "sourceFingerprint": "b2f1b8616f15a634e843fe47f6b7299e2f6cb7b0275282916ca8e9e0fcd76961",
+      "assignmentFingerprint": "e7ac22f22f0574929a6aab1c77690fcb0588b94e199a699ee9d507143b893750",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "통계적 추정"
+      ],
+      "L1": "통계",
+      "L2": "통계적 추정",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_ea8f2ee72148ebc6c70800c9e3ea5fdd1402469af6bacac2dbf52b480820d640",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 18,
+      "sourceFingerprint": "0d4573193fe5368712dfec8051c3a6adfcc867fc3d650e175e44e20ca4c149ee",
+      "assignmentFingerprint": "9ec083af3b4307c932a4f6b58f84699fcf73b8226970287d0fc96e644423ade8",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "확률분포"
+      ],
+      "L1": "통계",
+      "L2": "확률분포",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_8bf38e90143eb1179fa3f43ad3f2b1179ab911192cb73bf89ceb179b6303ab72",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 19,
+      "sourceFingerprint": "682f448478dfc93072bd1fe8d7996598e6909df1e0441b19c3f9a5de2c0198d3",
+      "assignmentFingerprint": "6a22c1ce215be8904db259de02ef9340740894636d2ef92d31ed630e58e03433",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "통계적 추정"
+      ],
+      "L1": "통계",
+      "L2": "통계적 추정",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_376f6ac11fe5dea00aa865c7d2d3b811b2228bcd35f3572b8c499f61ea55bbc9",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 20,
+      "sourceFingerprint": "dae862f8f7354c49f25b621d539d9739b585f1d2464e06c10ca782e753096e2d",
+      "assignmentFingerprint": "1e86e29a9f0e402ada84f72215fdf1d6938e077ae4cbf138ae6d93668f6929de",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "통계적 추정"
+      ],
+      "L1": "통계",
+      "L2": "통계적 추정",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_b07b8a8305473bbd886137e6fd06012843e1d8389a3af98b2cf8f3824a80c530",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 21,
+      "sourceFingerprint": "8cd371fbcab22a3c0a6fd114d9ee9b21a89a6fce975d8512b3133ca770d17a5a",
+      "assignmentFingerprint": "f290c0ec8c4f629a2f003a6312f2f98ed8a8721df8500728ad243dd61be5e76f",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "확률분포"
+      ],
+      "L1": "통계",
+      "L2": "확률분포",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_e882e3659f48fe8c15de82824380b4cffb825583966ac2d522ef90a7e6035cb8",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 22,
+      "sourceFingerprint": "5f71ed66e0b2d382a4fdc50f1662547529f35e05c9b1d188089dadc2bc46fe5c",
+      "assignmentFingerprint": "2cd2edc04b9d8c215c21ed2e379b88fa10220a4398aa430eba36405304b1d893",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "확률분포"
+      ],
+      "L1": "통계",
+      "L2": "확률분포",
+      "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "questionUid": "qid_v1_a3aca28c6b105ac1c50cfdfbbb91450ae7b5d112c6f44bc7f548dbff6abac22c",
+      "sourceFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_확률과통계_기출.js",
+      "sourceOrdinal": 23,
+      "sourceFingerprint": "d40a1649c881de8527e055b8737e4921e4cc948c44ccf79e8b2b970758f5263e",
+      "assignmentFingerprint": "7008bbd185e9ff66345f0c82b4a76bb55fba54ca83752212d0daa9f646dc607b",
+      "metadataParent": [
+        "확률과통계",
+        "통계",
+        "통계적 추정"
+      ],
+      "L1": "통계",
+      "L2": "통계적 추정",
       "reason": "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
     },
     {
@@ -53738,6 +53773,40 @@
       ],
       "L1": "경우의 수",
       "L2": "순열과 조합"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "수학I",
+      "questionUid": "qid_v1_2c58d64eed17e0b59073657cea8c7839d7e8c1b98c9a39c595200127c2110b0b",
+      "sourceFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js",
+      "sourceOrdinal": 11,
+      "sourceFingerprint": "1e547f001ae8022efe6725b7ade7460fd3818f2b6fa5eec0445652586eb65226",
+      "assignmentFingerprint": "abf3ee2ce81736f4765dc878fb4ce0fa0ad5055c21346d75906d806cd07608a4",
+      "metadataParent": [
+        "대수",
+        "삼각함수의 그래프",
+        "삼각함수의 그래프"
+      ],
+      "L1": "삼각함수",
+      "L2": "삼각함수의 그래프"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "수학I",
+      "questionUid": "qid_v1_25b798f33ac48e9f0f388d2406bde3b007e7791c928842c1874c0c12ff6feb96",
+      "sourceFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js",
+      "sourceOrdinal": 18,
+      "sourceFingerprint": "cbd2b93ccabe658435215e7438a5362c84f2e9b9e44125ad950bfcab3ee560a7",
+      "assignmentFingerprint": "6d1f436a556cb1894e6b38316cfcb7a1fcf7d01ebdec63da4b849ed5e528de4a",
+      "metadataParent": [
+        "대수",
+        "삼각함수의 뜻과 값",
+        "삼각함수의 뜻과 값"
+      ],
+      "L1": "삼각함수",
+      "L2": "삼각함수"
     }
   ],
   "groups": [

@@ -164,7 +164,7 @@ window.questionBank = [
       "객관식",
       "제곱근",
       "근호",
-      "나머지정리",
+      "대소비교",
       "계산"
     ],
     "wide": false,
@@ -376,7 +376,7 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "content": "한 변의 길이가 $2\\text{cm}$인 정육각형의 대각선을 따라 직각삼각형 두 조각과 이등변삼각형 두 조각으로 자른 것이다. 이 네 조각을 이용하여 만든 새로운 도형의 둘레의 길이를 구하면? (4점)\\n<svg width=\"400\" height=\"180\" viewBox=\"0 0 400 180\" xmlns=\"http://www.w3.org/2000/svg\">\\n  <polygon points=\"100.0,50.0 56.7,75.0 56.7,125.0 100.0,150.0 143.3,125.0 143.3,75.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\\n  <line x1=\"100.0\" y1=\"50.0\" x2=\"56.7\" y2=\"125.0\" stroke=\"black\" stroke-width=\"1\"/>\\n  <line x1=\"100.0\" y1=\"50.0\" x2=\"100.0\" y2=\"150.0\" stroke=\"black\" stroke-width=\"1\"/>\\n  <line x1=\"100.0\" y1=\"50.0\" x2=\"143.3\" y2=\"125.0\" stroke=\"black\" stroke-width=\"1\"/>\\n  <text x=\"75\" y=\"68\" font-size=\"10px\" font-family=\"serif\">b</text>\\n  <text x=\"70\" y=\"105\" font-size=\"10px\" font-family=\"serif\">a</text>\\n  <text x=\"90\" y=\"125\" font-size=\"10px\" font-family=\"serif\">a</text>\\n  <text x=\"130\" y=\"105\" font-size=\"10px\" font-family=\"serif\">b</text>\\n  <text x=\"180\" y=\"100\" font-size=\"20px\">→</text>\\n  <g transform=\"translate(130, 0)\">\\n    <path d=\"M 120,50 L 70,80 L 170,80 Z\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\\n    <line x1=\"120\" y1=\"50\" x2=\"120\" y2=\"80\" stroke=\"black\" stroke-width=\"1\"/>\\n    <path d=\"M 120,80 L 80,110 L 70,80 M 120,80 L 160,110 L 170,80\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\\n    <text x=\"100\" y=\"70\" font-size=\"10px\" font-family=\"serif\">a</text>\\n    <text x=\"130\" y=\"70\" font-size=\"10px\" font-family=\"serif\">a</text>\\n    <text x=\"95\" y=\"90\" font-size=\"10px\" font-family=\"serif\">b</text>\\n    <text x=\"140\" y=\"90\" font-size=\"10px\" font-family=\"serif\">b</text>\\n  </g>\\n</svg>",
+    "content": "한 변의 길이가 $2\\text{cm}$인 정육각형의 대각선을 따라 직각삼각형 두 조각과 이등변삼각형 두 조각으로 자른 것이다. 이 네 조각을 이용하여 만든 새로운 도형의 둘레의 길이를 구하면? (4점)\\n<svg width=\"400\" height=\"180\" viewBox=\"0 0 400 180\" xmlns=\"http://www.w3.org/2000/svg\">\\n  <polygon points=\"100.0,50.0 56.7,75.0 56.7,125.0 100.0,150.0 143.3,125.0 143.3,75.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\\n  <line x1=\"100.0\" y1=\"50.0\" x2=\"56.7\" y2=\"125.0\" stroke=\"black\" stroke-width=\"1\"/>\\n  <line x1=\"100.0\" y1=\"50.0\" x2=\"100.0\" y2=\"150.0\" stroke=\"black\" stroke-width=\"1\"/>\\n  <line x1=\"100.0\" y1=\"50.0\" x2=\"143.3\" y2=\"125.0\" stroke=\"black\" stroke-width=\"1\"/>\\n  <text x=\"75\" y=\"72\" font-size=\"10px\" font-family=\"serif\">b</text>\\n  <text x=\"73\" y=\"105\" font-size=\"10px\" font-family=\"serif\">a</text>\\n  <text x=\"74\" y=\"131\" font-size=\"10px\" font-family=\"serif\">b</text>\\n  <text x=\"121\" y=\"105\" font-size=\"10px\" font-family=\"serif\">a</text>\\n  <text x=\"121\" y=\"72\" font-size=\"10px\" font-family=\"serif\">b</text>\\n  <text x=\"122\" y=\"131\" font-size=\"10px\" font-family=\"serif\">b</text>\\n  <text x=\"180\" y=\"100\" font-size=\"20px\">→</text>\\n  <polygon points=\"235.0,80.0 278.3,55.0 321.6,80.0 364.9,155.0 321.6,130.0 235.0,130.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\\n    <line x1=\"235.0\" y1=\"80.0\" x2=\"321.6\" y2=\"80.0\" stroke=\"black\" stroke-width=\"1\"/>\\n    <line x1=\"321.6\" y1=\"80.0\" x2=\"321.6\" y2=\"130.0\" stroke=\"black\" stroke-width=\"1\"/>\\n    <line x1=\"235.0\" y1=\"80.0\" x2=\"321.6\" y2=\"130.0\" stroke=\"black\" stroke-width=\"1\"/>\\n    <text x=\"246\" y=\"64\" font-size=\"10px\" font-family=\"serif\">b</text>\\n    <text x=\"304\" y=\"61\" font-size=\"10px\" font-family=\"serif\">b</text>\\n    <text x=\"224\" y=\"108\" font-size=\"10px\" font-family=\"serif\">b</text>\\n    <text x=\"273\" y=\"143\" font-size=\"10px\" font-family=\"serif\">a</text>\\n    <text x=\"333\" y=\"153\" font-size=\"10px\" font-family=\"serif\">b</text>\\n    <text x=\"350\" y=\"114\" font-size=\"10px\" font-family=\"serif\">a</text>\\n</svg>",
     "choices": [
       "(4 + 4\\sqrt{3}) \\text{cm}",
       "(6 + 2\\sqrt{3}) \\text{cm}",
@@ -596,10 +596,10 @@ window.questionBank = [
     "wide": false,
     "solution": "$x^3-7x^2=x^2(x-7)$이다.\n따라서 정답은 ④이다.",
     "level": "하",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -633,10 +633,10 @@ window.questionBank = [
     "wide": false,
     "solution": "두 다항식을 더하면 $x^2+6ax+6b$이다. 완전제곱식이면 $(x+3a)^2=x^2+6ax+9a^2$이어야 하므로 $b=\\frac32a^2$이다.\n$a,b\\le100$인 자연수에서 $(a,b)=(2,6),(4,24),(6,54),(8,96)$이다. 따라서 $a+b$의 최댓값은 $104$이고 정답은 ①이다.",
     "level": "상",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -669,10 +669,10 @@ window.questionBank = [
     "wide": false,
     "solution": "$x^2+2xy-3y^2=(x+3y)(x-y)$이고 $(x-1)^2-(y-1)^2=(x+y-2)(x-y)$이다.\n두 식의 공통인수는 $x-y$이므로 정답은 ②이다.",
     "level": "중",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -703,10 +703,10 @@ window.questionBank = [
     "wide": false,
     "solution": "$6x^2-7x-20=(3x+4)(2x-5)$이다.\n따라서 $3x+4$ 이외의 다른 인수는 $2x-5$이고 정답은 ③이다.",
     "level": "하",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,

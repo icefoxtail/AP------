@@ -8,11 +8,11 @@
     },
     {
       "packId": "SETS_PROPOSITIONS",
-      "version": "1.0.0"
+      "version": "1.0.1"
     },
     {
       "packId": "FUNCTIONS_GRAPHS",
-      "version": "1.0.8"
+      "version": "1.0.9"
     },
     {
       "packId": "LIMIT_CONTINUITY",
@@ -64,11 +64,11 @@
     },
     {
       "packId": "MIDDLE3",
-      "version": "1.0.1"
+      "version": "1.0.3"
     }
   ],
   "problemTypeCount": 318,
-  "templateCount": 855,
+  "templateCount": 857,
   "problemTypes": [
     {
       "problemTypeKey": "PT_AREA_BISECTING_LINE",
@@ -34295,6 +34295,66 @@
         "qid_v1_c4115ffd05bc2ae95d1a76c3bb3641efb812d18d606ca7eec8481846de0f9a62"
       ],
       "supportingItemCount": 1
+    },
+    {
+      "templateKey": "TPL_M3_COMMON_FACTOR_BY_FACTORIZATION",
+      "parentProblemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "canonicalLabelKo": "각 식을 인수분해해 공통인수 찾기",
+      "definition": "주어진 둘 이상의 다항식을 곱셈공식·인수분해 공식(합차, 완전제곱, 이차식 인수분해, 치환 등)으로 각각 인수분해한 뒤, 모든 식에 공통으로 들어 있는 인수를 찾는다.",
+      "internalSkeleton": "각 다항식을 따로 인수분해해 인수를 드러낸 뒤 모든 식에 공통으로 나타나는 인수를 가려낸다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_f2041f497441c0d4ae18a43909c6f1d4ed218afedca0b2cee1dfff8e3a0293c5"
+      ],
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "FINAL_QA_USER_DIRECTED_EXPANSION_20261102",
+          "questionUid": "qid_v1_f2041f497441c0d4ae18a43909c6f1d4ed218afedca0b2cee1dfff8e3a0293c5",
+          "sourceOrdinal": 19,
+          "classificationRationale": "두 다항식 x^2+2xy-3y^2, (x-1)^2-(y-1)^2을 각각 이차식 인수분해와 합차 공식으로 인수분해한 뒤 공통인수 x-y를 고른다.",
+          "decisiveEvidence": "$x^2+2xy-3y^2=(x+3y)(x-y)$이고 $(x-1)^2-(y-1)^2=(x+y-2)(x-y)$이다. 두 식의 공통인수는 $x-y$",
+          "evidenceRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+            "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M3_FIND_OTHER_FACTOR_BY_FACTORIZATION",
+      "parentProblemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "canonicalLabelKo": "인수분해해 나머지 인수 구하기",
+      "definition": "하나의 다항식을 곱셈공식·인수분해 공식(이차식 인수분해 등)으로 인수분해한 뒤, 주어진 인수를 제외한 나머지 인수(또는 인수들)를 구한다.",
+      "internalSkeleton": "다항식을 인수분해해 인수를 드러낸 뒤 주어진 인수를 제외한 나머지 인수를 읽는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_33a8eaf80de755d95d935c86ff4afbb8b50665851c8dfa21a2405b9dbe8a719e"
+      ],
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "FINAL_QA_USER_DIRECTED_EXPANSION_20261102",
+          "questionUid": "qid_v1_33a8eaf80de755d95d935c86ff4afbb8b50665851c8dfa21a2405b9dbe8a719e",
+          "sourceOrdinal": 20,
+          "classificationRationale": "6x^2-7x-20을 (3x+4)(2x-5)로 인수분해한 뒤 주어진 인수 3x+4를 제외한 나머지 인수 2x-5를 답으로 읽는다.",
+          "decisiveEvidence": "$6x^2-7x-20=(3x+4)(2x-5)$이다. 따라서 $3x+4$ 이외의 다른 인수는 $2x-5$",
+          "evidenceRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-q19-q20-tpl-20261102.review.json",
+            "sha256": "592fe0fe28678aca634f415b85484a73eede05822d821717d0c787b8e3dcf9be"
+          }
+        }
+      ]
     }
   ]
 }

@@ -1282,6 +1282,27 @@ test("shared definitions cannot change another exam's approved meaning", t => {
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: req, write: true }), /out-of-scope approved UID: unrelated/);
 });
 
+test("a binding for another course alias of the same unit and PT does not change an approved row of the original course", t => {
+  const f = fixture(t);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const meta = f.read(META), row = meta.records[0];
+  meta.records.push({ ...row, questionUid: "unrelated", sourceArchiveFile: "other.js", sourceOrdinal: 1 }); f.put(META, meta);
+  const bindingsPath = "archive/data/meta-foundation/canonical/packs/new-course/bindings.json";
+  const exact = f.read(bindingsPath).bindings[0];
+  // The row of the original course is looked up by its exact course, so a binding of another alias is not its consumer.
+  const alias = { ...exact, standardCourse: "다른 과정 표기" };
+  const add = { ...f.request, requestId: "add-course-alias-binding", registryChanges: [{ path: bindingsPath, collection: "bindings",
+    match: { curriculum: alias.curriculum, standardCourse: alias.standardCourse, standardUnitKey: alias.standardUnitKey, subUnitKey: alias.subUnitKey, problemTypeKey: alias.problemTypeKey },
+    before: null, after: alias, evidenceRefs: f.evidenceRefs }],
+  items: [{ ...f.request.items[0], before: Object.fromEntries(Object.keys(f.request.items[0].after).map(k => [k, f.read(META).records[0][k] ?? null])) }] };
+  assert.equal(registerReviewedExamV2({ root: f.root, request: add, write: true }).status, "PASS");
+  // Changing the exact binding of that course still counts as changing the unrelated approved row.
+  const edit = { ...add, requestId: "edit-exact-binding", registryChanges: [{ path: bindingsPath, collection: "bindings",
+    match: { curriculum: exact.curriculum, standardCourse: exact.standardCourse, standardUnitKey: exact.standardUnitKey, subUnitKey: exact.subUnitKey, problemTypeKey: exact.problemTypeKey },
+    before: exact, after: { ...exact, L2: "다른 중단원" }, evidenceRefs: f.evidenceRefs }] };
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: edit, write: true }), /out-of-scope approved UID: unrelated/);
+});
+
 test("META_PIPELINE_AUDIT canonical promotions do not treat unrelated pending rows as approved consumers", t => {
   const f = fixture(t);
   attachMetaPipelineAudit(f, { promoteCanonicalTypes: true });
@@ -1532,4 +1553,86 @@ test("EXT: extension keys are not accepted for PT/TPL, and canonical keys keep t
   const g = fixture(t);
   setItemKeys(g, { crossConceptKeys: ["CC_NEW", "CC_NOT_REGISTERED"] });
   assert.throws(() => registerReviewedExamV2({ root: g.root, request: g.request }), /inactive\/missing crossConceptKeys: CC_NOT_REGISTERED/);
+});
+
+// FINAL_QA source-only rebind (2026-11-02): a receipt whose sourceRawSha256 no longer matches the catalog because only
+// non-question bytes (solution figures) changed is re-bound without changing any metadata value.
+function sourceRebindFixture(t, mutateSource = q => ({ ...q, solutionImage: "solution/q1.svg" })) {
+  const f = fixture(t);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const receiptPath = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json";
+  const receiptRef = { path: receiptPath, sha256: hash(fs.readFileSync(path.join(f.root, receiptPath))) };
+  const text = `window.questions = ${JSON.stringify([mutateSource(f.q)])};\n`;
+  f.put("archive/exams/fixture/exam.js", text);
+  const request = { schemaVersion: "archive-reviewed-exam-meta-register-request-v2", requestId: "test-source-rebind", examUid: "exam1",
+    sourceArchiveFile: "fixture/exam.js", expectedSourceBlobSha1: blob(text), expectedQuestionCount: 1,
+    approval: { type: "FINAL_QA", metadataReviewed: true, approvedBy: "fixture-reviewer", evidenceRefs: [...f.evidenceRefs, receiptRef], sourceRebind: { priorReceiptRef: receiptRef } },
+    items: [{ questionUid: "uid1", sourceOrdinal: 1, before: {}, after: {}, reason: "source-only rebind", evidenceRefs: f.evidenceRefs }] };
+  return { ...f, request, receiptRef };
+}
+
+test("source rebind re-binds the receipt to changed non-question bytes and keeps every metadata value", t => {
+  const f = sourceRebindFixture(t);
+  const before = f.read(META).records[0];
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.status, "PASS");
+  const after = f.read(META).records[0];
+  const changed = Object.keys({ ...before, ...after }).filter(k => JSON.stringify(before[k]) !== JSON.stringify(after[k])).sort();
+  assert.deepEqual(changed, ["approvalEvidence", "metadataRevision"]);
+  const receipt = f.read("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-source-rebind.json");
+  assert.equal(receipt.sourceRawSha256, hash(fs.readFileSync(path.join(f.root, "archive/exams/fixture/exam.js"))));
+  assert.notEqual(receipt.sourceRawSha256, f.read("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json").sourceRawSha256);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true, "re-run is a no-op replay");
+});
+
+// Rewrites the prior receipt (evidence file) and re-binds the request to its new SHA-256.
+function retargetPriorReceipt(f, mutate) {
+  const full = path.join(f.root, f.receiptRef.path);
+  const receipt = JSON.parse(fs.readFileSync(full, "utf8")); mutate(receipt);
+  fs.writeFileSync(full, j(receipt));
+  const ref = { path: f.receiptRef.path, sha256: hash(fs.readFileSync(full)) };
+  f.request.approval.evidenceRefs = [...f.evidenceRefs, ref]; f.request.approval.sourceRebind.priorReceiptRef = ref;
+}
+
+test("source rebind tolerates a later difficulty intake only with the exact difficulty5 value shapes", t => {
+  const intake = { difficultyBucket: 3, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", legacyLevelCompatibility: "NORMAL" };
+  const prepare = patch => {
+    const f = sourceRebindFixture(t);
+    retargetPriorReceipt(f, receipt => { receipt.appliedRecords[0].difficultyBucket = null; });
+    const meta = f.read(META); Object.assign(meta.records[0], intake, patch); f.put(META, meta);
+    return f;
+  };
+  const good = prepare({});
+  assert.equal(registerReviewedExamV2({ root: good.root, request: good.request }).status, "PASS");
+  for (const bad of [{ difficultyConfidence: "certain" }, { difficultyBoundaryFlag: "B56" }, { legacyLevelCompatibility: "STRONG_CONFLICT" }, { difficultyBucket: 9 }]) {
+    const f = prepare(bad);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /not a valid difficulty5 intake result/);
+  }
+});
+
+test("source rebind refuses a prior receipt that is not the registration of the current approved rows", t => {
+  const renamed = sourceRebindFixture(t);
+  retargetPriorReceipt(renamed, receipt => { receipt.requestId = "some-other-request"; });
+  assert.throws(() => registerReviewedExamV2({ root: renamed.root, request: renamed.request }), /not the registration of the current approved rows/);
+  const unlinked = sourceRebindFixture(t);
+  const meta = unlinked.read(META); meta.records[0].approvalEvidence = []; unlinked.put(META, meta);
+  assert.throws(() => registerReviewedExamV2({ root: unlinked.root, request: unlinked.request }), /not the registration of the current approved rows/);
+});
+
+test("source rebind refuses changed question text, value changes, drifted metadata and an unneeded rebind", t => {
+  const text = sourceRebindFixture(t, q => ({ ...q, content: "바뀐 지문" }));
+  assert.throws(() => registerReviewedExamV2({ root: text.root, request: text.request }), /fingerprint drift/);
+  const solution = sourceRebindFixture(t, q => ({ ...q, solution: "바뀐 해설" }));
+  assert.throws(() => registerReviewedExamV2({ root: solution.root, request: solution.request }), /fingerprint drift/);
+  const values = sourceRebindFixture(t);
+  values.request.items[0].before = { level: "중" }; values.request.items[0].after = { level: "하" };
+  assert.throws(() => registerReviewedExamV2({ root: values.root, request: values.request }), /must not change values/);
+  const drift = sourceRebindFixture(t);
+  const meta = drift.read(META); meta.records[0].L3 = "다른 유형"; drift.put(META, meta);
+  assert.throws(() => registerReviewedExamV2({ root: drift.root, request: drift.request }), /differs from prior receipt/);
+  const same = sourceRebindFixture(t, q => q);
+  assert.throws(() => registerReviewedExamV2({ root: same.root, request: same.request }), /sourceRebind unnecessary/);
+  const typed = sourceRebindFixture(t);
+  typed.request.approval.type = "REVIEW2"; typed.request.approval.reviewPassCount = 2;
+  assert.throws(() => registerReviewedExamV2({ root: typed.root, request: typed.request }), /sourceRebind requires FINAL_QA/);
 });

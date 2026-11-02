@@ -194,6 +194,7 @@ def split_registry_changes(changes: list) -> tuple[list, list]:
 
 RPM_MASTER_REL = "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
 CROSSWALK_REL_DIR = "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0"
+UNIT_REALIGN_FIELDS = ("standardUnitKey", "standardUnit", "subUnitKey", "subUnit", "conceptClusterKey")
 
 
 def _compact_scope(value: str) -> str:
@@ -289,6 +290,76 @@ def build_target_parent_ref(assignment: dict, classification: dict | None = None
     return ref, evidence
 
 
+def _rpm_hint(small_after: dict) -> tuple[str | None, tuple | None]:
+    """The crosswalk record id (and declared L1-L4) that the small meta names for the RPM Primary path, if any.
+    Small metas carry it as `rpmPrimary {l1..l4, recordId}`, flat `rpmPrimaryL1..L4` + `rpmPrimaryRecordId`, or a
+    list `rpmPrimaryRecordIds`."""
+    block = small_after.get("rpmPrimary") if isinstance(small_after.get("rpmPrimary"), dict) else {}
+    record_id = block.get("recordId") or small_after.get("rpmPrimaryRecordId")
+    ids = small_after.get("rpmPrimaryRecordIds")
+    if not record_id and isinstance(ids, list) and len(ids) == 1:
+        record_id = ids[0]
+    declared = tuple(block.get(k) or small_after.get(f"rpmPrimaryL{n}") for n, k in enumerate(("l1", "l2", "l3", "l4"), 1))
+    return record_id, (declared if all(declared) else None)
+
+
+def resolve_rpm_primary_path(small_after: dict, classification: dict, curriculum: str, scope: str,
+                             notes: list | None = None, label: str = "") -> tuple[dict | None, str | None]:
+    """RPM Primary L1-L4 for one question from the official crosswalk only (never from name similarity).
+
+    Candidates are the ACTIVE rows of an ACTIVE_REFERENCE crosswalk with the question's own curriculum, course scope,
+    PT and TPL (the same conditions the registrar applies to a `crosswalkRef`). The path is decided when
+      - the small meta names a record id that is one of the candidates (the question's own final-solution pick), or
+      - there is exactly one candidate path.
+    Otherwise (no candidate, several different paths without a named record, a named record that is not a candidate, or
+    declared L1-L4 that disagree with the named record) nothing is returned and the reason is added to `notes`
+    (EVIDENCE_DEBT: the question keeps no RPM Primary path; nothing is guessed).
+    Returns ({L1, L2, L3, L4, parentChain, crosswalkRecordIds}, crosswalk path relative to the repo root)."""
+    if isinstance(small_after.get("rpmPrimaryPath"), dict) and small_after["rpmPrimaryPath"].get("L1"):
+        return small_after["rpmPrimaryPath"], None
+    pt, tpl = classification.get("problemTypeKey"), classification.get("templateKey")
+
+    def debt(reason: str):
+        if notes is not None:
+            notes.append(f"{label} RPM path EVIDENCE_DEBT: {reason}")
+        return None, None
+
+    if not pt or not tpl:
+        return debt("question has no PT/TPL")
+    candidates = []
+    crosswalk_dir = REPO_ROOT / CROSSWALK_REL_DIR
+    for crosswalk_file in sorted(crosswalk_dir.glob("*.json")):
+        doc = json.loads(crosswalk_file.read_text(encoding="utf-8"))
+        if doc.get("status") != "ACTIVE_REFERENCE":
+            continue
+        for row in doc.get("records", []):
+            if (row.get("bindingStatus") == "ACTIVE" and row.get("curriculum") == curriculum
+                    and _compact_scope(row.get("scope")) == _compact_scope(scope)
+                    and row.get("problemTypeKey") == pt and row.get("templateKey") == tpl):
+                candidates.append((crosswalk_file, row))
+    record_id, declared = _rpm_hint(small_after)
+    if record_id:
+        chosen = [c for c in candidates if c[1]["id"] == record_id]
+        if len(chosen) != 1:
+            return debt(f"named record {record_id} is not an ACTIVE crosswalk row for {pt}/{tpl}"
+                        f" (candidates: {', '.join(c[1]['id'] for c in candidates) or 'none'})")
+    else:
+        paths = {json.dumps(c[1]["rpmPath"], sort_keys=True) for c in candidates}
+        if len(paths) != 1:
+            return debt(f"{len(paths)} candidate RPM paths for {pt}/{tpl}"
+                        f" ({', '.join(c[1]['id'] for c in candidates) or 'none'}) and no record named")
+        chosen = [candidates[0]]
+    crosswalk_file, row = chosen[0]
+    rpm = row["rpmPath"]
+    path = (rpm.get("majorUnit"), rpm.get("midUnit"), rpm.get("l3"), rpm.get("l4"))
+    if not all(path):
+        return debt(f"record {row['id']} has an incomplete RPM path")
+    if declared is not None and declared != path:
+        return debt(f"declared L1-L4 {list(declared)} differ from crosswalk record {row['id']} {list(path)}")
+    return ({"L1": path[0], "L2": path[1], "L3": path[2], "L4": path[3], "parentChain": list(path),
+             "crosswalkRecordIds": [row["id"]]}, f"{CROSSWALK_REL_DIR}/{crosswalk_file.name}")
+
+
 def load_json_bank(js_file: Path) -> list:
     cmd = ["node", "-e", f"""
     const fs = require('fs');
@@ -303,8 +374,19 @@ def load_json_bank(js_file: Path) -> list:
     return json.loads(res.stdout)
 
 
-def generate_inbox_request(files: dict) -> dict:
-    """Constructs official .archive-meta-register/inbox/[examUid].json conforming to v2 schema."""
+def generate_inbox_request(files: dict, rpm_path_delta: bool = False, request_tag: str | None = None,
+                           extra_evidence: list | None = None) -> dict:
+    """Constructs official .archive-meta-register/inbox/[examUid].json conforming to v2 schema.
+
+    `rpm_path_delta=True` builds a FINAL_QA request for an exam that is already registered: it adds only the RPM
+    Primary path (`rpmPrimaryPath`) to the rows that lack it and changes no other value (empty before/after for rows
+    whose path cannot be decided from the crosswalk). It keeps the original `targetParentRef` so the registrar derives
+    the same L1/L2.
+
+    `request_tag` makes the requestId differ from an earlier delta of the same exam (the registrar refuses the same
+    requestId with different content), e.g. a second delta after crosswalk rows were added for questions the first one
+    left without a path. `extra_evidence` ({path, sha256} refs, e.g. the reviewer's decision file) is added to the
+    approval and to every item."""
     stem = files["stem"]
     js_path = str(files["js"].relative_to(REPO_ROOT)).replace("\\", "/")
     source_archive_file = js_path.replace("archive/exams/", "")
@@ -346,7 +428,7 @@ def generate_inbox_request(files: dict) -> dict:
 
     evidence_refs = [
         {"path": receipt_rel, "sha256": receipt_sha}
-    ]
+    ] + [dict(ref) for ref in (extra_evidence or [])]
 
     value_fields = {
         "standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit", "level", "L3", "L4",
@@ -359,6 +441,7 @@ def generate_inbox_request(files: dict) -> dict:
 
     req_items = []
     parent_notes: list = []
+    rpm_notes: list = []
     for i, q in enumerate(bank):
         ord_num = i + 1
         cur = cur_by_ord.get(ord_num, {})
@@ -379,6 +462,20 @@ def generate_inbox_request(files: dict) -> dict:
             if f in q:
                 after[f] = q[f]
 
+        # RPM Primary L1-L4 (`rpmPrimaryPath`): small metas name the crosswalk record under other keys (`rpmPrimary`,
+        # `rpmPrimaryL1..4`, `rpmPrimaryRecordId`) which the registrar does not read, so the path was silently dropped
+        # and the search card showed "RPM L1~L4 미지정". Resolve it from the official crosswalk (see
+        # resolve_rpm_primary_path); a question whose record cannot be decided keeps no path (EVIDENCE_DEBT).
+        basis = cur if rpm_path_delta else after
+        rpm_path, rpm_crosswalk = None, None
+        if cur.get("rpmPrimaryPath"):
+            rpm_path = None  # already registered: never overwritten by a crosswalk-derived value (an explicit small-meta path still flows through `after`)
+        else:
+            rpm_path, rpm_crosswalk = resolve_rpm_primary_path(
+                s_after, {"problemTypeKey": basis.get("problemTypeKey"), "templateKey": basis.get("templateKey")},
+                basis.get("curriculum") or basis.get("curriculumKey") or "",
+                basis.get("courseKey") or basis.get("standardCourse") or "", rpm_notes, f"#{ord_num}")
+
         # Per-question parent unit (student-screen L1/L2). The registrar only accepts L1/L2 that equal the parent
         # it derives from the evidence-bound reference, so the same assignment sets both after.L1/L2 and the reference.
         parent_assignment = s_item.get("parentAssignment")
@@ -387,23 +484,58 @@ def generate_inbox_request(files: dict) -> dict:
         if parent_assignment:
             parent_ref, parent_evidence = build_target_parent_ref(
                 parent_assignment,
-                {"problemTypeKey": after.get("problemTypeKey"), "templateKey": after.get("templateKey")},
+                {"problemTypeKey": basis.get("problemTypeKey"), "templateKey": basis.get("templateKey")},
                 parent_notes)
-            after["L1"], after["L2"] = parent_assignment["L1"], parent_assignment["L2"]
+            if rpm_path_delta and not s_item.get("unitRealign"):
+                if (cur.get("L1"), cur.get("L2")) != (parent_assignment["L1"], parent_assignment["L2"]):
+                    raise RequestGenerationError(
+                        f"#{ord_num}: parentAssignment {parent_assignment['L1']}>{parent_assignment['L2']} differs from the "
+                        f"registered parent {cur.get('L1')}>{cur.get('L2')}; an RPM path delta does not change values.")
+            else:
+                after["L1"], after["L2"] = parent_assignment["L1"], parent_assignment["L2"]
             for ev in parent_evidence:
                 if ev not in item_evidence:
                     item_evidence.append(ev)
+
+        if rpm_path_delta:
+            after = {}
+            if s_item.get("unitRealign"):
+                # Reviewed realignment of the question to the curriculum unit its content belongs to (small meta item
+                # `unitRealign: true`): only the unit/sub-unit/parent fields whose reviewed value differs from the
+                # registered one are patched; every other value stays.
+                after = {k: s_after[k] for k in UNIT_REALIGN_FIELDS if k in s_after and s_after[k] != cur.get(k)}
+                if parent_assignment:
+                    after["L1"], after["L2"] = parent_assignment["L1"], parent_assignment["L2"]
+                    after = {k: v for k, v in after.items() if v != cur.get(k)}
+        if rpm_path is not None and "rpmPrimaryPath" not in after:
+            after["rpmPrimaryPath"] = rpm_path
+            if rpm_crosswalk:
+                cross_ev = {"path": rpm_crosswalk, "sha256": sha256_file(REPO_ROOT / rpm_crosswalk)}
+                if cross_ev not in item_evidence:
+                    item_evidence.append(cross_ev)
 
         before = {}
         for k in after.keys():
             before[k] = cur.get(k, None)
 
+        reason = s_item.get("reason", "문항 분석 및 Gemini 독립 검수 완료")
+        if rpm_path_delta:
+            if rpm_path is not None and s_item.get("unitRealign"):
+                reason = (f"{s_item.get('unitRealignReason') or '표준단원/세부단원을 문항 내용이 속한 교육과정 단원으로 재정렬'} "
+                          f"+ RPM Primary 경로 추가: 크로스워크 {', '.join(rpm_path.get('crosswalkRecordIds') or [])}의 PT/TPL 정확 일치 행")
+            elif rpm_path is not None:
+                reason = (f"RPM Primary 경로만 추가(다른 승인 값 변경 없음): 크로스워크 "
+                          f"{', '.join(rpm_path.get('crosswalkRecordIds') or [])}의 PT/TPL 정확 일치 행")
+            elif cur.get("rpmPrimaryPath"):
+                reason = "RPM Primary 경로가 이미 등록되어 있어 값을 바꾸지 않음"
+            else:
+                reason = "RPM Primary 경로 EVIDENCE_DEBT: 크로스워크 레코드가 결정되지 않아 이 문항은 값을 바꾸지 않음"
         req_item = {
             "questionUid": q_uid,
             "sourceOrdinal": ord_num,
             "before": before,
             "after": after,
-            "reason": s_item.get("reason", "문항 분석 및 Gemini 독립 검수 완료"),
+            "reason": reason,
             "evidenceRefs": item_evidence
         }
         if parent_ref:
@@ -412,6 +544,10 @@ def generate_inbox_request(files: dict) -> dict:
 
     for note in parent_notes:
         print(f" - NOTE: parent crosswalk adjusted: {note}")
+    for note in rpm_notes:
+        print(f" - NOTE: {note}")
+    if rpm_path_delta and not any(item["after"] for item in req_items):
+        raise RequestGenerationError("RPM path delta: no question gained an RPM Primary path (all registered or EVIDENCE_DEBT).")
 
     # Generated-extension keys (EXT-*) are accepted by the v2 registrar only when the extension index lists them as
     # GENERATED_ACTIVE (and the registrar's own source-registry/parent/scope checks pass). They are carried unchanged
@@ -432,11 +568,15 @@ def generate_inbox_request(files: dict) -> dict:
             + ". Register the extension (registry + index) or use an existing canonical key; do not promote it here.")
 
     native_changes, sidecar_changes = split_registry_changes(meta_json.get("registryChanges", []))
+    if rpm_path_delta:
+        # The registry changes were applied by the exam's own registration; a delta must not send them again.
+        native_changes, sidecar_changes = [], []
     if sidecar_changes:
         print(f" - NOTE: {len(sidecar_changes)} Generated-extension registryChanges entr(y/ies) are not registrar-schema "
               "canonical edits and are NOT forwarded (they stay in the small meta file).")
 
-    req_id = f"req-similar-{hashlib.sha1(stem.encode('utf-8')).hexdigest()[:16]}"
+    id_basis = f"{stem}|{request_tag}" if request_tag else stem
+    req_id = f"req-{'rpmpath' if rpm_path_delta else 'similar'}-{hashlib.sha1(id_basis.encode('utf-8')).hexdigest()[:16]}"
     request = {
         "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
         "requestId": req_id,
@@ -447,7 +587,8 @@ def generate_inbox_request(files: dict) -> dict:
         "approval": {
             "type": "FINAL_QA",
             "metadataReviewed": True,
-            "approvedBy": "13th-route-main-merge-master",
+            "approvedBy": ("13th-route-main-merge-master: RPM Primary path delta (crosswalk-derived; no other value changes)"
+                           if rpm_path_delta else "13th-route-main-merge-master"),
             "evidenceRefs": evidence_refs
         },
         "registryChanges": [
@@ -490,6 +631,17 @@ def main():
     parser.add_argument("--skip-harness", action="store_true",
                         help="Do not run tools/harness/verify_similar_exam.mjs (it cannot evaluate high-school exams yet). "
                              "Reported as NOT_RUN; the default still requires the harness.")
+    parser.add_argument("--rpm-path-delta", action="store_true",
+                        help="For an exam that is already registered: build a FINAL_QA request that only adds the RPM Primary "
+                             "path (rpmPrimaryPath) from the official crosswalk and changes no other value. Writes "
+                             ".archive-meta-register/inbox/rpmpath-<exam>.json with --apply (no other file is staged); "
+                             "otherwise use --out or the dry run. Skips the GATE_PASS harness (the exam is already on main).")
+    parser.add_argument("--request-tag", help="With --rpm-path-delta: a short label that changes the requestId and the inbox file "
+                                              "name (rpmpath-<exam>-<tag>.json), for a further delta of an exam whose first delta "
+                                              "is already registered.")
+    parser.add_argument("--evidence", action="append", default=[],
+                        help="Repository-relative path of a decision/evidence file to SHA-bind into the request "
+                             "(repeatable); added to the approval and to every item.")
     parser.add_argument("--out", help="Write the generated request JSON to this file and stop (no inbox write, no staging). "
                                       "The path must not be inside .archive-meta-register/inbox.")
 
@@ -515,19 +667,28 @@ def main():
             print(f"Error: missing {key} file for '{files['stem']}'", file=sys.stderr)
             sys.exit(1)
 
-    valid, errors = validate_candidate(files, skip_harness=args.skip_harness)
+    valid, errors = (True, []) if args.rpm_path_delta else validate_candidate(files, skip_harness=args.skip_harness)
     if not valid:
         print("\n[GATE_PASS FAILED] Errors encountered:")
         for err in errors:
             print(f"  * {err}")
         sys.exit(1)
 
-    if args.skip_harness:
+    if args.rpm_path_delta:
+        print("\n[RPM PATH DELTA] exam already on main; GATE_PASS harness not applicable. Only rpmPrimaryPath is added.")
+    elif args.skip_harness:
         print("\n[GATE_PASS NOT VERIFIED] harness skipped (NOT_RUN); continuing to request generation only.")
     else:
         print("\n[GATE_PASS VERIFIED] All candidate artifacts satisfy quality contract.")
     try:
-        inbox_request = generate_inbox_request(files)
+        extra_evidence = []
+        for rel in args.evidence:
+            evidence_path = REPO_ROOT / rel
+            if not evidence_path.is_file():
+                raise RequestGenerationError(f"--evidence file not found: {rel}")
+            extra_evidence.append({"path": rel.replace("\\", "/"), "sha256": sha256_file(evidence_path)})
+        inbox_request = generate_inbox_request(files, rpm_path_delta=args.rpm_path_delta,
+                                               request_tag=args.request_tag, extra_evidence=extra_evidence)
     except RequestGenerationError as err:
         print(f"\n[REQUEST NOT GENERATED] {err}", file=sys.stderr)
         sys.exit(1)
@@ -545,9 +706,12 @@ def main():
 
     inbox_dir = REPO_ROOT / ".archive-meta-register" / "inbox"
     inbox_dir.mkdir(parents=True, exist_ok=True)
-    inbox_path = inbox_dir / f"{files['stem']}.json"
+    inbox_name = (f"rpmpath-{files['stem']}{'-' + args.request_tag if args.request_tag else ''}.json"
+                  if args.rpm_path_delta else f"{files['stem']}.json")
+    inbox_path = inbox_dir / inbox_name
 
-    whitelist = get_whitelist_files(files, inbox_path)
+    whitelist = (get_whitelist_files(files, inbox_path) if not args.rpm_path_delta
+                 else [str(inbox_path.relative_to(REPO_ROOT)).replace("\\", "/")])
     print(f"\n[Whitelist Files: {len(whitelist)} files]")
     for w in whitelist[:10]:
         print(f"  + {w}")

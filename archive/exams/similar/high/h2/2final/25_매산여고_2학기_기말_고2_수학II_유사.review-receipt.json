@@ -350,5 +350,18 @@
     "브라우저 실화면/인쇄 미리보기 전체 시험지 렌더",
     "Archive engine 학생 화면 Chrome 검증(SVG 5개는 단독 렌더만)",
     "verify_similar_exam.mjs strict(영수증 후) 릴리스 게이트"
-  ]
+  ],
+  "postReviewParentAssignmentCrosswalkRows": {
+    "date": "2026-11-02",
+    "scope": "small meta parentAssignment only (parentRefMode/crosswalkRecordId/method/basis) for the listed questions; no JS, content, choices, answer, solution, figure or plan bytes changed, so candidateGitBlobSha1 is unchanged.",
+    "reason": "These PT/TPL pairs had no exact ACTIVE row in archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json, so the v2 registrar could not bind the question to its 2015 수학II RPM mid-unit (the standard unit label has no (1)/(2)/(3) suffix). ACTIVE rows H2-M2-RPM-100..109 were added (append-only; existing rows unchanged). The mid-unit per question was chosen from the question stem and solution against the RPM master mid-unit definitions.",
+    "questionToAddedRow": {
+      "1": "H2-M2-RPM-108",
+      "7": "H2-M2-RPM-109",
+      "11": "H2-M2-RPM-101",
+      "12": "H2-M2-RPM-108",
+      "20": "H2-M2-RPM-106"
+    },
+    "independentReviewCovers": "not re-reviewed by the independent exam auditor; parent mid-unit choice is the metadata owner determination recorded in each item parentAssignment.basis"
+  }
 }

@@ -239,7 +239,7 @@ function openClassManageModal() {
 function openAddClassModal() {
     setModalReturnView({ type: 'classManage' });
     showModal('새 반 추가', `
-        <div class="apms-unified-modal apms-unified-form">
+        <div class="apms-modal apms-modal--form apms-unified-modal apms-unified-form">
             <div class="apms-unified-context"><div class="apms-unified-context__name">반 기본 정보</div><div class="apms-unified-context__meta">학년 · 담당 · 수업 요일 · 시간</div></div>
             <input id="add-cls-name" class="btn apms-unified-control" placeholder="반 이름 (예: 중3A)" >
             <select id="add-cls-grade" class="btn apms-unified-control" >
@@ -257,8 +257,12 @@ function openAddClassModal() {
                 ${getTimeLabelOptions('')}
             </select>
             <input id="add-cls-timelabel" class="btn apms-unified-control" placeholder="직접 입력 (예: 화.목 9:30~11:30)" >
+            <div class="apms-modal__actions">
+                <button type="button" class="btn apms-button apms-button--quiet apms-unified-quiet" onclick="closeModal()">취소</button>
+                <button type="button" class="btn apms-button apms-button--primary btn-primary apms-unified-primary" onclick="handleAddClass()">추가</button>
+            </div>
         </div>
-    `, '추가', handleAddClass);
+    `);
 }
 
 async function handleAddClass() {
@@ -306,7 +310,7 @@ function openEditClassModal(cid, options = {}) {
     const selectedPeriod = periodTimes.includes(currentTime) ? currentTime : '';
 
     showModal('반 수정', `
-        <div class="apms-unified-modal apms-unified-form">
+        <div class="apms-modal apms-modal--form apms-unified-modal apms-unified-form">
             <div class="apms-unified-context"><div class="apms-unified-context__name">${mgmtEscape(c.name)}</div><div class="apms-unified-context__meta">${mgmtEscape(c.grade || '')} · 반 정보 수정</div></div>
             <input id="edit-cls-name" class="btn apms-unified-control" value="${mgmtEscape(c.name)}" placeholder="반 이름" >
             <select id="edit-cls-grade" class="btn apms-unified-control" >
@@ -323,9 +327,15 @@ function openEditClassModal(cid, options = {}) {
                 ${getTimeLabelOptions(selectedPeriod)}
             </select>
             <input id="edit-cls-timelabel" class="btn apms-unified-control" value="${mgmtEscape(c.time_label || '')}" placeholder="직접 입력 (예: 화.목 9:30~11:30)" >
-            <button class="btn apms-button apms-button--quiet" style="margin-top:6px; min-height:42px; color:var(--error); background:rgba(var(--error-rgb),0.08); border:1px solid rgba(var(--error-rgb),0.16); font-weight:500;" onclick="handleDeleteClass('${c.id}')">반 보관</button>
+            <div class="apms-modal__actions">
+                <button type="button" class="btn btn-danger apms-modal__actions-start" onclick="handleDeleteClass('${c.id}')">반 보관</button>
+                <button type="button" class="btn apms-button apms-button--quiet apms-unified-quiet" onclick="closeModal()">취소</button>
+                <button type="button" id="edit-cls-save" class="btn apms-button apms-button--primary btn-primary apms-unified-primary">저장</button>
+            </div>
         </div>
-    `, '저장', () => handleEditClass(cid, returnTo));
+    `);
+    const saveBtn = document.getElementById('edit-cls-save');
+    if (saveBtn) saveBtn.onclick = () => handleEditClass(cid, returnTo);
 }
 
 async function handleEditClass(cid, returnTo = { type: 'classManage' }) {

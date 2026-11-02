@@ -13,8 +13,9 @@
   // Contract
   //  * READ ONLY. The resolver never writes: it builds frozen views over data that the caller hands
   //    in. Canonical registries and RPM LOCKED values are inputs, never outputs.
-  //  * An extension key is only ever described on a GENERATED item. An extension key that shows up on
-  //    an original exam item is reported as a violation and is not resolved (never attached).
+  //  * An extension key is only ever described on a GENERATED item, or on a registered similar exam
+  //    (`similar/...` source) when the registry defines the key. An extension key on an original exam
+  //    item is reported as a violation and is not resolved (never attached).
   //  * A curriculum is never converted: a label match honours the definition's own curriculum.
   //  * No review/quality gate: every defined or carried extension key is shown; its status is a
   //    label (`tier`), not an exclusion.
@@ -373,6 +374,10 @@
       const row = record || {};
       const uid = text(row.uid || row.questionUid || row.generatedUid);
       const generated = row.sourceKind === "generated" || /^ALITE-/.test(uid) || Boolean(row.generatedUid);
+      // A registered similar exam (유사시험지: `similar/...` source, not a past exam) may carry the registered
+      // Generated extension keys of its own reviewed meta registration. This does not make it "generated"
+      // and never applies to original exams; an extension key no registry defines is still blocked there.
+      const similarExam = !generated && /^(?:exams\/)?similar\//.test(text(row.sourceFile));
       const items = [];
       const violations = [];
       const seen = new Set();
@@ -383,7 +388,7 @@
         if (seen.has(marker)) return;
         seen.add(marker);
         const extension = isExtensionKey(key);
-        if (extension && !generated) {
+        if (extension && !generated && !(similarExam && nodes.has(key))) {
           violations.push({ code: "EXTENSION_KEY_ON_ORIGINAL_ITEM", field, key });
           items.push({ field, kind, key, label: composedLabel || key, origin: "blocked", badge: "", defined: false, blocked: true });
           return;

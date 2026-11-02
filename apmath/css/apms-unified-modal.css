@@ -1,16 +1,26 @@
-/* APMS modal visual family — modeled on the established progress modal.
- * Opt-in only: no app-root, progress modal, timetable confirm, or generic dialog changes.
- * Uses APMS light/dark theme tokens, not static light palette overrides. */
-#modal-content:has(.apms-unified-modal) {
+/* APMS 모달 공통 부품 — 4등급(C 확인 / F 폼 / W 작업 화면 / P 전체 화면) + 기존 통합 양식.
+ * 사용법과 결정 근거는 apmath/DESIGN.md "모달 공통 부품" 절에 있다. 요약:
+ *   <div class="apms-modal apms-modal--form">            ← 등급 클래스는 showModal 본문의 맨 바깥 요소 하나에만 단다
+ *     …본문(스크롤)…
+ *     <div class="apms-modal__actions">…</div>           ← 저장·취소는 하단 오른쪽 고정 액션줄
+ *   </div>
+ * 모듈은 진도 모달(.ap-class-progress-modal)·학생 포털을 건드리지 않는다.
+ * 옛 통합 양식(.apms-unified-modal)은 그대로 F 등급 모양이다(아래 규칙 유지).
+ * 색은 APMS 라이트/다크 토큰만 쓴다. 모서리: 모달 16px, 입력·버튼 8px, 안쪽 면 8px (2026-11-02 결정).
+ * 대상 기기: 휴대폰 390×844 · 태블릿 800×1280/1280×800 · PC 1440×900/1280×800. */
+#modal-content:has(.apms-unified-modal),
+#modal-content:has(.apms-modal--form) {
     width: min(720px, calc(100vw - 32px));
     max-width: 720px;
     height: auto;
     max-height: calc(100dvh - 32px);
 }
-#modal-content:has(.apms-unified-modal) #modal-header {
+#modal-content:has(.apms-unified-modal) #modal-header,
+#modal-content:has(.apms-modal) #modal-header {
     padding: 14px 20px 12px;
 }
-#modal-content:has(.apms-unified-modal) #modal-title {
+#modal-content:has(.apms-unified-modal) #modal-title,
+#modal-content:has(.apms-modal) #modal-title {
     font-size: 18px;
     font-weight: 600;
 }
@@ -19,7 +29,8 @@
     padding: 16px 20px 20px;
     overflow: auto;
 }
-#modal-content:has(.apms-unified-modal) #modal-action-btn {
+#modal-content:has(.apms-unified-modal) #modal-action-btn,
+#modal-content:has(.apms-modal) #modal-action-btn {
     font-size: 13px !important;
     font-weight: 500 !important;
 }
@@ -36,7 +47,7 @@
     gap: 4px;
     padding: 11px 14px;
     border: 1px solid var(--border);
-    border-radius: var(--ap-ui-radius-card, 6px);
+    border-radius: var(--ap-ui-radius-panel, 8px);
     background: var(--surface-2);
 }
 .apms-unified-context__name {
@@ -66,8 +77,8 @@
     padding: 10px 12px;
     text-align: left;
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    border: 1px solid var(--control-border, var(--border));
+    border-radius: var(--ap-ui-radius-control, 8px);
     color: var(--text);
     font-size: 13px;
     font-weight: 400;
@@ -94,8 +105,8 @@
     gap: 6px;
     min-height: 38px;
     padding: 8px 10px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    border: 1px solid var(--control-border, var(--border));
+    border-radius: var(--ap-ui-radius-control, 8px);
     background: var(--surface);
     color: var(--text);
     cursor: pointer;
@@ -152,4 +163,225 @@
         grid-template-columns: minmax(0, 1fr) minmax(108px, 0.42fr);
     }
     .apms-unified-form .apms-unified-control { min-height: 44px; }
+}
+
+/* ======================================================================
+   모달 공통 부품 (2026-11-02) — 등급 C·F·W·P, 하단 고정 액션줄, 휴대폰 시트/전체 화면
+   ----------------------------------------------------------------------
+   공통 구조: 껍데기(#modal-content, index.html) > #modal-header > #modal-body > .apms-modal(등급 루트).
+   등급 루트가 있으면 #modal-body는 패딩 없는 세로 flex가 되고, 루트가 스크롤 영역이 된다.
+   .apms-modal__actions는 루트 안 맨 끝에 두면 늘 하단 오른쪽에 붙어 있다(내용이 길면 sticky로 고정).
+   ====================================================================== */
+#modal-content:has(.apms-modal) #modal-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.apms-modal {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    gap: 12px;
+    min-width: 0;
+    min-height: 0;
+    padding: 16px 20px 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    color: var(--text);
+}
+.apms-modal > * { flex-shrink: 0; }
+.apms-modal__actions,
+.apms-modal > .apms-unified-actions {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+    box-sizing: border-box;
+    margin: auto -20px 0;
+    padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+}
+.apms-modal__actions > button,
+.apms-modal > .apms-unified-actions > button {
+    min-height: 44px;
+    padding: 10px 16px;
+    border-radius: var(--ap-ui-radius-control, 8px);
+    font-size: 13px;
+    font-weight: 500;
+}
+/* 위험 행동(삭제 등)은 왼쪽 끝으로 떼어 놓아 저장 버튼과 멀리 둔다. */
+.apms-modal__actions > .apms-modal__actions-start { margin-right: auto; }
+
+/* 헤더 행동이 하단 액션줄로 옮겨 그려진 경우(ui.js adoptHeaderActionIntoModalActions) 헤더 버튼은 숨긴다. */
+#modal-content:has(.apms-modal__actions[data-modal-action-proxy]) #modal-action-btn { display: none; }
+
+/* C 확인·선택: 한 문장 + 값 나열 + 버튼 2~3개 */
+#modal-content:has(.apms-modal--confirm) {
+    width: min(500px, calc(100vw - 32px));
+    max-width: 500px;
+    height: auto;
+    max-height: min(90dvh, calc(100dvh - 32px));
+}
+/* W 작업 화면: 목록 + 상세. 단열 변형은 720px */
+#modal-content:has(.apms-modal--workspace),
+#modal-content:has(.apms-modal--workspace-single) {
+    width: min(1180px, calc(100vw - 32px));
+    max-width: 1180px;
+    /* 위·아래 48px를 비워 앱 맨 위의 뒤로 가기 버튼(높이 58px 줄)이 모달 모서리를 가리지 않게 한다. */
+    height: min(860px, calc(100dvh - 96px));
+    max-height: calc(100dvh - 96px);
+}
+#modal-content:has(.apms-modal--workspace-single) {
+    width: min(720px, calc(100vw - 32px));
+    max-width: 720px;
+}
+.apms-modal--workspace,
+.apms-modal--workspace-single { overflow: hidden; }
+
+.apms-workspace__bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+.apms-workspace {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.38fr) minmax(0, 1fr);
+    gap: 14px;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+.apms-workspace--single { grid-template-columns: minmax(0, 1fr); }
+.apms-workspace__list,
+.apms-workspace__detail {
+    box-sizing: border-box;
+    min-width: 0;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+.apms-workspace__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.apms-workspace__detail {
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--ap-ui-radius-panel, 8px);
+    background: var(--surface);
+}
+.apms-workspace__item {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    text-align: left;
+    border: 1px solid var(--border);
+    border-radius: var(--ap-ui-radius-panel, 8px);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.4;
+    cursor: pointer;
+}
+.apms-workspace__item[aria-current="true"],
+.apms-workspace__item.is-active {
+    border-color: var(--primary);
+    background: var(--primary-soft);
+}
+.apms-workspace__item:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* P 전체 화면 패널: 컨트롤 많은 독립 도구. 데스크톱은 왼쪽 레일(56px)을 비켜 간다. */
+#modal-content:has(.apms-modal--panel) {
+    position: fixed;
+    top: 58px;           /* 앱 맨 위 줄(뒤로 가기·사용자 이름)을 가리지 않는다 */
+    right: 14px;
+    bottom: 14px;
+    left: 70px;
+    width: auto;
+    max-width: none;
+    height: auto;
+    max-height: none;
+    margin: 0;
+}
+.apms-modal--panel { overflow: hidden; padding: 0; gap: 0; }
+.apms-modal--panel > .apms-modal__actions { margin: auto 0 0; }
+.apms-modal--panel > .apms-modal__body {
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 16px 20px;
+    overflow: auto;
+}
+@media (min-width: 901px) {
+    body.ap-drawer-expanded #modal-content:has(.apms-modal--panel) { left: 274px; }
+    /* 56px 레일이 모달 위(z-index 9999)에 떠 있으므로 W 왼쪽 끝이 레일 안으로 들어가지 않게 폭을 줄인다. */
+    #modal-content:has(.apms-modal--workspace),
+    #modal-content:has(.apms-modal--workspace-single) {
+        width: min(1180px, calc(100vw - 144px));
+    }
+    #modal-content:has(.apms-modal--workspace-single) { width: min(720px, calc(100vw - 144px)); }
+}
+
+/* 태블릿 세로(≈800px): 두 열을 유지하되 목록 열을 좁힌다. 글자·누르는 영역은 PC와 같다. */
+@media (max-width: 900px) {
+    .apms-workspace { grid-template-columns: minmax(220px, 0.4fr) minmax(0, 1fr); }
+    #modal-content:has(.apms-modal--panel) { top: 58px; right: 10px; bottom: 10px; left: 10px; }
+}
+
+/* 휴대폰: C·F는 아래에서 올라오는 시트, W·P는 화면 전체. 목록 위 · 상세 아래로 쌓고 루트가 한 번에 스크롤한다. */
+@media (max-width: 600px) {
+    #modal-content:has(.apms-modal--confirm),
+    #modal-content:has(.apms-modal--form) {
+        width: 100vw;
+        max-width: 100vw;
+        max-height: calc(92dvh - env(safe-area-inset-top));
+        border-radius: 16px 16px 0 0;
+    }
+    #modal-content:has(.apms-modal--workspace),
+    #modal-content:has(.apms-modal--workspace-single),
+    #modal-content:has(.apms-modal--panel) {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        max-width: 100vw;
+        height: 100dvh;
+        max-height: 100dvh;
+        border: 0;
+        border-radius: 0;
+    }
+    #modal-content:has(.apms-modal--workspace) #modal-header,
+    #modal-content:has(.apms-modal--workspace-single) #modal-header,
+    #modal-content:has(.apms-modal--panel) #modal-header {
+        padding-top: calc(14px + env(safe-area-inset-top));
+    }
+    #modal-content:has(.apms-modal) #modal-header { padding-left: 16px; padding-right: 16px; }
+    .apms-modal { padding: 12px 16px 0; }
+    .apms-modal--panel { padding: 0; }
+    .apms-modal--panel > .apms-modal__body { padding: 12px 16px; }
+    .apms-modal--workspace,
+    .apms-modal--workspace-single { overflow-y: auto; }
+    .apms-workspace { display: flex; flex-direction: column; flex: 0 0 auto; }
+    .apms-workspace__list,
+    .apms-workspace__detail { overflow: visible; }
+    .apms-modal__actions,
+    .apms-modal > .apms-unified-actions {
+        margin: auto -16px 0;
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    }
+    /* 엄지로 닿도록 버튼을 가로로 나눠 채운다. 위험 행동 버튼은 한 줄을 따로 쓴다. */
+    .apms-modal__actions > button,
+    .apms-modal > .apms-unified-actions > button { flex: 1 1 0; min-width: 0; }
+    .apms-modal__actions > .apms-modal__actions-start { flex: 1 1 100%; margin-right: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    #modal-overlay, #modal-content { transition: none !important; }
 }
