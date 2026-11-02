@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a100e">
 <title>이차함수 · AP Math 실험실</title>
-<meta name="description" content="공통수학 이차함수: 두 함수의 차 f−g, 움직이는 대칭축·구간 최대최소, 절댓값 그래프, 근의 분리, 이차부등식이 항상 성립할 조건, 함정 연구소까지 6개 탐구관 30개 장면">
+<meta name="description" content="공통수학 이차함수: 두 함수의 차 f−g, 움직이는 대칭축·구간 최대최소, 절댓값 그래프, 근의 분리, 이차부등식이 항상 성립할 조건, 함정 연구소, 고1 학평 기출 핵심 유형까지 7개 탐구관 36개 장면">
 <script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):'paper';document.documentElement.setAttribute('data-theme',t==='board'?'board':'paper')}catch(e){document.documentElement.setAttribute('data-theme','paper')}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
@@ -16,6 +16,7 @@
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-compat.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="common-quadratic/plus.js"></script>
 </head>
 <body>
 <noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
@@ -23,6 +24,7 @@
 /* ==========================================================================
    공통수학 · 이차함수 (AP Math Lab 2.0 이식본) — 6개 탐구관 × 30개 장면
    원본: labs/공통수학/이차함수.html
+   추가(기출 핵심 유형): 7번째 탐구관 6장면은 common-quadratic/plus.js 가 만듭니다(고1 학평 A1~A6 유형, 아래 6개 탐구관·30장면은 그대로).
    이식 방식: "호환층 이식" — 원본의 내용(getSpec)과 그리기 코드(drawQuadFuncMasterScene)를
    글자 그대로 옮기고, 그리기 함수 이름(drawFuncCurve·qline·qdot·drawIntervalWindow)만 새 무대 엔진에 연결합니다.
    원본과 다른 점
@@ -1303,6 +1305,12 @@ window.addEventListener('DOMContentLoaded', function () {
     const m = +k;
     return { id: 'm' + m, title: TABS[m - 1], short: SHORT[m - 1], scenes: SUB_MENUS[m].map((it) => sceneOf(m, it)) };
   });
+  // 7번째 탐구관 「기출 핵심 유형」(고1 학평): labs/common-quadratic/plus.js 가 window.APL_CQ_GROUPS 로 등록합니다. 위 6개 탐구관은 그대로입니다.
+  const plusParams = {};
+  (window.APL_CQ_GROUPS || []).filter((g) => g && Array.isArray(g.scenes) && g.scenes.length).forEach((g) => {
+    groups.push({ id: g.id, title: g.title, short: g.short || g.title, scenes: g.scenes });
+    Object.assign(plusParams, g.params || {});
+  });
 
   APLab.createLab({
     id: 'common-quadratic',
@@ -1315,9 +1323,9 @@ window.addEventListener('DOMContentLoaded', function () {
     board: { kind: 'cartesian', focus: { x: [-6, 8], y: [-5.4, 6.9] }, minZoom: 0.5, maxZoom: 5 },
     state: { lens: 'all', kIdx: 2 },
     persist: ['lens'],
-    params: {
+    params: Object.assign({
       fold: { value: 0, min: 0, max: 1, step: 0.005, color: 'amber', label: '진행 (0% → 100%)', hint: '직선 내리기 · 대칭축 이동 · 절댓값 그래프 접어 올리기 같은 변화를 천천히 확인합니다', format: (v) => `${Math.round(v * 100)}%` }
-    },
+    }, plusParams),
     groups
   });
 });
