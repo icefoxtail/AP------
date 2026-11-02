@@ -316,24 +316,6 @@ function ensureConsultationThreadAiUiState() {
     return state.ui.consultationThreadAi;
 }
 
-function sortParentContacts(rows = []) {
-    return [...rows].sort((a, b) => {
-        const primaryDiff = Number(b?.is_primary || 0) - Number(a?.is_primary || 0);
-        if (primaryDiff !== 0) return primaryDiff;
-        const createdDiff = String(b?.created_at || '').localeCompare(String(a?.created_at || ''));
-        if (createdDiff !== 0) return createdDiff;
-        return String(b?.id || '').localeCompare(String(a?.id || ''));
-    });
-}
-
-function ensureParentContactUiState() {
-    if (!state.ui) state.ui = {};
-    if (!state.ui.parentContactUi) {
-        state.ui.parentContactUi = { byStudent: {} };
-    }
-    return state.ui.parentContactUi;
-}
-
 function ensureStudentDetailLazyUiState() {
     if (!state.ui) state.ui = {};
     if (!state.ui.studentDetailLazyData) {
@@ -351,7 +333,6 @@ function getStudentDetailLazyState(studentId) {
             loadedAt: '',
             error: '',
             inFlight: null,
-            parent_contacts: [],
             student_status_history: [],
             class_transfer_history: []
         };
@@ -426,7 +407,6 @@ async function ensureStudentDetailLazyData(studentId, options = {}) {
     const promise = api.get(`students/${encodeURIComponent(key)}/detail-data`)
         .then(res => {
             if (res?.success) {
-                entry.parent_contacts = Array.isArray(res.parent_contacts) ? sortParentContacts(res.parent_contacts) : entry.parent_contacts;
                 entry.student_status_history = Array.isArray(res.student_status_history) ? res.student_status_history : entry.student_status_history;
                 entry.class_transfer_history = Array.isArray(res.class_transfer_history) ? res.class_transfer_history : entry.class_transfer_history;
                 entry.loadedAt = new Date().toISOString();
@@ -452,25 +432,6 @@ async function ensureStudentDetailLazyData(studentId, options = {}) {
     return promise;
 }
 
-function getStudentParentContactsFromState(sid) {
-    const lazyRows = getStudentDetailLazyRows(sid, 'parent_contacts');
-    if (lazyRows.length) return sortParentContacts(lazyRows);
-    return sortParentContacts((state.db.parent_contacts || []).filter(row => String(row?.student_id || '') === String(sid)));
-}
-
-function getStudentMessageLogsFromState(sid) {
-    const timetableRows = state.ui?.timetableStudentDetails?.[String(sid)]?.message_logs;
-    const rows = Array.isArray(timetableRows)
-        ? timetableRows
-        : (state.db.message_logs || []).filter(row => String(row?.student_id || '') === String(sid));
-    return [...rows]
-        .sort((a, b) => {
-            const createdDiff = String(b?.created_at || '').localeCompare(String(a?.created_at || ''));
-            if (createdDiff !== 0) return createdDiff;
-            return String(b?.id || '').localeCompare(String(a?.id || ''));
-        });
-}
-
 function mergeStudentRows(tableName, sid, rows) {
     const key = String(sid || '');
     const existing = Array.isArray(state.db?.[tableName]) ? state.db[tableName] : [];
@@ -479,35 +440,6 @@ function mergeStudentRows(tableName, sid, rows) {
     state.db[tableName] = others.concat(scopedRows);
     return scopedRows;
 }
-
-function getStudentParentMessageState(sid) {
-    const store = ensureParentContactUiState();
-    const key = String(sid || '');
-    if (!store.byStudent[key]) {
-        store.byStudent[key] = { loadedAt: 0, loading: false, inFlight: null, error: '', consents: [] };
-    }
-    const entry = store.byStudent[key];
-    if (typeof entry.messagesLoadedAt !== 'number') entry.messagesLoadedAt = 0;
-    if (typeof entry.messageLoading !== 'boolean') entry.messageLoading = false;
-    if (!('messageInFlight' in entry)) entry.messageInFlight = null;
-    if (typeof entry.messageError !== 'string') entry.messageError = '';
-    return entry;
-}
-
-function getStudentParentContactBundle(sid) {
-    const entry = getStudentParentMessageState(sid);
-    return {
-        contacts: getStudentParentContactsFromState(sid),
-        consents: Array.isArray(entry.consents) ? entry.consents : [],
-        messages: getStudentMessageLogsFromState(sid),
-        loading: !!entry.loading,
-        error: entry.error || '',
-        messagesLoadedAt: Number(entry.messagesLoadedAt || 0),
-        messageLoading: !!entry.messageLoading,
-        messageError: entry.messageError || ''
-    };
-}
-
 
 function getStudentStatusHistoryRows(sid) {
     return [...getStudentDetailLazyRows(sid, 'student_status_history')]
@@ -638,104 +570,6 @@ async function openStudentClassTransferHistoryModal(sid) {
         return;
     }
     showStudentDetailSubModalStep('class-transfer-history', sid, '반 이동 이력', renderStudentClassTransferHistoryModalHtml(sid));
-}
-
-async function ensureStudentParentContactDataLoaded(sid, options = {}) {
-    const store = ensureParentContactUiState();
-    const key = String(sid || '');
-    if (!key) return getStudentParentContactBundle(key);
-
-    const entry = getStudentParentMessageState(key);
-    const force = !!options.force;
-    const maxAgeMs = Number.isFinite(Number(options.maxAgeMs)) ? Number(options.maxAgeMs) : 60 * 1000;
-    if (!force && entry.loadedAt && (Date.now() - entry.loadedAt) < maxAgeMs) {
-        return getStudentParentContactBundle(key);
-    }
-    if (entry.inFlight) return entry.inFlight;
-
-    entry.loading = true;
-    entry.error = '';
-    const query = `student_id=${encodeURIComponent(key)}&limit=200`;
-
-    const promise = Promise.allSettled([
-        api.get(`parent-foundation/contacts?${query}`),
-        api.get(`parent-foundation/consents?${query}`)
-    ]).then(results => {
-        const [contactsRes, consentsRes] = results;
-        const errors = [];
-
-        if (contactsRes.status === 'fulfilled' && contactsRes.value?.success && Array.isArray(contactsRes.value.contacts)) {
-            mergeStudentRows('parent_contacts', key, contactsRes.value.contacts);
-        } else {
-            errors.push('contacts');
-        }
-
-        if (consentsRes.status === 'fulfilled' && consentsRes.value?.success && Array.isArray(consentsRes.value.consents)) {
-            entry.consents = consentsRes.value.consents.filter(row => String(row?.student_id || '') === key);
-        } else {
-            errors.push('consents');
-        }
-
-        entry.loadedAt = Date.now();
-        entry.loading = false;
-        entry.error = errors.join(',');
-        if (options.refresh !== false && shouldRefreshCurrentStudentDetailTab(key, ['basic'])) {
-            renderStudentDetailTab(key, 'basic');
-        }
-        return getStudentParentContactBundle(key);
-    }).catch(err => {
-        entry.loading = false;
-        entry.error = String(err?.message || err || 'parent contact load failed');
-        return getStudentParentContactBundle(key);
-    }).finally(() => {
-        entry.inFlight = null;
-    });
-
-    entry.inFlight = promise;
-    return promise;
-}
-
-async function ensureStudentParentMessageLogsLoaded(sid, options = {}) {
-    const key = String(sid || '');
-    if (!key) return getStudentParentContactBundle(key);
-
-    const entry = getStudentParentMessageState(key);
-    const force = !!options.force;
-    const maxAgeMs = Number.isFinite(Number(options.maxAgeMs)) ? Number(options.maxAgeMs) : 60 * 1000;
-    if (!force && entry.messagesLoadedAt && (Date.now() - entry.messagesLoadedAt) < maxAgeMs) {
-        return getStudentParentContactBundle(key);
-    }
-    if (entry.messageInFlight) return entry.messageInFlight;
-
-    entry.messageLoading = true;
-    entry.messageError = '';
-    const query = `student_id=${encodeURIComponent(key)}&limit=200`;
-
-    const promise = api.get(`parent-foundation/messages?${query}`)
-        .then(res => {
-            if (res?.success && Array.isArray(res.messages)) {
-                mergeStudentRows('message_logs', key, res.messages);
-                entry.messagesLoadedAt = Date.now();
-                entry.messageError = '';
-            } else {
-                entry.messageError = String(res?.message || res?.error || 'parent message logs load failed');
-            }
-            return getStudentParentContactBundle(key);
-        })
-        .catch(err => {
-            entry.messageError = String(err?.message || err || 'parent message logs load failed');
-            return getStudentParentContactBundle(key);
-        })
-        .finally(() => {
-            entry.messageLoading = false;
-            entry.messageInFlight = null;
-            if (options.refresh !== false && shouldRefreshCurrentStudentDetailTab(key, ['basic'])) {
-                renderStudentDetailTab(key, 'basic');
-            }
-        });
-
-    entry.messageInFlight = promise;
-    return promise;
 }
 
 function resetConsultationAiUiState(mode = '', studentId = '', consultationId = '') {
@@ -1082,8 +916,6 @@ async function openStudentDetail(sid, options = {}) {
                     mergeStudentRows('homework', studentId, detail.homework);
                     mergeStudentRows('wrong_answers', studentId, detail.wrong_answers);
                     mergeStudentRows('school_exam_records', studentId, detail.school_exam_records);
-                    mergeStudentRows('parent_contacts', studentId, detail.parent_contacts);
-                    mergeStudentRows('message_logs', studentId, detail.message_logs);
                     mergeStudentRows('student_status_history', studentId, detail.student_status_history);
                     mergeStudentRows('class_transfer_history', studentId, detail.class_transfer_history);
                 }
@@ -1093,17 +925,10 @@ async function openStudentDetail(sid, options = {}) {
                     state.db.class_daily_records = otherRecords.concat(detail.class_daily_records);
                 }
                 const lazy = getStudentDetailLazyState(studentId);
-                lazy.parent_contacts = Array.isArray(detail.parent_contacts) ? sortParentContacts(detail.parent_contacts) : [];
                 lazy.student_status_history = Array.isArray(detail.student_status_history) ? detail.student_status_history : [];
                 lazy.class_transfer_history = Array.isArray(detail.class_transfer_history) ? detail.class_transfer_history : [];
                 lazy.loadedAt = new Date().toISOString();
                 lazy.error = '';
-                const parentState = getStudentParentMessageState(studentId);
-                parentState.consents = Array.isArray(detail.parent_contact_consents) ? detail.parent_contact_consents : [];
-                parentState.loadedAt = Date.now();
-                parentState.messagesLoadedAt = Date.now();
-                parentState.error = '';
-                parentState.messageError = '';
                 if (typeof ensureEnrollmentFoundationState === 'function') {
                     const enrollmentStore = ensureEnrollmentFoundationState();
                     enrollmentStore.byScope[`student:${studentId}`] = {
@@ -1179,8 +1004,6 @@ async function openStudentDetail(sid, options = {}) {
     if (s.timetable_scope_only !== true) {
         void ensureStudentDetailLazyData(sid, { refresh: false });
         void ensureStudentConsultationsLoaded(sid, { refresh: false });
-        void ensureStudentParentContactDataLoaded(sid, { refresh: false });
-        void ensureStudentParentMessageLogsLoaded(sid, { refresh: false });
         void loadStudentOnboardingDetails(sid, { refresh: false });
     }
 }

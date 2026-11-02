@@ -320,8 +320,6 @@ function mergeStudentScopedRows(tableName, studentId, rows = []) {
 async function loadStudentFoundationDetails(studentId, options = {}) {
     const sid = String(studentId || '').trim();
     if (!sid) return {
-        parent_contacts: [],
-        message_logs: [],
         student_status_history: [],
         class_transfer_history: []
     };
@@ -334,8 +332,6 @@ async function loadStudentFoundationDetails(studentId, options = {}) {
 
     if (!force && cached?.loadedAt && (Date.now() - cached.loadedAt) < maxAgeMs) {
         return cached.rows || {
-            parent_contacts: (state.db.parent_contacts || []).filter(row => String(row?.student_id || '') === sid),
-            message_logs: (state.db.message_logs || []).filter(row => String(row?.student_id || '') === sid),
             student_status_history: (state.db.student_status_history || []).filter(row => String(row?.student_id || '') === sid),
             class_transfer_history: (state.db.class_transfer_history || []).filter(row => String(row?.student_id || '') === sid)
         };
@@ -354,8 +350,6 @@ async function loadStudentFoundationDetails(studentId, options = {}) {
 
     const query = `student_id=${encodeURIComponent(sid)}&limit=${encodeURIComponent(String(limit))}`;
     const targets = [
-        { table: 'parent_contacts', path: `parent-foundation/contacts?${query}`, keys: ['contacts', 'parent_contacts'] },
-        { table: 'message_logs', path: `foundation-logs/messages?${query}`, keys: ['messages', 'message_logs'] },
         { table: 'student_status_history', path: `foundation-logs/status-history?${query}`, keys: ['student_status_history', 'status_history'] },
         { table: 'class_transfer_history', path: `foundation-logs/class-transfers?${query}`, keys: ['class_transfer_history', 'class_transfers'] }
     ];
@@ -385,8 +379,6 @@ async function loadStudentFoundationDetails(studentId, options = {}) {
         })
         .catch(err => {
             const fallback = {
-                parent_contacts: (state.db.parent_contacts || []).filter(row => String(row?.student_id || '') === sid),
-                message_logs: (state.db.message_logs || []).filter(row => String(row?.student_id || '') === sid),
                 student_status_history: (state.db.student_status_history || []).filter(row => String(row?.student_id || '') === sid),
                 class_transfer_history: (state.db.class_transfer_history || []).filter(row => String(row?.student_id || '') === sid)
             };
