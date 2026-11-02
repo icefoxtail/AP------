@@ -683,10 +683,7 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q21_solution_EQUAL_CHORD_CENTER_DISTANCE_R2.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "subUnitClassificationDepth": "complete_candidate"
   },
     {
     "id": 22,
