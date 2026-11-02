@@ -10,7 +10,7 @@
   'use strict';
   const G = window.APL_TR;
   if (!G) return;
-  const { DEG, clamp, pt, add, sub, mul, unit, dist, angBetween, pick, rint, T, rowT, tagOut, ang, tick, line, poly, fillPoly, fit, P, numProb, degOpts, rd, notes, fmtN, dg, bboxOf, fs, LET } = G;
+  const { DEG, clamp, pt, add, sub, mul, unit, dist, angBetween, pick, rint, T, rowT, tagOut, ang, tick, line, poly, fillPoly, fit, P, numProb, degOpts, rd, notes, fmtN, dg, bboxOf, fs, LET, solveCap } = G;
   const sin = (d) => Math.sin(d * DEG), cos = (d) => Math.cos(d * DEG);
   const S = (n) => `$\\overline{${n}}$`;
   const fr = (n, d) => `\\frac{${n}}{${d}}`;
@@ -36,12 +36,110 @@
     }
     return { pts, u };
   }
+
+  /* -------------------------------------------------------------------- 풀이 흐름 (탐구 · 문제 · 풀이) — 이 장면의 문제와 같은 상태·같은 숫자로 풀이합니다.
+     v0: ∠BAC=a 가 주어지고 외각 ∠(마지막 꼭짓점)=x 를 구함 · v1: 외각이 주어지고 ∠BAC=x 를 구함. 풀이 숫자는 모두 이 문제의 숫자입니다. */
+  const c1v = (s) => (s.trV || 0) % 2;
+  const xs = (k) => (k === 1 ? 'x' : k + 'x');
+  const ovl = (i, j) => `\\overline{${nameOf(i)}${nameOf(j)}}`;
+  const c1Solve = {
+    quickTitle: '10초 컷 · 같은 길이 선분이 n개이면 외각 = n × ∠A',
+    quick: (M, s) => {
+      const { n, x: a, ans } = M, v = c1v(s);
+      return {
+        steps: v === 0
+          ? `<p>같은 길이의 선분이 ${n}개 이어져 있으므로 외각은 $\\angle A$의 ${n}배예요.</p><p>$x=${n}\\times${a}^{\\circ}=${ans}^{\\circ}$</p>`
+          : `<p>같은 길이의 선분이 ${n}개 이어져 있으므로 외각은 $\\angle A$의 ${n}배, 곧 $${n}x=${ans}^{\\circ}$예요.</p><p>$x=\\frac{${ans}^{\\circ}}{${n}}=${a}^{\\circ}$</p>`,
+        note: '밑각이 x, 2x, 3x, … 로 한 칸씩 커지므로, 선분의 개수만 세면 바로 알 수 있어요.'
+      };
+    },
+    steps: (M, s) => {
+      const { n, x: a, ans } = M, v = c1v(s), L = nameOf, out = [];
+      const A1 = `\\angle ${L(1)}${L(0)}${L(2)}`, EXT = `\\angle ${L(n)}${L(n - 1)}${L(n + 1)}`, INT = `\\angle ${L(0)}${L(n - 1)}${L(n)}`, LASTB = `\\angle ${L(0)}${L(n)}${L(n - 1)}`;
+      const eqT = Array.from({ length: n }, (_, i) => `\\overline{${L(i)}${L(i + 1)}}`).join('=');
+      const eqP = Array.from({ length: n }, (_, i) => `${L(i)}${L(i + 1)}`).join('=');
+      const val = (k) => (v === 0 ? `${k * a}^{\\circ}` : xs(k)), valP = (k) => (v === 0 ? `${k * a}°` : xs(k));
+      const exP = `∠${L(n)}${L(n - 1)}${L(n + 1)}`, a1P = `∠${L(1)}${L(0)}${L(2)}`;
+      out.push({ k: 'given', t: v === 0 ? `$${eqT}$이고 $${A1}=${a}^{\\circ}$예요. 구하는 것은 $${EXT}=x$.` : `$${eqT}$이고 $${EXT}=${ans}^{\\circ}$예요. 구하는 것은 $${A1}=x$.`, cap: v === 0 ? `${eqP}, ${a1P}=${a}°` : `${eqP}, ${exP}=${ans}°` });
+      out.push({ k: 'idea', t: '이등변삼각형이면 두 밑각이 같고, 외각은 이웃하지 않는 두 내각의 합이에요. 이 둘을 번갈아 써요.', cap: '이등변 → 밑각이 같다, 외각 = 이웃하지 않는 두 내각의 합' });
+      for (let j = 1; j <= n - 1; j++) {
+        if (j === 1) out.push({ k: 'fig', j, lb: '각 구하기', t: `$${ovl(0, 1)}=${ovl(1, 2)}$이므로 △${L(0)}${L(1)}${L(2)}는 이등변삼각형이에요. 두 밑각이 같으므로 $\\angle ${L(1)}${L(2)}${L(0)}=\\angle ${L(1)}${L(0)}${L(2)}=${val(1)}$.`, cap: `${L(0)}${L(1)}=${L(1)}${L(2)} → ∠${L(1)}${L(2)}${L(0)}=∠${L(0)}=${valP(1)}` });
+        else out.push({ k: 'fig', j, lb: '각 구하기', t: `$\\angle ${L(j)}${L(j - 1)}${L(j + 1)}$은 △${L(0)}${L(j - 1)}${L(j)}의 외각이므로 $${A1}+\\angle ${L(0)}${L(j)}${L(j - 1)}=${v === 0 ? `${a}^{\\circ}+${(j - 1) * a}^{\\circ}` : `x+${xs(j - 1)}`}=${val(j)}$. $${ovl(j - 1, j)}=${ovl(j, j + 1)}$이므로 $\\angle ${L(j)}${L(j + 1)}${L(j - 1)}=${val(j)}$.`, cap: `외각 ∠${L(j)}${L(j - 1)}${L(j + 1)}=${v === 0 ? `${a}°+${(j - 1) * a}°` : `x+${xs(j - 1)}`}=${valP(j)} → ∠${L(j)}${L(j + 1)}${L(j - 1)}=${valP(j)}` });
+      }
+      if (v === 0) {
+        out.push({ k: 'eq', t: `$${EXT}$은 △${L(0)}${L(n - 1)}${L(n)}의 외각이므로 $x=${A1}+${LASTB}=${a}^{\\circ}+${(n - 1) * a}^{\\circ}=${ans}^{\\circ}$.`, cap: `x=∠${L(0)}+∠${L(0)}${L(n)}${L(n - 1)}=${a}°+${(n - 1) * a}°=${ans}°` });
+        out.push({ k: 'ans', t: `$x=${ans}^{\\circ}$`, cap: `x = ${ans}°` });
+        out.push({ k: 'trap', t: `$${INT}=180^{\\circ}-${a}^{\\circ}-${(n - 1) * a}^{\\circ}=${180 - ans}^{\\circ}$처럼 안쪽 각을 구하면 안 돼요. $x$는 바깥쪽 각 $${EXT}$이고, 외각은 이웃하지 않는 두 내각의 합이에요. (안쪽 각과 바깥쪽 각의 합은 $180^{\\circ}$)`, cap: `∠${L(0)}${L(n - 1)}${L(n)}=${180 - ans}°는 안쪽 각이라 틀려요 → 바깥쪽 각 x=${ans}°` });
+      } else {
+        out.push({ k: 'eq', t: `$${EXT}=${A1}+${LASTB}=x+${xs(n - 1)}=${xs(n)}$이고 $${EXT}=${ans}^{\\circ}$이므로 $${xs(n)}=${ans}^{\\circ}$, $x=\\frac{${ans}^{\\circ}}{${n}}=${a}^{\\circ}$.`, cap: `x+${xs(n - 1)}=${xs(n)}=${ans}° → x=\\frac{${ans}}{${n}}=${a}°` });
+        out.push({ k: 'ans', t: `$x=${a}^{\\circ}$`, cap: `x = ${a}°` });
+        out.push({ k: 'trap', t: `외각 $${EXT}$를 안쪽 밑각 $${LASTB}=${xs(n - 1)}$와 같다고 놓으면 $${xs(n - 1)}=${ans}^{\\circ}$, $x=\\frac{${ans}^{\\circ}}{${n - 1}}$이 되어 틀려요. 외각은 $x$와 $${xs(n - 1)}$의 합이에요.`, cap: `${xs(n - 1)}=${ans}° 로 놓으면 틀려요 (외각 = x+${xs(n - 1)})` });
+      }
+      return out;
+    },
+    draw(b, s, M, C, ST, idx) {
+      const { n, x: a, pts, ext, ans } = M, v = c1v(s), L = nameOf, cur = idx >= 0 ? ST[idx] : null, K = cur ? cur.k : 'problem';
+      const all = pts.concat([ext, add(pts[n], mul(unit(sub(pts[n], pts[0])), 0.5))]);
+      fit(b, bboxOf(all), { t: 52, b: 96, l: 42, r: 50 });
+      const cen = pt((pts[0].x + pts[n].x) / 2, (pts[0].y + pts[n].y) / 2 + 0.2);
+      const reach = [0, 0];
+      for (let k = 1; k <= n; k++) { const r = (k - 1) % 2; reach[r] = Math.max(reach[r], dist(pts[0], pts[k])); }
+      reach[(n - 2) % 2] = Math.max(reach[(n - 2) % 2], dist(pts[0], ext));
+      [0, 1].forEach((r) => line(b, pts[0], add(pts[0], mul(M.u[r], reach[r] + 0.3)), 'ink', 3, { alpha: 0.75 }));
+      const hiSeg = K === 'given';
+      for (let k = 1; k <= n; k++) { line(b, pts[k - 1], pts[k], hiSeg ? 'sky' : 'ink', hiSeg ? 4.4 : 3.6); tick(b, pts[k - 1], pts[k], 1, 'amber'); }
+      const cols = ['sky', 'green', 'violet'], col = (j) => cols[(j - 1) % 3];
+      const lbl = (k) => (v === 0 ? dg(k * a) : xs(k));
+      const done = idx >= 2 ? Math.min(n - 1, idx - 1) : 0, now = cur && cur.k === 'fig' ? cur.j : 0; // 지금까지 나온 연쇄 단계 수 · 이번 단계
+      const after = idx > n - 0 && idx >= 2 + (n - 1); // 연쇄가 모두 끝난 뒤(식·답·실수)
+      const eqNow = K === 'eq';
+      // 이번 단계에 새로 나오는 이등변삼각형만 색을 칠합니다
+      if (now) fillPoly(b, [pts[now - 1], pts[now], pts[now + 1]], col(now), 0.2);
+      for (let j = 1; j <= done; j++) {
+        const isNow = j === now, fa = isNow ? 0.42 : 0.12;
+        if (j === 1) ang(b, pts[2], pts[1], pts[0], { color: col(1), rings: 1, r: 28, label: lbl(1), size: 15, labelDist: 54, fa });
+        else {
+          // 휴대폰에서는 연쇄가 좁아 두 밑각의 글자가 겹치므로, 같은 호 개수로 같은 각을 보이고 글자는 오른쪽 끝 한 곳에만 씁니다
+          ang(b, pts[j - 1], pts[j], pts[j + 1], { color: col(j), rings: j, r: 28 + (j % 2) * 4, label: b.W < 560 ? '' : lbl(j), size: 15, labelDist: 54, fa });
+          ang(b, pts[j + 1], pts[j], pts[j - 1], { color: col(j), rings: j, r: 28, label: lbl(j), size: 15, labelDist: 54, fa });
+        }
+      }
+      // 주어진 각 / 구하는 각 (문제 그림과 같은 자리)
+      const last = pts[n - 1], A0 = pts[0], first = pts[1], second = pts[2];
+      const Aang = (color, label, fa) => ang(b, A0, first, second, { color, r: 36, label, size: label.length > 1 ? 17 : 18, labelDist: 74, labelRot: -(a / 2 + 12), fa });
+      const Eang = (color, label, fa) => ang(b, last, pts[n], ext, { color, r: 38, label, size: label.length > 1 ? 16 : 18, labelDist: label.length > 3 ? 74 : 62, fa });
+      const ansNow = K === 'ans' || K === 'trap';
+      if (v === 0) {
+        Aang('sky', dg(a), K === 'given' || eqNow ? 0.42 : 0.2);
+        Eang('amber', ansNow ? `x=${ans}°` : 'x', ansNow || eqNow ? 0.42 : 0.2);
+      } else {
+        Aang('amber', ansNow ? `x=${a}°` : 'x', ansNow || eqNow ? 0.42 : 0.2);
+        Eang('sky', dg(ans), K === 'given' || eqNow ? 0.42 : 0.2);
+      }
+      if (eqNow && n >= 2) ang(b, pts[n], pts[n - 1], pts[0], { color: col(n - 1), rings: n - 1, r: 28, fa: 0.42, noMark: false }); // 식에 쓰이는 안쪽 밑각 ∠AED 다시 강조
+      // 흔한 실수 그림
+      if (K === 'trap') {
+        if (v === 0) { // 안쪽 각 ∠(A, last, P_n): 라벨은 바로 앞 선분과 마지막 선분 사이 틈에 둡니다(선과 겹치지 않게)
+          const dr = (p) => Math.atan2(p.y - last.y, p.x - last.x), wr = (d) => ((d + 3 * Math.PI) % (2 * Math.PI)) - Math.PI;
+          const a0 = dr(pts[0]), a1 = dr(pts[n]), ap = dr(pts[Math.max(0, n - 2)]), am = a0 + wr(a1 - a0) / 2, cw = ap + wr(a1 - ap) / 2;
+          ang(b, last, pts[0], pts[n], { color: 'rose', r: 24, label: dg(180 - ans), size: 15, labelDist: 56, labelRot: wr(cw - am) / DEG, fa: 0.3 });
+        }
+        else ang(b, pts[n], pts[n - 1], pts[0], { color: 'rose', r: 28, rings: Math.max(1, n - 1), label: xs(n - 1), size: 15, labelDist: 54, fa: 0.4 });
+      }
+      pts.forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); tagOut(b, p, cen, L(i), { size: 18, gap: 11 }); });
+      b.point(ext, { color: 'ink', r: 3.5 }); T(b, ext, L(n + 1), { dx: 10, dy: -12, size: 18 });
+      void after;
+      if (cur) solveCap(b, pt((pts[0].x + pts[n].x) / 2, 0), cur, { dy: b.W < 560 ? 40 : 52 });
+    }
+  };
+
   const c1 = {
-    id: 't2-1', title: '계단형 연쇄: x → 2x → 3x → …', short: '계단형 연쇄',
+    id: 't2-1', title: '계단형 연쇄: x → 2x → 3x → …', short: '계단형 연쇄', solve: c1Solve,
     question: 'AB=BC=CD=DE처럼 같은 길이의 선분을 두 직선 사이에 번갈아 이어 붙이면, 밑각은 어떻게 커질까?',
     ctl: ['trCn', 'trCx'],
     init: (s) => { s.trCn = 4; s.trCx = 20; s.trV = 0; },
-    reroll: (s) => { s.trCn = pick([3, 4, 4, 5], s.trCn); s.trCx = pick([12, 14, 15, 16, 18, 20], s.trCx); s.trV = (s.trV + 1 + rint(0, 1)) % 2; },
+    reroll: (s) => { s.trCn = pick(window.innerWidth < 560 ? [3, 4, 4] : [3, 4, 4, 5], s.trCn); // 휴대폰에서는 선분 5개 연쇄가 너무 좁아 4개까지만
+      s.trCx = pick([12, 14, 15, 16, 18, 20], s.trCx); s.trV = (s.trV + 1 + rint(0, 1)) % 2; },
     model: (s) => {
       const n = clamp(Math.round(s.trCn), 2, 5), x = clamp(Math.round(s.trCx), 10, 20), { pts, u } = chainPts(x, n);
       const dir = u[(n - 2) % 2], last = pts[n - 1], ext = add(last, mul(dir, 0.6)); // P_{n-1} 에서 반직선 방향으로 연장한 점
@@ -98,7 +196,7 @@
       return out;
     },
     view: (M) => ({
-      guide: '막대로 <b>선분의 수</b>와 <b>∠A=x</b>를 바꿔 보세요. 정리 탭에서 단계를 넘기면 이등변삼각형이 하나씩 켜지며 밑각이 <b>x → 2x → 3x → …</b>로 커져요. 같은 호의 개수 = 같은 각이에요.',
+      guide: '막대로 <b>선분의 수</b>와 <b>∠A=x</b>를 바꿔 보세요. 같은 길이의 선분을 이어 붙이면 밑각이 <b>x → 2x → 3x → …</b>로 한 칸씩 커져요. 같은 호의 개수 = 같은 각이에요. 이 그림으로 문제를 풀어 보고, 풀이 탭에서 단계마다 확인해요.',
       readouts: [rd('∠A = x', `${M.x}°`, 'sky'), rd('같은 길이의 선분', `${M.n}개`, 'sky'), rd('구하는 외각', dg(M.ans), 'amber', `${M.n}x`, null, true)],
       formula: `<p>밑각: $x\\to 2x\\to 3x\\to\\cdots$</p><p>(구하는 외각) $=${M.n}x=${M.n}\\times${M.x}^{\\circ}=${M.ans}^{\\circ}$</p>`,
       rule: '이등변삼각형의 밑각과 외각의 성질을 번갈아 쓰면 밑각이 x, 2x, 3x, …로 한 칸씩 커진다.',

@@ -13,7 +13,7 @@
   'use strict';
   const G = window.APL_TR;
   if (!G) return;
-  const { DEG, clamp, ease, pt, add, sub, mul, unit, mid, dist, angBetween, pick, rint, T, rowT, tagOut, ang, tick, line, poly, fillPoly, fit, P, numProb, mkStmtChoices, degOpts, cmOpts, rd, notes, fmtN, dg, bboxOf, fs, dim } = G;
+  const { DEG, clamp, ease, pt, add, sub, mul, unit, mid, dist, angBetween, pick, rint, T, rowT, tagOut, ang, tick, line, poly, fillPoly, fit, P, numProb, mkStmtChoices, degOpts, cmOpts, rd, notes, fmtN, dg, bboxOf, fs, dim, solveCap } = G;
   const sin = (d) => Math.sin(d * DEG), cos = (d) => Math.cos(d * DEG), tan = (d) => Math.tan(d * DEG);
   const S = (n) => `$\\overline{${n}}$`;
   const fr = (n, d) => `\\frac{${n}}{${d}}`;
@@ -460,8 +460,89 @@
   };
 
   /* ====================================================================== 7. 합동과 넓이 */
+  /* -------------------------------------------------------------------- 풀이 흐름 (탐구 · 문제 · 풀이) — 이 장면의 문제와 같은 상태·같은 숫자로 풀이합니다.
+     v0: △ABC 의 넓이 x · v1: 사다리꼴 BDEC 의 넓이 x. 그림 단계(f): given → idea → cong(합동 찾기) → len(길이) → trapz(사다리꼴) → sub(빼기) → ans → trap(흔한 실수) */
+  const r7Order = ['given', 'idea', 'cong', 'len', 'trapz', 'sub', 'ans', 'trap'];
+  const r7Solve = {
+    quickTitle: '10초 컷 · BD, CE의 길이로 바로 계산',
+    quick: (M, s) => {
+      const { m, n, trap, tri } = M, v = (s.trV || 0) % 2;
+      return v === 0
+        ? { steps: `<p>(사다리꼴) − (합동인 두 삼각형) $=\\frac{(${m}+${n})^2}{2}-${m}\\times${n}=\\frac{${m}^2+${n}^2}{2}$ 이므로</p><p>$\\triangle ABC=\\frac{${m * m}+${n * n}}{2}=${tri}$ (cm²)</p>`, note: '직각이등변삼각형에서 수선의 길이 BD, CE만 알면 넓이는 (BD²+CE²)÷2로 바로 나와요.' }
+        : { steps: `<p>높이 $\\overline{DE}=\\overline{BD}+\\overline{CE}=${m + n}$을 바로 쓰면 $\\frac{(${m}+${n})^2}{2}=${trap}$ (cm²)</p>`, note: '합동을 찾아 DE=BD+CE만 알면 사다리꼴의 넓이는 (BD+CE)²÷2로 바로 나와요.' };
+    },
+    steps: (M, s) => {
+      const { m, n, trap, tri, small } = M, v = (s.trV || 0) % 2, out = [];
+      out.push({ k: 'given', f: 'given', t: `$\\angle A=90^{\\circ}$, $\\overline{AB}=\\overline{AC}$이고 $\\overline{BD}\\perp\\overline{DE}$, $\\overline{CE}\\perp\\overline{DE}$예요. $\\overline{BD}=${m}$ cm, $\\overline{CE}=${n}$ cm. 구하는 것은 ${v === 0 ? '△ABC' : '사다리꼴 BDEC'}의 넓이 $x$.`, cap: `∠A=90°, AB=AC, BD=${m} cm, CE=${n} cm` });
+      out.push({ k: 'idea', f: 'idea', t: v === 0 ? '직각이등변삼각형과 두 직각이 있으면 RHA 합동인 두 삼각형(△ABD, △CAE)이 숨어 있어요.' : '사다리꼴의 높이 DE를 알아야 해요. 직각이등변삼각형과 두 직각 → RHA 합동으로 구해요.', cap: '직각이등변 + 두 직각 → RHA 합동 찾기' });
+      out.push({ k: 'fig', f: 'cong', lb: '합동 찾기', t: `$\\angle BAD+\\angle CAE=180^{\\circ}-90^{\\circ}=90^{\\circ}$이고 △ABD에서 $\\angle ABD+\\angle BAD=90^{\\circ}$이므로 $\\angle ABD=\\angle CAE$. △ABD와 △CAE에서 $\\angle D=\\angle E=90^{\\circ}$, $\\overline{AB}=\\overline{CA}$, $\\angle ABD=\\angle CAE$이므로 △ABD≡△CAE (RHA 합동).`, cap: '∠ABD=∠CAE, ∠D=∠E=90°, AB=CA → △ABD≡△CAE (RHA)' });
+      out.push({ k: 'fig', f: 'len', lb: '길이 구하기', t: `합동이므로 $\\overline{AE}=\\overline{BD}=${m}$ cm, $\\overline{AD}=\\overline{CE}=${n}$ cm예요. 따라서 $\\overline{DE}=${n}+${m}=${m + n}$ (cm).`, cap: `AE=BD=${m}, AD=CE=${n} → DE=${m + n} cm` });
+      if (v === 0) {
+        out.push({ k: 'eq', f: 'trapz', t: `사다리꼴 BDEC의 넓이는 $\\frac{(${m}+${n})\\times${m + n}}{2}=${trap}$ (cm²). (평행한 두 변은 BD, CE이고 높이는 DE)`, cap: `사다리꼴 BDEC=\\frac{(${m}+${n})×${m + n}}{2}=${trap} cm²` });
+        out.push({ k: 'eq', f: 'sub', t: `합동인 △ABD, △CAE의 넓이의 합은 $2\\times\\frac{${m}\\times${n}}{2}=${small}$ (cm²)이므로 △ABC의 넓이 $x=${trap}-${small}=${tri}$ (cm²).`, cap: `△ABC=${trap}−2×\\frac{${m}×${n}}{2}=${trap}−${small}=${tri} cm²` });
+        out.push({ k: 'ans', f: 'ans', t: `$x=${tri}\\text{ cm}^2$`, cap: `x = ${tri} cm²` });
+        out.push({ k: 'trap', f: 'trap', t: `사다리꼴 BDEC의 넓이 ${trap} cm²를 △ABC의 넓이로 쓰면 안 돼요. 사다리꼴 안에는 합동인 두 직각삼각형(합 ${small} cm²)도 들어 있으니 빼야 해요.`, cap: `사다리꼴 ${trap} cm²는 △ABC가 아니에요 → 두 삼각형 ${small} cm²를 빼요` });
+      } else {
+        out.push({ k: 'eq', f: 'trapz', t: `사다리꼴의 평행한 두 변은 $\\overline{BD}=${m}$, $\\overline{CE}=${n}$이고 높이는 $\\overline{DE}=${m + n}$이므로 $x=\\frac{(${m}+${n})\\times${m + n}}{2}=${trap}$ (cm²).`, cap: `x=\\frac{(${m}+${n})×${m + n}}{2}=${trap} cm²` });
+        out.push({ k: 'ans', f: 'ans', t: `$x=${trap}\\text{ cm}^2$`, cap: `x = ${trap} cm²` });
+        out.push({ k: 'trap', f: 'trap', t: `높이를 $\\overline{BD}=${m}$로 놓고 $\\frac{(${m}+${n})\\times${m}}{2}=${((m + n) * m) / 2}$ (cm²)라고 하면 틀려요. 높이는 두 평행한 변 사이의 거리인 $\\overline{DE}=${m + n}$예요.`, cap: `높이를 BD=${m}로 놓으면 ${((m + n) * m) / 2} cm² (틀려요) → 높이는 DE=${m + n} cm` });
+      }
+      return out;
+    },
+    draw(b, s, M, C, ST, idx) {
+      const { m, n, g, trap, tri } = M, { A, B, C: Cc, D, E } = g, v = (s.trV || 0) % 2, cur = idx >= 0 ? ST[idx] : null, f = cur ? cur.f : 'problem', K = cur ? cur.k : 'problem';
+      const ph = (nm) => r7Order.indexOf(f) >= r7Order.indexOf(nm) && r7Order.indexOf(f) >= 0, at = (nm) => f === nm;
+      fit(b, bboxOf([B, Cc, D, E, pt(-n - 0.5, 0), pt(m + 0.5, 0)]), { t: 54, b: 128, l: 44, r: 44 });
+      const cen = pt((D.x + E.x) / 2, -Math.max(m, n) * 0.5);
+      const same = m === n, colCE = ph('cong') && !same ? 'green' : 'sky';
+      const gv = at('given');
+      // 영역 색칠: 이번 단계에 새로 나오는 것이 가장 진하게
+      if (v === 0 && !ph('trapz')) fillPoly(b, [A, B, Cc], 'amber', 0.16);
+      if (v === 1 && !ph('trapz')) fillPoly(b, [B, D, E, Cc], 'amber', 0.1);
+      if (at('idea')) { fillPoly(b, [A, B, D], 'sky', 0.22); fillPoly(b, [A, Cc, E], 'green', 0.22); }
+      if (at('cong')) { fillPoly(b, [A, B, D], 'sky', 0.34); fillPoly(b, [A, Cc, E], 'green', 0.34); }
+      if (at('len')) { fillPoly(b, [A, B, D], 'sky', 0.2); fillPoly(b, [A, Cc, E], 'green', 0.2); }
+      if (at('trapz')) fillPoly(b, [B, D, E, Cc], 'amber', 0.24);
+      if (at('sub')) { fillPoly(b, [A, B, D], 'green', 0.3); fillPoly(b, [A, Cc, E], 'green', 0.3); fillPoly(b, [A, B, Cc], 'amber', 0.3); }
+      if (at('ans')) { if (v === 0) fillPoly(b, [A, B, Cc], 'amber', 0.36); else fillPoly(b, [B, D, E, Cc], 'amber', 0.3); }
+      if (at('trap')) { if (v === 0) { fillPoly(b, [A, B, Cc], 'amber', 0.2); fillPoly(b, [B, D, E, Cc], 'rose', 0.12); } else fillPoly(b, [B, D, E, Cc], 'amber', 0.14); }
+      line(b, pt(-n - 0.5, 0), pt(m + 0.5, 0), 'ink', 3, { alpha: 0.7 });
+      poly(b, [B, D, E, Cc], 'ink', 3.4); line(b, A, B, 'ink', 3.4); line(b, A, Cc, 'ink', 3.4);
+      if (gv) { [[A, B], [A, Cc], [B, D], [Cc, E]].forEach(([p, q]) => line(b, p, q, 'sky', 4.6)); }
+      if (at('trap') && v === 0) poly(b, [B, D, E, Cc], 'rose', 3.4, { dash: [8, 6] });
+      if (at('trap') && v === 1) line(b, B, D, 'rose', 5.2);
+      ang(b, A, B, Cc, { color: 'amber', r: 28, fa: gv ? 0.5 : 0.2 }); ang(b, D, B, A, { color: 'sky', r: 20, fa: gv ? 0.5 : 0.2 }); ang(b, E, Cc, A, { color: 'sky', r: 20, fa: gv ? 0.5 : 0.2 });
+      tick(b, A, B, 1, 'amber'); tick(b, A, Cc, 1, 'amber');
+      if (at('cong')) { // 같은 각: ∠BAD=∠ACE (호 1개), ∠ABD=∠CAE (호 2개)
+        ang(b, A, D, B, { color: 'sky', r: 34, rings: 1, fa: 0.4 }); ang(b, Cc, A, E, { color: 'sky', r: 34, rings: 1, fa: 0.4 });
+        ang(b, B, A, D, { color: 'green', r: 34, rings: 2, fa: 0.4 }); ang(b, A, Cc, E, { color: 'green', r: 34, rings: 2, fa: 0.4 });
+      }
+      if (ph('len')) { // 합동인 변: BD=AE (눈금 2개), CE=AD (눈금 3개). m=n 이면 네 변이 모두 같아요.
+        const t1 = 2, t2 = same ? 2 : 3;
+        tick(b, B, D, t1, 'sky'); tick(b, A, E, t1, 'sky'); tick(b, Cc, E, t2, colCE); tick(b, D, A, t2, colCE);
+      }
+      const lg = ph('len') ? 16 : 6; // 눈금이 생기면 길이 글자를 눈금 밖으로
+      G.sideTag(b, B, D, pt(0, -2), `${m} cm`, { color: 'sky', size: fs(b, 16), gap: lg }); G.sideTag(b, Cc, E, pt(0, -2), `${n} cm`, { color: colCE, size: fs(b, 16), gap: lg });
+      if (ph('len')) {
+        G.sideTag(b, A, E, pt(0, -5), `${m} cm`, { color: 'sky', size: fs(b, 16), gap: 16 }); G.sideTag(b, D, A, pt(0, -5), `${n} cm`, { color: colCE, size: fs(b, 16), gap: 16 });
+        dim(b, D, E, pt(0, -3), `${m + n} cm`, { color: 'amber', size: fs(b, 16), off: 44 });
+      }
+      if (at('sub')) {
+        const ctr = (Q) => pt((Q[0].x + Q[1].x + Q[2].x) / 3, (Q[0].y + Q[1].y + Q[2].y) / 3);
+        T(b, ctr([A, B, D]), `\\frac{${m}×${n}}{2}`, { color: 'green', size: fs(b, 20) }); T(b, ctr([A, Cc, E]), `\\frac{${m}×${n}}{2}`, { color: 'green', size: fs(b, 20) });
+      }
+      [A, B, Cc, D, E].forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
+      tagOut(b, B, cen, 'B', { size: 18 }); tagOut(b, Cc, cen, 'C', { size: 18 }); T(b, A, 'A', { dy: 18, size: 18 }); T(b, D, 'D', { dx: -12, dy: 16, size: 18 }); T(b, E, 'E', { dx: 12, dy: 16, size: 18 });
+      const what = v === 0 ? '△ABC의 넓이' : '사다리꼴 BDEC의 넓이';
+      let txt = `${what} x`, tc = 'amber';
+      if (K === 'ans') txt = `${what} x = ${v === 0 ? tri : trap} cm²`;
+      if (K === 'trap') { if (v === 0) { txt = `사다리꼴 전체 ${trap} cm² (△ABC 아님)`; tc = 'rose'; } else { txt = `${what} x = ${trap} cm²`; } }
+      G.sideTag(b, B, Cc, A, txt, { color: tc, size: fs(b, 15), gap: 8 }); // 변 BC 바깥쪽(선과 겹치지 않게)
+      if (cur) solveCap(b, pt((D.x + E.x) / 2, 0), cur, { dy: ph('len') ? (b.W < 560 ? 84 : 96) : (b.W < 560 ? 62 : 76), size: 16 });
+    }
+  };
   const r7 = {
-    id: 't3-7', title: '합동으로 구하는 넓이', short: '합동과 넓이',
+    id: 't3-7', title: '합동으로 구하는 넓이', short: '합동과 넓이', solve: r7Solve,
     question: '직각이등변삼각형 ABC의 넓이를 BD, CE만으로 구할 수 있을까?',
     ctl: ['trUm', 'trUe'],
     init: (s) => { s.trUm = 4; s.trUe = 2; s.trV = 0; },
@@ -501,7 +582,7 @@
       `△ABC의 넓이 = (사다리꼴 BDEC) − △ABD − △CAE $=${M.trap}-${M.small}=${M.tri}$ (cm²)`
     ],
     view: (M) => ({
-      guide: '막대로 <b>BD</b>와 <b>CE−BD</b>를 바꿔 보세요(두 변의 합이 짝수가 되도록 돼요). 합동인 두 삼각형을 이용하면 <b>직각이등변삼각형의 넓이</b>를 BD, CE만으로 구할 수 있어요.',
+      guide: '막대로 <b>BD</b>와 <b>CE−BD</b>를 바꿔 보세요(두 변의 합이 짝수가 되도록 돼요). 합동인 두 삼각형을 이용하면 <b>직각이등변삼각형의 넓이</b>를 BD, CE만으로 구할 수 있어요. 이 그림으로 문제를 풀어 보고, 풀이 탭에서 단계마다 확인해요.',
       readouts: [rd('BD · CE', `${M.m} cm · ${M.n} cm`, 'sky'), rd('사다리꼴 BDEC', `${M.trap} cm²`, 'sky'), rd('합동인 두 삼각형의 합', `${M.small} cm²`, 'green', 'BD × CE'), rd('△ABC', `${M.tri} cm²`, 'amber', '사다리꼴 − 두 삼각형', null, true)],
       formula: `<p>(사다리꼴) $=${fr(`(${M.m}+${M.n})\\times${M.m + M.n}`, 2)}=${M.trap}$</p><p>$\\triangle ABC=${M.trap}-2\\times${fr(String(M.small), 2)}=${M.tri}$ (cm²)</p>`,
       rule: '합동인 두 직각삼각형으로 DE=BD+CE를 얻고, △ABC = (사다리꼴 BDEC) − 2×(합동인 직각삼각형 하나)이다.',
@@ -510,8 +591,8 @@
     prob: (M, s) => {
       const { m, n, trap, tri, small } = M, v = (s.trV || 0) % 2;
       const ar = (x) => ({ tex: (v2) => `${v2}\\text{ cm}^2`, plain: (v2) => v2 + ' cm²', pad: 2, valid: (v2) => Number.isInteger(v2) && v2 > 0 });
-      if (v === 0) return numProb({ tag: '합동과 넓이 · △ABC', key: `0:${m}:${n}`, stem: `그림에서 $\\angle A=90^{\\circ}$, ${S('AB')}=${S('AC')}이고 $\\overline{BD}\\perp\\overline{DE}$, $\\overline{CE}\\perp\\overline{DE}$이다. ${S('BD')}=${m} cm, ${S('CE')}=${n} cm일 때, △ABC의 넓이 $x$는?`, correct: tri, wrongs: [[trap, '사다리꼴 BDEC의 넓이예요. 두 직각삼각형의 넓이를 빼야 해요.'], [small, '직각삼각형 둘을 더한 넓이예요.'], [small / 2, '직각삼각형 하나의 넓이예요.'], [tri + 2, '다시 계산해 보세요.'], [tri - 2, '다시 계산해 보세요.']].filter((q) => Number.isInteger(q[0])), ...ar() });
-      return numProb({ tag: '합동과 넓이 · 사다리꼴 BDEC', key: `1:${m}:${n}`, stem: `그림에서 $\\angle A=90^{\\circ}$, ${S('AB')}=${S('AC')}이고 $\\overline{BD}\\perp\\overline{DE}$, $\\overline{CE}\\perp\\overline{DE}$이다. ${S('BD')}=${m} cm, ${S('CE')}=${n} cm일 때, 사다리꼴 BDEC의 넓이 $x$는?`, correct: trap, wrongs: [[tri, '△ABC의 넓이예요.'], [m * n, '곱하기만 했어요. 높이는 DE=BD+CE예요.'], [(m + n) * (m + n), '2로 나누지 않았어요.'], [trap + 2, '다시 계산해 보세요.'], [trap - 2, '다시 계산해 보세요.']].filter((q) => Number.isInteger(q[0])), ...ar() });
+      if (v === 0) return numProb({ tag: '합동과 넓이 · △ABC', key: `0:${m}:${n}`, stem: `그림에서 점 A는 ${S('DE')} 위의 점이고 $\\angle A=90^{\\circ}$, ${S('AB')}=${S('AC')}이며 $\\overline{BD}\\perp\\overline{DE}$, $\\overline{CE}\\perp\\overline{DE}$이다. ${S('BD')}=${m} cm, ${S('CE')}=${n} cm일 때, △ABC의 넓이 $x$는?`, correct: tri, wrongs: [[trap, '사다리꼴 BDEC의 넓이예요. 두 직각삼각형의 넓이를 빼야 해요.'], [small, '직각삼각형 둘을 더한 넓이예요.'], [small / 2, '직각삼각형 하나의 넓이예요.'], [tri + 2, '다시 계산해 보세요.'], [tri - 2, '다시 계산해 보세요.']].filter((q) => Number.isInteger(q[0])), ...ar() });
+      return numProb({ tag: '합동과 넓이 · 사다리꼴 BDEC', key: `1:${m}:${n}`, stem: `그림에서 점 A는 ${S('DE')} 위의 점이고 $\\angle A=90^{\\circ}$, ${S('AB')}=${S('AC')}이며 $\\overline{BD}\\perp\\overline{DE}$, $\\overline{CE}\\perp\\overline{DE}$이다. ${S('BD')}=${m} cm, ${S('CE')}=${n} cm일 때, 사다리꼴 BDEC의 넓이 $x$는?`, correct: trap, wrongs: [[tri, '△ABC의 넓이예요.'], [m * n, '곱하기만 했어요. 높이는 DE=BD+CE예요.'], [(m + n) * (m + n), '2로 나누지 않았어요.'], [trap + 2, '다시 계산해 보세요.'], [trap - 2, '다시 계산해 보세요.']].filter((q) => Number.isInteger(q[0])), ...ar() });
     },
     verify: (s) => { const M = r7.model(s), g = M.g; return { ans: G.polyArea([g.B, g.D, g.E, g.C].map((p) => pt(p.x, p.y))) * -1, model: M.trap, extra: [[Math.abs(G.polyArea([g.A, g.B, g.C])), M.tri], [angBetween(g.A, g.B, g.C), 90]] }; }
   };

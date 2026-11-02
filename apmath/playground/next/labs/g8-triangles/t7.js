@@ -11,7 +11,7 @@
   'use strict';
   const G = window.APL_TR;
   if (!G) return;
-  const { DEG, clamp, pt, add, sub, mul, unit, mid, dist, polar, angBetween, pick, rint, T, rowT, tagOut, ang, tick, line, poly, fillPoly, fit, P, numProb, mkStmtChoices, mkTextChoices, degOpts, cmOpts, rd, notes, fmtN, dg, bboxOf, fs, dim, foot, circumcenter, incenter, triBC } = G;
+  const { DEG, clamp, pt, add, sub, mul, unit, mid, dist, polar, angBetween, pick, rint, T, rowT, tagOut, ang, tick, line, poly, fillPoly, fit, P, numProb, mkStmtChoices, mkTextChoices, degOpts, cmOpts, rd, notes, fmtN, dg, bboxOf, fs, dim, foot, circumcenter, incenter, triBC, solveCap } = G;
   const sin = (d) => Math.sin(d * DEG), cos = (d) => Math.cos(d * DEG);
   const S = (n) => `$\\overline{${n}}$`;
   const fr = (n, d) => `\\frac{${n}}{${d}}`;
@@ -35,8 +35,116 @@
     const h = 1 / Math.tan((a * DEG) / 2), B = pt(-1, 0), Cc = pt(1, 0), A = pt(0, -h);
     return { A, B, C: Cc, O: circumcenter(A, B, Cc), I: incenter(A, B, Cc) };
   }
+  /* -------------------------------------------------------------------- 풀이 흐름 (탐구 · 문제 · 풀이) — 이 장면의 문제와 같은 상태·같은 숫자로 풀이합니다.
+     묻는 것(kind): obi=∠OBI · obc=∠OBC · diff=∠BOC와 ∠BIC의 차 · ibc=∠IBC(정삼각형일 때). 그림 단계(f): given → idea → base → in/oc → eq → ans → trap */
+  const t7kind = (M, s) => (M.obi === 0 ? 'ibc' : ['obi', 'obc', 'diff'][(s.trV || 0) % 3]);
+  const m1Solve = {
+    steps: (M, s) => {
+      const { a, b: bb, obc, ibc, obi, boc, bic } = M, kind = t7kind(M, s), out = [];
+      const ask = { obi: '$\\angle OBI$', obc: '$\\angle OBC$', diff: '$\\angle BOC$와 $\\angle BIC$의 크기의 차', ibc: '$\\angle IBC$' }[kind];
+      const bigOBC = obc >= ibc;
+      out.push({ k: 'given', f: 'given', t: `$\\overline{AB}=\\overline{AC}$인 이등변삼각형 ABC의 외심 O, 내심 I이고 $\\angle A=${a}^{\\circ}$예요. 구하는 것은 ${ask} $x$.`, cap: `AB=AC, ∠A=${a}°, O 외심, I 내심` });
+      const idea = {
+        obi: '외심 O에서는 $\\angle BOC=2\\angle A$, 내심 I에서는 BI가 $\\angle B$의 이등분선이에요. 두 각 $\\angle OBC$, $\\angle IBC$를 구해 차를 구해요.',
+        obc: '외심 O는 세 꼭짓점에서 같은 거리에 있어 △OBC가 이등변삼각형이고, $\\angle BOC=2\\angle A$예요.',
+        diff: '외심 O에서는 $\\angle BOC=2\\angle A$, 내심 I에서는 $\\angle BIC=90^{\\circ}+\\frac{1}{2}\\angle A$예요. 두 값을 구해 차를 구해요.',
+        ibc: '내심 I는 세 각의 이등분선의 교점이므로 BI는 $\\angle B$를 이등분해요.'
+      }[kind];
+      const ideaCap = { obi: '외심: ∠BOC=2∠A · 내심: BI는 ∠B의 이등분선', obc: '외심 → OB=OC, ∠BOC=2∠A', diff: '외심: ∠BOC=2∠A · 내심: ∠BIC=90°+\\frac{1}{2}∠A', ibc: '내심 → BI는 ∠B를 이등분' }[kind];
+      out.push({ k: 'idea', f: 'idea', t: idea, cap: ideaCap });
+      const base = { k: 'fig', f: 'base', lb: '각 구하기', t: `$\\overline{AB}=\\overline{AC}$이므로 $\\angle B=\\angle C=\\frac{180^{\\circ}-${a}^{\\circ}}{2}=${bb}^{\\circ}$.`, cap: `AB=AC → ∠B=∠C=\\frac{180−${a}}{2}=${bb}°` };
+      const oc = { k: 'fig', f: 'oc', lb: '외심', t: kind === 'diff' ? `외심 O에서 $\\angle BOC=2\\angle A=2\\times${a}^{\\circ}=${boc}^{\\circ}$.` : `외심 O에서 $\\angle BOC=2\\angle A=${boc}^{\\circ}$이고 $\\overline{OB}=\\overline{OC}$예요.`, cap: kind === 'diff' ? `∠BOC=2∠A=${boc}°` : `∠BOC=2∠A=${boc}°, OB=OC` };
+      const inn = { k: 'fig', f: 'in', lb: '내심', t: kind === 'diff' ? `내심 I에서 $\\angle IBC=\\angle ICB=\\frac{1}{2}\\times${bb}^{\\circ}=${ibc}^{\\circ}$이므로 $\\angle BIC=180^{\\circ}-2\\times${ibc}^{\\circ}=${bic}^{\\circ}$ ($=90^{\\circ}+\\frac{1}{2}\\angle A$).` : kind === 'ibc' ? `BI는 $\\angle B$의 이등분선이므로 $\\angle ABI=\\angle IBC$예요.` : `내심 I에서 BI는 $\\angle B$의 이등분선이므로 $\\angle IBC=\\frac{1}{2}\\angle B=\\frac{1}{2}\\times${bb}^{\\circ}=${ibc}^{\\circ}$.`, cap: kind === 'diff' ? `∠IBC=∠ICB=${ibc}° → ∠BIC=180−2×${ibc}=${bic}°` : kind === 'ibc' ? 'BI는 ∠B의 이등분선 → ∠ABI=∠IBC' : `BI는 ∠B의 이등분선 → ∠IBC=\\frac{1}{2}×${bb}°=${ibc}°` };
+      if (kind === 'obi') {
+        out.push(base, { ...oc, t: `외심 O에서 $\\angle BOC=2\\angle A=${boc}^{\\circ}$이고 △OBC는 $\\overline{OB}=\\overline{OC}$인 이등변삼각형이므로 $\\angle OBC=\\frac{180^{\\circ}-${boc}^{\\circ}}{2}=${obc}^{\\circ}$.`, cap: `∠BOC=2∠A=${boc}°, OB=OC → ∠OBC=\\frac{180−${boc}}{2}=${obc}°` }, inn);
+        out.push({ k: 'eq', f: 'eq', t: `BO, BI는 모두 $\\angle B$ 안에 있으므로 $x=\\angle OBI=${bigOBC ? `\\angle OBC-\\angle IBC=${obc}^{\\circ}-${ibc}^{\\circ}` : `\\angle IBC-\\angle OBC=${ibc}^{\\circ}-${obc}^{\\circ}`}=${obi}^{\\circ}$.`, cap: `x=${bigOBC ? `∠OBC−∠IBC=${obc}°−${ibc}°` : `∠IBC−∠OBC=${ibc}°−${obc}°`}=${obi}°` });
+        out.push({ k: 'ans', f: 'ans', t: `$x=${obi}^{\\circ}$`, cap: `x = ${obi}°` });
+        out.push({ k: 'trap', f: 'trap', t: `$\\angle BOC=2\\angle A=${boc}^{\\circ}$는 외심의 성질이고, 내심은 $\\angle BIC=90^{\\circ}+\\frac{1}{2}\\angle A=${bic}^{\\circ}$예요. 내심 I에 $2\\angle A$를 쓰면 $\\angle IBC=\\frac{180^{\\circ}-${boc}^{\\circ}}{2}=${obc}^{\\circ}$가 되어 외심의 $\\angle OBC$와 같아져 버려요.`, cap: `O는 2∠A=${boc}°, I는 90°+\\frac{1}{2}∠A=${bic}° — 서로 바꿔 쓰면 틀려요` });
+      } else if (kind === 'obc') {
+        out.push(oc, { k: 'eq', f: 'eq', t: `△OBC에서 $\\angle OBC=\\frac{180^{\\circ}-\\angle BOC}{2}=\\frac{180^{\\circ}-${boc}^{\\circ}}{2}=${obc}^{\\circ}$ ($=90^{\\circ}-\\angle A$).`, cap: `x=∠OBC=\\frac{180−${boc}}{2}=${obc}°` });
+        out.push({ k: 'ans', f: 'ans', t: `$x=${obc}^{\\circ}$`, cap: `x = ${obc}°` });
+        out.push({ k: 'trap', f: 'trap', t: `$\\angle B=${bb}^{\\circ}$를 $\\angle OBC$로 착각하면 안 돼요. $\\angle B$는 BA와 BC 사이의 각이고, $\\angle OBC$는 BO와 BC 사이의 각이에요.`, cap: `∠B=${bb}°는 ∠OBC가 아니에요 → ∠OBC=${obc}°` });
+      } else if (kind === 'diff') {
+        out.push(base, inn, oc);
+        out.push({ k: 'eq', f: 'eq', t: `$x=${boc >= bic ? `\\angle BOC-\\angle BIC=${boc}^{\\circ}-${bic}^{\\circ}` : `\\angle BIC-\\angle BOC=${bic}^{\\circ}-${boc}^{\\circ}`}=${Math.abs(boc - bic)}^{\\circ}$.`, cap: `x=${boc >= bic ? `∠BOC−∠BIC=${boc}°−${bic}°` : `∠BIC−∠BOC=${bic}°−${boc}°`}=${Math.abs(boc - bic)}°` });
+        out.push({ k: 'ans', f: 'ans', t: `$x=${Math.abs(boc - bic)}^{\\circ}$`, cap: `x = ${Math.abs(boc - bic)}°` });
+        out.push({ k: 'trap', f: 'trap', t: `$\\angle BOC=2\\angle A=${boc}^{\\circ}$는 외심에서만, $\\angle BIC=90^{\\circ}+\\frac{1}{2}\\angle A=${bic}^{\\circ}$는 내심에서만 성립해요. 둘을 바꿔 쓰면 두 각이 같아져 차가 0이 돼요.`, cap: `O는 2∠A=${boc}°, I는 90°+\\frac{1}{2}∠A=${bic}° — 서로 바꿔 쓰면 틀려요` });
+      } else {
+        out.push(base, inn, { k: 'eq', f: 'eq', t: `$x=\\angle IBC=\\frac{1}{2}\\angle B=\\frac{1}{2}\\times${bb}^{\\circ}=${ibc}^{\\circ}$.`, cap: `x=∠IBC=\\frac{1}{2}×${bb}°=${ibc}°` });
+        out.push({ k: 'ans', f: 'ans', t: `$x=${ibc}^{\\circ}$`, cap: `x = ${ibc}°` });
+        out.push({ k: 'trap', f: 'trap', t: `$\\angle B=${bb}^{\\circ}$를 그대로 $\\angle IBC$로 쓰면 안 돼요. BI는 $\\angle B$를 이등분하므로 $\\angle IBC$는 $\\angle B$의 절반이에요.`, cap: `∠B=${bb}°는 ∠IBC가 아니에요 → ∠IBC=${ibc}°` });
+      }
+      return out;
+    },
+    draw(b, s, M, C, ST, idx) {
+      const { a, b: bb, obc, ibc, obi, boc, bic, g } = M, { A, B, C: Cc, O, I } = g, kind = t7kind(M, s), same = M.same;
+      const cur = idx >= 0 ? ST[idx] : null, f = cur ? cur.f : 'problem', K = cur ? cur.k : 'problem';
+      const seen = new Set(idx >= 0 ? ST.slice(0, idx + 1).map((x) => x.f) : []), at = (x) => f === x, has = (x) => seen.has(x) && K !== 'trap'; // 흔한 실수 그림은 앞 단계 표시를 걷고 그 주장만 보여 줍니다
+      fit(b, bboxOf([A, B, Cc, O, I]), { t: 50, b: b.W < 560 ? 96 : 118, l: 54, r: 54 });
+      const k = b.k || 60, lf = fs(b, 14), gv = at('given'), px = (n) => n / k;
+      const oUp = O.y <= I.y, close = !same && Math.abs(I.y - O.y) * k < 84; // O·I 가 가까우면 위쪽 점의 각 글자는 점 위에, 아래쪽 점의 각 글자는 점 아래에 둡니다
+      const rotO = close && oUp ? 180 : 0, rotI = close && !oUp ? 180 : 0;
+      if (at('idea')) { if (kind !== 'ibc') fillPoly(b, [O, B, Cc], 'rose', 0.16); if (kind !== 'obc') fillPoly(b, [I, B, Cc], 'green', 0.16); }
+      fillPoly(b, [A, B, Cc], 'sky', 0.08); poly(b, [A, B, Cc], 'ink', 3.6); tick(b, A, B, 1, 'amber'); tick(b, A, Cc, 1, 'amber');
+      if (gv) { line(b, A, B, 'sky', 4.6); line(b, A, Cc, 'sky', 4.6); }
+      line(b, B, O, 'rose', 3); line(b, Cc, O, 'rose', 3); line(b, A, mid(B, Cc), 'ink', 2, { dash: [6, 5], alpha: 0.5 });
+      line(b, B, I, 'green', 3, { dash: [7, 5] }); line(b, Cc, I, 'green', 3, { dash: [7, 5] });
+      ang(b, A, B, Cc, { color: 'sky', r: 34, label: dg(a), size: 16, labelDist: 56, fa: gv ? 0.5 : 0.2 });
+      // 밑각 ∠B=∠C: 글자는 꼭짓점 바깥쪽(삼각형 밖)에 둡니다
+      if (has('base')) {
+        const fa = at('base') ? 0.42 : 0.14;
+        ang(b, B, Cc, A, { color: 'sky', r: 30, fa }); ang(b, Cc, B, A, { color: 'sky', r: 30, fa });
+        T(b, B, dg(bb), { dx: -36, dy: -12, size: lf, color: 'sky' }); T(b, Cc, dg(bb), { dx: 36, dy: -12, size: lf, color: 'sky' });
+      }
+      // 외심: ∠BOC=2∠A, OB=OC
+      if (has('oc')) {
+        const fa = at('oc') ? 0.42 : 0.14;
+        ang(b, O, B, Cc, { color: 'rose', r: close && oUp ? 22 : 24, label: dg(boc), size: lf, labelDist: rotO ? 40 : 46, labelRot: rotO, fa });
+        tick(b, O, B, 2, 'rose'); tick(b, O, Cc, 2, 'rose');
+        if (kind === 'obi') { ang(b, B, Cc, O, { color: 'rose', r: 26, label: dg(obc), size: lf, labelDist: 126, fa }); ang(b, Cc, B, O, { color: 'rose', r: 26, rings: 2, fa }); }
+      }
+      if (kind === 'obc' && has('eq')) { const fa = at('eq') ? 0.42 : 0.2; ang(b, B, Cc, O, { color: 'rose', r: 26, label: K === 'eq' ? dg(obc) : '', size: lf, labelDist: 118, fa }); ang(b, Cc, B, O, { color: 'rose', r: 26, rings: 2, fa }); }
+      // 내심: BI 는 ∠B 의 이등분선 (같은 각 표시)
+      if (has('in')) {
+        const fa = at('in') ? 0.42 : 0.14, showV = kind !== 'ibc' || has('eq');
+        ang(b, B, Cc, I, { color: 'green', r: 38, rings: 1, label: showV ? dg(ibc) : '', size: lf, labelDist: 90, fa }); ang(b, B, I, A, { color: 'green', r: 38, rings: 1, fa });
+        ang(b, Cc, B, I, { color: 'green', r: 38, rings: 1, fa }); ang(b, Cc, I, A, { color: 'green', r: 38, rings: 1, fa });
+        if (kind === 'diff') ang(b, I, B, Cc, { color: 'green', r: close && !oUp ? 22 : 30, rings: 1, label: dg(bic), size: lf, labelDist: rotI ? 40 : 56, labelRot: rotI, fa });
+      }
+      // 구하는 각 x (문제 그림과 같은 자리)
+      const xv = kind === 'obi' ? obi : kind === 'obc' ? obc : kind === 'diff' ? Math.abs(boc - bic) : ibc;
+      const xl = K === 'ans' || K === 'trap' ? `x=${xv}°` : 'x', xfa = K === 'eq' || K === 'ans' || K === 'trap' ? 0.4 : 0.22, xs = K === 'ans' || K === 'trap' ? 19 : 18;
+      if (kind === 'ibc') { if (!has('in')) ang(b, B, I, Cc, { color: 'amber', r: 38, label: xl, size: xs, labelDist: 60, fa: xfa }); else if (K === 'ans' || K === 'trap') T(b, B, xl, { dx: 86, dy: -40, size: xs, color: 'amber' }); }
+      else if (kind === 'obi') {
+        // ∠OBI 는 작은 각이라 글자를 선 밖으로 빼고 짧은 선으로 이어요
+        const th = -(obc + ibc) / 2 * DEG, from = pt(B.x + px(100) * Math.cos(th), B.y + px(100) * Math.sin(th)), to = pt(from.x + px(6), from.y - px(30));
+        ang(b, B, O, I, { color: 'amber', r: 52, fa: xfa });
+        if (K !== 'trap') { line(b, from, to, 'amber', 1.8); T(b, to, xl, { dx: 4, dy: -12, size: xs, color: 'amber' }); }
+      } else if (kind === 'obc') { if (!has('eq')) ang(b, B, O, Cc, { color: 'amber', r: 34, label: xl, size: xs, labelDist: 52, fa: xfa }); else if (K === 'ans' || K === 'trap') T(b, B, xl, { dx: 86, dy: -46, size: xs, color: 'amber' }); }
+      else {
+        if (!has('oc') && K !== 'trap') ang(b, O, B, Cc, { color: 'rose', r: close && oUp ? 22 : 24, label: '∠BOC', size: 13, labelDist: rotO ? 40 : 46, labelRot: rotO, fa: 0.2 });
+        if (!has('in') && K !== 'trap') ang(b, I, B, Cc, { color: 'green', r: close && !oUp ? 22 : 30, label: '∠BIC', size: 13, labelDist: rotI ? 40 : 56, labelRot: rotI, fa: 0.2 });
+        if (!cur) T(b, pt(0, 0), 'x = ∠BOC와 ∠BIC의 차', { dy: 32, size: fs(b, 16), color: 'amber' });
+      }
+      // 흔한 실수 그림
+      if (K === 'trap') {
+        if (kind === 'obc' || kind === 'ibc') ang(b, B, Cc, A, { color: 'rose', r: 46, label: `∠B=${bb}°`, size: lf, labelDist: 74, fa: 0.3 });
+        else {
+          ang(b, O, B, Cc, { color: 'rose', r: close && oUp ? 22 : 24, label: `2∠A=${boc}°`, size: lf, labelDist: rotO ? 40 : 46, labelRot: rotO, fa: 0.3 });
+          ang(b, I, B, Cc, { color: 'green', r: close && !oUp ? 22 : 30, label: `90°+\\frac{1}{2}∠A=${bic}°`, size: lf, labelDist: rotI ? 40 : 60, labelRot: rotI, fa: 0.3 });
+        }
+      }
+      b.point(O, { color: 'rose', r: 5.5 }); b.point(I, { color: 'green', r: 5.5 }); [A, B, Cc].forEach((z) => b.point(z, { color: 'ink', r: 4.5 }));
+      if (same) T(b, O, 'O = I', { dx: 26, dy: 0, size: 16, color: 'rose' }); else { // 이름은 점의 오른쪽 위에(변·선이 아래로 뻗으므로). 아주 가까우면 아래쪽 점의 이름만 조금 내려요
+        const tight = close && Math.abs(I.y - O.y) * k < 34;
+        T(b, O, 'O', { dx: 16, dy: tight && !oUp ? -2 : -14, size: 17, color: 'rose' }); T(b, I, 'I', { dx: 16, dy: tight && oUp ? -2 : -14, size: 17, color: 'green' });
+      }
+      tagOut(b, A, O, 'A', { size: 18 }); tagOut(b, B, O, 'B', { size: 18 }); tagOut(b, Cc, O, 'C', { size: 18 });
+      if (cur) solveCap(b, pt(0, 0), cur, { dy: 46, size: 15 });
+    }
+  };
   const m1 = {
-    id: 't7-1', title: '이등변삼각형의 외심 O와 내심 I', short: '이등변삼각형의 O와 I',
+    id: 't7-1', title: '이등변삼각형의 외심 O와 내심 I', short: '이등변삼각형의 O와 I', solve: m1Solve,
     question: '이등변삼각형 ABC의 외심 O와 내심 I는 모두 대칭축 위에 있어요. ∠OBI는 얼마일까?',
     ctl: ['trMa'],
     init: (s) => { s.trMa = 52; s.trV = 0; },
@@ -83,7 +191,7 @@
       M.same ? `$\\angle OBC=\\angle IBC$이므로 O와 I가 같은 점이에요 (정삼각형).` : `$\\angle OBI=|\\angle OBC-\\angle IBC|=|${M.obc}^{\\circ}-${M.ibc}^{\\circ}|=${M.obi}^{\\circ}$예요.`
     ],
     view: (M) => ({
-      guide: '막대로 <b>꼭지각 ∠A</b>를 바꿔 보세요. 외심 O는 <b>∠BOC=2∠A</b>를, 내심 I는 <b>∠BIC=90°+½∠A</b>를 만족해요. ∠A=60°(정삼각형)일 때 O와 I가 같은 점이 돼요.',
+      guide: '막대로 <b>꼭지각 ∠A</b>를 바꿔 보세요. 외심 O는 <b>∠BOC=2∠A</b>를, 내심 I는 <b>∠BIC=90°+½∠A</b>를 만족해요. ∠A=60°(정삼각형)일 때 O와 I가 같은 점이 돼요. 이 그림으로 문제를 풀어 보고, 풀이 탭에서 단계마다 확인해요.',
       readouts: [rd('∠B = ∠C', `${M.b}°`, 'sky'), rd('∠OBC · ∠IBC', `${M.obc}° · ${M.ibc}°`, 'rose'), rd('∠BOC · ∠BIC', `${M.boc}° · ${M.bic}°`, 'green'), rd('∠OBI', `${M.obi}°`, 'amber', '|∠OBC − ∠IBC|', null, true)],
       formula: `<p>$\\angle OBC=90^{\\circ}-\\angle A=${M.obc}^{\\circ}$, $\\angle IBC=${fr('1', 2)}\\angle B=${M.ibc}^{\\circ}$</p><p>$\\angle OBI=|${M.obc}^{\\circ}-${M.ibc}^{\\circ}|=${M.obi}^{\\circ}$</p>`,
       rule: '외심: ∠BOC=2∠A (△OBC는 이등변삼각형), 내심: ∠BIC=90°+½∠A, ∠IBC=½∠B. 두 각의 차로 ∠OBI를 구한다.',
