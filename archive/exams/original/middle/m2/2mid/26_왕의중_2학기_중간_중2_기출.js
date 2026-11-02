@@ -840,7 +840,7 @@ window.questionBank = [
       "$50\\text{ cm}^2$"
     ],
     "answer": "②",
-    "solution": "$2DF=3FC$이므로 $DF:FC=3:2$이다. 직사각형의 가로를 $w$, 세로 $DC$를 $h$라 두고 $A=(0,h)$, $D=(w,h)$, $C=(w,0)$, $F=(w,2h/5)$로 놓는다. 직선 $AF$의 기울기는 $\\frac{2h/5-h}{w}=-\\frac{3h}{5w}$이다. 따라서 $y=0$과 만나는 점은 $E=(5w/3,0)$이고 $CE=2w/3$이다. $\\triangle DFE$의 넓이는 $\\frac12\\cdot DF\\cdot CE=\\frac12\\cdot\\frac{3h}{5}\\cdot\\frac{2w}{3}=\\frac{hw}{5}$. 직사각형 넓이 $hw=160$이므로 $[DFE]=32\\text{ cm}^2$. 정답은 ②이다.",
+    "solution": "$2DF=3FC$이므로 $DF:FC=3:2$이다.\n\n직사각형에서 $AD\\parallel BC$이고, 점 $E$가 $BC$의 연장선 위에 있으므로 $AD\\parallel CE$이다. 또 $A,F,E$와 $D,F,C$는 각각 한 직선 위에 있다.\n\n따라서 $\\angle ADF=\\angle ECF=90^\\circ$이고, $\\angle AFD=\\angle EFC$는 맞꼭지각으로 같다. 두 쌍의 대응각이 같으므로\n$$\\triangle ADF\\sim\\triangle ECF\\quad(\\text{AA 닮음})$$\n이다.\n\n닮은 삼각형에서 대응하는 변의 비를 이용하면\n$$AD:CE=DF:FC=3:2$$\n이므로\n$$CE=\\dfrac23 AD$$\n이다.\n\n또 $DC=DF+FC$이고 $DF:FC=3:2$이므로\n$$DF=\\dfrac35 DC$$\n이다.\n\n$\\triangle DFE$에서 밑변을 $DF$로 잡는다. $CE$가 $DC$에 수직이고 $DF$는 $DC$ 위에 있으므로, 점 $E$에서 밑변 $DF$까지의 높이는 $CE$이다.\n\n따라서 넓이는\n$$\\begin{aligned}\n[\\triangle DFE]\n&=\\dfrac12\\times DF\\times CE\\\\\n&=\\dfrac12\\times\\dfrac35 DC\\times\\dfrac23 AD\\\\\n&=\\dfrac15(DC\\times AD)\n\\end{aligned}$$\n이다.\n\n직사각형의 넓이는 $DC\\times AD=160\\text{ cm}^2$이므로\n$$[\\triangle DFE]=\\dfrac15\\times160=32\\text{ cm}^2$$\n이다.\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "category_or_cue_inferred",
