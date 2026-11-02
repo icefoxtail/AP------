@@ -1564,6 +1564,40 @@ test("source rebind re-binds the receipt to changed non-question bytes and keeps
   assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true, "re-run is a no-op replay");
 });
 
+// Rewrites the prior receipt (evidence file) and re-binds the request to its new SHA-256.
+function retargetPriorReceipt(f, mutate) {
+  const full = path.join(f.root, f.receiptRef.path);
+  const receipt = JSON.parse(fs.readFileSync(full, "utf8")); mutate(receipt);
+  fs.writeFileSync(full, j(receipt));
+  const ref = { path: f.receiptRef.path, sha256: hash(fs.readFileSync(full)) };
+  f.request.approval.evidenceRefs = [...f.evidenceRefs, ref]; f.request.approval.sourceRebind.priorReceiptRef = ref;
+}
+
+test("source rebind tolerates a later difficulty intake only with the exact difficulty5 value shapes", t => {
+  const intake = { difficultyBucket: 3, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", legacyLevelCompatibility: "NORMAL" };
+  const prepare = patch => {
+    const f = sourceRebindFixture(t);
+    retargetPriorReceipt(f, receipt => { receipt.appliedRecords[0].difficultyBucket = null; });
+    const meta = f.read(META); Object.assign(meta.records[0], intake, patch); f.put(META, meta);
+    return f;
+  };
+  const good = prepare({});
+  assert.equal(registerReviewedExamV2({ root: good.root, request: good.request }).status, "PASS");
+  for (const bad of [{ difficultyConfidence: "certain" }, { difficultyBoundaryFlag: "B56" }, { legacyLevelCompatibility: "STRONG_CONFLICT" }, { difficultyBucket: 9 }]) {
+    const f = prepare(bad);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /not a valid difficulty5 intake result/);
+  }
+});
+
+test("source rebind refuses a prior receipt that is not the registration of the current approved rows", t => {
+  const renamed = sourceRebindFixture(t);
+  retargetPriorReceipt(renamed, receipt => { receipt.requestId = "some-other-request"; });
+  assert.throws(() => registerReviewedExamV2({ root: renamed.root, request: renamed.request }), /not the registration of the current approved rows/);
+  const unlinked = sourceRebindFixture(t);
+  const meta = unlinked.read(META); meta.records[0].approvalEvidence = []; unlinked.put(META, meta);
+  assert.throws(() => registerReviewedExamV2({ root: unlinked.root, request: unlinked.request }), /not the registration of the current approved rows/);
+});
+
 test("source rebind refuses changed question text, value changes, drifted metadata and an unneeded rebind", t => {
   const text = sourceRebindFixture(t, q => ({ ...q, content: "바뀐 지문" }));
   assert.throws(() => registerReviewedExamV2({ root: text.root, request: text.request }), /fingerprint drift/);

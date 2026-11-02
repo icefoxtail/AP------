@@ -7,6 +7,7 @@ import { execFileSync } from "node:child_process";
 import canonical from "../../archive2-canonical.js";
 import { loadCanonical, buildCompiled, compiledOutputs, buildRegistryIndex } from "./compile-meta-foundation.mjs";
 import { refreshRuntime } from "./reviewed-runtime-summary.mjs";
+import { computeLegacyCompat } from "./register-difficulty5.mjs";
 
 const CANON = "archive/data/meta-foundation/canonical";
 const INDEX = `${CANON}/registry_index.json`;
@@ -1132,6 +1133,9 @@ function loadSourceRebindPrior({ req, source, bytes, rows, read, evidenceRefs })
       prior.examUid !== req.examUid || prior.sourceArchiveFile !== source || prior.totalQuestions !== rows.length ||
       !Array.isArray(prior.appliedRecords) || prior.appliedRecords.length !== rows.length) fail("sourceRebind prior receipt does not match this exam");
   if (prior.sourceRawSha256 === digest(bytes)) fail("sourceRebind unnecessary: source bytes equal the prior receipt");
+  // The prior receipt must be a real registration receipt that the current approved rows were registered from.
+  if (prior.requestId !== path.basename(ref.path, ".json") || rows.some(r => !approved(r) || !(r.approvalEvidence || []).includes(ref.path)))
+    fail("sourceRebind prior receipt is not the registration of the current approved rows");
   return { receipt: prior, records: unique(prior.appliedRecords, "questionUid", "prior receipt UID") };
 }
 
@@ -1272,6 +1276,12 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       const diff5Filled = prior && !Number.isInteger(prior.difficultyBucket) && Number.isInteger(current.difficultyBucket);
       if (!prior || prior.sourceOrdinal !== i + 1 || !eq(diff5Filled ? withoutDiff5(current) : current, diff5Filled ? withoutDiff5(prior) : prior))
         fail(`source rebind: metadata differs from prior receipt: ${current.questionUid}`);
+      // The tolerated difficulty fields must have the exact shape register-difficulty5.mjs writes.
+      if (diff5Filled && !(current.difficultyBucket >= 1 && current.difficultyBucket <= 5 &&
+          ["high", "medium", "low"].includes(current.difficultyConfidence) &&
+          ["NONE", "B12", "B23", "B34", "B45"].includes(current.difficultyBoundaryFlag) &&
+          current.legacyLevelCompatibility === computeLegacyCompat(current.level, current.difficultyBucket)))
+        fail(`source rebind: difficulty fields are not a valid difficulty5 intake result: ${current.questionUid}`);
       const resolvedPrior = resolve(current, tables);
       for (const f of sourceFields) if (Object.hasOwn(q, f) && !eq(q[f], current[f]) &&
           !(f === "subUnit" && q.subUnit === resolvedPrior.sub?.labelKo)) fail(`source rebind: source/approved metadata parity: ${current.questionUid}.${f}`);
