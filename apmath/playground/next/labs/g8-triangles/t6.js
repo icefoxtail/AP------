@@ -554,7 +554,7 @@
     question: '내접원의 접점 D, E, F에서 꼭짓점까지의 거리 AF와 AE, BF와 BD, CD와 CE는 어떤 관계일까?',
     ctl: ['trNx', 'trNy', 'trNz'],
     init: (s) => { s.trNx = 4; s.trNy = 3; s.trNz = 5; s.trV = 0; },
-    reroll: (s) => { s.trNx = rint(2, 8); s.trNy = rint(2, 8); s.trNz = rint(2, 8); s.trV = (s.trV + 1) % 3; },
+    reroll: (s) => { do { s.trNx = rint(2, 8); s.trNy = rint(2, 8); s.trNz = rint(2, 8); } while (s.trNx === s.trNy && s.trNy === s.trNz); /* 세 변이 모두 같은 정삼각형은 변 길이 문제로 의미가 없어요 */ s.trV = (s.trV + 1) % 3; },
     model: (s) => { const x = clamp(Math.round(s.trNx), 2, 8), y = clamp(Math.round(s.trNy), 2, 8), z = clamp(Math.round(s.trNz), 2, 8); return { x, y, z, a: y + z, b: z + x, c: x + y, g: tanGeom(x, y, z) }; },
     draw(b, s, M, C) {
       const { x, y, z, a, b: bb, c, g } = M, { A, B, C: Cc, I, D, E, F } = g, st = C.step, v = (s.trV || 0) % 3;
@@ -793,12 +793,13 @@
   /* ====================================================================== 7. 각의 비 */
   const validTri = (a, b, c) => { const S0 = a + b + c; return [a, b, c].every((q) => (360 * q) % S0 === 0 && (360 * q) / S0 > 90 && (360 * q) / S0 < 180); };
   const VALID = []; for (let a = 1; a <= 8; a++) for (let b = 1; b <= 8; b++) for (let c = 1; c <= 8; c++) if (validTri(a, b, c)) VALID.push([a, b, c]);
+  const VALID_D = VALID.filter((t) => new Set(t).size === 3); // 문제는 세 값이 서로 다른 비만 (5:5:5 처럼 모두 같으면 비 문제가 되지 않아요)
   const n7 = {
     id: 't6-7', title: '∠AIB : ∠BIC : ∠CIA 의 비', short: '각의 비', solve: n7Solve,
     question: '내심 I에서 만든 세 각 ∠AIB, ∠BIC, ∠CIA의 비를 알면 ∠A, ∠B, ∠C를 구할 수 있을까?',
     ctl: ['trNm', 'trNn', 'trNo'],
-    init: (s) => { s.trNm = 3; s.trNn = 3; s.trNo = 4; s.trV = 0; },
-    reroll: (s) => { const p = pick(VALID, null); s.trNm = p[0]; s.trNn = p[1]; s.trNo = p[2]; s.trV = (s.trV + 1) % 2; },
+    init: (s) => { s.trNm = 4; s.trNn = 5; s.trNo = 6; s.trV = 0; },
+    reroll: (s) => { const p = pick(VALID_D, null); s.trNm = p[0]; s.trNn = p[1]; s.trNo = p[2]; s.trV = (s.trV + 1) % 2; },
     model: (s) => {
       const a0 = clamp(Math.round(s.trNm), 1, 8), b0 = clamp(Math.round(s.trNn), 1, 8), c0 = clamp(Math.round(s.trNo), 1, 8);
       let best = VALID[0], bd = 1e9; VALID.forEach((t) => { const d = Math.abs(t[0] - a0) + Math.abs(t[1] - b0) + Math.abs(t[2] - c0); if (d < bd) { bd = d; best = t; } });
@@ -856,7 +857,7 @@
     question: '세 변의 길이 AB, BC, CA를 알면 꼭짓점에서 접점까지의 거리 AF, BD, CE를 구할 수 있을까?',
     ctl: ['trNp', 'trNq', 'trNs'],
     init: (s) => { s.trNp = 9; s.trNq = 7; s.trNs = 8; s.trV = 0; },
-    reroll: (s) => { s.trNp = rint(5, 12); s.trNq = rint(5, 12); s.trNs = rint(3, 20); s.trV = (s.trV + 1) % 3; },
+    reroll: (s) => { let m; do { s.trNp = rint(5, 12); s.trNq = rint(5, 12); s.trNs = rint(3, 20); m = n8.model(s); } while (m.a === m.b && m.b === m.c); /* 세 변이 모두 같은 정삼각형은 변 길이 문제로 의미가 없어요 */ s.trV = (s.trV + 1) % 3; },
     model: (s) => {
       const c = clamp(Math.round(s.trNp), 4, 12), bb = clamp(Math.round(s.trNq), 4, 12);
       let a = clamp(Math.round(s.trNs), 3, 20);

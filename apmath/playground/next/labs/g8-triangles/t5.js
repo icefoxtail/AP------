@@ -123,6 +123,21 @@
   // 각 x 의 글자: 값을 그림 안에 쓸 수 있는 크기(15° 이상)면 값, 아니면 x 만 (값은 그림 아래 한 줄에)
   const xLbl = (X, val, unit = '°') => (X.xVal && (unit !== '°' || val >= 15) ? `${val}${unit}` : 'x');
 
+  // 각 라벨을 두 변 사이 이등분선에서 점 P 쪽(sgn=1) 또는 P 반대쪽(sgn=-1)으로 mag° 돌립니다 (부채꼴 안쪽에 머물게 반각-12° 를 넘지 않아요).
+  const rotTo = (V, A, B, P, mag = 28, sgn = 1) => {
+    const a0 = Math.atan2(A.y - V.y, A.x - V.x), a1 = Math.atan2(B.y - V.y, B.x - V.x), TP = Math.PI * 2;
+    const d = ((a1 - a0 + Math.PI * 3) % TP) - Math.PI, am = a0 + d / 2, ap = Math.atan2(P.y - V.y, P.x - V.x);
+    const df = (((ap - am + Math.PI * 3) % TP) - Math.PI) / DEG, lim = Math.max(0, Math.abs(d) / DEG / 2 - 12);
+    return sgn * (df >= 0 ? 1 : -1) * Math.min(mag, lim);
+  };
+  // P 방향 선(예: 외심과 꼭짓점을 잇는 선) 위에 라벨이 얹히지 않게, P 에서 먼 쪽으로 돌립니다 (P 가 이등분선에서 멀면 0)
+  const awayRot = (V, A, B, P, mag = 30) => {
+    const a0 = Math.atan2(A.y - V.y, A.x - V.x), a1 = Math.atan2(B.y - V.y, B.x - V.x), TP = Math.PI * 2;
+    const d = ((a1 - a0 + Math.PI * 3) % TP) - Math.PI, am = a0 + d / 2, ap = Math.atan2(P.y - V.y, P.x - V.x);
+    return Math.abs((((ap - am + Math.PI * 3) % TP) - Math.PI) / DEG) > 40 ? 0 : rotTo(V, A, B, P, mag, -1);
+  };
+  SVB.rotTo = rotTo;
+
   // 좁은 각(약 25° 미만)의 x: 호는 그대로 두고 글자는 각 바깥에 두어 짧은 선으로 잇습니다. (값은 그림 아래 한 줄에)
   function xOut(b, V, P1, P2, label, o = {}) {
     const k = b.k || 60, a0 = Math.atan2(P1.y - V.y, P1.x - V.x), a1 = Math.atan2(P2.y - V.y, P2.x - V.x);
@@ -182,7 +197,7 @@
           [[D, B, Cc, 1], [E, Cc, A, 2], [F, A, B, 3]].forEach(([Mm, p, q, n]) => { L.ln(O, Mm, 'green', 2.6, { dash: [7, 5] }); L.tk(p, Mm, n, 'amber'); L.tk(Mm, q, n, 'amber'); });
           [A, B, Cc].forEach((z) => L.ln(O, z, 'rose', 3.2));
           if (v === 0) L.sd(O, A, pt(-1, 0), `${M.R} cm`, { color: 'sky', size: fs(X.b, 16), gap: 8, keep: true });
-          if (v === 1) L.ang(O, A, B, { color: 'sky', r: 22, label: dg(180 - 2 * M.z), size: 15, labelDist: 40, labelRot: -52, keep: true });
+          if (v === 1) L.ang(O, A, B, { color: 'sky', r: 22, label: dg(180 - 2 * M.z), size: 15, labelDist: 40, labelRot: -Math.min(52, (180 - 2 * M.z) / 2 - 10), keep: true });
         },
         idea: (L, M) => { const { O, B, C: Cc, A, D, E, F } = M.g; [[D, Cc], [E, A], [F, B]].forEach(([Mm, q]) => { L.ln(O, Mm, 'green', 3.6); L.ang(Mm, O, q, { color: 'green', r: 16 }); }); },
         perp: (L, M) => { const { O, A, B, F } = M.g; L.ln(O, F, 'green', 4.2); L.ang(F, O, B, { color: 'green', r: 18 }); L.tk(A, F, 3, 'amber'); L.tk(F, B, 3, 'amber'); L.ln(O, A, 'rose', 3.8); L.ln(O, B, 'rose', 3.8); },
@@ -246,7 +261,7 @@
           const { O, A, B, C: Cc } = M.g, v = (s.trV || 0) % 3;
           L.ang(Cc, A, B, { color: 'sky', r: 24 }); L.ln(O, Cc, 'rose', 3.2); L.tk(A, O, 1, 'amber'); L.tk(O, B, 1, 'amber');
           if (v === 0) L.dm(A, B, pt(0, -2), `${2 * M.R} cm`, { color: 'sky', size: fs(X.b, 16), off: 28, keep: true });
-          else if (v === 1) L.ang(A, B, Cc, { color: 'sky', r: 36, label: dg(M.al), size: 16, labelDist: 56, labelRot: -62, keep: true });
+          else if (v === 1) L.ang(A, B, Cc, { color: 'sky', r: 36, label: dg(M.al), size: 16, labelDist: 56, keep: true });
           else L.sd(O, Cc, pt(1, 1), `${M.R} cm`, { color: 'sky', size: fs(X.b, 16), gap: 10, keep: true });
         },
         idea: (L, M, s) => { const { O, B, C: Cc } = M.g, v = (s.trV || 0) % 3; if (v === 1) { L.fl([O, B, Cc], 'violet', 0.16); L.ln(O, B, 'rose', 3.6); L.ln(O, Cc, 'rose', 3.6); } else L.circ(O, 1, 'sky', 3.4); },
@@ -259,7 +274,7 @@
           else { L.sd(A, O, pt(0, -2), `${M.R} cm`, { color: 'rose', size: fs(X.b, 16), gap: 10 }); L.sd(O, B, pt(0, -2), `${M.R} cm`, { color: 'rose', size: fs(X.b, 16), gap: 10 }); }
         },
         dia: (L, M, s, X) => { const { A, B } = M.g; L.ln(A, B, 'amber', 5.2); },
-        B: (L, M) => { const { A, B, C: Cc } = M.g; L.ang(B, A, Cc, { color: 'green', r: 34, fa: 0.4 }); L.tx(B, dg(M.be), { dx: 0, dy: 36, size: 15, color: 'green', keep: true }); },
+        B: (L, M) => { const { A, B, C: Cc } = M.g; L.ang(B, A, Cc, { color: 'green', r: 34, label: dg(M.be), size: 15, labelDist: 58, fa: 0.4, keep: true }); },
         iso: (L, M) => { const { O, B, C: Cc } = M.g; L.fl([O, B, Cc], 'amber', 0.14); L.ln(O, B, 'rose', 3.6); L.ln(O, Cc, 'rose', 3.6); L.tk(O, B, 2, 'rose'); L.tk(O, Cc, 2, 'rose'); L.ang(B, Cc, O, { color: 'green', r: 30, fa: 0.4 }); }
       },
       x: (b, M, s, X) => {
@@ -417,8 +432,8 @@
         given: (L, M, s, X) => {
           const { O, A, B, C: Cc } = M.g, v = (s.trV || 0) % 2;
           [B, Cc, A].forEach((z) => L.ln(O, z, 'rose', 3.2));
-          if (v === 0) L.ang(A, B, Cc, { color: 'sky', r: 22, label: dg(M.a), size: 16, labelDist: 34, labelRot: 180, keep: true });
-          else { L.ang(O, B, Cc, { color: 'sky', r: 22 }); L.tx(O, dg(M.boc), { dy: 26, size: 16, color: 'sky', keep: true }); }
+          if (v === 0) L.ang(A, B, Cc, { color: 'sky', r: 22, label: dg(M.a), size: 16, labelDist: 40, labelRot: awayRot(A, B, Cc, O), keep: true });
+          else L.ang(O, B, Cc, { color: 'sky', r: 22, label: dg(M.boc), size: 16, labelDist: 44, labelRot: awayRot(O, B, Cc, A), keep: true });
         },
         iso: (L, M) => { const { O, A, B, C: Cc } = M.g; L.fl([O, A, B], 'sky', 0.14); L.fl([O, A, Cc], 'green', 0.14); [A, B, Cc].forEach((z) => { L.ln(O, z, 'rose', 4); L.tk(O, z, 1, 'rose'); }); },
         base: (L, M) => {
@@ -429,14 +444,14 @@
         ang: (L, M) => { const { O, A, B, C: Cc } = M.g; L.ang(O, A, B, { color: 'sky', r: 24, fa: 0.4 }); L.ang(O, A, Cc, { color: 'green', r: 32, fa: 0.4 }); },
         trap: (L, M, s) => {
           const { O, A, B, C: Cc } = M.g, v = (s.trV || 0) % 2;
-          if (v === 0) L.ang(O, B, Cc, { color: 'rose', r: 34, big: true, label: `2∠A=${2 * M.a}°`, size: 14, labelDist: 62, labelRot: 100, fa: 0.2 }); else L.ang(A, B, Cc, { color: 'rose', r: 30, label: `${M.boc / 2}°`, size: 15, labelDist: 40, labelRot: 180, fa: 0.3 });
+          if (v === 0) L.ang(O, B, Cc, { color: 'rose', r: 34, big: true, label: `2∠A=${2 * M.a}°`, size: 14, labelDist: 62, labelRot: 100, fa: 0.2 }); else L.ang(A, B, Cc, { color: 'rose', r: 30, label: `${M.boc / 2}°`, size: 15, labelDist: 44, labelRot: awayRot(A, B, Cc, O), fa: 0.3 });
         }
       },
       x: (b, M, s, X) => {
         const { O, A, B, C: Cc } = M.g, v = (s.trV || 0) % 2;
         if (v === 1 && X.K === 'trap') return;
-        if (v === 0) { ang(b, O, B, Cc, { color: 'amber', r: 22, noMark: !X.xArc, fa: 0.3 }); T(b, O, xLbl(X, M.boc), { dy: 26, size: 17, color: 'amber' }); }
-        else ang(b, A, B, Cc, { color: 'amber', r: 22, label: xLbl(X, M.a), size: 17, labelDist: 34, labelRot: 180, noMark: !X.xArc, fa: 0.3 });
+        if (v === 0) ang(b, O, B, Cc, { color: 'amber', r: 22, label: xLbl(X, M.boc), size: 17, labelDist: 44, labelRot: awayRot(O, B, Cc, A), noMark: !X.xArc, fa: 0.3 });
+        else ang(b, A, B, Cc, { color: 'amber', r: 22, label: xLbl(X, M.a), size: 17, labelDist: 40, labelRot: awayRot(A, B, Cc, O), noMark: !X.xArc, fa: 0.3 });
       },
       top: (b, M, s, X) => {
         const { O, A, B, C: Cc } = M.g;
