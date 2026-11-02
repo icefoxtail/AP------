@@ -57,6 +57,11 @@
     return { left: tagger(prismMesh(left, y0, y1, { simple: true, smooth: ls })), right: tagger(prismMesh(right, y0, y1, { simple: true, smooth: rs })) };
   }
   // 타일을 왼쪽 끝에 모아 두었다가 오른쪽으로 가로로 펼칩니다(줄마다)
+  // 입체 윗면의 가장 위 모서리보다 위에, 가운데 맞춰 글을 둡니다(입체 선과 겹치지 않게)
+  const topText = (D, y, hx, hz, str, o = {}) => {
+    const sh = o.shift || 0, ps = [[-1, -1], [1, -1], [1, 1], [-1, 1]].flatMap(([i, j]) => [D.P(v3(i * hx, y, j * hz)), D.P(add3(v3(i * hx, y, j * hz), D.hx(sh)))]), x0 = Math.min(...ps.map((q) => q.x)), x1 = Math.max(...ps.map((q) => q.x)), yy = Math.min(...ps.map((q) => q.y));
+    D.b.text({ x: (x0 + x1) / 2, y: yy }, str, Object.assign({ dy: -18, size: D.fs(15), weight: 800, color: 'ink', baseline: 'middle' }, o));
+  };
   function slideTiles(R, te) { R.rows.forEach((L) => { const st = -L.total / 2; L.tiles.forEach((tl) => { tl.x = st + (tl.x - st) * te; }); }); }
   const totalText = (D, R, topY, text) => { const px = D.b.toS({ x: 0, y: topY + R.height }); D.b.stext(px.x, px.y + 50, text, { size: D.fs(15), weight: 800, color: 'green', align: 'center', baseline: 'middle' }); };
 
@@ -84,7 +89,7 @@
         const mix = (p, q) => p + (q - p) * blend;
         D.fit([], [{ x: mix(bb.x0, -R.total / 2), y: mix(bb.y0, rowTop) }, { x: mix(bb.x1, R.total / 2), y: mix(bb.y1, rowTop + R.height + 2.6) }], { l: 36, r: 36, t: 44, b: 40 });
       } else D.fit(pts, R && !narrow ? [{ x: -R.total / 2, y: rowTop }, { x: R.total / 2, y: rowTop + R.height + 2.6 }] : [], { l: 36, r: 36, t: 44, b: 40 });
-      const showSolid = !(narrow && te > 0.35);
+      const showSolid = !(narrow && te > 0.04);
       const lvAll = !C.review ? 1 : st === 1 ? 2 : 1, lvWall = !C.review ? 1 : st === 3 ? 2 : 1;
       if (!showSolid) {
         // 휴대폰: 조각 줄이 펼쳐지는 동안 입체는 물러나요
@@ -111,8 +116,8 @@
         D.tag(v3(-qu / 2, y1, 0), `q=${M.q}`, { dy: -12, size: 15, color: 'red' });
       }
       if (!C.problem) {
-        if (!showSolid) { /* 입체 글자 없음 */ } else if (plain) D.tag(v3(0, y1, 0), `구멍 없는 기둥  S₀ = 2a²+4ah = ${plainVal(M.S0)}`, { dy: -40, size: 15, color: 'ink' });
-        else if (open > 0.3) D.tag(v3(0, y1, 0), `노란 면 = 안쪽 벽 (높이 ${M.h}, 둘레 2πq)`, { dy: -40, size: 14, color: 'amber' });
+        if (!showSolid) { /* 입체 글자 없음 */ } else if (plain) topText(D, y1, A, A, `구멍 없는 기둥  S₀ = 2a²+4ah = ${plainVal(M.S0)}`);
+        else if (open > 0.3) topText(D, y1, A, A, `노란 면 = 안쪽 벽 (높이 ${M.h}, 둘레 2πq)`, { shift: dOpen, size: D.fs(14), color: 'amber' });
         if (R && te > 0.01) {
           slideTiles(R, te);
           const top = rowTop;
@@ -181,7 +186,7 @@
       const rows = narrow && parts.length >= 3 ? [parts.slice(0, 2), parts.slice(2)] : [parts];
       const R = C.problem ? null : G.layoutTileRows(rows, narrow ? 4.6 : 6.4, narrow ? 1.6 : 1.9, 0.7, 1.9);
       const pts = cube8(v3(0, 0, 0), Math.max(A, Hh / 2)), bb = bboxOf(pts.map(D.P)), rowTop = bb.y1 + 0.9;
-      const blend = narrow && R ? ease(lin01(te, 0, 0.4)) : 0, showSolid = !(narrow && te > 0.35);
+      const blend = narrow && R ? ease(lin01(te, 0, 0.4)) : 0, showSolid = !(narrow && te > 0.04);
       if (blend > 0) { const mix = (p, q2) => p + (q2 - p) * blend; D.fit([], [{ x: mix(bb.x0, -R.total / 2), y: mix(bb.y0, rowTop) }, { x: mix(bb.x1, R.total / 2), y: mix(bb.y1, rowTop + R.height + 2.6) }], { l: 36, r: 36, t: 44, b: 40 }); }
       else D.fit(pts, R && !narrow ? [{ x: -R.total / 2, y: rowTop }, { x: R.total / 2, y: rowTop + R.height + 2.6 }] : [], { l: 36, r: 36, t: 44, b: 40 });
       const mats = [];
@@ -293,7 +298,7 @@
       D.elabel(v3(-A, -A, A), v3(A, -A, A), `a=${M.a}`, { side: { x: 0, y: 1 }, size: 15, color: 'amber', gap: 8 });
       if (blist.length) { const bx = blist[0]; D.elabel(add3(v3(bx[0], bx[3], bx[5]), D.hx(sd)), add3(v3(bx[1], bx[3], bx[5]), D.hx(sd)), `p=${M.p}`, { side: { x: 0, y: -1 }, size: 14, color: 'red', gap: 6 }); }
       if (!C.problem) {
-        D.tag(v3(0, A, 0), t < 0.3 && !C.review ? `정육면체 6a² = ${plainVal(M.S0)}` : `겉넓이 6a² = ${plainVal(M.S0)} 그대로`, { dy: -34, size: 15, color: 'ink' });
+        topText(D, A, A, A, t < 0.3 && !C.review ? `정육면체 6a² = ${plainVal(M.S0)}` : `겉넓이 6a² = ${plainVal(M.S0)} 그대로`);
         if (t >= 0.3 || (C.review && st >= 2)) { const bx = blist[0]; D.tag(add3(v3((bx[0] + bx[1]) / 2, (bx[2] + bx[3]) / 2, (bx[4] + bx[5]) / 2), D.hx(sd)), `−3p² = −${plainVal(M.out3)}`, { size: 14, color: 'red', dy: 24 }); }
         if (t >= 0.3 || (C.review && st >= 3)) D.tag(v3(A * 0.55, A * 0.55, A * 0.55), `+3p² = +${plainVal(M.in3)}`, { size: 14, color: 'amber', dy: -2, dx: -8 });
         if (row) {
