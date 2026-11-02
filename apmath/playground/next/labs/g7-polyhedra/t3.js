@@ -24,6 +24,16 @@
   const stepOf = (C) => (C.problem ? 0 : C.review ? C.step : 4);
   const FL = 'ABCDEF'; // 정육면체의 면 이름(전개도에서 위→아래, 왼쪽→오른쪽)
   const camFold = (s, t, kp = 30, ky = -26) => Object.assign({}, s, { phPitch: Math.max(-10, (s.phPitch == null ? 70 : s.phPitch) - kp * t), phYaw: (s.phYaw == null ? 0 : s.phYaw) + ky * t });
+  /* 접은 입체의 겨냥도 시점: 전개도는 위에서(84°) 내려다보고, 접을수록 28°까지 낮춰 입체가 옆에서 보이게 합니다(교과서: 위에서 15~30°).
+     옆으로 도는 각은 접은 입체마다, 꼭짓점·모서리가 포개지지 않는 방위를 점수 탐색으로 정했습니다(정육면체 -22°, 정사면체 -6°, 정팔면체 36°, 정십이면체 -14°, 정이십면체 -30°). */
+  const FOLD_PITCH = 28, FOLD_YAW = { cube: -22, tetra: -6, octa: 36, dodeca: -14, icosa: -30 };
+  const camFoldK = (kind) => (s, t) => camFold(s, t, Math.max(0, (s.phPitch == null ? 70 : s.phPitch) - FOLD_PITCH), FOLD_YAW[kind] != null ? FOLD_YAW[kind] : -22);
+  // 접은 모양(다 접었을 때) 앞면이 하나도 없는 모서리(= 가려진 모서리)의 (면, 꼭짓점 번호) 목록
+  const hiddenEdgesOf = (net, fvis) => {
+    const m = new Map();
+    net.faces.forEach((f, fi) => f.poly.forEach((_, vi) => { const k = net.edgeKey(fi, vi); if (!m.has(k)) m.set(k, { fi, vi, vis: false }); if (fvis[fi]) m.get(k).vis = true; }));
+    return Array.from(m.values()).filter((e) => !e.vis);
+  };
   const CAM0 = { yaw: 0, pitch: 84 };
   const ptName = (n, k) => (n.ptName[k] || String(k + 1));
 
@@ -55,12 +65,20 @@
   // 면을 먼 것부터 불투명하게 그립니다(앞면이 뒤쪽 모서리·글자를 가립니다). col(fi) → {c,a,ec,ew}. 다 접었을 때 보이는 면(vis)도 돌려줍니다(덜 접었으면 모두 true).
   function drawFacesOp(D, net, t, col, edgeAlpha) {
     const faces = net.at(t), fin = t >= 0.97;
-    const vis = faces.map((pts, i) => { if (!fin) return true; const f0 = net.faces[i].poly, sg = Math.sign(cross3(sub3(f0[1], f0[0]), sub3(f0[2], f0[0])).z) || 1; return facing(D.cam, mul3(cross3(sub3(pts[1], pts[0]), sub3(pts[2], pts[0])), -sg)); });
-    faces.map((p, i) => ({ i, d: D.depth(cen3(p)) })).sort((a, c) => c.d - a.d).forEach(({ i }) => {
+    const facingV = faces.map((pts, i) => { const f0 = net.faces[i].poly, sg = Math.sign(cross3(sub3(f0[1], f0[0]), sub3(f0[2], f0[0])).z) || 1; return facing(D.cam, mul3(cross3(sub3(pts[1], pts[0]), sub3(pts[2], pts[0])), -sg)); });
+    const order = faces.map((p, i) => ({ i, d: D.depth(cen3(p)) })).sort((a, c) => c.d - a.d);
+    // 덜 접었을 때: 더 앞에 그려진 면에 한가운데가 가려진 면은 이름을 숨깁니다(뒤쪽 글자가 앞면과 섞이지 않게).
+    const polyOf = faces.map((p) => p.map((q) => D.P(q)));
+    const inPoly = (pt, poly) => { let c = false; for (let a = 0, b2 = poly.length - 1; a < poly.length; b2 = a++) { if ((poly[a].y > pt.y) !== (poly[b2].y > pt.y) && pt.x < ((poly[b2].x - poly[a].x) * (pt.y - poly[a].y)) / (poly[b2].y - poly[a].y) + poly[a].x) c = !c; } return c; };
+    const pos = new Map(order.map((o, k) => [o.i, k]));
+    const vis = faces.map((pts, i) => (fin ? facingV[i] : !order.some((o) => pos.get(o.i) > pos.get(i) && inPoly(D.P(cen3(pts)), polyOf[o.i]))));
+    order.forEach(({ i }) => {
       const st = (col && col(i)) || {};
       D.fill(faces[i], 'stage', 1);
       D.panel(faces[i], st.c || 'green', st.a == null ? 0.1 : st.a, st.ec || 'ink', st.ew || 1.8, { alpha: st.ec ? 1 : edgeAlpha });
     });
+    // 다 접었으면 가려진 모서리를 점선으로(안 보이는 모서리는 점선)
+    if (fin) hiddenEdgesOf(net, vis).forEach((e) => { const pts = faces[e.fi]; D.line(pts[e.vi], pts[(e.vi + 1) % pts.length], 'ink', 1.6, { dash: [6, 5], alpha: 0.55 }); });
     return { faces, vis };
   }
   // 면을 먼 것부터 그립니다(투명). col(fi) → {c,a,ec,ew,alpha}
@@ -115,7 +133,7 @@
   const A1 = {
     id: 'p3-1', title: '정육면체의 전개도 11가지', short: '전개도 11가지',
     question: '정사각형 6개를 이어 붙인 모양 중에서 접으면 정육면체가 되는 것은 몇 가지일까? 접어서 겹치는 면을 찾아보자.',
-    cam0: CAM0, ctl: foldCtl, anim: foldAnim, stepT: (n) => (n >= 2 ? 1 : 0),
+    cam0: CAM0, pmin: FOLD_PITCH, ctl: foldCtl, anim: foldAnim, stepT: (n) => (n >= 2 ? 1 : 0),
     presets: netPresets(CUBE_ALL),
     init: (s) => { initNet(s, CUBE_ALL); s.phQ = rollQ31(); },
     reroll: (s) => { s.phQ = rollQ31(); },
@@ -123,8 +141,8 @@
     draw(b, s, M, C) {
       const st = stepOf(C), t = C.problem ? 1 : C.review ? C.t : (C.thumb ? 0.6 : s.phFold);
       const net = C.problem ? cubeNetOf('a1') : M.net;
-      fitNow(b, s, net, C, { t: C.problem ? 40 : C.thumb ? 5 : 68, b: 18 }, camFold, t);
-      const D = scene3(b, camFold(s, t), C);
+      fitNow(b, s, net, C, { t: C.problem ? 40 : C.thumb ? 5 : 68, b: 18 }, camFoldK('cube'), t);
+      const D = scene3(b, camFoldK('cube')(s, t), C);
       const showBad = !C.problem && !M.valid && t > 0.85;
       const { faces, vis } = drawFacesOp(D, net, t, (i) => (showBad && M.ovl[i] ? { c: RED, a: 0.5, ec: RED, ew: 3 } : { c: 'green', a: C.problem ? 0.16 : 0.14, ec: 'ink', ew: 2 }));
       if (showBad) faces.forEach((p, i) => { if (M.ovl[i]) D.panel(p, RED, 0.2, RED, 3, vis[i] ? {} : { dash: [7, 5] }); }); // 가려져도 겹치는 면이 보이게
@@ -259,7 +277,7 @@
     const net = M.net, fi = M.fi, st = stepOf(C), letters = M.letters;
     const t = C.review ? C.t : C.thumb ? 0.6 : s.phFold;
     const hasTxt = C.txt && !C.thumb;
-    const cams = (tt) => camOf(camFold(s, tt, 44, -28)); // 접을수록 조금 낮은 시점에서 보아 입체로 보이게
+    const cams = (tt) => camOf(camFoldK(net.kind)(s, tt)); // 접을수록 낮은 시점(28°)에서 보아 입체로 보이게
     const flatPts = (tt) => { const cam = cams(tt); return net.at(tt).flat().map((p) => { const q = proj(cam, p); return { x: q.x, y: q.y }; }); };
     const dual = !C.thumb && b.W >= 640;
     // 무엇을 강조할지: 탐구는 고른 것, 정리는 단계마다 한 쌍
@@ -290,7 +308,7 @@
       box = { x0: -cw / 2, x1: cw / 2, y0: -ch / 2, y1: ch / 2 };
     }
     fit(b, box, { t: C.thumb ? 5 : dual ? 100 : 84, b: 22, l: 40, r: 40 });
-    const D = scene3(b, camFold(s, t), C);
+    const D = scene3(b, camFoldK(net.kind)(s, t), C);
     const sg = net.faces.map((f) => (Math.sign(cross3(sub3(f.poly[1], f.poly[0]), sub3(f.poly[2], f.poly[0])).z) || 1));
     const clusters = net.cl.map((_, c) => ({ c, pts: net.pt.map((__, k) => k).filter((k) => net.ptCl[k] === c) }));
     const targets = { pts: [], edges: [] };
@@ -306,6 +324,8 @@
         b.path(poly, { close: true, fill: 'stage', fillAlpha: 1, color: null });
         b.path(poly, { close: true, fill: 'green', fillAlpha: fin && fvis[i] ? 0.16 : 0.1, color: 'ink', width: 2, alpha: anyHi ? 0.72 : 1 });
       });
+      // 다 접었으면 안 보이는 모서리를 점선으로
+      if (fin) hiddenEdgesOf(net, fvis).forEach((e) => b.path([pj(F[e.fi][e.vi]), pj(F[e.fi][(e.vi + 1) % F[e.fi].length])], { color: 'ink', width: 1.6, alpha: 0.55, dash: [6, 5] }));
       const A = (e) => pj(F[e.fi][e.vi]), B = (e) => pj(F[e.fi][e.vj]);
       if (hasTxt) F.forEach((pts, i) => { if (!fin || fvis[i]) pts.forEach((q, j) => edgeObs(D, b.toS(pj(q)), b.toS(pj(pts[(j + 1) % pts.length])))); });
       hiEdges.forEach((e) => { const vis = !fin || fvis[e.fi]; b.path([A(e), B(e)], { color: AMB, width: vis ? 5.4 : 3.6, dash: vis ? undefined : [7, 5] }); });
@@ -438,7 +458,7 @@
     const specs = o.specs;
     return {
       id: o.id, title: o.title, short: o.short, question: o.question,
-      cam0: CAM0, ctl: foldCtl, anim: foldAnim, stepT: (n) => (n >= 3 ? 1 : 0),
+      cam0: CAM0, pmin: FOLD_PITCH, ctl: foldCtl, anim: foldAnim, stepT: (n) => (n >= 3 ? 1 : 0),
       presets: (s) => {
         const net = netOf(s, specs), fi = foldInfoOf(net), out = netPresets(specs)(s), lt = net.pt.length <= 26;
         const cur = (st) => { const n = netOf(st, specs); return { n, f: foldInfoOf(n) }; };
@@ -545,7 +565,7 @@
   const A3 = {
     id: 'p3-3', title: '정육면체 전개도에서 평행한 면', short: '평행한 면',
     question: '정육면체의 전개도를 접으면 서로 마주 보는 면은 평행해요. 면 하나를 골라 평행한 면과 수직인 면을 찾아보자.',
-    cam0: CAM0, ctl: foldCtl, anim: foldAnim, stepT: (n) => (n >= 2 ? 1 : 0),
+    cam0: CAM0, pmin: FOLD_PITCH, ctl: foldCtl, anim: foldAnim, stepT: (n) => (n >= 2 ? 1 : 0),
     presets: (s) => netPresets(CUBE5)(s).concat(FL.split('').map((ch, L) => ({ group: L === 0 ? '면 고르기' : '', label: `면 ${ch}`, apply: (st) => { const fi = netOf(st, CUBE5).num.indexOf(L + 1); st.phSelFace = st.phSelFace === fi ? null : fi; }, on: (st) => st.phSelFace != null && netOf(st, CUBE5).num[st.phSelFace] === L + 1 }))),
     init: (s) => { initNet(s, CUBE5); s.phQ = rollQ33(); },
     reroll: (s) => { s.phQ = rollQ33(); },
@@ -556,8 +576,8 @@
     draw(b, s, M, C) {
       const st = stepOf(C), t = C.problem ? 0 : C.review ? C.t : (C.thumb ? 0.6 : s.phFold);
       const net = C.problem ? landscapeNet(M.qn) : M.net, f = C.problem ? M.qf : C.review ? M.fR : M.f, opp = f == null ? -1 : net.opposite[f];
-      fitNow(b, s, net, C, C.problem ? { t: 52, b: 26 } : { t: C.thumb ? 5 : 64, b: 18 }, camFold, t);
-      const D = scene3(b, camFold(s, t), C);
+      fitNow(b, s, net, C, C.problem ? { t: 52, b: 26 } : { t: C.thumb ? 5 : 64, b: 18 }, camFoldK('cube'), t);
+      const D = scene3(b, camFoldK('cube')(s, t), C);
       const role = faceRoles(C, st, f, C.problem ? -1 : opp, 6), any = role.some((r) => r);
       const { faces, vis } = drawFacesOp(D, net, t, (i) => ROLE[role[i]] || { c: 'green', a: 0.08 }, any ? 0.72 : 1);
       const fin = t >= 0.97;
@@ -679,7 +699,7 @@
   const A4 = {
     id: 'p3-4', title: '정다면체에서 꼬인 위치의 모서리', short: '꼬인 위치',
     question: '정육면체·정사면체·정팔면체에서 모서리 하나를 정하면 꼬인 위치에 있는 모서리는 몇 개일까? 접은 입체에서 모서리를 하나씩 분류해 보자.',
-    cam0: { yaw: -4, pitch: 66 }, ctl: foldCtl, anim: { key: 'phFold', dur: 5, label: '접어 보기', start: 1 }, stepT: (n) => (n >= 1 ? 1 : 0),
+    cam0: { yaw: -4, pitch: 66 }, pmin: 16, ctl: foldCtl, anim: { key: 'phFold', dur: 5, label: '접어 보기', start: 1 }, stepT: (n) => (n >= 1 ? 1 : 0),
     presets: (s) => {
       const sd = solidOf(s), out = SOLIDS.map((q, i) => ({ group: i === 0 ? '입체 고르기' : '', label: q.name, apply: (st) => { st.phSolid = i; st.phNet = 0; st.phFold = 1; st.phSelEdge = null; st.phQ = rollQ34(i); }, on: (st) => (st.phSolid | 0) === i }));
       return out.concat(sd.specs.map((sp, i) => ({ group: i === 0 ? '전개도 모양' : '', label: sp.label, apply: (st) => { st.phNet = i; st.phFold = 1; st.phSelEdge = null; }, on: (st) => (st.phNet | 0) === i })));
@@ -697,7 +717,7 @@
       const net = upr ? Object.assign({}, net0, { at: (tt) => net0.at(tt).map((f) => f.map((q) => upr.rot(q, tt))) }) : net0;
       classify(MM.sol, ref);
       // 정사면체·정팔면체는 세워서(uprightOf) 낮은 시점(pitch 약 20°)에서 비스듬히(yaw 약 -28°) 봅니다. 정육면체 시점은 그대로.
-      const camA4 = (s0, t0) => (C.problem ? Object.assign({}, s0, { phYaw: 0, phPitch: 84 }) : sdi === 1 ? camFold(s0, t0, 46, -24) : sdi === 2 ? camFold(s0, t0, 48, -24) : camFold(s0, t0, 12, -16));
+      const camA4 = (s0, t0) => (C.problem ? Object.assign({}, s0, { phYaw: 0, phPitch: 84 }) : sdi === 1 ? camFold(s0, t0, 46, -24) : sdi === 2 ? camFold(s0, t0, 48, -24) : camFold(s0, t0, Math.max(0, (s0.phPitch == null ? 66 : s0.phPitch) - FOLD_PITCH), FOLD_YAW.cube + 4));
       fitNet(b, s, net, C, C.problem ? { t: 56, b: 26, l: 30, r: 30 } : { t: C.thumb ? 5 : 70, b: 20 }, camA4, C.problem ? 0 : t);
       const D = scene3(b, camA4(s, t), C);
       const fin = t >= 0.97;
@@ -745,7 +765,20 @@
       if (C.tab === 'explore' && !C.thumb) {
         const cands = []; faces.forEach((pts, fi) => pts.forEach((p, vi) => cands.push({ key: edgeNm(net, fi, vi), p: D.P(mid3(p, pts[(vi + 1) % pts.length])) })));
         const ce = cands.find((q) => q.key === ref.key) || cands[0];
-        b.handle('ref', ce.p, { color: 'amber', r: 9, ariaLabel: '기준 모서리 고르기', drag: (w) => { let best = cands[0], bd = 1e18; cands.forEach((q) => { const d = (q.p.x - w.x) ** 2 + (q.p.y - w.y) ** 2; if (d < bd) { bd = d; best = q; } }); s.phSelEdge = best.key; } });
+        // 손잡이는 기준 모서리의 가운데에 두되, 가운데가 다른 모서리와 화면에서 교차하는 자리(정사면체의 마주 보는 모서리 등)면 교차점을 피해 옮깁니다.
+        let hp = ce.p;
+        {
+          const refSeg = []; faces.forEach((pts, fi) => pts.forEach((p, vi) => { if (edgeNm(net, fi, vi) === ref.key && !refSeg.length) refSeg.push(D.P(p), D.P(pts[(vi + 1) % pts.length])); }));
+          const others = []; faces.forEach((pts, fi) => pts.forEach((p, vi) => { if (edgeNm(net, fi, vi) !== ref.key) others.push([b.toS(D.P(p)), b.toS(D.P(pts[(vi + 1) % pts.length]))]); }));
+          if (refSeg.length) {
+            const at = (f) => ({ x: refSeg[0].x + (refSeg[1].x - refSeg[0].x) * f, y: refSeg[0].y + (refSeg[1].y - refSeg[0].y) * f });
+            const clear = (f) => { const sp = b.toS(at(f)); let m = 1e9; others.forEach((q) => { const e0 = Math.min(Math.hypot(q[0].x - sp.x, q[0].y - sp.y), Math.hypot(q[1].x - sp.x, q[1].y - sp.y)); if (e0 > 6) m = Math.min(m, segDist(sp, q[0], q[1])); }); return m; };
+            let bestF = 0.5, bestC = clear(0.5);
+            if (bestC < 14) [0.3, 0.7, 0.22, 0.78].forEach((f) => { const cl = clear(f); if (cl > bestC) { bestC = cl; bestF = f; } });
+            hp = at(bestF);
+          }
+        }
+        b.handle('ref', hp, { color: 'amber', r: 9, ariaLabel: '기준 모서리 고르기', drag: (w) => { let best = cands[0], bd = 1e18; cands.forEach((q) => { const d = (q.p.x - w.x) ** 2 + (q.p.y - w.y) ** 2; if (d < bd) { bd = d; best = q; } }); s.phSelEdge = best.key; } });
         // 모서리를 눌러도 기준 모서리가 바뀝니다(가까운 모서리 가운데).
         const segs = []; faces.forEach((pts, fi) => pts.forEach((p, vi) => { if (fin && !visKey.has(edgeNm(net, fi, vi))) return; segs.push({ key: edgeNm(net, fi, vi), a: b.toS(D.P(p)), c: b.toS(D.P(pts[(vi + 1) % pts.length])) }); }));
         armTap(b, C, 'p3-4', (s2, pt, touch) => { let best = null, bd = touch ? 16 : 10; segs.forEach((q) => { const d = segDist(pt, q.a, q.c); if (d < bd) { bd = d; best = q; } }); if (best) s2.phSelEdge = best.key; });
@@ -785,7 +818,7 @@
     return {
       id: 'p3-7', title: '겉면 위의 최단 경로', short: '최단 경로',
       question: '정육면체의 꼭짓점 A에서 겉면을 따라 꼭짓점 G까지 가는 가장 짧은 길은 어디를 지날까? 두 면을 펼쳐서 보자.',
-      cam0: { yaw: -22, pitch: 14 }, ctl: () => ['phEdge', 'phAnt', 'phFold'].concat(VIEW), anim: { key: 'phFold', dur: 4, label: '접어 보기', start: 0 }, stepT: (n) => (n >= 3 ? 0 : 0),
+      cam0: { yaw: -28, pitch: 24 }, ctl: () => ['phEdge', 'phAnt', 'phFold'].concat(VIEW), anim: { key: 'phFold', dur: 4, label: '접어 보기', start: 0 }, stepT: (n) => (n >= 3 ? 0 : 0),
       init: (s) => { s.phEdge = 8; s.phAnt = 0.3; s.phFold = 0; s.phQ = rollQ(); },
       reroll: (s) => { s.phQ = rollQ(); },
       model: (s) => {
@@ -800,8 +833,11 @@
         const D = D0;
         const A = fr(0, 0), Bp = fr(L, 0), E = fr(0, L), F = fr(L, L), Pp = fr(r * L, L), G = topPt(L, L, phi), H = topPt(0, L, phi);
         const flatG = topPt(L, L, 0), flatH = topPt(0, L, 0), closedG = topPt(L, L, PI / 2);
-        const fitp = [A, Bp, E, F, flatG, flatH, closedG, topPt(0, L, PI / 2), v3(-L / 2, L / 2, -L / 2), v3(L / 2, L / 2, -L / 2)];
+        // 지금 그려지는 모양만 화면에 맞춥니다(접은 정육면체가 펼친 모양의 자리까지 잡아 작아지지 않게)
+        const fitp = [A, Bp, E, F, G, H];
+        if (t > 0.02) fitp.push(v3(-L / 2, L / 2, -L / 2), v3(L / 2, L / 2, -L / 2), v3(L / 2, L / 2, L / 2), v3(-L / 2, L / 2, L / 2));
         D.fitPts(fitp, { t: C.problem ? 46 : 92, b: 52, l: 46, r: 46 });
+        D.top = C.problem ? 42 : 76; // 위쪽 줄글 아래로 이름표가 올라가지 않게
         // 나머지 네 면(접으면 보이는 입체의 겉면)은 옅게
         const back = [v3(-L / 2, L / 2, -L / 2), v3(L / 2, L / 2, -L / 2), v3(L / 2, L / 2, L / 2), v3(-L / 2, L / 2, L / 2)], bd = [v3(-L / 2, -L / 2, -L / 2), v3(L / 2, -L / 2, -L / 2)];
         if (t > 0.02) {
@@ -875,7 +911,7 @@
   const A8 = {
     id: 'p3-8', title: '주사위의 전개도', short: '주사위',
     question: '주사위는 마주 보는 면의 눈의 합이 7이에요. 전개도를 접어서 마주 보는 면을 찾아보자.',
-    cam0: CAM0, ctl: foldCtl, anim: foldAnim, stepT: (n) => (n >= 2 ? 1 : 0),
+    cam0: CAM0, pmin: FOLD_PITCH, ctl: foldCtl, anim: foldAnim, stepT: (n) => (n >= 2 ? 1 : 0),
     presets: (s) => netPresets(CUBE5)(s).concat([1, 2, 3, 4, 5, 6].map((n) => ({ group: n === 1 ? '눈 고르기' : '', label: `눈 ${n}`, apply: (st) => { const fi = diceVals(netOf(st, CUBE5), 0).indexOf(n); st.phSelFace = st.phSelFace === fi ? null : fi; }, on: (st) => st.phSelFace != null && diceVals(netOf(st, CUBE5), 0)[st.phSelFace] === n }))),
     init: (s) => { initNet(s, CUBE5); s.phQ = rollQ38(); },
     reroll: (s) => { s.phQ = rollQ38(); },
@@ -887,8 +923,8 @@
     draw(b, s, M, C) {
       const st = stepOf(C), t = C.problem ? 0 : C.review ? C.t : (C.thumb ? 0.6 : s.phFold);
       const net = C.problem ? landscapeNet(M.qn) : M.net, vals = C.problem ? M.qv : M.vals, f = C.problem ? null : C.review ? M.fR : M.f, opp = f == null ? -1 : net.opposite[f];
-      fitNow(b, s, net, C, C.problem ? { t: 52, b: 26 } : { t: C.thumb ? 5 : 64, b: 18 }, camFold, t);
-      const D = scene3(b, camFold(s, t), C);
+      fitNow(b, s, net, C, C.problem ? { t: 52, b: 26 } : { t: C.thumb ? 5 : 64, b: 18 }, camFoldK('cube'), t);
+      const D = scene3(b, camFoldK('cube')(s, t), C);
       const role = faceRoles(C, st, f, opp, 6).map((r) => (r === 'p' ? 0 : r)), any = role.some((r) => r);
       const { faces, vis } = drawFacesOp(D, net, t, (i) => (C.problem && i === M.hid ? { c: AMB, a: 0.3, ec: AMB, ew: 2.6 } : ROLE[role[i]] || { c: 'green', a: 0.1 }), any ? 0.72 : 1);
       const fin = t >= 0.97;

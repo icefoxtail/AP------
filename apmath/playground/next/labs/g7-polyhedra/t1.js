@@ -74,11 +74,11 @@
   }
   // 문제용: 입체 5개를 3+2 로 늘어놓고 ①~⑤ 번호를 붙입니다(먼저 화면 틀을 맞춘 뒤 그립니다).
   function drawRow(D, s, its, C) {
-    const ctr = [[-1, 0], [0, 0], [1, 0], [-0.5, 1], [0.5, 1]], SP = 2.9, k = 0.7;
-    const pos = its.map((it, i) => add3(hxOf(s, ctr[i][0] * SP), v3(0, 0, -ctr[i][1] * 3.2)));
+    const ctr = [[-1, 0], [0, 0], [1, 0], [-0.5, 1], [0.5, 1]], SP = 2.45, k = 0.7; // 입체끼리 간격을 좁혀(겹치지 않는 한도) 폭에 맞춘 입체를 키웁니다
+    const pos = its.map((it, i) => add3(hxOf(s, ctr[i][0] * SP), v3(0, 0, -ctr[i][1] * 3.5)));
     const pts = [];
-    pos.forEach((c) => pts.push(add3(c, v3(-1.5, 0, -1.5)), add3(c, v3(1.5, 0, 1.5))));
-    D.fitPts(pts, { t: 24, b: 56, l: 24, r: 24 });
+    pos.forEach((c) => pts.push(add3(c, v3(-1.25, 0, -1.5)), add3(c, v3(1.25, 0, 1.5))));
+    D.fitPts(pts, { t: 24, b: 56, l: 12, r: 12 });
     its.forEach((it, i) => {
       drawKind(D, KINDS.find((q) => q.id === it.id), it.n, pos[i], k, { mini: true });
       D.label(add3(pos[i], v3(0, 0, -1.4)), `(${i + 1})`, { color: AMB, size: 19, at: [[0, 24]] });
@@ -378,6 +378,8 @@
         face: (q, vis) => (q === fi ? { c: AMB, a: 0.34 } : vis ? { c: 'green', a: 0.1 } : null),
         edge: () => ({ color: 'ink', width: 3 })
       });
+      // 고른 옆면이 뒤쪽이면 입체 속에 점선 테두리 + 연한 면으로 보이게(안 보이는 면은 점선)
+      if (!D.facing(F.n)) D.path(pts3, AMB, 3.4, { close: true, fill: AMB, fillAlpha: 0.12, dash: [6, 5] });
       if (out > 0.02) {
         b.path(flatPts, { close: true, fill: AMB, fillAlpha: 0.4, color: AMB, width: 3.6 });
         const mid = flatPts.reduce((a, q) => ({ x: a.x + q.x / flatPts.length, y: a.y + q.y / flatPts.length }), { x: 0, y: 0 });
@@ -445,7 +447,7 @@
         D.flush();
         return;
       }
-      const kinds = ['prism', 'pyr', 'fr'], SP = b.W < 560 ? 2.8 : 3.6, pts = [], ctr = kinds.map((k, i) => hxOf(s, (i - 1) * SP));
+      const kinds = ['prism', 'pyr', 'fr'], SP = b.W < 560 ? 2.5 : 3.6, pts = [], ctr = kinds.map((k, i) => hxOf(s, (i - 1) * SP));
       kinds.forEach((k, i) => {
         const n = M.nn[k], R = 1.15, h = 1.7;
         const S = k === 'prism' ? prismS(n, R, h) : k === 'pyr' ? pyrS(n, R + 0.05, h) : frustumS(n, 0.55, R, h);
@@ -465,7 +467,7 @@
       if (st === 1) L.push({ t: `각기둥: 밑면 2 + 옆면 n = ${M.F} → n = ${M.nn.prism}`, c: AMB, size: 14 });
       if (st === 2) L.push({ t: `각뿔: 밑면 1 + 옆면 n = ${M.F} → n = ${M.nn.pyr}`, c: AMB, size: 14 });
       if (st === 3) L.push({ t: `각뿔대: 밑면 2 + 옆면 n = ${M.F} → n = ${M.nn.fr}`, c: AMB, size: 14 });
-      D.fitPts(pts, { t: topFor(L, 4), b: 116, l: 24, r: 24 });
+      D.fitPts(pts, { t: topFor(L, 4), b: 116, l: 12, r: 12 });
       if (C.txt) banner(b, L, C);
       D.flush();
     },
@@ -528,7 +530,7 @@
       const id = C.problem ? 0 : C.review ? (st === 1 ? 1 : st === 2 ? 3 : 2) : M.stm.id;
       const baseHL = id === 1 || id === 2, sideHL = id === 3 || id === 4 || id === 5;
       drawPoly(D, S, {
-        face: (fi, vis) => (fi === topF ? { c: SKY, a: baseHL ? 0.4 : 0.1 } : fi === botF ? (baseHL ? { c: SKY, a: 0.28, hidden: true } : null) : vis ? { c: AMB, a: sideHL ? 0.36 : 0.08 } : null),
+        face: (fi, vis) => (fi === topF ? { c: SKY, a: baseHL ? 0.4 : 0.1 } : fi === botF ? (baseHL ? { c: SKY, a: 0.1, hidden: true } : null) : vis ? { c: AMB, a: sideHL ? 0.36 : 0.08 } : null),
         edge: () => ({ color: 'ink', width: 3 })
       });
       if (C.txt && !C.problem) {

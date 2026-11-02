@@ -202,7 +202,7 @@
     draw(b, s, M, C) {
       const D = scene3(b, s, C), st = stepOf(C);
       const k = C.problem ? M.Q.k : M.k, I = PLAT[k], r = C.problem ? 1 / 3 : C.review ? 1 / 3 : M.r, S = truncS(platS(k), r);
-      D.fitPts(platS(k).V, { t: C.problem ? 40 : 100, b: 36, l: 40, r: 40 });
+      D.fitPts(platS(k).V, { t: C.problem ? 56 : 100, b: 36, l: 40, r: 40 });
       // 잘려 나간 부분(원래 입체의 윤곽)은 옅은 점선으로
       const O = platS(k);
       drawPoly(D, O, { face: () => null, edge: (ei, vis) => (vis ? { color: VIO, width: 1.6, alpha: 0.35, dash: [5, 5] } : { skip: true }) }); // 앞쪽 윤곽만: 뒤쪽 점선이 겹쳐 복잡해지지 않게
@@ -214,7 +214,7 @@
       if (st === 2) S.V.forEach((p) => D.dot(p, RED, 4));
       if (C.txt) {
         const c = cutCounts(I);
-        if (C.problem) banner(b, [{ t: `${I.name}의 모든 꼭짓점을 각 모서리의 $\\frac{1}{3}$만큼 잘라 낸 입체`.replace('$\\frac{1}{3}$', '3분의 1'), c: 'ink', size: 14 }], C);
+        if (C.problem) banner(b, [{ t: `${I.name}의 모든 꼭짓점을`, c: 'ink', size: 14 }, { t: '각 모서리의 3분의 1만큼 잘라 낸 입체', c: 'ink', size: 14 }], C); // 폰 폭에서 한 줄로는 잘려서 두 줄로
         else banner(b, [{ t: `${I.name}의 꼭짓점 ${I.V}개를 잘라 내요`, c: 'ink', size: 16 }, st === 1 || st === 4 ? { t: `면 ${I.F}+${I.V} = ${c.F}개`, c: AMB, size: 15 } : null, st === 2 || st === 4 ? { t: `꼭짓점 2×${I.E} = ${c.V}개`, c: RED, size: 15 } : null, st === 3 || st === 4 ? { t: `모서리 3×${I.E} = ${c.E}개`, c: RED, size: 15 } : null], C);
       }
       D.flush();

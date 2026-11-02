@@ -483,7 +483,7 @@ window.questionBank = [
       "√23cm"
     ],
     "answer": "④",
-    "solution": "그림에서 AB=4√3 cm, ∠A=30°이다. 삼각형 넓이 공식으로\n3√3=1/2·AB·AC·sin30°=1/2·4√3·AC·1/2=√3·AC이므로 AC=3 cm이다.\n코사인 법칙으로\nBC²=AB²+AC²−2·AB·AC·cos30°\n=48+9−2·4√3·3·√3/2=21이다.\n따라서 BC=√21 cm이고 정답은 ④이다.",
+    "solution": "그림에서 $AB=4\\sqrt3\\text{ cm}$, $\\angle A=30^\\circ$이고 삼각형 $ABC$의 넓이는 $3\\sqrt3\\text{ cm}^2$이다.\n\n삼각형의 넓이 공식에 대입하면\n$3\\sqrt3=\\dfrac12\\times4\\sqrt3\\times AC\\times\\sin30^\\circ$\n$3\\sqrt3=\\sqrt3\\times AC$\n$AC=3\\text{ cm}$\n이다.\n\n점 $C$에서 변 $AB$에 수선을 내려 그 발을 $H$라 하자. $\\triangle AHC$는 $H$에서 직각이고 $\\angle CAH=30^\\circ$이다.\n\n삼각비를 이용하면\n$CH=AC\\times\\sin30^\\circ=3\\times\\dfrac12=\\dfrac32\\text{ cm}$\n$AH=AC\\times\\cos30^\\circ=3\\times\\dfrac{\\sqrt3}{2}=\\dfrac{3\\sqrt3}{2}\\text{ cm}$\n이다.\n\n따라서\n$BH=AB-AH=4\\sqrt3-\\dfrac{3\\sqrt3}{2}=\\dfrac{5\\sqrt3}{2}\\text{ cm}$\n이다.\n\n직각삼각형 $BHC$에 피타고라스 정리를 적용하면\n$\\begin{aligned}\nBC^2&=BH^2+CH^2\\\\\n&=\\left(\\dfrac{5\\sqrt3}{2}\\right)^2+\\left(\\dfrac32\\right)^2\\\\\n&=\\dfrac{75}{4}+\\dfrac9{4}=21\n\\end{aligned}$\n이다.\n\n그러므로 $BC=\\sqrt{21}\\text{ cm}$이고 정답은 ④이다.",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -500,8 +500,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q11.svg",
     "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AB=4√3 cm, 끼인각 A=30°, 넓이로 구한 AC=3 cm를 보이고 BC는 코사인 법칙으로 구하도록 한 그림.",
-    "solutionImageCaption": "끼인각 A=30°와 두 변 AB=4√3, AC=3을 코사인 법칙에 넣어 BC=√21 cm, 정답은 ④.",
+    "solutionImageAlt": "해설 그림: AB=4√3 cm, ∠A=30°, AC=3 cm인 삼각형에서 C로부터 AB에 내린 수선 CH와 발 H를 표시한다. CH=3/2, AH=3√3/2, BH=5√3/2를 구한 뒤 피타고라스 정리로 BC=√21 cm를 구한다.",
+    "solutionImageCaption": "C에서 AB에 내린 수선 CH를 기준으로 삼각비로 CH·AH를 구하고 피타고라스 정리로 BC=√21 cm (④)를 확인한다.",
     "solutionImageSize": "medium"
   },
   {

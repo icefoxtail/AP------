@@ -100,6 +100,11 @@
     const motionBtnText = document.getElementById('motionBtnText');
     const motionIcon = document.getElementById('motionIcon');
 
+    // 이 탭에서 Universe를 거쳤다는 표시. 허브(next/index.html)를 주소창 등으로 바로 연 경우에만 허브가 이 화면으로 보냅니다.
+    try { sessionStorage.setItem('apl:viaUniverse', '1'); } catch (e) {}
+    // 학생 포털·APMS에서 #g8 처럼 학년 해시를 붙여 오면 입장할 때 허브에 그대로 넘깁니다.
+    const hubHref = './next/index.html' + (/^#[a-z0-9]+$/.test(location.hash) ? location.hash : '');
+
     let universe = null;
 
     try {
@@ -108,7 +113,7 @@
         // Clicking the 3D object enters the lab hub; clicking empty space returns the camera.
         onSelectNode: (meta) => {
           if (meta) {
-            window.location.href = './next/index.html';
+            window.location.href = hubHref;
           } else {
             document.querySelectorAll('.celestial-pill').forEach(p => {
               p.classList.remove('active');
@@ -124,7 +129,7 @@
       fallback.innerHTML = `
         <h2>3D 그래픽 초기화 실패</h2>
         <p>기기의 WebGL 가속을 시작할 수 없습니다. 메인 허브를 통해 모든 수학 실험실을 이용하실 수 있습니다.</p>
-        <a class="cta-entrance" href="./next/index.html">실험실 허브 바로가기</a>
+        <a class="cta-entrance" href="${hubHref}">실험실 허브 바로가기</a>
       `;
       document.body.appendChild(fallback);
     }
@@ -138,12 +143,12 @@
       if (universe && typeof universe.triggerLabEntranceFlight === 'function') {
         universe.triggerLabEntranceFlight(() => {
           setTimeout(() => {
-            window.location.href = './next/index.html';
+            window.location.href = hubHref;
           }, 450);
         });
       } else {
         setTimeout(() => {
-          window.location.href = './next/index.html';
+          window.location.href = hubHref;
         }, 500);
       }
     });

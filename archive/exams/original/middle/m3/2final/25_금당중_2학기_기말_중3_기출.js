@@ -33,8 +33,10 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
-    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q1-solution.svg",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q1-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 원 O에서 중심각 134°가 보는 작은 호는 파랑, 그 반대쪽 큰 호 226°와 이 호를 보는 원주각 ∠x는 주황으로 칠해 두 호를 구분해 보여 준다.",
+    "solutionImageCaption": "큰 호 226°를 보는 원주각이므로 ∠x는 226°의 절반인 113°이다. 정답 ②."
   },
   {
     "id": 2,
@@ -68,8 +70,10 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q2-solution.svg",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q2-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 원 O 위의 점 A, B, C, P, Q에서 ∠AQC=80°와 중심각 ∠BOC=100°가 표시되어 있다. 호 BC(파랑)=100°, 호 AB(주황)=60°이고, ∠APB는 호 AB를 보는 각으로 주황색 호로 표시되어 있다.",
+    "solutionImageCaption": "원주각 ∠AQC=80°가 보는 호 AC=160°, 중심각 ∠BOC=100°가 보는 호 BC=100°이므로 호 AB=60°이고, ∠APB는 호 AB의 원주각이라 30°이다. 정답은 ④이다."
   },
   {
     "id": 3,
@@ -103,8 +107,10 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
-    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q3-solution.svg",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q3-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "해설 그림: 원 O에 내접하는 삼각형 ABC. 호 AB, BC, CA가 비 3, 5, 7로 세 색으로 칠해지고, 호 AB의 중심각 72°와 같은 호를 보는 원주각 C가 표시되어 있다.",
+    "solutionImageCaption": "비의 합 3+5+7=15이므로 호 AB=360°×3/15=72°이고, 원주각 ∠C는 그 절반이므로 ∠C=36° (정답 ①)"
   },
   {
     "id": 4,
@@ -138,9 +144,11 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q4-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q4-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 안의 두 현 AC, BD가 점 P에서 만나고 호 AB는 72°, 호 CD는 96°로 두 색으로 표시되며 ∠APB가 이 두 호를 보는 각으로 표시된 그림.",
+    "solutionImageCaption": "호 AB=360°×1/5=72°, 호 CD=72°×4/3=96°이고 두 현이 만나는 각은 마주 보는 두 호의 합의 절반이므로 ∠APB=½(72°+96°)=84°이다. 정답 ⑤."
   },
   {
     "id": 5,
@@ -174,9 +182,11 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q5-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q5-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O의 지름 AB와 점 C에서 그은 두 할선이 D, E를 지난다. 중심각 DOE=50도이고 호 DE는 50도, 호 AB는 180도로 색이 다르다.",
+    "solutionImageCaption": "점 C의 바깥각은 두 호의 크기 차의 절반이다. 호 AB=180°, 호 DE=50°이므로 ∠ACB=(180°−50°)÷2=65°이고 정답은 ④이다."
   },
   {
     "id": 6,
@@ -210,9 +220,11 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q6-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q6-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O에 내접하는 오각형 ABCDE에서 각 A=60도가 보는 호 BCDE=120도는 바깥 파란 호로, 각 D=140도가 보는 호 EABC=280도와 호 EDC=80도는 원 위에 서로 다른 색으로 표시되어 있다.",
+    "solutionImageCaption": "∠A=60°가 보는 호 BCDE=120°, ∠D=140°가 보는 호 EABC=280°이므로 호 EDC=360°−280°=80°, 호 BC=120°−80°=40°이다. 따라서 ∠BOC=40°이고 정답은 ③이다."
   },
   {
     "id": 7,
@@ -246,9 +258,11 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q7-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q7-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD에서 AB=AC를 같은 색 눈금으로, 밑각 72° 한 쌍과 36° 세 각(∠APC, ∠BAC, ∠PCB)을 각각 같은 색으로 묶고 접선 PC를 따로 표시한다.",
+    "solutionImageCaption": "β=72°이므로 마주 보는 각의 합이 180°인 내접사각형에서 ∠ADC=180°−72°=108°이다. 정답 ③."
   },
   {
     "id": 8,
@@ -282,9 +296,11 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q8-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q8-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 네 점 A,B,C,D가 지나는 원에서 ∠BAC=70°가 보는 호 BC 140°, ∠BCA=60°가 보는 호 AB 120°, 교점 E의 ∠BEC=95°로 구한 같은 호 AD, CD 각 50°와 그 원주각 x, y를 같은 색으로 표시한다.",
+    "solutionImageCaption": "∠BAC=70°에서 호 BC=140°, ∠BCA=60°에서 호 AB=120°이고, ∠BEC=95°에서 호 AD=50°, 호 CD=50°이므로 x=y=25°이다. 따라서 2x−y=25°이고 정답은 ①이다."
   },
   {
     "id": 9,
@@ -318,9 +334,11 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
-    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q9-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q9-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 점 A에서 내접하는 큰 원과 작은 원, 공통 접선 ST. 큰 원의 현 BC가 작은 원에 D에서 접한다. 60°인 세 각(∠C, 접선과 현 AB 사이 각, ∠ADE)은 주황, 같은 각 x 두 개(∠EAD, ∠EDB)는 파랑으로 묶여 있다.",
+    "solutionImageCaption": "접선과 현이 이루는 각의 성질로 ∠ADE=60°, ∠EDB=∠EAD=x이고, 삼각형 EBD에서 ∠BED=130°−x, ∠AED=50°+x이므로 삼각형 AED에서 2x+50°+60°=180°, 따라서 x=35° (정답 ⑤)"
   },
   {
     "id": 10,
@@ -378,7 +396,11 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 빵 판매량 줄기와 잎 그림. 작은 쪽 8번째와 9번째 잎(24와 26)에 동그라미와 번호 8, 9가 있고, 줄기 3의 잎 34 세 개를 묶는 괄호 아래에 3이 쓰여 있다.",
+    "solutionImageCaption": "16개이므로 중앙값 a는 8번째 24와 9번째 26의 평균 25이고, 가장 많이 나온 값 b는 34(3번)이므로 b−a=34−25=9이다. 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -406,7 +428,11 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 자료 1, 2, 2, 3, 4, 4, 5, 33의 점도표. 1부터 5 사이에 점 7개가 모여 있고 33은 가로축을 끊은 뒤 멀리 떨어진 점 1개이며, 중앙값 3.5의 자리에 점선이 있다.",
+    "solutionImageCaption": "점 하나가 자료 하나이다. 1~5에 7개가 모여 있고 33만 멀리 떨어져 있다. 작은 쪽에서 4번째·5번째 값 3, 4의 평균이 중앙값 3.5(점선)이고, 합 54÷8=6.75가 평균이어서 33 때문에 평균만 크게 커진다. 따라서 중앙값이 중심 경향을 더 잘 나타내는 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -521,7 +547,11 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 반응 속도 만족도 2, 4, 6, 8, 10점을 점도표로 나타낸 그림. 평균 6에 점선이 있고 각 점 위에 평균과의 차 −4, −2, 0, +2, +4가 쓰여 있다.",
+    "solutionImageCaption": "점 하나가 고객 한 명이다. 반응 속도의 값 8, 10, 2, 6, 4(A~E)는 평균 6과의 편차가 2, 4, −4, 0, −2이고(그림에는 점수 순서대로 쓰여 있다) 편차의 제곱의 합은 4+16+16+0+4=40이므로 분산은 40/5=8이다. 따라서 분산을 8/5라고 한 ②가 옳지 않다. 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -551,7 +581,11 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 청결도 점수 1점 2명, 2점 3명, 3점 2명, 4점 3명, 5점 2명의 점도표. 평균 3에 점선이 있고 각 열 위에 평균과의 차 -2, -1, 0, +1, +2가 쓰여 있다.",
+    "solutionImageCaption": "점 하나가 고객 한 명이다(모두 12명). 평균은 36÷12=3이고 그림의 숫자는 점수에서 평균 3을 뺀 편차이다. 편차의 제곱에 도수를 곱하면 (-2)²×2+(-1)²×3+0²×2+1²×3+2²×2=8+3+0+3+8=22이고 분산은 22÷12이므로 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -610,7 +644,11 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 산점도. 점들이 왼쪽 아래에서 오른쪽 위로 모여 있고 점선 y=x가 그어져 있으며, 점 D만 점선 위쪽(왼쪽 위)에, A, B, C는 같거나 아래쪽에 있다.",
+    "solutionImageCaption": "예: 점들이 대체로 왼쪽 아래에서 오른쪽 위로 모여 있으므로 양의 상관관계가 있다(⑤ 옳음). 점선 y=x의 위쪽에 있는 D는 수학 성적보다 과학 성적이 높으므로 ②가 옳지 않다. 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -641,7 +679,11 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 학생 10명의 국어·영어 점수 산점도에 y=x 선, 세로선 x=60, 가로선 y=80을 그린 그림. 국어 60점 이상인 점이 6개이고 그중 영어 80점 이상인 점이 3개이다.",
+    "solutionImageCaption": "그림에서 읽은 점 10개이다. y=x 선 아래의 점은 (60,50), (100,90) 2개이고 두 점수가 같은 점은 (40,40), (60,60), (80,80) 3개이다. 국어 60점 이상인 6명 중 영어 80점 이상은 (70,90), (80,80), (100,90)의 3명이므로 비율은 3/6=1/2이고, 1/3이라고 한 ⑤가 옳지 않으므로 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -670,9 +712,11 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
-    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q21-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q21-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O 위의 점 A에서의 접선 AT와 평행한 현 BC가 있고, ∠BAT, ∠ABC, ∠ACB가 같은 파랑으로 표시된 그림.",
+    "solutionImageCaption": "AT∥BC이므로 엇각 ∠BAT=∠ABC이고, 접선과 현이 이루는 각의 성질로 ∠BAT=∠ACB이므로 ∠ABC=∠ACB, 즉 AB=AC인 이등변삼각형이다. 정삼각형이면 세 각이 모두 같으므로 (1) AB=AC, (2) 60°이다."
   },
   {
     "id": 22,
@@ -701,9 +745,11 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
-    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q22-solution.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q22-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 반지름 16cm인 원 O에서 지름 AB=32cm이다. 접선 TC와 현 CB가 이루는 각 BCP와 각 BAC가 30도로 같은 색이고 각 ACB는 직각이다. BC=16cm, AC=16√3cm이다.",
+    "solutionImageCaption": "접선과 현의 각으로 ∠BAC=∠BCP=30°이고 ∠ACB=90°인 직각삼각형이므로 BC=16cm, AC=16√3cm이다. 넓이는 ½×16×16√3=128√3cm²이다."
   },
   {
     "id": 23,
@@ -728,7 +774,11 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 제기차기 횟수 10개의 점도표. 5, 7, 11은 점 2개씩, 8, 9, 10은 1개씩이고 67은 축을 끊어 멀리 떨어진 곳에 점 1개가 있다.",
+    "solutionImageCaption": "작은 순서로 5,5,7,7,8,9,10,11,11,67이고 합이 140이므로 (1) 평균 14회이다. 10개이므로 가운데 두 값 8, 9의 평균을 구하면 (2) 중앙값 8.5회이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,

@@ -56,7 +56,9 @@
     F.forEach((f, fi) => f.i.forEach((v) => vf[v].push(fi)));
     return { V, F, E, vf, ctr, R: Math.max(...V.map((p) => len3(sub3(p, ctr)))) };
   }
-  const ring = (n, R, z, rot = 0) => Array.from({ length: n }, (_, i) => { const a = -PI / 2 + rot + (2 * PI * i) / n; return v3(R * Math.cos(a), R * Math.sin(a), z); });
+  // 밑면의 변의 수 n 마다 기본 시점(옆 -30°, 위 24°)에서 위·아래 꼭짓점이 포개지지 않도록 정한 돌림(도). 점수 탐색: 투영 꼭짓점 사이·꼭짓점-모서리 최소 거리를 가장 크게.
+  const RING_DEG = { 3: 12, 4: 14, 5: 0, 6: -3, 7: 22, 8: 4, 9: 5, 10: -3, 11: 30, 12: 21 };
+  const ring = (n, R, z, rot) => Array.from({ length: n }, (_, i) => { const a = -PI / 2 + (rot == null ? (RING_DEG[n] || 0) * DEG : rot) + (2 * PI * i) / n; return v3(R * Math.cos(a), R * Math.sin(a), z); });
 
   const SOL_CACHE = new Map();
   const cached = (key, fn) => { if (!SOL_CACHE.has(key)) { if (SOL_CACHE.size > 60) SOL_CACHE.clear(); SOL_CACHE.set(key, fn()); } return SOL_CACHE.get(key); };
@@ -75,20 +77,29 @@
     icosa: { name: '정이십면체', p: 3, q: 5, F: 20, E: 30, V: 12, face: '정삼각형' }
   };
   const PLAT_KEYS = ['tetra', 'cube', 'octa', 'dodeca', 'icosa'];
-  function platV(key) {
-    let V = [];
-    if (key === 'tetra') V = [v3(1, 1, 1), v3(1, -1, -1), v3(-1, 1, -1), v3(-1, -1, 1)];
+  // 정다면체를 "밑면(또는 꼭짓점)이 아래, 대칭축이 세로"로 세웁니다(교과서 겨냥도). 그 뒤 z 축 둘레로 tilt 만큼 돌려
+  // 기본 시점(옆 -30°, 위 24°)에서 꼭짓점·모서리가 포개지지 않게 합니다(tilt 는 점수 탐색으로 정한 값, 도 단위).
+  const PLAT_TILT = { tetra: 64, cube: 0, octa: 75, dodeca: 10, icosa: 24 };
+  function platV(key, tiltDeg) {
+    let V = [], axis = null;
+    if (key === 'tetra') { V = [v3(1, 1, 1), v3(1, -1, -1), v3(-1, 1, -1), v3(-1, -1, 1)]; axis = v3(1, 1, 1); }
     else if (key === 'cube') for (const x of [-1, 1]) for (const y of [-1, 1]) for (const z of [-1, 1]) V.push(v3(x, y, z));
     else if (key === 'octa') V = [v3(1, 0, 0), v3(-1, 0, 0), v3(0, 1, 0), v3(0, -1, 0), v3(0, 0, 1), v3(0, 0, -1)];
-    else if (key === 'icosa') for (const a of [-1, 1]) for (const b of [-PHI, PHI]) V.push(v3(0, a, b), v3(a, b, 0), v3(b, 0, a));
+    else if (key === 'icosa') { for (const a of [-1, 1]) for (const b of [-PHI, PHI]) V.push(v3(0, a, b), v3(a, b, 0), v3(b, 0, a)); axis = v3(0, 1, PHI); }
     else {
       for (const x of [-1, 1]) for (const y of [-1, 1]) for (const z of [-1, 1]) V.push(v3(x, y, z));
       for (const a of [-1, 1]) for (const b of [-PHI, PHI]) V.push(v3(0, a / PHI, b), v3(a / PHI, b, 0), v3(b, 0, a / PHI));
+      axis = null; // 면의 중심 방향(아래에서 찾음)
     }
+    if (key === 'dodeca') { const f = hullFaces(V)[0]; axis = f.n; }
     const R = Math.max(...V.map(len3));
-    // 보기 좋게: 한 변이 아래로 오지 않도록 z 축 둘레로 조금 돌립니다
-    const tilt = key === 'cube' ? 0.0 : key === 'tetra' ? PI / 4 : 0.0;
-    return V.map((p) => { const q = mul3(p, 1.75 / R); return v3(q.x * Math.cos(tilt) - q.y * Math.sin(tilt), q.x * Math.sin(tilt) + q.y * Math.cos(tilt), q.z); });
+    let pts = V.map((p) => mul3(p, 1.75 / R));
+    if (axis) { // axis → +z
+      const a = unit3(axis), k = cross3(a, v3(0, 0, 1)), kl = len3(k);
+      if (kl > 1e-9) { const ang = Math.acos(clamp(dot3(a, v3(0, 0, 1)), -1, 1)); pts = pts.map((p) => rotAxis(p, v3(0, 0, 0), mul3(k, 1 / kl), ang)); }
+    }
+    const tilt = (tiltDeg == null ? PLAT_TILT[key] : tiltDeg) * DEG;
+    return pts.map((q) => v3(q.x * Math.cos(tilt) - q.y * Math.sin(tilt), q.x * Math.sin(tilt) + q.y * Math.cos(tilt), q.z));
   }
   const platS = (key) => cached('pl' + key, () => solidOf(platV(key)));
   // 모든 꼭짓점을 변의 길이의 t(0~0.5) 만큼 잘라 낸 입체. 0.5 이면 변의 가운데만 남습니다.
@@ -112,6 +123,8 @@
     const V = off.x || off.y || off.z ? S.V.map((p) => add3(p, off)) : S.V;
     const vis = S.F.map((f) => D.facing(f.n));
     const only = o.only ? new Set(o.only) : null;
+    if (D.addHull && !o.noHull) D.addHull(V);
+    const dense = S.E.length > 40; // 모서리가 아주 많은 입체(축구공 등)는 뒤쪽 점선을 더 옅고 가늘게: 앞쪽 모양이 먼저 읽히게
     S.F.forEach((f, fi) => {
       if (only && !only.has(fi)) return;
       const st = o.face ? o.face(fi, vis[fi]) : { c: 'green', a: 0.08 };
@@ -125,7 +138,7 @@
       if (!inG(e).length) return;
       const st = (o.edge ? o.edge(ei, !hidden) : null) || { color: 'ink', width: 3 };
       if (st.skip) return;
-      D.line(V[e.a], V[e.b], st.color || 'ink', (st.width || 3) * (hidden ? 0.8 : 1), { dash: hidden ? [6, 5] : st.dash, alpha: (st.alpha == null ? 1 : st.alpha) * (hidden ? 0.7 : 1), glow: st.glow });
+      D.line(V[e.a], V[e.b], st.color || 'ink', (st.width || 3) * (hidden ? (dense ? 0.6 : 0.8) : 1), { dash: hidden ? [6, 5] : st.dash, alpha: (st.alpha == null ? 1 : st.alpha) * (hidden ? (dense ? 0.55 : 0.7) : 1), glow: st.glow });
     };
     S.E.forEach((e, ei) => { if (!eVis[ei]) dr(e, ei, true); });
     S.E.forEach((e, ei) => { if (eVis[ei]) dr(e, ei, false); });
@@ -152,14 +165,22 @@
     if (kind === 'cylinder') {
       const xs = top.map((p) => p.x), l = top[xs.indexOf(Math.min(...xs))], rr = top[xs.indexOf(Math.max(...xs))];
       const xb = bot.map((p) => p.x), lb = bot[xb.indexOf(Math.min(...xb))], rb = bot[xb.indexOf(Math.max(...xb))];
-      D.b.path([l, lb].concat(bot.slice().sort(() => 0)).concat([rb, rr]).concat(top.slice().reverse()), { close: true, fill: col, fillAlpha: a, color: null });
+      // 옆면(앞쪽 호 둘 사이)과 윗면 타원을 따로 칠합니다(한 도형으로 이으면 윗면에 흰 쐐기가 생겼음)
+      const frontArc2 = (arr, p0, p1, back) => arr.filter((p) => (back ? p.y <= (p0.y + p1.y) / 2 + 1e-9 : p.y >= (p0.y + p1.y) / 2 - 1e-9)).sort((u, v) => u.x - v.x);
+      const frontArc = (arr, p0, p1) => arr.filter((p) => p.y >= (p0.y + p1.y) / 2 - 1e-9).sort((u, v) => u.x - v.x);
+      const topFront = frontArc(top, l, rr), botFront = frontArc(bot, lb, rb);
+      D.b.path([l].concat(topFront, [rr, rb], botFront.slice().reverse(), [lb]), { close: true, fill: col, fillAlpha: a, color: null });
+      D.b.path(top, { close: true, fill: col, fillAlpha: a, color: null });
       D.b.path(top, { close: true, color: col, width: w });
-      D.b.path(bot, { color: col, width: w });
+      D.b.path(botFront, { color: col, width: w });
+      D.b.path(frontArc2(bot, lb, rb, true), { color: col, width: w * 0.7, alpha: 0.7, dash: [6, 5] }); // 뒤쪽 반(안 보이는 밑면의 둘레)은 점선
       D.b.path([l, lb], { color: col, width: w }); D.b.path([rr, rb], { color: col, width: w });
     } else { // cone
       const ap = P2(add3(c, v3(0, 0, h / 2))), xb = bot.map((p) => p.x), lb = bot[xb.indexOf(Math.min(...xb))], rb = bot[xb.indexOf(Math.max(...xb))];
       D.b.path([ap, lb].concat(bot).concat([rb]), { close: true, fill: col, fillAlpha: a, color: null });
-      D.b.path(bot, { color: col, width: w });
+      const mid = (lb.y + rb.y) / 2;
+      D.b.path(bot.filter((p) => p.y >= mid - 1e-9).sort((u, v) => u.x - v.x), { color: col, width: w });
+      D.b.path(bot.filter((p) => p.y <= mid + 1e-9).sort((u, v) => u.x - v.x), { color: col, width: w * 0.7, alpha: 0.7, dash: [6, 5] }); // 뒤쪽 반은 점선
       D.b.path([ap, lb], { color: col, width: w }); D.b.path([ap, rb], { color: col, width: w });
     }
   }
@@ -469,7 +490,7 @@
 
   Object.assign(G, {
     NK, KNAME, nameOf, countsOf, solidOfKind, banner, sRect, shuf,
-    PHI, cen3, hx, hxOf, hullFaces, solidOf, ring, prismS, pyrS, frustumS, topPyrS, PLAT, PLAT_KEYS, platS, truncS, dualDeg,
+    PHI, cen3, hx, hxOf, platV, PLAT_TILT, hullFaces, solidOf, ring, prismS, pyrS, frustumS, topPyrS, PLAT, PLAT_KEYS, platS, truncS, dualDeg,
     drawPoly, faceMid, drawCurved, finishNet, foldInfoOf, cellNet, cubeNetOK, CUBE_NETS, BAD_NETS, cubeNetOf, transformCells, canonCells, randCells, netSvg, polyNetsOf, hasBlock
   });
 })();

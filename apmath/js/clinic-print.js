@@ -4427,10 +4427,28 @@ function clinicPrintDedupeLatestSessionByStudent(sessions) {
     return [...byStudent.values()];
 }
 
+// 학년 단위 자료는 오답 행이 수천 건이라 세션마다 처음부터 훑으면 첫 화면이 몇 초 걸린다.
+// 오답 배열 하나당 session_id별 묶음을 한 번만 만들어 둔다(배열이 바뀌거나 길이가 달라지면 다시 만든다).
+const clinicPrintWrongIndexCache = new WeakMap();
+function clinicPrintGetWrongRowsIndex(wrongAnswers) {
+    const list = Array.isArray(wrongAnswers) ? wrongAnswers : [];
+    const cached = clinicPrintWrongIndexCache.get(list);
+    if (cached && cached.length === list.length) return cached.map;
+    const map = new Map();
+    list.forEach(row => {
+        const key = String(row.session_id);
+        const bucket = map.get(key);
+        if (bucket) bucket.push(row);
+        else map.set(key, [row]);
+    });
+    clinicPrintWrongIndexCache.set(list, { length: list.length, map });
+    return map;
+}
+
 function clinicPrintGetWrongIdsBySession(sessionId, gradeClassId = null) {
     const loaded = gradeClassId == null ? null : clinicPrintGradeData.get(String(gradeClassId));
     const rows = loaded?.status === 'ready'
-        ? loaded.wrong_answers.filter(row => String(row.session_id) === String(sessionId))
+        ? (clinicPrintGetWrongRowsIndex(loaded.wrong_answers).get(String(sessionId)) || [])
         : typeof apmsGetWrongAnswersForSession === 'function'
         ? apmsGetWrongAnswersForSession(sessionId)
         : (state.db.wrong_answers || []).filter(row => String(row.session_id) === String(sessionId));
@@ -6015,8 +6033,12 @@ async function openClinicPrintCenter(classId, options = {}) {
     // 껍데기 파일이 없는 환경(단독 테스트 등)에서는 예전처럼 불러온 뒤 모달을 연다.
     const wsToken = typeof wsClinicBeginPrint === 'function' ? wsClinicBeginPrint(classId) : 0;
     if (!options.skipAssignmentRefresh) {
-        await clinicPrintRefreshClassAssignments(classId);
-        await clinicPrintRefreshGradeClinicData(classId);
+        // 두 조회는 서로의 결과를 쓰지 않는다. 각자 응답이 오면 한 번에(await 없이) state.db에 반영하고,
+        // 서버가 같은 표에서 같은 모양의 행을 주므로 반영 순서가 바뀌어도 결과가 같다. 그래서 동시에 보낸다.
+        await Promise.all([
+            clinicPrintRefreshClassAssignments(classId),
+            clinicPrintRefreshGradeClinicData(classId)
+        ]);
     }
     // 불러오는 동안 다른 반·탭으로 바꿨거나 닫았으면 이 응답으로 화면을 덮지 않는다.
     if (wsToken && !wsClinicIsCurrent(wsToken)) return;
@@ -6184,7 +6206,7 @@ async function openClinicPrintCenter(classId, options = {}) {
         </div>
         </div>
         <div class="clinic-print-layout__preview" aria-label="출력 미리보기">
-            <iframe id="clinic-print-preview-frame" title="출력 미리보기" src="wrong_print_engine.html?preview=1"></iframe>
+            <iframe id="clinic-print-preview-frame" title="출력 미리보기"></iframe>
         </div>
         </div>
     `;
@@ -6198,9 +6220,22 @@ async function openClinicPrintCenter(classId, options = {}) {
     clinicPrintRenderRecommendationPanel(classId);
     clinicPrintRenderRecommendationAssessmentPanel(classId);
     clinicPrintRenderRepeatSection(classId);
-    document.getElementById('clinic-print-preview-frame')?.addEventListener('load', () => {
-        clinicPrintSchedulePreviewPush(classId, 0);
-    });
+    const previewFrame = document.getElementById('clinic-print-preview-frame');
+    if (previewFrame) {
+        previewFrame.addEventListener('load', () => {
+            if (!previewFrame.getAttribute('src')) return;
+            clinicPrintSchedulePreviewPush(classId, 0);
+        });
+        // 미리보기 문서(wrong_print_engine.html)는 출력 화면이 먼저 그려진 뒤에 불러온다.
+        // 같은 화면 스레드를 쓰므로 함께 받으면 첫 화면이 그만큼 늦게 뜬다. 불러온 뒤 동작은 그대로다.
+        const startPreviewFrame = () => {
+            if (previewFrame.isConnected && !previewFrame.getAttribute('src')) {
+                previewFrame.setAttribute('src', 'wrong_print_engine.html?preview=1');
+            }
+        };
+        requestAnimationFrame(() => setTimeout(startPreviewFrame, 0));
+        setTimeout(startPreviewFrame, 500); // 숨은 탭 등에서 프레임 콜백이 오지 않는 경우의 대비
+    }
     document.querySelectorAll('#clinic-print-header-title, #clinic-print-header-subtitle').forEach(input => {
         input.addEventListener('input', () => clinicPrintSchedulePreviewPush(classId));
     });

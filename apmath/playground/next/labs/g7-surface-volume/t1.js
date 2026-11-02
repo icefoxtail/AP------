@@ -225,9 +225,9 @@
             const O = pts[0], arcPts = [];
             for (let i = 1; i < n; i++) arcPts.push(ctx.at(k, lerp3(O, pts[i], 0.3)));
             D.path(arcPts, 'amber', 2.4);
-            D.tag(ctx.at(k, lerp3(O, pts[1 + Math.floor(N / 2)], 0.5)), `${th}°`, { size: 14, color: 'amber' });
+            D.tag(ctx.at(k, lerp3(O, pts[1 + Math.floor(N / 2)], 0.4)), `${th}°`, { size: 14, color: 'amber' });
             D.line(ctx.at(k, O), ctx.at(k, pts[1]), 'ink', 2.4);
-            if (!C.problem) D.tag(ctx.at(k, lerp3(O, pts[1 + Math.floor(N / 2)], 0.82)), `S=${plainVal(M.S)}`, { size: 14 });
+            if (!C.problem) D.tag(ctx.at(k, lerp3(O, pts[1 + Math.floor(N / 2)], 0.86)), `S=${plainVal(M.S)}`, { size: 14 });
             const cen = ctx.at(k, G.centroid(pts));
             D.elabel(ctx.at(k, O), ctx.at(k, pts[1]), `r=${r}`, { from: cen, size: 14, gap: 6 });
             D.elabel(ctx.at(k, O), ctx.at(k, pts[n - 1]), `r=${r}`, { from: cen, size: 14, gap: 6 });
@@ -236,7 +236,8 @@
           fr(sn.top, B); fr(sn.bot, A);
           if (!C.problem && ctx.e > 0.8) {
             const cs = sn.lat.slice(2, sn.lat.length - 2).map((idx) => ctx.at(idx, G.centroid(sn.net.pieces[idx].pts)));
-            D.tag(G.centroid(cs), `호 ${plainVal(M.arc)} + 2r = ${plainVal(M.P)}`, { size: 14, color: 'amber' });
+            const sa = b.toS(D.P(ctx.at(sn.root, A[1]))), sb = b.toS(D.P(ctx.at(sn.root, B[1])));
+            D.tag(G.centroid(cs), `호 ${plainVal(M.arc)} + 2r = ${plainVal(M.P)}`, { size: 14, color: 'amber', dy: Math.hypot(sa.x - sb.x, sa.y - sb.y) * 0.3 }); // 높이 글자(띠 가운데)와 겹치지 않게 띠 아래쪽에
           }
         }
       });
@@ -339,7 +340,7 @@
       D.line(fc, add3(fc, v3(ru, 0, 0)), 'ink', 2.4);
       D.dot(fc, 'ink', 3.5);
       D.tag(add3(fc, v3(ru * 0.5, 0, 0)), `r=${r}`, { size: 14, dy: -11 });
-      const hx = isN && !C.problem ? xc + ru : xe + (C.problem ? ru : 0), hy = isN && !C.problem ? 0 : -ru;
+      const hx = xc + ru, hy = 0;
       D.line(v3(hx, hy, -hu / 2), v3(hx, hy, hu / 2), 'amber', 3);
       D.elabel(v3(hx, hy, -hu / 2), v3(hx, hy, hu / 2), `h=${h}`, { side: { x: 1, y: 0 }, color: 'amber', gap: 8 });
       if (!C.problem) {
@@ -351,7 +352,7 @@
     return {
       id: 'sv1-3', title: '원기둥 굴리기', short: '원기둥 굴리기',
       question: '원기둥을 한 바퀴 굴리면 옆면이 어떤 모양으로 펼쳐질까? 가로의 길이는 얼마일까?',
-      anim: { key: 'sT3', dur: 6, label: '굴려 보기' }, cam0: { yaw: 22, pitch: 13 }, stepT: () => 1, thumbT: 1, problemT: 0,
+      anim: { key: 'sT3', dur: 6, label: '굴려 보기' }, cam0: { yaw: 42, pitch: 20 }, stepT: () => 1, thumbT: 1, problemT: 0,
       ctl: () => ['sR3', 'sH3', 'sT3'],
       init: (s) => { s.sR3 = 3; s.sH3 = 5; s.sT3 = 0; },
       reroll: (s) => { s.sR3 = rint(1, 6); s.sH3 = rint(2, 10); s.sT3 = 0; },
@@ -408,7 +409,7 @@
       const nDone = plates.filter((p) => p.loc >= 1).length;
       const pts = cube8(v3(0, 0, 0), Math.max(ext / 2, H / 2)).map((p) => v3(p.x, p.y, p.z)).concat([add3(v3(-ext / 2, y0, 0), D.hx(-slide))]);
       // 폰: 쌓인 기둥을 무대 폭의 약 55%로 크게(판이 날아 들어올 자리는 따로 확보하지 않고, 판은 화면 가장자리에서 들어와요)
-      if (D.narrow && !b.thumb) D.fitCore([-1, 1].flatMap((i) => [0, 1].flatMap((j) => [-1, 1].map((k2) => v3(i * ext / 2, y0 + j * H, k2 * ext / 2)))), [], { l: 30, r: 62, t: 36, b: 40 }, { floor: 0.55, cap: 0.55 });
+      if (D.narrow && !b.thumb) D.fitCore([-1, 1].flatMap((i) => [0, 1].flatMap((j) => [-1, 1].map((k2) => v3(i * ext / 2, y0 + j * H, k2 * ext / 2)))), [], { l: 24, r: 56, t: 30, b: 34 }, { floor: 0.64, cap: 0.64 });
       else D.fit(pts, [], { l: 40, r: 70, t: 36, b: 40 });
       const hlS = !C.review ? 1 : st === 1 ? 2 : 1, hlH = !C.review ? 1 : st === 2 ? 2 : 1;
       if (!C.problem) D.body({ mesh: prismMesh(bm.shape === 'circ' ? G.circleBase(bm.r * sc, 32) : scaledPoly(bm, sc), y0, y0 + H), fill: null, edge: 'muted', edgeW: 1.6, hiddenAlpha: 0.5, hidden: true });
@@ -424,7 +425,7 @@
         D.line(p0, p1, 'amber', 4);
         D.elabel(p0, p1, `높이 h = ${nShow}`, { side: { x: 1, y: 0 }, color: 'amber', size: 15, gap: 10 });
       }
-      if (!C.problem) plates.forEach((p) => { if (p.loc >= 1 && h <= 8) D.tag(v3(0, y0 + (p.k + 0.5) * sc, ext / 2 * (bm.shape === 'circ' ? 1 : 1)), String(p.k + 1), { size: 12, color: 'ink' }); });
+      if (!C.problem) plates.forEach((p) => { if (p.loc >= 1 && h <= 8) D.tag(v3(0, y0 + (p.k + 0.5) * sc, ext / 2 * (bm.shape === 'circ' ? 1 : 1)), String(p.k + 1), { size: 13, color: 'ink' }); });
     };
     return {
       id: 'sv1-4', title: '기둥의 부피 V=Sh', short: '기둥의 부피',

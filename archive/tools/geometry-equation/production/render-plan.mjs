@@ -192,6 +192,11 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
           const solved=sdg.solveDiagram(panel.plan.diagram);
           framedPanels.push({caption:panel.caption,plan:panel.plan});panelModels.push(solved);panelSizes.push(sdg.setDiagramSize(solved,{compact:true}));continue;
         }
+        if(comp.isStatPanel(panel.plan)){
+          // A statistics panel: the compact dot plot solved exactly like the standalone one, read back by the stat-chart observer inside the composite.
+          const solved=scf.solveStatPanel(panel.plan.chart);
+          framedPanels.push({caption:panel.caption,plan:panel.plan});panelModels.push(solved);panelSizes.push(scf.statChartSize(solved));continue;
+        }
         if(comp.isSolidPanel(panel.plan)){
           const solved=sol.solveSolidFigure(panel.plan);
           framedPanels.push({caption:panel.caption,plan:panel.plan});panelModels.push(solved);panelSizes.push(sol.figurePanelSize(solved));continue;

@@ -972,9 +972,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q23-solution.svg",
-    "solutionImageAlt": "해설 그림: 서웅 합격 6/7, 불합격 1/7에서 갈라지고 각각 지호 합격 1/3, 불합격 2/3로 갈라지는 네 경로의 수형도. 두 사람 모두 합격하는 경로와 모두 불합격하는 경로가 굵은 선과 동그라미로 표시되어 있다.",
-    "solutionImageCaption": "(1) 모두 합격 6/7×1/3=2/7, (2) 모두 불합격 1/7×2/3=2/21, (3) 적어도 한 사람 합격은 1-2/21=19/21이다.",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 서웅 합격 6/7, 불합격 1/7에서 갈라지고 각각 지호 합격 1/3, 불합격 2/3로 갈라지는 네 경로의 수형도. 모두 합격하는 경로는 파란색, 모두 불합격하는 경로는 주황색, 한 사람만 합격하는 두 경로는 초록색으로 칠해져 있다.",
+    "solutionImageCaption": "(1) 모두 합격(파랑) 6/7×1/3=2/7, (2) 모두 불합격(주황) 1/7×2/3=2/21, (3) 적어도 한 사람 합격은 모두 불합격이 아닌 경우이므로 1-2/21=19/21(파랑+초록 세 경로의 합)이다. 따라서 구하는 값은 (1) 2/7, (2) 2/21, (3) 19/21이다.",
     "solutionImageSize": "medium"
   }
 ];

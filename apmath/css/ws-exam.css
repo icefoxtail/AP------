@@ -82,6 +82,9 @@
     justify-content: space-between;
     gap: 10px;
     min-height: 56px;
+    /* 시험이 많아도 화면에 보이는 줄만 그린다. 첫 계산 전 높이는 최소 높이와 같게 둔다. */
+    content-visibility: auto;
+    contain-intrinsic-block-size: auto 56px;
 }
 .wsx .wsx-exam-item__main { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1 1 auto; }
 .wsx .wsx-exam-item__title {
@@ -128,6 +131,8 @@
 /* 학생 표 */
 .wsx .wsx-students { display: flex; flex-direction: column; }
 .wsx .wsx-student { border-bottom: 1px solid var(--border); }
+/* 입력 칸이 펼쳐진 줄은 제외한다(안에서 스크롤·포커스 이동이 있다). 닫힌 줄만 보이는 것만 그린다. */
+.wsx .wsx-student:not(.is-open) { content-visibility: auto; contain-intrinsic-block-size: auto 58px; }
 .wsx .wsx-student:last-child { border-bottom: 0; }
 .wsx .wsx-student.is-open { background: var(--surface-2); border-radius: var(--ap-ui-radius-panel, 8px); }
 .wsx .wsx-student__row {

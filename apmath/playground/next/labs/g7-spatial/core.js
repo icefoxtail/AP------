@@ -52,13 +52,63 @@
 
   /* ------------------------------------------------------------------ 카메라(평행투영) */
   const camOf = (s) => {
-    const y = (s.spYaw == null ? -30 : s.spYaw) * DEG, p = (s.spPitch == null ? 24 : s.spPitch) * DEG;
+    const y = (s.spYaw == null ? -30 : s.spYaw) * DEG, p = clamp(s.spPitch == null ? 24 : s.spPitch, 5, 85) * DEG;
     return { cy: Math.cos(y), sy: Math.sin(y), cp: Math.cos(p), sp: Math.sin(p) };
   };
   function proj(cam, P) {
     const x1 = P.x * cam.cy - P.y * cam.sy, y1 = P.x * cam.sy + P.y * cam.cy;
     return { x: x1, y: -(P.z * cam.cp + y1 * cam.sp), d: y1 * cam.cp - P.z * cam.sp };
   }
+  /* ---- 겨냥도 시점 안전장치: 꼭짓점·모서리가 포개지는 시점(옆면이 납작해지거나 앞뒤 꼭짓점이 겹치는 방향)은 쓰지 않습니다.
+     입체의 화면 투영에서 「두 꼭짓점 사이」와 「꼭짓점과 다른 모서리 사이」의 가장 짧은 거리를 재어(입체 크기로 나눔) 일정 값 아래이면 그 시점은 못 쓰는 시점입니다.
+     입체가 없는 그림(직선·평면)은 좌표축에 나란한 시점(90°의 배수 둘레)만 피합니다. */
+  const SOLID_Q = new WeakMap();
+  function viewQ(sol, yaw, pitch) {
+    const cam = camOf({ spYaw: yaw, spPitch: pitch }), ks = sol.order, Q = {};
+    ks.forEach((k) => { const q = proj(cam, sol.verts[k]); Q[k] = { x: q.x, y: q.y }; });
+    let m = 1e9;
+    for (let i = 0; i < ks.length; i++) for (let j = i + 1; j < ks.length; j++) m = Math.min(m, Math.hypot(Q[ks[i]].x - Q[ks[j]].x, Q[ks[i]].y - Q[ks[j]].y));
+    sol.edges.forEach((e) => {
+      const a = Q[e.u], c = Q[e.v], dx = c.x - a.x, dy = c.y - a.y, l2 = dx * dx + dy * dy || 1;
+      ks.forEach((k) => {
+        if (k === e.u || k === e.v) return;
+        const u = clamp(((Q[k].x - a.x) * dx + (Q[k].y - a.y) * dy) / l2, 0, 1);
+        m = Math.min(m, Math.hypot(Q[k].x - a.x - u * dx, Q[k].y - a.y - u * dy));
+      });
+    });
+    return m / (sol.R || 1);
+  }
+  // 입체 sol 을 높이각 pitch 로 볼 때 yaw(-180~180, 1도 간격)별 시점 점수표와 사용 가능 기준
+  function yawTable(sol, pitch) {
+    const pk = Math.round(pitch);
+    let bySol = SOLID_Q.get(sol);
+    if (!bySol) { bySol = {}; SOLID_Q.set(sol, bySol); }
+    if (bySol[pk]) return bySol[pk];
+    const q = [];
+    for (let i = 0; i < 360; i++) q.push(viewQ(sol, i - 180, pk));
+    bySol[pk] = { q, thr: Math.min(0.2, 0.6 * Math.max(...q)) };
+    return bySol[pk];
+  }
+  const wrap180 = (a) => ((((a + 180) % 360) + 360) % 360) - 180;
+  const yawOk = (sol, yaw, pitch) => {
+    if (!sol || !sol.order) { const m = ((Math.abs(yaw) % 90) + 90) % 90; return Math.min(m, 90 - m) >= 14; }
+    const tb = yawTable(sol, pitch);
+    return tb.q[((Math.round(wrap180(yaw)) + 180) % 360 + 360) % 360] >= tb.thr;
+  };
+  // yaw 가 못 쓰는 시점이면 가장 가까운 쓸 수 있는 시점으로 옮깁니다. dir(+1/-1)을 주면 그 방향으로 건너뜁니다.
+  function safeYaw(sol, yaw, pitch, dir) {
+    yaw = wrap180(yaw);
+    if (yawOk(sol, yaw, pitch)) return yaw;
+    for (let d = 1; d <= 180; d++) {
+      const a = dir >= 0 ? yaw + d : yaw - d, b = dir >= 0 ? yaw - d : yaw + d;
+      if (dir && yawOk(sol, a, pitch)) return wrap180(a);
+      if (!dir) { if (yawOk(sol, a, pitch)) return wrap180(a); if (yawOk(sol, b, pitch)) return wrap180(b); }
+    }
+    return yaw;
+  }
+  // 높이각 범위: 입체는 위에서 15°~50°. (납작하게 눕거나 바로 위에서 내려다보면 앞뒤가 겹쳐 모양을 알아볼 수 없습니다.)
+  const PITCH_MIN = 15, PITCH_MAX = 50;
+
   // 방향 n(벡터)이 화면 쪽(보는 사람 쪽)을 향하면 true
   function facing(cam, n) {
     const y1 = n.x * cam.sy + n.y * cam.cy;
@@ -215,16 +265,18 @@
   /* 3차원 장면 그리기 상자: 투영·라벨 배치(겹치지 않게)·기본 도형 */
   function scene3(b, s, C) {
     const cam = camOf(s);
-    const D = { b, s, C, cam, boxes: [], queue: [] };
+    const D = { b, s, C, cam, boxes: [], queue: [], segs: [] };
     const P2 = (p) => { const q = proj(cam, p); return { x: q.x, y: q.y }; };
     D.P = P2;
     D.depth = (p) => proj(cam, p).d;
     D.facing = (n) => facing(cam, n);
     D.fitPts = (pts3, o = {}) => fit(b, bboxOf(pts3.map(P2)), o);
-    D.line = (p, q, color = 'ink', width = 3, o = {}) => b.path([P2(p), P2(q)], { color, width, dash: o.dash, alpha: o.alpha, glow: o.glow, ref: o.ref });
-    D.path = (pts, color = 'ink', width = 3, o = {}) => b.path(pts.map(P2), { color, width, dash: o.dash, alpha: o.alpha, close: o.close, fill: o.fill, fillAlpha: o.fillAlpha, glow: o.glow, ref: o.ref });
+    // 그려 둔 선분(글자가 선 위에 앉지 않게 피하는 데 씁니다). w = 비중
+    const noteSeg = (a, c, w) => { if (Math.hypot(c.x - a.x, c.y - a.y) > 1e-6) D.segs.push({ a, c, w }); };
+    D.line = (p, q, color = 'ink', width = 3, o = {}) => { const a = P2(p), c = P2(q); noteSeg(a, c, o.alpha != null && o.alpha < 0.5 ? 0.3 : 1); return b.path([a, c], { color, width, dash: o.dash, alpha: o.alpha, glow: o.glow, ref: o.ref }); };
+    D.path = (pts, color = 'ink', width = 3, o = {}) => { const q = pts.map(P2); for (let i = 0; i + 1 < q.length; i++) noteSeg(q[i], q[i + 1], 1); return b.path(q, { color, width, dash: o.dash, alpha: o.alpha, close: o.close, fill: o.fill, fillAlpha: o.fillAlpha, glow: o.glow, ref: o.ref }); };
     D.fill = (pts, color, alpha = 0.16, o = {}) => b.path(pts.map(P2), { close: true, fill: color, fillAlpha: alpha, color: null, ref: o.ref });
-    D.panel = (pts, color, fa = 0.14, ec = null, ew = 2.2, o = {}) => b.path(pts.map(P2), { close: true, fill: color, fillAlpha: fa, color: ec === null ? color : ec, width: ew, dash: o.dash, alpha: o.alpha });
+    D.panel = (pts, color, fa = 0.14, ec = null, ew = 2.2, o = {}) => { const q = pts.map(P2); for (let i = 0; i < q.length; i++) noteSeg(q[i], q[(i + 1) % q.length], 0.2); return b.path(q, { close: true, fill: color, fillAlpha: fa, color: ec === null ? color : ec, width: ew, dash: o.dash, alpha: o.alpha }); };
     D.dot = (p, color = 'ink', r = 4.5) => b.point(P2(p), { color, r });
     D.obstacle = (p, r = 8) => { const s0 = b.toS(P2(p)); D.boxes.push({ x0: s0.x - r, x1: s0.x + r, y0: s0.y - r, y1: s0.y + r }); };
     // 화살표(평행 표시): 선분 pq 의 f 위치에 count 개
@@ -243,6 +295,7 @@
       const p0 = P2(O), p1 = P2(add3(O, ua)), p2 = P2(add3(add3(O, ua), uc)), p3 = P2(add3(O, uc));
       b.path([p0, p1, p2, p3], { close: true, fill: color, fillAlpha: 0.22, color: null });
       b.path([p1, p2, p3], { color, width: 2.6 });
+      noteSeg(p1, p2, 1); noteSeg(p2, p3, 1); noteSeg(p0, p1, 0.6); noteSeg(p0, p3, 0.6);
     };
     // 두 방향 사이의 각 호(3차원, 같은 평면): O 에서 a → c, 반지름 r
     D.arc = (O, a, c, r = 0.5, color = 'sky', rings = 1) => {
@@ -276,22 +329,52 @@
         let ux = o.dir ? o.dir.x : 0, uy = o.dir ? o.dir.y : -1;
         const l = Math.hypot(ux, uy) || 1; ux /= l; uy /= l;
         const g = o.gap == null ? 11 : o.gap;
-        [0, 40, -40, 80, -80, 120, -120, 160, 180, 20, -20, 60, -60].forEach((deg) => {
+        [0, 20, -20, 40, -40, 60, -60, 80, -80, 100, -100, 120, -120, 160, 180].forEach((deg) => {
           const a = Math.atan2(uy, ux) + deg * DEG, dx = Math.cos(a), dy = Math.sin(a);
-          const d = g + Math.abs(dx) * w / 2 + Math.abs(dy) * h / 2;
-          cands.push([s0.x + dx * d, s0.y + dy * d]);
+          [0, 9, 20].forEach((extra) => {
+            const d = g + extra + Math.abs(dx) * w / 2 + Math.abs(dy) * h / 2;
+            cands.push([s0.x + dx * d, s0.y + dy * d]);
+          });
         });
       }
+      // 이 글자가 놓일 점 가까이를 지나는 선분은 글자 자신의 모서리(또는 붙은 모서리)라서 따지지 않습니다(o.on 일 때만)
+      const segS = D.segs.map((g) => ({ a: b.toS(g.a), c: b.toS(g.c), w: g.w }));
+      const own = (g) => {
+        const dx = g.c.x - g.a.x, dy = g.c.y - g.a.y, l2 = dx * dx + dy * dy || 1;
+        const u = clamp(((s0.x - g.a.x) * dx + (s0.y - g.a.y) * dy) / l2, 0, 1);
+        return Math.hypot(s0.x - g.a.x - u * dx, s0.y - g.a.y - u * dy) < 3.5;
+      };
+      const segsHere = o.on ? segS.filter((g) => !own(g)) : segS;
+      // 선분 중 상자 안에 들어간 길이(Liang–Barsky)
+      const inBox = (g, q) => {
+        let t0 = 0, t1 = 1; const dx = g.c.x - g.a.x, dy = g.c.y - g.a.y;
+        const P_ = [-dx, dx, -dy, dy], Q_ = [g.a.x - q.x0, q.x1 - g.a.x, g.a.y - q.y0, q.y1 - g.a.y];
+        for (let i = 0; i < 4; i++) {
+          if (Math.abs(P_[i]) < 1e-9) { if (Q_[i] < 0) return 0; continue; }
+          const r = Q_[i] / P_[i];
+          if (P_[i] < 0) { if (r > t1) return 0; if (r > t0) t0 = r; } else { if (r < t0) return 0; if (r < t1) t1 = r; }
+        }
+        return Math.max(0, t1 - t0) * Math.hypot(dx, dy);
+      };
       let best = null, bs = 1e18;
       cands.forEach((c, i) => {
         const q = bx(c[0], c[1]);
-        let sc = i * 2;
+        let sc = i * (o.at ? 2 : 1.2);
         D.boxes.forEach((r) => { sc += area(q, r) * 3; });
+        segsHere.forEach((g) => { sc += inBox(g, q) * 6 * g.w; });
         sc += (Math.max(0, lo.x - q.x0) + Math.max(0, q.x1 - hi.x) + Math.max(0, lo.y - q.y0) + Math.max(0, q.y1 - hi.y)) * 40;
         if (sc < bs) { bs = sc; best = c; }
       });
       if (!best) return;
       D.boxes.push(bx(best[0], best[1]));
+      // 점에서 멀리 떨어진 자리(선을 피하느라 밀려난 글자)는 가는 선으로 점과 이어 줍니다(o.leader)
+      if (o.leader) {
+        const dx = s0.x - best[0], dy = s0.y - best[1], dist = Math.hypot(dx, dy);
+        if (dist > h / 2 + w / 2 * 0.2 + 22) {
+          const tb = Math.min(dx ? (w / 2) / Math.abs(dx) : 1e9, dy ? (h / 2) / Math.abs(dy) : 1e9), e0 = { x: best[0] + dx * tb, y: best[1] + dy * tb }, e1 = { x: s0.x - (dx / dist) * 6, y: s0.y - (dy / dist) * 6 };
+          b.path([b.toW(e0.x, e0.y), b.toW(e1.x, e1.y)], { color: o.color || 'ink', width: 1.4, alpha: 0.7 });
+        }
+      }
       b.text(p, str, { dx: best[0] - s0.x, dy: best[1] - s0.y, color: o.color || 'ink', size, weight: 800, align: 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref });
     };
     // 화면에서 점 p 가 입체 중심(c)의 어느 쪽 바깥인지 단위벡터
@@ -302,37 +385,66 @@
     return D;
   }
 
-  /* 입체 그리기: 보이는 모서리는 실선, 안 보이는 모서리는 점선. style(e) → {color,width,alpha,dash?,glow?} */
+  /* 입체 그리기: 보이는 모서리는 실선, 안 보이는 모서리는 점선. style(e) → {color,width,alpha,dash?,glow?}
+     o.over(보이는 모서리 f, 점선 e) 가 true 이면(기준 모서리가 낀 쌍 등) f 앞으로 점선이 지나가면, 교차점에서 점선을 끊어 「뒤로 지나감」을 보입니다. */
   function drawSolid(D, sol, style, o = {}) {
     const { b } = D;
     const vis = (e) => (sol.edgeFaces[e.key] || []).some((fi) => D.facing(sol.faces[fi].n));
     if (o.fillFaces !== false) sol.faces.forEach((f) => { if (D.facing(f.n)) D.fill(f.v.map((k) => sol.verts[k]), o.faceColor || 'green', o.faceAlpha == null ? 0.07 : o.faceAlpha); });
     const hid = sol.edges.filter((e) => !vis(e)), shown = sol.edges.filter((e) => vis(e));
+    const kk = b.k || 60;
     const dr = (e, hidden) => {
       const st = style(e) || {};
-      D.line(sol.verts[e.u], sol.verts[e.v], st.color || 'ink', (st.width || 3) * (hidden ? 0.8 : 1), { dash: hidden ? [6, 5] : st.dash, alpha: (st.alpha == null ? 1 : st.alpha) * (hidden ? 0.75 : 1), glow: st.glow, ref: st.ref });
+      const w = (st.width || 3) * (hidden ? 0.85 : 1);
+      const al = (st.alpha == null ? 1 : st.alpha) * (hidden ? 0.8 : 1);
+      const A = sol.verts[e.u], B = sol.verts[e.v];
+      // 교차점 찾기
+      const cuts = [];
+      const overs = hidden && o.over ? shown.filter((f) => o.over(f, e)) : [];
+      if (overs.length) {
+        const a = D.P(A), c = D.P(B), len = Math.hypot(c.x - a.x, c.y - a.y) || 1;
+        overs.forEach((f) => {
+          if (f.u === e.u || f.u === e.v || f.v === e.u || f.v === e.v) return;
+          const p = D.P(sol.verts[f.u]), q = D.P(sol.verts[f.v]);
+          const r = { x: c.x - a.x, y: c.y - a.y }, s2 = { x: q.x - p.x, y: q.y - p.y }, den = r.x * s2.y - r.y * s2.x;
+          if (Math.abs(den) < 1e-9) return;
+          const tt = ((p.x - a.x) * s2.y - (p.y - a.y) * s2.x) / den, uu = ((p.x - a.x) * r.y - (p.y - a.y) * r.x) / den;
+          if (tt > 0.02 && tt < 0.98 && uu > -0.02 && uu < 1.02) cuts.push({ t: tt, d: (7 + (style(f).width || 5) * 0.5) / kk / len });
+        });
+      }
+      if (!cuts.length) { D.line(A, B, st.color || 'ink', w, { dash: hidden ? [6, 5] : st.dash, alpha: al, glow: st.glow, ref: st.ref }); return; }
+      cuts.sort((x, y) => x.t - y.t);
+      let from = 0;
+      const piece = (t0, t1) => { if (t1 - t0 > 0.015) D.line(lerp3(A, B, t0), lerp3(A, B, t1), st.color || 'ink', w, { dash: [6, 5], alpha: al, glow: st.glow, ref: st.ref }); };
+      cuts.forEach((c) => { piece(from, c.t - c.d); from = c.t + c.d; });
+      piece(from, 1);
     };
     hid.forEach((e) => dr(e, true));
     shown.forEach((e) => dr(e, false));
     return { vis };
   }
-  // 꼭짓점 점 + 이름(겹치지 않게)
+  // 꼭짓점이 보이는 쪽에 있는지(그 점에 모인 면 중 하나라도 보는 사람 쪽을 향하면 보임). 면 정보가 없으면(전개도) 보이는 것으로 칩니다.
+  const vertVisible = (D, sol, k) => !sol.faces || sol.faces.some((f) => f.v.includes(k) && D.facing(f.n));
+  // 꼭짓점 점 + 이름(겹치지 않게). 뒤쪽 꼭짓점은 작고 흐리게, 이름도 흐리게 해서 앞쪽 글자와 섞이지 않게 합니다.
   function drawVerts(D, sol, o = {}) {
     const { b, C } = D;
     sol.order.forEach((k) => {
       const p = sol.verts[k];
-      const hot = o.hot && o.hot(k);
-      b.point(D.P(p), { color: hot ? 'amber' : 'ink', r: hot ? 5.5 : 4 });
+      const hot = o.hot && o.hot(k), back = !vertVisible(D, sol, k);
+      b.point(D.P(p), { color: hot ? 'amber' : back ? 'muted' : 'ink', r: hot ? 5.5 : back ? 3.2 : 4 });
       D.obstacle(p, 7);
     });
-    if (C.txt && o.names !== false) sol.order.forEach((k) => D.label(sol.verts[k], k, { dir: D.out(sol.verts[k], sol.ctr), size: sol.order.length > 12 ? 15 : 17, gap: 9, color: o.hot && o.hot(k) ? 'amber' : 'ink' }));
+    if (C.txt && o.names !== false) sol.order.forEach((k) => {
+      const hot = o.hot && o.hot(k), back = !vertVisible(D, sol, k);
+      D.label(sol.verts[k], k, { dir: D.out(sol.verts[k], sol.ctr), size: sol.order.length > 12 ? 15 : 17, gap: 9, color: hot ? 'amber' : 'ink', alpha: back && !hot ? 0.55 : undefined });
+    });
   }
 
   /* ------------------------------------------------------------------ 조절 값 만들기 */
   const P = (label, min, max, step, value, o = {}) => ({ value, min, max, step, color: o.color || 'sky', label, hint: o.hint, format: o.format || ((v) => fmtN(v)) });
   const VIEW_PARAMS = {
     spYaw: P('좌우로 돌려 보기', -180, 180, 1, -30, { color: 'muted', format: (v) => Math.round(v) + '°' }),
-    spPitch: P('위아래로 기울여 보기', -10, 80, 1, 24, { color: 'muted', format: (v) => Math.round(v) + '°' })
+    spPitch: P('위아래로 기울여 보기', PITCH_MIN, PITCH_MAX, 1, 24, { color: 'muted', format: (v) => Math.round(v) + '°' })
   };
   const VIEW = ['spYaw', 'spPitch'];
 
@@ -450,6 +562,20 @@
            prob(M,s)→{tag,stem,choices,key,note?}, anim?:{key,dur,label,start}, stepT?(n), cam0?:{yaw,pitch}, spin?:false } */
   function makeScene(D) {
     const A = D.anim;
+    const pitchKey = D.pitchKey || 'spPitch', pitchRange = D.pitchRange || [PITCH_MIN, PITCH_MAX], yawOff = D.yawOff || 0;
+    // 이 장면에서 시점 검사에 쓸 입체: 객체 → 그 입체로 · undefined → 좌표축 기준 · false → 검사 안 함
+    const solOf = (s, M) => (D.safeSol ? D.safeSol(s, M) : M && M.sol && M.sol.order && M.sol.edges ? M.sol : undefined);
+    // 시점(좌우·위아래) 값을 쓸 수 있는 범위로 되돌립니다. 슬라이더·끌기 모두 이 함수를 거치므로 어떻게 돌려도 겨냥도가 포개지지 않습니다.
+    const normView = (s, M, spinning) => {
+      const last = s.spYawLast;
+      if (s[pitchKey] != null) s[pitchKey] = clamp(s[pitchKey], pitchRange[0], pitchRange[1]);
+      if (spinning) { s.spYawLast = s.spYaw; return; }
+      const sol = solOf(s, M);
+      if (sol === false) { s.spYawLast = s.spYaw; return; }
+      const d = last == null ? 0 : wrap180(s.spYaw - last);
+      s.spYaw = wrap180(safeYaw(sol, s.spYaw + yawOff, pitchKey === 'spPitch' ? s.spPitch : 30, d > 0 ? 1 : d < 0 ? -1 : 0) - yawOff);
+      s.spYawLast = s.spYaw;
+    };
     const actions = () => {
       const out = [];
       if (A) {
@@ -478,16 +604,17 @@
         answer: (s) => answerText(D, s)
       },
       enter: (s, lab) => {
-        const c0 = D.cam0 || { yaw: -30, pitch: 24 };
-        s.spYaw = c0.yaw; s.spPitch = c0.pitch; s.spSpin = false;
+        s.spSpin = false;
         D.init(s);
+        const c0 = (typeof D.cam0 === 'function' ? D.cam0(s) : D.cam0) || { yaw: -30, pitch: 24 };
+        s.spYaw = c0.yaw; s[pitchKey] = c0.pitch; s.spYawLast = c0.yaw;
         s.spSeed = 0; s.spPick = null; s.playing = false;
         if (A) s[A.key] = A.start || 0;
         if (lab) curLab = lab;
       },
       tick: (s, dt, lab) => {
         let again = false;
-        if (s.spSpin && lab && lab.tab === 'explore' && !s.dragging) { s.spYaw += 26 * dt; if (s.spYaw > 180) s.spYaw -= 360; again = true; }
+        if (s.spSpin && lab && lab.tab === 'explore' && !s.dragging) { s.spYaw += 26 * dt; if (s.spYaw > 180) s.spYaw -= 360; s.spYawLast = s.spYaw; again = true; }
         if (A && s.playing) {
           s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6));
           if (s[A.key] >= 1) s.playing = false;
@@ -503,6 +630,7 @@
         if (lab) curLab = lab;
         const C = baseCtx(s, lab, false);
         const M = D.model(s);
+        normView(s, M, !!s.spSpin && C.tab === 'explore');
         const v = D.view(M, C, s) || {};
         if (C.tab === 'problem') v.status = { tone: 'info', text: '그림을 보고 풀어 보세요' };
         else if (C.tab === 'review') { const n = D.steps(M).length; v.status = { tone: s.step >= n ? 'ok' : 'info', text: `풀이 ${Math.min(s.step || 1, n)} / ${n}단계` }; }
@@ -512,14 +640,36 @@
         const C = baseCtx(s, lab, !!b.thumb);
         if (b.thumb) C.step = 99;
         const M = D.model(s);
+        // 그림 한 장 한 장도 시점 검사를 거칩니다(작은 미리보기·저장된 시점 포함). 상태 자체는 건드리지 않고 그리는 동안만 바꿉니다.
+        const y0 = s.spYaw, p0 = s[pitchKey];
+        if (!(s.spSpin && C.tab === 'explore')) {
+          const sol = solOf(s, M);
+          if (p0 != null) s[pitchKey] = clamp(p0, pitchRange[0], pitchRange[1]);
+          if (sol !== false) s.spYaw = wrap180(safeYaw(sol, (y0 == null ? -30 : y0) + yawOff, pitchKey === 'spPitch' ? (s.spPitch == null ? 24 : s.spPitch) : 30, 0) - yawOff);
+        }
         C.t = A ? (C.tab === 'explore' || b.thumb ? (s[A.key] || 0) : (D.stepT && C.tab === 'review' ? (s[A.key] || 0) : (D.problemT == null ? 1 : D.problemT))) : 1;
-        D.draw(b, s, M, C);
+        try { D.draw(b, s, M, C); } finally { s.spYaw = y0; s[pitchKey] = p0; }
       }
     };
   }
 
   function register(order, id, title, short, params, scenes) {
     (window.APL_SP_GROUPS = window.APL_SP_GROUPS || []).push({ order, id, title, short, params: Object.assign({}, VIEW_PARAMS, params), scenes: scenes.map(makeScene) });
+  }
+  // 빈 곳을 끌어 시점 돌리기(labs/g7-spatial.html 의 board.orbit 이 부릅니다). 좌우 = 제자리 회전, 위아래 = 기울기. 범위 보정은 view() 가 합니다.
+  function orbit(s, dx, dy, lab) {
+    s.spSpin = false;
+    const sd = lab && lab.scene && lab.scene.sp, pk = (sd && sd.pitchKey) || 'spPitch', pr = (sd && sd.pitchRange) || [PITCH_MIN, PITCH_MAX];
+    s.spYaw = wrap180((s.spYaw || 0) + dx * 0.5);
+    s[pk] = clamp((s[pk] == null ? 24 : s[pk]) + dy * 0.4, pr[0], pr[1]);
+  }
+  // 입체 sol 의 보기 좋은 기본 좌우 각: yaw 범위 안에서 점수가 가장 높은 쪽(최고의 85% 이상이면 -30°에 가까운 것)
+  function bestYaw(sol, pitch = 24, lo = -46, hi = -18) {
+    let best = -30, bq = -1e9; const tb = yawTable(sol, pitch), rows = [];
+    for (let y = lo; y <= hi; y++) rows.push([y, tb.q[y + 180]]);
+    const mx = Math.max(...rows.map((r) => r[1]));
+    rows.filter((r) => r[1] >= mx * 0.85).forEach((r) => { const sc = -Math.abs(r[0] + 30); if (sc > bq) { bq = sc; best = r[0]; } });
+    return best;
   }
   const notes = (...li) => `<ul class="sp-notes">${li.map((x) => `<li>${x}</li>`).join('')}</ul>`;
   const rd = (label, value, color, note, ref, wide) => ({ label, value, color, note, ref, wide });
@@ -528,6 +678,6 @@
     PI, DEG, clamp, ease, seg01, NUM, LET, esc, pick, rint, shuffle, fmtN, jo,
     v3, add3, sub3, mul3, dot3, cross3, len3, unit3, lerp3, mid3, rotAxis, camOf, proj, facing, lineRel, lineMeetPoint,
     buildSolid, relEdges, classify, edgeByKey, ov, nm, SHAPE_NAME, PRISM_NAME,
-    textW, bboxOf, fit, scene3, drawSolid, drawVerts, P, VIEW_PARAMS, VIEW, mkChoices, mkText, cnt, baseCtx, makeScene, register, notes, rd
+    textW, bboxOf, fit, scene3, drawSolid, drawVerts, vertVisible, P, VIEW_PARAMS, VIEW, orbit, bestYaw, safeYaw, yawOk, viewQ, PITCH_MIN, PITCH_MAX, mkChoices, mkText, cnt, baseCtx, makeScene, register, notes, rd
   };
 })();
