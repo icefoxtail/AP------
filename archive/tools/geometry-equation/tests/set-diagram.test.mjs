@@ -46,6 +46,11 @@ const mapUneven={kind:'MAPPING',columns:[{id:'X',elements:['1','2','3','4','5']}
   arrows:[0,1,2,3,4].map(k=>({from:{column:0,element:k},to:{column:1,element:7-k}})),highlight:{arrows:[2]}};
 const mapUneven3={kind:'MAPPING',columns:[{id:'X',elements:['1','2']},{id:'Y',elements:['a','b','c','d']},{id:'Z',elements:['p','q','r']}],
   arrows:[{from:{column:0,element:0},to:{column:1,element:3}},{from:{column:0,element:1},to:{column:1,element:0}},{from:{column:1,element:3},to:{column:2,element:0}},{from:{column:1,element:0},to:{column:2,element:2}}]};
+// G17: f∘g (25 순천여고 고1 q9 kind of figure): g and f named above their arrows in two colours, the path 3→1→4 heavy in a third
+const mapFG={kind:'MAPPING',columns:[{id:'X',name:'X',elements:['1','2','3','4']},{id:'Y',name:'X',elements:['1','2','3','4']},{id:'Z',name:'X',elements:['1','2','3','4']}],
+  arrows:[[0,0,1,2],[0,1,1,0],[0,2,1,0],[0,3,1,3],[1,0,2,3],[1,1,2,1],[1,2,2,2],[1,3,2,0]].map(([a,b,c,d])=>({from:{column:a,element:b},to:{column:c,element:d}})),
+  arrowGroups:[{name:'g',from:'X',to:'Y',color:'BLUE'},{name:'f',from:'Y',to:'Z',color:'WARM'}],
+  highlightPaths:[{path:['3','1','4'],color:'GREEN'},{path:['4','1'],startColumn:1,color:'VIOLET'}]};
 
 test('the engine derives every atomic region and the truth of the set expression itself',()=>{
   const m=solveDiagram(venn2);
@@ -68,6 +73,10 @@ test('the engine derives every atomic region and the truth of the set expression
   assert.equal(layout.columns[0].ry,layout.columns[1].ry);assert.equal(layout.columns[0].cy,layout.columns[1].cy);
   // equal columns keep their old element rows exactly
   assert.deepEqual(setDiagramSpec(plan(map2),solveDiagram(map2)).labels.filter(l=>l.role==='element'&&l.extra.column===0).map(l=>l.anchor.y),[89,123,157]);
+  const fg=solveDiagram(mapFG);
+  assert.deepEqual(fg.arrowGroups.map(g=>[g.name,g.from,g.to,g.color,g.arrows]),[['g',0,1,'BLUE',[0,1,2,3]],['f',1,2,'WARM',[4,5,6,7]]]);
+  assert.deepEqual(fg.highlightPaths.map(p=>[p.cells,p.arrows,p.color]),[[[{column:0,element:2},{column:1,element:0},{column:2,element:3}],[2,4],'GREEN'],[[{column:1,element:3},{column:2,element:0}],[7],'VIOLET']]);
+  assert.equal(solveDiagram(map2).arrowGroups,undefined);assert.equal(solveDiagram(map2).highlightPaths,undefined);
   assert.deepEqual(setDiagramSize(solveDiagram(venn2)),{width:470,height:330});
   assert.deepEqual(setDiagramSize(solveDiagram(map2)),{width:460,height:220});
   // a four-set membership table keeps every declared membership as its own cell truth
@@ -109,6 +118,22 @@ test('set figures that cannot be drawn faithfully are refused with their codes',
   refuse({...map2,highlight:{arrows:[9]}},'MAPPING_HIGHLIGHT_INVALID');
   for(const bad of ['--2','-','1/','1/2/3','-1.5','abcde','-12345','2√','-x'])refuse({...mapSigned,columns:[{id:'X',elements:[bad]},mapSigned.columns[1]],arrows:[mapSigned.arrows[0]]},'MAPPING_ELEMENT_TEXT_UNSUPPORTED');
   refuse({...mapSigned,columns:[{id:'X',elements:['-2','\u22122']},mapSigned.columns[1]],arrows:[mapSigned.arrows[0]]},'MAPPING_COLUMNS_INVALID');
+  const withG=(arrowGroups)=>({...mapFG,arrowGroups}),withP=(highlightPaths)=>({...mapFG,highlightPaths});
+  refuse(withG([{name:'g',from:'X',to:'W'}]),'MAPPING_ARROW_GROUP_INVALID');
+  refuse(withG([{name:'g',from:'X',to:'Z'}]),'MAPPING_ARROW_GROUP_INVALID');
+  refuse(withG([{name:'g',from:'X',to:'Y',color:'ORANGE'}]),'MAPPING_ARROW_GROUP_INVALID');
+  refuse(withG([{name:'g',from:'X',to:'Y'},{name:'h',from:'Y',to:'X'}]),'MAPPING_ARROW_GROUP_INVALID');
+  refuse(withG([{from:'X',to:'Y'}]),'MAPPING_ARROW_GROUP_INVALID');
+  refuse(withG([{name:'g',from:'Y',to:'X'}]),'MAPPING_ARROW_GROUP_EMPTY');
+  refuse(withP([{path:['3','1','4'],startColumn:1}]),'MAPPING_PATH_INVALID');
+  refuse(withP([{path:['3','1'],startColumn:-1}]),'MAPPING_PATH_INVALID');
+  assert.equal(solveDiagram(withP([{path:['3','3'],startColumn:1},{path:['3','1'],color:'GREEN'}])).highlightPaths.length,2);
+  refuse(withP([1,2,3,4,5].map(()=>({path:['3','1']}))),'MAPPING_PATH_INVALID');
+  refuse(withP([{path:['3','1'],color:'GREEN'},{path:['3','1'],color:'BLUE'}]),'MAPPING_PATH_INVALID');
+  refuse(withP([{path:['3','2','4']}]),'MAPPING_PATH_ARROW_MISSING');
+  refuse(withP([{path:['3','9']}]),'MAPPING_PATH_INVALID');
+  refuse(withP([{path:['3']}]),'MAPPING_PATH_INVALID');
+  refuse(withP([{path:['3','1'],color:'ORANGE'}]),'MAPPING_PATH_INVALID');
   refuse({kind:'PIE'},'SET_KIND_UNSUPPORTED');
   assert.throws(()=>checkSetDiagramPlan({...plan(venn2),extra:1}),code('SET_DIAGRAM_PLAN_INVALID'));
   assert.throws(()=>setDiagramSpec(plan(venn2),{...solveDiagram(venn2),shade:null}),code('SET_MODEL_MISMATCH'));
@@ -182,6 +207,14 @@ test('every figure composes, the independent observer passes it, and it catches 
     svg=await compose(mapUneven3,10);
     const uneven3Audit=await audit(mapUneven3,svg);assert.equal(uneven3Audit.status,'PASS',JSON.stringify(uneven3Audit.errors));
     assert.ok(has(await audit(mapUneven3,svg.replace(/(id="oval-X"[^>]*ry=")([\d.]+)/,(m,head,ry)=>`${head}${Number(ry)-30}`)),'SD_OVAL_HEIGHT'));
+    // f∘g: group names and colours, a coloured heavy path; the observer reads every stroke, head fill and name back
+    svg=await compose(mapFG,11);
+    const fgAudit=await audit(mapFG,svg);assert.equal(fgAudit.status,'PASS',JSON.stringify(fgAudit.errors));
+    assert.ok(svg.includes('stroke="#1f5fa8" stroke-width="1.8"')&&svg.includes('stroke="#2e7d32" stroke-width="2.4"')&&svg.includes('data-label-role="arrow-group-name"'));
+    assert.ok(has(await audit(mapFG,svg.replace(/(<polyline id="arrow-0"[^>]*stroke=")#1f5fa8/,'$1#b85c00')),'SD_ARROW_COLOUR:0'));
+    assert.ok(has(await audit(mapFG,svg.replace(/(<polygon id="arrow-head-2"[^>]*fill=")#2e7d32/,'$1#111')),'SD_ARROW_COLOUR:2'));
+    assert.ok(has(await audit({...mapFG,arrowGroups:[{name:'h',from:'X',to:'Y',color:'BLUE'},mapFG.arrowGroups[1]]},svg),'SD_ARROW_GROUP_TEXT:0'));
+    assert.ok(has(await audit(mapFG,svg.replace('id="arrow-group-1" data-label-kind="COORDINATE_LABEL" data-label-role="arrow-group-name"','id="arrow-group-1" data-label-kind="COORDINATE_LABEL" data-label-role="column-note"')),'SD_ARROW_GROUP_LABEL_SET'));
     // f and its reverse g between the same two sets
     svg=await compose(mapback,6);
     const reverse=await audit(mapback,svg);assert.equal(reverse.status,'PASS',JSON.stringify(reverse.errors));

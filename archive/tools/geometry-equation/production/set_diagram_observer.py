@@ -587,8 +587,51 @@ def mapping_shown(text):
     return re.sub('\u221a([0-9]+)', r'\\sqrt{\1}', text.replace('\u2212', '-'))
 
 
+ARROW_PALETTE_LINE = {'BLUE': '#1f5fa8', 'WARM': '#b85c00', 'GREEN': '#2e7d32', 'ROSE': '#b8325f', 'VIOLET': '#6b46b3'}      # this observer's own copy of the C1 line colours
+ARROW_PLAIN = '#111'
+
+
+def mapping_arrow_colours(plan):
+    """G17: from the plan alone, {arrow index: palette name or None} (a highlighted path's colour, else its group's) and the set of arrow indices on a highlighted path."""
+    columns = plan['columns']
+    ids = [c['id'] for c in columns]
+    arrows = plan['arrows']
+    colour = {}
+    for group in plan.get('arrowGroups') or []:
+        if group.get('color') is None:
+            continue
+        if group['color'] not in ARROW_PALETTE_LINE or group['from'] not in ids or group['to'] not in ids:
+            fail('SD_ARROW_GROUP_PLAN')
+        a, b = ids.index(group['from']), ids.index(group['to'])
+        for index, arrow in enumerate(arrows):
+            if arrow['from']['column'] == a and arrow['to']['column'] == b:
+                colour[index] = group['color']
+    on_path = set()
+    for path in plan.get('highlightPaths') or []:
+        cells = []
+        for k, text in enumerate(path['path']):
+            column = int(path.get('startColumn', 0)) + k
+            if column >= len(columns):
+                fail('SD_PATH_PLAN')
+            shown = [t.replace('-', '\u2212') for t in columns[column]['elements']]
+            if text.replace('-', '\u2212') not in shown:
+                fail('SD_PATH_PLAN')
+            cells.append((column, shown.index(text.replace('-', '\u2212'))))
+        for (c0, e0), (c1, e1) in zip(cells, cells[1:]):
+            found = [i for i, a in enumerate(arrows) if (a['from']['column'], a['from']['element'], a['to']['column'], a['to']['element']) == (c0, e0, c1, e1)]
+            if len(found) != 1:
+                fail('SD_PATH_PLAN')
+            on_path.add(found[0])
+            if path.get('color') is not None:
+                if path['color'] not in ARROW_PALETTE_LINE:
+                    fail('SD_PATH_PLAN')
+                colour[found[0]] = path['color']
+    return colour, on_path
+
+
 def audit_mapping(plan, doc):
     columns = plan['columns']
+    arrow_colour, path_arrows = mapping_arrow_colours(plan)
     ovals = doc.role('ellipse', 'oval')
     drawn = {int(e.get('data-column', -1)): ellipse_of(e) for e in ovals}
     if len(ovals) != len(columns) or set(drawn) != set(range(len(columns))):
@@ -605,6 +648,22 @@ def audit_mapping(plan, doc):
         box = doc.label_box(labels[0])
         if box[1] + box[3] > ordered[index]['cy'] - ordered[index]['ry'] + 4:
             doc.err('SD_COLUMN_NAME_PLACE:%d' % index)
+    group_labels = doc.label_role('arrow-group-name')
+    wanted_groups = plan.get('arrowGroups') or []
+    if len(group_labels) != len(wanted_groups):
+        doc.err('SD_ARROW_GROUP_LABEL_SET')
+    ids = [c['id'] for c in columns]
+    for index, group in enumerate(wanted_groups):
+        labels = [l for l in group_labels if l.get('data-group') == str(index)]
+        if len(labels) != 1:
+            doc.err('SD_ARROW_GROUP_LABEL:%d' % index)
+            continue
+        if doc.shown_text(labels[0]) != group['name']:
+            doc.err('SD_ARROW_GROUP_TEXT:%d' % index)
+        a, b = ordered[ids.index(group['from'])], ordered[ids.index(group['to'])]
+        box = doc.label_box(labels[0])
+        if abs(box[0] + box[2] / 2 - (a['cx'] + b['cx']) / 2) > 3 or box[1] + box[3] > min(a['cy'] - a['ry'], b['cy'] - b['ry']) + 4:
+            doc.err('SD_ARROW_GROUP_PLACE:%d' % index)
     elements = {(l.get('data-column'), l.get('data-element')): l for l in doc.label_role('element')}
     expected = {(str(c), str(e)) for c, column in enumerate(columns) for e in range(len(column['elements']))}
     if set(elements) != expected:
@@ -687,12 +746,17 @@ def audit_mapping(plan, doc):
         dashed = poly.get('stroke-dasharray') is not None
         if dashed != (arrow.get('style', 'SOLID') == 'DASHED'):
             doc.err('SD_ARROW_STYLE:%d' % index)
-        highlighted = index in set(plan.get('highlight', {}).get('arrows', []))
+        highlighted = index in set(plan.get('highlight', {}).get('arrows', [])) or index in path_arrows
         try:
             width = float(poly.get('stroke-width'))
         except (TypeError, ValueError):
             width = 1.4
         if (width >= 2.0) != highlighted:
+            doc.err('SD_ARROW_HIGHLIGHT:%d' % index)
+        want_colour = ARROW_PALETTE_LINE[arrow_colour[index]] if index in arrow_colour else ARROW_PLAIN
+        if (poly.get('stroke') or '').lower() != want_colour:
+            doc.err('SD_ARROW_COLOUR:%d' % index)
+        if index in arrow_colour and not highlighted and abs(width - 1.8) > 0.05:
             doc.err('SD_ARROW_HIGHLIGHT:%d' % index)
         heads = [h for h in doc.role('polygon', 'arrow-head') if h.get('data-arrow') == str(index)]
         if len(heads) != 1:
@@ -704,6 +768,8 @@ def audit_mapping(plan, doc):
                 fail('SD_ARROW_HEAD_UNREADABLE')
             if len(head) != 3:
                 doc.err('SD_ARROW_HEAD:%d' % index)
+            elif (heads[0].get('fill') or '').lower() != want_colour:
+                doc.err('SD_ARROW_COLOUR:%d' % index)
             else:
                 tip = points[-1]
                 distances = sorted(math.hypot(px - tip[0], py - tip[1]) for px, py in head)

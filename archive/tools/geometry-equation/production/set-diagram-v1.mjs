@@ -5,6 +5,7 @@ import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
+import {PALETTE,PALETTE_NAMES,isPaletteName} from './palette.mjs';
 
 // A standalone set figure (set-diagram-figure-v1): a Venn diagram of 1-3 sets with the elements the author places and a shaded
 // region given as a set expression, and a finite mapping diagram of 2-3 columns with the declared arrows. The author gives only
@@ -208,7 +209,7 @@ function mappingElement(value){
   return {text,math:true,tex:mappingElementTex(text)};
 }
 function solveMapping(diagram){
-  onlyKeys(diagram,['kind','columns','arrows','highlight'],'SET_DIAGRAM_PLAN_INVALID');
+  onlyKeys(diagram,['kind','columns','arrows','highlight','arrowGroups','highlightPaths'],'SET_DIAGRAM_PLAN_INVALID');
   if(!Array.isArray(diagram.columns)||diagram.columns.length<2||diagram.columns.length>3)bad(diagram.columns?.length>3?'MAPPING_COLUMN_COUNT_UNSUPPORTED':'MAPPING_COLUMNS_INVALID');
   const columnIds=new Set();
   const columns=diagram.columns.map(raw=>{
@@ -267,10 +268,57 @@ function solveMapping(diagram){
       });
     }
   }
+  // arrowGroups (G17): a name (f, g, ...) written between two adjacent columns above the arrows that go from `from` to `to` (column ids), and an optional C1 palette colour for those arrows
+  const GROUP_ERR='MAPPING_ARROW_GROUP_INVALID',columnIndex=id=>columns.findIndex(c=>c.id===id);
+  let groups=[];
+  if(diagram.arrowGroups!==undefined){
+    if(!Array.isArray(diagram.arrowGroups)||diagram.arrowGroups.length<1||diagram.arrowGroups.length>columns.length-1)bad(GROUP_ERR);
+    const pairs=new Set();
+    groups=diagram.arrowGroups.map((raw,index)=>{
+      onlyKeys(raw,['name','from','to','color'],GROUP_ERR);
+      const name=cleanText(raw.name,8,GROUP_ERR);
+      const from=columnIndex(raw.from),to=columnIndex(raw.to);
+      if(from<0||to<0||Math.abs(from-to)!==1)bad(GROUP_ERR);
+      if(raw.color!==undefined&&!isPaletteName(raw.color))bad(GROUP_ERR);
+      const pair=Math.min(from,to);
+      if(pairs.has(pair))bad(GROUP_ERR);
+      pairs.add(pair);
+      const mine=arrows.filter(a=>a.from.column===from&&a.to.column===to).map(a=>a.index);
+      if(!mine.length)bad('MAPPING_ARROW_GROUP_EMPTY');
+      return {index,name,from,to,color:raw.color??null,arrows:mine};
+    });
+  }
+  // highlightPaths (G17): up to 4 entries {path:[element text in column startColumn(default 0), in the next column, ...],color?,startColumn?} draw the arrows along a composite path heavy and in its colour; every step must be a declared arrow
+  let paths=[];
+  if(diagram.highlightPaths!==undefined){
+    const PATH_ERR='MAPPING_PATH_INVALID';
+    if(!Array.isArray(diagram.highlightPaths)||diagram.highlightPaths.length<1||diagram.highlightPaths.length>4)bad(PATH_ERR);
+    const used=new Set();
+    paths=diagram.highlightPaths.map(raw=>{
+      onlyKeys(raw,['path','color','startColumn'],PATH_ERR);
+      const start=raw.startColumn===undefined?0:raw.startColumn;
+      if(!Number.isInteger(start)||start<0)bad(PATH_ERR);
+      if(!Array.isArray(raw.path)||raw.path.length<2||start+raw.path.length>columns.length||raw.path.some(t=>typeof t!=='string'))bad(PATH_ERR);
+      if(raw.color!==undefined&&!isPaletteName(raw.color))bad(PATH_ERR);
+      const cells=raw.path.map((text,k)=>{
+        const column=start+k,element=columns[column].elements.findIndex(e=>e.text===text.replace(/-/g,'\u2212'));
+        if(element<0)bad(PATH_ERR);
+        return {column,element};
+      });
+      const steps=[];
+      for(let k=0;k+1<cells.length;k++){
+        const arrow=arrows.find(a=>a.from.column===cells[k].column&&a.from.element===cells[k].element&&a.to.column===cells[k+1].column&&a.to.element===cells[k+1].element);
+        if(!arrow)bad('MAPPING_PATH_ARROW_MISSING');
+        if(used.has(arrow.index))bad(PATH_ERR);
+        used.add(arrow.index);steps.push(arrow.index);
+      }
+      return {cells,arrows:steps,color:raw.color??null};
+    });
+  }
   // A function assigns at most one image to each element: report it, the figure itself draws exactly the declared arrows.
   const out=new Map();
   for(const arrow of arrows){const key=`${arrow.from.column}:${arrow.from.element}`;out.set(key,(out.get(key)??0)+1);}
-  return {schemaVersion:MODEL_VERSION,kind:'MAPPING',columns,arrows,highlight,isFunction:[...out.values()].every(count=>count===1)};
+  return {schemaVersion:MODEL_VERSION,kind:'MAPPING',columns,arrows,highlight,...(groups.length?{arrowGroups:groups}:{}),...(paths.length?{highlightPaths:paths}:{}),isFunction:[...out.values()].every(count=>count===1)};
 }
 function solveTable(diagram){
   // An explicit membership table: every finite element is a row and every set a column. This is the faithful figure for a
@@ -504,6 +552,7 @@ function simplifyLoop(points,eps){
 }
 
 // --- spec: primitives and labels (element placement happens after typesetting) ---------------------------------------------------------------
+const ARROW_COLOR_WIDTH=1.8;
 const STYLE={
   universal:'fill="none" stroke="#111" stroke-width="1.2"',
   set:'fill="none" stroke="#111" stroke-width="1.4"',
@@ -518,6 +567,12 @@ const STYLE={
   mark:'fill="#111" stroke="none"',
   leader:'stroke="#444" stroke-width="1.1" fill="none"'
 };
+// coloured arrows (G17): a group's arrows in a C1 palette line colour a little heavier than plain, a highlighted path as heavy as a highlighted arrow
+for(const name of PALETTE_NAMES){
+  STYLE[`arrowC_${name}`]=`stroke="${PALETTE[name].line}" stroke-width="${ARROW_COLOR_WIDTH}" fill="none"`;
+  STYLE[`arrowHiC_${name}`]=`stroke="${PALETTE[name].line}" stroke-width="2.4" fill="none"`;
+  STYLE[`headC_${name}`]=`fill="${PALETTE[name].line}" stroke="none"`;
+}
 const rect=(id,role,cls,x,y,width,height,data={},layer=30)=>({t:'rect',id,role,cls,x:r6(x),y:r6(y),width:r6(width),height:r6(height),data,layer});
 const ellipse=(id,role,cls,cx,cy,rx,ry,data={},layer=30)=>({t:'ellipse',id,role,cls,cx:r6(cx),cy:r6(cy),rx:r6(rx),ry:r6(ry),data,layer});
 const DISPLAY='\\displaystyle ';
@@ -591,9 +646,19 @@ function mappingSpec(model,layout){
       :textLabel(`column-name-${column.id}`,'column-name',`oval-${column.id}`,column.name,'center','middle',g.cx,g.nameY,{column:index});
     labels.push(name);
   });
+  for(const group of model.arrowGroups??[]){
+    const a=columns[group.from],b=columns[group.to],x=(a.cx+b.cx)/2;
+    const id=`arrow-group-${group.index}`,owner=`oval-${model.columns[group.from].id}`;
+    labels.push(labelMath(group.name)?math(id,'arrow-group-name',owner,group.name,group.name,'center','middle',x,a.nameY,{group:group.index}):textLabel(id,'arrow-group-name',owner,group.name,'center','middle',x,a.nameY,{group:group.index}));
+  }
+  // the colour of each arrow: its highlighted path's, else its group's (a path without a colour of its own keeps the group's colour)
+  const arrowColor=new Map(),pathArrows=new Set();
+  for(const group of model.arrowGroups??[])if(group.color)for(const k of group.arrows)arrowColor.set(k,group.color);
+  for(const path of model.highlightPaths??[])for(const k of path.arrows){pathArrows.add(k);if(path.color)arrowColor.set(k,path.color);}
   for(const arrow of model.arrows){
     const key=`${arrow.from.column}:${arrow.from.element}`;
-    prims.push({t:'polyline',id:`arrow-${arrow.index}`,role:'arrow',cls:model.highlight.arrows.includes(arrow.index)?'arrowHi':'arrow',
+    const color=arrowColor.get(arrow.index)??null,heavy=model.highlight.arrows.includes(arrow.index)||pathArrows.has(arrow.index);
+    prims.push({t:'polyline',id:`arrow-${arrow.index}`,role:'arrow',cls:color?(heavy?`arrowHiC_${color}`:`arrowC_${color}`):(heavy?'arrowHi':'arrow'),...(color?{color}:{}),
       points:[[0,0],[0,0],[0,0],[0,0]],dashed:arrow.style==='DASHED',
       data:{arrow:arrow.index,'from-column':arrow.from.column,'from-element':arrow.from.element,'to-column':arrow.to.column,'to-element':arrow.to.element},layer:40,resolved:false});
     void key;
@@ -791,7 +856,7 @@ function resolveMapping(spec,placed){
     const g=spec.layout.columns[item.label.extra.column];
     if(ovalRelation(item.box,g)!=='INSIDE')bad('MAPPING_ELEMENT_OUT_OF_OVAL');
   }
-  for(const item of placed)if(item.label.role==='column-name'){
+  for(const item of placed)if(item.label.role==='column-name'||item.label.role==='arrow-group-name'){
     const g=spec.layout.columns[item.label.extra.column];
     if(item.box.y+item.box.height>spec.layout.top+2)bad('MAPPING_COLUMN_NAME_OVERLAPS_OVAL');
   }
@@ -812,7 +877,7 @@ function resolveMapping(spec,placed){
     const bend1=forward?sx+stub:sx-stub,bend2=forward?tx-stub:tx+stub;
     prim.points=[[r6(sx),r6(sy)],[r6(bend1),r6(sy)],[r6(bend2),r6(ty)],[r6(tx),r6(ty)]];
     prim.layer=40;prim.resolved=true;
-    const head={t:'polygon',id:`arrow-head-${prim.data.arrow}`,role:'arrow-head',cls:'head',
+    const head={t:'polygon',id:`arrow-head-${prim.data.arrow}`,role:'arrow-head',cls:prim.color?`headC_${prim.color}`:'head',
       points:forward?[[r6(tx),r6(ty)],[r6(tx-9),r6(ty-3.6)],[r6(tx-9),r6(ty+3.6)]]:[[r6(tx),r6(ty)],[r6(tx+9),r6(ty-3.6)],[r6(tx+9),r6(ty+3.6)]],
       data:{arrow:prim.data.arrow},layer:41};
     spec.prims.push(head);
