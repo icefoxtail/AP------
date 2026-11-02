@@ -188,7 +188,10 @@ test('M6 student detail shell is a W single-column modal with one cancel and a w
     // 머리줄(<header>)이 `body.ap-modal-open header { pointer-events: none }`에 잡혀 [수정]이 눌리지 않던 문제
     const css = read('apmath/css/ws-student.css');
     assert.match(css, /body\.ap-modal-open \.ap-student-detail-shell > \.ap-student-profile-head \{[^}]*pointer-events: auto/);
-    assert.match(read('apmath/index.html'), /body\.ap-modal-open header,[\s\S]*?pointer-events: none;/, 'the global rule that causes it still exists, so the scoped override is needed');
+    // N2(2026-11-02): 전역 규칙을 앱 맨 위 헤더(`body > header`)로 좁혔다. 모달 안 <header>는 더 이상 잡히지 않으므로 위 우회는 남겨도 무해하다.
+    const indexHtml = read('apmath/index.html');
+    assert.match(indexHtml, /body\.ap-modal-open > header,[\s\S]*?pointer-events: none;/);
+    assert.doesNotMatch(indexHtml, /body\.ap-modal-open header[,\s{]/, 'the global rule must not match <header> elements inside the modal');
 });
 
 // ------------------------------------------------------------ 반 이름 표기 규칙 (사용자 지시 2026-11-02)
