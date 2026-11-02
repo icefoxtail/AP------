@@ -67,6 +67,7 @@ const tick = (ms = 5) => new Promise(resolve => setTimeout(resolve, ms));
 
 function makeApp({ tier = 'form', adoptBodyHasActions = false } = {}) {
     const browser = makeBrowser();
+    const flags = { login: false };
     const calls = { confirm: 0, renderClass: [], renderDashboard: 0, renderAdmin: 0 };
     const answers = { confirm: true };
     const classes = {
@@ -85,7 +86,7 @@ function makeApp({ tier = 'form', adoptBodyHasActions = false } = {}) {
     elements['modal-body'].addEventListener = (type, fn) => { (elements['modal-body'].listeners = elements['modal-body'].listeners || {})[type] = fn; };
     const document = {
         getElementById: id => elements[id] || null,
-        querySelector: () => null,
+        querySelector: sel => (sel === '.ap-login-fullscreen' && flags.login ? {} : null),
         createElement: () => bar,
         addEventListener() {},
         readyState: 'complete',
@@ -103,7 +104,7 @@ function makeApp({ tier = 'form', adoptBodyHasActions = false } = {}) {
         sliceBetween(ui, 'function getCurrentModalSnapshot() {', 'function escapeHtmlForTextarea(')
     ].join('\n') + `
         ;globalThis.__api = { showModal, showModalStep, closeModal, requestCloseModal, appHistoryBack, appHistoryRecordView, apmsNavDepth,
-            registerEscapeLayer, markModalDirty, isModalDirty, appHistoryState, get stepDepth() { return modalStepStack.length; } };`;
+            registerEscapeLayer, apmsNavReset, apmsNavModalOpen, markModalDirty, isModalDirty, appHistoryState, get stepDepth() { return modalStepStack.length; } };`;
     const context = {
         document, window: win, history: browser.history, location: win.location, console: { warn() {}, log() {}, error() {} },
         setTimeout, clearTimeout, Promise, requestAnimationFrame: fn => fn(), state: { ui: {}, auth: { role: 'teacher' } },
@@ -115,7 +116,7 @@ function makeApp({ tier = 'form', adoptBodyHasActions = false } = {}) {
     const api = context.__api;
     const type = () => { elements['modal-body'].listeners.input({ isTrusted: true, target: { tagName: 'INPUT', type: 'text', closest: () => null } }); };
     return {
-        api, browser, calls, answers, elements, bar, root, bodyClasses, type,
+        api, browser, calls, answers, flags, elements, bar, root, bodyClasses, type,
         open: (title = '모달') => { api.showModal(title, '<div></div>'); },
         step: (title = '단계') => { api.showModalStep(title, '<div></div>'); },
         // 화면 이동 흉내: 앱이 renderClass 등을 부르면 ui.js 감싸기가 appHistoryRecordView를 부른다.
@@ -295,4 +296,61 @@ test('CSS: 앱 맨 위 헤더만 잡고(모달 안 <header> 제외), 토스트�
     const phoneRule = sliceBetween(index, '@media (max-width: 600px) {\n            body.ap-modal-open:has(', '}\n        }');
     assert.match(phoneRule, /apms-modal--workspace[\s\S]*apms-modal--panel[\s\S]*\.app-back-btn/);
     assert.match(phoneRule, /visibility: hidden/);
+});
+
+test('로그아웃(로그인 화면): 이전 사용자의 화면 이력·모달을 버리고, 뒤로 가기가 아무것도 복원하지 않는다', async () => {
+    const app = makeApp();
+    app.view('dashboard');
+    app.view('classDetail', { classId: 'c1' });
+    app.open();
+    await tick();
+    assert.equal(app.guard(), true);
+    // logout() → renderLogin()이 부르는 정리
+    app.flags.login = true;
+    app.api.apmsNavReset();
+    await tick(20);
+    assert.equal(app.api.appHistoryState.backStack.length, 0, '이전 사용자의 이력 폐기');
+    assert.equal(app.api.appHistoryState.currentView, null);
+    assert.equal(app.api.apmsNavDepth(), 0);
+    assert.equal(app.guard(), false, '보호 항목도 걷힘');
+    // 방어: 이력이 남아 있어도 로그인 화면이면 복원하지 않는다
+    app.flags.login = false;
+    app.view('dashboard');
+    app.view('classDetail', { classId: 'c2' });
+    await tick();
+    const rendered = app.calls.renderDashboard + app.calls.renderAdmin;
+    app.flags.login = true;
+    app.browser.userBack();
+    await tick(20);
+    assert.equal(app.calls.renderDashboard + app.calls.renderAdmin, rendered, '로그인 화면에서 뒤로 가기가 대시보드를 그리지 않는다');
+    assert.equal(app.api.appHistoryState.backStack.length, 0);
+    assert.match(read('apmath/js/core.js'), /function renderLogin\(\) \{\s*if \(typeof apmsNavReset === 'function'\) apmsNavReset\(\)/, 'renderLogin이 이력을 정리한다');
+});
+
+test('closeModal 없이 #modal-overlay를 직접 숨긴 화면이 있어도 논리 상태가 어긋나 뒤로 가기가 먹통이 되지 않는다', async () => {
+    const app = makeApp();
+    app.open();
+    await tick();
+    assert.equal(app.api.apmsNavModalOpen(), true);
+    app.elements['modal-overlay'].classList.add('hidden'); // report-center 같은 직접 숨김
+    assert.equal(app.api.apmsNavModalOpen(), false, 'DOM과 맞춰 논리 상태를 고친다');
+    assert.equal(app.api.apmsNavDepth(), 0);
+    await tick(20);
+    assert.equal(app.guard(), false, '어긋남을 감지하면 보호 항목도 걷는다');
+    // 그 뒤 새 모달은 정상 동작
+    app.elements['modal-overlay'].classList.remove('hidden');
+    app.open('다시');
+    await tick();
+    assert.equal(app.guard(), true);
+    app.browser.userBack();
+    await tick();
+    assert.equal(app.api.apmsNavDepth(), 0, '뒤로 → 닫힘');
+});
+
+test('첫 대시보드 그리기가 기록되지 않았어도(스크립트 로딩보다 자료가 먼저 온 경우) 첫 이동 때 대시보드를 뒤로 갈 곳으로 남긴다', async () => {
+    const app = makeApp();
+    app.view('classDetail', { classId: 'c1' }); // currentView가 비어 있는 상태에서 반 화면으로
+    await tick();
+    assert.deepEqual(Array.from(app.api.appHistoryState.backStack, v => v.type), ['dashboard']);
+    assert.equal(app.guard(), true);
 });

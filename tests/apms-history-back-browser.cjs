@@ -285,6 +285,41 @@ async function behaviour(browser, base) {
         await wait(page);
         assert.equal(await isOpen(page), false);
 
+        // 9) 로그아웃 뒤 뒤로 가기는 이전 사용자의 화면을 다시 보여 주지 않는다 (공용 태블릿)
+        await page.evaluate(() => renderClass('c1'));
+        await wait(page, 500);
+        assert.equal(await hasGuard(page), true);
+        await page.evaluate(() => logout());
+        await wait(page, 700);
+        assert.equal(await page.locator('.ap-login-fullscreen').count(), 1, '로그인 화면');
+        assert.equal(await hasGuard(page), false, '로그아웃하면 보호 항목이 걷힌다');
+        await page.goBack();
+        await wait(page, 600);
+        if (page.url() !== 'about:blank') {
+            assert.equal(await hasClass(page), false, '뒤로 가기가 반 화면을 로그인 없이 보여 주지 않는다');
+            assert.equal(await page.locator('.ap-login-fullscreen').count(), 1, '로그인 화면에 머문다');
+        }
+        // 세션을 다시 넣고 새로 시작
+        await page.goto(base + '/apmath/index.html', { waitUntil: 'load' });
+        await page.evaluate(() => localStorage.setItem('APMATH_SESSION', JSON.stringify({ id: 't1', name: '김선생', role: 'teacher', session_token: 'local-test-only' })));
+        await page.reload({ waitUntil: 'load' });
+        await page.waitForFunction(() => typeof state !== 'undefined' && state.db && state.db.classes.length > 0, null, { timeout: 15000 });
+        await wait(page, 1800); // 화면 이동 감싸기(appHistoryPatchGlobalNavigation 재시도)가 끝난 뒤에 시작한다
+        await tap(page);
+
+        // 10) closeModal 없이 #modal-overlay를 직접 숨기는 코드(report-center 등)가 있어도 뒤로 가기가 먹통이 되지 않는다
+        const dbgPre = await page.evaluate(() => JSON.stringify({ cur: appHistoryState.currentView, wrapped: !!renderDashboard.__apHistoryWrapped, role: state.auth && state.auth.role }));
+        await page.evaluate(() => renderClass('c1'));
+        await wait(page, 500);
+        await page.evaluate(html => showModal('F 폼 샘플', html), DEMO_F);
+        await wait(page);
+        await page.evaluate(() => { const o = document.getElementById('modal-overlay'); o.classList.add('hidden'); o.classList.remove('show'); });
+        const dbg0 = await page.evaluate(() => JSON.stringify({ st: history.state, stack: appHistoryState.backStack.length, logical: apmsModalLogicalOpen }));
+        await page.goBack();
+        await wait(page, 600);
+        assert.equal(await hasClass(page), false, '직접 숨겨진 모달은 닫힌 것으로 보므로 첫 뒤로 가기가 바로 대시보드로 간다(먹통 아님) ' + dbgPre + dbg0 + ' ' + await page.evaluate(() => JSON.stringify({ st: history.state, stack: appHistoryState.backStack.length })));
+        assert.ok(page.url().startsWith(base));
+
         assert.deepEqual(errors, [], 'page errors: ' + errors.join(' | '));
     } finally {
         await context.close();

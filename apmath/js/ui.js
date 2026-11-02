@@ -231,7 +231,12 @@ function appHistoryRecordView(nextView) {
     // 학생 상세는 화면이 아니라 모달이다(자기 닫기·복귀 경로가 있다). 화면 이력에 넣으면 모달을 닫은 뒤
     // 뒤로 가기가 같은 학생 상세를 다시 여는 "한 번 더" 문제가 생기므로 이력에서 뺀다.
     if (nextView.type === 'studentDetail') return;
-    const current = appHistoryState.currentView;
+    let current = appHistoryState.currentView;
+    // 첫 대시보드 그리기가 화면 이동 감싸기보다 먼저 끝난 경우(자료가 스크립트 로딩보다 빨리 온 경우)에는 현재 화면이 기록되지 않았다.
+    // 로그인한 상태에서 대시보드 아닌 화면으로 처음 이동하면 직전 화면은 첫 화면(대시보드)이었다고 본다. 아니면 반 화면에서 뒤로 갈 곳이 없다.
+    if (!current && !appHistoryState.restoring && state?.auth?.role && nextView.type !== 'dashboard' && nextView.type !== 'adminDashboard') {
+        current = appHistoryBuildView('renderDashboard');
+    }
     const currentKey = appHistoryViewKey(current);
     const nextKey = appHistoryViewKey(nextView);
 
@@ -354,8 +359,30 @@ function appHistoryBack(options) {
 // 보호 항목은 사용자가 화면을 누른 뒤에만 쌓인다(모달·화면 열기는 모두 누르기에서 시작). 크롬의 "누르지 않은 페이지의 이력 건너뛰기"에 걸리지 않는다.
 // ============================================================
 // 지금 열려 있는 모달이 있는가. 닫는 중(closeModal 뒤 260ms)은 닫힌 것으로 본다. DOM을 직접 열어 쓰는 옛 화면도 열린 것으로 친다.
+// 실제 DOM과 맞춘다: closeModal 없이 #modal-overlay를 직접 숨긴 코드(report-center 등)가 있어도 논리 상태가 true로 남지 않게 고친다.
 function apmsNavModalOpen() {
-    return apmsModalLogicalOpen || (isModalOpen() && !modalCloseTimer);
+    const domOpen = isModalOpen();
+    if (!domOpen) {
+        if (apmsModalLogicalOpen) { apmsModalLogicalOpen = false; apmsNavScheduleSync(); }
+        return false;
+    }
+    return apmsModalLogicalOpen || !modalCloseTimer;
+}
+
+// 로그인 화면(로그아웃·세션 없음)으로 가면 이전 사용자의 화면 이력·모달 상태를 모두 버린다.
+// 안 그러면 기기 뒤로 가기가 이전 사용자의 대시보드를 로그인 없이 다시 그린다.
+function apmsNavReset() {
+    appHistoryState.backStack.length = 0;
+    appHistoryState.currentView = null;
+    modalStepStack = [];
+    apmsEscapeLayers.length = 0;
+    if (apmsModalLogicalOpen || isModalOpen()) closeModal(true);
+    apmsModalLogicalOpen = false;
+    apmsNavScheduleSync();
+}
+
+function apmsNavLoginVisible() {
+    return !!(typeof document !== 'undefined' && document.querySelector && document.querySelector('.ap-login-fullscreen'));
 }
 
 function apmsNavDepth() {
@@ -406,6 +433,8 @@ function apmsNavOnPopState(event) {
         apmsNavSync();
         return;
     }
+    // 방어: 로그인 화면에서는 아무것도 복원하지 않는다(이전 사용자의 화면이 로그인 없이 보이는 것을 막는다).
+    if (apmsNavLoginVisible()) { apmsNavReset(); apmsNavSync(); return; }
     const landedOnGuard = !!(event && event.state && event.state.apmsGuard);
     // 보호 항목으로 "앞으로 가기"로 들어왔다면 되돌릴 일만 맞춘다. 보호 항목에서 밖으로 나왔다면(뒤로 가기) 한 겹 닫는다.
     if (!landedOnGuard && apmsNavDepth() > 0) apmsNavBackStep();
