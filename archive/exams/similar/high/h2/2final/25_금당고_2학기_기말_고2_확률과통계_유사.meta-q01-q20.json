@@ -35,7 +35,7 @@
         "subUnit": "확률의 뜻과 활용",
         "conceptClusterKey": "H15-PS-03-PROBABILITY_BASIC",
         "L1": "확률",
-        "L2": "조건부확률",
+        "L2": "확률의 뜻과 활용",
         "L3": "사건의 독립과 종속",
         "L4": "독립·종속 판정",
         "rpmPrimaryRecordIds": [],
@@ -67,33 +67,52 @@
       "parentAssignment": {
         "schemaVersion": "similar-high-parent-assignment-v1",
         "L1": "확률",
-        "L2": "조건부확률",
+        "L2": "확률의 뜻과 활용",
         "curriculum": "2015",
         "scope": "확률과통계",
-        "parentRefMode": "BLOCKED_NEEDS_REGISTRAR_SUPPORT",
-        "crosswalkRecordId": "H2-PS-RPM-016",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": null,
         "candidateCountSubUnit": 1,
         "candidateCountUnit": 1,
         "candidateParentsUnit": [
           "확률/확률의 뜻과 활용"
         ],
-        "method": "CROSSWALK_PT_TPL_EXACT",
-        "basis": "사건의 독립 판정(마스터 개념: 확률>조건부확률>사건의 독립). 표준단원 키는 확률의 뜻과 활용(PS-03)이라 화면 상위 단원과 표준단원이 다름 [현 등록기: 크로스워크 PT/TPL 정확 일치 또는 단원 라벨=중단원 요구로 거부 예상]",
+        "method": "REASSIGN_UNIT_LABEL_PARENT",
+        "basis": "사건의 독립 판정 문항. 표준단원이 확률의 뜻과 활용(PS-03)이고, 마스터에 같은 이름의 중단원 확률>확률의 뜻과 활용이 있다. 학생이 단원 이름으로 찾는 위치와 일치하며 핵심 개념(사건의 독립)과 같은 확률 대단원이다.",
         "confidence": "MED",
         "assignedBy": "claude-parent-assign-v1",
         "assignedAt": "2026-11-02",
         "fieldChanges": [
           {
-            "field": "after.L2",
-            "before": "확률의 뜻과 활용",
-            "after": "조건부확률"
-          },
-          {
             "field": "after.courseKey",
             "before": "확률과 통계",
             "after": "확률과통계"
+          },
+          {
+            "field": "after.L1",
+            "before": "확률",
+            "after": "확률"
+          },
+          {
+            "field": "after.L2",
+            "before": "조건부확률",
+            "after": "확률의 뜻과 활용"
           }
-        ]
+        ],
+        "reassignment": {
+          "previous": {
+            "L1": "확률",
+            "L2": "조건부확률",
+            "parentRefMode": "BLOCKED_NEEDS_REGISTRAR_SUPPORT",
+            "crosswalkRecordId": "H2-PS-RPM-016",
+            "method": "CROSSWALK_PT_TPL_EXACT",
+            "confidence": "MED",
+            "basis": "사건의 독립 판정(마스터 개념: 확률>조건부확률>사건의 독립). 표준단원 키는 확률의 뜻과 활용(PS-03)이라 화면 상위 단원과 표준단원이 다름 [현 등록기: 크로스워크 PT/TPL 정확 일치 또는 단원 라벨=중단원 요구로 거부 예상]"
+          },
+          "reason": "이전 배정(확률>조건부확률)은 크로스워크 행의 PT/TPL이 문항과 달라(또는 bindingStatus MISSING) 등록기가 거부한다. 등록기를 완화하지 않고, 단원 라벨(UNIT_LABEL)로 통과하는 정본 부모로 재배정했다. 사건의 독립 판정 문항. 표준단원이 확률의 뜻과 활용(PS-03)이고, 마스터에 같은 이름의 중단원 확률>확률의 뜻과 활용이 있다. 학생이 단원 이름으로 찾는 위치와 일치하며 핵심 개념(사건의 독립)과 같은 확률 대단원이다.",
+          "reassignedAt": "2026-11-02",
+          "reassignedBy": "claude-parent-reassign-v1"
+        }
       }
     },
     {
@@ -1143,8 +1162,8 @@
         "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
         "subUnit": "확률분포",
         "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-        "L1": "확률",
-        "L2": "조건부확률",
+        "L1": "통계",
+        "L2": "확률분포",
         "L3": "독립시행의 확률",
         "L4": "독립시행의 확률",
         "rpmPrimaryRecordIds": [],
@@ -1177,39 +1196,53 @@
       "evidenceRefs": [],
       "parentAssignment": {
         "schemaVersion": "similar-high-parent-assignment-v1",
-        "L1": "확률",
-        "L2": "조건부확률",
+        "L1": "통계",
+        "L2": "확률분포",
         "curriculum": "2015",
         "scope": "확률과통계",
-        "parentRefMode": "BLOCKED_NEEDS_REGISTRAR_SUPPORT",
-        "crosswalkRecordId": "H2-PS-RPM-018",
+        "parentRefMode": "UNIT_LABEL",
+        "crosswalkRecordId": null,
         "candidateCountSubUnit": 1,
         "candidateCountUnit": 1,
         "candidateParentsUnit": [
           "통계/확률분포"
         ],
-        "method": "CROSSWALK_PT_TPL_EXACT",
-        "basis": "독립시행의 확률(마스터 개념: 확률>조건부확률>독립시행). 표준단원 키는 확률분포(PS-05)라 화면 상위 단원과 표준단원이 다름 [현 등록기: 크로스워크 PT/TPL 정확 일치 또는 단원 라벨=중단원 요구로 거부 예상]",
+        "method": "REASSIGN_UNIT_LABEL_PARENT",
+        "basis": "독립시행의 확률 문항. 표준단원이 확률분포(PS-05)이고, 마스터에 같은 이름의 중단원 통계>확률분포가 있다. 독립시행은 이항분포로 이어지는 개념이라 학생이 확률분포 단원에서 찾는다.",
         "confidence": "MED",
         "assignedBy": "claude-parent-assign-v1",
         "assignedAt": "2026-11-02",
         "fieldChanges": [
           {
-            "field": "after.L1",
-            "before": "통계",
-            "after": "확률"
-          },
-          {
-            "field": "after.L2",
-            "before": "확률분포",
-            "after": "조건부확률"
-          },
-          {
             "field": "after.courseKey",
             "before": "확률과 통계",
             "after": "확률과통계"
+          },
+          {
+            "field": "after.L1",
+            "before": "확률",
+            "after": "통계"
+          },
+          {
+            "field": "after.L2",
+            "before": "조건부확률",
+            "after": "확률분포"
           }
-        ]
+        ],
+        "reassignment": {
+          "previous": {
+            "L1": "확률",
+            "L2": "조건부확률",
+            "parentRefMode": "BLOCKED_NEEDS_REGISTRAR_SUPPORT",
+            "crosswalkRecordId": "H2-PS-RPM-018",
+            "method": "CROSSWALK_PT_TPL_EXACT",
+            "confidence": "MED",
+            "basis": "독립시행의 확률(마스터 개념: 확률>조건부확률>독립시행). 표준단원 키는 확률분포(PS-05)라 화면 상위 단원과 표준단원이 다름 [현 등록기: 크로스워크 PT/TPL 정확 일치 또는 단원 라벨=중단원 요구로 거부 예상]"
+          },
+          "reason": "이전 배정(확률>조건부확률)은 크로스워크 행의 PT/TPL이 문항과 달라(또는 bindingStatus MISSING) 등록기가 거부한다. 등록기를 완화하지 않고, 단원 라벨(UNIT_LABEL)로 통과하는 정본 부모로 재배정했다. 독립시행의 확률 문항. 표준단원이 확률분포(PS-05)이고, 마스터에 같은 이름의 중단원 통계>확률분포가 있다. 독립시행은 이항분포로 이어지는 개념이라 학생이 확률분포 단원에서 찾는다.",
+          "reassignedAt": "2026-11-02",
+          "reassignedBy": "claude-parent-reassign-v1"
+        }
       }
     },
     {

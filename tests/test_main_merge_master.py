@@ -148,7 +148,7 @@ class ParentAssignmentTests(unittest.TestCase):
         patcher.start()
         self.addCleanup(patcher.stop)
 
-    def generate(self, assignment, cross_record_parent=("미분", "도함수의 활용(2)")):
+    def generate(self, assignment, cross_record_parent=("미분", "도함수의 활용(2)"), cross_records=None):
         files = build_tree(self.root)
         master = self.root / self.MASTER
         master.parent.mkdir(parents=True)
@@ -157,14 +157,22 @@ class ParentAssignmentTests(unittest.TestCase):
             {"curriculum": "2015", "scope": "수학II", "majorUnit": "적분", "midUnit": "정적분"}]}), encoding="utf-8")
         cross = self.root / self.CROSS
         cross.parent.mkdir(parents=True)
-        cross.write_text(json.dumps({"records": [{"id": "H2-M2-RPM-023", "rpmPath": {
-            "majorUnit": cross_record_parent[0], "midUnit": cross_record_parent[1]}}]}), encoding="utf-8")
+        records = cross_records if cross_records is not None else [self.cross_row("H2-M2-RPM-023", cross_record_parent)]
+        cross.write_text(json.dumps({"status": "ACTIVE_REFERENCE", "records": records}), encoding="utf-8")
         meta = json.loads(files["meta"].read_text(encoding="utf-8"))
         meta["items"][0]["parentAssignment"] = assignment
         meta["items"][0]["after"].update({"L1": "도함수의 활용", "L2": "도함수의 활용"})
         files["meta"].write_text(json.dumps(meta), encoding="utf-8")
         with redirect_stdout(io.StringIO()):
             return mm.generate_inbox_request(files)
+
+    @staticmethod
+    def cross_row(record_id, parent=("미분", "도함수의 활용(2)"), **kwargs):
+        row = {"id": record_id, "curriculum": "2015", "scope": "수학II", "bindingStatus": "ACTIVE",
+               "problemTypeKey": "PT_A", "templateKey": None,
+               "rpmPath": {"majorUnit": parent[0], "midUnit": parent[1]}}
+        row.update(kwargs)
+        return row
 
     def assignment(self, **kwargs):
         base = {"L1": "미분", "L2": "도함수의 활용(2)", "curriculum": "2015", "scope": "수학II",
@@ -196,6 +204,27 @@ class ParentAssignmentTests(unittest.TestCase):
     def test_crosswalk_record_pointing_elsewhere_is_refused(self):
         with self.assertRaisesRegex(mm.RequestGenerationError, "points at"):
             self.generate(self.assignment(), cross_record_parent=("적분", "정적분"))
+
+    def test_recorded_row_with_other_pt_tpl_is_not_used_as_crosswalk_ref(self):
+        # The registrar refuses a crosswalkRef whose PT/TPL differs from the question's; carry the master parent only.
+        req = self.generate(self.assignment(), cross_records=[self.cross_row("H2-M2-RPM-023", problemTypeKey="PT_OTHER")])
+        ref = req["items"][0]["targetParentRef"]
+        self.assertNotIn("crosswalkRef", ref)
+        self.assertEqual((ref["majorUnit"], ref["midUnit"]), ("미분", "도함수의 활용(2)"))
+        self.assertEqual(req["items"][0]["after"]["L2"], "도함수의 활용(2)")
+        self.assertEqual([e["path"] for e in req["items"][0]["evidenceRefs"] if "crosswalks" in e["path"]], [])
+
+    def test_recorded_row_with_missing_binding_is_not_used_as_crosswalk_ref(self):
+        req = self.generate(self.assignment(), cross_records=[self.cross_row("H2-M2-RPM-023", bindingStatus="MISSING")])
+        self.assertNotIn("crosswalkRef", req["items"][0]["targetParentRef"])
+
+    def test_exact_active_row_for_same_parent_replaces_a_non_matching_recorded_row(self):
+        req = self.generate(self.assignment(), cross_records=[
+            self.cross_row("H2-M2-RPM-023", problemTypeKey="PT_OTHER"),
+            self.cross_row("H2-M2-RPM-099"),
+            self.cross_row("H2-M2-RPM-098", curriculum="2022"),
+            self.cross_row("H2-M2-RPM-097", ("적분", "정적분"))])
+        self.assertEqual(req["items"][0]["targetParentRef"]["crosswalkRef"]["recordId"], "H2-M2-RPM-099")
 
 
 class SplitRegistryChangesTests(unittest.TestCase):

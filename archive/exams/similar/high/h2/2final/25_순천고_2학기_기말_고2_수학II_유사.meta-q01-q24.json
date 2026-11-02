@@ -3,7 +3,7 @@
   "requestId": "25_순천고_2학기_기말_고2_수학II_유사-candidate-v1",
   "examUid": "25_순천고_2학기_기말_고2_수학II_유사",
   "sourceArchiveFile": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사.js",
-  "expectedSourceBlobSha1": "2b1cf1a9043c7c03c58cf6197420e30befedc1dd",
+  "expectedSourceBlobSha1": "8cfa3bf8a7515bccba7bc0751f07d34786dc0476",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -65,8 +65,8 @@
         ],
         "L1": "미분",
         "L2": "도함수의 활용(3)",
-        "L3": "속도와 가속도",
-        "L4": "위치·속도·가속도",
+        "L3": "속도·가속도와 변화율",
+        "L4": "운동의 사건 시각·상태 분석",
         "problemTypeKey": "PT_DERIVATIVE_MOTION",
         "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
         "crossConceptKeys": [
@@ -80,7 +80,9 @@
         "difficultyBucket": 1,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 1,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "속도와 가속도",
+        "rpmL4": "위치·속도·가속도"
       },
       "decisiveStep": "속도 v=0 및 부호 변화로 방향 전환 시각을 찾고 가속도 계산",
       "variationNote": "위치함수 x=t^3-6t^2-15t, 전환 시각 t=5, 가속도 18",
@@ -129,7 +131,7 @@
         "L1": "적분",
         "L2": "정적분의 활용",
         "L3": "속도와 거리",
-        "L4": "속도에서 이동거리",
+        "L4": "속도에서 위치·변위·이동거리 구하기",
         "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
         "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
         "crossConceptKeys": [
@@ -143,7 +145,9 @@
         "difficultyBucket": 2,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 2,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "속도와 거리",
+        "rpmL4": "속도에서 이동거리"
       },
       "decisiveStep": "v=0인 시각까지의 정적분과 초기 높이 합산",
       "variationNote": "옥상 18m, v=36-4t, 최고 높이 180m",
@@ -189,8 +193,8 @@
         ],
         "L1": "적분",
         "L2": "부정적분",
-        "L3": "조건을 이용한 함수 결정",
-        "L4": "도함수에서 원함수",
+        "L3": "부정적분과 함수",
+        "L4": "도함수에서 함수·함숫값 구하기",
         "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
         "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
         "crossConceptKeys": [
@@ -202,7 +206,9 @@
         "difficultyBucket": 1,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 3,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "조건을 이용한 함수 결정",
+        "rpmL4": "도함수에서 원함수"
       },
       "decisiveStep": "미분의 부정적분이 원함수+상수임을 이용해 f를 정하고 값을 계산",
       "variationNote": "5x^3-8x^2, f(1)=4, f(2)=15",
@@ -248,8 +254,8 @@
         ],
         "L1": "미분",
         "L2": "도함수의 활용(2)",
-        "L3": "증가·감소와 극값",
-        "L4": "증감표",
+        "L3": "함수의 증가·감소",
+        "L4": "단조성 조건으로 매개변수 결정",
         "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
         "templateKey": "TPL_MONOTONICITY_CONDITION",
         "crossConceptKeys": [
@@ -264,7 +270,9 @@
         "difficultyBucket": 2,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 4,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "증가·감소와 극값",
+        "rpmL4": "증감표"
       },
       "decisiveStep": "닫힌구간에서 f'의 최솟값 부호로 매개변수 범위 결정",
       "variationNote": "감소→증가 조건, 구간 [1,3], a<=9",
@@ -312,8 +320,8 @@
         ],
         "L1": "적분",
         "L2": "정적분의 활용",
-        "L3": "넓이",
-        "L4": "두 곡선 사이",
+        "L3": "곡선으로 둘러싸인 도형의 넓이",
+        "L4": "교점과 부호를 이용한 넓이",
         "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
         "templateKey": "TPL_INTERSECTION_SIGN_AREA",
         "crossConceptKeys": [
@@ -326,7 +334,9 @@
         "difficultyBucket": 1,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 5,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "넓이",
+        "rpmL4": "두 곡선 사이"
       },
       "decisiveStep": "교점과 위아래 관계를 정해 정적분으로 넓이 계산",
       "variationNote": "y=-x^2+5x와 y=x, 넓이 32/3",
@@ -372,8 +382,8 @@
         ],
         "L1": "미분",
         "L2": "도함수의 활용(3)",
-        "L3": "속도와 가속도",
-        "L4": "위치·속도·가속도",
+        "L3": "속도·가속도와 변화율",
+        "L4": "운동의 사건 시각·상태 분석",
         "problemTypeKey": "PT_DERIVATIVE_MOTION",
         "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
         "crossConceptKeys": [
@@ -387,7 +397,9 @@
         "difficultyBucket": 1,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 6,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "속도와 가속도",
+        "rpmL4": "위치·속도·가속도"
       },
       "decisiveStep": "v=0인 시각에서 최고 높이 계산",
       "variationNote": "x=40t-5t^2, 최고 높이 80",
@@ -435,8 +447,8 @@
         ],
         "L1": "미분",
         "L2": "도함수의 활용(2)",
-        "L3": "증가·감소와 극값",
-        "L4": "증감표",
+        "L3": "도함수 그래프 해석",
+        "L4": "도함수 그래프의 정성 해석",
         "problemTypeKey": "PT_DERIVATIVE_GRAPH_ANALYSIS",
         "templateKey": "TPL_DERIVATIVE_GRAPH_QUALITATIVE_ANALYSIS",
         "crossConceptKeys": [
@@ -449,7 +461,9 @@
         "difficultyBucket": 3,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 7,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "증가·감소와 극값",
+        "rpmL4": "증감표"
       },
       "decisiveStep": "도함수 그래프의 부호 변화로 증감과 극값을 판정하여 보기 판별",
       "variationNote": "근 -2,0,2, 옳은 보기 ㄴ,ㄷ",
@@ -497,8 +511,8 @@
         ],
         "L1": "적분",
         "L2": "정적분",
-        "L3": "정적분의 뜻",
-        "L4": "구간 분할",
+        "L3": "정적분의 계산과 성질",
+        "L4": "정적분 값 계산",
         "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
         "templateKey": "TPL_DEFINITE_EVALUATION",
         "crossConceptKeys": [
@@ -511,7 +525,9 @@
         "difficultyBucket": 1,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 8,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "정적분의 뜻",
+        "rpmL4": "구간 분할"
       },
       "decisiveStep": "부호가 바뀌는 점에서 구간을 나눈 절댓값 정적분 계산",
       "variationNote": "f=3x^2-6x, 구간 [-1,2] 두 조각, 값 8",
@@ -558,7 +574,7 @@
         "L1": "적분",
         "L2": "정적분",
         "L3": "정적분과 함수",
-        "L4": "미분과 적분 관계",
+        "L4": "정적분 값을 미지수로 두어 함수 구하기",
         "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
         "templateKey": "TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION",
         "crossConceptKeys": [
@@ -570,7 +586,9 @@
         "difficultyBucket": 2,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 9,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "정적분과 함수",
+        "rpmL4": "미분과 적분 관계"
       },
       "decisiveStep": "적분값을 상수로 두고 자기 일관 방정식으로 함수 결정",
       "variationNote": "계수 4와 6x^2-x, f(2)=20",
@@ -616,8 +634,8 @@
         ],
         "L1": "적분",
         "L2": "부정적분",
-        "L3": "조건을 이용한 함수 결정",
-        "L4": "도함수에서 원함수",
+        "L3": "부정적분과 함수",
+        "L4": "도함수에서 함수·함숫값 구하기",
         "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
         "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
         "crossConceptKeys": [
@@ -630,7 +648,9 @@
         "difficultyBucket": 2,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 10,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "조건을 이용한 함수 결정",
+        "rpmL4": "도함수에서 원함수"
       },
       "decisiveStep": "접선 기울기=도함수를 적분하고 지나는 점으로 상수 결정",
       "variationNote": "(1,3), 3x^2-4x+5, f(2)=9",
@@ -676,8 +696,8 @@
         ],
         "L1": "미분",
         "L2": "도함수의 활용(2)",
-        "L3": "최대·최소",
-        "L4": "구간 최대·최소",
+        "L3": "최댓값·최솟값",
+        "L4": "함수의 정의역상 최대·최소",
         "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
         "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
         "crossConceptKeys": [
@@ -692,7 +712,9 @@
         "difficultyBucket": 3,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 11,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "최대·최소",
+        "rpmL4": "구간 최대·최소"
       },
       "decisiveStep": "끝점과 극점 함숫값 비교로 M,m 결정 후 매개변수 방정식",
       "variationNote": "구간 [-2,4], x^3-3x^2-9x+a, a=10",
@@ -740,8 +762,8 @@
         ],
         "L1": "적분",
         "L2": "정적분의 활용",
-        "L3": "도형 활용",
-        "L4": "매개변수 넓이",
+        "L3": "곡선으로 둘러싸인 도형의 넓이",
+        "L4": "넓이 조건으로 함수·매개변수 결정",
         "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
         "templateKey": "TPL_AREA_CONDITION_MODEL_DETERMINATION",
         "crossConceptKeys": [
@@ -758,7 +780,9 @@
         "difficultyBucket": 3,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 12,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "도형 활용",
+        "rpmL4": "매개변수 넓이"
       },
       "decisiveStep": "완전제곱식과 근 d로 넓이를 식화하여 매개변수 결정",
       "variationNote": "y=3x^2-6x+a, 넓이 32, a=-9",
@@ -804,8 +828,8 @@
         ],
         "L1": "적분",
         "L2": "정적분의 활용",
-        "L3": "넓이",
-        "L4": "곡선과 x축",
+        "L3": "곡선으로 둘러싸인 도형의 넓이",
+        "L4": "교점과 부호를 이용한 넓이",
         "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
         "templateKey": "TPL_INTERSECTION_SIGN_AREA",
         "crossConceptKeys": [
@@ -821,7 +845,9 @@
         "difficultyBucket": 3,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 13,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "넓이",
+        "rpmL4": "곡선과 x축"
       },
       "decisiveStep": "구간함수의 식과 부호별로 나누어 넓이를 더함",
       "variationNote": "[-4,3], x+3과 x^2-4x+3, 3k=23",
@@ -867,8 +893,8 @@
         ],
         "L1": "적분",
         "L2": "정적분의 활용",
-        "L3": "넓이",
-        "L4": "두 곡선 사이",
+        "L3": "곡선으로 둘러싸인 도형의 넓이",
+        "L4": "교점과 부호를 이용한 넓이",
         "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
         "templateKey": "TPL_INTERSECTION_SIGN_AREA",
         "crossConceptKeys": [
@@ -883,7 +909,9 @@
         "difficultyBucket": 3,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 14,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "넓이",
+        "rpmL4": "두 곡선 사이"
       },
       "decisiveStep": "대칭·평행이동한 식과 교점으로 두 곡선 사이 넓이 계산",
       "variationNote": "y=2x^2 변환 (1,5), 넓이 16/3",
@@ -929,8 +957,8 @@
         ],
         "L1": "적분",
         "L2": "정적분",
-        "L3": "정적분의 뜻",
-        "L4": "구간 분할",
+        "L3": "정적분의 계산과 성질",
+        "L4": "정적분의 성질을 이용한 식 변형",
         "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
         "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
         "crossConceptKeys": [
@@ -946,7 +974,9 @@
         "difficultyBucket": 4,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 15,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "정적분의 뜻",
+        "rpmL4": "구간 분할"
       },
       "decisiveStep": "주기성으로 적분 구간을 한 주기와 나머지로 분해하고 이동",
       "variationNote": "주기 3, 구간 [1,4] 정의, ∫_0^20 = 88/3",
@@ -992,8 +1022,8 @@
         ],
         "L1": "미분",
         "L2": "도함수의 활용(2)",
-        "L3": "최대·최소",
-        "L4": "도형 활용",
+        "L3": "최댓값·최솟값",
+        "L4": "모델링된 양의 최대·최소",
         "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
         "templateKey": "TPL_MODELED_QUANTITY_OPTIMIZATION",
         "crossConceptKeys": [
@@ -1009,7 +1039,9 @@
         "difficultyBucket": 4,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 16,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "최대·최소",
+        "rpmL4": "도형 활용"
       },
       "decisiveStep": "곡선 위 점으로 삼각형 넓이 함수를 세우고 미분해 최대",
       "variationNote": "f=x^2(4-x), 삼각형 POH, p=3, M/p=9/2",
@@ -1057,8 +1089,8 @@
         ],
         "L1": "미분",
         "L2": "도함수의 활용(2)",
-        "L3": "증가·감소와 극값",
-        "L4": "극대·극소",
+        "L3": "극대·극소",
+        "L4": "극값 구조와 개수 판정",
         "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
         "templateKey": "TPL_EXTREMA_STRUCTURE_COUNT",
         "crossConceptKeys": [
@@ -1073,7 +1105,9 @@
         "difficultyBucket": 4,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 17,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "증가·감소와 극값",
+        "rpmL4": "극대·극소"
       },
       "decisiveStep": "g'의 부호 변화/불변 위치를 구분해 f'의 근을 결정",
       "variationNote": "g'=(x-1)f', 극값은 x=-2뿐, f'(0)=-6 (원본 H15-M2-04에서 06으로 재판정)",
@@ -1122,7 +1156,7 @@
         "L1": "적분",
         "L2": "정적분",
         "L3": "정적분과 함수",
-        "L4": "미분과 적분 관계",
+        "L4": "적분으로 정의된 함수의 미분",
         "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
         "templateKey": "TPL_INTEGRAL_DEFINED_FUNCTION_DIFFERENTIATION",
         "crossConceptKeys": [
@@ -1138,7 +1172,9 @@
         "difficultyBucket": 5,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 18,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "정적분과 함수",
+        "rpmL4": "미분과 적분 관계"
       },
       "decisiveStep": "적분함수의 미분과 극한 조건으로 적분 모멘트를 구하고 연립",
       "variationNote": "x=3 극한 6, g=3(t-3)^2, 답 58",
@@ -1184,8 +1220,8 @@
         ],
         "L1": "적분",
         "L2": "정적분의 활용",
-        "L3": "넓이",
-        "L4": "두 곡선 사이",
+        "L3": "곡선으로 둘러싸인 도형의 넓이",
+        "L4": "교점과 부호를 이용한 넓이",
         "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
         "templateKey": "TPL_INTERSECTION_SIGN_AREA",
         "crossConceptKeys": [
@@ -1200,7 +1236,9 @@
         "difficultyBucket": 4,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 19,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "넓이",
+        "rpmL4": "두 곡선 사이"
       },
       "decisiveStep": "y=x 대칭성으로 역함수를 적분하지 않고 절반 넓이의 2배",
       "variationNote": "f=2x^3-6x^2+7x-2, 직선 y=-x-2, 넓이 3",
@@ -1246,8 +1284,8 @@
         ],
         "L1": "미분",
         "L2": "도함수의 활용(3)",
-        "L3": "방정식과 부등식",
-        "L4": "근의 개수",
+        "L3": "방정식·부등식에의 활용",
+        "L4": "극값을 이용한 실근 개수 판정",
         "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
         "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
         "crossConceptKeys": [
@@ -1264,7 +1302,9 @@
         "difficultyBucket": 5,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 20,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "방정식과 부등식",
+        "rpmL4": "근의 개수"
       },
       "decisiveStep": "극값과 수평선 위치별 실근 개수 분류로 상수 결정",
       "variationNote": "f' 꼭짓점 x=1, f'(3)=0, 실근 4개, f(2)=-4",
@@ -1313,7 +1353,7 @@
         "L1": "적분",
         "L2": "정적분의 활용",
         "L3": "속도와 거리",
-        "L4": "속도에서 이동거리",
+        "L4": "속도에서 위치·변위·이동거리 구하기",
         "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
         "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
         "crossConceptKeys": [
@@ -1326,7 +1366,9 @@
         "difficultyBucket": 3,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 21,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "속도와 거리",
+        "rpmL4": "속도에서 이동거리"
       },
       "decisiveStep": "방향 전환별 이동거리와 위치 변화량 구분",
       "variationNote": "v=t^3-6t^2+8t, 위치 36 도달, 거리 44",
@@ -1372,8 +1414,8 @@
         ],
         "L1": "미분",
         "L2": "도함수의 활용(2)",
-        "L3": "증가·감소와 극값",
-        "L4": "증감표",
+        "L3": "함수의 증가·감소",
+        "L4": "단조성 조건으로 매개변수 결정",
         "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
         "templateKey": "TPL_MONOTONICITY_CONDITION",
         "crossConceptKeys": [
@@ -1390,7 +1432,9 @@
         "difficultyBucket": 5,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 22,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "증가·감소와 극값",
+        "rpmL4": "증감표"
       },
       "decisiveStep": "유계 조건으로 f 일차 결정, 일대일 삼차로 g' 제곱꼴, 적분 조건 연립 후 최댓값",
       "variationNote": "|6A|<=60, g'(-1)=0, g'(1) 최댓값 40/7 (원본 H15-M2-04에서 06으로 재판정)",
@@ -1438,8 +1482,8 @@
         ],
         "L1": "미분",
         "L2": "도함수의 활용(2)",
-        "L3": "증가·감소와 극값",
-        "L4": "극대·극소",
+        "L3": "극대·극소",
+        "L4": "극값·극점 조건으로 값 결정",
         "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
         "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
         "crossConceptKeys": [
@@ -1454,7 +1498,9 @@
         "difficultyBucket": 3,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 23,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "증가·감소와 극값",
+        "rpmL4": "극대·극소"
       },
       "decisiveStep": "f'(-1)=f'(3)=0과 최고차항 계수로 f'를 결정해 적분하고 극솟값으로 상수 결정",
       "variationNote": "f'(-1)=f'(3)=0, 극솟값 -10, f=x^3-3x^2-9x+17",
@@ -1502,8 +1548,8 @@
         ],
         "L1": "미분",
         "L2": "도함수의 활용(2)",
-        "L3": "최대·최소",
-        "L4": "구간 최대·최소",
+        "L3": "최댓값·최솟값",
+        "L4": "함수의 정의역상 최대·최소",
         "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
         "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
         "crossConceptKeys": [
@@ -1519,7 +1565,9 @@
         "difficultyBucket": 4,
         "rpmSemanticStatus": "SELF_CHECKED",
         "sourceQid": 24,
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "rpmL3": "최대·최소",
+        "rpmL4": "구간 최대·최소"
       },
       "decisiveStep": "증감표 작성과 열린 반직선 구간 최솟값 판단",
       "variationNote": "f=x^3-3x^2+4, x>1, k 최댓값 0",
