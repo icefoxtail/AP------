@@ -311,6 +311,352 @@ window.addEventListener('DOMContentLoaded', function () {
       drag: (w) => { let nd = w.x - s.a; if (Math.abs(nd) < 0.04) nd = nd >= 0 ? 0.04 : -0.04; s.dx = clamp(+nd.toFixed(2), -2.2, 2.2); } });
   }
 
+  /* ==========================================================================
+     응용형 장면 공용 부품 (2026-11 추가: 기출 응용 유형 · 변형 문제 생성기)
+     - 탐구 탭은 끌기·슬라이더로 직접 바꿔 보고, 정리 탭은 변형 문제의 풀이를 단계마다 그림에 드러내고,
+       문제 탭은 지문에 주어진 값만 그립니다(답과 보조선은 풀이 단계를 누른 뒤에만 나옵니다).
+     - 「새 문제」는 같은 유형의 숫자·상황만 바꾼 변형을 만듭니다(연속해서 같은 문제가 나오지 않게 함).
+     ========================================================================== */
+  const cxRint = (n) => Math.floor(Math.random() * n);
+  const cxPick = (arr, not) => { let x; do x = arr[cxRint(arr.length)]; while (arr.length > 1 && x === not); return x; };
+  let cxSerial = 0;
+  function cxVarier(gen) { let cur = gen(null); cur.sid = ++cxSerial; return { cur: () => cur, next: () => { cur = gen(cur); cur.sid = ++cxSerial; return cur; } }; }
+  const cxProb = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-cx-new>새 문제</button></div>`;
+  document.addEventListener('click', (ev) => {
+    const hit = ev.target && ev.target.closest && ev.target.closest('[data-cx-new]');
+    if (!hit) return;
+    const lab = window.lab, sc = lab && lab.scene;
+    if (!sc || !sc.vary) return;
+    sc.vary.next();
+    lab.s.revealed = false;
+    lab.setStep(0);
+    try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+    lab.invalidate(true);
+  });
+  // 탭별 단계: 정리 탭에서만 단계가 그림에 드러나고, 문제 탭은 늘 0단계(풀이 전)입니다.
+  const cxStep = (lab, s) => (lab && lab.tab === 'review' ? s.step : lab && lab.tab === 'problem' ? 0 : 0);
+  // 장면마다(또는 문제가 바뀔 때마다) 보이는 범위를 한 번만 맞춥니다. 사용자가 확대·이동한 뒤에는 건드리지 않습니다.
+  function cxFocus(b, key, box) {
+    if (b._cxKey === key) return;
+    b._cxKey = key;
+    b.setFocus(box, true);
+  }
+  // 점들이 모두 들어오는 창(여백 포함)
+  function cxWin(pts, o = {}) {
+    let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    pts.forEach((p) => { x0 = Math.min(x0, p[0]); x1 = Math.max(x1, p[0]); y0 = Math.min(y0, p[1]); y1 = Math.max(y1, p[1]); });
+    const mx = o.mx == null ? 0.9 : o.mx, my = o.my == null ? 0.9 : o.my;
+    x0 -= mx; x1 += mx; y0 -= my; y1 += my;
+    const minW = o.minW || 6, minH = o.minH || 4.4;
+    if (x1 - x0 < minW) { const c = (x0 + x1) / 2; x0 = c - minW / 2; x1 = c + minW / 2; }
+    if (y1 - y0 < minH) { const c = (y0 + y1) / 2; y0 = c - minH / 2; y1 = c + minH / 2; }
+    return { x: [x0, x1], y: [y0, y1] };
+  }
+  // 다항식 TeX: 계수 배열(높은 차수부터, 정수) 예: [1, -3, 0, 2] → x^3-3x^2+2
+  function cxPoly(co) {
+    const n = co.length;
+    let out = '';
+    co.forEach((c, i) => {
+      if (!c) return;
+      const deg = n - 1 - i, a = Math.abs(c);
+      const t = deg === 0 ? '' : deg === 1 ? 'x' : `x^${deg}`;
+      const body = t ? (a === 1 ? t : a + t) : String(a);
+      out += (c < 0 ? '-' : out ? '+' : '') + body;
+    });
+    return out || '0';
+  }
+  const cxFrac = (n, d) => { // 기약분수 TeX와 값
+    const g = (a, c) => (c ? g(c, a % c) : Math.abs(a));
+    const k = g(n, d) || 1;
+    n /= k; d /= k;
+    if (d < 0) { n = -n; d = -d; }
+    return { tex: d === 1 ? String(n) : (n < 0 ? '-' : '') + `\\dfrac{${Math.abs(n)}}{${d}}`, val: n / d };
+  };
+  // 화살표(방향 dir, 세계 좌표 길이 len)
+  function cxArrow(b, p, dir, len, color, o = {}) {
+    const n = Math.hypot(dir[0], dir[1]) || 1, ux = dir[0] / n, uy = dir[1] / n;
+    const q = [p[0] + ux * len, p[1] + uy * len];
+    b.seg(p, q, { color, width: o.width || 3.2, glow: true, ref: o.ref });
+    const hl = o.head || 0.2, ca = Math.cos(0.45), sa = Math.sin(0.45);
+    const bx = -ux, by = -uy;
+    b.poly([q, [q[0] + hl * (bx * ca - by * sa), q[1] + hl * (bx * sa + by * ca)], [q[0] + hl * (bx * ca + by * sa), q[1] + hl * (-bx * sa + by * ca)]], { fill: color, fillAlpha: 1, color: null, ref: o.ref });
+    return q;
+  }
+  // 곡선 이름표: 보이는 범위 안에서 곡선이 지나는 곳(오른쪽부터)에 붙입니다.
+  function cxCurveTag(b, f, text, color, o = {}) {
+    const vb = b.viewBox();
+    const yl = vb.y0 + (vb.y1 - vb.y0) * 0.1, yh = vb.y1 - (vb.y1 - vb.y0) * 0.1;
+    const right = o.side !== 'left';
+    for (let i = 0; i <= 90; i++) {
+      const x = right ? vb.x1 - (vb.x1 - vb.x0) * 0.06 - i * (vb.x1 - vb.x0) * 0.008 : vb.x0 + (vb.x1 - vb.x0) * 0.06 + i * (vb.x1 - vb.x0) * 0.008;
+      const y = f(x);
+      const clash = (o.skip || []).some((q) => Math.hypot(x - q[0], y - q[1]) < (q[2] || 1.2));
+      if (Number.isFinite(y) && y > yl && y < yh && !clash && !(o.axis && Math.abs(y) < o.axis)) {
+        b.text([x, y], text, { color, size: 13, weight: 800, align: right ? 'right' : 'left', dx: right ? -8 : 8, dy: o.dy == null ? -12 : o.dy, ref: o.ref });
+        return;
+      }
+    }
+  }
+  const cxPl = (n) => (n >= 0 ? `+${n}` : `-${-n}`); // 부호 있는 항
+  const cxSub = (n) => (n === 0 ? '' : n > 0 ? `-${n}` : `+${-n}`); // x − n
+  // 글자 라벨(가장자리에서 잘리지 않게 화면 안으로 밀어 넣음)
+  function cxTag(b, p, str, o = {}) {
+    const c = b.ctx;
+    const size = (o.size || 12.5) * b.fs;
+    c.save();
+    c.font = `800 ${size}px ${b.font}`;
+    const w = c.measureText(String(str)).width;
+    c.restore();
+    const s = b.toS(Array.isArray(p) ? { x: p[0], y: p[1] } : p);
+    const al = o.align || 'center';
+    const want = s.x + (o.dx || 0) - (al === 'right' ? w : al === 'left' ? 0 : w / 2);
+    const left = Math.max(6, Math.min(want, Math.max(6, b.W - 6 - w)));
+    b.text(p, str, { size: o.size || 12.5, weight: 800, ...o, align: 'left', dx: left - s.x, dy: o.dy || 0 });
+  }
+
+  // f가 g보다 위인(또는 g가 f보다 위인) 구간을 색칠: top(x) > bot(x) 인 곳
+  function cxShadeBetween(b, top, bot, x0, x1, col, alpha, ref) {
+    const N = 200;
+    let run = null;
+    const flush = () => { if (run && run.t.length > 1) b.poly(run.t.concat(run.b.slice().reverse()), { fill: col, fillAlpha: alpha, color: null, ref }); run = null; };
+    for (let i = 0; i <= N; i++) {
+      const x = x0 + ((x1 - x0) * i) / N, yt = top(x), yb = bot(x);
+      if (Number.isFinite(yt) && Number.isFinite(yb) && yt > yb + 1e-9) { if (!run) run = { t: [], b: [] }; run.t.push([x, yt]); run.b.push([x, yb]); } else flush();
+    }
+    flush();
+  }
+  // 조사: 받침이 있으면 a, 없으면 b (예: cxJosa('최솟값', '을', '를') → 최솟값을)
+  const cxJosa = (w, a, b) => { const c = w.charCodeAt(w.length - 1); return w + (c >= 0xAC00 && c <= 0xD7A3 && (c - 0xAC00) % 28 !== 0 ? a : b); };
+
+  /* ==========================================================================
+     응용 장면 6 · 접점을 움직일 때 접선의 y절편이 만드는 함수 g(t)    — 근거: 분류표 C08
+     응용 장면 7 · 할선 기울기 부등식이 허용하는 f의 범위 (평균값 정리)  — 근거: 분류표 C11
+     ========================================================================== */
+  const f8 = (x) => 0.5 * x * x * x - 1.5 * x * x + 1;
+  const fp8 = (x) => 1.5 * x * x - 3 * x;
+  const g8 = (t) => f8(t) - t * fp8(t); // 접선의 y절편 = −t³ + 1.5t² + 1
+  const xint8 = (t) => { const m = fp8(t); return Math.abs(m) < 0.04 ? null : t - f8(t) / m; };
+  const R8 = (v) => Math.round(v * 100) / 100;
+  const fr2 = (n) => cxFrac(Math.round(n * 2), 2); // 반정수 TeX
+
+  // 변형 문제: f(x)=a(x−x0)³+s(x−x0)+y0 (x0=±1). 접선의 y절편 g(t)=−2a t³+3a·x0·t²+f(0)
+  const var8 = cxVarier((prev) => {
+    const first = !prev;
+    let v;
+    for (let tr = 0; tr < 300; tr++) {
+      const a = first ? 1 : cxPick([1, 1, 2]);
+      const x0 = first ? 1 : cxPick([1, -1]);
+      const s = first ? -3 : cxPick([-3, -2, -1, 0, 1, 2, 3]);
+      const y0 = first ? 0 : cxPick([-1, 0, 1, 2]);
+      const ask = first ? 'max' : cxPick(['max', 'min', 'sum', 'diff']);
+      const co = [a, -3 * a * x0, 3 * a * x0 * x0 + s, -a * x0 ** 3 - s * x0 + y0];
+      const f = (x) => ((co[0] * x + co[1]) * x + co[2]) * x + co[3];
+      const fp = (x) => (3 * co[0] * x + 2 * co[1]) * x + co[2];
+      const d = co[3], g = (t) => f(t) - t * fp(t), gx0 = d + a * x0 ** 3;
+      const mx = Math.max(d, gx0), mn = Math.min(d, gx0);
+      const ans = ask === 'max' ? mx : ask === 'min' ? mn : ask === 'sum' ? mx + mn : mx - mn;
+      const ts = 1.6 * x0;
+      v = { a, x0, s, y0, ask, co, f, fp, g, d, gx0, mx, mn, ans, ts, win: cxWin([[ts, f(ts)], [0, g(ts)], [0, d], [x0, gx0], [x0 - 1.8, y0 - 1.4], [x0 + 1.8, y0 + 1.4]], { minW: 5.6, minH: 5, mx: 0.8, my: 0.8 }) };
+      if (v.win.y[1] - v.win.y[0] > 9) continue;
+      if (prev && prev.a === a && prev.x0 === x0 && prev.s === s && prev.y0 === y0 && prev.ask === ask) continue;
+      break;
+    }
+    return v;
+  });
+  const ASK8 = { max: '극댓값', min: '극솟값', sum: '극댓값과 극솟값의 합', diff: '극댓값과 극솟값의 차' };
+  const text8 = (v) => `삼차함수 ${tex('f(x)=' + cxPoly(v.co))} 의 그래프 위의 점 ${tex('\\mathrm{P}(t,\\,f(t))')} 에서의 접선의 ${tex('y')}절편을 ${tex('g(t)')} 라 하자. 함수 ${tex('g(t)')} 의 ${cxJosa(ASK8[v.ask], '을', '를')} 구하시오.`;
+  const gTex8 = (v) => cxPoly([-2 * v.a, 3 * v.a * v.x0, 0, v.d]).replace(/x/g, 't');
+  const steps8 = (v) => [
+    '점 $(t,\\,f(t))$ 에서의 접선은 $y=f^{\\prime}(t)(x-t)+f(t)$ 입니다. $x=0$ 을 대입하면 $y$절편은 $g(t)=f(t)-t\\,f^{\\prime}(t)$ 입니다.',
+    `$f^{\\prime}(x)=${cxPoly([0, 3 * v.a, 2 * v.co[1], v.co[2]])}$ 이므로 $g(t)=f(t)-t f^{\\prime}(t)=${gTex8(v)}$ 입니다. 일차항은 $f(t)$ 와 $t f^{\\prime}(t)$ 에서 같아 서로 사라집니다.`,
+    `$g^{\\prime}(t)=${cxPoly([0, -6 * v.a, 6 * v.a * v.x0, 0]).replace(/x/g, 't')}=-${6 * v.a}t(t${cxSub(v.x0)})$ 이므로 $t=0$ 과 $t=${v.x0}$ 에서 $g^{\\prime}$ 의 부호가 바뀌어 극값이 생깁니다. ($g^{\\prime}(t)=-t\\,f^{\\prime\\prime}(t)$ 이고 $f^{\\prime\\prime}(${v.x0})=0$ 인 변곡점에서도 극값입니다.)`,
+    `$g(0)=${v.d}$, $g(${v.x0})=${v.gx0}$ 이므로 극댓값은 ${v.mx}, 극솟값은 ${v.mn} 입니다. ` + (v.ask === 'max' ? `구하는 값은 $${v.mx}$.` : v.ask === 'min' ? `구하는 값은 $${v.mn}$.` : v.ask === 'sum' ? `합은 $${v.mx}+(${v.mn})=${v.ans}$.` : `차는 $${v.mx}-(${v.mn})=${v.ans}$.`)
+  ];
+  const FORMULA8 = '<b>접선의 절편은 접점의 함수</b><br>접점 $(t,f(t))$ 의 접선: $y=f^{\\prime}(t)(x-t)+f(t)$<br>· $y$절편 $g(t)=f(t)-t\\,f^{\\prime}(t)$ , $\\;g^{\\prime}(t)=-t\\,f^{\\prime\\prime}(t)$<br>· $x$절편 $t-\\dfrac{f(t)}{f^{\\prime}(t)}$ (접선이 수평이면 없음)<br>그래서 $y$절편은 $t=0$ 과 <b>변곡점</b>에서 증가·감소가 바뀝니다.';
+  function drawExplore8(b, s) {
+    cxFocus(b, 'c8e', { x: [-1.7, 3.1], y: [-3.0, 3.3] });
+    const t = s.tp, m = fp8(t), ft = f8(t), gt = g8(t), xi = xint8(t);
+    if (s.grid) b.grid();
+    b.axes();
+    b.plot(g8, { color: 'violet', width: 2.8, ref: 'g' });
+    b.plot(f8, { color: 'ink', width: 3.2, glow: true, ref: 'f' });
+    [[0, g8(0)], [1, g8(1)]].forEach((q) => b.point(q, { color: 'violet', hollow: true, r: 5.5, ref: 'g' }));
+    b.line([t, ft], m, { color: 'rose', width: 2.8, glow: true, ref: 'tan' });
+    b.seg([0, gt], [t, gt], { color: 'violet', width: 1.8, dash: true, ref: 'g' });
+    b.point([t, gt], { color: 'violet', r: 5.5, ref: 'g' });
+    b.point([0, gt], { color: 'violet', r: 6, label: 'Y', dx: -10, dy: -10, align: 'right', ref: 'Y' });
+    if (xi != null && xi > -1.6 && xi < 3.0) b.point([xi, 0], { color: 'green', r: 6, label: 'X', dx: 8, dy: 16, ref: 'X' });
+    if (Math.abs(t) < 0.12) cxTag(b, [0, g8(0)], '극소', { color: 'violet', dx: 10, dy: -16, align: 'left', ref: 'g' });
+    if (Math.abs(t - 1) < 0.12) cxTag(b, [1, g8(1)], '극대', { color: 'violet', dx: 10, dy: -16, align: 'left', ref: 'g' });
+    cxCurveTag(b, f8, 'y = f(x)', 'ink', { side: 'left', dy: 16, skip: [[t, ft, 1.0]] });
+    cxCurveTag(b, g8, 'y = g(x) (y절편)', 'violet', { skip: [[t, gt, 1.2]] });
+    b.handle('T', [t, ft], { color: 'amber', label: 'T', dx: 12, dy: 16, ref: 'tan',
+      drag: (w) => { let v = clamp(R8(w.x), -0.8, 2.2); [0, 1, 2].forEach((z) => { if (Math.abs(v - z) < 0.06) v = z; }); s.tp = v; } });
+  }
+  function drawVar8(b, s, lab) {
+    const v = var8.cur(), st = cxStep(lab, s), f = v.f, ts = v.ts, m = v.fp(ts), gts = v.g(ts);
+    cxFocus(b, 'c8v' + v.sid, v.win);
+    if (s.grid) b.grid();
+    b.axes();
+    if (st >= 2) b.plot(v.g, { color: 'violet', width: 2.8, ref: 'g' });
+    b.plot(f, { color: 'ink', width: 3.2, glow: true });
+    cxCurveTag(b, f, 'y = f(x)', 'ink', { side: 'left', dy: 16, skip: [[ts, f(ts), 1.4]] });
+    b.line([ts, f(ts)], m, { color: 'rose', width: 2.8, glow: true, ref: 'tan' });
+    b.point([ts, f(ts)], { color: 'amber', r: 6.5, label: 'P(t, f(t))', dx: v.x0 > 0 ? 10 : -10, dy: -14, align: v.x0 > 0 ? 'left' : 'right', ref: 'tan' });
+    b.point([0, gts], { color: 'violet', r: 6, label: '(0, g(t))', dx: v.x0 > 0 ? -10 : 10, dy: 16, align: v.x0 > 0 ? 'right' : 'left', ref: 'Y' });
+    if (st >= 2) {
+      b.seg([0, gts], [ts, gts], { color: 'violet', width: 1.8, dash: true, ref: 'g' });
+      b.point([ts, gts], { color: 'violet', r: 5.5, ref: 'g' });
+      cxCurveTag(b, v.g, 'y = g(x)', 'violet', { skip: [[ts, gts, 1.5], [0, gts, 1.5], [ts, f(ts), 1.8]], axis: 0.4 });
+    }
+    if (st >= 3) [[0, v.d], [v.x0, v.gx0]].forEach((q) => b.point(q, { color: 'violet', hollow: true, r: 8, ref: 'g' }));
+    if (st >= 4) {
+      const hi = v.mx === v.d ? [0, v.d] : [v.x0, v.gx0], lo = v.mx === v.d ? [v.x0, v.gx0] : [0, v.d];
+      const both = v.ask === 'sum' || v.ask === 'diff';
+      if (both || v.ask === 'max') cxTag(b, hi, `극대 ${v.mx}`, { color: 'rose', dx: 12, dy: -16, align: 'left', ref: 'ans' });
+      if (both || v.ask === 'min') cxTag(b, lo, `극소 ${v.mn}`, { color: 'rose', dx: -12, dy: 18, align: 'right', ref: 'ans' });
+    }
+  }
+  function view8(s, lab) {
+    if (lab.tab !== 'explore') return { formula: FORMULA8 };
+    const t = s.tp, m = fp8(t), gt = g8(t), xi = xint8(t), gp = -t * (3 * t - 3);
+    const near = [0, 1].some((z) => Math.abs(t - z) < 0.06);
+    return {
+      chips: [{ k: '접선', tex: `y=f'(t)(x-t)+f(t)`, color: 'rose' }, { k: 'y절편', tex: `g(t)=f(t)-t\\,f'(t)`, color: 'violet' }],
+      status: near ? { tone: 'key', text: 'g′(t)=0: y절편이 증가에서 감소(또는 반대)로 바뀌는 극값입니다' } : { tone: 'info', text: gp > 0 ? 'T가 오른쪽으로 갈 때 y절편이 올라갑니다 (g′ > 0)' : 'T가 오른쪽으로 갈 때 y절편이 내려갑니다 (g′ < 0)' },
+      readouts: [
+        { label: '접점 T', value: `(${fmt(t)}, ${fmt(f8(t))})`, color: 'amber', ref: 'tan' },
+        { label: '접선의 기울기 f′(t)', value: fmt(m), color: 'rose', ref: 'tan' },
+        { label: 'y절편 g(t) = f(t) − t f′(t)', value: fmt(gt), color: 'violet', ref: 'Y' },
+        { label: 'x절편', value: xi == null ? '없음 (접선이 수평)' : fmt(xi), color: 'green', ref: 'X' },
+        { label: 'g′(t) = −t·f″(t)', value: fmt(gp), color: 'violet', ref: 'g', wide: true }
+      ],
+      formula: FORMULA8
+    };
+  }
+
+  /* ----- 응용 장면 7 · 할선 기울기 부등식과 f가 지날 수 있는 영역 ----- */
+  const A11 = { a: 1, fa: 1 };
+  const eff11 = (s) => ({ L: s.lo, U: Math.max(s.hi, s.lo + 0.25), both: s.ub === 'both' });
+  // 영역 칠하기: 점 A에서 기울기 L, U 인 두 직선 사이(양쪽 모두 같은 두 직선 사이)
+  function wedge11(b, a, fa, L, U, both, vb, alpha) {
+    const xr = vb.x1 + 1, xl = vb.x0 - 1, yL = (x) => fa + L * (x - a), yU = (x) => fa + U * (x - a);
+    if (both) {
+      b.poly([[a, fa], [xr, yL(xr)], [xr, yU(xr)]], { fill: 'green', fillAlpha: alpha, color: null, ref: 'wedge' });
+      b.poly([[a, fa], [xl, yU(xl)], [xl, yL(xl)]], { fill: 'green', fillAlpha: alpha, color: null, ref: 'wedge' });
+    } else {
+      b.poly([[a, fa], [xr, yL(xr)], [xr, yL(xr) + 400]], { fill: 'green', fillAlpha: alpha, color: null, ref: 'wedge' });
+      b.poly([[a, fa], [xl, yL(xl)], [xl, yL(xl) - 400]], { fill: 'green', fillAlpha: alpha, color: null, ref: 'wedge' });
+    }
+  }
+  function drawExplore11(b, s) {
+    cxFocus(b, 'c11e', { x: [-3.2, 5.2], y: [-4.0, 6.0] });
+    const { L, U, both } = eff11(s), { a, fa } = A11;
+    const bx = s.bx, by = s.by, m = (by - fa) / (bx - a), inside = m >= L - 1e-9 && (!both || m <= U + 1e-9);
+    if (s.grid) b.grid();
+    b.axes();
+    const vb = b.viewBox();
+    wedge11(b, a, fa, L, U, both, vb, 0.2);
+    b.line([a, fa], L, { color: 'violet', width: 2.8, glow: true, ref: 'L' });
+    if (both) b.line([a, fa], U, { color: 'rose', width: 2.8, glow: true, ref: 'U' });
+    if (inside) {
+      const w = 0.9 * Math.min(m - L, both ? U - m : 1);
+      const fs = (x) => fa + m * (x - a) + w * ((bx - a) / (2 * Math.PI)) * Math.sin((2 * Math.PI * (x - a)) / (bx - a));
+      b.plot(fs, { from: Math.min(a, bx), to: Math.max(a, bx), color: 'ink', width: 3.4, glow: true, ref: 'curve' });
+    } else {
+      b.seg([a, fa], [bx, by], { color: 'red', width: 2.4, dash: true, ref: 'curve' });
+    }
+    b.point([a, fa], { color: 'ink', r: 6, label: `A(${a}, ${fa})`, dx: -10, dy: 18, align: 'right', ref: 'A' });
+    const lx = (sl) => { let x = vb.x1 - 0.15; if (sl > 0) x = Math.min(x, a + (vb.y1 - 0.7 - fa) / sl); else if (sl < 0) x = Math.min(x, a + (vb.y0 + 0.7 - fa) / sl); return Math.max(x, a + 0.6); };
+    cxTag(b, [lx(L), fa + L * (lx(L) - a)], `기울기 ${fmt(L, 2)}`, { color: 'violet', size: 12, align: 'right', dy: L >= 0 ? 20 : -16, ref: 'L' });
+    if (both) cxTag(b, [lx(U), fa + U * (lx(U) - a)], `기울기 ${fmt(U, 2)}`, { color: 'rose', size: 12, align: 'right', dx: -8, dy: -4, ref: 'U' });
+    b.handle('B', [bx, by], { color: inside ? 'green' : 'red', label: 'B', dx: 12, dy: -14, ref: 'curve',
+      drag: (w) => { let x = clamp(R8(w.x), -2.8, 4.8); if (Math.abs(x - a) < 0.3) x = x >= a ? a + 0.3 : a - 0.3; s.bx = x; s.by = clamp(R8(w.y), -3.6, 5.6); } });
+  }
+  const var11 = cxVarier((prev) => {
+    const first = !prev;
+    let v;
+    for (let tr = 0; tr < 300; tr++) {
+      const a = first ? 1 : cxPick([0, 1, 2]);
+      const fa = first ? 3 : cxPick([-2, -1, 0, 1, 2, 3, 4]);
+      const both = first ? false : cxRint(2) === 1;
+      const L = first ? 2 : cxPick([1, 2, 3]);
+      const U = L + cxPick([1, 2]);
+      const dl = first ? 3 : cxPick([-3, -2, -1, 1, 2, 3]);
+      if (Math.max(Math.abs(L * dl), Math.abs(U * dl)) > 9) continue;
+      const ask = both ? cxPick(['min', 'max', 'diff']) : (dl > 0 ? 'min' : 'max');
+      const bb = a + dl;
+      const lo = fa + Math.min(L * dl, U * dl), hi = fa + Math.max(L * dl, U * dl);
+      const val = { both: { min: lo, max: hi, diff: hi - lo }, low: dl > 0 ? { min: fa + L * dl } : { max: fa + L * dl } };
+      const ans = both ? val.both[ask] : val.low[ask];
+      v = { a, fa, both, L, U, dl, b: bb, ask, ans, lo, hi, win: cxWin([[0, 0], [a, fa], [bb, fa + L * dl], [bb, fa + (both ? U : L) * dl], [a - 2, fa - 1.6], [a + 2, fa + 1.6]], { minW: 6, minH: 5.2 }) };
+      if (v.win.y[1] - v.win.y[0] > 13) continue;
+      if (prev && prev.a === a && prev.fa === fa && prev.both === both && prev.L === L && prev.U === U && prev.dl === dl && prev.ask === ask) continue;
+      break;
+    }
+    return v;
+  });
+  const ASK11 = { min: '최솟값', max: '최댓값', diff: '최댓값과 최솟값의 차' };
+  const text11 = (v) => `미분가능한 함수 ${tex('f')} 가 ${tex('f(' + v.a + ')=' + v.fa)} 를 만족시키고, 모든 실수 ${tex('x')} 에 대하여 ${v.both ? tex(`${v.L}\\le f'(x)\\le ${v.U}`) : tex(`f'(x)\\ge ${v.L}`)} 이다. ${tex('f(' + v.b + ')')} 의 ${cxJosa(ASK11[v.ask], '을', '를')} 구하시오.`;
+  const steps11 = (v) => {
+    const D = v.dl;
+    const mm = v.both ? `${v.L}\\le \\dfrac{f(${v.b})-f(${v.a})}{${D}}\\le ${v.U}` : `\\dfrac{f(${v.b})-f(${v.a})}{${D}}\\ge ${v.L}`;
+    const fin = v.both
+      ? `$${v.fa}+${D < 0 ? '(' + v.U + ')(' + D + ')' : v.L + '\\cdot ' + D}\\le f(${v.b})\\le ${v.fa}+${D < 0 ? '(' + v.L + ')(' + D + ')' : v.U + '\\cdot ' + D}$ 이므로 $${v.lo}\\le f(${v.b})\\le ${v.hi}$ 입니다.`
+      : (D > 0 ? `$f(${v.b})-${v.fa}\\ge ${v.L}\\cdot ${D}$ 이므로 $f(${v.b})\\ge ${v.ans}$ 입니다.` : `분모 $${D}$ 가 음수이므로 부등호의 방향이 바뀌어 $f(${v.b})-${v.fa}\\le ${v.L}\\cdot(${D})$, 즉 $f(${v.b})\\le ${v.ans}$ 입니다.`);
+    const last = v.both ? (v.ask === 'diff' ? `최댓값 $${v.hi}$ 에서 최솟값 $${v.lo}$ 를 빼면 $${v.ans}$.` : `구하는 ${cxJosa(ASK11[v.ask], '은', '는')} $${v.ans}$.`) : `구하는 ${cxJosa(ASK11[v.ask], '은', '는')} $${v.ans}$.`;
+    return [
+      `평균값 정리에 의해 $\\dfrac{f(${v.b})-f(${v.a})}{${v.b}-${v.a < 0 ? '(' + v.a + ')' : v.a}}=f^{\\prime}(c)$ 인 $c$ 가 $${v.a}$ 와 $${v.b}$ 사이에 있습니다.`,
+      `$f^{\\prime}(c)$ 는 ${v.both ? `$${v.L}$ 이상 $${v.U}$ 이하` : `$${v.L}$ 이상`}이므로 평균변화율도 같은 범위에 있습니다: $${mm}$. 그림에서는 점 A에서 기울기 ${v.both ? `$${v.L}$, $${v.U}$ 인 두 직선 사이` : `$${v.L}$ 인 직선의 한쪽`}이 f가 지날 수 있는 영역입니다.`,
+      fin,
+      last
+    ].map((t) => t.replace(/\+-/g, '-'));
+  };
+  const FORMULA11 = '<b>평균값 정리로 읽는 부등식</b><br>$\\dfrac{f(b)-f(a)}{b-a}=f\'(c)$ ($c$ 는 $a$, $b$ 사이)<br>$m\\le f\'(x)\\le M$ 이면 평균변화율도 $m$ 이상 $M$ 이하이므로 그래프는 점 $(a,f(a))$ 에서 기울기 $m$, $M$ 인 두 직선 사이의 영역을 벗어나지 못합니다. $x\\lt a$ 쪽도 같은 두 직선 사이입니다.';
+  function drawVar11(b, s, lab) {
+    const v = var11.cur(), st = cxStep(lab, s);
+    cxFocus(b, 'c11v' + v.sid, v.win);
+    if (s.grid) b.grid();
+    b.axes();
+    const vb = b.viewBox();
+    if (st >= 2) wedge11(b, v.a, v.fa, v.L, v.U, v.both, vb, 0.2);
+    if (st >= 1) b.line([v.a, v.fa], v.L, { color: 'violet', width: 2.8, glow: true, ref: 'L' });
+    if (st >= 2 && v.both) b.line([v.a, v.fa], v.U, { color: 'rose', width: 2.8, glow: true, ref: 'U' });
+    b.vline(v.b, { color: 'muted', dash: true, width: 1.8 });
+    cxTag(b, [v.b, vb.y0 + (vb.y1 - vb.y0) * 0.06], `x = ${v.b}`, { color: 'muted', size: 12.5, align: v.b >= v.a ? 'left' : 'right', dx: v.b >= v.a ? 6 : -6 });
+    b.point([v.a, v.fa], { color: 'ink', r: 6.5, label: `A(${v.a}, ${v.fa})`, dx: -10, dy: 18, align: 'right', ref: 'A' });
+    if (st >= 3) {
+      const yL = v.fa + v.L * v.dl, yU = v.fa + v.U * v.dl;
+      b.point([v.b, yL], { color: 'violet', r: 5.5, ref: 'L' });
+      if (v.both) b.point([v.b, yU], { color: 'rose', r: 5.5, ref: 'U' });
+    }
+    if (st >= 4) {
+      const yL = v.fa + v.L * v.dl, yU = v.fa + v.U * v.dl;
+      const lowY = v.both ? Math.min(yL, yU) : yL, highY = v.both ? Math.max(yL, yU) : yL;
+      const mark = (y, txt) => cxTag(b, [v.b, y], txt, { color: 'green', size: 13, align: v.b >= v.a ? 'left' : 'right', dx: v.b >= v.a ? 12 : -12, dy: -14, ref: 'ans' });
+      if (!v.both) mark(yL, `${ASK11[v.ask]} ${v.ans}`);
+      else {
+        if (v.ask === 'max' || v.ask === 'diff') mark(highY, `최대 ${highY}`);
+        if (v.ask === 'min' || v.ask === 'diff') mark(lowY, `최소 ${lowY}`);
+      }
+    }
+  }
+  function view11(s, lab) {
+    if (lab.tab !== 'explore') return { formula: FORMULA11 };
+    const { L, U, both } = eff11(s), { a, fa } = A11, m = (s.by - fa) / (s.bx - a), inside = m >= L - 1e-9 && (!both || m <= U + 1e-9);
+    return {
+      chips: [{ tex: both ? `${fmt(L, 2)}\\le f'(x)\\le ${fmt(U, 2)}` : `f'(x)\\ge ${fmt(L, 2)}`, color: 'violet' }, { tex: `f(${a})=${fa}`, color: 'ink' }],
+      status: inside ? { tone: 'ok', text: `B는 영역 안: 평균변화율 ${fmt(m, 2)} 가 허용 범위 안이라 이런 f가 있습니다` } : { tone: 'warn', text: `B는 영역 밖: 평균변화율 ${fmt(m, 2)} 는 f′(c)가 될 수 없어 불가능합니다` },
+      readouts: [
+        { label: 'A에서 B까지의 평균변화율', value: fmt(m, 2), color: inside ? 'green' : 'red', ref: 'curve' },
+        { label: '허용되는 기울기 범위', value: both ? `${fmt(L, 2)} ~ ${fmt(U, 2)}` : `${fmt(L, 2)} 이상`, color: 'violet', ref: 'wedge' },
+        { label: '점 B', value: `(${fmt(s.bx, 1)}, ${fmt(s.by, 1)})`, color: inside ? 'green' : 'red', ref: 'curve' },
+        { label: '판정', value: inside ? '지날 수 있음 (평균값 정리 만족)' : '지날 수 없음', color: inside ? 'green' : 'red', ref: 'curve', wide: true }
+      ],
+      formula: FORMULA11
+    };
+  }
+
   /* ---------- 4. 장면 정의 ---------- */
   const scenes = [
     {
@@ -561,6 +907,58 @@ window.addEventListener('DOMContentLoaded', function () {
         done(b);
         derivPane(b, s, 5);
       }
+    },
+    /* ===== 응용 장면 6 · 접점을 움직일 때 접선의 절편 (분류표 C08) ===== */
+    {
+      id: 'tanint', title: '접점을 움직일 때 접선의 절편', short: '접선의 절편 g(t)',
+      question: '접점이 곡선을 따라 움직일 때, 접선이 y축과 만나는 점의 높이는 어떻게 변할까? 이 높이를 접점의 x좌표 t의 함수 g(t)로 보면 어떤 그래프가 될까?',
+      tabs: { compact: true }, startStep: 0,
+      guide: '<b>금색 점 T</b>를 곡선 위로 끌어 보세요. 접선이 y축과 만나는 점 Y의 높이가 보라색 곡선 위의 점으로 옮겨 찍히며 y절편 함수 g(t)의 그래프를 그립니다. T가 극값(수평 접선)이나 변곡점을 지날 때 g의 모양이 어떻게 달라지는지 보세요.',
+      controls: ['tp'],
+      presets: [
+        { label: 't = 0 (극대점, 접선이 수평)', set: { tp: 0 }, on: (s) => Math.abs(s.tp) < 0.03 },
+        { label: 't = 1 (변곡점)', color: 'violet', set: { tp: 1 }, on: (s) => Math.abs(s.tp - 1) < 0.03 },
+        { label: 't = 2 (극소점, 접선이 수평)', set: { tp: 2 }, on: (s) => Math.abs(s.tp - 2) < 0.03 }
+      ],
+      actions: [{ id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : '접점 자동으로 움직이기'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }],
+      tick: (s, dt) => { if (!s.playing) return false; s.tp += 0.7 * (s.tpDir || 1) * dt; if (s.tp > 2.2) { s.tp = 2.2; s.tpDir = -1; } if (s.tp < -0.8) { s.tp = -0.8; s.tpDir = 1; } return true; },
+      steps: () => steps8(var8.cur()),
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text8(var8.cur())}</div>`,
+      problem: {
+        tag: '2025학년도 4월 학평(경기) 14번 유형', time: '목표 시간: 90초',
+        text: () => cxProb(text8(var8.cur())),
+        answer: () => tex(String(var8.cur().ans))
+      },
+      vary: var8,
+      focus: { x: [-1.7, 3.1], y: [-3.0, 3.3] },
+      view: view8,
+      draw: (b, s, v, lab) => { if (b.thumb || !lab || lab.tab === 'explore') drawExplore8(b, s); else drawVar8(b, s, lab); }
+    },
+
+    /* ===== 응용 장면 7 · 할선 기울기 부등식이 허용하는 f의 범위 (분류표 C11) ===== */
+    {
+      id: 'mvtband', title: '기울기 부등식이 허용하는 f의 범위', short: '기울기 범위(평균값 정리)',
+      question: '모든 x에서 f′(x)가 L 이상 U 이하라면, 점 A를 지나는 그래프는 어디까지 갈 수 있을까?',
+      tabs: { compact: true }, startStep: 0,
+      guide: '<b>점 B</b>를 끌어 보세요. A에서 B까지의 평균변화율이 허용 범위 안이면 f의 그래프가 실제로 A에서 B까지 이어질 수 있고(초록), 밖이면 평균값 정리에 어긋나 불가능합니다(빨강). 아래·위 기울기는 슬라이더로 바꿉니다.',
+      controls: ['lo', 'hi'],
+      presets: [
+        { group: '조건', label: 'f′(x) ≥ L (아래만)', apply: (s) => { s.ub = 'lower'; }, on: (s) => s.ub === 'lower' },
+        { group: '조건', label: 'L ≤ f′(x) ≤ U', apply: (s) => { s.ub = 'both'; }, on: (s) => s.ub === 'both' },
+        { group: 'B 놓기', label: 'B를 아래쪽 경계선 위로', color: 'violet', apply: (s) => { s.by = clamp(R8(A11.fa + s.lo * (s.bx - A11.a)), -3.6, 5.6); }, on: () => false },
+        { group: 'B 놓기', label: 'B를 위쪽 경계선 위로', color: 'rose', apply: (s) => { const U = Math.max(s.hi, s.lo + 0.25); s.ub = 'both'; s.by = clamp(R8(A11.fa + U * (s.bx - A11.a)), -3.6, 5.6); }, on: () => false }
+      ],
+      steps: () => steps11(var11.cur()),
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text11(var11.cur())}</div>`,
+      problem: {
+        tag: '2023학년도 6월 모의평가 8번 · 2025학년도 9월 모의평가 21번 유형', time: '목표 시간: 60초',
+        text: () => cxProb(text11(var11.cur())),
+        answer: () => tex(String(var11.cur().ans))
+      },
+      vary: var11,
+      focus: { x: [-3.2, 5.2], y: [-4.0, 6.0] },
+      view: view11,
+      draw: (b, s, v, lab) => { if (b.thumb || !lab || lab.tab === 'explore') drawExplore11(b, s); else drawVar11(b, s, lab); }
     }
   ];
 
@@ -578,9 +976,12 @@ window.addEventListener('DOMContentLoaded', function () {
       a: { value: 1, min: -2.0, max: 2.5, step: 0.05, color: 'amber', label: '기준점·접점 x = a', format: (v) => `a = ${fmt(v)}` },
       dx: { value: 1.8, min: -2.2, max: 2.2, step: 0.02, color: 'amber', label: '증분 Δx = b − a', hint: '0에 가깝게 하면 할선이 접선에 가까워집니다', format: (v, s) => `Δx = ${fmt(v)}` },
       slopeR: { value: 2, min: -2.0, max: 4.0, step: 0.1, color: 'sky', label: '오른쪽 기울기 p = f′₊(1)', hint: '왼쪽 x²의 x = 1 기울기는 2입니다', format: (v) => `p = ${fmt(v)}` },
-      gapH: { value: 0, min: -2.0, max: 2.0, step: 0.1, color: 'violet', label: '경계에서의 높이 차 Δh', hint: '연속 조건: Δh = 0', format: (v) => `Δh = ${fmt(v, 1)}${Math.abs(v) <= 0.02 ? ' (연속)' : ''}` }
+      gapH: { value: 0, min: -2.0, max: 2.0, step: 0.1, color: 'violet', label: '경계에서의 높이 차 Δh', hint: '연속 조건: Δh = 0', format: (v) => `Δh = ${fmt(v, 1)}${Math.abs(v) <= 0.02 ? ' (연속)' : ''}` },
+      tp: { value: 1.5, min: -0.8, max: 2.2, step: 0.05, color: 'amber', label: '접점의 x좌표 t', hint: 't = 0, 1, 2 근처에서 y절편 g(t)의 모양을 보세요', format: (v) => `t = ${fmt(v)}` },
+      lo: { value: 0.5, min: -1, max: 2.5, step: 0.05, color: 'violet', label: '기울기의 아래 한계 L (f′ ≥ L)', format: (v) => `L = ${fmt(v)}` },
+      hi: { value: 2, min: -0.5, max: 3.5, step: 0.05, color: 'rose', label: '기울기의 위 한계 U (f′ ≤ U)', hint: '위 한계는 “L ≤ f′ ≤ U” 조건일 때만 쓰입니다', format: (v) => `U = ${fmt(v)}` }
     },
-    state: { dual: false, animDir: -1 },
+    state: { dual: false, animDir: -1, ub: 'both', bx: 3.5, by: 3.5 },
     persist: ['dual'],
     scenes
   });
