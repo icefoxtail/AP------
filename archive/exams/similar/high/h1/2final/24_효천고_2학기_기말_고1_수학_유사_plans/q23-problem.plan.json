@@ -1,0 +1,116 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 5,
+      "rows": 4
+    },
+    "points": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        5,
+        4
+      ]
+    },
+    "from": "A",
+    "to": "B",
+    "forbidden": [
+      [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      [
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      [
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      [
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      [
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ]
+    ]
+  },
+  "caption": "A에서 B까지 가는 도로망이다. 점선으로 표시한 구간에는 길이 없다.",
+  "sourceQuote": "$\\mathrm{A}$지점에서 $\\mathrm{B}$지점까지",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A지점에서 B지점까지 오른쪽, 위, 아래 방향으로 가는 도로망이 그림으로 주어진다.",
+      "mappedTo": "lattice"
+    },
+    {
+      "id": "c2",
+      "condition": "점선 구간에는 길이 없다.",
+      "mappedTo": "forbidden"
+    }
+  ],
+  "newVisualInformation": [
+    "세로 6줄 가로 5칸의 도로망에서 길이 없는 일곱 구간이 점선으로 표시된다."
+  ],
+  "assetPath": "assets/images/24_효천고_2학기_기말_고1_수학_유사/q23.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/2final/24_효천고_2학기_기말_고1_수학_유사_plans/engine_evidence/q23-problem-result.json",
+    "statePath": "archive/exams/similar/high/h1/2final/24_효천고_2학기_기말_고1_수학_유사_plans/engine_evidence/q23-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h1/2final/24_효천고_2학기_기말_고1_수학_유사_plans/engine_evidence/q23-problem.svg"
+  }
+}
