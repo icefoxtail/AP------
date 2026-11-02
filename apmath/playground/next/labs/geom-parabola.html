@@ -32,7 +32,31 @@ window.addEventListener('DOMContentLoaded', function () {
   const tex = APLab.tex;
   const clamp = APLab.clamp;
 
+  // 정리·문제 탭(변형 조건으로 그리는 화면)은 끌기가 없고 라벨은 정확한 값(정수·분수·근호)으로 씁니다. 탐구 탭은 원래대로 소수.
+  let NODRAG = false;
+  const gcdEx = (a, b) => (b ? gcdEx(b, a % b) : Math.abs(a));
+  const sqEx = (n) => { let o = 1, i = n; for (let f = 2; f * f <= i; f++) while (i % (f * f) === 0) { i /= f * f; o *= f; } return [o, i]; };
+  function exNum(val, digits) {
+    const sg = val < -1e-7 ? '-' : '', a = Math.abs(val);
+    if (a < 1e-7) return '0';
+    const r = Math.round(a);
+    if (Math.abs(a - r) < 1e-6) return sg + r;
+    for (let d = 2; d <= 12; d++) { const n = Math.round(a * d); if (Math.abs(a * d - n) < 1e-6) { const g = gcdEx(n, d); return `${sg}${n / g}/${d / g}`; } }
+    for (let d = 1; d <= 12; d++) {
+      const x = a * d, m = Math.round(x * x);
+      if (m > 0 && m <= 3000 && Math.abs(x * x - m) < 1e-5) {
+        const [o, i] = sqEx(m); if (i === 1) continue;
+        const g = gcdEx(o, d), num = o / g, den = d / g, nt = (num === 1 ? '' : num) + '√' + i;
+        return den === 1 ? sg + nt : `${sg}\\frac{${nt}}{${den}}`;
+      }
+    }
+    return val.toFixed(digits);
+  }
+  // 풀이에 필요한 특수각만 값을 쓰고, 그 밖의 각은 호만 그립니다
+  const spAngle = (deg) => { for (const t of [30, 45, 60, 90, 120, 135, 150]) if (Math.abs(deg - t) < 0.06) return `${t}°`; return ''; };
+  const plainFr = (t) => String(t).replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, '$1/$2');
   function fmtNum(val, digits = 2) {
+    if (NODRAG) return exNum(val, digits);
     const clean = Math.abs(val) < 1e-7 ? 0 : val;
     return clean.toFixed(digits);
   }
@@ -479,18 +503,20 @@ window.addEventListener('DOMContentLoaded', function () {
     const d1 = { x: p1.x - v.x, y: p1.y - v.y }, d2 = { x: p2.x - v.x, y: p2.y - v.y };
     const cosv = (d1.x * d2.x + d1.y * d2.y) / ((Math.hypot(d1.x, d1.y) * Math.hypot(d2.x, d2.y)) || 1);
     const deg = Math.acos(Math.max(-1, Math.min(1, cosv))) * 180 / Math.PI;
-    withAlpha(lensAlpha(lensGroup), () => angleWithLabel([v.x, v.y], [p1.x, p1.y], [p2.x, p2.y], { r, rings, color, label: text == null ? `${deg.toFixed(1)}°` : text, size: 12.5, labelGap }));
+    withAlpha(lensAlpha(lensGroup), () => angleWithLabel([v.x, v.y], [p1.x, p1.y], [p2.x, p2.y], { r, rings, color, label: text == null ? (NODRAG ? spAngle(deg) : `${deg.toFixed(1)}°`) : text, size: 12.5, labelGap }));
     return deg;
   }
   // 하단 비율 줄자 → 셸의 요약 띠(무대 아래). 비율 막대의 weight 합계 = 1.0
   function drawBottomTapeBanner(rect, titleStr, tapeSegs, partIdx = 2) {
     const total = tapeSegs.reduce((acc, s) => acc + Math.max(0.05, s.val), 0) || 1;
-    sink.tape = { title: titleStr, segments: tapeSegs.map((s) => ({ text: s.label, weight: Math.max(0.05, s.val) / total, color: s.color })) };
+    sink.tape = { title: plainFr(titleStr), segments: tapeSegs.map((s) => ({ text: plainFr(s.label), weight: Math.max(0.05, s.val) / total, color: s.color })) };
   }
   function drawDirectrix(p, h, partIdx = 0, lensGroup = 'def') {
     withAlpha(lensAlpha(lensGroup), () => {
       BOARD.vline(-p, { color: '#f87171', width: isPartHighlighted(partIdx) ? 3.2 : 2.3, dash: [7, 5], part: partOf(partIdx) });
-      BOARD.text([-p, -4.2], `준선 l : x = -${fmtNum(p, 1)}`, { color: '#fca5a5', size: 12.5, dy: 4, part: partOf(partIdx) });
+      if (NODRAG) { const vb = BOARD.viewBox(); const dy0 = vb.y0 + 0.09 * (vb.y1 - vb.y0), room = BOARD.toS(-p, dy0).x; // 준선이 왼쪽 끝에 가까우면 글자를 오른쪽에 씁니다
+        BOARD.text([-p, dy0], `준선 l : x = -${fmtNum(p, 1)}`, { color: '#fca5a5', size: 12.5, align: room < 90 ? 'left' : 'right', dx: room < 90 ? 6 : -6, dy: 0, part: partOf(partIdx) }); }
+      else BOARD.text([-p, -4.2], `준선 l : x = -${fmtNum(p, 1)}`, { color: '#fca5a5', size: 12.5, dy: 4, part: partOf(partIdx) });
     });
   }
   function drawParabolaCurve(p) {
@@ -556,21 +582,22 @@ window.addEventListener('DOMContentLoaded', function () {
           const P_opt = { x: (A0.y * A0.y) / (4 * p), y: A0.y };
           drawChalkLine(A0.x, A0.y, Hp.x, Hp.y, '#34d399', 2.2, true, true, 1, 'sim');
           drawRightAngleMark(Hp, { x: 0, y: -1 }, { x: 1, y: 0 }, 10, '#34d399', 1, 'sim');
-          drawChalkPoint(Hp.x, Hp.y, 5, '#34d399', `H'(-${fmtNum(p, 1)}, ${fmtNum(A0.y, 1)})`, { x: -95, y: 18 }, 1, 'sim');
-          drawChalkPoint(P_opt.x, P_opt.y, 4.5, '#34d399', `최소점 P*(${fmtNum(P_opt.x, 1)}, ${fmtNum(P_opt.y, 1)})`, { x: 8, y: 18 }, 1, 'sim');
+          drawChalkPoint(Hp.x, Hp.y, 5, '#34d399', NODRAG ? (Math.abs(A0.y - py) < 0.05 ? '' : "H'") : `H'(-${fmtNum(p, 1)}, ${fmtNum(A0.y, 1)})`, NODRAG ? { x: -14, y: 18 } : { x: -95, y: 18 }, 1, 'sim');
+          drawChalkPoint(P_opt.x, P_opt.y, 4.5, '#34d399', NODRAG ? 'P*' : `최소점 P*(${fmtNum(P_opt.x, 1)}, ${fmtNum(P_opt.y, 1)})`, { x: 8, y: 18 }, 1, 'sim');
         } else {
           // 상·하단 전체 2p × 4p 그리드 및 통경(4p) 작도
           // [2.0] 캔버스 직접 그리기 → 무대 호출: 1:2 작도 박스(노랑)와 2p × 4p 박스(하늘)
           withAlpha(lensAlpha('sim'), () => {
             BOARD.poly([[0, 2 * p], [p, 2 * p], [p, -2 * p], [0, -2 * p]], { fill: '#fbbf24', fillAlpha: 0.06, color: '#fbbf24', alpha: 0.6, width: isPartHighlighted(1) ? 2.4 : 1.5, dash: [5, 5], part: 1 });
             BOARD.poly([[-p, 2 * p], [p, 2 * p], [p, -2 * p], [-p, -2 * p]], { color: '#38bdf8', alpha: 0.42, width: isPartHighlighted(1) ? 2.4 : 1.5, dash: [5, 5], part: 1 });
-            BOARD.text([p + 2.8, -3.4 * p], '가로 p, 세로 2p 직사각형 · 현의 길이 4p', { color: '#fde047', size: 12.5, align: 'right', dy: 0, part: 1 });
+            if (NODRAG) BOARD.text([p, -1.5 * p], `현의 길이 4p = ${fmtNum(4 * p)}`, { color: '#fde047', size: 12.5, align: 'left', dx: 8, dy: 0, part: 1 });
+            else BOARD.text([p + 2.8, -3.4 * p], '가로 p, 세로 2p 직사각형 · 현의 길이 4p', { color: '#fde047', size: 12.5, align: 'right', dy: 0, part: 1 });
           });
 
           // 통경 수직현 (p, -2p) ~ (p, 2p)
           drawChalkLine(p, -2 * p, p, 2 * p, 'rgba(56, 189, 248, 0.65)', 1.8, true, false, 1, 'sim');
-          drawChalkPoint(p, 2 * p, 4, '#38bdf8', `(${fmtNum(p, 1)}, ${fmtNum(2 * p, 1)})`, { x: 8, y: -6 }, 1, 'sim');
-          drawChalkPoint(p, -2 * p, 4, '#38bdf8', `(${fmtNum(p, 1)}, -${fmtNum(2 * p, 1)})`, { x: 8, y: 15 }, 1, 'sim');
+          drawChalkPoint(p, 2 * p, 4, '#38bdf8', NODRAG ? '' : `(${fmtNum(p, 1)}, ${fmtNum(2 * p, 1)})`, { x: 8, y: -6 }, 1, 'sim');
+          drawChalkPoint(p, -2 * p, 4, '#38bdf8', NODRAG ? '' : `(${fmtNum(p, 1)}, -${fmtNum(2 * p, 1)})`, { x: 8, y: 15 }, 1, 'sim');
 
           // 정삼각형 PFH 시나리오일 때 점 F에서 PH에 내린 수선의 발 (30°-60°-90°)
           if (state.subType === 2 && Math.abs(py) > 0.3) {
@@ -591,7 +618,7 @@ window.addEventListener('DOMContentLoaded', function () {
         drawEqualTickMarks(P, H, '#38bdf8', 0, 'def');
         drawEqualTickMarks(P, F, '#f472b6', 0, 'def');
 
-        drawChalkPoint(H.x, H.y, 5, '#38bdf8', `H(-${fmtNum(p, 1)}, ${fmtNum(py)})`, { x: -102, y: -8 }, 0, 'def');
+        drawChalkPoint(H.x, H.y, 5, '#38bdf8', NODRAG ? 'H' : `H(-${fmtNum(p, 1)}, ${fmtNum(py)})`, NODRAG ? { x: -14, y: -10 } : { x: -102, y: -8 }, 0, 'def');
       }
 
       // Step 3 (partIdx = 2): 삼각형 PFH, 광학 반사(접선·화살표·등각), 또는 최단거리 PA 연결
@@ -605,7 +632,7 @@ window.addEventListener('DOMContentLoaded', function () {
           drawChalkLine(P.x, P.y, A0.x, A0.y, '#fde047', 2.8, false, true, 2, 'def');
           // [2.0] 원본은 점 A0를 보이지 않는 영역으로도 끌 수 있었습니다 → 보이는 손잡이로 만들어 직접 끌게 함(범위는 원본 그대로)
           withAlpha(lensAlpha('def'), () => (NODRAG ? (o, f) => BOARD.point(o, { color: f.color, r: f.r, label: f.label, dx: f.dx, dy: f.dy }) : (o, f) => BOARD.handle('A0', o, f))([A0.x, A0.y], {
-            color: '#a7f3d0', r: 6.5, part: 2, label: `점 A(${fmtNum(A0.x, 1)}, ${fmtNum(A0.y, 1)})`, dx: 10, dy: -14,
+            color: '#a7f3d0', r: 6.5, part: 2, label: NODRAG ? `A(${fmtNum(A0.x, 1)}, ${fmtNum(A0.y, 1)})` : `점 A(${fmtNum(A0.x, 1)}, ${fmtNum(A0.y, 1)})`, dx: 10, dy: -14,
             drag: (w) => {
               CUR.a0y = Math.max(-6.0, Math.min(6.5, w.y));
               CUR.a0x = Math.max((CUR.a0y * CUR.a0y) / (4 * CUR.p) + 0.8, Math.min(8.0, w.x));
@@ -695,8 +722,8 @@ window.addEventListener('DOMContentLoaded', function () {
         drawEqualTickMarks(B, Bp, '#38bdf8', 0, 'def');
         drawEqualTickMarks(B, F, '#38bdf8', 0, 'def');
 
-        drawChalkPoint(Ap.x, Ap.y, 4.5, '#f472b6', `A' (a=${fmtNum(a)})`, { x: -92, y: -8 }, 0, 'def');
-        drawChalkPoint(Bp.x, Bp.y, 4.5, '#38bdf8', `B' (b=${fmtNum(b)})`, { x: -92, y: 16 }, 0, 'def');
+        drawChalkPoint(Ap.x, Ap.y, 4.5, '#f472b6', NODRAG ? "A'" : `A' (a=${fmtNum(a)})`, NODRAG ? { x: -14, y: -8 } : { x: -92, y: -8 }, 0, 'def');
+        drawChalkPoint(Bp.x, Bp.y, 4.5, '#38bdf8', NODRAG ? "B'" : `B' (b=${fmtNum(b)})`, NODRAG ? { x: -14, y: 16 } : { x: -92, y: 16 }, 0, 'def');
       }
 
       // Step 2 (partIdx = 1): 직각사다리꼴 AA'B'B 및 직각삼각형 ABE (밑변 a-b, 빗변 a+b)
@@ -711,10 +738,11 @@ window.addEventListener('DOMContentLoaded', function () {
         if (Math.abs(a - b) > 0.15) {
           drawChalkLine(B.x, B.y, E.x, E.y, '#34d399', 2.0, true, false, 1, 'sim');
           drawRightAngleMark(E, { x: A.x >= E.x ? 1 : -1, y: 0 }, { x: 0, y: -1 }, 10, '#34d399', 1, 'sim');
-          drawChalkPoint(E.x, E.y, 4.0, '#34d399', `E (|a-b|=${fmtNum(Math.abs(a - b))})`, { x: -45, y: -12 }, 1, 'sim');
+          drawChalkPoint(E.x, E.y, 4.0, '#34d399', NODRAG ? 'E' : `E (|a-b|=${fmtNum(Math.abs(a - b))})`, NODRAG ? { x: 8, y: -12 } : { x: -45, y: -12 }, 1, 'sim');
           // [표시 보강] θ에 값(°)을 넣고, AE ∥ x축에 의한 엇각을 초점 F에도 같은 색·같은 표시로 그립니다(같은 각이 어디인지)
           const eDir = E.x >= A.x ? 1 : -1;
-          const thTxt = (safeTheta <= Math.PI / 2 + 1e-6 ? 'θ=' : '') + fmtNum(Math.abs(Math.atan2(B.y - A.y, (B.x - A.x) * eDir)) * 180 / Math.PI, 1) + '°';
+          const thDeg = Math.abs(Math.atan2(B.y - A.y, (B.x - A.x) * eDir)) * 180 / Math.PI;
+          const thTxt = NODRAG ? (spAngle(thDeg) ? (safeTheta <= Math.PI / 2 + 1e-6 ? 'θ=' : '') + spAngle(thDeg) : 'θ') : (safeTheta <= Math.PI / 2 + 1e-6 ? 'θ=' : '') + fmtNum(thDeg, 1) + '°';
           drawEqAngle(A, { x: A.x + eDir, y: A.y }, B, '#fde047', 1, 28, thTxt, 'sim');
           drawEqAngle(F, { x: F.x - eDir, y: 0 }, A, '#fde047', 1, 28, thTxt, 'sim');
         } else {
@@ -730,7 +758,7 @@ window.addEventListener('DOMContentLoaded', function () {
       // Step 3 (partIdx = 2): 역수합 1/a + 1/b = 1/p 및 cosθ = (a-b)/(a+b) 비율 줄자 배너
       if (state.steps[3]) {
         withAlpha(lensAlpha('all'), () => {
-          BOARD.text([(A.x + F.x) / 2, (A.y + F.y) / 2], `a = ${fmtNum(a)}`, { color: '#f9a8d4', size: 12, align: 'left', dx: 12, part: 2 });
+          BOARD.text(NODRAG ? [F.x + 0.66 * (A.x - F.x), F.y + 0.66 * (A.y - F.y)] : [(A.x + F.x) / 2, (A.y + F.y) / 2], `a = ${fmtNum(a)}`, { color: '#f9a8d4', size: 12, align: 'left', dx: 12, part: 2 });
           BOARD.text([(B.x + F.x) / 2, (B.y + F.y) / 2], `b = ${fmtNum(b)}`, { color: '#7dd3fc', size: 12, align: 'left', dx: 12, dy: 12, part: 2 });
         });
 
@@ -793,8 +821,8 @@ window.addEventListener('DOMContentLoaded', function () {
         drawRightAngleMark(HM, uQA, uQB, 20, '#e879f9', 1, 'tan'); // [표시 보강] ∠AQB=90° 표시를 키워 준선 직각 표시와 겹치지 않게
         queueRightText(HM, A, B, '#e879f9', 42, 'tan'); // [표시 보강] ∠AQB = 90° 값을 각 안쪽에
 
-        drawChalkPoint(M.x, M.y, 5.5, '#fbbf24', `중심 M(${fmtNum(M.x)}, ${fmtNum(M.y)})`, { x: 10, y: -10 }, 1, 'sim');
-        drawChalkPoint(HM.x, HM.y, 6.0, '#f43f5e', `접점 Q=H_M(-${fmtNum(p, 1)}, ${fmtNum(HM.y)})`, { x: -138, y: -8 }, 1, 'tan');
+        drawChalkPoint(M.x, M.y, 5.5, '#fbbf24', NODRAG ? 'M' : `중심 M(${fmtNum(M.x)}, ${fmtNum(M.y)})`, { x: 10, y: -10 }, 1, 'sim');
+        drawChalkPoint(HM.x, HM.y, 6.0, '#f43f5e', NODRAG ? 'Q' : `접점 Q=H_M(-${fmtNum(p, 1)}, ${fmtNum(HM.y)})`, NODRAG ? { x: -14, y: -8 } : { x: -138, y: -8 }, 1, 'tan');
       }
 
       // Step 3 (partIdx = 2): 직선 QF ⊥ AB 직교 및 d = R = (a+b)/2 비율 줄자 배너
@@ -809,7 +837,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const lFQ = Math.hypot(vFQ.x, vFQ.y);
         const uFQ = { x: vFQ.x / lFQ, y: vFQ.y / lFQ };
         drawRightAngleMark(F, uFA, uFQ, 10, '#fde047', 2, 'tan');
-        queueRightText(F, { x: F.x + uFA.x, y: F.y + uFA.y }, { x: F.x + uFQ.x, y: F.y + uFQ.y }, '#fde047', 28, 'tan'); // [표시 보강] QF ⊥ AB 의 90° 값
+        if (!NODRAG) queueRightText(F, { x: F.x + uFA.x, y: F.y + uFA.y }, { x: F.x + uFQ.x, y: F.y + uFQ.y }, '#fde047', 28, 'tan'); // [표시 보강] QF ⊥ AB 의 90° 값(정리 탭은 직각 표시만: Q의 90°와 겹침)
 
         withAlpha(lensAlpha('tan'), () => { // 접점 Q 둘레의 노란 고리(화면 반지름 11px)
           const sHM = BOARD.toS(HM.x, HM.y), c = BOARD.ctx;
@@ -864,8 +892,8 @@ window.addEventListener('DOMContentLoaded', function () {
         drawChalkLine(T.x - ux * 3, T.y - uy * 3, P.x + ux * 3, P.y + uy * 3, '#c084fc', 2.5, false, true, 0, 'tan');
         drawRightAngleMark(H, { x: 0, y: py >= 0 ? -1 : 1 }, { x: 1, y: 0 }, 10, '#38bdf8', 0, 'def');
 
-        drawChalkPoint(T.x, T.y, 6, '#c084fc', `T(${fmtNum(T.x)}, 0)`, { x: -42, y: 20 }, 0, 'tan');
-        drawChalkPoint(H.x, H.y, 5, '#38bdf8', `H(-${fmtNum(p, 1)}, ${fmtNum(py)})`, { x: -102, y: -8 }, 0, 'def');
+        drawChalkPoint(T.x, T.y, 6, '#c084fc', NODRAG ? 'T' : `T(${fmtNum(T.x)}, 0)`, NODRAG ? { x: -14, y: 20 } : { x: -42, y: 20 }, 0, 'tan');
+        drawChalkPoint(H.x, H.y, 5, '#38bdf8', NODRAG ? 'H' : `H(-${fmtNum(p, 1)}, ${fmtNum(py)})`, NODRAG ? { x: -14, y: -10 } : { x: -102, y: -8 }, 0, 'def');
       }
 
       // Step 2 (partIdx = 1): 마름모 TFPH 네 변 하이라이트 및 등변 마크
@@ -910,7 +938,7 @@ window.addEventListener('DOMContentLoaded', function () {
           drawEqAngle(F, K, P, '#34d399', 1, 28, null, 'sim');
         }
 
-        drawChalkPoint(K.x, K.y, 5.0, '#fde047', `K(0, ${fmtNum(py / 2)}) [FK=${fmtNum(realFK)}]`, { x: 44, y: 40 }, 2, 'tan'); // [표시 보강] K의 직각 표시(우측)를 이름표가 가리지 않게 마름모 안쪽으로 이동
+        drawChalkPoint(K.x, K.y, 5.0, '#fde047', NODRAG ? 'K' : `K(0, ${fmtNum(py / 2)}) [FK=${fmtNum(realFK)}]`, NODRAG ? { x: 12, y: 24 } : { x: 44, y: 40 }, 2, 'tan'); // [표시 보강] K의 직각 표시(우측)를 이름표가 가리지 않게 마름모 안쪽으로 이동
 
         drawBottomTapeBanner(
           rect,
@@ -995,6 +1023,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function viewOf(m, sub) {
     return (s, lab) => {
       const ex = !lab || lab.tab === 'explore';
+      NODRAG = !ex;
       // 원본 togglePartHighlight: 조각을 누르면 그 보조선이 켜집니다
       if (ex && s.part != null && s.step < s.part + 1) s.step = s.part + 1;
       if (!ex) { const V = GV[GVKEY(m, sub)].vary.cur(); s = { ...s, p: V.st.p, py: V.st.py, th: V.st.th, a0x: V.st.a0x != null ? V.st.a0x : 5, a0y: V.st.a0y != null ? V.st.a0y : 4, lens: 'all', part: null }; }
@@ -1007,7 +1036,7 @@ window.addEventListener('DOMContentLoaded', function () {
       return {
         chips: [{ k: '포물선', tex: `y^2 = ${fourP}x \\; (p = ${pStr})`, color: 'amber' }, { k: '준선', tex: `x = -${pStr}`, color: 'red' }],
         status: ex ? { tone: 'ok', text: `측정 오차 ${st.relErr.toFixed(3)}%` } : undefined,
-        readouts: st.r.map(([label, value], i) => ({ label, value, color: colors[i], wide: true })),
+        readouts: st.r.map(([label, value], i) => ({ label, value: plainFr(value), color: colors[i], wide: true })),
         parts: examData[m].subData[sub].steps.map((t, i) => ({ id: i, name: t, desc: '', value: null, color: PART_COLORS[i] }))
       };
     };
@@ -1042,14 +1071,14 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       RENDER[m](p, F, rect);
       drawParabolaCurve(p);
-      drawChalkPoint(F.x, 0, 5.5, '#f43f5e', `F(${fmtNum(p, 1)}, 0)`, { x: 8, y: 18 });
+      drawChalkPoint(F.x, 0, 5.5, '#f43f5e', NODRAG ? 'F' : `F(${fmtNum(p, 1)}, 0)`, NODRAG && (m === 1 || m === 4) ? { x: 16, y: -10 } : NODRAG && m === 2 ? { x: -14, y: -10 } : { x: 8, y: 18 });
 
       if (m === 1 || m === 4) {
         const py = state.py;
         const px = (py * py) / (4 * p);
         // [표시 보강] 모드 1의 3단계는 점 P 오른쪽 위에 반사각 α 표시가 오므로, P 이름표를 왼쪽 위로 옮겨 겹치지 않게 합니다.
         const flipP = m === 1 && s.step >= 3 && sub !== 3;
-        hd('P', [px, py], { color: 'amber', r: 7.5, label: `P(${fmtNum(px)}, ${fmtNum(py)})`, align: flipP ? 'right' : 'left', dx: flipP ? -12 : 12, dy: py >= 0 ? -16 : 16, drag: (w) => { s.py = clamp(w.y, -8, 8); } });
+        hd('P', [px, py], { color: 'amber', r: 7.5, label: NODRAG ? (V.Plab || 'P') : `P(${fmtNum(px)}, ${fmtNum(py)})`, align: flipP ? 'right' : 'left', dx: flipP ? -12 : 12, dy: py >= 0 ? -16 : 16, drag: (w) => { s.py = clamp(w.y, -8, 8); } });
       } else {
         const chord = getFocalChordPoints(p, state.theta);
         // 원본 handlePointerMove: 초점 F를 중심으로 끝점을 돌려 θ를 정함(20°~160°)
@@ -1060,8 +1089,8 @@ window.addEventListener('DOMContentLoaded', function () {
           const ang = vy <= 0.01 ? (vx >= 0 ? lo : hi) : Math.atan2(vy, vx);
           s.th = clamp(ang, lo, hi) / D2R;
         };
-        hd('A', [chord.A.x, chord.A.y], { color: 'amber', r: 7.5, label: `A(${fmtNum(chord.A.x)}, ${fmtNum(chord.A.y)})`, dx: 12, dy: -14, drag: turn('A') });
-        hd('B', [chord.B.x, chord.B.y], { color: 'sky', r: 6.5, label: `B(${fmtNum(chord.B.x)}, ${fmtNum(chord.B.y)})`, dx: 12, dy: 14, drag: turn('B') });
+        hd('A', [chord.A.x, chord.A.y], { color: 'amber', r: 7.5, label: NODRAG ? 'A' : `A(${fmtNum(chord.A.x)}, ${fmtNum(chord.A.y)})`, dx: 12, dy: -14, drag: turn('A') });
+        hd('B', [chord.B.x, chord.B.y], { color: 'sky', r: 6.5, label: NODRAG ? 'B' : `B(${fmtNum(chord.B.x)}, ${fmtNum(chord.B.y)})`, dx: 12, dy: 14, drag: turn('B') });
       }
       flushAngleLabels(); // [표시 보강] 각도 글자는 곡선·손잡이 위에(가려지지 않게)
       v.tape = sink.tape;
@@ -1373,7 +1402,6 @@ window.addEventListener('DOMContentLoaded', function () {
   for (const key of Object.keys(GV)) GV[key].vary = varGP(GV[key].list, (q, i) => GV[key].build(q, i));
 
   /* ---- 정리·문제 탭 그리기: 변형 V의 조건대로 ---- */
-  let NODRAG = false;
   const GVKEY = (m, sub) => `${m}-${sub}`;
   function focusOf(V) {
     const p = V.st.p, xs = [-p, 0, p], ys = [0, 0];
@@ -1416,7 +1444,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const c = chord();
       drawChalkLine(c.A.x, c.A.y, c.B.x, c.B.y, '#f8fafc', 2.6, false, false);
       if (sub === 1) gpText((c.A.x + F.x) / 2, (c.A.y + F.y) / 2, `AF = ${q.a}`, '#f9a8d4', { dx: 12, dy: 6 });
-      else gpText(F.x, F.y, `AF : BF = ${q.r} : 1`, '#fde047', { align: 'right', dx: -24, dy: -30 });
+      else gpText(F.x, F.y, `AF : BF = ${q.r} : 1`, '#fde047', { align: 'left', dx: 32, dy: -30 });
       gpPoint(c.A.x, c.A.y, '#f472b6', 'A', { r: 5.5, dx: 8, dy: -12 });
       gpPoint(c.B.x, c.B.y, '#38bdf8', 'B', { r: 5.5, dx: 8, dy: 16 });
     } else if (m === 2) {
