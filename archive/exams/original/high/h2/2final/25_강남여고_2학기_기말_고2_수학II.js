@@ -78,14 +78,15 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "③",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q3-solution.svg",
-    "solutionImageAlt": "포물선 v(t)=−t²+10t의 꼭짓점 (5,25)와 그 점에서의 수평 접선을 표시하여, t=5에서 v′(5)=0이므로 가속도가 0임을 보여 준다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 속도 v(t)=−t²+10t의 그래프. 위로 볼록한 포물선의 꼭짓점에서 접선이 수평(기울기 0)임을 점선으로 보인다.",
+    "solutionImageSize": "medium",
     "solution": "가속도는 속도를 시간에 대하여 미분한 값이다.\n$v(t)=-t^2+10t$\n$v'(t)=-2t+10$\n$t=a$일 때 가속도가 $0$이므로\n$v'(a)=-2a+10=0$\n$2a=10$\n$\\Rightarrow a=5$\n주어진 시간 조건 $a\\ge0$도 만족한다.\n속도 그래프에서도 $t=5$에서 접선이 수평이므로 가속도가 $0$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "v′(t)=−2t+10이므로 가속도가 0인 시각은 꼭짓점의 수평 접선에서 a=5이다. 정답 ③"
   },
   {
     "id": 4,
@@ -137,14 +138,15 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "①",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q5-solution.svg",
-    "solutionImageAlt": "직선 v(t)=6−2t가 t=3에서 t축을 지나며, 0≤t≤3의 양의 삼각형 넓이 +9와 3≤t≤5의 음의 삼각형 넓이 −4를 색칠하고 위치 9−4=5를 보여 준다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: v(t)=6−2t의 시간-속도 그래프. 0≤t≤3은 x축 위 삼각형 넓이 9, 3≤t≤5는 x축 아래 삼각형 넓이 4이다.",
+    "solutionImageSize": "medium",
     "solution": "점 $P$의 위치를 $s(t)$라 하자. 원점에서 출발하므로 $s(0)=0$이다.\n속도를 적분하면 위치의 변화량을 구할 수 있다.\n$s(5)-s(0)=\\displaystyle\\int_0^5(6-2t)\\,dt$\n$=\\left[6t-t^2\\right]_0^5$\n$=(30-25)-0$\n$=5$\n이때 $v(t)=0$인 시각은 $t=3$이다.\n$0\\le t\\le3$에서 앞으로 이동한 거리: $\\dfrac12\\cdot3\\cdot6=9$\n$3\\le t\\le5$에서 뒤로 이동한 거리: $\\dfrac12\\cdot2\\cdot4=4$\n따라서 위치는 $9-4=5$로, 적분 결과와 같다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "0~3초에 앞으로 9, 3~5초에 뒤로 4 움직이므로 t=5일 때의 위치는 9−4=5, 정답은 ①이다."
   },
   {
     "id": 6,
@@ -290,14 +292,15 @@ window.questionBank = [
       "$0$"
     ],
     "answer": "⑤",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q10-solution.svg",
-    "solutionImageAlt": "곡선 y=3x³−9x의 극댓값 6과 극솟값 −6에서 각각 수평선 y=k가 접하는 모습을 그려, 접하는 높이 k=6과 k=−6의 합이 0임을 보여 준다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: y=3x³−9x의 그래프. 수평선 y=6은 극대점 (−1,6)에서 접하고 (2,6)에서 만나며, 수평선 y=−6은 극소점 (1,−6)에서 접하고 (−2,−6)에서 만난다.",
+    "solutionImageSize": "medium",
     "solution": "$h(x)=3x^3-9x-k$라 두면, 서로 다른 실근의 개수는 $y=h(x)$와 $x$축의 교점 개수이다.\n$h'(x)=9x^2-9=9(x+1)(x-1)$\n따라서 $x=-1$에서 극대, $x=1$에서 극소이다.\n서로 다른 실근이 정확히 $2$개가 되려면 극댓값 또는 극솟값이 $0$이어야 한다.\n\n$x=-1$에서 접하는 경우:\n$h(-1)=-3+9-k=6-k=0$\n$\\Rightarrow k=6$\n이때 $h(x)=3(x+1)^2(x-2)$이므로 서로 다른 실근은 $-1,\\ 2$이다.\n\n$x=1$에서 접하는 경우:\n$h(1)=3-9-k=-6-k=0$\n$\\Rightarrow k=-6$\n이때 $h(x)=3(x-1)^2(x+2)$이므로 서로 다른 실근은 $1,\\ -2$이다.\n\n따라서 모든 $k$의 값의 합은\n$6+(-6)=0$\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "y=3x³−9x의 극대점 (−1,6)과 극소점 (1,−6)에서 y=6, y=−6이 접할 때 서로 다른 실근이 2개이다. 따라서 k=6, −6이고 합은 0이다. 정답 ⑤"
   },
   {
     "id": 11,
@@ -352,14 +355,15 @@ window.questionBank = [
       "$11$"
     ],
     "answer": "④",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q12-solution.svg",
-    "solutionImageAlt": "두 포물선 y=x²−2x와 y=−x²+4x가 x=0과 x=3에서 만나고, 그 사이에서 위쪽 −x²+4x와 아래쪽 x²−2x 사이 영역을 색칠해 넓이 9를 표시한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선 y=x²−2x와 y=−x²+4x의 그래프. 두 곡선은 (0,0), (3,3)에서 만나고, x가 0과 3 사이일 때 위쪽 곡선 y=−x²+4x와 아래쪽 곡선 사이를 S로 색칠했다. 꼭짓점 (1,−1), (2,4)가 표시되어 있다.",
+    "solutionImageSize": "medium",
     "solution": "두 곡선이 만나는 점의 $x$좌표를 먼저 구한다.\n$x^2-2x=-x^2+4x$\n$2x^2-6x=0$\n$2x(x-3)=0$\n$\\Rightarrow x=0,\\ 3$\n$0<x<3$에서\n$(-x^2+4x)-(x^2-2x)$\n$=-2x^2+6x=2x(3-x)>0$\n따라서 이 구간에서는 $y=-x^2+4x$가 위쪽 곡선이다.\n넓이를 $S$라 하면\n$S=\\displaystyle\\int_0^3\\{(-x^2+4x)-(x^2-2x)\\}\\,dx$\n$=\\displaystyle\\int_0^3(-2x^2+6x)\\,dx$\n$=\\left[-\\dfrac23x^3+3x^2\\right]_0^3$\n$=(-18+27)-0$\n$=9$\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "두 곡선의 교점 x=0과 x=3 사이에서 위쪽 곡선은 y=−x²+4x이므로 S=∫₀³(−2x²+6x)dx로 구하며 넓이는 9이다. 정답 ④"
   },
   {
     "id": 13,
@@ -605,10 +609,10 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "⑤",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q20-solution.svg",
-    "solutionImageAlt": "원뿔에 내접한 같은 두 원기둥과 닮음식 z=h(1-r), 부피함수의 최댓값 r=2/3을 나타낸 해설 그림",
-    "solutionImageCaption": "닮음으로 z=h(1-r)을 얻고 V=2πhr²(1-r)의 최댓값은 r=2/3에서 생긴다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원뿔의 축을 지나는 단면: 밑면 반지름 2, 높이 h인 이등변삼각형 안에 두 원기둥의 단면인 합동 직사각형(폭 2r, 높이 z)이 나란히 있고, 윗면 높이의 단면 지름은 4r이며 위의 작은 삼각형 높이는 h-z이다.",
+    "solutionImageCaption": "원뿔의 축을 지나는 단면에서 원기둥 윗면 높이의 단면 지름이 4r이므로 닮음 2r : 2 = (h-z) : h에서 z=h(1-r)이고(그림은 r, h에 예를 든 모양), 두 원기둥의 부피의 합 V=2πhr²(1-r)은 r=2/3에서 최대이므로 p=3, q=2이고 p+q=5, 정답은 ⑤이다.",
+    "solutionImageSize": "medium",
     "solution": "두 원기둥의 밑면 반지름을 $r$, 높이를 $z$라 하자.\n원뿔의 밑면 반지름은 $2$, 높이는 $h$이다.\n\n원뿔의 꼭짓점을 지나는 세로 단면에서 원기둥 두 개가 나란히 놓이므로, 원기둥 윗면 높이에서 원뿔 단면의 지름은 $4r$, 반지름은 $2r$이다.\n닮음에 의해\n$\\dfrac{2r}{2}=\\dfrac{h-z}{h}$\n$r=1-\\dfrac zh$\n$\\Rightarrow z=h(1-r)$\n이다. 원기둥의 크기는 양수이므로 $0<r<1$이다.\n\n원기둥 두 개의 부피 합을 $V(r)$라 하면\n$V(r)=2\\pi r^2z$\n$=2\\pi h r^2(1-r)$\n$=2\\pi h(r^2-r^3)$\n$V'(r)=2\\pi h(2r-3r^2)=2\\pi hr(2-3r)$\n\n$0<r<\\dfrac23$에서는 $V'(r)>0$이므로 증가하고\n$\\dfrac23<r<1$에서는 $V'(r)<0$이므로 감소한다.\n따라서 부피가 최대가 되는 때는\n$r=\\dfrac23$\n이다.\n$\\dfrac qp=\\dfrac23$에서 서로소인 자연수는 $p=3,\\ q=2$이다.\n$p+q=3+2=5$\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
@@ -661,14 +665,15 @@ window.questionBank = [
     "content": "서술형1. 곡선 $f(x)=-x^2+4x$ 위의 점 $(1,3)$에서의 접선의 방정식을 $y=ax+b$라 할 때, 상수 $a$, $b$에 대하여 $a^2+b^2$의 값을 구하시오. [5점]",
     "choices": [],
     "answer": "5",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q22-solution.svg",
-    "solutionImageAlt": "포물선 y=−x²+4x 위의 점 (1,3)에서 기울기 2인 접선 y=2x+1을 그려, 곡선과 접선이 접하는 모습과 a=2, b=1을 보여 준다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 곡선 f(x)=−x²+4x와 점 (1,3)에서 접하는 직선 y=2x+1. 접선의 y절편은 (0,1)이다.",
+    "solutionImageSize": "medium",
     "solution": "곡선 $y=f(x)$의 점 $(1,3)$에서 접선의 기울기는 $f'(1)$이다.\n$f(x)=-x^2+4x$\n$f'(x)=-2x+4$\n$f'(1)=-2\\cdot1+4=2$\n따라서 접선의 기울기는 $a=2$이다.\n\n점 $(1,3)$을 지나고 기울기가 $2$인 직선은\n$y-3=2(x-1)$\n$y-3=2x-2$\n$\\Rightarrow y=2x+1$\n이다.\n이를 $y=ax+b$와 비교하면\n$a=2,\\quad b=1$\n이므로\n$a^2+b^2=2^2+1^2$\n$=4+1=5$\n따라서 구하는 값은 $5$이다.",
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "f′(1)=2이므로 점 (1,3)에서의 접선은 y=2x+1이다. a=2, b=1이므로 a²+b²=5이다. 정답 5"
   },
   {
     "id": 23,

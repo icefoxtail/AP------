@@ -329,9 +329,9 @@ window.questionBank = [
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q07-solution.svg",
-    "solutionImageAlt": "표본평균 160 이상의 확률은 표준화하면 Z가 2 이상인 오른쪽 꼬리 영역이다.",
-    "solutionImageCaption": "P(Z ≥ 2) = 0.0228",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평균 m, 표준편차 0.5인 표본평균의 정규분포 곡선에서 평균부터 160까지의 넓이 0.4772와 160 이상의 진한 오른쪽 꼬리가 칠해져 있고, 160은 Z=2에 대응한다.",
+    "solutionImageCaption": "표본평균의 표준편차는 5/√100=0.5이고 P(X̄≥160)=0.0228이므로 160은 Z=2에 대응하여 (160-m)/0.5=2이다. 정답 ④ 159.",
     "solutionImageSize": "medium"
   },
   {
@@ -381,9 +381,9 @@ window.questionBank = [
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q08-solution.svg",
-    "solutionImageAlt": "평균 65 표준편차 1인 표본평균에서 63 이상 66.5 이하 구간을 표준화하면 -2 이상 1.5 이하 영역이다.",
-    "solutionImageCaption": "P(-2 ≤ Z ≤ 1.5) = 0.91",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평균 65, 표준편차 1인 표본평균 분포 곡선에서 63~65(p)와 65~66.5(q)를 칠했다. 63은 Z=-2, 66.5는 Z=1.5에 대응한다.",
+    "solutionImageCaption": "표본평균은 N(65, 1²)을 따르고 63은 Z=-2, 66.5는 Z=1.5이다. p=P(-2≤Z≤0)=0.48, q=P(0≤Z≤1.5)=0.43이므로 P(63≤X̄≤66.5)=p+q=0.48+0.43=0.91이다. 정답은 ⑤ 0.91이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -479,9 +479,9 @@ window.questionBank = [
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q10-solution.svg",
-    "solutionImageAlt": "불량품 수는 근사 정규분포 평균 50 표준편차 7이며 64 이상의 꼬리 영역에 대응한다.",
-    "solutionImageCaption": "W ≥ 64 → Z ≥ 2, 확률 약 0.02",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평균 30, 표준편차 5인 곡선 T에서 40 이상 꼬리와 평균 50, 표준편차 7인 곡선 W에서 64 이상 꼬리가 칠해져 있다. 두 꼬리는 모두 Z=2에 해당한다.",
+    "solutionImageCaption": "T는 N(30, 5의 제곱)이고 40g 이상은 Z=2이므로 불량 확률은 p=0.5-0.48=0.02이다. 불량품 수 W는 B(2500, 0.02)이므로 N(50, 7의 제곱)으로 근사하고 64 이상은 Z=2이므로 P(W≥64)=0.02이고 정답은 ⑤이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -576,7 +576,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 300, 표준편차 0.5인 표본평균의 정규분포 곡선에서 a 이상을 칠한 그림. a는 평균 왼쪽 표준화 값 Z=-2에 해당하는 자리에 있다.",
+    "solutionImageCaption": "P(X̄≥a)=0.98=0.5+0.48이므로 a는 Z=-2에 대응하고, (a-300)/0.5=-2에서 a=299이므로 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -670,7 +674,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균이 같은 두 정규분포 곡선, 모집단 X와 더 좁은 표본평균 곡선을 겹쳐 그리고, X의 16 이상 꼬리와 표본평균의 10 이하 꼬리를 같은 넓이 p로 칠했다.",
+    "solutionImageCaption": "(가)로 m=12이고, (나)에서 4/σ=2√n/σ이므로 n=4이다(그림은 σ=4로 그린 예). m+2n=12+2×4=20이다. 정답 ③ 20.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -864,9 +872,9 @@ window.questionBank = [
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q18-solution.svg",
-    "solutionImageAlt": "한 상자 내용량의 평균은 3200그램 표준편차는 80그램이고 구간이 -1에서 2 사이의 영역에 대응한다.",
-    "solutionImageCaption": "3120~3360g → -1 ≤ Z ≤ 2",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평균 3200, 표준편차 80인 상자 무게 분포 곡선에서 3120~3200(p)과 3200~3360(q)을 칠했다. 3120은 Z=-1, 3360은 Z=2에 대응한다.",
+    "solutionImageCaption": "한 상자의 무게 S는 N(3200, 80²)이고 3120은 Z=-1, 3360은 Z=2이다. p=P(-1≤Z≤0)=0.34, q=P(0≤Z≤2)=0.48이므로 한 상자가 범위에 들어올 확률은 0.34+0.48=0.82이다. 정확히 한 상자만 들어올 확률은 2×0.82×0.18=0.2952이다. 정답은 ② 0.2952이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -915,9 +923,9 @@ window.questionBank = [
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q19-solution.svg",
-    "solutionImageAlt": "첫 번째 표본평균의 왼쪽 누적확률 0.9332에 대응하여 두 번째 표본평균의 왼쪽 누적확률은 0.0668이고 표준화 값은 -1.5이다.",
-    "solutionImageCaption": "P(Ȳ ≤ 94) = P(Z ≤ -1.5) = 0.0668",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평균 100인 정규분포 곡선 Y(σ=16)에서 94 이하가 진한 색, 110 이하 전체가 연한 색으로 칠해져 있고 z 눈금은 -1.5, 0, 2.5이다.",
+    "solutionImageCaption": "X̄는 N(20, 2의 제곱)이고 P(X̄≤23)=0.9332이므로 P(Ȳ≤94)=0.0668(진한 부분)이다. Ȳ는 N(100, (σ/4)의 제곱)이고 94는 Z=-1.5이므로 σ=16, σ/4=4이다. 110은 Z=2.5이므로 P(Ȳ≤110)=0.5+0.4938=0.9938이고 정답은 ①이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -1061,9 +1069,9 @@ window.questionBank = [
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q22-solution.svg",
-    "solutionImageAlt": "지역 B의 표본평균 표준편차는 2.5이고 237.5 이상은 표준화하여 Z가 -1 이상인 영역이다.",
-    "solutionImageCaption": "P(Z ≥ -1) = 0.8413",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평균 240, 표준편차 2.5인 표본평균 Y의 정규분포 곡선에서 237.5가 표준화 값 Z=-1에 해당함을 표시하고, 237.5에서 평균까지 넓이 0.3413과 평균 오른쪽 넓이 0.5를 칠한 그림",
+    "solutionImageCaption": "P(X̄≤215)=0.1587에서 σ_X/√n=5이므로 Ȳ의 표준편차는 (1.5/3)×5=2.5이고, 237.5는 Z=-1이므로 P(Ȳ≥237.5)=0.5+0.3413=0.8413이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -1109,9 +1117,9 @@ window.questionBank = [
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q23-solution.svg",
-    "solutionImageAlt": "이항분포 평균 3240 표준편차 45에 대한 3330 이상의 정규근사는 Z가 2 이상인 오른쪽 영역이다.",
-    "solutionImageCaption": "P(T ≥ 3330) ≈ P(Z ≥ 2) = 0.023",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평균 3240, 표준편차 45인 정규분포 곡선에서 3240부터 3330까지와 3330 이상의 진한 오른쪽 꼬리를 칠한 그림이고, 3330은 Z=2에 대응한다.",
+    "solutionImageCaption": "T는 B(8640, 3/8)이라 평균 3240, 표준편차 45인 정규분포로 근사하며 3330은 Z=2이므로 진한 꼬리의 넓이는 k=0.5-0.477=0.023이다. 정답 23(1000×k).",
     "solutionImageSize": "medium"
   },
   {

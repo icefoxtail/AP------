@@ -57,15 +57,16 @@ window.questionBank=[
       "$10$"
     ],
     "answer": "①",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q2-solution.svg",
-    "solutionImageAlt": "감소구간과 극값: 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: f(x)=x³+6x²+9x+1의 그래프. x=−3에서 극대 (−3, 1), x=−1에서 극소 (−1, −3)이고, 두 점 사이 −3≤x≤−1 구간을 색칠해 f가 감소하는 구간임을 보인다.",
+    "solutionImageSize": "medium",
     "solution": "감소하는 구간은 도함수의 부호가 음수인 곳에서 찾는다.\n$f'(x)=3x^2+12x+9$\n$=3(x+3)(x+1)$\n\n$f'(x)$의 부호는\n$x<-3$: 양수\n$-3<x<-1$: 음수\n$x>-1$: 양수이다.\n따라서 $f(x)$는 $-3$부터 $-1$까지 감소한다.\n\n$a=-3,\\quad b=-1$이므로\n$b-a=(-1)-(-3)=2$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "x가 −3과 −1 사이일 때 f′(x)=3(x+3)(x+1)이 음수이므로 f는 [−3, −1]에서 감소하고, a=−3, b=−1이므로 b−a=2이다. 정답 ①"
   },
   {
     "id": 3,
@@ -92,15 +93,16 @@ window.questionBank=[
       "$10$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q3-solution.svg",
-    "solutionImageAlt": "극댓값과 극솟값: 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: f(x)=x³−6x²+9x+4의 그래프. x=1에서 극댓값 M=f(1)=8, x=3에서 극솟값 m=f(3)=4를 점과 점선으로 표시했다.",
+    "solutionImageSize": "medium",
     "solution": "극댓값과 극솟값을 구하려면 도함수의 부호 변화를 살핀다.\n$f'(x)=3x^2-12x+9$\n$=3(x-1)(x-3)$\n\n$x<1$에서 $f'(x)>0$,\n$1<x<3$에서 $f'(x)<0$,\n$x>3$에서 $f'(x)>0$이다.\n따라서 $x=1$에서 극대, $x=3$에서 극소이다.\n\n$M=f(1)=1-6+9+4=8$\n$m=f(3)=27-54+27+4=4$\n$M-m=8-4=4$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "M=8, m=4이므로 M−m=4, 정답은 ②이다."
   },
   {
     "id": 4,
@@ -312,8 +314,11 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_수2_2기말.pdf",
     "image": "assets/images/25_제일고_2학기_기말_고2_수학II/q09.png",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q09-solution.png",
-    "imageKind": "diagram"
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q9-solution-v2.svg",
+    "imageKind": "diagram",
+    "solutionImageAlt": "해설 그림: 최고차항 계수가 양수인 삼차함수 f의 그래프. x=1에서 x축을 지나고 x=10에서 x축에 접하며, x=4에서 극대이다. x가 4보다 작거나 10보다 클 때 증가, 4와 10 사이에서 감소한다. (예시 모양)",
+    "solutionImageCaption": "예: c=1/9인 모양. f(n)f′(n)≤0을 만족하는 자연수 n은 1, 4, 5, 6, 7, 8, 9, 10의 8개이다. 정답 ④",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -340,15 +345,16 @@ window.questionBank=[
       "$27$"
     ],
     "answer": "③",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q10-solution.svg",
-    "solutionImageAlt": "상자 부피의 최댓값: 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 6인 정사각형 종이의 네 귀퉁이에서 한 변이 x인 정사각형을 잘라낸 모양(밑면 한 변 6-2x)과, 그것을 접어 만든 높이 x, 밑면 한 변 6-2x인 뚜껑 없는 상자.",
+    "solutionImageSize": "medium",
     "solution": "잘라내는 작은 정사각형의 한 변을 $x$라 하자.\n상자의 높이는 $x$, 밑면은 한 변이 $6-2x$인 정사각형이다.\n따라서 $0<x<3$이고\n$V(x)=x(6-2x)^2$이다.\n\n$V'(x)=(6-2x)^2-4x(6-2x)$\n$=(6-2x)(6-6x)$\n$=12(3-x)(1-x)$이다.\n\n$0<x<1$에서는 $V'(x)>0$,\n$1<x<3$에서는 $V'(x)<0$이므로\n$V(x)$는 $x=1$에서 최대가 된다.\n\n$V(1)=1\\cdot(6-2)^2$\n$=1\\cdot16=16$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "네 귀퉁이를 x만큼 자르면 높이 x, 밑면 한 변 6-2x인 상자가 되어 V(x)=x(6-2x)²(0<x<3)이고(그림은 x에 예를 든 모양), V'(x)=12(3-x)(1-x)에서 V(x)는 0<x<1에서 증가, 1<x<3에서 감소하므로 x=1에서 최대이고 최댓값은 V(1)=16, 정답은 ③이다."
   },
   {
     "id": 11,
@@ -418,8 +424,11 @@ window.questionBank=[
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_수2_2기말.pdf",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q12-solution.png",
-    "imageKind": "diagram"
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q12-solution-v2.svg",
+    "imageKind": "diagram",
+    "solutionImageAlt": "해설 그림: 주기가 4인 연속함수 f의 그래프 두 주기. 한 주기 [−1, 3]에서 (−1,0), (0,3), (3,0)을 잇는 삼각형을 색칠했고 두 부분의 넓이 3/2와 9/2가 쓰여 있으며, 아래 선분이 주기 4를 나타낸다. 다음 주기는 (4,3), (7,0)으로 같은 모양이 반복된다.",
+    "solutionImageCaption": "f(x+4)=f(x)이므로 한 주기 [−1, 3]의 적분값은 3/2+9/2=6이고, 구간 [−1, 19]는 5주기이므로 정적분은 6×5=30이다. 정답 ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -654,15 +663,16 @@ window.questionBank=[
       "$34$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q19-solution.svg",
-    "solutionImageAlt": "f(x)와 구간 최댓값 g(x): 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원점 대칭인 f의 그래프(실선)와 구간 [t,t+1]에서의 최댓값 g(t)의 그래프(점선). x=−3/2부터 0까지 두 곡선 사이를 x=−1에서 나눠 S₁, S₂로 색칠했다.",
+    "solutionImageSize": "medium",
     "solution": "원점 대칭인 함수는 $f(-x)=-f(x)$이다.\n$x\\ge0$에서 $f(x)=-x^2+2x=1-(x-1)^2$이므로\n$x<0$에서는\n$f(x)=-f(-x)=x^2+2x=(x+1)^2-1$이다.\n\n즉 $x=-1$에서 최솟값 $-1$, $x=1$에서 최댓값 $1$을 갖는다.\n구간 $[t,t+1]$의 위치에 따라 양 끝값 또는 $1$을 비교하여 최댓값함수 $g(t)$를 구한다.\n\n① $t\\le-\\dfrac32$: 왼쪽 끝의 값이 크므로\n$g(t)=f(t)=t^2+2t$이다.\n\n② $-\\dfrac32\\le t\\le-1$: 오른쪽 끝의 값이 크므로\n$g(t)=f(t+1)=(t+1)^2+2(t+1)$\n$=t^2+4t+3$이다.\n실제로 $f(t+1)-f(t)=2t+3\\ge0$이다.\n\n③ $-1\\le t\\le0$: 오른쪽 끝점이 $0$ 이상 $1$ 이하이므로\n$g(t)=f(t+1)=-(t+1)^2+2(t+1)$\n$=1-t^2$이다.\n\n④ $0\\le t\\le1$: 구간에 $x=1$이 포함되므로 $g(t)=1$이다.\n\n⑤ $t\\ge1$: $f$가 감소하므로 왼쪽 끝에서 최대,\n$g(t)=f(t)=-t^2+2t$이다.\n\n구하는 구간 $-\\dfrac32\\le x\\le0$에서 항상 $g(x)\\ge f(x)$이다.\n$x=-1$을 기준으로 나누어 넓이를 구한다.\n\n$S_1=\\displaystyle\\int_{-3/2}^{-1}\\{(x^2+4x+3)-(x^2+2x)\\}\\,dx$\n$=\\displaystyle\\int_{-3/2}^{-1}(2x+3)\\,dx$\n$=\\left[x^2+3x\\right]_{-3/2}^{-1}$\n$=-2-\\left(-\\dfrac94\\right)=\\dfrac14$이다.\n\n$S_2=\\displaystyle\\int_{-1}^{0}\\{(1-x^2)-(x^2+2x)\\}\\,dx$\n$=\\displaystyle\\int_{-1}^{0}(1-2x^2-2x)\\,dx$\n$=\\left[x-\\dfrac23x^3-x^2\\right]_{-1}^{0}$\n$=0-\\left(-1+\\dfrac23-1\\right)=\\dfrac43$이다.\n\n전체 넓이는\n$S=S_1+S_2=\\dfrac14+\\dfrac43=\\dfrac{19}{12}$이다.\n서로소인 자연수 $p=12$, $q=19$이므로\n$p+q=31$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "파란 S₁=1/4, 주황 S₂=4/3이므로 넓이는 19/12이고 p=12, q=19이다. p+q=31이다. 정답 ②"
   },
   {
     "id": 20,
@@ -778,8 +788,10 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_수2_2기말.pdf",
     "image": "assets/images/25_제일고_2학기_기말_고2_수학II/q23.png",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q23-solution.svg",
-    "solutionImageAlt": "삼차함수의 세 실근 조건: 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "imageKind": "diagram"
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 도함수 y=f′(x)의 그래프로 (−2,0), (2,0)에서 x축과 만나고 (0,3)을 지난다. 아래 패널은 f(x)=3x−x³/4의 그래프로 x=−2에서 극소 −4, x=2에서 극대 4이며, 점선 y=±4 사이에 수평선 y=k가 곡선과 세 점에서 만난다.",
+    "imageKind": "diagram",
+    "solutionImageCaption": "f′(x)=3−3x²/4이므로 f(x)=3x−x³/4이고 극솟값 f(−2)=−4, 극댓값 f(2)=4이다. y=k가 서로 다른 세 점에서 만나려면 k가 −4보다 크고 4보다 작아야 하므로 정수 k는 −3부터 3까지 7개이다.",
+    "solutionImageSize": "medium"
   }
 ];

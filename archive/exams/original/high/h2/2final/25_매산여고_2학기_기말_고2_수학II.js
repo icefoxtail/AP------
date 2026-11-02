@@ -81,14 +81,15 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "①",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q3-solution.svg",
-    "solutionImageAlt": "포물선 y=(x−1)(x−3)가 x축 아래로 내려가는 1부터 3까지의 음영과 두 근",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: y=x²−4x+3의 그래프. x축과 x=1, 3에서 만나고 두 교점 사이에서 곡선이 x축 아래에 있어 둘러싸인 도형 S를 색칠했다.",
+    "solutionImageSize": "medium",
     "solution": "먼저 $x$축과의 교점을 구한다.\n$x^2-4x+3=(x-1)(x-3)=0$\n$x=1,\\ 3$이다.\n이차함수는 위로 열린 포물선이므로 $1<x<3$에서 함수값이 음수이다.\n따라서 둘러싸인 부분의 넓이 $S$는\n$S=-\\displaystyle\\int_1^3(x^2-4x+3)dx$\n$=-\\left[\\dfrac13x^3-2x^2+3x\\right]_1^3$\n$=-\\left\\{(9-18+9)-\\left(\\dfrac13-2+3\\right)\\right\\}$\n$=-\\left(0-\\dfrac43\\right)=\\dfrac43$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageCaption": "1<x<3에서 곡선이 x축 아래이므로 S=−∫₁³(x²−4x+3)dx=4/3, 정답은 ①이다."
   },
   {
     "id": 4,
@@ -275,14 +276,15 @@ window.questionBank = [
       "$20$"
     ],
     "answer": "①",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q9-solution.svg",
-    "solutionImageAlt": "삼차함수 y=2x³−9x²−24x+3의 극대점 (−1,16)과 극소점 (4,−109)",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: f의 도함수 y=6(x+1)(x−4)의 그래프. x=−1 왼쪽은 양, −1과 4 사이는 음, 4 오른쪽은 양이며, x=−1이 극대, x=4가 극소임을 표시했다.",
+    "solutionImageSize": "medium",
     "solution": "극대가 $x=-1$, 극소가 $x=4$에서 생기므로\n$f'(-1)=f'(4)=0$이다.\n$f'(x)=6x^2+2ax+b$는 최고차항의 계수가 $6$인 이차식이므로\n$f'(x)=6(x+1)(x-4)$\n$=6x^2-18x-24$이다.\n계수를 비교하면\n$2a=-18,\\quad b=-24$이고\n$a=-9$이다.\n또 $f'$의 부호는 $x=-1$에서 양에서 음으로, $x=4$에서 음에서 양으로 변하므로 극대·극소 조건에도 맞는다.\n극댓값은\n$f(-1)=2(-1)^3-9(-1)^2-24(-1)+3$\n$=-2-9+24+3=16$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageCaption": "f′(x)=6(x+1)(x−4)의 부호가 x=−1에서 +에서 −로 바뀌므로 극대이고 x=4에서 −에서 +로 바뀌므로 극소이다. a=−9, b=−24이므로 극댓값은 f(−1)=16이다. 정답 ①"
   },
   {
     "id": 10,
@@ -392,14 +394,15 @@ window.questionBank = [
       "$-19$"
     ],
     "answer": "③",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q13-solution.svg",
-    "solutionImageAlt": "속도 v(t)=t²−6t가 0부터 3까지 음수여서 위치 변화량이 −18인 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 속도 v(t)=t²−6t의 그래프. t=0부터 t=3까지 x축 아래 부분을 색칠했고 부호 있는 넓이(변위)가 −18이며, 꼭짓점 (3, −9)와 영점 (6, 0)이 표시되어 있다.",
+    "solutionImageSize": "medium",
     "solution": "점 $P$의 위치를 $x(t)$라 하면\n$x(0)=1$이고 $x'(t)=v(t)=t^2-6t$이다.\n따라서 $0$부터 $3$까지 위치의 변화량은\n$x(3)-x(0)=\\displaystyle\\int_0^3(t^2-6t)dt$이다.\n속도의 원시함수는\n$\\dfrac13t^3-3t^2$이므로\n$x(3)-1=\\left[\\dfrac13t^3-3t^2\\right]_0^3$\n$=\\left(\\dfrac13\\cdot27-3\\cdot9\\right)-0$\n$=9-27=-18$이다.\n처음 위치에 변화량을 더하면\n$x(3)=1+(-18)=-17$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageCaption": "0≤t≤3에서 속도가 음수이므로 위치 변화량(색칠한 부호 있는 넓이)은 −18이고, 처음 위치 1에 더하면 시각 t=3의 위치는 −17이다. 정답 ③"
   },
   {
     "id": 14,
@@ -425,14 +428,15 @@ window.questionBank = [
       "$21$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q14-solution.svg",
-    "solutionImageAlt": "속도 v(t)=−2t+6의 t=3 방향 전환과 두 구간 이동거리 9, 9",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: v(t)=−2t+6의 시간-속도 그래프. t=3 전후의 두 삼각형은 넓이가 9로 같아 같은 색으로 칠했다(앞으로 9, 뒤로 9).",
+    "solutionImageSize": "medium",
     "solution": "방향이 바뀌는 시각을 먼저 구한다.\n$v(t)=-2t+6=0$에서\n$t=3$이다.\n$0\\le t<3$에서는 $v(t)>0$이므로 오른쪽으로, $3<t\\le6$에서는 $v(t)<0$이므로 왼쪽으로 움직인다.\n이동거리는 속도의 절댓값을 적분하므로 구간을 나누어\n$S=\\displaystyle\\int_0^3(6-2t)dt+\\int_3^6(2t-6)dt$이다.\n\n첫 번째 이동거리는\n$\\displaystyle\\int_0^3(6-2t)dt$\n$=[6t-t^2]_0^3$\n$=(18-9)-0=9$이다.\n두 번째 이동거리는\n$\\displaystyle\\int_3^6(2t-6)dt$\n$=[t^2-6t]_3^6$\n$=(36-36)-(9-18)=9$이다.\n따라서 총 이동거리는\n$9+9=18$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageCaption": "0~3은 앞으로 9, 3~6은 뒤로 9 움직이므로 총 이동거리는 9+9=18, 정답은 ②이다."
   },
   {
     "id": 15,
@@ -641,14 +645,15 @@ window.questionBank = [
     "content": "[주관식1 (서술형)] [6점](부분점수 있음)<br>삼차함수 $f(x)=x^3-3x+a$에 대하여 함수 <br>$F(x)=\\displaystyle\\int_0^x f(t)dt$가 오직 하나의 극값을 갖도록 양수 $a$의 최솟값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "$2$",
-    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q21-solution.svg",
-    "solutionImageAlt": "a=2인 삼차함수 f(x)=(x−1)²(x+2)의 x=−2 통과와 x=1 접함",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: f(x)=x³−3x+a의 그래프(극솟값 a−2가 0인 경우). x=−2에서 음에서 양으로 바뀌고 x=1에서는 x축에 접하며 부호가 바뀌지 않는다. 극댓값 a+2, 극솟값 a−2를 표시했다.",
+    "solutionImageSize": "medium",
     "solution": "$F(x)=\\displaystyle\\int_0^xf(t)dt$이므로\n$F'(x)=f(x)=x^3-3x+a$이다.\n$F$의 극값은 $F'(x)$의 부호가 바뀌는 곳에서 생긴다.\n\n$f'(x)=3x^2-3=3(x+1)(x-1)$이므로 $f$는\n$x=-1$에서 극대, $x=1$에서 극소이다.\n이때\n$f(-1)=a+2>0$\n$f(1)=a-2$이다.\n\n$0<a<2$이면 $f(-1)>0,\\ f(1)<0$이다.\n따라서 $f(x)=0$은 서로 다른 세 실근을 갖고 각 근에서 부호가 바뀌므로 $F$에는 극값이 세 개 생긴다.\n\n$a=2$이면\n$f(x)=x^3-3x+2$\n$=(x-1)^2(x+2)$이다.\n$x=1$에서는 $f$의 부호가 바뀌지 않으므로 $F$의 극값이 생기지 않는다.\n반면 $x=-2$에서는 $f$가 음에서 양으로 바뀌므로 $F$의 극솟값이 하나 생긴다.\n\n$a>2$이면 $f(1)=a-2>0$이고 극솟값도 양수이므로 $f(x)=0$의 실근은 하나이며 그 근에서만 $F'$의 부호가 바뀐다.\n따라서 양수 $a$ 중 가능한 범위는 $a\\ge2$이고 그 최솟값은 $2$이다.\n따라서 구하는 값은 $2$이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageCaption": "F′(x)=f(x)이고 f의 극솟값 a−2가 0 이상이면 f는 한 곳에서만 부호가 바뀌어 F의 극값이 하나이다. 그림은 a−2=0인 경우이며 a의 최솟값은 2이다. 정답 2"
   },
   {
     "id": 22,

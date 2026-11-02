@@ -198,9 +198,9 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q07-solution.svg",
-    "solutionImageAlt": "삼차함수의 극대 (-1,7), 극소 (2,-20)와 수평선 7, -20",
-    "solutionImageCaption": "극대·극소와 두 실근",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: G(x)=2x³−3x²−12x의 그래프. x=−1에서 극대 (−1, 7), x=2에서 극소 (2, −20)이고, 두 극점을 각각 지나는 수평선 y=7, y=−20이 점선으로 곡선에 접한다.",
+    "solutionImageCaption": "수평선 y=1−a가 극대점 (−1, 7)이나 극소점 (2, −20)을 지날 때 서로 다른 두 실근이 생기므로 a=−6, 21이고 합은 15이다. 정답 ⑤",
     "solutionImageSize": "medium"
   },
   {
@@ -285,7 +285,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: f의 도함수 그래프를 x=-1, 1에서 값 3으로 이은 연속 곡선으로 그리고, x=-1~0, 0~1, 1~2에서 x축과의 넓이 3, 3, 4를 색으로 구분했다.",
+    "solutionImageCaption": "f′(x)가 연속이므로 x=−1, 1에서 값 3이 이어져 a=1, b=2이다. 색칠한 넓이 3, 3, 4로 f(−1)=−2, f(1)=4, f(2)=8이므로 a+b+f(2)+f(−1)=9, 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -480,9 +484,9 @@ window.questionBank = [
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q16-solution.svg",
-    "solutionImageAlt": "구간 [-4,2]에서 f(x)=2x³+6x²−5의 양 끝점과 두 극점",
-    "solutionImageCaption": "닫힌구간에서 최솟값 비교",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 구간 [−4,2]에서 f(x)=2x³+6x²−5의 그래프. x=−2에서 극대, x=0에서 극소이고, 왼쪽 끝점 (−4,−37)에서 최솟값을 가진다.",
+    "solutionImageCaption": "f′(x)=6x(x+2)이므로 x=−2에서 극대, x=0에서 극소이고, 닫힌구간 [−4,2]의 최솟값은 왼쪽 끝점의 f(−4)=−37이다. b=−5이므로 f(1)=3이다. 정답 ②",
     "solutionImageSize": "medium"
   },
   {
@@ -576,9 +580,9 @@ window.questionBank = [
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q19-solution.svg",
-    "solutionImageAlt": "x=1에서 부드럽게 연결되는 직선과 이차곡선, 0부터 √3까지의 넓이",
-    "solutionImageCaption": "미분가능 연결점과 x축 사이 넓이",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x가 1보다 작을 때 직선, x≥1에서 위로 볼록한 포물선으로 이어진 함수 f의 그래프. x=1에서 부드럽게 이어지고 x축과 (√3,0)에서 만나며, 원점에서 x=1까지의 S1과 x=1에서 √3까지의 S2로 나누어 색칠했다.",
+    "solutionImageCaption": "k=1, b=1/√3, a=4/√3−2일 때 f의 그래프와 x축 사이를 x=1에서 S₁, S₂로 나누면 S₁=2/√3−1, S₂=4/3−2/√3이므로 둘러싸인 넓이는 S₁+S₂=1/3이다. 정답 ②",
     "solutionImageSize": "medium"
   },
   {
@@ -610,9 +614,9 @@ window.questionBank = [
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q20-solution.svg",
-    "solutionImageAlt": "x(t)=27t(t−2)²/16에서 극대 (2/3,2), 복귀 (2,0), 거리 6에서 위치 (8/3,2)",
-    "solutionImageCaption": "위치 변화량과 이동거리",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위치 x(t)의 그래프. t=2/3에서 극댓값 2, t=2에서 x축에 접하고, 높이 2의 수평 점선과 다시 만나는 시각을 c로 표시했다.",
+    "solutionImageCaption": "x(t)=27/16·t(t−2)²이므로 시각 0에서 2/3까지 2, 2/3에서 2까지 2만큼 움직여 이동거리 4이고, 이동거리가 6이 되려면 위치가 다시 2가 되어야 하므로 c=8/3, 정답은 ④이다.",
     "solutionImageSize": "medium"
   },
   {

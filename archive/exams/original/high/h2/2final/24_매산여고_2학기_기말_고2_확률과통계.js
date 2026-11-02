@@ -86,9 +86,9 @@ window.questionBank = [
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q03-solution.svg",
-    "solutionImageAlt": "표준정규분포에서 -1부터 1.5까지의 영역을 음영으로 표시한 곡선",
-    "solutionImageCaption": "양쪽 영역 0.3413과 0.4332를 합한다.",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평균 60, 표준편차 4인 정규분포 곡선에서 56, 60, 66과 표준화 값 -1, 0, 1.5를 표시하고 56~60 구간의 넓이 0.3413과 60~66 구간의 넓이 0.4332를 칠한 그림",
+    "solutionImageCaption": "X를 표준화하면 56은 Z=-1, 66은 Z=1.5이므로 P(56≤X≤66)=0.3413+0.4332=0.7745이고 정답은 ②이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -293,9 +293,9 @@ window.questionBank = [
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q10-solution.svg",
-    "solutionImageAlt": "표준정규분포에서 왼쪽 음영 -1부터 2와 오른쪽 음영 -2부터 1의 넓이가 동일한 두 곡선",
-    "solutionImageCaption": "좌우 대칭인 두 영역의 넓이는 같으므로 아래 경계는 z=-2이다.",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평균 40, 표준편차 3인 X의 정규분포 곡선에서 가운데 구간(Z=-1~1)은 진하게, 왼쪽 a~37(Z=-2~-1)과 오른쪽 43~46(Z=1~2)은 같은 넓이 q로 연하게 칠했고, 눈금 아래에 Z=-2, -1, 0, 1, 2가 적혀 있다.",
+    "solutionImageCaption": "문제의 -1≤Z≤2는 가운데와 오른쪽 조각이고 a≤X≤43은 왼쪽 조각과 가운데이며, 좌우 대칭이라 두 조각의 넓이가 같으므로 a는 Z=-2에 대응하여 (a-40)/3=-2이다. 정답 ③ 34.",
     "solutionImageSize": "medium"
   },
   {
@@ -359,9 +359,9 @@ window.questionBank = [
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q12-solution.svg",
-    "solutionImageAlt": "두 개의 정규분포곡선에 각각 z=-1.5 이하 왼쪽 꼬리와 z=0.5 이상 오른쪽 꼬리를 표시한 그림",
-    "solutionImageCaption": "표본의 크기에 따라 표본평균의 표준편차가 달라진다.",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선에서 Z가 -1.5 이하인 왼쪽 꼬리(0.0668)와 0.5 이상인 오른쪽 꼬리(0.3085)를 칠했다. 앞의 것은 크기 36인 표본평균이 12 이하, 뒤의 것은 크기 4인 표본평균이 14 이상일 때이다.",
+    "solutionImageCaption": "m=13이고 두 표본평균의 표준편차는 2/3, 2이다. 12는 Z=-1.5, 14는 Z=0.5이므로 P(X̄₁≤12)=0.5-0.4332=0.0668, P(X̄₂≥14)=0.5-0.1915=0.3085이다. 합은 0.0668+0.3085=0.3753이므로 정답은 ① 0.3753이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -446,7 +446,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축을 a, 세로축을 V(X)로 한 위로 볼록한 포물선. 꼭짓점 (3,16)에서 분산이 최대인 것을 나타낸다.",
+    "solutionImageCaption": "V(X)=−(a−3)²+16≤16이므로 a=3일 때 V(X)=16이 최대이고, σ(Y)=½√V(X)의 최댓값은 ½×4=2이다. 정답 ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -505,9 +509,9 @@ window.questionBank = [
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q17-solution.svg",
-    "solutionImageAlt": "표준정규분포 곡선의 좌우 양쪽 꼬리 z=-2 이하, z=2 이상이 각각 0.0228로 표시된 그림",
-    "solutionImageCaption": "전체 불량률 0.0456을 대칭인 두 꼬리로 나눈다.",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평균 3인 정규분포 곡선에서 2.98과 3.02에 수직선이 있고 안쪽은 연한 색, 양쪽 바깥 꼬리는 진한 색으로 칠해져 있다. 안쪽 넓이는 0.4772+0.4772이고 z 눈금은 -2, 0, 2이다.",
+    "solutionImageCaption": "불량 구간 X≤2.98, X≥3.02는 평균 3에 대칭인 두 꼬리(진한 부분)이고 각 꼬리의 넓이는 0.0456의 절반인 0.0228이다. 3.02는 Z=2이므로 (3.02-3)/σ=2, 0.02=2σ이다. 따라서 σ=0.01이고 정답은 ⑤이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -539,9 +543,9 @@ window.questionBank = [
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q18-solution.svg",
-    "solutionImageAlt": "표준정규분포에서 z=1.96 이상 우측 꼬리 상위 2.5퍼센트를 색칠한 그림",
-    "solutionImageCaption": "합격자 25명은 지원자 1000명의 상위 2.5%에 해당한다.",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평균 60, 표준편차 10인 정규분포 곡선에서 평균 오른쪽 구간 60~c의 넓이 0.4750과 c 오른쪽 꼬리의 넓이 0.025를 칠하고, c가 표준화 값 Z=1.96에 해당함을 표시한 그림",
+    "solutionImageCaption": "상위 25/1000=0.025이므로 P(Z≥1.96)=0.5-0.4750=0.025이고, (c-60)/10=1.96에서 c=79.6이므로 정답은 ④이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -624,9 +628,9 @@ window.questionBank = [
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q21-solution.svg",
-    "solutionImageAlt": "정규근사 후 표준정규분포에서 z=1.5 이상 오른쪽 꼬리 넓이 0.0668을 표시한 그림",
-    "solutionImageCaption": "92권 이상은 평균 80권보다 1.5표준편차 이상인 영역이다.",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평균 80, 표준편차 8인 정규분포 곡선에서 80부터 92까지의 넓이 0.4332와 92 이상의 오른쪽 꼬리가 칠해져 있고, 92는 Z=1.5에 대응한다.",
+    "solutionImageCaption": "X는 B(400, 0.2)이므로 평균 80, 표준편차 8인 정규분포로 근사하며 92는 Z=1.5이다. P(X≥92)=0.5-0.4332=0.0668이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -652,9 +656,9 @@ window.questionBank = [
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q22-solution.svg",
-    "solutionImageAlt": "표준정규분포에서 z=-2부터 오른쪽 전체 영역의 넓이 0.9772를 표시한 그림",
-    "solutionImageCaption": "1160점 이상은 약수가 아닌 눈이 180회 이상인 사건이다.",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평균 200, 표준편차 10인 정규분포 곡선에서 180 이상을 칠했다. 180은 Z=-2에 대응하고 180~200의 넓이는 0.4772, 200 이상의 넓이는 0.5이다.",
+    "solutionImageCaption": "약수가 아닌 눈의 횟수 X는 B(400, 1/2)이므로 N(200, 10²)으로 근사한다. 점수 800+2X≥1160이면 X≥180이고 180은 Z=-2이다. P(X≥180)=P(Z≥-2)=0.4772+0.5=0.9772이다. 정답은 0.9772이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -681,9 +685,9 @@ window.questionBank = [
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q23-solution.svg",
-    "solutionImageAlt": "표준정규분포에서 -1.6부터 1.6까지 90퍼센트 중앙 영역과 -0.5부터 0.5까지 38퍼센트 중앙 영역을 겹쳐 표시한 그림",
-    "solutionImageCaption": "신뢰구간 길이의 제한으로 두 번째 신뢰상수는 0.5 이하여야 한다.",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선에서 -1.6~1.6은 연한 색, 그 안쪽 -z~z는 진한 색으로 칠해져 있다.",
+    "solutionImageCaption": "신뢰도 90%는 P(0≤Z≤1.6)=0.45에서 z=1.6이므로 구간의 길이는 3.2(연한 색 전체)이고, 신뢰도 s%의 길이는 2z(진한 색)이다. 5×3.2≥16×2z에서 z≤0.5이고 P(0≤Z≤0.5)=0.19이므로 s의 최댓값은 2×0.19×100=38이다.",
     "solutionImageSize": "medium"
   }
 ];

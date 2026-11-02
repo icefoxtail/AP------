@@ -344,10 +344,10 @@ window.questionBank = [
     "answer": "④",
     "answerStatus": "answer_filled_from_hwp_answer_source",
     "solution": "정규분포 $N(40,16)$은 평균 $40$을 중심으로 대칭이고, 평균에 가까울수록 확률밀도함수의 높이가 크다.\n길이가 일정한 구간의 확률이 최대가 되려면 구간을 평균의 양쪽에 대칭으로 놓아야 한다.\n주어진 구간 $[a-1,a+3]$의 길이는\n$(a+3)-(a-1)=4$이다.\n이 구간의 가운데 값이 평균 $40$이 되어야 하므로\n$\\dfrac{(a-1)+(a+3)}2=40$\n$a+1=40\\;\\Rightarrow\\;a=39$\n이때 구간은 $[38,42]$로 평균 $40$을 중심으로 대칭이다.\n따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q08-solution.svg",
-    "solutionImageAlt": "평균 40을 중심으로 38부터 42까지 대칭으로 잡은 구간",
-    "solutionImageCaption": "길이가 같은 구간은 평균 40을 중심으로 놓을 때 확률이 최대",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평균 40인 정규분포 곡선에서 구간 [a-1, a+3]이 평균을 가운데 두는 모양(38~42)으로 칠해져 있고, 양 끝의 높이가 같다는 점선이 있다.",
+    "solutionImageCaption": "구간 [a-1, a+3]의 길이는 4로 일정하므로 구간의 가운데 (a-1+a+3)/2=a+1이 평균 40일 때 확률이 최대이다. 이때 구간은 [38, 42]이다. 정답은 ④ 39이다.",
+    "solutionImageSize": "medium",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -462,7 +462,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 공장 A, B에서 불량인 경로를 파란색과 주황색으로 강조한 확률 수형도이다. A 불량 경로의 확률은 27/2000, B 불량 경로의 확률은 33/1000이다.",
+    "solutionImageCaption": "A, B 공장의 비율은 0.45, 0.55이고 불량 확률은 0.03, 0.06이다. 불량 경로의 확률은 0.45×0.03=0.0135(파란색), 0.55×0.06=0.033(주황색)이므로 P(D)=0.0465이고 구하는 확률은 0.033/0.0465=22/31이므로 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -507,7 +511,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 320, 표준편차 25인 정규분포 곡선에서 합격 최저 점수 a가 표준화 값 Z=1에 해당하는 자리에 있고, a 오른쪽 꼬리(상위 16%)를 칠한 그림",
+    "solutionImageCaption": "상위 16%는 P(Z≥1)=0.5-0.34=0.16이므로 (a-320)/25=1에서 a=345이고 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -552,7 +560,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선에서 왼쪽 Z=-2 이하(S가 100 이하)와 오른쪽 Z=2 이상(Y가 x 이상)의 두 꼬리를 같은 색으로 칠한 그림이다.",
+    "solutionImageCaption": "S~N(120, 10²)에서 100은 Z=-2이므로 불량 확률은 칠한 꼬리의 넓이 0.5-0.48=0.02이고, Y~N(50, 7²)에서 P(Y≥x)=0.02인 같은 넓이의 꼬리이므로 (x-50)/7=2이다. 정답 ② 64.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -574,10 +586,10 @@ window.questionBank = [
     "answer": "③",
     "answerStatus": "direct_solved_round13",
     "solution": "두 상자의 판매가격 합이 $40000$원이 되려면 A상자와 B상자가 모두 $20000$원에 팔려야 한다.\n표본 크기가 $4$이므로 표본평균의 표준편차는 원래 표준편차의 $\\sqrt4=2$분의 $1$이다.\nA상자의 표본평균을 $\\overline X_A$라 하면\n$\\overline X_A\\sim N\\left(22,\\dfrac{4^2}{4}\\right)=N(22,2^2)$\n$P(\\overline X_A\\ge20)=P\\left(Z\\ge\\dfrac{20-22}{2}\\right)$\n$=P(Z\\ge-1)=0.5+0.34=0.84$\nB상자의 표본평균을 $\\overline X_B$라 하면\n$\\overline X_B\\sim N\\left(21,\\dfrac{2^2}{4}\\right)=N(21,1^2)$\n$P(\\overline X_B\\ge20)=P\\left(Z\\ge\\dfrac{20-21}{1}\\right)$\n$=P(Z\\ge-1)=0.5+0.34=0.84$\n서로 다른 상자에서 각각 독립적으로 표본을 추출하므로 두 상자가 모두 정가에 팔릴 확률은 각 확률의 곱이다.\n$P=0.84\\times0.84=0.7056$\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q13-solution.svg",
-    "solutionImageAlt": "두 상자 표본평균의 정가 판매 경계는 표준정규분포에서 동일하게 마이너스 1이며 오른쪽 확률은 각각 0.84",
-    "solutionImageCaption": "A와 B의 정가 판매 조건 모두 Z가 -1 이상인 사건",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 표본평균의 분포 곡선에서 20 이상을 칠했고 20은 평균에서 표준편차 1만큼 왼쪽, 즉 Z=-1이다. A상자(평균 22, 표준편차 2)와 B상자(평균 21, 표준편차 1) 모두 같은 그림이 된다.",
+    "solutionImageCaption": "A상자는 N(22, 2²)이므로 (20-22)/2=-1, B상자는 N(21, 1²)이므로 (20-21)/1=-1이다. 둘 다 p=P(Z≥-1)=0.5+0.34=0.84이고 곱은 0.84×0.84=0.7056이다. 정답은 ③ 0.7056이다.",
+    "solutionImageSize": "medium",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round13_continue_to_zero_completed",
     "tags": [
@@ -694,7 +706,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 20인 곡선 X와 평균 32인 곡선 Y가 있고 20~24, 28~32가 각각 0.4772로 칠해져 있으며 X의 24 이상, Y의 36 이상 꼬리가 진하게 칠해져 있다.",
+    "solutionImageCaption": "(가)에서 두 넓이는 각각 0.4772이므로 24-m1=m2-28=2σ이고, (나)에서 Y의 36 이상과 X의 24 이상 꼬리가 같으므로 36-m2=2σ이다. 따라서 σ=2, m1=20, m2=32이고 P(17≤X≤21)=P(-1.5≤Z≤0.5)=0.4332+0.1915=0.6247이므로 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
