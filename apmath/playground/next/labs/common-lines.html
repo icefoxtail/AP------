@@ -196,7 +196,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   // [2.0] 점 이름표가 서로 겹치면(특히 휴대폰) 원본 위치에서 위·아래로 한 줄씩 비켜 놓습니다. 원본은 고정 오프셋이라 겹쳐 읽기 어려웠습니다.
   let placedLabels = [];
-  function adot(p, text = '', col = '#ffffff', ox = 10, oy = -12) {
+  function adot(p, text = '', col = '#ffffff', ox = 10, oy = -12, align = 'left') {
     const B = BOARD, str = B.thumb ? '' : cv(text);
     let dy = oy;
     if (str && !B._bbox) {
@@ -206,7 +206,8 @@ window.addEventListener('DOMContentLoaded', function () {
       const w = c.measureText(str).width;
       c.restore();
       const h = size * 1.15;
-      const box = (d) => ({ x0: s.x + ox, x1: s.x + ox + w, y0: s.y + d - size * 0.85, y1: s.y + d + size * 0.3 });
+      const l0 = align === 'center' ? s.x + ox - w / 2 : align === 'right' ? s.x + ox - w : s.x + ox;
+      const box = (d) => ({ x0: l0, x1: l0 + w, y0: s.y + d - size * 0.85, y1: s.y + d + size * 0.3 });
       const hit = (a, b) => a.x0 < b.x1 && a.x1 > b.x0 && a.y0 < b.y1 && a.y1 > b.y0;
       for (const d of [0, h, -h, 2 * h, -2 * h]) {
         dy = oy + d;
@@ -214,7 +215,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
       placedLabels.push(box(dy));
     }
-    withAlpha(lensAlpha(dotLens(text)), () => B.point(p, { color: col, r: 5.2, label: str, dx: ox, dy, align: 'left', baseline: 'alphabetic' }));
+    withAlpha(lensAlpha(dotLens(text)), () => B.point(p, { color: col, r: 5.2, label: str, dx: ox, dy, align, baseline: 'alphabetic' }));
   }
 
   function aright(v, p1, p2, size = 12, col = '#fbbf24') {
@@ -304,7 +305,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   // 왕복 점프 아치 곡선 화살표 (내분점·외분점 시각화용)  (원본 687–722행)
-  function drawJumpArch(pStart, pEnd, heightOffset, color, labelTxt, partIdx = -1) {
+  function drawJumpArch(pStart, pEnd, heightOffset, color, labelTxt, partIdx = -1, labelSize = 11.5) {
     const B = BOARD, c = B.ctx;
     const mx = (pStart.x + pEnd.x) / 2;
     const my = Math.min(pStart.y, pEnd.y) + heightOffset;
@@ -336,20 +337,24 @@ window.addEventListener('DOMContentLoaded', function () {
       if (labelTxt && !B.thumb) {
         const sa = scr(pStart.x, pStart.y);
         const ty = (sa.y + SC.y) * 0.5 + (heightOffset < 0 ? -6 : 12);
-        B._text(scr(mx, 0).x, ty, cv(labelTxt), { color, size: 11.5, weight: 800, align: 'center', baseline: 'alphabetic' });
+        B._text(scr(mx, 0).x, ty, cv(labelTxt), { color, size: labelSize, weight: 800, align: 'center', baseline: 'alphabetic' });
       }
     });
   }
 
   /* 좌표평면(격자·축·눈금): 원본 drawCoordPlane (481행). 원점 (ox, oy)과 1칸의 크기 u 는 장면마다 정합니다.
      [2.0 수정] 원본은 장면이 그림을 줄여 그려도 눈금은 원래 크기라 숫자가 점 좌표와 어긋났습니다. */
+  /* [2.0 수정] 내분점 장면: A·B·P·Q가 늘어선 폭(가장 왼쪽 점 ~ 가장 오른쪽 점)이 비율(2:1, 1:2, 3:1, 1:3)마다 달라, 원본은 가장 넓은 경우에 맞춘 작은 눈금(0.68·UNIT)으로
+     그림의 1/3만 썼습니다. 비율마다 폭이 DIV_W(설계 좌표)가 되게 눈금 u를 정하고, 가운데가 무대 가운데에 오게 원점을 옮겨 네 비율 모두 그림이 무대 폭을 거의 다 씁니다. */
+  const DIV_W = 300;
+  function divLayout(ro) {
+    const xA = -2, xB = 4, px = (ro.m * xB + ro.n * xA) / (ro.m + ro.n), qx = (ro.m * xB - ro.n * xA) / (ro.m - ro.n);
+    const lo = Math.min(xA, xB, px, qx), hi = Math.max(xA, xB, px, qx), u = DIV_W / (hi - lo);
+    return { ox: -((lo + hi) / 2) * u, oy: 0, u };
+  }
   function planeOf(m, id) {
     const U = UNIT;
-    if (id === 'divInternalExternal') {
-      const ro = RATIO_OPTS[state.ratioIdx];
-      const qx = (ro.m * 4 + ro.n * 2) / (ro.m - ro.n);
-      return { ox: 0, oy: 0, u: (Math.abs(qx) > 8 ? 0.68 : 0.88) * U };
-    }
+    if (id === 'divInternalExternal') return divLayout(RATIO_OPTS[state.ratioIdx]);
     if (id === 'parallelLineDist') return { ox: 0, oy: 0, u: 0.72 * U };
     if (id === 'billiardMirrorRoom') return { ox: -2 * 0.78 * U, oy: 1.5 * 0.78 * U, u: 0.78 * U };
     if (id === 'trapApollonius') return { ox: -2 * 0.65 * U, oy: 0, u: 0.65 * U };
@@ -1096,9 +1101,9 @@ window.addEventListener('DOMContentLoaded', function () {
           const xA = -2, xB = 4;
           const px = (M * xB + N * xA) / (M + N);
           const qx = (M * xB - N * xA) / (M - N);
-          // 화면 안에 잘 보이도록 클램핑 스케일 조정
-          const uDiv = Math.abs(qx) > 8 ? unit * 0.68 : unit * 0.88;
-          const SD = (mx, my) => toScreen(mx, my, ox, oy, uDiv);
+          // 비율마다 폭이 DIV_W가 되는 눈금·원점(planeOf와 같은 값)
+          const L = divLayout(ro);
+          const SD = (mx, my) => toScreen(mx, my, L.ox, L.oy, L.u);
 
           const pA = SD(xA, 0), pB = SD(xB, 0);
           const pP = SD(px, 0), pQ = SD(qx, 0);
@@ -1106,20 +1111,21 @@ window.addEventListener('DOMContentLoaded', function () {
           aline(pA, pB, ACOL.white, 4.5);
           aline(pB, pQ, 'rgba(244, 114, 182, 0.55)', 3.0, [6, 4], false, 1);
 
-          // 내분점 아치 (위쪽)
-          drawJumpArch(pA, pP, -48, ACOL.green, `내분 ${M}칸`, 0);
-          drawJumpArch(pP, pB, -38, ACOL.green, `${N}칸`, 0);
+          // 내분점 아치 (위쪽): 이름표(점 위)와 겹치지 않게 아치를 높이 띄우고, 점 이름은 아치 바깥쪽 위에 둡니다
+          drawJumpArch(pA, pP, -62, ACOL.green, `내분 ${M}칸`, 0, 12.5);
+          drawJumpArch(pP, pB, -62, ACOL.green, `${N}칸`, 0, 12.5);
 
           // 외분점 왕복 점프 아치 (아래쪽)
           if (t > 0.05 || state.activePartIdx === 1 || state.activePartIdx === 2) {
-            drawJumpArch(pA, pQ, 75, ACOL.pink, `A→Q (${M} 비율)`, 1);
-            drawJumpArch(pQ, pB, 42, ACOL.gold, `Q→B 복귀 (${N}비율)`, 1);
+            drawJumpArch(pA, pQ, 140, ACOL.pink, `A→Q (${M} 비율)`, 1, 12.5);
+            drawJumpArch(pQ, pB, 100, ACOL.gold, `Q→B 복귀 (${N}비율)`, 1, 12.5);
           }
 
-          adot(pA, 'A(-2)', ACOL.white, -12, -16);
-          adot(pB, 'B(4)', ACOL.white, 0, -16);
-          adot(pP, `P(내분 ${fmtNum(px)})`, ACOL.green, 0, 24);
-          adot(pQ, `Q(${fmtNum(qx)})`, ACOL.pink, 0, -18);
+          // 점 이름: A는 왼쪽 위, B는 오른쪽 위(아치가 안쪽으로 모이므로 바깥으로), Q는 위, 내분점 P는 두 아치가 만나는 점 바로 위 높은 줄(아래쪽 외분 아치·눈금 숫자와 겹치지 않게)
+          adot(pA, 'A(-2)', ACOL.white, -8, -14, 'right');
+          adot(pB, 'B(4)', ACOL.white, 8, -14, 'left');
+          adot(pP, `P(내분 ${fmtNum(px)})`, ACOL.green, 0, -84, 'center');
+          adot(pQ, `Q(${fmtNum(qx)})`, ACOL.pink, 0, -18, 'center');
         } else if (sub === 'divExtendedLine') {
           const pA = S(0, 0), pB = S(2, 1);
           const pC1 = S(6, 3), pC2 = S(-2, -1);
@@ -1759,6 +1765,8 @@ window.addEventListener('DOMContentLoaded', function () {
       },
       draw: (b, s, v) => {
         BOARD = b;
+        // 내분점 장면은 그림이 무대 폭을 거의 다 쓰므로 라벨 축소(kit _ts)를 끄고 12.5px 그대로 씁니다(휴대폰에서도 12px 이상). 다른 장면은 원래대로입니다.
+        if (id === 'divInternalExternal') b._ts = () => 1; else delete b._ts;
         const paint = (st) => {
           sync(st, m, id);
           placedLabels = [];

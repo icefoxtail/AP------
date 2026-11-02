@@ -885,11 +885,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const txt = (v) => String(v == null ? '' : v).replace(/➔/g, '→'); // 캔버스 글꼴에서 이모지로 그려지는 화살표를 →로
     const insets = () => (BRD.thumb ? { top: 0, right: 0, bottom: 0, left: 0 } : BRD.insets);
     function fitSize(text, size, maxW, weight = 800) {
-      const c = BRD.ctx;
-      c.save();
-      c.font = `${weight} ${size}px ${BRD.font}`;
-      const w = c.measureText(text).width;
-      c.restore();
+      const w = frWidth(text, size).w; // 쌓은 분수는 슬래시 글자보다 좁으므로 그 폭으로 잽니다
       return w + 26 > maxW ? Math.max(9.5, size * ((maxW - 26) / (w + 16))) : size;
     }
 
@@ -929,6 +925,52 @@ window.addEventListener('DOMContentLoaded', function () {
     function drawRightAngle(vertex, p1, p2, size = 11, col = C.gold) {
       BRD.right(vertex, p1, p2, { size, color: col });
     }
+    // [표시 보강] 칩·치수 글자 속 숫자 분수(3/5)를 쌓은 분수로 그립니다(무대 글자와 같은 분할 규칙). 분자·분모는 본문의 0.82배(최소 11px)라 작은 화면에서도 읽히고,
+    // 상자 폭·높이도 쌓은 분수까지 함께 잽니다.
+    const frSize = (fs) => Math.max(fs * 0.82, 11);
+    function frWidth(text, fs) {
+      const c = BRD.ctx, segs = BRD._fracSplit ? BRD._fracSplit(text) : null;
+      c.save();
+      c.font = `800 ${fs}px ${BRD.font}`;
+      let w = 0;
+      if (!segs) w = c.measureText(text).width;
+      else {
+        const f2 = frSize(fs);
+        for (const g of segs) {
+          if (g.t !== undefined) { c.font = `800 ${fs}px ${BRD.font}`; w += c.measureText(g.t).width; }
+          else { c.font = `800 ${f2}px ${BRD.font}`; w += Math.max(c.measureText(g.n).width, c.measureText(g.d).width) + f2 * 0.4; }
+        }
+      }
+      c.restore();
+      return { w, stacked: !!segs };
+    }
+    function frFill(text, cx, cy, fs, col) {
+      const c = BRD.ctx, segs = BRD._fracSplit ? BRD._fracSplit(text) : null;
+      c.save();
+      c.setLineDash([]);
+      c.fillStyle = BRD.color(col);
+      c.textBaseline = 'middle';
+      if (!segs) { c.font = `800 ${fs}px ${BRD.font}`; c.textAlign = 'center'; c.fillText(text, cx, cy); c.restore(); return; }
+      const f2 = frSize(fs), pad = f2 * 0.4, gap = f2 * 0.18, bar = Math.max(1.4, f2 * 0.1);
+      let W = 0;
+      for (const g of segs) {
+        if (g.t !== undefined) { c.font = `800 ${fs}px ${BRD.font}`; g.w = c.measureText(g.t).width; }
+        else { c.font = `800 ${f2}px ${BRD.font}`; g.w = Math.max(c.measureText(g.n).width, c.measureText(g.d).width) + pad; }
+        W += g.w;
+      }
+      let x = cx - W / 2;
+      for (const g of segs) {
+        if (g.t !== undefined) { c.font = `800 ${fs}px ${BRD.font}`; c.textAlign = 'left'; c.fillText(g.t, x, cy); }
+        else {
+          c.font = `800 ${f2}px ${BRD.font}`; c.textAlign = 'center';
+          c.fillText(g.n, x + g.w / 2, cy - gap - f2 * 0.5);
+          c.fillText(g.d, x + g.w / 2, cy + gap + f2 * 0.5 + 1);
+          c.fillRect(x + pad * 0.25, cy - bar / 2, g.w - pad * 0.5, bar);
+        }
+        x += g.w;
+      }
+      c.restore();
+    }
     function drawDimension(p1, p2, offsetPx, label, col = C.gold) {
       label = txt(label);
       const c = BRD.ctx;
@@ -957,20 +999,17 @@ window.addEventListener('DOMContentLoaded', function () {
       const ins = insets();
       const fs = fitSize(label, 12 * BRD.fs, BRD.W - ins.left - ins.right);
       c.font = `800 ${fs}px ${BRD.font}`;
-      const tw = c.measureText(label).width;
+      const { w: tw, stacked } = frWidth(label, fs), bh = stacked ? fs * 2.15 : fs;
       const cx = Math.max(ins.left + tw / 2 + 12, Math.min(BRD.W - ins.right - tw / 2 - 12, (a.x + b2.x) / 2));
       const cy = Math.max(ins.top + 16, Math.min(BRD.H - ins.bottom - 16, (a.y + b2.y) / 2));
       c.fillStyle = BRD.colors.halo;
       c.strokeStyle = BRD.color(col);
       c.lineWidth = 1.3;
       c.beginPath();
-      c.roundRect(cx - tw / 2 - 6, cy - fs / 2 - 4, tw + 12, fs + 8, 5);
+      c.roundRect(cx - tw / 2 - 6, cy - bh / 2 - 4, tw + 12, bh + 8, 5);
       c.fill(); c.stroke();
-      c.fillStyle = BRD.color(col);
-      c.textAlign = 'center';
-      c.textBaseline = 'middle';
-      c.fillText(label, cx, cy);
       c.restore();
+      frFill(label, cx, cy, fs, col);
     }
     function dLine(a, b, col = C.gold, w = 2.6, dash = [], glow = false) {
       BRD.seg(a, b, { color: col, width: w, dash: dashOf(dash), glow });
@@ -1011,20 +1050,17 @@ window.addEventListener('DOMContentLoaded', function () {
       c.save();
       c.setLineDash([]);
       c.font = `800 ${fs}px ${BRD.font}`;
-      const tw = c.measureText(text).width;
+      const { w: tw, stacked } = frWidth(text, fs), bh = stacked ? fs * 2.15 : fs;
       const cx = Math.max(ins.left + tw / 2 + 12, Math.min(BRD.W - ins.right - tw / 2 - 12, s.x));
       const cy = Math.max(ins.top + 16, Math.min(BRD.H - ins.bottom - 16, s.y));
       c.fillStyle = BRD.colors.halo;
       c.strokeStyle = BRD.color(col);
       c.lineWidth = 1.3;
       c.beginPath();
-      c.roundRect(cx - tw / 2 - 8, cy - fs / 2 - 5, tw + 16, fs + 10, 6);
+      c.roundRect(cx - tw / 2 - 8, cy - bh / 2 - 5, tw + 16, bh + 10, 6);
       c.fill(); c.stroke();
-      c.fillStyle = BRD.color(col);
-      c.textAlign = 'center';
-      c.textBaseline = 'middle';
-      c.fillText(text, cx, cy);
       c.restore();
+      frFill(text, cx, cy, fs, col);
     }
     // 꼭짓점: 끌 수 있는 점(onDrag 있음)은 테두리가 빛나는 핸들로, 아닌 점은 보통 점으로 그립니다
     function dVertex(p, label = '', col = C.white, off = { x: 8, y: -8 }, isHandle = false, onDrag = null) {
@@ -2640,6 +2676,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     APLab.createLab({
       id: 'alg-sine-cosine-law',
+      stackFractions: true, // 패널·칩·값 칸 글 속 숫자 분수(1/2, 3/5)를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr). 그림 글은 무대가 쌓습니다.
       title: '사인·코사인법칙 도형 탐구',
       courseName: '대수',
       unit: 'Ⅱ. 삼각함수',

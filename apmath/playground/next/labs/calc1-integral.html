@@ -1431,6 +1431,7 @@ window.addEventListener('DOMContentLoaded', function () {
   /* ---------- 5. 실험실 등록 ---------- */
   APLab.createLab({
     id: 'calc1-integral',
+    stackFractions: true, // 패널·칩·값 칸 글 속 숫자 분수(1/2, 3/5)를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr). 그림 글은 무대가 쌓습니다.
     title: '정적분과 넓이',
     courseName: '미적분Ⅰ',
     unit: '적분 · 정적분과 넓이',

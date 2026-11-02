@@ -2314,7 +2314,7 @@ function htmlApprox(){
           const sumS = (xs) => (xs.length ? `$${sumTex(xs)}$` : '0');
           return {
             chips: [{ tex: '\\sin x=t', color: 'green' }, { tex: '\\cos x=t', color: 'amber' }, { html: `서로 다른 근 <b>${cnt}개</b>${cnt ? ` · 합 <b>$${sumTex(R.dist)}$</b>` : ''}`, color: 'amber' }],
-            status: R.both.length ? { tone: 'key', text: '두 곡선이 같은 높이! 겹친 근은 한 번만 셉니다' } : { tone: 'info', text: `t = ${tTxt(t)}` },
+            status: R.both.length ? { tone: 'key', text: '두 곡선이 같은 높이! 겹친 근은 한 번만 셉니다' } : { tone: 'info', text: `t = ${tTxt(t).replace(/^(−?)(√?\d+)\/(\d+)$/, (m0, sg, n, d) => `$${sg ? '-' : ''}\\frac{${n.replace('√', '\\sqrt')}}{${d}}$`)}` },
             alert: Math.abs(t) > 1 ? { tone: 'warn', text: '|t| > 1이면 sin x = t, cos x = t 모두 근이 없습니다.' } : null,
             readouts: [
               { label: 'sin x = t 의 근', value: list(R.rs), color: 'green', note: R.rs.length ? '합 ' + (R.rs.length > 1 ? sumS(R.rs) : sumS(R.rs)) : '' },
