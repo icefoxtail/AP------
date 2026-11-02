@@ -256,7 +256,7 @@
       if (sep < 0.01 && flip < 0.01) axisLine(D, yy0 - 0.5, yMid + h2 + 0.6);
       const faceS = (hot) => (f) => (f.tag === 'disc' ? { fill: 'red', alpha: sep > 0.2 ? 0.5 : 0.001 } : C.review && hot && f.tag === 'side' ? { fill: 'amber', alpha: 0.36 } : {});
       if (rotT < 0.995) sweepDraw(D, [[0, yy0], [r, yMid], [0, yMid + h2]], poly, rotT, {});
-      else { D.body({ mesh: lowM, fill: 'sky', alpha: 0.26, edge: 'ink', edgeW: 2.6, faceStyle: faceS(C.review && st === 2) }); D.body({ mesh: upM, fill: 'violet', alpha: 0.26, edge: 'ink', edgeW: 2.6, faceStyle: faceS(C.review && st === 2) }); }
+      else { const jn = (e) => (sep < 1e-4 && flip < 1e-4 ? v3(0, 0, 0) : null); D.body({ mesh: lowM, fill: 'sky', alpha: 0.26, edge: 'ink', edgeW: 2.6, faceStyle: faceS(C.review && st === 2), dashBack: jn }); D.body({ mesh: upM, fill: 'violet', alpha: 0.26, edge: 'ink', edgeW: 2.6, faceStyle: faceS(C.review && st === 2), dashBack: jn }); }
       const pa = (rr, yy, off) => add3(v3(rr * Math.cos(A0), yy, rr * Math.sin(A0)), off || v3(0, 0, 0));
       if (rotT >= 0.995) {
         const ou = D.hx(sep);
@@ -350,15 +350,15 @@
       D.fit([].concat(ringAt(v3(0, 0, 0), yH, r), ringAt(v3(0, 0, 0), yB + r / 2, r * 0.9), [v3(0, yB, 0), v3(0, yH + r * 0.5, 0)], ringAt(D.hx(dx), yH, r), ringAt(D.hx(dx), yC, r), ringAt(D.hx(2 * dx), yC, r), [add3(D.hx(2 * dx), v3(0, yC + hc, 0))]), [], { l: 22, r: 22, t: 24, b: 24 });
       const lvK = !C.review ? 1 : st === 1 ? 2 : 1, lvC = !C.review ? 1 : st === 2 ? 2 : 1, lvH = !C.review ? 1 : st === 3 ? 2 : 1;
       const lv = { k: lvK, c: lvC, h: lvH };
-      parts.forEach((p) => D.body({ mesh: p.m, fill: lv[p.k] === 2 ? 'amber' : p.col, alpha: lv[p.k] === 2 ? 0.38 : 0.26, edge: 'ink', edgeW: 2.6, faceStyle: (f) => (f.tag === 'flat' && dx > r * 0.5 ? { fill: 'red', alpha: 0.4 } : f.tag === 'flat' ? { fill: p.col, alpha: 0.12 } : {}) }));
+      parts.forEach((p) => D.body({ mesh: p.m, fill: lv[p.k] === 2 ? 'amber' : p.col, alpha: lv[p.k] === 2 ? 0.38 : 0.26, edge: 'ink', edgeW: 2.6, dashBack: () => (dx < 1e-4 ? v3(0, 0, 0) : null), faceStyle: (f) => (f.tag === 'flat' && dx > r * 0.5 ? { fill: 'red', alpha: 0.4 } : f.tag === 'flat' ? { fill: p.col, alpha: 0.12 } : {}) }));
       const pa = (rr, yy, off) => add3(v3(rr * Math.cos(A0), yy, rr * Math.sin(A0)), D.hx(off));
       D.elabel(pa(r, yC, 2 * dx), pa(0, yC + hc, 2 * dx), `${M.R}`, { side: { x: 1, y: 0 }, size: 15, gap: 8 });
       D.elabel(pa(0, yC, 2 * dx), pa(0, yC + hc, 2 * dx), `${M.hc}`, { side: { x: -1, y: 0 }, size: 14, color: 'muted', gap: 8 });
       D.elabel(pa(r, yH, dx), pa(r, yC, dx), `${M.H}`, { side: { x: 1, y: 0 }, size: 15, color: 'amber', gap: 8 });
       D.line(lp(pa(0, yH, 0)), lp(pa(r, yH, 0)), 'ink', 2.4); D.dot(lp(pa(0, yH, 0)), 'ink', 3.5);
-      D.tag(lp(pa(r / 2, yH, 0)), `r=${M.r}`, { dy: flipE > 0.5 ? -12 : 14, size: 14, color: 'amber' });
+      D.tag(lp(pa(r, yH, 0)), `r=${M.r}`, { dx: D.P(lp(pa(r, yH, 0))).x >= D.P(lp(pa(0, yH, 0))).x ? 24 : -24, size: 14, color: 'amber' }); // 반지름 선 끝 바깥에 (점선·실선 위에 얹히지 않게)
       if (!C.problem && dx > r * 0.5) {
-        D.tag(lp(pa(0, yB + r * 0.5, 0)), `2πr²=${plainVal(M.hemi)}`, { size: 14, dy: flipE > 0.5 ? 28 : 22 });
+        if (flipE > 0.5) D.tag(lp(pa(0, yH, 0)), `2πr²=${plainVal(M.hemi)}`, { size: 14, dy: r * b.k * Math.abs(D.cam.sp) + 20 }); else D.tag(lp(pa(0, yB + r * 0.5, 0)), `2πr²=${plainVal(M.hemi)}`, { size: 14, dy: 22 }); // 뒤집힌 반구는 밑면 아래 바깥에
         D.tag(pa(0, (yH + yC) / 2, dx), `2πrH=${plainVal(M.cylLat)}`, { size: 14 });
         D.tag(pa(0, yC + hc * 0.12, 2 * dx), `πRr=${plainVal(M.coneLat)}`, { size: 13, dy: 12 });
       }

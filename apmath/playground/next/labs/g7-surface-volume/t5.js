@@ -441,12 +441,14 @@
       const yaw = Math.atan2(D.cam.sy, D.cam.cy), thR = -yaw, pa = (rr, yy, off) => add3(v3(rr * Math.cos(thR), yy, rr * Math.sin(thR)), off || v3(0, 0, 0));
       const c0 = v3(0, y0, 0);
       D.line(c0, pa(r2, y0), 'amber', 2.4, { dash: [5, 4] }); D.dot(c0, 'ink', 3.5);
-      D.tag(pa(r2 * 0.8, y0), `r₂=${M.r2}`, { dy: 14, size: 14, color: 'amber' });
-      D.tag(pa(r1 * 0.5, y0), `r₁=${M.r1}`, { dy: 15, size: 14, color: 'red' });
+      // 반지름·높이 글자는 선 위에 얹지 않고 가는 지시선으로 연결해 바깥에 둡니다
+      const lead = (p3, dxp, dyp, txt, col) => { const s0 = b.toS(D.P(p3)), w = b.toW(s0.x + dxp, s0.y + dyp); b.path([D.P(p3), w], { color: col, width: 1.3, alpha: 0.85 }); D.tag(w, txt, { fig: true, size: 14, color: col, dx: dxp > 0 ? 22 : -22 }); };
+      lead(pa(r2 * 0.97, y0), 30, 26, `r₂=${M.r2}`, 'amber');
+      lead(pa(r1 * 0.5, y0), -38, 36, `r₁=${M.r1}`, 'red');
       D.elabel(pa(r2, y0), v3(0, yt, 0), `R₂=${M.R2}`, { side: { x: 1, y: 0.2 }, size: 15, gap: 8 });
       const sh = D.hx(slide);
       D.elabel(add3(pa(r1, y0), sh), add3(v3(0, y0 + h1, 0), sh), `R₁=${M.R1}`, { side: { x: 1, y: 0 }, size: 15, color: 'red', gap: 8 });
-      D.tag(add3(v3(0, y0 + h1 / 2, 0), sh), `h₁=${M.h1}`, { size: 14, color: 'red', dx: -26 });
+      lead(add3(v3(0, y0 + h1 / 2, 0), sh), -44, -22, `h₁=${M.h1}`, 'red');
     };
     return {
       id: 'sv5-5', title: '원뿔 속을 원뿔로 판 입체', short: '원뿔 속 원뿔',

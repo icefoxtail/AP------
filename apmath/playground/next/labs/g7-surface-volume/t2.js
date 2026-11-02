@@ -357,8 +357,8 @@
         D.line(pb(thR, r2, y0), v3(0, y0 + h2, 0), 'muted', 1.8, { dash: [5, 4], alpha: 0.7 * (1 - ease(t)) });
       }
       const big = C.review && ((M.mode === 'surf' && st === 1) || (M.mode === 'vol' && st === 1)), sm = C.review && st === 2;
-      D.body({ mesh: frM, fill: lvF === 2 ? 'amber' : 'sky', alpha: lvF === 2 ? 0.34 : 0.22, edge: 'ink', edgeW: 2.6, faceStyle: (f) => (f.tag === 'bot' || f.tag === 'top' ? { fill: C.review && st === 4 ? 'amber' : 'sky', alpha: C.review && st === 4 ? 0.42 : 0.24 } : {}) });
-      D.body({ mesh: smM, fill: sm || big ? 'amber' : 'violet', alpha: sm ? 0.42 : 0.24, edge: 'ink', edgeW: 2.6 });
+      D.body({ mesh: frM, fill: lvF === 2 ? 'amber' : 'sky', alpha: lvF === 2 ? 0.34 : 0.22, edge: 'ink', edgeW: 2.6, dashBack: () => (slide < 1e-4 ? v3(0, 0, 0) : null), faceStyle: (f) => (f.tag === 'bot' || f.tag === 'top' ? { fill: C.review && st === 4 ? 'amber' : 'sky', alpha: C.review && st === 4 ? 0.42 : 0.24 } : {}) });
+      D.body({ mesh: smM, fill: sm || big ? 'amber' : 'violet', alpha: sm ? 0.42 : 0.24, edge: 'ink', edgeW: 2.6, dashBack: () => (slide < 1e-4 ? v3(0, 0, 0) : null) });
       // 길이: 큰 뿔 r₂·R₂, 작은 뿔 r₁·R₁
       const cb = v3(0, y0, 0), rpB = pb(thR, r2, y0);
       D.line(cb, rpB, 'ink', 2.4, { dash: [5, 4] });
