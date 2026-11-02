@@ -10,9 +10,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 다항식\n$$A=x^2-xy+5y^2,\\quad B=2x^2+3xy-y^2$$\n에 대하여 $A-3B$를 계산하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-5x^2-10xy+8y^2$",
+    "solution": "[풀이 전략] 주어진 다항식 $A, B$를 대입하여 $A-3B$를 동류항끼리 모아 정리한다.\n\n[단계별 풀이]\n$A=x^2-xy+5y^2$, $B=2x^2+3xy-y^2$이므로\n$A-3B=(x^2-xy+5y^2)-3(2x^2+3xy-y^2)$\n$=x^2-xy+5y^2-6x^2-9xy+3y^2$\n$=(1-6)x^2+(-1-9)xy+(5+3)y^2$\n$=-5x^2-10xy+8y^2$\n\n[결론] $-5x^2-10xy+8y^2$"
   },
   {
     "id": 2,
@@ -38,9 +38,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식을 간단히 하시오.\n$$(2a+3)(4a^2-6a+9)-(2a-3)(4a^2+6a+9)$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$54$",
+    "solution": "[풀이 전략] 곱셈 공식 $(x+y)(x^2-xy+y^2)=x^3+y^3$과 $(x-y)(x^2+xy+y^2)=x^3-y^3$을 적용하여 식을 전개한 후 뺄셈을 계산한다.\n\n[단계별 풀이]\n$(2a+3)(4a^2-6a+9)=(2a+3)[(2a)^2-(2a)\\times 3+3^2]=(2a)^3+3^3=8a^3+27$\n$(2a-3)(4a^2+6a+9)=(2a-3)[(2a)^2+(2a)\\times 3+3^2]=(2a)^3-3^3=8a^3-27$\n따라서 주어진 식은 다음과 같다.\n$(8a^3+27)-(8a^3-27)=8a^3+27-8a^3+27=54$\n\n[결론] $54$"
   },
   {
     "id": 3,
@@ -66,9 +66,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $P(x)=x^3+ax^2-1$을 $x+2$로 나누었을 때의 나머지가 $-5$일 때, 상수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략] 나머지정리에 의해 다항식 $P(x)$를 $x+2$로 나눈 나머지는 $P(-2)$이다. 이를 주어진 나머지 $-5$와 같다고 놓고 일차방정식을 푼다.\n\n[단계별 풀이]\n$P(x)=x^3+ax^2-1$을 $x+2$로 나누었을 때의 나머지는 $P(-2)$이므로\n$P(-2)=(-2)^3+a(-2)^2-1=-8+4a-1=4a-9$\n이 나머지가 $-5$이므로\n$4a-9=-5$\n$4a=4$\n$a=1$\n\n[결론] $1$"
   },
   {
     "id": 4,
@@ -94,8 +94,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식을 인수분해 하시오.\n⑴ $(x^2+3x-3)(x^2+3x+4)-8$\n⑵ $x^3-x^2-14x+24$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $(x-1)(x+4)(x^2+3x+5)$\n⑵ $(x-2)(x-3)(x+4)$",
+    "solution": "[풀이 전략] ⑴ 공통부분 $x^2+3x$를 치환하여 인수분해한 후 원래의 식을 대입한다. ⑵ 인수정리와 조립제법을 이용하여 삼차식을 인수분해한다.\n\n[단계별 풀이]\n⑴ $x^2+3x=X$로 치환하면 주어진 식은 다음과 같다.\n$(X-3)(X+4)-8=X^2+X-12-8=X^2+X-20$\n$=(X-4)(X+5)$\n$X=x^2+3x$를 다시 대입하면\n$(x^2+3x-4)(x^2+3x+5)=(x-1)(x+4)(x^2+3x+5)$\n\n⑵ $P(x)=x^3-x^2-14x+24$라 하면\n$P(2)=2^3-2^2-14\\times 2+24=8-4-28+24=0$이므로 $P(x)$는 $x-2$를 인수로 갖는다.\n조립제법을 적용하면\n$x^3-x^2-14x+24=(x-2)(x^2+x-12)$\n$=(x-2)(x-3)(x+4)$\n\n[결론] ⑴ $(x-1)(x+4)(x^2+3x+5)$, ⑵ $(x-2)(x-3)(x+4)$"
   },
   {
     "id": 5,
@@ -122,9 +122,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $(x^2+ax+b)(x^2+2x+a)$를 전개한 식에서 $x^3$과 $x$의 계수가 모두 $0$이 되도록 하는 두 상수 $a, b$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-2$, $b=-2$",
+    "solution": "[풀이 전략] 주어진 식의 전개식에서 $x^3$과 $x$의 항만 계수를 구한 후, 각각의 계수가 $0$임을 이용하여 $a, b$의 값을 구한다.\n\n[단계별 풀이]\n$(x^2+ax+b)(x^2+2x+a)$의 전개식에서\n$x^3$의 항은 $x^2 \\times 2x + ax \\times x^2 = (a+2)x^3$이므로 $x^3$의 계수는 $a+2$이다.\n$a+2=0$에서 $a=-2$이다.\n\n$x$의 항은 $ax \\times a + b \\times 2x = (a^2+2b)x$이므로 $x$의 계수는 $a^2+2b$이다.\n$a=-2$를 대입하면 $(-2)^2+2b=0$이므로\n$4+2b=0$, 즉 $b=-2$이다.\n\n[결론] $a=-2$, $b=-2$"
   },
   {
     "id": 6,
@@ -150,9 +150,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음은 조립제법을 이용하여 다항식 $P(x)=3x^3+ax^2+bx-1$을 일차식 $3x+2$로 나누었을 때의 몫 $Q(x)$와 나머지를 구하는 과정이다. $P(1)+Q(-1)$의 값을 구하시오. (단, $a, b, c, d, e$는 상수이다.)\n<img src=\"q06.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략] 조립제법의 빈칸을 채워 $a, b, c, d, e$를 구하고, 다항식 $P(x)$와 일차식 $3x+2$로 나눈 몫 $Q(x)$를 구하여 $P(1)+Q(-1)$을 계산한다.\n\n[단계별 풀이]\n<img src=\"q06.png\" />\n일차식 $3x+2=0$에서 $x=-\\frac{2}{3}$이므로 $e=-\\frac{2}{3}$이다.\n조립제법의 첫 번째 열에서 $3$이 그대로 내려오고, $3 \\times e = 3 \\times \\left(-\\frac{2}{3}\\right) = -2$이므로 $c=-2$이다.\n두 번째 열에서 $a+c=-6$이므로 $a+(-2)=-6$에서 $a=-4$이다.\n이어 $-6 \\times e = -6 \\times \\left(-\\frac{2}{3}\\right) = 4$이므로 $d=4$이다.\n세 번째 열에서 $b+d=3$이므로 $b+4=3$에서 $b=-1$이다.\n따라서 $P(x)=3x^3-4x^2-x-1$이므로\n$P(1)=3(1)^3-4(1)^2-1-1=-3$\n\n한편 조립제법에 의해 $P(x)=\\left(x+\\frac{2}{3}\\right)(3x^2-6x+3)-3$이다.\n이를 일차식 $3x+2$로 나누었을 때의 꼴로 변형하면\n$P(x)=(3x+2)(x^2-2x+1)-3$\n이므로 몫은 $Q(x)=x^2-2x+1$이다.\n따라서 $Q(-1)=(-1)^2-2(-1)+1=1+2+1=4$이다.\n\n구하는 값은 $P(1)+Q(-1)=-3+4=1$이다.\n\n[결론] $1$"
   },
   {
     "id": 7,
@@ -178,9 +178,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x^3$의 계수가 $1$인 삼차식 $P(x)$에 대하여\n$$P(2)=P(1)=P(-1)=3$$\n일 때, $P(x)$를 $x^2-x-6$으로 나누었을 때의 나머지를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4x-1$",
+    "solution": "[풀이 전략] $P(x)-3=0$의 세 근이 $2, 1, -1$임을 이용하여 최고차항 계수가 $1$인 $P(x)$의 식을 작성한 후, $x^2-x-6$으로 나눈 나머지를 구한다.\n\n[단계별 풀이]\n$P(2)=P(1)=P(-1)=3$이므로 방정식 $P(x)-3=0$의 세 근은 $2, 1, -1$이다.\n$P(x)$는 $x^3$의 계수가 $1$인 삼차식이므로\n$P(x)-3=(x-2)(x-1)(x+1)$\n$P(x)=(x-2)(x^2-1)+3=x^3-2x^2-x+5$\n\n$P(x)$를 $x^2-x-6=(x-3)(x+2)$로 나누었을 때의 몫을 $Q_1(x)$, 일차 이하의 나머지를 $R(x)=px+q$라 하면\n$P(x)=(x-3)(x+2)Q_1(x)+px+q$\n$x=3$을 대입하면 $P(3)=3p+q$이고,\n$P(3)=(3-2)(3-1)(3+1)+3=1 \\times 2 \\times 4 + 3 = 11$이므로 $3p+q=11$ $\\cdots$ ①\n$x=-2$를 대입하면 $P(-2)=-2p+q$이고,\n$P(-2)=(-2-2)(-2-1)(-2+1)+3=(-4)(-3)(-1)+3=-12+3=-9$이므로 $-2p+q=-9$ $\\cdots$ ②\n\n①에서 ②를 빼면\n$5p=20 \\implies p=4$\n①에 대입하면 $3(4)+q=11 \\implies q=-1$\n따라서 구하는 나머지는 $4x-1$이다.\n\n[결론] $4x-1$"
   },
   {
     "id": 8,
@@ -206,8 +206,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $x^3+ax^2+x-4$가 $x-1$을 인수로 가질 때, 이 다항식을 인수분해 하시오. (단, $a$는 상수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$(x-1)(x^2+3x+4)$",
+    "solution": "[풀이 전략] $x-1$이 인수이므로 $x=1$을 대입했을 때 $0$이 됨을 이용하여 상수 $a$를 구하고, 조립제법으로 인수분해한다.\n\n[단계별 풀이]\n$P(x)=x^3+ax^2+x-4$가 $x-1$을 인수로 가지므로 $P(1)=0$이다.\n$1^3+a(1)^2+1-4=0$\n$a-2=0 \\implies a=2$\n\n따라서 다항식은 $x^3+2x^2+x-4$이다.\n조립제법을 이용하여 $x-1$로 나누면\n$x^3+2x^2+x-4=(x-1)(x^2+3x+4)$\n$x^2+3x+4$의 판별식 $D=3^2-4 \\times 1 \\times 4 = -7 < 0$이므로 유리수 범위에서 더 이상 인수분해되지 않는다.\n\n[결론] $(x-1)(x^2+3x+4)$"
   },
   {
     "id": 9,
@@ -234,8 +234,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "인수분해를 이용하여 $\\sqrt{13^3+3^3+3\\times 16\\times 39}$를 계산하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$64$",
+    "solution": "[풀이 전략] 곱셈 공식 $(a+b)^3=a^3+b^3+3ab(a+b)$의 형태를 찾아 근호 안의 식을 거듭제곱 형태로 정리한다.\n\n[단계별 풀이]\n근호 안의 식 $13^3+3^3+3\\times 16\\times 39$에서\n$16=13+3$이고 $39=13\\times 3$이므로\n$3\\times 16\\times 39 = 3\\times (13\\times 3)\\times (13+3)$\n따라서 $a=13$, $b=3$으로 놓으면 주어진 식은 다음과 같다.\n$a^3+b^3+3ab(a+b)=(a+b)^3$\n$a+b=13+3=16$이므로 근호 안의 식은 $16^3$이다.\n따라서 주어진 식의 값은\n$\\sqrt{16^3}=\\sqrt{(4^2)^3}=\\sqrt{4^6}=4^3=64$\n\n[결론] $64$"
   },
   {
     "id": 10,
@@ -262,9 +262,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 다항식 $P(x), Q(x)$에 대하여 다항식 $P(x)-Q(x)$를 $x+2$로 나누었을 때의 나머지는 $3$이고, 다항식 $\\{P(x)\\}^3-\\{Q(x)\\}^3$을 $x+2$로 나누었을 때의 나머지는 $36$이다. 다항식 $P(x)Q(x)$를 $x+2$로 나누었을 때의 나머지를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$1$",
+    "solution": "[풀이 전략] 나머지정리로 $P(-2)-Q(-2)$와 $\\{P(-2)\\}^3-\\{Q(-2)\\}^3$의 값을 구한 후, 곱셈 공식의 변형을 이용하여 $P(-2)Q(-2)$를 계산한다.\n\n[단계별 풀이]\n나머지정리에 의하여\n$P(-2)-Q(-2)=3$\n$\\{P(-2)\\}^3-\\{Q(-2)\\}^3=36$\n$P(-2)=A$, $Q(-2)=B$라 하면\n$A-B=3$, $A^3-B^3=36$이다.\n\n곱셈 공식의 변형 $A^3-B^3=(A-B)^3+3AB(A-B)$에 대입하면\n$36=3^3+3AB(3)$\n$36=27+9AB$\n$9AB=9 \\implies AB=1$\n\n따라서 다항식 $P(x)Q(x)$를 $x+2$로 나누었을 때의 나머지는 $P(-2)Q(-2)=AB=1$이다.\n\n[결론] $1$"
   },
   {
     "id": 11,
@@ -290,9 +290,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $P(x)$를 $x^2+2$로 나누었을 때의 나머지는 $x-1$이다. 다항식 $x\\{P(x)\\}^2$을 $x^2+2$로 나누었을 때의 나머지가 $R(x)$일 때, $R(2)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2$",
+    "solution": "[풀이 전략] $P(x)=(x^2+2)Q(x)+(x-1)$로 표현하고 $x\\{P(x)\\}^2$을 전개하여 $x^2+2$로 나눈 나머지 $R(x)$를 구한다.\n\n[단계별 풀이]\n$P(x)$를 $x^2+2$로 나누었을 때의 몫을 $Q(x)$라 하면\n$P(x)=(x^2+2)Q(x)+(x-1)$이다.\n양변을 제곱하면\n$\\{P(x)\\}^2=[(x^2+2)Q(x)+(x-1)]^2$\n$=(x^2+2)^2\\{Q(x)\\}^2+2(x^2+2)Q(x)(x-1)+(x-1)^2$\n$=(x^2+2)[(x^2+2)\\{Q(x)\\}^2+2Q(x)(x-1)]+(x-1)^2$\n\n양변에 $x$를 곱하면\n$x\\{P(x)\\}^2=(x^2+2)x[(x^2+2)\\{Q(x)\\}^2+2Q(x)(x-1)]+x(x-1)^2$\n따라서 $x\\{P(x)\\}^2$을 $x^2+2$로 나눈 나머지는 $x(x-1)^2$을 $x^2+2$로 나눈 나머지와 같다.\n$x(x-1)^2=x(x^2-2x+1)=x^3-2x^2+x$\n$=x(x^2+2)-2x-2(x^2+2)+4+x$\n$=(x-2)(x^2+2)-x+4$\n이므로 나머지 $R(x)=-x+4$이다.\n따라서 $R(2)=-2+4=2$이다.\n\n[결론] $2$"
   },
   {
     "id": 12,
@@ -318,8 +318,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 정수 $a, b$와 $30$ 이하의 자연수 $n$에 대하여 다항식 $x^3-(1-3ab)x-n$이 $(x+1)(x-a)(x-3b)$로 인수분해 되도록 하는 모든 $n$의 값의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$48$",
+    "solution": "[풀이 전략] 우변을 전개하여 좌변과 계수를 비교한 후, $a, b$의 관계식과 $n$에 대한 부등식을 만족하는 정수쌍을 구한다.\n\n[단계별 풀이]\n$(x+1)(x-a)(x-3b)=(x+1)[x^2-(a+3b)x+3ab]$\n$=x^3-(a+3b)x^2+3abx+x^2-(a+3b)x+3ab$\n$=x^3+[1-(a+3b)]x^2+[3ab-(a+3b)]x+3ab$\n이 식이 $x^3-(1-3ab)x-n$과 모든 실수 $x$에 대하여 항등식이므로\n$x^2$의 계수: $1-(a+3b)=0 \\implies a+3b=1$ $\\cdots$ ①\n$x$의 계수: $3ab-(a+3b)=3ab-1=-(1-3ab)$ (항상 성립)\n상수항: $3ab=-n \\implies n=-3ab$ $\\cdots$ ②\n\n①에서 $a=1-3b$이므로 이를 ②에 대입하면\n$n=-3(1-3b)b=3b(3b-1)=9b^2-3b$\n$n$은 $30$ 이하의 자연수이므로 $1 \\le 3b(3b-1) \\le 30$을 만족하는 정수 $b$를 찾는다.\ni) $b=1$일 때: $n=3(1)(2)=6 \\le 30$ (이때 $a=1-3=-2$, 정수 조건 만족)\nii) $b=2$일 때: $n=3(2)(5)=30 \\le 30$ (이때 $a=1-6=-5$, 정수 조건 만족)\niii) $b=3$ 이상일 때: $n \\ge 3(3)(8)=72 > 30$이므로 불가\niv) $b=0$일 때: $n=0$ (자연수가 아니므로 불가)\nv) $b=-1$일 때: $n=3(-1)(-4)=12 \\le 30$ (이때 $a=1-(-3)=4$, 정수 조건 만족)\nvi) $b=-2$ 이하일 때: $n \\ge 3(-2)(-7)=42 > 30$이므로 불가\n\n따라서 가능한 자연수 $n$의 값은 $6, 12, 30$이다.\n모든 $n$의 값의 합은 $6+12+30=48$이다.\n\n[결론] $48$"
   },
   {
     "id": 13,
@@ -346,9 +346,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같은 직육면체의 모든 모서리의 길이의 합이 $20$이고 삼각형 $\\mathrm{AFC}$의 세 변의 길이의 제곱의 합이 $20$일 때, 이 직육면체의 겉넓이를 구하시오.\n<img src=\"q13.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$15$",
+    "solution": "[풀이 전략] 직육면체의 세 모서리의 길이를 문자로 두고, 모서리 합과 세 대각선 길이 제곱의 합을 연립하여 곱셈 공식을 통해 겉넓이를 구한다.\n\n[단계별 풀이]\n<img src=\"q13.png\" />\n직육면체의 가로, 세로, 높이의 길이를 각각 $a, b, c$ ($a>0, b>0, c>0$)라 하자.\n모든 모서리의 길이의 합이 $20$이므로\n$4(a+b+c)=20 \\implies a+b+c=5$ $\\cdots$ ①\n\n삼각형 $\\mathrm{AFC}$의 세 변 $\\mathrm{AF}, \\mathrm{FC}, \\mathrm{CA}$에 대하여 피타고라스 정리에 의해\n$\\mathrm{AF}^2=a^2+c^2$, $\\mathrm{FC}^2=b^2+c^2$, $\\mathrm{CA}^2=a^2+b^2$\n세 변의 길이의 제곱의 합이 $20$이므로\n$\\mathrm{AF}^2+\\mathrm{FC}^2+\\mathrm{CA}^2=(a^2+c^2)+(b^2+c^2)+(a^2+b^2)=2(a^2+b^2+c^2)=20$\n$a^2+b^2+c^2=10$ $\\cdots$ ②\n\n직육면체의 겉넓이는 $2(ab+bc+ca)$이다.\n곱셈 공식 $(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)$에 ①, ②를 대입하면\n$5^2=10+2(ab+bc+ca)$\n$25=10+2(ab+bc+ca)$\n$2(ab+bc+ca)=15$\n따라서 직육면체의 겉넓이는 $15$이다.\n\n[결론] $15$"
   },
   {
     "id": 14,
@@ -374,9 +374,9 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $P(x)=x^3+5x^2+9x+6$을\n$$P(x)=a(x+1)^3+b(x+1)^2+c(x+1)+d$$\n꼴로 나타내고, 이를 이용하여 $P(99)$의 값을 구하시오. (단, $a, b, c, d$는 상수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$P(x)=(x+1)^3+2(x+1)^2+2(x+1)+1$, $1020201$",
+    "solution": "[풀이 전략] 조립제법을 $x=-1$로 연속 $3$번 적용(연조립제법)하여 다항식을 $x+1$의 거듭제곱 꼴로 변형한 후, $x=99$를 대입하여 $P(99)$를 계산한다.\n\n[단계별 풀이]\n$P(x)=x^3+5x^2+9x+6$에 대하여 조립제법을 $-1$로 연속하여 시행한다.\n1) $x^3+5x^2+9x+6$을 $x+1$로 나누면\n몫은 $x^2+4x+5$, 나머지는 $1$이다. 따라서 $d=1$이다.\n2) 몫 $x^2+4x+5$를 다시 $x+1$로 나누면\n몫은 $x+3$, 나머지는 $2$이다. 따라서 $c=2$이다.\n3) 몫 $x+3$을 다시 $x+1$로 나누면\n몫은 $1$, 나머지는 $2$이다. 따라서 $a=1, b=2$이다.\n\n따라서 $P(x)$를 나타내면 다음과 같다.\n$P(x)=(x+1)^3+2(x+1)^2+2(x+1)+1$\n\n이 식에 $x=99$를 대입하면 $x+1=99+1=100$이므로\n$P(99)=100^3+2\\times 100^2+2\\times 100+1$\n$=1000000+20000+200+1=1020201$\n\n[결론] $P(x)=(x+1)^3+2(x+1)^2+2(x+1)+1$, $1020201$"
   },
   {
     "id": 15,
@@ -402,8 +402,8 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "대단원 평가",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
-    "standardUnit": "다항식",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
     "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -418,7 +418,7 @@ window.questionBank = [
     "wide": false,
     "content": "최고차항의 계수가 $1$인 두 다항식 $P(x), Q(x)$가 모든 실수 $x$에 대하여 다음 조건을 만족시킨다.\n\n(가) $P(x)-Q(x)=k$ (단, $k$는 상수)\n(나) $P(x)Q(x)=(x+1)(x+2)(x+3)(x+4)-8$\n\n$P(1)>Q(1)$일 때, $P(2)+Q(0)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$24$",
+    "solution": "[풀이 전략] (나)의 식을 상수항의 합이 같은 두 일차식끼리 짝지어 전개 및 치환하여 인수분해하고, (가)의 차가 상수라는 조건과 $P(1)>Q(1)$ 조건을 이용하여 $P(x), Q(x)$를 결정한다.\n\n[단계별 풀이]\n(나)에서 우변의 식을 정리한다:\n$(x+1)(x+2)(x+3)(x+4)-8=\\{(x+1)(x+4)\\}\\{(x+2)(x+3)\\}-8$\n$=(x^2+5x+4)(x^2+5x+6)-8$\n$x^2+5x=X$로 치환하면\n$(X+4)(X+6)-8=X^2+10X+24-8=X^2+10X+16$\n$=(X+2)(X+8)$\n$X=x^2+5x$를 대입하면\n$P(x)Q(x)=(x^2+5x+2)(x^2+5x+8)$이다.\n\n조건 (가)에서 $P(x)-Q(x)=k$ (상수)이고 두 다항식의 최고차항 계수가 모두 $1$이므로\n$(x^2+5x+8)-(x^2+5x+2)=6$ (상수)이다.\n조건에서 $P(1)>Q(1)$이므로\n$P(x)=x^2+5x+8$, $Q(x)=x^2+5x+2$이다.\n실제로 $P(1)=1+5+8=14$, $Q(1)=1+5+2=8$로 $P(1)>Q(1)$을 만족한다.\n\n따라서 구하는 값은\n$P(2)=2^2+5(2)+8=4+10+8=22$\n$Q(0)=0^2+5(0)+2=2$\n$P(2)+Q(0)=22+2=24$\n\n[결론] $24$"
   }
 ];

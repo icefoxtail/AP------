@@ -10,7 +10,7 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
+    "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 다항식\n$$A=2x^3+x^2+4,\\quad B=-3x+4x^2-x^3$$\n에 대하여 다음을 계산하시오.\n⑴ $A+2B$\n⑵ $3A-4B$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $9x^2-6x+4$\n⑵ $10x^3-13x^2+12x+12$",
+    "solution": "[풀이 전략] 두 다항식의 덧셈과 뺄셈은 동류항끼리 모아서 계수를 계산한다.\n\n[단계별 풀이]\n$A=2x^3+x^2+4$, $B=-x^3+4x^2-3x$이다.\n⑴ $A+2B=(2x^3+x^2+4)+2(-x^3+4x^2-3x)$\n$=2x^3+x^2+4-2x^3+8x^2-6x$\n$=(2-2)x^3+(1+8)x^2-6x+4$\n$=9x^2-6x+4$\n\n⑵ $3A-4B=3(2x^3+x^2+4)-4(-x^3+4x^2-3x)$\n$=6x^3+3x^2+12+4x^3-16x^2+12x$\n$=(6+4)x^3+(3-16)x^2+12x+12$\n$=10x^3-13x^2+12x+12$\n\n[결론] ⑴ $9x^2-6x+4$, ⑵ $10x^3-13x^2+12x+12$"
   },
   {
     "id": 2,
@@ -38,7 +38,7 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
+    "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 다항식\n$$A=3x^2-6xy+3y^2,\\quad B=xy+2y^2$$\n에 대하여 다음 등식을 만족시키는 다항식 $X$를 구하시오.\n⑴ $A-X=B$\n⑵ $2(X-A)=3B-X$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $3x^2-7xy+y^2$\n⑵ $2x^2-3xy+4y^2$",
+    "solution": "[풀이 전략] 구하려는 다항식 $X$에 대하여 식을 먼저 정리한 후 $A, B$를 대입한다.\n\n[단계별 풀이]\n⑴ $A-X=B$에서 $X=A-B$이다.\n$X=(3x^2-6xy+3y^2)-(xy+2y^2)$\n$=3x^2-6xy+3y^2-xy-2y^2$\n$=3x^2-7xy+y^2$\n\n⑵ $2(X-A)=3B-X$에서 괄호를 풀면 $2X-2A=3B-X$\n$3X=2A+3B$이므로 $X=\\frac{1}{3}(2A+3B)$이다.\n$2A+3B=2(3x^2-6xy+3y^2)+3(xy+2y^2)$\n$=(6x^2-12xy+6y^2)+(3xy+6y^2)$\n$=6x^2-9xy+12y^2$\n따라서 $X=\\frac{1}{3}(6x^2-9xy+12y^2)=2x^2-3xy+4y^2$\n\n[결론] ⑴ $3x^2-7xy+y^2$, ⑵ $2x^2-3xy+4y^2$"
   },
   {
     "id": 3,
@@ -66,7 +66,7 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
+    "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 다항식 $A$, $B$에 대하여\n$$2A+B=3x^3-x^2+4,\\quad A-2B=-x^3+2x^2+5x+2$$\n일 때, $A+B$를 계산하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2x^3-x^2-x+2$",
+    "solution": "[풀이 전략] 주어진 두 연립다항식에서 $A$와 $B$를 각각 가감법으로 구한 뒤 합 $A+B$를 계산한다.\n\n[단계별 풀이]\n$2A+B=3x^3-x^2+4$ $\\cdots$ ①\n$A-2B=-x^3+2x^2+5x+2$ $\\cdots$ ②\n① $\\times 2 + $ ②를 하면 $B$가 소거된다:\n$2(2A+B)+(A-2B)=5A$\n$5A=2(3x^3-x^2+4)+(-x^3+2x^2+5x+2)$\n$=(6x^3-2x^2+8)+(-x^3+2x^2+5x+2)$\n$=5x^3+5x+10$\n양변을 $5$로 나누면 $A=x^3+x+2$\n\n①에 대입하여 $B$를 구하면:\n$B=(3x^3-x^2+4)-2(x^3+x+2)$\n$=3x^3-x^2+4-2x^3-2x-4$\n$=x^3-x^2-2x$\n\n따라서 두 다항식의 합 $A+B$는:\n$A+B=(x^3+x+2)+(x^3-x^2-2x)=2x^3-x^2-x+2$\n\n[결론] $2x^3-x^2-x+2$"
   },
   {
     "id": 4,
@@ -94,7 +94,7 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
+    "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
     "questionType": "서술형",
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $A, B, C, D, E, F$에 대하여 다음 표의 가로, 세로, 대각선에 있는 세 다항식의 합은 모두 같다. $B-C$를 계산하시오.\n<img src=\"q04.png\" />\n\n[단계1] 두 다항식 $B, C$를 각각 구하시오.\n[단계2] $B-C$를 계산하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "[단계1] $B=x^3+2x^2+2x$, $C=x^3+4x^2$\n[단계2] $-2x^2+2x$",
+    "solution": "[풀이 전략] 마방진 표에서 완성된 행/열/대각선의 합을 구하거나 공통 합 성질을 이용하여 $B, C$를 구한다.\n\n[단계별 풀이]\n<img src=\"q04.png\" />\n[단계1] 주어진 표의 대각선과 행, 열의 합이 모두 같으므로:\n$B+2x^3=(x^3+x)+(x^3+3x^2+3x)$에서\n$B=x^3+2x^2+2x$\n또한 $C+(x^3+x)=2x^3+(x^3+4x^2+x)$에서\n$C=x^3+4x^2$\n\n[단계2] $B-C$의 계산:\n$B-C=(x^3+2x^2+2x)-(x^3+4x^2)$\n$=-2x^2+2x$\n\n[결론] [단계1] $B=x^3+2x^2+2x$, $C=x^3+4x^2$, [단계2] $-2x^2+2x$"
   },
   {
     "id": 5,
@@ -122,7 +122,7 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
+    "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식을 전개하시오.\n⑴ $(a+2)(a^2-2a-1)$\n⑵ $(a-b+2c)^2$\n⑶ $(3x-y)^3$\n⑷ $(2x+3y)(4x^2-6xy+9y^2)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a^3-5a-2$\n⑵ $a^2+b^2+4c^2-2ab-4bc+4ca$\n⑶ $27x^3-27x^2y+9xy^2-y^3$\n⑷ $8x^3+27y^3$",
+    "solution": "[풀이 전략] 고등수학 기본 곱셈 공식을 적용하여 각 식을 전개한다.\n\n[단계별 풀이]\n⑴ $(a+2)(a^2-2a-1)=a(a^2-2a-1)+2(a^2-2a-1)$\n$=a^3-2a^2-a+2a^2-4a-2=a^3-5a-2$\n\n⑵ $(a-b+2c)^2=[a+(-b)+2c]^2$\n$=a^2+(-b)^2+(2c)^2+2a(-b)+2(-b)(2c)+2(2c)a$\n$=a^2+b^2+4c^2-2ab-4bc+4ca$\n\n⑶ $(3x-y)^3=(3x)^3-3(3x)^2y+3(3x)y^2-y^3$\n$=27x^3-27x^2y+9xy^2-y^3$\n\n⑷ $(2x+3y)(4x^2-6xy+9y^2)=(2x+3y)[(2x)^2-(2x)(3y)+(3y)^2]$\n$= (2x)^3+(3y)^3=8x^3+27y^3$\n\n[결론] ⑴ $a^3-5a-2$, ⑵ $a^2+b^2+4c^2-2ab-4bc+4ca$, ⑶ $27x^3-27x^2y+9xy^2-y^3$, ⑷ $8x^3+27y^3$"
   },
   {
     "id": 6,
@@ -150,7 +150,7 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
+    "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 나눗셈의 몫과 나머지를 각각 구하시오.\n⑴ $(x^3-x-1)\\div (x^2+x+1)$\n⑵ $(x^3+2x^2-x+4)\\div (x+2)$\n⑶ $(4x^3-x+1)\\div (2x-3)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 몫: $x-1$, 나머지: $-x$\n⑵ 몫: $x^2-1$, 나머지: $6$\n⑶ 몫: $2x^2+3x+4$, 나머지: $13$",
+    "solution": "[풀이 전략] 다항식의 직접 나눗셈 또는 조립제법을 이용하여 몫 $Q$와 나머지 $R$을 구한다.\n\n[단계별 풀이]\n⑴ $(x^3-x-1) \\div (x^2+x+1)$:\n$x^3-x-1 = x(x^2+x+1) - (x^2+2x+1)$\n$= x(x^2+x+1) - 1(x^2+x+1) - x$\n$= (x-1)(x^2+x+1) - x$\n따라서 몫은 $x-1$, 나머지는 $-x$이다.\n\n⑵ $(x^3+2x^2-x+4) \\div (x+2)$:\n조립제법에서 계수 $1, 2, -1, 4$에 대해 $-2$로 나누면:\n$x^3+2x^2-x+4 = (x+2)(x^2-1) + 6$\n따라서 몫은 $x^2-1$, 나머지는 $6$이다.\n\n⑶ $(4x^3-x+1) \\div (2x-3)$:\n$4x^3-x+1 = 2x^2(2x-3) + 6x^2-x+1$\n$= 2x^2(2x-3) + 3x(2x-3) + 8x+1$\n$= 2x^2(2x-3) + 3x(2x-3) + 4(2x-3) + 13$\n$= (2x-3)(2x^2+3x+4) + 13$\n따라서 몫은 $2x^2+3x+4$, 나머지는 $13$이다.\n\n[결론] ⑴ 몫: $x-1$, 나머지: $-x$, ⑵ 몫: $x^2-1$, 나머지: $6$, ⑶ 몫: $2x^2+3x+4$, 나머지: $13$"
   },
   {
     "id": 7,
@@ -178,7 +178,7 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
+    "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음을 구하시오.\n⑴ $x+y-z=8$, $x^2+y^2+z^2=40$일 때, $xy-yz-zx$의 값\n⑵ $x+\\frac{1}{x}=-3$일 때, $x^3+\\frac{1}{x^3}$의 값\n⑶ $x=1-\\sqrt{2}$, $y=1+\\sqrt{2}$일 때, $x^3-y^3$의 값",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $12$\n⑵ $-18$\n⑶ $-10\\sqrt{2}$",
+    "solution": "[풀이 전략] 곱셈 공식의 변형을 이용하여 식의 값을 계산한다.\n\n[단계별 풀이]\n⑴ $(x+y-z)^2 = x^2+y^2+z^2+2(xy-yz-zx)$이다.\n$8^2 = 40 + 2(xy-yz-zx)$\n$64 = 40 + 2(xy-yz-zx)$\n$2(xy-yz-zx) = 24 \\implies xy-yz-zx = 12$\n\n⑵ $x^3+\\frac{1}{x^3} = (x+\\frac{1}{x})^3 - 3(x+\\frac{1}{x})$이다.\n$x+\\frac{1}{x} = -3$을 대입하면:\n$x^3+\\frac{1}{x^3} = (-3)^3 - 3(-3) = -27 + 9 = -18$\n\n⑶ $x=1-\\sqrt{2}$, $y=1+\\sqrt{2}$에서\n$x-y = (1-\\sqrt{2})-(1+\\sqrt{2}) = -2\\sqrt{2}$\n$xy = (1-\\sqrt{2})(1+\\sqrt{2}) = 1-2 = -1$\n$x^3-y^3 = (x-y)^3 + 3xy(x-y)$\n$= (-2\\sqrt{2})^3 + 3(-1)(-2\\sqrt{2})$\n$= -16\\sqrt{2} + 6\\sqrt{2} = -10\\sqrt{2}$\n\n[결론] ⑴ $12$, ⑵ $-18$, ⑶ $-10\\sqrt{2}$"
   },
   {
     "id": 8,
@@ -206,7 +206,7 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
+    "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "곱셈 공식을 이용하여 다음을 계산하시오.\n⑴ $99^3$\n⑵ $101\\times 9901$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $970299$\n⑵ $1000001$",
+    "solution": "[풀이 전략] 숫자를 $(100-1)$ 또는 $(100+1)$ 등으로 변형하여 곱셈 공식을 적용한다.\n\n[단계별 풀이]\n⑴ $99^3 = (100-1)^3$\n$= 100^3 - 3 \\times 100^2 \\times 1 + 3 \\times 100 \\times 1^2 - 1^3$\n$= 1000000 - 30000 + 300 - 1$\n$= 970000 + 299 = 970299$\n\n⑵ $101 \\times 9901 = (100+1)(10000 - 100 + 1)$\n$= (100+1)(100^2 - 100 \\times 1 + 1^2)$\n곱셈 공식 $(a+b)(a^2-ab+b^2) = a^3+b^3$에 의해:\n$= 100^3 + 1^3 = 1000000 + 1 = 1000001$\n\n[결론] ⑴ $970299$, ⑵ $1000001$"
   },
   {
     "id": 9,
@@ -234,7 +234,7 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
+    "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
     "questionType": "단답형",
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "한 개의 가격이 $x$원인 어떤 제품의 원가는 $200$원이고, 판매량은 $(-2x^2+1200x)$개라고 한다. 이 제품의 판매 이익의 전개식을 구하시오. (단, 판매 이익은 $\\{(\\text{가격})-(\\text{원가})\\}\\times (\\text{판매량})$으로 구할 수 있다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-2x^3+1600x^2-240000x$",
+    "solution": "[풀이 전략] 판매 이익 식 $\\{(\\text{가격})-(\\text{원가})\\} \\times (\\text{판매량})$에 다항식을 대입하여 전개한다.\n\n[단계별 풀이]\n가격이 $x$원이고 원가가 $200$원이므로 개당 이익은 $(x-200)$원이다.\n판매량이 $(-2x^2+1200x)$개이므로 총 판매 이익은:\n$(\\text{판매 이익}) = (x-200)(-2x^2+1200x)$\n$= x(-2x^2+1200x) - 200(-2x^2+1200x)$\n$= -2x^3 + 1200x^2 + 400x^2 - 240000x$\n$= -2x^3 + 1600x^2 - 240000x$\n\n[결론] $-2x^3+1600x^2-240000x$"
   },
   {
     "id": 10,
@@ -262,7 +262,7 @@ window.questionBank = [
     "category": "다항식",
     "originalCategory": "중단원 연습",
     "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C1-01",
+    "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
     "questionType": "서술형",
@@ -278,7 +278,7 @@ window.questionBank = [
     "wide": false,
     "content": "다항식 $A=x^3+3x^2+2x+k$가 다항식 $x^2+2$로 나누어떨어질 때, 다항식 $A$를 $x-1$로 나누었을 때의 몫 $Q$와 나머지 $R$을 각각 구하시오. (단, $k$는 상수이다.)\n\n[단계1] 상수 $k$의 값을 구하시오.\n[단계2] 몫 $Q$와 나머지 $R$을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "[단계1] $k=6$\n[단계2] 몫 $Q=x^2+4x+6$, 나머지 $R=12$",
+    "solution": "[풀이 전략] 다항식 나눗셈으로 나누어떨어질 조건에서 상수 $k$를 구하고, 이를 $x-1$로 나누어 몫과 나머지를 구한다.\n\n[단계별 풀이]\n[단계1] 다항식 $A=x^3+3x^2+2x+k$를 $x^2+2$로 직접 나눈다:\n$x^3+3x^2+2x+k = x(x^2+2) + 3(x^2+2) + (k-6)$\n$= (x+3)(x^2+2) + (k-6)$\n나누어떨어지므로 나머지 $k-6=0 \\implies k=6$\n\n[단계2] $A=x^3+3x^2+2x+6$을 $x-1$로 나눈다:\n조립제법으로 계수 $1, 3, 2, 6$에 대해 $1$로 계산하면:\n$1 \\mid 1 \\quad 3 \\quad 2 \\quad 6$\n$\\quad \\quad 1 \\quad 4 \\quad 6$\n--------------------\n$\\quad 1 \\quad 4 \\quad 6 \\mid 12$\n따라서 몫 $Q=x^2+4x+6$, 나머지 $R=12$이다.\n\n[결론] [단계1] $k=6$, [단계2] 몫 $Q=x^2+4x+6$, 나머지 $R=12$"
   }
 ];
