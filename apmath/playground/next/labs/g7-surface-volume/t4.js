@@ -38,6 +38,8 @@
       D.panel(pts, 'amber', 0.5, 'amber', 3.2);
     }
   }
+  // 가로(x·z) 절반 폭 rx, 세로 절반 높이 ry 인 상자의 꼭짓점 8개(세로로 긴 입체를 정육면체로 어림하면 폭이 부풀어 입체가 작아져요)
+  const bxc = (c, rx, ry) => [-1, 1].flatMap((j) => Array.from({ length: 16 }, (_, i) => add3(c, v3(rx * Math.cos((TAU * i) / 16), j * ry, rx * Math.sin((TAU * i) / 16)))));
   const axisLine = (D, y0, y1, x = 0) => D.line(v3(x, y0, 0), v3(x, y1, 0), 'muted', 2.2, { dash: [8, 6], alpha: 0.9 });
 
   /* ================================================================ sv4-1 직각삼각형 회전 */
@@ -52,7 +54,7 @@
       const sc = 4.6 / Math.max(M.h, M.r * 1.5), r = M.r * sc, h = M.h * sc, D = scene3(b, s, C), st = C.step;
       const th = C.problem ? 0.25 : C.t, y0 = -h / 2;
       const prof = [[0, y0], [r, y0], [0, y0 + h]], poly = prof;
-      D.fit(cube8(v3(0, y0 + h / 2, 0), Math.max(r, h / 2)), [], { l: 44, r: 44, t: 40, b: 40 });
+      D.fit(bxc(v3(0, y0 + h / 2, 0), r, h / 2), [], { l: 30, r: 30, t: 34, b: 34 });
       const lvB = !C.review ? 1 : st === 1 ? 2 : 1, lvL = !C.review ? 1 : st === 2 ? 2 : 1;
       axisLine(D, y0 - 0.5, y0 + h + 0.7);
       sweepDraw(D, prof, poly, th, { O: v3(0, 0, 0), faceStyle: (f) => (f.tag === 'seg0' && st === 2 && C.review && M.mode === 'surf' ? { fill: 'amber', alpha: 0.38 } : f.tag === 'seg1' && st === 3 && C.review ? { fill: 'amber', alpha: 0.3 } : {}) });
@@ -130,7 +132,7 @@
       if (M.axis === 'leg') {
         const sc = 4.4 / Math.max(M.h2, 2 * M.r2), r1 = M.r1 * sc, r2 = M.r2 * sc, h = M.h * sc, h2 = M.h2 * sc, h1 = M.h1 * sc, y0 = -h2 / 2;
         const prof = [[0, y0], [r2, y0], [r1, y0 + h], [0, y0 + h]], poly = prof;
-        D.fit(cube8(v3(0, 0, 0), Math.max(r2, h2 / 2)), [], { l: 50, r: 50, t: 40, b: 40 });
+        D.fit(bxc(v3(0, 0, 0), r2, h2 / 2), [], { l: 34, r: 34, t: 34, b: 34 });
         axisLine(D, y0 - 0.5, y0 + h + 1.4);
         // 큰 뿔 − 작은 뿔 윤곽(보조선)
         D.line(v3(r2 * Math.cos(A0), y0, r2 * Math.sin(A0)), v3(0, y0 + h2, 0), 'muted', 1.8, { dash: [5, 4], alpha: 0.55 });
@@ -143,12 +145,12 @@
         D.elabel(o, pd, `${M.h}`, { side: { x: -1, y: 0 }, size: 15, color: 'amber', gap: 8 });
         D.elabel(pb2, pc, `${5 * M.k}`, { side: { x: 1, y: 0 }, size: 15, gap: 8 });
         D.label(o, '축', { dir: { x: -1, y: 0.4 }, size: 13, color: 'muted', gap: 4 });
-        if (!C.problem && th > 0.99) D.tag(v3(0, y0 + h * 0.5, 0), '원뿔대', { size: 15, color: 'green', dy: 8 });
+        if (!C.problem && th > 0.99) D.tag(v3(0, y0 + h * 0.5, 0), '원뿔대', { size: 15, color: 'green', dy: 8, dx: 30 });
       } else {
         // 아랫변(긴 변)을 축으로: 반지름 hh 인 원기둥(길이 a) + 원뿔(높이 p)
         const sc = 4.6 / Math.max(M.b, 2 * M.hh), hh = M.hh * sc, a = M.a * sc, bb = M.b * sc, y0 = -bb / 2;
         const prof = [[0, y0], [hh, y0], [hh, y0 + a], [0, y0 + bb]], poly = prof;
-        D.fit(cube8(v3(0, 0, 0), Math.max(hh, bb / 2)), [], { l: 50, r: 50, t: 40, b: 40 });
+        D.fit(bxc(v3(0, 0, 0), hh, bb / 2), [], { l: 34, r: 34, t: 34, b: 34 });
         axisLine(D, y0 - 0.5, y0 + bb + 0.5);
         sweepDraw(D, prof, poly, th, { faceStyle: (f) => (C.review && st === 1 && M.mode === 'surf' && f.tag === 'seg0' ? { fill: 'amber', alpha: 0.4 } : C.review && st === 2 && f.tag === 'seg1' ? { fill: 'amber', alpha: 0.34 } : C.review && st === 3 && f.tag === 'seg2' ? { fill: 'amber', alpha: 0.34 } : {}) });
         const pa = (rr, yy) => v3(rr * Math.cos(A0), yy, rr * Math.sin(A0)), o = pa(0, y0), pd = pa(hh, y0), pc = pa(hh, y0 + a), pbb = pa(0, y0 + bb);
@@ -248,13 +250,13 @@
       const Tl = G.rotAbout(v3(0, (yy0 + yy0 + h1) / 2, 0), v3(0, 0, 1), PI * flip), lp = (p) => G.applyT(Tl, p);
       const lowM = xfMesh(low, Tl), upM = xfMesh(upm, shiftT(D.hx(sep)));
       // 지금 프레임의 입체만으로 맞춰요: 아래 원뿔(제자리에서 뒤집힘)과 위 원뿔(오른쪽으로 옮겨 가는 만큼). 처음엔 이중원뿔이 크게, 분해되면서 서서히 물러나요
-      const bx4 = (cx, y0, y1) => [-1, 1].flatMap((i) => [y0, y1].flatMap((yv) => [-1, 1].map((k2) => add3(v3(i * r, yv, k2 * r), cx))));
-      D.fit(bx4(v3(0, 0, 0), yy0, yMid).concat(bx4(D.hx(sep), yMid, yMid + h2)), [], { l: 40, r: 40, t: 36, b: 40 });
+      const bx4 = (cx, y0, y1) => bxc(add3(cx, v3(0, (y0 + y1) / 2, 0)), r, (y1 - y0) / 2);
+      D.fit(bx4(v3(0, 0, 0), yy0, yMid).concat(bx4(D.hx(sep), yMid, yMid + h2)), [], { l: 30, r: 30, t: 34, b: 36 });
       const poly = [[0, yy0], [r, yMid], [0, yMid + h2]];
       if (sep < 0.01 && flip < 0.01) axisLine(D, yy0 - 0.5, yMid + h2 + 0.6);
       const faceS = (hot) => (f) => (f.tag === 'disc' ? { fill: 'red', alpha: sep > 0.2 ? 0.5 : 0.001 } : C.review && hot && f.tag === 'side' ? { fill: 'amber', alpha: 0.36 } : {});
       if (rotT < 0.995) sweepDraw(D, [[0, yy0], [r, yMid], [0, yMid + h2]], poly, rotT, {});
-      else { D.body({ mesh: lowM, fill: 'sky', alpha: 0.26, edge: 'ink', edgeW: 2.6, faceStyle: faceS(C.review && st === 2) }); D.body({ mesh: upM, fill: 'violet', alpha: 0.26, edge: 'ink', edgeW: 2.6, faceStyle: faceS(C.review && st === 2) }); }
+      else { const jn = (e) => (sep < 1e-4 && flip < 1e-4 ? v3(0, 0, 0) : null); D.body({ mesh: lowM, fill: 'sky', alpha: 0.26, edge: 'ink', edgeW: 2.6, faceStyle: faceS(C.review && st === 2), dashBack: jn }); D.body({ mesh: upM, fill: 'violet', alpha: 0.26, edge: 'ink', edgeW: 2.6, faceStyle: faceS(C.review && st === 2), dashBack: jn }); }
       const pa = (rr, yy, off) => add3(v3(rr * Math.cos(A0), yy, rr * Math.sin(A0)), off || v3(0, 0, 0));
       if (rotT >= 0.995) {
         const ou = D.hx(sep);
@@ -343,18 +345,20 @@
       // 반구는 제자리에서 뒤집어 밑면이 아래로, 원기둥과 원뿔은 오른쪽으로만 옮겨요
       const Th = G.rotAbout(v3(0, yB + r / 2, 0), v3(0, 0, 1), PI * flipE), lp = (p) => G.applyT(Th, p);
       const parts = [{ m: xfMesh(hemi, Th), col: 'sky', k: 'h' }, { m: xfMesh(cyl, shiftT(D.hx(dx))), col: 'green', k: 'c' }, { m: xfMesh(cone, shiftT(D.hx(2 * dx))), col: 'violet', k: 'k' }];
-      D.fit([].concat(cube8(v3(0, yB + r / 2, 0), r), cube8(add3(D.hx(dx), v3(0, (yH + yC) / 2, 0)), Math.max(r, H / 2)), cube8(add3(D.hx(2 * dx), v3(0, yC + hc / 2, 0)), Math.max(r, hc / 2))), [], { l: 44, r: 44, t: 40, b: 40 });
+      const ringAt = (c, y, rr) => Array.from({ length: 16 }, (_, i) => add3(c, v3(rr * Math.cos((TAU * i) / 16), y, rr * Math.sin((TAU * i) / 16))));
+      // 윤곽을 정확히: 반구(제자리에서 뒤집힘)는 지름 원 둘레, 원기둥은 위·아래 원, 원뿔은 밑원과 꼭짓점
+      D.fit([].concat(ringAt(v3(0, 0, 0), yH, r), ringAt(v3(0, 0, 0), yB + r / 2, r * 0.9), [v3(0, yB, 0), v3(0, yH + r * 0.5, 0)], ringAt(D.hx(dx), yH, r), ringAt(D.hx(dx), yC, r), ringAt(D.hx(2 * dx), yC, r), [add3(D.hx(2 * dx), v3(0, yC + hc, 0))]), [], { l: 22, r: 22, t: 24, b: 24 });
       const lvK = !C.review ? 1 : st === 1 ? 2 : 1, lvC = !C.review ? 1 : st === 2 ? 2 : 1, lvH = !C.review ? 1 : st === 3 ? 2 : 1;
       const lv = { k: lvK, c: lvC, h: lvH };
-      parts.forEach((p) => D.body({ mesh: p.m, fill: lv[p.k] === 2 ? 'amber' : p.col, alpha: lv[p.k] === 2 ? 0.38 : 0.26, edge: 'ink', edgeW: 2.6, faceStyle: (f) => (f.tag === 'flat' && dx > r * 0.5 ? { fill: 'red', alpha: 0.4 } : f.tag === 'flat' ? { fill: p.col, alpha: 0.12 } : {}) }));
+      parts.forEach((p) => D.body({ mesh: p.m, fill: lv[p.k] === 2 ? 'amber' : p.col, alpha: lv[p.k] === 2 ? 0.38 : 0.26, edge: 'ink', edgeW: 2.6, dashBack: () => (dx < 1e-4 ? v3(0, 0, 0) : null), faceStyle: (f) => (f.tag === 'flat' && dx > r * 0.5 ? { fill: 'red', alpha: 0.4 } : f.tag === 'flat' ? { fill: p.col, alpha: 0.12 } : {}) }));
       const pa = (rr, yy, off) => add3(v3(rr * Math.cos(A0), yy, rr * Math.sin(A0)), D.hx(off));
       D.elabel(pa(r, yC, 2 * dx), pa(0, yC + hc, 2 * dx), `${M.R}`, { side: { x: 1, y: 0 }, size: 15, gap: 8 });
       D.elabel(pa(0, yC, 2 * dx), pa(0, yC + hc, 2 * dx), `${M.hc}`, { side: { x: -1, y: 0 }, size: 14, color: 'muted', gap: 8 });
       D.elabel(pa(r, yH, dx), pa(r, yC, dx), `${M.H}`, { side: { x: 1, y: 0 }, size: 15, color: 'amber', gap: 8 });
       D.line(lp(pa(0, yH, 0)), lp(pa(r, yH, 0)), 'ink', 2.4); D.dot(lp(pa(0, yH, 0)), 'ink', 3.5);
-      D.tag(lp(pa(r / 2, yH, 0)), `r=${M.r}`, { dy: flipE > 0.5 ? -12 : 14, size: 14, color: 'amber' });
+      D.tag(lp(pa(r, yH, 0)), `r=${M.r}`, { dx: D.P(lp(pa(r, yH, 0))).x >= D.P(lp(pa(0, yH, 0))).x ? 24 : -24, size: 14, color: 'amber' }); // 반지름 선 끝 바깥에 (점선·실선 위에 얹히지 않게)
       if (!C.problem && dx > r * 0.5) {
-        D.tag(lp(pa(0, yB + r * 0.5, 0)), `2πr²=${plainVal(M.hemi)}`, { size: 14, dy: flipE > 0.5 ? 28 : 22 });
+        if (flipE > 0.5) D.tag(lp(pa(0, yH, 0)), `2πr²=${plainVal(M.hemi)}`, { size: 14, dy: r * b.k * Math.abs(D.cam.sp) + 20 }); else D.tag(lp(pa(0, yB + r * 0.5, 0)), `2πr²=${plainVal(M.hemi)}`, { size: 14, dy: 22 }); // 뒤집힌 반구는 밑면 아래 바깥에
         D.tag(pa(0, (yH + yC) / 2, dx), `2πrH=${plainVal(M.cylLat)}`, { size: 14 });
         D.tag(pa(0, yC + hc * 0.12, 2 * dx), `πRr=${plainVal(M.coneLat)}`, { size: 13, dy: 12 });
       }
