@@ -32,7 +32,7 @@
     return {
       lines, panels: [], rights: [{ O: Pm, a: v3(1, 0, 0), c: dm, color: COL.m }, { O: Pn, a: v3(1, 0, 0), c: dn, color: COL.n }],
       pars: rel === 'parallel' ? [[lines[1].p, lines[1].q], [lines[2].p, lines[2].q]] : [],
-      fit: [], conc: 'm∥n', relText: `m과 n: ${REL[rel]}`, rel, given: true, holds: rel === 'parallel' || rel === 'same'
+      fit: [], box: [3.1, 2.5, 2.5], conc: 'm∥n', relText: `m과 n: ${REL[rel]}`, rel, given: true, holds: rel === 'parallel' || rel === 'same'
     };
   }
   function geoP2(a, b) { // 평면 P 는 뒤의 벽. l, m 은 P 와 나란한 직선. m 은 제자리에서 돌고 앞뒤로 옮겨요.
@@ -198,6 +198,45 @@
   function abAt(st, t) { return { a: st.init.a + (st.cex.a - st.init.a) * t, b: st.init.b + (st.cex.b - st.init.b) * t }; }
   function setAB(st, s, v) { s[st.keys[0]] = v.a; if (st.keys[1]) s[st.keys[1]] = v.b; }
 
+  // 옅은 직육면체 틀(반 변 hx, hy, hz). 보이는 모서리는 실선, 가려진 모서리는 점선.
+  function refBox(D, h) {
+    const ax = [v3(1, 0, 0), v3(0, 1, 0), v3(0, 0, 1)], hv = (a, k) => mul3(ax[a], h[a] * k);
+    for (let a = 0; a < 3; a++) {
+      const b1 = (a + 1) % 3, c1 = (a + 2) % 3;
+      [-1, 1].forEach((s1) => [-1, 1].forEach((s2) => {
+        const o = add3(hv(b1, s1), hv(c1, s2)), vis = D.facing(mul3(ax[b1], s1)) || D.facing(mul3(ax[c1], s2));
+        D.line(add3(o, hv(a, -1)), add3(o, hv(a, 1)), 'ink', 1.5, { alpha: vis ? 0.3 : 0.18, dash: vis ? undefined : [4, 5] });
+      }));
+    }
+  }
+  // 직선 그리기: 화면에서 엇갈리는 두 직선 중 뒤쪽 선은 교차점에서 끊어 그립니다(앞뒤가 보이고 「만나는 것처럼」 보이지 않아요).
+  // 실제로 만나는 두 직선(교차점의 깊이가 같음)은 끊지 않고 이어서 그립니다.
+  function weave(D, lines) {
+    const kk = D.b.k || 60;
+    const solid = (ln) => !ln.dash && (ln.width || 4.6) >= 3 && (ln.alpha == null || ln.alpha >= 0.8);
+    lines.forEach((ln, i) => {
+      const cuts = [];
+      if (solid(ln)) {
+        const a = D.P(ln.p), c = D.P(ln.q), len = Math.hypot(c.x - a.x, c.y - a.y) || 1;
+        lines.forEach((f, j) => {
+          if (j === i || !solid(f)) return;
+          const p = D.P(f.p), q = D.P(f.q), r = { x: c.x - a.x, y: c.y - a.y }, s2 = { x: q.x - p.x, y: q.y - p.y }, den = r.x * s2.y - r.y * s2.x;
+          if (Math.abs(den) < 1e-9) return;
+          const tt = ((p.x - a.x) * s2.y - (p.y - a.y) * s2.x) / den, uu = ((p.x - a.x) * r.y - (p.y - a.y) * r.x) / den;
+          if (tt <= 0.02 || tt >= 0.98 || uu <= 0 || uu >= 1) return;
+          const dA = D.depth(lerp3(ln.p, ln.q, tt)), dB = D.depth(lerp3(f.p, f.q, uu));
+          if (dA - dB > 0.12) cuts.push({ t: tt, d: (6 + (f.width || 4.6) * 0.5) / kk / len });
+        });
+      }
+      if (!cuts.length) { D.line(ln.p, ln.q, ln.color, ln.width, { dash: ln.dash, alpha: ln.alpha }); return; }
+      cuts.sort((x, y) => x.t - y.t);
+      let from = 0;
+      const piece = (t0, t1) => { if (t1 - t0 > 0.012) D.line(lerp3(ln.p, ln.q, t0), lerp3(ln.p, ln.q, t1), ln.color, ln.width, { alpha: ln.alpha }); };
+      cuts.forEach((cu) => { piece(from, cu.t - cu.d); from = cu.t + cu.d; });
+      piece(from, 1);
+    });
+  }
+
   /* geo 를 그림으로. opts.caption(true) 면 맨 위에 판정 한 줄. */
   function render(D, st, v, C, opts = {}) {
     const { b } = D;
@@ -205,9 +244,12 @@
     const fp = [];
     geo.panels.forEach((pn) => fp.push(...pn.pts));
     geo.lines.forEach((ln) => { fp.push(ln.p, ln.q); });
+    if (geo.box) { const h = geo.box; [-1, 1].forEach((x) => [-1, 1].forEach((y) => [-1, 1].forEach((z) => fp.push(v3(x * h[0], y * h[1], z * h[2]))))); }
     D.fitPts(fp, { t: C.problem ? 46 : 62, b: 56, l: 44, r: 44 });
     geo.panels.slice().sort((p, q) => D.depth(mid3(p.pts[0], p.pts[2])) - D.depth(mid3(q.pts[0], q.pts[2])) > 0 ? -1 : 1).forEach((pn) => D.panel(pn.pts, pn.color, pn.fa, pn.color, 2.2));
-    geo.lines.forEach((ln) => D.line(ln.p, ln.q, ln.color, ln.width, { dash: ln.dash, alpha: ln.alpha }));
+    // 공간 안의 기준 상자(옅은 틀): 직선만 떠 있으면 한 평면 위의 그림처럼 보이므로 3차원 공간임을 보입니다
+    if (geo.box) refBox(D, geo.box);
+    weave(D, geo.lines);
     geo.rights.forEach((r) => D.right(r.O, r.a, r.c, r.size || 0.4, r.color));
     (geo.arcs || []).forEach((r) => D.arc(r.O, r.a, r.c, r.r, r.color, 1));
     geo.pars.forEach(([p, q]) => D.par(p, q, 1, 'sky', 0.35));

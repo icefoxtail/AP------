@@ -49,10 +49,46 @@
     const bl = kOf(below) > kOf(right) * 1.02;
     return Object.assign(bl ? below : right, { below: bl });
   }
+  // 휴대폰: 입체(cb1: 배율 1일 때의 화면 상자)를 전개도(A) 곁에 놓습니다.
+  // 입체가 화면 폭의 절반 가까이 보이도록 배율 ms 를 고르고(전개도는 폭의 40% 이상 유지), 위·아래로 쌓을지 옆에 놓을지도 함께 고릅니다.
+  // 이유: 전개도와 입체는 비율을 재는 그림이 아니라 모양을 보는 그림이라, 입체만 키워도 학생에게 손해가 없고 겨냥도는 항상 알아볼 수 있어야 합니다.
+  // PC·미리보기는 ms=1 과 arrange 그대로. 반환: { ms, off:{dx,dy,below} } (off 는 전개도 상자 A 를 기준으로 한 입체의 이동량)
+  function layoutSolid(b, A, cb1, gapU, pad, o = {}) {
+    if (b.thumb) return { ms: 1, off: arrange(b, A, cb1, gapU) };
+    const phone = b.W < 560; // PC 는 화면이 넓어 기준을 낮추되(입체 폭 28%·전개도 30% 이상) 같은 방식으로 고릅니다
+    const sc = (q, m) => ({ x0: q.x0 * m, x1: q.x1 * m, y0: q.y0 * m, y1: q.y1 * m });
+    const sides = o.sides || ['below', 'right'], gapPx = o.gapPx == null ? 18 : o.gapPx, solidMin = o.solidMin || (phone ? 0.45 : 0.28), netMin = o.netMin || (phone ? 0.5 : 0.3);
+    let best = null;
+    for (let ms = 1; ms <= (o.maxMs || (phone ? 3.6 : 2.4)) + 1e-9; ms += 0.1) {
+      const B = sc(cb1, ms);
+      for (const side of sides) {
+        let off = null, k = 0;
+        for (let pass = 0; pass < 2; pass++) {
+          const g = pass ? gapPx / Math.max(3, k) : 0;
+          off = side === 'below' ? { dx: (A.x0 + A.x1) / 2 - (B.x0 + B.x1) / 2, dy: A.y0 - g - B.y1 }
+            : side === 'above' ? { dx: (A.x0 + A.x1) / 2 - (B.x0 + B.x1) / 2, dy: A.y1 + g - B.y0 }
+            : { dx: A.x1 + g - B.x0, dy: (A.y0 + A.y1) / 2 - (B.y0 + B.y1) / 2 };
+          k = G.fitK(b, unionB(A, shiftB(B, off.dx, off.dy)), pad);
+        }
+        const fs = (B.x1 - B.x0) * k / b.W, fn = (A.x1 - A.x0) * k / b.W;
+        const score = Math.min(fs / solidMin, fn / netMin, 1) + 0.03 * fs + 0.01 * fn;
+        if (!best || score > best.score) best = { ms, off: Object.assign(off, { below: side === 'below' }), score };
+      }
+    }
+    return best;
+  }
   function sectorBox(R, x, r, withCircle) { const bb = bboxOf(sectorPts({ x: 0, y: 0 }, R, -90 - x / 2, -90 + x / 2)); if (withCircle) { bb.y0 = Math.min(bb.y0, -(R + 2 * r)); bb.x0 = Math.min(bb.x0, -r); bb.x1 = Math.max(bb.x1, r); } return bb; }
   // 부채꼴 전개도: 꼭짓점 O 가 위, 부채꼴이 아래로 열려 있고(중심각 x), 호 아래에 밑면(원)이 붙습니다.
   function netGeom(R, r, x) { const O = { x: 0, y: 0 }, a0 = -90 - x / 2, a1 = -90 + x / 2, Cc = { x: 0, y: -(R + r) }; return { O, R, r, x, a0, a1, Cc, box: { x0: Math.min(-R * Math.sin(rad(Math.min(x / 2, 90))), -r), x1: Math.max(R * Math.sin(rad(Math.min(x / 2, 90))), r), y0: -(R + 2 * r), y1: x > 180 ? R * Math.cos(rad(180 - x / 2)) * 0 + 0 : 0 } }; }
   const px = (b, n) => n / b.k;
+  // 부채꼴의 한 변(꼭짓점 O=(0,0)에서 e까지) 곁에 변과 겹치지 않게 바깥쪽으로 비켜 놓는 이름표
+  function edgeT(b, e, str, color, size) {
+    const L = Math.hypot(e.x, e.y) || 1, fs = G.FS(b, size);
+    let nx = e.y / L, ny = -e.x / L;
+    if (nx < -1e-6 || (Math.abs(nx) < 1e-6 && ny < 0)) { nx = -nx; ny = -ny; }
+    const d = 8 + G.textW(str, fs) / 2 * Math.abs(nx) + fs / 2 * Math.abs(ny) + 3;
+    T(b, { x: e.x / 2, y: e.y / 2 }, str, color, { dx: nx * d, dy: -ny * d, size });
+  }
   // 중심각 표시(작은 부채꼴 + 값). 90° 는 직각 표시.
   function angMark(b, C, G0, o = {}) {
     const { O, x, a0, a1 } = G0, rr = Math.min(G0.R * 0.32, px(b, 38));
@@ -99,14 +135,18 @@
         b.seg(Cb, pt(Cb, r, 30), { color: SKY, width: 2.6 }); T(b, Cb, `r = ${r} cm`, SKY, { dy: 16, size: 16 });
         return;
       }
-      const { r, h, t, sol } = M, w = 2 * PI * r, cp = Math.cos(22 * DEG), sp = Math.sin(22 * DEG);
+      const { r, h, t, sol } = M, w = 2 * PI * r, cp = Math.cos(G.PITCH0 * DEG), sp = Math.sin(G.PITCH0 * DEG);
       // 오른쪽(또는 아래)에 펼친 옆면의 자리: 입체의 밑면 높이에 맞춰 놓습니다.
-      const ms = G.solidScale(b);
-      const cb = { x0: -r * ms, x1: r * ms, y0: -r * sp * ms, y1: (h * cp + r * sp) * ms };
+      // 휴대폰은 입체를 위에, 펼친 옆면(직사각형)을 아래에 쌓고 입체를 폭의 절반 가까이로 키웁니다(layoutSolid).
+      const cb1 = { x0: -r, x1: r, y0: -r * sp, y1: h * cp + r * sp };
       const rb = { x0: 0, x1: w, y0: 0, y1: h };
-      const off = arrange(b, cb, rb, Math.max(r, h) * 0.5);
+      const phone = b.W < 560 && !b.thumb;
+      const padS = { l: 30, r: 30, t: 40, b: 46 };
+      const lay = phone ? layoutSolid(b, rb, cb1, 0, padS, { sides: ['above'], gapPx: 50, netMin: 0.42, solidMin: 0.5 }) : null;
+      const ms = lay ? lay.ms : 1, cb = { x0: cb1.x0 * ms, x1: cb1.x1 * ms, y0: cb1.y0 * ms, y1: cb1.y1 * ms };
+      const off = lay ? { dx: -lay.off.dx, dy: -lay.off.dy } : arrange(b, cb, rb, Math.max(r, h) * 0.5);
       const rx = off.dx, ry = off.dy; // 직사각형 왼쪽 아래 모서리의 위치
-      fit(b, unionB(cb, shiftB(rb, rx, ry)), { l: 30, r: 30, t: 40, b: 30 });
+      fit(b, unionB(cb, shiftB(rb, rx, ry)), padS);
       const D = S3.ctx(b, s, { k: ms });
       S3.drawSolid(D, sol, {});
       const a = 2 * PI * t, n = Math.max(2, Math.ceil(a / (5 * DEG)));
@@ -122,13 +162,19 @@
       b.poly([{ x: X0, y: Y0 }, { x: X0 + w * t, y: Y0 }, { x: X0 + w * t, y: Y0 + h }, { x: X0, y: Y0 + h }], { fill: AMB, fillAlpha: 0.32, color: AMB, width: 3 });
       if (C.txt) {
         T(b, { x: X0 + w / 2, y: Y0 + h }, `가로 = 밑면의 둘레 = 2π × ${r} = ${2 * r}π cm`, AMB, { dy: -17, size: 16 });
-        T(b, { x: X0 + w, y: Y0 + h / 2 }, `세로 h = ${h} cm`, AMB, { dx: -62, size: 16 });
+        const rwPx = w * b.k; // 직사각형이 좁으면 세로 길이 글자를 오른쪽 바깥에 둡니다
+        if (rwPx < 150) T(b, { x: X0 + w, y: Y0 + h / 2 }, `세로 h = ${h} cm`, AMB, { dx: 8, align: 'left', size: 16 });
+        else T(b, { x: X0 + w, y: Y0 + h / 2 }, `세로 h = ${h} cm`, AMB, { dx: -62, size: 16 });
         const c0 = D.P({ x: 0, y: 0, z: 0 }), rimP = D.P(D.pol(r, 0, 0));
         b.seg(c0, rimP, { color: SKY, width: 2.6 });
-        T(b, { x: (c0.x + rimP.x) / 2, y: (c0.y + rimP.y) / 2 }, `r = ${r}`, SKY, { dy: 16, size: 16 });
+        S3.rLabel(b, D, r, `r = ${r}`, SKY, 16);
         const hm = D.P({ x: r, y: h / 2, z: 0 });
         T(b, hm, `h = ${h}`, AMB, { dx: 36, size: 15 });
-        if (C.review && C.step >= 3) T(b, { x: X0 + w / 2, y: Y0 + h / 2 }, `옆넓이 = ${2 * r}π × ${h} = ${2 * r * h}π cm²`, GRN, { size: 17 });
+        if (C.review && C.step >= 3) {
+          const full = `옆넓이 = ${2 * r}π × ${h} = ${2 * r * h}π cm²`, short = `옆넓이 = ${2 * r * h}π cm²`, wide = w * b.k - 12 >= G.textW(full, G.FS(b, 17));
+          if (wide) T(b, { x: X0 + w / 2, y: Y0 + h / 2 }, full, GRN, { size: 17 });
+          else T(b, { x: X0 + w / 2, y: Y0 }, short, GRN, { size: 16, dy: 20 }); // 좁으면 짧은 식을 직사각형 아래에
+        }
       }
     },
     steps: (M) => [
@@ -160,21 +206,26 @@
   // 원뿔 위의 점은 입체를 바로 세워 그립니다. 밑면의 중심이 (ox, oy).
   function coneDraw3D(b, s, r, R, ox, oy, o = {}) {
     const h = Math.sqrt(Math.max(0.01, R * R - r * r));
-    const D = S3.ctx(b, s, { k: G.solidScale(b), ox, oy }), sol = S3.solid('cone', { R: r, h1: h });
+    const D = S3.ctx(b, s, { k: o.ms || 1, ox, oy }), sol = S3.solid('cone', { R: r, h1: h });
     S3.drawSolid(D, sol, {});
     if (o.prog != null) { D.g.path(S3.ringP(D, r, 0, 0, 2 * PI * o.prog, 72), { color: AMB, width: 7 }); }
     return { D, h, sol };
   }
-  const coneBox = (s, r, R, ms = 1) => { const h = Math.sqrt(Math.max(0.01, R * R - r * r)), cp = Math.cos(22 * DEG), sp = Math.sin(22 * DEG); return { x0: -r * ms, x1: r * ms, y0: -r * sp * ms, y1: h * cp * ms }; };
+  const coneBox = (s, r, R, ms = 1) => { const h = Math.sqrt(Math.max(0.01, R * R - r * r)), cp = Math.cos(G.PITCH0 * DEG), sp = Math.sin(G.PITCH0 * DEG); return { x0: -r * ms, x1: r * ms, y0: -r * sp * ms, y1: h * cp * ms }; };
   const xOf = (r, R) => 360 * r / R;
   function netScene(b, s, C, r, R, o = {}) {
-    const x = xOf(r, R), G0 = netGeom(R, r, x), A = sectorBox(R, x, r, true);
-    let all = A, off = null;
-    const cb = coneBox(s, r, R, G.solidScale(b));
-    if (!o.noCone) { off = arrange(b, A, cb, Math.max(r, R) * 0.45); all = unionB(A, shiftB(cb, off.dx, off.dy)); }
-    if (o.extraBottom) all = unionB(all, { x0: all.x0, x1: all.x1, y0: all.y0 - o.extraBottom, y1: all.y1 });
-    fit(b, all, { l: 34, r: 34, t: 46, b: o.extraBottom ? 30 + o.extraBottom : 30 });
-    return { G0, off, A, x, all };
+    const x = xOf(r, R), G0 = netGeom(R, r, x), A = sectorBox(R, x, r, true), phone = b.W < 560 && !b.thumb;
+    // 휴대폰: 막대(둘레 비교)가 칩 위에 오도록 아래 여백을 픽셀로 잡습니다. 그 위쪽에서 입체·전개도를 한 화면에 키웁니다.
+    const padS = { l: 34, r: 34, t: 46, b: o.extraBottom ? (phone ? 104 : 30 + o.extraBottom) : 30 };
+    let all = A, off = null, ms = 1;
+    if (!o.noCone) {
+      const lay = layoutSolid(b, A, coneBox(s, r, R, 1), Math.max(r, R) * 0.45, padS);
+      ms = lay.ms; off = lay.off;
+      all = unionB(A, shiftB(coneBox(s, r, R, ms), off.dx, off.dy));
+    }
+    if (o.extraBottom && !phone) all = unionB(all, { x0: all.x0, x1: all.x1, y0: all.y0 - o.extraBottom, y1: all.y1 });
+    fit(b, all, padS);
+    return { G0, off, A, x, all, ms };
   }
 
   /* ================================================================== s3-2 원뿔 펼치기 */
@@ -197,7 +248,7 @@
         b.path(sectorPts(G0.O, R, G0.a0, G0.a1), { close: true, fill: SKY, fillAlpha: 0.2, color: SKY, width: 3 });
         b.circle(G0.Cc, r, { fill: SKY, fillAlpha: 0.2, color: SKY, width: 3 });
         const edge = pt(G0.O, R, G0.a1);
-        T(b, { x: edge.x / 2, y: edge.y / 2 }, `R = ${R} cm`, AMB, { dx: 40, dy: 4, size: 17 });
+        edgeT(b, edge, `R = ${R} cm`, AMB, 17);
         b.seg(G0.Cc, pt(G0.Cc, r, 0), { color: SKY, width: 2.6 });
         T(b, pt(G0.Cc, r / 2, 0), `r = ${r} cm`, SKY, { dy: 16, size: 16 });
         if (M.qv === 'x') {
@@ -209,11 +260,11 @@
       }
       const { r, R, t } = M, K = netScene(b, s, C, r, R, { extraBottom: 2.6 });
       drawNet(b, C, K.G0, { prog: t });
-      if (K.off) { const cd = coneDraw3D(b, s, r, R, K.off.dx, K.off.dy, { prog: t }); const D = cd.D; D.line({ x: 0, y: cd.h, z: 0 }, { x: r, y: 0, z: 0 }, AMB, 3.4); if (C.txt) { const m = D.P({ x: r / 2, y: cd.h / 2, z: 0 }); T(b, m, `R = ${R}`, AMB, { dx: 36, size: 16 }); T(b, D.P({ x: r / 2, y: 0, z: 0 }), `r = ${r}`, SKY, { dy: 18, size: 16 }); } }
+      if (K.off) { const cd = coneDraw3D(b, s, r, R, K.off.dx, K.off.dy, { prog: t, ms: K.ms }); const D = cd.D; D.line({ x: 0, y: cd.h, z: 0 }, { x: r, y: 0, z: 0 }, AMB, 3.4); if (C.txt) { const m = D.P({ x: r / 2, y: cd.h / 2, z: 0 }); T(b, m, `R = ${R}`, AMB, { dx: 36, size: 16 }); S3.rLabel(b, D, r, `r = ${r}`, SKY, 16); } }
       if (C.txt) {
         const arcL = 2 * PI * r, G0 = K.G0;
         const e = pt(G0.O, R, G0.a1);
-        T(b, { x: e.x / 2, y: e.y / 2 }, `R = ${R} cm`, AMB, { dx: 40, dy: 6, size: 16 });
+        edgeT(b, e, `R = ${R} cm`, AMB, 16);
         b.seg(G0.Cc, pt(G0.Cc, r, 0), { color: SKY, width: 2.6 });
         T(b, pt(G0.Cc, r / 2, 0), `r = ${r}`, SKY, { dy: 16, size: 16 });
         // 같이 자라는 두 막대(가로): 호의 길이 · 밑면의 둘레
@@ -283,9 +334,9 @@
         T(b, { x: e.x / 2, y: e.y / 2 }, 'R = ?', AMB, { dx: 36, dy: 4, size: 17 });
         return;
       }
-      if (prob) { T(b, { x: e.x / 2, y: e.y / 2 }, `R = ${R} cm`, AMB, { dx: 40, dy: 4, size: 17 }); T(b, pt(G0.Cc, r / 2, 0), `r = ${r} cm`, SKY, { dy: 16, size: 16 }); b.arc(G0.O, Math.min(R * 0.3, px(b, 36)), rad(G0.a0), rad(G0.a1), { sector: true, fill: AMB, fillAlpha: 0.28, color: AMB, width: 2.4 }); T(b, G0.O, 'x = ?', AMB, { dy: 40, size: 17 }); return; }
+      if (prob) { edgeT(b, e, `R = ${R} cm`, AMB, 17); T(b, pt(G0.Cc, r / 2, 0), `r = ${r} cm`, SKY, { dy: 16, size: 16 }); b.arc(G0.O, Math.min(R * 0.3, px(b, 36)), rad(G0.a0), rad(G0.a1), { sector: true, fill: AMB, fillAlpha: 0.28, color: AMB, width: 2.4 }); T(b, G0.O, 'x = ?', AMB, { dy: 40, size: 17 }); return; }
       angMark(b, C, G0);
-      T(b, { x: e.x / 2, y: e.y / 2 }, `R = ${R} cm`, AMB, { dx: 40, dy: 4, size: 17 });
+      edgeT(b, e, `R = ${R} cm`, AMB, 17);
       T(b, pt(G0.Cc, r / 2, 0), `r = ${r} cm`, SKY, { dy: 16, size: 16 });
       if (C.txt) {
         T(b, G0.Cc, `r : R = 1 : ${k}`, 'ink', { dy: -6, size: 16 });
@@ -339,7 +390,7 @@
         b.path(sectorPts(G0.O, R, G0.a0, G0.a1), { close: true, fill: SKY, fillAlpha: 0.2, color: SKY, width: 3 });
         b.circle(G0.Cc, r, { fill: SKY, fillAlpha: 0.2, color: SKY, width: 3 });
         const e = pt(G0.O, R, G0.a1);
-        T(b, { x: e.x / 2, y: e.y / 2 }, `R = ${R} cm`, AMB, { dx: 40, dy: 4, size: 17 });
+        edgeT(b, e, `R = ${R} cm`, AMB, 17);
         b.seg(G0.Cc, pt(G0.Cc, r, 0), { color: SKY, width: 2.6 }); T(b, pt(G0.Cc, r / 2, 0), `r = ${r} cm`, SKY, { dy: 16, size: 16 });
         return;
       }
@@ -409,13 +460,20 @@
     model: (s) => { const m = frM(s); return Object.assign(m, { qk: s.soQk || 3, q2: s.soQ2 || 4, q1: s.soQ1 || 2, area: m.k * (m.r2 * m.r2 - m.r1 * m.r1) }); },
     draw(b, s, M, C) {
       const prob = C.problem, k = prob ? M.qk : M.k, r1 = prob ? M.q1 : M.r1, r2 = prob ? M.q2 : M.r2, R1 = k * r1, R2 = k * r2, x = 360 / k, g = prob ? 0 : M.g;
-      const O = { x: 0, y: 0 }, a0 = -90 - x / 2, a1 = -90 + x / 2, sw = R2 * Math.sin(rad(Math.min(x / 2, 90))), shiftX = g * (sw + R1 * Math.sin(rad(Math.min(x / 2, 90))) + 1.4);
+      const O = { x: 0, y: 0 }, a0 = -90 - x / 2, a1 = -90 + x / 2, sw = R2 * Math.sin(rad(Math.min(x / 2, 90))), gapU = b.W < 560 && !b.thumb ? 4.2 : 1.4, shiftX = g * (sw + R1 * Math.sin(rad(Math.min(x / 2, 90))) + gapU); // 휴대폰은 작은 부채꼴과 띠 사이를 넓혀 길이 글자가 겹치지 않게
       const sb5 = sectorBox(R2, x, 0, false), A = { x0: sb5.x0, x1: sb5.x1 + shiftX, y0: sb5.y0 - 0.6, y1: Math.max(0.2, sb5.y1 + 0.2) };
       const fh = Math.sqrt(Math.max(0.01, (k * (r2 - r1)) ** 2 - (r2 - r1) ** 2));
-      const ms = G.solidScale(b, 1.9), cb = { x0: -r2 * ms, x1: r2 * ms, y0: -r2 * Math.sin(22 * DEG) * ms, y1: fh * Math.cos(22 * DEG) * ms };
-      let all = A, off = null;
-      if (!prob) { off = arrange(b, { x0: -sw, x1: sw + (shiftX > 0 ? Math.min(shiftX, sw * 1.0 + R1 * 0.5) : 0), y0: A.y0, y1: A.y1 }, cb, R2 * 0.4); all = unionB(A, shiftB(cb, off.dx, off.dy)); }
-      fit(b, all, { l: 36, r: 36, t: 40, b: 30 });
+      const cb1 = { x0: -r2, x1: r2, y0: -r2 * Math.sin(G.PITCH0 * DEG), y1: fh * Math.cos(G.PITCH0 * DEG) + r1 * Math.sin(G.PITCH0 * DEG) }, padS = { l: 36, r: 36, t: 40, b: 30 };
+      let all = A, off = null, ms = 1;
+      if (!prob) {
+        // 입체의 자리·배율은 작은 부채꼴을 다 뺀 상태(shiftX 최대)를 기준으로 정해, 막대를 움직여도 입체가 들쑥날쑥하지 않게 합니다.
+        const shMax = sw + R1 * Math.sin(rad(Math.min(x / 2, 90))) + gapU, A2 = { x0: -sw, x1: sw + Math.min(shMax, sw * 1.0 + R1 * 0.5), y0: A.y0, y1: A.y1 };
+        const lay = layoutSolid(b, A2, cb1, R2 * 0.4, padS, { gapPx: 46 });
+        ms = lay.ms; off = lay.off;
+        const cb = { x0: cb1.x0 * ms, x1: cb1.x1 * ms, y0: cb1.y0 * ms, y1: cb1.y1 * ms };
+        all = unionB(A, shiftB(cb, off.dx, off.dy));
+      }
+      fit(b, all, padS);
       // 남는 띠(큰 부채꼴 − 작은 부채꼴): 큰 호 · 작은 호 · 두 모선
       const band = arcPts(O, R2, a0, a1).concat(arcPts(O, R1, a1, a0));
       b.path(band, { close: true, fill: SKY, fillAlpha: 0.26, color: SKY, width: 3 });
@@ -436,7 +494,7 @@
           const e2 = pt(O, R2, a1), e1 = pt(O, R1, a1);
           T(b, { x: (e1.x + e2.x) / 2, y: (e1.y + e2.y) / 2 }, `${k * (r2 - r1)} cm`, SKY, { dx: 34, size: 16 });
           T(b, pt(O, R2, -90), `큰 호 = 2π×${r2} = ${2 * r2}π`, SKY, { dy: 18, size: 15 });
-          T(b, pt(Os, R1, -90), `작은 호 = 2π×${r1} = ${2 * r1}π`, AMB, { dy: 18, size: 14 });
+          T(b, pt(Os, R1, -90), `작은 호 = 2π×${r1} = ${2 * r1}π`, AMB, { dy: shiftX > 0.4 ? (b.W < 560 ? 42 : 30) : 18, size: 14 }); // 빠져나온 작은 부채꼴의 호 글자는 띠의 변 길이(예: 6 cm)와 같은 높이라 더 아래로
           { const eL = pt(O, R2, a0); T(b, { x: eL.x * 0.5, y: eL.y * 0.5 }, `R = ${R2}`, SKY, { dx: -6, dy: 0, size: 14, align: 'right' }); }
           const rr = Math.min(R1 * 0.36, px(b, 30));
           b.arc(O, rr, rad(a0), rad(a1), { sector: true, fill: ROSE, fillAlpha: 0.3, color: ROSE, width: 2.2 });
@@ -444,9 +502,9 @@
         }
       }
       if (off) {
-        const frus = S3.solid('frus', { R: r2, r: r1, h1: fh }), D = S3.ctx(b, s, { k: G.solidScale(b, 1.9), ox: off.dx, oy: off.dy });
+        const frus = S3.solid('frus', { R: r2, r: r1, h1: fh }), D = S3.ctx(b, s, { k: ms, ox: off.dx, oy: off.dy });
         S3.drawSolid(D, frus, {});
-        if (C.txt) { T(b, D.P({ x: r2 / 2, y: 0, z: 0 }), `${r2}`, SKY, { dy: 18, size: 15 }); T(b, D.P({ x: r1 / 2, y: fh, z: 0 }), `${r1}`, AMB, { dy: -16, size: 15 }); D.line({ x: r2, y: 0, z: 0 }, { x: r1, y: fh, z: 0 }, SKY, 3.4); }
+        if (C.txt) { S3.rLabel(b, D, r2, `${r2}`, SKY, 15); S3.rLabel(b, D, r1, `${r1}`, AMB, 15, fh); D.line({ x: r2, y: 0, z: 0 }, { x: r1, y: fh, z: 0 }, SKY, 3.4); }
       }
     },
     steps: (M) => [
@@ -473,6 +531,6 @@
     }
   });
 
-  G.NET = { sectorBox, pt, arcPts, sectorPts, unionB, shiftB, arrange, netGeom, xOf, xTxt, px };
+  G.NET = { sectorBox, pt, arcPts, sectorPts, unionB, shiftB, arrange, layoutSolid, netGeom, xOf, xTxt, px };
   G.register(30, 'rv3', '③ 원기둥·원뿔의 전개도', '원기둥·원뿔의 전개도', PARAMS, S);
 })();

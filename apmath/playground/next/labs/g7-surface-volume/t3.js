@@ -76,7 +76,7 @@
       D.body({ mesh: sphM, fill: lvS === 2 ? 'amber' : 'sky', alpha: lvS === 2 ? 0.36 : 0.24, edge: 'ink', edgeW: 2.6, hidden: true });
       sphereLabels(D, R, v3(0, 0, 0), `r=${M.r}`);
       if (!C.problem) {
-        D.tag(v3(0, 0, 0), `4πr² = ${plainVal(M.tot)}`, { dy: 26, size: 15, color: 'ink' });
+        if (e < 0.5) D.tag(v3(0, 0, 0), `4πr² = ${plainVal(M.tot)}`, { dy: 26, size: 15, color: 'ink' });
         const startCenter = rowW / 2;
         for (let i = 0; i < 4 && showC; i++) {
           const f = finals[i], rw = Math.floor(i / perRow), cc = b.thumb ? { x: f.x, y: f.y, r: dR } : cur[i], x = cc.x, ry = cc.y;
@@ -86,7 +86,7 @@
           if (e > 0.55 && i === 0 || (e > 0.55 && i === perRow)) b.text({ x, y: ry }, 'πr²', { dy: D.fs(18), size: D.fs(13), weight: 750, color: 'muted', baseline: 'middle' });
         }
         void startCenter;
-        if (e > 0.9) b.text({ x: 0, y: rowTop - 0.35 }, `원 4개 → 4 × πr² = 4πr²`, { size: D.fs(15), weight: 800, color: 'amber', baseline: 'middle' });
+        if (e > 0.9) b.text({ x: 0, y: rowTop - 0.35 }, `원 4개 → 4 × πr² = 4πr² = ${plainVal(M.tot)}`, { size: D.fs(15), weight: 800, color: 'amber', baseline: 'middle' });
       } else {
         // 문제: 반지름만 보여 줌
       }
@@ -151,9 +151,9 @@
       const isN = D.narrow && !b.thumb;
       let barsCx = bcx, barsW = 6.2;
       const fitCut = (c0, dx) => {
-        const p0 = D.P(c0), p1 = D.P(add3(c0, D.hx(dx))), x0 = Math.min(p0.x, p1.x) - R, x1 = Math.max(p0.x, p1.x) + R, yb = D.P(v3(0, -R, R)).y + 1.1;
+        const p0 = D.P(c0), p1 = D.P(add3(c0, D.hx(dx))), x0 = Math.min(p0.x, p1.x) - R, x1 = Math.max(p0.x, p1.x) + R, yb = D.P(v3(0, -R, R)).y + 0.8;
         barsCx = (x0 + x1) / 2; barsW = x1 - x0;
-        const ex = C.problem ? [] : [{ x: x0, y: yb - 0.3 }, { x: x1, y: yb + 1.7 }];
+        const ex = C.problem ? [] : [{ x: x0, y: yb - 0.3 }, { x: x1, y: yb + 1.45 }];
         D.fitCore([{ x: x0, y: p0.y - R }, { x: x1, y: p0.y + R }], ex, { l: 30, r: 30, t: 22, b: 20 }, { cap: (0.6 * (x1 - x0)) / (2 * R) }); // 구 하나가 무대 폭의 60%를 넘지 않게
       };
       const dsep = sep * R * (isN && isHalf ? 2.15 : 2.5);
@@ -197,21 +197,23 @@
         }
       } else {
         // 1/4, 1/8 구
-        const wedge = fr === 'quarter' ? revolveMesh(sphereProfile(R, -90, 90, 48), { axis: 'y', N: 40, a0: -3 * PI / 4, a1: -PI / 4 }) : revolveMesh([[0, 0], ...sphereProfile(R, 0, 90, 36)], { axis: 'y', N: 40, a0: -3 * PI / 4, a1: -PI / 4, tags: ['cap'] });
+        // 쐐기의 두 잘린 면이 기본 시점(옆 28°)에서 똑같이 보이도록 쐐기를 시점 쪽으로 돌려 놓아요(한 면이 모서리로만 보이던 문제)
+        const WY = 28 * (PI / 180);
+        const wedge = fr === 'quarter' ? revolveMesh(sphereProfile(R, -90, 90, 48), { axis: 'y', N: 40, a0: -3 * PI / 4 - WY, a1: -PI / 4 - WY }) : revolveMesh([[0, 0], ...sphereProfile(R, 0, 90, 36)], { axis: 'y', N: 40, a0: -3 * PI / 4 - WY, a1: -PI / 4 - WY, tags: ['cap'] });
         const ghost = sph(R, -90, 90);
         const dd = sep * R * 1.9;
         const wm = xfMesh(wedge, shiftT(D.hx(dd)));
         if (isN) fitCut(v3(0, 0, 0), dd);
         else D.fit(cube8(v3(0, 0, 0), R).concat(cube8(D.hx(dd), R)), [{ x: bcx - 3.2, y: D.P(v3(0, -R, R)).y + 3.0 }, { x: bcx + 3.2, y: D.P(v3(0, -R, R)).y + 3.0 }], { l: 34, r: 34, t: 36, b: 34 });
         D.body({ mesh: ghost, fill: null, edge: 'muted', edgeW: 1.6, hiddenAlpha: 0.5, sil: true });
-        D.body({ mesh: wm, fill: 'sky', alpha: 0.3, edge: 'ink', edgeW: 2.6, faceStyle: (f) => (f.cut || f.tag === 'cap' ? { fill: lvF === 2 ? 'amber' : 'red', alpha: 0.42 } : curveStyle(f)) });
+        D.body({ mesh: wm, fill: 'sky', alpha: 0.3, edge: 'ink', edgeW: 2.6, faceStyle: (f) => (f.cut || f.tag === 'cap' ? { fill: lvF === 2 ? 'amber' : 'red', alpha: f.tag === 'cut0' ? 0.24 : 0.46 } : curveStyle(f)) });
         sphereLabels(D, R, add3(v3(0, 0, 0), D.hx(dd)), `r=${M.r}`);
         if (!C.problem) D.tag(add3(v3(0, 0, 0), D.hx(dd)), `${M.f.factor} 구`, { dy: -R * 38, size: 15, color: 'amber' });
       }
       if (!C.problem) {
         const flatsLabel = M.f.flats[0].name;
         const parts = [{ v: M.f.curveK, fill: 'sky', label: `곡면 ${plainVal(M.curve)}`, hl: lvC }].concat(M.f.flats.map((q, i) => ({ v: q.k, fill: 'red', label: M.f.flats.length > 1 ? `${q.name} ${plainVal(V(0, q.k * M.r * M.r))}` : `${flatsLabel} ${plainVal(M.flat)}`, hl: lvF })));
-        const y0 = D.P(v3(0, -R, R)).y + (isN ? 1.1 : 1.9);
+        const y0 = D.P(v3(0, -R, R)).y + (isN ? 0.8 : 1.9);
         drawBars(D, parts, isN ? barsCx : bcx, y0, isN ? Math.max(barsW, 3.6) : 6.2, merge, { total: `겉넓이 = ${plainVal(M.tot)}` });
       }
     };
@@ -283,7 +285,11 @@
       const tankM = revolveMesh([[0, 0], [1, 0], [1, hT], [0, hT]], { N: 40, tags: ['bot', 'side', 'top'] });
       const bkM = revolveMesh([[0, 0], [1, 0], [1, hT], [0, hT]], { O: v3(3.1, 0, 0), N: 40, tags: ['bot', 'side', 'top'] });
       const fracOver = vnum(M.over) / vnum(M.tank), wl = q * fracOver * hT;
-      if (isN) D.fit([v3(-1, 0, -1), v3(4.3, yRail + 1, 1), v3(-1, yRail + 1, 1), v3(4.3, 0, -1)], [{ x: 1.55, y: D.P(v3(0, 0, 1)).y + (C.problem ? 0.6 : 0.6 + 3.1 * clamp(sink / 0.4, 0, 1)) }], { l: 56, r: 36, t: 52, b: 24 });
+      if (isN) {
+        // 물체가 잠겨 사라진 뒤에는 수조 위 공간을 비우고, 그만큼 수조·비커를 크게 보여 줘요(막대가 나타날 때 같이 바뀜)
+        const rp = C.problem ? 0 : clamp((sink - 0.4) / 0.5, 0, 1), topY = yRail + 1 - (yRail + 1 - (hT + 0.55)) * rp;
+        D.fit([v3(-1, 0, -1), v3(4.3, topY, 1), v3(-1, topY, 1), v3(4.3, 0, -1)], [{ x: 1.55, y: D.P(v3(0, 0, 1)).y + (C.problem ? 0.6 : 0.6 + 2.6 * rp) }], { l: 56, r: 36, t: 52, b: 24 });
+      }
       else D.fit([v3(sx - 1, 0, -1), v3(4.6, yRail + 1, 1), v3(sx - 1, yRail + 1, 1), v3(4.6, 0, -1)], [{ x: 0, y: D.P(v3(0, 0, 1)).y + (C.problem ? 0.6 : 4.0) }], { l: 34, r: 34, t: 34, b: 34 });
       // 수조·물
       D.body({ mesh: tankM, fill: 'sky', alpha: 0.1, edge: 'ink', edgeW: 2.6 });
@@ -319,11 +325,11 @@
         const formula = { cone: `원뿔 ⅓πr²h = ${plainVal(M.vols.cone)}`, sph: `구 4/3πr³ = ${plainVal(M.vols.sph)}`, cyl: `원기둥 πr²h = ${plainVal(M.vols.cyl)}` }[M.body];
         if (sink < 0.02) D.tag(v3(0, yRail, 0), formula, { dy: -58, size: 14, color: colr });
         // 가로 막대: 원뿔·구·원기둥 (1칸 = 원뿔)
-        if (!isN || sink >= 0.4) { // 폰: 물체를 넣기 시작하기 전에는 막대 없이 수조·비커를 크게 보여 줘요
+        if (!isN || sink >= 0.9) { // 폰: 물체를 넣기 시작하기 전에는 막대 없이 수조·비커를 크게 보여 줘요
         const rowsV = ['cone', 'sph', 'cyl'].map((k2) => ({ k: k2, units: M.mode === 'remain' ? 3 - M.unitsOf(M.vols[k2]) : M.unitsOf(M.vols[k2]), val: M.mode === 'remain' ? vsub(M.tank, M.vols[k2]) : M.vols[k2] }));
-        const y0 = D.P(v3(0, 0, 1)).y + 0.7, W = isN ? 4.4 : 5.4, bcx2 = isN ? 1.55 : 0, x0 = bcx2 - W / 2 - (isN ? 0 : 0.2), H = 0.42;
+        const y0 = D.P(v3(0, 0, 1)).y + 0.7, W = isN ? 4.4 : 5.4, bcx2 = isN ? 1.55 : 0, x0 = bcx2 - W / 2 - (isN ? 0 : 0.2), H = isN ? 0.36 : 0.42;
         rowsV.forEach((rw, i) => {
-          const y = y0 + i * (H + 0.2), cur = rw.k === M.body, w = (rw.units / 3) * W, wc = cur ? (M.mode === 'remain' ? w * 1 : w * q) : 0;
+          const y = y0 + i * (H + (isN ? 0.14 : 0.2)), cur = rw.k === M.body, w = (rw.units / 3) * W, wc = cur ? (M.mode === 'remain' ? w * 1 : w * q) : 0;
           b.path([{ x: x0, y }, { x: x0 + W, y }, { x: x0 + W, y: y + H }, { x: x0, y: y + H }], { close: true, color: 'muted', width: 1.2, alpha: 0.5 });
           b.path([{ x: x0, y }, { x: x0 + (cur ? Math.max(wc, 0) : w * 0.0), y }, { x: x0 + (cur ? Math.max(wc, 0) : 0), y: y + H }, { x: x0, y: y + H }], { close: true, fill: colorOf(rw.k), fillAlpha: 0.7, color: null });
           if (!cur) b.path([{ x: x0, y }, { x: x0 + w, y }, { x: x0 + w, y: y + H }, { x: x0, y: y + H }], { close: true, fill: colorOf(rw.k), fillAlpha: 0.2, color: colorOf(rw.k), width: 1.6, alpha: 0.7 });
@@ -331,8 +337,8 @@
           b.text({ x: x0 + Math.max(w, 0), y: y + H / 2 }, `${plainVal(rw.val)}`, { dx: 6, size: D.fs(13), weight: 800, align: 'left', baseline: 'middle', color: cur ? 'ink' : 'muted' });
         });
         b.text({ x: x0 + W / 2, y: y0 }, M.mode === 'remain' ? '남은 물 (칸 수: 전체 3칸 − 넣은 것)' : '넘친 물의 부피 (1칸 = 원뿔 한 개)', { dy: -11, size: D.fs(13), weight: 750, color: 'muted', baseline: 'middle' });
-        if (q > 0.99 && M.even) b.text({ x: bcx2, y: y0 + 3 * (H + 0.2) + 0.1 }, M.mode === 'remain' ? '남은 물:  원뿔 2 : 구 1 : 원기둥 0' : '넘친 물:  원뿔 1 : 구 2 : 원기둥 3', { size: D.fs(15), weight: 800, color: 'amber', baseline: 'middle' });
-        else if (q > 0.99 && !M.even) b.text({ x: bcx2, y: y0 + 3 * (H + 0.2) + 0.1 }, '높이가 2r이 아니면 1:2:3이 깨져요', { size: D.fs(14), weight: 800, color: 'red', baseline: 'middle' });
+        if (q > 0.99 && M.even) b.text({ x: bcx2, y: y0 + 3 * (H + (isN ? 0.14 : 0.2)) + 0.1 }, M.mode === 'remain' ? '남은 물:  원뿔 2 : 구 1 : 원기둥 0' : '넘친 물:  원뿔 1 : 구 2 : 원기둥 3', { size: D.fs(15), weight: 800, color: 'amber', baseline: 'middle' });
+        else if (q > 0.99 && !M.even) b.text({ x: bcx2, y: y0 + 3 * (H + (isN ? 0.14 : 0.2)) + 0.1 }, '높이가 2r이 아니면 1:2:3이 깨져요', { size: D.fs(14), weight: 800, color: 'red', baseline: 'middle' });
         }
       }
       function colorOf(k2) { return k2 === 'sph' ? 'green' : k2 === 'cone' ? 'amber' : 'violet'; }

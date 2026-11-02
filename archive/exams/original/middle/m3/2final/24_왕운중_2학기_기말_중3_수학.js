@@ -66,7 +66,11 @@ window.questionBank = [
     "rpmL4": "삼각비의 관계",
     "primaryMethod": "삼각비의 뜻",
     "decisiveStep": "삼각비의 관계",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q01.png"
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q01.png",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 1인 사분원. 원점에서 35° 반직선이 호와 만나는 점에서 x축에 내린 수선의 가로 0.82, 세로 0.57이 표시되고, 오른쪽 x=1 위에 접선 길이 0.70, 위쪽 각 55°가 표시되어 있다.",
+    "solutionImageCaption": "가로 0.82는 cos35°, 세로 0.57은 sin35°, 오른쪽 접선 0.70은 tan35°이고 55°는 35°의 여각이다. 따라서 sin35°=0.82라 한 ①과 cos35°=0.57이라 한 ⑤가 옳지 않다. 정답은 ①, ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -130,7 +134,11 @@ window.questionBank = [
     "rpmL3": "삼각비의 뜻",
     "rpmL4": "삼각비의 관계",
     "primaryMethod": "삼각비의 뜻",
-    "decisiveStep": "삼각비의 관계"
+    "decisiveStep": "삼각비의 관계",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 1인 사분원에 10°, 20°, 70°, 71° 반직선과 각 라벨이 있고, 10°와 20°의 가로 길이 cos와 70°와 71°의 세로 길이 sin이 치수선으로 표시되어 있다. cos10°가 cos20°보다 길고 sin71°는 sin70°보다 아주 조금 더 길다.",
+    "solutionImageCaption": "각이 커질수록 가로(cos) 길이는 줄어드므로 cos10°>cos20°, 세로(sin) 길이는 늘어나므로 sin70°<sin71°이다(70°와 71°의 높이 차는 매우 작다). 따라서 ①은 거짓, ②는 참이다. 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -254,7 +262,11 @@ window.questionBank = [
     "rpmL4": "각을 이용한 길이",
     "primaryMethod": "삼각비와 길이",
     "decisiveStep": "각을 이용한 길이",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q04-student-clean.png"
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q04-student-clean.png",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 지면 AB 위의 직각삼각형 ABC에서 비행 거리 AC=1000m, 각 A=15도이고 높이 BC를 h m로 나타냈다. h는 sin15°=h/1000으로 구한다.",
+    "solutionImageCaption": "직각삼각형에서 sin15°=h/1000이므로 h=1000×sin15°=1000×0.2588=258.8m이다. 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -320,7 +332,11 @@ window.questionBank = [
     "rpmL4": "삼각형의 높이·넓이",
     "primaryMethod": "삼각비와 길이",
     "decisiveStep": "삼각형의 높이·넓이",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q05-student.png"
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q05-student.png",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 새 삼각형 A′BC′는 ∠B를 공통으로 가지며(파랑), A′B는 AB의 0.75배, BC′는 BC의 1.2배이므로 넓이의 비가 0.75×1.2=0.9임을 보여 준다.",
+    "solutionImageCaption": "1.2×(1−x/100)=0.9에서 1−x/100=0.75이므로 x=25이다. 정답 ③.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -380,7 +396,11 @@ window.questionBank = [
     "rpmL4": "삼각형의 높이·넓이",
     "primaryMethod": "삼각비와 길이",
     "decisiveStep": "삼각형의 높이·넓이",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q06-student-clean.png"
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q06-student-clean.png",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=8 cm, BC=5 cm, ∠B=135°인 △ABC에서 AB의 연장선에 C에서 내린 수선 CH(높이 5 sin45°)와 BC의 연장선에 A에서 내린 수선 AK(높이 8 sin45°)를 각각 밑변과 같은 색으로 표시한다.",
+    "solutionImageCaption": "∠B=135°이므로 ∠CBH=45°이다. 밑변 AB의 높이는 CH=5 sin45°이고 밑변 BC의 높이는 AK=8 sin45°이므로 ㄱ은 참, ㄴ은 거짓이다. 넓이는 ½·8·5·sin135°=10√2이므로 ㄷ도 참이고 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -446,7 +466,11 @@ window.questionBank = [
     "rpmL4": "중심에서 현에 내린 수선",
     "primaryMethod": "원의 접선",
     "decisiveStep": "중심에서 현에 내린 수선",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q07-student-clean.png"
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q07-student-clean.png",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 10cm인 원 O의 현 AB와 중심에서 내린 수선 OM(6cm, M에서 직각). 직각삼각형 OAM이 파랑으로 칠해지고 AM=8cm, AM=BM(주황 눈금)이며 현 전체 AB는 x cm이다.",
+    "solutionImageCaption": "직각삼각형 OAM에서 AM²=10²−6²=64이므로 AM=8cm이고 AM=BM이므로 x=AB=16cm (정답 ⑤)",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -506,7 +530,11 @@ window.questionBank = [
     "rpmL4": "중심거리와 현의 길이",
     "primaryMethod": "원의 접선",
     "decisiveStep": "중심거리와 현의 길이",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q08.png"
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q08.png",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 OM⊥AB, ON⊥CD이고 OM=ON(파랑), OA=OC(초록)이며 합동인 직각삼각형 OAM, OCN(주황)과 AM=MB=CN=ND(분홍) 표시가 있는 그림.",
+    "solutionImageCaption": "△OAM≡△OCN(RHS 합동)이므로 AM=CN이다. 중심에서 현에 내린 수선은 현을 이등분하므로 AB=2AM, CD=2CN이다. 따라서 AB=CD이므로 (㉮)에는 AB=2AM, CD=2CN이므로 AB=CD가 들어간다. 정답 ③.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -572,7 +600,11 @@ window.questionBank = [
     "rpmL4": "중심에서 현에 내린 수선",
     "primaryMethod": "원의 접선",
     "decisiveStep": "중심에서 현에 내린 수선",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q09-student-clean.png"
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q09-student-clean.png",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 중심 O에서 현 AB에 내린 수선의 발 M, OM의 연장선이 원과 만나는 점 C가 있다. 반지름 OA, OB는 같은 색으로 x cm, AM=8cm, MC=5cm, OM=(x−5)cm인 직각삼각형 OMA이다.",
+    "solutionImageCaption": "직각삼각형 OMA에서 OA=x, AM=8, OM=OC−MC=x−5이다. 따라서 x²=8²+(x−5)²이고 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -638,7 +670,11 @@ window.questionBank = [
     "rpmL4": "접선 조건으로 길이 구하기",
     "primaryMethod": "원의 접선",
     "decisiveStep": "접선 조건으로 길이 구하기",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q10-student-clean.png"
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q10-student-clean.png",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O가 사다리꼴 ABCD의 네 변에 점 P, Q, R, S에서 접한다. 꼭짓점마다 접선의 길이가 같은 쌍 AP=AS, BP=BQ, CQ=CR, DR=DS가 서로 다른 색이고 AB=15cm, BC=18cm, CD=12cm이며 반지름은 6cm이다.",
+    "solutionImageCaption": "AB+CD=AD+BC에서 AD=9cm, CD=12cm가 나오므로 지름 12cm, 반지름 6cm이다. 따라서 옳지 않은 것은 AD의 길이가 8cm라고 한 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -704,7 +740,11 @@ window.questionBank = [
     "rpmL4": "같은 호에 대한 원주각",
     "primaryMethod": "원주각의 활용",
     "decisiveStep": "같은 호에 대한 원주각",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q11-student-clean.png"
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q11-student-clean.png",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 호 AB와 호 BC를 같은 파랑으로 칠해 둘 다 70°임을 보이고, 중심각 ∠AOB=70°와 ∠b(∠BOC), 호 ABC를 보는 원주각 ∠a(주황)를 구분해 표시한다.",
+    "solutionImageCaption": "∠a는 호 ABC(140°)를 보는 원주각이라 70°, ∠b는 중심각이라 70°이므로 ∠a+∠b=140°이다. 정답 ⑤.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -764,7 +804,11 @@ window.questionBank = [
     "rpmL4": "반원에 대한 원주각",
     "primaryMethod": "원주각의 활용",
     "decisiveStep": "반원에 대한 원주각",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q12.png"
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q12.png",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB인 원 O에서 OA=OP=OB를 같은 색으로, ∠APB=90°, ∠AOP=70°, ∠POB=110°와 이등변삼각형 OPB의 밑각 x와 ∠OBP를 같은 색으로 표시한다.",
+    "solutionImageCaption": "AB가 지름이므로 ∠APB=90°이고 △APB에서 ∠PBA=35°이다. OA=OP이므로 ∠AOP=70°, ∠POB=110°이고, OP=OB인 이등변삼각형 OPB에서 x=(180°−110°)÷2=35°이다. 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -830,7 +874,11 @@ window.questionBank = [
     "rpmL4": "접선 조건으로 길이 구하기",
     "primaryMethod": "원의 접선",
     "decisiveStep": "접선 조건으로 길이 구하기",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q13-student-clean.png"
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q13-student-clean.png",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 밖의 점 A에서 그은 접선 AD, AE(각각 12cm)와 접점 F에서의 접선 BC. 직각삼각형 AOD(AO=13cm, OD=5cm, D에서 직각)가 있고 접선의 길이가 같은 BD=BF는 주황, CE=CF는 초록으로 표시되어 있다.",
+    "solutionImageCaption": "삼각형 ABC의 둘레는 AB+BC+CA=(AB+BD)+(AC+CE)=AD+AE=12+12=24cm (정답 ④)",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -896,7 +944,11 @@ window.questionBank = [
     "rpmL4": "내접사각형의 각",
     "primaryMethod": "원주각의 활용",
     "decisiveStep": "내접사각형의 각",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q14-student-clean.png"
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q14-student-clean.png",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD에서 호 AB와 호 BC를 합친 호 ABC=(16+14)×7.2°=216°(보라), 호 CD=7칸(초록), 호 DA=13칸(분홍)이 표시되고 ∠D가 호 ABC를 보는 원주각으로 표시된 그림.",
+    "solutionImageCaption": "호의 비의 합이 13+7+14+16=50이므로 한 칸은 360°÷50=7.2°이다. 호 ABC=(16+14)×7.2°=216°이고 ∠D는 호 ABC를 보는 원주각이므로 ∠D=216°÷2=108°이다. 정답 ⑤.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -956,7 +1008,11 @@ window.questionBank = [
     "rpmL4": "접선과 현이 이루는 각",
     "primaryMethod": "원주각의 활용",
     "decisiveStep": "접선과 현이 이루는 각",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q15.png"
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q15.png",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 위의 세 점 A, B, C와 접점 A에서의 접선 AT가 있다. 접선과 현 AB가 이루는 각 BAT와 호 AB를 보는 원주각 ACB가 같은 색이다(예: 크기는 임의).",
+    "solutionImageCaption": "예: 접선 AT와 현 AB가 이루는 각 BAT는 그 각 안의 호 AB에 대한 원주각 ACB와 같다. 이 성질은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -1016,7 +1072,11 @@ window.questionBank = [
     "rpmL4": "접선과 현이 이루는 각",
     "primaryMethod": "원주각의 활용",
     "decisiveStep": "접선과 현이 이루는 각",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q16-student.png"
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q16-student.png",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 접선 AT에서 OA는 AT에 수직이고 OA와 OC는 반지름으로 같은 색이다. 각 COA=96도이고 점 A의 각을 오른쪽에 크게 따로 그려 각 OAC=42도, 각 CAT=x, 전체 직각을 보였다.",
+    "solutionImageCaption": "삼각형 AOC는 OA=OC인 이등변삼각형이므로 ∠OAC=(180°−96°)÷2=42°이다. OA⊥AT이므로 x=90°−42°=48°이다. 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -1081,7 +1141,11 @@ window.questionBank = [
     "rpmL3": "대푯값",
     "rpmL4": "평균·중앙값·최빈값",
     "primaryMethod": "대푯값",
-    "decisiveStep": "평균·중앙값·최빈값"
+    "decisiveStep": "평균·중앙값·최빈값",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 학생 8명이 읽은 책의 수 2, 4, 5, 6, 6, 6, 8, 9의 점도표. 6에 점이 3개 쌓여 있고 그중 파란 점 2개가 작은 쪽에서 4번째와 5번째 값이며 6에 중앙값 점선이 있다.",
+    "solutionImageCaption": "점 하나가 학생 한 명이다. 작은 순서로 2, 4, 5, 6, 6, 6, 8, 9이고 자료가 8개(짝수)이므로 4번째와 5번째 값(파란 점)의 평균이 중앙값이다. 두 값이 모두 6이므로 (6+6)÷2=6이고 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -1328,7 +1392,11 @@ window.questionBank = [
     "rpmL4": "복합도형",
     "primaryMethod": "삼각비와 길이",
     "decisiveStep": "복합도형",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/s01-student.png"
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/s01-student.png",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형을 AF로 접었을 때 AE=AD=10cm(초록), FD=FE=10/3cm(주황)와 BE=8cm, ∠AEF=90°인 직각삼각형 AFE를 보여 준다.",
+    "solutionImageCaption": "sin x=AE/AF=3/√10, cos x=EF/AF=1/√10이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -1356,10 +1424,10 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "[서술형 2] 다음 그림에서 직선 $AT$가 원 $O$의 접선이고 네 점 $A, B, C, D$가 모두 원 $O$ 위에 있다. $\\angle BAT = 70^\\circ, \\angle DCB = 100^\\circ$일 때, $\\angle DBA = \\angle x$의 크기를 구하시오. (7점)",
+    "content": "[서술형 2] 다음 그림에서 직선 $AT$가 원 $O$의 접선이고 네 점 $A, B, C, D$가 모두 원 $O$ 위에 있다. 접선과 현 $AB$가 이루는 각 중 그림의 오른쪽 각이 $70^\\circ$이고 $\\angle DCB = 100^\\circ$일 때, $\\angle DBA = \\angle x$의 크기를 구하시오. (7점)",
     "choices": [],
     "answer": "30°",
-    "solution": "접선-현 정리로 ∠ADB=∠BAT=70°.\n\n내접사각형에서 ∠DAB=180-100=80°.\n\n삼각형 DAB에서 x=180-70-80=30°.",
+    "solution": "접선과 현 AB가 이루는 각 70°는 호 AB에 대한 원주각 ∠ADB와 같다(접선-현 정리). 따라서 ∠ADB=70°.\n\n내접사각형에서 ∠DAB=180-100=80°.\n\n삼각형 DAB에서 x=180-70-80=30°.",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
@@ -1382,7 +1450,11 @@ window.questionBank = [
     "rpmL4": "복합 각 추론",
     "primaryMethod": "원주각의 활용",
     "decisiveStep": "복합 각 추론",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/s02-student-clean.png"
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/s02-student-clean.png",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 접선과 현 AB가 이루는 오른쪽 각 70°와 호 AB의 원주각 ∠ADB=70°를 같은 색으로 보이고, ∠DCB=100°에서 ∠DAB=80°를 구해 △DAB의 ∠DBA=x를 찾는 그림이다.",
+    "solutionImageCaption": "접선과 현 AB가 이루는 각 70°는 호 AB의 원주각 ∠ADB와 같아 ∠ADB=70°이고, 내접사각형 ABCD에서 ∠DAB=180°−100°=80°이다. 따라서 △DAB에서 x=180°−70°−80°=30°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,

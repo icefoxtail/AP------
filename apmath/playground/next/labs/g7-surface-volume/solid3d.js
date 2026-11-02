@@ -416,15 +416,16 @@
       const vis = (fi) => fi >= 0 && fr[fi] > 1e-6;
       const color = bd.edge || 'ink', w0 = bd.edgeW || 2.6;
       const run = (list, hidden) => {
-        let pts = null, last = null, key = null;
+        let pts = null, last = null, key = null, tail = null;
         const end = () => { if (pts && pts.length > 1) b.path(pts, { color: last.color, width: last.width, dash: hidden ? [6, 5] : undefined, alpha: last.alpha }); pts = null; };
         list.forEach((e) => {
           const es = (bd.edgeFn && bd.edgeFn(e)) || {};
           if (es.skip) { end(); return; }
           const st = { color: es.color || color, width: es.width || (e.thin ? Math.max(1.3, w0 * 0.55) : w0), alpha: (es.alpha != null ? es.alpha : e.thin ? 0.75 : 1) * (hidden ? (bd.hiddenAlpha == null ? 0.7 : bd.hiddenAlpha) : 1) };
-          const same = pts && e.chain && e.chain === key && last.color === st.color && last.width === st.width && last.alpha === st.alpha;
+          const same = pts && e.chain && e.chain === key && last.color === st.color && last.width === st.width && last.alpha === st.alpha && tail && Math.hypot(tail.x - e.a.x, tail.y - e.a.y, tail.z - e.a.z) < 1e-6; // 이어지지 않는 조각(고리의 시작 번호를 넘는 곳)은 직선으로 잇지 않아요
           if (!same) { end(); pts = [P(e.a)]; key = e.chain || null; }
           pts.push(P(e.b));
+          tail = e.b;
           last = st;
           if (!e.chain) end();
         });
@@ -432,6 +433,11 @@
       };
       const hid = [], shown = [];
       m.edges.forEach((e) => {
+        // 입체 둘이 맞붙은 자리의 이음 원: 뒤쪽 반은 위(또는 아래)의 입체에 가려지므로 점선, 앞쪽 반은 실선 (bd.dashBack(e) = 원의 중심 또는 null)
+        if (bd.dashBack && e.chain) {
+          const c = bd.dashBack(e);
+          if (c) { const mp = mid3(e.a, e.b); (((mp.x - c.x) * V.x + (mp.z - c.z) * V.z) < 0 ? hid : shown).push(e); return; }
+        }
         if (e.smooth) { if (vis(e.f1) !== vis(e.f2)) shown.push(e); return; }
         (vis(e.f1) || vis(e.f2) || (e.f1 < 0 && e.f2 < 0) ? shown : hid).push(e);
       });

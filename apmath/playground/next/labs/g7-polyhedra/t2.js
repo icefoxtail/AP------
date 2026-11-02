@@ -155,9 +155,9 @@
       const D = scene3(b, s, C), st = stepOf(C);
       const scl = (S, f) => Object.assign({}, S, { V: S.V.map((p) => mul3(p, f)), F: S.F.map((x) => Object.assign({}, x, { c: mul3(x.c, f) })), ctr: mul3(S.ctr, f) });
       if (C.problem) {
-        const SP = 3.7, RZ = 4.6, ctr = layout5(s, SP, RZ), pts = [];
-        ctr.forEach((c) => pts.push(add3(c, v3(-1.9, 0, -1.9)), add3(c, v3(1.9, 0, 1.9))));
-        D.fitPts(pts, { t: 26, b: 60, l: 26, r: 26 });
+        const SP = 3.6, RZ = 5.5, ctr = layout5(s, SP, RZ), pts = [];
+        ctr.forEach((c) => pts.push(add3(c, v3(-1.8, 0, -1.9)), add3(c, v3(1.8, 0, 1.9))));
+        D.fitPts(pts, { t: 20, b: 56, l: 12, r: 12 });
         PLAT_KEYS.forEach((k, i) => {
           drawPoly(D, platS(k), { off: ctr[i], face: (fi, vis) => (vis ? { c: 'green', a: 0.16 } : null), edge: () => ({ color: 'ink', width: 2.6 }) });
           D.label(add3(ctr[i], v3(0, 0, -2.1)), PLAT[k].name, { color: 'ink', size: 15, at: [[0, 22]] });
@@ -173,6 +173,7 @@
       const dyFig = (b.H - b.insets.bottom - rowPx / 2 - 14 - ctrS.y) / kpx;
       const MS = (spPx * 0.42) / (1.75 * kpx);
       const mini = PLAT_KEYS.map((k, i) => add3(add3(S.ctr, hxOf(s, ((i - 2) * spPx) / kpx)), v3(0, 0, -dyFig / cp)));
+      D.boxes.push({ x0: -60, x1: b.W + 60, y0: b.H - b.insets.bottom - rowPx - 22, y1: b.H + 60 }); // 아래 작은 입체 줄은 글자가 올라타지 않게 비워 둡니다
       const hlFace = st !== 0 ? S.F.map((f, fi) => fi).filter((fi) => D.facing(S.F[fi].n)).sort((a, c) => D.depth(faceMid(S.V, S.F[a])) - D.depth(faceMid(S.V, S.F[c])))[0] : -1;
       let hv = -1;
       if (st === 2 || st === 4) { let bd = 1e9; S.V.forEach((p, vi) => { const d = D.depth(p); if (d < bd) { bd = d; hv = vi; } }); }
@@ -233,7 +234,8 @@
 
   /* ------------------------------------------------------------------ p2-3 정다면체가 아닌 예 */
   // 화면 가로를 e1, 안쪽을 e2, 위를 e3 로 하는 틀(시점이 돌아도 같은 모양으로 보이게)
-  const frameOf = (s) => { const c = camOf(s); return { e1: v3(c.cy, -c.sy, 0), e2: v3(c.sy, c.cy, 0), e3: v3(0, 0, 1) }; };
+  // 입체를 z 축 둘레로 32° 돌려 놓습니다: 붙인 면이 화면과 수직이면 한 줄로 납작하게 보여 마름모처럼 보이므로, 비스듬히 보이게 합니다(겨냥도 시점).
+  const frameOf = (s) => { const c = camOf(s), t = 32 * DEG, ct = Math.cos(t), st = Math.sin(t), a = v3(c.cy, -c.sy, 0), b = v3(c.sy, c.cy, 0); return { e1: add3(mul3(a, ct), mul3(b, st)), e2: add3(mul3(a, -st), mul3(b, ct)), e3: v3(0, 0, 1) }; };
   const loc = (F, x, y, z) => add3(add3(mul3(F.e1, x), mul3(F.e2, y)), mul3(F.e3, z));
   function tetraLocal(F, x0, dir, a) { // x0 에 놓인 정삼각형 면(법선 = 가로 방향), 꼭짓점은 dir 쪽
     const r = a / Math.sqrt(3), h = a * Math.sqrt(2 / 3);
@@ -257,7 +259,10 @@
       const vcount = [];
       if (ex === 'bi') {
         const gap = (1 - join) * 2.8;
-        const A = tetraLocal(F, 0, -1, a), B = tetraLocal(F, gap, 1, a);
+        const A = tetraLocal(F, 0, -1, a), B = tetraLocal(F, 0, 1, a);
+        // 오른쪽 정사면체는 화면 가로로만 미끄러져 붙습니다(떼어 내는 움직임은 가로로만). 입체 방향은 32° 돌려 붙는 면이 비스듬히 보이게 둡니다.
+        const hsh = hxOf(s, gap);
+        B.tri = B.tri.map((p) => add3(p, hsh)); B.apex = add3(B.apex, hsh);
         // 지금 그려지는 두 정사면체만 담습니다(막대 끝의 먼 자리까지 미리 잡지 않아 붙인 모양이 크게 보여요)
         D.fitPts(A.tri.concat([A.apex], B.tri, [B.apex]), { t: C.problem ? 30 : topFor(join > 0.995 ? 3 : 2, 15, 24), b: 56, l: 40, r: 40 });
         if (join > 0.995) {
@@ -326,6 +331,7 @@
     draw(b, s, M, C) {
       const D = scene3(b, s, C), st = stepOf(C), S = C.problem ? platS(M.Q.k) : M.S, I = C.problem ? PLAT[M.Q.k] : M.I;
       D.fitPts(S.V, { t: C.problem ? 40 : 92, b: 50, l: 50, r: 50 });
+      D.top = C.problem ? 0 : 84;
       const hv = C.problem ? -1 : M.hv, hf = C.problem ? -1 : M.hf;
       drawPoly(D, S, {
         face: (fi, vis) => { if (!vis && !(hf === fi)) return null; if (fi === hf && (st === 1 || st === 4)) return { c: SKY, a: 0.42, hidden: true }; if (hv >= 0 && S.vf[hv].includes(fi) && (st === 2 || st === 4)) return { c: AMB, a: 0.36, hidden: true }; return vis ? { c: 'green', a: 0.1 } : null; },
