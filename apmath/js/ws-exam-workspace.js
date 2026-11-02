@@ -71,7 +71,13 @@ function wsxKeepScroll(fn) {
     const ids = ['wsx-root', 'wsx-list', 'wsx-detail'];
     const saved = ids.map(id => { const el = document.getElementById(id); return el ? el.scrollTop : 0; });
     const out = fn();
-    ids.forEach((id, i) => { const el = document.getElementById(id); if (el) el.scrollTop = saved[i]; });
+    // 읽기는 위에서 한꺼번에, 쓰기는 여기서 한꺼번에 한다. 맨 위(0)였던 칸은 내용을 바꿔도 맨 위 그대로라
+    // 다시 쓰지 않는다(쓰면 화면 배치를 그 자리에서 다시 계산해야 해서 처음 열 때 느려진다).
+    ids.forEach((id, i) => {
+        if (!(saved[i] > 0)) return;
+        const el = document.getElementById(id);
+        if (el) el.scrollTop = saved[i];
+    });
     return out;
 }
 
