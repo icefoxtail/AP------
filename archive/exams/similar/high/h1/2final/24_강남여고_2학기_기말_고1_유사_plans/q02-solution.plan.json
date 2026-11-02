@@ -1,0 +1,64 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "6",
+      "-2"
+    ],
+    "sign": -1,
+    "offset": "2",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -8,
+      3
+    ],
+    "viewport": [
+      -10,
+      6,
+      -6,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 3,
+        "y": 2
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "3",
+        "2"
+      ]
+    },
+    "domainRangeLabels": true,
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "y=-√(6-2x)+2의 그래프는 끝점 (3,2)에서 왼쪽 아래로 뻗는다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "근호 안이 0 이상이어야 하므로 정의역은 x≤3이고 끝점은 A(3,2)이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "끝점 A(3,2)에서 왼쪽 아래로 뻗어 정의역 x≤3, 치역 y≤2임을 보여 준다."
+  ],
+  "sourceQuote": "끝점 $A(3,2)$에서 왼쪽 아래로 뻗는다.",
+  "assetPath": "assets/images/24_강남여고_2학기_기말_고1_유사/q2-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/2final/24_강남여고_2학기_기말_고1_유사_plans/engine_evidence/q02-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/2final/24_강남여고_2학기_기말_고1_유사_plans/engine_evidence/q02-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/2final/24_강남여고_2학기_기말_고1_유사_plans/engine_evidence/q02-solution.svg"
+  }
+}
