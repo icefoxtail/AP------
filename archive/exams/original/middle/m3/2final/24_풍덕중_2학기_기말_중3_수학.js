@@ -265,7 +265,7 @@ window.questionBank = [
       "$5{,}500\\text{ km}$"
     ],
     "answer": "②",
-    "solution": "② 접점 T에서 반지름 OT와 접선 ST는 수직이다. 지구 중심 O, 위성 S에 대해 OT=6000 km, ST=8000 km이므로 직각삼각형 OTS에서 OS²=6000²+8000²=10000², OS=10000 km이다. 지표면 위 높이=OS−6000=4000 km이므로 ②.",
+    "solution": "② 접점 T에서 반지름 OT와 접선 PT는 수직이다. 지구 중심 O, 위성 P에 대해 OT=6000 km, PT=8000 km이므로 직각삼각형 OTP에서 OP²=6000²+8000²=10000², OP=10000 km이다. 지표면 위 높이=OP−6000=4000 km이므로 ②.",
     "image": "assets/images/24_풍덕중_2학기_기말_중3_수학/q08.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
