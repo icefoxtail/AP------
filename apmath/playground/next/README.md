@@ -1,14 +1,14 @@
 # AP Math 실험실 2.0 — 무대 중심 디자인 + 공용 셸 (미리보기)
 
-기존 실험실(`../labs/`)과 이전 허브(`../teacher-hub.html`)는 **그대로 쓸 수 있게 두고**(비교 중 발견된 오류는 기존 파일에서도 고쳤습니다), 같은 저장소 안에서 새 구조를 나란히 띄워 비교할 수 있게 만든 미리보기입니다. 처음 화면 AP Math Universe(`../index.html`)의 「실험실 입장」은 이제 이 새 허브(`next/index.html`)로 들어옵니다.
+옛 실험실(`../labs/`)과 옛 허브(`../teacher-hub.html`)는 **지우지 않고 남겨 두었습니다**(과거에 나눠 준 링크가 깨지지 않게). 학생이 쓰는 길은 이 2.0 허브 하나이고, 화면에는 옛 버전 링크·비교·‘2.0’ 표시를 두지 않습니다. 옛 파일은 중2·중3 개편이 끝나면 2.0 대응 실험실로 보내는 짧은 이동 페이지로 바꿉니다(정리 계획 `docs/plans/2026-11-02-lab-legacy-cleanup-plan-v0.1.md` 2단계). 처음 화면 AP Math Universe(`../index.html`)의 「실험실 입장」은 이 허브(`next/index.html`)로 들어옵니다.
 
-**현재 상태:** `kit/apl-catalog.js`의 실험실 43개 전부에 2.0 페이지(`next/labs/*.html`)가 있고, 허브는 **2.0을 기본으로** 엽니다. 기존 화면은 카드의 ‘기존 버전’ 링크로 그대로 열 수 있습니다(기존 파일은 지우지 않았습니다).
+**현재 상태:** `kit/apl-catalog.js`의 실험실 45개 전부에 2.0 페이지(`next/labs/*.html`)가 있고, 허브는 2.0 페이지만 엽니다. 옛 화면으로 가는 링크는 허브에 없습니다(카탈로그 `extra`의 원과 부채꼴 ‘기초판’은 2.0에 같은 단계가 없어 허브가 그리지 않습니다. 2.0에 대응 장면이 생기면 허브에서 장면 해시로 매핑합니다).
 
 | 화면 | 경로 |
 |---|---|
 | 새 허브 (개념 노선도 · 목록 · 검색 · 내 수업 목록). Universe → 「실험실 입장」의 도착점 | `next/index.html` |
-| 기존 ↔ 2.0 나란히 비교 (PC·태블릿·모바일 크기, 대표 사례 4건) | `next/compare.html` |
-| 2.0 실험실 43개 (카탈로그의 `next` 경로) | `next/labs/` |
+| 옛 ↔ 2.0 나란히 비교(이식 점검용, 허브에서는 링크하지 않음. 2단계에서 이동 페이지로 바뀜) | `next/compare.html` |
+| 실험실 45개 (카탈로그의 `next` 경로) | `next/labs/` |
 | 예: 미적분Ⅰ 접선과 미분계수 (직접 이식) | `next/labs/calc1-tangent.html` |
 | 예: 중3 삼각비 (호환층 이식, 38장면) | `next/labs/g9-trig-ratio.html` |
 | 예: 기하 공간도형 3D (3D 호환 이식, 4장면) | `next/labs/geom-space-3d.html` |
@@ -32,7 +32,7 @@ GitHub Pages 배포 후 주소: `https://icefoxtail.github.io/AP------/apmath/pl
 ```
 next/
   index.html            허브 (apl-catalog.js를 읽어 자동 생성)
-  compare.html          기존 ↔ 2.0 비교
+  compare.html          옛 ↔ 2.0 비교(허브에서 링크하지 않음)
   kit/
     apl.css             디자인 토큰(칠판/종이 테마, 수학 의미색) + 모든 셸 컴포넌트
     apl-core.js         네임스페이스·아이콘·KaTeX 렌더($…$ 자동 변환)·저장소·테마·대화상자
@@ -45,7 +45,7 @@ next/
                         (이름을 catalog.js로 하면 저장소 루트 .gitignore 규칙에 걸려 커밋에서 빠집니다 — 검사가 막아 줌)
     vendor/katex/       KaTeX 0.16.9 (woff2만, 오프라인 동작)
     vendor/qrcode.js    QR 생성기 (MIT, Kazuhiko Arase)
-  labs/                 2.0 셸 위의 실험실 (카탈로그 43개 전부)
+  labs/                 2.0 셸 위의 실험실 (카탈로그 45개 전부)
   tools/
     catalog.test.mjs    카탈로그·키트·manifest·HTML 로컬 참조(404) 정합성 검사 (node --test, 브라우저 불필요)
     gen-manifest.mjs    카탈로그에서 ../manifest.json 생성 (실험실을 더하거나 고친 뒤 실행)
@@ -100,7 +100,7 @@ window.addEventListener('DOMContentLoaded', () => APLab.createLab({
 - 장면 정의에서 `aspect:'free'`를 줄 수 있고, 이때 `aspectNote`에 쓴 문장이 셸의 축척 안내가 됩니다(생략하면 기본 문장: 단위가 달라 축척을 따로 두므로 기울기의 각도는 실제와 다르게 보인다는 안내). 쓰는 실험실: `calc1-motion`, `calc1-derivative-shape`.
 - 눈금 숫자는 간격이 요구하는 만큼만 소수 자리를 써서 **분수 간격(0.25, 2.5 등)에서도 정확한 값**을 보여 줍니다(`fmtTick`이 간격에서 자릿수를 계산).
 
-## 4. 기존 실험실 옮기기 (계열별 경로) — 43개 전부 이식됨
+## 4. 기존 실험실 옮기기 (계열별 경로) — 45개 전부 이식됨
 
 원본의 해설·문제 문자열과 수학 함수는 그대로 두고 그리는 층만 새 무대로 잇는 것이 원칙입니다. 계열(원본 구조)에 따라 연결 방식이 다릅니다.
 

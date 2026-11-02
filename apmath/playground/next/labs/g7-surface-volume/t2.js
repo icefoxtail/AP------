@@ -50,7 +50,7 @@
     const draw = (b, s, M, C) => {
       const D = scene3(b, s, C), st = C.step, t = C.problem ? 1 : C.t;
       if (M.mode === 'cube') {
-        const hf = 1.6, V0 = v3(hf, hf, hf), dd = ease(lin01(t, 0, 0.5)) * hf * 4.0, rotE = ease(lin01(t, 0.5, 1));
+        const hf = 1.6, V0 = v3(hf, hf, hf), dd = ease(lin01(t, 0, 0.5)) * hf * 3.7, rotE = ease(lin01(t, 0.5, 1));
         const faces = [
           { name: 'L', col: 'sky', pts: [v3(-hf, -hf, -hf), v3(-hf, hf, -hf), v3(-hf, hf, hf), v3(-hf, -hf, hf)], off: 2 * dd, ax: v3(0, 0, 1), ang: (PI / 2) * rotE },
           { name: 'B', col: 'green', pts: [v3(-hf, -hf, -hf), v3(hf, -hf, -hf), v3(hf, -hf, hf), v3(-hf, -hf, hf)], off: 0, ax: v3(0, 1, 0), ang: 0 },
@@ -78,11 +78,11 @@
         if (t < 0.02) D.label(V0, '꼭짓점', { dir: { x: 1, y: -0.4 }, color: 'amber', size: 14, gap: 6 });
         D.elabel(v3(-hf, -hf, hf), v3(hf, -hf, hf), `a=${M.a}`, { side: { x: 0, y: 1 }, color: 'amber', size: 15 });
         if (!C.problem && t > 0.5) bodies.forEach((bd) => D.tag(G.applyT(bd.T, bd.cen), `⅓a³ = ${plainVal(M.pyr)}`, { size: 14, dy: 22 }));
-        if (!C.problem) D.tag(v3(0, hf, 0), t < 0.5 ? `정육면체 a³ = ${plainVal(M.cubeV)}` : `사각뿔 3개 = 정육면체 1개`, { dy: -62, size: 15, color: 'amber' });
+        if (!C.problem) b.stext(b.W / 2, b.insets.top + (D.narrow ? 20 : 26), t < 0.5 ? `정육면체 a³ = ${plainVal(M.cubeV)}` : `사각뿔 3개 = 정육면체 1개`, { size: D.fs(15), color: 'amber', weight: 800, align: 'center', baseline: 'middle' });
         return;
       }
       // 원뿔 3번 붓기
-      const u = 2.2 / Math.max(M.r, M.h * 0.5), ru = M.r * u, hu = M.h * u, gap = ru * 1.25;
+      const u = 2.2 / Math.max(M.r, M.h * 0.5), ru = M.r * u, hu = M.h * u, gap = ru * 0.8;
       const xc = -(ru + gap / 2), xy = ru + gap / 2;
       const q = t * 3, k = Math.min(3, Math.floor(q + 1e-9)), fracq = q - Math.floor(q + 1e-9), nPour = t >= 0.999 ? 3 : k + (fracq > 0.001 ? 1 : 0);
       const coneFill = t >= 0.999 ? 0 : t <= 0.001 ? 1 : 1 - fracq;
@@ -357,8 +357,8 @@
         D.line(pb(thR, r2, y0), v3(0, y0 + h2, 0), 'muted', 1.8, { dash: [5, 4], alpha: 0.7 * (1 - ease(t)) });
       }
       const big = C.review && ((M.mode === 'surf' && st === 1) || (M.mode === 'vol' && st === 1)), sm = C.review && st === 2;
-      D.body({ mesh: frM, fill: lvF === 2 ? 'amber' : 'sky', alpha: lvF === 2 ? 0.34 : 0.22, edge: 'ink', edgeW: 2.6, faceStyle: (f) => (f.tag === 'bot' || f.tag === 'top' ? { fill: C.review && st === 4 ? 'amber' : 'sky', alpha: C.review && st === 4 ? 0.42 : 0.24 } : {}) });
-      D.body({ mesh: smM, fill: sm || big ? 'amber' : 'violet', alpha: sm ? 0.42 : 0.24, edge: 'ink', edgeW: 2.6 });
+      D.body({ mesh: frM, fill: lvF === 2 ? 'amber' : 'sky', alpha: lvF === 2 ? 0.34 : 0.22, edge: 'ink', edgeW: 2.6, dashBack: () => (slide < 1e-4 ? v3(0, 0, 0) : null), faceStyle: (f) => (f.tag === 'bot' || f.tag === 'top' ? { fill: C.review && st === 4 ? 'amber' : 'sky', alpha: C.review && st === 4 ? 0.42 : 0.24 } : {}) });
+      D.body({ mesh: smM, fill: sm || big ? 'amber' : 'violet', alpha: sm ? 0.42 : 0.24, edge: 'ink', edgeW: 2.6, dashBack: () => (slide < 1e-4 ? v3(0, 0, 0) : null) });
       // 길이: 큰 뿔 r₂·R₂, 작은 뿔 r₁·R₁
       const cb = v3(0, y0, 0), rpB = pb(thR, r2, y0);
       D.line(cb, rpB, 'ink', 2.4, { dash: [5, 4] });
@@ -369,7 +369,7 @@
       D.elabel(pb(thL, r2, y0), pb(thL, r1, yc), `R₂−R₁=${M.Rf}`, { side: { x: -1, y: 0 }, size: 14, gap: 8, color: 'amber' });
       const sh = D.hx(slide);
       D.elabel(add3(pb(thR, r1, yc), sh), add3(v3(0, yc + h1, 0), sh), `R₁=${M.R1}`, { side: { x: 1, y: 0 }, size: 15, gap: 8, color: 'violet' });
-      D.tag(add3(v3(0, yc + h1 * 0.38, 0), sh), `h₁=${M.h1}`, { size: 13, color: 'violet' });
+      D.tag(add3(v3(0, yc + h1 * 0.66, 0), sh), `h₁=${M.h1}`, { size: 13, color: 'violet' }); // r₁ 글자와 겹치지 않게 위쪽에
       const ey = (D.P(v3(0, y0, r2)).y - D.P(v3(0, y0, 0)).y) * (b.k || 40);
       D.tag(v3(0, y0, 0), `큰 원뿔  r₂=${M.r2}  h₂=${M.h2}  R₂=${M.R2}`, { dy: ey + 22, size: 14 });
       if (!C.problem) D.tag(v3(0, y0 + hf * 0.45, 0), M.mode === 'surf' ? `πR₂r₂−πR₁r₁` : `V₂−V₁`, { size: 14, color: 'green' });

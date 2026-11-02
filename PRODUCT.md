@@ -44,7 +44,7 @@ web
 - JS아카이브: 학교별 기출 시험지·풀이·정답 보기, 문제 검색, 시험지 구성·출력(`archive/`).
 - AP Math OS·APMS: 출결·성적·숙제·클리닉 관리(`apmath/`).
 - 학생 포털: 과제, 플래너, OMR, 오답 클리닉(`apmath/student/`).
-- 도형실험실 2.0: 실험실 43개, 탐구·정리·문제 3개 탭, 풀이 단계 공개, 수업 모드와 판서, QR로 지금 장면 공유(`apmath/playground/next/`). 기존 화면은 `apmath/playground/labs/`에 비교·호환용으로 남아 있다.
+- 도형실험실 2.0: 실험실 45개, 탐구·정리·문제 3개 탭, 풀이 단계 공개, 수업 모드와 판서, QR로 지금 장면 공유(`apmath/playground/next/`). 옛 화면은 `apmath/playground/labs/`에 과거 링크용으로 파일만 남아 있고, 허브에서는 연결하지 않는다(2단계에서 2.0으로 보내는 이동 페이지로 바뀐다).
 
 지켜야 할 규칙(출처는 현행 저장소 규칙이다. 이번 인터뷰의 새 답이 아니다):
 - 원본 기출은 `archive/engine.html?data=exams/<file>&mode=exam|sol|ans`로 바로 열리게 유지한다. (`AGENTS.md`)

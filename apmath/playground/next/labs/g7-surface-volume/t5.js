@@ -57,6 +57,11 @@
     return { left: tagger(prismMesh(left, y0, y1, { simple: true, smooth: ls })), right: tagger(prismMesh(right, y0, y1, { simple: true, smooth: rs })) };
   }
   // 타일을 왼쪽 끝에 모아 두었다가 오른쪽으로 가로로 펼칩니다(줄마다)
+  // 입체 윗면의 가장 위 모서리보다 위에, 가운데 맞춰 글을 둡니다(입체 선과 겹치지 않게)
+  const topText = (D, y, hx, hz, str, o = {}) => {
+    const sh = o.shift || 0, ps = [[-1, -1], [1, -1], [1, 1], [-1, 1]].flatMap(([i, j]) => [D.P(v3(i * hx, y, j * hz)), D.P(add3(v3(i * hx, y, j * hz), D.hx(sh)))]), x0 = Math.min(...ps.map((q) => q.x)), x1 = Math.max(...ps.map((q) => q.x)), yy = Math.min(...ps.map((q) => q.y));
+    D.b.text({ x: (x0 + x1) / 2, y: yy }, str, Object.assign({ dy: -18, size: D.fs(15), weight: 800, color: 'ink', baseline: 'middle' }, o));
+  };
   function slideTiles(R, te) { R.rows.forEach((L) => { const st = -L.total / 2; L.tiles.forEach((tl) => { tl.x = st + (tl.x - st) * te; }); }); }
   const totalText = (D, R, topY, text) => { const px = D.b.toS({ x: 0, y: topY + R.height }); D.b.stext(px.x, px.y + 50, text, { size: D.fs(15), weight: 800, color: 'green', align: 'center', baseline: 'middle' }); };
 
@@ -77,14 +82,14 @@
       const t1 = { w: M.a, h: M.h, shape: 'rect', count: 4, fill: 'sky', label: `${M.a * M.h}`, cap: '바깥 옆면 ×4', hl: hlOf(1) };
       const t2 = { w: 2 * PI * M.q, h: M.h, shape: 'rect', fill: 'amber', label: plainVal(M.plus), cap: '안쪽 옆면 2πq×h', hl: hlOf(3) };
       const R = C.problem ? null : G.layoutTileRows(narrow ? [[t0, t1], [t2]] : [[t0, t1, t2]], narrow ? 4.6 : 6.4, narrow ? 1.6 : 2.0, 0.7, 1.9);
-      const pts = cube8(v3(0, 0, 0), Math.max(A, Hh / 2)).concat(cube8(D.hx(dMax), Math.max(A, Hh / 2)));
+      const pts = cube8(v3(0, 0, 0), Math.max(A, Hh / 2)).concat(cube8(D.hx(C.problem ? 0 : dOpen), Math.max(A, Hh / 2))); // 지금 프레임(열린 만큼)만으로 맞춰요
       const bb = bboxOf(pts.map(D.P));
-      const blend = narrow && R ? ease(lin01(te, 0, 0.4)) : 0, rowTop = bb.y1 + 0.9;
+      const blend = narrow && R ? ease(lin01(te, 0, 0.15)) : 0, rowTop = bb.y1 + 0.9;
       if (blend > 0) {
         const mix = (p, q) => p + (q - p) * blend;
         D.fit([], [{ x: mix(bb.x0, -R.total / 2), y: mix(bb.y0, rowTop) }, { x: mix(bb.x1, R.total / 2), y: mix(bb.y1, rowTop + R.height + 2.6) }], { l: 36, r: 36, t: 44, b: 40 });
       } else D.fit(pts, R && !narrow ? [{ x: -R.total / 2, y: rowTop }, { x: R.total / 2, y: rowTop + R.height + 2.6 }] : [], { l: 36, r: 36, t: 44, b: 40 });
-      const showSolid = !(narrow && te > 0.35);
+      const showSolid = !(narrow && te > 0.15);
       const lvAll = !C.review ? 1 : st === 1 ? 2 : 1, lvWall = !C.review ? 1 : st === 3 ? 2 : 1;
       if (!showSolid) {
         // 휴대폰: 조각 줄이 펼쳐지는 동안 입체는 물러나요
@@ -111,9 +116,9 @@
         D.tag(v3(-qu / 2, y1, 0), `q=${M.q}`, { dy: -12, size: 15, color: 'red' });
       }
       if (!C.problem) {
-        if (!showSolid) { /* 입체 글자 없음 */ } else if (plain) D.tag(v3(0, y1, 0), `구멍 없는 기둥  S₀ = 2a²+4ah = ${plainVal(M.S0)}`, { dy: -40, size: 15, color: 'ink' });
-        else if (open > 0.3) D.tag(v3(0, y1, 0), `노란 면 = 안쪽 벽 (높이 ${M.h}, 둘레 2πq)`, { dy: -40, size: 14, color: 'amber' });
-        if (R && te > 0.01) {
+        if (!showSolid) { /* 입체 글자 없음 */ } else if (plain) topText(D, y1, A, A, `구멍 없는 기둥  S₀ = 2a²+4ah = ${plainVal(M.S0)}`);
+        else if (open > 0.3) topText(D, y1, A, A, `노란 면 = 안쪽 벽 (높이 ${M.h}, 둘레 2πq)`, { shift: dOpen, size: D.fs(14), color: 'amber' });
+        if (R && te > (narrow ? 0.15 : 0.01)) {
           slideTiles(R, te);
           const top = rowTop;
           G.drawTileRows(D, R, 0, top);
@@ -175,13 +180,13 @@
     };
     const draw = (b, s, M, C) => {
       const D = scene3(b, s, C), st = C.step, sc = 3.4 / Math.max(M.a, M.h * 0.9), A = (M.a * sc) / 2, Hh = M.h * sc, qu = M.size * sc, du = M.d * sc, narrow = b.W < 560, y0 = -Hh / 2, y1 = Hh / 2;
-      const t = C.problem ? 0.55 : C.t, rodA = t < 0.5 ? Math.sin((PI * t) / 0.5) : 0, te = ease(lin01(t, 0.5, 0.9));
+      const t = C.problem ? 0.5 : C.t, rodA = t < 0.5 ? Math.sin((PI * t) / 0.5) : 0, te = ease(lin01(t, 0.5, 0.9));
       const hot = (fill) => (!C.review ? 1 : (st === 2 && fill === 'red') || (st === 3 && fill === 'amber') ? 2 : st === 4 ? 3 : 1);
       const parts = M.parts.map((p) => Object.assign({}, p, { hl: hot(p.fill) }));
       const rows = narrow && parts.length >= 3 ? [parts.slice(0, 2), parts.slice(2)] : [parts];
       const R = C.problem ? null : G.layoutTileRows(rows, narrow ? 4.6 : 6.4, narrow ? 1.6 : 1.9, 0.7, 1.9);
       const pts = cube8(v3(0, 0, 0), Math.max(A, Hh / 2)), bb = bboxOf(pts.map(D.P)), rowTop = bb.y1 + 0.9;
-      const blend = narrow && R ? ease(lin01(te, 0, 0.4)) : 0, showSolid = !(narrow && te > 0.35);
+      const blend = narrow && R ? ease(lin01(te, 0, 0.15)) : 0, showSolid = !(narrow && te > 0.15);
       if (blend > 0) { const mix = (p, q2) => p + (q2 - p) * blend; D.fit([], [{ x: mix(bb.x0, -R.total / 2), y: mix(bb.y0, rowTop) }, { x: mix(bb.x1, R.total / 2), y: mix(bb.y1, rowTop + R.height + 2.6) }], { l: 36, r: 36, t: 44, b: 40 }); }
       else D.fit(pts, R && !narrow ? [{ x: -R.total / 2, y: rowTop }, { x: R.total / 2, y: rowTop + R.height + 2.6 }] : [], { l: 36, r: 36, t: 44, b: 40 });
       const mats = [];
@@ -206,7 +211,7 @@
         else D.elabel(v3(-qu / 2, y1, qu / 2), v3(qu / 2, y1, qu / 2), `u=${M.size}`, { side: { x: 0, y: 1 }, size: 15, color: 'red', gap: 6 });
         if (M.kind !== 'st') { D.line(v3(0, y1, 0), v3(0, y1 - du, 0), 'red', 3, { dash: [5, 4] }); D.tag(v3(0, y1 - du / 2, 0), `d=${M.d}`, { dx: 22, size: 14, color: 'red' }); }
       }
-      if (R && te > 0.01) {
+      if (R && te > (narrow ? 0.15 : 0.01)) {
         slideTiles(R, te);
         G.drawTileRows(D, R, 0, rowTop);
         if (te > 0.95) totalText(D, R, rowTop, `변화 = ${vnum(M.delta) >= 0 ? '+' : ''}${plainVal(M.delta)}  →  겉넓이 ${plainVal(M.tot)}`);
@@ -279,24 +284,26 @@
       const sdR = slide * (1.6 * pu + 0.3 * A), sdL = slide * (2.3 * A + 2.3 * pu), sd = sdR;
       const piece = (bx, sg) => { const sx = bx[1] > 0 && bx[1] === A ? 1 : -1; const m = boxMesh(bx[0], bx[1], bx[2], bx[3], bx[4], bx[5]); const sgn = [sx, bx[3] === A ? 1 : -1, bx[5] === A ? 1 : -1]; return { m: xfMesh(m, shiftT(D.hx(sx > 0 ? sdR : sdL))), sgn }; };
       const pcs = blist.map((bx) => piece(bx));
-      const xMax = C.problem ? A : A + (M.cnt === 1 ? 1.1 * pu + 0.3 * A + pu : 2.8 * pu + 0.3 * A + pu), pts = cube8(v3(0, 0, 0), A).concat([v3(xMax, A, A), v3(xMax, -A, -A), v3(xMax, A, -A), v3(xMax, -A, A)]);
+      const xMax = C.problem ? A : A + (M.cnt === 1 ? 1.1 * pu + 0.3 * A + pu : 2.8 * pu + 0.3 * A + pu), xNow = A + (xMax - A) * slide, pts = cube8(v3(0, 0, 0), A).concat([v3(xNow, A, A), v3(xNow, -A, -A), v3(xNow, A, -A), v3(xNow, -A, A)]); // 지금 프레임(빠져나간 만큼)만으로 맞춰요
+      const isN = D.narrow && !b.thumb; // 폰: 조각 줄을 작게 해서 입체를 키워요
       const row = C.problem ? null : (() => {
         const mk = (fill, i) => ({ w: M.p, h: M.p, shape: 'rect', fill, label: `${M.p * M.p}`, hl: 1 });
-        return layoutTiles([mk('red', 0), mk('red', 1), mk('red', 2)], 3.6, 1.2, 0.35);
+        return layoutTiles([mk('red', 0), mk('red', 1), mk('red', 2)], isN ? 2.4 : 3.6, 1.2, 0.35);
       })();
       const bbx = bboxOf(pts.map(D.P));
-      D.fit(pts, row ? [{ x: -4.3, y: bbx.y1 + 0.7 }, { x: 4.3, y: bbx.y1 + 0.7 + row.height + 1.2 }] : [], { l: 40, r: 40, t: 40, b: 40 });
+      const offN = row ? (row.total + 0.8) / 2 : 0, xBN = (1 - te) * 2 * offN;
+      D.fit(pts, row ? (isN ? [{ x: offN - xBN - row.total / 2, y: bbx.y1 + 1.15 }, { x: offN + row.total / 2, y: bbx.y1 + 1.15 + row.height + 0.9 }] : [{ x: -4.3, y: bbx.y1 + 0.7 }, { x: 4.3, y: bbx.y1 + 0.7 + row.height + 1.2 }]) : [], { l: 28, r: 28, t: 30, b: 30 });
       D.body({ mesh: body, fill: 'sky', alpha: 0.2, edge: 'ink', faceStyle: (f) => (f.tag === 'in' ? { fill: 'amber', alpha: hotIn || settled || (C.review && st >= 3) ? (hotIn ? pulse + 0.1 : 0.42) : 0.28 } : {}) });
       pcs.forEach((pc) => D.body({ mesh: pc.m, fill: 'violet', alpha: 0.16, edge: 'ink', edgeW: 2.2, faceStyle: (f) => (f.n && (f.n.x * pc.sgn[0] + f.n.y * pc.sgn[1] + f.n.z * pc.sgn[2]) > 0.5 && (hotOut || settled || (C.review && st >= 2)) ? { fill: 'red', alpha: hotOut ? pulse + 0.1 : 0.45 } : {}) }));
       D.elabel(v3(-A, -A, A), v3(A, -A, A), `a=${M.a}`, { side: { x: 0, y: 1 }, size: 15, color: 'amber', gap: 8 });
       if (blist.length) { const bx = blist[0]; D.elabel(add3(v3(bx[0], bx[3], bx[5]), D.hx(sd)), add3(v3(bx[1], bx[3], bx[5]), D.hx(sd)), `p=${M.p}`, { side: { x: 0, y: -1 }, size: 14, color: 'red', gap: 6 }); }
       if (!C.problem) {
-        D.tag(v3(0, A, 0), t < 0.3 && !C.review ? `정육면체 6a² = ${plainVal(M.S0)}` : `겉넓이 6a² = ${plainVal(M.S0)} 그대로`, { dy: -34, size: 15, color: 'ink' });
-        if (t >= 0.3 || (C.review && st >= 2)) { const bx = blist[0]; D.tag(add3(v3((bx[0] + bx[1]) / 2, (bx[2] + bx[3]) / 2, (bx[4] + bx[5]) / 2), D.hx(sd)), `−3p² = −${plainVal(M.out3)}`, { size: 14, color: 'red', dy: 24 }); }
-        if (t >= 0.3 || (C.review && st >= 3)) D.tag(v3(A * 0.55, A * 0.55, A * 0.55), `+3p² = +${plainVal(M.in3)}`, { size: 14, color: 'amber', dy: -2, dx: -8 });
+        topText(D, A, A, A, t < 0.3 && !C.review ? `정육면체 6a² = ${plainVal(M.S0)}` : `겉넓이 6a² = ${plainVal(M.S0)} 그대로`);
+        if (t >= 0.3 || (C.review && st >= 2)) { const bx = blist[0]; D.tag(add3(v3((bx[0] + bx[1]) / 2, (bx[2] + bx[3]) / 2, (bx[4] + bx[5]) / 2), D.hx(sd)), `−3p² = −${plainVal(M.out3)}`, { size: 14, color: 'red', dy: 34 }); }
+        if (t >= 0.3 || (C.review && st >= 3)) D.tag(v3(A * 0.55, A * 0.55, A * 0.55), `+3p² = +${plainVal(M.in3)}`, { size: 14, color: 'amber', dy: -26, dx: -12 });
         if (row) {
           // 같은 줄 안에서 가로로: 빨강(없어진 바깥 3면)과 노랑(새로 생긴 안쪽 3면)이 포개져요
-          const off = (row.total + 0.8) / 2, y0 = bbx.y1 + 0.7, xB = (1 - te) * 2 * off; // 빨강은 오른쪽에 고정, 노랑이 왼쪽에서 오른쪽으로 가로로 겹쳐요
+          const off = (row.total + 0.8) / 2, y0 = bbx.y1 + (isN ? 1.15 : 0.7), xB = (1 - te) * 2 * off; // 빨강은 오른쪽에 고정, 노랑이 왼쪽에서 오른쪽으로 가로로 겹쳐요
           const L1 = { tiles: row.tiles.map((tl) => Object.assign({}, tl, { x: tl.x + off, fill: 'red', label: '', cap: '' })), height: row.height }, L2 = { tiles: row.tiles.map((tl) => Object.assign({}, tl, { x: tl.x + off - xB, fill: 'amber', label: tl.label })), height: row.height };
           drawTiles(D, L1, 0, y0); drawTiles(D, L2, 0, y0);
           if (te < 0.45) b.text({ x: off, y: y0 }, '없어진 바깥 3면', { dy: -13, size: D.fs(13), weight: 800, color: 'red', baseline: 'middle', align: 'center' });
@@ -357,7 +364,7 @@
       const pieceM = xfMesh(boxMesh(bx[0], bx[1], bx[2], bx[3], bx[4], bx[5]), shiftT(D.hx(sd)));
       const pts = cube8(v3(0, 0, 0), A).concat(cube8(D.hx(sd), A * 0.6));
       const bbx = bboxOf(pts.map(D.P));
-      D.fit(pts, C.problem ? [] : [{ x: -3, y: bbx.y1 + 0.7 }, { x: 3, y: bbx.y1 + 1.7 }], { l: 40, r: 40, t: 44, b: 40 });
+      D.fit(pts, C.problem ? [] : [{ x: -3, y: bbx.y1 + 0.7 }, { x: 3, y: bbx.y1 + 2.0 }], { l: 30, r: 30, t: 36, b: 36 });
       const lvR = !C.review ? 1 : st === 2 ? 2 : 1, lvA = !C.review ? 1 : st === 3 ? 2 : 1;
       D.body({ mesh: body, fill: 'sky', alpha: 0.2, edge: 'ink', faceStyle: (f) => (f.tag === 'in' ? { fill: 'amber', alpha: lvA === 2 ? 0.55 : 0.36 } : {}) });
       D.body({ mesh: pieceM, fill: 'violet', alpha: 0.18, edge: 'ink', edgeW: 2.2, faceStyle: (f) => { const onTop = f.n.y > 0.5 || (M.kind !== 'groove' && f.n.z > 0.5) || (M.kind === 'thru' && Math.abs(f.n.x) > 0.5); return onTop ? { fill: 'red', alpha: lvR === 2 ? 0.55 : 0.38 } : {}; } });
@@ -368,7 +375,7 @@
       if (!C.problem) {
         const y0 = bbx.y1 + 0.7;
         G.drawBars(D, [{ v: Math.max(M.rem, 1), fill: 'red', label: `없어진 ${M.rem}`, hl: lvR }, { v: Math.max(M.add, 1), fill: 'amber', label: `생긴 ${M.add}`, hl: lvA }], 0, y0, 5.6, 0, { total: undefined });
-        b.text({ x: 0, y: y0 + 0.62 }, `겉넓이 변화 = ${M.add} − ${M.rem} = ${M.delta >= 0 ? '+' : ''}${M.delta}  →  ${plainVal(M.tot)}`, { dy: 18, size: D.fs(15), weight: 800, color: M.delta === 0 ? 'green' : M.delta > 0 ? 'amber' : 'red', baseline: 'middle' });
+        b.text({ x: 0, y: y0 + 0.62 }, `겉넓이 변화 = ${M.add} − ${M.rem} = ${M.delta >= 0 ? '+' : ''}${M.delta}  →  ${plainVal(M.tot)}`, { dy: 34, size: D.fs(15), weight: 800, color: M.delta === 0 ? 'green' : M.delta > 0 ? 'amber' : 'red', baseline: 'middle' });
       }
     };
     return {
@@ -421,7 +428,9 @@
       const cav = flipMesh(revolveMesh([[r1, y0], [0, y0 + h1]], { N: 48 }));
       const ann = { faces: [{ pts: circPts(v3(0, y0, 0), v3(1, 0, 0), v3(0, 0, 1), r2, 64), holes: [circPts(v3(0, y0, 0), v3(1, 0, 0), v3(0, 0, 1), r1, 64)], n: v3(0, -1, 0), c: v3(0, y0, 0), tag: 'ann' }], edges: [] };
       const piece = xfMesh(revolveMesh([[0, y0], [r1, y0], [0, y0 + h1]], { N: 48, tags: ['bot', 'side'] }), shiftT(D.hx(slide)));
-      D.fit(cube8(v3(0, 0, 0), Math.max(r2, h2 / 2)).concat(cube8(D.hx(C.problem ? 0 : r2 + r1 * 1.7), Math.max(r1, h1 / 2))), [], { l: 44, r: 44, t: 40, b: 40 });
+      // 지금 프레임만으로 맞춰요: 파낸 원뿔이 빠져나간 만큼만 넓혀요
+      const outerBox = [-1, 1].flatMap((i) => [y0, yt].flatMap((yv) => [-1, 1].map((k2) => v3(i * r2, yv, k2 * r2))));
+      D.fit(slide > 1e-3 ? outerBox.concat([-1, 1].flatMap((i) => [y0, y0 + h1].flatMap((yv) => [-1, 1].map((k2) => add3(v3(i * r1, yv, k2 * r1), D.hx(slide)))))) : outerBox, [], { l: 24, r: 34, t: 30, b: 30 });
       const lvL = !C.review ? 1 : st === 1 ? 2 : 1, lvA = !C.review ? 1 : st === 2 ? 2 : 1, lvI = !C.review ? 1 : st === 3 ? 2 : 1;
       D.body({ mesh: outer, fill: lvL === 2 ? 'amber' : 'sky', alpha: lvL === 2 ? 0.36 : 0.2, edge: 'ink', edgeW: 2.6 });
       D.body({ mesh: ann, fill: lvA === 2 ? 'amber' : 'sky', alpha: lvA === 2 ? 0.5 : 0.3, edge: 'ink', edgeW: 2.4, sil: false });
@@ -432,12 +441,14 @@
       const yaw = Math.atan2(D.cam.sy, D.cam.cy), thR = -yaw, pa = (rr, yy, off) => add3(v3(rr * Math.cos(thR), yy, rr * Math.sin(thR)), off || v3(0, 0, 0));
       const c0 = v3(0, y0, 0);
       D.line(c0, pa(r2, y0), 'amber', 2.4, { dash: [5, 4] }); D.dot(c0, 'ink', 3.5);
-      D.tag(pa(r2 * 0.8, y0), `r₂=${M.r2}`, { dy: 14, size: 14, color: 'amber' });
-      D.tag(pa(r1 * 0.5, y0), `r₁=${M.r1}`, { dy: -12, size: 14, color: 'red' });
+      // 반지름·높이 글자는 선 위에 얹지 않고 가는 지시선으로 연결해 바깥에 둡니다
+      const lead = (p3, dxp, dyp, txt, col) => { const s0 = b.toS(D.P(p3)), w = b.toW(s0.x + dxp, s0.y + dyp); b.path([D.P(p3), w], { color: col, width: 1.3, alpha: 0.85 }); D.tag(w, txt, { fig: true, size: 14, color: col, dx: dxp > 0 ? 22 : -22 }); };
+      lead(pa(r2 * 0.97, y0), 30, 26, `r₂=${M.r2}`, 'amber');
+      lead(pa(r1 * 0.5, y0), -38, 36, `r₁=${M.r1}`, 'red');
       D.elabel(pa(r2, y0), v3(0, yt, 0), `R₂=${M.R2}`, { side: { x: 1, y: 0.2 }, size: 15, gap: 8 });
       const sh = D.hx(slide);
       D.elabel(add3(pa(r1, y0), sh), add3(v3(0, y0 + h1, 0), sh), `R₁=${M.R1}`, { side: { x: 1, y: 0 }, size: 15, color: 'red', gap: 8 });
-      D.tag(add3(v3(0, y0 + h1 / 2, 0), sh), `h₁=${M.h1}`, { size: 13, color: 'red', dx: -2 });
+      lead(add3(v3(0, y0 + h1 / 2, 0), sh), -44, -22, `h₁=${M.h1}`, 'red');
     };
     return {
       id: 'sv5-5', title: '원뿔 속을 원뿔로 판 입체', short: '원뿔 속 원뿔',
@@ -511,7 +522,7 @@
       const pts = cube8(v3(0, 0, 0), Math.max(a / 2, H / 2)).concat([add3(v3(0, yTop + topY, 0), D.hx(sd)), add3(v3(r, yTop, r), D.hx(sd)), add3(v3(-r, yTop, -r), D.hx(sd))]);
       const bbx = bboxOf(pts.map(D.P));
       const parts = C.problem ? null : M.mode === 'surf' ? [{ v: vnum(M.box), fill: 'sky', label: `상자 ${plainVal(M.box)}`, hl: !C.review ? 1 : st === 1 ? 2 : 1 }, { v: vnum(vmul(M.cover, -1)), fill: 'red', label: `−${plainVal(vmul(M.cover, -1))}`, hl: !C.review ? 1 : st === 2 ? 2 : 1 }, { v: vnum(M.add), fill: 'amber', label: `+${plainVal(M.add)}`, hl: !C.review ? 1 : st === 3 ? 2 : 1 }] : [{ v: vnum(M.vBox), fill: 'sky', label: `상자 ${plainVal(M.vBox)}`, hl: !C.review ? 1 : st === 1 ? 2 : 1 }, { v: vnum(M.vTop), fill: 'amber', label: `+${plainVal(M.vTop)}`, hl: !C.review ? 1 : st === 2 ? 2 : 1 }];
-      D.fit(pts, parts ? [{ x: -3, y: bbx.y1 + 0.7 }, { x: 3, y: bbx.y1 + 2.4 }] : [], { l: 40, r: 40, t: 40, b: 44 });
+      D.fit(pts, parts ? [{ x: -3, y: bbx.y1 + 0.7 }, { x: 3, y: bbx.y1 + 2.4 }] : [], { l: 26, r: 26, t: 30, b: 40 });
       const lvC = !C.review || M.mode === 'vol' ? 1 : st === 2 ? 2 : 1, lvT = !C.review ? 1 : M.mode === 'surf' ? (st === 3 ? 2 : 1) : (st === 2 ? 2 : 1);
       D.body({ mesh: boxM, fill: 'sky', alpha: 0.2, edge: 'ink', faceStyle: (f) => (f.n && f.n.y > 0.9 && lvC === 2 ? { fill: 'red', alpha: 0.4 } : {}) });
       D.body({ mesh: topM, fill: lvT === 2 ? 'amber' : 'green', alpha: lvT === 2 ? 0.4 : 0.26, edge: 'ink', faceStyle: (f) => (f.tag === 'bot' ? { fill: 'red', alpha: sd > r * 0.5 ? 0.42 : 0.06 } : {}) });

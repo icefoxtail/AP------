@@ -25,6 +25,8 @@
   const span = (c, t) => `<b style="color:var(--m-${c})">${t}</b>`;
   const Q3 = { F: '면', E: '모서리', V: '꼭짓점' };
   const stepOf = (C) => (C.problem ? 0 : C.review ? C.step : 4);
+  // 맨 위 줄글(banner)이 차지하는 높이(px): 그림 위 여백을 줄 수에 맞춰 잡습니다.
+  const topFor = (lines, extra = 8) => 16 + lines.filter(Boolean).reduce((a, l) => a + (l.size || 15) + 9, 0) + extra;
 
   /* ------------------------------------------------------------------ 개수 문제 (기둥·뿔·뿔대 공통) */
   function mkCountQ(kind, n, given, ask) {
@@ -72,11 +74,11 @@
   }
   // 문제용: 입체 5개를 3+2 로 늘어놓고 ①~⑤ 번호를 붙입니다(먼저 화면 틀을 맞춘 뒤 그립니다).
   function drawRow(D, s, its, C) {
-    const ctr = [[-1, 0], [0, 0], [1, 0], [-0.5, 1], [0.5, 1]], SP = 2.9, k = 0.7;
-    const pos = its.map((it, i) => add3(hxOf(s, ctr[i][0] * SP), v3(0, 0, -ctr[i][1] * 3.2)));
+    const ctr = [[-1, 0], [0, 0], [1, 0], [-0.5, 1], [0.5, 1]], SP = 2.45, k = 0.7; // 입체끼리 간격을 좁혀(겹치지 않는 한도) 폭에 맞춘 입체를 키웁니다
+    const pos = its.map((it, i) => add3(hxOf(s, ctr[i][0] * SP), v3(0, 0, -ctr[i][1] * 3.5)));
     const pts = [];
-    pos.forEach((c) => pts.push(add3(c, v3(-1.5, 0, -1.5)), add3(c, v3(1.5, 0, 1.5))));
-    D.fitPts(pts, { t: 24, b: 56, l: 24, r: 24 });
+    pos.forEach((c) => pts.push(add3(c, v3(-1.25, 0, -1.5)), add3(c, v3(1.25, 0, 1.5))));
+    D.fitPts(pts, { t: 24, b: 56, l: 12, r: 12 });
     its.forEach((it, i) => {
       drawKind(D, KINDS.find((q) => q.id === it.id), it.n, pos[i], k, { mini: true });
       D.label(add3(pos[i], v3(0, 0, -1.4)), `(${i + 1})`, { color: AMB, size: 19, at: [[0, 24]] });
@@ -168,7 +170,7 @@
       id: isP ? 'p1-1' : 'p1-2', title: isP ? 'n각기둥의 면·모서리·꼭짓점' : 'n각뿔의 면·모서리·꼭짓점', short: isP ? 'n각기둥' : 'n각뿔',
       question: isP ? '각기둥의 밑면이 n각형이면 면·모서리·꼭짓점은 각각 몇 개일까? 밑면을 가로로 밀어내고 옆면을 세어 보자.' : '각뿔의 밑면이 n각형이면 면·모서리·꼭짓점은 각각 몇 개일까? 밑면을 가로로 밀어내고 옆면을 세어 보자.',
       ctl: () => ['phN', 'phSplit'].concat(VIEW),
-      init: (s) => { s.phN = 5; s.phSplit = 1; s.phQ = rollCount(kind); },
+      init: (s) => { s.phN = 5; s.phSplit = isP ? 0.55 : 1; s.phQ = rollCount(kind); },
       reroll: (s) => { s.phQ = rollCount(kind); },
       model: (s) => {
         const n = clamp(Math.round(s.phN), 3, 12), S = solid(n), c = countsOf(kind, n);
@@ -180,9 +182,18 @@
         const split = C.problem ? 0 : C.review ? (st === 1 ? 1 : 0) : s.phSplit;
         const bi = baseIdx(S), si = sideIdx(S);
         const dTop = isP ? hxOf(s, -W * split) : v3(0, 0, 0), dBot = hxOf(s, W * split);
-        // 화면 틀: 가장 많이 벌어진 모양까지 담아서 막대를 움직여도 그림이 출렁이지 않게
-        const ext = S.V.map((p) => add3(p, hxOf(s, W))).concat(isP ? S.V.map((p) => add3(p, hxOf(s, -W))) : [], S.V);
-        D.fitPts(ext, { t: C.problem ? 30 : 100, b: 40, l: 36, r: 36 });
+        // 줄글(위쪽 안내) — 줄 수만큼만 위 여백을 둡니다
+        const L = [];
+        if (C.txt && !C.problem) {
+          const lineF = { t: isP ? `면 = 밑면 2 + 옆면 ${n} = ${c.F}개` : `면 = 밑면 1 + 옆면 ${n} = ${c.F}개`, c: AMB, size: 15 };
+          const lineE = { t: isP ? `모서리 = 밑 ${n}×2 + 옆 ${n} = ${c.E}개` : `모서리 = 밑 ${n} + 옆 ${n} = ${c.E}개`, c: SKY, size: 15 };
+          const lineV = { t: isP ? `꼭짓점 = ${n}×2 = ${c.V}개` : `꼭짓점 = 밑 ${n} + 꼭대기 1 = ${c.V}개`, c: AMB, size: 15 };
+          if (st === 4) L.push(lineF, lineE, lineV); else if (st === 1) L.push(lineF); else if (st === 2) L.push(lineE); else if (st === 3) L.push(lineV);
+        }
+        // 화면 틀: 지금 그려지는 것(입체 + 떼어 낸 밑면)만 담습니다 — 입체가 작아지지 않게
+        const ext = S.V.slice();
+        if (split >= 0.02) bi.forEach((fi, k0) => { const off = isP ? (S.F[fi].n.z > 0 ? dTop : dBot) : dBot; S.F[fi].i.forEach((i) => ext.push(add3(S.V[i], off))); });
+        D.fitPts(ext, { t: C.problem ? 30 : topFor(L), b: 40, l: 36, r: 36 });
         const edgeSty = (ei) => {
           const e = S.E[ei], za = S.V[e.a].z, zb = S.V[e.b].z;
           const isBase = isP ? Math.abs(za - zb) < 1e-6 : (za < -1e-6 && zb < -1e-6) || (Math.abs(za - zb) < 1e-6);
@@ -217,15 +228,7 @@
           if (!off) return;
           D.dot(p, st === 3 ? AMB : 'ink', st === 3 ? 5.5 : 3.5);
         });
-        // 줄글
-        if (C.txt && !C.problem) {
-          const L = [];
-          const lineF = { t: isP ? `면 = 밑면 2 + 옆면 ${n} = ${c.F}개` : `면 = 밑면 1 + 옆면 ${n} = ${c.F}개`, c: AMB, size: 15 };
-          const lineE = { t: isP ? `모서리 = 밑 ${n}×2 + 옆 ${n} = ${c.E}개` : `모서리 = 밑 ${n} + 옆 ${n} = ${c.E}개`, c: SKY, size: 15 };
-          const lineV = { t: isP ? `꼭짓점 = ${n}×2 = ${c.V}개` : `꼭짓점 = 밑 ${n} + 꼭대기 1 = ${c.V}개`, c: AMB, size: 15 };
-          if (st === 4) L.push(lineF, lineE, lineV); else if (st === 1) L.push(lineF); else if (st === 2) L.push(lineE); else if (st === 3) L.push(lineV);
-          banner(b, L, C);
-        }
+        if (C.txt && !C.problem) banner(b, L, C);
         D.flush();
       },
       steps: (M) => {
@@ -266,10 +269,18 @@
       const D = scene3(b, s, C), { S, T, n, k, c } = M, st = stepOf(C);
       const sep = C.problem ? 0 : C.review ? (st === 1 ? 0.7 : st === 4 ? 0 : 0.7) : s.phSep;
       const W = 2 * k * 1.5 + 0.9, off = hxOf(s, W * sep);
-      const topPts = S.V.concat(T.V.map((p) => add3(p, hxOf(s, W))));
-      D.fitPts(C.problem ? S.V : topPts.concat(S.V.map((p) => add3(p, hxOf(s, -0.4)))), { t: C.problem ? 30 : 104, b: 40, l: 36, r: 36 });
+      const showTop = !C.problem && sep > 0.01;
+      const L = [];
+      if (C.txt && !C.problem) {
+        if (st === 1 || st === 4) L.push({ t: '윗밑면 ∥ 아랫밑면 (서로 평행)', c: SKY, size: 15 });
+        if (st === 2 || st === 4) L.push({ t: `옆면은 사다리꼴 ${n}개`, c: AMB, size: 15 });
+        if (st === 3 || st === 4) L.push({ t: `면 ${n}+2=${c.F} · 모서리 ${n}×3=${c.E} · 꼭짓점 ${n}×2=${c.V}`, c: st === 3 ? AMB : 'ink', size: 14 });
+      }
+      // 화면 틀: 지금 그려지는 것(각뿔대 + 떼어 낸 윗 각뿔)만 담습니다 — 각뿔대가 작아지지 않게
+      const offFit = sep < 0.7 ? hxOf(s, W * 0.7) : off; // 처음 상태(0.7)보다 덜 떼었을 때는 처음 틀을 그대로 써서 막대를 움직여도 각뿔대 크기가 출렁이지 않게
+      D.fitPts(!C.problem ? S.V.concat(T.V.map((p) => add3(p, offFit)), C.txt ? [add3(add3(T.ctr, offFit), v3(0, 0, 1.7))] : []) : S.V, { t: C.problem ? 30 : topFor(L), b: 40, l: 40, r: 40 });
       // 윗 각뿔(잘려 나간 부분)
-      if (!C.problem && sep > 0.01 || (!C.problem && st !== 4 && st !== 0 && sep > 0.01)) {
+      if (showTop) {
         drawPoly(D, T, { off, face: (fi, vis) => (vis ? { c: VIO, a: 0.18 } : null), edge: () => ({ color: VIO, width: 2.6, alpha: 0.9 }) });
         if (C.txt) D.label(add3(add3(T.ctr, off), v3(0, 0, 1.7)), '잘라 낸 각뿔', { color: VIO, size: 14, at: [[0, 0]] });
       }
@@ -305,13 +316,7 @@
           }
         }
       }
-      if (C.txt && !C.problem) {
-        const L = [];
-        if (st === 1 || st === 4) L.push({ t: '윗밑면 ∥ 아랫밑면 (서로 평행)', c: SKY, size: 15 });
-        if (st === 2 || st === 4) L.push({ t: `옆면은 사다리꼴 ${n}개`, c: AMB, size: 15 });
-        if (st === 3 || st === 4) L.push({ t: `면 ${n}+2=${c.F} · 모서리 ${n}×3=${c.E} · 꼭짓점 ${n}×2=${c.V}`, c: st === 3 ? AMB : 'ink', size: 14 });
-        banner(b, L, C);
-      }
+      if (C.txt && !C.problem) banner(b, L, C);
       void k; void zTop;
       D.flush();
     },
@@ -373,6 +378,8 @@
         face: (q, vis) => (q === fi ? { c: AMB, a: 0.34 } : vis ? { c: 'green', a: 0.1 } : null),
         edge: () => ({ color: 'ink', width: 3 })
       });
+      // 고른 옆면이 뒤쪽이면 입체 속에 점선 테두리 + 연한 면으로 보이게(안 보이는 면은 점선)
+      if (!D.facing(F.n)) D.path(pts3, AMB, 3.4, { close: true, fill: AMB, fillAlpha: 0.12, dash: [6, 5] });
       if (out > 0.02) {
         b.path(flatPts, { close: true, fill: AMB, fillAlpha: 0.4, color: AMB, width: 3.6 });
         const mid = flatPts.reduce((a, q) => ({ x: a.x + q.x / flatPts.length, y: a.y + q.y / flatPts.length }), { x: 0, y: 0 });
@@ -440,7 +447,7 @@
         D.flush();
         return;
       }
-      const kinds = ['prism', 'pyr', 'fr'], SP = 3.6, pts = [], ctr = kinds.map((k, i) => hxOf(s, (i - 1) * SP));
+      const kinds = ['prism', 'pyr', 'fr'], SP = b.W < 560 ? 2.5 : 3.6, pts = [], ctr = kinds.map((k, i) => hxOf(s, (i - 1) * SP));
       kinds.forEach((k, i) => {
         const n = M.nn[k], R = 1.15, h = 1.7;
         const S = k === 'prism' ? prismS(n, R, h) : k === 'pyr' ? pyrS(n, R + 0.05, h) : frustumS(n, 0.55, R, h);
@@ -456,14 +463,12 @@
           D.label(base, `꼭짓점 ${c.V}`, { color: 'ink', size: 14, at: [[0, 92]], alpha: dim ? 0.45 : 1 });
         }
       });
-      D.fitPts(pts, { t: 70, b: 124, l: 30, r: 30 });
-      if (C.txt) {
-        const L = [{ t: `면이 ${M.F}개인 입체`, c: 'ink', size: 17 }];
-        if (st === 1) L.push({ t: `각기둥: 밑면 2 + 옆면 n = ${M.F} → n = ${M.nn.prism}`, c: AMB, size: 14 });
-        if (st === 2) L.push({ t: `각뿔: 밑면 1 + 옆면 n = ${M.F} → n = ${M.nn.pyr}`, c: AMB, size: 14 });
-        if (st === 3) L.push({ t: `각뿔대: 밑면 2 + 옆면 n = ${M.F} → n = ${M.nn.fr}`, c: AMB, size: 14 });
-        banner(b, L, C);
-      }
+      const L = [{ t: `면이 ${M.F}개인 입체`, c: 'ink', size: 17 }];
+      if (st === 1) L.push({ t: `각기둥: 밑면 2 + 옆면 n = ${M.F} → n = ${M.nn.prism}`, c: AMB, size: 14 });
+      if (st === 2) L.push({ t: `각뿔: 밑면 1 + 옆면 n = ${M.F} → n = ${M.nn.pyr}`, c: AMB, size: 14 });
+      if (st === 3) L.push({ t: `각뿔대: 밑면 2 + 옆면 n = ${M.F} → n = ${M.nn.fr}`, c: AMB, size: 14 });
+      D.fitPts(pts, { t: topFor(L, 4), b: 116, l: 12, r: 12 });
+      if (C.txt) banner(b, L, C);
       D.flush();
     },
     steps: (M) => [
@@ -525,7 +530,7 @@
       const id = C.problem ? 0 : C.review ? (st === 1 ? 1 : st === 2 ? 3 : 2) : M.stm.id;
       const baseHL = id === 1 || id === 2, sideHL = id === 3 || id === 4 || id === 5;
       drawPoly(D, S, {
-        face: (fi, vis) => (fi === topF ? { c: SKY, a: baseHL ? 0.4 : 0.1 } : fi === botF ? (baseHL ? { c: SKY, a: 0.28, hidden: true } : null) : vis ? { c: AMB, a: sideHL ? 0.36 : 0.08 } : null),
+        face: (fi, vis) => (fi === topF ? { c: SKY, a: baseHL ? 0.4 : 0.1 } : fi === botF ? (baseHL ? { c: SKY, a: 0.1, hidden: true } : null) : vis ? { c: AMB, a: sideHL ? 0.36 : 0.08 } : null),
         edge: () => ({ color: 'ink', width: 3 })
       });
       if (C.txt && !C.problem) {
@@ -602,7 +607,8 @@
     draw(b, s, M, C) {
       const D = scene3(b, s, C), st = stepOf(C);
       const S = C.problem ? M.qS : M.S, e = C.problem ? M.qe : M;
-      const bottom = C.problem ? 36 : 150;
+      const narrow = b.W < 560, hasBars = !C.problem && C.txt && st !== 1;
+      const bottom = !hasBars ? 36 : narrow ? 104 : 150; // 아래 두 막대 자리(휴대폰은 막대를 납작하게 해서 입체에 높이를 더 줍니다)
       D.fitPts(S.V, { t: C.problem ? 70 : 74, b: bottom, l: 40, r: 40 });
       drawPoly(D, S, { face: (fi, vis) => (vis ? { c: st === 1 ? AMB : 'green', a: st === 1 ? 0.26 : 0.12 } : null), edge: () => ({ color: st === 1 ? SKY : 'ink', width: st === 1 ? 3.6 : 3 }) });
       S.V.forEach((p) => D.dot(p, st === 1 ? RED : 'ink', st === 1 ? 5.5 : 3.5));
@@ -611,20 +617,21 @@
         else banner(b, [{ t: M.name, c: 'ink', size: 17 }, { t: st === 1 ? `꼭짓점 ${e.V}개 · 모서리 ${e.E}개 · 면 ${e.F}개` : st === 3 ? `V − E + F = ${e.V} − ${e.E} + ${e.F} = ${e.V - e.E + e.F}` : `V − E + F = ${e.V - e.E + e.F}`, c: st === 3 ? GRN : 'ink', size: 16 }], C);
       }
       // 아래 막대: V + F 와 E + 2
-      if (!C.problem && C.txt && st !== 1) {
+      if (hasBars) {
         const x0 = b.insets.left + 18, x1 = b.W - b.insets.right - 64, wAll = x1 - x0, tot = Math.max(e.V + e.F, e.E + 2) || 1, uw = wAll / tot;
-        const yb = b.H - b.insets.bottom - 40;
+        const hh = narrow ? 11 : 16, gap = narrow ? 42 : 56, lab = narrow ? 24 : 30;
+        const yb = b.H - b.insets.bottom - (narrow ? 22 : 40);
         const bar = (y, parts, label) => {
           let x = x0;
           parts.forEach((p) => {
             const w = p.v * uw;
-            sRect(b, x, y - 16, x + w, y + 16, p.c, 0.42);
+            sRect(b, x, y - hh, x + w, y + hh, p.c, 0.42);
             if (w > 24) b.stext(x + w / 2, y, p.t, { color: 'ink', size: 14, weight: 800, align: 'center', baseline: 'middle' });
             x += w;
           });
-          b.stext(x0, y - 30, label, { color: 'ink', size: 13, weight: 800, align: 'left', baseline: 'middle' });
+          b.stext(x0, y - lab, label, { color: 'ink', size: 13, weight: 800, align: 'left', baseline: 'middle' });
         };
-        bar(yb - 56, [{ v: e.V, c: SKY, t: `V ${e.V}` }, { v: e.F, c: AMB, t: `F ${e.F}` }], `V + F = ${e.V + e.F}`);
+        bar(yb - gap, [{ v: e.V, c: SKY, t: `V ${e.V}` }, { v: e.F, c: AMB, t: `F ${e.F}` }], `V + F = ${e.V + e.F}`);
         bar(yb, [{ v: e.E, c: RED, t: `E ${e.E}` }, { v: 2, c: GRN, t: '2' }], `E + 2 = ${e.E + 2}`);
       }
       D.flush();

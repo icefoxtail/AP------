@@ -315,6 +315,10 @@
   const netAt = (net, poses, k, p) => applyT(poses[k], p);
 
   /* ------------------------------------------------------------ 장면 도우미 */
+  // 맞춤. 기본은 상자(box)가 통째로 들어오게 합니다.
+  //  o.core = 핵심 입체의 상자(화면 좌표), o.floor = 폰에서 핵심이 무대 폭의 이 비율보다 작아지지 않게(보조 그림이 입체를 줄이지 않게),
+  //  o.cap = 핵심이 무대 폭(PC는 높이도)의 이 비율보다 커지지 않게(입체만 있을 때 과대 확대 방지). 배율을 고정하면 핵심의 가운데에 맞춥니다.
+  //  맞춘 뒤 b.fitInfo = { k, wv, hv } (지금 화면에 보이는 세계 단위 폭·높이)를 남깁니다.
   function fitBox(b, box, o = {}) {
     const narrow = b.W < 560;
     const aw = Math.max(10, b.W - b.insets.left - b.insets.right), ah = Math.max(10, b.H - b.insets.top - b.insets.bottom);
@@ -323,9 +327,24 @@
     const pad = b.thumb ? { l: 5, r: 5, t: 5, b: 5 } : { l: o.l == null ? base : o.l, r: o.r == null ? base : o.r, t: o.t == null ? base : o.t, b: o.b == null ? base : o.b };
     const bw = Math.max(1e-6, box.x1 - box.x0), bh = Math.max(1e-6, box.y1 - box.y0);
     let k = Math.max(3, Math.min((W - pad.l - pad.r) / bw, (H - pad.t - pad.b) / bh));
-    if (o.maxK) k = Math.min(k, o.maxK);
-    b.focus = { x: [box.x0 - pad.l / k, box.x1 + pad.r / k], y: [box.y0 - pad.t / k, box.y1 + pad.b / k] };
-    return b.k;
+    let fixed = false;
+    const c = o.core;
+    if (c && !b.thumb) {
+      const cw = Math.max(1e-6, c.x1 - c.x0), ch = Math.max(1e-6, c.y1 - c.y0);
+      const kCore = Math.max(3, Math.min((W - pad.l - pad.r) / cw, (H - pad.t - pad.b) / ch));
+      if (o.floor && narrow) { const kf = Math.min(kCore, (o.floor * W) / cw); if (kf > k) { k = kf; fixed = true; } }
+      if (o.cap) { const kc = narrow ? (o.cap * W) / cw : Math.min((o.cap * W) / cw, (o.cap * H) / ch); if (kc < k) { k = kc; fixed = true; } }
+    }
+    if (!fixed) b.focus = { x: [box.x0 - pad.l / k, box.x1 + pad.r / k], y: [box.y0 - pad.t / k, box.y1 + pad.b / k] };
+    else {
+      const wv = W / k, hv = H / k, ref = o.core && o.floor ? o.core : box;
+      const cx = (ref.x0 + ref.x1) / 2 + (pad.r - pad.l) / (2 * k);
+      const top = box.y0 - pad.t / k, bot = box.y1 + pad.b / k, y0 = bot - top <= hv ? (top + bot) / 2 - hv / 2 : top;
+      b.focus = { x: [cx - wv / 2, cx + wv / 2], y: [y0, y0 + hv] };
+    }
+    const kk = b.k;
+    b.fitInfo = { k: kk, wv: W / kk, hv: H / kk };
+    return kk;
   }
   const bboxOf = (pts) => { let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9; pts.forEach((p) => { x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); y0 = Math.min(y0, p.y); y1 = Math.max(y1, p.y); }); return { x0, y0, x1, y1 }; };
 
@@ -359,6 +378,13 @@
       const ps = pts3.map(D.P).concat(extra || []);
       return fitBox(b, bboxOf(ps), opt || {});
     };
+    // 핵심 입체(core3)를 기준으로 맞춥니다. 보조 그림(extra: 화면 좌표 점)이 입체를 floor(폰) 아래로 줄이지 못하게 하고, 입체만 있으면 cap보다 커지지 않게 합니다.
+    // 반환: { k, wv, hv } 지금 화면에 보이는 세계 단위 폭·높이(보조 그림을 이 폭에 맞춰 배치할 때 씁니다)
+    D.fitCore = (core3, extra, opt, lim = {}) => {
+      const cp = core3.map((p) => (p.z === undefined ? p : D.P(p))), cb = bboxOf(cp); // 점이 {x,y}(화면 좌표)이면 그대로, v3이면 투영
+      fitBox(b, bboxOf(cp.concat(extra || [])), Object.assign({}, opt || {}, { core: cb, floor: lim.floor, cap: lim.cap }));
+      return b.fitInfo;
+    };
     D.fs = (v) => (D.narrow ? v * 0.93 : v);
     /* ---- 선·면·점 */
     D.line = (p, q, color = 'ink', width = 2.6, op = {}) => b.path([D.P(p), D.P(q)], { color, width, dash: op.dash, alpha: op.alpha, glow: op.glow, ref: op.ref });
@@ -390,15 +416,16 @@
       const vis = (fi) => fi >= 0 && fr[fi] > 1e-6;
       const color = bd.edge || 'ink', w0 = bd.edgeW || 2.6;
       const run = (list, hidden) => {
-        let pts = null, last = null, key = null;
+        let pts = null, last = null, key = null, tail = null;
         const end = () => { if (pts && pts.length > 1) b.path(pts, { color: last.color, width: last.width, dash: hidden ? [6, 5] : undefined, alpha: last.alpha }); pts = null; };
         list.forEach((e) => {
           const es = (bd.edgeFn && bd.edgeFn(e)) || {};
           if (es.skip) { end(); return; }
           const st = { color: es.color || color, width: es.width || (e.thin ? Math.max(1.3, w0 * 0.55) : w0), alpha: (es.alpha != null ? es.alpha : e.thin ? 0.75 : 1) * (hidden ? (bd.hiddenAlpha == null ? 0.7 : bd.hiddenAlpha) : 1) };
-          const same = pts && e.chain && e.chain === key && last.color === st.color && last.width === st.width && last.alpha === st.alpha;
+          const same = pts && e.chain && e.chain === key && last.color === st.color && last.width === st.width && last.alpha === st.alpha && tail && Math.hypot(tail.x - e.a.x, tail.y - e.a.y, tail.z - e.a.z) < 1e-6; // 이어지지 않는 조각(고리의 시작 번호를 넘는 곳)은 직선으로 잇지 않아요
           if (!same) { end(); pts = [P(e.a)]; key = e.chain || null; }
           pts.push(P(e.b));
+          tail = e.b;
           last = st;
           if (!e.chain) end();
         });
@@ -406,6 +433,11 @@
       };
       const hid = [], shown = [];
       m.edges.forEach((e) => {
+        // 입체 둘이 맞붙은 자리의 이음 원: 뒤쪽 반은 위(또는 아래)의 입체에 가려지므로 점선, 앞쪽 반은 실선 (bd.dashBack(e) = 원의 중심 또는 null)
+        if (bd.dashBack && e.chain) {
+          const c = bd.dashBack(e);
+          if (c) { const mp = mid3(e.a, e.b); (((mp.x - c.x) * V.x + (mp.z - c.z) * V.z) < 0 ? hid : shown).push(e); return; }
+        }
         if (e.smooth) { if (vis(e.f1) !== vis(e.f2)) shown.push(e); return; }
         (vis(e.f1) || vis(e.f2) || (e.f1 < 0 && e.f2 < 0) ? shown : hid).push(e);
       });

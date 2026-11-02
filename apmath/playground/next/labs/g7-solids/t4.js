@@ -12,7 +12,7 @@
   if (!G || !G.S3 || !G.NET) return;
   const S3 = G.S3, N = G.NET;
   const { PI, DEG, clamp, fmtN, T, fit, P, rd, notes, mkNum, mkText, rint, pick, shuffle, sshuffle, esc, jo } = G;
-  const { pt, arcPts, sectorPts, unionB, shiftB, arrange, xTxt, px } = N;
+  const { pt, arcPts, sectorPts, unionB, shiftB, xTxt, px } = N;
   const AMB = 'amber', SKY = 'sky', ROSE = 'rose', GRN = 'green';
   const rad = (d) => d * DEG;
   const cmv = (v) => fmtN(v) + ' cm';
@@ -60,17 +60,21 @@
     const { r, R, x } = spec, h = Math.sqrt(Math.max(0.01, R * R - r * r));
     const sw = R * Math.sin(rad(Math.min(x / 2, 90)));
     const A = N.sectorBox(R, x, 0, false);
-    const cp = Math.cos(22 * DEG), sp = Math.sin(22 * DEG);
-    const cb = { x0: -r, x1: r, y0: -r * sp, y1: h * cp };
-    const off = arrange(b, A, cb, R * 0.35);
-    let all = unionB(A, shiftB(cb, off.dx, off.dy));
-    const bars = spec.bars ? 76 : 0;
-    fit(b, all, { l: 34, r: 34, t: 44, b: 28 + bars });
-    return { A, off, all, h, mp: mapper(r, R, h, x), D: S3.ctx(b, s, { k: 1, ox: off.dx, oy: off.dy }), cone: S3.solid('cone', { R: r, h1: h }) };
+    const cp = Math.cos(G.PITCH0 * DEG), sp = Math.sin(G.PITCH0 * DEG);
+    const cb1 = { x0: -r, x1: r, y0: -r * sp, y1: h * cp };
+    const bars = spec.bars ? 76 : 0, padS = { l: 34, r: 34, t: 44, b: 28 + bars };
+    // 입체(원뿔)는 휴대폰에서 폭의 절반 가까이 보이도록 전개도와 따로 키웁니다(N.layoutSolid: 위·아래로 쌓을지 옆에 놓을지도 함께 고름).
+    const lay = N.layoutSolid(b, A, cb1, R * 0.35, padS, { gapPx: 34 }), ms = lay.ms, off = lay.off;
+    const all = unionB(A, shiftB({ x0: cb1.x0 * ms, x1: cb1.x1 * ms, y0: cb1.y0 * ms, y1: cb1.y1 * ms }, off.dx, off.dy));
+    fit(b, all, padS);
+    return { A, off, all, h, mp: mapper(r, R, h, x), D: S3.ctx(b, s, { k: ms, ox: off.dx, oy: off.dy }), cone: S3.solid('cone', { R: r, h1: h }) };
   }
   // 막대 비교(가로): 같은 눈금에서 길이를 비교
   function bars(b, C, all, items, maxLen) {
-    const k = b.k, x0 = all.x0 + px(b, 8), Wd = Math.max(px(b, 90), (all.x1 - all.x0) * 0.4), y0 = all.y0 - px(b, 20);
+    const k = b.k, x0 = all.x0 + px(b, 8), y0 = all.y0 - px(b, 20);
+    // 막대 끝의 글자가 무대 밖으로 나가지 않게 막대 길이를 줄입니다
+    const textMax = Math.max(...items.map((it) => G.textW(`${it.label} ${it.text}`, 14))) + 14, rightW = b.toW(b.W - b.insets.right - 6, 0).x;
+    const Wd = Math.max(px(b, 40), Math.min(Math.max(px(b, 90), (all.x1 - all.x0) * 0.4), rightW - x0 - px(b, textMax)));
     items.forEach((it, i) => {
       const y = y0 - i * px(b, 22), len = Wd * it.len / maxLen;
       b.seg({ x: x0, y }, { x: x0 + len, y }, { color: it.color, width: it.hi ? 9 : 6, alpha: it.hi ? 1 : 0.55 });
@@ -103,11 +107,11 @@
     draw(b, s, M, C) {
       if (C.problem) { // 문제: 입체와 점 A (끈은 보기에서 고른다)
         const { r, R } = M, h = Math.sqrt(R * R - r * r), D = S3.ctx(b, s, {});
-        fit(b, { x0: -r, x1: r, y0: -r * Math.sin(22 * DEG), y1: h * Math.cos(22 * DEG) }, { l: 70, r: 70, t: 40, b: 40 });
+        fit(b, { x0: -r, x1: r, y0: -r * Math.sin(G.PITCH0 * DEG), y1: h * Math.cos(G.PITCH0 * DEG) }, { l: 70, r: 70, t: 40, b: 40 });
         S3.drawSolid(D, S3.solid('cone', { R: r, h1: h }), {});
         D.line({ x: 0, y: h, z: 0 }, D.pol(r, 0, 0), AMB, 3.4);
         T(b, D.P({ x: r / 2, y: h / 2, z: 0 }), `R = ${R} cm`, AMB, { dx: 44, size: 16 });
-        D.line({ x: 0, y: 0, z: 0 }, { x: r, y: 0, z: 0 }, SKY, 2.6); T(b, D.P({ x: r / 2, y: 0, z: 0 }), `r = ${r} cm`, SKY, { dy: 18, size: 16 });
+        D.line({ x: 0, y: 0, z: 0 }, { x: r, y: 0, z: 0 }, SKY, 2.6); S3.rLabel(b, D, r, `r = ${r} cm`, SKY, 16);
         b.point(D.P(D.pol(r, 0, 0)), { color: 'ink', r: 5 }); T(b, D.P(D.pol(r, 0, 0)), 'A', 'ink', { dx: 14, dy: 14, size: 17 });
         return;
       }
@@ -177,11 +181,11 @@
       const prob = C.problem, ang = prob ? M.qa : M.ang, r = prob ? M.qr : M.r, R = r * S42[ang], x = ang;
       if (prob) { // 문제: 입체 + 점 A (전개도는 주어지지 않음)
         const h = Math.sqrt(R * R - r * r), D = S3.ctx(b, s, {});
-        fit(b, { x0: -r, x1: r, y0: -r * Math.sin(22 * DEG), y1: h * Math.cos(22 * DEG) }, { l: 70, r: 70, t: 40, b: 40 });
+        fit(b, { x0: -r, x1: r, y0: -r * Math.sin(G.PITCH0 * DEG), y1: h * Math.cos(G.PITCH0 * DEG) }, { l: 70, r: 70, t: 40, b: 40 });
         S3.drawSolid(D, S3.solid('cone', { R: r, h1: h }), {});
         D.line({ x: 0, y: h, z: 0 }, D.pol(r, 0, 0), AMB, 3.4);
         T(b, D.P({ x: r / 2, y: h / 2, z: 0 }), `R = ${R} cm`, AMB, { dx: 44, size: 16 });
-        D.line({ x: 0, y: 0, z: 0 }, { x: r, y: 0, z: 0 }, SKY, 2.6); T(b, D.P({ x: r / 2, y: 0, z: 0 }), `r = ${r} cm`, SKY, { dy: 18, size: 16 });
+        D.line({ x: 0, y: 0, z: 0 }, { x: r, y: 0, z: 0 }, SKY, 2.6); S3.rLabel(b, D, r, `r = ${r} cm`, SKY, 16);
         b.point(D.P(D.pol(r, 0, 0)), { color: 'ink', r: 5 }); T(b, D.P(D.pol(r, 0, 0)), 'A', 'ink', { dx: 14, dy: 14, size: 17 });
         return;
       }
@@ -208,7 +212,7 @@
       D.line({ x: 0, y: F.h, z: 0 }, D.pol(r, 0, 0), SKY, 2.4);
       drawString3D(D, F.mp, segSamples(m.A, m.A2), { kr: r / F.h });
       b.point(D.P(D.pol(r, 0, 0)), { color: 'ink', r: 5 });
-      if (C.txt) { T(b, D.P(D.pol(r, 0, 0)), 'A', 'ink', { dx: 14, dy: 12, size: 17 }); T(b, D.P({ x: r / 2, y: 0, z: 0 }), `r = ${r}`, SKY, { dy: 18, size: 15 }); }
+      if (C.txt) { T(b, D.P(D.pol(r, 0, 0)), 'A', 'ink', { dx: 14, dy: 12, size: 17 }); S3.rLabel(b, D, r, `r = ${r}`, SKY, 15); }
     },
     steps: (M) => M.ang === 60 ? [
       `원뿔을 펼쳐요. 모선 R = ${M.R} cm가 부채꼴의 반지름이에요.`,
@@ -257,7 +261,7 @@
       const prob = C.problem, ang = prob ? M.qa : M.ang, r = prob ? M.qr : M.r, R = r * S42[ang], x = ang, p = prob ? Math.min(M.qp, R) : M.p;
       if (prob) {
         const h = Math.sqrt(R * R - r * r), D = S3.ctx(b, s, {});
-        fit(b, { x0: -r, x1: r, y0: -r * Math.sin(22 * DEG), y1: h * Math.cos(22 * DEG) }, { l: 70, r: 70, t: 40, b: 40 });
+        fit(b, { x0: -r, x1: r, y0: -r * Math.sin(G.PITCH0 * DEG), y1: h * Math.cos(G.PITCH0 * DEG) }, { l: 70, r: 70, t: 40, b: 40 });
         S3.drawSolid(D, S3.solid('cone', { R: r, h1: h }), {});
         D.line({ x: 0, y: h, z: 0 }, D.pol(r, 0, 0), AMB, 3.4);
         T(b, D.P({ x: r * 0.8, y: h * 0.2, z: 0 }), `R = ${R} cm`, AMB, { dx: 46, size: 16 });
@@ -330,24 +334,25 @@
     draw(b, s, M, C) {
       const prob = C.problem, r2 = prob ? M.qg : M.r2, r1 = prob ? Math.min(M.qf, r2 - 1) : M.r1, R2 = 6 * r2, R1 = 6 * r1, x = 60;
       const O = { x: 0, y: 0 }, a0 = -90 - x / 2, a1 = -90 + x / 2, A = pt(O, R2, a0), A2 = pt(O, R2, a1), Hf = Math.sqrt(R2 * R2 - r2 * r2), hF = (R2 - R1) * Hf / R2;
-      const sw = R2 * Math.sin(rad(30)), Ab = { x0: -sw, x1: sw, y0: -R2, y1: 0 }, cb = { x0: -r2, x1: r2, y0: -r2 * Math.sin(22 * DEG), y1: hF * Math.cos(22 * DEG) };
-      const off = prob ? { dx: 0, dy: 0, below: false } : arrange(b, Ab, cb, R2 * 0.3);
-      const D = S3.ctx(b, s, { k: 1, ox: off.dx, oy: off.dy }), frus = S3.solid('frus', { R: r2, r: r1, h1: hF });
+      const sw = R2 * Math.sin(rad(30)), Ab = { x0: -sw, x1: sw, y0: -R2, y1: 0 }, cb1 = { x0: -r2, x1: r2, y0: -r2 * Math.sin(G.PITCH0 * DEG), y1: hF * Math.cos(G.PITCH0 * DEG) + r1 * Math.sin(G.PITCH0 * DEG) }, padS = { l: 34, r: 34, t: 44, b: 34 };
+      const lay = prob ? { ms: 1, off: { dx: 0, dy: 0, below: false } } : N.layoutSolid(b, Ab, cb1, R2 * 0.3, padS, { gapPx: 36 }), ms = lay.ms, off = lay.off;
+      const cb = { x0: cb1.x0 * ms, x1: cb1.x1 * ms, y0: cb1.y0 * ms, y1: cb1.y1 * ms };
+      const D = S3.ctx(b, s, { k: prob ? 1 : ms, ox: off.dx, oy: off.dy }), frus = S3.solid('frus', { R: r2, r: r1, h1: hF });
       const mp = mapper(r2, R2, Hf, x);
       if (prob) { // 문제: 입체(점 A)만 보여 준다. 원래 큰 원뿔의 모선 R₂ 를 점선으로.
         const D0 = S3.ctx(b, s, {});
-        const box = { x0: -r2 - 0.3, x1: r2 + 1.2, y0: -r2 * Math.sin(22 * DEG) - 0.2, y1: Hf * Math.cos(22 * DEG) + 0.2 };
+        const box = { x0: -r2 - 0.3, x1: r2 + 1.2, y0: -r2 * Math.sin(G.PITCH0 * DEG) - 0.2, y1: Hf * Math.cos(G.PITCH0 * DEG) + 0.2 };
         fit(b, box, { l: 60, r: 70, t: 34, b: 34 });
         S3.drawSolid(D0, frus, {});
         const gh = S3.tangents(S3.ringP(D0, r2, 0), S3.ringP(D0, 0, Hf)).lines; gh.forEach((ln) => b.path([ln[0], ln[1]], { color: 'muted', width: 1.8, dash: [6, 5], alpha: 0.8 }));
         D0.line({ x: 0, y: Hf, z: 0 }, D0.pol(r2, 0, 0), AMB, 3);
         T(b, D0.P({ x: r2 * 0.55, y: Hf * 0.42, z: 0 }), `R = ${R2} cm`, AMB, { dx: 50, size: 15 });
-        D0.line({ x: 0, y: 0, z: 0 }, { x: r2, y: 0, z: 0 }, SKY, 2.6); T(b, D0.P({ x: r2 / 2, y: 0, z: 0 }), `r = ${r2}`, SKY, { dy: 18, size: 15 });
-        D0.line({ x: 0, y: hF, z: 0 }, { x: r1, y: hF, z: 0 }, ROSE, 2.6); T(b, D0.P({ x: r1 / 2, y: hF, z: 0 }), `${r1}`, ROSE, { dy: -16, size: 15 });
+        D0.line({ x: 0, y: 0, z: 0 }, { x: r2, y: 0, z: 0 }, SKY, 2.6); S3.rLabel(b, D0, r2, `r = ${r2}`, SKY, 15);
+        D0.line({ x: 0, y: hF, z: 0 }, { x: r1, y: hF, z: 0 }, ROSE, 2.6); S3.rLabel(b, D0, r1, `${r1}`, ROSE, 15, hF);
         b.point(D0.P(D0.pol(r2, 0, 0)), { color: 'ink', r: 5 }); T(b, D0.P(D0.pol(r2, 0, 0)), 'A', 'ink', { dx: 14, dy: 14, size: 17 });
         return;
       }
-      fit(b, unionB(Ab, shiftB(cb, off.dx, off.dy)), { l: 34, r: 34, t: 44, b: 34 });
+      fit(b, unionB(Ab, shiftB(cb, off.dx, off.dy)), padS);
       const band = arcPts(O, R2, a0, a1).concat(arcPts(O, R1, a1, a0));
       b.path(band, { close: true, fill: SKY, fillAlpha: 0.26, color: SKY, width: 3 });
       b.path(arcPts(O, R1, a0, a1), { color: 'muted', width: 1.6, dash: [5, 5], alpha: 0.8 });
@@ -357,13 +362,14 @@
         T(b, A, 'A', 'ink', { dx: -14, dy: 8, size: 17 }); T(b, A2, "A′", 'ink', { dx: 16, dy: 8, size: 17 }); T(b, O, 'O', 'ink', { dy: -14, size: 16 });
         T(b, { x: 0, y: A.y }, `AA′ = R₂ = ${R2} cm`, AMB, { dy: 22, size: 16 });
         T(b, { x: A.x / 2, y: A.y / 2 }, `R₂ = ${R2}`, SKY, { dx: -34, size: 14 });
-        T(b, pt(O, R1, -90), `R₁ = ${R1}`, 'muted', { dy: -16, size: 14 });
+        if (R1 * b.k >= 60) T(b, pt(O, R1, -90), `R₁ = ${R1}`, 'muted', { dy: -16, size: 14 });
+        else T(b, pt(O, R1, a0), `R₁ = ${R1}`, 'muted', { dx: -8, dy: 2, size: 14, align: 'right' }); // 안쪽 호가 작으면 60° 표시와 겹치지 않게 왼쪽 가장자리 옆에
         b.angle(O, pt(O, 1, a0), pt(O, 1, a1), { r: Math.min(R1 * 0.5, px(b, 26)), color: ROSE, label: '60°', size: 13 });
       }
       S3.drawSolid(D, frus, {});
       drawString3D(D, mp, segSamples(A, A2), { kr: r2 / Hf });
       b.point(D.P(D.pol(r2, 0, 0)), { color: 'ink', r: 5 });
-      if (C.txt) { T(b, D.P(D.pol(r2, 0, 0)), 'A', 'ink', { dx: 14, dy: 14, size: 17 }); T(b, D.P({ x: r2 / 2, y: 0, z: 0 }), `${r2}`, SKY, { dy: 17, size: 14 }); T(b, D.P({ x: r1 / 2, y: hF, z: 0 }), `${r1}`, AMB, { dy: -15, size: 14 }); }
+      if (C.txt) { T(b, D.P(D.pol(r2, 0, 0)), 'A', 'ink', { dx: 14, dy: 14, size: 17 }); S3.rLabel(b, D, r2, `${r2}`, SKY, 14); S3.rLabel(b, D, r1, `${r1}`, AMB, 14, hF); }
     },
     steps: (M) => [
       `원뿔대를 펼치면 큰 부채꼴(반지름 $R_2=${M.R2}$)에서 작은 부채꼴(반지름 $R_1=${M.R1}$)을 뺀 띠 모양이에요.`,

@@ -42,11 +42,12 @@
   function explore3D(b, s, M, C, o) {
     const D = S3.ctx(b, s), sol = M.sol;
     const sweep = 2 * PI * clamp(C.t, 0, 1), full = sweep >= 2 * PI - 1e-3;
-    const ext = 0.55;
-    const box = S3.boxOf(D, sol, [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + ext, z: 0 })]);
-    fit(b, box, { t: 52, r: 78, l: 74, b: 44 });
+    const ext = 0.55, extTop = S3.axisExtTop(D, S3.topR(sol), ext);
+    const box = S3.boxOf(D, sol, [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + extTop, z: 0 })]);
+    if (b.W < 560) fit(b, box, { t: 44, r: 78, l: 56, b: 40 }); // 휴대폰: 글자 자리를 줄여 입체를 더 크게
+    else fit(b, box, { t: 52, r: 78, l: 74, b: 44 });
     S3.drawRevolve(D, sol, full ? 2 * PI : sweep, {});
-    S3.drawAxis(D, sol.ymin, sol.ymax, { ext, label: '회전축 l', dx: o.axisDx || 0 });
+    S3.drawAxis(D, sol.ymin, sol.ymax, { ext, extTop, label: '회전축 l', dx: o.axisDx || 0 });
     if (C.review && C.step === 2) D.line({ x: 0, y: sol.ymin, z: 0 }, { x: 0, y: sol.ymax, z: 0 }, ROSE, 5);
     if (!full && sweep > 0.02) D.g.path(S3.figAt(D, sol.poly, sweep), { close: true, fill: AMB, fillAlpha: 0.16, color: AMB, width: 2.2, dash: [6, 5] });
     D.g.path(S3.figAt(D, sol.poly, 0), { close: true, fill: AMB, fillAlpha: 0.3, color: AMB, width: C.review && C.step === 1 ? 4.6 : 3.4 });
@@ -95,7 +96,7 @@
     rs.forEach((r) => {
       const y = r[1];
       D.line({ x: 0, y, z: 0 }, { x: r[0], y, z: 0 }, col, 2.6, { dash: [5, 4] });
-      D.lab({ x: r[0] / 2, y, z: 0 }, `${r[2]} = ${r[0] === d.R ? d.R : r[0]}`, col, { dy: 15, size: 15 });
+      S3.rLabel(D.b, D, r[0], `${r[2]} = ${r[0] === d.R ? d.R : r[0]}`, col, 15, y);
     });
     hs.forEach((h) => {
       const x = h[0] + 0.4;
@@ -134,7 +135,7 @@
         labels: (D, m) => {
           const sz = Math.min(0.35, m.R * 0.22, m.h * 0.22);
           [[0, 0, [1, 0], [0, 1]], [m.R, 0, [-1, 0], [0, 1]], [m.R, m.h, [-1, 0], [0, -1]], [0, m.h, [1, 0], [0, -1]]].forEach((c) => rm(D, [c[0], c[1]], c[2], c[3], sz));
-          D.lab({ x: m.R / 2, y: 0, z: 0 }, `r = ${m.R} cm`, AMB, { dy: 19 });
+          S3.rLabel(D.b, D, m.R, `r = ${m.R} cm`, AMB, 16);
           D.lab({ x: m.R, y: m.h / 2, z: 0 }, `h = ${m.h} cm`, AMB, { dx: 44 });
         },
         handles: (D, bd, st, m) => bd.handle('rh', D.P({ x: m.R, y: m.h, z: 0 }), { color: AMB, ariaLabel: '직사각형의 오른쪽 위 꼭짓점', drag: (w) => { const u = D.unproj(w.x, w.y); st.playing = false; st.soR = clamp(Math.round(u.rho), 1, 6); st.soH1 = clamp(Math.round(u.y), 2, 8); } })
@@ -203,7 +204,7 @@
           D.lab({ x: 0, y: m.h, z: 0 }, top, 'ink', { dx: -14, dy: -4 });
           D.lab({ x: m.r, y: 0, z: 0 }, side, 'ink', { dx: 12, dy: 12 });
           D.lab({ x: 0, y: m.h / 2, z: 0 }, `${m.ax} = ${m.h} cm`, AMB, { dx: -50 });
-          D.lab({ x: m.r / 2, y: 0, z: 0 }, `${m.ax === 'AB' ? 'BC' : 'AB'} = ${m.r} cm`, AMB, { dy: 19 });
+          S3.rLabel(D.b, D, m.r, `${m.ax === 'AB' ? 'BC' : 'AB'} = ${m.r} cm`, AMB, 16);
         }
       });
     },
@@ -259,8 +260,8 @@
         labels: (D, m) => {
           const sz = Math.min(0.35, m.r * 0.25, m.h * 0.25);
           rm(D, [0, 0], [1, 0], [0, 1], sz); rm(D, [0, m.h], [1, 0], [0, -1], sz);
-          D.lab({ x: m.R / 2, y: 0, z: 0 }, `아랫변 ${m.R} cm`, AMB, { dy: 19 });
-          D.lab({ x: m.r / 2, y: m.h, z: 0 }, `윗변 ${m.r} cm`, AMB, { dy: -17 });
+          S3.rLabel(D.b, D, m.R, `아랫변 ${m.R} cm`, AMB, 16);
+          S3.rLabel(D.b, D, m.r, `윗변 ${m.r} cm`, AMB, 16, m.h);
           D.lab({ x: 0, y: m.h / 2, z: 0 }, `높이 ${m.h} cm`, AMB, { dx: -48 });
         },
         handles: (D, bd, st, m) => bd.handle('rt', D.P({ x: m.r, y: m.h, z: 0 }), { color: AMB, ariaLabel: '윗변의 오른쪽 끝', drag: (w) => { const u = D.unproj(w.x, w.y); st.playing = false; st.soRT = clamp(Math.round(u.rho), 1, Math.max(1, Math.round(st.soRB) - 1)); st.soH1 = clamp(Math.round(u.y), 2, 8); } })
@@ -450,11 +451,11 @@
     draw(b, s, M, C) {
       const sol = M.sol, D = S3.ctx(b, s);
       const sweep = C.problem ? 2 * PI : 2 * PI * clamp(C.t, 0, 1), full = sweep >= 2 * PI - 1e-3;
-      const ext = 0.55;
-      const box = S3.boxOf(D, sol, [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + ext, z: 0 }), D.P({ x: sol.rmax + 1.0, y: 0, z: 0 })]);
+      const ext = 0.55, extTop = S3.axisExtTop(D, S3.topR(sol), ext);
+      const box = S3.boxOf(D, sol, [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + extTop, z: 0 }), D.P({ x: sol.rmax + 1.0, y: 0, z: 0 })]);
       fit(b, box, { t: 52, r: 66, l: 60, b: 44 });
       S3.drawRevolve(D, sol, full ? 2 * PI : sweep, {});
-      S3.drawAxis(D, sol.ymin, sol.ymax, { ext, label: '회전축 l' });
+      S3.drawAxis(D, sol.ymin, sol.ymax, { ext, extTop, label: '회전축 l' });
       if (!C.problem) {
         if (!full && sweep > 0.02) D.g.path(S3.figAt(D, sol.poly, sweep), { close: true, fill: AMB, fillAlpha: 0.16, color: AMB, width: 2.2, dash: [6, 5] });
         D.g.path(S3.figAt(D, sol.poly, 0), { close: true, fill: AMB, fillAlpha: 0.3, color: AMB, width: 3.4 });
@@ -516,19 +517,27 @@
         });
         fit(b, bboxOf(pts), { l: 20, r: 20, t: 30, b: 50 });
         at.forEach(({ k, i, cx, cy }) => {
-          const D = S3.ctx(b, { soYaw: -25, soPitch: 20 }, { k: 1, ox: cx, oy: cy - 1.2 });
+          const D = S3.ctx(b, { soYaw: -25, soPitch: G.PITCH0 }, { k: 1, ox: cx, oy: cy - 1.2 });
           if (K7[k].rev) S3.drawSolid(D, S3.solid(k, K7D[k]), {}); else S3.drawPolyhedron(D, S3.polyhedron(k), 0, {});
           if (C.txt) T(b, { x: cx, y: cy - 1.2 }, G.NUM[i], 'amber', { dy: 26, size: 19 });
         });
         return;
       }
-      const D = S3.ctx(b, { soYaw: -25, soPitch: 20 });
+      const D = S3.ctx(b, { soYaw: -25, soPitch: G.PITCH0 });
       const rev = M.rev, kind = M.k;
       const narrow = b.W < b.H * 1.1;
-      const body = [{ x: -2.2, y: -0.4 }, { x: 2.2, y: 3.4 }];
-      const ins = narrow ? { x: 0, y: -3.6 } : { x: 4.3, y: 1.4 };
-      const pts = body.concat([{ x: ins.x - 1.2, y: ins.y - 1.7 }, { x: ins.x + 1.2, y: ins.y + 1.7 }]);
-      fit(b, bboxOf(pts), { l: 30, r: 30, t: 36, b: 36 });
+      const body = kind === 'sphere' ? [{ x: -2.2, y: -1.8 }, { x: 2.2, y: 1.8 }] : [{ x: -2.2, y: -1.0 }, { x: 2.2, y: 3.4 }]; // 구는 중심이 원점이라 위아래로 퍼져요
+      let ins = narrow ? { x: 0, y: -3.6 } : { x: 4.3, y: 1.4 }, kt = 0.62, th = 1.2; // 위에서 본 모양 그림의 자리·배율·글줄 간격(세계 좌표)
+      if (narrow && !b.thumb) {
+        // 휴대폰: 입체를 위에 크게, 위에서 본 모양은 읽을 만큼만(고정 크기 px) 아래에 둡니다
+        const blockH = 104, c0 = { il: b.insets.left, ir: b.insets.right, ib: b.insets.bottom };
+        fit(b, bboxOf(body), { l: 30, r: 30, t: 30, b: blockH + 38 });
+        const c = b.toW((b.W + c0.il - c0.ir) / 2, b.H - c0.ib - 8 - blockH / 2);
+        ins = { x: c.x, y: c.y }; th = 50 / b.k; kt = 34 / (b.k * 1.8);
+      } else {
+        const pts = body.concat([{ x: ins.x - 1.2, y: ins.y - 1.7 }, { x: ins.x + 1.2, y: ins.y + 1.7 }]);
+        fit(b, bboxOf(pts), { l: 30, r: 30, t: 36, b: 36 });
+      }
       if (rev) { S3.drawSolid(D, S3.solid(kind, K7D[kind]), {}); }
       else {
         const ph = S3.polyhedron(kind), gh = S3.drawPolyhedron(S3.nullCtx(D), ph, 0, {});
@@ -536,22 +545,22 @@
         if (Math.abs(M.rot) > 1e-6 && Math.abs(M.rot - 2 * PI) > 1e-6) D.g.path(gh, { close: true, color: AMB, width: 2.2, dash: [6, 5] });
       }
       // 위에서 본 모양
-      const k = 0.62;
-      if (C.txt) T(b, { x: ins.x, y: ins.y + 1.2 }, '위에서 본 모양', 'ink', { dy: -6, size: 15 });
+      const k = kt;
+      if (C.txt) T(b, { x: ins.x, y: ins.y + th }, '위에서 본 모양', 'ink', { dy: -6, size: 15 });
       if (rev) {
         const R = K7D[kind].R * k;
         const circ = (R2) => { const q = []; for (let i = 0; i <= 48; i++) q.push({ x: ins.x + R2 * Math.cos(2 * PI * i / 48), y: ins.y + R2 * Math.sin(2 * PI * i / 48) }); return q; };
         b.path(circ(R), { close: true, fill: SKY, fillAlpha: 0.2, color: SKY, width: 3 });
         if (kind === 'frus') b.path(circ(K7D.frus.r * k), { close: true, color: SKY, width: 2.2 });
-        if (C.txt) T(b, { x: ins.x, y: ins.y - 1.2 }, '원 — 돌려도 같아요', GRN, { dy: 8, size: 15 });
+        if (C.txt) T(b, { x: ins.x, y: ins.y - th }, '원 — 돌려도 같아요', GRN, { dy: 8, size: 15 });
       } else {
         const g0 = top7(kind, 0, ins.x, ins.y, k), g1 = top7(kind, M.rot, ins.x, ins.y, k);
         b.path(g0, { close: true, color: AMB, width: 2.2, dash: [6, 5] });
         b.path(g1, { close: true, fill: SKY, fillAlpha: 0.2, color: SKY, width: 3 });
-        if (C.txt) T(b, { x: ins.x, y: ins.y - 1.2 }, '돌리면 모양이 달라져요', 'rose', { dy: 8, size: 15 });
+        if (C.txt) T(b, { x: ins.x, y: ins.y - th }, '돌리면 모양이 달라져요', 'rose', { dy: 8, size: 15 });
       }
       if (C.txt && C.review) {
-        if (C.step >= 2) T(b, { x: 0, y: -0.9 }, rev ? '곡면이 있고 회전축이 있어요' : '평평한 면(다각형)만 있어요', rev ? GRN : 'rose', { size: 16 });
+        if (C.step >= 2) T(b, { x: 0, y: narrow && !b.thumb ? ins.y + th + 26 / b.k : -0.9 }, rev ? '곡면이 있고 회전축이 있어요' : '평평한 면(다각형)만 있어요', rev ? GRN : 'rose', { size: 16 });
       }
     },
     steps: (M) => [
@@ -570,7 +579,7 @@
     }),
     prob: (M) => {
       const items = M.list.map((k) => ({ k, rev: K7[k].rev }));
-      const choices = items.map((x) => ({ h: x.rev ? S3.solidSvg(S3.solid(x.k, K7D[x.k]), -25, 20, 150, 130) : (() => { const D = S3.svgCtx(-25, 20); S3.drawPolyhedron(D, S3.polyhedron(x.k), 0, {}); return D.svg.toSvg(150, 130, 10); })(), p: '입체 그림', ok: !x.rev, hint: x.rev ? '이 입체는 평면도형을 돌려 만들 수 있어요. 회전체예요.' : '' }));
+      const choices = items.map((x) => ({ h: x.rev ? S3.solidSvg(S3.solid(x.k, K7D[x.k]), -25, G.PITCH0, 150, 130) : (() => { const D = S3.svgCtx(-25, G.PITCH0); S3.drawPolyhedron(D, S3.polyhedron(x.k), 0, {}); return D.svg.toSvg(150, 130, 10); })(), p: '입체 그림', ok: !x.rev, hint: x.rev ? '이 입체는 평면도형을 돌려 만들 수 있어요. 회전체예요.' : '' }));
       return { tag: '회전체가 아닌 것', key: M.list.join(','), fig: true, stem: '다음 중 회전체가 아닌 것은? (그림 ①~⑤는 위쪽 그림과 같아요)', choices };
     }
   });

@@ -889,7 +889,7 @@ window.questionBank = [
     "image": "assets/images/26_팔마중_2학기_중간_중3_기출/q22.png",
     "choices": [],
     "answer": "10(√3+1) m",
-    "solution": "성벽의 높이를 $h$ m, D에서 성벽까지의 거리를 $d$ m라 두면 $\\angle D=45^\\circ$에서 $h=d$이다. A는 D보다 성벽에서 $20$ m 더 멀다.\n\n$\\tan30^\\circ=\\dfrac{h}{d+20}=\\dfrac1{\\sqrt3}$이고 $d=h$이므로\n$\\dfrac{h}{h+20}=\\dfrac1{\\sqrt3}$\n$\\sqrt3h=h+20$\n$h=\\dfrac{20}{\\sqrt3-1}=10(\\sqrt3+1)$ m이다.",
+    "solution": "성벽의 높이를 $h$ m, 가까운 지점 $D$에서 성벽까지의 거리를 $d$ m라 하자.\n$D$에서 올려본 각이 $45^\\circ$이므로\n$$\\tan45^\\circ=\\dfrac hd=1$$\n따라서 $d=h$이다.\n\n먼 지점 $A$는 $D$보다 성벽에서 $20$ m 멀기 때문에 성벽까지의 거리는 $h+20$ m이다.\n$A$에서 올려본 각이 $30^\\circ$이므로\n$$\\tan30^\\circ=\\dfrac{h}{h+20}=\\dfrac1{\\sqrt3}$$\n$$\\sqrt3h=h+20$$\n$$(\\sqrt3-1)h=20$$\n분모를 유리화하면\n$$h=\\dfrac{20}{\\sqrt3-1}$$\n$$=\\dfrac{20(\\sqrt3+1)}{(\\sqrt3-1)(\\sqrt3+1)}$$\n$$=\\dfrac{20(\\sqrt3+1)}{3-1}$$\n$$=10(\\sqrt3+1)$$\n따라서 성벽의 높이는 $10(\\sqrt3+1)$ m이다.",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "category_or_cue_inferred",

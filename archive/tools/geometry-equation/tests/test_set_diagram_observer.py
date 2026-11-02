@@ -40,10 +40,10 @@ VENN_PLAN={'kind':'VENN','sets':[{'id':'A'},{'id':'B'}],
 
 def mapping_svg(end_y=150,extra_arrow=False):
     out=['<svg xmlns="%s" data-set-diagram="set-diagram-figure-v1" data-kind="MAPPING">'%NS]
-    out.append('<ellipse id="oval-X" data-role="oval" data-column="0" cx="120" cy="120" rx="60" ry="80" fill="#fff"/>')
-    out.append('<ellipse id="oval-Y" data-role="oval" data-column="1" cx="340" cy="120" rx="60" ry="80" fill="#fff"/>')
-    out.append(label('column-name-X','column-name',(112,24,16,18),'X',' data-column="0"'))
-    out.append(label('column-name-Y','column-name',(332,24,16,18),'Y',' data-column="1"'))
+    out.append('<ellipse id="oval-X" data-role="oval" data-column="0" cx="120" cy="110" rx="60" ry="80" fill="#fff"/>')
+    out.append('<ellipse id="oval-Y" data-role="oval" data-column="1" cx="340" cy="110" rx="60" ry="80" fill="#fff"/>')
+    out.append(label('column-name-X','column-name',(112,14,16,18),'X',' data-column="0"'))
+    out.append(label('column-name-Y','column-name',(332,14,16,18),'Y',' data-column="1"'))
     out.append(label('element-0-0','element',(110,62,20,16),'1',' data-column="0" data-element="0"'))
     out.append(label('element-0-1','element',(110,142,20,16),'2',' data-column="0" data-element="1"'))
     out.append(label('element-1-0','element',(330,62,20,16),'a',' data-column="1" data-element="0"'))
@@ -241,6 +241,14 @@ class MappingTamper(unittest.TestCase):
         result=self.audit(mapping_svg())
         self.assertEqual(result['status'],'PASS',result['errors'])
         self.assertEqual(result['observed']['arrows'],1)
+
+    def test_unequal_columns_need_equal_ovals_and_centred_element_blocks(self):
+        # the fixture's two elements per column are centred on cy=110 in ovals of the same height; a shorter oval or an off-centre block is caught
+        self.assertEqual(self.audit(mapping_svg())['status'],'PASS')
+        short=mapping_svg().replace('cx="340" cy="110" rx="60" ry="80"','cx="340" cy="110" rx="60" ry="70"')
+        self.assertIn('SD_OVAL_HEIGHT',self.audit(short)['errors'])
+        shifted=mapping_svg().replace('cx="340" cy="110" rx="60" ry="80"','cx="340" cy="125" rx="60" ry="80"')
+        self.assertIn('SD_ELEMENT_BLOCK_CENTRE:1',self.audit(shifted)['errors'])
 
     def test_an_arrow_to_the_wrong_element_is_caught(self):
         result=self.audit(mapping_svg(end_y=70))

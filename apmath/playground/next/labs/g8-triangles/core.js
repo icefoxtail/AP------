@@ -1,7 +1,7 @@
 /* ==========================================================================
    중2 · 삼각형의 성질 — 공용 도구 (core.js)
    - 일곱 개 탭 모듈(t1~t7.js)이 함께 쓰는 작은 도구 모음입니다. 전역은 APL_TR(도구)와 APL_TR_GROUPS(탭 묶음) 둘뿐입니다.
-   - 장면 하나 = 탐구(조절·움직임·실시간 값) → 정리(교과서 해결 전략 순서, 단계마다 그림이 강조) → 문제(5지선다 + 숫자 바꾸기).
+   - 장면 하나 = 탐구(조절·움직임·실시간 값) → 정리(교과서 해결 전략 순서, 단계마다 그림이 강조) → 문제(먼저 풀기 · 답 보기 · 풀이 보기 + 숫자 바꾸기).
    - 색의 역할(이 실험실 전체): 하늘 = 주어진 각·변 · 노랑 = 구하는 값 x·끌 수 있는 점·같은 길이 눈금 · 초록 = 보조선·합동·성질이 성립하는 곳 · 분홍 = 반례·주의 · 기본 = 도형의 변.
    - 같은 크기의 각은 같은 표시(호 1개, 2개, 3개), 직각은 네모, 같은 길이는 눈금, 평행선은 화살표.
    - 움직임은 가로 이동만(세로 이동 없음). 제자리 회전·접기·서서히 나타남은 허용. 중2 범위라 제곱근(√)·피타고라스 정리는 쓰지 않고, 길이와 각은 정수만 보입니다.
@@ -164,6 +164,15 @@
       const need = (textW(o.label, size) / 2 + 5) / Math.max(0.2, Math.sin(clamp(Math.abs(d) / 2, 0.12, 1.5)));
       const dst = o.labelDist != null ? o.labelDist : Math.max(r + 14, Math.min(need, r + 70));
       const la = am + (o.labelRot || 0) * DEG;
+      { // 라벨이 각의 부채꼴 밖에 놓이면(좁은 각), 호의 이등분선 위에서 시작하는 짧은 지시선으로 그 각을 가리켜요
+        const sgn0 = d < 0 ? -1 : 1; let tt0 = (sgn0 * (la - a0)) % (PI * 2); if (tt0 < 0) tt0 += PI * 2;
+        if (tt0 > Math.abs(d) + 1e-6 && !o.noLeader) {
+          const kk = b.k || 60, from = { x: V.x + Math.cos(am) * (rw + 3 / kk), y: V.y + Math.sin(am) * (rw + 3 / kk) }, cx = V.x + Math.cos(la) * dst / kk, cy = V.y + Math.sin(la) * dst / kk;
+          const vx = cx - from.x, vy = cy - from.y, ln = Math.hypot(vx, vy) || 1, ux = vx / ln, uy = vy / ln;
+          const edge = (Math.abs(ux) * (textW(o.label, size) / 2 + 3) + Math.abs(uy) * (size * 0.6 + 2)) / kk;
+          if (ln > edge + 4 / kk) b.path([from, { x: cx - ux * edge, y: cy - uy * edge }], { color: col, width: 1.8, alpha: o.alpha });
+        }
+      }
       T(b, V, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha });
     }
     return { deg, mid: am };
@@ -402,7 +411,7 @@
     let h = Q.tag ? `<div class="tr-tagline"><span class="apl-tag" style="--c:var(--m-amber)">${esc(Q.tag)}</span></div>` : '';
     h += `<div class="tr-q">${stemHTML(Q)}</div>`;
     h += '<div class="tr-try"><b>먼저 풀어 보세요.</b> 종이에 직접 풀어 본 뒤에 답을 확인해요.</div>';
-    if (shown) h += `<div class="tr-fb ok tr-ans"><span class="k">답</span> <span class="v">$x=${ok.t}$</span></div>`;
+    if (shown) h += `<div class="tr-fb ok tr-ans"><span class="k">답</span> <span class="v">${Q.ansHTML != null ? Q.ansHTML : (Q.ansHtml != null ? Q.ansHtml : '$x=' + ok.t + '$')}</span></div>`; // Q.ansHTML/Q.ansHtml(둘 다 허용): 답이 x= 꼴이 아닌 문제(합동 여부, 참·거짓 판별, 식 답)는 답을 글로 보여 줍니다
     h += '<div class="tr-tools">';
     if (!shown) h += '<button type="button" class="apl-btn sm" data-tr-show>답 보기</button>';
     h += `<button type="button" class="apl-btn sm primary" data-tr-go="review">풀이 보기</button><button type="button" class="apl-btn sm ghost" data-tr-new>숫자 바꾸기</button></div>`;
@@ -593,5 +602,82 @@
     textW, T, rowT, tagOut, vtx, sideTag, lenTag, ang, faded, tick, par, fillPoly, line, poly, arcPart, drawTri, fit, P, degF, cmF,
     josa, seeded, shuffle, mkChoices, mkTextChoices, baseCtx, showAt, makeScene, register, notes, rd,
     triBC, dim, foot, circumcenter, incenter, extend, dots, segVal, fade, narrow, fs, mkStmtChoices, numProb, intOK, cmTex, cmOpts, degOpts, nm, solveCap, solveCol
+  };
+})();
+
+/* ---- solve helpers (A) ---------------------------------------------------------------
+   풀이 그림을 「항목 목록」으로 선언하면 단계마다 알아서 그려 줍니다(t1~t4 풀이에서 씁니다).
+   · plan(M,s) = { fit:[점…], steps:[{id,k,t,cap,…}], items:[…], base(b), names(b) } 를 돌려줍니다.
+   · 항목은 SVK.fill/seg/poly/tick/ang/txt/len/dim/dot/fn 으로 만들고, 어느 단계에서 색으로 보일지 정합니다.
+       at: 처음 나오는 단계(id 또는 번호) · to: 색으로 보이는 마지막 단계 · on: 색으로 보일 단계들(배열) · gone: 끝나면 사라짐
+       labels: { 단계id: 그 단계의 글자 } · cols: { 단계id: 그 단계의 색 } · gl: 지난 단계에도 회색으로 남길 글자(true 이면 같은 글자) · glTo: 그 회색 글자를 남길 마지막 단계
+   · 지금 단계의 항목만 색, 앞 단계 항목은 회색(풀이 그림 정리 원칙 2), 문제 탭 그림은 「주어진 것」 단계 그림입니다. */
+(function () {
+  'use strict';
+  const G = window.APL_TR;
+  if (!G) return;
+  const { T, ang, tick, line, fillPoly, poly, fit, bboxOf, pt, sideTag, dim, solveCap } = G;
+  const K = {
+    fill: (pts, o) => ({ ty: 'fill', pts, ...o }),
+    seg: (p, q, o) => ({ ty: 'seg', p, q, ...o }),
+    poly: (pts, o) => ({ ty: 'poly', pts, ...o }),
+    tick: (p, q, n, o) => ({ ty: 'tick', p, q, n, ...o }),
+    ang: (V, A, B, o) => ({ ty: 'ang', V, A, B, ...o }),
+    txt: (p, str, o) => ({ ty: 'txt', p, str, ...o }),
+    len: (p, q, c, str, o) => ({ ty: 'len', p, q, c, str, ...o }),
+    dim: (p, q, c, str, o) => ({ ty: 'dim', p, q, c, str, ...o }),
+    dot: (p, name, o) => ({ ty: 'dot', p, name, ...o }),
+    fn: (f, o) => ({ ty: 'fn', f, ...o })
+  };
+  function render(b, pl, idx) {
+    const ids = pl.steps.map((s) => s.id || s.k);
+    const ix = (v, d) => (v == null ? d : typeof v === 'number' ? v : Math.max(0, ids.indexOf(v)));
+    const cur = idx < 0 ? 0 : idx, nar = b.W < 560;
+    fit(b, bboxOf(pl.fit), { t: pl.t != null ? pl.t : 60, b: idx < 0 ? (pl.bp != null ? pl.bp : 44) : (nar ? 112 : 100), l: pl.l != null ? pl.l : 50, r: pl.r != null ? pl.r : 50 });
+    const stateOf = (it) => {
+      if (idx < 0 && it.noProb) return null;
+      const set = it.on ? it.on.map((v) => ix(v, 0)) : null, a = set ? Math.min(...set) : ix(it.at, 0);
+      if (cur < a) return null;
+      const on = set ? set.includes(cur) : cur <= (it.hold ? 99 : ix(it.to, a));
+      return on ? 'on' : it.gone ? null : 'ghost';
+    };
+    const stId = ids[cur];
+    const items = pl.items.map((it) => ({ it, st: stateOf(it) })).filter((x) => x.st);
+    items.filter((x) => x.it.ty === 'fill' && x.st === 'on').forEach(({ it }) => fillPoly(b, it.pts, it.col || 'sky', it.a == null ? 0.22 : it.a));
+    if (pl.base) pl.base(b);
+    items.forEach(({ it, st }) => {
+      const on = st === 'on', c = (it.cols && it.cols[stId]) || it.col || 'sky', sz = it.size || 16, lab = (it.labels && it.labels[stId] != null ? it.labels[stId] : it.label);
+      const gl = it.glTo != null && cur > ix(it.glTo, 0) ? undefined : (it.gl === true ? it.label : it.gl); // glTo: 이 단계까지만 회색 글자를 남김
+      switch (it.ty) {
+        case 'seg': if (on) line(b, it.p, it.q, c, it.w || 4.4, { dash: it.dash }); else line(b, it.p, it.q, 'ink', 2.2, { alpha: 0.4, dash: it.dash }); break;
+        case 'poly': if (on) poly(b, it.pts, c, it.w || 4, { dash: it.dash }); else poly(b, it.pts, 'ink', 2.2, { alpha: 0.4, dash: it.dash }); break;
+        case 'tick': tick(b, it.p, it.q, it.n, on ? c : 'ink'); break;
+        case 'ang':
+          if (on) ang(b, it.V, it.A, it.B, { color: c, rings: it.rings, r: it.r || 28, label: lab, labelDist: it.ld, labelRot: it.lr, size: it.size || 15, fa: it.fa == null ? 0.38 : it.fa, big: it.big, cut: it.cut, noRight: it.noRight, noMark: it.noMark });
+          else ang(b, it.V, it.A, it.B, { color: 'ink', alpha: 0.38, w: 1.4, fa: 0, rings: it.rings, r: it.r || 28, label: gl, labelDist: it.ld, labelRot: it.lr, size: it.size || 15, labelColor: 'ink', big: it.big, cut: it.cut });
+          break;
+        case 'txt': T(b, it.p, lab == null ? it.str : lab, { color: on ? c : 'ink', size: sz, dx: it.dx, dy: it.dy, alpha: on ? undefined : 0.55 }); break;
+        case 'len': sideTag(b, it.p, it.q, it.c, lab == null ? it.str : lab, { color: on ? c : 'ink', size: sz, gap: it.gap == null ? 8 : it.gap, dx: it.dx, dy: it.dy, alpha: on ? undefined : 0.55 }); break;
+        case 'dim': dim(b, it.p, it.q, it.c, lab == null ? it.str : lab, { color: on ? c : 'ink', size: sz, off: it.off || 30 }); break;
+        case 'dot': b.point(it.p, { color: on ? c : 'ink', r: 4.5 }); T(b, it.p, it.name, { color: on ? c : 'ink', size: it.size || 18, dx: it.dx, dy: it.dy, alpha: on ? undefined : 0.6 }); break;
+        case 'fn': it.f(b, st, stId); break;
+        default: break;
+      }
+    });
+    if (pl.names) pl.names(b);
+    if (idx >= 0 && pl.steps[idx]) {
+      const bx = bboxOf(pl.fit);
+      solveCap(b, pt((bx.x0 + bx.x1) / 2, bx.y1), pl.steps[idx], { dy: nar ? 44 : 54 });
+    }
+  }
+  function mkSolve(plan, extra) {
+    return Object.assign({ steps: (M, s) => plan(M, s).steps, draw: (b, s, M, C, ST, idx) => render(b, plan(M, s), idx) }, extra || {});
+  }
+  G.SVK = K; G.mkSolve = mkSolve;
+  // 좁은 각의 라벨 위치: 각 VA–VB 의 이등분선에서 변 VA 쪽(side='A') 또는 VB 쪽(side='B')으로 (반각+extra)° 돌린 labelRot.
+  // 라벨이 부채꼴 밖에 놓이면 G.ang 이 호의 이등분선에서 시작하는 지시선을 그려 그 각을 분명히 가리켜요.
+  G.sideRot = (V, A, B, side, extra = 14) => {
+    const a0 = Math.atan2(A.y - V.y, A.x - V.x), a1 = Math.atan2(B.y - V.y, B.x - V.x), d = ((a1 - a0 + Math.PI * 3) % (Math.PI * 2)) - Math.PI, sgn = d < 0 ? -1 : 1;
+    return (side === 'A' ? -1 : 1) * sgn * (Math.abs(d) / (Math.PI / 180) / 2 + extra);
   };
 })();

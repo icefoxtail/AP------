@@ -66,7 +66,16 @@
 
   /* ------------------------------------------------------------------ 그림 틀: 똑바로 세운 입체 + 단면의 실제 모양(작은 그림) */
   const union = (a, c) => ({ x0: Math.min(a.x0, c.x0), x1: Math.max(a.x1, c.x1), y0: Math.min(a.y0, c.y0), y1: Math.max(a.y1, c.y1) });
-  function placeInset(b, sb, side) {
+  function placeInset(b, sb, side0) {
+    if (b.W < 560 && !b.thumb) {
+      // 휴대폰: 입체를 위에 크게 놓고, 단면 그림은 읽을 만큼만(고정 크기 px) 아래에 둡니다. 입체의 맞춤을 여기서 함께 합니다.
+      // (입체를 키우려고 단면 그림은 84px로 줄였습니다. 길이 글씨는 그대로 14px 이상.)
+      const px = 84, blockH = px + 2 * 11, il = b.insets.left, ir = b.insets.right, ib = b.insets.bottom;
+      fit(b, sb, { t: 30, b: blockH + 12, l: 22, r: 22 });
+      const c = b.toW((b.W + il - ir) / 2, b.H - ib - 10 - blockH / 2), side = px / b.k;
+      return { cx: c.x, cy: c.y, side, narrow: true, fitted: true, capUp: 12 / b.k, secK: 0.52, box: { x0: c.x - side / 2, x1: c.x + side / 2, y0: c.y - side / 2, y1: c.y + side / 2 } };
+    }
+    const side = side0;
     const gap = side * 0.12, W = Math.max(60, b.W - 90), H = Math.max(60, b.H - 90);
     const R = { cx: sb.x1 + gap + side / 2, cy: (sb.y0 + sb.y1) / 2 }, B = { cx: (sb.x0 + sb.x1) / 2, cy: sb.y0 - gap - side / 2 };
     const box = (q) => ({ x0: q.cx - side / 2, x1: q.cx + side / 2, y0: q.cy - side / 2, y1: q.cy + side / 2 });
@@ -77,15 +86,16 @@
   const sweepE = (rmax, t) => -1.5 * rmax + t * 2.7 * rmax;   // 판의 오른쪽 가장자리(가로 위치): 왼쪽 → 오른쪽
   const sheetW = (rmax) => 2.4 * rmax;                        // 판의 가로 길이
   function stage(b, s, M, C, hooks) {
-    const D = S3.ctx(b, s), sol = M.sol, ext = 0.5 + 0.4 * sol.rmax, Rs = sol.rmax * 1.2;
-    const pts = [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + ext, z: 0 })];
+    const narrow = b.W < 560;
+    const D = S3.ctx(b, s), sol = M.sol, ext = narrow ? 0.12 : 0.5 + 0.4 * sol.rmax, extTop = S3.axisExtTop(D, S3.topR(sol), ext), Rs = sol.rmax * 1.2;
+    const pts = [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + extTop, z: 0 })];
     if (hooks.pts) hooks.pts(D, M, Rs).forEach((p) => pts.push(p));
     const sb = S3.boxOf(D, sol, pts);
     const side = hooks.side === undefined ? Math.max(sol.h, 2 * sol.rmax) * 1.28 : hooks.side;
     const ins = side ? placeInset(b, sb, side) : null;
-    fit(b, ins ? union(sb, ins.box) : sb, { t: 50, b: ins && ins.narrow ? 36 : 40, l: 44, r: 44 });
+    if (!(ins && ins.fitted)) fit(b, ins ? union(sb, ins.box) : sb, { t: 50, b: ins && ins.narrow ? 36 : 40, l: narrow ? 28 : 44, r: narrow ? 28 : 44 });
     S3.drawSolid(D, sol, {});
-    S3.drawAxis(D, sol.ymin, sol.ymax, { ext, label: '회전축 l' });
+    S3.drawAxis(D, sol.ymin, sol.ymax, { ext, extTop, label: '회전축 l' });
     hooks.after(D, M, C, ins, Rs);
   }
   // (a) 축에 수직인(수평) 판: 높이 u, 오른쪽 가장자리 e (왼쪽에서 들어옴). 모서리 화면 위치.
@@ -112,7 +122,7 @@
   // 단면 2차원 그림(회전축은 세로): 척도와 좌표 변환
   function secFrame(ins, sol) {
     const hs = sol.ymax - sol.ymin, ws = 2 * sol.rmax;
-    const k = Math.min(ins.side * 0.62 / hs, ins.side * 0.62 / ws);
+    const sk = ins.secK || 0.62, k = Math.min(ins.side * sk / hs, ins.side * sk / ws);
     return { k, f: (u, v) => ({ x: ins.cx + v * k, y: ins.cy + (u - (sol.ymin + sol.ymax) / 2) * k }) };
   }
   // 단면 그림과 길이(2r·h)를 그림 속에 크게. o: {fa, hiW, noDims, clip: 오른쪽 가장자리 이전만}
@@ -180,7 +190,7 @@
             perpSheet(D, m.sol, m.u, m.ru, Rs, 2 * Rs, Rs, ROSE, 0.14);
             const R0 = m.sol.d.R, h0 = m.sol.d.h1;
             D.line({ x: 0, y: 0, z: 0 }, { x: R0, y: 0, z: 0 }, AMB, 2.6, { dash: [5, 4] });
-            D.lab({ x: R0 / 2, y: 0, z: 0 }, `r = ${R0} cm`, AMB, { dy: 16 });
+            S3.rLabel(b, D, R0, `r = ${R0} cm`, AMB, 16);
             const bx = -R0 - 0.9;
             D.line({ x: bx, y: 0, z: 0 }, { x: bx, y: h0, z: 0 }, 'ink', 2.6);
             D.lab({ x: bx, y: h0 / 2, z: 0 }, `높이 ${h0} cm`, 'ink', { dx: -46, size: 15 });
@@ -207,7 +217,7 @@
           b.path(circ(m.sol.rmax * K), { close: true, color: 'muted', width: 1.6, dash: [5, 5], alpha: 0.7 });
           b.path(circ(rr), { close: true, fill: AMB, fillAlpha: 0.32, color: AMB, width: c.review && c.step === 2 ? 5.5 : 3.4 });
           if (c.txt) {
-            T(b, { x: cx, y: cy + ins.side * 0.46 }, '단면(실제 모양)', 'ink', { size: 15 });
+            T(b, { x: cx, y: cy + ins.side * 0.46 + (ins.capUp || 0) }, '단면(실제 모양)', 'ink', { size: 15 });
             if (m.kind !== 'sphere') {
               b.seg({ x: cx, y: cy }, { x: cx + rr, y: cy }, { color: AMB, width: 2.8 });
               T(b, { x: cx, y: cy - ins.side * 0.46 }, `반지름 r = ${fmtN(m.ru)} cm`, AMB, { size: 17 });
@@ -267,7 +277,7 @@
         after: (D, m, c, ins, Rs) => {
           axSheet(D, m.sol, m.psi, sweepE(Rs / 1.2, c.t), sheetW(Rs / 1.2), Rs, ROSE, c.review && c.step === 1 ? 0.22 : 0.12);
           if (!ins) return;
-          T(b, { x: ins.cx, y: ins.cy + ins.side * 0.46 }, `단면의 모양: ${SEC_NAME[m.kind]}`, 'ink', { size: 15 });
+          T(b, { x: ins.cx, y: ins.cy + ins.side * 0.46 + (ins.capUp || 0) }, `단면의 모양: ${SEC_NAME[m.kind]}`, 'ink', { size: 15 });
           drawSection(b, c, ins, m.sol, { hiW: c.review && c.step === 3 });
           slantTicks(b, ins, m.sol);
         }
@@ -318,8 +328,8 @@
           after: (D, m, c, ins, Rs) => {
             axSheet(D, sol, 0, Rs, 2 * Rs, Rs);
             D.line({ x: 0, y: 0, z: 0 }, { x: d.R, y: 0, z: 0 }, AMB, 2.6, { dash: [5, 4] });
-            D.lab({ x: d.R / 2, y: 0, z: 0 }, `r = ${d.R}`, AMB, { dy: 17, size: 16 });
-            if (M.pk === 'frus') { D.line({ x: 0, y: d.h1, z: 0 }, { x: d.r, y: d.h1, z: 0 }, AMB, 2.6, { dash: [5, 4] }); D.lab({ x: d.r / 2, y: d.h1, z: 0 }, `r = ${d.r}`, AMB, { dy: -16, size: 16 }); }
+            S3.rLabel(b, D, d.R, `r = ${d.R}`, AMB, 16);
+            if (M.pk === 'frus') { D.line({ x: 0, y: d.h1, z: 0 }, { x: d.r, y: d.h1, z: 0 }, AMB, 2.6, { dash: [5, 4] }); S3.rLabel(b, D, d.r, `r = ${d.r}`, AMB, 16, d.h1); }
             const bx = -sol.rmax - 1;
             D.line({ x: bx, y: 0, z: 0 }, { x: bx, y: d.h1, z: 0 }, AMB, 2.6);
             D.lab({ x: bx, y: d.h1 / 2, z: 0 }, `h = ${d.h1}`, AMB, { dx: -30, size: 16 });
@@ -337,8 +347,8 @@
           if (c.txt && (c.review ? c.step >= 4 : true)) {
             const half = secPoly(m.sol).filter((p) => p[1] >= 0).map((p) => f(p[0], p[1]));
             b.path(half, { close: true, fill: ROSE, fillAlpha: 0.2, color: null });
-            T(b, f(m.sol.ymax * 0.5, m.d.R * 0.5), `r × h = ${m.d.R * m.d.h1}`, ROSE, { size: 15 });
-            T(b, { x: ins.cx, y: ins.cy + ins.side * 0.47 }, `단면의 넓이 = ${m.kind === 'cyl' ? `2r × h = ${2 * m.d.R} × ${m.d.h1}` : m.kind === 'cone' ? `½ × 2r × h = ½ × ${2 * m.d.R} × ${m.d.h1}` : `(${2 * m.d.R} + ${2 * m.d.r}) × ${m.d.h1} ÷ 2`} = ${m.area}`, GRN, { size: 15 });
+            T(b, f(m.sol.ymax * 0.5, m.d.R * 0.5), b.W < 560 ? `${m.d.R * m.d.h1}` : `r × h = ${m.d.R * m.d.h1}`, ROSE, { size: 15 }); // 휴대폰은 작은 그림이라 값만
+            T(b, { x: ins.cx, y: ins.cy + ins.side * 0.47 + (ins.capUp || 0) }, `단면의 넓이 = ${m.kind === 'cyl' ? `2r × h = ${2 * m.d.R} × ${m.d.h1}` : m.kind === 'cone' ? `½ × 2r × h = ½ × ${2 * m.d.R} × ${m.d.h1}` : `(${2 * m.d.R} + ${2 * m.d.r}) × ${m.d.h1} ÷ 2`} = ${m.area}`, GRN, { size: 15 });
           }
         }
       });
@@ -388,21 +398,21 @@
         fit(b, { x0: -side * 0.62, x1: side * 0.62, y0: -side * 0.55, y1: side * 0.55 }, { l: 30, r: 30, t: 50, b: 30 });
         drawSection(b, C, ins, sol, {});
         const sf = secFrame(ins, sol);
-        T(b, sf.f((sol.ymin + sol.ymax) / 2, 0), '회전축 l', ROSE, { dx: 44, size: 16 });
+        T(b, sf.f(sol.ymax + 0.35, 0), '회전축 l', ROSE, { dy: sol.kind === 'frus' ? -50 : -14, size: 16 }); // 도형 위에 얹지 않고 축 윗끝에
         return;
       }
-      const D = S3.ctx(b, s), sol = M.sol, ext = 0.5 + 0.4 * sol.rmax;
+      const D = S3.ctx(b, s), sol = M.sol, ext = b.W < 560 ? 0.12 : 0.5 + 0.4 * sol.rmax, extTop = S3.axisExtTop(D, S3.topR(sol), ext);
       const sweep = 2 * PI * clamp(C.t, 0, 1), full = sweep >= 2 * PI - 1e-3;
       const side = Math.max(sol.h, 2 * sol.rmax) * 1.28;
-      const sb = S3.boxOf(D, sol, [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + ext, z: 0 })]);
+      const sb = S3.boxOf(D, sol, [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + extTop, z: 0 })]);
       const ins = placeInset(b, sb, side);
-      fit(b, union(sb, ins.box), { t: 50, b: 40, l: 44, r: 44 });
+      if (!ins.fitted) fit(b, union(sb, ins.box), { t: 50, b: 40, l: 44, r: 44 });
       S3.drawRevolve(D, sol, full ? 2 * PI : sweep, {});
-      S3.drawAxis(D, sol.ymin, sol.ymax, { ext, label: '회전축 l' });
+      S3.drawAxis(D, sol.ymin, sol.ymax, { ext, extTop, label: '회전축 l' });
       if (!full && sweep > 0.02) D.g.path(S3.figAt(D, sol.poly, sweep), { close: true, fill: AMB, fillAlpha: 0.16, color: AMB, width: 2.2, dash: [6, 5] });
       D.g.path(S3.figAt(D, sol.poly, 0), { close: true, fill: AMB, fillAlpha: 0.32, color: AMB, width: C.review && C.step === 2 ? 5 : 3.4 });
       if (C.txt) {
-        T(b, { x: ins.cx, y: ins.cy + ins.side * 0.47 }, '축을 포함한 단면', 'ink', { size: 15 });
+        T(b, { x: ins.cx, y: ins.cy + ins.side * 0.47 + (ins.capUp || 0) }, '축을 포함한 단면', 'ink', { size: 15 });
         drawSection(b, C, ins, sol, { hiW: false });
         slantTicks(b, ins, sol);
       }
@@ -508,13 +518,13 @@
       const D = S3.ctx(b, s);
       const frus = S3.solid('frus', { R, r: rs, h1: H - hs }), big = S3.solid('cone', { R, h1: H });
       const shift = g * (2 * R + 1.4);       // 작은 원뿔은 같은 높이에서 오른쪽(가로)으로 밀려 나갑니다.
-      const ext = 0.5 + 0.4 * R;
+      const ext = b.W < 560 ? 0.3 + 0.1 * R : 0.5 + 0.4 * R;
       const pts = [D.P({ x: 0, y: -ext, z: 0 }), D.P({ x: 0, y: H + ext, z: 0 }), D.P({ x: shift + rs, y: H - hs, z: 0 })];
       if (prob) pts.push(D.P({ x: -R - 1.4, y: 0, z: 0 }), D.P({ x: R + 1.6, y: 0, z: 0 }));
       const sb = S3.boxOf(D, big, pts);
       const side = Math.max(2 * R, 4) * 1.1;
       const ins = prob ? null : placeInset(b, unionB(sb, { x0: sb.x0, x1: sb.x1, y0: sb.y0, y1: sb.y1 }), side);
-      fit(b, ins ? union(sb, ins.box) : sb, { t: 50, b: 40, l: prob ? 96 : 44, r: prob ? 100 : 44 });
+      if (!(ins && ins.fitted)) fit(b, ins ? union(sb, ins.box) : sb, { t: 50, b: 40, l: prob ? 96 : 44, r: prob ? 100 : 44 });
       // 큰 원뿔의 윤곽(점선)
       if (g > 0.02 || prob) S3.tangents(S3.ringP(D, R, 0), S3.ringP(D, 0, H)).lines.forEach((ln) => D.g.path([ln[0], ln[1]], { color: 'muted', width: 1.8, dash: [6, 5], alpha: 0.8 }));
       S3.drawBands(D, frus.bands, {});
@@ -524,9 +534,9 @@
       S3.drawAxis(D, 0, H, { ext, label: '회전축 l' });
       if (C.txt) {
         D.line({ x: 0, y: 0, z: 0 }, { x: R, y: 0, z: 0 }, SKY, 2.4, { dash: [5, 4] });
-        D.lab({ x: R / 2, y: 0, z: 0 }, `R = ${fmtN(R)}`, SKY, { dy: 16, size: 16 });
+        S3.rLabel(b, D, R, `R = ${fmtN(R)}`, SKY, 16);
         Ds.line({ x: 0, y: H - hs, z: 0 }, { x: rs, y: H - hs, z: 0 }, AMB, 2.4, { dash: [5, 4] });
-        Ds.lab({ x: rs / 2, y: H - hs, z: 0 }, `r = ${fmtN(rs)}`, AMB, { dy: 16, size: 15 });
+        S3.rLabel(b, Ds, rs, `r = ${fmtN(rs)}`, AMB, 15, H - hs);
         if (prob) {
           const bx = -R - 1, bx2 = R + 1.2;
           D.line({ x: bx, y: 0, z: 0 }, { x: bx, y: H, z: 0 }, 'ink', 2.6);
@@ -540,7 +550,7 @@
         const circ = (R2) => { const q = []; for (let i = 0; i <= 56; i++) q.push({ x: cx + R2 * Math.cos(2 * PI * i / 56), y: cy + R2 * Math.sin(2 * PI * i / 56) }); return q; };
         b.path(circ(R * K), { close: true, fill: SKY, fillAlpha: 0.18, color: SKY, width: 3.2 });
         b.path(circ(rs * K), { close: true, fill: AMB, fillAlpha: 0.3, color: AMB, width: 3.2 });
-        T(b, { x: cx, y: cy + ins.side * 0.46 }, '두 밑면(원)', 'ink', { size: 15 });
+        T(b, { x: cx, y: cy + ins.side * 0.46 + (ins.capUp || 0) }, '두 밑면(원)', 'ink', { size: 15 });
         T(b, { x: cx, y: cy }, `${fmtN(rs)}`, AMB, { size: 16 });
         T(b, { x: cx + R * K * 0.72, y: cy + R * K * 0.72 }, `${fmtN(R)}`, SKY, { dx: 6, size: 16 });
         T(b, { x: cx, y: cy - ins.side * 0.46 }, `원뿔대의 높이 = ${fmtN(H)} − ${fmtN(hs)} = ${fmtN(H - hs)}`, GRN, { size: 15 });

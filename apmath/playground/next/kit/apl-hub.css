@@ -37,7 +37,7 @@
 .hub-switch[aria-pressed="true"] .knob { background: var(--accent); }
 .hub-switch[aria-pressed="true"] .knob::after { transform: translateX(14px); }
 
-/* 다른 화면(AP Math Universe · 이전 허브)으로 가는 얇은 링크 줄 */
+/* 입구 화면(AP Math Universe)으로 돌아가는 얇은 링크 줄 */
 .hub-trail { background: var(--bar); border-bottom: 1px solid var(--line); }
 .hub-trail-in { max-width: 1320px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
 .hub-trail a { display: inline-flex; align-items: center; gap: 4px; min-height: 32px; color: var(--text-2); font-size: var(--fs-xs); font-weight: 700; text-decoration: none; }
@@ -114,7 +114,6 @@
 .hub-badges { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; gap: 6px; justify-content: space-between; pointer-events: none; }
 .hub-badges > span { display: inline-flex; gap: 5px; }
 .hub-badge { padding: 2px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 800; background: var(--glass); border: 1px solid var(--line-2); color: var(--text-2); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
-.hub-badge.v2 { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
 .hub-body { padding: 14px 15px 10px; display: grid; gap: 6px; flex: 1; align-content: start; }
 .hub-crumb { font-size: var(--fs-2xs); font-weight: 750; color: var(--hc); }
 .hub-card h3 { margin: 0; font-size: var(--fs-lg); font-weight: 800; letter-spacing: -.03em; line-height: 1.35; }
@@ -128,8 +127,6 @@
 .hub-foot { position: relative; z-index: 2; display: flex; align-items: center; gap: 6px; padding: 10px 12px 12px 15px; }
 .hub-foot .go { margin-right: auto; display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-xs); font-weight: 800; color: var(--hc); text-decoration: none; }
 .hub-foot .go .apl-ico { width: 16px; height: 16px; }
-.hub-foot .legacy { font-size: var(--fs-2xs); color: var(--text-3); text-decoration: none; font-weight: 700; padding: 6px 8px; border-radius: 8px; }
-.hub-foot .legacy:hover { background: var(--hover); color: var(--text); }
 .hub-pin { width: 34px; height: 34px; border-radius: 10px; border: 1px solid transparent; background: transparent; color: var(--text-3); display: grid; place-items: center; }
 .hub-pin:hover { background: var(--hover); color: var(--text); }
 .hub-pin[aria-pressed="true"] { color: var(--m-amber); }
@@ -164,9 +161,6 @@
 .hub-metro .q-note { padding: 12px 18px 0; font-size: var(--fs-sm); font-weight: 700; color: var(--text-2); }
 .hub-metro .q-note b { color: var(--accent); }
 .hub-metro .note { padding: 6px 18px 14px; font-size: var(--fs-2xs); color: var(--text-3); }
-
-.hub-foot-note { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--text-3); font-size: var(--fs-xs); display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: space-between; }
-.hub-foot-note a { color: var(--text-2); }
 
 @media (max-width: 960px) {
   .hub-intro { grid-template-columns: 1fr; }
