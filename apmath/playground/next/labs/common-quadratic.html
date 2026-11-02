@@ -175,7 +175,7 @@ window.addEventListener('DOMContentLoaded', function () {
       BOARD.poly([{ x: xa, y: WIN_TOP }, { x: xb, y: WIN_TOP }, { x: xb, y: WIN_BOT }, { x: xa, y: WIN_BOT }], { fill: 'rgba(52, 211, 153, 0.11)', color: null });
       BOARD.seg({ x: xa, y: WIN_TOP }, { x: xa, y: WIN_BOT }, { color: 'rgba(52, 211, 153, 0.65)', width: 2.0, dash: [6, 4] });
       BOARD.seg({ x: xb, y: WIN_TOP }, { x: xb, y: WIN_BOT }, { color: 'rgba(52, 211, 153, 0.65)', width: 2.0, dash: [6, 4] });
-      if (labelStr && !BOARD.thumb) BOARD.text({ x: (xa + xb) / 2, y: WIN_TOP - 0.35 }, cv(labelStr), { color: '#6ee7b7', size: 11.5, weight: 800 });
+      if (labelStr && !BOARD.thumb) BOARD.text({ x: (xa + xb) / 2, y: WIN_TOP - 0.35 }, cv(labelStr), { color: '#6ee7b7', size: 12.5, weight: 800 });
     });
   }
 
@@ -1314,6 +1314,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   APLab.createLab({
     id: 'common-quadratic',
+    stackFractions: true, // 패널·칩·값 칸 글 속 숫자 분수(1/2, 3/5)를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr). 그림 글은 무대가 쌓습니다.
     title: '이차함수',
     courseName: '공통수학',
     unit: '방정식과 부등식 · 이차함수',

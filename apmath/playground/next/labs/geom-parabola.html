@@ -442,7 +442,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const lb = Math.hypot(b.x - a.x, b.y - a.y) || 1, lc = Math.hypot(c.x - a.x, c.y - a.y) || 1;
     let bx = (b.x - a.x) / lb + (c.x - a.x) / lc, by = (b.y - a.y) / lb + (c.y - a.y) / lc;
     const bl = Math.hypot(bx, by) || 1; bx /= bl; by /= bl;
-    LBLQ.push({ x: a.x + bx * distPx, y: a.y + by * distPx, text: '90°', color, size: 11, alpha: BOARD.ctx.globalAlpha * lensAlpha(lensGroup) });
+    LBLQ.push({ x: a.x + bx * distPx, y: a.y + by * distPx, text: '90°', color, size: 12.5, alpha: BOARD.ctx.globalAlpha * lensAlpha(lensGroup) });
   }
   function flushAngleLabels() {
     const c = BOARD.ctx;
@@ -450,7 +450,7 @@ window.addEventListener('DOMContentLoaded', function () {
     LBLQ.length = 0;
   }
   function drawAngleArc(center, dir1, dir2, radiusPx = 22, color = '#fde047', text = '', partIdx = null, lensGroup = 'all') {
-    withAlpha(lensAlpha(lensGroup), () => angleWithLabel([center.x, center.y], [center.x + dir1.x, center.y + dir1.y], [center.x + dir2.x, center.y + dir2.y], { r: radiusPx, color, label: text, size: 11, part: partOf(partIdx) }));
+    withAlpha(lensAlpha(lensGroup), () => angleWithLabel([center.x, center.y], [center.x + dir1.x, center.y + dir1.y], [center.x + dir2.x, center.y + dir2.y], { r: radiusPx, color, label: text, size: 12.5, part: partOf(partIdx) }));
   }
   // [표시 보강] 평행 표시(화살촉 ››): 선분 p–q의 가운데에 그립니다. 평행한 두 선분에 같은 개수를 그려 '평행'을 보입니다.
   function drawParallelMark(p, q, color = '#fde047', count = 1, lensGroup = 'all') {
@@ -479,7 +479,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const d1 = { x: p1.x - v.x, y: p1.y - v.y }, d2 = { x: p2.x - v.x, y: p2.y - v.y };
     const cosv = (d1.x * d2.x + d1.y * d2.y) / ((Math.hypot(d1.x, d1.y) * Math.hypot(d2.x, d2.y)) || 1);
     const deg = Math.acos(Math.max(-1, Math.min(1, cosv))) * 180 / Math.PI;
-    withAlpha(lensAlpha(lensGroup), () => angleWithLabel([v.x, v.y], [p1.x, p1.y], [p2.x, p2.y], { r, rings, color, label: text == null ? `${deg.toFixed(1)}°` : text, size: 11, labelGap }));
+    withAlpha(lensAlpha(lensGroup), () => angleWithLabel([v.x, v.y], [p1.x, p1.y], [p2.x, p2.y], { r, rings, color, label: text == null ? `${deg.toFixed(1)}°` : text, size: 12.5, labelGap }));
     return deg;
   }
   // 하단 비율 줄자 → 셸의 요약 띠(무대 아래). 비율 막대의 weight 합계 = 1.0
@@ -490,7 +490,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function drawDirectrix(p, h, partIdx = 0, lensGroup = 'def') {
     withAlpha(lensAlpha(lensGroup), () => {
       BOARD.vline(-p, { color: '#f87171', width: isPartHighlighted(partIdx) ? 3.2 : 2.3, dash: [7, 5], part: partOf(partIdx) });
-      BOARD.text([-p, -4.2], `준선 l : x = -${fmtNum(p, 1)}`, { color: '#fca5a5', size: 11.5, dy: 4, part: partOf(partIdx) });
+      BOARD.text([-p, -4.2], `준선 l : x = -${fmtNum(p, 1)}`, { color: '#fca5a5', size: 12.5, dy: 4, part: partOf(partIdx) });
     });
   }
   function drawParabolaCurve(p) {
@@ -564,7 +564,7 @@ window.addEventListener('DOMContentLoaded', function () {
           withAlpha(lensAlpha('sim'), () => {
             BOARD.poly([[0, 2 * p], [p, 2 * p], [p, -2 * p], [0, -2 * p]], { fill: '#fbbf24', fillAlpha: 0.06, color: '#fbbf24', alpha: 0.6, width: isPartHighlighted(1) ? 2.4 : 1.5, dash: [5, 5], part: 1 });
             BOARD.poly([[-p, 2 * p], [p, 2 * p], [p, -2 * p], [-p, -2 * p]], { color: '#38bdf8', alpha: 0.42, width: isPartHighlighted(1) ? 2.4 : 1.5, dash: [5, 5], part: 1 });
-            BOARD.text([-p, 2 * p], '가로 p, 세로 2p 직사각형 · 현의 길이 4p', { color: '#fde047', size: 11, align: 'left', dx: 6, dy: -7, part: 1 });
+            BOARD.text([p + 2.8, -3.4 * p], '가로 p, 세로 2p 직사각형 · 현의 길이 4p', { color: '#fde047', size: 12.5, align: 'right', dy: 0, part: 1 });
           });
 
           // 통경 수직현 (p, -2p) ~ (p, 2p)
@@ -1542,6 +1542,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   APLab.createLab({
     id: 'geom-parabola',
+    stackFractions: true, // 패널·칩·값 칸 글 속 숫자 분수(1/2, 3/5)를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr). 그림 글은 무대가 쌓습니다.
     title: '포물선 실전 킬러 랩',
     courseName: '기하',
     unit: '이차곡선 · 포물선',
