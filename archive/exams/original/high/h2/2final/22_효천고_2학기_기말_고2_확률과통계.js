@@ -484,6 +484,7 @@ window.questionBank = [
       "$\\frac{9}{10}$",
       "$\\frac{19}{20}$"
     ],
+    "image": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q11.png",
     "images": [
       "q11.png"
     ],
@@ -927,6 +928,7 @@ window.questionBank = [
       "$9$",
       "$10$"
     ],
+    "image": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q20.png",
     "images": [
       "q20.png"
     ],
@@ -1097,6 +1099,7 @@ window.questionBank = [
     "questionType": "서술형",
     "content": "<서술형 4> 두 연속확률변수 $X$와 $Y$가 갖는 값의 범위는 $0 \\le X \\le 5, 0 \\le Y \\le 5$ 이고 $X$와 $Y$의 확률밀도함수는 각각 $f(x), g(x)$ 이다. 확률변수 $X$ 의 확률밀도함수 $f(x)$의 그래프는 아래 그림과 같다.<br><br>$-5 \\le x \\le 0$ 인 모든 $x$에 대하여 $f(x+5)+g(-x)=a+k$를 만족시킬 때, $P(5a \\le Y \\le 35a-1)=p$ 이다. $7^3 \\times 5 \\times p$의 값을 구하시오. (단, $a, k$는 $a<k$ 인 상수이다.) [6점]",
     "choices": [],
+    "image": "assets/images/22_효천고_2학기_기말_고2_확률과통계/q24.png",
     "images": [
       "q24.png"
     ],
