@@ -369,7 +369,7 @@
       D.elabel(pb(thL, r2, y0), pb(thL, r1, yc), `R₂−R₁=${M.Rf}`, { side: { x: -1, y: 0 }, size: 14, gap: 8, color: 'amber' });
       const sh = D.hx(slide);
       D.elabel(add3(pb(thR, r1, yc), sh), add3(v3(0, yc + h1, 0), sh), `R₁=${M.R1}`, { side: { x: 1, y: 0 }, size: 15, gap: 8, color: 'violet' });
-      D.tag(add3(v3(0, yc + h1 * 0.38, 0), sh), `h₁=${M.h1}`, { size: 13, color: 'violet' });
+      D.tag(add3(v3(0, yc + h1 * 0.66, 0), sh), `h₁=${M.h1}`, { size: 13, color: 'violet' }); // r₁ 글자와 겹치지 않게 위쪽에
       const ey = (D.P(v3(0, y0, r2)).y - D.P(v3(0, y0, 0)).y) * (b.k || 40);
       D.tag(v3(0, y0, 0), `큰 원뿔  r₂=${M.r2}  h₂=${M.h2}  R₂=${M.R2}`, { dy: ey + 22, size: 14 });
       if (!C.problem) D.tag(v3(0, y0 + hf * 0.45, 0), M.mode === 'surf' ? `πR₂r₂−πR₁r₁` : `V₂−V₁`, { size: 14, color: 'green' });
