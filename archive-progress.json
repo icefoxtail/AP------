@@ -1,12 +1,12 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-01T23:59:49.445Z",
+  "updatedAt": "2026-11-02T00:02:26.033Z",
   "coverage": "GitHub PR/Actions only; Library/GPT completion not observed",
   "history": {
     "complete": false,
     "scope": "recent",
     "oldestObservedAt": "2026-10-31T09:28:00Z",
-    "seenRegistrationRuns": 22,
+    "seenRegistrationRuns": 23,
     "seenReleaseRuns": 24,
     "runScanIsPartial": true
   },
@@ -23065,7 +23065,15 @@
         "run": "https://github.com/icefoxtail/AP------/pull/990",
         "at": "2026-11-01T23:51:27Z"
       },
-      "registration": null,
+      "registration": {
+        "result": "미확인",
+        "sha": "3373ac5fb4b1ccaa186aac642ca96ed1667c22cc",
+        "run": "https://github.com/icefoxtail/AP------/actions/runs/41364130578",
+        "at": "2026-11-01T23:59:42Z",
+        "stage": "등록",
+        "reason": "현재 실행 차수 증거 없음",
+        "attempt": 1
+      },
       "deployment": null,
       "deploymentJob": null,
       "lastSuccessfulRelease": null,
@@ -31618,6 +31626,23 @@
     }
   },
   "observations": {
+    "registration:41364130578:1:3373ac5fb4b1ccaa186aac642ca96ed1667c22cc": {
+      "key": "registration:41364130578:1:3373ac5fb4b1ccaa186aac642ca96ed1667c22cc",
+      "status": "unverified",
+      "attempts": 1,
+      "reason": "현재 실행 차수 증거 없음",
+      "run": {
+        "id": 41364130578,
+        "attempt": 1,
+        "sha": "3373ac5fb4b1ccaa186aac642ca96ed1667c22cc",
+        "at": "2026-11-01T23:59:42Z",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/41364130578",
+        "conclusion": "success",
+        "event": "push",
+        "branch": "main"
+      },
+      "nextRetryAt": "2026-11-02T00:07:25.134Z"
+    },
     "release:41346653219:1:de231f9231dadc3b23fc8447d55a60743c140e23": {
       "key": "release:41346653219:1:de231f9231dadc3b23fc8447d55a60743c140e23",
       "status": "partial",
@@ -147306,23 +147331,6 @@
         "branch": "main"
       },
       "reason": "증거 실행/차수/SHA 불일치",
-      "retryExhausted": true
-    },
-    "registration:41218075018:1:69f4e5dbf4002562cdd7430463661e5a209404d8": {
-      "key": "registration:41218075018:1:69f4e5dbf4002562cdd7430463661e5a209404d8",
-      "status": "unverified",
-      "attempts": 4,
-      "run": {
-        "id": 41218075018,
-        "attempt": 1,
-        "sha": "69f4e5dbf4002562cdd7430463661e5a209404d8",
-        "at": "2026-10-31T16:16:59Z",
-        "url": "https://github.com/icefoxtail/AP------/actions/runs/41218075018",
-        "conclusion": "success",
-        "event": "push",
-        "branch": "main"
-      },
-      "reason": "현재 실행 차수 증거 없음",
       "retryExhausted": true
     }
   }
