@@ -81,7 +81,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:2e864fcdc4955680d10a11c3f1b50dc958752b71ce100c2cbb069769f154b389",
-      "difficultyEvidenceSha": "sha256:878ba92bb30dbfa9cbdee24a7b9b1b5524511289f55bb6770ec49e980b16c5e7"
+      "difficultyEvidenceSha": "sha256:878ba92bb30dbfa9cbdee24a7b9b1b5524511289f55bb6770ec49e980b16c5e7",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q2-solution.svg",
+      "solutionImageAlt": "해설 그림: 정육각형의 한 꼭짓점에서 대각선 3개를 그어 만든 삼각형 4개를 서로 다른 색으로 나누고, 각 삼각형의 내각의 합 180°를 적었다.",
+      "solutionImageCaption": "삼각형 4개이므로 내각의 합은 4×180°=720°이고, 여섯 내각이 모두 같으므로 한 내각은 720°÷6=120°이다. 정답 ④.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 3,
@@ -207,7 +211,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:83d81fbca12283dd487281d4a31f1bdea92359ceee901e98038c2172d780060e",
-      "difficultyEvidenceSha": "sha256:1cb7c7c80f11af746e44c9b26c49ca8892ca9ba7d9458e1e6e4e4cece23c3776"
+      "difficultyEvidenceSha": "sha256:1cb7c7c80f11af746e44c9b26c49ca8892ca9ba7d9458e1e6e4e4cece23c3776",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q5-solution.svg",
+      "solutionImageAlt": "해설 그림: 원의 현(파랑 선분)과 할선(양쪽으로 뻗은 직선), 호와 부채꼴(파랑), 활꼴(주황), 부채꼴이면서 활꼴인 반원(보라)을 네 칸으로 구분해 보여 준다.",
+      "solutionImageCaption": "한 원에서 현의 길이는 중심각의 크기에 정비례하지 않으므로 옳지 않은 것은 ③이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 6,
@@ -344,7 +352,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:551bbacb93ff10be9bf0184920ee6bbe6b5401bc156639905a06deb024505c89",
-      "difficultyEvidenceSha": "sha256:28df010cfda0c36a36df3d071357d17af441d57874f96df09037e148e1bfa5a7"
+      "difficultyEvidenceSha": "sha256:28df010cfda0c36a36df3d071357d17af441d57874f96df09037e148e1bfa5a7",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 옆면을 주황으로 칠한 사각뿔대와, 육각뿔·오각기둥의 전개도에 면 번호 ①~⑦을 붙인 그림이다. 두 입체 모두 면이 7개임을 센다.",
+      "solutionImageCaption": "각뿔대의 두 밑면은 평행하지만 크기가 달라 합동이 아니므로 옳지 않은 것은 ③이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 9,
@@ -522,9 +534,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:032a212086b664ff97adc37820249a11aee2c1a1bf7078e962cbf6b3410b3e6e",
       "difficultyEvidenceSha": "sha256:607ca07c5d6ac78eb9310837c80abcf2a1358d0d3b7e419f812306f042ff5eae",
-      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q12-solution.svg",
-      "solutionImageAlt": "해설 그림: 사각기둥의 밑면인 사다리꼴을 색칠해 그린 그림이다. 평행한 윗변은 6cm, 아랫변은 10cm이고 이 두 변에 수직인 왼쪽 변(높이)은 6cm이다.",
-      "solutionImageCaption": "기둥의 밑면은 평행한 두 변이 6cm, 10cm이고 높이가 6cm인 사다리꼴이다. 기둥의 높이는 8cm이다.",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q12-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 밑면이 윗변 6, 아랫변 10, 높이 6인 사다리꼴이고 높이가 8인 사각기둥과, 밑면 사다리꼴을 따로 꺼내 색칠하고 밑넓이 48cm²를 적은 그림이다.",
+      "solutionImageCaption": "부피는 밑넓이 48cm²에 높이 8cm를 곱한 384cm³이므로 정답은 ②이다.",
       "solutionImageSize": "medium"
     },
     {
@@ -665,7 +677,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:b038631447bf0b09623dfe9e38d57da674a70889ee96fb97e59e787aea85bdc8",
-      "difficultyEvidenceSha": "sha256:5ede53f23ab75dbc890ea5132d324723fb8502cfe67d9ee45fc0c299f7e3fef6"
+      "difficultyEvidenceSha": "sha256:5ede53f23ab75dbc890ea5132d324723fb8502cfe67d9ee45fc0c299f7e3fef6",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q15-solution.svg",
+      "solutionImageAlt": "해설 그림: 반지름이 r인 큰 구와 반지름이 r/2인 작은 구를 나란히 그리고 각각의 겉넓이 4πr², πr²을 적은 그림이다.",
+      "solutionImageCaption": "작은 구 8개의 겉넓이 합은 8πr²이므로 1:2이고 a=8, b=2에서 a+b=10, 정답은 ①이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 16,

@@ -431,7 +431,11 @@ window.questionBank = [
     "solutionVisualReason": "The inspected clean problem diagram preserves the labels and spatial relationships used in the text proof; adding a second static diagram would repeat the same topology without adding a new decisive relation.",
     "metaEvidenceDebt": [
       "EVIDENCE_DEBT: PT_COORD_CENTROID has an ACTIVE M2-05 binding; the exact current template for centroid segment-ratio/area application lacks a curriculum binding."
-    ]
+    ],
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 두 중선 BE, CD가 무게중심 G에서 만난다. 꼭짓점 쪽은 같은 길이 조각 2개(BG는 6), 변 쪽은 1개(GE는 x)로 나뉘고 같은 색 눈금으로 묶었다.",
+    "solutionImageCaption": "BG:GE=2:1이므로 GE=6÷2=3이다. 정답 ③.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -519,7 +523,11 @@ window.questionBank = [
     "solutionVisualReason": "The inspected clean problem diagram preserves the labels and spatial relationships used in the text proof; adding a second static diagram would repeat the same topology without adding a new decisive relation.",
     "metaEvidenceDebt": [
       "EVIDENCE_DEBT: PT_COORD_CENTROID has an ACTIVE M2-05 binding; the exact current template for centroid segment-ratio/area application lacks a curriculum binding."
-    ]
+    ],
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 D, E가 AB, AC의 중점이라 DE∥BC이고 △DCE=12 cm²를 칠한 그림, 오른쪽은 무게중심 G가 △ABC를 같은 넓이의 세 삼각형 △GBC, △GCA, △GAB로 나누는 그림이다.",
+    "solutionImageCaption": "△DCE=1/4△ABC에서 △ABC=48이고 △GBC=1/3△ABC=16이어서 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -605,7 +613,11 @@ window.questionBank = [
     "projectionReasonCode": "EXACT_ACTIVE_M2_BINDING",
     "solutionVisualDisposition": "PROBLEM_DIAGRAM_SUFFICIENT",
     "solutionVisualReason": "The inspected clean problem diagram preserves the labels and spatial relationships used in the text proof; adding a second static diagram would repeat the same topology without adding a new decisive relation.",
-    "metaEvidenceDebt": []
+    "metaEvidenceDebt": [],
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: DE∥BC인 삼각형 ABC에서 닮은 △ADE와 △ABC의 대응변을 AD·AB 파랑, AE·AC 주황, DE·BC 초록으로 묶고 AB=15, AD=10, BD=5, AE=8, AC=12를 표시했다.",
+    "solutionImageCaption": "AD:AB=AE:AC=2:3에서 AC=12이므로 EC=12−8=4이다. 정답 ②.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -776,7 +788,11 @@ window.questionBank = [
     "projectionReasonCode": "EXACT_ACTIVE_M2_BINDING",
     "solutionVisualDisposition": "PROBLEM_DIAGRAM_SUFFICIENT",
     "solutionVisualReason": "The inspected clean problem diagram preserves the labels and spatial relationships used in the text proof; adding a second static diagram would repeat the same topology without adding a new decisive relation.",
-    "metaEvidenceDebt": []
+    "metaEvidenceDebt": [],
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC와 DEC에서 ∠B=∠CDE(초록), ∠C는 공통(보라)이다. BE=6, EC=4, DC=5이고 BC=10, AC=8이 표시되어 있으며 AD는 x이다.",
+    "solutionImageCaption": "△ABC∽△DEC이고 AC=2·EC=8이므로 x=AD=8−5=3이다(정답 ③).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -861,7 +877,11 @@ window.questionBank = [
     "projectionReasonCode": "EXACT_ACTIVE_M2_BINDING",
     "solutionVisualDisposition": "PROBLEM_DIAGRAM_SUFFICIENT",
     "solutionVisualReason": "The inspected clean problem diagram preserves the labels and spatial relationships used in the text proof; adding a second static diagram would repeat the same topology without adding a new decisive relation.",
-    "metaEvidenceDebt": []
+    "metaEvidenceDebt": [],
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 빗변 BC에 내린 높이 AD=4. △ABD와 △CAD에서 같은 크기의 각을 파랑끼리, 주황끼리 같은 색으로 묶었고 DC=2, BD=x이다.",
+    "solutionImageCaption": "△ABD∽△CAD에서 AD²=BD·DC이므로 16=x·2, x=8이다. 정답 ⑤.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -941,7 +961,11 @@ window.questionBank = [
     "solutionVisualReason": "The solution depends only on finite counts, arithmetic, or a probability tree stated completely in text; no spatial, graph, or region relation needs a separate visual.",
     "metaEvidenceDebt": [
       "EVIDENCE_DEBT: The ACTIVE shared probability event-addition PT/TPL has no exact M2-08 curriculum binding."
-    ]
+    ],
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 1부터 20까지의 전체집합 U에서 5의 배수 5, 10, 15, 20(4개)과 7의 배수 7, 14(2개) 벤다이어그램. 합집합이 색칠되어 있고 두 집합에 겹치는 수는 없다.",
+    "solutionImageCaption": "겹치는 수가 없으므로 5의 배수 또는 7의 배수는 4+2=6개이고 확률은 6/20=3/10이다. 정답 ①",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -1281,7 +1305,11 @@ window.questionBank = [
     "projectionReasonCode": "EXACT_ACTIVE_M2_BINDING",
     "solutionVisualDisposition": "PROBLEM_DIAGRAM_SUFFICIENT",
     "solutionVisualReason": "The inspected clean problem diagram preserves the labels and spatial relationships used in the text proof; adding a second static diagram would repeat the same topology without adding a new decisive relation.",
-    "metaEvidenceDebt": []
+    "metaEvidenceDebt": [],
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: AB∥EF∥DC인 그림(AB=9, DC=6, BC=20)과, 닮은 △ABE와 △CDE의 대응변(AB↔CD, AE↔CE, BE↔DE)을 같은 색으로 묶은 그림, BD와 BC를 5칸으로 나눠 BE:BD=BF:BC=3:5를 보인 그림이다.",
+    "solutionImageCaption": "AE:EC=BE:ED=3:2이므로 BE:BD=3:5이고 EF=6×3/5=18/5이어서 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -1367,7 +1395,11 @@ window.questionBank = [
     "solutionVisualReason": "The solution depends only on finite counts, arithmetic, or a probability tree stated completely in text; no spatial, graph, or region relation needs a separate visual.",
     "metaEvidenceDebt": [
       "EVIDENCE_DEBT: The ACTIVE shared probability case-count PT/TPL has no exact M2-08 curriculum binding."
-    ]
+    ],
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 주머니 A에서 빨강 4/7, 파랑 3/7, 각각에서 주머니 B 빨강 1/3, 파랑 2/3로 갈라지는 수형도. 색이 서로 다른 두 경로가 굵은 선과 동그라미로 표시되어 있다.",
+    "solutionImageCaption": "(빨강, 파랑) 4/7×4/6=16/42와 (파랑, 빨강) 3/7×2/6=6/42를 더하면 22/42=11/21이다. 정답 ② (그림의 1/3, 2/3은 2/6, 4/6을 약분한 값)",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -1461,7 +1493,11 @@ window.questionBank = [
     "solutionVisualReason": "The solution depends only on finite counts, arithmetic, or a probability tree stated completely in text; no spatial, graph, or region relation needs a separate visual.",
     "metaEvidenceDebt": [
       "EVIDENCE_DEBT: The linear-function intersection condition is decisive alongside probability, but the current ACTIVE cross-concept registry has no exact M2 linear-function concept key; no guessed key is inserted."
-    ]
+    ],
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 6×6 주사위 순서쌍 표. a=b인 대각선 6칸과 a=2이고 b=1,4,5,6인 4칸은 옅은 회색(제외), 나머지 26칸은 짙은 회색(두 조건 만족)이다.",
+    "solutionImageCaption": "짙은 회색 26칸은 두 조건을 모두 만족하는 칸이고, 옅은 회색 10칸(a=b인 6칸, a=2이면서 b=1,4,5,6인 4칸)은 제외되는 칸이다. 36-6-4=26이므로 확률은 26/36=13/18이다. 정답 ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -1510,10 +1546,10 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "평행사변형의 넓이를 $S$라 하고, 높이를 $h$라 두자. 삼등분점의 길이비와 넓이비로 $S$를 구한다.\n$AF=\\dfrac23AD$이고 $GC=\\dfrac23BC$이며 $AD=BC$이므로 $AF=GC$이다. 또 $AF\\parallel GC$이므로 $AFGC$는 평행사변형이고, 대각선 $AC$와 $FG$는 서로를 이등분한다. 따라서 $Q$는 $AC$의 중점이다.\n$GH=HC$이므로 $H$는 $GC$의 중점이다. 삼각형 $AGC$에서 $AH$와 $GQ$는 중선이므로, 교점 $P$는 무게중심이다. 따라서 $AP:PH=2:1$, 즉 $\\dfrac{AP}{AH}=\\dfrac23$이다.\n$AQ=\\dfrac12AC$이므로 같은 각 $A$를 끼는 삼각형의 넓이비에서 $\\dfrac{[APQ]}{[AHC]}=\\dfrac{AP}{AH}\\cdot\\dfrac{AQ}{AC}=\\dfrac23\\cdot\\dfrac12=\\dfrac13$이다.\n$HC=\\dfrac13BC$이고 $[ABCD]=BC\\cdot h$이므로 $[AHC]=\\dfrac12\\cdot\\dfrac13BC\\cdot h=\\dfrac16S$이다.\n따라서 $[APQ]=\\dfrac13\\cdot\\dfrac16S=\\dfrac1{18}S$이다. $[APQ]=2$이므로 $S=36$이다.\n정답은 ⑤이다.",
     "image": "assets/images/24_왕운중_2학기_기말_중2_수학/q18-clean.png",
-    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q18-solution.svg",
-    "solutionImageAlt": "평행사변형 AFGC의 대각선과 삼각형 AGC의 두 중선을 표시하여 Q와 H의 중점 관계, P의 무게중심 관계를 나타낸 해설 도형",
-    "solutionImageCaption": "Q와 H는 중점이고 P는 두 중선의 교점이므로 AP:AH=2:3, AQ:AC=1:2이다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 삼등분점 E, F와 G, H의 같은 길이 표시(눈금 2개), Q가 AC의 중점(눈금 1개), △APQ=2(파랑)와 사각형 PHCQ(주황)를 나타내고, 아래에 AH를 펴서 AP:PH=2:1(비 2, 비 1)을 보였다.",
+    "solutionImageCaption": "[APQ]=(1/3)[AHC]이고 [AHC]=S/6이므로 [APQ]=S/18=2에서 평행사변형의 넓이는 36이다. 정답 ⑤.",
+    "solutionImageSize": "medium",
     "level": "상",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
@@ -1636,7 +1672,11 @@ window.questionBank = [
     "solutionVisualReason": "The inspected clean problem diagram preserves the labels and spatial relationships used in the text proof; adding a second static diagram would repeat the same topology without adding a new decisive relation.",
     "metaEvidenceDebt": [
       "EVIDENCE_DEBT: The geometric movement condition is an essential cross-concept, but no exact ACTIVE M2 geometry-motion cross-concept key exists; no guessed key is inserted."
-    ]
+    ],
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 ABC와 정사각형 BDEC에서 P는 A에서, Q는 B에서 시계 반대 방향(화살표)으로 출발한다. 두 점이 만나는 곳은 공통변의 B(합 4)와 C(합 11)뿐이다.",
+    "solutionImageCaption": "P는 삼각형 둘레를 3칸마다, Q는 정사각형 둘레를 4칸마다 한 바퀴 돈다. 합이 4인 경우 3가지, 11인 경우 2가지이므로 확률은 (3+2)/36=5/36이다(정답 ②).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -1730,7 +1770,11 @@ window.questionBank = [
     "solutionVisualReason": "The inspected clean problem diagram preserves the labels and spatial relationships used in the text proof; adding a second static diagram would repeat the same topology without adding a new decisive relation.",
     "metaEvidenceDebt": [
       "EVIDENCE_DEBT: The solution chains angle-bisector, Pythagorean height, and similarity facts; the current ACTIVE cross-concept registry has no exact M2 theorem-chain key, so no guessed key is inserted."
-    ]
+    ],
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 ∠B의 이등분선 BD, 수선 DE, FG와 평행선 BD, EF, GH. 작은 삼각형 CEF(파랑)와 큰 삼각형 CBD(파랑+주황)가 닮음이고 대응변의 길이는 CE=8:CB=20이다.",
+    "solutionImageCaption": "△CEF∽△CBD의 닮음비 2:5로 FG=(2/5)×DE=(2/5)×6=12/5이다. 정답 ①.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -1811,7 +1855,11 @@ window.questionBank = [
     "solutionVisualReason": "The inspected clean problem diagram preserves the labels and spatial relationships used in the text proof; adding a second static diagram would repeat the same topology without adding a new decisive relation.",
     "metaEvidenceDebt": [
       "EVIDENCE_DEBT: The current Foundation taxonomy has no exact active Pythagorean length PT/TPL projection for a diagonal of a quadrilateral; the RPM semantic path is retained."
-    ]
+    ],
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠A=∠C=90°인 사각형 ABCD에 대각선 BD를 그어 직각삼각형 ABD(AB=10, AD=6, 파랑)와 BCD(BC=4, CD=x, 주황)로 나누고 공통 빗변 BD²=136을 표시했다.",
+    "solutionImageCaption": "BD²=136=4²+x²에서 x²=120이므로 x=√120=2√30이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -1887,12 +1935,15 @@ window.questionBank = [
     "integrationPattern": "CASE_BRANCH",
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "NO_EXACT_M2_TWO_STAGE_PROBABILITY_TEMPLATE",
-    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q22-solution.svg",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q22-solution-v2.svg",
     "solutionVisualDisposition": "ADD_NEW_VISUAL",
     "solutionVisualReason": "A two-step probability tree shows the conditional branches and isolates both paths ending in Sunday rain; the source has no diagram, so this adds the missing branch structure without repeating the full text solution.",
     "metaEvidenceDebt": [
       "EVIDENCE_DEBT: The current ACTIVE registry has no exact M2 two-stage conditional-weather probability template; no higher-course template is copied down."
-    ]
+    ],
+    "solutionImageAlt": "해설 그림: 금요일에 비가 올 때 토요일 비 2/3·안 옴 1/3, 일요일 비·안 옴으로 갈라지는 수형도. 일요일에 비가 오는 두 경로가 굵은 선과 동그라미로 표시되어 있다.",
+    "solutionImageCaption": "일요일에 비가 오는 확률은 2/3×2/3+1/3×1/4=4/9+1/12=19/36이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -1974,7 +2025,11 @@ window.questionBank = [
     "solutionVisualReason": "The solution depends only on finite counts, arithmetic, or a probability tree stated completely in text; no spatial, graph, or region relation needs a separate visual.",
     "metaEvidenceDebt": [
       "EVIDENCE_DEBT: The ACTIVE shared probability count-ratio PT/TPL has no exact M2-08 curriculum binding."
-    ]
+    ],
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 일의 자리가 0, 2, 4인 경우로 나눈 두 자리 짝수 수형도. 일의 자리 0에 10, 20, 30, 40, 2에 12, 32, 42, 4에 14, 24, 34가 달린다.",
+    "solutionImageCaption": "두 자리 자연수는 전체 4×4=16가지이고 짝수는 4+3+3=10가지이므로 확률은 10/16=5/8이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -2053,6 +2108,10 @@ window.questionBank = [
     "projectionReasonCode": "EXACT_ACTIVE_M2_BINDING",
     "solutionVisualDisposition": "PROBLEM_DIAGRAM_SUFFICIENT",
     "solutionVisualReason": "The inspected clean problem diagram preserves the labels and spatial relationships used in the text proof; adding a second static diagram would repeat the same topology without adding a new decisive relation.",
-    "metaEvidenceDebt": []
+    "metaEvidenceDebt": [],
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 세 직선 l, m, n과 두 직선 p, q에서 A에서 DF에 평행한 보조선(점선)이 m, n과 만나는 G, H를 잡고, △ABG(파랑)∽△ACH(파랑+주황), AD=GE=HF=11, HC=5, BG=2를 표시했다. 아래에 m 위의 B, G, E를 펴서 그렸다.",
+    "solutionImageCaption": "GE=11, BG=2이므로 BE=2+11=13이다.",
+    "solutionImageSize": "medium"
   }
 ];

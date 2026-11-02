@@ -433,9 +433,9 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:00a325bd2b5b14dc3f46659cf5e97e89d6c2d2ed7a87638f2702458e7522cd4c",
       "difficultyEvidenceSha": "sha256:86d34b942855a7cfaddad44075938f28c13f30e0b30e80c40ca432a60557b675",
-      "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q9-solution.svg",
-      "solutionImageAlt": "해설 그림: 지름 20cm인 구를 중심을 지나는 서로 수직인 두 평면으로 잘라 낸 조각이다. 곡면과 두 절단면이 보이고 구의 중심에서 곡면까지의 반지름 10cm가 표시되어 있다.",
-      "solutionImageCaption": "구를 중심을 지나는 서로 수직인 두 평면으로 자른 조각과 구의 반지름 10cm.",
+      "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q9-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 반지름 10인 구를 서로 수직인 두 평면으로 자른 조각을 두 방향에서 그린 그림이다. 한쪽은 칠한 두 절단면을, 다른 쪽은 곡면을 보인다.",
+      "solutionImageCaption": "겉넓이는 (1/4)×(구의 겉넓이)+2×(반원)이므로 ㉠은 1/4, ㉡은 반원이고 정답은 ⑤이다.",
       "solutionImageSize": "medium"
     },
     {
@@ -531,7 +531,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:0f64afd2bf2f5766596e4ea6bb94bcf4b9a4d9fe67a4802501013f5eab459694",
-      "difficultyEvidenceSha": "sha256:532d048085b865681a1f28f74b181b5eabc20f5b2fac3a0b4054b57bc68f2a2c"
+      "difficultyEvidenceSha": "sha256:532d048085b865681a1f28f74b181b5eabc20f5b2fac3a0b4054b57bc68f2a2c",
+      "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 왼손 한 뼘 길이의 히스토그램. 17~18cm 1명, 18~19cm 4명, 19~20cm 8명, 20~21cm 10명, 21~22cm 6명, 22~23cm 4명이고 22~23cm와 21~22cm를 묶어 10명으로 센다.",
+      "solutionImageCaption": "20~21cm는 33-(1+4+8+6+4)=10명이다. 큰 값부터 22~23cm 4명이 1~4번째, 21~22cm 6명이 5~10번째이므로 9번째 학생은 21cm 이상 22cm 미만 계급에 속한다. 정답 ④",
+      "solutionImageSize": "medium"
     },
     {
       "id": 12,
@@ -1030,6 +1034,10 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:282161b4733c01496f799b05264ad9b57abe9581bb89ad091b6d9a3fc51f2784",
-      "difficultyEvidenceSha": "sha256:3ef51426b1e029c4b4a8ebc9c87159530904abd24276936203ec0603e1134b12"
+      "difficultyEvidenceSha": "sha256:3ef51426b1e029c4b4a8ebc9c87159530904abd24276936203ec0603e1134b12",
+      "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q22-solution.svg",
+      "solutionImageAlt": "해설 그림: A 학교(실선)와 B 학교(점선)의 상대도수 분포다각형. 8~10권에서 A 0.36, B 0.2, A의 10~12권 0.12, B의 0~2권 0이 표시되어 있다.",
+      "solutionImageCaption": "ㄴ은 8~10권에서 A 학교(0.36)가 B 학교(0.2)보다 높으므로 '더 높다'로, ㄷ은 B 학교의 0~2권 상대도수가 0이므로 '한 권도 읽지 않은 학생이 없다'로 고친다. 옳지 않은 것은 ㄴ, ㄷ이다. (ㄱ: 100×0.12=12명으로 옳다)",
+      "solutionImageSize": "medium"
     }
   ];
