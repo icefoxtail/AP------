@@ -7187,6 +7187,37 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "similar/middle/m1/2mid/25_동산중_2학기_중간_중1_유사.js",
+      "school": "동산중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2025,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "M1-01",
+      "rangeStartUnit": "소인수분해",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M1-02",
+      "rangeEndUnit": "정수와 유리수",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-01",
+          "rangeStartUnit": "소인수분해",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M1-02",
+          "rangeEndUnit": "정수와 유리수",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
       "file": "similar/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학_유사A.js",
       "school": "왕운중",
       "topic": "수학_유사A",

@@ -600,7 +600,7 @@ def generate_inbox_request(files: dict, rpm_path_delta: bool = False, request_ta
 
     return request
 
-def get_whitelist_files(files: dict, inbox_path: Path) -> list[str]:
+def get_whitelist_files(files: dict, inbox_path: Path = None) -> list[str]:
     """Returns list of relative file paths to be staged/merged."""
     paths = []
     # 1. JS
@@ -619,7 +619,8 @@ def get_whitelist_files(files: dict, inbox_path: Path) -> list[str]:
             if a.is_file():
                 paths.append(str(a.relative_to(REPO_ROOT)).replace("\\", "/"))
     # 5. Inbox request
-    paths.append(str(inbox_path.relative_to(REPO_ROOT)).replace("\\", "/"))
+    if inbox_path and inbox_path.exists():
+        paths.append(str(inbox_path.relative_to(REPO_ROOT)).replace("\\", "/"))
 
     return sorted(list(set(paths)))
 
@@ -680,6 +681,7 @@ def main():
         print("\n[GATE_PASS NOT VERIFIED] harness skipped (NOT_RUN); continuing to request generation only.")
     else:
         print("\n[GATE_PASS VERIFIED] All candidate artifacts satisfy quality contract.")
+    inbox_request = None
     try:
         extra_evidence = []
         for rel in args.evidence:
@@ -690,25 +692,34 @@ def main():
         inbox_request = generate_inbox_request(files, rpm_path_delta=args.rpm_path_delta,
                                                request_tag=args.request_tag, extra_evidence=extra_evidence)
     except RequestGenerationError as err:
-        print(f"\n[REQUEST NOT GENERATED] {err}", file=sys.stderr)
-        sys.exit(1)
+        if args.out:
+            print(f"\n[REQUEST NOT GENERATED] {err}", file=sys.stderr)
+            sys.exit(1)
+        print(f"\n[REQUEST DEFERRED] {err}")
+        print(" -> Staging exam files without inbox request so Registration Sync can initialize placeholder rows on main first.")
 
-    if args.out:
-        out_path = Path(args.out).resolve()
-        inbox_root = (REPO_ROOT / ".archive-meta-register" / "inbox").resolve()
-        if out_path == inbox_root or inbox_root in out_path.parents:
-            print("Error: --out must not point into .archive-meta-register/inbox (that would trigger real registration)", file=sys.stderr)
-            sys.exit(2)
-        out_path.parent.mkdir(parents=True, exist_ok=True)
-        out_path.write_text(json.dumps(inbox_request, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        print(f"\n[REQUEST WRITTEN] {out_path} (not staged, not in inbox)")
-        return
+    inbox_path = None
+    if inbox_request:
+        if args.out:
+            out_path = Path(args.out).resolve()
+            inbox_root = (REPO_ROOT / ".archive-meta-register" / "inbox").resolve()
+            if out_path == inbox_root or inbox_root in out_path.parents:
+                print("Error: --out must not point into .archive-meta-register/inbox (that would trigger real registration)", file=sys.stderr)
+                sys.exit(2)
+            out_path.parent.mkdir(parents=True, exist_ok=True)
+            out_path.write_text(json.dumps(inbox_request, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            print(f"\n[REQUEST WRITTEN] {out_path} (not staged, not in inbox)")
+            return
 
-    inbox_dir = REPO_ROOT / ".archive-meta-register" / "inbox"
-    inbox_dir.mkdir(parents=True, exist_ok=True)
-    inbox_name = (f"rpmpath-{files['stem']}{'-' + args.request_tag if args.request_tag else ''}.json"
-                  if args.rpm_path_delta else f"{files['stem']}.json")
-    inbox_path = inbox_dir / inbox_name
+        inbox_dir = REPO_ROOT / ".archive-meta-register" / "inbox"
+        inbox_dir.mkdir(parents=True, exist_ok=True)
+        inbox_name = (f"rpmpath-{files['stem']}{'-' + args.request_tag if args.request_tag else ''}.json"
+                      if args.rpm_path_delta else f"{files['stem']}.json")
+        inbox_path = inbox_dir / inbox_name
+
+        if args.apply:
+            inbox_path.write_text(json.dumps(inbox_request, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            print(f"\n[INBOX CREATED] Wrote {inbox_path.relative_to(REPO_ROOT)}")
 
     whitelist = (get_whitelist_files(files, inbox_path) if not args.rpm_path_delta
                  else [str(inbox_path.relative_to(REPO_ROOT)).replace("\\", "/")])
@@ -719,21 +730,23 @@ def main():
         print(f"  ... and {len(whitelist) - 10} more files")
 
     if args.dry_run or not args.apply:
-        print("\n[DRY RUN] Generated Inbox Request:")
-        print(json.dumps(inbox_request, indent=2, ensure_ascii=False)[:1000] + "\n  ... (truncated for display)")
+        if inbox_request:
+            print("\n[DRY RUN] Generated Inbox Request:")
+            print(json.dumps(inbox_request, indent=2, ensure_ascii=False)[:1000] + "\n  ... (truncated for display)")
+        else:
+            print("\n[DRY RUN] Inbox request deferred until exam JS is on main and Registration Sync runs.")
         print("\nTo execute operation merge, rerun with '--apply'.")
         return
-
-    # Apply mode: write inbox request
-    inbox_path.write_text(json.dumps(inbox_request, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"\n[INBOX CREATED] Wrote {inbox_path.relative_to(REPO_ROOT)}")
 
     # Stage files in a single atomic invocation
     print("\n[STAGING] Staging whitelist files for main merge...")
     subprocess.run(["git", "add"] + whitelist, cwd=REPO_ROOT, check=True)
 
     print("[STAGING COMPLETE] Whitelist staged. Ready for commit/merge.")
-    print("Run `git commit -m \"feat(similar): release {stem} and submit reviewed meta request\" --no-verify`")
+    if inbox_request:
+        print(f"Run `git commit -m \"feat(similar): release {files['stem']} and submit reviewed meta request\"`")
+    else:
+        print(f"Run `git commit -m \"feat(similar): release {files['stem']}\"`")
 
 if __name__ == "__main__":
     main()

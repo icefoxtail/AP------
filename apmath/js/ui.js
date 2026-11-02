@@ -133,6 +133,14 @@ function toast(m, t='info') {
 
 let modalCloseTimer = null;
 let modalStepStack = [];
+// 모달 공통 닫기 정책 상태 (아래 "모달 닫기 정책" 구역 참고)
+let modalDirtyTouched = false;      // 사용자가 입력칸을 직접 건드렸는가(신뢰된 input/change 이벤트)
+let modalDirtyChecker = null;       // 모달이 등록한 "저장 안 한 변경이 있나" 콜백
+let modalDirtyBound = null;         // 이벤트를 붙인 #modal-body 요소(한 번만 붙이기 위한 표식)
+let modalLayerSeq = 0;              // 모달·상위 레이어가 열린 순서(맨 위 판단용)
+let modalOpenSeq = 0;               // 현재 모달이 열린 순서
+let modalBackdropPressed = false;   // 누르기 시작이 배경이었는가(안에서 끌어서 밖에서 놓은 경우 제외)
+const apmsEscapeLayers = [];        // 모달 위에 뜨는 다른 레이어의 Esc 닫기 등록부
 let appHistoryState = {
     currentView: null,
     backStack: [],
@@ -337,7 +345,8 @@ function getCurrentModalSnapshot() {
         footerHtml: footer ? (footer.innerHTML || '') : '',
         footerHidden: footer ? footer.classList.contains('hidden') : true,
         modalReturnView: state?.ui ? (state.ui.modalReturnView || null) : null,
-        studentDetailSubModal: state?.ui ? (state.ui.currentStudentDetailSubModal || null) : null
+        studentDetailSubModal: state?.ui ? (state.ui.currentStudentDetailSubModal || null) : null,
+        dirtyChecker: modalDirtyChecker
     };
 }
 
@@ -380,6 +389,8 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
 
     titleEl.innerText = t;
     bodyEl.innerHTML = b;
+    resetModalDirtyState(bodyEl);
+    if (!alreadyOpen) modalOpenSeq = ++modalLayerSeq;
     if (contentEl) {
         contentEl.classList.remove('clinic-print-fullscreen');
         contentEl.style.width = '';
@@ -411,6 +422,8 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
         footer.innerHTML = '';
     }
 
+    adoptHeaderActionIntoModalActions(bodyEl, at, af);
+
     overlay.classList.remove('hidden');
     if (!alreadyOpen) {
         overlay.getBoundingClientRect();
@@ -420,9 +433,163 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
     }
 }
 
+// 등급 모달(.apms-modal)에 헤더 행동(showModal의 at/af)이 넘어오면 저장 버튼을 하단 오른쪽 액션줄로 옮겨 그린다.
+// 헤더 버튼은 DOM에 남아(CSS가 숨김) 단일 출처가 되고, 하단 버튼은 그 버튼을 눌러 준다.
+// 그래서 헤더 버튼의 disabled(중복 제출 방지)가 하단에도 그대로 적용된다.
+// 본문에 이미 .apms-modal__actions(또는 .apms-unified-actions)가 있으면 아무것도 하지 않는다.
+function adoptHeaderActionIntoModalActions(bodyEl, at, af) {
+    if (!bodyEl || !at || !af || typeof bodyEl.querySelector !== 'function') return;
+    const root = bodyEl.querySelector('.apms-modal');
+    if (!root || root.querySelector('.apms-modal__actions, .apms-unified-actions')) return;
+    const bar = document.createElement('div');
+    bar.className = 'apms-modal__actions';
+    bar.setAttribute('data-modal-action-proxy', '1');
+    bar.innerHTML = '<button type="button" class="btn apms-button apms-button--quiet apms-unified-quiet" onclick="closeModal()">취소</button>' +
+        '<button type="button" class="btn apms-button apms-button--primary btn-primary apms-unified-primary" onclick="document.getElementById(\'modal-action-btn\').click()"></button>';
+    bar.lastChild.textContent = String(at);
+    root.appendChild(bar);
+}
+
 function showModal(t, b, at=null, af=null) {
     applyModalContent(t, b, at, af);
     updateAppBackButtons();
+}
+
+// ============================================================
+// [모달 닫기 정책] Esc · 바깥 클릭 · "저장 안 한 변경" (2026-11-02 사용자 결정)
+// 사용법: apmath/DESIGN.md "모달 공통 부품" 절.
+// - Esc: 열린 모달(맨 위 하나)을 닫는다. 입력 중이거나 변경이 있으면 "닫을까요?" 확인.
+//   단계 모달(showModalStep)이면 한 단계만 돌아간다(closeModal 의미 그대로).
+// - 바깥 클릭: 입력 중이거나 변경이 있으면 닫지 않는다. 작업 화면(W)·전체 화면(P) 등급은 늘 닫지 않는다.
+// - "입력 중" 판정: ① 모달이 setModalDirtyChecker(fn)로 등록한 콜백(있으면 이것만 본다)
+//   ② 사용자가 본문 안 입력칸을 직접 바꿨는가(신뢰된 input/change 이벤트). 코드로 .value를 넣은 것은 세지 않는다.
+//   검색창처럼 세면 안 되는 칸은 type="search" 이거나 data-apms-nodirty 속성을 단다.
+// ============================================================
+function resetModalDirtyState(bodyEl) {
+    modalDirtyTouched = false;
+    modalDirtyChecker = null;
+    if (bodyEl && modalDirtyBound !== bodyEl && typeof bodyEl.addEventListener === 'function') {
+        modalDirtyBound = bodyEl;
+        const mark = event => {
+            if (!event || event.isTrusted === false) return;
+            const target = event.target;
+            if (!target || !target.tagName) return;
+            const tag = String(target.tagName).toUpperCase();
+            if (tag !== 'INPUT' && tag !== 'TEXTAREA' && tag !== 'SELECT') return;
+            if (String(target.type || '').toLowerCase() === 'search') return;
+            if (typeof target.closest === 'function' && target.closest('[data-apms-nodirty]')) return;
+            modalDirtyTouched = true;
+        };
+        bodyEl.addEventListener('input', mark, true);
+        bodyEl.addEventListener('change', mark, true);
+    }
+}
+
+function setModalDirtyChecker(fn) {
+    modalDirtyChecker = typeof fn === 'function' ? fn : null;
+}
+
+function markModalClean() {
+    modalDirtyTouched = false;
+}
+
+function markModalDirty() {
+    modalDirtyTouched = true;
+}
+
+function isModalDirty() {
+    if (typeof modalDirtyChecker === 'function') {
+        try { return !!modalDirtyChecker(); } catch (error) { console.warn('[modal dirty checker] failed:', error); return false; }
+    }
+    // 진도 모달은 자기 초안 비교 장치(hasUnsavedClassProgressChanges)가 있다. 그대로 쓴다.
+    const body = document.getElementById('modal-body');
+    if (body && typeof body.querySelector === 'function' && body.querySelector('.ap-class-progress-modal') &&
+        typeof hasUnsavedClassProgressChanges === 'function') {
+        try { return !!hasUnsavedClassProgressChanges(); } catch (error) { return false; }
+    }
+    return modalDirtyTouched;
+}
+
+// 'confirm' | 'form' | 'workspace' | 'panel' | 'legacy'(등급 클래스가 없는 옛 모달)
+function getModalTier() {
+    const body = document.getElementById('modal-body');
+    const root = body && typeof body.querySelector === 'function' ? body.querySelector('.apms-modal') : null;
+    if (!root) return 'legacy';
+    const has = name => root.classList.contains('apms-modal--' + name);
+    if (has('confirm')) return 'confirm';
+    if (has('workspace') || has('workspace-single')) return 'workspace';
+    if (has('panel')) return 'panel';
+    return 'form';
+}
+
+// 순수 판정: source 'escape' | 'backdrop' → 'close' | 'confirm' | 'ignore'
+function decideModalClose(source, tier, dirty) {
+    if (source === 'backdrop') {
+        if (tier === 'workspace' || tier === 'panel') return 'ignore';
+        return dirty ? 'ignore' : 'close';
+    }
+    return dirty ? 'confirm' : 'close';
+}
+
+function confirmDiscardModalChanges() {
+    const message = '입력한 내용이 저장되지 않았습니다. 닫을까요?';
+    if (typeof window !== 'undefined' && typeof window.confirm === 'function') return window.confirm(message);
+    return typeof confirm === 'function' ? confirm(message) : false;
+}
+
+function requestCloseModal(source) {
+    if (!isModalOpen()) return false;
+    const action = decideModalClose(source, getModalTier(), isModalDirty());
+    if (action === 'ignore') return false;
+    if (action === 'confirm' && !confirmDiscardModalChanges()) return false;
+    closeModal();
+    return true;
+}
+
+// 모달 위에 뜨는 다른 레이어(전체 화면 오버레이 등)가 Esc로 닫히게 하려면 연다/닫는 쪽에서 등록한다.
+// 가장 늦게 열린 것(모달 포함)만 Esc에 반응한다. 반환값은 해제 함수.
+function registerEscapeLayer(closeFn) {
+    const layer = { seq: ++modalLayerSeq, close: closeFn };
+    apmsEscapeLayers.push(layer);
+    return function unregisterEscapeLayer() {
+        const index = apmsEscapeLayers.indexOf(layer);
+        if (index >= 0) apmsEscapeLayers.splice(index, 1);
+    };
+}
+
+function handleModalEscape(event) {
+    if (!event || (event.key !== 'Escape' && event.key !== 'Esc')) return false;
+    if (event.defaultPrevented || event.isComposing) return false;
+    const topLayer = apmsEscapeLayers.length ? apmsEscapeLayers[apmsEscapeLayers.length - 1] : null;
+    const modalOpen = isModalOpen();
+    if (topLayer && (!modalOpen || topLayer.seq > modalOpenSeq)) {
+        if (typeof topLayer.close === 'function') topLayer.close(event);
+        if (typeof event.preventDefault === 'function') event.preventDefault();
+        return true;
+    }
+    if (!modalOpen) return false;
+    if (typeof document.querySelector === 'function' && document.querySelector('.ap-login-fullscreen')) return false;
+    const closed = requestCloseModal('escape');
+    if (closed && typeof event.preventDefault === 'function') event.preventDefault();
+    return closed;
+}
+
+function handleModalBackdropPress(event) {
+    const overlay = document.getElementById('modal-overlay');
+    modalBackdropPressed = !!event && !!overlay && event.target === overlay;
+}
+
+function handleModalBackdropClick(event) {
+    const overlay = document.getElementById('modal-overlay');
+    const pressed = modalBackdropPressed;
+    modalBackdropPressed = false;
+    if (!event || !overlay || event.target !== overlay || !pressed) return false;
+    return requestCloseModal('backdrop');
+}
+
+if (typeof document !== 'undefined' && typeof document.addEventListener === 'function' && !document.__apmsModalEscapeBound) {
+    document.__apmsModalEscapeBound = true;
+    document.addEventListener('keydown', handleModalEscape);
 }
 
 function handleModalKeyboard(event) {
@@ -479,6 +646,7 @@ function restoreModalSnapshot(snapshot) {
     if (!state.ui) state.ui = {};
     state.ui.modalReturnView = snapshot.modalReturnView || null;
     state.ui.currentStudentDetailSubModal = snapshot.studentDetailSubModal || null;
+    modalDirtyChecker = typeof snapshot.dirtyChecker === 'function' ? snapshot.dirtyChecker : null;
     return true;
 }
 
@@ -566,6 +734,8 @@ function closeModal(suppressReturn = false) {
     }
 
     overlay.classList.remove('show');
+    modalDirtyTouched = false;
+    modalDirtyChecker = null;
     modalCloseTimer = setTimeout(() => {
         overlay.classList.add('hidden');
         document.body?.classList?.remove('ap-modal-open');
@@ -599,7 +769,12 @@ function escapeHtmlForTextarea(text) {
 
 function setModalBody(html) {
     const body = document.getElementById('modal-body');
-    if (body) body.innerHTML = html;
+    if (body) {
+        body.innerHTML = html;
+        // 본문을 통째로 바꾸면 새 화면이므로 "입력 중" 표시를 처음으로 되돌린다.
+        // (등록한 dirty 콜백은 유지한다. 콜백은 모달 하나의 수명 동안 쓴다.)
+        modalDirtyTouched = false;
+    }
 }
 
 function setModalLoading(title, message) {
