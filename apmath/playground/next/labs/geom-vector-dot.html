@@ -1725,6 +1725,196 @@ window.addEventListener('DOMContentLoaded', function () {
     return sc;
   }
 
+  /* ======================================================================
+     옛 장면 1~4의 「문제」 탭과 「새 문제」 (탐구 탭은 그대로)
+     - 첫 문제는 원래 문제(프리셋)와 같은 조건·정답입니다. 「새 문제」는 같은 구조에서 숫자만 바꾼 변형입니다.
+     - 문제·정리 탭의 그림은 문제의 조건으로 그립니다(문제 탭은 주어진 것만, 정리 탭은 단계마다 보조선).
+     ====================================================================== */
+  /*OV-BEGIN*/
+  const OVD = (() => {
+    const T = (s) => `$${s}$`;
+    const V = (n) => `\\overrightarrow{${n}}`;
+    const stdOf = (steps) => steps.map((t, i) => `${['①', '②', '③', '④'][i]} ${t}`).join('<br>');
+    const root = (n) => { let o = 1, i = n; for (let f = 2; f * f <= i; f++) while (i % (f * f) === 0) { i /= f * f; o *= f; } return [o, i]; };
+    const sq = (n) => { const [o, i] = root(n); return i === 1 ? `${o}` : `${o === 1 ? '' : o}\\sqrt{${i}}`; };
+    const par = (x) => (x < 0 ? `(${x})` : `${x}`);
+    // ---- 1: 정사영과 내적
+    const g1 = ([a, xh, yb]) => ({
+      a, xh, yb, val: a * xh,
+      text: `그림과 같이 밑변의 길이가 ${APLab.tex(`\\overline{OA}=${a}`)}인 도형에서 점 ${APLab.tex('B')}에서 직선 ${APLab.tex('OA')}에 내린 수선의 발을 ${APLab.tex('H')}라 하자. 부호 있는 그림자 위치가 ${APLab.tex(`x_H=${xh}`)}일 때, 점 ${APLab.tex('B')}의 높이 ${APLab.tex('y_B')}와 무관하게 내적 ${APLab.tex(`${V('OA')}\\cdot${V('OB')}`)}의 값을 구하시오.`,
+      ans: `${V('OA')}\\cdot${V('OB')}=${a * xh}`,
+      steps: [
+        `두 위치벡터 $${V('OA')}$, $${V('OB')}$와 끼인각 $\\theta$를 그립니다.`,
+        `$B$에서 직선 $OA$에 내린 수선의 발 $H$를 잡으면 $OH$는 $${V('OB')}$의 (부호 있는) 정사영이고 $x_H=${xh}$입니다.`,
+        `$${V('OA')}\\cdot${V('OB')}=|${V('OA')}|\\,x_H=${a}\\times${par(xh)}=${a * xh}$. $B$가 직선 $BH$ 위에서 움직여도 $x_H$가 같으면 내적은 변하지 않으므로 $y_B$와 무관합니다.`
+      ],
+      quick: `내적은 (|OA|)×(OB의 직선 OA 위 부호 있는 정사영)입니다. $${a}\\times${par(xh)}=${a * xh}$.${xh < 0 ? ' 발 $H$가 $O$의 반대쪽에 있으므로 음수입니다.' : xh === 0 ? ' $H=O$이므로 $OA\\perp OB$입니다.' : ''}`
+    });
+    // ---- 2: 성분 내적과 사잇각
+    const g2 = ([ax, ay, bx, by]) => {
+      const d = ax * bx + ay * by, na = ax * ax + ay * ay, nb = bx * bx + by * by;
+      const th = d === 0 ? 90 : d / Math.sqrt(na * nb) > 0 ? 45 : 135, cos = d === 0 ? '0' : th === 45 ? '\\dfrac{\\sqrt{2}}{2}' : '-\\dfrac{\\sqrt{2}}{2}';
+      return {
+        ax, ay, bx, by, d, th, val: d,
+        text: `좌표평면 위의 두 벡터 ${APLab.tex(`\\vec{a}=(${ax},\\ ${ay}),\\ \\vec{b}=(${bx},\\ ${by})`)}에 대하여 내적 ${APLab.tex('\\vec{a}\\cdot\\vec{b}')}의 값과 두 벡터가 이루는 각의 크기 ${APLab.tex('\\theta')}를 구하시오. (단, ${APLab.tex('0^\\circ\\le\\theta\\le180^\\circ')})`,
+        ans: `\\vec{a}\\cdot\\vec{b}=${d},\\ \\theta=${th}^\\circ`,
+        steps: [
+          `두 벡터 $\\vec a=(${ax},\\ ${ay})$, $\\vec b=(${bx},\\ ${by})$와 사잇각 $\\theta$를 그립니다.`,
+          `성분으로 내적을 계산하면 $\\vec a\\cdot\\vec b=${ax}\\cdot${par(bx)}+${par(ay)}\\cdot${par(by)}=${d}$. $\\cos\\theta=\\dfrac{${d}}{\\sqrt{${na}}\\sqrt{${nb}}}=${cos}$이므로 $\\theta=${th}^\\circ$.`,
+          `$\\vec a$에 수직인 직선(내적 $=0$)을 기준으로 $\\vec b$가 ${d > 0 ? '같은 쪽에 있으므로 예각(내적 $>0$)' : d === 0 ? '그 직선 위에 있으므로 수직(내적 $=0$)' : '반대쪽에 있으므로 둔각(내적 $<0$)'}입니다.`
+        ],
+        quick: `$\\vec a\\cdot\\vec b=x_1x_2+y_1y_2=${d}$. $|\\vec a|=\\sqrt{${na}}$, $|\\vec b|=\\sqrt{${nb}}$이므로 $\\cos\\theta=${cos}$ ⇒ $\\theta=${th}^\\circ$.`
+      };
+    };
+    // ---- 3: 원 위의 점에서 OA·OP의 최대·최소
+    const g3 = ([ax, ay, cx, cy, r]) => {
+      const la = Math.hypot(ax, ay), k = ax * cx + ay * cy, M = k + la * r, m = k - la * r;
+      return {
+        ax, ay, cx, cy, r, la, k, M, m, val: M,
+        text: `좌표평면에서 고정된 점 ${APLab.tex(`A(${ax},\\ ${ay})`)}와 원 ${APLab.tex(`(x${cx ? (cx > 0 ? '-' : '+') + Math.abs(cx) : ''})^2+(y${cy ? (cy > 0 ? '-' : '+') + Math.abs(cy) : ''})^2=${r * r}`)} (반지름 ${APLab.tex(`r=${r}`)}) 위를 움직이는 점 ${APLab.tex('P')}가 있다. 내적 ${APLab.tex(`${V('OA')}\\cdot${V('OP')}`)}의 최댓값 ${APLab.tex('M')}과 최솟값 ${APLab.tex('m')}을 구하시오.`,
+        ans: `M=${M},\\ m=${m}`,
+        steps: [
+          `고정 벡터 $${V('OA')}$(길이 $${la}$)와 중심 $C(${cx},\\ ${cy})$, 반지름 $${r}$인 원을 그립니다.`,
+          `중심 $C$를 지나게 분해합니다: $${V('OA')}\\cdot${V('OP')}=${V('OA')}\\cdot(${V('OC')}+${V('CP')})=${V('OA')}\\cdot${V('OC')}+${V('OA')}\\cdot${V('CP')}$, 고정항 $${V('OA')}\\cdot${V('OC')}=${k}$.`,
+          `$${V('CP')}$가 $${V('OA')}$와 같은 방향일 때 최대 $+${la}\\times${r}$, 반대 방향일 때 최소 $-${la}\\times${r}$이므로 $M=${k}+${la * r}=${M}$, $m=${k}-${la * r}=${m}$.`
+        ],
+        quick: `$${V('OA')}\\cdot${V('OP')}=${V('OA')}\\cdot${V('OC')}+${V('OA')}\\cdot${V('CP')}=${k}+${V('OA')}\\cdot${V('CP')}$이고 $-|OA|r\\le${V('OA')}\\cdot${V('CP')}\\le|OA|r$이므로 $M=${k}+${la}\\times${r}=${M}$, $m=${k}-${la}\\times${r}=${m}$.`
+      };
+    };
+    // ---- 4: PA·PB = PM² - L²
+    const g4 = ([L, d, r]) => {
+      const hi = (d + r) ** 2 - L * L, lo = (d - r) ** 2 - L * L;
+      return {
+        L, d, r, hi, lo, val: hi,
+        text: `길이가 ${APLab.tex(String(2 * L))}인 고정된 선분 ${APLab.tex('AB')}와 그 중점 ${APLab.tex('M')}이 있다. 점 ${APLab.tex('M')}으로부터 거리가 ${APLab.tex(String(d))}인 점 ${APLab.tex('C')}를 중심으로 하고 반지름이 ${APLab.tex(`r=${r}`)}인 원 위를 움직이는 점 ${APLab.tex('P')}에 대하여, 내적 ${APLab.tex(`${V('PA')}\\cdot${V('PB')}`)}의 최댓값과 최솟값을 구하시오.`,
+        ans: `\\text{최대 }${hi},\\ \\text{최소 }${lo}`,
+        steps: [
+          `고정 선분 $AB$(길이 $${2 * L}$), 원 $C$ 및 움직이는 두 벡터 $${V('PA')}$, $${V('PB')}$를 그립니다.`,
+          `중점 $M$을 지나게 분해합니다: $${V('PA')}=${V('PM')}+${V('MA')}$, $${V('PB')}=${V('PM')}+${V('MB')}$ ($${V('MB')}=-${V('MA')}$, $MA=${L}$).`,
+          `$${V('PA')}\\cdot${V('PB')}=PM^2-${L}^2$이고 $${d - r}\\le PM\\le${d + r}$이므로 최댓값 $${d + r}^2-${L * L}=${hi}$, 최솟값 $${d - r}^2-${L * L}=${lo}$.`
+        ],
+        quick: `$${V('PA')}\\cdot${V('PB')}=PM^2-AM^2=PM^2-${L * L}$. $PM$의 범위는 $MC\\pm r$, 곧 $${d - r}\\le PM\\le${d + r}$ ⇒ 최댓값 $${hi}$, 최솟값 $${lo}$.`
+      };
+    };
+    const POOL = {
+      1: [[6, 3, 4], [6, -2, 3], [5, 4, 2], [8, 0, 5], [4, -3, 4], [7, 3, 4]],
+      2: [[4, 2, 1, 3], [3, 1, 2, 4], [2, 1, 1, 3], [4, 2, -1, 2], [3, 1, -1, -2]],
+      3: [[3, 4, 2, 1, 2], [3, 4, 1, 2, 1], [4, 3, 2, 2, 2], [5, 12, 1, 1, 1], [-3, 4, 2, 1, 1], [6, 8, 1, 0, 2]],
+      4: [[2, 5, 2], [3, 5, 1], [2, 6, 3], [1, 5, 3], [3, 7, 2]]
+    };
+    return { POOL, G: { 1: g1, 2: g2, 3: g3, 4: g4 }, stdOf };
+  })();
+  /*OV-END*/
+
+  function dotOverlay(sc, m) {
+    const { tex, P, add, sub, mul, len, lerp, polar } = NQ;
+    const G = OVD.G[m], list = OVD.POOL[m].map(G);
+    const V = (n) => `\\overrightarrow{${n}}`;
+    const FIG = {
+      1: (b, step, I) => {
+        const L = NQ.labels(b), O = P(0, 0), A = P(I.a, 0), Bp = P(I.xh, I.yb), H = P(I.xh, 0);
+        L.line(O, A, { color: 'sky', width: 3.6 });
+        L.line(Bp, H, { color: 'amber', width: 2.2, dash: [5, 5] });
+        if (Math.abs(I.yb) > 0.2) b.right(H, P(H.x + 1, 0), Bp, { color: 'amber', size: 10 });
+        if (step >= 1) { L.vec(O, Bp, { color: 'rose', width: 3.2 }); b.angle(O, A, Bp, { r: 26, color: 'green', label: 'θ', labelGap: 15 }); }
+        if (step >= 3) L.inf(H, P(0, 1), { color: 'amber', width: 1.6, dash: [6, 6], alpha: 0.7 });
+        if (step >= 2) L.line(O, H, { color: I.xh >= 0 ? 'amber' : 'red', width: 6, glow: true });
+        L.pt(O, { color: 'ink' }).pt(A, { color: 'sky' }).pt(Bp, { color: 'rose' }).pt(H, { color: 'amber' });
+        L.O();
+        L.at(A, 'A', { color: 'sky', dirDeg: 20 });
+        L.at(Bp, 'B', { color: 'rose', dirDeg: I.yb >= 0 ? -70 : 70 });
+        L.at(H, 'H', { color: 'amber', dirDeg: I.yb >= 0 ? 110 : -110 });
+        L.along(O, A, `OA = ${I.a}`, { color: 'sky', side: -1, off: 16, at: 0.62 });
+        if (step >= 2) L.along(O, H, `x_H = ${I.xh}`, { color: I.xh >= 0 ? 'amber' : 'red', side: I.yb >= 0 ? -1 : 1, off: 18, at: 0.5 });
+      },
+      2: (b, step, I) => {
+        const L = NQ.labels(b), O = P(0, 0), a = P(I.ax, I.ay), bb = P(I.bx, I.by);
+        if (step >= 3) L.inf(O, P(-I.ay, I.ax), { color: 'amber', width: 1.8, dash: [6, 6], alpha: 0.8 });
+        L.vec(O, a, { color: 'sky', width: 3.4 }); L.vec(O, bb, { color: 'rose', width: 3.4 });
+        if (step >= 1) b.angle(O, a, bb, { r: 30, color: 'green', label: step >= 2 ? `θ = ${I.th}°` : 'θ', labelGap: step >= 2 ? 24 : 16 });
+        if (step >= 3) { const q = mul(P(-I.ay, I.ax), 1 / len(P(I.ax, I.ay)) * 1.2); L.at(q, 'a에 수직 (내적 0)', { color: 'amber', dirDeg: 150, size: 12 }); }
+        L.pt(a, { color: 'sky' }).pt(bb, { color: 'rose' });
+        L.O();
+        L.at(a, `a = (${I.ax}, ${I.ay})`, { color: 'sky', away: O });
+        L.at(bb, `b = (${I.bx}, ${I.by})`, { color: 'rose', away: O });
+      },
+      3: (b, step, I) => {
+        const L = NQ.labels(b), O = P(0, 0), A = P(I.ax, I.ay), C = P(I.cx, I.cy), u = mul(A, 1 / I.la), ang0 = Math.atan2(I.ay, I.ax) * 180 / Math.PI;
+        b.circle(C, I.r, { color: 'sky', width: 2.6, fill: 'sky', fillAlpha: 0.07 }); L.circ(C, I.r);
+        const rEnd = polar(C, I.r, ang0 + 150);
+        L.line(C, rEnd, { color: 'sky', width: 1.8, dash: [4, 4] });
+        L.vec(O, A, { color: 'rose', width: 3.2 });
+        const Pp = polar(C, I.r, ang0 + 235);
+        if (step >= 2) { L.vec(O, C, { color: 'sky', width: 2.6 }); L.vec(C, Pp, { color: 'green', width: 2.6 }); L.vec(O, Pp, { color: 'amber', width: 2.4, dash: [5, 4], alpha: 0.9 }); }
+        let hi = null, lo = null;
+        if (step >= 3) {
+          hi = add(C, mul(u, I.r)); lo = sub(C, mul(u, I.r));
+          L.vec(C, hi, { color: 'green', width: 3 }); L.pt(hi, { color: 'green', r: 5 }); L.pt(lo, { color: 'red', r: 5 });
+        }
+        L.pt(O, { color: 'ink' }).pt(A, { color: 'rose' }).pt(C, { color: 'sky' }).pt(Pp, { color: 'amber' });
+        L.O();
+        L.at(A, `A(${I.ax}, ${I.ay})`, { color: 'rose', away: O });
+        L.at(C, `C(${I.cx}, ${I.cy})`, { color: 'sky', dirDeg: 120 });
+        L.at(lerp(C, rEnd, 0.5), `r = ${I.r}`, { color: 'sky', dirDeg: 100 });
+        L.at(Pp, 'P', { color: 'amber', away: C });
+        if (hi) { L.at(hi, 'P_max', { color: 'green', away: C }); L.at(lo, 'P_min', { color: 'red', away: C }); }
+      },
+      4: (b, step, I) => {
+        const L = NQ.labels(b), M = P(0, 0), A = P(-I.L, 0), Bq = P(I.L, 0), C = P(0.6 * I.d, 0.8 * I.d);
+        const dirC = Math.atan2(0.8 * I.d, 0.6 * I.d) * 180 / Math.PI, Pp = polar(C, I.r, dirC + 100);
+        b.circle(C, I.r, { color: 'sky', width: 2.6, fill: 'sky', fillAlpha: 0.07 }); L.circ(C, I.r);
+        L.line(A, Bq, { color: 'ink', width: 3.4 });
+        L.line(M, C, { color: 'muted', width: 1.8, dash: [5, 5] });
+        const rEnd = polar(C, I.r, dirC - 60);
+        L.line(C, rEnd, { color: 'sky', width: 1.8, dash: [4, 4] });
+        L.vec(Pp, A, { color: 'sky', width: 2.8 }); L.vec(Pp, Bq, { color: 'rose', width: 2.8 });
+        if (step >= 2) L.vec(Pp, M, { color: 'green', width: 3 });
+        let far = null, near = null;
+        if (step >= 3) {
+          const u = P(0.6, 0.8); far = add(C, mul(u, I.r)); near = sub(C, mul(u, I.r));
+          L.pt(far, { color: 'green', r: 5 }); L.pt(near, { color: 'red', r: 5 });
+        }
+        L.pt(A, { color: 'sky' }).pt(Bq, { color: 'rose' }).pt(M, { color: 'ink' }).pt(C, { color: 'sky' }).pt(Pp, { color: 'amber' });
+        L.at(A, 'A', { color: 'sky', away: M }); L.at(Bq, 'B', { color: 'rose', away: M }); L.at(M, 'M', { color: 'ink', dirDeg: -90 });
+        L.at(C, 'C', { color: 'sky', away: M }); L.at(Pp, 'P', { color: 'amber', away: C });
+        L.along(A, Bq, `AB = ${2 * I.L}`, { color: 'ink', side: -1, off: 14, at: 0.5 });
+        L.along(M, C, `MC = ${I.d}`, { color: 'muted', side: -1, off: 14, at: 0.45 });
+        L.at(lerp(C, rEnd, 0.5), `r = ${I.r}`, { color: 'sky', dirDeg: dirC - 80 });
+        if (far) { L.at(far, 'P_max', { color: 'green', away: C }); L.at(near, 'P_min', { color: 'red', away: C }); }
+      }
+    };
+    const nq = NQ.scene({
+      id: sc.id, title: sc.title, short: sc.short, question: sc.question, guide: '', init: () => ({}), explore: () => {}, view: () => ({}),
+      axes: m !== 4, gen: (prev) => (prev ? NQ.pickOf(list, prev) : list[0]),
+      tag: m === 1 ? '내적과 정사영' : m === 2 ? '성분으로 나타낸 내적과 수직 조건' : m === 3 ? '원 위의 점에서 내적의 최댓값·최솟값' : '시점이 움직이는 내적',
+      time: '목표 시간: 30초',
+      text: (I) => I.text, answer: (I) => I.ans, figure: FIG[m], steps: (I) => I.steps,
+      std: (I) => OVD.stdOf(I.steps), quick: (I) => I.quick,
+      warning: m === 1 ? '길이 |OH|만 곱하면 B가 O의 반대쪽에 있을 때 음수 부호를 잃습니다. 부호 있는 정사영 x_H를 쓰세요.' : m === 2 ? '성분이 주어지면 코사인법칙보다 성분 내적이 훨씬 간단합니다. 사잇각의 범위는 0°~180°입니다.' : m === 3 ? '원의 중심을 지나게 분해하면 고정항과 방향만 변하는 항으로 나뉩니다.' : '시점 P가 움직이는 내적은 선분 AB의 중점 M을 이용해 PM² − (AB/2)²으로 바꿉니다.',
+      highlight: m === 1 ? '내적은 한 벡터의 크기와 다른 벡터의 부호 있는 정사영의 곱입니다.' : m === 2 ? '내적이 0이면 수직, 양수이면 예각, 음수이면 둔각입니다.' : m === 3 ? 'u·OP의 최댓값·최솟값은 u·OC ± |u|r입니다.' : 'PA·PB = PM² − (AB의 절반)²',
+      reviewChips: (I) => [{ tex: m === 1 ? `${V('OA')}\\cdot${V('OB')}=${I.val}` : m === 2 ? `\\vec a\\cdot\\vec b=${I.d},\\ \\theta=${I.th}^\\circ` : m === 3 ? `M=${I.M},\\ m=${I.m}` : `\\text{최대 }${I.hi},\\ \\text{최소 }${I.lo}`, color: 'green' }]
+    });
+    const oSteps = sc.steps, oDraw = sc.draw, oView = sc.view;
+    const away = () => !!(window.lab && window.lab.tab && window.lab.tab !== 'explore');
+    const vary = nq.vary;
+    vary.go = (i) => { vary.n++; vary._c = list[i]; return vary._c; }; vary.size = list.length;
+    sc.tabs = nq.tabs; sc.vary = vary; sc.reviewTop = nq.reviewTop;
+    sc.problem = { ...nq.problem, text: () => `${vary.cur().text}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-nq-new>새 문제</button></div>` };
+    sc.steps = (s) => (away() ? nq.steps(s) : (typeof oSteps === 'function' ? oSteps(s) : oSteps));
+    sc.solution = { ...sc.solution, ...nq.solution };
+    sc.view = (s, lab) => (lab && lab.tab !== 'explore' ? nq.view(s, lab) : oView(s, lab));
+    sc.draw = (b, s, v, lab) => {
+      if (!lab || lab.tab === 'explore') {
+        if (b.__ovk && b.__ovk !== 'e') { b.setFocus(sc.focus, true); b.__nq = ''; }
+        b.__ovk = 'e';
+        return oDraw(b, s, v, lab);
+      }
+      b.__ovk = 'n'; v.tape = null;
+      return nq.draw(b, s, v, lab);
+    };
+    return sc;
+  }
+
   APLab.createLab({
     id: 'geom-vector-dot',
     title: '벡터의 성분 · 내적',
@@ -1759,7 +1949,7 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     state: { sid: '1', lens: 'all', pi: 0, animDir: 1 },
     persist: ['lens'],
-    scenes: [1, 2, 3, 4].map(sceneOf).concat([sceneCmp(), sceneLoc(), scenePrj()])
+    scenes: [1, 2, 3, 4].map((m) => dotOverlay(sceneOf(m), m)).concat([sceneCmp(), sceneLoc(), scenePrj()])
   });
 });
 </script>
