@@ -1868,7 +1868,7 @@ function renderStudentDetailHeader(sid, mode = 'view') {
     const teacherLabel = getStudentHomeroomTeacherLabel(s);
     const metaParts = [
         [s.school_name, s.grade].filter(Boolean).join(' · ') || '학교/학년 미등록',
-        cls?.name || '반 미배정'
+        (cls ? ((typeof window !== 'undefined' && typeof window.apmsClassLabel === 'function') ? window.apmsClassLabel(cls, state.db.classes).text : cls.name) : '') || '반 미배정'
     ];
     // PIN은 헤더에서 제거하고 담임을 우선 표시(없으면 생략).
     metaParts.push(teacherLabel ? `담임 ${teacherLabel}` : '담임 미지정');

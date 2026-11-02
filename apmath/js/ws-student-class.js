@@ -25,6 +25,20 @@ function wsClassArg(value) {
     return wsClassEsc("'" + String(value ?? '').replace(/[\\']/g, '\\$&') + "'");
 }
 
+// 반 이름 표기 규칙(사용자 지시 2026-11-02): 학년을 이름에 겹쳐 쓰지 않는다("중3 · 중3A" 금지).
+// 이름에 그 학년 글자가 없을 때만 앞에 붙이고("고1 심화반"), 같은 이름이 다른 담당과 함께 보일 때만 담당을 보조로 단다.
+// 공통 함수 window.apmsClassLabel(cls, peers) → {text, teacher}가 있으면 그것을 먼저 쓴다.
+function wsClassLabel(cls, peers) {
+    if (typeof window !== 'undefined' && typeof window.apmsClassLabel === 'function') return window.apmsClassLabel(cls, peers);
+    const name = String((cls && cls.name) || '').trim();
+    const grade = String((cls && cls.grade) || '').trim();
+    const text = grade && !name.includes(grade) ? `${grade} ${name}`.trim() : name;
+    const labelOf = c => { const n = String((c && c.name) || '').trim(); const g = String((c && c.grade) || '').trim(); return g && !n.includes(g) ? `${g} ${n}`.trim() : n; };
+    const teacher = String((cls && cls.teacher_name) || '').trim();
+    const clash = (Array.isArray(peers) ? peers : []).some(o => o && String(o.id) !== String(cls && cls.id) && labelOf(o) === text && String(o.teacher_name || '').trim() !== teacher);
+    return { text, teacher: clash ? teacher : '' };
+}
+
 function wsClassFind(cid) {
     return (state.db.classes || []).find(c => String(c.id) === String(cid)) || null;
 }
@@ -52,8 +66,7 @@ function wsClassRowHtml(c) {
     return `
         <button type="button" class="apms-workspace__item ws-class__item${active ? ' is-active' : ''}${hidden ? ' is-hidden' : ''}" data-class-id="${wsClassEsc(c.id)}" aria-current="${active ? 'true' : 'false'}" onclick="wsClassSelect(${wsClassArg(c.id)})">
             <span class="ws-class__item-head">
-                <span class="ws-class__item-name">${wsClassEsc(c.name)}</span>
-                <span class="ws-chip">${wsClassEsc(c.grade || '-')}</span>
+                <span class="ws-class__item-name">${wsClassEsc(wsClassLabel(c, state.db.classes).text)}</span>
                 ${hidden ? '<span class="ws-chip ws-chip--muted">숨김</span>' : ''}
                 <span class="ws-class__item-count">학생 ${count}명</span>
             </span>
@@ -165,8 +178,8 @@ function wsClassDetailHtml() {
             <button type="button" class="btn apms-button apms-button--quiet ws-class__back" onclick="wsClassScrollToList()">↑ 반 목록</button>
             <div class="ws-class__detail-title">
                 <div>
-                    <div class="apms-unified-context__name">${wsClassEsc(c.name)}${hidden ? ' <span class="ws-chip ws-chip--muted">숨김</span>' : ''}</div>
-                    <div class="apms-unified-context__meta">${wsClassEsc(c.grade || '')} · 학생 ${count}명 · 반 정보 수정</div>
+                    <div class="apms-unified-context__name">${wsClassEsc(wsClassLabel(c, state.db.classes).text)}${hidden ? ' <span class="ws-chip ws-chip--muted">숨김</span>' : ''}</div>
+                    <div class="apms-unified-context__meta">학생 ${count}명 · 반 정보 수정</div>
                 </div>
                 <button type="button" class="btn apms-button apms-button--quiet ws-class__open" onclick="wsClassOpenClassroom(${wsClassArg(c.id)})">반 화면 열기</button>
             </div>

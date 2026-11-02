@@ -190,3 +190,22 @@ test('M6 student detail shell is a W single-column modal with one cancel and a w
     assert.match(css, /body\.ap-modal-open \.ap-student-detail-shell > \.ap-student-profile-head \{[^}]*pointer-events: auto/);
     assert.match(read('apmath/index.html'), /body\.ap-modal-open header,[\s\S]*?pointer-events: none;/, 'the global rule that causes it still exists, so the scoped override is needed');
 });
+
+// ------------------------------------------------------------ 반 이름 표기 규칙 (사용자 지시 2026-11-02)
+test('class label: grade is not repeated in the name, teacher only when same name collides with another teacher', () => {
+    const ctx = { window: {} };
+    vm.createContext(ctx);
+    vm.runInContext(slice(wsClass, 'function wsClassLabel(', 'function wsClassFind('), ctx);
+    const A = { id: 'a', name: '중3A', grade: '중3', teacher_name: '김선생' };
+    const B = { id: 'b', name: '중3A', grade: '중3', teacher_name: '박선생' };
+    const C = { id: 'c', name: '심화반', grade: '고1', teacher_name: '김선생' };
+    assert.equal(ctx.wsClassLabel(A, [A, C]).text, '중3A', 'no "중3 중3A"');
+    assert.equal(ctx.wsClassLabel(C, [A, C]).text, '고1 심화반', 'grade added when the name lacks it');
+    assert.equal(ctx.wsClassLabel(A, [A, C]).teacher, '');
+    assert.equal(ctx.wsClassLabel(A, [A, B]).teacher, '김선생', 'same name, different teacher -> teacher shown');
+    assert.equal(ctx.wsClassLabel(B, [A, B]).teacher, '박선생');
+    // 공통 함수가 있으면 그것을 먼저 쓴다
+    ctx.window.apmsClassLabel = () => ({ text: 'X', teacher: 'Y' });
+    assert.deepEqual(ctx.wsClassLabel(A, [A]), { text: 'X', teacher: 'Y' });
+    assert.doesNotMatch(wsClass, /ws-chip">\$\{wsClassEsc\(c\.grade/, 'grade chip next to the name was removed');
+});
