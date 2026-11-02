@@ -1,0 +1,177 @@
+/* APMS M7 클리닉 작업 화면 (2026-11-02). 껍데기 ws-clinic-shell.js · 유사문항 ws-clinic-similar.js 전용.
+ * 공통 부품(.apms-modal*, .apms-workspace*)은 고치지 않고, 클리닉 전용 선택자(.ws-clinic*)로만 덧붙인다.
+ * 색은 APMS 라이트/다크 토큰만 쓴다. 글자 12px 이상, 누르는 영역 44px(PC 마우스 36px). */
+
+/* ---- 위쪽 줄: 보기 탭(오답 출력 | 유사문항) + 반 전환 탭 ---- */
+.ws-clinic__bar {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+}
+.ws-clinic--print > .ws-clinic__bar { padding-bottom: 10px; }
+.ws-clinic__viewtabs {
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 4px;
+    padding: 3px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-2);
+}
+.ws-clinic-viewtab,
+.ws-clinic-classtab {
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    min-height: 36px;
+    padding: 6px 14px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.3;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.ws-clinic-viewtab.is-active {
+    background: var(--surface);
+    border-color: var(--border);
+    color: var(--primary);
+}
+.ws-clinic__classtabs {
+    display: flex;
+    flex: 1 1 auto;
+    gap: 6px;
+    min-width: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+}
+.ws-clinic-classtab {
+    border-color: var(--border);
+    background: var(--surface);
+}
+.ws-clinic-classtab:hover { background: var(--surface-2); }
+.ws-clinic-classtab.is-active {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: var(--on-primary, #fff);
+}
+.ws-clinic-viewtab:focus-visible,
+.ws-clinic-classtab:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* ---- 불러오는 중 · 빈 상태 ---- */
+.ws-clinic-loading {
+    grid-column: 1 / -1;
+    padding: 36px 20px;
+    text-align: center;
+    color: var(--secondary);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+.ws-clinic-empty {
+    padding: 18px 14px;
+    border: 1px dashed var(--border);
+    border-radius: var(--ap-ui-radius-panel, 8px);
+    background: var(--surface-2);
+    color: var(--secondary);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* ---- 오답 출력(P): 기존 출력 센터를 패널 안에 그대로 넣는다 ---- */
+.ws-clinic__view--print {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 16px;
+    overflow: hidden;
+}
+.ws-clinic__view--print > .clinic-print-layout {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 0;
+}
+
+/* 출력 센터 안 인라인 스타일(10~11px 글자, 낮은 체크·라디오 줄, 작은 입력칸)을 패널 안에서만 읽고 누르기 편하게 올린다.
+   본문 마크업·출제 로직은 그대로이고 화면 크기만 바꾼다(글자 12px 이상, 누르는 줄 28px 이상). */
+.ws-clinic__view--print :is([style*="font-size:9px"], [style*="font-size:10px"], [style*="font-size:11px"], [style*="font-size: 9px"], [style*="font-size: 10px"], [style*="font-size: 11px"]) {
+    font-size: 12px !important;
+}
+.ws-clinic__view--print label:has(> input[type="checkbox"]),
+.ws-clinic__view--print label:has(> input[type="radio"]) {
+    min-height: 28px;
+    box-sizing: border-box;
+}
+.ws-clinic__view--print :is(input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]), select) {
+    min-height: 32px;
+    box-sizing: border-box;
+}
+.ws-clinic__view--print :is(input[type="checkbox"], input[type="radio"]) {
+    width: 18px;
+    height: 18px;
+}
+
+/* ---- 유사문항(W): 왼쪽 취약 단원 목록 ---- */
+.ws-clinic-similar { padding: 12px 20px 16px; }
+.ws-clinic-list .apms-unified-context { flex: 0 0 auto; }
+.ws-clinic-unit {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 2px;
+}
+.ws-clinic-unit__name { font-size: 13px; font-weight: 600; line-height: 1.4; word-break: break-word; }
+.ws-clinic-unit__meta { color: var(--secondary); font-size: 12px; font-weight: 500; line-height: 1.4; }
+.ws-clinic-unit[aria-current="true"] .ws-clinic-unit__meta { color: var(--text); }
+
+@media (min-width: 901px) {
+    .ws-clinic-viewtab,
+    .ws-clinic-classtab { min-height: 36px; }
+}
+@media (max-width: 900px) {
+    .ws-clinic__bar { padding: 8px 14px; }
+    .ws-clinic-viewtab,
+    .ws-clinic-classtab { min-height: 44px; }
+    .ws-clinic__view--print { padding: 10px 12px; }
+    .ws-clinic-similar { padding: 10px 14px 14px; }
+}
+@media (max-width: 880px) {
+    /* 출력 센터는 컨트롤 위 · 미리보기 아래로 쌓인다. 패널 본문이 한 번에 스크롤한다. */
+    .ws-clinic__view--print { overflow: auto; }
+    .ws-clinic__view--print > .clinic-print-layout { flex: 0 0 auto; }
+}
+@media (max-width: 600px) {
+    /* 휴대폰: 입력칸 글자 16px(iOS가 16px 미만 입력칸에 포커스하면 화면을 확대한다) */
+    .ws-clinic__view--print :is(input[type="text"], input[type="number"], input[type="date"], input:not([type]), select, textarea) { font-size: 16px; }
+    .ws-clinic__bar {
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 8px 12px;
+    }
+    .ws-clinic__viewtabs { width: 100%; box-sizing: border-box; }
+    .ws-clinic-viewtab { flex: 1 1 0; }
+    .ws-clinic__classtabs { flex: 1 1 100%; padding-bottom: 2px; }
+    .ws-clinic-similar { padding: 10px 12px 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ws-clinic-viewtab, .ws-clinic-classtab { transition: none; }
+}
+
+/* 시험 목록이 길어 칸이 줄어들면 제목·설명이 줄 밖으로 겹쳐 보인다(옛 출력 센터 그대로의 결함). 줄은 줄어들지 않고 목록이 스크롤한다. */
+.ws-clinic__view--print .clinic-print-exam-row { flex-shrink: 0; }

@@ -5791,51 +5791,17 @@ async function clinicPrintSubmit(classId) {
     await clinicPrintOpenStoredOrFallback(classId, payload, selectedStudentIds);
 }
 
+// 클리닉 진입점. 2버튼 메뉴·반 고르기 모달은 없어졌다(2026-11-02, M7).
+// 반 전환 탭 + 보기 탭(오답 출력 | 유사문항)이 있는 작업 화면 하나를 연다(js/ws-clinic-shell.js).
 function openClinicCenter(classId = '') {
-    const hasClassId = !!String(classId || '').trim();
-    const safeClassIdForJs = clinicPrintEscapeJsString(classId);
-
-    if (!hasClassId) {
-        openClinicClassPicker();
-        return;
-    }
-
-    showModal('클리닉', `
-        <div class="clinic-print-menu-grid">
-            <button class="btn apms-button apms-button--quiet clinic-print-menu-btn" onclick="if('${safeClassIdForJs}'){ openClinicPrintCenter('${safeClassIdForJs}'); } else { toast('반 화면에서 이용하세요.', 'info'); }">오답</button>
-            <button class="btn apms-button apms-button--quiet clinic-print-menu-btn" onclick="clinicPrintOpenSimilarMenu('${safeClassIdForJs}')">유사문항</button>
-        </div>
-    `);
+    if (typeof wsClinicOpen === 'function') return wsClinicOpen(classId);
+    toast('클리닉 화면을 불러오지 못했습니다. 새로고침 후 다시 시도하세요.', 'warn');
+    return false;
 }
 
+// 옛 "클리닉 반 선택" 모달의 자리. 지금은 반 전환 탭이 있는 같은 작업 화면을 연다.
 function openClinicClassPicker() {
-    const classes = clinicPrintGetActiveClasses();
-    const currentClassId = String(state.ui?.currentClassId || '');
-
-    if (!classes.length) {
-        toast('선택할 반이 없습니다.', 'warn');
-        return;
-    }
-
-    const classRows = classes.map(cls => {
-        const safeClassId = clinicPrintEscapeJsString(cls.id);
-        const selected = String(cls.id) === currentClassId;
-        const meta = [cls.grade, cls.teacher_name, cls.schedule_days || cls.day_group, cls.time_label]
-            .filter(Boolean)
-            .join(' · ');
-        return `
-            <button type="button" class="btn apms-button apms-button--quiet clinic-print-class-btn${selected ? ' clinic-print-class-btn--current' : ''}" onclick="openClinicCenter('${safeClassId}')">
-                <span class="clinic-print-class-btn__name">${clinicPrintEscapeHtml(cls.name || '반 이름 없음')}</span>
-                <span class="clinic-print-class-btn__meta">${clinicPrintEscapeHtml(meta || '반 정보 없음')}</span>
-            </button>
-        `;
-    }).join('');
-
-    showModal('클리닉 반 선택', `
-        <div class="clinic-print-class-list">
-            ${classRows}
-        </div>
-    `);
+    return openClinicCenter('');
 }
 
 function clinicPrintOpenSimilarMenu(classId = '') {
@@ -6045,14 +6011,19 @@ async function openClinicPrintCenter(classId, options = {}) {
     clinicPrintTypeState.unitSelection = [];
     clinicPrintTypeState.dragKey = null;
     const cls = clinicPrintGetClass(classId);
+    // 작업 화면 껍데기(반 전환·보기 탭)를 먼저 열고 시험 기록은 그 자리에서 불러온다(js/ws-clinic-shell.js).
+    // 껍데기 파일이 없는 환경(단독 테스트 등)에서는 예전처럼 불러온 뒤 모달을 연다.
+    const wsToken = typeof wsClinicBeginPrint === 'function' ? wsClinicBeginPrint(classId) : 0;
     if (!options.skipAssignmentRefresh) {
         await clinicPrintRefreshClassAssignments(classId);
         await clinicPrintRefreshGradeClinicData(classId);
     }
+    // 불러오는 동안 다른 반·탭으로 바꿨거나 닫았으면 이 응답으로 화면을 덮지 않는다.
+    if (wsToken && !wsClinicIsCurrent(wsToken)) return;
     const safeClassIdForJs = clinicPrintEscapeJsString(classId);
     const examHtml = clinicPrintRenderExamListHtml(classId, 'class');
 
-    showModal('오답 클리닉 출력 센터', `
+    const printCenterHtml = `
         <div class="clinic-print-layout">
         <div class="clinic-print-layout__controls">
         <div class="clinic-print-shell">
@@ -6216,9 +6187,14 @@ async function openClinicPrintCenter(classId, options = {}) {
             <iframe id="clinic-print-preview-frame" title="출력 미리보기" src="wrong_print_engine.html?preview=1"></iframe>
         </div>
         </div>
-    `);
+    `;
 
-    document.getElementById('modal-content')?.classList.add('clinic-print-fullscreen');
+    if (wsToken) {
+        wsClinicMountPrint(wsToken, printCenterHtml);
+    } else {
+        showModal('오답 클리닉 출력 센터', printCenterHtml);
+        document.getElementById('modal-content')?.classList.add('clinic-print-fullscreen');
+    }
     clinicPrintRenderRecommendationPanel(classId);
     clinicPrintRenderRecommendationAssessmentPanel(classId);
     clinicPrintRenderRepeatSection(classId);
