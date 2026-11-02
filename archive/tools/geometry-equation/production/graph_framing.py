@@ -2605,7 +2605,7 @@ def fit_piecewise_discontinuous(plan,frame=None,probe=False):
 # segments to the axes, simple polygons and extra named points on the curve. Every coordinate is recomputed here exactly; the plan names
 # the points and the elements, never raw derived coordinates. The fitted plan carries overlaysFeatures (numeric, for the model/spec) and
 # the independent graph observer recomputes the same values from the raw overlays field and reads the FINAL SVG back.
-OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4,'quadrants':4,'circles':2,'circleRegions':2,'callouts':4}
+OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4,'quadrants':4,'circles':2,'circleRegions':2,'callouts':4,'rightAngles':3,'angles':4,'equalAngles':2}
 # overlays.names: a plain Korean name (토끼, 거북이, 직선 l) written beside one overlay segment, overlay line or the drawn curve at curveX.
 OVERLAY_NAME_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,10}'
 OVERLAY_LATTICE_REGIONS=('BELOW_CURVE','ABOVE_CURVE')
@@ -3289,6 +3289,150 @@ def _overlay_quadrants(plan,rows,claim):
         out.append(row)
     return out
 
+# ---- (G13a) right-angle squares and equal-angle arcs ON a graph -------------------------------------------------------------------------------
+# overlays.rightAngles:[{id?,at,from:[P,Q]}] or [{id?,lines:[l1,l2],side?}]: a square at a vertex where two PERPENDICULAR directions meet (checked exactly: dot product 0).
+# overlays.angles:[{id?,at,from,to,color?,arcs?}] and overlays.equalAngles:[{angles:[index,...],color,arcs?}]: arcs (and a sector) for angles that are EQUAL (exact check).
+# The screen must show what the maths says, so both need one scale on both axes (equalUnits, axisRatio 1).
+OVERLAY_ANGLE_SIDES={'N':(0,1),'NE':(1,1),'E':(1,0),'SE':(1,-1),'S':(0,-1),'SW':(-1,-1),'W':(-1,0),'NW':(-1,1)}
+OVERLAY_RIGHT_ANGLE_SQUARE_PX=16.0   # the leg of the drawn square (px): bigger than the plane-figure token so it reads on a phone
+OVERLAY_RIGHT_ANGLE_MIN_RAY_PX=24.0
+OVERLAY_ANGLE_MIN_RAY_PX=44.0
+OVERLAY_ANGLE_MIN_DEGREES=5.0
+
+def _overlay_scalar(value,ident):
+    if isinstance(value,bool):_overlay_fail('OVERLAY_VALUE_INVALID',ident)
+    if isinstance(value,int):return S.Integer(value)
+    if isinstance(value,float):return S.Rational(str(value))
+    return _overlay_exact(value,ident)
+
+def _overlay_is_zero(expression):
+    """Exact zero test of a small algebraic number (integers, fractions, one radical): expand, then simplify, then a 60-digit numeric proof."""
+    value=S.expand(expression)
+    if value==0:return True
+    try:
+        if S.simplify(value)==0:return True
+    except (ValueError,TypeError,NotImplementedError):pass
+    return abs(S.N(value,60))<S.Float('1e-40',60)
+
+def _overlay_angle_marks(plan,raw,claim,exact_by_point,by_line):
+    """The drawn marks of rightAngles / angles / equalAngles as rows for the spec: every vertex and ray end is an overlay point (reused) or a hidden helper point."""
+    right_rows=raw.get('rightAngles',[]);angle_rows=raw.get('angles',[]);equal_rows=raw.get('equalAngles',[])
+    xmin,xmax,ymin,ymax=plan['viewport']
+    scale=((plan.get('plotCanvas') or {}).get('width') or QUADRATIC_PLOT_WIDTH)/(xmax-xmin)
+    equal_units=plan.get('equalUnits') is True and plan.get('axisRatio',1)==1
+    required=plan.get('requiredPoints') if isinstance(plan.get('requiredPoints'),list) else []
+    out=[]
+    def resolve(name,ident,mark_id,role):
+        """(ref, exact (x,y), helper|None): an overlay point is its own dot; a requiredPoints entry (exact x, y) gets a hidden helper at its place."""
+        if isinstance(name,str) and name in exact_by_point:return name,exact_by_point[name],None
+        row=next((item for item in required if isinstance(item,dict) and item.get('id')==name),None) if isinstance(name,str) else None
+        if row is not None and 'x' in row and 'y' in row:
+            xy=(_overlay_scalar(row['x'],ident),_overlay_scalar(row['y'],ident));helper='overlay-angle-'+mark_id+'-'+role
+            return helper,xy,{'id':helper,'at':[_overlay_number(xy[0]),_overlay_number(xy[1])]}
+        _overlay_fail('GRAPH_ANGLE_POINT_UNKNOWN',ident)
+    def inside(xy,ident):
+        xf,yf=_overlay_number(xy[0]),_overlay_number(xy[1])
+        if not (xmin<xf<xmax and ymin<yf<ymax):_overlay_fail('OVERLAY_POINT_OUTSIDE_VIEWPORT',ident)
+    def px(a,b):return math.hypot((_overlay_number(a[0])-_overlay_number(b[0]))*scale,(_overlay_number(a[1])-_overlay_number(b[1]))*scale)
+    def cosine(vertex,a,b):
+        u=(a[0]-vertex[0],a[1]-vertex[1]);w=(b[0]-vertex[0],b[1]-vertex[1])
+        return S.expand(u[0]*w[0]+u[1]*w[1]),S.sqrt(S.expand(u[0]**2+u[1]**2))*S.sqrt(S.expand(w[0]**2+w[1]**2))
+    # --- right angles
+    for index,entry in enumerate(right_rows):
+        if not isinstance(entry,dict) or set(entry)-{'id','at','from','lines','side'}:_overlay_fail('GRAPH_RIGHT_ANGLE_INVALID',entry.get('id','ra'+str(index+1)) if isinstance(entry,dict) else 'ra'+str(index+1))
+        ident=_overlay_id(entry.get('id','ra'+str(index+1)),'rightAngle');claim('rightangle:'+ident)
+        if not equal_units:_overlay_fail('GRAPH_RIGHT_ANGLE_UNEQUAL_UNITS',ident)
+        if 'lines' in entry:
+            if 'at' in entry or 'from' in entry:_overlay_fail('GRAPH_RIGHT_ANGLE_INVALID',ident)
+            pair=entry['lines']
+            if not isinstance(pair,list) or len(pair)!=2 or len(set(pair))!=2 or any(not isinstance(name,str) or name not in by_line for name in pair):_overlay_fail('GRAPH_RIGHT_ANGLE_INVALID',ident)
+            first,second=by_line[pair[0]],by_line[pair[1]]
+            slopes=[None if line['kind']=='VERTICAL' else pp_exact_value(line['slope']) for line in (first,second)]
+            if slopes[0] is None and slopes[1] is None:_overlay_fail('GRAPH_RIGHT_ANGLE_NOT_PERPENDICULAR',ident)
+            if slopes[0] is None or slopes[1] is None:
+                perpendicular=(slopes[1] if slopes[0] is None else slopes[0])==0
+            else:perpendicular=_overlay_is_zero(slopes[0]*slopes[1]+1)
+            if not perpendicular:_overlay_fail('GRAPH_RIGHT_ANGLE_NOT_PERPENDICULAR',ident)
+            if slopes[0] is None:vx=pp_exact_value(first['x']);vy=slopes[1]*vx+pp_exact_value(second['intercept'])
+            elif slopes[1] is None:vx=pp_exact_value(second['x']);vy=slopes[0]*vx+pp_exact_value(first['intercept'])
+            else:
+                vx=(pp_exact_value(second['intercept'])-pp_exact_value(first['intercept']))/(slopes[0]-slopes[1]);vy=slopes[0]*vx+pp_exact_value(first['intercept'])
+            inside((vx,vy),ident)
+            def unit(slope):
+                if slope is None:return (0.0,1.0)
+                m=_overlay_number(slope);n=math.hypot(1.0,m);return (1.0/n,m/n)
+            d1,d2=unit(slopes[0]),unit(slopes[1])
+            side=entry.get('side','N')
+            if side not in OVERLAY_ANGLE_SIDES:_overlay_fail('GRAPH_RIGHT_ANGLE_INVALID',ident)
+            want=OVERLAY_ANGLE_SIDES[side];norm=math.hypot(*want);want=(want[0]/norm+1e-6,want[1]/norm)
+            best=None
+            for s1,s2 in ((1,1),(-1,1),(1,-1),(-1,-1)):
+                bx,by=s1*d1[0]+s2*d2[0],s1*d1[1]+s2*d2[1];score=(bx*want[0]+by*want[1])/math.hypot(bx,by)
+                if best is None or score>best[0]+1e-9:best=(score,s1,s2)
+            _score,s1,s2=best;t=30.0/scale;vf=(_overlay_number(vx),_overlay_number(vy))
+            refs=['overlay-angle-r'+ident+'-a','overlay-angle-r'+ident+'-v','overlay-angle-r'+ident+'-b']
+            helpers=[{'id':refs[0],'at':[vf[0]+s1*d1[0]*t,vf[1]+s1*d1[1]*t]},{'id':refs[1],'at':[vf[0],vf[1]]},{'id':refs[2],'at':[vf[0]+s2*d2[0]*t,vf[1]+s2*d2[1]*t]}]
+        else:
+            pair=entry.get('from');at=entry.get('at')
+            if not isinstance(pair,list) or len(pair)!=2 or pair[0]==pair[1] or at in pair or 'side' in entry:_overlay_fail('GRAPH_RIGHT_ANGLE_INVALID',ident)
+            vref,vertex,vhelper=resolve(at,ident,'r'+ident,'v');aref,a,ahelper=resolve(pair[0],ident,'r'+ident,'a');bref,b,bhelper=resolve(pair[1],ident,'r'+ident,'b')
+            dot,norms=cosine(vertex,a,b)
+            if norms==0:_overlay_fail('GRAPH_ANGLE_DEGENERATE',ident)
+            if not _overlay_is_zero(dot):_overlay_fail('GRAPH_RIGHT_ANGLE_NOT_PERPENDICULAR',ident)
+            if px(vertex,a)<OVERLAY_RIGHT_ANGLE_MIN_RAY_PX or px(vertex,b)<OVERLAY_RIGHT_ANGLE_MIN_RAY_PX:_overlay_fail('GRAPH_ANGLE_RAY_TOO_SHORT',ident)
+            refs=[aref,vref,bref];helpers=[row for row in (ahelper,vhelper,bhelper) if row is not None]
+        out.append({'id':ident,'objectId':'overlay-rightangle-'+ident,'kind':'RIGHT','refs':refs,'helpers':helpers,'value':90.0,'squareSize':OVERLAY_RIGHT_ANGLE_SQUARE_PX})
+    # --- angles (arcs), alone or in an equal group
+    groups={};group_of={}
+    for index,entry in enumerate(equal_rows):
+        if not isinstance(entry,dict) or set(entry)-{'angles','color','arcs'}:_overlay_fail('GRAPH_EQUAL_ANGLES_INVALID','equalAngles.'+str(index))
+        ids=entry.get('angles')
+        if not isinstance(ids,list) or len(ids)<2 or len(set(ids))!=len(ids) or any(isinstance(item,bool) or not isinstance(item,int) or not 0<=item<len(angle_rows) for item in ids):_overlay_fail('GRAPH_EQUAL_ANGLES_INVALID','equalAngles.'+str(index))
+        if entry.get('color') not in OVERLAY_COLOR_NAMES:_overlay_fail('OVERLAY_COLOR_INVALID','equalAngles.'+str(index))
+        if 'arcs' in entry and (isinstance(entry['arcs'],bool) or entry['arcs'] not in (1,2)):_overlay_fail('GRAPH_EQUAL_ANGLES_INVALID','equalAngles.'+str(index))
+        for item in ids:
+            if item in group_of:_overlay_fail('GRAPH_EQUAL_ANGLES_INVALID','equalAngles.'+str(index))
+            group_of[item]=index
+        groups[index]=entry
+    measured=[]
+    for index,entry in enumerate(angle_rows):
+        if not isinstance(entry,dict) or set(entry)-{'id','at','from','to','color','arcs'}:_overlay_fail('GRAPH_ANGLE_INVALID',entry.get('id','ang'+str(index+1)) if isinstance(entry,dict) else 'ang'+str(index+1))
+        ident=_overlay_id(entry.get('id','ang'+str(index+1)),'angle');claim('angle:'+ident)
+        if not equal_units:_overlay_fail('GRAPH_ANGLE_UNEQUAL_UNITS',ident)
+        if entry.get('at') in (entry.get('from'),entry.get('to')) or entry.get('from')==entry.get('to'):_overlay_fail('GRAPH_ANGLE_DEGENERATE',ident)
+        vref,vertex,vhelper=resolve(entry.get('at'),ident,ident,'v');aref,a,ahelper=resolve(entry.get('from'),ident,ident,'a');bref,b,bhelper=resolve(entry.get('to'),ident,ident,'b')
+        dot,norms=cosine(vertex,a,b)
+        if norms==0:_overlay_fail('GRAPH_ANGLE_DEGENERATE',ident)
+        degrees=math.degrees(math.acos(max(-1.0,min(1.0,_overlay_number(dot/norms)))))
+        if degrees<OVERLAY_ANGLE_MIN_DEGREES or degrees>180-OVERLAY_ANGLE_MIN_DEGREES:_overlay_fail('GRAPH_ANGLE_DEGENERATE',ident)
+        if px(vertex,a)<OVERLAY_ANGLE_MIN_RAY_PX or px(vertex,b)<OVERLAY_ANGLE_MIN_RAY_PX:_overlay_fail('GRAPH_ANGLE_RAY_TOO_SHORT',ident)
+        color=entry.get('color');group=groups.get(group_of.get(index))
+        if color is not None and color not in OVERLAY_COLOR_NAMES:_overlay_fail('OVERLAY_COLOR_INVALID',ident)
+        if group is not None:
+            if color is not None and color!=group['color']:_overlay_fail('OVERLAY_COLOR_INVALID',ident)
+            color=group['color']
+        arcs=entry.get('arcs')
+        if arcs is not None and (isinstance(arcs,bool) or arcs not in (1,2)):_overlay_fail('GRAPH_ANGLE_INVALID',ident)
+        if group is not None and 'arcs' in group:
+            if arcs is not None and arcs!=group['arcs']:_overlay_fail('GRAPH_EQUAL_ANGLES_MISMATCH',ident)
+            arcs=group['arcs']
+        measured.append((ident,dot,norms,color,degrees))
+        out.append({'id':ident,'objectId':'overlay-angle-'+ident,'kind':'ANGLE','refs':[aref,vref,bref],'helpers':[row for row in (ahelper,vhelper,bhelper) if row is not None],
+                    'value':degrees,'arcs':arcs or 1,**({'color':color} if color else {})})
+    def same_angle(first,second):
+        # cos equality: dot1/n1 == dot2/n2 (exact, then a 60-digit numeric proof)
+        return _overlay_is_zero(first[1]*second[2]-second[1]*first[2])
+    for group in groups.values():
+        members=[measured[item] for item in group['angles']]
+        for other in members[1:]:
+            if not same_angle(members[0],other):_overlay_fail('GRAPH_EQUAL_ANGLES_MISMATCH',members[0][0]+'&'+other[0])
+    colored={}
+    for row in measured:
+        if row[3] is None:continue
+        if row[3] in colored and not same_angle(colored[row[3]],row):_overlay_fail('GRAPH_EQUAL_ANGLES_MISMATCH',colored[row[3]][0]+'&'+row[0]+':'+row[3])
+        colored.setdefault(row[3],row)
+    return out
+
 def _overlay_features(plan):
     raw=plan.get('overlays')
     if raw is None:return None
@@ -3482,6 +3626,7 @@ def _overlay_features(plan):
     if 'names' in raw:features['names']=_overlay_names(plan,raw.get('names'),claim,lines,segments,by_point)
     if raw.get('quadrants'):features['quadrants']=_overlay_quadrants(plan,raw['quadrants'],claim)
     if raw.get('callouts'):features['callouts']=_overlay_callouts(plan,raw['callouts'],claim,by_point)
+    if any(raw.get(key) for key in ('rightAngles','angles','equalAngles')):features['angleMarks']=_overlay_angle_marks(plan,raw,claim,exact_by_point,by_line)
     if raw.get('latticePoints') is not None:features['latticePoints']=_overlay_lattice(plan,raw['latticePoints'],[(point['x'],point['y']) for point in points])
     return features
 

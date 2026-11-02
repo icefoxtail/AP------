@@ -17,6 +17,7 @@ FIELDS={'curveStyle','id','kind','at','from','to','center','radius','centerPoint
 REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'TRACE_ARC':{'centerPoint','through'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'},'POLYGON':{'refs'},'GRAPH_REGION':{'upper','lower','domain','fill'},'DIMENSION_LINE':{'refs','side'},'PATH_LABEL':{'labelText','refs'},'QUADRANT':{'quadrant'}}
 
 FIELDS|={'labelWeight','extension','offsetPx','paths','pathMark','autoOffset','over','ownership','markStyle','closed'}   # E32 additions to the component fields (kept apart from the long set above)
+FIELDS|={'squareSize'}   # G13a: the leg of a right-angle square (px) on a graph, bigger than the plane-figure token so it reads on a phone
 FIELDS|={'guide','anchorAt'}   # E37: a light dotted guide line (a SEGMENT) from a point of the main figure to its pulled-out copy
 
 def parity(a,b):
@@ -122,6 +123,7 @@ def validate(spec):
         if 'paths' in obj and obj['kind']!='EQUAL_MARK':raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
         if 'markStyle' in obj and (obj['kind']!='EQUAL_MARK' or obj['markStyle']!='CIRCLE' or obj.get('count') not in {1,2} or 'paths' in obj):raise ValueError('EQUAL_MARK_STYLE_INVALID:'+str(obj.get('id')))
         if 'ownership' in obj and (obj['kind']!='EQUATION_LABEL' or obj['ownership']!='NEAREST' or not obj.get('lineOwned')):raise ValueError('SEGMENT_LABEL_OWNERSHIP_INVALID:'+str(obj.get('id')))
+        if 'squareSize' in obj and (obj['kind']!='ANGLE_MARK' or isinstance(obj['squareSize'],bool) or not isinstance(obj['squareSize'],(int,float)) or not 8<=obj['squareSize']<=40):raise ValueError('INVALID_SQUARE_SIZE:'+str(obj.get('id')))
         # (G11) arcScale PROPORTIONAL: the arcs of an angle mark grow with the drawn ray length; angleDimension {radiusFactor}: the angle as a dimension arc with an arrowhead at each end
         if 'arcScale' in obj and (obj['kind']!='ANGLE_MARK' or obj['arcScale']!='PROPORTIONAL'):raise ValueError('INVALID_ANGLE_ARC_SCALE:'+str(obj.get('id')))
         if 'angleDimension' in obj:

@@ -1633,7 +1633,13 @@ GRAPH_REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5','BLUE':'#7fa6e8','WARM'
 GRAPH_REGION_OPACITY={'BLUE':0.32,'WARM':0.42,'GREEN':0.42,'ROSE':0.42,'VIOLET':0.42}
 # (G12-2) the colour-group line colours of overlay lines, segments, polygon outlines and drawn curves: this observer's own copy of the table (tests/test_palette_c1.py ties it)
 GRAPH_COLOR_LINES={'BLUE':'#1f5fa8','WARM':'#b85c00','GREEN':'#2e7d32','ROSE':'#b8325f','VIOLET':'#6b46b3'}
-GRAPH_COLOR_LINE_WIDTH=2.4   # stroke width of a coloured overlay line, segment or polygon outline (a plain one is thinner)
+ANGLE_MARK_LEG_DEGREES=1.5      # (G13a) a drawn square / arc leg lies along its named ray within this many degrees
+ANGLE_MARK_VERTEX_PX=0.8        # ... its vertex within this many px of the exact vertex
+ANGLE_MARK_SQUARE_PX=16.0        # ... a right-angle square leg is this long (px), the engine's graph size
+ANGLE_MARK_SQUARE_TOLERANCE_PX=0.6
+ANGLE_MARK_ARC_RADIUS_PX=0.6    # ... an arc keeps one radius (px) about the vertex
+ANGLE_MARK_VALUE_DEGREES=1.0    # ... and subtends the exact angle within this many degrees
+GRAPH_COLOR_LINE_WIDTH=2.4  # stroke width of a coloured overlay line, segment or polygon outline (a plain one is thinner)
 GRAPH_REGION_BOUNDARY_TOLERANCE=0.75   # svg px: a fill boundary against the boundary curve at sample x
 GRAPH_REGION_OUTSIDE=0.02              # relative band height: how far outside counts as outside the fill
 
@@ -2875,6 +2881,82 @@ def _ov_check_boundary_path(plan,region,node,expected,to_data,sx,display,near,er
         centroid=(sum((ax+bx)*(ax*by-bx*ay) for (ax,ay),(bx,by) in zip(expected_polygon,expected_polygon[1:]+expected_polygon[:1]))/(3*twice),sum((ay+by)*(ax*by-bx*ay) for (ax,ay),(bx,by) in zip(expected_polygon,expected_polygon[1:]+expected_polygon[:1]))/(3*twice))
         if _ov_point_in_polygon(expected_polygon,centroid) and not _ov_point_in_polygon(drawn,centroid):errors.append('OVERLAY_CIRCLE_REGION_INTERIOR_NOT_FILLED:'+ident)
 
+def _ov_zero(expression):
+    """Exact zero test of a small algebraic number: expand, simplify, then a 60-digit numeric proof."""
+    value=S.expand(expression)
+    if value==0:return True
+    try:
+        if S.simplify(value)==0:return True
+    except (ValueError,TypeError,NotImplementedError):pass
+    return abs(S.N(value,60))<S.Float('1e-40',60)
+
+def _ov_angle_marks(plan,raw,points,by_line):
+    """(G13a) rightAngles / angles / equalAngles read again from the raw field, with this observer's own point lookup and exact tests. Each row: the vertex and the unit directions
+    (data space, y up) of the two legs in the order the engine draws them, the angle in degrees, the colour and the arc count. `lines` rows allow either sense of each line."""
+    required=plan.get('requiredPoints') if isinstance(plan.get('requiredPoints'),list) else []
+    def coordinate(value):
+        if isinstance(value,float):return S.Rational(str(value))
+        return _ov_reader(value)
+    def place(name):
+        if isinstance(name,str) and name in points:return points[name]
+        row=next((item for item in required if isinstance(item,dict) and item.get('id')==name),None) if isinstance(name,str) else None
+        if row is not None and 'x' in row and 'y' in row:return (coordinate(row['x']),coordinate(row['y']))
+        raise ValueError('GRAPH_ANGLE_POINT_UNKNOWN')
+    def vectors(vertex,a,b):
+        u=(a[0]-vertex[0],a[1]-vertex[1]);w=(b[0]-vertex[0],b[1]-vertex[1])
+        lu=S.sqrt(S.expand(u[0]**2+u[1]**2));lw=S.sqrt(S.expand(w[0]**2+w[1]**2))
+        if lu==0 or lw==0:raise ValueError('GRAPH_ANGLE_DEGENERATE')
+        return u,w,S.expand(u[0]*w[0]+u[1]*w[1]),lu*lw
+    def unit(vec):
+        x,y=float(S.N(vec[0],30)),float(S.N(vec[1],30));n=math.hypot(x,y);return (x/n,y/n)
+    rows=[]
+    for index,entry in enumerate(raw.get('rightAngles',[]) or []):
+        if not isinstance(entry,dict):raise ValueError('GRAPH_RIGHT_ANGLE_INVALID')
+        ident=entry.get('id','ra'+str(index+1))
+        if 'lines' in entry:
+            pair=entry['lines']
+            if not isinstance(pair,list) or len(pair)!=2 or any(name not in by_line for name in pair):raise ValueError('GRAPH_RIGHT_ANGLE_INVALID')
+            first,second=by_line[pair[0]],by_line[pair[1]]
+            if first['kind']=='VERTICAL' and second['kind']=='VERTICAL':raise ValueError('GRAPH_RIGHT_ANGLE_NOT_PERPENDICULAR')
+            if first['kind']=='VERTICAL':vx=first['x'];vy=second['slope']*vx+second['intercept'];ok=second['slope']==0;legs=[(0.0,1.0),(1.0,float(S.N(second['slope'],30)))]
+            elif second['kind']=='VERTICAL':vx=second['x'];vy=first['slope']*vx+first['intercept'];ok=first['slope']==0;legs=[(1.0,float(S.N(first['slope'],30))),(0.0,1.0)]
+            else:
+                if first['slope']==second['slope']:raise ValueError('GRAPH_RIGHT_ANGLE_NOT_PERPENDICULAR')
+                vx=(second['intercept']-first['intercept'])/(first['slope']-second['slope']);vy=first['slope']*vx+first['intercept'];ok=_ov_zero(first['slope']*second['slope']+1)
+                legs=[(1.0,float(S.N(first['slope'],30))),(1.0,float(S.N(second['slope'],30)))]
+            if not ok:raise ValueError('GRAPH_RIGHT_ANGLE_NOT_PERPENDICULAR')
+            legs=[(x/math.hypot(x,y),y/math.hypot(x,y)) for x,y in legs]
+            rows.append({'id':ident,'kind':'RIGHT','vertex':(float(S.N(vx,30)),float(S.N(vy,30))),'legs':legs,'either':True,'value':90.0,'color':None,'arcs':0})
+        else:
+            pair=entry.get('from')
+            if not isinstance(pair,list) or len(pair)!=2:raise ValueError('GRAPH_RIGHT_ANGLE_INVALID')
+            vertex=place(entry.get('at'));u,w,dot,_norms=vectors(vertex,place(pair[0]),place(pair[1]))
+            if not _ov_zero(dot):raise ValueError('GRAPH_RIGHT_ANGLE_NOT_PERPENDICULAR')
+            rows.append({'id':ident,'kind':'RIGHT','vertex':(float(S.N(vertex[0],30)),float(S.N(vertex[1],30))),'legs':[unit(u),unit(w)],'either':False,'value':90.0,'color':None,'arcs':0})
+    angle_rows=raw.get('angles',[]) or []
+    groups={}
+    for gindex,entry in enumerate(raw.get('equalAngles',[]) or []):
+        if not isinstance(entry,dict) or entry.get('color') not in GRAPH_COLOR_LINES or not isinstance(entry.get('angles'),list):raise ValueError('GRAPH_EQUAL_ANGLES_INVALID')
+        for item in entry['angles']:
+            if isinstance(item,bool) or not isinstance(item,int) or not 0<=item<len(angle_rows) or item in groups:raise ValueError('GRAPH_EQUAL_ANGLES_INVALID')
+            groups[item]=entry
+    measured=[]
+    for index,entry in enumerate(angle_rows):
+        if not isinstance(entry,dict):raise ValueError('GRAPH_ANGLE_INVALID')
+        ident=entry.get('id','ang'+str(index+1))
+        vertex=place(entry.get('at'));u,w,dot,norms=vectors(vertex,place(entry.get('from')),place(entry.get('to')))
+        group=groups.get(index);color=entry.get('color')
+        if group is not None:color=group['color'] if color is None or color==group['color'] else 'CONFLICT'
+        if color is not None and color not in GRAPH_COLOR_LINES:raise ValueError('OVERLAY_COLOR_INVALID')
+        arcs=entry.get('arcs',group.get('arcs') if group is not None else None) or 1
+        degrees=math.degrees(math.acos(max(-1.0,min(1.0,float(S.N(dot/norms,30))))))
+        rows.append({'id':ident,'kind':'ANGLE','vertex':(float(S.N(vertex[0],30)),float(S.N(vertex[1],30))),'legs':[unit(u),unit(w)],'either':False,'value':degrees,'color':color,'arcs':arcs})
+        measured.append((dot,norms,color,ident))
+    for group in groups.values():
+        members=[measured[item] for item in group['angles']]
+        if any(not _ov_zero(members[0][0]*other[1]-other[0]*members[0][1]) for other in members[1:]):raise ValueError('GRAPH_EQUAL_ANGLES_MISMATCH')
+    return rows
+
 def _ov_expected(plan):
     """Every overlay element recomputed from the raw plan: points; lines; segments, guides and polygons."""
     raw=plan.get('overlays')
@@ -3022,7 +3104,7 @@ def _ov_expected(plan):
         if not isinstance(entry,dict) or set(entry)-{'id','circle','from','to','side','fill'} or entry.get('circle') not in circles or entry.get('from') not in points or entry.get('to') not in points or entry.get('from')==entry.get('to'):raise ValueError('OVERLAY_CIRCLE_REGION_INVALID')
         if entry.get('side') not in ('ABOVE','BELOW','LEFT','RIGHT') or entry.get('fill','LIGHT') not in ('LIGHT','MEDIUM'):raise ValueError('OVERLAY_CIRCLE_REGION_INVALID')
         circle_regions.append({'id':entry['id'],'circle':entry['circle'],'from':entry['from'],'to':entry['to'],'side':entry['side'],'fill':entry.get('fill','LIGHT')})
-    return {'callouts':callouts,'circleFills':circle_fills,'circleRegions':circle_regions,'circles':circles,'quadrants':quadrants,'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'names':names,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
+    return {'angleMarks':_ov_angle_marks(plan,raw,points,by_line),'callouts':callouts,'circleFills':circle_fills,'circleRegions':circle_regions,'circles':circles,'quadrants':quadrants,'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons,'coordinates':coordinates,'unnamed':unnamed,'names':names,'lattice':_ov_lattice(plan,raw.get('latticePoints'))}
 
 OV_DIGIT=lambda text:[format(0x30+int(d),'X') for d in str(text)]
 
@@ -3319,6 +3401,52 @@ def overlays_audit(plan,svg,transform):
                     if outline.get('stroke')!=GRAPH_COLOR_LINES[polygon['fill']] or abs(float(outline.get('stroke-width') or 0)-GRAPH_COLOR_LINE_WIDTH)>1e-6:errors.append('OVERLAY_COLOR_MISMATCH:'+str(polygon['id']))
                 elif outline.get('stroke') in GRAPH_COLOR_LINES.values():errors.append('OVERLAY_COLOR_MISMATCH:'+str(polygon['id']))
             if polygon['label'] is not None:claimed.add(ident+'-label')
+        # (G13a) right-angle squares and equal-angle arcs: the final SVG is read back at the vertex the plan names, at the one scale of the plot, with the legs along the named rays
+        marks=expected.get('angleMarks') or []
+        if marks and 'data-label-kind' in svg:
+            by_id={node.get('id'):node for node in root.iter() if node.get('id')}
+            def pixels(ident):
+                node=by_id.get(ident)
+                if node is None:return None
+                try:values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
+                except ValueError:return None
+                return [(values[i],values[i+1]) for i in range(0,len(values)-1,2)] if len(values)>=4 else None
+            def data_direction(vec):
+                x,y=vec[0]/sx,-vec[1]/sy;n=math.hypot(x,y);return (x/n,y/n) if n>1e-12 else None
+            def turn(a,b):return math.degrees(math.acos(max(-1.0,min(1.0,a[0]*b[0]+a[1]*b[1]))))
+            def along(direction,leg,either):
+                if direction is None:return False
+                angle=turn(direction,leg);return angle<=ANGLE_MARK_LEG_DEGREES or (either and angle>=180-ANGLE_MARK_LEG_DEGREES)
+            for mark in marks:
+                ident=str(mark['id']);right=mark['kind']=='RIGHT';unit_code='GRAPH_RIGHT_ANGLE_UNEQUAL_UNITS' if right else 'GRAPH_ANGLE_UNEQUAL_UNITS'
+                if abs(sx-sy)>.005*max(sx,sy):errors.append(unit_code+':'+ident);continue
+                vertex=(ox+mark['vertex'][0]*sx,oy-mark['vertex'][1]*sy);legs=mark['legs'];either=mark['either']
+                if right:
+                    object_id='overlay-rightangle-'+ident;claimed.add(object_id);pts=pixels(object_id)
+                    if pts is None or len(pts)!=3:errors.append('GRAPH_RIGHT_ANGLE_MARK_MISSING:'+ident);continue
+                    corner=(pts[0][0]+pts[2][0]-pts[1][0],pts[0][1]+pts[2][1]-pts[1][1]);u=(pts[0][0]-corner[0],pts[0][1]-corner[1]);w=(pts[2][0]-corner[0],pts[2][1]-corner[1])
+                    if math.dist(corner,vertex)>ANGLE_MARK_VERTEX_PX:errors.append('GRAPH_RIGHT_ANGLE_MARK_NOT_AT_VERTEX:'+ident);continue
+                    lu,lw=math.hypot(*u),math.hypot(*w)
+                    if abs(lu-ANGLE_MARK_SQUARE_PX)>ANGLE_MARK_SQUARE_TOLERANCE_PX or abs(lu-lw)>.5:errors.append('GRAPH_RIGHT_ANGLE_MARK_NOT_SQUARE:'+ident);continue
+                    if abs(u[0]*w[0]+u[1]*w[1])/(lu*lw)>math.sin(math.radians(ANGLE_MARK_LEG_DEGREES)):errors.append('GRAPH_RIGHT_ANGLE_MARK_NOT_SQUARE:'+ident);continue
+                    du,dw=data_direction(u),data_direction(w)
+                    straight=along(du,legs[0],either) and along(dw,legs[1],either);swapped=along(du,legs[1],either) and along(dw,legs[0],either)
+                    if not (straight or swapped):errors.append('GRAPH_RIGHT_ANGLE_MARK_LEGS_MISMATCH:'+ident)
+                    continue
+                object_id='overlay-angle-'+ident;claimed.add(object_id+'-sector');sector=by_id.get(object_id+'-sector')
+                tone=GRAPH_REGION_FILLS[mark['color']] if mark['color'] else '#d9d9d9'
+                if sector is None:errors.append('GRAPH_ANGLE_SECTOR_MISSING:'+ident)
+                elif (sector.get('fill') or '').lower()!=tone:errors.append('GRAPH_ANGLE_COLOR_MISMATCH:'+ident)
+                for k in range(1,mark['arcs']+1):
+                    arc_id=object_id+'-arc-'+str(k);claimed.add(arc_id);pts=pixels(arc_id)
+                    if pts is None or len(pts)<8:errors.append('GRAPH_ANGLE_MARK_MISSING:'+ident);break
+                    radii=[math.dist(point,vertex) for point in pts]
+                    if max(radii)-min(radii)>ANGLE_MARK_ARC_RADIUS_PX or min(radii)<6:errors.append('GRAPH_ANGLE_MARK_NOT_AT_VERTEX:'+ident);break
+                    first=data_direction((pts[0][0]-vertex[0],pts[0][1]-vertex[1]));last=data_direction((pts[-1][0]-vertex[0],pts[-1][1]-vertex[1]))
+                    if first is None or last is None or not ((along(first,legs[0],False) and along(last,legs[1],False)) or (along(first,legs[1],False) and along(last,legs[0],False))):errors.append('GRAPH_ANGLE_MARK_LEGS_MISMATCH:'+ident);break
+                    if abs(turn(first,last)-mark['value'])>ANGLE_MARK_VALUE_DEGREES:errors.append('GRAPH_ANGLE_MARK_VALUE_MISMATCH:'+ident);break
+                    stroke=(by_id[arc_id].get('stroke') or '').lower()
+                    if (mark['color'] and stroke!=GRAPH_COLOR_LINES[mark['color']]) or (not mark['color'] and stroke in GRAPH_COLOR_LINES.values()):errors.append('GRAPH_ANGLE_COLOR_MISMATCH:'+ident);break
         # Lattice points: the observer enumerates them itself from the exact curve; the figure must show exactly those dots, small and unnamed.
         lattice=expected.get('lattice')
         lattice_dots={ident:node for ident,node in circles.items() if (ident or '').startswith('overlay-lattice-')}
