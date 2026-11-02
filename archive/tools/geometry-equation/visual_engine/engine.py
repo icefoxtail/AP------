@@ -81,6 +81,7 @@ FREE_LABEL_RINGS=(6,12,18)   # px: how far a centred free text label may slide f
 FREE_LABEL_GAPS=(8,12,18,26) # px: the gaps a free text label beside a point or in a named direction tries
 LINE_AT_NAMED={'START':.08,'END':.92}   # lineAt names: a line label near the left (lower) end / the right (upper) end of the drawn line
 LINE_AT_BAND=.25            # the wide search of a lineAt label stays within this fraction of the line round the stated place
+BOLD_CURVE_WIDTH=3.2           # curveWeight BOLD on a FUNCTION_GRAPH (G18a): the heavy curve of a figure with several (axisOverlapShape width)
 ACCENT_STROKE='#c0392b'      # emphasis ACCENT on a plane figure's segment (the same red as a solid figure's accent edge)
 GUIDE_STROKE='#8a8a8a'      # a callout's guide line from the main figure to the pulled-out copy: light grey, dotted (E37)
 ANGLE_EMPHASIS_STROKES={1:'#c0392b',2:'#1f5fa8',3:'#2e7d32'}   # emphasisGroup of an angle mark: red, blue, green arcs
@@ -540,6 +541,18 @@ def prepare(spec):
                 labels.append(label)
         if tick_callouts:raise ValueError('TICK_LABEL_CALLOUT_OWNER_NOT_FOUND')
         if tick_pi_labels is not None and len(used_pi)!=len(tick_pi_labels):raise ValueError('TICK_PI_LABEL_UNUSED')
+    # (G18a) multi-curve-figure: the dashed asymptotes of its RATIONAL curves, one line per asymptote across the frame, named by curve (an asymptote on an axis is the axis and is not drawn).
+    for mark in spec['displayFacts'].get('multiCurveMarks',[]):
+        if isinstance(mark,dict) and mark.get('kind')=='ENDPOINT':
+            # (G18a-4) the open (white) or closed (dark) dot at an end of an emphasised stretch
+            if mark.get('state') not in ('OPEN','CLOSED') or not isinstance(mark.get('curve'),str) or not isinstance(mark.get('index'),int) or mark.get('which') not in ('from','to') or any(isinstance(mark.get(key),bool) or not isinstance(mark.get(key),(int,float)) for key in ('x','y')):raise ValueError('MULTI_CURVE_MARK_INVALID')
+            primitive({'id':'emphasis-'+mark['curve']+'-'+str(mark['index'])+'-'+mark['which'],'kind':'circle','at':vp.screen((mark['x'],mark['y'])),'radius':4.0,'token':'indicator','layer':65,'role':'emphasis-endpoint','state':mark['state'],'fill':'#fff' if mark['state']=='OPEN' else '#111'},'circle')
+            continue
+        if not isinstance(mark,dict) or mark.get('kind')!='ASYMPTOTE' or mark.get('axis') not in ('vertical','horizontal') or not isinstance(mark.get('curve'),str) or isinstance(mark.get('value'),bool) or not isinstance(mark.get('value'),(int,float)):raise ValueError('MULTI_CURVE_MARK_INVALID')
+        xmin,xmax,ymin,ymax=vp.bounds
+        if mark['axis']=='vertical':a,b=vp.screen((mark['value'],ymin)),vp.screen((mark['value'],ymax))
+        else:a,b=vp.screen((xmin,mark['value'])),vp.screen((xmax,mark['value']))
+        primitive({'id':'asymptote-'+mark['curve']+('-v' if mark['axis']=='vertical' else '-h'),'kind':'line','from':a,'to':b,'token':'auxiliary','layer':25,'role':'asymptote','dash':'5 4','branch':'ASYM_'+mark['curve']+('_V' if mark['axis']=='vertical' else '_H')},'line')
     rational_features=spec['displayFacts'].get('rationalGraphFeatures')
     if rational_features is not None and rational_features.get('schemaVersion')=='RATIONAL_CONSTANT_OVER_LINEAR_FEATURES_v1':
         # Inverse proportion: an asymptote on a coordinate axis is the axis itself, so only an off-axis vertical asymptote is drawn (dashed).
@@ -936,7 +949,7 @@ def prepare(spec):
             main=graph_index==0 or str(obj.get('branch','')).startswith(('PIECE_','G_PIECE_'))
             curve_style=obj.get('curveStyle')
             for index,branch in enumerate(result['branches']):
-                primitive({'id':oid+'-branch-'+str(index),'kind':'polyline','points':[vp.screen(p) for p in branch],'token':'mainCurve' if main else 'secondaryCurve','layer':40 if main else 35,'role':'curve',**({'branch':obj['branch']} if 'branch' in obj else {}),**({'dash':'6 4'} if curve_style=='DASHED' else {'stroke':ACCENT_STROKE} if curve_style=='ACCENT' else {}),**({'stroke':PALETTE[obj['color']]['line']} if obj.get('color') else {})},'curve')
+                primitive({'id':oid+'-branch-'+str(index),'kind':'polyline','points':[vp.screen(p) for p in branch],'token':'mainCurve' if main else 'secondaryCurve','layer':41 if obj.get('curveWeight')=='BOLD' else 40 if main else 35,'role':'curve',**({'branch':obj['branch']} if 'branch' in obj else {}),**({'dash':'6 4'} if curve_style=='DASHED' else {'stroke':ACCENT_STROKE} if curve_style=='ACCENT' else {}),**({'stroke':PALETTE[obj['color']]['line']} if obj.get('color') else {}),**({'strokeWidth':BOLD_CURVE_WIDTH} if obj.get('curveWeight')=='BOLD' else {})},'curve')
             graph_index+=1
         elif kind=='PERPENDICULAR_MARK':
             at=vp.screen(obj['at']);vectors=[]

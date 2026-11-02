@@ -95,14 +95,14 @@ test('annotations: source reflection lines and the labelled curve use the existi
   ]);
 });
 
-test('framing refuses fewer than three curves, duplicates, bad kinds, bad domains and an empty branch',async()=>{
+test('framing refuses fewer than two curves, duplicates, bad kinds, bad domains and an empty branch',async()=>{
   const refuse=async(mutate,code)=>{
     const plan=structuredClone(FOUR.graphPlan);mutate(plan);
     const result=await frame(plan);
     assert.notEqual(result.status,'OK');
     assert.match(JSON.stringify(result.result),new RegExp(code));
   };
-  await refuse(plan=>{plan.curves=[plan.curves[0],plan.curves[1]];},'MULTI_CURVE_COUNT_INVALID');
+  await refuse(plan=>{plan.curves=[plan.curves[0]];},'MULTI_CURVE_COUNT_INVALID');
   await refuse(plan=>{plan.curves[3].id='top';},'MULTI_CURVE_ID_INVALID');
   await refuse(plan=>{plan.curves[0].kind='CIRCLE';},'MULTI_CURVE_KIND_INVALID:top');
   await refuse(plan=>{plan.curves[0].coefficients=['2','1','0'];},'MULTI_CURVE_NOT_QUADRATIC:top');

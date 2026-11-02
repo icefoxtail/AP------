@@ -1,0 +1,75 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   9,
+   -4,
+   2
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "RATIONAL",
+    "numerator": [
+     "7",
+     "-2"
+    ],
+    "denominator": [
+     "-2",
+     "1"
+    ],
+    "domain": [
+     "5",
+     "8"
+    ],
+    "color": "BLUE",
+    "label": "y=(-2x+7)/(x-2)"
+   },
+   {
+    "id": "g",
+    "kind": "SQRT",
+    "radicand": [
+     "0",
+     "2"
+    ],
+    "offset": "-11/2",
+    "domain": [
+     "5",
+     "8"
+    ],
+    "color": "WARM",
+    "label": "y=sqrt(2x)+k"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "P",
+     "x": "8",
+     "y": "-3/2",
+     "unnamed": true,
+     "coordinates": true
+    }
+   ]
+  }
+ },
+ "caption": "5≤x≤8에서 f는 -1에서 -3/2로, g는 k가 가장 작을 때 x=8에서 f와 만난다. 교점 (8,-3/2)에서 k=-3/2-4=-11/2이므로 정답은 ①이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "정의역 5≤x≤8에서 두 그래프가 한 점에서 만난다",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "유리함수와 무리함수가 x=8에서 만나는 교점 (8,-3/2)"
+ ]
+}

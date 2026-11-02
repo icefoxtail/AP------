@@ -4039,21 +4039,135 @@ def trigonometric_period_v2_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':features,'curvePoints':len(points),'mathMethod':'EXACT_RATIONAL_PARAMETERS_AND_INDEPENDENT_EVALUATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
 
+MC_FREE_KINDS=('LINE','RATIONAL','SQRT')
+MC_EXACT_PATTERN=r'-?\d+(?:/\d+)?'
+
+def _mc_obs_fraction(value,code):
+    if isinstance(value,bool):raise ValueError(code)
+    if isinstance(value,int):return Fraction(value)
+    if not isinstance(value,str) or not re.fullmatch(MC_EXACT_PATTERN,value) or len(value)>64:raise ValueError(code)
+    return Fraction(value)
+
+def _mc_obs_pair(entry,key,code):
+    raw=entry.get(key)
+    if not isinstance(raw,list) or len(raw)!=2:raise ValueError(code)
+    return [_mc_obs_fraction(value,code) for value in raw]
+
+def _mc_obs_free(entry,ident):
+    """The exact definition of a LINE / RATIONAL / SQRT entry, read again from the plan (never from the frozen rows)."""
+    kind=entry.get('kind');curve={'id':ident,'kind':kind,'inverseOf':entry.get('inverseOf')}
+    code='MULTI_CURVE_COEFFICIENT_INVALID:'+ident
+    if kind=='LINE':curve['c']=_mc_obs_pair(entry,'coefficients',code)
+    elif kind=='RATIONAL':
+        curve['n']=_mc_obs_pair(entry,'numerator',code);curve['d']=_mc_obs_pair(entry,'denominator',code)
+        if curve['d'][1]==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
+        pole=-curve['d'][0]/curve['d'][1]
+        if curve['n'][0]+curve['n'][1]*pole==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
+    else:
+        curve['r']=_mc_obs_pair(entry,'radicand',code)
+        if curve['r'][1]==0:raise ValueError(code)
+        curve['a']=_mc_obs_fraction(entry.get('amplitude','1'),code);curve['o']=_mc_obs_fraction(entry.get('offset','0'),code)
+        if curve['a']==0:raise ValueError(code)
+    return curve
+
+def _mc_obs_y(curve,x_value):
+    """y of a LINE / RATIONAL / SQRT / quadratic-Y_OF_X curve at x as a float, or None where it is undefined."""
+    kind=curve['kind']
+    if kind=='LINE':return float(curve['c'][0]+curve['c'][1]*x_value)
+    if kind=='RATIONAL':
+        den=curve['d'][0]+curve['d'][1]*x_value
+        return None if den==0 else float((curve['n'][0]+curve['n'][1]*x_value)/den)
+    if kind=='SQRT':
+        radicand=curve['r'][0]+curve['r'][1]*x_value
+        return None if radicand<0 else float(curve['o'])+float(curve['a'])*math.sqrt(float(radicand))
+    f0,f1,f2=curve['f']
+    return f0+f1*x_value+f2*x_value*x_value
+
+def _mc_obs_exact(value,ident):
+    """A quadratic's sympy coefficient or end as a Fraction (an inverse needs rational numbers)."""
+    if isinstance(value,Fraction):return value
+    if not getattr(value,'is_Rational',False):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+    return Fraction(int(value.p),int(value.q))
+
+def _mc_obs_inverse_definition(source,ident):
+    """What the inverse of `source` is, as a free-kind definition (own derivation; compared with the frozen row and with the drawn points)."""
+    kind=source['kind']
+    if kind=='RATIONAL':
+        a0,a1=source['n'];d0,d1=source['d']
+        return {'kind':'RATIONAL','n':[a0,-d0],'d':[-a1,d1]}
+    if kind=='LINE':
+        c0,c1=source['c']
+        if c1==0:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+        return {'kind':'LINE','c':[-c0/c1,1/c1]}
+    if kind=='SQRT':
+        (c0,c1),a,o=source['r'],source['a'],source['o'];q2=1/(a*a*c1)
+        return {'kind':'Y_OF_X','coefficients':[o*o*q2-c0/c1,-2*o*q2,q2]}
+    return None
+
 def multi_curve_audit(plan,svg,transform):
-    """Independent multi-curve audit: every curve and branch is rebuilt from the plan's exact coefficients, the frozen
-    inventory is compared, and every final SVG polyline tagged CURVE_<id>[_POS|_NEG] is checked against the recomputed
-    arc, its draw interval, its branch side, its endpoints and each segment midpoint. The frozen sampling expression is
-    never trusted."""
+    """Independent multi-curve audit: every curve and branch is rebuilt from the plan's exact definitions, the frozen
+    inventory is compared, and every final SVG polyline tagged CURVE_<id>[_POS|_NEG|_L|_R] is checked against the recomputed
+    curve, its draw interval, its branch side, its endpoints and each segment midpoint. The frozen sampling expression is
+    never trusted. G18a: a curve may also be a LINE, a RATIONAL (two sides of its pole, dashed asymptotes) or a SQRT (start
+    dot), may wear a colour, a dash and a heavy weight, and may be the inverse of another curve (every drawn point is
+    reflected across y=x and must lie on the source curve)."""
     errors=[];unsupported=[]
     try:
         raw=plan.get('curves')
-        if not isinstance(raw,list) or not 3<=len(raw)<=6:raise ValueError('MULTI_CURVE_COUNT_INVALID')
-        curves=[];ids=set()
+        minimum=1 if isinstance(raw,list) and any(isinstance(entry,dict) and entry.get('emphasis') for entry in raw) else 2
+        if not isinstance(raw,list) or not minimum<=len(raw)<=6:raise ValueError('MULTI_CURVE_COUNT_INVALID')
+        raw=[{**entry,'domain':[entry['domain'].get('from'),entry['domain'].get('to')]} if isinstance(entry,dict) and isinstance(entry.get('domain'),dict) and set(entry['domain'])=={'from','to'} else entry for entry in raw]
+        curves=[];ids=set();by_id={}
         for entry in raw:
             if not isinstance(entry,dict):raise ValueError('MULTI_CURVE_CURVE_INVALID')
             ident=entry.get('id')
             if not isinstance(ident,str) or ident in ids:raise ValueError('MULTI_CURVE_ID_INVALID')
-            ids.add(ident);kind=entry.get('kind');coefficients=entry.get('coefficients')
+            ids.add(ident);kind=entry.get('kind')
+            look={key:entry[key] for key in ('color','weight','style') if key in entry}
+            if entry.get('inverseOf') is not None:
+                source=by_id.get(entry['inverseOf'])
+                if source is None or source.get('inverse'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+                definition=_mc_obs_inverse_definition(source,ident) if source['kind'] in MC_FREE_KINDS else None
+                if definition is None:
+                    # a quadratic half: its inverse is a square root (own derivation, exact)
+                    if source['kind']!='Y_OF_X':raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+                    f0,f1,f2=(_mc_obs_exact(value,ident) for value in source['c']);lo,hi=(_mc_obs_exact(value,ident) for value in source['interval']);vertex=-f1/(2*f2)
+                    if lo<vertex<hi:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+                    k=f0+f1*vertex+f2*vertex*vertex
+                    definition={'kind':'SQRT','r':[-k/f2,1/f2],'a':Fraction(1 if lo>=vertex else -1),'o':vertex}
+                domain=entry.get('domain')
+                if not isinstance(domain,list) or len(domain)!=2:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+                lo,hi=(_mc_obs_fraction(value,'MULTI_CURVE_DOMAIN_INVALID:'+ident) for value in domain)
+                if not lo<hi:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+                curve={'id':ident,'kind':definition['kind'],'inverse':True,'source':source,'interval':(lo,hi),'look':look,'entry':entry,**{key:value for key,value in definition.items() if key!='kind'}}
+                if definition['kind']=='Y_OF_X':curve['f']=tuple(float(value) for value in definition['coefficients'])
+                # an image-derived domain (square root <-> quadratic half, line) must be the image of the source's draw interval
+                if source['kind'] in ('SQRT','LINE') or definition['kind']=='SQRT':
+                    ends=[_mc_obs_y(source,source['interval'][0] if source['kind'] in MC_FREE_KINDS else float(source['interval'][0])),_mc_obs_y(source,source['interval'][1] if source['kind'] in MC_FREE_KINDS else float(source['interval'][1]))]
+                    if None in ends or abs(min(ends)-float(lo))>1e-7*max(1,abs(float(lo))) or abs(max(ends)-float(hi))>1e-7*max(1,abs(float(hi))):errors.append('MULTI_CURVE_INVERSE_DOMAIN_MISMATCH:'+ident)
+                curve['branches']=[{'side':'FUNCTION','xInterval':(lo,hi),'yInterval':None}]
+                if definition['kind']=='RATIONAL':
+                    pole=-definition['d'][0]/definition['d'][1]
+                    if lo<pole<hi:curve['branches']=[{'side':'LEFT','xInterval':(lo,pole),'yInterval':None},{'side':'RIGHT','xInterval':(pole,hi),'yInterval':None}]
+                curves.append(curve);by_id[ident]=curve
+                continue
+            if kind in MC_FREE_KINDS:
+                curve=_mc_obs_free(entry,ident);curve['look']=look;curve['inverse']=False;curve['entry']=entry
+                domain=entry.get('domain')
+                if not isinstance(domain,list) or len(domain)!=2:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+                lo,hi=(_mc_obs_fraction(value,'MULTI_CURVE_DOMAIN_INVALID:'+ident) for value in domain)
+                if not lo<hi:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+                curve['interval']=(lo,hi);branches=[{'side':'FUNCTION','xInterval':(lo,hi),'yInterval':None}]
+                if kind=='RATIONAL':
+                    pole=-curve['d'][0]/curve['d'][1]
+                    if lo<pole<hi:branches=[{'side':'LEFT','xInterval':(lo,pole),'yInterval':None},{'side':'RIGHT','xInterval':(pole,hi),'yInterval':None}]
+                    elif pole in (lo,hi):raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+                if kind=='SQRT':
+                    boundary=-curve['r'][0]/curve['r'][1]
+                    if (curve['r'][1]>0 and lo<boundary) or (curve['r'][1]<0 and hi>boundary):raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+                curve['branches']=branches;curves.append(curve);by_id[ident]=curve
+                continue
+            coefficients=entry.get('coefficients')
             if not isinstance(coefficients,list) or len(coefficients)!=3:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
             c0,c1,c2=(_pp_coeff(value) for value in coefficients)
             if c2==0:raise ValueError('MULTI_CURVE_NOT_QUADRATIC:'+ident)
@@ -4077,7 +4191,9 @@ def multi_curve_audit(plan,svg,transform):
                     branches.append({'side':'NEGATIVE','xInterval':(min(xv,xe),max(xv,xe)),'yInterval':(lo,yv),'sign':-1,'vertex':(xv,yv)})
                 if not branches:raise ValueError('MULTI_CURVE_BRANCH_EMPTY:'+ident)
             else:raise ValueError('MULTI_CURVE_KIND_INVALID:'+ident)
-            curves.append({'id':ident,'kind':kind,'branch':branch_name,'c':(c0,c1,c2),'interval':(lo,hi),'branches':branches})
+            curve={'id':ident,'kind':kind,'branch':branch_name,'c':(c0,c1,c2),'interval':(lo,hi),'branches':branches,'look':look,'inverse':False,'entry':entry}
+            if kind=='Y_OF_X':curve['f']=(float(c0),float(c1),float(c2))
+            curves.append(curve);by_id[ident]=curve
         features=plan.get('multiCurveFeatures')
         if not isinstance(features,dict) or features.get('schemaVersion')!='MULTI_CURVE_FEATURES_v1' or not isinstance(features.get('curves'),list):
             return {'status':'FAIL','errors':['MULTI_CURVE_FEATURE_INVENTORY_REQUIRED'],'mathMethod':'INDEPENDENT_EXACT_COEFFICIENTS'}
@@ -4087,14 +4203,28 @@ def multi_curve_audit(plan,svg,transform):
             values=row.get(key)
             try:return isinstance(values,list) and len(values)==2 and _pp_same(_pp_exact(values[0]),left) and _pp_same(_pp_exact(values[1]),right)
             except (ValueError,TypeError,IndexError):return False
+        def list_same(values,wanted):
+            try:return isinstance(values,list) and len(values)==len(wanted) and all(_pp_same(_pp_exact(value),want) for value,want in zip(values,wanted))
+            except (ValueError,TypeError):return False
         for curve in curves:
             row=frozen.get(curve['id'])
             if not isinstance(row,dict):errors.append('MULTI_CURVE_INVENTORY_MISMATCH');continue
-            c0,c1,c2=curve['c'];co=row.get('coefficients')
-            try:coefficients_same=isinstance(co,list) and len(co)==3 and all(_pp_same(_pp_exact(value),want) for value,want in zip(co,(c0,c1,c2)))
-            except (ValueError,TypeError):coefficients_same=False
-            if row.get('kind')!=curve['kind'] or not coefficients_same or not pair_same(row,'interval',*curve['interval']):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id'])
-            if curve['kind']=='X_OF_Y' and row.get('branch','BOTH')!=curve['branch']:errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id'])
+            kind=curve['kind'];same=True
+            if row.get('kind')!=kind or not pair_same(row,'interval',*curve['interval']):same=False
+            if kind=='Y_OF_X' or kind=='X_OF_Y':
+                wanted=curve['c'] if 'c' in curve else tuple(curve['coefficients'])
+                if not list_same(row.get('coefficients'),wanted):same=False
+            elif kind=='LINE':
+                if not list_same(row.get('coefficients'),curve['c']):same=False
+            elif kind=='RATIONAL':
+                if not list_same(row.get('numerator'),curve['n']) or not list_same(row.get('denominator'),curve['d']):same=False
+            elif kind=='SQRT':
+                if not list_same(row.get('radicand'),curve['r']) or not list_same([row.get('amplitude','1')],[curve['a']]) or not list_same([row.get('offset','0')],[curve['o']]):same=False
+            if kind=='X_OF_Y' and row.get('branch','BOTH')!=curve['branch']:same=False
+            for key in ('color','weight','style'):
+                if row.get(key)!=curve['look'].get(key):same=False
+            if (row.get('inverseOf') or None)!=(curve['entry'].get('inverseOf') or None):same=False
+            if not same:errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id'])
             rows=row.get('branches')
             if not isinstance(rows,list) or len(rows)!=len(curve['branches']):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id']);continue
             for got,want in zip(rows,curve['branches']):
@@ -4115,43 +4245,186 @@ def multi_curve_audit(plan,svg,transform):
                 if branch.startswith('CURVE_'):nodes.setdefault(branch,[]).append(node)
         def tag_of(curve,branch):
             if branch['side']=='FUNCTION':return 'CURVE_'+curve['id']
-            return 'CURVE_'+curve['id']+'_'+('POS' if branch['side']=='POSITIVE' else 'NEG')
+            return 'CURVE_'+curve['id']+'_'+{'POSITIVE':'POS','NEGATIVE':'NEG','LEFT':'L','RIGHT':'R'}[branch['side']]
         expected={tag_of(curve,branch) for curve in curves for branch in curve['branches']}
         if set(nodes)!=expected or any(len(rows)!=1 for rows in nodes.values()):errors.append('MULTI_CURVE_PRIMITIVE_INVENTORY_MISMATCH')
+        widths={}
         for curve in curves:
-            f0,f1,f2=float(curve['c'][0]),float(curve['c'][1]),float(curve['c'][2])
+            kind=curve['kind'];look=curve['look']
+            if kind=='X_OF_Y':f0,f1,f2=float(curve['c'][0]),float(curve['c'][1]),float(curve['c'][2])
+            else:f0=f1=f2=0.0
             for branch in curve['branches']:
                 tag=tag_of(curve,branch);found=nodes.get(tag) or []
                 if len(found)!=1:continue
-                values=[float(value) for value in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',found[0].get('points',''))]
+                node=found[0]
+                values=[float(value) for value in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
                 if len(values)<4 or len(values)%2 or not all(math.isfinite(value) for value in values):errors.append('MULTI_CURVE_CURVE_POINTS_INVALID:'+tag);continue
                 points=[((values[i]-transform['originX'])/sx,(transform['originY']-values[i+1])/sy) for i in range(0,len(values),2)]
                 start,end=float(branch['xInterval'][0]),float(branch['xInterval'][1])
+                # the look of the polyline: palette colour, dash, weight
+                stroke=node.get('stroke');dash=node.get('stroke-dasharray');width=node.get('stroke-width')
+                if look.get('color') is not None:
+                    if stroke!=GRAPH_COLOR_LINES.get(look['color']):errors.append('MULTI_CURVE_COLOR_MISMATCH:'+tag)
+                elif stroke in GRAPH_COLOR_LINES.values():errors.append('MULTI_CURVE_COLOR_MISMATCH:'+tag)
+                if (look.get('style')=='DASHED')!=bool(dash):errors.append('MULTI_CURVE_STYLE_MISMATCH:'+tag)
+                try:width_value=float(width) if width is not None else None
+                except ValueError:width_value=None
+                if look.get('weight')=='BOLD':
+                    if width_value is None or width_value<3.0:errors.append('MULTI_CURVE_WEIGHT_MISMATCH:'+tag)
+                elif width_value is not None and width_value>2.5:errors.append('MULTI_CURVE_WEIGHT_MISMATCH:'+tag)
+                widths[tag]=(width_value if width_value is not None else 0.0,look.get('weight')=='BOLD')
                 if any(right[0]<=left[0] for left,right in zip(points,points[1:])):errors.append('MULTI_CURVE_CURVE_NOT_INCREASING_X:'+tag)
-                if abs(points[0][0]-start)>x_tol or abs(points[-1][0]-end)>x_tol:errors.append('MULTI_CURVE_COVERAGE_FAIL:'+tag)
                 if any(px<start-x_tol or px>end+x_tol for px,_ in points):errors.append('MULTI_CURVE_CURVE_CROSSES_INTERVAL:'+tag)
-                yv=float(branch['vertex'][1]) if branch['side']!='FUNCTION' else None
-                if branch['side']=='FUNCTION':
-                    expected_y=lambda x_value:f0+f1*x_value+f2*x_value*x_value
-                else:
-                    vertex_x=float(branch['vertex'][0]);sign=1 if branch['sign']>0 else -1
-                    def expected_y(x_value,vertex_x=vertex_x,sign=sign):
+                clipped_ok=kind in MC_FREE_KINDS or curve.get('inverse')   # a LINE, RATIONAL, SQRT or an inverse may be cut off by the frame; a quadratic arc never is
+                # coverage: each end is at the interval end, or (a free curve) where the frame cuts it off
+                for end_point,want in ((points[0],start),(points[-1],end)):
+                    at_end=abs(end_point[0]-want)<=x_tol
+                    at_frame=clipped_ok and (abs(end_point[1]-ymax)<=y_tol or abs(end_point[1]-ymin)<=y_tol)
+                    if not at_end and not at_frame:errors.append('MULTI_CURVE_COVERAGE_FAIL:'+tag);break
+                if kind=='X_OF_Y':
+                    yv=float(branch['vertex'][1]);vertex_x=float(branch['vertex'][0]);sign=1 if branch['sign']>0 else -1
+                    def expected_y(x_value,vertex_x=vertex_x,sign=sign,yv=yv):
                         ratio=(x_value-vertex_x)/f2
                         return yv+sign*math.sqrt(max(0.0,ratio))
+                else:
+                    expected_y=lambda x_value,curve=curve:_mc_obs_y(curve,x_value if kind not in MC_FREE_KINDS else Fraction(x_value).limit_denominator(10**9))
                 for px,py in points:
                     if not (xmin-x_tol<=px<=xmax+x_tol and ymin-y_tol<=py<=ymax+y_tol):errors.append('MULTI_CURVE_CURVE_OUTSIDE_VIEW:'+tag);break
-                    if branch['side']=='FUNCTION':
-                        if abs(py-expected_y(px))*sy*display>.35:errors.append('MULTI_CURVE_WRONG_CURVE:'+tag);break
-                    else:
+                    if kind=='X_OF_Y':
                         residual=px-(f0+f1*py+f2*py*py)
                         if abs(residual)*sx*display>.35:errors.append('MULTI_CURVE_WRONG_CURVE:'+tag);break
                         if branch['side']=='POSITIVE' and py<yv-y_tol or branch['side']=='NEGATIVE' and py>yv+y_tol:errors.append('MULTI_CURVE_WRONG_BRANCH:'+tag);break
                         low_y,high_y=float(branch['yInterval'][0]),float(branch['yInterval'][1])
                         if py<low_y-y_tol or py>high_y+y_tol:errors.append('MULTI_CURVE_OUTSIDE_BRANCH_INTERVAL:'+tag);break
+                    else:
+                        want_y=expected_y(px)
+                        if want_y is None or abs(py-want_y)*sy*display>.35:errors.append('MULTI_CURVE_WRONG_CURVE:'+tag);break
+                        if curve.get('inverse'):
+                            # the inverse really is the mirror image: reflected across y=x, every drawn point lies on the source curve inside the source's own draw interval
+                            source=curve['source'];src_x=_mc_obs_y(source,Fraction(py).limit_denominator(10**9) if source['kind'] in MC_FREE_KINDS else py)
+                            src_lo,src_hi=float(source['interval'][0]),float(source['interval'][1])
+                            bounded=source['kind'] in ('SQRT','Y_OF_X')   # a rational or a line is the whole function, so only a square root or a quadratic half has a draw interval the mirror must stay inside
+                            if src_x is None or abs(src_x-px)*sx*display>.35 or (bounded and (py<src_lo-y_tol or py>src_hi+y_tol)):errors.append('MULTI_CURVE_INVERSE_MISMATCH:'+tag);break
                 else:
-                    for (ax,ay),(bx,by) in zip(points,points[1:]):
-                        midpoint=(ax+bx)/2
-                        if abs((ay+by)/2-expected_y(midpoint))*sy*display>.35:errors.append('MULTI_CURVE_INTERIOR_BOUND_FAIL:'+tag);break
+                    if kind!='X_OF_Y':
+                        pole=float(-curve['d'][0]/curve['d'][1]) if kind=='RATIONAL' else None
+                        for (ax,ay),(bx,by) in zip(points,points[1:]):
+                            midpoint=(ax+bx)/2;want_y=expected_y(midpoint)
+                            if want_y is None or abs((ay+by)/2-want_y)*sy*display>.35:errors.append('MULTI_CURVE_INTERIOR_BOUND_FAIL:'+tag);break
+                        # a visible part of the exact curve that the drawing leaves out (beyond either end of the polyline, inside the frame and the branch interval)
+                        left_x,right_x=points[0][0],points[-1][0]
+                        for step in range(1,200):
+                            x_value=start+(end-start)*step/200
+                            if left_x-x_tol<=x_value<=right_x+x_tol:continue
+                            if pole is not None and abs(x_value-pole)<(end-start)*1e-3:continue
+                            want_y=expected_y(x_value)
+                            if want_y is not None and ymin+2*y_tol<want_y<ymax-2*y_tol and xmin<x_value<xmax:errors.append('MULTI_CURVE_COVERAGE_FAIL:'+tag);break
+                    else:
+                        for (ax,ay),(bx,by) in zip(points,points[1:]):
+                            midpoint=(ax+bx)/2
+                            if abs((ay+by)/2-expected_y(midpoint))*sy*display>.35:errors.append('MULTI_CURVE_INTERIOR_BOUND_FAIL:'+tag);break
+        # G18a-4: the emphasised stretches (a heavier coloured polyline tagged EMPH_<id>_<n> and the open / closed end dots), each rebuilt from the plan
+        emph_nodes={}
+        for node in root.iter():
+            if node.tag.split('}')[-1]=='polyline' and node.get('data-role')=='curve' and str(node.get('data-branch') or '').startswith('EMPH_'):emph_nodes.setdefault(node.get('data-branch'),[]).append(node)
+        wanted_emph={};wanted_dots_emph={}
+        for curve in curves:
+            raw_emphasis=curve['entry'].get('emphasis');ident=curve['id']
+            row=frozen.get(ident) or {}
+            if raw_emphasis is None:
+                if row.get('emphasis'):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+ident)
+                continue
+            if curve['kind']=='X_OF_Y' or not isinstance(raw_emphasis,list) or not 1<=len(raw_emphasis)<=3:raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+            lo,hi=curve['interval'];previous=None;frozen_rows=row.get('emphasis') if isinstance(row.get('emphasis'),list) else []
+            if len(frozen_rows)!=len(raw_emphasis):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+ident)
+            for number,item in enumerate(raw_emphasis,1):
+                if not isinstance(item,dict) or set(item)-{'from','to','color','fromState','toState'}:raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+                start=lo if item.get('from') is None else _mc_obs_fraction(item['from'],'MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+                end=hi if item.get('to') is None else _mc_obs_fraction(item['to'],'MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+                if not (lo<=start<end<=hi) or (previous is not None and start<previous):raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+                previous=end;color=item.get('color','WARM');states=(item.get('fromState','NONE'),item.get('toState','NONE'))
+                if color not in GRAPH_COLOR_LINES or any(state not in ('NONE','OPEN','CLOSED') for state in states):raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+                if curve['kind']=='RATIONAL' and start<-curve['d'][0]/curve['d'][1]<end:raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+                if number<=len(frozen_rows):
+                    got=frozen_rows[number-1]
+                    try:same=isinstance(got,dict) and _pp_same(_pp_exact(got['from']),start) and _pp_same(_pp_exact(got['to']),end) and got.get('color')==color and (got.get('fromState'),got.get('toState'))==states
+                    except (KeyError,ValueError,TypeError):same=False
+                    if not same:errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+ident)
+                tag='EMPH_'+ident+'_'+str(number);wanted_emph[tag]=(curve,float(start),float(end),color)
+                for which,state,value in (('from',states[0],float(start)),('to',states[1],float(end))):
+                    if state!='NONE':wanted_dots_emph['emphasis-'+ident+'-'+str(number)+'-'+which]=(curve,value,state)
+        if set(emph_nodes)!=set(wanted_emph) or any(len(rows)!=1 for rows in emph_nodes.values()):errors.append('MULTI_CURVE_EMPHASIS_INVENTORY_MISMATCH')
+        def curve_y(curve,x_value):return _mc_obs_y(curve,Fraction(x_value).limit_denominator(10**9) if curve['kind'] in MC_FREE_KINDS else x_value)
+        for tag,(curve,start,end,color) in wanted_emph.items():
+            found=emph_nodes.get(tag) or []
+            if len(found)!=1:continue
+            node=found[0]
+            values=[float(value) for value in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
+            if len(values)<4 or len(values)%2 or not all(math.isfinite(value) for value in values):errors.append('MULTI_CURVE_EMPHASIS_POINTS_INVALID:'+tag);continue
+            points=[((values[i]-transform['originX'])/sx,(transform['originY']-values[i+1])/sy) for i in range(0,len(values),2)]
+            if node.get('stroke')!=GRAPH_COLOR_LINES[color]:errors.append('MULTI_CURVE_EMPHASIS_LOOK_MISMATCH:'+tag)
+            try:heavy=float(node.get('stroke-width'))>=3.0
+            except (TypeError,ValueError):heavy=False
+            if not heavy or node.get('stroke-dasharray'):errors.append('MULTI_CURVE_EMPHASIS_LOOK_MISMATCH:'+tag)
+            if any(right[0]<=left[0] for left,right in zip(points,points[1:])) or any(px<start-x_tol or px>end+x_tol for px,_ in points):errors.append('MULTI_CURVE_EMPHASIS_OUTSIDE_STRETCH:'+tag);continue
+            for end_point,want in ((points[0],start),(points[-1],end)):
+                if abs(end_point[0]-want)>x_tol and not (abs(end_point[1]-ymax)<=y_tol or abs(end_point[1]-ymin)<=y_tol):errors.append('MULTI_CURVE_EMPHASIS_COVERAGE_FAIL:'+tag);break
+            for px,py in points:
+                want_y=curve_y(curve,px)
+                if want_y is None or abs(py-want_y)*sy*display>.35:errors.append('MULTI_CURVE_EMPHASIS_WRONG_CURVE:'+tag);break
+        dots_emph={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='circle' and str(node.get('id') or '').startswith('emphasis-')}
+        if set(dots_emph)!=set(wanted_dots_emph):errors.append('MULTI_CURVE_EMPHASIS_DOT_INVENTORY_MISMATCH')
+        for ident,(curve,value,state) in wanted_dots_emph.items():
+            node=dots_emph.get(ident)
+            if node is None:continue
+            want_y=curve_y(curve,value)
+            try:got=((float(node.get('cx'))-transform['originX'])/sx,(transform['originY']-float(node.get('cy')))/sy)
+            except (TypeError,ValueError):errors.append('MULTI_CURVE_EMPHASIS_DOT_MISMATCH:'+ident);continue
+            filled=node.get('fill') not in ('#fff','#ffffff','white')
+            if want_y is None or abs(got[0]-value)*sx*display>.35 or abs(got[1]-want_y)*sy*display>.35 or node.get('data-state')!=state or filled!=(state=='CLOSED'):errors.append('MULTI_CURVE_EMPHASIS_DOT_MISMATCH:'+ident)
+        # a bold curve is heavier than every plain one
+        bold=[w for w,is_bold in widths.values() if is_bold];plain=[w for w,is_bold in widths.values() if not is_bold]
+        if bold and plain and min(bold)<=max(plain):errors.append('MULTI_CURVE_WEIGHT_MISMATCH')
+        # dashed asymptotes of the rational curves and the start dot of the square roots
+        lines={}
+        for node in root.iter():
+            if node.tag.split('}')[-1]=='line' and node.get('data-role')=='asymptote' and str(node.get('data-branch') or '').startswith('ASYM_'):lines.setdefault(node.get('data-branch'),[]).append(node)
+        wanted_lines={}
+        px_tol=.5/(sx*display);py_tol=.5/(sy*display)
+        for curve in curves:
+            if curve['kind']!='RATIONAL':continue
+            lo,hi=curve['interval'];pole=-curve['d'][0]/curve['d'][1];horizontal=curve['n'][1]/curve['d'][1]
+            if lo<pole<hi and pole!=0:wanted_lines['ASYM_'+curve['id']+'_V']=('V',float(pole))
+            if horizontal!=0:wanted_lines['ASYM_'+curve['id']+'_H']=('H',float(horizontal))
+            row=frozen.get(curve['id']) or {}
+            drawn_v=bool((row.get('asymptotes') or {}).get('vertical',{}).get('drawn'));drawn_h=bool((row.get('asymptotes') or {}).get('horizontal',{}).get('drawn'))
+            if drawn_v!=('ASYM_'+curve['id']+'_V' in wanted_lines) or drawn_h!=('ASYM_'+curve['id']+'_H' in wanted_lines):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id'])
+        if set(lines)!=set(wanted_lines) or any(len(rows)!=1 for rows in lines.values()):errors.append('MULTI_CURVE_ASYMPTOTE_INVENTORY_MISMATCH')
+        for tag,(axis,value) in wanted_lines.items():
+            rows=lines.get(tag) or []
+            if len(rows)!=1:continue
+            try:x1,y1,x2,y2=(float(rows[0].get(key)) for key in ('x1','y1','x2','y2'))
+            except (TypeError,ValueError):errors.append('MULTI_CURVE_ASYMPTOTE_GEOMETRY_MISMATCH:'+tag);continue
+            ax,bx=(x1-transform['originX'])/sx,(x2-transform['originX'])/sx;ay,by=(transform['originY']-y1)/sy,(transform['originY']-y2)/sy
+            if not rows[0].get('stroke-dasharray'):errors.append('MULTI_CURVE_ASYMPTOTE_MUST_BE_DASHED:'+tag)
+            if axis=='V':ok=abs(ax-value)<=px_tol and abs(bx-value)<=px_tol and abs(min(ay,by)-ymin)<=py_tol and abs(max(ay,by)-ymax)<=py_tol
+            else:ok=abs(ay-value)<=py_tol and abs(by-value)<=py_tol and abs(min(ax,bx)-xmin)<=px_tol and abs(max(ax,bx)-xmax)<=px_tol
+            if not ok:errors.append('MULTI_CURVE_ASYMPTOTE_GEOMETRY_MISMATCH:'+tag)
+        dots={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='circle' and str(node.get('id') or '').startswith('curve-') and str(node.get('id')).endswith('-start')}
+        wanted_dots={}
+        for curve in curves:
+            if curve['kind']!='SQRT':continue
+            boundary=-curve['r'][0]/curve['r'][1];lo,hi=curve['interval']
+            if (lo if curve['r'][1]>0 else hi)==boundary:wanted_dots['curve-'+curve['id']+'-start']=(float(boundary),float(curve['o']))
+            row=frozen.get(curve['id']) or {}
+            if bool((row.get('start') or {}).get('drawn'))!=('curve-'+curve['id']+'-start' in wanted_dots):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id'])
+        if set(dots)!=set(wanted_dots):errors.append('MULTI_CURVE_START_DOT_INVENTORY_MISMATCH')
+        for ident,(want_x,want_y) in wanted_dots.items():
+            node=dots.get(ident)
+            if node is None:continue
+            try:got=((float(node.get('cx'))-transform['originX'])/sx,(transform['originY']-float(node.get('cy')))/sy)
+            except (TypeError,ValueError):errors.append('MULTI_CURVE_START_DOT_MISMATCH:'+ident);continue
+            if abs(got[0]-want_x)*sx*display>.35 or abs(got[1]-want_y)*sy*display>.35:errors.append('MULTI_CURVE_START_DOT_MISMATCH:'+ident)
         status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
         return {'status':status,'errors':sorted(set(errors+unsupported)),'curveCount':len(curves),'branchCount':sum(len(curve['branches']) for curve in curves),'mathMethod':'INDEPENDENT_EXACT_COEFFICIENTS_AND_FINAL_SVG_POLYLINES'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError) as error:
@@ -4562,11 +4835,120 @@ def _observed_curve_polylines_all(root):
     return rows
 
 
+SINGLE_CURVE_HIDEABLE_OBSERVED={'rational':('formula','asymptotes'),'sqrt-affine':('formula','start')}
+HIDDEN_LABEL_GROUPS={'formula':('formula',),'asymptotes':('horizontal-asymptote-label','vertical-asymptote-label'),'start':('sqrt-source-end-label','sqrt-domain-label','sqrt-range-label')}
+
+def _formula_ascii(text):
+    """(G18a) The ASCII formula of a simple-TeX formula (own conversion: \\frac{a}{b}, \\sqrt{a}, \\cdot, optional leading y= / f(x)=)."""
+    if not isinstance(text,str) or not text.strip() or len(text)>80:raise ValueError('FORMULA_TEX_INVALID')
+    value=text.strip()
+    def wrap(part):return part if re.fullmatch(r'[A-Za-z0-9.]+',part) else '('+part+')'
+    for _ in range(8):
+        changed=re.sub(r'\\frac\{([^{}]*)\}\{([^{}]*)\}',lambda m:wrap(m.group(1))+'/'+wrap(m.group(2)),value)
+        changed=re.sub(r'\\sqrt\{([^{}]*)\}',lambda m:'sqrt('+m.group(1)+')',changed)
+        if changed==value:break
+        value=changed
+    value=value.replace('\\cdot','*').replace('\\left','').replace('\\right','')
+    value=re.sub(r'^(?:y|f\(x\))\s*=\s*','',value)
+    if not value or not re.fullmatch(r'[0-9A-Za-z=+\-*/().^ ]{1,40}',value):raise ValueError('FORMULA_TEX_INVALID')
+    return value.replace(' ','')
+
+def _formula_value(text,x_value):
+    """The value of an ASCII formula at x by a precedence-climbing reader (implicit products allowed); None where it is undefined."""
+    tokens=re.findall(r'sqrt|\d+(?:\.\d+)?|x|[-+*/^()]',text)
+    if ''.join(tokens)!=text:raise ValueError('FORMULA_TEX_INVALID')
+    index=[0]
+    def look():return tokens[index[0]] if index[0]<len(tokens) else None
+    def eat():
+        token=look();index[0]+=1;return token
+    def begins_factor(token):return token is not None and (token in ('x','sqrt','(') or token[0].isdigit())
+    def add_sub():
+        left=mul_div()
+        while look() in ('+','-'):
+            sign=eat();right=mul_div()
+            left=None if left is None or right is None else left+right if sign=='+' else left-right
+        return left
+    def mul_div():
+        left=sign_part()
+        while look() in ('*','/') or begins_factor(look()):
+            operator=eat() if look() in ('*','/') else '*';right=sign_part()
+            if left is None or right is None:left=None
+            elif operator=='*':left=left*right
+            else:left=None if right==0 else left/right
+        return left
+    def sign_part():
+        if look()=='-':
+            eat();inner=sign_part();return None if inner is None else -inner
+        if look()=='+':eat();return sign_part()
+        base=primary()
+        if look()=='^':
+            eat();exponent=sign_part()
+            if base is None or exponent is None:return None
+            try:return base**exponent
+            except (ZeroDivisionError,OverflowError,ValueError):return None
+        return base
+    def primary():
+        token=eat()
+        if token is None:raise ValueError('FORMULA_TEX_INVALID')
+        if token=='x':return x_value
+        if token[0].isdigit():return float(token)
+        if token=='(':
+            inner=add_sub()
+            if eat()!=')':raise ValueError('FORMULA_TEX_INVALID')
+            return inner
+        if token=='sqrt':
+            if eat()!='(':raise ValueError('FORMULA_TEX_INVALID')
+            inner=add_sub()
+            if eat()!=')':raise ValueError('FORMULA_TEX_INVALID')
+            return None if inner is None or inner<0 else math.sqrt(inner)
+        raise ValueError('FORMULA_TEX_INVALID')
+    result=add_sub()
+    if index[0]!=len(tokens):raise ValueError('FORMULA_TEX_INVALID')
+    return result
+
+def _single_curve_y(plan):
+    """x -> y of the plan's own rational or square-root function from its exact fields (never from the label)."""
+    if plan.get('family')=='rational':
+        n=[float(_pp_coeff(v)) for v in plan['numerator']];d=[float(_pp_coeff(v)) for v in plan['denominator']]
+        return lambda x_value:None if abs(d[0]+d[1]*x_value)<1e-12 else (n[0]+n[1]*x_value)/(d[0]+d[1]*x_value)
+    r=[float(_pp_coeff(v)) for v in plan['radicand']];a=float(_pp_coeff(plan.get('amplitude','1')));sign=plan.get('sign',1);o=float(_pp_coeff(plan.get('offset','0')))
+    return lambda x_value:None if r[0]+r[1]*x_value<0 else o+sign*a*math.sqrt(r[0]+r[1]*x_value)
+
+def single_curve_label_audit(plan,svg,transform):
+    """(G18a) graphPlan.hideLabels and graphPlan.formulaTex of a rational or square-root curve. The formula in the author's form is the plan's function (compared at forty
+    points with the observer's own reading of the formula, never trusting the framed formulaAscii), and in the final SVG a hidden text is not there while a shown one is."""
+    hide=plan.get('hideLabels');tex=plan.get('formulaTex')
+    if plan.get('family') not in SINGLE_CURVE_HIDEABLE_OBSERVED or (hide is None and tex is None):return None
+    errors=[]
+    try:
+        allowed=SINGLE_CURVE_HIDEABLE_OBSERVED[plan['family']]
+        if hide is not None and (not isinstance(hide,list) or not hide or len(set(hide))!=len(hide) or any(item not in allowed for item in hide)):return {'status':'UNSUPPORTED','errors':['HIDE_LABELS_INVALID']}
+        hidden=set(hide or [])
+        if tex is not None:
+            ascii_text=_formula_ascii(tex)
+            if plan.get('formulaAscii')!=ascii_text:errors.append('FORMULA_TEX_ASCII_MISMATCH')
+            function=_single_curve_y(plan);compared=0
+            for step in range(-40,41):
+                x_value=step*0.37+0.0123;want=function(x_value);got=_formula_value(ascii_text,x_value)
+                if want is None and got is None:continue
+                if want is None or got is None or abs(want-got)>1e-9*max(1.0,abs(want)):errors.append('FORMULA_TEX_NOT_THE_FUNCTION');break
+                compared+=1
+            if compared<5:errors.append('FORMULA_TEX_NOT_THE_FUNCTION')
+        if 'data-label-kind' in svg:
+            root=ET.fromstring(svg)
+            groups={node.get('id') for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id') and node.get('data-label-kind')}
+            for name in allowed:
+                if name in hidden:
+                    if any(identifier in groups for identifier in HIDDEN_LABEL_GROUPS[name]):errors.append('HIDDEN_LABEL_SHOWN:'+name)
+            if 'formula' not in hidden and 'formula' not in groups:errors.append('FORMULA_LABEL_MISSING')
+    except (KeyError,TypeError,ValueError,ZeroDivisionError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['FORMULA_TEX_INVALID']}
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
+
 def audit(plan,svg,transform):
     """The family audit plus the optional graph overlays and axis titles: the observer re-derives every overlay element from the raw overlays
     field and reads the same element ids back from the model and the final SVG."""
     result=_audit_family(plan,svg,transform)
-    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform)) if part is not None]
+    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform),single_curve_label_audit(plan,svg,transform)) if part is not None]
     if not parts:return result
     errors=sorted(set([*(result.get('errors') or []),*(error for part in parts for error in (part.get('errors') or []))]))
     if result.get('status')=='UNSUPPORTED' or any(part.get('status')=='UNSUPPORTED' for part in parts):status='UNSUPPORTED'
