@@ -125,6 +125,41 @@ test('FAMILY_ACTIVE only reuses a template selected after crosswalk lookup', () 
   assert.equal(validateResolverEvidence(input, result, { repoRoot: root }).status, 'PASS');
 });
 
+test('several ACTIVE rows on one leaf and unit are selected after the crosswalk lookup, never merged by guessing', () => {
+  const high2 = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json'), 'utf8'));
+  const rows = ['H2-M2-RPM-023', 'H2-M2-RPM-100', 'H2-M2-RPM-102'].map(id => high2.records.find(row => row.id === id));
+  assert.equal(rows.length, 3);
+  const make = () => {
+    const input = makeInput(rows[0]);
+    input.curriculumContext.grade = 'H2';
+    input.sourceIdentity.sourceArchiveFile = 'original/high/h2/1final/fixture.js';
+    input.sourceIdentity.questionUid = questionUidForSource(input.sourceIdentity.sourceArchiveFile, 1);
+    return input;
+  };
+  const pending = resolveMetaRoute(make(), { repoRoot: root, registry });
+  assert.equal(pending.semanticStatus, 'FINAL');
+  assert.equal(pending.projectionStatus, 'META_ONLY_COMPATIBILITY_PENDING');
+  assert.equal(pending.projectionReasonCode, 'CROSSWALK_ROW_SELECTION_PENDING');
+  assert.deepEqual(pending.mappedTemplateKeys, rows.map(row => row.templateKey));
+  assert.equal(pending.problemTypeKey, '');
+  for (const row of rows) {
+    const input = make();
+    const bundle = buildDecisionIsolatedInput(input);
+    input.familyTemplateSelection = { stage: 'POST_CROSSWALK', inputBundleSha: bundle.inputBundleSha, crosswalkRecordId: row.id,
+      templateKey: row.templateKey, decisiveStepReason: 'row selected by the decisive step' };
+    const result = resolveMetaRoute(input, { repoRoot: root, registry });
+    assert.equal(result.projectionStatus, 'PROJECTION_REUSE', row.id);
+    assert.equal(result.crosswalkRecordId, row.id);
+    assert.equal(result.problemTypeKey, row.problemTypeKey);
+    assert.equal(result.templateKey, row.templateKey);
+    assert.equal(validateResolverEvidence(input, result, { repoRoot: root, registry }).status, 'PASS');
+  }
+  const wrong = make();
+  wrong.familyTemplateSelection = { stage: 'POST_CROSSWALK', inputBundleSha: buildDecisionIsolatedInput(wrong).inputBundleSha,
+    crosswalkRecordId: rows[1].id, templateKey: rows[2].templateKey, decisiveStepReason: 'template does not belong to the row' };
+  assert.equal(resolveMetaRoute(wrong, { repoRoot: root, registry }).projectionReasonCode, 'CROSSWALK_ROW_SELECTION_PENDING');
+});
+
 test('FAMILY_ACTIVE remains unclosed without post-crosswalk template selection', () => {
   const result = resolveMetaRoute(makeInput(rowFor('H1-RPM-010')), { repoRoot: root });
   assert.equal(result.disposition, 'RPM_SEMANTIC_FINAL');

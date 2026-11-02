@@ -14,7 +14,7 @@
 - **호환성/기계 키(Resolver 판정):** `problemTypeKey`(PT), `templateKey`(TPL), GLOBAL ACTIVE parent와 정확한 교육과정 `curriculum+standardCourse+standardUnitKey+subUnitKey+PT` 바인딩. PT/TPL은 RPM L3/L4의 또 다른 권위가 아니라 메타 소비자를 위한 *projection*이다.
 - **운영 등록(별도):** Git source UID, 소형 승인 메타, Consumer/DB/index, Pages. 메타 의미 확정과 PR/main·학생 배포는 서로 증명하지 않는다.
 
-`PT=RPM L3` 또는 `TPL=RPM L4`라는 단순 일대일 규칙을 만들지 않는다. PT/TPL을 교육과정에 가두어 새 키를 만들지도 않는다. 기존 2015 ACTIVE 의미 키를 2022 단원에 정확 바인딩하여 재사용한다.
+`PT=RPM L3` 또는 `TPL=RPM L4`라는 단순 일대일 규칙을 만들지 않는다. PT/TPL을 교육과정에 가두어 새 키를 만들지도 않는다. (맞는 ACTIVE 키가 없을 때의 정식 신설 절차는 [확장 원칙](../agents/metadata.md): 추정 금지이지 신설 금지가 아니다.) 기존 2015 ACTIVE 의미 키를 2022 단원에 정확 바인딩하여 재사용한다.
 
 ## 2. 모든 작업자가 쓰는 같은 실행 경로
 
