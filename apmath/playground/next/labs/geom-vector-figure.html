@@ -1050,6 +1050,480 @@ window.addEventListener('DOMContentLoaded', function () {
     };
   }
 
+  /* ======================================================================
+     새 장면 (평가원·교육청 기출 핵심 유형) 공통 도우미 NQ
+     - 기존 장면은 손대지 않고, 뒤에 새 장면을 더했습니다(실험실마다 같은 도우미 블록).
+     - 탭마다 그림이 다릅니다: 탐구 = 조작하는 그림 전체 / 정리 = 풀이 단계별 강조 / 문제 = 지문에 주어진 값만(답·보조선 없음)
+     - 「숫자 바꾸기」: 변형 생성기(gen)가 문제 글·그림·정답을 함께 바꿉니다(연속해서 같은 문제는 나오지 않음).
+     - 원문은 싣지 않고 숫자·상황을 바꾼 변형만 싣고, problem.tag 에 출처 유형을 적습니다.
+     ====================================================================== */
+  const NQ = (() => {
+    const clamp = APLab.clamp, tex = APLab.tex;
+    const rint = (n) => Math.floor(Math.random() * n);
+    const pickOf = (arr, not) => { let x; do x = arr[rint(arr.length)]; while (arr.length > 1 && x === not); return x; };
+    const P = (x, y) => ({ x, y });
+    const add = (a, b) => P(a.x + b.x, a.y + b.y), sub = (a, b) => P(a.x - b.x, a.y - b.y), mul = (a, t) => P(a.x * t, a.y * t);
+    const dot = (a, b) => a.x * b.x + a.y * b.y, crs = (a, b) => a.x * b.y - a.y * b.x, len = (a) => Math.hypot(a.x, a.y);
+    const lerp = (a, b, t) => add(a, mul(sub(b, a), t));
+    const polar = (c, r, deg) => P(c.x + r * Math.cos(deg * Math.PI / 180), c.y + r * Math.sin(deg * Math.PI / 180));
+    const gcd = (a, b) => (b ? gcd(b, a % b) : Math.abs(a));
+    // 표시용 숫자(정수는 그대로, 아니면 소수 둘째 자리까지, 음수는 − 기호)
+    const num = (x) => { const r = Math.abs(x - Math.round(x)) < 1e-9 ? String(Math.round(x)) : String(Math.round(x * 100) / 100); return (r === '-0' ? '0' : r).replace('-', '−'); };
+    const sgnTex = (x) => (x < 0 ? '-' : '') + Math.abs(x);
+    // 분수 n/d 를 약분해 {tex, val}
+    function frac(n, d) {
+      const g = gcd(n, d) || 1; n /= g; d /= g;
+      if (d < 0) { n = -n; d = -d; }
+      return { tex: d === 1 ? String(n) : `${n < 0 ? '-' : ''}\\dfrac{${Math.abs(n)}}{${d}}`, val: n / d };
+    }
+    // 변형 생성기: gen(이전 변형|null) → 새 변형. 처음에는 기출 유형 그대로(gen(null)).
+    function varier(gen) { const v = { n: 0, cur: () => v._c, next: () => { v.n++; v._c = gen(v._c); return v._c; }, _c: null }; v._c = gen(null); return v; }
+    const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-nq-new>숫자 바꾸기</button></div>`;
+    document.addEventListener('click', (ev) => {
+      const hit = ev.target && ev.target.closest && ev.target.closest('[data-nq-new]');
+      if (!hit) return;
+      const lab = window.lab, sc = lab && lab.scene;
+      if (!sc || !sc.vary) return;
+      sc.vary.next();
+      lab.s.revealed = false;
+      lab.setStep(1);
+      try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+      lab.invalidate(true);
+    });
+
+    // 화면 크기·여백·탭이 바뀔 때만 그림(라벨 글자 상자까지)을 무대에 맞춥니다. 끌기 중에는 다시 맞추지 않습니다.
+    function fit(b, key, content) {
+      if (b.thumb) return;
+      const ins = b.insets || {};
+      const k = [key, b.W, b.H, Math.round(ins.top || 0), Math.round(ins.right || 0), Math.round(ins.bottom || 0)].join('|');
+      if (b.__nq === k) return;
+      b.__nq = k;
+      // 새 장면은 휴대폰에서 핵심 도형이 무대 폭의 절반 이상이 되도록 바깥 여유(pad)를 줄여 맞춥니다(라벨 글자 상자는 그대로 지킴).
+      // 라벨 자리는 배율에 따라 달라지므로 맞춘 배율에서 한 번 더 재어 다시 맞춥니다.
+      const pad0 = b.pad, pad1 = 0.012;
+      for (let pass = 0; pass < 2; pass++) {
+        b.pad = pad1;
+        const bb = b.measure(content);
+        const f = bb && b.fitBox(bb, { margin: 0.02, px: 8 });
+        b.pad = pad0;
+        if (!f) return;
+        const a = b._area(), m = Math.min(a.w, a.h), p0 = pad0 * m, p1 = pad1 * m;
+        const cx = (f.x[0] + f.x[1]) / 2, cy = (f.y[0] + f.y[1]) / 2;
+        const hw = ((f.x[1] - f.x[0]) / 2) * (a.w - 2 * p0) / (a.w - 2 * p1), hh = ((f.y[1] - f.y[0]) / 2) * (a.h - 2 * p0) / (a.h - 2 * p1);
+        b.setFocus({ x: [cx - hw, cx + hw], y: [cy - hh, cy + hh] }, true);
+      }
+    }
+    // 좌표축: 눈금 숫자는 그림의 선·라벨과 겹치므로 빼고(점의 좌표는 지문·라벨에 적혀 있음), 원점·축 이름만 둡니다.
+    function axes(b) {
+      b.axes({ ticks: false });
+      const a = b._area(), o = b.toS(0, 0), st = { color: 'muted', size: 13, weight: 700, baseline: 'middle' };
+      if (o.y > a.y && o.y < a.y + a.h) b.stext(a.x + a.w - 10, o.y - 12, 'x', { ...st, align: 'right' });
+      if (o.x > a.x && o.x < a.x + a.w) b.stext(o.x + 10, a.y + 12, 'y', { ...st, align: 'left' });
+    }
+    // 화살표(벡터)
+    function vec(b, p, q, o = {}) {
+      const S = b.toS(p), T = b.toS(q), dx = T.x - S.x, dy = T.y - S.y, L = Math.hypot(dx, dy);
+      if (L < 3) return;
+      const c = b.ctx, ux = dx / L, uy = dy / L, k = b.lw || 1;
+      const hl = Math.min(13 * k, L * 0.45), hw = hl * 0.46, col = o.color || 'ink';
+      c.save();
+      b._stroke({ color: col, width: o.width || 3, dash: o.dash, alpha: o.alpha, glow: o.glow, part: o.part, ref: o.ref }, 3);
+      c.beginPath(); c.moveTo(S.x, S.y); c.lineTo(T.x - ux * hl * 0.7, T.y - uy * hl * 0.7); c.stroke();
+      c.setLineDash([]); c.shadowBlur = 0;
+      c.fillStyle = b.color(col, o.alpha);
+      c.beginPath(); c.moveTo(T.x, T.y); c.lineTo(T.x - ux * hl - uy * hw, T.y - uy * hl + ux * hw); c.lineTo(T.x - ux * hl + uy * hw, T.y - uy * hl - ux * hw); c.closePath(); c.fill();
+      c.restore();
+    }
+    // 글자(세계 좌표 + 화면 픽셀 오프셋)
+    function txt(b, p, str, o = {}) { b.text(p, str, { color: o.color || 'ink', size: o.size || 13, weight: 800, align: o.align || 'center', baseline: 'middle', dx: o.dx || 0, dy: o.dy || 0, alpha: o.alpha }); }
+    // 선분·벡터 p→q 옆에 글자: toward(세계 점) 쪽 옆에 놓거나 side(±1)로 옆을 정합니다.
+    function slab(b, p, q, str, o = {}) {
+      const S = b.toS(p), T = b.toS(q), dx = T.x - S.x, dy = T.y - S.y, L = Math.hypot(dx, dy) || 1;
+      const nx = -dy / L, ny = dx / L;
+      const m = lerp(p, q, o.at == null ? 0.5 : o.at);
+      let side = o.side || 1;
+      if (o.toward) { const M = b.toS(m), W = b.toS(o.toward); side = ((W.x - M.x) * nx + (W.y - M.y) * ny) >= 0 ? 1 : -1; }
+      if (o.away) { const M = b.toS(m), W = b.toS(o.away); side = ((W.x - M.x) * nx + (W.y - M.y) * ny) >= 0 ? -1 : 1; }
+      const off = o.off == null ? 15 : o.off;
+      txt(b, m, str, { color: o.color, size: o.size, dx: nx * off * side + (o.dx || 0), dy: ny * off * side + (o.dy || 0), alpha: o.alpha });
+    }
+    // 라벨 자동 배치: 그려 둔 선·점·먼저 놓은 글자와 겹치지 않는 자리를 후보 중에서 고릅니다(그림이 바뀌어도 라벨이 선과 겹치지 않게).
+    // 사용: const L = NQ.labels(b); L.vec/L.seg/L.circ/L.dot 으로 도형을 그리며 등록 → L.at(점, 글, {away}) / L.along(p, q, 글, {side}) 로 라벨.
+    function labels(b) {
+      const c = b.ctx, fs = b.fs || 1, boxes = [], segs = [], a = b._area(), wc = {};
+      const tw = (str, size) => { const k = size + '|' + str; if (wc[k] == null) { c.save(); c.font = `800 ${size * fs}px ${b.font}`; wc[k] = c.measureText(str).width; c.restore(); } return wc[k]; };
+      const hitSeg = (s, bx) => {
+        const x0 = Math.min(s[0].x, s[1].x), x1 = Math.max(s[0].x, s[1].x), y0 = Math.min(s[0].y, s[1].y), y1 = Math.max(s[0].y, s[1].y);
+        if (x1 < bx.x || x0 > bx.x + bx.w || y1 < bx.y || y0 > bx.y + bx.h) return false;
+        const L = Math.hypot(s[1].x - s[0].x, s[1].y - s[0].y), n = Math.max(1, Math.ceil(L / 4));
+        for (let i = 0; i <= n; i++) { const x = s[0].x + (s[1].x - s[0].x) * i / n, y = s[0].y + (s[1].y - s[0].y) * i / n; if (x >= bx.x && x <= bx.x + bx.w && y >= bx.y && y <= bx.y + bx.h) return true; }
+        return false;
+      };
+      const score = (bx0) => {
+        let sc = 0;
+        const bx = { x: bx0.x - 3, y: bx0.y - 2, w: bx0.w + 6, h: bx0.h + 4 };
+        if (bx.x < a.x + 3 || bx.y < a.y + 3 || bx.x + bx.w > a.x + a.w - 3 || bx.y + bx.h > a.y + a.h - 3) sc += 1e6;
+        for (const q of boxes) if (bx.x < q.x + q.w && bx.x + bx.w > q.x && bx.y < q.y + q.h && bx.y + bx.h > q.y) sc += 1e4;
+        for (const s of segs) if (hitSeg(s, bx)) sc += 1e3 * s[2];
+        return sc;
+      };
+      const api = {
+        // 원점 이름(좌표축 장면): 벡터·선과 겹치지 않는 자리에
+        O() { return api.at(P(0, 0), 'O', { color: 'muted', dirDeg: 135, size: 13 }); },
+        seg(p, q, w = 1) { segs.push([b.toS(p), b.toS(q), w]); return api; },
+        poly(pts, closed = true, w = 1) { for (let i = 0; i < pts.length - (closed ? 0 : 1); i++) api.seg(pts[i], pts[(i + 1) % pts.length], w); return api; },
+        circ(C, r, w = 0.15) { let prev = null; for (let i = 0; i <= 36; i++) { const t = 2 * Math.PI * i / 36, q = P(C.x + r * Math.cos(t), C.y + r * Math.sin(t)); if (prev) api.seg(prev, q, w); prev = q; } return api; },
+        dot(p, r = 7) { const s = b.toS(p); boxes.push({ x: s.x - r, y: s.y - r, w: 2 * r, h: 2 * r }); return api; },
+        // 그리기 + 등록
+        vec(p, q, o = {}) { vec(b, p, q, o); return api.seg(p, q, o.w != null ? o.w : (o.alpha != null && o.alpha < 0.5 ? 0.2 : o.dash ? 0.4 : 1)); },
+        line(p, q, o = {}) { b.seg(p, q, o); return api.seg(p, q, o.w != null ? o.w : (o.dash ? 0.4 : 1)); },
+        // 화면 끝까지 뻗는 직선(맞춤 계산에서는 그리지 않아 그림 범위를 늘리지 않습니다)
+        inf(p, dir, o = {}) { if (b._bbox) return api; const n = len(dir) || 1, q1 = add(p, mul(dir, -18 / n)), q2 = add(p, mul(dir, 18 / n)); b.seg(q1, q2, o); return api.seg(q1, q2, o.w != null ? o.w : (o.dash ? 0.35 : 1)); },
+        pt(p, o = {}) { b.point(p, { r: o.r || 4.6, color: o.color || 'ink', hollow: o.hollow }); return api.dot(p, (o.r || 4.6) + 3); },
+        // 점 옆 라벨: away(세계 점) 반대쪽부터, 아니면 오른쪽 위부터 후보를 훑습니다.
+        at(p, str, o = {}) {
+          const size = o.size || 13, w = tw(str, size) + 4, h = size * fs * 1.2, S = b.toS(p);
+          let ang0 = -Math.PI / 4;
+          if (o.dirDeg != null) ang0 = o.dirDeg * Math.PI / 180;
+          else if (o.away) { const W = b.toS(o.away); ang0 = Math.atan2(S.y - W.y, S.x - W.x); }
+          const cands = [];
+          [0, 0.7, -0.7, 1.4, -1.4, 2.1, -2.1, Math.PI].forEach((da, i) => [13, 22, 32, 46, 64].filter((r) => r >= (o.rmin || 0)).forEach((r, j) => cands.push({ ang: ang0 + da, r, pri: i * 2 + j })));
+          let best = null;
+          for (const cd of cands) {
+            const cx = Math.cos(cd.ang), sy = Math.sin(cd.ang), align = cx > 0.35 ? 'left' : cx < -0.35 ? 'right' : 'center';
+            const dx = cd.r * cx, dy = cd.r * sy + (align === 'center' ? Math.sign(sy || 1) * h * 0.45 : 0);
+            const bx = { x: S.x + dx - (align === 'right' ? w : align === 'center' ? w / 2 : 0), y: S.y + dy - h / 2, w, h };
+            const sc = score(bx) + cd.pri;
+            if (!best || sc < best.sc) best = { sc, dx, dy, align, bx };
+          }
+          boxes.push(best.bx);
+          b.text(p, str, { color: o.color || 'ink', size, weight: 800, align: best.align, baseline: 'middle', dx: best.dx, dy: best.dy });
+          return api;
+        },
+        // 선분·벡터 p→q 옆 라벨
+        along(p, q, str, o = {}) {
+          const size = o.size || 13, w = tw(str, size) + 4, h = size * fs * 1.2, S = b.toS(p), T = b.toS(q), Ln = Math.hypot(T.x - S.x, T.y - S.y) || 1;
+          const nx = -(T.y - S.y) / Ln, ny = (T.x - S.x) / Ln;
+          let side = o.side || 1;
+          if (o.toward) { const M = b.toS(lerp(p, q, 0.5)), W = b.toS(o.toward); side = ((W.x - M.x) * nx + (W.y - M.y) * ny) >= 0 ? 1 : -1; }
+          if (o.away) { const M = b.toS(lerp(p, q, 0.5)), W = b.toS(o.away); side = ((W.x - M.x) * nx + (W.y - M.y) * ny) >= 0 ? -1 : 1; }
+          const ats = o.at != null ? [o.at, 0.5, 0.35, 0.65, 0.2, 0.8] : [0.5, 0.35, 0.65, 0.2, 0.8];
+          let best = null, i = 0;
+          for (const at of ats) for (const off of [o.off || 14, (o.off || 14) + 10]) for (const sd of [side, -side]) {
+            const m = lerp(p, q, at), M = b.toS(m);
+            const half = Math.abs(nx) * w / 2 + Math.abs(ny) * h / 2; // 법선 방향으로 글자 상자가 차지하는 절반 두께
+            const d = off + half * 0.55;
+            const dx = nx * d * sd, dy = ny * d * sd;
+            const bx = { x: M.x + dx - w / 2, y: M.y + dy - h / 2, w, h };
+            const sc = score(bx) + i++ + (sd === side ? 0 : 3);
+            if (!best || sc < best.sc) best = { sc, dx, dy, bx, m };
+          }
+          boxes.push(best.bx);
+          b.text(best.m, str, { color: o.color || 'ink', size, weight: 800, align: 'center', baseline: 'middle', dx: best.dx, dy: best.dy });
+          return api;
+        }
+      };
+      if (b.__axes && !b._bbox) { const o = b.toS(0, 0); segs.push([{ x: a.x, y: o.y }, { x: a.x + a.w, y: o.y }, 0.25]); segs.push([{ x: o.x, y: a.y }, { x: o.x, y: a.y + a.h }, 0.25]); boxes.push({ x: o.x - 6, y: o.y - 6, w: 12, h: 12 });
+        if (o.y > a.y && o.y < a.y + a.h) boxes.push({ x: a.x + a.w - 26, y: o.y - 24, w: 24, h: 22 });
+        if (o.x > a.x && o.x < a.x + a.w) boxes.push({ x: o.x + 4, y: a.y + 2, w: 22, h: 22 });
+      }
+      return api;
+    }
+    // 이름 붙은 점(고정): 라벨은 center 반대쪽
+    function dotp(b, p, name, color, center, o = {}) { b.point(p, { r: o.r || 4.6, color: color || 'ink', label: name, toward: center, size: o.size || 14, dx: o.dx, dy: o.dy, align: o.align, hollow: o.hollow }); }
+
+    // 새 장면 틀: 탐구(o.explore)·정리/문제(o.figure)·변형(o.gen)·풀이(o.steps/std/quick)를 한 번에 연결합니다.
+    function scene(o) {
+      const vary = varier(o.gen);
+      const cur = () => vary.cur();
+      const inProblem = (lab) => !!lab && lab.tab === 'problem';
+      return {
+        id: o.id, title: o.title, short: o.short, thumbSnap: false,
+        tabs: { compact: true },
+        question: o.question,
+        guide: o.guide,
+        controls: o.controls, presets: o.presets, actions: o.actions, tick: o.tick,
+        enter: (s) => { Object.assign(s, o.init(s)); },
+        focus: o.focus,
+        steps: () => o.steps(cur()),
+        reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${o.text(cur())}</div>`,
+        problem: { tag: o.tag, time: o.time, text: () => probHTML(o.text(cur())), answer: () => tex(o.answer(cur())) },
+        solution: {
+          standardTitle: o.stdTitle || '교과서식 풀이', standardTag: '기본 풀이', quickTitle: o.quickTitle || '10초 컷', quickTag: '10초 컷',
+          standard: () => ({ steps: o.std(cur()), warning: o.warning }),
+          quick: () => ({ steps: o.quick(cur()), highlight: o.highlight })
+        },
+        view: (s, lab) => {
+          const tab = lab ? lab.tab : 'explore';
+          if (tab !== 'explore') return { chips: (o.given ? o.given(cur()) : []).concat((o.reviewChips ? o.reviewChips(cur(), s) : []).map((c) => ({ ...c, answer: true }))), formula: o.formula, notes: o.notes };
+          return { ...o.view(s), formula: o.formula, notes: o.notes };
+        },
+        vary,
+        draw: (b, s0, v, lab) => {
+          const tab = lab ? lab.tab : 'explore';
+          // 격자·축은 화면 끝까지 그려지므로 맞춤 계산(measure)에서 빼고, 맞춘 뒤에 먼저 그립니다.
+          b.__axes = !!o.axes;
+          const bg = () => { if (s0.grid) b.grid(); if (o.axes) axes(b); };
+          if (tab === 'explore') {
+            fit(b, o.id + '|e', () => { (o.box ? o.box(s0) : []).forEach((p) => b.toS(p)); o.explore(b, s0, lab); });
+            bg();
+            o.explore(b, s0, lab);
+          } else {
+            const probTab = inProblem(lab);
+            const vr = cur();
+            // 문제 탭은 지문에 주어진 그림만, 정리 탭은 풀이 끝(모든 단계)까지 들어오도록 각각 맞춥니다(단계를 넘겨도 그림이 움직이지 않음).
+            fit(b, o.id + (probTab ? '|p|' : '|f|') + vary.n, () => { (o.fbox ? o.fbox(vr, probTab) : []).forEach((p) => b.toS(p)); o.figure(b, probTab ? 0 : 99, vr, probTab); });
+            bg();
+            o.figure(b, probTab ? 0 : s0.step, vr, probTab);
+          }
+        }
+      };
+    }
+    return { clamp, tex, rint, pickOf, P, add, sub, mul, dot, crs, len, lerp, polar, gcd, num, sgnTex, frac, varier, fit, vec, txt, slab, dotp, labels, scene };
+  })();
+
+
+  /* ============================ 장면 5 · 내적·크기 조건이 정하는 직선과 원 ============================ */
+  // 2026학년도 7월 학평(인천) 25번·2022학년도 9월 모평 25번 유형(내적 조건 → 직선, 크기 조건 → 원, 최단거리), 2025학년도 6월 모평 25번 유형
+  const CND = (() => {
+    const { P, add, sub, mul, dot, len, num, pickOf, rint } = NQ;
+    const V = (a) => P(a[0], a[1]);
+    const SETS = [
+      { A: [1, 2], b: [3, 4], C: [-4, 2], r: 1 }, { A: [2, -1], b: [4, 3], C: [-4, 2], r: 2 }, { A: [-1, 3], b: [0, 2], C: [2, -1], r: 1 },
+      { A: [2, 1], b: [3, 0], C: [-3, 2], r: 2 }, { A: [0, -1], b: [-3, 4], C: [2, -2], r: 1 }
+    ];
+    const FL = ['diff', 'prod'], FC = ['norm', 'sq'];
+    const geom = (A, b, C, r) => {
+      const bb = dot(b, b) || 1, sd = dot(b, sub(C, A)) / Math.sqrt(bb), d = Math.abs(sd);
+      const H = sub(C, mul(b, dot(b, sub(C, A)) / bb)), tt = P(-b.y / Math.sqrt(bb), b.x / Math.sqrt(bb)), bh = mul(b, 1 / Math.sqrt(bb));
+      const u = len(sub(H, C)) > 1e-9 ? mul(sub(H, C), 1 / len(sub(H, C))) : P(1, 0);
+      return { d, H, t: tt, bh, lam: dot(sub(H, A), tt), Q0: add(C, mul(u, r)), thOpt: (Math.atan2(u.y, u.x) * 180 / Math.PI + 360) % 360, min: d > r ? d - r : 0 };
+    };
+    const gen = (prev) => {
+      const c = prev ? pickOf(SETS, prev.c) : SETS[0];
+      const A = V(c.A), b = V(c.b), C = V(c.C), g = geom(A, b, C, c.r);
+      return { c, A, b, C, B: b, r: c.r, g, fl: prev ? pickOf(FL, prev.fl) : 'diff', fc: prev ? pickOf(FC, prev.fc) : 'norm', ans: g.min };
+    };
+    const pn = (p) => `(${num(p.x)},${num(p.y)})`;
+    return { gen, geom, pn, V, SETS };
+  })();
+  function sceneCnd() {
+    const { tex, num, P, add, sub, mul, dot, len, clamp, lerp, polar } = NQ;
+    const f2 = (x) => (Math.abs(x - Math.round(x)) < 1e-6 ? String(Math.round(x)) : x.toFixed(2)).replace('-', '−');
+    const stateOf = (s) => {
+      const A = P(s.cn_Ax, s.cn_Ay), b = P(s.cn_bx, s.cn_by), C = P(s.cn_Cx, s.cn_Cy), r = s.cn_r, g = CND.geom(A, b, C, r);
+      return { A, b, C, r, g, P: add(A, mul(g.t, s.cn_lam)), Q: polar(C, r, s.cn_th) };
+    };
+    const sc = NQ.scene({
+      axes: true, id: 'cnd5', title: '[기출 기본] 내적·크기 조건이 정하는 직선과 원', short: '조건이 정하는 직선·원',
+      question: '(OP−OA)·OB = 0 을 만족시키는 점 P는 어떤 도형일까? |OQ−OC| = r 이면 점 Q는? 두 점 사이의 거리는 가장 가까울 때 얼마일까?',
+      guide: '<b>점 P</b>(보라, 직선 위)와 <b>점 Q</b>(하늘색, 원 위)를 끌어 보세요. 점 A, B(벡터 OB의 끝), C를 끌어 직선과 원의 위치도 바꿀 수 있습니다. 가장 가까운 두 점은 <b>중심 C에서 직선에 내린 수선</b> 위에 있습니다.',
+      init: () => ({ cn_Ax: 1, cn_Ay: 2, cn_bx: 3, cn_by: 4, cn_Cx: -4, cn_Cy: 2, cn_r: 1, cn_lam: 2, cn_th: 70 }),
+      focus: () => ({ x: [-7.5, 7.5], y: [-5.5, 6.5] }),
+      box: () => [P(-6.5, -4.5), P(6.5, 6)],
+      controls: ['cn_lam', 'cn_th', 'cn_r'],
+      presets: () => [{ group: '위치 찾기', label: '|PQ|가 가장 작은 위치', color: 'green', apply: (s, lab) => { const x = stateOf(s); lab.tween({ cn_lam: clamp(x.g.lam, -7, 7), cn_th: x.g.thOpt }, 800); } }],
+      view: (s) => {
+        const x = stateOf(s), g = x.g, pq = len(sub(x.P, x.Q));
+        return {
+          chips: [{ tex: '(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot\\overrightarrow{OB}=0', color: 'violet' }, { tex: '|\\overrightarrow{OQ}-\\overrightarrow{OC}|=r', color: 'sky' }],
+          status: g.d > x.r + 1e-6 ? { tone: 'info', text: `직선과 원 사이 거리 d − r = ${f2(g.d - x.r)}` } : { tone: 'warn', text: '직선이 원과 만납니다 (최솟값 0)' },
+          readouts: [
+            { label: '지금 |PQ|', value: f2(pq), color: 'amber' },
+            { label: '중심 C에서 직선까지의 거리 d', value: f2(g.d), color: 'violet' },
+            { label: '반지름 r', value: f2(x.r), color: 'sky' },
+            { label: '|PQ|의 최솟값 = d − r', value: f2(g.min), color: 'green', wide: true }
+          ]
+        };
+      },
+      explore: (b, s) => {
+        const x = stateOf(s), g = x.g, L = NQ.labels(b), O = P(0, 0);
+        L.inf(x.A, g.t, { color: 'violet', width: 3, w: 1 });
+        b.circle(x.C, x.r, { color: 'sky', width: 2.8, fill: 'sky', fillAlpha: 0.08 }); L.circ(x.C, x.r);
+        L.vec(O, x.b, { color: 'rose', width: 3.2 });
+        b.right(x.A, add(x.A, g.bh), add(x.A, g.t), { size: 11, color: 'violet' });
+        L.line(x.P, x.Q, { color: 'amber', width: 2.6, dash: [5, 4] });
+        L.pt(x.A, { color: 'violet' }).pt(x.C, { r: 4, color: 'sky' }).pt(x.b, { color: 'rose' });
+        b.handle('cnA', x.A, { color: 'violet', r: 7, ariaLabel: '점 A', drag: (w) => { s.cn_Ax = clamp(w.x, -6, 6); s.cn_Ay = clamp(w.y, -4.5, 5.5); } });
+        b.handle('cnB', x.b, { color: 'rose', r: 7, ariaLabel: '벡터 OB의 끝점 B', drag: (w) => { s.cn_bx = clamp(w.x, -5, 5); s.cn_by = clamp(w.y, -5, 5); } });
+        b.handle('cnC', x.C, { color: 'sky', r: 7, ariaLabel: '원의 중심 C', drag: (w) => { s.cn_Cx = clamp(w.x, -6, 6); s.cn_Cy = clamp(w.y, -4.5, 5.5); } });
+        b.handle('cnP', x.P, { color: 'violet', r: 7, ariaLabel: '점 P (직선 위)', drag: (w) => { s.cn_lam = clamp(dot(sub(w, x.A), g.t), -7, 7); } });
+        b.handle('cnQ', x.Q, { color: 'sky', r: 7, ariaLabel: '점 Q (원 위)', drag: (w) => { s.cn_th = (Math.atan2(w.y - x.C.y, w.x - x.C.x) * 180 / Math.PI + 360) % 360; } });
+        [x.A, x.b, x.C, x.P, x.Q].forEach((p) => L.dot(p, 13));
+        L.at(x.P, 'P', { color: 'violet', away: x.C, size: 14 });
+        L.at(x.Q, 'Q', { color: 'sky', away: x.C, size: 14 });
+        L.at(x.A, 'A', { color: 'violet', dirDeg: 135, size: 14 });
+        L.at(x.b, 'B', { color: 'rose', away: O, size: 14 });
+        L.at(x.C, 'C', { color: 'sky', dirDeg: 180, size: 14 });
+        L.O();
+      },
+      gen: CND.gen,
+      tag: '2026학년도 7월 학평 25번 · 2022학년도 9월 모평 25번 유형', time: '목표 시간: 40초',
+      text: (I) => {
+        const lc = I.fl === 'diff' ? '(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot\\overrightarrow{OB}=0' : '\\overrightarrow{OP}\\cdot\\overrightarrow{OB}=\\overrightarrow{OA}\\cdot\\overrightarrow{OB}';
+        const cc = I.fc === 'norm' ? `|\\overrightarrow{OQ}-\\overrightarrow{OC}|=${I.r}` : `(\\overrightarrow{OQ}-\\overrightarrow{OC})\\cdot(\\overrightarrow{OQ}-\\overrightarrow{OC})=${I.r * I.r}`;
+        return `좌표평면에서 원점 ${tex('O')}와 세 점 ${tex('A' + CND.pn(I.A))}, ${tex('B' + CND.pn(I.B))}, ${tex('C' + CND.pn(I.C))}이 있다. 점 ${tex('P')}가 ${tex(lc)}을, 점 ${tex('Q')}가 ${tex(cc)}을 만족시키며 움직일 때, 선분 ${tex('PQ')}의 길이의 최솟값을 구하시오.`;
+      },
+      answer: (I) => String(I.ans),
+      given: (I) => [{ tex: `r=${I.r}`, color: 'sky' }],
+      figure: (b, step, I, prob) => {
+        const L = NQ.labels(b), { A, B, C, r, g } = I, O = P(0, 0);
+        L.vec(O, B, { color: 'rose', width: 3.2 });
+        L.pt(O, { r: 3.6, color: 'ink' }).pt(A, { color: 'violet' }).pt(B, { color: 'rose' }).pt(C, { r: 4.4, color: 'sky' });
+        if (step >= 1) { L.inf(A, g.t, { color: 'violet', width: 3, w: 1 }); b.right(A, add(A, g.bh), add(A, g.t), { size: 11, color: 'violet' }); L.dot(add(A, mul(g.bh, 0.35)), 9); }
+        if (step >= 2) { b.circle(C, r, { color: 'sky', width: 2.8, fill: 'sky', fillAlpha: 0.08 }); L.circ(C, r); }
+        if (step >= 3) { L.line(C, g.H, { color: 'ink', width: 1.8, dash: [5, 4] }); L.line(g.Q0, g.H, { color: 'green', width: 4.4 }); L.pt(g.Q0, { r: 5, color: 'green' }).pt(g.H, { r: 5, color: 'green' }); }
+        L.at(A, `A${CND.pn(A)}`, { color: 'violet', dirDeg: 135, size: 13 });
+        L.at(B, `B${CND.pn(B)}`, { color: 'rose', away: O, size: 13 });
+        L.at(C, `C${CND.pn(C)}`, { color: 'sky', dirDeg: 180, size: 13 });
+        if (step >= 3) {
+          L.at(lerp(C, g.H, 0.18), `d = ${num(g.d)}`, { color: 'ink', size: 13, dirDeg: 180 });
+          L.at(lerp(g.Q0, g.H, 0.5), `최소 ${num(g.min)}`, { color: 'green', size: 14, dirDeg: 0 });
+          L.at(g.H, 'H', { color: 'green', size: 13, dirDeg: 45 });
+        }
+        L.O();
+      },
+      steps: (I) => {
+        const b = I.b, A = I.A, C = I.C, g = I.g, p = (v) => (v < 0 ? `(${v})` : `${v}`);
+        return [
+          `$(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot\\overrightarrow{OB}=0$은 $\\overrightarrow{AP}\\perp\\overrightarrow{OB}$이므로, $P$는 <b>점 $A$를 지나고 $\\overrightarrow{OB}$에 수직인 직선</b> 위의 점입니다 ($\\overrightarrow{OB}$가 법선벡터).`.replace(/<\/?b>/g, ''),
+          `$|\\overrightarrow{OQ}-\\overrightarrow{OC}|=${I.r}$은 $|\\overrightarrow{CQ}|=${I.r}$이므로, $Q$는 <b>중심이 $C${CND.pn(C)}$이고 반지름이 ${I.r}인 원</b> 위의 점입니다.`.replace(/<\/?b>/g, ''),
+          `$C$에서 직선까지의 거리 $d=\\dfrac{|${b.x}\\cdot${p(C.x - A.x)}+${b.y}\\cdot${p(C.y - A.y)}|}{\\sqrt{${b.x * b.x + b.y * b.y}}}=${num(g.d)}$ ($d\\gt ${I.r}$이므로 만나지 않음). $|PQ|$의 최솟값은 $d-r=${num(g.d)}-${I.r}=${num(I.ans)}$.`
+        ];
+      },
+      reviewChips: (I) => [{ tex: '\\text{직선}\\ \\&\\ \\text{원}\\ \\Rightarrow\\ d-r', color: 'violet' }, { tex: `\\text{최솟값}=${I.ans}`, color: 'green' }],
+      stdTitle: '교과서식 풀이 (직선과 점 사이 거리)', quickTitle: '10초 컷 · 법선벡터가 곧 OB',
+      std: (I) => {
+        const b = I.b, A = I.A, C = I.C, g = I.g, k = dot(b, A), p = (v) => (v < 0 ? `(${v})` : `${v}`);
+        return `① $\\overrightarrow{OP}=(x,y)$라 하면 $(x-${p(A.x)},\\ y-${p(A.y)})\\cdot(${b.x},\\ ${b.y})=0$, 즉 직선 $${b.x === 0 ? '' : b.x + 'x'}${b.y === 0 ? '' : (b.y > 0 && b.x !== 0 ? '+' : '') + b.y + 'y'}=${k}$.<br>② $|\\overrightarrow{OQ}-\\overrightarrow{OC}|=${I.r}$는 중심 $C${CND.pn(C)}$, 반지름 ${I.r}인 원.<br>③ 중심 $C$와 직선 사이의 거리 $d=\\dfrac{|${b.x}\\cdot${p(C.x)}+${b.y}\\cdot${p(C.y)}-${p(k)}|}{\\sqrt{${b.x * b.x + b.y * b.y}}}=${num(g.d)}$.<br>④ $d>r$이므로 원과 직선은 만나지 않고, 최솟값은 $d-r=${num(I.ans)}$.`;
+      },
+      warning: '원의 중심까지의 거리 d만 답하지 않도록 합니다. 원 위의 점과 직선 위의 점 사이의 최단거리는 d에서 반지름을 뺀 값입니다. d ≤ r이면 직선과 원이 만나 최솟값은 0입니다.',
+      quick: (I) => `$(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot\\overrightarrow{OB}=0$은 <b>점 A를 지나고 법선벡터가 OB인 직선</b>, $|\\overrightarrow{OQ}-\\overrightarrow{OC}|=r$은 <b>중심 C, 반지름 r인 원</b>. 중심에서 직선까지의 거리 ${num(I.g.d)}에서 반지름 ${I.r}을 빼면 ${num(I.ans)}.`,
+      highlight: '벡터 식은 도형으로 번역합니다: (OP−OA)·n = 0 → A를 지나고 n에 수직인 직선 · |OQ−OC| = r → 중심 C, 반지름 r인 원.',
+      formula: '<b>벡터 조건 → 도형</b><br>$(\\overrightarrow{OP}-\\overrightarrow{OA})\\cdot\\vec n=0$ ⟺ 점 $A$를 지나고 $\\vec n$에 수직인 직선 ($\\overrightarrow{OP}\\cdot\\vec n=\\overrightarrow{OA}\\cdot\\vec n$ 도 같은 직선)<br>$|\\overrightarrow{OQ}-\\overrightarrow{OC}|=r$ ⟺ 중심 $C$, 반지름 $r$인 원 · 점과 직선 사이의 거리 $\\dfrac{|ax_1+by_1+c|}{\\sqrt{a^2+b^2}}$',
+      notes: '내적 = 0 은 "수직"입니다. 직선의 방정식을 세울 때 OB가 방향벡터가 아니라 법선벡터임을 헷갈리지 않도록 합니다. 직선이 원과 만나는 경우를 먼저 확인합니다.'
+    });
+    return sc;
+  }
+
+  /* ============================ 장면 6 · 두 직선이 이루는 각 ============================ */
+  // 2022학년도 수능 25번·2023학년도 6월 모평 25번·2024학년도 7월 학평 25번 유형(두 직선의 방향벡터의 내적으로 cosθ)
+  const ANG = (() => {
+    const { P, add, sub, mul, dot, len, num, pickOf, rint, gcd } = NQ;
+    const PAIRS = [[[3, 1], [1, 3]], [[3, 1], [3, -1]], [[3, 2], [3, -2]], [[3, 2], [2, 3]], [[4, 1], [4, -1]], [[4, 3], [4, -3]], [[4, 3], [3, 4]], [[4, 1], [1, 4]]];
+    const XS = [[2, 1], [-1, 2], [1, -2], [3, 0], [-2, -1], [0, 2]];
+    const gen = (prev) => {
+      const pr = prev ? pickOf(PAIRS, prev.pr) : PAIRS[0], X = prev ? pickOf(XS, prev.Xa) : XS[0];
+      const s1 = prev ? 1 + rint(2) : 1, s2 = prev ? 1 + rint(2) : 1;
+      const d1 = P(pr[0][0] * s1, pr[0][1] * s1), d2 = P(pr[1][0] * s2, pr[1][1] * s2);
+      const swap = prev ? rint(2) === 1 : false, dd1 = swap ? d2 : d1, dd2 = swap ? d1 : d2;
+      const Xp = P(X[0], X[1]);
+      const dt = Math.abs(dot(dd1, dd2)), nn = len(dd1) * len(dd2), g = gcd(Math.round(dt), Math.round(nn)) || 1;
+      const nume = Math.round(dt) / g, den = Math.round(nn) / g;
+      const p1 = sub(Xp, P(pr[swap ? 1 : 0][0], pr[swap ? 1 : 0][1])), p2 = add(Xp, P(pr[swap ? 0 : 1][0], pr[swap ? 0 : 1][1]));
+      return { pr, Xa: X, X: Xp, d1: dd1, d2: dd2, p1, p2, cosN: nume, cosD: den, dtv: dot(dd1, dd2), ans: `\\dfrac{${nume}}{${den}}` };
+    };
+    return { gen, PAIRS };
+  })();
+  function sceneAng() {
+    const { tex, num, P, add, sub, mul, dot, len, clamp, lerp, polar, crs } = NQ;
+    const f2 = (x) => (Math.abs(x - Math.round(x)) < 1e-6 ? String(Math.round(x)) : x.toFixed(2)).replace('-', '−');
+    const X0 = P(1, 1);
+    const frTex = (a, b) => (Math.abs(a) > 0 ? `\\dfrac{${a < 0 ? -a : a}}{${b}}` : '0');
+    const eq = (p, d, nameX) => {
+      const xa = p.x === 0 ? 'x' : p.x > 0 ? `x-${p.x}` : `x+${-p.x}`, ya = p.y === 0 ? 'y' : p.y > 0 ? `y-${p.y}` : `y+${-p.y}`;
+      return `\\dfrac{${xa}}{${d.x}}=\\dfrac{${ya}}{${d.y}}`.replace(/\{-/g, '{-');
+    };
+    const sc = NQ.scene({
+      axes: true, id: 'ang6', title: '[기출 기본] 두 직선이 이루는 각 — 방향벡터의 내적', short: '두 직선이 이루는 각',
+      question: '두 직선이 이루는 각 θ는 방향벡터의 내적으로 어떻게 구할까? 방향벡터 사이의 각이 둔각이면 직선이 이루는 각은 얼마일까?',
+      guide: '<b>두 화살표 끝(방향벡터 d₁, d₂)</b>을 끌어 보세요. 직선이 이루는 각 θ는 항상 <b>0° 이상 90° 이하</b>이므로, 방향벡터 사이의 각이 둔각이면 그 보각(180°−각)이 θ입니다.',
+      init: () => ({ an_x1: 3, an_y1: 1, an_x2: 1, an_y2: 3 }),
+      focus: () => ({ x: [-4.5, 6.5], y: [-3.5, 5.5] }),
+      box: () => [P(-3.4, -2.6), P(5.4, 4.8)],
+      controls: [],
+      presets: () => ANG.PAIRS.map((pr) => { const c = ((x) => x)(Math.abs(pr[0][0] * pr[1][0] + pr[0][1] * pr[1][1])); const nn = Math.round(Math.hypot(...pr[0]) * Math.hypot(...pr[1])), g = NQ.gcd(c, nn); return { group: '방향벡터 예 (cos θ)', label: `${c / g}/${nn / g}`, apply: (s) => { s.an_x1 = pr[0][0]; s.an_y1 = pr[0][1]; s.an_x2 = pr[1][0]; s.an_y2 = pr[1][1]; }, on: (st) => st.an_x1 === pr[0][0] && st.an_y1 === pr[0][1] && st.an_x2 === pr[1][0] && st.an_y2 === pr[1][1] }; }),
+      view: (s) => {
+        const d1 = P(s.an_x1, s.an_y1), d2 = P(s.an_x2, s.an_y2), dt = dot(d1, d2), n = len(d1) * len(d2) || 1, cs = dt / n, phi = Math.acos(clamp(cs, -1, 1)) * 180 / Math.PI, th = Math.min(phi, 180 - phi);
+        return {
+          chips: [{ tex: '\\cos\\theta=\\dfrac{|\\vec d_1\\cdot\\vec d_2|}{|\\vec d_1||\\vec d_2|}', color: 'amber' }],
+          status: Math.abs(dt) < 0.05 * n ? { tone: 'ok', text: '두 직선이 수직입니다 (d₁·d₂ = 0, θ = 90°)' } : phi > 90 ? { tone: 'info', text: `방향벡터 사이의 각 ${phi.toFixed(1)}°는 둔각 → 직선이 이루는 각 θ = ${th.toFixed(1)}°` } : { tone: 'info', text: `직선이 이루는 각 θ = ${th.toFixed(1)}°` },
+          readouts: [
+            { label: '방향벡터 d₁ , d₂', value: `(${f2(d1.x)}, ${f2(d1.y)}) , (${f2(d2.x)}, ${f2(d2.y)})`, color: 'sky', wide: true },
+            { label: 'd₁·d₂', value: f2(dt), color: 'amber' },
+            { label: '|d₁||d₂|', value: f2(n), color: 'violet' },
+            { label: 'cos θ  (θ: 직선이 이루는 각)', value: `${f2(Math.abs(cs))}  (θ = ${th.toFixed(1)}°)`, color: 'green', wide: true }
+          ]
+        };
+      },
+      explore: (b, s) => {
+        const d1 = P(s.an_x1, s.an_y1), d2 = P(s.an_x2, s.an_y2), X = X0, L = NQ.labels(b), e1 = add(X, d1), e2 = add(X, d2), dt = dot(d1, d2), phi = Math.acos(clamp(dt / ((len(d1) * len(d2)) || 1), -1, 1)) * 180 / Math.PI;
+        L.inf(X, d1, { color: 'sky', width: 1.8, alpha: 0.7, dash: [6, 5] });
+        L.inf(X, d2, { color: 'rose', width: 1.8, alpha: 0.7, dash: [6, 5] });
+        if (len(d1) > 0.1 && len(d2) > 0.1) {
+          if (Math.abs(dt) < 0.03 * len(d1) * len(d2)) b.right(X, e1, e2, { size: 12, color: 'amber' });
+          else if (phi > 90) { b.angle(X, e1, e2, { r: 22, color: 'muted', rings: 1 }); b.angle(X, e1, sub(X, d2), { r: 36, color: 'amber', rings: 2 }); }
+          else b.angle(X, e1, e2, { r: 30, color: 'amber', rings: 2 });
+        }
+        L.vec(X, e1, { color: 'sky', width: 3.4 });
+        L.vec(X, e2, { color: 'rose', width: 3.4 });
+        L.pt(X, { r: 4.6, color: 'ink' });
+        b.handle('anD1', e1, { color: 'sky', r: 7.5, ariaLabel: '방향벡터 d₁의 끝점', drag: (w) => { const v = sub(w, X), l = len(v) || 1, k = clamp(l, 1, 5) / l; s.an_x1 = Math.round(v.x * k * 2) / 2; s.an_y1 = Math.round(v.y * k * 2) / 2; if (!s.an_x1 && !s.an_y1) s.an_x1 = 1; } });
+        b.handle('anD2', e2, { color: 'rose', r: 7.5, ariaLabel: '방향벡터 d₂의 끝점', drag: (w) => { const v = sub(w, X), l = len(v) || 1, k = clamp(l, 1, 5) / l; s.an_x2 = Math.round(v.x * k * 2) / 2; s.an_y2 = Math.round(v.y * k * 2) / 2; if (!s.an_x2 && !s.an_y2) s.an_y2 = 1; } });
+        [e1, e2].forEach((p) => L.dot(p, 13));
+        L.at(e1, 'd₁', { color: 'sky', away: X, size: 14 });
+        L.at(e2, 'd₂', { color: 'rose', away: X, size: 14 });
+        L.at(X, 'X', { color: 'ink', dirDeg: 135, size: 13 });
+        L.O();
+      },
+      gen: ANG.gen,
+      tag: '2022학년도 수능 25번 · 2023학년도 6월 모평 25번 유형', time: '목표 시간: 25초',
+      text: (I) => `두 직선 ${tex(eq(I.p1, I.d1))}, ${tex(eq(I.p2, I.d2))}이 이루는 예각의 크기를 ${tex('\\theta')}라 할 때, ${tex('\\cos\\theta')}의 값을 구하시오.`,
+      answer: (I) => I.ans,
+      given: (I) => [{ tex: `l_1:\\ ${eq(I.p1, I.d1)}`, color: 'sky' }, { tex: `l_2:\\ ${eq(I.p2, I.d2)}`, color: 'rose' }],
+      figure: (b, step, I, prob) => {
+        const L = NQ.labels(b), { X, d1, d2, p1, p2 } = I, e1 = add(X, d1), e2 = add(X, d2), O = P(0, 0), cs = I.dtv / (len(d1) * len(d2)), obtuse = cs < 0;
+        L.inf(X, d1, { color: 'sky', width: 2.8, w: 1 });
+        L.inf(X, d2, { color: 'rose', width: 2.8, w: 1 });
+        L.pt(p1, { r: 4.6, color: 'sky' }).pt(p2, { r: 4.6, color: 'rose' }).pt(X, { r: 4.2, color: 'ink' });
+        if (step >= 1) { L.vec(X, e1, { color: 'sky', width: 3.6, glow: true }); L.vec(X, e2, { color: 'rose', width: 3.6, glow: true }); }
+        if (step >= 2) {
+          if (obtuse) { b.angle(X, e1, e2, { r: 22, color: 'muted' }); b.angle(X, e1, sub(X, d2), { r: 38, color: 'amber', rings: 2 }); }
+          else b.angle(X, e1, e2, { r: 30, color: 'amber', rings: 2 });
+        }
+        L.at(p1, `(${num(p1.x)},${num(p1.y)})`, { color: 'sky', size: 13, away: X });
+        L.at(p2, `(${num(p2.x)},${num(p2.y)})`, { color: 'rose', size: 13, away: X });
+        L.at(add(X, mul(d1, -1.2)), 'l₁', { color: 'sky', size: 14, dirDeg: 150 });
+        L.at(add(X, mul(d2, 1.2)), 'l₂', { color: 'rose', size: 14, dirDeg: 30 });
+        if (step >= 1) { L.at(e1, `d₁=(${num(d1.x)},${num(d1.y)})`, { color: 'sky', size: 13, away: X }); L.at(e2, `d₂=(${num(d2.x)},${num(d2.y)})`, { color: 'rose', size: 13, away: X }); }
+        if (step >= 2) { const u1 = mul(d1, 1 / len(d1)), u2 = mul(obtuse ? mul(d2, -1) : d2, 1 / len(d2)), bis = add(u1, u2); L.at(X, 'θ', { color: 'amber', size: 15, dirDeg: -Math.atan2(bis.y, bis.x) * 180 / Math.PI, rmin: 46 }); }
+        if (step >= 3) L.at(add(X, P(0, 0)), `cos θ = ${I.cosN}/${I.cosD}`, { color: 'green', size: 14, dirDeg: 270 });
+        L.O();
+      },
+      fbox: (I) => [I.X, add(I.X, I.d1), add(I.X, I.d2), I.p1, I.p2],
+      steps: (I) => {
+        const d1 = I.d1, d2 = I.d2, p = (v) => (v < 0 ? `(${v})` : `${v}`);
+        return [
+          `방향벡터를 읽습니다. $l_1$의 방향벡터 $\\vec d_1=(${d1.x},\\ ${d1.y})$, $l_2$의 방향벡터 $\\vec d_2=(${d2.x},\\ ${d2.y})$ (분모가 방향벡터의 성분).`,
+          `직선이 이루는 예각 $\\theta$는 두 방향벡터가 이루는 각 또는 그 보각입니다${I.dtv < 0 ? ' (이번에는 방향벡터 사이의 각이 둔각이라 보각이 $\\theta$)' : ''}. 따라서 $\\cos\\theta=\\dfrac{|\\vec d_1\\cdot\\vec d_2|}{|\\vec d_1||\\vec d_2|}$.`,
+          `$\\vec d_1\\cdot\\vec d_2=${d1.x}\\cdot${p(d2.x)}+${d1.y}\\cdot${p(d2.y)}=${I.dtv}$, $|\\vec d_1||\\vec d_2|=\\sqrt{${d1.x * d1.x + d1.y * d1.y}}\\cdot\\sqrt{${d2.x * d2.x + d2.y * d2.y}}=${num(len(d1) * len(d2))}$ → $\\cos\\theta=\\dfrac{${Math.abs(I.dtv)}}{${num(len(d1) * len(d2))}}=\\dfrac{${I.cosN}}{${I.cosD}}$.`
+        ];
+      },
+      reviewChips: (I) => [{ tex: `\\cos\\theta=${I.ans}`, color: 'green' }],
+      stdTitle: '교과서식 풀이 (방향벡터의 내적)', quickTitle: '10초 컷 · 분모가 방향벡터',
+      std: (I) => {
+        const d1 = I.d1, d2 = I.d2, p = (v) => (v < 0 ? `(${v})` : `${v}`);
+        return `① 대칭형 직선의 방정식 $\\dfrac{x-x_1}{a}=\\dfrac{y-y_1}{b}$에서 방향벡터는 $(a,\\ b)$. $\\vec d_1=(${d1.x},\\ ${d1.y})$, $\\vec d_2=(${d2.x},\\ ${d2.y})$.<br>② $\\cos\\theta=\\dfrac{|\\vec d_1\\cdot\\vec d_2|}{|\\vec d_1||\\vec d_2|}$ (직선이 이루는 각은 예각이므로 절댓값).<br>③ $|\\vec d_1\\cdot\\vec d_2|=|${d1.x}\\cdot${p(d2.x)}+${d1.y}\\cdot${p(d2.y)}|=${Math.abs(I.dtv)}$, $|\\vec d_1||\\vec d_2|=${num(len(d1) * len(d2))}$.<br>④ $\\cos\\theta=\\dfrac{${I.cosN}}{${I.cosD}}$.`;
+      },
+      warning: '내적이 음수이면 방향벡터 사이의 각이 둔각입니다. 두 직선이 이루는 각은 예각이므로 반드시 내적에 절댓값을 씌웁니다. 분모(분수 모양)에서 방향벡터를 읽을 때 x 쪽 분모가 a, y 쪽 분모가 b입니다.',
+      quick: (I) => `직선 $\\dfrac{x-x_1}{a}=\\dfrac{y-y_1}{b}$의 <b>분모 (a, b)가 곧 방향벡터</b>입니다. $\\vec d_1\\cdot\\vec d_2$의 절댓값 ${Math.abs(I.dtv)}을 $|\\vec d_1||\\vec d_2|=${num(len(I.d1) * len(I.d2))}$로 나누면 $\\cos\\theta=\\dfrac{${I.cosN}}{${I.cosD}}$.`,
+      highlight: '내적은 두 벡터의 방향 정보를 담고 있습니다. 직선이 이루는 각은 방향벡터의 내적에 절댓값을 씌워 구합니다.',
+      formula: '<b>두 직선이 이루는 각</b>: 방향벡터가 $\\vec d_1$, $\\vec d_2$인 두 직선이 이루는 예각 $\\theta$ ($0^\\circ\\le\\theta\\le90^\\circ$)는 $\\cos\\theta=\\dfrac{|\\vec d_1\\cdot\\vec d_2|}{|\\vec d_1||\\vec d_2|}$.<br>수직이면 $\\vec d_1\\cdot\\vec d_2=0$, 평행이면 $\\vec d_1=k\\vec d_2$.',
+      notes: '방향벡터 사이의 각과 직선이 이루는 각을 구별합니다. 내적이 음수여도 cos θ는 양수로 답합니다. 방향벡터를 약분해도(예: (6,2) → (3,1)) 같은 직선이므로 cos θ는 변하지 않습니다.'
+    });
+    return sc;
+  }
+
   APLab.createLab({
     id: 'geom-vector-figure',
     title: '벡터로 나타낸 도형',
@@ -1064,11 +1538,14 @@ window.addEventListener('DOMContentLoaded', function () {
       m2: { value: 0.8, min: 0, max: 2, step: 0.05, color: 'sky', label: 'OA 계수 m', format: (v, s) => `m=${v.toFixed(2)}, n=${s.n2.toFixed(2)} (합 m+n=${(v + s.n2).toFixed(2)})` },
       n2: { value: 0.7, min: 0, max: 2, step: 0.05, color: 'rose', label: 'OB 계수 n', format: (v, s) => `m=${s.m2.toFixed(2)}, n=${v.toFixed(2)} (합 m+n=${(s.m2 + v).toFixed(2)})` },
       t3: { value: 2, min: -1, max: 2.4, step: 0.02, color: 'amber', label: '실수 t (P = A + t·u, −1.0~2.4)', format: (v) => { const x = 1 + 3 * v, y = 2 + 2 * v; return `t = ${v.toFixed(2)} (P(${x.toFixed(1)}, ${y.toFixed(1)}))`; } },
-      th4: { value: 65, min: 0, max: 360, step: 1, color: 'amber', label: '원 위의 점 P의 회전각 θ (어디에 있어도 ∠APB = 90°)', format: (v) => `${mod360(v).toFixed(1)}° (∠APB = 90.0° 고정)` }
+      th4: { value: 65, min: 0, max: 360, step: 1, color: 'amber', label: '원 위의 점 P의 회전각 θ (어디에 있어도 ∠APB = 90°)', format: (v) => `${mod360(v).toFixed(1)}° (∠APB = 90.0° 고정)` },
+      cn_lam: { value: 2, min: -7, max: 7, step: 0.05, color: 'violet', label: '직선 위의 점 P의 위치 (A에서 직선을 따라)', format: (v) => v.toFixed(2) },
+      cn_th: { value: 70, min: 0, max: 360, step: 1, color: 'sky', label: '원 위의 점 Q의 회전각', format: (v) => `${Math.round(v)}°` },
+      cn_r: { value: 1, min: 0.5, max: 2.2, step: 0.1, color: 'sky', label: '원의 반지름 r', format: (v) => `r = ${v.toFixed(1)}` }
     },
     state: { sid: '1', lens: 'all', preset2: 'trap', animDir: 1 },
     persist: ['lens', 'preset2'],
-    scenes: [1, 2, 3, 4].map(sceneOf)
+    scenes: [1, 2, 3, 4].map(sceneOf).concat([sceneCnd(), sceneAng()])
   });
 });
 </script>
