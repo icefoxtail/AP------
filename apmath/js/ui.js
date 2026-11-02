@@ -152,6 +152,16 @@ function toast(m, t='info') {
 }
 
 let modalCloseTimer = null;
+// 모달 닫기 대기(ms). 이 시간이 지나야 모달이 완전히 닫히고 이전 화면으로 돌아간다. 길면 "눌렀는데 한참 뒤에 된다"로 느껴진다.
+// index.html의 #modal-overlay/#modal-content 전환 시간(0.15s)과 맞춘다. 모션 줄이기 설정이면 기다리지 않는다.
+const APMS_MODAL_CLOSE_MS = 150;
+function apmsModalCloseDelay() {
+    try {
+        if (typeof window !== 'undefined' && typeof window.matchMedia === 'function' &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches) return 0;
+    } catch (e) { /* 기본값 사용 */ }
+    return APMS_MODAL_CLOSE_MS;
+}
 let modalStepStack = [];
 // 모달 공통 닫기 정책 상태 (아래 "모달 닫기 정책" 구역 참고)
 let modalDirtyTouched = false;      // 사용자가 입력칸을 직접 건드렸는가(신뢰된 input/change 이벤트)
@@ -311,7 +321,7 @@ function closeModalForAppBack() {
         (returnCtx?.type === 'studentDetail' && state.ui?.currentStudentDetailReturnTo?.type === 'classDetail');
     // The app back button must not discard a classroom-origin modal's return route.
     closeModal(!hasClassReturn);
-    window.setTimeout(updateAppBackButtons, 280);
+    window.setTimeout(updateAppBackButtons, 180);
 }
 
 // options.fromHistory: 브라우저 뒤로 가기(popstate)에서 불렀다. 할 일이 없을 때 history.back()·홈 이동으로 되돌리지 않는다.
@@ -359,7 +369,7 @@ function appHistoryBack(options) {
 // 주소에는 아무것도 남기지 않는다: pushState(state, '', location.href).
 // 보호 항목은 사용자가 화면을 누른 뒤에만 쌓인다(모달·화면 열기는 모두 누르기에서 시작). 크롬의 "누르지 않은 페이지의 이력 건너뛰기"에 걸리지 않는다.
 // ============================================================
-// 지금 열려 있는 모달이 있는가. 닫는 중(closeModal 뒤 260ms)은 닫힌 것으로 본다. DOM을 직접 열어 쓰는 옛 화면도 열린 것으로 친다.
+// 지금 열려 있는 모달이 있는가. 닫는 중(closeModal 뒤 APMS_MODAL_CLOSE_MS)은 닫힌 것으로 본다. DOM을 직접 열어 쓰는 옛 화면도 열린 것으로 친다.
 // 실제 DOM과 맞춘다: closeModal 없이 #modal-overlay를 직접 숨긴 코드(report-center 등)가 있어도 논리 상태가 true로 남지 않게 고친다.
 function apmsNavModalOpen() {
     const domOpen = isModalOpen();
@@ -1045,7 +1055,7 @@ function closeModal(suppressReturn = false) {
         }
         if (returnCtx) returnToPreviousManagementView('dashboard', returnCtx);
         updateAppBackButtons();
-    }, 260);
+    }, apmsModalCloseDelay());
 }
 
 function escapeHtmlForTextarea(text) {
