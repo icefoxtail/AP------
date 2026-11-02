@@ -259,7 +259,10 @@
       const vcount = [];
       if (ex === 'bi') {
         const gap = (1 - join) * 2.8;
-        const A = tetraLocal(F, 0, -1, a), B = tetraLocal(F, gap, 1, a);
+        const A = tetraLocal(F, 0, -1, a), B = tetraLocal(F, 0, 1, a);
+        // 오른쪽 정사면체는 화면 가로로만 미끄러져 붙습니다(떼어 내는 움직임은 가로로만). 입체 방향은 32° 돌려 붙는 면이 비스듬히 보이게 둡니다.
+        const hsh = hxOf(s, gap);
+        B.tri = B.tri.map((p) => add3(p, hsh)); B.apex = add3(B.apex, hsh);
         // 지금 그려지는 두 정사면체만 담습니다(막대 끝의 먼 자리까지 미리 잡지 않아 붙인 모양이 크게 보여요)
         D.fitPts(A.tri.concat([A.apex], B.tri, [B.apex]), { t: C.problem ? 30 : topFor(join > 0.995 ? 3 : 2, 15, 24), b: 56, l: 40, r: 40 });
         if (join > 0.995) {
