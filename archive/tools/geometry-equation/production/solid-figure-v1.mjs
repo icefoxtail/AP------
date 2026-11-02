@@ -1606,8 +1606,11 @@ function solveSolids(plan){
   const unitName=plan.unit??null;
   if(plan.dims!==undefined){
     if(!Array.isArray(plan.dims)||plan.dims.length>10)bad('SOLID_DIMS_INVALID');
-    plan.dims.forEach((d,k)=>{
-      onlyKeys(d,['from','to','edge','radius','height','slant','level','solid','label','side','half','direct','foot','line'],'SOLID_DIMS_INVALID');
+    plan.dims.forEach((d0,k)=>{
+      onlyKeys(d0,['from','to','edge','radius','diameter','height','slant','level','solid','label','side','half','direct','foot','line'],'SOLID_DIMS_INVALID');
+      // diameter:"bottom"|"top"|"level" is a radius dimension drawn across the whole circle (twice the radius): the width of an axial section's base or top
+      if(d0.diameter!==undefined&&(d0.radius!==undefined||!['bottom','top','level'].includes(d0.diameter)||d0.half!==undefined))bad('SOLID_DIMS_INVALID');
+      const d=d0.diameter!==undefined?{...d0,radius:d0.diameter}:d0,diameter=d0.diameter!==undefined;
       // direct:true (a pyramid's or frustum's height): the length is written beside the dashed line from the apex (top centre) straight down to the base plane, with no
       // dimension frame around it; foot:true | "<base vertex>": a right-angle mark at the foot of that line, between it and a dashed line in the base plane to a vertex (a
       // cone or cylinder: to the rim on the screen's right)
@@ -1618,7 +1621,7 @@ function solveSolids(plan){
       // side:"LEFT"|"RIGHT"|"TOP"|"BOTTOM" of an edge or segment length: the label stands on that side of the segment on the screen (the segment must not run along that direction)
       if(d.side!==undefined){
         const edgeDim=d.edge!==undefined||d.from!==undefined;
-        if(!(edgeDim?SEGMENT_SIDES:['LEFT','RIGHT']).includes(d.side)||(!edgeDim&&d.height===undefined&&d.level===undefined))bad('SOLID_DIM_SIDE_INVALID');
+        if(!(edgeDim?SEGMENT_SIDES:diameter?['TOP','BOTTOM']:['LEFT','RIGHT']).includes(d.side)||(!edgeDim&&d.height===undefined&&d.level===undefined&&!diameter))bad('SOLID_DIM_SIDE_INVALID');
       }
       // line:1|2|3 (with side LEFT|RIGHT) of an edge or segment length: a dimension line parallel to the segment, outside the solid on that side, with an extension line from each end; 1 is the nearest tier, each
       // further tier stands one step further out (the shorter dimensions inside, the longer outside), the label stands beyond the line
@@ -1671,7 +1674,7 @@ function solveSolids(plan){
             cutAxis=solid.cut.seenAxes.find(a=>a.axis===k&&a.sign===sg);
             if(!cutAxis)bad('SOLID_SPHERE_CUT_RADIUS_HIDDEN:'+d.half);
           }
-          dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z:liftOf(solid)?r6(z+liftOf(solid)):z,r:r6(rimR),...(solid.cut?{axis:cutAxis}:{}),...dimLabel(d.label,rimR,unitName,code,{words:true})});
+          dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z:liftOf(solid)?r6(z+liftOf(solid)):z,r:r6(rimR),...(diameter?{diameter:true,...(d.side!==undefined?{side:d.side}:{})}:{}),...(solid.cut?{axis:cutAxis}:{}),...dimLabel(d.label,diameter?2*rimR:rimR,unitName,code,{words:true})});
         }else if(d.level!==undefined){
           if(!(d.level===true||d.level==='bottom'||d.level==='top')||!section||section.kind!=='LEVEL'||section.solid!==solid.id||solid.category!=='REV')bad('SOLID_DIMS_INVALID');
           // level:"top" is the part above the cutting plane (apex/top down to the section); true and "bottom" are the part below it
@@ -2165,7 +2168,7 @@ function solveNet(plan){
 }
 
 // --- layout and spec ----------------------------------------------------------------------------------------------------------------------------
-const WIDTH=480,MARGIN_X=62,MARGIN_Y=50,SAFE=10,MAX_FIG_H=300,MAX_SCALE=70,SIDE_DIM_ROOM=64;
+const WIDTH=480,MARGIN_X=62,MARGIN_Y=50,SAFE=10,MAX_FIG_H=300,MAX_SCALE=70,SIDE_DIM_ROOM=64,DIAMETER_ROOM=40,DIAMETER_LINE_OFFSET=22;
 // A solid panel of a composite grid (composite-panels-v1 with two columns) is narrower: two of them plus the 8 unit gap stay at 776 SVG units (the narrowest plane canvas pair: a Korean caption row still fits 44 units at the measured base font),
 // the width the Archive solution column keeps its 11 CSS px label floor at. The composite sets it (plan.panelWidth); an author never writes it.
 export const GRID_PANEL_WIDTH=384;
@@ -2197,8 +2200,10 @@ export function figureFrame(model){
   const lineRoom=side=>{const ts=model.mode==='SOLIDS'?model.dims.filter(d=>d.type==='SEGMENT'&&d.line&&d.side===side).map(d=>d.line):[];return ts.length?SIDE_DIM_ROOM+8+OUTSIDE_STEP*(Math.max(...ts)-1):0;};
   const roomL=Math.max(model.mode==='SOLIDS'&&(model.dims.some(d=>d.side==='LEFT')||model.dims.some(d=>outsideSide(d)==='LEFT'))?SIDE_DIM_ROOM+tierRoom('LEFT'):0,lineRoom('LEFT')),roomR=Math.max(model.mode==='SOLIDS'&&(model.dims.some(d=>d.side==='RIGHT')||model.dims.some(d=>outsideSide(d)==='RIGHT'))?SIDE_DIM_ROOM+tierRoom('RIGHT'):0,lineRoom('RIGHT'));
   const scale=r6(Math.min((W-2*MX-roomL-roomR)/bw,MAX_FIG_H/bh,MAX_SCALE));
-  const height=Math.ceil(bh*scale+2*MARGIN_Y);
-  return {scale,width:W,height,origin:[r6((W+roomL-roomR)/2-scale*(e.x0+e.x1)/2),r6(height/2+scale*(e.y0+e.y1)/2)],extent:e};
+  // a diameter written outside (diameter with side TOP|BOTTOM) takes room above or below the solid for its line and its label
+  const roomT=model.mode==='SOLIDS'&&model.dims.some(d=>d.diameter&&d.side==='TOP')?DIAMETER_ROOM:0,roomB=model.mode==='SOLIDS'&&model.dims.some(d=>d.diameter&&d.side==='BOTTOM')?DIAMETER_ROOM:0;
+  const height=Math.ceil(bh*scale+2*MARGIN_Y+roomT+roomB);
+  return {scale,width:W,height,origin:[r6((W+roomL-roomR)/2-scale*(e.x0+e.x1)/2),r6(roomT+(height-roomT-roomB)/2+scale*(e.y0+e.y1)/2)],extent:e};
 }
 export const figurePanelSize=model=>{const f=figureFrame(model);return {width:f.width,height:f.height};};
 
@@ -2268,6 +2273,11 @@ function segmentDimLine(a,b,side,tier){
   return {a:[r6(a[0]+n[0]*off),r6(a[1]+n[1]*off)],b:[r6(b[0]+n[0]*off),r6(b[1]+n[1]*off)]};
 }
 const SEGMENT_LINE_FIRST=22;
+/** The outside diameter dimension of a circle (dims[].diameter with side TOP|BOTTOM), in px: the circle's left and right extremes `left`/`right` (on the row of its centre `pc`), and the line `a`-`b` above or below the ellipse. */
+function diameterOutside(d,pc,S){
+  const rx=S*d.r,ry=S*d.r*sP,y=d.side==='BOTTOM'?pc[1]+ry+DIAMETER_LINE_OFFSET:pc[1]-ry-DIAMETER_LINE_OFFSET;
+  return {left:[r6(pc[0]-rx),pc[1]],right:[r6(pc[0]+rx),pc[1]],a:[r6(pc[0]-rx),r6(y)],b:[r6(pc[0]+rx),r6(y)]};
+}
 /** The side (LEFT | RIGHT) a height or level dimension of a round solid is written outside on, or undefined. */
 const outsideSide=d=>d?.type==='HEIGHT'?d.side:d?.type==='LEVEL'?d.outside:undefined;
 const OUTSIDE_STEP=64;// how much further out each further dimension on the same side of one solid stands (short ones inside, long ones outside)
@@ -2446,7 +2456,14 @@ function spec3d(plan,model,ctx){
       const c=project([solid.offset?EX[0]*solid.offset:0,solid.offset?EX[1]*solid.offset:0,d.z]);
       if(solid.at){c[0]+=solid.at.x;c[1]+=solid.at.y*sP;}// a ball off the axis: its radius starts at its own centre
       const rim=[c[0]+d.r,c[1]];// screen-horizontal radius: ends at the ellipse's right extreme
-      line(d.id+'-line','dim-line',pt(c),pt(rim),{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
+      // a diameter dimension runs the whole way across the circle, from its left extreme to its right one; with side TOP|BOTTOM it stands outside, 22 px above the top of the circle's ellipse or below its bottom,
+      // an extension line running from each extreme of the circle to it
+      if(d.diameter&&d.side){
+        const g=diameterOutside(d,pt(c),S);
+        line(d.id+'-line','dim-line',g.a,g.b,{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
+        line(d.id+'-ext-left','dim-ext',g.left,g.a,{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
+        line(d.id+'-ext-right','dim-ext',g.right,g.b,{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
+      }else line(d.id+'-line','dim-line',pt(d.diameter?[c[0]-d.r,c[1]]:c),pt(rim),{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
     }else if(d.type==='HEIGHT'){
       const solid=model.solids.find(s=>s.id===d.solid);
       if(solid.category==='POLY'){
@@ -2620,7 +2637,8 @@ function spec3d(plan,model,ctx){
       }
       const c=project([EX[0]*(solid.offset??0),EX[1]*(solid.offset??0),d.z]);
       if(solid.at){c[0]+=solid.at.x;c[1]+=solid.at.y*sP;}
-      labels.push({...label,segment:[pt(c),pt([c[0]+d.r,c[1]])],segmentOf:'radius'});
+      if(d.diameter&&d.side){const g=diameterOutside(d,pt(c),S);labels.push({...label,segment:[g.a,g.b],segmentOf:'radius',sideDir:d.side==='BOTTOM'?[0,1]:[0,-1]});}
+      else labels.push({...label,segment:[pt(d.diameter?[c[0]-d.r,c[1]]:c),pt([c[0]+d.r,c[1]])],segmentOf:'radius'});
     }else if(d.type==='HEIGHT'){
       const solid=model.solids.find(s=>s.id===d.solid);
       if(solid.category==='POLY'){const top=pt(project(d.top)),foot=pt(project(d.foot)),x=heightDimX(solid,X);labels.push({...label,segment:d.direct?[foot,top]:[[x,foot[1]],[x,top[1]]],segmentOf:'height'});}

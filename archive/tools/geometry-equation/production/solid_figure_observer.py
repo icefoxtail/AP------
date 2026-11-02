@@ -804,7 +804,15 @@ def _ellipse_point(cx, cy, rx, ry, u): return (cx + rx * math.cos(u), cy - ry * 
 
 
 # --- audit ----------------------------------------------------------------------------------------------------------------------------------
+def normalize_diameter_dims(plan):
+    """dims[].diameter:"bottom"|"top"|"level" is a radius dimension across the whole circle: the same dim written radius with a flag, so every radius rule reads it (its value is twice the radius, its line starts at the left extreme)"""
+    dims = plan.get('dims')
+    if not isinstance(dims, list) or not any(isinstance(d, dict) and d.get('diameter') is not None for d in dims): return plan
+    return {**plan, 'dims': [({**{k: v for k, v in d.items() if k != 'diameter'}, 'radius': d['diameter'], 'diameterDim': True} if isinstance(d, dict) and d.get('diameter') is not None else d) for d in dims]}
+
+
 def audit(plan, svg):
+    plan = normalize_diameter_dims(plan)
     errors = []
     final_sha = 'sha256:' + hashlib.sha256(svg.encode('utf-8')).hexdigest()
     try: root = ET.fromstring(svg)
@@ -2851,7 +2859,17 @@ def check_dim_lines(plan, ctx):
                 which = d['radius']
                 zr, rr = (solid['cz'], solid['r0']) if which == 'center' else ((0.0, solid['r0']) if which == 'bottom' else (solid['height'], solid['r1']))
                 cs = project((solid['hx'], solid['hy'], lift + zr)) if which == 'center' else project((0.0, 0.0, lift + zr))   # the centre of the circle on the screen (a ball off the axis: its own)
-                want = ((Tx + scale * cs[0], Ty - scale * cs[1]), (Tx + scale * (cs[0] + rr), Ty - scale * cs[1]))
+                want = ((Tx + scale * (cs[0] - (rr if d.get('diameterDim') else 0.0)), Ty - scale * cs[1]), (Tx + scale * (cs[0] + rr), Ty - scale * cs[1]))
+                if d.get('diameterDim') and d.get('side') in ('TOP', 'BOTTOM'):
+                    # a diameter written outside: 22 px above the top of the circle's ellipse or below its bottom, an extension line from each extreme of the circle up to it
+                    cxp, cyp = Tx + scale * cs[0], Ty - scale * cs[1]
+                    yl = cyp + scale * rr * math.sin(PITCH) + 22.0 if d['side'] == 'BOTTOM' else cyp - scale * rr * math.sin(PITCH) - 22.0
+                    want = ((cxp - scale * rr, yl), (cxp + scale * rr, yl))
+                    exts = [e for e in root.iter(NS + 'line') if e.get('data-role') == 'dim-ext' and e.get('data-dim') == dim]
+                    for sx in (-1.0, 1.0):
+                        start, end = (cxp + sx * scale * rr, cyp), (cxp + sx * scale * rr, yl)
+                        if not any(_same_segment((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2')), start, end) for e in exts): ctx['errors'].append('SOLID_DIM_EXTENSION_MISMATCH:' + dim)
+                    if len(exts) != 2: ctx['errors'].append('SOLID_DIM_EXTENSION_MISMATCH:' + dim)
                 got = ((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2')))
                 if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)): ctx['errors'].append('SOLID_DIM_LINE_MISMATCH:' + dim + ':' + str(kind))
                 continue
@@ -2863,7 +2881,7 @@ def check_dim_lines(plan, ctx):
             f = int(mm.group(1)) / int(mm.group(2))
             zl = f * solid['height']
             rl = solid['r0'] + (solid['r1'] - solid['r0']) * f
-            want = ((Tx, y_of(zl)), (Tx + scale * rl, y_of(zl)))
+            want = ((Tx - (scale * rl if d.get('diameterDim') else 0.0), y_of(zl)), (Tx + scale * rl, y_of(zl)))
         got = ((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2')))
         if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)):
             ctx['errors'].append('SOLID_DIM_LINE_MISMATCH:' + dim + ':' + str(kind))
@@ -3771,7 +3789,7 @@ def expected_dim_values(plan, ctx):
                         val = solid['r0'] + (solid['r1'] - solid['r0']) * f
                     elif which == 'bottom': val = solid['r0']
                     else: val = solid['r1']
-                    out[ident] = (val, None, symbolic)
+                    out[ident] = (val * 2 if d.get('diameterDim') else val, None, symbolic)
                 elif d.get('level') is not None:
                     m = re.fullmatch(r'(\d+)/(\d+)', (plan.get('section') or {}).get('at') or '')
                     f = int(m.group(1)) / int(m.group(2))

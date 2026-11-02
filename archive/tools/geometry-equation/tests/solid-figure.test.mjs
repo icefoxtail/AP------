@@ -3196,3 +3196,39 @@ test('G15: dim line tiers stand further out and line is refused without LEFT or 
   assert.throws(()=>solveSolidFigure(prism([{edge:['#b0','#t0'],side:'LEFT',line:true}])),code('SOLID_DIM_LINE_INVALID'));
   assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:1,height:2}],dims:[{radius:'top',side:'LEFT',line:1}]})),code('SOLID_DIM'));
 });
+
+// --- G15: the diameter of a base circle (the width of an axial section) --------------------------------------------------------------------------
+const trapezoid=(dims,over={})=>figure({unit:'cm',solids:[{id:'s1',kind:'CONE_FRUSTUM',radius:5,topRadius:2,height:4,orientation:'APEX_DOWN',axis:true}],section:{kind:'AXIAL'},dims,...over});
+test('G15: a diameter dimension writes twice the radius across the circle, or outside it above or below with an extension line from each extreme',async()=>{
+  const m=solveSolidFigure(trapezoid([{diameter:'top'},{diameter:'bottom'}]));
+  assert.deepEqual(m.dims.map(d=>[d.which,d.diameter,d.text]),[['top',true,'10'],['bottom',true,'4']]);
+  const inside=trapezoid([{diameter:'top'},{height:true}]);
+  const c1=await panel(inside);
+  assert.equal(c1.status,'COMPOSED',JSON.stringify(c1.detail));assert.equal(c1.staticAudit.status,'PASS',JSON.stringify(c1.staticAudit.errors));
+  const line=lineOf(c1.svg,'dim-1','line');
+  assert.equal(line.y1,line.y2);assert.ok(line.x2-line.x1>0);
+  assert.equal((await audit(inside,c1.svg)).status,'PASS');
+  const outside=trapezoid([{diameter:'top',side:'TOP'},{diameter:'bottom',side:'BOTTOM'}]);
+  const c2=await panel(outside);
+  assert.equal(c2.status,'COMPOSED',JSON.stringify(c2.detail));assert.equal(c2.staticAudit.status,'PASS',JSON.stringify(c2.staticAudit.errors));
+  const top=lineOf(c2.svg,'dim-1','line'),bottom=lineOf(c2.svg,'dim-2','line');
+  assert.ok(top.y1<bottom.y1&&top.x2-top.x1>bottom.x2-bottom.x1,'the 10 cm line is above and wider than the 4 cm line below');
+  assert.ok(lineOf(c2.svg,'dim-1','ext-left')&&lineOf(c2.svg,'dim-1','ext-right')&&lineOf(c2.svg,'dim-2','ext-left')&&lineOf(c2.svg,'dim-2','ext-right'));
+  assert.equal((await audit(outside,c2.svg)).status,'PASS');
+  // tamper: the outside line is shortened; an extension line goes missing
+  const raw=c2.svg.match(/<line id="dim-2-line"[^>]*>/)[0];
+  const r1=await audit(outside,c2.svg.replace(raw,raw.replace(/ x2="([-\d.]+)"/,(a,v)=>` x2="${Number(v)-7}"`)));
+  assert.equal(r1.status,'FAIL');assert.ok(r1.errors.some(e=>e.startsWith('SOLID_DIM_LINE_MISMATCH:dim-2')),JSON.stringify(r1.errors));
+  const ext=c2.svg.match(/<g data-layer="40"><line id="dim-1-ext-right"[^>]*\/><\/g>/)[0];
+  const r2=await audit(outside,c2.svg.replace(ext,''));
+  assert.equal(r2.status,'FAIL');assert.ok(r2.errors.some(e=>e.startsWith('SOLID_DIM_EXTENSION_MISMATCH:dim-1')),JSON.stringify(r2.errors));
+  // the label is checked against twice the radius
+  assert.throws(()=>solveSolidFigure(trapezoid([{diameter:'top',label:'5'}])),code('SOLID_DIM_VALUE_MISMATCH'));
+  assert.equal(solveSolidFigure(trapezoid([{diameter:'top',label:'10'}])).dims[0].numeric,true);
+});
+test('G15: a diameter is refused when it is not a circle of a rotation solid or its side is not TOP or BOTTOM',()=>{
+  assert.throws(()=>solveSolidFigure(trapezoid([{diameter:'center'}])),code('SOLID_DIMS_INVALID'));
+  assert.throws(()=>solveSolidFigure(trapezoid([{diameter:'top',radius:'top'}])),code('SOLID_DIMS_INVALID'));
+  assert.throws(()=>solveSolidFigure(trapezoid([{diameter:'top',side:'LEFT'}])),code('SOLID_DIM_SIDE_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],dims:[{diameter:'top'}]})),code('SOLID_DIMS_INVALID'));
+});
