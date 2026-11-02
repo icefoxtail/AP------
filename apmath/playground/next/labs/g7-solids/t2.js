@@ -69,8 +69,9 @@
   function placeInset(b, sb, side0) {
     if (b.W < 560 && !b.thumb) {
       // 휴대폰: 입체를 위에 크게 놓고, 단면 그림은 읽을 만큼만(고정 크기 px) 아래에 둡니다. 입체의 맞춤을 여기서 함께 합니다.
-      const px = 96, blockH = px + 2 * 11, il = b.insets.left, ir = b.insets.right, ib = b.insets.bottom;
-      fit(b, sb, { t: 38, b: blockH + 18, l: 28, r: 28 });
+      // (입체를 키우려고 단면 그림은 84px로 줄였습니다. 길이 글씨는 그대로 14px 이상.)
+      const px = 84, blockH = px + 2 * 11, il = b.insets.left, ir = b.insets.right, ib = b.insets.bottom;
+      fit(b, sb, { t: 30, b: blockH + 12, l: 22, r: 22 });
       const c = b.toW((b.W + il - ir) / 2, b.H - ib - 10 - blockH / 2), side = px / b.k;
       return { cx: c.x, cy: c.y, side, narrow: true, fitted: true, capUp: 12 / b.k, secK: 0.52, box: { x0: c.x - side / 2, x1: c.x + side / 2, y0: c.y - side / 2, y1: c.y + side / 2 } };
     }
@@ -86,15 +87,15 @@
   const sheetW = (rmax) => 2.4 * rmax;                        // 판의 가로 길이
   function stage(b, s, M, C, hooks) {
     const narrow = b.W < 560;
-    const D = S3.ctx(b, s), sol = M.sol, ext = narrow ? 0.4 + 0.25 * sol.rmax : 0.5 + 0.4 * sol.rmax, Rs = sol.rmax * 1.2;
-    const pts = [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + ext, z: 0 })];
+    const D = S3.ctx(b, s), sol = M.sol, ext = narrow ? 0.12 : 0.5 + 0.4 * sol.rmax, extTop = S3.axisExtTop(D, S3.topR(sol), ext), Rs = sol.rmax * 1.2;
+    const pts = [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + extTop, z: 0 })];
     if (hooks.pts) hooks.pts(D, M, Rs).forEach((p) => pts.push(p));
     const sb = S3.boxOf(D, sol, pts);
     const side = hooks.side === undefined ? Math.max(sol.h, 2 * sol.rmax) * 1.28 : hooks.side;
     const ins = side ? placeInset(b, sb, side) : null;
     if (!(ins && ins.fitted)) fit(b, ins ? union(sb, ins.box) : sb, { t: 50, b: ins && ins.narrow ? 36 : 40, l: narrow ? 28 : 44, r: narrow ? 28 : 44 });
     S3.drawSolid(D, sol, {});
-    S3.drawAxis(D, sol.ymin, sol.ymax, { ext, label: '회전축 l' });
+    S3.drawAxis(D, sol.ymin, sol.ymax, { ext, extTop, label: '회전축 l' });
     hooks.after(D, M, C, ins, Rs);
   }
   // (a) 축에 수직인(수평) 판: 높이 u, 오른쪽 가장자리 e (왼쪽에서 들어옴). 모서리 화면 위치.
@@ -189,7 +190,7 @@
             perpSheet(D, m.sol, m.u, m.ru, Rs, 2 * Rs, Rs, ROSE, 0.14);
             const R0 = m.sol.d.R, h0 = m.sol.d.h1;
             D.line({ x: 0, y: 0, z: 0 }, { x: R0, y: 0, z: 0 }, AMB, 2.6, { dash: [5, 4] });
-            D.lab({ x: R0 / 2, y: 0, z: 0 }, `r = ${R0} cm`, AMB, { dy: 16 });
+            S3.rLabel(b, D, R0, `r = ${R0} cm`, AMB, 16);
             const bx = -R0 - 0.9;
             D.line({ x: bx, y: 0, z: 0 }, { x: bx, y: h0, z: 0 }, 'ink', 2.6);
             D.lab({ x: bx, y: h0 / 2, z: 0 }, `높이 ${h0} cm`, 'ink', { dx: -46, size: 15 });
@@ -327,8 +328,8 @@
           after: (D, m, c, ins, Rs) => {
             axSheet(D, sol, 0, Rs, 2 * Rs, Rs);
             D.line({ x: 0, y: 0, z: 0 }, { x: d.R, y: 0, z: 0 }, AMB, 2.6, { dash: [5, 4] });
-            D.lab({ x: d.R / 2, y: 0, z: 0 }, `r = ${d.R}`, AMB, { dy: 17, size: 16 });
-            if (M.pk === 'frus') { D.line({ x: 0, y: d.h1, z: 0 }, { x: d.r, y: d.h1, z: 0 }, AMB, 2.6, { dash: [5, 4] }); D.lab({ x: d.r / 2, y: d.h1, z: 0 }, `r = ${d.r}`, AMB, { dy: -16, size: 16 }); }
+            S3.rLabel(b, D, d.R, `r = ${d.R}`, AMB, 16);
+            if (M.pk === 'frus') { D.line({ x: 0, y: d.h1, z: 0 }, { x: d.r, y: d.h1, z: 0 }, AMB, 2.6, { dash: [5, 4] }); S3.rLabel(b, D, d.r, `r = ${d.r}`, AMB, 16, d.h1); }
             const bx = -sol.rmax - 1;
             D.line({ x: bx, y: 0, z: 0 }, { x: bx, y: d.h1, z: 0 }, AMB, 2.6);
             D.lab({ x: bx, y: d.h1 / 2, z: 0 }, `h = ${d.h1}`, AMB, { dx: -30, size: 16 });
@@ -397,17 +398,17 @@
         fit(b, { x0: -side * 0.62, x1: side * 0.62, y0: -side * 0.55, y1: side * 0.55 }, { l: 30, r: 30, t: 50, b: 30 });
         drawSection(b, C, ins, sol, {});
         const sf = secFrame(ins, sol);
-        T(b, sf.f((sol.ymin + sol.ymax) / 2, 0), '회전축 l', ROSE, { dx: 44, size: 16 });
+        T(b, sf.f(sol.ymax + 0.35, 0), '회전축 l', ROSE, { dy: sol.kind === 'frus' ? -50 : -14, size: 16 }); // 도형 위에 얹지 않고 축 윗끝에
         return;
       }
-      const D = S3.ctx(b, s), sol = M.sol, ext = b.W < 560 ? 0.4 + 0.25 * sol.rmax : 0.5 + 0.4 * sol.rmax;
+      const D = S3.ctx(b, s), sol = M.sol, ext = b.W < 560 ? 0.12 : 0.5 + 0.4 * sol.rmax, extTop = S3.axisExtTop(D, S3.topR(sol), ext);
       const sweep = 2 * PI * clamp(C.t, 0, 1), full = sweep >= 2 * PI - 1e-3;
       const side = Math.max(sol.h, 2 * sol.rmax) * 1.28;
-      const sb = S3.boxOf(D, sol, [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + ext, z: 0 })]);
+      const sb = S3.boxOf(D, sol, [D.P({ x: 0, y: sol.ymin - ext, z: 0 }), D.P({ x: 0, y: sol.ymax + extTop, z: 0 })]);
       const ins = placeInset(b, sb, side);
       if (!ins.fitted) fit(b, union(sb, ins.box), { t: 50, b: 40, l: 44, r: 44 });
       S3.drawRevolve(D, sol, full ? 2 * PI : sweep, {});
-      S3.drawAxis(D, sol.ymin, sol.ymax, { ext, label: '회전축 l' });
+      S3.drawAxis(D, sol.ymin, sol.ymax, { ext, extTop, label: '회전축 l' });
       if (!full && sweep > 0.02) D.g.path(S3.figAt(D, sol.poly, sweep), { close: true, fill: AMB, fillAlpha: 0.16, color: AMB, width: 2.2, dash: [6, 5] });
       D.g.path(S3.figAt(D, sol.poly, 0), { close: true, fill: AMB, fillAlpha: 0.32, color: AMB, width: C.review && C.step === 2 ? 5 : 3.4 });
       if (C.txt) {
@@ -517,7 +518,7 @@
       const D = S3.ctx(b, s);
       const frus = S3.solid('frus', { R, r: rs, h1: H - hs }), big = S3.solid('cone', { R, h1: H });
       const shift = g * (2 * R + 1.4);       // 작은 원뿔은 같은 높이에서 오른쪽(가로)으로 밀려 나갑니다.
-      const ext = b.W < 560 ? 0.4 + 0.25 * R : 0.5 + 0.4 * R;
+      const ext = b.W < 560 ? 0.3 + 0.1 * R : 0.5 + 0.4 * R;
       const pts = [D.P({ x: 0, y: -ext, z: 0 }), D.P({ x: 0, y: H + ext, z: 0 }), D.P({ x: shift + rs, y: H - hs, z: 0 })];
       if (prob) pts.push(D.P({ x: -R - 1.4, y: 0, z: 0 }), D.P({ x: R + 1.6, y: 0, z: 0 }));
       const sb = S3.boxOf(D, big, pts);
@@ -533,9 +534,9 @@
       S3.drawAxis(D, 0, H, { ext, label: '회전축 l' });
       if (C.txt) {
         D.line({ x: 0, y: 0, z: 0 }, { x: R, y: 0, z: 0 }, SKY, 2.4, { dash: [5, 4] });
-        D.lab({ x: R / 2, y: 0, z: 0 }, `R = ${fmtN(R)}`, SKY, { dy: 16, size: 16 });
+        S3.rLabel(b, D, R, `R = ${fmtN(R)}`, SKY, 16);
         Ds.line({ x: 0, y: H - hs, z: 0 }, { x: rs, y: H - hs, z: 0 }, AMB, 2.4, { dash: [5, 4] });
-        Ds.lab({ x: rs / 2, y: H - hs, z: 0 }, `r = ${fmtN(rs)}`, AMB, { dy: 16, size: 15 });
+        S3.rLabel(b, Ds, rs, `r = ${fmtN(rs)}`, AMB, 15, H - hs);
         if (prob) {
           const bx = -R - 1, bx2 = R + 1.2;
           D.line({ x: bx, y: 0, z: 0 }, { x: bx, y: H, z: 0 }, 'ink', 2.6);

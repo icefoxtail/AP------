@@ -16,7 +16,7 @@
 
   /* ------------------------------------------------------------------ 카메라 · 투영 */
   const camOf = (s) => {
-    const y = (s.soLay ? (s.soYawL == null ? -32 : s.soYawL) : (s.soYaw == null ? 0 : s.soYaw)) * DEG, p = (s.soPitch == null ? 22 : s.soPitch) * DEG;
+    const y = (s.soLay ? (s.soYawL == null ? -32 : s.soYawL) : (s.soYaw == null ? 0 : s.soYaw)) * DEG, p = (s.soPitch == null ? G.PITCH0 : s.soPitch) * DEG;
     return { cy: Math.cos(y), sy: Math.sin(y), cp: Math.cos(p), sp: Math.sin(p) };
   };
   function proj(cam, lay, p) {
@@ -82,9 +82,9 @@
     };
     return D;
   }
-  const ctx = (b, s, o = {}) => mk(camOf(s), o.lay || false, boardSink(b), o.k ? { k: o.k, ox: o.ox || 0, oy: o.oy || 0 } : null);
+  const ctx = (b, s, o = {}) => { const D = mk(camOf(s), o.lay || false, boardSink(b), o.k ? { k: o.k, ox: o.ox || 0, oy: o.oy || 0 } : null); D.b = b; return D; };
   const nullCtx = (D) => { const E = Object.create(D); E.g = { path() {}, text() {} }; return E; };
-  const svgCtx = (yaw = -25, pitch = 20, lay = false) => { const g = svgSink(); const D = mk(camOf({ soYaw: yaw, soPitch: pitch }), lay, g); D.svg = g; return D; };
+  const svgCtx = (yaw = -25, pitch = G.PITCH0, lay = false) => { const g = svgSink(); const D = mk(camOf({ soYaw: yaw, soPitch: pitch }), lay, g); D.svg = g; return D; };
 
   /* ------------------------------------------------------------------ 기하 */
   const ringP = (D, rho, y, a0 = 0, a1 = 2 * PI, n = 72) => {
@@ -193,10 +193,20 @@
   }
   const figAt = (D, poly, th) => poly.map((p) => D.P(D.pol(p[0], p[1], th)));
   function drawAxis(D, y0, y1, o = {}) {
-    const col = o.color || 'rose', e = o.ext == null ? 0.45 : o.ext;
-    D.line({ x: 0, y: y0 - e, z: 0 }, { x: 0, y: y1 + e, z: 0 }, col, 2.4, { dash: [8, 5] });
-    if (o.label !== false) D.lab({ x: 0, y: y1 + e, z: 0 }, o.label || '회전축 l', col, { dy: o.dy == null ? -15 : o.dy, dx: o.dx || 0, size: 15 });
+    const col = o.color || 'rose', e = o.ext == null ? 0.45 : o.ext, et = o.extTop == null ? e : o.extTop;
+    D.line({ x: 0, y: y0 - e, z: 0 }, { x: 0, y: y1 + et, z: 0 }, col, 2.4, { dash: [8, 5] });
+    if (o.label !== false) D.lab({ x: 0, y: y1 + et, z: 0 }, o.label || '회전축 l', col, { dy: o.dy == null ? -15 : o.dy, dx: o.dx || 0, size: 15 });
   }
+
+  // 회전축 이름표가 윗면 타원(뒤쪽 반)에 겹치지 않도록 윗쪽 축 연장 길이를 구합니다. rTop: 윗면의 반지름(꼭짓점이면 0)
+  const axisExtTop = (D, rTop, e) => Math.max(e, (rTop * D.cam.sp - 0.1) / Math.max(0.3, D.cam.cp));
+  // 밑면 반지름 이름표: 반지름 선분(밑면 중심→테두리) 아래, 밑면 타원의 앞쪽 호보다 더 아래에 둡니다(호·점선과 겹치지 않게).
+  // b: 무대(px 환산용), D: 3차원 틀(ctx), rr: 반지름, y: 밑면의 높이(기본 0)
+  function rLabel(b, D, rr, str, color, size, y = 0, top = false) {
+    const depth = Math.sqrt(0.75) * rr * Math.abs(D.cam.sp) * D.k * b.k;
+    D.lab({ x: rr / 2, y, z: 0 }, str, color, { dy: (top ? -1 : 1) * (depth + 11), size }); // top: 윗면이면 뒤쪽 호 위에
+  }
+  const topR = (sol) => (sol.sphere || !sol.bands.length ? 0 : sol.bands[sol.bands.length - 1].r1);
 
   /* ------------------------------------------------------------------ 회전체 정의 (모양 + 치수) */
   // d: R(반지름·아랫면 반지름) · r(윗면 반지름) · h1 · h2 (높이) · w, g(속 빈 원기둥: 도형의 너비, 축과의 거리)
@@ -265,7 +275,7 @@
     planeFig(g, poly, Object.assign({ axisText: 'l' }, o));
     return g.toSvg(o.w || 150, o.h || 130, 10);
   }
-  function solidSvg(sol, yaw = -25, pitch = 20, w = 150, h = 130) {
+  function solidSvg(sol, yaw = -25, pitch = G.PITCH0, w = 150, h = 130) {
     const D = svgCtx(yaw, pitch, false);
     drawSolid(D, sol, {});
     return D.svg.toSvg(w, h, 10);
@@ -313,5 +323,5 @@
     return hullPts;
   }
 
-  G.S3 = { camOf, proj, ctx, nullCtx, svgCtx, boardSink, svgSink, ringP, hull, tangents, splitRing, drawBands, drawSphere, drawHole, drawFan, figAt, drawAxis, solid, drawSolid, drawRevolve, boxOf, planeFig, planeSvg, solidSvg, polyhedron, drawPolyhedron, NAMES, centerD };
+  G.S3 = { camOf, proj, ctx, nullCtx, svgCtx, boardSink, svgSink, ringP, hull, tangents, splitRing, drawBands, drawSphere, drawHole, drawFan, figAt, drawAxis, axisExtTop, topR, rLabel, solid, drawSolid, drawRevolve, boxOf, planeFig, planeSvg, solidSvg, polyhedron, drawPolyhedron, NAMES, centerD };
 })();
