@@ -20,6 +20,9 @@
            [Polish] Light Mode Palette (미니멀리즘)
            ========================================= */
         :root {
+            /* 데스크톱 머리줄 높이(테두리 포함). 상단 막대(.desktop-topbar)와 서랍·레일 맨 위 칸(.drw-top-tools, 레일 ::before)이 같은 값을 써서 아래 선이 한 줄로 이어진다.
+               ui.js installDrawerSizeLock 도 같은 이름·같은 값을 선언한다. */
+            --ap-drawer-header-h: 58px;
             --primary: #1A5CFF;
             --primary-dark: #0040D6;
             --secondary: #6B7684;
@@ -301,7 +304,8 @@
             top: 0;
             left: 56px;
             right: 0;
-            height: 58px;
+            box-sizing: border-box;
+            height: var(--ap-drawer-header-h, 58px);
             z-index: 80;
             align-items: center;
             padding: 0 24px;
@@ -998,7 +1002,7 @@
     </style>
     <link rel="stylesheet" href="./css/apms-theme-override.css?v=20261102-perf-1">
     <link rel="stylesheet" href="./css/apms-ui-foundation.css">
-    <link rel="stylesheet" href="./css/sidebar-foundation.css?v=20261102-nav-n1-2">
+    <link rel="stylesheet" href="./css/sidebar-foundation.css?v=20261102-hdrline-1">
     <link id="dashboard-foundation-css" rel="stylesheet" href="./css/dashboard-foundation.css">
     <link rel="stylesheet" href="./css/classroom-foundation.css">
     <link rel="stylesheet" href="./css/apms-unified-modal.css">
@@ -1012,7 +1016,7 @@
     <link rel="stylesheet" href="./css/apms-clinic-print.css">
     <link rel="stylesheet" href="./css/ws-progress.css">
     <link rel="stylesheet" href="./css/ws-clinic.css?v=20261102-ws-clinic-1">
-    <link rel="stylesheet" href="./css/nav-quickfind.css?v=20261102-n3-1">
+    <link rel="stylesheet" href="./css/nav-quickfind.css?v=20261102-hdrline-1">
 </head>
 <body class="apms-warm-scope">
     <header>

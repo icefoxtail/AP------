@@ -297,22 +297,26 @@ input:checked + .slider:before {
     text-align:left !important;
 }
 #app-drawer.drw-expanded { width:260px !important; }
+/* 레일 머리줄: 상단 막대와 같은 높이(--ap-drawer-header-h)의 칸에 같은 border-bottom 으로 선을 긋는다.
+   (예전에는 top:57px 의 1px 배경 막대였다. 선 굵기·위치가 border 와 배경 막대에서 따로 반올림되어 PC 배율에 따라 상단 막대 선과 어긋날 수 있었다.) */
 #app-drawer:not(.drw-expanded)::before {
     content:"" !important;
     position:absolute !important;
-    top:57px !important;
+    top:0 !important;
     left:0 !important;
     width:56px !important;
-    height:1px !important;
-    background:var(--border) !important;
+    height:var(--ap-drawer-header-h, 58px) !important;
+    box-sizing:border-box !important;
+    border-bottom:1px solid var(--border) !important;
+    background:transparent !important;
     pointer-events:none !important;
     z-index:1 !important;
 }
 #app-drawer .drw-top-tools {
     position:relative !important;
     width:100% !important;
-    height:58px !important;
-    min-height:58px !important;
+    height:var(--ap-drawer-header-h, 58px) !important;
+    min-height:var(--ap-drawer-header-h, 58px) !important;
     box-sizing:border-box !important;
     padding:0 !important;
     border-bottom:1px solid var(--border) !important;
@@ -593,6 +597,10 @@ body.dark #app-drawer .drw-item:focus-visible {
     }
     #app-drawer:not(.drw-expanded) .drw-rail-toggle {
         background: transparent !important;
+    }
+    /* 펼친 서랍은 둘레 1px 테두리(visual layer)가 있어 머리줄이 상단 막대보다 1px 아래로 밀렸다. 위쪽 테두리만 없앤다. */
+    #app-drawer.drw-expanded {
+        border-top: 0 !important;
     }
 }
 
