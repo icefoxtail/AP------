@@ -752,8 +752,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "wide": false,
     "tags": ["도형"],
-    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q15-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽: 중심 O₁(2,4)인 반지름 3의 원과 중심 O₂인 반지름 1의 원, 두 원 위의 가장 가까운 두 점 P, Q와 반지름 3. 오른쪽: 중심선을 따로 펴서 d=5(O₂O₁), PQ=1, 가장 먼 두 점 사이 9를 치수선으로 나타낸 그림.",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q15-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽: 중심 O₁(2,4)인 반지름 3의 원과 중심 O₂인 반지름 1의 원, 두 원 위의 가장 가까운 두 점 P, Q와 반지름 3. 오른쪽: 중심선을 따로 펴서 점 이름은 중심선 오른쪽에 두고, 왼쪽 치수선으로 PQ=1, 중심거리 O₂O₁=5(d), 가장 먼 두 점 사이 9를 나타낸 그림.",
     "solutionImageCaption": "두 원의 반지름은 3과 1이고 중심거리 d=5이므로 PQ의 최솟값은 1, 최댓값 M=9이다. 따라서 a+M=11이다. 정답은 ③이다.",
     "solutionImageSize": "medium"
   },
