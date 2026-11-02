@@ -1,6 +1,6 @@
-# APMS UI 업그레이드 계획 v0.2 (조사 + 모달 통합 설계)
+# APMS UI 업그레이드 계획 v0.3 (조사 + 모달 통합 설계 + 사용자 결정 반영)
 
-작성 2026-11-02. **변경 이력:** v0.1 조사(화면 현황·모달 현황·화면 확인 방법) → **v0.2: 3절을 "모달 통합" 기준으로 다시 씀(작업 화면 패턴, 모달 등급 4단계, 통합 묶음 8개, PR 순서). 2절에 코드 재확인 정정을 더하고 98종 배정표는 부록으로 분리**(`docs/plans/2026-11-02-apms-modal-consolidation-appendix.md`). 1·4절은 v0.1 그대로.
+작성 2026-11-02. **변경 이력:** v0.3(2026-11-02) 사용자 결정 반영 — 3.0 결정 요약, 3.5 진행 순서 교체, 3.7 묶음별 담당 파일 경계, 3.8 기기 매트릭스, 공통 부품 구현(기반 작업) 결과 / v0.2 3절을 모달 통합 기준으로 / v0.1 조사(화면 현황·모달 현황·화면 확인 방법) → **v0.2: 3절을 "모달 통합" 기준으로 다시 씀(작업 화면 패턴, 모달 등급 4단계, 통합 묶음 8개, PR 순서). 2절에 코드 재확인 정정을 더하고 98종 배정표는 부록으로 분리**(`docs/plans/2026-11-02-apms-modal-consolidation-appendix.md`). 1·4절은 v0.1 그대로.
 기준 문서: `apmath/DESIGN.md`(APMS와 학생 포털을 한 기준으로 묶은 것), `PRODUCT.md`(원칙 1: 학생이 쓰는 화면 최우선, WCAG 2.2 AA).
 이 문서는 **조사·설계 결과**다. 코드는 바꾸지 않았다. "새 체계"는 웜 테마(`apms-warm-theme.scope.css`) + 통합 모달(`apms-unified-modal.css`) + 공통 클래스(`apms-*`·`.ap-*`)를 뜻한다. 웜 테마 색은 `<body class="apms-warm-scope">`로 앱 전체에 자동 적용되므로, 아래 "적용 정도"는 색이 아니라 **클래스로 그려졌는가**(JS 안 `apms-` 클래스 수 대 인라인 `style="` 수, 전용 CSS 유무)로 가른 1차 판정이다. 화면을 눈으로 보고 확정한 것이 아니다.
 
@@ -56,13 +56,24 @@
 3. **모달 연쇄에는 뒤로 가기가 없다.** 단계 스택(`showModalStep`)을 쓰는 곳은 일정·시간표·학생 상세뿐이고, 나머지 연쇄는 `showModal`로 내용을 갈아 끼운다. 취소는 이전 모달이 아니라 반 화면/대시보드로 나간다(`ui.js:539-590`).
 4. **`loadData()`는 `GET initial-data` 1회로 전체 데이터(40여 개 배열)를 새로 받는다**(`core.js:808-870`). `refreshDataOnly()`도 같은 요청이다(`:895`). "저장 뒤 재조회"는 이 전체 요청을 뜻한다.
 
-## 3. 모달 통합 설계와 PR 순서 (제안, 승인 전)
+## 3. 모달 통합 설계와 PR 순서 (v0.3: 사용자 결정 반영, 3.0 참고)
 
 사용자 요청(2026-11-02): "모달 자체를 통합하는 방향도 생각해야 될 것 같아. 지금 보면 모달들이 크기도 다 제각각이고 형태도 다 제각각인데 그것들을 통합해서, 예를 들면 이번에 진도관리 통합하면서 거기다가 교재까지 같이 붙였잖아. 그런 통합 시너지가 나는 애들을 한꺼번에 묶어서 어떻게 관리·정리할지 고민해야 될 것 같아."
 
 v0.1은 모달을 한 개씩 꾸미는 PR(A~G)이었다. v0.2는 방향을 바꾼다. **① 크기·모양을 4등급으로 정하고(3.2), ② 같은 대상을 앞뒤로 다루는 모달은 진도 모달 같은 "작업 화면" 하나로 묶고(3.1·3.3), ③ 묶을 이유가 없는 나머지는 등급만 맞춘다(3.4).** 98종 전체의 배정은 부록(`docs/plans/2026-11-02-apms-modal-consolidation-appendix.md`)에 있다. 화면 스타일은 `apmath/DESIGN.md`를 따른다. 이 절은 정보 구조와 작업 흐름만 다룬다(impeccable `shape`·`layout`·`distill`의 기준: 주 작업 하나, 관련 있는 것은 가까이, 단계 줄이기, 모달 연쇄 대신 같은 자리 처리).
 
 **결과 규모(부록 3절 집계).** 98종 중 52종이 8개 묶음에 속하고 46종은 등급만 맞춘다. 정리 후보(호출처 없음·덮어쓰임, 의심) 17종은 묶음 안 8 + 밖 9이다. 정리 17 + 흡수 33이 실행되면 모달 화면은 **약 98 → 48**이 된다. 선생님이 휴대폰에서도 겪는 모달 연쇄(뒤로 가기 없는 갈아 끼움)가 묶음 8곳에서 사라진다.
+
+### 3.0 사용자 결정 요약 (2026-11-02) — 제안이 아니라 결정
+
+사용자 원문 요지: "자주 쓰는 건 진도·교재, 클리닉, 반·학생 관리. 원내평가·OMR도 지금 하나로(반 화면 안 OMR은 거의 안 씀). 숙제는 거의 안 씀. 학생은 휴대폰으로 학생 포털, 선생님은 휴대폰·태블릿(갤럭시 탭)으로 APMS를 관리하고, 원장은 PC로 한다. 모바일·태블릿·PC 다 잘 봐줘야 한다. 설계대로 고쳐 보고 확인하고 다시 고치자. 진행." 메인 추천안 전부 승인:
+1. 학생 포털·숙제·플래너는 APMS 웜 체계(색·버튼·모달)로 맞춘다. 학생 화면은 휴대폰 기준으로 글자·누르는 영역을 더 크게(실제 맞추기는 이후 작업).
+2. 카드·모달 모서리 16px, 입력·버튼 8px. `!important` 6px 규칙은 걷어낸다. 3. 의미색을 글자로 쓰면 AA 4.5:1 통과 값. 4. 학생이 읽는 글자 최소 12px, 글자 크기 변수 한 벌, APMS·플래너에 Pretendard. 5. 입력칸 테두리·포커스 고리 UI 대비 3:1 이상. (2~5는 기반 작업에서 구현함. `apmath/DESIGN.md` "결정 기록".)
+6. 화면 확인은 로컬 하니스. 서버·인증 코드는 바꾸지 않고, 저장소에는 `tests/` 아래 테스트 전용 파일로만 둔다(`tests/apms-foundation-browser.cjs`).
+7. 모달 4등급(C 확인 / F 폼 / W 작업 화면(+단열) / P 전체 화면) 확정, W 기본 너비 1180px. 저장 버튼은 모든 모달에서 하단 오른쪽 고정 액션줄. Esc로 닫기 추가(입력 중이거나 저장 안 한 변경이 있으면 "닫을까요?" 확인). 바깥 클릭은 입력·변경이 있으면 닫지 않는다. 휴대폰 W는 목록 위·상세 아래로 쌓기(학생 상세만 이후 드릴다운 검토). 정리 후보 17종 삭제는 별도 PR(이번 범위 밖, "의심" 3종은 재확인). 통합 묶음 8개 승인. 교재 관리는 진도 작업 화면의 교재 관리 모드로 일원화. 클리닉 2버튼 메뉴·반 고르기 모달은 탭으로.
+8. 진행 순서와 9. 대상 기기는 3.5, 3.8.
+
+**공통 부품 구현 결과(기반 작업).** 클래스 `apms-modal` + `apms-modal--confirm|form|workspace|workspace-single|panel`, 하단 액션줄 `apms-modal__actions`, 작업 화면 부품 `apms-workspace(__bar|__list|__detail|__item)`는 `apmath/css/apms-unified-modal.css`에, Esc·바깥 클릭·dirty는 `apmath/js/ui.js` "모달 닫기 정책" 구역에 있다. 사용법은 `apmath/DESIGN.md` "모달 등급 — 4등급과 공통 부품". 진도 모달은 아직 옮기지 않았다(M8).
 
 ### 3.1 본보기 분석: 진도 모달 = "통합 작업 화면" 패턴
 
@@ -86,9 +97,9 @@ v0.1은 모달을 한 개씩 꾸미는 PR(A~G)이었다. v0.2는 방향을 바�
 
 **패턴 정의 (제안): 통합 작업 화면.** ① 한 껍데기, 대상 하나 + 전환 탭, ② 목록/상세 한 쌍(선택은 서버 호출 없이), ③ 추가·수정·관리는 인라인 폼·행 펼침, ④ 초안은 화면 상태에 두고 저장 위치는 등급 규칙대로, ⑤ 모달 연쇄 금지·미저장 변경 확인, ⑥ 늦은 응답 가드, ⑦ 모달 먼저 열고 자리에서 로딩, ⑧ **저장 응답으로 로컬 상태를 갱신하고 전체 `loadData()`·모달 재오픈은 피한다**(응답에 필요한 행이 없어 불가능한 곳은 그 사실을 PR에 적는다). 구현은 공통 부품(`apms-workspace`, `-list`, `-detail`, `-inline-form`)으로 한 번 만들고 묶음들이 재사용한다(PR-1에서 도입).
 
-### 3.2 모달 크기·형태 등급 4단계
+### 3.2 모달 크기·형태 등급 4단계 (확정, 구현은 기반 작업)
 
-값은 현재 CSS이고(출처는 부록 1절), "제안"은 지금 없는 동작이다.
+아래 표는 v0.2 제안이고 **3.0의 결정으로 확정**됐다. 구현된 값(휴대폰 W·P는 화면 전체, W는 레일을 피해 ≥901px에서 `100vw - 144px`, 태블릿 ≤900px에서 목록 열 `minmax(220px, 0.4fr)` 등)은 `apmath/DESIGN.md`의 표가 기준이다. 값은 현재 CSS이고(출처는 부록 1절), "제안"은 구현 전 표현이다.
 
 | 등급 | 데스크톱 | 최대 높이 | 휴대폰(≤600px) | 닫기 | 저장 위치 | 현재 모달 수 |
 |---|---|---|---|---|---|---|
@@ -189,34 +200,69 @@ v0.1은 모달을 한 개씩 꾸미는 PR(A~G)이었다. v0.2는 방향을 바�
 | 교재 오답(`study-material-wrong.js:531`) | P | 이미 탭형 독립 도구(입력 27개). 휴대폰에서 표 최소 폭 520px(`:99`)이 문제라 P 등급 정렬만 |
 | 정리 후보 9종(묶음 밖, 위 분류와 겹침) | — | 부록 4절. 사용자 승인 뒤 한 PR로 삭제하고 함수 표면 fixture 갱신 |
 
-### 3.5 진행 순서 (PR)
+### 3.5 진행 순서 (PR) — v0.3, 사용자 결정 2026-11-02
 
-기준: 선생님이 자주 쓰고(M1·M3) → 학생 화면에 값이 닿고(M3·M5·M7) → 위험이 낮은 것부터. 매일 쓰고 테스트가 많은 화면(M6·M8)은 부품이 검증된 뒤에 한다. 모든 PR은 서버·인증 코드를 건드리지 않는다.
+기준: 선생님이 자주 쓰는 것(진도·교재, 클리닉, 반·학생 관리, 원내평가·OMR)을 먼저 하고, 쓰지 않는 숙제는 뒤로 미룬다. 모든 PR은 서버·인증 코드를 건드리지 않는다. 각 PR은 3.8의 다섯 크기에서 화면을 확인한다.
 
 | 순서 | PR | 내용 | 선행 | 위험 |
 |---|---|---|---|---|
-| 선결 | 사용자 결정 | 3.2 등급 확정, 저장 버튼 위치, Esc·바깥 클릭, 정리 후보 17 삭제 승인, 묶음·순서 승인(5절). v0.1 선결(DESIGN.md 미정 2·3·4·6)과 학생 포털 접근성 수정은 별도 트랙 | — | — |
-| 1 | **M1 숙제** + 공통 부품 | `apms-workspace*` CSS·JS 부품(목록/상세/인라인 폼/대상 전환) 도입, 등급 클래스(`apms-modal--confirm/form/workspace/panel`, 이름은 제안), 숙제 5종 통합. 반 화면 6기능 진입(`openClassroomFeature`)은 그대로 | 선결 | 낮음~중간 |
-| 2 | **M2 선생님 계정** | 목록+인라인 폼 단열(W 단열) 검증. 원장만 쓰고 위험 낮음. 서버·인증 코드 없이 UI만 | 1 | 낮음 |
-| 3 | **M3 원내평가·OMR** | 시험 이력/상세/OMR 입력 패널. payload 불변 테스트 필수 | 1 | 중간 |
-| 4 | **M4 반·학생 관리** | 4a 반 관리 → 4b 학생 명단(재등원·신규). `apmath-modal-design-family.test.js` 수정 동반 | 1, 저장 위치 결정 | 중간 |
-| 5 | **M5 플래너** | 1080px 문자열 테스트 정리, 피드백 인라인 | 1 | 중간 |
-| 6 | **M7 클리닉 1단계** | 메뉴·반 고르기 제거(탭), 출력 센터 로딩 먼저 열기. 2단계(유사문항 2열)는 별 PR | 1 | 중간(인쇄 계약) |
-| 7 | **M6 학생 상세** | 보호자 구역 → 상담 탭 → 이력 순으로 3개 PR로 쪼갠다 | 1~4 | **높음** |
-| 8 | **M8 진도·교재** | 교재 구현 한 벌 + 로컬 갱신, 전역 교재 관리 W, 진도 모달을 공통 부품 이름으로 이전 | 1~7 | 높음(매일 쓰는 화면) |
-| 병행 | **등급 정렬 5개 PR** | 1번 이후 언제든: (a) 묶음 밖 확인·선택 C 9종 (b) 원장 읽기 목록 F (c) 폼 F: 학생 등록 외 입력 폼 라벨·44px (d) 일정·시간표 (e) 일지·메모·보고. 각 PR 모달 3~5개 | 1 | 낮음 |
-| 병행 | **정리 후보 삭제 1 PR** | 사용자 승인 뒤. 숨김 고정 테스트 2건·EIE 테스트 1건 수정 동반 | 선결 | 낮음 |
+| 0 (완료) | **기반** | 토큰(모서리·의미색 AA·글자 크기 한 벌·Pretendard·입력 테두리·포커스), 모달 공통 부품(등급·액션줄·Esc·바깥 클릭·dirty), 통합 양식 4종에 F 등급 부착, 하니스, 문서 | 결정 | 낮음 |
+| 1 (동시 4묶음) | **M8 진도·교재** | 교재 구현 한 벌 + 로컬 갱신, 전역 교재 관리를 진도 작업 화면의 "교재 관리" 모드로 일원화(옛 교재 관리 3종 정리 후보), 진도 모달을 공통 부품 이름으로 이전 | 0 | 높음(매일 쓰는 화면) |
+| 1 | **M7 클리닉** | 메뉴·반 고르기 제거(탭), 출력 센터 로딩 먼저 열기, 유사문항 2열은 별 PR | 0 | 중간(인쇄 계약) |
+| 1 | **M4+M6 반·학생 관리** | 반 관리(4a) → 학생 명단(4b) → 학생 상세(M6)를 보호자 구역 → 상담 탭 → 이력 순으로 쪼갠다 | 0 | 중간~높음 |
+| 1 | **M3 원내평가·OMR** | 시험 이력/상세/OMR 입력 패널. 반 화면 안 OMR 진입(거의 안 씀)을 원내평가 쪽으로 합친다. payload 불변 테스트 필수 | 0 | 중간 |
+| 2 | **M2 선생님 계정** | 목록+인라인 폼 단열 W | 1 | 낮음 |
+| 2 | **M5 플래너 확인** | 1080px 문자열 테스트 정리, 피드백 인라인 | 1 | 중간 |
+| 2 | **M1 숙제** | 거의 안 쓴다. 숙제 5종 통합 | 1 | 낮음 |
+| 병행 | **등급 정렬 5개 PR** | 묶음 밖 46종: (a) 확인·선택 C 9종 (b) 원장 읽기 목록 F (c) 폼 F 라벨·44px (d) 일정·시간표 (e) 일지·메모·보고. 각 PR 모달 3~5개 | 0 | 낮음 |
+| 병행 | **정리 후보 삭제 1 PR** | 확정된 후보. "의심" 3종(숙제 링크·QR 2종, EIE 보호자 관리 1종)은 재확인 뒤. 숨김 고정 테스트 2건·EIE 테스트 1건 수정 동반 | 0 | 낮음 |
+| 별도 트랙 | **학생 포털·숙제·플래너 웜 체계 정렬** | 색·버튼·모달 맞추기, 휴대폰 기준 글자·누르는 영역 확대, 11px 9곳과 placeholder 대비 등 접근성. `apmath/student/`는 학생 포털 작업자가 담당 | 0 | 중간 |
 
-v0.1의 PR-A~G는 이 표로 대체된다(학생 등록·재등원 → M4, 출결·숙제 → M1, 성적 입력 → M3, 일지·메모 → 등급 정렬 (e), 교재·반 관리 폼 → M4·M8, 원장 계정 → M2, 확인형 → 등급 정렬 (a)).
+v0.1의 PR-A~G는 v0.2에서, v0.2의 PR 1~8 순서는 이 표로 대체된다(M1 숙제는 공통 부품 도입 PR에서 빠져 2단계로 이동).
 
 ### 3.6 PR 공통 완료 기준
 
 기준은 "학생·선생님이 실제 화면(PC·휴대폰)에서 막히지 않는가"다. 수치상 완벽을 요구하지 않는다.
 1. **기능 유지.** 3.3의 묶음별 관련 테스트가 통과한다. 입력 ID·저장 함수·API 경로·돌아갈 화면은 그대로다. 옛 열기 함수(`openHomework…`, `openAdminCreateTeacherModal` 등)는 호출처가 있는 한 새 화면을 여는 얇은 래퍼로 남긴다(`apmath-onclick-defined.test.js`·`apmath-global-surface.test.js` fixture 확인, 이름을 지울 때만 `--update`).
 2. **결함 조건 테스트(새로).** 묶음마다 개수가 아니라 결함을 검사한다: 작업 화면 구간에 `showModalStep`·`showModal` 갈아 끼움 0, 저장 성공 경로에 `closeModal(true)` 뒤 같은 화면 재오픈 0, 라벨 없는 입력 0, 저장 payload 필드 목록 불변(학생에게 닿는 M1·M3·M5·M7).
-3. **화면 확인.** 4절 하니스 방식(`file://`로 `apmath/index.html`을 열고 페이지 안에서 `state.db`와 `api.get/post` 응답을 채운 뒤 모달 함수 호출, 로그인 오버레이 숨김은 테스트 안에서만, 서버·인증 코드 변경 금지)으로 PC 1280×800과 휴대폰 390×844 스크린샷. 상태는 빈 데이터 / 보통 / 많음(학생 30명·숙제 10개·OMR 문항 50개) 3종. 본다: 가로 넘침 없음, 저장·추가 버튼이 스크롤 없이 또는 고정 막대로 닿음, 가려지는 내용 없음, 신규 11px 이하 글자 없음, 터치 요소 44px, 다크 모드 1장.
+3. **화면 확인.** 하니스는 `tests/apms-foundation-browser.cjs`(정적 서버로 저장소를 열고 `workers.dev` API 요청을 Playwright가 가로채 가짜 응답을 준다. 테스트용 세션을 localStorage에 넣으므로 로그인 오버레이를 숨길 필요가 없다. 서버·인증 코드 변경 없음). 3.8의 다섯 크기 × 라이트·다크에서 스크린샷을 찍어 직접 본다. 상태는 빈 데이터 / 보통 / 많음(학생 30명·숙제 10개·OMR 문항 50개) 3종. 본다: 가로 넘침 없음, 저장·추가 버튼이 스크롤 없이 또는 고정 액션줄로 닿음, 가려지는 내용 없음, 신규 12px 미만 글자 없음, 터치 요소 44px. 기반 작업에서 처음 돌린 결과는 3.8에 있다.
 4. **학생 화면 불변.** diff에 `apmath/student/`·`apmath/homework/`·`apmath/planner/`·`apmath/worker-backup/`가 없다.
 5. **검수 비용.** 검수자는 바뀐 부분과 관련 테스트만 다시 돌리고, `node tools/run-tests.js` 전체는 병합 직전 1회(`CLAUDE.md`).
+
+### 3.7 묶음별 담당 파일 경계 (동시 작업 충돌 방지)
+
+1단계는 M8·M7·M4+M6·M3 네 묶음이 **동시에** 같은 저장소를 고친다. 아래 경계를 벗어나지 않으면 병합 충돌과 서로의 테스트 깨짐을 피할 수 있다. 경계 밖에서 필요한 것이 생기면 고치지 말고 보고한다(메인이 조율).
+
+**공유 파일 규칙.**
+1. **공통 부품은 읽기만 한다**: `apmath/js/ui.js`(모달 닫기 정책 구역 등), `apmath/css/apms-unified-modal.css`의 `.apms-modal*`·`.apms-workspace*`, `apms-ui-foundation.css`, `apms-warm-theme.scope.css`, `apmath/index.html`의 모달 껍데기·`:root`, `apmath/DESIGN.md` 사용법. 새 클래스나 동작이 필요하면 새로 만들지 말고 보고한다.
+2. **새 코드는 묶음 전용 새 파일에** 둔다(접두사 `ws-progress-`·`ws-clinic-`·`ws-student-`·`ws-exam-`, js와 css 모두). 이 파일을 불러오는 한 줄은 `apmath/index.html`에서 **자기 앵커 바로 다음 줄**에만 추가한다: M3는 `js/qr-omr.js`, M4+M6는 `js/student-edit.js`, M7은 `js/clinic-print.js`, M8은 `js/textbook.js`. CSS `<link>`도 같은 방식으로 `apms-unified-modal.css` 다음 줄 하나만 쓰되 같은 줄을 둘이 고치면 병합 때 메인이 푼다(한 줄 추가라 쉽다).
+3. **큰 공유 파일**(`classroom.js`, `classroom-planner.js`, `core.js`, `dashboard.js`, `apms-theme-override.css`)은 자기 함수·구간 밖을 고치지 않는다. 함수 이동·들여쓰기 정리·전체 포맷 금지. 옛 열기 함수는 지우지 말고 새 화면을 여는 얇은 래퍼로 남긴다(`apmath-onclick-defined.test.js`, `apmath-global-surface.test.js`).
+4. **함수 표면 fixture**(`tests/fixtures/apmath-surface-{student,classroom,dashboard,report}.json`)는 여러 묶음이 같은 파일을 바꾼다. 각 PR은 자기가 바꾼 쪽만 `node tests/apmath-global-surface.test.js --update`로 갱신하고, 병합에서 충돌하면 손으로 합치지 말고 병합 뒤 다시 생성한다(메인).
+5. **캐시 버전**: 고친 JS에 `?v=`가 있으면 올린다(`apmath/index.html`의 해당 `<script>` 줄 안에서만).
+6. 테스트: 다른 묶음의 테스트 기대를 고쳐야 하면 고치지 말고 보고한다. 자기 묶음 테스트만 바꾼다. 모달 기반 테스트(`apms-modal-foundation`, `apmath-modal-design-family`, `apmath-dark-mode-modals`)는 통과 상태를 유지한다.
+
+| 묶음 | 고칠 수 있는 파일·함수 | 고치지 않는 것(다른 묶음) |
+|---|---|---|
+| **M8 진도·교재** | `classroom.js`의 진도 구간 `_getClassGradeKey`(약 2077행)부터 진도 모달 끝까지(`getClassProgress*`·`syncClassProgress*`·`openClassRecordModal`·`saveClassRecord`·`renderClassProgress*`·`ClassDailyRecord*`), `textbook.js` 전체, `ui.js`의 서랍 "교재관리" 진입 한 줄(`openGlobalTextbookManage` 호출), `apms-theme-override.css`의 진도 구간(`/* Classroom progress modal` 약 1029행부터 파일 끝, `.ap-class-progress-*`·`.ap-global-textbook-*`), 새 파일 `ws-progress-*` | 진도 저장 3종 API 호출 순서·payload, 학부모 리포트·보고서가 읽는 진도 값 |
+| **M7 클리닉** | `clinic-print.js`의 `openClinicCenter`·`openClinicClassPicker`·`openClinicPrintCenter`(껍데기·진입만), `core.js`의 `openWeakUnitDetail`·`openClinicSimilarForClass`·`openClinicBasketByKey`·`openSimilarQuestionRecommendations`(`renderWeakUnitSummary`는 M3·M6가 호출하므로 시그니처 유지), `clinic-recommendations.js`·`clinic-repeat.js`·`clinic-assessment.js`(필요 시), `apms-clinic-print.css`, 새 파일 `ws-clinic-*` | `clinicPrint*` 출제·인쇄 로직, 출제 payload·배정(`clinicPrintRefreshClassAssignments`) |
+| **M4+M6 반·학생 관리** | `management.js`의 `openClassManageModal`·`openAddClassModal`·`openEditClassModal`·`handleAddClass`·`handleEditClass`·`handleDeleteClass`·`openAddressBook`·`openGlobalPinManagement`(기반 작업에서 반 추가·수정은 F 등급 + 하단 액션줄로 바뀌었다), `student-edit.js`, `student.js`(`renderStudentDetailShell`·하위 10종·탭), `student-export.js`, `dashboard-admin.js`의 `renderWithdrawalReportModal`, `classroom.js`의 `openClassroomManagementAction`·`openClassroomStudentMovePicker`·`renderClassroomManagementToolbar`·`openStudentActionSheetV4`, `apms-theme-override.css`의 학생 구간(`/* Student management contrast patch` 약 737행 부근의 `.apms-student-*`·`.std-*`), 새 파일 `ws-student-*` | 상담 저장 중복 방지 `clientRequestId`·AI 요약 상태 초기화 의미, 수납(`renderBillingAccountingFoundationModal`, 등급 정렬 PR), 독립 화면 `wangji-student-management.*` |
+| **M3 원내평가·OMR** | `classroom-planner.js`의 `openExamGradeView`·`openExamDetail`(시험 이력·상세, 약 285~665행. `copyPlannerStudentLink`(666행) 이후 플래너 함수는 M5), `qr-omr.js`의 `openOMR`·`openQrSubmitStatus`·`openQrGenerator`(F 등급 유지, 입력 ID 고정), `dashboard.js`의 `openGlobalExamGradeView`, `ui.js`의 `openExamScoreMenu` 한 함수(호출처 없음), `classroom.js`의 반 화면 도구 줄 `renderClassTopBarV4B`·`openClassroomFeature`·`renderClassToolBarV4B` 구간(약 1709~1772행, **M3 단독**: 반 화면 OMR 진입 정리), `classroom-foundation.css`의 원내평가 구간, 새 파일 `ws-exam-*` | `exam-sessions/new` payload와 `session_id`·`assignment_id`·`archive_file` 필드(학생 포털이 읽음), 일괄 OMR `bulk-omr`, 플래너 함수 |
+
+2단계(M2·M5·M1)는 1단계가 병합된 뒤 시작하므로 위 경계와 겹치지 않는다. 숙제(M1)의 `classroom.js` 구간(약 837~1165행)과 플래너(M5)의 `classroom-planner.js` 666행 이후, 계정(M2)의 `dashboard-admin.js` 2450행 이후가 각자의 담당이다.
+
+### 3.8 기기 매트릭스 (결정 2026-11-02)
+
+학생은 휴대폰으로 학생 포털을, 선생님은 휴대폰·태블릿(갤럭시 탭)으로 APMS를, 원장은 PC로 쓴다. 모든 화면은 아래 다섯 크기에서 확인한다(라이트·다크 둘 다).
+
+| 크기 | 기기 | 주 사용자 | 모달 동작(구현됨) | 특히 볼 것 |
+|---|---|---|---|---|
+| 390×844 | 휴대폰 | 학생, 선생님 | C·F 아래 시트, W·P 화면 전체, 목록 위·상세 아래, 액션줄 버튼 가로로 나눠 채움 | 가로 넘침, 입력 글자 16px, 하단 액션줄이 안전영역 위, 주소창 때문에 잘리지 않음(`dvh`) |
+| 800×1280 | 태블릿 세로 | 선생님 | 601px 이상이라 중앙 대화상자, W는 두 열 유지(목록 열 좁힘), P는 10px 안쪽 | 두 열 W에서 목록·상세 폭, 터치 영역 44px |
+| 1280×800 | 태블릿 가로 | 선생님 | 레일 사이드바(56px)가 있다. W 폭 `100vw - 144px` | 레일이 모달 왼쪽을 가리지 않음, 세로가 낮아 W 높이 `100dvh - 96px` |
+| 1440×900 | PC | 원장, 선생님 | W 1180px | 넓은 화면에서 본문이 퍼지지 않음 |
+| 1280×800 | PC(작은 노트북) | 원장, 선생님 | 태블릿 가로와 같은 폭 | 위와 같음 |
+
+**기반 작업에서 처음 돌린 결과.** 5크기 × 라이트·다크에서 선생님·원장 대시보드, 반 화면, C(기존 클리닉 메뉴 + 새 C), F(반 추가·수정, 숙제 등록, QR), W(진도 모달 현재 모습 + 새 W 샘플), P 샘플, 학생 포털 로그인을 찍었다. 모두 가로 넘침·모달 잘림 0건. 스크린샷은 저장소에 두지 않았다(작업 폴더).
 
 ## 4. 화면 확인 방법 조사 (사실만, 새 장치 제안 없음)
 
@@ -229,6 +275,8 @@ APMS(`apmath/index.html`)와 학생 포털은 로그인이 필요하다. 이미 
 5. **로컬 워커.** `tests/archive2-worker-runtime.mjs`가 Miniflare로 실제 워커 코드를 메모리 D1과 함께 띄운다(아카이브 라우트 테스트). `apmath/worker-backup/worker/`에 `wrangler.jsonc`·`schema.sql`, `apmath/worker-backup/seed.sql`이 있다. APMS 화면 스크린샷을 위한 로컬 실행 절차는 문서에서 찾지 못했다.
 6. **이번 조사에서 직접 해 본 것(기존 코드만 사용).** `file://`로 `apmath/index.html`을 Chrome(Playwright)에서 열면 로그인 화면이 뜨고 CSS·전역 함수가 모두 로드된다. 페이지 안에서 `state.db`에 가짜 반·학생을 채우고 `openAddClassModal()`처럼 열기 함수를 직접 호출하면 모달이 그려진다(32건 중 29건 성공, 3건은 함수명·인수·`fetch` 실패로 못 엶). 로그인 오버레이(`.ap-login-fullscreen`, `core.js:606`, z-index 3000)가 모달 위를 덮어서 하니스에서 `display:none` 스타일을 주입했다. 서버·인증 코드는 건드리지 않았고 실데이터도 없다. 이것을 "로그인 우회"로 볼지는 메인이 판단한다. 한계: 대시보드·반 화면 같은 전체 화면은 `renderDashboard()` 등에 필요한 `state.db` 모양을 채워야 하고 시도하지 않았다.
 
+**v0.3 정정.** 6번의 "로그인 오버레이를 숨기는" 방식 대신, 기반 작업에서 만든 `tests/apms-foundation-browser.cjs`가 쓰는 방식(테스트용 세션 + `workers.dev` 요청 가로채기)이 오버레이를 건드리지 않고 대시보드·반 화면까지 그린다. 앞으로는 이것을 쓴다.
+
 **결론.** 인증을 건드리지 않고 쓸 수 있는 기존 방식은 (3) 정적 조각 렌더, (2) 학생 포털 목업 픽스처, 그리고 6번의 하니스 방식이다. 선생님 미리보기는 실제 교사 로그인이 필요하다.
 
 ## 5. 이 계획에서 정하지 않은 것 (사용자 결정)
@@ -237,7 +285,9 @@ APMS(`apmath/index.html`)와 학생 포털은 로그인이 필요하다. 이미 
 - 선결 결정 4건(DESIGN.md 미정 2·3·4·6)과, 학생 포털 접근성 수정(v0.1 0번: placeholder 대비 2.30, 상태색 글자, 플래너 다크 버튼, 11px 9곳)을 모양 통일 결정 전에 먼저 해도 되는지. 이 수정은 모달 통합과 별도 트랙이고 학생이 직접 보는 화면이라 가장 먼저다.
 - 스크린샷 검수에 4절의 하니스 방식을 써도 되는지(로그인 오버레이 숨김은 테스트 안에서만, 서버·인증 코드 변경 없음).
 
-**v0.2 새로 필요한 결정** (DESIGN.md 미정 11~16과 같은 내용)
+**v0.3: 아래 v0.2 결정 8건은 2026-11-02에 모두 승인됐다(3.0).** 남은 결정은 `apmath/DESIGN.md`의 "미정"(North Star 이름, 옛 토큰 정리 범위, 독립 화면 포함, 정리 후보 "의심" 3종 재확인, 다크 파랑 글자 대비, 학생 상세 드릴다운)이다.
+
+**v0.2 새로 필요했던 결정** (DESIGN.md 옛 미정 11~16과 같은 내용, 승인 완료)
 1. **모달 4등급(C·F·W·P)과 W 단열 변형을 확정할지**, W 기본 너비를 진도 모달의 1180px로 할지 상담 센터·플래너의 1080px로 할지(제안: 1180px). 3.2.
 2. **저장 버튼 위치**(미정 6 확장): C·F는 하단 액션줄, W는 인라인 폼 하단 + 일괄 저장 막대로 일원화할지(제안). 하면 반 추가·수정의 헤더 '추가'/'저장'이 바뀌고 `apmath-modal-design-family.test.js`를 같이 고친다.
 3. **Esc 키와 바깥 클릭**: 지금은 Esc가 없고 바깥 클릭은 입력 중인 폼도 닫는다. 등급별로 Esc 닫기 추가, F는 입력 있으면 바깥 클릭 무시, W·P는 바깥 클릭 무시로 바꿔도 되는지(제안).

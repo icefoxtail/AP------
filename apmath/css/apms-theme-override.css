@@ -26,6 +26,8 @@
 
   --border: rgba(0, 0, 0, 0.10);
   --border-soft: rgba(0, 0, 0, 0.06);
+  /* 입력칸 테두리: UI 대비 3:1 이상(흰 면 위 4.16:1). --border는 카드·구분선용이라 입력칸에 쓰면 1.3:1 미만. */
+  --control-border: #7c7c80;
 
   --text: #1C1C1E;
   --text-soft: #3A3A3C;
@@ -66,6 +68,7 @@ body.dark {
 
     --border: rgba(255, 255, 255, 0.12);
     --border-soft: rgba(255, 255, 255, 0.08);
+    --control-border: #76767b;
 
     --text: #F5F5F7;
     --text-soft: #D1D1D6;
@@ -182,16 +185,17 @@ textarea,
 .std-input-base {
   background: var(--surface);
   color: var(--text);
-  border-color: var(--border);
+  border-color: var(--control-border, var(--border));
   border-radius: var(--radius-md);
 }
 
+/* 포커스: 색 고리 하나(2px 실선)로 UI 대비 3:1 이상을 지킨다. 옛 4px 14% 고리는 흰 면 위 1.2:1이었다. */
 input:focus,
 select:focus,
 textarea:focus,
 .std-input-base:focus {
-  border-color: rgba(0, 122, 255, 0.55);
-  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.12);
+  border-color: var(--primary);
+  box-shadow: none;
 }
 
 input[type="checkbox"],
@@ -365,8 +369,8 @@ a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.14) !important;
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 [style*="rgba(26,92,255,0.07)"],
@@ -958,10 +962,10 @@ body.dark .apms-student-contrast .apms-student-filter-grid {
 
 /* ======================================================================
    AP MATH 공통 UI bridge (2026-06-11)
-   - 선생님 대시보드 카드 톤(radius 6px / shadow none / 연한 1px border)을
-     기존 전역 카드 계열에 bridge한다. 레이아웃/기능/배경 변경 없음.
-   - 파일 끝에 위치하여 위쪽 phase 1/2 !important 라운드·그림자 규칙을 이긴다.
-   - 모달 외곽 shell은 16px, 모달 내부 카드/row는 6px 계열을 유지한다.
+   - 카드 톤(shadow none / 연한 1px border)을 기존 전역 카드 계열에 bridge한다.
+   - 모서리: 카드·모달 외곽 16px, 입력·버튼 8px, 모달 안쪽 면 8px (사용자 결정 2026-11-02).
+     예전에는 이 자리에서 카드를 6px로 !important 강제했는데 걷어냈다. 카드 모서리는
+     위쪽 `.card … { border-radius: var(--radius-lg) !important }`(웜 테마에서 16px)가 정한다.
    ====================================================================== */
 .card,
 .dashboard-card,
@@ -977,13 +981,18 @@ body.dark .apms-student-contrast .apms-student-filter-grid {
 #ap-admin-dashboard .ap-admin-card,
 .ap-admin-mini-metric,
 .ap-card {
-  border-radius: 6px !important;
   box-shadow: none !important;
   border-color: var(--border) !important;
 }
 
+.exam-card,
+.omr-card,
+#ap-admin-dashboard .card,
+#ap-admin-dashboard .ap-admin-card {
+  border-radius: var(--ap-ui-radius-card, 16px);
+}
+
 .ap-admin-check-item {
-  border-radius: 6px !important;
   box-shadow: none !important;
 }
 
@@ -1008,21 +1017,6 @@ body.dark .omr-card {
 #modal-content,
 #modal-box {
   border-radius: 16px !important;
-}
-
-@media (max-width: 640px) {
-  .card,
-  .dashboard-card,
-  .stat-card,
-  .report-card,
-  .student-card,
-  .class-card,
-  .planner-card,
-  .assignment-card,
-  .exam-card,
-  .omr-card {
-    border-radius: 6px !important;
-  }
 }
 
 /* 모바일 바텀시트 형태(#modal-content가 화면 하단 고정)는 상단 모서리만 둥글게 유지 */
@@ -1060,7 +1054,7 @@ body.dark .omr-card {
 .ap-class-progress-context,
 .ap-class-progress-note {
   border: 1px solid var(--border);
-  border-radius: var(--ap-ui-radius-card, 6px);
+  border-radius: var(--ap-ui-radius-panel, 8px);
   background: var(--surface-2);
 }
 
@@ -1103,7 +1097,7 @@ body.dark .omr-card {
   min-height: 0;
   flex-direction: column;
   overflow: hidden;
-  border-radius: var(--ap-ui-radius-card, 6px);
+  border-radius: var(--ap-ui-radius-panel, 8px);
   box-shadow: none;
 }
 
@@ -1155,7 +1149,7 @@ body.dark .omr-card {
 .ap-class-progress-book {
   margin-bottom: 8px;
   border: 1px solid var(--border);
-  border-radius: var(--ap-ui-radius-card, 6px);
+  border-radius: var(--ap-ui-radius-panel, 8px);
   background: var(--surface);
   transition: border-color 180ms ease, background 180ms ease;
 }
@@ -1305,7 +1299,7 @@ body.dark .omr-card {
   margin: 0 18px 14px;
   padding: 11px 12px;
   border: 1px solid var(--border);
-  border-radius: var(--ap-ui-radius-card, 6px);
+  border-radius: var(--ap-ui-radius-panel, 8px);
   background: var(--surface-2);
 }
 
@@ -1369,7 +1363,7 @@ body.dark .omr-card {
   margin-bottom: 10px;
   padding: 10px;
   border: 1px solid var(--border);
-  border-radius: var(--ap-ui-radius-card, 6px);
+  border-radius: var(--ap-ui-radius-panel, 8px);
   background: var(--surface-2);
 }
 
@@ -1405,7 +1399,7 @@ body.dark .omr-card {
   gap: 8px;
   padding: 6px 8px;
   border: 1px solid var(--border);
-  border-radius: var(--ap-ui-radius-card, 6px);
+  border-radius: var(--ap-ui-radius-panel, 8px);
   background: var(--surface);
   color: var(--text);
   font-size: 12px;
@@ -1447,7 +1441,7 @@ body.dark .omr-card {
 .ap-class-progress-subunit {
   margin-bottom: 8px;
   border: 1px solid var(--border);
-  border-radius: var(--ap-ui-radius-card, 6px);
+  border-radius: var(--ap-ui-radius-panel, 8px);
   background: var(--surface);
 }
 
@@ -1791,7 +1785,7 @@ body.dark .omr-card {
   gap: 10px;
   padding: 10px 12px;
   border: 1px solid var(--border);
-  border-radius: var(--ap-ui-radius-card, 6px);
+  border-radius: var(--ap-ui-radius-panel, 8px);
   background: var(--surface);
   color: var(--text);
   text-align: left;
@@ -2078,7 +2072,7 @@ body.dark .omr-card {
   margin-bottom: 8px;
   padding: 10px;
   border: 1px solid var(--border);
-  border-radius: var(--ap-ui-radius-card, 6px);
+  border-radius: var(--ap-ui-radius-panel, 8px);
   background: var(--surface-2);
 }
 
@@ -2134,7 +2128,7 @@ body.dark .omr-card {
 .ap-class-progress-manage-row {
   padding: 9px 10px;
   border: 1px solid var(--border);
-  border-radius: var(--ap-ui-radius-card, 6px);
+  border-radius: var(--ap-ui-radius-panel, 8px);
   background: var(--surface);
 }
 

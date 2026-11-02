@@ -11,6 +11,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="AP Math">
     <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
     <style>
         /* =========================================
            [Polish] Light Mode Palette (미니멀리즘)
@@ -72,12 +73,7 @@
             --ap-btn-h: 32px;
             --ap-input-h: 38px;
 
-            --ap-font-title: 18px;
-            --ap-font-section: 13.5px;
-            --ap-font-body: 13px;
-            --ap-font-meta: 12.5px;
-            --ap-font-label: 12px;
-            --ap-font-button: 12px;
+            /* 글자 크기 변수(--ap-font-*)는 css/apms-ui-foundation.css 한 곳에서 정의한다(2026-11-02 통합). */
         }
 
         /* =========================================
@@ -1011,7 +1007,7 @@
 
     <main id="app-root"></main>
 
-    <div id="modal-overlay" class="hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="if(event.target===this) closeModal()" onkeydown="handleModalKeyboard(event)">
+    <div id="modal-overlay" class="hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title" onpointerdown="handleModalBackdropPress(event)" onclick="handleModalBackdropClick(event)" onkeydown="handleModalKeyboard(event)">
         <div id="modal-content" onclick="event.stopPropagation()">
             <div id="modal-header">
                 <button id="modal-cancel-btn" onclick="closeModal()">취소</button>
@@ -1028,7 +1024,7 @@
     <!-- vendor(chart.js/html2canvas/xlsx)는 첫 사용 시 loadVendorScriptOnce()로 지연 로드 -->
     <script defer src="../shared/js/wangji-owner-auth-bridge.js"></script>
     <script defer src="js/core.js"></script>
-    <script defer src="js/ui.js?v=20261026-playground-2"></script>
+    <script defer src="js/ui.js?v=20261102-modal-foundation-1"></script>
     <script defer src="js/report-text.js"></script>
     <script defer src="../archive/archive-asset-base.js?v=20261030-s21-1"></script>
     <script defer src="js/archive-render.js"></script>
