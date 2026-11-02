@@ -59,12 +59,12 @@
       },
       steps: (M) => [
         obtuse ? `꼭짓점 $C$ 에서 변 $AB$ 의 <b>연장선</b>에 수선 $CH$ 를 내려요. $\\angle CAH=180^{\\circ}-${M.A}^{\\circ}=${M.w}^{\\circ}$ 예요.` : `꼭짓점 $C$ 에서 변 $AB$ 에 수선 $CH$ 를 내려요. $\\triangle ACH$ 에서 $h=CH=b\\sin A$ 예요.`,
-        `$h=b\\sin${M.w}^{\\circ}=${M.b0}\\sin${M.w}^{\\circ}=${vtex(M.h)}$ ${M.h.x ? '' : '(근삿값)'}`,
-        `$S=\\frac{1}{2}\\times c\\times h=\\frac{1}{2}bc\\sin${obtuse ? '(180^{\\circ}-A)' : 'A'}=${vtex(M.S)}$ ${M.S.x ? '' : '(근삿값)'}`
+        `$h=b\\sin ${M.w}^{\\circ}=${M.b0}\\sin ${M.w}^{\\circ}=${vtex(M.h)}$ ${M.h.x ? '' : '(근삿값)'}`,
+        `$S=\\frac{1}{2}\\times c\\times h=\\frac{1}{2}bc\\sin ${obtuse ? '(180^{\\circ}-A)' : 'A'}=${vtex(M.S)}$ ${M.S.x ? '' : '(근삿값)'}`
       ],
       view: (M) => ({
         guide: `<b>두 변</b>과 <b>끼인각 A</b>를 바꿔 보세요. ${obtuse ? '각 A가 90°를 넘으면 높이가 삼각형 밖에 생기고 색이 분홍으로 바뀌어요.' : '보라색 점선이 높이 h예요.'}`,
-        readouts: [rd('높이 $h$', `$${vtex(M.h)}$`, 'violet', `$b\\sin${obtuse ? '(180^{\\circ}-A)' : 'A'}$`), rd('넓이 $S$', `$${vtex(M.S)}$`, 'amber')],
+        readouts: [rd('높이 $h$', `$${vtex(M.h)}$`, 'violet', `$b\\sin ${obtuse ? '(180^{\\circ}-A)' : 'A'}$`), rd('넓이 $S$', `$${vtex(M.S)}$`, 'amber')],
         rule: obtuse ? '$S=\\frac{1}{2}bc\\sin(180^{\\circ}-A)$ — 둔각이면 외각을 쓴다' : '$S=\\frac{1}{2}bc\\sin A$ (두 변의 곱 × sin(끼인각) ÷ 2)',
         notes: notes('두 변과 <b>끼인각</b>이어야 해요. 끼인각이 아닌 각의 sin 을 곱하면 안 돼요.', '$\\frac{1}{2}$ 을 곱하는 것을 잊지 마세요.', obtuse ? '$\\sin(180^{\\circ}-A)=\\sin A$ 이므로 $\\sin A$ 를 바로 써도 같은 값이에요.' : '$\\cos$ 이나 $\\tan$ 을 쓰지 않아요.')
       }),
@@ -92,7 +92,7 @@
     const H = (a * Math.sqrt(3)) / 2, A = pt(0, -H), B = pt(-a / 2, 0), C = pt(a / 2, 0), Hh = pt(0, 0), st = o.step == null ? 99 : o.step;
     fit(b, bboxOf([A, B, C]), { t: 54, b: 56 + (o.rows ? o.rows.length * 26 : 0), l: 60, r: 60 });
     fillPoly(b, [A, B, C], 'sky', 0.14); poly(b, [A, B, C], 'ink', 3.4);
-    if (st >= 1) { line(b, A, Hh, 'violet', 3.2, { dash: dashed }); ang(b, Hh, B, A, { color: 'violet', r: 16 }); b.point(Hh, { color: 'violet', r: 4 }); T(b, Hh, 'H', { dy: 20, size: 17, color: 'violet' }); }
+    if (st >= 1 || (o.L && o.L.hx)) { line(b, A, Hh, 'violet', 3.2, { dash: dashed }); ang(b, Hh, B, A, { color: 'violet', r: 16 }); b.point(Hh, { color: 'violet', r: 4 }); T(b, Hh, 'H', { dy: 20, size: 17, color: 'violet' }); }
     [[A, 'A'], [B, 'B'], [C, 'C']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, pt(0, -H / 3), n, { size: 17, gap: 11 }); });
     ang(b, B, C, A, { color: 'amber', r: 32, label: '60°', size: 15 }); ang(b, C, A, B, { color: 'amber', r: 32, label: '60°', size: 15 }); ang(b, A, B, C, { color: 'amber', r: 32, label: '60°', size: 15 });
     tick(b, A, B, 1, 'green'); tick(b, A, C, 1, 'green'); tick(b, B, C, 1, 'green');
@@ -146,8 +146,8 @@
       drawAC(b, geoAC(bn, M.c0, M.A), { step: 0, angL: `${M.A}°`, b: show(2) ? `b = ${M.b0.x ? vcan(M.b0) : '≈' + decS(M.b0.v, 2)}` : 'b', c: `${M.c0}`, rows: [{ t: `S = ${M.S.v}`, c: 'amber' }, ...(show(1) ? [{ t: `${M.S.v} = \\frac{1}{2} × b × ${M.c0} × sin ${M.A}°`, c: 'sky' }] : [])] });
     },
     steps: (M) => [
-      `넓이 공식에 알려진 값을 넣어요. $${M.S.v}=\\frac{1}{2}\\times b\\times${M.c0}\\times\\sin${M.A}^{\\circ}$`,
-      `$\\sin${M.A}^{\\circ}=${vtex(sinD(M.A))}$ 를 넣고 $b$ 에 대한 식으로 풀어요. $b=\\frac{2\\times${M.S.v}}{${M.c0}\\sin${M.A}^{\\circ}}$`,
+      `넓이 공식에 알려진 값을 넣어요. $${M.S.v}=\\frac{1}{2}\\times b\\times${M.c0}\\times\\sin ${M.A}^{\\circ}$`,
+      `$\\sin ${M.A}^{\\circ}=${vtex(sinD(M.A))}$ 를 넣고 $b$ 에 대한 식으로 풀어요. $b=\\frac{2\\times${M.S.v}}{${M.c0}\\sin ${M.A}^{\\circ}}$`,
       `$b=${vtex(M.b0)}$ ${M.b0.x ? '' : '(근삿값)'}`
     ],
     view: (M) => ({
@@ -178,7 +178,7 @@
     fit(b, bboxOf([P0, B, C]), { t: 54, b: 58 + ((o.rows ? o.rows.length : 0) + (o.al ? 1 : 0)) * 26, l: 58, r: 58 });
     fillPoly(b, [P0, B, D], 'sky', 0.16); fillPoly(b, [P0, D, C], 'green', 0.16);
     poly(b, [P0, B, C], 'ink', 3.4); line(b, P0, D, 'violet', 3.4);
-    ang(b, P0, B, D, { color: 'amber', r: 36, label: o.hl, size: 15, labelDist: 56 }); ang(b, P0, D, C, { color: 'amber', r: 36, label: o.hl, size: 15, labelDist: 56 });
+    ang(b, P0, B, D, { color: 'amber', rings: 2, r: 36, label: o.hl, size: 15, labelDist: 56 }); ang(b, P0, D, C, { color: 'amber', rings: 2, r: 36, label: o.hl, size: 15, labelDist: 56 });
     [[P0, 'A'], [B, 'B'], [C, 'C']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     b.point(D, { color: 'violet', r: 4.5 }); tagOut(b, D, cen, 'D', { size: 17, gap: 11, color: 'violet' });
     if (o.b) sideTag(b, P0, C, cen, o.b, { color: 'sky', size: 17 });
@@ -197,8 +197,8 @@
     draw(b, s, M, C) { const st = C.step, show = (n) => st >= n || st === 99; drawBis(b, geoBis(M.b0, M.c0, M.A, M.x.v), M.A, { step: st, b: `${M.b0}`, c: `${M.c0}`, hl: show(1) ? `${M.half}°` : '', al: `${M.A}°`, x: `x = ${M.x.x ? vcan(M.x) : '≈' + decS(M.x.v, 2)}`, rows: show(2) ? [{ t: 'S = S₁ + S₂', c: 'amber' }] : [] }); },
     steps: (M) => [
       `$\\angle A=${M.A}^{\\circ}$ 의 이등분선 $AD=x$ 는 각을 $${M.half}^{\\circ}$ 와 $${M.half}^{\\circ}$ 로 나눠요.`,
-      `전체 넓이는 두 삼각형의 합이에요. $\\frac{1}{2}bc\\sin${M.A}^{\\circ}=\\frac{1}{2}cx\\sin${M.half}^{\\circ}+\\frac{1}{2}bx\\sin${M.half}^{\\circ}$`,
-      `$\\frac{1}{2}\\times${M.b0}\\times${M.c0}\\sin${M.A}^{\\circ}=\\frac{1}{2}(${M.b0}+${M.c0})\\,x\\sin${M.half}^{\\circ}$ 를 풀면 $x=${vtex(M.x)}$`
+      `전체 넓이는 두 삼각형의 합이에요. $\\frac{1}{2}bc\\sin ${M.A}^{\\circ}=\\frac{1}{2}cx\\sin ${M.half}^{\\circ}+\\frac{1}{2}bx\\sin ${M.half}^{\\circ}$`,
+      `$\\frac{1}{2}\\times${M.b0}\\times${M.c0}\\sin ${M.A}^{\\circ}=\\frac{1}{2}(${M.b0}+${M.c0})\\,x\\sin ${M.half}^{\\circ}$ 를 풀면 $x=${vtex(M.x)}$`
     ],
     view: (M) => ({
       guide: '<b>두 변</b>과 <b>각 A</b>를 바꿔 보세요. 이등분선 AD가 삼각형을 넓이 $S_1$, $S_2$ 로 나눠요. 두 넓이의 합이 전체 넓이와 같다는 식으로 $x$ 를 구해요.',
@@ -225,6 +225,7 @@
     fit(b, bboxOf(V), { t: 58, b: 60 + (o.rows ? o.rows.length * 26 : 0), l: 54, r: 54 });
     const st = o.step == null ? 99 : o.step;
     fillPoly(b, V, 'sky', 0.1); poly(b, V, 'ink', 3.4);
+    line(b, O, V[0], 'sky', 3.6);
     if (st >= 1) V.forEach((p0) => line(b, O, p0, 'violet', 2));
     if (st >= 1) fillPoly(b, [O, V[0], V[1]], 'amber', 0.28);
     V.forEach((p0, i) => b.point(p0, { color: 'ink', r: 4 }));
@@ -242,7 +243,7 @@
     draw(b, s, M, C) { const st = C.step, show = (n) => st >= n || st === 99, vv = (v) => (v.x ? vcan(v) : '≈' + decS(v.v, 2)); drawReg(b, M.n, M.R, { step: st, R: `${M.R}`, ang: show(1) ? `${fmtN(M.th)}°` : '', rows: show(2) ? [{ t: `삼각형 1개 = \\frac{1}{2} × ${M.R} × ${M.R} × sin ${fmtN(M.th)}° = ${vv(M.one)}`, c: 'sky' }, { t: `${M.n}개 → ${vv(M.tot)}`, c: 'amber' }] : [] }); },
     steps: (M) => [
       `정${M.n}각형의 중심 $O$ 와 각 꼭짓점을 이으면 합동인 이등변삼각형 ${M.n}개로 나뉘어요. 중심각은 $\\frac{360^{\\circ}}{${M.n}}=${fmtN(M.th)}^{\\circ}$ 예요.`,
-      `삼각형 한 개의 넓이는 $\\frac{1}{2}R^2\\sin${fmtN(M.th)}^{\\circ}=${vtex(M.one)}$ ${M.one.x ? '' : '(근삿값)'}`,
+      `삼각형 한 개의 넓이는 $\\frac{1}{2}R^2\\sin ${fmtN(M.th)}^{\\circ}=${vtex(M.one)}$ ${M.one.x ? '' : '(근삿값)'}`,
       `전체 넓이는 ${M.n}배인 $${vtex(M.tot)}$ 예요. ($S=\\frac{n}{2}R^2\\sin\\frac{360^{\\circ}}{n}$)`
     ],
     view: (M) => ({

@@ -48,8 +48,8 @@
     ang(b, Pp, C, B, { color: 'amber', r: 28 });
     [[A, 'A'], [B, 'B'], [C, 'C'], [D, 'D']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     if (o.handle) b.handle('P', Pp, { color: 'violet', r: 8, ariaLabel: '교점 P 끌기', drag: o.handle }); else b.point(Pp, { color: 'violet', r: 4.5 });
-    if (o.p) T(b, lerp(A, C, 0.16), o.p, { dy: 22, size: 16, color: 'sky' });
-    if (o.q) T(b, lerp(B, D, 0.18), o.q, { dx: 12, dy: -4, size: o.q === 'x' ? 21 : 16, color: o.q === 'x' ? 'amber' : 'green', align: 'left' });
+    if (o.p) T(b, lerp(A, C, 0.28), o.p, { dy: 20, size: 16, color: 'sky' });
+    if (o.q) T(b, lerp(B, D, /= x$/.test(o.q) ? 0.64 : 0.18), o.q, { dx: 14, dy: /= x$/.test(o.q) ? 6 : -4, size: /= x$/.test(o.q) ? 20 : 16, color: /= x$/.test(o.q) ? 'amber' : 'green', align: 'left' });
     rowsD.forEach((r, i) => T(b, pt(0, Math.max(A.y, B.y, C.y, D.y, ...wide.map((w) => w.y))), r.t, { dy: 44 + i * 26, size: r.size || 16, color: r.c }));
   }
   const diagM = (p, q, th) => { const S = vdiv(vmul(vi(p * q), sinD(th)), vi(2)); return { p, q, th, S, dbl: vmul(vi(p * q), sinD(th)) }; };
@@ -93,7 +93,7 @@
   }
   function diagPdraw(b, qq) {
     const f = qq.fig, rows = f.ask === 'area' ? [{ t: '□ABCD의 넓이 = x', c: 'amber', size: 18 }] : [{ t: `□ABCD의 넓이 = ${f.S}`, c: 'amber', size: 17 }];
-    drawDiag(b, diagGeo(f.p, f.q, f.th, 0.5), { step: 0, th: `${f.th}°`, p: `${f.p}`, q: f.ask === 'q' ? 'x' : `${f.q}`, rows });
+    drawDiag(b, diagGeo(f.p, f.q, f.th, 0.5), { step: 0, th: `${f.th}°`, p: `AC = ${f.p}`, q: f.ask === 'q' ? 'BD = x' : `BD = ${f.q}`, rows });
   }
 
   /* ====================================================================== 평행사변형 */
@@ -163,7 +163,7 @@
     model: (s) => { const a = Math.round(s.t73a), th = Math.round(s.t72t), S = vmul(vi(a * a), sinD(th)), p = vmul(vi(2 * a), sinD(th / 2)), q = vmul(vi(2 * a), cosD(th / 2)); return { a, th, S, p, q, S2: vdiv(vmul(p, q), vi(2)) }; },
     draw(b, s, M, C) { const st = C.step, show = (n) => st >= n || st === 99; drawRh(b, M.a, M.th, { th: `${M.th}°`, a: `${M.a}`, p: show(2) ? `p = ${vv(M.p)}` : '', q: show(2) ? `q = ${vv(M.q)}` : '', rows: [show(1) ? { t: `S = ${M.a} × ${M.a} × sin ${M.th}° = ${vv(M.S)}`, c: 'amber' } : null, show(3) ? { t: `S = \\frac{1}{2}pq = ${vv(M.S2)}`, c: 'sky' } : null].filter(Boolean) }); },
     steps: (M) => [
-      `마름모는 평행사변형이에요. 이웃한 두 변이 모두 $a=${M.a}$ 이므로 $S=a\\times a\\times\\sin${M.th}^{\\circ}=${vtex(M.S)}$`,
+      `마름모는 평행사변형이에요. 이웃한 두 변이 모두 $a=${M.a}$ 이므로 $S=a\\times a\\times\\sin ${M.th}^{\\circ}=${vtex(M.S)}$`,
       `두 대각선은 수직으로 만나요. $p=2a\\sin\\frac{\\theta}{2}=${vtex(M.p)}$, $q=2a\\cos\\frac{\\theta}{2}=${vtex(M.q)}$`,
       `$S=\\frac{1}{2}pq=${vtex(M.S2)}$ 로 구해도 같은 값이에요. ($\\theta=90^{\\circ}$ 이면 $\\frac{1}{2}pq\\sin90^{\\circ}$ 와 같아요.)`
     ],
@@ -210,7 +210,7 @@
     steps: (M) => [
       '대각선 $AC=p$, $BD=q$ 와 사잇각 $\\theta$ 가 주어지면, 교점 $P$ 의 위치와 관계없이 넓이가 정해져요.',
       '네 삼각형 $PAB$, $PBC$, $PCD$, $PDA$ 의 넓이를 모두 더하면 $\\frac{1}{2}pq\\sin\\theta$ 예요.',
-      `$S=\\frac{1}{2}\\times${M.p}\\times${M.q}\\times\\sin${M.th}^{\\circ}=${vtex(M.S)}$ ${M.S.x ? '' : '(근삿값)'}`
+      `$S=\\frac{1}{2}\\times${M.p}\\times${M.q}\\times\\sin ${M.th}^{\\circ}=${vtex(M.S)}$ ${M.S.x ? '' : '(근삿값)'}`
     ],
     view: (M) => ({
       guide: '<b>점 P를 가로로 끌어</b> 보세요(또는 막대). 사각형 모양은 달라져도 $p$, $q$, $\\theta$ 가 같으면 넓이는 그대로예요.',
@@ -250,7 +250,7 @@
     draw(b, s, M, C) { const st = C.step, show = (n) => st >= n || st === 99; drawSplit2(b, splitGeo(M.p, M.a, M.c, M.be, M.de), { step: st, be: `${M.be}°`, de: `${M.de}°`, p: `${M.p}`, a: `${M.a}`, c: `${M.c}`, rows: [show(1) ? { t: `S₁ = ${vv(M.S1)},  S₂ = ${vv(M.S2)}`, c: 'sky' } : null, show(2) ? { t: `S = S₁ + S₂ = ${vv(M.S)}`, c: 'amber' } : null].filter(Boolean) }); },
     steps: (M) => [
       '대각선 $BD$ 로 사각형을 두 삼각형 $ABD$, $CBD$ 로 나눠요. 각 삼각형은 두 변과 그 끼인각을 알아요.',
-      `$S_1=\\frac{1}{2}\\times BD\\times BA\\times\\sin${M.be}^{\\circ}=${vtex(M.S1)}$, $S_2=\\frac{1}{2}\\times BD\\times BC\\times\\sin${M.de}^{\\circ}=${vtex(M.S2)}$`,
+      `$S_1=\\frac{1}{2}\\times BD\\times BA\\times\\sin ${M.be}^{\\circ}=${vtex(M.S1)}$, $S_2=\\frac{1}{2}\\times BD\\times BC\\times\\sin ${M.de}^{\\circ}=${vtex(M.S2)}$`,
       `$S=S_1+S_2=${vtex(M.S)}$ ${M.S.x ? '' : '(근삿값)'}`
     ],
     view: (M) => ({

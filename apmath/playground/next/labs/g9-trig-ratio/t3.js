@@ -11,7 +11,7 @@
     vi, vsq, vf, vadd, vsub, vmul, vdiv, vsqrt, vtex, vcan, sinD, cosD, tanD, tbl, d4, isSpec, mkChoices, degChoices, mkTextChoices, checkQ, fmtN, decS, nmRand, triName, FN, FNK } = G;
 
   const PARAMS = {
-    t31: P('각 θ', 5, 85, 1, 35, { color: 'amber', format: G.degF, hint: '그림의 노란 점 A를 끌어도 돼요' }),
+    t31: P('각 θ', 15, 75, 1, 35, { color: 'amber', format: G.degF, hint: '그림의 노란 점 A를 끌어도 돼요' }),
     t32: P('각 θ', 0, 90, 1, 37, { color: 'amber', format: G.degF }),
     t32h: P('숨은 각 (값을 정해요)', 1, 89, 1, 52, { color: 'rose', format: G.degF }),
     t32x: P('내가 고른 각 x', 1, 89, 1, 45, { color: 'amber', format: G.degF }),
@@ -53,14 +53,14 @@
     if (L.OB) T(b, mid(O, Bp), L.OB, { dy: 22, size: 16, color: col.c });
     if (L.CD) T(b, mid(Cp, D), L.CD, { dx: 10, size: 16, color: col.t, align: 'left' });
     if (L.OA) T(b, mid(O, A), L.OA, { dx: -4, dy: -14, size: 16, color: 'ink', align: 'right' });
-    if (o.names !== false) [[O, 'O', pt(0.5, -0.5)], [A, 'A', O], [Bp, 'B', pt(Bp.x, -1)], [Cp, 'C', pt(Cp.x, -1)]].forEach(([p0, n, c]) => { b.point(p0, { color: n === 'A' ? 'amber' : 'ink', r: n === 'A' ? 6 : 4.5 }); tagOut(b, p0, c, n, { size: 17, gap: 11 }); });
-    if (vis && o.names !== false) { b.point(D, { color: 'ink', r: 4.5 }); tagOut(b, D, pt(0.5, -0.5), 'D', { size: 17, gap: 11 }); }
+    if (o.names !== false) [[O, 'O', pt(0.5, -0.5)], [A, 'A', O], [Bp, 'B', null], [Cp, 'C', null]].forEach(([p0, n, c]) => { b.point(p0, { color: n === 'A' ? 'amber' : 'ink', r: n === 'A' ? 6 : 4.5 }); if (n === 'B') T(b, p0, n, { dx: -12, dy: 19, size: 17 }); else if (n === 'C') T(b, p0, n, { dx: 12, dy: 19, size: 17 }); else tagOut(b, p0, c, n, { size: 17, gap: 11 }); });
+    if (vis && o.names !== false) { b.point(D, { color: 'ink', r: 4.5 }); T(b, D, 'D', { dx: 13, dy: -13, size: 17 }); }
     else if (!vis) T(b, pt(1, -tc), 'D ↑ (그림 밖)', { dx: 8, dy: -2, size: 15, color: 'green', align: 'left' });
     if (o.handle) b.handle('th', A, { color: 'amber', r: 8, ariaLabel: '점 A 끌기', drag: o.handle });
     (o.rows || []).forEach((r, i) => T(b, pt(0.65, 0), r.t, { dy: 42 + i * 26, size: 16, color: r.c }));
     return { A, Bp, Cp, D, t };
   }
-  const dragTheta = (s, key) => (w) => { s[key] = clamp(Math.round(Math.atan2(-w.y, w.x) / DEG), 5, 85); };
+  const dragTheta = (s, key) => (w) => { s[key] = clamp(Math.round(Math.atan2(-w.y, w.x) / DEG), 15, 75); };
 
   /* ====================================================================== 1. 반지름이 1인 사분원 */
   const uc = {
@@ -171,7 +171,7 @@
     steps: (M) => [
       `삼각비의 표에서 맨 왼쪽 열의 각 $${M.th}^{\\circ}$ 가 있는 행을 찾아요.`,
       '그 행에서 $\\sin$, $\\cos$, $\\tan$ 열의 값을 읽어요. 사분원에서는 각각 $\\overline{AB}$, $\\overline{OB}$, $\\overline{CD}$ 의 길이예요.',
-      `$\\sin${M.th}^{\\circ}=${cell(M.sn)}$, $\\cos${M.th}^{\\circ}=${cell(M.cs)}$, $\\tan${M.th}^{\\circ}=${cell(M.tn)}$ (소수 다섯째 자리에서 반올림한 값이에요.)`
+      `$\\sin ${M.th}^{\\circ}=${cell(M.sn)}$, $\\cos ${M.th}^{\\circ}=${cell(M.cs)}$, $\\tan ${M.th}^{\\circ}=${cell(M.tn)}$ (소수 다섯째 자리에서 반올림한 값이에요.)`
     ],
     view: (M) => ({
       guide: '<b>각 θ</b>를 바꾸면 아래 표에서 그 행이 노랗게 표시되고, 사분원의 선분 길이가 표의 값과 같아져요. 표는 0°부터 90°까지 모두 들어 있어요.',
@@ -283,7 +283,7 @@
     },
     steps: (M) => [
       `빗변 $c=${M.c}$ 와 각 $A=${M.th}^{\\circ}$ 가 주어졌어요. 구할 변은 $a$(대변)과 $b$(이웃변)이에요.`,
-      `$a=c\\sin A$, $b=c\\cos A$ 를 써요. 표에서 $\\sin${M.th}^{\\circ}=${d4(M.sn)}$, $\\cos${M.th}^{\\circ}=${d4(M.cs)}$ 를 읽어요.`,
+      `$a=c\\sin A$, $b=c\\cos A$ 를 써요. 표에서 $\\sin ${M.th}^{\\circ}=${d4(M.sn)}$, $\\cos ${M.th}^{\\circ}=${d4(M.cs)}$ 를 읽어요.`,
       `$a=${M.c}\\times${d4(M.sn)}=${trim(M.a)}$, $b=${M.c}\\times${d4(M.cs)}=${trim(M.b)}$`
     ],
     view: (M) => ({
@@ -328,7 +328,9 @@
     const clip = (p) => (p.y < -y1 + 0.2 ? pt(xa + (y1 - 0.2) / m, -(y1 - 0.2)) : p);
     line(b, o.noLeft ? A : clip(pa), clip(pb), 'ink', 3.4);
     if (o.tri) { fillPoly(b, [A, Q, Rr], 'sky', 0.15); line(b, A, Q, 'sky', 3.6); line(b, Q, Rr, 'rose', 3.6); ang(b, Q, A, Rr, { color: 'ink', r: 16 }); }
-    ang(b, A, pt(xa + 1, 0), Rr, { color: 'amber', r: 34, label: o.th || 'θ', size: 17, labelDist: 54 });
+    ang(b, A, pt(xa + 1, 0), Rr, { color: 'amber', r: 34 });
+    T(b, A, o.th || 'θ', { dx: 12, dy: 22, size: 17, color: 'amber', align: 'left' });
+    if (o.tri) { T(b, mid(A, Q), `${r}`, { dx: 0, dy: 44, size: 16, color: 'sky' }); T(b, mid(Q, Rr), `${u}`, { dx: 12, size: 16, color: 'rose', align: 'left' }); }
     b.point(A, { color: 'ink', r: 4.5 }); b.point(Bp, { color: 'ink', r: 4.5 });
     if (o.coords) { T(b, A, o.coords[0], { dx: -6, dy: 20, size: 16, color: 'sky', align: 'right' }); T(b, Bp, o.coords[1], { dx: 10, dy: 0, size: 16, color: 'violet', align: 'left' }); }
     return { A, Q, Rr, Bp, m };

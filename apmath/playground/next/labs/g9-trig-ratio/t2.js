@@ -153,7 +153,7 @@
     model: (s) => chainModel(Math.round(s.t2h), PAIRS[s.t2pair || 0]),
     draw(b, s, M, C) { drawChain(b, M, { step: C.step, full: true }); },
     steps: (M) => [
-      `두 직각삼각형 $ABH$, $AHC$ 가 높이 $AH=${M.h}$ 를 공유해요. $\\angle B=${M.pair[0]}^{\\circ}$, $\\angle C=${M.pair[1]}^{\\circ}$`,
+      `두 직각삼각형 $ABH$, $AHC$ 가 높이 $AH=${vtex(M.h)}$ 를 공유해요. $\\angle B=${M.pair[0]}^{\\circ}$, $\\angle C=${M.pair[1]}^{\\circ}$`,
       `$\\triangle ABH$ 에서 $BH=\\frac{AH}{\\tan ${M.pair[0]}^{\\circ}}=${vtex(M.bh)}$, $\\triangle AHC$ 에서 $CH=\\frac{AH}{\\tan ${M.pair[1]}^{\\circ}}=${vtex(M.ch)}$`,
       `$BC=BH+CH=${vtex(M.bc)}$, $AB=${vtex(M.ab)}$, $AC=${vtex(M.ac)}$`
     ],

@@ -33,11 +33,13 @@
     const { h, xb } = o, xc = o.same ? -o.xc : o.xc, st = o.step == null ? 99 : o.step;
     const H0 = pt(0, 0), A = pt(0, -h), B = pt(-xb, 0), Cc = pt(xc, 0), L = o.L || {};
     const xs = [B.x, Cc.x, 0];
-    fit(b, bboxOf([pt(Math.min(...xs), -h), pt(Math.max(...xs), 0)]), { t: 54, b: 58 + (o.rows ? o.rows.length * 26 : 0), l: 58, r: 58 });
+    fit(b, bboxOf([pt(Math.min(...xs), -h), pt(Math.max(...xs), 0)]), { t: 54, b: 58 + (L.a && (L.BH === 'x' || L.CH === 'x') ? 44 : 0) + (o.rows ? o.rows.length * 26 : 0), l: 58, r: 58 });
     const gx0 = Math.min(...xs) - 0.6, gx1 = Math.max(...xs) + 0.6;
     line(b, pt(gx0, 0), pt(gx1, 0), 'muted', 3);
     if (st >= 1) { fillPoly(b, [A, B, H0], 'sky', 0.14); fillPoly(b, o.same ? [A, Cc, H0] : [A, H0, Cc], 'green', 0.16); }
+    if (o.mountain) fillPoly(b, [pt(gx0, 0), A, pt(gx1, 0)], 'green', 0.1);
     line(b, A, H0, 'ink', 5); line(b, A, B, 'ink', 2.6); line(b, A, Cc, 'ink', 2.6);
+    if (o.iso) { tick(b, A, Cc, 1, 'amber'); tick(b, B, Cc, 1, 'amber'); }
     ang(b, H0, o.same ? Cc : B, A, { color: 'ink', r: 16 });
     ang(b, B, H0, A, { color: 'sky', r: 38, label: L.B, size: 16 });
     ang(b, Cc, H0, A, { color: 'green', r: 36, label: L.C, size: 16, rings: 2 });
@@ -49,9 +51,15 @@
     else { b.point(B, { color: 'sky', r: 5 }); b.point(Cc, { color: 'green', r: 5 }); }
     T(b, B, 'B', { dy: 22, dx: -4, size: 17, color: 'sky' }); T(b, Cc, 'C', { dy: 22, dx: 4, size: 17, color: 'green' });
     if (L.h) T(b, G.lerp(A, H0, 0.3), L.h, { dx: L.hx ? 0 : -8, size: L.hx ? 21 : 16, color: L.hx ? 'amber' : 'rose', align: L.hx ? 'center' : 'right' });
-    if (L.a) { const y = 40; line(b, pt(Math.min(B.x, Cc.x), 0), pt(Math.max(B.x, Cc.x), 0), 'amber', 4); T(b, mid(B, Cc), L.a, { dy: 44, size: 17, color: 'amber' }); }
-    if (L.BH && st >= 1) T(b, mid(B, H0), L.BH, { dy: L.BH === 'x' ? 30 : -14, size: L.BH === 'x' ? 21 : 15, color: L.BH === 'x' ? 'amber' : 'sky' });
-    if (L.CH && st >= 1) T(b, mid(Cc, H0), L.CH, { dy: L.CH === 'x' ? 30 : -14, size: L.CH === 'x' ? 21 : 15, color: L.CH === 'x' ? 'amber' : 'green' });
+    const askG = L.BH === 'x' || L.CH === 'x';
+    if (L.a && !askG) { line(b, pt(Math.min(B.x, Cc.x), 0), pt(Math.max(B.x, Cc.x), 0), 'amber', 4); T(b, mid(B, Cc), L.a, { dy: 44, size: 17, color: 'amber' }); }
+    else if (L.a) { // 구하는 것이 BH·CH 일 때: BC 는 땅 아래의 치수선으로 따로 표시
+      const off = 46 / (b.k || 60), x0 = Math.min(B.x, Cc.x), x1 = Math.max(B.x, Cc.x), cap = 6 / (b.k || 60);
+      line(b, pt(x0, off), pt(x1, off), 'violet', 3); line(b, pt(x0, off - cap), pt(x0, off + cap), 'violet', 3); line(b, pt(x1, off - cap), pt(x1, off + cap), 'violet', 3);
+      T(b, pt((x0 + x1) / 2, off), 'BC = ' + L.a, { dy: 20, size: 17, color: 'violet' });
+    }
+    if (L.BH && (st >= 1 || L.BH === 'x')) { if (L.BH === 'x') { line(b, B, H0, 'amber', 5.5); T(b, mid(B, H0), 'BH = x', { dy: 30, size: 19, color: 'amber' }); } else T(b, mid(B, H0), L.BH, { dy: -14, size: 15, color: 'sky' }); }
+    if (L.CH && (st >= 1 || L.CH === 'x')) { if (L.CH === 'x') { line(b, Cc, H0, 'amber', 5.5); T(b, mid(Cc, H0), 'CH = x', { dy: 30, size: 19, color: 'amber' }); } else T(b, mid(Cc, H0), L.CH, { dy: -14, size: 15, color: 'green' }); }
     (o.rows || []).forEach((r, i) => T(b, pt((Math.min(...xs) + Math.max(...xs)) / 2, 0), r.t, { dy: 72 + i * 26, size: 16, color: r.c }));
   }
   const px = (s, key, sgn) => (w) => { s[key] = clamp(Math.round(sgn * w.x), 2, 12); };
@@ -82,7 +90,7 @@
   function pdrawTower(b, q) {
     const f = q.fig;
     // 보기 좋게 그리기: 그림의 높이·거리는 비율만 맞춰요(값은 그리지 않음)
-    drawTower(b, { h: f.R.h, xb: f.R.bh, xc: Math.abs(f.R.ch), same: f.same, step: 1, L: { ...f.L, hx: f.ask === 'h' } });
+    drawTower(b, { h: f.R.h, xb: f.R.bh, xc: Math.abs(f.R.ch), same: f.same, step: 1, mountain: f.mount, L: { ...f.L, hx: f.ask === 'h' } });
   }
 
   /* ====================================================================== 1. 두 지점에서 올려본 각 */
@@ -181,7 +189,7 @@
     model: (s) => { const a = vi(Math.round(s.t53a)), h = vmul(vdiv(vsq(3), vi(2)), a); return { a, h, R: heightFrom(a, 30, 60, true) }; },
     draw(b, s, M, C) {
       const st = C.step, show = (n) => st >= n || st === 99, R = M.R;
-      drawTower(b, { h: R.h.v, xb: R.bh.v, xc: R.ch.v, same: true, step: st, L: { B: '30°', C: '60°', a: `${M.a.v}`, h: show(3) ? `h = ${vcan(M.h)}` : 'h' }, rows: show(1) ? [{ t: '∠BAC = 60° − 30° = 30° → AC = BC', c: 'amber' }] : [] });
+      drawTower(b, { h: R.h.v, xb: R.bh.v, xc: R.ch.v, same: true, step: st, mountain: true, iso: show(1), L: { B: '30°', C: '60°', a: `${M.a.v}`, h: show(3) ? `h = ${vcan(M.h)}` : 'h' }, rows: show(1) ? [{ t: '∠BAC = 60° − 30° = 30° → AC = BC', c: 'amber' }] : [] });
     },
     steps: (M) => [
       '$\\angle ACH=60^{\\circ}$ 는 $\\triangle ABC$ 의 외각이에요. 외각은 이웃하지 않는 두 내각의 합이므로 $\\angle BAC=60^{\\circ}-30^{\\circ}=30^{\\circ}$ 예요.',
@@ -194,7 +202,7 @@
       rule: '30°·60°(같은 쪽) → $\\triangle ABC$ 는 $AC=BC$ 인 이등변삼각형 → $h=\\frac{\\sqrt{3}}{2}BC$',
       notes: notes('이 경우는 $\\tan$ 의 차를 쓰지 않고 이등변삼각형을 찾는 것이 더 빨라요.')
     }),
-    gen: () => heightProblem([[30, 60]], '30°·60°인 둔각삼각형의 높이', ['h'], true),
+    gen: () => { const q = heightProblem([[30, 60]], '30°·60°인 둔각삼각형의 높이', ['h'], true); q.fig.mount = true; q.stem = q.stem.replace('지면에 수직인 탑 $AH$ 가 있고', '산 꼭대기 $A$ 에서 지면에 내린 수선의 발이 $H$ 이고'); return q; },
     pdraw: pdrawTower
   };
 
@@ -231,7 +239,7 @@
     },
     steps: (M) => [
       `눈의 높이에서 나무 꼭대기를 올려본 각이 $${M.th}^{\\circ}$ 예요. 눈에서 나무까지의 거리 $d=${M.d}$ 가 밑변이에요.`,
-      `눈높이 위로 올라간 높이는 $d\\tan${M.th}^{\\circ}=${M.d}\\times${decS(Math.tan(M.th * DEG), 4)}\\approx${decS(M.up, 2)}$ 예요.`,
+      `눈높이 위로 올라간 높이는 $d\\tan ${M.th}^{\\circ}=${M.d}\\times${decS(Math.tan(M.th * DEG), 4)}\\approx${decS(M.up, 2)}$ 예요.`,
       `나무의 전체 높이는 눈높이를 더해서 $${decS(M.up, 2)}+${fmtN(M.e)}\\approx${decS(M.H, 2)}$ 예요.`
     ],
     view: (M) => ({
@@ -333,7 +341,7 @@
     },
     steps: (M) => [
       `꼭대기가 땅에 닿은 점을 $Q$ 라 해요. 남은 줄기 $h$, 땅 $d=${M.d}$, 부러진 부분 $L$ 이 직각삼각형을 이루고 $\\angle Q=${M.th}^{\\circ}$ 예요.`,
-      `$h=d\\tan${M.th}^{\\circ}=${vtex(M.h)}$, $L=\\frac{d}{\\cos${M.th}^{\\circ}}=${vtex(M.L)}$`,
+      `$h=d\\tan ${M.th}^{\\circ}=${vtex(M.h)}$, $L=\\frac{d}{\\cos ${M.th}^{\\circ}}=${vtex(M.L)}$`,
       `부러지기 전 나무의 높이는 남은 줄기와 부러진 부분을 더한 $h+L=${vtex(M.H)}$ 예요.`
     ],
     view: (M) => ({

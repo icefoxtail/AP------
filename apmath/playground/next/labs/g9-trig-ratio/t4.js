@@ -46,8 +46,8 @@
     draw: (b, s, M, C) => rtLenDraw(b, M, C, { aStep: 2, bStep: 3, cGiven: true, formula: (m, st) => (st >= 3 || st === 99 ? `a = c sin A,  b = c cos A` : 'a = c sin A') }),
     steps: (M) => [
       `빗변 $c=${M.c.v}$ 과 $\\angle A=${M.A}^{\\circ}$ 를 알아요. 구하는 변은 대변 $a$ 와 이웃변 $b$ 예요.`,
-      `$\\sin A=\\frac{a}{c}$ 에서 $a=c\\sin A=${M.c.v}\\sin${M.A}^{\\circ}=${vtex(M.a)}$ ${approx(M.a) === '≈' ? '(근삿값)' : ''}`,
-      `$\\cos A=\\frac{b}{c}$ 에서 $b=c\\cos A=${M.c.v}\\cos${M.A}^{\\circ}=${vtex(M.b)}$ ${approx(M.b) === '≈' ? '(근삿값)' : ''}`
+      `$\\sin A=\\frac{a}{c}$ 에서 $a=c\\sin A=${M.c.v}\\sin ${M.A}^{\\circ}=${vtex(M.a)}$ ${approx(M.a) === '≈' ? '(근삿값)' : ''}`,
+      `$\\cos A=\\frac{b}{c}$ 에서 $b=c\\cos A=${M.c.v}\\cos ${M.A}^{\\circ}=${vtex(M.b)}$ ${approx(M.b) === '≈' ? '(근삿값)' : ''}`
     ],
     view: (M) => ({
       guide: '<b>빗변 c</b>와 <b>각 A</b>를 바꿔 보세요. 대변과 이웃변이 $a=c\\sin A$, $b=c\\cos A$ 로 바로 구해져요. 30°·45°·60°이면 정확한 값, 아니면 근삿값이에요.',
@@ -67,7 +67,7 @@
     draw: (b, s, M, C) => rtLenDraw(b, M, C, { aStep: 2, bGiven: true, cStep: 3, formula: (m, st) => (st >= 3 || st === 99 ? 'a = b tan A,  c = \\frac{b}{cos A}' : 'a = b tan A') }),
     steps: (M) => [
       `이웃변 $b=${M.b.v}$ 와 $\\angle A=${M.A}^{\\circ}$ 를 알아요. 구하는 변은 대변 $a$ 와 빗변 $c$ 예요.`,
-      `$\\tan A=\\frac{a}{b}$ 에서 $a=b\\tan A=${M.b.v}\\tan${M.A}^{\\circ}=${vtex(M.a)}$ ${M.a.x ? '' : '(근삿값)'}`,
+      `$\\tan A=\\frac{a}{b}$ 에서 $a=b\\tan A=${M.b.v}\\tan ${M.A}^{\\circ}=${vtex(M.a)}$ ${M.a.x ? '' : '(근삿값)'}`,
       `$\\cos A=\\frac{b}{c}$ 에서 $c=\\frac{b}{\\cos A}=${vtex(M.c)}$ ${M.c.x ? '' : '(근삿값)'}`
     ],
     view: (M) => ({
@@ -123,7 +123,7 @@
     },
     steps: (M) => [
       M.obt ? `$\\angle B=${M.beta}^{\\circ}$ 가 둔각이므로 변 $CB$ 의 <b>연장선</b>에 꼭짓점 $A$ 에서 수선 $AH$ 를 내려요. $\\angle ABH=180^{\\circ}-${M.beta}^{\\circ}=${M.w}^{\\circ}$` : `꼭짓점 $A$ 에서 $BC$ 에 수선 $AH$ 를 내려 직각삼각형 $ABH$, $AHC$ 로 나눠요. $\\angle B=${M.beta}^{\\circ}$ 는 그대로 남아요.`,
-      `$\\triangle ABH$ 에서 $AH=${M.c}\\sin${M.w}^{\\circ}=${vtex(M.ah)}$, $BH=${M.c}\\cos${M.w}^{\\circ}=${vtex(M.bh)}$ ${M.ah.x ? '' : '(근삿값)'}`,
+      `$\\triangle ABH$ 에서 $AH=${M.c}\\sin ${M.w}^{\\circ}=${vtex(M.ah)}$, $BH=${M.c}\\cos ${M.w}^{\\circ}=${vtex(M.bh)}$ ${M.ah.x ? '' : '(근삿값)'}`,
       `$HC=${M.obt ? `BC+BH=${M.a}+${vtex(M.bh)}` : `BC-BH=${M.a}-${vtex(M.bh)}`}=${vtex(M.hc)}$ 를 구하고, $\\triangle AHC$ 에서 피타고라스 정리로 $AC=\\sqrt{AH^2+HC^2}=${vtex(M.ac)}$`
     ],
     view: (M) => ({
@@ -263,7 +263,7 @@
     poly(b, [A, C, B], 'ink', 3.4); if (st >= 1) { line(b, B, D, 'violet', 3.4); line(b, A, D, 'ink', 3.4); }
     ang(b, C, B, A, { color: 'ink', r: 20 });
     ang(b, B, C, A, { color: 'amber', r: 40, label: '30°', size: 16 });
-    if (st >= 1) { ang(b, D, C, A, { color: 'rose', r: 56, label: o.dl || '15°', size: 16, labelDist: 80 }); tick(b, A, B, 1, 'green'); tick(b, B, D, 1, 'green'); }
+    if (st >= 1) { if (o.dl !== null) ang(b, D, C, A, { color: 'rose', r: 56, label: o.dl || '15°', size: 16, labelDist: 80 }); if (o.a75) ang(b, A, C, D, { color: 'rose', r: 46, label: '75°', size: 16, labelDist: 60, labelRot: -14 }); tick(b, A, B, 1, 'green'); tick(b, B, D, 1, 'green'); }
     [[A, 'A'], [C, 'C'], [B, 'B']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, n === 'B' ? pt(B.x, -3) : cen, n, { size: 17, gap: 11 }); });
     if (st >= 1) { b.point(D, { color: 'ink', r: 4.5 }); tagOut(b, D, cen, 'D', { size: 17, gap: 11 }); }
     const L = o.L || {};
@@ -305,7 +305,7 @@
       const q = { tag: '[심화] 15°·75°', key: ['t15', kind, k].join('|'), stem: `그림에서 $\\angle C=90^{\\circ}$, $\\angle ABC=30^{\\circ}$, $\\overline{AC}=${k}$, $\\overline{AB}=\\overline{BD}$ 일 때, ` + stem.replace(/^그림에서 /, ''), choices: mkChoices(ans, wr), fig: { k, L, dl, kind }, given: [`${k}`, '30°'], ans: [vcan(ans)] };
       return checkQ(q);
     },
-    pdraw: (b, q) => draw15(b, q.fig.k, { step: 1, L: q.fig.L, dl: q.fig.kind === 't15' ? '15°' : '' })
+    pdraw: (b, q) => draw15(b, q.fig.k, { step: 1, L: q.fig.L, dl: q.fig.kind === 't15' ? '15°' : null, a75: q.fig.kind === 't75' })
   };
 
   /* ====================================================================== 7. 종이테이프 */
@@ -342,7 +342,7 @@
     draw(b, s, M, C) { const st = C.step, show = (n) => st >= n || st === 99; drawTape(b, M.w, M.th, { step: st, sideL: show(2) ? `${vcan(M.sd)}` : '', rows: show(3) ? [{ t: `둘레 = 4 × ${vcan(M.sd)} = ${vcan(M.per)}`, c: 'amber' }, { t: `넓이 = ${vcan(M.sd)} × ${M.w} = ${vcan(M.area)}`, c: 'green' }] : [] }); },
     steps: (M) => [
       `폭이 같은 두 테이프가 겹친 부분은 마주 보는 변이 평행한 <b>마름모</b>예요. 높이는 테이프의 폭 $${M.w}$ 와 같아요.`,
-      `한 변을 $s$ 라 하면 $\\sin${M.th}^{\\circ}=\\frac{${M.w}}{s}$ 이므로 $s=\\frac{${M.w}}{\\sin${M.th}^{\\circ}}=${vtex(M.sd)}$`,
+      `한 변을 $s$ 라 하면 $\\sin ${M.th}^{\\circ}=\\frac{${M.w}}{s}$ 이므로 $s=\\frac{${M.w}}{\\sin ${M.th}^{\\circ}}=${vtex(M.sd)}$`,
       `둘레는 $4s=${vtex(M.per)}$, 넓이는 $s\\times${M.w}=${vtex(M.area)}$ 예요.`
     ],
     view: (M) => ({

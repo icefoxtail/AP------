@@ -168,6 +168,7 @@
   const textW2 = (t, size) => textW(String(t).replace(/\\frac\{([^{}]*)\}\{([^{}]*)\}/g, (m, a, d) => (a.length > d.length ? a : d) + ' '), size);
   function T(b, p, str, o = {}) {
     if (str == null || str === '') return;
+    str = String(str).replace(/=\s*≈\s*/g, '≈ '); // "h = ≈4.6" 처럼 기호가 겹치지 않게
     let dx = o.dx || 0, dy = o.dy || 0;
     // 글자가 무대 밖으로 나가거나 다른 글자와 겹치면 가까운 빈 곳으로 밀어 놓는다(휴대폰에서 잘림·겹침 방지)
     if (!b.thumb && b.W && b.toS && b._P) {
