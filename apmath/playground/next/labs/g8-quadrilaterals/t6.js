@@ -359,8 +359,8 @@
       [['A', A], ['B', B], ['C', C], ['D', D]].forEach(([k, q]) => { b.point(q, { color: 'ink', r: 4.5 }); tagOut(b, q, O, k, { size: 17, gap: 11 }); });
       sq2.slice(1).forEach((q, i) => { b.point(q, { color: 'amber', r: 4.5 }); tagOut(b, q, O, names[i], { size: 16, gap: 10, color: 'amber' }); });
       if (cx.problem) {
-        const lab = M.K === 0 ? `□ABCD의 넓이 = ${M.area}` : '□ABCD의 넓이 = x';
-        T(b, pt(0, R), lab, { dy: 8, size: b.W < 560 ? 15 : 17, color: M.K === 0 ? 'sky' : 'rose' });
+        if (M.K === 0) sd(b, A, B, O, `${M.S}`, 'sky');
+        else T(b, pt(0, R), '□ABCD의 넓이 = x', { dy: 8, size: b.W < 560 ? 15 : 17, color: 'rose' });
         T(b, centroid2(over), M.K === 0 ? 'x' : `${M.ov}`, { size: 20, color: M.K === 0 ? 'rose' : 'green' });
         return;
       }
@@ -382,8 +382,8 @@
     }),
     prob: (M) => {
       const { S, area, ov } = M;
-      if (M.K === 0) return { tag: '회전 정사각형 넓이', key: `r0_${S}`, stem: `한 변의 길이가 ${S}인 정사각형 ABCD의 두 대각선의 교점 O에, 합동인 정사각형 OEFG의 한 꼭짓점을 놓았다. OEFG를 O를 중심으로 돌릴 때, 두 정사각형이 겹치는 부분의 넓이 x는? (정사각형 ABCD의 넓이는 ${area}이다.)`, choices: mkChoices(ov, [[area / 2, '절반이 아니에요. 4분의 1이에요.'], [area, 'ABCD 전체의 넓이예요.'], [area / 8, '8분의 1이 아니에요.'], [ov + 2, '값을 다시 확인해 보세요.']], { tex: (v) => `${v}`, plain: (v) => `${v}`, pad: 1, valid: (v) => v > 0 && Number.isInteger(v) }) };
-      return { tag: '회전 정사각형 넓이', key: `r1_${S}`, stem: `정사각형 ABCD의 두 대각선의 교점 O에, 합동인 정사각형 OEFG의 한 꼭짓점을 놓고 돌렸더니 겹치는 부분의 넓이가 ${ov}였다. 정사각형 ABCD의 넓이 x는?`, choices: mkChoices(area, [[ov * 2, '2배가 아니에요. 4배예요.'], [ov * 8, '8배가 아니에요.'], [ov * 3, '3배가 아니에요.'], [ov, '겹친 부분의 넓이 그대로예요.']], { tex: (v) => `${v}`, plain: (v) => `${v}`, pad: 4, valid: (v) => v > 0 && Number.isInteger(v) }) };
+      if (M.K === 0) return { tag: '회전 정사각형 넓이', key: `r0_${S}`, stem: `한 변의 길이가 ${S}인 정사각형 ABCD의 두 대각선의 교점 O에, 합동인 정사각형 OEFG의 한 꼭짓점을 놓았다. OEFG를 O를 중심으로 돌릴 때, 두 정사각형이 겹치는 부분의 넓이 x는?`, choices: mkChoices(ov, [[area / 2, '절반이 아니에요. 4분의 1이에요.'], [area, 'ABCD 전체의 넓이예요.'], [area / 8, '8분의 1이 아니에요.'], [ov + 2, '값을 다시 확인해 보세요.']], { tex: (v) => `${v}`, plain: (v) => `${v}`, pad: 1, valid: (v) => v > 0 && Number.isInteger(v) }) };
+      return { tag: '회전 정사각형 넓이', key: `r1_${S}`, stem: `정사각형 ABCD의 두 대각선의 교점 O에, 합동인 정사각형 OEFG의 한 꼭짓점을 놓고 돌렸더니 겹치는 부분의 넓이가 ${ov}${ov === 16 ? '이었다' : '였다'}. 정사각형 ABCD의 넓이 x는?`, choices: mkChoices(area, [[ov * 2, '2배가 아니에요. 4배예요.'], [ov * 8, '8배가 아니에요.'], [ov * 3, '3배가 아니에요.'], [ov, '겹친 부분의 넓이 그대로예요.']], { tex: (v) => `${v}`, plain: (v) => `${v}`, pad: 4, valid: (v) => v > 0 && Number.isInteger(v) }) };
     }
   };
   const centroid2 = (Pp) => (Pp.length ? pt(Pp.reduce((a, p) => a + p.x, 0) / Pp.length, Pp.reduce((a, p) => a + p.y, 0) / Pp.length) : pt(0, 0));

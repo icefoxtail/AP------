@@ -30,6 +30,12 @@
   };
 
   const aTag = (b, pts, v, color = 'sky', size = 16) => T(b, centroid(pts), `${v}`, { size, color, weight: 800 });
+  // 문제 그림에서 △ACD 의 넓이 글자: 점선 AE 가 △ACD 를 둘로 가르므로 더 넓은 쪽 한가운데에 놓아 선과 겹치지 않게 합니다.
+  const acdAt = (M) => {
+    const X = inter(M.A, M.E, M.D, M.C), up = [M.A, M.D, X], lo = [M.A, X, M.C];
+    const ar = (t) => Math.abs((t[1].x - t[0].x) * (t[2].y - t[0].y) - (t[2].x - t[0].x) * (t[1].y - t[0].y)) / 2;
+    return centroid(ar(up) >= ar(lo) ? up : lo);
+  };
   const aceAt = (M) => lerp(mid(M.C, M.E), centroid([M.A, M.C, M.E]), 0.45);
   const dotsN = (b, named, cen, o = {}) => Object.keys(named).forEach((k) => { b.point(named[k], { color: o.c || 'ink', r: 4.5 }); tagOut(b, named[k], (o.cens && o.cens[k]) || cen, k, { size: 17, gap: 11, color: o.c || 'ink' }); });
 
@@ -47,7 +53,7 @@
     },
     draw(b, s, M, cx) {
       const { A, B, C, D, E } = M, st = cx.step, quad = [A, B, C, D], cen = pt(L2(M) / 2, 0);
-      fit(b, { x0: -0.5, x1: M.L + 3.4, y0: -4.4, y1: 5.4 }, { t: 30, b: 72, l: 40, r: 40 });
+      fit(b, { x0: -0.5, x1: M.L + 3.4, y0: -4.4, y1: 5.4 }, { t: 30, b: cx.problem ? 88 : 72, l: 40, r: 40 });
       fillPoly(b, quad, 'sky', 0.1); poly(b, quad, 'ink', 3.4);
       line(b, A, C, 'green', 3, { dash: [8, 5] });
       const showE = cx.problem || cx.review ? st >= 2 || cx.problem : true;
@@ -56,10 +62,10 @@
       if (cx.problem || st >= 4 || (!cx.review)) poly(b, abe, 'amber', 3, { dash: [10, 6], alpha: 0.9 });
       if (cx.problem) {
         const k = M.K;
-        const cap = (str, col) => T(b, pt(M.L / 2 + 1, M.h1), str, { dy: 44, size: b.W < 560 ? 15 : 17, color: col, weight: 800 });
-        if (k === 0) { aTag(b, [A, B, C], M.S1, 'sky'); aTag(b, [A, C, D], M.S2, 'sky'); cap('△ABE의 넓이 = x', 'rose'); }
-        else if (k === 1) { aTag(b, [A, C, D], M.S2, 'sky'); cap('△ACE의 넓이 = x', 'rose'); }
-        else { aTag(b, [A, B, C], M.S1, 'sky'); aTag(b, [A, C, D], 'x', 'rose', 20); cap(`△ABE의 넓이 = ${M.tot}`, 'amber'); }
+        const cap = (str, col) => T(b, pt(M.L / 2 + 1, M.h1), str, { dy: 58, size: b.W < 560 ? 15 : 17, color: col, weight: 800 });
+        if (k === 0) { aTag(b, [A, B, C], M.S1, 'sky'); T(b, acdAt(M), `${M.S2}`, { size: 16, color: 'sky', weight: 800 }); cap('△ABE의 넓이 = x', 'rose'); }
+        else if (k === 1) { T(b, acdAt(M), `${M.S2}`, { size: 16, color: 'sky', weight: 800 }); cap('△ACE의 넓이 = x', 'rose'); }
+        else { aTag(b, [A, B, C], M.S1, 'sky'); T(b, acdAt(M), 'x', { size: 20, color: 'rose', weight: 800 }); cap(`△ABE의 넓이 = ${M.tot}`, 'amber'); }
         dotsN(b, { A, B, C, D, E }, mid(A, C), { cens: { E: C, D: mid(A, C) } });
         return;
       }
@@ -108,13 +114,13 @@
     },
     draw(b, s, M, cx) {
       const { A, B, C, D } = M, st = cx.step, tr = [A, B, C];
-      fit(b, { x0: -2.4, x1: M.w + 3.4, y0: -M.h - 0.5, y1: 0 }, { t: 30, b: 60, l: 36, r: 36 });
+      fit(b, { x0: -2.4, x1: M.w + 3.4, y0: -M.h - 0.5, y1: 0 }, { t: 30, b: cx.problem ? 80 : 60, l: 36, r: 36 });
       fillPoly(b, tr, 'sky', 0.1); poly(b, tr, 'ink', 3.4);
       if (!cx.problem || true) { line(b, pt(-2.4, -M.h), pt(M.w + 3.4, -M.h), 'green', 2.2, { dash: [8, 6], alpha: 0.9 }); par(b, pt(-2.4, -M.h), pt(M.w + 3.4, -M.h), 1, 'green', 0.9); par(b, B, C, 1, 'green', 0.88); }
       line(b, A, D, 'amber', 3.2);
       if (cx.problem) {
         const k = M.K;
-        if (k === 0) { sd(b, B, D, A, `${M.m}`, 'sky'); sd(b, D, C, A, `${M.n}`, 'sky'); T(b, pt(M.w / 2, -M.h / 3), `△ABC = ${M.S}`, { size: 15, color: 'sky', dy: 26 }); aTag(b, [A, B, D], 'x', 'rose', 20); }
+        if (k === 0) { sd(b, B, D, A, `${M.m}`, 'sky'); sd(b, D, C, A, `${M.n}`, 'sky'); T(b, pt(M.w / 2, 0), `△ABC의 넓이 = ${M.S}`, { size: b.W < 560 ? 15 : 17, color: 'sky', dy: 58, weight: 800 }); aTag(b, [A, B, D], 'x', 'rose', 20); }
         else { sd(b, B, D, A, `${M.m}`, 'sky'); sd(b, D, C, A, `${M.n}`, 'sky'); aTag(b, [A, B, D], M.S1, 'sky'); aTag(b, [A, D, C], 'x', 'rose', 20); }
         [['A', A, B], ['B', B, A], ['C', C, A], ['D', D, A]].forEach(([k2, q, c]) => { b.point(q, { color: 'ink', r: 4.5 }); tagOut(b, q, k2 === 'D' ? A : mid(A, mid(B, C)), k2, { size: 17, gap: 11 }); void c; });
         return;
@@ -166,7 +172,7 @@
       line(b, A, C, 'ink', 2.6); line(b, B, D, 'ink', 2.6);
       if (cx.problem) {
         const k = M.K;
-        if (k === 0) { poly(b, [D, B, C], 'amber', 3, { dash: [10, 6], alpha: 0.9 }); aTag(b, [B, O, C], M.dn, 'sky'); T(b, lerp(D, C, 0.5), `${M.dbc}`, { dx: 26, dy: 6, size: 16, color: 'amber' }); aTag(b, [A, B, O], 'x', 'rose', 20); }
+        if (k === 0) { poly(b, [D, B, C], 'amber', 3, { dash: [10, 6], alpha: 0.9 }); aTag(b, [B, O, C], M.dn, 'sky'); T(b, pt(4, 0), `△DBC의 넓이 = ${M.dbc}`, { dy: 40, size: b.W < 560 ? 15 : 17, color: 'amber' }); aTag(b, [A, B, O], 'x', 'rose', 20); }
         else { aTag(b, [A, B, O], M.side, 'sky'); aTag(b, [D, O, C], 'x', 'rose', 20); }
         dotsN(b, { A, B, C, D }, O); b.point(O, { color: 'ink', r: 4.5 }); T(b, O, 'O', { dx: 10, dy: -14, size: 16 });
         return;

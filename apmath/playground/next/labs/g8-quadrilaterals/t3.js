@@ -102,7 +102,7 @@
     fillPoly(b, p.pts, 'sky', 0.1); poly(b, p.pts, 'ink', 3.4); line(b, A, C, 'ink', 2.6); line(b, B, D, 'ink', 2.6);
     rightAll(b, p);
     if (M.K === 0) { ang(b, B, C, O, { color: 'sky', rings: 1, r: 36, label: dg(M.th), size: 15, labelDist: 60 }); ang(b, O, A, B, { color: 'rose', rings: 1, r: 26, label: 'x', size: 18, labelDist: 44 }); }
-    else { segTag(b, A, C, 0.5, `${M.acv}`, -18, 'sky'); segTag(b, B, O, 0.5, 'x', 18, 'rose', { size: 18 }); }
+    else { segTag(b, A, C, 0.27, `${M.acv}`, -18, 'sky'); segTag(b, B, O, 0.5, 'x', 18, 'rose', { size: 18 }); }
     dotO(b, O); dotsABCD(b, p);
   }
 

@@ -181,7 +181,7 @@
       const ad = rv ? bc : M.ad, A = M.A, B = M.B, C = M.C, D = rv ? pt(A.x + bc, A.y) : M.D, pts = [A, B, C, D], O = mid(A, C), st = cx.step, eq = ad === bc;
       fit(b, { x0: -0.4, x1: 1.2 + 9.4, y0: -5.4, y1: 0 }, { t: 40, b: 70, l: 46, r: 46 });
       fillPoly(b, pts, eq ? 'green' : 'rose', 0.1); poly(b, pts, 'ink', 3.4);
-      par(b, A, D, 1, 'green'); par(b, B, C, 1, 'green');
+      par(b, A, D, 1, 'green', 0.26); par(b, B, C, 1, 'green', 0.26);
       if (eq || rv) { tick(b, A, D, 3); tick(b, B, C, 3); }
       if (rv && st >= 1) line(b, A, C, 'green', 2.8, { dash: [8, 5] });
       if (rv && st >= 2) { ang(b, A, D, C, { color: 'sky', rings: 1, r: 26 }); ang(b, C, B, A, { color: 'sky', rings: 1, r: 26 }); fillPoly(b, [A, D, C], 'amber', 0.14); fillPoly(b, [C, B, A], 'amber', 0.14); }
@@ -220,7 +220,7 @@
     const pg = M.pg, { A, B, C, D, O } = pg;
     fit(b, bboxOf(pg.pts), { t: 40, b: 44, l: 46, r: 46 });
     fillPoly(b, pg.pts, 'sky', 0.1); poly(b, pg.pts, 'ink', 3.4);
-    par(b, A, D, 1, 'green'); par(b, B, C, 1, 'green'); tick(b, A, D, 3); tick(b, B, C, 3);
+    par(b, A, D, 1, 'green', 0.26); par(b, B, C, 1, 'green', 0.26); tick(b, A, D, 3); tick(b, B, C, 3);
     if (M.K === 0) { ang(b, B, C, A, { color: 'sky', rings: 1, r: 26, label: dg(M.beta), size: 16, labelDist: 56 }); ang(b, D, A, C, { color: 'rose', rings: 1, r: 28, label: 'x', size: 18, labelDist: 52 }); }
     else { sd(b, B, C, O, `${M.bc}`, 'sky'); sd(b, A, B, O, '4', 'sky'); }
     [['A', A], ['B', B], ['C', C], ['D', D]].forEach(([k, q]) => { b.point(q, { color: 'ink', r: 4.5 }); tagOut(b, q, O, k, { size: 17, gap: 11 }); });
@@ -257,7 +257,7 @@
         segTag(b, B, E, 0.5, `${M.h}`, -14, 'sky'); segTag(b, D, F, 0.5, `${M.h}`, 14, 'sky');
       }
       [['A', A], ['B', B], ['C', C], ['D', D]].forEach(([k, q]) => { b.point(q, { color: 'ink', r: 4.5 }); tagOut(b, q, O, k, { size: 17, gap: 11 }); });
-      [['E', E, 'amber'], ['F', F, 'amber']].forEach(([k, q, c]) => { b.point(q, { color: c, r: 4.5 }); T(b, q, k, { dx: k === 'E' ? -6 : 6, dy: k === 'E' ? -16 : 16, size: 17, color: c }); });
+      [['E', E, 'amber'], ['F', F, 'amber']].forEach(([k, q, c]) => { b.point(q, { color: c, r: 4.5 }); const sh = cx.problem ? 14 : 6; T(b, q, k, { dx: k === 'E' ? sh : 6, dy: k === 'E' ? -16 : 16, size: 17, color: c }); });
       if (cx.problem) return;
       if (!cx.review) b.handle('E', E, { color: 'amber', r: 8, ariaLabel: '점 E 가로로 끌기', drag: (w2) => { s.qbE = clamp(Math.round(w2.x), 1, 3); } });
       const cap = cx.review ? ['BE⊥AC, DF⊥AC → BE∥DF', `△ABE ≡ △CDF (RHA) → BE=DF=${M.h}, AE=CF=${M.e}`, '□EBFD: 한 쌍의 대변이 평행하고 길이가 같다 → 평행사변형'][clamp(st, 1, 3) - 1] : `AE=CF=${M.e}, EF=${M.ef} · BE∥DF, BE=DF=${M.h} → □EBFD 평행사변형`;

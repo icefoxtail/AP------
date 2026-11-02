@@ -11,7 +11,7 @@
   'use strict';
   const G = window.APL_QD;
   if (!G) return;
-  const { dimLine, parAll, DEG, clamp, seg01, pt, add, sub, mul, unit, mid, lerp, dist, rotP, inter, pick, rint, bboxOf, unionBox, T, tagOut, ang, tick, par, fillPoly, line, poly, fit, P, mkChoices, mkTextChoices, rd, notes, fmtN, dg, texDeg, para, sd, ll, an, tri, vlab, capLine, segTag, ci, josa } = G;
+  const { ang2, dimLine, parAll, DEG, clamp, seg01, pt, add, sub, mul, unit, mid, lerp, dist, rotP, inter, pick, rint, bboxOf, unionBox, T, tagOut, ang, tick, par, fillPoly, line, poly, fit, P, mkChoices, mkTextChoices, rd, notes, fmtN, dg, texDeg, para, sd, ll, an, tri, vlab, capLine, segTag, ci, josa } = G;
   const lenF = (v) => fmtN(v);
   const degF = G.degF;
   const eqB = 'rose';
@@ -128,8 +128,8 @@
       parAll(b, { A, B, C, D });
       if (cx.problem) {
         const K = M.K;
-        if (K === 0) { line(b, B, M.E0, 'green', 3.2); ang(b, B, C, M.E0, { color: 'green', rings: 1, r: 30 }); ang(b, B, M.E0, A, { color: 'green', rings: 1, r: 36 }); ang(b, B, C, A, { color: 'sky', rings: 1, r: 52, label: dg(M.beta), size: 15, labelDist: 74 }); xl(b, M.E0, A, B); b.point(M.E0, { color: 'ink', r: 4.5 }); tagOut(b, M.E0, O, 'E', { size: 17 }); }
-        else { line(b, A, M.E1, 'green', 3.2); ang(b, A, B, M.E1, { color: 'green', rings: 1, r: 30 }); ang(b, A, M.E1, D, { color: 'green', rings: 1, r: 36 }); ang(b, B, C, A, { color: 'sky', rings: 1, r: 26, label: dg(M.beta), size: 15, labelDist: 56 }); xl(b, M.E1, A, B); b.point(M.E1, { color: 'ink', r: 4.5 }); tagOut(b, M.E1, O, 'E', { size: 17 }); }
+        if (K === 0) { line(b, B, M.E0, 'green', 3.2); ang2(b, B, C, M.E0, A, { color: 'green', rings: 1, r: 34 }); ang(b, B, C, A, { color: 'sky', rings: 1, r: 52, label: dg(M.beta), size: 15, labelDist: 74 }); xl(b, M.E0, A, B); b.point(M.E0, { color: 'ink', r: 4.5 }); tagOut(b, M.E0, O, 'E', { size: 17 }); }
+        else { line(b, A, M.E1, 'green', 3.2); ang2(b, A, B, M.E1, D, { color: 'green', rings: 1, r: 34 }); ang(b, B, C, A, { color: 'sky', rings: 1, r: 26, label: dg(M.beta), size: 15, labelDist: 56 }); xl(b, M.E1, A, B); b.point(M.E1, { color: 'ink', r: 4.5 }); tagOut(b, M.E1, O, 'E', { size: 17 }); }
         dotsABCD(b, p);
         return;
       }
@@ -139,8 +139,8 @@
       }
       const Aa = M.ha, Bb = M.hb;
       if (st >= 2) {
-        ang(b, A, B, M.P, { color: 'sky', rings: 1, r: 26, label: dg(Aa), size: 14, labelDist: 56 }); ang(b, A, M.P, D, { color: 'sky', rings: 1, r: 26 });
-        ang(b, B, A, M.P, { color: 'rose', rings: 2, r: 26, label: dg(Bb), size: 14, labelDist: 56 }); ang(b, B, M.P, C, { color: 'rose', rings: 2, r: 26 });
+        ang(b, A, B, M.P, { color: 'sky', rings: 1, r: 26, trim: 4, hash: true, label: dg(Aa), size: 14, labelDist: 56 }); ang(b, A, M.P, D, { color: 'sky', rings: 1, r: 26, trim: 4, hash: true });
+        ang(b, B, A, M.P, { color: 'rose', rings: 2, r: 26, trim: 4, hash: true, label: dg(Bb), size: 14, labelDist: 56 }); ang(b, B, M.P, C, { color: 'rose', rings: 2, r: 26, trim: 4, hash: true });
         ang(b, M.P, A, B, { color: 'amber', r: 24, size: 15, label: st >= 3 ? '90°' : '', labelDist: 40 });
         b.point(M.P, { color: 'amber', r: 5 }); T(b, M.P, 'P', { dy: -16, size: 16, color: 'amber' });
       } else {
@@ -194,7 +194,7 @@
         b.point(O, { color: 'ink', r: 4.5 }); T(b, O, 'O', { dx: 0, dy: -16, size: 16 });
         if (K === 0) { dimLine(b, A, D, -38, `${M.w}`, 'sky'); sd(b, A, E, O, `${M.e}`, 'sky', { dy: -2 }); segTag(b, B, F, 0.5, 'x', 22, 'rose', { size: 18 }); }
         if (K === 1) { sd(b, A, E, O, `${M.e}`, 'sky'); sd(b, D, C, O, '', 'sky'); segTag(b, F, C, 0.5, 'x', 22, 'rose', { size: 18 }); }
-        if (K === 2) { T(b, lerp(O, pt(O.x, O.y), 0), `넓이 ${M.S}`, { dx: 0, dy: 40, size: 15, color: 'sky' }); T(b, lerp(A, F, 0.5), 'x', { dx: -6, dy: 8, size: 20, color: 'rose' }); }
+        if (K === 2) { T(b, pt((bx.x0 + bx.x1) / 2, 0), `□ABCD의 넓이 = ${M.S}`, { dy: 48, size: b.W < 560 ? 15 : 17, color: 'sky', weight: 800 }); T(b, lerp(A, F, 0.5), 'x', { dx: -6, dy: 8, size: 20, color: 'rose' }); }
         tagE(b, M);
         dotsABCD(b, p);
         return;
@@ -261,12 +261,12 @@
       parAll(b, { A, B, C, D });
       line(b, A, C, 'ink', 2.6); line(b, B, D, 'ink', 2.6);
       tick(b, A, O, 1); tick(b, O, C, 1); tick(b, B, O, 2); tick(b, O, D, 2);
-      if (!cx.problem || M.K === 0) { fillPoly(b, [A, B, O], 'amber', cx.problem ? 0.14 : st >= 2 ? 0.22 : 0.14); }
+      { fillPoly(b, [A, B, O], 'amber', cx.problem ? 0.14 : st >= 2 ? 0.22 : 0.14); }
       b.point(O, { color: 'ink', r: 4.5 }); T(b, O, 'O', { dx: 8, dy: -16, size: 16 });
-      sd(b, A, B, O, `${M.c}`, 'sky');
+      if (!cx.problem || M.K === 0) sd(b, A, B, O, `${M.c}`, 'sky');
       if (cx.problem) {
-        if (M.K === 0) { diagLab(b, A, C, 0.2, `AC=${M.ac}`, 'sky'); diagLab(b, B, D, 0.2, `BD=${M.bd}`, 'sky'); }
-        else { diagLab(b, A, C, 0.2, `AC=${M.ac}`, 'sky'); diagLab(b, B, D, 0.2, `BD=${M.bd}`, 'sky'); sdX(b, A, B, O); }
+        diagLab(b, A, C, 0.2, `AC=${M.ac}`, 'sky'); diagLab(b, B, D, 0.2, `BD=${M.bd}`, 'sky');
+        if (M.K === 1) { segTag(b, A, B, 0.5, 'x', -22, 'rose', { size: 18 }); capLine(b, pt((A.x + D.x) / 2, 0), `△ABO의 둘레 = ${M.per}`, 'amber', { dy: 44 }); }
       } else {
         segTag(b, A, O, 0.5, `${M.p}`, 14, 'amber'); segTag(b, O, C, 0.5, `${M.p}`, 14, 'sky'); segTag(b, B, O, 0.5, `${M.q}`, -14, 'amber'); segTag(b, O, D, 0.5, `${M.q}`, -14, 'sky');
       }
@@ -293,7 +293,6 @@
     }
   };
   function diagLab(b, p, q, f, str, color) { segTag(b, p, q, f, str, -16, color, { size: 15 }); }
-  function sdX(b, p, q, O) { sd(b, p, q, O, '', 'sky'); segTag(b, p, q, 0.5, 'x', -22, 'rose', { size: 18 }); }
 
   /* ====================================================================== 5. 각의 이등분선 → 이등변삼각형 */
   const isoBis = {
@@ -306,7 +305,7 @@
       const w = ci(s.qaIW, 8, 12), sd0 = ci(s.qaIS, 3, 7), beta = ci(s.qaB, 50, 130), p = para(w, sd0, beta);
       const E = pt(sd0, 0), ha = (180 - beta) / 2;
       const a = ci(s.qaPa, 3, 5), bb = ci(s.qaPb, 6, 9), pq = para(a, bb, 66);
-      return { w, s: sd0, beta, p, E, ha, ec: w - sd0, K: s.qaK || 0, a, bb, pq, Eq: pt(a - bb, 0), Dq: pq.D };
+      return { w, s: sd0, beta, p, E, ha, ec: w - sd0, K: s.qaK || 0, a, bb, pq, Eq: pt(bb, 0), Dq: pq.D };
     },
     draw(b, s, M, cx) {
       if (cx.problem && M.K === 1) { drawIso1(b, M); return; }
@@ -316,7 +315,7 @@
       parAll(b, { A, B, C, D }, 0.25);
       line(b, A, E, 'green', 3.4);
       if (cx.problem) {
-        ang(b, A, B, E, { color: 'sky', rings: 1, r: 28 }); ang(b, A, E, D, { color: 'sky', rings: 1, r: 28 });
+        ang2(b, A, B, E, D, { color: 'sky', rings: 1, r: 30 });
         sd(b, A, B, O, `${M.s}`, 'sky'); dimLine(b, B, C, 50, `${M.w}`, 'sky');
         segTag(b, E, C, 0.5, 'x', 22, 'rose', { size: 18 });
         b.point(E, { color: 'ink', r: 4.5 }); T(b, E, 'E', { dy: 20, size: 17 });
@@ -324,8 +323,8 @@
       }
       const ex = st >= 2 || !cx.review;
       fillPoly(b, [A, B, E], 'amber', st >= 3 ? 0.2 : 0.1);
-      ang(b, A, B, E, { color: 'sky', rings: 1, r: 26, label: dg(M.ha), size: 14, labelDist: 44 }); ang(b, A, E, D, { color: 'sky', rings: 1, r: 26, label: dg(M.ha), size: 14, labelDist: 46 });
-      if (ex) ang(b, E, A, B, { color: 'sky', rings: 1, r: 26, label: dg(M.ha), size: 14, labelDist: 46 });
+      ang(b, A, B, E, { color: 'sky', rings: 1, r: 26, trim: 4, hash: true, label: dg(M.ha), size: 14, labelDist: 44 }); ang(b, A, E, D, { color: 'sky', rings: 1, r: 26, trim: 4, hash: true, label: dg(M.ha), size: 14, labelDist: 46 });
+      if (ex) ang(b, E, A, B, { color: 'sky', rings: 1, r: 26, hash: true, label: dg(M.ha), size: 14, labelDist: 46 });
       if (st >= 3 || !cx.review) { tick(b, A, B, 1); tick(b, B, E, 1); segTag(b, B, E, 0.5, `${M.s}`, 22, 'amber'); segTag(b, E, C, 0.5, `${M.ec}`, 22, 'rose'); }
       sd(b, A, B, O, `${M.s}`, 'amber'); sd(b, A, D, O, `${M.w}`, 'sky');
       b.point(E, { color: 'amber', r: 5 }); T(b, E, 'E', { dy: 20, size: 17, color: 'amber' });
@@ -349,18 +348,19 @@
     prob: (M) => {
       if (M.K === 0) { const { s: sd0, w, ec } = M; return { tag: '이등분선 → 이등변', key: `i0_${sd0}_${w}`, stem: `평행사변형 ABCD에서 ∠A의 이등분선이 변 BC와 만나는 점을 E라 하자. AB=${sd0}, BC=${w}일 때, EC의 길이 x는?`, choices: mkChoices(ec, [[sd0, 'BE의 길이예요. EC=BC−BE예요.'], [w, 'BC 전체예요.'], [w + sd0, '더했어요.'], [w - sd0 + 1, '값을 다시 확인해 보세요.']], { tex: (v) => `${v}`, plain: (v) => `${v}`, pad: 1 }) }; }
       const { a, bb } = M;
-      return { tag: '이등분선 → 이등변 (연장선)', key: `i1_${a}_${bb}`, stem: `평행사변형 ABCD에서 ∠D의 이등분선이 변 CB의 연장선과 만나는 점을 E라 하자. AD=${a}, CD=${bb}일 때, BE의 길이 x는?`, choices: mkChoices(bb - a, [[bb, 'CE의 길이예요. BE=CE−CB예요.'], [a, 'AD의 길이예요.'], [bb + a, '더했어요.'], [bb - a + 1, '값을 다시 확인해 보세요.']], { tex: (v) => `${v}`, plain: (v) => `${v}`, pad: 1 }) };
+      return { tag: '이등분선 → 이등변 (연장선)', key: `i1_${a}_${bb}`, stem: `평행사변형 ABCD에서 ∠A의 이등분선이 변 BC의 연장선과 만나는 점을 E라 하자. AB=${bb}, BC=${a}일 때, CE의 길이 x는?`, choices: mkChoices(bb - a, [[bb, 'BE의 길이예요. CE=BE−BC예요.'], [a, 'BC의 길이예요.'], [bb + a, '더했어요.'], [bb - a + 1, '값을 다시 확인해 보세요.']], { tex: (v) => `${v}`, plain: (v) => `${v}`, pad: 1 }) };
     }
   };
-  // 문제 그림(연장선 경우): ∠D 의 이등분선이 CB 의 연장선과 E 에서 만난다
+  // 문제 그림(연장선 경우): ∠A 의 이등분선이 BC 의 연장선과 E 에서 만난다(AB > BC)
   function drawIso1(b, M) {
     const q = M.pq, { A, B, C, D, O } = q, E = M.Eq;
-    fit(b, bboxOf([A, B, C, D, E]), { t: 40, b: 60, l: 46, r: 46 });
-    fillPoly(b, q.pts, 'sky', 0.1); poly(b, q.pts, 'ink', 3.4); line(b, B, E, 'ink', 3.4); line(b, D, E, 'green', 3.4);
+    fit(b, bboxOf([A, B, C, D, E]), { t: 40, b: 70, l: 46, r: 46 });
+    fillPoly(b, q.pts, 'sky', 0.1); poly(b, q.pts, 'ink', 3.4); line(b, C, E, 'ink', 3.4); line(b, A, E, 'green', 3.4);
     parAll(b, { A, B, C, D });
-    ang(b, D, A, E, { color: 'sky', rings: 1, r: 30 }); ang(b, D, E, C, { color: 'sky', rings: 1, r: 36 });
-    sd(b, A, D, O, `${M.a}`, 'sky'); sd(b, D, C, O, `${M.bb}`, 'sky');
-    segTag(b, E, B, 0.5, 'x', 22, 'rose', { size: 18 });
+    ang2(b, A, B, E, D, { color: 'sky', rings: 1, r: 30 });
+    ang(b, E, A, B, { color: 'sky', rings: 1, r: 30, hash: true });
+    sd(b, A, B, O, `${M.bb}`, 'sky'); dimLine(b, B, C, 46, `${M.a}`, 'sky');
+    segTag(b, C, E, 0.5, 'x', 22, 'rose', { size: 18 });
     dotsABCD(b, q); b.point(E, { color: 'ink', r: 4.5 }); T(b, E, 'E', { dy: 20, size: 17 });
   }
 

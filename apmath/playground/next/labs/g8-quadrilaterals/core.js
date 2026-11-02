@@ -102,10 +102,12 @@
       if (!o.big && Math.abs(deg - 90) < 0.6 && !o.noRight) {
         b.right(V, A, B, { size: Math.min(r * 0.62, 17), color: col });
       } else {
-        b.arc(V, rw, a0, a0 + d, { sector: true, fill: col, fillAlpha: o.fa == null ? 0.2 : o.fa, color: null, ccw: d < 0, ref: o.ref });
+        const sg = d < 0 ? -1 : 1, tr = Math.min(Math.abs(d) * 0.3, (o.trim || 0) * DEG), t0 = a0 + sg * tr, t1 = a0 + d - sg * tr;
+        b.arc(V, rw, t0, t1, { sector: true, fill: col, fillAlpha: o.fa == null ? 0.2 : o.fa, color: null, ccw: d < 0, ref: o.ref });
         const rings = o.rings || 1;
-        b.arc(V, rw, a0, a0 + d, { color: col, width: 2.4, ccw: d < 0, ref: o.ref });
-        for (let i = 1; i < rings; i++) b.arc(V, rw - (i * 4.6) / k, a0, a0 + d, { color: col, width: 2.2, ccw: d < 0, ref: o.ref });
+        b.arc(V, rw, t0, t1, { color: col, width: 2.4, ccw: d < 0, ref: o.ref });
+        for (let i = 1; i < rings; i++) b.arc(V, rw - (i * 4.6) / k, t0, t1, { color: col, width: 2.2, ccw: d < 0, ref: o.ref });
+        if (o.hash) { const hm = (t0 + t1) / 2, hc = Math.cos(hm), hs = Math.sin(hm), r1 = rw - ((rings - 1) * 4.6 + 7) / k, r2 = rw + 7 / k; b.path([{ x: V.x + hc * r1, y: V.y + hs * r1 }, { x: V.x + hc * r2, y: V.y + hs * r2 }], { color: col, width: 2.2 }); }
       }
     }
     if (o.label) {
@@ -116,6 +118,13 @@
       T(b, V, o.label, { dx: Math.cos(la) * dst, dy: Math.sin(la) * dst, color: o.labelColor || col, size, alpha: o.alpha });
     }
     return { deg, mid: am };
+  }
+  // 각의 이등분선으로 나뉜 두 같은 각: 두 호를 조금 떼어 놓고 같은 표시(호 개수 + 짧은 가로선)를 합니다.
+  function ang2(b, V, X, M, Y, o = {}) {
+    const q = Object.assign({ trim: 4, hash: true }, o), l = q.label; delete q.label;
+    ang(b, V, X, M, Object.assign({}, q, o.label1 ? { label: o.label1 } : {}));
+    ang(b, V, M, Y, Object.assign({}, q, o.label2 ? { label: o.label2 } : {}));
+    void l;
   }
   function tick(b, p, q, count = 1, color = 'amber') { b.ticks(p, q, { color, count, size: 7 }); }
   function par(b, p, q, count = 1, color = 'green', f = 0.5) {
@@ -442,6 +451,6 @@
     pt, add, sub, mul, len, dist, unit, mid, lerp, polar, dirDeg, rotP, angBetween, cross, inter, polyArea, centroid, pick, rint, bboxOf, unionBox, shiftPts,
     textW, T, tagOut, vtx, sideTag, lenTag, ang, tick, par, fillPoly, line, poly, arcPart, fit, P, degF, cmF,
     josa, seeded, shuffle, mkChoices, mkTextChoices, newOrd,
-    sinD, cosD, dv, para, foot, refl, pOnLine, dots, sd, ll, an, tri, par2, vang, xlab, vlab, parAll, dimLine, capLine, segTag, asArr, ci, iga, frac, baseCtx, showAt, makeScene, register, notes, rd
+    sinD, cosD, dv, para, foot, refl, pOnLine, dots, sd, ll, an, tri, par2, vang, xlab, vlab, parAll, dimLine, ang2, capLine, segTag, asArr, ci, iga, frac, baseCtx, showAt, makeScene, register, notes, rd
   };
 })();

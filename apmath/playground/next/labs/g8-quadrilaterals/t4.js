@@ -101,7 +101,7 @@
         ang(b, A, B, D, { color: 'sky', rings: 1, r: 28, label: '120°', size: 15, labelDist: 54 });
         if (M.K === 0) { sd(b, A, D, O, `${M.a}`, 'sky'); sd(b, A, B, O, `${M.l}`, 'sky'); segTag(b, B, C, 0.5, 'x', 18, 'rose', { size: 18 }); }
         else if (M.K === 1) { sd(b, B, C, O, `${M.bc}`, 'sky'); sd(b, A, B, O, `${M.l}`, 'sky'); segTag(b, A, D, 0.5, 'x', -18, 'rose', { size: 18 }); }
-        else { sd(b, A, D, O, `${M.a}`, 'sky'); sd(b, A, B, O, `${M.l}`, 'sky'); T(b, mid(mid(A, B), mid(C, D)), 'x = 둘레', { size: 14, color: 'rose' }); }
+        else { sd(b, A, D, O, `${M.a}`, 'sky'); sd(b, A, B, O, `${M.l}`, 'sky'); T(b, mid(mid(A, B), mid(C, D)), 'x = 사각형 ABCD의 둘레', { size: 14, color: 'rose' }); }
         dotsT(b, A, B, C, D); return;
       }
       ang(b, A, B, D, { color: 'sky', rings: 1, r: 28, label: '120°', size: 15, labelDist: 54 });
