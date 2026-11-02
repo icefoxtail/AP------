@@ -13,7 +13,11 @@
 //   - answer, choices, solution and every classification field of the question are byte-identical;
 //   - the stem may differ only by (a) dropping the leading "[도형필요]"/"[그래프필요]" placeholder line once the
 //     figure is attached and (b) a few declared literal text fixes that contain no digit, "$" or "\";
-//   - the new figure file must exist;
+//   - a NEW figure is always required (the image reference must change, the file must exist and belong to this
+//     question: assets/images/<exam title>/q<ordinal>.<ext>); a stem edit is only allowed on top of that;
+//   - a human review file (REVIEW_SCHEMA, an approval evidence ref) must list, per question, the same contentEdits
+//     and the sha256 of the resulting stem, and carry this request's requestId/examUid/sourceArchiveFile and the
+//     question's UID - the length/character limits cannot judge meaning, the reviewer's recorded edit does;
 //   - the target row is a basic-scope approval (approved_* status, approved standard unit and sub-unit, evidence),
 //     is not review-reset pending, and is named in the request.
 // The reviewed basic parent link (basic-scope-source-links.json, bound to the stem/choices/figure fingerprint) is
@@ -30,6 +34,7 @@ import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 
 export const SCHEMA = "archive-basic-scope-rebind-request-v1";
+export const REVIEW_SCHEMA = "archive-basic-scope-rebind-review-v1";
 export const RECEIPT_SCHEMA = "archive-basic-scope-rebind-registration-v1";
 const META = "archive/data/question_metadata.json";
 const IDENTITY = "archive/data/question_identity_map.json";
@@ -112,6 +117,19 @@ function explainContentChange(previous, current, edits, hasNewImage) {
   return rule;
 }
 
+// The one human review file bound to this request. Its identity fields must equal the request, so a review written
+// for another request/exam/question cannot be reused.
+function loadReview(root, req) {
+  const reviews = (req.approval.evidenceRefs || []).map(ref => ({ ref, doc: JSON.parse(fs.readFileSync(safePath(root, ref.path), "utf8")) }))
+    .filter(row => row.doc?.schemaVersion === REVIEW_SCHEMA);
+  if (reviews.length !== 1) fail(`exactly one ${REVIEW_SCHEMA} approval evidence file required`);
+  const { ref, doc } = reviews[0];
+  if (doc.requestId !== req.requestId || doc.examUid !== req.examUid || doc.sourceArchiveFile !== req.sourceArchiveFile)
+    fail("review file requestId/examUid/sourceArchiveFile differ from the request");
+  if (!Array.isArray(doc.questions)) fail("review file questions[] required");
+  return { ref, doc };
+}
+
 export function registerBasicScopeRebind({ root, request: req, write = false, verifyProjection = false }) {
   if (req?.schemaVersion !== SCHEMA) fail("request schema mismatch");
   if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(req.requestId || "")) fail("valid requestId required");
@@ -119,6 +137,7 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
   if (req.approval?.type !== "BASIC_SCOPE_REBIND" || req.approval.metadataReviewed !== true) fail("BASIC_SCOPE_REBIND approval with metadataReviewed=true required");
   requireText(req.approval.approvedBy, "approvedBy");
   evidenceRefs(root, req.approval.evidenceRefs, "approval");
+  const review = loadReview(root, req);
   if (!Array.isArray(req.items) || !req.items.length || req.items.length > MAX_ITEMS) fail(`items[] required (1..${MAX_ITEMS})`);
   if (req.registryChanges !== undefined) fail("registryChanges are not allowed in a rebind");
 
@@ -159,6 +178,7 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
     if (!Number.isInteger(n) || n < 1 || n > bank.length || row.sourceOrdinal !== n || id.sourceOrdinal !== n) fail(`UID/source ordinal mismatch: ${uid}`);
     requireText(item.reason, `${uid} reason`);
     evidenceRefs(root, item.evidenceRefs, uid);
+    if (!item.evidenceRefs.some(ref => ref.path === review.ref.path && ref.sha256 === review.ref.sha256)) fail(`${uid} evidenceRefs must include the review file`);
     if (!item.before || !item.after || Object.keys(item.before).sort().join() !== "contentFingerprint,sourceFingerprint" ||
         Object.keys(item.after).sort().join() !== "contentFingerprint,sourceFingerprint") fail(`${uid} before/after must hold exactly sourceFingerprint and contentFingerprint`);
     const current = bank[n - 1], prior = previousBank[n - 1];
@@ -185,14 +205,21 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
     if (!eq(prior.choices, current.choices)) fail(`${uid} choices changed`);
     if (!eq(prior.solution, current.solution)) fail(`${uid} solution changed`);
     for (const field of CLASSIFICATION_FIELDS) if (!eq(prior[field], current[field])) fail(`${uid} classification field changed in source: ${field}`);
-    const newImage = Boolean(current.image) && current.image !== prior.image;
-    const contentRule = explainContentChange(prior, current, item.contentEdits || [], newImage);
-    if (contentRule === "UNCHANGED" && prior.image === current.image) fail(`${uid} figure reference did not change`);
-    if (current.image) {
-      // Student figures are referenced relative to archive/ (e.g. assets/images/<exam>/q18.svg).
-      const figure = path.resolve(root, "archive", String(current.image));
-      if (!figure.startsWith(path.resolve(root, "archive") + path.sep) || !fs.existsSync(figure)) fail(`${uid} figure file missing: ${current.image}`);
-    }
+    // A new figure is the reason for this path; the stem may only follow it.
+    if (!current.image || current.image === prior.image) fail(`${uid} a newly attached figure is required (image reference unchanged)`);
+    const figureDir = `assets/images/${path.basename(source, ".js")}/`;
+    const figureName = String(current.image).slice(figureDir.length);
+    if (!String(current.image).startsWith(figureDir) || !new RegExp(`^q0*${n}\\.[A-Za-z0-9]+$`).test(figureName))
+      fail(`${uid} figure must be ${figureDir}q${n}.<ext>: ${current.image}`);
+    const figure = path.resolve(root, "archive", String(current.image));
+    if (!figure.startsWith(path.resolve(root, "archive") + path.sep) || !fs.existsSync(figure)) fail(`${uid} figure file missing: ${current.image}`);
+    const edits = item.contentEdits || [];
+    const contentRule = explainContentChange(prior, current, edits, true);
+    // Human review binding: same edits, same resulting stem.
+    const reviewed = review.doc.questions.filter(row => row?.questionUid === uid);
+    if (reviewed.length !== 1 || reviewed[0].sourceOrdinal !== n) fail(`${uid} review file needs exactly one entry for this question`);
+    if (!eq(reviewed[0].contentEdits, edits)) fail(`${uid} contentEdits differ from the review file`);
+    if (reviewed[0].contentAfterSha256 !== sha256(String(current.content ?? ""))) fail(`${uid} stem differs from the reviewed stem (contentAfterSha256)`);
     // Reviewed basic parent link bound to the same bytes.
     const existingLink = links.records.find(link => link.sourceFile === source && Number(link.sourceOrdinal) === n);
     let linkAction = "NONE", nextLink = null;

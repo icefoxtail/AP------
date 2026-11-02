@@ -15,6 +15,7 @@ const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".."
 const SRC = "original/high/h2/1mid/99_테스트고_1학기_중간_고2_대수.js";
 const EVID = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1";
 const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
+const EXAM_DIR = "99_테스트고_1학기_중간_고2_대수";
 const uid = n => "qid_v1_" + sha256(`${SRC}#${n}`);
 
 const baseQuestions = () => [
@@ -25,7 +26,7 @@ const baseQuestions = () => [
 // What the repository holds after the figure fix.
 const fixedQuestions = () => {
   const bank = baseQuestions();
-  bank[1] = { ...bank[1], image: "assets/images/t/q2.svg", imageAlt: "그림", content: "다음 그림과 같이 선분 $AC$의 길이를 구하시오. (6점)" };
+  bank[1] = { ...bank[1], image: `assets/images/${EXAM_DIR}/q2.svg`, imageAlt: "그림", content: "다음 그림과 같이 선분 $AC$의 길이를 구하시오. (6점)" };
   return bank;
 };
 const sourceText = bank => `window.questionBank = ${JSON.stringify(bank, null, 2)};\n`;
@@ -44,7 +45,7 @@ function fixture({ current = fixedQuestions(), approvedMeta = {}, links = [], fi
   git(dir, "add", "-A"); git(dir, "commit", "-qm", "approved bytes");
   const previousBlob = git(dir, "hash-object", `archive/exams/${SRC}`);
   write(dir, `archive/exams/${SRC}`, sourceText(current));
-  if (figure) write(dir, "archive/assets/images/t/q2.svg", "<svg xmlns=\"http://www.w3.org/2000/svg\"/>");
+  if (figure) write(dir, `archive/assets/images/${EXAM_DIR}/q2.svg`, "<svg xmlns=\"http://www.w3.org/2000/svg\"/>");
   const metaRow = (q, n) => ({ questionUid: uid(n), sourceArchiveFile: SRC, sourceOrdinal: n, sourceQuestionNo: String(n),
     sourceFingerprint: sourceFingerprint(q), contentFingerprint: contentFingerprint(q), standardCourse: "대수", standardUnitKey: q.standardUnitKey,
     subUnitKey: q.subUnitKey, metadataStatus: "approved_partial_with_explicit_holds", tagStatus: "approved_subunit_concept_partial",
@@ -54,22 +55,35 @@ function fixture({ current = fixedQuestions(), approvedMeta = {}, links = [], fi
   write(dir, "archive/data/basic-scope-source-links.json", JSON.stringify({ schemaVersion: "archive2-reviewed-basic-source-links-v1", status: "REVIEWED_SCOPE_LINKS", records: links }, null, 2) + "\n");
   write(dir, "archive/data/basic-scope-parent-links.json", JSON.stringify({ records: parentRows ?? [
     { grade: "고2", curriculumKey: "2015", courseKey: "수학I", standardUnitKey: "H15-M1-05", subUnitKey: "H15-M1-05-TRIGONOMETRIC_DEFINITION", L1: "삼각함수", L2: "삼각함수" }] }, null, 2) + "\n");
-  const evidenceText = JSON.stringify({ review: "q2 figure-only change reviewed" }) + "\n";
-  write(dir, `${EVID}/rebind-test.review.json`, evidenceText);
-  const ref = { path: `${EVID}/rebind-test.review.json`, sha256: sha256(evidenceText) };
   const q2 = current[1], p2 = prior[1];
   const request = {
     schemaVersion: "archive-basic-scope-rebind-request-v1", requestId: "rebind-test-01", examUid: "99_테스트고_1학기_중간_고2_대수", sourceArchiveFile: SRC,
     expectedSourceBlobSha1: git(dir, "hash-object", `archive/exams/${SRC}`), previousSourceBlobSha1: previousBlob, expectedQuestionCount: 2,
-    approval: { type: "BASIC_SCOPE_REBIND", metadataReviewed: true, approvedBy: "test reviewer", evidenceRefs: [ref] },
+    approval: { type: "BASIC_SCOPE_REBIND", metadataReviewed: true, approvedBy: "test reviewer", evidenceRefs: [] },
     items: [{ questionUid: uid(2), sourceOrdinal: 2,
       before: { sourceFingerprint: sourceFingerprint(p2), contentFingerprint: contentFingerprint(p2) },
       after: { sourceFingerprint: sourceFingerprint(q2), contentFingerprint: contentFingerprint(q2) },
       contentEdits: [{ from: "길움을", to: "길이를" }],
       basicParent: { grade: "고2", curriculumKey: "2015", courseKey: "수학I", L1: "삼각함수", L2: "삼각함수" },
-      reason: "figure attached, placeholder removed, one typo fixed", evidenceRefs: [ref] }],
+      reason: "figure attached, placeholder removed, one typo fixed", evidenceRefs: [] }],
   };
-  return { dir, request, ref, previousBlob };
+  const f = { dir, request, current, previousBlob };
+  bind(f);
+  return f;
+}
+// Writes the human review file for the request as it stands now and binds it (approval + every item).
+// `tweak` edits the review document before it is written, to model wrong or foreign reviews.
+function bind(f, tweak = () => {}) {
+  const q = f.current;
+  const review = { schemaVersion: "archive-basic-scope-rebind-review-v1", requestId: f.request.requestId, examUid: f.request.examUid, sourceArchiveFile: SRC,
+    questions: f.request.items.map(item => ({ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, contentEdits: item.contentEdits || [],
+      contentAfterSha256: sha256(String(q[item.sourceOrdinal - 1].content ?? "")) })) };
+  tweak(review);
+  const text = JSON.stringify(review, null, 2) + "\n";
+  write(f.dir, `${EVID}/rebind-test.review.json`, text);
+  f.ref = { path: `${EVID}/rebind-test.review.json`, sha256: sha256(text) };
+  f.request.approval.evidenceRefs = [f.ref];
+  for (const item of f.request.items) item.evidenceRefs = [f.ref];
 }
 const snapshot = dir => ["archive/data/question_metadata.json", "archive/data/question_identity_map.json", "archive/data/basic-scope-source-links.json"]
   .map(rel => fs.readFileSync(path.join(dir, rel), "utf8")).join("\u0000");
@@ -135,9 +149,72 @@ test("refuses stem changes beyond the placeholder line and declared digit-free t
   refuses(i, /stem differs from approved stem/);
 });
 
+test("a stem edit without a newly attached figure is refused (the figure is the reason for this path)", () => {
+  // q1 has no figure at all; a "typo fix" there must not pass just because the edit is short and digit-free.
+  const bank = fixedQuestions(); bank[0] = { ...bank[0], content: "$\\sin\\theta=\\frac{1}{2}$일 때 수는?" };
+  const f = fixture({ current: bank });
+  const prior = baseQuestions()[0];
+  f.request.items = [{ questionUid: uid(1), sourceOrdinal: 1,
+    before: { sourceFingerprint: sourceFingerprint(prior), contentFingerprint: contentFingerprint(prior) },
+    after: { sourceFingerprint: sourceFingerprint(bank[0]), contentFingerprint: contentFingerprint(bank[0]) },
+    contentEdits: [{ from: "값은", to: "수는" }], reason: "typo", evidenceRefs: [] }];
+  bind(f);
+  refuses(f, /a newly attached figure is required/);
+});
+
+test("the figure must be this question's own file", () => {
+  for (const image of [`assets/images/${EXAM_DIR}/q11.svg`, "assets/images/other-exam/q2.svg", `assets/images/${EXAM_DIR}/q2-solution.svg`, `assets/images/${EXAM_DIR}/sub/q2.svg`]) {
+    const bank = fixedQuestions(); bank[1].image = image;
+    const f = fixture({ current: bank, figure: false });
+    write(f.dir, `archive/${image}`, "<svg xmlns=\"http://www.w3.org/2000/svg\"/>");
+    refuses(f, /figure must be/);
+  }
+});
+
+test("the human review file binds the stem edits and the resulting stem; short edits that flip meaning need the reviewer's record", () => {
+  // The request declares an edit the reviewer never listed.
+  const unlisted = fixture(); bind(unlisted, review => { review.questions[0].contentEdits = []; });
+  refuses(unlisted, /contentEdits differ from the review file/);
+  // The reviewer listed another edit than the request applies.
+  const other = fixture(); bind(other, review => { review.questions[0].contentEdits = [{ from: "길움을", to: "길이을" }]; });
+  refuses(other, /contentEdits differ from the review file/);
+  // The reviewed resulting stem is not the stem in the source.
+  const stem = fixture(); bind(stem, review => { review.questions[0].contentAfterSha256 = "0".repeat(64); });
+  refuses(stem, /stem differs from the reviewed stem/);
+  // A meaning-flipping but short, digit-free edit passes the character rules; only a review that records it can bind it.
+  const bank = fixedQuestions(); bank[1].content = "다음 그림과 같이 선분 $AC$의 길이를 구하시오. (6점)".replace("구하", "찾");
+  const flipped = fixture({ current: bank }); flipped.request.items[0].contentEdits = [{ from: "길움을", to: "길이를" }, { from: "구하", to: "찾" }];
+  bind(flipped, review => { review.questions[0].contentEdits = [{ from: "길움을", to: "길이를" }]; });
+  refuses(flipped, /contentEdits differ from the review file/);
+  // No review file / more than one / not an approval evidence ref of this request.
+  const none = fixture(); write(none.dir, `${EVID}/other.json`, "{}\n");
+  none.request.approval.evidenceRefs = [{ path: `${EVID}/other.json`, sha256: sha256("{}\n") }];
+  none.request.items[0].evidenceRefs = none.request.approval.evidenceRefs;
+  refuses(none, /exactly one archive-basic-scope-rebind-review-v1 approval evidence file required/);
+  const detached = fixture(); write(detached.dir, `${EVID}/other.json`, "{}\n");
+  detached.request.items[0].evidenceRefs = [{ path: `${EVID}/other.json`, sha256: sha256("{}\n") }];
+  refuses(detached, /evidenceRefs must include the review file/);
+  const missingQ = fixture(); bind(missingQ, review => { review.questions = []; });
+  refuses(missingQ, /review file needs exactly one entry/);
+});
+
+test("a review written for another request, exam or question cannot be reused", () => {
+  for (const [what, tweak, pattern] of [
+    ["requestId", r => { r.requestId = "basic-rebind-other-q11"; }, /requestId\/examUid\/sourceArchiveFile differ/],
+    ["examUid", r => { r.examUid = "98_다른고_1학기_중간_고2_대수"; }, /requestId\/examUid\/sourceArchiveFile differ/],
+    ["sourceArchiveFile", r => { r.sourceArchiveFile = "original/high/h2/1mid/98_다른고.js"; }, /requestId\/examUid\/sourceArchiveFile differ/],
+    ["questionUid", r => { r.questions[0].questionUid = uid(1); }, /review file needs exactly one entry/],
+    ["ordinal", r => { r.questions[0].sourceOrdinal = 1; }, /review file needs exactly one entry/],
+    ["shape", r => { delete r.questions; }, /questions\[\] required/],
+  ]) {
+    const f = fixture(); bind(f, tweak);
+    refuses(f, pattern);
+  }
+});
+
 test("refuses placeholder removal without a newly attached figure", () => {
   const bank = fixedQuestions(); delete bank[1].image;
-  refuses(fixture({ current: bank, figure: false }), /placeholder line removed without a newly attached figure/);
+  refuses(fixture({ current: bank, figure: false }), /a newly attached figure is required/);
 });
 
 test("refuses when nothing changed, or the figure file is missing", () => {
