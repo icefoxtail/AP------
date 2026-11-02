@@ -802,12 +802,14 @@ async function logout() {
     }
     state.auth = { id: null, name: null, role: null };
     state.ui.userName = '';
+    if (typeof apmsClassHashForget === 'function') apmsClassHashForget(); // 주소 #class= 와 열린 반을 지운다(다른 계정이 로그인해도 앞 사용자의 반이 열리지 않게)
     renderLogin();
     toast('로그아웃 되었습니다.', 'info');
 }
 
 async function loadData(isInitial = false) {
     const session = getSession();
+    if (typeof apmsClassHashNoteLoad === 'function') apmsClassHashNoteLoad(session); // N4: 첫 호출이 부팅. 새로고침 시 반 화면 복원 판단용
     if (!session) { renderLogin(); return; }
 
     state.auth = { id: session.id, name: session.name, role: session.role };
@@ -882,9 +884,15 @@ async function loadData(isInitial = false) {
     apmsInvalidateDataIndexes();
     apmsGetDataIndexes();
     
+    // N4: 부팅·로그인 직후(isInitial)이고 열린 반이 없으면, 주소의 #class=<id>로 반 화면을 복원한다(접근 가능한 반만).
+    const restoreClassId = (isInitial && !state.ui.currentClassId && typeof apmsClassHashRestoreTarget === 'function')
+        ? apmsClassHashRestoreTarget(session) : '';
     if (state.ui.currentClassId) {
         renderClass(state.ui.currentClassId);
+    } else if (restoreClassId) {
+        apmsClassHashRestore(restoreClassId);
     } else {
+        if (typeof apmsClassHashBootDone === 'function') apmsClassHashBootDone(false);
         if (state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') {
             renderAdminControlCenter();
         } else {

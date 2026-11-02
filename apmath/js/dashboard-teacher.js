@@ -75,7 +75,7 @@ function renderTeacherDashboardView() {
 
     const classStatus = `
         <section class="ap-dash-card">
-            <h3 class="ap-dash-card__title">학급관리</h3>
+            <h3 class="ap-dash-card__title">반 관리</h3>
             ${tabHtml}
             <div class="ap-dashboard-class-list" style="display:flex; flex-direction:column; gap:8px;">${filteredClasses.map(c => renderClassSummaryCard(c, data)).join('')}</div>
         </section>
