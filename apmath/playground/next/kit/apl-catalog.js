@@ -1209,6 +1209,27 @@ window.APLab.catalog = {
    "tags": [
     "경우의 수"
    ]
+  },
+  {
+   "id": "prob-probability",
+   "course": "probstat",
+   "unit": "확률",
+   "strand": "prob",
+   "order": 2,
+   "title": "확률 실험실",
+   "short": "확률",
+   "summary": "6×6 격자에서 조건에 맞는 칸을 칠해 확률을 세고 덧셈정리·여사건을 넓이로 보며, 조건부확률에서 분모가 바뀌는 것을 넓이 사각형으로 확인하고, 점 이동·공 옮기기·동전 뒤집기 반복 시행을 상태도와 수천 번 시뮬레이션으로 비교합니다.",
+   "keywords": "확률 표본공간 주사위 두 개 격자 여사건 덧셈정리 배반사건 조건부확률 독립 독립사건 베이즈 나무 그림 분할표 독립시행 반복 시행 상태도 경로 수 점 이동 공 옮기기 동전 뒤집기 시뮬레이션 수능 평가원 확률과 통계",
+   "badge": "확률",
+   "scenes": [
+    "표본공간 격자 색칠과 덧셈정리",
+    "조건부확률과 넓이 사각형",
+    "독립시행·반복 시행 상태도"
+   ],
+   "legacy": "next/labs/prob-probability.html",
+   "next": "next/labs/prob-probability.html",
+   "glyph": "<rect x=\"10\" y=\"12\" width=\"60\" height=\"56\" rx=\"4\"/><path d=\"M10 40 H70 M36 12 V68\"/><rect x=\"10\" y=\"40\" width=\"26\" height=\"28\" fill=\"currentColor\" fill-opacity=\".25\" stroke=\"none\"/>",
+   "sceneTotal": 5
   }
  ],
  "courses": [
