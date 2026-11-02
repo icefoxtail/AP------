@@ -41,6 +41,7 @@ body.ap-modal-open .apms-qf-open { visibility: hidden; }
 /* PC 상단 막대: 알약 모양(글자 + 단축키 안내). 이름 칸(#desktop-header-user)은 auto 여백으로 오른쪽에 붙으므로 order로 그 뒤에 둔다. */
 .desktop-topbar .apms-qf-open--pill {
     order: 2;
+    height: 40px; /* 상단 막대(58px)의 가운데에 위아래 여유를 두고 앉는다. 마우스용 PC 막대라 44px 터치 칸은 쓰지 않는다. */
     gap: 8px;
     padding: 0 12px;
     border: 1px solid var(--border);
