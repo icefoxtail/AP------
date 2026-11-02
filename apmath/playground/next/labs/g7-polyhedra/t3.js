@@ -1,6 +1,6 @@
 /* ==========================================================================
    중1 · 다면체와 정다면체 — 탭 ③ 「정다면체의 전개도와 꼬인 위치」 (t3.js, order 30) — 장면 8개
-   · p3-1 정육면체의 전개도 11가지 · p3-2 [함정] 겹치는 꼭짓점 · p3-3 평행한 면과 수직인 면 · p3-4 꼬인 위치의 모서리
+   · p3-1 정육면체의 전개도 11가지 · p3-2 [함정] 겹치는 꼭짓점 · p3-3 평행한 면과 수직인 면 · p3-4 정다면체에서 꼬인 위치의 모서리(정육면체·정사면체·정팔면체)
    · p3-5 정사면체의 전개도 · p3-6 정팔면체·정십이면체·정이십면체의 전개도 · p3-7 겉면 위의 최단 경로 · p3-8 주사위의 전개도
    p3-2·p3-5·p3-6은 전개도의 모든 점에 알파벳을 붙이되 처음에는 회색으로 작게만 둡니다. 점이나 모서리를 고르면 접었을 때 겹치는 점 · 붙는 모서리만 같은 강조색(노랑)으로 보이고 나머지는 회색입니다.
    모서리는 번호 대신 양 끝 점 이름(모서리 AB)으로 부릅니다(geo.js foldInfoOf 가 접은 모양의 3차원 위치로 계산). p3-1·p3-3 은 면 이름을 A~F 로 하고, p3-8(주사위)은 눈의 수를 그대로 씁니다.
@@ -506,6 +506,12 @@
     }
     return '다른 두 쌍을 찾고 나면 남은 두 면이 마지막 한 쌍이에요.';
   }
+  // 가려진 고른 면: 눈(점)은 그리지 않고, 점선 테두리만 그린 뒤 이름·숫자 배지를 입체 바깥쪽 모서리 끝에 붙입니다(보이는 면의 글자·눈과 섞이지 않게).
+  function ghostFace(D, p, faces, hi, txt) {
+    D.panel(p, hi, 0, hi, 3, { dash: [7, 5], alpha: 0.9 });
+    const R = [[0, 0], [28, 0], [-28, 0], [0, 28], [0, -28], [28, 28], [-28, -28], [28, -28], [-28, 28], [48, 0], [-48, 0], [0, 48], [0, -48]];
+    D.label(cen3(p), txt, { color: hi, size: 20, badge: true, at: R });
+  }
   const IDEA = '한 줄로 이어진 세 칸의 양 끝은 마주 봐요. ㄹ자로 이어진 네 칸의 양 끝도 마주 봐요(ㄷ자는 아니에요). 그래도 남은 두 면이 마지막 한 쌍이에요.';
   const inPoly = (p, poly) => { let c = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const a = poly[i], q = poly[j]; if ((a.y > p.y) !== (q.y > p.y) && p.x < ((q.x - a.x) * (p.y - a.y)) / (q.y - a.y) + a.x) c = !c; } return c; };
   // 단계에 따라 보일 면: 같은 강조색 한 쌍(a) · 수직인 네 면(p)
@@ -547,12 +553,14 @@
       const role = faceRoles(C, st, f, C.problem ? -1 : opp, 6), any = role.some((r) => r);
       const { faces, vis } = drawFacesOp(D, net, t, (i) => ROLE[role[i]] || { c: 'green', a: 0.08 }, any ? 0.72 : 1);
       const fin = t >= 0.97;
+      const ghosts = [];
       faces.forEach((p, i) => {
         if (fin && !vis[i] && !role[i]) return;
         const hi = role[i] === 'a' ? AMB : role[i] === 'p' ? SKY : null;
-        if (fin && !vis[i]) D.panel(p, hi, 0.14, hi, 3, { dash: [7, 5], alpha: 0.9 });
+        if (fin && !vis[i]) { ghosts.push([p, hi, fLet(net, i)]); return; }
         faceTxt(D, C, cen3(p), fLet(net, i), { color: hi || (C.problem ? 'ink' : 'muted'), size: hi || C.problem ? 22 : 19, at: [[0, 0], [0, -17], [0, 17], [-17, 0], [17, 0]] });
       });
+      ghosts.forEach(([p, hi, tx]) => { if (C.txt) ghostFace(D, p, faces, hi, tx); else D.panel(p, hi, 0, hi, 3, { dash: [7, 5], alpha: 0.9 }); }); // 가려진 고른 면은 맨 나중에(앞면 글자를 피해서)
       if (C.txt && !C.thumb) {
         if (C.problem) banner(b, [{ t: '정육면체의 전개도', c: 'ink', size: 16 }], C);
         else {
@@ -594,13 +602,20 @@
     }
   };
 
-  /* ------------------------------------------------------------------ p3-4 꼬인 위치의 모서리 (정육면체) */
+  /* ------------------------------------------------------------------ p3-4 꼬인 위치의 모서리 (정육면체 · 정사면체 · 정팔면체)
+     입체는 칩으로 고르고, 전개도를 접은 입체의 3차원 모델(net.sol)로 기준 모서리와의 관계(만남·평행·꼬인 위치)를 셉니다.
+     색: 만나는 것 빨강 · 평행한 것 파랑 · 꼬인 위치 초록 · 기준 모서리 노랑. 한 단계에 한 종류만 칠하고 앞 단계는 회색으로 둡니다. 번호 대신 양 끝 점 이름으로 부릅니다. */
+  const OCTA2 = POLYSPECS.slice(0, 2);
+  const SOLIDS = [{ name: '정육면체', specs: CUBE5 }, { name: '정사면체', specs: TETRA2 }, { name: '정팔면체', specs: OCTA2 }];
+  const solidOf = (s) => SOLIDS[clamp(s.phSolid | 0, 0, 2)];
   const edgeNm = (net, fi, vi) => net.edgeKey(fi, vi);
   function skewModel(s) {
-    const net = netOf(s, CUBE5), sol = net.sol;
+    const sd = solidOf(s), net = netOf(s, sd.specs), sol = net.sol;
     const ref = sol.edges.find((e) => e.key === s.phSelEdge) || sol.edges[0], c = classify(sol, ref);
-    return { net, sol, ref, c };
+    return { sd, net, sol, ref, c };
   }
+  const skewNames = (c) => c.g.skew.map((e) => e.name).sort();
+  function rollQ34(solid, prev) { const sd = SOLIDS[solid], q = { solid, ni: rint(0, sd.specs.length - 1), seed: rint(0, 99) }; if (prev && prev.solid === solid && prev.seed === q.seed) q.seed = (q.seed + 1) % 100; return q; }
   function probSkew(M, key, name) {
     classify(M.sol, M.ref);
     const { sol, ref, c } = M, hash = (str) => { let h = 7; for (const ch of str) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return h; }, h0 = hash(key + ref.key);
@@ -611,38 +626,53 @@
     for (let k = 0; items.length < 5 && k < othL.length; k++) if (!items.includes(othL[k])) items.push(othL[k]);
     const order = items.map((e, i) => ({ e, o: hash(key + ref.key + e.name + i) })).sort((x, y) => x.o - y.o).map((q) => q.e);
     const hint = (e) => (e.rel === 'meet' ? '접으면 기준 모서리와 한 점에서 만나요.' : e.rel === 'par' ? '접으면 기준 모서리와 평행해요.' : '');
+    void sol;
     return { tag: '전개도에서 꼬인 위치', key: key + ref.key, stem: `그림은 ${name}의 전개도이다. 이 전개도를 접어 만든 입체에서 모서리 $${ov(ref.name)}$${jo(ref.name, 'wa')} 꼬인 위치에 있는 모서리는? (같은 문자는 접으면 한 점으로 모인다.)`, choices: mkText(order.map((e) => ({ h: `$${ov(e.name)}$`, p: e.name, ok: e.rel === 'skew', hint: hint(e) }))) };
   }
   const A4 = {
-    id: 'p3-4', title: '정육면체에서 꼬인 위치의 모서리', short: '꼬인 위치',
-    question: '정육면체의 모서리 하나를 정하면 꼬인 위치에 있는 모서리는 몇 개일까? 접은 입체에서 모서리를 하나씩 분류해 보자.',
+    id: 'p3-4', title: '정다면체에서 꼬인 위치의 모서리', short: '꼬인 위치',
+    question: '정육면체·정사면체·정팔면체에서 모서리 하나를 정하면 꼬인 위치에 있는 모서리는 몇 개일까? 접은 입체에서 모서리를 하나씩 분류해 보자.',
     cam0: { yaw: -4, pitch: 66 }, ctl: foldCtl, anim: { key: 'phFold', dur: 5, label: '접어 보기', start: 1 }, stepT: (n) => (n >= 1 ? 1 : 0),
-    presets: netPresets(CUBE5, 1),
-    init: (s) => { initNet(s, CUBE5); s.phFold = 1; s.phQ = { ni: rint(0, CUBE5.length - 1), seed: rint(0, 99) }; },
-    reroll: (s) => { s.phQ = { ni: rint(0, CUBE5.length - 1), seed: rint(0, 99) }; s.phSelEdge = null; },
+    presets: (s) => {
+      const sd = solidOf(s), out = SOLIDS.map((q, i) => ({ group: i === 0 ? '입체 고르기' : '', label: q.name, apply: (st) => { st.phSolid = i; st.phNet = 0; st.phFold = 1; st.phSelEdge = null; st.phQ = rollQ34(i); }, on: (st) => (st.phSolid | 0) === i }));
+      return out.concat(sd.specs.map((sp, i) => ({ group: i === 0 ? '전개도 모양' : '', label: sp.label, apply: (st) => { st.phNet = i; st.phFold = 1; st.phSelEdge = null; }, on: (st) => (st.phNet | 0) === i })));
+    },
+    init: (s) => { initNet(s, CUBE5); s.phSolid = 0; s.phFold = 1; s.phQ = rollQ34(0); },
+    reroll: (s) => { s.phQ = rollQ34(s.phSolid | 0, s.phQ); s.phSelEdge = null; },
     model: (s) => {
-      const M = skewModel(s), q = s.phQ, qn = CUBE5[clamp(q.ni, 0, CUBE5.length - 1)].get(), keys = qn.sol.edges.map((e) => e.key), ref = qn.sol.edges.find((e) => e.key === keys[(q.seed * 7) % keys.length]), c = classify(qn.sol, ref);
-      return Object.assign(M, { Q: q, qn, qM: { net: qn, sol: qn.sol, ref, c } });
+      const M = skewModel(s), q = s.phQ, qsd = SOLIDS[clamp(q.solid | 0, 0, 2)], qn = qsd.specs[clamp(q.ni, 0, qsd.specs.length - 1)].get(), keys = qn.sol.edges.map((e) => e.key), ref = qn.sol.edges.find((e) => e.key === keys[(q.seed * 7) % keys.length]), c = classify(qn.sol, ref);
+      return Object.assign(M, { Q: q, qsd, qn, qM: { net: qn, sol: qn.sol, ref, c } });
     },
     draw(b, s, M, C) {
       const st = C.problem ? 0 : C.review ? C.step + 0 : 4, t = C.problem ? 0 : C.review ? C.t : (C.thumb ? 0.6 : s.phFold);
-      const MM = C.problem ? M.qM : M, net = MM.net, ref = MM.ref, c = MM.c;
+      const MM = C.problem ? M.qM : M, net = MM.net, ref = MM.ref, c = MM.c, sdName = C.problem ? M.qsd.name : M.sd.name;
       classify(MM.sol, ref);
-      const camA4 = (s0, t0) => (C.problem ? Object.assign({}, s0, { phYaw: 0, phPitch: 84 }) : camFold(s0, t0, 12, -16));
-      fitNet(b, s, net, C, null, camA4, C.problem ? 0 : t);
+      const oct = (C.problem ? M.qsd : M.sd) === SOLIDS[2]; // 정팔면체는 꼭짓점 셋이 일직선으로 겹쳐 보이지 않게 더 낮고 비스듬한 시점에서 봅니다
+      const camA4 = (s0, t0) => (C.problem ? Object.assign({}, s0, { phYaw: 0, phPitch: 84 }) : oct ? camFold(s0, t0, 44, 30) : camFold(s0, t0, 12, -16));
+      fitNet(b, s, net, C, C.problem ? { t: 62, b: 36 } : { t: C.thumb ? 5 : 70, b: 20 }, camA4, C.problem ? 0 : t);
       const D = scene3(b, camA4(s, t), C);
+      const fin = t >= 0.97;
       const faces = drawFaces(D, net, t, () => ({ c: 'green', a: 0.07, ec: 'ink', ew: 0 }));
       const byKey = {}; MM.sol.edges.forEach((e) => { byKey[e.key] = e; });
+      // 다 접었을 때 앞쪽에 보이는 모서리(보이는 면에 닿은 모서리). 가려진 모서리는 점선으로 그립니다.
+      const visKey = new Set();
+      if (fin) faces.forEach((pts, fi) => { const f0 = net.faces[fi].poly, sg = Math.sign(cross3(sub3(f0[1], f0[0]), sub3(f0[2], f0[0])).z) || 1; if (facing(D.cam, mul3(cross3(sub3(pts[1], pts[0]), sub3(pts[2], pts[0])), -sg))) pts.forEach((_, vi) => visKey.add(edgeNm(net, fi, vi))); });
+      const GRY = { color: 'muted', width: 1.8, alpha: 0.55 };
+      // 한 단계에 한 종류만 칠하고 앞 단계는 회색으로 둡니다(탐구는 세 종류 모두).
       const sty = (e) => {
         const r = e.rel;
         if (r === 'ref') return { color: AMB, width: 6.4, glow: true };
         if (C.problem || st === 0) return { color: 'ink', width: 3 };
-        if (r === 'meet') return st === 4 || st === 1 ? { color: RED, width: st === 1 ? 5 : 4 } : { color: RED, width: 1.6, alpha: 0.2 };
-        if (r === 'par') return st === 4 || st === 2 ? { color: SKY, width: st === 2 ? 5 : 4 } : st > 2 ? { color: SKY, width: 1.6, alpha: 0.2 } : { color: 'ink', width: 3 };
-        if (r === 'skew' || r === 'ext') return st === 4 || st === 3 ? { color: GRN, width: 5.6, glow: st === 3 } : { color: 'ink', width: 3 };
+        if (r === 'meet' || r === 'ext') return st === 4 || st === 1 ? { color: RED, width: st === 1 ? 5 : 4 } : GRY;
+        if (r === 'par') return st === 4 || st === 2 ? { color: SKY, width: st === 2 ? 5 : 4 } : st > 2 ? GRY : { color: 'ink', width: 3 };
+        if (r === 'skew') return st === 4 || st === 3 ? { color: GRN, width: 5.6, glow: st === 3 } : { color: 'ink', width: 3 };
         return { color: 'ink', width: 3 };
       };
-      faces.forEach((pts, fi) => pts.forEach((p, vi) => { const q = pts[(vi + 1) % pts.length], e = byKey[edgeNm(net, fi, vi)], s0 = sty(e); D.line(p, q, s0.color, s0.width, { alpha: s0.alpha, glow: s0.glow }); }));
+      faces.forEach((pts, fi) => pts.forEach((p, vi) => {
+        const q = pts[(vi + 1) % pts.length], key = edgeNm(net, fi, vi), e = byKey[key], s0 = sty(e), hid = fin && !visKey.has(key) && e.rel !== 'ref';
+        D.line(p, q, s0.color, hid ? Math.max(1.8, s0.width * 0.7) : s0.width, { alpha: (s0.alpha == null ? 1 : s0.alpha) * (hid ? 0.8 : 1), glow: s0.glow && !hid, dash: hid ? [6, 5] : undefined });
+        if (C.txt) edgeObs(D, b.toS(D.P(p)), b.toS(D.P(q)));
+      }));
       const seen = [], cc = cen3(faces.flat());
       faces.forEach((pts, fi) => pts.forEach((p, vi) => {
         const nmv = net.cname[net.clOf[fi][vi]], sp = D.P(p), sc = b.toS(sp), isR = nmv === ref.u || nmv === ref.v;
@@ -651,42 +681,41 @@
         seen.push({ n: nmv, x: sc.x, y: sc.y });
         if (C.txt) D.label(p, nmv, { color: isR ? AMB : 'ink', size: 17, dir: D.out(p, cc), gap: 9 });
       }));
-      if (C.txt && !C.problem && (st === 3 || st === 4)) {
-        const done = new Set();
-        faces.forEach((pts, fi) => pts.forEach((p, vi) => { const e = byKey[edgeNm(net, fi, vi)]; if (!e || e.rel !== 'skew') return; const q = pts[(vi + 1) % pts.length], m = mid3(p, q), sc = b.toS(D.P(m)), kk = e.key + '@' + Math.round(sc.x / 8) + ',' + Math.round(sc.y / 8); if (done.has(kk)) return; done.add(kk); D.label(m, String(e.idx), { color: GRN, size: 17, at: [[0, 0], [0, -15], [0, 15], [-15, 0], [15, 0]] }); }));
-      }
       if (C.txt) {
-        const cap = C.review ? (st === 1 ? `① 만나는 모서리 ${c.nMeet + c.nExt}개 지우기` : st === 2 ? `② 평행한 모서리 ${c.nPar}개 지우기` : st === 3 ? `③ 남은 ${c.nSkew}개 = 꼬인 위치` : '') : '';
-        if (cap) b.stext(b.W / 2 - b.insets.right / 2, b.insets.top + 20, cap, { color: st === 1 ? RED : st === 2 ? SKY : GRN, size: 17, weight: 800, align: 'center', baseline: 'middle' });
-        else if (C.problem) banner(b, [{ t: `정육면체의 전개도 · 기준 모서리 ${ref.name}`, c: 'ink', size: 15 }], C);
-        else banner(b, [{ t: `기준 모서리 ${ref.name}`, c: AMB, size: 16 }], C);
+        const cap = C.review ? (st === 1 ? `만나는 모서리 ${c.nMeet + c.nExt}개 지우기 (빨강)` : st === 2 ? (c.nPar ? `평행한 모서리 ${c.nPar}개 지우기 (파랑)` : '평행한 모서리는 0개예요') : st === 3 ? `남은 ${c.nSkew}개 = 꼬인 위치 (초록)` : '') : '';
+        if (cap) b.stext(b.W / 2 - b.insets.right / 2, b.insets.top + 20, cap, { color: st === 1 ? 'red' : st === 2 ? 'sky' : 'green', size: 17, weight: 800, align: 'center', baseline: 'middle' });
+        else if (C.problem) banner(b, [{ t: `${sdName}의 전개도 · 기준 모서리 ${ref.name}`, c: 'ink', size: 15 }], C);
+        else banner(b, [{ t: `${sdName} · 기준 모서리 ${ref.name}`, c: AMB, size: 16 }], C);
       }
       D.flush();
       if (C.tab === 'explore' && !C.thumb) {
         const cands = []; faces.forEach((pts, fi) => pts.forEach((p, vi) => cands.push({ key: edgeNm(net, fi, vi), p: D.P(mid3(p, pts[(vi + 1) % pts.length])) })));
         const ce = cands.find((q) => q.key === ref.key) || cands[0];
         b.handle('ref', ce.p, { color: 'amber', r: 9, ariaLabel: '기준 모서리 고르기', drag: (w) => { let best = cands[0], bd = 1e18; cands.forEach((q) => { const d = (q.p.x - w.x) ** 2 + (q.p.y - w.y) ** 2; if (d < bd) { bd = d; best = q; } }); s.phSelEdge = best.key; } });
+        // 모서리를 눌러도 기준 모서리가 바뀝니다(가까운 모서리 가운데).
+        const segs = []; faces.forEach((pts, fi) => pts.forEach((p, vi) => { if (fin && !visKey.has(edgeNm(net, fi, vi))) return; segs.push({ key: edgeNm(net, fi, vi), a: b.toS(D.P(p)), c: b.toS(D.P(pts[(vi + 1) % pts.length])) }); }));
+        armTap(b, C, 'p3-4', (s2, pt, touch) => { let best = null, bd = touch ? 16 : 10; segs.forEach((q) => { const d = segDist(pt, q.a, q.c); if (d < bd) { bd = d; best = q; } }); if (best) s2.phSelEdge = best.key; });
       }
     },
     steps: (M) => {
-      const { ref, c } = M, r = ov(ref.name);
+      const { ref, c, sd } = M, r = ov(ref.name), sk = skewNames(c).map((n) => `$${ov(n)}$`).join(', ');
       return [
-        `전개도를 접어 입체를 만들어요. 같은 문자의 꼭짓점이 한 점으로 모여요. 기준 모서리 $${r}$${jo(ref.name, 'wa')} 만나는 모서리 $${c.nMeet + c.nExt}$개를 지워요.`,
-        `$${r}$${jo(ref.name, 'wa')} 평행한 모서리 $${c.nPar}$개도 지워요.`,
-        `남은 모서리 $${c.total}-1-${c.nMeet + c.nExt}-${c.nPar}=${c.nSkew}$개가 꼬인 위치예요.`
+        `전개도를 접어 ${sd.name}${jo(sd.name, 'eul')} 만들어요. 같은 문자의 꼭짓점이 한 점으로 모여요. 기준 모서리 $${r}$${jo(ref.name, 'wa')} 만나는 모서리 $${c.nMeet + c.nExt}$개를 지워요.`,
+        c.nPar ? `$${r}$${jo(ref.name, 'wa')} 평행한 모서리 $${c.nPar}$개도 지워요.` : `$${r}$${jo(ref.name, 'wa')} 평행한 모서리는 $0$개예요. ${sd.name}에는 평행한 모서리가 없어서 지울 것이 없어요.`,
+        `남은 모서리 $${c.total}-1-${c.nMeet + c.nExt}-${c.nPar}=${c.nSkew}$개가 꼬인 위치예요. ${sk}${jo(c.g.skew.length ? skewNames(c).slice(-1)[0] : '', 'i')} 꼬인 위치에 있어요.`
       ];
     },
     view: (M) => {
-      const { ref, c } = M;
+      const { ref, c, sd } = M, none = c.nPar === 0;
       return {
-        guide: `<b>노란 손잡이</b>를 끌어 기준 모서리를 바꿔 보세요. 나머지 모서리는 ${span('red', '만나거나')}, ${span('sky', '평행하거나')}, ${span('green', '꼬인 위치')}예요. 같은 문자는 접으면 한 점으로 모이는 꼭짓점이에요. 막대로 펼쳐 보세요.`,
-        readouts: [rd('기준 모서리', ref.name, AMB), rd('만나는 모서리', `${c.nMeet + c.nExt}개`, RED), rd('평행한 모서리', `${c.nPar}개`, SKY), rd('꼬인 위치', `${c.nSkew}개`, GRN, `${c.total} − 1 − ${c.nMeet + c.nExt} − ${c.nPar}`)],
-        formula: `<p>(꼬인 위치의 개수) $=${c.total}-1-${c.nMeet + c.nExt}-${c.nPar}=${c.nSkew}$ (개)</p>`,
+        guide: `위의 버튼으로 입체와 전개도를 고르세요. <b>노란 손잡이</b>를 끌거나 모서리를 눌러 기준 모서리를 바꾸면, 나머지 모서리는 ${span('red', '만나거나')}, ${span('sky', '평행하거나')}, ${span('green', '꼬인 위치')}예요. 같은 문자는 접으면 한 점으로 모이는 꼭짓점이에요. 막대로 펼쳐 보세요.`,
+        readouts: [rd('기준 모서리', ref.name, AMB), rd('만나는 모서리', `${c.nMeet + c.nExt}개`, RED), rd('평행한 모서리', none ? '없음 (0개)' : `${c.nPar}개`, SKY), rd('꼬인 위치', `${c.nSkew}개`, GRN, `${c.total} − 1 − ${c.nMeet + c.nExt} − ${c.nPar}`)],
+        formula: `<p>(꼬인 위치의 개수) $=${c.total}-1-${c.nMeet + c.nExt}-${c.nPar}=${c.nSkew}$ (개)</p><p>${sd.name}: 모서리 $${c.total}$개 · 만나는 것 $${c.nMeet + c.nExt}$ · 평행한 것 $${c.nPar}$ · 꼬인 위치 $${c.nSkew}$</p>`,
         rule: '꼬인 위치 = 만나지도 않고 평행하지도 않은 두 직선 (한 평면 위에 없다)',
-        notes: notes('정육면체에서는 어느 모서리를 기준으로 해도 만나는 것 4개, 평행한 것 3개, 꼬인 위치 4개예요.')
+        notes: notes(`${sd.name}에서는 어느 모서리를 기준으로 해도 만나는 것 ${c.nMeet + c.nExt}개, 평행한 것 ${c.nPar}개, 꼬인 위치 ${c.nSkew}개예요.`, '정사면체에는 평행한 모서리가 하나도 없어요. 그래서 만나지 않는 모서리는 모두 꼬인 위치예요(마주 보는 모서리 1개).', '정육면체와 정팔면체에서는 평행한 모서리를 지우는 것을 잊지 마세요.')
       };
     },
-    prob: (M) => probSkew(M.qM, 'p3-4|' + M.Q.ni, '정육면체')
+    prob: (M) => probSkew(M.qM, `p3-4|${M.Q.solid}|${M.Q.ni}`, M.qsd.name)
   };
 
   /* ------------------------------------------------------------------ p3-7 겉면 위의 최단 경로 */
@@ -809,17 +838,15 @@
       const role = faceRoles(C, st, f, opp, 6).map((r) => (r === 'p' ? 0 : r)), any = role.some((r) => r);
       const { faces, vis } = drawFacesOp(D, net, t, (i) => (C.problem && i === M.hid ? { c: AMB, a: 0.3, ec: AMB, ew: 2.6 } : ROLE[role[i]] || { c: 'green', a: 0.1 }), any ? 0.72 : 1);
       const fin = t >= 0.97;
+      const ghosts = [];
       faces.forEach((p, i) => {
         if (C.problem && i === M.hid) { faceTxt(D, C, cen3(p), '?', { color: AMB, size: 26, at: [[0, 0]] }); return; }
         const hi = role[i] ? AMB : null;
-        if (fin && !vis[i]) {
-          if (!hi) return; // 가려진 면: 고른 면과 마주 보는 면만 점선 테두리와 숫자로 보여 줍니다
-          D.panel(p, AMB, 0.14, AMB, 3, { dash: [7, 5], alpha: 0.9 });
-          faceTxt(D, C, cen3(p), String(vals[i]), { color: AMB, size: 20, badge: true, at: [[0, 0], [0, -17], [0, 17], [-17, 0], [17, 0]] });
-          return;
-        }
+        if (fin && !vis[i]) { if (hi) ghosts.push([p, String(vals[i])]); return; } // 가려진 면은 눈을 그리지 않습니다: 고른 면과 마주 보는 면만 점선 테두리와 숫자 배지
         drawPips(D, b, p, vals[i], hi || 'ink', 6.5);
+        PIPS[vals[i]].forEach((q) => D.obstacle(add3(p[0], add3(mul3(sub3(p[1], p[0]), q[0]), mul3(sub3(p[3], p[0]), q[1]))), 16));
       });
+      ghosts.forEach(([p, tx]) => { if (C.txt) ghostFace(D, p, faces, AMB, tx); else D.panel(p, AMB, 0, AMB, 3, { dash: [7, 5], alpha: 0.9 }); });
       if (C.txt && !C.thumb) {
         if (C.problem) banner(b, [{ t: '주사위의 전개도: 마주 보는 면의 눈의 합 = 7', c: 'ink', size: 15 }], C);
         else {
