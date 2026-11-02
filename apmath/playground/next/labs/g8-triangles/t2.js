@@ -366,5 +366,105 @@
     verify: (s) => { const M = c3.model(s), A = M.A, B = M.B, Cc = M.C, D = pt(Cc.x + 1, 0); return { ans: angBetween(A, B, D), model: M.bad, extra: [[angBetween(D, A, Cc), M.cad], [dist(Cc, D), dist(A, Cc)]] }; }
   };
 
+  /* ====================================================================== 풀이 흐름 (t2-2, t2-3) */
+  const SK = G.SVK, mkSolve = G.mkSolve;
+  const ov = (n) => `\\overline{${n}}`;
+  const dd = (v) => `${v}^{\\circ}`;
+
+  /* ---- t2-2 꼭짓점 공유형 · v0 [함정]: ∠B → ∠EDF · v1: ∠B → ∠CDE · v2: ∠EDF → ∠B ---- */
+  const c2Plan = (M, s) => {
+    const { x, g, cde, edf, a2, c3 } = M, { B, A, C: Cc, D, E, F } = g, v = (s.trV || 0) % 3, cen = pt((B.x + E.x) / 2, (B.y + F.y) / 2 + 0.1);
+    const sym = v === 2; // v2: 구하는 ∠B 를 x 로 놓고 식으로 풉니다
+    const V = (k, tex) => (sym ? (k === 1 ? 'x' : k + 'x') : tex); // 그림·캡션용 글자
+    const t = (k) => (sym ? (k === 1 ? 'x' : `${k}x`) : `${k * x}^{\\circ}`);
+    const cdeT = sym ? '\\frac{180^{\\circ}-3x}{2}' : dd(cde), cdeP = sym ? '\\frac{180°−3x}{2}' : `${cde}°`;
+    const steps = [], items = [];
+    items.push(SK.tick(B, A, 1, { col: 'amber' }), SK.tick(A, Cc, 1, { col: 'amber' }), SK.tick(Cc, D, 1, { col: 'amber' }), SK.tick(Cc, E, 1, { col: 'amber' }));
+    const gv = `$${ov('AB')}=${ov('AC')}=${ov('CD')}=${ov('CE')}$이고`;
+    if (v === 0) steps.push({ id: 'given', k: 'given', t: `${gv} $\\angle B=${dd(x)}$예요. 구하는 것은 $\\angle EDF=x$.`, cap: `AB=AC=CD=CE, ∠B=${x}°` });
+    else if (v === 1) steps.push({ id: 'given', k: 'given', t: `${gv} $\\angle B=${dd(x)}$예요. 구하는 것은 $\\angle CDE=x$.`, cap: `AB=AC=CD=CE, ∠B=${x}°` });
+    else steps.push({ id: 'given', k: 'given', t: `${gv} $\\angle EDF=${dd(edf)}$예요. 구하는 것은 $\\angle B=x$.`, cap: `AB=AC=CD=CE, ∠EDF=${edf}°` });
+    steps.push({ id: 'idea', k: 'idea', t: sym ? '각을 하나만 알아도 이등변삼각형(밑각이 같다)과 외각(이웃하지 않는 두 내각의 합)을 번갈아 쓰면 다음 각을 계속 구할 수 있어요. ∠B를 $x$로 놓고 ∠EDF까지 따라가 식으로 나타낸 뒤, 주어진 값과 같다고 놓아요.' : '같은 길이의 변이 이어져 있어서, 이등변삼각형의 두 밑각이 같다는 것과 외각 = 이웃하지 않는 두 내각의 합을 번갈아 쓰면 각을 하나씩 구해 갈 수 있어요. 아는 각 ∠B에서 출발해요.', cap: '밑각이 같다 + 외각 = 이웃하지 않는 두 내각의 합' });
+    steps.push({ id: 'a1', k: 'fig', lb: '각 구하기 ①', t: `$${ov('AB')}=${ov('AC')}$이므로 $\\angle ACB=\\angle B=${t(1)}$예요.`, cap: `AB=AC → ∠ACB=∠B=${V(1, `${x}°`)}` });
+    steps.push({ id: 'a2', k: 'fig', lb: '각 구하기 ②', t: `$\\angle CAD$는 △ABC의 외각이므로 $\\angle B+\\angle ACB=${t(2)}$예요. $${ov('CA')}=${ov('CD')}$이므로 $\\angle CDA=\\angle CAD=${t(2)}$.`, cap: `외각 ∠CAD=∠B+∠ACB=${V(2, `${a2}°`)} → ∠CDA=${V(2, `${a2}°`)}` });
+    steps.push({ id: 'a3', k: 'fig', lb: '각 구하기 ③', t: `$\\angle DCE$는 △BCD의 외각이므로 $\\angle B+\\angle CDB=x_0+${t(2)}=${t(3)}$예요.`.replace('x_0', t(1)), cap: `외각 ∠DCE=∠B+∠CDB=${V(3, `${c3}°`)}` });
+    steps.push({ id: 'a4', k: 'fig', lb: '각 구하기 ④', t: `$${ov('CD')}=${ov('CE')}$이므로 $\\angle CDE=\\angle CED=\\frac{180^{\\circ}-${t(3)}}{2}=${cdeT}$예요.`, cap: `CD=CE → ∠CDE=∠CED=${sym ? '\\frac{180°−3x}{2}' : `\\frac{180°−${c3}°}{2}=${cde}°`}` });
+    const arcs = {
+      B: (o) => SK.ang(B, Cc, A, { r: 40, ld: 66, lr: x / 2 + 12, ...o }),
+      ACB: (o) => SK.ang(Cc, A, B, { r: 26, ld: 44, ...o }),
+      CAD: (o) => SK.ang(A, Cc, D, { r: 30, ld: 52, rings: 2, ...o }), CDA: (o) => SK.ang(D, A, Cc, { r: 30, ld: 52, rings: 2, ...o }),
+      DCE: (o) => SK.ang(Cc, D, E, { r: 36, ld: 62, ...o }),
+      CDE: (o) => SK.ang(D, E, Cc, { r: 26, ld: 64, rings: 3, ...o }), CED: (o) => SK.ang(E, Cc, D, { r: 26, ld: 52, rings: 3, ...o }),
+      EDF: (o) => SK.ang(D, E, F, { r: 40, ld: 62, ...o })
+    };
+    const Gr = { col: 'green', size: 14, gl: true };
+    if (v !== 2) items.push(arcs.B({ on: ['given'], col: 'sky', label: dg(x), size: 15, gl: true, glTo: 'a4' }));
+    items.push(arcs.ACB({ at: 'a1', col: 'green', label: V(1, dg(x)), size: 14, gl: true, glTo: 'a2' }),
+      arcs.CAD({ at: 'a2', ...Gr, label: V(2, dg(a2)), glTo: 'a3' }), arcs.CDA({ at: 'a2', ...Gr, label: V(2, dg(a2)), glTo: 'a3' }),
+      arcs.DCE({ at: 'a3', ...Gr, label: V(3, dg(c3)), glTo: 'a4' }),
+      arcs.CDE({ ...(v === 0 ? { on: ['a4', 'trap'], cols: { trap: 'rose' } } : { at: 'a4' }), ...Gr, label: sym ? '' : dg(cde), glTo: v === 1 ? 'a4' : 'eq' }), arcs.CED({ at: 'a4', col: 'green', size: 14, label: sym ? '' : dg(cde), gl: true, glTo: 'eq' }));
+    if (sym) items.push(arcs.B({ on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${x}°` }, gl: true }));
+    if (v === 0) {
+      steps.push({ id: 'eq', k: 'eq', t: `$\\angle EDF=180^{\\circ}-\\angle CDA-\\angle CDE=180^{\\circ}-${dd(a2)}-${dd(cde)}=${dd(edf)}$ (점 D에서 일직선)`, cap: `x=180°−${a2}°−${cde}°=${edf}°` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(edf)}$`, cap: `x = ${edf}°` });
+      steps.push({ id: 'trap', k: 'trap', t: `$\\angle CDE=${dd(cde)}$에서 멈추면 안 돼요. $\\angle EDF$는 일직선 $180^{\\circ}$에서 $\\angle CDA$와 $\\angle CDE$를 모두 뺀 각이에요.`, cap: `∠CDE=${cde}°에서 멈추면 안 돼요 → x=180°−${a2}°−${cde}°=${edf}°` });
+      items.push(arcs.EDF({ on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${edf}°` }, gl: true }));
+    } else if (v === 1) {
+      steps.push({ id: 'eq', k: 'eq', t: `$x=\\angle CDE=\\frac{180^{\\circ}-${dd(c3)}}{2}=\\frac{${dd(180 - c3)}}{2}=${dd(cde)}$`, cap: `x=\\frac{180°−${c3}°}{2}=${cde}°` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(cde)}$`, cap: `x = ${cde}°` });
+      items.push(arcs.CDE({ on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${cde}°` }, gl: false, rings: 3 }));
+    } else {
+      steps.push({ id: 'eq', k: 'eq', lb: '식 세우기', t: `$\\angle EDF=180^{\\circ}-\\angle CDA-\\angle CDE=180^{\\circ}-2x-\\frac{180^{\\circ}-3x}{2}=90^{\\circ}-\\frac{x}{2}$이고, 이것이 $${dd(edf)}$이므로 $90^{\\circ}-\\frac{x}{2}=${dd(edf)}$`, cap: `90°−\\frac{x}{2}=${edf}°` });
+      steps.push({ id: 'eq2', k: 'eq', lb: '식 풀기', t: `$\\frac{x}{2}=90^{\\circ}-${dd(edf)}=${dd(90 - edf)}$이므로 $x=${dd(x)}$`, cap: `\\frac{x}{2}=${90 - edf}° → x=${x}°` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(x)}$`, cap: `x = ${x}°` });
+      items.push(arcs.EDF({ on: ['given', 'eq', 'eq2'], col: 'sky', label: dg(edf), size: 15, gl: true }));
+    }
+    return {
+      fit: [B, A, Cc, D, E, F], steps, items, l: 44, r: 48,
+      base: (b) => { G.line(b, B, E, 'ink', 3.4); G.line(b, B, F, 'ink', 3.4); G.line(b, A, Cc, 'ink', 3.4); G.line(b, Cc, D, 'ink', 3.4); G.line(b, D, E, 'ink', 3.4); },
+      names: (b) => { [B, A, Cc, D, E, F].forEach((p, i) => { b.point(p, { color: 'ink', r: 4.5 }); G.tagOut(b, p, cen, 'BACDEF'[i], { size: 18, gap: 11 }); }); }
+    };
+  };
+  c2.solve = mkSolve(c2Plan);
+
+  /* ---- t2-3 연장선 위의 이등변삼각형 · v0: ∠A → ∠CDA · v1: ∠B → ∠CDA · v2 [함정]: ∠A → ∠BAD ---- */
+  const c3Plan = (M, s) => {
+    const { a, b: bb, cad, bad } = M, { A, B, C: Cc } = M, D = pt(Cc.x + 1, 0), E = pt(D.x + 0.35, 0), v = (s.trV || 0) % 3, cen = pt(0, A.y * 0.4);
+    const ext = 180 - bb, x = v === 2 ? bad : cad;
+    const steps = [], items = [];
+    items.push(SK.tick(A, B, 1, { col: 'amber' }), SK.tick(A, Cc, 1, { col: 'amber' }), SK.tick(Cc, D, 1, { col: 'amber' }));
+    const g0 = `$${ov('AB')}=${ov('AC')}=${ov('CD')}$이고 점 B, C, D는 한 직선 위에 있어요.`;
+    steps.push({ id: 'given', k: 'given', t: v === 1 ? `${g0} $\\angle B=${dd(bb)}$이고, 구하는 것은 $\\angle CDA=x$.` : `${g0} $\\angle A=${dd(a)}$이고, 구하는 것은 $\\angle ${v === 2 ? 'BAD' : 'CDA'}=x$.`, cap: v === 1 ? `AB=AC=CD, ∠B=${bb}°` : `AB=AC=CD, ∠A=${a}°` });
+    steps.push({ id: 'idea', k: 'idea', t: v === 2 ? '∠BAD는 ∠BAC와 ∠CAD를 이어 붙인 각이에요. ∠BAC는 아는 값이고 ∠CAD는 이등변삼각형 CAD의 밑각이니, 외각 ∠ACD를 먼저 구하면 풀려요.' : '△CAD가 CA=CD인 이등변삼각형이라 ∠CDA=∠CAD예요. 꼭지각 ∠ACD는 △ABC의 외각이니까 이웃하지 않는 두 내각 ∠A, ∠B의 합으로 구해요.', cap: '외각 ∠ACD = ∠A + ∠B → △CAD는 이등변삼각형' });
+    if (v !== 1) steps.push({ id: 'base', k: 'fig', lb: '각 구하기', t: `$\\overline{AB}=\\overline{AC}$이므로 $\\angle B=\\angle ACB=\\frac{180^{\\circ}-${dd(a)}}{2}=${dd(bb)}$예요.`, cap: `∠B=∠ACB=\\frac{180°−${a}°}{2}=${bb}°` });
+    else steps.push({ id: 'base', k: 'fig', lb: '각 구하기', t: `$\\overline{AB}=\\overline{AC}$이므로 $\\angle ACB=\\angle B=${dd(bb)}$예요. (꼭지각 $\\angle A=180^{\\circ}-2\\times${dd(bb)}=${dd(a)}$)`, cap: `∠ACB=∠B=${bb}°` });
+    steps.push({ id: 'outer', k: 'fig', lb: '외각 구하기', t: `$\\angle ACD$는 △ABC의 외각이므로 $\\angle A+\\angle B=${dd(a)}+${dd(bb)}=${dd(a + bb)}$예요. (안쪽 각 $\\angle ACB$와 합이 $180^{\\circ}$이므로 $180^{\\circ}-${dd(bb)}$로 구해도 같아요)`, cap: `∠ACD=∠A+∠B=${a}°+${bb}°=${a + bb}°` });
+    steps.push({ id: 'iso', k: 'fig', lb: '각 구하기', t: `$\\overline{CA}=\\overline{CD}$이므로 △CAD는 이등변삼각형이에요. $\\angle CAD=\\angle CDA=\\frac{180^{\\circ}-${dd(a + bb)}}{2}=${dd(cad)}$.`, cap: `CA=CD → ∠CAD=∠CDA=\\frac{180°−${a + bb}°}{2}=${cad}°` });
+    if (v === 2) steps.push({ id: 'eq', k: 'eq', t: `$\\angle BAD=\\angle BAC+\\angle CAD=${dd(a)}+${dd(cad)}=${dd(bad)}$`, cap: `x=∠BAC+∠CAD=${a}°+${cad}°=${bad}°` });
+    steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(x)}$`, cap: `x = ${x}°` });
+    if (v === 2) steps.push({ id: 'trap', k: 'trap', t: `$\\angle CAD=${dd(cad)}$에서 멈추면 안 돼요. $\\angle BAD$는 $\\angle BAC=${dd(a)}$에 $\\angle CAD$를 더한 각이에요.`, cap: `∠CAD=${cad}°에서 멈추면 안 돼요 → ∠BAD=${a}°+${cad}°=${bad}°` });
+    const apex = (o) => SK.ang(A, B, Cc, { r: 32, ld: 56, ...o });
+    const angB = (o) => SK.ang(B, Cc, A, { r: 30, ld: 54, rings: 2, ...o }), angC = (o) => SK.ang(Cc, A, B, { r: 30, ld: 54, rings: 2, ...o });
+    const outer = (o) => SK.ang(Cc, A, D, { r: 24, ld: 40, ...o });
+    const CAD = (o) => SK.ang(A, Cc, D, { r: 36, rings: 3, ...o }), CDA = (o) => SK.ang(D, A, Cc, { r: 30, rings: 3, ...o });
+    // 좁은 각(약 35° 이하)은 호만 그리고 값은 선 밖에 씁니다
+    const outCAD = (str, o) => SK.txt(A, str, { dx: 52, dy: -12, size: 14, ...o }), outCDA = (str, o) => SK.txt(D, str, { dx: -36, dy: 20, size: 14, ...o });
+    if (v !== 1) items.push(apex({ on: ['given', 'outer'], col: 'sky', label: dg(a), gl: true, glTo: 'idea' }));
+    items.push(angB({ at: 'base', to: 'outer', col: 'green', cols: { outer: 'sky' }, label: v === 1 ? '' : dg(bb), labels: { outer: '' }, gl: true, glTo: 'base' }), angC({ at: 'base', col: 'green' }),
+      outer({ at: 'outer', col: 'green', label: dg(a + bb), size: 15, gl: true, glTo: 'iso' }),
+      CAD({ ...(v === 2 ? { on: ['iso', 'trap'], cols: { trap: 'rose' } } : { at: 'iso' }), col: 'green' }), outCAD(dg(cad), { at: 'iso', col: 'green', to: 'iso' }));
+    if (v === 1) items.push(angB({ on: ['given'], col: 'sky', label: dg(bb), gl: true, glTo: 'outer' }));
+    if (v === 2) items.push(CDA({ at: 'iso', col: 'green' }), SK.ang(A, B, D, { r: 52, ld: 80, on: ['given', 'eq', 'ans'], col: 'amber', fa: 0.12, label: 'x', size: 17, labels: { ans: `x=${bad}°` }, gl: true }));
+    else items.push(CDA({ on: ['given', 'iso', 'ans'], col: 'amber', label: '', fa: 0.5 }), SK.fn((b, st, id) => { T(b, D, id === 'ans' ? `x=${cad}°` : 'x', { color: st === 'on' ? 'amber' : 'ink', size: id === 'ans' ? 16 : 17, dx: -40, dy: 22, alpha: st === 'on' ? undefined : 0.55 }); }, { on: ['given', 'iso', 'ans'] }));
+    return {
+      fit: [A, B, Cc, E, pt(B.x, 0.35)], steps, items, l: 44, r: 44,
+      base: (b) => { G.fillPoly(b, [A, B, Cc], 'sky', 0.08); G.poly(b, [A, B, Cc], 'ink', 3.6); G.line(b, Cc, E, 'ink', 3.4); G.line(b, A, D, 'ink', 3.4); },
+      names: (b) => { [A, B, Cc].forEach((p) => b.point(p, { color: 'ink', r: 4.5 })); b.point(D, { color: 'ink', r: 4.5 }); G.tagOut(b, A, cen, 'A', { size: 18 }); G.tagOut(b, B, cen, 'B', { size: 18 }); G.tagOut(b, Cc, cen, 'C', { size: 18, gap: 6 }); T(b, D, 'D', { dy: 18, size: 18 }); }
+    };
+  };
+  c3.solve = mkSolve(c3Plan);
+
+  /* @@SOLVE-END */
+
   G.register(20, 't2', '② 연쇄·외각', '연쇄·외각', PARAMS, [c1, c2, c3]);
 })();

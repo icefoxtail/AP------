@@ -402,7 +402,7 @@
     let h = Q.tag ? `<div class="tr-tagline"><span class="apl-tag" style="--c:var(--m-amber)">${esc(Q.tag)}</span></div>` : '';
     h += `<div class="tr-q">${stemHTML(Q)}</div>`;
     h += '<div class="tr-try"><b>먼저 풀어 보세요.</b> 종이에 직접 풀어 본 뒤에 답을 확인해요.</div>';
-    if (shown) h += `<div class="tr-fb ok tr-ans"><span class="k">답</span> <span class="v">$x=${ok.t}$</span></div>`;
+    if (shown) h += `<div class="tr-fb ok tr-ans"><span class="k">답</span> <span class="v">${Q.ansHTML != null ? Q.ansHTML : '$x=' + ok.t + '$'}</span></div>`; // Q.ansHTML: 답이 x= 꼴이 아닌 문제(예: 합동 여부)
     h += '<div class="tr-tools">';
     if (!shown) h += '<button type="button" class="apl-btn sm" data-tr-show>답 보기</button>';
     h += `<button type="button" class="apl-btn sm primary" data-tr-go="review">풀이 보기</button><button type="button" class="apl-btn sm ghost" data-tr-new>숫자 바꾸기</button></div>`;
@@ -594,4 +594,75 @@
     josa, seeded, shuffle, mkChoices, mkTextChoices, baseCtx, showAt, makeScene, register, notes, rd,
     triBC, dim, foot, circumcenter, incenter, extend, dots, segVal, fade, narrow, fs, mkStmtChoices, numProb, intOK, cmTex, cmOpts, degOpts, nm, solveCap, solveCol
   };
+})();
+
+/* ---- solve helpers (A) ---------------------------------------------------------------
+   풀이 그림을 「항목 목록」으로 선언하면 단계마다 알아서 그려 줍니다(t1~t4 풀이에서 씁니다).
+   · plan(M,s) = { fit:[점…], steps:[{id,k,t,cap,…}], items:[…], base(b), names(b) } 를 돌려줍니다.
+   · 항목은 SVK.fill/seg/poly/tick/ang/txt/len/dim/dot/fn 으로 만들고, 어느 단계에서 색으로 보일지 정합니다.
+       at: 처음 나오는 단계(id 또는 번호) · to: 색으로 보이는 마지막 단계 · on: 색으로 보일 단계들(배열) · gone: 끝나면 사라짐
+       labels: { 단계id: 그 단계의 글자 } · cols: { 단계id: 그 단계의 색 } · gl: 지난 단계에도 회색으로 남길 글자(true 이면 같은 글자) · glTo: 그 회색 글자를 남길 마지막 단계
+   · 지금 단계의 항목만 색, 앞 단계 항목은 회색(풀이 그림 정리 원칙 2), 문제 탭 그림은 「주어진 것」 단계 그림입니다. */
+(function () {
+  'use strict';
+  const G = window.APL_TR;
+  if (!G) return;
+  const { T, ang, tick, line, fillPoly, poly, fit, bboxOf, pt, sideTag, dim, solveCap } = G;
+  const K = {
+    fill: (pts, o) => ({ ty: 'fill', pts, ...o }),
+    seg: (p, q, o) => ({ ty: 'seg', p, q, ...o }),
+    poly: (pts, o) => ({ ty: 'poly', pts, ...o }),
+    tick: (p, q, n, o) => ({ ty: 'tick', p, q, n, ...o }),
+    ang: (V, A, B, o) => ({ ty: 'ang', V, A, B, ...o }),
+    txt: (p, str, o) => ({ ty: 'txt', p, str, ...o }),
+    len: (p, q, c, str, o) => ({ ty: 'len', p, q, c, str, ...o }),
+    dim: (p, q, c, str, o) => ({ ty: 'dim', p, q, c, str, ...o }),
+    dot: (p, name, o) => ({ ty: 'dot', p, name, ...o }),
+    fn: (f, o) => ({ ty: 'fn', f, ...o })
+  };
+  function render(b, pl, idx) {
+    const ids = pl.steps.map((s) => s.id || s.k);
+    const ix = (v, d) => (v == null ? d : typeof v === 'number' ? v : Math.max(0, ids.indexOf(v)));
+    const cur = idx < 0 ? 0 : idx, nar = b.W < 560;
+    fit(b, bboxOf(pl.fit), { t: pl.t != null ? pl.t : 60, b: idx < 0 ? (pl.bp != null ? pl.bp : 44) : (nar ? 112 : 100), l: pl.l != null ? pl.l : 50, r: pl.r != null ? pl.r : 50 });
+    const stateOf = (it) => {
+      if (idx < 0 && it.noProb) return null;
+      const set = it.on ? it.on.map((v) => ix(v, 0)) : null, a = set ? Math.min(...set) : ix(it.at, 0);
+      if (cur < a) return null;
+      const on = set ? set.includes(cur) : cur <= (it.hold ? 99 : ix(it.to, a));
+      return on ? 'on' : it.gone ? null : 'ghost';
+    };
+    const stId = ids[cur];
+    const items = pl.items.map((it) => ({ it, st: stateOf(it) })).filter((x) => x.st);
+    items.filter((x) => x.it.ty === 'fill' && x.st === 'on').forEach(({ it }) => fillPoly(b, it.pts, it.col || 'sky', it.a == null ? 0.22 : it.a));
+    if (pl.base) pl.base(b);
+    items.forEach(({ it, st }) => {
+      const on = st === 'on', c = (it.cols && it.cols[stId]) || it.col || 'sky', sz = it.size || 16, lab = (it.labels && it.labels[stId] != null ? it.labels[stId] : it.label);
+      const gl = it.glTo != null && cur > ix(it.glTo, 0) ? undefined : (it.gl === true ? it.label : it.gl); // glTo: 이 단계까지만 회색 글자를 남김
+      switch (it.ty) {
+        case 'seg': if (on) line(b, it.p, it.q, c, it.w || 4.4, { dash: it.dash }); else line(b, it.p, it.q, 'ink', 2.2, { alpha: 0.4, dash: it.dash }); break;
+        case 'poly': if (on) poly(b, it.pts, c, it.w || 4, { dash: it.dash }); else poly(b, it.pts, 'ink', 2.2, { alpha: 0.4, dash: it.dash }); break;
+        case 'tick': tick(b, it.p, it.q, it.n, on ? c : 'ink'); break;
+        case 'ang':
+          if (on) ang(b, it.V, it.A, it.B, { color: c, rings: it.rings, r: it.r || 28, label: lab, labelDist: it.ld, labelRot: it.lr, size: it.size || 15, fa: it.fa == null ? 0.38 : it.fa, big: it.big, cut: it.cut, noRight: it.noRight, noMark: it.noMark });
+          else ang(b, it.V, it.A, it.B, { color: 'ink', alpha: 0.38, w: 1.4, fa: 0, rings: it.rings, r: it.r || 28, label: gl, labelDist: it.ld, labelRot: it.lr, size: it.size || 15, labelColor: 'ink', big: it.big, cut: it.cut });
+          break;
+        case 'txt': T(b, it.p, lab == null ? it.str : lab, { color: on ? c : 'ink', size: sz, dx: it.dx, dy: it.dy, alpha: on ? undefined : 0.55 }); break;
+        case 'len': sideTag(b, it.p, it.q, it.c, lab == null ? it.str : lab, { color: on ? c : 'ink', size: sz, gap: it.gap == null ? 8 : it.gap, dx: it.dx, dy: it.dy, alpha: on ? undefined : 0.55 }); break;
+        case 'dim': dim(b, it.p, it.q, it.c, lab == null ? it.str : lab, { color: on ? c : 'ink', size: sz, off: it.off || 30 }); break;
+        case 'dot': b.point(it.p, { color: on ? c : 'ink', r: 4.5 }); T(b, it.p, it.name, { color: on ? c : 'ink', size: it.size || 18, dx: it.dx, dy: it.dy, alpha: on ? undefined : 0.6 }); break;
+        case 'fn': it.f(b, st, stId); break;
+        default: break;
+      }
+    });
+    if (pl.names) pl.names(b);
+    if (idx >= 0 && pl.steps[idx]) {
+      const bx = bboxOf(pl.fit);
+      solveCap(b, pt((bx.x0 + bx.x1) / 2, bx.y1), pl.steps[idx], { dy: nar ? 44 : 54 });
+    }
+  }
+  function mkSolve(plan, extra) {
+    return Object.assign({ steps: (M, s) => plan(M, s).steps, draw: (b, s, M, C, ST, idx) => render(b, plan(M, s), idx) }, extra || {});
+  }
+  G.SVK = K; G.mkSolve = mkSolve;
 })();
