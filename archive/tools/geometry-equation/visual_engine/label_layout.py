@@ -14,6 +14,7 @@ OWNER_BOUND_POINT_LABELS={'POINT_NAME','COORDINATE_LABEL'}
 POINT_OWNER_DISTANCE_TOLERANCE_PX2=1e-6
 MEASURED_OWNER_REPAIR_GAPS=(64,80,96,128)
 LEADER_ONLY_MIN_PX=14.0
+RING_LABEL_OWN_REACH_PX=60.0   # the independent observer refuses a leaderless overlay coordinate label farther than this from its own dot
 POINT_NAME_RING_RADII=(12,16,20,26,32,40,48,56,64,72,80,96,112,128,144,160,180,210,240,270,300)
 NEAR_RELOCATION_LEADER_MIN_GAP=20
 # A wedge narrower than twice the 15-degree leader/line tolerance keeps its bisector leaders hidden under a ray (visible_owner_leader rejects them).
@@ -1284,7 +1285,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                         angle=math.radians(step*7.5)
                         box=Box(at[0]+radius*math.cos(angle)-w/2,at[1]+radius*math.sin(angle)-h/2,w,h)
                         if leader_only and box_point_distance(box,at)<LEADER_ONLY_MIN_PX:continue
-                        if not leader_only and acceptable(box):ring=box;ring_method='POINT_NAME_RING';break
+                        if not leader_only and acceptable(box) and not (label.get('ringLeader') and box_point_distance(box,at)>RING_LABEL_OWN_REACH_PX):ring=box;ring_method='POINT_NAME_RING';break   # (G18c) beyond the observer's reach of its own point (60 px) a coordinate label needs a leader, not just a free box
                         if owner_marker is None or not acceptable(box,owner_check=False):continue
                         incident=incident or owner_incident_ids(at,owner_marker,occupied)
                         end=visible_owner_leader(at,box,occupied,incident,skip_ids=pass_skip)
