@@ -269,7 +269,7 @@ function openQrGenerator(cid) {
     const lastArchiveFile = localStorage.getItem('AP_LAST_ARCHIVE_FILE') || '';
 
     showModal('QR 생성기', `
-        <div class="apms-unified-modal apms-unified-form apms-unified-qr">
+        <div class="apms-modal apms-modal--form apms-unified-modal apms-unified-form apms-unified-qr">
             <div class="apms-unified-context"><div class="apms-unified-context__meta">대상 학급</div><div class="apms-unified-context__name">${apEscapeHtml(cls?.name || '반')}</div></div>
 
             <div>
@@ -319,8 +319,12 @@ function openQrGenerator(cid) {
                     </div>
                 </div>
             </div>
+            <div class="apms-modal__actions">
+                <button type="button" class="btn apms-button apms-button--quiet apms-unified-quiet" onclick="closeModal()">닫기</button>
+                <button type="button" class="btn apms-button apms-button--primary btn-primary apms-unified-primary" onclick="generateQrCode()">생성</button>
+            </div>
         </div>
-    `, '생성', generateQrCode);
+    `);
 }
 
 /**

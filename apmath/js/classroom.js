@@ -945,7 +945,7 @@ function openHomeworkPhotoAssignmentModal(classId) {
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     const today = typeof getClassroomOperationDate === 'function' ? getClassroomOperationDate() : new Date().toLocaleDateString('sv-SE');
     showModal('숙제', `
-        <div class="apms-unified-modal apms-unified-form">
+        <div class="apms-modal apms-modal--form apms-unified-modal apms-unified-form">
             <div class="apms-unified-context"><div class="apms-unified-context__name">${apEscapeHtml(cls?.name || '반')}</div><div class="apms-unified-context__meta">숙제를 저장합니다.</div></div>
             <input id="hw-photo-title" class="cls-input apms-unified-control" placeholder="숙제 제목">
             <textarea id="hw-photo-desc" class="cls-input apms-unified-control" rows="4" placeholder="숙제 설명" style="resize:vertical;"></textarea>

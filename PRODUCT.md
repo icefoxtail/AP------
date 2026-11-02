@@ -4,7 +4,7 @@
 
 > 범위: **AP Math 제품군**만 다룬다. JS아카이브(`archive/`), AP Math OS·APMS(`apmath/`), 학생 포털(`apmath/student/`), 도형실험실(`apmath/playground/`), 홈(`apmath-home/`).
 > 이 저장소에는 왕지교육 허브(`index.html`), 시매쓰(`cmath-home/`), EIE 영어(`eie-home/`, `eie/`)도 있지만 이 문서의 범위 밖이다. 필요하면 해당 폴더에 따로 PRODUCT.md를 둔다.
-> 시각 체계(DESIGN.md)는 화면 폴더별로 둔다. 현재 `apmath/playground/DESIGN.md`만 있다.
+> 시각 체계(DESIGN.md)는 화면 폴더별로 둔다. 현재 `apmath/DESIGN.md`(APMS·학생 포털·숙제·플래너)와 `apmath/playground/DESIGN.md`(도형실험실) 두 개가 있다.
 
 ## Platform
 
@@ -34,7 +34,7 @@ web
 ## Operating Context
 
 - 학생: 휴대폰, 혼자. 학생 포털 매니페스트는 세로 화면(`portrait-primary`)을 지정한다.
-- 교사: APMS 관리 화면과 시험지 출력.
+- 교사: APMS 관리 화면과 시험지 출력. 선생님은 휴대폰·태블릿(갤럭시 탭)으로 APMS를 관리하고, 원장은 PC로 쓴다(사용자 결정 2026-11-02). 그래서 화면 확인은 휴대폰 390×844, 태블릿 세로 800×1280·가로 1280×800, PC 1440×900·1280×800에서 한다.
 - 배포: GitHub Pages(`https://icefoxtail.github.io/AP------/...`) 정적 호스팅. 도메인 이전 계획 문서가 `docs/operations/WangjiEdu_Domain_Migration_Plan_v1.md`에 있다.
 - 작업 규칙은 `AGENTS.md`와 영역별 `docs/agents/*.md`가 정한다.
 
