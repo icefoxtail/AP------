@@ -43,7 +43,7 @@
     <script src="svg-accessibility.js?v=20261014.1"></script>
     <script src="render-authority.js?v=20261014-svg-alt-1" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="layout-authority.js?v=20261009.1" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
-    <script src="layout-materializer.js?v=20261011.5"></script>
+    <script src="layout-materializer.js?v=20261102.1"></script>
     <script src="solution-render-executor.js?v=20261029-sections-1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1" onerror="console.warn('[answer-render-executor] shared answer renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="equal-slot-engine.js?v=20261029-mjx-ext-1"></script>
@@ -220,6 +220,16 @@
         .sol-meta { background: #fdfdfd; padding: 8px; border: 1px solid #eee; border-radius: 3px; margin-top: 10px; }
         .sol-ans { font-weight: bold; color: #dc2626; margin-bottom: 6px; }
         .sol-exp { font-size: 8.5pt; line-height: 1.55; color: #333; }
+        /* 반폭 칸을 넘치는 해설은 전폭으로 올리지 않고 칸 안에서 줄바꿈·글자 단계 축소로 맞춘다(layout-materializer fitSolutionToNarrowColumn). 잘라 숨기지 않는다. */
+        .q-box.sol-box.sol-fit-narrow, .q-box.sol-box.sol-fit-narrow .sol-meta { max-width: 100%; min-width: 0; }
+        .q-box.sol-box.sol-fit-narrow .sol-exp,
+        .q-box.sol-box.sol-fit-narrow .sol-ans { max-width: 100%; white-space: normal; overflow-wrap: anywhere; word-break: break-word; }
+        .q-box.sol-box.sol-fit-narrow .sol-exp mjx-container { display: inline-block; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+        .q-box.sol-box.sol-fit-narrow .sol-exp mjx-container mjx-math { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+        .q-box.sol-box.sol-fit-narrow[data-sol-fit="1"] .sol-exp { font-size: 8pt; }
+        .q-box.sol-box.sol-fit-narrow[data-sol-fit="2"] .sol-exp { font-size: 7.5pt; }
+        .q-box.sol-box.sol-fit-narrow[data-sol-fit="3"] .sol-exp { font-size: 7pt; }
+        .q-box.sol-box.sol-fit-narrow[data-sol-fit="4"] .sol-exp { font-size: 6.5pt; }
         .sol-sec-label { display: inline; margin: 0 3px 0 0; padding: 0; border-radius: 0; background: transparent; color: #111; font-weight: 700; font-size: inherit; }
         .sol-chunk { display: inline; }
         .sol-image-wrap { display: block; margin: 10px auto 2px; text-align: center; break-inside: avoid; page-break-inside: avoid; }

@@ -31,9 +31,9 @@ const widthEnd = source.indexOf('\n    function assertQuestionImagesReady(', wid
 assert.notEqual(widthStart, -1, 'solution horizontal overflow helper exists');
 assert.notEqual(widthEnd, -1, 'solution horizontal overflow helper ends before image readiness');
 const widthContext = {};
-vm.runInNewContext(source.slice(widthStart, widthEnd) + '\nthis.hasHorizontalSolutionOverflow = hasHorizontalSolutionOverflow;', widthContext);
+vm.runInNewContext(source.slice(widthStart, widthEnd) + '\nthis.hasHorizontalSolutionOverflow = hasHorizontalSolutionOverflow; this.fitSolutionToNarrowColumn = fitSolutionToNarrowColumn; this.SOL_FIT_MAX_LEVEL = SOL_FIT_MAX_LEVEL;', widthContext);
 
-test('solution overflow detection promotes only blocks that do not fit their column', () => {
+test('solution overflow detection flags only blocks that do not fit their column', () => {
   const regularColumn = { clientWidth: 340, scrollWidth: 644 };
   const narrowBox = { clientWidth: 316, scrollWidth: 620 };
   assert.equal(widthContext.hasHorizontalSolutionOverflow(narrowBox, regularColumn), true);
@@ -42,13 +42,54 @@ test('solution overflow detection promotes only blocks that do not fit their col
   const fullWidthBox = { clientWidth: 656, scrollWidth: 620 };
   assert.equal(widthContext.hasHorizontalSolutionOverflow(fullWidthBox, fullWidthColumn), false);
 
+});
+
+test('half-column overflow is fitted inside the half column and never promotes a block to full width', () => {
   const solutionStart = source.indexOf('    async function solution(');
   const solutionEnd = source.indexOf('\n    global.APArchiveLayoutMaterializer', solutionStart);
   assert.notEqual(solutionStart, -1, 'solution materializer exists');
   assert.notEqual(solutionEnd, -1, 'solution materializer ends before API export');
   const solutionSource = source.slice(solutionStart, solutionEnd);
-  assert.match(solutionSource, /fullWidth = true;\s*blocks\[index\]\.fullWidth = true;/);
+  // 2026-11-02: overflow-driven promotion was removed (one 2px overflow on a student PC turned a
+  // whole page into 1 column). Only the explicit fullWidth input (solutionImageLayout:'fullwidth')
+  // may start a block as full width; no code path may set it afterwards.
+  assert.doesNotMatch(solutionSource, /blocks\[index\]\.fullWidth = true/);
+  assert.doesNotMatch(solutionSource, /\n\s*fullWidth = true;/);
+  assert.match(solutionSource, /let fullWidth = box\.dataset\.solutionFullWidth === 'true' \|\| blocks\[index\]\.fullWidth === true;/);
+  assert.match(solutionSource, /fitSolutionToNarrowColumn\(box, cols\[0\]\)/);
+  // A block that is already full width and still overflows the full-width column keeps failing loudly.
   assert.match(solutionSource, /SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH/);
+});
+
+test('narrow-column fit adds wrapping first, then steps the font down, without clipping', () => {
+  const makeBox = (overflowUntil) => {
+    const classes = new Set();
+    const box = { dataset: {}, classList: { add: name => classes.add(name), has: name => classes.has(name) },
+      get clientWidth() { return 316; },
+      get scrollWidth() {
+        const level = Number(this.dataset.solFit || 0);
+        const wrapped = classes.has('sol-fit-narrow');
+        return wrapped && level >= overflowUntil ? 316 : 620;
+      } };
+    return { box, classes };
+  };
+  const column = { clientWidth: 340, scrollWidth: 340 };
+
+  const fits = makeBox(0);
+  assert.equal(widthContext.fitSolutionToNarrowColumn(fits.box, column), true);
+  assert.equal(fits.classes.has('sol-fit-narrow'), true);
+  assert.equal(fits.box.dataset.solFit, undefined);
+
+  const needsFont = makeBox(2);
+  assert.equal(widthContext.fitSolutionToNarrowColumn(needsFont.box, column), true);
+  assert.equal(needsFont.box.dataset.solFit, '2');
+
+  const hopeless = makeBox(99);
+  assert.equal(widthContext.fitSolutionToNarrowColumn(hopeless.box, column), false);
+  assert.equal(Number(hopeless.box.dataset.solFit), widthContext.SOL_FIT_MAX_LEVEL);
+
+  const untouched = { dataset: {}, classList: { add() { assert.fail('a box that already fits must not be modified'); } }, clientWidth: 316, scrollWidth: 316 };
+  assert.equal(widthContext.fitSolutionToNarrowColumn(untouched, column), true);
 });
 
 const capacityStart = source.indexOf('    function measuredSolutionCapacity(document, probePage) {');
