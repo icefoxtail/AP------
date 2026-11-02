@@ -3,7 +3,7 @@
   "examUid": "25_순천고_2학기_기말_고2_수학II_유사",
   "candidateJsPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사.js",
   "candidateMetaPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사.meta-q01-q24.json",
-  "candidateGitBlobSha1": "2b1cf1a9043c7c03c58cf6197420e30befedc1dd",
+  "candidateGitBlobSha1": "8cfa3bf8a7515bccba7bc0751f07d34786dc0476",
   "reviewTimestamp": "2026-10-29T12:00:00+09:00",
   "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
   "overallVerdict": "PASS",
@@ -141,5 +141,14 @@
     "Chrome runtime 검사",
     "node tools/check-archive2-runtime.cjs"
   ],
-  "finalBlobBinding": "candidateGitBlobSha1 = 최종 JS git hash-object; meta expectedSourceBlobSha1 동일"
+  "finalBlobBinding": "candidateGitBlobSha1 = 최종 JS git hash-object; meta expectedSourceBlobSha1 동일",
+  "postReviewMetaLabelRebind": {
+    "date": "2026-11-02",
+    "scope": "JS question-level metadata fields \"L3\"/\"L4\" only (and the matching small-meta values). No content, choices, answer, solution, figure or plan bytes changed.",
+    "reason": "The v2 registrar requires L3/L4 to equal the canonical PT/TPL labels of the question; the JS carried RPM path labels instead. RPM labels stay in rpmPrimaryPath/rpmL3/rpmL4 of the small meta.",
+    "previousCandidateGitBlobSha1": "2b1cf1a9043c7c03c58cf6197420e30befedc1dd",
+    "newCandidateGitBlobSha1": "8cfa3bf8a7515bccba7bc0751f07d34786dc0476",
+    "studentPayloadUnchanged": "verified: all question fields other than L3/L4 are deep-equal before/after; sourceFingerprint/contentFingerprint inputs (content, choices, answer, solution, image) untouched",
+    "independentReviewCovers": "the pre-edit JS blob 2b1cf1a9043c7c03c58cf6197420e30befedc1dd; the label edit itself was not re-reviewed by the independent reviewer (mechanical rewrite to canonical labels)."
+  }
 }

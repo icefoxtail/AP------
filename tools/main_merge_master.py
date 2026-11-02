@@ -200,7 +200,23 @@ def _compact_scope(value: str) -> str:
     return "".join(str(value or "").split()).replace("Ⅱ", "II").replace("Ⅰ", "I")
 
 
-def build_target_parent_ref(assignment: dict) -> tuple[dict, list]:
+def _crosswalk_row_fits(doc_status, row: dict, assignment: dict, classification: dict | None) -> bool:
+    """Same conditions the registrar (withTargetParent) applies to a `crosswalkRef` row, except the course scope
+    (which the registrar re-derives from the ACTIVE binding owner pack): ACTIVE_REFERENCE document, ACTIVE binding,
+    same curriculum, same exact PT/TPL as the question, and the chosen L1/L2 as the RPM path."""
+    if doc_status != "ACTIVE_REFERENCE" or row.get("bindingStatus") != "ACTIVE":
+        return False
+    if row.get("curriculum") != assignment["curriculum"]:
+        return False
+    if (row.get("rpmPath") or {}).get("majorUnit") != assignment["L1"] or (row.get("rpmPath") or {}).get("midUnit") != assignment["L2"]:
+        return False
+    if classification is not None and (row.get("problemTypeKey") != classification.get("problemTypeKey")
+                                       or row.get("templateKey") != classification.get("templateKey")):
+        return False
+    return True
+
+
+def build_target_parent_ref(assignment: dict, classification: dict | None = None, notes: list | None = None) -> tuple[dict, list]:
     """Build the registrar `targetParentRef` (+ the evidence refs it needs) from a small-meta `parentAssignment`.
 
     Without a parent reference the registrar fills the student-screen parent (L1/L2) from the standard-unit
@@ -212,7 +228,10 @@ def build_target_parent_ref(assignment: dict) -> tuple[dict, list]:
       - L2 is the standard unit / sub-unit label, or an ACTIVE crosswalk row with the same PT/TPL
         points at that exact L1/L2 (`crosswalkRef`).
     parentRefMode UNIT_LABEL therefore carries no crosswalkRef; every other mode carries the recorded crosswalk row
-    so a request is never silently downgraded to the unit-label parent.
+    so a request is never silently downgraded to the unit-label parent. The one exception is a recorded crosswalk row that
+    names the right parent but is not an ACTIVE row with the question's own PT/TPL (the registrar refuses those): an
+    exact ACTIVE row for the same PT/TPL and parent is used instead, else no crosswalkRef is carried (reported in `notes`)
+    and the registrar decides whether the unit-label parent is acceptable.
     """
     L1, L2 = assignment["L1"], assignment["L2"]
     curriculum = assignment["curriculum"]
@@ -230,21 +249,43 @@ def build_target_parent_ref(assignment: dict) -> tuple[dict, list]:
     record_id = assignment.get("crosswalkRecordId")
     if record_id and assignment.get("parentRefMode") != "UNIT_LABEL":
         crosswalk_dir = REPO_ROOT / CROSSWALK_REL_DIR
-        found = []
+        found, all_rows = [], []
         for crosswalk_file in sorted(crosswalk_dir.glob("*.json")):
             doc = json.loads(crosswalk_file.read_text(encoding="utf-8"))
-            found += [(crosswalk_file, row) for row in doc.get("records", []) if row.get("id") == record_id]
+            for row in doc.get("records", []):
+                all_rows.append((crosswalk_file, doc.get("status"), row))
+                if row.get("id") == record_id:
+                    found.append((crosswalk_file, doc.get("status"), row))
         if len(found) != 1:
             raise RequestGenerationError(f"parentAssignment crosswalk record {record_id} not found exactly once.")
-        crosswalk_file, row = found[0]
+        crosswalk_file, doc_status, row = found[0]
         if (row.get("rpmPath") or {}).get("majorUnit") != L1 or (row.get("rpmPath") or {}).get("midUnit") != L2:
             raise RequestGenerationError(
                 f"parentAssignment crosswalk record {record_id} points at "
                 f"{(row.get('rpmPath') or {}).get('majorUnit')}>{(row.get('rpmPath') or {}).get('midUnit')}, not {L1}>{L2}.")
-        cross_rel = f"{CROSSWALK_REL_DIR}/{crosswalk_file.name}"
-        cross_sha = sha256_file(crosswalk_file)
-        ref["crosswalkRef"] = {"path": cross_rel, "sha256": cross_sha, "recordId": record_id}
-        evidence.append({"path": cross_rel, "sha256": cross_sha})
+        chosen = (crosswalk_file, row) if _crosswalk_row_fits(doc_status, row, assignment, classification) else None
+        if chosen is None:
+            # The recorded row names the right parent but is not an exact ACTIVE PT/TPL row for this question, so the
+            # registrar would refuse it (`canonical target crosswalk classification/parent mismatch`). Another ACTIVE
+            # crosswalk row with the question's own PT/TPL and the same RPM parent is equally valid evidence; the
+            # registrar does not weaken. If there is none, the parent is carried without a crosswalkRef (UNIT_LABEL
+            # style): the registrar then accepts it only when L2 is the question's unit/sub-unit/binding label.
+            same_scope = [(f, r) for f, st, r in all_rows
+                          if _compact_scope(r.get("scope")) == _compact_scope(assignment["scope"])
+                          and _crosswalk_row_fits(st, r, assignment, classification)]
+            if classification is not None and same_scope:
+                chosen = sorted(same_scope, key=lambda pair: pair[1]["id"])[0]
+                if notes is not None:
+                    notes.append(f"{record_id} -> {chosen[1]['id']} (exact ACTIVE PT/TPL row)")
+            elif notes is not None:
+                notes.append(f"{record_id} -> UNIT_LABEL (no exact ACTIVE PT/TPL crosswalk row for "
+                             f"{(classification or {}).get('problemTypeKey')}/{(classification or {}).get('templateKey')} at {L1}>{L2})")
+        if chosen is not None:
+            crosswalk_file, row = chosen
+            cross_rel = f"{CROSSWALK_REL_DIR}/{crosswalk_file.name}"
+            cross_sha = sha256_file(crosswalk_file)
+            ref["crosswalkRef"] = {"path": cross_rel, "sha256": cross_sha, "recordId": row["id"]}
+            evidence.append({"path": cross_rel, "sha256": cross_sha})
     return ref, evidence
 
 
@@ -317,6 +358,7 @@ def generate_inbox_request(files: dict) -> dict:
     }
 
     req_items = []
+    parent_notes: list = []
     for i, q in enumerate(bank):
         ord_num = i + 1
         cur = cur_by_ord.get(ord_num, {})
@@ -343,7 +385,10 @@ def generate_inbox_request(files: dict) -> dict:
         parent_ref = None
         item_evidence = list(evidence_refs)
         if parent_assignment:
-            parent_ref, parent_evidence = build_target_parent_ref(parent_assignment)
+            parent_ref, parent_evidence = build_target_parent_ref(
+                parent_assignment,
+                {"problemTypeKey": after.get("problemTypeKey"), "templateKey": after.get("templateKey")},
+                parent_notes)
             after["L1"], after["L2"] = parent_assignment["L1"], parent_assignment["L2"]
             for ev in parent_evidence:
                 if ev not in item_evidence:
@@ -364,6 +409,9 @@ def generate_inbox_request(files: dict) -> dict:
         if parent_ref:
             req_item["targetParentRef"] = parent_ref
         req_items.append(req_item)
+
+    for note in parent_notes:
+        print(f" - NOTE: parent crosswalk adjusted: {note}")
 
     # Generated-extension keys (EXT-*) are accepted by the v2 registrar only when the extension index lists them as
     # GENERATED_ACTIVE (and the registrar's own source-registry/parent/scope checks pass). They are carried unchanged
