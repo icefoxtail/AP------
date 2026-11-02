@@ -955,7 +955,6 @@ function returnToPreviousManagementView(fallback = 'dashboard', ctx = null) {
 
     if (view.type === 'addressBook' && typeof openAddressBook === 'function') return openAddressBook();
     if (view.type === 'classManage' && typeof openClassManageModal === 'function') return openClassManageModal();
-    if (view.type === 'textbookManage' && typeof openTextbookManageModal === 'function') return openTextbookManageModal({ returnTo: view.parentReturn || null });
     if (view.type === 'classDetail' && view.classId && typeof renderClass === 'function') {
         closeModal(true);
         // Do not confuse the previous class screen with the class selected in progress.
@@ -1395,15 +1394,6 @@ function openManualCenter() {
     const url = '../manual/';
     const opened = window.open(url, '_blank', 'noopener');
     if (!opened) window.location.href = url;
-}
-
-function openExamScoreMenu() {
-    showModal('원내평가', `
-        <div style="display:flex; flex-direction:column; gap:10px;">
-            <button class="btn btn-primary" style="width:100%; min-height:48px; padding:12px 14px; font-size:14px; font-weight:700; border-radius:14px;" onclick="closeModal(); openGlobalExamGradeView();">원내평가</button>
-            <button class="btn" style="width:100%; min-height:48px; padding:12px 14px; font-size:14px; font-weight:700; border-radius:14px; background:var(--surface-2); border:1px solid var(--border); color:var(--text);" onclick="closeModal(); if(typeof openSchoolExamLedger==='function') openSchoolExamLedger(); else openCumulativeOpsModal('school');">학교 성적표</button>
-        </div>
-    `);
 }
 
 function buildDrawerMenu(roleKey) {

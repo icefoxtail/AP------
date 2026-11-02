@@ -826,14 +826,3 @@ async function handleAddStudent() {
         }
     }
 }
-
-function openDischargedStudents() {
-    const discharged = state.db.students.filter(s => isWithdrawnStudentStatus(s.status));
-    const rows = discharged.map(s => `
-        <div class="apms-discharged-student-row" style="padding: 14px 12px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--surface);">
-            <div><span style="font-size: 14px; font-weight:500; color: var(--text); line-height: 1.4;">${apEscapeHtml(s.name)}</span> <span style="font-size: 12px; color: var(--secondary); font-weight: 400; line-height: 1.5; margin-left: 4px;">${apEscapeHtml(s.school_name || '')}</span></div>
-            <button class="btn apms-button apms-button--primary btn-primary" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:500; border-radius: 12px; box-shadow: none;" onclick="handleRestore('${s.id}')">재등원</button>
-        </div>
-    `).join('');
-    showModal('퇴원생 관리', `<div class="apms-student-contrast apms-student-discharged-view" style="max-height: 60vh; overflow-y: auto; margin: -20px 0;">${rows || '<div class="apms-student-empty-state" style="padding: 40px; text-align: center; color: var(--secondary); font-weight:500; font-size: 13px; line-height: 1.5;">퇴원생이 없습니다.</div>'}</div>`);
-}

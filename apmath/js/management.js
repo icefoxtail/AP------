@@ -125,22 +125,6 @@ function openAddressBook() {
     renderAddressBookList();
 }
 
-function openGlobalPinManagement() {
-    setModalReturnView({ type: 'addressBook' });
-    const classes = sortClassesForManagement((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
-    const rows = classes.map(c => `
-        <button class="btn apms-button apms-button--quiet" style="width:100%; justify-content:space-between; padding:14px; margin-bottom:8px; border:1px solid var(--border); background:var(--surface);" onclick="if(typeof handleBatchGeneratePins==='function') handleBatchGeneratePins('${c.id}'); else toast('해당 기능은 학생관리 모듈에 있습니다.', 'warn');">
-            <span style="font-weight:500; font-size:14px; color:var(--text);">${mgmtEscape(c.name)}</span>
-            <span style="font-size:11px; color:var(--primary); font-weight:500; background:rgba(var(--primary-rgb),0.1); padding:4px 8px; border-radius:6px;">일괄 생성</span>
-        </button>
-    `).join('');
-
-    showModal('PIN관리', `
-        <div style="margin-bottom:16px; font-size:12px; color:var(--secondary); line-height:1.5; background:var(--surface-2); padding:12px; border-radius:10px;">선택한 반에 속한 학생 중, <span style="font-weight:600;">아직 PIN 번호가 없는 학생</span>들에게만 고유 PIN을 자동 부여합니다. 기존 PIN은 유지됩니다.</div>
-        <div style="max-height:60vh; overflow-y:auto; padding-right:4px;">${rows || `<div style="text-align:center; color:var(--secondary); padding:20px; font-size:13px;">관리할 반이 없습니다.</div>`}</div>
-    `);
-}
-
 function formatClassScheduleDaysForUI(daysStr) {
     if (!daysStr) return '매일';
     const map = ['일','월','화','수','목','금','토'];

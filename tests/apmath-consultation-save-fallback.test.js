@@ -36,7 +36,7 @@ assert(
 
 const saveConsultationBody = report.slice(
   report.indexOf('async function reportArchiveSaveConsultationAndLink'),
-  report.indexOf('function makeClassReportTextId')
+  report.indexOf('function getReportTargetLabel')
 );
 
 assert(
