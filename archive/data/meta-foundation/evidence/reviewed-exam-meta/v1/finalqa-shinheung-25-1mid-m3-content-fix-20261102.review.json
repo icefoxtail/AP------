@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "archive-finalqa-content-fix-review-v1",
+  "requestId": "finalqa-shinheung-25-1mid-m3-content-fix-20261102",
+  "examUid": "25_신흥중_1학기_중간_중3_기출",
+  "sourceArchiveFile": "original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js",
+  "reviewer": "Claude Sonnet subagent (user-directed re-review of the 4 findings carried since approval; issue #1183)",
+  "scope": "Four findings from the earlier FINAL_QA rebind review (finalqa-shinheung-25-1mid-m3-source-rebind-20261102.review.json): Q19 TPL, Q17-20/23 sub unit, Q11 figure labels, Q5 JS tags. Each finding was re-read against the question text and solution. Question text, choices, answers and solutions are unchanged.",
+  "priorEvidence": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/finalqa-shinheung-25-1mid-m3-source-rebind-20261102.review.json",
+    "note": "Findings quoted from rows 5, 11, 17-20, 23."
+  },
+  "findings": [
+    {
+      "id": 1,
+      "question": 19,
+      "claim": "TPL 공통인수 조건으로 미정계수 결정 does not fit the question",
+      "verdict": "FACT (mismatch confirmed); NOT CHANGED in this request",
+      "evidence": "Q19 asks for the common factor of x^2+2xy-3y^2 and (x-1)^2-(y-1)^2 (solution: (x+3y)(x-y) and (x+y-2)(x-y), common factor x-y). No unknown coefficient exists. TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION is defined as 'determine coefficients by substituting the root of a common factor'. Its only registered supporter is 16_왕의중 Q19 (x+3 is a common factor of x^2y-Ay and 2x^2+5x+B), so the value was carried over from the same question number of another exam.",
+      "candidatesCompared": {
+        "TPL_M3_COMMON_FACTOR_IDENTIFICATION": "factor the expressions, then tell which factors are (not) factors of an expression; closest to 'find the common factor' (also used by Q17)",
+        "TPL_M3_GROUPING_FACTORIZATION": "grouping terms and extracting a common factor between groups; Q19 has no grouping step",
+        "TPL_M3_FACTORIZATION_FORMULA_APPLICATION": "compare blanks of factorization identities; does not describe Q19",
+        "TPL_M3_QUADRATIC_FACTORIZATION_SUM": "factor a quadratic and add two linear factors; Q20 style, not Q19"
+      },
+      "evidenceDebt": "Open: Q19 still carries a template (미정계수 결정) that contradicts the question. A dedicated canonical TPL ('두 다항식을 각각 인수분해하여 공통인수 찾기', parent PT_M3_POLY_FACTORIZATION) and a crosswalk decision for M3-RPM-025 (existing RPM_ONLY row, shared with Q20) need a user decision.",
+      "officialRouteCheck": "Adding an ACTIVE crosswalk row for M3-RPM-025 in crosswalks/rpm-primary-v1.0/middle3.json is not possible add-only: the file already holds exactly one row with that rpmPath (M3-RPM-025, RPM_ONLY, normalised on purpose, 'no forced mapping'); the Resolver (crosswalkMatch in rpm-active-resolver.mjs) matches by curriculum+scope+rpmPath+standardUnitKey, so a second row would make every M3-RPM-025 question CROSSWALK_COMPATIBILITY_ROW_AMBIGUOUS (Q19 and Q20 share this leaf). Making it work needs a change of the existing row to FAMILY_ACTIVE with template candidates, which is a modification, not an addition. Also no ACTIVE template describes Q19 exactly: COMMON_FACTOR_IDENTIFICATION is defined as pulling a common factor out of terms and then telling factors from non-factors, while Q19 factors each polynomial by the cross-multiplication and difference-of-squares formulas and compares the factors. The label overlap (공통인수, 인수 판별) is the only fit. The template change is therefore a reviewer choice, not a Resolver result.",
+      "decision": "Q19 TPL 부적합은 사실이나 맞는 정본 TPL 없음 → 신규 TPL 정의 필요(사용자 결정), 이번엔 미변경. Q19 keeps templateKey TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION and L4 '공통인수 조건으로 미정계수 결정'. Reason: no ACTIVE canonical template describes Q19, and replacing it with an ill-fitting one by reviewer choice would violate the Resolver-only PT/TPL rule (the official crosswalk row M3-RPM-025 is RPM_ONLY). Q19's sub unit change (인수분해) is kept (finding 2).",
+      "proposedNotApplied": {
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+        "L4": "공통인수로 인수분해 후 인수 판별",
+        "note": "closest ACTIVE template, rejected as not exact"
+      }
+    },
+    {
+      "id": 2,
+      "questions": [
+        17,
+        18,
+        19,
+        20,
+        23
+      ],
+      "claim": "sub unit is 다항식의 곱셈 although the questions are factorization",
+      "verdict": "FACT for Q17, Q18, Q19, Q20; NOT A DEFECT for Q23",
+      "evidence": {
+        "Q17": "x^3-7x^2 = x^2(x-7); approved RPM leaf M3-RPM-021 인수분해 / 공통인수 / 공통인수 묶기",
+        "Q18": "add two polynomials, factor into a perfect square; M3-RPM-023 인수분해 / 인수분해 공식 / 제곱식",
+        "Q19": "factor two polynomials; M3-RPM-025 인수분해 / 인수분해 공식 / 이차식",
+        "Q20": "6x^2-7x-20 = (3x+4)(2x-5); M3-RPM-025",
+        "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json places M3-RPM-021, -023, -025 under standardUnitKey M3-02 / subUnitKey M3-02-FACTORIZATION (mappingStatus RPM_ONLY), while M3-RPM-017 (곱셈공식 / 두 일차식의 곱) is under M3-02-POLYNOMIAL_MULTIPLICATION. The registered L2 for these rows already came from the approved RPM path (midUnit 인수분해) in rpmPrimaryPath, but the student-facing L2 showed 다항식의 곱셈 through the POLYNOMIAL_MULTIPLICATION binding.",
+        "Q23": "Two equal parts: expand (x+A)(x-2) and compare coefficients (A, B), then factor 3x^2+2x-8 (C, D). The approved RPM Primary leaf is M3-RPM-017 (다항식의 곱셈 / 곱셈공식 / 두 일차식의 곱), which the crosswalk puts under M3-02-POLYNOMIAL_MULTIPLICATION. Moving it would contradict its own Primary leaf, so it is left unchanged (the earlier review also judged it acceptable)."
+      },
+      "before": {
+        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "subUnit": "다항식의 곱셈",
+        "conceptClusterKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "L2": "다항식의 곱셈"
+      },
+      "after": {
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "subUnit": "인수분해",
+        "conceptClusterKey": "M3-02-FACTORIZATION",
+        "L2": "인수분해"
+      },
+      "registry": "No ACTIVE binding existed for (2015, 중3 수학, M3-02, M3-02-FACTORIZATION, PT_M3_POLY_FACTORIZATION); the existing FACTORIZATION binding is for the course alias 중3-1 (왕의중). One add-only binding for 중3 수학 is requested (L1 다항식의 곱셈과 인수분해, L2 인수분해, supporting UIDs Q17-20). The POLYNOMIAL_MULTIPLICATION binding for PT_M3_POLY_FACTORIZATION keeps only Q23 as supporter. The registrar signature check was made course-exact so that this add does not count as a change of the 중3-1 rows.",
+      "sourceJs": "subUnitKey/subUnit of Q17-20 changed to the same values; subUnitConfidence/subUnitClassificationDepth set to rule_inferred/complete_rule (crosswalk-determined)."
+    },
+    {
+      "id": 3,
+      "question": 11,
+      "claim": "figure labels a/b do not match the explanation",
+      "verdict": "FACT",
+      "evidence": "Solution: a = 2*sqrt3 (short diagonal), b = 2 (side), 'the outside of the new figure has 2 sides of length a and 4 sides of length b', perimeter 2a+4b = 8+4*sqrt3 (answer 4). Original left figure labelled the left diagonal a (ok), the right diagonal b (wrong, it is also 2*sqrt3), and put a second a beside the vertical long diagonal (length 4, neither a nor b). The original right (rearranged) figure drew two right triangles back to back along their short legs with two isosceles triangles below: its perimeter would be 4+4+4*2 = 16, which is not a choice and contradicts answer 4.",
+      "change": "Left figure: a on both short diagonals, b on the four sloping hexagon sides, stray a removed; labels moved off the strokes. Right figure redrawn (scale 25 px per cm like the left one) as the arrangement that realises 2a+4b: the two right triangles (2, 2*sqrt3, 4) glued along their hypotenuse 4 form a 2 x 2*sqrt3 rectangle; isosceles triangle A (2, 2, 2*sqrt3, apex 120 deg) is glued by its base 2*sqrt3 to the rectangle's 2*sqrt3 side; isosceles triangle B is glued by one leg 2 to the rectangle's side 2 (apex at the lower end of that side). Outer sides: rectangle bottom a and left b, A legs b and b, B leg b and base a => a x2, b x4 = 2*(2*sqrt3)+4*2 = 8+4*sqrt3, equal to answer 4 and to the solution sentence. Labels only on outer sides; internal glue lines (top edge, right edge, rectangle diagonal) unlabelled. Question text, choices, answer and solution are unchanged; only the inline SVG in content changed. Hand-written inline SVG (not an engine product), edited as source text.",
+      "renderedPng": "NOT COMMITTED (scratchpad only): q11-v2-pc.png (width 520) and q11-v2-phone.png (width 360); labels do not overlap strokes or each other.",
+      "evidenceDebt": "Original exam figure not available; the redrawn right figure should be compared with the original paper when it can be obtained. The answer and solution were not re-derived against the original wording.",
+      "arrangementSource": "Original exam paper figure NOT obtained. The arrangement is restored from the official answer and solution (perimeter 2a+4b with a=2*sqrt3, b=2) and the piece set stated in the question (two right triangles, two isosceles triangles cut along the hexagon diagonals); it is one arrangement that realises the stated answer, not a copy of the original drawing."
+    },
+    {
+      "id": 4,
+      "question": 5,
+      "claim": "JS tags contain an unrelated 나머지정리",
+      "verdict": "FACT",
+      "evidence": "Q5 compares radical expressions (sqrt5-sqrt3 vs sqrt5-2, ...). Nothing in the question or solution uses the remainder theorem. Tag list was [객관식, 제곱근, 근호, 나머지정리, 계산].",
+      "after": "tags [객관식, 제곱근, 근호, 대소비교, 계산]; 대소비교 is an existing tag in other M3 exams (e.g. 17_풍덕중 1mid). Tags are not a registered metadata value, so no before/after in the request; the request only re-binds the source bytes."
+    }
+  ],
+  "unchanged": "All other 19 questions keep their registered values. Questions 1, 10, 14, 15, 20 keep the loose-fit notes of the earlier review (accepted).",
+  "notRun": [
+    "browser rendering of engine.html for this exam (headless Chrome did not finish loading the 65 MB question_metadata.json in this environment)"
+  ]
+}
