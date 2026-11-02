@@ -15,7 +15,8 @@ const screenEngine = read('archive', 'engine.html');
 const examsRoute = read('apmath', 'worker-backup', 'worker', 'routes', 'exams.js');
 const studentRoute = read('apmath', 'worker-backup', 'worker', 'routes', 'student-portal.js');
 const studentPortal = read('apmath', 'student', 'index.html');
-const classroomPlanner = read('apmath', 'js', 'classroom-planner.js');
+// 시험 상세(출제본 PDF 버튼)는 원내평가·OMR 통합 작업 화면(ws-exam-workspace.js)이 그린다.
+const classroomPlanner = read('apmath', 'js', 'classroom-planner.js') + read('apmath', 'js', 'ws-exam-workspace.js');
 const archiveIndex = read('archive', 'index.html');
 const assessment = read('archive', 'assessment', 'assessment-mvp.html');
 
