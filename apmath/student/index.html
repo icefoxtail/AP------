@@ -9,22 +9,22 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
-  <link rel="manifest" href="./manifest.json?v=2026.11.02.4">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.02.4">
-  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.02.4">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.02.4">
+  <link rel="manifest" href="./manifest.json?v=2026.11.02.5">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.02.5">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.02.5">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.02.5">
   <title>AP Math OS | 학생 포털</title>
   <script>try{localStorage.removeItem("ap.examImageBase.qa");}catch(e){}/* students never use the teacher-only exam image base QA override */</script>
   <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
   <script src="../../archive/archive2-output.js?v=20261003-student-output-s4-1"></script>
   <script src="./archive-review-output.js?v=20261003-student-review-s4-1"></script>
-  <script src="./clinic-lineage-view.js?v=2026.11.02.4"></script>
-  <script src="./clinic-learning-view.js?v=2026.11.02.4"></script>
+  <script src="./clinic-lineage-view.js?v=2026.11.02.5"></script>
+  <script src="./clinic-learning-view.js?v=2026.11.02.5"></script>
   <!-- 글꼴은 화면을 막지 않고, 첫 화면이 그려져 한가해진 뒤에 적용한다(처음엔 시스템 글꼴, 이어서 Pretendard로 바뀜). dynamic-subset은 쓰는 글자 조각만 받는다. -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="var l=this,f=function(){l.media='all'};window.requestIdleCallback?requestIdleCallback(f,{timeout:2500}):setTimeout(f,400)">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
-  <link rel="stylesheet" href="../css/apms-ui-foundation.css?v=2026.11.02.4">
+  <link rel="stylesheet" href="../css/apms-ui-foundation.css?v=2026.11.02.5">
   <style>
     :root {
       --primary:#111827;
@@ -489,7 +489,7 @@
       width:40px;
       height:40px;
       border-radius:15px;
-      background:#FFFFFF url('./icons/icon-192.png?v=2026.11.02.4') center/cover no-repeat;
+      background:#FFFFFF url('./icons/icon-192.png?v=2026.11.02.5') center/cover no-repeat;
       color:transparent;
       display:flex;
       align-items:center;
@@ -636,7 +636,7 @@
       select, textarea { font-size:16px !important; }
     }
   </style>
-  <link rel="stylesheet" href="../css/apms-theme-override.css?v=2026.11.02.4">
+  <link rel="stylesheet" href="../css/apms-theme-override.css?v=2026.11.02.5">
   <style>
     body.student-portal-theme {
       --primary:#111827;
@@ -764,7 +764,7 @@
 <body class="student-portal-theme">
   <header class="top">
     <div class="brand">
-      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.02.4" alt="AP Math">
+      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.02.5" alt="AP Math">
       <div class="brand-copy">
         <div class="brand-main">AP Math OS</div>
         <div class="brand-sub">학생 포털</div>
@@ -786,7 +786,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.11.02.4';
+    const STUDENT_APP_VERSION = '2026.11.02.5';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -1978,10 +1978,11 @@
         </section>
       `;
     }
-    // 도형실험실 2.0 입구. 같은 탭으로 열어 브라우저 뒤로 가기로 포털에 돌아온다(플래너와 같은 방식).
-    // 학년이 중1~중3이면 실험실 허브의 학년 필터(#g7·#g8·#g9)를 먼저 보이게 한다. 그 외 학년은 첫 화면.
+    // 도형실험실 입구. 첫 화면은 늘 AP Math Universe(playground/index.html)이고, 거기서 「입장」하면 실험실 허브로 간다.
+    // 같은 탭으로 열어 브라우저 뒤로 가기로 포털에 돌아온다(플래너와 같은 방식).
+    // 학년이 중1~중3이면 학년 해시(#g7·#g8·#g9)를 붙이고, Universe가 입장할 때 허브의 학년 필터로 그대로 넘긴다. 그 외 학년은 해시 없음.
     function geometryLabHref() {
-      const base = '../playground/next/index.html';
+      const base = '../playground/index.html';
       const grade = String((homeData?.student || session || {}).grade || '');
       const m = grade.match(/중\s*(?:학교)?\s*([123])/);
       return m ? `${base}#g${Number(m[1]) + 6}` : base;
