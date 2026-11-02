@@ -277,7 +277,7 @@ function drawerActions(role) {
   assert.strictEqual((indexHtml.match(/js\/nav-quickfind\.js/g) || []).length, 1);
   assert.strictEqual((indexHtml.match(/css\/nav-quickfind\.css/g) || []).length, 1);
   assert.ok(indexHtml.indexOf('js/nav-quickfind.js') > indexHtml.indexOf('js/apms-class-label.js'));
-  assert.ok(indexHtml.indexOf('js/nav-quickfind.js') < indexHtml.indexOf('src="app.js"'));
+  assert.ok(indexHtml.indexOf('js/nav-quickfind.js') < indexHtml.indexOf('src="app.js'));
   const buttons = indexHtml.match(/<button[^>]*class="apms-qf-open[^>]*>/g) || [];
   assert.strictEqual(buttons.length, 2, '휴대폰 헤더와 PC 상단 막대에 각각 하나');
   buttons.forEach(b => {

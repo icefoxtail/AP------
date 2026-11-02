@@ -298,7 +298,7 @@ async function behaviour(browser, base) {
         });
         assert.deepEqual(labels, [{ text: '중3A', teacher: '김선생' }, { text: '중3A', teacher: '박선생' }, { text: '고1 심화반', teacher: '' }, { text: '중3A', teacher: '' }]);
 
-        const shared = await page.evaluate(() => { window.apmsClassLabel = () => ({ text: '공통표기', teacher: '공통담당' }); const r = wsClinicClassLabel({ id: 'q', name: 'x' }, []); delete window.apmsClassLabel; return r; });
+        const shared = await page.evaluate(() => { const original = window.apmsClassLabel; window.apmsClassLabel = () => ({ text: '공통표기', teacher: '공통담당' }); const r = wsClinicClassLabel({ id: 'q', name: 'x' }, []); window.apmsClassLabel = original; return r; });
         assert.deepEqual(shared, { text: '공통표기', teacher: '공통담당' }, '공통 함수 window.apmsClassLabel 이 있으면 먼저 쓴다');
 
         // 2) 반 전환: 모달이 닫히지 않고 같은 자리에서 다른 반 출력 센터로 바뀐다
