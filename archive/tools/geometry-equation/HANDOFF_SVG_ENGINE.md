@@ -52,12 +52,12 @@
 
 ### 시험지별 진행 (2026 2학기 중간, 2026-11-01 기준)
 - CLOSED: 신흥중 중2(#1155), 삼산중 중3(#1159, q19 정답 ①→④), 팔마중 중3(#1162, q8 해설 수정), 순천여고 고2 미적분I(#1163·#1173), 제일고 고2 미적분I(#1165·#1173), 제일고 고2 확통(#1167), 왕운중 중3(#1171, q16 정답 ③→①), 금당고 고2 미적분I(#1173).
-- 거의 끝(엔진 대기만 남음): 효천고 고2 미적분I(#1170; q7 세로 점근선 라벨·y축 이름, q21 UNSUPPORTED), 매산여고 고1(#1173; q11 집합 composite UNSUPPORTED, q13 집합 개수 보류, q2·q18 기존 그림 유지), 금당고 고2 기하(#1173; q5 이차곡선 라벨 자리 보류, q19 기존 그림 유지), 팔마고 고1(9장 게시, q17·18·21 교체; q20 벤다이어그램 집합별 개수 라벨 엔진 대기, 원장 OPEN_UNSUPPORTED), 강남여고 고2 미적분I(9장 게시, q16·20·25 교체; q8 세로 점근선 라벨·q12 5차 곡선 엔진 대기).
+- 거의 끝(엔진 대기만 남음): 효천고 고2 미적분I(#1170; q7 세로 점근선 라벨·y축 이름, q21 UNSUPPORTED), 매산여고 고1(#1173; q11 집합 composite UNSUPPORTED, q13 집합 개수 보류, q2·q18 기존 그림 유지), 금당고 고2 기하(#1173; q5 이차곡선 라벨 자리 보류, q19 기존 그림 유지), 팔마고 고1(9장 게시, q17·18·21 교체; q20 벤다이어그램 집합별 개수 라벨 엔진 대기, 원장 OPEN_UNSUPPORTED), 강남여고 고2 미적분I(9장 게시, q16·20·25 교체; q8 세로 점근선 라벨·q12 5차 곡선 엔진 대기), 매산고 고2 미적분I(10장 게시, q15 교체; q20 무리수 기울기 접선 식 라벨 숨김 엔진 대기).
 - 26 왕의중 중2: 원본 문제 그림이 없어 데이터 대기.
 - 시험지당 시간: 새로 그리는 시험지 20~30분, 기존 그림을 대부분 교체하는 시험지 40~50분. 기록은 `timing.jsonl`(`.tmp/svg-m1/`).
 
 ### 다음 할 일 (권장 순서)
-1. **2026 2학기 중간, 기존 그림이 일부 있는 시험지(메인이 pairsheet로 먼저 본다):** 매산고 고2 미적분I(q15), 순천고 고2 확통(q14·20), 팔마고 고2 미적분I(q20).
+1. **2026 2학기 중간, 기존 그림이 일부 있는 시험지(메인이 pairsheet로 먼저 본다):** 순천고 고2 확통(q14·20), 팔마고 고2 미적분I(q20).
 2. **이미 CLOSED인 고1 시험지의 기존 그림 보기(약한 것만 다시):** 강남여고 고1 공통수학2(20), 금당고 고1(15), 매산고 고1(14), 복성고 고1(15).
 3. 그다음 2026 1학기 기말 → 1학기 중간 → 2025 …
 4. **G13 엔진 묶음(대기 문항이 쌓이면 한 번에):** 이차곡선 색·치수선·라벨 자리(`ELLIPSE_LABEL_NO_ROOM`)·그림 창(`ELLIPSE_FIGURE_TOO_LARGE`), 집합 composite 패널·다색·개수(벤다이어그램 집합별·전체 개수 라벨 `sets[].countLabel`: 26 팔마고 고1 q20, 매산여고 고1 q13), 그래프 세로 점근선 라벨, callout 텍스트의 →, 입체 라벨 앵커. 끝나면 위 보류 문항을 다시 그린다. 상세는 `gaps.md` "G12 이후 남은 그래프·집합 공백".
@@ -131,7 +131,7 @@
   3. 검수 PASS 뒤에도 교체·게시 여부는 메인이 정한다(PASS는 필요조건).
   4. 병합: 엔진·게시·문서를 PR 하나로 묶고, 병합 뒤 main을 읽어 확인한다. 정답지는 표본(규칙 10).
 
-- **그림 작업자 병행: Sonnet + opencode DeepSeek(사용자 지시 2026-11-02):** 바꾸는 것이 아니라 **함께 쓴다.** OpenCode Go 사용량이 남아 있으면 4단계(plan·렌더) 묶음 일부를 DeepSeek(`opencode run`)에 나눠 맡기고 나머지는 Sonnet이 한다. 한도가 다 되면 Sonnet만 쓴다. 어느 쪽이 그렸든 메인 PNG 확인과 Sonnet 검수는 그대로 둔다. 같은 지시서(`plan.md`·`plan-current.md`)를 `opencode run`에 넘기고 산출물도 `runs/` 안으로 같다. 준비(2026-11-02 설정 완료): 환경의 Network secrets에 Bearer 시크릿(허용 웹사이트 `opencode.ai`, 경로 `/inference/go/`, 헤더 `Authorization: Bearer <OpenCode Go 키>`)이 있어 프록시가 키를 붙인다(이번 세션에서도 바로 적용됐다). 컨테이너에서는 `npm i -g opencode-ai@1.19.5` 후 `OPENCODE_API_KEY=proxy-injected opencode run -m opencode-go/deepseek-v4.1-flash "<지시>"`로 부른다(키 값은 아무거나, 진짜 키는 프록시가 넣는다). 다른 모델: `opencode-go/deepseek-v4-pro`. curl로 직접 부르면 `x-opencode-session` 헤더가 필요하다(CLI는 알아서 넣는다). 2026-10-26판에서 이 방식을 끝낸 것은 품질 때문이 아니라 그때 Claude Code 사용량 한도가 다 됐기 때문이었다(사용자 기억). 전환한 첫 시험지는 검수 반려율을 보고 계속 쓸지 정한다.
+- **그림 작업자 병행: Sonnet + opencode DeepSeek(사용자 지시 2026-11-02):** 바꾸는 것이 아니라 **함께 쓴다.** OpenCode Go 사용량이 남아 있으면 4단계(plan·렌더) 묶음 일부를 DeepSeek(`opencode run`)에 나눠 맡기고 나머지는 Sonnet이 한다. 한도가 다 되면 Sonnet만 쓴다. 어느 쪽이 그렸든 메인 PNG 확인과 Sonnet 검수는 그대로 둔다. 같은 지시서(`plan.md`·`plan-current.md`)를 `opencode run`에 넘기고 산출물도 `runs/` 안으로 같다. 준비(2026-11-02 설정 완료): 환경의 Network secrets에 Bearer 시크릿(허용 웹사이트 `opencode.ai`, 경로 `/inference/go/`, 헤더 `Authorization: Bearer <OpenCode Go 키>`)이 있어 프록시가 키를 붙인다(이번 세션에서도 바로 적용됐다). 컨테이너에서는 `npm i -g opencode-ai@1.19.5` 후 `OPENCODE_API_KEY=proxy-injected opencode run -m opencode-go/deepseek-v4.1-flash "<지시>"`로 부른다(키 값은 아무거나, 진짜 키는 프록시가 넣는다). 다른 모델: `opencode-go/deepseek-v4-pro`. curl로 직접 부르면 `x-opencode-session` 헤더가 필요하다(CLI는 알아서 넣는다). **주의(2026-11-02 실측):** 저장소 폴더(`/home/user/AP------`) 안에서 `opencode run`을 실행하면 시작 단계(`init`)에서 멈출 수 있다(첫 실행은 통과, 두 번째는 20분 정지). 저장소 밖 폴더에서는 바로 동작하지만, 그러려면 opencode 설정에 `external_directory`·`edit`·`bash` 허용이 필요하고 사용자가 2026-11-02 이 설정을 허용했다. 새 컨테이너에서는 `~/.config/opencode/opencode.json`에 `{"snapshot":false,"autoupdate":false,"permission":{"edit":"allow","bash":"allow","webfetch":"deny","external_directory":"allow"}}`를 쓰고, `mkdir -p /tmp/claude-0/oc-work && cd /tmp/claude-0/oc-work`에서 `opencode run`을 백그라운드로 돌린다(지시서에 절대경로와 '`cd /home/user/AP------ &&`로 명령 시작'을 적는다). DeepSeek는 그림을 못 보므로 문제 그림이 없는 그래프 문항을 맡기고, PNG는 메인이 본다. 첫 시험지 결과: DeepSeek 4문항 중 메인 확인 반려 0, Sonnet 검수 FAIL 1(q12 정답이 드러나는 곡선 선택). 2026-10-26판에서 이 방식을 끝낸 것은 품질 때문이 아니라 그때 Claude Code 사용량 한도가 다 됐기 때문이었다(사용자 기억). 전환한 첫 시험지는 검수 반려율을 보고 계속 쓸지 정한다.
 
 ### 2.2 그림 파이프라인 (지시서는 `ops/svg-m1/briefs/`)
 
