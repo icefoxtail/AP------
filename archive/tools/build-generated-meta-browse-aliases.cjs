@@ -7,6 +7,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
 const { deriveMetaBrowsePath } = require('./backfill-generated-meta.cjs');
+const { crosswalkDigestAccepted } = require('./sealed-crosswalk-digests.cjs');
 
 const ROOT = path.resolve(__dirname, '../..');
 const INDEX_REL = 'archive/data/generated-lite-consumer/v1/index.json';
@@ -62,8 +63,6 @@ function buildPlan(root = ROOT, { indexDocument = null, crosswalkDocument = null
   const metaCache = new Map();
   const extensionCache = new Map();
   const crosswalkSha = sha256(crosswalkBytes);
-  const sealed = fs.existsSync(path.join(root, RECEIPT_REL)) ? jsonAt(root, RECEIPT_REL).rpmCrosswalk : null;
-  const frozenCrosswalkSha = sealed?.path === CROSSWALK_REL && /^[a-f0-9]{64}$/.test(sealed.sha256 || '') ? sealed.sha256.toLowerCase() : null;
   const crosswalkBlob = gitBlobSha1(crosswalkBytes);
   const masterSha = sha256(masterBytes);
   const authority = {
@@ -134,10 +133,9 @@ function buildPlan(root = ROOT, { indexDocument = null, crosswalkDocument = null
     if (meta.rpmL4Namespace === 'RPM_EXISTING_DRAFT') {
       // The approved Meta pinned the whole crosswalk file digest of its time. The shared crosswalk only grows (rows for
       // other questions are added or updated), so the pinned digest is accepted when it is the current digest or the
-      // digest this tool's own sealed receipt recorded. Whatever the digest, the row named by the Meta must still agree
-      // with the CURRENT crosswalk on parent unit, RPM labels and difficulty (deriveMetaBrowsePath below).
-      const pinned = meta.rpmDraftAuthoritySha256?.toLowerCase();
-      if (meta.rpmDraftAuthorityRef !== CROSSWALK_REL || !pinned || (pinned !== crosswalkSha.toLowerCase() && pinned !== frozenCrosswalkSha)) { fail('DRAFT_AUTHORITY_BYTES_MISMATCH'); continue; }
+      // digest a sealed receipt recorded (sealed-crosswalk-digests.cjs). Whatever the digest, the row named by the Meta
+      // must still agree with the CURRENT crosswalk on parent unit, RPM labels and difficulty (deriveMetaBrowsePath below).
+      if (meta.rpmDraftAuthorityRef !== CROSSWALK_REL || !crosswalkDigestAccepted(root, CROSSWALK_REL, meta.rpmDraftAuthoritySha256, crosswalkSha)) { fail('DRAFT_AUTHORITY_BYTES_MISMATCH'); continue; }
       const checked = deriveMetaBrowsePath(common, xwalkRows, { ...authority, sha256: meta.rpmDraftAuthoritySha256 });
       if (checked.status !== 'EXACT_AUTHORITY_ALIAS') { fail(checked.reason || 'EXACT_RPM_CROSSWALK_REQUIRED'); continue; }
       alias = {
