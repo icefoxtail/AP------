@@ -27,7 +27,7 @@
 .ws-class__section-title { margin: 6px 2px 0; color: var(--secondary); font-size: 13px; font-weight: 600; }
 .ws-class__section-title:first-child { margin-top: 0; }
 .ws-class__empty { padding: 14px 4px; color: var(--secondary); font-size: 13px; }
-.ws-class__item { display: flex; flex-direction: column; align-items: stretch; gap: 4px; }
+.ws-class__item { display: flex; flex-direction: column; align-items: stretch; gap: 4px; flex: 0 0 auto; } /* 반이 많아도 줄어들어 글자가 상자 밖으로 나가지 않게 */
 .ws-class__item.is-hidden { opacity: .8; }
 .ws-class__item-head { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; }
 .ws-class__item-name { color: var(--text); font-size: 15px; font-weight: 600; line-height: 1.35; }
