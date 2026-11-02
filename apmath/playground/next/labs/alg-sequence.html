@@ -71,7 +71,7 @@ secretSteps: [
 ]
 },
 {
-chip: '문제 B (a₄ + a₅ = 0인 대칭)',
+chip: '문제 B (이웃한 두 항의 합이 0인 대칭)',
 source: '평가원 4점 준킬러 모델',
 params: { dSlope: -2, zeroN: 4.5 },
 snapParams: { dSlope: -2, zeroN: 4.5 },
@@ -104,7 +104,7 @@ stepDescs: [
 trapWarning: '주의: 대칭축 $x = \\frac{p+q}{2}$가 $4.5$처럼 소수일 때는, $S_n$이 최대가 되는 자연수 $n$이 $4$와 $5$ **두 개($S_4 = S_5$)**이고 이때 $a_5 = 0$입니다.',
 scenarios: [
 {
-chip: '문제 A (S₃ = S₇이면 대칭축 5, S₁₀ = 0)',
+chip: '문제 A (S_p = S_q인 합의 그래프)',
 source: '등차수열의 합 Sₙ의 그래프',
 params: { pIdx: 3, qIdx: 7, scaleK: -1 },
 snapParams: { pIdx: 3, qIdx: 7, scaleK: -1 },
@@ -122,7 +122,7 @@ secretSteps: [
 ]
 },
 {
-chip: '문제 B (S₃ = S₆이면 대칭축 4.5, S₉ = 0)',
+chip: '문제 B (p + q가 홀수인 S_p = S_q)',
 source: '등차수열의 합 Sₙ의 그래프',
 params: { pIdx: 3, qIdx: 6, scaleK: -1 },
 snapParams: { pIdx: 3, qIdx: 6, scaleK: -1 },
@@ -173,7 +173,7 @@ secretSteps: [
 ]
 },
 {
-chip: '문제 B (|S₃| = |S₅| = 15, |S₉| = 9)',
+chip: '문제 B (|Sₙ|의 W자 그래프와 같은 높이)',
 source: '평가원 모의평가 4점 킬러 모델',
 params: { zeroSumN: 8, scaleK: -1, targetN: 9 },
 snapParams: { zeroSumN: 8, scaleK: -1, targetN: 9 },
@@ -254,7 +254,7 @@ stepDescs: [
 trapWarning: '주의: 등비수열을 이루는 것은 합 $S_n, S_{2n}, S_{3n}$ 자체가 아니라, **구간별로 뺀 값 $S_n,\\; (S_{2n}-S_n),\\; (S_{3n}-S_{2n})$**입니다. $S_{2n}^2 = S_n S_{3n}$으로 생각하면 안 됩니다.',
 scenarios: [
 {
-chip: '문제 A (S_n = 10, S_2n = 30일 때 S_3n)',
+chip: '문제 A (S_n, S_2n이 주어질 때 S_3n)',
 source: '등비수열의 구간별 합',
 params: { block1: 10, blockRatio: 2 },
 snapParams: { block1: 10, blockRatio: 2 },
@@ -273,7 +273,7 @@ secretSteps: [
 ]
 },
 {
-chip: '문제 B (구간별 합의 공비가 3인 S_n=5, S_2n=20)',
+chip: '문제 B (구간별 합의 공비가 정수인 S_n, S_2n)',
 source: '등비수열의 구간별 합',
 params: { block1: 5, blockRatio: 3 },
 snapParams: { block1: 5, blockRatio: 3 },
@@ -322,7 +322,7 @@ secretSteps: [
 ]
 },
 {
-chip: '문제 B (항의 개수 n=8, 공차 d=3)',
+chip: '문제 B (항의 개수와 공차가 다른 경우)',
 source: '부분분수와 시그마',
 params: { termCountN: 8, firstA1: 2, diffD: 3 },
 snapParams: { termCountN: 8, firstA1: 2, diffD: 3 },
@@ -352,7 +352,7 @@ stepDescs: [
 trapWarning: '주의: 첫째항 $a_1$부터 바로 반복되지 않고, $a_1 \\to a_2$까지는 반복되기 전의 항이고 **$a_3$부터 반복되는 경우**가 많습니다. 반복되기 전의 항을 반복되는 마디에 섞지 않아야 합니다.',
 scenarios: [
 {
-chip: '문제 A (구간별 점화식에서 3항마다 반복)',
+chip: '문제 A (구간별 점화식과 수열의 주기)',
 source: '구간별로 정의된 점화식의 주기',
 params: { startA1: 1, limitN: 30 },
 snapParams: { startA1: 1, limitN: 30 },
@@ -370,7 +370,7 @@ secretSteps: [
 ]
 },
 {
-chip: '문제 B (첫째항이 2일 때 [2, 4, 0] 반복)',
+chip: '문제 B (첫째항을 바꾸어 순환 마디 다시 찾기)',
 source: '구간별로 정의된 점화식의 주기',
 params: { startA1: 2, limitN: 31 },
 snapParams: { startA1: 2, limitN: 31 },
@@ -419,7 +419,7 @@ secretSteps: [
 ]
 },
 {
-chip: '문제 B (기준값 k=4일 때 지워지는 가지가 많은 경우)',
+chip: '문제 B (경계값에서 지워지는 가지가 있는 경우)',
 source: '점화식을 거꾸로 추적하기',
 params: { targetA4: 4, threshK: 4 },
 snapParams: { targetA4: 4, threshK: 4 },
@@ -778,7 +778,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
   }
 
   /* ===== 원본 drawMathSegment / drawFunctionCurve / drawMathPoint 와 같은 이름·같은 인자 → 새 무대 엔진 ===== */
-  function shim(b, s, sink) {
+  function shim(b, s, sink, noDrag) {
     let hid = 0;
     return {
       drawMathSegment: (x1, y1, x2, y2, col = '#fbbf24', dash = [], w = 2.2) => b.seg([x1, y1], [x2, y2], { color: col, width: w, dash: dash.length ? dash : null }),
@@ -787,7 +787,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         b.plot((x) => { let y = fn(x); if (s.abs && !isNaN(y)) y = Math.abs(y); return Number.isFinite(y) && Math.abs(y) <= 90 ? y : NaN; }, { color: col, width: w, dash: dash.length ? dash : null, from: x0, to: x1 });
       },
       drawMathPoint: (x, y, lbl = '', col = '#fbbf24', rad = 6, drag = false, onDrag = null) => {
-        if (drag) b.handle('h' + (hid++), [x, y], { color: col, r: rad, label: lbl, drag: onDrag });
+        if (drag && !noDrag) b.handle('h' + (hid++), [x, y], { color: col, r: rad, label: lbl, drag: onDrag });
         else b.point([x, y], { color: col, r: rad, label: lbl });
       },
       badge: (text, color = '#fbbf24') => sink.lines.push({ text, color })
@@ -822,16 +822,24 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     c.restore();
   }
 
-  function draw(mo, mi, b, s, v) {
-    const p = pv(s, mo);
+  let ovLastKind = ''; // 직전에 그린 탭(탐구/그 밖): 탐구로 돌아올 때 무대 범위를 되돌리기 위해
+  function draw(mo, mi, b, sReal, v, lab, si) {
+    const tab = lab ? lab.tab : 'explore';
+    // 문제·정리 탭은 「새 문제」로 바뀐 변형의 숫자(Q)로 그립니다. 탐구 탭은 조절 막대(sReal) 그대로입니다.
+    const Q = tab === 'explore' ? null : OVARY[mo.id + '-' + si].cur();
+    const s = Q ? { step: sReal.step, grid: sReal.grid, cont: false, abs: false, stems: false } : sReal;
+    const p = Q ? Q.p : pv(sReal, mo);
     const sink = { lines: [], tape: null };
-    const { drawMathSegment, drawFunctionCurve, drawMathPoint, badge } = shim(b, s, sink);
-    const st = (n) => s.step >= n; // 원본 state.steps[n] 에 해당 (셸의 단계는 누적)
+    const { drawMathSegment, drawFunctionCurve, drawMathPoint, badge } = shim(b, s, sink, !!Q);
+    const st = (n) => tab !== 'problem' && s.step >= n; // 원본 state.steps[n] 에 해당 (셸의 단계는 누적). 문제 탭은 풀이 단계 이전 그림
     const id = mo.id;
     if (!DESIGN.has(mi)) {
+      if (Q) { b.focus = focusFor(mi, Q, tab); ovLastKind = 'other'; }
+      else { if (ovLastKind === 'other') b.focus = FOCUS[mi]; ovLastKind = 'explore'; }
       if (s.grid) b.grid();
       b.axes();
     }
+    if (tab === 'problem') { drawGiven(mo, b, Q); return; }
 
     if (id === 'type1') {
       const scaleY = 0.5;
@@ -850,7 +858,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         badge(`항이 0이 되는 번호 m = ${p.zeroN.toFixed(1)} (양옆 항은 부호가 반대여서 소거)`, '#fbbf24');
       }
       if (st(3)) sink.tape = `직선 기울기 = 공차 d = $\\dfrac{a_q - a_p}{q - p}$ = ${p.dSlope.toFixed(1)}`;
-      drawMathPoint(p.zeroN, 0, `m=${p.zeroN.toFixed(1)} (a_m=0)`, '#fbbf24', 8, true, (w) => { p.zeroN = clamp(Math.round(w.x * 2) / 2, 2.5, 7.5); });
+      drawMathPoint(p.zeroN, 0, Q ? '' : `m=${p.zeroN.toFixed(1)} (a_m=0)`, '#fbbf24', 8, true, (w) => { p.zeroN = clamp(Math.round(w.x * 2) / 2, 2.5, 7.5); });
     } else if (id === 'type2') {
       const zeroIdx = p.pIdx + p.qIdx, symAxis = zeroIdx / 2, scaleY = 0.28;
       const fnS = (x) => scaleY * (-x * (x - zeroIdx));
@@ -871,7 +879,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         sink.tape = `대칭축 x = $\\dfrac{${p.pIdx} + ${p.qIdx}}{2}$ = ${symAxis.toFixed(1)} (극댓값)`;
       }
       if (st(3)) badge(`x절편: S_(${p.pIdx}+${p.qIdx}) = S_${zeroIdx} = 0`, '#fb7185');
-      drawMathPoint(p.qIdx, yLine, `S_${p.qIdx}`, '#fbbf24', 8, true, (w) => { p.qIdx = clamp(Math.round(w.x), Math.max(5, p.pIdx + 1), 11); });
+      drawMathPoint(p.qIdx, yLine, Q ? '' : `S_${p.qIdx}`, '#fbbf24', 8, true, (w) => { p.qIdx = clamp(Math.round(w.x), Math.max(5, p.pIdx + 1), 11); });
     } else if (id === 'type3') {
       const N = p.zeroSumN, m = N / 2, sMax = m * m, scaleY = 0.22;
       const fnOrigS = (x) => scaleY * (-x * (x - N));
@@ -887,7 +895,8 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
       const n = Math.round(p.targetN), sn = -n * (n - N), sumAbsVal = n <= m ? sn : 2 * sMax - sn;
       if (st(3)) badge(`∑|a_k| = 2·S_${m}(${sMax}) − S_${n}(${sn}) = ${sumAbsVal}`, '#fbbf24');
       drawMathPoint(m, scaleY * sMax, `꼭짓점 S_${m}=${sMax}`, '#34d399', 6.5);
-      drawMathPoint(n, scaleY * sumAbsVal, `n=${n} (∑|a_k|=${sumAbsVal})`, '#fbbf24', 8, true, (w) => { p.targetN = clamp(Math.round(w.x), 5, 12); });
+      if (Q && si === 1) drawMathPoint(n, scaleY * Math.abs(sn), `|S_${n}|=${Math.abs(sn)}`, '#38bdf8', 8); // 문제 B: 묻는 것은 |S_r| (W자 오른쪽 부분)
+      else drawMathPoint(n, scaleY * sumAbsVal, `n=${n} (∑|a_k|=${sumAbsVal})`, '#fbbf24', 8, true, (w) => { p.targetN = clamp(Math.round(w.x), 5, 12); });
     } else if (id === 'type4') {
       const scaleY = 0.45;
       const fnLine = (x) => scaleY * (2 * p.pCoeff * x + (p.qCoeff - p.pCoeff));
@@ -898,20 +907,24 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         drawMathPoint(n, scaleY * an, `a_${n}=${an.toFixed(0)}`, '#34d399', 5.5);
       }
       const a1Formula = p.pCoeff + p.qCoeff, a1Actual = a1Formula + p.constC;
-      drawMathPoint(1, scaleY * a1Formula, `공식값(${a1Formula.toFixed(0)})`, 'rgba(148, 163, 184, 0.7)', 5);
+      if (Q) { // 문제·정리 탭: 두 점의 이름이 서로 겹치지 않게 위·아래로 나눠 둡니다
+        const up = p.constC >= 0;
+        b.point([1, scaleY * a1Formula], { r: 5, color: 'muted', label: `공식값(${a1Formula.toFixed(0)})`, dx: 0, dy: up ? 18 : -16, align: 'center', size: 12.5 });
+      } else drawMathPoint(1, scaleY * a1Formula, `공식값(${a1Formula.toFixed(0)})`, 'rgba(148, 163, 184, 0.7)', 5);
       if (st(2) && Math.abs(p.constC) > 0.01) {
         drawMathSegment(1, scaleY * a1Formula, 1, scaleY * a1Actual, '#fb7185', [4, 3], 3.0);
         badge(`상수항 C=${p.constC}만큼 첫째항 a₁만 직선에서 벗어남`, '#fb7185');
       }
       if (st(3)) badge(`a_n = ${2 * p.pCoeff}n + (${p.qCoeff - p.pCoeff}) (n≥2) | a₁ = ${a1Formula} + C(${p.constC}) = ${a1Actual}`, '#fbbf24');
-      drawMathPoint(1, scaleY * a1Actual, `실제 a₁=S₁=${a1Actual.toFixed(0)}`, '#fbbf24', 8, true, (w) => {
+      if (Q) b.point([1, scaleY * a1Actual], { r: 7, color: 'amber', label: `a₁=S₁=${a1Actual.toFixed(0)}`, dx: 0, dy: p.constC >= 0 ? -16 : 18, align: 'center', size: 12.5 });
+      else drawMathPoint(1, scaleY * a1Actual, `실제 a₁=S₁=${a1Actual.toFixed(0)}`, '#fbbf24', 8, true, (w) => {
         const rawA1 = w.y / scaleY;
         p.constC = clamp(Math.round(rawA1 - a1Formula), -3, 5);
       });
     } else if (id === 'type5') {
       const D = design(b), w = D.w, h = D.h, P = D.P;
       const P1 = p.block1, R = p.blockRatio, P2 = P1 * R, P3 = P2 * R, S3n = P1 + P2 + P3;
-      const baseLineY = h * 0.78, maxVal = Math.max(P3, 60), scaleH = (h * 0.52) / maxVal;
+      const baseLineY = h * 0.78, maxVal = Q ? P3 : Math.max(P3, 60), scaleH = (h * 0.52) / maxVal; // 변형(Q)은 가장 큰 막대가 화면을 채우도록
       const blocks = [
         { l1: 'P₁ · 1~n항', l2: '= Sₙ', val: P1, cum: P1, color: '#34d399', x: w * 0.22 },
         { l1: 'P₂ · n+1~2n항', l2: '= S₂ₙ − Sₙ', val: P2, cum: P1 + P2, color: '#38bdf8', x: w * 0.50 },
@@ -966,14 +979,15 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
           const x = seq[i], y = seq[i + 1], col = i < 3 ? '#fbbf24' : '#fb7185';
           drawMathSegment(x, x, x, y, col, [], 2.4);
           drawMathSegment(x, y, y, y, col, [4, 3], 2.2);
-          drawMathPoint(x, y, `P_${i + 1}(${x.toFixed(1)}, ${y.toFixed(1)})`, col, 5.5);
+          drawMathPoint(x, y, Q && i >= 3 ? '' : `P_${i + 1}(${x.toFixed(1)}, ${y.toFixed(1)})`, col, 5.5); // 4번째 점부터는 앞의 점과 같은 자리(주기 3)라 이름을 겹쳐 쓰지 않습니다(변형 그림)
         }
       }
       if (st(3)) {
         const cSum = seq[0] + seq[1] + seq[2];
         badge(`3항마다 반복: [${seq[0].toFixed(1)} → ${seq[1].toFixed(1)} → ${seq[2].toFixed(1)}] (1마디 합 = ${cSum.toFixed(1)})`, '#fbbf24');
       }
-      drawMathPoint(p.startA1, p.startA1, `출발 a₁=${p.startA1.toFixed(1)}`, '#fbbf24', 8, true, (w) => { p.startA1 = clamp(Math.round(w.x * 2) / 2, 0.5, 5.5); });
+      if (Q) b.point([p.startA1, p.startA1], { r: 7, color: 'amber', label: `a₁=${p.startA1}`, dx: 0, dy: 19, align: 'center', size: 12.5 });
+      else drawMathPoint(p.startA1, p.startA1, `출발 a₁=${p.startA1.toFixed(1)}`, '#fbbf24', 8, true, (w) => { p.startA1 = clamp(Math.round(w.x * 2) / 2, 0.5, 5.5); });
     } else if (id === 'type8') {
       const D = design(b), w = D.w, h = D.h, P = D.P;
       const tA4 = Math.round(p.targetA4), k = Math.round(p.threshK);
@@ -990,7 +1004,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
           node.children.forEach((child, idx) => {
             const childX = idx === 0 ? cx - spread : cx + spread, childY = levelY[child.level];
             b.seg(P(cx, cy + 14), P(childX, childY - 14), { color: child.valid ? 'rgba(52, 211, 153, 0.75)' : 'rgba(251, 113, 133, 0.45)', width: child.valid ? 2.4 : 1.6, dash: child.valid ? null : [4, 4] });
-            b.text(P((cx + childX) / 2, (cy + childY) / 2), child.rule, { color: child.valid ? '#a7f3d0' : '#fda4af', size: 10.5, weight: 800 });
+            b.text(P((cx + childX) / 2, (cy + childY) / 2), child.rule, { color: child.valid ? '#a7f3d0' : '#fda4af', size: Q ? 12 : 10.5, weight: 800 });
             drawNodeRecursive(child, childX, spread * 0.5);
           });
         }
@@ -999,7 +1013,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         const bg = !node.valid ? 'rgba(136, 19, 55, 0.65)' : (isLeafValid ? 'rgba(120, 53, 15, 0.85)' : 'rgba(6, 78, 59, 0.85)');
         const valStr = Number.isInteger(node.val) ? `${node.val}` : node.val.toFixed(1);
         chip(b, D, cx, cy, !node.valid && st(2) ? `✕ ${valStr}` : valStr, boxColor, bg);
-        if (!node.valid && st(2)) b.text(P(cx, cy + 22), node.reason, { color: '#fda4af', size: 10, weight: 700 });
+        if (!node.valid && st(2)) b.text(P(cx, cy + 22), node.reason, { color: '#fda4af', size: Q ? 12 : 10, weight: 700 });
       };
       drawNodeRecursive(root, w * 0.54, w * 0.21);
       if (st(3)) badge(`남은 자연수 a₁ = { ${validA1.join(', ')} } ⟹ 모든 a₁의 합 = ${validA1.reduce((a, c) => a + c, 0)}`, '#fbbf24');
@@ -1035,11 +1049,513 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
     const { mo, scen } = current;
     const p = {};
     Object.keys(scen.params).forEach((k) => { p[k] = s[mo.id + '_' + k]; });
-    runTwin(mo.id, scen, p);
+    runTwin(mo.id, { ...scen }, p); // 탐구 탭의 조절 막대만 바꿉니다(문제 글·정답은 문제 탭의 「새 문제」가 따로 맡습니다)
     Object.keys(p).forEach((k) => { s[mo.id + '_' + k] = p[k]; });
     s.step = Math.min(s.step, 2);
     APLab.toast('숫자를 바꾼 새 문제가 만들어졌습니다');
   }
+
+  /* ==========================================================================
+     옛 장면 1~8 (문제 A·B 16개) — 「새 문제 (숫자 바꾸기)」 변형 생성기
+       - 첫 문제(0번)는 원본 그대로이고, 「새 문제」를 누르면 같은 구조에서 숫자만 바뀐 변형이 나옵니다(연속 중복 없음).
+       - 변형은 장면마다 원래 문제가 노린 학습 포인트(등차수열의 0항 대칭, S_p=S_q의 대칭축, 꼭짓점 접기, 상수항 함정,
+         구간별 합의 공비, 부분분수 소거, 3항 순환, 나뭇가지 지우기)가 그대로 유지되는 숫자만 골랐습니다.
+       - 정답·풀이 단계·문제 그림(문제 탭·정리 탭)이 모두 변형을 따라가며, 탐구 탭은 그대로입니다.
+       - 계산(ENGINE)은 화면과 무관한 순수 함수라 node로 전수 검산합니다(tools/alg-sequence-old.test.mjs).
+     ========================================================================== */
+  /* ==OLDV-ENGINE-START== 순수 계산(화면과 무관): node로 전수 검산하는 부분 */
+  const OLDV = (function () {
+    const SUBD = '₀₁₂₃₄₅₆₇₈₉';
+    const sub = (n) => String(n).replace(/\d/g, (d) => SUBD[+d]);
+    const gcd = (a, b) => (b ? gcd(b, a % b) : Math.abs(a));
+    const par = (v) => (v < 0 ? '(' + v + ')' : String(v));
+    const sg = (v) => (v < 0 ? '- ' + (-v) : '+ ' + v);               // "+ 3" / "- 3"
+    const frac = (n, d) => { const g = gcd(n, d); n /= g; d /= g; return d === 1 ? String(n) : `\\frac{${n}}{${d}}`; };
+    const cn = (c) => (c === 1 ? '' : c === -1 ? '-' : String(c));
+    const lin = (c, k) => `${cn(c)}n${k === 0 ? '' : ' ' + sg(k)}`;     // c n + k
+    const quad = (p, q, C) => `${cn(p)}n^2${q === 0 ? '' : q < 0 ? ' - ' + (q === -1 ? '' : -q) + 'n' : ' + ' + (q === 1 ? '' : q) + 'n'}${C === 0 ? '' : ' ' + sg(C)}`;
+    const T = (list) => list.map((x, i) => (i === 0 ? String(x) : x < 0 ? ' - ' + (-x) : ' + ' + x)).join('');
+
+    /* ---------- 유형 1 · 항이 0이 되는 곳을 중심으로 한 대칭 ---------- */
+    const T1A = {
+      pool: [{ d: 2, p: 3, q: 7 }, { d: 3, p: 2, q: 8 }, { d: -2, p: 2, q: 6 }, { d: 2, p: 1, q: 5 }, { d: -3, p: 4, q: 6 }],
+      solve: (it) => { const m = (it.p + it.q) / 2, a1 = -(m - 1) * it.d; return { am: 0, S: 0, a10: a1 + 9 * it.d, m, e: 2 * m - 1 }; },
+      build(it) {
+        const { d, p, q } = it, r = this.solve(it), m = r.m, e = r.e, a1 = -(m - 1) * d;
+        const tm = (k) => (k === 0 ? 'a_1' : k === 1 ? 'a_1 + d' : `a_1 + ${k}d`);
+        return {
+          params: { dSlope: d, zeroN: m }, g: { d, p, q, m },
+          text: `공차가 $d = ${d}$인 등차수열 $\\{a_n\\}$에서 $a_{${p}} + a_{${q}} = 0$일 때, $a_{${m}}$의 값과 $\\sum_{k=1}^{${e}} a_k$의 값, 그리고 $a_{10}$의 값을 구하시오.`,
+          ans: `$a_{${m}} = 0,\\ \\sum_{k=1}^{${e}} a_k = 0,\\ a_{10} = ${r.a10}$`,
+          std: [
+            `1) $a_{${p}} + a_{${q}} = (${tm(p - 1)}) + (${tm(q - 1)}) = 2a_1 + ${p + q - 2}d = 0$이다.`,
+            `2) $d = ${d}$를 대입하면 $2a_1 ${sg((p + q - 2) * d)} = 0 \\implies a_1 = ${a1}$.`,
+            `3) 따라서 $a_{${m}} = ${a1} + ${m - 1}(${d}) = 0$, $S_{${e}} = \\frac{${e}(${2 * a1} + ${e - 1}\\times ${par(d)})}{2} = 0$, $a_{10} = ${a1} + 9(${d}) = ${r.a10}$이다.`],
+          quick: [
+            `$a_{${p}} + a_{${q}} = 2a_{${m}} = 0 \\implies a_{${m}} = 0$입니다. 첫째항 $a_1$을 구할 필요가 없습니다.`,
+            `$a_1$부터 $a_{${e}}$까지의 가운데 항이 $a_{${m}} = 0$이므로 $\\sum_{k=1}^{${e}} a_k = ${e} \\times a_{${m}} = 0$입니다.`,
+            `$a_{10}$은 $a_{${m}} = 0$에서 항의 번호가 $${10 - m}$ 늘었으므로 $0 + ${10 - m}d = ${r.a10}$입니다.`]
+        };
+      }
+    };
+    const T1B = {
+      pool: [{ A: 7, k: 4, d: -2 }, { A: 5, k: 3, d: -2 }, { A: 9, k: 5, d: -2 }, { A: -5, k: 3, d: 2 }, { A: 3, k: 2, d: -2 }],
+      solve: (it) => ({ d: -2 * it.A / (2 * it.k - 1), first: it.k + 1, S: 0, e: 2 * it.k }),
+      build(it) {
+        const { A, k } = it, r = this.solve(it), d = r.d, neg = d < 0, e = 2 * k, w = neg ? '음수' : '양수';
+        return {
+          params: { dSlope: d, zeroN: k + 0.5 }, g: { A, k, d },
+          text: `첫째항이 $${A}$이고 $a_{${k}} + a_{${k + 1}} = 0$을 만족시키는 등차수열 $\\{a_n\\}$에서 처음으로 ${w}가 되는 항의 번호와 $\\sum_{k=1}^{${e}} a_k$의 값을 구하시오.`,
+          ans: `제$${k + 1}$항 ($n = ${k + 1}$), $\\sum_{k=1}^{${e}} a_k = 0$`,
+          tStd: `첫째항(${A})을 대입하여 공차 d 구하기`,
+          tQuick: `항이 0이 되는 곳이 ${k + 0.5}번째 (제${k}항은 ${neg ? '양수' : '음수'}, 제${k + 1}항은 ${w}, 제1항~제${e}항의 합은 0)`,
+          std: [
+            `1) $(${A} + ${k - 1}d) + (${A} + ${k}d) = ${2 * A} + ${2 * k - 1}d = 0 \\implies d = ${d}$.`,
+            `2) $a_n = ${A} ${neg ? '-' : '+'} ${Math.abs(d)}(n-1) = ${A - d} ${sg(d)}n ${neg ? '< 0' : '> 0'} \\implies n > ${k + 0.5}$이므로 제$${k + 1}$항부터 ${w}이다.`,
+            `3) $S_{${e}} = \\frac{${e}(${2 * A} + ${e - 1}\\times ${par(d)})}{2} = 0$.`],
+          quick: [
+            `$a_{${k}} + a_{${k + 1}} = 0$이므로 직선은 $x = ${k + 0.5}$에서 $x$축과 만나며 ${neg ? '내려갑니다' : '올라갑니다'}. 따라서 $a_{${k}} ${neg ? '> 0' : '< 0'}$, $a_{${k + 1}} ${neg ? '< 0' : '> 0'}$ (제$${k + 1}$항부터 ${w})입니다.`,
+            `$1 \\sim ${e}$번의 번호의 평균이 $\\frac{1+${e}}{2} = ${k + 0.5}$이므로 $S_{${e}} = ${k}(a_{${k}} + a_{${k + 1}}) = 0$입니다.`]
+        };
+      }
+    };
+
+    /* ---------- 유형 2 · 합 Sₙ의 그래프 (원점을 지나는 포물선) ---------- */
+    const T2A = {
+      pool: [{ p: 3, q: 7 }, { p: 2, q: 6 }, { p: 1, q: 5 }, { p: 2, q: 8 }, { p: 3, q: 5 }],
+      solve: (it) => ({ n: (it.p + it.q) / 2, k: it.p + it.q }),
+      build(it) {
+        const { p, q } = it, m = (p + q) / 2, k = p + q;
+        return {
+          params: { pIdx: p, qIdx: q }, g: { p, q, m, k },
+          text: `첫째항이 양수인 등차수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합을 $S_n$이라 하자. $S_{${p}} = S_{${q}}$일 때, $S_n$이 최대가 되는 자연수 $n$의 값과 $S_k = 0$을 만족시키는 자연수 $k$의 값을 구하시오.`,
+          ans: `$n = ${m},\\ k = ${k}$`,
+          std: [
+            `1) $S_{${p}} = S_{${q}} \\iff a_{${p + 1}} + \\cdots + a_{${q}} = 0 \\iff ${(q - p) / 2}(a_{${m}} + a_{${m + 1}}) = 0$이다.`,
+            `2) $2a_1 + ${2 * m - 1}d = 0 \\implies a_1 = -\\frac{${2 * m - 1}}{2}d$ ($d < 0$).`,
+            `3) $S_n = \\frac{n(2a_1 + (n-1)d)}{2} = \\frac{d}{2}n(n - ${k})$이므로 $n=${m}$에서 최대이고 $k=${k}$에서 $S_{${k}}=0$이다.`],
+          quick: [
+            `$S_0 = 0$이고 $S_{${p}} = S_{${q}}$이므로 **대칭축은 $\\frac{${p}+${q}}{2} = ${m}$**입니다 (따라서 $n=${m}$에서 최댓값).`,
+            `원점 $(0, 0)$과 대칭축 $${m}$에 대하여 대칭인 점이 $x$절편이므로 $(${p}+${q}, 0) = (${k}, 0)$입니다. 즉 **$S_{${k}} = 0$ ($k=${k}$)**입니다. 3초 컷!`]
+        };
+      }
+    };
+    const T2B = {
+      pool: [{ p: 3, q: 6 }, { p: 2, q: 5 }, { p: 4, q: 7 }, { p: 1, q: 6 }, { p: 2, q: 9 }],
+      solve: (it) => { const m = (it.p + it.q - 1) / 2; return { sum: 2 * m + 1, k: m + 1 }; },
+      build(it) {
+        const { p, q } = it, m = (p + q - 1) / 2, r = this.solve(it);
+        return {
+          params: { pIdx: p, qIdx: q }, g: { p, q, m },
+          text: `첫째항이 양수인 등차수열에서 $S_{${p}} = S_{${q}}$일 때, $S_n$이 최대가 되는 모든 자연수 $n$의 값의 합과 $a_k = 0$인 항 번호 $k$를 구하시오.`,
+          ans: `합 $${r.sum}$ ($n = ${m},\\ ${m + 1}$), $k = ${r.k}$`,
+          tStd: `S${sub(q)} - S${sub(p)} = ${Array.from({ length: q - p }, (_, i) => 'a' + sub(p + 1 + i)).join(' + ')} = 0 풀이`,
+          tQuick: `대칭축 ${m + 0.5}에서 가장 가까운 두 자연수 ${m}, ${m + 1}에서 동시에 최대`,
+          std: [
+            `1) $S_{${q}} - S_{${p}} = a_{${p + 1}} + \\cdots + a_{${q}} = ${q - p}a_{${m + 1}} = 0$이므로 $a_{${m + 1}} = 0$ ($k=${m + 1}$).`,
+            `2) 제$${m}$항까지 양수이고 제$${m + 1}$항이 $0$이므로 $S_{${m}}$와 $S_{${m + 1}}$ 모두 최댓값으로 같다.`,
+            `3) 따라서 최대가 되는 $n$은 $${m}, ${m + 1}$이고 합은 $${r.sum}$이다.`],
+          quick: [
+            `대칭축이 $\\frac{${p}+${q}}{2} = ${m + 0.5}$이므로, 가장 가까운 두 자연수 **$n=${m}$와 $n=${m + 1}$에서 동시에 최댓값**($S_{${m}} = S_{${m + 1}} \\implies a_{${m + 1}} = 0$)을 갖습니다.`,
+            `$x$절편은 $S_{${p}+${q}} = S_{${p + q}} = 0$입니다.`]
+        };
+      }
+    };
+
+    /* ---------- 유형 3 · 절댓값을 씌운 합 ---------- */
+    const S3 = (N, n) => -n * (n - N);
+    const T3A = {
+      pool: [{ N: 8, T: 10 }, { N: 6, T: 8 }, { N: 10, T: 12 }, { N: 8, T: 11 }, { N: 6, T: 9 }],
+      solve: (it) => { const m = it.N / 2; return { val: 2 * S3(it.N, m) - S3(it.N, it.T), m }; },
+      build(it) {
+        const { N, T } = it, r = this.solve(it), m = r.m, Sm = S3(N, m), ST = S3(N, T);
+        return {
+          params: { zeroSumN: N, targetN: T }, g: { N, T, m },
+          text: `등차수열 $\\{a_n\\}$의 합이 $S_n = -n^2 + ${N}n$일 때, $\\sum_{k=1}^{${T}} |a_k|$의 값을 구하시오.`,
+          ans: `$${r.val}$`,
+          std: [
+            `1) $S_n = -n^2 + ${N}n$에서 $a_n = -2n + ${N + 1}$이므로 제$${m}$항까지 양수이고 제$${m + 1}$항부터 음수이다.`,
+            `2) $\\sum_{k=1}^{${T}} |a_k| = (a_1+\\cdots+a_{${m}}) - (a_{${m + 1}}+\\cdots+a_{${T}}) = S_{${m}} - (S_{${T}} - S_{${m}}) = 2S_{${m}} - S_{${T}}$.`,
+            `3) $S_{${m}} = -${m * m} + ${N * m} = ${Sm}$, $S_{${T}} = -${T * T} + ${N * T} = ${ST}$이므로 $2(${Sm}) - (${ST}) = ${r.val}$.`],
+          quick: [
+            `꼭짓점 이후에는 음수인 항의 부호가 바뀌어 더해지므로, $T_n = \\sum_{k=1}^{n} |a_k|$는 **$2S_{\\text{꼭짓점}} - S_n$**입니다.`,
+            `$S_n = -n(n-${N})$의 대칭축은 $n=${m}$이고 꼭짓점의 값은 $S_{${m}} = ${Sm}$, $S_{${T}} = ${ST}$이므로 **$2(${Sm}) - (${ST}) = ${r.val}$**입니다.`]
+        };
+      }
+    };
+    const T3B = {
+      pool: [{ N: 8, a: 3, r: 9 }, { N: 8, a: 3, r: 10 }, { N: 6, a: 2, r: 8 }, { N: 10, a: 4, r: 11 }, { N: 10, a: 4, r: 12 }],
+      solve: (it) => ({ r: it.r, c: it.a * (it.N - it.a), L: it.r * (it.r - it.N) }),
+      build(it) {
+        const { N, a, r } = it, x = this.solve(it), c = x.c, L = x.L, b = N - a;
+        return {
+          params: { zeroSumN: N, targetN: r }, g: { N, a, b, r, c, L },
+          text: `등차수열의 합 $S_n = -n(n - ${N})$에 대하여, $|S_{${a}}| = |S_{${b}}| = ${c}$이다. $n > ${N}$에서 $|S_r| = ${L}$일 때, 자연수 $r$의 값을 구하시오.`,
+          ans: `$r = ${r}$`,
+          tQuick: `대칭인 두 값(${c})과 오른쪽 부분의 값(${L})을 따로 구하기`,
+          std: [
+            `1) $n=${a}, ${b}$는 대칭축 $${N / 2}$에 대칭이므로 $S_{${a}} = S_{${b}} = ${c}$이다.`,
+            `2) $n>${N}$에서는 $S_r<0$이므로 $|S_r|=-S_r=r(r-${N})$. 조건에 따라 $r(r-${N})=${L}$이다.`,
+            `3) $r^2-${N}r-${L}=(r-${r})(r+${r - N})=0$이고 $r>${N}$이므로 $r=${r}$이다. 확인하면 $S_{${r}}=${-L}$이다.`],
+          quick: [`W자 모양의 그래프에서 $n=${a}, ${b}$는 $x$축 위쪽에서 대칭이므로 $|S_{${a}}|=|S_{${b}}|=${c}$이고, 오른쪽 부분($n>${N}$)에서는 $|S_{${r}}|=${L}$입니다. ${c === L ? '세 점이 모두 같은 높이 ' + c + '에 놓여 수평선 $y=' + c + '$와 세 점에서 만납니다.' : '세 값이 모두 같은 것은 아닙니다.'}`]
+        };
+      }
+    };
+
+    /* ---------- 유형 4 · Sₙ의 상수항 함정 ---------- */
+    const T4A = {
+      pool: [{ p: 1, q: 2, C: 3 }, { p: 2, q: 1, C: 3 }, { p: 1, q: 1, C: 4 }, { p: 2, q: 2, C: -1 }, { p: 3, q: 1, C: 2 }],
+      solve: (it) => { const { p, q, C } = it; return { a1: p + q + C, a5: 9 * p + q, val: 10 * p + 2 * q + C }; },
+      build(it) {
+        const { p, q, C } = it, r = this.solve(it), L = lin(2 * p, q - p);
+        return {
+          params: { pCoeff: p, qCoeff: q, constC: C }, g: { p, q, C, a1: r.a1, a5: r.a5 },
+          text: `수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합이 $S_n = ${quad(p, q, C)}$일 때, $a_1 + a_5$의 값을 구하시오.`,
+          ans: `$${r.val}$`,
+          std: [
+            `1) $a_1 = S_1 = ${T([p, q, C])} = ${r.a1}$이다.`,
+            `2) $n \\ge 2$일 때 $a_n = S_n - S_{n-1} = ${L}$.`,
+            `3) $a_5 = ${r.a5}$이므로 $a_1 + a_5 = ${r.a1} + ${r.a5} = ${r.val}$. (만약 $a_1$을 $${L}$에 $n=1$을 대입한 $${p + q}$로 쓰면 $${p + q + r.a5}$로 오답이다.)`],
+          quick: [
+            `$S_n = pn^2 + qn + C$에서 $n \\ge 2$일 때 $a_n = S_n - S_{n-1} = 2pn + (q - p)$이므로 공차는 $2p$이고, 이 문제에서는 $a_n = ${L}$입니다.`,
+            `첫째항 $a_1$은 $a_n = ${L}$에 $n=1$을 대입한 값($${p + q}$)에 상수항 $C = ${C > 0 ? '+' : ''}${C}$을 더한 $a_1 = ${p + q} ${sg(C)} = ${r.a1}$입니다. 따라서 $a_1 + a_5 = ${r.a1} + ${r.a5} = ${r.val}$입니다.`]
+        };
+      }
+    };
+    const T4B = {
+      pool: [{ p: 1, q: 2 }, { p: 2, q: 1 }, { p: 1, q: 3 }, { p: 3, q: 1 }, { p: 2, q: 3 }],
+      solve: (it) => ({ C: 0, c: 2 * it.p, k: it.q - it.p }),
+      build(it) {
+        const { p, q } = it, L = lin(2 * p, q - p);
+        return {
+          params: { pCoeff: p, qCoeff: q, constC: 0 }, g: { p, q },
+          text: `수열의 합 $S_n = ${quad(p, q, 0)} + C$가 **첫째항부터** 등차수열을 이루도록 하는 상수 $C$의 값과 이때의 일반항 $a_n$을 구하시오.`,
+          ans: `$C = 0,\\ a_n = ${L}$`,
+          std: [
+            `1) $n \\ge 2$일 때 $a_n = ${L}$이고, 여기에 $n=1$을 대입한 값은 $${p + q}$이다.`,
+            `2) 실제 첫째항 $S_1 = ${p} + ${q} + C = ${p + q} + C$가 $${p + q}$와 같아야 하므로 $C = 0$이다.`,
+            `3) 따라서 $C=0$이고 일반항은 $a_n = ${L}$ ($n \\ge 1$)이다.`],
+          quick: [`수열의 합 $S_n$의 식에 $n=0$을 대입한 값이 $0$이면 $a_1 = S_1 - S_0$이 되어 첫째항부터 $a_n = S_n - S_{n-1}$의 식이 성립합니다. 이 문제에서는 $S_0 = C = 0$입니다.`]
+        };
+      }
+    };
+
+    /* ---------- 유형 5 · 등비수열의 구간별 합 ---------- */
+    const T5 = (it) => { const { P1, R } = it, P2 = P1 * R, P3 = P2 * R; return { P2, P3, S2: P1 + P2, S3: P1 + P2 + P3 }; };
+    const T5A = {
+      pool: [{ P1: 10, R: 2 }, { P1: 4, R: 2 }, { P1: 3, R: 3 }, { P1: 8, R: 2 }, { P1: 6, R: 3 }],
+      solve: T5,
+      build(it) {
+        const { P1, R } = it, r = T5(it);
+        return {
+          params: { block1: P1, blockRatio: R }, g: { P1, R, S2: r.S2 },
+          text: `등비수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합을 $S_n$이라 하자. $S_n = ${P1}$, $S_{2n} = ${r.S2}$일 때, $S_{3n}$의 값을 구하시오.`,
+          ans: `$${r.S3}$`,
+          tQuick: `구간별 합 [${P1}] → [${r.P2}] → [${r.P3}]을 더하면 ${r.S3}`,
+          std: [
+            `1) $\\frac{a(r^n - 1)}{r - 1} = ${P1}$이고, $\\frac{a(r^{2n} - 1)}{r - 1} = \\frac{a(r^n-1)(r^n+1)}{r-1} = ${P1}(r^n + 1) = ${r.S2}$이다.`,
+            `2) 따라서 $r^n + 1 = ${1 + R} \\implies r^n = ${R}$를 얻는다.`,
+            `3) $S_{3n} = \\frac{a(r^{3n}-1)}{r-1} = \\frac{a(r^n-1)}{r-1}(r^{2n} + r^n + 1) = ${P1}(${R * R} + ${R} + 1) = ${r.S3}$.`],
+          quick: [
+            `첫 번째 구간의 합은 $P_1 = S_n = ${P1}$, 두 번째 구간의 합은 $P_2 = S_{2n} - S_n = ${r.S2} - ${P1} = ${r.P2}$입니다.`,
+            `구간별 합도 등비수열을 이루므로 $[${P1}] \\xrightarrow{\\times ${R}} [${r.P2}] \\xrightarrow{\\times ${R}} P_3 = [${r.P3}]$입니다.`,
+            `$S_{3n} = ${P1} + ${r.P2} + ${r.P3} = ${r.S3}$입니다.`]
+        };
+      }
+    };
+    const T5B = {
+      pool: [{ P1: 5, R: 3 }, { P1: 2, R: 3 }, { P1: 3, R: 2 }, { P1: 6, R: 2 }, { P1: 4, R: 3 }],
+      solve: T5,
+      build(it) {
+        const { P1, R } = it, r = T5(it);
+        return {
+          params: { block1: P1, blockRatio: R }, g: { P1, R, S2: r.S2 },
+          text: `등비수열에서 $S_n = ${P1}$, $S_{2n} = ${r.S2}$일 때, 세 번째 구간 합 $S_{3n} - S_{2n}$의 값과 $S_{3n}$의 값을 구하시오.`,
+          ans: `$S_{3n} - S_{2n} = ${r.P3},\\ S_{3n} = ${r.S3}$`,
+          tStd: `rⁿ의 값(${R})을 구한 뒤 S_3n 구하기`,
+          tQuick: `구간별 합 [${P1}] → [${r.P2}] → [${r.P3}]의 합은 ${r.S3}`,
+          std: [
+            `1) $S_{2n} = S_n(r^n + 1) \\implies ${r.S2} = ${P1}(r^n + 1) \\implies r^n = ${R}$.`,
+            `2) $S_{3n} - S_{2n} = r^{2n} S_n = ${R * R} \\times ${P1} = ${r.P3}$이고 $S_{3n} = ${r.S2} + ${r.P3} = ${r.S3}$이다.`],
+          quick: [`$P_1 = ${P1}$, $P_2 = ${r.S2} - ${P1} = ${r.P2}$ ($${R}$배)이므로 $P_3 = ${r.P2} \\times ${R} = ${r.P3}$이고 $S_{3n} = ${P1} + ${r.P2} + ${r.P3} = ${r.S3}$입니다.`]
+        };
+      }
+    };
+
+    /* ---------- 유형 6 · 시그마와 부분분수 ---------- */
+    const T6 = (it) => { const { a1, d, n } = it, an1 = a1 + n * d; return { an1, num: n, den: a1 * an1 }; };
+    const T6A = {
+      pool: [{ a1: 1, d: 2, n: 6 }, { a1: 1, d: 3, n: 5 }, { a1: 3, d: 2, n: 7 }, { a1: 1, d: 4, n: 4 }, { a1: 2, d: 4, n: 5 }],
+      solve: T6,
+      build(it) {
+        const { a1, d, n } = it, r = T6(it);
+        const fa = `${cn(d)}k ${sg(a1 - d)}`, fb = `${cn(d)}k ${sg(a1)}`;
+        const an = `${cn(d)}n ${sg(a1 - d)}`;
+        const a2 = a1 + d, an_ = a1 + (n - 1) * d, red = frac(r.num, r.den);
+        return {
+          params: { termCountN: n, firstA1: a1, diffD: d }, g: { a1, d, n, an1: r.an1 },
+          text: `수열 $a_n = ${an}$에 대하여 $\\sum_{k=1}^{${n}} \\frac{1}{a_k a_{k+1}} = \\sum_{k=1}^{${n}} \\frac{1}{(${fa})(${fb})}$의 값을 구하시오.`,
+          ans: `$${red}$`,
+          std: [
+            `1) $\\frac{1}{(${fa})(${fb})} = \\frac{1}{${d}}\\left(\\frac{1}{${fa}} - \\frac{1}{${fb}}\\right)$로 변형한다.`,
+            `2) $k=1\\sim ${n}$을 대입하면 $\\frac{1}{${d}}\\left\\{(\\frac{1}{${a1}} - \\frac{1}{${a2}}) + (\\frac{1}{${a2}} - \\frac{1}{${a1 + 2 * d}}) + \\cdots + (\\frac{1}{${an_}} - \\frac{1}{${r.an1}})\\right\\}$.`,
+            `3) 중간이 지워져 $\\frac{1}{${d}}\\left(\\frac{1}{${a1}} - \\frac{1}{${r.an1}}\\right) = \\frac{1}{${d}}\\times\\frac{${r.an1 - a1}}{${r.den}} = ${red}$이다.`],
+          quick: [
+            `등차수열의 이웃한 두 항의 역수의 곱의 합에서는, 앞의 $\\frac{1}{d}$과 통분했을 때 분자에 생기는 $nd$의 $d$가 약분됩니다.`,
+            `따라서 결과는 **$\\frac{\\text{항의 개수 } n}{(\\text{맨 앞 인수}) \\times (\\text{맨 뒤 인수})} = \\frac{${n}}{${a1} \\times ${r.an1}} = ${red}$**입니다.`]
+        };
+      }
+    };
+    const T6B = {
+      pool: [{ a1: 2, d: 3, n: 8 }, { a1: 3, d: 2, n: 9 }, { a1: 2, d: 1, n: 6 }, { a1: 3, d: 3, n: 6 }, { a1: 4, d: 3, n: 7 }],
+      solve: T6,
+      build(it) {
+        const { a1, d, n } = it, r = T6(it), red = frac(r.num, r.den), an = `${cn(d)}n ${sg(a1 - d)}`;
+        return {
+          params: { termCountN: n, firstA1: a1, diffD: d }, g: { a1, d, n, an1: r.an1 },
+          text: `첫째항이 $${a1}$이고 공차가 $${d}$인 등차수열 $a_n = ${an}$에 대하여 $\\sum_{k=1}^{${n}} \\frac{1}{a_k a_{k+1}}$의 값을 구하시오.`,
+          ans: `$${red}$`,
+          tStd: `1/${d} 묶어내고 통분하기`,
+          tQuick: `(항의 개수 ${n}) ÷ (맨 앞 a₁=${a1} × 맨 뒤 a${sub(n + 1)}=${r.an1}) = ${r.num}/${r.den}${red === `${r.num}/${r.den}` ? '' : ' = ' + red.replace('\\frac{', '').replace('}{', '/').replace('}', '')}`,
+          std: [`1) $\\frac{1}{${d}}\\left(\\frac{1}{${a1}} - \\frac{1}{${r.an1}}\\right) = \\frac{1}{${d}}\\times\\frac{${r.an1 - a1}}{${r.den}} = \\frac{${r.num}}{${r.den}}${red === `\\frac{${r.num}}{${r.den}}` ? '' : ' = ' + red}$.`],
+          quick: [`항의 개수 $${n}$개, 맨 앞 $a_1 = ${a1}$, 맨 뒤 $a_{${n + 1}} = ${r.an1}$이므로 **$\\frac{${n}}{${a1} \\times ${r.an1}} = ${red}$**입니다.`]
+        };
+      }
+    };
+
+    /* ---------- 유형 7 · 점화식과 수열의 주기 ---------- */
+    const f7 = (a) => (a < 4 ? a + 2 : a - 4);
+    const T7 = (it) => {
+      const { a1, N } = it, c = [a1, f7(a1), f7(f7(a1))], cs = c[0] + c[1] + c[2], q = Math.floor(N / 3), rem = N % 3;
+      return { c, cs, q, rem, p: 3, val: q * cs + c.slice(0, rem).reduce((x, y) => x + y, 0), back: f7(c[2]) };
+    };
+    const CASES7 = '\\begin{cases} a_n + 2 & (a_n \\lt 4) \\\\ a_n - 4 & (a_n \\ge 4) \\end{cases}';
+    const T7A = {
+      pool: [{ a1: 1, N: 30 }, { a1: 3, N: 27 }, { a1: 5, N: 33 }, { a1: 1, N: 24 }, { a1: 3, N: 36 }],
+      solve: T7,
+      build(it) {
+        const { a1, N } = it, r = T7(it), c = r.c;
+        const line = (i) => `${i}) $a_${i} = ${c[i - 1]} ${c[i - 1] < 4 ? '<' : '\\ge'} 4 \\implies a_${i + 1} = ${c[i - 1]} ${c[i - 1] < 4 ? '+ 2' : '- 4'} = ${i < 3 ? c[i] : r.back}$.`;
+        return {
+          params: { startA1: a1, limitN: N }, g: { a1, N, c },
+          text: `수열 $\\{a_n\\}$이 모든 자연수 $n$에 대하여 $a_{n+1} = ${CASES7}$를 만족시킨다. $a_1 = ${a1}$일 때, 수열의 주기 $p$와 $\\sum_{k=1}^{${N}} a_k$의 값을 구하시오.`,
+          ans: `$p = 3,\\ \\sum_{k=1}^{${N}} a_k = ${r.val}$`,
+          std: [line(1), line(2), `${line(3).replace(/\$\.$/, '$')}${r.back === c[0] ? '!' : ''} 따라서 주기 $3$인 수열 $[${c.join(', ')}]$가 반복되므로 $\\sum_{k=1}^{${N}} a_k = ${r.q} \\times (${c.join('+')}) = ${r.val}$.`],
+          quick: [
+            `$+2$씩 두 번 올라가면 $+4$가 되고, 한 번에 $-4$만큼 내려와 처음 값으로 돌아오므로 **$2 + 1 = 3$항마다 같은 값이 반복되는 수열(주기 $3$)**입니다.`,
+            `한 마디의 합 $(${c.join(' + ')}) = ${r.cs}$가 $${r.q}$번 반복되므로 $${r.cs} \\times ${r.q} = ${r.val}$입니다.`]
+        };
+      }
+    };
+    const T7B = {
+      pool: [{ a1: 2, N: 31 }, { a1: 4, N: 29 }, { a1: 5, N: 32 }, { a1: 3, N: 28 }, { a1: 1, N: 35 }],
+      solve: T7,
+      build(it) {
+        const { a1, N } = it, r = T7(it), c = r.c, rem = r.rem;
+        const nxt = (i) => (i < 3 ? c[i] : r.back);
+        return {
+          params: { startA1: a1, limitN: N }, g: { a1, N, c },
+          text: `문제 A와 같은 점화식 $a_{n+1} = ${CASES7}$에서 첫째항을 $a_1 = ${a1}$로 바꾸었을 때, 순환 마디 $[a_1, a_2, a_3]$과 $\\sum_{k=1}^{${N}} a_k$의 값을 구하시오.`,
+          ans: `$[${c.join(', ')}],\\ \\sum_{k=1}^{${N}} a_k = ${r.val}$`,
+          tStd: `a₁=${a1}부터 차례로 구하고 몫과 나머지로 나누기`,
+          tQuick: `(마디의 합 ${r.cs}) × (몫 ${r.q}) + (나머지 ${rem}개 항${rem ? ' ' + c.slice(0, rem).map((x, i) => 'a' + sub(i + 1) + '=' + x).join(', ') : ''}) = ${r.val}`,
+          std: [
+            `1) $a_1 = ${c[0]} \\to a_2 = ${c[1]} \\to a_3 = ${c[2]} \\to a_4 = ${r.back}$이므로 $[${c.join(', ')}]$이 주기 $3$으로 반복된다.`,
+            `2) $${N} = 3 \\times ${r.q} + ${rem}$이므로 $\\sum_{k=1}^{${N}} a_k = ${r.q}(${c.join('+')})${rem ? ' + ' + c.slice(0, rem).map((x, i) => 'a_' + (i + 1)).join(' + ') : ''} = ${r.q * r.cs}${rem ? ' + ' + c.slice(0, rem).reduce((x, y) => x + y, 0) : ''} = ${r.val}$.`],
+          quick: [`그림에서 출발점을 $a_1 = ${a1}$로 옮기면 경로가 $[${c.join(' \\to ')}]$을 반복하는 삼각형 모양으로 바뀝니다. 한 마디의 합($${r.cs}$) × 몫($${r.q}$) + 나머지 $${rem}$개 항 = $${r.val}$입니다.`]
+        };
+      }
+    };
+
+    /* ---------- 유형 8 · 점화식을 거꾸로 추적하기 (나뭇가지) ---------- */
+    // a(n+1) = 2a(n) (a(n) < k), a(n) - k (a(n) ≥ k). a4 = t 에서 거꾸로 3번.
+    function tree8(t, k) {
+      const root = { val: t, level: 0, valid: true, reason: '목표항', children: [] };
+      (function ex(n) {
+        if (n.level >= 3 || !n.valid) return;
+        const y = n.val, xl = y / 2, il = Math.abs(xl - Math.round(xl)) < 1e-6 && xl >= 1, cl = xl < k;
+        const xr = y + k;
+        n.children = [
+          { val: xl, level: n.level + 1, rule: '÷2', valid: il && cl, reason: !il ? '자연수 아님' : (!cl ? `≥${k} 범위위반` : '통과'), children: [] },
+          { val: xr, level: n.level + 1, rule: `+${k}`, valid: xr >= k && Number.isInteger(Math.round(xr)), reason: '통과', children: [] }
+        ];
+        n.children.forEach(ex);
+      })(root);
+      const a1 = [];
+      (function col(n) { if (n.level === 3 && n.valid) a1.push(n.val); n.children.forEach(col); })(root);
+      return { root, a1 };
+    }
+    const f8 = (a, k) => (a < k ? 2 * a : a - k);
+    const T8 = (it) => { const T8t = tree8(it.t, it.k); return { a1: T8t.a1.slice().sort((x, y) => x - y), sum: T8t.a1.reduce((x, y) => x + y, 0) }; };
+    function steps8(t, k) {
+      const tr = tree8(t, k), out = [];
+      for (let j = 1; j <= 3; j++) {
+        const ps = []; (function w(n) { if (n.level === j - 1 && n.valid) ps.push(n); else n.children.forEach(w); })(tr.root);
+        out.push(`${j}) $a_${4 - j}$ 후보: ` + ps.map((n) => `$${n.val}$에서 ${n.children.map((c) => `$${c.rule === '÷2' ? '\\div 2' : c.rule} = ${Number.isInteger(c.val) ? c.val : c.val.toFixed(1)}$${c.valid ? '' : '(' + (c.reason.indexOf('범위') >= 0 ? '$a_n \\lt ' + k + '$ 아님' : c.reason) + ', 지움)'}`).join(', ')}`).join(' / '));
+      }
+      return out;
+    }
+    const CASES8 = (k) => `\\begin{cases} 2a_n & (a_n \\lt ${k}) \\\\ a_n - ${k} & (a_n \\ge ${k}) \\end{cases}`;
+    const mk8 = (it, kind) => {
+      const { t, k } = it, r = T8(it), a1 = r.a1, st = steps8(t, k);
+      const bd = (function () { let f = null; (function w(n) { if (n.valid) n.children.forEach((c) => { if (c.rule === '÷2' && !c.valid && c.val === k) f = n.val; w(c); }); })(tree8(t, k).root); return f; })();
+      return {
+        params: { targetA4: t, threshK: k }, g: { t, k, a1 },
+        text: `모든 항이 자연수인 수열 $\\{a_n\\}$이 $a_{n+1} = ${CASES8(k)}$을 만족시킨다. $a_4 = ${t}$일 때, 가능한 **모든 첫째항 $a_1$의 값의 합**을 그림의 나뭇가지(거꾸로 추적)로 구하시오.`,
+        ans: `$a_1 \\in \\{${a1.join(', ')}\\}$, 합 $${r.sum}$`,
+        tQuick: bd != null ? `경계값에서 지워지는 킬러 함정: ${k} < ${k}는 거짓` : undefined,
+        std: [...st, `따라서 가능한 $a_1$은 $\\{${a1.join(', ')}\\}$이고 합은 $${r.sum}$이다.`],
+        quick: [
+          `현재 값 $y$에서 왼쪽 가지는 **$\\frac{y}{2}$ (확인: $\\lt ${k}$이고 자연수인가?)**, 오른쪽 가지는 **$y + ${k}$ (확인: $\\ge ${k}$ — $y$가 양수이면 항상 성립)**입니다.`,
+          `조건에 맞지 않는 가지를 지우고 끝까지 남은 값만 모으면 $a_1 \\in \\{${a1.join(', ')}\\}$이고 합은 $${r.sum}$입니다.${bd != null ? ` 특히 $${bd}$의 왼쪽 가지 $${bd} \\div 2 = ${k}$는 자연수이지만 "$a_n \\lt ${k}$"를 만족시키지 못하므로($${k} \\lt ${k}$는 거짓) 지워집니다.` : ''}`]
+      };
+    };
+    const T8A = { pool: [{ t: 4, k: 6 }, { t: 2, k: 6 }, { t: 8, k: 6 }, { t: 6, k: 5 }, { t: 2, k: 5 }], solve: T8, build: (it) => mk8(it, 'A') };
+    const T8B = { pool: [{ t: 4, k: 4 }, { t: 6, k: 6 }, { t: 8, k: 8 }, { t: 8, k: 4 }, { t: 6, k: 3 }], solve: T8, build: (it) => mk8(it, 'B') };
+
+    return { T1A, T1B, T2A, T2B, T3A, T3B, T4A, T4B, T5A, T5B, T6A, T6B, T7A, T7B, T8A, T8B, tree8, f8, f7, S3, sub };
+  })();
+  /* ==OLDV-ENGINE-END== */
+
+  /* ==========================================================================
+     문제 탭 그림 — 문제 글에 주어진 값과 점 이름만 그립니다(탐구 탭의 완성된 그림이 아닙니다).
+       속이 빈 점(○)은 값을 구해야 하는 항입니다. 답과 답으로 가는 보조선(0이 되는 곳의 점선, 대칭축, 접어 올린 곡선,
+       지워지는 가지 등)은 정리 탭의 풀이 단계를 올릴 때 비로소 나타납니다.
+       그림은 「새 문제」로 바뀐 변형(OVARY[...].cur())의 조건을 따라갑니다.
+     ========================================================================== */
+  const uni = (p, q, C) => `${p === 1 ? '' : p}n²${q === 0 ? '' : q < 0 ? ' − ' + (q === -1 ? '' : -q) + 'n' : ' + ' + (q === 1 ? '' : q) + 'n'}${C == null ? ' + C' : C === 0 ? '' : C < 0 ? ' − ' + (-C) : ' + ' + C}`;
+  const mn = (v) => (v < 0 ? '−' + (-v) : String(v));
+  function focusFor(mi, Q, tab) {
+    const p = Q.p, B = FOCUS[mi], ys = [0];
+    let xmax = B.x[1];
+    if (tab === 'problem') { // 문제 탭: 주어진 점만 있으므로 범위를 좁혀 그림을 크게
+      if (mi === 0) return { x: B.x, y: [-3.4, Math.max(3.4, 0.5 * (Q.g.A || 0) + 1.8)] };
+      if (mi === 1) return { x: [-1.5, p.qIdx + 2.5], y: [-1.6, 0.28 * p.pIdx * p.qIdx + 2.4] };
+      if (mi === 2) { const N = p.zeroSumN, T = Math.round(p.targetN); return { x: [-1.5, Math.max(N, T) + 2], y: [Math.min(0, 0.22 * OLDV.S3(N, T)) - 1.6, 0.22 * N * N / 4 + 2.2] }; }
+      if (mi === 3) return { x: [-0.5, 7], y: [-2.6, 3.6] };
+    }
+    if (mi === 0) for (let n = 1; n <= 10; n++) ys.push(0.5 * p.dSlope * (n - p.zeroN));
+    else if (mi === 1) { const z = p.pIdx + p.qIdx; ys.push(0.28 * z * z / 4); xmax = Math.max(xmax, z + 1.5); }
+    else if (mi === 2) {
+      const N = p.zeroSumN, T = Math.round(p.targetN), m = N / 2;
+      ys.push(0.22 * m * m, 0.22 * OLDV.S3(N, T));
+      if (tab !== 'problem') ys.push(0.22 * (2 * OLDV.S3(N, m) - OLDV.S3(N, T)));
+      xmax = Math.max(xmax, T + 1.5);
+    } else if (mi === 3) { for (let n = 1; n <= 7; n++) ys.push(0.45 * (2 * p.pCoeff * n + p.qCoeff - p.pCoeff)); ys.push(0.45 * (p.pCoeff + p.qCoeff + p.constC)); }
+    return { x: [B.x[0], xmax], y: [Math.min(B.y[0], Math.min(...ys) - 1.2), Math.max(B.y[1], Math.max(...ys) + 1.2)] };
+  }
+  function drawGiven(mo, b, Q) {
+    const id = mo.id, g = Q.g, sub = OLDV.sub;
+    const note = (str, color) => b.stext(Math.max(14, b.toS(0, 0).x + 14), (b.insets ? b.insets.top : 0) + 36, str, { color: color || 'ink', size: 13, weight: 800, align: 'left' });
+    const hol = (x, y, label, color, dy) => b.point([x, y], { hollow: true, r: 6.5, color, label, dx: 0, dy: dy == null ? -16 : dy, align: 'center', size: 13 });
+    const sol = (x, y, label, color, dy) => b.point([x, y], { r: 6, color, label, dx: 0, dy: dy == null ? -16 : dy, align: 'center', size: 13 });
+    if (id === 'type1') {
+      if (g.p != null) {
+        note(`공차 d = ${mn(g.d)}  ·  a${sub(g.p)} + a${sub(g.q)} = 0`);
+        hol(g.p, 0, `a${sub(g.p)}`, 'amber'); hol(g.q, 0, `a${sub(g.q)}`, 'amber');
+        hol(g.m, 0, `a${sub(g.m)} = ?`, 'rose'); hol(10, 0, 'a₁₀ = ?', 'rose');
+      } else {
+        note(`첫째항 a₁ = ${mn(g.A)}  ·  a${sub(g.k)} + a${sub(g.k + 1)} = 0`);
+        sol(1, 0.5 * g.A, `a₁ = ${mn(g.A)}`, 'amber', g.A > 0 ? -16 : 18);
+        hol(g.k, 0, `a${sub(g.k)}`, 'amber', -16); hol(g.k + 1, 0, `a${sub(g.k + 1)}`, 'amber', 18);
+      }
+    } else if (id === 'type2') {
+      const y = 0.28 * g.p * g.q;
+      note(`S${sub(g.p)} = S${sub(g.q)}  ·  첫째항 > 0`);
+      b.seg([g.p, y], [g.q, y], { color: 'amber', dash: [5, 4], width: 2 });
+      sol(g.p, y, `S${sub(g.p)}`, 'amber'); sol(g.q, y, `S${sub(g.q)}`, 'amber');
+    } else if (id === 'type3') {
+      const N = g.N, sc = 0.22, T = g.T != null ? g.T : g.r;
+      b.plot((x) => sc * (-x * (x - N)), { color: 'sky', width: 2.2, dash: [5, 5], from: 0, to: Math.max(N, T) + 1 });
+      if (g.T != null) {
+        note(`S_n = −n² + ${N}n  ·  합의 끝 n = ${T}`);
+        hol(T, 0, `n = ${T}`, 'rose', 18);
+      } else {
+        note(`S_n = −n(n − ${N})  ·  |S${sub(g.a)}| = |S${sub(g.b)}| = ${g.c}`);
+        sol(g.a, sc * g.c, `S${sub(g.a)}`, 'amber'); sol(g.b, sc * g.c, `S${sub(g.b)}`, 'amber');
+      }
+    } else if (id === 'type4') {
+      if (g.a1 != null) {
+        note(`S_n = ${uni(g.p, g.q, g.C)}`);
+        hol(1, 0, 'a₁ = ?', 'rose'); hol(5, 0, 'a₅ = ?', 'rose');
+      } else {
+        note(`S_n = ${uni(g.p, g.q, null)}  ·  첫째항부터 등차수열`);
+        hol(1, 0, 'a₁', 'amber'); hol(2, 0, 'a₂', 'amber', 18); hol(3, 0, 'a₃', 'amber');
+      }
+    } else if (id === 'type5') {
+      const D = design(b), w = D.w, h = D.h, P = D.P, bw = w * 0.27, y0 = h * 0.42, y1 = h * 0.62;
+      const xs = [w * 0.2, w * 0.5, w * 0.8];
+      const brk = (xa, xb, yy, lbl, col) => {
+        b.seg(P(xa, yy + 8), P(xa, yy), { color: col, width: 2 }); b.seg(P(xa, yy), P(xb, yy), { color: col, width: 2 }); b.seg(P(xb, yy), P(xb, yy + 8), { color: col, width: 2 });
+        b.text(P((xa + xb) / 2, yy - 14), lbl, { color: col, size: 14, weight: 800 });
+      };
+      xs.forEach((x, i) => b.poly([P(x - bw / 2, y0), P(x + bw / 2, y0), P(x + bw / 2, y1), P(x - bw / 2, y1)], { color: i === 0 ? 'green' : i === 1 ? 'sky' : 'amber', width: 2.2, dash: [5, 4], fill: i === 0 ? 'green' : null, fillAlpha: 0.12 }));
+      b.text(P(xs[0], (y0 + y1) / 2), `Sₙ = ${g.P1}`, { color: 'ink', size: 14, weight: 800 });
+      b.text(P(xs[1], (y0 + y1) / 2), 'P₂', { color: 'muted', size: 14, weight: 800 });
+      b.text(P(xs[2], (y0 + y1) / 2), 'P₃ = ?', { color: 'rose', size: 14, weight: 800 });
+      ['1~n항', 'n+1~2n항', '2n+1~3n항'].forEach((t, i) => b.text(P(xs[i], y1 + 22), t, { color: 'muted', size: 12, weight: 800 }));
+      brk(xs[0] - bw / 2, xs[1] + bw / 2, h * 0.3, `S₂ₙ = ${g.S2}`, '#38bdf8');
+      brk(xs[0] - bw / 2, xs[2] + bw / 2, h * 0.17, 'S₃ₙ = ?', '#fb7185');
+      b.text(P(w / 2, h * 0.82), 'P₁ = Sₙ,  P₂ = S₂ₙ − Sₙ,  P₃ = S₃ₙ − S₂ₙ', { color: 'muted', size: 12, weight: 700 });
+    } else if (id === 'type6') {
+      const D = design(b), w = D.w, h = D.h, n = g.n, a = (k) => g.a1 + (k - 1) * g.d;
+      const ks = n <= 5 ? Array.from({ length: n }, (_, i) => i + 1) : [1, 2, 3, 0, n];
+      const startY = h * 0.14, rowH = Math.min(52, (h * 0.66) / ks.length);
+      ks.forEach((k, i) => {
+        const cy = startY + (i + 0.5) * rowH;
+        if (!k) { b.text(D.P(w * 0.5, cy), '⋮', { color: 'muted', size: 18, weight: 800 }); return; }
+        b.text(D.P(w * 0.1, cy), `k = ${k}`, { color: 'muted', size: 12, weight: 800, align: 'left', baseline: 'middle' });
+        chip(b, D, w * 0.56, cy, `1 / (${a(k)} × ${a(k + 1)})`, k === 1 ? '#fbbf24' : k === n ? '#fbbf24' : '#34d399');
+      });
+      b.text(D.P(w * 0.5, h * 0.9), `Σ = ?  (첫째항 ${g.a1}, 공차 ${g.d})`, { color: '#fb7185', size: 15, weight: 800 });
+    } else if (id === 'type7') {
+      b.plot((x) => x, { color: 'muted', width: 1.6, dash: [5, 5], from: -1, to: 8 });
+      b.plot((x) => x + 2, { color: 'green', width: 3, from: -1, to: 3.99 });
+      b.plot((x) => x - 4, { color: 'sky', width: 3, from: 4, to: 8.5 });
+      b.seg([4, -2], [4, 7], { color: 'rose', width: 1.5, dash: [4, 4], alpha: 0.5 });
+      b.text([4.2, -1.6], 'x = 4', { color: 'rose', size: 12, weight: 800, align: 'left' });
+      b.text([0.4, 7.6], 'y = f(x)', { color: 'ink', size: 13, weight: 800, align: 'left' });
+      sol(g.a1, g.a1, `a₁ = ${g.a1}`, 'amber', -16);
+    } else if (id === 'type8') {
+      const D = design(b), w = D.w, h = D.h, P = D.P, k = g.k;
+      const levelY = [h * 0.18, h * 0.39, h * 0.61, h * 0.83];
+      const names = w < 600 ? ['a₄', 'a₃', 'a₂', 'a₁'] : ['제4항 (a₄)', '제3항 (a₃)', '제2항 (a₂)', '첫째항 (a₁)'];
+      levelY.forEach((ly, i) => {
+        b.seg(P(w * 0.06, ly), P(w * 0.94, ly), { color: 'green', alpha: 0.2, width: 1 });
+        b.text(P(w * 0.05, ly - 12), names[i], { color: 'muted', size: 12, weight: 800, align: 'left' });
+      });
+      chip(b, D, w * 0.54, levelY[0], String(g.t), '#34d399');
+      chip(b, D, w * 0.54, levelY[3], 'a₁ = ?', '#fb7185');
+      b.text(P(w * 0.54, (levelY[0] + levelY[1]) / 2 + 6), `aₙ₊₁ = 2aₙ (aₙ < ${k}),  aₙ − ${k} (aₙ ≥ ${k})`, { color: 'muted', size: 12, weight: 700 });
+      b.text(P(w * 0.54, (levelY[2] + levelY[3]) / 2 + 6), '거꾸로 거슬러 올라가면?', { color: 'muted', size: 12, weight: 700 });
+    }
+  }
+
+  /* ===== 변형 생성기 연결: 장면(탐구관 × 문제 A·B)마다 현재 변형(cur)을 들고 있습니다 ===== */
+  const OV_SPECS = [[OLDV.T1A, OLDV.T1B], [OLDV.T2A, OLDV.T2B], [OLDV.T3A, OLDV.T3B], [OLDV.T4A, OLDV.T4B], [OLDV.T5A, OLDV.T5B], [OLDV.T6A, OLDV.T6B], [OLDV.T7A, OLDV.T7B], [OLDV.T8A, OLDV.T8B]];
+  const OVARY = {};
+  KILLER_MODES.forEach((mo, mi) => mo.scenarios.forEach((scen, si) => {
+    const spec = OV_SPECS[mi][si], cache = [];
+    const origText = scen.problem, origStd = scen.textbookSteps.slice(), origQuick = scen.secretSteps.slice();
+    const get = (k) => {
+      if (cache[k]) return cache[k];
+      const b = spec.build(spec.pool[k]);
+      if (k === 0) { // 첫 문제는 원본 그대로(문항·풀이 문구 변경 금지). 7-B만 '위와 동일한 점화식'이 가리키는 식이 보이도록 식을 적었습니다.
+        if (mi === 7 && si === 1) b.text += ' <small>(왼쪽 가지 ÷2한 값이 기준값 미만이어야 남습니다)</small>'; // 8-B 원본은 "문제 A에서 …"로 시작해 B만 열면 조건이 안 보여, 점화식·기준값·조건을 문장에 직접 적었습니다(수학 내용은 같음)
+        else if (!(mi === 6 && si === 1)) b.text = origText;
+        b.std = origStd; b.quick = origQuick; b.tStd = null; b.tQuick = null;
+      }
+      b.p = Object.assign({}, b.params);
+      b.key = mo.id + '-' + si + '-' + k;
+      return (cache[k] = b);
+    };
+    let i = 0;
+    OVARY[mo.id + '-' + si] = {
+      cur: () => get(i), idx: () => i,
+      next() { i = (i + 1 + Math.floor(Math.random() * (spec.pool.length - 1))) % spec.pool.length; return get(i); }
+    };
+  }));
+  const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-asq-new>새 문제 (숫자 바꾸기)</button></div>`;
 
   const groups = KILLER_MODES.map((mo, mi) => ({
     id: mo.id,
@@ -1061,29 +1577,32 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
         current = { mo, scen };
         Object.keys(scen.params).forEach((k) => { s[mo.id + '_' + k] = scen.params[k]; });
       },
+      tabs: { compact: true },
+      vary: OVARY[mo.id + '-' + si],
       problem: {
         tag: scen.source,
-        text: () => rich(scen.problem),
-        answer: () => '풀이와 결과는 정리 탭의 「두 가지 풀이 비교」에서 확인하세요.',
-        snap: () => { const o = {}; Object.keys(scen.snapParams).forEach((k) => { o[mo.id + '_' + k] = scen.snapParams[k]; }); return o; }
+        text: () => probHTML(rich(OVARY[mo.id + '-' + si].cur().text)),
+        answer: () => OVARY[mo.id + '-' + si].cur().ans,
+        snap: () => { const o = {}, q = OVARY[mo.id + '-' + si].cur().params; Object.keys(q).forEach((k) => { o[mo.id + '_' + k] = q[k]; }); return o; }
       },
       solution: {
-        standardTitle: rich(scen.textbookTitle), standardTag: '기본 풀이',
-        quickTitle: rich(scen.secretTitle), quickTag: '10초 컷',
-        standard: () => ({ steps: scen.textbookSteps.map((x) => `<div>${rich(x)}</div>`).join('') }),
-        quick: () => ({ steps: scen.secretSteps.map((x) => `<div>${rich(x)}</div>`).join('') })
+        get standardTitle() { return rich(OVARY[mo.id + '-' + si].cur().tStd || scen.textbookTitle); }, standardTag: '기본 풀이',
+        get quickTitle() { return rich(OVARY[mo.id + '-' + si].cur().tQuick || scen.secretTitle); }, quickTag: '10초 컷',
+        standard: () => ({ steps: OVARY[mo.id + '-' + si].cur().std.map((x) => `<div>${rich(x)}</div>`).join('') }),
+        quick: () => ({ steps: OVARY[mo.id + '-' + si].cur().quick.map((x) => `<div>${rich(x)}</div>`).join('') })
       },
-      view: (s) => {
+      view: (s, lab) => {
         current = { mo, scen };
-        const h = hudOf(mo.id, pv(s, mo));
+        const inExplore = !lab || lab.tab === 'explore';
+        const h = hudOf(mo.id, inExplore ? pv(s, mo) : OVARY[mo.id + '-' + si].cur().p);
         return {
-          chips: [{ k: mo.code, html: rich(h.eq) }],
+          chips: [{ k: mo.code, html: rich(h.eq), answer: true }],
           readouts: h.cards.map((c) => ({ label: rich(c.title), value: String(c.val), note: rich(c.sub), color: 'amber' })),
           formula: s.step >= 1 ? rich(mo.stepDescs[Math.min(s.step, 3) - 1]) : '',
           notes: rich(mo.trapWarning)
         };
       },
-      draw: (b, s, v) => draw(mo, mi, b, s, v)
+      draw: (b, s, v, lab) => draw(mo, mi, b, s, v, lab, si)
     }))
   }));
 
