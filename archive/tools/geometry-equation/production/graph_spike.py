@@ -109,7 +109,7 @@ def _produce(plan):
         critical.extend(point['x'] for row in features.get('lines',[]) for point in row['intersections'])
         critical.extend(float(Fraction(row['x']))*factor for row in features.get('keyPoints',[]))
         critical.extend(float(Fraction(row['x']))*factor for row in features.get('poles',[]))
-    result=sample(expression(plan),plan['domain'],vp,critical_x=critical)
+    result=sample(expression(plan),plan['domain'],vp,critical_x=critical,clip_refine=plan.get('clipRefine') is True)
     # A tangent branch near a pole can exceed the finite wire range in its refinement-cap report; the code is the evidence, not the huge px.
     for warning in result.get('warnings',[]):
         if isinstance(warning,dict) and 'errorPx' in warning and not (math.isfinite(warning['errorPx']) and abs(warning['errorPx'])<=9007199254740991):warning['errorPx']=None

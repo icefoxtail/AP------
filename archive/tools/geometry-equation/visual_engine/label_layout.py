@@ -359,6 +359,8 @@ def owner_incident_ids(start,owner_marker,occupied):
         and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
         and any(point_segment_distance(start,c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
     incident|={o.get('id') for o in occupied if o.get('kind')=='circle' and abs(math.dist(start,o['geometry'][:2])-o['geometry'][2])<=1e-3}
+    # (G18b) another dot drawn on the very same place (the end dot of a square root under a declared overlay point, say) is part of the point: the leader starts inside it
+    incident|={o.get('id') for o in occupied if o.get('kind') in {'point','circle'} and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=3 and math.dist(start,o['geometry'][:2])<=1e-3 and o['geometry'][2]<=12}
     return incident
 
 def line_between(start,box,occupied,incident):
@@ -378,6 +380,74 @@ def visible_owner_leader(start,box,occupied,incident,near_start=False,start_tole
            and any(point_segment_distance(start,c,d)<=1e-3 and leader_hides_along(start,end,c,d) for c,d in zip(o['geometry'],o['geometry'][1:]))
            for o in occupied):return None
     return end
+
+NEAR_CURVE_GAPS=(8,10,12,15,18,21)        # (G18b) px between a curve label's box and its own curve, nearest first
+NEAR_CURVE_FAR_GAPS=(28,38)        # tried only when none of the above is free (the observer then judges the result)
+NEAR_LINE_GAPS=(6,8,10,12)           # px between an asymptote value's box and its own dashed line
+NEAR_LINE_FAR_GAPS=(16,24,34)
+NEAR_CURVE_ANCHORS=(.62,.5,.74,.38,.86,.26,.94,.14,.56,.68,.44,.8,.32,.2,.08,.98)
+NEAR_CURVE_END_ANCHORS=(.9,.8,.7,.6,.5,.4,.3,.2,.1)
+NEAR_OTHER_MARGIN_PX=6.0
+NEAR_CURVE_REACH_PX=23.5   # just inside the observer's 24 px and 12.5 px reach: a box that only just fits still counts as beside its stroke
+NEAR_LINE_REACH_PX=12.0
+NEAR_SLIDES=(0.0,-.35,.35,-.7,.7)   # fractions of the box length a candidate is slid along the stroke
+
+def near_box_segment_distance(box,p,q):
+    """Distance from the box to the segment p-q (0 when they touch)."""
+    if segment_hits_box(p,q,box):return 0.0
+    corners=((box.x,box.y),(box.right,box.y),(box.right,box.bottom),(box.x,box.bottom))
+    return min(min(box_point_distance(box,p),box_point_distance(box,q)),min(point_segment_distance(c,p,q) for c in corners))
+
+def near_box_polyline_distance(box,points):
+    return min((near_box_segment_distance(box,a,b) for a,b in zip(points,points[1:])),default=math.inf)
+
+def _polyline_at(points,fraction):
+    """The point at the arc-length fraction of a polyline, and the unit tangent there."""
+    lengths=[math.dist(a,b) for a,b in zip(points,points[1:])];total=sum(lengths)
+    if total<=1e-9:return points[0],(1.0,0.0)
+    target=fraction*total;run=0.0
+    for (a,b),length in zip(zip(points,points[1:]),lengths):
+        if run+length>=target-1e-9 and length>1e-9:
+            t=(target-run)/length;return (a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t),((b[0]-a[0])/length,(b[1]-a[1])/length)
+        run+=length
+    a,b=points[-2],points[-1];length=math.dist(a,b) or 1.0
+    return b,((b[0]-a[0])/length,(b[1]-a[1])/length)
+
+def near_candidate_centers(label,w,h,safe=None):
+    """(G18b) Ordered label centres beside the label's own curve (nearCurve) or at the end of its own dashed asymptote (nearLine): the nearest gap first, the preferred anchors first and
+    the side with no other stroke first. A centre whose box would be as close to another stroke as to its own is left out of the near gaps; the far gaps keep a fallback."""
+    near=label['nearCurve'] if 'nearCurve' in label else label['nearLine']
+    others=near['others']
+    if 'nearCurve' in label:
+        polylines=sorted(near['own'],key=lambda pts:-sum(math.dist(a,b) for a,b in zip(pts,pts[1:])))
+        base=[sorted(pts,key=lambda point:point[0]) for pts in polylines[:1]]
+        anchors=NEAR_CURVE_END_ANCHORS if near['end'] else NEAR_CURVE_ANCHORS;gaps=NEAR_CURVE_GAPS;far_gaps=NEAR_CURVE_FAR_GAPS
+    else:
+        a,b=near['own']
+        if a[0]>b[0] or (a[0]==b[0] and a[1]<b[1]):a,b=b,a   # a = left (lower) end, b = right (upper) end
+        base=[[a,b]];anchors=(.97,.9,.8,.7,.6,.5,.4,.3,.2,.1) if near['end']!='START' else (.03,.1,.2,.3,.4,.5,.6,.7,.8,.9);gaps=NEAR_LINE_GAPS;far_gaps=NEAR_LINE_FAR_GAPS
+    own_points=base[0]
+    out=[];far=[]
+    def own_distance(box):
+        return min(near_box_polyline_distance(box,pts) for pts in (near['own'] if 'nearCurve' in label else [own_points]))
+    for tier,tier_gaps in ((out,gaps),(far,far_gaps)):
+        for gap in tier_gaps:
+            for fraction in anchors:
+                point,tangent=_polyline_at(own_points,fraction)
+                normal=(-tangent[1],tangent[0])
+                probes=[(side,min((math.dist((point[0]+side*normal[0]*40,point[1]+side*normal[1]*40),q) for pts in others for q in pts),default=math.inf)) for side in (1,-1)]
+                for side,slide in [(side,slide) for side,_ in sorted(probes,key=lambda row:-row[1]) for slide in NEAR_SLIDES]:
+                    extent=abs(normal[0])*w/2+abs(normal[1])*h/2
+                    shift=slide*(abs(tangent[0])*w+abs(tangent[1])*h)   # slid along the stroke: the box stays beside it but not centred on the anchor
+                    cx=point[0]+side*normal[0]*(gap+extent)+tangent[0]*shift;cy=point[1]+side*normal[1]*(gap+extent)+tangent[1]*shift
+                    if safe is not None:   # a box at the end of a line is slid back inside the drawing area (still beside the same stroke)
+                        cx=min(max(cx,safe.x+w/2+.5),safe.right-w/2-.5);cy=min(max(cy,safe.y+h/2+.5),safe.bottom-h/2-.5)
+                    if tier is out:
+                        box=Box(cx-w/2,cy-h/2,w,h);mine=own_distance(box)
+                        if any(near_box_polyline_distance(box,pts)<mine+NEAR_OTHER_MARGIN_PX for pts in others):continue
+                    if [cx,cy] not in tier:tier.append([cx,cy])
+    return out+far
+
 
 def point_box_has_unambiguous_owner(box,owner,competitors):
     """Require every measured box corner to stay inside its owner's Voronoi cell."""
@@ -689,6 +759,9 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
         else:
             w,h=measurements.get(label['id'],approximate_size(label.get('layoutText',label['text']),label.get('font',13.25)))
             w,h=finite(w),finite(h)
+        if 'nearCurve' in label or 'nearLine' in label:
+            # (G18b) the label's own stroke decides its place: candidate centres beside it, nearest first (see near_candidate_centers)
+            label={**{k:v for k,v in label.items() if k not in ('nearCurve','nearLine')},'_nearCenters':near_candidate_centers(label,w,h,safe_area),'_nearOwn':(label['nearCurve']['own'] if 'nearCurve' in label else [list(label['nearLine']['own'])]),'_nearReach':(NEAR_CURVE_REACH_PX if 'nearCurve' in label else NEAR_LINE_REACH_PX)}
         chosen=None;method=None;tick_callout=label.get('tickLabelCallout');leader_fallbacks=[];far_choice=None
         if tick_callout is not None:
             if (tick_owner is None or not isinstance(tick_callout,dict)
@@ -868,6 +941,16 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                                 continue
                             label['_selectedLeaderPath']=[list(start),list(end)]
                         chosen=box;method='FROZEN_OWNER_BASELINE';break
+            if '_nearCenters' in label:
+                near_won=False
+                for x,y in label['_nearCenters']:
+                    box=Box(x-w/2,y-h/2,w,h)
+                    if acceptable(box):
+                        chosen=box;method='NEAR_OWN_STROKE';default_gaps=()
+                        near_won=min(near_box_polyline_distance(box,pts) for pts in label['_nearOwn'])<=label['_nearReach']   # a far-tier box beyond the observer's reach of its stroke still stands nearest to it, but is flagged
+                        break
+                # no room within reach of its own stroke (a tall fraction in a small window): the label stands at the nearest free place and says so on its group, so the observer judges it by ownership and a wider reach
+                label={**{k:v for k,v in label.items() if k not in ('_nearCenters','_nearOwn','_nearReach')},**({} if near_won else {'nearRoom':'NONE'})}
             if 'candidateCenters' in label:
                 from .publication import box_owned
                 for x, y in label['candidateCenters']:
@@ -1070,7 +1153,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 if chosen:break
         if chosen is None and tick_owner is None and label.get('allowSuppress',False) and priority>=3:
             suppressed.append(label['id']);trace.append({'id':label['id'],'fallback':'LOW_PRIORITY_SUPPRESSION'});continue
-        if chosen is None and tick_owner is None and panel is not None and panel.width>0 and label['kind']!='POINT_NAME' and label.get('allowPanel', True):
+        if chosen is None and tick_owner is None and panel is not None and panel.width>0 and label['kind']!='POINT_NAME' and label.get('allowPanel', True) and not (leader_only and str(label['id']).startswith('overlay-callout-')):   # (G18b) a point callout stands on a leader from its point, never in the side panel
             text=label.get('panelText',label['text'])
             if require_measurements:
                 if text!=label['text'] or label.get('panelPrefix'):raise ValueError('BROWSER_PANEL_VARIANT_MEASUREMENT_REQUIRED:'+label['id'])
@@ -1094,18 +1177,23 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
             if leader_only and label.get('directions'):
                 heading={'E':0,'SE':45,'S':90,'SW':135,'W':180,'NW':225,'N':270,'NE':315}.get(label['directions'][0])
                 if heading is not None:ring_steps=sorted(range(48),key=lambda k:(min((k*7.5-heading)%360,(heading-k*7.5)%360),k))
-            for radius in POINT_NAME_RING_RADII:
-                for step in ring_steps:
-                    angle=math.radians(step*7.5)
-                    box=Box(at[0]+radius*math.cos(angle)-w/2,at[1]+radius*math.sin(angle)-h/2,w,h)
-                    if leader_only and box_point_distance(box,at)<LEADER_ONLY_MIN_PX:continue
-                    if not leader_only and acceptable(box):ring=box;ring_method='POINT_NAME_RING';break
-                    if owner_marker is None or not acceptable(box,owner_check=False):continue
-                    incident=incident or owner_incident_ids(at,owner_marker,occupied)
-                    end=visible_owner_leader(at,box,occupied,incident,skip_ids=leader_skip)
-                    if end is None:continue
-                    tie_to_owner(end);ring=box
-                    ring_method='OWNER_LEADER_'+('E','SE','S','SW','W','NW','N','NE')[int(((step*7.5+22.5)%360)//45)];break
+            # (G18b) A point callout's leader (overlay-callout-*) first looks for a place whose leader crosses no axis and no tick (the rendered-layout audit refuses a callout leader across them);
+            # only when no such place is free does it fall back to the leaderOnly rule that lets it cross them. Other labels run the one pass they always did.
+            skip_passes=(frozenset(o['id'] for o in obstacles if isinstance(o.get('id'),str) and (re.search(r'-guide(-[xy])?$',o['id']) or o['id'].startswith('overlay-guide-'))),leader_skip) if leader_only and str(label['id']).startswith('overlay-callout-') else (leader_skip,)
+            for pass_skip in skip_passes:
+                for radius in POINT_NAME_RING_RADII:
+                    for step in ring_steps:
+                        angle=math.radians(step*7.5)
+                        box=Box(at[0]+radius*math.cos(angle)-w/2,at[1]+radius*math.sin(angle)-h/2,w,h)
+                        if leader_only and box_point_distance(box,at)<LEADER_ONLY_MIN_PX:continue
+                        if not leader_only and acceptable(box):ring=box;ring_method='POINT_NAME_RING';break
+                        if owner_marker is None or not acceptable(box,owner_check=False):continue
+                        incident=incident or owner_incident_ids(at,owner_marker,occupied)
+                        end=visible_owner_leader(at,box,occupied,incident,skip_ids=pass_skip)
+                        if end is None:continue
+                        tie_to_owner(end);ring=box
+                        ring_method='OWNER_LEADER_'+('E','SE','S','SW','W','NW','N','NE')[int(((step*7.5+22.5)%360)//45)];break
+                    if ring is not None:break
                 if ring is not None:break
             if ring is None and label['kind'] in {'COORDINATE_LABEL','EQUATION_LABEL'} and label.get('ringLeader'):
                 # (G6c) Nothing outside the strokes is free for a wide coordinate label: the leader may then cross the point's own circle (never another stroke, label or point)

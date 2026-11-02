@@ -943,7 +943,7 @@ def prepare(spec):
                 label['candidateCenters']=_region_label_centres([polygon],obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(polygon[0])
                 labels.append(label)
         elif kind=='FUNCTION_GRAPH':
-            result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]))
+            result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]),clip_refine=obj.get('clipRefine') is True)
             sampling.append({'id':oid,**{k:v for k,v in result.items() if k!='branches'}})
             # The pieces of one piecewise function (branch PIECE_n) are all the main curve, not a first curve and secondary ones.
             main=graph_index==0 or str(obj.get('branch','')).startswith(('PIECE_','G_PIECE_'))
@@ -1267,6 +1267,35 @@ def prepare(spec):
     for label in region_labels:label['regionLeader']['regions']=[{'id':row['id'],'polygons':row['polygons']} for row in region_areas]
     for label in labels:
         if 'wedgeSearch' in label:label['wedgeSearch']['others']=[sector for other,sector in angle_sectors.items() if other!=label.get('target') and label.get('target') not in angle_over.get(other,())]
+    # (G18b) multi-curve figure: a curve's formula (nearCurve) stands beside its own curve and an asymptote's value (nearLine) at the end of its own dashed line. Here, with every stroke drawn,
+    # the label learns its own polyline(s) and the strokes it must stay clear of in screen px; label_layout places it by them once the label's size is known.
+    near_labels=[label for label in labels if 'nearCurve' in label or 'nearLine' in label]
+    if near_labels:
+        # the curve rows carry their drawing object's id: f-<curve>[-left|-right|-positive|-negative]-branch-<n> (a curve), e-<curve>-<n>-branch-<k> (an emphasised stretch of it)
+        curve_rows=[row for row in primitives if row.get('role')=='curve' and row.get('kind')=='polyline' and len(row['points'])>1]
+        asymptote_rows=[row for row in primitives if row.get('role')=='asymptote' and row.get('kind')=='line']
+        def thin(points):
+            kept=[tuple(points[0])]
+            for point in points[1:-1]:
+                if math.dist(point,kept[-1])>=4.0:kept.append(tuple(point))
+            kept.append(tuple(points[-1]));return kept   # about one vertex per 4 px: enough to place a label, far fewer distances to measure
+        def owns(row_id,ident):return re.fullmatch(r'f-'+re.escape(ident)+r'(?:-left|-right|-positive|-negative)?-branch-\d+',row_id) is not None
+        def emphasis(row_id):return re.fullmatch(r'e-.+-\d+-branch-\d+',row_id) is not None
+        for label in near_labels:
+            if 'nearCurve' in label:
+                ident=label['nearCurve']
+                if not isinstance(ident,str) or label['kind']!='EQUATION_LABEL':raise ValueError('INVALID_NEAR_CURVE:'+label['id'])
+                own=[thin(row['points']) for row in curve_rows if owns(row['id'],ident)]
+                if not own:raise ValueError('NEAR_CURVE_NOT_DRAWN:'+label['id'])
+                others=[thin(row['points']) for row in curve_rows if not owns(row['id'],ident) and not emphasis(row['id'])]
+                label['nearCurve']={'own':own,'others':others,'end':label.get('nearEnd')=='END'}
+            else:
+                ident=label['nearLine']
+                own=next((row for row in asymptote_rows if row['id']==ident),None)
+                if not isinstance(ident,str) or own is None or label['kind'] not in {'GRAPH_ANNOTATION','EQUATION_LABEL'}:raise ValueError('NEAR_LINE_NOT_DRAWN:'+label['id'])
+                others=[[tuple(row['from']),tuple(row['to'])] for row in asymptote_rows if row is not own]   # an asymptote value belongs to the nearest dashed line; the curves have the layout's own clearance
+                label['nearLine']={'own':[tuple(own['from']),tuple(own['to'])],'others':others,'end':label.get('nearEnd','END')}
+            label.pop('nearEnd',None)
     equation_centers=spec['displayFacts'].get('equationLabelCenters',{})
     if not isinstance(equation_centers,dict):raise ValueError('INVALID_EQUATION_LABEL_CENTERS')
     for label_id,center in equation_centers.items():

@@ -60,7 +60,7 @@ def constraints(tree):
         for v in n.args:visit(v)
     visit(tree);return found
 
-def sample(expression,domain,viewport,critical_x=(),breaks=(),max_depth=12):
+def sample(expression,domain,viewport,critical_x=(),breaks=(),max_depth=12,clip_refine=False):
     tree=parse(expression);lo,hi=point(domain)
     if lo>=hi or not 1<=max_depth<=16:raise ValueError('INVALID_SAMPLING_CONFIG')
     guards=constraints(tree);cuts=[lo,hi,*[finite(x) for x in breaks if lo<x<hi]];hard_cuts=set(breaks);critical=list(critical_x)
@@ -104,7 +104,11 @@ def sample(expression,domain,viewport,critical_x=(),breaks=(),max_depth=12):
         chord=math.hypot((x1-x0)*viewport.sx,(q[1]-p[1])*viewport.sy)
         outside=(p[1]<viewport.yMin and q[1]<viewport.yMin and m[1]<viewport.yMin) or (p[1]>viewport.yMax and q[1]>viewport.yMax and m[1]>viewport.yMax)
         if outside:return [p,q]
-        if error>.35 or chord>16:
+        # (G18b) clip_refine: a stretch that crosses the top or bottom edge of the frame is halved until its chord is about a pixel, so the cut end of a branch that runs off the frame (the steep side of a pole)
+        # lies on the curve and not on a long chord, and the chord-error limit is .2 px instead of .35 (the observer's bound near a square root's start is an upper bound). Off by default: the sampling of every other figure is unchanged.
+        crosses=clip_refine and ((p[1]>viewport.yMax)!=(q[1]>viewport.yMax) or (p[1]<viewport.yMin)!=(q[1]<viewport.yMin))
+        if crosses and chord>1.0 and depth>=max_depth:return [p,q]
+        if error>(.2 if clip_refine else .35) or chord>16 or (crosses and chord>1.0):
             if depth>=max_depth:
                 warnings.append({'code':'REFINEMENT_CAP','interval':[x0,x1],'errorPx':error})
                 return [p,None,q]
