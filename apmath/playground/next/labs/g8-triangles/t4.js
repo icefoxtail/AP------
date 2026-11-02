@@ -459,5 +459,191 @@
     verify: (s) => { const M = b6.model(s), g = midGeom(M.b, M.b); return { ans: dist(g.M, g.D), model: dist(g.M, g.E), extra: [[angBetween(g.A, g.B, g.C), angBetween(g.A, g.C, g.B)]] }; }
   };
 
+  /* ====================================================================== 풀이 흐름 (t4-1 ~ t4-6) */
+  const SK = G.SVK, mkSolve = G.mkSolve;
+  const ov = (n) => `\\overline{${n}}`;
+  const dd = (v) => `${v}^{\\circ}`;
+  // 각 XOY 위의 그림(점 O, P, E, F)의 바탕: 두 변, 점 이름
+  const angBaseDraw = (b, g, extra) => { G.fillPoly(b, [g.O, g.X, g.Y], 'sky', 0.06); drawAngle(b, g); if (extra) extra(b); };
+  const angNames = (b, g, withQ) => { [g.P, g.E, g.F].forEach((z) => b.point(z, { color: 'ink', r: 4.5 })); T(b, g.P, 'P', { dx: 14, dy: -2, size: 18, color: 'amber' }); T(b, g.E, 'E', { dx: 4, dy: -14, size: 18 }); T(b, g.F, 'F', { dx: 4, dy: 16, size: 18 }); if (withQ) { b.point(withQ, { color: 'ink', r: 4.5 }); T(b, withQ, 'Q', { dx: 6, dy: -14, size: 18 }); } };
+
+  /* ---- t4-1 각의 이등분선 위의 점 · v0: PE → PF · v1: ∠XOP → ∠EPF · v2: OE → OF ---- */
+  const b1Plan = (M, s) => {
+    const { h, d, g } = M, { O, P: Pp, E, F, X, Y } = g, v = (s.trV || 0) % 3, m = 3 + ((h + d) % 6), steps = [], items = [], rest = 90 - h;
+    const head = '점 P는 ∠XOY의 이등분선 위의 점이고, 점 E, F는 P에서 두 변 OX, OY에 내린 수선의 발이에요.';
+    steps.push({ id: 'given', k: 'given', t: v === 0 ? `${head} $${ov('PE')}=${d}$ cm이고, 구하는 것은 $${ov('PF')}=x$.` : v === 1 ? `${head} $\\angle XOP=${dd(h)}$이고, 구하는 것은 $\\angle EPF=x$.` : `${head} $${ov('OE')}=${m}$ cm이고, 구하는 것은 $${ov('OF')}=x$.`, cap: v === 0 ? `∠XOP=∠YOP, PE=${d} cm` : v === 1 ? `∠XOP=∠YOP=${h}°` : `∠XOP=∠YOP, OE=${m} cm` });
+    steps.push({ id: 'idea', k: 'idea', t: v === 0 ? 'PE와 PF가 같다는 것을 보이려면, 이 두 선분을 변으로 가진 두 직각삼각형 POE, POF가 합동인지 확인하면 돼요.' : v === 1 ? '∠EPF는 두 직각삼각형 POE, POF의 각 ∠OPE, ∠OPF를 합친 각이에요. 두 삼각형이 합동이면 이 두 각이 같아서 하나만 구하면 돼요.' : 'OE와 OF는 두 직각삼각형 POE, POF의 대응하는 변이에요. 두 삼각형이 합동인지 확인하면 길이가 같다고 말할 수 있어요.', cap: '직각삼각형 POE, POF가 합동인지 확인' });
+    steps.push({ id: 'R', k: 'fig', lb: '합동 조건 ①', t: '$\\angle PEO=\\angle PFO=90^{\\circ}$ (Right angle)', cap: '∠PEO=∠PFO=90° (R)' });
+    steps.push({ id: 'H', k: 'fig', lb: '합동 조건 ②', t: '$\\overline{OP}$는 두 삼각형의 공통인 빗변이에요 (Hypotenuse)', cap: 'OP는 공통인 빗변 (H)' });
+    steps.push({ id: 'A', k: 'fig', lb: '합동 조건 ③', t: '$\\angle POE=\\angle POF$ (OP는 ∠XOY의 이등분선, Angle)', cap: '∠POE=∠POF (A)' });
+    steps.push({ id: 'cong', k: 'fig', lb: '합동', t: '직각삼각형에서 빗변과 한 예각이 각각 같으므로 △POE≡△POF (RHA 합동)이에요.', cap: '△POE≡△POF (RHA 합동)' });
+    if (v === 0) { steps.push({ id: 'eq', k: 'eq', t: `대응변의 길이는 같으므로 $x=${ov('PF')}=${ov('PE')}=${d}$ cm`, cap: `PF=PE=${d} cm` }); steps.push({ id: 'ans', k: 'ans', t: `$x=${d}\\text{ cm}$`, cap: `x = ${d} cm` }); }
+    else if (v === 1) { steps.push({ id: 'eq', k: 'eq', t: `△POE에서 $\\angle OPE=90^{\\circ}-${dd(h)}=${dd(rest)}$이고, 합동이므로 $\\angle OPF=${dd(rest)}$. 따라서 $x=\\angle EPF=2\\times${dd(rest)}=${dd(2 * rest)}$`, cap: `x=2×(90°−${h}°)=${2 * rest}°` }); steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(180 - 2 * h)}$`, cap: `x = ${180 - 2 * h}°` }); }
+    else { steps.push({ id: 'eq', k: 'eq', t: `대응변의 길이는 같으므로 $x=${ov('OF')}=${ov('OE')}=${m}$ cm`, cap: `OF=OE=${m} cm` }); steps.push({ id: 'ans', k: 'ans', t: `$x=${m}\\text{ cm}$`, cap: `x = ${m} cm` }); }
+    items.push(SK.seg(O, Pp, { at: 'given', col: 'green', dash: [7, 5], w: 3.2 }), SK.seg(Pp, E, { at: 'given', col: 'amber', w: 3.6 }), SK.seg(Pp, F, { at: 'given', col: 'amber', w: 3.6 }),
+      SK.ang(E, O, Pp, { r: 18, on: ['given', 'R'], col: 'amber', cols: { R: 'green' } }), SK.ang(F, O, Pp, { r: 18, on: ['given', 'R'], col: 'amber', cols: { R: 'green' } }),
+      SK.ang(O, X, Pp, { r: 40, cut: [0, 7], on: ['given', 'A'], col: 'sky', cols: { A: 'green' }, label: v === 1 ? dg(h) : '', ld: 66, gl: true, glTo: 'eq' }), SK.ang(O, Pp, Y, { r: 40, cut: [7, 0], on: ['given', 'A'], col: 'sky', cols: { A: 'green' } }),
+      SK.tick(O, Pp, 2, { at: 'H', col: 'rose' }), SK.fill([O, E, Pp], { at: 'cong', to: 'eq', col: 'sky', a: 0.24 }), SK.fill([O, F, Pp], { at: 'cong', to: 'eq', col: 'green', a: 0.24 }));
+    if (v === 0) items.push(SK.len(Pp, E, pt(-50, 0), `${d} cm`, { on: ['given', 'eq'], col: 'sky', size: 16, gap: 6 }), SK.len(Pp, F, pt(-50, 0), 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, gap: 6, labels: { ans: `x=${d} cm` } }), SK.tick(Pp, E, 2, { at: 'eq', col: 'rose' }), SK.tick(Pp, F, 2, { at: 'eq', col: 'rose' }));
+    else if (v === 1) items.push(SK.ang(Pp, E, F, { r: 34, ld: 52, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${180 - 2 * h}°` }, gl: true }), SK.ang(Pp, O, E, { r: 24, at: 'eq', col: 'green', label: dg(rest), size: 14, ld: 38 }));
+    else items.push(SK.len(O, E, Pp, `${m} cm`, { on: ['given', 'eq'], col: 'sky', size: 16, gap: 8 }), SK.len(O, F, Pp, 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, gap: 8, labels: { ans: `x=${m} cm` } }), SK.tick(O, E, 1, { at: 'eq', col: 'rose' }), SK.tick(O, F, 1, { at: 'eq', col: 'rose' }));
+    return { fit: [O, X, Y, Pp, E, F], steps, items, l: 50, r: 50, base: (b) => angBaseDraw(b, g), names: (b) => angNames(b, g) };
+  };
+  b1.solve = mkSolve(b1Plan);
+  b1.reroll = ((r0) => (s) => { r0(s); s.trM = rint(3, 9); })(b1.reroll);
+  { const p0 = b1.prob; b1.prob = (M, s) => { const v = (s.trV || 0) % 3; if (v !== 2) return p0(M, s); const m = 3 + ((M.h + M.d) % 6); return numProb({ tag: '각의 이등분선 위의 점 · 길이', key: `2:${M.h}:${m}`, stem: `그림에서 점 P는 ∠XOY의 이등분선 위의 점이고, 점 E, F는 P에서 두 변 OX, OY에 내린 수선의 발이다. ${S('OE')}=${m} cm일 때, ${S('OF')}의 길이 $x$는?`, correct: m, wrongs: [[m * 2, '두 배가 아니에요.'], [m + 1, '다시 생각해 보세요.'], [m - 1, '다시 생각해 보세요.'], [m + 2, '다시 생각해 보세요.'], [m - 2, '다시 생각해 보세요.']], ...cmOpts }); }; }
+
+  /* ---- t4-2 PE=PF이면 이등분선 · v0: ∠XOY → ∠POE · v1: ∠XOP → ∠POY ---- */
+  const b2Plan = (M, s) => {
+    const { h } = M, g = angGeom(h, M.d1, M.d1), { O, P: Pp, E, F, X, Y } = g, v = (s.trV || 0) % 2, steps = [], items = [];
+    const head = '점 E, F는 점 P에서 ∠XOY의 두 변 OX, OY에 내린 수선의 발이고 $\\overline{PE}=\\overline{PF}$예요.';
+    steps.push({ id: 'given', k: 'given', t: v === 0 ? `${head} $\\angle XOY=${dd(2 * h)}$이고, 구하는 것은 $\\angle POE=x$.` : `${head} $\\angle XOP=${dd(h)}$이고, 구하는 것은 $\\angle POY=x$.`, cap: v === 0 ? `PE=PF, ∠XOY=${2 * h}°` : `PE=PF, ∠XOP=${h}°` });
+    steps.push({ id: 'idea', k: 'idea', t: '두 변까지의 거리가 같은 점이 이등분선 위에 있다면 ∠POE=∠POF예요. 이것을 보이려고 각을 하나씩 가진 두 직각삼각형 POE, POF가 합동인지 확인해요.', cap: '직각삼각형 POE, POF가 합동 → ∠POE=∠POF' });
+    steps.push({ id: 'R', k: 'fig', lb: '합동 조건 ①', t: '$\\angle PEO=\\angle PFO=90^{\\circ}$ (Right angle)', cap: '∠PEO=∠PFO=90° (R)' });
+    steps.push({ id: 'H', k: 'fig', lb: '합동 조건 ②', t: '$\\overline{OP}$는 두 삼각형의 공통인 빗변이에요 (Hypotenuse)', cap: 'OP는 공통인 빗변 (H)' });
+    steps.push({ id: 'S', k: 'fig', lb: '합동 조건 ③', t: '$\\overline{PE}=\\overline{PF}$ (다른 한 변이 같아요, Side)', cap: 'PE=PF (S)' });
+    steps.push({ id: 'cong', k: 'fig', lb: '합동', t: '직각삼각형에서 빗변과 다른 한 변이 각각 같으므로 △POE≡△POF (RHS 합동)이에요.', cap: '△POE≡△POF (RHS 합동)' });
+    steps.push({ id: 'eq', k: 'eq', t: v === 0 ? `대응각이므로 $\\angle POE=\\angle POF$예요. 두 각의 합이 $\\angle XOY=${dd(2 * h)}$이므로 $x=\\frac{${dd(2 * h)}}{2}=${dd(h)}$` : `대응각이므로 $\\angle POY=\\angle POE=\\angle XOP=${dd(h)}$ (OP는 ∠XOY의 이등분선)`, cap: v === 0 ? `x=\\frac{${2 * h}°}{2}=${h}°` : `∠POY=∠XOP=${h}°` });
+    steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(h)}$`, cap: `x = ${h}°` });
+    items.push(SK.seg(O, Pp, { at: 'given', to: 'S', col: 'ink', dash: [7, 5], w: 3 }), SK.seg(Pp, E, { at: 'given', col: 'amber', w: 3.6 }), SK.seg(Pp, F, { at: 'given', col: 'amber', w: 3.6 }),
+      SK.ang(E, O, Pp, { r: 18, on: ['given', 'R'], col: 'amber', cols: { R: 'green' } }), SK.ang(F, O, Pp, { r: 18, on: ['given', 'R'], col: 'amber', cols: { R: 'green' } }),
+      SK.tick(Pp, E, 2, { on: ['given', 'S'], col: 'rose' }), SK.tick(Pp, F, 2, { on: ['given', 'S'], col: 'rose' }), SK.tick(O, Pp, 2, { at: 'H', col: 'rose' }),
+      SK.fill([O, E, Pp], { at: 'cong', to: 'eq', col: 'sky', a: 0.24 }), SK.fill([O, F, Pp], { at: 'cong', to: 'eq', col: 'green', a: 0.24 }));
+    if (v === 0) items.push(SK.ang(O, X, Y, { r: 66, ld: 94, lr: 0, on: ['given'], col: 'sky', fa: 0.05, label: dg(2 * h), gl: true, glTo: 'cong' }), SK.ang(O, E, Pp, { r: 34, ld: 54, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${h}°` }, gl: true }), SK.ang(O, Pp, F, { r: 34, ld: 54, at: 'eq', col: 'green', label: dg(h), size: 14 }));
+    else items.push(SK.ang(O, X, Pp, { r: 34, ld: 56, on: ['given', 'eq'], col: 'sky', label: dg(h), gl: true }), SK.ang(O, Pp, Y, { r: 34, ld: 56, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${h}°` }, gl: true }));
+    return { fit: [O, X, Y, Pp, E, F], steps, items, l: 50, r: 50, base: (b) => angBaseDraw(b, g), names: (b) => angNames(b, g) };
+  };
+  b2.solve = mkSolve(b2Plan);
+
+  /* ---- t4-3 수직이등분선 위의 점 · v0: PA → PB · v1: ∠PAB → ∠PBA · v2: ∠APM → ∠APB ---- */
+  const b3Plan = (M, s) => {
+    const { m, q, A, B, Mm, Pp, al, pm } = M, v = (s.trV || 0) % 3, steps = [], items = [], Lp = pt(-1.2, 0), Rp = pt(q + 1.2, 0);
+    const head = '직선 $l$은 선분 AB의 수직이등분선이고, 점 M은 AB와 $l$의 교점이며, 점 P는 $l$ 위의 점이에요.';
+    steps.push({ id: 'given', k: 'given', t: v === 0 ? `${head} $${ov('PA')}=${pm}$ cm이고, 구하는 것은 $${ov('PB')}=x$.` : v === 1 ? `${head} $\\angle PAB=${dd(al)}$이고, 구하는 것은 $\\angle PBA=x$.` : `${head} $\\angle APM=${dd(al)}$이고, 구하는 것은 $\\angle APB=x$.`, cap: v === 0 ? `AM=BM, l⊥AB, PA=${pm} cm` : v === 1 ? `AM=BM, l⊥AB, ∠PAB=${al}°` : `AM=BM, l⊥AB, ∠APM=${al}°` });
+    steps.push({ id: 'idea', k: 'idea', t: 'P에서 A, B까지의 거리 PA, PB를 비교하려면, 이 둘을 변으로 가진 두 삼각형 PAM, PBM이 합동인지 확인하면 돼요. l이 AB의 수직이등분선이라는 것이 합동 조건을 줘요.', cap: '△PAM과 △PBM이 합동인지 확인' });
+    steps.push({ id: 'S1', k: 'fig', lb: '합동 조건 ①', t: `$${ov('AM')}=${ov('BM')}$ (M은 AB의 중점, Side)`, cap: 'AM=BM (S)' });
+    steps.push({ id: 'A', k: 'fig', lb: '합동 조건 ②', t: '$\\angle PMA=\\angle PMB=90^{\\circ}$ ($l\\perp AB$, Angle)', cap: '∠PMA=∠PMB=90° (A)' });
+    steps.push({ id: 'S2', k: 'fig', lb: '합동 조건 ③', t: '$\\overline{PM}$은 공통이에요 (Side)', cap: 'PM은 공통 (S)' });
+    steps.push({ id: 'cong', k: 'fig', lb: '합동', t: '두 변과 그 끼인각이 각각 같으므로 △PAM≡△PBM (SAS 합동)이에요.', cap: '△PAM≡△PBM (SAS 합동)' });
+    if (v === 0) steps.push({ id: 'eq', k: 'eq', t: `대응변의 길이는 같으므로 $x=${ov('PB')}=${ov('PA')}=${pm}$ cm`, cap: `PB=PA=${pm} cm` });
+    else if (v === 1) steps.push({ id: 'eq', k: 'eq', t: `대응각의 크기는 같으므로 $x=\\angle PBA=\\angle PAB=${dd(al)}$`, cap: `∠PBA=∠PAB=${al}°` });
+    else steps.push({ id: 'eq', k: 'eq', t: `대응각의 크기는 같으므로 $\\angle BPM=\\angle APM=${dd(al)}$이고, $x=\\angle APB=\\angle APM+\\angle BPM=${dd(al)}+${dd(al)}=${dd(2 * al)}$`, cap: `x=∠APM+∠BPM=${al}°+${al}°=${2 * al}°` });
+    const val = v === 0 ? `${pm} cm` : dg(v === 1 ? al : 2 * al);
+    steps.push({ id: 'ans', k: 'ans', t: v === 0 ? `$x=${pm}\\text{ cm}$` : `$x=${dd(v === 1 ? al : 2 * al)}$`, cap: `x = ${val}` });
+    items.push(SK.ang(Mm, A, Pp, { r: 20, on: ['given', 'A'], col: 'sky', cols: { A: 'green' } }), SK.ang(Mm, B, Pp, { r: 20, on: ['given', 'A'], col: 'sky', cols: { A: 'green' } }),
+      SK.tick(A, Mm, 1, { on: ['given', 'S1'], col: 'amber' }), SK.tick(Mm, B, 1, { on: ['given', 'S1'], col: 'amber' }), SK.seg(Mm, Pp, { at: 'S2', col: 'green', w: 4 }),
+      SK.fill([A, Mm, Pp], { at: 'cong', to: 'eq', col: 'sky', a: 0.24 }), SK.fill([B, Mm, Pp], { at: 'cong', to: 'eq', col: 'violet', a: 0.24 }));
+    if (v === 0) items.push(SK.len(Pp, A, pt(-50, 0), `${pm} cm`, { on: ['given', 'eq'], col: 'sky', size: 16, gap: 6 }), SK.len(Pp, B, pt(-50, 0), 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, gap: 6, labels: { ans: `x=${pm} cm` } }), SK.tick(Pp, A, 2, { at: 'eq', col: 'rose' }), SK.tick(Pp, B, 2, { at: 'eq', col: 'rose' }));
+    else if (v === 1) items.push(SK.ang(A, Pp, B, { r: 30, ld: 54, on: ['given', 'eq'], col: 'sky', label: dg(al), gl: true }), SK.ang(B, Pp, A, { r: 30, ld: 54, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${al}°` }, gl: true }));
+    else items.push(SK.ang(Pp, A, Mm, { r: 34, ld: 62, on: ['given', 'eq'], col: 'sky', label: dg(al), gl: true }), SK.ang(Pp, A, B, { r: 46, ld: 44, lr: 180, on: ['given', 'eq', 'ans'], col: 'amber', fa: 0.12, label: 'x', size: 17, labels: { ans: `x=${2 * al}°` }, gl: true }), SK.ang(Pp, Mm, B, { r: 34, ld: 62, at: 'eq', col: 'green', label: dg(al), size: 14 }));
+    return {
+      fit: [A, B, Pp, Lp, Rp], steps, items, l: 56, r: 50,
+      base: (b) => { G.line(b, Lp, Rp, 'green', 3, { dash: [8, 6] }); G.line(b, A, B, 'ink', 3.8); G.line(b, Pp, A, 'ink', 3.4); G.line(b, Pp, B, 'ink', 3.4); },
+      names: (b) => { [A, B, Mm, Pp].forEach((z) => b.point(z, { color: z === Pp ? 'amber' : 'ink', r: z === Pp ? 5.5 : 4.5 })); T(b, A, 'A', { dx: -14, dy: -6, size: 18 }); T(b, B, 'B', { dx: -14, dy: 8, size: 18 }); T(b, Mm, 'M', { dx: -14, dy: -2, size: 18 }); T(b, Pp, 'P', { dx: 14, dy: -2, size: 18, color: 'amber' }); T(b, Lp, 'l', { dx: -2, dy: -14, size: 17 }); }
+    };
+  };
+  b3.solve = mkSolve(b3Plan);
+
+  /* ---- t4-4 이등분선과 넓이의 비 · v0: △ABD → △ACD · v1: △ACD → △ABD ---- */
+  const b4Plan = (M, s) => {
+    const { c, b: bb, rc, rb, geo, k } = M, { A, B, C: Cc, D, E, F } = geo, v = (s.trV || 0) % 2, a1 = k * c, a2 = k * bb, steps = [], items = [], cen = pt(D.x * 0.6, 0);
+    const xv = v === 0 ? a2 : a1, hasT = v === 0 ? `$\\triangle ABD=${a1}\\text{ cm}^2$` : `$\\triangle ACD=${a2}\\text{ cm}^2$`;
+    steps.push({ id: 'given', k: 'given', t: `$\\overline{AD}$는 $\\angle A$의 이등분선이고 $${ov('AB')}=${c}$ cm, $${ov('AC')}=${bb}$ cm, ${hasT}예요. 구하는 것은 ${v === 0 ? '$\\triangle ACD$' : '$\\triangle ABD$'}의 넓이 $x$.`, cap: `AB=${c} cm, AC=${bb} cm, ${v === 0 ? `△ABD=${a1} cm²` : `△ACD=${a2} cm²`}` });
+    steps.push({ id: 'idea', k: 'idea', t: '두 삼각형 ABD, ACD의 넓이는 (밑변)×(높이)÷2예요. 높이가 같다면 넓이의 비는 밑변 AB, AC의 비와 같아요. AD가 이등분선이면 D에서 AB, AC까지의 거리(높이)가 같아요.', cap: '높이가 같으면 넓이의 비 = 밑변의 비' });
+    steps.push({ id: 'h', k: 'fig', lb: '그림 변화', t: 'D에서 AB, AC에 수선 DE, DF를 그어요. D는 ∠A의 이등분선 위의 점이므로 $\\overline{DE}=\\overline{DF}$ (두 변까지의 거리가 같아요).', cap: 'DE⊥AB, DF⊥AC, DE=DF' });
+    steps.push({ id: 'area', k: 'fig', lb: '넓이 식', t: `$\\triangle ABD=\\frac{1}{2}\\times${ov('AB')}\\times${ov('DE')}$, $\\triangle ACD=\\frac{1}{2}\\times${ov('AC')}\\times${ov('DF')}$이고 $\\overline{DE}=\\overline{DF}$이므로 $\\triangle ABD:\\triangle ACD=${ov('AB')}:${ov('AC')}=${c}:${bb}$`, cap: `△ABD : △ACD = AB : AC = ${c} : ${bb}` });
+    steps.push({ id: 'eq', k: 'eq', t: v === 0 ? `$${a1}:x=${c}:${bb}$이므로 $x=\\frac{${a1}\\times${bb}}{${c}}=${a2}$ (cm²)` : `$x:${a2}=${c}:${bb}$이므로 $x=\\frac{${a2}\\times${c}}{${bb}}=${a1}$ (cm²)`, cap: v === 0 ? `${a1} : x = ${c} : ${bb} → x=\\frac{${a1}×${bb}}{${c}}=${a2}` : `x : ${a2} = ${c} : ${bb} → x=\\frac{${a2}×${c}}{${bb}}=${a1}` });
+    steps.push({ id: 'ans', k: 'ans', t: `$x=${xv}\\text{ cm}^2$`, cap: `x = ${xv} cm²` });
+    const pA = G.centroid([A, B, D]), pB = G.centroid([A, D, Cc]);
+    items.push(SK.fill([A, B, D], { at: 'given', to: 'area', col: 'sky', a: 0.2 }), SK.fill([A, D, Cc], { at: 'given', to: 'area', col: 'green', a: 0.2 }),
+      SK.len(A, B, pt(D.x, 5), `${c} cm`, { at: 'given', to: 'area', col: 'sky', size: 16, gap: 30 }), SK.len(A, Cc, pt(D.x, -5), `${bb} cm`, { at: 'given', to: 'area', col: 'green', size: 16, gap: 30 }),
+      SK.ang(A, B, D, { r: 34, cut: [0, 7], on: ['given'], col: 'sky' }), SK.ang(A, D, Cc, { r: 34, cut: [7, 0], on: ['given'], col: 'sky' }),
+      SK.seg(D, E, { at: 'h', col: 'amber', w: 3.4 }), SK.seg(D, F, { at: 'h', col: 'amber', w: 3.4 }), SK.ang(E, A, D, { r: 16, at: 'h', col: 'amber' }), SK.ang(F, A, D, { r: 16, at: 'h', col: 'amber' }), SK.tick(D, E, 2, { at: 'h', col: 'rose' }), SK.tick(D, F, 2, { at: 'h', col: 'rose' }),
+      SK.dot(E, 'E', { at: 'h', col: 'amber', size: 17, dx: -6, dy: -16 }), SK.dot(F, 'F', { at: 'h', col: 'amber', size: 17, dx: -6, dy: 16 }),
+      SK.txt(pA, v === 0 ? `${a1} cm²` : 'x', { on: ['given', 'eq', 'ans'], col: v === 0 ? 'sky' : 'amber', size: v === 0 ? 16 : 18, labels: { ans: v === 0 ? `${a1} cm²` : `x=${a1} cm²` } }),
+      SK.txt(pB, v === 0 ? 'x' : `${a2} cm²`, { on: ['given', 'eq', 'ans'], col: v === 0 ? 'amber' : 'green', size: v === 0 ? 18 : 16, labels: { ans: v === 0 ? `x=${a2} cm²` : `${a2} cm²` } }));
+    return {
+      fit: [A, B, Cc, D, E, F], steps, items, l: 44, r: 52,
+      base: (b) => { G.poly(b, [A, B, Cc], 'ink', 3.6); G.line(b, A, D, 'ink', 3.4, { dash: [8, 5] }); },
+      names: (b) => { [A, B, Cc, D].forEach((z) => b.point(z, { color: 'ink', r: 4.5 })); T(b, A, 'A', { dx: -16, size: 18 }); G.tagOut(b, B, cen, 'B', { size: 18 }); G.tagOut(b, Cc, cen, 'C', { size: 18 }); T(b, D, 'D', { dx: 14, size: 18 }); }
+    };
+  };
+  b4.solve = mkSolve(b4Plan);
+
+  /* ---- t4-5 거리는 수선의 길이 · v0: 거리를 나타내는 선분 · v1: PE → PF · v2 [함정]: 거리는 PE ---- */
+  const b5Plan = (M, s) => {
+    const v = (s.trV || 0) % 3, { h, d } = M, steps = [], items = [];
+    if (v === 0) {
+      const of = M.of, Pp = pt(0, -3), pts = of.map((x) => pt(x, 0)), nm = ['A', 'B', 'C', 'D', 'E'], ok = of.indexOf(0), Fp = pts[ok];
+      steps.push({ id: 'given', k: 'given', t: '점 P와 직선 $l$ 위의 다섯 점 A, B, C, D, E를 잇는 선분이 그려져 있어요. 구하는 것은 점 P에서 직선 $l$까지의 거리를 나타내는 선분.', cap: '점 P에서 직선 l까지의 거리 = ?' });
+      steps.push({ id: 'idea', k: 'idea', t: '점에서 직선까지의 거리는 그 점에서 직선에 내린 수선의 길이예요. 수선은 점과 직선 위의 점을 잇는 선분 가운데 가장 짧은 선분이에요.', cap: '거리 = 수선의 길이 = 가장 짧은 선분' });
+      steps.push({ id: 'perp', k: 'fig', lb: '그림 변화', t: `직선 $l$과 직각을 이루는 선분을 찾아요. $\\overline{P${nm[ok]}}$는 $l$과 수직이에요 (직각 표시).`, cap: `P${nm[ok]} ⊥ l` });
+      steps.push({ id: 'cmp', k: 'fig', lb: '비교하기', t: `나머지 선분은 모두 비스듬해서, 직각삼각형의 빗변이 되므로 $\\overline{P${nm[ok]}}$보다 길어요. 가장 짧은 선분이 $\\overline{P${nm[ok]}}$예요.`, cap: `비스듬한 선분은 P${nm[ok]}보다 길다` });
+      steps.push({ id: 'ans', k: 'ans', t: `$\\overline{P${nm[ok]}}$`, cap: `답: 선분 P${nm[ok]}` });
+      pts.forEach((p, i) => items.push(SK.seg(Pp, p, { at: 'given', to: i === ok ? 'perp' : 'idea', col: 'ink', w: 3 })));
+      items.push(SK.seg(Pp, Fp, { at: 'perp', to: 'cmp', col: 'amber', w: 5 }), SK.ang(Fp, pts[ok > 0 ? ok - 1 : ok + 1], Pp, { r: 20, at: 'perp', col: 'green' }), SK.seg(Pp, Fp, { at: 'ans', col: 'amber', w: 5 }));
+      return { fit: [pt(-5, -3.4), pt(5, 0.5)], steps, items, l: 44, r: 44, base: (b) => { G.line(b, pt(-5, 0), pt(5, 0), 'ink', 3.4); }, names: (b) => { pts.forEach((p, i) => { b.point(p, { color: 'ink', r: 4 }); T(b, p, nm[i], { dy: 18, size: 17 }); }); b.point(Pp, { color: 'amber', r: 5 }); T(b, Pp, 'P', { dy: -16, size: 18, color: 'amber' }); T(b, pt(5, 0), 'l', { dy: -14, size: 17 }); } };
+    }
+    const g = M.g, qp = Math.max(1, M.q), { O, P: Pp, E, F, Y } = g, Qp = add(E, mul(g.u1, qp)), X = mul(g.u1, v === 2 ? dist(O, Qp) + 1 : dist(O, E) + 1.1), gg = { ...g, X };
+    const head = '점 P는 ∠XOY의 이등분선 위의 점이고, 점 E, F는 P에서 두 변 OX, OY에 내린 수선의 발이에요.';
+    if (v === 1) {
+      steps.push({ id: 'given', k: 'given', t: `${head} $${ov('PE')}=${d}$ cm이고, 구하는 것은 점 P에서 변 OY까지의 거리 $${ov('PF')}=x$.`, cap: `∠XOP=∠YOP, PE=${d} cm` });
+      steps.push({ id: 'idea', k: 'idea', t: '거리는 수선의 길이이므로 PF가 바로 구하는 거리예요. 이등분선 위의 점은 두 변까지의 거리가 같다는 성질을 쓰고, 합동인 두 직각삼각형 POE, POF로 확인해요.', cap: '거리 = 수선의 길이, 이등분선 위의 점 → PE=PF' });
+      steps.push({ id: 'cong', k: 'fig', lb: '합동 찾기', t: '△POE와 △POF에서 $\\angle PEO=\\angle PFO=90^{\\circ}$, $\\overline{OP}$는 공통, $\\angle POE=\\angle POF$이므로 △POE≡△POF (RHA 합동)이에요.', cap: '∠PEO=∠PFO=90°, OP 공통, ∠POE=∠POF → RHA' });
+      steps.push({ id: 'eq', k: 'eq', t: `대응변의 길이는 같으므로 $x=${ov('PF')}=${ov('PE')}=${d}$ cm`, cap: `PF=PE=${d} cm` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${d}\\text{ cm}$`, cap: `x = ${d} cm` });
+      items.push(SK.seg(O, Pp, { at: 'given', col: 'green', dash: [7, 5], w: 3 }), SK.seg(Pp, E, { at: 'given', col: 'amber', w: 3.6 }), SK.seg(Pp, F, { at: 'given', col: 'amber', w: 3.6 }), SK.ang(E, O, Pp, { r: 18, on: ['given', 'cong'], col: 'amber', cols: { cong: 'green' } }), SK.ang(F, O, Pp, { r: 18, on: ['given', 'cong'], col: 'amber', cols: { cong: 'green' } }),
+        SK.ang(O, X, Pp, { r: 40, cut: [0, 7], on: ['given', 'cong'], col: 'sky', cols: { cong: 'green' } }), SK.ang(O, Pp, Y, { r: 40, cut: [7, 0], on: ['given', 'cong'], col: 'sky', cols: { cong: 'green' } }),
+        SK.fill([O, E, Pp], { at: 'cong', to: 'eq', col: 'sky', a: 0.24 }), SK.fill([O, F, Pp], { at: 'cong', to: 'eq', col: 'green', a: 0.24 }),
+        SK.len(Pp, E, pt(-50, 0), `${d} cm`, { on: ['given', 'eq'], col: 'sky', size: 16, gap: 6 }), SK.len(Pp, F, pt(-50, 0), 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, gap: 6, labels: { ans: `x=${d} cm` } }), SK.tick(Pp, E, 2, { at: 'eq', col: 'rose' }), SK.tick(Pp, F, 2, { at: 'eq', col: 'rose' }));
+    } else {
+      steps.push({ id: 'given', k: 'given', t: `${head} 점 Q는 변 OX 위의 점이고 $${ov('PE')}=${d}$ cm예요. 구하는 것은 점 P에서 변 OX까지의 거리 $x$.`, cap: `PE=${d} cm, Q는 OX 위의 점` });
+      steps.push({ id: 'idea', k: 'idea', t: '점에서 직선까지의 거리는 그 점에서 직선에 내린 수선의 길이예요. 그림에는 두 선분 PE, PQ가 있으니, 어느 쪽이 수선인지 가려내야 해요.', cap: '거리 = 수선의 길이' });
+      steps.push({ id: 'perp', k: 'fig', lb: '그림 변화', t: '$\\overline{PE}$는 변 OX에 내린 수선이에요 (직각 표시). $\\overline{PQ}$는 변 OX와 직각이 아닌 비스듬한 선분이에요.', cap: 'PE ⊥ OX → 수선, PQ는 비스듬한 선분' });
+      steps.push({ id: 'cmp', k: 'fig', lb: '비교하기', t: '직각삼각형 PEQ에서 빗변 PQ가 직각변 PE보다 길어요. 가장 짧은 선분 PE가 거리예요.', cap: '빗변 PQ > 직각변 PE' });
+      steps.push({ id: 'eq', k: 'eq', t: `거리는 수선의 길이이므로 $x=${ov('PE')}=${d}$ cm`, cap: `거리 = PE = ${d} cm` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${d}\\text{ cm}$`, cap: `x = ${d} cm` });
+      steps.push({ id: 'trap', k: 'trap', t: '$\\overline{PQ}$의 길이를 거리로 생각하면 안 돼요. PQ는 비스듬한 선분이라서 PE보다 길어요. 거리는 수선 PE의 길이예요.', cap: 'PQ는 거리가 아니에요 (비스듬한 선분은 더 길다)' });
+      items.push(SK.seg(O, Pp, { at: 'given', col: 'green', dash: [7, 5], w: 3 }), SK.seg(Pp, E, { at: 'given', to: 'cmp', col: 'amber', w: 3.8 }), SK.seg(Pp, F, { at: 'given', col: 'amber', w: 3 }), SK.seg(Pp, Qp, { at: 'given', to: 'cmp', col: 'rose', w: 3.4 }),
+        SK.ang(E, O, Pp, { r: 18, on: ['given', 'perp'], col: 'amber', cols: { perp: 'green' } }), SK.ang(F, O, Pp, { r: 18, at: 'given', col: 'amber' }),
+        SK.ang(O, X, Pp, { r: 40, cut: [0, 7], on: ['given'], col: 'sky' }), SK.ang(O, Pp, Y, { r: 40, cut: [7, 0], on: ['given'], col: 'sky' }),
+        SK.fill([Pp, E, Qp], { at: 'cmp', col: 'rose', a: 0.16 }), SK.len(Pp, E, pt(-50, 0), `${d} cm`, { on: ['given', 'eq', 'ans'], col: 'sky', cols: { ans: 'amber' }, size: 16, gap: 6, labels: { ans: `x=${d} cm` } }));
+    }
+    return { fit: [O, X, Y, Pp, E, F, v === 2 ? Qp : E], steps, items, l: 50, r: 50, base: (b) => angBaseDraw(b, gg), names: (b) => angNames(b, g, v === 2 ? Qp : null) };
+  };
+  b5.solve = mkSolve(b5Plan);
+  { const p0 = b5.prob; b5.prob = (M, s) => { const v = (s.trV || 0) % 3; if (v === 1) return p0(M, s); if (v === 0) { const Q = p0(M, s), ok = Q.choices.find((q) => q.ok); return { ...Q, ansHTML: ok.h }; } const d = M.d; return numProb({ tag: '[함정] 거리와 비스듬한 선분', key: `2:${M.h}:${d}`, stem: `그림에서 점 P는 ∠XOY의 이등분선 위의 점이고, 점 E는 P에서 변 OX에 내린 수선의 발, 점 Q는 변 OX 위의 점이다. ${S('PE')}=${d} cm일 때, 점 P에서 변 OX까지의 거리 $x$는?`, correct: d, wrongs: [[d + 1, '다시 생각해 보세요.'], [d + 2, '비스듬한 선분의 길이가 아니라 수선의 길이예요.'], [d - 1, '다시 생각해 보세요.'], [d * 2, '다시 생각해 보세요.'], [d - 2, '다시 생각해 보세요.']], ...cmOpts }); }; }
+
+  /* ---- t4-6 중점 M 에서 MD=ME · v0: ∠B → ∠C · v1: ∠A → ∠B · v2: AB → AC ---- */
+  const b6Plan = (M, s) => {
+    const bd = M.b, m = M.m, v = (s.trV || 0) % 3, g = midGeom(bd, bd), { A, B, C: Cc, M: Mm, D, E } = g, cen = pt(1, A.y * 0.3), steps = [], items = [], aa = 180 - 2 * bd;
+    const head = '점 M은 변 BC의 중점이고, M에서 두 변 AB, AC에 내린 수선의 발을 D, E라 하면 $\\overline{MD}=\\overline{ME}$예요.';
+    steps.push({ id: 'given', k: 'given', t: v === 0 ? `${head} $\\angle B=${dd(bd)}$이고, 구하는 것은 $\\angle C=x$.` : v === 1 ? `${head} $\\angle A=${dd(aa)}$이고, 구하는 것은 $\\angle B=x$.` : `${head} $${ov('AB')}=${m}$ cm이고, 구하는 것은 $${ov('AC')}=x$.`, cap: v === 0 ? `BM=CM, MD=ME, ∠B=${bd}°` : v === 1 ? `BM=CM, MD=ME, ∠A=${aa}°` : `BM=CM, MD=ME, AB=${m} cm` });
+    steps.push({ id: 'idea', k: 'idea', t: v === 2 ? 'AB=AC이려면 ∠B=∠C여야 해요. ∠B, ∠C를 하나씩 가진 두 직각삼각형 BMD, CME가 합동이면 ∠B=∠C이고, 두 내각이 같으면 대변인 AC와 AB도 같아요.' : '∠B와 ∠C를 하나씩 가진 두 직각삼각형 BMD, CME가 합동이면 ∠B=∠C예요. 합동인지 먼저 확인해요.', cap: '직각삼각형 BMD, CME가 합동인지 확인' });
+    steps.push({ id: 'R', k: 'fig', lb: '합동 조건 ①', t: '$\\angle BDM=\\angle CEM=90^{\\circ}$ (Right angle)', cap: '∠BDM=∠CEM=90° (R)' });
+    steps.push({ id: 'H', k: 'fig', lb: '합동 조건 ②', t: '$\\overline{BM}=\\overline{CM}$ (M은 BC의 중점, 빗변이 같아요, Hypotenuse)', cap: 'BM=CM (H)' });
+    steps.push({ id: 'S', k: 'fig', lb: '합동 조건 ③', t: '$\\overline{MD}=\\overline{ME}$ (다른 한 변이 같아요, Side)', cap: 'MD=ME (S)' });
+    steps.push({ id: 'cong', k: 'fig', lb: '합동', t: '직각삼각형에서 빗변과 다른 한 변이 각각 같으므로 △BMD≡△CME (RHS 합동)이에요. 대응각이므로 $\\angle B=\\angle C$.', cap: '△BMD≡△CME (RHS 합동) → ∠B=∠C' });
+    if (v === 0) steps.push({ id: 'eq', k: 'eq', t: `$x=\\angle C=\\angle B=${dd(bd)}$`, cap: `∠C=∠B=${bd}°` });
+    else if (v === 1) steps.push({ id: 'eq', k: 'eq', t: `$\\angle B=\\angle C$이므로 $\\angle B+\\angle C=180^{\\circ}-${dd(aa)}=${dd(2 * bd)}$이고 $x=\\frac{${dd(2 * bd)}}{2}=${dd(bd)}$`, cap: `x=\\frac{180°−${aa}°}{2}=${bd}°` });
+    else steps.push({ id: 'eq', k: 'eq', t: `$\\angle B=\\angle C$이므로 삼각형 ABC는 이등변삼각형이에요. 같은 각의 대변이 같으므로 $x=${ov('AC')}=${ov('AB')}=${m}$ cm`, cap: `∠B=∠C → AC=AB=${m} cm` });
+    steps.push({ id: 'ans', k: 'ans', t: v === 2 ? `$x=${m}\\text{ cm}$` : `$x=${dd(bd)}$`, cap: v === 2 ? `x = ${m} cm` : `x = ${bd}°` });
+    items.push(SK.seg(Mm, D, { at: 'given', col: 'amber', w: 3.4 }), SK.seg(Mm, E, { at: 'given', col: 'amber', w: 3.4 }),
+      SK.ang(D, B, Mm, { r: 16, on: ['given', 'R'], col: 'amber', cols: { R: 'green' } }), SK.ang(E, Cc, Mm, { r: 16, on: ['given', 'R'], col: 'amber', cols: { R: 'green' } }),
+      SK.tick(B, Mm, 1, { on: ['given', 'H'], col: 'amber' }), SK.tick(Mm, Cc, 1, { on: ['given', 'H'], col: 'amber' }), SK.tick(Mm, D, 2, { on: ['given', 'S'], col: 'rose' }), SK.tick(Mm, E, 2, { on: ['given', 'S'], col: 'rose' }),
+      SK.fill([B, Mm, D], { at: 'cong', to: 'eq', col: 'sky', a: 0.24 }), SK.fill([Cc, Mm, E], { at: 'cong', to: 'eq', col: 'green', a: 0.24 }));
+    if (v === 0) items.push(SK.ang(B, Cc, A, { r: 34, ld: 56, on: ['given', 'cong'], col: 'sky', label: dg(bd), gl: true, glTo: 'eq' }), SK.ang(Cc, A, B, { r: 34, ld: 56, on: ['given', 'cong', 'eq', 'ans'], col: 'amber', cols: { cong: 'green' }, label: 'x', size: 17, labels: { ans: `x=${bd}°` }, gl: true }));
+    else if (v === 1) items.push(SK.ang(A, B, Cc, { r: 40, ld: 62, on: ['given', 'eq'], col: 'sky', label: dg(aa), gl: true }), SK.ang(B, Cc, A, { r: 34, ld: 56, on: ['given', 'cong', 'eq', 'ans'], col: 'amber', cols: { cong: 'green' }, label: 'x', size: 17, labels: { ans: `x=${bd}°` }, gl: true }), SK.ang(Cc, A, B, { r: 34, ld: 56, at: 'cong', col: 'green', gl: false }));
+    else items.push(SK.len(A, B, cen, `${m} cm`, { on: ['given', 'eq'], col: 'sky', size: 16, gap: 8, dy: -22 }), SK.len(A, Cc, cen, 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, gap: 8, dy: -22, labels: { ans: `x=${m} cm` } }), SK.ang(B, Cc, A, { r: 32, at: 'cong', to: 'eq', col: 'green', rings: 2 }), SK.ang(Cc, A, B, { r: 32, at: 'cong', to: 'eq', col: 'green', rings: 2 }));
+    return {
+      fit: [A, B, Cc, D, E], steps, items, l: 50, r: 50,
+      base: (b) => { G.fillPoly(b, [A, B, Cc], 'sky', 0.06); G.poly(b, [A, B, Cc], 'ink', 3.6); },
+      names: (b) => { [A, B, Cc, Mm, D, E].forEach((z) => b.point(z, { color: 'ink', r: 4.5 })); G.tagOut(b, A, cen, 'A', { size: 18 }); G.tagOut(b, B, cen, 'B', { size: 18 }); G.tagOut(b, Cc, cen, 'C', { size: 18 }); T(b, Mm, 'M', { dy: 18, size: 18 }); G.tagOut(b, D, cen, 'D', { size: 17 }); G.tagOut(b, E, cen, 'E', { size: 17 }); }
+    };
+  };
+  b6.solve = mkSolve(b6Plan);
+
+  /* @@SOLVE-END */
+
   G.register(40, 't4', '④ 각의 이등분선·수직이등분선', '이등분선·수직이등분선', PARAMS, [b1, b2, b3, b4, b5, b6]);
 })();

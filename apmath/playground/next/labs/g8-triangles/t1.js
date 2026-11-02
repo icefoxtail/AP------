@@ -152,8 +152,8 @@
     },
     prob: (M, s) => {
       const v = (s.trV || 0) % 3, a = M.a, bb = M.b;
-      if (v === 0) return numProb({ tag: '이등변삼각형의 밑각', key: `0:${a}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠A=${a}°일 때, $x$의 크기는?`, correct: bb, wrongs: [[a, '꼭지각 ∠A 그대로 썼어요. 밑각은 (180°−∠A)÷2예요.'], [180 - a, '두 밑각의 합을 구했어요. 하나로 나누어야 해요.'], [90 - a / 2, '밑각이 아니라 다른 각이에요.'], [bb + 10, '다시 계산해 보세요.'], [bb - 10, '다시 계산해 보세요.']], ...degOpts(5) });
-      if (v === 1) return numProb({ tag: '이등변삼각형의 꼭지각', key: `1:${bb}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠B=${bb}°일 때, $x$의 크기는?`, correct: a, wrongs: [[bb, '밑각 ∠B와 같다고 했어요.'], [180 - bb, '∠B의 보각을 구했어요.'], [180 - bb * 3, '내각의 합에서 ∠B를 한 번만 뺐어요. ∠C=∠B도 빼야 해요.'], [a + 10, '다시 계산해 보세요.'], [a - 10, '다시 계산해 보세요.']].filter((q) => q[0] !== a), ...degOpts(5) });
+      if (v === 0) return numProb({ tag: '이등변삼각형의 밑각', key: `0:${a}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠A=${a}°일 때, ∠B의 크기 $x$는?`, correct: bb, wrongs: [[a, '꼭지각 ∠A 그대로 썼어요. 밑각은 (180°−∠A)÷2예요.'], [180 - a, '두 밑각의 합을 구했어요. 하나로 나누어야 해요.'], [90 - a / 2, '밑각이 아니라 다른 각이에요.'], [bb + 10, '다시 계산해 보세요.'], [bb - 10, '다시 계산해 보세요.']], ...degOpts(5) });
+      if (v === 1) return numProb({ tag: '이등변삼각형의 꼭지각', key: `1:${bb}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠B=${bb}°일 때, ∠A의 크기 $x$는?`, correct: a, wrongs: [[bb, '밑각 ∠B와 같다고 했어요.'], [180 - bb, '∠B의 보각을 구했어요.'], [180 - bb * 3, '내각의 합에서 ∠B를 한 번만 뺐어요. ∠C=∠B도 빼야 해요.'], [a + 10, '다시 계산해 보세요.'], [a - 10, '다시 계산해 보세요.']].filter((q) => q[0] !== a), ...degOpts(5) });
       return numProb({ tag: '[함정] 이등변삼각형의 외각', key: `2:${a}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠A=${a}°이고, 변 BC의 연장선 위에 점 D를 잡았다. ∠ACD의 크기 $x$는?`, correct: 90 + a / 2, wrongs: [[bb, '밑각 ∠ACB를 구했어요. x는 그 바깥쪽의 외각이에요.'], [a + bb, '외각은 이웃하지 않는 두 내각의 합이에요. ∠A와 ∠B예요. 계산해 보세요.'], [180 - a, '∠A의 보각을 구했어요.'], [a, '꼭지각 그대로예요.'], [90 + a / 2 + 10, '다시 계산해 보세요.']].filter((q) => q[0] !== 90 + a / 2), ...degOpts(5) });
     },
     verify: (s) => { const M = i1.model(s), { A, B, C } = M.tri; return { ans: angBetween(B, A, C), model: M.b, extra: [[angBetween(C, A, B), M.b], [angBetween(A, B, C), M.a]] }; }
@@ -296,8 +296,8 @@
     }),
     prob: (M, s) => {
       const v = (s.trV || 0) % 3, { a, b: bb, h, m } = M;
-      if (v === 0) return numProb({ tag: '꼭지각의 이등분선과 밑각', key: `0:${a}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ${S('AD')}는 ∠A의 이등분선이고 ∠BAD=${h}°이다. $x=\\angle B$의 크기는?`, correct: bb, wrongs: [[h, '∠BAD 그대로 썼어요. 삼각형 ABD에서 ∠ADB=90°를 써야 해요.'], [180 - 2 * h, '∠A를 구했어요.'], [90 - h / 2, '다시 계산해 보세요.'], [a, '꼭지각이에요.'], [bb + 10, '다시 계산해 보세요.']], ...degOpts(5) });
-      if (v === 1) return numProb({ tag: '꼭지각의 이등분선과 수직', key: `1:${bb}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ${S('AD')}는 ∠A의 이등분선이다. ∠A=${a}°일 때, $x=\\angle ADB$의 크기는?`, correct: 90, wrongs: [[a, '꼭지각이에요.'], [h, '∠BAD예요.'], [bb, '밑각이에요.'], [180 - a, '다시 생각해 보세요.']], ...degOpts(5), pad: 15 });
+      if (v === 0) return numProb({ tag: '꼭지각의 이등분선과 밑각', key: `0:${a}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ${S('AD')}는 ∠A의 이등분선이고 ∠BAD=${h}°이다. ∠B의 크기 $x$는?`, correct: bb, wrongs: [[h, '∠BAD 그대로 썼어요. 삼각형 ABD에서 ∠ADB=90°를 써야 해요.'], [180 - 2 * h, '∠A를 구했어요.'], [90 - h / 2, '다시 계산해 보세요.'], [a, '꼭지각이에요.'], [bb + 10, '다시 계산해 보세요.']], ...degOpts(5) });
+      if (v === 1) return numProb({ tag: '꼭지각의 이등분선과 수직', key: `1:${bb}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ${S('AD')}는 ∠A의 이등분선이다. ∠A=${a}°일 때, ∠ADB의 크기 $x$는?`, correct: 90, wrongs: [[a, '꼭지각이에요.'], [h, '∠BAD예요.'], [bb, '밑각이에요.'], [180 - a, '다시 생각해 보세요.']], ...degOpts(5), pad: 15 });
       return numProb({ tag: '꼭지각의 이등분선과 중점', key: `2:${m}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ${S('AD')}는 ∠A의 이등분선이고 ${S('BD')}=${m} cm일 때, ${S('BC')}의 길이 $x$는?`, correct: 2 * m, wrongs: [[m, 'BD는 BC의 반이에요. D는 BC의 중점이에요.'], [3 * m, '다시 생각해 보세요.'], [m + 2, '다시 생각해 보세요.'], [m * 2 - 1, '다시 생각해 보세요.'], [m * 2 + 1, '다시 생각해 보세요.']], ...cmOpts });
     },
     verify: (s) => { const M = i3.model(s), g = M.g; return { ans: angBetween(g.B, g.A, g.C), model: M.b, extra: [[angBetween(g.D, g.A, g.B), 90], [angBetween(g.A, g.B, g.D), M.h]] }; }
@@ -368,7 +368,7 @@
       const v = (s.trV || 0) % 3, { m } = M;
       if (v === 0) return numProb({ tag: '직각이등변삼각형 · 빗변', key: `0:${m}`, stem: `그림과 같이 ∠A=90°, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC에서 점 D는 변 BC의 중점이다. ${S('AD')}=${m} cm일 때, ${S('BC')}의 길이 $x$는?`, correct: 2 * m, wrongs: [[m, 'AD의 길이 그대로 썼어요. BC=BD+CD=2AD예요.'], [m * 3, '다시 계산해 보세요.'], [m + 2, '다시 계산해 보세요.'], [m * 2 + 1, '다시 계산해 보세요.'], [m * 2 - 1, '다시 계산해 보세요.']], ...cmOpts });
       if (v === 1) return numProb({ tag: '직각이등변삼각형 · 중선', key: `1:${m}`, stem: `그림과 같이 ∠A=90°, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC에서 점 D는 변 BC의 중점이다. ${S('BC')}=${2 * m} cm일 때, ${S('AD')}의 길이 $x$는?`, correct: m, wrongs: [[2 * m, 'BC의 길이 그대로예요. AD는 BC의 반이에요.'], [m * 3, '다시 계산해 보세요.'], [m + 2, '다시 계산해 보세요.'], [m + 1, '다시 계산해 보세요.'], [m - 1, '다시 계산해 보세요.']], ...cmOpts });
-      return numProb({ tag: '직각이등변삼각형 · 각', key: `2:${m}`, stem: `그림과 같이 ∠A=90°, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC에서 점 D는 변 BC의 중점이다. $x=\\angle BAD$의 크기는?`, correct: 45, wrongs: [[90, '직각 ∠A예요.'], [30, '다시 생각해 보세요.'], [60, '다시 생각해 보세요.'], [135, '다시 생각해 보세요.'], [50, '다시 생각해 보세요.']], ...degOpts(15) });
+      return numProb({ tag: '직각이등변삼각형 · 각', key: `2:${m}`, stem: `그림과 같이 ∠A=90°, ${S('AB')}=${S('AC')}인 직각이등변삼각형 ABC에서 점 D는 변 BC의 중점이다. ∠BAD의 크기 $x$는?`, correct: 45, wrongs: [[90, '직각 ∠A예요.'], [30, '다시 생각해 보세요.'], [60, '다시 생각해 보세요.'], [135, '다시 생각해 보세요.'], [50, '다시 생각해 보세요.']], ...degOpts(15) });
     },
     verify: (s) => { const M = i4.model(s), g = M.g; return { ans: dist(g.A, g.D), model: dist(g.B, g.D), extra: [[dist(g.D, g.C), dist(g.A, g.D)], [angBetween(g.A, g.B, g.C), 90]] }; }
   };
@@ -424,8 +424,8 @@
     }),
     prob: (M, s) => {
       const v = (s.trV || 0) % 2, { a, b: bb } = M;
-      if (v === 0) return numProb({ tag: '누운 이등변삼각형 · 밑각', key: `0:${a}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠A=${a}°일 때, $x=\\angle B$의 크기는?`, correct: bb, wrongs: [[a, '꼭지각 그대로예요.'], [180 - a, '두 밑각의 합이에요.'], [bb + 10, '다시 계산해 보세요.'], [bb - 10, '다시 계산해 보세요.'], [90 - a / 2 + 5, '다시 계산해 보세요.']], ...degOpts(5) });
-      return numProb({ tag: '누운 이등변삼각형 · 꼭지각', key: `1:${bb}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠B=${bb}°일 때, $x=\\angle A$의 크기는?`, correct: a, wrongs: [[bb, '밑각 그대로예요.'], [180 - bb, '다시 생각해 보세요.'], [180 - 3 * bb, '내각의 합에서 밑각 둘을 빼야 해요.'], [a + 10, '다시 계산해 보세요.'], [a - 10, '다시 계산해 보세요.']].filter((q) => q[0] !== a), ...degOpts(5) });
+      if (v === 0) return numProb({ tag: '누운 이등변삼각형 · 밑각', key: `0:${a}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠A=${a}°일 때, ∠B의 크기 $x$는?`, correct: bb, wrongs: [[a, '꼭지각 그대로예요.'], [180 - a, '두 밑각의 합이에요.'], [bb + 10, '다시 계산해 보세요.'], [bb - 10, '다시 계산해 보세요.'], [90 - a / 2 + 5, '다시 계산해 보세요.']], ...degOpts(5) });
+      return numProb({ tag: '누운 이등변삼각형 · 꼭지각', key: `1:${bb}`, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 ∠B=${bb}°일 때, ∠A의 크기 $x$는?`, correct: a, wrongs: [[bb, '밑각 그대로예요.'], [180 - bb, '다시 생각해 보세요.'], [180 - 3 * bb, '내각의 합에서 밑각 둘을 빼야 해요.'], [a + 10, '다시 계산해 보세요.'], [a - 10, '다시 계산해 보세요.']].filter((q) => q[0] !== a), ...degOpts(5) });
     },
     verify: (s) => { const M = i5.model(s), g = M.g; return { ans: angBetween(g.B, g.A, g.C), model: M.b, extra: [[angBetween(g.A, g.B, g.C), M.a]] }; }
   };
@@ -588,6 +588,294 @@
     },
     verify: (s) => { const M = i7.model(s), { Q, x0 } = M; return { ans: Q.p * x0 + Q.q, model: Q.r * x0 + Q.sv }; }
   };
+
+  /* ====================================================================== 풀이 흐름 (탐구 · 문제 · 풀이)
+     문제 탭과 같은 상태·같은 숫자로, 그림 위에서 ① 주어진 것 ② 발상 ③ 그림 변화 ④ 식 ⑤ 답(+ 흔한 실수)을 한 단계씩 보여 줍니다.
+     그림 항목은 G.SVK(core.js)로 선언합니다: 지금 단계의 항목만 색, 앞 단계는 회색. */
+  const SK = G.SVK, mkSolve = G.mkSolve;
+  const ov = (n) => `\\overline{${n}}`;
+  const dd = (v) => `${v}^{\\circ}`;
+  const eqAB = `$${ov('AB')}=${ov('AC')}$`;
+
+  /* ---- t1-1 두 밑각 · v0: ∠A → ∠B, v1: ∠B → ∠A, v2 [함정]: 외각 ∠ACD ---- */
+  const i1Iso = (s) => { const a = clamp(even(s.trIa), 20, 140); return { a, b: (180 - a) / 2, g: isoUp(a) }; }; // 문제 탭은 늘 이등변삼각형(일반 삼각형 보기와 무관)
+  const i1Plan = (M0, s) => {
+    const { a, b: bb, g } = i1Iso(s), { A, B, C: Cc } = g, v = (s.trV || 0) % 3, ext = pt(Cc.x + 0.7, 0), cen = pt(0, A.y * 0.4);
+    const x = v === 0 ? bb : v === 1 ? a : 90 + a / 2;
+    const steps = [], items = [];
+    const apex = (o) => SK.ang(A, B, Cc, { r: 32, ld: 56, ...o });
+    const angB = (o) => SK.ang(B, Cc, A, { r: 30, ld: 54, rings: 2, ...o });
+    const angC = (o) => SK.ang(Cc, A, B, { r: 30, ld: 54, rings: 2, ...o });
+    items.push(SK.fill([A, B, Cc], { at: 'idea', col: 'violet', a: 0.16 }), SK.tick(A, B, 1, { col: 'amber' }), SK.tick(A, Cc, 1, { col: 'amber' }));
+    if (v === 0) {
+      steps.push({ id: 'given', k: 'given', t: `${eqAB}인 이등변삼각형이에요. 꼭지각 $\\angle A=${dd(a)}$이고, 구하는 것은 밑각 $\\angle B=x$.`, cap: `AB=AC, ∠A=${a}°` });
+      steps.push({ id: 'idea', k: 'idea', t: '이등변삼각형은 두 밑각이 같으니까 $\\angle B=\\angle C$예요. 세 각의 합이 $180^{\\circ}$이므로, 꼭지각을 빼고 반으로 나누면 한 밑각이 나와요.', cap: '밑각 ∠B=∠C = \\frac{180°−∠A}{2}' });
+      steps.push({ id: 'fig', k: 'fig', lb: '그림 변화', t: `$\\angle C$도 $\\angle B$와 같으니까 같은 호를 그려요. 두 밑각의 합은 $180^{\\circ}-${dd(a)}=${dd(180 - a)}$예요.`, cap: `∠B=∠C, ∠B+∠C=180°−${a}°=${180 - a}°` });
+      steps.push({ id: 'eq', k: 'eq', t: `$x=\\frac{180^{\\circ}-${dd(a)}}{2}=\\frac{${dd(180 - a)}}{2}=${dd(bb)}$`, cap: `x=\\frac{180°−${a}°}{2}=${bb}°` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(bb)}$`, cap: `x = ${bb}°` });
+      items.push(apex({ on: ['given'], col: 'sky', label: dg(a), gl: true, glTo: 'eq' }),
+        angB({ on: ['given', 'fig', 'eq', 'ans'], col: 'amber', cols: { fig: 'green' }, label: 'x', size: 17, labels: { ans: `x=${bb}°` }, gl: true }),
+        angC({ on: ['fig'], col: 'green' }));
+    } else if (v === 1) {
+      steps.push({ id: 'given', k: 'given', t: `${eqAB}인 이등변삼각형에서 $\\angle B=${dd(bb)}$예요. 구하는 것은 꼭지각 $\\angle A=x$.`, cap: `AB=AC, ∠B=${bb}°` });
+      steps.push({ id: 'idea', k: 'idea', t: `밑각은 서로 같으니 $\\angle C$도 ${bb}°예요. 세 각의 합이 $180^{\\circ}$이므로, 두 밑각을 빼면 꼭지각이 나와요.`, cap: `밑각이 같다 → ∠C=∠B=${bb}°` });
+      steps.push({ id: 'fig', k: 'fig', lb: '그림 변화', t: `$\\angle C=\\angle B=${dd(bb)}$이므로 $\\angle C$에도 같은 호와 ${bb}°를 써요.`, cap: `∠C=∠B=${bb}°` });
+      steps.push({ id: 'eq', k: 'eq', t: `$x=180^{\\circ}-${dd(bb)}-${dd(bb)}=${dd(a)}$`, cap: `x=180°−${bb}°−${bb}°=${a}°` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(a)}$`, cap: `x = ${a}°` });
+      items.push(angB({ on: ['given'], col: 'sky', label: dg(bb), gl: true, glTo: 'eq' }),
+        angC({ on: ['fig'], col: 'green', label: dg(bb), gl: true, glTo: 'eq' }),
+        apex({ on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${a}°` }, gl: true }));
+    } else {
+      steps.push({ id: 'given', k: 'given', t: `${eqAB}이고 $\\angle A=${dd(a)}$예요. 변 BC를 길게 늘인 선 위에 점 D가 있고, 구하는 것은 $\\angle ACD=x$.`, cap: `AB=AC, ∠A=${a}°, 구하는 각: ∠ACD` });
+      steps.push({ id: 'idea', k: 'idea', t: '$\\angle ACD$는 삼각형 ABC의 외각이에요. 외각은 이웃하지 않는 두 내각 $\\angle A$, $\\angle B$의 합이니까 $\\angle B$만 알면 돼요. 이등변삼각형이라 $\\angle B$는 밑각으로 구해요.', cap: '외각 = 이웃하지 않는 두 내각의 합' });
+      steps.push({ id: 'fig', k: 'fig', lb: '그림 변화', t: `$\\angle B=\\angle ACB=\\frac{180^{\\circ}-${dd(a)}}{2}=${dd(bb)}$ (이등변삼각형의 밑각). 안쪽 각 $\\angle ACB$에도 같은 호를 그려요.`, cap: `∠B=∠ACB=\\frac{180°−${a}°}{2}=${bb}°` });
+      steps.push({ id: 'eq', k: 'eq', t: `$x=\\angle A+\\angle B=${dd(a)}+${dd(bb)}=${dd(x)}$`, cap: `x=∠A+∠B=${a}°+${bb}°=${x}°` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(x)}$`, cap: `x = ${x}°` });
+      steps.push({ id: 'trap', k: 'trap', t: `안쪽 각 $\\angle ACB=${dd(bb)}$를 답으로 쓰면 안 돼요. $x$는 바깥쪽 각이라서 $\\angle ACB$와 합이 $180^{\\circ}$예요.`, cap: `안쪽 각 ∠ACB=${bb}°는 답이 아니에요 → 바깥쪽 각 x=${x}°` });
+      items.push(apex({ on: ['given', 'eq'], col: 'sky', label: dg(a), gl: true, glTo: 'eq' }),
+        SK.ang(Cc, A, ext, { r: 34, ld: 58, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${x}°` }, gl: true }),
+        angB({ on: ['fig', 'eq'], col: 'green', label: dg(bb), gl: true, glTo: 'eq' }),
+        angC({ on: ['fig', 'trap'], col: 'green', cols: { trap: 'rose' }, labels: { trap: dg(bb) } }));
+    }
+    const fitPts = [A, B, Cc, pt(v === 2 ? ext.x + 0.15 : Cc.x, 0.05)];
+    return {
+      fit: fitPts, steps, items,
+      base: (b) => { G.fillPoly(b, [A, B, Cc], 'sky', 0.08); G.poly(b, [A, B, Cc], 'ink', 3.6); if (v === 2) G.line(b, Cc, ext, 'ink', 3.4); },
+      names: (b) => { G.dots(b, [A, B, Cc], ['A', 'B', 'C'], cen, { size: 18 }); if (v === 2) { b.point(ext, { color: 'ink', r: 4 }); T(b, ext, 'D', { dy: 18, size: 18 }); } }
+    };
+  };
+  i1.solve = mkSolve(i1Plan);
+  { const p0 = i1.prob; i1.prob = (M, s) => p0(i1Iso(s), s); }
+
+  /* ---- t1-2 두 각이 같으면 이등변삼각형 · v0: ∠B=∠C, AB=m → AC · v1: 같은 조건에 ∠A도 주어짐 ---- */
+  const i2Eq = (s) => { const Bd = clamp(Math.round(s.trJb), 40, 70); return { a: 180 - 2 * Bd, b: Bd, c: Bd, tri: { A: pt(0, -tan(Bd)), B: pt(-1, 0), C: pt(1, 0) } }; }; // 문제는 늘 ∠B=∠C인 그림
+  const i2Plan = (M0, s) => {
+    const M = i2Eq(s), { A, B, C: Cc } = M.tri, D = pt(0, 0), m = s.trM || 8, v = (s.trV || 0) % 2, a = M.a, cen = pt(0, A.y * 0.4);
+    const steps = [], items = [];
+    steps.push({ id: 'given', k: 'given', t: `$\\angle B=\\angle C$이고 $${ov('AB')}=${m}$ cm예요. ${v === 1 ? `$\\angle A=${dd(a)}$도 주어졌어요. ` : ''}구하는 것은 $${ov('AC')}=x$.`, cap: `∠B=∠C, AB=${m} cm${v === 1 ? `, ∠A=${a}°` : ''}` });
+    steps.push({ id: 'idea', k: 'idea', t: `마주 보는 두 변 AB, AC의 길이가 같음을 보이려면, 이 두 변이 하나씩 들어 있는 합동인 삼각형이 필요해요. 그래서 A에서 BC에 수선 AD를 그어 삼각형을 둘로 나눠요.${v === 1 ? ' (∠A의 크기는 쓰지 않아도 돼요.)' : ''}`, cap: '같은 각의 마주 보는 변 → 합동인 삼각형으로 확인' });
+    steps.push({ id: 'fig', k: 'fig', lb: '그림 변화', t: '$\\angle ADB=\\angle ADC=90^{\\circ}$이고 $\\angle B=\\angle C$이므로 $\\angle BAD=\\angle CAD$예요. $\\overline{AD}$는 공통이므로 △ABD≡△ACD (ASA 합동).', cap: 'AD⊥BC, ∠B=∠C → ∠BAD=∠CAD → △ABD≡△ACD' });
+    steps.push({ id: 'eq', k: 'eq', t: `합동인 삼각형의 대응변은 같으므로 $${ov('AC')}=${ov('AB')}=${m}$ cm.`, cap: `AC=AB=${m} cm` });
+    steps.push({ id: 'ans', k: 'ans', t: `$x=${m}\\text{ cm}$`, cap: `x = ${m} cm` });
+    items.push(
+      SK.ang(B, Cc, A, { rings: 2, r: 30, ld: 54, on: ['given'], col: 'sky' }), SK.ang(Cc, A, B, { rings: 2, r: 30, ld: 54, on: ['given'], col: 'sky' }),
+      SK.len(A, B, cen, `${m} cm`, { on: ['given', 'eq'], col: 'sky', size: 17, gap: 6 }),
+      SK.len(A, Cc, cen, 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, gap: 6, labels: { ans: `x=${m} cm` } }),
+      SK.fill([A, B, D], { at: 'fig', col: 'sky', a: 0.26 }), SK.fill([A, D, Cc], { at: 'fig', col: 'green', a: 0.26 }),
+      SK.seg(A, D, { at: 'fig', col: 'green', w: 4 }), SK.dot(D, 'D', { at: 'fig', col: 'green', dy: 18 }),
+      SK.ang(D, A, B, { r: 20, at: 'fig', col: 'green' }), SK.ang(D, A, Cc, { r: 20, at: 'fig', col: 'green' }),
+      SK.ang(A, B, D, { rings: 3, r: 36, ld: 58, at: 'fig', col: 'violet' }), SK.ang(A, D, Cc, { rings: 3, r: 36, ld: 58, at: 'fig', col: 'violet' }),
+      SK.tick(A, B, 1, { at: 'eq', col: 'amber' }), SK.tick(A, Cc, 1, { at: 'eq', col: 'amber' }));
+    if (v === 1) items.push(SK.ang(A, B, Cc, { r: 24, ld: 70, on: ['given'], col: 'sky', label: dg(a), gl: true, glTo: 'idea' }));
+    return {
+      fit: [A, B, Cc, pt(0, 0.1)], steps, items,
+      base: (b) => { G.fillPoly(b, [A, B, Cc], 'sky', 0.08); G.poly(b, [A, B, Cc], 'ink', 3.6); },
+      names: (b) => G.dots(b, [A, B, Cc], ['A', 'B', 'C'], cen, { size: 18 })
+    };
+  };
+  i2.solve = mkSolve(i2Plan);
+  { const p0 = i2.prob; i2.prob = (M, s) => p0(i2Eq(s), s); }
+
+  /* ---- t1-3 꼭지각의 이등분선 · v0: ∠BAD → ∠B · v1: ∠A → ∠ADB · v2: BD → BC ---- */
+  const i3Plan = (M, s) => {
+    const { a, b: bb, h, m, g } = M, { A, B, C: Cc, D } = g, v = (s.trV || 0) % 3, cen = pt(0, A.y * 0.4);
+    const steps = [], items = [];
+    const halfL = (o) => SK.ang(A, B, D, { r: 34, cut: [0, 7], ...o }), halfR = (o) => SK.ang(A, D, Cc, { r: 34, cut: [7, 0], ...o });
+    const given0 = `$${ov('AB')}=${ov('AC')}$이고 $${ov('AD')}$는 $\\angle A$의 이등분선이에요.`;
+    const cong = '△ABD와 △ACD에서 $\\overline{AB}=\\overline{AC}$, $\\angle BAD=\\angle CAD$, $\\overline{AD}$는 공통이므로 △ABD≡△ACD (SAS 합동).';
+    items.push(SK.tick(A, B, 1, { col: 'amber' }), SK.tick(A, Cc, 1, { col: 'amber' }),
+      SK.fill([A, B, D], { at: 'cong', col: 'sky', a: 0.26 }), SK.fill([A, D, Cc], { at: 'cong', col: 'green', a: 0.26 }),
+      SK.seg(A, D, { at: 'given', col: 'green', w: 3.6 }));
+    if (v === 0) {
+      steps.push({ id: 'given', k: 'given', t: `${given0} $\\angle BAD=${dd(h)}$이고, 구하는 것은 $\\angle B=x$.`, cap: `AB=AC, ∠BAD=∠CAD=${h}°` });
+      steps.push({ id: 'idea', k: 'idea', t: '밑각 $\\angle B$는 △ABD에서 구할 수 있어요. 아는 각이 $\\angle BAD$뿐이니, 이등변삼각형에서 꼭지각의 이등분선은 밑변과 수직이라는 성질로 $\\angle ADB=90^{\\circ}$를 찾아요.', cap: '이등분선 AD ⊥ BC → △ABD에서 ∠B 구하기' });
+      steps.push({ id: 'cong', k: 'fig', lb: '합동 찾기', t: `${cong} 그래서 $\\angle ADB=\\angle ADC$예요.`, cap: 'AB=AC, ∠BAD=∠CAD, AD 공통 → △ABD≡△ACD (SAS)' });
+      steps.push({ id: 'perp', k: 'fig', lb: '그림 변화', t: '$\\angle ADB$와 $\\angle ADC$는 같고 합이 $180^{\\circ}$(일직선)이므로 각각 $90^{\\circ}$예요. 그림에 직각을 표시해요.', cap: '∠ADB=∠ADC, 합 180° → 각각 90°' });
+      steps.push({ id: 'eq', k: 'eq', t: `△ABD의 내각의 합에서 $x=180^{\\circ}-${dd(h)}-90^{\\circ}=${dd(bb)}$`, cap: `x=180°−${h}°−90°=${bb}°` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(bb)}$`, cap: `x = ${bb}°` });
+      items.push(halfL({ on: ['given', 'cong', 'eq'], col: 'sky', label: dg(h), ld: 62, gl: true, glTo: 'eq' }), halfR({ on: ['given', 'cong'], col: 'sky', cols: { cong: 'green' }, label: dg(h), ld: 62, gl: true, glTo: 'eq' }),
+        SK.ang(B, Cc, A, { r: 30, ld: 54, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${bb}°` }, gl: true }),
+        SK.ang(D, A, B, { r: 20, at: 'perp', to: 'eq', col: 'green' }), SK.ang(D, A, Cc, { r: 20, at: 'perp', col: 'green' }));
+    } else if (v === 1) {
+      steps.push({ id: 'given', k: 'given', t: `${given0} $\\angle A=${dd(a)}$이고, 구하는 것은 $\\angle ADB=x$.`, cap: `AB=AC, ∠A=${a}°` });
+      steps.push({ id: 'idea', k: 'idea', t: 'AD로 나뉜 두 삼각형이 합동이면 $\\angle ADB=\\angle ADC$예요. 이 두 각은 일직선 위에 있어서 합이 $180^{\\circ}$이니, 합동임을 보이는 것이 열쇠예요.', cap: '△ABD≡△ACD이면 ∠ADB=∠ADC' });
+      steps.push({ id: 'cong', k: 'fig', lb: '합동 찾기', t: `${cong} 그래서 $\\angle ADB=\\angle ADC$예요.`, cap: 'AB=AC, ∠BAD=∠CAD, AD 공통 → △ABD≡△ACD (SAS)' });
+      steps.push({ id: 'eq', k: 'eq', t: '$\\angle ADB+\\angle ADC=180^{\\circ}$이고 두 각이 같으므로 $x=\\frac{180^{\\circ}}{2}=90^{\\circ}$', cap: 'x=\\frac{180°}{2}=90°' });
+      steps.push({ id: 'ans', k: 'ans', t: '$x=90^{\\circ}$', cap: 'x = 90° (AD ⊥ BC)' });
+      items.push(halfL({ on: ['given', 'cong'], col: 'sky', cols: { cong: 'green' } }), halfR({ on: ['given', 'cong'], col: 'sky', cols: { cong: 'green' } }),
+        SK.ang(A, B, Cc, { r: 54, ld: 78, on: ['given'], col: 'sky', label: dg(a), gl: true, glTo: 'cong', fa: 0.05 }),
+        SK.ang(D, A, B, { r: 22, ld: 38, on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: 'x=90°' }, gl: true }));
+    } else {
+      steps.push({ id: 'given', k: 'given', t: `${given0} $${ov('BD')}=${m}$ cm이고, 구하는 것은 $${ov('BC')}=x$.`, cap: `AB=AC, BD=${m} cm` });
+      steps.push({ id: 'idea', k: 'idea', t: 'BC가 BD의 몇 배인지 알아야 해요. 점 D가 BC의 한가운데(중점)라면 BC는 BD의 2배이니, 이등변삼각형에서 꼭지각의 이등분선이 밑변을 반으로 나눈다는 것을 합동으로 확인해요.', cap: 'D가 BC의 중점이면 BC = 2 × BD' });
+      steps.push({ id: 'cong', k: 'fig', lb: '합동 찾기', t: `${cong} 그래서 $\\overline{BD}=\\overline{CD}=${m}$ cm예요.`, cap: `△ABD≡△ACD → BD=CD=${m} cm` });
+      steps.push({ id: 'eq', k: 'eq', t: `$x=\\overline{BD}+\\overline{CD}=${m}+${m}=${2 * m}$ (cm)`, cap: `x=BD+CD=${m}+${m}=${2 * m} cm` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${2 * m}\\text{ cm}$`, cap: `x = ${2 * m} cm` });
+      items.push(halfL({ on: ['given'], col: 'sky' }), halfR({ on: ['given'], col: 'sky' }),
+        SK.len(B, D, pt(0, -1), `${m} cm`, { on: ['given', 'cong'], col: 'sky', size: 16, gap: 4 }),
+        SK.len(D, Cc, pt(0, -1), `${m} cm`, { at: 'cong', col: 'green', size: 16, gap: 4 }),
+        SK.tick(B, D, 2, { at: 'cong', col: 'rose' }), SK.tick(D, Cc, 2, { at: 'cong', col: 'rose' }),
+        SK.dim(B, Cc, cen, 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, off: 34, labels: { ans: `x=${2 * m} cm` } }));
+    }
+    return {
+      fit: [A, B, Cc, pt(0, v === 2 ? 0.45 : 0.1)], steps, items,
+      base: (b) => { G.fillPoly(b, [A, B, Cc], 'sky', 0.08); G.poly(b, [A, B, Cc], 'ink', 3.6); },
+      names: (b) => { G.dots(b, [A, B, Cc], ['A', 'B', 'C'], cen, { size: 18 }); b.point(D, { color: 'ink', r: 4.5 }); if (v === 2) T(b, D, 'D', { dx: 11, dy: -14, size: 18 }); else T(b, D, 'D', { dy: 18, size: 18 }); }
+    };
+  };
+  i3.solve = mkSolve(i3Plan, { quickTitle: '10초 컷 · 꼭지각의 이등분선 = 밑변의 수직이등분선', quick: (M, s) => { const v = (s.trV || 0) % 3; return v === 0 ? { steps: `<p>꼭지각의 이등분선 AD는 밑변과 수직이므로 $x=90^{\\circ}-${M.h}^{\\circ}=${M.b}^{\\circ}$</p>`, note: '△ABD는 직각삼각형이라 두 예각의 합이 90°예요.' } : v === 1 ? { steps: '<p>꼭지각의 이등분선은 밑변과 수직이므로 $x=90^{\\circ}$</p>', note: '꼭지각의 크기와 상관없이 항상 90°예요.' } : { steps: `<p>꼭지각의 이등분선은 밑변을 수직이등분하므로 $\\overline{BC}=2\\times\\overline{BD}=2\\times${M.m}=${2 * M.m}$ (cm)</p>`, note: 'D는 BC의 중점이에요.' }; } });
+
+  /* ---- t1-4 직각이등변삼각형 · v0: AD → BC · v1: BC → AD · v2: ∠BAD ---- */
+  const i4Plan = (M, s) => {
+    const { m, g } = M, { A, B, C: Cc, D } = g, v = (s.trV || 0) % 3, cen = pt(0, A.y * 0.4), left = pt(-5, A.y / 2), below = pt(0, -5);
+    const steps = [], items = [];
+    const g0 = `$\\angle A=90^{\\circ}$, $${ov('AB')}=${ov('AC')}$인 직각이등변삼각형이고 점 D는 변 BC의 중점이에요.`;
+    items.push(SK.ang(A, B, Cc, { r: 34, on: ['given'], col: 'sky' }), SK.tick(A, B, 1, { col: 'amber' }), SK.tick(A, Cc, 1, { col: 'amber' }),
+      SK.tick(B, D, 1, { at: 'given', col: 'rose' }), SK.tick(D, Cc, 1, { at: 'given', col: 'rose' }), SK.seg(A, D, { at: 'given', col: 'green', w: 3.6 }),
+      SK.ang(B, Cc, A, { r: 30, ld: 54, rings: 2, at: 'b45', col: 'green', label: '45°', size: 15, gl: true, glTo: 'eq' }), SK.ang(Cc, A, B, { r: 30, ld: 54, rings: 2, at: 'b45', col: 'green', label: '45°', size: 15, gl: true, glTo: 'eq' }));
+    const mid2 = [SK.ang(A, B, D, { r: 44, ld: 66, rings: 2, at: 'iso', col: 'amber', label: '45°', gl: true, glTo: 'eq' }), SK.ang(A, D, Cc, { r: 44, ld: 66, rings: 2, at: 'iso', col: 'amber', label: '45°', gl: true, glTo: 'eq' }),
+      SK.tick(B, D, 2, { at: 'iso', col: 'rose' }), SK.tick(D, Cc, 2, { at: 'iso', col: 'rose' }), SK.tick(A, D, 2, { at: 'iso', col: 'rose' })];
+    const b45 = { id: 'b45', k: 'fig', lb: '각 구하기', t: '$\\angle A=90^{\\circ}$이고 $\\overline{AB}=\\overline{AC}$이므로 두 밑각은 $\\angle B=\\angle C=\\frac{180^{\\circ}-90^{\\circ}}{2}=45^{\\circ}$예요.', cap: '∠B=∠C=\\frac{180°−90°}{2}=45°' };
+    const iso = { id: 'iso', k: 'fig', lb: '그림 변화', t: '$\\overline{AD}$는 꼭지각의 이등분선이라 $\\angle BAD=\\angle CAD=45^{\\circ}$예요. △ABD에서 $\\angle BAD=\\angle B=45^{\\circ}$이므로 $\\overline{BD}=\\overline{AD}$, 같은 방법으로 $\\overline{CD}=\\overline{AD}$예요.', cap: '∠BAD=∠B=45° → BD=AD, CD=AD' };
+    if (v === 0) {
+      steps.push({ id: 'given', k: 'given', t: `${g0} $${ov('AD')}=${m}$ cm이고, 구하는 것은 $${ov('BC')}=x$.`, cap: `∠A=90°, AB=AC, AD=${m} cm` });
+      steps.push({ id: 'idea', k: 'idea', t: 'BC의 길이를 AD로 나타내야 해요. △ABD가 이등변삼각형이 되어 BD=AD이면 BC=BD+CD=2AD가 돼요. 그래서 밑각이 45°임을 이용해요.', cap: 'BD=AD=CD 이면 BC = 2 × AD' });
+      steps.push(b45, iso);
+      steps.push({ id: 'eq', k: 'eq', t: `$\\overline{AD}=\\overline{BD}=\\overline{CD}=${m}$ cm이므로 $x=\\overline{BD}+\\overline{CD}=${m}+${m}=${2 * m}$ (cm)`, cap: `x=BD+CD=${m}+${m}=${2 * m} cm` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${2 * m}\\text{ cm}$`, cap: `x = ${2 * m} cm` });
+      items.push(SK.len(A, D, left, `${m} cm`, { on: ['given', 'eq'], col: 'sky', size: 16, gap: 8, dy: 26 }), SK.dim(B, Cc, cen, 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, off: 34, labels: { ans: `x=${2 * m} cm` } }), ...mid2);
+    } else if (v === 1) {
+      steps.push({ id: 'given', k: 'given', t: `${g0} $${ov('BC')}=${2 * m}$ cm이고, 구하는 것은 $${ov('AD')}=x$.`, cap: `∠A=90°, AB=AC, BC=${2 * m} cm` });
+      steps.push({ id: 'idea', k: 'idea', t: 'AD를 BC로 나타내려고 해요. △ABD가 이등변삼각형이 되어 AD=BD이면, BD는 BC의 반이므로 AD도 BC의 반이에요. 그래서 밑각이 45°임을 이용해요.', cap: 'AD=BD=\\frac{BC}{2}' });
+      steps.push(b45, iso);
+      steps.push({ id: 'eq', k: 'eq', t: `$x=\\overline{AD}=\\overline{BD}=\\frac{\\overline{BC}}{2}=\\frac{${2 * m}}{2}=${m}$ (cm)`, cap: `x=AD=BD=\\frac{${2 * m}}{2}=${m} cm` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${m}\\text{ cm}$`, cap: `x = ${m} cm` });
+      items.push(SK.len(A, D, left, 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 18, gap: 8, dy: 26, labels: { ans: `x=${m} cm` } }), SK.dim(B, Cc, cen, `${2 * m} cm`, { on: ['given', 'eq'], col: 'sky', size: 16, off: 34 }), ...mid2);
+    } else {
+      steps.push({ id: 'given', k: 'given', t: `${g0} 구하는 것은 $\\angle BAD=x$.`, cap: '∠A=90°, AB=AC, D는 BC의 중점' });
+      steps.push({ id: 'idea', k: 'idea', t: '$\\angle BAD$는 $\\angle A$를 둘로 나눈 각이에요. D가 BC의 중점이면 AD가 꼭지각을 이등분하는지, 두 삼각형 ABD, ACD가 합동인지 확인하면 돼요.', cap: 'D가 중점 → △ABD≡△ACD → ∠BAD=∠CAD' });
+      steps.push({ id: 'cong', k: 'fig', lb: '합동 찾기', t: '△ABD와 △ACD에서 $\\overline{AB}=\\overline{AC}$, $\\overline{BD}=\\overline{CD}$, $\\overline{AD}$는 공통이므로 △ABD≡△ACD (SSS 합동). 그래서 $\\angle BAD=\\angle CAD$예요.', cap: 'AB=AC, BD=CD, AD 공통 → △ABD≡△ACD (SSS)' });
+      steps.push({ id: 'eq', k: 'eq', t: '$\\angle BAD+\\angle CAD=90^{\\circ}$이고 두 각이 같으므로 $x=\\frac{90^{\\circ}}{2}=45^{\\circ}$', cap: 'x=\\frac{90°}{2}=45°' });
+      steps.push({ id: 'ans', k: 'ans', t: '$x=45^{\\circ}$', cap: 'x = 45°' });
+      items.length = 0;
+      items.push(SK.ang(A, B, Cc, { r: 52, on: ['given'], col: 'sky', fa: 0.05 }), SK.tick(A, B, 1, { col: 'amber' }), SK.tick(A, Cc, 1, { col: 'amber' }), SK.tick(B, D, 1, { at: 'given', col: 'rose' }), SK.tick(D, Cc, 1, { at: 'given', col: 'rose' }), SK.seg(A, D, { at: 'given', col: 'green', w: 3.6 }),
+        SK.fill([A, B, D], { at: 'cong', col: 'sky', a: 0.26 }), SK.fill([A, D, Cc], { at: 'cong', col: 'green', a: 0.26 }),
+        SK.ang(A, B, D, { r: 40, ld: 64, rings: 2, on: ['given', 'cong', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: 'x=45°' }, gl: true, cut: [0, 6] }),
+        SK.ang(A, D, Cc, { r: 40, ld: 64, rings: 2, at: 'cong', col: 'green', cut: [6, 0], label: '', to: 'eq' }));
+    }
+    return {
+      fit: [A, B, Cc, pt(0, v === 2 ? 0.1 : 0.5)], steps, items,
+      base: (b) => { G.fillPoly(b, [A, B, Cc], 'sky', 0.08); G.poly(b, [A, B, Cc], 'ink', 3.6); },
+      names: (b) => { G.dots(b, [A, B, Cc], ['A', 'B', 'C'], cen, { size: 18 }); b.point(D, { color: 'ink', r: 4.5 }); T(b, D, 'D', { dy: 18, size: 18 }); }
+    };
+  };
+  i4.solve = mkSolve(i4Plan, { quickTitle: '10초 컷 · 빗변의 중점에서 직각 꼭짓점까지는 빗변의 반', quick: (M, s) => { const v = (s.trV || 0) % 3; return v === 0 ? { steps: `<p>직각삼각형에서 빗변의 중점에서 직각 꼭짓점까지의 거리는 빗변의 반이므로 $\\overline{BC}=2\\times\\overline{AD}=2\\times${M.m}=${2 * M.m}$ (cm)</p>`, note: 'AD=BD=CD예요.' } : v === 1 ? { steps: `<p>$\\overline{AD}=\\frac{1}{2}\\overline{BC}=\\frac{${M.bc}}{2}=${M.m}$ (cm)</p>`, note: 'AD=BD=CD예요.' } : { steps: '<p>직각이등변삼각형에서 꼭지각(직각)의 이등분선이므로 $x=\\frac{90^{\\circ}}{2}=45^{\\circ}$</p>', note: '이등변삼각형의 꼭지각의 이등분선은 꼭지각을 반으로 나눠요.' }; } });
+
+  /* ---- t1-5 누운 이등변삼각형 · v0: ∠A → ∠B · v1: ∠B → ∠A ---- */
+  const i5Plan = (M, s) => {
+    const { a, b: bb, g } = M, { A, B, C: Cc } = g, v = (s.trV || 0) % 2, cen = pt(A.x * 0.3, 0);
+    const x = v === 0 ? bb : a, steps = [], items = [];
+    const apex = (o) => SK.ang(A, B, Cc, { r: 32, ld: 56, ...o });
+    const angB = (o) => SK.ang(B, Cc, A, { r: 30, ld: 54, rings: 2, ...o });
+    const angC = (o) => SK.ang(Cc, A, B, { r: 30, ld: 54, rings: 2, ...o });
+    items.push(SK.fill([A, B, Cc], { at: 'idea', col: 'violet', a: 0.16 }), SK.tick(A, B, 1, { col: 'amber' }), SK.tick(A, Cc, 1, { col: 'amber' }));
+    const idea0 = '그림이 누워 있어도 같은 길이의 눈금이 있는 두 변 AB, AC가 만나는 점 A가 꼭지점이에요. 그래서 밑각은 꼭지점이 아닌 B, C의 각이고, 이 둘이 서로 같아요.';
+    if (v === 0) {
+      steps.push({ id: 'given', k: 'given', t: `${eqAB}인 이등변삼각형이 옆으로 누워 있어요. $\\angle A=${dd(a)}$이고, 구하는 것은 $\\angle B=x$.`, cap: `AB=AC, ∠A=${a}°` });
+      steps.push({ id: 'idea', k: 'idea', t: `${idea0} 세 각의 합이 $180^{\\circ}$이니, 꼭지각을 빼고 반으로 나누면 한 밑각이에요.`, cap: '같은 눈금의 두 변이 만나는 점 A가 꼭지점' });
+      steps.push({ id: 'fig', k: 'fig', lb: '그림 변화', t: `$\\angle C$도 $\\angle B$와 같으니까 같은 호를 그려요. 두 밑각의 합은 $180^{\\circ}-${dd(a)}=${dd(180 - a)}$예요.`, cap: `∠B=∠C, ∠B+∠C=180°−${a}°=${180 - a}°` });
+      steps.push({ id: 'eq', k: 'eq', t: `$x=\\frac{180^{\\circ}-${dd(a)}}{2}=\\frac{${dd(180 - a)}}{2}=${dd(bb)}$`, cap: `x=\\frac{180°−${a}°}{2}=${bb}°` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(bb)}$`, cap: `x = ${bb}°` });
+      items.push(apex({ on: ['given'], col: 'sky', label: dg(a), gl: true, glTo: 'eq' }), angB({ on: ['given', 'fig', 'eq', 'ans'], col: 'amber', cols: { fig: 'green' }, label: 'x', size: 17, labels: { ans: `x=${bb}°` }, gl: true }), angC({ on: ['fig'], col: 'green' }));
+    } else {
+      steps.push({ id: 'given', k: 'given', t: `${eqAB}인 이등변삼각형이 옆으로 누워 있어요. $\\angle B=${dd(bb)}$이고, 구하는 것은 꼭지각 $\\angle A=x$.`, cap: `AB=AC, ∠B=${bb}°` });
+      steps.push({ id: 'idea', k: 'idea', t: `${idea0} 그러니 $\\angle C$도 ${bb}°이고, 세 각의 합 $180^{\\circ}$에서 두 밑각을 빼면 꼭지각이 나와요.`, cap: `밑각이 같다 → ∠C=∠B=${bb}°` });
+      steps.push({ id: 'fig', k: 'fig', lb: '그림 변화', t: `$\\angle C=\\angle B=${dd(bb)}$이므로 $\\angle C$에도 같은 호와 ${bb}°를 써요.`, cap: `∠C=∠B=${bb}°` });
+      steps.push({ id: 'eq', k: 'eq', t: `$x=180^{\\circ}-${dd(bb)}-${dd(bb)}=${dd(a)}$`, cap: `x=180°−${bb}°−${bb}°=${a}°` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(a)}$`, cap: `x = ${a}°` });
+      items.push(angB({ on: ['given'], col: 'sky', label: dg(bb), gl: true, glTo: 'eq' }), angC({ on: ['fig'], col: 'green', label: dg(bb), gl: true, glTo: 'eq' }), apex({ on: ['given', 'eq', 'ans'], col: 'amber', label: 'x', size: 17, labels: { ans: `x=${a}°` }, gl: true }));
+    }
+    void x;
+    return {
+      fit: [A, B, Cc], steps, items, l: 50, r: 50,
+      base: (b) => { G.fillPoly(b, [A, B, Cc], 'sky', 0.08); G.poly(b, [A, B, Cc], 'ink', 3.6); },
+      names: (b) => G.dots(b, [A, B, Cc], ['A', 'B', 'C'], cen, { size: 18 })
+    };
+  };
+  i5.solve = mkSolve(i5Plan);
+
+  /* ---- t1-6 대칭축 위의 점 P (옳은 것 고르기 → 값 구하기) · v0: ∠A, ∠PCB → ∠ABP · v1: ∠PBC → ∠BPC ---- */
+  const i6Plan = (M, s) => {
+    const { a, b: bb, th, rest, g, P: Pp } = M, { A, B, C: Cc, D } = g, v = (s.trV || 0) % 2, cen = pt(A.x * 0.3, 0), x = v === 0 ? rest : 180 - 2 * th;
+    const steps = [], items = [];
+    const g0 = `$${ov('AB')}=${ov('AC')}$이고 점 P는 꼭지각의 이등분선 AD 위의 점이에요.`;
+    items.push(SK.tick(A, B, 1, { col: 'amber' }), SK.tick(A, Cc, 1, { col: 'amber' }), SK.seg(A, D, { at: 'given', col: 'green', w: 3.4 }),
+      SK.fill([Pp, B, D], { at: 'sym', col: 'sky', a: 0.26 }), SK.fill([Pp, D, Cc], { at: 'sym', col: 'green', a: 0.26 }),
+      SK.tick(Pp, B, 2, { at: 'sym', col: 'rose' }), SK.tick(Pp, Cc, 2, { at: 'sym', col: 'rose' }),
+      SK.ang(D, Pp, B, { r: 20, at: 'sym', col: 'green' }), SK.ang(D, Pp, Cc, { r: 20, at: 'sym', col: 'green' }));
+    const sym = { id: 'sym', k: 'fig', lb: '합동 찾기', t: `AD는 BC를 수직이등분하므로 △PBD와 △PCD에서 $\\overline{BD}=\\overline{CD}$, $\\angle PDB=\\angle PDC=90^{\\circ}$, $\\overline{PD}$는 공통이에요. 따라서 △PBD≡△PCD (SAS 합동)이고 $\\overline{PB}=\\overline{PC}$, $\\angle PBC=\\angle PCB=${dd(th)}$예요.`, cap: `△PBD≡△PCD → PB=PC, ∠PBC=∠PCB=${th}°` };
+    const outB = (str, o) => SK.txt(B, str, { dx: 34, dy: 22, size: 15, ...o }), outC = (str, o) => SK.txt(Cc, str, { dx: 34, dy: -22, size: 15, ...o });
+    if (v === 0) {
+      steps.push({ id: 'given', k: 'given', t: `${g0} $\\angle A=${dd(a)}$, $\\angle PCB=${dd(th)}$이고, 구하는 것은 $\\angle ABP=x$.`, cap: `AB=AC, ∠A=${a}°, ∠PCB=${th}°` });
+      steps.push({ id: 'idea', k: 'idea', t: 'P가 이등분선 AD 위에 있으면 PB=PC예요. 그러면 $\\angle PBC=\\angle PCB$를 알 수 있고, $\\angle ABP$는 밑각 $\\angle ABC$에서 $\\angle PBC$를 뺀 각이에요.', cap: '∠ABP = ∠ABC − ∠PBC' });
+      steps.push(sym);
+      steps.push({ id: 'base', k: 'fig', lb: '각 구하기', t: `이등변삼각형의 밑각은 $\\angle ABC=\\frac{180^{\\circ}-${dd(a)}}{2}=${dd(bb)}$예요.`, cap: `∠ABC=\\frac{180°−${a}°}{2}=${bb}°` });
+      steps.push({ id: 'eq', k: 'eq', t: `$x=\\angle ABC-\\angle PBC=${dd(bb)}-${dd(th)}=${dd(rest)}$`, cap: `x=${bb}°−${th}°=${rest}°` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(rest)}$`, cap: `x = ${rest}°` });
+      items.push(SK.ang(A, B, Cc, { r: 30, ld: 62, lr: -a / 4, on: ['given'], col: 'sky', label: dg(a), gl: true, glTo: 'idea' }),
+        SK.ang(Cc, Pp, B, { r: 44, on: ['given', 'sym'], col: 'sky', cols: { sym: 'green' }, gl: false }), outC(dg(th), { on: ['given', 'sym'], col: 'sky', cols: { sym: 'green' } }),
+        SK.ang(B, Pp, Cc, { r: 44, at: 'sym', col: 'green' }), outB(dg(th), { at: 'sym', col: 'green', to: 'sym' }),
+        SK.ang(B, A, Cc, { r: 60, ld: 90, at: 'base', col: 'violet', fa: 0.2, label: dg(bb), size: 16 }),
+        SK.ang(B, A, Pp, { r: 40, on: ['given', 'eq', 'ans'], col: 'amber', fa: 0.5 }), SK.txt(B, 'x', { on: ['given', 'eq', 'ans'], col: 'amber', size: 17, dx: -28, dy: -16, labels: { ans: `x=${rest}°` } }));
+    } else {
+      steps.push({ id: 'given', k: 'given', t: `${g0} $\\angle PBC=${dd(th)}$이고, 구하는 것은 $\\angle BPC=x$.`, cap: `AB=AC, ∠PBC=${th}°` });
+      steps.push({ id: 'idea', k: 'idea', t: 'P가 이등분선 AD 위에 있으면 PB=PC라서 삼각형 PBC는 이등변삼각형이에요. 그러면 $\\angle PCB$도 알 수 있고, 세 각의 합 $180^{\\circ}$에서 꼭지각 $\\angle BPC$를 구해요.', cap: 'PB=PC → △PBC는 이등변삼각형' });
+      steps.push(sym);
+      steps.push({ id: 'eq', k: 'eq', t: `△PBC의 내각의 합에서 $x=180^{\\circ}-${dd(th)}-${dd(th)}=${dd(x)}$`, cap: `x=180°−${th}°−${th}°=${x}°` });
+      steps.push({ id: 'ans', k: 'ans', t: `$x=${dd(x)}$`, cap: `x = ${x}°` });
+      items.push(SK.ang(B, Pp, Cc, { r: 44, on: ['given', 'sym'], col: 'sky', cols: { sym: 'green' } }), outB(dg(th), { on: ['given', 'sym'], col: 'sky', cols: { sym: 'green' }, gl: false }),
+        SK.ang(Cc, Pp, B, { r: 44, at: 'sym', col: 'green' }), outC(dg(th), { at: 'sym', col: 'green', to: 'sym' }),
+        SK.ang(Pp, B, Cc, { r: 16, on: ['given', 'eq', 'ans'], col: 'amber', fa: 0.5 }),
+        SK.fn((b, st, id) => { if (id === 'ans') T(b, Pp, `x=${x}°`, { color: 'amber', size: 16, dx: -46, dy: -18 }); else T(b, Pp, 'x', { color: st === 'on' ? 'amber' : 'ink', size: 17, dx: 28, dy: 0, alpha: st === 'on' ? undefined : 0.55 }); }, { on: ['given', 'eq', 'ans'] }));
+    }
+    return {
+      fit: [A, B, Cc, pt(0.45, 0)], steps, items, l: 50, r: 56,
+      base: (b) => { G.fillPoly(b, [A, B, Cc], 'sky', 0.08); G.poly(b, [A, B, Cc], 'ink', 3.6); G.line(b, B, Pp, 'ink', 3); G.line(b, Cc, Pp, 'ink', 3); },
+      names: (b) => { [A, B, Cc, D, Pp].forEach((q) => b.point(q, { color: q === Pp ? 'amber' : 'ink', r: q === Pp ? 5.5 : 4.5 })); G.tagOut(b, A, cen, 'A', { size: 18 }); G.tagOut(b, B, cen, 'B', { size: 18 }); G.tagOut(b, Cc, cen, 'C', { size: 18 }); T(b, D, 'D', { dx: 14, dy: -2, size: 18 }); T(b, Pp, 'P', { dx: -8, dy: 18, size: 18, color: 'amber' }); }
+    };
+  };
+  i6.solve = mkSolve(i6Plan);
+  i6.reroll = ((r0) => (s) => { r0(s); const b = (180 - even(s.trPa)) / 2; s.trPt = Math.max(10, Math.min(rint(22, 32), b - 15)); })(i6.reroll);
+  i6.prob = (M, s) => {
+    const { a, b: bb, th, rest } = M, v = (s.trV || 0) % 2, key = `${v}:${a}:${th}`;
+    if (v === 0) return numProb({ tag: '대칭축 위의 점 · ∠ABP', key, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 점 P는 꼭지각의 이등분선 AD 위의 점이다. ∠A=${a}°, ∠PCB=${th}°일 때, ∠ABP의 크기 $x$는?`, correct: rest, wrongs: [[bb, '밑각 ∠ABC 전체예요. ∠PBC를 빼야 해요.'], [th, '∠PBC의 크기예요.'], [a / 2, '다시 생각해 보세요.'], [rest + 5, '다시 계산해 보세요.'], [rest - 5, '다시 계산해 보세요.']], ...degOpts(5) });
+    return numProb({ tag: '대칭축 위의 점 · ∠BPC', key, stem: `그림과 같이 ${S('AB')}=${S('AC')}인 이등변삼각형 ABC에서 점 P는 꼭지각의 이등분선 AD 위의 점이다. ∠PBC=${th}°일 때, ∠BPC의 크기 $x$는?`, correct: 180 - 2 * th, wrongs: [[th, '∠PBC의 크기예요.'], [180 - th, '다시 생각해 보세요.'], [90 - th, '∠BPD의 크기예요. ∠BPC는 그 2배예요.'], [180 - 2 * th + 10, '다시 계산해 보세요.'], [180 - 2 * th - 10, '다시 계산해 보세요.']], ...degOpts(5) });
+  };
+
+  /* ---- t1-7 변의 길이가 x의 식: ∠B=∠C → AB=AC → 방정식 ---- */
+  const i7Plan = (M, s) => {
+    const { Q, x0 } = M, texE = (p, q, sg) => `${p === 1 ? '' : p}x${q < 0 ? '-' + (-q) : '+' + q}`;
+    const e1 = texE(Q.p, Q.q), e2 = texE(Q.r, Q.sv), pe1 = e1.replace('-', '−'), pe2 = e2;
+    const l1 = Q.p * x0 + Q.q, l2 = Q.r * x0 + Q.sv, bc = Math.max(l1, l2) * 0.9 + 0.5, xx = (l1 * l1 - l2 * l2 + bc * bc) / (2 * bc), hh = Math.sqrt(Math.max(1e-6, l1 * l1 - xx * xx));
+    const A = pt(xx, -hh), B = pt(0, 0), Cc = pt(bc, 0), cen = pt((A.x + bc) / 3, A.y / 3), steps = [], items = [];
+    steps.push({ id: 'given', k: 'given', t: `$\\angle B=\\angle C$이고 $${ov('AB')}=(${e1})$ cm, $${ov('AC')}=(${e2})$ cm예요. 구하는 것은 $x$의 값.`, cap: `∠B=∠C, AB=(${pe1}) cm, AC=(${pe2}) cm` });
+    steps.push({ id: 'idea', k: 'idea', t: '두 내각이 같은 삼각형은 이등변삼각형이라서, 그 각의 마주 보는 변 AB, AC의 길이가 같아요. 같은 길이를 두 가지 식으로 나타냈으니 "="로 이으면 $x$에 대한 방정식이 돼요.', cap: '∠B=∠C → AB=AC → 두 식을 =로 잇기' });
+    steps.push({ id: 'fig', k: 'fig', lb: '그림 변화', t: '$\\angle B=\\angle C$이므로 마주 보는 변 AB, AC에 같은 눈금을 그려요.', cap: 'AB=AC' });
+    steps.push({ id: 'eq1', k: 'eq', lb: '식 세우기', t: `$${e1}=${e2}$`, cap: `${pe1} = ${pe2}` });
+    steps.push({ id: 'eq2', k: 'eq', lb: '식 풀기', t: `$${Q.p - Q.r === 1 ? '' : Q.p - Q.r}x=${Q.sv - Q.q}$이므로 $x=${x0}$`, cap: `${Q.p - Q.r === 1 ? '' : Q.p - Q.r}x=${Q.sv - Q.q} → x=${x0}` });
+    steps.push({ id: 'ans', k: 'ans', t: `$x=${x0}$ (이때 $\\overline{AB}=\\overline{AC}=${l1}$ cm로 양수예요)`, cap: `x = ${x0}  (AB=AC=${l1} cm)` });
+    items.push(SK.ang(B, Cc, A, { rings: 2, r: 30, on: ['given'], col: 'sky' }), SK.ang(Cc, A, B, { rings: 2, r: 30, on: ['given'], col: 'sky' }),
+      SK.len(A, B, cen, `(${pe1})cm`, { on: ['given', 'eq1', 'ans'], col: 'sky', size: 16, gap: 6, labels: { ans: `${l1} cm` } }), SK.len(A, Cc, cen, `(${pe2})cm`, { on: ['given', 'eq1', 'ans'], col: 'sky', size: 16, gap: 6, labels: { ans: `${l2} cm` } }),
+      SK.tick(A, B, 1, { at: 'fig', col: 'amber' }), SK.tick(A, Cc, 1, { at: 'fig', col: 'amber' }));
+    return {
+      fit: [A, B, Cc], steps, items, l: 56, r: 56,
+      base: (b) => { G.fillPoly(b, [A, B, Cc], 'sky', 0.08); G.poly(b, [A, B, Cc], 'ink', 3.6); },
+      names: (b) => G.dots(b, [A, B, Cc], ['A', 'B', 'C'], cen, { size: 18 })
+    };
+  };
+  i7.solve = mkSolve(i7Plan);
+
+  /* @@SOLVE-END */
 
   G.register(10, 't1', '① 이등변삼각형', '이등변삼각형', PARAMS, [i1, i2, i3, i4, i5, i6, i7]);
 })();
