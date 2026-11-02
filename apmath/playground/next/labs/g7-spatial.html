@@ -56,14 +56,8 @@ function start() {
     legacy: '../../labs/g7/spatial-relations.html',
     board: {
       kind: 'figure', grid: false, pad: 0.02, minZoom: 0.5, maxZoom: 6,
-      // 빈 곳을 끌면 시점이 제자리에서 돌아갑니다(좌우 회전·위아래 기울기)
-      orbit: (s, dx, dy) => {
-        s.spSpin = false;
-        s.spYaw = (s.spYaw || 0) + dx * 0.5;
-        if (s.spYaw > 180) s.spYaw -= 360;
-        if (s.spYaw < -180) s.spYaw += 360;
-        s.spPitch = clamp((s.spPitch == null ? 24 : s.spPitch) + dy * 0.4, -10, 80);
-      }
+      // 빈 곳을 끌면 시점이 제자리에서 돌아갑니다(좌우 회전·위아래 기울기). 범위 보정(겨냥도가 포개지는 시점 건너뛰기)은 g7-spatial/core.js 의 orbit·view 가 합니다.
+      orbit: (s, dx, dy, lab) => window.APL_SP.orbit(s, dx, dy, lab)
     },
     // 장면에 들어올 때마다 화면 범위를 처음 상태로 되돌립니다. 그림 맞춤은 장면 그리기에서 매번 합니다.
     enter: (s, sc, lab) => { if (lab && lab.board && s === lab.s) { lab.board.fit(); lab.board.setPanes(null); lab.board.setInsets({ top: 0, right: 0, bottom: 0, left: 0 }); } },

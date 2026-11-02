@@ -9,7 +9,7 @@
   'use strict';
   const G = window.APL_SP;
   if (!G) return;
-  const { jo, clamp, pick, rint, buildSolid, classify, relEdges, edgeByKey, scene3, drawSolid, drawVerts, add3, mid3, lineMeetPoint, sub3, lerp3, len3, v3, P, VIEW, mkChoices, rd, notes, ov, DEG } = G;
+  const { jo, clamp, pick, rint, buildSolid, classify, relEdges, edgeByKey, scene3, drawSolid, drawVerts, bestYaw, add3, mid3, lineMeetPoint, sub3, lerp3, len3, v3, P, VIEW, mkChoices, rd, notes, ov, DEG } = G;
 
   const PARAMS = {
     spExt: P('모서리 늘이기', 0, 1, 0.01, 1, { color: 'violet', hint: '두 모서리를 쭉 늘이면 한 점에서 만나는 것이 있어요', format: (v) => Math.round(v * 100) + '%' }),
@@ -30,6 +30,8 @@
         const sol = solOf(s);
         return cfg.refs(sol).map((r, i) => ({ group: i === 0 ? '기준 모서리' : '', label: `${r.label} ${edgeByKey(sol, r.key).name}`, apply: (st) => { st.spRef = r.key; }, on: (st) => st.spRef === r.key }));
       },
+      // 처음 시점: 입체마다 꼭짓점·모서리가 포개지지 않는 보기 좋은 각(core.js bestYaw)
+      cam0: (s) => ({ yaw: bestYaw(solOf(s), 24), pitch: 24 }),
       init: (s) => { s.spRef = cfg.refs(solOf(s))[0].key; s.spTgt = cfg.tgt || null; s.spExt = cfg.ext0 != null ? cfg.ext0 : 1; if (vary) s.spN = cfg.n0 || 6; },
       reroll: (s) => {
         const sol = solOf(s);
@@ -72,30 +74,46 @@
       const exts = g.ext.map((e) => ({ e, X: lineMeetPoint(A, B, sol.verts[e.u], sol.verts[e.v]) })).filter((q) => q.X);
       const extAt = C.problem || st === 0 ? 0 : C.review ? (st >= 1 ? 1 : 0) : s.spExt;
       const lean = !!cfg.lean; // 정보가 많은 장면: 첫 화면(탐구)에서는 번호를 빼고 '만나요'를 점 위에 두어 입체를 크게 보입니다
-      const lr = exts.length ? (lean ? 40 : 64) : 40;
-      D.fitPts(sol.order.map((k) => sol.verts[k]).concat(extAt > 0.02 ? exts.map((q) => q.X) : []), { t: C.problem ? 44 : lean && st === 4 ? 40 : 58, b: lean ? 44 : 54, l: lr, r: lr });
+      // 늘인 선이 너무 멀리서 만나면(n각기둥 등) 그 점까지 그림을 넓히면 입체가 작아져 모양을 알아볼 수 없습니다.
+      // 멀리 만나는 쌍은 입체 크기의 1.15배까지만 늘려 그리고 「늘이면 만나요」 글자로 알립니다(만나는 점 자체는 개수·정답에 쓰이지 않아요).
+      const FAR = 1.05 * sol.R, Lcap = 0.6 * sol.R; // 끝점에서 만나는 점까지가 입체 크기(1.05R)보다 멀면 0.6R 까지만 늘려 그립니다
+      const nearEnd = (P0, P1, X) => (len3(sub3(P0, X)) < len3(sub3(P1, X)) ? P0 : P1);
+      const extInfo = exts.map(({ e, X }) => {
+        const raw = [[A, B], [sol.verts[e.u], sol.verts[e.v]]].map(([P0, P1]) => { const n0 = nearEnd(P0, P1, X); return { n0, d: len3(sub3(n0, X)) }; });
+        const far = raw.some((q) => q.d > FAR);
+        const segs = raw.map((q) => ({ n0: q.n0, end: far ? lerp3(q.n0, X, Math.min(1, Lcap / q.d)) : X, capped: far }));
+        return { e, X, segs, far };
+      });
+      const showExt = !C.problem && (st === 4 || st === 1) && extAt > 0.02; // 그림에 늘인 선이 실제로 그려질 때만 화면 맞춤에 넣습니다
+      const lr = exts.length ? (lean ? 40 : extInfo.some((q) => q.far) ? 44 : 64) : 40;
+      D.fitPts(sol.order.map((k) => sol.verts[k]).concat(showExt ? extInfo.flatMap((q) => (q.far ? q.segs.map((g) => g.end) : [q.X])) : []), { t: C.problem ? 44 : lean && st === 4 ? 40 : 58, b: lean ? 44 : 54, l: lr, r: lr });
       const style = (e) => {
         const r = e.rel;
         if (r === 'ref') return { color: AMB, width: 6.4, glow: true };
         if (st === 0) return { color: 'ink', width: 3.2 };
-        if (r === 'meet' || r === 'ext') return st === 4 || st === 1 ? { color: RED, width: st === 1 ? 5 : 4, dash: r === 'ext' ? [7, 5] : undefined } : { color: RED, width: 1.6, alpha: 0.2, dash: r === 'ext' ? [7, 5] : undefined };
-        if (r === 'par') return st === 4 || st === 2 ? { color: BLUE, width: st === 2 ? 5 : 4 } : st > 2 ? { color: BLUE, width: 1.6, alpha: 0.2 } : { color: 'ink', width: 3 };
+        // 이미 지운 모서리도 입체의 윤곽이 보이도록 흐리게만 남깁니다(너무 연하면 모양이 사라져요).
+        if (r === 'meet' || r === 'ext') return st === 4 || st === 1 ? { color: RED, width: st === 1 ? 5 : 4, dash: r === 'ext' ? [7, 5] : undefined } : { color: RED, width: 2, alpha: 0.42, dash: r === 'ext' ? [7, 5] : undefined };
+        if (r === 'par') return st === 4 || st === 2 ? { color: BLUE, width: st === 2 ? 5 : 4 } : st > 2 ? { color: BLUE, width: 2, alpha: 0.42 } : { color: 'ink', width: 3 };
         if (r === 'skew') return st === 4 || st === 3 ? { color: GREEN, width: 5.6, glow: st === 3 } : { color: 'ink', width: 3 };
         return { color: 'ink', width: 3 };
       };
       // 안 보이는 모서리는 점선, 면은 아주 연하게
-      const { vis } = drawSolid(D, sol, style, { faceAlpha: 0.06 });
+      // 꼬인 모서리가 기준 모서리와 화면에서 교차해 「만나는 것처럼」 보이지 않도록, 뒤쪽 모서리(점선)는 교차점에서 끊어 그립니다.
+      const isKey = (e) => e.rel === 'ref' || (M.tgt && e.key === M.tgt.key);
+      const { vis } = drawSolid(D, sol, style, { faceAlpha: 0.06, over: (f, e) => isKey(f) || isKey(e) });
       // 늘인 선(연장선)과 만나는 점
       if (extAt > 0 && !C.problem && (st === 4 || st === 1)) {
-        exts.forEach(({ e, X }) => {
-          const near = (P0, P1) => (len3(sub3(P0, X)) < len3(sub3(P1, X)) ? P0 : P1);
-          [[A, B], [sol.verts[e.u], sol.verts[e.v]]].forEach(([P0, P1]) => {
-            const n0 = near(P0, P1);
-            D.line(n0, lerp3(n0, X, extAt), VIO, 3.2, { dash: [6, 5] });
-          });
-          if (extAt > 0.98) { b.point(D.P(X), { color: VIO, r: 6 }); D.obstacle(X, 9); }
+        extInfo.forEach((q) => {
+          q.segs.forEach((g) => D.line(g.n0, lerp3(g.n0, g.end, extAt), VIO, 3.2, { dash: [6, 5] }));
+          if (extAt > 0.98 && !q.far) { b.point(D.P(q.X), { color: VIO, r: 6 }); D.obstacle(q.X, 9); }
         });
-        if (extAt > 0.98) exts.forEach(({ X }) => D.label(X, '만나요', { color: VIO, size: 15, dir: lean ? { x: D.out(X, sol.ctr).x * 0.8, y: -0.7 } : D.out(X, sol.ctr), gap: 8 }));
+        let farLabelled = 0;
+        if (extAt > 0.98) extInfo.forEach((q) => {
+          if (q.far && farLabelled >= 2) return; // 멀리 만나는 쌍이 여럿이어도 글자는 두 곳까지만(겹침 방지)
+          if (q.far) farLabelled++;
+          if (!q.far) D.label(q.X, '만나요', { color: VIO, size: 15, dir: lean ? { x: D.out(q.X, sol.ctr).x * 0.8, y: -0.7 } : D.out(q.X, sol.ctr), gap: 8 });
+          else { const g = q.segs.find((x) => x.capped) || q.segs[0]; D.label(g.end, '늘이면 만나요', { color: VIO, size: 14, dir: D.out(g.end, sol.ctr), gap: 8 }); }
+        });
       }
       // 평행 표시(화살표)
       if (!C.problem && (st === 4 || st === 2 || (st === 3 && false))) {
