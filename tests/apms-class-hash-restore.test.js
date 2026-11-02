@@ -159,6 +159,6 @@ test('카드 제목과 스크립트 버전', () => {
     assert.ok(read('apmath/js/dashboard.js').includes('>반 관리</h3>') && read('apmath/js/dashboard-teacher.js').includes('>반 관리</h3>'));
     assert.ok(!/>학급관리<\/h3>/.test(read('apmath/js/dashboard.js') + read('apmath/js/dashboard-teacher.js')));
     for (const f of ['core.js', 'ui.js', 'dashboard.js', 'dashboard-teacher.js']) {
-        assert.ok(new RegExp(`js/${f.replace('.', '\\.')}\\?v=20261102-nav-hash-1`).test(index), `${f} ?v= 올림`);
+        assert.ok(new RegExp(`js/${f.replace('.', '\\.')}\\?v=20261102-(nav-hash|cleanup)-\\d`).test(index), `${f} ?v= 올림`);
     }
 });

@@ -170,7 +170,7 @@ test('M6 history: status/transfer history are inline details, not modal steps', 
     assert.match(section, /wsHistoryHtml\(sid\)/);
     // 옛 열기 함수는 이력 구역이 화면에 있으면 그 자리를 펼치고, 없을 때만 옛 모달로 간다(얇은 래퍼 규칙)
     assert.match(slice(student, 'async function openStudentStatusHistoryModal(', 'async function openStudentClassTransferHistoryModal('), /wsHistoryOpenInline\('status', sid\)\) return;/);
-    assert.match(slice(student, 'async function openStudentClassTransferHistoryModal(', 'async function ensureStudentParentContactDataLoaded('), /wsHistoryOpenInline\('transfer', sid\)\) return;/);
+    assert.match(slice(student, 'async function openStudentClassTransferHistoryModal(', 'function resetConsultationAiUiState('), /wsHistoryOpenInline\('transfer', sid\)\) return;/);
     assert.match(index, /js\/ws-student-history\.js/);
     assert.match(read('apmath/css/ws-student.css'), /\.ws-history > summary \{[^}]*min-height: 44px/);
 });

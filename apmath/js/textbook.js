@@ -5,8 +5,7 @@
  * 교재 추가·수정·삭제는 이 파일의 handleAddTextbook / handlePatchTextbook / handleDeleteTextbook 한 벌이다.
  * 진도 작업 화면(classroom.js 진도 구간 + ws-progress-books.js)이 이 함수들을 부르고,
  * 저장이 끝나면 응답으로 받은 행을 state.db에 바로 반영한 뒤 같은 자리에서 다시 그린다(전체 loadData·모달 재오픈 없음).
- * 옛 교재 모달 3종(openTextbookManageModal / openAddTextbookModal / openEditTextbookModal)은 호출처가 없어
- * 새 교재 관리 모드를 여는 얇은 래퍼만 남겼다(삭제는 별도 PR).
+ * 교재 관리 화면은 진도 작업 화면의 관리 모드(openGlobalTextbookManage)다. 옛 교재 모달 3종은 정리 PR에서 지웠다.
  */
 
 function textbookJsArg(value) {
@@ -171,20 +170,4 @@ async function handleDeleteTextbook(tbId) {
         afterTextbookMutation({ removedId: tbId });
         return { id: String(tbId), deleted: true };
     });
-}
-
-// ---- 옛 교재 모달 3종: 새 교재 관리 모드로 가는 얇은 래퍼 (호출처 없음, 삭제는 별도 PR) ----
-
-function openTextbookManageModal() {
-    if (typeof openGlobalTextbookManage === 'function') return openGlobalTextbookManage();
-}
-
-function openAddTextbookModal() {
-    if (typeof openGlobalTextbookManage === 'function') return openGlobalTextbookManage({ addOpen: true });
-}
-
-function openEditTextbookModal(tbId) {
-    const book = (state.db?.class_textbooks || []).find(item => String(item?.id || '') === String(tbId));
-    if (!book || typeof openGlobalTextbookManage !== 'function') return;
-    return openGlobalTextbookManage({ classId: String(book.class_id || ''), textbookId: String(book.id || '') });
 }
