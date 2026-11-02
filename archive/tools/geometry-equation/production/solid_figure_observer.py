@@ -804,7 +804,15 @@ def _ellipse_point(cx, cy, rx, ry, u): return (cx + rx * math.cos(u), cy - ry * 
 
 
 # --- audit ----------------------------------------------------------------------------------------------------------------------------------
+def normalize_diameter_dims(plan):
+    """dims[].diameter:"bottom"|"top"|"level" is a radius dimension across the whole circle: the same dim written radius with a flag, so every radius rule reads it (its value is twice the radius, its line starts at the left extreme)"""
+    dims = plan.get('dims')
+    if not isinstance(dims, list) or not any(isinstance(d, dict) and d.get('diameter') is not None for d in dims): return plan
+    return {**plan, 'dims': [({**{k: v for k, v in d.items() if k != 'diameter'}, 'radius': d['diameter'], 'diameterDim': True} if isinstance(d, dict) and d.get('diameter') is not None else d) for d in dims]}
+
+
 def audit(plan, svg):
+    plan = normalize_diameter_dims(plan)
     errors = []
     final_sha = 'sha256:' + hashlib.sha256(svg.encode('utf-8')).hexdigest()
     try: root = ET.fromstring(svg)
@@ -2703,6 +2711,54 @@ def check_height_feet_and_poly_lines(plan, ctx):
         for m in range(2): ctx['segments'].append((pts[m], pts[m + 1]))
 
 
+HIGHLIGHT_COLOURS = {'LIGHT': ('#7fa6e8', 0.32), 'MEDIUM': ('#7fa6e8', 0.55), 'WARM': ('#f2a65a', 0.42), 'GREEN': ('#6fcf97', 0.42), 'ROSE': ('#e98aa8', 0.42), 'VIOLET': ('#a78bdb', 0.42)}
+OUTSIDE_STEP = 64.0   # px: each further dimension on one side of one round solid stands this much further out
+SEGMENT_LINE_FIRST = 22.0   # px: the dimension line of an edge length written with dims[].line (tier 1) stands this far from the edge, sideways
+
+
+def segment_dim_line(a, b, side, tier):
+    """dims[].line:1|2|3 of an edge or segment (px a to b on the page): the segment moved perpendicular to itself to the LEFT or RIGHT by 22 px plus one step for each further tier"""
+    dx, dy = b[0] - a[0], b[1] - a[1]
+    length = math.hypot(dx, dy) or 1.0
+    n = (-dy / length, dx / length)
+    if n[0] * (-1.0 if side == 'LEFT' else 1.0) < 0: n = (-n[0], -n[1])
+    off = SEGMENT_LINE_FIRST + OUTSIDE_STEP * (tier - 1)
+    return (a[0] + n[0] * off, a[1] + n[1] * off), (b[0] + n[0] * off, b[1] + n[1] * off)
+
+
+
+def outside_tiers(plan, ctx, solids):
+    """dim index -> tier (0 = nearest the solid) of the height and level dimensions written outside a round solid (dims[].side LEFT|RIGHT): those of one solid on one side are layered by length, the shortest
+    innermost (ties: the earlier dim first). Worked out from the plan alone."""
+    section = plan.get('section') or {}
+    mm = re.fullmatch(r'(\d+)/(\d+)', section.get('at') or '')
+    groups = {}
+    for k, d in enumerate(plan.get('dims') or []):
+        side = d.get('side')
+        if side not in ('LEFT', 'RIGHT') or d.get('edge') is not None or d.get('from') is not None: continue
+        if d.get('height') is not None: kind = 'HEIGHT'
+        elif d.get('level') is not None: kind = 'LEVEL'
+        else: continue
+        sid = d.get('solid')
+        if sid is None and kind == 'LEVEL': sid = section.get('solid')
+        if sid is None: sid = next((x['id'] for x in solids.values() if x['cat'] == 'REV'), None)
+        solid = solids.get(sid)
+        if solid is None or solid['cat'] != 'REV' or solid.get('cut'): continue
+        if kind == 'HEIGHT':
+            if axis_carries(ctx, solid): continue
+            span = solid['height']
+        else:
+            if not mm: continue
+            f = int(mm.group(1)) / int(mm.group(2))
+            span = solid['height'] * (1 - f) if d.get('level') == 'top' else solid['height'] * f
+        groups.setdefault((sid, side), []).append((span, k))
+    tiers = {}
+    for items in groups.values():
+        if len(items) < 2: continue
+        for rank, (_, k) in enumerate(sorted(items)): tiers[k] = rank
+    return tiers
+
+
 def check_dim_lines(plan, ctx):
     """The level, level-radius and round height dimension lines run along the model's axis and the level circle."""
     root, frames, scale = ctx.get('root'), ctx.get('px') or {}, ctx.get('scale')
@@ -2711,12 +2767,32 @@ def check_dim_lines(plan, ctx):
     solids = {s['id']: s for s in (ctx.get('solids') or [])}
     section = plan.get('section') or {}
     dims = plan.get('dims') or []
+    tiers = outside_tiers(plan, ctx, solids)
     for el in root.iter(NS + 'line'):
         if el.get('data-role') != 'dim-line':
             continue
         kind = el.get('data-kind')
         dim = el.get('data-dim') or ''
         m = re.fullmatch(r'dim-(\d+)', dim)
+        if kind == 'SEGMENT' and m and int(m.group(1)) - 1 < len(dims):
+            # the dimension line of an edge length (dims[].line): the edge moved sideways, an extension line from each end of the edge up to it
+            d = dims[int(m.group(1)) - 1]
+            named = ctx.get('named') or {}
+            norm = ctx.get('norm') or (lambda x: x)
+            try:
+                a_name, b_name = (d['edge'][0], d['edge'][1]) if d.get('edge') is not None else (d['from'], d['to'])
+                A, B = named[norm(a_name)][1], named[norm(b_name)][1]
+                want = segment_dim_line(A, B, d['side'], int(d['line']))
+            except (KeyError, TypeError, ValueError):
+                ctx['errors'].append('SOLID_DIM_PLAN_UNRESOLVED:' + dim)
+                continue
+            got = ((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2')))
+            if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)): ctx['errors'].append('SOLID_DIM_LINE_MISMATCH:' + dim + ':SEGMENT')
+            exts = [e for e in root.iter(NS + 'line') if e.get('data-role') == 'dim-ext' and e.get('data-dim') == dim]
+            for start, end in ((A, want[0]), (B, want[1])):
+                if not any(_same_segment((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2')), start, end) for e in exts): ctx['errors'].append('SOLID_DIM_EXTENSION_MISMATCH:' + dim)
+            if len(exts) != 2: ctx['errors'].append('SOLID_DIM_EXTENSION_MISMATCH:' + dim)
+            continue
         if kind not in ('LEVEL', 'RADIUS', 'HEIGHT') or not m:
             continue
         k = int(m.group(1)) - 1
@@ -2747,7 +2823,8 @@ def check_dim_lines(plan, ctx):
                 sgn = -1.0 if d['side'] == 'LEFT' else 1.0
                 xs = Tx + sgn * scale * max(solid['r0'], solid['r1'])
                 width = float(root.get('width') or 0)
-                xd = max(SAFE_PX + 2, xs - 26) if sgn < 0 else min(width - SAFE_PX - 2, xs + 26)
+                tier = tiers.get(k, 0)
+                xd = max(SAFE_PX + 2, xs - 26 - OUTSIDE_STEP * tier) if sgn < 0 else min(width - SAFE_PX - 2, xs + 26 + OUTSIDE_STEP * tier)
                 want = ((xd, y_of(0.0)), (xd, y_of(solid['height'])))
                 exts = [e for e in root.iter(NS + 'line') if e.get('data-role') == 'dim-ext' and e.get('data-dim') == dim]
                 for z, rad in ((0.0, solid['r0']), (solid['height'], solid['r1'])):
@@ -2760,14 +2837,40 @@ def check_dim_lines(plan, ctx):
                 continue
             zl = int(mm.group(1)) / int(mm.group(2)) * solid['height']
             # level:"top" dimensions the part above the plane (apex/top down to the section)
-            want = ((Tx, y_of(zl)), (Tx, y_of(solid['height']))) if d.get('level') == 'top' else ((Tx, y_of(0.0)), (Tx, y_of(zl)))
+            z0, z1 = (zl, solid['height']) if d.get('level') == 'top' else (0.0, zl)
+            want = ((Tx, y_of(z0)), (Tx, y_of(z1)))
+            if d.get('side') in ('LEFT', 'RIGHT'):
+                # outside the solid on that side: the dimension line is 26 px (a tier of 64 px more for each shorter dimension on the same side) beyond the widest side, and an extension line, level with each end,
+                # runs from it to the solid's side at that level (the radius there: r0 + (r1 - r0) z / h)
+                sgn = -1.0 if d['side'] == 'LEFT' else 1.0
+                xs = Tx + sgn * scale * max(solid['r0'], solid['r1'])
+                width = float(root.get('width') or 0)
+                tier = tiers.get(k, 0)
+                xd = max(SAFE_PX + 2, xs - 26 - OUTSIDE_STEP * tier) if sgn < 0 else min(width - SAFE_PX - 2, xs + 26 + OUTSIDE_STEP * tier)
+                want = ((xd, y_of(z0)), (xd, y_of(z1)))
+                exts = [e for e in root.iter(NS + 'line') if e.get('data-role') == 'dim-ext' and e.get('data-dim') == dim]
+                for z in (z0, z1):
+                    rad = solid['r0'] + (solid['r1'] - solid['r0']) * z / solid['height']
+                    start, end = (xd, y_of(z)), (Tx + sgn * scale * rad, y_of(z))
+                    if not any(_same_segment((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2')), start, end) for e in exts): ctx['errors'].append('SOLID_DIM_EXTENSION_MISMATCH:' + dim)
+                if len(exts) != 2: ctx['errors'].append('SOLID_DIM_EXTENSION_MISMATCH:' + dim)
         else:
             if d.get('radius') in ('center', 'bottom', 'top'):
                 # a radius runs from the axis to the rim of its circle, level with that circle
                 which = d['radius']
                 zr, rr = (solid['cz'], solid['r0']) if which == 'center' else ((0.0, solid['r0']) if which == 'bottom' else (solid['height'], solid['r1']))
                 cs = project((solid['hx'], solid['hy'], lift + zr)) if which == 'center' else project((0.0, 0.0, lift + zr))   # the centre of the circle on the screen (a ball off the axis: its own)
-                want = ((Tx + scale * cs[0], Ty - scale * cs[1]), (Tx + scale * (cs[0] + rr), Ty - scale * cs[1]))
+                want = ((Tx + scale * (cs[0] - (rr if d.get('diameterDim') else 0.0)), Ty - scale * cs[1]), (Tx + scale * (cs[0] + rr), Ty - scale * cs[1]))
+                if d.get('diameterDim') and d.get('side') in ('TOP', 'BOTTOM'):
+                    # a diameter written outside: 22 px above the top of the circle's ellipse or below its bottom, an extension line from each extreme of the circle up to it
+                    cxp, cyp = Tx + scale * cs[0], Ty - scale * cs[1]
+                    yl = cyp + scale * rr * math.sin(PITCH) + 22.0 if d['side'] == 'BOTTOM' else cyp - scale * rr * math.sin(PITCH) - 22.0
+                    want = ((cxp - scale * rr, yl), (cxp + scale * rr, yl))
+                    exts = [e for e in root.iter(NS + 'line') if e.get('data-role') == 'dim-ext' and e.get('data-dim') == dim]
+                    for sx in (-1.0, 1.0):
+                        start, end = (cxp + sx * scale * rr, cyp), (cxp + sx * scale * rr, yl)
+                        if not any(_same_segment((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2')), start, end) for e in exts): ctx['errors'].append('SOLID_DIM_EXTENSION_MISMATCH:' + dim)
+                    if len(exts) != 2: ctx['errors'].append('SOLID_DIM_EXTENSION_MISMATCH:' + dim)
                 got = ((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2')))
                 if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)): ctx['errors'].append('SOLID_DIM_LINE_MISMATCH:' + dim + ':' + str(kind))
                 continue
@@ -2779,7 +2882,7 @@ def check_dim_lines(plan, ctx):
             f = int(mm.group(1)) / int(mm.group(2))
             zl = f * solid['height']
             rl = solid['r0'] + (solid['r1'] - solid['r0']) * f
-            want = ((Tx, y_of(zl)), (Tx + scale * rl, y_of(zl)))
+            want = ((Tx - (scale * rl if d.get('diameterDim') else 0.0), y_of(zl)), (Tx + scale * rl, y_of(zl)))
         got = ((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2')))
         if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)):
             ctx['errors'].append('SOLID_DIM_LINE_MISMATCH:' + dim + ':' + str(kind))
@@ -3663,7 +3766,9 @@ def expected_dim_values(plan, ctx):
                 a, b = (d['edge'][0], d['edge'][1]) if d.get('edge') is not None else (d['from'], d['to'])
                 norm = ctx.get('norm') or (lambda x: x)
                 A, B = named[norm(a)], named[norm(b)]
-                out[ident] = (vlen(vsub(A[2], B[2])), (A[1], B[1]), symbolic)
+                seg_px = (A[1], B[1])
+                if d.get('line') is not None and d.get('side') in ('LEFT', 'RIGHT'): seg_px = segment_dim_line(A[1], B[1], d['side'], int(d['line']))   # the label stands beside the dimension line
+                out[ident] = (vlen(vsub(A[2], B[2])), seg_px, symbolic)
             else:
                 solid = None
                 want = d.get('solid')
@@ -3685,7 +3790,7 @@ def expected_dim_values(plan, ctx):
                         val = solid['r0'] + (solid['r1'] - solid['r0']) * f
                     elif which == 'bottom': val = solid['r0']
                     else: val = solid['r1']
-                    out[ident] = (val, None, symbolic)
+                    out[ident] = (val * 2 if d.get('diameterDim') else val, None, symbolic)
                 elif d.get('level') is not None:
                     m = re.fullmatch(r'(\d+)/(\d+)', (plan.get('section') or {}).get('at') or '')
                     f = int(m.group(1)) / int(m.group(2))
@@ -3757,6 +3862,7 @@ def audit_net(plan, ctx):
     ctx['expected_name_labels'] = None
     if kind == 'CYLINDER': audit_cylinder_net(plan, ctx, declared)
     elif kind == 'CONE': audit_cone_net(plan, ctx, declared)
+    elif kind == 'CONE_FRUSTUM': audit_cone_frustum_net(plan, ctx, declared)
     else: audit_polyhedron_net(plan, ctx, declared)
     del unit_plan
 
@@ -3863,6 +3969,90 @@ def audit_cone_net(plan, ctx, declared):
     ctx['face_regions']['sector'] = ('poly', [(ax, ay)] + pts)
     ctx['segments'] += [((ax, ay), pts[0])] + [(pts[k], pts[k + 1]) for k in range(32)] + [(pts[-1], (ax, ay))]
     ctx['segments'] += _circle_segments(cx, cy, cr)
+
+
+def audit_cone_frustum_net(plan, ctx, declared):
+    """the net of a cone frustum, worked out again from the plan: the ring-shaped sector has outer radius l*R/(R-r), inner radius l*r/(R-r) and central angle 360*(R-r)/l about one apex,
+    its two straight edges are the slant l long, each arc is as long as the circumference of the circle that touches it (the wide one outside the outer arc, the narrow one inside the inner arc)"""
+    root, errors = ctx['root'], ctx['errors']
+    net = plan['net']
+    R, r = float(net['radius']), float(net['topRadius'])
+    if not 0 < r < R:
+        errors.append('SOLID_NET_FRUSTUM_INVALID')
+        return
+    l = float(net['slant']) if net.get('slant') is not None else math.hypot(R - r, float(net['height']))
+    ring = next((e for e in root.iter(NS + 'path') if e.get('data-role') == 'net-face' and e.get('data-face') == 'side'), None)
+    circles = {e.get('data-part'): e for e in root.iter(NS + 'circle') if e.get('data-role') == 'net-circle'}
+    if ring is None or set(circles) != {'large', 'small'}:
+        errors.append('SOLID_NET_PARTS_MISSING')
+        return
+    m = re.fullmatch(r'\s*M\s*(\S+)\s+(\S+)\s*L\s*(\S+)\s+(\S+)\s*A\s*(\S+)\s+(\S+)\s+0\s+(\d)\s+0\s+(\S+)\s+(\S+)\s*L\s*(\S+)\s+(\S+)\s*A\s*(\S+)\s+(\S+)\s+0\s+(\d)\s+1\s+(\S+)\s+(\S+)\s*Z\s*', ring.get('d') or '')
+    if not m:
+        errors.append('SOLID_NET_SECTOR_UNREADABLE')
+        return
+    v = [float(x) for x in m.groups()]
+    i1, o1, rx1, ry1, large1, o2, i2, rx2, ry2, large2, i1b = (v[0], v[1]), (v[2], v[3]), v[4], v[5], int(v[6]), (v[7], v[8]), (v[9], v[10]), v[11], v[12], int(v[13]), (v[14], v[15])
+    if math.hypot(i1b[0] - i1[0], i1b[1] - i1[1]) > POS_TOL: errors.append('SOLID_NET_RING_NOT_CLOSED')
+    # the apex: where the two straight edges (the lines i1-o1 and i2-o2) meet
+    d1, d2 = (o1[0] - i1[0], o1[1] - i1[1]), (o2[0] - i2[0], o2[1] - i2[1])
+    det = d1[0] * d2[1] - d1[1] * d2[0]
+    want = 360 * (R - r) / l
+    if abs(det) < 1e-9 * max(1.0, math.hypot(*d1) * math.hypot(*d2)):
+        errors.append('SOLID_NET_SECTOR_UNREADABLE')
+        return
+    t = ((i2[0] - i1[0]) * d2[1] - (i2[1] - i1[1]) * d2[0]) / det
+    ax, ay = i1[0] + t * d1[0], i1[1] + t * d1[1]
+    Ro, Ri = math.hypot(o1[0] - ax, o1[1] - ay), math.hypot(i1[0] - ax, i1[1] - ay)
+    S = math.hypot(o1[0] - i1[0], o1[1] - i1[1]) / l
+    if abs(math.hypot(o2[0] - i2[0], o2[1] - i2[1]) - S * l) > POS_TOL: errors.append('SOLID_NET_RING_EDGES_UNEQUAL')
+    if declared and abs(declared - S) > 0.012 * S: errors.append('SOLID_DECLARED_SCALE_MISMATCH')
+    if abs(Ro - S * l * R / (R - r)) > POS_TOL * 1.5 or abs(Ri - S * l * r / (R - r)) > POS_TOL * 1.5: errors.append('SOLID_NET_RING_RADII_MISMATCH')
+    if abs(math.hypot(o2[0] - ax, o2[1] - ay) - Ro) > POS_TOL or abs(math.hypot(i2[0] - ax, i2[1] - ay) - Ri) > POS_TOL: errors.append('SOLID_NET_SECTOR_NOT_CIRCULAR')
+    if max(abs(rx1 - Ro), abs(ry1 - Ro)) > POS_TOL or max(abs(rx2 - Ri), abs(ry2 - Ri)) > POS_TOL: errors.append('SOLID_NET_SECTOR_NOT_CIRCULAR')
+    cosv = ((o1[0] - ax) * (o2[0] - ax) + (o1[1] - ay) * (o2[1] - ay)) / (Ro * Ro)
+    angle = math.degrees(math.acos(max(-1.0, min(1.0, cosv))))
+    if want > 180: angle = 360 - angle
+    if abs(angle - want) > 0.35: errors.append('SOLID_NET_SECTOR_ANGLE_MISMATCH:%.2f:%.2f' % (angle, want))
+    if large1 != (1 if want > 180 else 0) or large2 != large1: errors.append('SOLID_NET_SECTOR_FLAGS_MISMATCH')
+    # each arc is as long as the circumference of the circle that touches it
+    cL, cS = circles['large'], circles['small']
+    xl, yl, rl = _num(cL, 'cx'), _num(cL, 'cy'), _num(cL, 'r')
+    xs, ys, rs = _num(cS, 'cx'), _num(cS, 'cy'), _num(cS, 'r')
+    if abs(rl - S * R) > POS_TOL: errors.append('SOLID_NET_CIRCLE_RADIUS:large')
+    if abs(rs - S * r) > POS_TOL: errors.append('SOLID_NET_CIRCLE_RADIUS:small')
+    if abs(math.radians(want) * Ro - 2 * math.pi * rl) > POS_TOL + 0.004 * Ro: errors.append('SOLID_NET_ARC_NOT_CIRCUMFERENCE:outer')
+    if abs(math.radians(want) * Ri - 2 * math.pi * rs) > POS_TOL + 0.004 * Ro: errors.append('SOLID_NET_ARC_NOT_CIRCUMFERENCE:inner')
+    mid = ((o1[0] + o2[0]) / 2 - ax, (o1[1] + o2[1]) / 2 - ay)
+    ml = math.hypot(*mid)
+    axis = (mid[0] / ml, mid[1] / ml) if ml > 1e-6 else (0.0, 1.0)
+    if want > 180: axis = (-axis[0], -axis[1])
+    # the wide circle touches the outer arc from outside, the narrow one the inner arc from the apex side, both at the middle of the arc
+    if abs(math.hypot(xl - ax, yl - ay) - (Ro + rl)) > POS_TOL * 1.5 or abs((xl - ax) * axis[1] - (yl - ay) * axis[0]) > POS_TOL * 1.5: errors.append('SOLID_NET_CIRCLE_NOT_TANGENT:large')
+    if abs(math.hypot(xs - ax, ys - ay) - (Ri - rs)) > POS_TOL * 1.5 or abs((xs - ax) * axis[1] - (ys - ay) * axis[0]) > POS_TOL * 1.5 or (xs - ax) * axis[0] + (ys - ay) * axis[1] < -POS_TOL: errors.append('SOLID_NET_CIRCLE_NOT_TANGENT:small')
+    check_excluded_circles(net, circles, ['large', 'small'], errors)
+    # net.highlights: exactly the listed parts are tinted with the listed fill (data-fill and the colour of the fill), the others stay plain
+    want_fill = {}
+    for h in net.get('highlights') or []:
+        if h.get('face') not in ('side', 'large', 'small') or h.get('face') in want_fill or (h.get('fill') or 'LIGHT') not in HIGHLIGHT_COLOURS: errors.append('SOLID_NET_HIGHLIGHT_PLAN_INVALID')
+        else: want_fill[h['face']] = h.get('fill') or 'LIGHT'
+    for face, el in (('side', ring), ('large', circles['large']), ('small', circles['small'])):
+        fill = el.get('data-fill')
+        if fill != want_fill.get(face): errors.append('SOLID_NET_HIGHLIGHT_MISMATCH:' + face)
+        elif fill is not None and ((el.get('fill') or '').lower() != HIGHLIGHT_COLOURS[fill][0] or abs(float(el.get('fill-opacity') or 0) - HIGHLIGHT_COLOURS[fill][1]) > 1e-9): errors.append('SOLID_NET_HIGHLIGHT_COLOUR:' + face)
+    ctx['face_label_plan'] = {e.get('face'): e for e in net.get('faceLabels') or []}
+    ctx['face_areas'] = {'side': math.pi * (R + r) * l, 'large': math.pi * R * R, 'small': math.pi * r * r}
+    a1 = math.atan2(o1[1] - ay, o1[0] - ax)
+    # the outer arc runs from o1 to o2 with sweep-flag 0 (towards smaller angles on the screen) through exactly the sector's angle, the inner arc back
+    dd = -math.radians(want)
+    outer_pts = [(ax + Ro * math.cos(a1 + dd * k / 32), ay + Ro * math.sin(a1 + dd * k / 32)) for k in range(33)]
+    inner_pts = [(ax + Ri * math.cos(a1 + dd * k / 32), ay + Ri * math.sin(a1 + dd * k / 32)) for k in range(33)]
+    if math.hypot(outer_pts[-1][0] - o2[0], outer_pts[-1][1] - o2[1]) > POS_TOL * 1.5: errors.append('SOLID_NET_SECTOR_ANGLE_MISMATCH:arc_end')
+    ctx['face_regions'] = {'large': ('circle', xl, yl, rl), 'small': ('circle', xs, ys, rs), 'side': ('poly', outer_pts + inner_pts[::-1])}
+    seg_tan = lambda R_px: ((ax + axis[0] * R_px - 0.12 * R_px * axis[1], ay + axis[1] * R_px + 0.12 * R_px * axis[0]), (ax + axis[0] * R_px + 0.12 * R_px * axis[1], ay + axis[1] * R_px - 0.12 * R_px * axis[0]))
+    table = {'slant': (l, (i2, o2)), 'arc-outer': (2 * math.pi * R, seg_tan(Ro)), 'arc-inner': (2 * math.pi * r, seg_tan(Ri)), 'radius-large': (R, None), 'radius-small': (r, None)}
+    ctx['net_dims'] = _dim_defs(plan, ctx, table)
+    _fill_dim_lines(ctx)
+    ctx['segments'] += [(i1, o1), (o2, i2)] + [(outer_pts[k], outer_pts[k + 1]) for k in range(32)] + [(inner_pts[k], inner_pts[k + 1]) for k in range(32)]
 
 
 WORD_LABEL = re.compile(r'[\uac00-\ud7a3\u00b7]')

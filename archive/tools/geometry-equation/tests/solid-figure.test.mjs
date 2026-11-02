@@ -3061,3 +3061,192 @@ test('G4b: the golden figure of 22 매산고 q14 has a primed name typeset as Te
   assert.match(svg,/data-value="A′"/);
   await g4bFailing(plan,svg.replace(leader,leader.replace(/ x2="([\d.]+)"/,(all,v)=>` x2="${Number(v)+8}"`)),'SOLID_ANGLE_LABEL_LEADER_NOT_ATTACHED:an2');
 });
+
+// --- G15: the net of a cone frustum --------------------------------------------------------------------------------------------------------------
+const frustumNet=(over={},extra={})=>figure({unit:'cm',net:{kind:'CONE_FRUSTUM',radius:5,topRadius:2,slant:5,dims:[{part:'slant'},{part:'arc-outer'},{part:'arc-inner'},{part:'radius-large'},{part:'radius-small'}],...over},...extra});
+test('G15: a cone frustum net is one ring-shaped sector and two circles, worked out from the radii and the slant',()=>{
+  const m=solveSolidFigure(frustumNet());
+  // R=5, r=2, l=5: the ring has outer radius 5*5/3, inner radius 5*2/3 and central angle 360*3/5
+  assert.equal(m.netKind,'CONE_FRUSTUM');assert.equal(m.shapes.ring.angleDeg,216);
+  assert.ok(Math.abs(m.shapes.ring.outer-25/3)<1e-5&&Math.abs(m.shapes.ring.inner-10/3)<1e-5);
+  assert.deepEqual(m.dims.map(d=>d.text),['5','10\\pi','4\\pi','5','2']);
+  // the height gives the same slant (4 and 3 make 5)
+  const byHeight=solveSolidFigure(frustumNet({slant:undefined,height:4}));
+  assert.equal(byHeight.slant,5);assert.deepEqual(byHeight.shapes,m.shapes);
+  // the wide circle lies below the outer arc, the narrow one inside the inner arc, both on the axis of the ring
+  assert.ok(Math.abs(m.shapes.large.cy+(m.shapes.ring.outer+5))<1e-5&&Math.abs(m.shapes.small.cy+(m.shapes.ring.inner-2))<1e-5);
+});
+test('G15: a cone frustum net is refused when it cannot be a frustum, and takes no emphasis',()=>{
+  assert.throws(()=>solveSolidFigure(frustumNet({topRadius:5})),code('SOLID_NET_FRUSTUM_INVALID'));
+  assert.throws(()=>solveSolidFigure(frustumNet({topRadius:6})),code('SOLID_NET_FRUSTUM_INVALID'));
+  assert.throws(()=>solveSolidFigure(frustumNet({slant:3})),code('SOLID_NET_FRUSTUM_INVALID'));
+  assert.throws(()=>solveSolidFigure(frustumNet({height:5})),code('SOLID_NET_FRUSTUM_INVALID'));
+  assert.throws(()=>solveSolidFigure(frustumNet({slant:undefined})),code('SOLID_PARAM_INVALID'));
+  assert.throws(()=>solveSolidFigure(frustumNet({dims:[{part:'angle'}]})),code('SOLID_DIMS_INVALID'));
+  assert.throws(()=>solveSolidFigure(frustumNet({dims:[{part:'slant',label:'6'}]})),code('SOLID_DIM_VALUE_MISMATCH'));
+  assert.throws(()=>solveSolidFigure(frustumNet({segments:[{face:'side',edge:0}]})),code('SOLID_NET_EMPHASIS_UNSUPPORTED'));
+  assert.throws(()=>solveSolidFigure(figure({net:{kind:'CONE',radius:3,topRadius:1,slant:5}})),code('SOLID_NET_INVALID'));
+  assert.throws(()=>solveSolidFigure(frustumNet({faceLabels:[{face:'rect'}]})),code('SOLID_NET_FACE_UNKNOWN'));
+});
+test('G15: a cone frustum net passes the observer (a wide and a narrow ring); a ring of the wrong angle, a circle of the wrong size or off its arc fails',async()=>{
+  for(const over of [{},{radius:4,topRadius:2,slant:6,dims:[{part:'slant'},{part:'arc-outer'},{part:'arc-inner'}]}]){
+    const plan=frustumNet(over,{solidCaption:{text:'원뿔대 전개도'}});
+    const c=await panel(plan);
+    assert.equal(c.status,'COMPOSED',JSON.stringify(c.detail));assert.equal(c.staticAudit.status,'PASS',JSON.stringify(c.staticAudit.errors));
+    assert.equal((await audit(plan,c.svg)).status,'PASS');
+  }
+  const plan=frustumNet({},{solidCaption:{text:'원뿔대 전개도'}});
+  const c=await panel(plan);
+  const ring=c.svg.match(/<path id="net-ring"[^>]*\/>/)[0];
+  const moved=ring.replace(/ d="M ([\d.]+) ([\d.]+) L ([\d.]+) ([\d.]+)/,(m,a,b,x,y)=>` d="M ${a} ${b} L ${Number(x)-20} ${y}`);
+  const r1=await audit(plan,c.svg.replace(ring,moved));
+  assert.equal(r1.status,'FAIL');assert.ok(r1.errors.some(e=>e.startsWith('SOLID_NET_SECTOR')||e.startsWith('SOLID_NET_RING')||e.startsWith('SOLID_NET_ARC')),JSON.stringify(r1.errors));
+  const small=c.svg.match(/<circle id="net-circle-small"[^>]*\/>/)[0];
+  const r2=await audit(plan,c.svg.replace(small,small.replace(/ r="([\d.]+)"/,(a,v)=>` r="${Number(v)*1.3}"`)));
+  assert.equal(r2.status,'FAIL');assert.ok(r2.errors.some(e=>e.startsWith('SOLID_NET_CIRCLE_RADIUS:small')),JSON.stringify(r2.errors));
+  const large=c.svg.match(/<circle id="net-circle-large"[^>]*\/>/)[0];
+  const r3=await audit(plan,c.svg.replace(large,large.replace(/ cy="([\d.]+)"/,(a,v)=>` cy="${Number(v)+12}"`)));
+  assert.equal(r3.status,'FAIL');assert.ok(r3.errors.some(e=>e.startsWith('SOLID_NET_CIRCLE_NOT_TANGENT:large')),JSON.stringify(r3.errors));
+  // the narrow circle moved out of the ring's hole to the other side of the arc is not tangent from the apex side
+  const smallFlip=c.svg.replace(small,small.replace(/ cy="([\d.]+)"/,(a,v)=>` cy="${Number(v)+60}"`));
+  const r4=await audit(plan,smallFlip);
+  assert.equal(r4.status,'FAIL');assert.ok(r4.errors.some(e=>e.startsWith('SOLID_NET_CIRCLE_NOT_TANGENT:small')),JSON.stringify(r4.errors));
+});
+
+// --- G15: the height of the water on a dimension line outside the vessel ----------------------------------------------------------------------------
+const levelSide=(dims,over={})=>figure({unit:'cm',solids:[{id:'s1',kind:'CYLINDER',radius:3,height:9}],section:{kind:'LEVEL',at:'1/3',fill:'BOTTOM'},dims,...over});
+const lineOf=(svg,id,role)=>{const m=svg.match(new RegExp(`<line id="${id}-${role}"[^>]*>`));return m?Object.fromEntries([...m[0].matchAll(/ (x1|y1|x2|y2)="([-\d.]+)"/g)].map(g=>[g[1],Number(g[2])])):null;};
+test('G15: a level dimension (dims[].level with side) stands on a line outside the vessel with an extension line level with each end',async()=>{
+  const plan=levelSide([{level:true,side:'LEFT'}]);
+  const m=solveSolidFigure(plan);
+  assert.equal(m.dims[0].outside,'LEFT');assert.equal(m.dims[0].side,'BOTTOM');
+  const c=await panel(plan);
+  assert.equal(c.status,'COMPOSED',JSON.stringify(c.detail));assert.equal(c.staticAudit.status,'PASS',JSON.stringify(c.staticAudit.errors));
+  const line=lineOf(c.svg,'dim-1','line'),bottom=lineOf(c.svg,'dim-1','ext-bottom'),top=lineOf(c.svg,'dim-1','ext-top');
+  assert.ok(line&&bottom&&top);
+  // vertical, to the left of the vessel, the extension lines horizontal and ending on the vessel's side
+  assert.equal(line.x1,line.x2);assert.equal(bottom.y1,bottom.y2);assert.equal(top.y1,top.y2);
+  assert.ok(bottom.x2>line.x1&&top.x2>line.x1);
+  assert.ok(line.y1>line.y2,'the line runs from the base up to the water surface');
+  assert.equal((await audit(plan,c.svg)).status,'PASS');
+  // tamper: the dimension line slides up so that it no longer starts level with the base; an extension line goes missing
+  const raw=c.svg.match(new RegExp(`<line id="dim-1-line"[^>]*>`))[0];
+  const r1=await audit(plan,c.svg.replace(raw,raw.replace(/ y1="([-\d.]+)"/,(a,v)=>` y1="${Number(v)-9}"`)));
+  assert.equal(r1.status,'FAIL');assert.ok(r1.errors.some(e=>e.startsWith('SOLID_DIM_LINE_MISMATCH:dim-1')),JSON.stringify(r1.errors));
+  const ext=c.svg.match(new RegExp(`<g data-layer="40"><line id="dim-1-ext-top"[^>]*/></g>`))[0];
+  const r2=await audit(plan,c.svg.replace(ext,''));
+  assert.equal(r2.status,'FAIL');assert.ok(r2.errors.some(e=>e.startsWith('SOLID_DIM_EXTENSION_MISMATCH:dim-1')),JSON.stringify(r2.errors));
+});
+test('G15: a level dimension of a cone vessel reaches the water surface at the side of its ellipse, and level:"top" the part above it',async()=>{
+  const plan=figure({unit:'cm',solids:[{id:'s1',kind:'CONE',radius:4,height:9,orientation:'APEX_DOWN'}],section:{kind:'LEVEL',at:'2/3'},dims:[{height:true,side:'LEFT'},{level:true,side:'LEFT'},{level:'top',side:'RIGHT'}]});
+  const c=await panel(plan);
+  assert.equal(c.status,'COMPOSED',JSON.stringify(c.detail));assert.equal(c.staticAudit.status,'PASS',JSON.stringify(c.staticAudit.errors));
+  assert.equal((await audit(plan,c.svg)).status,'PASS');
+});
+test('G15: dimensions of one vessel on one side stand in tiers, the shorter nearer the vessel',async()=>{
+  const both=levelSide([{height:true,side:'RIGHT'},{level:true,side:'RIGHT'}]);
+  const c=await panel(both);
+  assert.equal(c.status,'COMPOSED',JSON.stringify(c.detail));assert.equal(c.staticAudit.status,'PASS',JSON.stringify(c.staticAudit.errors));
+  const h=lineOf(c.svg,'dim-1','line'),w=lineOf(c.svg,'dim-2','line');
+  assert.ok(w.x1<h.x1,'the 3 cm water height is nearer the vessel than the 9 cm vessel height');
+  assert.ok(h.x1-w.x1>=60);
+  assert.equal((await audit(both,c.svg)).status,'PASS');
+  // the order of the dims does not decide: the shorter is always the inner one
+  const swapped=levelSide([{level:true,side:'RIGHT'},{height:true,side:'RIGHT'}]);
+  const c2=await panel(swapped);
+  assert.equal(c2.status,'COMPOSED',JSON.stringify(c2.detail));
+  assert.ok(lineOf(c2.svg,'dim-1','line').x1<lineOf(c2.svg,'dim-2','line').x1);
+  // a lone dimension keeps its place (no tier): one level line on the right is as near as a height line on the right
+  const lone=await panel(levelSide([{level:true,side:'RIGHT'}])),loneHeight=await panel(levelSide([{height:true,side:'RIGHT'}]));
+  assert.equal(lineOf(lone.svg,'dim-1','line').x1,lineOf(loneHeight.svg,'dim-1','line').x1);
+});
+test('G15: a level dimension takes only LEFT or RIGHT and only on a rotation solid',()=>{
+  assert.throws(()=>solveSolidFigure(levelSide([{level:true,side:'TOP'}])),code('SOLID_DIM_SIDE_INVALID'));
+  assert.throws(()=>solveSolidFigure(levelSide([{radius:'top',side:'LEFT'}])),code('SOLID_DIM_SIDE_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],section:{kind:'LEVEL',at:'1/3'},dims:[{level:true,side:'LEFT'}]})),code('SOLID_'));
+});
+
+test('G15: an edge length with line:1|2 stands on a dimension line outside the solid, the long bowl height and the short water height apart',async()=>{
+  const plan=figure({unit:'cm',solids:[{id:'s1',kind:'PRISM',base:{kind:'RECT',width:18,depth:12},height:9,names:'........'}],
+    space:{points:[{id:'P',at:{divide:['#b0','#t0'],ratio:'1:2'},hideName:true,hideDot:true}],segments:[{from:'#b0',to:'P',style:'AUTO'}]},
+    dims:[{edge:['#b2','#t2'],side:'RIGHT',line:1},{from:'#b0',to:'P',side:'LEFT',line:1}]});
+  const m=solveSolidFigure(plan);
+  assert.deepEqual(m.dims.map(d=>d.line),[1,1]);assert.deepEqual(m.dims.map(d=>d.text),['9','3']);
+  const c=await panel(plan);
+  assert.equal(c.status,'COMPOSED',JSON.stringify(c.detail));assert.equal(c.staticAudit.status,'PASS',JSON.stringify(c.staticAudit.errors));
+  const right=lineOf(c.svg,'dim-1','line'),left=lineOf(c.svg,'dim-2','line');
+  assert.equal(right.x1,right.x2);assert.equal(left.x1,left.x2);assert.ok(left.x1<right.x1);
+  assert.ok(lineOf(c.svg,'dim-1','ext-a')&&lineOf(c.svg,'dim-1','ext-b')&&lineOf(c.svg,'dim-2','ext-a')&&lineOf(c.svg,'dim-2','ext-b'));
+  assert.equal((await audit(plan,c.svg)).status,'PASS');
+  // tamper: the dimension line moves off its edge; an extension line goes missing
+  const raw=c.svg.match(/<line id="dim-1-line"[^>]*>/)[0];
+  const r1=await audit(plan,c.svg.replace(raw,raw.replace(/ x1="([-\d.]+)"/,(a,v)=>` x1="${Number(v)+6}"`)));
+  assert.equal(r1.status,'FAIL');assert.ok(r1.errors.some(e=>e.startsWith('SOLID_DIM_LINE_MISMATCH:dim-1')),JSON.stringify(r1.errors));
+  const ext=c.svg.match(/<g data-layer="40"><line id="dim-2-ext-a"[^>]*\/><\/g>/)[0];
+  const r2=await audit(plan,c.svg.replace(ext,''));
+  assert.equal(r2.status,'FAIL');assert.ok(r2.errors.some(e=>e.startsWith('SOLID_DIM_EXTENSION_MISMATCH:dim-2')),JSON.stringify(r2.errors));
+});
+test('G15: dim line tiers stand further out and line is refused without LEFT or RIGHT, on a radius, or beyond tier 3',async()=>{
+  const prism=dims=>figure({unit:'cm',solids:[cuboid({names:'........'})],dims});
+  const one=solveSolidFigure(prism([{edge:['#b0','#t0'],side:'LEFT',line:1}]));
+  assert.equal(one.dims[0].line,1);
+  assert.throws(()=>solveSolidFigure(prism([{edge:['#b0','#t0'],line:1}])),code('SOLID_DIM_LINE_INVALID'));
+  assert.throws(()=>solveSolidFigure(prism([{edge:['#b0','#t0'],side:'TOP',line:1}])),code('SOLID_DIM_LINE_INVALID'));
+  assert.throws(()=>solveSolidFigure(prism([{edge:['#b0','#t0'],side:'LEFT',line:4}])),code('SOLID_DIM_LINE_INVALID'));
+  assert.throws(()=>solveSolidFigure(prism([{edge:['#b0','#t0'],side:'LEFT',line:true}])),code('SOLID_DIM_LINE_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:1,height:2}],dims:[{radius:'top',side:'LEFT',line:1}]})),code('SOLID_DIM'));
+});
+
+// --- G15: the diameter of a base circle (the width of an axial section) --------------------------------------------------------------------------
+const trapezoid=(dims,over={})=>figure({unit:'cm',solids:[{id:'s1',kind:'CONE_FRUSTUM',radius:5,topRadius:2,height:4,orientation:'APEX_DOWN',axis:true}],section:{kind:'AXIAL'},dims,...over});
+test('G15: a diameter dimension writes twice the radius across the circle, or outside it above or below with an extension line from each extreme',async()=>{
+  const m=solveSolidFigure(trapezoid([{diameter:'top'},{diameter:'bottom'}]));
+  assert.deepEqual(m.dims.map(d=>[d.which,d.diameter,d.text]),[['top',true,'10'],['bottom',true,'4']]);
+  const inside=trapezoid([{diameter:'top'},{height:true}]);
+  const c1=await panel(inside);
+  assert.equal(c1.status,'COMPOSED',JSON.stringify(c1.detail));assert.equal(c1.staticAudit.status,'PASS',JSON.stringify(c1.staticAudit.errors));
+  const line=lineOf(c1.svg,'dim-1','line');
+  assert.equal(line.y1,line.y2);assert.ok(line.x2-line.x1>0);
+  assert.equal((await audit(inside,c1.svg)).status,'PASS');
+  const outside=trapezoid([{diameter:'top',side:'TOP'},{diameter:'bottom',side:'BOTTOM'}]);
+  const c2=await panel(outside);
+  assert.equal(c2.status,'COMPOSED',JSON.stringify(c2.detail));assert.equal(c2.staticAudit.status,'PASS',JSON.stringify(c2.staticAudit.errors));
+  const top=lineOf(c2.svg,'dim-1','line'),bottom=lineOf(c2.svg,'dim-2','line');
+  assert.ok(top.y1<bottom.y1&&top.x2-top.x1>bottom.x2-bottom.x1,'the 10 cm line is above and wider than the 4 cm line below');
+  assert.ok(lineOf(c2.svg,'dim-1','ext-left')&&lineOf(c2.svg,'dim-1','ext-right')&&lineOf(c2.svg,'dim-2','ext-left')&&lineOf(c2.svg,'dim-2','ext-right'));
+  assert.equal((await audit(outside,c2.svg)).status,'PASS');
+  // tamper: the outside line is shortened; an extension line goes missing
+  const raw=c2.svg.match(/<line id="dim-2-line"[^>]*>/)[0];
+  const r1=await audit(outside,c2.svg.replace(raw,raw.replace(/ x2="([-\d.]+)"/,(a,v)=>` x2="${Number(v)-7}"`)));
+  assert.equal(r1.status,'FAIL');assert.ok(r1.errors.some(e=>e.startsWith('SOLID_DIM_LINE_MISMATCH:dim-2')),JSON.stringify(r1.errors));
+  const ext=c2.svg.match(/<g data-layer="40"><line id="dim-1-ext-right"[^>]*\/><\/g>/)[0];
+  const r2=await audit(outside,c2.svg.replace(ext,''));
+  assert.equal(r2.status,'FAIL');assert.ok(r2.errors.some(e=>e.startsWith('SOLID_DIM_EXTENSION_MISMATCH:dim-1')),JSON.stringify(r2.errors));
+  // the label is checked against twice the radius
+  assert.throws(()=>solveSolidFigure(trapezoid([{diameter:'top',label:'5'}])),code('SOLID_DIM_VALUE_MISMATCH'));
+  assert.equal(solveSolidFigure(trapezoid([{diameter:'top',label:'10'}])).dims[0].numeric,true);
+});
+test('G15: a diameter is refused when it is not a circle of a rotation solid or its side is not TOP or BOTTOM',()=>{
+  assert.throws(()=>solveSolidFigure(trapezoid([{diameter:'center'}])),code('SOLID_DIMS_INVALID'));
+  assert.throws(()=>solveSolidFigure(trapezoid([{diameter:'top',radius:'top'}])),code('SOLID_DIMS_INVALID'));
+  assert.throws(()=>solveSolidFigure(trapezoid([{diameter:'top',side:'LEFT'}])),code('SOLID_DIM_SIDE_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],dims:[{diameter:'top'}]})),code('SOLID_DIMS_INVALID'));
+});
+
+test('G15: a cone frustum net tints its ring and circles with highlights, and the observer reads each tint back',async()=>{
+  const plan=frustumNet({highlights:[{face:'side',fill:'LIGHT'},{face:'small',fill:'WARM'},{face:'large',fill:'GREEN'}],dims:[{part:'slant'}]},{solidCaption:{text:'원뿔대 전개도'}});
+  assert.deepEqual(solveSolidFigure(plan).highlights.map(h=>h.fill),['LIGHT','WARM','GREEN']);
+  const c=await panel(plan);
+  assert.equal(c.status,'COMPOSED',JSON.stringify(c.detail));assert.equal(c.staticAudit.status,'PASS',JSON.stringify(c.staticAudit.errors));
+  assert.match(c.svg,/id="net-circle-small"[^>]*data-fill="WARM"/);assert.match(c.svg,/id="net-circle-large"[^>]*data-fill="GREEN"/);assert.match(c.svg,/id="net-ring"[^>]*data-fill="LIGHT"/);
+  assert.equal((await audit(plan,c.svg)).status,'PASS');
+  // tamper: the small circle's tint is turned into the large circle's colour; a tint is removed
+  const small=c.svg.match(/<circle id="net-circle-small"[^>]*\/>/)[0];
+  const r1=await audit(plan,c.svg.replace(small,small.replace('data-fill="WARM"','data-fill="GREEN"')));
+  assert.equal(r1.status,'FAIL');assert.ok(r1.errors.some(e=>e.startsWith('SOLID_NET_HIGHLIGHT_')),JSON.stringify(r1.errors));
+  const r2=await audit(plan,c.svg.replace(small,small.replace(/ data-fill="WARM"/,'').replace(/ fill-opacity="[\d.]+"/,'')));
+  assert.equal(r2.status,'FAIL');assert.ok(r2.errors.some(e=>e.startsWith('SOLID_NET_HIGHLIGHT_MISMATCH:small')),JSON.stringify(r2.errors));
+  assert.throws(()=>solveSolidFigure(frustumNet({highlights:[{face:'rect'}]})),code('SOLID_NET_FACE_UNKNOWN'));
+  assert.throws(()=>solveSolidFigure(frustumNet({highlights:[{face:'side'},{face:'side'}]})),code('SOLID_NET_HIGHLIGHT_INVALID'));
+  assert.throws(()=>solveSolidFigure(frustumNet({highlights:[{face:'side',fill:'RED'}]})),code('SOLID_NET_HIGHLIGHT_INVALID'));
+});

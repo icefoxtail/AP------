@@ -55,7 +55,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "EVIDENCE_DEBT",
-    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q01-solution.svg"
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 교점에서 만나는 두 삼각형. 왼쪽 삼각형의 각 90°, 15°에서 나머지 각 75°이고, 교점의 맞꼭지각 75°가 같은 색(파랑)이며 오른쪽 삼각형에 60°와 x가 있다.",
+    "solutionImageCaption": "오른쪽 삼각형에서 x=180°−60°−75°=45°이다. 정답 ③.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -109,7 +112,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 정다각형의 한 꼭짓점에서 두 변이 이루는 내각 135°(파랑)와, 한 변을 연장해 생긴 이웃한 외각 45°(주황)를 나타낸 그림이다. 두 각의 합은 평각 180°이다.",
+    "solutionImageCaption": "내각:외각=3:1이고 합이 180°이므로 외각은 45°이다. 외각의 합 360°÷45°=8이므로 정팔각형이어서 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -542,7 +549,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "큰 원의 지름은 두 작은 반원의 지름이 이어져 2×6+2×4=20 cm이고, 반지름은 10 cm이다.\n따라서 큰 원의 둘레는 2π×10=20π cm이다.\n\n두 작은 반원의 호 길이 합은 π×6+π×4=10π cm이다.\n색칠한 부분의 둘레에는 두 작은 반원의 지름선분도 포함되며 그 길이는 12+8=20 cm이다.\n\n따라서 둘레는 20π+10π+20=30π+20 cm이므로 정답은 ④이다.",
-    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q10-solution.svg",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q10-solution-v2.svg",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -558,7 +565,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "solutionImageAlt": "해설 그림: 큰 원 O(반지름 10cm)에서 두 작은 반원(반지름 6cm, 4cm)을 잘라 낸 색칠한 부분의 둘레를 이루는 호(큰 원 위·아래 10π씩 파랑, 6π 주황, 4π 초록)와 지름 선분 12cm(주황), 8cm(초록)를 나타냈다.",
+    "solutionImageCaption": "둘레는 20π+10π+(12+8)=30π+20 cm이다. 정답 ④.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -841,7 +851,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 r인 구, 밑면 반지름 r이고 높이 2r인 원기둥, 같은 크기의 원뿔을 나란히 그리고 각각의 부피를 적은 그림이다.",
+    "solutionImageCaption": "세 부피를 2/3πr³으로 나누면 구 : 원기둥 : 원뿔 = 2 : 3 : 1이므로 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -952,10 +966,10 @@ window.questionBank = [
   ],
   "answer": "③",
   "solution": "각 계급에서 두 그래프의 높이를 읽어 보기를 판단한다.\n\n① 상대도수의 합은 A반과 B반 모두 1이다. 옳다.\n\n② 6권 이상 9권 미만에서 A반의 상대도수는 0.35이다. 옳다.\n\n③ 같은 계급에서 B반의 상대도수는 0.25이다. 0.35라는 설명은 틀렸다.\n\n④ 9권 이상 12권 미만의 상대도수는 두 반 모두 0.25이다. 옳다.\n\n⑤ 12권 이상 15권 미만과 15권 이상 18권 미만을 합하면 두 반 모두 0.15+0.10=0.25이다. 옳다.\n\n따라서 옳지 않은 것은 ③이다.",
-  "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q17-solution-replacement.svg",
-  "solutionImageAlt": "6권 이상 9권 미만 계급에서 A반과 B반의 상대도수를 비교한 분포 그래프",
-  "solutionImageCaption": "A반 0.35, B반 0.25",
-  "solutionImageSize": "full",
+  "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q17-solution-v2.svg",
+  "solutionImageAlt": "해설 그림: A반(실선)과 B반(점선)의 읽은 책 수 상대도수 분포다각형. 6~9권에서 A반 0.35, B반 0.25, 9~12권에서 두 반 모두 0.25가 표시되어 있다.",
+  "solutionImageCaption": "6~9권에서 B반의 상대도수는 0.25이므로 0.35라는 ③이 옳지 않다. 정답 ③",
+  "solutionImageSize": "medium",
   "subUnitKey": "M1-08-DATA_INTERPRETATION",
   "subUnit": "자료의 해석",
   "subUnitConfidence": "candidate_evidence",
@@ -1278,7 +1292,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$6\\text{ cm}$",
     "solution": "원기둥의 반지름은 3 cm이고, 쇠공 3개의 지름이 각각 6 cm이므로 원기둥의 높이는 $18\\text{ cm}$이다.\n처음 물의 부피는 원기둥 부피에서 구 세 개의 부피를 뺀 값이다.\n$\\pi\\times3^2\\times18-3\\times\\dfrac{4}{3}\\pi\\times3^3=162\\pi-108\\pi=54\\pi\\text{ cm}^3$이다.\n\n쇠공을 꺼낸 뒤 물은 밑면 넓이 $9\\pi$인 원기둥을 채우므로 높이는 $54\\pi\\div9\\pi=6\\text{ cm}$이다.",
-    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q23-solution-v2.svg",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q23-solution-v3.svg",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -1295,8 +1309,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
-    "solutionImageAlt": "해설 그림: 왼쪽은 원기둥 모양의 통에 반지름 3cm인 쇠공 3개가 세로로 꼭 맞게 들어 있는 그림이고, 오른쪽은 공을 꺼낸 같은 통의 아래쪽을 물이 채운 높이 h를 나타낸 그림이다.",
-    "solutionImageCaption": "쇠공을 꺼낸 뒤 남은 물이 통의 아래쪽을 채우는 높이 h",
+    "solutionImageAlt": "해설 그림: 밑면 반지름 3, 높이 18인 원기둥 통에 쇠공 3개가 꼭 맞게 들어 있는 그림과, 공을 꺼낸 뒤 남은 물을 색칠한 같은 통을 나란히 그린 그림이다. 통 162π에서 공 108π를 빼면 물 54π이다.",
+    "solutionImageCaption": "물의 부피 54π를 밑넓이 9π로 나누면 남은 물의 높이는 6cm이다.",
     "solutionImageSize": "medium"
   },
   {

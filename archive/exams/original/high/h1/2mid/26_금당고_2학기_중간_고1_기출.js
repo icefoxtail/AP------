@@ -56,6 +56,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 -1과 5를 열린 끝으로 하는 구간이 굵게 표시되고, 그 구간 안의 정수 0, 1, 2, 3, 4가 점으로 나타나 있다.",
+    "solutionImageCaption": "반지름의 제곱 9-(k-2)²이 0보다 커야 원이 되므로 -1<k<5이고, 이 범위의 정수는 0, 1, 2, 3, 4의 5개이다. 정답 ⑤",
+    "solutionImageSize": "medium",
   },
   {
     "id": 2,
@@ -166,10 +170,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q03-solution.svg",
-    "solutionImageAlt": "원 O와 접점 T, 접선 위 P를 표시하고 OT와 접선이 수직임을 나타낸 그림",
-    "solutionImageCaption": "접선의 식 −2x+3y=13에 P=(a,5)를 대입하면 a=1이다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 x²+y²=13과 접점 T(-2,3), 반지름 OT와 접선의 직각 표시, 수평선 y=5와 접선의 교점 P(a,5)를 보여 주는 그림.",
+    "solutionImageCaption": "원 위의 점 T(-2,3)에서의 접선 -2x+3y=13이 수평선 y=5와 만나는 점을 P(a,5)로 잡고 a의 값을 구한다. 정답 ③",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -225,6 +229,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위의 점 (-2,3)에서 오른쪽으로 1, 위로 4만큼 움직이는 직각 계단 화살표가 점 (-1,7)에 닿는 그림이다.",
+    "solutionImageCaption": "점 (-2,3)을 x축 방향으로 1, y축 방향으로 4만큼 평행이동하면 (-1,7)이므로 a=1, b=7이다. 따라서 a-b=1-7=-6이다. 정답 ①",
+    "solutionImageSize": "medium",
   },
   {
     "id": 5,
@@ -282,10 +290,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q05-solution.svg",
-    "solutionImageAlt": "중심 (3,−2)에서 (−2,3)으로 좌표가 바뀌고 반지름 4가 유지되는 그림",
-    "solutionImageCaption": "y=x 대칭에서 좌표를 바꾸고 반지름을 보존해 a−b+c=−1을 얻는다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 반지름 4인 두 원의 중심 (3,-2)와 (-2,3), 대칭축 y=x, 두 중심을 잇는 선분과 y=x의 직각 표시를 보여 주는 그림.",
+    "solutionImageCaption": "원 (x-3)²+(y+2)²=16을 y=x에 대하여 대칭이동하면 중심 (3,-2)가 (-2,3)으로 옮겨지고 반지름은 4로 같으며, 두 중심을 잇는 선분은 y=x에 수직이다. 정답 ①",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -401,10 +409,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q7-solution.svg",
-    "solutionImageAlt": "직선 4x+3y-2=0에 수직이고 점 P(-4, 1)을 지나는 직선은 x=4일 때 y=7이므로 a=7이다.",
-    "solutionImageCaption": "직선 4x+3y-2=0에 수직이고 점 P(-4, 1)을 지나는 직선은 x=4일 때 y=7이므로 a=7이다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직선 4x+3y-2=0, 점 P(-4,1)을 지나는 수직선, 두 직선의 교점에 직각 표시, 수직선 위의 점 Q(4,a)를 보여 주는 그림.",
+    "solutionImageCaption": "4x+3y-2=0에 수직이고 P(-4,1)을 지나는 직선의 기울기는 3/4이고, 이 직선 위 x=4인 점 Q(4,a)를 이용하여 a의 값을 구한다. 정답 ④",
+    "solutionImageSize": "medium",
   },
   {
     "id": 8,
@@ -516,10 +524,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q09-solution.svg",
-    "solutionImageAlt": "선분 AB를 AP:PB=4:5로 나누는 점 P의 위치",
-    "solutionImageCaption": "AP:PB=4:5이므로 P는 AB의 4/9 지점이며 p+q=1이다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면 위의 선분 AB와 그 위의 내분점 P(5,-4), 그리고 AP와 PB의 비 4:5가 표시된 그림이다.",
+    "solutionImageCaption": "5·AP=4·BP이므로 AP:PB=4:5이고, 내분점 공식으로 p=5, q=-4를 얻는다. 따라서 p+q=5+(-4)=1이다. 정답 ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -577,10 +585,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "두 직선의 공통점 P=(2,4)와 직선 3x+4y+3=0까지의 수선 PH",
-    "solutionImageCaption": "공통점 P와 수선의 발 H=(−1,0) 사이의 거리는 3-4-5 직각삼각형에서 5이다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 직선 3x-y-2=0, x+y-6=0, 3x+4y+3=0과 교점 P(2,4), 수선의 발 H(-1,0), 선분 PH의 직각 표시를 보여 주는 그림.",
+    "solutionImageCaption": "k에 관계없이 지나는 점 P(2,4)와 직선 3x+4y+3=0에 내린 수선의 발 H(-1,0)를 이용하여 두 점 사이의 거리를 구한다. 정답 ⑤",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -642,10 +650,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "평행 조건과 수직 조건을 따로 계산해 a=2/3, b=2를 얻는 두 패널",
-    "solutionImageCaption": "두 경우를 분리하면 ab=4/3이다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 기울기 1/3인 두 평행선, 아래 패널은 기울기 -1과 1인 두 수직선과 교점 (5/4,11/4)의 직각 표시를 보여 주는 두 패널 그림.",
+    "solutionImageCaption": "k=2/3일 때 두 직선은 평행하고, k=2일 때 두 직선은 수직이다. k=-1은 b<0이라 제외하고 ab의 값을 구한다. 정답 ④",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -705,10 +713,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "첫 원의 넓이를 이등분하는 중심 통과 직선과, 둘째 원의 3-4-5 현 거리 관계",
-    "solutionImageCaption": "a=5, 둘째 원의 반지름은 5이므로 a+b+c+d=−17이다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 원 C₁, C₂와 C₁을 지나는 직선, 중심 C₂에서 내린 수선의 발 M, 현의 끝 A·B이고, 오른쪽은 직각삼각형 C₂MB를 크게 그려 C₂M=3, MB=4, C₂B=5를 나타낸 그림.",
+    "solutionImageCaption": "직선이 원 C_1의 중심을 지나 a=5이고, 현 AB의 반쪽 4와 중심까지의 거리 3으로 반지름 5를 구해 d=-20을 얻는다. 따라서 a+b+c+d=-17이다. 정답 ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -766,10 +774,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "외부점 P에서 원에 그은 접선 두 개와 각 접점의 반지름",
-    "solutionImageCaption": "두 접선의 기울기는 12m²−8m−3=0을 만족해 m₁m₂=−1/4이다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 C(3,2), 반지름 2인 원과 점 P(-1,1)에서 그은 두 접선, 접점 T₁·T₂와 반지름의 직각 표시를 보여 주는 그림.",
+    "solutionImageCaption": "점 P(-1,1)에서 원 (x-3)²+(y-2)²=4에 그은 두 접선의 기울기 m₁, m₂의 곱을 구한다. 정답 ①",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -829,10 +837,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "점 A의 y=x 대칭점 A'와 원의 중심 C, 최단 경로의 점 P0, 원 위의 점 Q0를 나타낸 좌표 그림",
-    "solutionImageCaption": "A를 y=x에 대칭이동하면 A'–P0–Q0–C가 한 직선 위에 놓일 때 최단 경로가 된다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=x에 대한 A(-2,-3)의 대칭점 A'(-3,-2), 원의 중심 C와 원 위의 점 Q, y=x 위의 점 P(1,1)를 그린 그림. A, P, Q를 꼭짓점으로 하는 삼각형을 칠했고, AP와 A'P는 같은 길이로 표시했다. 오른쪽에 A', P, Q, C를 한 줄로 펴서 A'P=5, A'Q=8, A'C=10을 나타냈다.",
+    "solutionImageCaption": "이 그림의 P, Q는 풀이의 P₀, Q₀이다. AP=A'P이므로 AP+PQ의 최솟값은 A', P, Q, C가 한 직선 위에 있을 때 A'Q=8이고, 삼각형 APQ의 넓이 S에서 10S=21이다. 정답 ③",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -891,10 +899,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "원 위의 A, B, 중심 C와 넓이를 최대화하는 점 P, 점 P에서의 접선을 나타낸 해설 그림",
-    "solutionImageCaption": "밑변 AB가 고정이므로 P에서 직선 AB까지의 거리가 가장 클 때 삼각형 PAB의 넓이가 최대이다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원과 두 점 A, B를 지나는 직선 AB, 중심 C를 지나 AB에 수직인 직선, AB에서 가장 먼 점 P와 P에서의 접선을 그린 그림. 접선이 AB와 평행임이 표시되어 있다.",
+    "solutionImageCaption": "AB에서 가장 먼 원 위의 점 P는 C를 지나 AB에 수직인 직선 위에 있고, P에서의 접선은 AB와 평행하다. 접선의 식을 비교하면 a+b+c=-6이다. 정답 ①",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -929,10 +937,6 @@ window.questionBank = [
       "636"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "나머지 1과 3인 홀수 무리 중 하나만 골라 15와 가장 큰 일곱 수를 표시한 해설 그림",
-    "solutionImageCaption": "원소 8개와 최소 원소 15를 고정하면 나머지 3인 수 중 가장 큰 일곱 수를 더해 624를 얻는다.",
-    "solutionImageSize": "full",
     "solution": "집합 $B$의 원소의 개수를 $n$이라 하자.\n원소가 $n$개인 집합의 부분집합은 모두 $2^n$개이다.\n이 중 원소가 $0$개인 공집합 $1$개와 원소가 $1$개인 부분집합 $n$개를 제외한 개수가 $247$이므로\n$2^n-n-1=247$이다.\n$n=8$일 때\n$256-8-1=247$이므로\n$B$의 원소는 $8$개이다.\n\n가장 작은 원소가 $15$이므로 $15\\in B$이다.\n$15$는 $4$로 나눈 나머지가 $3$이다.\n서로 다른 두 원소의 합이 $4$의 배수가 되면 안 되므로, $B$에 $4$로 나눈 나머지가 $1$인 수가 하나라도 있으면 $15$와의 합이 $4$의 배수가 되어 조건에 어긋난다.\n따라서 $B$의 모든 원소는 $4$로 나눈 나머지가 $3$인 홀수여야 한다.\n\n합을 최대로 하려면 가장 작은 원소 $15$를 반드시 포함하고, 나머지 $7$개는 $100$ 미만에서 $4$로 나눈 나머지가 $3$인 수 중 가장 큰 것부터 고른다.\n따라서\n$B=\\{15,75,79,83,87,91,95,99\\}$로 잡을 때 합이 최대이다.\n이때\n$S(B)=15+75+79+83+87+91+95+99=624$이다.\n\n따라서 정답은 ②이다.",
     "sourceQuestionNo": "16",
     "displayNo": "16",
@@ -1017,10 +1021,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "사각형 ABCD에서 P와 Q가 넓이를 2대1로 나누고 PQ가 최소가 되는 배치를 나타낸 해설 그림",
-    "solutionImageCaption": "넓이 조건에서 s+t=4/3, 거리 조건에서 s=t이므로 P와 Q의 위치가 결정된다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 AB 위의 점 P=(2/3,2/3)와 CD 위의 점 Q=(8/3,5/3)를 잇는 선분 PQ를 그린 그림. AP와 DQ는 같은 길이(AP=DQ=AB의 2/3)이고, 사각형 APQD(10/3)와 PBCQ(5/3)를 다른 색으로 칠했다.",
+    "solutionImageCaption": "두 사각형의 넓이 비가 2:1이므로 P, Q가 각각 AB, CD를 2:1로 내분하는 점이고, PQ가 최소일 때 m=1/2, n=1/3이므로 30(m+n)=25이다. 정답 ⑤",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -1076,10 +1080,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "원의 중심이 C0(-2,1)에서 C1(1,3), C(3,1)로 이동하는 과정과 점 C에서 거리 √5인 직선 l의 y절편을 나타낸 해설 그림",
-    "solutionImageCaption": "평행이동과 y=x 대칭으로 중심 C=(3,1)을 얻고, x-2y+4=0의 y절편이 2임을 확인한다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원의 중심에서 시작한 화살표가 C₁로, 다시 y=x에 대칭이동한 C(3,1)로 가고, C에서 직선 l: x-2y+4=0에 내린 수선의 발 H까지의 거리 √5와, 기각된 직선 x-2y-6=0이 점선으로 보이는 그림.",
+    "solutionImageCaption": "원의 중심 C₀(-2,1)을 (+3,+2) 평행이동하면 C₁(1,3), y=x 대칭이동하면 C(3,1)이다. l: x-2y+4=0 (CH=√5), x-2y-6=0은 y절편이 음수라 제외하므로 y절편은 2이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -1129,7 +1133,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 1부터 7까지의 정수 눈금이 있는 수직선 세 줄에 양 끝 원소의 쌍 (1,5), (2,6), (3,7)이 각각 굵은 구간으로 표시되고, 각 줄의 가운데 세 정수가 점으로 나타나 있다.",
+    "solutionImageCaption": "차가 4인 양 끝 원소의 쌍은 (1,5), (2,6), (3,7)의 세 가지이고 가운데 세 원소는 각각 포함 여부가 자유로우므로 부분집합은 3×8=24개이다. 각 쌍에서 원소 합의 총합은 28i+56이므로 모두 더하면 336이다. 정답 336",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -1184,9 +1192,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "k=10에서 t=8일 때 원과 직선이 접하고 t=9일 때 두 점에서 만나는 모습과 g(t)=2인 구간을 나타낸 해설 그림",
-    "solutionImageCaption": "t=8에서는 d=r이라 접점 1개이고, g(t)=2인 범위는 (3,8)∪(8,12)이므로 가장 오른쪽 길이 2 구간은 (10,12)이다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 0부터 14까지의 수직선에 g(t)=2인 두 구간 (3,8)과 (8,12)가 굵게 표시되고, 경계 t=3, 8, 12는 ×로, 길이 2인 가장 오른쪽 구간이 따로 한 줄에 표시된 그림이다.",
+    "solutionImageCaption": "g(3)=1과 g(4)×g(9)=4에서 k=10이고, g(t)=2인 구간은 (3,8)∪(8,12)이다. 길이가 2인 열린구간 (a-2,a)가 이 집합에 완전히 들어가는 가장 오른쪽 구간은 (10,12)이므로 a의 최댓값은 12이다. 정답 12",
+    "solutionImageSize": "medium"
   }
 ];

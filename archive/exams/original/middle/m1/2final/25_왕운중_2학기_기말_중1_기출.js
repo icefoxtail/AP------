@@ -90,7 +90,11 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "semanticDisposition": "CONFIRMED",
       "resolverEvidenceSha": "sha256:f6e536d480078908fe10ed3d6e914bbe3d1fa413d5a8e3d9630a77a4e74cf913",
-      "difficultyEvidenceSha": "sha256:8c23dccf58372c23736767fe4eebc0892602a7b2acfcf15818887eb739461b53"
+      "difficultyEvidenceSha": "sha256:8c23dccf58372c23736767fe4eebc0892602a7b2acfcf15818887eb739461b53",
+      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q2-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 칠각형의 한 꼭짓점 A에서 대각선 4개를 그어 만든 삼각형 5개를 서로 다른 색으로 구분하고 각 삼각형의 내각 합 180°를 적었다.",
+      "solutionImageCaption": "삼각형 5개이므로 내각의 합 5×180°=900°, 꼭짓점 y=7, 대각선 x=4이고 x+y=11이다. 정답 ①.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 3,
@@ -171,7 +175,7 @@ window.questionBank = [
       "answer": "③",
       "solution": "[키포인트] 두 원의 반지름이 서로의 중심까지 이어지므로 정삼각형이 생긴다.\n두 원의 반지름이 모두 $3$이고 $OO'=3$이므로 $\\triangle AOO'$와 $\\triangle BOO'$는 모두 정삼각형이다.\n따라서 $\\angle AOB=120^\\circ$, $\\angle AO'B=120^\\circ$이다.\n\n반지름이 $3$인 원에서 중심각 $120^\\circ=\\dfrac{2\\pi}{3}$에 대한 호의 길이는\n$3\\times\\dfrac{2\\pi}{3}=2\\pi$이다.\n두 호의 길이의 합은 $2\\pi+2\\pi=4\\pi$이므로 정답은 ③이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q4.png",
-      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q4-solution-v2.svg",
+      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q4-solution-v3.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
       "crossConceptKeys": [],
@@ -185,8 +189,8 @@ window.questionBank = [
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "solutionImageSize": "medium",
-      "solutionImageAlt": "해설 그림: 반지름 3인 두 원 O, O'가 서로의 중심을 지날 때 마름모 AOBO'를 그리고, 정삼각형 AOO'와 BOO'의 60° 각, 중심각 120°, 굵게 강조한 호 AOB와 호 AO'B를 표시한 그림",
-      "solutionImageCaption": "두 정삼각형에서 ∠AOB=∠AO'B=120°이며, 굵은 호가 각각 호 AOB와 호 AO'B이다.",
+      "solutionImageAlt": "해설 그림: 왼쪽은 서로의 중심을 지나는 반지름 3인 두 원과 정삼각형 AOO', BOO', 오른쪽은 원 O에서 중심각 120°와 호 AO'B 길이 2π를 크게 뺀 그림이다.",
+      "solutionImageCaption": "호 AOB와 호 AO'B의 길이는 각각 2π이므로 합은 4π이다. 정답 ③.",
       "resolverEvidenceSha": "sha256:975f6115d7dfbc937d41f6bccfab3ade5ffb69134eb07621ad8a236ae2ed55fa",
       "difficultyEvidenceSha": "sha256:583c1e62ba38d8979eca0cf2ed13a84fc0908dc83cb6557d21d8f6a6d178decf"
     },
@@ -372,7 +376,11 @@ window.questionBank = [
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "resolverEvidenceSha": "sha256:d02f8af3c7abeb278b6efb110ab0d3d8aadeb6a6688d5183dea53b46a7b16bf3",
-      "difficultyEvidenceSha": "sha256:24df820b59f089b0bdd7ad6205782e12b2fadb27552daae73a18da662fd8636b"
+      "difficultyEvidenceSha": "sha256:24df820b59f089b0bdd7ad6205782e12b2fadb27552daae73a18da662fd8636b",
+      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q8-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 정팔각형의 한 내각 135°와, 한 점에 135° 세 개를 모으면 405°로 360°를 넘어 45°(분홍)만큼 겹치는 모습을 보여 준다.",
+      "solutionImageCaption": "한 내각이 135°이므로 3개를 모으면 405°>360°가 되어 정다면체를 만들 수 없다. ④의 6이 5로 잘못되었다. 정답 ④.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 9,
@@ -508,7 +516,11 @@ window.questionBank = [
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "resolverEvidenceSha": "sha256:5b5a8fdfcbd661ddae65237a5550f57d28034128c002d8d58ba8e19aba3da550",
-      "difficultyEvidenceSha": "sha256:7d63691a28f9c84865f1dda0f5357a58909d4ca0a5adec3cee3d2d95858cfe5b"
+      "difficultyEvidenceSha": "sha256:7d63691a28f9c84865f1dda0f5357a58909d4ca0a5adec3cee3d2d95858cfe5b",
+      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q11-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 반지름 r인 반구(그릇 모양)와 밑면 반지름 2r, 높이 3r인 원기둥을 같은 비율로 나란히 놓고 각각의 부피 (2/3)πr³, 12πr³을 적은 그림이다.",
+      "solutionImageCaption": "12πr³ ÷ (2/3)πr³ = 18이므로 반구 모양의 쇠는 18개(②)가 필요하다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 12,
@@ -554,9 +566,9 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "resolverEvidenceSha": "sha256:c1144eb8972a432f16fb293c0b4f5665c2a798b848cf8a2b16b5a44363cb0ab6",
       "difficultyEvidenceSha": "sha256:f3af6e43e2d95d63fb63c2f07fa634a992a153025b8170e865243f2f1a2d1ce3",
-      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q12-solution.svg",
-      "solutionImageAlt": "해설 그림: 반지름 5cm인 구에서 중심을 지나는 서로 수직인 두 평면 사이의 4분의 1을 잘라 내고 남은 3/4 입체도형으로, 잘린 자리에 반원 모양의 단면 2개(색칠)가 한 축에서 만나고 반지름 5cm가 표시된 그림이다.",
-      "solutionImageCaption": "[ㄷ] 구의 1/4을 잘라낸 입체도형 (반지름 5 cm)",
+      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q12-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: [ㄱ] 반구 위에 원뿔을 붙인 입체(반지름 6, 높이 8, 모선 10)와 [ㄷ] 구의 3/4 입체(반지름 5)를 나란히 놓고 곡면과 단면 넓이의 합을 적은 그림이다. [ㄴ] 부채꼴 기둥은 이 그림에 없다.",
+      "solutionImageCaption": "[ㄱ]=132π, [ㄴ]=270+144π, [ㄷ]=100π이므로 작은 것부터 [ㄷ]-[ㄱ]-[ㄴ](④)이다.",
       "solutionImageSize": "medium"
     },
     {
@@ -692,10 +704,10 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q15.png",
-      "solutionImageSize": "full",
-      "solutionImageAlt": "20명의 50m 달리기 기록 줄기와 잎 그림 및 구간별 도수분포표. 7초대, 8초대, 9초대의 a·b·9.6 값과 A, B 도수가 표시되어 있다.",
-      "solutionImageCaption": "줄기와 잎 자료와 도수분포표를 함께 읽어 A=2, B=3을 확인한다.",
+      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q15-solution-v2.svg",
+      "solutionImageSize": "medium",
+      "solutionImageAlt": "해설 그림: 50m 달리기 기록 줄기와 잎 그림: 7초대 2.3(2명), 8초대 2·5·8·8·9·9, 9초대 6·6·6(3명), 10초대 0·1·2·2·7, 11초대 3·5·6·6. 9초대의 가운데 두 값 6, 6에 동그라미가 있다.",
+      "solutionImageCaption": "a=b=6으로 9초대 잎이 6, 6, 6(9.6초가 3번, 최빈값)이고 20명의 중앙값은 10·11번째(동그라미)인 9.6초로 같다. A=2, B=3이므로 6+6+2+3=17이다. 정답 ②",
       "solutionReminderImagePolicy": "STRIP_INLINE",
       "resolverEvidenceSha": "sha256:bcbf5f8e53d6b6157a666ef8ed5922094f41580cf580efce143fb2211c32e623",
       "difficultyEvidenceSha": "sha256:609c7ea020b73e930d57b877a882a6807d4b88fa3270b609aacde505d4b67e30"
@@ -932,7 +944,11 @@ window.questionBank = [
       "semanticDisposition": "CONFIRMED",
       "imageSize": "medium",
       "resolverEvidenceSha": "sha256:2a51abeae22c37d46934eadc9225ddf5937c8ed6d5aaedab83ca0912366c0a28",
-      "difficultyEvidenceSha": "sha256:550fc4f89857c317a0d52facfff2b47db4eaf4c11de289298264ac425f3d4985"
+      "difficultyEvidenceSha": "sha256:550fc4f89857c317a0d52facfff2b47db4eaf4c11de289298264ac425f3d4985",
+      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q20-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: A·B 두 학교 독서량의 상대도수 분포 다각형: A는 0.12, 0.24, 0.36, 0.24, 0.04, B는 0.10, 0.16, 0.22, 0.38, 0.14. 3~4권 계급의 A 0.24와 B 0.16에 동그라미, 찢어진 A 4~5권 0.36과 B 6~7권 0.14에 큰 점이 있다.",
+      "solutionImageCaption": "큰 점은 찢어져 안 보이던 값을 상대도수의 합이 1이라는 조건으로 구한 것(A 4~5권 0.36, B 6~7권 0.14)이고, 동그라미는 3~4권 계급이다. 학생 수는 A 100×0.24=24명, B 200×0.16=32명이다. 정답 ①",
+      "solutionImageSize": "medium"
     },
     {
       "id": 21,
@@ -1003,7 +1019,7 @@ window.questionBank = [
       "answer": "$2\\pi$",
       "solution": "[키포인트] $S_1=S_2$이면 직사각형의 넓이와 사분원의 넓이가 같아진다.\n그림에서 부채꼴은 중심이 $B$, 반지름이 $BA=8$인 사분원이다.\n$S_1$은 ‘직사각형 안이지만 사분원 밖’의 넓이, $S_2$는 ‘사분원 안이지만 직사각형 밖’의 넓이이므로 $S_1=S_2$이면 두 전체 넓이가 같다.\n\n따라서\n$8\\times BC=\\dfrac14\\pi\\times8^2=16\\pi$이고\n$BC=2\\pi$이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q22.png",
-      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q22-solution-v2.svg",
+      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q22-solution-v3.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
       "crossConceptKeys": [],
@@ -1017,8 +1033,8 @@ window.questionBank = [
       "difficultyBoundaryFlag": "B34",
       "legacyLevelCompatibility": "NORMAL",
       "solutionImageSize": "medium",
-      "solutionImageAlt": "해설 그림: 직사각형 ABCD와 중심이 B인 사분원이 겹친 그림에서 S₁(직사각형 안, 사분원 밖)과 S₂(사분원 안, 직사각형 밖)를 색칠하고 둘이 공유하는 공통 부분과 반지름 BA=8을 보여 준다.",
-      "solutionImageCaption": "S₁과 S₂를 빼고 남는 공통 부분이 같으므로 직사각형과 사분원의 넓이가 같다.",
+      "solutionImageAlt": "해설 그림: 직사각형 ABCD와 B를 중심으로 하는 사분원에서 겹친 부분(파랑)과 S₁·S₂(같은 주황)를 구분하고 BA=BE=8을 같은 길이 표시로 보여 준다.",
+      "solutionImageCaption": "S₁=S₂이면 8×BC=16π이므로 BC=2π이다.",
       "resolverEvidenceSha": "sha256:cfbe136643d20cf30c760730d920fac7b5275dda421ac58f8e9367f41c8b35b1",
       "difficultyEvidenceSha": "sha256:4331e6abade2bd37d8349ec403aeeea0e512592180f30c1bcc8a3e3acf0db35b"
     },
@@ -1060,7 +1076,11 @@ window.questionBank = [
       "difficultyBoundaryFlag": "B34",
       "legacyLevelCompatibility": "NORMAL",
       "resolverEvidenceSha": "sha256:00676bd792aa9d9852370194d71d35349ffd365ab6d744330bdc5e046f0819fd",
-      "difficultyEvidenceSha": "sha256:19a9883053c98e158c60d03d24c71b325e72e4527aad137ea9ee98a7577f7a9b"
+      "difficultyEvidenceSha": "sha256:19a9883053c98e158c60d03d24c71b325e72e4527aad137ea9ee98a7577f7a9b",
+      "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q23-solution-v3.svg",
+      "solutionImageAlt": "해설 그림: (가)는 밑면 12×18, 높이 9인 그릇에 높이 3(전체의 1/3)까지 찬 물을 파랑으로 칠하고 물 높이 3을 왼쪽 치수선, 그릇 높이 9를 오른쪽 치수선으로 따로 쓴 그림이다. (나)는 밑면 9×12, 높이 18인 그릇에 높이 x까지 찬 물을 파랑으로 칠하고 물 높이 x를 왼쪽 치수선, 그릇 높이 18을 오른쪽 치수선으로 쓴 그림이다.",
+      "solutionImageCaption": "물의 부피 12×18×3 = 648 = 9×12×x이므로 x = 6이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 24,

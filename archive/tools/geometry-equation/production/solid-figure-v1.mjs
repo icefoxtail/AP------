@@ -1606,20 +1606,26 @@ function solveSolids(plan){
   const unitName=plan.unit??null;
   if(plan.dims!==undefined){
     if(!Array.isArray(plan.dims)||plan.dims.length>10)bad('SOLID_DIMS_INVALID');
-    plan.dims.forEach((d,k)=>{
-      onlyKeys(d,['from','to','edge','radius','height','slant','level','solid','label','side','half','direct','foot'],'SOLID_DIMS_INVALID');
+    plan.dims.forEach((d0,k)=>{
+      onlyKeys(d0,['from','to','edge','radius','diameter','height','slant','level','solid','label','side','half','direct','foot','line'],'SOLID_DIMS_INVALID');
+      // diameter:"bottom"|"top"|"level" is a radius dimension drawn across the whole circle (twice the radius): the width of an axial section's base or top
+      if(d0.diameter!==undefined&&(d0.radius!==undefined||!['bottom','top','level'].includes(d0.diameter)||d0.half!==undefined))bad('SOLID_DIMS_INVALID');
+      const d=d0.diameter!==undefined?{...d0,radius:d0.diameter}:d0,diameter=d0.diameter!==undefined;
       // direct:true (a pyramid's or frustum's height): the length is written beside the dashed line from the apex (top centre) straight down to the base plane, with no
       // dimension frame around it; foot:true | "<base vertex>": a right-angle mark at the foot of that line, between it and a dashed line in the base plane to a vertex (a
       // cone or cylinder: to the rim on the screen's right)
       if((d.direct!==undefined&&d.direct!==true)||(d.foot!==undefined&&d.foot!==true&&typeof d.foot!=='string')||((d.direct!==undefined||d.foot!==undefined)&&d.height===undefined))bad('SOLID_DIM_DIRECT_INVALID');
       // half:"+X" ... "-Z": which half axis of a cut sphere its radius lies along (it must belong to the piece and be seen)
       if(d.half!==undefined&&(d.radius!=='center'||typeof d.half!=='string'||!/^[+-][XYZ]$/.test(d.half)))bad('SOLID_DIMS_INVALID');
-      // side:"LEFT"|"RIGHT" of a round solid's height: the length is written on a dimension line outside the solid on that side (with extension lines) instead of on the axis;
+      // side:"LEFT"|"RIGHT" of a round solid's height or of a LEVEL height (the water level): the length is written on a dimension line outside the solid on that side (with extension lines) instead of on the axis;
       // side:"LEFT"|"RIGHT"|"TOP"|"BOTTOM" of an edge or segment length: the label stands on that side of the segment on the screen (the segment must not run along that direction)
       if(d.side!==undefined){
         const edgeDim=d.edge!==undefined||d.from!==undefined;
-        if(!(edgeDim?SEGMENT_SIDES:['LEFT','RIGHT']).includes(d.side)||(!edgeDim&&d.height===undefined))bad('SOLID_DIM_SIDE_INVALID');
+        if(!(edgeDim?SEGMENT_SIDES:diameter?['TOP','BOTTOM']:['LEFT','RIGHT']).includes(d.side)||(!edgeDim&&d.height===undefined&&d.level===undefined&&!diameter))bad('SOLID_DIM_SIDE_INVALID');
       }
+      // line:1|2|3 (with side LEFT|RIGHT) of an edge or segment length: a dimension line parallel to the segment, outside the solid on that side, with an extension line from each end; 1 is the nearest tier, each
+      // further tier stands one step further out (the shorter dimensions inside, the longer outside), the label stands beyond the line
+      if(d.line!==undefined&&(!(d.edge!==undefined||d.from!==undefined)||!Number.isInteger(d.line)||d.line<1||d.line>3||(d.side!=='LEFT'&&d.side!=='RIGHT')))bad('SOLID_DIM_LINE_INVALID');
       if((d.from===undefined)!==(d.to===undefined))bad('SOLID_DIMS_INVALID');
       if([d.edge!==undefined,d.from!==undefined,d.radius!==undefined,d.height!==undefined,d.slant!==undefined,d.level!==undefined].filter(Boolean).length!==1)bad('SOLID_DIMS_INVALID');
       const code='d'+(k+1);
@@ -1636,7 +1642,7 @@ function solveSolids(plan){
           const pa=project(named.get(a).p),pb=project(named.get(b).p),dx=pb[0]-pa[0],dy=pb[1]-pa[1],l=Math.hypot(dx,dy),want=SIDE_DIRECTION[d.side];
           if(!(l>1e-9)||Math.abs((-dy*want[0]+dx*want[1])/l)<SIDE_FACING_MIN)bad('SOLID_DIM_SIDE_INVALID:'+code);
         }
-        dims.push({id:'dim-'+(k+1),type:'SEGMENT',from:a,to:b,...(d.side!==undefined?{side:d.side}:{}),...dimLabel(d.label,value,unitName,code,{words:true})});
+        dims.push({id:'dim-'+(k+1),type:'SEGMENT',from:a,to:b,...(d.side!==undefined?{side:d.side}:{}),...(d.line!==undefined?{line:d.line}:{}),...dimLabel(d.label,value,unitName,code,{words:true})});
       }else{
         const solid=solids.find(s=>s.id===(d.solid??(d.level!==undefined?section?.solid:d.radius!==undefined||d.slant!==undefined?solids.find(s2=>s2.category==='REV'||s2.category==='SPHERE')?.id:solids.find(s2=>s2.category==='REV'||s2.kind==='PYRAMID'||s2.kind==='FRUSTUM')?.id)));
         if(!solid)bad('SOLID_DIMS_INVALID');
@@ -1668,7 +1674,7 @@ function solveSolids(plan){
             cutAxis=solid.cut.seenAxes.find(a=>a.axis===k&&a.sign===sg);
             if(!cutAxis)bad('SOLID_SPHERE_CUT_RADIUS_HIDDEN:'+d.half);
           }
-          dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z:liftOf(solid)?r6(z+liftOf(solid)):z,r:r6(rimR),...(solid.cut?{axis:cutAxis}:{}),...dimLabel(d.label,rimR,unitName,code,{words:true})});
+          dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z:liftOf(solid)?r6(z+liftOf(solid)):z,r:r6(rimR),...(diameter?{diameter:true,...(d.side!==undefined?{side:d.side}:{})}:{}),...(solid.cut?{axis:cutAxis}:{}),...dimLabel(d.label,diameter?2*rimR:rimR,unitName,code,{words:true})});
         }else if(d.level!==undefined){
           if(!(d.level===true||d.level==='bottom'||d.level==='top')||!section||section.kind!=='LEVEL'||section.solid!==solid.id||solid.category!=='REV')bad('SOLID_DIMS_INVALID');
           // level:"top" is the part above the cutting plane (apex/top down to the section); true and "bottom" are the part below it
@@ -1676,7 +1682,7 @@ function solveSolids(plan){
           const f=Number(fm[1])/Number(fm[2]);
           const side=d.level==='top'?'TOP':'BOTTOM';
           const value=side==='TOP'?solid.height*(1-f):solid.height*f;
-          dims.push({id:'dim-'+(k+1),type:'LEVEL',side,solid:solid.id,...dimLabel(d.label,value,unitName,code,{words:true})});
+          dims.push({id:'dim-'+(k+1),type:'LEVEL',side,solid:solid.id,...(d.side!==undefined?{outside:d.side}:{}),...dimLabel(d.label,value,unitName,code,{words:true})});
         }else if(d.height!==undefined){
           if(d.height!==true)bad('SOLID_DIMS_INVALID');
           if(solid.category==='SPHERE'&&solid.kind==='SPHERE')bad('SOLID_DIMS_INVALID');
@@ -2014,7 +2020,8 @@ const polygonArea=poly=>Math.abs(polygonArea2(poly));
 function solveNet(plan){
   const net=plan.net;
   if(plan.dims!==undefined||plan.highlights!==undefined||plan.segments!==undefined||plan.section!==undefined)bad('SOLID_PLAN_INVALID');
-  onlyKeys(net,['solid','root','joins','corners','dims','highlights','segments','kind','radius','height','slant','faceLabels','rightAngles','excluded','edgeLabels'],'SOLID_NET_INVALID');
+  onlyKeys(net,['solid','root','joins','corners','dims','highlights','segments','kind','radius','topRadius','height','slant','faceLabels','rightAngles','excluded','edgeLabels'],'SOLID_NET_INVALID');
+  if(net.topRadius!==undefined&&net.kind!=='CONE_FRUSTUM')bad('SOLID_NET_INVALID');
   const unit=plan.unit??null;
   if(net.kind==='CYLINDER'||net.kind==='CONE'){
     if(net.highlights!==undefined||net.segments!==undefined)bad('SOLID_NET_EMPHASIS_UNSUPPORTED:'+net.kind);
@@ -2048,6 +2055,43 @@ function solveNet(plan){
     }
     const faceLabels=netFaceLabels(net,new Map([['sector',Math.PI*r*l],['base',Math.PI*r*r]]),unit),excluded=netExcluded(net,['base']);
     return {schemaVersion:SOLID_MODEL_VERSION,mode:'NET',unit,netKind:'CONE',radius:r,slant:r6(l),shapes,dims,...(faceLabels.length?{faceLabels}:{}),...(excluded.length?{excluded}:{})};
+  }
+  if(net.kind==='CONE_FRUSTUM'){
+    // The net of a cone frustum (radius = the wide circle, topRadius = the narrow one, slant or height): one ring-shaped sector (the big sector of the cone minus the small one cut off at its point) of
+    // outer radius slant*R/(R-r), inner radius slant*r/(R-r) and central angle 360*(R-r)/slant, the wide circle touching the outer arc from outside and the narrow circle the inner arc from the apex side.
+    if(net.segments!==undefined)bad('SOLID_NET_EMPHASIS_UNSUPPORTED:'+net.kind);
+    if(net.edgeLabels!==undefined)bad('SOLID_EDGE_LABEL_UNSUPPORTED:'+net.kind);
+    if(net.rightAngles!==undefined)bad('SOLID_NET_RIGHT_ANGLE_UNSUPPORTED:'+net.kind);
+    // highlights:[{face:"side"|"large"|"small",fill?}] tints the ring or one of the circles (the colour that ties a net part to the same face of the solid drawn beside it)
+    const highlights=[];
+    if(net.highlights!==undefined){
+      if(!Array.isArray(net.highlights)||net.highlights.length<1||net.highlights.length>3)bad('SOLID_NET_HIGHLIGHT_INVALID');
+      for(const h of net.highlights){
+        onlyKeys(h,['face','fill'],'SOLID_NET_HIGHLIGHT_INVALID');
+        if(typeof h.face!=='string')bad('SOLID_NET_HIGHLIGHT_INVALID');
+        if(!['side','large','small'].includes(h.face))bad('SOLID_NET_FACE_UNKNOWN');
+        const fill=h.fill??'LIGHT';
+        if(!NET_FILLS.includes(fill)||highlights.some(x=>x.face===h.face))bad('SOLID_NET_HIGHLIGHT_INVALID');
+        highlights.push({face:h.face,fill});
+      }
+    }
+    const R=pos(net.radius,'SOLID_PARAM_INVALID'),r=pos(net.topRadius,'SOLID_PARAM_INVALID');
+    if(!(r<R))bad('SOLID_NET_FRUSTUM_INVALID:TOP_NOT_SMALLER');
+    if(net.slant===undefined&&net.height===undefined)bad('SOLID_PARAM_INVALID');
+    const l=net.slant!==undefined?pos(net.slant,'SOLID_PARAM_INVALID'):Math.hypot(R-r,pos(net.height,'SOLID_PARAM_INVALID'));
+    if(!(l>R-r+1e-9))bad('SOLID_NET_FRUSTUM_INVALID:SLANT_TOO_SHORT');
+    if(net.slant!==undefined&&net.height!==undefined&&Math.abs(Math.hypot(R-r,pos(net.height,'SOLID_PARAM_INVALID'))-l)>1e-6*l)bad('SOLID_NET_FRUSTUM_INVALID:SLANT_HEIGHT_MISMATCH');
+    const theta=360*(R-r)/l,outer=l*R/(R-r),inner=l*r/(R-r);
+    const shapes={ring:{outer:r6(outer),inner:r6(inner),angleDeg:r6(theta)},large:{cx:0,cy:r6(-(outer+R)),r:R},small:{cx:0,cy:r6(-(inner-r)),r}};
+    const dims=[];
+    for(const [k,d] of (net.dims??[]).entries()){
+      onlyKeys(d,['part','label'],'SOLID_DIMS_INVALID');
+      const value={slant:l,'arc-outer':2*Math.PI*R,'arc-inner':2*Math.PI*r,'radius-large':R,'radius-small':r}[d.part];
+      if(value===undefined)bad('SOLID_DIMS_INVALID');
+      dims.push({id:'dim-'+(k+1),type:'NETPART',part:d.part,...dimLabel(d.label,value,unit,'d'+(k+1))});
+    }
+    const faceLabels=netFaceLabels(net,new Map([['side',Math.PI*(R+r)*l],['large',Math.PI*R*R],['small',Math.PI*r*r]]),unit),excluded=netExcluded(net,['large','small']);
+    return {schemaVersion:SOLID_MODEL_VERSION,mode:'NET',unit,netKind:'CONE_FRUSTUM',radius:R,topRadius:r,slant:r6(l),shapes,dims,...(highlights.length?{highlights}:{}),...(faceLabels.length?{faceLabels}:{}),...(excluded.length?{excluded}:{})};
   }
   if(net.kind!==undefined)bad('SOLID_NET_UNSUPPORTED:'+String(net.kind).slice(0,24));
   if(!isPlain(net.solid)||!POLY_KINDS.includes(net.solid.kind))bad('SOLID_NET_INVALID');
@@ -2137,7 +2181,7 @@ function solveNet(plan){
 }
 
 // --- layout and spec ----------------------------------------------------------------------------------------------------------------------------
-const WIDTH=480,MARGIN_X=62,MARGIN_Y=50,SAFE=10,MAX_FIG_H=300,MAX_SCALE=70,SIDE_DIM_ROOM=64;
+const WIDTH=480,MARGIN_X=62,MARGIN_Y=50,SAFE=10,MAX_FIG_H=300,MAX_SCALE=70,SIDE_DIM_ROOM=64,DIAMETER_ROOM=40,DIAMETER_LINE_OFFSET=22;
 // A solid panel of a composite grid (composite-panels-v1 with two columns) is narrower: two of them plus the 8 unit gap stay at 776 SVG units (the narrowest plane canvas pair: a Korean caption row still fits 44 units at the measured base font),
 // the width the Archive solution column keeps its 11 CSS px label floor at. The composite sets it (plan.panelWidth); an author never writes it.
 export const GRID_PANEL_WIDTH=384;
@@ -2146,6 +2190,11 @@ function figureExtent(model){
   const pts=[];
   if(model.mode==='SOLIDS'){for(const solid of model.solids)pts.push(...solidScreenPoints(solid));pts.push(...spaceScreenPoints(model.space));}
   else if(model.netKind==='POLYHEDRON'){for(const f of model.faces)pts.push(...f.poly);}
+  else if(model.netKind==='CONE_FRUSTUM'){
+    const {ring,large,small}=model.shapes,half=ring.angleDeg/2*Math.PI/180;
+    for(let k=0;k<=24;k++){const a=-Math.PI/2-half+2*half*k/24;pts.push([ring.outer*Math.cos(a),ring.outer*Math.sin(a)],[ring.inner*Math.cos(a),ring.inner*Math.sin(a)]);}
+    pts.push([large.cx-large.r,large.cy-large.r],[large.cx+large.r,large.cy+large.r],[small.cx-small.r,small.cy-small.r],[small.cx+small.r,small.cy+small.r]);
+  }
   else if(model.netKind==='CYLINDER'){const s=model.shapes;pts.push([s.rect.x,s.rect.y],[s.rect.x+s.rect.w,s.rect.y+s.rect.h],[s.bottom.cx-s.bottom.r,s.bottom.cy-s.bottom.r],[s.bottom.cx+s.bottom.r,s.bottom.cy+s.bottom.r],[s.top.cx-s.top.r,s.top.cy-s.top.r],[s.top.cx+s.top.r,s.top.cy+s.top.r]);}
   else{
     const {sector,base}=model.shapes,half=sector.angleDeg/2*Math.PI/180;
@@ -2160,10 +2209,14 @@ export function figureFrame(model){
   const e=figureExtent(model),bw=e.x1-e.x0,bh=e.y1-e.y0;
   const grid=model.panelWidth!==undefined,W=grid?model.panelWidth:WIDTH,MX=grid?GRID_MARGIN_X:MARGIN_X;
   // an outside height dimension (dims[].side) takes room beside the solid for its line and its label
-  const roomL=model.mode==='SOLIDS'&&model.dims.some(d=>d.side==='LEFT')?SIDE_DIM_ROOM:0,roomR=model.mode==='SOLIDS'&&model.dims.some(d=>d.side==='RIGHT')?SIDE_DIM_ROOM:0;
+  const tiers=model.mode==='SOLIDS'?outsideTiers(model):new Map(),tierRoom=side=>OUTSIDE_STEP*Math.max(0,...[...tiers].filter(([id])=>outsideSide(model.dims.find(d=>d.id===id))===side).map(([,t])=>t));
+  const lineRoom=side=>{const ts=model.mode==='SOLIDS'?model.dims.filter(d=>d.type==='SEGMENT'&&d.line&&d.side===side).map(d=>d.line):[];return ts.length?SIDE_DIM_ROOM+8+OUTSIDE_STEP*(Math.max(...ts)-1):0;};
+  const roomL=Math.max(model.mode==='SOLIDS'&&(model.dims.some(d=>d.side==='LEFT')||model.dims.some(d=>outsideSide(d)==='LEFT'))?SIDE_DIM_ROOM+tierRoom('LEFT'):0,lineRoom('LEFT')),roomR=Math.max(model.mode==='SOLIDS'&&(model.dims.some(d=>d.side==='RIGHT')||model.dims.some(d=>outsideSide(d)==='RIGHT'))?SIDE_DIM_ROOM+tierRoom('RIGHT'):0,lineRoom('RIGHT'));
   const scale=r6(Math.min((W-2*MX-roomL-roomR)/bw,MAX_FIG_H/bh,MAX_SCALE));
-  const height=Math.ceil(bh*scale+2*MARGIN_Y);
-  return {scale,width:W,height,origin:[r6((W+roomL-roomR)/2-scale*(e.x0+e.x1)/2),r6(height/2+scale*(e.y0+e.y1)/2)],extent:e};
+  // a diameter written outside (diameter with side TOP|BOTTOM) takes room above or below the solid for its line and its label
+  const roomT=model.mode==='SOLIDS'&&model.dims.some(d=>d.diameter&&d.side==='TOP')?DIAMETER_ROOM:0,roomB=model.mode==='SOLIDS'&&model.dims.some(d=>d.diameter&&d.side==='BOTTOM')?DIAMETER_ROOM:0;
+  const height=Math.ceil(bh*scale+2*MARGIN_Y+roomT+roomB);
+  return {scale,width:W,height,origin:[r6((W+roomL-roomR)/2-scale*(e.x0+e.x1)/2),r6(roomT+(height-roomT-roomB)/2+scale*(e.y0+e.y1)/2)],extent:e};
 }
 export const figurePanelSize=model=>{const f=figureFrame(model);return {width:f.width,height:f.height};};
 
@@ -2206,13 +2259,66 @@ function footRightAngle(d,F,T,ctx){
  * and the two points on the solid's side that its extension lines end on (the base circle's and the top circle's extreme on that side; an apex stands on the axis).
  */
 function sideHeightDim(d,solid,ctx){
-  const {X,Y,frame}=ctx,sgn=d.side==='LEFT'?-1:1,cx=(solid.offset??0),R=Math.max(solid.r0,solid.r1);
-  const xs=X(cx+sgn*R),x=d.side==='LEFT'?Math.max(SAFE+2,xs-26):Math.min(frame.width-SAFE-2,xs+26);
+  const {X,Y,frame}=ctx,sgn=d.side==='LEFT'?-1:1,cx=(solid.offset??0),R=Math.max(solid.r0,solid.r1),tier=ctx.tiers?.get(d.id)??0;
+  const xs=X(cx+sgn*R),x=d.side==='LEFT'?Math.max(SAFE+2,xs-26-OUTSIDE_STEP*tier):Math.min(frame.width-SAFE-2,xs+26+OUTSIDE_STEP*tier);
   return {x:r6(x),bottom:[X(cx+sgn*solid.r0),Y(0)],top:[X(cx+sgn*solid.r1),Y(solid.height*cP)]};
+}
+/**
+ * The outside dimension of a LEVEL height (dims[].level with side, the height of the water): the same line as a height's, from the level the part starts at to the level it ends at (the base up to the
+ * water surface, or the surface up to the top), each end carrying an extension line to the solid's side at that level (the solid's radius there: the surface's ellipse reaches the side at its centre row).
+ */
+function sideLevelDim(d,solid,ctx,section){
+  const {X,Y,frame}=ctx,sgn=d.outside==='LEFT'?-1:1,cx=(solid.offset??0),R=Math.max(solid.r0,solid.r1),tier=ctx.tiers?.get(d.id)??0;
+  const [z0,z1]=d.side==='TOP'?[section.z,solid.height]:[0,section.z];
+  const radiusAt=z=>solid.r0+(solid.r1-solid.r0)*z/solid.height;
+  const xs=X(cx+sgn*R),x=d.outside==='LEFT'?Math.max(SAFE+2,xs-26-OUTSIDE_STEP*tier):Math.min(frame.width-SAFE-2,xs+26+OUTSIDE_STEP*tier);
+  return {x:r6(x),bottom:[X(cx+sgn*radiusAt(z0)),Y(z0*cP)],top:[X(cx+sgn*radiusAt(z1)),Y(z1*cP)]};
+}
+/**
+ * The dimension line of an edge or segment length written with line:1|2|3 (dims[].line), in px: the segment (a to b on the page) moved sideways, perpendicular to itself, to the LEFT or RIGHT by 22 px
+ * (tier 1) plus one step for each further tier; the extension lines join each end of the segment to the line.
+ */
+function segmentDimLine(a,b,side,tier){
+  const dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy)||1;
+  let n=[-dy/l,dx/l];
+  if(n[0]*(side==='LEFT'?-1:1)<0)n=[-n[0],-n[1]];
+  const off=SEGMENT_LINE_FIRST+OUTSIDE_STEP*(tier-1);
+  return {a:[r6(a[0]+n[0]*off),r6(a[1]+n[1]*off)],b:[r6(b[0]+n[0]*off),r6(b[1]+n[1]*off)]};
+}
+const SEGMENT_LINE_FIRST=22;
+/** The outside diameter dimension of a circle (dims[].diameter with side TOP|BOTTOM), in px: the circle's left and right extremes `left`/`right` (on the row of its centre `pc`), and the line `a`-`b` above or below the ellipse. */
+function diameterOutside(d,pc,S){
+  const rx=S*d.r,ry=S*d.r*sP,y=d.side==='BOTTOM'?pc[1]+ry+DIAMETER_LINE_OFFSET:pc[1]-ry-DIAMETER_LINE_OFFSET;
+  return {left:[r6(pc[0]-rx),pc[1]],right:[r6(pc[0]+rx),pc[1]],a:[r6(pc[0]-rx),r6(y)],b:[r6(pc[0]+rx),r6(y)]};
+}
+/** The side (LEFT | RIGHT) a height or level dimension of a round solid is written outside on, or undefined. */
+const outsideSide=d=>d?.type==='HEIGHT'?d.side:d?.type==='LEVEL'?d.outside:undefined;
+const OUTSIDE_STEP=64;// how much further out each further dimension on the same side of one solid stands (short ones inside, long ones outside)
+/** dim id -> tier (0 = nearest the solid): the dimensions written outside one round solid on one side are layered by length, the shortest innermost. */
+function outsideTiers(model){
+  const groups=new Map();
+  for(const d of model.dims){
+    const side=outsideSide(d);
+    if(!side||d.onAxis)continue;
+    const solid=model.solids.find(s=>s.id===d.solid);
+    if(!solid||solid.category!=='REV')continue;
+    const span=d.type==='LEVEL'?(d.side==='TOP'?solid.height-model.section.z:model.section.z):solid.height;
+    const key=d.solid+'|'+side;
+    if(!groups.has(key))groups.set(key,[]);
+    groups.get(key).push({id:d.id,span});
+  }
+  const tiers=new Map();
+  for(const list of groups.values()){
+    if(list.length<2)continue;
+    list.sort((a,b)=>a.span-b.span||(Number(a.id.slice(4))-Number(b.id.slice(4))));
+    list.forEach((e,k)=>tiers.set(e.id,k));
+  }
+  return tiers;
 }
 const heightDimX=(solid,X)=>r6(Math.max(SAFE+2,Math.min(...solid.vertices.map(v=>X(project(v.p)[0])))-26));
 function spec3d(plan,model,ctx){
   const {S,X,Y,pt,prims,labels,line}=ctx;
+  ctx.tiers=outsideTiers(model);
   const named=pointTable(model.solids,model.space);
   const arcPrim=(id,role,e,u0,u1,vis,attrs={})=>prims.push({t:'arc',id,role,cx:X(e.cx),cy:Y(e.cy),rx:r6(S*e.a),ry:r6(S*e.b),u0:r6(u0),u1:r6(u1),vis,...attrs});
   const outline=[];// polylines for label obstacles are derived from prims later
@@ -2363,7 +2469,14 @@ function spec3d(plan,model,ctx){
       const c=project([solid.offset?EX[0]*solid.offset:0,solid.offset?EX[1]*solid.offset:0,d.z]);
       if(solid.at){c[0]+=solid.at.x;c[1]+=solid.at.y*sP;}// a ball off the axis: its radius starts at its own centre
       const rim=[c[0]+d.r,c[1]];// screen-horizontal radius: ends at the ellipse's right extreme
-      line(d.id+'-line','dim-line',pt(c),pt(rim),{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
+      // a diameter dimension runs the whole way across the circle, from its left extreme to its right one; with side TOP|BOTTOM it stands outside, 22 px above the top of the circle's ellipse or below its bottom,
+      // an extension line running from each extreme of the circle to it
+      if(d.diameter&&d.side){
+        const g=diameterOutside(d,pt(c),S);
+        line(d.id+'-line','dim-line',g.a,g.b,{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
+        line(d.id+'-ext-left','dim-ext',g.left,g.a,{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
+        line(d.id+'-ext-right','dim-ext',g.right,g.b,{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
+      }else line(d.id+'-line','dim-line',pt(d.diameter?[c[0]-d.r,c[1]]:c),pt(rim),{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
     }else if(d.type==='HEIGHT'){
       const solid=model.solids.find(s=>s.id===d.solid);
       if(solid.category==='POLY'){
@@ -2396,7 +2509,19 @@ function spec3d(plan,model,ctx){
     }else if(d.type==='LEVEL'){
       const solid=model.solids.find(s=>s.id===d.solid),sh=mulv(EX,solid.offset??0);
       const [z0,z1]=d.side==='TOP'?[model.section.z,solid.height]:[0,model.section.z];
-      line(d.id+'-line','dim-line',pt(project(add([0,0,z0],sh))),pt(project(add([0,0,z1],sh))),{solid:solid.id,dim:d.id,kind:'LEVEL',vis:'hidden'});
+      if(d.outside){
+        // outside the solid on its LEFT or RIGHT: a vertical dimension line from one level to the other with an extension line to the solid's side at each (a tier further out when a longer dimension shares the side)
+        const g=sideLevelDim(d,solid,ctx,model.section),[bx,by]=g.bottom,[tx,ty]=g.top;
+        line(d.id+'-line','dim-line',[g.x,by],[g.x,ty],{solid:solid.id,dim:d.id,kind:'LEVEL',vis:'solid'});
+        line(d.id+'-ext-bottom','dim-ext',[g.x,by],[bx,by],{solid:solid.id,dim:d.id,kind:'LEVEL',vis:'solid'});
+        line(d.id+'-ext-top','dim-ext',[g.x,ty],[tx,ty],{solid:solid.id,dim:d.id,kind:'LEVEL',vis:'solid'});
+      }else line(d.id+'-line','dim-line',pt(project(add([0,0,z0],sh))),pt(project(add([0,0,z1],sh))),{solid:solid.id,dim:d.id,kind:'LEVEL',vis:'hidden'});
+    }else if(d.type==='SEGMENT'&&d.line){
+      // a dimension line beside the edge, outside the solid, with an extension line from each end of the edge
+      const a=pt(project(named.get(d.from))),b=pt(project(named.get(d.to))),g=segmentDimLine(a,b,d.side,d.line);
+      line(d.id+'-line','dim-line',g.a,g.b,{dim:d.id,kind:'SEGMENT',vis:'solid'});
+      line(d.id+'-ext-a','dim-ext',a,g.a,{dim:d.id,kind:'SEGMENT',vis:'solid'});
+      line(d.id+'-ext-b','dim-ext',b,g.b,{dim:d.id,kind:'SEGMENT',vis:'solid'});
     }else if(d.type==='SLANT'){
       const solid=model.solids.find(s=>s.id===d.solid);
       void solid;
@@ -2514,7 +2639,8 @@ function spec3d(plan,model,ctx){
       const a=pt(project(named.get(d.from))),b=pt(project(named.get(d.to)));
       // side: the same direction on the page (y down) for the label placer
       const sideDir=d.side?{LEFT:[-1,0],RIGHT:[1,0],TOP:[0,-1],BOTTOM:[0,1]}[d.side]:undefined;
-      labels.push({...label,segment:[a,b],segmentOf:joinKeys([d.from,d.to]),...(sideDir?{sideDir}:{})});
+      const ln=d.line?segmentDimLine(a,b,d.side,d.line):null;
+      labels.push({...label,segment:ln?[ln.a,ln.b]:[a,b],segmentOf:joinKeys([d.from,d.to]),...(sideDir?{sideDir}:{})});
     }else if(d.type==='RADIUS'){
       const solid=model.solids.find(s=>s.id===d.solid);
       if(solid.cut){
@@ -2524,7 +2650,8 @@ function spec3d(plan,model,ctx){
       }
       const c=project([EX[0]*(solid.offset??0),EX[1]*(solid.offset??0),d.z]);
       if(solid.at){c[0]+=solid.at.x;c[1]+=solid.at.y*sP;}
-      labels.push({...label,segment:[pt(c),pt([c[0]+d.r,c[1]])],segmentOf:'radius'});
+      if(d.diameter&&d.side){const g=diameterOutside(d,pt(c),S);labels.push({...label,segment:[g.a,g.b],segmentOf:'radius',sideDir:d.side==='BOTTOM'?[0,1]:[0,-1]});}
+      else labels.push({...label,segment:[pt(d.diameter?[c[0]-d.r,c[1]]:c),pt([c[0]+d.r,c[1]])],segmentOf:'radius'});
     }else if(d.type==='HEIGHT'){
       const solid=model.solids.find(s=>s.id===d.solid);
       if(solid.category==='POLY'){const top=pt(project(d.top)),foot=pt(project(d.foot)),x=heightDimX(solid,X);labels.push({...label,segment:d.direct?[foot,top]:[[x,foot[1]],[x,top[1]]],segmentOf:'height'});}
@@ -2533,7 +2660,8 @@ function spec3d(plan,model,ctx){
     }else if(d.type==='LEVEL'){
       const solid=model.solids.find(s=>s.id===d.solid),sh=mulv(EX,solid.offset??0);
       const [z0,z1]=d.side==='TOP'?[model.section.z,solid.height]:[0,model.section.z];
-      labels.push({...label,segment:[pt(project(add([0,0,z0],sh))),pt(project(add([0,0,z1],sh)))],segmentOf:'level'});
+      if(d.outside){const g=sideLevelDim(d,solid,ctx,model.section);labels.push({...label,segment:[[g.x,g.bottom[1]],[g.x,g.top[1]]],segmentOf:'level',preferredSide:d.outside==='LEFT'?-1:1});}
+      else labels.push({...label,segment:[pt(project(add([0,0,z0],sh))),pt(project(add([0,0,z1],sh)))],segmentOf:'level'});
     }else if(d.type==='SLANT'){
       const solid=model.solids.find(s=>s.id===d.solid);
       const seg=d.part?slantPartSegment(S,solid,d.part,model.section):slantSegment(S,solid);
@@ -2923,6 +3051,27 @@ function specNet(plan,model,ctx){
     for(const fl of model.faceLabels??[])faceLabel(fl,fl.face==='rect'?[[x0,y0],[x1,y0],[x1,y1],[x0,y1]].map(pt):circleRegion(fl.face==='bottom'?bottom:top,pt));
     return;
   }
+  if(model.netKind==='CONE_FRUSTUM'){
+    const {ring,large,small}=model.shapes,half=ring.angleDeg/2*Math.PI/180,Ro=ring.outer,Ri=ring.inner;
+    const at=(R,sg)=>[R*Math.cos(-Math.PI/2+sg*half),R*Math.sin(-Math.PI/2+sg*half)];
+    const [o1,o2,i1,i2]=[at(Ro,-1),at(Ro,1),at(Ri,-1),at(Ri,1)];
+    prims.push({t:'ring',id:'net-ring',role:'net-face',face:'side',apex:pt([0,0]),o1:pt(o1),o2:pt(o2),i1:pt(i1),i2:pt(i2),outer:r6(S*Ro),inner:r6(S*Ri),large:ring.angleDeg>180?1:0,angleDeg:ring.angleDeg});
+    circle('net-circle-large','large',large);circle('net-circle-small','small',small);
+    for(const h of model.highlights??[]){const pr=prims.find(q=>h.face==='side'?q.id==='net-ring':q.id==='net-circle-'+h.face);pr.fill=h.fill;}
+    const arcMid=R=>[[-0.12*R,-R],[0.12*R,-R]];
+    for(const d of model.dims){
+      const seg={slant:[i2,o2],'arc-outer':arcMid(Ro),'arc-inner':arcMid(Ri),'radius-large':[[large.cx,large.cy],[large.cx+large.r,large.cy]],'radius-small':[[small.cx,small.cy],[small.cx+small.r,small.cy]]}[d.part];
+      if(d.part.startsWith('radius'))line(d.id+'-line','dim-line',pt(seg[0]),pt(seg[1]),{dim:d.id,kind:d.part,vis:'solid'});
+      // an arc length stands inside the ring (the outer arc's above its tangent, the inner arc's below it), never in the circle that touches the arc
+      const preferredSide=d.part==='arc-outer'?-1:d.part==='arc-inner'?1:undefined;
+      labels.push({id:d.id+'-label',role:'dim',owner:d.id,kind:'MATH',tex:d.tex,plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id,segment:[pt(seg[0]),pt(seg[1])],segmentOf:'net-part:'+d.part,...(preferredSide?{preferredSide}:{})});
+    }
+    for(const fl of model.faceLabels??[]){
+      const arcPts=R=>[...Array(33).keys()].map(k=>{const a=-Math.PI/2-half+2*half*k/32;return pt([R*Math.cos(a),R*Math.sin(a)]);});
+      faceLabel(fl,fl.face==='side'?[...arcPts(Ro),...arcPts(Ri).reverse()]:circleRegion(fl.face==='large'?large:small,pt));
+    }
+    return;
+  }
   // cone
   const {sector,base}=model.shapes,half=sector.angleDeg/2*Math.PI/180,L=sector.radius;
   const p1=[L*Math.cos(-Math.PI/2-half),L*Math.sin(-Math.PI/2-half)],p2=[L*Math.cos(-Math.PI/2+half),L*Math.sin(-Math.PI/2+half)];
@@ -2960,6 +3109,13 @@ function obstacleSegments(spec){
     else if(p.t==='earc')poly(p.samples,false);
     // the outline of a filled cut face is geometry the rendered layout check keeps labels off
     else if(p.t==='cutface')poly(p.points,true);
+    else if(p.t==='ring'){
+      // the outline of the ring-shaped sector of a frustum net: the outer arc out, the inner arc back (both run from the left end to the right end through the signed angle)
+      const a=Math.atan2(p.o1[1]-p.apex[1],p.o1[0]-p.apex[0]),d=-p.angleDeg*Math.PI/180,N=ELL_SAMPLES*2,pts=[];
+      for(let k=0;k<=N;k++)pts.push([p.apex[0]+p.outer*Math.cos(a+d*k/N),p.apex[1]+p.outer*Math.sin(a+d*k/N)]);
+      for(let k=N;k>=0;k--)pts.push([p.apex[0]+p.inner*Math.cos(a+d*k/N),p.apex[1]+p.inner*Math.sin(a+d*k/N)]);
+      poly(pts,true);
+    }
     else if(p.t==='sector'){
       // The drawn arc runs from p1 to p2 with sweep-flag 0 (the short way round in screen coordinates): keep the signed angle difference.
       const pts=[p.apex],a=Math.atan2(p.p1[1]-p.apex[1],p.p1[0]-p.apex[0]),b=Math.atan2(p.p2[1]-p.apex[1],p.p2[0]-p.apex[0]),d=b-a;
@@ -3128,7 +3284,8 @@ function renderPrims(spec,model){
   // fills first
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-face'))body+=`<g data-layer="10"><polygon id="${p.id}" data-role="net-face" data-face="${p.face}" fill="#f4f6fa" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='sector'))body+=`<g data-layer="10"><path id="${p.id}" data-role="net-face" data-face="sector" data-angle="${p.angleDeg}" data-radius-px="${p.radius}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" d="M ${p.apex.join(' ')} L ${p.p1.join(' ')} A ${p.radius} ${p.radius} 0 ${p.large} 0 ${p.p2.join(' ')} Z"/></g>`;
-  for(const p of spec.prims.filter(p=>p.t==='circle'))body+=`<g data-layer="12"><circle id="${p.id}" data-role="net-circle" data-part="${p.part}"${p.excluded?' data-excluded="1"':''} fill="${p.excluded?'#fff':'#f4f6fa'}" stroke="${p.excluded?'#888':'#111'}" stroke-width="1.6"${p.excluded?' stroke-dasharray="5 4"':''} cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='ring'))body+=`<g data-layer="10"><path id="${p.id}" data-role="net-face" data-face="side" data-angle="${p.angleDeg}" data-outer-px="${p.outer}" data-inner-px="${p.inner}"${p.fill?` data-fill="${p.fill}"`:''} fill="${p.fill?HIGHLIGHT_FILLS[p.fill][0]:'#f4f6fa'}"${p.fill?` fill-opacity="${HIGHLIGHT_FILLS[p.fill][1]}"`:''} stroke="#111" stroke-width="1.6" d="M ${p.i1.join(' ')} L ${p.o1.join(' ')} A ${p.outer} ${p.outer} 0 ${p.large} 0 ${p.o2.join(' ')} L ${p.i2.join(' ')} A ${p.inner} ${p.inner} 0 ${p.large} 1 ${p.i1.join(' ')} Z"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='circle'))body+=`<g data-layer="12"><circle id="${p.id}" data-role="net-circle" data-part="${p.part}"${p.excluded?' data-excluded="1"':''}${p.fill?` data-fill="${p.fill}"`:''} fill="${p.fill?HIGHLIGHT_FILLS[p.fill][0]:p.excluded?'#fff':'#f4f6fa'}"${p.fill?` fill-opacity="${HIGHLIGHT_FILLS[p.fill][1]}"`:''} stroke="${p.excluded?'#888':'#111'}" stroke-width="1.6"${p.excluded?' stroke-dasharray="5 4"':''} cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-highlight'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="net-highlight" data-face="${p.face}" data-fill="${p.fill}" fill="${HIGHLIGHT_FILLS[p.fill][0]}" fill-opacity="${HIGHLIGHT_FILLS[p.fill][1]}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='space-plane')){
     const [color,opacity]=HIGHLIGHT_FILLS[p.fill];

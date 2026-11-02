@@ -27,11 +27,14 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 평행선 때문에 생기는 두 삼각형의 닮음을 이용한다.\n$\\angle ACB=\\angle DCE$이고 $AB\\parallel DE$이므로 $\\angle ABC=\\angle DEC$이다.\n따라서 $\\triangle ACB\\sim\\triangle DCE$이고 대응변의 비에서 $AB:DE=CB:CE$이다.\n$12:8=x:4$이므로 $8x=48$, 따라서 $x=6$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/25_팔마중_2학기_기말_중2_기출/q1.png",
-    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q1-solution-v2.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: AB와 DE가 평행하고 C에서 만나는 두 삼각형 ACB와 DCE가 있다. 같은 색 각(초록 엇각, 보라 맞꼭지각)이 같고, 같은 색 변(파랑 AB와 DE, 주황 CB와 CE)이 서로 대응한다.",
+    "solutionImageCaption": "AB∥DE이므로 △ACB∽△DCE이고 12:8=x:4에서 x=6이다(정답 ①).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -59,11 +62,14 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 평행선으로 생기는 닮음으로 전체 밑변의 길이를 구한 뒤, 각의 이등분선의 성질로 $x=GC$를 구한다.\n그림에서 $AB=6$, $DB=2$이므로 $AD=4$이다.\n$DE\\parallel BC$이므로 $\\triangle ADE\\sim\\triangle ABC$이고 $AD:AB=AE:AC=2:3$이다. $EC=3$이므로 $AC=9$, $AE=6$이다.\n$AG$는 $\\angle BAC$의 이등분선이고 $F$는 $AG$와 $DE$의 교점이므로 $AF$는 $\\angle DAE$의 이등분선이다. 따라서 $DF:FE=AD:AE=4:6=2:3$이다.\n$FE=2$이므로 $DF=\\dfrac43$, 따라서 $DE=\\dfrac{10}{3}$이다.\n닮음에서 $DE:BC=AD:AB=2:3$이므로 $BC=5$이다.\n또 $AG$는 $\\angle BAC$의 이등분선이므로 $BG:GC=AB:AC=6:9=2:3$이다. $BC=5$이므로 $GC=3$이다.\n따라서 $x=3$이고 정답은 ③이다.",
     "image": "assets/images/25_팔마중_2학기_기말_중2_기출/q2.png",
-    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q2-solution-v2.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: △ABC에서 DE∥BC이므로 △ADE(파랑)∽△ABC이고, 이등분선 AG가 만드는 두 각(주황)이 같다. AD=4, DB=2, EC=3, FE=2를 적었다.",
+    "solutionImageCaption": "AD:AB=2:3에서 AC=9, BC=5이고, BG:GC=AB:AC=2:3이므로 GC=3(x=3)이다. 정답 ③.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -91,11 +97,14 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 중선과 무게중심의 성질을 이용하여 색칠한 부분을 두 삼각형으로 나눈다.\n$CE$는 중선이므로 $E$는 $AB$의 중점이고 $[\\triangle AEC]=48$이다.\n무게중심은 중선을 꼭짓점 쪽에서 $2:1$로 나누므로 $EG:EC=1:3$이다. 따라서 같은 높이를 갖는 $\\triangle AEG$와 $\\triangle AEC$의 넓이의 비도 $1:3$이어서 $[\\triangle AEG]=16$이다.\n같은 방법으로 $[\\triangle AGF]=16$이다.\n색칠한 부분의 넓이는 $16+16=32\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_팔마중_2학기_기말_중2_기출/q3.png",
-    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q3-solution-v2.svg",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 중선 BF와 CE가 만나는 무게중심 G를 잡고, 색칠한 △AEG와 △AGF를 같은 색으로 칠해 넓이 16 cm²씩 표시했다. 오른쪽에는 △AEC=48에서 EG:EC=1:3인 모양을 따로 그렸다.",
+    "solutionImageCaption": "△AEC=48이고 EG:EC=1:3이므로 △AEG=△AGF=16 cm²이고 색칠한 부분의 넓이는 16+16=32 cm²이어서 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -123,11 +132,14 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 무게중심은 각 중선을 $2:1$로 나눈다.\n$G$가 무게중심이고 $GD=6$이므로 $AG:GD=2:1$에서 $AG=12$이다.\n따라서 $AD=AG+GD=18$이고 $AD=BE=CF$이므로 $x=CF=18$이다.\n또 $BG:GE=2:1$이므로 $BG=\\dfrac23BE=\\dfrac23\\times18=12$이다. 따라서 $y=12$이다.\n$x+y=18+12=30$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/25_팔마중_2학기_기말_중2_기출/q4.png",
-    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q4-solution-v2.svg",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 무게중심 G에서 세 중선 AD, BE, CF를 같은 길이(주황, 눈금)로 나타내고 GD=6, AG=12, AD=18, BG=12를 표시했으며, 오른쪽에 중선 AD를 펴서 그렸다.",
+    "solutionImageCaption": "AG:GD=2:1이므로 AG=12, AD=18=BE=CF이고 BG=12이다. x+y=18+12=30이므로 정답 ④.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -155,11 +167,14 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 두 삼각형에서 무게중심이 중선을 나누는 비를 차례로 이용한다.\n$G$는 $\\triangle ABC$의 무게중심이므로 $AG:GD=2:1$이다. $AG=4$이므로 $GD=2$이다.\n$D$는 $BC$의 중점이므로 $GD$는 $\\triangle GBC$의 중선이다.\n$G'$는 $\\triangle GBC$의 무게중심이므로 $GG':G'D=2:1$이고, 따라서 $G'D=\\dfrac13GD=\\dfrac23$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_팔마중_2학기_기말_중2_기출/q5.png",
-    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q5-solution-v2.svg",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 무게중심 G와 삼각형 GBC(파랑)의 무게중심 G′가 중선 AD 위에 있고, AG=4, GD=2이며 GD가 세 개의 같은 길이로 나뉘어 GG′:G′D=2:1임을 초록 동그라미 눈금이 보인다.",
+    "solutionImageCaption": "G′은 △GBC의 무게중심이므로 G′D는 GD의 3분의 1이고, 따라서 G′D=2/3이다(정답 ②).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -187,11 +202,14 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 두 직각삼각형에 피타고라스 정리를 차례로 적용한다.\n그림에서 $AC=15$, $BC=14$, $DC=9$이므로 $BD=14-9=5$이다.\n직각삼각형 $ADC$에서 $x^2+9^2=15^2$이므로 $x^2=144$, 따라서 $x=12$이다.\n직각삼각형 $ABD$에서 $y^2=12^2+5^2=169$이므로 $y=13$이다.\n$x+y=12+13=25$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/25_팔마중_2학기_기말_중2_기출/q6.png",
-    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q6-solution-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: △ABC를 수선 AD로 나눈 두 직각삼각형: △ADC(파랑)는 변이 9, 12, 15이고 △ABD(주황)는 변이 5, 12, 13이다.",
+    "solutionImageCaption": "x=AD=12, y=AB=13이므로 x+y=25이다. 정답 ④.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -219,11 +237,14 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 두 정사각형의 한 변을 구한 뒤 가로와 세로의 차이를 이용한다.\n넓이가 $121$인 정사각형 $ABCD$의 한 변의 길이는 $11$이고, 넓이가 $49$인 정사각형 $CEFG$의 한 변의 길이는 $7$이다.\n따라서 $A$에서 $E$까지의 가로 방향 거리는 $11+7=18$, 세로 방향 거리는 $11$이다.\n피타고라스 정리에 의해 $AE^2=18^2+11^2=324+121=445$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/25_팔마중_2학기_기말_중2_기출/q7.png",
-    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q7-solution-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD(한 변 11)와 CEFG(한 변 7)가 C에서 만나는 그림에 가로 11+7=18, 세로 11인 직각삼각형을 점선 보조선으로 더했다. 빗변이 AE이다.",
+    "solutionImageCaption": "가로 18, 세로 11인 직각삼각형에서 AE²=18²+11²=324+121=445이므로 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -251,11 +272,14 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 직각삼각형에서 빗변에 내린 높이로 생기는 닮은 삼각형의 성질을 이용한다.\n그림에서 $AB=12$, $AC=9$이므로 $BC=\\sqrt{12^2+9^2}=15$이다.\n직각삼각형의 빗변에 내린 높이의 성질에 따라 $BD=\\dfrac{AB^2}{BC}=\\dfrac{144}{15}=9.6$, $CD=\\dfrac{AC^2}{BC}=\\dfrac{81}{15}=5.4$이다.\n또 $AD=\\dfrac{AB\\cdot AC}{BC}=\\dfrac{12\\cdot9}{15}=7.2$이다.\n따라서 $b+c-a=5.4+7.2-9.6=3$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/25_팔마중_2학기_기말_중2_기출/q8.png",
-    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q8-solution-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: ∠A=90°인 직각삼각형 ABC의 높이 AD로 생긴 닮은 세 삼각형에서 같은 각을 파랑(∠B=∠CAD)과 주황(∠C=∠BAD)으로 묶고, BD=9.6, CD=5.4, AD=7.2, BC=15, AB=12, AC=9cm를 표시했다.",
+    "solutionImageCaption": "BD=9.6, CD=5.4, AD=7.2이므로 b+c−a=5.4+7.2−9.6=3이다. 정답 ①.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -287,7 +311,10 @@ window.questionBank = [
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q9-solution.svg"
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC(AB=13, BC=5, AC=12)와 정사각형 ABED가 있다. 수선의 발 H에서 AH=144/13이고, 점 C에서 직선 AD까지의 수평 거리(위쪽 파랑 선분)가 AH와 같음(파랑)을 보여 주며 삼각형 CAD가 주황으로 칠해져 있다.",
+    "solutionImageCaption": "그림의 H는 해설처럼 C에서 AB에 내린 수선의 발이다(문제 그림의 H와 다름). △CAD는 밑변 AD=13, 높이 144/13이므로 넓이는 ½×13×144/13=72이다(정답 ②).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -371,7 +398,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로는 100원짜리 개수 a, 세로는 50원짜리 개수 b(각 1~3)인 3×3 표에 (a,b)가 적혀 있다. 금액이 같은 칸 (2,1)과 (1,3)이 옅은 회색, (3,1)과 (2,3)이 짙은 회색이다.",
+    "solutionImageCaption": "같은 색 칸은 금액이 같은 (a,b)이다. 옅은 회색 (2,1)·(1,3)은 250원, 짙은 회색 (3,1)·(2,3)은 350원이고, 흰 칸 (1,1)=150원, (1,2)=200원, (2,2)=300원, (3,2)=400원, (3,3)=450원은 모두 다르다. 50원 단위로 2a+b를 구하면 3,4,5,5,6,7,7,8,9이므로 금액은 7가지이다. 정답 ③",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -399,7 +430,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 다섯 점 A~E를 잇는 선분 10개를 점마다 색으로 나눈 그림: A에서 4개(파랑), B에서 3개(주황), C에서 2개(초록), D에서 1개(분홍).",
+    "solutionImageCaption": "4+3+2+1=10개이다. 정답 ①.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -430,7 +465,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원을 A, B, C, D 네 부분으로 나눈 그림에 부분마다 고를 수 있는 색의 수(B 5, C 4, A 3, D 3)를 쓰고, 오른쪽에 이웃하는 부분을 선으로 이은 관계도(B-A, B-C, B-D, C-A, C-D, A와 D는 이웃하지 않음)를 따로 그렸다.",
+    "solutionImageCaption": "B는 5가지, C는 4가지, A와 D는 각각 3가지이므로 5×4×3×3=180가지이어서 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -518,7 +557,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 주머니 A에서 흰 5/9, 검 4/9, 각각에서 주머니 B 흰 2/3, 검 1/3으로 갈라지는 네 경로의 수형도. 서로 다른 색이 되는 두 경로(A흰·B검, A검·B흰)가 굵은 선과 동그라미로 표시되고 경로 확률의 곱이 적혀 있다.",
+    "solutionImageCaption": "서로 다른 색인 두 경우 5/9×2/6(=5/9×1/3)=5/27과 4/9×4/6(=4/9×2/3)=8/27을 더하면 13/27이다. 정답 ⑤",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -549,7 +592,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선의 원점 0에 점 P가 있고, 앞면이 나와 오른쪽으로 2만큼, 이어 뒷면 세 번으로 왼쪽으로 1씩 세 번 움직여 -1에 도착하는 예시 화살표.",
+    "solutionImageCaption": "예: 앞면 1번(+2)과 뒷면 3번(-1씩)이면 0에서 -1에 도착한다. 앞면이 정확히 한 번 나오는 경우는 4가지이므로 4/16=1/4이다. 정답 ④",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -577,7 +624,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위의 눈의 곱을 적은 6×6 표. 두 눈이 모두 홀수여서 곱이 홀수인 9칸이 회색으로 칠해져 있고 나머지 27칸은 곱이 짝수이다.",
+    "solutionImageCaption": "곱이 홀수인 칸은 9칸이므로 홀수일 확률은 9/36=1/4이고, 곱이 짝수일 확률은 1-1/4=3/4이다. 정답 ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -632,11 +683,14 @@ window.questionBank = [
     "answer": "$31$",
     "solution": "[키포인트] 사다리꼴에서 두 변의 중점을 이은 선분의 길이는 두 밑변의 길이의 평균이다.\n$AE=BE$이므로 $E$는 $AB$의 중점이고, 그림에서 $AB=7$이다.\n$DF=CF$이고 그림에서 $DF=4$이므로 $DC=8$이다.\n$E,F$가 두 옆변의 중점이고 $EF\\parallel AD\\parallel BC$이므로 $EF=\\dfrac{AD+BC}{2}$이다. 그림에서 $EF=8$이므로 $AD+BC=16$이다.\n따라서 사각형 $ABCD$의 둘레는 $AB+BC+CD+DA=7+8+16=31$이다.\n따라서 구하는 값은 $31$이다.",
     "image": "assets/images/25_팔마중_2학기_기말_중2_기출/q21.png",
-    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q21-solution-v2.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 사다리꼴 ABCD에서 AD∥EF∥BC(초록 화살표), E, F는 AB, DC의 중점(AE=BE 파랑, DF=CF 주황 눈금)이고 AB=7, DF=4, EF=8cm를 표시했다.",
+    "solutionImageCaption": "DC=8이고 EF=(AD+BC)/2에서 AD+BC=16이므로 둘레는 7+8+16=31이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -659,11 +713,14 @@ window.questionBank = [
     "answer": "(1) $12$, (2) $96$",
     "solution": "[키포인트] 먼저 피타고라스 정리로 $AC$를 구한 뒤, 세 반원의 넓이 관계를 이용한다.\n(1) $\\angle C=90^\\circ$, $AB=20$, $BC=16$이므로 $x^2+16^2=20^2$이다.\n$x^2=400-256=144$이므로 $x=12$이다.\n(2) 지름이 $d$인 반원의 넓이는 $\\dfrac{\\pi d^2}{8}$이다.\n$AB=20$을 지름으로 하는 반원의 넓이는 $\\dfrac{\\pi\\cdot20^2}{8}=50\\pi$이다.\n$AC=12$를 지름으로 하는 반원의 넓이는 $\\dfrac{\\pi\\cdot12^2}{8}=18\\pi$, $BC=16$을 지름으로 하는 반원의 넓이는 $\\dfrac{\\pi\\cdot16^2}{8}=32\\pi$이다.\n두 작은 반원의 넓이의 합은 $18\\pi+32\\pi=50\\pi$로 큰 반원의 넓이와 같다.\n큰 반원 안은 직각삼각형과 두 원호 아래 부분으로 나뉘므로, 두 작은 반원에서 겹치는 두 원호 아래 부분을 빼고 남는 색칠한 두 부분의 넓이의 합은 $\\triangle ABC$의 넓이와 같다.\n$[\\triangle ABC]=\\dfrac12\\times12\\times16=96$이므로 색칠한 부분의 넓이는 $96$이다.\n따라서 구하는 값은 (1) $12$, (2) $96$이다.",
     "image": "assets/images/25_팔마중_2학기_기말_중2_기출/q22.png",
-    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q22-solution-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC(AB=20, BC=16, AC=x)의 세 변을 지름으로 하는 반원의 넓이 18π, 32π, 50π가 표시되고, 색칠한 두 부분(주황)과 삼각형 ABC(파랑)가 구분된다.",
+    "solutionImageCaption": "두 작은 반원의 넓이의 합이 큰 반원과 같으므로 색칠한 부분은 △ABC와 같다. (1) 12, (2) 96",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -712,10 +769,13 @@ window.questionBank = [
     "answer": "$\\dfrac7{36}$",
     "solution": "[키포인트] 정오각형의 둘레를 따라 $5$칸마다 같은 꼭짓점으로 돌아오므로 주사위 합을 $5$로 나눈 나머지를 본다.\n화살표 방향으로 $A\\to B\\to C\\to D$까지는 $3$칸이므로, 두 주사위 눈의 합을 $5$로 나눈 나머지가 $3$이어야 한다.\n두 주사위 눈의 합은 $2$부터 $12$까지이므로 조건에 맞는 합은 $3$과 $8$이다.\n합이 $3$인 경우는 $(1,2),(2,1)$의 $2$가지이고, 합이 $8$인 경우는 $(2,6),(3,5),(4,4),(5,3),(6,2)$의 $5$가지이다.\n전체 경우의 수는 $6\\times6=36$이고 유리한 경우는 $2+5=7$가지이다.\n따라서 구하는 확률은 $\\dfrac7{36}$이다.",
     "image": "assets/images/25_팔마중_2학기_기말_중2_기출/q24.png",
-    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q24-solution.svg",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q24-solution-v2.svg",
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageAlt": "해설 그림: 정오각형 ABCDE의 둘레를 A에서 화살표 방향으로 한 칸씩 세면 5칸에 한 바퀴이고, 각 변의 번호 1~5는 A에서 센 칸 수이고, 굵은 3칸(A→B→C→D)째에 D이다.",
+    "solutionImageCaption": "D까지는 3칸이므로 두 눈의 합을 5로 나눈 나머지가 3이어야 한다(합 3 또는 8). 확률은 (2+5)/36=7/36이다.",
+    "solutionImageSize": "medium"
   }
 ];

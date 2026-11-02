@@ -30,7 +30,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 닮은 두 삼각형 ABC와 DEF를 나란히 그리고 대응변 AB↔DE(파랑), BC↔EF(주황), CA↔FD(초록)를 같은 색으로 묶었다. BC=15 cm, EF=9 cm, DE=6 cm와 대응각 ∠B=∠E=55°를 표시했다.",
+    "solutionImageCaption": "BC:EF=15:9=5:3이므로 AB=6×5/3=10 cm이어서 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -62,7 +66,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: A0 직사각형을 반으로 자른 A1(1/2), A2(1/4), A3(1/8), A4(1/16)의 넓이를 서로 다른 색으로 나타냈고, 남은 흰 부분도 1/16이다.",
+    "solutionImageCaption": "A0의 넓이를 1로 두면 A4의 넓이는 1/16이므로 닮음비는 1:4이다. 정답 ④.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -124,12 +132,15 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 태양광선이 평행하므로 높이와 그림자가 만드는 직각삼각형들은 서로 닮는다.\n피라미드의 꼭짓점은 정사각형 밑면의 중심 위에 있으므로 중심에서 그림자 방향의 밑면 끝까지는 $220\\div2=110\\mathrm{m}$이다. 밑면 밖 그림자 $70\\mathrm{m}$를 더하면 대응하는 수평 길이는 $180\\mathrm{m}$이다.\n따라서 $49:60=h:180$이고, $h=180\\times\\dfrac{49}{60}=147$이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q4-solution-v2.svg",
     "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q4.png",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 왼쪽은 49cm 지팡이와 60cm 그림자(삼각형 ABC), 오른쪽은 높이 h인 피라미드의 단면과 그림자(삼각형 D…)이다. 햇빛의 각(초록)이 같고, 높이(주황)끼리·그림자(파랑)끼리 대응하며 피라미드 쪽 수평 길이는 110+70=180m이다.",
+    "solutionImageCaption": "49:60=h:180이므로 피라미드의 높이는 147m이다(정답 ③).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -160,7 +171,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 세 직선 l, m, n이 두 직선과 만나 생기는 선분. 왼쪽의 4(파랑), 12(주황)와 오른쪽의 6(파랑), x(주황)가 같은 색끼리 대응한다.",
+    "solutionImageCaption": "4:12=6:x이고 4:12=1:3이므로 x=18 cm이다. 정답 ④.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -253,12 +268,15 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 합동으로 필요한 길이를 구한 뒤, 가로·세로 길이로 생기는 직각삼각형에 피타고라스 정리를 적용한다.\n$\\triangle AED\\equiv\\triangle BCE$이므로 $AE=BC=15$, $BE=AD=8$이다. 따라서 $AB=AE+EB=23$이다.\n$D$와 $C$의 가로 방향 거리는 $23$, 세로 방향 높이의 차는 $15-8=7$이므로 $CD^2=23^2+7^2=578$이다.\n$CD$를 지름으로 하는 반원의 넓이는 $\\dfrac12\\pi\\left(\\dfrac{CD}{2}\\right)^2=\\dfrac{CD^2}{8}\\pi=\\dfrac{578}{8}\\pi=\\dfrac{289}{4}\\pi$이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q8-solution-v2.svg",
     "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q8.png",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 사다리꼴 ABCD의 AB 위에 점 E를 잡아 합동인 △AED와 △BCE를 같은 색으로 칠하고 AE=BC=15, BE=AD=8, AB=23을 같은 눈금으로 보였다. 오른쪽에 D에서 BC에 내린 수선으로 만든 직각삼각형 DHC(DH=23, HC=7)를 따로 그렸고, CD를 지름으로 하는 반원을 위에 칠했다.",
+    "solutionImageCaption": "CD²=23²+7²=578이므로 반원의 넓이는 578/8π=289/4π이어서 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -285,13 +303,16 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 세 변의 중점을 이은 선분의 평행 관계와 길이를 이용한다.\n$E,F$는 각각 $BC,CA$의 중점이므로 $EF\\parallel AB$이어서 ㉠은 옳다.\n중점연결정리에 의해 $AD=EF=\\dfrac12AB$, $AF=DE=\\dfrac12AC$, $DF=\\dfrac12BC$이므로 $\\triangle ADF$와 $\\triangle EFD$는 SSS 합동이다.\n또 $DB=FE=\\dfrac12AB$, $BE=EC=\\dfrac12BC$, $DE=FC=\\dfrac12AC$이므로 $\\triangle DBE\\equiv\\triangle FEC$이다.\n따라서 ㉠, ㉡, ㉢이 모두 옳으므로 정답은 ⑤이다.",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q9-solution-v2.svg",
     "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q9.png",
     "imageSize": "tall",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변의 중점 D, E, F에서 같은 길이 눈금 3묶음(AD=DB=EF, AF=FC=DE, BE=EC=DF), EF∥AB(초록 화살표), 합동인 △ADF와 △EFD(파랑), △DBE와 △FEC(주황)를 나타냈다.",
+    "solutionImageCaption": "중점연결정리로 ㉠ AB∥EF, ㉡ △ADF≡△EFD, ㉢ △DBE≡△FEC가 모두 옳다. 정답 ⑤.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -349,13 +370,16 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 중점연결선과 무게중심이 중선을 나누는 위치를 넓이비와 함께 이용한다.\n$H$는 중점연결선 $FE$와 중선 $AD$의 교점이므로 $AH=\\dfrac12AD$이다. 무게중심은 $AG=\\dfrac23AD$이므로 $HG=\\left(\\dfrac23-\\dfrac12\\right)AD=\\dfrac16AD$이다. 따라서 $AH:HG=3:1$이어서 ㉠은 옳다.\n$\\triangle AIJ\\sim\\triangle ABC$의 닮음비는 $AG:AD=2:3$이므로 $[AIJ]:[ABC]=4:9$이다. 따라서 $[IBCJ]=\\dfrac59[ABC]$이고, $[AFE]=\\dfrac14[ABC]$이므로 $[IBCJ]:[AFE]=\\dfrac59:\\dfrac14=\\dfrac{20}{9}$이다. ㉡도 옳다.\n$FE=\\dfrac12BC$이고 $G$와 $FE$ 사이의 높이는 전체 높이의 $\\dfrac16$이므로 $[FGE]=\\dfrac1{12}[ABC]$. 전체 넓이가 $35$이면 $[FGE]=\\dfrac{35}{12}$이므로 ㉢은 옳지 않다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q11-solution.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q11-solution-v2.svg",
     "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q11.png",
     "imageSize": "tall",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 D, E, F가 변의 중점이고 G는 무게중심이다. 중선 AD를 같은 길이(보라 동그라미) 6칸으로 나누어 AH=3칸, HG=1칸, AG=4칸으로 보이고, △AFE(주황)와 □IBCJ(파랑) 영역이 칠해져 있다.",
+    "solutionImageCaption": "AH:HG=3:1이고 AG:AD=2:3이며 △AFE=¼△ABC, □IBCJ=5/9△ABC이므로 ㉠(AH/HG=3), ㉡(20/9배)은 옳고 ㉢은 옳지 않다(정답 ②).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -382,13 +406,16 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 막대의 길이로부터 두 닮은 삼각형의 대응변의 비를 구한다.\n그림의 막대에서 $OA=20$, $AB=50$이므로 $OB=70$이다. 또 $BC=20$, $CE=50$이므로 $BE=70$이다. 연결 구조에서 $AD=20$이고 $AD\\parallel BE$이다.\n따라서 $\\triangle OAD\\sim\\triangle OBE$이고 닮음비는 $OA:OB=20:70=2:7$이다. 이에 따라 점 $D$와 점 $E$가 그리는 도형의 닮음비도 $2:7$이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q12-solution-v2.svg",
     "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q12.png",
     "imageSize": "tall",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 왼쪽은 막대 OAB, BCE를 연결한 구조로 OA=AD=BC=20, AB=DC=CE=50이고 AD∥BE이다. 가운데와 오른쪽은 닮은 두 삼각형 OAD와 OBE이며 대응변을 같은 색(파랑·주황·초록)으로 묶었다.",
+    "solutionImageCaption": "닮음비는 OA:OB=20:70=2:7이므로 점 D와 E가 그리는 도형의 닮음비도 2:7이다. 정답 ③.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -445,7 +472,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 상의 a, b, c에서 각각 하의 x, y 두 가지로 갈라지는 수형도. 끝 가지가 모두 6개이다.",
+    "solutionImageCaption": "상의 3가지에 하의 2가지씩이므로 3×2=6가지이다. 정답 ④",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -531,13 +562,16 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 네 카드 각각을 추가했을 때 닮음조건이 완성되는지 확인한다.\n기본 조건은 $EF:BC=6:12=1:2$이고 $\\angle E=\\angle B$이다.\n$\\angle A=\\angle D$ 카드를 뽑으면 두 각이 각각 같으므로 AA 닮음이 성립한다. $AB=14\\mathrm{cm}$ 카드를 뽑으면 $DE:AB=7:14=1:2$, $EF:BC=1:2$이고 그 사이의 각 $E,B$가 같으므로 SAS 닮음이 성립한다.\n반면 $AC=14\\mathrm{cm}$ 또는 $DF=7\\mathrm{cm}$만 추가해서는 닮음조건이 완성되지 않는다. 따라서 유리한 카드는 $2$장이다.\n확률은 $\\dfrac24=\\dfrac12$이므로 정답은 ③이다.",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q17-solution.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q17-solution-v2.svg",
     "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q17.png",
     "imageSize": "tall",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 두 삼각형 ABC와 DEF에 BC=12, EF=6, DE=7과 ∠B=∠E를 표시한 그림을 세 장으로 보였다. 가운데는 ∠A=∠D를 더한 AA 닮음, 아래는 AB=14를 더해 DE:AB=EF:BC=1:2와 끼인각이 같은 SAS 닮음이다.",
+    "solutionImageCaption": "∠A=∠D 카드와 AB=14 카드의 2장이 닮음조건을 완성하므로 확률은 2/4=1/2이어서 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -565,7 +599,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 1부터 100까지의 자연수 전체집합 U 안에서 4의 배수 25개와 7의 배수 14개의 두 원이 겹치고, 겹친 부분(28의 배수) 3개가 표시된 벤다이어그램. 합집합이 색칠되어 있다.",
+    "solutionImageCaption": "겹친 28의 배수 3개는 한 번 빼므로 4의 배수 또는 7의 배수는 25+14-3=36개이고 확률은 36/100=9/25이다. 정답 ①",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -618,13 +656,16 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 윤태의 말이 시작으로 가려면 성준의 말이 윤태의 말이 있는 칸에 도착하여 잡아야 한다.\n그림에서 성준의 말에서 윤태의 말까지는 왼쪽으로 $1$칸, 위로 $1$칸 이동해야 한다. 한 번의 주사위에서 왼쪽 1칸은 눈 $3$, 위쪽 1칸은 눈 $1$일 때이다.\n두 번 던지는 순서를 고려하면 가능한 경우는 $(1,3)$, $(3,1)$의 두 가지이고 전체 경우는 $6\\times6=36$가지이다.\n따라서 확률은 $\\dfrac2{36}=\\dfrac1{18}$이므로 정답은 ④이다.",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q20-solution-v2.svg",
     "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q20.png",
     "imageSize": "tall",
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 성준의 말에서 윤태의 말까지 위로 1칸(눈 1), 왼쪽으로 1칸(눈 3) 가는 두 경로. 실선은 눈 1 다음 눈 3, 점선은 눈 3 다음 눈 1을 화살표로 나타낸다.",
+    "solutionImageCaption": "두 번 던져 (1,3) 또는 (3,1)이 나오는 2가지가 가능하고 전체는 6×6=36가지이므로 확률은 2/36=1/18이다. 정답 ④",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -647,13 +688,16 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{60}{13}$",
     "solution": "[키포인트] 좌표축과의 절편으로 직각삼각형의 두 변을 구하고, 넓이를 두 방법으로 나타내어 높이 $OC$를 구한다.\n$x$축 위에서는 $y=0$이므로 $12x-60=0$에서 $x=5$이다. 따라서 $OA=5$이다. $y$축 위에서는 $x=0$이므로 $5y-60=0$에서 $y=12$이다. 따라서 $OB=12$이다.\n피타고라스 정리에 의해 $AB=\\sqrt{5^2+12^2}=13$이다.\n$OC\\perp AB$이므로 $\\triangle OAB$의 넓이를 두 방법으로 나타내면 $\\dfrac12\\cdot5\\cdot12=\\dfrac12\\cdot13\\cdot OC$이다. 따라서 $OC=\\dfrac{60}{13}$이다.\n따라서 구하는 길이는 $\\dfrac{60}{13}$이다.",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q21-solution-v2.svg",
     "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q21.png",
     "imageSize": "tall",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 직선 12x+5y-60=0이 x축과 A, y축과 B에서 만나고 직각삼각형 OAB가 색칠되어 있다. OA=5, OB=12, AB=13이 치수선으로 표시되고, O에서 AB에 내린 수선 OC가 직각 표시와 함께 빨간색으로 그려져 있다.",
+    "solutionImageCaption": "△OAB의 넓이를 두 가지로 나타내면 1/2×5×12=1/2×13×OC이므로 OC=60/13이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -675,12 +719,15 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac16$",
     "solution": "[키포인트] 정육각형에서는 $6$칸 이동하면 같은 꼭짓점으로 돌아오므로, $A$에서 $E$에 도착하는 이동 칸 수를 주사위 눈의 합으로 찾는다.\n$A$에서 시계 반대 방향으로 $E$까지는 $4$칸이므로 두 눈의 합이 $4$이면 된다. 또한 $6$칸을 한 바퀴 더 이동한 합 $10$도 같은 꼭짓점 $E$에 도착한다.\n합이 $4$인 순서쌍은 $(1,3),(2,2),(3,1)$이고, 합이 $10$인 순서쌍은 $(4,6),(5,5),(6,4)$이다. 따라서 유리한 경우는 $6$가지이다.\n전체 경우는 $36$가지이므로 확률은 $\\dfrac6{36}=\\dfrac16$이다.\n따라서 구하는 확률은 $\\dfrac16$이다.",
-    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q22-solution-v2.svg",
     "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q22.png",
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageAlt": "해설 그림: 왼쪽은 정육각형 ABCDEF에서 A부터 시계 반대 방향으로 한 칸씩 4칸 움직여 E에 가는 빨간 화살표 경로이고, 오른쪽은 바깥 점선 육각형으로 한 바퀴(6칸)를 돌고 다시 4칸 가는 10칸 경로를 보여 준다.",
+    "solutionImageCaption": "E에 도착하려면 두 눈의 합이 4 또는 10(한 바퀴 6칸+4칸)이어야 하고, 그 경우는 6가지이므로 확률은 6/36=1/6이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -704,6 +751,10 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 주머니 A에서 빨강 3/5, 파랑 2/5, 각각에서 주머니 B 빨강 2/5, 파랑 3/5로 갈라지는 수형도. 두 공이 모두 빨강인 경로가 굵은 선과 동그라미로 표시되어 있다.",
+    "solutionImageCaption": "두 공이 모두 빨강인 확률은 3/5×2/5=6/25이다.",
+    "solutionImageSize": "medium"
   }
 ];

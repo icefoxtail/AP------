@@ -638,16 +638,16 @@ window.questionBank = [
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q15-solution.svg",
+      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q15-solution-v2.svg",
       "problemTypeKey": "PT_COORDINATE_POINT_READING",
       "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:1c1d7548b352a18a16cf37b363d4a155262a07a5545513fed554d6a19c08eacf",
       "difficultyEvidenceSha": "sha256:2aa9edaa445704efe903bd35bf50bd766898af3988c5230cdb8062deba7cd180",
-      "solutionImageAlt": "좌표평면에 A(-3,2), B(0,1), C(4,3), D(3,-2)를 표시한 그림",
-      "solutionImageCaption": "각 점에서 x좌표를 먼저, y좌표를 다음에 읽어 보기의 좌표와 대조한다.",
-      "solutionImageSize": "large"
+      "solutionImageAlt": "해설 그림: 좌표평면 위의 다섯 점 A(-3, 2), B(0, 1), C(4, 3), D(3, -2), E(-4, 0). A, C, D에서 x축과 y축으로 점선을 내려 좌표를 읽는다.",
+      "solutionImageCaption": "각 점에서 두 축으로 점선을 내려 x좌표, y좌표를 읽으면 C(4, 3)이 그림과 일치하므로 정답은 ③이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 16,
@@ -825,13 +825,13 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
       "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_PERIODIC_GRAPH_CLAIMS",
-      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q19-solution-v2.svg",
+      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q19-solution-v3.svg",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:3ed3500e6a23a86d78ac44e69d1401f9f9113c0183bd50ca13ad2daaf3734cba",
       "difficultyEvidenceSha": "sha256:c258280068cac2119e51230b43955dcaf56b564429b913d25189640226de9453",
-      "solutionImageAlt": "해설 그림: 0분부터 60분까지 관람차의 높이 그래프로, 10분·30분·50분에 높이 30m 선에 닿는 세 개의 최고점과 높이 20m 선과 만나는 여섯 개의 점을 보여 주는 그림.",
-      "solutionImageCaption": "최고점은 10분, 30분, 50분이고 높이 20m와 6번 만난다.",
+      "solutionImageAlt": "해설 그림: 관람차의 시간(분)-높이(m) 그래프. 최고점은 10분, 30분, 50분에 높이 30m이고, 높이 20m를 나타내는 직선과 곡선이 6개의 점에서 만난다.",
+      "solutionImageCaption": "최고점은 10분, 30분, 50분이므로 같은 높이로 돌아오는 데 20분이 걸리고, 높이 20m인 때는 6번이다. 30분이 걸린다는 ⑤가 옳지 않으므로 정답은 ⑤이다.",
       "solutionImageSize": "medium"
     },
     {
@@ -915,15 +915,15 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q21-solution-v2.svg",
+      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q21-solution-v3.svg",
       "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
       "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:793a6a1756667755e2b05eda598d5d660c142a58b292dbdf4c976ea823ae3d72",
       "difficultyEvidenceSha": "sha256:d0cbb131c289d1861d60e00f03c808d3f9f7bdfb884c7308a0c9314871f1d5a2",
-      "solutionImageAlt": "해설 그림: 반비례 그래프 y=b/x와 정비례 직선 y=ax가 제2사분면의 점 P(-6, 2)에서 만나고, 점 P에서 x축의 -6과 y축의 2로 점선을 내린 그림.",
-      "solutionImageCaption": "두 그래프는 점 (-6, 2)를 함께 지난다.",
+      "solutionImageAlt": "해설 그림: 점 (-6, 2)에서 만나는 직선 y=-x/3과 곡선 y=-12/x의 그래프. 교점에서 두 축으로 점선을 내려 -6과 2를 읽는다.",
+      "solutionImageCaption": "교점 (-6, 2)를 대입하면 a=-1/3, b=-12이므로 ab=4이고, 정답은 ④이다.",
       "solutionImageSize": "medium"
     },
     {
@@ -1002,7 +1002,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:70d8deddd88b9e812216587f23653f089c9c136f22b70a6f461be04639d8d5a6",
-      "difficultyEvidenceSha": "sha256:a82f70d9af92c22fb2559c91ba94bc5b24078154aadd5c7395f3fb39538a5422"
+      "difficultyEvidenceSha": "sha256:a82f70d9af92c22fb2559c91ba94bc5b24078154aadd5c7395f3fb39538a5422",
+      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q23-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 시간 수직선 위에 버스 도착과 자전거 도착 두 점을 찍고, 두 점 사이의 시간 차 40분을 괄호로 나타낸 그림.",
+      "solutionImageCaption": "버스가 자전거보다 40분 일찍 도착하므로 (자전거로 간 시간)-(버스로 간 시간)=40분으로 식을 세워 풀면 집과 학교 사이의 거리는 20/3 km이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 24,
@@ -1037,15 +1041,15 @@ window.questionBank = [
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q24-solution-v2.svg",
+      "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q24-solution-v3.svg",
       "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
       "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_DISTANCE_TIME_FACT_AUDIT",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:a07a4b1aeff5a7cbf19374f205530c22d536c70026ea32de216340ce19799ff9",
       "difficultyEvidenceSha": "sha256:5424c9aedc3d3a281cf2df5a3a6712bc420f41a00a9930296343f91b62357b05",
-      "solutionImageAlt": "해설 그림: 시간(분) 축과 거리(km) 축에서 거북은 원점에서 (60,2)까지 직선으로, 토끼는 (10,0)에서 출발해 40분에 2km 지점에 도착한 뒤 수평으로 이어지는 그래프이며 10~60분 눈금과 2km 점선이 표시된 그림.",
-      "solutionImageCaption": "토끼는 10분에 출발하고 거북은 60분에 2km 지점에 도착한다.",
+      "solutionImageAlt": "해설 그림: 시간(분)-거리(km) 그래프. 토끼(주황)는 점 (10, 0)에서 출발해 40분에 2km에 이르고 멈추며, 거북(파랑)은 원점에서 일정하게 가서 점 (60, 2)를 지난다.",
+      "solutionImageCaption": "토끼는 (10, 0)에서 시작하므로 시험이 시작된 지 10분 뒤에 출발하고, 거북은 (60, 2)를 지나므로 출발 후 60분에 2km 지점에 도착한다.",
       "solutionImageSize": "medium"
     }
   ];

@@ -62,9 +62,9 @@ window.questionBank = [
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 닮은 두 삼각형 ABC와 DEF를 나란히 그리고 BC=16cm, EF=8cm, DE=6cm, AB=12cm와 ∠B=55°를 표시했다. ∠B와 ∠E는 같은 눈금의 대응각이다.",
-    "solutionImageCaption": "닮음비 BC:EF=2:1과 대응각 ∠B=∠E를 보여 주는 닮은 두 삼각형이다.",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 닮은 두 삼각형 ABC와 DEF에서 BC=16cm, EF=8cm이고 DE=6cm이다. 대응변 AB와 DE는 파랑, BC와 EF는 주황이며 대응각 ∠B와 ∠E는 둘 다 55°(초록)로 표시했다.",
+    "solutionImageCaption": "BC:EF=16:8=2:1이므로 AB=12cm이고 ∠E=∠B=55°이다. x+y=12+55=67이므로 정답 ③.",
     "solutionImageSize": "medium"
   },
   {
@@ -131,7 +131,11 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 평행선 l, m, n이 왼쪽 직선에서 4cm와 8cm(전체 12cm), 오른쪽 직선에서 6cm와 x로 나뉜다. 같은 색 선분(파랑 4와 6, 주황 8과 x)이 서로 대응한다.",
+    "solutionImageCaption": "세 평행선이 두 직선을 자르면 대응하는 선분의 비가 같아 4:8=6:x이고, 따라서 x=12이다(정답 ①).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -197,7 +201,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 세 변 위 정사각형. 왼쪽 그림은 AB 위 10(주황), AC 위 50(파랑), BC 위 40이고, 오른쪽 그림은 BC 위 정사각형을 똑같이 4조각으로 나눈 모양으로, 네 조각이 같은 색(주황)이다.",
+    "solutionImageCaption": "50=10+BC 위 정사각형이므로 BC 위 정사각형은 40 cm²이고, 4등분한 한 조각은 40÷4=10 cm²이다. 정답 ①.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -259,12 +267,15 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 접기는 대칭이므로 대응하는 길이가 같고, ㄱ·ㄴ·ㄷ을 각각 확인한다.\nㄱ. 접기에 의해 $BC'=BC=10$이고 $EC'=EC$이다. $EC=DC-DE=8-3=5$이므로 $EC'=5$이다. 또 $AB=8$이므로 직각삼각형 $ABC'$에서 $AC'=6$이고, $C'D=10-6=4\\rm\\,cm$이다. 따라서 ㄱ은 참이다.\nㄴ. $\\triangle C'AB$의 세 변은 $6,8,10$, $\\triangle EDC'$의 세 변은 $3,4,5$이므로 대응변의 비가 모두 $2:1$이다. 따라서 두 삼각형은 SSS닮음이고 ㄴ은 참이다.\nㄷ. 닮음에서 $\\angle DEC'=\\angle AC'B=\\angle C'BC$이다. 접기에서 $BE$는 $BC$와 $BC'$가 이루는 각을 이등분하므로 $\\angle C'BC=2\\angle C'BE$이다. 따라서 $\\angle C'BE\\ne\\angle DEC'$이므로 ㄷ은 거짓이다.\n따라서 옳은 것은 ㄱ, ㄴ이고 정답은 ③이다.",
-    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q8-solution-v2.svg",
     "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q8.png",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD를 BE로 접어 C가 AD 위의 C'에 온 그림. AB=8, BC=BC'=10, AC'=6, C'D=4, DE=3, EC=EC'=5이고 직각삼각형 C'AB와 EDC'의 대응변을 같은 색으로, ∠C'BE=∠EBC를 같은 색 호로 표시했다.",
+    "solutionImageCaption": "접기로 BC'=BC=10, EC'=EC=5이고 C'AB(6, 8, 10)∽EDC'(3, 4, 5)이므로 ㄱ·ㄴ은 참, ㄷ은 거짓이어서 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -296,9 +307,9 @@ window.questionBank = [
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 직사각형 ABCD에서 AB=6cm, AD=8cm, BD=10cm이고 E는 A에서 BD에 내린 수선의 발이다. 닮은 직각삼각형의 같은 대응각을 호 한 개, 두 개로 표시했다.",
-    "solutionImageCaption": "AE⊥BD로 생기는 △ABE, △DBA, △DAE가 서로 닮은 직각삼각형임을 보여 주는 그림이다.",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD에서 A에서 대각선 BD에 내린 수선의 발 E를 잡아, 닮은 두 삼각형 ABE(파랑)와 AED(주황)와 같은 각(초록·분홍 호), BE=18/5cm, ED=32/5cm를 나타냈다.",
+    "solutionImageCaption": "BE:ED=AB²:AD²=36:64=9:16이고, 두 삼각형의 높이가 같아 넓이의 비도 9:16이다. 정답 ④.",
     "solutionImageSize": "medium"
   },
   {
@@ -326,12 +337,15 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 중점과 평행 관계로 먼저 $P,Q$가 대각선 $BD$를 나누는 비를 구한 뒤 ㄱ·ㄴ·ㄷ을 확인한다.\n$BM\\parallel AD$이고 $BM:AD=1:2$이므로 $\\triangle BMP\\sim\\triangle DAP$에서 $BP:PD=1:2$이다. 따라서 $BP=\\dfrac13BD$이다.\n또 $DN\\parallel AB$이고 $DN:AB=1:2$이므로 $\\triangle DQN\\sim\\triangle BQA$에서 $DQ:BQ=1:2$이다. 따라서 $DQ=\\dfrac13BD$이고 $BP=PQ=QD=\\dfrac13BD$이다.\nㄱ. 일반적인 평행사변형에서는 대각선 $BD$가 두 변과 이루는 각의 크기가 같다고 할 수 없으므로 거짓이다.\nㄴ. $\\triangle ABP$, $\\triangle APQ$, $\\triangle AQD$는 밑변 $BP,PQ,QD$가 같고 꼭짓점 $A$에서 $BD$까지의 높이가 같으므로 넓이가 모두 같다. 따라서 참이다.\nㄷ. 평행사변형의 넓이를 $S$라 하자. $[BCD]=\\dfrac S2$이고, $[BMP]=[DQN]=\\dfrac S{12}$, $[CMN]=\\dfrac S8$이다. 따라서 $[PMNQ]=\\dfrac S2-\\dfrac S{12}-\\dfrac S{12}-\\dfrac S8=\\dfrac{5S}{24}$이다. $S=54$이면 $[PMNQ]=\\dfrac{45}{4}\\rm\\,cm^2$이므로 참이다.\n따라서 옳은 것은 ㄴ, ㄷ이고 정답은 ④이다.",
-    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q10-solution-v2.svg",
     "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q10.png",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 대각선 BD가 P, Q로 삼등분되고(초록 눈금), 같은 색 삼각형 BMP와 DQN이 넓이 S/12로 같으며 삼각형 CMN은 S/8, 파란 사각형 PMNQ는 나머지 부분이다.",
+    "solutionImageCaption": "□ABCD의 넓이를 S라 하면 □PMNQ=S/2−S/12−S/12−S/8=5S/24이므로 S=54일 때 45/4이고, ㄴ·ㄷ이 옳다(정답 ④).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -393,12 +407,15 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 중점연결정리와 닮음을 이용하여 ㄱ·ㄴ·ㄷ을 각각 확인한다.\nㄱ. $D,E,F$는 세 변의 중점이므로 $DE=5$, $EF=4$, $FD=6$이다. 따라서 $\\triangle DEF$의 둘레는 $5+4+6=15\\rm\\,cm$이므로 참이다.\nㄴ. $EF\\parallel AB$이므로 $\\triangle CEF\\sim\\triangle CBA$이고 닮음비는 $1:2$이다. $EF$의 중점을 $P$라 하면 닮음에 의해 $P$는 $AB$의 중점 $D$에 대응하므로 $C,P,D$는 한 직선 위에 있다. 따라서 $\\triangle DEF$의 중선 $DP$는 $\\triangle ABC$의 중선 $CD$와 같은 직선 위에 있다. 같은 방법으로 나머지 두 중선도 각각 $\\triangle ABC$의 중선과 같은 직선 위에 있으므로 두 삼각형의 무게중심은 일치한다. 따라서 참이다.\nㄷ. $\\triangle DEF\\sim\\triangle ABC$이고 닮음비가 $1:2$이므로 넓이비는 $1:4$이다. 따라서 $[ABC]=40\\rm\\,cm^2$이면 $[DEF]=10\\rm\\,cm^2$이므로 참이다.\n따라서 ㄱ, ㄴ, ㄷ이 모두 옳으므로 정답은 ⑤이다.",
-    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q12-solution-v2.svg",
     "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q12.png",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 세 변의 중점 D, E, F를 이은 삼각형 DEF(파랑)와 변의 길이 5, 4, 6, 세 중선(점선)이 한 점에서 만나는 모습.",
+    "solutionImageCaption": "△DEF의 둘레는 5+4+6=15 cm, 닮음비 1:2이므로 넓이는 40의 1/4인 10 cm², 두 삼각형의 무게중심은 일치한다. 정답 ⑤.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -566,7 +583,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 소희 합격 3/4, 불합격 1/4에서 갈라지고 각각 정훈 합격 1/3, 불합격 2/3로 갈라지는 수형도. 한 사람만 합격하는 두 경로(소희만, 정훈만)가 굵은 선과 동그라미로 표시되고 경로마다 확률의 곱이 적혀 있다.",
+    "solutionImageCaption": "한 사람만 합격하는 두 경우의 확률 3/4×2/3=1/2과 1/4×1/3=1/12을 더하면 7/12이다. 정답 ⑤",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -593,12 +614,15 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 무게중심의 $2:1$ 비와 중점연결정리를 길이비와 넓이비에 함께 적용한다.\n$L$은 $BC$의 중점이고 $G$는 무게중심이므로 $AG:AL=2:3$이다. $DG\\parallel BL$이므로 $\\triangle ADG\\sim\\triangle ABL$이고 $DG:BL=AG:AL=2:3$이다. $BL=\\dfrac12BC$이므로 $DG=\\dfrac13BC$이다.\n같은 방법으로 $GE=\\dfrac13BC$이므로 $DG=GE$이다. 따라서 $G$는 $DE$의 중점이다.\n$M,N$은 각각 $AB,AC$의 중점이므로 $MN=\\dfrac12BC$이다. 또 $AL$은 $\\triangle ABC$의 중선이므로, 닮음 관계에서 그 상인 $P$는 $MN$의 중점이다. 따라서 $MP=\\dfrac14BC$이다.\n그러므로 $MP:DG:BL=\\dfrac14:\\dfrac13:\\dfrac12=3:4:6$이어서 $x=4$, $y=6$이다.\n$MN\\parallel DE$이므로 $\\triangle MPG$와 $\\triangle MDG$는 같은 높이를 갖는다. 따라서 $[MDG]:[MPG]=DG:MP=\\dfrac13:\\dfrac14=4:3$이다. $1:z=4:3$이므로 $z=\\dfrac34$이다.\n$xyz=4\\times6\\times\\dfrac34=18$이므로 정답은 ③이다.",
-    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q19-solution-v2.svg",
     "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q19.png",
     "subUnitKey": "M2-06-TRIANGLE_CENTROID",
     "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 무게중심 G, 중점 M·N·L, G를 지나 BC에 평행한 DE와 MN을 그리고 △MDG(파랑)와 △MPG(주황)를 색칠했다. 오른쪽에 MP=BC/4, DG=BC/3, BL=BC/2와 중선 AL의 AG:GL=2:1을 따로 크게 보였다.",
+    "solutionImageCaption": "MP:DG:BL=BC/4:BC/3:BC/2=3:4:6이어서 x=4, y=6이고 △MDG:△MPG=4:3이어서 z=3/4이므로 xyz=18, 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -626,13 +650,16 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 사각형 $DBEA$의 넓이를 두 가지 방법으로 나타낸 뒤 두 식을 같게 둔다.\n$\\triangle DBC$, $\\triangle ACE$가 직각이등변삼각형이므로 $DC=BC=a$, $CE=AC=b$이다.\n방법 1에서 $[DBEA]=[DBC]+[ACE]=\\dfrac{a^2}{2}+\\dfrac{b^2}{2}=\\dfrac{a^2+b^2}{2}$이다.\n$AC=CE=b$, $BC=CD=a$, $\\angle ACB=\\angle ECD=90^\\circ$이므로 $\\triangle ABC\\cong\\triangle EDC$이고 합동 조건은 SAS이다. 따라서 $DE=AB=c$이다.\n합동에서 $\\angle ABC=\\angle EDC$이다. 그런데 $BC\\perp DC$이므로 같은 크기의 두 각을 각각 서로 수직인 $BC$, $DC$에서 재면 $AB\\perp DE$가 된다.\n그림에서 $H$는 $AB$의 연장선과 $DE$의 교점이므로 $BH=BA+AH=c+AH$이다.\n방법 2에서 $DE$를 공통 밑변으로 보면 $[DBEA]=[DBE]-[AED]=\\dfrac12DE\\cdot BH-\\dfrac12DE\\cdot AH=\\dfrac12DE(BH-AH)=\\dfrac12c\\cdot c=\\dfrac{c^2}{2}$이다.\n따라서 $(A),(B),(C)$는 각각 $\\dfrac{a^2+b^2}{2}$, SAS, $\\dfrac{c^2}{2}$이므로 정답은 ②이다.",
-    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q20-solution-v2.svg",
     "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q20.png",
     "imageSize": "tall",
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 직각이등변삼각형 DBC, ACE에서 합동인 △ABC와 △EDC(파랑), 같은 길이 b(AC=CE, 눈금 2개), c(AB=DE, 눈금 3개), AB⊥DE인 점 H의 직각 표시를 나타냈고, 왼쪽에 CD=a, CA=b를 펴서 그렸다.",
+    "solutionImageCaption": "△ABC≡△EDC(SAS)이므로 DE=AB=c이고 사각형 DBEA의 넓이는 (A)=(a²+b²)/2, (B)=SAS, (C)=c²/2이다. 정답 ②.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -681,13 +708,16 @@ window.questionBank = [
     "content": "&lt;서술형 2&gt; 그림은 $\\angle A=90^\\circ$인 직각삼각형 $ABC$의 세 변을 각각 지름으로 하는 반원을 그린 것이다. (1) $\\overline{AB}$, $\\overline{AC}$, $\\overline{BC}$를 지름으로 하는 반원의 넓이를 각각 $S_1$, $S_2$, $S_3$라고 할 때 각각 구하고 넓이 사이의 관계식을 서술하여라. [4점]\n(2) 어두운 부분의 넓이를 구하는 과정을 풀이와 함께 서술하여라. [2점]",
     "answer": "(1) $S_1=18\\pi$, $S_2=\\dfrac{25\\pi}{8}$, $S_3=\\dfrac{169\\pi}{8}$, $S_1+S_2=S_3$; (2) $30\\rm\\,cm^2$",
     "solution": "[키포인트] 지름이 $d$인 반원의 넓이는 $\\dfrac{\\pi d^2}{8}$이고, 피타고라스 정리 때문에 세 반원의 넓이도 같은 합 관계를 갖는다.\n그림에서 $AB=12\\rm\\,cm$, $BC=13\\rm\\,cm$, $\\angle A=90^\\circ$이므로 $AC=5\\rm\\,cm$이다.\n(1) $S_1=\\dfrac{\\pi\\cdot12^2}{8}=18\\pi$, $S_2=\\dfrac{\\pi\\cdot5^2}{8}=\\dfrac{25\\pi}{8}$, $S_3=\\dfrac{\\pi\\cdot13^2}{8}=\\dfrac{169\\pi}{8}$이다. 따라서 $S_1+S_2=S_3$이다.\n(2) 큰 반원의 넓이는 두 작은 반원의 넓이의 합과 같으므로, 공통으로 겹치는 부분을 제거하면 두 어두운 초승달 부분의 넓이의 합은 $\\triangle ABC$의 넓이와 같다.\n$[ABC]=\\dfrac12\\times12\\times5=30\\rm\\,cm^2$이다.\n따라서 어두운 부분의 넓이는 $30\\rm\\,cm^2$이다.",
-    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q22-solution-v2.svg",
     "choices": [],
     "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q22.png",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC(AB=12, AC=5, BC=13)의 세 변을 지름으로 하는 반원 S₁, S₂, S₃과, 어두운 두 초승달(주황), 삼각형 ABC(파랑)가 구분되어 있다.",
+    "solutionImageCaption": "S₁=18π, S₂=25π/8, S₃=169π/8이고 S₁+S₂=S₃이며, 어두운 부분의 넓이는 △ABC의 넓이와 같아 30cm²이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -708,13 +738,16 @@ window.questionBank = [
     "content": "&lt;서술형 3&gt; 평행사변형 $ABCD$에서 $\\overline{BC}$, $\\overline{CD}$의 중점을 각각 $M$과 $N$이라고 하고, 대각선 $\\overline{BD}$와 $\\overline{AM}$, $\\overline{AN}$의 교점을 각각 $E$,$F$라고 하자. (1) 점 $E$,$F$는 $\\triangle ABC$, $\\triangle ACD$의 무게중심이 되는 이유를 설명할 수 있는 평행사변형의 성질과 무게중심의 정의를 각각 서술하여라. [2점]\n(2) $\\overline{BD}=18\\rm\\,cm$일 때 $\\overline{EF}$의 길이를 구하는 과정을 풀이와 함께 서술하여라. [2점]",
     "answer": "$6\\rm\\,cm$",
     "solution": "[키포인트] 평행사변형의 대각선이 서로를 이등분한다는 성질로 각 삼각형의 두 중선을 찾는다.\n(1) 두 대각선의 교점을 $O$라 하면 평행사변형의 성질에 의해 $O$는 $AC$와 $BD$의 중점이다. $M$은 $BC$의 중점이므로 $AM$과 $BO$는 $\\triangle ABC$의 두 중선이고 그 교점 $E$는 무게중심이다. 같은 이유로 $N$은 $CD$의 중점이고 $AN$, $DO$는 $\\triangle ACD$의 두 중선이므로 그 교점 $F$는 무게중심이다.\n(2) $BD=18\\rm\\,cm$이므로 $BO=DO=9\\rm\\,cm$이다. 무게중심은 중선을 꼭짓점에서 $2:1$로 나누므로 $BE=DF=6\\rm\\,cm$, 따라서 $EO=OF=3\\rm\\,cm$이다.\n$B-E-O-F-D$ 순서이므로 $EF=EO+OF=3+3=6\\rm\\,cm$이다.\n따라서 구하는 길이는 $6\\rm\\,cm$이다.",
-    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q23-solution-v2.svg",
     "choices": [],
     "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q23.png",
     "subUnitKey": "M2-06-TRIANGLE_CENTROID",
     "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 중선 AM, BO가 만나는 E는 삼각형 ABC(파랑)의 무게중심, 중선 AN, DO가 만나는 F는 삼각형 ACD(주황)의 무게중심이다. 오른쪽에는 대각선 BD를 펴서 BE=6, EO=3, OF=3, FD=6과 BO=DO=9를 보여 준다.",
+    "solutionImageCaption": "BE=DF=6, EO=OF=3이므로 EF=EO+OF=3+3=6 cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -735,12 +768,15 @@ window.questionBank = [
     "content": "&lt;서술형 4&gt; 직사각형 $ABCD$에서 대각선 $\\overline{BD}$의 중점을 $O$라하고, 점$O$에서 $\\overline{BD}$에 수직인 직선과 $\\overline{AD}$, $\\overline{BC}$의 교점을 $E$,$F$라 하자. (1) □$EBFD$은 어떤 사각형인가? [단답형] [2점]\n(2) $\\overline{OF}$길이를 구하는 과정을 서술하고 □$EBFD$넓이를 구하여라. [4점]",
     "answer": "(1) 마름모, (2) $\\overline{OF}=\\dfrac{15}{4}\\rm\\,cm$, 넓이 $\\dfrac{75}{2}\\rm\\,cm^2$",
     "solution": "[키포인트] 대각선의 중점과 평행선에서 생기는 닮음을 이용하면 좌표를 쓰지 않고 $OF$와 마름모의 넓이를 구할 수 있다.\n(1) $O$는 $BD$의 중점이므로 $BO=DO$이다. 또 $EF\\perp BD$이므로 $\\angle BOF=\\angle DOE=90^\\circ$이고, $AD\\parallel BC$이므로 $\\angle OBF=\\angle ODE$이다. 따라서 $\\triangle BOF\\cong\\triangle DOE$이므로 $OF=OE$이다.\n그러므로 사각형 $EBFD$의 두 대각선 $BD,EF$는 서로를 이등분한다. 따라서 $EBFD$는 평행사변형이고, 두 대각선이 서로 수직이므로 마름모이다.\n(2) 직사각형에서 $BC=8\\rm\\,cm$, $CD=6\\rm\\,cm$이므로 $BD=\\sqrt{8^2+6^2}=10\\rm\\,cm$이고 $BO=5\\rm\\,cm$이다.\n$\\angle BOF=\\angle BCD=90^\\circ$, $\\angle OBF=\\angle CBD$이므로 $\\triangle BOF\\sim\\triangle BCD$이다.\n따라서 $BO:BC=OF:CD=5:8$이므로 $OF=6\\times\\dfrac58=\\dfrac{15}{4}\\rm\\,cm$이다.\n$OE=OF$이므로 $EF=\\dfrac{15}{2}\\rm\\,cm$이다. 따라서 마름모 $EBFD$의 넓이는 $\\dfrac12\\times BD\\times EF=\\dfrac12\\times10\\times\\dfrac{15}{2}=\\dfrac{75}{2}\\rm\\,cm^2$이다.\n따라서 (1) 마름모, (2) $OF=\\dfrac{15}{4}\\rm\\,cm$, 넓이는 $\\dfrac{75}{2}\\rm\\,cm^2$이다.",
-    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q24-solution.svg",
+    "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q24-solution-v2.svg",
     "choices": [],
     "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q24.png",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD에서 BD의 중점 O를 지나는 수선 EF가 만든 마름모 EBFD를 색칠하고, 닮은 직각삼각형 BOF(BO=5)와 BCD(8, 6, 10)를 오른쪽에 따로 그려 대응변을 같은 색으로 묶었다.",
+    "solutionImageCaption": "BO:BC=OF:CD=5:8로 OF=15/4 cm이고 EF=15/2 cm이므로 (1) 마름모, (2) OF=15/4 cm, 마름모 EBFD의 넓이=75/2 cm²이다.",
+    "solutionImageSize": "medium"
   }
 ];
