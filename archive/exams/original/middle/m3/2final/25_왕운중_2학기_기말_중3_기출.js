@@ -58,8 +58,8 @@ window.questionBank = [
       "$4$",
       "$5$"
     ],
-    "answer": "④",
-    "solution": "점 $C$에서 원에 그은 두 접선의 길이는 같다.\n따라서 접선 $CA$와 $CE$에 대하여\n$CA=CE$이다.\n\n그림에서 $CE=4\\rm\\,cm$이므로\n$x=CA=4$이다.\n\n따라서 정답은 ④이다.",
+    "answer": "③",
+    "solution": "점 $C$에서 원에 그은 두 접선의 길이는 같으므로\n$CA=CE=x$이다.\n점 $D$에서 원에 그은 두 접선의 길이도 같으므로\n$DE=DB$이다.\n\n그림에서 $CD=CE+ED=4\\rm\\,cm$이므로\n$DB=DE=4-x$이다.\n\n점 $P$에서 원에 그은 두 접선의 길이는 같으므로 $PA=PB$이다.\n$PA=6+x$, $PB=8+(4-x)=12-x$이므로\n$6+x=12-x$\n$x=3$\n\n따라서 정답은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q2.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",

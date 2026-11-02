@@ -69,7 +69,7 @@ window.questionBank = [
       "$30\\rm\\,cm^2$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 같은 높이를 갖는 삼각형의 넓이비와 평행선으로 생기는 닮음을 차례로 이용한다.\n그림에서 $B,A,D$는 한 직선 위에 있다. $\\triangle ABC$와 $\\triangle ACD$는 점 $C$에서 직선 $BD$에 내린 높이가 같으므로\n$AB:AD=16:10=8:5$이다. 따라서 $BA:BD=8:13$이다.\n$AC\\parallel DE$이므로 $\\triangle BAC\\sim\\triangle BDE$이고, $BC:BE=BA:BD=8:13$이다.\n$\\triangle ABC$와 $\\triangle ABE$는 밑변이 같은 직선 $BE$ 위에 있고 높이가 같으므로 넓이비도 $BC:BE=8:13$이다.\n따라서 $[\\triangle ABE]=16\\times\\dfrac{13}{8}=26\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 평행한 두 직선 사이의 거리는 일정하므로 밑변이 같은 두 삼각형의 넓이가 같음을 이용한다.\n그림에서 $B,C,E$는 한 직선 위에 있다. $AC\\parallel DE$이므로 $\\triangle ACD$와 $\\triangle ACE$는 밑변 $AC$가 같고 높이도 같다.\n따라서 $\\triangle ACE=\\triangle ACD=10\\rm\\,cm^2$이다.\n$\\triangle ABE=\\triangle ABC+\\triangle ACE$이므로\n$16+10=26\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q2-solution.svg",
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q2.png",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
