@@ -1027,30 +1027,6 @@ body.dark .omr-card {
 }
 
 /* Classroom progress modal: reuse APMS tokens while giving the class flow a wider workspace. */
-#modal-content:has(.ap-class-progress-modal) {
-  width: min(1180px, calc(100vw - 32px));
-  max-width: 1180px;
-  height: min(860px, calc(100vh - 32px));
-  max-height: calc(100vh - 32px);
-}
-
-#modal-content:has(.ap-class-progress-modal) #modal-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  padding: 16px 20px 20px;
-  overflow: hidden;
-}
-
-.ap-class-progress-modal {
-  display: flex;
-  flex: 1 1 auto;
-  min-height: 0;
-  flex-direction: column;
-  gap: 14px;
-  color: var(--text);
-}
-
 .ap-class-progress-context,
 .ap-class-progress-note {
   border: 1px solid var(--border);
@@ -1080,25 +1056,6 @@ body.dark .omr-card {
   font-size: 12px;
   font-weight: 400;
   line-height: 1.4;
-}
-
-.ap-class-progress-layout {
-  display: grid;
-  grid-template-columns: minmax(300px, 0.38fr) minmax(0, 1fr);
-  flex: 1 1 auto;
-  min-height: 0;
-  gap: 14px;
-}
-
-.ap-class-progress-books,
-.ap-class-progress-detail {
-  display: flex;
-  min-width: 0;
-  min-height: 0;
-  flex-direction: column;
-  overflow: hidden;
-  border-radius: var(--ap-ui-radius-panel, 8px);
-  box-shadow: none;
 }
 
 .ap-class-progress-panel-head,
@@ -1194,7 +1151,7 @@ body.dark .omr-card {
   display: block;
   margin-top: 4px;
   color: var(--secondary);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.4;
 }
 
@@ -1207,7 +1164,7 @@ body.dark .omr-card {
   padding-top: 9px;
   border-top: 1px solid var(--border-soft);
   color: var(--secondary);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 1.3;
 }
@@ -1327,7 +1284,7 @@ body.dark .omr-card {
 
 .ap-class-progress-section-head span {
   color: var(--secondary);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.4;
 }
 
@@ -1377,7 +1334,7 @@ body.dark .omr-card {
 .ap-class-progress-course-add__field > label,
 .ap-class-progress-course-add__books > strong {
   color: var(--text-soft);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -1483,7 +1440,7 @@ body.dark .omr-card {
 .ap-class-progress-course__meta,
 .ap-class-progress-subunit__meta {
   color: var(--secondary);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 400;
   white-space: nowrap;
 }
@@ -1523,7 +1480,7 @@ body.dark .omr-card {
   flex: 0 0 auto;
   min-width: 23px;
   color: var(--secondary);
-  font-size: 11px;
+  font-size: 12px;
   font-variant-numeric: tabular-nums;
   text-align: center;
 }
@@ -1544,7 +1501,7 @@ body.dark .omr-card {
   padding: 3px 8px;
   border: 1px solid var(--border);
   border-radius: 999px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 1.2;
   white-space: nowrap;
@@ -1596,51 +1553,6 @@ body.dark .omr-card {
 }
 
 @media (max-width: 760px) {
-  #modal-content:has(.ap-class-progress-modal) {
-    width: calc(100vw - 16px);
-    max-width: calc(100vw - 16px);
-    height: calc(100vh - 16px);
-    max-height: calc(100vh - 16px);
-  }
-
-  #modal-content:has(.ap-class-progress-modal) #modal-body {
-    padding: 12px;
-    overflow-y: auto;
-  }
-
-  .ap-class-progress-modal {
-    flex: none;
-  }
-
-  .ap-class-progress-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    flex: none;
-  }
-
-  .ap-class-progress-books {
-    overflow: visible;
-  }
-
-  .ap-class-progress-books__list {
-    max-height: 34vh;
-  }
-
-  .ap-class-progress-detail {
-    min-height: 480px;
-    overflow: hidden;
-  }
-
-  .ap-class-progress-detail > #record-progress-detail,
-  .ap-class-progress-detail-inner,
-  #record-progress-course-panels {
-    overflow: visible;
-  }
-
-  .ap-class-progress-detail-inner {
-    height: auto;
-  }
-
   .ap-class-progress-context {
     align-items: flex-start;
   }
@@ -1676,7 +1588,7 @@ body.dark .omr-card {
   min-width: 155px;
   min-height: 34px;
   padding: 7px 9px;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .ap-class-progress-course-add--compact {
@@ -1687,7 +1599,7 @@ body.dark .omr-card {
 .ap-class-progress-course-add--compact .apms-button {
   min-height: 34px;
   padding: 7px 10px;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 @media (max-width: 480px) {
@@ -1710,195 +1622,7 @@ body.dark .omr-card {
   }
 }
 
-/* Global textbook management uses the compact progress-management language without
-   changing the class-progress modal shell or its save flow. */
-#modal-content:has(.ap-global-textbook-manage) {
-  height: auto;
-  max-height: calc(100vh - 32px);
-  min-height: 0;
-}
-
-#modal-content:has(.ap-global-textbook-manage) #modal-body {
-  display: block;
-  min-height: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.ap-global-textbook-manage {
-  display: grid;
-  min-width: 0;
-  gap: 10px;
-}
-
-.ap-global-textbook-manage__intro,
-.ap-global-textbook-manage__context {
-  display: flex;
-  min-width: 0;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.ap-global-textbook-manage__intro {
-  align-items: flex-start;
-  flex-direction: column;
-  padding: 2px 2px 4px;
-}
-
-.ap-global-textbook-manage__intro strong,
-.ap-global-textbook-manage__context-main strong {
-  color: var(--text);
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.35;
-}
-
-.ap-global-textbook-manage__intro span,
-.ap-global-textbook-manage__context-main span {
-  color: var(--secondary);
-  font-size: 11px;
-  line-height: 1.45;
-}
-
-.ap-global-textbook-manage__context-main {
-  display: grid;
-  min-width: 0;
-  flex: 1 1 auto;
-  gap: 2px;
-}
-
-.ap-global-textbook-class-list {
-  display: grid;
-  min-width: 0;
-  max-height: min(62vh, 520px);
-  gap: 6px;
-  overflow-y: auto;
-}
-
-.ap-global-textbook-class {
-  display: grid;
-  width: 100%;
-  min-width: 0;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--ap-ui-radius-panel, 8px);
-  background: var(--surface);
-  color: var(--text);
-  text-align: left;
-  cursor: pointer;
-}
-
-.ap-global-textbook-class:hover,
-.ap-global-textbook-class:focus-visible {
-  border-color: rgba(var(--primary-rgb), 0.35);
-  background: var(--surface-2);
-}
-
-.ap-global-textbook-class__main,
-.ap-global-textbook-class__counts {
-  display: flex;
-  min-width: 0;
-  align-items: center;
-  gap: 6px;
-}
-
-.ap-global-textbook-class__main {
-  flex-wrap: wrap;
-}
-
-.ap-global-textbook-class__main strong {
-  min-width: 0;
-  overflow-wrap: anywhere;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.ap-global-textbook-class__inactive {
-  padding: 2px 6px;
-  border-radius: 999px;
-  background: var(--surface-2);
-  color: var(--secondary);
-  font-size: 10px;
-  white-space: nowrap;
-}
-
-.ap-global-textbook-class__counts {
-  justify-content: flex-end;
-  flex-wrap: wrap;
-}
-
-.ap-global-textbook-class__counts .ap-class-progress-status {
-  min-height: 22px;
-  padding: 3px 6px;
-  font-size: 10px;
-}
-
-.ap-global-textbook-manage__card {
-  height: auto;
-  min-width: 0;
-  overflow: visible;
-}
-
-.ap-global-textbook-section {
-  display: grid;
-  min-width: 0;
-  gap: 6px;
-  margin-bottom: 12px;
-}
-
-.ap-global-textbook-section:last-of-type {
-  margin-bottom: 0;
-}
-
-.ap-global-textbook-section__head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 0 2px;
-}
-
-.ap-global-textbook-section__head h4 {
-  margin: 0;
-  color: var(--text);
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.ap-global-textbook-section__head span {
-  color: var(--secondary);
-  font-size: 11px;
-  font-variant-numeric: tabular-nums;
-}
-
-@media (max-width: 560px) {
-  #modal-content:has(.ap-global-textbook-manage) {
-    max-height: calc(100vh - 16px);
-  }
-
-  .ap-global-textbook-manage__context {
-    align-items: flex-start;
-  }
-
-  .ap-global-textbook-class {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 7px;
-  }
-
-  .ap-global-textbook-class__counts {
-    justify-content: flex-start;
-  }
-}
-
 @media (max-width: 480px) {
-  .ap-class-progress-layout {
-    gap: 10px;
-  }
-
   .ap-class-progress-panel-head,
   .ap-class-progress-detail-head,
   .ap-class-progress-canonical {
@@ -1955,10 +1679,6 @@ body.dark .omr-card {
 }
 
 /* Progress modal refinement: denser operating layout and inline textbook controls. */
-#modal-content:has(.ap-class-progress-modal) #modal-body {
-  padding: 12px 16px 14px;
-}
-
 .ap-class-progress-context {
   align-items: baseline;
   border-width: 0 0 1px;
@@ -1981,11 +1701,7 @@ body.dark .omr-card {
 
 .ap-class-progress-context__meta {
   margin-top: 0;
-  font-size: 11px;
-}
-
-.ap-class-progress-layout {
-  gap: 10px;
+  font-size: 12px;
 }
 
 .ap-class-progress-panel-head {
@@ -2093,7 +1809,7 @@ body.dark .omr-card {
 .ap-class-progress-inline-form__head .apms-button {
   min-height: 28px;
   padding: 4px 7px;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .ap-class-progress-inline-form .cls-input {
@@ -2105,7 +1821,7 @@ body.dark .omr-card {
 .ap-class-progress-inline-form__row label {
   flex: 0 0 auto;
   color: var(--secondary);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
 }
 
@@ -2120,62 +1836,6 @@ body.dark .omr-card {
   font-size: 12px;
 }
 
-.ap-class-progress-manage-list {
-  display: grid;
-  gap: 6px;
-}
-
-.ap-class-progress-manage-row {
-  padding: 9px 10px;
-  border: 1px solid var(--border);
-  border-radius: var(--ap-ui-radius-panel, 8px);
-  background: var(--surface);
-}
-
-.ap-class-progress-manage-row__head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.ap-class-progress-manage-row__head strong {
-  min-width: 0;
-  color: var(--text);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.4;
-  overflow-wrap: anywhere;
-}
-
-.ap-class-progress-manage-row__meta {
-  margin-top: 3px;
-  color: var(--secondary);
-  font-size: 11px;
-  line-height: 1.4;
-}
-
-.ap-class-progress-manage-row__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 7px;
-}
-
-.ap-class-progress-manage-row__actions .apms-button {
-  min-height: 30px;
-  padding: 5px 8px;
-  font-size: 11px;
-}
-
-.ap-class-progress-manage-row__actions .ap-class-progress-manage-row__delete {
-  color: var(--error);
-}
-
-.ap-class-progress-inline-fields {
-  display: none;
-}
-
 .ap-class-progress-course > summary {
   grid-template-columns: minmax(0, 1fr) auto auto auto;
 }
@@ -2188,7 +1848,7 @@ body.dark .omr-card {
   min-height: 26px;
   padding: 4px 7px;
   color: var(--secondary);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
 }
 
@@ -2221,10 +1881,6 @@ body.dark .omr-card {
 }
 
 @media (max-width: 760px) {
-  #modal-content:has(.ap-class-progress-modal) #modal-body {
-    padding: 10px 12px 12px;
-  }
-
   .ap-class-progress-note {
     grid-template-columns: minmax(0, 1fr);
     gap: 6px;
@@ -2329,50 +1985,6 @@ body.dark .omr-card {
   }
 }
 
-/* Final progress-modal density pass: content-sized shell with a scrollable body only when needed. */
-#modal-content:has(.ap-class-progress-modal) {
-  height: auto;
-  max-height: calc(100vh - 32px);
-  min-height: 0;
-}
-
-#modal-content:has(.ap-class-progress-modal) #modal-body {
-  display: block;
-  min-height: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.ap-class-progress-modal {
-  flex: none;
-  min-height: 0;
-  gap: 10px;
-}
-
-.ap-class-progress-layout {
-  flex: none;
-  align-items: start;
-}
-
-.ap-class-progress-books,
-.ap-class-progress-detail {
-  height: auto;
-  overflow: visible;
-}
-
-.ap-class-progress-books__list {
-  max-height: none;
-  overflow: visible;
-}
-
-.ap-class-progress-detail > #record-progress-detail,
-.ap-class-progress-detail-inner,
-#record-progress-course-panels {
-  height: auto;
-  flex: none;
-  overflow: visible;
-}
-
 .ap-class-progress-book__select {
   padding: 8px 10px 3px;
 }
@@ -2397,7 +2009,7 @@ body.dark .omr-card {
 .ap-class-progress-book__editor-value {
   min-width: 0;
   color: var(--secondary);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.35;
 }
 
@@ -2445,7 +2057,7 @@ body.dark .omr-card {
 
 .ap-class-progress-detail-head__meta {
   margin-top: 1px;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .ap-class-progress-detail-progress {
@@ -2498,17 +2110,6 @@ body.dark .omr-card {
   padding: 6px 8px;
 }
 
-.ap-class-progress-footer {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: 10px;
-}
-
-.ap-class-progress-footer .ap-class-progress-note {
-  min-width: 0;
-}
-
 .ap-class-progress-note textarea {
   min-height: 34px;
   height: 34px;
@@ -2521,24 +2122,7 @@ body.dark .omr-card {
 }
 
 @media (max-width: 760px) {
-  #modal-content:has(.ap-class-progress-modal) {
-    height: auto;
-    max-height: calc(100vh - 16px);
-  }
-
-  #modal-content:has(.ap-class-progress-modal) #modal-body {
-    overflow-y: auto;
-  }
-
-  .ap-class-progress-detail {
-    min-height: 0;
-  }
-
   .ap-class-progress-note {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .ap-class-progress-footer {
     grid-template-columns: minmax(0, 1fr);
   }
 
@@ -2556,7 +2140,7 @@ body.dark .omr-card {
   z-index: 5;
   background: var(--surface);
 }
-.ap-class-progress-modal.is-class-switching .ap-class-progress-layout {
+.ap-class-progress-modal.is-class-switching .apms-workspace {
   display: flex;
   align-items: center;
   justify-content: center;

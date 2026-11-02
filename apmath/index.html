@@ -979,12 +979,14 @@
     <link id="dashboard-foundation-css" rel="stylesheet" href="./css/dashboard-foundation.css">
     <link rel="stylesheet" href="./css/classroom-foundation.css">
     <link rel="stylesheet" href="./css/apms-unified-modal.css">
+    <link rel="stylesheet" href="./css/ws-exam.css?v=20261102-1">
     <link rel="stylesheet" href="./css/timetable-months.css">
     <!-- APMS 웜 테마: .apms-warm-scope 하위에 적용. <body>에 부여 → APMATH 앱 전체
          (헤더·사이드바·운영 화면·모달·학생상세) 일관 적용. apmath/index.html 전용이라
          archive/EIE 등 별도 페이지엔 무영향. 되돌리려면 body 클래스 한 개만 제거. -->
     <link rel="stylesheet" href="./css/apms-warm-theme.scope.css">
     <link rel="stylesheet" href="./css/apms-clinic-print.css">
+    <link rel="stylesheet" href="./css/ws-progress.css">
 </head>
 <body class="apms-warm-scope">
     <header>
@@ -1030,13 +1032,16 @@
     <!-- vendor(chart.js/html2canvas/xlsx)는 첫 사용 시 loadVendorScriptOnce()로 지연 로드 -->
     <script defer src="../shared/js/wangji-owner-auth-bridge.js"></script>
     <script defer src="js/core.js"></script>
+    <script defer src="js/apms-class-label.js"></script>
     <script defer src="js/ui.js?v=20261102-modal-foundation-1"></script>
     <script defer src="js/report-text.js"></script>
     <script defer src="../archive/archive-asset-base.js?v=20261030-s21-1"></script>
     <script defer src="js/archive-render.js"></script>
     <script defer src="js/report-center.js"></script>
     <script defer src="js/report-print.js"></script>
-    <script defer src="js/qr-omr.js?v=omr-no-qr-share-20261101"></script>
+    <script defer src="js/qr-omr.js?v=ws-exam-20261102-1"></script>
+    <script defer src="js/ws-exam-data.js?v=20261102-1"></script>
+    <script defer src="js/ws-exam-workspace.js?v=20261102-1"></script>
     <script defer src="js/student.js"></script>
     <script defer src="js/student-edit.js"></script>
     <script defer src="js/clinic-recommendations.js?v=20261029-unified-units-1"></script>
@@ -1046,6 +1051,7 @@
     <script defer src="js/management.js"></script>
     <script defer src="js/student-export.js"></script>
     <script defer src="js/textbook.js"></script>
+    <script defer src="js/ws-progress-books.js"></script>
     <script defer src="js/memo.js"></script>
     <script defer src="js/schedule.js"></script>
     <script defer src="js/cumulative.js"></script>

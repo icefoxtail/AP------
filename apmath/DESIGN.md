@@ -454,6 +454,7 @@ showModal('숙제', `
 ### Do:
 - **Do** 색은 `var(--surface)`·`var(--text)`·`var(--border)`·`var(--action-primary)` 같은 토큰으로 읽어 라이트·다크가 함께 바뀌게 한다.
 - **Do** 주요 행동은 `--action-primary`(near-black), 파랑은 링크·포커스·선택으로 한정한다.
+- **Do** 반 이름은 학년을 겹쳐 쓰지 않는다("중3 · 중3A" 금지 → "중3A". 이름에 학년 글자가 없을 때만 "고1 심화반"처럼 붙인다). 같은 화면에 이름이 같은 반이 있고 담당이 다를 때만 작은 보조 글자로 담당 이름을 붙이고, 모달 제목에는 넣지 않는다. 공통 함수 `apmsClassLabel(cls, peers)`를 쓴다. 이유: 사용자 지적 2026-11-02 — 학년이 두 번 보이고, 선생님마다 중3A가 여러 개라 헷갈림.
 - **Do** 새 모달은 등급을 정하고(C·F·W·P) 공통 부품(`apms-modal apms-modal--<등급>` + `.apms-unified-context/-label/-control` + 하단 `.apms-modal__actions`)으로 만들고 입력 ID·저장 함수·돌아갈 화면을 지킨다(`tests/apmath-modal-design-family.test.js`).
 - **Do** 같은 대상을 목록·상세·추가·수정으로 앞뒤로 다루면 모달을 여러 개 잇지 말고 작업 화면(W) 하나로 만든다(위 "모달 등급").
 - **Do** 모달의 입력은 라벨을 달고(`.apms-unified-label`), 휴대폰에서 글자 16px·높이 44px을 지킨다.

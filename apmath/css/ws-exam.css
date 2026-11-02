@@ -1,0 +1,279 @@
+/* 원내평가·OMR 통합 작업 화면 (js/ws-exam-workspace.js). W 등급 공통 부품(.apms-modal--workspace, .apms-workspace*,
+ * .apms-modal__actions)은 apms-unified-modal.css가 맡는다. 이 파일은 .wsx 안쪽만 꾸민다(공통 부품은 고치지 않는다).
+ * 색은 APMS 라이트/다크 토큰만 쓴다. 대상 기기: 390×844 · 800×1280 · 1280×800 · 1440×900.
+ * 기준: 선생님이 휴대폰·태블릿으로 문항 최대 50개 OMR을 빠르게 입력한다 → 터치 영역 44px, 글자 12px 이상, 가로 넘침 없음. */
+
+.wsx [hidden] { display: none !important; }
+
+/* 맨 위 줄: 반 이름 또는 반 전환 탭 */
+.wsx .wsx-bar__name { font-size: 15px; font-weight: 600; }
+.wsx .wsx-tabs { display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
+.wsx .wsx-tab {
+    box-sizing: border-box;
+    min-height: 44px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.wsx .wsx-tab.is-active {
+    border-color: var(--primary);
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-weight: 600;
+}
+.wsx .wsx-tab:focus-visible,
+.wsx .wsx-btn:focus-visible,
+.wsx .wsx-filter__btn:focus-visible,
+.wsx .wsx-q input:focus-visible + span,
+.wsx .wsx-weak__row:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* 공통 버튼 (44px) */
+.wsx .wsx-btn {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--ap-ui-radius-control, 8px);
+    background: var(--surface-2);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.2;
+    cursor: pointer;
+}
+.wsx .wsx-btn:disabled { opacity: 0.55; cursor: default; }
+.wsx .wsx-btn.wsx-btn--primary {
+    border-color: transparent;
+    background: var(--action-primary, var(--primary));
+    color: var(--on-primary, #fff);
+}
+.wsx .wsx-btn.wsx-btn--danger {
+    border-color: rgba(var(--error-rgb, 185, 28, 28), 0.35);
+    background: transparent;
+    color: var(--error);
+}
+
+/* 왼쪽: 시험 목록 */
+.wsx .wsx-list__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding-bottom: 4px;
+    background: var(--surface);
+}
+.wsx .wsx-list__count { color: var(--secondary); font-size: 12px; font-weight: 500; }
+.wsx .wsx-exam-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 56px;
+}
+.wsx .wsx-exam-item__main { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1 1 auto; }
+.wsx .wsx-exam-item__title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+}
+.wsx .wsx-exam-item__meta { color: var(--secondary); font-size: 12px; line-height: 1.4; }
+.wsx .wsx-exam-item__avg { display: flex; flex-direction: column; align-items: center; flex: 0 0 auto; min-width: 40px; line-height: 1.1; }
+.wsx .wsx-exam-item__avg b { color: var(--text); font-size: 18px; font-weight: 600; }
+.wsx .wsx-exam-item__avg span { color: var(--secondary); font-size: 12px; }
+.wsx .wsx-empty {
+    padding: 28px 12px;
+    color: var(--secondary);
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* 오른쪽: 시험 머리말 */
+.wsx .wsx-detail__head { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+.wsx .wsx-detail__title { font-size: 16px; font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; word-break: keep-all; }
+.wsx .wsx-detail__meta { color: var(--secondary); font-size: 12px; line-height: 1.5; }
+.wsx .wsx-detail__tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+
+/* 보기 구분 */
+.wsx .wsx-filter { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.wsx .wsx-filter__btn {
+    box-sizing: border-box;
+    min-height: 44px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.wsx .wsx-filter__btn.is-active { border-color: var(--primary); background: var(--primary-soft); color: var(--primary); font-weight: 600; }
+
+/* 학생 표 */
+.wsx .wsx-students { display: flex; flex-direction: column; }
+.wsx .wsx-student { border-bottom: 1px solid var(--border); }
+.wsx .wsx-student:last-child { border-bottom: 0; }
+.wsx .wsx-student.is-open { background: var(--surface-2); border-radius: var(--ap-ui-radius-panel, 8px); }
+.wsx .wsx-student__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 2px;
+    min-height: 52px;
+    padding: 4px 6px;
+}
+.wsx .wsx-student__name { font-size: 14px; font-weight: 500; overflow-wrap: anywhere; }
+.wsx .wsx-student__score { font-size: 14px; font-weight: 600; text-align: right; }
+.wsx .wsx-student__score.is-pending { color: var(--secondary); font-weight: 500; font-size: 13px; }
+.wsx .wsx-student__wrongs { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 4px; padding-bottom: 6px; }
+.wsx .wsx-student__none { color: var(--secondary); font-size: 12px; }
+.wsx .wsx-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border: 1px solid rgba(var(--error-rgb, 185, 28, 28), 0.25);
+    border-radius: 999px;
+    background: rgba(var(--error-rgb, 185, 28, 28), 0.08);
+    color: var(--error);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* 학생 줄 아래로 펼쳐지는 OMR 칸 */
+.wsx .wsx-panel {
+    scroll-margin-top: 8px;
+    scroll-margin-bottom: 92px;
+    margin: 0 4px 10px;
+    padding: 12px;
+    border: 1px solid var(--primary);
+    border-radius: var(--ap-ui-radius-panel, 8px);
+    background: var(--surface);
+}
+.wsx .wsx-panel__loading { padding: 20px 8px; color: var(--secondary); font-size: 13px; text-align: center; }
+.wsx .wsx-panel__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.wsx .wsx-panel__name { font-size: 15px; font-weight: 600; }
+.wsx .wsx-panel__hint { margin-top: 2px; color: var(--secondary); font-size: 12px; line-height: 1.5; }
+.wsx .wsx-panel__qrow { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.wsx .wsx-panel__qrow .apms-unified-label { margin: 0; white-space: nowrap; }
+.wsx .wsx-qcount {
+    box-sizing: border-box;
+    width: 84px;
+    min-height: 44px;
+    padding: 8px 10px;
+    border: 1px solid var(--control-border, var(--border));
+    border-radius: var(--ap-ui-radius-control, 8px);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 16px;
+    text-align: center;
+}
+.wsx .wsx-qcount:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.wsx .wsx-panel__qrow .wsx-btn { margin-left: auto; }
+
+/* 문항 번호: 한 칸 44px 이상, 칸 수는 폭에 맞춰 늘고 줄어든다(390px에서 6열, 50문항 9줄). */
+.wsx .wsx-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+    gap: 6px;
+}
+.wsx .wsx-q { position: relative; display: block; margin: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.wsx .wsx-q input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+.wsx .wsx-q span {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    border: 2px solid var(--control-border, var(--border));
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1;
+    transition: background-color .12s ease, color .12s ease, border-color .12s ease;
+}
+.wsx .wsx-q input:checked + span {
+    border-color: var(--error);
+    background: var(--error);
+    color: #fff;
+    font-weight: 700;
+}
+.wsx .wsx-panel__sum { margin-top: 10px; font-size: 14px; font-weight: 600; }
+.wsx .wsx-panel__foot { display: flex; justify-content: flex-start; margin-top: 8px; }
+
+/* 새 시험 */
+.wsx .wsx-new { display: flex; flex-direction: column; gap: 10px; }
+.wsx .wsx-new__chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.wsx .wsx-new__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; margin-top: 4px; }
+
+/* 반 취약 단원 */
+.wsx .wsx-weak { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border); }
+.wsx .wsx-weak__title { margin-bottom: 8px; font-size: 14px; font-weight: 600; }
+.wsx .wsx-weak__empty { color: var(--secondary); font-size: 12px; }
+.wsx .wsx-weak__row {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    min-height: 44px;
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    border: 1px solid var(--border);
+    border-radius: var(--ap-ui-radius-panel, 8px);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 13px;
+    text-align: left;
+}
+.wsx button.wsx-weak__row { cursor: pointer; }
+.wsx .wsx-weak__label { min-width: 0; font-weight: 500; overflow-wrap: anywhere; }
+.wsx .wsx-weak__sub { color: var(--secondary); font-size: 12px; }
+.wsx .wsx-weak__count { flex: 0 0 auto; color: var(--error); font-weight: 600; white-space: nowrap; }
+
+/* 하단 액션줄: 공통 부품이 sticky로 맨 아래에 붙인다. 버튼 수는 상태마다 1~3개. */
+.wsx .wsx-actions > button { white-space: nowrap; }
+
+/* 태블릿 세로(≤900px): 두 열이 좁으니 목록 줄을 조금 줄인다 */
+@media (max-width: 900px) {
+    .wsx .wsx-exam-item__avg { display: none; }
+}
+
+/* 휴대폰(≤600px): 목록 위 · 상세 아래. 목록이 화면을 다 먹지 않도록 높이를 제한하고 안에서 스크롤한다. */
+@media (max-width: 600px) {
+    .wsx .apms-workspace__list { max-height: min(36dvh, 288px); overflow-y: auto; overscroll-behavior: contain; }
+    .wsx .apms-workspace__detail { padding: 12px 10px; scroll-margin-top: 8px; }
+    .wsx .wsx-exam-item__avg { display: flex; }
+    .wsx .wsx-panel { margin-left: 0; margin-right: 0; padding: 10px; }
+    .wsx .wsx-new__actions > button { flex: 1 1 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .wsx .wsx-q span { transition: none; }
+}

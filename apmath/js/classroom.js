@@ -1760,8 +1760,8 @@ function renderClassToolBarV4B(cid, plannerEnabled, today) {
             <button class="btn cls-v4-date-reset" onclick="changeClassOperationDate('${cid}', '${realToday}')">오늘</button>
             <button class="btn cls-v4-tool red apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'progress')">진도</button>
             <button class="btn cls-v4-tool green apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'homework')">숙제</button>
-            <button class="btn cls-v4-tool blue apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'qr')">QR/OMR</button>
-            <button class="btn cls-v4-tool orange apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'exam')">원내평가</button>
+            <button class="btn cls-v4-tool blue apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'qr')">QR</button>
+            <button class="btn cls-v4-tool orange apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'exam')">원내평가/OMR</button>
             <button class="btn cls-v4-tool purple apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'clinic')">클리닉</button>
             ${plannerEnabled ? `<button class="btn cls-v4-tool green apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'planner')">플래너</button>` : ''}
         </div>
@@ -1895,8 +1895,7 @@ function renderClassroomSwitchTabs(classId) {
     return `<nav class="ap-classroom-switcher" aria-label="반 관리 담당 반 전환">
         <div class="ap-classroom-class-tabs" role="group">${classes.map(cls => {
             const selected = String(cls.id) === String(classId);
-            const label = [cls.grade, cls.name].filter(Boolean).join(' · ') || String(cls.name || cls.id);
-            return `<button type="button" class="ap-classroom-class-tab${selected ? ' is-active' : ''}" data-class-id="${apEscapeHtml(String(cls.id))}" aria-pressed="${selected ? 'true' : 'false'}" onclick="switchClassroomClass(${classProgressJsArg(cls.id)})">${apEscapeHtml(label)}</button>`;
+            return `<button type="button" class="ap-classroom-class-tab${selected ? ' is-active' : ''}" data-class-id="${apEscapeHtml(String(cls.id))}" aria-pressed="${selected ? 'true' : 'false'}" onclick="switchClassroomClass(${classProgressJsArg(cls.id)})">${apmsClassLabelHtml(cls, classes)}</button>`;
         }).join('')}</div>
     </nav>`;
 }
@@ -2388,10 +2387,11 @@ function getClassProgressDraftFingerprint(noteOverride) {
     return JSON.stringify({
         classId: String(modalState.classId || ''),
         date: String(modalState.date || ''),
+        // 비어 있고 체크 안 된 기본 행은 뺀다: 교재를 새로 추가·복구해도 "변경됨"이 되지 않게.
         progressByTextbook: Object.keys(progressByTextbook).sort().map(id => {
             const draft = progressByTextbook[id] || {};
             return [String(id), !!draft.isChecked, String(draft.progressText || '').trim()];
-        }),
+        }).filter(row => row[1] || row[2]),
         selectedPaths: Array.from(new Set(getClassProgressSelectedPathDraft())).sort(),
         activeGroupKeys: Array.from(new Set(modalState.activeGroupKeys || [])).map(String).sort(),
         selectedPhase: normalizeClassProgressPhase(modalState.selectedPhase ?? modalState.loadedPhase),
@@ -2424,10 +2424,16 @@ function hasUnsavedClassProgressChanges() {
     } catch (error) {
         console.warn('[hasUnsavedClassProgressChanges] could not sync the current draft:', error);
     }
-    return getClassProgressDraftFingerprint() !== meta.draftBaseline;
+    if (getClassProgressDraftFingerprint() !== meta.draftBaseline) return true;
+    // 교재 관리 모드에서 이름·날짜를 고치다 만 칸도 "저장 안 한 변경"이다.
+    return typeof hasPendingWsProgressTextbookEdit === 'function' && hasPendingWsProgressTextbookEdit();
 }
 
 function getClassProgressAssignedClasses(currentClassId) {
+    // 서랍 "교재관리"로 열었으면 담당 반이 아니라 모든 반(숨김 반은 맨 뒤)을 탭에 올린다.
+    if (getClassProgressModalState().classScope === 'all' && typeof getWsProgressAllClasses === 'function') {
+        return getWsProgressAllClasses();
+    }
     const classes = (state.db?.classes || []).filter(cls => Number(cls?.is_active) !== 0);
     let visible = classes.filter(cls => {
         if (typeof isClassVisibleForCurrentTeacher === 'function') return isClassVisibleForCurrentTeacher(cls);
@@ -2454,8 +2460,8 @@ function renderClassProgressClassTabs(currentClassId) {
     if (!classes.length) return '';
     return `<nav class="ap-class-progress-class-tabs" aria-label="담당 반 전환" role="group">${classes.map(cls => {
         const selected = String(cls.id) === String(currentClassId);
-        const label = [cls.grade, cls.name].filter(Boolean).join(' · ') || String(cls.name || cls.id || '반');
-        return `<button type="button" class="ap-class-progress-class-tab${selected ? ' is-active' : ''}" data-class-id="${apEscapeHtml(String(cls.id))}" aria-pressed="${selected ? 'true' : 'false'}"${modalState.isSaving ? ' disabled' : ''} onclick="requestClassProgressClassSwitch(${classProgressJsArg(cls.id)})">${apEscapeHtml(label)}</button>`;
+        const hidden = Number(cls?.is_active) === 0 ? ' (숨김)' : '';
+        return `<button type="button" class="ap-class-progress-class-tab${selected ? ' is-active' : ''}" data-class-id="${apEscapeHtml(String(cls.id))}" aria-pressed="${selected ? 'true' : 'false'}"${modalState.isSaving ? ' disabled' : ''} onclick="requestClassProgressClassSwitch(${classProgressJsArg(cls.id)})">${apmsClassLabelHtml(cls, classes)}${hidden}</button>`;
     }).join('')}</nav>`;
 }
 
@@ -2475,7 +2481,10 @@ function requestClassProgressClassSwitch(targetClassId) {
         if (!confirmSwitch) return;
     }
 
-    openClassRecordModal(targetId, modalState.date || getClassroomOperationDate());
+    openClassRecordModal(targetId, modalState.date || getClassroomOperationDate(), {
+        mode: modalState.manageMode ? 'manage' : '',
+        classScope: modalState.classScope || ''
+    });
 }
 
 function getClassProgressSelectedPathDraft() {
@@ -3019,13 +3028,6 @@ function renderClassProgressInlineAddForm() {
     });
 }
 
-function renderClassProgressTextbookManageRow(tb) {
-    return renderTextbookManagementRow(tb, {
-        patchAction: (id, targetStatus) => `submitClassProgressTextbookPatch(${classProgressJsArg(id)}, ${classProgressJsArg(targetStatus)})`,
-        deleteAction: id => `submitClassProgressTextbookDelete(${classProgressJsArg(id)})`
-    });
-}
-
 function renderClassProgressTextbookPanel() {
     const modalState = getClassProgressModalState();
     const groups = getClassProgressTextbookGroups();
@@ -3033,20 +3035,14 @@ function renderClassProgressTextbookPanel() {
     const selectedId = String(modalState.selectedTextbookId || '');
     const addHtml = modalState.inlineAddOpen ? renderClassProgressInlineAddForm() : '';
 
-    if (modalState.manageMode) {
-        const allManageBooks = groups.active.concat(groups.completed, groups.hidden);
-        const fallbackHtml = allManageBooks.length ? '' : '<div class="apms-empty ap-class-progress-empty">활성 교재 없음</div>';
-        return `${addHtml}<div class="ap-class-progress-manage-list">${fallbackHtml}${allManageBooks.map(renderClassProgressTextbookManageRow).join('')}</div>
-            <div class="ap-class-progress-inline-fields" aria-hidden="true">
-                <input type="hidden" id="edit-tb-title">
-                <input type="hidden" id="edit-tb-start">
-                <input type="hidden" id="edit-tb-end">
-            </div>`;
+    // 교재 관리 모드: 모든 상태의 교재를 고르는 목록(ws-progress-books.js). 편집은 오른쪽(상세) 칸.
+    if (modalState.manageMode && typeof renderWsProgressManageList === 'function') {
+        return `${addHtml}${renderWsProgressManageList()}`;
     }
 
     const activeHtml = groups.active.length
         ? groups.active.map(tb => renderClassProgressTextbookRow(tb, progressByTextbook[String(tb.id)], String(tb.id) === selectedId)).join('')
-        : '<div class="apms-empty ap-class-progress-empty">활성 교재 없음</div>';
+        : '<div class="apms-empty ap-class-progress-empty">등록된 교재가 없습니다. 위의 "교재 추가"로 이 반의 교재를 등록하세요.</div>';
     const completedHtml = groups.completed.length
         ? `<details class="ap-class-progress-completed-books"${modalState.completedBooksOpen ? ' open' : ''}><summary><span>완료 교재</span><span>${groups.completed.length}</span></summary><div class="ap-class-progress-completed-list">${groups.completed.map(tb => renderClassProgressTextbookRow(tb, progressByTextbook[String(tb.id)], String(tb.id) === selectedId)).join('')}</div></details>`
         : '';
@@ -3055,6 +3051,9 @@ function renderClassProgressTextbookPanel() {
 
 function renderClassProgressTextbookDetail(book) {
     const modalState = getClassProgressModalState();
+    if (modalState.manageMode && typeof renderWsProgressTextbookEditor === 'function') {
+        return renderWsProgressTextbookEditor(book);
+    }
     const groups = Array.isArray(modalState.groups) ? modalState.groups : [];
     const selectedPaths = getClassProgressSelectedPathDraft();
     const meta = state.ui?.classProgressModalMeta || {};
@@ -3209,12 +3208,18 @@ function selectClassProgressTextbook(textbookId) {
     renderClassProgressTextbookPanelInPlace(false);
     const detail = document.getElementById('record-progress-detail');
     if (detail) detail.innerHTML = renderClassProgressTextbookDetail(book);
+    if (typeof scrollWsProgressDetailIntoView === 'function') scrollWsProgressDetailIntoView();
 }
 
 function rerenderClassProgressTextbookDetail() {
     const modalState = getClassProgressModalState();
-    const selectedBook = (Array.isArray(modalState.books) ? modalState.books : [])
-        .find(item => String(item?.id || '') === String(modalState.selectedTextbookId || '')) || null;
+    const books = Array.isArray(modalState.books) ? modalState.books : [];
+    let selectedBook = books.find(item => String(item?.id || '') === String(modalState.selectedTextbookId || '')) || null;
+    if (!selectedBook && books.length) {
+        // 교재 관리 모드에서 숨김·삭제한 교재가 선택돼 있었다면 진도 입력으로 돌아올 때 보이는 교재로 옮긴다.
+        selectedBook = books.find(item => item?.status === 'active') || books[0];
+        modalState.selectedTextbookId = String(selectedBook.id || '');
+    }
     const detail = document.getElementById('record-progress-detail');
     if (detail) detail.innerHTML = renderClassProgressTextbookDetail(selectedBook);
 }
@@ -3358,16 +3363,52 @@ function applyClassProgressCourseAndTextbooks() {
 
     if (draft.newTextbookTitle) {
         if (typeof handleAddTextbook !== 'function') return toast('교재관리 기능을 불러오지 못했습니다.', 'warn');
-        state.ui.classProgressInlineTextbookAction = {
-            mode: 'add',
-            classId,
-            date,
-            courseApplyDraft: draft
-        };
-        return handleAddTextbook({ inputIds: CLASS_PROGRESS_COURSE_TEXTBOOK_INPUT_IDS });
+        return applyClassProgressCourseWithNewTextbook(draft, group);
     }
 
     return applyClassProgressCourseAndTextbookDraft(draft);
+}
+
+// 과정 선택 + 새 교재 등록 + 기존 교재 연결을 한 번에. 요청 순서·payload는 예전과 같다
+// (POST class-textbooks(과정 연결 포함) → 기존 교재마다 PATCH 연결). 끝나면 loadData·모달 재오픈 없이 같은 자리에서 그린다.
+async function applyClassProgressCourseWithNewTextbook(draft, group) {
+    const binding = {
+        progress_curriculum_key: String(draft.curriculumKey || ''),
+        progress_level_key: String(draft.levelKey || ''),
+        progress_course_key: String(draft.courseKey || '')
+    };
+    const added = await handleAddTextbook({
+        inputIds: CLASS_PROGRESS_COURSE_TEXTBOOK_INPUT_IDS,
+        binding,
+        deferRefresh: true
+    });
+    if (!added) return false;
+    const addedTextbookId = String(added.id || '');
+    // 새 교재가 화면 상태(books·초안)에 들어오게 한 뒤, 이미 과정에 연결해 만든 새 교재는 다시 PATCH하지 않는다.
+    if (typeof refreshClassProgressTextbooksFromDb === 'function') {
+        refreshClassProgressTextbooksFromDb({ deferRender: true });
+    }
+    const existingBookIds = Array.from(new Set(
+        (Array.isArray(draft.selectedBookIds) ? draft.selectedBookIds : [])
+            .map(id => String(id || '').trim())
+            .filter(id => id && id !== addedTextbookId)
+    ));
+    const bindingSaved = await persistClassProgressTextbookBindings(existingBookIds, group);
+    if (!bindingSaved) {
+        // 새 교재는 이미 만들어졌다. 같은 이름으로 다시 만들지 않도록 입력을 비우고 목록에 보이게 한다.
+        const modalState = getClassProgressModalState();
+        modalState.courseAddNewTextbookOpen = false;
+        modalState.courseAddNewTextbookTitle = '';
+        modalState.courseAddBookIds = existingBookIds.concat(addedTextbookId ? [addedTextbookId] : []);
+        if (typeof refreshClassProgressTextbooksFromDb === 'function') refreshClassProgressTextbooksFromDb({});
+        return false;
+    }
+    return applyClassProgressCourseAndTextbookDraft({
+        ...draft,
+        addedTextbookId,
+        selectedBookIds: existingBookIds,
+        skipBindingPersist: true
+    });
 }
 
 async function applyClassProgressCourseAndTextbookDraft(draft = {}) {
@@ -3383,7 +3424,9 @@ async function applyClassProgressCourseAndTextbookDraft(draft = {}) {
     const selectedBookIds = new Set((Array.isArray(draft.selectedBookIds) ? draft.selectedBookIds : []).map(String));
     const addedTextbookId = String(draft.addedTextbookId || '');
     if (addedTextbookId) selectedBookIds.add(addedTextbookId);
-    const bindingSaved = await persistClassProgressTextbookBindings(Array.from(selectedBookIds), group);
+    const bindingSaved = draft.skipBindingPersist
+        ? true
+        : await persistClassProgressTextbookBindings(Array.from(selectedBookIds), group);
     if (!bindingSaved) return false;
 
     if (!Array.isArray(modalState.activeGroupKeys)) modalState.activeGroupKeys = [];
@@ -3420,61 +3463,28 @@ async function applyClassProgressCourseAndTextbookDraft(draft = {}) {
     return true;
 }
 
-function applyPendingClassProgressCourseApply(classId, date, groups, activeKeys, progressByTextbook, visibleBooks) {
-    const pending = state.ui?.pendingClassProgressCourseApply;
-    if (!pending
-        || String(pending.classId || '') !== String(classId || '')
-        || String(pending.date || '') !== String(date || '')) return activeKeys;
-
-    const availableGroupKeys = new Set(
-        (Array.isArray(groups) ? groups : []).map(item => String(item?.key || '')).filter(Boolean)
-    );
-    (Array.isArray(pending.activeGroupKeys) ? pending.activeGroupKeys : []).forEach(key => {
-        const normalizedKey = String(key || '');
-        if (availableGroupKeys.has(normalizedKey)) activeKeys.add(normalizedKey);
-    });
-
-    const group = (Array.isArray(groups) ? groups : []).find(item =>
-        String(item.key || '') === String(pending.groupKey || '') && item.curriculumKey === '2022'
-    );
-    if (group) activeKeys.add(group.key);
-
-    const textbookIds = new Set((Array.isArray(pending.selectedBookIds) ? pending.selectedBookIds : []).map(String));
-    const addedTextbookId = String(pending.addedTextbookId || '');
-    if (addedTextbookId) textbookIds.add(addedTextbookId);
-    if (!addedTextbookId && String(pending.newTextbookTitle || '').trim()) {
-        const newBook = (Array.isArray(visibleBooks) ? visibleBooks : [])
-            .filter(book => String(book.class_id || '') === String(classId || '')
-                && String(book.title || '') === String(pending.newTextbookTitle).trim()
-                && String(book.start_date || '') === String(pending.newTextbookStartDate || '')
-                && book.status === 'active')
-            .sort((left, right) => String(right.created_at || '').localeCompare(String(left.created_at || '')))[0];
-        if (newBook?.id) textbookIds.add(String(newBook.id));
-    }
-    textbookIds.forEach(textbookId => {
-        if (progressByTextbook[textbookId]) progressByTextbook[textbookId].isChecked = true;
-    });
-
-    state.ui.pendingClassProgressCourseApply = null;
-    return activeKeys;
-}
-
 function openClassProgressTextbookAdd(cid) {
     const modalState = getClassProgressModalState();
     if (String(modalState.classId || '') !== String(cid)) return;
-    modalState.manageMode = false;
     modalState.inlineAddOpen = !modalState.inlineAddOpen;
-    state.ui.classProgressInlineTextbookAction = null;
     renderClassProgressTextbookPanelInPlace();
+    if (modalState.inlineAddOpen) document.getElementById('new-tb-title')?.focus?.();
 }
 
+// 진도 입력 ↔ 교재 관리 모드 전환. 같은 모달 안에서 목록 열과 상세 열만 바뀌고, 입력 중이던 진도 초안은 그대로 둔다.
 function openClassProgressTextbookManage(cid) {
     const modalState = getClassProgressModalState();
     if (String(modalState.classId || '') !== String(cid)) return;
+    if (modalState.manageMode && typeof hasPendingWsProgressTextbookEdit === 'function' && hasPendingWsProgressTextbookEdit()
+        && !window.confirm('저장하지 않은 교재 수정이 있습니다. 저장하지 않고 진도 입력으로 돌아갈까요?')) return;
+    syncClassProgressTextbookDraftsFromDom();
+    syncClassProgressUnitDraftsFromDom();
+    syncClassProgressPhaseDraftFromDom();
+    syncClassProgressCourseAddDraftFromDom();
     modalState.inlineAddOpen = false;
-    state.ui.classProgressInlineTextbookAction = null;
     modalState.manageMode = !modalState.manageMode;
-    renderClassProgressTextbookPanelInPlace();
+    rerenderClassProgressTextbookDetail();
+    renderClassProgressTextbookPanelInPlace(false);
 }
 
 function renderClassProgressTextbookPanelInPlace(syncDrafts = true) {
@@ -3486,6 +3496,16 @@ function renderClassProgressTextbookPanelInPlace(syncDrafts = true) {
     const manageToggle = document.querySelector('[data-class-progress-manage-toggle]');
     if (addToggle) addToggle.setAttribute('aria-pressed', modalState.inlineAddOpen ? 'true' : 'false');
     if (manageToggle) manageToggle.setAttribute('aria-pressed', modalState.manageMode ? 'true' : 'false');
+    const shell = document.querySelector('.ap-class-progress-modal');
+    if (shell && typeof shell.setAttribute === 'function') shell.setAttribute('data-ws-mode', modalState.manageMode ? 'manage' : 'progress');
+    const heading = document.querySelector('[data-class-progress-books-title]');
+    if (heading) heading.textContent = modalState.manageMode ? '교재 관리' : '교재별 진도';
+    if (shell) {
+        const title = document.getElementById('modal-title');
+        if (title) title.textContent = modalState.manageMode ? '교재 관리' : '진도관리';
+        const meta = shell.querySelector('.ap-class-progress-context__meta');
+        if (meta) meta.textContent = modalState.manageMode ? '교재 관리' : `현재 수업 진도 · ${modalState.date || ''}`;
+    }
 }
 
 function syncClassProgressTextbookDraftsFromDom() {
@@ -3513,48 +3533,36 @@ function syncClassProgressTextbookDraftsFromDom() {
 function cancelClassProgressTextbookInlineAction() {
     const modalState = getClassProgressModalState();
     modalState.inlineAddOpen = false;
-    state.ui.classProgressInlineTextbookAction = null;
     renderClassProgressTextbookPanelInPlace();
 }
 
+// 교재 추가·상태 변경·삭제는 textbook.js의 handleAdd/Patch/DeleteTextbook 한 벌이다.
 function submitClassProgressTextbookAdd() {
-    const modalState = getClassProgressModalState();
-    state.ui.classProgressInlineTextbookAction = {
-        mode: 'add',
-        classId: String(modalState.classId || ''),
-        date: String(modalState.date || '')
-    };
     if (typeof handleAddTextbook !== 'function') return toast('교재관리 기능을 불러오지 못했습니다.', 'warn');
     return handleAddTextbook();
 }
 
+// 상태 버튼(완료 처리·숨김·복구). payload는 예전 숨은 입력칸 방식과 같다: 저장된 제목·시작일·종료일 + status.
 function submitClassProgressTextbookPatch(textbookId, targetStatus) {
     const modalState = getClassProgressModalState();
     const tb = (modalState.allBooks || []).find(item => String(item?.id || '') === String(textbookId));
-    if (!tb || tb.isFallback || typeof handlePatchTextbook !== 'function') return;
-    const titleInput = document.getElementById('edit-tb-title');
-    const startInput = document.getElementById('edit-tb-start');
-    const endInput = document.getElementById('edit-tb-end');
-    if (titleInput) titleInput.value = String(tb.title || '');
-    if (startInput) startInput.value = String(tb.start_date || '');
-    if (endInput) endInput.value = String(tb.end_date || '');
-    state.ui.classProgressInlineTextbookAction = {
-        mode: 'manage',
-        classId: String(modalState.classId || ''),
-        date: String(modalState.date || '')
+    if (!tb || tb.isFallback || typeof patchTextbookWithPayload !== 'function') return;
+    const status = String(targetStatus || 'active');
+    const payload = {
+        title: String(tb.title || '').trim(),
+        start_date: String(tb.start_date || ''),
+        end_date: String(tb.end_date || ''),
+        status
     };
-    return handlePatchTextbook(String(textbookId), true, String(targetStatus || 'active'));
+    if (!payload.title) return toast('교재명을 입력하세요.', 'warn');
+    if (status === 'active') payload.clear_end_date = true;
+    return patchTextbookWithPayload(String(textbookId), payload, true);
 }
 
 function submitClassProgressTextbookDelete(textbookId) {
     const modalState = getClassProgressModalState();
     const tb = (modalState.allBooks || []).find(item => String(item?.id || '') === String(textbookId));
     if (!tb || tb.isFallback || typeof handleDeleteTextbook !== 'function') return;
-    state.ui.classProgressInlineTextbookAction = {
-        mode: 'manage',
-        classId: String(modalState.classId || ''),
-        date: String(modalState.date || '')
-    };
     return handleDeleteTextbook(String(textbookId));
 }
 
@@ -3623,7 +3631,11 @@ function addClassProgressCourseFromSelect() {
     if (addControl) addControl.outerHTML = renderClassProgressCourseAddControl();
 }
 
-async function openClassRecordModal(cid, requestedDate) {
+// options.mode: 'manage'면 교재 관리 모드로 연다. options.classScope: 'all'이면 반 탭에 모든 반을 올린다(서랍 "교재관리").
+// options.textbookId / options.addOpen: 교재 관리 모드에서 미리 고를 교재, 추가 폼을 열어 둘지.
+async function openClassRecordModal(cid, requestedDate, options = {}) {
+    const wantManage = options?.mode === 'manage';
+    const classScope = options?.classScope === 'all' ? 'all' : '';
     const previousModalState = state.ui?.classProgressModalState;
     const openProgressModal = typeof document.querySelector === 'function'
         ? document.querySelector('.ap-class-progress-modal') : null;
@@ -3631,7 +3643,10 @@ async function openClassRecordModal(cid, requestedDate) {
         && String(previousModalState.classId) !== String(cid));
     const previousTabsLeft = switchingClass
         ? (openProgressModal.querySelector('.ap-class-progress-class-tabs')?.scrollLeft || 0) : 0;
-    if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'classDetail', classId: cid });
+    if (typeof setModalReturnView === 'function') {
+        // 서랍에서 연 교재 관리는 닫으면 대시보드로, 반 화면에서 연 진도는 그 반 화면으로 돌아간다.
+        setModalReturnView(classScope === 'all' ? { type: 'dashboard' } : { type: 'classDetail', classId: cid });
+    }
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     const todayStr = normalizeClassroomDate(requestedDate) || getClassroomOperationDate();
     if (!cls) return;
@@ -3639,7 +3654,7 @@ async function openClassRecordModal(cid, requestedDate) {
     if (!state.ui) state.ui = {};
     const requestId = Number(state.ui.classProgressModalRequestId || 0) + 1;
     state.ui.classProgressModalRequestId = requestId;
-    state.ui.classProgressModalState = { classId: String(cid), date: todayStr, loading: true };
+    state.ui.classProgressModalState = { classId: String(cid), date: todayStr, loading: true, classScope };
     state.ui.classProgressModalMeta = { classId: String(cid), date: todayStr, loading: true };
 
     if (switchingClass) {
@@ -3647,9 +3662,11 @@ async function openClassRecordModal(cid, requestedDate) {
         openProgressModal.classList.add('is-class-switching');
         openProgressModal.setAttribute('aria-busy', 'true');
         const title = openProgressModal.querySelector('.ap-class-progress-context__title');
-        if (title) title.textContent = String(cls.name || '');
+        if (title) title.textContent = apmsClassLabel(cls, getClassProgressAssignedClasses(cid)).text;
+        const teacherNode = openProgressModal.querySelector('.ap-class-progress-context__teacher');
+        if (teacherNode) teacherNode.textContent = cls.teacher_name ? `담당 ${String(cls.teacher_name).trim()}` : '';
         const subtitle = openProgressModal.querySelector('.ap-class-progress-context__meta');
-        if (subtitle) subtitle.textContent = '현재 수업 진도 · ' + todayStr;
+        if (subtitle) subtitle.textContent = wantManage ? '교재 관리' : '현재 수업 진도 · ' + todayStr;
         const tabs = openProgressModal.querySelector('.ap-class-progress-class-tabs');
         if (tabs) tabs.querySelectorAll('.ap-class-progress-class-tab').forEach(button => {
             const selected = button.getAttribute('data-class-id') === String(cid);
@@ -3657,12 +3674,11 @@ async function openClassRecordModal(cid, requestedDate) {
             button.setAttribute('aria-pressed', selected ? 'true' : 'false');
             button.disabled = true;
         });
-        const layout = openProgressModal.querySelector('.ap-class-progress-layout');
+        const layout = openProgressModal.querySelector('.apms-workspace');
         if (layout) layout.innerHTML = '<div class="ap-class-progress-switch-loading" role="status">선택한 반의 진도를 불러오는 중…</div>';
-        const footer = openProgressModal.querySelector('.ap-class-progress-footer');
-        if (footer) footer.hidden = true;
+        openProgressModal.querySelectorAll('[data-ws-footer]').forEach(node => { node.hidden = true; });
     } else {
-        showModal('진도관리', '<div style="padding:28px;text-align:center;color:var(--secondary);font-size:13px;">지속형 진도 상태를 불러오는 중…</div>');
+        showModal(wantManage ? '교재 관리' : '진도관리', '<div style="padding:28px;text-align:center;color:var(--secondary);font-size:13px;">지속형 진도 상태를 불러오는 중…</div>');
     }
     const [resolvedProgress, dailyState, phaseState] = await Promise.all([
         loadClassProgressForDate(cid, todayStr),
@@ -3733,38 +3749,31 @@ async function openClassRecordModal(cid, requestedDate) {
         gradeKey
     };
 
-    const pendingSelectedPathDraft = Array.isArray(state.ui?.pendingClassProgressCourseApply?.selectedPathDraft)
-        ? state.ui.pendingClassProgressCourseApply.selectedPathDraft.slice()
-        : null;
     const boundGroupKeys = new Set(
         visibleBooks.map(getClassProgressTextbookGroupKey).filter(Boolean)
     );
-    const initialActiveKeys = new Set(groups
+    const activeKeys = new Set(groups
         .filter(group => savedGroupKeys.has(group.key) || boundGroupKeys.has(group.key))
         .map(group => group.key));
-    const activeKeys = applyPendingClassProgressCourseApply(
-        cid,
-        todayStr,
-        groups,
-        initialActiveKeys,
-        progressByTextbook,
-        visibleBooks
-    );
     const selectedPathDraft = Array.from(new Set(
-        (pendingSelectedPathDraft || savedPaths)
+        savedPaths
             .map(path => String(path || '').trim())
             .filter(Boolean)
     ));
     const selectedTextbook = visibleBooks.find(tb => tb.status === 'active') || visibleBooks[0] || null;
+    const requestedManageBookId = String(options?.textbookId || '');
     state.ui.classProgressModalState = {
         classId: String(cid),
         className: String(cls.name || ''),
+        classScope,
         date: todayStr,
         gradeKey,
         allBooks: modalBooks,
         books: visibleBooks,
+        savedProgressRows: existingProgress,
         progressByTextbook,
         selectedTextbookId: String(selectedTextbook?.id || ''),
+        manageSelectedId: modalBooks.some(tb => String(tb.id) === requestedManageBookId) ? requestedManageBookId : '',
         groups,
         savedPaths,
         selectedPathDraft,
@@ -3779,8 +3788,8 @@ async function openClassRecordModal(cid, requestedDate) {
         courseAddNewTextbookOpen: false,
         courseAddNewTextbookTitle: '',
         courseAddNewTextbookStartDate: todayStr,
-        inlineAddOpen: false,
-        manageMode: false,
+        inlineAddOpen: wantManage && !!options?.addOpen,
+        manageMode: wantManage,
         completedBooksOpen: false
     };
     state.ui.classProgressModalMeta.draftBaseline = getClassProgressDraftFingerprint(prevNote);
@@ -3794,39 +3803,45 @@ async function openClassRecordModal(cid, requestedDate) {
         ? '<div style="margin-bottom:14px;padding:10px 12px;border-radius:12px;background:rgba(var(--warning-rgb),0.10);border:1px solid rgba(var(--warning-rgb),0.22);font-size:12px;line-height:1.5;color:var(--warning);">수업 상태를 불러오지 못했습니다. 네트워크를 확인한 뒤 다시 열어주세요.</div>'
         : '';
     const selectedBookHtml = renderClassProgressTextbookDetail(selectedTextbook);
-    showModal('진도관리', `<div class="ap-class-progress-modal">
-            <div class="ap-class-progress-context">
-                <div class="ap-class-progress-context__main">
-                    <strong class="ap-class-progress-context__title">${apEscapeHtml(cls.name || '')}</strong>
-                    <span class="ap-class-progress-context__meta">현재 수업 진도 · ${apEscapeHtml(todayStr)}</span>
+    const cidArg = classProgressJsArg(cid);
+    // 공통 W 등급 부품(.apms-modal--workspace / .apms-workspace*): 위 줄(반·탭) / 왼쪽 목록 + 오른쪽 상세 / 하단 액션줄.
+    // 휴대폰에서는 목록 위 · 상세 아래로 쌓이고 모달 하나가 한 번에 스크롤한다. 저장은 하단 액션줄 한 곳이다.
+    showModal(wantManage ? '교재 관리' : '진도관리', `<div class="apms-modal apms-modal--workspace ap-class-progress-modal ws-progress" data-ws-mode="${wantManage ? 'manage' : 'progress'}">
+            <div class="apms-workspace__bar ws-progress__bar">
+                <div class="ap-class-progress-context">
+                    <div class="ap-class-progress-context__main">
+                        <strong class="ap-class-progress-context__title">${apEscapeHtml(apmsClassLabel(cls, getClassProgressAssignedClasses(cid)).text)}</strong>
+                        <span class="ap-class-progress-context__meta">${wantManage ? '교재 관리' : `현재 수업 진도 · ${apEscapeHtml(todayStr)}`}</span>
+                    </div>
+                    <span class="apms-muted ap-class-progress-context__teacher">${cls.teacher_name ? `담당 ${apEscapeHtml(String(cls.teacher_name).trim())}` : ''}</span>
                 </div>
-                <span class="apms-muted">${apEscapeHtml(gradeKey || '')}</span>
+                ${renderClassProgressClassTabs(cid)}
             </div>
-            ${renderClassProgressClassTabs(cid)}
             ${legacyHtml}
             ${dailyLoadWarning}
             ${phaseLoadWarning}
-            <div class="ap-class-progress-layout">
-                <aside class="apms-card ap-class-progress-books">
+            <div class="apms-workspace ws-progress__layout">
+                <aside class="apms-workspace__list ws-progress__list" aria-label="교재 목록">
                     <div class="ap-class-progress-panel-head">
-                        <h3>교재별 진도</h3>
+                        <h3 data-class-progress-books-title>${wantManage ? '교재 관리' : '교재별 진도'}</h3>
                         <div class="ap-class-progress-panel-actions">
-                            <button type="button" class="btn apms-button apms-button--quiet" data-class-progress-add-toggle aria-pressed="false" onclick="openClassProgressTextbookAdd(${classProgressJsArg(cid)})">교재 추가</button>
-                            <button type="button" class="btn apms-button apms-button--quiet" data-class-progress-manage-toggle aria-pressed="false" onclick="openClassProgressTextbookManage(${classProgressJsArg(cid)})">관리</button>
+                            <button type="button" class="btn apms-button apms-button--quiet" data-class-progress-add-toggle aria-pressed="${wantManage && options?.addOpen ? 'true' : 'false'}" onclick="openClassProgressTextbookAdd(${cidArg})">교재 추가</button>
+                            <button type="button" class="btn apms-button apms-button--quiet" data-class-progress-manage-toggle aria-pressed="${wantManage ? 'true' : 'false'}" onclick="openClassProgressTextbookManage(${cidArg})">교재 관리</button>
                         </div>
                     </div>
                     <div id="record-progress-books-panel" class="ap-class-progress-books__list">${booksHtml}</div>
                 </aside>
-                <section class="apms-card ap-class-progress-detail">
+                <section class="apms-workspace__detail ws-progress__detail" aria-label="교재 상세">
                     <div id="record-progress-detail">${selectedBookHtml}</div>
                 </section>
             </div>
-            <div class="ap-class-progress-footer">
-                <section class="ap-class-progress-note">
-                    <h3>특이사항</h3>
-                    <textarea id="record-special-note" class="cls-input" placeholder="수업 특이사항 메모">${apEscapeHtml(prevNote)}</textarea>
-                </section>
-                <button class="btn apms-button apms-button--primary btn-primary ap-class-progress-save" ${dailyState.loadFailed ? 'disabled' : ''}${dailyState.loadFailed ? ' aria-disabled="true"' : ''} onclick="saveClassRecord(${classProgressJsArg(cid)}, ${classProgressJsArg(todayStr)})">진도 저장하기</button>
+            <section class="ws-progress__note" data-ws-footer>
+                <label class="apms-unified-label" for="record-special-note">특이사항</label>
+                <textarea id="record-special-note" class="apms-unified-control" rows="2" placeholder="수업 특이사항 메모">${apEscapeHtml(prevNote)}</textarea>
+            </section>
+            <div class="apms-modal__actions" data-ws-footer>
+                <button type="button" class="btn apms-button apms-button--primary btn-primary apms-unified-primary ap-class-progress-save" ${dailyState.loadFailed ? 'disabled' : ''}${dailyState.loadFailed ? ' aria-disabled="true"' : ''} onclick="saveClassRecord(${cidArg}, ${classProgressJsArg(todayStr)})">진도 저장하기</button>
+                <button type="button" class="btn apms-button apms-button--quiet apms-unified-quiet ws-progress-exit-manage" onclick="openClassProgressTextbookManage(${cidArg})">진도 입력으로</button>
             </div>
         </div>`);
     if (switchingClass) {

@@ -282,119 +282,10 @@ function makeExamDetailKey(title, date, archiveFile = '') {
     return `${safeTitle}||${safeDate}`;
 }
 
+// 원내평가·OMR는 ws-exam-workspace.js의 통합 작업 화면 하나로 열린다(2026-11-02).
+// 시험 이력(openExamGradeView)과 시험 상세(openExamDetail)는 호출처가 있으므로 그 화면을 여는 얇은 진입으로 남긴다.
 async function openExamGradeView(classId) {
-    if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'classDetail', classId });
-    const ids = state.db.class_students.filter(m => String(m.class_id) === String(classId)).map(m => String(m.student_id));
-    const activeCount = state.db.students.filter(s => ids.includes(String(s.id)) && s.status === '재원').length;
-    let sessions = (state.db.exam_sessions || []).filter(es => ids.includes(String(es.student_id)));
-    let assignments = [];
-    let exclusions = [];
-    try {
-        const res = await api.get(`exam-sessions/by-class?class=${encodeURIComponent(classId)}`);
-        if (res && Array.isArray(res.blueprints) && typeof setExamBlueprintsForFiles === 'function') setExamBlueprintsForFiles(res.blueprints);
-        if (res && Array.isArray(res.sessions)) {
-            sessions = res.sessions.filter(es => ids.includes(String(es.student_id)));
-            const classStudentIdSet = new Set(ids);
-            assignments = Array.isArray(res.assignments) ? res.assignments.filter(a => classStudentIdSet.size && String(a.class_id) === String(classId)) : [];
-            exclusions = Array.isArray(res.exclusions) ? res.exclusions : [];
-        }
-    } catch (e) { console.warn('[openExamGradeView] fail', e); }
-
-    const activeCountForAssignment = activeCount || ids.length;
-    const exclusionCountByAssignmentId = new Map();
-    exclusions.forEach(ex => {
-        const assignmentId = String(ex.assignment_id || '');
-        const studentId = String(ex.student_id || '');
-        if (!assignmentId || !studentId) return;
-        if (!exclusionCountByAssignmentId.has(assignmentId)) exclusionCountByAssignmentId.set(assignmentId, new Set());
-        exclusionCountByAssignmentId.get(assignmentId).add(studentId);
-    });
-    const grouped = {};
-    const assignmentById = new Map(assignments.map(a => [String(a.id || ''), a]).filter(([id]) => id));
-    const isQuestionCountCompatible = function(a, row) {
-        const aq = Number(a?.question_count || 0);
-        const rq = Number(row?.question_count || 0);
-        return !aq || !rq || aq === rq;
-    };
-    const findMatchingAssignmentForSession = function(session) {
-        const byAssignmentId = assignmentById.get(String(session.assignment_id || ''));
-        if (byAssignmentId) return byAssignmentId;
-
-        const sessionDate = String(session.exam_date || '');
-        const sessionArchive = normalizeClassroomArchiveFile(session.archive_file || '');
-        const candidates = assignments.filter(a =>
-            String(a.exam_date || '') === sessionDate &&
-            isQuestionCountCompatible(a, session)
-        );
-
-        if (sessionArchive) {
-            return candidates.find(a => normalizeClassroomArchiveFile(a.archive_file || '') === sessionArchive) || null;
-        }
-
-        const archivedCandidates = candidates.filter(a => normalizeClassroomArchiveFile(a.archive_file || ''));
-        if (archivedCandidates.length === 1) return archivedCandidates[0];
-
-        return candidates.find(a => String(a.exam_title || '') === String(session.exam_title || '')) || null;
-    };
-
-    assignments.forEach(a => {
-        const key = makeExamListKey(a.exam_title, a.exam_date, a.archive_file || '');
-        if (!grouped[key]) grouped[key] = { title: a.exam_title, displayTitle: getClassroomExamDisplayTitle(a), date: a.exam_date, archiveFile: a.archive_file || '', sessions: [], questionCount: a.question_count || 0, assignment: a };
-        else {
-            grouped[key].assignment = a;
-            if (!grouped[key].questionCount && a.question_count) grouped[key].questionCount = a.question_count;
-            if (!grouped[key].archiveFile && a.archive_file) grouped[key].archiveFile = a.archive_file;
-            if (!grouped[key].displayTitle || grouped[key].displayTitle === grouped[key].title) grouped[key].displayTitle = getClassroomExamDisplayTitle(a);
-        }
-    });
-
-    sessions.forEach(s => {
-        const matchedAssignment = findMatchingAssignmentForSession(s);
-        const resolvedArchiveFile = matchedAssignment?.archive_file || s.archive_file || '';
-        const key = makeExamListKey(s.exam_title, s.exam_date, resolvedArchiveFile);
-        if (!grouped[key]) grouped[key] = { title: s.exam_title, displayTitle: getClassroomExamDisplayTitle({ ...s, archiveFile: resolvedArchiveFile }), date: s.exam_date, archiveFile: resolvedArchiveFile, sessions: [], questionCount: s.question_count || matchedAssignment?.question_count || 0, assignment: matchedAssignment || null };
-        grouped[key].sessions.push(s);
-        if (!grouped[key].questionCount && s.question_count) grouped[key].questionCount = s.question_count;
-        if (!grouped[key].archiveFile && resolvedArchiveFile) grouped[key].archiveFile = resolvedArchiveFile;
-        if (!grouped[key].assignment && matchedAssignment) grouped[key].assignment = matchedAssignment;
-        if (!grouped[key].displayTitle || grouped[key].displayTitle === grouped[key].title) grouped[key].displayTitle = getClassroomExamDisplayTitle({ ...s, archiveFile: resolvedArchiveFile });
-    });
-
-    const exams = Object.values(grouped).sort((a,b) => String(b.date).localeCompare(String(a.date)) || String(b.title).localeCompare(String(a.title)));
-    const rows = exams.map(exam => {
-        const displayTitle = exam.displayTitle || getClassroomExamDisplayTitle(exam);
-        const cnt = exam.sessions.length;
-        const qCount = exam.questionCount || exam.sessions[0]?.question_count || exam.assignment?.question_count || 0;
-        const avg = cnt ? Math.round(exam.sessions.reduce((sum, s) => sum + Number(s.score || 0), 0) / cnt) : '-';
-        const excludedCount = exam.assignment?.id ? (exclusionCountByAssignmentId.get(String(exam.assignment.id))?.size || 0) : 0;
-        const targetCount = Math.max(0, activeCountForAssignment - excludedCount);
-        const pct = targetCount ? Math.round((cnt / targetCount) * 100) : 0;
-        const archiveArg = apJsArg(exam.archiveFile || '');
-        const assignmentArg = apJsArg(exam.assignment?.id || '');
-        return `<div class="classroom-exam-history-row" onclick="openExamDetail('${classId}', ${apJsArg(exam.title || '')}, '${exam.date}', ${archiveArg})">
-            <div class="classroom-exam-history-main">
-                <div class="classroom-exam-history-title">${apEscapeHtml(displayTitle)}</div>
-                <div class="classroom-exam-history-meta">${exam.date} · ${qCount}문항 · 제출 ${cnt}/${targetCount}명 (${pct}%)</div>
-            </div>
-            <div class="classroom-exam-history-actions">
-                <div class="classroom-exam-history-average" aria-label="평균 ${apEscapeHtml(avg)}점">
-                    <div class="classroom-exam-history-average-value">${avg}</div>
-                    <div class="classroom-exam-history-average-label">평균</div>
-                </div>
-                <div class="classroom-exam-history-buttons">
-                    <button class="btn apms-button apms-button--quiet classroom-exam-history-button" onclick="event.stopPropagation(); openExamDetail('${classId}', ${apJsArg(exam.title || '')}, '${exam.date}', ${archiveArg});">학생별 입력</button>
-                    <button class="btn apms-button apms-button--quiet btn-danger classroom-exam-history-button classroom-exam-history-button--danger" onclick="event.stopPropagation(); deleteExamByClass('${classId}', ${apJsArg(exam.title || '')}, '${exam.date}', ${archiveArg}, ${assignmentArg});">삭제</button>
-                </div>
-            </div>
-        </div>`;
-    }).join('');
-
-    showModal('원내평가', `
-        <div style="display: flex; justify-content: flex-end; margin-bottom: 12px;">
-            <button class="btn apms-button apms-button--primary btn-primary" style="padding: 8px 14px; font-size: 12px; font-weight:500; border-radius: 12px;" onclick="closeModal(true); if(typeof openOMR==='function') openOMR('', '단원평가', 20, '${classId}', '', '', 'examList');">새 시험 입력</button>
-        </div>
-        ${rows || `<div style="text-align:center; padding:40px 20px; color:var(--secondary); font-size:13px; font-weight:500;">시험 기록 없음</div>`}
-    `);
+    return openExamWorkspace(classId);
 }
 
 async function downloadClassExamPdf(assignmentId, examTitle = '', examDate = '') {
@@ -425,210 +316,22 @@ async function downloadClassExamPdf(assignmentId, examTitle = '', examDate = '')
 }
 
 async function regenerateClassExamPdf(assignmentId, classId, examTitle, examDate, archiveFile = '') {
-    if (!assignmentId) return toast('출제 정보를 찾을 수 없습니다.', 'warn');
-    try {
-        toast('시험지 PDF를 생성하고 있습니다.', 'info');
-        const result = await api.post(`class-exam-assignments/${encodeURIComponent(assignmentId)}/pdf`, {});
-        if (result?.assignment?.pdf_status !== 'ready') {
-            throw new Error(result?.assignment?.pdf_error || 'PDF 생성 실패');
-        }
-        toast('시험지 PDF가 준비되었습니다.', 'success');
-        await openExamDetail(classId, examTitle, examDate, archiveFile);
-    } catch (e) {
-        console.warn('[class exam pdf] regeneration failed:', e);
-        toast(e.message || 'PDF 생성에 실패했습니다.', 'warn');
-    }
+    if (!(await wsExamRequestRegeneratePdf(assignmentId))) return;
+    await openExamDetail(classId, examTitle, examDate, archiveFile);
 }
 
 async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
-    if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'classDetail', classId });
-    let sessionSource = state.db.exam_sessions || [];
-    let wrongSource = state.db.wrong_answers || [];
-    let assignmentSource = [];
-    let exclusionSource = [];
-
-    try {
-        const res = await api.get(`exam-sessions/by-class?class=${encodeURIComponent(classId)}`);
-        if (res && Array.isArray(res.blueprints) && typeof setExamBlueprintsForFiles === 'function') setExamBlueprintsForFiles(res.blueprints);
-        if (res && Array.isArray(res.sessions)) sessionSource = res.sessions;
-        if (res && Array.isArray(res.wrong_answers)) wrongSource = res.wrong_answers;
-        if (res && Array.isArray(res.assignments)) assignmentSource = res.assignments;
-        if (res && Array.isArray(res.exclusions)) exclusionSource = res.exclusions;
-    } catch (e) { console.warn('[openExamDetail] fail', e); }
-
-    const ids = state.db.class_students.filter(m => String(m.class_id) === String(classId)).map(m => String(m.student_id));
-    const baseActive = state.db.students.filter(s => ids.includes(String(s.id)) && s.status === '재원');
-    const archiveFilter = normalizeClassroomArchiveFile(archiveFile || '');
-    const assignmentById = new Map(assignmentSource.map(a => [String(a.id || ''), a]).filter(([id]) => id));
-    const matchesExamIdentity = function(row) {
-        if (String(row.exam_date || '') !== String(examDate || '')) return false;
-        const rowArchive = normalizeClassroomArchiveFile(row.archive_file || '');
-        const assignmentCandidates = assignmentSource.filter(a => {
-            const aq = Number(a?.question_count || 0);
-            const rq = Number(row?.question_count || 0);
-            return String(a.exam_date || '') === String(row.exam_date || '') && (!aq || !rq || aq === rq);
-        });
-        const linkedAssignment = assignmentById.get(String(row.assignment_id || '')) ||
-            (rowArchive
-                ? assignmentCandidates.find(a => normalizeClassroomArchiveFile(a.archive_file || '') === rowArchive)
-                : (assignmentCandidates.filter(a => normalizeClassroomArchiveFile(a.archive_file || '')).length === 1
-                    ? assignmentCandidates.filter(a => normalizeClassroomArchiveFile(a.archive_file || ''))[0]
-                    : assignmentCandidates.find(a => String(a.exam_title || '') === String(row.exam_title || ''))));
-        if (linkedAssignment) {
-            if (archiveFilter && normalizeClassroomArchiveFile(linkedAssignment.archive_file || '') === archiveFilter) return true;
-            if (!archiveFilter && String(linkedAssignment.exam_title || '') === String(examTitle || '')) return true;
-        }
-        if (archiveFilter) {
-            if (rowArchive) return rowArchive === archiveFilter;
-            return false;
-        }
-        return String(row.exam_title || '') === String(examTitle || '');
-    };
-    const matchedAssignment = assignmentSource.find(a => {
-        if (String(a.exam_date || '') !== String(examDate || '')) return false;
-        if (archiveFilter) return normalizeClassroomArchiveFile(a.archive_file || '') === archiveFilter;
-        return String(a.exam_title || '') === String(examTitle || '');
-    });
-    const excludedStudentIds = new Set(
-        (exclusionSource || [])
-            .filter(ex => matchedAssignment?.id && String(ex.assignment_id || '') === String(matchedAssignment.id))
-            .map(ex => String(ex.student_id || ''))
-            .filter(Boolean)
-    );
-    const active = baseActive.filter(s => !excludedStudentIds.has(String(s.id)));
-    const sessions = sessionSource.filter(es => matchesExamIdentity(es) && ids.includes(String(es.student_id)) && !excludedStudentIds.has(String(es.student_id)));
-
-    const sessionsWithArchive = sessions.filter(s => s.archive_file);
-    if (sessionsWithArchive.length > 0 && typeof ensureBlueprintsForSessions === 'function') {
-        try { await ensureBlueprintsForSessions(sessionsWithArchive); } catch (e) { console.warn(e); }
-    } else if (matchedAssignment?.archive_file && typeof ensureBlueprintsForSessions === 'function') {
-        try { await ensureBlueprintsForSessions([{ archive_file: matchedAssignment.archive_file, question_count: matchedAssignment.question_count, exam_title: matchedAssignment.exam_title, exam_date: matchedAssignment.exam_date }]); } catch (e) { console.warn(e); }
-    }
-
-    const submittedIds = new Set(sessions.map(s => String(s.student_id)));
-    const qCount = sessions[0]?.question_count || matchedAssignment?.question_count || 0;
-
-    const prevSessions = state.db.exam_sessions;
-    const prevWrongs = state.db.wrong_answers;
-    state.db.exam_sessions = sessions;
-    state.db.wrong_answers = wrongSource;
-    let classWeakUnits = [];
-    if (typeof computeClassWeakUnits === 'function') classWeakUnits = computeClassWeakUnits(classId, examTitle, examDate);
-    state.db.exam_sessions = prevSessions;
-    state.db.wrong_answers = prevWrongs;
-
-    const submitted = active.filter(s => submittedIds.has(String(s.id))).map(s => {
-        const sess = sessions.find(es => String(es.student_id) === String(s.id));
-        const wrongs = wrongSource.filter(w => String(w.session_id) === String(sess?.id)).map(w => w.question_id).sort((a, b) => Number(a) - Number(b));
-        return { ...s, score: sess?.score ?? '-', sessionId: sess?.id, session: sess, wrongs };
-    });
-    const pending = active.filter(s => !submittedIds.has(String(s.id)));
-
-    const examArchiveFileObj = sessions.find(s => s.archive_file);
-    const examArchiveFile = apJsArg(examArchiveFileObj?.archive_file || matchedAssignment?.archive_file || '');
-    const assignmentIdArg = apJsArg(matchedAssignment?.id || '');
-    const pdfStatus = String(matchedAssignment?.pdf_status || 'pending');
-    const pdfCreateLabel = pdfStatus === 'failed' ? 'PDF 다시 생성' : 'PDF 생성';
-    const pdfActionHtml = matchedAssignment?.id
-        ? (pdfStatus === 'ready'
-            ? `<button class="btn apms-button apms-button--primary btn-primary" style="padding:7px 12px; font-size:12px; border-radius:10px;" onclick="downloadClassExamPdf(${assignmentIdArg}, ${apJsArg(examTitle)}, '${examDate}')">출제본 PDF</button>`
-            : pdfStatus === 'generating'
-                ? '<button class="btn apms-button apms-button--quiet" style="padding:7px 12px; font-size:12px; border-radius:10px;" disabled>PDF 생성 중</button>'
-                : `<button class="btn apms-button apms-button--quiet" style="padding:7px 12px; font-size:12px; border-radius:10px;" onclick="regenerateClassExamPdf(${assignmentIdArg}, '${classId}', ${apJsArg(examTitle)}, '${examDate}', ${examArchiveFile})">${pdfCreateLabel}</button>`)
-        : '';
-    const detailDisplayTitle = getClassroomExamDisplayTitle({
-        title: examTitle,
-        archiveFile: examArchiveFileObj?.archive_file || matchedAssignment?.archive_file || archiveFile || '',
-        assignment: matchedAssignment
-    });
-
-    const submittedHTML = submitted.map(s => {
-        const sArchive = s.session?.archive_file ? apJsArg(s.session.archive_file) : examArchiveFile;
-        return `<tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 14px 12px; font-weight:500; color: var(--primary); font-size: 14px; line-height: 1.4;">${s.name}</td>
-            <td style="text-align: center; font-weight:500; color: var(--text); padding: 14px 4px; font-size: 14px;">${s.score}점</td>
-            <td style="padding: 14px 4px;">
-                <div style="display: flex; flex-wrap: wrap; gap: 4px;">
-                    ${s.wrongs.length ? s.wrongs.map(qid => typeof buildWrongUnitChip === 'function' ? buildWrongUnitChip(s.session, qid) : `<span style="background: rgba(var(--error-rgb),0.10); color: var(--error); padding: 2px 7px; border-radius: 6px; font-size: 11px; font-weight:500; border: 1px solid rgba(var(--error-rgb),0.18);">Q${qid}</span>`).join('') : '<span style="color: var(--secondary); font-size: 11px; font-weight: 400;">없음</span>'}
-                </div>
-            </td>
-            <td style="text-align: right; padding: 14px 12px;">
-                <div style="display: flex; gap: 6px; justify-content: flex-end;">
-                    <button class="btn apms-button apms-button--quiet" style="padding: 4px 10px; font-size: 11px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; font-weight:500; min-height: 32px;" onclick="closeModal(true);openOMR('${s.id}',${apJsArg(examTitle)},${qCount},'${classId}','${s.sessionId || ''}',${sArchive},'examDetail','${examDate}')">수정</button>
-                    <button class="btn apms-button apms-button--quiet" style="padding: 4px 10px; font-size: 11px; color: var(--error); border: 1px solid rgba(var(--error-rgb),0.18); background: rgba(var(--error-rgb),0.08); border-radius: 8px; font-weight:500; min-height: 32px;" onclick="deleteExamSession('${s.sessionId || ''}','${classId}',${apJsArg(examTitle)},'${examDate}',${sArchive},'${s.id}',${assignmentIdArg})">삭제</button>
-                </div>
-            </td>
-        </tr>`;
-    }).join('');
-
-    const pendingHTML = pending.map(s => `<tr style="background-color: var(--bg); border-bottom: 1px solid var(--border);">
-        <td style="padding: 14px 12px; color: var(--secondary); font-weight: 500; font-size: 14px;">${s.name}</td>
-        <td colspan="2" style="text-align: center; font-size: 12px; color: var(--secondary); font-weight:500; line-height: 1.5;">미제출</td>
-        <td style="text-align: right; padding: 14px 12px;">
-            <div style="display: flex; gap: 6px; justify-content: flex-end;">
-                <button class="btn apms-button apms-button--primary btn-primary" style="padding: 6px 12px; font-size: 11px; font-weight:500; border-radius: 8px; min-height: 32px;" onclick="closeModal(true);openOMR('${s.id}',${apJsArg(examTitle)},${qCount},'${classId}','',${examArchiveFile},'examDetail','${examDate}')">입력</button>
-                <button class="btn apms-button apms-button--quiet" style="padding: 4px 10px; font-size: 11px; color: var(--error); border: 1px solid rgba(var(--error-rgb),0.18); background: rgba(var(--error-rgb),0.08); border-radius: 8px; font-weight:500; min-height: 32px;" onclick="deleteExamSession('','${classId}',${apJsArg(examTitle)},'${examDate}',${examArchiveFile},'${s.id}',${assignmentIdArg})">삭제</button>
-            </div>
-        </td>
-    </tr>`).join('');
-
-    const weakUnitHtml = typeof renderWeakUnitSummary === 'function' ? renderWeakUnitSummary(classWeakUnits, '오답 데이터 없음', { clickable: true, mode: 'class', titlePrefix: '반 취약 단원', context: { targetType: 'class', targetId: classId, targetLabel: (state.db.classes || []).find(c => String(c.id) === String(classId))?.name || '반', examTitle, examDate } }) : '';
-
-    showModal(`${detailDisplayTitle}`, `
-        <div style="padding: 14px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 16px; text-align: center;">
-            <div style="font-size: 14px; font-weight:500; color: var(--text); line-height: 1.4;">제출 완료: <span style="color: var(--success);; font-weight:500;">${submitted.length}명</span> / 전체 ${submitted.length + pending.length}명</div>
-            <div style="font-size: 11px; font-weight: 400; color: var(--secondary); margin-top: 4px; line-height: 1.5;">${examDate} · ${qCount}문항 기준</div>
-            ${pdfActionHtml ? `<div style="margin-top:12px;">${pdfActionHtml}</div>` : ''}
-        </div>
-        <div style="margin-bottom: 24px; border: 1px solid rgba(var(--primary-rgb),0.16); border-radius: 18px; padding: 16px; background: rgba(var(--primary-rgb),0.04);">
-            <div style="font-size: 14px; font-weight:500; margin-bottom: 12px; color: var(--primary); line-height: 1.3;">반 취약 단원 TOP</div>
-            ${weakUnitHtml}
-        </div>
-        <div style="margin-bottom: 12px; text-align: right;">
-            <button class="btn apms-button apms-button--quiet btn-danger" style="padding: 6px 12px; font-size: 11px; font-weight:500; border-radius: var(--radius-sm);" onclick="deleteExamByClass('${classId}',${apJsArg(examTitle)},'${examDate}',${examArchiveFile},${assignmentIdArg})">시험 기록 전체 삭제</button>
-        </div>
-        <table style="width: 100%; font-size: 13px; border-collapse: collapse; table-layout: fixed;">
-            <thead>
-                <tr style="border-bottom: 2px solid var(--border); background: var(--bg);">
-                    <th style="width: 25%; text-align: left; padding: 10px 12px; color: var(--secondary); font-weight:500; font-size: 12px;">이름</th>
-                    <th style="width: 20%; text-align: center; padding: 10px 4px; color: var(--secondary); font-weight:500; font-size: 12px;">점수</th>
-                    <th style="width: 35%; text-align: left; padding: 10px 4px; color: var(--secondary); font-weight:500; font-size: 12px;">오답</th>
-                    <th style="width: 20%; text-align: right; padding: 10px 12px; color: var(--secondary); font-weight:500; font-size: 12px;">관리</th>
-                </tr>
-            </thead>
-            <tbody>${submittedHTML}${pendingHTML}</tbody>
-        </table>
-    `);
+    return openExamWorkspace(classId, { select: { title: examTitle, date: examDate, archive: archiveFile } });
 }
 
+// 학생·세션 삭제의 확인과 요청은 ws-exam-workspace.js의 wsExamRequest*가 한다(작업 화면도 같은 함수를 쓴다).
+// 이 옛 진입은 요청 뒤 앱 자료를 새로 받고 작업 화면을 다시 연다.
 async function deleteExamSession(sessionId, classId, examTitle, examDate, archiveFile = '', studentId = '', assignmentId = '') {
-    if (studentId) {
-        if (!classId || !examTitle || !examDate) return;
-        if (!confirm('이 학생을 이 시험에서 삭제할까요?\n제출 기록이 있으면 오답 기록도 함께 삭제됩니다.')) return;
-        try {
-            const r = await api.post('class-exam-assignments/exclude-student', {
-                class_id: classId,
-                student_id: studentId,
-                exam_title: examTitle,
-                exam_date: examDate,
-                archive_file: archiveFile || '',
-                assignment_id: assignmentId || ''
-            });
-            if (!r?.success) { toast('삭제 실패', 'warn'); return; }
-            toast('학생을 시험에서 삭제했습니다.', 'info');
-            closeModal(true); await refreshDataOnly(); refreshClassroomStatusBoardAfterExamChange(classId); openExamDetail(classId, examTitle, examDate, archiveFile);
-        } catch (e) {
-            console.warn(e);
-            toast('삭제 실패', 'warn');
-        }
-        return;
-    }
-    if (!sessionId) return;
-    if (!confirm('이 성적 기록을 삭제하시겠습니까? 오답 정보도 함께 삭제됩니다.')) return;
-    const r = await api.delete('exam-sessions', sessionId);
-    if (!r?.success) { toast('삭제 실패', 'warn'); return; }
-    toast('기록이 삭제되었습니다.', 'info');
-    closeModal(true); await refreshDataOnly(); refreshClassroomStatusBoardAfterExamChange(classId); openExamDetail(classId, examTitle, examDate, archiveFile);
+    const ok = studentId
+        ? await wsExamRequestExcludeStudent({ classId, studentId, examTitle, examDate, archiveFile, assignmentId })
+        : await wsExamRequestDeleteSession(sessionId);
+    if (!ok) return;
+    await refreshDataOnly(); refreshClassroomStatusBoardAfterExamChange(classId); openExamDetail(classId, examTitle, examDate, archiveFile);
 }
 
 function refreshClassroomStatusBoardAfterExamChange(classId) {
@@ -636,18 +339,9 @@ function refreshClassroomStatusBoardAfterExamChange(classId) {
 }
 
 async function deleteExamByClass(classId, examTitle, examDate, archiveFile = '', assignmentId = '') {
-    if (!confirm('이 시험의 제출 기록 전체를 삭제할까요?\n오답 기록도 모두 삭제됩니다.')) return;
-    try {
-        const archiveQuery = archiveFile ? `&archive=${encodeURIComponent(archiveFile)}` : '';
-        const assignmentQuery = assignmentId ? `&assignment=${encodeURIComponent(assignmentId)}` : '';
-        const url = `${CONFIG.API_BASE}/exam-sessions/by-exam?class=${encodeURIComponent(classId)}&exam=${encodeURIComponent(examTitle)}&date=${encodeURIComponent(examDate)}${archiveQuery}${assignmentQuery}`;
-        const r = await fetch(url, { method: 'DELETE', headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
-        if (handlePlannerDirectFetchAuthStatus(r)) return;
-        const data = await r.json();
-        if (!r.ok || !data.success) { toast('시험 전체삭제 실패', 'warn'); return; }
-        toast('시험 전체 기록이 삭제되었습니다.', 'info');
-        closeModal(true); await refreshDataOnly(); refreshClassroomStatusBoardAfterExamChange(classId); openExamGradeView(classId);
-    } catch (e) { console.warn(e); toast('시험 전체삭제 실패', 'warn'); }
+    const ok = await wsExamRequestDeleteExam({ classId, examTitle, examDate, archiveFile, assignmentId });
+    if (!ok) return;
+    await refreshDataOnly(); refreshClassroomStatusBoardAfterExamChange(classId); openExamGradeView(classId);
 }
 
 // ── 선생님용 반 플래너 확인 ─────────────────────────────────────────────
