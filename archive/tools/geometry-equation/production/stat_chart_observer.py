@@ -1332,8 +1332,109 @@ def dot_plan(chart):
     return points, br
 
 
+DOT_PALETTE_LINE = {'BLUE': '#1f5fa8', 'WARM': '#b85c00', 'GREEN': '#2e7d32', 'ROSE': '#b8325f', 'VIOLET': '#6b46b3'}      # this observer's own copy of the C1 line colours
+DOT_PLAIN_FILL = '#111'
+DOT_MARK_LABEL = re.compile(r'^[0-9A-Za-z가-힣+=.()/ -]{1,14}$')
+
+
+def dot_marks_plan(chart, points):
+    """G16: the marks of a dot plot from the plan alone: mean/median lines (value checked against the data), recoloured columns, deviations. Returns a dict (empty without marks)."""
+    marks = chart.get('marks')
+    if marks is None: return {}
+    if not isinstance(marks, dict) or not marks or set(marks) - {'meanLine', 'medianLine', 'highlight', 'deviations'}: fail('STAT_DOT_MARKS_INVALID')
+    values = [v for v, c in points for _ in range(c)]
+    total = len(values)
+    mean = Fraction(sum(values), total)
+    srt = sorted(values)
+    med = Fraction(srt[(total - 1) // 2]) if total % 2 else Fraction(srt[total // 2 - 1] + srt[total // 2], 2)
+    out = {}
+    for key, truth, code, word in (('meanLine', mean, 'STAT_DOT_MEAN_MISMATCH', '평균'), ('medianLine', med, 'STAT_DOT_MEDIAN_MISMATCH', '중앙값')):
+        e = marks.get(key)
+        if e is None: continue
+        if not isinstance(e, dict) or set(e) - {'value', 'label'} or 'value' not in e: fail('STAT_DOT_MARKS_INVALID')
+        value = frac(e['value'], 'STAT_DOT_MARKS_INVALID')
+        if value != truth: fail(code)
+        label = e.get('label')
+        if label is not None and (not isinstance(label, str) or not DOT_MARK_LABEL.match(label) or label.strip() != label): fail('STAT_DOT_MARKS_INVALID')
+        dec = decimal_of(value)
+        out[key] = {'value': value, 'label': label if label is not None else '%s %s' % (word, dec if dec is not None else '%d/%d' % (value.numerator, value.denominator))}
+    if 'highlight' in marks:
+        raw = marks['highlight']
+        if not isinstance(raw, list) or not 1 <= len(raw) <= 6: fail('STAT_DOT_HIGHLIGHT_INVALID')
+        hl, seen = {}, set()
+        counts = dict(points)
+        for h in raw:
+            if not isinstance(h, dict) or set(h) - {'value', 'count', 'color'} or h.get('color') not in DOT_PALETTE_LINE: fail('STAT_DOT_HIGHLIGHT_INVALID')
+            v = h.get('value')
+            if isinstance(v, bool) or not isinstance(v, int): fail('STAT_DOT_HIGHLIGHT_INVALID')
+            if v not in counts: fail('STAT_DOT_HIGHLIGHT_UNKNOWN_VALUE')
+            if v in seen: fail('STAT_DOT_HIGHLIGHT_INVALID')
+            seen.add(v)
+            k = h.get('count', counts[v])
+            if isinstance(k, bool) or not isinstance(k, int) or not 1 <= k <= counts[v]: fail('STAT_DOT_HIGHLIGHT_INVALID')
+            hl[v] = (k, DOT_PALETTE_LINE[h['color']])
+        out['highlight'] = hl
+    if 'deviations' in marks:
+        if marks['deviations'] is not True: fail('STAT_DOT_MARKS_INVALID')
+        out['deviations'] = {v: Fraction(v) - mean for v, _ in points}
+    return out
+
+
+def dot_dev_tex(d):
+    """The TeX a deviation is written in: signed, a finite decimal or a stacked fraction."""
+    return ('+' if d > 0 else '') + tex_num(d)
+
+
+def audit_dot_marks(chart, doc, points, marks, x_any, axis_y, dots, r_want):
+    top = min(num(e, 'cy') for e in dots) - r_want
+    obstacles = drawn_obstacles(doc)
+    for key, elem_id, expected in (('meanLine', 'mean-line', marks.get('meanLine')), ('medianLine', 'median-line', marks.get('medianLine'))):
+        e = doc.by_id.get(elem_id)
+        label = [l for l in doc.label_role('mark-label') if l.get('data-owner') == elem_id]
+        if expected is None:
+            if e is not None or label: doc.err('SC_DOT_MARK_UNEXPECTED:' + elem_id)
+            continue
+        if e is None or e.tag != NS + 'line': doc.err('SC_DOT_MARK_MISSING:' + elem_id); continue
+        x = x_any(expected['value'])
+        if x is None: fail('STAT_DOT_MARK_OFF_AXIS')
+        if abs(num(e, 'x1') - x) > TOL or abs(num(e, 'x2') - x) > TOL or abs(num(e, 'y1') - axis_y) > TOL: doc.err('SC_DOT_MARK_PLACE:' + elem_id)
+        if not num(e, 'y2') < top - 2: doc.err('SC_DOT_MARK_SHORT:' + elem_id)
+        try:
+            if frac(e.get('data-value'), 'SC_PLAN_INVALID') != expected['value']: doc.err('SC_DOT_MARK_VALUE:' + elem_id)
+        except ValueError: doc.err('SC_DOT_MARK_VALUE:' + elem_id)
+        if len(label) != 1 or label[0].get('data-text') != expected['label']: doc.err('SC_DOT_MARK_LABEL:' + elem_id); continue
+        bx, by, bw, bh = box_of(label[0])
+        if not bx - 3 <= x <= bx + bw + 3 or not by + bh <= num(e, 'y2') + 0.5: doc.err('SC_DOT_MARK_LABEL_PLACE:' + elem_id)
+    # recoloured columns: the lowest `count` dots of a value in the colour, every other dot plain
+    hl = marks.get('highlight', {})
+    for e in dots:
+        v, j = int(e.get('data-value')), int(e.get('data-index'))
+        k, colour = hl.get(v, (0, None))
+        want = colour if j <= k else DOT_PLAIN_FILL
+        if (e.get('fill') or '').lower() != want: doc.err('SC_DOT_COLOR:%d:%d' % (v, j))
+    # deviations: one label per column over its stack, value read back from the TeX
+    devs = marks.get('deviations')
+    labels = doc.label_role('deviation')
+    if devs is None:
+        if labels: doc.err('SC_DOT_DEVIATION_UNEXPECTED')
+        return
+    by_col = {l.get('data-column'): l for l in labels}
+    if len(by_col) != len(labels) or set(by_col) != {str(v) for v, _ in points}: doc.err('SC_DOT_DEVIATION_SET')
+    for v, count in points:
+        l = by_col.get(str(v))
+        if l is None: continue
+        d = devs[v]
+        if l.get('data-tex') != '\\displaystyle ' + dot_dev_tex(d) or frac(l.get('data-value'), 'SC_PLAN_INVALID') != d: doc.err('SC_DOT_DEVIATION_VALUE:%d' % v)
+        if l.get('data-owner') != 'dot-%d-%d' % (v, count): doc.err('SC_DOT_DEVIATION_OWNER:%d' % v)
+        col = [e for e in dots if int(e.get('data-value')) == v]
+        cx, cy = centre(l)
+        if abs(cx - num(col[0], 'cx')) > 40 or cy > min(num(e, 'cy') for e in col) or min(num(e, 'cy') for e in col) - cy > 70: doc.err('SC_DOT_DEVIATION_PLACE:%d' % v)
+        if clearance(box_of(l), obstacles) < 1.0: doc.err('SC_DOT_DEVIATION_CLEARANCE:%d' % v)
+
+
 def audit_dot(chart, doc):
     points, br = dot_plan(chart)
+    marks = dot_marks_plan(chart, points)
     x_axis = doc.by_id.get('x-axis')
     if x_axis is None: fail('SC_AXIS_MISSING')
     axis_y = num(x_axis, 'y1')
@@ -1418,6 +1519,10 @@ def audit_dot(chart, doc):
             if abs(num(e, 'cy') - (axis_y - DOT_FIRST - r_want - j * pitch)) > 0.05: doc.err('SC_DOT_STACK:%d' % value)
             if e.get('data-index') != str(j + 1): doc.err('SC_DOT_INDEX:%d' % value)
     if len(dots) != sum(c for _, c in points): doc.err('SC_DOT_TOTAL')
+    def x_any(value):
+        k = next((i for i, (_, _, group) in enumerate(scale) if group[0][0] <= value <= group[-1][0]), None)
+        return None if k is None else scale[k][1] + float(value - scale[k][0]) * unit
+    if dots: audit_dot_marks(chart, doc, points, marks, x_any, axis_y, dots, r_want)
     doc.check_title('x-title', chart.get('xTitle', ''), 'x')
     return {'dots': sum(c for _, c in points), 'values': {str(v): c for v, c in points}, 'step': step}
 

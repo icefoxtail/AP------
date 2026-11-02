@@ -5,6 +5,7 @@ import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
+import {PALETTE,PALETTE_NAMES,isPaletteName} from './palette.mjs';
 
 // A standalone statistics / probability figure (stat-chart-figure-v1): histogram, frequency polygon (also over a histogram), relative-frequency graph,
 // stem-and-leaf plot, box plot, scatter plot, the 6x6 table of two dice and a probability tree. The author gives the data exactly (class boundaries and
@@ -536,7 +537,7 @@ const dotSegments=(points,br,step)=>{
 const dotGapPx=segments=>segments.length>1?14.5*(String(segments[0].hi).length+String(segments[1].lo).length)/2+8:0;
 const dotUnitPx=segments=>(DOT_MAPR-DOT_MAPL-dotGapPx(segments))/segments.reduce((t,g)=>t+g.hi-g.lo,0);
 function solveDot(c){
-  onlyKeys(c,['kind','values','counts','step','xTitle','axisBreak'],'STAT_CHART_PLAN_INVALID');
+  onlyKeys(c,['kind','values','counts','step','xTitle','axisBreak','marks'],'STAT_CHART_PLAN_INVALID');
   if((c.values===undefined)===(c.counts===undefined))bad('STAT_DOT_PLOT_INVALID');
   const whole=v=>{const n=typeof v==='string'&&/^\d{1,4}$/.test(v)?Number(v):v;return intIn(n,0,9999,'STAT_DOT_VALUE_INVALID');};
   const tally=new Map();
@@ -573,8 +574,53 @@ function solveDot(c){
   if(c.step!==undefined){step=intIn(c.step,1,500,'STAT_DOT_STEP_INVALID');if(!fits(step))bad('STAT_DOT_PLOT_TOO_DENSE');}
   else{step=DOT_STEPS.find(fits)??bad('STAT_DOT_PLOT_TOO_DENSE');}
   const segments=dotSegments(points,br,step);
+  const marks=c.marks===undefined?null:solveDotMarks(c.marks,points,total,segments);
   return {schemaVersion:MODEL_VERSION,kind:'DOT_PLOT',step,xTitle:titleText(c.xTitle,'STAT_TITLE_INVALID',''),total,maxStack:Math.max(...points.map(p=>p.count)),
-    points:points.map(p=>({value:String(p.v),count:p.count})),segments,...(br?{axisBreak:br}:{})};
+    points:points.map(p=>({value:String(p.v),count:p.count})),segments,...(br?{axisBreak:br}:{}),...(marks?{marks}:{})};
+}
+// Marks on a dot plot (G16, opt-in; a plan without marks is exactly the plan it always was): a dashed vertical line at the mean and/or the median (the value is checked against the data,
+// so a figure cannot show a mean the data do not have), single columns recoloured in a C1 palette colour (the lowest `count` dots of a value, default all of them) and the deviation (value - mean)
+// written over every column. A line must fall on the drawn part of the number line (not in a break).
+const DOT_MARK_LABEL=/^[0-9A-Za-z가-힣+=.()\/ -]{1,14}$/;
+function solveDotMarks(raw,points,total,segments){
+  onlyKeys(raw,['meanLine','medianLine','highlight','deviations'],'STAT_DOT_MARKS_INVALID');
+  if(Object.keys(raw).length<1)bad('STAT_DOT_MARKS_INVALID');
+  const sum=points.reduce((t,p)=>qadd(t,Q(BigInt(p.v*p.count))),ZERO),mean=qdiv(sum,Q(BigInt(total)));
+  const expanded=points.flatMap(p=>Array(p.count).fill(Q(BigInt(p.v)))),med=median(expanded);
+  const onAxis=v=>segments.some(g=>qcmp(v,Q(BigInt(g.lo)))>=0&&qcmp(v,Q(BigInt(g.hi)))<=0);
+  const line=(key,truth,mismatch,word)=>{
+    const e=raw[key];
+    if(e===undefined)return undefined;
+    onlyKeys(e,['value','label'],'STAT_DOT_MARKS_INVALID');
+    if(e.value===undefined)bad('STAT_DOT_MARKS_INVALID');
+    const value=parseQ(e.value,'STAT_DOT_MARKS_INVALID');
+    if(qcmp(value,truth)!==0)bad(mismatch);
+    if(!onAxis(value))bad('STAT_DOT_MARK_OFF_AXIS');
+    if(e.label!==undefined&&(typeof e.label!=='string'||!DOT_MARK_LABEL.test(e.label)||e.label.trim()!==e.label))bad('STAT_DOT_MARKS_INVALID');
+    return {value:qstr(value),label:e.label??`${word} ${qstr(value)}`};
+  };
+  const out={};
+  const meanLine=line('meanLine',mean,'STAT_DOT_MEAN_MISMATCH','평균'),medianLine=line('medianLine',med,'STAT_DOT_MEDIAN_MISMATCH','중앙값');
+  if(meanLine)out.meanLine=meanLine;
+  if(medianLine)out.medianLine=medianLine;
+  if(raw.highlight!==undefined){
+    if(!Array.isArray(raw.highlight)||raw.highlight.length<1||raw.highlight.length>6)bad('STAT_DOT_HIGHLIGHT_INVALID');
+    const seen=new Set();
+    out.highlight=raw.highlight.map(h=>{
+      onlyKeys(h,['value','count','color'],'STAT_DOT_HIGHLIGHT_INVALID');
+      if(!isPaletteName(h.color))bad('STAT_DOT_HIGHLIGHT_INVALID');
+      const v=Number.isInteger(h.value)?h.value:bad('STAT_DOT_HIGHLIGHT_INVALID'),point=points.find(p=>p.v===v);
+      if(!point)bad('STAT_DOT_HIGHLIGHT_UNKNOWN_VALUE');
+      if(seen.has(v))bad('STAT_DOT_HIGHLIGHT_INVALID');seen.add(v);
+      const count=h.count===undefined?point.count:intIn(h.count,1,point.count,'STAT_DOT_HIGHLIGHT_INVALID');
+      return {value:String(v),count,color:h.color};
+    }).sort((a,b)=>Number(a.value)-Number(b.value));
+  }
+  if(raw.deviations!==undefined){
+    if(raw.deviations!==true)bad('STAT_DOT_MARKS_INVALID');
+    out.deviations=points.map(p=>{const d=qsub(Q(BigInt(p.v)),mean);return {value:String(p.v),deviation:qstr(d),tex:(qcmp(d,ZERO)>0?'+':'')+qtex(d)};});
+  }
+  return out;
 }
 // Normal curves (E36): the bell curve of N(mean, sd^2) drawn from the exact density, 1 to 3 curves on one x axis, with marked positions (ticks), shaded areas under a curve between two
 // of them (a tail when one end is null), the area labels the problem gives (a table value, a sum of table values, or a letter for equal areas) and pairs of positions that sit
@@ -888,7 +934,9 @@ const STYLE={
   region1:'fill="#111" fill-opacity="0.12" stroke="none"',region2:'fill="#111" fill-opacity="0.26" stroke="none"',refline:'stroke="#333" stroke-width="1.8" fill="none"',
   ncurve0:'stroke="#111" stroke-width="2" fill="none"',ncurve1:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="8 4"',ncurve2:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="2 4"',
   shade1:'fill="#111" fill-opacity="0.16" stroke="none"',shade2:'fill="#111" fill-opacity="0.34" stroke="none"',guide:'stroke="#444" stroke-width="1.2" fill="none" stroke-dasharray="4 3"',
-  leader:'stroke="#333" stroke-width="1" fill="none"'
+  leader:'stroke="#333" stroke-width="1" fill="none"',
+  meanLine:'stroke="#333" stroke-width="1.6" fill="none" stroke-dasharray="6 4"',medianLine:'stroke="#333" stroke-width="1.6" fill="none" stroke-dasharray="2 3"',
+  ...Object.fromEntries(PALETTE_NAMES.map(name=>['dot'+name,`fill="${PALETTE[name].line}" stroke="none"`]))
 };
 const L=(id,role,cls,x1,y1,x2,y2,data={},layer=30)=>({t:'line',id,role,cls,x1:r6(x1),y1:r6(y1),x2:r6(x2),y2:r6(y2),data,layer});
 const rect=(id,role,cls,x,y,width,height,data={},layer=40)=>({t:'rect',id,role,cls,x:r6(x),y:r6(y),width:r6(width),height:r6(height),data,layer});
@@ -1211,9 +1259,13 @@ const DOT_FIRST=7,DOT_GAP=1.5,DOT_MAX_R=5.5,DOT_MINOR=3;
 function dotSpec(m,ctx){
   const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,segs=m.segments,gap=dotGapPx(segs);
   const unit=dotUnitPx(segs),r=r6(Math.min(DOT_MAX_R,.45*unit)),pitch=2*r+DOT_GAP;
-  const stackH=DOT_FIRST+m.maxStack*pitch+10,BASE=r6(SAFE+20+stackH),H=Math.ceil(BASE+TICK+4+LABEL_BELOW+SAFE);
-  const right=m.xTitle?TITLE_X+textWidth(m.xTitle,fontPx):0,extraWidth=Math.max(0,Math.ceil(right+SAFE)-W);
+  const stackH=DOT_FIRST+m.maxStack*pitch+10;
+  const mk=m.marks??{},lineMarks=[['mean-line','meanLine','meanLine'],['median-line','medianLine','medianLine']].filter(([,key])=>mk[key]);
+  // room for what the marks add above the tallest stack: a row of deviations and a row for the names of the lines
+  const devH=mk.deviations?Math.ceil(1.45*fontPx)+4:0,nameRow=lineMarks.length?Math.ceil(1.45*fontPx)+6:0;
   const px=v=>{const k=segs.findIndex(g=>v>=g.lo&&v<=g.hi);return r6(DOT_MAPL+(k?(segs[0].hi-segs[0].lo)*unit+gap:0)+(v-segs[k].lo)*unit);};
+  const BASE=r6(SAFE+20+stackH+devH+nameRow),H=Math.ceil(BASE+TICK+4+LABEL_BELOW+SAFE);
+  const right=m.xTitle?TITLE_X+textWidth(m.xTitle,fontPx):0,extraWidth=Math.max(0,Math.ceil(right+SAFE)-W);
   const prims=[],labels=[];
   arrows(prims,{xStartPx:SAFE+14,yAxisPx:null,base:BASE});
   if(segs.length>1)breakMark(prims,'x',r6((px(segs[0].hi)+px(segs[1].lo))/2),BASE);
@@ -1224,7 +1276,26 @@ function dotSpec(m,ctx){
       labels.push(math(`x-tick-${v}-label`,'x-tick',`x-tick-${v}`,DISPLAY+String(v),String(v),'center','top',x,BASE+TICK+4,{value:String(v)}));
     }else prims.push(L(`x-minor-${v}`,'x-minor','tick',x,BASE,x,BASE+DOT_MINOR,{axis:'x',value:String(v)}));
   }
-  for(const p of m.points)for(let j=0;j<p.count;j++)prims.push({t:'circle',id:`dot-${p.value}-${j+1}`,role:'dot',cls:'dot',cx:px(Number(p.value)),cy:r6(BASE-DOT_FIRST-r-j*pitch),r,data:{value:p.value,index:j+1},layer:70});
+  const hi=new Map((mk.highlight??[]).map(h=>[h.value,h]));
+  for(const p of m.points)for(let j=0;j<p.count;j++){const h=hi.get(p.value);prims.push({t:'circle',id:`dot-${p.value}-${j+1}`,role:'dot',cls:h&&j<h.count?'dot'+h.color:'dot',cx:px(Number(p.value)),cy:r6(BASE-DOT_FIRST-r-j*pitch),r,data:{value:p.value,index:j+1},layer:70});}
+  // the dashed lines at the mean / median reach from the number line to a row above the stacks (and the deviations); the name stands over the line's top
+  const lineTop=BASE-stackH-devH;
+  // one line: its name centred over it; two lines whose names would run into each other: the left one's name ends at its line and the right one's starts at its line, so no line crosses a name
+  const lx=lineMarks.map(([,key])=>px(N(mk[key].value)));
+  const close=lineMarks.length===2&&Math.abs(lx[0]-lx[1])<(textWidth(mk[lineMarks[0][1]].label,fontPx)+textWidth(mk[lineMarks[1][1]].label,fontPx))/2+8;
+  const leftFirst=lx[0]<=lx[1],mid=lineMarks.length===2?(lx[0]+lx[1])/2:0;
+  lineMarks.forEach(([id,key,cls],i)=>{
+    const e=mk[key],x=lx[i],top=r6(lineTop);
+    prims.push(L(id,id,cls,x,BASE,x,top,{value:e.value},35));
+    const isLeft=leftFirst?i===0:i===1;
+    labels.push(close?(isLeft?textLabel(id+'-label','mark-label',id,e.label,'end','bottom',Math.min(x+2,mid-1),top-2,{value:e.value}):textLabel(id+'-label','mark-label',id,e.label,'start','bottom',Math.max(x-2,mid+1),top-2,{value:e.value}))
+      :textLabel(id+'-label','mark-label',id,e.label,'center','bottom',x,top-2,{value:e.value}));
+  });
+  // deviations (value - mean) over their columns; a label that would touch a dot or a line steps aside (resolveValueLabels)
+  for(const d of mk.deviations??[]){
+    const p=m.points.find(q=>q.value===d.value),x=px(Number(d.value)),topY=r6(BASE-DOT_FIRST-2*r-(p.count-1)*pitch);
+    labels.push({...math(`dev-${d.value}`,'deviation',`dot-${d.value}-${p.count}`,DISPLAY+d.tex,d.deviation,'center','bottom',x,topY-3,{value:d.deviation,column:d.value}),place:{x,y:topY,gap:3}});
+  }
   if(m.xTitle)labels.push(textLabel('x-title','axis-title','x-axis',m.xTitle,'start','middle',TITLE_X,BASE));
   return {size:{width:W+extraWidth,height:H},prims,labels};
 }
@@ -1366,7 +1437,7 @@ function resolveValueLabels(spec,placed){
     // the default place stays when it is free (PREFER is 0 for a chart that uses none of the newer marks, so its old figure is unchanged); otherwise the first candidate with room, else the roomiest one
     let pick=scores[0]>PREFER?0:scores.findIndex(s=>s>=2.5);
     if(pick<0){const best=Math.max(...scores);pick=best>0.3?scores.indexOf(best):-1;}
-    if(pick<0)throw new Stop('STAT_VALUE_LABEL_NO_ROOM',{labelId:item.label.id});
+    if(pick<0)throw new Stop(item.label.role==='deviation'?'STAT_DOT_DEVIATION_NO_ROOM':'STAT_VALUE_LABEL_NO_ROOM',{labelId:item.label.id});
     item.box=boxes[pick];
   }
 }
