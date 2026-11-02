@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "archive-basic-scope-rebind-review-v1",
+  "requestId": "basic-rebind-maesan-25-1mid-algebra-q11-20261102",
+  "examUid": "25_매산고_1학기_중간_고2_대수",
+  "sourceArchiveFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js",
+  "reviewedAt": "2026-11-02",
+  "decision": "REBIND_FINGERPRINTS_ONLY_METADATA_VALUES_UNCHANGED",
+  "reason": "q11 was approved (basic scope: standard unit H15-M1-06 / sub-unit H15-M1-06-TRIGONOMETRIC_GRAPH) against the bytes of Git blob 67fb8df5d341b19bf27cf3b5b70136290220bbdb. PR #1121 attached the student-only figure q11.svg and removed the leading '[그래프필요]' placeholder line. The catalog therefore saw a fingerprint mismatch (sourceStatus HOLD, no canonical parent) although the approved unit/sub-unit still describe the question.",
+  "approvedSourceBlobSha1": "67fb8df5d341b19bf27cf3b5b70136290220bbdb",
+  "currentSourceBlobSha1": "ccaa72cb9ce32f577a14f3a7ec5a3217f8a91091",
+  "metadataValues": {
+    "standardUnitKey": "H15-M1-06",
+    "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+    "metadataStatus": "approved_partial_with_explicit_holds",
+    "unchanged": true
+  },
+  "basicParentLink": "The canonical crosswalk maps sub-unit H15-M1-06-TRIGONOMETRIC_GRAPH (grade 고2) to exactly one parent: 2015 / 수학I / 삼각함수 / 삼각함수의 그래프. q11's reviewed parent link was dropped by Registration Sync when the body fingerprint changed (#1121) and is restored for the current bytes.",
+  "questionReview": {
+    "ordinal": 11,
+    "stemNow": "함수 $y=a\\sin(bx+c)+d$의 그래프 중 일부가 아래 그림과 같을 때, 상수 $a, b, c, d$에 대하여 $\\frac{abcd}{2\\pi}$의 값은?\n(단, $a>0, b>0, \\pi<c<2\\pi$) (5.1점)",
+    "choices": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "9"
+    ],
+    "answer": "②",
+    "answerCheck": "Max 3, min -1 give a = 2 and d = 1; adjacent maxima at x = pi/2 and 3pi/2 give period pi, so b = 2; sin(pi + c) = 1 with pi < c < 2pi gives c = 3pi/2; abcd/(2pi) = 2*2*(3pi/2)*1/(2pi) = 3, which is choice 2 (value 3). The recorded answer and the written solution are correct.",
+    "changedSinceApproval": [
+      "image (new student figure q11.svg)",
+      "imageAlt/imageSize",
+      "content: leading placeholder line '[그래프필요]' removed"
+    ],
+    "unchangedSinceApproval": [
+      "answer",
+      "solution text",
+      "choices",
+      "all classification fields",
+      "stem text apart from the placeholder line"
+    ],
+    "figureCheck": "Rendered archive/assets/images/25_매산고_1학기_중간_고2_대수/q11.svg and q11-solution.svg in Chrome. The question figure shows the sine curve with the dashed max line labeled 3, min line labeled -1, the maxima marked at x = pi/2 and 3pi/2 and a tick at pi, with axes and origin - every value a student needs (max, min, positions of two adjacent maxima) is present and readable. The solution figure adds the center line y = 1, the function y=2sin(2x+3pi/2)+1 and T = pi."
+  },
+  "questions": [
+    {
+      "questionUid": "qid_v1_2c58d64eed17e0b59073657cea8c7839d7e8c1b98c9a39c595200127c2110b0b",
+      "sourceOrdinal": 11,
+      "contentEdits": [],
+      "contentAfterSha256": "373c092273aafe76fbb82cd4db29fda595e4deda22fd8e9de68b0f2eb037e453"
+    }
+  ],
+  "figureAssets": [
+    "archive/assets/images/25_매산고_1학기_중간_고2_대수/q11.svg",
+    "archive/assets/images/25_매산고_1학기_중간_고2_대수/q11-solution.svg"
+  ]
+}

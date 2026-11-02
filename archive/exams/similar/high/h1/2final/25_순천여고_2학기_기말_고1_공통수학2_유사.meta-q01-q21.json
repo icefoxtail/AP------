@@ -3,7 +3,7 @@
   "requestId": "25_순천여고_2학기_기말_고1_공통수학2_유사-candidate-v1",
   "examUid": "25_순천여고_2학기_기말_고1_공통수학2_유사",
   "sourceArchiveFile": "archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사.js",
-  "expectedSourceBlobSha1": "4e67aea5a4f6844a9fef3a898903b9e8e6b0d097",
+  "expectedSourceBlobSha1": "329f90f38277e9e742b4937951088bcad98bb9d4",
   "expectedQuestionCount": 21,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -19,7 +19,89 @@
     ]
   },
   "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
-  "registryChanges": [],
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "problemTypeKey": "PT_CONTRAPOSITIVE_PROOF"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_CONTRAPOSITIVE_PROOF",
+        "curriculum": "2022",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_5be43ce9a4a3c9328f4bb2ea57c6a5fe9bb1254d66a91d8918a41ecdfd0a4ab9"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "SETS_PROPOSITIONS"
+      }
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "curriculum": "2022",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitLabelKo": "함수의 뜻과 그래프",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_f3c04c4d851ca40d3bc333bb21b253946ff5027c62a2b3e357ce78fe22025021"
+        ],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      }
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "curriculum": "2022",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitLabelKo": "함수의 뜻과 그래프",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_cfbe4b620db71ab4aa208afac57e1cee927bf2e52d48468279689ef9d16a86de"
+        ],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      }
+    }
+  ],
   "items": [
     {
       "questionUid": 1,
@@ -313,11 +395,8 @@
         "rpmPrimaryL4": "대우를 이용한 증명",
         "rpmPrimaryRecordId": "H1-RPM-245",
         "rpmGeneratedL4Key": null,
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "BINDING_PENDING",
-        "problemTypeKeyNullReason": "Resolver PROJECTION_BINDING_PENDING: crosswalk H1-RPM-245(FAMILY_BINDING_GAP)에 현재 교육과정(2022 H22-C2-06) ACTIVE 바인딩이 없어 PT/TPL을 확정하지 않는다(추정 금지, 바인딩 수리 대상).",
-        "templateKeyNullReason": "Resolver PROJECTION_BINDING_PENDING: crosswalk H1-RPM-245(FAMILY_BINDING_GAP)에 현재 교육과정(2022 H22-C2-06) ACTIVE 바인딩이 없어 PT/TPL을 확정하지 않는다(추정 금지, 바인딩 수리 대상).",
+        "problemTypeKey": "PT_CONTRAPOSITIVE_PROOF",
+        "templateKey": "TPL_CONTRAPOSITIVE_DIVISIBILITY_PROOF",
         "crossConceptKeys": [
           "CC_CONTRAPOSITIVE_EQUIVALENCE",
           "CC_NUMBER_DIVISOR_MULTIPLE"
@@ -411,6 +490,14 @@
             "after": "명제"
           }
         ]
+      },
+      "projectionResolution": {
+        "resolver": "archive/tools/meta-foundation/rpm-active-resolver.mjs (stage-meta-bridge CREATE)",
+        "crosswalkRecordId": "H1-RPM-245",
+        "resolvedBy": "RPM_TO_ACTIVE_CROSSWALK",
+        "problemTypeKey": "PT_CONTRAPOSITIVE_PROOF",
+        "templateKey": "TPL_CONTRAPOSITIVE_DIVISIBILITY_PROOF",
+        "status": "PROJECTION_BINDING_PENDING -> add-only exact ACTIVE binding in this request registryChanges"
       }
     },
     {
@@ -1597,11 +1684,8 @@
         "rpmPrimaryL4": "평행이동",
         "rpmPrimaryRecordId": "H1-RPM-260",
         "rpmGeneratedL4Key": null,
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "BINDING_PENDING",
-        "problemTypeKeyNullReason": "Resolver PROJECTION_BINDING_PENDING: crosswalk H1-RPM-260(DIRECT_BINDING_GAP)에 현재 교육과정(2022 H22-C2-08) ACTIVE 바인딩이 없어 PT/TPL을 확정하지 않는다(추정 금지, 바인딩 수리 대상).",
-        "templateKeyNullReason": "Resolver PROJECTION_BINDING_PENDING: crosswalk H1-RPM-260(DIRECT_BINDING_GAP)에 현재 교육과정(2022 H22-C2-08) ACTIVE 바인딩이 없어 PT/TPL을 확정하지 않는다(추정 금지, 바인딩 수리 대상).",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
         "crossConceptKeys": [
           "CC_RATIONAL_FUNCTION_ASYMPTOTE",
           "CC_RATIONAL_EXPRESSION_TRANSFORM"
@@ -1692,6 +1776,14 @@
             "after": "유리함수"
           }
         ]
+      },
+      "projectionResolution": {
+        "resolver": "archive/tools/meta-foundation/rpm-active-resolver.mjs (stage-meta-bridge CREATE)",
+        "crosswalkRecordId": "H1-RPM-260",
+        "resolvedBy": "RPM_TO_ACTIVE_CROSSWALK",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "status": "PROJECTION_BINDING_PENDING -> add-only exact ACTIVE binding in this request registryChanges"
       }
     },
     {
@@ -1854,11 +1946,8 @@
         "rpmPrimaryL4": "유리함수와 그래프의 교점",
         "rpmPrimaryRecordId": "H1-RPM-265",
         "rpmGeneratedL4Key": null,
-        "problemTypeKey": null,
-        "templateKey": null,
-        "projectionStatus": "BINDING_PENDING",
-        "problemTypeKeyNullReason": "Resolver PROJECTION_BINDING_PENDING: crosswalk H1-RPM-265(DIRECT_BINDING_GAP)에 현재 교육과정(2022 H22-C2-08) ACTIVE 바인딩이 없어 PT/TPL을 확정하지 않는다(추정 금지, 바인딩 수리 대상).",
-        "templateKeyNullReason": "Resolver PROJECTION_BINDING_PENDING: crosswalk H1-RPM-265(DIRECT_BINDING_GAP)에 현재 교육과정(2022 H22-C2-08) ACTIVE 바인딩이 없어 PT/TPL을 확정하지 않는다(추정 금지, 바인딩 수리 대상).",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
         "crossConceptKeys": [
           "CC_TRIANGLE_AREA",
           "CC_VIETA_FORMULAS_QUADRATIC"
@@ -1950,6 +2039,14 @@
             "after": "유리함수"
           }
         ]
+      },
+      "projectionResolution": {
+        "resolver": "archive/tools/meta-foundation/rpm-active-resolver.mjs (stage-meta-bridge CREATE)",
+        "crosswalkRecordId": "H1-RPM-265",
+        "resolvedBy": "RPM_TO_ACTIVE_CROSSWALK",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "status": "PROJECTION_BINDING_PENDING -> add-only exact ACTIVE binding in this request registryChanges"
       }
     },
     {
