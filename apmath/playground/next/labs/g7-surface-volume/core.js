@@ -178,12 +178,12 @@
       const sPx = sw * b.k;
       if (t.label) {
         const lw = G.textW(t.label, eff) + 6;
-        if (lw <= sPx && t.sh * b.k >= eff * 1.4) b.text({ x: x0 + sw / 2, y: y0 + t.sh / 2 }, t.label, { color: t.tcolor || 'ink', size, weight: 800, align: 'center', baseline: 'middle' });
+        if (lw <= sPx && t.sh * b.k >= eff * 1.4 && t.shape !== 'hole') b.text({ x: x0 + sw / 2, y: y0 + t.sh / 2 }, t.label, { color: t.tcolor || 'ink', size, weight: 800, align: 'center', baseline: 'middle' });
         else b.text({ x: x0 + sw / 2, y: y1 }, t.label, { dy: eff * 0.95, color: t.tcolor || 'ink', size, weight: 800, align: 'center', baseline: 'middle' });
       }
       if (t.cap) {
         const lw = G.textW(t.label || '', eff) + 6;
-        const below = t.label && !(lw <= sPx && t.sh * b.k >= eff * 1.4);
+        const below = t.label && !(lw <= sPx && t.sh * b.k >= eff * 1.4 && t.shape !== 'hole');
         b.text({ x: x0 + sw / 2, y: y1 }, t.cap, { dy: eff * (below ? 2.15 : 0.95), color: t.ccolor || 'muted', size: D.fs(t.csize || 13), weight: 750, align: 'center', baseline: 'middle' });
       }
       if (n > 1) b.text({ x: x0 + sw, y: y0 }, '×' + n, { dx: 4, dy: -4 + -n * 1.5, color: 'amber', size: D.fs(14), weight: 800, align: 'right', baseline: 'bottom' });
