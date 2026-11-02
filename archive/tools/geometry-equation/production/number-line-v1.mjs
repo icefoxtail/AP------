@@ -37,7 +37,12 @@ const asReal=r=>({p:r,q:ZERO,s:1n});
 const cmpR=(a,b)=>(!isReal(a)&&!isReal(b))?sgn(sub(a,b)):cmp(toReal(a),toReal(b));
 const floorR=r=>{if(isReal(r))return floorOf(r);let q=r[0]/r[1];if(r[0]%r[1]!==0n&&r[0]<0n)q-=1n;return q;};
 /** An end value text: an exact rational ("-2", "1/3") or p+q*sqrt(r) in the grammar of integers, a/b, sqrt(...), + - * / and parentheses (for example "sqrt(10)", "-sqrt(10)", "(1+sqrt(2))/2"). */
-function parseValue(text,code){
+// G19: a point or an end may be written as a decimal with up to 2 places ("40.2", "-0.25"): its exact value is the fraction (201/5) and the label shows the decimal the problem writes (a confidence interval 40.2 to 59.8).
+const DECIMAL_VALUE=/^-?\d{1,6}\.\d{1,2}$/;
+const isDecimalText=text=>typeof text==='string'&&DECIMAL_VALUE.test(text);
+const decimalRat=text=>{const [whole,frac]=text.replace('-','').split('.');return rat((text[0]==='-'?-1n:1n)*BigInt(whole+frac),10n**BigInt(frac.length));};
+function parseValue(text,code,allowDecimal=false){
+  if(allowDecimal&&isDecimalText(text))return decimalRat(text);
   if(typeof text==='string'&&/^-?\d{1,15}(?:\/\d{1,15})?$/.test(text))return parseRat(text,code);
   if(typeof text!=='string'||!/^[0-9+\-*/()sqrt ]{1,64}$/.test(text)||!text.includes('sqrt'))bad(code);
   const tokens=text.replace(/\s+/g,'').match(/sqrt|\d{1,15}|[+\-*/()]/g)||[];if(tokens.join('')!==text.replace(/\s+/g,''))bad(code);
@@ -70,8 +75,8 @@ function parseEnd(raw,parameter,usedParameter){
   if(raw.state!=='OPEN'&&raw.state!=='CLOSED')bad('NUMBER_LINE_PIECE_INVALID');
   if((raw.value===undefined)===(raw.param===undefined))bad('NUMBER_LINE_PIECE_INVALID');
   if(raw.value!==undefined){
-    const v=parseValue(raw.value,'NUMBER_LINE_VALUE_INVALID');
-    return {v,value:ratText(v),tex:valueTex(toReal(v)),text:valueText(toReal(v)),state:raw.state,approx:num(v),expr:null};
+    const v=parseValue(raw.value,'NUMBER_LINE_VALUE_INVALID',true),dec=isDecimalText(raw.value);
+    return {v,value:ratText(v),tex:dec?raw.value:valueTex(toReal(v)),text:dec?raw.value:valueText(toReal(v)),state:raw.state,approx:num(v),expr:null};
   }
   if(!parameter)bad('NUMBER_LINE_PARAMETER_MISSING');
   onlyKeys(raw.param,['mul','add'],'NUMBER_LINE_PIECE_INVALID');
@@ -478,7 +483,7 @@ export function solveNumberLineFigure(numberLine){
       if(new Set(shownJamo).size!==shownJamo.length)bad('NUMBER_LINE_POINT_NAME_DUPLICATE');
       for(const point of points){
         if(point.symbolic)continue;
-        if(point.raw.value!==undefined){point.v=parseValue(point.raw.value,'NUMBER_LINE_VALUE_INVALID');continue;}
+        if(point.raw.value!==undefined){point.v=parseValue(point.raw.value,'NUMBER_LINE_VALUE_INVALID',true);continue;}
         onlyKeys(point.raw.divides,['from','to','ratio'],'NUMBER_LINE_DIVISION_INVALID');
         const {from,to,ratio}=point.raw.divides,a=byId.get(from),b=byId.get(to);
         if(!a||!b||from===to||a.raw.value===undefined||b.raw.value===undefined||isReal(a.v)||isReal(b.v)||!Array.isArray(ratio)||ratio.length!==2||ratio.some(part=>typeof part!=='string'||!/^[1-9]\d{0,2}$/.test(part)))bad('NUMBER_LINE_DIVISION_INVALID');
@@ -502,7 +507,7 @@ export function solveNumberLineFigure(numberLine){
           const inside=within?within.some(piece=>containsPiece(piece,point.v)):null,style=point.raw.style??(inside===null||inside?'FILLED':'CROSS');
           // a letter point has no value: its name is the one label (below the dot), `place` is only where the engine drew it
           if(point.symbolic)return {id:point.id,symbol:true,tex:point.id,text:point.id,approx:num(point.v),place:ratText(point.v),...point.flags,...(style!=='FILLED'?{style}:{})};
-          return {id:point.id,value:ratText(point.v),tex:valueTex(toReal(point.v)),text:valueText(toReal(point.v)),approx:num(point.v),...(point.division?{division:point.division}:{}),...point.flags,
+          return {id:point.id,value:ratText(point.v),tex:isDecimalText(point.raw.value)?point.raw.value:valueTex(toReal(point.v)),text:isDecimalText(point.raw.value)?point.raw.value:valueText(toReal(point.v)),approx:num(point.v),...(point.division?{division:point.division}:{}),...point.flags,
             ...(style!=='FILLED'?{style}:{}),...(inside?{ring:true}:{})};}),
         ...(row.band===false?{band:false}:{}),...(row.subdivisions!==undefined?{scale:solveScale(row.subdivisions,points.map(point=>point.v))}:{}),...rowLabelOf(row),...(row.within!==undefined?{within:row.within}:{}),...(spans?{spans}:{}),...(row.order!==undefined?{order:[...row.order]}:{})});
       pointInfo.set(solved.length,{points});
