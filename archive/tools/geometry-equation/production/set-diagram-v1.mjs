@@ -102,15 +102,35 @@ function parseShade(raw,setIds){
   return {expression:raw,fn};
 }
 
+// --- headcounts (opt-in): a set or the universe may state how many members it has, written beside its name -----------------------------------
+// count is a non-negative integer (a string such as "19", or the same integer as a number), countUnit a short unit such as 명 or 개. The count is only
+// text next to the name (M (19명), or n(M)=19 with countStyle "n"): the regions themselves still come from the elements and the set expression.
+const COUNT_UNIT_MAX=3;
+const countOf=raw=>{
+  if(raw===undefined)return undefined;
+  if(typeof raw==='number'){if(!Number.isInteger(raw)||raw<0||raw>9999)bad('SET_COUNT_INVALID');return String(raw);}
+  if(typeof raw!=='string'||!/^(0|[1-9]\d{0,3})$/.test(raw))bad('SET_COUNT_INVALID');
+  return raw;
+};
+const unitOf=(raw,count)=>{
+  if(raw===undefined)return null;
+  if(count===undefined||typeof raw!=='string')bad('SET_COUNT_INVALID');
+  cleanText(raw,COUNT_UNIT_MAX,'SET_COUNT_INVALID');
+  return raw;
+};
+export const countLabelText=(style,count,unit)=>style==='n'?(unit||null):`(${count}${unit??''})`;
+const countNameTex=(name,count)=>`n(${name})=${count}`;
+
 // --- exact regions: the atomic cells of 1-3 sets -------------------------------------------------------------------------------------------
 function solveVenn(venn){
-  onlyKeys(venn,['kind','sets','elements','shade','subset'],'SET_DIAGRAM_PLAN_INVALID');
+  onlyKeys(venn,['kind','sets','elements','shade','subset','universe','countStyle'],'SET_DIAGRAM_PLAN_INVALID');
   if(!Array.isArray(venn.sets)||venn.sets.length<1||venn.sets.length>3)bad(venn.sets?.length>3?'SET_COUNT_UNSUPPORTED':'SET_DIAGRAM_PLAN_INVALID');
   const sets=venn.sets.map(raw=>{
-    onlyKeys(raw,['id','name'],'SET_DIAGRAM_PLAN_INVALID');
+    onlyKeys(raw,['id','name','count','countUnit'],'SET_DIAGRAM_PLAN_INVALID');
     if(typeof raw.id!=='string'||!/^[A-Z]$/.test(raw.id)||raw.id==='U')bad('SET_ID_INVALID');
     if(raw.name!==undefined)cleanText(raw.name,8,'SET_NAME_INVALID');
-    return {id:raw.id,name:raw.name??raw.id};
+    const count=countOf(raw.count);
+    return {id:raw.id,name:raw.name??raw.id,...(count!==undefined?{count,countUnit:unitOf(raw.countUnit,count)}:(unitOf(raw.countUnit,count),{}))};
   });
   const ids=sets.map(s=>s.id);
   if(new Set(ids).size!==ids.length)bad('SET_ID_INVALID');
@@ -120,6 +140,25 @@ function solveVenn(venn){
     if(!Array.isArray(venn.subset)||venn.subset.length!==2||!ids.includes(venn.subset[0])||!ids.includes(venn.subset[1])||venn.subset[0]===venn.subset[1])bad('SET_LAYOUT_UNSUPPORTED');
     subset={inner:ids.indexOf(venn.subset[0]),outer:ids.indexOf(venn.subset[1])};
   }
+  // the whole (universe) may carry a headcount too; a set can never have more members than the whole, nor an inner set more than its outer set
+  let universe;
+  if(venn.universe!==undefined){
+    onlyKeys(venn.universe,['name','count','countUnit'],'SET_DIAGRAM_PLAN_INVALID');
+    if(venn.universe.name!==undefined&&(cleanText(venn.universe.name,8,'SET_NAME_INVALID'),venn.universe.name!=='U'))bad('SET_NAME_INVALID');
+    const count=countOf(venn.universe.count);
+    const unit=unitOf(venn.universe.countUnit,count);
+    if(count!==undefined)universe={name:'U',count,countUnit:unit};
+  }
+  let countStyle;
+  if(venn.countStyle!==undefined){
+    if(venn.countStyle!=='paren'&&venn.countStyle!=='n')bad('SET_COUNT_INVALID');
+    if(!sets.some(set=>set.count!==undefined)&&universe===undefined)bad('SET_COUNT_INVALID');
+    countStyle=venn.countStyle;
+    // n(M)=19 is a formula: the set must be named by one letter or digit
+    if(countStyle==='n'&&sets.some(set=>set.count!==undefined&&!labelMath(set.name)))bad('SET_COUNT_INVALID');
+  }
+  if(universe)for(const set of sets)if(set.count!==undefined&&Number(set.count)>Number(universe.count))bad('SET_COUNT_INVALID');
+  if(subset&&sets[subset.inner].count!==undefined&&sets[subset.outer].count!==undefined&&Number(sets[subset.inner].count)>Number(sets[subset.outer].count))bad('SET_COUNT_INVALID');
   const n=sets.length,cellCount=1<<n;
   const elements=[];
   if(venn.elements!==undefined){
@@ -155,7 +194,7 @@ function solveVenn(venn){
     cells.push({mask,region:members.length?members.join('∩'):'OUTSIDE',members,shade:shade?shade.cells.includes(mask):false,
       elements:elements.filter(e=>e.cell===mask).map(e=>e.index)});
   }
-  return {schemaVersion:MODEL_VERSION,kind:'VENN',layout:subset?'SUBSET':'OVERLAP',sets,subset,elements,cells,shade};
+  return {schemaVersion:MODEL_VERSION,kind:'VENN',layout:subset?'SUBSET':'OVERLAP',sets,subset,elements,cells,shade,...(universe?{universe}:{}),...(countStyle?{countStyle}:{})};
 }
 function solveMapping(diagram){
   onlyKeys(diagram,['kind','columns','arrows','highlight'],'SET_DIAGRAM_PLAN_INVALID');
@@ -266,14 +305,29 @@ const VENN_LAYOUTS={
   2:{size:{width:470,height:330},rect:{x:56,y:54,w:358,h:236},circles:[{cx:180,cy:172,r:96},{cx:290,cy:172,r:96}]},
   3:{size:{width:480,height:390},rect:{x:48,y:38,w:384,h:312},circles:[{cx:240,cy:150,r:90},{cx:190,cy:232,r:90},{cx:290,cy:232,r:90}]}
 };
-function vennLayout(model){
+// A figure with headcount labels gets room for them: a band above the circles (the universe headcount on the first line, the set names with their counts
+// on the next) and a margin on each side. A panel of a composite (compact) keeps the band but not the side margins, and every Venn panel is trimmed to
+// COMPACT_WIDTH so two of them and the gap fit the 848-unit width the Archive solution column allows (the panel width cap is 420).
+const COUNT_ROOM={top:52,side:34},COMPACT_WIDTH=410,GROUP_GAP=5;
+const hasCounts=model=>model.sets.some(set=>set.count!==undefined)||model.universe!==undefined;
+function vennLayout(model,opts={}){
   const base=VENN_LAYOUTS[model.sets.length];
-  const rect={...base.rect},circles=base.circles.map(c=>({...c}));
+  let rect={...base.rect},circles=base.circles.map(c=>({...c})),size={...base.size};
   if(model.layout==='SUBSET'){
     circles[model.subset.outer]={cx:236,cy:172,r:94};
     circles[model.subset.inner]={cx:258,cy:166,r:54};
   }
-  return {size:{...base.size},rect,circles};
+  if(hasCounts(model)){
+    const side=opts.compact?0:COUNT_ROOM.side,top=COUNT_ROOM.top;
+    circles=circles.map(c=>({...c,cx:c.cx+side,cy:c.cy+top}));
+    rect={...rect,w:rect.w+2*side,h:rect.h+top};
+    size={width:size.width+2*side,height:size.height+top};
+  }
+  if(opts.compact&&size.width>COMPACT_WIDTH){
+    const dx=(COMPACT_WIDTH-size.width)/2;
+    rect={...rect,x:rect.x+dx};circles=circles.map(c=>({...c,cx:c.cx+dx}));size={...size,width:COMPACT_WIDTH};
+  }
+  return {size,rect,circles};
 }
 const MAPPING_ROW=34,MAPPING_PAD=22,MAPPING_TOP=50,MAPPING_RX=72;
 function mappingLayout(model){
@@ -450,7 +504,8 @@ const STYLE={
   elementHi:'fill="#ececec" stroke="none"',
   tableFrame:'fill="none" stroke="#111" stroke-width="1.4"',
   grid:'stroke="#111" stroke-width="0.8"',
-  mark:'fill="#111" stroke="none"'
+  mark:'fill="#111" stroke="none"',
+  leader:'stroke="#444" stroke-width="1.1" fill="none"'
 };
 const rect=(id,role,cls,x,y,width,height,data={},layer=30)=>({t:'rect',id,role,cls,x:r6(x),y:r6(y),width:r6(width),height:r6(height),data,layer});
 const ellipse=(id,role,cls,cx,cy,rx,ry,data={},layer=30)=>({t:'ellipse',id,role,cls,cx:r6(cx),cy:r6(cy),rx:r6(rx),ry:r6(ry),data,layer});
@@ -475,15 +530,34 @@ function vennSpec(model,layout){
     const d=loops.map(loop=>'M '+loop.map(([x,y])=>px2(x)+' '+px2(y)).join(' L ')+' Z').join(' ');
     prims.push({t:'path',id:`shade-${mask}`,role:'shade',cls:'shade',d,data:{cell:model.cells[mask].region},layer:24});
   }
-  labels.push(math('universal-name','universal-name','universal','U','U','start','middle',U.x+12,U.y+13,{}));
-  for(const set of model.sets)labels.push(labelMath(set.name)
-    ?Object.assign(math(`set-name-${set.id}`,'set-name',`set-${set.id}`,set.name,set.name,'center','middle',0,0,{set:set.id}),{placement:'set'})
-    :Object.assign(textLabel(`set-name-${set.id}`,'set-name',`set-${set.id}`,set.name,'center','middle',0,0,{set:set.id}),{placement:'set'}));
+  const style=model.countStyle??'paren',universe=model.universe;
+  // U (40명) in the corner: the headcount is a separate text label set right after the name (resolveVenn); n(U)=40 replaces the name instead
+  labels.push(universe&&style==='n'
+    ?math('universal-name','universal-name','universal',countNameTex('U',universe.count),countNameTex('U',universe.count),'start','middle',U.x+12,U.y+13,{})
+    :math('universal-name','universal-name','universal','U','U','start','middle',U.x+12,U.y+13,{}));
+  if(universe){
+    const text=countLabelText(style,universe.count,universe.countUnit);
+    if(text)labels.push(textLabel('universal-count','universal-count','universal',text,'start','middle',U.x+12,U.y+13,{}));
+  }
+  for(const set of model.sets){
+    const counted=set.count!==undefined;
+    const nameLabel=counted&&style==='n'
+      ?Object.assign(math(`set-name-${set.id}`,'set-name',`set-${set.id}`,countNameTex(set.name,set.count),countNameTex(set.name,set.count),'center','middle',0,0,{set:set.id}),{placement:'set'})
+      :labelMath(set.name)
+        ?Object.assign(math(`set-name-${set.id}`,'set-name',`set-${set.id}`,set.name,set.name,'center','middle',0,0,{set:set.id}),{placement:'set'})
+        :Object.assign(textLabel(`set-name-${set.id}`,'set-name',`set-${set.id}`,set.name,'center','middle',0,0,{set:set.id}),{placement:'set'});
+    if(counted)nameLabel.counted=true;
+    labels.push(nameLabel);
+    if(counted){
+      const text=countLabelText(style,set.count,set.countUnit);
+      if(text)labels.push(Object.assign(textLabel(`set-count-${set.id}`,'set-count',`set-${set.id}`,text,'start','top',0,0,{set:set.id}),{placement:'set-count'}));
+    }
+  }
   for(const element of model.elements){
     labels.push(Object.assign(elementLabel(`element-${element.index}`,'element',`element-${element.index}`,element,'start','top',0,0,
       {element:element.index,cell:model.cells[element.cell].region}),{placement:'element',cellMask:element.cell}));
   }
-  return {size,prims,labels,kind:'VENN',layout,setIds:model.sets.map(s=>s.id),vennLayoutKind:model.layout,subset:model.subset,geometry:{rect:{...U},circles:circles.map(c=>({...c}))}};
+  return {size,prims,labels,kind:'VENN',layout,setIds:model.sets.map(s=>s.id),vennLayoutKind:model.layout,subset:model.subset,geometry:{rect:{...U},circles:circles.map(c=>({...c}))},...(model.universe?{universeCounted:true}:{})};
 }
 function mappingSpec(model,layout){
   const prims=[],labels=[];
@@ -545,14 +619,18 @@ function tableSpec(model,layout){
   });
   return {size:layout.size,prims,labels,kind:'MEMBERSHIP_TABLE',layout,geometry:{frame:{...frame},vertical:[...vertical],horizontal:[...horizontal]}};
 }
-const sizeOf=model=>model.kind==='VENN'?{...vennLayout(model).size}:model.kind==='MAPPING'?{...mappingLayout(model).size}:{...tableLayout(model).size};
-export const setDiagramSize=model=>({...sizeOf(model)});
-export function setDiagramSpec(plan,model){
+const sizeOf=(model,opts)=>model.kind==='VENN'?{...vennLayout(model,opts).size}:model.kind==='MAPPING'?{...mappingLayout(model).size}:{...tableLayout(model).size};
+// opts.compact: the Venn panel of a composite (narrower, see vennLayout); only a Venn diagram has a compact form
+export const setDiagramSize=(model,opts={})=>({...sizeOf(model,opts)});
+export function setDiagramSpec(plan,model,opts={}){
   if(plan?.capability!==FIGURE_CAPABILITY||!isPlain(plan.diagram))bad('SET_DIAGRAM_PLAN_INVALID');
   if(objectSha(solveDiagram(plan.diagram))!==objectSha(model))bad('SET_MODEL_MISMATCH');
-  const spec=model.kind==='VENN'?vennSpec(model,vennLayout(model)):model.kind==='MAPPING'?mappingSpec(model,mappingLayout(model)):tableSpec(model,tableLayout(model));
+  const spec=model.kind==='VENN'?vennSpec(model,vennLayout(model,opts)):model.kind==='MAPPING'?mappingSpec(model,mappingLayout(model)):tableSpec(model,tableLayout(model));
   return {schemaVersion:SPEC_VERSION,...spec};
 }
+/** The spec of a Venn panel of a composite exactly as its lineage hashes it (what the composite's observation re-derives), and the texts its labels write. */
+export const setDiagramPanelSpec=(plan,model)=>JSON.parse(JSON.stringify(setDiagramSpec(plan,model,{compact:true})));
+export const setDiagramLabelTexts=spec=>spec.labels.map(label=>label.plain);
 
 // --- placing the element labels and the set names inside their exact regions ---------------------------------------------------------------
 function resolveVenn(spec,placed){
@@ -561,28 +639,46 @@ function resolveVenn(spec,placed){
   const byLabel=new Map(placed.map(item=>[item.label.id,item]));
   const elementItems=placed.filter(item=>item.label.placement==='element');
   const otherBoxes=()=>placed.filter(item=>!item.label.placement||item.label.placement==='element').map(item=>item.box);
+  // The universe headcount stands right after the universe name on the same line, and neither may touch a circle (a figure without it is left as it was).
+  const universeName=placed.find(item=>item.label.id==='universal-name'),universeCount=placed.find(item=>item.label.id==='universal-count');
+  if(spec.universeCounted){
+    // the counted universe line sits wholly inside the rectangle, 5 px under its top edge, name and headcount centred on one line
+    const line=Math.max(universeName.box.height,universeCount?universeCount.box.height:0),top=U.y+5;
+    universeName.box={x:universeName.box.x,y:r6(top+(line-universeName.box.height)/2),width:universeName.box.width,height:universeName.box.height};
+    universeName.label.anchor={x:r6(universeName.box.x),y:universeName.box.y,ax:'start',ay:'top'};
+    if(universeCount){
+      const x=universeName.box.x+universeName.box.width+GROUP_GAP,y=top+(line-universeCount.box.height)/2;
+      universeCount.box={x:r6(x),y:r6(y),width:universeCount.box.width,height:universeCount.box.height};
+      universeCount.label.anchor={x:r6(x),y:r6(y),ax:'start',ay:'top'};
+    }
+  }
+  if(spec.universeCounted)for(const item of [universeName,universeCount])if(item&&circles.some(c=>boxEllipseRelation({x:item.box.x-4,y:item.box.y-4,width:item.box.width+8,height:item.box.height+8},c)!=='OUTSIDE'))bad('SET_COUNT_LABEL_NO_ROOM');
+  // In a figure with headcounts the band above the circles belongs to the set names and their counts: an outside element never stands there (it would read as part of a name).
+  const labelBand=spec.universeCounted||spec.labels.some(label=>label.counted)?Math.min(...circles.map(c=>c.cy-c.r))-2:-Infinity;
   const fixed=placed.filter(item=>!item.label.placement);
   const occupied=fixed.map(item=>({x:item.box.x-4,y:item.box.y-4,width:item.box.width+8,height:item.box.height+8}));
-  for(const item of [...elementItems].sort((a,b)=>b.box.width*b.box.height-a.box.width*a.box.height)){
+  const placeElements=()=>{for(const item of [...elementItems].sort((a,b)=>b.box.width*b.box.height-a.box.width*a.box.height)){
     const {width,height}=item.box,cell=item.label.cellMask;
     let best=null;
     for(let y=U.y+4;y+height<=U.y+U.h-4;y+=3)for(let x=U.x+4;x+width<=U.x+U.w-4;x+=3){
       const box={x,y,width,height};
       if(!boxInCell(box,cell,circles,U,4))continue;
+      if(box.y<labelBand)continue;
       if(occupied.some(other=>overlaps({x:box.x-4,y:box.y-4,width:box.width+8,height:box.height+8},other)))continue;
       const clearance=cellClearance(box,cell,circles,U);
       if(!Number.isFinite(clearance))continue;
       const near=occupied.reduce((value,other)=>Math.min(value,Math.hypot(box.x+box.width/2-(other.x+other.width/2),box.y+box.height/2-(other.y+other.height/2))),Infinity);
-      const score=Math.min(clearance,30)+Math.min(near,40)*0.6;
+      // A figure with headcounts keeps its elements low and away from the names above (an element that hugged a name would read as part of it).
+      const score=Math.min(clearance,30)+(labelBand>-Infinity?(box.y-U.y)/U.h*40:Math.min(near,40)*0.6);
       if(!best||score>best.score+1e-9){best={x,y,score};}
     }
     if(!best)bad('SET_ELEMENT_NO_ROOM');
     item.box={x:best.x,y:best.y,width,height};
     item.label.anchor={x:r6(best.x),y:r6(best.y),ax:'start',ay:'top'};
     occupied.push({x:best.x-4,y:best.y-4,width:width+8,height:height+8});
-  }
+  }};
   const setItems=placed.filter(item=>item.label.placement==='set');
-  for(const item of setItems){
+  const placeSetLabels=()=>{for(const item of setItems){
     const setIndex=spec.setIds.indexOf(item.label.extra.set);
     const c=circles[setIndex]??circles[0];
     const others=circles.filter((_,i)=>i!==setIndex);
@@ -594,8 +690,15 @@ function resolveVenn(spec,placed){
         for(const o of others){dx-=o.cx;dy-=o.cy;}
         const length=Math.hypot(dx,dy)||1;return {x:dx/length,y:dy/length};
       })();
-    const {width,height}=item.box;
-    let chosen=null;
+    // A counted set is one group: the name, then its headcount label 5 px to the right, placed (and led out) together.
+    const companion=placed.find(other=>other.label.placement==='set-count'&&other.label.extra.set===item.label.extra.set);
+    const counted=item.label.counted===true;
+    const width=item.box.width+(companion?GROUP_GAP+companion.box.width:0),height=Math.max(item.box.height,companion?companion.box.height:0);
+    const nameAt=(x,y)=>({x,y:y+(height-item.box.height)/2,width:item.box.width,height:item.box.height});
+    const countAt=(x,y)=>({x:x+item.box.width+GROUP_GAP,y:y+(height-companion.box.height)/2,width:companion.box.width,height:companion.box.height});
+    // a counted group never crosses a circle's line: it is wholly outside its own circle and wholly in or wholly out of each other (the inner set of B⊂A is named inside A)
+    const clear=box=>circles.every((other,i)=>{const relation=boxEllipseRelation({x:box.x-4,y:box.y-4,width:box.width+8,height:box.height+8},other);return i===setIndex?relation==='OUTSIDE':relation!=='CROSSES';});
+    let chosen=null,leader=null;
     for(const angle of [0,-14,14,-28,28,-42,42,-60,60]){
       const rad=angle*Math.PI/180,dx=direction.x*Math.cos(rad)-direction.y*Math.sin(rad),dy=direction.x*Math.sin(rad)+direction.y*Math.cos(rad);
       for(let distance=c.r+10;distance<=c.r+80;distance+=2){
@@ -606,16 +709,57 @@ function resolveVenn(spec,placed){
         if(relation!=='OUTSIDE')continue;
         const high=Math.max(norm2(x,y,c),norm2(x+width,y,c),norm2(x,y+height,c),norm2(x+width,y+height,c));
         if((Math.sqrt(high)-1)*c.r<6)continue;
+        if(counted&&!clear(box))continue;
         if(occupied.some(other=>overlaps({x:x-4,y:y-4,width:width+8,height:height+8},other)))continue;
         chosen={x,y};break;
       }
       if(chosen)break;
     }
-    if(!chosen)bad('SET_LABEL_NO_ROOM');
-    item.box={x:chosen.x,y:chosen.y,width,height};
-    item.label.anchor={x:r6(chosen.x),y:r6(chosen.y),ax:'start',ay:'top'};
+    // A counted group that would stand nearer to another circle's line than to its own reads as that circle's (the inner set of B⊂A named outside A): it is led out instead.
+    if(chosen&&counted&&others.length){
+      const name=nameAt(chosen.x,chosen.y),mx=name.x+name.width/2,my=name.y+name.height/2;
+      const edge=o=>Math.abs(Math.hypot(mx-o.cx,my-o.cy)-o.r);
+      if(edge(c)>Math.min(...others.map(edge))+4)chosen=null;
+    }
+    if(!chosen&&counted){
+      // No room beside the circle: the group goes to the nearest free place outside every circle, and a short leader from its nearest edge ends on this circle.
+      let best=null;
+      for(let y=U.y+4;y+height<=U.y+U.h-4;y+=3)for(let x=U.x+4;x+width<=U.x+U.w-4;x+=3){
+        const box={x,y,width,height};
+        if(!clear(box)||occupied.some(other=>overlaps({x:x-4,y:y-4,width:width+8,height:height+8},other)))continue;
+        const parts=[nameAt(x,y),...(companion?[countAt(x,y)]:[])];
+        for(const part of parts){
+          const px=Math.max(part.x,Math.min(c.cx,part.x+part.width)),py=Math.max(part.y,Math.min(c.cy,part.y+part.height));
+          const distance=Math.hypot(px-c.cx,py-c.cy),length=distance-c.r;
+          if(length<10||length>72||(best&&length>=best.length))continue;
+          const ex=c.cx+(px-c.cx)/distance*c.r,ey=c.cy+(py-c.cy)/distance*c.r;
+          let blocked=false;
+          for(let k=1;k<20&&!blocked;k++){
+            const sx=px+(ex-px)*k/20,sy=py+(ey-py)*k/20;
+            // the leader keeps off every other circle's line, except that the inner set of B⊂A is reached across the outer circle's line
+            if(circles.some((other,i)=>i!==setIndex&&!(spec.vennLayoutKind==='SUBSET'&&setIndex===spec.subset.inner&&i===spec.subset.outer)&&((norm2(sx,sy,other)<1)!==(norm2(px,py,other)<1)||Math.abs(Math.sqrt(norm2(sx,sy,other))-1)*other.r<1.5)))blocked=true;
+          }
+          // nor does it run through the group's own other label or any label already placed
+          if(!blocked&&[...occupied,...parts.filter(other=>other!==part).map(other=>({x:other.x-1,y:other.y-1,width:other.width+2,height:other.height+2}))].some(other=>segmentHitsBox([px,py],[ex,ey],other)))blocked=true;
+          if(!blocked)best={x,y,length,leader:{x1:r6(px),y1:r6(py),x2:r6(ex),y2:r6(ey)}};
+        }
+      }
+      if(best){chosen={x:best.x,y:best.y};leader=best.leader;}
+    }
+    if(!chosen)bad(counted?'SET_COUNT_LABEL_NO_ROOM':'SET_LABEL_NO_ROOM');
+    const nameBox=nameAt(chosen.x,chosen.y);
+    item.box={x:r6(nameBox.x),y:r6(nameBox.y),width:nameBox.width,height:nameBox.height};
+    item.label.anchor={x:r6(nameBox.x),y:r6(nameBox.y),ax:'start',ay:'top'};
+    if(companion){
+      const countBox=countAt(chosen.x,chosen.y);
+      companion.box={x:r6(countBox.x),y:r6(countBox.y),width:countBox.width,height:countBox.height};
+      companion.label.anchor={x:r6(countBox.x),y:r6(countBox.y),ax:'start',ay:'top'};
+    }
+    if(leader)spec.prims.push({t:'line',id:`set-leader-${item.label.extra.set}`,role:'set-leader',cls:'leader',...leader,data:{set:item.label.extra.set},layer:42});
     occupied.push({x:chosen.x-4,y:chosen.y-4,width:width+8,height:height+8});
-  }
+  }};
+  // A figure with headcounts places the set names (with their counts) first, so a loose outside element cannot take the place a name needs; otherwise elements come first as always.
+  if(labelBand>-Infinity){placeSetLabels();placeElements();}else{placeElements();placeSetLabels();}
   void byLabel;void otherBoxes;
 }
 
@@ -708,7 +852,7 @@ function printPrim(p){
   }
   return `<g data-layer="${p.layer}">${tag}</g>`;
 }
-export async function composeSetDiagramFigure({plan,model,identity,typographyPolicy,browser}={}){
+export async function composeSetDiagramFigure({plan,model,identity,typographyPolicy,browser,compact=false}={}){
   const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,specSha256:null,fragmentSha256s:null,svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
   const state={svg:null,staticAudit:{status:'NOT_RUN'},renderedLayout:{status:'NOT_RUN'}};
   const outcome=(status,detail=null)=>({schemaVersion:status==='COMPOSED'?'construction-candidate-svg-v1':SVG_VERSION,status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false});
@@ -717,7 +861,7 @@ export async function composeSetDiagramFigure({plan,model,identity,typographyPol
     if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
     lineage.planSha256=objectSha(plan);lineage.modelSha256=objectSha(model);lineage.typographyPolicySha256=objectSha(typographyPolicy);
     let spec;
-    try{spec=setDiagramSpec(plan,model);}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='SET_MODEL_MISMATCH'?error.message:'SET_SPEC_ERROR',{code:error.message});}
+    try{spec=setDiagramSpec(plan,model,{compact});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='SET_MODEL_MISMATCH'?error.message:'SET_SPEC_ERROR',{code:error.message});}
     spec.setIds=model.kind==='VENN'?model.sets.map(s=>s.id):[];
     if(model.kind==='VENN'&&model.shade){
       const anyShade=spec.prims.some(p=>p.role==='shade');
@@ -743,7 +887,7 @@ export async function composeSetDiagramFigure({plan,model,identity,typographyPol
     const {width,height}=spec.size;
     for(const item of placed){
       const b=item.box;
-      if(b.x<6||b.y<6||b.x+b.width>width-6||b.y+b.height>height-6)throw new Stop(item.label.placement==='set'?'SET_LABEL_NO_ROOM':'SET_LABEL_OUT_OF_BOUNDS',{labelId:item.label.id,box:b,size:{width,height}});
+      if(b.x<6||b.y<6||b.x+b.width>width-6||b.y+b.height>height-6)throw new Stop(/^(set-count|universal-count)$/.test(item.label.role)||item.label.counted?'SET_COUNT_LABEL_NO_ROOM':item.label.placement==='set'?'SET_LABEL_NO_ROOM':'SET_LABEL_OUT_OF_BOUNDS',{labelId:item.label.id,box:b,size:{width,height}});
     }
     for(let i=0;i<placed.length;i++)for(const other of placed.slice(i+1))if(overlaps(placed[i].box,other.box))throw new Stop(placed[i].label.role==='element'||other.label.role==='element'?'SET_ELEMENT_NO_ROOM':'SET_LABELS_TOO_CLOSE',{labels:[placed[i].label.id,other.label.id]});
     lineage.fragmentSha256s=Object.fromEntries(placed.map(item=>[item.label.id,item.fragment.fragmentSha256]));
