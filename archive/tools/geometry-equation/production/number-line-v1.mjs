@@ -532,7 +532,7 @@ const ROW_LABEL_CHAR_PX=22,ROW_LABEL_GAP=10,ROW_LABEL_MAX_CHARS=6,ROW_LABEL_ROW_
 const POINT_STYLES=['FILLED','HOLLOW','CROSS','TICK'],CROSS_HALF=4.2,RING_RADIUS=END_RADIUS+3,TICK_MARK_HALF=7.5;
 // TICK (E35): a short bold vertical stroke through the axis, no disc: the mark of a place that is neither a value nor a member of a set (a letter point such as n).
 // Spans and the side of a point's value (E34): a brace or an arrow between two points of a POINTS row sits in a band of its own under (or above) the row's labels.
-const VALUE_SIDES=['ABOVE','BELOW'],SPAN_STYLES=['BRACE','ARROW','DOUBLE_ARROW'],SPAN_SIDES=['ABOVE','BELOW'],MAX_SPANS=3;
+const VALUE_SIDES=['ABOVE','BELOW'],SPAN_STYLES=['BRACE','ARROW','DOUBLE_ARROW'],SPAN_SIDES=['ABOVE','BELOW'],MAX_SPANS=6;
 const SPAN_LABEL_TEXT=/^[\uAC00-\uD7A3][\uAC00-\uD7A3 ]{0,8}$/u,SPAN_LABEL_MATH=/^[A-Za-z0-9=+\-<>.,()]{1,12}$/;
 const SPAN_PAD=4,SPAN_HALF=6,SPAN_LABEL_GAP=3,SPAN_LABEL_ROW=30,SPAN_BAND=SPAN_PAD+2*SPAN_HALF+SPAN_LABEL_GAP+SPAN_LABEL_ROW+2,SPAN_STROKE=1.4,SPAN_HEAD=9,SPAN_HEAD_HALF=3.6,SPAN_MIN_WIDTH=4*SPAN_HALF;
 const HEAD_HIDDEN=8;      // a SET row whose inequality label is hidden keeps only the margin above its integer points

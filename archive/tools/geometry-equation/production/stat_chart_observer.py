@@ -1232,11 +1232,15 @@ def _ast_value(node, env):
     fail('STAT_DICE_EXPR_INVALID')
 
 
+def _ast_parse_expr(text):
+    return ast.parse(text.strip(), mode='eval')
+
+
 def _predicate(p, env):
     if 'any' in p: return any(_predicate(x, env) for x in p['any'])
     if 'all' in p: return all(_predicate(x, env) for x in p['all'])
     if 'not' in p: return not _predicate(p['not'], env)
-    value = _ast_value(ast.parse(p['expr'].strip(), mode='eval'), env)
+    value = _ast_value(ast.parse(re.sub(r'(\d)\s*([a-z(])', r'\1*\2', p['expr']).strip(), mode='eval'), env)
     if 'in' in p: return value in [int(x) for x in p['in']]
     other = int(p['value'])
     return {'=': value == other, '<': value < other, '<=': value <= other, '>': value > other, '>=': value >= other}[p['cmp']]
@@ -1257,18 +1261,40 @@ def dice_names(chart):
     return col[0], row[0], col[1], row[1], col[2], row[2]
 
 
-def dice_tones(chart, faces, col_var, row_var):
+def dice_axes(chart):
+    """The values across and down, from the plan alone: colFaces/rowFaces (both, 1 to 8 distinct whole numbers each) or the square of `faces`."""
+    if 'rowFaces' in chart or 'colFaces' in chart:
+        if 'faces' in chart or 'rowFaces' not in chart or 'colFaces' not in chart: fail('STAT_DICE_FACES_INVALID')
+        out = []
+        for key in ('colFaces', 'rowFaces'):
+            v = chart[key]
+            if not isinstance(v, list) or not 1 <= len(v) <= 8 or len(set(v)) != len(v) or any(isinstance(x, bool) or not isinstance(x, int) or not 1 <= x <= 99 for x in v): fail('STAT_DICE_FACES_INVALID')
+            out.append(list(v))
+        return out[0], out[1]
+    faces = chart.get('faces', 6)
+    if isinstance(faces, bool) or not isinstance(faces, int) or not 2 <= faces <= 8: fail('STAT_DICE_FACES_INVALID')
+    return list(range(1, faces + 1)), list(range(1, faces + 1))
+
+
+def dice_cell_expr(chart):
+    """The expression a cell writes (cell EXPR), normalised the way the plan may write it (2a for 2*a)."""
+    expr = chart.get('cellExpr')
+    if not isinstance(expr, str) or not expr or len(expr) > 20: fail('STAT_DICE_CELL_INVALID')
+    return re.sub(r'(\d)\s*([a-z(])', r'\1*\2', expr)
+
+
+def dice_tones(chart, cols, rows, col_var, row_var):
     """The tone (0 none, 1, 2) of every cell, from the plan alone: the one highlight condition is tone 1; highlightGroups give each group its tone (no cell in two groups, none empty)."""
     tones = {}
     groups = chart.get('highlightGroups')
     if groups is not None and 'highlight' in chart: fail('STAT_DICE_GROUP_INVALID')
     if groups is None:
         pred = chart.get('highlight')
-        for r in range(1, faces + 1):
-            for k in range(1, faces + 1): tones[(k, r)] = 1 if pred is not None and _predicate(pred, {col_var: k, row_var: r}) else 0
+        for r in rows:
+            for k in cols: tones[(k, r)] = 1 if pred is not None and _predicate(pred, {col_var: k, row_var: r}) else 0
         return tones
     if not isinstance(groups, list) or not 1 <= len(groups) <= 4: fail('STAT_DICE_GROUP_INVALID')
-    hits = {(k, r): [] for r in range(1, faces + 1) for k in range(1, faces + 1)}
+    hits = {(k, r): [] for r in rows for k in cols}
     for index, g in enumerate(groups):
         if not isinstance(g, dict) or set(g) - {'highlight', 'cells', 'tone'} or ('highlight' in g) == ('cells' in g): fail('STAT_DICE_GROUP_INVALID')
         tone = g.get('tone', 1)
@@ -1278,10 +1304,10 @@ def dice_tones(chart, faces, col_var, row_var):
                 if _predicate(g['highlight'], {col_var: k, row_var: r}): hits[(k, r)].append(index)
         else:
             listed = g['cells']
-            if not isinstance(listed, list) or not 1 <= len(listed) <= faces * faces: fail('STAT_DICE_GROUP_INVALID')
+            if not isinstance(listed, list) or not 1 <= len(listed) <= len(cols) * len(rows): fail('STAT_DICE_GROUP_INVALID')
             seen = set()
             for e in listed:
-                if not isinstance(e, list) or len(e) != 2 or any(isinstance(v, bool) or not isinstance(v, int) or not 1 <= v <= faces for v in e) or tuple(e) in seen: fail('STAT_DICE_GROUP_INVALID')
+                if not isinstance(e, list) or len(e) != 2 or any(isinstance(v, bool) or not isinstance(v, int) for v in e) or e[0] not in cols or e[1] not in rows or tuple(e) in seen: fail('STAT_DICE_GROUP_INVALID')
                 seen.add(tuple(e)); hits[tuple(e)].append(index)
     if any(len(v) > 1 for v in hits.values()): fail('STAT_DICE_GROUP_OVERLAP')
     if any(not any(index in v for v in hits.values()) for index in range(len(groups))): fail('STAT_DICE_GROUP_EMPTY')
@@ -1290,32 +1316,39 @@ def dice_tones(chart, faces, col_var, row_var):
 
 
 def audit_dice(chart, doc):
-    faces = chart.get('faces', 6)
+    cols, rows = dice_axes(chart)
     cell_mode = chart.get('cell', 'PAIR')
+    if cell_mode not in ('PAIR', 'SUM', 'PRODUCT', 'NONE', 'EXPR') or (cell_mode == 'EXPR') != ('cellExpr' in chart): fail('STAT_DICE_CELL_INVALID')
     col_var, row_var, col_show, row_show, col_text, row_text = dice_names(chart)
-    tones = dice_tones(chart, faces, col_var, row_var)
+    tones = dice_tones(chart, cols, rows, col_var, row_var)
+    expr = _ast_parse_expr(dice_cell_expr(chart)) if cell_mode == 'EXPR' else None
     cells = {(int(r.get('data-col')), int(r.get('data-row'))): r for r in doc.role('rect', 'cell')}
-    if set(cells) != {(k, r) for k in range(1, faces + 1) for r in range(1, faces + 1)}: doc.err('SC_CELL_SET')
+    if set(cells) != {(k, r) for k in cols for r in rows}: doc.err('SC_CELL_SET')
     corner = doc.by_id.get('corner')
     if corner is None: fail('SC_CORNER_MISSING')
     x0, y0, size = num(corner, 'x'), num(corner, 'y'), num(corner, 'width')
     count = 0
     for (k, r), rect in cells.items():
-        if abs(num(rect, 'x') - (x0 + k * size)) > TOL or abs(num(rect, 'y') - (y0 + r * size)) > TOL or abs(num(rect, 'width') - size) > TOL or abs(num(rect, 'height') - size) > TOL: doc.err('SC_CELL_GRID:%d,%d' % (k, r))
+        ci, ri = cols.index(k) + 1 if k in cols else 0, rows.index(r) + 1 if r in rows else 0
+        if abs(num(rect, 'x') - (x0 + ci * size)) > TOL or abs(num(rect, 'y') - (y0 + ri * size)) > TOL or abs(num(rect, 'width') - size) > TOL or abs(num(rect, 'height') - size) > TOL: doc.err('SC_CELL_GRID:%d,%d' % (k, r))
+        if (k, r) not in tones: continue      # a cell the plan does not have (already SC_CELL_SET)
         tone = tones[(k, r)]
         count += tone > 0
         if rect.get('data-highlight') != str(tone) or (rect.get('fill') or '').lower() != FILL[{0: 'cell', 1: 'cellHi', 2: 'cellHi2'}[tone]]: doc.err('SC_CELL_HIGHLIGHT:%d,%d' % (k, r))
-        text = {'PAIR': '(%d,%d)' % (k, r), 'SUM': str(k + r), 'PRODUCT': str(k * r), 'NONE': None}[cell_mode]
+        text = {'PAIR': '(%d,%d)' % (k, r), 'SUM': str(k + r), 'PRODUCT': str(k * r), 'NONE': None, 'EXPR': str(_ast_value(expr, {col_var: k, row_var: r})) if expr is not None else None}[cell_mode]
         labels = doc.owners.get(rect.get('id'), [])
         if text is None:
             if labels: doc.err('SC_CELL_TEXT_UNEXPECTED:%d,%d' % (k, r))
         elif len(labels) != 1 or labels[0].get('data-tex') != text: doc.err('SC_CELL_TEXT:%d,%d' % (k, r))
-        elif abs(centre(labels[0])[0] - (x0 + (k + .5) * size)) > LABEL_TOL or abs(centre(labels[0])[1] - (y0 + (r + .5) * size)) > LABEL_TOL: doc.err('SC_CELL_TEXT_PLACE:%d,%d' % (k, r))
+        elif abs(centre(labels[0])[0] - (x0 + (ci + .5) * size)) > LABEL_TOL or abs(centre(labels[0])[1] - (y0 + (ri + .5) * size)) > LABEL_TOL: doc.err('SC_CELL_TEXT_PLACE:%d,%d' % (k, r))
     if sum(1 for r in cells.values() if r.get('data-highlight') in ('1', '2')) != count: doc.err('SC_HIGHLIGHT_COUNT')
     for axis in ('col', 'row'):
+        values = cols if axis == 'col' else rows
         heads = sorted((int(r.get('data-value')), r) for r in doc.rects if r.get('data-role') == 'head' and r.get('data-axis') == axis)
-        if [v for v, _ in heads] != list(range(1, faces + 1)): doc.err('SC_HEADERS:' + axis)
+        if [v for v, _ in heads] != sorted(values): doc.err('SC_HEADERS:' + axis)
         for v, r in heads:
+            at = (values.index(v) + 1) * size if v in values else -1
+            if abs((num(r, 'x') - x0 if axis == 'col' else num(r, 'y') - y0) - at) > TOL: doc.err('SC_HEADER_PLACE:%s%d' % (axis, v))
             labels = doc.owners.get(r.get('id'), [])
             if len(labels) != 1 or labels[0].get('data-tex') != str(v): doc.err('SC_HEADER_LABEL:%s%d' % (axis, v))
     # the variables: a letter in the corner (and the diagonal that divides it), a Hangul phrase beside the table (over the columns, left of the rows), or nothing
@@ -1329,11 +1362,11 @@ def audit_dice(chart, doc):
     if {a: l.get('data-text') for a, l in texts.items()} != want_texts or any(l.get('data-tex') is not None for l in texts.values()): doc.err('SC_VARIABLE_NAMES')
     if 'col' in texts:
         bx, by, bw, bh = box_of(texts['col'])
-        if abs(bx + bw / 2 - (x0 + size + faces * size / 2)) > LABEL_TOL or by + bh > y0: doc.err('SC_VARIABLE_NAME_PLACE:col')
+        if abs(bx + bw / 2 - (x0 + size + len(cols) * size / 2)) > LABEL_TOL or by + bh > y0: doc.err('SC_VARIABLE_NAME_PLACE:col')
     if 'row' in texts:
         bx, by, bw, bh = box_of(texts['row'])
-        if abs(by + bh / 2 - (y0 + size + faces * size / 2)) > LABEL_TOL or bx + bw > x0: doc.err('SC_VARIABLE_NAME_PLACE:row')
-    return {'highlighted': count, 'total': faces * faces}
+        if abs(by + bh / 2 - (y0 + size + len(rows) * size / 2)) > LABEL_TOL or bx + bw > x0: doc.err('SC_VARIABLE_NAME_PLACE:row')
+    return {'highlighted': count, 'total': len(cols) * len(rows)}
 
 
 def audit_tree(chart, doc):
@@ -1360,11 +1393,17 @@ def audit_tree(chart, doc):
     leaves = [n for n in nodes if not n['children']]
     if has_p and sum(n['path'] for n in leaves) != 1: fail('STAT_TREE_BRANCH_PROBABILITY_SUM')
     # highlightPaths: each path names the labels from the root's child down to a leaf; those branches are heavy and those leaves ringed (resolved here from the plan alone)
-    lit = []
+    lit, lit_color = [], {}
     raw_paths = chart.get('highlightPaths')
     if raw_paths is not None:
         if not isinstance(raw_paths, list) or not 1 <= len(raw_paths) <= 12: fail('STAT_TREE_HIGHLIGHT_INVALID')
         for path in raw_paths:
+            color = None
+            if isinstance(path, dict):
+                if set(path) - {'path', 'color'} or 'path' not in path: fail('STAT_TREE_HIGHLIGHT_INVALID')
+                color = path.get('color')
+                if color is not None and color not in DOT_PALETTE_LINE: fail('STAT_TREE_HIGHLIGHT_INVALID')
+                path = path['path']
             if not isinstance(path, list) or not 1 <= len(path) <= 3 or any(not isinstance(x, str) for x in path): fail('STAT_TREE_HIGHLIGHT_INVALID')
             cur = by_id['n0']
             for label in path:
@@ -1373,10 +1412,14 @@ def audit_tree(chart, doc):
                 cur = nxt[0]
             if cur['children'] or cur['id'] in lit: fail('STAT_TREE_HIGHLIGHT_INVALID')
             lit.append(cur['id'])
-    lit_branches = set()
+            if color: lit_color[cur['id']] = DOT_PALETTE_LINE[color]
+    lit_branches, branch_colors = set(), {}      # a branch is coloured when every highlighted leaf below it has the same colour
     for leaf in lit:
         cur = by_id[leaf]
-        while cur['parent'] is not None: lit_branches.add(cur['id']); cur = by_id[cur['parent']]
+        while cur['parent'] is not None: lit_branches.add(cur['id']); branch_colors.setdefault(cur['id'], set()).add(lit_color.get(leaf, '')); cur = by_id[cur['parent']]
+    def branch_stroke(node_id):
+        colours = branch_colors.get(node_id)
+        return next(iter(colours)) if colours and len(colours) == 1 and next(iter(colours)) else '#111'
     centres = {}
     for n in nodes:
         label = doc.by_id.get('node-' + n['id'])
@@ -1409,6 +1452,7 @@ def audit_tree(chart, doc):
         try: drawn_width = float(ln.get('stroke-width'))
         except (TypeError, ValueError): drawn_width = -1.0
         if abs(drawn_width - (BRANCH_WIDTH_HI if n['id'] in lit_branches else BRANCH_WIDTH)) > 0.01 or ln.get('data-highlight') != ('1' if n['id'] in lit_branches else None): doc.err('SC_BRANCH_HIGHLIGHT:' + n['id'])
+        if (ln.get('stroke') or '').lower() != (branch_stroke(n['id']) if n['id'] in lit_branches else '#111'): doc.err('SC_BRANCH_COLOR:' + n['id'])
         if n['id'] not in centres or n['parent'] not in centres: continue
         (px, py), (cx, cy) = centres[n['parent']], centres[n['id']]
         x1, y1, x2, y2 = num(ln, 'x1'), num(ln, 'y1'), num(ln, 'x2'), num(ln, 'y2')
@@ -1437,7 +1481,7 @@ def audit_tree(chart, doc):
         bx, by, bw, bh = box_of(label) if label is not None and label.get('data-box') else (centres[leaf][0] - 4, centres[leaf][1] - 4, 8, 8)
         rx, ry = num(ring, 'rx'), num(ring, 'ry')
         if abs(num(ring, 'cx') - (bx + bw / 2)) > LABEL_TOL or abs(num(ring, 'cy') - (by + bh / 2)) > LABEL_TOL or rx < bw / 2 or ry < bh / 2: doc.err('SC_LEAF_RING_PLACE:' + leaf)
-        if (ring.get('fill') or '') != 'none' or (ring.get('stroke') or '') != '#111': doc.err('SC_LEAF_RING_STYLE:' + leaf)
+        if (ring.get('fill') or '') != 'none' or (ring.get('stroke') or '').lower() != lit_color.get(leaf, '#111'): doc.err('SC_LEAF_RING_STYLE:' + leaf)
     paths = {l.get('data-leaf'): l for l in doc.label_role('path-probability')}
     column = chart.get('pathColumn')
     if column is not None and not isinstance(column, bool): fail('SC_PLAN_INVALID')

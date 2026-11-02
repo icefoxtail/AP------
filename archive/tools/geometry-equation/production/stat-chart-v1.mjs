@@ -846,7 +846,9 @@ function solveNormal(c){
     shades,symmetry};
 }
 // The dice predicate: a small expression grammar (integers, the two die letters, + - *, parentheses) compared to numbers; any/all/not combine.
+const dice_normalize=text=>text.replace(/(\d)\s*([a-z(])/g,'$1*$2');   // a cell expression may write 2a for 2*a (a number directly before a letter or a bracket)
 function exprTokens(text){
+  text=dice_normalize(text);
   const tokens=text.replace(/\s+/g,'').match(/\d+|[a-z]|[+\-*()]/g)||[];
   if(tokens.join('')!==text.replace(/\s+/g,''))bad('STAT_DICE_EXPR_INVALID');
   return tokens;
@@ -891,10 +893,16 @@ function predicate(p,vars,env){
 // highlightGroups [{highlight: condition | cells: [[col,row]...], tone: 1|2}] (E34): groups of cells in different greys (a cell in two groups is refused). colVar / rowVar: a lowercase letter
 // (written in the corner and used in conditions), null (nothing written) or a Hangul phrase (written beside the table); one that is not a letter is called a (across) or b (down) in conditions.
 function solveDice(c){
-  onlyKeys(c,['kind','faces','cell','highlight','highlightGroups','colVar','rowVar'],'STAT_CHART_PLAN_INVALID');
-  const faces=c.faces===undefined?6:intIn(c.faces,2,8,'STAT_DICE_FACES_INVALID');
+  onlyKeys(c,['kind','faces','cell','highlight','highlightGroups','colVar','rowVar','rowFaces','colFaces','cellExpr'],'STAT_CHART_PLAN_INVALID');
+  // a rectangular table (G16): colFaces and rowFaces list the values across and down (1 to 8 whole numbers each); without them the table is the square of `faces`
+  const rect=c.rowFaces!==undefined||c.colFaces!==undefined;
+  if(rect&&(c.faces!==undefined||c.rowFaces===undefined||c.colFaces===undefined))bad('STAT_DICE_FACES_INVALID');
+  const faces=rect?0:c.faces===undefined?6:intIn(c.faces,2,8,'STAT_DICE_FACES_INVALID');
+  const listOf=v=>{if(!Array.isArray(v)||v.length<1||v.length>8||new Set(v).size!==v.length)bad('STAT_DICE_FACES_INVALID');return v.map(x=>intIn(x,1,99,'STAT_DICE_FACES_INVALID'));};
+  const cols=rect?listOf(c.colFaces):[...Array(faces).keys()].map(i=>i+1),rows=rect?listOf(c.rowFaces):[...Array(faces).keys()].map(i=>i+1);
   const cell=c.cell===undefined?'PAIR':c.cell;
-  if(!['PAIR','SUM','PRODUCT','NONE'].includes(cell))bad('STAT_DICE_CELL_INVALID');
+  if(!['PAIR','SUM','PRODUCT','NONE','EXPR'].includes(cell))bad('STAT_DICE_CELL_INVALID');
+  if((cell==='EXPR')!==(c.cellExpr!==undefined)||(c.cellExpr!==undefined&&(typeof c.cellExpr!=='string'||c.cellExpr.length>20)))bad('STAT_DICE_CELL_INVALID');
   const nameOf=(v,fallback)=>{
     if(v===undefined)return {letter:fallback,show:'LETTER'};
     if(v===null)return {letter:fallback,show:'NONE'};
@@ -915,19 +923,21 @@ function solveDice(c){
       const tone=g.tone===undefined?1:g.tone;
       if(tone!==1&&tone!==2)bad('STAT_DICE_GROUP_INVALID');
       if(g.highlight!==undefined){checkPredicate(g.highlight,[colVar,rowVar]);return {tone,highlight:g.highlight};}
-      if(!Array.isArray(g.cells)||g.cells.length<1||g.cells.length>faces*faces)bad('STAT_DICE_GROUP_INVALID');
+      if(!Array.isArray(g.cells)||g.cells.length<1||g.cells.length>cols.length*rows.length)bad('STAT_DICE_GROUP_INVALID');
       const seen=new Set();
       for(const e of g.cells){
         if(!Array.isArray(e)||e.length!==2)bad('STAT_DICE_GROUP_INVALID');
-        const a=intIn(e[0],1,faces,'STAT_DICE_GROUP_INVALID'),b=intIn(e[1],1,faces,'STAT_DICE_GROUP_INVALID');
+        const a=intIn(e[0],1,99,'STAT_DICE_GROUP_INVALID'),b=intIn(e[1],1,99,'STAT_DICE_GROUP_INVALID');
+        if(!cols.includes(a)||!rows.includes(b))bad('STAT_DICE_GROUP_INVALID');
         if(seen.has(a*100+b))bad('STAT_DICE_GROUP_INVALID');
         seen.add(a*100+b);
       }
       return {tone,cells:g.cells.map(e=>[e[0],e[1]])};
     });
   }
+  if(cell==='EXPR')exprEval(dice_normalize(c.cellExpr),[colVar,rowVar],{[colVar]:1,[rowVar]:1});
   const cells=[];
-  for(let r=1;r<=faces;r++)for(let k=1;k<=faces;k++){
+  for(const r of rows)for(const k of cols){
     const env={[colVar]:k,[rowVar]:r};
     let highlighted=c.highlight===undefined?false:predicate(c.highlight,[colVar,rowVar],env),tone=0;
     if(groups){
@@ -935,11 +945,11 @@ function solveDice(c){
       if(hit.length>1)bad('STAT_DICE_GROUP_OVERLAP');
       highlighted=hit.length===1;tone=highlighted?hit[0].tone:0;
     }
-    cells.push({col:k,row:r,text:cell==='PAIR'?`(${k},${r})`:cell==='SUM'?String(k+r):cell==='PRODUCT'?String(k*r):'',highlighted,...(groups&&highlighted?{tone}:{})});
+    cells.push({col:k,row:r,text:cell==='PAIR'?`(${k},${r})`:cell==='SUM'?String(k+r):cell==='PRODUCT'?String(k*r):cell==='EXPR'?String(exprEval(dice_normalize(c.cellExpr),[colVar,rowVar],env)):'',highlighted,...(groups&&highlighted?{tone}:{})});
   }
   if(groups&&groups.some(g=>!cells.some(x=>x.highlighted&&x.tone===g.tone&&(g.highlight?predicate(g.highlight,[colVar,rowVar],{[colVar]:x.col,[rowVar]:x.row}):g.cells.some(e=>e[0]===x.col&&e[1]===x.row)))))bad('STAT_DICE_GROUP_EMPTY');
-  return {schemaVersion:MODEL_VERSION,kind:'DICE_TABLE',faces,cell,colVar,rowVar,...(col.show!=='LETTER'?{colLabel:col.show==='TEXT'?col.text:null}:{}),...(row.show!=='LETTER'?{rowLabel:row.show==='TEXT'?row.text:null}:{}),
-    highlight:c.highlight??null,...(groups?{highlightGroups:groups}:{}),cells,highlightedCount:cells.filter(x=>x.highlighted).length,total:faces*faces};
+  return {schemaVersion:MODEL_VERSION,kind:'DICE_TABLE',...(rect?{cols,rows}:{faces}),cell,...(cell==='EXPR'?{cellExpr:c.cellExpr}:{}),colVar,rowVar,...(col.show!=='LETTER'?{colLabel:col.show==='TEXT'?col.text:null}:{}),...(row.show!=='LETTER'?{rowLabel:row.show==='TEXT'?row.text:null}:{}),
+    highlight:c.highlight??null,...(groups?{highlightGroups:groups}:{}),cells,highlightedCount:cells.filter(x=>x.highlighted).length,total:cols.length*rows.length};
 }
 function solveTree(c){
   onlyKeys(c,['kind','root','showPathProbability','highlightPaths','pathColumn'],'STAT_CHART_PLAN_INVALID');
@@ -977,19 +987,23 @@ function solveTree(c){
   // every leaf at the same depth is not required, but the path probabilities of the leaves must add up to 1.
   if(hasP&&qcmp(leaves.map(n=>n.path).reduce(qadd,ZERO),ONE)!==0)bad('STAT_TREE_BRANCH_PROBABILITY_SUM');
   // highlightPaths [[label, label, ...]] (E34): each path names the labels from the root's child down to a leaf; its branches are drawn heavy and its leaf is ringed
-  const lit=[];
+  // an entry may also be {path:[labels],color} (G16): the path's last branch and its leaf ring are drawn in that C1 palette colour; a branch that several highlighted paths share is
+  // coloured only when all of them have the same colour (otherwise it stays the plain heavy line)
+  const lit=[],litColor=new Map();
   if(c.highlightPaths!==undefined){
     if(!Array.isArray(c.highlightPaths)||c.highlightPaths.length<1||c.highlightPaths.length>12)bad('STAT_TREE_HIGHLIGHT_INVALID');
-    for(const path of c.highlightPaths){
+    for(const entry of c.highlightPaths){
+      let path=entry,color=null;
+      if(isPlain(entry)){onlyKeys(entry,['path','color'],'STAT_TREE_HIGHLIGHT_INVALID');path=entry.path;if(entry.color!==undefined){if(!isPaletteName(entry.color))bad('STAT_TREE_HIGHLIGHT_INVALID');color=entry.color;}}
       if(!Array.isArray(path)||path.length<1||path.length>3||path.some(x=>typeof x!=='string'))bad('STAT_TREE_HIGHLIGHT_INVALID');
       let cur=byId.get('n0');
       for(const label of path){const next=cur.children.map(id=>byId.get(id)).filter(n=>n.label===label);if(next.length!==1)bad('STAT_TREE_HIGHLIGHT_INVALID');cur=next[0];}
       if(cur.children.length||lit.includes(cur.id))bad('STAT_TREE_HIGHLIGHT_INVALID');
-      lit.push(cur.id);
+      lit.push(cur.id);if(color)litColor.set(cur.id,color);
     }
     lit.sort((a,b)=>leaves.findIndex(n=>n.id===a)-leaves.findIndex(n=>n.id===b));
   }
-  return {schemaVersion:MODEL_VERSION,kind:'TREE',showPathProbability:c.showPathProbability===true,hasProbabilities:hasP,maxDepth:Math.max(...nodes.map(n=>n.depth)),...(lit.length?{highlightLeaves:lit}:{}),...(c.pathColumn===true?{pathColumn:true}:{}),
+  return {schemaVersion:MODEL_VERSION,kind:'TREE',showPathProbability:c.showPathProbability===true,hasProbabilities:hasP,maxDepth:Math.max(...nodes.map(n=>n.depth)),...(lit.length?{highlightLeaves:lit}:{}),...(litColor.size?{highlightColors:Object.fromEntries([...litColor.entries()].sort())}:{}),...(c.pathColumn===true?{pathColumn:true}:{}),
     nodes:nodes.map(n=>({id:n.id,parent:n.parent,depth:n.depth,label:n.label,p:n.p&&qstr(n.p),path:hasP&&!n.children.length?qstr(n.path):null,children:n.children})),leaves:leaves.map(n=>n.id)};
 }
 
@@ -1028,7 +1042,8 @@ const STYLE={
   leader:'stroke="#333" stroke-width="1" fill="none"',
   reflineDash:'stroke="#333" stroke-width="1.8" fill="none" stroke-dasharray="7 4"',trend:'stroke="#555" stroke-width="3.2" fill="none"',trendHead:'fill="#555" stroke="none"',
   meanLine:'stroke="#333" stroke-width="1.6" fill="none" stroke-dasharray="6 4"',medianLine:'stroke="#333" stroke-width="1.6" fill="none" stroke-dasharray="2 3"',
-  ...Object.fromEntries(PALETTE_NAMES.map(name=>['dot'+name,`fill="${PALETTE[name].line}" stroke="none"`]))
+  ...Object.fromEntries(PALETTE_NAMES.map(name=>['dot'+name,`fill="${PALETTE[name].line}" stroke="none"`])),
+  ...Object.fromEntries(PALETTE_NAMES.flatMap(name=>[['branchHi'+name,`stroke="${PALETTE[name].line}" stroke-width="3" fill="none"`],['markRing'+name,`fill="none" stroke="${PALETTE[name].line}" stroke-width="1.8"`]]))
 };
 const L=(id,role,cls,x1,y1,x2,y2,data={},layer=30)=>({t:'line',id,role,cls,x1:r6(x1),y1:r6(y1),x2:r6(x2),y2:r6(y2),data,layer});
 const rect=(id,role,cls,x,y,width,height,data={},layer=40)=>({t:'rect',id,role,cls,x:r6(x),y:r6(y),width:r6(width),height:r6(height),data,layer});
@@ -1316,27 +1331,31 @@ function scatterSpec(m,ctx){
   return {size:{width:compact?PANEL_W:W+extraWidth,height:H},prims,labels};
 }
 function diceSpec(m,ctx){
-  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,CELL=m.cell==='PAIR'?54:40,n=m.faces;
+  const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,CELL=m.cell==='PAIR'?54:40,cols=m.cols??[...Array(m.faces).keys()].map(i=>i+1),rows=m.rows??[...Array(m.faces).keys()].map(i=>i+1),nc=cols.length,nr=rows.length;
   // a variable written beside the table (a Hangul phrase) takes a band above the columns or left of the rows; letters stand in the corner
   const colText=typeof m.colLabel==='string',rowText=typeof m.rowLabel==='string',lineH=Math.ceil(1.5*fontPx);
-  const x0=SAFE+14+(rowText?Math.ceil(textWidth(m.rowLabel,fontPx))+10:0),y0=SAFE+14+(colText?lineH+6:0),width=x0+(n+1)*CELL+SAFE+14,height=y0+(n+1)*CELL+SAFE+14;
+  const x0=SAFE+14+(rowText?Math.ceil(textWidth(m.rowLabel,fontPx))+10:0),y0=SAFE+14+(colText?lineH+6:0),width=x0+(nc+1)*CELL+SAFE+14,height=y0+(nr+1)*CELL+SAFE+14;
   const colLetter=m.colLabel===undefined,rowLetter=m.rowLabel===undefined;
   const prims=[],labels=[];
   prims.push(rect('corner','head','head',x0,y0,CELL,CELL,{},40));
   if(colLetter||rowLetter)prims.push(L('corner-diagonal','rule','rule',x0,y0,x0+CELL,y0+CELL,{},41));
   if(colLetter)labels.push(math('corner-col','var','corner',m.colVar,m.colVar,'center','middle',x0+CELL*.72,y0+CELL*.3,{value:m.colVar,axis:'col'}));
   if(rowLetter)labels.push(math('corner-row','var','corner',m.rowVar,m.rowVar,'center','middle',x0+CELL*.28,y0+CELL*.7,{value:m.rowVar,axis:'row'}));
-  if(colText)labels.push(textLabel('name-col','var-name','corner',m.colLabel,'center','bottom',x0+CELL+n*CELL/2,y0-4,{value:m.colLabel,axis:'col'}));
-  if(rowText)labels.push(textLabel('name-row','var-name','corner',m.rowLabel,'end','middle',x0-8,y0+CELL+n*CELL/2,{value:m.rowLabel,axis:'row'}));
-  for(let k=1;k<=n;k++){
-    prims.push(rect(`head-col-${k}`,'head','head',x0+k*CELL,y0,CELL,CELL,{axis:'col',value:k},40),rect(`head-row-${k}`,'head','head',x0,y0+k*CELL,CELL,CELL,{axis:'row',value:k},40));
-    labels.push(math(`head-col-${k}-label`,'head-value',`head-col-${k}`,String(k),String(k),'center','middle',x0+(k+.5)*CELL,y0+CELL/2,{value:String(k),axis:'col'}));
-    labels.push(math(`head-row-${k}-label`,'head-value',`head-row-${k}`,String(k),String(k),'center','middle',x0+CELL/2,y0+(k+.5)*CELL,{value:String(k),axis:'row'}));
-  }
+  if(colText)labels.push(textLabel('name-col','var-name','corner',m.colLabel,'center','bottom',x0+CELL+nc*CELL/2,y0-4,{value:m.colLabel,axis:'col'}));
+  if(rowText)labels.push(textLabel('name-row','var-name','corner',m.rowLabel,'end','middle',x0-8,y0+CELL+nr*CELL/2,{value:m.rowLabel,axis:'row'}));
+  cols.forEach((k,i)=>{
+    prims.push(rect(`head-col-${k}`,'head','head',x0+(i+1)*CELL,y0,CELL,CELL,{axis:'col',value:k},40));
+    labels.push(math(`head-col-${k}-label`,'head-value',`head-col-${k}`,String(k),String(k),'center','middle',x0+(i+1.5)*CELL,y0+CELL/2,{value:String(k),axis:'col'}));
+  });
+  rows.forEach((k,j)=>{
+    prims.push(rect(`head-row-${k}`,'head','head',x0,y0+(j+1)*CELL,CELL,CELL,{axis:'row',value:k},40));
+    labels.push(math(`head-row-${k}-label`,'head-value',`head-row-${k}`,String(k),String(k),'center','middle',x0+CELL/2,y0+(j+1.5)*CELL,{value:String(k),axis:'row'}));
+  });
   for(const c of m.cells){
     const id=`cell-${c.col}-${c.row}`;
-    prims.push(rect(id,'cell',c.highlighted?(c.tone===2?'cellHi2':'cellHi'):'cell',x0+c.col*CELL,y0+c.row*CELL,CELL,CELL,{col:c.col,row:c.row,highlight:c.highlighted?(c.tone??1):0},40));
-    if(c.text)labels.push(math(id+'-label','cell-value',id,c.text,c.text,'center','middle',x0+(c.col+.5)*CELL,y0+(c.row+.5)*CELL,{value:c.text,col:c.col,row:c.row}));
+    const ci=cols.indexOf(c.col)+1,ri=rows.indexOf(c.row)+1;
+    prims.push(rect(id,'cell',c.highlighted?(c.tone===2?'cellHi2':'cellHi'):'cell',x0+ci*CELL,y0+ri*CELL,CELL,CELL,{col:c.col,row:c.row,highlight:c.highlighted?(c.tone??1):0},40));
+    if(c.text)labels.push(math(id+'-label','cell-value',id,c.text,c.text,'center','middle',x0+(ci+.5)*CELL,y0+(ri+.5)*CELL,{value:c.text,col:c.col,row:c.row}));
   }
   return {size:{width,height},prims,labels};
 }
@@ -1353,7 +1372,9 @@ function treeSpec(m,ctx){
   const fontPx=ctx?.fontPx??DEFAULT_FONT_PX;
   const rowH=treeRow(m,fontPx),c=treeCenters(m,rowH),leaves=m.leaves.length,width0=TREE_X0+m.maxDepth*TREE_COLW+(m.showPathProbability?190:80),height=TREE_TOP*2+(leaves-1)*rowH;
   const labels=[],prims=[],byIdNode=new Map(m.nodes.map(n=>[n.id,n])),lit=new Set(m.highlightLeaves??[]),litBranch=new Set();
-  for(const id of lit)for(let cur=byIdNode.get(id);cur&&cur.parent!==null;cur=byIdNode.get(cur.parent))litBranch.add(cur.id);
+  const branchColors=new Map();   // branch (by its child node) -> the colours of the highlighted leaves below it ('' for a leaf without a colour)
+  for(const id of lit)for(let cur=byIdNode.get(id);cur&&cur.parent!==null;cur=byIdNode.get(cur.parent)){litBranch.add(cur.id);if(!branchColors.has(cur.id))branchColors.set(cur.id,new Set());branchColors.get(cur.id).add(m.highlightColors?.[id]??'');}
+  const branchColor=id=>{const set=branchColors.get(id);return set&&set.size===1&&[...set][0]!==''?[...set][0]:null;};
   const pathTex=n=>{const chain=[];for(let id=n.id;id;id=byIdNode.get(id).parent)chain.unshift(byIdNode.get(id));return DISPLAY+chain.slice(1).map(x=>qfrac(P(x.p))).join('\\times ')+'='+qfrac(P(n.path));};
   // a frame too narrow for a leaf's label and its path probability (a product of three fractions is wide) grows to hold them
   let need=0;
@@ -1370,9 +1391,9 @@ function treeSpec(m,ctx){
       const asMath=/^[A-Za-z0-9]{1,3}$/.test(n.label);
       labels.push(asMath?math(`node-${n.id}`,'node',n.id,n.label,n.label,'center','middle',p.x,p.y,{node:n.id,cx:p.x,cy:p.y,value:n.label}):textLabel(`node-${n.id}`,'node',n.id,n.label,'center','middle',p.x,p.y,{node:n.id,cx:p.x,cy:p.y,value:n.label}));
     }else prims.push({t:'circle',id:`node-${n.id}`,role:'point',cls:'dot',cx:p.x,cy:p.y,r:4,data:{node:n.id},layer:70});
-    if(lit.has(n.id))prims.push({t:'ellipse',id:`leaf-ring-${n.id}`,role:'leaf-ring',cls:'markRing',cx:p.x,cy:p.y,rx:9,ry:9,data:{leaf:n.id},layer:65});
+    if(lit.has(n.id))prims.push({t:'ellipse',id:`leaf-ring-${n.id}`,role:'leaf-ring',cls:'markRing'+(m.highlightColors?.[n.id]??''),cx:p.x,cy:p.y,rx:9,ry:9,data:{leaf:n.id},layer:65});
     if(n.parent!==null){
-      prims.push({t:'branch',id:`branch-${n.id}`,role:'branch',cls:litBranch.has(n.id)?'branchHi':'branch',parent:n.parent,child:n.id,data:{parent:n.parent,child:n.id,...(litBranch.has(n.id)?{highlight:1}:{})},layer:30});
+      prims.push({t:'branch',id:`branch-${n.id}`,role:'branch',cls:litBranch.has(n.id)?'branchHi'+(branchColor(n.id)??''):'branch',parent:n.parent,child:n.id,data:{parent:n.parent,child:n.id,...(litBranch.has(n.id)?{highlight:1}:{})},layer:30});
       if(m.hasProbabilities)labels.push({id:`branch-${n.id}-p`,role:'branch-probability',owner:`branch-${n.id}`,kind:'MATH',tex:DISPLAY+qfrac(P(n.p)),plain:n.p,anchor:{x:0,y:0,ax:'center',ay:'middle'},extra:{value:n.p,child:n.id},placement:'branch'});
     }
     if(!n.children.length&&m.showPathProbability){
