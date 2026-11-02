@@ -545,7 +545,7 @@ def _fit_rational_overview(plan):
     # G18a: the drawing engine adds (0,0), (1,0) and (0,1) to the frame as axis facts and silently widens the whole frame by 8% when one of them is not strictly inside.
     # A rational with k<0 (left branch above, right branch below the asymptote) can end below y=1, which made the drawn frame larger than the plan's frame
     # and every dashed asymptote, branch end and clip edge missed the audit. Keep (0,1) comfortably inside the planned frame, so the two frames stay one.
-    if ymax<1.0+.06*(ymax-ymin):ymax=1.0+.12*(ymax-ymin)
+    if ymax<1.0+.005*(ymax-ymin):ymax=1.0+.12*(ymax-ymin)   # same trigger as the engine (ymax<=1) plus a hair, so frames of rationals whose ymax is already above 1 are untouched
     if not all(math.isfinite(value) and abs(value)<=1e6 for value in (lo,hi,ymin,ymax)):raise ValueError('UNSUPPORTED_RATIONAL_NUMERIC_SCOPE')
     features={'schemaVersion':'RATIONAL_LINEAR_OVER_LINEAR_FEATURES_v1','singularity':singularity,'horizontalAsymptoteY':_fraction_text(horizontal),'xIntercept':x_intercept}
     policy={'schemaVersion':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_POLICY_v1','sourceDomain':'ALL_REALS_WITH_DENOMINATOR_EXCLUSION','degreeGrammar':'LINEAR_OVER_LINEAR','singularityPolicy':'ONE_SIMPLE_REAL_POLE_OR_ONE_REMOVABLE_HOLE','horizontalAsymptotePolicy':'EXACT_LEADING_COEFFICIENT_RATIO','minimumFeatureSeparationCssPx':1,'holeMarkerRadiusIntrinsicPx':4,'minimumHoleMarkerDiameterCssPx':4.5}
