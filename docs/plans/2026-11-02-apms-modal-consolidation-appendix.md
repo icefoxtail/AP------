@@ -182,3 +182,8 @@
 | 리포트 센터 넓은 오버레이 | `report-center.js:1808` | P 후보. 별도 계획서 필요 |
 | 학부모 리포트 | `report-print.js:1128` | `#modal-body` 직접 채움. 인쇄 문서 |
 
+
+## 결정 기록 (2026-11-02, 사용자)
+
+- **보호자 연락처 화면은 정리 후보로 삭제한다.** `renderParentContactSection`과 그것만 부르는 `renderStudentContactHistoryTab`·`openStudentParentManageModal`(위 35번), 보호자 연락처 추가·수정·연락 설정·연락 이력 모달이 대상이다. 화면에서 닿는 입구가 없고(M6 작업 중 확인), 보호자 번호는 학생 수정 폼(`student-edit.js`)에서 고친다. 삭제는 정리 후보 삭제 PR에서 하고, 그때 `eie-timetable-student-profile-ap-parity.test.js`의 노출 금지 검사는 "구역 없음"으로 바뀌어도 의미가 유지되는지 확인한다. 이유: 사용자 결정 — 쓰지 않는 화면을 인라인으로 옮기는 것은 선생님에게 도움이 안 됨.
+- 모달 통합 4묶음이 남긴 추가 정리 후보: `openExamScoreMenu`(ui.js), `openQrSubmitStatus`(qr-omr.js), 옛 교재 모달 3종(지금은 교재 관리 모드 래퍼), `openClassAttendance`·`openClassHomework`·`openClassroomMoreMenu`(classroom.js), `openParentReport`(report-print.js), `renderAdminStudentSearch`(dashboard.js), `student-edit.js`의 `openDischargedStudents`(dashboard-admin.js 정의에 덮임).
