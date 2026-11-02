@@ -67,6 +67,16 @@ function buildFixture({ classCount = 5, studentLevel = 'normal' } = {}) {
             class_students.push({ class_id: c.id, student_id: id });
         }
     });
+    // 퇴원생 현황용: 올해 퇴원한 학생 몇 명(기존 반을 유지한 채 상태만 '퇴원')
+    const year = new Date().getFullYear();
+    if (classes.length) {
+        for (let i = 0; i < (studentLevel === 'many' ? 12 : 4); i++) {
+            const c = classes[i % classes.length];
+            const id = `w${i}`;
+            students.push({ id, name: NAMES[(i + 5) % NAMES.length] + '(퇴원)', grade: c.grade, school_name: '왕지중', status: '퇴원', withdrawn_at: `${year}-0${(i % 8) + 1}-1${i % 9}`, created_at: `${year - 1}-03-02`, student_pin: '1234' });
+            class_students.push({ class_id: c.id, student_id: id });
+        }
+    }
     if (studentLevel !== 'few') {
         students.slice(0, 3).forEach((s, i) => {
             const n = studentLevel === 'many' ? 12 : 2;
@@ -327,6 +337,66 @@ async function behaviourClass(browser, base) {
     }
 }
 
+// ------------------------------------------------------------------ M4 재등원 (퇴원생 현황 안 같은 자리 폼)
+async function behaviourRestore(browser, base) {
+    const respond = ({ method, apiPath, body, fixtureData }) => {
+        const m = /^students\/([^/]+)\/restore$/.exec(apiPath);
+        if (method === 'PATCH' && m) {
+            const st = fixtureData.students.find(x => x.id === m[1]);
+            return { success: true, student: Object.assign({}, st, { status: '재원' }), class_student: { student_id: m[1], class_id: body.class_id }, student_enrollments: [] };
+        }
+        return undefined;
+    };
+    const { context, page, errors, calls } = await openApp(browser, base, DEVICES[0], 'light', 'admin', { classCount: 5, studentLevel: 'normal' }, { respond });
+    try {
+        page.on('dialog', dialog => dialog.accept());
+        const baseline = initialDataCalls(calls);
+        await page.evaluate(() => openWithdrawalReport());
+        await page.waitForTimeout(600);
+        const rows = () => page.locator('#modal-body .ap-withdrawal-row').count();
+        const before = await rows();
+        assert.ok(before >= 2, '퇴원생 행이 있다');
+        const title = await page.locator('#modal-title').innerText();
+        await page.locator('#modal-body .ap-withdrawal-row').first().getByRole('button', { name: '재등원', exact: true }).click();
+        await page.waitForTimeout(250);
+        assert.equal(await page.locator('#restore-class').count(), 1, '행 아래 폼이 펼쳐진다');
+        assert.equal(await page.locator('#modal-title').innerText(), title, '모달을 갈아 끼우지 않는다(목록이 그대로)');
+        assert.equal(await page.evaluate(() => modalStepStack.length), 0);
+        const unlabeled = await page.evaluate(() => ['restore-class', 'restore-date'].filter(id => !document.querySelector(`label[for="${id}"]`)));
+        assert.deepEqual(unlabeled, []);
+        const info = await inspect(page);
+        assert.deepEqual(info.smallText, [], '재등원 목록 12px 미만 글자 없음');
+        await page.screenshot({ path: path.join(shotDir || '/tmp', 'restore-inline-phone.png') }).catch(() => {});
+        // 같은 행 다시 누르면 접힘
+        await page.locator('#modal-body .ap-withdrawal-row').first().getByRole('button', { name: '재등원', exact: true }).click();
+        assert.equal(await page.locator('#restore-class').count(), 0);
+        await page.locator('#modal-body .ap-withdrawal-row').first().getByRole('button', { name: '재등원', exact: true }).click();
+        // 반을 고르지 않으면 보내지 않는다
+        await page.selectOption('#restore-class', '');
+        let start = calls.length;
+        await page.getByRole('button', { name: '재등원 처리' }).click();
+        await page.waitForTimeout(200);
+        assert.equal(writeCalls(calls, start).length, 0, '반을 고르지 않으면 전송하지 않음');
+        await page.selectOption('#restore-class', 'c2');
+        start = calls.length;
+        await page.getByRole('button', { name: '재등원 처리' }).click();
+        await page.waitForTimeout(500);
+        const w = writeCalls(calls, start);
+        assert.equal(w.length, 1);
+        assert.equal(w[0].method, 'PATCH');
+        assert.match(w[0].path, /^students\/w\d+\/restore$/);
+        assert.deepEqual(Object.keys(w[0].body).sort(), ['class_id', 'reenrollment_date']);
+        assert.equal(w[0].body.class_id, 'c2');
+        assert.equal(await isOpen(page), true, '저장 뒤 모달이 그대로 열려 있다');
+        assert.equal(await rows(), before - 1, '목록에서 그 학생이 빠진다');
+        assert.equal(await page.locator('#restore-class').count(), 0);
+        assert.equal(initialDataCalls(calls), baseline, '재등원 뒤 전체 재조회 없음');
+        assert.deepEqual(errors, [], 'page errors: ' + errors.join(' | '));
+    } finally {
+        await context.close();
+    }
+}
+
 // ------------------------------------------------------------------ 스크린샷
 async function shoot(browser, base) {
     fs.mkdirSync(shotDir, { recursive: true });
@@ -366,6 +436,11 @@ async function shoot(browser, base) {
                 await page.waitForTimeout(400);
                 await page.locator('#ws-class-add-btn').click();
             }, 800);
+            await run('restore-inline', { classCount: 5 }, 'admin', async page => {
+                await page.evaluate(() => openWithdrawalReport());
+                await page.waitForTimeout(600);
+                await page.locator('#modal-body .ap-withdrawal-row').first().getByRole('button', { name: '재등원', exact: true }).click();
+            }, 700);
             for (const level of studentStates) {
                 const scenario = global.__wsStudentScenarios && global.__wsStudentScenarios[0];
                 if (scenario) await scenario(run, level);
@@ -383,6 +458,8 @@ async function shoot(browser, base) {
         if (!process.env.WS_SKIP_BEHAVIOUR) {
             await behaviourClass(browser, base);
             console.log('M4 반 관리 작업 화면 동작 검사 통과');
+            await behaviourRestore(browser, base);
+            console.log('M4 재등원 같은 자리 폼 동작 검사 통과');
             if (typeof global.__wsStudentBehaviour === 'function') {
                 await global.__wsStudentBehaviour(browser, base, { openApp, isOpen, initialDataCalls, writeCalls, DEVICES });
                 console.log('M6 학생 상세 동작 검사 통과');

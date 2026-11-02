@@ -93,3 +93,20 @@ test('M4 wsClassApplyRow mirrors server visibility (teacher cannot see classes o
     assert.equal(ctx.state.db.classes.find(c => c.id === 'c3').name, 'C', 'partial row keeps existing fields');
     assert.equal(ctx.state.db.timetable_classes.length, 1, 'hidden class leaves the timetable list');
 });
+
+test('M4 re-enrollment opens inline in the withdrawal report instead of replacing the modal, same save and payload', () => {
+    const restore = stripComments(read('apmath/js/ws-student-restore.js'));
+    assert.doesNotMatch(restore, /showModal\(|showModalStep\(|closeModal\(/, 'inline form never swaps or closes the modal');
+    for (const id of ['restore-class', 'restore-date']) {
+        assert.ok(restore.includes(`id="${id}"`) && restore.includes(`for="${id}"`), id + ' has a label');
+    }
+    assert.match(restore, /data-student-reenrollment=/);
+    assert.match(restore, /handleRestore\.confirm\(/);
+    const edit = read('apmath/js/student-edit.js');
+    assert.match(slice(edit, 'async function handleRestore(sid)', 'handleRestore.confirm = async'), /wsRestoreIsReportOpen\(\) && wsRestoreToggleInline\(sid\)/);
+    // 저장 payload·API는 그대로
+    assert.match(edit, /api\.patch\(`students\/\$\{sid\}\/restore`, \{\s*class_id: classId,\s*reenrollment_date: reenrollmentDate\s*\}\)/);
+    // 목록 안 폼의 저장 성공은 모달을 닫았다 여는 대신 같은 목록을 다시 그린다
+    assert.match(slice(edit, 'handleRestore.confirm = async', 'function sortClassesForStudentModal('), /if \(inlineSave && typeof wsRestoreAfterSave === 'function'\)/);
+    assert.match(index, /js\/ws-student-restore\.js/);
+});

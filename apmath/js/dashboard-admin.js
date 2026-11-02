@@ -585,7 +585,7 @@ function renderWithdrawalReportModal() {
                 <button class="btn" type="button" onclick="hideDischargedStudent('${apEscapeHtml(student.id)}')">숨김</button>
             </div>` : '';
         return `
-            <article class="ap-withdrawal-row">
+            <article class="ap-withdrawal-row" data-student-id="${apEscapeHtml(student.id)}">
                 <div class="ap-withdrawal-row__date">${apEscapeHtml(row.withdrawnDate)}</div>
                 <div class="ap-withdrawal-row__body">
                     <div class="ap-withdrawal-row__name">${apEscapeHtml(student.name || '')}</div>
