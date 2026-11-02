@@ -11,7 +11,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="AP Math">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <!-- 글꼴은 화면을 막지 않고, 첫 화면이 그려져 한가해진 뒤에 적용한다(처음엔 시스템 글꼴, 이어서 Pretendard로 바뀜). dynamic-subset은 쓰는 글자 조각만 받는다. -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="var l=this,f=function(){l.media='all'};window.requestIdleCallback?requestIdleCallback(f,{timeout:2500}):setTimeout(f,400)">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
     <style>
         /* =========================================
            [Polish] Light Mode Palette (미니멀리즘)
@@ -647,7 +650,7 @@
             padding: 16px;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.25s ease;
+            transition: opacity 0.12s ease; /* js/ui.js APMS_MODAL_CLOSE_MS와 같게 */
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
         }
@@ -707,7 +710,7 @@
             overflow: hidden;
             transform: translateY(40px) scale(0.98);
             opacity: 0;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.12s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* js/ui.js APMS_MODAL_CLOSE_MS와 같게 */
             display: flex;
             flex-direction: column;
             max-height: 90vh;
@@ -993,13 +996,13 @@
       select, textarea { font-size:16px !important; }
     }
     </style>
-    <link rel="stylesheet" href="./css/apms-theme-override.css">
+    <link rel="stylesheet" href="./css/apms-theme-override.css?v=20261102-perf-1">
     <link rel="stylesheet" href="./css/apms-ui-foundation.css">
     <link rel="stylesheet" href="./css/sidebar-foundation.css?v=20261102-nav-n1-2">
     <link id="dashboard-foundation-css" rel="stylesheet" href="./css/dashboard-foundation.css">
     <link rel="stylesheet" href="./css/classroom-foundation.css">
     <link rel="stylesheet" href="./css/apms-unified-modal.css">
-    <link rel="stylesheet" href="./css/ws-exam.css?v=20261102-nav-n1-2">
+    <link rel="stylesheet" href="./css/ws-exam.css?v=20261102-perf-1">
     <link rel="stylesheet" href="./css/ws-student.css?v=20261102-ws-student-1">
     <link rel="stylesheet" href="./css/timetable-months.css">
     <!-- APMS 웜 테마: .apms-warm-scope 하위에 적용. <body>에 부여 → APMATH 앱 전체
@@ -1064,8 +1067,8 @@
     <!-- vendor(chart.js/html2canvas/xlsx)는 첫 사용 시 loadVendorScriptOnce()로 지연 로드 -->
     <script defer src="../shared/js/wangji-owner-auth-bridge.js"></script>
     <script defer src="js/core.js?v=20261102-cleanup-2"></script>
-    <script defer src="js/apms-class-label.js"></script>
-    <script defer src="js/ui.js?v=20261102-cleanup-1"></script>
+    <script defer src="js/apms-class-label.js?v=20261102-perf-2"></script>
+    <script defer src="js/ui.js?v=20261102-perf-1"></script>
     <script defer src="js/report-text.js?v=20261102-cleanup-1"></script>
     <script defer src="../archive/archive-asset-base.js?v=20261030-s21-1"></script>
     <script defer src="js/archive-render.js"></script>
@@ -1073,7 +1076,7 @@
     <script defer src="js/report-print.js?v=20261102-cleanup-1"></script>
     <script defer src="js/qr-omr.js?v=20261102-cleanup-1"></script>
     <script defer src="js/ws-exam-data.js?v=20261102-1"></script>
-    <script defer src="js/ws-exam-workspace.js?v=20261102-1"></script>
+    <script defer src="js/ws-exam-workspace.js?v=20261102-perf-1"></script>
     <script defer src="js/student.js?v=20261102-cleanup-2"></script>
     <script defer src="js/student-edit.js?v=20261102-cleanup-1"></script>
     <script defer src="js/ws-student-class.js?v=20261102-ws-student-1"></script>
@@ -1083,7 +1086,7 @@
     <script defer src="js/clinic-recommendations.js?v=20261029-unified-units-1"></script>
     <script defer src="js/clinic-assessment.js?v=20261026-clinic-repeat-2"></script>
     <script defer src="js/clinic-repeat.js?v=20261026-clinic-repeat-2"></script>
-    <script defer src="js/clinic-print.js?v=20261102-ws-clinic-1"></script>
+    <script defer src="js/clinic-print.js?v=20261102-perf-1"></script>
     <script defer src="js/ws-clinic-shell.js?v=20261102-ws-clinic-1"></script>
     <script defer src="js/ws-clinic-similar.js?v=20261102-ws-clinic-1"></script>
     <script defer src="js/management.js?v=20261102-cleanup-1"></script>
@@ -1103,7 +1106,7 @@
     <script defer src="js/dashboard.js?v=20261102-cleanup-1"></script>
     <script defer src="js/study-material-wrong.js"></script>
     <script defer src="js/nav-quickfind.js?v=20261102-n3-1"></script>
-    <script defer src="app.js"></script>
+    <script defer src="app.js?v=20261102-perf-1"></script>
     <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {

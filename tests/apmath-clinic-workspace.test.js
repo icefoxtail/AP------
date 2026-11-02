@@ -50,7 +50,7 @@ check('옛 진입점은 얇은 래퍼로 남아 같은 작업 화면을 연다(2
 check('출력 센터는 모달을 먼저 열고(자리에서 로딩) 늦게 온 응답이 다른 반 화면을 덮지 못한다', () => {
     const body = functionBody(clinicPrint, 'async function openClinicPrintCenter(');
     const begin = body.indexOf('wsClinicBeginPrint(classId)');
-    const firstAwait = body.indexOf('await clinicPrintRefreshClassAssignments');
+    const firstAwait = body.indexOf('await Promise.all([');
     const guard = body.indexOf('wsClinicIsCurrent(wsToken)');
     const mount = body.indexOf('wsClinicMountPrint(wsToken');
     assert.ok(begin > 0 && begin < firstAwait, '껍데기(불러오는 중)를 API 대기보다 먼저 연다');

@@ -283,11 +283,12 @@ test('글자 크기 변수는 한 벌(--ap-font-*)이고 12px 아래 값이 없�
     for (const [, name, px] of defs) assert.ok(Number(px) >= 12, `--ap-font-${name} ${px}px < 12px`);
 });
 
-test('Pretendard를 APMS와 플래너도 학생 포털·숙제와 같은 CDN·방식으로 불러온다', () => {
-    const link = 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css';
+test('Pretendard를 APMS·플래너·숙제·학생 포털이 같은 CDN·같은 고정 버전(비차단)으로 불러온다', () => {
+    const link = 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css';
     assert.ok(index.includes(link), 'apmath/index.html');
     assert.ok(planner.includes(link), 'apmath/planner/index.html');
     assert.ok(read('apmath/homework/index.html').includes(link), '기준: 숙제');
+    assert.ok(read('apmath/student/index.html').includes(link), '학생 포털');
 });
 
 // ---------- 대비 ----------
