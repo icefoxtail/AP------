@@ -4238,7 +4238,7 @@ def _mc_row(curve):
             row['radicand']=[_mc_text(value) for value in curve['radicand']];row['amplitude']=_mc_text(curve['amplitude']);row['offset']=_mc_text(curve['offset'])
             boundary=-curve['radicand'][0]/curve['radicand'][1];lo,hi=curve['interval']
             start=lo if curve['radicand'][1]>0 else hi
-            row['start']={'x':_mc_text(boundary),'y':_mc_text(curve['offset']),'drawn':bool(start==boundary)}
+            row['start']={'x':_mc_text(boundary),'y':_mc_text(abs(curve['offset']) if curve.get('abs') else curve['offset']),'drawn':bool(start==boundary)}   # |f| starts at |offset|
     if curve.get('inverseOf') is not None:row['inverseOf']=curve['inverseOf']
     if curve.get('abs'):row['abs']=True
     for key,value in (curve.get('look') or {}).items():row[key]=value

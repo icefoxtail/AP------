@@ -291,7 +291,7 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
     const labelErrors=[],ownerId=label.tickOwner,ownerMatches=capture.geometry.filter(v=>v.id===ownerId&&v.kind==='tick'),owner=ownerMatches.length===1?ownerMatches[0]:null;
     const axisMatches=capture.geometry.filter(v=>v.id===`${label.tickAxis}-axis`&&v.kind==='axis'),axis=axisMatches.length===1?axisMatches[0]:null;
     const labelVisibility=visibleTickLabel(label),ownerVisibility=owner?visibleGeometry(owner):null,axisVisibility=axis?visibleGeometry(axis):null;
-    const tickValue=strictFiniteNumber(label.tickValue),primitiveValue=strictFiniteNumber(owner?.value),displayValue=strictFiniteNumber(normalized(label.tickDisplayValue)),piValue=label.tickPiValue??null;
+    const tickValue=strictFiniteNumber(label.tickValue),primitiveValue=strictFiniteNumber(owner?.value),displayValue=(text=>{const fraction=/^(-?\d+)\/(\d+)$/.exec(text);return fraction&&Number(fraction[2])>0?strictFiniteNumber(String(Number(fraction[1])/Number(fraction[2]))):strictFiniteNumber(text);})(normalized(label.tickDisplayValue)),piValue=label.tickPiValue??null;
     const fail=(code)=>{labelErrors.push(`${code}:${label.id}`);errors.push(`${code}:${label.id}`);};
     if(label.kind!=='TICK_LABEL')fail('TICK_LABEL_KIND_MISMATCH');
     if(!ownerId||ownerMatches.length!==1)fail('TICK_LABEL_OWNER_MISSING_OR_AMBIGUOUS');
@@ -408,8 +408,8 @@ export function analyzeRenderedLayout(capture,{textFreeFigure=capture?.textFree=
   const missingGlyphCount=capture.labels.reduce((s,v)=>s+v.missingGlyphCount,0);
   for(const leader of capture.geometry.filter(v=>v.kind==='leader'))for(const other of capture.geometry.filter(v=>v.id!==leader.id&&v.points)) {
     if(publication&&isOwnRegionExit(leader,other,capture.geometry))continue;
-    // G7c: a curve-name leader (leaderOnly label, id *-curve-name-owner-leader) is a thin guide that may cross the axes, ticks and dashed guides, never a curve or a line.
-    if(/-curve-name-owner-leader$/.test(leader.id)&&(/^(x|y)-axis$|^tick-[xy]-|-guide(-[xy])?$|^overlay-guide-/.test(String(other.id))))continue;
+    // G7c: a curve-name leader (leaderOnly label, id *-curve-name-owner-leader) is a thin guide that may cross the axes, ticks and dashed guides, never a curve or a line. (G18c) So may a point callout's leader (overlay-callout-*): the layout looks for a place that crosses nothing first and falls back to the axes only when the figure leaves none.
+    if((/-curve-name-owner-leader$/.test(leader.id)||/^overlay-callout-.+-owner-leader$/.test(leader.id))&&(/^(x|y)-axis$|^tick-[xy]-|-guide(-[xy])?$|^overlay-guide-/.test(String(other.id))))continue;
     if(leader.points.some((p,i)=>i>0&&other.points.some((q,j)=>j>0&&properCross(leader.points[i-1],p,other.points[j-1],q)))){criticalCollisionCount++;errors.push('LEADER_CROSSING:'+leader.id+':'+other.id);}
   }
   for(const g of capture.geometry){if(!contains(capture.svg,expand(g.client,(g.strokeWidthPx??0)/2))){overflowCount++;errors.push('GEOMETRY_VIEWPORT_CLIPPING:'+g.id);}}

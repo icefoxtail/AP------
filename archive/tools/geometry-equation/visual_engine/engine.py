@@ -429,7 +429,7 @@ def prepare(spec):
     if pair_features is not None:
         if pair_features.get('schemaVersion')!='EXP_LOG_PAIR_FEATURES_v1':raise ValueError('EXP_LOG_PAIR_FEATURE_INVENTORY_REQUIRED')
         for row in pair_features.get('curves',[]):critical.append((float(Fraction(row['referencePoint']['x'])),float(Fraction(row['referencePoint']['y']))))
-    if isinstance(axis_option,bool) and axis_option:critical.extend([(0,0),(1,0),(0,1)])
+    if isinstance(axis_option,bool) and axis_option:critical.extend([(0,0)] if spec['viewport'].get('declaredScale') is True else [(0,0),(1,0),(0,1)])   # (G18c) an author-declared axisScale frame keeps its proportion: no 8 % widening for the unit points (0,1) / (1,0) that the window may not reach
     vp=for_spec(spec,critical)
     if not vp.equal and any(isinstance(v,(Circle,CircularArc)) for v in geometry.values()):raise ValueError('CIRCLE_REQUIRES_EQUAL_UNITS')
     primitives=[];labels=[];obstacles=[];sampling=[]
@@ -493,7 +493,7 @@ def prepare(spec):
             # A plain Korean title (a name with its unit) is a text label that must find room (never suppressed); the letter is a math label.
             if title is not None:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':title,'layoutText':title,'font':13,'priority':4,'allowSuppress':False,'math':False,'bindText':True})
             else:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':text,'font':13,'priority':4,'allowSuppress':True,'math':True})
-        visible_axes=[]
+        visible_axes=[];fraction_text={}
         if show_x:visible_axes.append(('x',xmin,xmax))
         if show_y:visible_axes.append(('y',ymin,ymax))
         for axis,lo,hi in visible_axes:
@@ -502,6 +502,8 @@ def prepare(spec):
                 values=[(index*step,index) for index in range(math.ceil(lo/step),math.floor(hi/step)+1)]
             else:
                 values=[(float(Fraction(str(raw_value))),None) for raw_value in axis_tick_values.get(axis,[])]
+                # (G18c) a tick written as a fraction string ('2/9') is shown as that fraction, not as the decimal 0.2222222222
+                fraction_text.update({(axis,float(Fraction(str(raw_value)))):str(Fraction(str(raw_value))) for raw_value in axis_tick_values.get(axis,[]) if isinstance(raw_value,str) and '/' in raw_value and Fraction(str(raw_value)).denominator!=1})
             reference_positions=[]
             for feature in (exponential_features,logarithmic_features):
                 if isinstance(feature,dict) and isinstance(feature.get('referencePoint'),dict):
@@ -524,7 +526,7 @@ def prepare(spec):
                     oid='model-x-unit' if axis=='x' else 'model-y-unit'
                     if axis_tick_values is not None and not any(item['id']==oid for item in primitives):primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
                 else:primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
-                text=display_token.replace('-','−');tick_pi=None
+                text=fraction_text.get((axis,value),display_token).replace('-','−');tick_pi=None
                 if tick_pi_labels is not None:
                     matches=[row for row in tick_pi_labels if axis=='x' and abs(float(row['value'])-value)<=1e-9]
                     if len(matches)!=1:raise ValueError('TICK_PI_LABEL_MISMATCH')
@@ -1288,7 +1290,7 @@ def prepare(spec):
                 own=[thin(row['points']) for row in curve_rows if owns(row['id'],ident)]
                 if not own:raise ValueError('NEAR_CURVE_NOT_DRAWN:'+label['id'])
                 others=[thin(row['points']) for row in curve_rows if not owns(row['id'],ident) and not emphasis(row['id'])]
-                label['nearCurve']={'own':own,'others':others,'end':label.get('nearEnd')=='END'}
+                label['nearCurve']={'own':own,'others':others,'end':label.get('nearEnd')=='END','id':ident}
             else:
                 ident=label['nearLine']
                 own=next((row for row in asymptote_rows if row['id']==ident),None)

@@ -173,5 +173,12 @@ class Observer(unittest.TestCase):
             node.set('points',' '.join(f'{values[i]},{2*origin-values[i+1]}' for i in range(0,len(values),2)))
         self.assertEqual(self.check('abs',unfold)['status'],'FAIL')
 
+class DeclaredScale(unittest.TestCase):
+    def test_a_declared_axis_scale_frame_is_not_widened_for_the_unit_points(self):
+        from graph_observer import _ov_final_window
+        window=[-1,7,-0.15,0.6]   # a density graph: the unit point (0,1) is far above the window
+        self.assertNotEqual(_ov_final_window(window),window)                       # the old rule widens it (the ratio of the two axes would change)
+        self.assertEqual(_ov_final_window(window,{'axisScale':{'x':1,'y':6}}),window)
+
 if __name__=='__main__':
     unittest.main()

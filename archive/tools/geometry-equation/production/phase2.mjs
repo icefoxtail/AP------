@@ -1193,7 +1193,7 @@ function piecewisePolynomialSpec(plan,id){
   const bandCenters=Object.fromEntries(rows.flatMap((row,r)=>row.map((labelId,k)=>[labelId,[r<lineLabels.length||panelLabels.length===1||columns===1?canvas.width/2:canvas.width*(k?.72:.28),rowCenters[r]]])));
   // A piecewise reference curve's own domain ends are drawn as hollow/filled dots by the engine (their own ids, never the function's).
   const referenceIntervalFeatures=refCurves.filter(curve=>curve.sourceInterval).map(curve=>({id:curve.id,...curve.sourceInterval}));
-  return {id,visualType:'function_graph',viewport:{...graphViewport(v,{...canvas,height:canvas.height+bandExtra}),topInset:canvas.topInset+bandExtra,...((p.axisRatio??1)===1?{equalUnits:true}:{})},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts({axisTickValues:p.axisTickValues??{x:[],y:[]}}),formulaPlacement:'HEADER_BAND',equationLabelCenters:{...(headerPx?{formula:[canvas.width/2,72]}:{}),...bandCenters},...(p.intervalFeatures?{intervalFeatures:p.intervalFeatures,intervalFeaturePolicy:p.intervalFeaturePolicy}:{}),...(referenceIntervalFeatures.length?{referenceIntervalFeatures,referenceIntervalFeaturePolicy:{schemaVersion:'REFERENCE_INTERVAL_POLICY_v1',markerRadiusIntrinsicPx:4}}:{})},objects};
+  return {id,visualType:'function_graph',viewport:{...graphViewport(v,{...canvas,height:canvas.height+bandExtra}),topInset:canvas.topInset+bandExtra,...((p.axisRatio??1)===1?{equalUnits:true}:{}),...(p.axisScale!==undefined?{declaredScale:true}:{})},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts({axisTickValues:p.axisTickValues??{x:[],y:[]}}),formulaPlacement:'HEADER_BAND',equationLabelCenters:{...(headerPx?{formula:[canvas.width/2,72]}:{}),...bandCenters},...(p.intervalFeatures?{intervalFeatures:p.intervalFeatures,intervalFeaturePolicy:p.intervalFeaturePolicy}:{}),...(referenceIntervalFeatures.length?{referenceIntervalFeatures,referenceIntervalFeaturePolicy:{schemaVersion:'REFERENCE_INTERVAL_POLICY_v1',markerRadiusIntrinsicPx:4}}:{})},objects};
 }
 
 // piecewise-discontinuous-spike-v1: one to six pieces of degree <= 2 on their own intervals with explicit OPEN/CLOSED ends, jumps and
@@ -1475,7 +1475,7 @@ function multiCurveSpec(plan,id){
     };
     objects.push({id:'region-'+region.id,kind:'GRAPH_REGION',fill:region.fill,domain:[from,to],upper:rowsOf(region.upper),lower:rowsOf(region.lower),...label});
   }
-  return {id,visualType:'function_graph',viewport:{...graphViewport(v,canvas),...((p.axisRatio??1)===1?{equalUnits:true}:{})},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts({axisTickValues:p.axisTickValues??{x:[],y:[]}}),...(marks.length?{multiCurveMarks:marks}:{})},objects};
+  return {id,visualType:'function_graph',viewport:{...graphViewport(v,canvas),...((p.axisRatio??1)===1?{equalUnits:true}:{}),...(p.axisScale!==undefined?{declaredScale:true}:{})},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts({axisTickValues:p.axisTickValues??{x:[],y:[]}}),...(marks.length?{multiCurveMarks:marks}:{})},objects};
 }
 
 export async function runPhase2(options){

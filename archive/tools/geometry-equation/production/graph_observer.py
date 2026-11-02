@@ -3190,12 +3190,13 @@ def _ov_lattice(plan,entry):
         if ys:columns[x]=(len(ys),max(ys));points.extend((x,y) for y in ys)
     return {'points':points,'columns':columns,'counts':entry.get('counts',False) is True}
 
-def _ov_final_window(viewport):
+def _ov_final_window(viewport,plan=None):
     """The window a graph figure is drawn in. The figure shows its axes, so the origin and the unit points (1,0) and (0,1) must lie strictly inside it; when one does not (a
     framed window that stops short of y=1, say) the drawing window is the plan's window widened by 8 % of the whole span on every side, the rule of visual_engine/viewport.py
     restated here from the plan. Every overlay line is cut by this window, not by the plan's own."""
     xmin,xmax,ymin,ymax=viewport
     unit_points=((0.0,0.0),(1.0,0.0),(0.0,1.0))
+    if plan is not None and 'axisScale' in plan:unit_points=((0.0,0.0),)   # (G18c) a declared axisScale frame is never widened for the unit points
     if all(xmin<x<xmax and ymin<y<ymax for x,y in unit_points):return list(viewport)
     xs=[xmin,xmax]+[x for x,_ in unit_points];ys=[ymin,ymax]+[y for _,y in unit_points]
     lo_x,hi_x,lo_y,hi_y=min(xs),max(xs),min(ys),max(ys);dx=(hi_x-lo_x)*.08;dy=(hi_y-lo_y)*.08
@@ -3315,7 +3316,7 @@ def overlays_audit(plan,svg,transform):
             got=read_line(obj_id)
             if got is None:errors.append('OVERLAY_LINE_MISSING:'+str(line['id']));continue
             # the composed figure is cut by its final window, the bare model (no labels) by the plan's own
-            want=_ov_clip(_ov_final_window(plan['viewport']) if 'data-label-kind' in svg else plan['viewport'],line)
+            want=_ov_clip(_ov_final_window(plan['viewport'],plan) if 'data-label-kind' in svg else plan['viewport'],line)
             if len(want)!=2:errors.append('OVERLAY_LINE_OUTSIDE_VIEWPORT:'+str(line['id']));continue
             if not (near(got[0],want[0]) and near(got[1],want[1]) or near(got[0],want[1]) and near(got[1],want[0])):errors.append('OVERLAY_LINE_MISMATCH:'+str(line['id']))
             if 'data-label-kind' in svg:
@@ -4585,7 +4586,7 @@ def multi_curve_audit(plan,svg,transform):
         for curve in curves:
             if curve['kind']!='SQRT':continue
             boundary=-curve['r'][0]/curve['r'][1];lo,hi=curve['interval']
-            if (lo if curve['r'][1]>0 else hi)==boundary:wanted_dots['curve-'+curve['id']+'-start']=(float(boundary),float(curve['o']))
+            if (lo if curve['r'][1]>0 else hi)==boundary:wanted_dots['curve-'+curve['id']+'-start']=(float(boundary),abs(float(curve['o'])) if curve.get('abs') else float(curve['o']))
             row=frozen.get(curve['id']) or {}
             if bool((row.get('start') or {}).get('drawn'))!=('curve-'+curve['id']+'-start' in wanted_dots):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+curve['id'])
         if set(dots)!=set(wanted_dots):errors.append('MULTI_CURVE_START_DOT_INVENTORY_MISMATCH')
@@ -5145,6 +5146,17 @@ def multi_curve_label_audit(plan,svg,transform):
             except (TypeError,ValueError):pass
     def polyline_distance(box,points):
         return min((_ov_box_segment_distance(box,a,b) for a,b in zip(points,points[1:])),default=math.inf)
+    # (G18c) a formula with no room beside its curve stands in free space on a leader that starts on a vertex of its own curve and ends on the label box
+    leaders={node.get('data-owner-label'):node for node in root.iter() if node.tag.split('}')[-1]=='line' and node.get('data-role')=='leader' and node.get('data-owner-label')}
+    def leader_ok(label_id,box,ident):
+        node=leaders.get(label_id)
+        if node is None:return False
+        try:start=(float(node.get('x1')),float(node.get('y1')));end=(float(node.get('x2')),float(node.get('y2')))
+        except (TypeError,ValueError):return False
+        on_own=any(_ov_point_segment_distance(start,a,b)<=OV_LEADER_TOLERANCE_PX for points in strokes[ident] for a,b in zip(points,points[1:]))
+        edges=[((box[0],box[1]),(box[0]+box[2],box[1])),((box[0]+box[2],box[1]),(box[0]+box[2],box[1]+box[3])),((box[0]+box[2],box[1]+box[3]),(box[0],box[1]+box[3])),((box[0],box[1]+box[3]),(box[0],box[1]))]
+        on_label=min(_ov_point_segment_distance(end,a,b) for a,b in edges)<=OV_LEADER_TOLERANCE_PX
+        return on_own and on_label and node.get('data-owner')==ident
     # the curve formulas of the kinds G18a added (LINE, RATIONAL, SQRT) are placed beside their own stroke; the older quadratic arcs keep their old placement and are not judged here
     inventory=plan.get('multiCurveFeatures');free_kinds={row.get('id') for row in (inventory.get('curves') if isinstance(inventory,dict) else None) or [] if isinstance(row,dict) and row.get('kind') in ('LINE','RATIONAL','SQRT')}
     for ident in ids:
@@ -5153,7 +5165,7 @@ def multi_curve_label_audit(plan,svg,transform):
             own=min(polyline_distance(box,points) for points in strokes[ident])
             closer=[other for other in ids if other!=ident and strokes[other] and min(polyline_distance(box,points) for points in strokes[other])<own+OV_MC_LABEL_OTHER_MARGIN_PX]
             reach=OV_MC_NO_ROOM_CURVE_MAX_PX if groups[label_id].get('data-near-room')=='NONE' else OV_MC_LABEL_OWN_MAX_PX
-            if own>reach or closer:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
+            if (own>reach or closer) and not leader_ok(label_id,box,ident):errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
         for suffix,axis in (('x','V'),('y','H')):
             label_id='curve-'+ident+'-asymptote-'+suffix;box=_region_label_box(groups,label_id) if label_id in groups else None
             if box is None:continue
