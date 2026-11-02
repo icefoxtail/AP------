@@ -11,7 +11,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="AP Math">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <!-- 글꼴은 화면을 막지 않고 늦게 적용한다(처음엔 시스템 글꼴, 받으면 Pretendard로 바뀜). dynamic-subset은 쓰는 글자 조각만 받는다. -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
     <style>
         /* =========================================
            [Polish] Light Mode Palette (미니멀리즘)
@@ -1103,7 +1106,7 @@
     <script defer src="js/dashboard.js?v=20261102-cleanup-1"></script>
     <script defer src="js/study-material-wrong.js"></script>
     <script defer src="js/nav-quickfind.js?v=20261102-n3-1"></script>
-    <script defer src="app.js"></script>
+    <script defer src="app.js?v=20261102-perf-1"></script>
     <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
