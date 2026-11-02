@@ -305,7 +305,7 @@
 
   /* 5지선다(숫자): correct, wrongs=[[값,힌트]…]. 값은 V 이거나 실수. 모자라면 정답에 간단한 배수를 곱해 채웁니다. 작은 값부터 놓습니다.
      o.fmt(V)→TeX, o.plain(V)→글, o.valid(V)→bool */
-  function mkChoices(correct, wrongs, o = {}) {
+  function mkChoicesSorted(correct, wrongs, o = {}) {
     const asV = (x) => (x && typeof x === 'object' ? x : vnum(x));
     const fmt = o.fmt || ((v) => vtex(v)), plain = o.plain || ((v) => (o.suf ? vplain(v) + o.suf : vplain(v))), valid = o.valid || ((v) => v.v > 1e-9);
     const list = [{ v: asV(correct), ok: true, hint: '' }];
@@ -326,7 +326,26 @@
     list.sort((a, b) => a.v.v - b.v.v);
     return list.map((x) => ({ t: fmt(x.v), p: plain(x.v), ok: x.ok, hint: x.hint }));
   }
-  const degChoices = (correct, wrongs, o = {}) => mkChoices(correct, wrongs, { fmt: (v) => texDeg(v.v), plain: (v) => dg(v.v), ...o });
+  // 보기를 값의 크기 순으로 늘어놓되, 정답이 ①~⑤ 어디에나 오도록 정답보다 작은 보기·큰 보기의 개수를 무작위로 정한다.
+  function mkChoices(correct, wrongs, o = {}) {
+    if (o.noSpread) return mkChoicesSorted(correct, wrongs, o);
+    const asV = (x) => (x && typeof x === 'object' ? x : vnum(x));
+    const fmt = o.fmt || ((v) => vtex(v)), plain = o.plain || ((v) => (o.suf ? vplain(v) + o.suf : vplain(v))), valid = o.valid || ((v) => v.v > 1e-9);
+    const C = asV(correct), pool = [];
+    const dupe = (v) => vsame(C, v) || fmt(C) === fmt(v) || pool.some((x) => vsame(x.v, v) || fmt(x.v) === fmt(v));
+    const add = (v, hint, strict) => { if (!Number.isFinite(v.v) || !valid(v) || dupe(v)) return; if (strict && o.deg && Math.abs(v.v - Math.round(v.v)) > 1e-9) return; pool.push({ v, ok: false, hint: hint || '' }); };
+    for (const w of wrongs) { const v = asV(w[0]); if (!o.fmt && !v.x) continue; add(v, w[1], false); } // 소수 보기는 쓰지 않습니다(표 문제만 fmt 를 직접 줍니다)
+    [[2, 1], [1, 2], [3, 2], [2, 3], [3, 1], [1, 3], [4, 3], [3, 4], [5, 4], [4, 5], [5, 2], [2, 5], [3, 5], [5, 3]].forEach(([n, d]) => add(vscale(C, n, d), '풀이 순서대로 다시 계산해 보세요.', true));
+    for (let k = 1; k < 40; k++) for (const sg of [1, -1]) add(vadd(C, vi(sg * k)), '풀이 순서대로 다시 계산해 보세요.', true);
+    const lo = pool.filter((x) => x.v.v < C.v), hi = pool.filter((x) => x.v.v > C.v);
+    const feas = [0, 1, 2, 3, 4].filter((t) => lo.length >= t && hi.length >= 4 - t);
+    if (!feas.length) return mkChoicesSorted(correct, wrongs, o);
+    const t = feas[Math.floor(Math.random() * feas.length)];
+    const list = [{ v: C, ok: true, hint: '' }, ...lo.slice(0, t), ...hi.slice(0, 4 - t)];
+    list.sort((a, b) => a.v.v - b.v.v);
+    return list.map((x) => ({ t: fmt(x.v), p: plain(x.v), ok: x.ok, hint: x.hint }));
+  }
+  const degChoices = (correct, wrongs, o = {}) => mkChoices(correct, wrongs, { fmt: (v) => texDeg(v.v), plain: (v) => dg(v.v), deg: true, valid: (v) => v.v > 0 && v.v < ((correct && correct.v != null ? correct.v : correct) > 90 ? 180 : 90), ...o });
   // 글 보기: items=[{h, ok, hint}] 5개를 key 로 안정되게 섞음
   function mkTextChoices(items, key) {
     const list = shuffle(items, seeded('tc|' + key));

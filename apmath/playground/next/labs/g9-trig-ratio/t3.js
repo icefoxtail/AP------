@@ -248,15 +248,15 @@
       notes: notes('sin, tan 은 각이 커지면 값도 커지고, cos 는 각이 커지면 값이 작아져요. 방향을 잘못 읽지 않도록 해요.')
     }),
     gen: () => {
-      const f = pick(['s', 'c', 't']), base = rint(22, 66), angs = [base, base + 1, base + 2, base + 3, base + 4], ans = pick(angs);
+      const f = pick(['s', 'c', 't']), idx = rint(0, 4), base = rint(22, 62), angs = [base, base + 1, base + 2, base + 3, base + 4], ans = base + idx; // 정답이 보기 ①~⑤ 어디에나 오도록 위치를 먼저 정한다
       const v = tv(f, ans), nameF = { s: '\\sin', c: '\\cos', t: '\\tan' };
-      const choices = degChoices(ans, angs.filter((a) => a !== ans).map((a) => [a, '표의 같은 행에서 값이 일치하는지 다시 확인해요.']), {});
+      const choices = degChoices(ans, angs.filter((a) => a !== ans).map((a) => [a, '표의 같은 행에서 값이 일치하는지 다시 확인해요.']), { noSpread: true });
       const seg = { s: 'AB', c: 'OB', t: 'CD' }[f];
       const labels = {}; labels[seg] = d4(v);
       const q = {
         tag: '삼각비의 표에서 각 구하기', key: ['r32', f, ans, base].join('|'), table: true,
         html: `다음 삼각비의 표에서 $${nameF[f]}\\,x=${d4(v)}$ 일 때, $x$ 의 크기는?<div style="margin-top:8px">$${tableTex(angs)}$</div>`,
-        stem: `$${nameF[f]}\\,x=${d4(v)}$ 일 때 x`,
+        stem: `$${nameF[f]}\\,x=${d4(v)}$ 일 때, $x$ 의 크기는?`,
         choices, fig: { th: clamp(ans, 5, 85), labels, f }, given: [d4(v)], ans: [`${ans}°`]
       };
       return checkQ(q);

@@ -74,7 +74,7 @@
     const nameAsk = { h: '\\overline{AH}', bh: '\\overline{BH}', ch: '\\overline{CH}' }[ask];
     const q = {
       tag, key: [tag, pair.join(','), a0, ask, same].join('|'),
-      stem: same ? `그림과 같이 지면에 수직인 탑 $AH$ 가 있고, 지면의 세 점 $B$, $C$, $H$ 는 한 직선 위에 있다. $\\angle ABH=${pair[0]}^{\\circ}$, $\\angle ACH=${pair[1]}^{\\circ}$, $\\overline{BC}=${a0}$ 일 때, ${nameAsk}=x$ 의 값은?` : `그림과 같이 지면에 수직인 탑 $AH$ 가 있고, 지면의 세 점 $B$, $H$, $C$ 는 한 직선 위에 있다. $\\angle ABH=${pair[0]}^{\\circ}$, $\\angle ACH=${pair[1]}^{\\circ}$, $\\overline{BC}=${a0}$ 일 때, ${nameAsk}=x$ 의 값은?`,
+      stem: same ? `그림과 같이 지면에 수직인 탑 $AH$ 가 있고, 지면의 세 점 $B$, $C$, $H$ 는 한 직선 위에 있다. $\\angle ABH=${pair[0]}^{\\circ}$, $\\angle ACH=${pair[1]}^{\\circ}$, $\\overline{BC}=${a0}$ 일 때, $${nameAsk}=x$ 의 값은?` : `그림과 같이 지면에 수직인 탑 $AH$ 가 있고, 지면의 세 점 $B$, $H$, $C$ 는 한 직선 위에 있다. $\\angle ABH=${pair[0]}^{\\circ}$, $\\angle ACH=${pair[1]}^{\\circ}$, $\\overline{BC}=${a0}$ 일 때, $${nameAsk}=x$ 의 값은?`,
       choices: mkChoices(ans, wr), fig: { pair, a0, same, ask, R: { h: R.h.v, bh: R.bh.v, ch: R.ch.v }, L }, given: [`${pair[0]}°`, `${pair[1]}°`, `${a0}`], ans: [vcan(ans)]
     };
     return checkQ(q);

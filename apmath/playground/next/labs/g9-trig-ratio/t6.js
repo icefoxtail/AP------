@@ -247,7 +247,7 @@
     ],
     view: (M) => ({
       guide: '<b>변의 수 n</b>과 <b>반지름 R</b>을 바꿔 보세요. 중심에서 꼭짓점으로 선을 그으면 합동인 이등변삼각형 n개로 나뉘어요. 노란 삼각형 하나의 넓이에 n을 곱해요.',
-      readouts: [rd('중심각', `${fmtN(M.th)}°`, 'amber'), rd('삼각형 1개', `$${vtex(M.one)}$`, 'sky'), rd('정${M.n}각형의 넓이', `$${vtex(M.tot)}$`, 'green')],
+      readouts: [rd('중심각', `${fmtN(M.th)}°`, 'amber'), rd('삼각형 1개', `$${vtex(M.one)}$`, 'sky'), rd(`정${M.n}각형의 넓이`, `$${vtex(M.tot)}$`, 'green')],
       rule: '반지름 $R$ 인 원에 내접하는 정$n$각형의 넓이 $S=n\\times\\frac{1}{2}R^2\\sin\\frac{360^{\\circ}}{n}$',
       notes: notes('이 장면은 교육과정 경계의 [심화] 내용이에요.', '중심각은 $\\frac{360^{\\circ}}{n}$ 이에요. $\\frac{180^{\\circ}}{n}$ 이 아니에요.')
     }),
