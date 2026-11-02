@@ -3757,6 +3757,7 @@ def audit_net(plan, ctx):
     ctx['expected_name_labels'] = None
     if kind == 'CYLINDER': audit_cylinder_net(plan, ctx, declared)
     elif kind == 'CONE': audit_cone_net(plan, ctx, declared)
+    elif kind == 'CONE_FRUSTUM': audit_cone_frustum_net(plan, ctx, declared)
     else: audit_polyhedron_net(plan, ctx, declared)
     del unit_plan
 
@@ -3863,6 +3864,81 @@ def audit_cone_net(plan, ctx, declared):
     ctx['face_regions']['sector'] = ('poly', [(ax, ay)] + pts)
     ctx['segments'] += [((ax, ay), pts[0])] + [(pts[k], pts[k + 1]) for k in range(32)] + [(pts[-1], (ax, ay))]
     ctx['segments'] += _circle_segments(cx, cy, cr)
+
+
+def audit_cone_frustum_net(plan, ctx, declared):
+    """the net of a cone frustum, worked out again from the plan: the ring-shaped sector has outer radius l*R/(R-r), inner radius l*r/(R-r) and central angle 360*(R-r)/l about one apex,
+    its two straight edges are the slant l long, each arc is as long as the circumference of the circle that touches it (the wide one outside the outer arc, the narrow one inside the inner arc)"""
+    root, errors = ctx['root'], ctx['errors']
+    net = plan['net']
+    R, r = float(net['radius']), float(net['topRadius'])
+    if not 0 < r < R:
+        errors.append('SOLID_NET_FRUSTUM_INVALID')
+        return
+    l = float(net['slant']) if net.get('slant') is not None else math.hypot(R - r, float(net['height']))
+    ring = next((e for e in root.iter(NS + 'path') if e.get('data-role') == 'net-face' and e.get('data-face') == 'side'), None)
+    circles = {e.get('data-part'): e for e in root.iter(NS + 'circle') if e.get('data-role') == 'net-circle'}
+    if ring is None or set(circles) != {'large', 'small'}:
+        errors.append('SOLID_NET_PARTS_MISSING')
+        return
+    m = re.fullmatch(r'\s*M\s*(\S+)\s+(\S+)\s*L\s*(\S+)\s+(\S+)\s*A\s*(\S+)\s+(\S+)\s+0\s+(\d)\s+0\s+(\S+)\s+(\S+)\s*L\s*(\S+)\s+(\S+)\s*A\s*(\S+)\s+(\S+)\s+0\s+(\d)\s+1\s+(\S+)\s+(\S+)\s*Z\s*', ring.get('d') or '')
+    if not m:
+        errors.append('SOLID_NET_SECTOR_UNREADABLE')
+        return
+    v = [float(x) for x in m.groups()]
+    i1, o1, rx1, ry1, large1, o2, i2, rx2, ry2, large2, i1b = (v[0], v[1]), (v[2], v[3]), v[4], v[5], int(v[6]), (v[7], v[8]), (v[9], v[10]), v[11], v[12], int(v[13]), (v[14], v[15])
+    if math.hypot(i1b[0] - i1[0], i1b[1] - i1[1]) > POS_TOL: errors.append('SOLID_NET_RING_NOT_CLOSED')
+    # the apex: where the two straight edges (the lines i1-o1 and i2-o2) meet
+    d1, d2 = (o1[0] - i1[0], o1[1] - i1[1]), (o2[0] - i2[0], o2[1] - i2[1])
+    det = d1[0] * d2[1] - d1[1] * d2[0]
+    want = 360 * (R - r) / l
+    if abs(det) < 1e-9 * max(1.0, math.hypot(*d1) * math.hypot(*d2)):
+        errors.append('SOLID_NET_SECTOR_UNREADABLE')
+        return
+    t = ((i2[0] - i1[0]) * d2[1] - (i2[1] - i1[1]) * d2[0]) / det
+    ax, ay = i1[0] + t * d1[0], i1[1] + t * d1[1]
+    Ro, Ri = math.hypot(o1[0] - ax, o1[1] - ay), math.hypot(i1[0] - ax, i1[1] - ay)
+    S = math.hypot(o1[0] - i1[0], o1[1] - i1[1]) / l
+    if abs(math.hypot(o2[0] - i2[0], o2[1] - i2[1]) - S * l) > POS_TOL: errors.append('SOLID_NET_RING_EDGES_UNEQUAL')
+    if declared and abs(declared - S) > 0.012 * S: errors.append('SOLID_DECLARED_SCALE_MISMATCH')
+    if abs(Ro - S * l * R / (R - r)) > POS_TOL * 1.5 or abs(Ri - S * l * r / (R - r)) > POS_TOL * 1.5: errors.append('SOLID_NET_RING_RADII_MISMATCH')
+    if abs(math.hypot(o2[0] - ax, o2[1] - ay) - Ro) > POS_TOL or abs(math.hypot(i2[0] - ax, i2[1] - ay) - Ri) > POS_TOL: errors.append('SOLID_NET_SECTOR_NOT_CIRCULAR')
+    if max(abs(rx1 - Ro), abs(ry1 - Ro)) > POS_TOL or max(abs(rx2 - Ri), abs(ry2 - Ri)) > POS_TOL: errors.append('SOLID_NET_SECTOR_NOT_CIRCULAR')
+    cosv = ((o1[0] - ax) * (o2[0] - ax) + (o1[1] - ay) * (o2[1] - ay)) / (Ro * Ro)
+    angle = math.degrees(math.acos(max(-1.0, min(1.0, cosv))))
+    if want > 180: angle = 360 - angle
+    if abs(angle - want) > 0.35: errors.append('SOLID_NET_SECTOR_ANGLE_MISMATCH:%.2f:%.2f' % (angle, want))
+    if large1 != (1 if want > 180 else 0) or large2 != large1: errors.append('SOLID_NET_SECTOR_FLAGS_MISMATCH')
+    # each arc is as long as the circumference of the circle that touches it
+    cL, cS = circles['large'], circles['small']
+    xl, yl, rl = _num(cL, 'cx'), _num(cL, 'cy'), _num(cL, 'r')
+    xs, ys, rs = _num(cS, 'cx'), _num(cS, 'cy'), _num(cS, 'r')
+    if abs(rl - S * R) > POS_TOL: errors.append('SOLID_NET_CIRCLE_RADIUS:large')
+    if abs(rs - S * r) > POS_TOL: errors.append('SOLID_NET_CIRCLE_RADIUS:small')
+    if abs(math.radians(want) * Ro - 2 * math.pi * rl) > POS_TOL + 0.004 * Ro: errors.append('SOLID_NET_ARC_NOT_CIRCUMFERENCE:outer')
+    if abs(math.radians(want) * Ri - 2 * math.pi * rs) > POS_TOL + 0.004 * Ro: errors.append('SOLID_NET_ARC_NOT_CIRCUMFERENCE:inner')
+    mid = ((o1[0] + o2[0]) / 2 - ax, (o1[1] + o2[1]) / 2 - ay)
+    ml = math.hypot(*mid)
+    axis = (mid[0] / ml, mid[1] / ml) if ml > 1e-6 else (0.0, 1.0)
+    if want > 180: axis = (-axis[0], -axis[1])
+    # the wide circle touches the outer arc from outside, the narrow one the inner arc from the apex side, both at the middle of the arc
+    if abs(math.hypot(xl - ax, yl - ay) - (Ro + rl)) > POS_TOL * 1.5 or abs((xl - ax) * axis[1] - (yl - ay) * axis[0]) > POS_TOL * 1.5: errors.append('SOLID_NET_CIRCLE_NOT_TANGENT:large')
+    if abs(math.hypot(xs - ax, ys - ay) - (Ri - rs)) > POS_TOL * 1.5 or abs((xs - ax) * axis[1] - (ys - ay) * axis[0]) > POS_TOL * 1.5 or (xs - ax) * axis[0] + (ys - ay) * axis[1] < -POS_TOL: errors.append('SOLID_NET_CIRCLE_NOT_TANGENT:small')
+    check_excluded_circles(net, circles, ['large', 'small'], errors)
+    ctx['face_label_plan'] = {e.get('face'): e for e in net.get('faceLabels') or []}
+    ctx['face_areas'] = {'side': math.pi * (R + r) * l, 'large': math.pi * R * R, 'small': math.pi * r * r}
+    a1 = math.atan2(o1[1] - ay, o1[0] - ax)
+    # the outer arc runs from o1 to o2 with sweep-flag 0 (towards smaller angles on the screen) through exactly the sector's angle, the inner arc back
+    dd = -math.radians(want)
+    outer_pts = [(ax + Ro * math.cos(a1 + dd * k / 32), ay + Ro * math.sin(a1 + dd * k / 32)) for k in range(33)]
+    inner_pts = [(ax + Ri * math.cos(a1 + dd * k / 32), ay + Ri * math.sin(a1 + dd * k / 32)) for k in range(33)]
+    if math.hypot(outer_pts[-1][0] - o2[0], outer_pts[-1][1] - o2[1]) > POS_TOL * 1.5: errors.append('SOLID_NET_SECTOR_ANGLE_MISMATCH:arc_end')
+    ctx['face_regions'] = {'large': ('circle', xl, yl, rl), 'small': ('circle', xs, ys, rs), 'side': ('poly', outer_pts + inner_pts[::-1])}
+    seg_tan = lambda R_px: ((ax + axis[0] * R_px - 0.12 * R_px * axis[1], ay + axis[1] * R_px + 0.12 * R_px * axis[0]), (ax + axis[0] * R_px + 0.12 * R_px * axis[1], ay + axis[1] * R_px - 0.12 * R_px * axis[0]))
+    table = {'slant': (l, (i2, o2)), 'arc-outer': (2 * math.pi * R, seg_tan(Ro)), 'arc-inner': (2 * math.pi * r, seg_tan(Ri)), 'radius-large': (R, None), 'radius-small': (r, None)}
+    ctx['net_dims'] = _dim_defs(plan, ctx, table)
+    _fill_dim_lines(ctx)
+    ctx['segments'] += [(i1, o1), (o2, i2)] + [(outer_pts[k], outer_pts[k + 1]) for k in range(32)] + [(inner_pts[k], inner_pts[k + 1]) for k in range(32)]
 
 
 WORD_LABEL = re.compile(r'[\uac00-\ud7a3\u00b7]')

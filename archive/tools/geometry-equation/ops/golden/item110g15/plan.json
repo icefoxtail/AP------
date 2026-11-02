@@ -1,0 +1,26 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {"text": "원뿔대: 반지름 5와 2"},
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [{"id": "s1", "kind": "CONE_FRUSTUM", "radius": 5, "topRadius": 2, "height": 4, "orientation": "APEX_DOWN", "axis": {"label": "회전축 l"}}],
+        "dims": [{"radius": "top"}, {"slant": true}]
+      }
+    },
+    {
+      "caption": {"text": "전개도: 옆면(고리)과 두 밑면"},
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "net": {"kind": "CONE_FRUSTUM", "radius": 5, "topRadius": 2, "slant": 5,
+                "dims": [{"part": "slant"}, {"part": "arc-outer"}, {"part": "arc-inner"}, {"part": "radius-large"}, {"part": "radius-small"}]}
+      }
+    }
+  ],
+  "caption": "원뿔대의 전개도는 고리 모양 부채꼴(옆면)과 두 원(밑면)이다. 바깥 호는 큰 원의 둘레 10π, 안쪽 호는 작은 원의 둘레 4π와 같다.",
+  "sourceConditions": [{"id": "c1", "condition": "사다리꼴 ABCD를 직선 l을 축으로 1회전한 원뿔대의 전개도", "mappedTo": "panels[0..1]"}],
+  "newVisualInformation": ["원뿔대와 전개도(고리 모양 옆면, 호의 길이 10π와 4π)"]
+}

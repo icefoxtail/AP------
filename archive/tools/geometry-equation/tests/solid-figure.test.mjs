@@ -3061,3 +3061,54 @@ test('G4b: the golden figure of 22 매산고 q14 has a primed name typeset as Te
   assert.match(svg,/data-value="A′"/);
   await g4bFailing(plan,svg.replace(leader,leader.replace(/ x2="([\d.]+)"/,(all,v)=>` x2="${Number(v)+8}"`)),'SOLID_ANGLE_LABEL_LEADER_NOT_ATTACHED:an2');
 });
+
+// --- G15: the net of a cone frustum --------------------------------------------------------------------------------------------------------------
+const frustumNet=(over={},extra={})=>figure({unit:'cm',net:{kind:'CONE_FRUSTUM',radius:5,topRadius:2,slant:5,dims:[{part:'slant'},{part:'arc-outer'},{part:'arc-inner'},{part:'radius-large'},{part:'radius-small'}],...over},...extra});
+test('G15: a cone frustum net is one ring-shaped sector and two circles, worked out from the radii and the slant',()=>{
+  const m=solveSolidFigure(frustumNet());
+  // R=5, r=2, l=5: the ring has outer radius 5*5/3, inner radius 5*2/3 and central angle 360*3/5
+  assert.equal(m.netKind,'CONE_FRUSTUM');assert.equal(m.shapes.ring.angleDeg,216);
+  assert.ok(Math.abs(m.shapes.ring.outer-25/3)<1e-5&&Math.abs(m.shapes.ring.inner-10/3)<1e-5);
+  assert.deepEqual(m.dims.map(d=>d.text),['5','10\\pi','4\\pi','5','2']);
+  // the height gives the same slant (4 and 3 make 5)
+  const byHeight=solveSolidFigure(frustumNet({slant:undefined,height:4}));
+  assert.equal(byHeight.slant,5);assert.deepEqual(byHeight.shapes,m.shapes);
+  // the wide circle lies below the outer arc, the narrow one inside the inner arc, both on the axis of the ring
+  assert.ok(Math.abs(m.shapes.large.cy+(m.shapes.ring.outer+5))<1e-5&&Math.abs(m.shapes.small.cy+(m.shapes.ring.inner-2))<1e-5);
+});
+test('G15: a cone frustum net is refused when it cannot be a frustum, and takes no emphasis',()=>{
+  assert.throws(()=>solveSolidFigure(frustumNet({topRadius:5})),code('SOLID_NET_FRUSTUM_INVALID'));
+  assert.throws(()=>solveSolidFigure(frustumNet({topRadius:6})),code('SOLID_NET_FRUSTUM_INVALID'));
+  assert.throws(()=>solveSolidFigure(frustumNet({slant:3})),code('SOLID_NET_FRUSTUM_INVALID'));
+  assert.throws(()=>solveSolidFigure(frustumNet({height:5})),code('SOLID_NET_FRUSTUM_INVALID'));
+  assert.throws(()=>solveSolidFigure(frustumNet({slant:undefined})),code('SOLID_PARAM_INVALID'));
+  assert.throws(()=>solveSolidFigure(frustumNet({dims:[{part:'angle'}]})),code('SOLID_DIMS_INVALID'));
+  assert.throws(()=>solveSolidFigure(frustumNet({dims:[{part:'slant',label:'6'}]})),code('SOLID_DIM_VALUE_MISMATCH'));
+  assert.throws(()=>solveSolidFigure(frustumNet({highlights:[{face:'side'}]})),code('SOLID_NET_EMPHASIS_UNSUPPORTED'));
+  assert.throws(()=>solveSolidFigure(figure({net:{kind:'CONE',radius:3,topRadius:1,slant:5}})),code('SOLID_NET_INVALID'));
+  assert.throws(()=>solveSolidFigure(frustumNet({faceLabels:[{face:'rect'}]})),code('SOLID_NET_FACE_UNKNOWN'));
+});
+test('G15: a cone frustum net passes the observer (a wide and a narrow ring); a ring of the wrong angle, a circle of the wrong size or off its arc fails',async()=>{
+  for(const over of [{},{radius:4,topRadius:2,slant:6,dims:[{part:'slant'},{part:'arc-outer'},{part:'arc-inner'}]}]){
+    const plan=frustumNet(over,{solidCaption:{text:'원뿔대 전개도'}});
+    const c=await panel(plan);
+    assert.equal(c.status,'COMPOSED',JSON.stringify(c.detail));assert.equal(c.staticAudit.status,'PASS',JSON.stringify(c.staticAudit.errors));
+    assert.equal((await audit(plan,c.svg)).status,'PASS');
+  }
+  const plan=frustumNet({},{solidCaption:{text:'원뿔대 전개도'}});
+  const c=await panel(plan);
+  const ring=c.svg.match(/<path id="net-ring"[^>]*\/>/)[0];
+  const moved=ring.replace(/ d="M ([\d.]+) ([\d.]+) L ([\d.]+) ([\d.]+)/,(m,a,b,x,y)=>` d="M ${a} ${b} L ${Number(x)-20} ${y}`);
+  const r1=await audit(plan,c.svg.replace(ring,moved));
+  assert.equal(r1.status,'FAIL');assert.ok(r1.errors.some(e=>e.startsWith('SOLID_NET_SECTOR')||e.startsWith('SOLID_NET_RING')||e.startsWith('SOLID_NET_ARC')),JSON.stringify(r1.errors));
+  const small=c.svg.match(/<circle id="net-circle-small"[^>]*\/>/)[0];
+  const r2=await audit(plan,c.svg.replace(small,small.replace(/ r="([\d.]+)"/,(a,v)=>` r="${Number(v)*1.3}"`)));
+  assert.equal(r2.status,'FAIL');assert.ok(r2.errors.some(e=>e.startsWith('SOLID_NET_CIRCLE_RADIUS:small')),JSON.stringify(r2.errors));
+  const large=c.svg.match(/<circle id="net-circle-large"[^>]*\/>/)[0];
+  const r3=await audit(plan,c.svg.replace(large,large.replace(/ cy="([\d.]+)"/,(a,v)=>` cy="${Number(v)+12}"`)));
+  assert.equal(r3.status,'FAIL');assert.ok(r3.errors.some(e=>e.startsWith('SOLID_NET_CIRCLE_NOT_TANGENT:large')),JSON.stringify(r3.errors));
+  // the narrow circle moved out of the ring's hole to the other side of the arc is not tangent from the apex side
+  const smallFlip=c.svg.replace(small,small.replace(/ cy="([\d.]+)"/,(a,v)=>` cy="${Number(v)+60}"`));
+  const r4=await audit(plan,smallFlip);
+  assert.equal(r4.status,'FAIL');assert.ok(r4.errors.some(e=>e.startsWith('SOLID_NET_CIRCLE_NOT_TANGENT:small')),JSON.stringify(r4.errors));
+});

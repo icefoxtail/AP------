@@ -2014,7 +2014,8 @@ const polygonArea=poly=>Math.abs(polygonArea2(poly));
 function solveNet(plan){
   const net=plan.net;
   if(plan.dims!==undefined||plan.highlights!==undefined||plan.segments!==undefined||plan.section!==undefined)bad('SOLID_PLAN_INVALID');
-  onlyKeys(net,['solid','root','joins','corners','dims','highlights','segments','kind','radius','height','slant','faceLabels','rightAngles','excluded','edgeLabels'],'SOLID_NET_INVALID');
+  onlyKeys(net,['solid','root','joins','corners','dims','highlights','segments','kind','radius','topRadius','height','slant','faceLabels','rightAngles','excluded','edgeLabels'],'SOLID_NET_INVALID');
+  if(net.topRadius!==undefined&&net.kind!=='CONE_FRUSTUM')bad('SOLID_NET_INVALID');
   const unit=plan.unit??null;
   if(net.kind==='CYLINDER'||net.kind==='CONE'){
     if(net.highlights!==undefined||net.segments!==undefined)bad('SOLID_NET_EMPHASIS_UNSUPPORTED:'+net.kind);
@@ -2048,6 +2049,30 @@ function solveNet(plan){
     }
     const faceLabels=netFaceLabels(net,new Map([['sector',Math.PI*r*l],['base',Math.PI*r*r]]),unit),excluded=netExcluded(net,['base']);
     return {schemaVersion:SOLID_MODEL_VERSION,mode:'NET',unit,netKind:'CONE',radius:r,slant:r6(l),shapes,dims,...(faceLabels.length?{faceLabels}:{}),...(excluded.length?{excluded}:{})};
+  }
+  if(net.kind==='CONE_FRUSTUM'){
+    // The net of a cone frustum (radius = the wide circle, topRadius = the narrow one, slant or height): one ring-shaped sector (the big sector of the cone minus the small one cut off at its point) of
+    // outer radius slant*R/(R-r), inner radius slant*r/(R-r) and central angle 360*(R-r)/slant, the wide circle touching the outer arc from outside and the narrow circle the inner arc from the apex side.
+    if(net.highlights!==undefined||net.segments!==undefined)bad('SOLID_NET_EMPHASIS_UNSUPPORTED:'+net.kind);
+    if(net.edgeLabels!==undefined)bad('SOLID_EDGE_LABEL_UNSUPPORTED:'+net.kind);
+    if(net.rightAngles!==undefined)bad('SOLID_NET_RIGHT_ANGLE_UNSUPPORTED:'+net.kind);
+    const R=pos(net.radius,'SOLID_PARAM_INVALID'),r=pos(net.topRadius,'SOLID_PARAM_INVALID');
+    if(!(r<R))bad('SOLID_NET_FRUSTUM_INVALID:TOP_NOT_SMALLER');
+    if(net.slant===undefined&&net.height===undefined)bad('SOLID_PARAM_INVALID');
+    const l=net.slant!==undefined?pos(net.slant,'SOLID_PARAM_INVALID'):Math.hypot(R-r,pos(net.height,'SOLID_PARAM_INVALID'));
+    if(!(l>R-r+1e-9))bad('SOLID_NET_FRUSTUM_INVALID:SLANT_TOO_SHORT');
+    if(net.slant!==undefined&&net.height!==undefined&&Math.abs(Math.hypot(R-r,pos(net.height,'SOLID_PARAM_INVALID'))-l)>1e-6*l)bad('SOLID_NET_FRUSTUM_INVALID:SLANT_HEIGHT_MISMATCH');
+    const theta=360*(R-r)/l,outer=l*R/(R-r),inner=l*r/(R-r);
+    const shapes={ring:{outer:r6(outer),inner:r6(inner),angleDeg:r6(theta)},large:{cx:0,cy:r6(-(outer+R)),r:R},small:{cx:0,cy:r6(-(inner-r)),r}};
+    const dims=[];
+    for(const [k,d] of (net.dims??[]).entries()){
+      onlyKeys(d,['part','label'],'SOLID_DIMS_INVALID');
+      const value={slant:l,'arc-outer':2*Math.PI*R,'arc-inner':2*Math.PI*r,'radius-large':R,'radius-small':r}[d.part];
+      if(value===undefined)bad('SOLID_DIMS_INVALID');
+      dims.push({id:'dim-'+(k+1),type:'NETPART',part:d.part,...dimLabel(d.label,value,unit,'d'+(k+1))});
+    }
+    const faceLabels=netFaceLabels(net,new Map([['side',Math.PI*(R+r)*l],['large',Math.PI*R*R],['small',Math.PI*r*r]]),unit),excluded=netExcluded(net,['large','small']);
+    return {schemaVersion:SOLID_MODEL_VERSION,mode:'NET',unit,netKind:'CONE_FRUSTUM',radius:R,topRadius:r,slant:r6(l),shapes,dims,...(faceLabels.length?{faceLabels}:{}),...(excluded.length?{excluded}:{})};
   }
   if(net.kind!==undefined)bad('SOLID_NET_UNSUPPORTED:'+String(net.kind).slice(0,24));
   if(!isPlain(net.solid)||!POLY_KINDS.includes(net.solid.kind))bad('SOLID_NET_INVALID');
@@ -2146,6 +2171,11 @@ function figureExtent(model){
   const pts=[];
   if(model.mode==='SOLIDS'){for(const solid of model.solids)pts.push(...solidScreenPoints(solid));pts.push(...spaceScreenPoints(model.space));}
   else if(model.netKind==='POLYHEDRON'){for(const f of model.faces)pts.push(...f.poly);}
+  else if(model.netKind==='CONE_FRUSTUM'){
+    const {ring,large,small}=model.shapes,half=ring.angleDeg/2*Math.PI/180;
+    for(let k=0;k<=24;k++){const a=-Math.PI/2-half+2*half*k/24;pts.push([ring.outer*Math.cos(a),ring.outer*Math.sin(a)],[ring.inner*Math.cos(a),ring.inner*Math.sin(a)]);}
+    pts.push([large.cx-large.r,large.cy-large.r],[large.cx+large.r,large.cy+large.r],[small.cx-small.r,small.cy-small.r],[small.cx+small.r,small.cy+small.r]);
+  }
   else if(model.netKind==='CYLINDER'){const s=model.shapes;pts.push([s.rect.x,s.rect.y],[s.rect.x+s.rect.w,s.rect.y+s.rect.h],[s.bottom.cx-s.bottom.r,s.bottom.cy-s.bottom.r],[s.bottom.cx+s.bottom.r,s.bottom.cy+s.bottom.r],[s.top.cx-s.top.r,s.top.cy-s.top.r],[s.top.cx+s.top.r,s.top.cy+s.top.r]);}
   else{
     const {sector,base}=model.shapes,half=sector.angleDeg/2*Math.PI/180;
@@ -2923,6 +2953,26 @@ function specNet(plan,model,ctx){
     for(const fl of model.faceLabels??[])faceLabel(fl,fl.face==='rect'?[[x0,y0],[x1,y0],[x1,y1],[x0,y1]].map(pt):circleRegion(fl.face==='bottom'?bottom:top,pt));
     return;
   }
+  if(model.netKind==='CONE_FRUSTUM'){
+    const {ring,large,small}=model.shapes,half=ring.angleDeg/2*Math.PI/180,Ro=ring.outer,Ri=ring.inner;
+    const at=(R,sg)=>[R*Math.cos(-Math.PI/2+sg*half),R*Math.sin(-Math.PI/2+sg*half)];
+    const [o1,o2,i1,i2]=[at(Ro,-1),at(Ro,1),at(Ri,-1),at(Ri,1)];
+    prims.push({t:'ring',id:'net-ring',role:'net-face',face:'side',apex:pt([0,0]),o1:pt(o1),o2:pt(o2),i1:pt(i1),i2:pt(i2),outer:r6(S*Ro),inner:r6(S*Ri),large:ring.angleDeg>180?1:0,angleDeg:ring.angleDeg});
+    circle('net-circle-large','large',large);circle('net-circle-small','small',small);
+    const arcMid=R=>[[-0.12*R,-R],[0.12*R,-R]];
+    for(const d of model.dims){
+      const seg={slant:[i2,o2],'arc-outer':arcMid(Ro),'arc-inner':arcMid(Ri),'radius-large':[[large.cx,large.cy],[large.cx+large.r,large.cy]],'radius-small':[[small.cx,small.cy],[small.cx+small.r,small.cy]]}[d.part];
+      if(d.part.startsWith('radius'))line(d.id+'-line','dim-line',pt(seg[0]),pt(seg[1]),{dim:d.id,kind:d.part,vis:'solid'});
+      // an arc length stands inside the ring (the outer arc's above its tangent, the inner arc's below it), never in the circle that touches the arc
+      const preferredSide=d.part==='arc-outer'?-1:d.part==='arc-inner'?1:undefined;
+      labels.push({id:d.id+'-label',role:'dim',owner:d.id,kind:'MATH',tex:d.tex,plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id,segment:[pt(seg[0]),pt(seg[1])],segmentOf:'net-part:'+d.part,...(preferredSide?{preferredSide}:{})});
+    }
+    for(const fl of model.faceLabels??[]){
+      const arcPts=R=>[...Array(33).keys()].map(k=>{const a=-Math.PI/2-half+2*half*k/32;return pt([R*Math.cos(a),R*Math.sin(a)]);});
+      faceLabel(fl,fl.face==='side'?[...arcPts(Ro),...arcPts(Ri).reverse()]:circleRegion(fl.face==='large'?large:small,pt));
+    }
+    return;
+  }
   // cone
   const {sector,base}=model.shapes,half=sector.angleDeg/2*Math.PI/180,L=sector.radius;
   const p1=[L*Math.cos(-Math.PI/2-half),L*Math.sin(-Math.PI/2-half)],p2=[L*Math.cos(-Math.PI/2+half),L*Math.sin(-Math.PI/2+half)];
@@ -2960,6 +3010,13 @@ function obstacleSegments(spec){
     else if(p.t==='earc')poly(p.samples,false);
     // the outline of a filled cut face is geometry the rendered layout check keeps labels off
     else if(p.t==='cutface')poly(p.points,true);
+    else if(p.t==='ring'){
+      // the outline of the ring-shaped sector of a frustum net: the outer arc out, the inner arc back (both run from the left end to the right end through the signed angle)
+      const a=Math.atan2(p.o1[1]-p.apex[1],p.o1[0]-p.apex[0]),d=-p.angleDeg*Math.PI/180,N=ELL_SAMPLES*2,pts=[];
+      for(let k=0;k<=N;k++)pts.push([p.apex[0]+p.outer*Math.cos(a+d*k/N),p.apex[1]+p.outer*Math.sin(a+d*k/N)]);
+      for(let k=N;k>=0;k--)pts.push([p.apex[0]+p.inner*Math.cos(a+d*k/N),p.apex[1]+p.inner*Math.sin(a+d*k/N)]);
+      poly(pts,true);
+    }
     else if(p.t==='sector'){
       // The drawn arc runs from p1 to p2 with sweep-flag 0 (the short way round in screen coordinates): keep the signed angle difference.
       const pts=[p.apex],a=Math.atan2(p.p1[1]-p.apex[1],p.p1[0]-p.apex[0]),b=Math.atan2(p.p2[1]-p.apex[1],p.p2[0]-p.apex[0]),d=b-a;
@@ -3128,6 +3185,7 @@ function renderPrims(spec,model){
   // fills first
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-face'))body+=`<g data-layer="10"><polygon id="${p.id}" data-role="net-face" data-face="${p.face}" fill="#f4f6fa" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='sector'))body+=`<g data-layer="10"><path id="${p.id}" data-role="net-face" data-face="sector" data-angle="${p.angleDeg}" data-radius-px="${p.radius}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" d="M ${p.apex.join(' ')} L ${p.p1.join(' ')} A ${p.radius} ${p.radius} 0 ${p.large} 0 ${p.p2.join(' ')} Z"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='ring'))body+=`<g data-layer="10"><path id="${p.id}" data-role="net-face" data-face="side" data-angle="${p.angleDeg}" data-outer-px="${p.outer}" data-inner-px="${p.inner}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" d="M ${p.i1.join(' ')} L ${p.o1.join(' ')} A ${p.outer} ${p.outer} 0 ${p.large} 0 ${p.o2.join(' ')} L ${p.i2.join(' ')} A ${p.inner} ${p.inner} 0 ${p.large} 1 ${p.i1.join(' ')} Z"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='circle'))body+=`<g data-layer="12"><circle id="${p.id}" data-role="net-circle" data-part="${p.part}"${p.excluded?' data-excluded="1"':''} fill="${p.excluded?'#fff':'#f4f6fa'}" stroke="${p.excluded?'#888':'#111'}" stroke-width="1.6"${p.excluded?' stroke-dasharray="5 4"':''} cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-highlight'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="net-highlight" data-face="${p.face}" data-fill="${p.fill}" fill="${HIGHLIGHT_FILLS[p.fill][0]}" fill-opacity="${HIGHLIGHT_FILLS[p.fill][1]}" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='space-plane')){
