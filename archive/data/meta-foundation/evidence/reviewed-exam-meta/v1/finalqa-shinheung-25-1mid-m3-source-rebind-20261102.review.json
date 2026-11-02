@@ -1,0 +1,651 @@
+{
+  "schemaVersion": "archive-finalqa-source-rebind-review-v1",
+  "requestId": "finalqa-shinheung-25-1mid-m3-source-rebind-20261102",
+  "examUid": "25_신흥중_1학기_중간_중3_기출",
+  "sourceArchiveFile": "original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js",
+  "reviewer": "Claude Sonnet subagent (user-directed recover-then-review, 2026-11-02)",
+  "scope": "All 24 questions: questionType tag, answer key independently re-solved, unit/PT/TPL/CC fit to question content, difficulty/integrationPattern plausibility only (no new calibration). No metadata value is changed by this request.",
+  "sourceBinding": {
+    "priorRegisteredSourceRawSha256": "662971fec9cf6370bf764d1185f8aaaa9f61ad25af92c432c19063af11140b4d",
+    "currentSourceRawSha256": "7eacb58da9200563541f6f679422050302b770821c7014209268e1f9d2645508",
+    "currentSourceBlobSha1": "4a60eb10cef446e6c0c64df5e963717bd44e1ec3",
+    "priorReceiptRef": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-shinheung-e4955e4d281e-20261027.json",
+      "sha256": "414673f7a1aebc6e27c8d5ccf4bb593a4dde6c02c5d063af97a5ae79dfc70621"
+    },
+    "delta": "PR #1119 (7cfbe118) changed only the 23 questionType values of ordinals 1-10 and 12-24 from empty string to 객관식/서술형; reconstructing the prior bytes by blanking those 23 values reproduces sourceRawSha256 662971fe... exactly; ordinal 11 unchanged; per-question sourceFingerprint/contentFingerprint unchanged."
+  },
+  "summary": {
+    "total": 24,
+    "scriptAllPass": 24,
+    "humanOkWithoutFinding": 14,
+    "humanOkWithMinorNote": 8,
+    "humanFinding": 2
+  },
+  "rows": [
+    {
+      "questionUid": "qid_v1_5b0ea2c732d263e4be77113d9ad5e5d624ef16c279e249ef2c46b03ba9ed922a",
+      "sourceOrdinal": 1,
+      "questionType": "객관식",
+      "answer": "②",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK_MINOR_NOTE",
+        "answerReSolved": "a=8,b=-2,a+b=6 -> 2번(6) 일치",
+        "note": "TPL/L4 '제곱근 명제의 참·거짓 판별'은 이 문항(두 제곱근 값을 구해 합 계산)에 느슨하게만 맞음. PT/단원/CC는 적합."
+      }
+    },
+    {
+      "questionUid": "qid_v1_ec4686f245ac891e687878f60bd428d6a67da741edb287016338bb387a4517d1",
+      "sourceOrdinal": 2,
+      "questionType": "객관식",
+      "answer": "⑤",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK",
+        "answerReSolved": "5번 -sqrt(441)=-21이므로 옳지 않음 -> 5번 일치",
+        "note": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_847d4aeaeb9c38a64f9c5170f06412cf43f7c801f2fab8fc172ec1714eac8fa3",
+      "sourceOrdinal": 3,
+      "questionType": "객관식",
+      "answer": "④, ⑤",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK",
+        "answerReSolved": "-sqrt18, pi 무리수 -> 4,5번 일치(정답 2개 명시)",
+        "note": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_e22d8fb497089431d346325df708d0d76ecce21ef391c309ec183363ef7d9b85",
+      "sourceOrdinal": 4,
+      "questionType": "객관식",
+      "answer": "①",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK",
+        "answerReSolved": "x<0,y>0, 식=x+2y -> 1번 일치",
+        "note": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_48e67b9645076ab1f5c78ba0a26c0d515c1df0ea8b4cf75e4127a951b718773e",
+      "sourceOrdinal": 5,
+      "questionType": "객관식",
+      "answer": "④",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK",
+        "answerReSolved": "4번만 부등호 방향이 다름 -> 4번 일치",
+        "note": "JS tags에 무관한 '나머지정리' 태그가 섞여 있음(원본 tags 필드, 정본 메타 아님)."
+      }
+    },
+    {
+      "questionUid": "qid_v1_2b16559b230f44e90a385c288aad595f92aa3d58583221ef18f3c32bd5ea25c8",
+      "sourceOrdinal": 6,
+      "questionType": "객관식",
+      "answer": "③",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK",
+        "answerReSolved": "항상 무리수 3개 -> 3번 일치",
+        "note": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_b77fd395511c5ab77ffcffc52bf759c719d80df7f26472d41f57fd80d28138de",
+      "sourceOrdinal": 7,
+      "questionType": "객관식",
+      "answer": "⑤",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK",
+        "answerReSolved": "5번만 참 -> 5번 일치",
+        "note": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_66f49237cc08e28b2a1eb1303de668a1c1d334ac9ca1a3c499d0074af1cb24b7",
+      "sourceOrdinal": 8,
+      "questionType": "객관식",
+      "answer": "②",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK",
+        "answerReSolved": "a=5,b=12,b-a=7 -> 2번 일치",
+        "note": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_09ad26846fb72adc4f1eb84f96f4caf1a4034e427a4f328ea58f89651228bbbf",
+      "sourceOrdinal": 9,
+      "questionType": "객관식",
+      "answer": "④",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK",
+        "answerReSolved": "3sqrt2-6sqrt3, 2a-b=12 -> 4번 일치",
+        "note": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_19ed0b1a70cdd8bc787e9c8f0744ebf184694a445666eab00c515cdb29c5e1b8",
+      "sourceOrdinal": 10,
+      "questionType": "객관식",
+      "answer": "⑤",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK_MINOR_NOTE",
+        "answerReSolved": "sqrt200=14.14 -> 5번 일치",
+        "note": "TPL/L4 '근호식을 문자 곱으로 나타내기'는 주어진 근삿값·소수점 이동 활용 문항에 약하게 맞음. PT/CC(어림값, 소수점 자리 이동)는 적합."
+      }
+    },
+    {
+      "questionUid": "qid_v1_c4115ffd05bc2ae95d1a76c3bb3641efb812d18d606ca7eec8481846de0f9a62",
+      "sourceOrdinal": 11,
+      "questionType": "객관식",
+      "answer": "④",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "FINDING",
+        "answerReSolved": "정육각형 변 2, 짧은 대각선 2sqrt3, 해설의 2a+4b=8+4sqrt3은 보기 4번과 일치하나 그림만으로는 둘레를 검증할 수 없음",
+        "note": "메타(단원/PT/TPL/CC)는 적합. 그러나 그림(원본 figure, 이번 요청 대상 아님)의 라벨이 해설과 어긋남: 육각형 안에서 긴 대각선(수직)이 a, 오른쪽 짧은 대각선이 b로 표시됨(해설은 a=2sqrt3, b=2). 학생 화면 결함 후보로 visual-svg 담당 확인 필요."
+      }
+    },
+    {
+      "questionUid": "qid_v1_5834f6812d0650d5f7bd4485ef0a47676dbadaf6b080b80f34678b07cd3118bb",
+      "sourceOrdinal": 12,
+      "questionType": "객관식",
+      "answer": "③",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK",
+        "answerReSolved": "4,-3,-9,8,2 중 최소 -9 -> 3번 일치",
+        "note": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_eba6bca7f3b603d8c68832add19501a85a130192c6585b62ac265923fe1fdb78",
+      "sourceOrdinal": 13,
+      "questionType": "객관식",
+      "answer": "①",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK",
+        "answerReSolved": "-2sqrt3 -> 1번 일치",
+        "note": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_0f494208135954092cf8c9e557b76119d04c7cd9fbcc350fe4da937f197ab674",
+      "sourceOrdinal": 14,
+      "questionType": "객관식",
+      "answer": "②",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK_MINOR_NOTE",
+        "answerReSolved": "x^2+y^2=(x-y)^2+2xy=28 -> 2번 일치",
+        "note": "TPL/L4 '곱셈공식 계산의 수치적 참·거짓 판별'은 값 계산 문항에 느슨하게만 맞음. CC(대칭식 변형)는 적합."
+      }
+    },
+    {
+      "questionUid": "qid_v1_0d05000447e3749a1047f8d56e0caf307b723026e1c5544cbf1820854e7848c1",
+      "sourceOrdinal": 15,
+      "questionType": "객관식",
+      "answer": "①",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK_MINOR_NOTE",
+        "answerReSolved": "48x52=(50-2)(50+2) -> 합차공식 1번 일치",
+        "note": "TPL/L4 '참·거짓 판별'은 공식 선택 문항에 느슨하게 맞음(수치 계산 '수의 계산' 성격은 적합)."
+      }
+    },
+    {
+      "questionUid": "qid_v1_823f0d6f15bee26549cf9b84a1c60c63e2be1f404d88c605832ebaf55c7816b4",
+      "sourceOrdinal": 16,
+      "questionType": "객관식",
+      "answer": "①",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK",
+        "answerReSolved": "a=1, 바른 식 6x^2-11x-7, 합 -18 -> 1번 일치",
+        "note": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_ffea1c0b0b71eef723c078988e813c9f4b286b2b9745767b3d0e059e21abb961",
+      "sourceOrdinal": 17,
+      "questionType": "객관식",
+      "answer": "④",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK_MINOR_NOTE",
+        "answerReSolved": "x^3-7x^2=x^2(x-7), 인수 아닌 것 7x -> 4번 일치",
+        "note": "소단원이 '다항식의 곱셈'(M3-02-POLYNOMIAL_MULTIPLICATION)인데 인수분해 문항임. 원본 JS의 subUnitKey가 그렇고 해당 PT 바인딩도 ACTIVE이나, M3-02-FACTORIZATION 소단원이 따로 있어 학생 화면 L2 표기가 어색함(원본 태그 문제, 이번 요청 범위 밖)."
+      }
+    },
+    {
+      "questionUid": "qid_v1_e0d6c4c70fa5761161f82cc48654aa716bde39e25ce971cc8ccaae78766c63f3",
+      "sourceOrdinal": 18,
+      "questionType": "객관식",
+      "answer": "①",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK_MINOR_NOTE",
+        "answerReSolved": "(a,b)=(2,6),(4,24),(6,54),(8,96), 최대 a+b=104 -> 1번 일치",
+        "note": "소단원이 '다항식의 곱셈'(인수분해 문항) — Q17과 같은 원본 태그 문제."
+      }
+    },
+    {
+      "questionUid": "qid_v1_f2041f497441c0d4ae18a43909c6f1d4ed218afedca0b2cee1dfff8e3a0293c5",
+      "sourceOrdinal": 19,
+      "questionType": "객관식",
+      "answer": "②",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "FINDING",
+        "answerReSolved": "공통인수 x-y -> 2번 일치",
+        "note": "TPL/L4 '공통인수 조건으로 미정계수 결정'이 부적합: 이 문항에는 미정계수가 없고 두 식의 공통인수를 찾는 문제. 소단원도 Q17과 같은 원본 태그 문제."
+      }
+    },
+    {
+      "questionUid": "qid_v1_33a8eaf80de755d95d935c86ff4afbb8b50665851c8dfa21a2405b9dbe8a719e",
+      "sourceOrdinal": 20,
+      "questionType": "객관식",
+      "answer": "③",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK_MINOR_NOTE",
+        "answerReSolved": "6x^2-7x-20=(3x+4)(2x-5) -> 3번 일치",
+        "note": "TPL/L4 '이차식 인수분해 후 일차식 합 계산'은 '다른 한 인수 찾기' 문항에 약하게 맞음. 소단원은 Q17과 같은 원본 태그 문제."
+      }
+    },
+    {
+      "questionUid": "qid_v1_7388b1b1dde38b6b664d2fbb3e6fc039fcd8e31daf1960bd6b604c9ab5267b75",
+      "sourceOrdinal": 21,
+      "questionType": "서술형",
+      "answer": "3, 12, 27, 108",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK",
+        "answerReSolved": "x=3,12,27,108 일치(서술형 태그 적합)",
+        "note": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_89dab18657822d799a18e0805ba0b43958c49a77fbf74c08d88231f707d36569",
+      "sourceOrdinal": 22,
+      "questionType": "서술형",
+      "answer": "2",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK",
+        "answerReSolved": "a=2 일치(서술형 태그 적합)",
+        "note": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_8a64e8372b5d427c7baa478120d6a9e245ddcbde3f91ec0c1255556fb64f6e2d",
+      "sourceOrdinal": 23,
+      "questionType": "서술형",
+      "answer": "8642",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK_MINOR_NOTE",
+        "answerReSolved": "A=8,B=6,C=4,D=2 -> 8642 일치(서술형 태그 적합)",
+        "note": "소단원이 '다항식의 곱셈'이나 전개+인수분해 복합 문항이라 수용 가능. 인수분해 소단원 분리 문제는 Q17과 같음."
+      }
+    },
+    {
+      "questionUid": "qid_v1_f05381f743c4b8b734a6020b2c980b1949193aeeaf9d892164dfdab2e0a471ca",
+      "sourceOrdinal": 24,
+      "questionType": "서술형",
+      "answer": "9, 12, 21",
+      "scriptChecks": {
+        "ordinalMatches": true,
+        "questionTypeAllowed": true,
+        "typeVsChoices": true,
+        "answerFormat": true,
+        "answerCitedInSolution": true,
+        "sourceFingerprintEqualsMeta": true,
+        "receiptRecordEqualsMeta": true,
+        "jsUnitSubLevelEqualsMeta": true,
+        "ptTplActiveAndParent": true,
+        "l3l4EqualCanonicalLabels": true,
+        "ccCondActive": true,
+        "approvedMeta": true
+      },
+      "scriptAllPass": true,
+      "humanReview": {
+        "verdict": "OK",
+        "answerReSolved": "A in {9,12,21} 일치(서술형 태그 적합)",
+        "note": ""
+      }
+    }
+  ]
+}
