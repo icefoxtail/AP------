@@ -131,7 +131,7 @@
   3. 검수 PASS 뒤에도 교체·게시 여부는 메인이 정한다(PASS는 필요조건).
   4. 병합: 엔진·게시·문서를 PR 하나로 묶고, 병합 뒤 main을 읽어 확인한다. 정답지는 표본(규칙 10).
 
-- **그림 작업자를 opencode DeepSeek로 바꾸는 선택지(사용자 질문 2026-11-02):** 4단계(plan·렌더) 작업자만 OpenCode Go의 DeepSeek로 돌리고, 메인 PNG 확인과 Sonnet 검수는 그대로 둔다. 같은 지시서(`plan.md`·`plan-current.md`)를 `opencode run`에 넘기고 산출물도 `runs/` 안으로 같다. 준비: 환경 설정(클라우드 환경 메뉴 → Edit → Network secrets 또는 환경 변수)에 `OPENCODE_API_KEY`를 넣고(새 세션부터 적용) `npm i -g opencode-ai` 설치 → 모델 목록 확인 → 한 문항 시험 렌더 후 전환. 2026-10-26판에서 이 방식을 끝낸 것은 품질 때문이 아니라 그때 Claude Code 사용량 한도가 다 됐기 때문이었다(사용자 기억). 전환한 첫 시험지는 검수 반려율을 보고 계속 쓸지 정한다.
+- **그림 작업자 병행: Sonnet + opencode DeepSeek(사용자 지시 2026-11-02):** 바꾸는 것이 아니라 **함께 쓴다.** OpenCode Go 사용량이 남아 있으면 4단계(plan·렌더) 묶음 일부를 DeepSeek(`opencode run`)에 나눠 맡기고 나머지는 Sonnet이 한다. 한도가 다 되면 Sonnet만 쓴다. 어느 쪽이 그렸든 메인 PNG 확인과 Sonnet 검수는 그대로 둔다. 같은 지시서(`plan.md`·`plan-current.md`)를 `opencode run`에 넘기고 산출물도 `runs/` 안으로 같다. 준비: 환경 설정(클라우드 환경 메뉴 → Edit → Network secrets 또는 환경 변수)에 `OPENCODE_API_KEY`를 넣고(새 세션부터 적용) `npm i -g opencode-ai` 설치 → 모델 목록 확인 → 한 문항 시험 렌더 후 전환. 2026-10-26판에서 이 방식을 끝낸 것은 품질 때문이 아니라 그때 Claude Code 사용량 한도가 다 됐기 때문이었다(사용자 기억). 전환한 첫 시험지는 검수 반려율을 보고 계속 쓸지 정한다.
 
 ### 2.2 그림 파이프라인 (지시서는 `ops/svg-m1/briefs/`)
 
