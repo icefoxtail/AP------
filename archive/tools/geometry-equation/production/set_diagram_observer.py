@@ -572,6 +572,21 @@ def segment_hits_box(a, b, box):
     return high > 0 and low < 1
 
 
+MAPPING_NUMBER = re.compile('^[-\u2212]?(?:[0-9]{1,2}(?:/[0-9]{1,2})?|[0-9]{0,2}\u221a[0-9]{1,2})$')
+
+
+def mapping_shown(text):
+    """The text a mapping element must carry in the FINAL SVG: an ordinary short element as typed, a signed number / fraction / root (G17) as the
+    math label whose TeX has the real minus (written '-' in TeX) and \\sqrt for the root sign. This observer's own copy of the rule."""
+    if not isinstance(text, str) or not text:
+        fail('SD_ELEMENT_TEXT_PLAN')
+    if len(text) <= 4 and (re.search('[\uac00-\ud7a3]', text) or re.fullmatch('[A-Za-z0-9]+', text)):
+        return text
+    if not MAPPING_NUMBER.fullmatch(text):
+        fail('SD_ELEMENT_TEXT_PLAN')
+    return re.sub('\u221a([0-9]+)', r'\\sqrt{\1}', text.replace('\u2212', '-'))
+
+
 def audit_mapping(plan, doc):
     columns = plan['columns']
     ovals = doc.role('ellipse', 'oval')
@@ -601,7 +616,7 @@ def audit_mapping(plan, doc):
             label = elements.get((str(c), str(e)))
             if label is None:
                 continue
-            if doc.shown_text(label) != text:
+            if doc.shown_text(label) != mapping_shown(text):
                 doc.err('SD_ELEMENT_TEXT:%d:%d' % (c, e))
             box = doc.label_box(label)
             element_boxes[(c, e)] = box

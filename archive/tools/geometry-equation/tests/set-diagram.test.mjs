@@ -37,6 +37,10 @@ const mapback={kind:'MAPPING',columns:[{id:'X',elements:['1','2','3','4']},{id:'
     {from:{column:0,element:2},to:{column:1,element:3}},{from:{column:0,element:3},to:{column:1,element:0}},
     {from:{column:1,element:0},to:{column:0,element:0},style:'DASHED'},{from:{column:1,element:1},to:{column:0,element:3},style:'DASHED'},
     {from:{column:1,element:2},to:{column:0,element:1},style:'DASHED'},{from:{column:1,element:3},to:{column:0,element:2},style:'DASHED'}]};
+// G17: signed numbers, a fraction and a root as mapping elements (25 금당고 고1 q6 kind of figure): -2 is typed with a hyphen and shown with the real minus
+const mapSigned={kind:'MAPPING',columns:[{id:'X',elements:['-2','-1','0','1/2','√2']},{id:'Y',elements:['-4','-1','1','2√3']}],
+  arrows:[{from:{column:0,element:0},to:{column:1,element:0}},{from:{column:0,element:1},to:{column:1,element:1}},{from:{column:0,element:2},to:{column:1,element:2}},
+    {from:{column:0,element:3},to:{column:1,element:2}},{from:{column:0,element:4},to:{column:1,element:3}}]};
 
 test('the engine derives every atomic region and the truth of the set expression itself',()=>{
   const m=solveDiagram(venn2);
@@ -51,6 +55,9 @@ test('the engine derives every atomic region and the truth of the set expression
   const map=solveDiagram(mapback);
   assert.equal(map.isFunction,true);assert.equal(map.arrows[4].style,'DASHED');
   assert.equal(solveDiagram({...map2,arrows:[...map2.arrows,{from:{column:0,element:0},to:{column:1,element:2}}]}).isFunction,false);
+  const signed=solveDiagram(mapSigned);
+  assert.deepEqual(signed.columns[0].elements.map(e=>[e.text,e.math,e.tex??null]),[['\u22122',true,'-2'],['\u22121',true,'-1'],['0',true,null],['1/2',true,'1/2'],['\u221a2',true,'\\sqrt{2}']]);
+  assert.equal(solveDiagram({...mapSigned,columns:[{id:'X',elements:['12','가나']},{id:'Y',elements:['ab']}],arrows:[{from:{column:0,element:0},to:{column:1,element:0}}]}).columns[0].elements[0].math,false);
   assert.deepEqual(setDiagramSize(solveDiagram(venn2)),{width:470,height:330});
   assert.deepEqual(setDiagramSize(solveDiagram(map2)),{width:460,height:220});
   // a four-set membership table keeps every declared membership as its own cell truth
@@ -90,6 +97,8 @@ test('set figures that cannot be drawn faithfully are refused with their codes',
   refuse({...map2,arrows:[{from:{column:0,element:0},to:{column:0,element:1}}]},'MAPPING_ARROW_DIRECTION_UNSUPPORTED');
   refuse({...map2,arrows:[map2.arrows[0],map2.arrows[0]]},'MAPPING_ARROW_DUPLICATE');
   refuse({...map2,highlight:{arrows:[9]}},'MAPPING_HIGHLIGHT_INVALID');
+  for(const bad of ['--2','-','1/','1/2/3','-1.5','abcde','-12345','2√','-x'])refuse({...mapSigned,columns:[{id:'X',elements:[bad]},mapSigned.columns[1]],arrows:[mapSigned.arrows[0]]},'MAPPING_ELEMENT_TEXT_UNSUPPORTED');
+  refuse({...mapSigned,columns:[{id:'X',elements:['-2','\u22122']},mapSigned.columns[1]],arrows:[mapSigned.arrows[0]]},'MAPPING_COLUMNS_INVALID');
   refuse({kind:'PIE'},'SET_KIND_UNSUPPORTED');
   assert.throws(()=>checkSetDiagramPlan({...plan(venn2),extra:1}),code('SET_DIAGRAM_PLAN_INVALID'));
   assert.throws(()=>setDiagramSpec(plan(venn2),{...solveDiagram(venn2),shade:null}),code('SET_MODEL_MISMATCH'));
@@ -151,6 +160,12 @@ test('every figure composes, the independent observer passes it, and it catches 
     // three columns with a dashed composite arrow
     svg=await compose(map3,5);
     const composite=await audit(map3,svg);assert.equal(composite.status,'PASS',JSON.stringify(composite.errors));
+    // signed numbers, a fraction and a root: the observer reads each element's math label back and fails on a wrong value
+    svg=await compose(mapSigned,8);
+    const signedAudit=await audit(mapSigned,svg);assert.equal(signedAudit.status,'PASS',JSON.stringify(signedAudit.errors));
+    assert.ok(svg.includes('data-tex="-2"')&&svg.includes('data-tex="\\sqrt{2}"'));
+    assert.ok(has(await audit(mapSigned,svg.replace('data-tex="-2"','data-tex="2"')),'SD_ELEMENT_TEXT:0:0'));
+    assert.ok(has(await audit({...mapSigned,columns:[{id:'X',elements:['-3','-1','0','1/2','√2']},mapSigned.columns[1]]},svg),'SD_ELEMENT_TEXT:0:0'));
     // f and its reverse g between the same two sets
     svg=await compose(mapback,6);
     const reverse=await audit(mapback,svg);assert.equal(reverse.status,'PASS',JSON.stringify(reverse.errors));

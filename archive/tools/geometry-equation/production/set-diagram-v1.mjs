@@ -196,6 +196,17 @@ function solveVenn(venn){
   }
   return {schemaVersion:MODEL_VERSION,kind:'VENN',layout:subset?'SUBSET':'OVERLAP',sets,subset,elements,cells,shade,...(universe?{universe}:{}),...(countStyle?{countStyle}:{})};
 }
+// A mapping element is a short Hangul/alphanumeric text (up to 4 characters, as always) or, since G17, a signed number, a fraction or a short root
+// (-2, 1/2, -1/2, √2, 2√3; up to 6 characters). The typed hyphen-minus is shown as the real minus sign U+2212; the figure writes it as a math label.
+const MAPPING_NUMBER=/^[-\u2212]?(?:\d{1,2}(?:\/\d{1,2})?|\d{0,2}\u221a\d{1,2})$/;
+export const mappingElementTex=text=>text.replace(/\u2212/g,'-').replace(/\u221a(\d+)/g,'\\sqrt{$1}');
+function mappingElement(value){
+  const text0=cleanText(value,6,'MAPPING_ELEMENT_TEXT_UNSUPPORTED');
+  if(text0.length<=4&&(HANGUL.test(text0)||/^[A-Za-z0-9]+$/.test(text0)))return {text:text0,math:labelMath(text0)};
+  if(!MAPPING_NUMBER.test(text0))bad('MAPPING_ELEMENT_TEXT_UNSUPPORTED');
+  const text=text0.replace(/-/g,'\u2212');
+  return {text,math:true,tex:mappingElementTex(text)};
+}
 function solveMapping(diagram){
   onlyKeys(diagram,['kind','columns','arrows','highlight'],'SET_DIAGRAM_PLAN_INVALID');
   if(!Array.isArray(diagram.columns)||diagram.columns.length<2||diagram.columns.length>3)bad(diagram.columns?.length>3?'MAPPING_COLUMN_COUNT_UNSUPPORTED':'MAPPING_COLUMNS_INVALID');
@@ -209,11 +220,10 @@ function solveMapping(diagram){
     if(raw.elements.length>8)bad('MAPPING_TOO_MANY_ELEMENTS');
     const seen=new Set();
     const elements=raw.elements.map((value,index)=>{
-      const text=cleanText(value,4,'MAPPING_ELEMENT_TEXT_UNSUPPORTED');
-      if(!HANGUL.test(text)&&!/^[A-Za-z0-9]+$/.test(text))bad('MAPPING_ELEMENT_TEXT_UNSUPPORTED');
-      if(seen.has(text))bad('MAPPING_COLUMNS_INVALID');
-      seen.add(text);
-      return {index,text,math:labelMath(text)};
+      const entry=mappingElement(value);
+      if(seen.has(entry.text))bad('MAPPING_COLUMNS_INVALID');
+      seen.add(entry.text);
+      return {index,...entry};
     });
     return {id:raw.id,name:raw.name??raw.id,elements};
   });
@@ -512,7 +522,7 @@ const ellipse=(id,role,cls,cx,cy,rx,ry,data={},layer=30)=>({t:'ellipse',id,role,
 const DISPLAY='\\displaystyle ';
 const math=(id,role,owner,tex,plain,ax,ay,x,y,extra={})=>({id,role,owner,kind:'MATH',tex,plain,anchor:{x:r6(x),y:r6(y),ax,ay},extra});
 const textLabel=(id,role,owner,text,ax,ay,x,y,extra={})=>({id,role,owner,kind:'TEXT',text,plain:text,anchor:{x:r6(x),y:r6(y),ax,ay},extra});
-const elementLabel=(id,role,owner,value,ax,ay,x,y,extra={})=>value.math?math(id,role,owner,value.text,value.text,ax,ay,x,y,extra):textLabel(id,role,owner,value.text,ax,ay,x,y,extra);
+const elementLabel=(id,role,owner,value,ax,ay,x,y,extra={})=>value.math?math(id,role,owner,value.tex??value.text,value.text,ax,ay,x,y,extra):textLabel(id,role,owner,value.text,ax,ay,x,y,extra);
 
 function vennSpec(model,layout){
   const prims=[],labels=[];
