@@ -2,7 +2,7 @@
 
 > **기준일:** 2026-11-01
 > **대상:** 수학 실험실 Lab 2.0(`apmath/playground/next/`)의 중2·중3 도형 실험실 6개. 중2는 `g8-triangles`·`g8-quadrilaterals`·`g8-similarity`·`g8-pythagoras`, 중3은 `g9-trig-ratio`·`g9-circle`이다.
-> **상태:** 제작 중(2026-11-02). `g8-triangles`(7탭 43장면)·`g8-quadrilaterals`(6탭 32장면) 모듈 개편 검수 통과·병합. 나머지 4개는 진행 중. 중1 도형 실험실 개편은 같은 방식으로 끝냈다(아래 §1).
+> **상태:** 제작 중(2026-11-02). 중2 4개 모듈 개편 검수 통과·병합: `g8-triangles`(7탭 43장면)·`g8-quadrilaterals`(6탭 32장면) PR #1192, `g8-similarity`(8탭 39장면, 마지막 탭 「심화 · 무게중심」)·`g8-pythagoras`(8탭 37장면, 마지막 탭 「심화 · 수직인 대각선」). 중3 2개는 진행 중. 중1 도형 실험실 개편은 같은 방식으로 끝냈다(아래 §1).
 > **설계안 정본:** [APMATH_GEOMETRY_LAB_G8_G9_DESIGN_CURRENT.md](APMATH_GEOMETRY_LAB_G8_G9_DESIGN_CURRENT.md). 단원별로 대응 실험실 현재 상태, 새 탭 구성, 유형별 장면 설계, 버릴 것, 캡처, 결정 사항을 담았다.
 > **허브:** https://icefoxtail.github.io/AP------/apmath/playground/next/
 
