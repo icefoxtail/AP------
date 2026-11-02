@@ -1184,6 +1184,31 @@ window.APLab.catalog = {
    "legacy": "labs/기하와벡터/벡터로 나타낸 도형.html",
    "next": "next/labs/geom-vector-figure.html",
    "glyph": "<path d=\"M12 58 L48 18\" marker-end=\"url(#arr)\"/><path d=\"M32 62 L68 30\" stroke-dasharray=\"4 3\" marker-end=\"url(#arr2)\"/> <defs><marker id=\"arr\" markerWidth=\"6\" markerHeight=\"6\" refX=\"3\" refY=\"3\" orient=\"auto\"><path d=\"M0 0 L6 3 L0 6 Z\" fill=\"currentColor\"/></marker> <marker id=\"arr2\" markerWidth=\"6\" markerHeight=\"6\" refX=\"3\" refY=\"3\" orient=\"auto\"><path d=\"M0 0 L6 3 L0 6 Z\" fill=\"currentColor\"/></marker></defs>"
+  },
+  {
+   "id": "prob-counting",
+   "course": "probstat",
+   "unit": "경우의 수",
+   "strand": "prob",
+   "order": 1,
+   "title": "경우의 수 실험실",
+   "short": "경우의 수",
+   "summary": "공과 칸막이(중복조합), 중복순열과 함수의 개수, 같은 것이 있는 순열과 도로망 최단 경로, 이웃하지 않는 배열, 원순열을 직접 조작하며 세어 보고 공식이 왜 그렇게 되는지 확인합니다.",
+   "keywords": "경우의 수 중복조합 정수해 공과 칸막이 중복순열 함수의 개수 비감소 함수 같은 것이 있는 순열 도로망 최단 경로 이웃하지 않는 배열 원순열 이전 교육과정 확률과 통계 수능 30번 킬러",
+   "badge": "경우의 수",
+   "scenes": [
+    "중복조합: 공과 칸막이 (정수해·상한·하한)",
+    "중복순열·함수의 개수 (비감소 함수 계단)",
+    "같은 것이 있는 순열과 도로망 최단 경로",
+    "이웃하지 않는 배열 (틈에 끼워 넣기)",
+    "원순열 (이전 교육과정)"
+   ],
+   "legacy": "next/labs/prob-counting.html",
+   "next": "next/labs/prob-counting.html",
+   "glyph": "<circle cx=\"16\" cy=\"40\" r=\"6\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"32\" cy=\"40\" r=\"6\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M44 24 V56\" stroke-width=\"4\"/><circle cx=\"56\" cy=\"40\" r=\"6\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M10 20 H70\" stroke-dasharray=\"3 3\"/>",
+   "tags": [
+    "경우의 수"
+   ]
   }
  ],
  "courses": [
@@ -1235,6 +1260,13 @@ window.APLab.catalog = {
    "level": "고등학교 2·3학년",
    "title": "이차곡선 · 공간도형 · 벡터",
    "hue": "pink"
+  },
+  {
+   "id": "probstat",
+   "name": "확률과 통계",
+   "level": "고등학교 2·3학년",
+   "title": "경우의 수 · 확률 · 통계",
+   "hue": "green"
   }
  ],
  "strands": [
@@ -1345,6 +1377,16 @@ window.APLab.catalog = {
    "hue": "green",
    "stations": [
     "alg-sequence"
+   ]
+  },
+  {
+   "id": "prob",
+   "name": "확률·통계 노선",
+   "hue": "green",
+   "stations": [
+    "prob-counting",
+    "prob-probability",
+    "prob-stats"
    ]
   }
  ]
