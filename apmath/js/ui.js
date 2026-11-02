@@ -162,7 +162,7 @@ let modalOpenSeq = 0;               // 현재 모달이 열린 순서
 let modalBackdropPressed = false;   // 누르기 시작이 배경이었는가(안에서 끌어서 밖에서 놓은 경우 제외)
 const apmsEscapeLayers = [];        // 모달 위에 뜨는 다른 레이어의 Esc 닫기 등록부
 let apmsModalLogicalOpen = false;   // 모달이 "논리적으로" 열려 있는가(closeModal 즉시 false. DOM의 hidden은 260ms 뒤에 바뀐다)
-const apmsNavGuard = { traversing: false, timer: null, syncQueued: false }; // 브라우저 뒤로 가기 연결 상태(아래 "브라우저 뒤로 가기" 구역)
+const apmsNavGuard = { traversing: false, timer: null, syncQueued: false, holdBoot: false }; // 브라우저 뒤로 가기 연결 상태(아래 "브라우저 뒤로 가기" 구역). holdBoot: 새로고침 직후 반 화면 복원 판단이 끝날 때까지 보호 항목을 걷지 않는다(N4)
 let appHistoryState = {
     currentView: null,
     backStack: [],
@@ -251,6 +251,7 @@ function appHistoryRecordView(nextView) {
     }
 
     appHistoryState.currentView = nextView;
+    apmsClassHashApply();
     updateAppBackButtons();
     apmsNavScheduleSync();
 }
@@ -374,6 +375,7 @@ function apmsNavModalOpen() {
 function apmsNavReset() {
     appHistoryState.backStack.length = 0;
     appHistoryState.currentView = null;
+    if (typeof state !== 'undefined' && state && state.ui) state.ui.currentClassId = null; // 로그인 화면에서는 열려 있던 반을 버린다(다른 계정이 로그인해도 앞 사용자의 반이 다시 그려지지 않게)
     modalStepStack = [];
     apmsEscapeLayers.length = 0;
     if (apmsModalLogicalOpen || isModalOpen()) closeModal(true);
@@ -396,6 +398,7 @@ function apmsNavHasGuard() {
 function apmsNavSync() {
     if (typeof window === 'undefined' || !window.history || typeof window.history.pushState !== 'function') return;
     if (apmsNavGuard.traversing) return; // 걷어 내는 중. popstate가 오면 다시 맞춘다.
+    if (apmsNavGuard.holdBoot) return; // 새로고침 직후: 반 화면을 복원할지 정하는 중이다.
     const want = apmsNavDepth() > 0;
     const has = apmsNavHasGuard();
     if (want && !has) {
@@ -430,6 +433,7 @@ function apmsNavOnPopState(event) {
     if (apmsNavGuard.traversing) { // 우리가 걷어 낸 이동. 할 일 없음.
         apmsNavGuard.traversing = false;
         clearTimeout(apmsNavGuard.timer);
+        apmsClassHashApply(); // 걷어 낸 자리의 주소 해시가 낡았을 수 있다(예: 반 화면에서 대시보드로 직접 이동)
         apmsNavSync();
         return;
     }
@@ -438,6 +442,7 @@ function apmsNavOnPopState(event) {
     const landedOnGuard = !!(event && event.state && event.state.apmsGuard);
     // 보호 항목으로 "앞으로 가기"로 들어왔다면 되돌릴 일만 맞춘다. 보호 항목에서 밖으로 나왔다면(뒤로 가기) 한 겹 닫는다.
     if (!landedOnGuard && apmsNavDepth() > 0) apmsNavBackStep();
+    apmsClassHashApply();
     apmsNavSync();
 }
 
@@ -445,9 +450,135 @@ if (typeof window !== 'undefined' && typeof window.addEventListener === 'functio
     window.__apmsNavHistoryBound = true;
     try {
         // 새로고침으로 옛 보호 항목 위에서 시작한 경우: 보호 항목을 일반 항목으로 바꿔 둔다(앱 상태는 처음부터라 갈 곳이 없다).
-        if (window.history.state && window.history.state.apmsGuard) window.history.replaceState({ apmsBase: true }, '', window.location.href);
+        // 단 주소에 #class=가 있고 로그인 세션이 있으면 반 화면을 복원할 수 있다. 그때는 이 항목을 그대로 보호 항목으로 쓴다
+        // (그래야 [앞 화면, 기본 항목, 보호 항목]이 유지되어 뒤로 1번 = 대시보드, 2번 = 앱 종료). 복원하지 않기로 하면 apmsClassHashBootDone이 일반 항목으로 바꾼다.
+        if (window.history.state && window.history.state.apmsGuard) {
+            if (apmsClassHashRead() && apmsClassHashHasStoredSession()) {
+                apmsNavGuard.holdBoot = true;
+                setTimeout(() => { if (apmsNavGuard.holdBoot) apmsClassHashBootDone(false); }, 15000); // 자료를 못 받아 복원 판단이 안 오면 포기한다
+            } else {
+                window.history.replaceState({ apmsBase: true }, '', window.location.href);
+            }
+        }
     } catch (error) { /* 이력 접근이 막힌 환경 */ }
     window.addEventListener('popstate', apmsNavOnPopState);
+}
+
+// ============================================================
+// [새로고침 시 반 화면 복원] 주소 해시 #class=<반 id> (2026-11-02 N4, 결정 D3: 반 화면만)
+//   - 반 화면에 있는 동안 주소에 #class=<id>만 남기고, 다른 화면(대시보드 등)으로 가면 지운다. 모달 상태는 넣지 않는다.
+//   - 이력 칸을 늘리지 않는다: history.replaceState만 쓴다(보호 항목 pushState는 location.href를 그대로 써 해시를 따라간다).
+//   - hashchange는 듣지 않는다. 뒤로 가기·history.go(-1)는 popstate가 처리하고, 이동한 자리의 해시는 popstate 끝에서 현재 화면에 맞춘다.
+//   - 새로고침(또는 그 주소로 열기) 뒤 loadData가 apmsClassHashRestoreTarget으로 판단한다: 접근 가능한 반이면 열고, 아니면 조용히 대시보드 + 해시 제거.
+//     복원할 때는 화면 이력에 대시보드를 먼저 남긴다(뒤로 1번 = 대시보드).
+//   - 로그인 전이면 해시를 그대로 두었다가 로그인한 사용자가 해시를 쓴 사용자와 같을 때만 복원한다(탭 단위 sessionStorage에 쓴 사용자 id를 기록).
+//   - 로그아웃(apmsClassHashForget)은 해시·기록·열린 반을 모두 지운다.
+// ============================================================
+const APMS_CLASS_HASH_OWNER_KEY = 'APMS_CLASS_HASH_OWNER';
+let apmsClassHashBootHadSession = null; // 첫 loadData 호출 때 로그인 세션이 있었는가(주소로 바로 연 경우와 로그인 뒤 복원을 구분)
+
+function apmsClassHashRead() {
+    try {
+        const m = /^#class=([^&]+)$/.exec(window.location.hash || '');
+        return m ? decodeURIComponent(m[1]) : '';
+    } catch (error) { return ''; }
+}
+
+function apmsClassHashHasStoredSession() {
+    try { return !!JSON.parse(localStorage.getItem('APMATH_SESSION')); } catch (error) { return false; }
+}
+
+function apmsClassHashOwner(value) {
+    try {
+        if (value === undefined) return sessionStorage.getItem(APMS_CLASS_HASH_OWNER_KEY) || '';
+        if (value) sessionStorage.setItem(APMS_CLASS_HASH_OWNER_KEY, value); else sessionStorage.removeItem(APMS_CLASS_HASH_OWNER_KEY);
+    } catch (error) { /* sessionStorage가 막힌 환경 */ }
+    return '';
+}
+
+function apmsClassHashWrite(id) {
+    try {
+        const next = window.location.pathname + window.location.search + (id ? '#class=' + encodeURIComponent(id) : '');
+        const cur = window.location.pathname + window.location.search + window.location.hash;
+        if (next !== cur) window.history.replaceState(window.history.state, '', next);
+    } catch (error) { /* 이력 접근이 막힌 환경 */ }
+}
+
+function apmsClassHashClear(forgetOwner) {
+    apmsClassHashWrite('');
+    if (forgetOwner) apmsClassHashOwner('');
+}
+
+// 지금 화면(appHistoryState.currentView)에 주소 해시를 맞춘다. 학생 상세(모달)는 appHistoryRecordView가 걸러내므로 해시는 그대로다.
+function apmsClassHashApply() {
+    if (typeof window === 'undefined' || !window.history) return;
+    // 로그인 화면: 세션 만료라면(해시 주인 기록이 남아 있음) 로그인 뒤 복원을 위해 해시를 그대로 둔다. 주인이 없으면(로그아웃·낯선 주소) 남은 낡은 해시를 지운다.
+    if (apmsNavLoginVisible()) { if (!apmsClassHashOwner()) apmsClassHashClear(false); return; }
+    const view = appHistoryState.currentView;
+    if (!view || !view.type) return; // 아직 화면이 없다(부팅 중). 주소는 loadData의 복원 판단이 정한다.
+    if (view.type === 'classDetail' && view.classId) {
+        const sameClass = String(state?.ui?.currentClassId || '') === String(view.classId);
+        const ok = sameClass && typeof isClassroomClassAccessible === 'function' && isClassroomClassAccessible(view.classId);
+        if (ok) {
+            apmsClassHashWrite(view.classId);
+            apmsClassHashOwner(String(state?.auth?.id ?? ''));
+            return;
+        }
+    }
+    apmsClassHashClear(false);
+}
+
+// loadData가 맨 앞에서 부른다: 첫 호출이 부팅이다.
+function apmsClassHashNoteLoad(session) {
+    if (apmsClassHashBootHadSession === null) {
+        apmsClassHashBootHadSession = !!session;
+        if (!session) apmsClassHashBootDone(false);
+    }
+}
+
+// 복원할 반 id를 돌려준다(없으면 ''). 접근 불가·없는 반·다른 사용자의 해시는 조용히 지운다. state.db가 채워진 뒤에 부른다.
+function apmsClassHashRestoreTarget(session) {
+    const id = apmsClassHashRead();
+    if (!id) return '';
+    const owner = apmsClassHashOwner();
+    const sid = String(session?.id ?? '');
+    const allowed = owner ? owner === sid : apmsClassHashBootHadSession === true;
+    const accessible = allowed && typeof isClassroomClassAccessible === 'function' && isClassroomClassAccessible(id);
+    if (!accessible) { apmsClassHashClear(true); return ''; }
+    return id;
+}
+
+// 복원 판단이 끝났다. 복원하지 않으면 새로고침으로 물려받은 보호 항목은 일반 항목으로 바꾼다.
+function apmsClassHashBootDone(restored) {
+    const wasHeld = apmsNavGuard.holdBoot;
+    apmsNavGuard.holdBoot = false;
+    if (wasHeld && !restored) {
+        try { if (window.history.state && window.history.state.apmsGuard) window.history.replaceState({ apmsBase: true }, '', window.location.href); } catch (error) { /* 이력 접근이 막힌 환경 */ }
+    }
+    apmsNavScheduleSync();
+}
+
+// 복원: 화면 이력에 대시보드를 남기고(뒤로 1번 = 대시보드) 반 화면을 연다. 반 화면이 안 열리면 대시보드로 둔다.
+function apmsClassHashRestore(id) {
+    if (!appHistoryState.currentView && state?.auth?.role) appHistoryState.currentView = appHistoryBuildView('renderDashboard');
+    const result = typeof window.renderClass === 'function' ? window.renderClass(id) : false;
+    const view = appHistoryState.currentView;
+    if (result !== false && !(view && view.type === 'classDetail')) appHistoryRecordView(appHistoryBuildView('renderClass', [id])); // 화면 이동 감싸기가 아직 안 붙은 경우
+    const opened = result !== false && !!document.querySelector('.ap-classroom-shell');
+    if (!opened) {
+        apmsClassHashClear(true);
+        appHistoryState.currentView = null;
+        appHistoryState.backStack.length = 0;
+        if (state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') renderAdminControlCenter(); else renderDashboard();
+    }
+    apmsClassHashBootDone(opened);
+}
+
+// 로그아웃: 앞 사용자의 반 위치를 지운다.
+function apmsClassHashForget() {
+    apmsClassHashClear(true);
+    if (typeof state !== 'undefined' && state && state.ui) state.ui.currentClassId = null;
+    appHistoryState.currentView = null;
 }
 
 function appHistoryWrapGlobal(name, meta) {
