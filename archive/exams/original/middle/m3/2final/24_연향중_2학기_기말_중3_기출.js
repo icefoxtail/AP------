@@ -31,7 +31,10 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solution": "원의 중심 \\(O\\)에서 현 \\(AB\\)에 내린 수선의 발을 \\(M\\)이라 하자.\n원의 중심에서 현에 내린 수선은 현을 이등분하므로\n\\(AM=BM=4\\rm\\,cm\\)이다.\n\n직각삼각형 \\(OAM\\)에서\n\\(OA=6\\rm\\,cm\\)이므로\n\\(OM^2=OA^2-AM^2=6^2-4^2=20\\)이다.\n따라서 \\(OM=2\\sqrt5\\rm\\,cm\\)이다.\n\n그러므로 정답은 ③이다.",
-    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q1.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 반지름 6cm인 원 O의 현 AB=8cm에 중심 O에서 내린 수선의 발 M이 있다. AM과 BM이 같은 색으로 4cm이고 삼각형 OAM은 OA=6cm인 직각삼각형이다.",
+    "solutionImageCaption": "수선은 현을 이등분하므로 AM=BM=4cm이다. 직각삼각형 OAM에서 OM²=6²−4²=20이므로 OM=2√5cm이고 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -63,7 +66,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "접점 \\(B\\)에서 반지름 \\(OB\\)와 접선 \\(PB\\)는 서로 수직이다.\n또 \\(OB=OA=6\\rm\\,cm\\), \\(OP=11\\rm\\,cm\\)이다.\n\n직각삼각형 \\(OPB\\)에서\n\\(PB^2=OP^2-OB^2=11^2-6^2=85\\)이므로\n\\(PB=\\sqrt{85}\\rm\\,cm\\)이다.\n\n따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q2.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 접선 PA, PB가 있다. OA와 OB는 6cm로 같은 색이고 PA와 PB는 같은 색이며 OP=11cm이고 각 OBP는 직각이다.",
+    "solutionImageCaption": "접점 B에서 OB⊥PB이고 OB=OA=6cm이므로 직각삼각형 OPB에서 PB²=11²−6²=85이다. 따라서 PB=√85cm이고 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -95,7 +101,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "반원의 반지름이 $3\\,\\mathrm{cm}$이므로\n지름 $AB=2\\times3=6\\,\\mathrm{cm}$이다.\n같은 점에서 한 원에 그은 두 접선의 길이는 같으므로\n$DA=DE$, $CB=CE$이다.\n따라서\n$AD+BC=DE+EC=DC=9\\,\\mathrm{cm}$이다.\n사각형 $ABCD$의 둘레는\n$AB+BC+CD+DA$\n$=6+9+9$\n$=24\\,\\mathrm{cm}$이다.\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q3.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 반원 O에 접하는 AD, DC, BC에서 DA=DE는 파랑 눈금, CB=CE는 주황 눈금으로 표시해 두 접선의 길이가 같고 AD+BC=CD=9cm임을 보여 준다.",
+    "solutionImageCaption": "□ABCD의 둘레는 AB+BC+CD+DA=6+9+9=24cm이다. 정답 ①.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -127,7 +136,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "점 \\(P,B,C\\)가 한 직선 위에 있으므로\n\\(\\angle ABP=180^\\circ-\\angle ABC=85^\\circ\\)이다.\n\n삼각형 \\(PAB\\)에서\n\\(\\angle PAB=180^\\circ-35^\\circ-85^\\circ=60^\\circ\\)이다.\n\n또 \\(P,A,D\\)가 한 직선 위에 있으므로\n\\(\\angle DAB=180^\\circ-60^\\circ=120^\\circ\\)이다.\n사각형 \\(ABCD\\)가 원에 내접하므로 마주 보는 두 각의 합은 \\(180^\\circ\\)이다.\n따라서\n\\(\\angle BCD=180^\\circ-120^\\circ=60^\\circ\\)이다.\n\n점 \\(C,B,P\\)가 한 직선 위에 있으므로\n\\(\\angle PCD=\\angle BCD=60^\\circ\\)이다.\n\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q4.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 □ABCD에서 P, A, D와 P, B, C가 각각 한 직선 위에 있을 때 ∠P=35°, ∠ABC=95°, ∠ABP=85°, ∠PAB=60°, ∠DAB=120°를 표시하고 ∠PAB와 ∠BCD를 같은 색으로 묶는다.",
+    "solutionImageCaption": "∠ABP=180°−95°=85°이므로 △PAB에서 ∠PAB=60°이고 ∠DAB=120°이다. □ABCD가 원에 내접하므로 대각의 합이 180°여서 ∠BCD=60°이다. P, B, C가 한 직선 위에 있어 ∠PCD=60°이고 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -159,7 +171,10 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solution": "그림에서 \\(AD=BD=5\\rm\\,cm\\), \\(CD=1\\rm\\,cm\\)이다.\n\\(D\\)는 현 \\(AB\\)의 중점이고 \\(CD\\perp AB\\)이므로 원의 중심 \\(O\\)는 직선 \\(CD\\) 위에 있다.\n\n원의 반지름을 \\(r\\rm\\,cm\\)라 하면\n\\(OC=r\\), \\(CD=1\\)이므로\n\\(OD=r-1\\)이다.\n\n직각삼각형 \\(ODA\\)에서\n\\(OA=r\\), \\(AD=5\\)이므로\n\\(r^2=(r-1)^2+5^2\\)이다.\n정리하면\n\\(2r=26\\)이므로 \\(r=13\\)이다.\n\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q5.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 현 AB의 중점 D에서 AB에 수직인 선이 호의 꼭대기 C를 지나 중심 O까지 이어진다. AD=BD=5cm(같은 눈금), CD=1cm, OD=r−1cm, OA=r cm이고 직각삼각형 ODA가 파랗게 칠해져 있다.",
+    "solutionImageCaption": "직각삼각형 ODA에서 r²=(r−1)²+5²이므로 2r=26, 원의 반지름은 r=13cm (정답 ③)",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -191,7 +206,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "삼각형 $ABC$에서\n$\\angle C=180^\\circ-60^\\circ-70^\\circ=50^\\circ$이다.\n원 $O$는 $\\triangle ABC$의 내접원이므로\n$OE\\perp BC$, $OF\\perp AC$이다.\n따라서 사각형 $OECF$에서\n$\\angle OEC=\\angle OFC=90^\\circ$이다.\n그러므로\n$\\angle EOF\n=360^\\circ-90^\\circ-90^\\circ-50^\\circ\n=130^\\circ$이다.\n또 $OE=OF$이므로 $\\triangle OEF$는 이등변삼각형이다.\n따라서\n$\\angle OEF=\\dfrac{180^\\circ-130^\\circ}{2}=25^\\circ$이다.\n$OE\\perp EC$이므로\n$x=90^\\circ-25^\\circ=65^\\circ$이다.\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q6.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: △ABC의 내접원 O와 접점 D, E, F, 접점의 직각 표시, ∠A=60°, ∠B=70°, ∠C=50°, ∠EOF=130°, ∠OEF=25°와 ∠x를 나타낸 그림.",
+    "solutionImageCaption": "∠C=180°−60°−70°=50°이다. OE⊥BC, OF⊥AC이므로 사각형 OECF에서 ∠EOF=360°−90°−90°−50°=130°이고, OE=OF이므로 ∠OEF=(180°−130°)÷2=25°이다. OE⊥EC이므로 ∠x=90°−25°=65°이다. 정답 ①.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -223,7 +241,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "$AC$는 원 $O$의 지름이므로\n$\\angle ABC=90^\\circ$이다.\n삼각형 $ABC$에서\n$\\angle BAC=32^\\circ$이므로\n$\\angle ACB=180^\\circ-90^\\circ-32^\\circ=58^\\circ$이다.\n$\\angle ACB$는 호 $AB$를 보는 원주각이므로\n같은 호를 보는 중심각은\n$\\angle AOB=2\\times58^\\circ=116^\\circ$이다.\n두 접선 $PA$, $PB$가 이루는 각은\n$180^\\circ-\\angle AOB$이므로\n$\\angle APB=180^\\circ-116^\\circ=64^\\circ$이다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q7.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 접선 PA, PB와 지름 AC가 있다. 각 BAC는 32도, 각 ABC는 직각, 각 ACB는 58도, 중심각 AOB는 116도이다.",
+    "solutionImageCaption": "AC가 지름이므로 ∠ABC=90°이고 ∠ACB=58°이다. ∠AOB=2×58°=116°이고 ∠APB=180°−116°=64°이므로 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -255,7 +276,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "접점 \\(T\\)에서 반지름 \\(OT\\)와 접선 \\(PT\\)는 서로 수직이다.\n따라서 삼각형 \\(POT\\)는 직각삼각형이고 \\(\\angle TPO=30^\\circ\\)이다.\n\n그러므로 \\(30^\\circ\\)의 맞은편 변의 길이는 빗변의 절반이어서\n\\(OT=\\dfrac12OP\\)이다.\n\n점 \\(A\\)는 선분 \\(PO\\)와 원의 교점이므로\n\\(AO=OT\\)이고\n\\(OP=PA+AO=6+OT\\)이다.\n따라서\n\\(OP=6+\\dfrac12OP\\)이므로 \\(OP=12\\)이다.\n\n이제\n\\(PT=OP\\cos30^\\circ=12\\cdot\\dfrac{\\sqrt3}{2}=6\\sqrt3\\rm\\,cm\\)이다.\n\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q8.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 접선 PT에서 각 PTO는 직각이고 각 TPO=30도이다. OA와 OT는 반지름으로 같은 색이며 PA=6cm, OT=6cm, OP=12cm이다.",
+    "solutionImageCaption": "직각삼각형 POT에서 ∠TPO=30°이므로 OT=½OP이다. OP=PA+OA=6+OT이므로 OP=12cm, OT=6cm이다. 따라서 PT=OP·cos30°=12×(√3/2)=6√3cm이고 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -287,7 +311,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "직각삼각형 \\(ABC\\)에서\n\\(AB=15\\rm\\,cm\\), \\(AC=9\\rm\\,cm\\)이므로 피타고라스 정리에 따라\n\\(BC=\\sqrt{15^2-9^2}=12\\rm\\,cm\\)이다.\n\n내접원의 반지름을 \\(r\\rm\\,cm\\)라 하자.\n\\(C\\)가 직각이므로 접점까지의 길이는\n\\(CF=CE=r\\)이다.\n같은 점에서 원에 그은 두 접선의 길이는 같으므로\n\\(AF=AD=9-r\\),\n\\(BE=BD=12-r\\)이다.\n\n따라서\n\\(AB=AD+DB=(9-r)+(12-r)=15\\)이므로\n\\(r=3\\)이다.\n\n원의 넓이는\n\\(\\pi r^2=9\\pi\\rm\\,cm^2\\)이다.\n\n따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q9.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 내접원에서 꼭짓점별 접선 길이가 같은 세 쌍(CE=CF=3, AF=AD=6, BE=BD=9)을 주황·파랑·초록 눈금으로 보여 준다.",
+    "solutionImageCaption": "내접원의 반지름은 r=3cm이므로 원의 넓이는 πr²=9π cm²이다. 정답 ④.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -319,7 +346,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "$AB$가 지름이므로\n호 $AB$인 반원의 크기는 $180^\\circ$이다.\n또\n$\\wideparen{AC}=\\wideparen{CD}=\\wideparen{DE}=\\wideparen{EB}$이므로\n각 호의 크기는\n$180^\\circ\\div4=45^\\circ$이다.\n원주각의 크기는 그 원주각이 보는 호의 크기의 절반이므로\n$x=\\dfrac{45^\\circ}{2}=22.5^\\circ$,\n$y=\\dfrac{45^\\circ}{2}=22.5^\\circ$이다.\n따라서\n$x+y=22.5^\\circ+22.5^\\circ=45^\\circ$이다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q10.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB인 원 O에서 아래쪽 반원을 같은 크기의 호 네 개(각 45°)로 나누어 같은 색으로 표시하고, 호 DE와 CD를 보는 원주각 x, y를 같은 색으로 표시한다.",
+    "solutionImageCaption": "AB가 지름이므로 호 AB=180°이고, 호 AC=CD=DE=EB=180°÷4=45°이다. ∠x와 ∠y는 각각 호 45°를 보는 원주각이므로 22.5°이고 x+y=45°이다. 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -351,7 +381,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "직각삼각형 \\(AHC\\)에서\n\\(AC=10\\), \\(CH=5\\)이므로\n\\(AH=\\sqrt{10^2-5^2}=5\\sqrt3\\)이다.\n\n\\(AQ\\)가 원의 지름이므로\n\\(\\angle ACQ=90^\\circ\\)이다.\n또 \\(AH\\perp BC\\)이므로\n\\(\\angle AHB=90^\\circ\\)이다.\n\n\\(\\angle ABH=\\angle ABC\\)이고,\n\\(\\angle ABC\\)와 \\(\\angle AQC\\)는 같은 호 \\(AC\\)에 대한 원주각이므로\n\\(\\angle ABH=\\angle AQC\\)이다.\n따라서\n\\(\\triangle ABH\\sim\\triangle AQC\\)이다.\n\n그러므로\n\\(\\dfrac{AB}{AQ}=\\dfrac{AH}{AC}\\)이어서\n\\(\\dfrac{16}{AQ}=\\dfrac{5\\sqrt3}{10}\\)이다.\n따라서\n\\(AQ=\\dfrac{32\\sqrt3}{3}\\)이고,\n원의 반지름은\n\\(\\dfrac{AQ}{2}=\\dfrac{16\\sqrt3}{3}\\)이다.\n\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q11.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 내접하는 삼각형 ABC, 지름 AQ, 꼭짓점 A에서 BC에 내린 수선 AH. 같은 호 AC의 원주각 ∠ABC와 ∠AQC는 초록, 닮음인 △ABH와 △AQC의 대응변 AB와 AQ는 파랑, AH와 AC는 주황으로 표시되어 있다.",
+    "solutionImageCaption": "△ABH∽△AQC에서 AB:AQ=AH:AC이므로 16:AQ=5√3:10, AQ=32√3/3이고 반지름은 AQ의 절반인 16√3/3 (정답 ⑤)",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -379,7 +412,11 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "③의 자료에는 40처럼 다른 값들과 크게 떨어진 값이 있다. 이 값은 평균을 크게 끌어올리지만 중앙값에는 영향이 작다.\n따라서 중앙값이 중심 경향을 더 잘 나타내는 것은 ③."
+    "solution": "③의 자료에는 40처럼 다른 값들과 크게 떨어진 값이 있다. 이 값은 평균을 크게 끌어올리지만 중앙값에는 영향이 작다.\n따라서 중앙값이 중심 경향을 더 잘 나타내는 것은 ③.",
+    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 자료 7개의 점도표. 1에 점 2개, 2에 점 1개, 4에 점 3개가 있고, 40의 점 1개는 축을 끊어 멀리 떨어진 곳에 있다.",
+    "solutionImageCaption": "40처럼 다른 값에서 멀리 떨어진 값이 평균을 크게 끌어올린다. 중앙값은 4이고 평균은 56/7=8이므로 중앙값이 중심 경향을 더 잘 나타내는 것은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -560,7 +597,11 @@ window.questionBank = [
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "산점도에서 같은 듣기 점수를 가진 점의 개수를 세면 듣기 8점에 해당하는 점이 가장 많다.\n최빈값은 8점. 정답 ③."
+    "solution": "산점도에서 같은 듣기 점수를 가진 점의 개수를 세면 듣기 8점에 해당하는 점이 가장 많다.\n최빈값은 8점. 정답 ③.",
+    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 읽기·듣기 점수 산점도에 듣기 8점 가로선이 그어져 있고, 그 선 위에 점 3개가 놓여 있다.",
+    "solutionImageCaption": "듣기 점수별 점의 개수를 세면 8점이 3개로 가장 많으므로 최빈값은 8점이다. 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -623,7 +664,11 @@ window.questionBank = [
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "산점도의 가로축을 사회 점수,\n세로축을 과학 점수라 하자.\n사회 점수보다 과학 점수가 높다는 것은\n$y>x$인 점을 뜻한다.\n즉 직선 $y=x$보다 위쪽에 있는 점을 세면 된다.\n산점도에서 이 조건을 만족하는 점은 $4$개이다.\n전체 학생은 $15$명이므로\n구하는 비율은\n$\\dfrac4{15}$이다.\n따라서 정답은 ③이다."
+    "solution": "산점도의 가로축을 사회 점수,\n세로축을 과학 점수라 하자.\n사회 점수보다 과학 점수가 높다는 것은\n$y>x$인 점을 뜻한다.\n즉 직선 $y=x$보다 위쪽에 있는 점을 세면 된다.\n산점도에서 이 조건을 만족하는 점은 $4$개이다.\n전체 학생은 $15$명이므로\n구하는 비율은\n$\\dfrac4{15}$이다.\n따라서 정답은 ③이다.",
+    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 사회·과학 점수 산점도에 점선 y=x가 그어져 있고, 점선 위쪽에 점 4개가 있다.",
+    "solutionImageCaption": "과학 점수가 사회 점수보다 높다는 것은 y>x이므로 점선 y=x의 위쪽 점 4개를 센다. 전체 15명 중 4명이므로 비율은 4/15이다. 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -650,7 +695,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "정사각형의 한 변의 길이는\n\\(BC=BP+PC=2+8=10\\rm\\,cm\\)이다.\n\n원의 반지름을 \\(r\\rm\\,cm\\)라 하고,\n중심 \\(O\\)에서 현 \\(PQ\\)에 내린 수선의 발을 \\(M\\)이라 하자.\n원은 \\(AB,AD\\)에 접하므로\n\\(BM=r\\), \\(OM=10-r\\)이다.\n또 \\(BP=2\\)이므로\n\\(PM=BM-BP=r-2\\)이다.\n\n원의 중심에서 현에 내린 수선은 현을 이등분하므로\n\\(M\\)은 \\(PQ\\)의 중점이다.\n직각삼각형 \\(OMP\\)에서 \\(OP=r\\)이므로\n\\(r^2=(10-r)^2+(r-2)^2\\)이다.\n\n정리하면\n\\(r^2-24r+104=0\\)이므로\n\\(r=12\\pm2\\sqrt{10}\\)이다.\n반지름은 정사각형의 한 변보다 작으므로\n\\(r=12-2\\sqrt{10}\\)이다.\n\n따라서\n\\(PQ=2PM=2(r-2)=20-4\\sqrt{10}\\rm\\,cm\\)이다.",
-    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q21.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 10인 정사각형 ABCD에서 AB, AD에 접하고 BC와 P, Q에서 만나는 원 O, 현 PQ의 중점 M, OM⊥BC와 BM=r, PM=r−2, OM=10−r, OP=r을 나타낸 그림.",
+    "solutionImageCaption": "한 변은 BP+PC=10cm이다. 원이 AB, AD에 접하므로 BM=r, OM=10−r이고 PM=BM−BP=r−2이다. 직각삼각형 OMP에서 r²=(10−r)²+(r−2)²이므로 r=12−2√10이고, M이 PQ의 중점이므로 PQ=2PM=2(r−2)=20−4√10 cm이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -677,7 +725,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "세 호 \\(\\wideparen{AB},\\wideparen{BC},\\wideparen{CD}\\)의 크기를 모두 \\(x^\\circ\\)라 하자.\n\n점 \\(E,A,B\\)가 한 직선 위에 있으므로\n\\(\\angle EAD=180^\\circ-\\angle BAD\\)이다.\n\\(\\angle BAD\\)는 호 \\(BCD\\)에 대한 원주각이고\n호 \\(BCD\\)의 크기는 \\(2x^\\circ\\)이므로\n\\(\\angle BAD=x^\\circ\\)이다.\n따라서\n\\(\\angle EAD=180^\\circ-x^\\circ\\)이다.\n\n같은 방법으로 \\(E,D,C\\)가 한 직선 위에 있고\n\\(\\angle ADC\\)는 호 \\(ABC\\)에 대한 원주각이므로\n\\(\\angle ADE=180^\\circ-x^\\circ\\)이다.\n\n삼각형 \\(AED\\)의 내각의 합을 이용하면\n\\(28^\\circ+(180^\\circ-x^\\circ)+(180^\\circ-x^\\circ)=180^\\circ\\)이다.\n따라서 \\(x=104\\)이다.\n\n이제\n\\(\\angle FAD=\\angle CAD=\\dfrac{104^\\circ}{2}=52^\\circ\\),\n\\(\\angle ADF=\\angle ADB=\\dfrac{104^\\circ}{2}=52^\\circ\\)이다.\n\n따라서 삼각형 \\(AFD\\)에서\n\\(\\angle AFD=180^\\circ-52^\\circ-52^\\circ=76^\\circ\\)이다.",
-    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q22.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 O 위의 네 점 A, B, C, D에서 호 AB, BC, CD는 모두 104도로 같은 색이다. 변 AB와 DC의 연장선이 E에서 만나 각 E는 28도, 각 EAD와 각 ADE는 76도, 각 FAD와 각 ADF는 52도이다.",
+    "solutionImageCaption": "호 AB=BC=CD=104°이다. ∠EAD=∠ADE=76°이고 ∠FAD=∠ADF=52°이다. 삼각형 AFD에서 ∠AFD=180°−52°−52°=76°이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,

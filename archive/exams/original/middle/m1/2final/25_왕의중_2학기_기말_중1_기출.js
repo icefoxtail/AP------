@@ -861,7 +861,11 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:8861e8bbe0c2562270ada83308157f42d764c62165aad57bbc2c23ed7ecd800b",
-      "difficultyEvidenceSha": "sha256:fef973216a567c6600d2d08b1c9ef6749c1ca8f6dbcffdc46792c9098e659820"
+      "difficultyEvidenceSha": "sha256:fef973216a567c6600d2d08b1c9ef6749c1ca8f6dbcffdc46792c9098e659820",
+      "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 등교 시간 히스토그램. 5~10분 3명, 10~15분 5명, 15~20분 6명, 20~25분 11명, 30~35분 5명이고 찢어진 25~30분 막대는 점선으로 10명으로 복원했다. 20분 미만 14명, 25분 이상 15명을 괄호로 묶어 보인다.",
+      "solutionImageCaption": "찢어진 25분 이상 30분 미만 막대는 40-(3+5+6+11+5)=10명이고, 20분 미만 14명은 25분 이상 15명보다 적으므로 '많다'고 한 옳지 않은 설명은 ⑤이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 20,

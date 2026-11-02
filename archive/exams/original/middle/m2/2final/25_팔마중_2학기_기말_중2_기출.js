@@ -399,9 +399,9 @@ window.questionBank = [
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q12-solution.svg",
-    "solutionImageAlt": "해설 그림: 가로는 100원짜리 개수 a, 세로는 50원짜리 개수 b(각 1~3)인 3×3 표에 (a,b)가 적혀 있다. 금액이 같은 칸 (2,1)과 (1,3)이 옅은 회색, (3,1)과 (2,3)이 짙은 회색이다.",
-    "solutionImageCaption": "같은 색 칸은 금액이 같은 (a,b)이다. 옅은 회색 (2,1)·(1,3)은 250원, 짙은 회색 (3,1)·(2,3)은 350원이고, 흰 칸 (1,1)=150원, (1,2)=200원, (2,2)=300원, (3,2)=400원, (3,3)=450원은 모두 다르다. 50원 단위로 2a+b를 구하면 3,4,5,5,6,7,7,8,9이므로 금액은 7가지이다. 정답 ③",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로는 100원짜리 개수 a, 세로는 50원짜리 개수 b(각 1~3)인 3×3 표에 50원 단위 금액 2a+b가 적혀 있다. 값이 5인 두 칸은 옅은 회색, 값이 7인 두 칸은 짙은 회색이다.",
+    "solutionImageCaption": "표의 수는 50원 단위 금액 2a+b이다. 5가 두 번(옅은 회색), 7이 두 번(짙은 회색) 나오고 3, 4, 6, 8, 9는 한 번씩이므로 서로 다른 값은 3, 4, 5, 6, 7, 8, 9의 7가지이다. 정답 ③",
     "solutionImageSize": "medium"
   },
   {
@@ -593,9 +593,9 @@ window.questionBank = [
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q18-solution.svg",
-    "solutionImageAlt": "해설 그림: 수직선의 원점 0에 점 P가 있고, 앞면이 나와 오른쪽으로 2만큼, 이어 뒷면 세 번으로 왼쪽으로 1씩 세 번 움직여 -1에 도착하는 예시 화살표.",
-    "solutionImageCaption": "예: 앞면 1번(+2)과 뒷면 3번(-1씩)이면 0에서 -1에 도착한다. 앞면이 정확히 한 번 나오는 경우는 4가지이므로 4/16=1/4이다. 정답 ④",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선의 원점 0에서 앞면이 나와 오른쪽으로 2만큼 간 뒤 뒷면이 세 번 나와 왼쪽으로 1씩 세 번 움직여 -1에 도착하는 예시 화살표 네 개.",
+    "solutionImageCaption": "예: 앞면 1번(+2)과 뒷면 3번(-1, -1, -1)이면 0→2→1→0→-1로 -1에 도착한다. 앞면이 정확히 한 번 나오는 경우는 4가지이므로 4/16=1/4이다. 정답 ④",
     "solutionImageSize": "medium"
   },
   {
@@ -746,7 +746,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로는 첫째 원판의 수 1~8, 세로는 둘째 원판의 수 1~3인 8×3 표에 두 수의 합이 적혀 있다. 합이 5인 세 칸은 옅은 회색, 합이 9인 세 칸은 짙은 회색이다.",
+    "solutionImageCaption": "합이 5인 칸(옅은 회색)은 (2,3), (3,2), (4,1)의 3가지이고, 합이 9인 칸(짙은 회색)은 (6,3), (7,2), (8,1)의 3가지이다. 따라서 조건을 만족하는 경우의 수는 3+3=6가지이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,

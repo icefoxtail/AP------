@@ -64,9 +64,11 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q02_solution_CHORD_BISECTION.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q2-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O에서 길이 20cm인 현에 중심 O에서 내린 수선이 현과 직각으로 만나고, 수선의 발이 현을 같은 길이(주황 눈금) 두 부분으로 나눈다. 아랫부분의 길이가 x cm이다.",
+    "solutionImageCaption": "수선의 발이 현을 이등분하므로 x=20÷2=10cm (정답 ③)"
   },
     {
     "id": 3,
@@ -99,9 +101,11 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q03_solution_BROKEN_PLATE_CHORD.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q3-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O에서 현 AB의 중점 M과 호의 꼭대기 C(주황 호)가 있고 AM=MB=6cm, MC=2cm, OM=R−2cm, OA=R cm, M에서 직각(90°)이 표시되어 있다. 오른쪽에는 C, M, O를 한 직선으로 따로 그려 CO=R cm를 보인다.",
+    "solutionImageCaption": "현 AB=12cm의 중점 M에서 AM=6cm이고 현과 원호 사이가 2cm이므로 OM=R−2이다. 직각삼각형 OMA에서 6²+(R−2)²=R²이므로 4R=40, R=10cm이다. 정답 ③."
   },
   {
     "id": 4,
@@ -134,9 +138,11 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q04_REPLACEMENT.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q4-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O의 두 현 AB, CD에 내린 수선의 발 M, N이 있다. OM=ON, OA=OC, AM=CN이 각각 같은 색이고 두 직각삼각형 OMA, ONC가 같은 색으로 합동이다.",
+    "solutionImageCaption": "두 직각삼각형 OMA, ONC에서 OA=OC, OM=ON이므로 AM=CN이다. 수선은 현을 이등분하므로 AB=2AM=2CN=CD이고 정답은 ④이다."
   },
     {
     "id": 5,
@@ -169,9 +175,11 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q05_solution_EQUAL_CHORD_DISTANCES.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q5-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O에서 길이가 14cm로 같은 두 현이 같은 색이고, 중심 O에서 두 현에 내린 수선 x cm와 7cm도 같은 색이며 수선과 현이 만나는 곳은 직각이다.",
+    "solutionImageCaption": "한 원에서 길이가 같은 두 현은 중심에서의 거리가 같다. 두 현이 모두 14cm이므로 x=7이고 정답은 ①이다."
   },
   {
     "id": 6,
@@ -203,7 +211,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심에서 두 현에 내린 수선 OD, OF가 같으면(주황) 두 현 AB, AC가 같고(파랑), 이등변삼각형 ABC의 밑각 ∠B와 ∠C가 65°로 같음(초록)을 보여 준다.",
+    "solutionImageCaption": "∠A=x=180°−65°−65°=50°이다. 정답 ③.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -236,9 +248,11 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q07_solution_TANGENT_LENGTH.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q7-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O 밖의 점 P에서 그은 두 접선 PA, PB(접점 A, B)의 길이가 같음을 같은 색과 눈금으로 보이고 PB=11, PA=x+3, 반지름과 접선의 직각을 표시한다.",
+    "solutionImageCaption": "한 외부점 P에서 원 O에 그은 두 접선의 길이는 같으므로 PA=PB이다. PA=x+3, PB=11이므로 x+3=11이고 x=8이다. 정답은 ②이다."
   },
   {
     "id": 8,
@@ -271,9 +285,11 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q08_solution_SATELLITE_TANGENT.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q8-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 지구를 나타내는 원 O와 위성 P, 접점 T. 반지름 OT=6000km, 접선 TP=8000km, OT와 TP는 직각이고 OP=10000km이며, 지표면에서 위성까지의 높이 구간이 굵은 선으로 표시되어 있다.",
+    "solutionImageCaption": "OP²=6000²+8000²=10000²이므로 OP=10000km이고, 위성의 지표면 위 높이는 OP−6000=4000km (정답 ②)"
   },
   {
     "id": 9,
@@ -306,9 +322,11 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q09_TANGENTS_SOLUTION.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q9-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: △ABC의 내접원 O와 접점 D, E, F, 변 AC, BC 위의 점 P, R을 지나는 접선 PR(접점 T)이 있고, 같은 점에서 그은 접선의 길이가 쌍마다 같은 색 표시로 나타난 그림.",
+    "solutionImageCaption": "접선의 길이가 같으므로 AD=AF=a, BD=BE=b, CE=CF=c라 하면 a+b=6, b+c=11, c+a=8에서 c=6.5cm이다. PR이 원에 접하는 점을 T라 하면 PT=PF, RT=RE이므로 △CPR의 둘레 CP+PR+RC=(CP+PF)+(RE+RC)=CF+CE=2c=13cm이다. 정답 ⑤."
   },
   {
     "id": 10,
@@ -340,7 +358,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각으로 만나는 두 벽에 반지름 10cm인 원 모양 청소기가 접해 있다. 구석의 10cm×10cm 정사각형에서 원의 사분원을 뺀 부분이 색으로 칠해져 있다.",
+    "solutionImageCaption": "구석의 10×10 정사각형에서 청소기 중심이 닿는 부분은 반지름 10cm인 원의 1/4이다. 청소되지 않는 넓이는 100−25π cm²이고 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -373,9 +395,11 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q11_solution_TANGENTIAL_QUADRILATERAL.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q11-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O가 사각형 ABCD의 네 변에 점 P, Q, R, S에서 접한다. 꼭짓점 A, B, C, D마다 접선의 길이가 같은 쌍이 서로 다른 색이고 AD=10cm, BC=13cm이며 AB+CD=23, AB−CD=1이 적혀 있다.",
+    "solutionImageCaption": "접선의 길이가 같으므로 AB+CD=AD+BC=10+13=23cm이다. AB−CD=1과 더하고 빼면 CD=11cm이고 정답은 ①이다."
   },
   {
     "id": 12,
@@ -407,7 +431,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 접점 B에서 접선 AB와 반지름 OB가 수직인 직각삼각형 ABO에서 OB=OD=r(주황 눈금), OA=8+r, AB=24cm임을 보여 준다.",
+    "solutionImageCaption": "(8+r)²=24²+r²에서 16r=512이므로 r=32cm이다. 정답 ④.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -439,7 +467,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 같은 호를 보는 원주각 40°와 중심각 x를 같은 색으로, 그 호도 같은 색으로 표시한다.",
+    "solutionImageCaption": "원주각 40°와 중심각 x는 같은 호를 보므로 중심각은 원주각의 2배이다. x=2×40°=80°이고 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -471,7 +503,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 위의 점 A, B와 원주 위의 점 P, Q. 점 P와 Q에서 같은 호 AB(주황)를 보는 두 원주각 ∠APB와 ∠AQB(30°)가 같은 색(파랑)으로 표시되어 있다.",
+    "solutionImageCaption": "같은 호 AB에 대한 원주각의 크기는 같으므로 ∠APB=∠AQB=30° (정답 ③)",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -503,7 +539,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 O, 반지름 15m인 원에서 호 AB(파랑)를 보는 원주각 ∠AQB=30°와 중심각 ∠AOB=60°를 나타낸 그림.",
+    "solutionImageCaption": "호 AB를 보는 원주각 ∠AQB=30°이므로 중심각 ∠AOB=60°이다. 지름이 30m이므로 반지름은 15m이고 호 AB의 길이는 2π×15×60/360=5π m이다. 정답 ②.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -535,7 +575,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에서 두 현 AC, BD가 점 P에서 만나 각 BAC는 58도, 각 APD는 112도이다. 호 BC는 116도, 호 AD는 108도로 서로 다른 색이고 각 ACD는 x이다.",
+    "solutionImageCaption": "∠BAC=58°이므로 호 BC=116°이다. ∠APD=(호 AD+호 BC)÷2=112°에서 호 AD=108°이므로 x=∠ACD=108°÷2=54°이고 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -567,7 +611,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 P에서 원 O에 그은 두 접선 PA, PB에서 각 PAO와 각 PBO는 직각, 각 APB=38도, 중심각 AOB=142도(주황)이고 큰 호 AB=218도와 그 호를 보는 원주각 x가 파란색이다.",
+    "solutionImageCaption": "사각형 PAOB에서 ∠AOB=360°−90°−90°−38°=142°이므로 큰 호 AB=360°−142°=218°이다. x는 이 호를 보는 원주각이므로 x=218°÷2=109°이고 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
     {
     "id": 18,
@@ -599,7 +647,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 BC를 보는 ∠BAC=90°와 ∠ACB=60°를 보이고, 접선 AT와 현 AB가 이루는 각 ∠TAB(x)와 현 AB를 보는 원주각 ∠ACB를 같은 파랑으로 칠해 두 각이 같음을 보여 준다.",
+    "solutionImageCaption": "접선과 현이 이루는 각은 그 현을 보는 원주각과 같으므로 x=∠ACB=60°이다. 정답 ④.",
+    "solutionImageSize": "medium"
   },
     {
     "id": 19,
@@ -631,7 +683,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: BC가 지름인 원 O에서 접선 TAD와 현 AB가 이루는 ∠TAB와 원주각 ∠ACB를 같은 색으로, ∠BAC=90°, ∠ABC=28°, ∠BAD=118°와 △ABD의 ∠ADB=x를 표시한다.",
+    "solutionImageCaption": "접선과 현이 이루는 각 ∠TAB=62°이므로 ∠ACB=62°이고, BC가 지름이므로 ∠BAC=90°, ∠ABC=28°이다. ∠BAD=180°−62°=118°이므로 △ABD에서 x=180°−118°−28°=34°이다. 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
     {
     "id": 20,
@@ -657,7 +713,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 남은 원호 위의 세 점 A, B, C와 현 AB, BC의 중점 M, N. M, N에서 각 현에 수직인 선(직각 표시)이 만나는 점이 중심 O이고, 반지름 OA, OB, OC는 같은 길이(파랑 눈금)이다.",
+    "solutionImageCaption": "두 현의 수직이등분선의 교점 O가 원의 중심이므로, O를 중심으로 OA를 반지름으로 하는 원을 그리면 수막새를 복원할 수 있다",
+    "solutionImageSize": "medium"
   },
     {
     "id": 21,
@@ -683,7 +743,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 32개 점을 7칸씩 건너 모두 이은 현 32개와 안쪽에서 현들에 접하는 작은 동심원이 있고, 현 1-8의 중심각 78.75°와 중심에서 현에 내린 수선이 표시된 그림.",
+    "solutionImageCaption": "각 점 사이의 간격이 같으므로 7칸 현의 중심각은 7×360°÷32=78.75°로 모두 같고, 같은 원에서 같은 호에 대응하는 현의 길이는 같다. 같은 길이의 현은 중심 O에서 현까지의 거리가 같으므로 32개의 현은 중심 O를 공유하는 작은 동심원에 접하는 별 모양(32개 직선이 만드는 원에 가까운 윤곽)이다.",
+    "solutionImageSize": "medium"
   },
     {
     "id": 22,
@@ -710,9 +774,11 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q22_solution_INSCRIBED_ANGLE_51.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q22-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O에서 AB는 지름이고 각 BGD는 26도이다. 호 BD는 52도, 호 AC는 26도, 호 CD는 102도로 서로 다른 색이고 각 CFD는 x이다.",
+    "solutionImageCaption": "∠BGD=26°이므로 호 BD=52°이고 호 AC=26°이다. 반원 180°에서 호 CD=180°−52°−26°=102°이므로 x=∠CFD=102°÷2=51°이다."
   },
   {
     "id": 23,
@@ -739,8 +805,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q23_solution_CYCLIC_QUADRILATERAL.svg",
-    "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q23-solution-v2.svg",
+    "solutionImageSize": "medium",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O에 내접하는 사각형 ABCD에서 각 B=130도와 그 각이 보는 호 ADC=260도는 파란색, 각 D가 보는 호 ABC=100도는 주황색으로 표시되어 있다.",
+    "solutionImageCaption": "∠B=130°가 보는 호 ADC는 2×130°=260°이고 나머지 호 ABC=360°−260°=100°이다. ∠D는 호 ABC를 보는 원주각이므로 ∠D=100°÷2=50°이다."
   }
 ];

@@ -28,14 +28,16 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "같은 호 $\\wideparen{AB}$를 보는 중심각은 원주각의 $2$배이다.\n$\\angle AOB=54^\\circ$이므로\n$\\angle x=\\dfrac{54^\\circ}{2}=27^\\circ$\n이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q1-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q1-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q1.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O에서 중심각 AOB=54도와 같은 호 AB를 보는 원주각 ACB=x가 나타나 있다. 호 AB와 중심각이 같은 색이다.",
+    "solutionImageCaption": "같은 호 AB를 보는 중심각은 원주각의 2배이다. ∠AOB=54°이므로 x=54°÷2=27°이고 정답은 ③이다."
   },
   {
     "id": 2,
@@ -63,14 +65,16 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "$\\angle CPD=40^\\circ$는 호 $\\wideparen{CD}$를 보는 원주각이므로, 호 $\\wideparen{CD}$에 대한 중심각은\n$2\\times40^\\circ=80^\\circ$\n이다.\n같은 원에서 호의 길이는 그 호에 대한 중심각의 크기에 비례하므로\n$15:x=50:80$\n$50x=1200$\n$x=24$\n이다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q2-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q2-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q2.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O에서 중심각 AOB=50도인 호 AB는 15cm로 파란색이고, 원주각 CPD=40도가 보는 호 CD는 x cm로 주황색이며 호 CD의 중심각 COD는 80도이다.",
+    "solutionImageCaption": "∠CPD=40°는 호 CD의 원주각이므로 중심각 ∠COD=2×40°=80°이다. 호의 길이는 중심각에 비례하므로 15:x=50:80이고 x=24이다. 정답은 ⑤이다."
   },
   {
     "id": 3,
@@ -98,14 +102,16 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "$AB$가 지름이므로 반원 $\\wideparen{AB}$의 크기는 $180^\\circ$이다.\n원 밖의 점 $E$에서 두 할선이 이루는 각에 의해\n$62^\\circ=\\dfrac12(180^\\circ-\\wideparen{DC})$\n$124^\\circ=180^\\circ-\\wideparen{DC}$\n$\\wideparen{DC}=56^\\circ$\n이다.\n중심각 $\\angle DOC$의 크기는 호 $\\wideparen{DC}$의 크기와 같으므로 $x=56^\\circ$이다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q3-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q3-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q3.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 지름 AB를 가진 반원에서 E에서 두 할선이 이루는 ∠E=62°를 보이고, 호 DC와 중심각 ∠DOC(x)를 같은 초록으로 칠해 두 값이 같음을 보여 준다.",
+    "solutionImageCaption": "62°=½(180°−호 DC)에서 180°−호 DC=124°이므로 호 DC=56°이고 ∠DOC=호 DC이므로 x=56°이다. 정답 ⑤."
   },
   {
     "id": 4,
@@ -133,14 +139,16 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "$\\angle DAC$와 $\\angle DBC$는 같은 호 $\\wideparen{DC}$를 보므로\n$x=50^\\circ$\n이다.\n또 $\\angle BAC$와 $\\angle BDC$는 같은 호 $\\wideparen{BC}$를 보므로\n$y=32^\\circ$\n이다.\n따라서\n$x-y=50^\\circ-32^\\circ=18^\\circ$\n이므로 정답은 ④이다.",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q4-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q4-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q4.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원에 내접한 □ABCD에서 호 DC를 보는 원주각 x와 ∠DBC=50°를 같은 색으로, 호 BC를 보는 원주각 y와 ∠BDC=32°를 같은 색으로 표시한다.",
+    "solutionImageCaption": "∠DAC와 ∠DBC는 같은 호 DC를 보는 원주각이라 x=50°이고, ∠BAC와 ∠BDC는 같은 호 BC를 보는 원주각이라 y=32°이다. 따라서 x−y=18°이고 정답은 ④이다."
   },
   {
     "id": 5,
@@ -198,14 +206,16 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "호 $\\wideparen{AB}+\\wideparen{CD}=\\wideparen{BC}+\\wideparen{DA}$이고 네 호의 합은 $360^\\circ$이므로\n$\\wideparen{AB}+\\wideparen{CD}=180^\\circ$\n이다.\n현 $AB,CD$의 중점을 각각 $M,N$이라 하자. 중심에서 현에 내린 수선은 현을 이등분하므로\n$AM=3,\\quad CN=2$\n이고 $OM\\perp AB$, $ON\\perp CD$이다.\n이등변삼각형 $OAB$, $OCD$에서 $OM$, $ON$은 중심각도 이등분하므로\n$\\angle AOM+\\angle CON=90^\\circ$\n이다. 따라서\n$\\angle OAM=90^\\circ-\\angle AOM=\\angle CON$\n이다.\n두 직각삼각형 $\\triangle OAM$, $\\triangle CNO$는 빗변 $OA=OC$이고 한 예각이 같으므로 서로 합동이다. 따라서\n$OM=CN=2,\\quad ON=AM=3$\n이다.\n반지름을 $R$이라 하면\n$R^2=AM^2+OM^2=3^2+2^2=13$\n이다.\n두 부채꼴의 중심각 합은 $180^\\circ$이므로 넓이의 합은 $\\dfrac{13}{2}\\pi$이다. 또\n$[\\triangle OAB]=\\dfrac12\\times6\\times2=6$\n$[\\triangle OCD]=\\dfrac12\\times4\\times3=6$\n이다.\n따라서 색칠된 두 활꼴의 넓이의 합은\n$\\dfrac{13}{2}\\pi-6-6=\\dfrac{13}{2}\\pi-12$\n이므로 정답은 ④이다.",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q6-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q6-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q6.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O의 현 AB=6, CD=4와 각 중점 M, N, 반지름 OA, OC. 같은 길이 OM=CN=2(파랑), ON=AM=3(주황), 반지름 OA=OC=√13(보라)이 표시되고 합동인 직각삼각형 OAM과 CNO가 초록으로 칠해져 있다.",
+    "solutionImageCaption": "합동인 △OAM≅△CNO에서 R²=3²+2²=13이고, 부채꼴 두 개의 넓이 합은 13π/2, 삼각형 둘의 넓이 합은 6+6이므로 색칠된 부분의 넓이는 13π/2−12 (정답 ④)"
   },
   {
     "id": 7,
@@ -233,14 +243,16 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "$\\angle ABC=50^\\circ$는 호 $\\wideparen{ADC}$를 보는 원주각이므로\n$\\wideparen{AD}+\\wideparen{DC}=100^\\circ$\n이다.\n점 $F$에서 두 할선이 이루는 각이 $55^\\circ$이므로\n$55^\\circ=\\dfrac12(\\wideparen{AB}-\\wideparen{CD})$\n따라서\n$\\wideparen{AB}-\\wideparen{CD}=110^\\circ$\n이다.\n$\\wideparen{AB}=\\wideparen{CD}+110^\\circ$, $\\wideparen{AD}=100^\\circ-\\wideparen{CD}$를 네 호의 합 $360^\\circ$에 대입하면\n$\\wideparen{BC}+\\wideparen{CD}=150^\\circ$\n이므로\n$\\wideparen{BC}-\\wideparen{AD}=50^\\circ$\n이다.\n점 $E$에서 두 할선이 이루는 각은\n$x=\\dfrac12(\\wideparen{BC}-\\wideparen{AD})=25^\\circ$\n이다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q7-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q7-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q7.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD에서 BA와 CD의 연장선이 E, AD와 BC의 연장선이 F에서 만나고 ∠B=50°, ∠F=55°이며 원이 호 AB, 호 BC, 호 ADC 세 색으로 나뉘어 각 호의 관계식이 적힌 그림.",
+    "solutionImageCaption": "∠ABC=50°는 호 ADC를 보는 원주각이므로 호 AD+호 DC=100°이고, F에서 55°=½(호 AB−호 CD)이므로 호 AB=호 CD+110°, 네 호의 합 360°에서 호 BC=호 AD+50°이다. 따라서 E에서 ∠x=½(호 BC−호 AD)=25°이다. 정답 ⑤."
   },
   {
     "id": 8,
@@ -270,7 +282,11 @@ window.questionBank=[
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 원에 내접하는 직사각형으로 네 각이 모두 직각이다. 오른쪽은 대각이 70도, 70도인 평행사변형(예)으로 마주 보는 두 각의 합이 140도이다.",
+    "solutionImageCaption": "예: 원에 내접하는 사각형은 마주 보는 두 각의 합이 180°이다. 직사각형은 항상 90°+90°=180°이고 평행사변형은 대각의 합이 180°가 아닐 수 있다(예: 70°+70°=140°). 따라서 항상 내접하는 것은 ㄹ, ㅁ이므로 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -298,14 +314,16 @@ window.questionBank=[
     ],
     "answer": "①",
     "solution": "원에 내접하는 육각형에서 한 칸씩 건너뛴 세 각 $\\angle A$, $\\angle C$, $\\angle E$가 보는 호를 모두 더하면 원 전체를 두 번 센다. 따라서\n$\\angle A+\\angle C+\\angle E=360^\\circ$\n이다.\n그러므로\n$x+123^\\circ+117^\\circ=360^\\circ$\n$x=120^\\circ$\n이다.\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q9-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q9-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q9.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 육각형 ABCDEF에서 각 A=x, 각 C=123도, 각 E=117도가 서로 다른 색이고 각 각이 보는 호가 같은 색의 바깥 호 세 겹으로 표시되어 원을 두 번 덮는다.",
+    "solutionImageCaption": "∠A, ∠C, ∠E가 보는 호의 합은 원 전체를 두 번 덮은 720°이므로 ∠A+∠C+∠E=360°이다. x+123°+117°=360°이므로 x=120°이고 정답은 ①이다."
   },
   {
     "id": 10,
@@ -333,14 +351,16 @@ window.questionBank=[
     ],
     "answer": "②",
     "solution": "접선 $TQ$와 현 $TB$가 이루는 각은 현 $TB$를 보는 원주각과 같다.\n$\\angle BTQ=55^\\circ$이므로\n$\\angle TAB=55^\\circ$\n이다.\n따라서 $x=55^\\circ$이므로 정답은 ②이다.",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q10-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q10-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q10.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 접선 PQ와 현 TB가 이루는 ∠BTQ=55°와 현 TB를 보는 원주각 ∠TAB(x)를 같은 파랑으로 칠해 두 각이 같음을 보여 준다.",
+    "solutionImageCaption": "접선과 현이 이루는 각은 그 현을 보는 원주각과 같으므로 x=∠BTQ=55°이다. 정답 ②."
   },
   {
     "id": 11,
@@ -368,14 +388,16 @@ window.questionBank=[
     ],
     "answer": "①",
     "solution": "접선과 현의 성질에 의해\n$\\angle PTA=\\angle PBT$\n이고, $P,A,B$가 한 직선 위에 있으므로 두 삼각형 $\\triangle PTA$, $\\triangle PBT$는 $\\angle P$도 공통이다.\n따라서\n$\\triangle PTA\\sim\\triangle PBT$\n이다.\n대응변의 비에서\n$PA:PT=TA:TB=6:8=3:4$\n이므로 $PA=6$이다.\n또\n$PT:PB=3:4$\n$8:PB=3:4$\n이므로\n$PB=\\dfrac{32}{3}$\n이다.\n따라서\n$AB=PB-PA=\\dfrac{32}{3}-6=\\dfrac{14}{3}$\n이므로 정답은 ①이다.",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q11-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q11-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q11.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원의 접선 PT와 직선 PAB에서 ∠PTA=∠PBT를 같은 색으로, 대응변 PA와 PT, TA와 TB를 색으로 묶어 △PTA∽△PBT를 보이고 PA=6, PB=32/3을 표시한다.",
+    "solutionImageCaption": "접선과 현의 성질로 ∠PTA=∠PBT이고 ∠P가 공통이어서 △PTA∽△PBT이다. PA:PT=TA:TB=6:8=3:4에서 PA=6, PT:PB=3:4에서 PB=32/3이다. 따라서 AB=PB−PA=14/3이고 정답은 ①이다."
   },
   {
     "id": 12,
@@ -403,14 +425,16 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "$\\angle ADB=55^\\circ$는 호 $\\wideparen{AB}$를 보는 원주각이므로 같은 호에 대한 중심각은\n$\\angle AOB=2\\times55^\\circ=110^\\circ$\n이다.\n$A,O,C$가 한 직선 위에 있으므로\n$\\angle BOC=180^\\circ-110^\\circ=70^\\circ$\n이다.\n또 $BC$는 점 $B$에서의 접선이므로 $OB\\perp BC$이다.\n따라서 삼각형 $OBC$에서\n$x=180^\\circ-90^\\circ-70^\\circ=20^\\circ$\n이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q12-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q12-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q12.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원 O에서 지름을 포함하는 선분 AC와 B에서의 접선 BC. 원주각 ∠ADB=55°, 같은 호의 중심각 ∠AOB=110°, ∠BOC=70°가 표시되고 직각삼각형 OBC가 주황으로 칠해져 있으며 ∠BCO는 x이다.",
+    "solutionImageCaption": "∠AOB=2×55°=110°이므로 ∠BOC=70°이고 OB⊥BC인 삼각형 OBC에서 x=180°−90°−70°=20° (정답 ③)"
   },
   {
     "id": 13,
@@ -441,7 +465,11 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 마라톤 참가자 나이 줄기와 잎 그림. 작은 쪽 9번째 잎(줄기 2의 4)에 동그라미와 번호 9가 있어 앞에 8개, 뒤에 8개가 있음을 보인다.",
+    "solutionImageCaption": "자료가 17개이므로 중앙값은 작은 쪽 9번째 값이고 24세이다. 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -595,7 +623,11 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 국어 점수(가로)와 영어 점수(세로)의 산점도 20개 점에 대각선 y=x를 점선으로 그린 그림. 선 위의 6개 점 (50,50), (60,60), (70,70), (80,80), (90,90), (100,100)을 주황색으로 강조했다.",
+    "solutionImageCaption": "국어 점수와 영어 점수가 같은 학생은 직선 y=x 위의 주황색 점 6명이므로 6/20×100=30%이다. 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -622,7 +654,11 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 음의 상관관계의 예시 산점도 두 개. ④는 점들이 내려가는 한 직선 주위에 좁게 모여 있고 ⑤는 더 넓게 퍼져 있으며 둘 다 오른쪽 아래로 향하는 화살표가 있다.",
+    "solutionImageCaption": "예시: ④와 ⑤는 모두 x가 커질수록 y가 작아지는 음의 상관관계이다. ④는 점들이 오른쪽 아래 방향의 한 직선 주변에 가장 좁게 모여 있고 ⑤는 더 넓게 흩어져 있다. 따라서 가장 강한 음의 상관관계가 있는 것은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -674,14 +710,16 @@ window.questionBank=[
     "choices": [],
     "answer": "$37^\\circ$",
     "solution": "$\\angle ACB=23^\\circ$는 호 $\\wideparen{AB}$를 보는 원주각이므로\n$\\wideparen{AB}=2\\times23^\\circ=46^\\circ$\n이다.\n원 안에서 두 현 $AC$, $BD$가 점 $E$에서 만나므로\n$83^\\circ=\\dfrac12(\\wideparen{AB}+\\wideparen{DC})$\n이다. 따라서\n$166^\\circ=46^\\circ+\\wideparen{DC}$\n$\\wideparen{DC}=120^\\circ$\n이다.\n점 $P$에서 두 할선 $PAD$, $PBC$가 만나므로\n$x=\\dfrac12(\\wideparen{DC}-\\wideparen{AB})$\n$=\\dfrac12(120^\\circ-46^\\circ)$\n$=37^\\circ$\n이다.\n따라서 구하는 값은 $37^\\circ$이다.",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q21-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q21-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q21.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 네 점 A, B, C, D를 지나는 원과 점 P에서 만나는 두 할선 PAD, PBC, 두 현의 교점 E, ∠ACB=23°, ∠E=83°, 호 AB=46°(파랑), 호 DC=120°(주황), ∠x를 나타낸 그림.",
+    "solutionImageCaption": "∠ACB=23°는 호 AB를 보는 원주각이므로 호 AB=46°이다. 두 현 AC, BD가 E에서 만나므로 83°=½(호 AB+호 DC)에서 호 DC=120°이다. P에서 두 할선이 만나므로 ∠x=½(호 DC−호 AB)=½(120°−46°)=37°이다."
   },
   {
     "id": 22,
@@ -703,14 +741,16 @@ window.questionBank=[
     "choices": [],
     "answer": "$56^\\circ$",
     "solution": "호 $\\wideparen{AB}$의 길이가 원주의 $\\dfrac19$이므로 호 $\\wideparen{AB}$의 각도는\n$360^\\circ\\times\\dfrac19=40^\\circ$\n이다.\n같은 원에서는 호의 길이의 비와 호의 각도의 비가 같으므로\n$\\wideparen{CD}=40^\\circ\\times\\dfrac95=72^\\circ$\n이다.\n원 안에서 두 현 $AC$, $BD$가 점 $P$에서 만나므로\n$x=\\dfrac12(40^\\circ+72^\\circ)=56^\\circ$\n이다.\n따라서 구하는 값은 $56^\\circ$이다.",
-    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q22-solution.svg",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q22-solution-v2.svg",
+    "solutionImageSize": "medium",
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q22.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "해설 그림: 원에서 두 현 AC와 BD가 점 P에서 만난다. 호 AB는 40도, 호 CD는 72도로 서로 다른 색이고 각 DPC는 x이다.",
+    "solutionImageCaption": "호 AB는 원주의 1/9이므로 40°이고 호 AB:호 CD=5:9에서 호 CD=72°이다. x=(40°+72°)÷2=56°이다."
   },
   {
     "id": 23,
@@ -735,7 +775,11 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 학생 A와 B의 4회 쪽지 시험 점수를 각각 점도표로 나타낸 그림. 두 점도표 모두 평균 8에 점선이 있고 각 점 위에 평균과의 차가 쓰여 있다. A는 −2, +1, 0, +1이고 B는 −1, +2, +1, −2이다.",
+    "solutionImageCaption": "점 하나가 시험 한 번이다. 두 학생의 평균은 모두 8이고 그림의 숫자는 점수에서 평균 8을 뺀 편차이다. A의 편차의 제곱은 4, 1, 0, 1로 합이 6이고, B는 1, 4, 1, 4로 합이 10이다. 분산은 편차의 제곱의 합을 4로 나눈 값이다. 분산이 작을수록 점수가 평균 주변에 고르게 모여 있어 A가 더 고르다. 따라서 A의 분산은 3/2, B의 분산은 5/2이고 점수가 더 고른 학생은 A이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -762,6 +806,10 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 차량 15대의 속력과 제동 거리 산점도. 점이 왼쪽 아래에서 오른쪽 위로 올라간다.",
+    "solutionImageCaption": "그림에서 읽은 점 15개이다(값은 눈금에서 읽은 근삿값). 점들이 왼쪽 아래에서 오른쪽 위로 퍼져 있어 속력이 커질수록 제동 거리도 대체로 커진다. 따라서 차량 속력과 제동 거리 사이에는 양의 상관관계가 있다.",
+    "solutionImageSize": "medium"
   }
 ];
