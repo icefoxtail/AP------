@@ -62,8 +62,15 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
   if (!source.endsWith(".js") || source.includes("..") || path.isAbsolute(source)) fail("invalid sourceArchiveFile");
   const sourcePath = path.join(root, "archive/exams", source);
   if (!fs.existsSync(sourcePath)) fail("source exam file not found: " + source);
-  const sourceBytes = fs.readFileSync(sourcePath);
-  const sha = blobSha(sourceBytes);
+  let sourceBytes = fs.readFileSync(sourcePath);
+  let sha = blobSha(sourceBytes);
+  if (sha !== g.latestBlobSha && sourceBytes.includes(0x0d)) {
+    const lfBytes = Buffer.from(sourceBytes.toString("utf8").replace(/\r\n/g, "\n"), "utf8");
+    if (blobSha(lfBytes) === g.latestBlobSha) {
+      sourceBytes = lfBytes;
+      sha = g.latestBlobSha;
+    }
+  }
   if (sha !== g.latestBlobSha) fail("source Git blob drift (expected " + g.latestBlobSha + ", actual " + sha + ")");
 
   const doc = read(root, META);
