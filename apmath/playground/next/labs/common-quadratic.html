@@ -16,6 +16,9 @@
 <script defer src="../kit/apl-board.js"></script>
 <script defer src="../kit/apl-compat.js"></script>
 <script defer src="../kit/apl-shell.js"></script>
+<script defer src="common-quadratic/old-core.js"></script>
+<script defer src="common-quadratic/old-1.js"></script>
+<script defer src="common-quadratic/old-2.js"></script>
 <script defer src="common-quadratic/plus.js"></script>
 </head>
 <body>
@@ -1247,7 +1250,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function sceneOf(m, it) {
     const id = it.id;
     const label = arrow(it.label);
-    return {
+    const sceneDef = {
       id, title: label, short: label, reviewTab: true,
       question: QUESTIONS[m - 1],
       notesTitle: '오답 함정과 풀이 요령',
@@ -1299,6 +1302,8 @@ window.addEventListener('DOMContentLoaded', function () {
         drawQuadFuncMasterScene(0, 0, U, s.fold, getSpec());
       }
     };
+    // 문제·풀이·「새 문제」는 common-quadratic/old-*.js 가 정리·문제 탭에만 얹습니다(탐구 탭의 그림·문구·조작은 위 그대로).
+    return window.APL_CQ_OLD ? window.APL_CQ_OLD.attach(sceneDef, { focus: { x: [-6, 8], y: [-5.4, 6.9] } }) : sceneDef;
   }
 
   const groups = Object.keys(SUB_MENUS).map((k) => {
