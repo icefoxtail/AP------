@@ -165,7 +165,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "③",
-    "solution": "각의 이등분선 정리에 따라 $BD:DC=AB:AC=10:6=5:3$이다. $BC=8$이므로 $BD=5$, $DC=3$. $E$가 $AB$ 위에 있고 $DE\\perp AB$이므로 $\\triangle BDE$는 $E$에서 직각이다. $\\angle DBE=\\angle CBA$이고 $\\triangle ABC$의 변의 비는 $6:8:10=3:4:5$이므로 $\\cos B=4/5$, $\\sin B=3/5$. 빗변 $BD=5$인 $\\triangle BDE$에서 $BE=5(4/5)=4$, $DE=5(3/5)=3$. 넓이는 $\\frac12\\cdot4\\cdot3=6$. 정답은 ③이다.",
+    "solution": "점 $E$는 $AB$ 위에 있고 $DE\\perp AB$이므로 $\\angle AED=90^\\circ$이다.\n또 $\\angle ACD=90^\\circ$이고 $AD$는 $\\angle BAC$의 이등분선이다.\n\n직각삼각형 $ADE$와 $ADC$에서\n$$AD=AD\\quad(\\text{공통인 빗변})$$\n$$\\angle EAD=\\angle DAC\\quad(\\text{각의 이등분선})$$\n따라서 빗변의 길이와 한 예각의 크기가 각각 같으므로\n$$\\triangle ADE\\equiv\\triangle ADC\\quad(\\text{RHA 합동})$$\n이다.\n\n합동인 삼각형의 대응변은 길이가 같으므로\n$$AE=AC=6,\\qquad DE=DC$$\n이다.\n따라서\n$$BE=AB-AE=10-6=4$$\n이다.\n\n$\\angle A$의 이등분선이 $BC$와 만나는 점이 $D$이므로\n$$BD:DC=AB:AC=10:6=5:3$$\n$$DC=8\\times\\dfrac{3}{5+3}=3$$\n이다. 따라서 $DE=3$이다.\n\n$\\triangle BDE$는 $E$에서 직각이므로 넓이는\n$$\\dfrac12\\times BE\\times DE=\\dfrac12\\times4\\times3=6$$\n이다. 정답은 ③이다.",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "category_or_cue_inferred",

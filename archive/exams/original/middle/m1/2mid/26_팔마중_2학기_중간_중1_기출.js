@@ -25,7 +25,7 @@ window.questionBank = [
       "80°"
     ],
     "answer": "③",
-    "solution": "맞꼭지각의 크기는 서로 같다.\n따라서 a=120°이다.\nb와 120°는 이웃한 두 각이므로 합이 180°이다.\nb=180°-120°=60°\n따라서 a-b=120°-60°=60°이고 정답은 ③이다.",
+    "solution": "맞꼭지각의 크기는 서로 같으므로\n$$a=120^\\circ$$\n이다.\n$b$와 $120^\\circ$는 일직선 위의 이웃한 두 각이므로\n$$b+120^\\circ=180^\\circ$$\n$$b=180^\\circ-120^\\circ=60^\\circ$$\n이다.\n따라서\n$$a-b=120^\\circ-60^\\circ=60^\\circ$$\n이고 정답은 ③이다.",
     "image": "assets/images/26_팔마중_2학기_중간_중1_기출/q01.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -178,7 +178,7 @@ window.questionBank = [
       "60°"
     ],
     "answer": "④",
-    "solution": "∠DOE=x라 두면 ∠DOB=3x이다.\n∠AOD=∠AOC+∠COD=90°+∠COD이고, ∠COD=1/4∠ AOD이다.\n따라서 ∠COD=1/4(90°+∠COD)이므로 4∠COD=90°+∠COD, ∠COD=30°이다.\n직각 ∠COB는 ∠COD+∠DOE+∠EOB의 합이며 ∠DOB=∠DOE+∠EOB=3x이다.\n30°+3x=90°이므로 x=20°이다.\n따라서 ∠COE=∠COD+∠DOE=30°+20°=50°이다.",
+    "solution": "$\\angle COD=x$, $\\angle DOE=y$라 하자.\n\n$\\angle AOC=90^\\circ$이고 $\\angle COD=\\dfrac14\\angle AOD$이므로\n$$4x=\\angle AOD=90^\\circ+x$$\n$$3x=90^\\circ$$\n$$x=30^\\circ$$\n이다.\n\n$\\angle COB=90^\\circ$이고 $\\angle DOB=3\\angle DOE=3y$이므로\n$$\\angle COB=\\angle COD+\\angle DOB$$\n$$90^\\circ=30^\\circ+3y$$\n$$3y=60^\\circ$$\n$$y=20^\\circ$$\n이다.\n\n따라서\n$$\\angle COE=x+y=30^\\circ+20^\\circ=50^\\circ$$\n이므로 정답은 ④이다.",
     "image": "assets/images/26_팔마중_2학기_중간_중1_기출/q04.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
