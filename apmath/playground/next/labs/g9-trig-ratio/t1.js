@@ -332,10 +332,14 @@
     model: (s) => { const N = nest(s); N.val = { s: N.s, c: N.c, t: N.t }; return N; },
     draw(b, s, M, C) {
       const st = C.step, dec = (v) => G.decS(v, 3);
-      const rows = st >= 3 || st === 99 ? [
+      const nr = b.W < 560;
+      const rows = st >= 3 || st === 99 ? (nr ? [
+        { t: 'sin A = \\frac{BC}{AC} = \\frac{DE}{AE}', c: 'rose' }, { t: `= \\frac{FG}{AG} = ${dec(M.s)}`, c: 'rose' },
+        { t: 'cos A = \\frac{AB}{AC} = \\frac{AD}{AE}', c: 'sky' }, { t: `= \\frac{AF}{AG} = ${dec(M.c)}`, c: 'sky' }
+      ] : [
         { t: `sin A = \\frac{BC}{AC} = \\frac{DE}{AE} = \\frac{FG}{AG} = ${dec(M.s)}`, c: 'rose' },
         { t: `cos A = \\frac{AB}{AC} = \\frac{AD}{AE} = \\frac{AF}{AG} = ${dec(M.c)}`, c: 'sky' }
-      ] : [];
+      ]) : [];
       drawNest(b, M, { step: st, rows, angLabel: `${fmtN(M.th)}°`, sideLabels: st >= 2 || st === 99 ? M.leg.map((v) => G.decS(v, 1)) : null });
     },
     steps: (M) => [

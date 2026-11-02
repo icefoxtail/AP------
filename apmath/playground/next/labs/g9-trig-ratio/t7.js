@@ -55,14 +55,14 @@
   const diagM = (p, q, th) => { const S = vdiv(vmul(vi(p * q), sinD(th)), vi(2)); return { p, q, th, S, dbl: vmul(vi(p * q), sinD(th)) }; };
 
   const uf = {
-    id: 'quadUnfold2x', title: '[핵심] 왜 사각형의 넓이는 ½pq sin θ일까?', short: '½pq sinθ',
+    id: 'quadUnfold2x', title: '[핵심] 두 대각선과 끼인각으로 사각형의 넓이 구하기', short: '대각선으로 넓이',
     question: '대각선의 길이가 p, q이고 두 대각선이 이루는 각이 θ인 사각형의 넓이는? 각 꼭짓점에서 대각선에 평행선을 그어 평행사변형을 만들어 보자.',
     ctl: ['t71p', 't71q', 't71t', 't71k'], anim: { key: 't71k', dur: 3, label: '2배 평행사변형 만들기', start: 0 }, stepT: (n) => (n >= 2 ? 1 : 0),
     init: (s) => { s.t71p = 8; s.t71q = 6; s.t71t = 60; s.t71k = 0; },
     model: (s) => ({ ...diagM(Math.round(s.t71p), Math.round(s.t71q), Math.round(s.t71t)), k: s.t71k }),
     draw(b, s, M, C) {
       const st = C.step, show = (n) => st >= n || st === 99;
-      drawDiag(b, diagGeo(M.p, M.q, M.th, 0.5), { step: st, k2: C.review ? C.t : M.k, th: `${M.th}°`, p: `p = ${M.p}`, q: `q = ${M.q}`, rows: show(3) ? [{ t: `S = \\frac{1}{2} × ${M.p} × ${M.q} × sin ${M.th}° = ${vv(M.S)}`, c: 'amber' }] : [] });
+      drawDiag(b, diagGeo(M.p, M.q, M.th, 0.5), { step: st, k2: C.t, th: `${M.th}°`, p: `p = ${M.p}`, q: `q = ${M.q}`, rows: show(3) ? [{ t: `S = \\frac{1}{2} × ${M.p} × ${M.q} × sin ${M.th}° = ${vv(M.S)}`, c: 'amber' }] : [] });
     },
     steps: (M) => [
       '사각형 $ABCD$ 의 네 꼭짓점에서 각각 다른 대각선에 평행한 직선을 그어요. 겹치는 부분 없이 평행사변형이 만들어져요. 이 평행사변형의 넓이는 사각형의 <b>2배</b>예요.',
@@ -108,7 +108,7 @@
     [[A, 'A'], [B, 'B'], [C, 'C'], [D, 'D']].forEach(([p0, n]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, cen, n, { size: 17, gap: 11 }); });
     if (o.a) sideTag(b, A, B, cen, o.a, { color: 'sky', size: o.as || 17, flip: false, gap: 22 });
     if (o.b) sideTag(b, A, D, cen, o.b, { color: 'green', size: o.bs || 17 });
-    if (o.h && st >= 1) T(b, mid(D, Hh), o.h, { dx: D.x < 0 ? 8 : -8, size: 15, color: 'violet', align: D.x < 0 ? 'left' : 'right' });
+    if (o.h && st >= 1) T(b, mid(D, Hh), o.h, { dx: 9, size: 15, color: 'violet', align: 'left' });
     (o.rows || []).forEach((r, i) => T(b, pt(cen.x, Math.max(A.y, B.y)), r.t, { dy: 62 + i * 26, size: r.size || 16, color: r.c }));
   }
   const pa = {
@@ -156,7 +156,7 @@
     (o.rows || []).forEach((r, i) => T(b, pt(0, D.y), r.t, { dy: 40 + i * 26, size: r.size || 16, color: r.c }));
   }
   const rh = {
-    id: 'rhombusSquare', title: '마름모의 넓이 — a² sin θ 와 ½pq', short: '마름모 넓이',
+    id: 'rhombusSquare', title: '마름모의 넓이 — 한 변과 각, 두 대각선', short: '마름모 넓이',
     question: '한 변이 a이고 한 각이 θ인 마름모의 넓이를 두 가지 방법으로 구해 보자. 같은 값이 나올까?',
     ctl: ['t73a', 't72t'],
     init: (s) => { s.t73a = 6; s.t72t = 60; },

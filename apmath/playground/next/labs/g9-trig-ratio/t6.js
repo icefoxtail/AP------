@@ -83,8 +83,8 @@
       pdraw: (b, q) => { const f = q.fig; drawAC(b, geoAC(f.b0, f.c0, f.A), { step: 0, angL: `${f.A}°`, b: `${f.b0}`, c: `${f.c0}`, rows: [{ t: '△ABC의 넓이 = x', c: 'amber', size: 18 }] }); }
     };
   }
-  const aAcute = areaScene('areaAcute', '예각삼각형의 넓이 S = ½bc sin A', '예각삼각형 넓이', false);
-  const aObt = areaScene('areaObtuse', '[심화] 둔각삼각형의 넓이 S = ½bc sin(180°−A)', '[심화] 둔각삼각형 넓이', true);
+  const aAcute = areaScene('areaAcute', '예각삼각형의 넓이 — 두 변과 끼인각', '예각삼각형 넓이', false);
+  const aObt = areaScene('areaObtuse', '[심화] 둔각삼각형의 넓이 — 두 변과 끼인각', '[심화] 둔각삼각형 넓이', true);
   aAcute.title = '예각삼각형의 넓이'; aObt.title = '[심화] 둔각삼각형의 넓이';
 
   /* ====================================================================== 정삼각형 */

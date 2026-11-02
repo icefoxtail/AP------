@@ -168,7 +168,31 @@
   const textW2 = (t, size) => textW(String(t).replace(/\\frac\{([^{}]*)\}\{([^{}]*)\}/g, (m, a, d) => (a.length > d.length ? a : d) + ' '), size);
   function T(b, p, str, o = {}) {
     if (str == null || str === '') return;
-    b.text(p, str, { dx: o.dx || 0, dy: o.dy || 0, color: o.color || 'ink', size: o.size || 16, weight: 800, align: o.align || 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref });
+    let dx = o.dx || 0, dy = o.dy || 0;
+    // 글자가 무대 밖으로 나가거나 다른 글자와 겹치면 가까운 빈 곳으로 밀어 놓는다(휴대폰에서 잘림·겹침 방지)
+    if (!b.thumb && b.W && b.toS && b._P) {
+      try {
+        const sp = b.toS(b._P(p)), size = o.size || 16, k = b._ts ? b._ts() : 1, w = textW2(str, size) * (/\\frac/.test(str) ? 0.66 : 0.98) * k, h = size * k * 1.02, al = o.align || 'center';
+        const ax = al === 'center' ? -w / 2 : al === 'right' || al === 'end' ? -w : 0;
+        const inStage = (x, y) => x + ax >= 4 && x + ax + w <= b.W - 4 && y - h / 2 >= 3 && y + h / 2 <= b.H - 3;
+        let x = sp.x + dx, y = sp.y + dy;
+        if (x + ax < 4) x += 4 - (x + ax); else if (x + ax + w > b.W - 4) x -= x + ax + w - (b.W - 4);
+        if (y - h / 2 < 3) y += 3 - (y - h / 2); else if (y + h / 2 > b.H - 3) y -= y + h / 2 - (b.H - 3);
+        const boxes = b._tgBoxes || (b._tgBoxes = []);
+        const hit = (xx, yy) => boxes.find((q) => { const ox = Math.min(xx + ax + w, q.x1) - Math.max(xx + ax, q.x0), oy = Math.min(yy + h / 2, q.y1) - Math.max(yy - h / 2, q.y0); return ox > -2 && oy > 0 && !(q.s === str && Math.abs(q.x0 - (xx + ax)) < 1 && Math.abs(q.y0 - (yy - h / 2)) < 1); });
+        for (let it = 0; it < 6; it++) {
+          const q = hit(x, y);
+          if (!q) break;
+          const cand = [{ x, y: q.y1 + h / 2 + 2 }, { x, y: q.y0 - h / 2 - 2 }, { x: q.x1 - ax + 2, y }, { x: q.x0 - ax - w - 2, y }]
+            .filter((c) => inStage(c.x, c.y) && !hit(c.x, c.y)).sort((u, v) => Math.hypot(u.x - x, u.y - y) - Math.hypot(v.x - x, v.y - y));
+          if (!cand.length) break;
+          x = cand[0].x; y = cand[0].y;
+        }
+        dx = x - sp.x; dy = y - sp.y;
+        boxes.push({ x0: x + ax, x1: x + ax + w, y0: y - h / 2, y1: y + h / 2, s: str });
+      } catch (e) { /* 보정 없이 그린다 */ }
+    }
+    b.text(p, str, { dx, dy, color: o.color || 'ink', size: o.size || 16, weight: 800, align: o.align || 'center', baseline: 'middle', alpha: o.alpha, ref: o.ref });
   }
   function tagOut(b, p, c, str, o = {}) {
     const u = unit(sub(p, c)), size = o.size || 17, w = textW2(str, size), g = o.gap == null ? 12 : o.gap;
@@ -256,14 +280,14 @@
       const a = S['ang' + k]; if (!a) return;
       ang(b, v, p, q, { color: a.c || 'amber', rings: a.rings || 1, label: a.t, r: a.r || 30, labelDist: a.d, noMark: a.noMark, size: a.size || 16 });
     });
+    const nm = S.names;
+    if (nm) [[A, 'A'], [B, 'B'], [C, 'C']].forEach(([p, k]) => { b.point(p, { color: 'ink', r: 4.5 }); if (nm[k]) tagOut(b, p, cen, nm[k], { size: 17, gap: 11 }); });
+    else [A, B, C].forEach((p) => b.point(p, { color: 'ink', r: 4.5 }));
     [[B, C, 'a'], [C, A, 'b'], [A, B, 'c']].forEach(([p, q, k]) => {
       const sd = S.side && S.side[k];
       if (sd && sd.t != null && sd.t !== '') sideTag(b, p, q, cen, sd.t, { color: sd.c || col[k] || 'ink', size: sd.size || 17, gap: sd.gap, flip: sd.flip, f: sd.f });
       const tk = S.ticks && S.ticks[k]; if (tk) tick(b, p, q, tk.n || tk, tk.color || 'amber');
     });
-    const nm = S.names;
-    if (nm) [[A, 'A'], [B, 'B'], [C, 'C']].forEach(([p, k]) => { b.point(p, { color: 'ink', r: 4.5 }); if (nm[k]) tagOut(b, p, cen, nm[k], { size: 17, gap: 11 }); });
-    else [A, B, C].forEach((p) => b.point(p, { color: 'ink', r: 4.5 }));
   }
   const rtBox = (g, extra = []) => bboxOf([g.A, g.B, g.C, ...extra]);
 
@@ -484,6 +508,7 @@
         return v;
       },
       draw: (b, s, v, lab) => {
+        b._tgBoxes = [];
         const C = baseCtx(s, lab, !!b.thumb);
         if (b.thumb) C.step = 99;
         const M = D.model(s);

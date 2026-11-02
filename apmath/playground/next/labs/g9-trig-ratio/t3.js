@@ -124,8 +124,9 @@
     draw(b, s, M, C) {
       const st = C.step, dec = (v) => decS(v, 3);
       const rows = [];
-      if (st >= 1) rows.push({ t: `tan θ = \\frac{AB}{OB} = \\frac{${dec(M.sn)}}{${dec(M.cs)}} = ${dec(M.t)}`, c: col.s });
-      if (st >= 2) rows.push({ t: `tan θ = \\frac{CD}{OC} = \\frac{${dec(M.t)}}{1} = ${dec(M.t)}`, c: col.t });
+      const nr = b.W < 560;
+      if (st >= 1) { if (nr) { rows.push({ t: 'tan θ = \\frac{AB}{OB}', c: col.s }, { t: `= \\frac{${dec(M.sn)}}{${dec(M.cs)}} = ${dec(M.t)}`, c: col.s }); } else rows.push({ t: `tan θ = \\frac{AB}{OB} = \\frac{${dec(M.sn)}}{${dec(M.cs)}} = ${dec(M.t)}`, c: col.s }); }
+      if (st >= 2) { if (nr) { rows.push({ t: 'tan θ = \\frac{CD}{OC}', c: col.t }, { t: `= \\frac{${dec(M.t)}}{1} = ${dec(M.t)}`, c: col.t }); } else rows.push({ t: `tan θ = \\frac{CD}{OC} = \\frac{${dec(M.t)}}{1} = ${dec(M.t)}`, c: col.t }); }
       quarter(b, M.th, { rows, tri: true, thLabel: `${M.th}°`, labels: { CD: st >= 2 ? 'tan θ' : '' }, handle: C.tab === 'explore' && !C.thumb ? dragTheta(s, 't31') : null, segs: true });
     },
     steps: (M) => [
@@ -341,7 +342,7 @@
     draw(b, s, M, C) {
       const st = C.step, rows = [];
       lineFig(b, M.u, M.r, M.n, { tri: st >= 1, th: `≈${fmtN(M.th)}°`, coords: null });
-      T(b, pt(0, 0), `기울기 = \\frac{${M.u}}{${M.r}}  →  tan θ = ${vcan(M.m)}`, { dy: 40, size: 16, color: 'amber' });
+      if (b.W < 560) { T(b, pt(0, 0), `기울기 = \\frac{${M.u}}{${M.r}}`, { dy: 40, size: 16, color: 'amber' }); T(b, pt(0, 0), `→ tan θ = ${vcan(M.m)}`, { dy: 66, size: 16, color: 'amber' }); } else T(b, pt(0, 0), `기울기 = \\frac{${M.u}}{${M.r}}  →  tan θ = ${vcan(M.m)}`, { dy: 40, size: 16, color: 'amber' });
     },
     steps: (M) => [
       `직선 $y=${M.m.x && M.u % M.r === 0 ? vtex(M.m) : `\\frac{${M.u}}{${M.r}}`}x+${M.n}$ 의 기울기는 $\\frac{(y\\text{의 증가량})}{(x\\text{의 증가량})}=\\frac{${M.u}}{${M.r}}$ 이에요.`,

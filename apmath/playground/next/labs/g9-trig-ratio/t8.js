@@ -62,7 +62,7 @@
     ctl: ['t81a'],
     init: (s) => { s.t81a = 6; },
     model: (s) => { const a = Math.round(s.t81a), eg = vmul(vi(a), vsq(2)), ag = vmul(vi(a), vsq(3)); return { a, eg, ag, sn: vdiv(vi(a), ag), cs: vdiv(eg, ag), tn: vdiv(vi(a), eg) }; },
-    draw(b, s, M, C) { const st = C.step, show = (n) => st >= n || st === 99; drawCube(b, s, M.a, { xl: '∠G', L: { AE: `${M.a}`, EG: show(2) ? vcan(M.eg) : '', AG: show(2) ? vcan(M.ag) : '' }, rows: show(3) ? [{ t: `sin G = ${vcan(M.sn)},  cos G = ${vcan(M.cs)},  tan G = ${vcan(M.tn)}`, c: 'amber', size: 15 }] : [] }); },
+    draw(b, s, M, C) { const st = C.step, show = (n) => st >= n || st === 99; drawCube(b, s, M.a, { xl: '∠G', L: { AE: `${M.a}`, EG: show(2) ? vcan(M.eg) : '', AG: show(2) ? vcan(M.ag) : '' }, rows: show(3) ? (b.W < 560 ? [{ t: `sin G = ${vcan(M.sn)},  cos G = ${vcan(M.cs)}`, c: 'amber', size: 15 }, { t: `tan G = ${vcan(M.tn)}`, c: 'amber', size: 15 }] : [{ t: `sin G = ${vcan(M.sn)},  cos G = ${vcan(M.cs)},  tan G = ${vcan(M.tn)}`, c: 'amber', size: 15 }]) : [] }); },
     steps: (M) => [
       `$\\overline{AE}$ 는 밑면에 수직인 모서리이므로 $\\overline{AE}\\perp\\overline{EG}$ 예요. $\\triangle AEG$ 는 $\\angle E=90^{\\circ}$ 인 직각삼각형이에요.`,
       `$AE=${M.a}$, $EG$ 는 윗면의 대각선이므로 $${vtex(M.eg)}$, $AG=\\sqrt{AE^2+EG^2}=${vtex(M.ag)}$ 예요.`,
@@ -77,7 +77,7 @@
     gen: function g() {
       const a0 = pick([2, 3, 4, 5, 6]), kind = pick(['s', 'c', 't', 'ag']), a = vi(a0), eg = vmul(a, vsq(2)), ag = vmul(a, vsq(3));
       const rv = { s: vdiv(a, ag), c: vdiv(eg, ag), t: vdiv(a, eg) };
-      let ans, wr, L = { AE: `${a0}` }, xl = '∠G', stem;
+      let ans, wr, L = { AE: `${a0}` }, xl = 'x', stem;
       if (kind === 'ag') { ans = ag; wr = [[eg, '윗면의 대각선이에요. 입체의 대각선은 한 번 더 피타고라스 정리를 써요.'], [vmul(a, vsq(5)), ''], [vmul(a, vi(3)), ''], [vmul(a, vsq(2)), ''], [vadd(a, eg), '']]; L.AG = 'x'; L.AGs = 21; L.AGc = 'amber'; xl = ''; stem = `그림과 같이 한 모서리의 길이가 $${a0}$ 인 정육면체에서 $\\overline{AG}=x$ 의 길이는?`; }
       else { ans = rv[kind]; const oth = ['s', 'c', 't'].filter((k) => k !== kind).map((k) => [rv[k], '다른 삼각비예요. 대변·이웃변·빗변을 다시 짝지어 봐요.']); wr = [...oth, [vdiv(vi(1), ans), '분자와 분모를 거꾸로 썼어요.'], [vdiv(a, vmul(a, vsq(2))), '']]; stem = `그림과 같이 한 모서리의 길이가 $${a0}$ 인 정육면체에서 $\\angle AGE=x$ 일 때, $${G.FN[kind]}\\,x$ 의 값은?`; }
       const q = { tag: '정육면체 속의 삼각비', key: ['cube', a0, kind].join('|'), stem, choices: mkChoices(ans, wr.filter((w) => !vsame(w[0], ans))), fig: { a0, L, xl }, given: [`${a0}`], ans: [vcan(ans)] };
@@ -108,14 +108,14 @@
     ctl: ['t82a', 't82b', 't82c'],
     init: (s) => { s.t82a = 4; s.t82b = 4; s.t82c = 7; },
     model: (s) => { const a = Math.round(s.t82a), b0 = Math.round(s.t82b), c = Math.round(s.t82c), ac = vsqrt(vi(a * a + b0 * b0)), ag = vsqrt(vi(a * a + b0 * b0 + c * c)); return { a, b0, c, ac, ag, sn: vdiv(vi(c), ag), cs: vdiv(ac, ag), tn: vdiv(vi(c), ac) }; },
-    draw(b, s, M, C) { const st = C.step, show = (n) => st >= n || st === 99; drawBoxG(b, s, M.a, M.b0, M.c, { xl: '∠GAC', L: { a: `${M.a}`, b: `${M.b0}`, c: `${M.c}`, AC: show(1) ? vcan(M.ac) : '', AG: show(2) ? vcan(M.ag) : '' }, rows: show(3) ? [{ t: `sin = ${vcan(M.sn)},  cos = ${vcan(M.cs)},  tan = ${vcan(M.tn)}`, c: 'amber', size: 15 }] : [] }); },
+    draw(b, s, M, C) { const st = C.step, show = (n) => st >= n || st === 99; drawBoxG(b, s, M.a, M.b0, M.c, { xl: b.W < 560 ? '' : 'θ', L: { a: `${M.a}`, b: `${M.b0}`, c: `${M.c}`, AC: show(1) ? vcan(M.ac) : '', AG: show(2) ? vcan(M.ag) : '' }, rows: show(3) ? (b.W < 560 ? [{ t: `sin = ${vcan(M.sn)},  cos = ${vcan(M.cs)}`, c: 'amber', size: 15 }, { t: `tan = ${vcan(M.tn)}`, c: 'amber', size: 15 }] : [{ t: `sin = ${vcan(M.sn)},  cos = ${vcan(M.cs)},  tan = ${vcan(M.tn)}`, c: 'amber', size: 15 }]) : [] }); },
     steps: (M) => [
       `밑면의 대각선 $AC=\\sqrt{${M.a}^2+${M.b0}^2}=${vtex(M.ac)}$ 예요. ($\\triangle ABC$ 는 직각삼각형)`,
       `$CG\\perp$ 밑면이므로 $\\triangle ACG$ 는 $\\angle C=90^{\\circ}$ 인 직각삼각형이에요. $AG=\\sqrt{AC^2+CG^2}=\\sqrt{${M.a}^2+${M.b0}^2+${M.c}^2}=${vtex(M.ag)}$`,
       `$\\angle GAC$ 에 대하여 $\\sin=\\frac{CG}{AG}=${vtex(M.sn)}$, $\\cos=\\frac{AC}{AG}=${vtex(M.cs)}$, $\\tan=\\frac{CG}{AC}=${vtex(M.tn)}$`
     ],
     view: (M) => ({
-      guide: '<b>가로·세로·높이</b>를 바꾸고 <b>빈 곳을 끌어</b> 돌려 보세요. 직각삼각형 ACG(보라)는 밑면의 대각선 AC, 높이 CG, 입체의 대각선 AG로 이루어져요.',
+      guide: '<b>가로·세로·높이</b>를 바꾸고 <b>빈 곳을 끌어</b> 돌려 보세요. 각 θ는 ∠GAC예요. 직각삼각형 ACG(보라)는 밑면의 대각선 AC, 높이 CG, 입체의 대각선 AG로 이루어져요.',
       readouts: [rd('밑면의 대각선 $AC$', `$${vtex(M.ac)}$`, 'violet'), rd('입체의 대각선 $AG$', `$${vtex(M.ag)}$`, 'green'), rd('$\\tan(\\angle GAC)$', `$${vtex(M.tn)}$`, 'amber')],
       rule: '직육면체의 대각선 $AG=\\sqrt{a^2+b^2+c^2}$ → 두 번의 피타고라스 정리',
       notes: notes('먼저 밑면의 대각선 $AC$ 를 구해요. 곧바로 세 변을 제곱해 더해도 같은 결과예요.')
@@ -123,7 +123,7 @@
     gen: function g() {
       const t = pick([[1, 2, 2], [2, 3, 6], [2, 4, 4], [4, 4, 7], [3, 4, 12], [2, 6, 9], [1, 4, 8], [2, 2, 1], [3, 6, 2], [4, 7, 4], [2, 2, 2], [1, 1, 1], [1, 2, 3]]), [a, b0, c] = t, kind = pick(['ag', 'ag', 's', 'c', 't']);
       const ac = vsqrt(vi(a * a + b0 * b0)), ag = vsqrt(vi(a * a + b0 * b0 + c * c)), rv = { s: vdiv(vi(c), ag), c: vdiv(ac, ag), t: vdiv(vi(c), ac) };
-      let ans, wr, L = { a: `${a}`, b: `${b0}`, c: `${c}` }, xl = '∠GAC', stem;
+      let ans, wr, L = { a: `${a}`, b: `${b0}`, c: `${c}` }, xl = 'x', stem;
       if (kind === 'ag') { ans = ag; wr = [[ac, '밑면의 대각선이에요. 높이까지 한 번 더 피타고라스 정리를 써요.'], [vi(a + b0 + c), '세 모서리의 합이에요.'], [vsqrt(vi(a * a + b0 * b0 + c)), ''], [vsqrt(vi(a * a + b0 + c * c)), ''], [vsqrt(vi((a + b0 + c) * (a + b0 + c)))]]; L.AG = 'x'; L.AGs = 21; L.AGc = 'amber'; xl = ''; stem = `그림과 같이 가로, 세로, 높이가 각각 $${a}$, $${b0}$, $${c}$ 인 직육면체의 대각선 $\\overline{AG}=x$ 의 길이는?`; }
       else { ans = rv[kind]; wr = [...['s', 'c', 't'].filter((k) => k !== kind).map((k) => [rv[k], '다른 삼각비예요. 대변·이웃변·빗변을 다시 짝지어 봐요.']), [vdiv(vi(1), ans), '분자와 분모를 거꾸로 썼어요.']]; stem = `그림과 같이 가로, 세로, 높이가 각각 $${a}$, $${b0}$, $${c}$ 인 직육면체에서 대각선 $AG$ 와 밑면 $ABCD$ 가 이루는 각을 $x$ 라 할 때, $${G.FN[kind]}\\,x$ 의 값은?`; }
       if (kind === 'ag' ? vsame(ag, vi(a)) || vsame(ag, vi(b0)) || vsame(ag, vi(c)) : false) return g();
@@ -316,7 +316,7 @@
     poly(b, [A, B, C, D], 'ink', 3.4);
     fillPoly(b, [A, E, Bt], 'amber', 0.3); poly(b, [A, E, Bt], 'amber', 3);
     line(b, A, E, 'violet', 3.6);
-    if (t > 0.02) line(b, A, B, 'muted', 1.8, { dash: dashed });
+    line(b, A, C, 'muted', 2, { dash: dashed }); if (t > 0.02) line(b, A, B, 'muted', 1.8, { dash: dashed });
     [[A, 'A', pt(g.L / 2, -g.w / 2)], [B, 'B', pt(g.L / 2, -g.w / 2)], [C, 'C', pt(g.L / 2, -g.w / 2)], [D, 'D', pt(g.L / 2, -g.w / 2)]].forEach(([p0, n, c]) => { b.point(p0, { color: 'ink', r: 4.5 }); tagOut(b, p0, c, n, { size: 17, gap: 11 }); });
     b.point(E, { color: 'violet', r: 4.5 }); T(b, E, 'E', { dy: 20, size: 17, color: 'violet' });
     if (t > 0.98) { b.point(Bt, { color: 'amber', r: 4.5 }); T(b, Bt, 'B′', { dx: -4, dy: 18, size: 16, color: 'amber' }); ang(b, Bt, A, E, { color: 'ink', r: 14 }); }
@@ -338,15 +338,15 @@
     model: (s) => { const w = Math.round(s.t86w), be = vdiv(vsq(3), vi(3)), BE = vmul(be, vi(w)), AE = vmul(vdiv(vi(2), vsq(3)), vi(w)), EC = vsub(vmul(vsq(3), vi(w)), BE), S = vdiv(vmul(EC, vi(w)), vi(2)); return { w, BE, AE, EC, S, bc: vmul(vsq(3), vi(w)), k: s.t86k }; },
     draw(b, s, M, C) { const st = C.step, show = (n) => st >= n || st === 99, t = C.review ? C.t : M.k; drawFold(b, foldGeo(M.w, t), { step: st, t, angs: show(1) ? ['30°'] : null, L: { w: `${M.w}`, bc: `${vcan(M.bc)}`, ae: show(2) ? vcan(M.AE) : '', ec: show(3) ? vcan(M.EC) : '', be: show(2) ? vcan(M.BE) : '' }, rows: show(3) ? [{ t: `△AEC = \\frac{1}{2} × EC × AB = ${vcan(M.S)}`, c: 'amber', size: 15 }] : [] }); },
     steps: (M) => [
-      `$AB=${M.w}$, $BC=${vtex(M.bc)}$ 이므로 $\\tan(\\angle BAC)=\\sqrt{3}$, $\\angle BAC=60^{\\circ}$ 예요. 접으면 $B$ 가 $AC$ 위의 점 $B'$ 에 오므로 접은 각 $\\angle BAE=\\angle B'AE=\\frac{60^{\\circ}}{2}=30^{\\circ}$ 예요.`,
-      `$\\triangle ABE$ 에서 $BE=${M.w}\\tan30^{\\circ}=${vtex(M.BE)}$, $AE=\\frac{${M.w}}{\\cos30^{\\circ}}=${vtex(M.AE)}$ 이고 접은 도형이므로 $B'E=BE$, $\\angle AB'E=90^{\\circ}$ 예요.`,
+      `$AB=${M.w}$, $BC=${vtex(M.bc)}$ 이므로 $\\tan(\\angle BAC)=\\sqrt{3}$, $\\angle BAC=60^{\\circ}$ 예요. 접으면 $B$ 가 $AC$ 위의 점 $B^{\\prime}$ 에 오므로 접은 각 $\\angle BAE=\\angle B^{\\prime}AE=\\frac{60^{\\circ}}{2}=30^{\\circ}$ 예요.`,
+      `$\\triangle ABE$ 에서 $BE=${M.w}\\tan30^{\\circ}=${vtex(M.BE)}$, $AE=\\frac{${M.w}}{\\cos30^{\\circ}}=${vtex(M.AE)}$ 이고 접은 도형이므로 $B^{\\prime}E=BE$, $\\angle AB^{\\prime}E=90^{\\circ}$ 예요.`,
       `$EC=BC-BE=${vtex(M.EC)}$, $\\triangle AEC=\\frac{1}{2}\\times EC\\times AB=${vtex(M.S)}$ 예요.`
     ],
     view: (M) => ({
       guide: '<b>세로 w</b>를 바꾸고 ▶를 눌러 보세요. 노란 삼각형 ABE가 접는 선 AE(보라)를 축으로 제자리에서 접혀 대각선 AC 위의 점 B′에 겹쳐요.',
-      readouts: [rd('$BE=B\'E$', `$${vtex(M.BE)}$`, 'sky'), rd('$AE$', `$${vtex(M.AE)}$`, 'violet'), rd('$EC$', `$${vtex(M.EC)}$`, 'green')],
+      readouts: [rd('$BE=B^{\\prime}E$', `$${vtex(M.BE)}$`, 'sky'), rd('$AE$', `$${vtex(M.AE)}$`, 'violet'), rd('$EC$', `$${vtex(M.EC)}$`, 'green')],
       rule: '접은 각 = 원래 각 (∠BAE = ∠B′AE) → 30°·60°·90° 직각삼각형으로 변의 길이를 구한다',
-      notes: notes('접은 부분과 원래 부분은 합동이에요. 대응하는 변의 길이와 각이 같아요.', '$\\angle AB\'E=90^{\\circ}$ 이므로 $\\triangle EB\'C$ 도 직각삼각형이에요.')
+      notes: notes('접은 부분과 원래 부분은 합동이에요. 대응하는 변의 길이와 각이 같아요.', '$\\angle AB^{\\prime}E=90^{\\circ}$ 이므로 $\\triangle EB^{\\prime}C$ 도 직각삼각형이에요.')
     }),
     gen: function g() {
       const w = pick([3, 6, 9, 12]), kind = pick(['ae', 'ec', 'S', 'be']);
@@ -356,8 +356,8 @@
       else if (kind === 'ec') { ans = EC; wr = [[BE, '$BE$ 의 길이예요.'], [vmul(vsq(3), vi(w)), '$BC$ 의 길이예요. $BE$ 를 빼야 해요.'], [vmul(vdiv(vsq(3), vi(2)), vi(w)), ''], [vsub(vmul(vsq(3), vi(w)), vi(w)), ''], [AE, '']]; L.ecx = true; L.ec = 'x'; stemAsk = '$\\overline{EC}=x$ 의 길이는?'; }
       else if (kind === 'be') { ans = BE; wr = [[AE, '$AE$ 의 길이예요.'], [vmul(vsq(3), vi(w)), ''], [vi(w), ''], [vmul(vdiv(vsq(3), vi(2)), vi(w)), ''], [EC, '']]; L.be = 'x'; stemAsk = '$\\overline{BE}=x$ 의 길이는?'; }
       else { ans = S; wr = [[vdiv(vmul(vmul(vsq(3), vi(w)), vi(w)), vi(2)), '$\\triangle ABC$ 의 넓이예요.'], [vmul(EC, vi(w)), '$\\frac{1}{2}$ 을 곱하지 않았어요.'], [vdiv(vmul(BE, vi(w)), vi(2)), '$\\triangle ABE$ 의 넓이예요.'], [vdiv(vmul(vmul(vsq(3), vi(w)), vi(w)), vi(1)), ''], [vdiv(vmul(AE, vi(w)), vi(2)), '']]; rows = [{ t: '△AEC의 넓이 = x', c: 'amber', size: 18 }]; stemAsk = '$\\triangle AEC$ 의 넓이는?'; }
-      if (kind === 'ae' && vsame(ans, vi(0))) return g();
-      const q = { tag: '직사각형 종이접기', key: ['r92', w, kind].join('|'), stem: `그림과 같이 $\\overline{AB}=${w}$, $\\overline{BC}=${vtex(vmul(vsq(3), vi(w)))}$ 인 직사각형 $ABCD$ 를 꼭짓점 $B$ 가 대각선 $AC$ 위의 점 $B'$ 에 오도록 $\\overline{AE}$ 를 접는 선으로 접었다. ${stemAsk}`, choices: mkChoices(ans, wr.filter((x) => !vsame(x[0], ans))), fig: { w, L, rows }, given: [`${w}`, vcan(vmul(vsq(3), vi(w)))], ans: [vcan(ans)] };
+      if (vsame(ans, vi(w)) || vsame(ans, vmul(vsq(3), vi(w)))) return g();
+      const q = { tag: '직사각형 종이접기', key: ['r92', w, kind].join('|'), stem: `그림과 같이 $\\overline{AB}=${w}$, $\\overline{BC}=${vtex(vmul(vsq(3), vi(w)))}$ 인 직사각형 $ABCD$ 를 꼭짓점 $B$ 가 대각선 $AC$ 위의 점 $B^{\\prime}$ 에 오도록 $\\overline{AE}$ 를 접는 선으로 접었다. ${stemAsk}`, choices: mkChoices(ans, wr.filter((x) => !vsame(x[0], ans))), fig: { w, L, rows }, given: [`${w}`, vcan(vmul(vsq(3), vi(w)))], ans: [vcan(ans)] };
       return checkQ(q);
     },
     pdraw: (b, q) => drawFold(b, foldGeo(q.fig.w, 1), { step: 0, t: 1, L: q.fig.L, rows: q.fig.rows })
