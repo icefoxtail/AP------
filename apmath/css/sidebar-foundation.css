@@ -595,12 +595,44 @@ body.dark #app-drawer .drw-item:focus-visible {
         backdrop-filter: blur(12px) !important;
         -webkit-backdrop-filter: blur(12px) !important;
     }
-    #app-drawer:not(.drw-expanded) .drw-rail-toggle {
-        background: transparent !important;
-    }
     /* 펼친 서랍은 둘레 1px 테두리(visual layer)가 있어 머리줄이 상단 막대보다 1px 아래로 밀렸다. 위쪽 테두리만 없앤다. */
     #app-drawer.drw-expanded {
         border-top: 0 !important;
+    }
+
+    /* 머리 칸 고정: 항목이 많아 레일·서랍이 스크롤돼도 머리 칸(58px)과 그 아래 선이 맨 위에 남아 상단 막대 선과 계속 이어진다. 항목은 그 밑으로 지나간다.
+       레일(접힘)은 ☰ 버튼 자체를 56x58 머리 칸으로 쓴다: 상단 막대와 같은 높이(--ap-drawer-header-h)·border-bottom·배경(--surface-alpha)·블러. (불투명 --surface 로 해 보니 다크에서 상단 막대와 색이 어긋났다.)
+       (흐름 밖 ::before 선은 스크롤하면 ☰와 함께 올라가 버렸다.) 휴대폰(<901px)은 건드리지 않는다. */
+    #app-drawer:not(.drw-expanded)::before {
+        display: none !important;
+    }
+    #app-drawer:not(.drw-expanded) .drw-rail-toggle {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 4 !important;
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        height: var(--ap-drawer-header-h, 58px) !important;
+        min-height: var(--ap-drawer-header-h, 58px) !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        border-bottom: 1px solid var(--border) !important;
+        background: var(--surface-alpha) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+    }
+    #app-drawer.drw-expanded .drw-top-tools {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 4 !important;
+        background: var(--surface-alpha) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+    }
+    /* 키보드 Tab 등으로 항목이 보이도록 스크롤될 때 고정된 머리 칸 밑에 숨지 않게 한다. */
+    #app-drawer {
+        scroll-padding-top: var(--ap-drawer-header-h, 58px);
     }
 }
 
@@ -692,7 +724,7 @@ body.dark #app-drawer .drw-item[aria-current="page"] {
 
     #app-drawer:not(.drw-expanded) .drw-menu {
         display:block !important;
-        padding:14px 0 6px !important;
+        padding:3px 0 6px !important; /* ☰ 머리 칸이 58px(예전 47px)라 위 여백 14px에서 11px을 뺀다: 첫 항목 위치는 그대로 */
     }
     #app-drawer:not(.drw-expanded) .drw-footer {
         display:block !important;
