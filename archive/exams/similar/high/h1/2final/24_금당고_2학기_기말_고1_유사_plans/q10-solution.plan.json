@@ -1,0 +1,83 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "4",
+      "-4"
+    ],
+    "sign": -1,
+    "offset": "0",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -3,
+      1
+    ],
+    "viewport": [
+      -4,
+      2,
+      -5,
+      2
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "E",
+          "x": "1",
+          "y": "0"
+        },
+        {
+          "id": "F",
+          "x": "0",
+          "y": "-2"
+        },
+        {
+          "id": "T",
+          "x": "3/4",
+          "y": "-1"
+        }
+      ],
+      "segments": [
+        {
+          "id": "s1",
+          "from": "F",
+          "to": "E"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "E": "E",
+    "F": "F",
+    "T": "T"
+  },
+  "caption": "y=-√(4-4x)의 그래프와 직선 y=2x-2는 두 점 E(1,0), F(0,-2)에서 만나고, 점 T(3/4,-1)은 직선 y=2x-5/2가 접하는 점이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "직선 y=2x-2는 곡선과 E(1,0), F(0,-2)에서 만난다.",
+      "mappedTo": "graphPlan.overlays.segments"
+    },
+    {
+      "id": "S2",
+      "condition": "직선 y=2x-5/2는 곡선과 T(3/4,-1)에서 접한다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "k=-2일 때의 두 교점과 k=-5/2일 때의 접점 T의 위치를 보여 준다."
+  ],
+  "sourceQuote": "$-\\dfrac{5}{2}<k\\le-2$",
+  "assetPath": "assets/images/24_금당고_2학기_기말_고1_유사/q10-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q10-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q10-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q10-solution.svg"
+  }
+}

@@ -1,0 +1,386 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "24_금당고_2학기_기말_고1_유사",
+  "candidateJsPath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사.js",
+  "candidateMetaPath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사.meta-q01-q21.json",
+  "candidateGitBlobSha1": "3f99e64e2acf2e0bdb434287fc3af845aee11943",
+  "reviewTimestamp": "2026-11-02T19:40:00+00:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "overallVerdict": "PASS_WITH_VISUAL_DEBT",
+  "signOffStatus": "PASS_WITH_VISUAL_DEBT",
+  "executiveSummary": {
+    "blindFirstPass": {
+      "status": "PASS",
+      "totalSolved": 21,
+      "answerMatches": 21,
+      "answerMismatches": 0,
+      "ambiguousStems": 1,
+      "freezeOrder": "학생에게 보이는 발문·보기·그림(blind.cjs 출력)만 보고 21문항 답을 scratchpad rev/blind-frozen.json에 동결한 뒤에야 저장된 answer/solution을 열람. Q13은 일대일대응 전수 탐색, Q18은 수치 탐색, Q19는 전수 계산으로 교차 확인. 모호 1건(Q19 (나) 전개도 해석)은 수정함.",
+      "frozenFileSha256": "0c63c5acbf70fbcf0deaf9a4967d9365e3c416d6ab9afe782a1b4aabb7838854"
+    },
+    "correctionsByReviewer": [
+      {
+        "qid": 19,
+        "kind": "STEM_AMBIGUITY",
+        "fix": "발문 (나)를 \"그림의 전개도에서 변을 공유하는 두 직사각형에 있는 수는 서로 다르다\"로, 해설 (나)에도 \"그림의 전개도에서\" 및 \"왼쪽·오른쪽 직사각형은 변을 공유하지 않으므로 같은 수 허용\" 문장 추가. 답 392 불변. 사유: \"삼각기둥의 전개도\"라는 표현 때문에 접었을 때 양 끝 직사각형이 변을 공유한다고 읽으면 답이 252가 되는 모호성."
+      },
+      {
+        "qid": 19,
+        "kind": "PLAN_BINDING",
+        "fix": "q19-problem.plan.json에 누락된 assetPath와 engineEvidence(result/state/svg) 추가. 엔진 산출물 바이트가 연결 SVG와 동일함을 cmp로 확인."
+      }
+    ],
+    "originalComparison": "21문항 1:1 유형·배점(합 100)·난이도 대응. 원본 대비 수치·조건 변형(Q1 n!→n!/3!, Q9 n(X)=6과 f(1)=3, Q11 2√(x-1)+1, Q17 60도, Q18 한 점→서로 다른 두 점, Q19 1..7, Q20 a=4, Q21 제1사분면 k=5). 정답값이 원본과 같은 문항 없음(보기 순서 포함 재배열).",
+    "structure": {
+      "questionCount": 21,
+      "mc": 17,
+      "short": 2,
+      "essay": 2,
+      "scoreSum": 100,
+      "mcAnswerDistribution": "3/3/4/4/3 over ①..⑤",
+      "nodeCheck": "OK",
+      "katexRender": "engine.html exam/sol 모드 headless Chrome: MathJax 컨테이너 렌더, 오류 문자열 0, 문제 그림 3(Q15·Q17·Q19)·해설 그림 9 로드"
+    },
+    "planAndSvg": {
+      "plans": "42 plan JSON 유효. 문제 plan: 활성 3(Q15,Q17,Q19)·EXEMPT 18. 해설 plan: 활성 9(Q3,5,8,10,11,15,16,17,21)·EXEMPT 9·UNSUPPORTED 3(Q14,Q18,Q20).",
+      "visualReview": "12개 SVG를 PNG로 렌더해 직접 확인: 순백 배경, 정답 누설 없음, 좌표·점 라벨이 해설 수치와 일치(Q8 P(0,3)Q(3,5/2), Q11 P(2,3)Q(13/4,4), Q15 H(3/2,3/2), Q16 A(2√2,√2), Q17 A(4,4)B(-2+2√3,6-2√3), Q21 A(2,3)B(3,2)C(-2,-3)). Q19 전개도는 정삼각형 2·직사각형 3, 삼각형이 가운데 직사각형 위·아래에 붙음.",
+      "engineBinding": "engine_evidence 12쌍(result ARCHIVE_BOUND, state, svg)과 연결 자산 바이트 일치. Q3는 render-plan으로 재현 렌더하여 동일 바이트 확인.",
+      "toolLimitations": [
+        "하네스 verify_similar_exam.mjs는 고등 시험지에도 middle1 팩 taxonomy를 적용해 PT/TPL unregistered 42건을 낸다. 본 검수는 compiled taxonomy_registry와 canonical packs를 직접 조회하여 21/21 PT·TPL 실재, TPL 부모 PT 일치 확인(실제 내용 결함 아님).",
+        "하네스 questionType 허용값이 객관식/서술형뿐이라 원본도 쓰는 단답형(Q18,Q19)을 invalid로 처리(내용 결함 아님).",
+        "하네스는 SVG <text>에서 점 이름을 찾지만 엔진은 글자를 outline path로 그린다. Q15·Q17의 P,Q,H,A,B 라벨은 PNG 렌더에서 모두 보임(내용 결함 아님).",
+        "Q19 solid-figure-v1 plan: 하네스 SUPPORTED 목록·엔진 입력 키 목록에 solid-figure가 없고, 엔진 state의 capability는 composite-panels-v1로 기록되어 하네스 대조가 어긋난다. 엔진 산출물은 ARCHIVE_BOUND이고 plan 입력(net)이 실제로 렌더됨. Q19 SVG에 title/desc/role=img가 없는 것도 엔진 composite 출력 한계(수정 시 바이트 결속이 깨지므로 미수정, JS imageAlt 제공).",
+        "하네스 strict 모드는 UNSUPPORTED 해설 plan(Q14,Q18,Q20)을 무조건 오류로 처리. 실제로는 시각 부채이며 글 해설은 완결."
+      ]
+    },
+    "metaCoverage": {
+      "items": 21,
+      "fieldsCheckedPerItem": 25,
+      "fieldsFilled": "525/525",
+      "jsMetaMirrorMismatch": 0,
+      "keyLookup": "compiled taxonomy_registry + canonical packs/concepts/condition_registry + crosswalks/rpm-primary-v1.0/high1.json 직접 조회(scratch metaaudit.cjs)",
+      "canonicalProblemTypeKeys": "13 distinct / 21 items all exist",
+      "canonicalTemplateKeys": "15 distinct / 21 items all exist, parent PT matches for 21/21",
+      "canonicalCrossConceptKeys": "29 distinct all exist (CC_COMPLEX_FRACTION_SIMPLIFY in canonical/concepts/algebra.json)",
+      "canonicalConditionKeys": "9 distinct all exist",
+      "rpmRecords": "H1-RPM ids 21/21 exist in high1 crosswalk; 6 items (Q2,Q8,Q14,Q15,Q16,Q20) use PT/TPL/subUnit deliberately different from the crosswalk row, each justified by the final solution (Q8/Q15/Q16 crosswalk row has no PT/TPL; Q2 extension; Q14 TPL_GRAPH_AREA_BY_SYMMETRY; Q20 TPL_INVERSE_GRAPH_INTERSECTION) and each key/parent verified to exist",
+      "semanticReview": "21문항 최종 풀이와 PT/TPL/CC/COND/RPM L3-L4 의미 대조: 불일치 0. level 하/중/상은 원본과 동일(1-7 하, 8-12 중, 13-21 상), difficultyBucket과 levelBasis 일관.",
+      "newExtensionKeys": 1,
+      "newExtensionKeyList": [
+        "EXT-L4-COMPLEX-FRACTION-SIMPLIFICATION"
+      ],
+      "newExtensionJudgement": "Q2 번분수식 정리: high1 crosswalk에 유리식 계산 RPM 행이 없고 canonical/extensions 전체에서 번분수·COMPLEX_FRACTION 중복 키가 extensions 파일 외에 없음 → 신설 정당. parent H1-RPM-108(함수>유리함수>유리함수의 그래프>기본 그래프)이 high1 crosswalk에 실재, parentProblemTypeKey/TemplateKey(PT_RATIONAL_ASYMPTOTE/TPL_RATIONAL_ASYMPTOTE_DIRECT) 실재, registrySha256 일치(0bfd6c66…).",
+      "newCrossConceptKeys": 0,
+      "newConditionKeys": 0,
+      "aliasProposals": 0,
+      "EVIDENCE_DEBT": 0,
+      "openDefectItems": [
+        3,
+        10,
+        14,
+        18,
+        19,
+        20
+      ]
+    }
+  },
+  "defects": [],
+  "unresolvedDefects": [
+    {
+      "qid": 3,
+      "kind": "VISUAL_DEBT_LABEL_PLACEMENT",
+      "severity": "LOW",
+      "round": "R1",
+      "reason": "해설 그림에서 점근선 라벨 x=-1이 y축 위쪽, 축 이름 y가 점근선 옆에 놓여 서로 바뀐 것처럼 보임. 엔진 자동 라벨 배치이며 viewport/domain 변경 재렌더(1회)로도 동일. 해설 글에 점근선이 명시되어 풀이에는 지장 없음."
+    },
+    {
+      "qid": 10,
+      "kind": "VISUAL_DEBT_MISSING_ELEMENT",
+      "severity": "LOW",
+      "round": "R1",
+      "reason": "해설 그림에 접선 y=2x-5/2는 그려지지 않고 접점 T만 표시(엔진 overlay에 직선 추가 불가). 해설 글이 접점·직선을 서술."
+    },
+    {
+      "qid": 14,
+      "kind": "VISUAL_DEBT_UNSUPPORTED",
+      "severity": "LOW",
+      "round": "R1",
+      "reason": "조각함수+직선 영역 그림 capability 없음(UNSUPPORTED). 해설은 회전 대칭과 삼각형 넓이로 글만으로 완결. 원본 해설에는 그림이 있었음."
+    },
+    {
+      "qid": 18,
+      "kind": "VISUAL_DEBT_UNSUPPORTED",
+      "severity": "LOW",
+      "round": "R1",
+      "reason": "유리함수와 무리함수 겹침 그림 capability 없음(UNSUPPORTED). 치환 u 풀이는 글만으로 완결."
+    },
+    {
+      "qid": 20,
+      "kind": "VISUAL_DEBT_UNSUPPORTED",
+      "severity": "MEDIUM",
+      "round": "R1",
+      "reason": "g의 두 조각과 직선 y=x+t의 교점 변화 그림 capability 없음(UNSUPPORTED). h(t) 개수 설명이 길어 그림이 있으면 이해에 도움. 글 해설은 완결이고 정답·근거는 일치."
+    },
+    {
+      "qid": 19,
+      "kind": "VISUAL_DEBT_SVG_ACCESSIBILITY",
+      "severity": "LOW",
+      "round": "R1",
+      "reason": "엔진 composite SVG에 title/desc/role=img 없음(바이트 결속 때문에 수정 불가). 화면 렌더와 JS imageAlt는 정상."
+    }
+  ],
+  "questionReviews": [
+    {
+      "qid": 1,
+      "type": "객관식",
+      "score": 3.8,
+      "derivedAnswer": "③",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "n!/3!=20에서 n!=120=5!이므로 n=5, 보기 ③. 5!/3!=20 대입 확인.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "발문·보기·해설이 학생용으로 충분하고 정답과 근거가 일치.",
+      "assetCheck": "EXEMPT_OR_UNSUPPORTED_SEE_PLAN"
+    },
+    {
+      "qid": 2,
+      "type": "객관식",
+      "score": 3.8,
+      "derivedAnswer": "①",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "분자·분모에 3x를 곱하면 (3+x)/(3-x)=(x+3)/(3-x), 보기 ①. x=1 대입 시 2로 일치.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "발문·보기·해설이 학생용으로 충분하고 정답과 근거가 일치.",
+      "assetCheck": "EXEMPT_OR_UNSUPPORTED_SEE_PLAN"
+    },
+    {
+      "qid": 3,
+      "type": "객관식",
+      "score": 3.8,
+      "derivedAnswer": "④",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "f(x)=3/(x-a)+b의 점근선은 x=a, y=b이므로 a=-1, b=4, a+b=3, 보기 ④.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "해설 그림 점근선 라벨 위치가 부정확(visual debt).",
+      "assetCheck": "ENGINE_BOUND_RENDERED_VIEWED"
+    },
+    {
+      "qid": 4,
+      "type": "객관식",
+      "score": 3.8,
+      "derivedAnswer": "②",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "14C12=14C2=14·13/2=91, 보기 ②.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "발문·보기·해설이 학생용으로 충분하고 정답과 근거가 일치.",
+      "assetCheck": "EXEMPT_OR_UNSUPPORTED_SEE_PLAN"
+    },
+    {
+      "qid": 5,
+      "type": "객관식",
+      "score": 3.8,
+      "derivedAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "-2x+8≥0에서 x≤4, 근호항 ≥0이므로 x=4에서 최솟값 3, a=4,b=3,ab=12, 보기 ⑤.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "발문·보기·해설이 학생용으로 충분하고 정답과 근거가 일치.",
+      "assetCheck": "ENGINE_BOUND_RENDERED_VIEWED"
+    },
+    {
+      "qid": 6,
+      "type": "객관식",
+      "score": 3.8,
+      "derivedAnswer": "①",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "f^{-1}(5)=k이면 f(k)=5, 2k-3=5, k=4, 보기 ①.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "발문·보기·해설이 학생용으로 충분하고 정답과 근거가 일치.",
+      "assetCheck": "EXEMPT_OR_UNSUPPORTED_SEE_PLAN"
+    },
+    {
+      "qid": 7,
+      "type": "객관식",
+      "score": 4,
+      "derivedAnswer": "③",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "7개 중 3개를 택해 일렬(접시 3개) 배열 7P3=7·6·5=210, 보기 ③.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "발문·보기·해설이 학생용으로 충분하고 정답과 근거가 일치.",
+      "assetCheck": "EXEMPT_OR_UNSUPPORTED_SEE_PLAN"
+    },
+    {
+      "qid": 8,
+      "type": "객관식",
+      "score": 4,
+      "derivedAnswer": "②",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "점근선에서 a=3,b=2, y=2+3/(x+3)은 [0,3]에서 감소, 최대 3(x=0)·최소 5/2(x=3), 합 11/2, 보기 ②.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "발문·보기·해설이 학생용으로 충분하고 정답과 근거가 일치.",
+      "assetCheck": "ENGINE_BOUND_RENDERED_VIEWED"
+    },
+    {
+      "qid": 9,
+      "type": "객관식",
+      "score": 4.2,
+      "derivedAnswer": "④",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "역함수 존재면 일대일대응이므로 n(Y)=6, f(1)=3 고정 후 나머지 5!=120, 합 126, 보기 ④.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "발문·보기·해설이 학생용으로 충분하고 정답과 근거가 일치.",
+      "assetCheck": "EXEMPT_OR_UNSUPPORTED_SEE_PLAN"
+    },
+    {
+      "qid": 10,
+      "type": "객관식",
+      "score": 4.2,
+      "derivedAnswer": "③",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "t=√(4-4x)로 치환하면 k=(t-1)^2/2-5/2 (t≥0), t=0일 때 -2, 최솟값 -5/2이므로 -5/2<k≤-2, a+b=-9/2, 보기 ③.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "해설 그림에 접선(y=2x-5/2)이 그려져 있지 않고 접점 T만 표시(visual debt).",
+      "assetCheck": "ENGINE_BOUND_RENDERED_VIEWED"
+    },
+    {
+      "qid": 11,
+      "type": "객관식",
+      "score": 4.2,
+      "derivedAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "기울기=2/(√(c-1)+√(a-1)), b+d=7에서 √(a-1)+√(c-1)=5/2이므로 4/5, 보기 ⑤.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "발문·보기·해설이 학생용으로 충분하고 정답과 근거가 일치.",
+      "assetCheck": "ENGINE_BOUND_RENDERED_VIEWED"
+    },
+    {
+      "qid": 12,
+      "type": "객관식",
+      "score": 4.2,
+      "derivedAnswer": "④",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "7C3·4C1·4!=35·4·24=3360, 보기 ④.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "발문·보기·해설이 학생용으로 충분하고 정답과 근거가 일치.",
+      "assetCheck": "EXEMPT_OR_UNSUPPORTED_SEE_PLAN"
+    },
+    {
+      "qid": 13,
+      "type": "객관식",
+      "score": 4.4,
+      "derivedAnswer": "④",
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "(가)에서 두 값이 모두 4이어야 하므로 f(4)=-3, f(f(-1))=4. 일대일 대응 전수 탐색(스크립트)으로 f(-3)=-1,f(-1)=0,f(0)=4,f(2)=2,f(4)=-3 유일, 값 12, 보기 ④.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "발문·보기·해설이 학생용으로 충분하고 정답과 근거가 일치.",
+      "assetCheck": "EXEMPT_OR_UNSUPPORTED_SEE_PLAN"
+    },
+    {
+      "qid": 14,
+      "type": "객관식",
+      "score": 4.4,
+      "derivedAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "직선 y=(x+20)/3 아래 적분 72에서 곡선 아래 64/3+32/3=32를 빼 40 (삼각형 OAB 넓이 40과도 일치), 보기 ⑤.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "해설 그림 UNSUPPORTED(visual debt), 글 해설은 완결.",
+      "assetCheck": "EXEMPT_OR_UNSUPPORTED_SEE_PLAN"
+    },
+    {
+      "qid": 15,
+      "type": "객관식",
+      "score": 4.4,
+      "derivedAnswer": "②",
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "QH=ab/√(a²+b²)=9/√(a²+81/a²)이고 a²+b²≥18, 최댓값 9/(3√2)=3√2/2, 보기 ②.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "발문·보기·해설이 학생용으로 충분하고 정답과 근거가 일치.",
+      "assetCheck": "ENGINE_BOUND_RENDERED_VIEWED"
+    },
+    {
+      "qid": 16,
+      "type": "객관식",
+      "score": 4.6,
+      "derivedAnswer": "①",
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "직선 BC: x+2y+5=0, BC=4√5, 높이=(t+8/t+5)/√5, 넓이=2(t+8/t+5)≥2(4√2+5)=10+8√2, 보기 ①.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "발문·보기·해설이 학생용으로 충분하고 정답과 근거가 일치.",
+      "assetCheck": "ENGINE_BOUND_RENDERED_VIEWED"
+    },
+    {
+      "qid": 17,
+      "type": "객관식",
+      "score": 4.6,
+      "derivedAnswer": "③",
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "f=√3x, g=x/√3, m: y=(x-k)/√3+k. A(k,k), B(k(√3-1)/2,k(3-√3)/2), 넓이 k²(2-√3)/2=8(2-√3)에서 k=4, 보기 ③.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "발문·보기·해설이 학생용으로 충분하고 정답과 근거가 일치.",
+      "assetCheck": "ENGINE_BOUND_RENDERED_VIEWED"
+    },
+    {
+      "qid": 18,
+      "type": "단답형",
+      "score": 4,
+      "derivedAnswer": "k<=-3",
+      "candidateAnswer": "$k\\le-3$",
+      "blindMatch": true,
+      "blindDerivation": "교점 y좌표 u로 놓고 k=1+4/(u-1)-u² 의 해 개수: u>1에서 항상 1개, 0≤u<1에서는 k≤-3일 때 1개. 수치 탐색으로 k≤-3에서 2개 확인, 답 k≤-3.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "해설 그림 UNSUPPORTED(visual debt), 글 해설은 완결.",
+      "assetCheck": "EXEMPT_OR_UNSUPPORTED_SEE_PLAN"
+    },
+    {
+      "qid": 19,
+      "type": "단답형",
+      "score": 6,
+      "derivedAnswer": "392",
+      "candidateAnswer": "$392$",
+      "blindMatch": true,
+      "blindDerivation": "직사각형 a≠b, b≠c(a=c 허용, 전개도에서 변 공유는 두 쌍), 삼각형 p≠q이고 모두 직사각형 최댓값 m 초과. m별 직사각형·삼각형 곱의 합과 전수 계산이 일치, 답 392.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "발문 (나)에 \"그림의 전개도에서\"를 추가해 3차원 접힘 해석 모호성 제거, 해설에 R1=R3 허용 근거 추가. 그림 SVG에 title/desc/role 없음(엔진 한계).",
+      "assetCheck": "ENGINE_BOUND_RENDERED_VIEWED"
+    },
+    {
+      "qid": 20,
+      "type": "서술형",
+      "score": 10,
+      "derivedAnswer": "19",
+      "candidateAnswer": "$19$",
+      "blindMatch": true,
+      "blindDerivation": "g 정의역이 x≥12/a이고 f^{-1}은 x≥3에서만 정의되므로 12/a≥3, a=4. f=2√(x-3)+3, f와 f^{-1}은 x=3,7에서 만나고 h(0)=2,h(1)=2 조건 일치, g(11)=f^{-1}(11)=64/4+3=19.",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "해설 그림 UNSUPPORTED(visual debt). 원본과 동일 구조(정의역으로 a 결정)이며 해설이 근거를 명시.",
+      "assetCheck": "EXEMPT_OR_UNSUPPORTED_SEE_PLAN"
+    },
+    {
+      "qid": 21,
+      "type": "서술형",
+      "score": 10,
+      "derivedAnswer": "25",
+      "candidateAnswer": "$25$",
+      "blindMatch": true,
+      "blindDerivation": "A(p,6/p), B(6/p,p), BC⊥AB로 C=(-p,-6/p), AC=2OA=2√13에서 p²+36/p²=13, k=p+6/p=5, k²=25 (k>2√6 만족).",
+      "pedagogicalVerdict": "PASS",
+      "pedagogicalComment": "발문·보기·해설이 학생용으로 충분하고 정답과 근거가 일치.",
+      "assetCheck": "ENGINE_BOUND_RENDERED_VIEWED"
+    }
+  ]
+}

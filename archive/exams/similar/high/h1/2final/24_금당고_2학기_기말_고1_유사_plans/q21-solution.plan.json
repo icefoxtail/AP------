@@ -1,0 +1,103 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "6",
+      "0"
+    ],
+    "denominator": [
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -10,
+      10
+    ],
+    "viewport": [
+      -10,
+      10,
+      -10,
+      10
+    ],
+    "displayWindow": [
+      -6,
+      7,
+      -6,
+      7
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "AB",
+          "slope": "-1",
+          "intercept": "5"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "curveX": "2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "3",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "curveX": "-2",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C"
+  },
+  "caption": "k=5일 때 y=6/x와 y=-x+5는 A(2,3), B(3,2)에서 만나고, ∠ABC=90°인 점 C는 (-2,-3)이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "곡선과 직선의 두 교점이 A, B이고 C는 곡선 위의 점이다.",
+      "mappedTo": "graphPlan.overlays.points"
+    },
+    {
+      "id": "S2",
+      "condition": "∠ABC=90°이고 선분 AC, BC를 긋는다.",
+      "mappedTo": "graphPlan.overlays.segments"
+    }
+  ],
+  "newVisualInformation": [
+    "교점 A, B와 직각 조건을 만족하는 점 C의 위치를 보여 준다."
+  ],
+  "sourceQuote": "그림의 예: $C(-2,-3)$",
+  "assetPath": "assets/images/24_금당고_2학기_기말_고1_유사/q21-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q21-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q21-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q21-solution.svg"
+  }
+}

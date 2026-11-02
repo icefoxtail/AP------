@@ -1,0 +1,125 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "sqrt(3)"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      10
+    ],
+    "viewport": [
+      -4,
+      10,
+      -4,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "O"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "d",
+          "slope": "1",
+          "intercept": "0"
+        },
+        {
+          "id": "m",
+          "slope": "sqrt(3)/3",
+          "intercept": "(12-4*sqrt(3))/3",
+          "label": "m"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "x": "4",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "-2+2*sqrt(3)",
+          "y": "6-2*sqrt(3)",
+          "coordinates": true
+        },
+        {
+          "id": "Z",
+          "x": "0",
+          "y": "0",
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "Z",
+            "A",
+            "B"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "names": [
+        {
+          "id": "nb",
+          "text": "y=f(x)",
+          "labelKind": "MATH",
+          "curveX": "3"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "O": "O"
+  },
+  "caption": "k=4일 때 A(4,4), B(-2+2√3, 6-2√3)이고 삼각형 OAB의 넓이는 16-8√3이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "직선 y=f(x)=√3x이고 A는 y=x 위의 점 (k,k)이다.",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "S2",
+      "condition": "B는 직선 y=g(x-k)+k와 y=√3x의 교점이다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "k=4일 때 두 교점 A(4,4), B(-2+2√3, 6-2√3)의 좌표와 삼각형 OAB를 보여 준다."
+  ],
+  "sourceQuote": "그림에서 $k=4$이면 $A(4,4)$",
+  "assetPath": "assets/images/24_금당고_2학기_기말_고1_유사/q17-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q17-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q17-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/2final/24_금당고_2학기_기말_고1_유사_plans/engine_evidence/q17-solution.svg"
+  }
+}
