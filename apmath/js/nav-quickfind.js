@@ -22,7 +22,7 @@
 const APMS_QF_FEATURES = Object.freeze([
     { id: 'progress',   label: '진도·교재',        hint: '진도 입력, 교재 관리',   roles: ['teacher'],          markers: ['openGlobalTextbookManage'], keywords: ['진도', '교재', '교재관리', '진도관리', '진도교재', '수업진도'] },
     { id: 'clinic',     label: '클리닉',           hint: '오답 클리닉, 유사문항',  roles: ['teacher'],          markers: ['openClinicCenter'],        keywords: ['클리닉', '오답', '오답클리닉', '유사문항', '유사', '오답노트'] },
-    { id: 'exam',       label: '원내평가·OMR',     hint: '성적 입력, OMR 채점',    roles: ['teacher'],          markers: ['openGlobalExamGradeView', 'openOmrInput'], keywords: ['원내평가', 'omr', '성적입력', '성적', '채점', '시험입력', '평가'] },
+    { id: 'exam',       label: '원내평가·OMR',     hint: '성적 입력, OMR 채점',    roles: ['teacher'],          markers: ['openExamWorkspace'], keywords: ['원내평가', 'omr', '성적입력', '성적', '채점', '시험입력', '평가'] },
     { id: 'timetable',  label: '시간표',           hint: '반별 요일·시간',         roles: ['admin', 'teacher'], markers: ['openLiveTimetable'],       keywords: ['시간표', '수업시간', '타임테이블'] },
     { id: 'attendance', label: '출석부',           hint: '출결 기록',              roles: ['teacher'],          markers: ['openAttendanceLedger'],    keywords: ['출석부', '출석', '출결', '결석'] },
     { id: 'journal',    label: '일지',             hint: '수업·업무 일지',         roles: ['teacher'],          markers: ['openDailyJournalModal'],   keywords: ['일지', '수업일지', '업무일지'] },
@@ -292,9 +292,7 @@ function apmsQfCall(name, args, notReady) {
 const APMS_QF_RUNNERS = {
     progress: () => apmsQfCall('openGlobalTextbookManage', [], '진도·교재'),
     clinic: () => apmsQfCall('openClinicCenter', [], '클리닉'),
-    exam: () => (typeof openGlobalExamGradeView === 'function'
-        ? openGlobalExamGradeView()
-        : apmsQfCall('openExamWorkspace', [''], '원내평가·OMR')),
+    exam: () => apmsQfCall('openExamWorkspace', [''], '원내평가·OMR'),
     timetable: () => (typeof openLiveTimetable === 'function'
         ? openLiveTimetable()
         : apmsQfCall('renderTimetable', [], '시간표')),
