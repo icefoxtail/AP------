@@ -283,7 +283,7 @@
   S.push(edgeScene({
     id: 's4-1', kind: 'cube', title: '정육면체 전개도에서 꼬인 위치', short: '정육면체 전개도',
     question: '정육면체의 전개도에서 떨어져 보이는 모서리가, 접으면 꼬인 위치가 될까? 눈으로만 판단하면 왜 틀릴까?',
-    guide: '막대로 전개도를 <b>접어</b> 보세요. 위의 칩으로 전개도 모양을 바꿀 수 있어요.',
+    guide: '막대로 전개도를 <b>접어</b> 보세요. 칩으로 전개도 모양을 바꿀 수 있어요.',
     steps: stepsSkew,
     notes: () => notes('전개도 위에서 가까이 있어도 접으면 꼬인 위치일 수 있고, 멀리 있어도 평행할 수 있어요. 반드시 접어서 확인해요.', '문자가 같은 꼭짓점은 접으면 하나로 겹쳐요. 모서리의 양 끝 문자로 이름을 불러요.'),
     prob: (M) => probSkewName(M, '정육면체', 'c' + M.key)
@@ -384,7 +384,7 @@
       `나머지 면 ${M.perp.map((i) => M.net.faceName[i]).join(', ')} ${M.perp.length}개는 기준 면과 90°로 만나서 수직이에요.`
     ],
     view: (M) => ({
-      guide: '그림의 <b>면을 누르거나</b> 위의 버튼으로 기준 면을 고른 뒤 <b>접기</b> 막대로 접어 보세요. 기준 면과 마주 보는 면이 <b style="color:var(--m-amber)">같은 노랑</b>으로 보이고, 이 두 면은 평행해요. 나머지 4개 면은 수직이에요.',
+      guide: '그림의 <b>면을 누르거나</b> 버튼으로 기준 면을 고른 뒤 <b>접기</b> 막대로 접어 보세요. 기준 면과 마주 보는 면이 <b style="color:var(--m-amber)">같은 노랑</b>으로 보이고, 이 두 면은 평행해요. 나머지 4개 면은 수직이에요.',
       readouts: [rd('기준 면', M.none ? '아직 없어요' : `면 ${M.bname}`, M.none ? 'muted' : 'amber'), rd('평행한 면', M.none ? '면을 눌러 보세요' : `면 ${M.net.faceName[M.par]} (1개)`, M.none ? 'muted' : 'amber'), rd('수직인 면', `${M.perp.map((i) => M.net.faceName[i]).join(' ')} (${M.perp.length}개)`, 'sky', null, null, true)],
       formula: `<p>평행한 면: $1$개 (마주 보는 면) · 수직인 면: $6-1-1=${M.perp.length}$개</p><p>마주 보는 면 찾는 법: ${IDEA4}</p>`,
       rule: '정육면체에서 한 면과 평행한 면은 마주 보는 1개, 나머지 4개 면은 수직이다',

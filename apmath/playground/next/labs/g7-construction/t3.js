@@ -422,7 +422,7 @@
     view: (M) => {
       const adds = addable(M.g).filter((p) => congKind(new Set([...GIVEN[M.g], p])));
       return {
-        guide: '위 칩에서 <b>이미 알려진 두 조건</b>을 고르고, <b>더 알려 줄 조건</b>을 눌러 보세요. 세 조건이 SSS, SAS, ASA 중 하나가 되면 합동이에요. <b>노란 점 C</b>를 끌어 삼각형의 모양을 바꿀 수도 있어요.',
+        guide: '칩에서 <b>이미 알려진 두 조건</b>을 고르고, <b>더 알려 줄 조건</b>을 눌러 보세요. 세 조건이 SSS, SAS, ASA 중 하나가 되면 합동이에요. <b>노란 점 C</b>를 끌어 삼각형의 모양을 바꿀 수도 있어요.',
         readouts: [rd('알려진 변의 수', `${[0, 1, 2].filter((i) => M.set.has(i)).length}개`, 'sky'), rd('알려진 각의 수', `${[3, 4, 5].filter((i) => M.set.has(i)).length}개`, 'sky'), rd('합동 조건', M.kind || '부족해요', M.kind ? 'green' : 'rose', '', null, true), rd('더해서 합동이 되는 조건', `${adds.length}개`, 'amber', '네 후보 중', null, true)],
         status: M.kind ? { tone: 'ok', text: `${M.kind} 합동 조건이에요` } : { tone: 'info', text: '조건을 더해 보세요' },
         rule: '합동 조건: 세 변(SSS) · 두 변과 끼인각(SAS) · 한 변과 양 끝각(ASA)',

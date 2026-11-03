@@ -104,7 +104,7 @@
     init: { dL: 12 },
     controls: ['dL'],
     model: (s) => { const L = s.dL, q = L / 4; return { L, q, AM: 2 * q, AN: 3 * q }; },
-    guide: (M) => `M은 AB의 중점, N은 MB의 중점입니다. 가장 작은 조각(MN, NB)을 <b>1칸</b>이라 하면 전체 AB는 <b>4칸</b>이고 1칸은 ${M.q} cm예요. 위 막대로 AB의 길이를 바꿔 보세요.`,
+    guide: (M) => `M은 AB의 중점, N은 MB의 중점입니다. 가장 작은 조각(MN, NB)을 <b>1칸</b>이라 하면 전체 AB는 <b>4칸</b>이고 1칸은 ${M.q} cm예요. 막대로 AB의 길이를 바꿔 보세요.`,
     readouts: (M) => [{ label: '1칸', value: `${M.q} cm`, color: 'rose', note: `AB ${M.L} cm의 ¼` }, { label: 'AM', value: `2칸 = ${M.AM} cm`, color: 'sky' }, { label: 'AN', value: `3칸 = ${M.AN} cm`, color: 'green', note: 'AB의 ¾' }],
     steps: (M) => [
       `M은 AB의 중점이므로 AM = MB = 전체의 절반입니다. AM = ${M.AM} cm`,

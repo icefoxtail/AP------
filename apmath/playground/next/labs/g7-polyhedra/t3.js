@@ -189,7 +189,7 @@
       M.valid ? `겹치는 면이 없으므로 정육면체의 전개도예요. 정육면체의 전개도는 모두 $11$가지예요.` : `겹치는 면이 있으므로 정육면체의 전개도가 $\\text{아니에요}$.`
     ],
     view: (M) => ({
-      guide: `아래 버튼으로 전개도를 고르고 <b>접기</b> 막대를 끌거나 ▶를 눌러 접어 보세요. 접어서 면이 겹치면 ${span('red', '빨갛게')} 표시돼요. 정육면체가 되는 전개도는 모두 11가지예요.`,
+      guide: `전개도 버튼을 눌러 고르고 <b>접기</b> 막대를 끌거나 ▶를 눌러 접어 보세요. 접어서 면이 겹치면 ${span('red', '빨갛게')} 표시돼요. 정육면체가 되는 전개도는 모두 11가지예요.`,
       readouts: [rd('전개도', M.spec.label.replace('✕ ', ''), AMB), rd('정육면체가 되나요?', M.valid ? '○ 돼요' : '✕ 안 돼요', M.valid ? GRN : RED), rd('겹치는 면', M.valid ? '없음' : `${M.ovl.filter(Boolean).length}개`, M.valid ? GRN : RED)],
       formula: '<p>정육면체의 전개도: 1-4-1형 6가지 · 2-3-1형 3가지 · 2-2-2형 1가지 · 3-3형 1가지 = 11가지</p>',
       rule: '전개도를 접었을 때 여섯 면이 겹치지 않고 모두 다른 자리에 놓이면 정육면체의 전개도이다',
@@ -316,7 +316,7 @@
     // 화면 배치: 전개도(왼쪽)와 접은 모양(오른쪽 칸)을 나란히(PC). 휴대폰은 지금 모양만 화면에 꼭 맞춥니다(접을수록 입체가 커집니다).
     const curB = bboxOf(flatPts(t)), cw = curB.x1 - curB.x0, ch = curB.y1 - curB.y0;
     let box, placeL = null, placeR;
-    const g = 0.7;
+    const g = net.kind === 'octa' ? 1.5 : 0.7; // 정팔면체: 왼쪽 그림의 끝 점 이름(G)과 오른쪽 그림의 왼쪽 점 이름(C)이 맞닿지 않게 사이를 넓힙니다
     if (dual) {
       const bL = bboxOf(flatPts(0)), wL = bL.x1 - bL.x0, hL = bL.y1 - bL.y0, slot = { w: wL, h: hL * 1.9, cx: g / 2 + wL / 2 };
       placeL = { cx: -g / 2 - wL / 2, cy: 0, z: 1 };
@@ -472,7 +472,7 @@
     else if (sel.kind === 'e') { const q = fi.pairs[sel.i]; r0 = rd('고른 모서리', M.letters ? `${eName(net, q[0])} = ${eName(net, q[1])}` : '붙는 모서리', AMB); r1 = rd('접으면', '두 모서리가 하나', AMB); }
     else { r0 = rd('고른 점', M.letters ? `점 ${nm(M.k)}` : '선택한 점', AMB); r1 = rd('겹치는 점', M.same.length ? (M.letters ? M.same.map(nm).join(', ') : `${M.same.length}개`) : '없음', AMB); }
     return {
-      guide: `<b>접기</b> 막대를 움직이면 접혀서 ${pl.name}${jo(pl.name, 'i')} 돼요. 그림의 <b>점이나 모서리를 누르거나</b> 아래 버튼으로 고르면, 접었을 때 겹치는 점이나 붙는 모서리만 ${span('amber', '노랗게')} 보이고 나머지는 회색이에요.${net.kind === 'cube' || net.kind === 'octa' ? ' 면은 마주 보는(평행한) 면끼리 같은 색이에요.' : ''}`,
+      guide: `<b>접기</b> 막대를 움직이면 접혀서 ${pl.name}${jo(pl.name, 'i')} 돼요. 그림의 <b>점이나 모서리를 누르거나</b> 버튼으로 고르면, 접었을 때 겹치는 점이나 붙는 모서리만 ${span('amber', '노랗게')} 보이고 나머지는 회색이에요.${net.kind === 'cube' || net.kind === 'octa' ? ' 면은 마주 보는(평행한) 면끼리 같은 색이에요.' : ''}`,
       readouts: [r0, r1, rd('전개도의 점 → 꼭짓점', `${fi.nNetPts}개 → ${fi.nVerts}개`, GRN), rd('붙는 모서리', `${fi.nPairs}쌍`, SKY), rd('한 꼭짓점에 모인 면', `${pl.q}개`, SKY)],
       formula: M.letters ? `<p>접으면 한 꼭짓점이 되는 점: ${vg.length ? vg.join(' · ') : '없음'}</p>${fi.nPairs <= 12 ? `<p>접으면 붙는 모서리 ${fi.nPairs}쌍: ${eg.join(' · ')}</p>` : ''}` : `<p>전개도의 점 ${fi.nNetPts}개가 접으면 꼭짓점 ${fi.nVerts}개가 돼요.</p>`,
       rule: '전개도를 접었을 때 같은 꼭짓점이 되는 점끼리 겹치고, 붙는 모서리끼리 하나의 모서리가 된다',
@@ -647,7 +647,7 @@
     view: (M) => {
       const a = fLet(M.net, M.fR), c = fLet(M.net, M.opp), none = M.f == null;
       return {
-        guide: `그림의 <b>면을 누르거나</b> 아래 버튼으로 고른 뒤 <b>접기</b> 막대로 접어 보세요. 고른 면과 마주 보는 면이 ${span('amber', '같은 노랑')}으로 보이고, 이 두 면은 평행해요. 나머지 4개 면은 수직이에요. 면을 고르기 전에도 마주 보는 면끼리는 같은 연한 색이에요.`,
+        guide: `그림의 <b>면을 누르거나</b> 버튼으로 고른 뒤 <b>접기</b> 막대로 접어 보세요. 고른 면과 마주 보는 면이 ${span('amber', '같은 노랑')}으로 보이고, 이 두 면은 평행해요. 나머지 4개 면은 수직이에요. 면을 고르기 전에도 마주 보는 면끼리는 같은 연한 색이에요.`,
         readouts: [rd('고른 면', none ? '아직 없어요' : a, none ? 'muted' : AMB), rd('평행한 면', none ? '면을 눌러 보세요' : c, none ? 'muted' : AMB), rd('수직인 면', '4개', GRN)],
         formula: `<p>면 ${a} ∥ 면 ${c}</p><p>마주 보는 면 찾는 법: ${IDEA}</p>`,
         rule: '정육면체에서 마주 보는 두 면은 평행하고, 이웃한 면은 수직이다',
@@ -828,7 +828,7 @@
     view: (M) => {
       const { ref, c, sd } = M, none = c.nPar === 0;
       return {
-        guide: `위의 버튼으로 입체와 전개도를 고르세요. <b>노란 손잡이</b>를 끌거나 모서리를 눌러 기준 모서리를 바꾸면, 나머지 모서리는 ${span('red', '만나거나')}, ${span('sky', '평행하거나')}, ${span('green', '꼬인 위치')}예요. 같은 문자는 접으면 한 점으로 모이는 꼭짓점이에요. 막대로 펼쳐 보세요.`,
+        guide: `버튼으로 입체와 전개도를 고르세요. <b>노란 손잡이</b>를 끌거나 모서리를 눌러 기준 모서리를 바꾸면, 나머지 모서리는 ${span('red', '만나거나')}, ${span('sky', '평행하거나')}, ${span('green', '꼬인 위치')}예요. 같은 문자는 접으면 한 점으로 모이는 꼭짓점이에요. 막대로 펼쳐 보세요.`,
         readouts: [rd('기준 모서리', ref.name, AMB), rd('만나는 모서리', `${c.nMeet + c.nExt}개`, RED), rd('평행한 모서리', none ? '없음 (0개)' : `${c.nPar}개`, SKY), rd('꼬인 위치', `${c.nSkew}개`, GRN, `${c.total} − 1 − ${c.nMeet + c.nExt} − ${c.nPar}`)],
         formula: `<p>(꼬인 위치의 개수) $=${c.total}-1-${c.nMeet + c.nExt}-${c.nPar}=${c.nSkew}$ (개)</p><p>${sd.name}: 모서리 $${c.total}$개 · 만나는 것 $${c.nMeet + c.nExt}$ · 평행한 것 $${c.nPar}$ · 꼬인 위치 $${c.nSkew}$</p>`,
         rule: '꼬인 위치 = 만나지도 않고 평행하지도 않은 두 직선 (한 평면 위에 없다)',
@@ -991,7 +991,7 @@
     view: (M) => {
       const none = M.f == null, v = M.vals;
       return {
-        guide: `그림의 <b>면을 누르거나</b> 아래 버튼으로 고른 뒤 <b>접기</b> 막대로 접어 보세요. 고른 면과 마주 보는 면이 ${span('amber', '같은 노랑')}으로 보이고, 두 면의 눈의 합은 늘 7이에요.`,
+        guide: `그림의 <b>면을 누르거나</b> 버튼으로 고른 뒤 <b>접기</b> 막대로 접어 보세요. 고른 면과 마주 보는 면이 ${span('amber', '같은 노랑')}으로 보이고, 두 면의 눈의 합은 늘 7이에요.`,
         readouts: [rd('고른 면의 눈', none ? '아직 없어요' : `${v[M.f]}`, none ? 'muted' : AMB), rd('마주 보는 면의 눈', none ? '면을 눌러 보세요' : `${v[M.opp]}`, none ? 'muted' : AMB), rd('두 눈의 합', none ? '7' : `${v[M.f] + v[M.opp]}`, GRN)],
         formula: `<p>(마주 보는 면의 눈) $=7-${v[M.fR]}=${v[M.opp]}$</p><p>마주 보는 면 찾는 법: ${IDEA}</p>`,
         rule: '주사위: 마주 보는 두 면의 눈의 합 = 7 (1과 6, 2와 5, 3과 4)',

@@ -852,7 +852,7 @@ window.addEventListener('DOMContentLoaded', function () {
       id: 'std', title: '정규분포의 표준화', short: '표준화',
       aspect: 'free', tabs: { compact: true },
       question: '평균 $m$과 표준편차 $\\sigma$가 달라도, 구간을 $z=\\dfrac{x-m}{\\sigma}$로 바꾸면 왜 같은 넓이가 될까?',
-      guide: '<b>m</b>과 <b>σ</b>를 바꿔 위쪽 곡선의 모양을 보고, 노란 점 <b>α, β</b>(또는 아래 막대)로 구간을 정해 보세요. 위 구간의 양 끝이 아래 <b>표준정규분포</b>의 $z$ 값으로 옮겨 가고, 두 노란 넓이는 <b>항상 같습니다</b>.',
+      guide: '<b>m</b>과 <b>σ</b>를 바꿔 위쪽 곡선의 모양을 보고, 노란 점 <b>α, β</b>(또는 막대)로 구간을 정해 보세요. 위 구간의 양 끝이 아래 <b>표준정규분포</b>의 $z$ 값으로 옮겨 가고, 두 노란 넓이는 <b>항상 같습니다</b>.',
       enter: (s) => { s.sm = 5; s.ss = 2; s.sa = 3; s.sb = 8; },
       controls: ['sm', 'ss', 'sa', 'sb'],
       presets: () => [

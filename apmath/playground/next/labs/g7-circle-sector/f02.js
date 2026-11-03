@@ -827,7 +827,7 @@
     view: (P, m, st) => {
       const Q = m.byId.sec.area;
       return {
-        guide: `반원을 점 <b>A</b>를 중심으로 <b>${P.th}°</b> 돌렸어요. <b>B′ 손잡이</b>를 끌어 보세요. 색칠한 부분(<span style="color:var(--m-sky)">파란색</span>)의 넓이가 어떻게 달라지나요? 아래 막대로 조각을 가로로 떼어 놓을 수도 있어요.<br><span style="opacity:.8">초록 = 더하는 조각(+), 분홍 = 빼는 조각(−)</span>`,
+        guide: `반원을 점 <b>A</b>를 중심으로 <b>${P.th}°</b> 돌렸어요. <b>B′ 손잡이</b>를 끌어 보세요. 색칠한 부분(<span style="color:var(--m-sky)">파란색</span>)의 넓이가 어떻게 달라지나요? 막대로 조각을 가로로 떼어 놓을 수도 있어요.<br><span style="opacity:.8">초록 = 더하는 조각(+), 분홍 = 빼는 조각(−)</span>`,
         readouts: [
           { label: '색칠한 부분의 넓이', value: `${vplain(m.area)} cm²`, color: 'sky', note: '= 부채꼴 ABB′의 넓이' },
           { label: '부채꼴 ABB′', value: `반지름 ${2 * P.r} cm, 중심각 ${P.th}°`, color: 'amber', wide: true },

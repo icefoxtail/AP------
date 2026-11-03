@@ -183,7 +183,7 @@
       `$\\sin A=\\cos B$, $\\cos A=\\sin B$ 이고 $\\angle A+\\angle B=90^{\\circ}$ 예요. $\\tan A\\times\\tan B=1$ 도 확인해요.`
     ],
     view: (M) => ({
-      guide: '위쪽 칩으로 <b>기준각</b>을 ∠A와 ∠B로 바꿔 보세요. 기준각이 바뀌면 분홍(대변)과 하늘색(이웃변)이 서로 바뀌어요.',
+      guide: '칩으로 <b>기준각</b>을 ∠A와 ∠B로 바꿔 보세요. 기준각이 바뀌면 분홍(대변)과 하늘색(이웃변)이 서로 바뀌어요.',
       readouts: [rd('$\\sin A=\\cos B$', `$${vtex(M.sA)}$`, 'rose'), rd('$\\cos A=\\sin B$', `$${vtex(M.cA)}$`, 'sky'), rd('$\\tan A\\times\\tan B$', '$1$', 'green')],
       rule: '$\\sin A=\\cos(90^{\\circ}-A)$, $\\cos A=\\sin(90^{\\circ}-A)$ — 기준각이 바뀌면 대변과 이웃변이 바뀐다',
       notes: notes('삼각비를 구할 때는 먼저 어느 각이 기준인지 확인해요.', '두 예각의 합은 $90^{\\circ}$ 이므로, 한 각의 sin은 다른 각의 cos 와 같아요.')

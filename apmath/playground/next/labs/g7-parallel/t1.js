@@ -252,7 +252,7 @@
     view(M, C, s) {
       const k = KIND(M.mode);
       return {
-        guide: `<b>하늘색 점</b>(또는 아래 막대)으로 직선 m 을 돌려 보세요. 노란 각 ∠${M.n1} 과 ∠${M.n2} 는 <b>${k}</b>예요. 두 각이 같아지는 순간에만 두 직선이 평행해요.`,
+        guide: `<b>하늘색 점</b>(또는 막대)으로 직선 m 을 돌려 보세요. 노란 각 ∠${M.n1} 과 ∠${M.n2} 는 <b>${k}</b>예요. 두 각이 같아지는 순간에만 두 직선이 평행해요.`,
         readouts: [
           { label: `∠${M.n1} (${k})`, value: mi(M.v1) + '°', color: 'amber' },
           { label: `∠${M.n2} (${k})`, value: mi(M.v2) + '°', color: M.eq ? 'amber' : 'violet' },
