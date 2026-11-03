@@ -16,6 +16,7 @@
 - **검사를 약하게 만들지 않는다:** 테스트·검사를 생략하거나 격리하지 않고, 분모를 줄이거나 기준을 완화해 통과시키지 않는다.
 - **병합과 배포는 따로 기록한다:** `main` 병합 지시를 받으면 병합부터 하고, CI·Pages·학생 배포 결과는 사실대로 따로 남긴다. 보호 규칙 우회, 강제 push, 다른 사람 브랜치의 이력 재작성은 하지 않는다.
 - **Git에는 운영물만 둔다:** 운영 소스·자산·런타임·빌드/테스트 도구·현행 계약만 커밋한다. 원시 이력·캡처·로그·렌더 출력 같은 증거는 Drive에 둔다(허용된 cold root와 절차: `docs/agents/git-evidence.md`).
+- **공유 데이터 고정값:** 원본 시험지 JS·공유 크로스워크·생성문항 Meta를 바꾸면 `docs/agents/common.md` "공유 데이터 고정값" 절을 따르고, 병합 전에 PR CI가 전부 녹색인지 확인한다. 이유: 다른 세션의 정상 수정이 해시 고정값을 깨 main CI·배포가 막힌 일이 있었다.
 - **Archive 2.0 코드:** 화면·검색·출력·저장 코드를 바꾸면 먼저 `docs/rules/01_CANONICAL/Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1.md`를 읽는다. 병합 전에 `node tools/check-archive2-runtime.cjs`를 통과시키고, 흐름을 바꿨으면 실제 Chrome으로 확인한다. 원본 기출은 `engine.html?data=exams/<file>&mode=exam|sol|ans`로 바로 열리게 유지한다.
 
 ## 토큰 효율
