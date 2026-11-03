@@ -4,7 +4,7 @@
 
 ## 1. 지금까지 한 일
 
-- 계약·사전 확정: 계약 CURRENT v1, 사전 [term-dictionary-v1.1.json](../architecture/4slot/term-dictionary-v1.1.json)(394용어), 평가 고정본 [term-dictionary-v1-frozen.json](../architecture/4slot/term-dictionary-v1-frozen.json)(393용어). PR #1265.
+- 계약·사전 확정: 계약 CURRENT v1, 사전 [term-dictionary-v1.1.json](../architecture/4slot/term-dictionary-v1.1.json)(394용어), 평가 고정본 [term-dictionary-v1-frozen.json](../architecture/4slot/term-dictionary-v1-frozen.json)(393용어). PR #1265. 2026-11-03 사전 v1.2([term-dictionary-v1.2.json](../architecture/4slot/term-dictionary-v1.2.json), 401용어)와 계약 §3-1·§7-1 보강.
 - 시범 두 번(계약 §15): 24년 고1 2학기 기말 113쌍(Claude 메인), 25년 고1 2학기 기말 268문항(Sonnet 작업자 4명, 독립·블라인드). 25년 원본 찾기 Top-1 81.3%, Top-3 96.3%, Top-5 쓸 만함 30/30.
 - 운영 메타·등록기·catalog·검색 화면은 아직 4칸과 연결하지 않았다. 시범 원자료(작업자 기록, 판정 결과)는 Git에 없다(Claude 세션 작업 폴더). 이유: 증거는 Git에 두지 않는다([git-evidence](../agents/git-evidence.md)).
 
@@ -29,9 +29,15 @@
 
 - 대상: 25년 고1 2학기 기말 12개(Sonnet 시범과 같은 문항). 아래 §5 표.
 - 실행을 둘로 나눈다. **A회차 = 원본 6개, B회차 = 유사 6개.** 한 회차(한 대화)에서는 자기 세트만 연다. 이유: 원본과 유사를 같은 대화에서 보면 서로의 4칸을 닮게 써서 원본 찾기 점수가 부풀려진다.
-- 사전은 v1.1을 쓴다. 사전에 없는 말은 후보로만 적는다.
+- 사전은 현행판(v1.2)을 쓴다. 사전에 없는 말은 후보로만 적는다. (1단계 첫 실행은 v1.1로 했다.)
 - Claude가 받는 즉시 확인하는 것: 인용 원문 일치, 문항 누락, 사전 밖 용어(후보 처리), method 근거 형식. 그다음 원본 찾기 Top-1·3·5와 Sonnet 결과와의 칸별 용어 겹침을 낸다.
 - 다음 단계로 가는 판단(사용자 결정): Top-3이 Sonnet(96%)과 크게 다르지 않고 인용 실패가 드물면 GPT로 확대한다. 차이가 크면 어느 규칙에서 갈렸는지 보고 규칙 문구나 모델을 조정해 다시 한다.
+
+### 1단계 결과와 재실행 (2026-11-03)
+
+- Antigravity Gemini 3.8 Flash로 A·B를 돌렸다. 형식·인용은 완벽했으나 원본 찾기 Top-1 63%·Top-3 87%로 Sonnet(82%·97%)보다 낮았다. 원인은 goal의 방법어, method 단계 누락(유사 회차 문항당 용어 5.1개), 특유 구조 누락, condition 누락이었다(계약 §15-6).
+- 사용자 결정: "프롬프트를 꼼꼼하게 해서 진행". 계약 §3-1(칸별로 빠뜨리기 쉬운 것)·§7-1(제출 전 문항별 점검)과 사전 v1.2를 반영해 **B(유사 6개)만 다시** 돌린다. 저장 위치 `archive-work/4slot-gpt-pilot-20261103/gemini/B2/`. A는 그대로 비교 기준으로 쓴다. 이유: 약점이 유사 회차에 몰려 있었고, B만 다시 하면 한도를 7~8%만 쓴다.
+- B2가 Gemini A와 맞춰 Top-3 90% 안팎 이상이면 같은 지시서로 2단계(예약 라인)로 간다.
 
 ### 2단계 — 확대 (1단계 결과를 본 뒤)
 
@@ -53,7 +59,7 @@
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
   "sourceGitBlobSha": "dcd0d7a4cd4afb009ce85ee1927c24ad18500aaf",
-  "dictionaryVersion": "term-dict-v1.1-2026-11-03",
+  "dictionaryVersion": "term-dict-v1.2-2026-11-03",
   "judgedBy": {"agent": "gpt-<모델 이름>", "run": "A", "at": "2026-11-04"},
   "items": [
     {
@@ -105,7 +111,14 @@
 - 유사 JS에는 `problemTypeKey`·`templateKey`·`crossConceptKeys`·`conditionKeys`·`sourceQid` 같은 기존 메타 필드가 있다. **읽지 않는다.** `content`·`choices`·`solution`(그리고 그림이 있으면 그림)만 본다. 이유: 키를 보고 채우면 키 치환이 되고(계약 §7), `sourceQid`를 보면 원본 찾기 평가가 무의미해진다.
 - 그림이 있는 문항(`image` 필드)은 그림을 함께 본다. 이유: 25년 Sonnet 시범에서 그림 없이 채운 문항은 given·condition이 빠질 수 있었다(계약 §4).
 
-## 6. 지켜야 할 것 (요약)
+## 6. 로컬 에이전트(Antigravity·Codex 등)가 지킬 것
+
+- 스크립트는 문항 텍스트 꺼내기(content·choices·solution·image만), 인용 대조, 형식 검사에만 쓴다.
+- 문항별 4칸 값을 JSON으로 저장하는 스크립트는 써도 되지만, 그 안의 값은 문항을 읽고 직접 적은 것이어야 한다. 키워드 매칭·정규식·용어 목록 대조로 용어를 자동 선택하지 않는다. 이유: 그러면 키 치환과 같은 오류가 생긴다(계약 §7).
+- `archive-work/`는 `.gitignore`에 걸려 있으니 결과 파일만 `git add -f`로 올린다. 보조 스크립트는 커밋하지 않는다.
+- 다른 회차 폴더와 반대 세트 시험지는 열거나 검색하지 않는다.
+
+## 7. 지켜야 할 것 (요약)
 
 - 문항의 발문과 해설을 읽고 판정한다. PT/TPL/CC/COND 키나 단원명을 보고 채우지 않는다.
 - 수 범위 제한(자연수·정수·실수·구간)은 condition에 적는다. 배정과 분배를 구분한다. 문장제 소재는 `scenarioNote`에만.

@@ -1,0 +1,8089 @@
+{
+ "dictionaryVersion": "term-dict-v1.2-2026-11-03",
+ "scorer": "flat-leaf-jaccard-v1",
+ "scorerDef": "item vector = set of term ids over given∪goal∪method∪condition (CANDIDATE terms excluded); score = |A∩B|/|A∪B|; ties broken by exam/qid order",
+ "terms": [
+  {
+   "id": 1,
+   "ko": "자연수",
+   "en": [
+    "NATURAL"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H22A_07_SEQUENCE_SUM_125",
+    "PT_LOG_FLOOR_INTERVAL_ENUMERATION",
+    "TPL_LOG_FLOOR_INTEGER_INTERVAL_COUNT",
+    "TPL_VARIABLE_EXPONENT_LOG_INEQUALITY",
+    "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 11,
+   "addedDuringItems": false
+  },
+  {
+   "id": 2,
+   "ko": "정수",
+   "en": [
+    "INTEGER"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_RATIONAL_ARITHMETIC",
+    "PT_INTEGER_MEMBERSHIP_COUNT",
+    "PT_ROOT_INTEGER_FEASIBILITY",
+    "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+    "TPL_INTEGER_MEMBERSHIP_COUNT_CORE"
+   ],
+   "usageInKeys": 21,
+   "usageInItems": 6,
+   "addedDuringItems": false
+  },
+  {
+   "id": 3,
+   "ko": "유리수",
+   "en": [
+    "RATIONALS",
+    "RATIONAL_NUMBER"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_RATIONAL_ARITHMETIC",
+    "PT_M1_RATIONAL_VALUE_COMPARISON",
+    "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+    "PT_M3_REAL_NUMBER_CLASSIFICATION",
+    "TPL_H22A_01_EXPONENT_EXTENSION_069"
+   ],
+   "usageInKeys": 29,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 4,
+   "ko": "무리수",
+   "en": [
+    "IRRATIONAL",
+    "IRRATIONALITY"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M3_REAL_NUMBER_CLASSIFICATION",
+    "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+    "TPL_IRRATIONALITY_INTEGER_GAP_CONTRADICTION",
+    "TPL_IRRATIONALITY_DIVISIBILITY_CONTRADICTION",
+    "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 5,
+   "ko": "실수",
+   "en": [
+    "REAL"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M3_REAL_NUMBER_LINE",
+    "TPL_H22A_01_ROOT_REAL_068",
+    "TPL_LOG_REAL_DOMAIN_SPLIT",
+    "PT_M3_REAL_NUMBER_COMPARISON",
+    "TPL_RADICAL_REAL_VALUE_RANGE"
+   ],
+   "usageInKeys": 13,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 6,
+   "ko": "복소수",
+   "en": [
+    "COMPLEX"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H1_COMPLEX_OPERATION",
+    "TPL_H1_COMPLEX_I_PERIOD",
+    "PT_H1_COMPLEX_POWER_ROOT",
+    "TPL_H1_COMPLEX_CONJUGATE_NORM",
+    "PT_H1_COMPLEX_CONDITION_EQUATION"
+   ],
+   "usageInKeys": 9,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 7,
+   "ko": "허수",
+   "en": [
+    "IMAG",
+    "IMAGINARY"
+   ],
+   "synonyms": [
+    "허수단위",
+    "순허수"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_COMPLEX_I_PERIOD",
+    "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 8,
+   "ko": "켤레복소수",
+   "en": [
+    "CONJUGATE"
+   ],
+   "synonyms": [
+    "켤레근",
+    "켤레"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_COMPLEX_CONJUGATE_NORM",
+    "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 9,
+   "ko": "소수",
+   "en": [
+    "PRIME"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_BOUNDED_PRIME_COUNT",
+    "TPL_H22A_01_COMMON_LOG_078",
+    "TPL_BOUNDED_PRIME_COUNT_CORE",
+    "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+    "TPL_M3_INTEGER_DECIMAL_PART_EVALUATION"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 10,
+   "ko": "합성수",
+   "en": [
+    "COMPOSITE_NUMBER"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+    "TPL_M1_PRIME_COMPOSITE_JUDGMENT_DIRECT_PRIME_TEST",
+    "TPL_M1_PRIME_COMPOSITE_JUDGMENT_NUMBER_CLAIM_AUDIT",
+    "TPL_M1_PRIME_COMPOSITE_JUDGMENT_PRIME_COMPOSITE_CLAIM_AUDIT"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 11,
+   "ko": "약수",
+   "en": [
+    "DIVISOR"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_DIVISOR_COUNT",
+    "TPL_DIVISOR_COUNT_CORE",
+    "TPL_INCLUSION_DIVISOR_MULTIPLE",
+    "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+    "TPL_M1_DIVISOR_MULTIPLE_EXPONENT_CORE"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 3,
+   "addedDuringItems": false
+  },
+  {
+   "id": 12,
+   "ko": "배수",
+   "en": [
+    "MULTIPLE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_INCLUSION_DIVISOR_MULTIPLE",
+    "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+    "TPL_FUNCTIONAL_EQUATION_SYMMETRY",
+    "TPL_LOG_EXPONENTIAL_GROWTH_MODEL",
+    "TPL_CONTRAPOSITIVE_DIVISIBILITY_PROOF"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 4,
+   "addedDuringItems": false
+  },
+  {
+   "id": 13,
+   "ko": "소인수",
+   "en": [
+    "PRIME_FACTOR"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_PRIME_FACTOR_STRUCTURE",
+    "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+    "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+    "TPL_M1_DIVISOR_MULTIPLE_EXPONENT_CORE",
+    "PT_PRIME_EXPONENT_IN_CONSECUTIVE_PRODUCT"
+   ],
+   "usageInKeys": 12,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 14,
+   "ko": "소인수분해",
+   "en": [
+    "PRIME_FACTORIZATION"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+    "TPL_M1_PRIME_FACTORIZATION_JUDGMENT_PRIME_POWER_PARAMETER",
+    "TPL_M1_PRIME_FACTORIZATION_JUDGMENT_FACTORIZATION_CLAIM_AUDIT"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 3,
+   "addedDuringItems": false
+  },
+  {
+   "id": 15,
+   "ko": "최대공약수",
+   "en": [
+    "GCD"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+    "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_MIN_MAX_RATIO",
+    "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_THIRD_CANDIDATE",
+    "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_PARAMETER_RECOVERY"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 16,
+   "ko": "최소공배수",
+   "en": [
+    "LCM"
+   ],
+   "synonyms": [
+    "최소공통배수"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LCM_APPLICATION",
+    "TPL_LCM_APPLICATION_GEAR_CYCLE",
+    "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+    "TPL_LCM_APPLICATION_TILING_BY_LCM",
+    "TPL_LCM_APPLICATION_SHIFTED_REMAINDER"
+   ],
+   "usageInKeys": 11,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 17,
+   "ko": "공약수",
+   "en": [
+    "COMMON_DIVISOR"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_GCD_DIVISOR_APPLICATION",
+    "PT_M1_COMMON_DIVISIBILITY_FILTER",
+    "TPL_M1_GCD_DIVISOR_APPLICATION_CORE",
+    "TPL_M1_COMMON_DIVISIBILITY_FILTER_COMMON_DIVISOR_CHECK",
+    "TPL_M1_COMMON_DIVISIBILITY_FILTER_GCD_CONDITION_FILTER"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 18,
+   "ko": "공배수",
+   "en": [
+    "COMMON_MULTIPLE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_COMMON_DIVISIBILITY_FILTER",
+    "TPL_M1_COMMON_DIVISIBILITY_FILTER_COMMON_DIVISOR_CHECK",
+    "TPL_M1_COMMON_DIVISIBILITY_FILTER_GCD_CONDITION_FILTER",
+    "TPL_M1_COMMON_DIVISIBILITY_FILTER_COMMON_MULTIPLE_CHECK"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 19,
+   "ko": "서로소",
+   "en": [
+    "COPRIME"
+   ],
+   "synonyms": [],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_COPRIME_TEST_AND_COUNT",
+    "TPL_RELATED_SUBSET_PAIR_COUNT",
+    "TPL_OPERATION_DISJOINT_JUDGMENT",
+    "TPL_OPERATION_DISJOINT_DEFINITION",
+    "TPL_M1_COPRIME_TEST_AND_COUNT_CORE"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 20,
+   "ko": "거듭제곱",
+   "en": [
+    "POWER"
+   ],
+   "synonyms": [
+    "제곱"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_COMPLEX_I_PERIOD",
+    "PT_H1_COMPLEX_POWER_ROOT",
+    "TPL_H1_MATRIX_POWER_PERIOD",
+    "PT_H1_MATRIX_POWER_IDENTITY",
+    "TPL_SQUARE_COMPARISON_PROOF"
+   ],
+   "usageInKeys": 20,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 21,
+   "ko": "거듭제곱근",
+   "en": [
+    "ROOT_REAL"
+   ],
+   "synonyms": [
+    "n제곱근"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H22A_01_ROOT_REAL",
+    "TPL_H22A_01_ROOT_REAL_067",
+    "TPL_H22A_01_ROOT_REAL_068",
+    "PT_ROOT_INTEGER_FEASIBILITY",
+    "TPL_EXPONENT_LAW_STATEMENT_AUDIT"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 22,
+   "ko": "제곱근",
+   "en": [
+    "SQUARE_ROOT"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H22A_01_ROOT_REAL_067",
+    "PT_M3_SQUARE_ROOT_PROPERTY",
+    "PT_M3_SQUARE_ROOT_APPLICATION",
+    "TPL_M3_RADICAL_POWER_DIVISION",
+    "TPL_M3_SQUARE_AREA_SIDE_RATIO"
+   ],
+   "usageInKeys": 12,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 23,
+   "ko": "근호",
+   "en": [
+    "RADICAL"
+   ],
+   "synonyms": [
+    "무리식의근호"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M3_RADICAL_CALCULATION",
+    "TPL_M3_RADICAL_POWER_DIVISION",
+    "TPL_M3_RADICAL_MIXED_OPERATION",
+    "TPL_M3_RADICAL_RATIONALIZATION",
+    "TPL_M3_RADICAL_LETTER_REPRESENTATION"
+   ],
+   "usageInKeys": 7,
+   "usageInItems": 5,
+   "addedDuringItems": false
+  },
+  {
+   "id": 24,
+   "ko": "절댓값",
+   "en": [
+    "ABSOLUTE"
+   ],
+   "synonyms": [
+    "절대값"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_ABSOLUTE_VALUE_CASE_PROOF",
+    "TPL_ABSOLUTE_VALUE_INJECTIVITY",
+    "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+    "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
+    "TPL_H1_ABSOLUTE_DIRECT_INTERVAL"
+   ],
+   "usageInKeys": 15,
+   "usageInItems": 4,
+   "addedDuringItems": false
+  },
+  {
+   "id": 25,
+   "ko": "부호",
+   "en": [
+    "SIGN"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_MONOTONICITY_DIRECT",
+    "PT_M1_SIGNED_CHANGE_MODEL",
+    "PT_H1_QUADRATIC_INEQUALITY",
+    "TPL_INTERSECTION_SIGN_AREA",
+    "PT_TRIG_QUADRANT_EVALUATION"
+   ],
+   "usageInKeys": 20,
+   "usageInItems": 3,
+   "addedDuringItems": false
+  },
+  {
+   "id": 26,
+   "ko": "홀짝",
+   "en": [
+    "PARITY"
+   ],
+   "synonyms": [
+    "짝수",
+    "홀수"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_SUBSET_COUNT_SUM_PARITY",
+    "TPL_INDEPENDENT_TRIAL_STATE_PARITY",
+    "TPL_DIVISIBILITY_PARITY_CONTRADICTION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 3,
+   "addedDuringItems": false
+  },
+  {
+   "id": 27,
+   "ko": "분수",
+   "en": [
+    "FRACTION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_M3_RADICAL_POWER_DIVISION",
+    "TPL_TRIG_RATIONAL_IDENTITY_RECOVERY"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 28,
+   "ko": "대소비교",
+   "en": [
+    "COMPARISON",
+    "COMPARE"
+   ],
+   "synonyms": [
+    "대소",
+    "비교",
+    "대소관계"
+   ],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LIMIT_SQUEEZE",
+    "TPL_GRAPH_ORDER_INTERVAL",
+    "TPL_SQUARE_COMPARISON_PROOF",
+    "PT_M3_REAL_NUMBER_COMPARISON",
+    "TPL_H1_MATRIX_BASIC_EQUALITY"
+   ],
+   "usageInKeys": 23,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 29,
+   "ko": "순서",
+   "en": [
+    "ORDER",
+    "ORDERED"
+   ],
+   "synonyms": [
+    "순서관계"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_DATA_ORDER_AND_VALUE",
+    "PT_M1_RATIONAL_VALUE_COMPARISON",
+    "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
+    "TPL_M3_POWER_ROOT_INEQUALITY_ORDER",
+    "TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER"
+   ],
+   "usageInKeys": 11,
+   "usageInItems": 3,
+   "addedDuringItems": false
+  },
+  {
+   "id": 30,
+   "ko": "팩토리얼",
+   "en": [
+    "FACTORIAL"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 5,
+   "addedDuringItems": false
+  },
+  {
+   "id": 31,
+   "ko": "단위근",
+   "en": [
+    "UNITY"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_COMPLEX_I_PERIOD",
+    "PT_H1_COMPLEX_POWER_ROOT",
+    "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 32,
+   "ko": "사칙연산",
+   "en": [
+    "ARITHMETIC"
+   ],
+   "synonyms": [
+    "사칙계산"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LIMIT_OPERATION_LAWS",
+    "PT_M1_RATIONAL_ARITHMETIC",
+    "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
+    "TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER",
+    "TPL_M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 33,
+   "ko": "연산",
+   "en": [
+    "OPERATION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_ABSORPTION",
+    "PT_SET_OPERATION",
+    "PT_SET_OPERATION_LAW",
+    "TPL_EXPRESSION_TO_VENN",
+    "TPL_REGION_EQUIVALENCE"
+   ],
+   "usageInKeys": 31,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 34,
+   "ko": "문자식",
+   "en": [
+    "LITERAL"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+    "PT_M1_ALGEBRAIC_EXPRESSION_EVALUATION",
+    "TPL_M1_ALGEBRAIC_EXPRESSION_EVALUATION_CORE",
+    "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 35,
+   "ko": "다항식",
+   "en": [
+    "POLYNOMIAL",
+    "POLY"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H1_POLY_FACTORIZATION",
+    "PT_M3_POLY_FACTORIZATION",
+    "PT_M3_POLY_MULTIPLICATION",
+    "TPL_H1_POLY_OPERATION_DIRECT",
+    "TPL_H1_FACTORIZATION_STANDARD"
+   ],
+   "usageInKeys": 25,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 36,
+   "ko": "일차식",
+   "en": [
+    "LINEAR_EXPRESSION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+    "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
+    "TPL_M1_LINEAR_EXPRESSION_LIKE_TERMS",
+    "TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION",
+    "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 37,
+   "ko": "이차식",
+   "en": [
+    "QUADRATIC_EXPRESSION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_NESTED_EXPONENTIAL_ROOT_COUNT",
+    "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
+    "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+    "TPL_PROPOSITION_UNIVERSAL_QUADRATIC_PARAMETER"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 38,
+   "ko": "유리식",
+   "en": [
+    "RATIONAL_EXPRESSION"
+   ],
+   "synonyms": [
+    "번분수식",
+    "번분수",
+    "복분수"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_RATIONAL_EXPRESSION",
+    "TPL_RATIONAL_NESTED_FRACTION",
+    "TPL_RATIONAL_TELESCOPING_SUM",
+    "TPL_RATIONAL_PARTIAL_FRACTION",
+    "TPL_RATIONAL_EXPRESSION_SIMPLIFY"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 4,
+   "addedDuringItems": false
+  },
+  {
+   "id": 39,
+   "ko": "무리식",
+   "en": [
+    "RADICAL_EXPRESSION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_RADICAL_EXPRESSION",
+    "TPL_RADICAL_REAL_VALUE_RANGE",
+    "TPL_RADICAL_EXPRESSION_SIMPLIFY",
+    "TPL_RADICAL_EXPRESSION_APPLICATION"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 40,
+   "ko": "곱셈공식",
+   "en": [
+    "FORMULA"
+   ],
+   "synonyms": [
+    "곱셈"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_FORMULA_SYMMETRIC",
+    "PT_M3_POLY_MULTIPLICATION",
+    "PT_H1_MATRIX_MULTIPLICATION",
+    "TPL_H1_MATRIX_PRODUCT_MODEL",
+    "PT_H1_POLY_FORMULA_SYMMETRIC"
+   ],
+   "usageInKeys": 13,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 41,
+   "ko": "전개",
+   "en": [
+    "EXPANSION"
+   ],
+   "synonyms": [
+    "전개식"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_POLY_OPERATION_DIRECT",
+    "TPL_BINOMIAL_TERM_COEFFICIENT",
+    "PT_H1_POLY_OPERATION_EXPANSION",
+    "TPL_M3_POLY_EXPANSION_COEFFICIENT",
+    "TPL_H1_POLY_COEFFICIENT_EXTRACTION"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 42,
+   "ko": "인수분해",
+   "en": [
+    "FACTORIZATION"
+   ],
+   "synonyms": [
+    "인수분해해",
+    "공통인수",
+    "인수쌍"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LIMIT_FACTOR_CANCEL",
+    "PT_H1_POLY_FACTORIZATION",
+    "PT_M3_POLY_FACTORIZATION",
+    "TPL_H1_HIGHER_FACTOR_ROOT",
+    "PT_CONSTRAINED_FACTOR_PAIR"
+   ],
+   "usageInKeys": 20,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 43,
+   "ko": "인수",
+   "en": [
+    "FACTOR"
+   ],
+   "synonyms": [
+    "인자",
+    "MULTIPLIER"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LIMIT_ZERO_MULTIPLICITY",
+    "TPL_CONTRAPOSITIVE_SIGN_PROOF",
+    "TPL_CONTINUITY_FACTOR_CONDITION",
+    "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT",
+    "TPL_H1_MATRIX_EQUATION_STRUCTURAL"
+   ],
+   "usageInKeys": 12,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 44,
+   "ko": "인수정리",
+   "en": [
+    "FACTOR_THEOREM"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H1_FACTOR_THEOREM"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 45,
+   "ko": "나머지정리",
+   "en": [
+    "REMAINDER_THEOREM"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H1_REMAINDER_THEOREM",
+    "TPL_H1_REMAINDER_NESTED_DIVISION",
+    "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+    "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 46,
+   "ko": "다항식의나눗셈",
+   "en": [
+    "DIVISION",
+    "QUOTIENT"
+   ],
+   "synonyms": [
+    "나눗셈",
+    "몫",
+    "제수"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H1_POLY_DIVISION",
+    "TPL_M3_RADICAL_POWER_DIVISION",
+    "TPL_H1_POLY_DIVISION_EXECUTION",
+    "TPL_H22A_01_LOG_PROPERTIES_075",
+    "TPL_H1_REMAINDER_NESTED_DIVISION"
+   ],
+   "usageInKeys": 10,
+   "usageInItems": 3,
+   "addedDuringItems": false
+  },
+  {
+   "id": 47,
+   "ko": "나머지",
+   "en": [
+    "REMAINDER"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TPL_H1_REMAINDER_NESTED_DIVISION",
+    "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+    "TPL_M3_FIND_OTHER_FACTOR_BY_FACTORIZATION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 48,
+   "ko": "항등식",
+   "en": [
+    "IDENTITY"
+   ],
+   "synonyms": [
+    "항등관계"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_TRIG_IDENTITY_RELATIONS",
+    "TPL_H1_MATRIX_POWER_PERIOD",
+    "PT_H1_MATRIX_POWER_IDENTITY",
+    "TPL_H1_IDENTITY_SPECIAL_VALUE",
+    "TPL_H1_BINOMIAL_IDENTITY_CHECK"
+   ],
+   "usageInKeys": 10,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 49,
+   "ko": "미정계수",
+   "en": [
+    "UNDETERMINED_COEFFICIENT"
+   ],
+   "synonyms": [
+    "계수비교"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_IDENTITY_SPECIAL_VALUE",
+    "PT_H1_POLY_IDENTITY_COEFFICIENT",
+    "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+    "TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION",
+    "TPL_M3_POLY_EXPANSION_COEFFICIENT_DETERMINATION"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 50,
+   "ko": "계수",
+   "en": [
+    "COEFFICIENT"
+   ],
+   "synonyms": [
+    "상수항"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LIMIT_ZERO_MULTIPLICITY",
+    "TPL_BINOMIAL_TERM_COEFFICIENT",
+    "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+    "TPL_M3_PERFECT_SQUARE_CONDITION",
+    "PT_LIMIT_PARAMETER_DETERMINATION"
+   ],
+   "usageInKeys": 19,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 51,
+   "ko": "항",
+   "en": [
+    "TERM"
+   ],
+   "synonyms": [
+    "동류항"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_BINOMIAL_TERM_COEFFICIENT",
+    "TPL_M3_GROUPING_FACTORIZATION",
+    "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+    "TPL_M3_POLY_EXPANSION_COEFFICIENT",
+    "PT_ALGEBRAIC_PRODUCT_TERM_RECOVERY"
+   ],
+   "usageInKeys": 11,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 52,
+   "ko": "치환",
+   "en": [
+    "SUBSTITUTION"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TT_EQUATION_GRAPH_MAPPING",
+    "TT_EQUATION_POINT_MAPPING",
+    "TPL_H22A_02_EXP_EQUATION_082",
+    "TPL_H22A_03_LOG_EQUATION_090",
+    "TPL_H22A_02_EXP_INEQUALITY_084"
+   ],
+   "usageInKeys": 17,
+   "usageInItems": 8,
+   "addedDuringItems": false
+  },
+  {
+   "id": 53,
+   "ko": "대입",
+   "en": [
+    "SUBSTITUTE"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_IDENTITY_SPECIAL_VALUE",
+    "TPL_LIMIT_DIRECT_SUBSTITUTION",
+    "TPL_FUNCTIONAL_EQUATION_SYMMETRY",
+    "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+    "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION"
+   ],
+   "usageInKeys": 11,
+   "usageInItems": 6,
+   "addedDuringItems": false
+  },
+  {
+   "id": 54,
+   "ko": "근과계수의관계",
+   "en": [
+    "VIETA",
+    "ROOT_COEFFICIENT"
+   ],
+   "synonyms": [
+    "근과계수"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_VIETA_SYMMETRIC_VALUE",
+    "TPL_H1_VIETA_TRANSFORMED_ROOT",
+    "PT_H1_ROOT_COEFFICIENT_RELATION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 3,
+   "addedDuringItems": false
+  },
+  {
+   "id": 55,
+   "ko": "판별식",
+   "en": [
+    "DISCRIMINANT"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H1_QUADRATIC_DISCRIMINANT",
+    "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+    "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 56,
+   "ko": "부분분수",
+   "en": [
+    "TELESCOPING",
+    "PARTIAL_FRACTION"
+   ],
+   "synonyms": [
+    "망원합",
+    "망원급수",
+    "망원식"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H22A_07_SEQUENCE_SUM_126",
+    "TPL_RATIONAL_TELESCOPING_SUM",
+    "TPL_RATIONAL_PARTIAL_FRACTION",
+    "TPL_LOG_CHANGE_BASE_TELESCOPING"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 57,
+   "ko": "유리화",
+   "en": [
+    "RATIONALIZATION"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LIMIT_RATIONALIZATION",
+    "TPL_M3_RADICAL_RATIONALIZATION"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 58,
+   "ko": "약분",
+   "en": [
+    "CANCEL",
+    "CANCELLATION"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LIMIT_FACTOR_CANCEL"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 3,
+   "addedDuringItems": false
+  },
+  {
+   "id": 59,
+   "ko": "완전제곱식",
+   "en": [
+    "PERFECT_SQUARE"
+   ],
+   "synonyms": [
+    "완전제곱수",
+    "완전제곱"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_M3_PERFECT_SQUARE_CONDITION",
+    "TPL_M3_SUBSTITUTION_FACTORIZATION",
+    "PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE",
+    "TPL_MINIMUM_FACTOR_TO_PERFECT_SQUARE_CORE"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 3,
+   "addedDuringItems": false
+  },
+  {
+   "id": 60,
+   "ko": "대칭식",
+   "en": [
+    "SYMMETRIC"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_FORMULA_SYMMETRIC",
+    "PT_H1_POLY_FORMULA_SYMMETRIC",
+    "TPL_H1_VIETA_SYMMETRIC_VALUE"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 61,
+   "ko": "식의값",
+   "en": [
+    "VALUE_OF_EXPRESSION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TPL_TRIGONOMETRIC_SYMMETRIC_EXPRESSION_EVALUATION"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 62,
+   "ko": "방정식",
+   "en": [
+    "EQUATION",
+    "QUATION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LINE_PARALLEL",
+    "PT_CIRCLE_EQUATION",
+    "TM_CIRCLE_INCIRCLE",
+    "TM_TANGENT_AT_POINT",
+    "TT_EQUATION_RELATION"
+   ],
+   "usageInKeys": 57,
+   "usageInItems": 9,
+   "addedDuringItems": false
+  },
+  {
+   "id": 63,
+   "ko": "부등식",
+   "en": [
+    "INEQUALITY"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_CAUCHY_PROOF",
+    "TPL_CAUCHY_MINIMUM",
+    "TPL_CAUCHY_EXTREMUM",
+    "PT_COMPOSITION_EQUATION",
+    "PT_H22A_04_TRIG_EQUATION"
+   ],
+   "usageInKeys": 26,
+   "usageInItems": 9,
+   "addedDuringItems": false
+  },
+  {
+   "id": 64,
+   "ko": "일차방정식",
+   "en": [
+    "LINEAR_EQUATION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_LINEAR_EQUATION_SOLVING",
+    "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+    "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY",
+    "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT",
+    "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 65,
+   "ko": "이차방정식",
+   "en": [
+    "QUADRATIC_EQUATION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H1_QUADRATIC_DISCRIMINANT",
+    "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+    "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+    "TPL_QUADRATIC_ROOTS_EXPONENT_EVALUATION",
+    "TPL_EXPONENTIAL_EQUATION_QUADRATIC_FORM_ROOTS"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 66,
+   "ko": "고차방정식",
+   "en": [
+    "HIGHER_DEGREE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_HIGHER_FACTOR_ROOT",
+    "PT_H1_HIGHER_DEGREE_EQUATION",
+    "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 67,
+   "ko": "연립방정식",
+   "en": [
+    "SYSTEM_EQUATION"
+   ],
+   "synonyms": [
+    "연립"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_SYSTEM_DIRECT",
+    "PT_H1_SYSTEM_EQUATION",
+    "TPL_H1_MATRIX_EQUATION_LINEAR",
+    "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT",
+    "TPL_LOG_EXPONENTIAL_EQUATION_SYSTEM_SOLVE"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 68,
+   "ko": "연립부등식",
+   "en": [
+    "LINEAR_SYSTEM_INEQUALITY"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+    "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+    "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 69,
+   "ko": "이차부등식",
+   "en": [
+    "QUADRATIC_INEQUALITY"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H1_QUADRATIC_INEQUALITY",
+    "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+    "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 70,
+   "ko": "절대부등식",
+   "en": [
+    "ABSOLUTE_INEQUALITY"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_AMGM_PROOF",
+    "TPL_AMGM_MINIMUM",
+    "TPL_CAUCHY_PROOF",
+    "TPL_CAUCHY_MINIMUM",
+    "TPL_CAUCHY_EXTREMUM"
+   ],
+   "usageInKeys": 15,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 71,
+   "ko": "지수방정식",
+   "en": [
+    "EXPONENTIAL_EQUATION",
+    "EXP_EQUATION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_EXPONENTIAL_EQUATION",
+    "PT_H22A_02_EXP_EQUATION",
+    "TPL_H22A_02_EXP_EQUATION_081",
+    "TPL_H22A_02_EXP_EQUATION_082",
+    "TPL_NESTED_EXPONENTIAL_ROOT_COUNT"
+   ],
+   "usageInKeys": 9,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 72,
+   "ko": "지수부등식",
+   "en": [
+    "EXPONENTIAL_INEQUALITY",
+    "EXP_INEQUALITY"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_EXPONENTIAL_INEQUALITY",
+    "PT_H22A_02_EXP_INEQUALITY",
+    "TPL_H22A_02_EXP_INEQUALITY_083",
+    "TPL_H22A_02_EXP_INEQUALITY_084",
+    "TPL_EXPONENTIAL_DECAY_INVERSE_BOUND"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 73,
+   "ko": "로그방정식",
+   "en": [
+    "LOG_EQUATION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LOG_EQUATION_DOMAIN",
+    "PT_H22A_03_LOG_EQUATION",
+    "TPL_H22A_03_LOG_EQUATION_089",
+    "TPL_H22A_03_LOG_EQUATION_090",
+    "TPL_LOG_EQUATION_ARGUMENT_FILTER"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 74,
+   "ko": "로그부등식",
+   "en": [
+    "LOG_INEQUALITY"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LOG_INEQUALITY_DOMAIN",
+    "PT_H22A_03_LOG_INEQUALITY",
+    "TPL_H22A_03_LOG_INEQUALITY_091",
+    "TPL_H22A_03_LOG_INEQUALITY_092",
+    "TPL_LOG_QUADRATIC_INTERVAL_INTERSECTION"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 75,
+   "ko": "삼각방정식",
+   "en": [
+    "TRIGONOMETRIC_EQUATION",
+    "TRIG_EQUATION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H22A_04_TRIG_EQUATION",
+    "PT_TRIGONOMETRIC_EQUATION",
+    "TPL_H22A_04_TRIG_EQUATION_101",
+    "TPL_H22A_04_TRIG_EQUATION_102",
+    "TPL_TRIGONOMETRIC_EQUATION_BASIC_ROOTS"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 76,
+   "ko": "삼각부등식",
+   "en": [
+    "TRIGONOMETRIC_INEQUALITY"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_TRIGONOMETRIC_INEQUALITY",
+    "TPL_TRIGONOMETRIC_INEQUALITY_INTERVAL_SOLVE"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 77,
+   "ko": "함수방정식",
+   "en": [
+    "FUNCTIONAL_EQUATION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_FUNCTIONAL_EQUATION",
+    "PT_COMPOSITION_EQUATION",
+    "TPL_COMPOSITION_INEQUALITY",
+    "TPL_COMPOSITION_EQUATION_SOLVE",
+    "TPL_FUNCTIONAL_EQUATION_ADDITIVE"
+   ],
+   "usageInKeys": 9,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 78,
+   "ko": "해",
+   "en": [
+    "SOLUTION"
+   ],
+   "synonyms": [
+    "근",
+    "근의"
+   ],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "PT_H1_QUADRATIC_DISCRIMINANT",
+    "TPL_H1_VIETA_SYMMETRIC_VALUE",
+    "TPL_H1_VIETA_TRANSFORMED_ROOT",
+    "TPL_H22A_04_TRIG_EQUATION_101",
+    "TPL_H22A_04_TRIG_EQUATION_102"
+   ],
+   "usageInKeys": 25,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 79,
+   "ko": "실근",
+   "en": [
+    "REAL_ROOT"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TPL_ROOT_COUNT_BY_EXTREMA",
+    "TPL_IVT_MINIMUM_ROOT_COUNT",
+    "TPL_COMPOSITION_ROOT_COUNT_PARAMETER",
+    "TPL_COUNT_FUNCTION_DISCONTINUITY_FIND"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 80,
+   "ko": "허근",
+   "en": [
+    "IMAGINARY_ROOT"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TPL_LOG_EQUATION_ARGUMENT_FILTER"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 81,
+   "ko": "공통근",
+   "en": [
+    "COMMON_ROOT"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TPL_H1_SYSTEM_DIRECT",
+    "PT_H1_SYSTEM_EQUATION",
+    "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 82,
+   "ko": "정수해",
+   "en": [
+    "INTEGER_SOLUTION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TPL_LOG_BASE_ARGUMENT_INTEGER_DOMAIN",
+    "TPL_ROOT_INTEGER_EXPONENT_CASE_COUNT",
+    "TPL_REPEATED_COMBINATION_DISTRIBUTION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 83,
+   "ko": "해집합",
+   "en": [
+    "SOLUTION_SET"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 84,
+   "ko": "함수",
+   "en": [
+    "FUNCTION",
+    "FUNCTIONS"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LIMIT_SQUEEZE",
+    "PT_LIMIT_VALUE_CALC",
+    "PT_FUNCTION_COUNTING",
+    "PT_FUNCTION_EQUALITY",
+    "PT_FUNCTION_EXTREMUM"
+   ],
+   "usageInKeys": 106,
+   "usageInItems": 12,
+   "addedDuringItems": false
+  },
+  {
+   "id": 85,
+   "ko": "합성함수",
+   "en": [
+    "COMPOSITE",
+    "COMPOSITION",
+    "OMPOSITE"
+   ],
+   "synonyms": [
+    "합성",
+    "합성한",
+    "합성관계",
+    "합성함숫값"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_COMPOSITE_RANGE",
+    "PT_INVERSE_COMPOSITION",
+    "TPL_COMPOSITE_EXTREMUM",
+    "PT_COMPOSITION_EQUATION",
+    "TPL_INVERSE_CONJUGATION"
+   ],
+   "usageInKeys": 29,
+   "usageInItems": 12,
+   "addedDuringItems": false
+  },
+  {
+   "id": 86,
+   "ko": "역함수",
+   "en": [
+    "INVERSE"
+   ],
+   "synonyms": [
+    "역함숫값"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_INVERSE_GRAPH",
+    "PT_INVERSE_VALUE",
+    "PT_INVERSE_PROPERTIES",
+    "PT_INVERSE_COMPOSITION",
+    "TPL_INVERSE_CONJUGATION"
+   ],
+   "usageInKeys": 19,
+   "usageInItems": 25,
+   "addedDuringItems": false
+  },
+  {
+   "id": 87,
+   "ko": "반복합성",
+   "en": [
+    "ITERATED_COMPOSITION",
+    "ITERATION"
+   ],
+   "synonyms": [
+    "반복"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_ITERATION_RULE",
+    "TPL_ITERATION_PERIOD",
+    "PT_ITERATED_COMPOSITION",
+    "TPL_ITERATION_EQUATION_GRAPH",
+    "TPL_ITERATION_IDENTITY_ORDER"
+   ],
+   "usageInKeys": 9,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 88,
+   "ko": "항등함수",
+   "en": [
+    "IDENTITY_FUNCTION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_IDENTITY_DOMAIN_COUNT",
+    "TPL_SPECIAL_FUNCTION_DIRECT",
+    "TPL_INVERSE_IDENTITY_RELATION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 89,
+   "ko": "상수함수",
+   "en": [
+    "CONSTANT_FUNCTION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_SPECIAL_FUNCTION_DIRECT",
+    "TPL_BASIC_FUNCTION_TYPE_COUNT",
+    "TPL_CONSTANT_FUNCTION_PREIMAGE"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 90,
+   "ko": "일차함수",
+   "en": [
+    "LINEAR_FUNCTION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_AFFINE_INTERVAL_BIJECTION"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 91,
+   "ko": "이차함수",
+   "en": [
+    "QUADRATIC"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_DISTANCE_SQSUM_MIN",
+    "PT_H1_QUADRATIC_EXTREMA",
+    "TT_LINE_TRANSLATION_QUADRATIC",
+    "PT_H1_QUADRATIC_RECONSTRUCTION",
+    "TPL_H1_QUADRATIC_EXTREMA_MODEL"
+   ],
+   "usageInKeys": 12,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 92,
+   "ko": "유리함수",
+   "en": [
+    "RATIONAL"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_RATIONAL_ASYMPTOTE",
+    "TPL_RATIONAL_ASYMPTOTE_MODEL",
+    "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+    "TPL_RATIONAL_ASYMPTOTE_GEOMETRY"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 27,
+   "addedDuringItems": false
+  },
+  {
+   "id": 93,
+   "ko": "무리함수",
+   "en": [
+    "RADICAL_FUNCTION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 25,
+   "addedDuringItems": false
+  },
+  {
+   "id": 94,
+   "ko": "지수함수",
+   "en": [
+    "EXPONENTIAL"
+   ],
+   "synonyms": [
+    "지수적"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_EXP_BASE_BELOW_ONE_COMPARISON",
+    "PT_EXPONENTIAL_MONOTONIC_INEQUALITY"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 95,
+   "ko": "로그함수",
+   "en": [
+    "LOG_FUNCTION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LOG_FUNCTION_INEQUALITY",
+    "TPL_LOG_VALUE_ORDER_COMPARISON"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 96,
+   "ko": "삼각함수",
+   "en": [
+    "TRIGONOMETRIC",
+    "TRIG"
+   ],
+   "synonyms": [
+    "삼각함수값",
+    "사인",
+    "코사인",
+    "사인함수",
+    "사인곡선"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_TRIGONOMETRIC_RELATION",
+    "PT_H22A_04_TRIG_DEFINITION",
+    "PT_H22A_04_TRIG_PROPERTIES",
+    "PT_TRIG_IDENTITY_RELATIONS",
+    "PT_TRIGONOMETRIC_DEFINITION"
+   ],
+   "usageInKeys": 21,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 97,
+   "ko": "다항함수",
+   "en": [
+    "POLYNOMIAL_FUNCTION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LIMIT_POLYNOMIAL_RECONSTRUCTION"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 98,
+   "ko": "조각함수",
+   "en": [
+    "PIECEWISE"
+   ],
+   "synonyms": [
+    "구간별함수",
+    "구간별정의"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+    "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 4,
+   "addedDuringItems": false
+  },
+  {
+   "id": 99,
+   "ko": "바닥함수",
+   "en": [
+    "FLOOR"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LOG_FLOOR_INTERVAL_ENUMERATION",
+    "TPL_LOG_FLOOR_INTEGER_INTERVAL_COUNT"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 100,
+   "ko": "함숫값",
+   "en": [
+    "FUNCTION_VALUE",
+    "VALUE"
+   ],
+   "synonyms": [
+    "함수값"
+   ],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "PT_INVERSE_VALUE",
+    "PT_FUNCTION_VALUE",
+    "TPL_INVERSE_AFFINE_INPUT",
+    "TPL_INVERSE_VALUE_DIRECT",
+    "TPL_FUNCTION_VALUE_DIRECT"
+   ],
+   "usageInKeys": 16,
+   "usageInItems": 11,
+   "addedDuringItems": false
+  },
+  {
+   "id": 101,
+   "ko": "정의역",
+   "en": [
+    "DOMAIN"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_RANGE_ENUMERATION",
+    "PT_LOG_EQUATION_DOMAIN",
+    "TPL_IDENTITY_DOMAIN_COUNT",
+    "TPL_LOG_PROPERTY_JUDGMENT",
+    "TPL_SURJECTIVITY_CONDITION"
+   ],
+   "usageInKeys": 15,
+   "usageInItems": 4,
+   "addedDuringItems": false
+  },
+  {
+   "id": 102,
+   "ko": "공역",
+   "en": [
+    "CODOMAIN"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_SURJECTION_COUNT",
+    "TPL_RANGE_ENUMERATION",
+    "TPL_SURJECTIVITY_CONDITION",
+    "PT_DOMAIN_RANGE_SURJECTIVITY",
+    "TPL_FUNCTION_DOMAIN_RANGE_DIRECT"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 103,
+   "ko": "치역",
+   "en": [
+    "RANGE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_COMPOSITE_RANGE",
+    "TPL_SURJECTION_COUNT",
+    "TPL_RANGE_ENUMERATION",
+    "TPL_COMPOSITE_EXTREMUM",
+    "TPL_SURJECTIVITY_CONDITION"
+   ],
+   "usageInKeys": 12,
+   "usageInItems": 4,
+   "addedDuringItems": false
+  },
+  {
+   "id": 104,
+   "ko": "일대일함수",
+   "en": [
+    "ONE_TO_ONE",
+    "INJECTIVITY",
+    "INJECTIVE"
+   ],
+   "synonyms": [
+    "일대일"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_ONE_TO_ONE_BIJECTION",
+    "TPL_AFFINE_INTERVAL_BIJECTION",
+    "TPL_INJECTIVE_BIJECTION_COUNT",
+    "TPL_ABSOLUTE_VALUE_INJECTIVITY",
+    "TPL_QUADRATIC_DOMAIN_BIJECTION"
+   ],
+   "usageInKeys": 7,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 105,
+   "ko": "일대일대응",
+   "en": [
+    "BIJECTION"
+   ],
+   "synonyms": [
+    "전단사"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_FINITE_BIJECTION",
+    "PT_ONE_TO_ONE_BIJECTION",
+    "TPL_AFFINE_INTERVAL_BIJECTION",
+    "TPL_BASIC_FUNCTION_TYPE_COUNT",
+    "TPL_INJECTIVE_BIJECTION_COUNT"
+   ],
+   "usageInKeys": 13,
+   "usageInItems": 6,
+   "addedDuringItems": false
+  },
+  {
+   "id": 106,
+   "ko": "대응",
+   "en": [
+    "MAPPING",
+    "CORRESPONDENCE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_COMPOSITION_VALUE_MAPPING",
+    "TPL_FUNCTION_JUDGMENT_MAPPING",
+    "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+    "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE"
+   ],
+   "usageInKeys": 17,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 107,
+   "ko": "그래프",
+   "en": [
+    "GRAPH",
+    "RAPH"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_INVERSE_GRAPH",
+    "TT_COMPOSITE_GRAPH",
+    "TPL_COMPOSITE_RANGE",
+    "TPL_COMPOSITE_EXTREMUM",
+    "PT_MOVE_GRAPH_REFLECTION"
+   ],
+   "usageInKeys": 70,
+   "usageInItems": 43,
+   "addedDuringItems": false
+  },
+  {
+   "id": 108,
+   "ko": "점근선",
+   "en": [
+    "ASYMPTOTE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_RATIONAL_ASYMPTOTE",
+    "TPL_RATIONAL_ASYMPTOTE_MODEL",
+    "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+    "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+    "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 20,
+   "addedDuringItems": false
+  },
+  {
+   "id": 109,
+   "ko": "주기",
+   "en": [
+    "PERIOD",
+    "PERIODIC"
+   ],
+   "synonyms": [
+    "최소주기"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_ITERATION_PERIOD",
+    "TPL_H1_COMPLEX_I_PERIOD",
+    "TPL_H1_MATRIX_POWER_PERIOD",
+    "TPL_H22A_04_TRIG_EQUATION_102",
+    "TPL_H22A_04_TRIG_PROPERTIES_099"
+   ],
+   "usageInKeys": 10,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 110,
+   "ko": "대칭성",
+   "en": [
+    "SYMMETRY"
+   ],
+   "synonyms": [
+    "대칭",
+    "대칭축",
+    "대칭점"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TT_REFLECTION_AXIS",
+    "TT_FOLDING_REFLECTION",
+    "PT_MOVE_REFLECTION_AXIS",
+    "TT_POINT_REFLECTION_BASIC",
+    "TT_POINT_REFLECTION_MULTI"
+   ],
+   "usageInKeys": 17,
+   "usageInItems": 9,
+   "addedDuringItems": false
+  },
+  {
+   "id": 111,
+   "ko": "증가감소",
+   "en": [
+    "MONOTONICITY",
+    "MONOTONIC",
+    "MONOTONE"
+   ],
+   "synonyms": [
+    "증가",
+    "감소",
+    "단조성",
+    "증감"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_MONOTONICITY_DIRECT",
+    "PT_DERIVATIVE_MONOTONICITY",
+    "TPL_MONOTONICITY_CONDITION",
+    "TPL_MONOTONE_FUNCTION_COUNT",
+    "TPL_EXPONENTIAL_DECAY_HALF_LIFE"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 7,
+   "addedDuringItems": false
+  },
+  {
+   "id": 112,
+   "ko": "연속",
+   "en": [
+    "CONTINUITY",
+    "CONTINUOUS"
+   ],
+   "synonyms": [
+    "연속성",
+    "불연속"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_CONTINUITY_JUDGMENT",
+    "PT_CONTINUITY_CONDITION",
+    "TPL_CONTINUITY_POINT_JUDGMENT",
+    "TPL_CONT_DIFF_DEFINITION_PROOF",
+    "TPL_CONTINUITY_FACTOR_CONDITION"
+   ],
+   "usageInKeys": 16,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 113,
+   "ko": "극한",
+   "en": [
+    "LIMIT"
+   ],
+   "synonyms": [
+    "극한값",
+    "좌극한",
+    "우극한",
+    "극한식"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LIMIT_SQUEEZE",
+    "PT_LIMIT_EXISTENCE",
+    "PT_LIMIT_VALUE_CALC",
+    "TPL_MVT_BOUND_LIMIT",
+    "TPL_LIMIT_FACTOR_CANCEL"
+   ],
+   "usageInKeys": 24,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 114,
+   "ko": "미분가능",
+   "en": [
+    "DIFFERENTIABILITY"
+   ],
+   "synonyms": [
+    "미분불가능",
+    "미분가능성"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_DIFFERENTIABILITY_CONDITION",
+    "TPL_CONT_DIFF_DEFINITION_PROOF",
+    "TPL_NONDIFFERENTIABILITY_STRUCTURE",
+    "TPL_DIFFERENTIABILITY_POINT_CONDITION"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 115,
+   "ko": "미분계수",
+   "en": [
+    "DERIVATIVE_DEFINITION"
+   ],
+   "synonyms": [
+    "차분극한"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_DERIVATIVE_DEFINITION",
+    "TPL_AVERAGE_RATE_ANALYSIS",
+    "PT_DERIVATIVE_RATE_RELATION",
+    "TPL_DERIVATIVE_LIMIT_REDUCTION",
+    "TPL_AVERAGE_RATE_DERIVATIVE_LINK"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 116,
+   "ko": "도함수",
+   "en": [
+    "DERIVATIVE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_MONOTONICITY_DIRECT",
+    "TPL_DERIVATIVE_TO_FUNCTION",
+    "PT_DERIVATIVE_GRAPH_ANALYSIS",
+    "PT_DERIVATIVE_RULE_EVALUATION",
+    "TPL_DERIVATIVE_RULE_CALCULATION"
+   ],
+   "usageInKeys": 12,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 117,
+   "ko": "미분",
+   "en": [
+    "DIFFERENTIATION",
+    "DIFFERENTIATE"
+   ],
+   "synonyms": [
+    "미분하여"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_TANGENT_DERIVATIVE",
+    "TPL_TANGENT_CONSTRUCTION",
+    "TPL_TANGENCY_RELATION_GEOMETRY",
+    "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
+    "TPL_GLOBAL_INEQUALITY_BY_DERIVATIVE"
+   ],
+   "usageInKeys": 10,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 118,
+   "ko": "접선",
+   "en": [
+    "TANGENT"
+   ],
+   "synonyms": [
+    "법선"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_CIRCLE_TANGENT",
+    "TM_TANGENT_LENGTH",
+    "TM_TANGENT_AT_POINT",
+    "PT_GEO_CONIC_TANGENT",
+    "PT_TANGENT_DERIVATIVE"
+   ],
+   "usageInKeys": 21,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 119,
+   "ko": "극값",
+   "en": [
+    "EXTREMA",
+    "EXTREMES",
+    "EXTREMAL"
+   ],
+   "synonyms": [
+    "극대",
+    "극소",
+    "극점"
+   ],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "PT_DERIVATIVE_EXTREMA",
+    "TPL_ROOT_COUNT_BY_EXTREMA",
+    "TPL_EXTREMA_STRUCTURE_COUNT",
+    "TPL_EXTREMA_VALUE_PARAMETER",
+    "PT_ABSOLUTE_VALUE_SIGN_EXTREMES"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 120,
+   "ko": "평균변화율",
+   "en": [
+    "RATE"
+   ],
+   "synonyms": [
+    "변화율",
+    "AVERAGE_RATE"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_DERIVATIVE_MOTION",
+    "TPL_AVERAGE_RATE_ANALYSIS",
+    "TPL_MOTION_EVENT_ANALYSIS",
+    "TPL_MOTION_COMPOSITE_MODEL",
+    "PT_DERIVATIVE_RATE_RELATION"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 121,
+   "ko": "부정적분",
+   "en": [
+    "INDEFINITE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_DERIVATIVE_TO_FUNCTION",
+    "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+    "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 122,
+   "ko": "정적분",
+   "en": [
+    "DEFINITE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_DEFINITE_EVALUATION",
+    "TPL_AREA_FROM_INTEGRAL_DATA",
+    "PT_DEFINITE_INTEGRAL_OPERATION",
+    "TPL_GLOBAL_INTEGRAL_CONSTRAINT",
+    "TPL_DEFINITE_PROPERTY_TRANSFORM"
+   ],
+   "usageInKeys": 11,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 123,
+   "ko": "적분",
+   "en": [
+    "INTEGRAL",
+    "INTEGRATION"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_GLOBAL_INTEGRAL_CONSTRAINT",
+    "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
+    "TPL_INTEGRAL_DEFINED_FUNCTION_ANALYSIS",
+    "TPL_INTEGRAL_DEFINED_FUNCTION_DIFFERENTIATION"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 124,
+   "ko": "속도",
+   "en": [
+    "VELOCITY",
+    "SPEED"
+   ],
+   "synonyms": [
+    "속력",
+    "가속도"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_DERIVATIVE_MOTION",
+    "PT_MOTION_BY_INTEGRAL",
+    "TPL_MOTION_EVENT_ANALYSIS",
+    "TPL_MOTION_COMPOSITE_MODEL",
+    "TPL_MOTION_CONDITION_PARAMETER"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 125,
+   "ko": "사잇값정리",
+   "en": [
+    "IVT",
+    "INTERMEDIATE"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_IVT_MINIMUM_ROOT_COUNT",
+    "TPL_IVT_VALUE_EXISTENCE_INTERVAL",
+    "PT_INTERMEDIATE_VALUE_APPLICATION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 126,
+   "ko": "평균값정리",
+   "en": [
+    "MVT",
+    "MEAN_VALUE"
+   ],
+   "synonyms": [
+    "롤의정리",
+    "롤정리",
+    "ROLLE"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_MVT_BOUND_LIMIT",
+    "TPL_MVT_ROLLE_DIRECT",
+    "PT_MEAN_VALUE_THEOREM"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 127,
+   "ko": "최댓값",
+   "en": [
+    "MAX",
+    "MAXIMUM"
+   ],
+   "synonyms": [
+    "최대"
+   ],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_SET_EXTREMUM",
+    "TPL_UNION_RANGE",
+    "TPL_AMGM_MINIMUM",
+    "TPL_CAUCHY_MINIMUM",
+    "TPL_CAUCHY_EXTREMUM"
+   ],
+   "usageInKeys": 41,
+   "usageInItems": 11,
+   "addedDuringItems": false
+  },
+  {
+   "id": 128,
+   "ko": "최솟값",
+   "en": [
+    "MIN",
+    "MINIMUM"
+   ],
+   "synonyms": [
+    "최소"
+   ],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_SET_EXTREMUM",
+    "TPL_UNION_RANGE",
+    "TPL_AMGM_MINIMUM",
+    "TPL_CAUCHY_MINIMUM",
+    "TPL_CAUCHY_EXTREMUM"
+   ],
+   "usageInKeys": 43,
+   "usageInItems": 11,
+   "addedDuringItems": false
+  },
+  {
+   "id": 129,
+   "ko": "개수",
+   "en": [
+    "COUNT",
+    "COUNTING"
+   ],
+   "synonyms": [
+    "가짓수",
+    "세기",
+    "경우의수",
+    "횟수"
+   ],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_SET_EXTREMUM",
+    "PT_SUBSET_COUNT",
+    "TPL_UNION_RANGE",
+    "PT_DIVISOR_COUNT",
+    "PT_SET_CARDINALITY"
+   ],
+   "usageInKeys": 73,
+   "usageInItems": 47,
+   "addedDuringItems": false
+  },
+  {
+   "id": 130,
+   "ko": "확률",
+   "en": [
+    "PROBABILITY"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TPL_BINOMIAL_PROBABILITY",
+    "PT_PROBABILITY_REPEATED_TRIALS",
+    "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+    "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+    "TPL_INDEPENDENT_TRIAL_STATE_PARITY"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 131,
+   "ko": "값",
+   "en": [
+    "VALUE_GENERIC"
+   ],
+   "synonyms": [],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_TRIG_RATIO",
+    "TPL_DEFINITE_EVALUATION",
+    "PT_INTEGER_MEMBERSHIP_COUNT",
+    "TPL_EXTREMA_VALUE_PARAMETER",
+    "TPL_TRIG_RATIO_TABLE_LOOKUP"
+   ],
+   "usageInKeys": 37,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 132,
+   "ko": "판정",
+   "en": [
+    "JUDGMENT",
+    "JUDGE"
+   ],
+   "synonyms": [
+    "검증",
+    "구별",
+    "판별",
+    "판단",
+    "검사",
+    "옳고그름",
+    "참거짓",
+    "참",
+    "거짓",
+    "진술",
+    "반례"
+   ],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_SET_IDENTIFY",
+    "TPL_SUBSET_DIRECT",
+    "PT_LIMIT_EXISTENCE",
+    "PT_SUBSET_JUDGMENT",
+    "TPL_INCLUSION_DIRECT"
+   ],
+   "usageInKeys": 131,
+   "usageInItems": 6,
+   "addedDuringItems": false
+  },
+  {
+   "id": 133,
+   "ko": "증명",
+   "en": [
+    "PROOF",
+    "PROVE"
+   ],
+   "synonyms": [],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_AMGM_PROOF",
+    "TPL_CAUCHY_PROOF",
+    "PT_CONTRAPOSITIVE_PROOF",
+    "TPL_SQUARE_COMPARISON_PROOF",
+    "PT_ABSOLUTE_INEQUALITY_PROOF"
+   ],
+   "usageInKeys": 17,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 134,
+   "ko": "작도",
+   "en": [
+    "CONSTRUCTION"
+   ],
+   "synonyms": [],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_BASIC_CONSTRUCTION",
+    "PT_M1_CONGRUENCE_UNIQUENESS",
+    "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
+    "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+    "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 135,
+   "ko": "복원",
+   "en": [
+    "RECOVERY",
+    "RECOVER",
+    "RECONSTRUCTION",
+    "RECONSTRUCT"
+   ],
+   "synonyms": [
+    "역산",
+    "빠진",
+    "역추적"
+   ],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_CENTRAL_TENDENCY",
+    "TPL_AREA_FROM_INTEGRAL_DATA",
+    "TPL_LOG_DECAY_EXPONENT_SOLVE",
+    "PT_MAGIC_SQUARE_ENTRY_RECOVERY",
+    "TPL_COMPOSITION_GRAPH_TRACE_VALUE"
+   ],
+   "usageInKeys": 25,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 136,
+   "ko": "결정",
+   "en": [
+    "DETERMINATION",
+    "DETERMINE"
+   ],
+   "synonyms": [
+    "확정"
+   ],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TT_REFLECTION_AXIS",
+    "PT_M3_REAL_NUMBER_LINE",
+    "TPL_MONOTONICITY_CONDITION",
+    "TPL_EXTREMA_VALUE_PARAMETER",
+    "TPL_LIMIT_ZERO_MULTIPLICITY"
+   ],
+   "usageInKeys": 40,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 137,
+   "ko": "해석",
+   "en": [
+    "INTERPRETATION",
+    "ANALYSIS",
+    "READING"
+   ],
+   "synonyms": [
+    "읽기"
+   ],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_CENTRAL_TENDENCY",
+    "PT_M1_SIGNED_CHANGE_MODEL",
+    "TPL_AVERAGE_RATE_ANALYSIS",
+    "PT_M1_DATA_ORDER_AND_VALUE",
+    "PT_COORDINATE_POINT_READING"
+   ],
+   "usageInKeys": 39,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 138,
+   "ko": "추론",
+   "en": [
+    "DEDUCTION",
+    "INFERENCE"
+   ],
+   "synonyms": [],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LOGIC_CHAIN",
+    "TPL_IMPLICATION_CHAIN",
+    "TPL_LOGIC_CONSTRAINT_PUZZLE",
+    "PT_M1_QUADRANT_SIGN_DEDUCTION",
+    "TPL_H22A_08_RECURSIVE_SEQUENCE_130"
+   ],
+   "usageInKeys": 10,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 139,
+   "ko": "최적화",
+   "en": [
+    "OPTIMIZATION"
+   ],
+   "synonyms": [],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_MOTION_COMPOSITE_MODEL"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 140,
+   "ko": "존재",
+   "en": [
+    "EXISTENCE"
+   ],
+   "synonyms": [],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LIMIT_EXISTENCE",
+    "TPL_LIMIT_EXISTENCE_TEST",
+    "TPL_LIMIT_ZERO_MULTIPLICITY",
+    "TPL_IVT_VALUE_EXISTENCE_INTERVAL",
+    "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 141,
+   "ko": "성립조건",
+   "en": [
+    "FEASIBILITY"
+   ],
+   "synonyms": [
+    "위한조건",
+    "성립하기",
+    "성립"
+   ],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TM_CIRCLE_EXISTENCE_CONDITION",
+    "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+    "PT_PROPOSITION_PARAMETER_CONDITION",
+    "TPL_CONVERSE_FALSE_PARAMETER_COUNT",
+    "TPL_IMPLICATION_INTERVAL_PARAMETER"
+   ],
+   "usageInKeys": 16,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 142,
+   "ko": "점",
+   "en": [
+    "POINT"
+   ],
+   "synonyms": [
+    "좌표점"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_AREA_POINT",
+    "PT_COORD_DISTANCE",
+    "TT_COMPOSITE_POINT",
+    "TM_TANGENT_AT_POINT",
+    "TPL_LINE_TWO_POINTS"
+   ],
+   "usageInKeys": 60,
+   "usageInItems": 13,
+   "addedDuringItems": false
+  },
+  {
+   "id": 143,
+   "ko": "직선",
+   "en": [
+    "LINE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LINE_EQUATION",
+    "PT_LINE_RELATION",
+    "TPL_LINE_PARALLEL",
+    "TT_COMPOSITE_LINE",
+    "TPL_LINE_TWO_POINTS"
+   ],
+   "usageInKeys": 80,
+   "usageInItems": 16,
+   "addedDuringItems": false
+  },
+  {
+   "id": 144,
+   "ko": "선분",
+   "en": [
+    "SEGMENT"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_COORD_SECTION",
+    "TPL_SECTION_BOTH",
+    "PT_COORD_MIDPOINT",
+    "TPL_MIDPOINT_DIRECT",
+    "TPL_SECTION_EXTERNAL"
+   ],
+   "usageInKeys": 21,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 145,
+   "ko": "반직선",
+   "en": [
+    "RAY"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT",
+    "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_SEGMENT_COUNT",
+    "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_MULTI_OBJECT_COUNT"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 146,
+   "ko": "평면",
+   "en": [
+    "PLANE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_ROTATION_SOLID_GENERATION",
+    "PT_M1_REGULAR_POLYGON_TESSELLATION",
+    "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+    "TPL_M1_ROTATION_SOLID_GENERATION_SHAPE",
+    "TPL_M1_REGULAR_POLYGON_TESSELLATION_CORE"
+   ],
+   "usageInKeys": 10,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 147,
+   "ko": "공간",
+   "en": [
+    "SPACE"
+   ],
+   "synonyms": [
+    "공간도형"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_GEO_SPACE_FIGURE",
+    "TPL_GEO_SPACE_LINES_ANGLE",
+    "TPL_GEO_SPACE_DIHEDRAL_ANGLE",
+    "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+    "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION"
+   ],
+   "usageInKeys": 10,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 148,
+   "ko": "좌표",
+   "en": [
+    "COORD",
+    "COORDINATE"
+   ],
+   "synonyms": [
+    "좌표평면",
+    "좌표축",
+    "좌표식"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_AREA_POINT",
+    "TPL_AREA_DIRECT",
+    "TPL_AREA_SECTION",
+    "TPL_FIGURE_RHOMBUS",
+    "TPL_EQUIDISTANT_AXIS"
+   ],
+   "usageInKeys": 37,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 149,
+   "ko": "사분면",
+   "en": [
+    "QUADRANT"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_FUNCTION_GRAPH_QUADRANT",
+    "PT_TRIG_QUADRANT_EVALUATION",
+    "TPL_FUNCTION_QUADRANT_DIRECT",
+    "PT_M1_QUADRANT_SIGN_DEDUCTION",
+    "TPL_FUNCTION_QUADRANT_PARAMETER"
+   ],
+   "usageInKeys": 13,
+   "usageInItems": 7,
+   "addedDuringItems": false
+  },
+  {
+   "id": 150,
+   "ko": "기울기",
+   "en": [
+    "SLOPE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LINE_POINT_SLOPE",
+    "TM_TANGENT_TWO_SLOPES",
+    "TM_TANGENT_GIVEN_SLOPE"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 151,
+   "ko": "절편",
+   "en": [
+    "INTERCEPT"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_INTERCEPT_OPTIMIZATION",
+    "TPL_INTERCEPT_SUM_MINIMUM",
+    "TPL_INTERCEPT_AREA_OPTIMIZATION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 152,
+   "ko": "원",
+   "en": [
+    "CIRCLE",
+    "IRCLE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_TWO_CIRCLES",
+    "PT_CIRCLE_TANGENT",
+    "TM_TANGENT_LENGTH",
+    "PT_CIRCLE_EQUATION",
+    "TM_CIRCLE_INCIRCLE"
+   ],
+   "usageInKeys": 54,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 153,
+   "ko": "반지름",
+   "en": [
+    "RADIUS"
+   ],
+   "synonyms": [
+    "지름"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TM_CIRCLE_CENTER_RADIUS",
+    "TPL_H22A_05_SINE_LAW_109",
+    "TM_CIRCLE_DIAMETER_ENDPOINTS",
+    "TPL_SECTOR_RADIUS_FROM_AREA_ARC",
+    "TPL_SECTOR_CENTRAL_ANGLE_ARC_RADIUS"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 154,
+   "ko": "현",
+   "en": [
+    "CHORD"
+   ],
+   "synonyms": [
+    "공통현"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TM_CIRCLE_CHORD_LENGTH",
+    "TM_CIRCLE_CHORD_DIVISION",
+    "TM_CIRCLE_CHORD_PERP_BISECTOR",
+    "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "TM_TANGENT_CONTACT_CHORD_LENGTH"
+   ],
+   "usageInKeys": 7,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 155,
+   "ko": "호",
+   "en": [
+    "ARC"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_SECTOR_RADIUS_FROM_AREA_ARC",
+    "TPL_SECTOR_CENTRAL_ANGLE_ARC_RADIUS",
+    "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
+    "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 156,
+   "ko": "부채꼴",
+   "en": [
+    "SECTOR"
+   ],
+   "synonyms": [
+    "활꼴"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_RADIAN_SECTOR_GEOMETRY",
+    "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+    "TPL_SECTOR_RADIUS_FROM_AREA_ARC",
+    "TPL_SECTOR_CENTRAL_ANGLE_ARC_RADIUS",
+    "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 157,
+   "ko": "중심",
+   "en": [
+    "CENTER"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TM_CIRCLE_CENTER_RADIUS",
+    "TM_CIRCLE_BISECTING_LINE",
+    "TM_CIRCLE_CENTER_ON_LINE",
+    "TM_TWO_CIRCLES_CENTER_LINE",
+    "TT_CIRCLE_TRANSLATION_CENTER"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 158,
+   "ko": "삼각형",
+   "en": [
+    "TRIANGLE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_AREA_POINT",
+    "TPL_AREA_DIRECT",
+    "TPL_AREA_SECTION",
+    "PT_COORD_CENTROID",
+    "TM_CIRCLE_INCIRCLE"
+   ],
+   "usageInKeys": 62,
+   "usageInItems": 4,
+   "addedDuringItems": false
+  },
+  {
+   "id": 159,
+   "ko": "이등변삼각형",
+   "en": [
+    "ISOSCELES"
+   ],
+   "synonyms": [
+    "밑각",
+    "꼭지각"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_ISOSCELES_TRIANGLE",
+    "TPL_ISOSCELES_CONVERSE",
+    "TPL_ISOSCELES_BASE_ANGLES",
+    "TPL_ISOSCELES_VERTEX_BISECTOR"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 160,
+   "ko": "정삼각형",
+   "en": [
+    "EQUILATERAL"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_TRIANGLE_AREA_FROM_SQUARE_EQUILATERAL_POSITION",
+    "TPL_TRIANGLE_AREA_FROM_SQUARE_EQUILATERAL_POSITION_CORE"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 161,
+   "ko": "직각삼각형",
+   "en": [
+    "RIGHT_TRIANGLE"
+   ],
+   "synonyms": [
+    "빗변",
+    "HYPOTENUSE"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_RIGHT_TRIANGLE_CONGRUENCE",
+    "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+    "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 162,
+   "ko": "사각형",
+   "en": [
+    "QUADRILATERAL"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_QUADRILATERAL_CRITERIA",
+    "TPL_SPECIAL_QUADRILATERALS",
+    "PT_QUADRILATERAL_PROPERTIES",
+    "TPL_QUADRILATERAL_PROPERTIES"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 163,
+   "ko": "평행사변형",
+   "en": [
+    "PARALLELOGRAM"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_FIGURE_PARALLELOGRAM",
+    "TPL_QUADRILATERAL_CRITERIA",
+    "TPL_QUADRILATERAL_PROPERTIES"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 164,
+   "ko": "마름모",
+   "en": [
+    "RHOMBUS"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_FIGURE_RHOMBUS"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 165,
+   "ko": "직사각형",
+   "en": [
+    "RECTANGLE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_SINE_INSCRIBED_RECTANGLE_AREA"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 166,
+   "ko": "정사각형",
+   "en": [
+    "SQUARE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_M3_NUMBER_LINE_SQUARE_ROTATION",
+    "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+    "PT_M1_SQUARE_COORDINATES_AND_GRAPH_COEFFICIENTS",
+    "PT_TRIANGLE_AREA_FROM_SQUARE_EQUILATERAL_POSITION",
+    "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE"
+   ],
+   "usageInKeys": 7,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 167,
+   "ko": "사다리꼴",
+   "en": [
+    "TRAPEZOID"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_TRAPEZOID_AREA",
+    "TPL_M1_TRAPEZOID_AREA_CORE",
+    "PT_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK",
+    "TPL_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK_CORE"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 168,
+   "ko": "다각형",
+   "en": [
+    "POLYGON"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_AREA_BISECT_POLYGON",
+    "PT_M1_POLYGON_CLASSIFICATION",
+    "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "TPL_M1_POLYGON_CLASSIFICATION_CORE",
+    "PT_M1_FREQUENCY_DISTRIBUTION_READING"
+   ],
+   "usageInKeys": 17,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 169,
+   "ko": "정다각형",
+   "en": [
+    "REGULAR_POLYGON"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_REGULAR_POLYGON_TESSELLATION",
+    "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+    "TPL_M1_REGULAR_POLYGON_TESSELLATION_CORE",
+    "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_COMPOSITE_ANGLE_SUM",
+    "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 170,
+   "ko": "다면체",
+   "en": [
+    "POLYHEDRON"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+    "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+    "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+    "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_COUNT",
+    "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_RELATION"
+   ],
+   "usageInKeys": 10,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 171,
+   "ko": "입체도형",
+   "en": [
+    "SOLID"
+   ],
+   "synonyms": [
+    "입체",
+    "원기둥",
+    "원뿔",
+    "각뿔",
+    "구의"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_SOLID_FIGURE_MEASURE",
+    "PT_M1_ROTATION_SOLID_GENERATION",
+    "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+    "PT_PERPENDICULAR_FOOT_ON_SOLID_EDGE",
+    "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE"
+   ],
+   "usageInKeys": 15,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 172,
+   "ko": "회전체",
+   "en": [
+    "ROTATION"
+   ],
+   "synonyms": [
+    "회전축",
+    "회전"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_ROTATION_SOLID_GENERATION",
+    "PT_M1_ROTATION_SOLID_PROPERTIES",
+    "TPL_GENERAL_ANGLE_SAME_QUADRANT",
+    "TPL_M1_ROTATION_SOLID_AXIS_SECTION",
+    "TPL_M1_ROTATION_SOLID_GENERATION_SHAPE"
+   ],
+   "usageInKeys": 9,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 173,
+   "ko": "전개도",
+   "en": [
+    "NET"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+    "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
+    "TPL_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT_CORE",
+    "TPL_M1_ROTATION_SOLID_FRUSTUM_NET_AXIS_SECTION"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 174,
+   "ko": "각",
+   "en": [
+    "ANGLE"
+   ],
+   "synonyms": [
+    "내각",
+    "외각"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LINE_ANGLE_BISECTOR",
+    "TPL_H22A_05_SINE_LAW_110",
+    "PT_CIRCLE_ANGLE_RELATIONS",
+    "TPL_GEO_SPACE_LINES_ANGLE",
+    "PT_M1_PARALLELISM_CONVERSE"
+   ],
+   "usageInKeys": 51,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 175,
+   "ko": "맞꼭지각",
+   "en": [
+    "VERTICAL_ANGLE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+    "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO",
+    "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+    "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 176,
+   "ko": "동위각",
+   "en": [
+    "ALTERNATE"
+   ],
+   "synonyms": [
+    "엇각"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_PARALLEL_ANGLE_POSITION",
+    "TPL_M1_PARALLEL_ANGLE_POSITION_POSITIONAL_ANGLE_SUM",
+    "TPL_M1_PARALLEL_ANGLE_POSITION_ANGLE_POSITION_CLAIM_AUDIT",
+    "TPL_M1_PARALLEL_ANGLE_POSITION_ALTERNATE_POSITION_IDENTIFICATION"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 177,
+   "ko": "이등분선",
+   "en": [
+    "BISECTOR"
+   ],
+   "synonyms": [
+    "이등분하는",
+    "이등분",
+    "BISECT"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_AREA_BISECTING_LINE",
+    "PT_LINE_ANGLE_BISECTOR",
+    "TPL_AREA_BISECT_POLYGON",
+    "TPL_AREA_BISECT_TRIANGLE",
+    "PT_TRIANGLE_ANGLE_BISECTOR"
+   ],
+   "usageInKeys": 11,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 178,
+   "ko": "수직이등분선",
+   "en": [
+    "PERP_BISECTOR"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LINE_PERP_BISECTOR",
+    "TM_CIRCLE_CHORD_PERP_BISECTOR"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 179,
+   "ko": "수선",
+   "en": [
+    "PERPENDICULAR"
+   ],
+   "synonyms": [
+    "수직",
+    "수선의발",
+    "PERP"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LINE_PERPENDICULAR",
+    "TPL_TRIANGLE_ORTHOCENTER",
+    "TPL_GEO_TANGENT_ORTHOGONAL",
+    "TT_LINE_TRANSLATION_RELATION",
+    "PT_PERPENDICULAR_FOOT_ALTITUDE"
+   ],
+   "usageInKeys": 14,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 180,
+   "ko": "평행",
+   "en": [
+    "PARALLEL"
+   ],
+   "synonyms": [
+    "평행선"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LINE_PARALLEL",
+    "PT_PARALLEL_SEGMENT_RATIO",
+    "PT_M1_PARALLELISM_CONVERSE",
+    "TPL_DISTANCE_PARALLEL_LINES",
+    "TT_LINE_TRANSLATION_RELATION"
+   ],
+   "usageInKeys": 17,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 181,
+   "ko": "교점",
+   "en": [
+    "INTERSECTION"
+   ],
+   "synonyms": [
+    "교차선",
+    "INTERSECTING"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_INTERSECTION_SIGN_AREA",
+    "TM_CIRCLE_INTERSECTION_COUNT",
+    "TPL_GRAPH_INTERSECTION_COUNT",
+    "TPL_INTERSECTION_GRAPH_COUNT",
+    "TT_LINE_TRANSLATION_RELATION"
+   ],
+   "usageInKeys": 30,
+   "usageInItems": 18,
+   "addedDuringItems": false
+  },
+  {
+   "id": 182,
+   "ko": "접함",
+   "en": [
+    "CONTACT",
+    "TANGENCY"
+   ],
+   "synonyms": [
+    "접점",
+    "접하는",
+    "접할",
+    "접하도록"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TM_TANGENCY_CONDITION",
+    "TM_CIRCLE_AXIS_TANGENT",
+    "TM_CIRCLE_MULTI_LINE_TANGENT",
+    "TM_TANGENT_CONTACT_CHORD_LINE",
+    "TM_TWO_CIRCLES_TANGENT_CIRCLE"
+   ],
+   "usageInKeys": 9,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 183,
+   "ko": "외접",
+   "en": [
+    "EXTERNAL"
+   ],
+   "synonyms": [
+    "내접",
+    "외접원",
+    "내접원",
+    "INSCRIBED"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TM_CIRCLE_INCIRCLE",
+    "TM_CIRCLE_CIRCUMCIRCLE",
+    "TPL_H22A_05_SINE_LAW_109",
+    "TPL_SINE_INSCRIBED_RECTANGLE_AREA"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 184,
+   "ko": "외심",
+   "en": [
+    "CIRCUMCENTER"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_TRIANGLE_CENTERS",
+    "TPL_TRIANGLE_INCENTER",
+    "TPL_TRIANGLE_CIRCUMCENTER",
+    "TPL_TRIANGLE_CENTERS_COMBINED",
+    "TPL_TRIANGLE_CENTERS_SEMANTIC"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 185,
+   "ko": "내심",
+   "en": [
+    "INCENTER"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_TRIANGLE_CENTERS",
+    "TPL_TRIANGLE_INCENTER",
+    "TPL_INCENTER_BY_VERTICES",
+    "TPL_TRIANGLE_CIRCUMCENTER",
+    "TPL_TRIANGLE_CENTERS_COMBINED"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 186,
+   "ko": "무게중심",
+   "en": [
+    "CENTROID"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_COORD_CENTROID",
+    "TPL_CENTROID_DIRECT",
+    "TPL_CENTROID_REVERSE",
+    "TM_CIRCLE_CENTROID_LOCUS",
+    "TPL_CENTROID_APPLICATION"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 187,
+   "ko": "수심",
+   "en": [
+    "ORTHOCENTER"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_TRIANGLE_ORTHOCENTER",
+    "PT_PERPENDICULAR_FOOT_ALTITUDE",
+    "TPL_PERPENDICULAR_FOOT_COORDINATE"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 188,
+   "ko": "중점",
+   "en": [
+    "MIDPOINT"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_COORD_MIDPOINT",
+    "TPL_MIDPOINT_DIRECT",
+    "PT_M1_SEGMENT_LENGTH_RELATIONS",
+    "TPL_MIDPOINT_DISTANCE_RELATION",
+    "PT_M1_MIDPOINT_PROJECTION_TRIANGLE_AREA"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 189,
+   "ko": "내분",
+   "en": [
+    "SECTION"
+   ],
+   "synonyms": [
+    "내분점",
+    "내분비"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_COORD_SECTION",
+    "TPL_AREA_SECTION",
+    "TPL_SECTION_BOTH",
+    "TPL_SECTION_EXTERNAL",
+    "TPL_SECTION_INTERNAL"
+   ],
+   "usageInKeys": 10,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 190,
+   "ko": "외분",
+   "en": [
+    "EXTERNAL_SECTION"
+   ],
+   "synonyms": [
+    "외분점"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_COORD_SECTION",
+    "TPL_SECTION_BOTH",
+    "TPL_SECTION_EXTERNAL",
+    "TPL_SECTION_INTERNAL",
+    "TPL_SECTION_APPLICATION"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 191,
+   "ko": "중선",
+   "en": [
+    "MEDIAN_LINE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 192,
+   "ko": "닮음",
+   "en": [
+    "SIMILARITY",
+    "SIMILAR"
+   ],
+   "synonyms": [
+    "닮은",
+    "닮음비"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_SIMILAR_FIGURES",
+    "PT_TRIANGLE_SIMILARITY",
+    "TPL_SIMILAR_FIGURES_RATIO",
+    "TPL_M3_SQUARE_AREA_SIDE_RATIO",
+    "TPL_SIMILAR_FIGURES_AREA_VOLUME"
+   ],
+   "usageInKeys": 7,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 193,
+   "ko": "합동",
+   "en": [
+    "CONGRUENCE"
+   ],
+   "synonyms": [
+    "합동조건",
+    "SAS"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_CONGRUENCE_INVARIANTS",
+    "PT_M1_CONGRUENCE_UNIQUENESS",
+    "PT_RIGHT_TRIANGLE_CONGRUENCE",
+    "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "TPL_M1_CONGRUENCE_INVARIANTS_CORE"
+   ],
+   "usageInKeys": 17,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 194,
+   "ko": "삼각비",
+   "en": [
+    "TRIG_RATIO"
+   ],
+   "synonyms": [
+    "특수각",
+    "삼각비표"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_TRIG_RATIO",
+    "PT_TRIG_RATIO_APPLICATION",
+    "TPL_TRIG_RATIO_TABLE_LOOKUP",
+    "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+    "TPL_TRIG_RATIO_BASIC_RELATION"
+   ],
+   "usageInKeys": 10,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 195,
+   "ko": "피타고라스정리",
+   "en": [
+    "PYTHAGOREAN"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 196,
+   "ko": "사인법칙",
+   "en": [
+    "SINE_LAW"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H22A_05_SINE_LAW",
+    "TPL_H22A_05_SINE_LAW_109",
+    "TPL_H22A_05_SINE_LAW_110"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 197,
+   "ko": "코사인법칙",
+   "en": [
+    "COSINE_LAW"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H22A_05_COSINE_LAW",
+    "TPL_H22A_05_COSINE_LAW_111",
+    "TPL_H22A_05_COSINE_LAW_112"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 198,
+   "ko": "호도법",
+   "en": [
+    "RADIAN"
+   ],
+   "synonyms": [
+    "라디안"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H22A_04_ANGLE_RADIAN",
+    "PT_RADIAN_SECTOR_GEOMETRY",
+    "TPL_H22A_04_ANGLE_RADIAN_095",
+    "TPL_H22A_04_ANGLE_RADIAN_096",
+    "TPL_SECTOR_RADIUS_FROM_AREA_ARC"
+   ],
+   "usageInKeys": 7,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 199,
+   "ko": "일반각",
+   "en": [
+    "GENERAL_ANGLE"
+   ],
+   "synonyms": [
+    "동경"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H22A_04_ANGLE_RADIAN",
+    "PT_GENERAL_ANGLE_DIRECTION",
+    "TPL_H22A_04_ANGLE_RADIAN_095",
+    "TPL_H22A_04_ANGLE_RADIAN_096",
+    "TPL_GENERAL_ANGLE_SAME_QUADRANT"
+   ],
+   "usageInKeys": 7,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 200,
+   "ko": "원주각",
+   "en": [
+    "INSCRIBED_ANGLE"
+   ],
+   "synonyms": [
+    "중심각"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_CIRCLE_ANGLE_RELATIONS",
+    "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+   ],
+   "usageInKeys": 9,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 201,
+   "ko": "벡터",
+   "en": [
+    "VECTOR"
+   ],
+   "synonyms": [
+    "평면벡터"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_GEO_PLANE_VECTOR",
+    "TPL_GEO_VECTOR_BASIC_OPERATION"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 202,
+   "ko": "타원",
+   "en": [
+    "ELLIPSE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_GEO_ELLIPSE",
+    "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "TPL_GEO_ELLIPSE_STANDARD_EQUATION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 203,
+   "ko": "포물선",
+   "en": [
+    "PARABOLA"
+   ],
+   "synonyms": [
+    "준선"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_GEO_PARABOLA",
+    "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "TPL_GEO_PARABOLA_STANDARD_EQUATION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 204,
+   "ko": "쌍곡선",
+   "en": [
+    "HYPERBOLA"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_GEO_HYPERBOLA",
+    "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+    "TPL_GEO_HYPERBOLA_STANDARD_EQUATION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 205,
+   "ko": "이차곡선",
+   "en": [
+    "CONIC"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_GEO_CONIC_TANGENT",
+    "TPL_GEO_TANGENT_ON_CONIC",
+    "TPL_GEO_TANGENT_ORTHOGONAL",
+    "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 206,
+   "ko": "초점",
+   "en": [
+    "FOCUS"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 207,
+   "ko": "자취",
+   "en": [
+    "LOCUS"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TM_CIRCLE_CENTROID_LOCUS",
+    "TM_CIRCLE_DIVISION_LOCUS",
+    "TM_CIRCLE_DISTANCE_RATIO_LOCUS"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 208,
+   "ko": "접기",
+   "en": [
+    "FOLDING"
+   ],
+   "synonyms": [
+    "OLDING"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TT_FOLDING_REFLECTION",
+    "PT_MOVE_FOLDING_REFLECTION",
+    "TPL_MOVE_FOLDING_REFLECTION_CORE"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 209,
+   "ko": "대칭이동",
+   "en": [
+    "REFLECTION"
+   ],
+   "synonyms": [
+    "EFLECTION"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TT_SHORTEST_ONE_LINE",
+    "TT_FOLDING_REFLECTION",
+    "TT_SHORTEST_MULTI_LINE",
+    "PT_MOVE_LINE_REFLECTION",
+    "PT_MOVE_GRAPH_REFLECTION"
+   ],
+   "usageInKeys": 20,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 210,
+   "ko": "평행이동",
+   "en": [
+    "TRANSLATION"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_MOVE_LINE_TRANSLATION",
+    "PT_MOVE_GRAPH_TRANSLATION",
+    "PT_MOVE_POINT_TRANSLATION",
+    "PT_MOVE_CIRCLE_TRANSLATION",
+    "TT_POINT_TRANSLATION_COORD"
+   ],
+   "usageInKeys": 15,
+   "usageInItems": 9,
+   "addedDuringItems": false
+  },
+  {
+   "id": 211,
+   "ko": "이동",
+   "en": [
+    "MOVE"
+   ],
+   "synonyms": [
+    "도형의이동",
+    "연속이동",
+    "옮기기"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_MOVE_COMPOSITE",
+    "TT_COMPOSITE_LINE",
+    "TT_COMPOSITE_GRAPH",
+    "TT_COMPOSITE_MIXED",
+    "TT_COMPOSITE_POINT"
+   ],
+   "usageInKeys": 26,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 212,
+   "ko": "영역",
+   "en": [
+    "REGION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_EXPRESSION_TO_VENN",
+    "TPL_REGION_EQUIVALENCE",
+    "TPL_VENN_TO_EXPRESSION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 213,
+   "ko": "넓이",
+   "en": [
+    "AREA"
+   ],
+   "synonyms": [
+    "면적"
+   ],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TPL_AREA_POINT",
+    "TPL_AREA_DIRECT",
+    "TPL_AREA_SECTION",
+    "PT_M1_TRAPEZOID_AREA",
+    "PT_AREA_BISECTING_LINE"
+   ],
+   "usageInKeys": 39,
+   "usageInItems": 6,
+   "addedDuringItems": false
+  },
+  {
+   "id": 214,
+   "ko": "둘레",
+   "en": [
+    "PERIMETER"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
+    "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+    "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 215,
+   "ko": "길이",
+   "en": [
+    "LENGTH"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TM_TANGENT_LENGTH",
+    "TM_CIRCLE_CHORD_LENGTH",
+    "TPL_INCENTER_BY_VERTICES",
+    "PT_PARALLEL_SEGMENT_RATIO",
+    "TPL_DISTANCE_TRIANGLE_CLASS"
+   ],
+   "usageInKeys": 20,
+   "usageInItems": 4,
+   "addedDuringItems": false
+  },
+  {
+   "id": 216,
+   "ko": "거리",
+   "en": [
+    "DISTANCE"
+   ],
+   "synonyms": [
+    "등거리",
+    "거리식"
+   ],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "PT_COORD_DISTANCE",
+    "TPL_DISTANCE_SUM_MIN",
+    "TPL_DISTANCE_UNKNOWN",
+    "TPL_EQUIDISTANT_AXIS",
+    "TPL_EQUIDISTANT_LINE"
+   ],
+   "usageInKeys": 44,
+   "usageInItems": 3,
+   "addedDuringItems": false
+  },
+  {
+   "id": 217,
+   "ko": "최단거리",
+   "en": [
+    "SHORTEST"
+   ],
+   "synonyms": [
+    "HORTEST"
+   ],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TT_SHORTEST_ONE_LINE",
+    "TT_SHORTEST_MULTI_LINE",
+    "TT_SHORTEST_WITH_POSITION",
+    "PT_MOVE_REFLECTION_SHORTEST"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 218,
+   "ko": "높이",
+   "en": [
+    "HEIGHT"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "PT_M1_TRAPEZOID_AREA",
+    "TPL_M1_TRAPEZOID_AREA_CORE",
+    "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+    "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 219,
+   "ko": "부피",
+   "en": [
+    "VOLUME"
+   ],
+   "synonyms": [
+    "부피비"
+   ],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "PT_M1_SOLID_FIGURE_MEASURE",
+    "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+    "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+    "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+    "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+   ],
+   "usageInKeys": 11,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 220,
+   "ko": "겉넓이",
+   "en": [
+    "SURFACE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "PT_M1_SOLID_FIGURE_MEASURE",
+    "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+    "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+    "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+    "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE"
+   ],
+   "usageInKeys": 10,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 221,
+   "ko": "방정식구하기",
+   "en": [
+    "FIND_EQUATION"
+   ],
+   "synonyms": [],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LINE_EQUATION",
+    "TPL_LINE_PARALLEL",
+    "TPL_LINE_TWO_POINTS",
+    "TPL_LINE_POINT_SLOPE",
+    "TPL_LINE_PERPENDICULAR"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 222,
+   "ko": "등거리",
+   "en": [
+    "EQUIDISTANT",
+    "EQUIDISTANCE"
+   ],
+   "synonyms": [
+    "같은거리",
+    "동일거리"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_COORD_EQUIDISTANT",
+    "TPL_EQUIDISTANT_AXIS",
+    "TPL_EQUIDISTANT_LINE",
+    "TPL_EQUIDISTANT_UNKNOWN"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 223,
+   "ko": "집합",
+   "en": [
+    "SET",
+    "SETS"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_ABSORPTION",
+    "PT_SET_EQUALITY",
+    "PT_SET_EXTREMUM",
+    "TPL_UNION_RANGE",
+    "PT_SET_AGGREGATE"
+   ],
+   "usageInKeys": 58,
+   "usageInItems": 7,
+   "addedDuringItems": false
+  },
+  {
+   "id": 224,
+   "ko": "원소",
+   "en": [
+    "ELEMENT"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_SET_EXTREMUM",
+    "TPL_UNION_RANGE",
+    "PT_SET_AGGREGATE",
+    "PT_SET_CARDINALITY",
+    "TPL_EXACTLY_K_SETS"
+   ],
+   "usageInKeys": 25,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 225,
+   "ko": "부분집합",
+   "en": [
+    "SUBSET"
+   ],
+   "synonyms": [
+    "진부분집합"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_SUBSET_COUNT",
+    "TPL_SUBSET_DIRECT",
+    "PT_SUBSET_JUDGMENT",
+    "PT_SET_ELEMENT_RELATION",
+    "TPL_NESTED_SET_RELATION"
+   ],
+   "usageInKeys": 14,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 226,
+   "ko": "공집합",
+   "en": [
+    "EMPTY_SET"
+   ],
+   "synonyms": [
+    "NONEMPTY"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_PROPER_OR_NONEMPTY_SUBSET_COUNT"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 227,
+   "ko": "합집합",
+   "en": [
+    "UNION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_UNION_RANGE"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 228,
+   "ko": "교집합",
+   "en": [
+    "INTERSECTION_SET"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_INTERSECTION_RANGE",
+    "PT_LOG_INEQUALITY_DOMAIN",
+    "TPL_RECONSTRUCT_FROM_REGIONS",
+    "TPL_INTERSECTION_CARDINALITY_DIRECT",
+    "TPL_LOG_QUADRATIC_INTERVAL_INTERSECTION"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 229,
+   "ko": "차집합",
+   "en": [
+    "DIFFERENCE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_RECONSTRUCT_FROM_REGIONS",
+    "TPL_DIFFERENCE_CARDINALITY_DIRECT"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 230,
+   "ko": "여집합",
+   "en": [
+    "COMPLEMENT"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_COMPLEMENT_CARDINALITY",
+    "TPL_RECONSTRUCT_FROM_REGIONS"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 231,
+   "ko": "벤다이어그램",
+   "en": [
+    "VENN"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_EXPRESSION_TO_VENN",
+    "TPL_REGION_EQUIVALENCE",
+    "TPL_VENN_TO_EXPRESSION",
+    "PT_SET_REGION_EXPRESSION"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 232,
+   "ko": "포함관계",
+   "en": [
+    "INCLUSION"
+   ],
+   "synonyms": [
+    "포함하는",
+    "포함되는",
+    "포함",
+    "집합관계"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_SET_INCLUSION",
+    "TPL_INCLUSION_DIRECT",
+    "TPL_INCLUSION_PARAMETER",
+    "PT_M3_RADICAL_CALCULATION",
+    "TPL_QUANTIFIED_SET_RELATION"
+   ],
+   "usageInKeys": 23,
+   "usageInItems": 3,
+   "addedDuringItems": false
+  },
+  {
+   "id": 233,
+   "ko": "진리집합",
+   "en": [
+    "TRUTHSET",
+    "TRUTH_SET"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_TRUTH_SET_RELATION",
+    "TPL_TRUTHSET_SET_OPERATION",
+    "TPL_QUANTIFIED_SET_RELATION",
+    "TPL_TRUTHSET_CHAINED_INCLUSION",
+    "TPL_FINITE_TRUTHSET_ENUMERATION"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 234,
+   "ko": "명제",
+   "en": [
+    "PROPOSITION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_TRUTH_SET_RELATION",
+    "TPL_IMPLICATION_CHAIN",
+    "PT_QUANTIFIER_NEGATION",
+    "PT_PROPOSITION_JUDGMENT",
+    "PT_PROPOSITION_TRANSFORM"
+   ],
+   "usageInKeys": 31,
+   "usageInItems": 5,
+   "addedDuringItems": false
+  },
+  {
+   "id": 235,
+   "ko": "필요충분조건",
+   "en": [
+    "NEC_SUFF"
+   ],
+   "synonyms": [
+    "필요충분"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 236,
+   "ko": "필요조건",
+   "en": [
+    "NECESSARY",
+    "NEC"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_NEC_SUFF_CHAIN",
+    "PT_NEC_SUFF_RELATION",
+    "TPL_NEC_SUFF_SET_RELATION",
+    "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+    "TPL_NEC_SUFF_RELATION_FUNCTION"
+   ],
+   "usageInKeys": 7,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 237,
+   "ko": "충분조건",
+   "en": [
+    "SUFFICIENT",
+    "SUFF"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_NEC_SUFF_CHAIN",
+    "PT_NEC_SUFF_RELATION",
+    "TPL_NEC_SUFF_SET_RELATION",
+    "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+    "TPL_NEC_SUFF_RELATION_FUNCTION"
+   ],
+   "usageInKeys": 7,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 238,
+   "ko": "대우",
+   "en": [
+    "CONTRAPOSITIVE"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_CONTRAPOSITIVE_PROOF",
+    "PT_PROPOSITION_TRANSFORM",
+    "TPL_CONTRAPOSITIVE_SIGN_PROOF",
+    "TPL_CONTRAPOSITIVE_DIVISIBILITY_PROOF",
+    "TPL_CONVERSE_CONTRAPOSITIVE_CONSTRUCTION"
+   ],
+   "usageInKeys": 9,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 239,
+   "ko": "역과이",
+   "en": [
+    "CONVERSE"
+   ],
+   "synonyms": [
+    "역"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_PROPOSITION_TRANSFORM",
+    "TPL_CONVERSE_FALSE_PARAMETER_COUNT",
+    "TPL_CONVERSE_CONTRAPOSITIVE_CONSTRUCTION",
+    "TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER",
+    "TPL_CONVERSE_CONTRAPOSITIVE_TRUTH_JUDGMENT"
+   ],
+   "usageInKeys": 7,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 240,
+   "ko": "귀류법",
+   "en": [
+    "CONTRADICTION"
+   ],
+   "synonyms": [
+    "모순"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_CONTRADICTION_PROOF",
+    "TPL_INEQUALITY_CONTRADICTION",
+    "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+    "TPL_IRRATIONALITY_INTEGER_GAP_CONTRADICTION",
+    "TPL_IRRATIONALITY_DIVISIBILITY_CONTRADICTION"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 241,
+   "ko": "양화",
+   "en": [
+    "QUANTIFIER"
+   ],
+   "synonyms": [
+    "모든",
+    "어떤",
+    "존재명제",
+    "양화명제",
+    "전칭",
+    "UNIVERSAL",
+    "EXISTENTIAL"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_SET_ELEMENT_SUM",
+    "PT_QUANTIFIER_NEGATION",
+    "TPL_QUANTIFIED_SET_RELATION",
+    "TPL_QUANTIFIER_TRUTH_JUDGMENT",
+    "TPL_EXISTENTIAL_NEGATION_BASIC"
+   ],
+   "usageInKeys": 10,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 242,
+   "ko": "부정",
+   "en": [
+    "NEGATION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_QUANTIFIER_NEGATION",
+    "TPL_QUANTIFIER_TRUTH_JUDGMENT",
+    "TPL_EXISTENTIAL_NEGATION_BASIC",
+    "TPL_QUANTIFIER_NEGATION_INTERVAL",
+    "TPL_EXISTENTIAL_NEGATION_PARAMETER"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 243,
+   "ko": "반례법",
+   "en": [
+    "COUNTEREXAMPLE"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 244,
+   "ko": "논리",
+   "en": [
+    "LOGIC"
+   ],
+   "synonyms": [
+    "논리관계"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LOGIC_CHAIN",
+    "TPL_IMPLICATION_CHAIN",
+    "TPL_LOGIC_CONSTRAINT_PUZZLE"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 245,
+   "ko": "순열",
+   "en": [
+    "PERMUTATION"
+   ],
+   "synonyms": [
+    "배열",
+    "일렬배열"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_COUNTING_ARRANGEMENT",
+    "TPL_CIRCULAR_PERMUTATION",
+    "TPL_IDENTICAL_OBJECT_PERMUTATION",
+    "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+    "TPL_PERMUTATION_STANDARD_CONSTRAINT"
+   ],
+   "usageInKeys": 7,
+   "usageInItems": 17,
+   "addedDuringItems": false
+  },
+  {
+   "id": 246,
+   "ko": "중복순열",
+   "en": [
+    "REPEATED_PERMUTATION"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_COUNTING_REPEATED_ASSIGNMENT",
+    "TPL_REPEATED_PERMUTATION_ASSIGNMENT"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 247,
+   "ko": "원순열",
+   "en": [
+    "CIRCULAR_PERMUTATION",
+    "CIRCULAR"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_CIRCULAR_PERMUTATION"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 248,
+   "ko": "조합",
+   "en": [
+    "COMBINATION"
+   ],
+   "synonyms": [
+    "선택",
+    "SELECTION",
+    "SELECT",
+    "SELECTED"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_COMBINATION_SELECTION",
+    "TPL_H1_SELECTION_BOX_IDENTITY",
+    "TPL_H1_BINOMIAL_IDENTITY_CHECK",
+    "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "TPL_H1_BINOMIAL_PARAMETER_RELATION"
+   ],
+   "usageInKeys": 10,
+   "usageInItems": 17,
+   "addedDuringItems": false
+  },
+  {
+   "id": 249,
+   "ko": "이항정리",
+   "en": [
+    "BINOMIAL"
+   ],
+   "synonyms": [
+    "이항계수"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_BINOMIAL_THEOREM",
+    "TPL_BINOMIAL_TERM_COEFFICIENT",
+    "TPL_BINOMIAL_COEFFICIENT_IDENTITY"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 250,
+   "ko": "독립시행",
+   "en": [
+    "REPEATED",
+    "TRIAL",
+    "TRIALS"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_PROBABILITY_REPEATED_TRIALS",
+    "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+    "TPL_INDEPENDENT_TRIAL_STATE_PARITY"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 251,
+   "ko": "조건부확률",
+   "en": [
+    "CONDITIONAL"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_CONDITIONAL_PROBABILITY",
+    "TPL_CONDITIONAL_BRANCH_REVERSE",
+    "TPL_CONDITIONAL_PROBABILITY_DIRECT"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 252,
+   "ko": "사건",
+   "en": [
+    "EVENT"
+   ],
+   "synonyms": [
+    "독립",
+    "종속"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_EVENT_INDEPENDENCE",
+    "TPL_MOTION_EVENT_ANALYSIS",
+    "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+    "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 253,
+   "ko": "여사건",
+   "en": [
+    "COMPLEMENT_EVENT"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 6,
+   "addedDuringItems": false
+  },
+  {
+   "id": 254,
+   "ko": "확률변수",
+   "en": [
+    "RANDOM",
+    "VARIABLE"
+   ],
+   "synonyms": [
+    "확률분포",
+    "확률밀도함수"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_EXPECTATION_TRANSFORM",
+    "PT_RANDOM_VARIABLE_DISTRIBUTION",
+    "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+    "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 255,
+   "ko": "기댓값",
+   "en": [
+    "EXPECTATION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "PT_EXPECTATION_VARIANCE",
+    "TPL_EXPECTATION_TRANSFORM",
+    "TPL_VARIANCE_STANDARD_DEVIATION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 256,
+   "ko": "분산",
+   "en": [
+    "VARIANCE"
+   ],
+   "synonyms": [
+    "표준편차"
+   ],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "PT_EXPECTATION_VARIANCE",
+    "TPL_EXPECTATION_TRANSFORM",
+    "TPL_BINOMIAL_PARAMETER_MOMENTS",
+    "TPL_VARIANCE_STANDARD_DEVIATION"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 257,
+   "ko": "이항분포",
+   "en": [
+    "BINOMIAL_DISTRIBUTION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_BINOMIAL_DISTRIBUTION",
+    "TPL_BINOMIAL_PROBABILITY",
+    "TPL_BINOMIAL_NORMAL_RELATION",
+    "TPL_BINOMIAL_PARAMETER_MOMENTS"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 258,
+   "ko": "정규분포",
+   "en": [
+    "NORMAL"
+   ],
+   "synonyms": [
+    "표준화"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_NORMAL_DISTRIBUTION",
+    "TPL_NORMAL_STANDARDIZATION",
+    "TPL_BINOMIAL_NORMAL_RELATION",
+    "TPL_NORMAL_DISTRIBUTION_APPLICATION"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 259,
+   "ko": "표본평균",
+   "en": [
+    "SAMPLE"
+   ],
+   "synonyms": [
+    "모평균",
+    "모수"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_SAMPLE_MEAN_DISTRIBUTION",
+    "TPL_SAMPLE_MEAN_DISTRIBUTION",
+    "TPL_BINOMIAL_PARAMETER_MOMENTS",
+    "TPL_POPULATION_MEAN_ESTIMATION"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 260,
+   "ko": "통계적추정",
+   "en": [
+    "ESTIMATION"
+   ],
+   "synonyms": [
+    "신뢰구간",
+    "표본조사",
+    "전수조사"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_STATISTICAL_ESTIMATION",
+    "TPL_POPULATION_MEAN_ESTIMATION",
+    "TPL_CENSUS_SAMPLE_SURVEY_JUDGMENT",
+    "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 261,
+   "ko": "자료",
+   "en": [
+    "DATA"
+   ],
+   "synonyms": [
+    "DATASET"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_DATA_ORDER_AND_VALUE",
+    "TPL_H1_MATRIX_PRODUCT_MODEL",
+    "PT_M1_DATA_EXTREME_VALUE_SUM",
+    "PT_M1_DATA_CATEGORY_PERCENTAGE",
+    "TPL_M1_DATA_ORDER_AND_VALUE_CORE"
+   ],
+   "usageInKeys": 19,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 262,
+   "ko": "평균",
+   "en": [
+    "MEAN",
+    "AVERAGE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TPL_MVT_ROLLE_DIRECT",
+    "TPL_BINOMIAL_PARAMETER_MOMENTS",
+    "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+    "TPL_M1_CENTRAL_TENDENCY_DATASET_CLAIM_COMPARISON",
+    "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 263,
+   "ko": "중앙값",
+   "en": [
+    "MEDIAN"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+    "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+    "TPL_M1_CENTRAL_TENDENCY_DATASET_CLAIM_COMPARISON",
+    "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 264,
+   "ko": "최빈값",
+   "en": [
+    "MODE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+    "TPL_M1_CENTRAL_TENDENCY_DATASET_CLAIM_COMPARISON",
+    "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 265,
+   "ko": "대푯값",
+   "en": [
+    "CENTRAL_TENDENCY"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "PT_M1_CENTRAL_TENDENCY",
+    "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+    "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+    "TPL_M1_CENTRAL_TENDENCY_DATASET_CLAIM_COMPARISON",
+    "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 266,
+   "ko": "도수분포표",
+   "en": [
+    "FREQUENCY"
+   ],
+   "synonyms": [
+    "도수",
+    "누적"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "TPL_M1_FREQUENCY_DISTRIBUTION_GRAPH_CONSTRUCTION",
+    "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+    "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+    "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 267,
+   "ko": "상대도수",
+   "en": [
+    "RELATIVE"
+   ],
+   "synonyms": [
+    "백분율",
+    "PERCENTAGE"
+   ],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "PT_M1_DATA_CATEGORY_PERCENTAGE",
+    "TPL_M1_DATA_CATEGORY_PERCENTAGE_CORE",
+    "TPL_M1_DATA_CATEGORY_PERCENTAGE_CLASS_GROUP_SUM",
+    "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
+    "TPL_M1_DATA_CATEGORY_PERCENTAGE_RELATIVE_FREQUENCY_RATIO"
+   ],
+   "usageInKeys": 9,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 268,
+   "ko": "줄기와잎",
+   "en": [
+    "STEM",
+    "LEAF"
+   ],
+   "synonyms": [
+    "줄기",
+    "잎"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_STEM_LEAF_PLACEHOLDER_EVALUATION",
+    "TPL_M1_STEM_LEAF_PLACEHOLDER_EVALUATION_CORE",
+    "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+    "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 269,
+   "ko": "수열",
+   "en": [
+    "SEQUENCE"
+   ],
+   "synonyms": [
+    "일반항"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H22A_07_SEQUENCE_SUM",
+    "TPL_H22A_07_SEQUENCE_SUM_125",
+    "TPL_H22A_07_SEQUENCE_SUM_126",
+    "PT_H22A_08_RECURSIVE_SEQUENCE",
+    "PT_H22A_06_SEQUENCE_APPLICATION"
+   ],
+   "usageInKeys": 12,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 270,
+   "ko": "등차수열",
+   "en": [
+    "ARITHMETIC_SEQUENCE"
+   ],
+   "synonyms": [
+    "등차중항"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H22A_06_ARITHMETIC_SEQUENCE",
+    "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+    "TPL_H22A_06_ARITHMETIC_SEQUENCE_116",
+    "TPL_H22A_06_ARITHMETIC_SEQUENCE_117"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 271,
+   "ko": "등비수열",
+   "en": [
+    "GEOMETRIC_SEQUENCE"
+   ],
+   "synonyms": [
+    "등비"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H22A_06_GEOMETRIC_SEQUENCE",
+    "TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+    "TPL_H22A_06_GEOMETRIC_SEQUENCE_119",
+    "TPL_H22A_06_GEOMETRIC_SEQUENCE_120"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 272,
+   "ko": "계차수열",
+   "en": [
+    "DIFFERENCE_SEQUENCE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H22A_07_DIFFERENCE_SEQUENCE",
+    "TPL_H22A_07_DIFFERENCE_SEQUENCE_127",
+    "TPL_H22A_07_DIFFERENCE_SEQUENCE_128"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 273,
+   "ko": "시그마",
+   "en": [
+    "SIGMA",
+    "SIGMA_NOTATION"
+   ],
+   "synonyms": [
+    "합의기호"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H22A_07_SIGMA_NOTATION",
+    "TPL_H22A_07_SIGMA_NOTATION_123",
+    "TPL_H22A_07_SIGMA_NOTATION_124"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 274,
+   "ko": "귀납적정의",
+   "en": [
+    "RECURSIVE"
+   ],
+   "synonyms": [
+    "점화식",
+    "재귀",
+    "재귀적으로"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_RECURSIVE_FUNCTION",
+    "PT_H22A_08_RECURSIVE_SEQUENCE",
+    "TPL_RECURSIVE_FUNCTION_VALUES",
+    "TPL_H22A_08_RECURSIVE_SEQUENCE_129",
+    "TPL_H22A_08_RECURSIVE_SEQUENCE_130"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 275,
+   "ko": "수학적귀납법",
+   "en": [
+    "MATHEMATICAL_INDUCTION",
+    "INDUCTION"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H22A_08_MATHEMATICAL_INDUCTION",
+    "TPL_H22A_08_MATHEMATICAL_INDUCTION_131",
+    "TPL_H22A_08_MATHEMATICAL_INDUCTION_132"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 276,
+   "ko": "지수",
+   "en": [
+    "EXPONENT"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_EXPONENT_CALCULATION",
+    "TPL_EXPONENT_LAW_EVALUATION",
+    "TPL_LOG_DECAY_EXPONENT_SOLVE",
+    "PT_H22A_01_EXPONENT_EXTENSION",
+    "TPL_H22A_01_EXPONENT_LAWS_071"
+   ],
+   "usageInKeys": 28,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 277,
+   "ko": "지수법칙",
+   "en": [
+    "EXPONENT_LAW",
+    "LAW",
+    "LAWS",
+    "EXPONENT_LAWS"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H22A_01_EXPONENT_LAWS",
+    "PT_EXPONENT_LAW_APPLICATION",
+    "TPL_EXPONENT_LAW_EVALUATION",
+    "TPL_H22A_01_EXPONENT_LAWS_071",
+    "TPL_H22A_01_EXPONENT_LAWS_072"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 278,
+   "ko": "로그",
+   "en": [
+    "LOG"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LOG_APPLICATION",
+    "PT_EXPONENTIAL_INEQUALITY",
+    "PT_H22A_01_LOG_DEFINITION",
+    "PT_H22A_01_LOG_PROPERTIES",
+    "PT_LOG_DOMAIN_ELIGIBILITY"
+   ],
+   "usageInKeys": 34,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 279,
+   "ko": "밑",
+   "en": [
+    "BASE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LOG_REAL_DOMAIN_SPLIT",
+    "TPL_H22A_02_EXP_EQUATION_081",
+    "TPL_LOG_DOUBLE_QUADRATIC_ROOT",
+    "TPL_H22A_01_LOG_DEFINITION_074",
+    "TPL_H22A_01_LOG_PROPERTIES_076"
+   ],
+   "usageInKeys": 13,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 280,
+   "ko": "진수",
+   "en": [
+    "ARGUMENT_LOG"
+   ],
+   "synonyms": [
+    "진수조건"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LOG_REAL_DOMAIN_SPLIT",
+    "TPL_H22A_03_LOG_EQUATION_089",
+    "TPL_H22A_01_LOG_DEFINITION_074",
+    "TPL_LOG_EQUATION_ARGUMENT_FILTER",
+    "TPL_LOG_BASE_ARGUMENT_INTEGER_DOMAIN"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 281,
+   "ko": "상용로그",
+   "en": [
+    "COMMON_LOG"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H22A_01_COMMON_LOG",
+    "TPL_H22A_01_COMMON_LOG_077",
+    "TPL_H22A_01_COMMON_LOG_078",
+    "TPL_LOG_DECAY_EXPONENT_SOLVE",
+    "TPL_LOG_SOUND_DISTANCE_DECIBEL"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 282,
+   "ko": "밑변환",
+   "en": [
+    "CHANGE_OF_BASE"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LOG_IDENTITY_OPERATIONS",
+    "TPL_LOG_DECAY_EXPONENT_SOLVE",
+    "TPL_LOG_BASE_CHANGE_PARAMETER",
+    "TPL_LOG_DOUBLE_QUADRATIC_ROOT",
+    "TPL_LOG_PRODUCT_GRAPH_ABSCISSA"
+   ],
+   "usageInKeys": 9,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 283,
+   "ko": "지수성장",
+   "en": [
+    "GROWTH"
+   ],
+   "synonyms": [
+    "지수적증가",
+    "지수적감소",
+    "DECAY",
+    "반감기"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_EXPONENTIAL_DECAY",
+    "TPL_EXPONENTIAL_DECAY_HALF_LIFE",
+    "TPL_LOG_EXPONENTIAL_GROWTH_MODEL"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 284,
+   "ko": "산술기하평균",
+   "en": [
+    "AMGM"
+   ],
+   "synonyms": [
+    "산술평균",
+    "기하평균"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_AMGM_PROOF",
+    "TPL_AMGM_MINIMUM"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 4,
+   "addedDuringItems": false
+  },
+  {
+   "id": 285,
+   "ko": "코시슈바르츠",
+   "en": [
+    "CAUCHY"
+   ],
+   "synonyms": [
+    "슈바르츠",
+    "코시"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_CAUCHY_PROOF",
+    "TPL_CAUCHY_MINIMUM",
+    "TPL_CAUCHY_EXTREMUM"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 286,
+   "ko": "합",
+   "en": [
+    "SUM"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "PT_SET_EXTREMUM",
+    "TPL_UNION_RANGE",
+    "PT_SET_AGGREGATE",
+    "TPL_SET_ELEMENT_SUM",
+    "TPL_DIFFERENCE_RANGE"
+   ],
+   "usageInKeys": 36,
+   "usageInItems": 21,
+   "addedDuringItems": false
+  },
+  {
+   "id": 287,
+   "ko": "곱",
+   "en": [
+    "PRODUCT"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TPL_DISTANCE_PRODUCT_MAX",
+    "TPL_AMGM_PRODUCT_EXTREMUM",
+    "TPL_H1_COUNTING_DIRECT_CASE",
+    "TPL_H1_VIETA_SYMMETRIC_VALUE",
+    "TPL_H22A_01_LOG_PROPERTIES_075"
+   ],
+   "usageInKeys": 18,
+   "usageInItems": 5,
+   "addedDuringItems": false
+  },
+  {
+   "id": 288,
+   "ko": "차",
+   "en": [
+    "DIFFERENCE_VALUE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+    "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
+    "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
+    "TPL_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS_CORE",
+    "TPL_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY_CORE"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 289,
+   "ko": "비",
+   "en": [
+    "RATIO"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "PT_PARALLEL_SEGMENT_RATIO",
+    "TM_CIRCLE_DISTANCE_RATIO_LOCUS",
+    "TPL_LOG_SOUND_DISTANCE_DECIBEL",
+    "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE"
+   ],
+   "usageInKeys": 11,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 290,
+   "ko": "정비례",
+   "en": [
+    "DIRECT_PROPORTION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
+    "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
+    "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
+    "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 291,
+   "ko": "반비례",
+   "en": [
+    "INVERSE_PROPORTION"
+   ],
+   "synonyms": [
+    "비례"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
+    "PT_M1_SQUARE_COORDINATES_AND_GRAPH_COEFFICIENTS",
+    "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
+    "PT_M1_INVERSE_PROPORTION_INTEGER_POINT_ENUMERATION"
+   ],
+   "usageInKeys": 10,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 292,
+   "ko": "행렬",
+   "en": [
+    "MATRIX"
+   ],
+   "synonyms": [
+    "행렬곱"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H1_MATRIX_EQUATION",
+    "TPL_H1_MATRIX_BASIC_DIRECT",
+    "TPL_H1_MATRIX_POWER_PERIOD",
+    "PT_H1_MATRIX_MULTIPLICATION",
+    "PT_H1_MATRIX_POWER_IDENTITY"
+   ],
+   "usageInKeys": 12,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 293,
+   "ko": "경우분류",
+   "en": [
+    "CASE",
+    "CASES"
+   ],
+   "synonyms": [
+    "경우나누기",
+    "구간별로",
+    "구간별",
+    "분기"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_ABSOLUTE_VALUE_CASE_PROOF",
+    "TPL_CONDITIONAL_BRANCH_REVERSE",
+    "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+    "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT",
+    "PT_LOG_FLOOR_INTERVAL_ENUMERATION"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 23,
+   "addedDuringItems": false
+  },
+  {
+   "id": 294,
+   "ko": "열거",
+   "en": [
+    "ENUMERATION"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 8,
+   "addedDuringItems": false
+  },
+  {
+   "id": 295,
+   "ko": "수직선",
+   "en": [
+    "NUMBER_LINE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M3_REAL_NUMBER_LINE",
+    "TPL_M3_NUMBER_LINE_SQUARE_ROTATION",
+    "TPL_M3_NUMBER_LINE_IRRATIONAL_MAPPING"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 296,
+   "ko": "구간",
+   "en": [
+    "INTERVAL"
+   ],
+   "synonyms": [],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LOG_INEQUALITY_DOMAIN",
+    "TPL_LOG_REAL_DOMAIN_SPLIT",
+    "TPL_AFFINE_INTERVAL_BIJECTION",
+    "TPL_H22A_04_TRIG_EQUATION_102",
+    "TPL_GLOBAL_INTEGRAL_CONSTRAINT"
+   ],
+   "usageInKeys": 17,
+   "usageInItems": 3,
+   "addedDuringItems": false
+  },
+  {
+   "id": 297,
+   "ko": "범위",
+   "en": [
+    "BOUNDED",
+    "BOUND"
+   ],
+   "synonyms": [
+    "범위안",
+    "가능한범위"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_MVT_BOUND_LIMIT",
+    "PT_BOUNDED_PRIME_COUNT",
+    "PT_M1_COPRIME_TEST_AND_COUNT",
+    "PT_M3_REAL_NUMBER_COMPARISON",
+    "TPL_BOUNDED_PRIME_COUNT_CORE"
+   ],
+   "usageInKeys": 15,
+   "usageInItems": 10,
+   "addedDuringItems": false
+  },
+  {
+   "id": 298,
+   "ko": "상황",
+   "en": [
+    "CONTEXT"
+   ],
+   "synonyms": [
+    "문장",
+    "문장제",
+    "수량",
+    "가격",
+    "시간",
+    "CONTEXT_WORD"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LCM_APPLICATION",
+    "PT_M1_LINEAR_EQUATION_MODELING",
+    "TPL_LCM_APPLICATION_GEAR_CYCLE",
+    "TPL_LCM_APPLICATION_TILING_BY_LCM",
+    "TPL_M1_LINEAR_EQUATION_MODEL_RATE"
+   ],
+   "usageInKeys": 20,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 299,
+   "ko": "모델링",
+   "en": [
+    "MODEL",
+    "MODELING",
+    "MODELED"
+   ],
+   "synonyms": [
+    "모형",
+    "모델",
+    "모델의",
+    "일차방정식으로나타내"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_MOTION_COMPOSITE_MODEL",
+    "TPL_LOG_DECAY_EXPONENT_SOLVE",
+    "TPL_RATIONAL_ASYMPTOTE_MODEL",
+    "PT_M1_LINEAR_EQUATION_MODELING",
+    "TPL_H1_QUADRATIC_EXTREMA_MODEL"
+   ],
+   "usageInKeys": 12,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 300,
+   "ko": "사전식배열",
+   "en": [
+    "LEXICOGRAPHIC"
+   ],
+   "synonyms": [
+    "사전식"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 301,
+   "ko": "이웃하지않음",
+   "en": [
+    "AVOID"
+   ],
+   "synonyms": [],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 302,
+   "ko": "정의역제한",
+   "en": [
+    "RESTRICTION"
+   ],
+   "synonyms": [
+    "제한구간",
+    "제한과"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_QUADRATIC_DOMAIN_BIJECTION",
+    "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+    "TPL_FUNCTION_COUNT_VALUE_RESTRICTION_AND_ORDER"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 8,
+   "addedDuringItems": false
+  },
+  {
+   "id": 303,
+   "ko": "연속정수",
+   "en": [
+    "CONSECUTIVE"
+   ],
+   "synonyms": [
+    "연속된",
+    "연속한"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_PRIME_EXPONENT_IN_CONSECUTIVE_PRODUCT",
+    "TPL_PRIME_EXPONENT_IN_CONSECUTIVE_PRODUCT_CORE"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 304,
+   "ko": "변환",
+   "en": [
+    "TRANSFORM",
+    "TRANSFORMATION",
+    "TRANSFORMED"
+   ],
+   "synonyms": [
+    "변형"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_PROPOSITION_TRANSFORM",
+    "TPL_H1_FORMULA_SYMMETRIC",
+    "TPL_EXPECTATION_TRANSFORM",
+    "PT_FUNCTION_GRAPH_TRANSFORM",
+    "TPL_H1_VIETA_TRANSFORMED_ROOT"
+   ],
+   "usageInKeys": 22,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 305,
+   "ko": "성질",
+   "en": [
+    "PROPERTIES",
+    "PROPERTY"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_FIGURE_RHOMBUS",
+    "PT_INVERSE_PROPERTIES",
+    "PT_ISOSCELES_TRIANGLE",
+    "TPL_ISOSCELES_CONVERSE",
+    "TPL_DEFINITE_EVALUATION"
+   ],
+   "usageInKeys": 86,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 306,
+   "ko": "관계",
+   "en": [
+    "RELATION",
+    "RELATIONS"
+   ],
+   "synonyms": [
+    "관계식"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_TRIG_RATIO",
+    "TPL_AMGM_PROOF",
+    "TPL_NEC_SUFF_CHAIN",
+    "TT_EQUATION_RELATION",
+    "PT_TRUTH_SET_RELATION"
+   ],
+   "usageInKeys": 108,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 307,
+   "ko": "위치관계",
+   "en": [
+    "POSITION",
+    "POSITIONAL",
+    "SPATIAL"
+   ],
+   "synonyms": [
+    "위치",
+    "위치조건"
+   ],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LINE_RELATION",
+    "PT_M3_REAL_NUMBER_LINE",
+    "TM_CIRCLE_LINE_POSITION",
+    "TT_SHORTEST_WITH_POSITION",
+    "TPL_H22A_01_COMMON_LOG_078"
+   ],
+   "usageInKeys": 33,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 308,
+   "ko": "매개변수",
+   "en": [
+    "PARAMETER"
+   ],
+   "synonyms": [
+    "변수",
+    "미지수",
+    "미지",
+    "UNKNOWN"
+   ],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TPL_DISTANCE_UNKNOWN",
+    "TPL_EQUAL_SET_PARAMETER",
+    "TPL_EQUIDISTANT_UNKNOWN",
+    "TPL_INCLUSION_PARAMETER",
+    "TT_EQUATION_GRAPH_MAPPING"
+   ],
+   "usageInKeys": 32,
+   "usageInItems": 35,
+   "addedDuringItems": false
+  },
+  {
+   "id": 309,
+   "ko": "상수",
+   "en": [
+    "CONSTANT"
+   ],
+   "synonyms": [
+    "CONSTANTS"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "PT_M1_SQUARE_COORDINATES_AND_GRAPH_COEFFICIENTS",
+    "TPL_M1_SQUARE_COORDINATES_AND_GRAPH_COEFFICIENTS_CORE",
+    "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
+    "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION"
+   ],
+   "usageInKeys": 6,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 310,
+   "ko": "대각선",
+   "en": [
+    "DIAGONAL"
+   ],
+   "synonyms": [
+    "DIAGONALS"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "TPL_M3_NUMBER_LINE_SQUARE_ROTATION",
+    "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
+    "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+    "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM"
+   ],
+   "usageInKeys": 7,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 311,
+   "ko": "꼭짓점",
+   "en": [
+    "VERTEX"
+   ],
+   "synonyms": [
+    "VERTICES"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_CENTROID_DIRECT",
+    "TPL_CENTROID_REVERSE",
+    "TPL_INCENTER_BY_VERTICES",
+    "TPL_DISTANCE_VERTEX_SQSUM",
+    "PT_M1_POLYHEDRON_COMPONENT_COUNT"
+   ],
+   "usageInKeys": 9,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 312,
+   "ko": "정점",
+   "en": [
+    "FIXED_POINT"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_LINE_FAMILY_COMMON_POINT",
+    "TT_LINE_TRANSLATION_COMMON_POINT",
+    "TPL_ITERATION_FIXED_POINT_PREIMAGE",
+    "TPL_LINE_FAMILY_COMMON_POINT_APPLICATION"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 313,
+   "ko": "중복조합",
+   "en": [
+    "REPEATED_COMBINATION"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_COMBINATION_SELECTION",
+    "TPL_H1_SELECTION_BOX_IDENTITY",
+    "TPL_H1_BINOMIAL_IDENTITY_CHECK",
+    "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "TPL_H1_BINOMIAL_PARAMETER_RELATION"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 314,
+   "ko": "배정",
+   "en": [
+    "ASSIGNMENT"
+   ],
+   "synonyms": [
+    "배분"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_SELECTION_BOX_IDENTITY",
+    "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+    "TPL_M1_TRIANGLE_ANGLE_CONDITION_RATIO",
+    "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+    "TPL_H1_SELECTION_CAPACITY_DISTRIBUTION"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 315,
+   "ko": "배치",
+   "en": [
+    "CONFIGURATION"
+   ],
+   "synonyms": [
+    "PLACEMENT",
+    "TILING",
+    "채우기"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_COUNT_TOURNAMENT_BRACKET",
+    "PT_M1_REGULAR_POLYGON_TESSELLATION",
+    "TPL_M1_REGULAR_POLYGON_TESSELLATION_CORE",
+    "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+    "PT_TRIANGLE_AREA_FROM_SQUARE_EQUILATERAL_POSITION"
+   ],
+   "usageInKeys": 7,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 316,
+   "ko": "변화량",
+   "en": [
+    "CHANGE"
+   ],
+   "synonyms": [
+    "변화",
+    "SIGNED",
+    "변위"
+   ],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "PT_M1_SIGNED_CHANGE_MODEL",
+    "TPL_VELOCITY_TO_POSITION_DISTANCE",
+    "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+    "TPL_M1_SIGNED_CHANGE_MODEL_TIME_OFFSET_ROLLOVER",
+    "TPL_M1_SIGNED_CHANGE_MODEL_SIGNED_RELATIVE_CHANGE"
+   ],
+   "usageInKeys": 11,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 317,
+   "ko": "불변량",
+   "en": [
+    "INVARIANT"
+   ],
+   "synonyms": [
+    "INVARIANTS",
+    "보존",
+    "불변식"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_CONGRUENCE_INVARIANTS",
+    "TPL_M1_CONGRUENCE_INVARIANTS_CORE",
+    "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+    "TPL_FUNCTIONAL_EQUATION_DIFFERENTIAL_INVARIANT"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 318,
+   "ko": "유일성",
+   "en": [
+    "UNIQUENESS"
+   ],
+   "synonyms": [
+    "유일",
+    "UNIQUE",
+    "유일조건"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_CONGRUENCE_UNIQUENESS",
+    "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+    "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 319,
+   "ko": "정사영",
+   "en": [
+    "PROJECTION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+    "PT_M1_MIDPOINT_PROJECTION_TRIANGLE_AREA",
+    "TPL_M1_MIDPOINT_PROJECTION_TRIANGLE_AREA_CORE"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 320,
+   "ko": "분류",
+   "en": [
+    "CLASSIFICATION"
+   ],
+   "synonyms": [
+    "CLASS"
+   ],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_POLYGON_CLASSIFICATION",
+    "TPL_M1_POLYGON_CLASSIFICATION_CORE",
+    "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 321,
+   "ko": "환원",
+   "en": [
+    "REDUCTION"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_EXPONENTIAL_INEQUALITY",
+    "TPL_DERIVATIVE_LIMIT_REDUCTION",
+    "TPL_GENERAL_ANGLE_SAME_QUADRANT",
+    "TPL_EXPONENTIAL_DECAY_INVERSE_BOUND",
+    "TPL_VARIABLE_EXPONENT_LOG_INEQUALITY"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 322,
+   "ko": "공통",
+   "en": [
+    "COMMON"
+   ],
+   "synonyms": [
+    "공통부분"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TM_TWO_CIRCLES_COMMON_TANGENT",
+    "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+    "TPL_M3_SUBSTITUTION_FACTORIZATION",
+    "TPL_TRIG_APPLICATION_SHARED_HEIGHT"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 323,
+   "ko": "제외",
+   "en": [
+    "EXCLUSION"
+   ],
+   "synonyms": [],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_PROPER_OR_NONEMPTY_SUBSET_COUNT",
+    "TPL_SUBSET_COUNT_REQUIRED_FORBIDDEN",
+    "TPL_H1_SELECTION_GEOMETRIC_DEGENERACY"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 324,
+   "ko": "성분",
+   "en": [
+    "COMPONENT"
+   ],
+   "synonyms": [
+    "성분별"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_MATRIX_BASIC_DIRECT",
+    "TPL_H1_MATRIX_BASIC_EQUALITY",
+    "TPL_H1_MATRIX_EQUATION_LINEAR",
+    "PT_M1_COORDINATE_POINT_CONSTRAINT",
+    "TPL_H1_COMPLEX_COMPONENT_OPERATION"
+   ],
+   "usageInKeys": 7,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 325,
+   "ko": "정리",
+   "en": [
+    "THEOREM_GENERIC"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_OPERATION_LAW_COMPOSITE",
+    "TPL_RATIONAL_NESTED_FRACTION",
+    "TPL_RATIONAL_PARTIAL_FRACTION",
+    "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+    "PT_M1_LINEAR_EXPRESSION_STRUCTURE"
+   ],
+   "usageInKeys": 13,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 326,
+   "ko": "법칙",
+   "en": [
+    "LAW_GENERIC"
+   ],
+   "synonyms": [
+    "흡수법칙"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_ABSORPTION",
+    "PT_SET_OPERATION_LAW",
+    "TPL_OPERATION_LAW_JUDGMENT",
+    "TPL_H1_COUNTING_DIRECT_CASE",
+    "TPL_OPERATION_LAW_COMPOSITE"
+   ],
+   "usageInKeys": 11,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 327,
+   "ko": "도형",
+   "en": [
+    "FIGURE",
+    "FIGURES"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_SIMILAR_FIGURES",
+    "TPL_FIGURE_RHOMBUS",
+    "TPL_FIGURE_PARALLELOGRAM",
+    "TPL_SIMILAR_FIGURES_RATIO",
+    "TT_POINT_REFLECTION_MULTI"
+   ],
+   "usageInKeys": 36,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 328,
+   "ko": "변",
+   "en": [
+    "SIDE"
+   ],
+   "synonyms": [
+    "변까지"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H22A_05_SINE_LAW_110",
+    "TPL_INCENTER_BY_VERTICES",
+    "TPL_H22A_05_COSINE_LAW_111",
+    "TPL_DISTANCE_TRIANGLE_CLASS",
+    "PT_M1_POLYGON_ANGLE_AND_COUNT"
+   ],
+   "usageInKeys": 21,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 329,
+   "ko": "모서리",
+   "en": [
+    "EDGE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+    "PT_PERPENDICULAR_FOOT_ON_SOLID_EDGE",
+    "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+    "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+    "TPL_PERPENDICULAR_FOOT_ON_SOLID_EDGE_CORE"
+   ],
+   "usageInKeys": 12,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 330,
+   "ko": "면",
+   "en": [
+    "FACE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+    "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+    "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+    "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
+    "TPL_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT_CORE"
+   ],
+   "usageInKeys": 12,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 331,
+   "ko": "곡선",
+   "en": [
+    "CURVE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_INTERSECTION_SIGN_AREA",
+    "TPL_AREA_FROM_INTEGRAL_DATA",
+    "PT_AREA_BY_DEFINITE_INTEGRAL",
+    "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+    "TPL_AREA_CONDITION_MODEL_DETERMINATION"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 332,
+   "ko": "함수식",
+   "en": [
+    "FUNCTION_EXPRESSION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "PT_FUNCTION_RECOVERY",
+    "TPL_FUNCTION_FORM_FROM_GRAPH",
+    "TPL_FUNCTION_FORM_FROM_POINT_VALUE",
+    "TPL_RECOVER_FUNCTION_BY_INPUT_CHANGE",
+    "TPL_RECOVER_FUNCTION_FROM_COMPOSITION"
+   ],
+   "usageInKeys": 7,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 333,
+   "ko": "공식",
+   "en": [
+    "FORMULA_GENERIC"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_DISTANCE_FORMULA_DERIVATION",
+    "TPL_INVERSE_COMPOSITION_FORMULA",
+    "TPL_M3_DIFFERENCE_OF_SQUARES_CHAIN",
+    "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+    "TPL_M3_FACTORIZATION_FORMULA_APPLICATION"
+   ],
+   "usageInKeys": 7,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 334,
+   "ko": "단면",
+   "en": [
+    "CROSS_SECTION"
+   ],
+   "synonyms": [
+    "축단면"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_ROTATION_SOLID_PROPERTIES",
+    "TPL_M1_ROTATION_SOLID_AXIS_SECTION",
+    "TPL_M1_ROTATION_SOLID_PERPENDICULAR_SECTION",
+    "TPL_M1_ROTATION_SOLID_PROPERTIES_CLAIM_AUDIT",
+    "TPL_M1_ROTATION_SOLID_FRUSTUM_NET_AXIS_SECTION"
+   ],
+   "usageInKeys": 5,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 335,
+   "ko": "분할",
+   "en": [
+    "PARTITION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_SEGMENT_LENGTH_RELATIONS",
+    "TPL_M1_SEGMENT_LENGTH_RELATIONS_CHAINED_MIDPOINT",
+    "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 336,
+   "ko": "제곱합",
+   "en": [
+    "SQSUM"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "TPL_DISTANCE_VERTEX_SQSUM",
+    "TPL_TRIG_SIGN_PYTHAGOREAN_RATIO"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 337,
+   "ko": "무한대",
+   "en": [
+    "INFINITY"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LIMIT_ASYMPTOTIC_RELATION",
+    "TPL_LIMIT_INFINITY_LEADING_TERM"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 338,
+   "ko": "최고차항",
+   "en": [
+    "LEADING"
+   ],
+   "synonyms": [
+    "지배항"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LIMIT_INFINITY_LEADING_TERM"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 339,
+   "ko": "운동",
+   "en": [
+    "MOTION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_MOTION_EVENT_ANALYSIS",
+    "TPL_MOTION_COMPOSITE_MODEL",
+    "TPL_MOTION_CONDITION_PARAMETER"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 340,
+   "ko": "축",
+   "en": [
+    "AXIS"
+   ],
+   "synonyms": [
+    "대칭축"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+    "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 341,
+   "ko": "용기",
+   "en": [
+    "CONTAINER"
+   ],
+   "synonyms": [
+    "수위",
+    "용기모양",
+    "모양",
+    "SHAPE"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE",
+    "TPL_GRAPH_TO_CONTAINER_SHAPE_INFERENCE_CORE"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 342,
+   "ko": "범주",
+   "en": [
+    "CATEGORY"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_DATA_CATEGORY_PERCENTAGE",
+    "TPL_M1_DATA_CATEGORY_PERCENTAGE_CORE",
+    "TPL_M1_DATA_CATEGORY_PERCENTAGE_CLASS_GROUP_SUM",
+    "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
+    "TPL_M1_DATA_CATEGORY_PERCENTAGE_RELATIVE_FREQUENCY_RATIO"
+   ],
+   "usageInKeys": 8,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 343,
+   "ko": "통계량",
+   "en": [
+    "STATISTIC"
+   ],
+   "synonyms": [
+    "STATISTICS"
+   ],
+   "kind": "대상",
+   "kindDetail": "양(구할 수 있는 값)",
+   "sourceKeys": [
+    "PT_M1_DATA_ORDER_AND_VALUE",
+    "TPL_M1_DATA_ORDER_AND_VALUE_CORE"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 344,
+   "ko": "직각",
+   "en": [
+    "RIGHT"
+   ],
+   "synonyms": [],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK",
+    "TPL_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK_CORE"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 345,
+   "ko": "마방진",
+   "en": [
+    "MAGIC"
+   ],
+   "synonyms": [
+    "MAGIC_SQUARE"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_MAGIC_SQUARE_ENTRY_RECOVERY",
+    "TPL_MAGIC_SQUARE_ENTRY_RECOVERY_CORE"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 346,
+   "ko": "상등",
+   "en": [
+    "EQUALITY"
+   ],
+   "synonyms": [
+    "EQUAL",
+    "서로같은",
+    "같아지는",
+    "일치"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_SET_EQUALITY",
+    "PT_FUNCTION_EQUALITY",
+    "PT_H1_COMPLEX_OPERATION",
+    "TPL_EQUAL_SET_PARAMETER",
+    "TPL_SURJECTIVITY_CONDITION"
+   ],
+   "usageInKeys": 10,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 347,
+   "ko": "끝점",
+   "en": [
+    "ENDPOINT"
+   ],
+   "synonyms": [
+    "양끝점",
+    "ENDPOINTS"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TM_CIRCLE_DIAMETER_ENDPOINTS",
+    "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 2,
+   "addedDuringItems": false
+  },
+  {
+   "id": 348,
+   "ko": "분포",
+   "en": [
+    "DISTRIBUTION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_SAMPLE_MEAN_DISTRIBUTION",
+    "TPL_M1_DATA_CATEGORY_PERCENTAGE_DISTRIBUTION_GRAPH_COMPARISON"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 349,
+   "ko": "등식",
+   "en": [
+    "EQUALITY_EXPR"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H22A_08_MATHEMATICAL_INDUCTION_131",
+    "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 350,
+   "ko": "집단",
+   "en": [
+    "GROUP"
+   ],
+   "synonyms": [
+    "집단별"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
+    "TPL_M1_DATA_CATEGORY_PERCENTAGE_TOP_CUTOFF_GROUP_COMPARISON",
+    "TPL_M1_DATA_CATEGORY_PERCENTAGE_DISTRIBUTION_GRAPH_COMPARISON"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 351,
+   "ko": "교환",
+   "en": [
+    "COMMUTATIVE"
+   ],
+   "synonyms": [],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LOG_DOUBLE_QUADRATIC_ROOT",
+    "TPL_H1_MATRIX_EQUATION_STRUCTURAL"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 352,
+   "ko": "역수",
+   "en": [
+    "RECIPROCAL"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_AMGM_RECIPROCAL_MINIMUM",
+    "TPL_EXPONENT_LAW_RECIPROCAL_POWER",
+    "TPL_LOG_EXPONENT_RECIPROCAL_CANCEL",
+    "TPL_M3_POWER_ROOT_INEQUALITY_ORDER"
+   ],
+   "usageInKeys": 4,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 353,
+   "ko": "부분",
+   "en": [
+    "PART"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_M3_INTEGER_DECIMAL_PART_EVALUATION"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 354,
+   "ko": "확장",
+   "en": [
+    "EXTENSION"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H22A_01_EXPONENT_EXTENSION",
+    "TPL_H22A_01_EXPONENT_EXTENSION_069",
+    "TPL_H22A_01_EXPONENT_EXTENSION_070"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 355,
+   "ko": "일차부등식",
+   "en": [
+    "LINEAR_INEQUALITY"
+   ],
+   "synonyms": [
+    "일차"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+    "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+    "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER"
+   ],
+   "usageInKeys": 3,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 356,
+   "ko": "통과",
+   "en": [
+    "PASSING"
+   ],
+   "synonyms": [
+    "지나는",
+    "지나",
+    "THROUGH"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LINE_TWO_POINTS",
+    "TM_CIRCLE_THREE_POINTS",
+    "TM_CIRCLE_BISECTING_LINE",
+    "TM_TWO_CIRCLES_CENTER_LINE",
+    "PT_LINE_FAMILY_COMMON_POINT"
+   ],
+   "usageInKeys": 12,
+   "usageInItems": 3,
+   "addedDuringItems": false
+  },
+  {
+   "id": 357,
+   "ko": "일정",
+   "en": [
+    "CONSTANT_RATIO"
+   ],
+   "synonyms": [],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TM_CIRCLE_DISTANCE_RATIO_LOCUS"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 358,
+   "ko": "밖",
+   "en": [
+    "EXTERIOR"
+   ],
+   "synonyms": [
+    "OUTSIDE"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TM_TANGENT_FROM_EXTERNAL_POINT",
+    "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 359,
+   "ko": "경계조건",
+   "en": [
+    "BOUNDARY"
+   ],
+   "synonyms": [
+    "경계"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 360,
+   "ko": "함의",
+   "en": [
+    "IMPLICATION"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_IMPLICATION_INTERVAL_PARAMETER"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 361,
+   "ko": "적어도",
+   "en": [
+    "AT_LEAST"
+   ],
+   "synonyms": [
+    "LEAST"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_SUBSET_COUNT_AT_LEAST_ONE"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 362,
+   "ko": "격자점",
+   "en": [
+    "LATTICE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_FUNCTION_GRAPH_GEOMETRY_LATTICE"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 363,
+   "ko": "가법성",
+   "en": [
+    "ADDITIVE"
+   ],
+   "synonyms": [
+    "가법형",
+    "곱셈형",
+    "MULTIPLICATIVE"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+    "TPL_FUNCTIONAL_EQUATION_MULTIPLICATIVE"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 364,
+   "ko": "원상",
+   "en": [
+    "PREIMAGE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_ITERATION_FIXED_POINT_PREIMAGE"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 365,
+   "ko": "규칙",
+   "en": [
+    "PATTERN"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_ITERATION_RULE"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 366,
+   "ko": "수평",
+   "en": [
+    "HORIZONTAL"
+   ],
+   "synonyms": [],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_SINE_HORIZONTAL_PHASE_INTERSECTION"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 367,
+   "ko": "위상",
+   "en": [
+    "PHASE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_SINE_HORIZONTAL_PHASE_INTERSECTION"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 368,
+   "ko": "소거",
+   "en": [
+    "ELIMINATION"
+   ],
+   "synonyms": [
+    "제거",
+    "ABSORPTION"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_LOG_EQUATION_ARGUMENT_FILTER",
+    "TPL_LOG_EXPONENT_RECIPROCAL_CANCEL"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": false
+  },
+  {
+   "id": 369,
+   "ko": "정의",
+   "en": [
+    "DEFINITION"
+   ],
+   "synonyms": [
+    "뜻"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_SET_IDENTIFY",
+    "PT_SET_DEFINITION",
+    "PT_RECURSIVE_FUNCTION",
+    "PT_DERIVATIVE_DEFINITION",
+    "TPL_OPERATION_NUMBER_SET"
+   ],
+   "usageInKeys": 36,
+   "usageInItems": 1,
+   "addedDuringItems": false
+  },
+  {
+   "id": 370,
+   "ko": "주사위",
+   "en": [
+    "DICE"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 2,
+   "addedDuringItems": true
+  },
+  {
+   "id": 371,
+   "ko": "곱의법칙",
+   "en": [
+    "PRODUCT_RULE"
+   ],
+   "synonyms": [
+    "곱의 법칙"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_COUNTING_DIRECT_CASE"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 21,
+   "addedDuringItems": true
+  },
+  {
+   "id": 372,
+   "ko": "합의법칙",
+   "en": [
+    "SUM_RULE"
+   ],
+   "synonyms": [
+    "합의 법칙"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 3,
+   "addedDuringItems": true
+  },
+  {
+   "id": 373,
+   "ko": "구별가능",
+   "en": [
+    "DISTINGUISHABLE"
+   ],
+   "synonyms": [
+    "서로다른"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_SELECTION_BOX_IDENTITY"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 7,
+   "addedDuringItems": true
+  },
+  {
+   "id": 374,
+   "ko": "구별불가",
+   "en": [
+    "INDISTINGUISHABLE"
+   ],
+   "synonyms": [
+    "같은종류"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 3,
+   "addedDuringItems": true
+  },
+  {
+   "id": 375,
+   "ko": "중복불허",
+   "en": [
+    "NO_REPEAT"
+   ],
+   "synonyms": [
+    "많아야1"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 2,
+   "addedDuringItems": true
+  },
+  {
+   "id": 376,
+   "ko": "중복허용",
+   "en": [
+    "REPEAT_ALLOWED"
+   ],
+   "synonyms": [],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 4,
+   "addedDuringItems": true
+  },
+  {
+   "id": 377,
+   "ko": "자리제한",
+   "en": [
+    "POSITION_CONSTRAINT"
+   ],
+   "synonyms": [],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 4,
+   "addedDuringItems": true
+  },
+  {
+   "id": 378,
+   "ko": "인접",
+   "en": [
+    "ADJACENT"
+   ],
+   "synonyms": [],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 4,
+   "addedDuringItems": true
+  },
+  {
+   "id": 379,
+   "ko": "통분",
+   "en": [
+    "COMMON_DENOMINATOR"
+   ],
+   "synonyms": [
+    "분수를없앰"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 2,
+   "addedDuringItems": true
+  },
+  {
+   "id": 380,
+   "ko": "간단히하기",
+   "en": [
+    "SIMPLIFY",
+    "SIMPLIFICATION"
+   ],
+   "synonyms": [
+    "간단히",
+    "정리하기"
+   ],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_RADICAL_EXPRESSION_SIMPLIFY",
+    "TPL_RATIONAL_EXPRESSION_SIMPLIFY"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 1,
+   "addedDuringItems": true
+  },
+  {
+   "id": 381,
+   "ko": "회전이동",
+   "en": [
+    "ROTATION_MOVE"
+   ],
+   "synonyms": [
+    "90도회전"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 1,
+   "addedDuringItems": true
+  },
+  {
+   "id": 382,
+   "ko": "교환법칙",
+   "en": [
+    "COMMUTATIVE_LAW"
+   ],
+   "synonyms": [
+    "f∘g=g∘f"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 1,
+   "addedDuringItems": true
+  },
+  {
+   "id": 383,
+   "ko": "사전식순위",
+   "en": [
+    "LEX_RANK"
+   ],
+   "synonyms": [
+    "몇번째"
+   ],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 2,
+   "addedDuringItems": true
+  },
+  {
+   "id": 384,
+   "ko": "교대",
+   "en": [
+    "ALTERNATING"
+   ],
+   "synonyms": [],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 1,
+   "addedDuringItems": true
+  },
+  {
+   "id": 385,
+   "ko": "묶음",
+   "en": [
+    "GROUPING"
+   ],
+   "synonyms": [
+    "묶어서"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 1,
+   "addedDuringItems": true
+  },
+  {
+   "id": 386,
+   "ko": "이웃",
+   "en": [
+    "NEIGHBORING"
+   ],
+   "synonyms": [
+    "이웃하여"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 2,
+   "addedDuringItems": true
+  },
+  {
+   "id": 387,
+   "ko": "항상성립",
+   "en": [
+    "ALWAYS_HOLDS"
+   ],
+   "synonyms": [
+    "모든x에대하여"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 1,
+   "addedDuringItems": true
+  },
+  {
+   "id": 388,
+   "ko": "등호조건",
+   "en": [
+    "EQUALITY_CONDITION"
+   ],
+   "synonyms": [
+    "등호성립"
+   ],
+   "kind": "행위",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 1,
+   "addedDuringItems": true
+  },
+  {
+   "id": 389,
+   "ko": "같은것이있는순열",
+   "en": [
+    "IDENTICAL_OBJECT_PERMUTATION"
+   ],
+   "synonyms": [
+    "같은문자",
+    "같은것이있는"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_IDENTICAL_OBJECT_PERMUTATION"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 1,
+   "addedDuringItems": true
+  },
+  {
+   "id": 390,
+   "ko": "경로",
+   "en": [
+    "PATH"
+   ],
+   "synonyms": [
+    "도로망"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_H1_COUNTING_GRAPH_PATH_COLOR"
+   ],
+   "usageInKeys": 1,
+   "usageInItems": 1,
+   "addedDuringItems": true
+  },
+  {
+   "id": 391,
+   "ko": "재방문금지",
+   "en": [
+    "NO_REVISIT"
+   ],
+   "synonyms": [
+    "한번지난길"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 1,
+   "addedDuringItems": true
+  },
+  {
+   "id": 392,
+   "ko": "제자리금지",
+   "en": [
+    "NO_FIXED_POINT"
+   ],
+   "synonyms": [
+    "제자리를피하는",
+    "자기것제외"
+   ],
+   "kind": "조건",
+   "kindDetail": null,
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 2,
+   "addedDuringItems": true
+  },
+  {
+   "id": 393,
+   "ko": "분배",
+   "en": [
+    "DISTRIBUTION"
+   ],
+   "synonyms": [
+    "동일물분배",
+    "같은대상분배"
+   ],
+   "kind": "방법",
+   "kindDetail": null,
+   "sourceKeys": [
+    "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+    "TPL_H1_SELECTION_CAPACITY_DISTRIBUTION"
+   ],
+   "usageInKeys": 2,
+   "usageInItems": 0,
+   "addedDuringItems": true,
+   "note": "구별되지 않는 같은 대상을 칸에 나누어 넣기(중복조합 구조). 배정=서로 다른 대상을 칸에 대응"
+  },
+  {
+   "id": 394,
+   "ko": "조건",
+   "en": [
+    "OPEN_SENTENCE"
+   ],
+   "synonyms": [
+    "조건명제",
+    "열린문장"
+   ],
+   "kind": "대상",
+   "kindDetail": null,
+   "parent": "명제",
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 8,
+   "addedDuringItems": true,
+   "status": "ACTIVE",
+   "note": "변수의 값에 따라 참·거짓이 정해지는 문장 p(x). 25년 시범에서 작업자 2명이 독립 제안"
+  },
+  {
+   "id": 395,
+   "ko": "전체집합",
+   "en": [
+    "UNIVERSAL_SET"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "parent": "집합",
+   "status": "ACTIVE",
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 0,
+   "addedDuringItems": true,
+   "note": "부분집합·여집합을 정하는 기준 집합 U (25년 시범에서 Sonnet·Gemini 또는 두 라인이 제안)"
+  },
+  {
+   "id": 396,
+   "ko": "양수",
+   "en": [
+    "POSITIVE"
+   ],
+   "synonyms": [],
+   "kind": "조건",
+   "kindDetail": null,
+   "parent": "부호",
+   "status": "ACTIVE",
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 0,
+   "addedDuringItems": true,
+   "note": "0보다 큰 수로 제한(발문의 \"양수 x\") (25년 시범에서 Sonnet·Gemini 또는 두 라인이 제안)"
+  },
+  {
+   "id": 397,
+   "ko": "음수",
+   "en": [
+    "NEGATIVE"
+   ],
+   "synonyms": [],
+   "kind": "조건",
+   "kindDetail": null,
+   "parent": "부호",
+   "status": "ACTIVE",
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 0,
+   "addedDuringItems": true,
+   "note": "0보다 작은 수로 제한 (25년 시범에서 Sonnet·Gemini 또는 두 라인이 제안)"
+  },
+  {
+   "id": 398,
+   "ko": "고정점",
+   "en": [
+    "FIXED_POINT"
+   ],
+   "synonyms": [],
+   "kind": "대상",
+   "kindDetail": null,
+   "parent": "역함수",
+   "status": "ACTIVE",
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 0,
+   "addedDuringItems": true,
+   "note": "f(x)=x를 만족하는 점. 증가함수와 역함수의 교점 찾기에 쓰임 (25년 시범에서 Sonnet·Gemini 또는 두 라인이 제안)"
+  },
+  {
+   "id": 399,
+   "ko": "드모르간법칙",
+   "en": [
+    "DE_MORGAN"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "parent": "여집합",
+   "status": "ACTIVE",
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 0,
+   "addedDuringItems": true,
+   "note": "합집합·교집합의 여집합을 바꾸는 법칙 (25년 시범에서 Sonnet·Gemini 또는 두 라인이 제안)"
+  },
+  {
+   "id": 400,
+   "ko": "수직선판정법",
+   "en": [
+    "VERTICAL_LINE_TEST"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "parent": "함수",
+   "status": "ACTIVE",
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 0,
+   "addedDuringItems": true,
+   "note": "y축에 평행한 직선과 두 점 이상에서 만나는지로 함수의 그래프인지 판정 (25년 시범에서 Sonnet·Gemini 또는 두 라인이 제안)"
+  },
+  {
+   "id": 401,
+   "ko": "상대순서고정",
+   "en": [
+    "FIXED_RELATIVE_ORDER"
+   ],
+   "synonyms": [],
+   "kind": "방법",
+   "kindDetail": null,
+   "parent": "순열",
+   "status": "ACTIVE",
+   "sourceKeys": [],
+   "usageInKeys": 0,
+   "usageInItems": 0,
+   "addedDuringItems": true,
+   "note": "일부 대상의 순서가 정해진 순열을 같은 것이 있는 순열처럼 나누어 세기 (25년 시범에서 Sonnet·Gemini 또는 두 라인이 제안)"
+  }
+ ],
+ "changes": [
+  "조건 신설(조건명제를 명제 동의어에서 이동)",
+  "예시 후보 기각: 행위어",
+  "v1.2: 전체집합·양수·음수·고정점·드모르간법칙·수직선판정법·상대순서고정 신설, 모순을 귀류법 동의어로 추가 (25년 Sonnet·Gemini 시범 요청)"
+ ]
+}
