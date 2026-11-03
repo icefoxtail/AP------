@@ -499,7 +499,7 @@
       `$\\overline{AB}:\\overline{FC}=\\overline{BF}:\\overline{CE}$ → $${M.AB}:${M.FC}=${M.BF}:\\overline{CE}$이므로 $\\overline{CE}=${M.CE}$. 또 $\\overline{DE}=\\overline{DC}-\\overline{CE}=${M.AB}-${M.CE}=${M.DE}$`
     ],
     view: (M) => ({
-      guide: '<b>접기</b> 막대나 ▶로 종이를 접어 보세요. 접는 선 AE를 축으로 <b>제자리에서 접혀요</b>. 위의 칩과 배율로 종이의 크기를 바꿔 보세요.',
+      guide: '<b>접기</b> 막대나 ▶로 종이를 접어 보세요. 접는 선 AE를 축으로 <b>제자리에서 접혀요</b>. 칩과 배율로 종이의 크기를 바꿔 보세요.',
       readouts: [rd('AB : FC', `${M.AB} : ${M.FC}`, 'sky'), rd('BF : CE', `${M.BF} : ${M.CE}`, 'amber', `= ${M.AB} : ${M.FC}`), rd('DE (= EF)', `${M.DE}`, 'rose', `${M.AB} − ${M.CE}`)],
       formula: `<p>$\\overline{AB}:\\overline{FC}=\\overline{BF}:\\overline{CE}$ → $${M.AB}:${M.FC}=${M.BF}:\\overline{CE}$ → $\\overline{CE}=${M.CE}$</p>`,
       rule: '종이접기: 접힌 각은 같고 직각이 있어서 ●+×=90°로 AA 닮음 삼각형을 찾는다',

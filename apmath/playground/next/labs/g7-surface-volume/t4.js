@@ -107,7 +107,7 @@
         M.mode === 'vol' ? `(부피) $=\\frac{1}{3}\\times$ (밑넓이) $\\times$ (높이) $=\\frac{1}{3}\\times${tx(M.S)}\\times${M.h}=${tx(M.vol)}\\,\\mathrm{cm}^3$예요.` : `(겉넓이) $=$ (옆넓이) $+$ (밑넓이) $=${tx(M.lat)}+${tx(M.S)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
       ],
       view: (M) => ({
-        guide: `<b>돌리기 · 펼치기</b> 막대를 끌거나 ▶를 눌러 보세요. ${span('amber', '노란 삼각형')}이 점선 <b>축</b>을 중심으로 제자리에서 돌아 원뿔이 되고, 이어서 겉넓이는 <b>전개도</b>로 펼쳐져요. 위 칩에서 <b>축으로 하는 변</b>을 바꾸면 반지름과 높이가 서로 바뀌어요.`,
+        guide: `<b>돌리기 · 펼치기</b> 막대를 끌거나 ▶를 눌러 보세요. ${span('amber', '노란 삼각형')}이 점선 <b>축</b>을 중심으로 제자리에서 돌아 원뿔이 되고, 이어서 겉넓이는 <b>전개도</b>로 펼쳐져요. 칩에서 <b>축으로 하는 변</b>을 바꾸면 반지름과 높이가 서로 바뀌어요.`,
         readouts: [rd('반지름', M.r + ' cm', 'amber', '축이 아닌 직각변'), rd('높이', M.h + ' cm', 'amber', '축으로 한 변'), rd('모선', M.R + ' cm', 'sky', '빗변'), rd('겉넓이', plainVal(M.tot) + ' cm²', M.mode === 'surf' ? 'green' : 'muted', `옆넓이 ${plainVal(M.lat)} + 밑넓이 ${plainVal(M.S)}`), rd('부피', plainVal(M.vol) + ' cm³', M.mode === 'vol' ? 'green' : 'muted', `⅓ × ${plainVal(M.S)} × ${M.h}`)],
         formula: `<p>(겉넓이) $=$ (옆넓이) $+$ (밑넓이) &nbsp;,&nbsp; (부피) $=\\frac{1}{3}\\times$ (밑넓이) $\\times$ (높이)</p>`,
         rule: '직각삼각형을 한 직각변을 축으로 돌리면 원뿔: 축 = 높이, 다른 직각변 = 반지름, 빗변 = 모선',
@@ -242,7 +242,7 @@
         ];
       },
       view: (M) => ({
-        guide: `위 칩에서 <b>축으로 하는 변</b>과 <b>구하는 것</b>을 골라 보세요. <b>돌리기</b>를 끌면 ${span('amber', '사다리꼴')}이 축 둘레를 제자리에서 돌아요. 원뿔대는 막대 뒤쪽 절반에서 겉넓이는 <b>전개도</b>로 펼쳐지고, 부피는 <b>큰 원뿔 − 작은 원뿔</b>로 보여요. 축이 바뀌면 전혀 다른 입체가 만들어져요.`,
+        guide: `칩에서 <b>축으로 하는 변</b>과 <b>구하는 것</b>을 골라 보세요. <b>돌리기</b>를 끌면 ${span('amber', '사다리꼴')}이 축 둘레를 제자리에서 돌아요. 원뿔대는 막대 뒤쪽 절반에서 겉넓이는 <b>전개도</b>로 펼쳐지고, 부피는 <b>큰 원뿔 − 작은 원뿔</b>로 보여요. 축이 바뀌면 전혀 다른 입체가 만들어져요.`,
         readouts: M.axis === 'leg'
           ? (M.mode === 'vol' ? [rd('큰 원뿔의 부피', plainVal(M.v2) + ' cm³', 'sky'), rd('작은 원뿔의 부피', plainVal(M.v1) + ' cm³', 'violet'), rd('원뿔대의 부피', plainVal(M.vol) + ' cm³', 'green', '큰 원뿔 − 작은 원뿔')] : [rd('원뿔대의 옆넓이', plainVal(M.latF) + ' cm²', 'amber', '큰 부채꼴 − 작은 부채꼴'), rd('윗면 + 아랫면', plainVal(vadd(M.top, M.bot)) + ' cm²', 'sky'), rd('겉넓이', plainVal(M.surf) + ' cm²', 'green', '옆넓이 + 두 밑면')])
           : (M.mode === 'vol' ? [rd('원기둥', plainVal(M.vcyl) + ' cm³', 'sky'), rd('원뿔', plainVal(M.vcone) + ' cm³', 'violet'), rd('부피', plainVal(M.vol) + ' cm³', 'green')] : [rd('원기둥의 밑면 1개', plainVal(M.base) + ' cm²', 'sky'), rd('원기둥의 옆면', plainVal(M.cylLat) + ' cm²', 'sky'), rd('원뿔의 옆면', plainVal(M.coneLat) + ' cm²', 'violet'), rd('겉넓이', plainVal(M.surf) + ' cm²', 'green')]),
@@ -373,7 +373,7 @@
         `(겉넓이) $=${tx(M.lat1)}+${tx(M.lat2)}=${tx(M.surf)}\\,\\mathrm{cm}^2$예요. (밑넓이는 더하지 않아요.)`
       ],
       view: (M) => ({
-        guide: `<b>돌리고 분해하기</b> 막대를 끌어 보세요. 앞쪽 절반은 삼각형이 축 둘레를 <b>제자리에서 돌고</b>, 뒤쪽 절반은 겉넓이에서는 옆면이 <b>부채꼴 2개</b>로 펼쳐지고, 부피에서는 위 원뿔이 <b>오른쪽으로</b> 옮겨 가며 ${span('red', '맞붙은 면')}을 드러내요. 마지막에 아래 원뿔이 제자리에서 뒤집혀 밑면이 아래로 와요. 위 칩에서 삼각형을 바꿔 보세요.`,
+        guide: `<b>돌리고 분해하기</b> 막대를 끌어 보세요. 앞쪽 절반은 삼각형이 축 둘레를 <b>제자리에서 돌고</b>, 뒤쪽 절반은 겉넓이에서는 옆면이 <b>부채꼴 2개</b>로 펼쳐지고, 부피에서는 위 원뿔이 <b>오른쪽으로</b> 옮겨 가며 ${span('red', '맞붙은 면')}을 드러내요. 마지막에 아래 원뿔이 제자리에서 뒤집혀 밑면이 아래로 와요. 칩에서 삼각형을 바꿔 보세요.`,
         readouts: M.mode === 'vol' ? [rd('아래 원뿔의 부피', plainVal(M.v1) + ' cm³', 'sky', `⅓ × π × ${M.r} × ${M.r} × ${M.h1}`), rd('위 원뿔의 부피', plainVal(M.v2) + ' cm³', 'violet', `⅓ × π × ${M.r} × ${M.r} × ${M.h2}`), rd('부피', plainVal(M.vol) + ' cm³', 'green', '아래 + 위')] : [rd('아래 원뿔의 옆넓이', plainVal(M.lat1) + ' cm²', 'sky', `π×${M.R1}×${M.r}`), rd('위 원뿔의 옆넓이', plainVal(M.lat2) + ' cm²', 'violet', `π×${M.R2}×${M.r}`), rd('맞붙은 면의 넓이(빼요)', plainVal(M.disc) + ' cm²', 'red'), rd('겉넓이', plainVal(M.surf) + ' cm²', 'green')],
         formula: `<p>(겉넓이) $=$ (아래 원뿔의 옆넓이) $+$ (위 원뿔의 옆넓이) (맞붙은 면은 제외) &nbsp;,&nbsp; (부피) $=\\frac{1}{3}\\times$ (밑넓이) $\\times$ (두 높이의 합)</p>`,
         rule: '이중원뿔의 겉넓이 = 두 원뿔의 옆넓이의 합 (맞붙은 밑면은 빼요)',
@@ -503,7 +503,7 @@
         `(겉넓이) $=${tx(M.coneLat)}+${tx(M.cylLat)}+${tx(M.hemi)}=${tx(M.surf)}\\,\\mathrm{cm}^2$예요.`
       ],
       view: (M) => ({
-        guide: `<b>분해하기 · 펼치기</b> 막대를 끌어 보세요. 겉넓이는 뒤쪽 절반에서 겉에 드러난 세 조각이 펼쳐져요. 원기둥·원뿔이 ${span('sky', '오른쪽으로')} 옮겨지고 반구는 제자리에서 뒤집히면서 서로 맞붙었던 ${span('red', '평평한 면')}이 빨갛게 드러나요. 위 칩에서 원뿔의 모양을, 막대로 원기둥의 높이를 바꿔 보세요.`,
+        guide: `<b>분해하기 · 펼치기</b> 막대를 끌어 보세요. 겉넓이는 뒤쪽 절반에서 겉에 드러난 세 조각이 펼쳐져요. 원기둥·원뿔이 ${span('sky', '오른쪽으로')} 옮겨지고 반구는 제자리에서 뒤집히면서 서로 맞붙었던 ${span('red', '평평한 면')}이 빨갛게 드러나요. 칩에서 원뿔의 모양을, 막대로 원기둥의 높이를 바꿔 보세요.`,
         readouts: M.mode === 'vol' ? [rd('원뿔', plainVal(M.vk) + ' cm³', 'violet'), rd('원기둥', plainVal(M.vc) + ' cm³', 'green'), rd('반구', plainVal(M.vh) + ' cm³', 'sky'), rd('부피', plainVal(M.vol) + ' cm³', 'amber')] : [rd('원뿔의 옆면', plainVal(M.coneLat) + ' cm²', 'violet', `π × ${M.R} × ${M.r}`), rd('원기둥의 옆면', plainVal(M.cylLat) + ' cm²', 'green', `2 × π × ${M.r} × ${M.H}`), rd('반구의 곡면', plainVal(M.hemi) + ' cm²', 'sky', `2 × π × ${M.r} × ${M.r}`), rd('겉넓이', plainVal(M.surf) + ' cm²', 'amber', '붙은 면 제외')],
         formula: `<p>(겉넓이) $=$ (원뿔 옆넓이) $+$ (원기둥 옆넓이) $+$ (반구의 곡면) &nbsp;(맞붙은 면 3개는 빼요)</p>`,
         rule: '붙인 입체의 겉넓이 = 겉으로 드러난 면만 더하기 (붙은 면은 제외)',

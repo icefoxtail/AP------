@@ -132,7 +132,7 @@
       `BC=BH+HI+IC=${M.half}+${M.a}+${M.half}=${M.bc}예요.`
     ]),
     view: (M) => ({
-      guide: '막대로 <b>윗변 AD</b>와 <b>다리 AB</b>를 바꿔 보세요. 위 버튼으로 보조선을 <b>평행선</b>과 <b>수선</b> 중에서 고를 수 있어요. 어느 방법이든 <b>BC=AD+AB</b>예요.',
+      guide: '막대로 <b>윗변 AD</b>와 <b>다리 AB</b>를 바꿔 보세요. 버튼으로 보조선을 <b>평행선</b>과 <b>수선</b> 중에서 고를 수 있어요. 어느 방법이든 <b>BC=AD+AB</b>예요.',
       readouts: [rd('AD', `${M.a}`, 'amber'), rd('AB = DC', `${M.l}`, 'amber'), rd('∠B = ∠C', '60°', 'sky'), rd('BC', `${M.bc}`, 'rose', `${M.a} + ${M.l}`, null, true)],
       formula: M.md === 'par' ? `<p>$${ll('BE')}=${ll('AD')}=${M.a}$, $${ll('EC')}=${ll('DC')}=${M.l}$ (정삼각형 DEC)</p><p>$${ll('BC')}=${M.a}+${M.l}=${M.bc}$</p>` : `<p>$${ll('BH')}=${ll('CI')}=\\frac{1}{2}${ll('AB')}=${M.half}$, $${ll('HI')}=${ll('AD')}=${M.a}$</p><p>$${ll('BC')}=${M.half}+${M.a}+${M.half}=${M.bc}$</p>`,
       rule: '등변사다리꼴에서 ∠B=60°이면 BC=AD+AB (평행선을 긋거나 수선을 내려 구한다)',

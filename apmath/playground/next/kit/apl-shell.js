@@ -435,11 +435,21 @@
         if (!p) continue;
         const input = h('input', { type: 'range', class: 'apl-range', min: p.min, max: p.max, step: p.step || 0.01, value: this.s[id], 'aria-label': APLab.stripEmoji(p.label) });
         const out = h('output', {});
-        const hint = p.hint ? h('div', { class: 'apl-ctl-hint', html: APLab.renderMath(this._sf(p.hint)) }) : null;
+        const hint = p.hint
+          ? h('div', { class: 'apl-ctl-hint' },
+            h('span', { class: 't', html: APLab.renderMath(this._sf(p.hint)) }),
+            h('span', { class: 'more', 'aria-hidden': 'true', html: '<span class="full">더보기</span><span class="less">접기</span>' + icon('down') }))
+          : null;
         if (hint) {
-          // 받침에서는 도움말이 한 줄로 줄어듭니다(넘치면 …). 마우스를 올리면 전체 글이 뜨고, 눌러도 펼쳐집니다(내용은 지우지 않습니다).
+          // 받침에서는 도움말이 한 줄로 줄어듭니다(넘치면 …). 잘린 칸만 _markHints 가 「더보기」 표시를 붙이고, 누르면 그 자리에서 펼쳐집니다.
+          // 마우스를 올리면 전체 글이 title 로 뜹니다(내용은 지우지 않습니다).
           hint.title = String(p.hint).replace(/<[^>]+>/g, '').replace(/\$/g, '');
-          hint.addEventListener('click', () => hint.classList.toggle('open'));
+          const flip = () => {
+            if (!hint.classList.contains('has-more')) return;
+            hint.setAttribute('aria-expanded', String(hint.classList.toggle('open')));
+          };
+          hint.addEventListener('click', flip);
+          hint.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); } });
         }
         const wrap = h('div', { class: 'apl-ctl', style: { '--c': `var(--m-${p.color || 'amber'})` } },
           h('div', { class: 'apl-ctl-head' }, h('label', { html: APLab.renderMath(this._sf(p.label)) }), out),
@@ -542,6 +552,30 @@
       }
       ui.top.hidden = !wide || (ui.topNav.hidden && ui.topPick.hidden);
       if (wide && subs) this._centerSub();
+      this._markHints();
+    }
+    /** 받침에서 한 줄로 잘린 막대 도움말에만 「더보기」 표시를 붙입니다(터치 화면은 마우스 title 을 볼 수 없어서). 폭이 바뀔 때마다 다시 잽니다. */
+    _markHints() {
+      const L = this._lay;
+      if (!L) return;
+      const measure = !NARROW.matches && !this.ui.dock.hidden;
+      for (const wrap of L.ctls) {
+        const hint = wrap.querySelector('.apl-ctl-hint');
+        if (!hint) continue;
+        const open = hint.classList.contains('open');
+        let more = false;
+        if (measure) {
+          if (open) more = true; // 펼친 칸은 접을 수 있게 표시를 그대로 둡니다
+          else {
+            hint.classList.remove('has-more'); // 표시가 없는 상태의 폭으로 잽니다
+            const t = hint.firstElementChild;
+            more = t.scrollWidth > t.clientWidth + 1;
+          }
+        } else hint.classList.remove('open');
+        hint.classList.toggle('has-more', more);
+        if (more) { hint.setAttribute('role', 'button'); hint.tabIndex = 0; hint.setAttribute('aria-expanded', String(hint.classList.contains('open'))); }
+        else { hint.removeAttribute('role'); hint.removeAttribute('tabindex'); hint.removeAttribute('aria-expanded'); }
+      }
     }
     /** 지금 장면 칩이 줄 안에서 늘 보이도록 줄만 가로로 옮깁니다(페이지는 움직이지 않습니다). */
     _centerSub() {

@@ -215,7 +215,7 @@
       '축을 중심으로 한 바퀴(360°) 돌리면 <b>원뿔</b>이 돼요.'
     ],
     view: (M, C) => ({
-      guide: turnGuide + ' 위의 칩으로 <b>축으로 삼는 변</b>을 바꿔 보세요. 같은 삼각형인데 다른 원뿔이 나와요.',
+      guide: turnGuide + ' 칩으로 <b>축으로 삼는 변</b>을 바꿔 보세요. 같은 삼각형인데 다른 원뿔이 나와요.',
       readouts: [rd('회전축', `변 ${M.ax}`, ROSE), rd('높이 (축으로 삼은 변)', cmv(M.h), AMB), rd('밑면의 반지름', cmv(M.r), AMB, '축에 수직인 변'), rd('회전체', M.sol.name, SKY)],
       status: C.t >= 0.999 ? { tone: 'ok', text: `원뿔 완성 (반지름 ${M.r}, 높이 ${M.h})` } : { tone: 'info', text: `${Math.round(C.t * 360)}° 돌린 자취` },
       formula: `<p>변 ${M.ax}를 축으로 1회전 → 원뿔</p><p>(높이) = ${M.h} cm · (밑면의 반지름) = ${M.r} cm</p><p>다른 변을 축으로 하면 → (높이) = ${M.r} cm · (반지름) = ${M.h} cm</p>`,

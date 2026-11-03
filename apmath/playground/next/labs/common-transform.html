@@ -394,7 +394,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return baseScene({
       id: 'reflect', title: '대칭이동 — x축·y축·원점·직선 y = x', short: '대칭이동',
       question: '점과 도형을 x축, y축, 원점, 직선 y = x에 대하여 대칭이동하면 좌표와 식은 어떻게 바뀔까?',
-      guide: '아래 버튼으로 거울(대칭의 기준)을 고르고 <b>P</b>와 <b>원</b>을 끌어 보세요. 점 P와 P′는 늘 <b>거울에서 같은 거리</b>에 있고, 선분 PP′는 거울과 <b>수직</b>입니다. 그래서 좌표가 규칙대로 바뀝니다.',
+      guide: '버튼으로 거울(대칭의 기준)을 고르고 <b>P</b>와 <b>원</b>을 끌어 보세요. 점 P와 P′는 늘 <b>거울에서 같은 거리</b>에 있고, 선분 PP′는 거울과 <b>수직</b>입니다. 그래서 좌표가 규칙대로 바뀝니다.',
       focus: FOCUS,
       enter: (s) => { s.ref = 'x'; s.rp = { x: 4, y: 3 }; s.rc = { x: -2, y: 2 }; },
       presets: () => Object.keys(RNAME).map((k) => ({ group: '거울(대칭의 기준)', label: `${RNAME[k]}에 대하여`, color: RCOL[k], apply: (st) => { st.ref = k; }, on: (st) => st.ref === k })),

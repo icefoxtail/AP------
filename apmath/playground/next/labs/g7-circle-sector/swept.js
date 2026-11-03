@@ -1269,6 +1269,7 @@
     w.point(M.V[0], { color: 'ink', r: 4.6, glow: false });
 
     // 끈과 동물
+    const rectLike = M.kind === 'rect' || M.kind === 'square';
     if (tab === 'explore') {
       let cur = tl[0];
       for (const x of tl) if (sweepT >= x.ts) cur = x;
@@ -1282,7 +1283,7 @@
       const samples = [];
       tl.forEach((x) => { for (let k = 0; k <= 40; k++) { const uu = k / 40; samples.push({ t: x.ts + (x.te - x.ts) * uu, p: goatPoint(x.sec, x.sec.t0 + (x.sec.t1 - x.sec.t0) * uu) }); } });
       w.handle('gp', P, {
-        color: 'amber', r: 7, label: sweepT < 0.8 ? kd.animal : '', dx: 12, dy: -12, size: 13.5, ariaLabel: `${kd.animal}를 끌어 끈이 닿는 곳을 따라 움직이기`,
+        color: 'amber', r: 7, label: sweepT < 0.8 ? kd.animal : '', dx: rectLike ? -12 : 12, dy: -12, align: rectLike ? 'right' : 'left', size: 13.5, // 사각 울타리: 시작점이 꼭짓점 이름(C 등) 바로 옆이라 이름표를 왼쪽 위로 보내 글자끼리 닿지 않게 합니다 ariaLabel: `${kd.animal}를 끌어 끈이 닿는 곳을 따라 움직이기`,
         drag: (q) => {
           const pt = w.unP(q);
           let best = samples[0], bd = Infinity;

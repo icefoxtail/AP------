@@ -322,7 +322,7 @@
       return '<b>' + NUM[st.cur] + ' ' + esc(G[st.cur].name) + '</b>: ' + esc(G[st.cur].cap) + (P.kind === 'arc' ? '<br>호의 길이는 <b>2π × 반지름 × ($\\dfrac{\\text{중심각}}{360}$)</b>이에요.' : '');
     }
     if (tab === 'review') return '왼쪽 그림에서 경계를 조각으로 나누어 보아요. 위의 <b>다음 단계</b>를 눌러 조각을 하나씩 확인해 보세요.';
-    return '색칠한 부분의 둘레는 호와 선분 <b>' + M.P.length + '조각</b>으로 이루어져 있어요. ▶ <b>재생</b>을 누르거나 아래 막대를 끌어 한 조각씩 길이를 구해 보세요.' + (D.guide0 ? '<br>' + D.guide0 : '');
+    return '색칠한 부분의 둘레는 호와 선분 <b>' + M.P.length + '조각</b>으로 이루어져 있어요. ▶ <b>재생</b>을 누르거나 막대를 끌어 한 조각씩 길이를 구해 보세요.' + (D.guide0 ? '<br>' + D.guide0 : '');
   }
 
   function viewPieces(D, s, lab) {
