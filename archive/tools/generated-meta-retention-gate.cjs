@@ -9,7 +9,7 @@ const path=require('node:path');
 const vm=require('node:vm');
 const crypto=require('node:crypto');
 const {execFileSync}=require('node:child_process');
-const {crosswalkDigestAccepted}=require('./sealed-crosswalk-digests.cjs');
+const {crosswalkDigestStatus}=require('./sealed-crosswalk-digests.cjs');
 
 const sortValue=v=>Array.isArray(v)?v.map(sortValue):v&&typeof v==='object'
   ?Object.fromEntries(Object.keys(v).sort().map(k=>[k,sortValue(v[k])])):v;
@@ -195,8 +195,16 @@ function validateMetaTaxonomyBindings(root,meta,primaryRecord=null,uid=null){
  }catch(e){issues.push('META_TAXONOMY_BINDING_INSPECTION_ERROR:'+e.message);}
  return issues;
 }
+// Pinned whole-file crosswalk digest: the current one or a sealed one is accepted. A well-formed digest that is neither
+// is reported with the specific code CROSSWALK_DIGEST_NOT_SEALED (next to the legacy `mismatchCode`) so a missing seal is
+// visible as such at PR time instead of at the next append to the shared crosswalk.
+function crosswalkDigestIssues(root,ref,pinned,currentSha256,mismatchCode){
+ const status=crosswalkDigestStatus(root,ref,pinned,currentSha256);
+ if(status==='CURRENT'||status==='SEALED')return [];
+ return status==='NOT_SEALED'?[mismatchCode,'CROSSWALK_DIGEST_NOT_SEALED:'+ref]:[mismatchCode];
+}
 function validateAuthorityBinding(root,meta,question,uid){
- const issues=[];let primaryRecord=null;
+ const issues=[];let primaryRecord=null,crosswalk=null;
  try{
   const namespace=meta?.rpmL4Namespace;
   const draft=namespace==='RPM_EXISTING_DRAFT';
@@ -208,7 +216,9 @@ function validateAuthorityBinding(root,meta,question,uid){
    const authorityBytes=trackedCanonicalBlob(root,authorityRef)?.bytes||fs.readFileSync(authorityFile);
   // The pinned whole-file digest may be the current one or one a sealed receipt recorded for this crosswalk file; the
   // record it names is still re-verified against the CURRENT file below (labels, course, unit, bucket).
-  if(!crosswalkDigestAccepted(root,authorityRef,authoritySha,sha256Bytes(authorityBytes)))issues.push('RPM_AUTHORITY_BYTES_MISMATCH');
+  // `crosswalk` is what this call actually read; registration tools seal exactly these bytes.
+  crosswalk={path:authorityRef,bytes:authorityBytes,sha256:sha256Bytes(authorityBytes),gitBlobSha1:gitBlobSha(authorityBytes)};
+  issues.push(...crosswalkDigestIssues(root,authorityRef,authoritySha,crosswalk.sha256,'RPM_AUTHORITY_BYTES_MISMATCH'));
   const authority=JSON.parse(authorityBytes.toString('utf8'));
   if(authority.rpmAuthority?.status&&authority.rpmAuthority.status!=='LOCKED')issues.push('RPM_AUTHORITY_NOT_LOCKED');
   const records=authority.records||[];
@@ -286,7 +296,7 @@ function validateAuthorityBinding(root,meta,question,uid){
    }
   }
  }catch(e){issues.push('META_AUTHORITY_INSPECTION_ERROR:'+e.message);}
- return {issues,primaryRecord};
+ return {issues,primaryRecord,crosswalk};
 }
 function audit(root,{uidScope}={}){
  const consumerPrefix='archive/data/generated-lite-consumer/v1/';
@@ -402,8 +412,8 @@ function audit(root,{uidScope}={}){
    if(m.meta?.rpmL4Namespace==='RPM_EXISTING_DRAFT'){
      const ref=contained(root,m.meta.rpmDraftAuthorityRef,'archive/data/meta-foundation/');
     if(!fs.existsSync(ref))issue('RPM_DRAFT_SOURCE_MISSING');
-     else if(!crosswalkDigestAccepted(root,m.meta.rpmDraftAuthorityRef,m.meta.rpmDraftAuthoritySha256,
-      trackedCanonicalBlob(root,m.meta.rpmDraftAuthorityRef)?.sha256||sha256Bytes(fs.readFileSync(ref))))issue('RPM_DRAFT_AUTHORITY_BYTES_MISMATCH');
+     else for(const code of crosswalkDigestIssues(root,m.meta.rpmDraftAuthorityRef,m.meta.rpmDraftAuthoritySha256,
+      trackedCanonicalBlob(root,m.meta.rpmDraftAuthorityRef)?.sha256||sha256Bytes(fs.readFileSync(ref)),'RPM_DRAFT_AUTHORITY_BYTES_MISMATCH'))issue(code);
    }
    if(m.meta?.rpmL4Namespace==='GENERATED_EXT_L4'){
     const ref=contained(root,m.meta.generatedL4RegistryRef,sourcePrefix);
