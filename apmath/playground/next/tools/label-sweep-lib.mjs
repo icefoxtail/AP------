@@ -18,7 +18,7 @@ export function sameText(a, b) {
  * 두 글자 상자의 교집합 넓이가 작은 상자 넓이의 ratio(기본 15%) 이상인 쌍을 돌려줍니다.
  * 후광으로 같은 글자를 두 번 그려 생긴 자기 겹침(좌표 차 1px 이내)과 줄 간격 수준(1.5px 미만)의 닿음은 제외합니다.
  */
-export function overlapPairs(boxes, ratio = 0.15, minPx = 1.5) {
+export function overlapPairs(boxes, ratio = 0.15, minPx = 1.5, stackPx = minPx) {
   const pairs = [];
   for (let i = 0; i < boxes.length; i++) {
     for (let j = i + 1; j < boxes.length; j++) {
@@ -28,9 +28,10 @@ export function overlapPairs(boxes, ratio = 0.15, minPx = 1.5) {
       const ix = Math.min(a.r, b.r) - Math.max(a.l, b.l);
       const iy = Math.min(a.b, b.b) - Math.max(a.t, b.t);
       if (ix <= 0 || iy <= 0) continue; // 맞닿기만 함
-      // 가로나 세로로 minPx(기본 1.5px) 미만만 걸친 것은 줄 간격(글자 상자의 위아래 여백)이 살짝 닿은 것이라
-      // 눈에는 깨끗합니다(두 줄짜리 설명 글, 예: 「색칠한 부분의 넓이는?」/「조각을 옮겨 보세요」).
-      if (ix < minPx || iy < minPx) continue;
+      // 가로로 minPx(기본 1.5px) 미만, 세로로 stackPx(기본 1.5px) 미만만 걸친 것은 줄 간격(글자 상자의 위아래 여백)이
+      // 살짝 닿은 것이라 눈에는 깨끗합니다. 글자 상자는 위아래로 글자 크기의 여백을 품어서, 위아래로 쌓인 두 줄은
+      // 세로 4px 안팎까지 상자가 겹쳐도 글자는 붙지 않습니다(--stack-px 4.5 로 그만큼 눈감아 볼 수 있음)(두 줄짜리 설명 글, 예: 「색칠한 부분의 넓이는?」/「조각을 옮겨 보세요」).
+      if (ix < minPx || iy < stackPx) continue;
       const inter = ix * iy;
       const areaA = (a.r - a.l) * (a.b - a.t);
       const areaB = (b.r - b.l) * (b.b - b.t);
@@ -66,11 +67,11 @@ export function clipBoxes(boxes, width, height, px = 4) {
  * - 맞닿음(touches): touchRatio(기본 4%) 이상 overlapRatio 미만. 학생 눈에는 글자가 붙어 보여 불편합니다.
  * touchRatio 가 overlapRatio 보다 크면 overlapRatio 로 맞춥니다(맞닿음 구간이 비게 됨).
  */
-export function analyze(boxes, width, height, overlapRatio = 0.15, clipPx = 4, touchRatio = 0.04) {
+export function analyze(boxes, width, height, overlapRatio = 0.15, clipPx = 4, touchRatio = 0.04, stackPx = 1.5) {
   const lo = Math.min(touchRatio, overlapRatio);
   const overlaps = [];
   const touches = [];
-  for (const { a, b, ratio, ix, iy, hMin, wMin } of overlapPairs(boxes, lo)) {
+  for (const { a, b, ratio, ix, iy, hMin, wMin } of overlapPairs(boxes, lo, 1.5, stackPx)) {
     (ratio >= overlapRatio ? overlaps : touches).push({ a: a.str, b: b.str, ratio, ix, iy, hMin, wMin });
   }
   return {

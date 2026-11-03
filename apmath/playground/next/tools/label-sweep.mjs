@@ -35,11 +35,13 @@ function parseArgs(argv) {
   const fix = {};
   let overlap = 0.15;
   let touch = 0.04;
+  let stack = 1.5;
   let json = null;
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--all') { flags.push('all'); continue; }
     if (a === '--overlap') { overlap = parseFloat(argv[++i]); continue; }
+    if (a === '--stack-px') { stack = parseFloat(argv[++i]); continue; }
     if (a === '--touch') { touch = parseFloat(argv[++i]); continue; }
     if (a === '--json') { json = argv[++i]; continue; }
     if (a === '--fix') { const kv = argv[++i]; const k = kv.split('=')[0]; fix[k] = parseFloat(kv.slice(k.length + 1)); continue; }
@@ -52,7 +54,7 @@ function parseArgs(argv) {
     if (Array.isArray(f)) opt[f[0]] = f[1];
     else opt[f] = true;
   }
-  return { baseUrl, lab, all: !!opt.all, opt, fix, overlap, touch, json };
+  return { baseUrl, lab, all: !!opt.all, opt, fix, overlap, touch, stack, json };
 }
 
 function usage() {
@@ -65,6 +67,7 @@ function usage() {
     '  --step <수>       간격',
     '  --fix <이름>=<값> 고정할 상태값 (여러 번 가능)',
     '  --overlap <비율>  겹침 기준(작은 상자 넓이 대비, 기본 0.15)',
+    '  --stack-px <px>  위아래로 쌓인 두 줄의 세로 겹침 허용(기본 1.5, 4.5 로 올리면 줄 간격 수준은 깨끗으로 봄)',
     '  --touch <비율>    맞닿음 기준(기본 0.04, 겹침 기준 미만이면서 이 비율 이상)',
     '  --json <파일>     결과를 JSON 으로 저장',
     '  --all             모든 장면을 기본 상태로 한 번씩 검사',
@@ -147,12 +150,14 @@ async function goScene(page, id) {
     const i = window.lab.list.findIndex((x) => x.id === sid);
     if (i < 0) throw new Error('장면을 찾을 수 없습니다: ' + sid);
     window.lab.goScene(i);
+    window.lab.s.playing = false; // 굴리기·움직이기 장면은 들어가자마자 저절로 재생되어 값이 흔들립니다(영상 재생기도 playing=false 로 고정)
   }, id);
   await settle(page);
 }
 
 async function setState(page, patch) {
   await page.evaluate((p) => {
+    window.lab.s.playing = false;
     window.lab.set(p);
   }, patch);
   await settle(page);
@@ -187,7 +192,7 @@ function pad(s, w) {
 /* ---------- 실행 ---------- */
 
 async function runSweep(browser, args) {
-  const { baseUrl, lab, opt, fix, overlap, touch } = args;
+  const { baseUrl, lab, opt, fix, overlap, touch, stack } = args;
   const scene = opt.scene;
   const param = opt.param;
   const from = parseFloat(opt.from);
@@ -206,7 +211,7 @@ async function runSweep(browser, args) {
     for (const v of values) {
       await setState(page, { [param]: v });
       const { boxes, W, H } = await readBoxes(page);
-      arr.push({ v, result: analyze(boxes, W, H, overlap, 4, touch) });
+      arr.push({ v, result: analyze(boxes, W, H, overlap, 4, touch, stack) });
     }
     perEnv[env.name] = arr;
     await context.close();
@@ -232,13 +237,13 @@ async function runSweep(browser, args) {
   }
 
   return {
-    lab, mode: 'sweep', scene, param, from, to, step, fix, overlap, touch,
+    lab, mode: 'sweep', scene, param, from, to, step, fix, overlap, touch, stack,
     environments: perEnv, cleanRanges: formatRanges(cleanBoth, step), errors: [...new Set(errors)],
   };
 }
 
 async function runAll(browser, args) {
-  const { baseUrl, lab, overlap, touch } = args;
+  const { baseUrl, lab, overlap, touch, stack } = args;
   const perEnv = {};
   const errors = [];
   for (const env of ENVS) {
@@ -247,10 +252,10 @@ async function runAll(browser, args) {
     const scenes = await page.evaluate(() => window.lab.list.map((sc, i) => ({ i, id: sc.id, title: sc.title })));
     const arr = [];
     for (const sc of scenes) {
-      await page.evaluate((i) => window.lab.goScene(i), sc.i);
+      await page.evaluate((i) => { window.lab.goScene(i); window.lab.s.playing = false; }, sc.i);
       await settle(page);
       const { boxes, W, H } = await readBoxes(page);
-      arr.push({ id: sc.id, title: sc.title, result: analyze(boxes, W, H, overlap, 4, touch) });
+      arr.push({ id: sc.id, title: sc.title, result: analyze(boxes, W, H, overlap, 4, touch, stack) });
     }
     perEnv[env.name] = arr;
     await context.close();
@@ -290,7 +295,7 @@ async function runAll(browser, args) {
   }
 
   return {
-    lab, mode: 'all', overlap, touch,
+    lab, mode: 'all', overlap, touch, stack,
     scenes: perEnv['태블릿'].map((x, i) => ({
       id: x.id, title: x.title,
       tablet: x.result, phone: perEnv['휴대폰'][i].result,

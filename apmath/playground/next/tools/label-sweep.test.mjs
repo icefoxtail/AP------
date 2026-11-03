@@ -73,6 +73,14 @@ test('두 줄짜리 글의 줄 간격(세로 1.5px 미만 걸침)은 맞닿음�
   assert.equal(analyze([L1, L3], 400, 300).touches.length + analyze([L1, L3], 400, 300).overlaps.length, 1);
 });
 
+test('--stack-px: 위아래로 쌓인 줄의 세로 겹침 4.5px 미만을 눈감아 줄 수 있다', () => {
+  const A = { str: 'r=9', l: 0, r: 40, t: 0, b: 22 };
+  const B = { str: '60°', l: 2, r: 42, t: 18, b: 40 };               // 세로 4px 걸침(비율 0.18)
+  assert.equal(analyze([A, B], 400, 300).overlaps.length, 1);          // 기본: 겹침
+  assert.equal(analyze([A, B], 400, 300, 0.15, 4, 0.04, 4.5).overlaps.length, 0);
+  assert.equal(analyze([A, B], 400, 300, 0.15, 4, 0.04, 4.5).touches.length, 0);
+});
+
 test('analyze 기준은 옵션으로 바꿀 수 있다', () => {
   const A = { str: 'A', l: 0, r: 100, t: 0, b: 50 };
   const B = { str: 'B', l: 90, r: 190, t: 0, b: 50 };               // 0.10
