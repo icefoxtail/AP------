@@ -31,7 +31,7 @@ window.questionBank = [
       "$\\frac{1}{4}=\\log_2 16$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 지수와 로그의 기본 정의 $a^x=N \\iff x=\\log_a N$을 이용하여 각 보기의 변환이 올바른지 검증한다.\\n조건 정리: 주어진 지수식과 로그식의 관계가 수학적으로 참인지 확인한다.\\n풀이 과정:\\n- $5^3=125 \\iff 3=\\log_5 125$ 이므로 ①은 옳지 않다.\\n- $4=\\log_3 81 \\iff 3^4=81$ 이므로 ②는 옳지 않다.\\n- $2^{-3}=\\frac{1}{8} \\iff -3=\\log_2\\frac{1}{8}$ 이므로 ③은 옳다.\\n- $-1=\\log_{\\frac{1}{7}}7 \\iff (\\frac{1}{7})^{-1}=7$ 이므로 ④는 옳지 않다.\\n- $16^{\\frac{1}{4}}=2 \\iff \\frac{1}{4}=\\log_{16}2$ 이므로 ⑤는 옳지 않다.\\n결론: 따라서 정답은 ③이다.",
+    "solution": "지수와 로그의 기본 정의 $a^x=N \\iff x=\\log_a N$을 이용하여 각 보기의 변환이 올바른지 검증한다.\n\n주어진 지수식과 로그식의 관계가 수학적으로 참인지 확인한다.\n\n- $5^3=125 \\iff 3=\\log_5 125$ 이므로 ①은 옳지 않다.\n- $4=\\log_3 81 \\iff 3^4=81$ 이므로 ②는 옳지 않다.\n- $2^{-3}=\\frac{1}{8} \\iff -3=\\log_2\\frac{1}{8}$ 이므로 ③은 옳다.\n- $-1=\\log_{\\frac{1}{7}}7 \\iff (\\frac{1}{7})^{-1}=7$ 이므로 ④는 옳지 않다.\n- $16^{\\frac{1}{4}}=2 \\iff \\frac{1}{4}=\\log_{16}2$ 이므로 ⑤는 옳지 않다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
@@ -68,7 +68,7 @@ window.questionBank = [
       "$\\log_a b\\times\\log_b c\\times\\log_c a$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 지수와 로그의 기본값, 그리고 로그의 밑변환 성질을 이용해 각 보기의 값을 비교한다.<br><br>조건 정리: 각 보기의 값을 각각 계산하여 서로 다른 값을 찾는다.<br><br>풀이 과정: $13^0=1$ 이고, $\\log_7 1=0$ 이다.<br>$\\sqrt{2}\\times2^{-\\frac{1}{2}}=\\sqrt{2}\\times\\frac{1}{\\sqrt{2}}=1$ 이다.<br>$\\frac{1}{\\log_2 2}=\\frac{1}{1}=1$ 이다.<br>또 $\\log_a b\\times\\log_b c\\times\\log_c a=\\frac{\\log b}{\\log a}\\times\\frac{\\log c}{\\log b}\\times\\frac{\\log a}{\\log c}=1$ 이다.<br><br>결론: ②만 값이 $0$이고 나머지는 모두 $1$이므로, 따라서 정답은 ②이다.",
+    "solution": "지수와 로그의 기본값, 그리고 로그의 밑변환 성질을 이용해 각 보기의 값을 비교한다.<br>\n\n각 보기의 값을 각각 계산하여 서로 다른 값을 찾는다.<br>\n\n$13^0=1$ 이고, $\\log_7 1=0$ 이다.<br>$\\sqrt{2}\\times2^{-\\frac{1}{2}}=\\sqrt{2}\\times\\frac{1}{\\sqrt{2}}=1$ 이다.<br>$\\frac{1}{\\log_2 2}=\\frac{1}{1}=1$ 이다.<br>또 $\\log_a b\\times\\log_b c\\times\\log_c a=\\frac{\\log b}{\\log a}\\times\\frac{\\log c}{\\log b}\\times\\frac{\\log a}{\\log c}=1$ 이다.<br>\n\n②만 값이 $0$이고 나머지는 모두 $1$이므로, 따라서 정답은 ②이다.",
     "subUnitKey": "H22-A-01-CORE",
     "subUnit": "지수와 로그 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -104,7 +104,7 @@ window.questionBank = [
       "0.3674"
     ],
     "answer": "④",
-    "solution": "[키포인트] 상용로그표에서 소수 첫째 자리와 둘째 자리를 기준으로 위치를 찾는다.<br><br>조건 정리: $\\log 2.31$은 2.3행과 1열에 해당하는 값을 찾으면 된다.<br><br>풀이 과정: 상용로그표에서 2.3행을 찾고, 그중 1열의 값을 읽으면 $0.3636$ 이다.<br><br>결론: 따라서 정답은 ④이다.",
+    "solution": "상용로그표에서 소수 첫째 자리와 둘째 자리를 기준으로 위치를 찾는다.<br>\n\n$\\log 2.31$은 2.3행과 1열에 해당하는 값을 찾으면 된다.<br>\n\n상용로그표에서 2.3행을 찾고, 그중 1열의 값을 읽으면 $0.3636$ 이다.<br>\n\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "지수와 로그",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -141,7 +141,7 @@ window.questionBank = [
       "16.5"
     ],
     "answer": "①",
-    "solution": "[키포인트] 주어진 식에 $H=10$을 대입하고 $\\log 10=1$을 이용한다.<br><br>조건 정리: $M=\\log H+6.5$, 해일의 높이는 $H=10$이다.<br><br>풀이 과정: 식에 $H=10$을 대입하면<br>$M=\\log 10+6.5$ 이다.<br>상용로그의 성질에 의해 $\\log 10=1$ 이므로<br>$M=1+6.5=7.5$ 이다.<br><br>결론: 따라서 정답은 ①이다.",
+    "solution": "주어진 식에 $H=10$을 대입하고 $\\log 10=1$을 이용한다.<br>\n\n$M=\\log H+6.5$, 해일의 높이는 $H=10$이다.<br>\n\n식에 $H=10$을 대입하면<br>$M=\\log 10+6.5$ 이다.<br>상용로그의 성질에 의해 $\\log 10=1$ 이므로<br>$M=1+6.5=7.5$ 이다.<br>\n\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "지수와 로그",
     "subUnitConfidence": "rule_inferred",
@@ -220,7 +220,7 @@ window.questionBank = [
       "$\\frac{3\\pi}{2}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 각도를 호도법으로 바꾸는 식 $180^\\circ=\\pi$를 이용한다.<br><br>조건 정리: 표의 빈칸은 $30^\\circ$에 대응하는 호도법 값이다.<br><br>풀이 과정: $180^\\circ=\\pi$ 이므로<br>$30^\\circ=\\frac{30}{180}\\pi=\\frac{\\pi}{6}$ 이다.<br><br>결론: 따라서 정답은 ①이다.",
+    "solution": "각도를 호도법으로 바꾸는 식 $180^\\circ=\\pi$를 이용한다.<br>\n\n표의 빈칸은 $30^\\circ$에 대응하는 호도법 값이다.<br>\n\n$180^\\circ=\\pi$ 이므로<br>$30^\\circ=\\frac{30}{180}\\pi=\\frac{\\pi}{6}$ 이다.<br>\n\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -262,7 +262,7 @@ window.questionBank = [
       "그래프는 함수 $y=2^x$의 그래프를 $x$축에 대하여 대칭이동 후 $y$축의 방향으로 3만큼 평행이동한 것과 같다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $y=2^{-x}-3$은 $y=2^x$를 y축에 대하여 대칭이동한 뒤 아래로 3만큼 평행이동한 함수이다.<br><br>조건 정리: 각 보기의 설명이 함수의 성질과 맞는지 확인한다.<br><br>풀이 과정: $x=0$일 때 $y=2^0-3=-2$ 이므로 ①은 옳다.<br>지수함수는 모든 실수에서 정의되므로 ②도 옳다.<br>$2^{-x}$는 $x$가 증가할수록 감소하므로 ③도 옳다.<br>$x\\to\\infty$일 때 $2^{-x}\\to0$ 이므로 점근선은 $y=-3$이고, ④도 옳다.<br>한편 $y=2^{-x}$는 $y=2^x$를 y축에 대하여 대칭이동한 그래프이므로, ⑤의 x축 대칭이동이라는 설명은 틀리다.<br><br>결론: 따라서 정답은 ⑤이다.",
+    "solution": "$y=2^{-x}-3$은 $y=2^x$를 y축에 대하여 대칭이동한 뒤 아래로 3만큼 평행이동한 함수이다.<br>\n\n각 보기의 설명이 함수의 성질과 맞는지 확인한다.<br>\n\n$x=0$일 때 $y=2^0-3=-2$ 이므로 ①은 옳다.<br>지수함수는 모든 실수에서 정의되므로 ②도 옳다.<br>$2^{-x}$는 $x$가 증가할수록 감소하므로 ③도 옳다.<br>$x\\to\\infty$일 때 $2^{-x}\\to0$ 이므로 점근선은 $y=-3$이고, ④도 옳다.<br>한편 $y=2^{-x}$는 $y=2^x$를 y축에 대하여 대칭이동한 그래프이므로, ⑤의 x축 대칭이동이라는 설명은 틀리다.<br>\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "rule_inferred",
@@ -299,7 +299,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 지수 계산, 로그값 계산, 삼각함수 값을 구한 뒤 곱한다.<br><br>조건 정리: 식을 네 부분으로 나누어 계산한다.<br><br>풀이 과정: $8^{\\frac{2}{3}}=(\\sqrt[3]{8})^2=2^2=4$ 이다.<br>$\\left(\\frac12\\right)^{-1}=2$ 이다.<br>$\\log_9 3=\\frac12$ 이고, $\\log_3 1=0$ 이므로 $3^{\\log_3 1}=1$ 이다.<br>따라서 $\\log_9 3+3^{\\log_3 1}=\\frac12+1=\\frac32$ 이다.<br>또 $2\\sin\\frac\\pi6=2\\cdot\\frac12=1$ 이다.<br>그러므로 전체 값은 $4\\times2\\times\\frac32\\times1=12$ 이다.<br><br>결론: 따라서 정답은 ⑤이다.",
+    "solution": "지수 계산, 로그값 계산, 삼각함수 값을 구한 뒤 곱한다.<br>\n\n식을 네 부분으로 나누어 계산한다.<br>\n\n$8^{\\frac{2}{3}}=(\\sqrt[3]{8})^2=2^2=4$ 이다.<br>$\\left(\\frac12\\right)^{-1}=2$ 이다.<br>$\\log_9 3=\\frac12$ 이고, $\\log_3 1=0$ 이므로 $3^{\\log_3 1}=1$ 이다.<br>따라서 $\\log_9 3+3^{\\log_3 1}=\\frac12+1=\\frac32$ 이다.<br>또 $2\\sin\\frac\\pi6=2\\cdot\\frac12=1$ 이다.<br>그러므로 전체 값은 $4\\times2\\times\\frac32\\times1=12$ 이다.<br>\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-A-01-CORE",
     "subUnit": "지수와 로그 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -341,7 +341,7 @@ window.questionBank = [
       "$45\\pi$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 환부채꼴의 넓이는 바깥 부채꼴의 넓이에서 안쪽 부채꼴의 넓이를 빼서 구한다.<br><br>조건 정리: 중심각은 $\\frac{2\\pi}{3}$, 바깥 반지름은 $12$, 안쪽 반지름은 $6$이다.<br><br>풀이 과정: 반지름이 $R$, 중심각이 $\\theta$인 부채꼴의 넓이는 $\\frac{1}{2}R^2\\theta$ 이다.<br>따라서 종이의 넓이는<br>$\\frac{1}{2}\\cdot\\frac{2\\pi}{3}\\cdot(12^2-6^2)$<br>$=\\frac{1}{2}\\cdot\\frac{2\\pi}{3}\\cdot(144-36)$<br>$=\\frac{\\pi}{3}\\cdot108=36\\pi$ 이다.<br><br>결론: 따라서 정답은 ②이다.",
+    "solution": "환부채꼴의 넓이는 바깥 부채꼴의 넓이에서 안쪽 부채꼴의 넓이를 빼서 구한다.<br>\n\n중심각은 $\\frac{2\\pi}{3}$, 바깥 반지름은 $12$, 안쪽 반지름은 $6$이다.<br>\n\n반지름이 $R$, 중심각이 $\\theta$인 부채꼴의 넓이는 $\\frac{1}{2}R^2\\theta$ 이다.<br>따라서 종이의 넓이는<br>$\\frac{1}{2}\\cdot\\frac{2\\pi}{3}\\cdot(12^2-6^2)$<br>$=\\frac{1}{2}\\cdot\\frac{2\\pi}{3}\\cdot(144-36)$<br>$=\\frac{\\pi}{3}\\cdot108=36\\pi$ 이다.<br>\n\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -378,7 +378,7 @@ window.questionBank = [
       "15"
     ],
     "answer": "③",
-    "solution": "[키포인트] 각 함수의 증가, 감소를 이용하여 정의역의 끝값에서 최댓값을 구한다.<br><br>조건 정리: 정의역은 $-1\\le x\\le2$ 이다.<br><br>풀이 과정: $y=2^{-x}+6$은 $x$가 증가할수록 감소하므로 최댓값은 $x=-1$일 때이다.<br>따라서 $a=2^{-(-1)}+6=2+6=8$ 이다.<br>또 $y=\\log_3(2x+5)+3$은 로그함수의 증가성과 일차식 $2x+5$의 증가성을 이용하면 증가함수이므로 최댓값은 $x=2$일 때이다.<br>따라서 $b=\\log_3 9+3=2+3=5$ 이다.<br>그러므로 $a+b=8+5=13$ 이다.<br><br>결론: 따라서 정답은 ③이다.",
+    "solution": "각 함수의 증가, 감소를 이용하여 정의역의 끝값에서 최댓값을 구한다.<br>\n\n정의역은 $-1\\le x\\le2$ 이다.<br>\n\n$y=2^{-x}+6$은 $x$가 증가할수록 감소하므로 최댓값은 $x=-1$일 때이다.<br>따라서 $a=2^{-(-1)}+6=2+6=8$ 이다.<br>또 $y=\\log_3(2x+5)+3$은 로그함수의 증가성과 일차식 $2x+5$의 증가성을 이용하면 증가함수이므로 최댓값은 $x=2$일 때이다.<br>따라서 $b=\\log_3 9+3=2+3=5$ 이다.<br>그러므로 $a+b=8+5=13$ 이다.<br>\n\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-A-03-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -420,7 +420,7 @@ window.questionBank = [
       "$k\\le 4$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $|x-2|\\ge0$ 이므로 지수 부분의 최솟값을 먼저 찾는다.<br><br>조건 정리: 함수는 $y=2^{|x-2|}+3$ 이다.<br><br>풀이 과정: $|x-2|\\ge0$ 이므로<br>$2^{|x-2|}\\ge2^0=1$ 이다.<br>따라서 $y=2^{|x-2|}+3\\ge1+3=4$ 이다.<br>최솟값 4는 $x=2$일 때 나온다.<br>직선 $y=k$가 그래프와 만나지 않으려면 그래프의 최솟값보다 작아야 하므로 $k<4$ 이다.<br><br>결론: 따라서 정답은 ④이다.",
+    "solution": "$|x-2|\\ge0$ 이므로 지수 부분의 최솟값을 먼저 찾는다.<br>\n\n함수는 $y=2^{|x-2|}+3$ 이다.<br>\n\n$|x-2|\\ge0$ 이므로<br>$2^{|x-2|}\\ge2^0=1$ 이다.<br>따라서 $y=2^{|x-2|}+3\\ge1+3=4$ 이다.<br>최솟값 4는 $x=2$일 때 나온다.<br>직선 $y=k$가 그래프와 만나지 않으려면 그래프의 최솟값보다 작아야 하므로 $k<4$ 이다.<br>\n\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -456,7 +456,7 @@ window.questionBank = [
       "$-\\frac{3}{4}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $\\sin^2\\theta+\\cos^2\\theta=1$을 이용하고, 사분면으로 부호를 결정한다.<br><br>조건 정리: $\\frac\\pi2<\\theta<\\pi$ 이므로 $\\theta$는 제2사분면에 있다.<br><br>풀이 과정: $\\sin\\theta=\\frac{\\sqrt7}{4}$ 이므로<br>$\\cos^2\\theta=1-\\sin^2\\theta=1-\\left(\\frac{\\sqrt7}{4}\\right)^2=1-\\frac{7}{16}=\\frac{9}{16}$ 이다.<br>따라서 $\\cos\\theta=\\pm\\frac34$ 이다.<br>그런데 제2사분면에서는 $\\cos\\theta<0$ 이므로<br>$\\cos\\theta=-\\frac34$ 이다.<br><br>결론: 따라서 정답은 ⑤이다.",
+    "solution": "$\\sin^2\\theta+\\cos^2\\theta=1$을 이용하고, 사분면으로 부호를 결정한다.<br>\n\n$\\frac\\pi2<\\theta<\\pi$ 이므로 $\\theta$는 제2사분면에 있다.<br>\n\n$\\sin\\theta=\\frac{\\sqrt7}{4}$ 이므로<br>$\\cos^2\\theta=1-\\sin^2\\theta=1-\\left(\\frac{\\sqrt7}{4}\\right)^2=1-\\frac{7}{16}=\\frac{9}{16}$ 이다.<br>따라서 $\\cos\\theta=\\pm\\frac34$ 이다.<br>그런데 제2사분면에서는 $\\cos\\theta<0$ 이므로<br>$\\cos\\theta=-\\frac34$ 이다.<br>\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -493,7 +493,7 @@ window.questionBank = [
       "1"
     ],
     "answer": "①",
-    "solution": "[키포인트] 삼각함수의 최댓값은 진폭으로, 주기는 계수로 결정된다.<br><br>조건 정리: 함수는 $y=a\\sin\\frac{\\pi}{2b}x$ 이고, 최댓값은 3, 주기는 4이다.<br><br>풀이 과정: $\\sin$의 최댓값은 1이므로 함수의 최댓값은 $a$ 이다.<br>따라서 $a=3$ 이다.<br>또 $y=\\sin kx$의 주기는 $\\frac{2\\pi}{k}$ 이므로<br>$y=a\\sin\\frac{\\pi}{2b}x$의 주기는<br>$\\frac{2\\pi}{\\pi/(2b)}=4b$ 이다.<br>주기가 4이므로 $4b=4$ 이고, 따라서 $b=1$ 이다.<br>그러므로 $a+b=3+1=4$ 이다.<br><br>결론: 따라서 정답은 ①이다.",
+    "solution": "삼각함수의 최댓값은 진폭으로, 주기는 계수로 결정된다.<br>\n\n함수는 $y=a\\sin\\frac{\\pi}{2b}x$ 이고, 최댓값은 3, 주기는 4이다.<br>\n\n$\\sin$의 최댓값은 1이므로 함수의 최댓값은 $a$ 이다.<br>따라서 $a=3$ 이다.<br>또 $y=\\sin kx$의 주기는 $\\frac{2\\pi}{k}$ 이므로<br>$y=a\\sin\\frac{\\pi}{2b}x$의 주기는<br>$\\frac{2\\pi}{\\pi/(2b)}=4b$ 이다.<br>주기가 4이므로 $4b=4$ 이고, 따라서 $b=1$ 이다.<br>그러므로 $a+b=3+1=4$ 이다.<br>\n\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
     "subUnit": "삼각함수",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -530,7 +530,7 @@ window.questionBank = [
       "$\\frac{\\sqrt{7}}{2}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 합의 제곱과 차의 제곱을 이용하면 $\\sin\\theta\\cos\\theta$를 구할 수 있다.<br><br>조건 정리: $\\sin\\theta+\\cos\\theta=\\frac12$ 이고, $\\sin\\theta<\\cos\\theta$ 이다.<br><br>풀이 과정: 양변을 제곱하면<br>$(\\sin\\theta+\\cos\\theta)^2=1+2\\sin\\theta\\cos\\theta$ 이므로<br>$\\left(\\frac12\\right)^2=1+2\\sin\\theta\\cos\\theta$ 이다.<br>따라서 $\\frac14=1+2\\sin\\theta\\cos\\theta$ 이고,<br>$2\\sin\\theta\\cos\\theta=-\\frac34$ 이다.<br>이제<br>$(\\sin\\theta-\\cos\\theta)^2=1-2\\sin\\theta\\cos\\theta$ 이므로<br>$1-\\left(-\\frac34\\right)=\\frac74$ 이다.<br>따라서 $\\sin\\theta-\\cos\\theta=\\pm\\frac{\\sqrt7}{2}$ 이다.<br>그런데 $\\sin\\theta<\\cos\\theta$ 이므로 차는 음수이다.<br><br>결론: 따라서 정답은 ①이다.",
+    "solution": "합의 제곱과 차의 제곱을 이용하면 $\\sin\\theta\\cos\\theta$를 구할 수 있다.<br>\n\n$\\sin\\theta+\\cos\\theta=\\frac12$ 이고, $\\sin\\theta<\\cos\\theta$ 이다.<br>\n\n양변을 제곱하면<br>$(\\sin\\theta+\\cos\\theta)^2=1+2\\sin\\theta\\cos\\theta$ 이므로<br>$\\left(\\frac12\\right)^2=1+2\\sin\\theta\\cos\\theta$ 이다.<br>따라서 $\\frac14=1+2\\sin\\theta\\cos\\theta$ 이고,<br>$2\\sin\\theta\\cos\\theta=-\\frac34$ 이다.<br>이제<br>$(\\sin\\theta-\\cos\\theta)^2=1-2\\sin\\theta\\cos\\theta$ 이므로<br>$1-\\left(-\\frac34\\right)=\\frac74$ 이다.<br>따라서 $\\sin\\theta-\\cos\\theta=\\pm\\frac{\\sqrt7}{2}$ 이다.<br>그런데 $\\sin\\theta<\\cos\\theta$ 이므로 차는 음수이다.<br>\n\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -567,7 +567,7 @@ window.questionBank = [
       "$y=\\sqrt{2}\\cos 2x-\\sqrt{3}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 삼각함수의 평행이동, 상수배는 주기에 영향을 주지 않고, 내부의 계수와 절댓값 여부만 확인하면 된다.<br><br>조건 정리: 각 함수의 주기를 구하여 비교한다.<br><br>풀이 과정: $y=\\sin 2x-1$의 주기는 $\\pi$ 이다.<br>$y=2\\cos x+1$의 주기는 $2\\pi$ 이다.<br>$y=\\sqrt3\\tan(-x)$는 $\\tan x$와 같은 주기를 가지므로 $\\pi$ 이다.<br>$y=|2\\cos x|$는 $|\\cos x|$의 주기와 같아서 $\\pi$ 이다.<br>$y=\\sqrt2\\cos 2x-\\sqrt3$의 주기는 $\\pi$ 이다.<br><br>결론: 나머지 넷과 주기가 다른 것은 ②이므로, 따라서 정답은 ②이다.",
+    "solution": "삼각함수의 평행이동, 상수배는 주기에 영향을 주지 않고, 내부의 계수와 절댓값 여부만 확인하면 된다.<br>\n\n각 함수의 주기를 구하여 비교한다.<br>\n\n$y=\\sin 2x-1$의 주기는 $\\pi$ 이다.<br>$y=2\\cos x+1$의 주기는 $2\\pi$ 이다.<br>$y=\\sqrt3\\tan(-x)$는 $\\tan x$와 같은 주기를 가지므로 $\\pi$ 이다.<br>$y=|2\\cos x|$는 $|\\cos x|$의 주기와 같아서 $\\pi$ 이다.<br>$y=\\sqrt2\\cos 2x-\\sqrt3$의 주기는 $\\pi$ 이다.<br>\n\n나머지 넷과 주기가 다른 것은 ②이므로, 따라서 정답은 ②이다.",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
     "subUnit": "삼각함수",
     "subUnitConfidence": "rule_inferred",
@@ -609,7 +609,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "[키포인트] 반지름이 1인 사분원 위의 점의 x좌표를 $\\cos$로 나타내고, 서로 보각인 각의 제곱합을 묶는다.<br><br>조건 정리: 사분원의 중심각 $\\frac\\pi2$를 9등분하므로 각 점은 $\\frac{i\\pi}{18}\\ (i=1,2,\\dots,8)$에 대응한다.<br><br>풀이 과정: 점 $P_i$의 x좌표가 곧 $OQ_i$의 길이이므로<br>$OQ_i=\\cos\\frac{i\\pi}{18}$ 이다.<br>따라서 구하는 값은<br>$\\sum_{i=1}^{8}\\cos^2\\frac{i\\pi}{18}$ 이다.<br>이제 서로 보각인 각끼리 묶으면<br>$\\cos^2 10^\\circ+\\cos^2 80^\\circ=1$,<br>$\\cos^2 20^\\circ+\\cos^2 70^\\circ=1$,<br>$\\cos^2 30^\\circ+\\cos^2 60^\\circ=1$,<br>$\\cos^2 40^\\circ+\\cos^2 50^\\circ=1$ 이다.<br>따라서 전체 합은 $1+1+1+1=4$ 이다.<br><br>결론: 따라서 정답은 ④이다.",
+    "solution": "반지름이 1인 사분원 위의 점의 x좌표를 $\\cos$로 나타내고, 서로 보각인 각의 제곱합을 묶는다.<br>\n\n사분원의 중심각 $\\frac\\pi2$를 9등분하므로 각 점은 $\\frac{i\\pi}{18}\\ (i=1,2,\\dots,8)$에 대응한다.<br>\n\n점 $P_i$의 x좌표가 곧 $OQ_i$의 길이이므로<br>$OQ_i=\\cos\\frac{i\\pi}{18}$ 이다.<br>따라서 구하는 값은<br>$\\sum_{i=1}^{8}\\cos^2\\frac{i\\pi}{18}$ 이다.<br>이제 서로 보각인 각끼리 묶으면<br>$\\cos^2 10^\\circ+\\cos^2 80^\\circ=1$,<br>$\\cos^2 20^\\circ+\\cos^2 70^\\circ=1$,<br>$\\cos^2 30^\\circ+\\cos^2 60^\\circ=1$,<br>$\\cos^2 40^\\circ+\\cos^2 50^\\circ=1$ 이다.<br>따라서 전체 합은 $1+1+1+1=4$ 이다.<br>\n\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -645,7 +645,7 @@ window.questionBank = [
       "$\\log_a x^2<(\\log_a x)^2<\\log_a(\\log_a x)$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $t=\\log_a x$로 치환하면 세 식을 간단히 비교할 수 있다.<br><br>조건 정리: $a\\le x<a^2$ 이므로 $1\\le\\log_a x<2$ 이다. 이를 $t$라 두면 $1\\le t<2$ 이다.<br><br>풀이 과정: $t=\\log_a x$라 두면<br>$(\\log_a x)^2=t^2$, $\\log_a x^2=2t$, $\\log_a(\\log_a x)=\\log_a t$ 이다.<br>$1\\le t<2$ 이고 $a>2$ 이므로<br>$0\\le\\log_a t<1$ 이다.<br>또 $1\\le t<2$에서 $t^2<2t$ 이다.<br>따라서<br>$\\log_a t<t^2<2t$ 이다.<br>즉,<br>$\\log_a(\\log_a x)<(\\log_a x)^2<\\log_a x^2$ 이다.<br><br>결론: 따라서 정답은 ③이다.",
+    "solution": "$t=\\log_a x$로 치환하면 세 식을 간단히 비교할 수 있다.<br>\n\n$a\\le x<a^2$ 이므로 $1\\le\\log_a x<2$ 이다. 이를 $t$라 두면 $1\\le t<2$ 이다.<br>\n\n$t=\\log_a x$라 두면<br>$(\\log_a x)^2=t^2$, $\\log_a x^2=2t$, $\\log_a(\\log_a x)=\\log_a t$ 이다.<br>$1\\le t<2$ 이고 $a>2$ 이므로<br>$0\\le\\log_a t<1$ 이다.<br>또 $1\\le t<2$에서 $t^2<2t$ 이다.<br>따라서<br>$\\log_a t<t^2<2t$ 이다.<br>즉,<br>$\\log_a(\\log_a x)<(\\log_a x)^2<\\log_a x^2$ 이다.<br>\n\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "지수와 로그",
     "subUnitConfidence": "rule_inferred",
@@ -682,7 +682,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "③",
-    "solution": "[키포인트] 공통원소 조건을 로그의 밑변환으로 바꾸면 정수 조건 문제로 바뀐다.<br><br>조건 정리: 공통원소가 되려면 어떤 $n,m$에 대하여 $\\log_4 n=\\log_{2^k} m$ 이어야 한다.<br><br>풀이 과정: 밑변환 공식을 이용하면<br>$\\log_4 n=\\frac{\\log_2 n}{2}$, $\\log_{2^k} m=\\frac{\\log_2 m}{k}$ 이다.<br>따라서<br>$\\frac{\\log_2 n}{2}=\\frac{\\log_2 m}{k}$ 이고,<br>$k\\log_2 n=2\\log_2 m$ 이므로 $n^k=m^2$ 이다.<br>보기 중 $k=3$일 때 $n^3=m^2$ 이려면 $n=t^2$, $m=t^3$ 꼴이 된다.<br>이때 $m=t^3\\le100$ 이어야 하므로 가능한 $t$는 $1,2,3,4$ 뿐이다.<br>따라서 공통원소의 개수는 4개이다.<br><br>결론: 따라서 정답은 ③이다.",
+    "solution": "공통원소 조건을 로그의 밑변환으로 바꾸면 정수 조건 문제로 바뀐다.<br>\n\n공통원소가 되려면 어떤 $n,m$에 대하여 $\\log_4 n=\\log_{2^k} m$ 이어야 한다.<br>\n\n밑변환 공식을 이용하면<br>$\\log_4 n=\\frac{\\log_2 n}{2}$, $\\log_{2^k} m=\\frac{\\log_2 m}{k}$ 이다.<br>따라서<br>$\\frac{\\log_2 n}{2}=\\frac{\\log_2 m}{k}$ 이고,<br>$k\\log_2 n=2\\log_2 m$ 이므로 $n^k=m^2$ 이다.<br>보기 중 $k=3$일 때 $n^3=m^2$ 이려면 $n=t^2$, $m=t^3$ 꼴이 된다.<br>이때 $m=t^3\\le100$ 이어야 하므로 가능한 $t$는 $1,2,3,4$ 뿐이다.<br>따라서 공통원소의 개수는 4개이다.<br>\n\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "지수와 로그",
     "subUnitConfidence": "rule_inferred",
@@ -743,7 +743,7 @@ window.questionBank = [
     "content": "서술형 1. [5점]<br><br>두 부등식 $\\log_3(x-2)<2$과 $\\left(\\frac{1}{8}\\right)^x\\le\\left(\\frac{1}{4}\\right)^{x+2}$과 방정식 $2\\cos^2x-\\cos x-1=0$을 동시에 만족하는 $x$값을 구하는 과정을 서술하시오. (단, $0\\le x<2\\pi$)",
     "choices": [],
     "answer": "$\\frac{4\\pi}{3}$",
-    "solution": "[키포인트] 두 부등식으로 $x$의 범위를 먼저 구한 뒤, 삼각방정식의 해 중에서 그 범위에 들어가는 값을 찾는다.<br><br>조건 정리: $\\log_3(x-2)<2$, $\\left(\\frac18\\right)^x\\le\\left(\\frac14\\right)^{x+2}$, 그리고 $2\\cos^2x-\\cos x-1=0$ 이다.<br><br>풀이 과정: 먼저 $\\log_3(x-2)<2$ 에서 정의역 조건은 $x>2$ 이고, 밑이 3이므로 증가함수여서<br>$x-2<9$ 이다. 따라서 $2<x<11$ 이다.<br>다음으로 $\\left(\\frac18\\right)^x\\le\\left(\\frac14\\right)^{x+2}$ 에서 밑을 2로 바꾸면<br>$2^{-3x}\\le2^{-2x-4}$ 이다.<br>지수함수의 성질에 의해 $-3x\\le-2x-4$ 이므로 $x\\ge4$ 이다.<br>따라서 두 부등식을 동시에 만족하면 $4\\le x<11$ 이다.<br>이제 삼각방정식은<br>$2\\cos^2x-\\cos x-1=0$<br>$(2\\cos x+1)(\\cos x-1)=0$ 이므로<br>$\\cos x=1$ 또는 $\\cos x=-\\frac12$ 이다.<br>$0\\le x<2\\pi$ 에서 해는 $x=0,\\ \\frac{2\\pi}{3},\\ \\frac{4\\pi}{3}$ 이다.<br>이 중 $4\\le x<11$ 을 만족하는 값은 $\\frac{4\\pi}{3}$ 뿐이다.<br><br>결론: 따라서 구하는 값은 $\\frac{4\\pi}{3}$이다.",
+    "solution": "두 부등식으로 $x$의 범위를 먼저 구한 뒤, 삼각방정식의 해 중에서 그 범위에 들어가는 값을 찾는다.<br>\n\n$\\log_3(x-2)<2$, $\\left(\\frac18\\right)^x\\le\\left(\\frac14\\right)^{x+2}$, 그리고 $2\\cos^2x-\\cos x-1=0$ 이다.<br>\n\n먼저 $\\log_3(x-2)<2$ 에서 정의역 조건은 $x>2$ 이고, 밑이 3이므로 증가함수여서<br>$x-2<9$ 이다. 따라서 $2<x<11$ 이다.<br>다음으로 $\\left(\\frac18\\right)^x\\le\\left(\\frac14\\right)^{x+2}$ 에서 밑을 2로 바꾸면<br>$2^{-3x}\\le2^{-2x-4}$ 이다.<br>지수함수의 성질에 의해 $-3x\\le-2x-4$ 이므로 $x\\ge4$ 이다.<br>따라서 두 부등식을 동시에 만족하면 $4\\le x<11$ 이다.<br>이제 삼각방정식은<br>$2\\cos^2x-\\cos x-1=0$<br>$(2\\cos x+1)(\\cos x-1)=0$ 이므로<br>$\\cos x=1$ 또는 $\\cos x=-\\frac12$ 이다.<br>$0\\le x<2\\pi$ 에서 해는 $x=0,\\ \\frac{2\\pi}{3},\\ \\frac{4\\pi}{3}$ 이다.<br>이 중 $4\\le x<11$ 을 만족하는 값은 $\\frac{4\\pi}{3}$ 뿐이다.<br>\n\n따라서 구하는 값은 $\\frac{4\\pi}{3}$이다.",
     "subUnitKey": "H22-A-04-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -785,7 +785,7 @@ window.questionBank = [
       "⑤ 17"
     ],
     "answer": "④",
-    "solution": "[키포인트] 합성함수의 주기와 선대칭 성질을 이용하여 실근의 개수와 합을 구한다.\\n1단계: 재학이의 풀이에 의해 $b = a - 1$이고 $b$가 홀수이므로 $a$는 짝수임을 알 수 있다.\\n2단계: 함수 $y = -\\cos a\\pi x$의 주기는 $T = \\frac{2\\pi}{a\\pi} = \\frac{2}{a}$이며, 주어진 범위 $0 \\le x \\le 4$ 안에서 주기가 $4 \\div \\frac{2}{a} = 2a$번 반복된다.\\n3단계: 코사인 그래프는 각 주기 내에서 대칭성을 가지며, 전체 범위 $0 \\le x \\le 4$에서는 $x=2$를 기준으로 좌우 대칭이다. 따라서 실근이 쌍으로 존재할 때 한 쌍의 합은 항상 4이다.\\n4단계: 모든 실근의 합이 56이므로 실근의 개수를 $N$이라 하면, $\\frac{N}{2} \\times 4 = 56$에서 $N = 28$이다.\\n5단계: $2a$개의 주기에서 총 28개의 실근이 생기려면 한 주기당 실근이 1개씩 존재해야 하므로 $2a = 28 \\implies a = 14$이다.\\n6단계: $b = a - 1$이므로 $b = 14 - 1 = 13$이다.\\n\\n따라서 정답은 ④이다.",
+    "solution": "합성함수의 주기와 선대칭 성질을 이용하여 실근의 개수와 합을 구한다.\n1단계: 재학이의 풀이에 의해 $b = a - 1$이고 $b$가 홀수이므로 $a$는 짝수임을 알 수 있다.\n2단계: 함수 $y = -\\cos a\\pi x$의 주기는 $T = \\frac{2\\pi}{a\\pi} = \\frac{2}{a}$이며, 주어진 범위 $0 \\le x \\le 4$ 안에서 주기가 $4 \\div \\frac{2}{a} = 2a$번 반복된다.\n3단계: 코사인 그래프는 각 주기 내에서 대칭성을 가지며, 전체 범위 $0 \\le x \\le 4$에서는 $x=2$를 기준으로 좌우 대칭이다. 따라서 실근이 쌍으로 존재할 때 한 쌍의 합은 항상 4이다.\n4단계: 모든 실근의 합이 56이므로 실근의 개수를 $N$이라 하면, $\\frac{N}{2} \\times 4 = 56$에서 $N = 28$이다.\n5단계: $2a$개의 주기에서 총 28개의 실근이 생기려면 한 주기당 실근이 1개씩 존재해야 하므로 $2a = 28 \\implies a = 14$이다.\n6단계: $b = a - 1$이므로 $b = 14 - 1 = 13$이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "candidate_evidence",
@@ -809,7 +809,7 @@ window.questionBank = [
     "content": "서술형 2. [5점]<br><br>등식 $\\left(5^x+5^{-x}\\right)^2-\\left(5^x+5^{-x}\\right)=6$을 만족시키는 실수 $x$에 대하여 $125^x+125^{-x}$의 값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "18",
-    "solution": "[키포인트] $5^x+5^{-x}$를 하나의 문자로 놓아 식을 단순화하고, 세제곱의 합 공식을 이용한다.<br><br>조건 정리: $\\left(5^x+5^{-x}\\right)^2-\\left(5^x+5^{-x}\\right)=6$ 이다.<br><br>풀이 과정: $t=5^x+5^{-x}$ 라 두면 주어진 식은<br>$t^2-t=6$ 이다.<br>따라서<br>$t^2-t-6=0$<br>$(t-3)(t+2)=0$ 이므로 $t=3$ 또는 $t=-2$ 이다.<br>그런데 $5^x>0$, $5^{-x}>0$ 이므로 $t=5^x+5^{-x}>0$ 이다.<br>따라서 $t=3$ 이다.<br>이제 $a=5^x$, $b=5^{-x}$ 라 두면 $a+b=3$, $ab=1$ 이다.<br>구하는 값은<br>$125^x+125^{-x}=5^{3x}+5^{-3x}=a^3+b^3$ 이다.<br>세제곱의 합 공식을 이용하면<br>$a^3+b^3=(a+b)^3-3ab(a+b)$ 이므로<br>$a^3+b^3=3^3-3\\cdot1\\cdot3=27-9=18$ 이다.<br><br>결론: 따라서 구하는 값은 18이다.",
+    "solution": "$5^x+5^{-x}$를 하나의 문자로 놓아 식을 단순화하고, 세제곱의 합 공식을 이용한다.<br>\n\n$\\left(5^x+5^{-x}\\right)^2-\\left(5^x+5^{-x}\\right)=6$ 이다.<br>\n\n$t=5^x+5^{-x}$ 라 두면 주어진 식은<br>$t^2-t=6$ 이다.<br>따라서<br>$t^2-t-6=0$<br>$(t-3)(t+2)=0$ 이므로 $t=3$ 또는 $t=-2$ 이다.<br>그런데 $5^x>0$, $5^{-x}>0$ 이므로 $t=5^x+5^{-x}>0$ 이다.<br>따라서 $t=3$ 이다.<br>이제 $a=5^x$, $b=5^{-x}$ 라 두면 $a+b=3$, $ab=1$ 이다.<br>구하는 값은<br>$125^x+125^{-x}=5^{3x}+5^{-3x}=a^3+b^3$ 이다.<br>세제곱의 합 공식을 이용하면<br>$a^3+b^3=(a+b)^3-3ab(a+b)$ 이므로<br>$a^3+b^3=3^3-3\\cdot1\\cdot3=27-9=18$ 이다.<br>\n\n따라서 구하는 값은 18이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "지수와 로그",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -857,7 +857,7 @@ window.questionBank = [
     "content": "서술형 4. [5점]<br><br>함수 $f(x)=\\left|\\cos2\\left(x-\\frac{\\pi}{6}\\right)\\right|+\\frac{1}{2}\\left(-\\pi\\le x\\le\\pi\\right)$에 대하여 두 직선 $y=k,\\ y=1$과 만나는 서로 다른 점의 개수를 각각 $m,\\ n$이라고 할 때, $m-n=-1$이면 $k$의 범위와 $f(x)=k$의 모든 실근의 합을 구하는 과정을 각각 서술하시오. (단, $k$는 양의 실수)",
     "choices": [],
     "answer": "$\\frac{1}{2}<k<\\frac{3}{2},\\ k\\ne1$, $\\frac{4\\pi}{3}$",
-    "solution": "[키포인트] 두 수평선과 그래프의 교점 개수를 정확히 세고, 대칭성을 이용해 근의 합을 구한다.<br><br>구간 $-\\pi\\le x\\le\\pi$에서 $y=1$과의 교점은 9개이므로 $n=9$이다. $m-n=-1$이므로 $m=8$이다. 그래프의 주기성과 범위를 확인하면 $f(x)=k$가 서로 다른 8개의 실근을 갖는 범위는 $\\frac{1}{2}<k<\\frac{3}{2}$에서 $k=1$을 제외한 경우이다. 이때 근들은 $x=\\frac{\\pi}{6}$에 대하여 대칭이므로 네 쌍의 합이 각각 $\\frac{\\pi}{3}$이다. 따라서 모든 실근의 합은 $\\frac{4\\pi}{3}$이다.",
+    "solution": "두 수평선과 그래프의 교점 개수를 정확히 세고, 대칭성을 이용해 근의 합을 구한다.<br><br>구간 $-\\pi\\le x\\le\\pi$에서 $y=1$과의 교점은 9개이므로 $n=9$이다. $m-n=-1$이므로 $m=8$이다. 그래프의 주기성과 범위를 확인하면 $f(x)=k$가 서로 다른 8개의 실근을 갖는 범위는 $\\frac{1}{2}<k<\\frac{3}{2}$에서 $k=1$을 제외한 경우이다. 이때 근들은 $x=\\frac{\\pi}{6}$에 대하여 대칭이므로 네 쌍의 합이 각각 $\\frac{\\pi}{3}$이다. 따라서 모든 실근의 합은 $\\frac{4\\pi}{3}$이다.",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
