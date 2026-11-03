@@ -1040,8 +1040,751 @@ window.addEventListener('DOMContentLoaded', function () {
     scenes: [1, 2, 3].map((sub) => sceneOf(m, sub))
   }));
 
+  /* [기출 핵심 유형 장면 시작] 평가원·교육청 기출의 핵심 유형을 숫자·상황을 바꾼 변형으로 추가한 장면(장면 5~). 기존 장면 1~4는 건드리지 않았습니다. */
+  const KICE = (function () {
+  /* ---------- 공통 도우미 ---------- */
+  const tex = APLab.tex, clamp = APLab.clamp, esc = APLab.esc;
+  const D2R = Math.PI / 180;
+  const nf = (v, d = 2) => { const q = Math.pow(10, d); const r = Math.round(v * q) / q; return String(Object.is(r, -0) || r === 0 ? 0 : r).replace('-', '−'); };
+  // 분수 표기: 정수이면 그대로, 아니면 \dfrac
+  const frTex = (n, d) => { const g = (x, y) => (y ? g(y, x % y) : Math.abs(x)); const k = g(n, d); n /= k; d /= k; if (d < 0) { n = -n; d = -d; } return d === 1 ? String(n) : `\\dfrac{${n}}{${d}}`; };
+  const frTxt = (n, d) => { const g = (x, y) => (y ? g(y, x % y) : Math.abs(x)); const k = g(n, d); n /= k; d /= k; return d === 1 ? String(n) : `${n}/${d}`; };
+  // 변형 생성기: 처음에는 list[0](기출 유형 그대로), 「새 문제」를 누를 때마다 직전과 다른 것을 무작위로 고릅니다.
+  function varier(list, build) {
+    let idx = 0, cur = build(list[0], 0);
+    return { cur: () => cur, idx: () => idx, count: list.length, set: (i) => { idx = i; cur = build(list[i], i); return cur; }, next: () => { let i; do { i = Math.floor(Math.random() * list.length); } while (list.length > 1 && i === idx); idx = i; cur = build(list[i], i); return cur; } };
+  }
+  const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-cq-new>새 문제 (숫자 바꾸기)</button></div>`;
+  document.addEventListener('click', (ev) => {
+    const hit = ev.target && ev.target.closest && ev.target.closest('[data-cq-new]');
+    if (!hit) return;
+    const lab = window.lab, sc = lab && lab.scene;
+    if (!sc || !sc.vary) return;
+    sc.vary.next();
+    lab.__cqKey = '';
+    lab.s.revealed = false;
+    lab.setStep(1);
+    try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+    lab.invalidate(true);
+  });
+  const reviewTopOf = (textFn) => () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${textFn()}</div>`;
+
+  /* ---------- 그리기 도우미 (세계 좌표) ---------- */
+  const T = (b, p, str, color, dx, dy, size, align) => b.text(p, str, { color, size: size || 13, weight: 800, align: align || 'center', baseline: 'middle', dx: dx || 0, dy: dy || 0 });
+  const mid = (A, B) => [(A[0] + B[0]) / 2, (A[1] + B[1]) / 2];
+  const dist = (A, B) => Math.hypot(A[0] - B[0], A[1] - B[1]);
+  // 선분 A–B 의 가운데에서 화면 기준으로 수직 방향(side=±1)으로 off(px) 떨어진 곳에 글자를 씁니다
+  function segLabel(b, A, B, str, color, off, side, size, along) {
+    const s1 = b.toS(A[0], A[1]), s2 = b.toS(B[0], B[1]);
+    const L = Math.hypot(s2.x - s1.x, s2.y - s1.y) || 1;
+    const dx = (s2.x - s1.x) / L, dy = (s2.y - s1.y) / L;
+    const m = mid(A, B);
+    const a = (along || 0);
+    b.text(m, str, { color, size: size || 13, weight: 800, align: 'center', baseline: 'middle', dx: -dy * off * (side || 1) + dx * a, dy: dx * off * (side || 1) + dy * a });
+  }
+  function ellipsePath(cx, cy, ax, by, n = 200) {
+    const pts = [];
+    for (let i = 0; i <= n; i++) { const t = (i / n) * 2 * Math.PI; pts.push([cx + ax * Math.cos(t), cy + by * Math.sin(t)]); }
+    return pts;
+  }
+  // 쌍곡선 x²/a² − y²/b² = 1 의 한 가지(sgn=+1 오른쪽, −1 왼쪽), 중심 (cx, 0), |y| ≤ ymax
+  function hyperPath(cx, a, bb, sgn, ymax, n = 160) {
+    const U = Math.asinh(ymax / bb), pts = [];
+    for (let i = 0; i <= n; i++) { const u = -U + (2 * U * i) / n; pts.push([cx + sgn * a * Math.cosh(u), bb * Math.sinh(u)]); }
+    return pts;
+  }
+  // 위아래로 열린 쌍곡선 y²/m² − x²/n² = 1 의 한 가지(sgn=+1 위쪽), |x| ≤ xmax
+  function hyperPathV(m, n, sgn, xmax, nn = 160) {
+    const U = Math.asinh(xmax / n), pts = [];
+    for (let i = 0; i <= nn; i++) { const u = -U + (2 * U * i) / nn; pts.push([n * Math.sinh(u), sgn * m * Math.cosh(u)]); }
+    return pts;
+  }
+  // 오른쪽으로 열린 포물선 (y − vy)² = 4p(x − vx), |y − vy| ≤ ymax
+  function parabPath(vx, vy, p, ymax, n = 160) {
+    const pts = [];
+    for (let i = 0; i <= n; i++) { const y = -ymax + (2 * ymax * i) / n; pts.push([vx + (y * y) / (4 * p), vy + y]); }
+    return pts;
+  }
+  const curve = (b, pts, color, w) => b.path(pts, { color, width: w || 3.2, glow: true });
+  const seg = (b, A, B, color, w, dash) => b.seg(A, B, { color, width: w || 2.6, dash: dash || undefined });
+  // 같은 길이 표시와 직각 표시
+  const tk = (b, A, B, color, count) => b.ticks(A, B, { color, count: count || 1 });
+  const rt = (b, V, A, B, color, size) => b.right(V, A, B, { color: color || 'amber', size: size || 11 });
+  // 점: 고정점(name 라벨)
+  const dot = (b, p, name, color, dx, dy, o) => b.point(p, { r: 4.6, color, label: name, dx, dy, size: 14, ...(o || {}) });
+  // 좌표축: 탐구 탭은 눈금 숫자까지, 문제·풀이 탭은 눈금 숫자 없이 축과 x, y 글자만(숫자가 라벨·점 이름과 겹치지 않게)
+  function axes2(b, fit, ticks) {
+    if (fit) return;
+    if (ticks) { b.axes(); return; }
+    b.axes({ ticks: false });
+    const o = b.toS(0, 0), r = b._drawRect(b.paneId), ins = b.insets;
+    const ox = clamp(o.x, r.x + 14, r.x + r.w - ins.right - 14), oy = clamp(o.y, r.y + ins.top + 14, r.y + r.h - ins.bottom - 14);
+    b.stext(r.x + r.w - ins.right - 14, oy - 13, 'x', { color: 'muted', size: 14, weight: 700, align: 'center', baseline: 'middle' });
+    b.stext(ox + 13, r.y + ins.top + 14, 'y', { color: 'muted', size: 14, weight: 700, align: 'center', baseline: 'middle' });
+  }
+  // 장면을 열거나 탭·새 문제로 그림이 바뀔 때 한 번, 그린 라벨까지 모두 보이도록 보기 창을 맞춥니다(끌기·확대는 그대로 둡니다).
+  function autoView(b, lab, key, fitBody, explicitBox) {
+    const k2 = key + '|' + b.W + 'x' + b.H + '|' + Math.round(b.insets.top / 8) + ',' + Math.round(b.insets.right / 8) + ',' + Math.round(b.insets.bottom / 8);
+    if (lab.__cqKey === k2) return;
+    lab.__cqKey = k2;
+    if (explicitBox) { b.setFocus(explicitBox, true); return; }
+    const bb = b.measure(fitBody);
+    if (bb) b.setFocus(b.fitBox(bb, { margin: 0.07, px: 12 }), true);
+  }
+  // 새 장면의 공통 틀
+  const baseScene = (o) => ({ tabs: { compact: true }, reviewTab: true, ...o });
+  const KP = {}; // 이 장면들이 쓰는 조절 막대
+  const KS = {}; // 이 장면들의 초기 상태
+
+  /* ======================================================================
+     [기출 핵심 유형 추가 · 2026-11] 장면 5: 포물선과 쌍곡선이 초점 F를 공유 — PF = PH (준선까지) 로 바꾸기
+     근거 기출: 2025학년도 9월 모평 29번 · 2027학년도 7월 학평(인천) 29번 · 2027학년도 6월 모평 29번 (복합: 포물선·쌍곡선)
+     ====================================================================== */
+  Object.assign(KP, {
+    q5y: { value: 5, min: 1.5, max: 7.5, step: 0.05, color: 'rose', label: '포물선 위의 점 P의 $y$좌표', hint: '그림의 점 P를 끌어도 됩니다. 초점은 $F(4,0)$, 준선은 $y$축으로 고정', format: (v) => `y₁ = ${nf(v, 2)}` }
+  });
+  Object.assign(KS, { q5y: 5 });
+
+  // 포물선: 초점 F(c,0), 준선 x=0 → y² = 2cx − c². 쌍곡선: 초점 F, F′(−c,0)이고 P를 지남
+  function geoH5(c, y) {
+    const x = (y * y + c * c) / (2 * c), P = [x, y], F = [c, 0], Fp = [-c, 0], PFp = dist(P, Fp), a = (PFp - x) / 2;
+    return { c, P, F, Fp, H: [0, y], K: [x, 0], PF: x, PH: x, PFp, a, bh: Math.sqrt(Math.max(c * c - a * a, 1e-6)) };
+  }
+  // 변형: F(c,0), PF′ : PH = p : q  ⇒ PH = PF = d = 4c q²/(p²−q²), a = (p−q)d/(2q), b² = c²−a²
+  const VH5 = [{ c: 3, p: 2, q: 1 }, { c: 5, p: 3, q: 2 }, { c: 8, p: 5, q: 3 }, { c: 6, p: 2, q: 1 }];
+  const varH5 = varier(VH5, (o) => {
+    const d = (4 * o.c * o.q * o.q) / (o.p * o.p - o.q * o.q), a = ((o.p - o.q) * d) / (2 * o.q), b2 = o.c * o.c - a * a, y = Math.sqrt(2 * o.c * d - o.c * o.c);
+    return { ...o, d, a, b2, ans: a * a * b2, g: geoH5(o.c, y), y2: 2 * o.c * d - o.c * o.c, pfp: (o.p * d) / o.q };
+  });
+  const textH5 = (v = varH5.cur()) => `두 점 ${tex(`F(${v.c},0),\\ F'(-${v.c},0)`)}을 초점으로 하는 쌍곡선 ${tex('\\dfrac{x^2}{a^2}-\\dfrac{y^2}{b^2}=1')}이 있다. 점 ${tex('F')}를 초점으로 하고 ${tex('y')}축을 준선으로 하는 포물선이 이 쌍곡선과 제1사분면에서 만나는 점을 ${tex('P')}, 점 ${tex('P')}에서 ${tex('y')}축에 내린 수선의 발을 ${tex('H')}라 하자. ${tex(`\\overline{PF'}:\\overline{PH}=${v.p}:${v.q}`)}일 때, ${tex('a^2b^2')}의 값을 구하시오. (단, ${tex('a>0,\\ b>0')})`;
+
+  function drawH5(b, s0, v, lab) {
+    const tab = lab.tab, explore = tab === 'explore', prob = tab === 'problem';
+    const st = (i) => (explore ? true : tab === 'review' ? s0.step >= i : false);
+    const vr = varH5.cur();
+    const g = explore ? geoH5(4, s0.q5y) : vr.g;
+    const c = g.c, ymax = g.P[1] * 1.5 + 2;
+    const body = (fit) => {
+      if (s0.grid && explore && !fit) b.grid();
+      axes2(b, fit, explore);
+      if (!fit) {
+        curve(b, parabPath(c / 2, 0, c / 2, ymax), 'violet', 3);
+        curve(b, hyperPath(0, g.a, g.bh, 1, ymax), 'ink');
+        curve(b, hyperPath(0, g.a, g.bh, -1, ymax), 'ink');
+      }
+      const yd = explore ? 9.2 : g.P[1] + 1.6;
+      seg(b, [0, -yd], [0, yd], 'red', 2.2, [6, 5]);
+      T(b, [0, -yd + 0.1], prob ? '준선(y축)' : '준선 x = 0', 'red', 8, -4, 12, 'left');
+      dot(b, g.F, prob ? `F(${nf(c, 0)}, 0)` : 'F', 'rose', 6, 17);
+      dot(b, g.Fp, prob ? `F′(−${nf(c, 0)}, 0)` : "F′", 'sky', -4, 17, { align: 'right' });
+      // 문제 그림: PH(준선까지), PF′ (주어진 비), PF (포물선의 초점)
+      seg(b, g.P, g.H, 'rose', 2.6);
+      seg(b, g.P, g.Fp, 'sky', 2.8);
+      seg(b, g.P, g.F, prob ? 'muted' : 'rose', prob ? 1.8 : 2.8);
+      rt(b, g.H, [0, g.H[1] - 1], g.P, 'rose', 10);
+      dot(b, g.H, 'H', 'red', -8, -2, { align: 'right', r: 4 });
+      if (st(1)) { tk(b, g.P, g.H, 'rose', 2); tk(b, g.P, g.F, 'rose', 2); }
+      if (explore) {
+        segLabel(b, g.P, g.H, `PH = ${nf(g.PH, 2)}`, 'rose', 14, 1);
+        segLabel(b, g.P, g.Fp, `PF′ = ${nf(g.PFp, 2)}`, 'sky', 16, 1);
+      }
+      if (!explore && st(2)) { segLabel(b, g.P, g.Fp, `PF′ = ${nf(vr.pfp, 0)}`, 'sky', 16, 1); segLabel(b, g.P, g.H, `PH = PF = ${nf(vr.d, 0)}`, 'rose', 16, 1); }
+      if (!explore && st(3)) {
+        seg(b, g.P, g.K, 'amber', 2, [4, 4]);
+        dot(b, g.K, 'K', 'amber', 4, 16, { r: 3.8 });
+        segLabel(b, g.P, g.K, `x₁ = ${nf(vr.d, 0)}`, 'amber', 14, 1);
+      }
+      if (explore) b.handle('P', g.P, { color: 'amber', r: 7.5, label: 'P', dx: 12, dy: -12, size: 14, ariaLabel: '점 P (포물선 위에서 끌어 보세요)', drag: (w) => { lab.s.q5y = clamp(w.y, 1.5, 7.5); } });
+      else dot(b, g.P, 'P', 'amber', 12, -12, { r: 6 });
+    };
+    autoView(b, lab, `${explore ? 'x' : 'v' + varH5.idx()}|${tab}`, () => body(true), explore ? { x: [-6.4, 12.6], y: [-9.8, 9.8] } : null);
+    body(false);
+  }
+
+  function sceneH5() {
+    return baseScene({
+      id: 'q5', title: '포물선과 쌍곡선이 초점을 공유할 때 — PH = PF, PF′ − PF = 2a', short: '포물선+쌍곡선',
+      question: '포물선의 초점 F가 쌍곡선의 초점이기도 할 때, 점 P에서 준선까지의 거리 PH는 쌍곡선의 어떤 선분으로 바뀔까?',
+      guide: '점 <b>P</b>를 포물선 위에서 끌어 보세요. P를 지나는 쌍곡선(초점 F, F′)은 따라서 바뀌지만, <b>PH = PF</b>(포물선)는 늘 성립하고 쌍곡선에서는 <b>PF′ − PF = 2a</b>입니다. 준선까지의 거리 PH를 초점까지의 거리 PF로 바꾸면 쌍곡선의 정의에 바로 쓸 수 있습니다.',
+      enter: (s, lab) => { s.q5y = 5; if (lab) lab.__cqKey = ''; },
+      controls: ['q5y'],
+      presets: () => [{ group: '위치', label: 'P(6.25, 5)', apply: (st) => { st.q5y = 5; }, on: (st) => Math.abs(st.q5y - 5) < 0.03 }],
+      steps: () => {
+        const v = varH5.cur(), r = `${v.p}:${v.q}`;
+        return [
+          '포물선의 정의: 점 $P$에서 초점 $F$까지의 거리와 준선($y$축)까지의 거리는 같으므로 $PF=PH$.',
+          `$PF′:PH=${r}$ 이므로 $PF′=${frTxt(v.p, v.q)}\\,PF$. 쌍곡선의 정의 $PF′-PF=2a$ 에서 $2a=${frTxt(v.p - v.q, v.q)}\\,PF$.`,
+          `$P(d,\\,y_1)$ 에서 $PF^2=(d-${v.c})^2+y_1^2=d^2$, $PF′^2=(d+${v.c})^2+y_1^2=\\left(${frTxt(v.p, v.q)}d\\right)^2$. 두 식의 차: $${4 * v.c}d=${frTxt(v.p * v.p - v.q * v.q, v.q * v.q)}d^2$ ⇒ $d=${nf(v.d, 0)}$.`,
+          `$2a=${frTxt(v.p - v.q, v.q)}\\cdot ${nf(v.d, 0)}$ 이므로 $a=${nf(v.a, 0)}$, $b^2=c^2-a^2=${v.c * v.c}-${nf(v.a * v.a, 0)}=${nf(v.b2, 0)}$ ⇒ $a^2b^2=${nf(v.ans, 0)}$.`
+        ];
+      },
+      reviewTop: reviewTopOf(() => textH5()),
+      problem: { tag: '2025학년도 9월 모의평가 29번 유형', time: '목표 시간: 60초', text: () => probHTML(textH5()), answer: () => tex(nf(varH5.cur().ans, 0)) },
+      solution: {
+        standardTitle: '교과서식 풀이 (좌표로 계산)', standardTag: '기본 풀이', quickTitle: '10초 컷 · 준선까지 거리를 초점까지 거리로', quickTag: '10초 컷',
+        standard: () => {
+          const v = varH5.cur();
+          return {
+            steps: `① 포물선의 방정식은 ${tex(`y^2=${2 * v.c}x-${v.c * v.c}`)} (초점 ${tex('F(' + v.c + ',0)')}, 준선 ${tex('x=0')}에서 ${tex('(x-c)^2+y^2=x^2')}). 점 ${tex('P(x_1,y_1)')}는 ${tex(`y_1^2=${2 * v.c}x_1-${v.c * v.c}`)}를 만족합니다.<br>
+② ${tex("PF'=\\sqrt{(x_1+" + v.c + ')^2+y_1^2},\\ PH=x_1')}이고 ${tex(`PF':PH=${v.p}:${v.q}`)}이므로 ${tex(`${v.q}\\sqrt{(x_1+${v.c})^2+y_1^2}=${v.p}x_1`)}.<br>
+③ ${tex('y_1^2')}을 소거하고 제곱해 ${tex('x_1')}을 구하면 ${tex(`x_1=${nf(v.d, 0)}`)}. 이제 쌍곡선의 식에 대입해 ${tex('a^2,\\ b^2')}을 구하는 데 연립이 더 필요합니다.<br>
+④ ${tex(`PF'=${nf(v.pfp, 0)},\\ PF=${nf(v.d, 0)}`)}이므로 ${tex(`2a=${nf(v.pfp - v.d, 0)}`)}, ${tex(`a^2b^2=${nf(v.ans, 0)}`)}.`,
+            warning: '쌍곡선의 방정식에 P를 대입해 연립하면 a², b², x₁, y₁ 네 문자가 얽혀 계산이 길어집니다.'
+          };
+        },
+        quick: () => {
+          const v = varH5.cur();
+          return {
+            steps: `<strong class="text-pink-300">${tex('PH=PF')}</strong>(포물선), <strong class="text-sky-300">${tex("PF'-PF=2a")}</strong>(쌍곡선). ${tex(`PF'=${frTxt(v.p, v.q)}PF`)}이면 ${tex(`2a=${frTxt(v.p - v.q, v.q)}PF`)}. 삼각형 ${tex("PF'F")}에서 ${tex("PF'^2-PF^2=4c\\cdot PH")}(= ${tex('4c\\cdot PF')})이므로 ${tex(`PF=\\dfrac{4c}{(${frTxt(v.p, v.q)})^2-1}=${nf(v.d, 0)}`)}. ${tex(`a=${nf(v.a, 0)},\\ b^2=${nf(v.b2, 0)}`)} ⇒ ${tex(`a^2b^2=${nf(v.ans, 0)}`)}.`,
+            highlight: 'P는 F, F′, 준선을 모두 "거리"로 다루는 한 점입니다. PH를 PF로 바꾸면 F, F′ 사이의 선분(2c)과 PF, PF′ 만으로 식이 닫힙니다.'
+          };
+        }
+      },
+      view: (s, lab) => {
+        const tab = lab ? lab.tab : 'explore';
+        const vr = varH5.cur();
+        const out = { chips: [tab === 'explore' ? { k: '포물선', html: '초점 F · 준선 x = 0', color: 'amber' } : { k: '조건', tex: `\\overline{PF'}:\\overline{PH}=${vr.p}:${vr.q}`, color: 'amber' }, { tex: 'PH=PF', color: 'rose', answer: true }, { tex: "PF'-PF=2a", color: 'sky', answer: true }] };
+        if (tab !== 'explore') return out;
+        const g = geoH5(4, s.q5y);
+        out.status = { tone: 'info', text: `P(${nf(g.P[0], 2)}, ${nf(g.P[1], 2)}) · 쌍곡선 a = ${nf(g.a, 3)}` };
+        out.readouts = [
+          { label: 'PH (준선까지)', value: nf(g.PH, 3), color: 'rose' },
+          { label: 'PF (초점까지)', value: `${nf(g.PF, 3)} = PH`, color: 'rose' },
+          { label: "PF′", value: nf(g.PFp, 3), color: 'sky' },
+          { label: "PF′ − PF = 2a", value: `${nf(g.PFp - g.PF, 3)} → a = ${nf(g.a, 3)}`, color: 'violet', wide: true },
+          { label: 'b² = c² − a²', value: nf(g.bh * g.bh, 3), color: 'green' }
+        ];
+        return out;
+      },
+      formula: '<b>준선까지의 거리 → 초점까지의 거리</b><br>포물선: PH = PF &nbsp;·&nbsp; 쌍곡선: PF′ − PF = 2a<br>두 곡선이 초점 F를 공유하면 PH가 쌍곡선의 정의에 들어갈 수 있는 길이 PF가 됩니다.',
+      notes: '쌍곡선에서 PF′ − PF 의 부호: P가 F에 가까운 가지(오른쪽 가지) 위에 있으므로 PF′ > PF. 거리의 비는 PF′ : PH 이지 PF′ : PF 가 아닙니다(PH = PF임을 확인한 뒤 바꾸세요).',
+      vary: varH5,
+      draw: drawH5
+    });
+  }
+
+  /* ======================================================================
+     장면 6: 쌍곡선 위의 점 — 직선 F′P 위에 PQ = PF 로 점 Q를 잡아 "차"를 "합"으로 바꾸기, 닮음
+     근거 기출: 2025학년도 수능 29번 · 2026학년도 3월 학평(서울) 29번 유형
+     ====================================================================== */
+  Object.assign(KP, {
+    q6a: { value: 2.5, min: 1.5, max: 4, step: 0.05, color: 'amber', label: '쌍곡선의 $a$ (주축의 길이 $2a$)', hint: '초점은 $F(6,0)$, $F′(-6,0)$로 고정', format: (v) => `a = ${nf(v, 2)} (2a = ${nf(2 * v, 2)})` },
+    q6y: { value: 3.5, min: 0.6, max: 6, step: 0.05, color: 'rose', label: '점 P의 $y$좌표', hint: '그림의 점 P를 끌어도 됩니다', format: (v) => `y₁ = ${nf(v, 2)}` }
+  });
+  Object.assign(KS, { q6a: 2.5, q6y: 3.5 });
+
+  // 쌍곡선: 중심 O, 주축 2a, 초점 ±c. P의 PF = u 로 정하면 PF′ = u + 2a, F′Q = 2u + 2a
+  function geoH6u(a, c, u) {
+    const x = (a * (u + a)) / c, y = Math.sqrt(Math.max(0, (c * c - a * a) * ((x * x) / (a * a) - 1)));
+    return geoH6p(a, c, [x, y]);
+  }
+  function geoH6p(a, c, P) {
+    const F = [c, 0], Fp = [-c, 0], PF = dist(P, F), PFp = dist(P, Fp), d = [(P[0] + c) / PFp, P[1] / PFp], L = PF + PFp;
+    return { a, c, bh: Math.sqrt(Math.max(c * c - a * a, 1e-6)), F, Fp, P, Q: [-c + d[0] * L, d[1] * L], PF, PFp, FpQ: L };
+  }
+  const geoH6y = (a, c, y) => geoH6p(a, c, [a * Math.sqrt(1 + (y * y) / (c * c - a * a)), y]);
+  // 변형: (주축의 길이 2a, PF = u, c): (2c)² = (u+2a)(2u+2a)
+  const VH6 = [{ a2: 7, un: 9, ud: 1, cn: 10, cd: 1 }, { a2: 4, un: 14, ud: 1, cn: 12, cd: 1 }, { a2: 7, un: 11, ud: 2, cn: 15, cd: 2 }, { a2: 1, un: 7, ud: 2, cn: 3, cd: 1 }];
+  const varH6 = varier(VH6, (o) => { const u = o.un / o.ud, c = o.cn / o.cd, a = o.a2 / 2; return { ...o, u, c, a, g: geoH6u(a, c, u), pfp: u + o.a2, fq: 2 * u + o.a2, c2x: 2 * c }; });
+  const numTex = (n, d) => frTex(n, d), numTxt = (n, d) => frTxt(n, d);
+  const textH6 = (v = varH6.cur()) => `두 초점이 ${tex(`F(${numTxt(v.cn, v.cd)},0),\\ F'(-${numTxt(v.cn, v.cd)},0)`)}이고 주축의 길이가 ${tex(String(v.a2))}인 쌍곡선 위의 제1사분면의 점 ${tex('P')}에 대하여, 직선 ${tex("PF'")} 위에 ${tex('\\overline{PQ}=\\overline{PF}')}인 점 ${tex('Q')}를 ${tex("\\overline{PF'}<\\overline{QF'}")}이 되도록 잡는다. 삼각형 ${tex("QF'F")}와 삼각형 ${tex("FF'P")}가 서로 닮음일 때, 선분 ${tex('PF')}의 길이를 구하시오.`;
+
+  function drawH6(b, s0, v, lab) {
+    const tab = lab.tab, explore = tab === 'explore', prob = tab === 'problem';
+    const st = (i) => (explore ? true : tab === 'review' ? s0.step >= i : false);
+    const vr = varH6.cur();
+    const g = explore ? geoH6y(s0.q6a, 6, s0.q6y) : vr.g;
+    const ymax = g.P[1] * 1.4 + 2;
+    const body = (fit) => {
+      if (s0.grid && explore && !fit) b.grid();
+      axes2(b, fit, explore);
+      if (!fit) { curve(b, hyperPath(0, g.a, g.bh, 1, ymax), 'ink'); curve(b, hyperPath(0, g.a, g.bh, -1, ymax), 'ink'); }
+      dot(b, g.F, prob ? `F(${numTxt(vr.cn, vr.cd)}, 0)` : 'F', 'rose', 4, 17);
+      dot(b, g.Fp, prob ? `F′(−${numTxt(vr.cn, vr.cd)}, 0)` : 'F′', 'sky', -4, 17, { align: 'right' });
+      // 직선 F′Q (P를 지남), PF, PQ = PF
+      seg(b, g.Fp, g.P, 'sky', 2.8);
+      seg(b, g.P, g.Q, 'rose', 2.8);
+      seg(b, g.P, g.F, 'rose', 2.8);
+      tk(b, g.P, g.Q, 'rose', 2); tk(b, g.P, g.F, 'rose', 2);
+      dot(b, g.Q, 'Q', 'rose', 8, -12, { r: 5 });
+      // 닮음인 두 삼각형 FF′P, QF′F 의 나머지 변
+      seg(b, g.Fp, g.F, 'violet', 2.4);
+      seg(b, g.F, g.Q, 'amber', 2.2);
+      if (explore || st(2)) b.circle(g.P, g.PF, { color: 'amber', width: 1.6, dash: [5, 5], alpha: 0.7 });
+      if (explore) {
+        segLabel(b, g.Fp, g.P, `PF′ = ${nf(g.PFp, 2)}`, 'sky', 16, 1, 13, -14);
+        segLabel(b, g.P, g.F, `PF = ${nf(g.PF, 2)}`, 'rose', 20, -1);
+      }
+      if (prob) T(b, [0, 0], `주축의 길이 ${nf(vr.a2, 0)}`, 'muted', 0, 24, 13);
+      if (!explore && st(1)) { segLabel(b, g.Fp, g.P, `PF′ = PF + ${nf(vr.a2, 0)}`, 'sky', 18, 1); }
+      if (!explore && st(2)) { segLabel(b, g.P, g.Q, `PQ = PF`, 'rose', 16, 1, 13, 4); segLabel(b, g.Fp, g.Q, `F′Q = PF′ + PF`, 'violet', 18, -1, 13, -70); }
+      if (!explore && st(3)) {
+        b.poly([g.Fp, g.F, g.P], { color: 'violet', width: 2.6, fill: 'violet', fillAlpha: 0.1 });
+        b.poly([g.Fp, g.F, g.Q], { color: 'amber', width: 2.6, fill: 'amber', fillAlpha: 0.07, dash: [6, 5] });
+        b.angle(g.Fp, g.F, g.P, { r: 30, color: 'green' });
+      }
+      if (explore) b.handle('P', g.P, { color: 'amber', r: 7.5, label: 'P', dx: -4, dy: -15, size: 14, ariaLabel: '점 P (쌍곡선 위에서 끌어 보세요)', drag: (w) => { lab.s.q6y = clamp(w.y, 0.6, 6); } });
+      else dot(b, g.P, 'P', 'amber', -4, -15, { r: 6 });
+    };
+    autoView(b, lab, `${explore ? 'x' : 'v' + varH6.idx()}|${tab}`, () => body(true), explore ? { x: [-8.4, 13.4], y: [-3.4, 10.6] } : null);
+    body(false);
+  }
+
+  function sceneH6() {
+    return baseScene({
+      id: 'q6', title: '쌍곡선 위의 점 — PQ = PF 로 점 Q를 잡으면 "차"가 "합"이 된다', short: '차를 합으로 (닮음)',
+      question: '직선 F′P 위에 PQ = PF 가 되도록 점 Q를 잡으면, 선분 F′Q의 길이는 PF′과 PF로 어떻게 나타날까?',
+      guide: '점 <b>P</b>를 쌍곡선 위에서 끌어 보세요. <b>PF′ − PF = 2a</b>(차)는 일정하지만, PQ = PF 인 점 Q를 잡으면 <b>F′Q = PF′ + PF</b>(합)가 하나의 선분으로 나타납니다. 점선 원은 P를 중심으로 F와 Q를 지나는 원입니다.',
+      enter: (s, lab) => { s.q6a = 2.5; s.q6y = 3.5; if (lab) lab.__cqKey = ''; },
+      controls: ['q6a', 'q6y'],
+      presets: () => [{ group: '값', label: 'a = 2.5, y₁ = 3.5', apply: (st) => { st.q6a = 2.5; st.q6y = 3.5; }, on: (st) => Math.abs(st.q6a - 2.5) < 0.03 && Math.abs(st.q6y - 3.5) < 0.03 }],
+      steps: () => {
+        const v = varH6.cur(), u = numTxt(v.un, v.ud);
+        return [
+          `쌍곡선의 정의: $PF′-PF=${v.a2}$ 이므로 $PF=u$ 라 하면 $PF′=u+${v.a2}$.`,
+          `$PQ=PF=u$ 이고 $Q$는 $F′P$의 연장선 위이므로 $F′Q=PF′+PQ=2u+${v.a2}$ (차가 합으로 바뀝니다).`,
+          `$\\triangle QF′F\\sim\\triangle FF′P$ ($∠F′$ 공통) 이므로 $F′F:F′P=F′Q:F′F$, 곧 $F′F^2=F′P\\cdot F′Q$.`,
+          `$F′F=${numTxt(2 * v.cn, v.cd)}$ 이므로 $${numTxt(4 * v.cn * v.cn, v.cd * v.cd)}=(u+${v.a2})(2u+${v.a2})$ ⇒ $u=${u}$. 따라서 $PF=${u}$.`
+        ];
+      },
+      reviewTop: reviewTopOf(() => textH6()),
+      problem: { tag: '2025학년도 수능 29번 유형', time: '목표 시간: 70초', text: () => probHTML(textH6()), answer: () => tex(numTex(varH6.cur().un, varH6.cur().ud)) },
+      solution: {
+        standardTitle: '교과서식 풀이 (좌표로 계산)', standardTag: '기본 풀이', quickTitle: '10초 컷 · 차를 합으로, 닮음비로 한 번에', quickTag: '10초 컷',
+        standard: () => {
+          const v = varH6.cur(), u = numTxt(v.un, v.ud);
+          return {
+            steps: `① ${tex(`PF=u`)}, ${tex(`PF'=u+${v.a2}`)}. 점 ${tex('P')}의 좌표를 ${tex('(x_1,y_1)')}로 두고 두 거리를 좌표로 쓰면 제곱근이 생깁니다.<br>
+② ${tex('Q')}의 좌표는 직선 ${tex("PF'")}의 방향벡터를 길이 비로 나눠야 하므로 계산이 길어집니다.<br>
+③ 닮음비 ${tex("F'F^2=F'P\\cdot F'Q")}로부터 ${tex(`${numTxt(4 * v.cn * v.cn, v.cd * v.cd)}=(u+${v.a2})(2u+${v.a2})`)}를 얻어 풀면 ${tex(`u=${u}`)}.`,
+            warning: '좌표로 Q를 구하지 마세요. Q는 P 뒤쪽으로 PF만큼 연장한 점이라는 것만 쓰면 됩니다.'
+          };
+        },
+        quick: () => {
+          const v = varH6.cur(), u = numTxt(v.un, v.ud);
+          return {
+            steps: `<strong class="text-sky-300">${tex("PF'-PF=2a")}</strong>(차)를 <strong class="text-pink-300">${tex("F'Q=PF'+PF")}</strong>(합)로 바꾸고, 닮음 ${tex("F'F^2=F'P\\cdot F'Q")}에 넣습니다. ${tex(`(${numTxt(2 * v.cn, v.cd)})^2=(u+${v.a2})(2u+${v.a2})`)} ⇒ ${tex(`PF=${u}`)}.`,
+            highlight: 'PQ = PF 인 점 Q를 연장선 위에 잡는 것은 "PF를 F′P 위로 옮겨 놓기"입니다. 옮겨 놓으면 차(2a)는 선분 F′R, 합은 F′Q로 보입니다.'
+          };
+        }
+      },
+      view: (s, lab) => {
+        const tab = lab ? lab.tab : 'explore';
+        const out = { chips: [{ tex: "PF'-PF=2a", color: 'sky', answer: true }, { tex: "F'Q=PF'+PF", color: 'violet', answer: true }] };
+        if (tab !== 'explore') return out;
+        const g = geoH6y(s.q6a, 6, s.q6y);
+        out.status = { tone: 'info', text: `PF′ − PF = ${nf(g.PFp - g.PF, 2)} (일정) · F′Q = ${nf(g.FpQ, 2)}` };
+        out.readouts = [
+          { label: 'PF', value: nf(g.PF, 3), color: 'rose' },
+          { label: "PF′", value: nf(g.PFp, 3), color: 'sky' },
+          { label: "PF′ − PF (차 = 2a)", value: `${nf(g.PFp - g.PF, 3)}`, color: 'violet', wide: true },
+          { label: "F′Q = PF′ + PF (합)", value: `${nf(g.FpQ, 3)}`, color: 'amber', wide: true },
+          { label: "F′F²  vs  F′P·F′Q", value: `${nf(144, 1)} vs ${nf(g.PFp * g.FpQ, 1)}`, color: 'green', wide: true }
+        ];
+        return out;
+      },
+      formula: '<b>차를 합으로</b>: 직선 F′P 위에 PQ = PF 가 되게 Q를 잡으면 F′Q = PF′ + PF.<br>△QF′F 와 △FF′P 가 닮음이면 F′F² = F′P × F′Q.',
+      notes: '닮음의 대응 꼭짓점을 확인하세요: Q → F, F′ → F′, F → P. 공통각 ∠F′ 의 양 옆변이 F′Q : F′F = F′F : F′P 로 대응합니다.',
+      vary: varH6,
+      draw: drawH6
+    });
+  }
+
+  /* ======================================================================
+     장면 7: 타원과 쌍곡선이 합쳐진 곡선 |y² − 1| = x²/a² — 부분마다 알맞은 정의를 쓰기
+     근거 기출: 2025학년도 6월 모의평가 29번
+     ====================================================================== */
+  Object.assign(KP, {
+    q7a: { value: 1.118, min: 1.05, max: 2.2, step: 0.01, color: 'amber', label: '곡선 $|y^2-1|=\\dfrac{x^2}{a^2}$ 의 $a$', hint: '$a=\\sqrt5/2\\approx1.118$ 일 때 $A(0,c+1)$, $c=\\tfrac12$ 인 문제의 그림이 됩니다', format: (v) => `a = ${nf(v, 3)}` },
+    q7y: { value: 0.5, min: -3, max: 3, step: 0.02, color: 'rose', label: '곡선 위 점 P의 $y$좌표', hint: '그림의 점 P를 끌어도 됩니다 (|y| ≤ 1 이면 타원 부분, |y| ≥ 1 이면 쌍곡선 부분)', format: (v) => `y = ${nf(v, 2)}` }
+  });
+  Object.assign(KS, { q7a: 1.118, q7y: 0.5, q7sx: 1 });
+
+  const GA = Math.sqrt(5) / 2;
+  // 곡선 |y² − m²| = x²/a² (m: 배율), 타원 부분 |y| ≤ m: 초점 C, D(±ce, 0), 쌍곡선 부분 |y| ≥ m: 초점 A, B(0, ±ch)
+  function geoH7(a, m, y, sx) {
+    const ce = m * Math.sqrt(Math.max(a * a - 1, 1e-6)), ch = m * Math.sqrt(1 + a * a), x = sx * a * Math.sqrt(Math.abs(y * y - m * m));
+    return { a, m, ce, ch, P: [x, y], ell: Math.abs(y) <= m, A: [0, ch], B: [0, -ch], C: [ce, 0], D: [-ce, 0] };
+  }
+  // 변형: 배율 m, QB = L (Q는 제1사분면, 위쪽 가지) ⇒ c = m/2, AB = 3m, 둘레 = 2L + m
+  const VH7 = [{ m: 1, L: 6 }, { m: 2, L: 13 }, { m: 3, L: 21 }, { m: 2, L: 11 }];
+  const varH7 = varier(VH7, (o) => ({ ...o, c: o.m / 2, AB: 3 * o.m, QA: o.L - 2 * o.m, ans: 2 * o.L + o.m, g: geoH7(GA, o.m, 0, 1) }));
+  const textH7 = (v = varH7.cur()) => `좌표평면에서 곡선 ${tex(`|y^2-${v.m * v.m}|=\\dfrac{x^2}{a^2}`)}과 네 점 ${tex(`A(0,\\ c+${v.m}),\\ B(0,\\ -c-${v.m}),\\ C(c,\\ 0),\\ D(-c,\\ 0)`)}이 있다. 곡선 위의 점 중 ${tex('y')}좌표의 절댓값이 ${tex(String(v.m))} 이하인 모든 점 ${tex('P')}에 대하여 ${tex(`\\overline{PC}+\\overline{PD}=${v.m === 1 ? '' : v.m}\\sqrt{5}`)}이다. 곡선 위의 점 ${tex('Q')}가 제1사분면에 있고 ${tex(`\\overline{QB}=${v.L}`)}일 때, 삼각형 ${tex('ABQ')}의 둘레의 길이를 구하시오. (단, ${tex('a')}와 ${tex('c')}는 양수이다.)`;
+
+  function drawH7(b, s0, v, lab) {
+    const tab = lab.tab, explore = tab === 'explore', prob = tab === 'problem';
+    const st = (i) => (explore ? true : tab === 'review' ? s0.step >= i : false);
+    const vr = varH7.cur();
+    const m = explore ? 1 : vr.m, a = explore ? s0.q7a : GA;
+    const sx = explore ? (s0.q7sx || 1) : 1;
+    // 문제·풀이: Q는 위쪽 가지, 보여 줄 점 P는 타원 부분의 한 점
+    const g = geoH7(a, m, explore ? s0.q7y : 0, sx);
+    const base = geoH7(a, m, 0, 1);
+    // 문제 탭의 점들: P(타원 부분), Q(쌍곡선 윗가지, QB = L)
+    const Pe = [a * m * Math.sqrt(1 - 0.36), 0.6 * m]; // 타원 부분의 점 (y = 0.6m)
+    let Qp = null;
+    if (!explore) {
+      const ch = base.ch, L = vr.L, QA = L - 2 * m; // 쌍곡선: QB − QA = 2m
+      // Q = (x, y): QA² = x² + (y − ch)², QB² = x² + (y + ch)²  ⇒ y = (QB² − QA²)/(4ch)
+      const y = (L * L - QA * QA) / (4 * ch), x2 = L * L - (y + ch) * (y + ch);
+      Qp = [Math.sqrt(Math.max(0, x2)), y];
+    }
+    const body = (fit) => {
+      if (s0.grid && explore && !fit) b.grid();
+      axes2(b, fit, explore);
+      const ex = ellipsePath(0, 0, a * m, m, 200);
+      const hy = (sgn) => hyperPathV(m, a * m, sgn, (explore ? 3 : 2.2) * m * a * 1.0 + 1);
+      const colE = !explore && !st(1) ? 'ink' : 'sky', colH = !explore && !st(1) ? 'ink' : 'violet';
+      curve(b, ex, explore ? 'sky' : colE);
+      if (!fit) { curve(b, hy(1), explore ? 'violet' : colH, 3); curve(b, hy(-1), explore ? 'violet' : colH, 3); }
+      dot(b, base.A, prob ? 'A(0, c+' + nf(m, 0) + ')' : 'A', 'violet', -4, -14, { align: 'right' });
+      dot(b, base.B, prob ? 'B(0, −c−' + nf(m, 0) + ')' : 'B', 'violet', 9, 8, { align: 'left' });
+      dot(b, base.C, prob ? 'C(c, 0)' : 'C', 'sky', 8, 15, { align: 'left' });
+      dot(b, base.D, prob ? 'D(−c, 0)' : 'D', 'sky', -8, -14, { align: 'right' });
+      if (explore) {
+        const P = g.P;
+        if (g.ell) { seg(b, P, g.C, 'sky', 2.6); seg(b, P, g.D, 'sky', 2.6); }
+        else { seg(b, P, g.A, 'violet', 2.6); seg(b, P, g.B, 'violet', 2.6); }
+        b.handle('P', P, { color: 'amber', r: 7.5, label: 'P', dx: 12, dy: -12, size: 14, ariaLabel: '점 P (곡선 위에서 끌어 보세요)', drag: (w) => { lab.s.q7y = clamp(w.y, -3, 3); if (Math.abs(w.x) > 0.05) lab.s.q7sx = w.x >= 0 ? 1 : -1; } });
+      } else {
+        // 문제 그림: 타원 부분의 점 P, 쌍곡선 윗가지의 점 Q
+        
+        dot(b, Pe, 'P', 'amber', 10, -10, { r: 5 });
+        seg(b, Qp, base.B, 'rose', 2.6);
+        seg(b, Qp, base.A, st(2) ? 'violet' : 'muted', st(2) ? 2.8 : 1.6);
+        if (st(3)) seg(b, base.A, base.B, 'green', 3);
+        dot(b, Qp, 'Q', 'rose', 10, -10, { r: 5.5 });
+        segLabel(b, Qp, base.B, `QB = ${nf(vr.L, 0)}`, 'rose', 14, -1, 13, -46);
+        if (st(2)) segLabel(b, Qp, base.A, `QA = ${nf(vr.QA, 0)}`, 'violet', 16, 1);
+        if (st(3)) T(b, [0, base.ch * 0.6], `AB = ${nf(vr.AB, 0)}`, 'green', -8, 0, 13, 'right');
+        if (tab === 'review' && s0.step === 1) {
+          T(b, [-a * m * 1.0, m * 0.15], '타원 부분', 'sky', -8, 0, 12, 'right');
+          T(b, [-a * m * 0.9, base.ch * 1.35], '쌍곡선 부분', 'violet', 0, 0, 12, 'right');
+        }
+      }
+    };
+    autoView(b, lab, `${explore ? 'x' : 'v' + varH7.idx()}|${tab}`, () => body(true), explore ? { x: [-3.5, 3.5], y: [-2.7, 2.7] } : null);
+    body(false);
+  }
+
+  function sceneH7() {
+    return baseScene({
+      id: 'q7', title: '타원과 쌍곡선이 합쳐진 곡선 |y²−1| = x²/a² — 부분마다 알맞은 정의', short: '합쳐진 곡선',
+      question: '곡선 |y²−1| = x²/a² 는 y의 범위에 따라 어떤 곡선이 될까? 각 부분의 초점은 어디일까?',
+      guide: '점 <b>P</b>를 곡선 위에서 끌어 보세요. <b>|y| ≤ 1</b> 이면 타원 x²/a² + y² = 1 위의 점이라 <b>PC + PD = 2a</b>(초점 C, D), <b>|y| ≥ 1</b> 이면 쌍곡선 y² − x²/a² = 1 위의 점이라 <b>|PA − PB| = 2</b>(초점 A, B)입니다.',
+      enter: (s, lab) => { s.q7a = 1.118; s.q7y = 0.5; s.q7sx = 1; if (lab) lab.__cqKey = ''; },
+      controls: ['q7a', 'q7y'],
+      presets: () => [{ group: '값', label: 'a = √5/2 (문제의 곡선)', apply: (st) => { st.q7a = GA; }, on: (st) => Math.abs(st.q7a - GA) < 0.006 }],
+      steps: () => {
+        const v = varH7.cur(), m = v.m;
+        return [
+          `곡선을 나눕니다: $|y|\\le ${m}$ 이면 타원(초점 $C$, $D$), $|y|\\ge ${m}$ 이면 쌍곡선 $y^2-\\dfrac{x^2}{a^2}=${m * m}$ (초점 $A$, $B$).`,
+          `쌍곡선의 주축의 길이는 $${2 * m}$ 이므로 $|QA-QB|=${2 * m}$. $Q$는 위쪽 가지 위이므로 $QB-QA=${2 * m}$, $QA=${v.L}-${2 * m}=${v.QA}$.`,
+          `타원의 초점 $C$: $c^2=${m * m}(a^2-1)$, 쌍곡선의 초점 $A$: $(c+${m})^2=${m * m}(a^2+1)$. 두 식을 빼면 $${2 * m}c+${m * m}=${2 * m * m}$ ⇒ $c=${frTex(v.m, 2)}$, $AB=2(c+${m})=${v.AB}$.`,
+          `둘레 $=QA+QB+AB=${v.QA}+${v.L}+${v.AB}=${v.ans}$.`
+        ];
+      },
+      reviewTop: reviewTopOf(() => textH7()),
+      problem: { tag: '2025학년도 6월 모의평가 29번 유형', time: '목표 시간: 70초', text: () => probHTML(textH7()), answer: () => tex(String(varH7.cur().ans)) },
+      solution: {
+        standardTitle: '교과서식 풀이 (좌표로 계산)', standardTag: '기본 풀이', quickTitle: '10초 컷 · 곡선을 둘로 나눠 정의 두 번', quickTag: '10초 컷',
+        standard: () => {
+          const v = varH7.cur(), m = v.m;
+          return {
+            steps: `① ${tex(`y^2-${m * m}=\\pm\\dfrac{x^2}{a^2}`)}에서 ${tex(`|y|\\le ${m}`)}이면 ${tex(`\\dfrac{x^2}{${nf(m * m, 0)}a^2}+\\dfrac{y^2}{${m * m}}=1`)} (타원), ${tex(`|y|\\ge ${m}`)}이면 ${tex(`\\dfrac{y^2}{${m * m}}-\\dfrac{x^2}{${nf(m * m, 0)}a^2}=1`)} (쌍곡선).<br>
+② 타원: ${tex(`c^2=${m * m}a^2-${m * m}`)}, 쌍곡선: ${tex(`(c+${m})^2=${m * m}+${m * m}a^2`)}. 연립하면 ${tex(`c=${frTex(v.m, 2)}`)}, ${tex(`AB=${v.AB}`)}.<br>
+③ ${tex(`QB=${v.L}`)}, ${tex(`QB-QA=${2 * m}`)}에서 ${tex(`QA=${v.QA}`)}. 둘레 ${tex(String(v.ans))}.`,
+            warning: '곡선의 식에 절댓값이 있으면 y의 범위로 나눠서 각각 알려진 곡선 꼴로 바꿉니다. 하나의 식으로 계산하려 하면 막힙니다.'
+          };
+        },
+        quick: () => {
+          const v = varH7.cur(), m = v.m;
+          return {
+            steps: `주어진 합 ${tex('PC+PD=\\text{일정}')}은 타원 부분의 초점이 ${tex('C,\\ D')}임을 뜻하고, 쌍곡선 부분의 초점은 ${tex('A,\\ B')}입니다. 쌍곡선의 정의로 ${tex(`QB-QA=${2 * m}`)}, ${tex('AB=2(c+' + m + ')')}에서 ${tex(`c=${frTex(v.m, 2)}`)}을 구해 ${tex(`2QB-${2 * m}+AB=2\\cdot ${v.L}-${2 * m}+${v.AB}=${v.ans}`)}.`,
+            highlight: '곡선 하나에 두 가지 정의가 섞여 있습니다. "어느 부분에 있는 점인가"를 y의 범위로 먼저 가르는 것이 시작입니다.'
+          };
+        }
+      },
+      view: (s, lab) => {
+        const tab = lab ? lab.tab : 'explore';
+        const out = { chips: [{ tex: '|y|\\le 1:\\ PC+PD=2a', color: 'sky', answer: true }, { tex: '|y|\\ge 1:\\ |PA-PB|=2', color: 'violet', answer: true }] };
+        if (tab !== 'explore') return out;
+        const g = geoH7(s.q7a, 1, s.q7y, s.q7sx || 1);
+        const P = g.P;
+        out.status = g.ell ? { tone: 'info', text: `타원 부분 · PC + PD = ${nf(dist(P, g.C) + dist(P, g.D), 3)} (= 2a = ${nf(2 * g.a, 3)})` } : { tone: 'info', text: `쌍곡선 부분 · |PA − PB| = ${nf(Math.abs(dist(P, g.A) - dist(P, g.B)), 3)}` };
+        out.readouts = [
+          { label: '타원 부분의 초점 C, D', value: `(±${nf(g.ce, 3)}, 0), c² = a² − 1`, color: 'sky', wide: true },
+          { label: '쌍곡선 부분의 초점 A, B', value: `(0, ±${nf(g.ch, 3)}), c² = a² + 1`, color: 'violet', wide: true },
+          { label: 'P의 위치', value: `(${nf(P[0], 2)}, ${nf(P[1], 2)})`, color: 'amber' },
+          { label: g.ell ? 'PC + PD' : '|PA − PB|', value: g.ell ? nf(dist(P, g.C) + dist(P, g.D), 3) : nf(Math.abs(dist(P, g.A) - dist(P, g.B)), 3), color: 'rose' }
+        ];
+        return out;
+      },
+      formula: '<b>|y² − m²| = x²/a² 의 두 얼굴</b><br>|y| ≤ m : 타원 x²/(am)² + y²/m² = 1 (초점 (±m√(a²−1), 0), 합 2am)<br>|y| ≥ m : 쌍곡선 y²/m² − x²/(am)² = 1 (초점 (0, ±m√(a²+1)), 차 2m)',
+      notes: '타원의 꼭대기 (0, m) 와 쌍곡선의 꼭짓점 (0, m) 이 같은 점에서 만납니다. 점 Q가 쌍곡선의 어느 가지(위·아래)에 있는지에 따라 QA − QB 의 부호가 바뀝니다.',
+      vary: varH7,
+      draw: drawH7
+    });
+  }
+
+  /*OVH-BEGIN*/
+  /* ---------- 옛 장면(12개)의 「문제」 탭과 「새 문제」 자료(쌍곡선 x²/a²−y²/b²=1, c=√(a²+b²)) ---------- */
+  const OVH = (() => {
+    const gc = (x, y) => (y ? gc(y, x % y) : Math.abs(x));
+    const fr = (n, d) => { const g = gc(n, d) || 1; n /= g; d /= g; return d === 1 ? `${n}` : `\\dfrac{${n}}{${d}}`; };
+    const eq = (a, b) => `\\dfrac{x^2}{${a * a}}-\\dfrac{y^2}{${b * b}}=1`;
+    const cOf = (a, b) => Math.round(Math.sqrt(a * a + b * b));
+    const B = {};
+    const FFt = (c) => `F(${c},\\ 0),\\ F'(-${c},\\ 0)`;
+    B['1-1'] = ([a, b, d]) => { const c = cOf(a, b), pf = d - 2 * a, per = d + pf + 2 * c; return {
+      a, b, c, d, pf, per, chk: { pf, per },
+      text: `쌍곡선 ${tex(eq(a, b))}의 두 초점을 ${tex(FFt(c))}이라 하자. 제1사분면에 있는 쌍곡선 위의 점 ${tex('P')}에 대하여 ${tex(`\\overline{PF'}=${d}`)}일 때, 선분 ${tex('\\overline{PF}')}의 길이와 삼각형 ${tex("PF'F")}의 둘레의 길이를 구하시오.`,
+      ans: `\\overline{PF}=${pf},\\ \\text{둘레 }${per}`,
+      steps: [`두 초점 $F$, $F^{\\prime}$과 쌍곡선 위의 점 $P$, 선분 $PF^{\\prime}$, $PF$를 그립니다.`, `쌍곡선의 정의 $|PF^{\\prime}-PF|=2a=${2 * a}$이고 $P$가 오른쪽 가지 위에 있으므로 $PF=${d}-${2 * a}=${pf}$.`, `$c=\\sqrt{${a * a}+${b * b}}=${c}$이므로 $FF^{\\prime}=2c=${2 * c}$. 둘레는 $${d}+${pf}+${2 * c}=${per}$.`],
+      quick: `$PF^{\\prime}-PF=2a=${2 * a}$ ⇒ $PF=${pf}$. 둘레 $=PF^{\\prime}+PF+2c=${d}+${pf}+${2 * c}=${per}$.` }; };
+    B['1-2'] = ([a, b]) => { const c = cOf(a, b); return {
+      a, b, c, chk: { S: b * b },
+      text: `쌍곡선 ${tex(eq(a, b))}의 두 초점을 ${tex(FFt(c))}이라 하자. 쌍곡선 위의 점 ${tex('K')}에서 ${tex("\\angle F'KF=90^\\circ")}일 때, 삼각형 ${tex("KF'F")}의 넓이를 구하시오.`,
+      ans: `${b * b}`,
+      steps: [`두 초점 $F$, $F^{\\prime}$과 점 $K$를 잡고 $\\angle F^{\\prime}KF=90^\\circ$가 되는 삼각형 $KF^{\\prime}F$를 그립니다. ($K$는 $F^{\\prime}F$를 지름으로 하는 원 위의 점)`, `$KF^{\\prime}^2+KF^2=(2c)^2=${4 * c * c}$, $(KF^{\\prime}-KF)^2=(2a)^2=${4 * a * a}$.`, `$2\\,KF^{\\prime}\\cdot KF=${4 * c * c}-${4 * a * a}=${4 * b * b}$이므로 $KF^{\\prime}\\cdot KF=${2 * b * b}$, 넓이 $S=\\dfrac12KF^{\\prime}\\cdot KF=${b * b}\\ (=b^2)$.`],
+      quick: `쌍곡선에서 $\\angle F^{\\prime}KF=90^\\circ$이면 삼각형의 넓이는 $b^2=${b * b}$입니다.` }; };
+    B['1-3'] = ([a, b]) => { const c = cOf(a, b), pf = 2 * c - 2 * a, per = 4 * c + pf; return {
+      a, b, c, pf, per, chk: { pf, per },
+      text: `${tex(`a=${a},\\ b=${b}`)}인 쌍곡선 ${tex(eq(a, b))}의 두 초점을 ${tex(FFt(c))}이라 하자. 오른쪽 가지 위의 점 ${tex('P')}에 대하여 ${tex(`\\overline{PF'}=\\overline{F'F}=2c=${2 * c}`)}이면 ${tex('\\overline{PF}')}의 길이와 삼각형 ${tex("PF'F")}의 둘레를 구하시오.`,
+      ans: `\\overline{PF}=${pf},\\ \\text{둘레 }${per}`,
+      steps: [`초점 $F^{\\prime}$을 중심으로 반지름 $F^{\\prime}F=${2 * c}$인 원 위의 점 $P$를 잡고 이등변삼각형 $PF^{\\prime}F$를 그립니다.`, `$PF^{\\prime}-PF=2a=${2 * a}$이므로 $PF=${2 * c}-${2 * a}=${pf}$.`, `세 변이 $${2 * c},\\ ${2 * c},\\ ${pf}$이므로 둘레는 $${per}$.`],
+      quick: `$PF=PF^{\\prime}-2a=${2 * c}-${2 * a}=${pf}$. 세 변은 $${2 * c},${2 * c},${pf}$ ⇒ 둘레 $${per}$.` }; };
+    B['2-1'] = ([a, b]) => { const c = cOf(a, b); return {
+      a, b, c, chk: { fh: b, oh: a, S: a * b / 2 },
+      text: `쌍곡선 ${tex(eq(a, b))}의 양의 초점 ${tex(`F(${c},\\ 0)`)}에서 양의 기울기를 갖는 점근선 ${tex(`y=${fr(b, a)}x`)}에 내린 수선의 발을 ${tex('H')}라 할 때, 선분 ${tex('\\overline{FH}')}와 ${tex('\\overline{OH}')}의 길이를 구하시오.`,
+      ans: `\\overline{FH}=${b},\\ \\overline{OH}=${a}`,
+      steps: [`쌍곡선의 두 점근선과 초점 $F(${c},\\ 0)$를 그립니다.`, `$F$에서 점근선 $bx-ay=0$에 내린 수선의 발 $H$를 잡습니다 ($\\angle OHF=90^\\circ$).`, `$FH=\\dfrac{|${b}\\cdot${c}|}{\\sqrt{${b}^2+${a}^2}}=${b}$ ($=b$), $OH=\\sqrt{OF^2-FH^2}=\\sqrt{${c * c}-${b * b}}=${a}$ ($=a$).`],
+      quick: `초점에서 점근선까지의 거리는 $b=${b}$이고, 직각삼각형 $OFH$에서 $OH=a=${a}$ ($OF=c=${c}$).` }; };
+    B['2-2'] = ([a]) => { const c = a; return {
+      a, chk: { ang: 90 },
+      text: `${tex(`a=b=${a}`)}인 쌍곡선 ${tex(`x^2-y^2=${a * a}`)}의 두 점근선이 이루는 각의 크기와 양의 초점 ${tex('F')}의 좌표를 구하시오.`,
+      ans: `90^\\circ,\\ F(${a}\\sqrt{2},\\ 0)`,
+      steps: [`점근선 $y=\\pm x$와 쌍곡선 $x^2-y^2=${a * a}$를 그립니다.`, `두 점근선의 방향벡터 $(1,1)$, $(1,-1)$의 내적은 $0$이므로 서로 수직입니다 ($a=b$이면 항상 $90^\\circ$).`, `$c=\\sqrt{a^2+b^2}=\\sqrt{${a * a}+${a * a}}=${a}\\sqrt2$이므로 $F(${a}\\sqrt2,\\ 0)$, 이심률 $e=\\sqrt2$.`],
+      quick: `$a=b$이면 점근선 $y=\\pm x$가 수직이고 $c=a\\sqrt2=${a}\\sqrt2$, 이심률 $\\sqrt2$.` }; };
+    B['2-3'] = ([a, b]) => { const c = cOf(a, b); return {
+      a, b, c, chk: { S: a * b, p: c * c },
+      text: `쌍곡선 ${tex(eq(a, b))} 위의 점 ${tex('P')}에서의 접선이 두 점근선과 만나는 점을 ${tex('M_1,\\ M_2')}라 할 때, 삼각형 ${tex('OM_1M_2')}의 넓이와 ${tex('\\overline{OM_1}\\times\\overline{OM_2}')}의 값을 구하시오.`,
+      ans: `\\text{넓이 }${a * b},\\ \\overline{OM_1}\\cdot\\overline{OM_2}=${c * c}`,
+      steps: [`점 $P$에서의 접선과 두 점근선을 그립니다.`, `접선이 점근선과 만나는 점 $M_1$, $M_2$에서 $P$는 선분 $M_1M_2$의 중점입니다.`, `삼각형 $OM_1M_2$의 넓이는 $ab=${a * b}$, $\\overline{OM_1}\\cdot\\overline{OM_2}=c^2=${a * a}+${b * b}=${c * c}$.`],
+      quick: `접선이 만드는 삼각형의 넓이는 $ab=${a * b}$, 두 변의 곱은 $c^2=${c * c}$로 점 $P$의 위치와 무관합니다.` }; };
+    B['3-1'] = ([a, b]) => { const c = cOf(a, b), v = fr(a * a * b * b, c * c); return {
+      a, b, c, chk: { v: a * a * b * b / (c * c) },
+      text: `쌍곡선 ${tex(eq(a, b))} 위의 점 ${tex('P')}에서 두 점근선에 내린 수선의 길이를 각각 ${tex('l_1,\\ l_2')}라 할 때, ${tex('l_1\\times l_2')}의 값을 구하시오.`,
+      ans: v,
+      steps: [`두 점근선 $y=\\pm\\dfrac{${b}}{${a}}x$와 점 $P$를 그립니다.`, `$P$에서 두 점근선에 내린 수선의 발을 $Q_1,Q_2$라 하면 $l_1=\\dfrac{|${b}x-${a}y|}{${c}}$, $l_2=\\dfrac{|${b}x+${a}y|}{${c}}$.`, `$l_1l_2=\\dfrac{|${b * b}x^2-${a * a}y^2|}{${c * c}}=\\dfrac{${a * a}\\cdot${b * b}}{${c * c}}=${v}$ ($P$가 쌍곡선 위의 점이므로 $b^2x^2-a^2y^2=a^2b^2$).`],
+      quick: `쌍곡선 위의 점에서 두 점근선까지의 거리의 곱은 $\\dfrac{a^2b^2}{c^2}=\\dfrac{${a * a * b * b}}{${c * c}}=${v}$로 일정합니다.` }; };
+    B['3-2'] = ([a, b]) => { const S = fr(a * b, 2), c = cOf(a, b); return {
+      a, b, c, chk: { S: a * b / 2 },
+      text: `쌍곡선 ${tex(eq(a, b))} 위의 점 ${tex('P')}를 지나 두 점근선에 각각 평행한 직선을 그어 두 점근선과 만나는 점을 ${tex('R_1,\\ R_2')}라 하자. 평행사변형 ${tex('OR_1PR_2')}의 넓이를 구하시오.`,
+      ans: S,
+      steps: [`두 점근선과 점 $P$, 점 $P$를 지나 각 점근선에 평행한 두 직선을 그립니다.`, `$\\overrightarrow{OP}=\\alpha(a,\\ b)+\\beta(a,\\ -b)$로 쓰면 $P$가 쌍곡선 위에 있으므로 $\\alpha\\beta=\\dfrac14$입니다.`, `평행사변형의 넓이 $=|\\det(\\alpha(a,b),\\ \\beta(a,-b))|=2ab\\alpha\\beta=\\dfrac{ab}{2}=${S}$.`],
+      quick: `점근선에 평행한 두 직선과 점근선이 만드는 평행사변형의 넓이는 $\\dfrac{ab}{2}=\\dfrac{${a}\\times${b}}{2}=${S}$로 일정합니다.` }; };
+    B['3-3'] = ([a, b]) => { const c = cOf(a, b), l = fr(a * b, c), pr = fr(a * a * b * b, c * c); return {
+      a, b, c, chk: { l: a * b / c, pr: a * a * b * b / (c * c) },
+      text: `쌍곡선 ${tex(eq(a, b))}의 꼭짓점 ${tex(`A(${a},\\ 0)`)}에서 두 점근선에 내린 수선의 길이를 각각 ${tex('l_1,\\ l_2')}라 할 때, ${tex('l_1')}과 ${tex('l_1\\times l_2')}의 값을 구하시오.`,
+      ans: `l_1=l_2=${l},\\ l_1l_2=${pr}`,
+      steps: [`꼭짓점 $A(${a},\\ 0)$와 두 점근선을 그립니다.`, `$A$에서 점근선 $y=\\pm\\dfrac{${b}}{${a}}x$까지의 거리는 $l_1=\\dfrac{|${b}\\cdot${a}|}{\\sqrt{${b}^2+${a}^2}}=\\dfrac{${a * b}}{${c}}$이고 대칭이므로 $l_2=l_1$.`, `$l_1=l_2=\\dfrac{ab}{c}=${l}$, $l_1l_2=\\left(\\dfrac{ab}{c}\\right)^2=${pr}$ (점 $P$를 움직여도 곱은 같습니다).`],
+      quick: `$A(a,0)$에서 두 점근선까지의 거리는 $\\dfrac{ab}{c}=\\dfrac{${a * b}}{${c}}=${l}$로 같고 곱은 $${pr}$입니다.` }; };
+    B['4-1'] = ([a, b, d, e]) => { const c = cOf(a, b), g = gc(d, e), r1 = d / g, r2 = e / g; return {
+      a, b, c, d, e, r1, r2, chk: { r: d / e },
+      text: `쌍곡선 ${tex(eq(a, b))} 위의 점 ${tex('P')}에서의 접선 ${tex('l')}이 ${tex('x')}축과 만나는 점을 ${tex('T')}라 하자. ${tex(`\\overline{PF'}=${d},\\ \\overline{PF}=${e}`)}일 때, ${tex("\\overline{F'T}:\\overline{TF}")}의 비를 구하시오. (단, ${tex(FFt(c))})`,
+      ans: `\\overline{F^{\\prime}T}:\\overline{TF}=${r1}:${r2}`,
+      steps: [`점 $P$, 접선 $l$과 $x$축의 교점 $T$를 그립니다.`, `쌍곡선의 접선은 $\\angle F^{\\prime}PF$를 이등분합니다.`, `각의 이등분선 정리에서 $\\overline{F^{\\prime}T}:\\overline{TF}=\\overline{PF^{\\prime}}:\\overline{PF}=${d}:${e}=${r1}:${r2}$.`],
+      quick: `접선이 $\\angle F^{\\prime}PF$의 이등분선이므로 $F^{\\prime}T:TF=PF^{\\prime}:PF=${d}:${e}=${r1}:${r2}$.` }; };
+    B['4-2'] = ([a, b]) => { const c = cOf(a, b); return {
+      a, b, c, chk: { ff: 2 * a, oh: a },
+      text: `쌍곡선 ${tex(eq(a, b))} 위의 점 ${tex('P')}에서의 접선 ${tex('l')}에 대하여 초점 ${tex(`F(${c},\\ 0)`)}에서 ${tex('l')}에 내린 수선의 발을 ${tex('H_1')}, ${tex('F')}를 ${tex('l')}에 대하여 대칭이동한 점을 ${tex("F^{*}")}이라 하자. 선분 ${tex("F'F^{*}")}과 선분 ${tex('OH_1')}의 길이를 각각 구하시오.`,
+      ans: `F^{\\prime}F^{*}=${2 * a},\\ OH_1=${a}`,
+      steps: [`접점 $P$, 접선 $l$, 초점 $F$에서 $l$에 내린 수선의 발 $H_1$을 그립니다.`, `$F$를 $l$에 대칭이동한 $F^{*}$에서 $PF^{*}=PF$이고 $P$, $F^{\\prime}$, $F^{*}$는 한 직선 위에 있으므로 $F^{\\prime}F^{*}=|PF^{\\prime}-PF|=2a=${2 * a}$.`, `$O$는 $F^{\\prime}F$의 중점, $H_1$은 $FF^{*}$의 중점이므로 $OH_1=\\dfrac12F^{\\prime}F^{*}=${a}$.`],
+      quick: `$F^{\\prime}F^{*}=|PF^{\\prime}-PF|=2a=${2 * a}$, $OH_1=\\dfrac12F^{\\prime}F^{*}=a=${a}$.` }; };
+    B['4-3'] = ([a, b]) => { const c = cOf(a, b); return {
+      a, b, c, chk: { d: b * b },
+      text: `쌍곡선 ${tex(eq(a, b))} 위의 점 ${tex('P')}에서의 접선 ${tex('l')}이 있다. 두 초점 ${tex(FFt(c))}에서 접선 ${tex('l')}에 내린 수선의 길이를 각각 ${tex('d_1,\\ d_2')}라 할 때, ${tex('d_1\\times d_2')}의 값을 구하시오.`,
+      ans: `${b * b}`,
+      steps: [`점 $P$, 접선 $l$, 두 초점에서 $l$에 내린 수선 $d_1$, $d_2$를 그립니다.`, `접선 $\\dfrac{x_0x}{${a * a}}-\\dfrac{y_0y}{${b * b}}=1$까지의 거리를 두 초점에서 각각 구해 곱합니다.`, `$P$가 쌍곡선 위의 점이므로 곱은 $d_1d_2=b^2=${b * b}$로 일정합니다. (수선의 발은 원 $x^2+y^2=a^2$ 위의 점)`],
+      quick: `두 초점에서 접선까지의 거리의 곱은 $b^2=${b * b}$입니다.` }; };
+    const POOL = {
+      '1-1': [[3, 4, 11], [4, 3, 13], [8, 6, 19], [9, 12, 25], [6, 8, 18]],
+      '1-2': [[3, 4], [4, 3], [8, 6], [9, 12], [6, 8]],
+      '1-3': [[3, 4], [4, 3], [8, 6], [9, 12], [6, 8]],
+      '2-1': [[3, 4], [4, 3], [8, 6], [9, 12], [6, 8]],
+      '2-2': [[3], [2], [4], [5]],
+      '2-3': [[3, 4], [4, 3], [8, 6], [6, 8], [9, 12]],
+      '3-1': [[3, 4], [4, 3], [8, 6], [6, 8], [9, 12]],
+      '3-2': [[3, 4], [4, 3], [8, 6], [6, 8], [9, 12]],
+      '3-3': [[3, 4], [4, 3], [8, 6], [6, 8], [9, 12]],
+      '4-1': [[3, 4, 12, 6], [3, 4, 10, 4], [4, 3, 13, 5], [8, 6, 21, 5], [6, 8, 26, 14]],
+      '4-2': [[3, 4], [4, 3], [8, 6], [6, 8], [9, 12]],
+      '4-3': [[3, 4], [4, 3], [8, 6], [6, 8], [9, 12]]
+    };
+    const pf = (n, d) => { const g = gc(n, d) || 1; return d / g === 1 ? `${n / g}` : `${n / g}/${d / g}`; };
+    return { B, POOL, fr, pf };
+  })();
+  /*OVH-END*/
+
+  /* ---------- 옛 장면(12개)의 문제 탭·정리 탭 그림 ---------- */
+  const OVH_FIG = (() => {
+    const O = [0, 0];
+    const D = (b, p, name, color, from, o) => { const dx = p[0] - from[0], dy = p[1] - from[1], L = Math.hypot(dx, dy) || 1; if (Math.abs(p[1]) < 1e-9) dot(b, p, name, color, 0, 19, { align: 'center', ...(o || {}) }); else dot(b, p, name, color, Math.round(dx / L * 17), Math.round(-dy / L * 17), { align: 'center', ...(o || {}) }); };
+    const footOn = (n, p) => { const k = (n[0] * p[0] + n[1] * p[1] - 1) / (n[0] * n[0] + n[1] * n[1]); return [p[0] - k * n[0], p[1] - k * n[1]]; };
+    const footLine = (p, dir) => { const L = Math.hypot(...dir), u = [dir[0] / L, dir[1] / L], t = p[0] * u[0] + p[1] * u[1]; return [u[0] * t, u[1] * t]; };
+    const H = (b, v, asym, pt) => {
+      const a = v.a, bb = v.b, c = v.c, XM = Math.max(1.25 * c + 1, pt ? pt[0] + 1.6 : 0), ymax = bb * Math.sqrt(Math.max(0.2, (XM / a) ** 2 - 1));
+      curve(b, hyperPath(0, a, bb, 1, ymax), 'ink'); curve(b, hyperPath(0, a, bb, -1, ymax), 'ink');
+      if (asym) { const k = bb / a; seg(b, [-XM, -k * XM], [XM, k * XM], 'violet', 1.6, [6, 5]); seg(b, [-XM, k * XM], [XM, -k * XM], 'violet', 1.6, [6, 5]); }
+    };
+    const Pof = (v, d) => { const a = v.a, bb = v.b, c = v.c, x = (d - a) * a / c; return [x, bb * Math.sqrt(Math.max(0, x * x / (a * a) - 1))]; };
+    const Pu = (v, u) => [v.a * Math.cosh(u), v.b * Math.sinh(u)];
+    const F = {};
+    F['1-1'] = (b, st, v) => {
+      const { c, d, pf } = v, Fo = [c, 0], Fp = [-c, 0], P = Pof(v, d); H(b, v, false, P);
+      if (st(3)) b.poly([P, Fp, Fo], { fill: 'amber', fillAlpha: 0.14, color: 'amber', width: 2 });
+      seg(b, P, Fp, 'rose', 2.8); if (st(1)) seg(b, P, Fo, 'sky', 2.8);
+      segLabel(b, P, Fp, `PF' = ${d}`, 'rose', 15, 1, 13); if (st(2)) segLabel(b, P, Fo, `PF = ${pf}`, 'sky', 15, -1, 13);
+      if (st(3)) { seg(b, Fp, Fo, 'green', 4); T(b, O, `FF' = 2c = ${2 * c}`, 'green', 0, 22, 13); }
+      D(b, Fo, 'F', 'rose', O); D(b, Fp, "F'", 'rose', O); D(b, P, 'P', 'amber', O, { r: 5.2 });
+    };
+    F['1-2'] = (b, st, v) => {
+      const { a, b: bb, c } = v, Fo = [c, 0], Fp = [-c, 0], x = a * Math.sqrt(c * c + bb * bb) / c, K = [x, bb * bb / c]; H(b, v, false);
+      if (st(1)) b.path(ellipsePath(0, 0, c, c), { color: 'sky', width: 2.2, alpha: 0.85 });
+      if (st(3)) b.poly([K, Fp, Fo], { fill: 'amber', fillAlpha: 0.16, color: 'amber', width: 2 });
+      seg(b, K, Fp, 'rose', 2.8); seg(b, K, Fo, 'sky', 2.8); rt(b, K, Fp, Fo, 'amber', 11);
+      if (st(3)) T(b, [0, -c * 0.3], `S = b² = ${bb * bb}`, 'amber', 0, 0, 14);
+      D(b, Fo, `F(${c}, 0)`, 'rose', O); D(b, Fp, `F'(-${c}, 0)`, 'rose', O); D(b, K, 'K', 'amber', O, { r: 5.2 });
+    };
+    F['1-3'] = (b, st, v) => {
+      const { a, c, pf } = v, Fo = [c, 0], Fp = [-c, 0], P = Pof(v, 2 * c); H(b, v, false, P);
+      if (st(3)) b.poly([P, Fp, Fo], { fill: 'amber', fillAlpha: 0.14, color: 'amber', width: 2 });
+      seg(b, P, Fp, 'rose', 2.8); seg(b, Fp, Fo, 'rose', 2.8); tk(b, P, Fp, 'rose', 2); tk(b, Fp, Fo, 'rose', 2);
+      segLabel(b, P, Fp, `PF' = ${2 * c}`, 'rose', 15, 1, 13); T(b, [0, 0], `F'F = ${2 * c}`, 'rose', 0, 20, 13);
+      if (st(1)) seg(b, P, Fo, 'sky', 2.8); if (st(2)) segLabel(b, P, Fo, `PF = ${pf}`, 'sky', 15, -1, 13);
+      if (st(3)) T(b, [0, 0], `둘레 = ${v.per}`, 'amber', 0, 42, 14);
+      D(b, Fo, 'F', 'rose', O); D(b, Fp, "F'", 'rose', O); D(b, P, 'P', 'amber', O, { r: 5.2 });
+    };
+    F['2-1'] = (b, st, v) => {
+      const { a, b: bb, c } = v, Fo = [c, 0], n = [bb, -a], Hh = footLine(Fo, [a, bb]); H(b, v, true);
+      if (st(1)) { seg(b, Fo, Hh, 'sky', 3); seg(b, O, Hh, 'green', 3); rt(b, Hh, Fo, O, 'amber', 10); }
+      if (st(2)) T(b, [c / 2, -bb * 0.9], `FH = b = ${bb},  OH = a = ${a}`, 'amber', 0, 0, 13);
+      D(b, Fo, `F(${c}, 0)`, 'rose', O); if (st(1)) D(b, Hh, 'H', 'amber', Fo, { r: 4.6 });
+    };
+    F['2-2'] = (b, st, v) => {
+      const a = v.a, c = a * Math.SQRT2, Fo = [c, 0], w = Object.assign({}, v, { b: a, c }); H(b, w, true);
+      if (st(1)) { rt(b, O, [1, 1], [1, -1], 'amber', 14); T(b, [0, -a * 1.7], '두 점근선이 이루는 각 = 90°', 'amber', 0, 0, 13); }
+      if (st(2)) { const Hh = footLine(Fo, [1, 1]); seg(b, Fo, Hh, 'sky', 2.6); seg(b, O, Hh, 'green', 2.6); }
+      T(b, [0, a * 1.7], `a = b = ${a}`, 'muted', 0, 0, 13);
+      D(b, Fo, st(2) ? `F(${a}√2, 0)` : 'F', 'rose', O);
+    };
+    F['2-3'] = (b, st, v) => {
+      const { a, b: bb, c } = v, u = 0.75, P = Pu(v, u), x0 = P[0], y0 = P[1];
+      const xm1 = a / (x0 / a - y0 / bb), xm2 = a / (x0 / a + y0 / bb), M1 = [xm1, bb / a * xm1], M2 = [xm2, -bb / a * xm2]; H(b, v, true);
+      seg(b, M1, M2, 'amber', 2.8);
+      if (st(2)) b.poly([O, M1, M2], { fill: 'amber', fillAlpha: 0.16, color: 'amber', width: 2 });
+      if (st(1)) { D(b, M1, 'M₁', 'rose', O, { r: 4.4 }); D(b, M2, 'M₂', 'rose', O, { r: 4.4 }); }
+      if (st(3)) T(b, [0, -bb * 1.6], `넓이 = ab = ${a * bb},  OM₁ × OM₂ = c² = ${c * c}`, 'amber', 0, 0, 13);
+      D(b, P, 'P', 'amber', [P[0] - 2, P[1] + 3], { r: 5.2 });
+    };
+    F['3-1'] = (b, st, v) => {
+      const { a, b: bb } = v, P = Pu(v, 0.7), d1 = [a, bb], d2 = [a, -bb], Q1 = footLine(P, d1), Q2 = footLine(P, d2); H(b, v, true);
+      if (st(1)) { seg(b, P, Q1, 'sky', 2.8); seg(b, P, Q2, 'rose', 2.8); rt(b, Q1, P, O, 'amber', 9); rt(b, Q2, P, O, 'amber', 9); segLabel(b, P, Q1, 'l₁', 'sky', 13, 1, 13); segLabel(b, P, Q2, 'l₂', 'rose', 13, -1, 13); D(b, Q1, 'Q₁', 'sky', P, { r: 3.8 }); D(b, Q2, 'Q₂', 'rose', P, { r: 3.8 }); }
+      if (st(3)) T(b, [0, -bb * 1.6], `l₁ × l₂ = a²b² ÷ c² = ${OVH.pf(a * a * bb * bb, v.c * v.c)}`, 'amber', 0, 0, 13);
+      D(b, P, 'P', 'amber', O, { r: 5.2 });
+    };
+    F['3-2'] = (b, st, v) => {
+      const { a, b: bb } = v, P = Pu(v, 0.8), k = bb / a;
+      // P를 지나 기울기 −k, +k 인 직선과 점근선 y=kx, y=−kx 의 교점
+      const R1 = [(P[1] + k * P[0]) / (2 * k), (P[1] + k * P[0]) / 2], R2 = [(k * P[0] - P[1]) / (2 * k), -(k * P[0] - P[1]) / 2]; H(b, v, true);
+      if (st(1)) { seg(b, P, R1, 'sky', 2.6); seg(b, P, R2, 'rose', 2.6); D(b, R1, 'R₁', 'sky', O, { r: 4.4 }); D(b, R2, 'R₂', 'rose', O, { r: 4.4 }); }
+      if (st(2)) b.poly([O, R1, P, R2], { fill: 'amber', fillAlpha: 0.16, color: 'amber', width: 2 });
+      if (st(3)) T(b, [0, -bb * 1.7], `넓이 = ab ÷ 2 = ${v.chk.S}`, 'amber', 0, 0, 14);
+      D(b, P, 'P', 'amber', O, { r: 5.2 });
+    };
+    F['3-3'] = (b, st, v) => {
+      const { a, b: bb, c } = v, A = [a, 0], Q1 = footLine(A, [a, bb]), Q2 = footLine(A, [a, -bb]); H(b, v, true);
+      if (st(1)) { seg(b, A, Q1, 'sky', 2.8); seg(b, A, Q2, 'rose', 2.8); rt(b, Q1, A, O, 'amber', 9); rt(b, Q2, A, O, 'amber', 9); D(b, Q1, 'Q₁', 'sky', A, { r: 3.8 }); D(b, Q2, 'Q₂', 'rose', A, { r: 3.8 }); }
+      if (st(2)) { segLabel(b, A, Q1, 'l₁', 'sky', 13, -1, 13); segLabel(b, A, Q2, 'l₂', 'rose', 13, 1, 13); }
+      if (st(3)) T(b, [0, -bb * 1.7], `l₁ = l₂ = ab ÷ c = ${OVH.pf(a * bb, c)}`, 'amber', 0, 0, 13);
+      D(b, A, `A(${a}, 0)`, 'amber', O, { r: 5.2 });
+    };
+    F['4-1'] = (b, st, v) => {
+      const { a, c, d, e } = v, Fo = [c, 0], Fp = [-c, 0], P = Pof(v, d), n = [P[0] / (a * a), -P[1] / (v.b * v.b)], T0 = [a * a / P[0], 0]; H(b, v, false, P);
+      seg(b, P, Fp, 'rose', 2.8); seg(b, P, Fo, 'sky', 2.8); segLabel(b, P, Fp, `PF' = ${d}`, 'rose', 15, 1, 13); segLabel(b, P, Fo, `PF = ${e}`, 'sky', 15, -1, 13);
+      if (st(1)) { const dir = [-n[1], n[0]], L = Math.hypot(...dir), u = [dir[0] / L, dir[1] / L]; seg(b, [P[0] - u[0] * 4, P[1] - u[1] * 4], [P[0] + u[0] * 3, P[1] + u[1] * 3], 'violet', 2.2); }
+      if (st(2)) { b.angle(P, Fp, T0, { r: 26, color: 'amber' }); b.angle(P, T0, Fo, { r: 26, color: 'amber', rings: 2 }); }
+      if (st(3)) T(b, [0, -v.b * 1.7], `F'T : TF = PF' : PF = ${v.r1} : ${v.r2}`, 'amber', 0, 0, 13);
+      D(b, Fo, 'F', 'rose', O); D(b, Fp, "F'", 'rose', O); D(b, P, 'P', 'amber', O, { r: 5.2 }); if (st(1)) D(b, T0, 'T', 'green', [T0[0], 1], { r: 4.4 });
+    };
+    F['4-2'] = (b, st, v) => {
+      const { a, b: bb, c } = v, Fo = [c, 0], Fp = [-c, 0], P = Pu(v, 0.8), n = [P[0] / (a * a), -P[1] / (bb * bb)], Hh = footOn(n, Fo), Fs = [2 * Hh[0] - Fo[0], 2 * Hh[1] - Fo[1]]; H(b, v, false);
+      { const dir = [-n[1], n[0]], L = Math.hypot(...dir), u = [dir[0] / L, dir[1] / L]; seg(b, [P[0] - u[0] * 4, P[1] - u[1] * 4], [P[0] + u[0] * 4, P[1] + u[1] * 4], 'violet', 2.4); }
+      seg(b, Fo, Hh, 'sky', 2.4); rt(b, Hh, Fo, P, 'amber', 10);
+      if (st(1)) seg(b, Fo, Fs, 'sky', 1.8, [5, 5]);
+      if (st(2)) { seg(b, Fp, Fs, 'rose', 3); seg(b, O, Hh, 'green', 3); }
+      if (st(3)) T(b, [0, -bb * 1.8], `F'F* = 2a = ${2 * a},  OH₁ = a = ${a}`, 'amber', 0, 0, 13);
+      D(b, Fo, 'F', 'rose', O); D(b, Fp, "F'", 'rose', O); D(b, P, 'P', 'amber', O, { r: 5.2 }); D(b, Hh, 'H₁', 'sky', Fo, { r: 4 }); if (st(1)) D(b, Fs, 'F*', 'sky', Fo, { r: 4 });
+    };
+    F['4-3'] = (b, st, v) => {
+      const { a, b: bb, c } = v, Fo = [c, 0], Fp = [-c, 0], P = Pu(v, 0.8), n = [P[0] / (a * a), -P[1] / (bb * bb)], H1 = footOn(n, Fo), H2 = footOn(n, Fp); H(b, v, false);
+      { const dir = [-n[1], n[0]], L = Math.hypot(...dir), u = [dir[0] / L, dir[1] / L]; seg(b, [P[0] - u[0] * 5, P[1] - u[1] * 5], [P[0] + u[0] * 5, P[1] + u[1] * 5], 'violet', 2.4); }
+      if (st(1)) { seg(b, Fo, H1, 'sky', 2.8); seg(b, Fp, H2, 'rose', 2.8); rt(b, H1, Fo, P, 'amber', 9); rt(b, H2, Fp, P, 'amber', 9); segLabel(b, Fo, H1, 'd₁', 'sky', 13, 1, 13); segLabel(b, Fp, H2, 'd₂', 'rose', 13, -1, 13); D(b, H1, 'H₁', 'sky', Fo, { r: 3.6 }); D(b, H2, 'H₂', 'rose', Fp, { r: 3.6 }); }
+      if (st(3)) T(b, [0, -bb * 1.8], `d₁ × d₂ = b² = ${bb * bb}`, 'amber', 0, 0, 14);
+      D(b, Fo, 'F', 'rose', O); D(b, Fp, "F'", 'rose', O); D(b, P, 'P', 'amber', O, { r: 5.2 });
+    };
+    return F;
+  })();
+
+  function oldHyperUpgrade(sc, key, m, sub) {
+    const info = scenarios[m][sub - 1], list = OVH.POOL[key].map(OVH.B[key]);
+    const vr = varier(list, (x) => x);
+    const away = () => !!(window.lab && window.lab.tab && window.lab.tab !== 'explore');
+    const oSteps = sc.steps, oDraw = sc.draw, oView = sc.view, oSol = sc.solution, oProb = sc.problem;
+    const cur = () => vr.cur(), isOld = () => vr.idx() === 0;
+    const q0 = () => branchProblem(m, sub, 1);
+    sc.vary = vr;
+    sc.steps = (s) => (away() && !isOld() ? cur().steps : oSteps);
+    sc.reviewTop = () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${isOld() ? esc(q0().question) : cur().text}</div>`;
+    sc.problem = { tag: oProb.tag, time: oProb.time, text: () => probHTML(isOld() ? esc(q0().question) : cur().text), answer: () => (isOld() ? esc(q0().answer) : tex(cur().ans)) };
+    sc.solution = {
+      ...oSol,
+      standard: (s) => (isOld() ? oSol.standard(s) : { steps: cur().steps.map((t, i) => `${['①', '②', '③', '④'][i]} ${t}`).join('<br>'), warning: '정의와 도형의 성질로 먼저 선분의 관계를 정리한 뒤 값을 계산하세요.' }),
+      quick: (s) => (isOld() ? oSol.quick(s) : { steps: cur().quick, highlight: '핵심 성질을 쓰면 좌표 계산 없이 한두 줄로 끝납니다.' })
+    };
+    sc.view = (s, lab) => (lab && lab.tab !== 'explore' ? { chips: [] } : oView(s, lab));
+    sc.draw = (b, s, v, lab) => {
+      const tab = lab ? lab.tab : 'explore';
+      if (tab === 'explore') {
+        if (lab && lab.__ovk && lab.__ovk !== 'e') { b.setFocus(typeof sc.focus === 'function' ? sc.focus(s) : sc.focus, true); lab.__cqKey = ''; }
+        if (lab) lab.__ovk = 'e';
+        return oDraw(b, s, v, lab);
+      }
+      lab.__ovk = 'n';
+      v.tape = null; v.card = null;
+      const I = cur(), prob = tab === 'problem', stFull = () => true, stNow = prob ? () => false : (i) => s.step >= i;
+      const body = (fit, st) => { axes2(b, fit, false); OVH_FIG[key](b, st, I); };
+      autoView(b, lab, `${key}|v${vr.idx()}|${tab}`, () => body(true, stFull));
+      body(false, stNow);
+    };
+    return sc;
+  }
+  groups.forEach((g, gi) => g.scenes.forEach((sc, si) => oldHyperUpgrade(sc, `${gi + 1}-${si + 1}`, gi + 1, si + 1)));
+
+  const KICE_GROUPS = [
+    { id: 'q5', title: '[기출 핵심] 포물선과 쌍곡선이 초점을 공유 — PH = PF, PF′ − PF = 2a', short: '포물선+쌍곡선', scenes: [sceneH5()] },
+    { id: 'q6', title: '[기출 핵심] 쌍곡선 위의 점 — PQ = PF 로 차를 합으로, 닮음', short: '차를 합으로', scenes: [sceneH6()] },
+    { id: 'q7', title: '[기출 핵심] 타원과 쌍곡선이 합쳐진 곡선 |y²−1| = x²/a²', short: '합쳐진 곡선', scenes: [sceneH7()] }
+  ];
+
+  return { groups: KICE_GROUPS, params: KP, state: KS };
+  })();
+  /* [기출 핵심 유형 장면 끝] */
+
   APLab.createLab({
     id: 'geom-hyperbola',
+    stackFractions: true, // 패널·칩·값 칸 글 속 숫자 분수(1/2, 3/5)를 쌓은 분수로 바꿉니다 (kit/apl-core.js APLab.stackFr). 그림 글은 무대가 쌓습니다.
     title: '쌍곡선 실전 킬러 랩',
     courseName: '기하',
     unit: '이차곡선 · 쌍곡선',
@@ -1050,13 +1793,14 @@ window.addEventListener('DOMContentLoaded', function () {
     legacy: '../../labs/기하와벡터/쌍곡선.html',
     board: { kind: 'cartesian', focus: { x: [-8.2, 8.2], y: [-6.6, 6.6] } },
     params: {
+      ...KICE.params,
       a: { value: 3, min: 2, max: 5, step: 0.05, color: 'amber', label: '주축의 길이의 절반 $a$', hint: '꼭짓점이 $(\\pm a,0)$ · 주축의 길이는 $2a$', format: (v) => `a = ${fmt(v)} (2a = ${fmt(2 * v)})` },
       b: { value: 4, min: 1.5, max: 5, step: 0.05, color: 'sky', label: '$b$ (점근선 기울기 $b/a$)', hint: '초점은 $c=\\sqrt{a^2+b^2}$', format: (v) => `b = ${fmt(v)} (b² = ${fmt(v * v)})` },
       py: { value: 5, min: -7.5, max: 7.5, step: 0.05, color: 'rose', label: '점 P의 $y$좌표 $y_1$', hint: '그림의 노란 점 P를 끌어도 같이 움직입니다', format: (v, s) => `y₁ = ${fmt(v)} (x₁ = ${fmt(s.branch * s.a * Math.hypot(1, v / s.b))})` }
     },
-    state: { branch: 1, lens: 'all', animDir: 1 },
+    state: { ...KICE.state, branch: 1, lens: 'all', animDir: 1 },
     persist: ['lens', 'branch'],
-    groups
+    groups: groups.concat(KICE.groups)
   });
 });
 </script>

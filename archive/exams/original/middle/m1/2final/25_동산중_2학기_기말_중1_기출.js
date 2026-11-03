@@ -25,7 +25,7 @@ window.questionBank = [
         "$z\\div3=3z$"
       ],
       "answer": "③",
-      "solution": "[키포인트] 곱셈 기호를 생략할 때 수는 문자 앞에 쓰고, 같은 문자의 곱은 거듭제곱으로 나타낸다.\n①은 $(-2)\\times a=-2a$, ②는 보통 $bc$, ④는 $3(y+2)$, ⑤는 $\\dfrac{z}{3}$으로 나타낸다. $x\\times x\\times x=x^3$만 옳다.\n따라서 정답은 ③이다.",
+      "solution": "곱셈 기호를 생략할 때 수는 문자 앞에 쓰고, 같은 문자의 곱은 거듭제곱으로 나타낸다.\n①은 $(-2)\\times a=-2a$, ②는 보통 $bc$, ④는 $3(y+2)$, ⑤는 $\\dfrac{z}{3}$으로 나타낸다. $x\\times x\\times x=x^3$만 옳다.\n따라서 정답은 ③이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -68,7 +68,7 @@ window.questionBank = [
         "$\\dfrac{x-1}{5}$"
       ],
       "answer": "⑤",
-      "solution": "[키포인트] 1개가 남았으므로 먼저 나누어 준 사탕의 수를 구한다.\n전체 $x$개 중 남은 1개를 제외하면 $x-1$개를 5명이 똑같이 나누므로 한 명이 가지는 개수는 $\\dfrac{x-1}{5}$이다.\n따라서 정답은 ⑤이다.",
+      "solution": "1개가 남았으므로 먼저 나누어 준 사탕의 수를 구한다.\n전체 $x$개 중 남은 1개를 제외하면 $x-1$개를 5명이 똑같이 나누므로 한 명이 가지는 개수는 $\\dfrac{x-1}{5}$이다.\n따라서 정답은 ⑤이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -111,7 +111,7 @@ window.questionBank = [
         "$8$"
       ],
       "answer": "②",
-      "solution": "[키포인트] 문자에 주어진 값을 그대로 대입한다.\n$x=2$이므로 $3x-2=3\\times2-2=6-2=4$이다.\n따라서 정답은 ②이다.",
+      "solution": "문자에 주어진 값을 그대로 대입한다.\n$x=2$이므로 $3x-2=3\\times2-2=6-2=4$이다.\n따라서 정답은 ②이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -154,7 +154,7 @@ window.questionBank = [
         "$5$"
       ],
       "answer": "②",
-      "solution": "[키포인트] 거듭제곱을 먼저 계산한 뒤 부호와 나눗셈을 처리한다.\n$x=-2$, $y=-3$을 대입하면 $-x^2-\\dfrac3y=-(-2)^2-\\dfrac3{-3}=-4+1=-3$이다.\n따라서 정답은 ②이다.",
+      "solution": "거듭제곱을 먼저 계산한 뒤 부호와 나눗셈을 처리한다.\n$x=-2$, $y=-3$을 대입하면 $-x^2-\\dfrac3y=-(-2)^2-\\dfrac3{-3}=-4+1=-3$이다.\n따라서 정답은 ②이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -197,7 +197,7 @@ window.questionBank = [
         "일차식이다."
       ],
       "answer": "⑤",
-      "solution": "[키포인트] 항의 부호까지 포함하여 각 항과 계수를 판단한다.\n$x-3$의 항은 $x$, $-3$이고, $x$의 계수는 $1$, 상수항은 $-3$이다. 두 항으로 이루어진 일차식이므로 옳은 설명은 ⑤이다.\n따라서 정답은 ⑤이다.",
+      "solution": "항의 부호까지 포함하여 각 항과 계수를 판단한다.\n$x-3$의 항은 $x$, $-3$이고, $x$의 계수는 $1$, 상수항은 $-3$이다. 두 항으로 이루어진 일차식이므로 옳은 설명은 ⑤이다.\n따라서 정답은 ⑤이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -240,7 +240,7 @@ window.questionBank = [
         "㉠ $-3$, ㉡ $+x$, ㉢ $3x-2$"
       ],
       "answer": "③",
-      "solution": "[키포인트] 동류항끼리 모아 계수와 상수항을 각각 계산한다.\n$2x$와 $+x$, $+1$과 $-3$이 각각 동류항이다. 따라서 $2x+x+1-3=3x-2$이므로 ㉠은 $+x$, ㉡은 $-3$, ㉢은 $3x-2$이다.\n따라서 정답은 ③이다.",
+      "solution": "동류항끼리 모아 계수와 상수항을 각각 계산한다.\n$2x$와 $+x$, $+1$과 $-3$이 각각 동류항이다. 따라서 $2x+x+1-3=3x-2$이므로 ㉠은 $+x$, ㉡은 $-3$, ㉢은 $3x-2$이다.\n따라서 정답은 ③이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -283,7 +283,7 @@ window.questionBank = [
         "$3x+9$"
       ],
       "answer": "④",
-      "solution": "[키포인트] 괄호 앞의 빼기 기호를 분배할 때 각 항의 부호가 바뀐다.\n$(7-x)-(-3x-2)=7-x+3x+2=2x+9$이다.\n따라서 정답은 ④이다.",
+      "solution": "괄호 앞의 빼기 기호를 분배할 때 각 항의 부호가 바뀐다.\n$(7-x)-(-3x-2)=7-x+3x+2=2x+9$이다.\n따라서 정답은 ④이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -326,7 +326,7 @@ window.questionBank = [
         "$-3x+5$"
       ],
       "answer": "①",
-      "solution": "[키포인트] 분수로 나누는 것은 그 역수를 곱하는 것과 같다.\n$(15x-25)\\div\\left(-\\dfrac52\\right)=(15x-25)\\times\\left(-\\dfrac25\\right)=-6x+10$이다.\n따라서 정답은 ①이다.",
+      "solution": "분수로 나누는 것은 그 역수를 곱하는 것과 같다.\n$(15x-25)\\div\\left(-\\dfrac52\\right)=(15x-25)\\times\\left(-\\dfrac25\\right)=-6x+10$이다.\n따라서 정답은 ①이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -369,7 +369,7 @@ window.questionBank = [
         "$-\\dfrac14x+\\dfrac74$"
       ],
       "answer": "④",
-      "solution": "[키포인트] 두 식의 분모를 $4$로 맞춘 뒤 분자끼리 계산한다.\n$\\dfrac12(-x-3)=\\dfrac{-x-3}{2}=\\dfrac{-2x-6}{4}$이다.\n\n따라서\n$\\dfrac{-2x-6}{4}-\\dfrac{3x-1}{4}$\n$=\\dfrac{-2x-6-(3x-1)}{4}$\n$=\\dfrac{-5x-5}{4}$\n$=-\\dfrac54x-\\dfrac54$이다.\n\n따라서 정답은 ④이다.",
+      "solution": "두 식의 분모를 $4$로 맞춘 뒤 분자끼리 계산한다.\n$\\dfrac12(-x-3)=\\dfrac{-x-3}{2}=\\dfrac{-2x-6}{4}$이다.\n\n따라서\n$\\dfrac{-2x-6}{4}-\\dfrac{3x-1}{4}$\n$=\\dfrac{-2x-6-(3x-1)}{4}$\n$=\\dfrac{-5x-5}{4}$\n$=-\\dfrac54x-\\dfrac54$이다.\n\n따라서 정답은 ④이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -412,7 +412,7 @@ window.questionBank = [
         "$3x=12000$"
       ],
       "answer": "②",
-      "solution": "[키포인트] 거스름돈은 낸 돈에서 물건값을 뺀 금액이다.\n공책 3권의 가격은 $3x$원이고 10000원을 냈으므로 거스름돈은 $10000-3x$원이다. 이것이 2000원이므로 $10000-3x=2000$이다.\n따라서 정답은 ②이다.",
+      "solution": "거스름돈은 낸 돈에서 물건값을 뺀 금액이다.\n공책 3권의 가격은 $3x$원이고 10000원을 냈으므로 거스름돈은 $10000-3x$원이다. 이것이 2000원이므로 $10000-3x=2000$이다.\n따라서 정답은 ②이다.",
       "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
       "subUnit": "일차방정식의 활용",
       "subUnitConfidence": "rule_inferred",
@@ -455,7 +455,7 @@ window.questionBank = [
         "$2x+1=3$"
       ],
       "answer": "⑤",
-      "solution": "[키포인트] 각 방정식에 $x=1$을 대입하여 등식이 성립하는지 확인한다.\n① $2\\neq0$, ② $2\\neq-4$, ③ $2\\neq0$, ④ $-\\dfrac12\\neq2$이고, ⑤는 $2\\times1+1=3$으로 성립한다.\n따라서 정답은 ⑤이다.",
+      "solution": "각 방정식에 $x=1$을 대입하여 등식이 성립하는지 확인한다.\n① $2\\neq0$, ② $2\\neq-4$, ③ $2\\neq0$, ④ $-\\dfrac12\\neq2$이고, ⑤는 $2\\times1+1=3$으로 성립한다.\n따라서 정답은 ⑤이다.",
       "subUnitKey": "M1-03-LINEAR_EQUATION",
       "subUnit": "일차방정식",
       "subUnitConfidence": "rule_inferred",
@@ -498,7 +498,7 @@ window.questionBank = [
         "(가) ㄱ, (나) ㄴ·ㄷ"
       ],
       "answer": "②",
-      "solution": "[키포인트] 식이 바뀌는 각 단계에서 사용한 등식의 성질과 이항을 구분한다.\n(가) $3x+1=2\\rightarrow3x=2-1$에서 양변에서 $1$을 뺀 것으로 볼 수 있으므로 ㄱ이다. 동시에 $+1$을 부호를 바꾸어 오른쪽으로 옮긴 이항이므로 ㄴ도 해당한다.\n\n(나) $3x=1\\rightarrow x=\\dfrac13$은 양변을 $3$으로 나눈 것이므로 ㄷ이다.\n\n따라서 (가)는 ㄱ·ㄴ, (나)는 ㄷ이므로 정답은 ②이다.",
+      "solution": "식이 바뀌는 각 단계에서 사용한 등식의 성질과 이항을 구분한다.\n(가) $3x+1=2\\rightarrow3x=2-1$에서 양변에서 $1$을 뺀 것으로 볼 수 있으므로 ㄱ이다. 동시에 $+1$을 부호를 바꾸어 오른쪽으로 옮긴 이항이므로 ㄴ도 해당한다.\n\n(나) $3x=1\\rightarrow x=\\dfrac13$은 양변을 $3$으로 나눈 것이므로 ㄷ이다.\n\n따라서 (가)는 ㄱ·ㄴ, (나)는 ㄷ이므로 정답은 ②이다.",
       "subUnitKey": "M1-03-LINEAR_EQUATION",
       "subUnit": "일차방정식",
       "subUnitConfidence": "rule_inferred",
@@ -541,7 +541,7 @@ window.questionBank = [
         "$x=9$"
       ],
       "answer": "④",
-      "solution": "[키포인트] 괄호를 풀고 $x$항을 한쪽으로 모은다.\n$2(x-9)=-4x$에서 $2x-18=-4x$, 따라서 $6x=18$이므로 $x=3$이다.\n따라서 정답은 ④이다.",
+      "solution": "괄호를 풀고 $x$항을 한쪽으로 모은다.\n$2(x-9)=-4x$에서 $2x-18=-4x$, 따라서 $6x=18$이므로 $x=3$이다.\n따라서 정답은 ④이다.",
       "subUnitKey": "M1-03-LINEAR_EQUATION",
       "subUnit": "일차방정식",
       "subUnitConfidence": "rule_inferred",
@@ -584,7 +584,7 @@ window.questionBank = [
         "$\\dfrac74$"
       ],
       "answer": "③",
-      "solution": "[키포인트] 두 방정식의 해가 같으므로 첫 번째 방정식에서 공통 해를 먼저 구해 두 번째 식에 넣는다.\n첫 번째 식에서\n$\\dfrac15(-3x-14)=0.9x+1.7$\n$-0.6x-2.8=0.9x+1.7$\n$-1.5x=4.5$\n이므로 $x=-3$이다.\n\n이 값을 두 번째 식에 대입하면\n$0.4(-3-2a)-\\dfrac13=\\dfrac{a(8)}6=\\dfrac{4a}{3}$이다.\n양변에 $15$를 곱하면\n$6(-3-2a)-5=20a$\n$-23-12a=20a$\n$-23=32a$\n이므로 $a=-\\dfrac{23}{32}$이다.\n\n따라서 정답은 ③이다.",
+      "solution": "두 방정식의 해가 같으므로 첫 번째 방정식에서 공통 해를 먼저 구해 두 번째 식에 넣는다.\n첫 번째 식에서\n$\\dfrac15(-3x-14)=0.9x+1.7$\n$-0.6x-2.8=0.9x+1.7$\n$-1.5x=4.5$\n이므로 $x=-3$이다.\n\n이 값을 두 번째 식에 대입하면\n$0.4(-3-2a)-\\dfrac13=\\dfrac{a(8)}6=\\dfrac{4a}{3}$이다.\n양변에 $15$를 곱하면\n$6(-3-2a)-5=20a$\n$-23-12a=20a$\n$-23=32a$\n이므로 $a=-\\dfrac{23}{32}$이다.\n\n따라서 정답은 ③이다.",
       "subUnitKey": "M1-03-LINEAR_EQUATION",
       "subUnit": "일차방정식",
       "subUnitConfidence": "rule_inferred",
@@ -626,7 +626,7 @@ window.questionBank = [
         "$E(0,-4)$"
       ],
       "answer": "③",
-      "solution": "[키포인트] 점의 위치에서 먼저 $x$좌표를 읽고 그다음 $y$좌표를 읽는다.\n그림에서 $A=(-3,2)$, $B=(0,1)$, $C=(4,3)$, $D=(3,-2)$이다. 보기 중 그림과 일치하는 것은 $C(4,3)$이다.\n따라서 정답은 ③이다.",
+      "solution": "점의 위치에서 먼저 $x$좌표를 읽고 그다음 $y$좌표를 읽는다.\n그림에서 $A=(-3,2)$, $B=(0,1)$, $C=(4,3)$, $D=(3,-2)$이다. 보기 중 그림과 일치하는 것은 $C(4,3)$이다.\n따라서 정답은 ③이다.",
       "subUnitKey": "M1-04-COORDINATE_PLANE",
       "subUnit": "좌표평면",
       "subUnitConfidence": "rule_inferred",
@@ -672,7 +672,7 @@ window.questionBank = [
         "좌표축이 정해져 있는 평면을 좌표평면이라고 한다."
       ],
       "answer": "①, ⑤",
-      "solution": "[키포인트] 좌표의 순서, 사분면의 부호, 좌표축의 성질을 보기별로 확인한다.\n① 원점은 $O(0,0)$이므로 옳다.\n② $P(a,b)$의 $x$좌표는 $a$, $y$좌표는 $b$이므로 틀리다.\n③ 그림의 $A$는 제3사분면에 있으므로 틀리다.\n④ $x$축 위의 점은 $y$좌표가 $0$이므로 틀리다.\n⑤ 좌표축이 정해진 평면을 좌표평면이라고 하므로 옳다.\n\n따라서 정답은 ①, ⑤이다.",
+      "solution": "좌표의 순서, 사분면의 부호, 좌표축의 성질을 보기별로 확인한다.\n① 원점은 $O(0,0)$이므로 옳다.\n② $P(a,b)$의 $x$좌표는 $a$, $y$좌표는 $b$이므로 틀리다.\n③ 그림의 $A$는 제3사분면에 있으므로 틀리다.\n④ $x$축 위의 점은 $y$좌표가 $0$이므로 틀리다.\n⑤ 좌표축이 정해진 평면을 좌표평면이라고 하므로 옳다.\n\n따라서 정답은 ①, ⑤이다.",
       "subUnitKey": "M1-04-COORDINATE_PLANE",
       "subUnit": "좌표평면",
       "subUnitConfidence": "rule_inferred",
@@ -719,7 +719,7 @@ window.questionBank = [
         "어느 사분면에도 속하지 않는다."
       ],
       "answer": "②",
-      "solution": "[키포인트] 제4사분면에서는 $a>0$, $b<0$임을 이용해 새 좌표의 부호를 판단한다.\n$b-a$는 음수이고, $\\dfrac{a}{b}$는 음수이므로 $-\\dfrac{a}{b}$는 양수이다. 따라서 점 $B$의 좌표는 $(음수, 양수)$이므로 제2사분면에 있다.\n따라서 정답은 ②이다.",
+      "solution": "제4사분면에서는 $a>0$, $b<0$임을 이용해 새 좌표의 부호를 판단한다.\n$b-a$는 음수이고, $\\dfrac{a}{b}$는 음수이므로 $-\\dfrac{a}{b}$는 양수이다. 따라서 점 $B$의 좌표는 $(음수, 양수)$이므로 제2사분면에 있다.\n따라서 정답은 ②이다.",
       "subUnitKey": "M1-04-COORDINATE_PLANE",
       "subUnit": "좌표평면",
       "subUnitConfidence": "rule_inferred",
@@ -762,7 +762,7 @@ window.questionBank = [
       "content": "속력을 점점 올린 뒤 일정한 속력으로 달린 자동차의 시간에 따른 속력의 변화를 나타낸 그래프를 고르시오. [3점]",
       "choices": [],
       "answer": "①",
-      "solution": "[키포인트] 속력이 점점 커지면 그래프가 올라가고, 이후 일정하면 수평선이 된다.\n처음에는 속력이 증가하고 그 뒤에는 일정해야 하므로 증가하는 선 뒤에 수평선이 이어지는 그래프를 고른다.\n따라서 정답은 ①이다.",
+      "solution": "속력이 점점 커지면 그래프가 올라가고, 이후 일정하면 수평선이 된다.\n처음에는 속력이 증가하고 그 뒤에는 일정해야 하므로 증가하는 선 뒤에 수평선이 이어지는 그래프를 고른다.\n따라서 정답은 ①이다.",
       "subUnitKey": "M1-04-GRAPH_RELATION",
       "subUnit": "그래프와 관계",
       "subUnitConfidence": "rule_inferred",
@@ -811,7 +811,7 @@ window.questionBank = [
         "관람차가 시작 지점에서 올라갔다가 다시 그 지점으로 내려올 때까지 걸리는 시간은 30분이다."
       ],
       "answer": "⑤",
-      "solution": "[키포인트] 최고점과 반복 간격, 같은 높이를 지나는 횟수를 그래프에서 직접 읽는다.\n최고 높이는 $30\\,\\mathrm m$이고 최고점은 $10$분, $30$분, $50$분에 나타난다.\n따라서 최고점 사이의 간격은 $20$분이다.\n높이 $20\\,\\mathrm m$를 지나는 때는 $60$분 동안 모두 $6$번이다.\n또 시작 높이에서 출발해 다시 같은 시작 높이로 돌아오는 데 걸리는 시간은 $20$분이다.\n\n따라서 $30$분이 걸린다는 ⑤가 옳지 않으므로 정답은 ⑤이다.",
+      "solution": "최고점과 반복 간격, 같은 높이를 지나는 횟수를 그래프에서 직접 읽는다.\n최고 높이는 $30\\,\\mathrm m$이고 최고점은 $10$분, $30$분, $50$분에 나타난다.\n따라서 최고점 사이의 간격은 $20$분이다.\n높이 $20\\,\\mathrm m$를 지나는 때는 $60$분 동안 모두 $6$번이다.\n또 시작 높이에서 출발해 다시 같은 시작 높이로 돌아오는 데 걸리는 시간은 $20$분이다.\n\n따라서 $30$분이 걸린다는 ⑤가 옳지 않으므로 정답은 ⑤이다.",
       "subUnitKey": "M1-04-GRAPH_RELATION",
       "subUnit": "그래프와 관계",
       "subUnitConfidence": "rule_inferred",
@@ -858,7 +858,7 @@ window.questionBank = [
         "사탕 50개를 $x$명이 똑같이 나누어 먹었을 때 한 사람이 먹는 사탕의 개수 $y$"
       ],
       "answer": "①, ④",
-      "solution": "[키포인트] 정비례는 $y=ax$ 꼴로 나타나는 관계이다.\n①은 $y=500x$, ④는 $y=10x$로 정비례한다. ②는 $y=14+x$, ③은 $y=24-x$, ⑤는 $y=\\dfrac{50}{x}$이므로 정비례가 아니다.\n따라서 정답은 ①, ④이다.",
+      "solution": "정비례는 $y=ax$ 꼴로 나타나는 관계이다.\n①은 $y=500x$, ④는 $y=10x$로 정비례한다. ②는 $y=14+x$, ③은 $y=24-x$, ⑤는 $y=\\dfrac{50}{x}$이므로 정비례가 아니다.\n따라서 정답은 ①, ④이다.",
       "subUnitKey": "M1-04-GRAPH_RELATION",
       "subUnit": "그래프와 관계",
       "subUnitConfidence": "rule_inferred",
@@ -903,7 +903,7 @@ window.questionBank = [
         "$36$"
       ],
       "answer": "④",
-      "solution": "[키포인트] 교점 $(-6,2)$는 두 그래프 위에 동시에 있으므로 두 식에 각각 대입한다.\n$y=ax$에 대입하면\n$2=-6a$이므로 $a=-\\dfrac13$이다.\n\n$y=\\dfrac bx$에 대입하면\n$2=\\dfrac{b}{-6}$이므로 $b=-12$이다.\n\n따라서\n$ab=\\left(-\\dfrac13\\right)(-12)=4$이다.\n\n정답은 ④이다.",
+      "solution": "교점 $(-6,2)$는 두 그래프 위에 동시에 있으므로 두 식에 각각 대입한다.\n$y=ax$에 대입하면\n$2=-6a$이므로 $a=-\\dfrac13$이다.\n\n$y=\\dfrac bx$에 대입하면\n$2=\\dfrac{b}{-6}$이므로 $b=-12$이다.\n\n따라서\n$ab=\\left(-\\dfrac13\\right)(-12)=4$이다.\n\n정답은 ④이다.",
       "subUnitKey": "M1-04-GRAPH_RELATION",
       "subUnit": "그래프와 관계",
       "subUnitConfidence": "rule_inferred",
@@ -947,7 +947,7 @@ window.questionBank = [
       "content": "서술형1. 오른쪽 표는 A 식품과 B 식품의 100 g당 칼륨 함량을 나타낸 것이다. (1) A 식품 $x$ g과 B 식품 $y$ g을 섭취하였을 때 섭취한 칼륨의 양을 문자를 사용한 식으로 나타내고, (2) A 식품 200 g과 B 식품 150 g을 섭취하였을 때 섭취한 칼륨의 양을 구하는 과정을 서술하시오. [7점]",
       "choices": [],
       "answer": "(1) $4.5x+3y\\,\\mathrm{mg}$ (2) $1350\\,\\mathrm{mg}$",
-      "solution": "[키포인트] 표의 $100\\,\\mathrm g$당 함량을 먼저 $1\\,\\mathrm g$당 함량으로 바꾼다.\nA 식품은 $100\\,\\mathrm g$당 $450\\,\\mathrm{mg}$이므로 $1\\,\\mathrm g$당 $4.5\\,\\mathrm{mg}$이다.\nB 식품은 $100\\,\\mathrm g$당 $300\\,\\mathrm{mg}$이므로 $1\\,\\mathrm g$당 $3\\,\\mathrm{mg}$이다.\n\n(1) A 식품 $x\\,\\mathrm g$, B 식품 $y\\,\\mathrm g$의 칼륨 양은\n$4.5x+3y\\,\\mathrm{mg}$이다.\n\n(2) $x=200$, $y=150$을 대입하면\n$4.5\\times200+3\\times150$\n$=900+450$\n$=1350\\,\\mathrm{mg}$이다.\n\n따라서 (1) $4.5x+3y\\,\\mathrm{mg}$, (2) $1350\\,\\mathrm{mg}$이다.",
+      "solution": "표의 $100\\,\\mathrm g$당 함량을 먼저 $1\\,\\mathrm g$당 함량으로 바꾼다.\nA 식품은 $100\\,\\mathrm g$당 $450\\,\\mathrm{mg}$이므로 $1\\,\\mathrm g$당 $4.5\\,\\mathrm{mg}$이다.\nB 식품은 $100\\,\\mathrm g$당 $300\\,\\mathrm{mg}$이므로 $1\\,\\mathrm g$당 $3\\,\\mathrm{mg}$이다.\n\n(1) A 식품 $x\\,\\mathrm g$, B 식품 $y\\,\\mathrm g$의 칼륨 양은\n$4.5x+3y\\,\\mathrm{mg}$이다.\n\n(2) $x=200$, $y=150$을 대입하면\n$4.5\\times200+3\\times150$\n$=900+450$\n$=1350\\,\\mathrm{mg}$이다.\n\n따라서 (1) $4.5x+3y\\,\\mathrm{mg}$, (2) $1350\\,\\mathrm{mg}$이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -985,7 +985,7 @@ window.questionBank = [
       "content": "서술형2. 집에서 학교까지 가는 데 시속 40km의 버스를 타고 갈 때 시속 8km인 자전거로 가는 것보다 40분 일찍 도착한다. 집과 학교 사이의 거리를 구하는 과정을 아래 내용이 포함되도록 서술하시오. [7점]\\n<div class=\"question-note-box\">(1) 미지수 정하기　　(2) 일차방정식 세우기<br>(3) 일차방정식 풀기　　(4) 문제의 답</div>",
       "choices": [],
       "answer": "$\\dfrac{20}{3}\\,\\mathrm{km}$",
-      "solution": "[키포인트] 같은 거리 $x$를 두 이동수단으로 갈 때의 시간 차가 $40$분이라는 식을 세운다.\n(1) 집과 학교 사이의 거리를 $x\\,\\mathrm{km}$라 하자.\n\n(2) 자전거 시간은 $\\dfrac{x}{8}$시간, 버스 시간은 $\\dfrac{x}{40}$시간이다. $40$분은 $\\dfrac23$시간이므로\n$\\dfrac{x}{8}-\\dfrac{x}{40}=\\dfrac23$이다.\n\n(3) 양변을 정리하면\n$\\dfrac{5x-x}{40}=\\dfrac23$\n$\\dfrac{x}{10}=\\dfrac23$\n$x=\\dfrac{20}{3}$이다.\n\n(4) 따라서 집과 학교 사이의 거리는 $\\dfrac{20}{3}\\,\\mathrm{km}$이다.",
+      "solution": "같은 거리 $x$를 두 이동수단으로 갈 때의 시간 차가 $40$분이라는 식을 세운다.\n(1) 집과 학교 사이의 거리를 $x\\,\\mathrm{km}$라 하자.\n\n(2) 자전거 시간은 $\\dfrac{x}{8}$시간, 버스 시간은 $\\dfrac{x}{40}$시간이다. $40$분은 $\\dfrac23$시간이므로\n$\\dfrac{x}{8}-\\dfrac{x}{40}=\\dfrac23$이다.\n\n(3) 양변을 정리하면\n$\\dfrac{5x-x}{40}=\\dfrac23$\n$\\dfrac{x}{10}=\\dfrac23$\n$x=\\dfrac{20}{3}$이다.\n\n(4) 따라서 집과 학교 사이의 거리는 $\\dfrac{20}{3}\\,\\mathrm{km}$이다.",
       "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
       "subUnit": "일차방정식의 활용",
       "subUnitConfidence": "rule_inferred",
@@ -1029,7 +1029,7 @@ window.questionBank = [
       "content": "서술형3. 토끼와 거북의 달리기 시험에서 시간에 따른 이동 거리의 변화를 나타낸 그래프이다. 이를 통해 알 수 있는 사실을 두 가지 서술하시오. (단, 시간과 거리 중 적어도 하나에 대한 정보를 포함하도록 서술하시오.) [6점]",
       "choices": [],
       "answer": "(1) 토끼는 달리기 시험이 시작된 지 10분 뒤에 출발한다. (2) 거북은 출발 후 60분에 2km 지점에 도착한다.",
-      "solution": "[키포인트] 그래프에서 선이 시작하는 점과 특정 거리 $2\\,\\mathrm{km}$에 도달하는 점을 좌표로 읽는다.\n토끼의 그래프는 $(10,0)$에서 시작한다. 따라서 토끼는 시험이 시작된 지 $10$분 뒤에 출발한다.\n\n거북의 그래프는 원점에서 시작하여 $(60,2)$를 지난다. 따라서 거북은 출발 후 $60$분에 $2\\,\\mathrm{km}$ 지점에 도착한다.\n\n이 두 사실은 모두 그래프에서 직접 읽을 수 있다.",
+      "solution": "그래프에서 선이 시작하는 점과 특정 거리 $2\\,\\mathrm{km}$에 도달하는 점을 좌표로 읽는다.\n토끼의 그래프는 $(10,0)$에서 시작한다. 따라서 토끼는 시험이 시작된 지 $10$분 뒤에 출발한다.\n\n거북의 그래프는 원점에서 시작하여 $(60,2)$를 지난다. 따라서 거북은 출발 후 $60$분에 $2\\,\\mathrm{km}$ 지점에 도착한다.\n\n이 두 사실은 모두 그래프에서 직접 읽을 수 있다.",
       "subUnitKey": "M1-04-GRAPH_RELATION",
       "subUnit": "그래프와 관계",
       "subUnitConfidence": "rule_inferred",

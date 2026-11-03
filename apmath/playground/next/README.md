@@ -2,13 +2,13 @@
 
 옛 실험실(`../labs/`)과 옛 허브(`../teacher-hub.html`)는 **지우지 않고 남겨 두었습니다**(과거에 나눠 준 링크가 깨지지 않게). 학생이 쓰는 길은 이 2.0 허브 하나이고, 화면에는 옛 버전 링크·비교·‘2.0’ 표시를 두지 않습니다. 옛 파일은 중2·중3 개편이 끝나면 2.0 대응 실험실로 보내는 짧은 이동 페이지로 바꿉니다(정리 계획 `docs/plans/2026-11-02-lab-legacy-cleanup-plan-v0.1.md` 2단계). 처음 화면 AP Math Universe(`../index.html`)의 「실험실 입장」은 이 허브(`next/index.html`)로 들어옵니다.
 
-**현재 상태:** `kit/apl-catalog.js`의 실험실 45개 전부에 2.0 페이지(`next/labs/*.html`)가 있고, 허브는 2.0 페이지만 엽니다. 옛 화면으로 가는 링크는 허브에 없습니다(카탈로그 `extra`의 원과 부채꼴 ‘기초판’은 2.0에 같은 단계가 없어 허브가 그리지 않습니다. 2.0에 대응 장면이 생기면 허브에서 장면 해시로 매핑합니다).
+**현재 상태:** `kit/apl-catalog.js`의 실험실 54개 전부에 2.0 페이지(`next/labs/*.html`)가 있고, 허브는 2.0 페이지만 엽니다. 옛 화면으로 가는 링크는 허브에 없습니다(카탈로그 `extra`의 원과 부채꼴 ‘기초판’은 2.0에 같은 단계가 없어 허브가 그리지 않습니다. 2.0에 대응 장면이 생기면 허브에서 장면 해시로 매핑합니다).
 
 | 화면 | 경로 |
 |---|---|
 | 새 허브 (개념 노선도 · 목록 · 검색 · 내 수업 목록). Universe → 「실험실 입장」의 도착점 | `next/index.html` |
 | 옛 ↔ 2.0 나란히 비교(이식 점검용, 허브에서는 링크하지 않음. 2단계에서 이동 페이지로 바뀜) | `next/compare.html` |
-| 실험실 45개 (카탈로그의 `next` 경로) | `next/labs/` |
+| 실험실 54개 (카탈로그의 `next` 경로) | `next/labs/` |
 | 예: 미적분Ⅰ 접선과 미분계수 (직접 이식) | `next/labs/calc1-tangent.html` |
 | 예: 중3 삼각비 (호환층 이식, 38장면) | `next/labs/g9-trig-ratio.html` |
 | 예: 기하 공간도형 3D (3D 호환 이식, 4장면) | `next/labs/geom-space-3d.html` |
@@ -45,7 +45,7 @@ next/
                         (이름을 catalog.js로 하면 저장소 루트 .gitignore 규칙에 걸려 커밋에서 빠집니다 — 검사가 막아 줌)
     vendor/katex/       KaTeX 0.16.9 (woff2만, 오프라인 동작)
     vendor/qrcode.js    QR 생성기 (MIT, Kazuhiko Arase)
-  labs/                 2.0 셸 위의 실험실 (카탈로그 45개 전부)
+  labs/                 2.0 셸 위의 실험실 (카탈로그 47개 전부)
   tools/
     catalog.test.mjs    카탈로그·키트·manifest·HTML 로컬 참조(404) 정합성 검사 (node --test, 브라우저 불필요)
     gen-manifest.mjs    카탈로그에서 ../manifest.json 생성 (실험실을 더하거나 고친 뒤 실행)
@@ -90,6 +90,7 @@ window.addEventListener('DOMContentLoaded', () => APLab.createLab({
 - 색 이름: `ink · sky · rose · amber · green · violet · red · orange · muted` (테마에 따라 자동으로 바뀜)
 - 장면 데이터: `question · guide · controls · presets · actions · steps · problem{tag,time,text,answer,snap} · solution{standard,quick} · view(s) · draw(b,s,v)`
 - 변하는 내용은 `view(s)`가 돌려줍니다: `chips · status · alert · readouts · parts · summary · rule · formula · notes · card · tape`
+- 문제 탭 기본 동작(키트가 처리, 실험실별 설정 불필요): ① 휴대폰에서 '탐구 질문' 카드를 접습니다(장면이 `tabs:{compact:false}`를 주면 접지 않음). 접고도 문제 글이 첫 화면(약 760px) 밖인 장면만 무대를 54svh→44svh로 낮추고, `tabs:{compact:true}`를 준 장면은 40svh입니다. ② 무대 상태 배지(`view.status`)는 숨깁니다(답·판정 노출 방지). 의도적으로 보이려면 장면에 `tabs:{status:true}`. ③ `problem.snap`이 있으면 탐구·정리 탭에서 문제 탭으로 들어올 때 한 번 자동으로 적용해 그림을 지문 조건에 맞춥니다(`thumbSnap:false` 또는 `problem.autoSnap:false`면 생략).
 - 끝으로 `kit/apl-catalog.js`의 해당 항목에 `"next": "next/labs/파일.html"`을 적으면 허브에 2.0 배지와 장면 바로가기가 생깁니다.
 
 ### 3.1 무대 축척: 기본 1:1, 필요할 때만 `aspect:'free'`

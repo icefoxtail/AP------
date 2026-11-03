@@ -1478,7 +1478,7 @@ function htmlApprox(){
 
     // 키보드: ← → 각도(특수각 모드에서는 이전·다음 특수각), ↑ ↓ k (원본 그래프 캔버스와 같음)
     wrap.addEventListener('keydown', (e) => {
-      if (e.target !== cv) return;
+      if (e.target !== cv || !REG) return;   // 새 장면(기출 확장)에서는 무대의 기본 키 조작(선택한 점 이동)을 씁니다
       const step = (dir) => {
         if (S.mode === 'special') selectSpecial(S.si + dir);
         else { S.theta += dir * PI / 36; followTheta(); redraw(); }
@@ -1495,6 +1495,844 @@ function htmlApprox(){
       e.preventDefault(); e.stopPropagation();
     }, true);
   }
+
+  /* ======================================================================
+     기출 확장 장면 5~8 (2026-11-02 선생님 결정: 최근 기출 빈도가 높은 그래프형 유형을 기존 장면 뒤에 추가)
+       5 y = a sin bx + c — a·b·c 로 주기·진폭·이동 읽기, 제한 구간의 최대·최소  (기출 34문항, 최근 17)
+       6 단위원에서 π±θ, π/2±θ 변환 — 대칭점의 좌표로 공식 읽기               (기출 53문항, 최근 29)
+       7 두 삼각함수 곡선과 평행선의 교점이 이루는 사각형                         (기출 31문항, 최근 20)
+       8 (sin x − t)(cos x − t) = 0 의 근의 개수·합 — 대칭축으로 읽기           (기출 24문항, 최근 6)
+     - 기존 장면 1~4(원본 이식)는 손대지 않았습니다. 새 장면은 셸의 보통 무대(APLab.Board)에 직접 그리고,
+       원본 두 영역 그림(drawAll)·포인터 입력은 새 장면에서는 꺼 둡니다(REG = null, 라벨 층 숨김).
+     - 새 장면은 탭에 따라 그림이 다릅니다: 탐구 = 조작하는 그림 전체 · 정리 = 풀이 단계(보조선) · 문제 = 주어진 값만(답·보조선은 풀이 단계 전에는 없음).
+     - 문제 탭의 「새 문제」: 장면마다 변형 생성기가 정답과 문제 그림을 함께 바꿉니다(바로 앞 문제와 같은 것은 나오지 않음).
+     ====================================================================== */
+  const EXT = (function () {
+    const tex = APLab.tex, clampX = APLab.clamp;
+    const MN = '−';
+    const gcd = (a, b) => (b ? gcd(b, a % b) : Math.abs(a));
+    const rint = (n) => Math.floor(Math.random() * n);
+    const pickOf = (arr, not) => { let x; do x = arr[rint(arr.length)]; while (arr.length > 1 && x === not); return x; };
+    const num = (v) => { const r = Math.round(v * 100) / 100; return String(Object.is(r, -0) ? 0 : r).replace('-', MN); };
+    const sg = (v) => (v < 0 ? `(${v})` : String(v));                 // 식 속 음수는 괄호로
+    const sgn = (v) => (v < 0 ? `-${-v}` : `+${v}`);                  // + c 꼴
+    // n/d·π → 'π', '3π/2', '−π/4' (캔버스 글자용: 분수는 보드가 쌓아 그립니다)
+    function piTxt(n, d = 1) {
+      if (n === 0) return '0';
+      const g = gcd(n, d); n /= g; d /= g;
+      return (n < 0 ? MN : '') + (Math.abs(n) === 1 ? '' : Math.abs(n)) + 'π' + (d === 1 ? '' : '/' + d);
+    }
+    function piTex(n, d = 1) {
+      if (n === 0) return '0';
+      const g = gcd(n, d); n /= g; d /= g;
+      const top = (Math.abs(n) === 1 ? '' : Math.abs(n)) + '\\pi';
+      return (n < 0 ? '-' : '') + (d === 1 ? top : `\\dfrac{${top}}{${d}}`);
+    }
+    const Fr = (n, d = 1) => { if (d < 0) { n = -n; d = -d; } const g = gcd(n, d) || 1; return { n: n / g, d: d / g }; };
+    const frMul = (a, b) => Fr(a.n * b.n, a.d * b.d);
+    const frAdd = (a, b) => Fr(a.n * b.d + b.n * a.d, a.d * b.d);
+    const frNeg = (a) => Fr(-a.n, a.d);
+    const frDiv = (a, b) => Fr(a.n * b.d, a.d * b.n);
+    const frTex = (a) => (a.d === 1 ? String(a.n) : `${a.n < 0 ? '-' : ''}\\dfrac{${Math.abs(a.n)}}{${a.d}}`);
+    const frTxt = (a) => (a.d === 1 ? `${a.n < 0 ? MN : ''}${Math.abs(a.n)}` : `${a.n < 0 ? MN : ''}${Math.abs(a.n)}/${a.d}`);
+    const frVal = (a) => a.n / a.d;
+    // 변형 생성기: gen(이전 변형|null) → 새 변형. 처음에는 기출 유형 그대로(gen(null)).
+    function varier(gen) { let cur = gen(null); return { cur: () => cur, next: () => (cur = gen(cur)) }; }
+    const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-uc-new>새 문제</button></div>`;
+    document.addEventListener('click', (ev) => {
+      const hit = ev.target && ev.target.closest && ev.target.closest('[data-uc-new]');
+      if (!hit) return;
+      const sc = lab && lab.scene;
+      if (!sc || !sc.vary) return;
+      sc.vary.next();
+      lab.s.revealed = false;
+      lab.setStep(1);
+      try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+      lab.invalidate(true);
+    });
+    const hideOverlays = () => { REG = null; placeRoot('circle', null); placeRoot('graph', null); };
+    const BOXES = {};
+    const boxOf = (key, x, y) => BOXES[key] || (BOXES[key] = { x, y });
+    // 탭·변형마다 무대 범위가 다르면 그 범위로 바꾸고 화면 맞춤을 다시 합니다(같은 범위면 사용자가 옮긴 보기는 그대로)
+    function useBox(b, box) { if (b.focus !== box) { b.focus = box; if (!b.thumb) b.fit(); } }
+    function arrowTip(b, tip, dir, px, color) {
+      const z = px / b.k, nx = -dir[1], ny = dir[0];
+      b.poly([tip, [tip[0] - dir[0] * z + nx * z * 0.45, tip[1] - dir[1] * z + ny * z * 0.45], [tip[0] - dir[0] * z - nx * z * 0.45, tip[1] - dir[1] * z - ny * z * 0.45]], { fill: color, fillAlpha: 1, color: null });
+    }
+    function dimH(b, x0, x1, y, color) { b.seg([x0, y], [x1, y], { color, width: 2 }); arrowTip(b, [x0, y], [-1, 0], 8, color); arrowTip(b, [x1, y], [1, 0], 8, color); }
+    function dimV(b, x, y0, y1, color) { b.seg([x, y0], [x, y1], { color, width: 2 }); arrowTip(b, [x, y0], [0, -1], 8, color); arrowTip(b, [x, y1], [0, 1], 8, color); }
+    const T = (b, p, str, o = {}) => b.text(p, str, { size: 12.5, weight: 800, baseline: 'middle', ...o });
+    const baseScene = (o) => ({ tabs: { compact: true }, ...o });
+    const reviewTopOf = (textFn) => () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${textFn()}</div>`;
+
+    /* ====================================================================
+       장면 5 · y = a sin bx + c
+       ==================================================================== */
+    const SIN_BOX = { x: [-1.3, 7.15], y: [-3.75, 5.0] };
+    const sinF = (a, bb, c) => (x) => a * Math.sin(bb * x) + c;
+    // [0, t] 에서 최대·최소: 끝점과 sin bx = ±1 인 점(a > 0)
+    function extOn(a, bb, c, t) {
+      const f = sinF(a, bb, c), cand = [0, t], crit = [];
+      for (let k = 0; ; k++) { const x = (PI / 2 + k * PI) / bb; if (x > t + 1e-9) break; cand.push(x); crit.push(x); }
+      let mx = cand[0], mn = cand[0];
+      cand.forEach((x) => { if (f(x) > f(mx) + 1e-12) mx = x; if (f(x) < f(mn) - 1e-12) mn = x; });
+      return { mx, mn, M: f(mx), m: f(mn), crit };
+    }
+    function drawSinus(b, g) {
+      const { a, bb, c } = g, f = sinF(a, bb, c), P = 2 * PI / bb, M = c + a, m = c - a, X1 = SIN_BOX.x[1];
+      const lv = g.levels ? [M, m] : [];
+      if (g.grid) b.grid({ step: 1, majorEvery: 1000 });
+      b.axes({ ticks: false });
+      T(b, [X1 - 0.05, 0], 'x', { color: 'muted', size: 13, dy: -12, align: 'right', weight: 700 });
+      T(b, [0, 4.65], 'y', { color: 'muted', size: 13, dx: -12, weight: 700 });
+      for (let k = 1; k * PI / 2 < X1 - 0.25; k++) {
+        const x = k * PI / 2;
+        if ((g.skipX || []).some((q) => Math.abs(q - x) * b.k < 40)) continue;
+        b.seg([x, -0.09], [x, 0.09], { color: 'muted', width: 1.3 });
+        T(b, [x, 0], piTxt(k, 2), { color: 'muted', size: 12, dy: 15, weight: 700 });
+      }
+      for (let y = -3; y <= 3; y++) {
+        if (y === 0 || lv.concat(g.mid ? [c] : []).some((q) => Math.abs(q - y) < 1e-6)) continue;
+        b.seg([-0.09, y], [0.09, y], { color: 'muted', width: 1.3 });
+        T(b, [0, y], num(y), { color: 'muted', size: 12, dx: -9, align: 'right', weight: 700 });
+      }
+      if (g.band) b.poly([[g.band[0], -3.55], [g.band[1], -3.55], [g.band[1], 3.7], [g.band[0], 3.7]], { fill: 'amber', fillAlpha: 0.1, color: null });
+      if (g.band) b.plot(f, { from: g.band[0], to: g.band[1], color: 'amber', width: 7, alpha: 0.85 });
+      if (g.levels) {
+        b.hline(M, { color: 'sky', dash: [6, 5], width: 1.7 });
+        b.hline(m, { color: 'sky', dash: [6, 5], width: 1.7 });
+        [M, m].forEach((q) => { b.seg([-0.12, q], [0.12, q], { color: 'sky', width: 2 }); T(b, [0, q], num(q), { color: 'sky', size: 13, dx: -10, align: 'right', weight: 900 }); });
+      }
+      if (g.mid) {
+        b.hline(c, { color: 'amber', dash: [3, 5], width: 1.9 });
+        T(b, [0, c], num(c), { color: 'amber', size: 13, dx: -10, align: 'right', weight: 900 });
+        b.seg([-0.12, c], [0.12, c], { color: 'amber', width: 2 });
+      }
+      b.plot(f, { color: 'ink', width: 3.2, glow: true });
+      if (g.amp) {
+        dimV(b, -0.95, c, M, 'sky');
+        T(b, [-0.95, (c + M) / 2], 'a', { color: 'sky', size: 14, dx: -9, align: 'right', weight: 900 });
+      }
+      if (g.period) {
+        const yb = 3.85;
+        dimH(b, 0, P, yb, 'violet');
+        b.seg([P, c], [P, yb], { color: 'violet', width: 1.4, dash: [3, 4], alpha: 0.8 });
+        b.point([0, c], { color: 'violet', r: 4 });
+        b.point([P, c], { color: 'violet', r: 4 });
+        T(b, [0.1, yb], g.period, { color: 'violet', size: 13, dy: -14, align: 'left', weight: 800 });
+      }
+      if (g.crit) {
+        g.crit.forEach((x) => {
+          b.seg([x, 0], [x, f(x)], { color: 'sky', width: 1.4, dash: [3, 4] });
+          b.point([x, f(x)], { color: 'sky', r: 4.5 });
+          if (g.critLabel && !(g.alpha != null && Math.abs(g.alpha - x) < 1e-6)) T(b, [x, 0], piTxt(Math.round(x * bb / PI * 2), Math.round(2 * bb)), { color: 'sky', size: 12, dy: 15, weight: 900 });
+        });
+      }
+      if (g.ends) {
+        g.ends.forEach((x) => b.point([x, f(x)], { color: 'sky', r: 5.5, hollow: true }));
+      }
+      if (g.ext) {
+        const e = g.ext;
+        const lab = (x, dy, txt) => (x < 0.25 ? { label: txt, dx: 13, dy, align: 'left' } : { label: txt, dx: 0, dy, align: 'center' });   // y축 위의 점은 이름표를 오른쪽으로
+        b.point([e.mx, e.M], { color: 'green', r: 7, hollow: true, ...lab(e.mx, -17, '최대 ' + num(e.M)) });
+        b.point([e.mn, e.m], { color: 'rose', r: 7, hollow: true, ...lab(e.mn, 18, '최소 ' + num(e.m)) });
+      }
+      if (g.alpha) {
+        b.seg([g.alpha, 0], [g.alpha, f(g.alpha)], { color: 'amber', width: 1.6, dash: [4, 4] });
+        b.point([g.alpha, 0], { color: 'amber', r: 4.5 });
+        T(b, [g.alpha, 0], g.alphaLabel, { color: 'amber', size: 13, dy: ((g.crit || []).some((x) => Math.abs(x - g.alpha) * b.k < 40 && Math.abs(x - g.alpha) > 1e-6) || (g.ext && [[g.ext.mx, g.ext.M], [g.ext.mn, g.ext.m]].some(([x, y]) => Math.abs(x - g.alpha) < 1e-6 && Math.abs(y) < 0.7))) ? 31 : 15, weight: 900 });
+      }
+      if (g.handle) b.handle('t5', [g.band[1], 0], { color: 'amber', r: 8, label: 't', dx: 0, dy: -18, align: 'center', ariaLabel: '구간의 오른쪽 끝 t (끌어서 바꾸기)', drag: g.handle });
+    }
+    // 변형 생성기 (유형 1: 그래프로 a·b·c 결정 / 유형 2: 제한 구간의 최대·최소)
+    const AC1 = [[1, 1], [1, -1], [1, 2], [1, -2], [2, 1], [2, -1]];     // 최고·최저가 ±3 안에 들어오는 조합
+    const BETA = { '1/6': [[1, 6], [1, 2], [0, 1]], '1/2': [[1, 2], [1, 1], [0, 1]], '5/6': [[5, 6], [1, 1], [0, 1]], '1/1': [[1, 1], [1, 1], [0, 1]], '7/6': [[7, 6], [1, 1], [-1, 2]], '3/2': [[3, 2], [1, 1], [-1, 1]], '11/6': [[11, 6], [1, 1], [-1, 1]] };
+    // BETA[키] = [β/π, 최대 sin 값, 최소 sin 값] (분수 [분자, 분모])
+    const BKEYS = Object.keys(BETA);
+    const var5 = varier((prev) => {
+      const type = !prev ? 1 : (prev.type === 1 ? 2 : (Math.random() < 0.5 ? 1 : 2));
+      if (type === 1) {
+        let a, c, bb;
+        do { [a, c] = pickOf(AC1); bb = [1, 2, 3, 4][rint(4)]; } while (prev && prev.type === 1 && prev.a === a && prev.c === c && prev.b === bb);
+        if (!prev) { a = 2; c = 1; bb = 3; }
+        const M = a + c, m = c - a, asks = ['a+b+c', 'ab+c'];
+        const ask = prev && prev.ask ? pickOf(asks, prev.ask) : asks[0];
+        const ans = ask === 'a+b+c' ? a + bb + c : a * bb + c;
+        return { type: 1, a, b: bb, c, M, m, ask, ans };
+      }
+      let a, c, bb, key;
+      do { a = 2; c = [-1, 1][rint(2)]; bb = [1, 2, 3][rint(3)]; key = BKEYS[rint(BKEYS.length)]; } while (prev && prev.type === 2 && prev.a === a && prev.b === bb && prev.key === key && prev.c === c);
+      const [be, mx, mn] = BETA[key];
+      const alphaN = be[0], alphaD = be[1] * bb;                      // α = β / b (π의 배수)
+      const M = a * mx[0] / mx[1] + c, m = a * mn[0] / mn[1] + c;
+      const asks = ['M+m', 'M-m'];
+      const ask = prev && prev.ask ? pickOf(asks, prev.ask) : asks[0];
+      return { type: 2, a, b: bb, c, key, alphaN, alphaD, t: PI * alphaN / alphaD, M, m, ask, ans: ask === 'M+m' ? M + m : M - m };
+    });
+    const f5Tex = (v) => `f(x)=${v.a === 1 ? '' : v.a}\\sin ${v.b === 1 ? '' : v.b}x${v.c === 0 ? '' : sgn(v.c)}`;
+    const text5 = (v) => (v.type === 1
+      ? `함수 ${tex('f(x)=a\\sin bx+c')} ${tex('(a>0,\\ b>0)')}의 그래프가 그림과 같다. 최댓값이 ${tex(String(v.M))}, 최솟값이 ${tex(String(v.m))}이고 주기가 ${tex(piTex(2, v.b))}일 때, ${tex(v.ask === 'a+b+c' ? 'a+b+c' : 'ab+c')}의 값을 구하시오.`
+      : `함수 ${tex(f5Tex(v))}의 ${tex('0\\le x\\le ' + piTex(v.alphaN, v.alphaD))}에서의 최댓값을 ${tex('M')}, 최솟값을 ${tex('m')}이라 할 때, ${tex(v.ask === 'M+m' ? 'M+m' : 'M-m')}의 값을 구하시오.`);
+    const critList5 = (v) => { const e = extOn(v.a, v.b, v.c, v.t); return e.crit; };
+    function steps5(v) {
+      const tex = (x) => '$' + x + '$';     // 단계 글은 셸이 $…$ 를 수식으로 바꿉니다(미리 만든 수식 HTML을 넣으면 그대로 글자로 보임)
+      if (v.type === 1) {
+        return [
+          `최고점·최저점의 한가운데가 중심선입니다. ${tex(`c=\\dfrac{M+m}{2}=\\dfrac{${v.M}+${sg(v.m)}}{2}=${v.c}`)}`,
+          `중심선에서 최고점까지의 높이가 진폭입니다. ${tex(`a=\\dfrac{M-m}{2}=\\dfrac{${v.M}-${sg(v.m)}}{2}=${v.a}`)}`,
+          `한 주기의 길이가 ${tex(piTex(2, v.b))}입니다. ${tex(`\\dfrac{2\\pi}{b}=${piTex(2, v.b)}`)}에서 ${tex(`b=${v.b}`)}, 따라서 ${tex(`${v.ask === 'a+b+c' ? `a+b+c=${v.a}+${v.b}${sgn(v.c)}` : `ab+c=${v.a}\\times ${v.b}${sgn(v.c)}`}=${v.ans}`)}`
+        ];
+      }
+      const cr = critList5(v), at = (x) => piTex(Math.round(x * v.b / PI * 2), Math.round(2 * v.b));
+      const fa = (x) => v.a * Math.sin(v.b * x) + v.c, ev = (k) => String(Math.round(fa(k) * 1000) / 1000).replace('-', '-');
+      const critTxt = cr.length ? cr.map((x) => tex(`x=${at(x)}`)).join(', ') + '에서 ' + tex('\\sin ' + (v.b === 1 ? '' : v.b) + 'x=\\pm 1') : tex('\\sin ' + (v.b === 1 ? '' : v.b) + 'x') + '=±1이 되는 곳이 구간 안에 없음';
+      return [
+        `${tex('0\\le ' + (v.b === 1 ? '' : v.b) + 'x\\le ' + piTex(v.alphaN * v.b, v.alphaD))}에서 ${tex('\\sin ' + (v.b === 1 ? '' : v.b) + 'x')}가 1 또는 −1이 되는 곳을 찾습니다: ${critTxt}`,
+        `후보는 구간의 양 끝과 그 점들입니다. ${tex(`f(0)=${v.c}`)}, ${tex(`f(${piTex(v.alphaN, v.alphaD)})=${ev(v.t)}`)}${cr.length ? ', ' + cr.map((x) => tex(`f(${at(x)})=${ev(x)}`)).join(', ') : ''}`,
+        `이 값들 중 가장 큰 값이 ${tex('M=' + v.M)}, 가장 작은 값이 ${tex('m=' + v.m)}입니다. ${tex(v.ask === 'M+m' ? `M+m=${v.M}+${sg(v.m)}=${v.ans}` : `M-m=${v.M}-${sg(v.m)}=${v.ans}`)}`
+      ];
+    }
+    function draw5(b, s, v, labx) {
+      hideOverlays();
+      useBox(b, SIN_BOX);
+      const tab = labx ? labx.tab : 'explore';
+      if (tab === 'explore') {
+        const E = extOn(s.sna, s.snb, s.snc, s.snt);
+        drawSinus(b, {
+          a: s.sna, bb: s.snb, c: s.snc, grid: s.grid, levels: true, mid: true, band: [0, s.snt], ext: E,
+          period: '주기 ' + piTxt(4, Math.round(2 * s.snb)),
+          handle: (w) => { s.snt = clampX(w.x, 0.2, 2 * PI - 0.1); }
+        });
+        return;
+      }
+      const V = var5.cur(), st = tab === 'problem' ? 0 : Math.min(s.step, 3);
+      if (V.type === 1) {
+        drawSinus(b, {
+          a: V.a, bb: V.b, c: V.c, grid: s.grid, levels: true, period: '주기 ' + piTxt(2, V.b) + (st >= 3 ? ' = 2π/b' : ''),
+          mid: st >= 1, amp: st >= 2
+        });
+      } else {
+        const cr = critList5(V), E = extOn(V.a, V.b, V.c, V.t);
+        drawSinus(b, {
+          a: V.a, bb: V.b, c: V.c, grid: s.grid, band: [0, V.t], skipX: [V.t].concat(st >= 1 ? cr : []),
+          alpha: V.t, alphaLabel: piTxt(V.alphaN, V.alphaD),
+          crit: st >= 1 ? cr : null, critLabel: true, ends: st >= 2 ? [0, V.t] : null, ext: st >= 3 ? E : null
+        });
+      }
+    }
+    function scene5() {
+      return baseScene({
+        id: 'sinus', title: '[필수] y = a sin bx + c — a·b·c로 주기·진폭·이동 읽기', short: 'a·b·c 읽기',
+        question: '$y=a\\sin bx+c$에서 a, b, c는 그래프의 무엇을 바꿀까? 그래프의 최고점·최저점·한 주기로 계수를 어떻게 정할까?',
+        guide: '<b>a</b>(진폭)는 높이만, <b>b</b>는 가로 폭(주기 $2\\pi/b$)만, <b>c</b>는 위아래 이동만 바꿉니다. 슬라이더를 움직이며 <b>최고점·최저점·한 주기</b>가 어떻게 변하는지 보세요. <b>노란 점 t</b>를 끌면 구간 $[0,t]$에서의 <b>최댓값·최솟값 위치</b>가 바뀝니다.',
+        focus: SIN_BOX,
+        enter: (s) => { s.sna = 2; s.snb = 2; s.snc = 1; s.snt = 3 * PI / 4; },
+        controls: ['sna', 'snb', 'snc', 'snt'],
+        presets: () => [
+          { group: '예시로 맞추기', label: '$y=\\sin x$', set: { sna: 1, snb: 1, snc: 0 }, ms: 400, on: (st) => st.sna === 1 && st.snb === 1 && st.snc === 0 },
+          { group: '예시로 맞추기', label: '$y=2\\sin 2x+1$', set: { sna: 2, snb: 2, snc: 1 }, ms: 400, on: (st) => st.sna === 2 && st.snb === 2 && st.snc === 1 },
+          { group: '예시로 맞추기', label: '$y=2\\sin 3x-1$', set: { sna: 2, snb: 3, snc: -1 }, ms: 400, on: (st) => st.sna === 2 && st.snb === 3 && st.snc === -1 },
+          { group: '구간 [0, t]', label: '$t=\\pi/2$', set: { snt: PI / 2 }, ms: 400, on: (st) => Math.abs(st.snt - PI / 2) < 0.01 },
+          { group: '구간 [0, t]', label: '$t=\\pi$', set: { snt: PI }, ms: 400, on: (st) => Math.abs(st.snt - PI) < 0.01 },
+          { group: '구간 [0, t]', label: '$t=3\\pi/2$', set: { snt: 3 * PI / 2 }, ms: 400, on: (st) => Math.abs(st.snt - 3 * PI / 2) < 0.01 }
+        ],
+        steps: () => steps5(var5.cur()),
+        reviewTop: reviewTopOf(() => text5(var5.cur())),
+        vary: var5,
+        problem: { tag: '2024학년도 6월 모의평가 19번 · 2026학년도 10월 학평(서울) 10번 유형', time: '목표 시간: 90초', text: () => probHTML(text5(var5.cur())), answer: () => tex(String(var5.cur().ans)) },
+        solution: {
+          standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · 읽는 순서', quickTag: '10초 컷',
+          standard: () => {
+            const v = var5.cur();
+            return v.type === 1
+              ? { steps: steps5(v).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>'), warning: '주기는 "한 번 올라갔다 내려와 제자리로 돌아오는 가로 길이"입니다. 반 주기(최고점에서 최저점까지)를 주기로 읽지 마세요.' }
+              : { steps: steps5(v).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>'), warning: '구간의 끝값을 빠뜨리지 마세요. 구간이 한 주기보다 짧으면 최댓값이 1(또는 최솟값이 −1)에 닿지 않을 수 있습니다.' };
+          },
+          quick: () => (var5.cur().type === 1
+            ? { steps: '그래프에서 <strong class="text-amber-300">최고점 M, 최저점 m, 한 주기 P</strong>를 읽고 <strong>c=(M+m)/2, a=(M−m)/2, b=2π/P</strong> 세 줄로 끝냅니다.', highlight: '진폭은 "전체 높이의 절반", 중심선은 "최고·최저의 한가운데"입니다. 식을 세우기 전에 그림에서 세 값부터 읽으세요.' }
+            : { steps: '구간 안에서 <strong class="text-amber-300">끝점 두 곳과 sin bx=±1인 곳</strong>만 후보입니다. 이 값들 중 큰 값이 M, 작은 값이 m입니다.', highlight: '구간 끝 α에서 bx=bα가 π/2를 지났는지(최댓값 도달), 3π/2를 지났는지(최솟값 도달)부터 확인하세요.' })
+        },
+        view: (s, l) => {
+          const tab = l ? l.tab : 'explore';
+          if (tab !== 'explore') {
+            const V = var5.cur();
+            return V.type === 2 ? { chips: [{ tex: f5Tex(V), color: 'ink' }, { tex: '0\\le x\\le ' + piTex(V.alphaN, V.alphaD), color: 'amber' }] } : {};
+          }
+          const a = s.sna, bb = s.snb, c = s.snc, E = extOn(a, bb, c, s.snt);
+          const per = piTex(4, Math.round(2 * bb));
+          return {
+            chips: [{ tex: `y=${a === 1 ? '' : num(a)}\\sin ${bb === 1 ? '' : num(bb)}x${c === 0 ? '' : sgn(c).replace('+', '+').replace('-', '-')}`, color: 'ink' }],
+            status: { tone: 'info', text: `구간 [0, t]에서 최대 ${num(E.M)} · 최소 ${num(E.m)}` },
+            readouts: [
+              { label: '진폭 (높이의 절반) a', value: num(a), color: 'sky' },
+              { label: '주기 $2\\pi/b$', value: `$${per}$`, color: 'violet' },
+              { label: '중심선 y = c', value: num(c), color: 'amber' },
+              { label: '최댓값 c + a / 최솟값 c − a', value: `${num(c + a)} / ${num(c - a)}`, color: 'sky' },
+              { label: '구간 [0, t]에서의 최댓값 · 최솟값', value: `최대 ${num(E.M)} · 최소 ${num(E.m)}`, color: 'green', wide: true }
+            ],
+            notes: '<b>탐구 참고</b> · b가 커지면 그래프가 가로로 압축되어 주기가 짧아집니다. a와 c는 주기를 바꾸지 못하고, a는 높이(최고점과 최저점의 간격)만, c는 전체를 위아래로 옮깁니다. 구간 끝 t를 키우다 $bt$가 $\\pi/2$를 지나는 순간 최댓값이 <b>c + a</b>에 닿습니다.'
+          };
+        },
+        draw: draw5
+      });
+    }
+
+    /* ====================================================================
+       장면 6 · 단위원에서 π±θ, π/2±θ 변환 — 대칭점의 좌표로 공식 읽기
+       ==================================================================== */
+    const CV_BOX = { x: [-1.95, 1.95], y: [-1.55, 1.55] };
+    const CVM = {
+      neg: { txt: '−θ', lab: '-\\theta', phi: (t) => -t, q: (x, y) => [x, -y], qt: ['\\cos\\theta', '-\\sin\\theta'], sym: 'x축 대칭', tan: '-\\tan\\theta', who: 'x축에 대칭이동', rule: '−θ : P를 x축에 대칭 → y좌표(sin)의 부호만 바뀐다' },
+      'pi-': { txt: 'π−θ', lab: '\\pi-\\theta', phi: (t) => PI - t, q: (x, y) => [-x, y], qt: ['-\\cos\\theta', '\\sin\\theta'], sym: 'y축 대칭', tan: '-\\tan\\theta', who: 'y축에 대칭이동', rule: 'π−θ : P를 y축에 대칭 → x좌표(cos)의 부호만 바뀐다' },
+      'pi+': { txt: 'π+θ', lab: '\\pi+\\theta', phi: (t) => PI + t, q: (x, y) => [-x, -y], qt: ['-\\cos\\theta', '-\\sin\\theta'], sym: '원점 대칭', tan: '\\tan\\theta', who: '원점에 대칭이동', rule: 'π+θ : P를 원점에 대칭 → sin, cos 모두 부호가 바뀌고 tan은 그대로' },
+      'h-': { txt: 'π/2−θ', lab: '\\dfrac{\\pi}{2}-\\theta', phi: (t) => PI / 2 - t, q: (x, y) => [y, x], qt: ['\\sin\\theta', '\\cos\\theta'], sym: '직선 y=x 대칭', tan: '\\dfrac{1}{\\tan\\theta}', who: '직선 y=x에 대칭이동', rule: 'π/2−θ : P를 직선 y=x에 대칭 → x, y좌표가 서로 바뀌어 sin ↔ cos' },
+      'h+': { txt: 'π/2+θ', lab: '\\dfrac{\\pi}{2}+\\theta', phi: (t) => PI / 2 + t, q: (x, y) => [-y, x], qt: ['-\\sin\\theta', '\\cos\\theta'], sym: '90° 회전', tan: '-\\dfrac{1}{\\tan\\theta}', who: '원점을 중심으로 90° 회전', rule: 'π/2+θ : P를 90° 회전 → (x, y) → (−y, x)' }
+    };
+    const CV_ORDER = ['neg', 'pi-', 'pi+', 'h-', 'h+'];
+    const QN = ['', '제1사분면', '제2사분면', '제3사분면', '제4사분면'];
+    const quadOf = (x, y) => (x >= 0 ? (y >= 0 ? 1 : 4) : (y >= 0 ? 2 : 3));
+    const SGN = (v) => (v >= 0 ? '+' : MN);
+    // 각도 θ(라디안) → 표시 글: 'π/6 (30°)' 처럼 π/12의 배수면 분수로, 아니면 소수
+    function angTxt(t) {
+      const k = Math.round(t / (PI / 12));
+      if (Math.abs(t - k * PI / 12) < 0.004) return `${piTxt(k, 12)} (${k * 15}°)`;
+      return `${num(t)} (${num(t * 180 / PI)}°)`;
+    }
+    // 보이는 소수 읽기용
+    const num2 = (v) => (Math.abs(v) < 0.005 ? '0' : (Math.round(v * 100) / 100).toFixed(2).replace('-', MN));
+    const TRI3 = [[3, 4, 5], [5, 12, 13], [8, 15, 17]];
+    const QSIGN = { 1: [1, 1], 2: [-1, 1], 3: [-1, -1], 4: [1, -1] };      // [cos 부호, sin 부호]
+    const fnName = { sin: '\\sin', cos: '\\cos', tan: '\\tan' };
+    const QF = {
+      neg: (P) => ({ x: P.x, y: frNeg(P.y) }), 'pi-': (P) => ({ x: frNeg(P.x), y: P.y }), 'pi+': (P) => ({ x: frNeg(P.x), y: frNeg(P.y) }),
+      'h-': (P) => ({ x: P.y, y: P.x }), 'h+': (P) => ({ x: frNeg(P.y), y: P.x })
+    };
+    const qmap = (mode, P) => QF[mode](P);   // 변환된 점 (분수 좌표)
+    // 주어진 값(sin 또는 cos) 말고 나머지 좌표를 알아야 값이 정해지는 항인가 (사분면 조건이 필요한 항)
+    const usesUnknown = (t, given) => {
+      if (t.fn === 'tan') return true;
+      const flip = t.mode === 'h-' || t.mode === 'h+';        // π/2±θ 는 sin ↔ cos 가 바뀜
+      const coord = (t.fn === 'cos') !== flip ? 'cos' : 'sin';   // 읽는 좌표가 원래 어느 쪽인가
+      return coord !== given;
+    };
+    const varCv = varier((prev) => {
+      let tri, quad, given, flip, t1, t2;
+      if (!prev) { tri = TRI3[0]; quad = 2; given = 'sin'; flip = true; t1 = { fn: 'cos', mode: 'pi-' }; t2 = { fn: 'tan', mode: 'pi+' }; }
+      else {
+        do {
+          tri = pickOf(TRI3, prev.tri); quad = pickOf([1, 2, 3, 4], prev.quad); given = pickOf(['sin', 'cos'], prev.given); flip = Math.random() < 0.5;
+          const m1 = CV_ORDER[rint(5)]; let m2; do m2 = CV_ORDER[rint(5)]; while (m2 === m1);
+          t1 = { fn: ['sin', 'cos', 'tan'][rint(3)], mode: m1 }; t2 = { fn: ['sin', 'cos'][rint(2)], mode: m2 };
+        } while ((prev.tri === tri && prev.quad === quad && prev.given === given && prev.t1.fn === t1.fn && prev.t1.mode === t1.mode) || !(usesUnknown(t1, given) || usesUnknown(t2, given)));
+      }
+      const h = tri[2], as = flip ? tri[0] : tri[1], ac = flip ? tri[1] : tri[0];     // |sin| = as/h, |cos| = ac/h
+      const [sc, ss] = QSIGN[quad];
+      const P = { x: Fr(sc * ac, h), y: Fr(ss * as, h) };
+      const val = (t) => { const Q = qmap(t.mode, P); return t.fn === 'sin' ? Q.y : t.fn === 'cos' ? Q.x : frDiv(Q.y, Q.x); };
+      const v1 = val(t1), v2 = val(t2);
+      return { tri, quad, given, flip, P, t1, t2, v1, v2, Q1: qmap(t1.mode, P), Q2: qmap(t2.mode, P), ans: frAdd(v1, v2) };
+    });
+    const termTex = (t) => `${fnName[t.fn]}\\left(${CVM[t.mode].lab}\\right)`;
+    const text6 = (v) => `${tex('\\theta')}는 ${QN[v.quad]}의 각이고 ${tex(v.given === 'sin' ? `\\sin\\theta=${frTex(v.P.y)}` : `\\cos\\theta=${frTex(v.P.x)}`)}일 때, ${tex(`${termTex(v.t1)}+${termTex(v.t2)}`)}의 값을 구하시오.`;
+    function steps6(v) {
+      const tex = (x) => '$' + x + '$';     // 단계 글은 셸이 $…$ 를 수식으로 바꿉니다(미리 만든 수식 HTML을 넣으면 그대로 글자로 보임)
+      const rd = (t, Q, val, nm) => `${tex(termTex(t))}는 점 ${nm}의 ${t.fn === 'tan' ? '(y좌표) ÷ (x좌표)' : t.fn === 'sin' ? 'y좌표' : 'x좌표'}입니다. ${tex(`\\mathrm{${nm}}\\left(${frTex(Q.x)},\\ ${frTex(Q.y)}\\right)`)}이므로 ${tex(`${termTex(t)}=${frTex(val)}`)}`;
+      return [
+        `${tex(v.given === 'sin' ? `\\sin\\theta=${frTex(v.P.y)}` : `\\cos\\theta=${frTex(v.P.x)}`)}인 직선과 단위원의 교점 중 ${QN[v.quad]}의 점이 P입니다. ${tex(`\\mathrm{P}\\left(${frTex(v.P.x)},\\ ${frTex(v.P.y)}\\right)`)}, 즉 ${tex(`\\cos\\theta=${frTex(v.P.x)}`)}, ${tex(`\\sin\\theta=${frTex(v.P.y)}`)}`,
+        `${CVM[v.t1.mode].txt}는 P를 ${CVM[v.t1.mode].who}한 점 Q입니다. ${rd(v.t1, v.Q1, v.v1, 'Q')}`,
+        `${CVM[v.t2.mode].txt}는 P를 ${CVM[v.t2.mode].who}한 점 R입니다. ${rd(v.t2, v.Q2, v.v2, 'R')}. 따라서 ${tex(`${frTex(v.v1)}+${v.v2.n < 0 ? '(' + frTex(v.v2) + ')' : frTex(v.v2)}=${frTex(v.ans)}`)}`
+      ];
+    }
+    // 단위원 위의 점 이름: 중심에서 바깥쪽으로, 가까운 두 점은 서로 반대쪽 옆으로 비켜서
+    const lblOut = (p, side = 0, rad = 19, tan = 17) => ({ dx: p.x * rad + side * (-p.y) * tan, dy: -(p.y * rad + side * p.x * tan), align: 'center' });
+    // 캔버스 글자의 대략적인 폭(분수는 쌓아 그리므로 조금 좁게) — 이름표 자리 정하기용
+    function textW(b, str, size, weight = 800) {
+      const c = b.ctx;
+      c.save(); c.font = `${weight} ${size * b.fs}px ${b.font}`;
+      let w = c.measureText(String(str)).width;
+      c.restore();
+      return /[\u00bd]|[\d\u03c0]\/[\d\u221a]/.test(String(str)) ? w * 0.8 : w;
+    }
+    function drawCircleBase(b, s, o = {}) {
+      if (s.grid) b.grid({ step: 0.5, majorEvery: 1000 });
+      if (o.quad) b.poly([[0, 0], [8 * QSIGN[o.quad][0], 0], [8 * QSIGN[o.quad][0], 8 * QSIGN[o.quad][1]], [0, 8 * QSIGN[o.quad][1]]], { fill: 'amber', fillAlpha: 0.09, color: null });
+      b.axes({ ticks: false });
+      b.circle([0, 0], 1, { color: 'ink', width: 2.6 });
+      T(b, [CV_BOX.x[1] - 0.05, 0], 'x', { color: 'muted', size: 13, dy: -12, align: 'right', weight: 700 });
+      T(b, [0, CV_BOX.y[1] - 0.08], 'y', { color: 'muted', size: 13, dx: 12, weight: 700 });
+      [[1, '1', 13], [-1, MN + '1', -13]].forEach(([x, l, dx]) => { b.seg([x, -0.04], [x, 0.04], { color: 'muted', width: 1.4 }); T(b, [x, 0], l, { color: 'muted', size: 12, dx, dy: 14, weight: 700 }); });
+      [1, -1].forEach((y) => b.seg([-0.04, y], [0.04, y], { color: 'muted', width: 1.4 }));
+      [[1, 1, 'Ⅰ'], [-1, 1, 'Ⅱ'], [-1, -1, 'Ⅲ'], [1, -1, 'Ⅳ']].forEach(([sx, sy, r], i) => T(b, [1.62 * sx, 1.18 * sy], r, { color: o.quad === i + 1 ? 'amber' : 'muted', size: 15, weight: 900 }));
+    }
+    const arcAngle = (b, a0, a1, r, color) => {
+      let x0 = a0, x1 = a1;
+      while (x1 < x0) x1 += TAU;
+      b.arc([0, 0], r, x0, x1, { color, width: 2.4 });
+    };
+    function drawSym(b, mode, P, Q) {      // 변환의 대칭 관계(점선·직각 표시)
+      const col = 'rose';
+      if (mode === 'neg') { b.seg(P, Q, { color: col, width: 1.6, dash: true }); b.right([P[0], 0], P, [P[0] + 1, 0], { size: 9, color: col }); }
+      else if (mode === 'pi-') { b.seg(P, Q, { color: col, width: 1.6, dash: true }); b.right([0, P[1]], P, [0, P[1] + 1], { size: 9, color: col }); }
+      else if (mode === 'pi+') b.seg(P, Q, { color: col, width: 1.6, dash: true });
+      else if (mode === 'h-') {
+        b.line([0, 0], 1, { color: 'violet', width: 1.6, dash: [8, 5], extent: [-1.6, 1.6] });
+        T(b, [1.45, 1.45], 'y = x', { color: 'violet', size: 12.5, dx: -6, dy: -2, align: 'right', weight: 800 });
+        b.seg(P, Q, { color: col, width: 1.6, dash: true });
+        const m = (P[0] + P[1]) / 2;
+        b.right([m, m], P, [m + 1, m + 1], { size: 9, color: col });
+      } else b.right([0, 0], P, Q, { size: 14, color: col });
+    }
+    function legs(b, p, strong) {            // 점에서 x축·y축으로 내린 선: cos(노랑)·sin(초록)
+      const al = strong ? 0.95 : 0.5, w = strong ? 1.9 : 1.3;
+      b.seg(p, [p[0], 0], { color: 'amber', width: w, dash: [4, 4], alpha: al });
+      b.seg(p, [0, p[1]], { color: 'green', width: w, dash: [4, 4], alpha: al });
+    }
+    function draw6(b, s, v, labx) {
+      hideOverlays();
+      useBox(b, CV_BOX);
+      const tab = labx ? labx.tab : 'explore';
+      if (tab === 'explore') {
+        const th = s.cvt, md = CVM[s.cvm || 'pi-'], P = [Math.cos(th), Math.sin(th)], ph = md.phi(th), Q = [Math.cos(ph), Math.sin(ph)];
+        drawCircleBase(b, s, { quad: quadOf(P[0], P[1]) });
+        drawSym(b, s.cvm, P, Q);
+        legs(b, P, false); legs(b, Q, true);
+        b.seg([0, 0], P, { color: 'ink', width: 2.6 });
+        b.seg([0, 0], Q, { color: 'rose', width: 2.6 });
+        // 각 호: θ(안쪽), 변환된 각(바깥쪽). 라벨은 호 바깥쪽
+        arcAngle(b, 0, th, 0.18, 'amber');
+        const bis = th / 2;
+        T(b, [Math.cos(bis) * 0.3, Math.sin(bis) * 0.3], 'θ', { color: 'amber', size: 13.5, weight: 900 });
+        const phn = ((ph % TAU) + TAU) % TAU, thn = ((th % TAU) + TAU) % TAU;
+        const lo = s.cvm === 'neg' ? phn : 0, hi = s.cvm === 'neg' ? TAU : phn;
+        arcAngle(b, lo, hi, 0.36, 'rose');
+        // 이름표는 호 바깥쪽, 두 반직선(OP, OQ) 사이에서 가장 넓은 틈의 가운데에 둡니다(반직선과 겹치지 않게)
+        const cuts = [lo, hi].concat(thn > lo + 1e-6 && thn < hi - 1e-6 ? [thn] : []).sort((p, q) => p - q);
+        let mid = (lo + hi) / 2, wid = -1;
+        for (let i = 0; i + 1 < cuts.length; i++) if (cuts[i + 1] - cuts[i] >= wid - 1e-9) { wid = cuts[i + 1] - cuts[i]; mid = (cuts[i] + cuts[i + 1]) / 2; }
+        T(b, [Math.cos(mid) * 0.58, Math.sin(mid) * 0.58], md.txt, { color: 'rose', size: 13, weight: 900 });
+        const close = Math.hypot(P[0] - Q[0], P[1] - Q[1]) < 0.34;
+        b.point(Q, { color: 'rose', r: 6.5, label: 'Q', size: 14, ...lblOut({ x: Q[0], y: Q[1] }, close ? 1 : 0) });
+        b.handle('P6', P, { color: 'amber', r: 8, label: 'P', size: 14, ariaLabel: '점 P (끌어서 각 θ 바꾸기)', ...lblOut({ x: P[0], y: P[1] }, close ? -1 : 0), drag: (w) => { s.cvt = ((Math.atan2(w.y, w.x) % TAU) + TAU) % TAU; } });
+        return;
+      }
+      const V = varCv.cur(), st = tab === 'problem' ? 0 : Math.min(s.step, 3);
+      drawCircleBase(b, s, { quad: V.quad });
+      const P = [frVal(V.P.x), frVal(V.P.y)], th = Math.atan2(P[1], P[0]), thn = ((th % TAU) + TAU) % TAU, bis = thn / 2;
+      // 이름표 자리 정하기: 후보 자리를 차례로 써 보고 이미 놓인 글자와 겹치지 않는 첫 자리를 씁니다
+      const avoid = [];
+      const rectOf = (wp, str, size, c) => {
+        const q = b.toS(wp), w = textW(b, str, size), x = q.x + c.dx, al = c.align || 'center';
+        const x0 = al === 'left' ? x : al === 'right' ? x - w : x - w / 2, y0 = q.y + c.dy - size / 2;
+        return { x0, x1: x0 + w, y0, y1: y0 + size };
+      };
+      const hit = (r1, r2) => Math.min(r1.x1, r2.x1) - Math.max(r1.x0, r2.x0) > -2 && Math.min(r1.y1, r2.y1) - Math.max(r1.y0, r2.y0) > -2;
+      const choose = (wp0, str, size, cands) => {
+        let best = null, bad = 1e9;
+        for (const c of cands) {
+          const wp = c.p || wp0, r = rectOf(wp, str, size, c), n = avoid.filter((q) => hit(r, q)).length;
+          if (n < bad) { bad = n; best = { c, wp, r }; }
+          if (!n) break;
+        }
+        avoid.push(best.r);
+        return best;
+      };
+      [[1.62, 1.18], [-1.62, 1.18], [-1.62, -1.18], [1.62, -1.18]].forEach(([x, y]) => avoid.push(rectOf([x, y], 'Ⅲ', 15, { dx: 0, dy: 0 })));
+      avoid.push(rectOf([1, 0], '−1', 12, { dx: 13, dy: 14 }), rectOf([-1, 0], '−1', 12, { dx: -13, dy: 14 }));
+      if (st >= 1) avoid.push(rectOf([Math.cos(bis) * 0.33, Math.sin(bis) * 0.33], 'θ', 13.5, { dx: 0, dy: 0 }));
+      // 주어진 값: 수평선 y = sin θ 또는 수직선 x = cos θ. 선의 끝에 이름표를 붙입니다
+      let gv;
+      if (V.given === 'sin') {
+        const y = P[1], txt = `sinθ=${frTxt(V.P.y)}`;
+        b.seg([-1.1, y], [1.1, y], { color: 'green', width: 1.9, dash: [6, 5] });
+        gv = { str: txt, color: 'green', pick: () => choose([1.1, y], txt, 13, [{ dx: 5, dy: 0, align: 'left' }, { p: [-1.1, y], dx: -5, dy: 0, align: 'right' }, { p: [0, y], dx: 0, dy: y >= 0 ? 17 : -17 }, { dx: 5, dy: y >= 0 ? 17 : -17, align: 'left' }, { p: [-1.1, y], dx: -5, dy: y >= 0 ? 17 : -17, align: 'right' }, { p: [0.5, y], dx: 0, dy: y >= 0 ? 17 : -17 }, { p: [-0.5, y], dx: 0, dy: y >= 0 ? 17 : -17 }, { p: [0.5, y], dx: 0, dy: y >= 0 ? -17 : 17 }, { p: [-0.5, y], dx: 0, dy: y >= 0 ? -17 : 17 }, { p: [1.5, y], dx: 0, dy: y >= 0 ? -17 : 17 }]) };
+      } else {
+        const x = P[0], txt = `cosθ=${frTxt(V.P.x)}`;
+        b.seg([x, -1.1], [x, 1.1], { color: 'amber', width: 1.9, dash: [6, 5] });
+        gv = { str: txt, color: 'amber', pick: () => {
+          const sd = V.quad <= 2 ? 1 : -1, ends = [[x, -1.1 * sd, 15 * sd], [x, 1.1 * sd, -15 * sd]];
+          const c = [];
+          ends.forEach(([px, py, dy]) => { c.push({ p: [px, py], dx: 0, dy }); c.push({ p: [px, py], dx: 6, dy, align: 'left' }); c.push({ p: [px, py], dx: -6, dy, align: 'right' }); });
+          [0.45, -0.45, 0.8, -0.8, 0.2, -0.2, 1.25, -1.25, 1.42, -1.42].forEach((py) => { c.push({ p: [x, py], dx: 7, dy: 0, align: 'left' }); c.push({ p: [x, py], dx: -7, dy: 0, align: 'right' }); });
+          return choose([x, 1.1], txt, 13, c);
+        } };
+      }
+      // 점 이름표 후보: 바깥쪽(기본) → 옆으로 비켜서 → 더 바깥쪽
+      const outCands = (p) => [lblOut(p, 0, 26), lblOut(p, 1, 26, 22), lblOut(p, -1, 26, 22), lblOut(p, 0, 44), lblOut(p, 1, 40, 36), lblOut(p, -1, 40, 36)];
+      const placed = [];
+      const named = (nm, Pw, Qf, col, r) => {      // 이름표 자리는 먼저 정하고(아래에서 그림), 주어진 값 이름표가 그 뒤에 빈자리를 찾습니다
+        const str = `${nm}(${frTxt(Qf.x)}, ${frTxt(Qf.y)})`, p = { x: Pw[0], y: Pw[1] }, ch = choose(Pw, str, 13, outCands(p));
+        placed.push(() => b.point(Pw, { color: col, r, label: str, size: 13, ...ch.c }));
+      };
+      if (st >= 1) {
+        legs(b, P, false);
+        b.seg([0, 0], P, { color: 'ink', width: 2.6 });
+        arcAngle(b, 0, thn, 0.2, 'amber');
+        T(b, [Math.cos(bis) * 0.33, Math.sin(bis) * 0.33], 'θ', { color: 'amber', size: 13.5, weight: 900 });
+        const pts = [[V.t1, V.Q1, 'Q', 2, 'rose'], [V.t2, V.Q2, 'R', 3, 'violet']].filter((e) => st >= e[3]);
+        pts.forEach(([t, Qf, nm, need, col]) => {
+          const Q = [frVal(Qf.x), frVal(Qf.y)];
+          drawSym(b, t.mode, P, Q);
+          b.seg([0, 0], Q, { color: col, width: 2.4 });
+          legs(b, Q, true);
+        });
+        named('P', P, V.P, 'amber', 6);
+        pts.forEach(([t, Qf, nm, need, col]) => named(nm, [frVal(Qf.x), frVal(Qf.y)], Qf, col, 6));
+      }
+      placed.forEach((f) => f());
+      const G = gv.pick();
+      T(b, G.wp, gv.str, { color: gv.color, size: 13, dx: G.c.dx, dy: G.c.dy, align: G.c.align || 'center', weight: 900 });
+    }
+    function scene6() {
+      return baseScene({
+        id: 'conv', title: '[필수] 단위원에서 π±θ, π/2±θ 변환 — 대칭점의 좌표로 읽기', short: 'π±θ 변환',
+        question: 'sin(π−θ), cos(π+θ), sin(π/2+θ)… 같은 값은 단위원에서 어떤 점의 좌표일까? 공식을 외우지 않고 그림에서 읽을 수 있을까?',
+        guide: '<b>점 P</b>를 끌어 각 θ를 바꿔 보세요. 칩에서 변환($-\\theta$, $\\pi\\pm\\theta$, $\\pi/2\\pm\\theta$)을 고르면 <b>대칭점 Q</b>가 나타납니다. Q의 <b>x좌표가 cos, y좌표가 sin</b>이므로 P와 비교하면 <b>부호가 바뀌는지, sin과 cos가 서로 바뀌는지</b>가 바로 보입니다.',
+        focus: CV_BOX,
+        enter: (s) => { s.cvt = PI / 3; s.cvm = 'pi-'; },
+        controls: ['cvt'],
+        presets: () => [
+          ...CV_ORDER.map((k) => ({ group: '변환 고르기', label: `$${CVM[k].lab}$`, apply: (st) => { st.cvm = k; }, on: (st) => st.cvm === k, color: 'rose' })),
+          ...[[PI / 6, '30°'], [PI / 4, '45°'], [PI / 3, '60°'], [2 * PI / 3, '120°'], [7 * PI / 6, '210°'], [5 * PI / 3, '300°']].map(([t, l]) => ({ group: 'θ 값 (사분면 바꿔 보기)', label: `θ = ${l}`, set: { cvt: t }, ms: 400, on: (st) => Math.abs(st.cvt - t) < 0.01 }))
+        ],
+        steps: () => steps6(varCv.cur()),
+        reviewTop: reviewTopOf(() => text6(varCv.cur())),
+        vary: varCv,
+        problem: { tag: '2025학년도 수능 6번 · 2026학년도 수능 8번 유형', time: '목표 시간: 60초', text: () => probHTML(text6(varCv.cur())), answer: () => tex(frTex(varCv.cur().ans)) },
+        solution: {
+          standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · 부호와 이름 바꾸기', quickTag: '10초 컷',
+          standard: () => ({ steps: steps6(varCv.cur()).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>'), warning: 'tan은 (y좌표)÷(x좌표)입니다. 변환된 점의 두 좌표를 모두 읽은 뒤 나누세요.' }),
+          quick: () => ({ steps: '변환 공식은 <strong class="text-amber-300">① 점이 어디로 가는가(대칭·회전) ② 그 점의 좌표</strong>만 읽으면 됩니다. π±θ는 sin·cos 이름이 그대로이고 부호만, π/2±θ는 sin ↔ cos 이름이 바뀝니다.', highlight: '부호는 "θ를 예각으로 놓았을 때 변환된 점이 있는 사분면"으로 정합니다. 예: π+θ는 제3사분면 → sin −, cos −, tan +.' })
+        },
+        view: (s, l) => {
+          const tab = l ? l.tab : 'explore';
+          if (tab !== 'explore') return {};
+          const th = s.cvt, md = CVM[s.cvm], P = [Math.cos(th), Math.sin(th)], ph = md.phi(th), Q = [Math.cos(ph), Math.sin(ph)];
+          const qp = quadOf(P[0], P[1]), qq = quadOf(Q[0], Q[1]), tn = (p) => (Math.abs(p[0]) < 1e-6 ? '없음' : num2(p[1] / p[0]));
+          const L = (fn, expr, val) => `$${fn}(${md.lab})=${expr}$`;
+          return {
+            chips: [{ tex: '\\mathrm{P}(\\cos\\theta,\\ \\sin\\theta)', color: 'amber' }, { tex: `\\mathrm{Q}\\left(${md.qt[0]},\\ ${md.qt[1]}\\right)`, color: 'rose' }],
+            status: { tone: 'info', text: `${md.txt}: P를 ${md.who}하면 Q` },
+            readouts: [
+              { label: 'θ', value: angTxt(th), color: 'amber', note: `P는 ${QN[qp]}` },
+              { label: `${md.txt} 의 점 Q`, value: `(${num2(Q[0])}, ${num2(Q[1])})`, color: 'rose', note: `Q는 ${QN[qq]}` },
+              { label: 'P (cos θ, sin θ)', value: `(${num2(P[0])}, ${num2(P[1])})`, color: 'amber' },
+              { label: `sin · cos · tan (${md.txt})`, value: `${num2(Q[1])} · ${num2(Q[0])} · ${tn(Q)}`, color: 'rose', wide: true }
+            ],
+            rule: `${md.rule}`,
+            formula: `<div class="apl-rich" style="line-height:2"><b>변환 결과</b><br>${L('\\sin', md.qt[1])}<br>${L('\\cos', md.qt[0])}<br>${L('\\tan', md.tan)}</div>`,
+            notes: '<b>탐구 참고</b> · θ를 제2·3·4사분면으로 옮겨도 같은 규칙이 성립합니다(위의 θ 값 칩). 변환된 점 Q의 사분면에서 sin·cos·tan의 부호를 한꺼번에 읽을 수 있습니다: 제1 (+ + +) · 제2 (+ − −) · 제3 (− − +) · 제4 (− + −).'
+          };
+        },
+        draw: draw6
+      });
+    }
+
+    /* ====================================================================
+       장면 7 · 두 삼각함수 곡선과 평행선의 교점이 이루는 사각형
+       ==================================================================== */
+    const TW_BOX = { x: [-0.95, 5.0], y: [-1.66, 1.86] };
+    // 탐구(라디안): f = sin x, g = cos x, 직선 y = ±k  →  A(f, y=k) B(g, y=k) C(f, y=−k) D(g, y=−k)  (x ≥ 0 에서 x좌표가 가장 작은 점)
+    function twoPts(k) { const al = Math.asin(k); return { al, A: [al, k], B: [PI / 2 - al, k], C: [PI + al, -k], D: [PI / 2 + al, -k] }; }
+    // o: {sx, sy, k, x1, ticks, grid, topLabel, botLabel, fill, outline, sym, symLabel, drops, dimCD, height, fnTags, pts}
+    function drawTwo(b, o) {
+      const { sx, sy, k } = o, f = (x) => sy * Math.sin(x / sx), g = (x) => sy * Math.cos(x / sx);
+      if (o.grid) b.grid({ step: o.gridStep || 1, majorEvery: 1000 });
+      b.axes({ ticks: false });
+      T(b, [o.x1 + 0.5, 0], 'x', { color: 'muted', size: 13, dy: -12, align: 'right', weight: 700 });
+      T(b, [0, o.ytop], 'y', { color: 'muted', size: 13, dx: -12, weight: 700 });
+      o.ticks.forEach((q) => {
+        if (q.hide || (o.sym && Math.abs(q.x - o.sym) < 1e-6)) return;
+        b.seg([q.x, -0.07 * sy / 1], [q.x, 0.07 * sy / 1], { color: q.color || 'muted', width: 1.3 });
+        T(b, [q.x, 0], q.label, { color: q.color || 'muted', size: 12, dy: 15, weight: q.color ? 900 : 700 });
+      });
+      [sy, -sy].forEach((y) => { b.seg([-0.06, y], [0.06, y], { color: 'muted', width: 1.3 }); T(b, [0, y], num(y), { color: 'muted', size: 12, dx: -9, align: 'right', weight: 700 }); });
+      const P = o.pts, yk = sy * k;
+      if (o.fill) b.poly([P.A, P.B, P.C, P.D], { fill: 'sky', fillAlpha: 0.15, color: null });
+      b.seg([0, yk], [o.x1, yk], { color: 'rose', width: 1.8, dash: [6, 5] });
+      b.seg([0, -yk], [o.x1, -yk], { color: 'rose', width: 1.8, dash: [6, 5] });
+      T(b, [0, yk], o.topLabel, { color: 'rose', size: 12.5, dx: -9, align: 'right', weight: 900 });
+      T(b, [0, -yk], o.botLabel, { color: 'rose', size: 12.5, dx: -9, align: 'right', weight: 900 });
+      if (o.sym) {
+        b.seg([o.sym, -1.42 * sy], [o.sym, 1.42 * sy], { color: 'violet', width: 1.6, dash: [8, 5] });
+        T(b, [o.sym, 1.56 * sy], o.symLabel, { color: 'violet', size: 12.5, weight: 900 });
+      }
+      b.plot(f, { from: 0, to: o.x1, color: 'green', width: 3.2 });
+      b.plot(g, { from: 0, to: o.x1, color: 'amber', width: 3.2 });
+      if (o.fnTags) {
+        T(b, o.fnTags.f, 'f', { color: 'green', size: 15, dy: -14, weight: 900 });
+        T(b, o.fnTags.g, 'g', { color: 'amber', size: 15, dy: -14, weight: 900 });
+      }
+      if (o.outline && !o.fill) b.poly([P.A, P.B, P.C, P.D], { color: 'ink', width: 2, alpha: 0.7 });
+      if (o.fill) b.poly([P.A, P.B, P.C, P.D], { color: 'sky', width: 2.4 });
+      (o.drops || []).forEach((d) => { b.seg(d.p, [d.p[0], 0], { color: d.color, width: 1.5, dash: [4, 4] }); });
+      if (o.dimCD) {
+        const yy = -yk - 24 / b.k;
+        dimH(b, P.D[0], P.C[0], yy, 'sky');
+        T(b, [(P.D[0] + P.C[0]) / 2, yy], o.dimCD, { color: 'sky', size: 13, dy: 15, weight: 900 });
+      }
+      if (o.height) { b.seg(P.A, [P.A[0], -yk], { color: 'amber', width: 1.8, dash: [5, 4] }); b.right([P.A[0], -yk], P.A, [P.A[0] + 1, -yk], { size: 9, color: 'amber' }); }
+      if (o.mid) b.point([o.sym, sy * Math.SQRT1_2], { color: 'violet', r: 4 });
+      [['A', P.A, 'green', -15], ['B', P.B, 'amber', -15], ['C', P.C, 'green', 16], ['D', P.D, 'amber', 16]].forEach(([nm, p, col, dy]) => b.point(p, { color: col, r: 5.5, label: nm, size: 14, dx: 0, dy, align: 'center' }));
+    }
+    const THIRD_TICKS = (n) => Array.from({ length: n }, (_, i) => ({ x: (i + 1) * PI / 4, label: piTxt(i + 1, 4) }));
+    // 변형: p = 6 고정, m ∈ {2,3,4}. A(1, m/2) B(2, m/2) C(7, −m/2) D(4, −m/2): 사다리꼴 윗변 1, 아랫변 3, 높이 m
+    const var7 = varier((prev) => {
+      const m = prev ? pickOf([2, 3, 4], prev.m) : 2, kinds = ['area', 'sumx', 'lensum'];
+      const kind = prev ? pickOf(kinds, prev.kind) : 'area', h = m / 2;
+      return { m, kind, h, pts: { A: [1, h], B: [2, h], C: [7, -h], D: [4, -h] }, ans: kind === 'area' ? 2 * m : kind === 'sumx' ? 14 : 4 };
+    });
+    const hTex = (v) => (v.h % 1 ? `\\dfrac{${v.m}}{2}` : String(v.h));
+    const hTxt = (v) => (v.h % 1 ? `${v.m}/2` : String(v.h));
+    const text7 = (v) => `두 함수 ${tex(`f(x)=${v.m}\\sin\\dfrac{\\pi x}{6}`)}, ${tex(`g(x)=${v.m}\\cos\\dfrac{\\pi x}{6}`)}에 대하여 ${tex('x\\ge 0')}에서 곡선 ${tex('y=f(x)')}와 직선 ${tex('y=' + hTex(v))}의 교점 중 x좌표가 가장 작은 점을 ${tex('\\mathrm{A}')}, 곡선 ${tex('y=g(x)')}와 직선 ${tex('y=' + hTex(v))}의 교점 중 x좌표가 가장 작은 점을 ${tex('\\mathrm{B}')}, 곡선 ${tex('y=f(x)')}와 직선 ${tex('y=-' + hTex(v))}의 교점 중 x좌표가 가장 작은 점을 ${tex('\\mathrm{C}')}, 곡선 ${tex('y=g(x)')}와 직선 ${tex('y=-' + hTex(v))}의 교점 중 x좌표가 가장 작은 점을 ${tex('\\mathrm{D}')}라 하자. ${v.kind === 'area' ? `사각형 ${tex('\\mathrm{ABCD}')}의 넓이를` : v.kind === 'sumx' ? '네 점 A, B, C, D의 x좌표의 합을' : `두 선분 ${tex('\\mathrm{AB}')}, ${tex('\\mathrm{CD}')}의 길이의 합 ${tex('\\overline{\\mathrm{AB}}+\\overline{\\mathrm{CD}}')}를`} 구하시오.`;
+    function steps7(v) {
+      const tex = (x) => '$' + x + '$';     // 단계 글은 셸이 $…$ 를 수식으로 바꿉니다(미리 만든 수식 HTML을 넣으면 그대로 글자로 보임)
+      const h = hTex(v);
+      return [
+        `직선 ${tex('y=' + h)}: ${tex(`f(x)=${h}`)}에서 ${tex(`\\sin\\dfrac{\\pi x}{6}=\\dfrac12`)}, ${tex(`\\dfrac{\\pi x}{6}=\\dfrac{\\pi}{6}`)}이므로 ${tex(`\\mathrm{A}\\left(1,\\ ${h}\\right)`)}. ${tex('g(x)=' + h)}에서 ${tex(`\\cos\\dfrac{\\pi x}{6}=\\dfrac12`)}, ${tex(`\\dfrac{\\pi x}{6}=\\dfrac{\\pi}{3}`)}이므로 ${tex(`\\mathrm{B}\\left(2,\\ ${h}\\right)`)}. 두 점은 ${tex('x=\\dfrac32')}에 대칭입니다.`,
+        `직선 ${tex('y=-' + h)}: ${tex(`\\sin\\dfrac{\\pi x}{6}=-\\dfrac12`)}에서 가장 작은 양수 해 ${tex(`\\dfrac{\\pi x}{6}=\\dfrac{7\\pi}{6}`)}, ${tex(`\\mathrm{C}\\left(7,\\ -${h}\\right)`)}. ${tex(`\\cos\\dfrac{\\pi x}{6}=-\\dfrac12`)}에서 ${tex(`\\dfrac{\\pi x}{6}=\\dfrac{2\\pi}{3}`)}, ${tex(`\\mathrm{D}\\left(4,\\ -${h}\\right)`)}. ${tex('g(x)=f(x+3)')}이므로 ${tex(`\\overline{\\mathrm{CD}}=7-4=3`)}.`,
+        v.kind === 'area' ? `${tex('\\overline{\\mathrm{AB}}=1')}, ${tex('\\overline{\\mathrm{CD}}=3')}인 사다리꼴(높이 ${tex(String(v.m))})입니다. ${tex(`\\dfrac12\\times(1+3)\\times ${v.m}=${v.ans}`)}`
+          : v.kind === 'sumx' ? `${tex('1+2+7+4=14')}`
+            : `${tex('\\overline{\\mathrm{AB}}=2-1=1')}, ${tex('\\overline{\\mathrm{CD}}=7-4=3')}이므로 ${tex('1+3=4')}`
+      ];
+    }
+    function draw7(b, s, v, labx) {
+      hideOverlays();
+      const tab = labx ? labx.tab : 'explore';
+      if (tab === 'explore') {
+        useBox(b, TW_BOX);
+        const k = s.twk, Pt = twoPts(k);
+        drawTwo(b, {
+          sx: 1, sy: 1, k, x1: 4.9, ytop: 1.74, grid: s.grid, gridStep: 0.5, ticks: THIRD_TICKS(6).filter((q) => q.x < 4.75),
+          topLabel: 'y = k', botLabel: 'y = −k', pts: Pt, fill: true, sym: PI / 4, symLabel: 'x = π/4', mid: true,
+          dimCD: 'CD = π/2', fnTags: { f: [PI / 2, 1], g: [0.22, 1] }
+        });
+        return;
+      }
+      const V = var7.cur(), st = tab === 'problem' ? 0 : Math.min(s.step, 3), m = V.m, h = V.h;
+      useBox(b, boxOf('tw7-' + m, [-1.5, 8.0], [-(m + 0.95), m + 1.15]));
+      const ticks = [1, 2, 3, 4, 5, 6, 7].map((x) => ({ x, label: String(x) }));
+      const mark = (x, color) => { const q = ticks.find((t) => t.x === x); if (q) { q.color = color; } };
+      const drops = [];
+      if (st >= 1) { mark(1, 'green'); mark(2, 'amber'); drops.push({ p: V.pts.A, color: 'green' }, { p: V.pts.B, color: 'amber' }); }
+      if (st >= 2) { mark(7, 'green'); mark(4, 'amber'); drops.push({ p: V.pts.C, color: 'green' }, { p: V.pts.D, color: 'amber' }); }
+      drawTwo(b, {
+        sx: 6 / PI, sy: m, k: 0.5, x1: 7.7, ytop: m + 0.8, grid: s.grid, gridStep: 1, ticks,
+        topLabel: 'y = ' + hTxt(V), botLabel: 'y = −' + hTxt(V), pts: V.pts, outline: true, fill: st >= 3,
+        sym: st >= 1 ? 1.5 : null, symLabel: 'x = 3/2', drops, dimCD: st >= 2 ? 'CD = 3' : null, height: st >= 3,
+        fnTags: { f: [3, m], g: [0.3, m] }
+      });
+    }
+    function scene7() {
+      return baseScene({
+        id: 'twocurve', title: '[기출 킬러] 두 삼각함수 곡선과 평행선의 교점 — 사각형의 넓이', short: '곡선·평행선 사각형',
+        question: '곡선 $y=\\sin x$, $y=\\cos x$가 두 평행선 $y=k$, $y=-k$와 만나는 네 점 A, B, C, D는 어떤 사각형을 만들까? 길이와 넓이는 대칭과 평행이동으로 읽을 수 있을까?',
+        guide: '평행선의 높이 <b>k</b>를 바꿔 보세요. 위쪽 두 점 <b>A, B</b>는 항상 직선 <b>x = π/4</b>에 대칭이고, 아래쪽 두 점 <b>C, D</b> 사이의 거리는 k가 변해도 <b>π/2로 일정</b>합니다($\\cos x=\\sin(x+\\pi/2)$이므로 두 곡선은 π/2만큼 평행이동한 관계). 그래서 사각형은 <b>사다리꼴</b>입니다.',
+        focus: TW_BOX,
+        enter: (s) => { s.twk = 0.5; },
+        controls: ['twk'],
+        presets: () => [
+          { group: '평행선의 높이 k', label: '$k=\\dfrac12$', set: { twk: 0.5 }, ms: 400, on: (st) => Math.abs(st.twk - 0.5) < 0.004 },
+          { group: '평행선의 높이 k', label: '$k=0.3$', set: { twk: 0.3 }, ms: 400, on: (st) => Math.abs(st.twk - 0.3) < 0.004 },
+          { group: '평행선의 높이 k', label: '$k=0.7$', set: { twk: 0.7 }, ms: 400, on: (st) => Math.abs(st.twk - 0.7) < 0.004 }
+        ],
+        steps: () => steps7(var7.cur()),
+        reviewTop: reviewTopOf(() => text7(var7.cur())),
+        vary: var7,
+        problem: { tag: '2027학년도 9월 모의평가 20번 · 2026학년도 6월 고2 학평(부산) 16번 유형', time: '목표 시간: 150초', text: () => probHTML(text7(var7.cur())), answer: () => tex(String(var7.cur().ans)) },
+        solution: {
+          standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · 평행이동과 대칭', quickTag: '10초 컷',
+          standard: () => ({ steps: steps7(var7.cur()).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>'), warning: '"x좌표가 가장 작은 점"은 직선과 곡선의 교점 중 가장 왼쪽 것입니다. 같은 직선 위에 교점이 여러 개이므로 이름을 붙일 점을 먼저 그림에서 정하세요.' }),
+          quick: () => ({ steps: '<strong class="text-amber-300">cos 곡선은 sin 곡선을 왼쪽으로 주기의 4분의 1만큼 옮긴 것(여기서는 3)</strong>이라 같은 높이의 두 교점 사이의 거리가 일정합니다. 위쪽은 두 곡선의 대칭축(교점의 x좌표)을 기준으로 거울상입니다.', highlight: '교점 좌표를 하나하나 풀기 전에 "같은 높이에서 f와 g의 교점 사이 거리가 일정한가?"를 먼저 물으세요. 일정하면 좌표를 구하지 않고 길이만 씁니다.' })
+        },
+        view: (s, l) => {
+          const tab = l ? l.tab : 'explore';
+          if (tab !== 'explore') return { chips: [{ tex: `f(x)=${var7.cur().m}\\sin\\dfrac{\\pi x}{6}`, color: 'green' }, { tex: `g(x)=${var7.cur().m}\\cos\\dfrac{\\pi x}{6}`, color: 'amber' }] };
+          const k = s.twk, Pt = twoPts(k), AB = PI / 2 - 2 * Pt.al;
+          return {
+            chips: [{ tex: 'f(x)=\\sin x', color: 'green' }, { tex: 'g(x)=\\cos x', color: 'amber' }],
+            status: { tone: 'info', text: `α = ${angTxt(Pt.al)} · 사다리꼴 넓이 ${num2((PI - 2 * Pt.al) * k)}` },
+            readouts: [
+              { label: 'α ($\\sin\\alpha=k$)', value: angTxt(Pt.al), color: 'green' },
+              { label: '윗변 AB = π/2 − 2α', value: num2(AB), color: 'sky', note: 'x = π/4에 대칭' },
+              { label: '아랫변 CD', value: num2(PI / 2), color: 'sky', note: 'k가 변해도 π/2로 일정' },
+              { label: '높이 2k', value: num2(2 * k), color: 'rose' },
+              { label: '넓이 $(\\pi-2\\alpha)k$', value: num2((PI - 2 * Pt.al) * k), color: 'sky', wide: true }
+            ],
+            notes: '<b>탐구 참고</b> · $k=\\dfrac12$이면 $\\alpha=\\dfrac{\\pi}{6}$, 윗변 $\\dfrac{\\pi}{6}$, 아랫변 $\\dfrac{\\pi}{2}$, 높이 1이라 넓이가 $\\dfrac{\\pi}{3}$입니다. k를 키우면 윗변이 줄어 $k=\\dfrac{\\sqrt2}{2}$에서 A와 B가 한 점(두 곡선의 교점)으로 모입니다.'
+          };
+        },
+        draw: draw7
+      });
+    }
+
+    /* ====================================================================
+       장면 8 · (sin x − t)(cos x − t) = 0 의 근의 개수·합
+       ==================================================================== */
+    const RS_BOX = { x: [-0.62, 7.75], y: [-1.78, 2.0] };
+    function rootsOf(fn, t) {                      // 0 ≤ x < 2π 에서 fn x = t 의 서로 다른 근(작은 것부터)
+      if (Math.abs(t) > 1 + 1e-9) return [];
+      t = clampX(t, -1, 1);
+      const a = fn === 'sin' ? Math.asin(t) : Math.acos(t), raw = fn === 'sin' ? [a, PI - a] : [a, TAU - a], out = [];
+      raw.forEach((x) => { x = ((x % TAU) + TAU) % TAU; if (x > TAU - 1e-9) x = 0; if (!out.some((q) => Math.abs(q - x) < 1e-7)) out.push(x); });
+      return out.sort((p, q) => p - q);
+    }
+    const SPECIAL_T = [0, 0.5, -0.5, Math.SQRT1_2, -Math.SQRT1_2, Math.sqrt(3) / 2, -Math.sqrt(3) / 2, 1, -1];
+    const snapT = (t) => { const q = SPECIAL_T.find((v) => Math.abs(v - t) < 0.014); return q === undefined ? t : q; };
+    const tTxt = (t) => { const q = [[0, '0'], [0.5, '1/2'], [-0.5, '−1/2'], [Math.SQRT1_2, '√2/2'], [-Math.SQRT1_2, '−√2/2'], [Math.sqrt(3) / 2, '√3/2'], [-Math.sqrt(3) / 2, '−√3/2'], [1, '1'], [-1, '−1']].find((e) => Math.abs(e[0] - t) < 1e-9); return q ? q[1] : num(t); };
+    const rTxt = (x) => { const k = Math.round(x / (PI / 12)); return Math.abs(x - k * PI / 12) < 1e-6 ? piTxt(k, 12) : num(x); };
+    const rTex = (x) => { const k = Math.round(x / (PI / 12)); return Math.abs(x - k * PI / 12) < 1e-6 ? piTex(k, 12) : num(x); };
+    const sumTex = (xs) => { const S = xs.reduce((p, q) => p + q, 0), k = Math.round(S / (PI / 12)); return Math.abs(S - k * PI / 12) < 1e-6 ? piTex(k, 12) : num(S); };
+    function allRoots(t) {
+      const rs = rootsOf('sin', t), rc = rootsOf('cos', t), both = rs.filter((x) => rc.some((y) => Math.abs(x - y) < 1e-7));
+      const dist = rs.concat(rc.filter((y) => !rs.some((x) => Math.abs(x - y) < 1e-7))).sort((p, q) => p - q);
+      return { rs, rc, both, dist, sum: dist.reduce((p, q) => p + q, 0) };
+    }
+    // o: {t, grid, sinRoots, cosRoots, axes, lineLabel, handle, curveTags, extraLines}
+    function drawRoots(b, o) {
+      const t = o.t, TOP = 1.62;
+      if (o.grid) b.grid({ step: 0.5, majorEvery: 1000 });
+      b.axes({ ticks: false });
+      T(b, [RS_BOX.x[1] - 0.05, 0], 'x', { color: 'muted', size: 13, dy: -12, align: 'right', weight: 700 });
+      T(b, [0, RS_BOX.y[1] - 0.08], 'y', { color: 'muted', size: 13, dx: 12, weight: 700 });
+      for (let k = 1; k <= 4; k++) {
+        const x = k * PI / 2;
+        if (o.axes && (Math.abs(x - PI) < 1e-6 || Math.abs(x - (t >= 0 ? PI / 2 : 3 * PI / 2)) < 1e-6)) continue;   // 대칭축 이름표가 있는 곳은 눈금 글자를 생략
+        b.seg([x, -0.05], [x, 0.05], { color: 'muted', width: 1.3 });
+        T(b, [x, 0], piTxt(k, 2), { color: 'muted', size: 12, dy: 15, weight: 700 });
+      }
+      [[1, '1'], [-1, MN + '1']].forEach(([y, l]) => { b.seg([-0.05, y], [0.05, y], { color: 'muted', width: 1.3 }); T(b, [0, y], l, { color: 'muted', size: 12, dx: -9, align: 'right', weight: 700 }); });
+      const R = o.roots ? allRoots(t) : null;
+      if (o.axes && R) {
+        const sx = t >= 0 ? PI / 2 : 3 * PI / 2;
+        b.seg([sx, -1.4], [sx, TOP - 0.1], { color: 'green', width: 1.6, dash: [8, 5] });
+        T(b, [sx, TOP + 0.04], 'x = ' + piTxt(t >= 0 ? 1 : 3, 2), { color: 'green', size: 12.5, weight: 900 });
+        b.seg([PI, -1.4], [PI, TOP - 0.1], { color: 'amber', width: 1.6, dash: [8, 5] });
+        T(b, [PI, TOP + 0.04], 'x = π', { color: 'amber', size: 12.5, weight: 900 });
+      }
+      b.plot(Math.sin, { from: 0, to: TAU, color: 'green', width: 3.2 });
+      b.plot(Math.cos, { from: 0, to: TAU, color: 'amber', width: 3.2 });
+      b.point([TAU, 0], { color: 'green', r: 4.5, hollow: true });
+      b.point([TAU, 1], { color: 'amber', r: 4.5, hollow: true });
+      (o.lines || []).forEach((ln) => {
+        b.seg([-0.3, ln.t], [6.9, ln.t], { color: 'ink', width: 1.9, dash: [7, 5] });
+        if (ln.label) T(b, [6.55, ln.t], ln.label, { color: 'ink', size: 12.5, align: 'left', dy: ln.t >= 0 ? -13 : 14, weight: 900 });
+      });
+      if (R) {
+        [[R.rs, 'green', o.sinRoots], [R.rc, 'amber', o.cosRoots]].forEach(([xs, col, on]) => {
+          if (!on) return;
+          xs.forEach((x) => {
+            b.seg([x, t], [x, 0], { color: col, width: 1.5, dash: [4, 4], alpha: 0.75 });
+            b.point([x, t], { color: col, r: 5.5 });
+          });
+        });
+        if (o.sinRoots && o.cosRoots) R.both.forEach((x) => b.point([x, t], { color: 'violet', r: 10, hollow: true }));
+      }
+      if (o.handle) b.handle('t8', [7.0, t], { color: 'amber', r: 8, label: 't = ' + tTxt(t), dx: 0, dy: -19, align: 'center', ariaLabel: '수평선 y = t (끌어서 높이 바꾸기)', drag: o.handle });
+    }
+    const T8 = [{ t: 0.5 }, { t: -0.5 }, { t: Math.sqrt(3) / 2 }, { t: -Math.sqrt(3) / 2 }, { t: 1 }, { t: -1 }, { t: 0 }];
+    const SQ2 = (neg) => (neg ? '-' : '') + '\\dfrac{\\sqrt2}{2}';
+    const var8 = varier((prev) => {
+      if (!prev) return { type: 'B', agg: 'max', ans: 19, sums: [11, 15] };
+      if (Math.random() < 0.65 || prev.type === 'B') {
+        let e; do e = T8[rint(T8.length)]; while (prev.type === 'A' && Math.abs(prev.t - e.t) < 1e-9);
+        const R = allRoots(e.t), k = Math.round(R.sum / (PI / 12)), fr = Fr(k, 12);
+        return { type: 'A', t: e.t, R, frac: fr, ans: fr.n + fr.d };
+      }
+      const agg = pickOf(['max', 'min', 'both'], prev.agg), sums = [11, 15];   // S(√2/2) = 11π/4, S(−√2/2) = 15π/4
+      const ans = agg === 'max' ? 19 : agg === 'min' ? 15 : 15;                 // 15π/4 → 19, 11π/4 → 15, 26π/4 = 13π/2 → 15
+      return { type: 'B', agg, ans, sums };
+    });
+    const tTex = (t) => (Math.abs(t - 0.5) < 1e-9 ? '\\dfrac12' : Math.abs(t + 0.5) < 1e-9 ? '-\\dfrac12' : Math.abs(t - Math.sqrt(3) / 2) < 1e-9 ? '\\dfrac{\\sqrt3}{2}' : Math.abs(t + Math.sqrt(3) / 2) < 1e-9 ? '-\\dfrac{\\sqrt3}{2}' : String(t).replace('-0', '0'));
+    const text8 = (v) => (v.type === 'A'
+      ? `${tex('t=' + tTex(v.t))}일 때, ${tex('0\\le x<2\\pi')}에서 방정식 ${tex('(\\sin x-t)(\\cos x-t)=0')}의 서로 다른 모든 실근의 합이 ${tex('\\dfrac{p}{q}\\pi')}이다. ${tex('p+q')}의 값을 구하시오. (단, p, q는 서로소인 자연수)`
+      : `${tex('0\\le x<2\\pi')}에서 방정식 ${tex('(\\sin x-t)(\\cos x-t)=0')}의 서로 다른 실근의 개수가 3이 되도록 하는 실수 ${tex('t')}의 값은 두 개이다. 각각의 ${tex('t')}에 대하여 이 방정식의 모든 실근의 합을 ${tex('S')}라 할 때, ${v.agg === 'max' ? 'S의 최댓값이' : v.agg === 'min' ? 'S의 최솟값이' : '두 S의 값의 합이'} ${tex('\\dfrac{p}{q}\\pi')}이다. ${tex('p+q')}의 값을 구하시오. (단, p, q는 서로소인 자연수)`);
+    function steps8(v) {
+      const tex = (x) => '$' + x + '$';     // 단계 글은 셸이 $…$ 를 수식으로 바꿉니다(미리 만든 수식 HTML을 넣으면 그대로 글자로 보임)
+      if (v.type === 'A') {
+        const R = v.R, fx = (xs) => xs.map(rTex).map((q) => tex(q)).join(', ');
+        const sx = v.t >= 0 ? '\\dfrac{\\pi}{2}' : '\\dfrac{3\\pi}{2}';
+        return [
+          Math.abs(v.t) === 1 ? `${tex(`\\sin x=${v.t}`)}의 근은 ${fx(R.rs)} 하나뿐입니다(접점이라 대칭인 짝이 없음).`
+            : `${tex(`\\sin x=${tTex(v.t)}`)}의 두 근 ${fx(R.rs)}은 직선 ${tex('x=' + sx)}에 대칭이므로 합은 ${tex(sumTex(R.rs))}입니다.`,
+          Math.abs(v.t) === 1 ? `${tex(`\\cos x=${v.t}`)}의 근은 ${fx(R.rc)}입니다${v.t === 1 ? '(x=2π는 범위 밖)' : ''}.`
+            : `${tex(`\\cos x=${tTex(v.t)}`)}의 두 근 ${fx(R.rc)}은 직선 ${tex('x=\\pi')}에 대칭이므로 합은 ${tex(sumTex(R.rc))}입니다.`,
+          `겹치는 근이 ${R.both.length ? '있으므로 한 번만 셉니다' : '없으므로 두 합을 더합니다'}: ${tex(`${sumTex(R.rs)}+${sumTex(R.rc)}=${sumTex(R.dist)}=${frTex(v.frac)}\\pi`)}. 따라서 ${tex(`p+q=${v.frac.n}+${v.frac.d}=${v.ans}`)}`
+        ];
+      }
+      return [
+        `${tex('\\sin x=\\cos x')}인 곳(두 곡선의 교점) ${tex('x=\\dfrac{\\pi}{4},\\ \\dfrac{5\\pi}{4}')}에서 ${tex('y=\\dfrac{\\sqrt2}{2},\\ -\\dfrac{\\sqrt2}{2}')}입니다. 두 식이 같은 근을 가져 근이 3개가 되는 것은 ${tex('t=\\pm\\dfrac{\\sqrt2}{2}')}일 때뿐입니다(그 밖의 t는 4개 또는 2개).`,
+        `${tex('t=\\dfrac{\\sqrt2}{2}')}: ${tex('\\sin x=t')}의 근 ${tex('\\dfrac{\\pi}{4},\\ \\dfrac{3\\pi}{4}')}, ${tex('\\cos x=t')}의 근 ${tex('\\dfrac{\\pi}{4},\\ \\dfrac{7\\pi}{4}')}. 서로 다른 근은 ${tex('\\dfrac{\\pi}{4},\\ \\dfrac{3\\pi}{4},\\ \\dfrac{7\\pi}{4}')}이므로 ${tex('S=\\dfrac{11}{4}\\pi')}.`,
+        `${tex('t=-\\dfrac{\\sqrt2}{2}')}: ${tex('\\sin x=t')}의 근 ${tex('\\dfrac{5\\pi}{4},\\ \\dfrac{7\\pi}{4}')}, ${tex('\\cos x=t')}의 근 ${tex('\\dfrac{3\\pi}{4},\\ \\dfrac{5\\pi}{4}')}. 서로 다른 근은 ${tex('\\dfrac{3\\pi}{4},\\ \\dfrac{5\\pi}{4},\\ \\dfrac{7\\pi}{4}')}이므로 ${tex('S=\\dfrac{15}{4}\\pi')}. ${v.agg === 'max' ? `최댓값 ${tex('\\dfrac{15}{4}\\pi')}, ${tex('p+q=19')}` : v.agg === 'min' ? `최솟값 ${tex('\\dfrac{11}{4}\\pi')}, ${tex('p+q=15')}` : `합 ${tex('\\dfrac{11}{4}\\pi+\\dfrac{15}{4}\\pi=\\dfrac{13}{2}\\pi')}, ${tex('p+q=15')}`}`
+      ];
+    }
+    function draw8(b, s, v, labx) {
+      hideOverlays();
+      useBox(b, RS_BOX);
+      const tab = labx ? labx.tab : 'explore';
+      if (tab === 'explore') {
+        drawRoots(b, {
+          t: s.rst, grid: s.grid, roots: true, sinRoots: true, cosRoots: true, axes: true, lines: [{ t: s.rst }],
+          handle: (w) => { s.rst = snapT(clampX(w.y, -1.15, 1.15)); }
+        });
+        return;
+      }
+      const V = var8.cur(), st = tab === 'problem' ? 0 : Math.min(s.step, 3);
+      if (V.type === 'A') {
+        drawRoots(b, { t: V.t, grid: s.grid, roots: st >= 1, sinRoots: st >= 1, cosRoots: st >= 2, axes: st >= 1, lines: [{ t: V.t, label: 'y = ' + tTxt(V.t) }] });
+      } else {
+        const r2 = Math.SQRT1_2;
+        // 단계 2·3에서 각 t의 근을 그리도록 두 번에 나누어 그림
+        drawRoots(b, { t: r2, grid: s.grid, roots: st >= 2, sinRoots: true, cosRoots: true, lines: st >= 1 ? [{ t: r2, label: 'y = √2/2' }, { t: -r2, label: 'y = −√2/2' }] : [] });
+        if (st >= 1) [[PI / 4, r2], [5 * PI / 4, -r2]].forEach(([x, y]) => b.point([x, y], { color: 'violet', r: 5.5, hollow: true }));
+        if (st >= 3) allRoots(-r2).dist.forEach((x) => b.point([x, -r2], { color: 'violet', r: 5.5 }));
+        if (st >= 3) { const R = allRoots(-r2); R.dist.forEach((x) => b.seg([x, -r2], [x, 0], { color: 'ink', width: 1.4, dash: [4, 4], alpha: 0.7 })); }
+      }
+    }
+    function scene8() {
+      return baseScene({
+        id: 'rootsum', title: '[기출 킬러] 삼각방정식의 근의 개수와 합 — 대칭축으로 읽기', short: '근의 개수·합',
+        question: '$(\\sin x-t)(\\cos x-t)=0$의 근은 모두 몇 개이고 합은 얼마일까? 근을 하나씩 구하지 않고 그래프의 대칭축으로 합을 읽을 수 있을까?',
+        guide: '수평선 <b>y = t</b>(오른쪽 노란 점)를 끌어 보세요. <b>sin 곡선과의 교점</b>(초록)은 직선 $x=\\pi/2$(t&lt;0이면 $x=3\\pi/2$), <b>cos 곡선과의 교점</b>(노랑)은 직선 $x=\\pi$에 대칭이라 <b>두 근의 합이 각각 π(3π), 2π</b>로 정해집니다. 두 곡선이 같은 높이를 가지면(보라 고리) 근이 겹쳐 <b>개수가 3개</b>가 됩니다.',
+        focus: RS_BOX,
+        enter: (s) => { s.rst = 0.5; },
+        controls: ['rst'],
+        presets: () => [[0.5, '$t=\\dfrac12$'], [-0.5, '$t=-\\dfrac12$'], [Math.SQRT1_2, '$t=\\dfrac{\\sqrt2}{2}$'], [-Math.SQRT1_2, '$t=-\\dfrac{\\sqrt2}{2}$'], [1, '$t=1$'], [-1, '$t=-1$']].map(([t, l]) => ({ group: 't 값 (자주 나오는 값)', label: l, set: { rst: t }, ms: 400, on: (st) => Math.abs(st.rst - t) < 0.003 })),
+        steps: () => steps8(var8.cur()),
+        reviewTop: reviewTopOf(() => text8(var8.cur())),
+        vary: var8,
+        problem: { tag: '2027학년도 6월 모의평가 14번 · 2022학년도 6월 모의평가 15번 유형', time: '목표 시간: 180초', text: () => probHTML(text8(var8.cur())), answer: () => tex(String(var8.cur().ans)) },
+        solution: {
+          standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · 대칭축 합', quickTag: '10초 컷',
+          standard: () => ({ steps: steps8(var8.cur()).map((x, i) => `${'①②③'[i]} ${x}`).join('<br/>'), warning: '두 식이 같은 근을 가지면 그 근은 한 번만 셉니다. "서로 다른 근의 합"에서 겹친 근을 두 번 더하지 마세요.' }),
+          quick: () => ({ steps: '<strong class="text-amber-300">sin x = t의 두 근은 x = π/2(t<0이면 3π/2)에 대칭, cos x = t의 두 근은 x = π에 대칭</strong>이므로 합은 곧바로 π 또는 3π, 2π입니다. 겹친 근만 빼면 끝입니다.', highlight: 't의 부호부터 보세요. t>0이면 3π, t<0이면 5π(겹침이 없을 때). 겹침은 두 곡선이 교점을 갖는 높이 ±√2/2에서만 생깁니다.' })
+        },
+        view: (s, l) => {
+          const tab = l ? l.tab : 'explore';
+          if (tab !== 'explore') return { chips: [{ tex: 'y=\\sin x', color: 'green' }, { tex: 'y=\\cos x', color: 'amber' }] };
+          const t = s.rst, R = allRoots(t), cnt = R.dist.length;
+          const list = (xs) => (xs.length ? xs.map(rTxt).join(', ') : '없음');
+          const sumS = (xs) => (xs.length ? `$${sumTex(xs)}$` : '0');
+          return {
+            chips: [{ tex: '\\sin x=t', color: 'green' }, { tex: '\\cos x=t', color: 'amber' }, { html: `서로 다른 근 <b>${cnt}개</b>${cnt ? ` · 합 <b>$${sumTex(R.dist)}$</b>` : ''}`, color: 'amber' }],
+            status: R.both.length ? { tone: 'key', text: '두 곡선이 같은 높이! 겹친 근은 한 번만 셉니다' } : { tone: 'info', text: `t = ${tTxt(t).replace(/^(−?)(√?\d+)\/(\d+)$/, (m0, sg, n, d) => `$${sg ? '-' : ''}\\frac{${n.replace('√', '\\sqrt')}}{${d}}$`)}` },
+            alert: Math.abs(t) > 1 ? { tone: 'warn', text: '|t| > 1이면 sin x = t, cos x = t 모두 근이 없습니다.' } : null,
+            readouts: [
+              { label: 'sin x = t 의 근', value: list(R.rs), color: 'green', note: R.rs.length ? '합 ' + (R.rs.length > 1 ? sumS(R.rs) : sumS(R.rs)) : '' },
+              { label: 'cos x = t 의 근', value: list(R.rc), color: 'amber', note: R.rc.length ? '합 ' + sumS(R.rc) : '' },
+              { label: '겹치는 근', value: list(R.both), color: 'violet' },
+              { label: '서로 다른 근의 개수', value: String(cnt), color: 'amber' },
+              { label: '서로 다른 근의 합', value: cnt ? `$${sumTex(R.dist)}$` : '0', color: 'amber', wide: true }
+            ],
+            notes: '<b>탐구 참고</b> · 근이 3개인 경우는 $t=\\pm\\dfrac{\\sqrt2}{2}$일 때뿐입니다. $t=\\dfrac{\\sqrt2}{2}$이면 합이 $\\dfrac{11}{4}\\pi$, $t=-\\dfrac{\\sqrt2}{2}$이면 $\\dfrac{15}{4}\\pi$입니다. $t=\\pm1$이면 근이 2개(sin, cos가 각각 하나씩)이며 합은 $t=1$일 때 $\\dfrac{\\pi}{2}$, $t=-1$일 때 $\\dfrac{5\\pi}{2}$입니다.'
+          };
+        },
+        draw: draw8
+      });
+    }
+    return { scenes: [scene5(), scene6(), scene7(), scene8()], piTxt, snapT };
+  })();
+  const EXT_SCENES = EXT.scenes, EXT_SNAP = EXT.snapT, piTextOf = (v) => EXT.piTxt(Math.round(v / (PI / 12)), 12);
+
 
   /* ---------- 장면 4개 ---------- */
   const SCENES = [
@@ -1646,18 +2484,27 @@ function htmlApprox(){
         value: .5, min: -2.5, max: 2.5, step: .001, color: 'amber', label: '수평선 높이 y = k', hint: '그래프의 수평선을 끌어도 됩니다',
         format: (v) => 'k = ' + valText(v),
         onInput: (s) => { s.revealedRoot = null; }
-      }
+      },
+      /* 기출 확장 장면 5~8의 조작 막대 (장면 1~4는 쓰지 않음) */
+      sna: { value: 2, min: .5, max: 2, step: .5, color: 'sky', label: '$a$ (진폭 · 높이)', hint: '그래프의 높이만 바뀝니다', format: (v) => 'a = ' + String(v).replace('-', '−') },
+      snb: { value: 2, min: 1, max: 4, step: .5, color: 'violet', label: '$b$ (가로 폭 · 주기 $2\\pi/b$)', hint: '가로로 압축될수록 주기가 짧아집니다', format: (v) => 'b = ' + String(v).replace('-', '−') },
+      snc: { value: 1, min: -1, max: 1, step: .5, color: 'amber', label: '$c$ (위아래 이동)', hint: '중심선 $y=c$가 움직입니다', format: (v) => 'c = ' + String(v).replace('-', '−') },
+      snt: { value: 3 * PI / 4, min: .2, max: TAU - .1, step: .01, color: 'green', label: '구간의 오른쪽 끝 $t$ (구간 $[0,t]$)', hint: '그림의 노란 점을 끌어도 됩니다', format: (v) => 't = ' + (Math.abs(v / (PI / 12) - Math.round(v / (PI / 12))) < .02 ? piTextOf(v) : v.toFixed(2)) },
+      cvt: { value: PI / 3, min: 0, max: TAU - .001, step: .005, color: 'amber', label: '각 $\\theta$ (점 P를 끌어도 됩니다)', format: (v) => 'θ = ' + Math.round(v * 180 / PI) + '°' },
+      twk: { value: .5, min: .1, max: .7, step: .005, color: 'rose', label: '평행선의 높이 $k$', hint: '$k=\\tfrac12$일 때 기출형', format: (v) => 'k = ' + v.toFixed(2), onInput: (s) => { if (Math.abs(s.twk - .5) < .012) s.twk = .5; } },
+      rst: { value: .5, min: -1.15, max: 1.15, step: .005, color: 'amber', label: '수평선 높이 $y=t$', hint: '그림의 노란 점을 끌어도 됩니다', format: (v) => 't = ' + v.toFixed(2).replace('-', '−'), onInput: (s) => { s.rst = EXT_SNAP(s.rst); } }
     },
     state: INIT,
-    scenes: SCENES.map(sceneOf)
+    scenes: SCENES.map(sceneOf).concat(EXT_SCENES)
   });
 
   lab = window.lab;
   S = lab.s;
   lab.ui.labels.append(overlays.circle.root, overlays.graph.root);
   // 무대의 확대·맞춤 단추와 키(+ − 0)는 그래프의 보기 범위를 바꿉니다
-  lab.zoom = (f) => zoom(1 / f);
-  lab.fitView = () => resetView();
+  const LabProto = Object.getPrototypeOf(lab);
+  lab.zoom = (f) => (REG ? zoom(1 / f) : LabProto.zoom.call(lab, f));          // 새 장면(REG 없음)은 보통 무대의 확대·맞춤
+  lab.fitView = () => (REG ? resetView() : LabProto.fitView.call(lab));
   setupInput();
   redraw();
 });

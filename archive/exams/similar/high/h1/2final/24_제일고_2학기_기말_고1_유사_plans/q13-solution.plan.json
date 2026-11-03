@@ -1,0 +1,82 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "2",
+      "5"
+    ],
+    "denominator": [
+      "2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      8
+    ],
+    "viewport": [
+      -6,
+      8,
+      -4,
+      10
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "Y",
+        "x": 0,
+        "y": 1
+      }
+    ],
+    "exactCoordinates": {
+      "Y": [
+        "0",
+        "1"
+      ]
+    },
+    "overlays": {
+      "quadrants": [
+        {
+          "id": "q4",
+          "quadrant": 4,
+          "label": "제4사분면",
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "k=6일 때 y=(5x+2)/(x+2)의 그래프는 제4사분면을 지나지 않고 y절편 1에서 출발한다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "제4사분면은 x>0, y<0인 영역이다.",
+      "mappedTo": [
+        "graphPlan.overlays.quadrants"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "자연수 k 중 가장 큰 k=6에서 20-3k=2≥0이므로 x>0에서 y>0이다.",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "가장 큰 자연수 k=6에서 그래프가 제4사분면(색칠한 부분)을 피해 지나감을 보여 준다."
+  ],
+  "sourceQuote": "제4사분면에 있는 점은 $x\\gt0$, $y\\lt0$을 만족한다.",
+  "assetPath": "assets/images/24_제일고_2학기_기말_고1_유사/q13-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h1/2final/24_제일고_2학기_기말_고1_유사_plans/engine_evidence/q13-solution-result.json",
+    "statePath": "archive/exams/similar/high/h1/2final/24_제일고_2학기_기말_고1_유사_plans/engine_evidence/q13-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h1/2final/24_제일고_2학기_기말_고1_유사_plans/engine_evidence/q13-solution.svg"
+  }
+}

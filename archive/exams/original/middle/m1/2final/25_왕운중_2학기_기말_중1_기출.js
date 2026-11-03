@@ -29,7 +29,7 @@ window.questionBank = [
         "$40^\\circ$"
       ],
       "answer": "①",
-      "solution": "[키포인트] 일직선과 삼각형의 내각의 합을 차례로 이용한다.\n$A,E,C$가 한 직선 위에 있으므로\n$\\angle CED=180^\\circ-120^\\circ=60^\\circ$이다.\n\n$\\triangle CED$에서\n$\\angle ECD=180^\\circ-60^\\circ-55^\\circ=65^\\circ$이다.\n$B,C,D$가 한 직선 위에 있으므로\n$\\angle BCA=180^\\circ-65^\\circ=115^\\circ$이다.\n\n따라서 $\\triangle ABC$에서\n$x=180^\\circ-45^\\circ-115^\\circ=20^\\circ$이다.\n정답은 ①이다.",
+      "solution": "일직선과 삼각형의 내각의 합을 차례로 이용한다.\n$A,E,C$가 한 직선 위에 있으므로\n$\\angle CED=180^\\circ-120^\\circ=60^\\circ$이다.\n\n$\\triangle CED$에서\n$\\angle ECD=180^\\circ-60^\\circ-55^\\circ=65^\\circ$이다.\n$B,C,D$가 한 직선 위에 있으므로\n$\\angle BCA=180^\\circ-65^\\circ=115^\\circ$이다.\n\n따라서 $\\triangle ABC$에서\n$x=180^\\circ-45^\\circ-115^\\circ=20^\\circ$이다.\n정답은 ①이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q1.png",
       "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q1-solution-v2.svg",
       "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
@@ -76,7 +76,7 @@ window.questionBank = [
         "$15$"
       ],
       "answer": "①",
-      "solution": "[키포인트] $n$각형의 내각의 합과 한 꼭짓점에서 그을 수 있는 대각선의 개수를 연결한다.\n$(n-2)\\times180^\\circ=900^\\circ$이므로\n$n-2=5$, 따라서 $n=7$이다.\n\n그러므로 꼭짓점의 개수는 $y=7$이고, 한 꼭짓점에서 그을 수 있는 대각선의 개수는\n$x=n-3=4$이다.\n따라서 $x+y=4+7=11$이므로 정답은 ①이다.",
+      "solution": "$n$각형의 내각의 합과 한 꼭짓점에서 그을 수 있는 대각선의 개수를 연결한다.\n$(n-2)\\times180^\\circ=900^\\circ$이므로\n$n-2=5$, 따라서 $n=7$이다.\n\n그러므로 꼭짓점의 개수는 $y=7$이고, 한 꼭짓점에서 그을 수 있는 대각선의 개수는\n$x=n-3=4$이다.\n따라서 $x+y=4+7=11$이므로 정답은 ①이다.",
       "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
       "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
       "crossConceptKeys": [],
@@ -124,7 +124,7 @@ window.questionBank = [
         "$192^\\circ$"
       ],
       "answer": "⑤",
-      "solution": "[키포인트] 정다각형의 바깥각을 이용해 두 변의 방향 차이를 비교한다.\n정육각형의 한 바깥각은 $60^\\circ$, 정오각형의 한 바깥각은 $72^\\circ$이다.\n\n그림의 교차하는 두 변을 같은 점으로 옮겨 방향만 비교하면, 표시된 두 각의 합은 일직선의 각 $180^\\circ$에 두 바깥각의 차 $72^\\circ-60^\\circ$를 더한 값이다.\n\n따라서\n$x+y=180^\\circ+(72^\\circ-60^\\circ)=192^\\circ$이므로 정답은 ⑤이다.",
+      "solution": "정다각형의 바깥각을 이용해 두 변의 방향 차이를 비교한다.\n정육각형의 한 바깥각은 $60^\\circ$, 정오각형의 한 바깥각은 $72^\\circ$이다.\n\n그림의 교차하는 두 변을 같은 점으로 옮겨 방향만 비교하면, 표시된 두 각의 합은 일직선의 각 $180^\\circ$에 두 바깥각의 차 $72^\\circ-60^\\circ$를 더한 값이다.\n\n따라서\n$x+y=180^\\circ+(72^\\circ-60^\\circ)=192^\\circ$이므로 정답은 ⑤이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q3.png",
       "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
       "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
@@ -173,7 +173,7 @@ window.questionBank = [
         "$10\\pi$"
       ],
       "answer": "③",
-      "solution": "[키포인트] 두 원의 반지름이 서로의 중심까지 이어지므로 정삼각형이 생긴다.\n두 원의 반지름이 모두 $3$이고 $OO'=3$이므로 $\\triangle AOO'$와 $\\triangle BOO'$는 모두 정삼각형이다.\n따라서 $\\angle AOB=120^\\circ$, $\\angle AO'B=120^\\circ$이다.\n\n반지름이 $3$인 원에서 중심각 $120^\\circ=\\dfrac{2\\pi}{3}$에 대한 호의 길이는\n$3\\times\\dfrac{2\\pi}{3}=2\\pi$이다.\n두 호의 길이의 합은 $2\\pi+2\\pi=4\\pi$이므로 정답은 ③이다.",
+      "solution": "두 원의 반지름이 서로의 중심까지 이어지므로 정삼각형이 생긴다.\n두 원의 반지름이 모두 $3$이고 $OO'=3$이므로 $\\triangle AOO'$와 $\\triangle BOO'$는 모두 정삼각형이다.\n따라서 $\\angle AOB=120^\\circ$, $\\angle AO'B=120^\\circ$이다.\n\n반지름이 $3$인 원에서 중심각 $120^\\circ=\\dfrac{2\\pi}{3}$에 대한 호의 길이는\n$3\\times\\dfrac{2\\pi}{3}=2\\pi$이다.\n두 호의 길이의 합은 $2\\pi+2\\pi=4\\pi$이므로 정답은 ③이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q4.png",
       "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q4-solution-v3.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
@@ -222,7 +222,7 @@ window.questionBank = [
         "$(12\\pi+12)\\rm\\,cm$"
       ],
       "answer": "③",
-      "solution": "[키포인트] 두 부채꼴의 교점 $E$를 이용해 정삼각형과 호의 중심각을 찾는다.\n$AE=BE=AB=6$이므로 $\\triangle ABE$는 정삼각형이다.\n따라서 $\\angle EAB=\\angle ABE=60^\\circ$이다.\n\n색칠한 부분의 곡선 경계는 반지름 $6$, 중심각 $60^\\circ$인 호 두 개이므로 각 호의 길이는\n$2\\pi\\times6\\times\\dfrac{60}{360}=2\\pi$이다.\n또 직선 경계의 길이의 합은 $AE+BE=6+6=12$이다.\n\n따라서 둘레의 길이는\n$2\\pi+2\\pi+12=4\\pi+12$ cm이므로 정답은 ③이다.",
+      "solution": "두 부채꼴의 교점 $E$를 이용해 정삼각형과 호의 중심각을 찾는다.\n$AE=BE=AB=6$이므로 $\\triangle ABE$는 정삼각형이다.\n따라서 $\\angle EAB=\\angle ABE=60^\\circ$이다.\n\n색칠한 부분의 곡선 경계는 반지름 $6$, 중심각 $60^\\circ$인 호 두 개이므로 각 호의 길이는\n$2\\pi\\times6\\times\\dfrac{60}{360}=2\\pi$이다.\n또 직선 경계의 길이의 합은 $AE+BE=6+6=12$이다.\n\n따라서 둘레의 길이는\n$2\\pi+2\\pi+12=4\\pi+12$ cm이므로 정답은 ③이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q5.png",
       "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q5-solution-v2.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
@@ -271,7 +271,7 @@ window.questionBank = [
         "(부채꼴 $AOB$의 넓이)$=2\\times$(부채꼴 $AOC$의 넓이)"
       ],
       "answer": "⑤",
-      "solution": "[키포인트] 같은 원에서 같은 중심각이 만드는 호와 현의 관계를 확인한다.\n$\\angle AOB=\\angle BOC$이므로 $\\wideparen{AB}=\\wideparen{BC}$이고, 따라서 $\\wideparen{AC}=2\\wideparen{AB}$이다.\n또 $OA=OB=OC$이고 끼인각이 같으므로 $\\triangle AOB\\cong\\triangle BOC$이고 $AB=BC$이다.\n\n$\\triangle ABC$에서 삼각형의 두 변의 길이의 합은 나머지 한 변보다 크므로\n$AC<AB+BC=2BC$이다.\n\n한편 부채꼴의 넓이는 중심각의 크기에 비례한다. $\\angle AOC=2\\angle AOB$이므로 부채꼴 $AOC$의 넓이가 부채꼴 $AOB$의 넓이의 $2$배이다.\n따라서 옳지 않은 것은 ⑤이다.",
+      "solution": "같은 원에서 같은 중심각이 만드는 호와 현의 관계를 확인한다.\n$\\angle AOB=\\angle BOC$이므로 $\\wideparen{AB}=\\wideparen{BC}$이고, 따라서 $\\wideparen{AC}=2\\wideparen{AB}$이다.\n또 $OA=OB=OC$이고 끼인각이 같으므로 $\\triangle AOB\\cong\\triangle BOC$이고 $AB=BC$이다.\n\n$\\triangle ABC$에서 삼각형의 두 변의 길이의 합은 나머지 한 변보다 크므로\n$AC<AB+BC=2BC$이다.\n\n한편 부채꼴의 넓이는 중심각의 크기에 비례한다. $\\angle AOC=2\\angle AOB$이므로 부채꼴 $AOC$의 넓이가 부채꼴 $AOB$의 넓이의 $2$배이다.\n따라서 옳지 않은 것은 ⑤이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q6.png",
       "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q6-solution-v2.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
@@ -318,7 +318,7 @@ window.questionBank = [
         "정다면체 중 한 꼭짓점에 모인 면의 개수가 5개인 것은 정십이면체가 유일하다."
       ],
       "answer": "⑤",
-      "solution": "[키포인트] 여기서 ‘구면체’는 구(九)면체, 즉 면이 9개인 다면체라는 뜻이다.\n① 칠각기둥의 면 수는 $7+2=9$, 칠각뿔대의 면 수도 $7+2=9$이므로 옳다.\n② 팔각뿔의 면 수는 $8+1=9$, 칠각기둥의 면 수도 $9$이므로 둘 다 구면체이다.\n③ 각뿔대의 옆면은 두 밑면의 대응하는 변을 잇는 사다리꼴이므로 옳다.\n④ 정다면체는 정사면체, 정육면체, 정팔면체, 정십이면체, 정이십면체의 $5$개뿐이므로 옳다.\n\n정십이면체에서는 한 꼭짓점에 정오각형 $3$개가 모이고, 한 꼭짓점에 면 $5$개가 모이는 정다면체는 정이십면체이다.\n따라서 ⑤가 옳지 않으므로 정답은 ⑤이다.",
+      "solution": "여기서 ‘구면체’는 구(九)면체, 즉 면이 9개인 다면체라는 뜻이다.\n① 칠각기둥의 면 수는 $7+2=9$, 칠각뿔대의 면 수도 $7+2=9$이므로 옳다.\n② 팔각뿔의 면 수는 $8+1=9$, 칠각기둥의 면 수도 $9$이므로 둘 다 구면체이다.\n③ 각뿔대의 옆면은 두 밑면의 대응하는 변을 잇는 사다리꼴이므로 옳다.\n④ 정다면체는 정사면체, 정육면체, 정팔면체, 정십이면체, 정이십면체의 $5$개뿐이므로 옳다.\n\n정십이면체에서는 한 꼭짓점에 정오각형 $3$개가 모이고, 한 꼭짓점에 면 $5$개가 모이는 정다면체는 정이십면체이다.\n따라서 ⑤가 옳지 않으므로 정답은 ⑤이다.",
       "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
       "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
       "crossConceptKeys": [],
@@ -360,7 +360,7 @@ window.questionBank = [
         "$135^\\circ$"
       ],
       "answer": "④",
-      "solution": "[키포인트] 정팔각형의 한 내각과 한 꼭짓점에 모이는 각의 합을 비교한다.\n정팔각형의 한 내각은\n$\\dfrac{(8-2)\\times180^\\circ}{8}=135^\\circ$이다.\n\n다면체의 한 꼭짓점에는 적어도 $3$개의 면이 모여야 하는데, 정팔각형 $3$개가 모이면\n$135^\\circ\\times3=405^\\circ>360^\\circ$가 되어 입체를 만들 수 없다.\n따라서 ①은 ‘없습니다’, ②는 $3$, ③은 $360^\\circ$, ⑤는 $135^\\circ$가 맞다.\n내각 공식의 분자는 $(8-2)=6$이므로 ④에 들어갈 수는 $6$이다. 보기의 ‘5’는 잘못이므로 정답은 ④이다.",
+      "solution": "정팔각형의 한 내각과 한 꼭짓점에 모이는 각의 합을 비교한다.\n정팔각형의 한 내각은\n$\\dfrac{(8-2)\\times180^\\circ}{8}=135^\\circ$이다.\n\n다면체의 한 꼭짓점에는 적어도 $3$개의 면이 모여야 하는데, 정팔각형 $3$개가 모이면\n$135^\\circ\\times3=405^\\circ>360^\\circ$가 되어 입체를 만들 수 없다.\n따라서 ①은 ‘없습니다’, ②는 $3$, ③은 $360^\\circ$, ⑤는 $135^\\circ$가 맞다.\n내각 공식의 분자는 $(8-2)=6$이므로 ④에 들어갈 수는 $6$이다. 보기의 ‘5’는 잘못이므로 정답은 ④이다.",
       "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
       "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
       "crossConceptKeys": [
@@ -410,7 +410,7 @@ window.questionBank = [
         "$4\\pi\\rm\\,cm^2$"
       ],
       "answer": "①",
-      "solution": "[키포인트] 직사각형을 한 변을 축으로 회전하면 원기둥이 된다.\n$CD$를 회전축으로 하면 $AD=8$ cm가 원기둥의 반지름이 되고, $CD=10$ cm가 높이가 된다.\n회전축에 수직인 평면으로 자른 단면은 반지름 $8$ cm인 원이다.\n\n따라서 단면의 넓이는\n$\\pi\\times8^2=64\\pi\\rm\\,cm^2$이므로 정답은 ①이다.",
+      "solution": "직사각형을 한 변을 축으로 회전하면 원기둥이 된다.\n$CD$를 회전축으로 하면 $AD=8$ cm가 원기둥의 반지름이 되고, $CD=10$ cm가 높이가 된다.\n회전축에 수직인 평면으로 자른 단면은 반지름 $8$ cm인 원이다.\n\n따라서 단면의 넓이는\n$\\pi\\times8^2=64\\pi\\rm\\,cm^2$이므로 정답은 ①이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q9.png",
       "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q9-solution-v2.svg",
       "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
@@ -457,7 +457,7 @@ window.questionBank = [
         "$4$"
       ],
       "answer": "②",
-      "solution": "[키포인트] 평균으로 $a+b$를 먼저 정한 뒤 자료를 크기순으로 배열한다.\n자료의 합은\n$(a+b)+2a+b+a+(b-a)+(3a+3b)=6(a+b)$이다.\n자료가 $6$개이고 평균이 $4$이므로 전체 합은 $24$이다.\n따라서 $6(a+b)=24$에서 $a+b=4$이다.\n\n$a,b$는 자연수이고 $a<b$이므로 $a=1$, $b=3$이다.\n자료를 크기순으로 쓰면 $1,2,2,3,4,12$이므로 중앙값은\n$\\dfrac{2+3}{2}=2.5$이다.\n정답은 ②이다.",
+      "solution": "평균으로 $a+b$를 먼저 정한 뒤 자료를 크기순으로 배열한다.\n자료의 합은\n$(a+b)+2a+b+a+(b-a)+(3a+3b)=6(a+b)$이다.\n자료가 $6$개이고 평균이 $4$이므로 전체 합은 $24$이다.\n따라서 $6(a+b)=24$에서 $a+b=4$이다.\n\n$a,b$는 자연수이고 $a<b$이므로 $a=1$, $b=3$이다.\n자료를 크기순으로 쓰면 $1,2,2,3,4,12$이므로 중앙값은\n$\\dfrac{2+3}{2}=2.5$이다.\n정답은 ②이다.",
       "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
       "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
       "crossConceptKeys": [],
@@ -501,7 +501,7 @@ window.questionBank = [
         "24개"
       ],
       "answer": "②",
-      "solution": "[키포인트] 녹이기 전후의 부피가 같음을 이용한다.\n반지름이 $r$인 반구 하나의 부피는\n$\\dfrac12\\times\\dfrac43\\pi r^3=\\dfrac23\\pi r^3$이다.\n\n반지름이 $2r$, 높이가 $3r$인 원기둥의 부피는\n$\\pi(2r)^2(3r)=12\\pi r^3$이다.\n\n필요한 반구의 개수를 $n$이라 하면\n$n\\times\\dfrac23\\pi r^3=12\\pi r^3$이므로 $n=18$이다.\n정답은 ②이다.",
+      "solution": "녹이기 전후의 부피가 같음을 이용한다.\n반지름이 $r$인 반구 하나의 부피는\n$\\dfrac12\\times\\dfrac43\\pi r^3=\\dfrac23\\pi r^3$이다.\n\n반지름이 $2r$, 높이가 $3r$인 원기둥의 부피는\n$\\pi(2r)^2(3r)=12\\pi r^3$이다.\n\n필요한 반구의 개수를 $n$이라 하면\n$n\\times\\dfrac23\\pi r^3=12\\pi r^3$이므로 $n=18$이다.\n정답은 ②이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q11.png",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
@@ -550,7 +550,7 @@ window.questionBank = [
         "[ㄷ]-[ㄴ]-[ㄱ]"
       ],
       "answer": "④",
-      "solution": "[키포인트] 각 도형에서 바깥으로 드러난 곡면과 평면의 넓이를 구해 비교한다.\n\n[ㄱ]은 반지름 $6\\rm\\,cm$인 반구와 밑면 반지름 $6\\rm\\,cm$, 모선 길이 $10\\rm\\,cm$인 원뿔을 붙인 도형이다. 붙인 원은 겉으로 드러나지 않는다.\n반구의 곡면 넓이는\n$2\\pi\\times6^2=72\\pi\\rm\\,cm^2$,\n원뿔의 옆넓이는\n$\\pi\\times6\\times10=60\\pi\\rm\\,cm^2$이다.\n따라서 $[ㄱ]=72\\pi+60\\pi=132\\pi\\rm\\,cm^2$이다.\n\n[ㄴ]은 반지름 $9\\rm\\,cm$, 중심각 $120^\\circ$인 부채꼴을 밑면으로 하고 길이가 $15\\rm\\,cm$인 각기둥이다. 부채꼴의 호의 길이는\n$\\dfrac{120}{360}\\times2\\pi\\times9=6\\pi\\rm\\,cm$\n이므로 밑면 부채꼴의 둘레는 $18+6\\pi\\rm\\,cm$이다.\n옆넓이는\n$(18+6\\pi)\\times15=270+90\\pi\\rm\\,cm^2$\n이고, 두 밑면의 넓이는\n$2\\times\\dfrac{120}{360}\\times\\pi\\times9^2=54\\pi\\rm\\,cm^2$이다.\n따라서 $[ㄴ]=270+144\\pi\\rm\\,cm^2$이다.\n\n[ㄷ]은 반지름 $5\\rm\\,cm$인 구에서 서로 수직인 두 평면으로 $\\dfrac14$ 부분을 잘라낸 나머지 $\\dfrac34$ 구이다. 곡면의 넓이는\n$\\dfrac34\\times4\\pi\\times5^2=75\\pi\\rm\\,cm^2$이고, 두 절단면은 반원 두 개이므로 넓이의 합은\n$2\\times\\dfrac12\\times\\pi\\times5^2=25\\pi\\rm\\,cm^2$이다.\n따라서 $[ㄷ]=75\\pi+25\\pi=100\\pi\\rm\\,cm^2$이다.\n\n$100\\pi<132\\pi$이고,\n$[ㄴ]-[ㄱ]=270+12\\pi>0$이므로\n$[ㄷ]<[ㄱ]<[ㄴ]$이다. 정답은 ④이다.",
+      "solution": "각 도형에서 바깥으로 드러난 곡면과 평면의 넓이를 구해 비교한다.\n\n[ㄱ]은 반지름 $6\\rm\\,cm$인 반구와 밑면 반지름 $6\\rm\\,cm$, 모선 길이 $10\\rm\\,cm$인 원뿔을 붙인 도형이다. 붙인 원은 겉으로 드러나지 않는다.\n반구의 곡면 넓이는\n$2\\pi\\times6^2=72\\pi\\rm\\,cm^2$,\n원뿔의 옆넓이는\n$\\pi\\times6\\times10=60\\pi\\rm\\,cm^2$이다.\n따라서 $[ㄱ]=72\\pi+60\\pi=132\\pi\\rm\\,cm^2$이다.\n\n[ㄴ]은 반지름 $9\\rm\\,cm$, 중심각 $120^\\circ$인 부채꼴을 밑면으로 하고 길이가 $15\\rm\\,cm$인 각기둥이다. 부채꼴의 호의 길이는\n$\\dfrac{120}{360}\\times2\\pi\\times9=6\\pi\\rm\\,cm$\n이므로 밑면 부채꼴의 둘레는 $18+6\\pi\\rm\\,cm$이다.\n옆넓이는\n$(18+6\\pi)\\times15=270+90\\pi\\rm\\,cm^2$\n이고, 두 밑면의 넓이는\n$2\\times\\dfrac{120}{360}\\times\\pi\\times9^2=54\\pi\\rm\\,cm^2$이다.\n따라서 $[ㄴ]=270+144\\pi\\rm\\,cm^2$이다.\n\n[ㄷ]은 반지름 $5\\rm\\,cm$인 구에서 서로 수직인 두 평면으로 $\\dfrac14$ 부분을 잘라낸 나머지 $\\dfrac34$ 구이다. 곡면의 넓이는\n$\\dfrac34\\times4\\pi\\times5^2=75\\pi\\rm\\,cm^2$이고, 두 절단면은 반원 두 개이므로 넓이의 합은\n$2\\times\\dfrac12\\times\\pi\\times5^2=25\\pi\\rm\\,cm^2$이다.\n따라서 $[ㄷ]=75\\pi+25\\pi=100\\pi\\rm\\,cm^2$이다.\n\n$100\\pi<132\\pi$이고,\n$[ㄴ]-[ㄱ]=270+12\\pi>0$이므로\n$[ㄷ]<[ㄱ]<[ㄴ]$이다. 정답은 ④이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q12.png",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
@@ -599,7 +599,7 @@ window.questionBank = [
         "$6$"
       ],
       "answer": "②",
-      "solution": "[키포인트] 두 정사각형 밑면과 네 개의 합동인 사다리꼴 옆면의 넓이를 합한다.\n두 밑면의 넓이의 합은\n$6^2+12^2=36+144=180$이다.\n\n옆면 한 개는 윗변 $6$, 아랫변 $12$, 높이 $x$인 사다리꼴이므로 넓이는\n$\\dfrac{6+12}{2}x=9x$이다.\n네 옆면의 넓이는 $36x$이다.\n\n겉넓이가 $504$이므로\n$180+36x=504$, $36x=324$, $x=9$이다.\n정답은 ②이다.",
+      "solution": "두 정사각형 밑면과 네 개의 합동인 사다리꼴 옆면의 넓이를 합한다.\n두 밑면의 넓이의 합은\n$6^2+12^2=36+144=180$이다.\n\n옆면 한 개는 윗변 $6$, 아랫변 $12$, 높이 $x$인 사다리꼴이므로 넓이는\n$\\dfrac{6+12}{2}x=9x$이다.\n네 옆면의 넓이는 $36x$이다.\n\n겉넓이가 $504$이므로\n$180+36x=504$, $36x=324$, $x=9$이다.\n정답은 ②이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q13.png",
       "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q13-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
@@ -646,7 +646,7 @@ window.questionBank = [
         "중앙값은 7회이다."
       ],
       "answer": "①, ⑤",
-      "solution": "[키포인트] 이상값 $62$가 있으므로 평균, 중앙값, 최빈값을 각각 직접 확인한다.\n자료를 크기순으로 쓰면\n$5,5,6,7,7,9,10,12,12,62$이다.\n\n중앙값은 $5$번째와 $6$번째 값의 평균이므로\n$\\dfrac{7+9}{2}=8$이다.\n최빈값은 $5,7,12$의 세 개이고, 그 합은 $24$이다.\n평균은 $\\dfrac{135}{10}=13.5$로 큰 값 $62$의 영향을 많이 받으므로 대푯값으로는 중앙값이 더 적절하다.\n따라서 옳지 않은 것은 ①, ⑤이다.",
+      "solution": "이상값 $62$가 있으므로 평균, 중앙값, 최빈값을 각각 직접 확인한다.\n자료를 크기순으로 쓰면\n$5,5,6,7,7,9,10,12,12,62$이다.\n\n중앙값은 $5$번째와 $6$번째 값의 평균이므로\n$\\dfrac{7+9}{2}=8$이다.\n최빈값은 $5,7,12$의 세 개이고, 그 합은 $24$이다.\n평균은 $\\dfrac{135}{10}=13.5$로 큰 값 $62$의 영향을 많이 받으므로 대푯값으로는 중앙값이 더 적절하다.\n따라서 옳지 않은 것은 ①, ⑤이다.",
       "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
       "crossConceptKeys": [],
       "conditionKeys": [],
@@ -691,7 +691,7 @@ window.questionBank = [
         "$20$"
       ],
       "answer": "②",
-      "solution": "[키포인트] 줄기와 잎 그림의 도수와 ‘중앙값=최빈값’ 조건을 함께 이용한다.\n줄기와 잎 그림에서 7초대는 $2$명이므로 $A=2$, 9초대는 $3$명이므로 $B=3$이다.\n\n학생이 $20$명이므로 중앙값은 $10$번째와 $11$번째 기록의 평균이다. 7초대 $2$명, 8초대 $6$명 다음의 $9$초대가 $9+a$, $9+b$, $9.6$이고, 최빈값은 하나뿐이다.\n중앙값과 최빈값이 같아지려면 $a=b=6$이어서 $9.6$이 세 번 나타나야 한다.\n\n따라서\n$a+b+A+B=6+6+2+3=17$이므로 정답은 ②이다.",
+      "solution": "줄기와 잎 그림의 도수와 ‘중앙값=최빈값’ 조건을 함께 이용한다.\n줄기와 잎 그림에서 7초대는 $2$명이므로 $A=2$, 9초대는 $3$명이므로 $B=3$이다.\n\n학생이 $20$명이므로 중앙값은 $10$번째와 $11$번째 기록의 평균이다. 7초대 $2$명, 8초대 $6$명 다음의 $9$초대가 $9+a$, $9+b$, $9.6$이고, 최빈값은 하나뿐이다.\n중앙값과 최빈값이 같아지려면 $a=b=6$이어서 $9.6$이 세 번 나타나야 한다.\n\n따라서\n$a+b+A+B=6+6+2+3=17$이므로 정답은 ②이다.",
       "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
       "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
       "crossConceptKeys": [],
@@ -741,7 +741,7 @@ window.questionBank = [
         "기록이 7초 대인 학생은 2명이다."
       ],
       "answer": "③, ④",
-      "solution": "[키포인트] 줄기와 잎 그림에서 각 계급의 도수를 읽어 보기별로 확인한다.\n각 계급의 도수는 차례로 $2,6,3,5,4$명이다.\n① 계급의 크기는 $1$초이므로 옳다.\n② 도수는 $2,6,3,5,4$로 모두 다르므로 옳다.\n③ 빠른 기록부터 세면 $6$번째는 $8.0$초 이상 $9.0$초 미만 계급에 있으므로 옳지 않다.\n④ $10$초 이상은 $5+4=9$명이고, $9/20=45\\%$이므로 옳지 않다.\n⑤ 7초대 학생은 $2$명이므로 옳다.\n따라서 정답은 ③, ④이다.",
+      "solution": "줄기와 잎 그림에서 각 계급의 도수를 읽어 보기별로 확인한다.\n각 계급의 도수는 차례로 $2,6,3,5,4$명이다.\n① 계급의 크기는 $1$초이므로 옳다.\n② 도수는 $2,6,3,5,4$로 모두 다르므로 옳다.\n③ 빠른 기록부터 세면 $6$번째는 $8.0$초 이상 $9.0$초 미만 계급에 있으므로 옳지 않다.\n④ $10$초 이상은 $5+4=9$명이고, $9/20=45\\%$이므로 옳지 않다.\n⑤ 7초대 학생은 $2$명이므로 옳다.\n따라서 정답은 ③, ④이다.",
       "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
       "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
       "crossConceptKeys": [],
@@ -788,7 +788,7 @@ window.questionBank = [
         "ㄱ, ㄴ, ㄹ"
       ],
       "answer": "③",
-      "solution": "[키포인트] 히스토그램의 막대 높이를 계급별 도수로 읽는다.\n계급별 도수는 $4,3,7,9,5$명이고 합은 $28$명이다.\nㄱ. 계급의 크기는 $20$분이므로 참이다.\nㄴ. 도수가 가장 작은 계급은 $80$분 이상 $100$분 미만의 $3$명이므로 거짓이다.\nㄷ. $9$명은 도수이지 최빈값이 아니므로 거짓이다.\nㄹ. $120$분 이상은 $9+5=14$명이고 $14/28=50\\%$이므로 참이다.\n따라서 ㄱ, ㄹ이 옳으므로 정답은 ③이다.",
+      "solution": "히스토그램의 막대 높이를 계급별 도수로 읽는다.\n계급별 도수는 $4,3,7,9,5$명이고 합은 $28$명이다.\nㄱ. 계급의 크기는 $20$분이므로 참이다.\nㄴ. 도수가 가장 작은 계급은 $80$분 이상 $100$분 미만의 $3$명이므로 거짓이다.\nㄷ. $9$명은 도수이지 최빈값이 아니므로 거짓이다.\nㄹ. $120$분 이상은 $9+5=14$명이고 $14/28=50\\%$이므로 참이다.\n따라서 ㄱ, ㄹ이 옳으므로 정답은 ③이다.",
       "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
       "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
       "crossConceptKeys": [],
@@ -835,7 +835,7 @@ window.questionBank = [
         "10명"
       ],
       "answer": "④",
-      "solution": "[키포인트] 도수분포다각형에서 $50$회 이상인 계급의 도수를 더한다.\n그래프에서 $50$회 이상에 해당하는 도수는 $5$명과 $3$명이다.\n따라서 $5+3=8$명이므로 정답은 ④이다.",
+      "solution": "도수분포다각형에서 $50$회 이상인 계급의 도수를 더한다.\n그래프에서 $50$회 이상에 해당하는 도수는 $5$명과 $3$명이다.\n따라서 $5+3=8$명이므로 정답은 ④이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q18.png",
       "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
       "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
@@ -883,7 +883,7 @@ window.questionBank = [
         "20%"
       ],
       "answer": "③",
-      "solution": "[키포인트] 한 계급의 실제 학생 수와 상대도수로 전체 학생 수를 먼저 구한다.\n중학교 전체에서 $20$점 이상 $40$점 미만의 상대도수는\n$1-(0.05+0.35+0.28+0.12)=0.20$이다.\n이 계급의 학생이 $60$명이므로 전체 학생 수는\n$60\\div0.20=300$명이다.\n\n1학년에서 같은 계급의 상대도수는\n$1-(0.1+0.3+0.1+0.2)=0.3$이다.\n이 계급의 학생이 $36$명이므로 1학년 전체는 $36\\div0.3=120$명이다.\n1학년 중 $40$점 미만은 $(0.1+0.3)\\times120=48$명이다.\n\n따라서 중학교 전체 학생의\n$48/300\\times100=16\\%$이므로 정답은 ③이다.",
+      "solution": "한 계급의 실제 학생 수와 상대도수로 전체 학생 수를 먼저 구한다.\n중학교 전체에서 $20$점 이상 $40$점 미만의 상대도수는\n$1-(0.05+0.35+0.28+0.12)=0.20$이다.\n이 계급의 학생이 $60$명이므로 전체 학생 수는\n$60\\div0.20=300$명이다.\n\n1학년에서 같은 계급의 상대도수는\n$1-(0.1+0.3+0.1+0.2)=0.3$이다.\n이 계급의 학생이 $36$명이므로 1학년 전체는 $36\\div0.3=120$명이다.\n1학년 중 $40$점 미만은 $(0.1+0.3)\\times120=48$명이다.\n\n따라서 중학교 전체 학생의\n$48/300\\times100=16\\%$이므로 정답은 ③이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q19.png",
       "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
       "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
@@ -928,7 +928,7 @@ window.questionBank = [
         "책을 5권 이상 읽은 학생은 모두 132명이다."
       ],
       "answer": "①",
-      "solution": "[키포인트] 상대도수만 비교하지 말고 학교별 전체 학생 수까지 곱해 실제 학생 수로 바꾼다.\n찢어진 부분은 각 학교의 상대도수의 합이 $1$이라는 조건으로 보완해서 읽는다.\n그래프에서 $2$권 이상 $3$권 미만부터 차례로 읽으면\nA학교는 $0.12,\\ 0.24,\\ (\\ ?\\ ),\\ 0.24,\\ 0.04$이고 $4$권 이상 $5$권 미만은 $1-(0.12+0.24+0.24+0.04)=0.36$이다.\nB학교는 $0.10,\\ 0.16,\\ 0.22,\\ 0.38,\\ 0.14$이다.\n\n$3$권 이상 $4$권 미만의 상대도수는 A학교가 $0.24$, B학교가 $0.16$이다.\n따라서 실제 학생 수는\nA학교: $100\\times0.24=24$명,\nB학교: $200\\times0.16=32$명이다.\nA학교가 더 많지 않으므로 ①은 옳지 않다.\n\nB학교에서 $4$권 이상 $5$권 미만의 상대도수는 $0.22$이므로\n$200\\times0.22=44$명이라서 ②는 옳다.\nA학교의 $4$권 이상 $5$권 미만 상대도수 $0.36$은 A학교에서 가장 크므로 ④도 옳다.\n\n또 $5$권 이상인 상대도수의 합은 A학교 $0.24+0.04=0.28$, B학교 $0.38+0.14=0.52$이므로\n$100\\times0.28+200\\times0.52=28+104=132$명이다.\n따라서 ⑤도 옳고, 그래프의 분포도 B학교가 오른쪽에 더 치우쳐 있어 ③과도 일치한다.\n\n따라서 옳지 않은 것은 ①이다.",
+      "solution": "상대도수만 비교하지 말고 학교별 전체 학생 수까지 곱해 실제 학생 수로 바꾼다.\n찢어진 부분은 각 학교의 상대도수의 합이 $1$이라는 조건으로 보완해서 읽는다.\n그래프에서 $2$권 이상 $3$권 미만부터 차례로 읽으면\nA학교는 $0.12,\\ 0.24,\\ (\\ ?\\ ),\\ 0.24,\\ 0.04$이고 $4$권 이상 $5$권 미만은 $1-(0.12+0.24+0.24+0.04)=0.36$이다.\nB학교는 $0.10,\\ 0.16,\\ 0.22,\\ 0.38,\\ 0.14$이다.\n\n$3$권 이상 $4$권 미만의 상대도수는 A학교가 $0.24$, B학교가 $0.16$이다.\n따라서 실제 학생 수는\nA학교: $100\\times0.24=24$명,\nB학교: $200\\times0.16=32$명이다.\nA학교가 더 많지 않으므로 ①은 옳지 않다.\n\nB학교에서 $4$권 이상 $5$권 미만의 상대도수는 $0.22$이므로\n$200\\times0.22=44$명이라서 ②는 옳다.\nA학교의 $4$권 이상 $5$권 미만 상대도수 $0.36$은 A학교에서 가장 크므로 ④도 옳다.\n\n또 $5$권 이상인 상대도수의 합은 A학교 $0.24+0.04=0.28$, B학교 $0.38+0.14=0.52$이므로\n$100\\times0.28+200\\times0.52=28+104=132$명이다.\n따라서 ⑤도 옳고, 그래프의 분포도 B학교가 오른쪽에 더 치우쳐 있어 ③과도 일치한다.\n\n따라서 옳지 않은 것은 ①이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q20.png",
       "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
       "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
@@ -973,7 +973,7 @@ window.questionBank = [
       "content": "다음 그림에서 $\\angle x$의 크기를 구하시오. (4점)",
       "choices": [],
       "answer": "$102^\\circ$",
-      "solution": "[키포인트] 두 이등변삼각형의 밑각을 차례로 구한 뒤 바깥각을 구한다.\n$AC=CD$이므로 $\\triangle ACD$는 이등변삼각형이다.\n$\\angle ADC=68^\\circ$이므로 $\\angle CAD=68^\\circ$, 따라서\n$\\angle ACD=180^\\circ-68^\\circ-68^\\circ=44^\\circ$이다.\n\n$B,A,D$가 한 직선 위에 있으므로\n$\\angle BAC=180^\\circ-68^\\circ=112^\\circ$이다.\n$AB=AC$이므로 $\\triangle ABC$도 이등변삼각형이고\n$\\angle BCA=(180^\\circ-112^\\circ)/2=34^\\circ$이다.\n\n따라서 $\\angle BCD=34^\\circ+44^\\circ=78^\\circ$이고, 바깥각\n$x=180^\\circ-78^\\circ=102^\\circ$이다.",
+      "solution": "두 이등변삼각형의 밑각을 차례로 구한 뒤 바깥각을 구한다.\n$AC=CD$이므로 $\\triangle ACD$는 이등변삼각형이다.\n$\\angle ADC=68^\\circ$이므로 $\\angle CAD=68^\\circ$, 따라서\n$\\angle ACD=180^\\circ-68^\\circ-68^\\circ=44^\\circ$이다.\n\n$B,A,D$가 한 직선 위에 있으므로\n$\\angle BAC=180^\\circ-68^\\circ=112^\\circ$이다.\n$AB=AC$이므로 $\\triangle ABC$도 이등변삼각형이고\n$\\angle BCA=(180^\\circ-112^\\circ)/2=34^\\circ$이다.\n\n따라서 $\\angle BCD=34^\\circ+44^\\circ=78^\\circ$이고, 바깥각\n$x=180^\\circ-78^\\circ=102^\\circ$이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q21.png",
       "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q21-solution-v2.svg",
       "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
@@ -1017,7 +1017,7 @@ window.questionBank = [
       "content": "다음 그림은 직사각형과 부채꼴이 겹쳐진 것이다. 색칠한 두 부분의 넓이 $S_1$, $S_2$에 대하여 $S_1=S_2$이고, $\\overline{AB}=8$일 때, $\\overline{BC}$의 길이를 구하시오. (6점)",
       "choices": [],
       "answer": "$2\\pi$",
-      "solution": "[키포인트] $S_1=S_2$이면 직사각형의 넓이와 사분원의 넓이가 같아진다.\n그림에서 부채꼴은 중심이 $B$, 반지름이 $BA=8$인 사분원이다.\n$S_1$은 ‘직사각형 안이지만 사분원 밖’의 넓이, $S_2$는 ‘사분원 안이지만 직사각형 밖’의 넓이이므로 $S_1=S_2$이면 두 전체 넓이가 같다.\n\n따라서\n$8\\times BC=\\dfrac14\\pi\\times8^2=16\\pi$이고\n$BC=2\\pi$이다.",
+      "solution": "$S_1=S_2$이면 직사각형의 넓이와 사분원의 넓이가 같아진다.\n그림에서 부채꼴은 중심이 $B$, 반지름이 $BA=8$인 사분원이다.\n$S_1$은 ‘직사각형 안이지만 사분원 밖’의 넓이, $S_2$는 ‘사분원 안이지만 직사각형 밖’의 넓이이므로 $S_1=S_2$이면 두 전체 넓이가 같다.\n\n따라서\n$8\\times BC=\\dfrac14\\pi\\times8^2=16\\pi$이고\n$BC=2\\pi$이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q22.png",
       "solutionImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q22-solution-v3.svg",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
@@ -1061,7 +1061,7 @@ window.questionBank = [
       "content": "다음 두 직육면체 모양의 그릇 (가), (나)에 같은 양의 물이 들어 있다. 이때 $x$의 값을 구하시오. (단, 그릇의 두께는 생각하지 않는다.) (5점)",
       "choices": [],
       "answer": "6",
-      "solution": "[키포인트] 두 그릇의 물의 부피가 같다는 조건을 이용한다.\n\n그림 (가)에서 밑면은 $12\\rm\\,cm\\times18\\rm\\,cm$이고, 9 cm 높이 중 3분의 1까지 물이 차 있으므로 물높이는\n$9\\times\\dfrac13=3\\rm\\,cm$이다.\n따라서 (가)의 물의 부피는\n$12\\times18\\times3=648\\rm\\,cm^3$이다.\n\n그림 (나)에서 물이 차 있는 밑면은 $9\\rm\\,cm\\times12\\rm\\,cm$이고 물높이가 $x\\rm\\,cm$이므로 물의 부피는\n$9\\times12\\times x=108x\\rm\\,cm^3$이다. 표시된 $18\\rm\\,cm$는 그릇의 전체 높이이고, 물높이는 $x\\rm\\,cm$이다.\n\n두 그릇의 물의 양이 같으므로\n$108x=648$,\n$x=6$이다.\n따라서 $x=6$이다.",
+      "solution": "두 그릇의 물의 부피가 같다는 조건을 이용한다.\n\n그림 (가)에서 밑면은 $12\\rm\\,cm\\times18\\rm\\,cm$이고, 9 cm 높이 중 3분의 1까지 물이 차 있으므로 물높이는\n$9\\times\\dfrac13=3\\rm\\,cm$이다.\n따라서 (가)의 물의 부피는\n$12\\times18\\times3=648\\rm\\,cm^3$이다.\n\n그림 (나)에서 물이 차 있는 밑면은 $9\\rm\\,cm\\times12\\rm\\,cm$이고 물높이가 $x\\rm\\,cm$이므로 물의 부피는\n$9\\times12\\times x=108x\\rm\\,cm^3$이다. 표시된 $18\\rm\\,cm$는 그릇의 전체 높이이고, 물높이는 $x\\rm\\,cm$이다.\n\n두 그릇의 물의 양이 같으므로\n$108x=648$,\n$x=6$이다.\n따라서 $x=6$이다.",
       "image": "assets/images/25_왕운중_2학기_기말_중1_기출/q23.png",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
@@ -1105,7 +1105,7 @@ window.questionBank = [
       "content": "다음 표는 맹구네 학교 여학생 120명과 남학생 150명의 TV 시청 시간을 조사하여 상대도수의 분포표로 나타낸 것이다. $A=B$일 때, TV 시청 시간이 4시간 이상인 학생은 모두 몇 명인지 구하시오. (5점)<div class='question-table-wrap'><table class='question-table'><tr><th rowspan='2'>TV 시청 시간<br>(시간)</th><th colspan='2'>상대도수</th></tr><tr><th>여학생</th><th>남학생</th></tr><tr><td>2 이상 ~ 3 미만</td><td>0.2</td><td>0.3</td></tr><tr><td>3 ~ 4</td><td>$A$</td><td>$B$</td></tr><tr><td>4 ~ 5</td><td>0.5</td><td>0.4</td></tr><tr><td>5 ~ 6</td><td>$C$</td><td>0.2</td></tr><tr><td>합계</td><td>1</td><td>1</td></tr></table></div>",
       "choices": [],
       "answer": "174명",
-      "solution": "[키포인트] 각 집단에서 상대도수의 합이 $1$이라는 점을 이용한다.\n남학생의 상대도수 합에서\n$0.3+B+0.4+0.2=1$이므로 $B=0.1$이다.\n$A=B$이므로 $A=0.1$이고, 여학생은\n$0.2+0.1+0.5+C=1$에서 $C=0.2$이다.\n\nTV 시청 시간이 $4$시간 이상인 여학생은\n$120\\times(0.5+0.2)=84$명, 남학생은\n$150\\times(0.4+0.2)=90$명이다.\n따라서 모두 $84+90=174$명이다.",
+      "solution": "각 집단에서 상대도수의 합이 $1$이라는 점을 이용한다.\n남학생의 상대도수 합에서\n$0.3+B+0.4+0.2=1$이므로 $B=0.1$이다.\n$A=B$이므로 $A=0.1$이고, 여학생은\n$0.2+0.1+0.5+C=1$에서 $C=0.2$이다.\n\nTV 시청 시간이 $4$시간 이상인 여학생은\n$120\\times(0.5+0.2)=84$명, 남학생은\n$150\\times(0.4+0.2)=90$명이다.\n따라서 모두 $84+90=174$명이다.",
       "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
       "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
       "crossConceptKeys": [],

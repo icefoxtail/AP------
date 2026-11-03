@@ -9,6 +9,7 @@ const path=require('node:path');
 const vm=require('node:vm');
 const crypto=require('node:crypto');
 const {execFileSync}=require('node:child_process');
+const {crosswalkDigestAccepted}=require('./sealed-crosswalk-digests.cjs');
 
 const sortValue=v=>Array.isArray(v)?v.map(sortValue):v&&typeof v==='object'
   ?Object.fromEntries(Object.keys(v).sort().map(k=>[k,sortValue(v[k])])):v;
@@ -205,7 +206,9 @@ function validateAuthorityBinding(root,meta,question,uid){
    return {issues:['RPM_AUTHORITY_BINDING_REQUIRED'],primaryRecord:null};
   const authorityFile=contained(root,authorityRef,'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/');
    const authorityBytes=trackedCanonicalBlob(root,authorityRef)?.bytes||fs.readFileSync(authorityFile);
-  if(crypto.createHash('sha256').update(authorityBytes).digest('hex').toLowerCase()!==authoritySha.toLowerCase())issues.push('RPM_AUTHORITY_BYTES_MISMATCH');
+  // The pinned whole-file digest may be the current one or one a sealed receipt recorded for this crosswalk file; the
+  // record it names is still re-verified against the CURRENT file below (labels, course, unit, bucket).
+  if(!crosswalkDigestAccepted(root,authorityRef,authoritySha,sha256Bytes(authorityBytes)))issues.push('RPM_AUTHORITY_BYTES_MISMATCH');
   const authority=JSON.parse(authorityBytes.toString('utf8'));
   if(authority.rpmAuthority?.status&&authority.rpmAuthority.status!=='LOCKED')issues.push('RPM_AUTHORITY_NOT_LOCKED');
   const records=authority.records||[];
@@ -399,8 +402,8 @@ function audit(root,{uidScope}={}){
    if(m.meta?.rpmL4Namespace==='RPM_EXISTING_DRAFT'){
      const ref=contained(root,m.meta.rpmDraftAuthorityRef,'archive/data/meta-foundation/');
     if(!fs.existsSync(ref))issue('RPM_DRAFT_SOURCE_MISSING');
-     else if((trackedCanonicalBlob(root,m.meta.rpmDraftAuthorityRef)?.sha256||crypto.createHash('sha256').update(fs.readFileSync(ref)).digest('hex')).toLowerCase()!==
-      m.meta.rpmDraftAuthoritySha256.toLowerCase())issue('RPM_DRAFT_AUTHORITY_BYTES_MISMATCH');
+     else if(!crosswalkDigestAccepted(root,m.meta.rpmDraftAuthorityRef,m.meta.rpmDraftAuthoritySha256,
+      trackedCanonicalBlob(root,m.meta.rpmDraftAuthorityRef)?.sha256||sha256Bytes(fs.readFileSync(ref))))issue('RPM_DRAFT_AUTHORITY_BYTES_MISMATCH');
    }
    if(m.meta?.rpmL4Namespace==='GENERATED_EXT_L4'){
     const ref=contained(root,m.meta.generatedL4RegistryRef,sourcePrefix);

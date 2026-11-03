@@ -310,17 +310,35 @@
       this._syncTabAttr();
       this._dirtyPanel = true;
     }
-    // 선택 사항: sc.tabs 를 쓰는 장면은 머리말에 data-tab 을 달아 탭마다 머리말 모양을 달리할 수 있게 합니다
+    // 선택 사항: sc.tabs 를 쓰는 장면은 머리말에 data-tab 을 달아 탭마다 머리말 모양을 달리할 수 있게 합니다(실험실 자체 CSS가 이 속성에 기대므로 sc.tabs 가 없는 장면에는 달지 않습니다).
+    //  - data-qfold: 문제 탭에서 '탐구 질문' 카드를 접습니다(탐구 탭에서 이미 읽은 글). 모든 장면의 기본값이며, 장면이 sc.tabs = { compact: false } 를 주면 접지 않습니다.
+    //  - data-compact: sc.tabs = { compact: true } 를 준 장면만 휴대폰 문제 탭에서 그림 무대 높이도 줄입니다(apl.css).
     _syncTabAttr() {
-      if (this.scene && this.scene.tabs) this.ui.head.dataset.tab = this.tab; else delete this.ui.head.dataset.tab;
+      const h = this.ui.head;
+      const t = (this.scene && this.scene.tabs) || null;
+      if (t) h.dataset.tab = this.tab; else delete h.dataset.tab;
+      if (t && t.compact) h.dataset.compact = '1'; else delete h.dataset.compact;
+      if (this.tab === 'problem' && !(t && t.compact === false)) h.dataset.qfold = '1'; else delete h.dataset.qfold;
     }
     setTab(id) {
       if (!this._tabAvailable(id)) return;
+      const was = this.tab;
       this.tab = id;
       this._syncTabAttr();
       APLab.$$('.apl-tab', this.ui.tabs).forEach((b) => b.setAttribute('aria-selected', String(b.getAttribute('aria-controls') === 'apl-pane-' + id)));
       for (const t of TABS) this.ui.panes[t.id].hidden = this.tab !== t.id;
+      if (id === 'problem' && was !== 'problem') this._autoSnap();
+      this._fitPending = true;
       this.invalidate(true);
+    }
+    /** 문제 탭에 들어올 때 그림을 지문의 조건에 한 번 맞춥니다(「문제 조건으로 그림 맞추기」와 같은 동작). 학생이 탐구하던 상태 그대로의 그림과 지문이 어긋나 보이지 않게 합니다.
+     *  장면이 thumbSnap: false 이거나 problem.autoSnap: false 이면 하지 않습니다. */
+    _autoSnap() {
+      const sc = this.scene;
+      const pr = sc && sc.problem;
+      if (!pr || !pr.snap || sc.thumbSnap === false || pr.autoSnap === false) return;
+      this.s.playing = false;
+      this.tween(call(pr.snap, this.s), 360);
     }
 
     /** 실험실이 stackFractions 를 켠 경우 칸·칩 글 속 분수를 쌓은 분수로 바꿉니다. */
@@ -584,9 +602,23 @@
       if (tick && !this.s.dragging) {
         if (tick(this.s, dt, this)) { again = true; this._dirtyPanel = true; }
       }
+      const panelDirty = this._dirtyPanel;
       this.render();
+      if (panelDirty || this._fitPending) this._fitProblemStage();
       if (again) this.invalidate();
       else this._last = 0;
+    }
+    /** 휴대폰 문제 탭: 탐구 질문 카드를 접어도 문제 글이 첫 화면(약 760px) 밖이면(제목이 두 줄이거나 세부 장면 줄이 있는 장면)
+     *  그 장면만 그림 무대를 조금(54svh → 44svh) 낮춥니다. 실험실별 설정 없이 쓰며, 이미 첫 화면 안이면 무대는 그대로입니다. */
+    _fitProblemStage() {
+      this._fitPending = false;
+      const head = this.ui.head;
+      if (this.tab !== 'problem' || !window.matchMedia('(max-width: 859px)').matches) { delete head.dataset.tight; return; }
+      const pt = this.refs && this.refs.problemText;
+      if (!pt || !pt.isConnected || !pt.checkVisibility()) { delete head.dataset.tight; return; }
+      delete head.dataset.tight;
+      const limit = Math.min(760, window.innerHeight * 0.9);
+      if (pt.getBoundingClientRect().top + window.scrollY > limit) head.dataset.tight = '1';
     }
     render() {
       const sc = this.scene;
@@ -620,7 +652,9 @@
     _renderStage(v) {
       const ui = this.ui;
       // 수식 칩
-      const chips = v.chips || [];
+      // answer:true 로 표시한 칩·띠는 문제 탭에서 숨깁니다(답이나 중간값이 그림 옆에 찍히지 않게). 탐구·정리 탭에서는 그대로 보입니다.
+      const inProblem = this.tab === 'problem';
+      const chips = (v.chips || []).filter((c) => !(inProblem && c.answer));
       const key = JSON.stringify(chips);
       if (key !== this._chipKey) {
         this._chipKey = key;
@@ -635,7 +669,8 @@
         }
       }
       // 상태
-      const st = v.status;
+      // 상태 배지는 탐구용 실시간 결과(답·판정이 찍힐 수 있음)이므로 문제 탭에서는 숨깁니다. 장면이 sc.tabs = { status: true } 를 주면 문제 탭에서도 보입니다.
+      const st = inProblem && !(this.scene.tabs && this.scene.tabs.status) ? null : v.status;
       ui.status.hidden = !st;
       if (st) {
         const sk = st.tone + '|' + st.text;
@@ -662,7 +697,7 @@
         }
       }
       // 테이프
-      const tape = v.tape;
+      const tape = inProblem && v.tape && v.tape.answer ? null : v.tape;
       ui.tape.hidden = !tape;
       if (tape) {
         const tk = JSON.stringify(tape);

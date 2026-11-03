@@ -706,6 +706,794 @@ window.addEventListener('DOMContentLoaded', function () {
     };
   }
 
+  /* ==========================================================================
+     응용형 장면 공용 부품 (2026-11 추가: 기출 응용 유형 · 변형 문제 생성기)
+     - 탐구 탭은 끌기·슬라이더로 직접 바꿔 보고, 정리 탭은 변형 문제의 풀이를 단계마다 그림에 드러내고,
+       문제 탭은 지문에 주어진 값만 그립니다(답과 보조선은 풀이 단계를 누른 뒤에만 나옵니다).
+     - 「새 문제」는 같은 유형의 숫자·상황만 바꾼 변형을 만듭니다(연속해서 같은 문제가 나오지 않게 함).
+     ========================================================================== */
+  const cxRint = (n) => Math.floor(Math.random() * n);
+  const cxPick = (arr, not) => { let x; do x = arr[cxRint(arr.length)]; while (arr.length > 1 && x === not); return x; };
+  let cxSerial = 0;
+  function cxVarier(gen) { let cur = gen(null); cur.sid = ++cxSerial; return { cur: () => cur, next: () => { cur = gen(cur); cur.sid = ++cxSerial; return cur; } }; }
+  const cxProb = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-cx-new>새 문제</button></div>`;
+  document.addEventListener('click', (ev) => {
+    const hit = ev.target && ev.target.closest && ev.target.closest('[data-cx-new]');
+    if (!hit) return;
+    const lab = window.lab, sc = lab && lab.scene;
+    if (!sc || !sc.vary) return;
+    sc.vary.next();
+    lab.s.revealed = false;
+    lab.setStep(0);
+    try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+    lab.invalidate(true);
+  });
+  // 탭별 단계: 정리 탭에서만 단계가 그림에 드러나고, 문제 탭은 늘 0단계(풀이 전)입니다.
+  const cxStep = (lab, s) => (lab && lab.tab === 'review' ? s.step : lab && lab.tab === 'problem' ? 0 : 0);
+  // 장면마다(또는 문제가 바뀔 때마다) 보이는 범위를 한 번만 맞춥니다. 사용자가 확대·이동한 뒤에는 건드리지 않습니다.
+  function cxFocus(b, key, box) {
+    if (b._cxKey === key) return;
+    b._cxKey = key;
+    b.setFocus(box, true);
+  }
+  // 점들이 모두 들어오는 창(여백 포함)
+  function cxWin(pts, o = {}) {
+    let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    pts.forEach((p) => { x0 = Math.min(x0, p[0]); x1 = Math.max(x1, p[0]); y0 = Math.min(y0, p[1]); y1 = Math.max(y1, p[1]); });
+    const mx = o.mx == null ? 0.9 : o.mx, my = o.my == null ? 0.9 : o.my;
+    x0 -= mx; x1 += mx; y0 -= my; y1 += my;
+    const minW = o.minW || 6, minH = o.minH || 4.4;
+    if (x1 - x0 < minW) { const c = (x0 + x1) / 2; x0 = c - minW / 2; x1 = c + minW / 2; }
+    if (y1 - y0 < minH) { const c = (y0 + y1) / 2; y0 = c - minH / 2; y1 = c + minH / 2; }
+    return { x: [x0, x1], y: [y0, y1] };
+  }
+  // 다항식 TeX: 계수 배열(높은 차수부터, 정수) 예: [1, -3, 0, 2] → x^3-3x^2+2
+  function cxPoly(co) {
+    const n = co.length;
+    let out = '';
+    co.forEach((c, i) => {
+      if (!c) return;
+      const deg = n - 1 - i, a = Math.abs(c);
+      const t = deg === 0 ? '' : deg === 1 ? 'x' : `x^${deg}`;
+      const body = t ? (a === 1 ? t : a + t) : String(a);
+      out += (c < 0 ? '-' : out ? '+' : '') + body;
+    });
+    return out || '0';
+  }
+  const cxFrac = (n, d) => { // 기약분수 TeX와 값
+    const g = (a, c) => (c ? g(c, a % c) : Math.abs(a));
+    const k = g(n, d) || 1;
+    n /= k; d /= k;
+    if (d < 0) { n = -n; d = -d; }
+    return { tex: d === 1 ? String(n) : (n < 0 ? '-' : '') + `\\dfrac{${Math.abs(n)}}{${d}}`, val: n / d };
+  };
+  // 화살표(방향 dir, 세계 좌표 길이 len)
+  function cxArrow(b, p, dir, len, color, o = {}) {
+    const n = Math.hypot(dir[0], dir[1]) || 1, ux = dir[0] / n, uy = dir[1] / n;
+    const q = [p[0] + ux * len, p[1] + uy * len];
+    b.seg(p, q, { color, width: o.width || 3.2, glow: true, ref: o.ref });
+    const hl = o.head || 0.2, ca = Math.cos(0.45), sa = Math.sin(0.45);
+    const bx = -ux, by = -uy;
+    b.poly([q, [q[0] + hl * (bx * ca - by * sa), q[1] + hl * (bx * sa + by * ca)], [q[0] + hl * (bx * ca + by * sa), q[1] + hl * (-bx * sa + by * ca)]], { fill: color, fillAlpha: 1, color: null, ref: o.ref });
+    return q;
+  }
+  // 곡선 이름표: 보이는 범위 안에서 곡선이 지나는 곳(오른쪽부터)에 붙입니다.
+  function cxCurveTag(b, f, text, color, o = {}) {
+    const vb = b.viewBox();
+    const yl = vb.y0 + (vb.y1 - vb.y0) * 0.1, yh = vb.y1 - (vb.y1 - vb.y0) * 0.1;
+    const right = o.side !== 'left';
+    for (let i = 0; i <= 90; i++) {
+      const x = right ? vb.x1 - (vb.x1 - vb.x0) * 0.06 - i * (vb.x1 - vb.x0) * 0.008 : vb.x0 + (vb.x1 - vb.x0) * 0.06 + i * (vb.x1 - vb.x0) * 0.008;
+      const y = f(x);
+      const clash = (o.skip || []).some((q) => Math.hypot(x - q[0], y - q[1]) < (q[2] || 1.2));
+      if (Number.isFinite(y) && y > yl && y < yh && !clash && !(o.axis && Math.abs(y) < o.axis)) {
+        b.text([x, y], text, { color, size: 13, weight: 800, align: right ? 'right' : 'left', dx: right ? -8 : 8, dy: o.dy == null ? -12 : o.dy, ref: o.ref });
+        return;
+      }
+    }
+  }
+  const cxPl = (n) => (n >= 0 ? `+${n}` : `-${-n}`); // 부호 있는 항
+  const cxSub = (n) => (n === 0 ? '' : n > 0 ? `-${n}` : `+${-n}`); // x − n
+  // 글자 라벨(가장자리에서 잘리지 않게 화면 안으로 밀어 넣음)
+  function cxTag(b, p, str, o = {}) {
+    const c = b.ctx;
+    const size = (o.size || 12.5) * b.fs;
+    c.save();
+    c.font = `800 ${size}px ${b.font}`;
+    const w = c.measureText(String(str)).width;
+    c.restore();
+    const s = b.toS(Array.isArray(p) ? { x: p[0], y: p[1] } : p);
+    const al = o.align || 'center';
+    const want = s.x + (o.dx || 0) - (al === 'right' ? w : al === 'left' ? 0 : w / 2);
+    const left = Math.max(6, Math.min(want, Math.max(6, b.W - 6 - w)));
+    b.text(p, str, { size: o.size || 12.5, weight: 800, ...o, align: 'left', dx: left - s.x, dy: o.dy || 0 });
+  }
+
+  // f가 g보다 위인(또는 g가 f보다 위인) 구간을 색칠: top(x) > bot(x) 인 곳
+  function cxShadeBetween(b, top, bot, x0, x1, col, alpha, ref) {
+    const N = 200;
+    let run = null;
+    const flush = () => { if (run && run.t.length > 1) b.poly(run.t.concat(run.b.slice().reverse()), { fill: col, fillAlpha: alpha, color: null, ref }); run = null; };
+    for (let i = 0; i <= N; i++) {
+      const x = x0 + ((x1 - x0) * i) / N, yt = top(x), yb = bot(x);
+      if (Number.isFinite(yt) && Number.isFinite(yb) && yt > yb + 1e-9) { if (!run) run = { t: [], b: [] }; run.t.push([x, yt]); run.b.push([x, yb]); } else flush();
+    }
+    flush();
+  }
+  // 조사: 받침이 있으면 a, 없으면 b (예: cxJosa('최솟값', '을', '를') → 최솟값을)
+  const cxJosa = (w, a, b) => { const c = w.charCodeAt(w.length - 1); return w + (c >= 0xAC00 && c <= 0xD7A3 && (c - 0xAC00) % 28 !== 0 ? a : b); };
+
+  /* ==========================================================================
+     응용 장면 6 · 항상 성립하는 부등식과 차함수 h = f − g 의 최솟값     — 근거: 분류표 C10
+     응용 장면 7 · 수평선으로 세는 실근의 개수와 정수 k, 양의 근의 개수  — 근거: 분류표 C12
+     ========================================================================== */
+  const R10 = (v) => Math.round(v * 20) / 20;
+  const evalP = (co) => (x) => co.reduce((acc, c) => acc * x + c, 0);
+  // 탐구용: f(x)=x³−4x+4, g(x)=−x → h(x)=f−g=x³−3x+4, x≥0 에서 x=1 일 때 최솟값 2
+  const f10 = (x) => x * x * x - 4 * x + 4;
+  const g10 = (x) => -x;
+  const h10 = (x) => f10(x) - g10(x);
+  const FAM10 = [
+    { id: 'c1', co: (q) => [1, 0, -3, q], dom: 'ge0', xs: [1], off: 2, xr: [0, 2.0], hp: 'h^{\\prime}(x)=3x^2-3=3(x+1)(x-1)', why: '$x\\ge 0$ 에서 $x=1$ 의 앞뒤로 $h^{\\prime}$ 이 음수에서 양수로 바뀌어 $x=1$ 에서 최솟값을 가집니다.' },
+    { id: 'c2', co: (q) => [1, -3, 0, q], dom: 'ge0', xs: [2], off: 4, xr: [0, 3.0], hp: 'h^{\\prime}(x)=3x^2-6x=3x(x-2)', why: '$x\\ge 0$ 에서 $x=2$ 의 앞뒤로 $h^{\\prime}$ 이 음수에서 양수로 바뀌어 $x=2$ 에서 최솟값을 가집니다.' },
+    { id: 'q4', co: (q) => [1, 0, -2, 0, q], dom: 'all', xs: [-1, 1], off: 1, xr: [-1.9, 1.9], hp: 'h^{\\prime}(x)=4x^3-4x=4x(x+1)(x-1)', why: '$x=-1,\\,1$ 에서 $h^{\\prime}$ 이 음수에서 양수로 바뀌어 두 곳에서 최솟값을 가집니다.' }
+  ];
+  const var10 = cxVarier((prev) => {
+    const first = !prev;
+    let v;
+    for (let tr = 0; tr < 400; tr++) {
+      const fam = first ? FAM10[0] : cxPick(FAM10);
+      const m0 = first ? 2 : cxPick([1, 2, 3]);
+      const gk = first ? 'lin' : cxPick(['lin', 'par']);
+      const gm = first ? -1 : (gk === 'lin' ? cxPick([-2, -1, 1, 2]) : cxPick([-1, 1, 2]));
+      const ask = first ? 'amax' : cxPick(['amax', 'amin']);
+      const hco = fam.co(m0 + fam.off);
+      const n = hco.length, fco = hco.slice();
+      if (gk === 'lin') fco[n - 2] += gm; else fco[n - 3] += gm;
+      const f = evalP(fco), h = evalP(hco), g = gk === 'lin' ? (x) => gm * x : (x) => gm * x * x;
+      let hm = Infinity;
+      for (let x = fam.xr[0]; x <= fam.xr[1] + 1e-9; x += 0.001) hm = Math.min(hm, h(x));
+      if (Math.abs(hm - m0) > 1e-3) continue;
+      let y0 = Infinity, y1 = -Infinity;
+      const sx = fam.dom === 'ge0' ? [0, Math.max(...fam.xs) + 0.9] : [-1.6, 1.6];
+      for (let x = sx[0]; x <= sx[1] + 1e-9; x += 0.05) { y0 = Math.min(y0, f(x), g(x)); y1 = Math.max(y1, f(x), g(x)); }
+      y0 = Math.min(y0, 0); y1 = Math.max(y1, 0);
+      const xw = fam.dom === 'ge0' ? [-1.9, Math.max(...fam.xs) + 2.0] : [-2.6, 2.6];
+      if ((y1 - y0 + 1.6) > 2.2 * (xw[1] - xw[0]) || y1 - y0 > 9) continue;
+      const gTex = gk === 'lin' ? `${gm === 1 ? '' : gm === -1 ? '-' : gm}x` : `${gm === 1 ? '' : gm === -1 ? '-' : gm}x^2`;
+      v = { fam, m0, gk, gm, ask, hco, fco, f, g, h, gTex, ans: ask === 'amax' ? m0 : -m0, win: { x: xw, y: [y0 - 0.8, y1 + 0.8] } };
+      if (prev && prev.fam === fam && prev.m0 === m0 && prev.gk === gk && prev.gm === gm && prev.ask === ask) continue;
+      break;
+    }
+    return v;
+  });
+  const text10 = (v) => `두 함수 ${tex('f(x)=' + cxPoly(v.fco))}, ${tex('g(x)=' + v.gTex)} 에 대하여 ${v.fam.dom === 'ge0' ? tex('x\\ge 0') + ' 인 모든 실수 ' + tex('x') : '모든 실수 ' + tex('x')} 에서 부등식 ${v.ask === 'amax' ? tex('f(x)\\ge g(x)+a') : tex('f(x)+a\\ge g(x)')} 이 성립하도록 하는 실수 ${tex('a')} 의 ${v.ask === 'amax' ? '최댓값' : '최솟값'}을 구하시오.`;
+  const steps10 = (v) => [
+    `$h(x)=f(x)-g(x)=${cxPoly(v.hco)}$ 로 두면 ${v.ask === 'amax' ? '$f(x)\\ge g(x)+a \\iff h(x)\\ge a$' : '$f(x)+a\\ge g(x) \\iff h(x)\\ge -a$'} 입니다. 즉 ${v.fam.dom === 'ge0' ? '$x\\ge 0$ 에서 ' : ''}$y=h(x)$ 의 그래프가 수평선 $y=${v.ask === 'amax' ? 'a' : '-a'}$ 위에 있어야 합니다.`,
+    `${v.fam.hp.replace(/^h/, '$h')}$ 이므로 ${v.fam.why} 최솟값은 $h$ 의 값 $${v.m0}$ 입니다.`,
+    v.ask === 'amax'
+      ? `$h(x)\\ge a$ 가 항상 성립하려면 $a$ 가 $h$ 의 최솟값 $${v.m0}$ 이하여야 합니다. $a=${v.m0}$ 일 때 $y=g(x)+a$ 가 $y=f(x)$ 에 접하므로, 구하는 최댓값은 $${v.m0}$.`
+      : `$h(x)\\ge -a$ 가 항상 성립하려면 $-a\\le ${v.m0}$, 즉 $a\\ge ${-v.m0}$ 입니다. 구하는 최솟값은 $${-v.m0}$.`
+  ];
+  const FORMULA10 = '<b>항상 성립하는 부등식 → 차함수의 최솟값</b><br>$f(x)\\ge g(x)+a$ 가 항상 성립 $\\iff$ $h(x)=f(x)-g(x)\\ge a$ 가 항상 성립 $\\iff$ $a\\le (h\\text{의 최솟값})$<br>그림에서 $g$ 를 위로 올려 $f$ 에 처음 닿는 순간의 $a$ 가 $h$ 의 최솟값입니다. 도형으로는 “두 곡선 사이의 세로 간격이 가장 좁은 곳”입니다.';
+  function drawExplore10(b, s) {
+    cxFocus(b, 'c10e', { x: [-1.9, 2.9], y: [-1.7, 5.3] });
+    const a = s.al, ga = (x) => g10(x) + a;
+    if (s.grid) b.grid();
+    b.axes();
+    const vb = b.viewBox();
+    b.poly([[vb.x0 - 1, vb.y0 - 1], [0, vb.y0 - 1], [0, vb.y1 + 1], [vb.x0 - 1, vb.y1 + 1]], { fill: 'muted', fillAlpha: 0.14, color: null });
+    cxShadeBetween(b, ga, f10, 0, vb.x1, 'red', 0.3, 'bad');
+    b.plot(h10, { color: 'violet', width: 2.2, dash: true, ref: 'h' });
+    b.hline(a, { color: 'violet', width: 1.8, dash: true, ref: 'h' });
+    b.plot(g10, { color: 'muted', width: 2, dash: true, ref: 'g' });
+    b.plot(f10, { color: 'ink', width: 3.2, glow: true, ref: 'f' });
+    b.plot(ga, { color: 'sky', width: 3.4, glow: true, ref: 'ga' });
+    const gap = h10(1) - a;
+    b.seg([1, ga(1)], [1, f10(1)], { color: 'amber', width: 3.2, ref: 'gap' });
+    b.point([1, h10(1)], { color: 'violet', r: 5.5, ref: 'h' });
+    cxTag(b, [1, h10(1)], `h의 최솟값 ${h10(1)}`, { color: 'violet', size: 12, align: 'left', dx: 10, dy: -12, ref: 'h' });
+    if (Math.abs(a - h10(1)) < 0.04) b.point([1, f10(1)], { color: 'green', hollow: true, r: 9, ref: 'gap' });
+    cxTag(b, [0, vb.y1 - 0.75], 'x ≥ 0 만 생각', { color: 'muted', size: 12, align: 'right', dx: -8 });
+    cxCurveTag(b, f10, 'y = f(x)', 'ink', { dy: -12, skip: [[1, f10(1), 1.4]] });
+    cxCurveTag(b, ga, 'y = g(x) + a', 'sky', { side: 'left', dy: -14, skip: [[1, ga(1), 1.4]] });
+    b.handle('A', [2.5, a], { color: 'amber', label: `a = ${fmt(a)}`, dx: -12, dy: -14, align: 'right', ref: 'ga',
+      drag: (w) => { let v = R10(w.y); if (Math.abs(v - 2) < 0.08) v = 2; s.al = clamp(v, -1, 3.6); } });
+  }
+  function drawVar10(b, s, lab) {
+    const v = var10.cur(), st = cxStep(lab, s), f = v.f, g = v.g, vb0 = null;
+    cxFocus(b, 'c10v' + v.sid, v.win);
+    if (s.grid) b.grid();
+    b.axes();
+    const vb = b.viewBox();
+    if (v.fam.dom === 'ge0') b.poly([[vb.x0 - 1, vb.y0 - 1], [0, vb.y0 - 1], [0, vb.y1 + 1], [vb.x0 - 1, vb.y1 + 1]], { fill: 'muted', fillAlpha: 0.14, color: null });
+    if (v.fam.dom === 'ge0') cxTag(b, [0, vb.y1 - 0.75], 'x ≥ 0 만 생각', { color: 'muted', size: 12, align: 'right', dx: -8 });
+    if (st >= 1) b.plot(v.h, { color: 'violet', width: 2.4, dash: true, ref: 'h' });
+    if (st >= 3) b.plot(v.ask === 'amax' ? (x) => g(x) + v.m0 : (x) => f(x) - v.m0, { color: 'sky', width: 3.6, glow: true, ref: 'ga' });
+    b.plot(g, { color: 'muted', width: 2.2, dash: v.ask === 'amax' && st >= 3 ? true : undefined, ref: 'g' });
+    b.plot(f, { color: 'ink', width: 3.2, glow: true, ref: 'f' });
+    cxCurveTag(b, f, 'y = f(x)', 'ink', { dy: -12 });
+    cxCurveTag(b, g, 'y = g(x)', 'muted', { side: 'left', dy: -14, skip: v.fam.xs.map((x) => [x, g(x), 1.3]) });
+    if (st >= 2) v.fam.xs.forEach((x, i) => {
+      b.seg([x, g(x)], [x, f(x)], { color: 'amber', width: 3.2, ref: 'gap' });
+      b.point([x, v.m0], { color: 'violet', r: 5.5, ref: 'h' });
+      if (i === 0) cxTag(b, [x, v.m0], `h의 최솟값 ${v.m0}`, { color: 'violet', size: 12, align: 'left', dx: 10, dy: -12, ref: 'h' });
+    });
+    if (st >= 3) v.fam.xs.forEach((x) => b.point([x, v.ask === 'amax' ? f(x) : g(x)], { color: 'green', hollow: true, r: 9, ref: 'ga' }));
+    if (st >= 3) b.stext(14, b.H - b.insets.bottom - 14, v.ask === 'amax' ? `a = ${v.m0} 일 때 g + a 가 f 에 접합니다` : `a = ${-v.m0} 일 때 f + a 가 g 에 접합니다`, { color: 'green', size: 13, align: 'left', ref: 'ga' });
+  }
+  function view10(s, lab) {
+    if (lab.tab !== 'explore') return { formula: FORMULA10 };
+    const a = s.al, ok = a <= h10(1) + 1e-9, gap = h10(1) - a;
+    return {
+      chips: [{ tex: 'h(x)=f(x)-g(x)=x^3-3x+4', color: 'violet' }, { tex: 'f(x)\\ge g(x)+a \;(x\\ge 0)', color: 'sky' }],
+      status: ok ? { tone: 'ok', text: a >= h10(1) - 0.04 ? 'a = 2: 두 그래프가 접합니다 (가장 큰 a)' : '모든 x ≥ 0 에서 f ≥ g + a 가 성립합니다 (a ≤ 2)' } : { tone: 'warn', text: 'g + a 가 f 위로 올라온 구간(빨강)이 생겨 부등식이 깨집니다' },
+      readouts: [
+        { label: '올린 높이 a', value: fmt(a), color: 'amber', ref: 'ga' },
+        { label: 'h = f − g 의 최솟값 (x ≥ 0)', value: `${h10(1)}  (x = 1)`, color: 'violet', ref: 'h' },
+        { label: 'x = 1 에서의 세로 간격', value: fmt(gap), color: gap >= -1e-9 ? 'green' : 'red', ref: 'gap' },
+        { label: '항상 성립?', value: ok ? '성립 (a ≤ 최솟값)' : '성립하지 않음', color: ok ? 'green' : 'red', ref: 'bad', wide: true }
+      ],
+      formula: FORMULA10
+    };
+  }
+
+  /* ----- 응용 장면 7 · 수평선으로 세는 실근 ----- */
+  // 삼차식 co=[a,b,c,d] 에 대해 co(x)=k 의 서로 다른 실근 (접점은 한 번만)
+  function roots12(co, k) {
+    const [a, b, c, d] = co;
+    const F = (x) => ((a * x + b) * x + c) * x + d - k;
+    const B = 2 + Math.max(Math.abs(b / a), Math.abs(c / a), Math.abs((d - k) / a)) * 1.5 + Math.abs(b / a) + Math.sqrt(Math.abs(c / a));
+    const disc = 4 * b * b - 12 * a * c;
+    const crit = disc > 1e-12 ? [(-2 * b - Math.sqrt(disc)) / (6 * a), (-2 * b + Math.sqrt(disc)) / (6 * a)].sort((p, q) => p - q) : [];
+    const edges = [-B, ...crit, B];
+    const out = [];
+    crit.forEach((x) => { if (Math.abs(F(x)) < 1e-9) out.push(x); });
+    for (let i = 0; i < edges.length - 1; i++) {
+      let lo = edges[i], hi = edges[i + 1];
+      const flo = F(lo), fhi = F(hi);
+      if (flo * fhi < 0) {
+        for (let j = 0; j < 70; j++) { const mid = (lo + hi) / 2, fm = F(mid); if (flo * fm <= 0) hi = mid; else lo = mid; }
+        out.push((lo + hi) / 2);
+      }
+    }
+    out.sort((p, q) => p - q);
+    const list = out.filter((r, i) => i === 0 || r - out[i - 1] > 1e-7);
+    const pos = list.filter((r) => r > 1e-7).length, neg = list.filter((r) => r < -1e-7).length;
+    return { list, n: list.length, pos, neg, zero: list.length - pos - neg };
+  }
+  const COND12 = {
+    real3: { name: '서로 다른 세 실근', ok: (c) => c.n === 3 },
+    real2: { name: '서로 다른 두 실근', ok: (c) => c.n === 2 },
+    pos2: { name: '서로 다른 두 양의 실근', ok: (c) => c.pos === 2 },
+    pos1: { name: '양의 실근이 하나', ok: (c) => c.pos === 1 }
+  };
+  const CO12 = [1, -3, 0, 0]; // 탐구용 f(x)=x³−3x² (극댓값 0, 극솟값 −4)
+  const f12 = evalP(CO12);
+  const critVals12 = (co) => { const [a, b, c, d] = co, disc = 4 * b * b - 12 * a * c; if (disc <= 0) return []; const s = Math.sqrt(disc), F = evalP(co); return [F((-2 * b - s) / (6 * a)), F((-2 * b + s) / (6 * a))]; };
+  // k 의 범위를 TeX 로: 경계점 {극값, f(0)} 에서 조건을 따져 구간을 이어 붙입니다.
+  function describe12(co, ok) {
+    const bp = [...new Set([...critVals12(co), co[3]].map((x) => Math.round(x * 1e6) / 1e6))].sort((p, q) => p - q);
+    const pieces = [];
+    pieces.push({ t: 'o', lo: -Infinity, hi: bp[0], at: bp[0] - 1 });
+    bp.forEach((x, i) => { pieces.push({ t: 'p', x, at: x }); pieces.push({ t: 'o', lo: x, hi: i < bp.length - 1 ? bp[i + 1] : Infinity, at: i < bp.length - 1 ? (x + bp[i + 1]) / 2 : x + 1 }); });
+    const sat = pieces.map((p) => ok(roots12(co, p.at)));
+    const runs = [];
+    let cur = null;
+    pieces.forEach((p, i) => {
+      if (!sat[i]) { if (cur) runs.push(cur); cur = null; return; }
+      if (!cur) cur = { lo: p.t === 'p' ? p.x : p.lo, hi: p.t === 'p' ? p.x : p.hi, lc: p.t === 'p', rc: p.t === 'p' };
+      else { cur.hi = p.t === 'p' ? p.x : p.hi; cur.rc = p.t === 'p'; }
+    });
+    if (cur) runs.push(cur);
+    const tx = runs.map((r) => (r.lo === r.hi ? `k=${r.lo}` : `${isFinite(r.lo) ? r.lo + (r.lc ? '\\le ' : '\\lt ') : ''}k${isFinite(r.hi) ? (r.rc ? '\\le ' : '\\lt ') + r.hi : ''}`));
+    return { tex: tx.join(',\;\\text{또는}\;') || '\\text{없음}', runs };
+  }
+  const intsWhere12 = (co, ok, lo = -40, hi = 40) => { const out = []; for (let k = lo; k <= hi; k++) if (ok(roots12(co, k))) out.push(k); return out; };
+
+  const var12 = cxVarier((prev) => {
+    const first = !prev;
+    let v;
+    for (let tr = 0; tr < 400; tr++) {
+      const type = first ? 'B' : cxPick(['A', 'B', 'B', 'C']);
+      const x0 = first ? 1 : cxPick([-1, 0, 1, 2]);
+      const y0 = first ? -2 : cxPick([-2, -1, 1, 2, 3]);
+      const co = [1, -3 * x0, 3 * x0 * x0 - 3, -(x0 ** 3) + 3 * x0 + y0];
+      const f = evalP(co), M = y0 + 2, m = y0 - 2;
+      let ok, ans, ints = [], askTex;
+      if (type === 'A') { ok = (c) => c.n === 3; ints = intsWhere12(co, ok, 1, 40); ans = ints.length; askTex = '서로 다른 세 실근을 갖도록 하는 자연수 ' + 'k' + '의 개수'; }
+      else if (type === 'B') { ok = (c) => c.pos === 2; ints = intsWhere12(co, ok); ans = ints.length; askTex = '서로 다른 두 양의 실근을 갖도록 하는 정수 k의 개수'; }
+      else { ok = (c) => c.n === 2; ans = M + m; askTex = '서로 다른 두 실근을 갖도록 하는 모든 실수 k의 값의 합'; }
+      if (type !== 'C' && (ans < 1 || ans > 6)) continue;
+      if (type === 'C' && ans === 0) continue;
+      if (type !== 'A' && type === 'B' && ints.some((k) => Math.abs(k) >= 38)) continue;
+      const desc = type === 'C' ? { tex: `k=${m},\;\\text{또는}\;k=${M}` } : describe12(co, ok);
+      const xw = [Math.min(x0 - 2.4, -1.4), Math.max(x0 + 2.4, 1.4)], yw = [Math.min(y0 - 3, -0.9), Math.max(y0 + 3, 0.9)];
+      v = { type, x0, y0, co, f, M, m, ok, ans, ints, askTex, desc, win: { x: xw, y: yw } };
+      if ((yw[1] - yw[0]) > 1.25 * (xw[1] - xw[0])) continue;
+      if (prev && prev.type === type && prev.x0 === x0 && prev.y0 === y0) continue;
+      break;
+    }
+    return v;
+  });
+  const text12 = (v) => `삼차함수 ${tex('f(x)=' + cxPoly(v.co))} 에 대하여 방정식 ${tex('f(x)=k')} 가 ${v.askTex}${v.type === 'C' ? '을' : '를'} 구하시오.`.replace('k의 값의 합을', `${tex('k')} 의 값의 합을`).replace('k의 개수를', `${tex('k')} 의 개수를`);
+  const steps12 = (v) => {
+    const sh = v.x0 === 0 ? 'x' : `(x${cxSub(v.x0)})`;
+    const out = [
+      `$f^{\\prime}(x)=${cxPoly([0, 3, -6 * v.x0, 3 * v.x0 * v.x0 - 3]).replace(/^0/, '')}=3${sh}^2-3$ 이므로 $x=${v.x0 - 1}$ 에서 극댓값 $${v.M}$, $x=${v.x0 + 1}$ 에서 극솟값 $${v.m}$ 을 가집니다.`,
+      `$f(x)=k$ 의 서로 다른 실근의 개수는 곡선 $y=f(x)$ 와 수평선 $y=k$ 의 교점의 수입니다. $k\\gt ${v.M}$ 또는 $k\\lt ${v.m}$ 이면 $1$ 개, $k=${v.M}$ 또는 $k=${v.m}$ (접함)이면 $2$ 개, $${v.m}\\lt k\\lt ${v.M}$ 이면 $3$ 개입니다.`
+    ];
+    out.push(v.type === 'C'
+      ? `두 실근을 가지려면 수평선이 극값에서 접해야 하므로 $k=${v.m}$ 또는 $k=${v.M}$ 입니다.`
+      : `${v.type === 'A' ? '세 실근' : '양의 근 두 개'}이 되는 $k$ 의 범위를 그림에서 읽으면 $${v.desc.tex}$ 입니다.${v.type === 'B' ? ` (y절편 $f(0)=${v.co[3]}$ 이 양의 근과 음의 근을 가르는 높이입니다.)` : ''}`);
+    out.push(v.type === 'C' ? `합은 $${v.m}+${v.M < 0 ? '(' + v.M + ')' : v.M}=${v.ans}$.` : `조건을 만족하는 ${v.type === 'A' ? '자연수' : '정수'} $k$ 는 $${v.ints.join(',\\,')}$ 이므로 ${v.ans}개입니다.`);
+    return out;
+  };
+  const FORMULA12 = '<b>수평선으로 세는 실근</b><br>$f(x)=k$ 의 실근 = 곡선 $y=f(x)$ 와 수평선 $y=k$ 의 교점의 $x$좌표<br>· 극댓값 $M$, 극솟값 $m$ 이면 $m\\lt k\\lt M$ 에서 서로 다른 세 실근, 극값에 접하면 두 실근<br>· <b>양의 근</b>의 개수는 교점이 $y$축 오른쪽에 있는 것만 세고, $y$절편 $f(0)$ 과 $k$ 의 크기가 경계가 됩니다.';
+  function ruler12(b, co, ok, x, vb, labels) {
+    const w = 0.3, lo = vb.y0 + 0.05, hi = vb.y1 - 0.05;
+    let run = null;
+    const flush = (yEnd) => { if (run != null) { b.poly([[x - w, run], [x, run], [x, yEnd], [x - w, yEnd]], { fill: 'green', fillAlpha: 0.4, color: null, ref: 'strip' }); run = null; } };
+    const N = 220;
+    for (let i = 0; i <= N; i++) {
+      const y = lo + ((hi - lo) * i) / N;
+      if (ok(roots12(co, y))) { if (run == null) run = y; } else flush(y);
+    }
+    flush(hi);
+    for (let k = Math.ceil(lo); k <= Math.floor(hi); k++) {
+      const yes = ok(roots12(co, k));
+      b.point([x - w / 2, k], { color: yes ? 'green' : 'muted', hollow: !yes, r: yes ? 4.5 : 3.5, ref: 'strip' });
+      if (labels && yes) cxTag(b, [x, k], String(k), { color: 'green', size: 12.5, align: 'left', dx: 6, ref: 'ans' });
+    }
+  }
+  function drawExplore12(b, s) {
+    cxFocus(b, 'c12e', { x: [-2.2, 3.6], y: [-4.9, 2.5] });
+    const k = s.kk, cond = COND12[s.tgt], r = roots12(CO12, k);
+    if (s.grid) b.grid();
+    b.axes();
+    const vb = b.viewBox();
+    ruler12(b, CO12, cond.ok, vb.x0 + 0.55, vb);
+    b.hline(k, { color: 'sky', width: 2.6, glow: true, ref: 'k' });
+    b.plot(f12, { color: 'ink', width: 3.2, glow: true, ref: 'f' });
+    r.list.forEach((x) => b.point([x, k], { color: x > 1e-7 ? 'green' : x < -1e-7 ? 'rose' : 'amber', r: 6.5, ref: 'roots' }));
+    [[0, 0], [2, -4]].forEach((q) => b.point(q, { color: 'ink', hollow: true, r: 4.5 }));
+    cxTag(b, [0, 0], '극댓값 0', { color: 'muted', size: 12, align: 'left', dx: 10, dy: -12 });
+    cxTag(b, [2, -4], '극솟값 −4', { color: 'muted', size: 12, align: 'left', dx: 10, dy: 18 });
+    cxCurveTag(b, f12, 'y = f(x)', 'ink', { dy: -12, skip: [[0, 0, 1], [2, -4, 1]] });
+    b.handle('K', [3.0, k], { color: 'sky', label: `k = ${fmt(k)}`, dx: -12, dy: -14, align: 'right', ref: 'k',
+      drag: (w) => { let v = clamp(R10(w.y), -4.8, 2.4); [-4, -3, -2, -1, 0, 1, 2].forEach((z) => { if (Math.abs(v - z) < 0.07) v = z; }); s.kk = v; } });
+  }
+  function drawVar12(b, s, lab) {
+    const v = var12.cur(), st = cxStep(lab, s), f = v.f;
+    cxFocus(b, 'c12v' + v.sid, v.win);
+    if (s.grid) b.grid();
+    b.axes();
+    const vb = b.viewBox();
+    if (st >= 3 && v.type !== 'C') ruler12(b, v.co, v.ok, vb.x0 + 0.5, vb, st >= 4);
+    if (st >= 2) {
+      [v.M, v.m].forEach((y) => b.hline(y, { color: 'violet', width: 1.8, dash: true, ref: 'ext' }));
+    }
+    b.plot(f, { color: 'ink', width: 3.2, glow: true });
+    cxCurveTag(b, f, 'y = f(x)', 'ink', { side: 'left', dy: 14, skip: [[v.x0 - 1, v.M, 1.4], [v.x0 + 1, v.m, 1.4]], axis: 0.5 });
+    if (st >= 1) {
+      b.point([v.x0 - 1, v.M], { color: 'violet', r: 6, label: `극대 ${v.M}`, dx: -10, dy: -12, align: 'right', ref: 'ext' });
+      b.point([v.x0 + 1, v.m], { color: 'violet', r: 6, label: `극소 ${v.m}`, dx: 10, dy: 18, ref: 'ext' });
+    }
+    if (st >= 3) b.point([0, f(0)], { color: 'amber', r: 6, label: `f(0) = ${v.co[3]}`, dx: 10, dy: -12, ref: 'icpt' });
+    if (st >= 4 && v.type === 'C') [v.m, v.M].forEach((k) => cxTag(b, [vb.x0 + 0.2, k], `k = ${k}`, { color: 'green', size: 13, align: 'left', ref: 'ans' }));
+  }
+  function view12(s, lab) {
+    if (lab.tab !== 'explore') return { formula: FORMULA12 };
+    const k = s.kk, c = roots12(CO12, k), cond = COND12[s.tgt], ok = cond.ok(c);
+    const ints = intsWhere12(CO12, cond.ok, -6, 4);
+    return {
+      chips: [{ tex: 'f(x)=x^3-3x^2=k', color: 'sky' }, { html: '<b>● 양의 근</b>', color: 'green' }, { html: '<b>● 음의 근</b>', color: 'rose' }],
+      status: ok ? { tone: 'ok', text: `k = ${fmt(k)}: ${cond.name} — 조건 만족` } : { tone: 'info', text: `k = ${fmt(k)}: 서로 다른 실근 ${c.n}개 (양 ${c.pos} · 음 ${c.neg}${c.zero ? ' · 0 ' + c.zero : ''})` },
+      readouts: [
+        { label: '서로 다른 실근', value: `${c.n}개 (양 ${c.pos} · 음 ${c.neg}${c.zero ? ' · 영 ' + c.zero : ''})`, color: 'green', ref: 'roots' },
+        { label: '찾는 조건', value: cond.name, color: 'sky', ref: 'strip' },
+        { label: '조건을 만족하는 정수 k (−6~4)', value: ints.length ? `${ints.join(', ')}  (${ints.length}개)` : '없음', color: 'green', ref: 'strip', wide: true }
+      ],
+      formula: FORMULA12
+    };
+  }
+
+
+  /* ==========================================================================
+     옛 장면 1~5의 「새 문제」 (2026-11)
+     - 탐구 탭은 예전 그대로입니다. 정리·문제 탭만 변형 문제의 그림을 그립니다.
+     - 변형은 장면마다 같은 학습 포인트가 성립하는 함수족 안에서만 숫자를 바꿉니다.
+       1: f′ 가 중근이 아닌 두 근 / 중근(꼭짓점이 x축에 닿음) → 극값의 유무와 차    2: f′ 의 가운데 근 γ 가 끝 근에 포개질 때만 극대가 사라짐
+       3: 극댓값과 극솟값 사이에 −C 가 있을 때만 서로 다른 세 실근                   4: 꼭짓점의 높이 k 에서 접할 때만 h′ 의 부호가 바뀌지 않음
+       5: g(x)=∫ₐˣ f(t)dt 에서 g 의 극솟값이 0 이 되는 두 아래끝 (2 : 1 내분 관계)
+     ========================================================================== */
+  function cxBackToExplore(b, s, lab) {
+    if (b._cxKey === 'EXP') return;
+    b._cxKey = 'EXP';
+    const f = lab && lab.scene && lab.scene.focus;
+    const box = typeof f === 'function' ? f(s) : f;
+    if (box) b.setFocus(box, true);
+  }
+  const cxVarTab = () => { const l = window.lab; return !!l && l.tab !== 'explore'; };
+  const dsXm = (n) => (n === 0 ? 'x' : `(x${n > 0 ? '−' : '+'}${Math.abs(n)})`);   // 그림·단계 글용 (x−n)
+  const dsXt = (n) => (n === 0 ? 'x' : `(x${cxSub(n)})`);                         // TeX 용 (x−n)
+  const dsKs = (a) => { const k = 3 * a; return Number.isInteger(k) ? (k === 1 ? '' : k === -1 ? '-' : String(k)) : cxFrac(Math.round(k * 4), 4).tex; };
+  const cxN = (v, d = 2) => { const r = +v.toFixed(d); return String(Object.is(r, -0) ? 0 : r).replace('-', '−'); };
+  const dsKp = (a) => { const k = 3 * a; if (Number.isInteger(k)) return k === 1 ? '' : k === -1 ? '−' : String(k).replace('-', '−'); const r = cxRatOf2(k); return `${r.n < 0 ? '−' : ''}${Math.abs(r.n)}/${r.d}`; }; // 그림·단계 글용 3a
+  const dsU = (str) => str.replace(/\^2/g, '²').replace(/\^3/g, '³');
+  const dsStepNow = (lab, s) => (lab && lab.tab === 'review' ? s.step : 0);
+  const dsRange = (fn, x0, x1) => { let lo = Infinity, hi = -Infinity; for (let i = 0; i <= 80; i++) { const y = fn(x0 + ((x1 - x0) * i) / 80); lo = Math.min(lo, y); hi = Math.max(hi, y); } return [lo, hi]; };
+  // 함수 f(검정)와 도함수 f′(하늘색)를 한 그림에 겹쳐 그립니다(위아래로 쪼개면 휴대폰에서 그림이 너무 작아집니다).
+  // showTop 이 아니면(문제 탭·정리 1단계) 도함수만 보이는 창으로, 함수는 풀이 단계에서 드러납니다.
+  function dsFrame(b, s, key, v, showTop, drawTop, drawBot, syncXs) {
+    const uy = [Math.min(v.win.y[0], v.dwin[0]), Math.max(v.win.y[1], v.dwin[1]) + (v.topExtra || 0)];
+    cxFocus(b, key + (showTop ? 'D' : 'S'), { x: v.win.x, y: showTop ? uy : v.dwin });
+    b.use('main');
+    if (s.grid) b.grid();
+    b.axes();
+    if (showTop && syncXs) syncXs.forEach(([x, col]) => b.vline(x, { color: col, alpha: 0.5, width: 1.5, dash: true }));
+    drawBot();
+    if (showTop) drawTop();
+  }
+  const dsCommonBar = (b, x0, x1, ytop, txt, col, ref) => cxTag(b, [(x0 + x1) / 2, ytop], txt, { color: col, size: 12.5, dy: -12, ref });
+
+  /* ===== 변형 1 · f′ 의 중근이 아닌 두 근 / 중근 → 극값 ===== */
+  const DS1 = [[1, 1], [2, 1], [-1, 1], [1 / 2, 1], [1 / 4, 2]];
+  function mkD1(first, a, c, h) {
+    const p = c - h, r = c + h, e = 2 * Math.abs(a) * h * h * h;
+    const f1 = (x) => a * (Math.pow(x - c, 3) - 3 * h * h * (x - c)), f1p = (x) => 3 * a * ((x - c) * (x - c) - h * h);
+    const f2 = (x) => a * Math.pow(x - c, 3), f2p = (x) => 3 * a * (x - c) * (x - c);
+    const dy = 4 * Math.abs(a) * Math.pow(h, 3), fl = 3 * Math.abs(a) * h * h;
+    const x0 = c - h - 1.8, x1 = c + h + 2.6;
+    const ymax = e + 0.3;
+    return { first, a, c, h, p, r, e, dy, fl, f1, f1p, f2, f2p, topExtra: 1.2, win: { x: [x0, x1], y: [-(ymax + 1.2), ymax + 1.2] },
+      dwin: a > 0 ? [-fl - 1.2, 1.2 + 0.5 * fl] : [-1.2 - 0.5 * fl, fl + 1.2] };
+  }
+  const varD1 = cxVarier((prev) => {
+    if (!prev) return Object.assign(mkD1(true, 1, 1, 1), { win: { x: [-1.0, 3.0], y: [-3.8, 3.8] }, dwin: [-3.6, 1.5] });
+    let v;
+    for (let tr = 0; tr < 200; tr++) {
+      const [a, h] = cxPick(DS1), c = cxPick([-1, 0, 1, 2]);
+      v = mkD1(false, a, c, h);
+      if (prev.a === a && prev.c === c && prev.h === h) continue;
+      if ((v.win.y[1] - v.win.y[0]) + (v.dwin[1] - v.dwin[0]) > 3.0 * (v.win.x[1] - v.win.x[0])) continue;
+      break;
+    }
+    return v;
+  });
+  const fpTex1 = (v) => `${dsKs(v.a)}${dsXt(v.p)}${dsXt(v.r)}`;
+  const fpTexD = (v) => `${dsKs(v.a)}${dsXt(v.c)}^2`;
+  const text1 = (v) => (v.first ? examData[1].question() : `삼차함수 ${tex('f(x)')}의 도함수 ${tex("y = f'(x)")}가 ${tex(`f'(x) = ${fpTex1(v)}`)} 일 때와 ${tex(`f'(x) = ${fpTexD(v)}`)} 일 때, 함수 ${tex('f(x)')}가 극값을 갖는지 여부를 판별하고 극댓값과 극솟값의 차를 구하시오.`);
+  const ans1 = (v) => (v.first ? examData[1].answerBadge() : `중근이 아닌 두 근일 때 극값의 차 ${tex(`= ${cxNum2(v.dy)}`)} / 중근일 때 극값 없음`);
+  function cxNum2(x) { const r = cxRatOf2(x); return r.d === 1 ? String(r.n) : `\\dfrac{${r.n}}{${r.d}}`; }
+  function cxRatOf2(x) { for (let d = 1; d <= 120; d++) { const n = Math.round(x * d); if (Math.abs(x * d - n) < 1e-9) { const g = (a, c) => (c ? g(c, a % c) : Math.abs(a)); const k = g(n, d) || 1; return { n: n / k, d: d / k }; } } return { n: x, d: 1 }; }
+  const steps1 = (v) => (v.first ? examData[1].steps : [
+    `1단계 · f′(x)=${dsKp(v.a)}${dsXm(v.p)}${dsXm(v.r)}과 f′(x)=${dsKp(v.a)}${dsXm(v.c)}²의 근과 중근 여부를 표시합니다.`,
+    '2단계 · 각 근의 양쪽에서 f′의 부호를 읽어 f의 증가·감소와 극값을 연결합니다.',
+    `3단계 · f′=${dsKp(v.a)}${dsXm(v.p)}${dsXm(v.r)}과 x축 사이의 넓이로 f(${v.p})과 f(${v.r})의 높이 차를 비교합니다.`]);
+  const std1 = (v) => {
+    if (v.first) return examData[1].textbook();
+    const k = Math.abs(v.a) === 1 ? '' : cxNum2(3 * Math.abs(v.a));
+    return {
+      steps: `① ${tex(`f'(x) = ${fpTex1(v)} = 0`)} 에서 ${tex(`x = ${v.p}, ${v.r}`)} 구하기<br/>
+② 증감표를 그리고 각 구간의 ${tex('x')}값을 대입해 ${tex("f'(x)")} 의 부호 ${v.a > 0 ? tex('+, -, +') : tex('-, +, -')} 기입<br/>
+③ ${tex(`f(${v.p}) - f(${v.r}) = -\\displaystyle\\int_{${v.p}}^{${v.r}} f'(x)\\,dx = ${v.a > 0 ? '' : '-'}${cxNum2(v.dy)}`)} 를 계산합니다. (${tex(`f'(x) = ${fpTexD(v)}`)} 는 ${tex(`x=${v.c}`)} 의 양쪽에서 부호가 바뀌지 않으므로 극값이 없습니다.)`,
+      warning: examData[1].textbook().warning
+    };
+  };
+  const quick1 = (v) => {
+    if (v.first) return examData[1].shortcut();
+    return {
+      steps: `① 도함수 ${tex("f'(x)")}의 그래프가 ${tex('x')}축과 만나고 그 점의 <strong>양쪽에서 부호가 바뀔 때</strong>(중근이 아닌 근)만 극값이 생깁니다.<br/>
+② 도함수의 그래프가 ${tex('x')}축에 <strong>접할 때(중근)</strong>는 극값이 아닙니다. ${tex(`f'(x) = ${fpTexD(v)}`)} 는 ${tex(`x=${v.c}`)} 에서 접하므로 ${tex('f')}는 기울기가 0이 되는 점을 지나도 <strong class="text-purple-300">계속 ${v.a > 0 ? '증가' : '감소'}</strong>합니다.<br/>
+③ ${tex(`f'(x) = ${fpTex1(v)}`)} 와 ${tex('x')}축 사이의 넓이 <strong class="text-sky-300">${tex(`S = \\dfrac{|${cxNum2(3 * Math.abs(v.a))}|}{6}(${v.r - v.p})^3 = ${cxNum2(v.dy)}`)}</strong> 가 곧 극댓값과 극솟값의 차입니다.`,
+      highlight: examData[1].shortcut().highlight
+    };
+  };
+  function draw1(b, s, lab) {
+    const v = varD1.cur(), st = dsStepNow(lab, s), dual = st >= 2;
+    const mx = v.a > 0 ? 1 : -1, tp = v.a > 0 ? '극대' : '극소', tq = v.a > 0 ? '극소' : '극대';
+    dsFrame(b, s, 'd1v' + v.sid, v, dual, () => {
+      b.plot(v.f2, { color: 'violet', width: 2.4, dash: true, ref: 'F2' });
+      b.plot(v.f1, { color: 'ink', width: 3.2, glow: true, ref: 'F' });
+      b.point([v.p, v.f1(v.p)], { color: 'rose', r: 6, ref: 'A', label: `${tp}`, dx: -10, dy: v.a > 0 ? -13 : 16, align: 'right' });
+      b.point([v.r, v.f1(v.r)], { color: 'green', r: 6, ref: 'B', label: `${tq}`, dx: 10, dy: v.a > 0 ? 16 : -13 });
+      if (st >= 3) {
+        const xr = v.r + 0.9, ya = v.f1(v.p), yb = v.f1(v.r);
+        b.seg([v.p, ya], [xr, ya], { color: 'rose', alpha: 0.65, width: 1.8, dash: true, ref: 'dy' });
+        b.seg([v.r, yb], [xr, yb], { color: 'sky', alpha: 0.65, width: 1.8, dash: true, ref: 'dy' });
+        b.seg([xr, ya], [xr, yb], { color: 'amber', width: 3, ref: 'dy' });
+        cxTag(b, [xr, ya - 0.25 * (ya - yb)], `Δy = ${exactStr(v.dy)}`, { color: 'amber', dx: 8, align: 'left', ref: 'dy' });
+      }
+    }, () => {
+      if (st >= 3) { const pts = [[v.p, 0]]; for (let i = 0; i <= 60; i++) { const x = v.p + ((v.r - v.p) * i) / 60; pts.push([x, v.f1p(x)]); } pts.push([v.r, 0]); b.poly(pts, { fill: 'sky', fillAlpha: 0.28, color: null, ref: 'dy' }); }
+      b.plot(v.f2p, { color: 'violet', width: 2.4, dash: true, ref: 'F2' });
+      b.plot(v.f1p, { color: 'sky', width: 2.8, glow: true, ref: 'F' });
+      const rr = b.paneRect();
+      b.stext(rr.x + 12, rr.y + 16, `f′ = ${dsKp(v.a)}${dsXm(v.p)}${dsXm(v.r)}`, { color: 'sky', size: 12.5, align: 'left', ref: 'F' });
+      b.stext(rr.x + 12, rr.y + 33, `f′ = ${dsKp(v.a)}${dsXm(v.c)}²  (점선)`, { color: 'violet', size: 12.5, align: 'left', ref: 'F2' });
+      if (st >= 1) {
+        b.point([v.p, 0], { color: 'rose', r: 5, ref: 'A', label: `x=${cxN(v.p)}`, dx: -9, dy: v.a > 0 ? 17 : -14, align: 'right' });
+        b.point([v.r, 0], { color: 'green', r: 5, ref: 'B', label: `x=${cxN(v.r)}`, dx: 9, dy: v.a > 0 ? 17 : -14 });
+        b.point([v.c, 0], { color: 'violet', r: 5, ref: 'F2', label: `x=${cxN(v.c)} (중근)`, dx: 0, dy: v.a > 0 ? -16 : 17, align: 'center' });
+      }
+      if (st >= 2) {
+        const rr2 = b.paneRect(), up = v.a > 0;
+        b.stext(rr2.x + 12, rr2.y + 50, `f′ 부호: ${up ? '+ → − → +' : '− → + → −'}  (f: ${up ? '증가 → 감소 → 증가' : '감소 → 증가 → 감소'})`, { color: 'amber', size: 12.5, align: 'left', ref: 'F' });
+      }
+    }, [[v.p, 'rose'], [v.c, 'violet'], [v.r, 'green']]);
+  }
+  function exactStr(x) { const r = cxRatOf2(x); return r.d === 1 ? String(r.n) : `${r.n}/${r.d}`; }
+
+  /* ===== 변형 2 · 삼차 도함수의 가운데 근 γ 와 사차함수의 극대 ===== */
+  const DS2 = [[-1, 3], [-2, 2], [-2, 1], [0, 3], [-1, 2], [1, 4], [0, 4]];
+  function mkD2(first, p, r) {
+    const gm = (p + r) / 2;
+    const f = (g) => (x) => (x - p) * (x - g) * (x - r);
+    const x0 = p - 1.3, x1 = r + 1.3;
+    const ys = [...dsRange(f(gm), p, r), ...dsRange(f(p), p, r), ...dsRange(f(r), p, r)];
+    const lo = Math.min(...ys, 0), hi = Math.max(...ys, 0), sp = hi - lo;
+    return { first, p, r, f, gm, win: { x: [x0, x1], y: [lo - 0.35 * sp - 0.8, hi + 0.35 * sp + 0.8] } };
+  }
+  const varD2 = cxVarier((prev) => {
+    if (!prev) return Object.assign(mkD2(true, -1, 3), { win: { x: [-2.0, 4.0], y: [-10, 13] } });
+    let v; do { const [p, r] = cxPick(DS2); v = mkD2(false, p, r); } while (v.p === prev.p && v.r === prev.r);
+    return v;
+  });
+  const fp2 = (v) => `a${dsXt(v.p)}(x-\\gamma)${dsXt(v.r)}`;
+  const text2 = (v) => (v.first ? examData[2].question() : `사차함수 ${tex('f(x)')}의 도함수 ${tex(`f'(x) = ${fp2(v)} \\; (a>0)`)} 에 대하여, 함수 ${tex('f(x)')}가 극댓값을 갖지 않도록 하는 상수 ${tex(`\\gamma \\; (${v.p} \\le \\gamma \\le ${v.r})`)}의 값과 그때의 극소점의 ${tex('x')}좌표를 구하시오.`);
+  const ans2 = (v) => (v.first ? examData[2].answerBadge() : `${tex(`\\gamma = ${v.p}`)} (극소 ${tex(`x=${v.r}`)}) 또는 ${tex(`\\gamma = ${v.r}`)} (극소 ${tex(`x=${v.p}`)})`);
+  const steps2 = (v) => (v.first ? examData[2].steps : [
+    `1단계 · f′(x)=a(x${v.p >= 0 ? '−' : '+'}${Math.abs(v.p)})(x−γ)(x${v.r >= 0 ? '−' : '+'}${Math.abs(v.r)})의 근 ${v.p}, γ, ${v.r}과 γ의 범위를 표시합니다.`,
+    `2단계 · γ가 ${v.p}과 ${v.r} 사이에 있을 때와 양 끝의 근과 같아질 때 도함수의 부호 변화를 비교합니다.`,
+    '3단계 · 극대가 사라지는 경계에서 중근이 아닌 나머지 근의 위치를 함수 f의 극소점으로 읽습니다.']);
+  const std2 = (v) => {
+    if (v.first) return examData[2].textbook();
+    return {
+      steps: `① 사차함수(${tex('a > 0')})가 극댓값을 가지려면 도함수 ${tex("f'(x) = 0")} 이 서로 다른 세 실근을 가져야 함<br/>
+② 따라서 극댓값을 갖지 않으려면 도함수 ${tex("f'(x) = 0")} 이 중근 또는 삼중근, 허근을 가져야 함<br/>
+③ ${tex(`\\gamma = ${v.p}`)} 일 때와 ${tex(`\\gamma = ${v.r}`)} 일 때 각각 증감표를 작성하여 부호 변화를 조사합니다.`,
+      warning: examData[2].textbook().warning
+    };
+  };
+  const quick2 = (v) => {
+    if (v.first) return examData[2].shortcut();
+    return {
+      steps: `① 최고차항의 계수가 양수인 사차함수가 <strong>극댓값을 갖지 않으려면</strong> 삼차 도함수 ${tex("f'(x)")}의 부호가 ${tex('(+) \\to (-)')}로 바뀌는 곳이 없어야 합니다.<br/>
+② 따라서 가운데 근 ${tex('\\gamma')}가 양 끝 근과 같아져 <strong>중근(${tex(`\\gamma = ${v.p}`)} 또는 ${tex(`\\gamma = ${v.r}`)})</strong>이 되어야 합니다.<br/>
+③ ${tex(`\\gamma = ${v.p}`)} 이면 ${tex(`x = ${v.p}`)} 에서는 <strong>부호가 바뀌지 않아 극값이 아니고</strong>, 부호가 ${tex('(-)\\to(+)')}로 바뀌는 <strong class="text-emerald-300">${tex(`x = ${v.r}`)} 만 유일한 극소점</strong>입니다.`,
+      highlight: examData[2].shortcut().highlight
+    };
+  };
+  function draw2(b, s, lab) {
+    const v = varD2.cur(), st = dsStepNow(lab, s);
+    cxFocus(b, 'd2v' + v.sid, v.win);
+    if (s.grid) b.grid({ step: 1, stepY: niceInt(30 / b.ky) });
+    b.axes({ tickStep: 1, tickStepY: niceInt(44 / b.ky), yLabel: "y′" });
+    if (st >= 2) {
+      b.plot(v.f(v.p), { color: 'rose', width: 2.6, ref: 'g1' });
+      b.plot(v.f(v.r), { color: 'green', width: 2.6, ref: 'g2' });
+    }
+    b.plot(v.f(v.gm), { color: 'sky', width: 3, glow: true, dash: st < 2 ? false : true, ref: 'F' });
+    const lab1 = st >= 2 ? 'γ가 가운데' : 'y = f′(x) (γ가 가운데일 때의 예)';
+    cxCurveTag(b, v.f(v.gm), lab1, 'sky', { side: 'right', dy: -12, skip: [[v.p, 0, 1.2], [v.r, 0, 1.2]], axis: 0.4 });
+    const y0 = 0;
+    b.point([v.p, y0], { color: 'amber', r: 5.5, ref: 'roots', label: `x=${cxN(v.p)}`, dx: -9, dy: -14, align: 'right' });
+    b.point([v.r, y0], { color: 'amber', r: 5.5, ref: 'roots', label: `x=${cxN(v.r)}`, dx: 9, dy: -14 });
+    // γ 의 범위: 두 근 사이를 막대로
+    const ry = (b.viewBox().y0 + (b.viewBox().y1 - b.viewBox().y0) * 0.09);
+    b.seg([v.p, ry], [v.r, ry], { color: 'violet', width: 4, ref: 'range' });
+    b.point([v.p, ry], { color: 'violet', r: 4.5, ref: 'range' });
+    b.point([v.r, ry], { color: 'violet', r: 4.5, ref: 'range' });
+    cxTag(b, [(v.p + v.r) / 2, ry], `γ의 범위 ${v.p} ≤ γ ≤ ${v.r}`.replace(/-/g, '−'), { color: 'violet', size: 12.5, dy: -13, ref: 'range' });
+    if (st >= 1) b.point([v.gm, 0], { color: 'sky', r: 5.5, ref: 'F', label: 'γ', dx: 0, dy: 17, align: 'center' });
+    if (st >= 3) {
+      b.point([v.r, 0], { color: 'green', hollow: true, r: 9, ref: 'g2' });
+      b.point([v.p, 0], { color: 'rose', hollow: true, r: 9, ref: 'g1' });
+      cxTag(b, [v.r, 0], `γ=${cxN(v.p)} → 극소 x=${cxN(v.r)}`, { color: 'rose', size: 12, dx: 12, dy: 20, align: 'left', ref: 'g1' });
+      cxTag(b, [v.p, 0], `γ=${cxN(v.r)} → 극소 x=${cxN(v.p)}`, { color: 'green', size: 12, dx: -12, dy: 38, align: 'right', ref: 'g2' });
+    }
+  }
+
+  /* ===== 변형 3 · 극댓값과 극솟값 사이에 −C 가 있을 때만 서로 다른 세 실근 ===== */
+  function mkD3(first, a, x1) {
+    const x2 = x1 + 2, F = (x) => a * (x * x * x - 3 * (x1 + 1) * x * x + 3 * x1 * (x1 + 2) * x), M = F(x1), m = F(x2);
+    const co = [a, -3 * a * (x1 + 1), 3 * a * x1 * (x1 + 2)];
+    return { first, a, x1, x2, F, M, m, co, win: { x: [x1 - 2.4, x2 + 2.4], y: [m - 0.28 * (M - m) - 1.0, M + 0.28 * (M - m) + 1.0] } };
+  }
+  const varD3 = cxVarier((prev) => {
+    if (!prev) return Object.assign(mkD3(true, 1, 0), { win: { x: [-1.2, 3.2], y: [-5.2, 5.8] } });
+    let v; do { v = mkD3(false, cxPick([1, 1, 2]), cxPick([-3, -2, -1, 0, 1, 2, 3])); } while (v.a === prev.a && v.x1 === prev.x1);
+    return v;
+  });
+  const eq3 = (v) => `${cxPoly([v.a, v.co[1], v.co[2], 0])}+C`;
+  const text3 = (v) => (v.first ? examData[3].question() : `삼차방정식 ${tex(`${eq3(v)} = 0`)} 이 서로 다른 세 실근을 갖도록 하는 상수 ${tex('C')}의 값의 범위와, 중근과 다른 한 실근(총 2개의 실근)을 갖도록 하는 ${tex('C')}의 값을 구하시오.`);
+  const ans3 = (v) => (v.first ? examData[3].answerBadge() : `세 실근: ${tex(`${-v.M} < C < ${-v.m}`)} / 두 실근: ${tex(`C = ${-v.M}, \\; ${-v.m}`)}`);
+  const steps3 = (v) => (v.first ? examData[3].steps : [
+    `1단계 · F(x)=${dsU(cxPoly([v.a, v.co[1], v.co[2], 0]))}+C를 미분하여 극대 x=${v.x1}, 극소 x=${v.x2}를 찾습니다.`,
+    '2단계 · 두 극값 F(' + v.x1 + '), F(' + v.x2 + ')를 계산하고, 삼차함수의 양 끝의 방향과 함께 x축과의 위치를 표시합니다.',
+    '3단계 · 극값 사이에서 x축과 세 번 만나는 경우와, 극값에서 x축에 접하는 경계의 C를 구별합니다.']);
+  const std3 = (v) => {
+    if (v.first) return examData[3].textbook();
+    return {
+      steps: `① ${tex(`f(x) = ${eq3(v)}`)} 로 두고 미분: ${tex(`f'(x) = ${cxPoly([3 * v.a, 2 * v.co[1], v.co[2]])} = ${v.a === 1 ? '3' : '6'}${dsXt(v.x1)}${dsXt(v.x2)} = 0`)}<br/>
+② 극댓값 ${tex(`f(${v.x1}) = ${v.M} + C`)}, 극솟값 ${tex(`f(${v.x2}) = ${v.m} + C`)} 계산<br/>
+③ 서로 다른 세 실근을 가질 조건 ${tex(`f(${v.x1})f(${v.x2}) < 0`)} 부등식 풀이:<br/>
+&nbsp;&nbsp;${tex(`(C${cxPl(v.M)})(C${cxPl(v.m)}) < 0 \\implies ${-v.M} < C < ${-v.m}`)}<br/>
+④ 중근을 가질 조건 ${tex(`f(${v.x1})f(${v.x2}) = 0 \\implies C = ${-v.M}`)} 또는 ${tex(`C = ${-v.m}`)} 입니다.`,
+      warning: examData[3].textbook().warning
+    };
+  };
+  const quick3 = (v) => {
+    if (v.first) return examData[3].shortcut();
+    return {
+      steps: `① 극댓값과 극솟값의 높이 차(= 도함수 ${tex(`${v.a === 1 ? '3' : '6'}${dsXt(v.x1)}${dsXt(v.x2)}`)} 와 ${tex('x')}축 사이의 넓이)는 <strong class="text-sky-300">${tex(`\\Delta y = ${v.M - v.m}`)}</strong> 이고, ${tex(`C = ${-v.M}`)} 일 때 극대점 ${tex(`x = ${v.x1}`)} 에서 ${tex('x')}축에 접합니다(극댓값 0, 극솟값 ${-(v.M - v.m)}).<br/>
+② 따라서 그래프를 위로 ${tex(`${-v.M}`)}보다 크고 ${tex(`${-v.m}`)}보다 작게 올릴 때, 즉 ${tex('x')}축이 극댓값과 극솟값 사이에 있을 때만 세 점에서 만납니다.<br/>
+③ 따라서 <strong class="text-amber-300">세 실근: ${tex(`${-v.M} < C < ${-v.m}`)}</strong>, <strong class="text-pink-300">중근(접함): ${tex(`C = ${-v.M}, \\; ${-v.m}`)}</strong> 입니다.`,
+      highlight: examData[3].shortcut().highlight
+    };
+  };
+  function draw3(b, s, lab) {
+    const v = varD3.cur(), st = dsStepNow(lab, s), F = v.F;
+    cxFocus(b, 'd3v' + v.sid, v.win);
+    if (s.grid) b.grid();
+    b.axes();
+    const vb = b.viewBox();
+    if (st >= 3) {
+      b.poly([[vb.x0, v.m], [vb.x1, v.m], [vb.x1, v.M], [vb.x0, v.M]], { fill: 'green', fillAlpha: 0.14, color: null, ref: 'band' });
+    }
+    if (st >= 2) {
+      [v.M, v.m].forEach((y) => b.hline(y, { color: 'violet', width: 1.8, dash: true, ref: 'ext' }));
+    }
+    b.plot(F, { color: 'ink', width: 3.2, glow: true });
+    cxCurveTag(b, F, dsU(`y = ${cxPoly([v.a, v.co[1], v.co[2], 0])}`), 'ink', { side: 'left', dy: 14, skip: [[v.x1, v.M, 1.6], [v.x2, v.m, 1.6]], axis: 0.8 });
+    if (st >= 1) {
+      b.point([v.x1, v.M], { color: 'rose', r: 6, ref: 'ext', label: `x = ${cxN(v.x1)} (극대)`, dx: -10, dy: -13, align: 'right' });
+      b.point([v.x2, v.m], { color: 'green', r: 6, ref: 'ext', label: `x = ${cxN(v.x2)} (극소)`, dx: 10, dy: 17 });
+    }
+    if (st >= 2) {
+      cxTag(b, [(v.x1 + v.x2) / 2, v.M], `y = ${cxN(v.M)}`, { color: 'violet', size: 12, align: 'center', dy: -11, ref: 'ext' });
+      cxTag(b, [(v.x1 + v.x2) / 2, v.m], `y = ${cxN(v.m)}`, { color: 'violet', size: 12, align: 'center', dy: 15, ref: 'ext' });
+    }
+    if (st >= 3) {
+      b.stext(12, 18, `y = −C 가 초록 띠 안이면 세 실근: ${cxN(-v.M)} < C < ${cxN(-v.m)}`, { color: 'green', size: 12.5, align: 'left', ref: 'band' });
+      b.stext(12, 36, `띠의 경계(C = ${cxN(-v.M)}, ${cxN(-v.m)})에서는 두 실근`, { color: 'violet', size: 12.5, align: 'left', ref: 'ext' });
+    }
+  }
+
+  /* ===== 변형 4 · 도함수의 그래프와 직선 g′ = k 가 접할 때 ===== */
+  const DS4 = [[1, -1], [1, 1], [2, -1], [1, 2], [-1, 1], [-1, -1], [2, 1], [1, -2]];
+  function mkD4(first, a, c, e) {
+    const fp = (x) => 3 * a * (x - c) * (x - c) + e;
+    const lo = a > 0 ? e - 2.2 : e - 7, hi = a > 0 ? e + 7 : e + 2.2;
+    const w = Math.sqrt(6.5 / (3 * Math.abs(a)));
+    return { first, a, c, e, fp, win: { x: [c - w - 0.6, c + w + 0.6], y: [Math.min(lo, -1), Math.max(hi, 1)] } };
+  }
+  const varD4 = cxVarier((prev) => {
+    if (!prev) return Object.assign(mkD4(true, 1, 1, -3), { win: { x: [-0.6, 2.9], y: [-4.4, 5.2] } });
+    let v; do { const [a, e] = cxPick(DS4); v = mkD4(false, a, cxPick([-1, 0, 1, 2]), e); } while (v.a === prev.a && v.c === prev.c && v.e === prev.e);
+    return v;
+  });
+  const fpTex4 = (v) => `f'(x) = ${dsKs(v.a)}${dsXt(v.c)}^2${v.e === 0 ? '' : cxPl(v.e)}`;
+  const text4 = (v) => (v.first ? examData[4].question() : `삼차함수 ${tex('f(x)')}의 도함수 ${tex(fpTex4(v))} 과 일차함수 ${tex('g(x)')}의 도함수 ${tex("g'(x) = k")} 의 그래프가 오직 한 점에서 만나도록(접하도록) 하는 상수 ${tex('k')}의 값과, 그때 함수 ${tex('h(x) = f(x) - g(x)')} 의 극값의 개수를 구하시오.`);
+  const ans4 = (v) => (v.first ? examData[4].answerBadge() : `${tex(`k = ${v.e}`)}, ${tex('h(x)')}의 극값은 ${tex('0')}개 (항상 ${v.a > 0 ? '증가' : '감소'})`);
+  const steps4 = (v) => (v.first ? examData[4].steps : [
+    '1단계 · h=f−g에서 h′=f′−g′를 세우고, 포물선 f′와 수평선 g′=k의 상대적인 위치를 봅니다.',
+    '2단계 · 두 그래프가 한 점에서 접할 때 포물선의 꼭짓점의 높이를 k의 조건으로 연결합니다.',
+    '3단계 · 접점 양쪽에서 h′의 부호가 바뀌는지 살펴 h의 극값의 개수를 판단합니다.']);
+  const std4 = (v) => {
+    if (v.first) return examData[4].textbook();
+    return {
+      steps: `① ${tex('h(x) = f(x) - g(x)')} 로 두면 ${tex(`h'(x) = f'(x) - g'(x) = ${dsKs(v.a)}${dsXt(v.c)}^2${v.e === 0 ? '' : cxPl(v.e)} - k`)}<br/>
+② 두 도함수의 그래프가 한 점에서 접하려면 판별식 ${tex('D = 0')} 이어야 하므로 ${tex(`${v.e} - k = 0 \\implies k = ${v.e}`)}<br/>
+③ 이때 ${tex(`h'(x) = ${dsKs(v.a)}${dsXt(v.c)}^2 ${v.a > 0 ? '\\ge' : '\\le'} 0`)} 이므로 모든 실수에서 ${v.a > 0 ? '증가' : '감소'}하여 극값을 갖지 않습니다.`,
+      warning: examData[4].textbook().warning
+    };
+  };
+  const quick4 = (v) => {
+    if (v.first) return examData[4].shortcut();
+    return {
+      steps: `① ${tex("h'(x) = f'(x) - g'(x)")} 이므로, 도함수의 그래프에서 직선 ${tex("y = g'(x)")} 를 <strong class="text-purple-300">기준</strong>으로 ${tex("f'(x)")} 의 그래프를 봅니다.<br/>
+② ${tex("f'(x)")}가 ${tex("g'(x)")}보다 위에 있으면 ${tex("h'(x) > 0")} (증가↗), 아래에 있으면 ${tex("h'(x) < 0")} (감소↘)입니다.<br/>
+③ 꼭짓점의 높이 <strong class="text-amber-300">${tex(`k = ${v.e}`)}</strong> 에서 접하면 ${tex("h'(x)")} 의 부호가 ${v.a > 0 ? tex('(+) \\to 0 \\to (+)') : tex('(-) \\to 0 \\to (-)')} 로 바뀌지 않으므로 ${tex('h(x)')}는 <strong class="text-emerald-300">극값이 0개</strong>입니다.`,
+      highlight: examData[4].shortcut().highlight
+    };
+  };
+  function draw4(b, s, lab) {
+    const v = varD4.cur(), st = dsStepNow(lab, s), fp = v.fp;
+    cxFocus(b, 'd4v' + v.sid, v.win);
+    if (s.grid) b.grid();
+    b.axes({ yLabel: "y′" });
+    const vb = b.viewBox();
+    if (st >= 1) {
+      const d = v.a > 0 ? 1.4 : -1.4;
+      [[v.e + d, '교점 2개', 'muted'], [v.e - d, '교점 0개', 'muted']].forEach(([y, t, col]) => {
+        b.hline(y, { color: col, width: 1.6, dash: true, ref: 'k0' });
+        cxTag(b, [v.c + 1.3, y], t, { color: col, size: 12, align: 'center', dy: -10, ref: 'k0' });
+      });
+    }
+    if (st >= 2) b.hline(v.e, { color: 'violet', width: 2.8, glow: true, ref: 'k' });
+    b.plot(fp, { color: 'sky', width: 3, glow: true, ref: 'F' });
+    cxCurveTag(b, fp, "y = f′(x)", 'sky', { side: 'left', dy: v.a > 0 ? -13 : 15, skip: [[v.c, v.e, 1.8]], axis: 0.8 });
+    if (st >= 2) {
+      b.point([v.c, v.e], { color: 'amber', r: 6, ref: 'k', label: `꼭짓점 (${cxN(v.c)}, ${cxN(v.e)})`, dx: 11, dy: v.a > 0 ? 17 : -14 });
+      cxTag(b, [vb.x0 + 0.1, v.e], `y = k = ${cxN(v.e)}`, { color: 'violet', size: 12.5, align: 'left', dy: v.a > 0 ? 15 : -11, ref: 'k' });
+    }
+    if (st >= 3) b.stext(12, 18, `h′ = f′ − g′ ${v.a > 0 ? '≥' : '≤'} 0 : 부호가 바뀌지 않음 → 극값 0개`, { color: 'green', size: 12.5, align: 'left', ref: 'k' });
+  }
+
+  /* ===== 변형 5 · g(x)=∫ₐˣ f(t)dt 의 극솟값이 0 이 되는 a ===== */
+  function mkD5(first, p) {
+    const r = p + 2, s2 = p - 1;       // f(x)=3(x−p)(x−r): g 는 x=r 에서 극소, g(r)=0 이면 a = r 또는 a = p−1
+    const F = (x) => x * x * x - 3 * (p + 1) * x * x + 3 * p * (p + 2) * x;
+    const g = (x) => F(x) - F(r), fp = (x) => 3 * (x - p) * (x - r);
+    const M = g(p);
+    const x0 = Math.min(s2, p) - 1.7, x1 = r + 1.7;
+    return { first, p, r, s2, g, fp, M, win: { x: [x0, x1], y: [-3.4, M + 1.8] }, dwin: [-3 - 1.2, 2.2 + 0.5 * 3] };
+  }
+  const varD5 = cxVarier((prev) => {
+    if (!prev) return Object.assign(mkD5(true, 0), { win: { x: [-1.8, 3.5], y: [-3.2, 6.6] }, dwin: [-5.0, 1.8] });
+    let v; do { v = mkD5(false, cxPick([-3, -2, -1, 0, 1, 2])); } while (v.p === prev.p);
+    return v;
+  });
+  const fTex5 = (v) => `f(x) = 3${dsXt(v.p)}${dsXt(v.r)}`;
+  const text5 = (v) => (v.first ? examData[5].question() : `이차함수 ${tex(fTex5(v))} 에 대하여 함수 ${tex('g(x) = \\displaystyle\\int_{a}^{x} f(t)\\,dt')} 가 극솟값 ${tex('0')}을 갖도록(즉 ${tex('x')}축에 극소점이 접하도록) 하는 모든 상수 ${tex('a')}의 값을 구하시오.`);
+  const ans5 = (v) => (v.first ? examData[5].answerBadge() : `${tex(`a = ${v.r}`)} (극소점) 또는 ${tex(`a = ${v.s2}`)} (x축과 다시 만나는 점)`);
+  const steps5 = (v) => (v.first ? examData[5].steps : [
+    `1단계 · g(x)=∫ₐˣ3${dsXm(v.p)}${dsXm(v.r)}dt에서 g′(x)=3${dsXm(v.p)}${dsXm(v.r)}와 g(a)=0을 표시합니다.`,
+    `2단계 · x=${v.p}, ${v.r}의 양쪽에서 피적분함수의 부호를 살펴 g의 극대·극소 위치를 찾습니다.`,
+    `3단계 · g(${v.r})=0 조건을 ∫ₐ${v.r}3${dsXm(v.p)}${dsXm(v.r)}dt=0으로 바꾸어 아래끝 a를 구합니다.`]);
+  const std5 = (v) => {
+    if (v.first) return examData[5].textbook();
+    const c2 = 3 * (v.p + 1), c1 = 3 * v.p * (v.p + 2), Fr = v.r * v.r * v.r - c2 * v.r * v.r + c1 * v.r, Fx = cxPoly([1, -c2, c1, 0]);
+    return {
+      steps: `① ${tex(`g(x) = \\displaystyle\\int_{a}^{x} (${cxPoly([3, -2 * c2, c1])})\\,dt = \\left[ ${Fx.replace(/x/g, 't')} \\right]_{a}^{x} = F(x) - F(a)`)} (${tex(`F(x) = ${Fx}`)})<br/>
+② ${tex(`g'(x) = ${fTex5(v).slice(7)} = 0`)} 에서 ${tex(`x = ${v.r}`)} 일 때 극솟값을 가짐<br/>
+③ 극솟값 ${tex(`g(${v.r}) = 0`)} 조건 대입:<br/>
+&nbsp;&nbsp;${tex(`F(${v.r}) - F(a) = 0 \\implies ${cxPoly([1, -c2, c1, -Fr]).replace(/x/g, 'a')} = 0`)}<br/>
+④ 인수분해: ${tex(`(a ${cxSub(v.r)})^2(a ${cxSub(v.s2)}) = 0 \\implies a = ${v.r}, \\; ${v.s2}`)} 입니다.`,
+      warning: examData[5].textbook().warning
+    };
+  };
+  const quick5 = (v) => {
+    if (v.first) return examData[5].shortcut();
+    return {
+      steps: `① <strong>[정적분으로 정의된 함수의 성질]</strong> <strong class="text-pink-300">① ${tex('g(a)=0')}이므로 점 ${tex('(a,0)')}는 그래프 위에 있음</strong> (통과인지 접하는지는 도함수 부호로 따로 판단), <strong class="text-sky-300">② ${tex("g'(x)=f(x)")}</strong><br/>
+② ${tex(`g'(x) = ${fTex5(v).slice(7)}`)} 이므로 ${tex('g(x)')}는 ${tex(`x=${v.p}`)} 에서 극대, ${tex(`x=${v.r}`)} 에서 극소인 삼차함수입니다.<br/>
+③ 극솟값 ${tex(`g(${v.r}) = 0`)} 이란 <strong>극소점 ${tex(`x=${v.r}`)}에서 ${tex('x')}축에 접한다</strong>는 뜻입니다. 이때 ${tex('g(x)')}는 ${tex(`(x ${cxSub(v.r)})^2(x ${cxSub(v.s2)})`)} 꼴이므로 ${tex('x')}축과 만나는 점(${tex('g(a)=0')})은 <strong class="text-amber-300">${tex(`a = ${v.r}`)} 또는 ${tex(`a = ${v.s2}`)}</strong> 입니다. (접점 ${tex(`${v.r}`)} 은 중근이라 ${tex(`2\\times ${v.r} + (${v.s2}) = 3\\times ${(v.p + v.r) / 2}`)}, 대칭의 중심이 두 점을 ${tex('1:2')} 로 나눕니다.)`,
+      highlight: examData[5].shortcut().highlight
+    };
+  };
+  function draw5(b, s, lab) {
+    const v = varD5.cur(), st = dsStepNow(lab, s), dual = st >= 2;
+    dsFrame(b, s, 'd5v' + v.sid, v, dual, () => {
+      b.plot(v.g, { color: 'ink', width: 3.2, glow: true, ref: 'G' });
+      b.point([v.p, v.g(v.p)], { color: 'rose', r: 6, ref: 'A', label: `극대 ${cxN(v.M)}`, dx: -10, dy: -13, align: 'right' });
+      b.point([v.r, 0], { color: 'green', r: 6, ref: 'B', label: `x=${cxN(v.r)} (g 극소 0)`, dx: 10, dy: 17 });
+      if (st >= 3) {
+        b.point([v.s2, 0], { color: 'amber', r: 6.5, ref: 'a', label: `a = ${cxN(v.s2)}`, dx: -10, dy: -14, align: 'right' });
+        b.point([v.r, 0], { color: 'amber', hollow: true, r: 10, ref: 'a' });
+      }
+    }, () => {
+      if (st >= 2) {
+        const pts = [[v.p, 0]]; for (let i = 0; i <= 50; i++) { const x = v.p + ((v.r - v.p) * i) / 50; pts.push([x, v.fp(x)]); } pts.push([v.r, 0]);
+        b.poly(pts, { fill: 'sky', fillAlpha: 0.28, color: null, ref: 'dy' });
+      }
+      b.plot(v.fp, { color: 'sky', width: 2.8, glow: true, ref: 'F' });
+      cxCurveTag(b, v.fp, "y = f(x)", 'sky', { side: 'left', dy: -12, skip: [[v.p, 0, 1.4], [v.r, 0, 1.4]], axis: 0.6 });
+      b.point([v.p, 0], { color: 'rose', r: 5, ref: 'A', label: `x=${cxN(v.p)}`, dx: -9, dy: 17, align: 'right' });
+      b.point([v.r, 0], { color: 'green', r: 5, ref: 'B' });
+    }, [[v.p, 'rose'], [v.r, 'green']]);
+  }
+
+  const DSV = {
+    1: { vary: varD1, text: text1, answer: ans1, steps: steps1, std: std1, quick: quick1, draw: draw1 },
+    2: { vary: varD2, text: text2, answer: ans2, steps: steps2, std: std2, quick: quick2, draw: draw2 },
+    3: { vary: varD3, text: text3, answer: ans3, steps: steps3, std: std3, quick: quick3, draw: draw3 },
+    4: { vary: varD4, text: text4, answer: ans4, steps: steps4, std: std4, quick: quick4, draw: draw4 },
+    5: { vary: varD5, text: text5, answer: ans5, steps: steps5, std: std5, quick: quick5, draw: draw5 }
+  };
+
   /* ---------- 6. 장면 정의 ---------- */
   const rootPresets = [
     { label: '① 중근이 아닌 두 근 (부호가 바뀜 → 극값)', color: 'green', set: { delta: 1, C: 0 }, on: (s) => s.delta > 0.005 },
@@ -818,8 +1606,83 @@ window.addEventListener('DOMContentLoaded', function () {
       tick: (s, dt) => { if (!s.playing) return false; bounce(s, 'a', 1.8, -1.2, 3.0, dt); return true; },
       view: viewOf(5),
       draw: (b, s, v, lab) => drawScene(b, s, 5, lab)
+    },
+    /* ===== 응용 장면 6 · 항상 성립하는 부등식 f ≥ g + a (분류표 C10) ===== */
+    {
+      id: 'always', title: '항상 성립하는 부등식과 최솟값', short: '항상 성립하는 부등식',
+      question: 'f(x) ≥ g(x) + a 가 모든 x에서 성립하려면 a는 얼마까지 커질 수 있을까? g를 위로 올리면 어느 순간 f와 닿는데, 그때의 a는 무엇일까?',
+      tabs: { compact: true }, startStep: 0,
+      guide: '<b>금색 점</b>을 위아래로 끌어 g를 올려 보세요. g + a가 f 위로 넘어간 곳은 빨갛게 칠해집니다. 두 곡선이 처음 닿는 순간의 a가 점선 곡선 h = f − g 의 최솟값입니다.',
+      controls: ['al'],
+      presets: [
+        { label: 'a = 0', set: { al: 0 }, on: (s) => Math.abs(s.al) < 0.03 },
+        { label: 'a = 2 (처음 닿는 순간)', color: 'green', set: { al: 2 }, on: (s) => Math.abs(s.al - 2) < 0.03 },
+        { label: 'a = 3 (넘어간 경우)', color: 'red', set: { al: 3 }, on: (s) => Math.abs(s.al - 3) < 0.03 }
+      ],
+      actions: [{ id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : 'g를 자동으로 올리기'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; } }],
+      tick: (s, dt) => { if (!s.playing) return false; s.al += 0.9 * (s.alDir || 1) * dt; if (s.al > 3.6) { s.al = 3.6; s.alDir = -1; } if (s.al < -1) { s.al = -1; s.alDir = 1; } return true; },
+      steps: () => steps10(var10.cur()),
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text10(var10.cur())}</div>`,
+      problem: {
+        tag: '2023학년도 6월 모의평가 9번 · 2024학년도 10월 학평(서울) 8번 유형', time: '목표 시간: 60초',
+        text: () => cxProb(text10(var10.cur())),
+        answer: () => tex(`a=${var10.cur().ans}`)
+      },
+      vary: var10,
+      focus: { x: [-1.9, 2.9], y: [-1.7, 5.3] },
+      view: view10,
+      draw: (b, s, v, lab) => { if (b.thumb || !lab || lab.tab === 'explore') drawExplore10(b, s); else drawVar10(b, s, lab); }
+    },
+
+    /* ===== 응용 장면 7 · 수평선으로 세는 실근 · 정수 k · 양의 근 (분류표 C12) ===== */
+    {
+      id: 'rootcount', title: '수평선으로 세는 실근과 정수 k', short: '정수 k와 양의 근',
+      question: '방정식 f(x) = k 의 실근은 수평선 y = k 와 곡선의 교점입니다. k를 올리고 내릴 때 실근의 개수, 그중 양의 근의 개수는 언제 바뀔까?',
+      tabs: { compact: true }, startStep: 0,
+      guide: '<b>하늘색 점</b>(k)을 위아래로 끌어 보세요. 초록 점은 양의 근, 분홍 점은 음의 근입니다. 왼쪽 띠는 고른 조건을 만족하는 k의 범위이고, 띠 위의 점은 정수 k입니다.',
+      controls: ['kk'],
+      presets: [
+        { group: '찾는 조건', label: '서로 다른 두 양의 실근', color: 'green', apply: (s) => { s.tgt = 'pos2'; }, on: (s) => s.tgt === 'pos2' },
+        { group: '찾는 조건', label: '서로 다른 세 실근', apply: (s) => { s.tgt = 'real3'; }, on: (s) => s.tgt === 'real3' },
+        { group: '찾는 조건', label: '서로 다른 두 실근 (접함)', apply: (s) => { s.tgt = 'real2'; }, on: (s) => s.tgt === 'real2' },
+        { group: '찾는 조건', label: '양의 실근이 하나', apply: (s) => { s.tgt = 'pos1'; }, on: (s) => s.tgt === 'pos1' },
+        { group: 'k 놓기', label: 'k = 0 (y절편 높이)', set: { kk: 0 }, on: (s) => s.kk === 0 },
+        { group: 'k 놓기', label: 'k = −4 (극솟값)', set: { kk: -4 }, on: (s) => s.kk === -4 }
+      ],
+      steps: () => steps12(var12.cur()),
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text12(var12.cur())}</div>`,
+      problem: {
+        tag: '2023학년도 수능 19번 · 2022학년도 수능 6번 유형', time: '목표 시간: 60초',
+        text: () => cxProb(text12(var12.cur())),
+        answer: () => tex(String(var12.cur().ans))
+      },
+      vary: var12,
+      focus: { x: [-2.2, 3.6], y: [-4.9, 2.5] },
+      view: view12,
+      draw: (b, s, v, lab) => { if (b.thumb || !lab || lab.tab === 'explore') drawExplore12(b, s); else drawVar12(b, s, lab); }
     }
   ];
+
+
+  // 옛 장면 1~5: 탐구 탭은 그대로 두고, 정리·문제 탭에 변형 문제(「새 문제」)를 얹습니다.
+  function withVary(m, sc) {
+    const V = DSV[m], d = examData[m], oldDraw = sc.draw, oldView = sc.view, oldPanes = sc.panes;
+    const cur = () => V.vary.cur();
+    return {
+      ...sc,
+      steps: () => V.steps(cur()),
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${V.text(cur())}</div>`,
+      problem: { tag: d.tag, time: d.targetTime, text: () => cxProb(V.text(cur())), answer: () => V.answer(cur()) },
+      vary: V.vary,
+      solution: { ...sc.solution, standard: () => V.std(cur()), quick: () => V.quick(cur()) },
+      panes: (s) => (cxVarTab() ? (V.panes ? V.panes() : null) : (typeof oldPanes === 'function' ? oldPanes(s) : oldPanes)),
+      view: (s, lab) => (lab && lab.tab !== 'explore' ? {} : typeof oldView === 'function' ? oldView(s, lab) : oldView),
+      draw: (b, s, v, lab) => {
+        if (b.thumb || !lab || lab.tab === 'explore') { if (!b.thumb) cxBackToExplore(b, s, lab); oldDraw(b, s, v, lab); } else V.draw(b, s, lab);
+      }
+    };
+  }
+  for (let i = 0; i < 5; i++) scenes[i] = withVary(i + 1, scenes[i]);
 
   /* ---------- 7. 실험실 등록 ---------- */
   APLab.createLab({
@@ -837,9 +1700,11 @@ window.addEventListener('DOMContentLoaded', function () {
       C: { value: 0, min: -3.5, max: 3.5, step: 0.1, color: 'sky', label: '적분상수 C (위아래로 이동 · 극값의 부호 조절)', format: (v) => `C = ${fmt(v)}` },
       C2: { value: 0, min: -1.5, max: 1.5, step: 0.1, color: 'sky', label: '위아래 평행이동 C', format: (v) => `C = ${fmt(v)}` },
       k: { value: -3, min: -4.0, max: 2.0, step: 0.1, color: 'violet', label: "직선의 높이 g′(x) = k (k = −3 일 때 접함)", format: (v) => `k = ${fmt(v)}` },
-      a: { value: -1, min: -1.5, max: 3.2, step: 0.05, color: 'amber', label: '정적분의 아래끝 x = a (g(a)=0 인 점)', format: (v) => `a = ${fmt(v)}` }
+      a: { value: -1, min: -1.5, max: 3.2, step: 0.05, color: 'amber', label: '정적분의 아래끝 x = a (g(a)=0 인 점)', format: (v) => `a = ${fmt(v)}` },
+      al: { value: 1.2, min: -1, max: 3.6, step: 0.05, color: 'amber', label: 'g를 올린 높이 a', hint: 'a = 2 에서 g + a 가 f 에 처음 닿습니다', format: (v) => `a = ${fmt(v)}` },
+      kk: { value: -2, min: -4.8, max: 2.4, step: 0.05, color: 'sky', label: '수평선의 높이 k', hint: '극값 0, −4 와 y절편 0 근처에서 근의 개수가 바뀝니다', format: (v) => `k = ${fmt(v)}` }
     },
-    state: { chart: true, animDir: -1 },
+    state: { chart: true, animDir: -1, tgt: 'pos2' },
     persist: ['chart'],
     scenes
   });

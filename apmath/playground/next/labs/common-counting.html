@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a100e">
+<title>순열과 조합 · AP Math 실험실</title>
+<meta name="description" content="공통수학 경우의 수: 합의 법칙·곱의 법칙과 수형도, 순열(자리 채우기·이웃하는/이웃하지 않는 배열), 조합(순서를 지우면 r!개가 하나로), 도형의 개수 세기, 표·상자에 놓는 경우 나누기, 원순열(이전 교육과정)을 직접 세어 보며 공식이 그림의 어디서 나오는지 확인합니다.">
+<script>try{var t=localStorage.getItem('apl:theme');t=t?JSON.parse(t):'paper';document.documentElement.setAttribute('data-theme',t==='board'?'board':'paper')}catch(e){document.documentElement.setAttribute('data-theme','paper')}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../kit/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../kit/apl.css">
+<script defer src="../kit/vendor/katex/katex.min.js"></script>
+<script defer src="../kit/vendor/qrcode.js"></script>
+<script defer src="../kit/apl-core.js"></script>
+<script defer src="../kit/apl-board.js"></script>
+<script defer src="../kit/apl-shell.js"></script>
+</head>
+<body>
+<noscript>이 실험실을 보려면 브라우저에서 자바스크립트를 켜야 합니다.</noscript>
+<script>
+/* ==========================================================================
+   공통수학 · 순열과 조합 (AP Math Lab 2.0 신규 실험실) — 경우의 수 7개 장면
+   1 합의 법칙·곱의 법칙과 수형도 · 2 순열 nPr 자리 채우기 · 3 이웃하는/이웃하지 않는 순열 · 4 조합 nCr(순서를 지우면 r!개가 하나로)
+   5 도형의 개수 세기(원 위의 점·평행선) · 6 표·상자에 놓는 경우의 수(경우 나누기) · 7 원순열(이전 교육과정)
+   - 학생이 공식을 외우기 전에 그림에서 직접 세고 쌓아 보게 합니다. 화면에 그려진 개수와 공식 값은 항상 같게 만듭니다
+     (그림에 그린 경우를 코드로 모두 나열해 센 값이 공식 값과 다르면 개발 검사에서 걸립니다).
+   - 탭마다: 탐구 = 조작하는 그림 전체 · 정리 = 문제의 풀이를 단계별로(문제 그림 위에 보조 표시를 얹음) · 문제 = 주어진 것만(답·보조선은 그리지 않음)
+   - 문제는 기출 유형의 숫자·상황을 바꾼 변형이며 「새 문제」로 바꿉니다(정답이 깔끔한 것만, 연속해서 같은 문제는 나오지 않음).
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', function () {
+  const tex = APLab.tex;
+  const { clamp } = APLab;
+
+  /* ===================== 세기 도구 ===================== */
+  const fact = (n) => (n <= 1 ? 1 : n * fact(n - 1));
+  const nPr = (n, r) => { let p = 1; for (let i = 0; i < r; i++) p *= n - i; return p; };
+  const nCr = (n, r) => (r < 0 || r > n ? 0 : nPr(n, r) / fact(r));
+  const combos = (n, r) => { const out = []; (function rec(s, cur) { if (cur.length === r) { out.push(cur.slice()); return; } for (let i = s; i < n; i++) { cur.push(i); rec(i + 1, cur); cur.pop(); } })(0, []); return out; };
+  const LET = 'ABCDEFGHIJ'.split('');
+  const PCOL = ['sky', 'rose', 'amber', 'green', 'violet', 'orange', 'red', 'muted'];
+  const rint = (n) => Math.floor(Math.random() * n);
+  const pickOf = (arr, not) => { let x; do x = arr[rint(arr.length)]; while (arr.length > 1 && x === not); return x; };
+  const varier = (gen) => { let cur = gen(null); return { cur: () => cur, next: () => (cur = gen(cur)) }; };
+  const join = (a, sep = ', ') => a.join(sep);
+  const T = (s) => '$' + s + '$';
+  const ordinal = ['첫째', '둘째', '셋째', '넷째', '다섯째'];
+
+  /* ===================== 그리기 도구 =====================
+     레이아웃 좌표는 x 오른쪽, y 아래쪽(문서 방향)으로 생각하고, 무대(cartesian, y 위쪽)에 넘길 때만 뒤집습니다. */
+  const P = (x, y) => ({ x, y: -y });
+  const seg = (b, x1, y1, x2, y2, o) => b.seg(P(x1, y1), P(x2, y2), o);
+  const poly = (b, pts, o) => b.poly(pts.map((q) => P(q[0], q[1])), o);
+  const circ = (b, x, y, r, o) => b.circle(P(x, y), r, o);
+  const txt = (b, x, y, s, o = {}) => b.text(P(x, y), s, { size: 14, weight: 800, align: 'center', baseline: 'middle', ...o });
+  const rect = (b, x, y, w, h, o) => poly(b, [[x, y], [x + w, y], [x + w, y + h], [x, y + h]], o); // 왼쪽 위가 (x,y)
+  const rrect = (b, cx, cy, w, h, o) => rect(b, cx - w / 2, cy - h / 2, w, h, o);
+  // 사람·카드 토큰: 옅은 색 면 + 색 테두리 + 글자
+  function token(b, x, y, r, label, color, o = {}) {
+    const dim = o.dim, hot = o.hot;
+    circ(b, x, y, r, { fill: color, fillAlpha: dim ? 0.07 : hot ? 0.55 : 0.26, color, alpha: dim ? 0.35 : 1, width: hot ? 3 : 2.2, dash: o.dash });
+    txt(b, x, y, label, { size: o.size || 14, color: dim ? 'muted' : 'ink' });
+  }
+  function tile(b, cx, cy, w, h, label, color, o = {}) {
+    const dim = o.dim, hot = o.hot;
+    rrect(b, cx, cy, w, h, { fill: color, fillAlpha: dim ? 0.06 : hot ? 0.5 : 0.22, color, alpha: dim ? 0.35 : 1, width: hot ? 3 : 2, dash: o.dash });
+    if (label != null && label !== '') txt(b, cx, cy, label, { size: o.size || 13.5, color: dim ? 'muted' : 'ink' });
+  }
+  // 그림이 들어오는 최대 배율로 무대를 맞춥니다(라벨 글자 상자까지 재서 잘리지 않게). 사용자의 확대·이동은 유지.
+  function figure(b, body, fo) {
+    HIT.length = 0;
+    const bb = b.measure(body);
+    if (bb) b.setFocus(b.fitBox(bb, { margin: 0.05, px: 10, ...fo }), false);
+    body();
+  }
+  /* 무대 위 누르기: 이번 프레임에 그린 칸(hit)을 기억해 두었다가 손가락을 떼면 눌린 칸의 동작을 실행합니다. */
+  const HIT = [];
+  const hit = (b, x, y, w, h, fn) => { if (!b._bbox) HIT.push({ x, y, w, h, fn }); }; // 재는 중(measure)에는 기록하지 않음
+  let LAB = null;
+  function bindTap(canvas, b) {
+    if (canvas.__tapBound) return;
+    canvas.__tapBound = true;
+    let d = null;
+    canvas.addEventListener('pointerdown', (e) => { d = { x: e.clientX, y: e.clientY, t: performance.now() }; });
+    canvas.addEventListener('pointerup', (e) => {
+      if (!d) return;
+      const mv = Math.hypot(e.clientX - d.x, e.clientY - d.y), dt = performance.now() - d.t;
+      d = null;
+      if (mv > 7 || dt > 700 || !LAB || LAB.tab !== 'explore') return;
+      const r = canvas.getBoundingClientRect();
+      const w = b.toW(e.clientX - r.left, e.clientY - r.top);
+      const x = w.x, y = -w.y;
+      for (let i = HIT.length - 1; i >= 0; i--) {
+        const h = HIT[i];
+        if (x >= h.x && x <= h.x + h.w && y >= h.y && y <= h.y + h.h) { h.fn(LAB.s); LAB.invalidate(true); return; }
+      }
+    });
+  }
+  // 슬라이더의 끝값이 장면 상태에 따라 바뀔 때(예: 세어야 할 개수) 막대 범위를 맞춥니다
+  function setMax(lab, id, max) {
+    const p = lab.params[id];
+    if (!p) return;
+    p.max = max;
+    const c = lab._ctls && lab._ctls[id];
+    if (c) c.input.max = String(max);
+    if (lab.s[id] > max) lab.s[id] = max;
+  }
+  const probHTML = (body) => `${body}<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-cn-new>새 문제</button></div>`;
+  document.addEventListener('click', (ev) => {
+    const hitEl = ev.target && ev.target.closest && ev.target.closest('[data-cn-new]');
+    if (!hitEl) return;
+    const lab = window.lab, sc = lab && lab.scene;
+    if (!sc || !sc.vary) return;
+    sc.vary.next();
+    lab.s.revealed = false;
+    lab.setStep(1);
+    try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
+    lab.invalidate(true);
+  });
+  const baseScene = (o) => ({ tabs: { compact: true }, ...o });
+  const ring = (b, x, y, w, h, color = 'amber') => rrect(b, x, y, w, h, { fill: null, color, width: 3, alpha: 0.95 });
+  // 후보 수를 세로로 쌓은 점(줄어드는 후보 그림): 아래에서부터 count개
+  function dotsColumn(b, x, yBottom, count, color, o = {}) {
+    const gap = o.gap || 0.34;
+    for (let j = 0; j < count; j++) circ(b, x, yBottom - j * gap, 0.13, { fill: color, fillAlpha: o.alpha || 0.85, color, width: 1, alpha: 0.9 });
+  }
+  // 문제 풀이 단계에서 쓰는 지금 단계(상태 s는 problemState로 문제 탭에서는 0)
+  // 문제 탭 그림: 풀이 단계·강조를 끄고 문제에 주어진 것만 보여 줍니다(정리 탭은 단계에 따라 보조 표시가 늘어남)
+  const pState = (lab, s, patch = {}) => (lab && lab.tab === 'problem' ? { ...s, step: 0, part: 0, ...patch } : s);
+
+  /* ============================================================================================
+     장면 1 · 합의 법칙·곱의 법칙과 수형도
+     탐구: 수형도의 가지를 슬라이더로 하나씩 펼치며 센다 · 정리/문제: 길 찾기(합+곱)와 주사위 눈의 합(합의 법칙)
+     ============================================================================================ */
+  const TOPS = ['A', 'B', 'C', 'D'], PANTS = ['1', '2', '3', '4'];
+  const total1 = (s) => (s.mode1 === 'prod' ? s.aP * s.bP : s.aS + s.bS);
+  function draw1Explore(b, s) {
+    const prod = s.mode1 === 'prod';
+    const a = prod ? s.aP : s.aS, c = prod ? s.bP : s.bS, k = s.k1, tot = total1(s);
+    figure(b, () => {
+      const dy = 0.95;
+      if (prod) {
+        const rows = a * c, rootY = ((rows - 1) / 2) * dy, X0 = 0, X1 = 3.4, X2 = 6.9;
+        txt(b, X1, -1.2, `윗옷 ${a}가지`, { size: 13.5, color: 'sky' });
+        txt(b, X2 + 0.2, -1.2, `바지 ${c}가지`, { size: 13.5, color: 'green' });
+        for (let j = 0; j < a; j++) {
+          const my = (j * c + (c - 1) / 2) * dy, any = j * c < k;
+          seg(b, X0, rootY, X1, my, { color: 'sky', width: any ? 2.6 : 1.4, alpha: any ? 0.95 : 0.22, dash: any ? null : [4, 5] });
+          for (let l = 0; l < c; l++) {
+            const i = j * c + l, open = i < k, ly = i * dy;
+            seg(b, X1, my, X2 - 0.8, ly, { color: 'green', width: open ? 2.4 : 1.2, alpha: open ? 0.95 : 0.2, dash: open ? null : [4, 5] });
+            tile(b, X2 + 0.2, ly, 1.6, 0.74, TOPS[j] + PANTS[l], open ? 'green' : 'muted', { dim: !open, hot: i === k - 1 });
+            if (open) txt(b, X2 + 1.55, ly, String(i + 1), { size: 13, color: 'amber' });
+          }
+          token(b, X1, my, 0.45, TOPS[j], 'sky', { hot: any });
+        }
+        token(b, X0, rootY, 0.58, '시작', 'ink', { size: 12.5 });
+      } else {
+        const rows = a + c, rootY = ((rows - 1) / 2) * dy, X0 = 0, X1 = 4.0;
+        txt(b, X1, -1.2, `버스 ${a}편 또는 기차 ${c}편`, { size: 13.5, color: 'ink' });
+        for (let i = 0; i < rows; i++) {
+          const bus = i < a, open = i < k, col = bus ? 'sky' : 'green';
+          seg(b, X0, rootY, X1 - 0.85, i * dy, { color: col, width: open ? 2.6 : 1.3, alpha: open ? 0.95 : 0.22, dash: open ? null : [4, 5] });
+          tile(b, X1, i * dy, 1.7, 0.74, (bus ? '버스' + (i + 1) : '기차' + (i - a + 1)), open ? col : 'muted', { dim: !open, hot: i === k - 1 });
+          if (open) txt(b, X1 + 1.7, i * dy, String(i + 1), { size: 13, color: 'amber' });
+        }
+        token(b, X0, rootY, 0.58, '출발', 'ink', { size: 12.5 });
+        // 묶음 표시
+        seg(b, X1 + 2.35, -0.3, X1 + 2.35, (a - 1) * dy + 0.3, { color: 'sky', width: 2.2 });
+        txt(b, X1 + 3.5, ((a - 1) / 2) * dy, `${a}가지`, { size: 13.5, color: 'sky' });
+        seg(b, X1 + 2.35, a * dy - 0.3, X1 + 2.35, (rows - 1) * dy + 0.3, { color: 'green', width: 2.2 });
+        txt(b, X1 + 3.5, (a + (c - 1) / 2) * dy, `${c}가지`, { size: 13.5, color: 'green' });
+      }
+    });
+    return tot;
+  }
+
+  /* ----- 정리·문제: 길 찾기(곱 + 합)와 두 주사위의 눈의 합 ----- */
+  const ROADS = [[4, 3, 2], [3, 2, 4], [2, 4, 3], [3, 3, 1], [2, 3, 5], [4, 2, 3]];
+  const var1 = varier((prev) => {
+    const kind = prev ? (prev.kind === 'road' ? 'dice' : 'road') : 'road';
+    if (kind === 'road') {
+      const r = prev ? pickOf(ROADS, prev.kind === 'road' ? prev.r : prev.lastRoad) : ROADS[0];
+      const [a, c, d] = r; // A-B 길 a개, B-C 길 c개, A-C 길 d개
+      return { kind, r, lastRoad: r, lastDice: prev && prev.lastDice, a, c, d, ans: { tex: String(a * c + d), val: a * c + d } };
+    }
+    const m = prev ? pickOf([3, 4, 5, 6], prev.lastDice) : 4;
+    const groups = [];
+    for (let S = m; S <= 12; S += m) { const pr = []; for (let i = 1; i <= 6; i++) { const j = S - i; if (j >= 1 && j <= 6) pr.push([i, j]); } groups.push({ S, pr }); }
+    const val = groups.reduce((t, g) => t + g.pr.length, 0);
+    return { kind, m, groups, lastRoad: prev && (prev.lastRoad || prev.r), lastDice: m, ans: { tex: String(val), val } };
+  });
+  const text1 = (v) => (v.kind === 'road'
+    ? `그림과 같이 세 지점 ${tex('A')}, ${tex('B')}, ${tex('C')}를 잇는 길이 있다. ${tex('A')}와 ${tex('B')} 사이에 ${v.a}개, ${tex('B')}와 ${tex('C')} 사이에 ${v.c}개, ${tex('A')}와 ${tex('C')} 사이에 ${v.d}개의 길이 있다. ${tex('A')}에서 출발하여 ${tex('C')}까지 가는 방법의 수를 구하시오. (단, 한 번 지나간 지점은 다시 지나지 않는다.)`
+    : `서로 다른 두 개의 주사위를 동시에 던질 때, 나오는 눈의 수의 합이 ${tex(String(v.m))}의 배수가 되는 경우의 수를 구하시오.`);
+  function draw1Prob(b, s, lab) {
+    const v = var1.cur();
+    const sp = pState(lab, s);
+    const st = (i) => sp.step >= i;
+    figure(b, () => {
+      if (v.kind === 'road') {
+        const xA = 0, xB = 4.8, xC = 9.6, GREY = 'muted';
+        const arc = (x1, x2, off, o) => { const pts = []; for (let i = 0; i <= 24; i++) { const t = i / 24; pts.push(P(x1 + (x2 - x1) * t, -4 * off * t * (1 - t))); } b.path(pts, o); };
+        const colAB = st(1) ? 'sky' : 'ink', colBC = st(1) ? 'green' : 'ink', colAC = st(2) ? 'amber' : 'ink';
+        const w = (on) => (on ? 3 : 1.8), al = (on) => (on ? 0.95 : 0.6);
+        for (let j = 0; j < v.a; j++) arc(xA, xB, (j - (v.a - 1) / 2) * 1.25, { color: colAB, width: w(st(1)), alpha: al(st(1)) });
+        for (let j = 0; j < v.c; j++) arc(xB, xC, (j - (v.c - 1) / 2) * 1.25, { color: colBC, width: w(st(1)), alpha: al(st(1)) });
+        for (let j = 0; j < v.d; j++) arc(xA, xC, 2.4 + j * 0.85, { color: colAC, width: w(st(2)), alpha: al(st(2)) });
+        token(b, xA, 0, 0.5, 'A', 'ink'); token(b, xB, 0, 0.5, 'B', 'ink'); token(b, xC, 0, 0.5, 'C', 'ink');
+        txt(b, (xA + xB) / 2, 2.2, `${v.a}개`, { size: 13.5, color: st(1) ? 'sky' : 'ink' });
+        txt(b, (xB + xC) / 2, 2.2, `${v.c}개`, { size: 13.5, color: st(1) ? 'green' : 'ink' });
+        txt(b, (xA + xC) / 2, -(2.4 + (v.d - 1) * 0.85 + 0.75), `${v.d}개`, { size: 13.5, color: st(2) ? 'amber' : 'ink' });
+        if (st(1)) txt(b, (xA + xC) / 2, 3.6, `${v.a} × ${v.c} = ${v.a * v.c}`, { size: 14.5, color: 'green' });
+        if (st(3)) txt(b, (xA + xC) / 2, 4.7, `${v.a * v.c} + ${v.d} = ${v.a * v.c + v.d}`, { size: 15, color: 'amber' });
+      } else {
+        const cs = 0.95, x0 = 1.0, y0 = 1.0;
+        txt(b, 0.35, 0.5, '첫째', { size: 12.5, color: 'rose' });
+        txt(b, x0 + 3 * cs, -0.5, '둘째 주사위의 눈', { size: 13, color: 'sky' });
+        for (let i = 1; i <= 6; i++) {
+          txt(b, x0 + (i - 0.5) * cs, 0.5, String(i), { size: 13.5, color: 'sky' });
+          txt(b, 0.35, y0 + (i - 0.5) * cs, String(i), { size: 13.5, color: 'rose' });
+        }
+        for (let i = 1; i <= 6; i++) for (let j = 1; j <= 6; j++) {
+          const S = i + j, gi = v.groups.findIndex((g) => g.S === S);
+          const on = gi >= 0 && (sp.step > gi || st(v.groups.length + 1));
+          const cur = gi >= 0 && sp.step === gi + 1;
+          rect(b, x0 + (j - 1) * cs, y0 + (i - 1) * cs, cs, cs, { fill: on ? PCOL[gi % 4] : null, fillAlpha: cur ? 0.6 : 0.3, color: 'muted', alpha: 0.55, width: 1.2 });
+          if (on) txt(b, x0 + (j - 0.5) * cs, y0 + (i - 0.5) * cs, String(S), { size: 12.5, color: 'ink' });
+        }
+      }
+    });
+  }
+  const steps1 = () => {
+    const v = var1.cur();
+    if (v.kind === 'road') return [
+      `$A$에서 $B$를 거쳐 $C$로 가는 길: 잇달아 고르므로 곱의 법칙 $${v.a}\\times${v.c}=${v.a * v.c}$가지`,
+      `$A$에서 $C$로 바로 가는 길: $${v.d}$가지`,
+      `두 경우는 동시에 일어날 수 없으므로 합의 법칙: $${v.a * v.c}+${v.d}=${v.ans.val}$가지`
+    ];
+    return [...v.groups.map((g) => `눈의 합이 $${g.S}$: ${g.pr.map((q) => `$(${q[0]},${q[1]})$`).join(' ')} → $${g.pr.length}$가지`),
+      `합이 서로 다른 경우는 동시에 일어날 수 없으므로 합의 법칙: $${v.groups.map((g) => g.pr.length).join('+')}=${v.ans.val}$가지`];
+  };
+  function scene1() {
+    return baseScene({
+      id: 'rule', title: '합의 법칙·곱의 법칙과 수형도', short: '합·곱의 법칙',
+      question: '"또는"으로 이어지면 더하고 "그리고(잇달아)"로 이어지면 곱하는 까닭을 수형도에서 직접 세어 확인해 볼까?',
+      guide: (s) => (s.mode1 === 'prod'
+        ? '<b>세어 본 가지 수</b> 막대를 늘려 가며 수형도의 가지를 하나씩 펼쳐 보세요. 윗옷 한 벌을 고를 때마다 바지 가지가 <b>통째로</b> 다시 달립니다. 끝(잎)의 개수가 곱입니다.'
+        : '<b>세어 본 가지 수</b> 막대를 늘려 가며 길을 하나씩 펼쳐 보세요. 버스와 기차는 <b>둘 중 하나</b>만 고르므로 갈래가 더해집니다.'),
+      enter: (s) => { s.mode1 = 'prod'; s.aP = 3; s.bP = 2; s.aS = 3; s.bS = 2; s.k1 = 3; },
+      controls: (s) => (s.mode1 === 'prod' ? ['aP', 'bP', 'k1'] : ['aS', 'bS', 'k1']),
+      presets: () => [
+        { group: '어떤 상황일까?', label: '잇달아 한다 (곱의 법칙)', apply: (st) => { st.mode1 = 'prod'; st.k1 = Math.min(st.k1, st.aP * st.bP); }, on: (st) => st.mode1 === 'prod' },
+        { group: '어떤 상황일까?', label: '둘 중 하나를 고른다 (합의 법칙)', apply: (st) => { st.mode1 = 'sum'; st.k1 = Math.min(st.k1, st.aS + st.bS); }, on: (st) => st.mode1 === 'sum' }
+      ],
+      actions: [
+        { id: 'all1', icon: 'play', label: '끝까지 펼치기', run: (s) => { s.k1 = total1(s); } },
+        { id: 'zero1', icon: 'reset', label: '처음부터', run: (s) => { s.k1 = 0; } }
+      ],
+      steps: steps1,
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text1(var1.cur())}</div>`,
+      problem: { tag: () => (var1.cur().kind === 'road' ? '25 강남여고 기출 유형' : '25 순천여고 · 25 제일고 기출 유형'), time: '목표 시간: 20초', text: () => probHTML(text1(var1.cur())), answer: () => tex(var1.cur().ans.tex) },
+      solution: {
+        standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷', quickTag: '10초 컷',
+        standard: () => {
+          const v = var1.cur();
+          return v.kind === 'road'
+            ? { steps: `① $B$를 거치는 경우: $A\\to B$ ${v.a}가지, $B\\to C$ ${v.c}가지를 <b>잇달아</b> 고르므로 $${v.a}\\times${v.c}=${v.a * v.c}$.<br>② $B$를 거치지 않고 바로 가는 경우: $${v.d}$가지.<br>③ 두 경우는 동시에 일어나지 않으므로 $${v.a * v.c}+${v.d}=${v.ans.val}$.`, warning: '"잇달아"는 곱, "둘 중 하나"는 합입니다. 두 길을 모두 지나는 경우는 없으므로 겹쳐 세지 않습니다.' }
+            : { steps: `① 합이 ${v.groups.map((g) => g.S).join(', ')}인 경우를 나누어 순서쌍으로 셉니다.<br>${v.groups.map((g, i) => `${'②③④⑤'[i]} 합이 ${g.S}: ${g.pr.map((q) => `(${q[0]},${q[1]})`).join(', ')} → ${g.pr.length}가지`).join('<br>')}<br>⑥ 합의 법칙으로 $${v.groups.map((g) => g.pr.length).join('+')}=${v.ans.val}$.`, warning: '두 주사위가 서로 다르므로 (1,3)과 (3,1)은 다른 경우입니다.' };
+        },
+        quick: () => {
+          const v = var1.cur();
+          return v.kind === 'road'
+            ? { steps: `바로 가는 길은 더하고, 거쳐 가는 길은 곱합니다: <strong class="text-amber-300">${v.a}×${v.c}+${v.d}=${v.ans.val}</strong>.`, highlight: '길이 갈라졌다가 다시 만나면 "곱 먼저, 합 나중"입니다.' }
+            : { steps: `6×6 표에서 합이 일정한 칸은 대각선 위에 나란히 있습니다. 합이 ${v.groups.map((g) => g.S).join(', ')}인 칸의 개수는 각각 ${v.groups.map((g) => g.pr.length).join(', ')}개 → <strong class="text-amber-300">${v.ans.val}</strong>.`, highlight: '표를 그리면 (1,3)과 (3,1)을 따로 세는 것을 잊지 않습니다.' };
+        }
+      },
+      view: (s, lab) => {
+        const tot = total1(s), prod = s.mode1 === 'prod', a = prod ? s.aP : s.aS, c = prod ? s.bP : s.bS;
+        setMax(lab, 'k1', tot);
+        const ex = lab.tab === 'explore';
+        return {
+          chips: ex ? [{ tex: prod ? `${a}\\times${c}=${a * c}` : `${a}+${c}=${a + c}`, color: 'amber' }] : [],
+          status: ex ? { tone: 'info', text: `세어 본 경우 ${s.k1} / ${tot}` } : null,
+          readouts: [
+            { label: '지금까지 센 경우', value: `${s.k1} / ${tot}`, color: 'amber' },
+            prod ? { label: '곱의 법칙', value: `${a} × ${c} = ${a * c}`, color: 'green', note: '첫 선택 하나마다 둘째 선택이 통째로 이어진다' }
+              : { label: '합의 법칙', value: `${a} + ${c} = ${a + c}`, color: 'green', note: '동시에 일어나지 않는 두 일의 갈래를 더한다' }
+          ],
+          rule: prod ? '잇달아 일어나는 일 → 곱' : '동시에 일어나지 않는 일 → 합',
+          formula: '<b>합의 법칙</b> 두 일 $A$, $B$가 동시에 일어나지 않을 때 $A$가 $m$가지, $B$가 $n$가지이면 $A$ 또는 $B$가 일어나는 경우의 수는 $m+n$.<br><b>곱의 법칙</b> 두 일 $A$, $B$가 잇달아 일어날 때 $A$가 $m$가지, 그 각각에 대해 $B$가 $n$가지이면 경우의 수는 $m\\times n$.<br>수형도에서 <b>가지가 갈라지는 곳</b>이 선택이고, 끝(잎)의 개수가 경우의 수입니다.',
+          notes: '"또는"과 "그리고"를 헷갈리지 마세요. 길이 갈라졌다 다시 만나면 먼저 곱한 뒤 더합니다. 같은 경우를 두 번 세지 않는지(동시에 일어나는지) 확인합니다.'
+        };
+      },
+      vary: var1,
+      draw: (b, s0, v, lab) => {
+        LAB = lab; bindTap(b.canvas, b);
+        if (lab.tab === 'explore') draw1Explore(b, s0); else draw1Prob(b, s0, lab);
+      }
+    });
+  }
+
+  /* ============================================================================================
+     장면 2 · 순열 nPr — 자리 채우기 (자리마다 남은 후보가 줄어든다)
+     탐구: 사람 토큰을 눌러 자리에 앉힌다(눌러서 되돌리기 가능) · 정리/문제: 숫자 카드로 자리 수 만들기(조건이 있는 자리를 먼저)
+     ============================================================================================ */
+  /* 자리 채우기 그림(탐구·문제 공통): 자리마다 '후보 수'만큼 점을 쌓고 그 수를 위에 씁니다 */
+  function drawSlots(b, o) {
+    const r = o.slots.length, n = o.tokens.length, sx = o.sx || 1.8, cs = o.cs || Math.min(1.3, 8.4 / n);
+    figure(b, () => {
+      // 후보 수(점 기둥 + 숫자) — 곱셈 기호
+      o.slots.forEach((sl, i) => {
+        const x = (i - (r - 1) / 2) * sx;
+        if (sl.count != null) {
+          dotsColumn(b, x, 2.55, sl.count, sl.hot ? 'amber' : 'sky');
+          txt(b, x, -0.1, String(sl.count), { size: 16.5, color: sl.hot ? 'amber' : 'sky' });
+        }
+        if (o.times && i > 0 && sl.count != null && o.slots[i - 1].count != null) txt(b, x - sx / 2, -0.1, '×', { size: 15, color: 'muted' });
+        if (sl.fill) tile(b, x, 3.7, 1.4, 1.4, sl.fill.label, sl.fill.color, { size: 17 });
+        else tile(b, x, 3.7, 1.4, 1.4, '', sl.hot ? 'amber' : 'muted', { dim: !sl.hot, dash: [5, 4], hot: sl.hot });
+        txt(b, x, 4.95, sl.label, { size: 12.5, color: sl.hot ? 'amber' : 'muted' });
+        if (sl.tap) hit(b, x - sx / 2, 3.0, sx, 1.4, sl.tap);
+      });
+      o.tokens.forEach((tk, j) => {
+        const x = (j - (n - 1) / 2) * cs;
+        if (o.cards) tile(b, x, 6.5, cs * 0.82, 1.1, tk.label, tk.color, { dim: tk.dim, hot: tk.hot, size: 16 });
+        else token(b, x, 6.5, 0.5, tk.label, tk.color, { dim: tk.dim, hot: tk.hot, size: 15 });
+        if (tk.tap) hit(b, x - cs / 2, 5.8, cs, 1.4, tk.tap);
+      });
+      if (o.caption) txt(b, 0, 7.5, o.caption, { size: 12.5, color: 'muted' });
+      if (o.result) txt(b, 0, -1.2, o.result, { size: 15.5, color: 'amber' });
+    }, { margin: 0.04 });
+  }
+  const var2 = varier((prev) => {
+    const kind = prev ? pickOf(['even', 'zero', 'plain'], prev.kind) : 'even';
+    let n, r, ans, counts, order, cards, hot1;
+    const labels = (r) => (r === 3 ? ['백', '십', '일'] : ['천', '백', '십', '일']).map((x) => x + '의 자리');
+    if (kind === 'even') {
+      n = prev ? pickOf([5, 6, 7], prev.n) : 6; r = prev ? pickOf([3, 4]) : 3;
+      const e = Math.floor(n / 2);
+      order = [r - 1]; for (let i = 0; i < r - 1; i++) order.push(i);
+      counts = new Array(r); counts[r - 1] = e; for (let i = 0; i < r - 1; i++) counts[i] = n - 1 - i;
+      ans = e * nPr(n - 1, r - 1);
+      cards = Array.from({ length: n }, (_, i) => i + 1);
+      hot1 = cards.filter((d) => d % 2 === 0);
+    } else if (kind === 'zero') {
+      n = pickOf([4, 5, 6], prev && prev.n); r = 3;
+      order = [0, 1, 2]; counts = [n, n, n - 1];
+      ans = n * nPr(n, r - 1);
+      cards = Array.from({ length: n + 1 }, (_, i) => i);
+      hot1 = cards.filter((d) => d !== 0);
+    } else {
+      n = pickOf([5, 6, 7], prev && prev.n); r = pickOf([3, 4]);
+      order = Array.from({ length: r }, (_, i) => i); counts = order.map((i) => n - i);
+      ans = nPr(n, r); cards = Array.from({ length: n }, (_, i) => i + 1); hot1 = [];
+    }
+    return { kind, n, r, counts, order, cards, hot1, labels: labels(r), ans: { tex: String(ans), val: ans } };
+  });
+  const text2 = (v) => {
+    if (v.kind === 'even') return `1부터 ${v.n}까지의 숫자가 하나씩 적힌 ${v.n}장의 카드 중에서 서로 다른 ${v.r}장을 뽑아 일렬로 놓아 ${v.r}자리 자연수를 만들 때, <b>짝수</b>인 것의 개수를 구하시오.`;
+    if (v.kind === 'zero') return `0, 1, …, ${v.n}이 하나씩 적힌 ${v.n + 1}장의 카드 중에서 서로 다른 ${v.r}장을 뽑아 일렬로 놓아 ${v.r}자리 자연수를 만들 때, 만들 수 있는 ${v.r}자리 자연수의 개수를 구하시오.`;
+    return `1부터 ${v.n}까지의 숫자가 하나씩 적힌 ${v.n}장의 카드 중에서 서로 다른 ${v.r}장을 뽑아 일렬로 놓아 만들 수 있는 ${v.r}자리 자연수의 개수를 구하시오.`;
+  };
+  const steps2 = () => {
+    const v = var2.cur(), out = [];
+    v.order.forEach((si, t) => {
+      const c = v.counts[si], lab = v.labels[si];
+      if (t === 0 && v.kind === 'even') out.push(`조건이 있는 자리부터: ${lab}는 짝수 카드 ${v.hot1.join(', ')} 중 하나 → $${c}$가지`);
+      else if (t === 0 && v.kind === 'zero') out.push(`0이 올 수 없는 자리부터: ${lab}는 0이 아닌 카드 → $${c}$가지`);
+      else out.push(`${lab}: 남은 카드 중 하나 → $${c}$가지`);
+    });
+    out.push(`곱의 법칙: $${v.counts[v.order[0]]}${v.order.slice(1).map((si) => `\\times${v.counts[si]}`).join('')}=${v.ans.val}$가지`);
+    return out;
+  };
+  function draw2Explore(b, s) {
+    const n = s.n2, r = s.r2, seat = s.seat2, nf = seat.length;
+    drawSlots(b, {
+      times: true,
+      slots: Array.from({ length: r }, (_, i) => ({
+        label: ordinal[i] + ' 자리', count: n - i, hot: i === nf,
+        fill: i < nf ? { label: LET[seat[i]], color: PCOL[seat[i]] } : null,
+        tap: i < nf ? (st) => { st.seat2.length = i; } : null
+      })),
+      tokens: Array.from({ length: n }, (_, j) => ({
+        label: LET[j], color: PCOL[j], dim: seat.includes(j),
+        tap: (st) => { if (!st.seat2.includes(j) && st.seat2.length < st.r2) st.seat2.push(j); }
+      })),
+      caption: '아직 앉지 않은 사람(눌러서 앉히기) · 앉은 자리를 누르면 되돌아갑니다'
+    });
+  }
+  function draw2Prob(b, s, lab) {
+    const v = var2.cur(), sp = pState(lab, s);
+    const rank = (si) => v.order.indexOf(si);
+    const first = v.order[0];
+    drawSlots(b, {
+      times: true, cards: true,
+      slots: v.labels.map((label, i) => {
+        const shown = sp.step >= rank(i) + 1;
+        return { label, count: shown ? v.counts[i] : null, hot: sp.step >= 1 && sp.step <= v.r && v.order[sp.step - 1] === i };
+      }),
+      tokens: v.cards.map((d) => ({ label: String(d), color: 'sky', dim: false, hot: sp.step === 1 && v.hot1.includes(d) })),
+      caption: v.kind === 'even' ? '숫자 카드' : v.kind === 'zero' ? '숫자 카드 (0 포함)' : '숫자 카드',
+      result: sp.step >= v.r + 1 ? `${v.order.map((si) => v.counts[si]).join(' × ')} = ${v.ans.val}` : ''
+    });
+  }
+  function scene2() {
+    return baseScene({
+      id: 'perm', title: '순열 nPr · 자리 채우기', short: '순열 nPr',
+      question: 'n명 중 r명을 순서대로 세울 때, 자리를 하나 채울 때마다 다음 자리의 후보는 왜, 몇 명씩 줄어들까?',
+      guide: '아래 <b>사람(토큰)을 눌러</b> 자리를 채워 보세요. 한 자리를 채울 때마다 다음 자리의 <b>후보(점 기둥)가 하나씩 줄어드는</b> 것을 보세요. 점 기둥의 수를 곱한 것이 $_nP_r$입니다.',
+      enter: (s) => { s.n2 = 5; s.r2 = 3; s.seat2 = []; },
+      controls: () => ['n2', 'r2'],
+      actions: [
+        { id: 'auto2', icon: 'wand', label: '다음 자리를 자동으로 채우기', run: (s) => { const j = Array.from({ length: s.n2 }, (_, i) => i).find((i) => !s.seat2.includes(i)); if (s.seat2.length < s.r2 && j != null) s.seat2.push(j); } },
+        { id: 'undo2', icon: 'undo', label: '한 자리 비우기', run: (s) => { s.seat2.pop(); } },
+        { id: 'clear2', icon: 'reset', label: '모두 비우기', run: (s) => { s.seat2 = []; } }
+      ],
+      steps: steps2,
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text2(var2.cur())}</div>`,
+      problem: { tag: '25 순천여고 · 26 광양제철고 기출 유형', time: '목표 시간: 25초', text: () => probHTML(text2(var2.cur())), answer: () => tex(var2.cur().ans.tex) },
+      solution: {
+        standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · 조건 자리 먼저', quickTag: '10초 컷',
+        standard: () => {
+          const v = var2.cur(), parts = v.order.map((si) => `${v.labels[si]} ${v.counts[si]}가지`);
+          return { steps: `① 자리를 ${v.r}개 놓습니다. 조건이 있으면 <b>그 자리를 먼저</b> 채웁니다.<br>② ${parts.join(' → ')}<br>③ 곱의 법칙으로 $${v.order.map((si) => v.counts[si]).join('\\times')}=${v.ans.val}$.`, warning: '조건이 없는 자리부터 채우면 "남은 후보"가 상황에 따라 달라져 경우를 나누어야 합니다. 조건이 있는 자리(짝수·0 불가)를 먼저 채우면 곱 하나로 끝납니다.' };
+        },
+        quick: () => { const v = var2.cur(); return { steps: `<strong class="text-amber-300">${v.order.map((si) => v.counts[si]).join(' × ')} = ${v.ans.val}</strong>`, highlight: v.kind === 'plain' ? `${tex(`{}_{${v.n}}P_{${v.r}}`)}을 그대로 씁니다.` : '제한이 있는 자리 → 나머지 자리 순서로 곱합니다.' }; }
+      },
+      view: (s, lab) => {
+        setMax(lab, 'r2', Math.min(5, s.n2));
+        if (s.r2 > s.n2) s.r2 = s.n2;
+        if (s.seat2.length > s.r2) s.seat2.length = s.r2;
+        const n = s.n2, r = s.r2, nf = s.seat2.length, P_ = nPr(n, r), ex = lab.tab === 'explore';
+        return {
+          chips: ex ? [{ tex: `{}_{${n}}\\mathrm{P}_{${r}}=${Array.from({ length: r }, (_, i) => n - i).join('\\times')}=${P_}`, color: 'amber' }] : [],
+          status: ex ? { tone: nf === r ? 'ok' : 'info', text: nf === r ? `${s.seat2.map((j) => LET[j]).join('')} 한 줄 완성` : `다음 자리의 후보 ${n - nf}명` } : null,
+          readouts: [
+            { label: '지금 앉힌 줄', value: nf ? s.seat2.map((j) => LET[j]).join(' ') : '—', color: 'sky' },
+            { label: nf < r ? '다음 자리의 후보' : '모든 자리 완성', value: nf < r ? `${n - nf}명` : `${r}자리`, color: 'rose', note: '앞에 앉은 사람은 뺍니다' },
+            { label: `${n}P${r} = ${Array.from({ length: r }, (_, i) => n - i).join(' × ')}`, value: String(P_), color: 'amber', wide: true, note: '이런 줄은 모두 이만큼 만들 수 있어요' }
+          ],
+          rule: '앞 자리에 쓴 사람은 뒤 자리 후보에서 빠진다',
+          formula: '서로 다른 $n$개에서 $r$개를 택하여 일렬로 나열하는 경우의 수<br>$_n\\mathrm{P}_r=n(n-1)(n-2)\\cdots(n-r+1)=\\dfrac{n!}{(n-r)!}$ (단, $0\\le r\\le n$)<br>첫째 자리 $n$가지, 둘째 자리 $n-1$가지, … , $r$째 자리 $n-r+1$가지를 <b>곱의 법칙</b>으로 곱한 것입니다.<br>$_n\\mathrm{P}_n=n!$, $0!=1$, $_n\\mathrm{P}_0=1$',
+          notes: '순열은 <b>순서가 있는</b> 선택입니다(ABC와 BAC는 다른 경우). 자리에 조건이 있으면 그 자리를 먼저 채웁니다. 앞 자리에서 쓴 것을 뒤 자리 후보에서 빼는 것을 잊지 마세요.'
+        };
+      },
+      vary: var2,
+      draw: (b, s0, v, lab) => { LAB = lab; bindTap(b.canvas, b); if (lab.tab === 'explore') draw2Explore(b, s0); else draw2Prob(b, s0, lab); }
+    });
+  }
+
+  /* ============================================================================================
+     장면 3 · 이웃하는 / 이웃하지 않는 순열 (묶기 · 틈에 끼우기)
+     탐구: 다른 사람의 줄을 고정하고 A, B가 들어가는 모양을 하나씩 넘겨 보며 센다
+     ============================================================================================ */
+  const GW = 0.72, TW = 1.15; // 틈 표시 폭, 토큰 폭(레이아웃 단위)
+  const NTOK = (n) => Array.from({ length: n }, (_, i) => LET[i + 2]); // 다른 사람 이름 C, D, E …
+  function placements3(n, mode) {
+    const G = n - 1, out = [];
+    if (mode === 'adj') { for (let g = 0; g < G; g++) for (let o = 0; o < 2; o++) out.push({ g, o }); }
+    else { for (let a = 0; a < G; a++) for (let c = 0; c < G; c++) if (a !== c) out.push({ ga: a, gb: c }); }
+    return out;
+  }
+  const total3 = (n, mode) => (mode === 'adj' ? 2 * fact(n - 1) : fact(n - 2) * nPr(n - 1, 2));
+  function draw3Explore(b, s) {
+    const n = s.n3, m = n - 2, G = n - 1, pl = placements3(n, s.mode3), idx = clamp(s.sel3, 1, pl.length) - 1, cur = pl[idx];
+    const oth = NTOK(m);
+    figure(b, () => {
+      // 위: 다른 사람 m명(순서 고정)과 틈 번호
+      const xo = (i) => (i - (m - 1) / 2) * TW * 1.12, xg = (j) => (j - 0.5 - (m - 1) / 2) * TW * 1.12;
+      txt(b, 0, -0.1, `다른 ${m}명 (이 줄은 고정) · 틈 ${G}곳`, { size: 13, color: 'muted' });
+      const used = s.mode3 === 'adj' ? [cur.g] : [cur.ga, cur.gb];
+      for (let i = 0; i < m; i++) token(b, xo(i), 1.4, 0.5, oth[i], 'ink', { size: 14.5 });
+      for (let j = 0; j < G; j++) {
+        const on = used.includes(j), x = xg(j);
+        poly(b, [[x - 0.2, 2.25], [x + 0.2, 2.25], [x, 2.65]], { fill: on ? 'amber' : 'muted', fillAlpha: on ? 0.8 : 0.35, color: on ? 'amber' : 'muted', width: 1.4 });
+        txt(b, x, 3.1, String(j + 1), { size: 13, color: on ? 'amber' : 'muted' });
+      }
+      // 아래: 완성된 줄
+      const items = []; // {label,color,from(gap) , bundle}
+      for (let j = 0; j <= m; j++) {
+        if (s.mode3 === 'adj' && cur.g === j) items.push({ bundle: cur.o ? ['B', 'A'] : ['A', 'B'], gap: j });
+        if (s.mode3 === 'sep' && cur.ga === j) items.push({ label: 'A', color: 'rose', gap: j });
+        if (s.mode3 === 'sep' && cur.gb === j) items.push({ label: 'B', color: 'sky', gap: j });
+        if (j < m) items.push({ label: oth[j], color: 'ink' });
+      }
+      // 같은 틈에 둘이 들어가는 일은 없으므로(sep) 틈마다 최대 1명
+      const cnt = n, cs = TW * 1.12;
+      let k = 0;
+      const y2 = 5.9;
+      items.forEach((it) => {
+        if (it.bundle) {
+          const x0 = (k - (cnt - 1) / 2) * cs, x1 = (k + 1 - (cnt - 1) / 2) * cs;
+          rrect(b, (x0 + x1) / 2, y2, cs * 2 + 0.1, 1.45, { fill: 'amber', fillAlpha: 0.14, color: 'amber', width: 2.2 });
+          it.bundle.forEach((nm, q) => token(b, (k + q - (cnt - 1) / 2) * cs, y2, 0.5, nm, nm === 'A' ? 'rose' : 'sky', { hot: true, size: 14.5 }));
+          seg(b, xg(it.gap), 2.75, (x0 + x1) / 2, y2 - 0.85, { color: 'amber', width: 1.5, dash: [3, 4], alpha: 0.8 });
+          k += 2;
+        } else {
+          const x = (k - (cnt - 1) / 2) * cs;
+          token(b, x, y2, 0.5, it.label, it.color, { hot: it.gap != null, size: 14.5 });
+          if (it.gap != null) seg(b, xg(it.gap), 2.75, x, y2 - 0.55, { color: it.color, width: 1.5, dash: [3, 4], alpha: 0.85 });
+          k += 1;
+        }
+      });
+      txt(b, 0, 7.15, '완성된 줄', { size: 13, color: 'muted' });
+    }, { margin: 0.05 });
+  }
+  const var3 = varier((prev) => {
+    const kind = prev ? (prev.kind === 'wm' ? 'ab' : 'wm') : 'wm';
+    if (kind === 'wm') {
+      const bank = [[2, 4, 'diff'], [3, 2, 'sum'], [3, 4, 'diff'], [2, 5, 'diff'], [4, 3, 'sum']];
+      const q = prev ? pickOf(bank, prev.q) : bank[0];
+      const [x, y, op] = q, A = fact(y) * fact(x + 1), B = fact(y) * nPr(y + 1, x), val = op === 'diff' ? B - A : A + B;
+      return { kind, q, x, y, op, A, B, ans: { tex: String(val), val }, lastAb: prev && prev.lastAb, lastWm: q };
+    }
+    const bank = [[5, 'sep'], [6, 'sep'], [7, 'sep'], [5, 'adj'], [6, 'adj'], [7, 'adj']];
+    const q = pickOf(bank, prev && prev.lastAb);
+    const [n, mode] = q, val = mode === 'sep' ? fact(n - 2) * nPr(n - 1, 2) : 2 * fact(n - 1);
+    return { kind, q, n, mode, ans: { tex: String(val), val }, lastAb: q, lastWm: prev && prev.lastWm };
+  });
+  const text3 = (v) => (v.kind === 'wm'
+    ? `남학생 ${v.x}명과 여학생 ${v.y}명을 일렬로 세울 때, 여학생 ${v.y}명이 모두 이웃하게 서는 경우의 수를 ${tex('a')}, 남학생 ${v.x}명이 서로 이웃하지 않게 서는 경우의 수를 ${tex('b')}라 하자. ${tex(v.op === 'diff' ? 'b-a' : 'a+b')}의 값을 구하시오.`
+    : `${tex('A')}, ${tex('B')}를 포함한 ${v.n}명의 학생이 일렬로 설 때, 두 학생 ${tex('A')}, ${tex('B')}가 ${v.mode === 'adj' ? '이웃하게' : '이웃하지 않게'} 서는 경우의 수를 구하시오.`);
+  const steps3 = () => {
+    const v = var3.cur();
+    if (v.kind === 'wm') return [
+      `여학생 $${v.y}$명을 한 묶음으로 보면 묶음과 남학생 $${v.x}$명, 모두 $${v.x + 1}$개를 세우는 경우 $${v.x + 1}!$, 묶음 안에서 $${v.y}!$ → $a=${v.x + 1}!\\times${v.y}!=${v.A}$`,
+      `여학생 $${v.y}$명을 먼저 세우면 $${v.y}!$, 남학생은 여학생 사이와 양끝의 $${v.y + 1}$곳 중 $${v.x}$곳에 한 명씩 → $_{${v.y + 1}}\\mathrm{P}_{${v.x}}$ → $b=${v.y}!\\times{}_{${v.y + 1}}\\mathrm{P}_{${v.x}}=${v.B}$`,
+      `$${v.op === 'diff' ? `b-a=${v.B}-${v.A}` : `a+b=${v.A}+${v.B}`}=${v.ans.val}$`
+    ];
+    if (v.mode === 'adj') return [
+      `$A$, $B$를 한 묶음으로 보면 $${v.n - 1}$개를 세우는 경우 $${v.n - 1}!=${fact(v.n - 1)}$`,
+      `묶음 안에서 $A$, $B$가 자리를 바꿀 수 있다 → $2!=2$`,
+      `곱의 법칙: $${fact(v.n - 1)}\\times2=${v.ans.val}$`
+    ];
+    return [
+      `$A$, $B$를 뺀 $${v.n - 2}$명을 먼저 세운다 → $${v.n - 2}!=${fact(v.n - 2)}$`,
+      `그 사이와 양끝의 $${v.n - 1}$곳 중 서로 다른 두 곳에 $A$, $B$를 한 명씩 → $_{${v.n - 1}}\\mathrm{P}_{2}=${nPr(v.n - 1, 2)}$`,
+      `곱의 법칙: $${fact(v.n - 2)}\\times${nPr(v.n - 1, 2)}=${v.ans.val}$`
+    ];
+  };
+  /* 줄(row) 그리기: 항목 = 토큰 / 묶음 / 틈 표시. 반환: 각 항목의 중심 x */
+  function drawRow(b, y, items, caption, capColor) {
+    const wOf = (it) => (it.t === 'gap' ? GW : it.t === 'bun' ? it.labels.length * TW + 0.25 : TW);
+    const W = items.reduce((t, it) => t + wOf(it), 0);
+    let x = -W / 2;
+    items.forEach((it) => {
+      const w = wOf(it), c = x + w / 2;
+      if (it.t === 'tok') token(b, c, y, 0.5, it.label, it.color, { hot: it.hot, dim: it.dim, size: 14 });
+      else if (it.t === 'gap') {
+        poly(b, [[c - 0.2, y - 0.2], [c + 0.2, y - 0.2], [c, y + 0.2]], { fill: it.on ? 'amber' : 'muted', fillAlpha: it.on ? 0.85 : 0.4, color: it.on ? 'amber' : 'muted', width: 1.4 });
+        if (it.n != null) txt(b, c, y + 0.62, String(it.n), { size: 12.5, color: it.on ? 'amber' : 'muted' });
+      } else if (it.t === 'bun') {
+        rrect(b, c, y, w - 0.1, 1.4, { fill: 'amber', fillAlpha: 0.14, color: 'amber', width: 2.2 });
+        it.labels.forEach((l, q) => token(b, c - (w - 0.25) / 2 + TW / 2 + q * TW, y, 0.5, l.label, l.color, { hot: true, size: 14 }));
+      }
+      x += w;
+    });
+    if (caption) txt(b, 0, y + 1.25, caption, { size: 12.5, color: capColor || 'muted' });
+  }
+  function draw3Prob(b, s, lab) {
+    const v = var3.cur(), sp = pState(lab, s), st = sp.step;
+    figure(b, () => {
+      if (v.kind === 'wm') {
+        const men = Array.from({ length: v.x }, () => ({ t: 'tok', label: '남', color: 'sky' })), wom = Array.from({ length: v.y }, () => ({ t: 'tok', label: '여', color: 'rose' }));
+        drawRow(b, 0.6, [...men, ...wom], `남학생 ${v.x}명, 여학생 ${v.y}명`);
+        if (st >= 1) drawRow(b, 3.4, [{ t: 'bun', labels: wom.map((q) => ({ label: '여', color: 'rose' })) }, ...men], `여학생을 한 묶음으로: ${v.x + 1}개를 세우고 묶음 안에서 ${v.y}! `, 'amber');
+        if (st >= 2) {
+          const row = []; for (let i = 0; i <= v.y; i++) { row.push({ t: 'gap', on: true, n: i + 1 }); if (i < v.y) row.push({ t: 'tok', label: '여', color: 'rose' }); }
+          drawRow(b, 6.4, row, `여학생 ${v.y}명을 세우고 틈 ${v.y + 1}곳 중 ${v.x}곳에 남학생`, 'amber');
+        }
+      } else {
+        const A = { t: 'tok', label: 'A', color: 'rose' }, B = { t: 'tok', label: 'B', color: 'sky' }, oth = NTOK(v.n - 2).map((l) => ({ t: 'tok', label: l, color: 'ink' }));
+        drawRow(b, 0.6, [A, B, ...oth], `A, B를 포함한 ${v.n}명`);
+        if (v.mode === 'adj') {
+          if (st >= 1) drawRow(b, 3.4, [{ t: 'bun', labels: [{ label: 'A', color: 'rose' }, { label: 'B', color: 'sky' }] }, ...oth], `A, B를 한 묶음으로: ${v.n - 1}개를 세운다`, 'amber');
+          if (st >= 2) drawRow(b, 6.4, [{ t: 'bun', labels: [{ label: 'B', color: 'sky' }, { label: 'A', color: 'rose' }] }, ...oth], '묶음 안에서 A, B의 자리를 바꾼 모양도 있다 (×2)', 'amber');
+        } else {
+          if (st >= 1) { const row = []; for (let i = 0; i <= oth.length; i++) { row.push({ t: 'gap', on: true, n: i + 1 }); if (i < oth.length) row.push(oth[i]); } drawRow(b, 3.4, row, `나머지 ${v.n - 2}명을 세우고 틈 ${v.n - 1}곳을 만든다`, 'amber'); }
+          if (st >= 2) { const row = [A, oth[0], B, ...oth.slice(1)]; drawRow(b, 6.4, row, 'A, B가 서로 다른 틈에 들어가면 이웃하지 않는다', 'amber'); }
+        }
+      }
+    });
+  }
+  function scene3() {
+    return baseScene({
+      id: 'adj', title: '이웃하는 · 이웃하지 않는 순열', short: '이웃 조건',
+      question: '두 사람이 이웃하게 세우는 것과 이웃하지 않게 세우는 것은 각각 어떻게 세어야 할까? 그림의 모양을 하나씩 넘기며 확인해 보자.',
+      guide: (s) => (s.mode3 === 'adj'
+        ? '<b>모양 번호</b> 막대를 움직이면 묶음 <b>AB</b>(또는 BA)가 다른 사람들 사이의 틈에 하나씩 들어갑니다. 틈 하나에 2가지(AB, BA)가 있어 모양은 틈 수 × 2입니다.'
+        : '<b>모양 번호</b> 막대를 움직이면 A와 B가 <b>서로 다른 두 틈</b>에 들어갑니다. 같은 틈에는 들어갈 수 없어 이웃하지 않습니다. 순서가 있으므로 틈 수 $\\times$ (틈 수 − 1)입니다.'),
+      enter: (s) => { s.n3 = 5; s.mode3 = 'adj'; s.sel3 = 1; },
+      controls: () => ['n3', 'sel3'],
+      presets: () => [
+        { group: '조건', label: '이웃하는 (묶어서)', apply: (st) => { st.mode3 = 'adj'; st.sel3 = 1; }, on: (st) => st.mode3 === 'adj' },
+        { group: '조건', label: '이웃하지 않는 (틈에 끼워서)', apply: (st) => { st.mode3 = 'sep'; st.sel3 = 1; }, on: (st) => st.mode3 === 'sep' }
+      ],
+      actions: [{ id: 'next3', icon: 'next', label: '다음 모양', run: (s) => { const t = placements3(s.n3, s.mode3).length; s.sel3 = s.sel3 >= t ? 1 : s.sel3 + 1; } }],
+      steps: steps3,
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text3(var3.cur())}</div>`,
+      problem: { tag: () => (var3.cur().kind === 'wm' ? '25 매산여고 기출 유형' : '26 팔마고 · 25 매산여고 기출 유형'), time: '목표 시간: 25초', text: () => probHTML(text3(var3.cur())), answer: () => tex(var3.cur().ans.tex) },
+      solution: {
+        standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · 묶기와 틈', quickTag: '10초 컷',
+        standard: () => { const v = var3.cur(); return { steps: steps3().map((t, i) => `${'①②③'[i]} ${t}`).join('<br>'), warning: '이웃하지 않는 경우는 <b>(전체) − (이웃하는 경우)</b>로도 구할 수 있습니다. 두 방법의 값이 같은지 확인해 보세요.' }; },
+        quick: () => { const v = var3.cur(); return { steps: v.kind === 'wm' || v.mode === 'sep' ? '이웃하지 않는 것은 <strong class="text-amber-300">"먼저 세우고, 틈에 끼운다"</strong>.' : '이웃하는 것은 <strong class="text-amber-300">"한 묶음으로 보고, 안에서 또 순서"</strong>.', highlight: `답: ${v.ans.val}` }; }
+      },
+      view: (s, lab) => {
+        const n = s.n3, pl = placements3(n, s.mode3), tot = pl.length;
+        setMax(lab, 'sel3', tot);
+        if (s.sel3 > tot) s.sel3 = tot;
+        const ex = lab.tab === 'explore', adj = s.mode3 === 'adj', all = total3(n, s.mode3);
+        return {
+          chips: ex ? [{ tex: adj ? `2\\times(${n}-1)!=${all}` : `(${n}-2)!\\times{}_{${n - 1}}\\mathrm{P}_{2}=${all}`, color: 'amber' }] : [],
+          status: ex ? { tone: 'info', text: `이 모양: ${s.sel3} / ${tot}` } : null,
+          readouts: [
+            { label: adj ? '묶음이 들어가는 모양 (틈 × 2)' : 'A, B가 들어가는 모양 (틈 × 남은 틈)', value: adj ? `${n - 1} × 2 = ${tot}` : `${n - 1} × ${n - 2} = ${tot}`, color: 'rose' },
+            { label: `다른 ${n - 2}명의 줄 세우기`, value: `${n - 2}! = ${fact(n - 2)}`, color: 'sky' },
+            { label: adj ? `이웃하는 경우 전체 (${tot} × ${fact(n - 2)})` : `이웃하지 않는 경우 전체 (${tot} × ${fact(n - 2)})`, value: String(all), color: 'amber', wide: true, note: `전체 ${n}! = ${fact(n)}에서 이웃하는 ${2 * fact(n - 1)}을 뺀 ${fact(n) - 2 * fact(n - 1)}과 ${adj ? '짝을 이룸' : '같음'}` }
+          ],
+          rule: adj ? '이웃하면 묶어서 한 사람, 묶음 안에서 또 순서' : '이웃하지 않으면 먼저 세우고 틈에 끼우기',
+          formula: '<b>이웃하는 경우</b> 이웃해야 하는 사람들을 한 묶음으로 보고 줄을 세운 뒤, 묶음 안에서의 순서를 곱합니다.<br>예) $A$, $B$가 이웃: $(n-1)!\\times2!$<br><b>이웃하지 않는 경우</b> 나머지를 먼저 세우고, 그 사이·양끝의 틈에 끼워 넣습니다.<br>예) $A$, $B$가 이웃하지 않음: $(n-2)!\\times{}_{n-1}\\mathrm{P}_{2}$ ($=n!-2(n-1)!$)',
+          notes: '이웃하지 않게 세울 때 틈은 <b>양끝을 포함해 (먼저 세운 사람 수 + 1)곳</b>입니다. 같은 틈에 두 사람이 들어가면 이웃하게 되므로 서로 다른 틈에 하나씩 넣습니다. 묶음 안의 순서($2!$)를 빠뜨리지 마세요.'
+        };
+      },
+      vary: var3,
+      draw: (b, s0, v, lab) => { LAB = lab; bindTap(b.canvas, b); if (lab.tab === 'explore') draw3Explore(b, s0); else draw3Prob(b, s0, lab); }
+    });
+  }
+
+  /* ============================================================================================
+     장면 4 · 조합 nCr — 순서를 지우면 r!개가 하나로 겹친다
+     탐구: n명 중 r명을 뽑는 묶음을 하나씩 넘기며, 그 묶음 안의 줄 세우기 r!개가 한 묶음으로 겹치는 모습을 본다
+     ============================================================================================ */
+  const perms = (arr) => (arr.length <= 1 ? [arr.slice()] : arr.flatMap((x, i) => perms([...arr.slice(0, i), ...arr.slice(i + 1)]).map((p) => [x, ...p])));
+  function draw4Explore(b, s) {
+    const n = s.n4, r = s.r4, all = combos(n, r), g = clamp(s.g4, 1, all.length) - 1, cur = all[g];
+    figure(b, () => {
+      const cs = 1.2;
+      for (let j = 0; j < n; j++) token(b, (j - (n - 1) / 2) * cs, 0.6, 0.5, LET[j], PCOL[j], { dim: !cur.includes(j), hot: cur.includes(j), size: 14.5 });
+      txt(b, 0, 1.75, `${n}명 중 ${r}명을 뽑는다`, { size: 13, color: 'muted' });
+      // 순서를 따진 줄 세우기 r!개
+      const orders = perms(cur), cols = Math.min(3, orders.length), cw = 0.45 * r + 1.25;
+      txt(b, 0, 2.95, `뽑힌 ${r}명을 줄 세우면 ${r}! = ${orders.length}가지 (순열)`, { size: 13, color: 'sky' });
+      orders.forEach((o, i) => {
+        const cx = ((i % cols) - (cols - 1) / 2) * (cw + 0.3), cy = 3.95 + Math.floor(i / cols) * 0.95;
+        tile(b, cx, cy, cw, 0.78, o.map((q) => LET[q]).join(''), 'sky', { size: 13.5 });
+      });
+      txt(b, 0, 6.0, '↓  순서를 지우면 모두 같은 한 묶음', { size: 13.5, color: 'amber' });
+      tile(b, 0, 6.95, 0.45 * r + 2.4, 0.95, '{' + cur.map((q) => LET[q]).join(', ') + '}', 'amber', { hot: true, size: 15 });
+      // 모든 묶음
+      txt(b, 0, 8.15, `${n}명 중 ${r}명을 뽑는 묶음은 모두 ${all.length}개 (조합)`, { size: 13, color: 'muted' });
+      const cols2 = all.length > 12 ? 7 : 5, cw2 = 0.42 * r + 0.95;
+      all.forEach((c, i) => {
+        const cx = ((i % cols2) - (cols2 - 1) / 2) * (cw2 + 0.2), cy = 9.1 + Math.floor(i / cols2) * 0.92;
+        tile(b, cx, cy, cw2, 0.74, c.map((q) => LET[q]).join(''), i === g ? 'amber' : 'sky', { hot: i === g, dim: i !== g, size: 12.5 });
+      });
+    }, { margin: 0.04 });
+  }
+  const var4 = varier((prev) => {
+    const kind = prev ? (prev.kind === 'team' ? 'atleast' : 'team') : 'team';
+    if (kind === 'team') {
+      const bank = [[6, 4, 3, 2], [5, 3, 2, 2], [4, 5, 2, 3], [6, 5, 4, 2], [7, 3, 3, 1]];
+      const q = prev ? pickOf(bank, prev.lastTeam) : bank[0];
+      const [a, c, x, y] = q, A = nCr(a, x), B = nCr(c, y), val = A * B;
+      return { kind, a, c, x, y, A, B, ans: { tex: String(val), val }, lastTeam: q, lastAt: prev && prev.lastAt };
+    }
+    const bank = [[4, 3, 3], [5, 4, 4], [6, 3, 3], [5, 3, 3]];
+    const q = pickOf(bank, prev && prev.lastAt);
+    const [a, c, k] = q, T_ = nCr(a + c, k), M = nCr(a, k), val = T_ - M;
+    return { kind, a, c, k, T: T_, M, ans: { tex: String(val), val }, lastAt: q, lastTeam: prev && prev.lastTeam };
+  });
+  const text4 = (v) => (v.kind === 'team'
+    ? `남학생 ${v.a}명, 여학생 ${v.c}명 중에서 남학생 ${v.x}명, 여학생 ${v.y}명을 뽑는 경우의 수를 구하시오.`
+    : `남학생 ${v.a}명, 여학생 ${v.c}명 중에서 ${v.k}명의 대표를 뽑을 때, 여학생이 적어도 1명 포함되도록 뽑는 경우의 수를 구하시오.`);
+  const steps4 = () => {
+    const v = var4.cur();
+    if (v.kind === 'team') return [
+      `남학생 $${v.a}$명 중 $${v.x}$명: 순서가 없으므로 $_{${v.a}}\\mathrm{C}_{${v.x}}=${v.A}$가지`,
+      `여학생 $${v.c}$명 중 $${v.y}$명: $_{${v.c}}\\mathrm{C}_{${v.y}}=${v.B}$가지`,
+      `두 선택은 잇달아 하므로 곱의 법칙: $${v.A}\\times${v.B}=${v.ans.val}$가지`
+    ];
+    return [
+      `전체 $${v.a + v.c}$명 중 $${v.k}$명을 뽑는 경우: $_{${v.a + v.c}}\\mathrm{C}_{${v.k}}=${v.T}$가지`,
+      `여학생이 한 명도 없는(남학생만 뽑는) 경우: $_{${v.a}}\\mathrm{C}_{${v.k}}=${v.M}$가지`,
+      `(적어도 1명 포함) = (전체) − (한 명도 없는 경우): $${v.T}-${v.M}=${v.ans.val}$가지`
+    ];
+  };
+  function draw4Prob(b, s, lab) {
+    const v = var4.cur(), sp = pState(lab, s), st = sp.step;
+    figure(b, () => {
+      const men = (hotN, dimOthers) => Array.from({ length: v.a }, (_, i) => ({ t: 'tok', label: '남', color: 'sky', hot: hotN != null && i < hotN, dim: dimOthers && hotN != null && i >= hotN }));
+      const wom = (hotN, dimOthers) => Array.from({ length: v.c }, (_, i) => ({ t: 'tok', label: '여', color: 'rose', hot: hotN != null && i < hotN, dim: dimOthers && hotN != null && i >= hotN }));
+      if (v.kind === 'team') {
+        drawRow(b, 0.8, men(st >= 1 ? v.x : null, st >= 1), st >= 1 ? `남학생 ${v.a}명 중 ${v.x}명: ${v.a}C${v.x} = ${v.A}` : `남학생 ${v.a}명`, st >= 1 ? 'amber' : 'muted');
+        drawRow(b, 3.6, wom(st >= 2 ? v.y : null, st >= 2), st >= 2 ? `여학생 ${v.c}명 중 ${v.y}명: ${v.c}C${v.y} = ${v.B}` : `여학생 ${v.c}명`, st >= 2 ? 'amber' : 'muted');
+        if (st >= 3) txt(b, 0, 5.85, `${v.A} × ${v.B} = ${v.ans.val}`, { size: 16, color: 'amber' });
+      } else {
+        drawRow(b, 0.8, men(st >= 2 ? v.k : null, false), `남학생 ${v.a}명`, 'muted');
+        drawRow(b, 3.6, wom(), `여학생 ${v.c}명`, 'muted');
+        if (st >= 1) txt(b, 0, 5.4, `전체 ${v.a + v.c}명 중 ${v.k}명: ${v.a + v.c}C${v.k} = ${v.T}`, { size: 13.5, color: 'sky' });
+        if (st >= 2) txt(b, 0, 6.3, `남학생만 ${v.k}명(여학생 0명): ${v.a}C${v.k} = ${v.M}`, { size: 13.5, color: 'amber' });
+        if (st >= 3) txt(b, 0, 7.3, `${v.T} − ${v.M} = ${v.ans.val}`, { size: 16, color: 'green' });
+      }
+    });
+  }
+  function scene4() {
+    return baseScene({
+      id: 'comb', title: '조합 nCr · 순서를 지우면', short: '조합 nCr',
+      question: '순서를 따지면 nPr가지인데, 순서를 지우면 왜 r!로 나누게 될까? 같은 사람들이 만든 줄 세우기가 몇 개씩 겹치는지 보자.',
+      guide: '<b>묶음 번호</b> 막대로 뽑힌 사람(색 토큰)을 바꿔 보세요. 파란 칸은 뽑힌 사람들을 <b>순서만 바꿔 세운 줄</b>이고, 이 $r!$개가 순서를 지우면 <b>노란 한 묶음</b>으로 겹칩니다. 아래의 묶음 개수가 $_n\\mathrm{C}_r$입니다.',
+      enter: (s) => { s.n4 = 5; s.r4 = 3; s.g4 = 1; },
+      controls: () => ['n4', 'r4', 'g4'],
+      actions: [{ id: 'next4', icon: 'next', label: '다음 묶음', run: (s) => { const t = nCr(s.n4, s.r4); s.g4 = s.g4 >= t ? 1 : s.g4 + 1; } }],
+      steps: steps4,
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text4(var4.cur())}</div>`,
+      problem: { tag: () => (var4.cur().kind === 'team' ? '25 매산고 · 25 순천여고 기출 유형' : '25 순천여고 · 26 금당고 기출 유형'), time: '목표 시간: 25초', text: () => probHTML(text4(var4.cur())), answer: () => tex(var4.cur().ans.tex) },
+      solution: {
+        standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷', quickTag: '10초 컷',
+        standard: () => { const v = var4.cur(); return { steps: steps4().map((t, i) => `${'①②③'[i]} ${t}`).join('<br>'), warning: v.kind === 'team' ? '뽑는 순서가 필요 없으므로 순열이 아니라 조합입니다. 남·여를 뽑는 두 일은 잇달아 일어나므로 더하지 않고 곱합니다.' : '"적어도 하나"는 <b>여사건</b>(하나도 없는 경우)을 전체에서 빼는 것이 빠릅니다.' }; },
+        quick: () => { const v = var4.cur(); return { steps: v.kind === 'team' ? `<strong class="text-amber-300">${v.A} × ${v.B} = ${v.ans.val}</strong>` : `<strong class="text-amber-300">${v.T} − ${v.M} = ${v.ans.val}</strong>`, highlight: v.kind === 'team' ? '각 집단에서 뽑는 조합을 구해 곱합니다.' : '적어도 → 전체 − 없는 경우.' }; }
+      },
+      view: (s, lab) => {
+        setMax(lab, 'r4', Math.min(3, s.n4));
+        if (s.r4 > s.n4) s.r4 = s.n4;
+        const n = s.n4, r = s.r4, tot = nCr(n, r), P_ = nPr(n, r);
+        setMax(lab, 'g4', tot);
+        if (s.g4 > tot) s.g4 = tot;
+        const ex = lab.tab === 'explore';
+        return {
+          chips: ex ? [{ tex: `{}_{${n}}\\mathrm{C}_{${r}}=\\dfrac{{}_{${n}}\\mathrm{P}_{${r}}}{${r}!}=\\dfrac{${P_}}{${fact(r)}}=${tot}`, color: 'amber' }] : [],
+          status: ex ? { tone: 'info', text: `묶음 ${s.g4} / ${tot}` } : null,
+          readouts: [
+            { label: `순서를 따진 줄 세우기 ${n}P${r}`, value: String(P_), color: 'sky' },
+            { label: `한 묶음 안의 줄 세우기 ${r}!`, value: String(fact(r)), color: 'rose', note: '이만큼이 한 묶음으로 겹침' },
+            { label: `${n}C${r} = ${P_} ÷ ${fact(r)}`, value: String(tot), color: 'amber', wide: true, note: `화면의 묶음 칸 ${tot}개와 같음` }
+          ],
+          rule: '순서를 지우면 r!개가 한 묶음 → nCr = nPr ÷ r!',
+          formula: '서로 다른 $n$개에서 순서를 생각하지 않고 $r$개를 택하는 경우의 수<br>$_n\\mathrm{C}_r=\\dfrac{_n\\mathrm{P}_r}{r!}=\\dfrac{n!}{r!\\,(n-r)!}$ (단, $0\\le r\\le n$)<br>순열 $_n\\mathrm{P}_r$은 뽑은 $r$개를 줄 세우는 경우까지 센 것이라, 한 묶음마다 $r!$개씩 겹쳐 센 셈입니다.<br>$_n\\mathrm{C}_r={}_n\\mathrm{C}_{n-r}$, $_n\\mathrm{C}_r={}_{n-1}\\mathrm{C}_{r-1}+{}_{n-1}\\mathrm{C}_r$',
+          notes: '"순서가 있는가?"를 먼저 묻습니다. 대표·위원처럼 역할이 같으면 조합, 회장·부회장처럼 역할이 다르면 순열입니다. "적어도 하나"는 여사건을 떠올립니다.'
+        };
+      },
+      vary: var4,
+      draw: (b, s0, v, lab) => { LAB = lab; bindTap(b.canvas, b); if (lab.tab === 'explore') draw4Explore(b, s0); else draw4Prob(b, s0, lab); }
+    });
+  }
+
+  /* ============================================================================================
+     장면 5 · 도형의 개수 세기 — 원 위의 점(직선·삼각형·대각선), 평행선이 만드는 평행사변형
+     ============================================================================================ */
+  const pg = (n, i, R = 3) => { const a = -Math.PI / 2 + (2 * Math.PI * i) / n; return { x: R * Math.cos(a), y: R * Math.sin(a) }; };
+  const adjV = (n, a, c) => c - a === 1 || (a === 0 && c === n - 1);
+  const diagsOf = (n) => combos(n, 2).filter((c) => !adjV(n, c[0], c[1]));
+  function triCats(n) {
+    const cat = { 0: [], 1: [], 2: [], 3: [] };
+    combos(n, 3).forEach((c) => { cat[(adjV(n, c[0], c[1]) ? 1 : 0) + (adjV(n, c[1], c[2]) ? 1 : 0) + (adjV(n, c[0], c[2]) ? 1 : 0)].push(c); });
+    return cat;
+  }
+  const chord = (b, n, i, j, o) => { const p = pg(n, i), q = pg(n, j); seg(b, p.x, p.y, q.x, q.y, o); };
+  function dotsAndLabels(b, n, R = 3, lit = []) {
+    for (let i = 0; i < n; i++) {
+      const p = pg(n, i, R), q = pg(n, i, R + 0.85), on = lit.includes(i);
+      circ(b, p.x, p.y, on ? 0.2 : 0.15, { fill: on ? 'amber' : 'ink', fillAlpha: 1, color: on ? 'amber' : 'ink', width: 1 });
+      txt(b, q.x, q.y, LET[i], { size: 14.5, color: on ? 'amber' : 'ink' });
+    }
+  }
+  const polyOf = (n, idxs, R = 3) => idxs.map((i) => { const p = pg(n, i, R); return [p.x, p.y]; });
+  /* 평행선 그림: 가로선 m개(p), 기울어진 선 n개(q). hi/vi = 강조할 두 선의 번호 */
+  const PG = { dx: 0.45, sy: 1.25, sx: 1.75 };
+  const parX = (j, y) => j * PG.sx + PG.dx * y, parY = (i) => i * PG.sy;
+  function drawPar(b, m, n, hi, vi, fillIt, colH = 'rose', colV = 'sky') {
+    const yEnd = (m - 1) * PG.sy, xEnd = parX(n - 1, yEnd) + 0.9;
+    for (let i = 0; i < m; i++) {
+      const on = hi && hi.includes(i);
+      seg(b, -0.9, parY(i), xEnd, parY(i), { color: on ? colH : 'ink', width: on ? 3.4 : 1.8, alpha: on ? 1 : 0.55 });
+      txt(b, -1.55, parY(i), 'p' + (i + 1), { size: 13, color: on ? colH : 'muted' });
+    }
+    for (let j = 0; j < n; j++) {
+      const on = vi && vi.includes(j);
+      seg(b, parX(j, -0.8), -0.8, parX(j, yEnd + 0.8), yEnd + 0.8, { color: on ? colV : 'ink', width: on ? 3.4 : 1.8, alpha: on ? 1 : 0.55 });
+      txt(b, parX(j, yEnd + 0.8) + 0.15, yEnd + 1.35, 'q' + (j + 1), { size: 13, color: on ? colV : 'muted' });
+    }
+    if (fillIt && hi && vi) poly(b, [[parX(vi[0], parY(hi[0])), parY(hi[0])], [parX(vi[1], parY(hi[0])), parY(hi[0])], [parX(vi[1], parY(hi[1])), parY(hi[1])], [parX(vi[0], parY(hi[1])), parY(hi[1])]], { fill: 'amber', fillAlpha: 0.38, color: 'amber', width: 2.4 });
+    for (let i = 0; i < m; i++) for (let j = 0; j < n; j++) circ(b, parX(j, parY(i)), parY(i), 0.1, { fill: 'ink', fillAlpha: 0.9, color: 'ink', width: 1 });
+  }
+  const total5 = (s) => (s.mode5 === 'line' ? nCr(s.n5, 2) : s.mode5 === 'tri' ? nCr(s.n5, 3) : s.mode5 === 'diag' ? nCr(s.n5, 2) - s.n5 : nCr(s.mP, 2) * nCr(s.nP, 2));
+  function draw5Explore(b, s) {
+    const n = s.n5, k = s.k5;
+    figure(b, () => {
+      if (s.mode5 === 'par') {
+        const HP = combos(s.mP, 2), VP = combos(s.nP, 2), tot = HP.length * VP.length, idx = clamp(k, 1, tot) - 1;
+        const h = HP[Math.floor(idx / VP.length)], v = VP[idx % VP.length];
+        drawPar(b, s.mP, s.nP, k > 0 ? h : null, k > 0 ? v : null, k > 0);
+        return;
+      }
+      circ(b, 0, 0, 3, { fill: null, color: 'muted', width: 1.3, alpha: 0.45 });
+      let lit = [];
+      if (s.mode5 === 'line') {
+        const all = combos(n, 2);
+        all.slice(0, k).forEach((c, i) => { const cur = i === k - 1; chord(b, n, c[0], c[1], { color: cur ? 'amber' : 'sky', width: cur ? 3.6 : 1.8, alpha: cur ? 1 : 0.6 }); if (cur) lit = c; });
+      } else if (s.mode5 === 'tri') {
+        const all = combos(n, 3);
+        all.slice(0, k - 1).forEach((c) => poly(b, polyOf(n, c), { color: 'sky', width: 1.2, alpha: 0.28 }));
+        if (k > 0) { const c = all[k - 1]; poly(b, polyOf(n, c), { fill: 'amber', fillAlpha: 0.34, color: 'amber', width: 3.2 }); lit = c; }
+      } else {
+        for (let i = 0; i < n; i++) chord(b, n, i, (i + 1) % n, { color: 'ink', width: 3.2, alpha: 0.9 });
+        diagsOf(n).slice(0, k).forEach((c, i) => { const cur = i === k - 1; chord(b, n, c[0], c[1], { color: cur ? 'amber' : 'green', width: cur ? 3.6 : 1.8, alpha: cur ? 1 : 0.65 }); if (cur) lit = c; });
+      }
+      dotsAndLabels(b, n, 3, lit);
+    }, { margin: 0.05 });
+  }
+  const var5 = varier((prev) => {
+    const kind = prev ? pickOf(['tri', 'par', 'diag'], prev.kind) : 'tri';
+    if (kind === 'tri') {
+      const n = prev ? pickOf([6, 7, 9, 10], prev.lastTri) : 7, cat = triCats(n);
+      return { kind, n, cat, ans: { tex: String(cat[0].length), val: cat[0].length }, lastTri: n, lastPar: prev && prev.lastPar, lastDiag: prev && prev.lastDiag };
+    }
+    if (kind === 'par') {
+      const q = pickOf([[4, 3], [5, 3], [4, 5], [3, 4], [5, 2]], prev && prev.lastPar), [m, n] = q, val = nCr(m, 2) * nCr(n, 2);
+      return { kind, m, n, ans: { tex: String(val), val }, lastPar: q, lastTri: prev && prev.lastTri, lastDiag: prev && prev.lastDiag };
+    }
+    const n = pickOf([7, 9, 10], prev && prev.lastDiag), val = nCr(n, 2) - n;
+    return { kind, n, ans: { tex: String(val), val }, lastDiag: n, lastTri: prev && prev.lastTri, lastPar: prev && prev.lastPar };
+  });
+  const text5 = (v) => (v.kind === 'tri'
+    ? `정${v.n}각형의 꼭짓점 중 서로 다른 3개의 점을 택하여 삼각형을 만들 때, 정${v.n}각형의 어떠한 변과도 공유하지 않는 삼각형의 개수를 구하시오.`
+    : v.kind === 'par'
+      ? `서로 평행한 직선 ${v.m}개와, 이 직선들과 만나는 또 다른 서로 평행한 직선 ${v.n}개가 있다. 이 직선들로 만들어지는 평행사변형의 개수를 구하시오.`
+      : `정${v.n}각형의 대각선의 개수를 구하시오.`);
+  const steps5 = () => {
+    const v = var5.cur();
+    if (v.kind === 'tri') return [
+      `변 2개를 공유하는 삼각형: 이웃한 세 꼭짓점을 택하는 경우 → $${v.n}$개`,
+      `변 1개만 공유하는 삼각형: 변 1개를 고르고($${v.n}$가지) 그 변의 양 끝점과 이웃하지 않는 점을 고른다($${v.n - 4}$가지) → $${v.n}\\times${v.n - 4}=${v.n * (v.n - 4)}$개`,
+      `(전체) − (변을 공유하는 것): $_{${v.n}}\\mathrm{C}_{3}-${v.n}-${v.n * (v.n - 4)}=${nCr(v.n, 3)}-${v.n}-${v.n * (v.n - 4)}=${v.ans.val}$개`
+    ];
+    if (v.kind === 'par') return [
+      `평행한 직선 ${v.m}개 중 2개를 고른다: $_{${v.m}}\\mathrm{C}_{2}=${nCr(v.m, 2)}$가지`,
+      `다른 평행한 직선 ${v.n}개 중 2개를 고른다: $_{${v.n}}\\mathrm{C}_{2}=${nCr(v.n, 2)}$가지 → 네 직선으로 평행사변형 1개`,
+      `곱의 법칙: $${nCr(v.m, 2)}\\times${nCr(v.n, 2)}=${v.ans.val}$개`
+    ];
+    return [
+      `서로 다른 두 꼭짓점을 이으면 선분이 생긴다: $_{${v.n}}\\mathrm{C}_{2}=${nCr(v.n, 2)}$개`,
+      `이 중 변이 $${v.n}$개이다`,
+      `(선분의 개수) − (변의 개수): $${nCr(v.n, 2)}-${v.n}=${v.ans.val}$개`
+    ];
+  };
+  function draw5Prob(b, s, lab) {
+    const v = var5.cur(), sp = pState(lab, s), st = sp.step;
+    figure(b, () => {
+      if (v.kind === 'par') {
+        drawPar(b, v.m, v.n, st >= 1 ? [0, 1] : null, st >= 2 ? [0, 1] : null, st >= 2);
+        const yEnd = (v.m - 1) * PG.sy, cx = parX((v.n - 1) / 2, yEnd / 2);
+        if (st === 1) txt(b, cx, yEnd + 2.6, `가로선 ${v.m}개 중 2개: ${v.m}C2 = ${nCr(v.m, 2)}`, { size: 13.5, color: 'rose' });
+        if (st === 2) txt(b, cx, yEnd + 2.6, `기울어진 선 ${v.n}개 중 2개: ${v.n}C2 = ${nCr(v.n, 2)}`, { size: 13.5, color: 'sky' });
+        if (st >= 3) txt(b, cx, yEnd + 2.6, `${nCr(v.m, 2)} × ${nCr(v.n, 2)} = ${v.ans.val}`, { size: 15.5, color: 'amber' });
+        return;
+      }
+      const n = v.n;
+      if (v.kind === 'tri') {
+        const cat = v.cat;
+        const draw = (list, col, hotIdx) => list.forEach((c, i) => poly(b, polyOf(n, c), { fill: col, fillAlpha: i === hotIdx ? 0.4 : list.length > 20 ? 0.04 : 0.07, color: col, width: i === hotIdx ? 3 : 1, alpha: i === hotIdx ? 1 : 0.4 }));
+        if (st === 1) draw(cat[2], 'rose', 0);
+        if (st === 2) draw(cat[1], 'amber', 0);
+        if (st >= 3) draw(cat[0], 'green', 0);
+        for (let i = 0; i < n; i++) chord(b, n, i, (i + 1) % n, { color: 'ink', width: 2.8, alpha: 0.9 });
+        dotsAndLabels(b, n, 3);
+        const cap = [['', ''], ['rose', `변 2개를 공유: ${v.n}개`], ['amber', `변 1개만 공유: ${v.n} × ${v.n - 4} = ${v.n * (v.n - 4)}개`], ['green', `${nCr(v.n, 3)} − ${v.n} − ${v.n * (v.n - 4)} = ${v.ans.val}개`]][Math.min(st, 3)];
+        if (cap[1]) txt(b, 0, 5.3, cap[1], { size: 14, color: cap[0] });
+      } else {
+        for (let i = 0; i < n; i++) chord(b, n, i, (i + 1) % n, { color: 'ink', width: st >= 2 ? 3.4 : 2.4, alpha: 0.9 });
+        if (st >= 1) diagsOf(n).forEach((c) => chord(b, n, c[0], c[1], { color: st >= 3 ? 'amber' : 'sky', width: 1.6, alpha: st >= 3 ? 0.8 : 0.4 }));
+        if (st === 1) combos(n, 2).filter((c) => adjV(n, c[0], c[1])).forEach((c) => chord(b, n, c[0], c[1], { color: 'sky', width: 2.4, alpha: 0.8 }));
+        dotsAndLabels(b, n, 3);
+        const cap = [['', ''], ['sky', `두 점을 이은 선분: ${n}C2 = ${nCr(n, 2)}개`], ['ink', `이 중 변: ${n}개 (굵은 선)`], ['amber', `${nCr(n, 2)} − ${n} = ${v.ans.val}개 (대각선)`]][Math.min(st, 3)];
+        if (cap[1]) txt(b, 0, 5.3, cap[1], { size: 14, color: cap[0] });
+      }
+    });
+  }
+  function scene5() {
+    const M = { line: '두 점을 이은 직선', tri: '세 점을 이은 삼각형', diag: '정다각형의 대각선', par: '평행선과 평행사변형' };
+    return baseScene({
+      id: 'shape', title: '도형의 개수 세기', short: '도형 개수',
+      question: '원 위의 점이나 평행선으로 만들어지는 도형은 모두 몇 개일까? 점이나 직선을 "고르는" 경우의 수와 도형의 개수는 어떻게 이어질까?',
+      guide: (s) => (s.mode5 === 'par'
+        ? '<b>세어 본 평행사변형</b> 막대를 움직이면 평행한 두 직선(분홍)과 다른 방향의 두 직선(하늘)이 달라지며 평행사변형이 하나씩 나타납니다. 가로선 $_m\\mathrm{C}_2$가지 × 기울어진 선 $_n\\mathrm{C}_2$가지입니다.'
+        : s.mode5 === 'tri' ? '<b>세어 본 삼각형</b> 막대를 움직여 세 점을 하나씩 바꿔 보세요. 원 위의 세 점은 <b>일직선 위에 놓이지 않아서</b> 항상 삼각형이 됩니다.'
+          : s.mode5 === 'diag' ? '<b>세어 본 대각선</b> 막대를 움직여 대각선(초록)을 하나씩 더해 보세요. 두 점을 이은 선분 중 굵은 선(변)은 대각선이 아닙니다.'
+            : '<b>세어 본 직선</b> 막대를 움직이면 두 점을 잇는 직선(선분)이 하나씩 늘어납니다. 순서는 상관없습니다(AB와 BA는 같은 직선).'),
+      enter: (s) => { s.mode5 = 'line'; s.n5 = 5; s.mP = 4; s.nP = 3; s.k5 = 10; },
+      controls: (s) => (s.mode5 === 'par' ? ['mP', 'nP', 'k5'] : ['n5', 'k5']),
+      presets: () => Object.entries(M).map(([k, label]) => ({ group: '무엇을 셀까?', label, apply: (st) => { st.mode5 = k; if (k === 'diag' && st.n5 < 4) st.n5 = 4; st.k5 = total5(st); }, on: (st) => st.mode5 === k })),
+      actions: [
+        { id: 'all5', icon: 'play', label: '끝까지 세기', run: (s) => { s.k5 = total5(s); } },
+        { id: 'zero5', icon: 'reset', label: '처음부터', run: (s) => { s.k5 = 0; } }
+      ],
+      steps: steps5,
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text5(var5.cur())}</div>`,
+      problem: { tag: () => (var5.cur().kind === 'tri' ? '25 금당고 기출 유형' : '학교 시험 빈출 유형'), time: '목표 시간: 30초', text: () => probHTML(text5(var5.cur())), answer: () => tex(var5.cur().ans.tex) },
+      solution: {
+        standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷', quickTag: '10초 컷',
+        standard: () => { const v = var5.cur(); return { steps: steps5().map((t, i) => `${'①②③'[i]} ${t}`).join('<br>'), warning: v.kind === 'tri' ? '변을 공유하는 삼각형은 "변 2개 공유"와 "변 1개만 공유"로 나누어 겹치지 않게 셉니다. 변 1개를 고른 뒤 양 끝점과 그 옆의 점은 피해야 하므로 후보는 $n-4$개입니다.' : v.kind === 'par' ? '평행사변형은 가로선 2개와 기울어진 선 2개를 고르면 하나로 정해집니다. 직선을 고르는 순서는 상관없으므로 조합입니다.' : '변도 두 꼭짓점을 이은 선분 중 하나이므로 전체 선분 수에서 변의 수를 빼야 합니다.' }; },
+        quick: () => { const v = var5.cur(); return { steps: v.kind === 'tri' ? `<strong class="text-amber-300">${tex(`{}_{${v.n}}\\mathrm{C}_{3}-n-n(n-4)`)} = ${v.ans.val}</strong>` : v.kind === 'par' ? `<strong class="text-amber-300">${nCr(v.m, 2)} × ${nCr(v.n, 2)} = ${v.ans.val}</strong>` : `<strong class="text-amber-300">${tex(`{}_{n}\\mathrm{C}_{2}-n=\\dfrac{n(n-3)}{2}`)} = ${v.ans.val}</strong>`, highlight: '도형을 정하는 점(직선)을 고르는 조합 문제로 바꿉니다.' }; }
+      },
+      view: (s, lab) => {
+        if (s.mode5 === 'diag' && s.n5 < 4) s.n5 = 4;
+        const tot = total5(s);
+        setMax(lab, 'k5', Math.max(1, tot));
+        if (s.k5 > tot) s.k5 = tot;
+        const ex = lab.tab === 'explore', n = s.n5, k = Math.round(s.k5);
+        const info = {
+          line: { lab: `${n}C2 = ${n}×${n - 1}÷2`, val: nCr(n, 2), note: '두 점을 고르는 방법 = 직선의 개수', tex: `{}_{${n}}\\mathrm{C}_{2}=${nCr(n, 2)}` },
+          tri: { lab: `${n}C3 = ${n}×${n - 1}×${n - 2}÷6`, val: nCr(n, 3), note: '세 점을 고르는 방법 = 삼각형의 개수', tex: `{}_{${n}}\\mathrm{C}_{3}=${nCr(n, 3)}` },
+          diag: { lab: `${n}C2 − ${n} = ${nCr(n, 2)} − ${n}`, val: tot, note: '두 점을 이은 선분에서 변을 뺀다', tex: `{}_{${n}}\\mathrm{C}_{2}-${n}=${tot}` },
+          par: { lab: `${s.mP}C2 × ${s.nP}C2 = ${nCr(s.mP, 2)} × ${nCr(s.nP, 2)}`, val: tot, note: '가로선 2개와 기울어진 선 2개를 고른다', tex: `{}_{${s.mP}}\\mathrm{C}_{2}\\times{}_{${s.nP}}\\mathrm{C}_{2}=${tot}` }
+        }[s.mode5];
+        return {
+          chips: ex ? [{ tex: info.tex, color: 'amber' }] : [],
+          status: ex ? { tone: 'info', text: `세어 본 것 ${k} / ${tot}` } : null,
+          readouts: [
+            { label: '지금까지 센 것', value: `${k} / ${tot}`, color: 'amber' },
+            { label: info.lab, value: String(info.val), color: 'green', wide: true, note: info.note }
+          ],
+          rule: s.mode5 === 'par' ? '평행선 두 쌍을 고르면 평행사변형 하나' : '도형을 정하는 점을 고르는 방법의 수',
+          formula: '<b>원 위의 서로 다른 $n$개의 점</b>(어느 세 점도 한 직선 위에 있지 않음)<br>직선(선분) $_n\\mathrm{C}_2$개 · 삼각형 $_n\\mathrm{C}_3$개 · 볼록 $n$각형의 대각선 $_n\\mathrm{C}_2-n=\\dfrac{n(n-3)}{2}$개<br><b>평행선</b> 한 방향의 평행선 $m$개, 다른 방향의 평행선 $n$개이면 평행사변형은 $_m\\mathrm{C}_2\\times{}_n\\mathrm{C}_2$개',
+          notes: '일직선 위의 세 점은 삼각형이 되지 않으므로 그런 경우가 있는 문제에서는 $_n\\mathrm{C}_3$에서 빼야 합니다. 직선의 개수를 셀 때 한 직선 위에 세 점 이상이 놓이면 $_n\\mathrm{C}_2$보다 적습니다.'
+        };
+      },
+      vary: var5,
+      draw: (b, s0, v, lab) => { LAB = lab; bindTap(b.canvas, b); if (lab.tab === 'explore') draw5Explore(b, s0); else draw5Prob(b, s0, lab); }
+    });
+  }
+
+  /* ============================================================================================
+     장면 6 · 표·상자 칸에 놓는 경우의 수 (경우 나누기)  — 2025·2026 학평 20·21번 유형
+     탐구: 표 칸을 눌러 신청서를 채우거나 상자를 눌러 공의 개수를 정하며 조건을 하나씩 확인한다
+     정리/문제: 조건에 맞는 "모양"을 나열해 경우를 나누고, 모양마다 세어 합한다
+     ============================================================================================ */
+  const PAIRS = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]];
+  const pname = (p) => LET[p[0]] + LET[p[1]];
+  const peq = (p, q) => p[0] === q[0] && p[1] === q[1];
+  const DAYS = ['월', '화', '수', '목', '금', '토'];
+  /* --- 표: D일 동안 매일 서로 다른 두 종목(A~D). (가) 각 종목 m일 이상 (나) nv 짝은 같은 날 금지 (다) tg 짝은 정확히 t일 --- */
+  function tableInfo(c) {
+    const rest4 = PAIRS.filter((p) => !peq(p, c.nv) && !peq(p, c.tg)), R = c.D - c.t, comps = [];
+    let nRest = 0;
+    (function rec(i, left, cnt) {
+      if (i === rest4.length) {
+        if (left !== 0) return;
+        const days = [0, 0, 0, 0]; days[c.tg[0]] += c.t; days[c.tg[1]] += c.t;
+        rest4.forEach((p, q) => { days[p[0]] += cnt[q]; days[p[1]] += cnt[q]; });
+        if (days.every((x) => x >= c.m)) { let ways = fact(R); cnt.forEach((x) => { ways /= fact(x); }); comps.push({ cnt: cnt.slice(), ways }); nRest += ways; }
+        return;
+      }
+      for (let x = 0; x <= left; x++) { cnt[i] = x; rec(i + 1, left - x, cnt); }
+    })(0, R, new Array(rest4.length).fill(0));
+    const ch = nCr(c.D, c.t);
+    return { rest4, R, comps, nRest, ch, ans: ch * nRest };
+  }
+  function tableCheck(c, cells) {
+    const days = [0, 0, 0, 0]; let nvN = 0, tgN = 0;
+    cells.forEach((a) => { a.forEach((x) => { days[x]++; }); if (a.length === 2) { const p = [Math.min(a[0], a[1]), Math.max(a[0], a[1])]; if (peq(p, c.nv)) nvN++; if (peq(p, c.tg)) tgN++; } });
+    const rowsOk = cells.every((a) => a.length === 2), okM = days.every((x) => x >= c.m), okNv = nvN === 0, okTg = tgN === c.t;
+    return { rowsOk, days, nvN, tgN, okM, okNv, okTg, all: rowsOk && okM && okNv && okTg };
+  }
+  const tableValidList = (c) => {
+    const out = [], seq = [];
+    (function rec(d) {
+      if (d === c.D) { const cells = seq.map((p) => p.slice()); if (tableCheck(c, cells).all) out.push(cells); return; }
+      for (const p of PAIRS) { seq[d] = p; rec(d + 1); }
+    })(0);
+    return out;
+  };
+  /* --- 상자: n개 상자, 서로 다른 공 k개, 상자마다 2개 이하. (가) 이웃한 w개 상자 중 적어도 한 상자에 2개 (나) 2개 든 상자 사이는 모두 빈 상자 --- */
+  function boxCheck(c, cnt) {
+    const sum = cnt.reduce((t, x) => t + x, 0), le2 = cnt.every((x) => x <= 2);
+    let okA = true; for (let s0 = 0; s0 + c.w <= c.n; s0++) { let has = false; for (let j = s0; j < s0 + c.w; j++) if (cnt[j] === 2) has = true; if (!has) okA = false; }
+    const d = []; cnt.forEach((x, j) => { if (x === 2) d.push(j); });
+    let okB = true; for (let a = 0; a + 1 < d.length; a++) for (let j = d[a] + 1; j < d[a + 1]; j++) if (cnt[j] !== 0) okB = false;
+    return { sum, okSum: sum === c.k, le2, okA, okB, all: sum === c.k && le2 && okA && okB };
+  }
+  function boxPatterns(c) {
+    const out = [];
+    (function rec(i, cur, sum) {
+      if (i === c.n) { if (sum === c.k && boxCheck(c, cur).all) out.push(cur.slice()); return; }
+      for (let x = 0; x <= 2 && sum + x <= c.k; x++) { cur[i] = x; rec(i + 1, cur, sum + x); }
+    })(0, new Array(c.n).fill(0), 0);
+    return out;
+  }
+  function boxInfo(c) {
+    const pats = boxPatterns(c), groups = {};
+    let total = 0;
+    pats.forEach((p) => { const d = p.filter((x) => x === 2).length, mult = fact(c.k) / Math.pow(2, d); total += mult; (groups[d] = groups[d] || { d, mult, pats: [] }).pats.push(p); });
+    return { pats, groups: Object.values(groups).sort((a, b) => a.d - b.d), total };
+  }
+  APLab.countingTest = { fact, nPr, nCr, combos, tableInfo, tableCheck, tableValidList, boxCheck, boxPatterns, boxInfo, triCats, PAIRS };
+
+  const TBL_EX = { D: 5, m: 2, nv: [0, 1], tg: [2, 3], t: 1 }, BOX_EX = { n: 6, k: 4, w: 3 };
+  const TBL_BANK = [{ D: 5, m: 2, nv: [0, 1], tg: [1, 2], t: 2 }, { D: 6, m: 3, nv: [0, 1], tg: [1, 2], t: 1 }, { D: 4, m: 2, nv: [0, 1], tg: [1, 2], t: 1 }, { D: 5, m: 2, nv: [0, 3], tg: [1, 2], t: 1 }];
+  const BOX_BANK = [{ n: 8, k: 5, w: 3 }, { n: 5, k: 4, w: 3 }, { n: 6, k: 6, w: 2 }, { n: 7, k: 4, w: 3 }];
+  const tblX = (D, j) => (j - (D - 1) / 2) * 1.15 + 0.5;
+  function drawTable(b, c, cells, o = {}) {
+    const D = c.D, y0 = 1.5;
+    DAYS.slice(0, D).forEach((d, j) => txt(b, tblX(D, j), 0.4, d, { size: 13.5, color: 'muted' }));
+    for (let i = 0; i < 4; i++) {
+      txt(b, tblX(D, 0) - 1.2, y0 + i * 1.0, LET[i], { size: 15, color: PCOL[i] });
+      for (let j = 0; j < D; j++) {
+        const on = cells && cells[j] && cells[j].includes(i), ex = o.example && j < c.t && c.tg.includes(i);
+        const x = tblX(D, j), y = y0 + i * 1.0;
+        if (on || ex) tile(b, x, y, 1.0, 0.85, '', ex ? 'amber' : PCOL[i], { hot: true });
+        else tile(b, x, y, 1.0, 0.85, '', 'muted', { dim: true, dash: [4, 4] });
+        if (o.tap) hit(b, x - 0.575, y - 0.5, 1.15, 1.0, (st) => { const a = st.tab6[j]; const q = a.indexOf(i); if (q >= 0) a.splice(q, 1); else { a.push(i); if (a.length > 2) a.shift(); } });
+      }
+      if (o.days) txt(b, tblX(D, D - 1) + 1.25, y0 + i * 1.0, `${o.days[i]}일`, { size: 13.5, color: o.days[i] >= c.m ? PCOL[i] : 'red' });
+    }
+  }
+  const okMark = (ok) => (ok ? '✓' : '✗');
+  function drawBoxes(b, c, cnt, o = {}) {
+    const n = c.n, bw = 1.05;
+    for (let i = 0; i < n; i++) {
+      const x = (i - (n - 1) / 2) * 1.35, k = cnt ? cnt[i] : 0;
+      rrect(b, x, 2.6, bw, 1.6, { fill: 'muted', fillAlpha: 0.07, color: null });
+      b.path([P(x - bw / 2, 1.8), P(x - bw / 2, 3.4), P(x + bw / 2, 3.4), P(x + bw / 2, 1.8)], { color: 'ink', width: 2.4 });
+      for (let q = 0; q < k; q++) circ(b, x + (k === 2 ? (q ? 0.25 : -0.25) : 0), 3.05, 0.24, { fill: k === 2 ? 'amber' : 'sky', fillAlpha: 0.8, color: k === 2 ? 'amber' : 'sky', width: 1.4 });
+      txt(b, x, 3.95, String(i + 1), { size: 13.5, color: 'muted' });
+      if (o.tap) hit(b, x - 0.7, 1.6, 1.4, 2.4, (st) => { st.cnt6[i] = (st.cnt6[i] + 1) % 3; });
+    }
+  }
+  function draw6Explore(b, s) {
+    figure(b, () => {
+      if (s.mode6 === 'table') {
+        const c = TBL_EX, ck = tableCheck(c, s.tab6);
+        drawTable(b, c, s.tab6, { tap: true, days: ck.days });
+        const cx = 0.5, y = 6.1, L = [
+          [`매일 서로 다른 두 종목 (눌러서 고르기)`, ck.rowsOk],
+          [`(가) 각 종목 ${c.m}일 이상`, ck.okM],
+          [`(나) ${pname(c.nv)} 같은 날 함께: ${ck.nvN}일 (0일이어야 함)`, ck.okNv],
+          [`(다) ${pname(c.tg)} 같은 날 함께: ${ck.tgN}일 (${c.t}일이어야 함)`, ck.okTg]
+        ];
+        L.forEach(([t, ok], i) => txt(b, cx, y + i * 0.85, `${okMark(ok)} ${t}`, { size: 13, color: ok ? 'green' : 'red' }));
+        if (ck.all) txt(b, cx, y + 4 * 0.85 + 0.2, '조건을 모두 만족하는 신청서!', { size: 14.5, color: 'amber' });
+      } else {
+        const c = BOX_EX, ck = boxCheck(c, s.cnt6);
+        drawBoxes(b, c, s.cnt6, { tap: true });
+        const L = [
+          [`공 ${c.k}개를 모두 넣음 (지금 ${ck.sum}개)`, ck.okSum],
+          [`상자마다 2개 이하`, ck.le2],
+          [`(가) 이웃한 ${c.w}개 상자 중 적어도 한 곳은 2개`, ck.okA],
+          [`(나) 2개 든 두 상자 사이는 모두 빈 상자`, ck.okB]
+        ];
+        L.forEach(([t, ok], i) => txt(b, 0, 5.2 + i * 0.85, `${okMark(ok)} ${t}`, { size: 13, color: ok ? 'green' : 'red' }));
+        if (ck.all) { const d = s.cnt6.filter((x) => x === 2).length; txt(b, 0, 5.2 + 4 * 0.85 + 0.25, `이 모양에 서로 다른 공 ${c.k}개를 넣는 방법: ${c.k}!÷(2!)^${d} = ${fact(c.k) / Math.pow(2, d)}가지`, { size: 13, color: 'amber' }); }
+      }
+    }, { margin: 0.05 });
+  }
+  const var6 = varier((prev) => {
+    const kind = prev ? (prev.kind === 'table' ? 'box' : 'table') : 'table';
+    if (kind === 'table') {
+      const c = prev ? pickOf(TBL_BANK, prev.lastT) : TBL_BANK[0], info = tableInfo(c);
+      return { kind, c, info, ans: { tex: String(info.ans), val: info.ans }, lastT: c, lastB: prev && prev.lastB };
+    }
+    const c = pickOf(BOX_BANK, prev && prev.lastB), info = boxInfo(c);
+    return { kind, c, info, ans: { tex: String(info.total), val: info.total }, lastB: c, lastT: prev && prev.lastT };
+  });
+  const text6 = (v) => {
+    const c = v.c;
+    if (v.kind === 'table') return `월요일부터 ${DAYS[c.D - 1]}요일까지 ${c.D}일 동안 서로 다른 네 체험 ${tex('A')}, ${tex('B')}, ${tex('C')}, ${tex('D')} 중 매일 서로 다른 두 체험씩 신청한다. 다음 규칙에 따라 신청서를 작성하는 경우의 수를 구하시오. (단, 같은 날 신청하는 체험의 순서는 고려하지 않는다.)<div style="margin-top:6px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;line-height:1.7">(가) 각 체험은 적어도 ${c.m}일을 선택한다.<br>(나) 체험 ${tex(LET[c.nv[0]])}와 체험 ${tex(LET[c.nv[1]])}는 같은 날 함께 신청하지 않는다.<br>(다) 체험 ${tex(LET[c.tg[0]])}와 체험 ${tex(LET[c.tg[1]])}는 정확히 ${c.t}일만 같은 날 함께 신청한다.</div>`;
+    return `1부터 ${c.n}까지의 자연수가 하나씩 적혀 있는 ${c.n}개의 빈 상자가 번호 순서대로 일렬로 놓여 있고, ${LET.slice(0, c.k).join(', ')}의 문자가 하나씩 적혀 있는 ${c.k}개의 공이 있다. 각 상자에 들어 있는 공의 개수가 2 이하가 되도록 공을 상자에 남김없이 나누어 넣을 때, 다음 조건을 만족시키는 경우의 수를 구하시오. (단, 공을 넣는 순서는 고려하지 않는다.)<div style="margin-top:6px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;line-height:1.7">(가) 번호가 이웃한 ${c.w}개의 상자 중 적어도 1개의 상자에는 2개의 공이 들어 있다.<br>(나) 2개의 공이 들어 있는 두 상자 사이에 놓인 모든 상자에는 공이 들어 있지 않다.</div>`;
+  };
+  const steps6 = () => {
+    const v = var6.cur(), c = v.c, I = v.info;
+    if (v.kind === 'table') return [
+      `(나) ${pname(c.nv)}는 같은 날 함께 못 하므로 하루에 가능한 두 체험의 짝은 $6-1=5$가지`,
+      `(다) ${pname(c.tg)}가 함께하는 $${c.t}$일을 고른다: $_{${c.D}}\\mathrm{C}_{${c.t}}=${I.ch}$가지 (그날은 ${pname(c.tg)}로 정해짐)`,
+      `나머지 $${I.R}$일에는 ${pname(c.nv)}와 ${pname(c.tg)}를 뺀 4가지 짝(${I.rest4.map(pname).join(', ')})만 쓸 수 있다. (가)를 만족하게 채우는 경우: $${I.nRest}$가지`,
+      `곱의 법칙: $${I.ch}\\times${I.nRest}=${v.ans.val}$`
+    ];
+    const gs = I.groups;
+    return [
+      `상자별 공의 개수(0, 1, 2) 모양 중 (가), (나)를 모두 만족하는 것을 나열하면 $${I.pats.length}$가지`,
+      `각 모양에서 서로 다른 공 $${c.k}$개를 넣는 방법: 2개 든 상자가 $d$개이면 $${c.k}!\\div(2!)^d$가지 → ${gs.map((g) => `$d=${g.d}$: $${g.mult}$`).join(', ')}`,
+      `합의 법칙: ${gs.map((g) => `$${g.pats.length}\\times${g.mult}$`).join(' + ')} $=${v.ans.val}$`
+    ];
+  };
+  function draw6Prob(b, s, lab) {
+    const v = var6.cur(), c = v.c, I = v.info, sp = pState(lab, s), st = sp.step;
+    figure(b, () => {
+      if (v.kind === 'table') {
+        drawTable(b, c, null, { example: st >= 2 });
+        if (st >= 1) PAIRS.forEach((p, i) => {
+          const x = (i - 2.5) * 1.35 + 0.5, isNv = peq(p, c.nv), isTg = peq(p, c.tg);
+          tile(b, x, 6.2, 1.2, 0.8, pname(p), isTg && st >= 2 ? 'amber' : 'sky', { dim: isNv && st >= 1, hot: isTg && st >= 2, size: 13.5 });
+          if (isNv && st >= 1) seg(b, x - 0.55, 6.5, x + 0.55, 5.9, { color: 'red', width: 2.4 });
+        });
+        if (st >= 1) txt(b, 0.5, 5.3, '하루에 신청할 수 있는 두 체험의 짝', { size: 12.5, color: 'muted' });
+        const cap = [null, [`(나) ${pname(c.nv)}는 쓸 수 없다`, `짝은 5가지`], [`(다) ${pname(c.tg)} ${c.t}일을 고른다`, `${c.D}C${c.t} = ${I.ch}가지`], [`나머지 ${I.R}일은 4가지 짝으로 (가)에 맞게`, `${I.nRest}가지`], [`${I.ch} × ${I.nRest}`, `= ${v.ans.val}`]][Math.min(st, 4)];
+        if (cap) { txt(b, 0.5, 7.4, cap[0], { size: 13.5, color: 'amber' }); txt(b, 0.5, 8.2, cap[1], { size: 15, color: 'amber' }); }
+      } else if (st === 0) {
+        drawBoxes(b, c, null);
+        for (let q = 0; q < c.k; q++) token(b, (q - (c.k - 1) / 2) * 1.2, 5.9, 0.5, LET[q], PCOL[q], { size: 14.5 });
+        txt(b, 0, 7.0, `서로 다른 공 ${c.k}개`, { size: 13, color: 'muted' });
+      } else {
+        const rows = I.pats, cw = 1.0, rh = 0.74, n = c.n, x0 = -((n - 1) / 2) * cw - 0.9;
+        for (let i = 0; i < n; i++) txt(b, x0 + i * cw, 0.2, String(i + 1), { size: 13, color: 'muted' });
+        txt(b, x0 - 1.15, 0.2, '상자', { size: 12.5, color: 'muted' });
+        let y = 1.1;
+        const flat = [];
+        I.groups.forEach((g) => g.pats.forEach((p) => flat.push({ p, g })));
+        flat.forEach(({ p, g }, r) => {
+          const yy = y + r * rh;
+          p.forEach((x, i) => { tile(b, x0 + i * cw, yy, cw * 0.86, rh * 0.8, x ? String(x) : '', x === 2 ? 'amber' : x === 1 ? 'sky' : 'muted', { dim: x === 0, size: 13.5 }); });
+          if (st >= 2) txt(b, x0 + n * cw + 0.35, yy, `×${g.mult}`, { size: 13, color: 'green' });
+        });
+        if (st >= 3) txt(b, 0, y + flat.length * rh + 0.45, `${I.groups.map((g) => `${g.pats.length}×${g.mult}`).join(' + ')} = ${v.ans.val}`, { size: 14.5, color: 'amber' });
+      }
+    });
+  }
+  function scene6() {
+    return baseScene({
+      id: 'grid', title: '[기출 킬러] 표·상자에 놓는 경우의 수', short: '표·상자 경우 나누기',
+      question: '조건이 여러 개인 배치 문제는 어떻게 세어야 할까? 먼저 조건에 맞는 "모양"을 나열하고, 모양마다 세어서 합하는 "경우 나누기"를 직접 해 보자.',
+      guide: (s) => (s.mode6 === 'table'
+        ? '표의 <b>칸을 눌러</b> 하루에 두 종목씩 고르세요. 아래에서 (가)(나)(다)가 하나씩 ✓로 바뀝니다. 한 번에 안 되면 「조건에 맞는 예 보기」를 눌러 보세요.'
+        : '<b>상자를 눌러</b> 공의 개수(0 → 1 → 2개)를 바꿔 보세요. 조건을 모두 만족하는 모양에서는 공 4개(서로 다른 공)를 그 모양에 넣는 방법의 수가 나옵니다. 「다음 가능한 모양」으로 모든 모양을 훑어볼 수 있어요.'),
+      enter: (s) => { s.mode6 = 'table'; s.tab6 = Array.from({ length: 5 }, () => []); s.cnt6 = new Array(BOX_EX.n).fill(0); s.pi6 = 0; },
+      controls: () => [],
+      presets: () => [
+        { group: '무엇에 놓을까?', label: '표 (요일 × 종목)', apply: (st) => { st.mode6 = 'table'; }, on: (st) => st.mode6 === 'table' },
+        { group: '무엇에 놓을까?', label: '상자 (공 나누어 넣기)', apply: (st) => { st.mode6 = 'box'; }, on: (st) => st.mode6 === 'box' }
+      ],
+      actions: [
+        { id: 'ex6', icon: 'next', label: (s) => (s.mode6 === 'table' ? '조건에 맞는 예 보기' : '다음 가능한 모양'), run: (s) => {
+          if (s.mode6 === 'table') { const L = tableValidList(TBL_EX); s.tab6 = L[rint(L.length)].map((a) => a.slice()); }
+          else { const L = boxPatterns(BOX_EX); s.pi6 = (s.pi6 + 1) % L.length; s.cnt6 = L[s.pi6].slice(); }
+        } },
+        { id: 'clear6', icon: 'reset', label: '모두 비우기', run: (s) => { s.tab6 = Array.from({ length: 5 }, () => []); s.cnt6 = new Array(BOX_EX.n).fill(0); } }
+      ],
+      steps: steps6,
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text6(var6.cur())}</div>`,
+      problem: { tag: () => (var6.cur().kind === 'table' ? '2025학년도 9월 학평(인천) 21번 유형' : '2026학년도 9월 학평(인천) 20번 유형'), time: '목표 시간: 3분', text: () => probHTML(text6(var6.cur())), answer: () => tex(var6.cur().ans.tex) },
+      solution: {
+        standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '경우 나누기 요령', quickTag: '요령',
+        standard: () => {
+          const v = var6.cur(), I = v.info;
+          if (v.kind === 'table') return { steps: `① 하루에 가능한 짝: ${PAIRS.filter((p) => !peq(p, v.c.nv)).map(pname).join(', ')} (${pname(v.c.nv)} 제외)<br>② ${pname(v.c.tg)}인 날 ${v.c.t}일 선택: $_{${v.c.D}}\\mathrm{C}_{${v.c.t}}=${I.ch}$<br>③ 나머지 ${I.R}일에 쓸 수 있는 짝: ${I.rest4.map(pname).join(', ')}. 각 짝을 쓰는 날 수 $(${I.rest4.map(pname).join(', ')})$가 (가)를 만족하는 경우와 각 경우의 배열 수:<br>${I.comps.slice(0, 14).map((q) => `· (${q.cnt.join(', ')}) → $${I.R}!\\div(${q.cnt.map((x) => `${x}!`).join('\\cdot')})=${q.ways}$`).join('<br>')}${I.comps.length > 14 ? '<br>· …' : ''}<br>합 $${I.nRest}$<br>④ $${I.ch}\\times${I.nRest}=${v.ans.val}$`, warning: '"정확히 t일"은 먼저 그날들을 골라 짝을 고정한 뒤, 나머지 날에는 그 짝을 쓰지 못하게 해야 겹치지 않습니다.' };
+          return { steps: `① 상자별 공의 개수는 0, 1, 2 중 하나이고 합이 ${v.c.k}입니다. (가)를 만족하려면 2개 든 상자가 어디에 있어야 하는지 정하고 (나)로 걸러서 모양을 나열합니다.<br>${I.groups.map((g) => `② 2개 든 상자가 ${g.d}개인 모양 ${g.pats.length}가지: ${g.pats.map((p) => p.join('')).join(', ')}`).join('<br>')}<br>③ 서로 다른 공 ${v.c.k}개를 한 모양에 넣는 방법은 $${v.c.k}!\\div(2!)^d$: ${I.groups.map((g) => `$d=${g.d}$이면 $${g.mult}$`).join(', ')}<br>④ $${I.groups.map((g) => `${g.pats.length}\\times${g.mult}`).join('+')}=${v.ans.val}$`, warning: '모양(공의 개수)을 먼저 세고, 그 모양에 이름이 다른 공을 배분하는 방법을 곱해야 합니다. 상자 안에서 공을 넣는 순서는 세지 않습니다.' };
+        },
+        quick: () => ({ steps: '<strong class="text-amber-300">조건을 가장 강하게 제한하는 것</strong>부터 경우를 나눕니다. 표에서는 "정확히 몇 번"을 먼저 고정하고, 상자에서는 "2개 든 상자의 위치"를 먼저 정합니다.', highlight: '경우 나누기 → 모양 나열 → 모양마다 곱 → 합.' })
+      },
+      view: (s, lab) => {
+        const ex = lab.tab === 'explore';
+        let readouts = [], status = null, chips = [];
+        if (s.mode6 === 'table') {
+          const c = TBL_EX, ck = tableCheck(c, s.tab6);
+          status = ex ? { tone: ck.all ? 'ok' : 'info', text: ck.all ? '조건을 모두 만족!' : `하루 ${ck.rowsOk ? '모두 2종목' : '두 종목씩 고르기'}` } : null;
+          readouts = [
+            { label: '(가) 각 종목 2일 이상', value: okMark(ck.okM) + ' ' + ck.days.map((x, i) => `${LET[i]}${x}`).join(' '), color: ck.okM ? 'green' : 'rose' },
+            { label: `(나) ${pname(c.nv)} 함께한 날`, value: `${ck.nvN}일 ${okMark(ck.okNv)}`, color: ck.okNv ? 'green' : 'rose' },
+            { label: `(다) ${pname(c.tg)} 함께한 날 (정확히 ${c.t}일)`, value: `${ck.tgN}일 ${okMark(ck.okTg)}`, color: ck.okTg ? 'green' : 'rose', wide: true, note: `이런 신청서는 모두 ${tableInfo(c).ans}가지` }
+          ];
+        } else {
+          const c = BOX_EX, ck = boxCheck(c, s.cnt6), I = boxInfo(c);
+          status = ex ? { tone: ck.all ? 'ok' : 'info', text: ck.all ? '조건을 모두 만족!' : `공 ${ck.sum} / ${c.k}개` } : null;
+          readouts = [
+            { label: '지금 넣은 공', value: `${ck.sum} / ${c.k}개 ${okMark(ck.okSum && ck.le2)}`, color: ck.okSum && ck.le2 ? 'green' : 'rose' },
+            { label: '(가)(나) 조건', value: `${okMark(ck.okA)} ${okMark(ck.okB)}`, color: ck.okA && ck.okB ? 'green' : 'rose' },
+            { label: `가능한 모양 ${I.pats.length}가지에 공을 나누어 넣는 방법의 합`, value: String(I.total), color: 'amber', wide: true, note: I.groups.map((g) => `${g.pats.length}×${g.mult}`).join(' + ') }
+          ];
+        }
+        return {
+          chips, status, readouts,
+          rule: '조건에 맞는 모양을 나열 → 모양마다 세기 → 더하기',
+          formula: '<b>경우 나누기</b> 조건이 여러 개일 때는 ① 조건에 맞는 "모양"을 빠짐없이 나열하고 ② 모양마다 경우의 수를 세어 ③ 합의 법칙으로 더합니다.<br>표·상자 문제에서는 "정확히 몇 번", "2개 든 상자의 위치"처럼 <b>가장 강한 조건</b>부터 모양을 정하면 나눌 경우가 줄어듭니다.<br>서로 다른 $k$개의 공을 상자에 나누어 넣을 때 2개 든 상자가 $d$개이면 $k!\\div(2!)^d$가지(상자 안의 순서는 세지 않음).',
+          notes: '서로 다른 대상이면 "모양" 하나에 배분 방법이 여럿 있습니다. 같은 모양을 두 번 세거나 조건 (나)를 확인하지 않고 모양을 포함시키지 않도록 모양 목록을 먼저 점검하세요.'
+        };
+      },
+      vary: var6,
+      draw: (b, s0, v, lab) => { LAB = lab; bindTap(b.canvas, b); if (lab.tab === 'explore') draw6Explore(b, s0); else draw6Prob(b, s0, lab); }
+    });
+  }
+
+  /* ============================================================================================
+     장면 7 · 원순열 [이전 교육과정] — 원탁을 돌리면 n개의 배열이 하나로 겹친다 (n!/n = (n−1)!)
+     2022 개정 교육과정에서는 다루지 않지만 옛 기출을 풀다 만나는 유형이고 다시 들어올 수 있어 남겨 둡니다.
+     ============================================================================================ */
+  const seatXY = (n, i, R = 3.4) => { const a = -Math.PI / 2 + (2 * Math.PI * i) / n; return { x: R * Math.cos(a), y: R * Math.sin(a) }; };
+  const idPerm = (n) => Array.from({ length: n }, (_, i) => i);
+  const shuffle = (a) => { const r = a.slice(); for (let i = r.length - 1; i > 0; i--) { const j = rint(i + 1); [r[i], r[j]] = [r[j], r[i]]; } return r; };
+  // 앉음새(cyc: 시계 방향으로 읽은 사람 번호)를 r칸 돌린 뒤 12시 자리부터 읽은 줄
+  const readRot = (cyc, r) => cyc.map((_, i) => cyc[(((i - r) % cyc.length) + cyc.length) % cyc.length]);
+  function drawTable7(b, n, seats, o = {}) {
+    circ(b, 0, 0, 2.25, { fill: 'amber', fillAlpha: 0.07, color: 'amber', width: 1.6, alpha: 0.7 });
+    txt(b, 0, 0, '원탁', { size: 13, color: 'muted' });
+    for (let i = 0; i < n; i++) {
+      const q = seatXY(n, i), sd = seats[i];
+      if (!sd) token(b, q.x, q.y, 0.6, '', 'muted', { dim: true, dash: [4, 4] });
+      else if (sd.num != null) { circ(b, q.x, q.y, 0.6, { fill: 'sky', fillAlpha: 0.14, color: 'sky', width: 2, dash: sd.dash ? [4, 4] : null }); txt(b, q.x, q.y, String(sd.num), { size: 15, color: 'sky' }); }
+      else token(b, q.x, q.y, 0.6, sd.label, sd.color, { hot: sd.hot, dim: sd.dim, size: 14.5, dash: sd.dash ? [4, 4] : null });
+    }
+    if (o.marker !== false) { poly(b, [[-0.26, -4.7], [0.26, -4.7], [0, -4.3]], { fill: 'rose', fillAlpha: 0.85, color: 'rose', width: 1.2 }); txt(b, 2.3, -4.6, '12시부터 읽기', { size: 12.5, color: 'rose' }); }
+  }
+  function draw7Explore(b, s) {
+    const n = s.n7, cyc = s.cyc7.length === n ? s.cyc7 : idPerm(n), fix = s.lens7 === 'fix';
+    const r = fix ? ((n - cyc.indexOf(0)) % n) : s.rot7 % n;
+    const read = readRot(cyc, r);
+    figure(b, () => {
+      drawTable7(b, n, read.map((p) => ({ label: LET[p], color: PCOL[p], hot: p === 0 && fix })));
+      const rots = Array.from({ length: n }, (_, k) => readRot(cyc, k).map((p) => LET[p]).join(''));
+      if (!fix) {
+        txt(b, 0, 5.2, `돌려서 같아지는 ${n}개의 줄 (모두 같은 앉음새)`, { size: 12.5, color: 'muted' });
+        const cols = n > 5 ? 3 : 3, cw = 0.42 * n + 1.0;
+        rots.forEach((t, k) => tile(b, ((k % cols) - (cols - 1) / 2) * (cw + 0.2), 6.1 + Math.floor(k / cols) * 0.9, cw, 0.74, t, 'sky', { hot: k === r, dim: k !== r, size: 12.5 }));
+      } else {
+        txt(b, 0, 5.2, `A를 12시 자리에 고정하면 줄이 하나로 정해진다`, { size: 12.5, color: 'amber' });
+        tile(b, 0, 6.1, 0.42 * n + 1.6, 0.8, rots[r], 'amber', { hot: true, size: 14 });
+        // 나머지 n-1 자리의 후보 수
+        for (let i = 0; i < n - 1; i++) { const x = (i - (n - 2) / 2) * 1.15; txt(b, x, 7.2, String(n - 1 - i), { size: 15, color: 'sky' }); if (i) txt(b, x - 0.575, 7.2, '×', { size: 13, color: 'muted' }); }
+        txt(b, 0, 7.95, `나머지 ${n - 1}명을 한 줄로: ${n - 1}! = ${fact(n - 1)}`, { size: 13, color: 'sky' });
+      }
+    }, { margin: 0.04 });
+  }
+  const var7 = varier((prev) => {
+    const kind = prev ? pickOf(['basic', 'adj', 'opp'], prev.kind) : 'basic';
+    const bank = { basic: [4, 5, 6, 7], adj: [5, 6, 7], opp: [6, 8] };
+    const n = prev ? pickOf(bank[kind], prev.kind === kind ? prev.n : null) : 5;
+    const val = kind === 'basic' ? fact(n - 1) : kind === 'adj' ? 2 * fact(n - 2) : fact(n - 2);
+    return { kind, n, ans: { tex: String(val), val } };
+  });
+  const text7 = (v) => (v.kind === 'basic' ? `${v.n}명의 학생이 원탁에 둘러앉는 경우의 수를 구하시오. (단, 회전하여 같은 것은 같은 배열로 본다.)`
+    : v.kind === 'adj' ? `${v.n}명의 학생 중 특정한 두 학생 ${tex('A')}, ${tex('B')}가 이웃하도록 원탁에 둘러앉는 경우의 수를 구하시오. (단, 회전하여 같은 것은 같은 배열로 본다.)`
+      : `${v.n}명의 학생 중 특정한 두 학생 ${tex('A')}, ${tex('B')}가 서로 마주 보도록 원탁에 둘러앉는 경우의 수를 구하시오. (단, 회전하여 같은 것은 같은 배열로 본다.)`);
+  const steps7 = () => {
+    const v = var7.cur(), n = v.n;
+    if (v.kind === 'basic') return [
+      `회전하여 같은 배열은 같은 것으로 보므로 한 사람 $A$를 12시 자리에 <b>고정</b>한다`.replace(/<\/?b>/g, ''),
+      `나머지 $${n - 1}$명을 나머지 $${n - 1}$자리에 앉힌다: $${n - 1}\\times${n - 2}\\times\\cdots\\times1$`,
+      `$(${n}-1)!=${fact(n - 1)}$가지 (또는 $${n}!\\div${n}$)`
+    ];
+    if (v.kind === 'adj') return [
+      `$A$를 12시 자리에 고정하면 $B$는 $A$의 양옆 두 자리 중 하나: $2$가지`,
+      `나머지 $${n - 2}$명을 남은 $${n - 2}$자리에 앉힌다: $${n - 2}!=${fact(n - 2)}$가지`,
+      `곱의 법칙: $2\\times${fact(n - 2)}=${v.ans.val}$가지`
+    ];
+    return [
+      `$A$를 12시 자리에 고정하면 $B$는 정반대 자리 $1$곳에 앉는다: $1$가지`,
+      `나머지 $${n - 2}$명을 남은 $${n - 2}$자리에 앉힌다: $${n - 2}!=${fact(n - 2)}$가지`,
+      `곱의 법칙: $1\\times${fact(n - 2)}=${v.ans.val}$가지`
+    ];
+  };
+  function draw7Prob(b, s, lab) {
+    const v = var7.cur(), n = v.n, sp = pState(lab, s), st = sp.step;
+    const seats = new Array(n).fill(null);
+    if (st >= 1) seats[0] = { label: 'A', color: 'rose', hot: true };
+    if (st >= 1 && v.kind === 'adj') { seats[1] = { label: 'B', color: 'sky', dash: true }; seats[n - 1] = { label: 'B', color: 'sky', dash: true }; }
+    if (st >= 1 && v.kind === 'opp') seats[n / 2] = { label: 'B', color: 'sky', hot: true };
+    if (st >= 2) {
+      const free = seats.map((x, i) => (x ? -1 : i)).filter((i) => i >= 0);
+      free.forEach((i, q) => { seats[i] = { num: free.length - q }; });
+    }
+    figure(b, () => {
+      drawTable7(b, n, seats, { marker: false });
+      if (st === 0) txt(b, 0, 5.3, `${n}명이 원탁에 둘러앉는다`, { size: 13, color: 'muted' });
+      if (st >= 3) txt(b, 0, 5.3, v.kind === 'basic' ? `(${n}−1)! = ${v.ans.val}` : `${v.kind === 'adj' ? 2 : 1} × ${fact(n - 2)} = ${v.ans.val}`, { size: 16, color: 'amber' });
+    }, { margin: 0.05 });
+  }
+  function scene7() {
+    return baseScene({
+      id: 'circ', title: '[이전 교육과정] 원순열', short: '원순열(이전)',
+      question: '원탁에서는 모두 한 칸씩 돌려 앉아도 같은 앉음새로 본다. 그러면 일렬로 세우는 n!가지 중 몇 개씩 같은 앉음새로 겹칠까?',
+      guide: '<span class="apl-tag" style="--c:var(--m-rose)">이전 교육과정</span> 2022 개정 교육과정에서는 빠졌지만 옛 기출과 학교 시험에 나오고 다시 들어올 수 있어 남겨 둔 내용입니다.<br><b>돌린 칸 수</b> 막대로 원탁을 돌려 보세요. 사람의 사이는 그대로이고 읽는 줄만 바뀝니다. 「A 고정」으로 바꾸면 줄이 하나로 정해집니다.',
+      enter: (s) => { s.n7 = 5; s.rot7 = 0; s.lens7 = 'rot'; s.cyc7 = idPerm(5); },
+      controls: (s) => (s.lens7 === 'rot' ? ['n7', 'rot7'] : ['n7']),
+      presets: () => [
+        { group: '무엇을 볼까?', label: '원탁을 돌려 보기', apply: (st) => { st.lens7 = 'rot'; }, on: (st) => st.lens7 === 'rot' },
+        { group: '무엇을 볼까?', label: 'A를 12시 자리에 고정', apply: (st) => { st.lens7 = 'fix'; }, on: (st) => st.lens7 === 'fix' }
+      ],
+      actions: [
+        { id: 'shuf7', icon: 'wand', label: '다른 앉음새 보기', run: (s) => { s.cyc7 = shuffle(idPerm(s.n7)); s.rot7 = 0; } },
+        { id: 'spin7', icon: 'next', label: '한 칸 돌리기', run: (s) => { s.rot7 = (s.rot7 + 1) % s.n7; } }
+      ],
+      steps: steps7,
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${text7(var7.cur())}</div>`,
+      problem: { tag: '이전 교육과정 · 원순열 기본 유형', time: '목표 시간: 20초', text: () => probHTML(text7(var7.cur())), answer: () => tex(var7.cur().ans.tex) },
+      solution: {
+        standardTitle: '교과서식 풀이', standardTag: '기본 풀이', quickTitle: '10초 컷 · 한 명 고정', quickTag: '10초 컷',
+        standard: () => ({ steps: steps7().map((t, i) => `${'①②③'[i]} ${t}`).join('<br>'), warning: '일렬로 세우는 것과 달리 원탁에서는 <b>기준이 없으므로</b> 한 사람을 먼저 고정해 기준을 만듭니다. 고정한 사람은 세지 않습니다.' }),
+        quick: () => { const v = var7.cur(); return { steps: `한 명을 고정하고 나머지를 일렬로: <strong class="text-amber-300">${v.kind === 'basic' ? `(${v.n}−1)!` : v.kind === 'adj' ? `2 × (${v.n}−2)!` : `(${v.n}−2)!`} = ${v.ans.val}</strong>`, highlight: '원순열 = (일렬 순열) ÷ (돌려서 겹치는 수 n) → (n−1)!' }; }
+      },
+      view: (s, lab) => {
+        if (s.cyc7.length !== s.n7) { s.cyc7 = idPerm(s.n7); s.rot7 = 0; }
+        setMax(lab, 'rot7', Math.max(1, s.n7 - 1));
+        const n = s.n7, ex = lab.tab === 'explore';
+        return {
+          chips: ex ? [{ tex: `\\dfrac{${n}!}{${n}}=(${n}-1)!=${fact(n - 1)}`, color: 'amber' }] : [],
+          status: ex ? { tone: 'info', text: s.lens7 === 'fix' ? 'A를 12시 자리에 고정' : `${s.rot7}칸 돌림 · 같은 앉음새` } : null,
+          readouts: [
+            { label: `일렬로 세우는 방법 ${n}!`, value: String(fact(n)), color: 'sky' },
+            { label: '돌려서 같아지는 줄의 수', value: `${n}개씩`, color: 'rose', note: '원탁을 1칸, 2칸, … 돌린 모양' },
+            { label: `원순열 ${n}! ÷ ${n} = (${n}−1)!`, value: String(fact(n - 1)), color: 'amber', wide: true, note: 'A를 고정하고 나머지 n−1명을 세운 것과 같음' }
+          ],
+          rule: 'n명이 원탁에 앉는 경우의 수는 (n−1)!',
+          formula: '<span class="apl-tag" style="--c:var(--m-rose)">이전 교육과정</span> <b>원순열</b> 서로 다른 $n$개를 원형으로 배열하는 경우의 수(회전하여 같은 것은 같은 배열)<br>$\\dfrac{n!}{n}=(n-1)!$ — 일렬 순열 $n!$개는 한 원순열마다 $n$개씩(돌린 모양) 겹칩니다.<br>한 사람을 고정하고 나머지 $(n-1)$명을 일렬로 세워도 같은 값입니다.',
+          notes: '이 단원은 2022 개정 교육과정에서 빠졌지만 옛 학교 기출과 참고서에 자주 나옵니다. 거울에 비쳐 같은 것(목걸이·팔찌)은 이 값을 다시 2로 나누는 별개의 개념이므로 문제의 "회전하여 같은 것" 표현을 확인하세요.'
+        };
+      },
+      vary: var7,
+      draw: (b, s0, v, lab) => { LAB = lab; bindTap(b.canvas, b); if (lab.tab === 'explore') draw7Explore(b, s0); else draw7Prob(b, s0, lab); }
+    });
+  }
+
+  APLab.createLab({
+    id: 'common-counting',
+    title: '순열과 조합',
+    courseName: '공통수학',
+    unit: '경우의 수',
+    courseColor: 'var(--m-green)',
+    home: '../index.html#common',
+    board: { kind: 'cartesian', focus: { x: [-1, 11], y: [-6, 1] }, pad: 0.04, grid: false },
+    params: {
+      aP: { value: 3, min: 1, max: 4, step: 1, color: 'sky', label: '윗옷의 가짓수', format: (v) => `${Math.round(v)}가지` },
+      bP: { value: 2, min: 1, max: 4, step: 1, color: 'green', label: '바지의 가짓수', format: (v) => `${Math.round(v)}가지` },
+      aS: { value: 3, min: 1, max: 4, step: 1, color: 'sky', label: '버스의 편수', format: (v) => `${Math.round(v)}편` },
+      bS: { value: 2, min: 1, max: 4, step: 1, color: 'green', label: '기차의 편수', format: (v) => `${Math.round(v)}편` },
+      n2: { value: 5, min: 3, max: 7, step: 1, color: 'sky', label: '사람 수 n', format: (v) => `n = ${Math.round(v)}`, onInput: (s) => { s.seat2 = []; } },
+      r2: { value: 3, min: 1, max: 5, step: 1, color: 'rose', label: '앉힐 자리 수 r', format: (v) => `r = ${Math.round(v)}`, onInput: (s) => { s.seat2 = []; } },
+      n3: { value: 5, min: 4, max: 7, step: 1, color: 'sky', label: '전체 사람 수 n', format: (v) => `n = ${Math.round(v)}`, onInput: (s) => { s.sel3 = 1; } },
+      sel3: { value: 1, min: 1, max: 8, step: 1, color: 'amber', label: '모양 번호', hint: 'A, B가 들어가는 모양을 하나씩 넘겨 봅니다', format: (v) => `${Math.round(v)}번째` },
+      n4: { value: 5, min: 3, max: 6, step: 1, color: 'sky', label: '사람 수 n', format: (v) => `n = ${Math.round(v)}`, onInput: (s) => { s.g4 = 1; } },
+      r4: { value: 3, min: 1, max: 3, step: 1, color: 'rose', label: '뽑을 사람 수 r', format: (v) => `r = ${Math.round(v)}`, onInput: (s) => { s.g4 = 1; } },
+      g4: { value: 1, min: 1, max: 10, step: 1, color: 'amber', label: '묶음 번호', hint: '뽑힌 사람이 달라지는 묶음을 하나씩 넘겨 봅니다', format: (v) => `${Math.round(v)}번째` },
+      n5: { value: 5, min: 3, max: 8, step: 1, color: 'sky', label: '원 위의 점의 개수 n', format: (v) => `n = ${Math.round(v)}`, onInput: (s) => { s.k5 = 0; } },
+      mP: { value: 4, min: 2, max: 5, step: 1, color: 'rose', label: '가로선(p)의 개수', format: (v) => `${Math.round(v)}개`, onInput: (s) => { s.k5 = 0; } },
+      nP: { value: 3, min: 2, max: 5, step: 1, color: 'sky', label: '기울어진 선(q)의 개수', format: (v) => `${Math.round(v)}개`, onInput: (s) => { s.k5 = 0; } },
+      k5: { value: 10, min: 0, max: 10, step: 1, color: 'amber', label: '세어 본 개수', hint: '막대를 밀면 하나씩 늘어납니다', format: (v) => `${Math.round(v)}개째` },
+      n7: { value: 5, min: 3, max: 7, step: 1, color: 'sky', label: '사람 수 n', format: (v) => `n = ${Math.round(v)}`, onInput: (s) => { s.cyc7 = idPerm(s.n7); s.rot7 = 0; } },
+      rot7: { value: 0, min: 0, max: 4, step: 1, color: 'rose', label: '돌린 칸 수', hint: '원탁을 시계 방향으로 한 칸씩 돌립니다', format: (v) => `${Math.round(v)}칸` },
+      k1: { value: 3, min: 0, max: 12, step: 1, color: 'amber', label: '세어 본 가지 수', hint: '막대를 오른쪽으로 밀면 가지가 하나씩 펼쳐집니다', format: (v) => `${Math.round(v)}개째` }
+    },
+    state: { mode1: 'prod', mode5: 'line', mode6: 'table', lens7: 'rot', cyc7: [0, 1, 2, 3, 4], tab6: [[], [], [], [], []], cnt6: [0, 0, 0, 0, 0, 0], seat2: [], mode3: 'adj', pi6: 0 },
+    scenes: [scene1(), scene2(), scene3(), scene4(), scene5(), scene6(), scene7()]
+  });
+  document.querySelectorAll('.apl-icon-btn[aria-label^="격자"]').forEach((e) => { e.hidden = true; });
+});
+</script>
+</body>
+</html>

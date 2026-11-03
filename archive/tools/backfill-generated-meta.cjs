@@ -221,14 +221,15 @@ function createProjection({ uid, row, record, consumerQuestion, sourceQuestion, 
   return { projection, fieldEvidence: fullEvidence, mappingAttempt };
 }
 
-function build({ write = false, indexDocument = null } = {}) {
+function build({ write = false, indexDocument = null, crosswalkDocument = null } = {}) {
   const indexBytes = fs.readFileSync(path.join(ROOT, INDEX_REL));
-  if (write && indexDocument) throw new Error('INDEX_DOCUMENT_OVERRIDE_IS_DRY_RUN_ONLY');
+  if (write && (indexDocument || crosswalkDocument)) throw new Error('INDEX_DOCUMENT_OVERRIDE_IS_DRY_RUN_ONLY');
   const index = indexDocument || JSON.parse(indexBytes.toString('utf8'));
   const previousLedger = fs.existsSync(path.join(ROOT, LEDGER_REL)) ? readJson(LEDGER_REL) : null;
   const previousRowsByUid = new Map((previousLedger?.records || []).map(row => [row.uid, row]));
   const cutover = readJson(CUTOVER_REL);
-  const crossBytes = fs.readFileSync(path.join(ROOT, CROSSWALK_REL));
+  // crosswalkDocument is a dry-run-only override so the freeze rule can be tested without editing the shared file.
+  const crossBytes = crosswalkDocument ? Buffer.from(`${JSON.stringify(crosswalkDocument, null, 2)}\n`) : fs.readFileSync(path.join(ROOT, CROSSWALK_REL));
   const crosswalk = JSON.parse(crossBytes.toString('utf8'));
   const rpmMasterBytes = fs.readFileSync(path.join(ROOT, RPM_MASTER_REL));
   const rpmMaster = JSON.parse(rpmMasterBytes.toString('utf8'));
@@ -252,6 +253,8 @@ function build({ write = false, indexDocument = null } = {}) {
   const metaCache = new Map();
   const ledgerRows = [];
   let projected = 0;
+  let crosswalkDigestAdvanced = false;
+  let projectedFresh = 0;
   const seen = new Set();
   for (const row of index.records) {
     const uid = row.uid;
@@ -305,9 +308,32 @@ function build({ write = false, indexDocument = null } = {}) {
       const frozenProjection = existingProjections[0];
       if (!frozenProjection || existingProjections.some(projection => !projection || canonical(projection) !== canonical(frozenProjection)))
         throw new Error(`EXISTING_PROJECTION_DRIFT:${uid}`);
-      for (const field of ['source', 'meta', 'crosswalk']) {
+      for (const field of ['source', 'meta']) {
         if (canonical(previous.sourceEvidence?.[field]) !== canonical(refs[field]))
           throw new Error(`EXISTING_PROJECTION_EVIDENCE_DRIFT:${uid}:${field}`);
+      }
+      // The crosswalk is a shared, add-only file: rows for other questions are added or updated over time, so its
+      // whole-file digest is allowed to advance. The frozen projection still has to be reproduced exactly from the
+      // CURRENT crosswalk rows it depends on (the candidate record id and everything read from that row), with the
+      // frozen digests as evidence refs. A changed or missing dependent row therefore stays a hard drift.
+      if (canonical(previous.sourceEvidence?.crosswalk) !== canonical(refs.crosswalk)) {
+        const frozenCrosswalk = previous.sourceEvidence?.crosswalk;
+        const frozenMaster = previous.sourceEvidence?.rpmMaster;
+        const frozenNamespace = frozenCrosswalk?.path === CROSSWALK_REL && frozenMaster?.path === RPM_MASTER_REL ? {
+          policyDraft: frozenProjection.rpmL4Namespace === 'RPM_EXISTING_DRAFT',
+          policyLocked: frozenProjection.rpmL4Namespace === 'RPM_LOCKED',
+          ref: RPM_MASTER_REL,
+          sha256: frozenMaster.sha256,
+          refDetails: frozenMaster
+        } : null;
+        if (!frozenNamespace) throw new Error(`EXISTING_PROJECTION_EVIDENCE_DRIFT:${uid}:crosswalk`);
+        const frozenRefs = { ...refs, crosswalk: frozenCrosswalk, rpmMaster: frozenMaster };
+        const rebuilt = createProjection({ uid, row, record, consumerQuestion: question, sourceQuestion: sourceMatches[0], metaRow, crosswalkById, refs: frozenRefs, namespaceEvidence: frozenNamespace });
+        if (canonical(rebuilt.projection) !== canonical(frozenProjection) ||
+            canonical(rebuilt.mappingAttempt) !== canonical(previous.mappingAttempt) ||
+            canonical(compactFieldEvidence(rebuilt.fieldEvidence, frozenRefs)) !== canonical(previous.fieldEvidence))
+          throw new Error(`EXISTING_PROJECTION_EVIDENCE_DRIFT:${uid}:crosswalk`);
+        crosswalkDigestAdvanced = true;
       }
       if (sha(Buffer.from(expectedQuestionBody)) !== previous.studentPayloadSha256)
         throw new Error(`EXISTING_PROJECTION_STUDENT_PAYLOAD_DRIFT:${uid}`);
@@ -318,6 +344,7 @@ function build({ write = false, indexDocument = null } = {}) {
       projected++;
       continue;
     }
+    projectedFresh++;
     const built = createProjection({ uid, row, record, consumerQuestion: question, sourceQuestion: sourceMatches[0], metaRow, crosswalkById, refs, namespaceEvidence });
     const projection = built.projection;
     const oldRecordProjection = record.metaProjection;
@@ -366,7 +393,8 @@ function build({ write = false, indexDocument = null } = {}) {
     cutoverSha256: fileSha(CUTOVER_REL),
     cutoverGitBlobSha1: gitBlobSha(fs.readFileSync(path.join(ROOT, CUTOVER_REL))),
     sourceIndexBaseline: previousLedger?.sourceIndexBaseline || shaRecord(INDEX_REL, indexBytes),
-    crosswalk: shaRecord(CROSSWALK_REL, crossBytes),
+    // Every projection was verified against the frozen digest above, so the ledger keeps the digest it was sealed with.
+    crosswalk: crosswalkDigestAdvanced && projectedFresh === 0 && previousLedger?.crosswalk ? previousLedger.crosswalk : shaRecord(CROSSWALK_REL, crossBytes),
     rpmDraftPolicy: namespaceEvidence.refDetails,
     scope: 'EXACT_323_CUTOVER_UIDS_METADATA_ONLY',
     approvalMeaning: 'LEGACY_NOT_RECERTIFIED; approval fields reflect existing Consumer state only',

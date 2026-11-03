@@ -261,17 +261,17 @@ window.addEventListener('DOMContentLoaded', function () {
         source: '두 지수함수의 그래프와 원점을 지나는 직선',
         params: { ratioK: 2, tVal: 1.0 },
         snapParams: { ratioK: 2, tVal: 1.0 },
-        problem: '원점 $O$를 지나는 직선이 두 곡선 $y = a^x$, $y = b^x$ ($1 < b < a$)와 제1사분면에서 만나는 점을 각각 $P, Q$라 하자. 점 $P$가 선분 $OQ$의 중점($\\overline{OP}:\\overline{PQ}=1:1$)이고 점 $P$의 $x$좌표가 $1$, $y$좌표가 $2$일 때, $a + b^2$의 값을 구하시오.',
+        problem: '원점 $O$를 지나는 직선이 두 곡선 $y = a^x$, $y = b^x$ ($1 < b < a$)와 제1사분면에서 만나는 점을 각각 $P, Q$라 하자. 점 $P$가 선분 $OQ$의 중점($\\overline{OP}:\\overline{PQ}=1:1$)이고 점 $P$의 $x$좌표가 $1$, $y$좌표가 $3$일 때, $a + b^2$의 값을 구하시오.',
         textbookTitle: '직선의 방정식을 구하여 연립하기',
         textbookSteps: [
-          '1) 점 $P(1, 2)$가 $y = a^x$ 위의 점이므로 $a^1 = 2 \\implies a = 2$.',
-          '2) 원점과 $P(1,2)$를 지나는 직선은 $y = 2x$이고, $P$가 $\\overline{OQ}$의 중점이므로 $Q(2, 4)$이다.',
-          '3) $Q(2, 4)$를 $y = b^x$에 대입하면 $b^2 = 4$이므로 $a + b^2 = 2 + 4 = 6$.'
+          '1) 점 $P(1, 3)$이 $y = a^x$ 위의 점이므로 $a^1 = 3 \\implies a = 3$.',
+          '2) 원점과 $P(1,3)$을 지나는 직선은 $y = 3x$이고, $P$가 $\\overline{OQ}$의 중점이므로 $Q(2, 6)$이다.',
+          '3) $Q(2, 6)$을 $y = b^x$에 대입하면 $b^2 = 6$ ($b=\\sqrt6$, $1<b<a$)이므로 $a + b^2 = 3 + 6 = 9$.'
         ],
         secretTitle: 'OP : OQ = 1 : k이면 Q의 좌표는 P의 좌표의 k배',
         secretSteps: [
           '원점을 지나는 직선 위의 점은 $x$좌표와 $y$좌표가 같은 비율로 변합니다. $P$가 $\\overline{OQ}$의 중점이면 $Q$의 좌표는 $P$의 좌표의 $2$배인 $(2t, 2y_P)$입니다.',
-          '$P(t, a^t)$이면 $Q(2t, 2a^t)$이고, 이 점이 곡선 $y=b^x$ 위에 있으므로 $b^{2t} = 2a^t$입니다. 이 문제에서는 $t=1$, $a=2$이므로 $b^2 = 4$입니다.'
+          '$P(t, a^t)$이면 $Q(2t, 2a^t)$이고, 이 점이 곡선 $y=b^x$ 위에 있으므로 $b^{2t} = 2a^t$입니다. 이 문제에서는 $t=1$, $a=3$이므로 $b^2 = 6$이고 $a + b^2 = 9$입니다.'
         ]
       },
       {
@@ -512,7 +512,7 @@ window.addEventListener('DOMContentLoaded', function () {
     ['$\\overline{AB}=2\\sqrt{5}$', '$S=6$'],
     ['$k=6$, 삼각형 $OAB$의 넓이 $6$', '$\\overline{AB}=2\\sqrt{2}$'],
     ['$x_1x_2=1$, $t=2$', '자연수 $t$의 합 $6$, $x_1+x_2=\\log_2 12$'],
-    ['$a+b^2=6$', '$y_P+y_Q=6$ ($y_P=2,\\ y_Q=4$)'],
+    ['$a+b^2=9$', '$y_P+y_Q=6$ ($y_P=2,\\ y_Q=4$)'],
     ['$P>Q>R$, $\\dfrac{P}{R}=2$', '$S_{\\text{trap}}-S_{\\text{mid}}=2$ ($S_{\\text{trap}}>S_{\\text{mid}}$)'],
     ['$k=6$', '$14$개'],
     ['$\\alpha+\\beta=3$, $2^{2\\alpha}+2^{2\\beta}=20$', '정수 $p=5,\\ 6$ / $p=6$이면 두 근의 곱 $6$, 판별식 $1$']
@@ -1495,6 +1495,549 @@ function solveExpLineIntersection(k, shift = 0) {
     { id: 'dots', key: 'mut_dots', icon: 'grid', label: '격자점 표시' }
   ];
 
+  /* ======================================================================
+     6a. 「새 문제」 변형 (옛 장면 살리기, 2026-11-02)
+     - 탐구 탭(그림·조작·문구)은 그대로입니다. 문제 탭과 정리 탭만 장면마다 변형 생성기(OV)를 받습니다.
+     - 변형 0번은 지금 문제 그대로(문장·정답·풀이는 원본 문자열), 「새 문제」를 누르면 같은 구조의 다른 수로 바뀝니다.
+     - 문제 탭 그림 = 문제에 주어진 것만(답·답 보조선은 정리 탭의 풀이 단계에서 드러남). 풀이 단계·정답·그림이 변형을 따라갑니다.
+     ====================================================================== */
+  const OV = {};
+  OV.gcd = (a, b) => (b ? OV.gcd(b, a % b) : Math.abs(a));
+  OV.fr = (n, d = 1) => { const g = OV.gcd(n, d) || 1; n /= g; d /= g; if (d < 0) { n = -n; d = -d; } return d === 1 ? String(n) : (n < 0 ? '-' : '') + `\\frac{${Math.abs(n)}}{${d}}`; };
+  OV.sum = (a) => a.reduce((x, y) => x + y, 0);
+  OV.range = (a, b) => { const r = []; for (let i = a; i <= b; i++) r.push(i); return r; };
+  OV.f2 = (v, d = 2) => { const r = Math.round(v * Math.pow(10, d)) / Math.pow(10, d); return String(Object.is(r, -0) ? 0 : r); };
+  OV.sqrtOf = (n) => { let o = 1, i = n; for (let f = 2; f * f <= i; f++) while (i % (f * f) === 0) { i /= f * f; o *= f; } return [o, i]; };
+  OV.rt = (a, r) => { const [o, i] = OV.sqrtOf(r); a *= o; return i === 1 ? String(a) : (a === 1 ? '' : String(a)) + `\\sqrt{${i}}`; }; // a√r 를 간단히
+  OV.varier = (list) => { let cur = list[0]; return { all: list, set: (i) => { cur = list[i]; }, cur: () => cur, next: () => { const pool = list.filter((x) => x !== cur); cur = pool[Math.floor(Math.random() * pool.length)]; return cur; } }; };
+  OV.newBtn = '<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-ov-new>새 문제 (숫자 바꾸기)</button></div>';
+  document.addEventListener('click', (ev) => {
+    const hit = ev.target && ev.target.closest && ev.target.closest('[data-ov-new]');
+    if (!hit) return;
+    const lab = window.lab, sc = lab && lab.scene;
+    if (!sc || !sc.vary) return;
+    sc.vary.next();
+    lab.s.revealed = false;
+    lab.setStep(0);
+    try { lab._buildReview(); } catch (e) { /* 셸이 바뀌어도 그림은 그대로 */ }
+    lab.invalidate(true);
+  });
+  // 변형으로 그림의 크기가 달라지면 무대를 다시 맞춥니다(탐구용 범위 'E' 와 문제용 범위를 따로)
+  OV.autoFocus = (b, key, box) => { if (b.__ovKey !== key) { b.__ovKey = key; b.setFocus(box, true); } };
+  OV.txt = (b, p, str, color, o = {}) => b.text(p, str, { color, size: 13, weight: 800, align: 'center', baseline: 'middle', ...o });
+  OV.mono = (x) => x; // 자리 표시(확장용)
+
+  /* ---------- 변형 생성기: 유형마다 (문장 · 정답 · 교과서 풀이 · 10초 컷 · 그림 자료 · 검산 자료) ---------- */
+  const VARS = [[], [], [], [], [], [], [], []];
+  const evenOdd = (N) => { let E = 0, O = 0; for (let n = 2; n <= N; n++) (n % 2 ? O++ : E++); return { E, O }; };
+  const gtex = (N, sign) => OV.range(2, N).map((n) => (n % 2 ? 1 : sign > 0 ? 2 : 0));
+  const gv = (fk, n) => (n % 2 ? 1 : fk > 0 ? 2 : fk === 0 ? 1 : 0);
+
+  /* 유형 1 · 거듭제곱근의 실근의 개수 */
+  const f1 = (r1, r2, kk) => ({ x: [Math.min(-1, r1 - 1.6, kk - 1), Math.max(r2, kk) + 1.9], y: [-((r2 - r1) * (r2 - r1)) / 4 - 1.6, Math.max(4.8, (kk - r1) * (kk - r2) + 1.5)] });
+  function v1a(r1, r2, k0, orig) {
+    const ks = OV.range(r1 + 1, r2 - 1), S = OV.sum(ks), fv = (k0 - r1) * (k0 - r2), a = gv(fv, 3), c = gv(fv, 4);
+    const sgn = fv < 0 ? '< 0' : fv === 0 ? '= 0' : '> 0';
+    const why = fv < 0 ? `$g(${k0},4)=0$ ($f(k)<0$이면 짝수 $n$에서 실근이 없다)` : fv === 0 ? `$g(${k0},4)=1$ ($x=0$ 하나뿐)` : `$g(${k0},4)=2$ ($x=\\pm\\sqrt[4]{${fv}}$)`;
+    return {
+      orig, focus: f1(r1, r2, k0), fig: { r1, r2, ks, k0, kind: 'sum' }, chk: { t: '1a', r1, r2, k0, val: [S, a + c] },
+      text: `이차함수 $f(x) = (x-${r1})(x-${r2})$에 대하여, 실수 $f(k)$의 $n$제곱근 중 실수인 것의 개수를 $g(k, n)$이라 하자. $n=4$(짝수)일 때, $g(k, 4) = 0$을 만족시키는 모든 자연수 $k$의 값의 합과, $k=${k0}$일 때 $g(${k0}, 3) + g(${k0}, 4)$의 값을 구하시오.`,
+      ans: `$k$의 값의 합 $${S}$, $g(${k0},3)+g(${k0},4)=${a + c}$`,
+      std: [
+        `1) $x^n = f(k)$에서 $n=4$는 짝수이므로 우변 $f(k) < 0$일 때 실근이 존재하지 않는다 ($g(k,4)=0$). $f(k)<0 \\iff ${r1} < k < ${r2}$이므로 자연수 $k = ${ks.join(', ')}$의 합은 $${S}$이다.`,
+        `2) $f(${k0}) = ${fv}$이므로 $f(${k0}) ${sgn}$이다. $n=3$(홀수)에서는 $g(${k0},3)=1$이고, $n=4$(짝수)에서는 ${why}이다.`,
+        `3) 따라서 $g(${k0},3)+g(${k0},4) = ${a} + ${c} = ${a + c}$이다.`
+      ],
+      quick: [
+        `**홀수 $n$이면 $f(k)$의 부호와 관계없이 실근은 항상 $1$개**, 짝수 $n$이면 $f(k)>0$, $f(k)=0$, $f(k)<0$에 따라 $2, 1, 0$개입니다.`,
+        `$f(${k0}) = ${fv}$이므로 $g(${k0},3)+g(${k0},4) = ${a} + ${c} = ${a + c}$이고, $g(k,4)=0$인 자연수 $k$는 $${ks.join(', ')}$로 합이 $${S}$입니다.`
+      ]
+    };
+  }
+  VARS[0][0] = [v1a(2, 6, 4, true), v1a(1, 7, 7), v1a(3, 9, 10), v1a(2, 8, 5), v1a(1, 5, 6)];
+  function v1b(r1, r2, N, orig) {
+    const { E, O } = evenOdd(N), pos = gtex(N, 1), neg = gtex(N, -1);
+    return {
+      orig, focus: f1(r1, r2, r2), fig: { r1, r2, ks: [r1, r2], k0: null, kind: 'zero' }, chk: { t: '1b', r1, r2, N, val: [r1, r2] },
+      text: `$f(x) = (x-${r1})(x-${r2})$에 대하여 $\\sum_{n=2}^{${N}} g(k, n) = ${N - 1}$를 만족시키는 자연수 $k$의 값을 구하시오. (단, $g(k, n)$은 $f(k)$의 $n$제곱근 중 실수인 것의 개수)`,
+      ans: `$k=${r1},\\ ${r2}$`,
+      std: [
+        `1) $f(k)>0$이면 $${pos.join(' + ')} = ${OV.sum(pos)}$, $f(k)<0$이면 $${neg.join(' + ')} = ${OV.sum(neg)}$이다.`,
+        `2) $f(k)=0$이면 $${Array(N - 1).fill(1).join(' + ')} = ${N - 1}$이므로 $k=${r1}, ${r2}$이다.`
+      ],
+      quick: [
+        `$n = 2 \\sim ${N}$ (항 $${N - 1}$개)의 합이 $${N - 1}$이 되려면 모든 항이 $1$이어야 합니다. **$f(k) = 0$이면 $n$이 짝수여도 실근이 $0$ 하나뿐**이므로 $k = ${r1}, ${r2}$입니다.`
+      ]
+    };
+  }
+  VARS[0][1] = [v1b(1, 7, 6, true), v1b(2, 8, 5), v1b(3, 9, 7), v1b(1, 5, 4), v1b(4, 10, 6)];
+
+  /* 유형 2 · 평행이동한 곡선과 직선 */
+  const pl = (a, b) => { const g = OV.gcd(a, b) || 1; return b / g === 1 ? String(a / g) : `${a / g}/${b / g}`; }; // 캔버스 글자용 분수(슬래시 → 쌓은 분수)
+  function v2a(dx, dy, orig) {
+    const m = dy / dx, L = dx * dx + dy * dy, [o, i] = OV.sqrtOf(L), lenTex = i === 1 ? String(o) : (o === 1 ? '' : o) + `\\sqrt{${i}}`, lenPlain = i === 1 ? String(o) : (o === 1 ? '' : o) + `√${i}`;
+    return {
+      orig, focus: { x: [-2.4, dx + 2.8], y: [-1.5, dy + 3.6] }, fig: { dx, dy, m, lenPlain, slope: pl(dy, dx) }, chk: { t: '2a', dx, dy, val: [Math.sqrt(L)] },
+      text: `두 곡선 $y = 2^x$과 $y = 2^{x-${dx}} + ${dy}$가 기울기가 $${m}$인 직선 $y = ${m === 1 ? '' : m}x + 1$과 만나는 두 점을 각각 $A, B$라 할 때, 선분 $\\overline{AB}$의 길이를 구하시오.`,
+      ans: `$\\overline{AB}=${lenTex}$`,
+      std: [
+        `1) $y=2^x$과 직선 $y=${m === 1 ? '' : m}x+1$의 교점 중 $A=(0,1)$은 $2^0=1$로 확인된다. 평행이동으로 대응하는 점을 이용하므로 다른 교점의 좌표를 모두 풀 필요는 없다.`,
+        `2) 점 $B(s, 2^{s-${dx}}+${dy})$를 직선에 대입하면 $2^{s-${dx}} + ${dy} = ${m === 1 ? '' : m}s+1$이고, $t = s-${dx}$로 놓으면 $2^t = ${m === 1 ? '' : m}t + 1$이다.`,
+        `3) 이 방정식은 $A$의 $x$좌표 $t=0$을 해로 가지므로 $s=${dx}$이고 $B(${dx}, ${dy + 1})$이다. 따라서 $\\overline{AB} = \\sqrt{${dx}^2 + ${dy}^2} = ${lenTex}$이다.`
+      ],
+      quick: [
+        `두 곡선은 $x$축의 방향으로 $\\Delta x = ${dx}$, $y$축의 방향으로 $\\Delta y = ${dy}$만큼 평행이동한 관계이므로, 이동한 방향의 기울기는 $\\frac{${dy}}{${dx}} = ${m}$입니다.`,
+        `직선의 기울기도 $${m}$입니다. 따라서 교점의 좌표를 구하지 않아도 두 교점 $A, B$는 평행이동으로 서로 겹쳐지는 점입니다.`,
+        `$\\overline{AB} = \\sqrt{(\\Delta x)^2 + (\\Delta y)^2} = \\sqrt{${dx}^2 + ${dy}^2} = ${lenTex}$`
+      ]
+    };
+  }
+  VARS[1][0] = [v2a(2, 4, true), v2a(1, 2), v2a(1, 3), v2a(2, 6), v2a(3, 6), v2a(3, 9)];
+  // 2^x − x = c 의 해(x > 0.53)
+  const solveS = (c) => { let a = 0.53, b = 30; for (let i = 0; i < 200; i++) { const m = (a + b) / 2; if (Math.pow(2, m) - m < c) a = m; else b = m; } return (a + b) / 2; };
+  function v2b(dx, c1, c2, orig) {
+    const S = dx * (c2 - c1), xa = solveS(c1), xb = solveS(c2), len = dx === 1 ? '\\sqrt2' : `${dx}\\sqrt2`;
+    const gapTex = (c2 - c1) === 2 ? '\\sqrt2' : `\\frac{${c2 - c1}}{\\sqrt2}`;
+    return {
+      orig, focus: { x: [-1.6, xb + dx + 2.0], y: [-1.6, Math.pow(2, xb) + dx + 2.6] }, fig: { dx, c1, c2, xa, xb, S, gapPlain: c2 - c1 === 2 ? '√2' : `${c2 - c1}/√2` }, chk: { t: '2b', dx, c1, c2, val: [S] },
+      text: `두 곡선 $y = 2^x$, $y = 2^{x-${dx}} + ${dx}$ 중에서 $y-x$의 값이 증가하는 부분(곡선 $y=2^x$에서는 $x>0.53$일 때)과 두 직선 $y=x+${c1}$, $y=x+${c2}$로 둘러싸인 영역의 넓이 $S$를 구하시오.`,
+      ans: `$S=${S}$`,
+      std: [
+        `1) $s=y-x$로 두면 두 직선은 각각 $s=${c1},${c2}$이다. 첫 곡선 위에서 $s=2^x-x$는 $x>0.53$일 때 증가하므로, 이 부분에서 $s=${c1}$, $s=${c2}$인 두 점을 잡는다.`,
+        `2) 두 번째 곡선은 첫 곡선을 $x$축의 방향으로 $${dx}$, $y$축의 방향으로 $${dx}$만큼 평행이동한 그래프이다. 이 이동은 $s=y-x$의 값을 바꾸지 않으므로, 각 직선 위에서 대응하는 두 점 사이의 거리는 ${len}이다.`,
+        `3) 경계선 $y=x+${c1}$과 $y=x+${c2}$ 사이의 수직거리는 $\\frac{${c2 - c1}}{\\sqrt{1^2+1^2}}=${gapTex}$이다. 따라서 넓이는 $${len}\\times ${gapTex}=${S}$이다.`
+      ],
+      quick: [
+        `$s=y-x$로 놓으면 평행이동 $(${dx}, ${dx})$는 $s$의 값을 바꾸지 않습니다. 곡선으로 둘러싸인 부분을 평행이동하면 **평행사변형**이 되므로 곡선의 방정식으로 넓이를 직접 계산하지 않아도 됩니다.`,
+        `두 평행선 사이의 거리는 ${gapTex}, 대응하는 두 점 사이의 거리는 ${len}이므로 $S=${len}\\cdot ${gapTex}=${S}$입니다.`
+      ]
+    };
+  }
+  VARS[1][1] = [v2b(3, 1, 3, true), v2b(2, 1, 5), v2b(4, 1, 2), v2b(3, 2, 5), v2b(2, 2, 5), v2b(4, 1, 5)];
+
+  /* 유형 3 · 역함수의 그래프의 대칭 */
+  const f3 = (s, b2) => ({ x: [s - 1.4, b2 + 2.4], y: [s - 1.4, b2 + 2.4] });
+  function v3a(base, a, orig) {
+    const b2 = Math.pow(base, a), n = b2 - a, k = a + b2, area = (n * k) / 2, abTex = n === 1 ? '\\sqrt{2}' : `${n}\\sqrt{2}`;
+    return {
+      orig, focus: f3(0, b2), fig: { base, s: 0, a, b: b2, k, kind: 'A' }, chk: { t: '3a', base, a, val: [k, area] },
+      text: `곡선 $y = ${base}^x$과 $y = \\log_${base} x$가 직선 $y = -x + k$와 만나는 두 점을 $A, B$라 하자. 두 점이 모두 제1사분면에 있고 $\\overline{AB} = ${abTex}$일 때, 상수 $k$의 값과 삼각형 $OAB$의 넓이를 구하시오.`,
+      ans: `$k=${k}$, 삼각형 $OAB$의 넓이 $${OV.fr(n * k, 2)}$`,
+      std: [
+        `1) $y=${base}^x$과 $y=\\log_${base} x$의 그래프는 직선 $y=x$에 대하여 대칭이므로 $A(\\alpha, \\beta), B(\\beta, \\alpha)$라 놓는다 ($\\alpha < \\beta$).`,
+        `2) $\\overline{AB} = \\sqrt{(\\beta-\\alpha)^2 + (\\alpha-\\beta)^2} = \\sqrt{2}(\\beta-\\alpha) = ${abTex}$에서 $\\beta - \\alpha = ${n}$.`,
+        `3) $\\beta=${base}^\\alpha$와 $\\beta-\\alpha=${n}$에서 $${base}^\\alpha-\\alpha=${n}$이다. $\\alpha=${a}$가 해이므로 $(\\alpha,\\beta)=(${a},${b2})$, $k=${k}$이다. 삼각형 넓이는 $\\frac12|${a}\\cdot${a}-${b2}\\cdot${b2}|=${OV.fr(b2 * b2 - a * a, 2)}$이다.`
+      ],
+      quick: [
+        `기울기가 $-1$인 직선 위에서 $\\overline{AB} = d\\sqrt{2}$이면 **$x$좌표의 차 $\\Delta x = d$, $y$좌표의 차 $\\Delta y = d$**입니다. 여기서 $d=${n}$입니다.`,
+        `두 교점의 중점은 $M\\left(\\frac{k}{2}, \\frac{k}{2}\\right)$이고 $A\\left(\\frac{k-${n}}{2}, \\frac{k+${n}}{2}\\right)$가 $y=${base}^x$ 위에 있으므로 $k=${k}$입니다.`,
+        `$\\overline{OM} \\perp \\overline{AB}$이므로 $\\triangle OAB = \\frac{1}{2} \\times \\overline{OM} \\times \\overline{AB} = \\frac{k}{2} \\times d = ${OV.fr(k * n, 2)}$입니다.`
+      ]
+    };
+  }
+  VARS[2][0] = [v3a(2, 2, true), v3a(2, 1), v3a(2, 3), v3a(3, 1), v3a(3, 2)];
+  function v3b(s, e, orig) {
+    const a = s + e, b2 = Math.pow(2, e) + s, k = a + b2, n = b2 - a, abTex = n === 1 ? '\\sqrt{2}' : `${n}\\sqrt{2}`;
+    return {
+      orig, focus: f3(s, b2), fig: { base: 2, s, a, b: b2, k, kind: 'B' }, chk: { t: '3b', s, k, val: [n] },
+      text: `두 곡선 $y = 2^{x-${s}} + ${s}$과 $y = \\log_2(x-${s}) + ${s}$이 직선 $y = -x + ${k}$와 만나는 두 점을 $A, B$라 할 때, $\\overline{AB}$의 길이를 구하시오.`,
+      ans: `$\\overline{AB}=${abTex}$`,
+      std: [
+        `1) $X = x-${s}, Y = y-${s}$로 놓으면 $Y = 2^X$, $Y = \\log_2 X$이고, 직선은 $Y = -X + ${k - 2 * s}$가 된다.`,
+        `2) $X=${e}$이면 $Y=2^${e}=${Math.pow(2, e)}=-${e}+${k - 2 * s}$이므로 지수곡선의 교점은 $(${e},${Math.pow(2, e)})$이다. 대칭인 로그곡선의 교점은 $(${Math.pow(2, e)},${e})$이다.`,
+        `3) 원래 좌표로 옮기면 $A(${a},${b2}), B(${b2},${a})$이다. 따라서 $\\overline{AB}=\\sqrt{${n}^2+(-${n})^2}=${abTex}$이다.`
+      ],
+      quick: [
+        `두 곡선을 $x$축의 방향으로 $${s}$, $y$축의 방향으로 $${s}$만큼 똑같이 평행이동했으므로 두 곡선은 여전히 직선 $y=x$에 대하여 대칭입니다.`,
+        `대칭인 두 교점의 중점은 직선 $y=x$ 위에 있으므로, 직선 $y=-x+${k}$와 $y=x$의 교점 $M(${OV.fr(k, 2)},${OV.fr(k, 2)})$가 중점입니다. 실제로 $A(${a},${b2})$는 $${b2}=2^{${a}-${s}}+${s}$를 만족시킵니다.`
+      ]
+    };
+  }
+  VARS[2][1] = [v3b(1, 2, true), v3b(2, 1), v3b(1, 3), v3b(2, 2), v3b(3, 1), v3b(3, 2)];
+
+  /* 유형 4 · 절댓값을 포함한 로그·지수함수 */
+  function v4a(base, t, orig) {
+    const x1 = Math.pow(base, -t), x2 = Math.pow(base, t), dn = Math.pow(base, t), dd = Math.pow(base, t);
+    const diff = OV.fr(Math.pow(base, 2 * t) - 1, Math.pow(base, t));
+    return {
+      orig, focus: { x: [-0.8, x2 + 1.6], y: [-1.4, t + 1.9] }, fig: { base, t, x1, x2 }, chk: { t: '4a', base, t0: t, diff: Math.pow(base, t) - Math.pow(base, -t), val: [1, t] },
+      text: `함수 $y = |\\log_${base} x|$의 그래프와 직선 $y = t$ ($t > 0$)가 만나는 두 점의 $x$좌표를 각각 $x_1, x_2$ ($x_1 < x_2$)라 하자. $x_2 - x_1 = ${diff}$일 때, $x_1 x_2$의 값과 상수 $t$의 값을 구하시오.`,
+      ans: `$x_1x_2=1$, $t=${t}$`,
+      std: [
+        `1) $0<x<1$에서 $|\\log_${base} x| = -\\log_${base} x$, $x>1$에서 $|\\log_${base} x| = \\log_${base} x$이므로 $-\\log_${base} x_1 = t$, $\\log_${base} x_2 = t$이다.`,
+        `2) $\\log_${base} x_1 + \\log_${base} x_2 = 0$이므로 $\\log_${base}(x_1x_2) = 0$, 즉 $x_1x_2=1$이다.`,
+        `3) $x_1 = ${base}^{-t}, x_2 = ${base}^{t}$이므로 $x_2 - x_1 = ${base}^t - ${base}^{-t} = ${diff}$이고, $t=${t}$이다.`
+      ],
+      quick: [
+        `$|\\log_a x|=t$의 두 근은 $x=a^{-t}, a^{t}$이므로 **곱은 항상 $1$**입니다. ($0<x<1$ 부분을 $x=1$ 기준으로 접어 올린 그래프)`,
+        `$x_2 - x_1 = ${base}^t - ${base}^{-t} = ${diff}$에서 $${base}^t = ${dn}$이므로 $t=${t}$입니다.`
+      ]
+    };
+  }
+  VARS[3][0] = [v4a(2, 2, true), v4a(2, 1), v4a(2, 3), v4a(3, 1), v4a(3, 2)];
+  function v4b(k, t0, orig) {
+    const P = k * k - t0 * t0, S = (k * (k - 1)) / 2, lg = Math.log2(P), lgTex = Number.isInteger(lg) ? String(lg) : `\\log_2 ${P}`;
+    return {
+      orig, focus: { x: [-3.4, Math.log2(k + t0) + 1.6], y: [-1, k + 1.7] }, fig: { k, t: t0, given: true }, chk: { t: '4b', k, t0, val: [P, S] },
+      text: `함수 $f(x) = |2^x - ${k}|$의 그래프와 직선 $y = t$가 서로 다른 두 점에서 만나도록 하는 모든 자연수 $t$의 값의 합과, $t=${t0}$일 때 두 교점의 $x$좌표 합 $x_1 + x_2$를 구하시오.`,
+      ans: `자연수 $t$의 합 $${S}$, $x_1+x_2=${lgTex}$`,
+      std: [
+        `1) $|2^x - ${k}|$의 그래프는 $y=2^x-${k}$에서 $x$축 아래쪽 부분을 위로 접은 모양이므로 점근선 $y=${k}$를 향해 올라간다.`,
+        `2) 서로 다른 두 점에서 만나려면 $0 < t < ${k}$이므로 자연수 $t = ${OV.range(1, k - 1).join(', ')}$ (합 $${S}$)이다.`,
+        `3) $t=${t0}$일 때 $2^{x_1} = ${k - t0}$, $2^{x_2} = ${k + t0}$이므로 $2^{x_1+x_2} = ${P}$, $x_1+x_2 = ${lgTex}$이다.`
+      ],
+      quick: [
+        `$a^{x_1} = k - t$이고 $a^{x_2} = k + t$이므로 두 식을 곱하면 **$a^{x_1 + x_2} = k^2 - t^2$**입니다.`,
+        `$2^{x_1+x_2} = ${k}^2 - ${t0}^2 = ${P}$이므로 $x_1+x_2 = ${lgTex}$입니다.`
+      ]
+    };
+  }
+  VARS[3][1] = [v4b(4, 2, true), v4b(5, 3), v4b(6, 2), v4b(5, 4), v4b(10, 6)];
+
+  /* 유형 5 · 원점을 지나는 직선과 지수함수 */
+  function v5a(q, ratio, orig) { // P(1, q), OP:PQ = 1:ratio → Q = (1+ratio)P
+    const r = 1 + ratio, bpow = r * q, ans = q + bpow, bsup = r === 2 ? '2' : '3';
+    return {
+      orig, focus: { x: [-0.8, r + 1.2], y: [-0.9, r * q + 1.6] }, fig: { py: q, r, a: q, b: Math.pow(r * q, 1 / r), two: true, hide: false }, chk: { t: '5a', q, r, val: [ans] },
+      text: `원점 $O$를 지나는 직선이 두 곡선 $y = a^x$, $y = b^x$ ($1 < b < a$)와 제1사분면에서 만나는 점을 각각 $P, Q$라 하자. ${r === 2 ? '점 $P$가 선분 $OQ$의 중점($\\overline{OP}:\\overline{PQ}=1:1$)이고' : '$\\overline{OP}:\\overline{PQ}=1:2$ (즉 $\\overline{OP}:\\overline{OQ}=1:3$)이고'} 점 $P$의 $x$좌표가 $1$, $y$좌표가 $${q}$일 때, $a + b^${bsup}$의 값을 구하시오.`,
+      ans: `$a+b^${bsup}=${ans}$`,
+      std: [
+        `1) 점 $P(1, ${q})$에서 $x$축, $y$축에 내린 수선의 발과 원점 $O$로 직각삼각형을 만들면, 점 $Q$에서 내린 수선의 발로 만든 직각삼각형과 닮음이고 닮음비는 $1 : ${r}$이다.`,
+        `2) 따라서 $Q(${r}, ${r * q})$이다. $P$는 $y=a^x$ 위의 점이므로 $a^1 = ${q}$, 즉 $a=${q}$이다.`,
+        `3) $Q$는 $y=b^x$ 위의 점이므로 $b^{${r}} = ${r * q}$이다. 따라서 $a + b^${bsup} = ${q} + ${r * q} = ${ans}$이다.`
+      ],
+      quick: [
+        `$\\overline{OP}:\\overline{OQ} = 1:${r}$이므로 점 $Q$의 좌표는 $P$의 좌표의 $${r}$배인 $Q(${r}, ${r * q})$입니다.`,
+        `$a = ${q}$이고 $b^{${r}} = ${r * q}$이므로 $a + b^${bsup} = ${q} + ${r * q} = ${ans}$입니다.`
+      ]
+    };
+  }
+  VARS[4][0] = [v5a(3, 1, true), v5a(4, 1), v5a(5, 1), v5a(3, 2), v5a(4, 2), v5a(6, 1)];
+  function v5b(n, ask, orig) { // OP:OQ = 1:n, P=(1,a), Q=(n, n·a), a^(n-1) = n
+    const a = Math.pow(n, 1 / (n - 1)), yP = n === 2 ? '2' : '\\sqrt{3}', yQ = n === 2 ? '4' : '3\\sqrt{3}';
+    const val = ask === 'sum' ? (n === 2 ? '6' : '4\\sqrt{3}') : (n === 2 ? '2' : '2\\sqrt{3}');
+    return {
+      orig, focus: { x: [-0.8, n + 1.3], y: [-0.9, n * a + 1.7] }, fig: { py: a, r: n, a, two: false, hide: true }, chk: { t: '5b', n, ask, val: [ask === 'sum' ? (n + 1) * a : (n - 1) * a] },
+      text: n === 2
+        ? `원점 $O$를 지나는 직선이 곡선 $y = a^x$ ($a>1$)과 만나는 두 점을 $P, Q$라 하자. $\\overline{OP} = \\overline{PQ}$ (즉 $\\overline{OP}:\\overline{OQ}=1:2$)일 때, 점 $P$의 $y$좌표와 점 $Q$의 $y$좌표의 ${ask === 'sum' ? '합' : '차'}를 구하시오.`
+        : `원점 $O$를 지나는 직선이 곡선 $y = a^x$ ($a>1$)과 만나는 두 점을 $P, Q$라 하자. $\\overline{OP}:\\overline{PQ} = 1:2$ (즉 $\\overline{OP}:\\overline{OQ}=1:3$)일 때, 점 $P$의 $y$좌표와 점 $Q$의 $y$좌표의 ${ask === 'sum' ? '합' : '차'}를 구하시오.`,
+      ans: ask === 'sum' ? `$y_P+y_Q=${val}$ ($y_P=${yP},\\ y_Q=${yQ}$)` : `$y_Q-y_P=${val}$ ($y_P=${yP},\\ y_Q=${yQ}$)`,
+      std: [
+        `1) $P$의 좌표를 $(p, a^p)$라 하자. $\\overline{OP}:\\overline{OQ} = 1:${n}$이므로 $Q$의 좌표는 $(${n}p, ${n}a^p)$이다.`,
+        `2) $Q$는 $y=a^x$ 위의 점이므로 $a^{${n}p} = ${n}a^p$, 즉 $(a^p)^{${n}} = ${n}a^p$이다. $a^p>0$이므로 $(a^p)^{${n - 1}} = ${n}$이다.`,
+        `3) 따라서 $y_P = a^p = ${yP}$, $y_Q = ${n}a^p = ${yQ}$이므로 ${ask === 'sum' ? '합' : '차'}은 $${val}$이다.`
+      ],
+      quick: [
+        `$Q = ${n}P$이므로 $y_Q = ${n}y_P$입니다. 그런데 $y_P = a^p$, $y_Q = a^{${n}p} = (a^p)^{${n}} = y_P^{${n}}$입니다. **$a$나 $p$를 따로 구할 필요가 없습니다.**`,
+        `$y_P^{${n}} = ${n}y_P$에서 $y_P^{${n - 1}} = ${n}$, $y_P = ${yP}$이므로 ${ask === 'sum' ? '합' : '차'}은 $${val}$입니다.`
+      ]
+    };
+  }
+  VARS[4][1] = [v5b(2, 'sum', true), v5b(2, 'diff'), v5b(3, 'sum'), v5b(3, 'diff')];
+
+  /* 유형 6 · 기울기·넓이 비교 */
+  const lg2 = (x1) => Math.log2(x1 + 1);
+  function v6a(x1, x2, orig) {
+    const y1 = lg2(x1), y2 = lg2(x2), P = y1 / x1, Q = y2 / x2, R = (y2 - y1) / (x2 - x1), pr = OV.fr(Math.round(y1 * (x2 - x1)), Math.round((y2 - y1) * x1));
+    const frs = (a, b) => OV.fr(a, b);
+    const pTex = frs(y1, x1), qTex = frs(y2, x2), rTex = frs(y2 - y1, x2 - x1);
+    return {
+      orig, focus: { x: [-1.6, x2 + 2.4], y: [-1.3, y2 + 1.9] }, fig: { x1, x2, y1, y2, pS: pl(y1, x1), qS: pl(y2, x2), rS: pl(y2 - y1, x2 - x1) },
+      chk: { t: '6a', x1, x2, val: [P / R] },
+      text: `곡선 $y = \\log_2(x+1)$ 위의 두 점 $A(x_1, y_1)$, $B(x_2, y_2)$ ($0 < x_1 < x_2$)에 대하여 다음 세 값 $P = \\frac{y_1}{x_1}$, $Q = \\frac{y_2}{x_2}$, $R = \\frac{y_2 - y_1}{x_2 - x_1}$의 대소 관계를 판별하고, $x_1=${x1}, x_2=${x2}$일 때 $\\frac{P}{R}$의 값을 구하시오.`,
+      ans: `$P>Q>R$, $\\dfrac{P}{R}=${pr}$`,
+      std: [
+        `1) $y = \\log_2(x+1)$은 원점을 지나고 위로 볼록(증가율이 줄어드는)한 곡선이다. $R$은 직선 $AB$의 기울기이다.`,
+        `2) $P$는 직선 $OA$의 기울기, $Q$는 직선 $OB$의 기울기이다. 위로 볼록한 곡선에서는 $x$가 클수록 기울기가 작아지므로 $P > Q > R$이다.`,
+        `3) $x_1=${x1}, x_2=${x2}$이면 $y_1=${y1}, y_2=${y2}$이므로 $P=${pTex}$, $R=${rTex}$이고 $\\frac{P}{R}=${pr}$이다.`
+      ],
+      quick: [
+        `**원점·$A$·$B$를 잇는 직선의 기울기** $P$, $Q$, $R$ 사이의 관계입니다. 곡선이 위로 볼록하므로 $OA$의 기울기 $P$가 가장 크고 $AB$의 기울기 $R$이 가장 작습니다. ($Q$는 $P$와 $R$ 사이)`,
+        `$\\frac{P}{R} = \\frac{${pTex}}{${rTex}} = ${pr}$입니다.`
+      ]
+    };
+  }
+  VARS[5][0] = [v6a(1, 3, true), v6a(1, 7), v6a(3, 7), v6a(3, 15), v6a(1, 15)];
+  function v6b(x1, x2, orig) {
+    const y1 = Math.pow(2, x1), y2 = Math.pow(2, x2), xm = (x1 + x2) / 2, ym = Math.pow(2, xm), tr = ((x2 - x1) * (y1 + y2)) / 2, mid = (x2 - x1) * ym, d = tr - mid;
+    return {
+      orig, focus: { x: [Math.min(x1, 0) - 1.4, x2 + 2.2], y: [-1.5, y2 + 2.2] }, fig: { x1, x2, y1, y2, xm, ym, trS: pl(Math.round(tr * 4), 4), midS: pl(Math.round(mid * 4), 4) }, chk: { t: '6b', x1, x2, val: [d] },
+      text: `곡선 $y = 2^x$ 위의 두 점 $A(${x1}, ${OV.fr(Math.round(y1 * 4), 4)}), B(${x2}, ${y2})$에 대하여, 사다리꼴 넓이 $S_{\\text{trap}} = \\frac{1}{2}(x_2 - x_1)(y_1 + y_2)$와 중점 직사각형 넓이 $S_{\\text{mid}} = (x_2 - x_1)\\cdot 2^{\\frac{x_1+x_2}{2}}$의 차 $S_{\\text{trap}} - S_{\\text{mid}}$를 구하시오.`,
+      ans: `$S_{\\text{trap}}-S_{\\text{mid}}=${OV.fr(Math.round(d * 4), 4)}$ ($S_{\\text{trap}}>S_{\\text{mid}}$)`,
+      std: [
+        `1) 직선 $AB$는 두 점 $A(${x1}, ${y1}), B(${x2}, ${y2})$를 지나는 현이고, 사다리꼴 $x_1 \\le x \\le x_2$는 이 현 아래의 넓이이다.`,
+        `2) 사다리꼴 넓이는 $S_{\\text{trap}} = \\frac{1}{2}(${x2} - ${x1 < 0 ? `(${x1})` : x1})(${y1} + ${y2}) = ${OV.fr(Math.round(tr * 4), 4)}$이다.`,
+        `3) 중점 직사각형 넓이는 $S_{\\text{mid}} = (${x2} - ${x1 < 0 ? `(${x1})` : x1})\\cdot 2^{${xm}} = ${OV.fr(Math.round(mid * 4), 4)}$이다. 차는 $${OV.fr(Math.round(tr * 4), 4)} - ${OV.fr(Math.round(mid * 4), 4)} = ${OV.fr(Math.round(d * 4), 4)}$이다.`
+      ],
+      quick: [
+        `아래로 볼록한 곡선에서는 **현(사다리꼴)이 곡선보다 위**에 있으므로 사다리꼴이 중점 높이의 직사각형보다 항상 큽니다. ($S_{\\text{trap}}>S_{\\text{mid}}$)`,
+        `$x_2 - x_1 = ${x2 - x1}$이므로 $S_{\\text{trap}} - S_{\\text{mid}} = ${x2 - x1}\\left(\\frac{${y1} + ${y2}}{2} - ${ym}\\right) = ${OV.fr(Math.round(d * 4), 4)}$입니다.`
+      ]
+    };
+  }
+  VARS[5][1] = [v6b(1, 3, true), v6b(0, 2), v6b(2, 4), v6b(0, 4), v6b(-1, 1)];
+
+  /* 유형 7 · 로그함수 그래프 아래의 격자점 */
+  const cum = (k) => { let s = 0; for (let x = 1; x <= k; x++) s += Math.floor(Math.log2(x)) + 1; return s; };
+  function v7a(k, orig) {
+    const N = cum(k), cs = OV.range(1, k).map((x) => Math.floor(Math.log2(x)) + 1);
+    return {
+      orig, focus: { x: [-0.9, 11.4], y: [-0.7, 4.9] }, fig: { k, show: false, N }, chk: { t: '7', k, val: [N] },
+      text: `부등식 $1 \\le x \\le k$, $1 \\le y \\le \\log_2 x + 1$을 동시에 만족시키는 자연수 순서쌍 $(x, y)$의 개수가 $${N}$이 되도록 하는 자연수 $k$의 값을 구하시오.`,
+      ans: `$k=${k}$`,
+      std: [
+        `1) 직선 $x=n$ 위에서 조건을 만족시키는 자연수 $y$는 $1 \\le y \\le \\log_2 n + 1$이므로 개수는 $\\lfloor\\log_2 n\\rfloor + 1$이다.`,
+        `2) $n=1$이면 $1$개, $n=2,3$이면 $2$개, $n=4,5,6,7$이면 $3$개, $n=8,\\ldots,15$이면 $4$개이다.`,
+        `3) $x=1$부터 차례로 더하면 $${cs.join(' + ')} = ${N}$이므로 $k=${k}$이다.`
+      ],
+      quick: [`세로줄 $x=n$마다 점의 개수가 $1, 2, 2, 3, 3, 3, 3, 4, \\ldots$로 늘어납니다. 누적합이 $${N}$이 되는 곳까지 더하면 $${cs.join(' + ')} = ${N}$이므로 $k=${k}$입니다.`]
+    };
+  }
+  VARS[6][0] = [v7a(6, true), v7a(5), v7a(7), v7a(8), v7a(4), v7a(9)];
+  function v7b(k, orig) {
+    const N = cum(k), cs = OV.range(1, k).map((x) => Math.floor(Math.log2(x)) + 1);
+    return {
+      orig, focus: { x: [-0.9, k + 1.9], y: [-0.7, Math.floor(Math.log2(k)) + 2.4] }, fig: { k, show: true, N }, chk: { t: '7', k, val: [N] },
+      text: `자연수 $k=${k}$일 때, $1 \\le x \\le ${k}$이고 $1 \\le y \\le \\log_2 x + 1$을 만족시키는 자연수 순서쌍 $(x, y)$의 총개수를 구하시오.`,
+      ans: `$${N}$개`,
+      std: [
+        `1) 직선 $x=n$ 위에서 조건을 만족시키는 자연수 $y$의 개수는 $\\lfloor\\log_2 n\\rfloor + 1$이다.`,
+        `2) $x=1,2,\\ldots,${k}$에서 각각 $${cs.join(', ')}$개이다.`,
+        `3) 따라서 총개수는 $${cs.join(' + ')} = ${N}$이다.`
+      ],
+      quick: [`가로줄 $y=1$에서 $${k}$개, $y=2$에서 $x \\ge 2$인 $${k - 1}$개${k >= 4 ? `, $y=3$에서 $x \\ge 4$인 $${k - 3}$개` : ''}${k >= 8 ? `, $y=4$에서 $x \\ge 8$인 $${k - 7}$개` : ''}를 더해도 $${N}$입니다.`]
+    };
+  }
+  VARS[6][1] = [v7b(6, true), v7b(5), v7b(7), v7b(9), v7b(10)];
+
+  /* 유형 8 · 지수방정식과 이차방정식 */
+  function v8a(t1, t2, orig) {
+    const s = t1 + t2, p = t1 * t2, a1 = Math.log2(t1), a2 = Math.log2(t2), sq = t1 * t1 + t2 * t2, sa = Math.log2(p);
+    return {
+      orig, focus: { x: [Math.min(a1, 0) - 1.6, a2 + 2.2], y: [p - (s * s) / 4 - 1.7, Math.max(6, t2 + 1.8)] }, fig: { s, p, t1, t2, a1, a2, kind: 'A' }, chk: { t: '8a', s, p, val: [sa, sq] },
+      text: `지수방정식 $(2^x)^2 - ${s}\\cdot 2^x + ${p} = 0$의 두 실근을 $\\alpha, \\beta$라 할 때, $\\alpha + \\beta$의 값과 $2^{2\\alpha} + 2^{2\\beta}$의 값을 구하시오.`,
+      ans: `$\\alpha+\\beta=${sa}$, $2^{2\\alpha}+2^{2\\beta}=${sq}$`,
+      std: [
+        `1) $t = 2^x$ ($t>0$)으로 치환하면 $t^2 - ${s}t + ${p} = 0$이고, 이 방정식의 두 근은 $t_1 = 2^\\alpha$, $t_2 = 2^\\beta$이다.`,
+        `2) 근과 계수의 관계에서 $t_1 + t_2 = ${s}$, $t_1 t_2 = ${p}$이다. $(t-${t1})(t-${t2})=0$이므로 $t = ${t1}, ${t2}$이다.`,
+        `3) $2^{\\alpha+\\beta} = t_1 t_2 = ${p}$이므로 $\\alpha+\\beta = ${sa}$이고, $2^{2\\alpha}+2^{2\\beta} = t_1^2 + t_2^2 = ${t1}^2 + ${t2}^2 = ${sq}$이다.`
+      ],
+      quick: [
+        `$t=2^x$으로 치환하면 두 근 $\\alpha, \\beta$에 대한 $t_1 = 2^\\alpha$, $t_2 = 2^\\beta$이므로 **$2^{\\alpha+\\beta} = t_1t_2 = ${p}$**입니다. $\\alpha+\\beta = \\log_2 ${p} = ${sa}$입니다.`,
+        `$2^{2\\alpha}+2^{2\\beta} = t_1^2+t_2^2 = (t_1+t_2)^2 - 2t_1t_2 = ${s}^2 - 2\\times ${p} = ${sq}$입니다.`
+      ]
+    };
+  }
+  VARS[7][0] = [v8a(2, 4, true), v8a(1, 8), v8a(2, 8), v8a(4, 8), v8a(1, 4)];
+  function v8b(s, P, orig) {
+    const ps = []; for (let p = s; 4 * p < s * s; p++) if (1 - s + p > 0) ps.push(p);
+    const D = s * s - 4 * P, r = Math.sqrt(D), t1 = (s - r) / 2, t2 = (s + r) / 2;
+    const psTex = ps.length <= 4 ? ps.join(',\\ ') : `${ps[0]},\\ ${ps[1]},\\ \\ldots,\\ ${ps[ps.length - 1]}`;
+    return {
+      orig, focus: { x: [-1.6, Math.log2(t2) + 2.4], y: [P - (s * s) / 4 - 1.7, Math.max(6, t2 + 1.8)] }, fig: { s, p: P, t1, t2, a1: Math.log2(t1), a2: Math.log2(t2), kind: 'B' }, chk: { t: '8b', s, P, val: [ps.length, P, D] },
+      text: `방정식 $4^x - ${s}\\cdot 2^x + p = 0$이 서로 다른 두 양의 실근을 갖게 하는 정수 $p$를 모두 구하고, 그중 $p=${P}$일 때 치환한 두 근의 곱과 판별식 $D$를 구하시오.`,
+      ans: `정수 $p=${psTex}$ / $p=${P}$이면 두 근의 곱 $${P}$, 판별식 $${D}$`,
+      std: [
+        `1) $t = 2^x$으로 치환하면 $t^2 - ${s}t + p = 0$이고, $x>0$인 서로 다른 두 실근을 가지려면 $t>1$인 서로 다른 두 실근이어야 한다.`,
+        `2) $f(t)=t^2-${s}t+p$라 하면 $D=${s * s}-4p>0$, $f(1)=${1 - s}+p>0$, 축 $t=${OV.fr(s, 2)}>1$이므로 $${s - 1} < p < ${OV.fr(s * s, 4)}$이다. 정수 $p = ${psTex}$이다.`,
+        `3) $p=${P}$일 때 $t^2-${s}t+${P}=0$에서 두 근의 곱은 $${P}$이고, 판별식은 $D=${s}^2-4\\times ${P}=${D}$이다.`
+      ],
+      quick: [
+        `$x>0$이면 $t=2^x>1$이므로 **두 근이 모두 $1$보다 큰** 이차방정식의 조건(판별식 $>0$, $f(1)>0$, 축 $>1$)을 세웁니다.`,
+        `$p=${P}$일 때 근과 계수의 관계로 두 근의 곱은 $${P}$, $D=${s}^2-4\\cdot${P}=${D}$입니다. (두 근 $t=${t1}, ${t2}$)`
+      ]
+    };
+  }
+  VARS[7][1] = [v8b(5, 6, true), v8b(6, 8), v8b(7, 10), v8b(8, 12), v8b(9, 14)];
+
+  /* ---------- 변형 그림: 문제 탭(st=0, 주어진 것만) · 정리 탭(풀이 단계 st=1~3에서 드러남) ---------- */
+  OV.corner = (b, i, str, color) => b.stext(b.insets.left + 10, b.H - b.insets.bottom - 16 - i * 20, str, { color, size: 13, weight: 800, align: 'left', baseline: 'middle' });
+  const PF = [];
+  PF[0] = (b, v, st) => { // 유형 1: y = f(x) 와 f(k) 의 부호
+    const { r1, r2, k0 } = v, f = (x) => (x - r1) * (x - r2), mid = (r1 + r2) / 2;
+    b.plot(f, { color: 'green', width: 2.8, glow: true });
+    OV.txt(b, [r2 + 0.7, f(r2 + 0.7)], 'y = f(x)', 'green', { align: 'left', dx: 8, size: 12.5 });
+    if (st >= 1) [r1, r2].forEach((r) => b.point([r, 0], { color: 'rose', r: 5.5, label: `k=${r}`, dx: 0, dy: -15, align: 'center' }));
+    if (st >= 2) {
+      b.seg([r1, 0], [r2, 0], { color: 'rose', width: 5 }); OV.txt(b, [mid, 0], 'f(k) < 0', 'rose', { dy: -34, size: 12.5 });
+      if (k0 != null) { const fv = f(k0); b.point([k0, fv], { color: 'amber', r: 6.5, label: `f(${k0})=${fv}`, dx: fv >= 0 ? 10 : 0, dy: fv >= 0 ? -12 : 17, align: fv >= 0 ? 'left' : 'center' }); }
+    }
+    if (st >= 3) v.ks.forEach((k) => b.point([k, 0], { color: 'amber', r: 6.5 }));
+  };
+  PF[1] = (b, v, st) => { // 유형 2: 평행이동한 곡선
+    if (v.m !== undefined) { // 2A: 직선과 두 점 A, B
+      const { dx, dy, m } = v, vb = b.viewBox();
+      b.plot((x) => Math.pow(2, x), { color: 'green', width: 2.8, glow: true });
+      b.plot((x) => Math.pow(2, x - dx) + dy, { color: 'sky', width: 2.8, glow: true });
+      b.line([0, 1], m, { color: 'amber', width: 2.2 });
+      OV.txt(b, [Math.log2(dy + 3), dy + 3], 'y = 2ˣ', 'green', { align: 'right', dx: -9, size: 12.5 });
+      OV.txt(b, [vb.x0 + 0.2, dy + 0.9], `y = 2^(x−${dx}) + ${dy}`, 'sky', { align: 'left', size: 12.5 });
+      b.point([0, 1], { color: 'green', r: 6.5, label: 'A', dx: -9, dy: 14, align: 'right' });
+      b.point([dx, dy + 1], { color: 'sky', r: 6.5, label: 'B', dx: 10, dy: 12, align: 'left' });
+      if (st >= 1) {
+        b.seg([0, 1], [dx, 1], { color: 'violet', width: 2, dash: [5, 4] }); b.seg([dx, 1], [dx, dy + 1], { color: 'violet', width: 2, dash: [5, 4] });
+        OV.txt(b, [dx / 2, 1], `${dx}`, 'violet', { dy: 14, size: 12.5 }); OV.txt(b, [dx, 1 + dy / 2], `${dy}`, 'violet', { align: 'left', dx: 9, size: 12.5 });
+      }
+      if (st >= 2) OV.corner(b, 1, `이동 방향의 기울기 ${dx === 1 ? dy : dy + '/' + dx} = ${m} (직선과 같다)`, 'violet');
+      if (st >= 3) OV.corner(b, 0, `AB = √(${dx}²+${dy}²) = ${v.lenPlain}`, 'amber');
+      return;
+    }
+    const { dx, c1, c2, xa, xb } = v; // 2B: 평행이동한 두 곡선 사이의 넓이
+    const P = (x) => [x, Math.pow(2, x)], Q = (x) => [x + dx, Math.pow(2, x) + dx], vb = b.viewBox();
+    const pts = [];
+    for (let x = xa; x <= xb + 1e-9; x += 0.02) pts.push(P(x));
+    pts.push(P(xb));
+    const up = []; for (let x = xb; x >= xa - 1e-9; x -= 0.02) up.push(Q(x));
+    const poly = pts.concat(up);
+    b.plot((x) => Math.pow(2, x), { color: 'green', width: 2.8, glow: true });
+    b.plot((x) => Math.pow(2, x - dx) + dx, { color: 'sky', width: 2.8, glow: true });
+    [c1, c2].forEach((c) => { b.line([0, c], 1, { color: 'amber', width: 1.8, dash: [6, 4] }); });
+    [c1, c2].forEach((c, i) => { const x = Math.max(vb.x0 + 2.4, Math.min(vb.x1 - 0.5, vb.y1 - c - 1.0) - i * 2.4); OV.txt(b, [x, x + c], `y = x + ${c}`, 'amber', { align: 'right', dx: -4, dy: -9, size: 12.5 }); });
+    b.poly(poly, { fill: 'amber', fillAlpha: 0.2, color: null });
+    OV.txt(b, [(poly.reduce((s, p) => s + p[0], 0)) / poly.length, (poly.reduce((s, p) => s + p[1], 0)) / poly.length], 'S', 'amber', { size: 15 });
+    OV.txt(b, [-0.3, 2.2], 'y = 2ˣ', 'green', { align: 'right', size: 12.5, dx: -4 });
+    OV.txt(b, [vb.x0 + 0.2, dx + 0.9], `y = 2^(x−${dx}) + ${dx}`, 'sky', { align: 'left', size: 12.5 });
+    if (st >= 1) {
+      [xa, xb].forEach((x) => { b.seg(P(x), Q(x), { color: 'violet', width: 2.6 }); b.point(P(x), { color: 'green', r: 5 }); b.point(Q(x), { color: 'sky', r: 5 }); });
+      OV.corner(b, 2, `곡선을 (${dx}, ${dx})만큼 평행이동 : 대응하는 점끼리 이은 선분`, 'violet');
+    }
+    if (st >= 2) { b.poly([P(xa), P(xb), Q(xb), Q(xa)], { color: 'rose', width: 2, dash: [5, 4] }); OV.corner(b, 1, `평행사변형 : 평행이동 거리 × 두 직선 사이 거리 ${v.gapPlain}`, 'rose'); }
+    if (st >= 3) OV.corner(b, 0, `S = ${v.S}`, 'amber');
+  };
+  PF[2] = (b, v, st) => { // 유형 3: 역함수 대칭
+    const { base: B0, s, a, b: bb, k, kind } = v, lgb = (x) => Math.log(x) / Math.log(B0), sub = { 2: '₂', 3: '₃' }[B0];
+    b.plot((x) => Math.pow(B0, x - s) + s, { color: 'green', width: 2.8, glow: true });
+    b.plot((x) => lgb(x - s) + s, { color: 'sky', width: 2.8, glow: true, from: s + 0.0001 });
+    const yy = bb + 1.7;
+    OV.txt(b, [s + lgb(yy - s), yy], s ? `y = ${B0}^(x−${s}) + ${s}` : `y = ${B0}ˣ`, 'green', { align: 'right', dx: -9, size: 12.5 });
+    const vb = b.viewBox(), xr = vb.x1 - 0.25;
+    OV.txt(b, [xr, s + lgb(xr - s)], s ? `y = log${sub}(x−${s}) + ${s}` : `y = log${sub} x`, 'sky', { align: 'right', dy: 18, size: 12.5 });
+    const showAB = kind === 'B' || st >= 3;
+    if (st >= 1) b.line([0, 0], 1, { color: 'violet', width: 1.8, dash: [6, 4] });
+    if (kind === 'B' && st < 1) { /* 문제: 직선과 A, B는 주어짐 */ }
+    if (showAB) {
+      b.line([0, k], -1, { color: 'amber', width: 2.2 });
+      { const xl = Math.min(vb.x1 - 0.6, k - vb.y0 - 1.0); OV.txt(b, [xl, k - xl], `y = −x + ${k}`, 'amber', { align: 'right', dx: -8, dy: 10, size: 12.5 }); }
+      b.point([a, bb], { color: 'green', r: 6.5, label: 'A', dx: -9, dy: -9, align: 'right' });
+      b.point([bb, a], { color: 'sky', r: 6.5, label: 'B', dx: 9, dy: -9, align: 'left' });
+    }
+    if (kind === 'B' && st >= 2) {
+      b.seg([a, bb], [bb, bb], { color: 'rose', width: 2.4, dash: [5, 4] }); b.seg([bb, bb], [bb, a], { color: 'rose', width: 2.4, dash: [5, 4] });
+      OV.txt(b, [(a + bb) / 2, bb], `${bb - a}`, 'rose', { dy: -12, size: 12.5 }); OV.txt(b, [bb, (a + bb) / 2], `${bb - a}`, 'rose', { align: 'left', dx: 8, size: 12.5 });
+    }
+    if (kind === 'A' && st >= 2) OV.corner(b, 0, `AB = ${bb - a === 1 ? '' : bb - a}√2 → Δx = Δy = ${bb - a}`, 'rose');
+    if (st >= 3) {
+      b.point([k / 2, k / 2], { color: 'amber', r: 6, label: 'M', dx: 10, dy: 12, align: 'left' });
+      if (kind === 'A') { b.poly([[0, 0], [a, bb], [bb, a]], { fill: 'amber', fillAlpha: 0.16, color: 'amber', width: 1.6 }); OV.corner(b, 1, `A(${a}, ${bb}), B(${bb}, ${a}), k = ${k}`, 'amber'); }
+      else OV.corner(b, 0, `AB = ${bb - a === 1 ? '' : bb - a}√2`, 'amber');
+    }
+  };
+  PF[3] = (b, v, st) => { // 유형 4: 절댓값 그래프
+    const vb = b.viewBox();
+    if (v.base !== undefined) { // 4A: |log x|
+      const { base: B0, t, x1, x2 } = v, lg = (x) => Math.log(x) / Math.log(B0), sub = { 2: '₂', 3: '₃' }[B0];
+      b.plot((x) => Math.abs(lg(x)), { color: 'green', width: 3, glow: true, from: 0.0005 });
+      OV.txt(b, [vb.x1 - 0.2, Math.abs(lg(vb.x1 - 0.2)) + 0.8], `y = |log${sub} x|`, 'green', { align: 'right', size: 12.5 });
+      if (st >= 1) { b.plot((x) => -lg(x), { color: 'rose', width: 3.4, from: 0.0005, to: 1 }); OV.txt(b, [0.5, -lg(0.5)], `y = −log${sub} x`, 'rose', { align: 'left', dx: 12, dy: -12, size: 12.5 }); }
+      if (st >= 2) {
+        b.seg([vb.x0, t], [vb.x1, t], { color: 'amber', width: 2.4 }); OV.txt(b, [vb.x1 - 0.2, t], `y = t`, 'amber', { align: 'right', dy: -12, size: 12.5 });
+        b.point([x1, t], { color: 'rose', r: 6.5, label: 'x₁', dx: -4, dy: -15 }); b.point([x2, t], { color: 'green', r: 6.5, label: 'x₂', dx: 4, dy: -15 });
+        OV.corner(b, 1, 'x₁x₂ = 1', 'amber');
+      }
+      if (st >= 3) OV.corner(b, 0, `x₂ − x₁ = ${B0}^t − ${B0}^(−t) 에서 t = ${t}`, 'rose');
+      return;
+    }
+    const { k, t, given } = v, g = (x) => Math.abs(Math.pow(2, x) - k); // 4B: |2ˣ − k|
+    if (st >= 1) { b.hline(k, { color: 'violet', width: 1.8, dash: [6, 4] }); OV.txt(b, [vb.x0 + 0.1, k], `y = ${k}`, 'violet', { align: 'left', dy: 13, size: 12.5 }); }
+    b.plot((x) => Math.pow(2, x) - k, { color: 'muted', alpha: 0.5, width: 1.6, dash: [5, 5], to: Math.log2(k) });
+    b.plot(g, { color: 'green', width: 3, glow: true });
+    if (given) {
+      const x1 = Math.log2(k - t), x2 = Math.log2(k + t);
+      b.seg([vb.x0, t], [vb.x1 - 0.1, t], { color: 'amber', width: 2.4 }); OV.txt(b, [vb.x1 - 0.1, t], `y = ${t}`, 'amber', { align: 'right', dy: -12, size: 12.5 });
+      b.point([x1, t], { color: 'rose', r: 6.5, label: 'x₁', dx: -4, dy: -15 }); b.point([x2, t], { color: 'green', r: 6.5, label: 'x₂', dx: 4, dy: -15 });
+      if (st >= 2) { OV.txt(b, [x1, t], `2^x₁ = ${k - t}`, 'rose', { align: 'right', dx: -10, dy: 16, size: 12 }); OV.txt(b, [x2, t], `2^x₂ = ${k + t}`, 'green', { align: 'left', dx: 8, dy: 16, size: 12 }); }
+    }
+    if (st >= 3) OV.corner(b, 0, `2^(x₁+x₂) = ${k}² − ${t}² = ${k * k - t * t}`, 'amber');
+  };
+  PF[4] = (b, v, st) => { // 유형 5: 원점을 지나는 직선
+    const { py, r, a, b: bq, two, hide } = v, show = !hide || st >= 1;
+    b.plot((x) => Math.pow(a, x), { color: 'green', width: 2.8, glow: true });
+    if (two) b.plot((x) => Math.pow(bq, x), { color: 'sky', width: 2.8, glow: true });
+    const vb = b.viewBox();
+    OV.txt(b, [Math.log(vb.y1 - 1.2) / Math.log(a), vb.y1 - 1.2], 'y = aˣ', 'green', { align: 'right', dx: -9, size: 12.5 });
+    if (two) OV.txt(b, [Math.log(vb.y1 - 2.2) / Math.log(bq), vb.y1 - 2.2], 'y = bˣ', 'sky', { align: 'left', dx: 9, size: 12.5 });
+    if (show) {
+      b.line([0, 0], py, { color: 'amber', width: 2.2 });
+      b.point([1, py], { color: 'green', r: 6.5, label: two ? `P(1, ${py})` : 'P', dx: -9, dy: -9, align: 'right' });
+      b.point([r, r * py], { color: two ? 'sky' : 'green', r: 6.5, label: 'Q', dx: -9, dy: -9, align: 'right' });
+    }
+    if (show && st >= 1) {
+      [[1, py], [r, r * py]].forEach(([x, y]) => { b.seg([x, y], [x, 0], { color: 'violet', width: 1.8, dash: [4, 3] }); b.seg([x, y], [0, y], { color: 'violet', width: 1.8, dash: [4, 3] }); });
+    }
+    if (show && st >= 2) {
+      b.poly([[0, 0], [1, 0], [1, py]], { fill: 'green', fillAlpha: 0.16, color: null }); b.poly([[0, 0], [r, 0], [r, r * py]], { fill: 'sky', fillAlpha: 0.1, color: null });
+      OV.corner(b, 1, `닮음비 OP : OQ = 1 : ${r}`, 'violet');
+    }
+    if (show && st >= 3) OV.corner(b, 0, two ? `Q(${r}, ${r * py}) → a = ${a}, b^${r} = ${r * py}` : `(y_P)^${r} = ${r}·y_P → y_P^${r - 1} = ${r}`, 'amber');
+  };
+  PF[5] = (b, v, st) => { // 유형 6
+    if (v.pS !== undefined) { // 6A: log2(x+1)
+      const { x1, x2, y1, y2 } = v, f = (x) => Math.log2(x + 1);
+      b.plot(f, { color: 'green', width: 2.8, glow: true, from: -0.999 });
+      { const xr = x2 + 2.2; OV.txt(b, [xr, f(xr)], 'y = log₂(x+1)', 'green', { align: 'right', dy: 20, size: 12.5 }); }
+      b.point([0, 0], { color: 'ink', r: 5, label: 'O', dx: -8, dy: 14, align: 'right' });
+      b.point([x1, y1], { color: 'sky', r: 6.5, label: 'A', dx: 0, dy: -15 }); b.point([x2, y2], { color: 'rose', r: 6.5, label: 'B', dx: 0, dy: -15 });
+      if (st >= 1) { b.line([x1, y1], [x2, y2], { color: 'amber', width: 2.2 }); }
+      if (st >= 2) { b.line([0, 0], [x1, y1], { color: 'sky', width: 1.8, dash: [5, 4] }); b.line([0, 0], [x2, y2], { color: 'rose', width: 1.8, dash: [5, 4] }); }
+      if (st >= 3) OV.corner(b, 0, `P = ${v.pS} > Q = ${v.qS} > R = ${v.rS}`, 'amber');
+      return;
+    }
+    const { x1, x2, y1, y2, xm, ym } = v, f = (x) => Math.pow(2, x); // 6B
+    b.plot(f, { color: 'green', width: 2.8, glow: true });
+    OV.txt(b, [Math.log2(y2 + 1.3), y2 + 1.3], 'y = 2ˣ', 'green', { align: 'left', dx: 9, size: 12.5 });
+    if (st >= 1) { b.poly([[x1, 0], [x2, 0], [x2, y2], [x1, y1]], { fill: 'sky', fillAlpha: 0.14, color: 'sky', width: 1.6 }); b.seg([x1, y1], [x2, y2], { color: 'amber', width: 2.4 }); }
+    if (st >= 2) { b.seg([xm, 0], [xm, ym], { color: 'rose', width: 1.8, dash: [4, 3] }); b.point([xm, ym], { color: 'rose', r: 5.5 }); b.seg([x1, ym], [x2, ym], { color: 'rose', width: 2, dash: [5, 4] }); }
+    if (st >= 3) { b.poly([[x1, 0], [x2, 0], [x2, ym], [x1, ym]], { fill: 'amber', fillAlpha: 0.2, color: 'amber', width: 1.8 }); OV.corner(b, 1, `S_trap = ${v.trS}`, 'sky'); OV.corner(b, 0, `S_mid = ${v.midS}`, 'amber'); }
+    b.point([x1, y1], { color: 'sky', r: 6.5, label: `A(${x1}, ${y1 === 1 ? 1 : y1 < 1 ? '1/2' : y1})`, dx: -9, dy: -9, align: 'right' });
+    b.point([x2, y2], { color: 'rose', r: 6.5, label: `B(${x2}, ${y2})`, dx: -9, dy: -9, align: 'right' });
+  };
+  PF[6] = (b, v, st) => { // 유형 7: log2 x + 1 아래의 격자점
+    const { k, show } = v, f = (x) => Math.log2(x) + 1, cs = OV.range(1, k).map((x) => Math.floor(Math.log2(x)) + 1);
+    b.plot(f, { color: 'green', width: 2.8, glow: true, from: 1, to: show ? k + 0.6 : 11 });
+    b.stext(b.insets.left + 10, b.insets.top + 14, 'y = log₂x + 1', { color: 'green', size: 12.5, weight: 800, align: 'left', baseline: 'middle' });
+    if (show) { b.seg([k, -0.2], [k, f(k) + 0.9], { color: 'rose', width: 2, dash: [5, 4] }); OV.txt(b, [k, -0.45], `x = ${k}`, 'rose', { size: 12.5 }); }
+    if (st >= 1) {
+      if (!show) { b.seg([k, -0.2], [k, f(k) + 0.9], { color: 'rose', width: 2, dash: [5, 4] }); OV.txt(b, [k, -0.45], 'x = k', 'rose', { size: 12.5 }); }
+      for (let x = 1; x <= k; x++) for (let y = 1; y <= cs[x - 1]; y++) b.point([x, y], { color: 'amber', r: 4.8 });
+    }
+    if (st >= 2) for (let x = 1; x <= k; x++) OV.txt(b, [x, cs[x - 1] + 0.7], String(cs[x - 1]), 'sky', { size: 12.5 });
+    if (st >= 3) OV.corner(b, 0, `${cs.join(' + ')} = ${v.N}`, 'amber');
+  };
+  PF[7] = (b, v, st) => { // 유형 8: y = 4ˣ − s·2ˣ + p
+    const { s, p, t1, t2, a1, a2 } = v;
+    b.plot((x) => Math.pow(4, x) - s * Math.pow(2, x) + p, { color: 'green', width: 3, glow: true });
+    const vb = b.viewBox();
+    OV.txt(b, [Math.min(vb.x1 - 0.2, Math.log2(s / 2) + 1.2), 3.6], `y = 4ˣ − ${s}·2ˣ + ${p}`, 'green', { align: 'left', dx: 12, size: 12.5 });
+    if (st >= 1) [[a1, 'α', -1], [a2, 'β', 1]].forEach(([x, nm, sg]) => b.point([x, 0], { color: 'rose', r: 6.5, label: nm, dx: sg * 9, dy: -13, align: sg < 0 ? 'right' : 'left' }));
+    if (st >= 2) {
+      b.plot((x) => Math.pow(2, x), { color: 'sky', alpha: 0.6, width: 2, dash: [5, 5], to: a2 + 0.8 });
+      [[a1, t1, 'sky'], [a2, t2, 'sky']].forEach(([x, y, c], i) => { b.seg([x, 0], [x, y], { color: 'sky', width: 1.8, dash: [4, 3] }); b.point([x, y], { color: 'sky', r: 5.5, label: `t${i ? '₂' : '₁'} = ${y}`, dx: i ? 0 : -9, dy: i ? -14 : -10, align: i ? 'center' : 'right' }); });
+    }
+    if (st >= 3) OV.corner(b, 0, `2^(α+β) = t₁t₂ = ${p}`, 'amber');
+  };
+  OV.nice = (raw) => { const p = Math.pow(10, Math.floor(Math.log10(raw))); const f = raw / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p; };
+  window.__OV = { VARS };
+  const VARY = VARS.map((row) => row.map((pool) => OV.varier(pool)));
+  function drawVar(b, s, m, j, lab) {
+    if (!lab || lab.tab === 'explore') { OV.autoFocus(b, 'E', FOCUS[m]); return drawScene(b, s, m, j); }
+    const cur = VARY[m][j].cur(), idx = VARS[m][j].indexOf(cur), prob = lab.tab === 'problem', st = prob ? 0 : s.step;
+    OV.autoFocus(b, `${lab.scene.id}|${idx}`, cur.focus);
+    if (s.grid) b.grid({ step: OV.nice(34 / b.k) });
+    b.axes({ tickStep: OV.nice(46 / b.k) });
+    PF[m](b, cur.fig, st);
+  }
+
+  const curOf = (m, j) => VARY[m][j].cur();
   function sceneOf(m, j) {
     const md = KILLER_MODES[m];
     const sc = md.scenarios[j];
@@ -1507,26 +2050,28 @@ function solveExpLineIntersection(k, shift = 0) {
       startStep: 2,
       notesTitle: '오답 함정 주의보',
       focus: FOCUS[m],
-      enter: (s) => { Object.assign(s, mapP(m, sc.params)); s.twinText = null; s.twinSnap = null; },
+      enter: (s) => { Object.assign(s, mapP(m, sc.params)); s.twinText = null; s.twinSnap = null; if (window.lab && window.lab.board) window.lab.board.__ovKey = null; },
       controls: (SLIDERS[md.id] || []).map((d) => pk(m, d.key)),
       actions: () => [
         ...MUTATORS.map((a) => ({ id: a.id, icon: a.icon, label: a.label, on: (s) => !!s[a.key], run: (s) => { s[a.key] = !s[a.key]; } })),
-        { id: 'twin', icon: 'wand', label: '숫자를 바꾼 문제', primary: true, run: (s) => twin(s, m) }
+        { id: 'twin', icon: 'wand', label: '숫자를 바꾼 문제', primary: true, run: (s) => { twin(s, m); VARY[m][j].next(); } }
       ],
       steps: md.stepDescs.map((d, i) => stepText(md.stepLabels[i] + ': ' + d.replace(/^Step\s*\d+\s*:\s*/, ''))),
+      vary: VARY[m][j],
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${rich(curOf(m, j).orig ? sc.problem : curOf(m, j).text)}</div>`,
       problem: {
         tag: sc.source,
-        text: (s) => rich(s.twinText || sc.problem),
-        answer: (s) => (s.twinText ? '변형 문제의 결과는 위 문장에 적혀 있습니다. 칠판에서 확인해 보세요.' : safe(ANSWERS[m][j])),
-        snap: (s) => s.twinSnap || mapP(m, sc.snapParams)
+        text: () => rich(curOf(m, j).orig ? sc.problem : curOf(m, j).text) + OV.newBtn,
+        answer: () => safe(curOf(m, j).orig ? ANSWERS[m][j] : curOf(m, j).ans)
       },
       solution: {
         standardTitle: sc.textbookTitle, standardTag: '교과서 풀이',
         quickTitle: sc.secretTitle, quickTag: '10초 컷',
-        standard: { steps: lines(sc.textbookSteps) },
-        quick: { steps: lines(sc.secretSteps) }
+        standard: () => ({ steps: lines(curOf(m, j).orig ? sc.textbookSteps : curOf(m, j).std) }),
+        quick: () => ({ steps: lines(curOf(m, j).orig ? sc.secretSteps : curOf(m, j).quick) })
       },
-      view: (s) => {
+      view: (s, lab) => {
+        if (lab && lab.tab !== 'explore') return { notes: rich(md.trapWarning) };
         const { formula, cards } = hudOf(s, m);
         return {
           formula: safe(formula),
@@ -1534,7 +2079,7 @@ function solveExpLineIntersection(k, shift = 0) {
           notes: rich(md.trapWarning)
         };
       },
-      draw: (b, s) => drawScene(b, s, m, j)
+      draw: (b, s, v, lab) => drawVar(b, s, m, j, lab)
     };
   }
 
@@ -1544,6 +2089,724 @@ function solveExpLineIntersection(k, shift = 0) {
     short: md.shortTitle,
     scenes: md.scenarios.map((_, j) => sceneOf(m, j))
   }));
+
+/* PLUS-BEGIN */
+  /* ======================================================================
+     6b. 장면 9~11 추가 — 최근 평가원·학평 4점에 반복되는 세 유형 (원본 8유형은 그대로 두고 뒤에 붙임)
+         유형 9  움직이는 수평선 y=t 와 구간별·절댓값 지수·로그 함수의 교점 개수 g(t)
+         유형 10 곡선 위 점이 이루는 이등변·정삼각형
+         유형 11 y=x 대칭점과 최단거리
+     - 새 문제는 [새 문제] 버튼으로 바꿉니다(같은 유형 안에서 숫자·식만 바뀜). 정답은 식에서 직접 계산해 구합니다.
+     ====================================================================== */
+  const PL = {};
+  PL.nice = (raw) => { const p = Math.pow(10, Math.floor(Math.log10(raw))); const f = raw / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p; };
+  PL.frame = (b, s) => { if (s.grid) b.grid({ step: PL.nice(34 / b.k) }); b.axes({ tickStep: PL.nice(46 / b.k) }); };
+  PL.mode = (lab) => (lab && lab.tab === 'problem' ? 'problem' : lab && lab.tab === 'review' ? 'review' : 'explore');
+  PL.stp = (mode, s, i) => (mode === 'explore' ? true : mode === 'review' ? s.step >= i : false);
+  PL.f2 = (v, d = 2) => { const r = Math.round(v * Math.pow(10, d)) / Math.pow(10, d); return String(Object.is(r, -0) ? 0 : r); };
+  PL.EPS = 1e-9;
+  // 새 문제 고르기: 이전과 다른 것을 무작위로 (첫 문제는 목록의 첫 항목)
+  PL.varier = (list) => {
+    let cur = list[0];
+    return { all: list, set: (x) => { cur = x; }, cur: () => cur, next: () => { const pool = list.filter((x) => x !== cur); cur = pool[Math.floor(Math.random() * pool.length)]; return cur; } };
+  };
+  document.addEventListener('click', (ev) => {
+    const hit = ev.target && ev.target.closest && ev.target.closest('[data-pl-new]');
+    if (!hit) return;
+    const lab = window.lab, sc = lab && lab.scene;
+    if (!sc || !sc.vary) return;
+    sc.vary.next();
+    lab.s.revealed = false;
+    lab.setStep(0);
+    try { lab._buildReview(); } catch (e) { /* 셸이 바뀌어도 그림은 그대로 */ }
+    lab.invalidate(true);
+  });
+  PL.newBtn = '<div style="margin-top:10px"><button type="button" class="apl-btn sm" data-pl-new>새 문제 (숫자 바꾸기)</button></div>';
+  PL.probHTML = (body) => rich(body) + PL.newBtn;
+  // 새 문제로 바뀌어 그림의 크기가 달라지면 무대를 다시 맞춥니다(탐구용 범위 'E' 와 문제용 범위를 따로)
+  PL.autoFocus = (b, key, box) => { if (b.__plKey !== key) { b.__plKey = key; b.setFocus(box, true); } };
+  PL.sup = (t) => String(t).replace(/[x0-9+\-]/g, (c) => ({ x: 'ˣ', '-': '⁻', '+': '⁺', 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴', 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹' }[c]));
+  PL.xs = (a) => (a === 0 ? 'x' : a > 0 ? `x-${a}` : `x+${-a}`); // x−a 모양의 지수
+
+  /* ---------- 수평선과 교점 개수: 단조 조각별로 세는 계산 ----------
+     곡선을 한 방향으로만 움직이는 조각들로 나눕니다. 조각마다 (x0,x1) 에서 값 f(x0)..f(x1) 를 가지며,
+     끝점이 열려(o0/o1) 있거나 무한대이면 그 끝의 값은 가지지 않습니다(○). */
+  PL.mk = (f, x0, x1, o0, o1) => { const v0 = f(x0), v1 = f(x1); return { f, x0, x1, o0, o1, v0, v1, inc: v1 > v0 }; };
+  PL.has = (p, t) => {
+    const lo = Math.min(p.v0, p.v1), hi = Math.max(p.v0, p.v1);
+    const c0 = Number.isFinite(p.x0) && !p.o0, c1 = Number.isFinite(p.x1) && !p.o1; // x0·x1 에서의 값을 갖는가
+    const loC = p.inc ? c0 : c1, hiC = p.inc ? c1 : c0;
+    if (Math.abs(t - lo) < PL.EPS) return loC;
+    if (Math.abs(t - hi) < PL.EPS) return hiC;
+    return t > lo && t < hi;
+  };
+  PL.g = (P, t) => P.filter((p) => PL.has(p, t)).length;
+  PL.root = (p, t) => { // 조각 위에서 f(x)=t 인 x (이분법)
+    let a = Number.isFinite(p.x0) ? p.x0 : -60, b = Number.isFinite(p.x1) ? p.x1 : 60;
+    for (let i = 0; i < 90; i++) { const m = (a + b) / 2; if ((p.f(m) < t) === p.inc) a = m; else b = m; }
+    return (a + b) / 2;
+  };
+  PL.crit = (P) => { // 개수가 실제로 바뀌는 높이(끝점·꼭짓점·점근선의 높이)
+    const vs = [];
+    P.forEach((p) => [p.v0, p.v1].forEach((v0) => { const v = Math.round(v0 * 1e9) / 1e9; if (Number.isFinite(v) && !vs.some((u) => Math.abs(u - v) < 1e-7)) vs.push(v); }));
+    vs.sort((x, y) => x - y);
+    const gi = (i) => PL.g(P, i === 0 ? vs[0] - 1 : i === vs.length ? vs[vs.length - 1] + 1 : (vs[i - 1] + vs[i]) / 2);
+    return vs.filter((c, i) => { const a = gi(i), m = PL.g(P, c), z = gi(i + 1); return !(a === m && m === z); });
+  };
+  // g(t) 를 구간별로: [{ g, tex }]  (같은 값이 이어지면 한 구간으로 합침)
+  PL.ranges = (P) => {
+    const cr = PL.crit(P), n = cr.length, tok = [];
+    for (let i = 0; i <= n; i++) {
+      tok.push({ pt: false, i, g: PL.g(P, i === 0 ? cr[0] - 1 : i === n ? cr[n - 1] + 1 : (cr[i - 1] + cr[i]) / 2) });
+      if (i < n) tok.push({ pt: true, i, g: PL.g(P, cr[i]) });
+    }
+    const runs = [];
+    tok.forEach((t) => { const L = runs[runs.length - 1]; if (L && L.g === t.g) L.last = t; else runs.push({ g: t.g, first: t, last: t }); });
+    return runs.map((r) => {
+      const a = r.first, z = r.last;
+      const lo = a.pt ? { v: cr[a.i], inc: true } : a.i === 0 ? null : { v: cr[a.i - 1], inc: false };
+      const hi = z.pt ? { v: cr[z.i], inc: true } : z.i === n ? null : { v: cr[z.i], inc: false };
+      let tex;
+      if (lo && hi && lo.v === hi.v) tex = `t=${PL.f2(lo.v)}`;
+      else if (!lo) tex = `t${hi.inc ? '\\le ' : '\\lt '}${PL.f2(hi.v)}`;
+      else if (!hi) tex = `t${lo.inc ? '\\ge ' : '\\gt '}${PL.f2(lo.v)}`;
+      else tex = `${PL.f2(lo.v)}${lo.inc ? '\\le ' : '\\lt '}t${hi.inc ? '\\le ' : '\\lt '}${PL.f2(hi.v)}`;
+      return { g: r.g, tex };
+    });
+  };
+  PL.rangesLine = (P) => PL.ranges(P).map((r) => `$${r.tex}$ 이면 ${r.g}`).join(', ');
+  PL.ints = (P, k) => { const a = []; for (let t = -60; t <= 60; t++) if (PL.g(P, t) === k) a.push(t); return a; };
+
+  // 그림: 조각 곡선·끝점(○●)
+  PL.drawPieces = (b, P, o = {}) => {
+    const xmax = o.xmax == null ? Infinity : o.xmax;
+    P.forEach((p) => b.plot(p.f, { color: 'green', width: 2.8, glow: true, from: Number.isFinite(p.x0) ? p.x0 : null, to: Math.min(Number.isFinite(p.x1) ? p.x1 : Infinity, xmax) }));
+    const ends = [];
+    P.forEach((p) => [[p.x0, p.o0], [p.x1, p.o1]].forEach(([x, op]) => {
+      const y = p.f(x);
+      if (Number.isFinite(x) && Number.isFinite(y) && x <= xmax) ends.push({ x, y, op });
+    }));
+    ends.filter((e) => e.op).forEach((e) => b.point([e.x, e.y], { hollow: true, color: 'green', r: 5.2 }));
+    ends.filter((e) => !e.op).forEach((e) => b.point([e.x, e.y], { color: 'green', r: 5.2 }));
+  };
+  // 개수가 바뀌는 높이에 점선과 값
+  PL.critLines = (b, P, o) => {
+    const vb = b.viewBox(), cr = PL.crit(P);
+    const xr = o.XG + o.gmax * o.U;
+    cr.forEach((cv) => b.seg([vb.x0 - 1, cv], [xr, cv], { color: 'rose', alpha: 0.45, width: 1.2, dash: [4, 5] }));
+    let lastPx = Infinity;
+    cr.slice().reverse().forEach((cv) => {
+      const sy = b.toS(0, cv).y;
+      if (Math.abs(sy - lastPx) < 15) return;
+      lastPx = sy;
+      b.stext(b.toS(o.XG - 0.55, 0).x - 4, sy, PL.f2(cv), { color: 'rose', size: 12, weight: 800, align: 'right', baseline: 'middle' });
+    });
+  };
+  // 오른쪽에 g(t) 계단 그래프를 눕혀 그립니다. 세로축은 왼쪽 그림의 y(=t)와 같은 높이, 가로는 교점의 개수 g.
+  PL.stair = (b, P, o) => {
+    const { XG, U, gmax } = o;
+    const c = b.ctx, vb = b.viewBox(), cr = PL.crit(P), n = cr.length;
+    const X = (g) => XG + g * U;
+    const yTop = Math.min(vb.y1, b.toW(0, b.insets.top + 38).y); // 머리글 아래부터 계단을 그립니다
+    const pa = b.toS(XG - 0.55, vb.y1), pz = b.toS(XG + gmax * U + 0.55, vb.y0);
+    c.save();
+    c.fillStyle = b.color('halo', 0.78);
+    c.fillRect(pa.x, pa.y, pz.x - pa.x, pz.y - pa.y);
+    c.restore();
+    b.seg([XG - 0.55, vb.y0], [XG - 0.55, vb.y1], { color: 'muted', alpha: 0.5, width: 1.2 });
+    for (let g = 0; g <= gmax; g++) b.seg([X(g), vb.y0], [X(g), yTop], { color: 'muted', alpha: g === 0 ? 0.7 : 0.3, width: g === 0 ? 1.6 : 1, dash: g === 0 ? null : [3, 5] });
+    PL.critLines(b, P, o);
+    // 계단: 구간마다 세로 선분, 경계에서 ● ○
+    const gv = (i) => PL.g(P, i === 0 ? cr[0] - 1 : i === n ? cr[n - 1] + 1 : (cr[i - 1] + cr[i]) / 2);
+    const hi = o.hi || {};
+    for (let i = 0; i <= n; i++) {
+      const lo = i === 0 ? vb.y0 - 1 : cr[i - 1], up = i === n ? yTop : cr[i], g = gv(i);
+      if (lo >= yTop) continue;
+      const on = hi.g != null && g === hi.g;
+      b.seg([X(g), lo], [X(g), Math.min(up, yTop)], { color: on ? 'amber' : 'sky', width: on ? 5 : 3.2, glow: true });
+    }
+    cr.forEach((cv, i) => {
+      if (cv > yTop) return;
+      const gc = PL.g(P, cv), gl = gv(i), gr = gv(i + 1);
+      [gl, gr].forEach((g) => { if (g !== gc) b.point([X(g), cv], { hollow: true, color: 'sky', r: 4.6 }); });
+      b.point([X(gc), cv], { color: hi.disc || (hi.g != null && gc === hi.g) ? 'amber' : 'rose', r: hi.disc ? 6.6 : 5 });
+    });
+    if (o.t != null) b.point([X(PL.g(P, o.t)), o.t], { color: 'amber', r: 6.6 }); // 지금 수평선의 높이에서 g(t)
+    (hi.ts || []).forEach((tv) => { const g = PL.g(P, tv); b.seg([vb.x0 - 1, tv], [X(g), tv], { color: 'amber', alpha: 0.5, width: 1.4, dash: [2, 5] }); b.point([X(g), tv], { color: 'amber', r: 6.2 }); b.stext(b.toS(X(g), tv).x + 11, b.toS(X(g), tv).y - 11, 'g(' + tv + ')=' + g, { color: 'amber', size: 12, weight: 800, align: 'left', baseline: 'middle' }); });
+    const ty = b.insets.top + 14;
+    b.stext(b.toS(X(gmax / 2), 0).x, ty, 'g(t) : 교점의 개수', { color: 'sky', size: 12, weight: 800, align: 'center', baseline: 'middle' });
+    for (let g = 0; g <= gmax; g++) b.stext(b.toS(X(g), 0).x, ty + 18, String(g), { color: 'ink', size: 12.5, weight: 800, align: 'center', baseline: 'middle' });
+  };
+  // 장면 하나를 그리는 공통 뼈대(탐구·정리·문제 모두 이 함수 하나)
+  PL.draw9 = (b, s, lab, cfg) => {
+    const mode = PL.mode(lab), st = (i) => PL.stp(mode, s, i), prob = mode === 'problem';
+    PL.frame(b, s);
+    const P = cfg.pieces;
+    if (mode === 'explore' || (mode === 'review' && st(1))) { // 점근선은 풀이의 첫 단계(또는 탐구)에서 드러냅니다
+      (cfg.asym || []).forEach((y) => b.hline(y, { color: 'violet', alpha: 0.75, width: 1.6, dash: [7, 5] }));
+      (cfg.asymLabels || []).forEach((l) => b.text([l.x, l.y], l.text, { color: 'violet', size: 12.5, weight: 800, align: 'left', baseline: 'middle', dy: l.dy || 0 }));
+    }
+    PL.drawPieces(b, P, { xmax: cfg.XG - 0.75 });
+    (cfg.labels || []).forEach((l) => b.text([l.x, l.y], l.text, { color: l.color || 'green', size: 12.5, weight: 800, align: l.align || 'left', baseline: 'middle', dx: l.dx || 0, dy: l.dy || 0 }));
+    if (prob) return;
+    if (mode === 'review' && st(1)) (cfg.endLabels || []).forEach((l) => b.text([l.x, l.y], l.text, { color: l.color || 'rose', size: 13, weight: 800, align: l.align || 'center', baseline: 'middle', dx: l.dx || 0, dy: l.dy || 0 }));
+    if (mode === 'review' && st(2) && !st(3)) PL.critLines(b, P, cfg);
+    if (mode === 'explore' || st(3)) PL.stair(b, P, { XG: cfg.XG, U: cfg.U, gmax: cfg.gmax, t: mode === 'explore' ? s[cfg.tKey] : null, hi: st(4) ? cfg.hi : null });
+    if (mode === 'explore') {
+      const t = s[cfg.tKey];
+      b.hline(t, { color: 'amber', width: 2.6 });
+      P.forEach((p) => { if (PL.has(p, t)) b.point([PL.root(p, t), t], { color: 'rose', r: 5.8 }); });
+      b.handle('t', [cfg.XG - 1.35, t], { color: 'amber', r: 7, label: 't = ' + PL.f2(t), dx: -12, dy: -14, align: 'right', drag: (w) => { s[cfg.tKey] = clamp(Math.round(w.y * 20) / 20, cfg.tMin, cfg.tMax); } });
+    }
+  };
+  // 수평선 장면(9A·9B)을 만드는 틀
+  PL.sceneStair = (S) => {
+    const vary = PL.varier(S.combos);
+    const cur = () => vary.cur();
+    return {
+      id: S.id, title: S.title, short: S.short, question: S.question, guide: S.guide, tabs: { compact: true },
+      notesTitle: '오답 함정 주의보',
+      focus: S.focus,
+      enter: (s) => { Object.assign(s, S.init); s.playing = false; },
+      controls: S.controls,
+      presets: (s) => PL.crit(S.explore(s)).map((c) => ({ group: '개수가 바뀌는 높이로 이동', label: 't = ' + PL.f2(c), color: 'rose', apply: (st) => { st[S.tKey] = c; }, on: (st) => Math.abs(st[S.tKey] - c) < 0.02 })),
+      actions: () => [{ id: 'play', play: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '일시 정지' : 't 를 올려 보기'), on: (s) => s.playing, run: (s) => { if (!s.playing && s[S.tKey] >= S.tMax - 0.05) s[S.tKey] = S.tMin; s.playing = !s.playing; } }],
+      tick: (s, dt) => { if (!s.playing) return false; s[S.tKey] = Math.min(S.tMax, s[S.tKey] + 0.9 * dt); if (s[S.tKey] >= S.tMax) s.playing = false; return true; },
+      steps: () => S.steps(cur().v, cur().ask).map(stepText),
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${rich(S.text(cur().v, cur().ask))}</div>`,
+      problem: { tag: S.tag, time: S.time, text: () => PL.probHTML(S.text(cur().v, cur().ask)), answer: () => safe(S.answer(cur().v, cur().ask)) },
+      solution: {
+        standardTitle: S.stdTitle, standardTag: '교과서 풀이', quickTitle: S.quickTitle, quickTag: '10초 컷',
+        standard: () => ({ steps: rich(S.standard(cur().v, cur().ask)) }),
+        quick: () => ({ steps: rich(S.quick(cur().v, cur().ask)), highlight: S.highlight })
+      },
+      view: (s, lab) => {
+        if (lab && lab.tab !== 'explore') return { formula: rich(S.formula), notes: rich(S.notes) };
+        const P = S.explore(s), t = s[S.tKey], g = PL.g(P, t), cr = PL.crit(P);
+        const on = cr.find((c) => Math.abs(c - t) < 0.026);
+        const xs = P.filter((p) => PL.has(p, t)).map((p) => PL.f2(PL.root(p, t)));
+        return {
+          chips: [{ html: `$y=t=${PL.f2(t)}$ 일 때 $g(t)=${g}$`, color: 'amber', answer: true }],
+          readouts: [
+            { label: '수평선의 높이 t', value: PL.f2(t), color: 'amber' },
+            { label: '교점의 개수 g(t)', value: g + '개', color: 'sky', note: g ? '교점의 x좌표 ' + xs.join(', ') : '만나지 않음' },
+            { label: '개수가 바뀌는 높이', value: cr.map((c) => PL.f2(c)).join(', '), color: 'rose', wide: true, note: on != null ? `지금 t = ${PL.f2(on)} 에서는 ${g}개 (○ 는 제외, ● 는 포함)` : '곡선의 끝점·꼭짓점·점근선의 높이에서만 바뀝니다' }
+          ],
+          formula: rich(S.formula),
+          notes: rich(S.notes)
+        };
+      },
+      vary,
+      draw: (b, s, v, lab) => {
+        const mode = PL.mode(lab);
+        const vr = cur();
+        PL.draw9(b, s, lab, mode === 'explore' ? S.cfgExplore(s) : S.cfgVariant(vr.v, vr.ask));
+      }
+    };
+  };
+
+  /* ---------- 장면 9A · 구간별 지수함수와 수평선 (점프가 있는 g(t)) ---------- */
+  const V9A = [{ a: 0, b: 1, c: 2, q: 5 }, { a: 0, b: 1, c: 1, q: 4 }, { a: -1, b: 0, c: 1, q: 7 }, { a: 1, b: 1, c: 3, q: 7 }, { a: 0, b: 2, c: 2, q: 6 }];
+  const pieces9A = (v) => [PL.mk((x) => Math.pow(2, x - v.a), -Infinity, v.c, true, true), PL.mk((x) => v.q - Math.pow(2, x - v.b), v.c, Infinity, false, true)];
+  const lv9A = (v) => ({ L: Math.pow(2, v.c - v.a), R: v.q - Math.pow(2, v.c - v.b) });
+  const discSum = (P) => PL.crit(P).reduce((a, c) => a + c, 0);
+  const cnt9A = (P) => PL.ints(P, 2);
+  const ans9A = (v, ask) => { const P = pieces9A(v); return ask === 'disc' ? discSum(P) : cnt9A(P).length; };
+  const COMB9A = [];
+  V9A.forEach((v) => ['disc', 'cnt'].forEach((ask) => COMB9A.push({ v, ask })));
+  const fTex9A = (v) => String.raw`f(x)=\begin{cases} 2^{${PL.xs(v.a)}} & (x \lt ${v.c}) \\ ${v.q}-2^{${PL.xs(v.b)}} & (x \ge ${v.c}) \end{cases}`;
+  const askTex9 = (ask) => (ask === 'disc' ? '함수 $g(t)$가 $t=\\alpha$에서 불연속인 모든 실수 $\\alpha$의 값의 합을 구하시오.' : '$g(t)=2$를 만족시키는 정수 $t$의 개수를 구하시오.');
+  const S9A = {
+    id: 't9a', title: '문제 A (구간별 지수함수 — 점프가 있는 g(t))', short: '구간별 지수',
+    question: '수평선 y = t 를 위로 올리면, 곡선과 만나는 점의 개수는 어느 높이에서 바뀔까? 끝점의 ○·●는 어떻게 읽을까?',
+    guide: '금색 점을 위아래로 끌어 수평선 <b>y = t</b>를 움직여 보세요. 오른쪽 계단 그래프가 <b>g(t)</b>입니다. 막대로 오른쪽 조각의 시작 높이 <b>R</b>을 바꿔 ○ 와 ● 의 높이가 바뀌는 모습도 보세요.',
+    tKey: 'p9a_t', tMin: -3, tMax: 6.4, XG: 5.9, U: 0.9, gmax: 3,
+    focus: { x: [-3.6, 10.3], y: [-3.7, 6.9] },
+    controls: () => ['p9a_t', 'p9a_R'],
+    init: { p9a_t: 1.5, p9a_R: 3 },
+    explore: (s) => [PL.mk((x) => Math.pow(2, x), -Infinity, 2, true, true), PL.mk((x) => s.p9a_R + 2 - Math.pow(2, x - 1), 2, Infinity, false, true)],
+    cfgExplore: (s) => ({
+      pieces: S9A.explore(s), XG: S9A.XG, U: S9A.U, gmax: S9A.gmax, tKey: 'p9a_t', tMin: S9A.tMin, tMax: S9A.tMax,
+      labels: [{ x: -2.9, y: 0.16, text: 'y = 2ˣ', dy: -14 }, { x: PL.root(S9A.explore(s)[1], -1.6), y: -1.6, text: 'y = R + 2 − 2ˣ⁻¹', align: 'right', dx: -10 }]
+    }),
+    cfgVariant: (v, ask) => {
+      const P = pieces9A(v), { L, R } = lv9A(v);
+      return {
+        pieces: P, XG: S9A.XG, U: S9A.U, gmax: S9A.gmax,
+        hi: ask === 'disc' ? { disc: true } : { g: 2 },
+        labels: [{ x: -2.9, y: Math.pow(2, -2.9 - v.a), text: 'y = 2' + PL.sup(PL.xs(v.a)), dy: -14 }, { x: PL.root(P[1], -1.6), y: -1.6, text: `y = ${v.q} − 2` + PL.sup(PL.xs(v.b)), align: 'right', dx: -10 }],
+        endLabels: [{ x: v.c, y: L, text: String(L), dx: -13, dy: -3, color: 'rose' }, { x: v.c, y: R, text: String(R), dx: 13, dy: R > L ? -8 : 10, color: 'rose' }]
+      };
+    },
+    combos: COMB9A,
+    text: (v, ask) => `함수 ${'$' + fTex9A(v) + '$'}에 대하여 실수 $t$에 대하여 직선 $y=t$가 곡선 $y=f(x)$와 만나는 점의 개수를 $g(t)$라 하자. ${askTex9(ask)}`,
+    tag: '2026학년도 10월 학평(서울) 20번 유형',
+    time: '목표 시간: 40초',
+    steps: (v, ask) => {
+      const P = pieces9A(v), { L, R } = lv9A(v), cr = PL.crit(P).map((c) => PL.f2(c)).join(',\\ ');
+      return [
+        `조각마다 값의 범위를 구합니다. $x\\lt ${v.c}$ 에서 $y=2^{${PL.xs(v.a)}}$ 은 $0\\lt y\\lt ${L}$ ($x=${v.c}$ 는 ○ 이라 ${L} 은 제외, 점근선 $y=0$ 에는 닿지 않음), $x\\ge ${v.c}$ 에서 $y=${v.q}-2^{${PL.xs(v.b)}}$ 는 $y\\le ${R}$ ($x=${v.c}$ 는 ● 이라 ${R} 은 포함).`,
+        `수평선 $y=t$ 와 만나는 개수가 바뀔 수 있는 높이는 끝점·점근선의 높이 $${cr}$ 뿐입니다. 이 높이에 수평선을 그어 봅니다.`,
+        `구간별 개수 $g(t)$ 는 ${PL.rangesLine(P)}. (오른쪽 계단 그래프, 열린 점 ○ 은 그 높이에서 제외)`,
+        ask === 'disc' ? `$g$ 의 값이 바뀌는 높이는 $t=${PL.crit(P).map((c) => PL.f2(c)).join(',\\ ')}$ 이므로 합은 $${ans9A(v, ask)}$.` : `$g(t)=2$ 인 구간에서 정수 $t=${PL.ints(P, 2).join(',\\ ')}$ 이므로 $${ans9A(v, ask)}$개.`
+      ];
+    },
+    answer: (v, ask) => (ask === 'disc' ? `$${ans9A(v, ask)}$` : `$${ans9A(v, ask)}$개`),
+    stdTitle: '조각마다 치역을 구해 g(t)를 구간별로 쓰기',
+    quickTitle: '끝점·점근선의 높이만 적고 ○●를 확인',
+    standard: (v, ask) => {
+      const P = pieces9A(v), { L, R } = lv9A(v);
+      return `① $x\\lt ${v.c}$ 에서 $y=2^{${PL.xs(v.a)}}$ 은 증가하고 값의 범위는 $0\\lt y\\lt ${L}$ 입니다. $x\\ge ${v.c}$ 에서 $y=${v.q}-2^{${PL.xs(v.b)}}$ 은 감소하고 $y\\le ${R}$ 입니다.<br/>② 수평선 $y=t$ 는 각 조각과 많아야 한 번 만나므로 $g(t)$ 는 ${PL.rangesLine(P)}.<br/>③ ${ask === 'disc' ? `값이 바뀌는 곳은 $t=${PL.crit(P).map((c) => PL.f2(c)).join(',\\ ')}$ 이므로 합은 $${ans9A(v, ask)}$.` : `$g(t)=2$ 인 정수 $t$ 는 $${PL.ints(P, 2).join(',\\ ')}$ 이므로 $${ans9A(v, ask)}$개.`}`;
+    },
+    quick: (v, ask) => {
+      const P = pieces9A(v), { L, R } = lv9A(v);
+      return `곡선이 끝나는 점(○·●)과 점근선의 높이 $0,\\ ${Math.min(L, R)},\\ ${Math.max(L, R)}$ 가 곧 $g$ 가 바뀌는 높이입니다. ○ 인 ${L} 은 그 높이에서 제외, ● 인 ${R} 은 포함이므로 ${R < L ? `$t=${R}$ 까지는 두 점, $${R}\\lt t\\lt ${L}$ 는 한 점, $t\\ge ${L}$ 는 없음` : `$t=${L}$ 에서는 ○ 때문에 한 점만`} 입니다. ${ask === 'disc' ? `바뀌는 높이를 모두 더하면 $${ans9A(v, ask)}$.` : `$g=2$ 인 구간만 골라 정수를 세면 $${ans9A(v, ask)}$개.`}`;
+    },
+    highlight: '○ 인 높이는 세지 않고 ● 인 높이는 셉니다. 구간의 끝 t 값은 따로 확인하세요.',
+    formula: '<b>수평선 y=t 와 곡선의 교점 개수 g(t)</b><br>곡선을 한 방향으로만 움직이는 조각으로 나눈 뒤, 조각마다 \'높이 t 가 치역에 들어 있는가\'만 확인하면 됩니다.<br>개수가 바뀌는 높이 = 조각의 <b>끝점·꼭짓점·점근선</b>의 높이. 끝점이 ○ 이면 그 높이는 제외, ● 이면 포함입니다.',
+    notes: '꼭짓점·끝점의 높이에서는 g(t) 가 양쪽 구간과 다른 값을 가질 수 있습니다(구간의 경계에서 ○ 인지 ● 인지 확인). 점근선의 높이는 곡선이 닿지 않으므로 세지 않습니다. 두 조각의 끝점이 같은 x 에서 만나면 그 점은 한 번만 셉니다.'
+  };
+
+  /* ---------- 장면 9B · 절댓값을 두 번 쓴 함수 (W 모양) ---------- */
+  const V9B = [{ fam: 'exp', a: 3, b: 1 }, { fam: 'exp', a: 7, b: 3 }, { fam: 'exp', a: 5, b: 2 }, { fam: 'log', b: 1 }, { fam: 'log', b: 2 }];
+  const fn9B = (v) => (v.fam === 'exp' ? (x) => Math.abs(Math.abs(Math.pow(2, x) - v.a) - v.b) : (x) => Math.abs(Math.abs(Math.log2(x)) - v.b));
+  const pieces9B = (v) => {
+    const f = fn9B(v);
+    if (v.fam === 'exp') {
+      const x1 = Math.log2(v.a - v.b), x2 = Math.log2(v.a), x3 = Math.log2(v.a + v.b);
+      return [PL.mk(f, -Infinity, x1, true, false), PL.mk(f, x1, x2, true, false), PL.mk(f, x2, x3, true, false), PL.mk(f, x3, Infinity, true, true)];
+    }
+    const x1 = Math.pow(2, -v.b), x3 = Math.pow(2, v.b);
+    return [PL.mk(f, 0, x1, true, false), PL.mk(f, x1, 1, true, false), PL.mk(f, 1, x3, true, false), PL.mk(f, x3, Infinity, true, true)];
+  };
+  const ans9B = (v, ask) => { const P = pieces9B(v); return ask === 'disc' ? discSum(P) : ask === 'cnt4' ? PL.ints(P, 4).length : [1, 2, 3, 4].reduce((a, t) => a + PL.g(P, t), 0); };
+  const COMB9B = [];
+  V9B.forEach((v) => ['disc', 'cnt4', 'sum4'].forEach((ask) => { if (ask !== 'cnt4' || ans9B(v, ask) > 0) COMB9B.push({ v, ask }); }));
+  const fTex9B = (v) => (v.fam === 'exp' ? String.raw`f(x)=\left|\,\left|2^{x}-${v.a}\right|-${v.b}\right|` : String.raw`f(x)=\left|\,\left|\log_2 x\right|-${v.b}\right|`);
+  const askTex9B = (ask) => (ask === 'disc' ? '함수 $g(t)$가 $t=\\alpha$에서 불연속인 모든 실수 $\\alpha$의 값의 합을 구하시오.' : ask === 'cnt4' ? '$g(t)=4$를 만족시키는 정수 $t$의 개수를 구하시오.' : '$g(1)+g(2)+g(3)+g(4)$의 값을 구하시오.');
+  const brk9B = (v) => (v.fam === 'exp' ? `$x=\\log_2 ${v.a - v.b},\\ \\log_2 ${v.a},\\ \\log_2 ${v.a + v.b}$` : `$x=2^{-${v.b}},\\ 1,\\ 2^{${v.b}}$`);
+  const finalLine9B = (v, ask) => { const P = pieces9B(v); return ask === 'disc' ? `$g$ 가 바뀌는 높이 $t=${PL.crit(P).map((c) => PL.f2(c)).join(',\\ ')}$ 의 합은 $${ans9B(v, ask)}$.` : ask === 'cnt4' ? `$g(t)=4$ 인 구간 $0\\lt t\\lt ${Math.min(v.b, v.fam === 'exp' ? v.a - v.b : 99)}$ 에서 정수 $t=${PL.ints(P, 4).join(',\\ ')}$ → ${ans9B(v, ask)}개.` : `$g(1)+g(2)+g(3)+g(4)=${[1, 2, 3, 4].map((t) => PL.g(P, t)).join('+')}=${ans9B(v, ask)}$.`; };
+  const S9B = {
+    id: 't9b', title: '문제 B (절댓값을 두 번 쓴 함수 — W 모양 g(t))', short: '절댓값 겹쳐 쓰기',
+    question: '절댓값을 두 번 씌운 함수 f(x)=| |2ˣ − 3| − b | 는 W 모양이다. 수평선을 올리면 개수는 0 → 2 → 4 → 3 … 로 어떻게 바뀔까?',
+    guide: '금색 점을 위아래로 끌어 <b>y = t</b>를 움직이세요. 막대로 <b>b</b>를 바꾸면 꼭짓점의 높이 <b>b</b>와 점근선의 높이 <b>3−b</b>의 크기 순서가 바뀌어 계단 모양이 달라집니다.',
+    tKey: 'p9b_t', tMin: -1.5, tMax: 4.6, XG: 5.1, U: 0.8, gmax: 4,
+    focus: { x: [-2.7, 9.2], y: [-1.7, 4.9] },
+    controls: () => ['p9b_t', 'p9b_b'],
+    init: { p9b_t: 0.6, p9b_b: 1 },
+    explore: (s) => pieces9B({ fam: 'exp', a: 3, b: s.p9b_b }),
+    cfgExplore: (s) => ({
+      pieces: S9B.explore(s), XG: S9B.XG, U: S9B.U, gmax: S9B.gmax, tKey: 'p9b_t', tMin: S9B.tMin, tMax: S9B.tMax,
+      asym: [3 - s.p9b_b],
+      asymLabels: [{ x: -2.6, y: 3 - s.p9b_b, text: '점근선 y = ' + PL.f2(3 - s.p9b_b), dy: -11 }]
+    }),
+    cfgVariant: (v, ask) => {
+      const P = pieces9B(v), top = v.fam === 'exp' ? v.a - v.b : null;
+      return {
+        pieces: P, XG: S9B.XG, U: S9B.U, gmax: S9B.gmax, asym: top == null ? [] : [top],
+        hi: ask === 'disc' ? { disc: true } : ask === 'cnt4' ? { g: 4 } : { ts: [1, 2, 3, 4] },
+        asymLabels: top == null ? [] : [{ x: -2.6, y: top, text: '점근선 y = ' + top, dy: -11 }],
+        endLabels: top == null ? [{ x: v.fam === 'log' ? 1 : 0, y: v.b, text: String(v.b), dy: -13, color: 'rose' }] : [{ x: Math.log2(v.a), y: v.b, text: String(v.b), dy: -13, color: 'rose' }]
+      };
+    },
+    combos: COMB9B,
+    text: (v, ask) => `함수 ${'$' + fTex9B(v) + '$'}에 대하여 실수 $t$에 대하여 직선 $y=t$가 곡선 $y=f(x)$와 만나는 점의 개수를 $g(t)$라 하자. ${askTex9B(ask)}`,
+    tag: '2025학년도 10월 학평(서울) 21번 유형',
+    time: '목표 시간: 50초',
+    steps: (v, ask) => {
+      const P = pieces9B(v), cr = PL.crit(P).map((c) => PL.f2(c)).join(',\\ ');
+      return [
+        `안쪽 절댓값부터 풀어 곡선을 조각냅니다. ${brk9B(v)} 에서 꺾여 네 조각이 생기고, 꺾이는 점의 높이는 $0,\\ ${v.b},\\ 0$ 입니다.${v.fam === 'exp' ? ` 왼쪽 끝은 $x\\to-\\infty$ 에서 점근선 $y=${v.a - v.b}$ 에 가까워지지만 닿지는 않습니다(○).` : ' 양쪽 끝은 모두 위로 올라갑니다.'}`,
+        `개수가 바뀔 수 있는 높이는 꺾이는 점·점근선의 높이 $${cr}$ 입니다. 이 높이에 수평선을 긋습니다.`,
+        `구간별 개수 $g(t)$ 는 ${PL.rangesLine(P)}. (꼭짓점 ● 이면 포함, 점근선 ○ 이면 제외)`,
+        finalLine9B(v, ask)
+      ];
+    },
+    answer: (v, ask) => `$${ans9B(v, ask)}$${ask === 'cnt4' ? '개' : ''}`,
+    stdTitle: '조각을 나누고 높이별로 교점의 개수 쓰기',
+    quickTitle: 'W 모양의 높이 세 곳만 적기',
+    standard: (v, ask) => `① ${brk9B(v)} 에서 꺾이므로 네 조각입니다. 꺾이는 점의 높이는 $0,\\ ${v.b},\\ 0$${v.fam === 'exp' ? `, 점근선은 $y=${v.a - v.b}$` : ''}.<br/>② 수평선과의 교점: ${PL.rangesLine(pieces9B(v))}.<br/>③ ${finalLine9B(v, ask)}`,
+    quick: (v, ask) => `W 모양은 <b>바닥 0 (두 곳) · 가운데 봉우리 ${v.b}${v.fam === 'exp' ? ` · 점근선 ${v.a - v.b}` : ''}</b> 세 높이만 알면 됩니다. 바닥에서는 2개, 바닥과 봉우리 사이는 4개, 봉우리 높이에서는 3개(봉우리의 꼭짓점이 한 점)입니다. ${finalLine9B(v, ask)}`,
+    highlight: '봉우리의 높이에서는 꼭짓점 한 점과 양쪽 가지의 교점이 합쳐져 4가 아니라 3입니다.',
+    formula: '<b>절댓값을 겹쳐 쓴 함수 y = | |h(x)| − b |</b><br>안쪽 |h| 로 x축 아래를 접어 올리고, b 를 빼서 아래로 내린 뒤 다시 접어 올립니다. 그래서 x축에 닿는 점이 두 개 생기고 그 사이에 봉우리(높이 b)가 생기는 <b>W 모양</b>이 됩니다.<br>개수가 바뀌는 높이: 바닥 0, 봉우리 b, (지수함수라면) 점근선.',
+    notes: '봉우리의 높이 t=b 에서는 꼭짓점 한 점 + 바깥 가지 두 점이라 g=3 입니다(4개로 세지 않기). 바닥 t=0 에서는 x축과 만나는 두 점이라 g=2. 점근선의 높이는 ○ 이라 그 높이에서는 점근선 쪽 가지가 빠집니다.'
+  };
+
+  /* ======================================================================
+     유형 10 · 곡선 위 점이 이루는 삼각형 (이등변·정삼각형·직각이등변)
+     ====================================================================== */
+  PL.nth2 = (n) => (n === 2 ? '\\sqrt{2}' : `\\sqrt[${n}]{2}`);
+  PL.ticks = (b, p, q, o = {}) => b.ticks(p, q, { color: o.color || 'amber', count: o.count || 1, size: 6.5 });
+  PL.fix = (n, d = 2) => Number(n).toFixed(d);
+
+  /* ---------- 장면 10A · AB=AC 이등변삼각형 (곡선 y=aˣ, 직선 x=t, x=2t) ---------- */
+  const COMB10A = [{ v: { t0: 3 }, ask: 'at' }, { v: { t0: 4 }, ask: 'S' }, { v: { t0: 5 }, ask: 'at' }, { v: { t0: 2 }, ask: 'S' }, { v: { t0: 2 }, ask: 'at' }, { v: { t0: 3 }, ask: 'S' }];
+  const vary10a = PL.varier(COMB10A);
+  const ans10a = (v, ask) => (ask === 'at' ? `${v.t0}${PL.nth2(v.t0)}` : String(2 * v.t0));
+  const F10A = { x: [-1.8, 12.4], y: [-1.9, 8.4] };
+  function draw10a(b, s, lab) {
+    const mode = PL.mode(lab), st = (i) => PL.stp(mode, s, i), ex = mode === 'explore', pr = mode === 'problem';
+    const cu = vary10a.cur();
+    const t = ex ? s.p10_t : cu.v.t0, m = ex ? s.p10_m : 2;
+    const a = Math.pow(m, 1 / t);
+    PL.autoFocus(b, ex ? 'E' : 'V' + t, ex ? F10A : { x: [-1.5, 2 * t + 2.7], y: [-1.9, 5.0] });
+    PL.frame(b, s);
+    const A = [t, m], Bp = [2 * t, m * m], C = [2 * t, 0], D = [2 * t, m];
+    const AB = Math.hypot(t, m * m - m), AC = Math.hypot(t, m);
+    const same = Math.abs(AB - AC) < 0.04;
+    const showEq = ex ? same : true; // 문제·정리에서는 AB=AC 가 조건으로 주어져 있음
+    b.plot((x) => Math.pow(a, x), { color: 'green', width: 2.8, glow: true, from: -1.4, to: 12.6 });
+    const lx = Math.max(0.4, t * 0.4), ly = Math.pow(a, lx); // 곡선 이름은 A 의 왼쪽 아래(비어 있는 곳)
+    b.text([lx, ly], 'y = aˣ', { color: 'green', size: 13, weight: 800, align: 'center', baseline: 'middle', dy: 17 });
+    b.poly([A, C, Bp], { fill: 'amber', fillAlpha: same || !ex ? 0.2 : 0.1, color: null });
+    // x = t, x = 2t
+    b.seg([t, 0], [t, m], { color: 'muted', width: 1.6, dash: [5, 5] });
+    b.text([t, 0], 't', { color: 'amber', size: 14, weight: 800, dy: 30 });
+    b.text([2 * t, 0], '2t', { color: 'amber', size: 14, weight: 800, dy: 30 });
+    if (!ex && st(2)) {
+      b.seg(A, D, { color: 'muted', width: 1.8, dash: [4, 4] });
+      b.point(D, { hollow: true, color: 'muted', r: 4 });
+      b.text([(t + 2 * t) / 2, m], 't', { color: 'amber', size: 13, weight: 800, dy: -11 });
+      b.text(D, 'aᵗ', { color: 'sky', size: 13, weight: 800, align: 'left', dx: 10, dy: 22 });
+      b.text(D, 'a²ᵗ−aᵗ', { color: 'rose', size: 13, weight: 800, align: 'left', dx: 10, dy: -16 });
+    }
+    b.seg(C, Bp, { color: 'ink', width: 3.2 });
+    b.seg(A, C, { color: ex && !same ? 'sky' : 'amber', width: 3.4 });
+    b.seg(A, Bp, { color: ex && !same ? 'rose' : 'amber', width: 3.4 });
+    if (showEq) { PL.ticks(b, A, C, { color: 'ink' }); PL.ticks(b, A, Bp, { color: 'ink' }); }
+    if (!ex && st(3)) { // 높이 2
+      b.seg([0, 2], A, { color: 'amber', width: 2, dash: [6, 5] });
+      b.text([0, 2], '2', { color: 'amber', size: 14, weight: 800, align: 'right', dx: -9 });
+      b.text(Bp, '4', { color: 'rose', size: 13, weight: 800, align: 'left', dx: 10, dy: 12 });
+    }
+    if ((pr && cu.ask === 'at') || (!ex && st(4))) { // 넓이(조건 또는 결과): 세 변에서 떨어진 안쪽에
+      const xl = 2 * t - 0.95 * Math.min(1, t / 1.6), yAB = m + (m * m - m) * (xl - t) / t, yAC = m - m * (xl - t) / t;
+      b.text([xl, (yAB + yAC) / 2 - 0.62], '넓이 ' + 2 * cu.v.t0, { color: 'amber', size: 13, weight: 800, align: 'center' });
+    }
+    // 점
+    if (ex) b.handle('A', A, { color: 'amber', r: 7.5, label: 'A', dx: -10, dy: -12, align: 'right', drag: (w) => { s.p10_t = clamp(Math.round(w.x * 20) / 20, 0.5, 5.5); s.p10_m = clamp(Math.round(w.y * 20) / 20, 1.2, 2.8); } });
+    else b.point(A, { color: 'amber', r: 6, label: st(1) ? 'A(t, aᵗ)' : 'A', dx: -10, dy: -12, align: 'right' });
+    b.point(Bp, { color: 'rose', r: 5.6, label: !ex && st(1) ? 'B(2t, a²ᵗ)' : 'B', dx: 10, dy: -10 });
+    b.point(C, { color: 'sky', r: 5.6, label: !ex && st(1) ? 'C(2t, 0)' : 'C', dx: 10, dy: 15 });
+  }
+  const text10a = (v, ask) => (ask === 'at'
+    ? `상수 $a\\ (a>1)$과 양수 $t$에 대하여 곡선 $y=a^{x}$이 두 직선 $x=t$, $x=2t$와 만나는 점을 각각 A, B라 하고, 점 B에서 $x$축에 내린 수선의 발을 C라 하자. $\\overline{AB}=\\overline{AC}$이고 삼각형 ACB의 넓이가 ${2 * v.t0}일 때, $a\\times t$의 값을 구하시오.`
+    : `양수 $t$에 대하여 곡선 $y=2^{\\frac{x}{${v.t0}}}$이 두 직선 $x=t$, $x=2t$와 만나는 점을 각각 A, B라 하고, 점 B에서 $x$축에 내린 수선의 발을 C라 하자. $\\overline{AB}=\\overline{AC}$일 때, 삼각형 ACB의 넓이를 구하시오.`);
+  const step10a = (v, ask) => [
+    `$m=a^{t}$ 로 놓으면 $a^{2t}=m^{2}$ 이므로 $A(t,\\ m)$, $B(2t,\\ m^{2})$, $C(2t,\\ 0)$ 입니다.`,
+    `A 에서 선분 BC 에 수선을 그어 직각삼각형을 만듭니다. 가로 $t$, 세로는 각각 $m$(A→C 쪽)과 $m^{2}-m$(A→B 쪽)이므로 $\\overline{AC}^{2}=t^{2}+m^{2}$, $\\overline{AB}^{2}=t^{2}+(m^{2}-m)^{2}$.`,
+    `$\\overline{AB}=\\overline{AC}$ 이면 가로가 같으므로 세로도 같아야 합니다: $m^{2}-m=m$. $m>1$ 이므로 $m=2$, 즉 $a^{t}=2$ (t 가 얼마든 A 의 높이는 2).`,
+    ask === 'at'
+      ? `$\\overline{BC}=m^{2}=4$, 밑변 BC 에 대한 높이 $t$ 이므로 넓이 $\\frac{1}{2}\\cdot 4\\cdot t=2t=${2 * v.t0}$, $t=${v.t0}$. $a^{${v.t0}}=2$ 에서 $a=2^{\\frac{1}{${v.t0}}}$ 이므로 $a\\times t=${v.t0}\\cdot 2^{\\frac{1}{${v.t0}}}=${ans10a(v, ask)}$.`
+      : `$a=2^{\\frac{1}{${v.t0}}}$ 이므로 $a^{t}=2$ 에서 $t=${v.t0}$. 넓이 $\\frac{1}{2}\\cdot\\overline{BC}\\cdot t=\\frac{1}{2}\\cdot 4\\cdot ${v.t0}=${2 * v.t0}$.`
+  ];
+  const std10a = (v, ask) => `① $A(t,\\ a^{t})$, $B(2t,\\ a^{2t})$, $C(2t,\\ 0)$ 에서 $\\overline{AC}^{2}=t^{2}+(a^{t})^{2}$, $\\overline{AB}^{2}=t^{2}+(a^{2t}-a^{t})^{2}$.<br/>② $\\overline{AB}=\\overline{AC}$ 에서 $(a^{2t}-a^{t})^{2}=(a^{t})^{2}$. $a^{2t}-a^{t}>0$ 이므로 $a^{2t}-a^{t}=a^{t}$, $a^{t}=2$.<br/>③ $\\overline{BC}=a^{2t}=4$, 삼각형 ACB 의 넓이 $=\\frac{1}{2}\\cdot 4\\cdot t=2t$.<br/>④ ${ask === 'at' ? `$2t=${2 * v.t0}$ 에서 $t=${v.t0}$, $a=2^{\\frac{1}{${v.t0}}}$ ⇒ $a\\times t=${ans10a(v, ask)}$.` : `$a=2^{\\frac{1}{${v.t0}}}$, $a^{t}=2$ 에서 $t=${v.t0}$ ⇒ 넓이 $2t=${2 * v.t0}$.`}`;
+  const quick10a = (v, ask) => `두 변 AB, AC 는 가로 길이가 $t$ 로 같습니다. 그러므로 <b>세로 길이만 같으면</b> 됩니다: A 의 높이 $a^{t}$ = (B 높이 $-$ A 높이) $=a^{2t}-a^{t}$. $m=a^{t}$ 라 하면 $m=m^{2}-m$, <b>$a^{t}=2$</b> 입니다. 그러면 $a^{2t}=4$, 넓이 $=2t$ 로 바로 끝납니다. ${ask === 'at' ? `$2t=${2 * v.t0}$ 에서 $t=${v.t0}$, $a\\times t=${ans10a(v, ask)}$.` : `$t=${v.t0}$ 이므로 넓이 $=${2 * v.t0}$.`}`;
+  function scene10a() {
+    const cur = () => vary10a.cur();
+    return {
+      id: 't10a', title: '문제 A (이등변삼각형 AB = AC)', short: '이등변삼각형', tabs: { compact: true }, notesTitle: '오답 함정 주의보',
+      question: '곡선 y = aˣ 위의 점 A(t, aᵗ)와 B(2t, a²ᵗ), 그리고 B의 수선의 발 C로 만든 삼각형 ACB가 AB = AC 인 이등변삼각형이 되려면 A의 높이는 얼마여야 할까?',
+      guide: '금색 점 <b>A</b>를 끌어 보세요. 가로로 움직이면 <b>t</b>, 세로로 움직이면 A의 높이 <b>aᵗ</b>가 바뀌고, 곡선은 (0, 1)과 A를 지나도록 따라옵니다. <b>AB와 AC의 길이가 같아지는 순간</b>(두 변이 금색으로 바뀌고 같은 길이 표시가 생김)의 높이를 찾아보세요.',
+      focus: F10A,
+      enter: (s) => { s.p10_t = 3; s.p10_m = 1.6; },
+      controls: () => ['p10_t', 'p10_m'],
+      presets: () => [
+        { group: 't 를 바꿔 보기', label: 't = 2', apply: (s) => { s.p10_t = 2; }, on: (s) => Math.abs(s.p10_t - 2) < 0.03 },
+        { group: 't 를 바꿔 보기', label: 't = 4', apply: (s) => { s.p10_t = 4; }, on: (s) => Math.abs(s.p10_t - 4) < 0.03 },
+        { group: 'A 의 높이 aᵗ', label: 'aᵗ = 1.5', apply: (s) => { s.p10_m = 1.5; }, on: (s) => Math.abs(s.p10_m - 1.5) < 0.03 },
+        { group: 'A 의 높이 aᵗ', label: 'aᵗ = 2', color: 'amber', apply: (s) => { s.p10_m = 2; }, on: (s) => Math.abs(s.p10_m - 2) < 0.03 }
+      ],
+      steps: () => step10a(cur().v, cur().ask).map(stepText),
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${rich(text10a(cur().v, cur().ask))}</div>`,
+      problem: { tag: '2026학년도 9월 모의평가 12번 유형', time: '목표 시간: 40초', text: () => PL.probHTML(text10a(cur().v, cur().ask)), answer: () => safe('$' + ans10a(cur().v, cur().ask) + '$') },
+      solution: {
+        standardTitle: '좌표로 AB², AC² 를 쓰고 같다고 놓기', standardTag: '교과서 풀이', quickTitle: '가로가 같으니 세로만 비교', quickTag: '10초 컷',
+        standard: () => ({ steps: rich(std10a(cur().v, cur().ask)) }),
+        quick: () => ({ steps: rich(quick10a(cur().v, cur().ask)), highlight: 'AB = AC 의 조건은 a 나 t 가 아니라 A 의 높이 aᵗ = 2 로만 결정됩니다.' })
+      },
+      view: (s, lab) => {
+        if (lab && lab.tab !== 'explore') return { formula: rich('<b>이등변삼각형 조건을 높이로 바꿔 읽기</b><br>A(t, aᵗ), B(2t, a²ᵗ), C(2t, 0) 에서 A 로부터 직선 x = 2t 까지의 가로 거리는 t 로 공통입니다. 따라서 AB = AC ⇔ 세로 거리 같음 ⇔ <b>aᵗ = a²ᵗ − aᵗ</b> ⇔ aᵗ = 2.'), notes: rich('A 와 B 의 x좌표 비가 1 : 2 이므로 y좌표는 m, m² (m = aᵗ) 입니다. a²ᵗ 을 2aᵗ 로 착각하지 마세요. 넓이는 ½ × BC × t 입니다(밑변이 세로선 BC).') };
+        const t = s.p10_t, m = s.p10_m, a = Math.pow(m, 1 / t), AB = Math.hypot(t, m * m - m), AC = Math.hypot(t, m), same = Math.abs(AB - AC) < 0.04;
+        return {
+          chips: [{ html: `$\\overline{AB}=${PL.fix(AB)},\\ \\overline{AC}=${PL.fix(AC)}$`, color: same ? 'amber' : 'ink', answer: true }],
+          readouts: [
+            { label: 'A 의 높이 aᵗ', value: PL.fix(m), color: 'amber', note: 't = ' + PL.fix(t) + ' · 곡선의 밑 a ≈ ' + PL.fix(a, 3) },
+            { label: 'AC 의 길이', value: PL.fix(AC), color: 'sky', note: 'A 에서 x축 위 점 C 까지' },
+            { label: 'AB 의 길이', value: PL.fix(AB), color: 'rose', note: 'B 의 높이 a²ᵗ = ' + PL.fix(m * m) },
+            { label: 'AB − AC', value: (AB - AC >= 0 ? '+' : '') + PL.fix(AB - AC), color: same ? 'amber' : 'violet', wide: true, note: same ? '거의 같습니다. 이때 A 의 높이는?' : AB > AC ? 'AB 가 더 깁니다 — A 를 위로 올려 보세요' : 'AC 가 더 깁니다 — A 를 아래로 내려 보세요' },
+            { label: '삼각형 ACB 의 넓이', value: PL.fix(0.5 * m * m * t), color: 'green', note: '½ × BC × t' }
+          ],
+          formula: rich('<b>이등변삼각형 조건을 높이로 바꿔 읽기</b><br>A(t, aᵗ), B(2t, a²ᵗ), C(2t, 0) 에서 A 로부터 직선 x = 2t 까지의 가로 거리는 t 로 공통입니다. 따라서 AB = AC ⇔ 세로 거리 같음 ⇔ <b>aᵗ = a²ᵗ − aᵗ</b> ⇔ aᵗ = 2.'),
+          notes: rich('A 와 B 의 x좌표 비가 1 : 2 이므로 y좌표는 m, m² (m = aᵗ) 입니다. a²ᵗ 을 2aᵗ 로 착각하지 마세요. 넓이는 ½ × BC × t 입니다(밑변이 세로선 BC).')
+        };
+      },
+      vary: vary10a,
+      draw: (b, s, v, lab) => draw10a(b, s, lab)
+    };
+  }
+
+  /* ---------- 장면 10B · 두 로그 곡선과 x축이 만드는 삼각형 (정삼각형·직각이등변삼각형) ---------- */
+  const COMB10B = [{ v: { p: 4, shape: 'eq' } }, { v: { p: 3, shape: 'rt' } }, { v: { p: 5, shape: 'eq' } }, { v: { p: 5, shape: 'rt' } }, { v: { p: 4, shape: 'rt' } }].map((o) => ({ v: o.v, ask: 'a' }));
+  const vary10b = PL.varier(COMB10B);
+  const h10b = (v) => (v.shape === 'eq' ? Math.sqrt(3) * (v.p - 1) : v.p - 1); // 삼각형이 되는 높이
+  const a10b = (v) => Math.pow(v.p, 1 / h10b(v));
+  const root10 = (p, n) => (n === 1 ? String(p) : n === 2 ? `\\sqrt{${p}}` : `\\sqrt[${n}]{${p}}`);
+  const ans10b = (v) => (v.shape === 'eq' ? `${v.p}^{\\frac{\\sqrt{3}}{${3 * (v.p - 1)}}}` : root10(v.p, v.p - 1));
+  const hTex10b = (v) => (v.shape === 'eq' ? (v.p === 2 ? '\\sqrt{3}' : `${v.p - 1}\\sqrt{3}`) : String(v.p - 1));
+  const F10B = { x: [-4.7, 4.7], y: [-2.1, 6.9] };
+  function draw10b(b, s, lab) {
+    const mode = PL.mode(lab), st = (i) => PL.stp(mode, s, i), ex = mode === 'explore', pr = mode === 'problem';
+    const cu = vary10b.cur();
+    const p = ex ? 3 : cu.v.p, a = ex ? s.p10b_a : a10b(cu.v), la = Math.log(a);
+    const h = Math.log(p) / la, w = p - 1;
+    const A = [0, h], Bp = [-w, 0], C = [w, 0];
+    PL.autoFocus(b, ex ? 'E' : 'V' + p + cu.v.shape, ex ? F10B : { x: [-(p + 0.9), p + 0.9], y: [-2.3, h + 1.9] });
+    PL.frame(b, s);
+    [-p, p].forEach((x) => { b.vline(x, { color: 'violet', alpha: 0.5, width: 1.3, dash: [6, 6] }); b.text([x, 0], `x = ${x}`, { color: 'violet', size: 12, weight: 800, dy: 52 }); });
+    b.plot((x) => (x + p > 0 ? Math.log(x + p) / la : NaN), { color: 'green', width: 2.8, glow: true, from: -p + 0.004, to: p + 3 });
+    b.plot((x) => (-x + p > 0 ? Math.log(-x + p) / la : NaN), { color: 'violet', width: 2.8, glow: true, from: -p - 3, to: p - 0.004 });
+    const AB = Math.hypot(w, h), BC = 2 * w;
+    const angB = Math.atan2(h, w) * 180 / Math.PI, angA = 180 - 2 * angB;
+    const isEq = Math.abs(angB - 60) < 0.7, isRt = Math.abs(angA - 90) < 1.2;
+    const eqShape = ex ? isEq : cu.v.shape === 'eq', rtShape = ex ? isRt : cu.v.shape === 'rt';
+    b.poly([A, Bp, C], { fill: 'amber', fillAlpha: eqShape || rtShape ? 0.2 : 0.1, color: null });
+    if (!ex && st(2)) {
+      b.seg(A, [0, 0], { color: 'amber', width: 2.2, dash: [6, 5] });
+      b.text([0, h * 0.33], 'logₐ' + p, { color: 'amber', size: 13, weight: 800, align: 'center' });
+      b.text([0, 0], 'BC = ' + 2 * w, { color: 'ink', size: 13, weight: 800, dy: 52 });
+    }
+    b.seg(Bp, C, { color: 'ink', width: 3.2 });
+    const good = eqShape || rtShape;
+    b.seg(A, Bp, { color: good ? 'amber' : 'rose', width: 3.4 });
+    b.seg(A, C, { color: good ? 'amber' : 'sky', width: 3.4 });
+    if (ex) {
+      b.angle(Bp, C, A, { r: 28, color: 'amber', label: PL.fix(angB, 1) + '°', labelGap: 18 });
+      if (isEq) { PL.ticks(b, Bp, C, { color: 'ink' }); }
+      if (isEq || isRt) { PL.ticks(b, A, Bp, { color: 'ink', count: isEq ? 1 : 2 }); PL.ticks(b, A, C, { color: 'ink', count: isEq ? 1 : 2 }); }
+      if (isRt) b.right(A, Bp, C, { color: 'ink', size: 14 });
+    } else {
+      if (cu.v.shape === 'eq') { [[Bp, C], [A, Bp], [A, C]].forEach(([u, z]) => PL.ticks(b, u, z, { color: 'ink' })); }
+      else { PL.ticks(b, A, Bp, { color: 'ink' }); PL.ticks(b, A, C, { color: 'ink' }); b.right(A, Bp, C, { color: 'ink', size: 14 }); }
+      if (st(3)) {
+        if (cu.v.shape === 'eq') { b.angle(Bp, C, A, { r: 26, color: 'amber', label: '60°', labelGap: 16 }); b.angle(C, A, Bp, { r: 26, color: 'amber', label: '60°', labelGap: 16 }); }
+        else b.text(A, '90°', { color: 'amber', size: 13, weight: 800, dy: 30 });
+      }
+    }
+    if (ex) b.handle('A', A, { color: 'amber', r: 7.5, label: 'A', dx: 10, dy: -6, drag: (w2) => { const hh = clamp(w2.y, 1, 5.2); s.p10b_a = clamp(Math.round(Math.pow(3, 1 / hh) * 200) / 200, 1.25, 3); } });
+    else b.point(A, { color: 'amber', r: 6, label: !ex && st(1) ? `A(0, logₐ${p})` : 'A', dx: 10, dy: -6 });
+    b.point(Bp, { color: 'rose', r: 5.6, label: !ex && st(1) ? `B(${-w}, 0)` : 'B', dx: -10, dy: -12, align: 'right' });
+    b.point(C, { color: 'sky', r: 5.6, label: !ex && st(1) ? `C(${w}, 0)` : 'C', dx: 10, dy: -12 });
+  }
+  const text10b = (v) => `실수 $a\\ (a>1)$에 대하여 곡선 $y=\\log_a (x+${v.p})$가 곡선 $y=\\log_a (-x+${v.p})$와 만나는 점을 A, 곡선 $y=\\log_a (x+${v.p})$가 $x$축과 만나는 점을 B, 곡선 $y=\\log_a (-x+${v.p})$가 $x$축과 만나는 점을 C라 하자. 삼각형 ABC가 ${v.shape === 'eq' ? '정삼각형' : '$\\angle \\mathrm{A}=90^{\\circ}$인 직각이등변삼각형'}일 때, $a$의 값을 구하시오.`;
+  const step10b = (v) => {
+    const p = v.p, w = p - 1;
+    return [
+      `두 곡선은 $y$축에 대하여 대칭이므로 교점 A 는 $y$축 위의 점 $A(0,\\ \\log_a ${p})$ 입니다. $x$절편은 $x+${p}=1$, $-x+${p}=1$ 에서 $B(-${w},\\ 0)$, $C(${w},\\ 0)$.`,
+      `$\\overline{AB}=\\overline{AC}$ 인 이등변삼각형이고, 밑변 $\\overline{BC}=${2 * w}$, 높이는 $\\log_a ${p}$ 입니다.`,
+      v.shape === 'eq' ? `정삼각형이면 높이는 $\\frac{\\sqrt{3}}{2}\\overline{BC}=${hTex10b(v)}$ 이므로 $\\log_a ${p}=${hTex10b(v)}$ ($\\angle B=60^{\\circ}$).` : `$\\angle A=90^{\\circ}$ 인 직각이등변삼각형이면 높이는 $\\frac{1}{2}\\overline{BC}=${w}$ 이므로 $\\log_a ${p}=${w}$ ($\\angle B=45^{\\circ}$).`,
+      v.shape === 'eq' ? `$a^{${hTex10b(v)}}=${p}$ 에서 $a=${p}^{\\frac{1}{${hTex10b(v)}}}=${ans10b(v)}$.` : `$a^{${w}}=${p}$ 에서 $a=${ans10b(v)}$.`
+    ];
+  };
+  const std10b = (v) => {
+    const p = v.p, w = p - 1;
+    return `① $y=\\log_a(x+${p})$ 와 $y=\\log_a(-x+${p})$ 는 $y$축 대칭이므로 교점의 $x$좌표는 $0$, $A(0,\\ \\log_a ${p})$.<br/>② $\\log_a(x+${p})=0$ 에서 $x=-${w}$, $\\log_a(-x+${p})=0$ 에서 $x=${w}$ 이므로 $B(-${w},\\ 0)$, $C(${w},\\ 0)$, $\\overline{BC}=${2 * w}$.<br/>③ ${v.shape === 'eq' ? `정삼각형: $\\overline{AB}=\\overline{BC}$ 에서 $\\sqrt{${w}^{2}+(\\log_a ${p})^{2}}=${2 * w}$, $\\log_a ${p}=${hTex10b(v)}$.` : `직각이등변삼각형: $\\log_a ${p}=\\frac{1}{2}\\overline{BC}=${w}$.`}<br/>④ ${v.shape === 'eq' ? `$a^{${hTex10b(v)}}=${p}$ ⇒ $a=${ans10b(v)}$.` : `$a^{${w}}=${p}$ ⇒ $a=${ans10b(v)}$.`}`;
+  };
+  const quick10b = (v) => {
+    const p = v.p, w = p - 1;
+    return `밑변이 $x$축 위 $\\overline{BC}=${2 * w}$ 이고 꼭대기 A 가 $y$축 위이므로, 모양이 정해지면 <b>높이 $=\\log_a ${p}$</b> 하나만 정하면 됩니다. ${v.shape === 'eq' ? `정삼각형의 높이 $=\\frac{\\sqrt{3}}{2}\\times ${2 * w}=${hTex10b(v)}$` : `직각이등변삼각형의 높이 $=\\frac{1}{2}\\times ${2 * w}=${w}$`} 이므로 $\\log_a ${p}=${hTex10b(v)}$ ⇒ $a=${ans10b(v)}$.`;
+  };
+  function scene10b() {
+    const cur = () => vary10b.cur();
+    const A3 = Math.pow(3, 1 / (2 * Math.sqrt(3))), A3r = Math.sqrt(3);
+    return {
+      id: 't10b', title: '문제 B (정삼각형·직각이등변삼각형)', short: '정삼각형', tabs: { compact: true }, notesTitle: '오답 함정 주의보',
+      question: '두 로그 곡선의 교점 A 와 x절편 B, C 가 이루는 삼각형 ABC 는 항상 이등변삼각형이다. 밑 a 가 변하면 높이가 변하는데, 언제 정삼각형이 되고 언제 직각이등변삼각형이 될까?',
+      guide: '금색 점 <b>A</b>를 위아래로 끌거나 막대로 <b>a</b>를 바꿔 보세요. 밑변 BC 는 변하지 않고 <b>높이만</b> 변합니다. ∠B 가 60°가 되는 순간(정삼각형), ∠A 가 90°가 되는 순간(직각이등변삼각형)을 찾아보세요.',
+      focus: F10B,
+      enter: (s) => { s.p10b_a = 2.2; },
+      controls: () => ['p10b_a'],
+      presets: () => [
+        { group: '삼각형의 모양', label: '정삼각형 (∠B = 60°)', color: 'amber', apply: (s) => { s.p10b_a = Math.round(A3 * 1000) / 1000; }, on: (s) => Math.abs(s.p10b_a - A3) < 0.004 },
+        { group: '삼각형의 모양', label: '직각이등변삼각형 (∠A = 90°)', color: 'sky', apply: (s) => { s.p10b_a = Math.round(A3r * 1000) / 1000; }, on: (s) => Math.abs(s.p10b_a - A3r) < 0.004 }
+      ],
+      steps: () => step10b(cur().v).map(stepText),
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${rich(text10b(cur().v))}</div>`,
+      problem: { tag: '2026학년도 6월 모의평가 10번 유형', time: '목표 시간: 30초', text: () => PL.probHTML(text10b(cur().v)), answer: () => safe('$' + ans10b(cur().v) + '$') },
+      solution: {
+        standardTitle: '좌표로 길이를 구해 높이를 정하기', standardTag: '교과서 풀이', quickTitle: '밑변 BC 는 고정, 높이만 정하기', quickTag: '10초 컷',
+        standard: () => ({ steps: rich(std10b(cur().v)) }),
+        quick: () => ({ steps: rich(quick10b(cur().v)), highlight: '밑변은 a 와 관계없이 2(p−1) 로 고정됩니다. 도형 조건은 높이 log_a p 에 대한 식 하나가 됩니다.' })
+      },
+      view: (s, lab) => {
+        const fm = '<b>도형 조건을 높이에 대한 식으로 바꾸기</b><br>두 곡선은 y축 대칭이고 x절편은 ±(p−1) 로 a 와 무관합니다. 그래서 밑변 BC = 2(p−1) 은 고정, <b>높이 log<sub>a</sub> p 만 a 에 따라 변합니다.</b><br>정삼각형: 높이 = (√3/2)·BC = √3(p−1) · 직각이등변삼각형(∠A=90°): 높이 = BC/2 = p−1.';
+        const nt = '정삼각형 조건에서 a 의 값은 p^{√3/(3(p−1))} 꼴로 나옵니다. 밑 변환은 필요 없고, 높이 = log_a p 와 도형의 높이를 같다고 놓은 뒤 지수로 바꿔 쓰면 됩니다. 이등변삼각형이라 ∠B 와 ∠C 가 같다는 것도 확인하세요.';
+        if (lab && lab.tab !== 'explore') return { formula: rich(fm), notes: rich(nt) };
+        const a = s.p10b_a, h = Math.log(3) / Math.log(a), angB = Math.atan2(h, 2) * 180 / Math.PI, angA = 180 - 2 * angB, AB = Math.hypot(2, h);
+        const isEq = Math.abs(angB - 60) < 0.7, isRt = Math.abs(angA - 90) < 1.2;
+        return {
+          chips: [{ html: isEq ? '$\\angle B=60^{\\circ}$ : 정삼각형' : isRt ? '$\\angle A=90^{\\circ}$ : 직각이등변삼각형' : `$\\angle B=${PL.fix(angB, 1)}^{\\circ},\\ \\angle A=${PL.fix(angA, 1)}^{\\circ}$`, color: isEq || isRt ? 'amber' : 'ink', answer: true }],
+          readouts: [
+            { label: '곡선의 밑 a', value: PL.fix(a, 3), color: 'amber', note: 'x절편 B(−2, 0), C(2, 0) 은 a 와 무관' },
+            { label: 'A 의 높이 logₐ3', value: PL.fix(h), color: 'rose', note: '꼭대기 A(0, 높이)' },
+            { label: 'AB = AC', value: PL.fix(AB), color: 'sky', note: '밑변 BC = 4' },
+            { label: '밑각 ∠B', value: PL.fix(angB, 1) + '°', color: isEq ? 'amber' : 'violet', note: isEq ? '60° — AB = BC = CA 인 정삼각형' : '60° 가 되는 높이는?' },
+            { label: '꼭지각 ∠A', value: PL.fix(angA, 1) + '°', color: isRt ? 'amber' : 'violet', note: isRt ? '90° — 직각이등변삼각형' : '90° 가 되는 높이는?' }
+          ],
+          formula: rich(fm), notes: rich(nt)
+        };
+      },
+      vary: vary10b,
+      draw: (b, s, v, lab) => draw10b(b, s, lab)
+    };
+  }
+
+  /* ======================================================================
+     유형 11 · y=x 대칭점과 최단거리 (같은 쪽의 두 점 → 한쪽을 대칭이동해 일직선으로 펴기)
+     ====================================================================== */
+  PL.gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) { [a, b] = [b, a % b]; } return a || 1; };
+  PL.frac = (n, d) => { const g = PL.gcd(n, d); n /= g; d /= g; if (d < 0) { n = -n; d = -d; } return { n, d, tex: d === 1 ? String(n) : (n < 0 ? '-' : '') + `\\frac{${Math.abs(n)}}{${d}}`, val: n / d }; };
+  PL.sq = (n) => { let o = 1, i = n; for (let f = 2; f * f <= i; f++) while (i % (f * f) === 0) { i /= f * f; o *= f; } return i === 1 ? String(o) : (o === 1 ? '' : String(o)) + `\\sqrt{${i}}`; };
+  // A(a, 2^a), B(b, 2^b), B'(2^b, b): AP+BP 의 최솟값 AB' 와 그때의 P(= AB' 와 y=x 의 교점)
+  PL.geo11 = (a, b) => {
+    const Ay = Math.pow(2, a), Bx = Math.pow(2, b), dx = Bx - a, dy = b - Ay;
+    const u = (Ay - a) / (dx - dy); // A + u(B'-A) 가 y=x 위
+    const px = a + u * dx;
+    return { A: [a, Ay], B: [b, Bx], Bq: [Bx, b], dx, dy, d: Math.hypot(dx, dy), d2: dx * dx + dy * dy, px };
+  };
+  const V11 = [{ a: 0, b: 2 }, { a: 1, b: 3 }, { a: 1, b: 2 }, { a: 2, b: 3 }, { a: 0, b: 3 }, { a: 0, b: 1 }];
+  const COMB11 = [{ v: V11[0], ask: 'min' }, { v: V11[1], ask: 'px' }, { v: V11[2], ask: 'min' }, { v: V11[3], ask: 'px' }, { v: V11[4], ask: 'min' }, { v: V11[0], ask: 'px' }, { v: V11[1], ask: 'min' }, { v: V11[3], ask: 'min' }];
+  const vary11 = PL.varier(COMB11);
+  // 정수 a, b 에서 P 의 x좌표(유리수)
+  const px11 = (v) => { const Ay = Math.pow(2, v.a), Bx = Math.pow(2, v.b), D = (Bx - v.a) - (v.b - Ay), num = v.a * D + (Ay - v.a) * (Bx - v.a); return PL.frac(Math.round(num), Math.round(D)); };
+  const ans11 = (v, ask) => (ask === 'min' ? PL.sq(Math.round(PL.geo11(v.a, v.b).d2)) : px11(v).tex);
+  const F11 = { x: [-1.8, 9.6], y: [-1.8, 9.6] };
+  function draw11a(b, s, lab) {
+    const mode = PL.mode(lab), st = (i) => PL.stp(mode, s, i), ex = mode === 'explore', pr = mode === 'problem';
+    const cu = vary11.cur();
+    const a = ex ? s.p11_a : cu.v.a, bb = ex ? s.p11_b : cu.v.b;
+    const G = PL.geo11(a, bb), A = G.A, B = G.B, Bq = G.Bq;
+    const mx = Math.max(Bq[0], B[1], A[1], 3) + 1.5;
+    PL.autoFocus(b, ex ? 'E' : 'V' + a + '_' + bb, ex ? F11 : { x: [-1.7, mx], y: [-1.7, mx] });
+    const showRef = ex ? !!s.p11_ref : st(2);
+    const px = ex ? s.p11_x : st(3) ? G.px : bb + 1.2;
+    const P = [px, px];
+    PL.frame(b, s);
+    b.line([0, 0], 1, { color: 'muted', width: 1.9, dash: [7, 6] });
+    const vbx = b.viewBox(), lx = Math.min(vbx.x1, vbx.y1) - 1.4;
+    b.text([lx, lx], 'y = x', { color: 'muted', size: 13, weight: 800, align: 'right', baseline: 'middle', dx: -6, dy: 14 });
+    b.plot((x) => Math.pow(2, x), { color: 'green', width: 2.8, glow: true, from: -1.9, to: 3.35 });
+    { const ly = Math.min(b.viewBox().y1 - 1.6, 7.2), lx2 = Math.log2(ly); b.text([lx2, ly], 'y = 2ˣ', { color: 'green', size: 13, weight: 800, align: 'left', baseline: 'middle', dx: 10 }); }
+    if (showRef) {
+      b.plot((x) => (x > 0 ? Math.log2(x) : NaN), { color: 'violet', width: 2.2, alpha: 0.75, from: 0.01, to: 9.8 });
+      const M = [(B[0] + Bq[0]) / 2, (B[1] + Bq[1]) / 2];
+      b.seg(B, Bq, { color: 'rose', width: 1.6, dash: [3, 4] });
+      PL.ticks(b, B, M, { color: 'rose' }); PL.ticks(b, M, Bq, { color: 'rose' });
+      b.right(M, B, [M[0] + 1, M[1] + 1], { color: 'rose', size: 9 });
+      b.seg(P, Bq, { color: 'rose', width: 2.4, dash: [6, 5] });
+    }
+    // 두 경로: A→P→B (분홍 B 쪽, 주황 A 쪽)
+    b.seg(A, P, { color: 'amber', width: 3.2 });
+    b.seg(P, B, { color: 'rose', width: 3.2 });
+    if ((ex && showRef) || (!ex && st(3))) b.seg(A, Bq, { color: 'green', width: 3.6 });
+    if (showRef) b.point(Bq, { hollow: true, color: 'rose', r: 5.6, label: !ex && st(1) ? `B′(${PL.f2(Bq[0])}, ${PL.f2(Bq[1])})` : 'B′', dx: 8, dy: 14 });
+    // 점
+    const cs = (pt) => `(${PL.f2(pt[0])}, ${PL.f2(pt[1])})`;
+    if (ex) {
+      b.handle('A', A, { color: 'amber', r: 7, label: 'A', dx: -10, dy: -12, align: 'right', drag: (w) => { s.p11_a = clamp(Math.round(w.x * 4) / 4, -1, 2); } });
+      b.handle('B', B, { color: 'rose', r: 7, label: 'B', dx: -10, dy: -12, align: 'right', drag: (w) => { s.p11_b = clamp(Math.round(w.x * 4) / 4, 0.5, 3); } });
+      b.handle('P', P, { color: 'sky', r: 7.5, label: 'P', dx: 11, dy: 14, drag: (w) => { s.p11_x = clamp(Math.round(((w.x + w.y) / 2) * 20) / 20, 0.2, 6); } });
+    } else {
+      b.point(A, { color: 'amber', r: 6, label: 'A' + cs(A), dx: -10, dy: -12, align: 'right' });
+      b.point(B, { color: 'rose', r: 6, label: 'B' + cs(B), dx: -10, dy: -12, align: 'right' });
+      b.point(P, { color: 'sky', r: 6.5, label: 'P', dx: 11, dy: 15 });
+    }
+  }
+  const text11 = (v, ask) => `곡선 $y=2^{x}$ 위의 두 점 $\\mathrm{A}(${v.a},\\ ${Math.pow(2, v.a)})$, $\\mathrm{B}(${v.b},\\ ${Math.pow(2, v.b)})$와 직선 $y=x$ 위의 점 $\\mathrm{P}$에 대하여 ${ask === 'min' ? '$\\overline{\\mathrm{AP}}+\\overline{\\mathrm{BP}}$의 최솟값을 구하시오.' : '$\\overline{\\mathrm{AP}}+\\overline{\\mathrm{BP}}$의 값이 최소가 되도록 하는 점 $\\mathrm{P}$의 $x$좌표를 구하시오.'}`;
+  const step11 = (v, ask) => {
+    const G = PL.geo11(v.a, v.b), Ay = Math.pow(2, v.a), Bx = Math.pow(2, v.b), dx = Bx - v.a, dy = v.b - Ay;
+    const sl = PL.frac(dy, dx);
+    return [
+      `곡선 $y=2^{x}$ 은 직선 $y=x$ 위쪽에 있으므로 A, B 는 직선 $y=x$ 의 같은 쪽에 있습니다. 같은 쪽의 두 점이면 $\\overline{AP}+\\overline{BP}$ 를 그대로 줄일 수 없으니 한 점을 반대쪽으로 옮깁니다.`,
+      `B 를 직선 $y=x$ 에 대하여 대칭이동한 점 $B'(${Bx},\\ ${v.b})$ 를 잡습니다($y=2^{x}$ 의 대칭은 $y=\\log_2 x$). 대칭이므로 $\\overline{BP}=\\overline{B'P}$.`,
+      `$\\overline{AP}+\\overline{BP}=\\overline{AP}+\\overline{B'P}\\ge\\overline{AB'}$ 이고, A 와 $B'$ 는 직선 $y=x$ 의 반대쪽이므로 선분 $AB'$ 가 직선과 만나는 점 P 에서 등호가 성립합니다.`,
+      ask === 'min'
+        ? `$\\overline{AB'}=\\sqrt{(${Bx}-${v.a})^{2}+(${v.b}-${Ay})^{2}}=\\sqrt{${Math.round(G.d2)}}${ans11(v, ask) === `\\sqrt{${Math.round(G.d2)}}` ? '' : '=' + ans11(v, ask)}$.`
+        : `직선 $AB'$: 기울기 $\\frac{${v.b}-${Ay}}{${Bx}-${v.a}}=${sl.tex}$, 점 A$(${v.a},\\ ${Ay})$ 를 지나므로 $y-${Ay}=${sl.tex}(x-${v.a})$. 이것과 $y=x$ 를 연립하면 $x=${px11(v).tex}$.`
+    ];
+  };
+  const std11 = (v, ask) => {
+    const G = PL.geo11(v.a, v.b), Ay = Math.pow(2, v.a), Bx = Math.pow(2, v.b);
+    return `① $y=2^{x}$ 위의 점은 $y>x$ 이므로 A, B 모두 직선 $y=x$ 의 위쪽(같은 쪽)입니다.<br/>② B 의 $y=x$ 에 대한 대칭점 $B'(${Bx},\\ ${v.b})$ 에 대하여 $\\overline{BP}=\\overline{B'P}$ 이므로 $\\overline{AP}+\\overline{BP}=\\overline{AP}+\\overline{B'P}\\ge\\overline{AB'}$.<br/>③ $\\overline{AB'}=\\sqrt{(${Bx}-${v.a})^{2}+(${v.b}-${Ay})^{2}}=\\sqrt{${Math.round(G.d2)}}${PL.sq(Math.round(G.d2)) === `\\sqrt{${Math.round(G.d2)}}` ? '' : '=' + PL.sq(Math.round(G.d2))}$.<br/>④ ${ask === 'min' ? `최솟값은 $${ans11(v, ask)}$.` : `등호는 P 가 선분 $AB'$ 위에 있을 때이므로 직선 $AB'$ 와 $y=x$ 의 교점의 $x$좌표 $${px11(v).tex}$.`}`;
+  };
+  const quick11 = (v, ask) => {
+    const G = PL.geo11(v.a, v.b);
+    return `<b>같은 쪽이면 한 점을 대칭이동</b>합니다. B$(${v.b},\\ ${Math.pow(2, v.b)})$ 의 대칭점은 가로·세로를 바꾼 $B'(${Math.pow(2, v.b)},\\ ${v.b})$ — 숫자만 맞바꾸면 됩니다. 그러면 최솟값은 두 점 $A(${v.a},\\ ${Math.pow(2, v.a)})$, $B'$ 사이의 거리 $\\sqrt{${Math.round(G.d2)}}${PL.sq(Math.round(G.d2)) === `\\sqrt{${Math.round(G.d2)}}` ? '' : '=' + PL.sq(Math.round(G.d2))}$ 입니다.${ask === 'px' ? ` 직선 AB' 와 $y=x$ 의 교점의 $x$좌표는 $${px11(v).tex}$.` : ''}`;
+  };
+  function scene11a() {
+    const cur = () => vary11.cur();
+    return {
+      id: 't11a', title: '문제 A (같은 쪽의 두 점과 최단거리)', short: '대칭·최단거리', tabs: { compact: true }, notesTitle: '오답 함정 주의보',
+      question: '직선 y = x 위의 점 P 를 지나 A 에서 B 로 가는 경로 AP + BP 는 P 의 위치에 따라 어떻게 변할까? 가장 짧은 경로는 어떤 모양일까?',
+      guide: '하늘색 점 <b>P</b>를 직선 y = x 위에서 끌어 <b>AP + BP</b>를 줄여 보세요. [B′ 보기] 를 켜면 B 를 직선 y = x 에 대해 <b>대칭이동한 점 B′</b>가 나타나고, AP + BP = AP + B′P 임을 볼 수 있습니다. A, B 도 곡선 위에서 끌 수 있습니다.',
+      focus: F11,
+      enter: (s) => { s.p11_a = 0; s.p11_b = 2; s.p11_x = 3; s.p11_ref = false; },
+      controls: () => ['p11_x', 'p11_a', 'p11_b'],
+      presets: (s) => {
+        const G = PL.geo11(s.p11_a, s.p11_b);
+        return [{ group: 'P 의 위치', label: 'P 를 AB′ 위로 맞추기', color: 'green', apply: (st) => { st.p11_x = Math.round(G.px * 100) / 100; st.p11_ref = true; }, on: (st) => Math.abs(st.p11_x - G.px) < 0.03 }];
+      },
+      actions: () => [{ id: 'ref', icon: 'split', label: 'B′ (B 의 대칭점) 보기', on: (s) => !!s.p11_ref, run: (s) => { s.p11_ref = !s.p11_ref; } }],
+      steps: () => step11(cur().v, cur().ask).map(stepText),
+      reviewTop: () => `<div class="apl-rich" style="font-size:var(--fs-sm);line-height:1.75"><small style="color:var(--text-3);font-weight:800">문제</small><br>${rich(text11(cur().v, cur().ask))}</div>`,
+      problem: { tag: '2025학년도 9월 고2 학평(인천) 19번 유형', time: '목표 시간: 30초', text: () => PL.probHTML(text11(cur().v, cur().ask)), answer: () => safe('$' + ans11(cur().v, cur().ask) + '$') },
+      solution: {
+        standardTitle: '대칭이동해 AP+BP 를 선분 AB′ 로 바꾸기', standardTag: '교과서 풀이', quickTitle: '가로·세로를 맞바꾸고 두 점 사이 거리', quickTag: '10초 컷',
+        standard: () => ({ steps: rich(std11(cur().v, cur().ask)) }),
+        quick: () => ({ steps: rich(quick11(cur().v, cur().ask)), highlight: '두 점이 직선의 같은 쪽이면 한 점을 대칭이동, 반대쪽이면 그대로 선분 하나로 연결합니다.' })
+      },
+      view: (s, lab) => {
+        const fm = '<b>최단거리는 \'펴서\' 구합니다</b><br>직선 y = x 에 대한 대칭: 점 (p, q) 의 대칭점은 <b>(q, p)</b>. 같은 쪽의 두 점 A, B 에서 B 를 대칭이동한 B′ 를 잡으면 BP = B′P 이므로 AP + BP = AP + B′P ≥ AB′ (A 와 B′ 는 직선의 반대쪽이라 선분 AB′ 가 직선과 만남).';
+        const nt = '두 점이 직선의 <b>반대쪽</b>에 있으면 대칭이동 없이 선분 AB 가 그대로 최단 경로입니다. 같은 쪽인데 그대로 A, B 를 잇는 선분과 직선의 교점을 잡으면 틀립니다. 지수곡선의 대칭점은 로그곡선 위의 점입니다(2ᵇ, b).';
+        if (lab && lab.tab !== 'explore') return { formula: rich(fm), notes: rich(nt) };
+        const G = PL.geo11(s.p11_a, s.p11_b), P = [s.p11_x, s.p11_x];
+        const AP = Math.hypot(G.A[0] - P[0], G.A[1] - P[1]), BP = Math.hypot(G.B[0] - P[0], G.B[1] - P[1]), tot = AP + BP, near = tot - G.d < 0.03;
+        return {
+          chips: [{ html: `$\\overline{AP}+\\overline{BP}=${PL.fix(tot)}$`, color: near ? 'amber' : 'ink', answer: true }],
+          readouts: [
+            { label: 'AP 의 길이', value: PL.fix(AP), color: 'amber', note: 'A (' + PL.f2(G.A[0]) + ', ' + PL.f2(G.A[1]) + ') 에서 P 까지' },
+            { label: 'BP 의 길이', value: PL.fix(BP), color: 'rose', note: 'B′P 와 같음 (B′ = ' + PL.f2(G.Bq[0]) + ', ' + PL.f2(G.Bq[1]) + ')' },
+            { label: 'AP + BP', value: PL.fix(tot), color: 'sky', wide: true, note: near ? '최소입니다! 이때 A, P, B′ 가 한 직선 위' : 'P 를 움직여 AB′ 의 길이 ' + PL.fix(G.d) + ' 에 가까이 보세요' },
+            { label: '선분 AB′ 의 길이', value: PL.fix(G.d), color: 'green', note: 'AP + BP 는 이보다 작아질 수 없음' }
+          ],
+          formula: rich(fm), notes: rich(nt)
+        };
+      },
+      vary: vary11,
+      draw: (b, s, v, lab) => draw11a(b, s, lab)
+    };
+  }
+
+  /* ---------- 장면 9~11 등록 ---------- */
+  Object.assign(params, {
+    p9a_t: { value: 1.5, min: -3, max: 6.4, step: 0.05, color: 'amber', label: '수평선의 높이 t', format: (v) => 't = ' + PL.f2(v) },
+    p9a_R: { value: 3, min: 1, max: 6.5, step: 0.25, color: 'sky', label: '오른쪽 조각의 시작 높이 R (x = 2 에서의 값)', format: (v) => 'R = ' + PL.f2(v) },
+    p9b_t: { value: 0.6, min: -1.5, max: 4.6, step: 0.05, color: 'amber', label: '수평선의 높이 t', format: (v) => 't = ' + PL.f2(v) },
+    p9b_b: { value: 1, min: 0.25, max: 2.75, step: 0.25, color: 'sky', label: '안쪽 상수 b  (y = | |2ˣ − 3| − b |)', format: (v) => 'b = ' + PL.f2(v) },
+    p10_t: { value: 3, min: 0.5, max: 5.5, step: 0.05, color: 'amber', label: 'A 의 x좌표 t', format: (v) => 't = ' + PL.f2(v) },
+    p10_m: { value: 1.6, min: 1.2, max: 2.8, step: 0.05, color: 'sky', label: 'A 의 높이 aᵗ', format: (v) => 'aᵗ = ' + PL.f2(v) },
+    p10b_a: { value: 2.2, min: 1.25, max: 3, step: 0.005, color: 'amber', label: '곡선의 밑 a', format: (v) => 'a = ' + Number(v).toFixed(3) },
+    p11_x: { value: 3, min: 0.2, max: 6, step: 0.05, color: 'sky', label: '점 P 의 위치 (P = (x, x))', format: (v) => 'P(' + PL.f2(v) + ', ' + PL.f2(v) + ')' },
+    p11_a: { value: 0, min: -1, max: 2, step: 0.25, color: 'amber', label: '점 A 의 x좌표', format: (v) => 'A(' + PL.f2(v) + ', ' + PL.f2(Math.pow(2, v)) + ')' },
+    p11_b: { value: 2, min: 0.5, max: 3, step: 0.25, color: 'rose', label: '점 B 의 x좌표', format: (v) => 'B(' + PL.f2(v) + ', ' + PL.f2(Math.pow(2, v)) + ')' }
+  });
+  groups.push(
+    { id: 'type9', title: '유형 9 · 수평선 y = t 와 교점의 개수 g(t)', short: '교점 개수 g(t)', scenes: [PL.sceneStair(S9A), PL.sceneStair(S9B)] },
+    { id: 'type10', title: '유형 10 · 곡선 위 점이 이루는 삼각형', short: '삼각형 조건', scenes: [scene10a(), scene10b()] },
+    { id: 'type11', title: '유형 11 · y = x 대칭과 최단거리', short: '대칭·최단거리', scenes: [scene11a()] }
+  );
+
+  /* PLUS-END */
 
   /* ---------- 7. 실험실 등록 ---------- */
   APLab.createLab({
@@ -1556,7 +2819,7 @@ function solveExpLineIntersection(k, shift = 0) {
     legacy: '../../labs/대수/part1a.html',
     board: { kind: 'cartesian', focus: FOCUS[0] },
     params,
-    state: { mut_diag: false, mut_abs: false, mut_dots: false, twinText: null, twinSnap: null },
+    state: { mut_diag: false, mut_abs: false, mut_dots: false, twinText: null, twinSnap: null, p11_ref: false },
     persist: ['mut_diag', 'mut_abs', 'mut_dots'],
     groups
   });

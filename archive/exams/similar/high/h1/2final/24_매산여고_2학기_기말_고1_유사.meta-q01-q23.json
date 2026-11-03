@@ -1,0 +1,2183 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "24_매산여고_2학기_기말_고1_유사-candidate-v1",
+  "examUid": "24_매산여고_2학기_기말_고1_유사",
+  "sourceArchiveFile": "archive/exams/similar/high/h1/2final/24_매산여고_2학기_기말_고1_유사.js",
+  "expectedSourceBlobSha1": "ff8927b051d358c0356ecfe3816e242a8ab8773e",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "approvedBy": "claude-similar-high-gen",
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": 1,
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "standardUnit": "함수",
+        "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+        "subUnit": "함수의 뜻과 대응",
+        "conceptClusterKey": "H15-SB-03-FUNCTION_RELATION",
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "함수",
+          "l3": "함수의 성질",
+          "l4": "일대일함수",
+          "recordId": "H1-RPM-106",
+          "l3Label": "함수의 성질",
+          "l4Label": "일대일함수",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-106"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "함수",
+        "rpmPrimaryL3": "함수의 성질",
+        "rpmPrimaryL4": "일대일함수",
+        "rpmPrimaryRecordId": "H1-RPM-106",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+        "crossConceptKeys": [
+          "CC_PIECEWISE_FUNCTION",
+          "CC_FUNCTION_MONOTONICITY"
+        ],
+        "conditionKeys": [
+          "COND_FUNCTION_BIJECTION",
+          "COND_PIECEWISE_DOMAIN_PARTITION"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 1,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "조각함수의 두 구간에서 치역의 겹침과 전체 치역을 함께 판단하며 기울기 부호로 경우를 나누므로 중",
+        "difficultyBasis": "기울기 부호 세 경우 분류와 치역 비교 2단계 → 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "기울기 부호에 따라 치역을 비교하는 식 판단으로 풀이가 닫혀 보조 그림의 추가 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "조각함수가 일대일대응이 되기 위한 매개변수의 범위를 구하는 유형",
+          "crossConcept": "각 조각의 증감과 치역을 비교하여 구간별 함수의 겹침을 판정",
+          "condition": "일대일대응은 함숫값이 겹치지 않고 치역이 실수 전체여야 함",
+          "integration": "기울기 부호 세 경우로 나누어 치역의 겹침 여부를 판정",
+          "curriculum": "수학(하) 함수의 일대일대응·치역: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 1,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "함수",
+        "L2": "함수"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q1: 원본 Q1의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "함수",
+        "L2": "함수",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-106",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 함수>함수>함수의 성질>일대일함수의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 2,
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "standardUnit": "함수",
+        "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+        "subUnit": "합성함수",
+        "conceptClusterKey": "H15-SB-03-COMPOSITE_FUNCTION",
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "함수",
+          "l3": "합성함수",
+          "l4": "합성함수 계산",
+          "recordId": "H1-RPM-102",
+          "l3Label": "합성함수",
+          "l4Label": "합성함수 계산",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-102"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "함수",
+        "rpmPrimaryL3": "합성함수",
+        "rpmPrimaryL4": "합성함수 계산",
+        "rpmPrimaryRecordId": "H1-RPM-102",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+        "crossConceptKeys": [
+          "CC_COMPOSITION_COMMUTATIVITY",
+          "CC_COEFFICIENT_COMPARISON"
+        ],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 2,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "일차함수 두 개의 합성식을 세우고 상수항을 비교하는 직접 계산이라 하",
+        "difficultyBasis": "두 합성식 전개와 계수 비교 2단계 → 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "합성식 전개와 계수 비교만으로 풀이가 닫혀 보조 그림의 추가 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "두 일차함수의 합성이 교환될 때 미정계수를 구하고 함숫값을 계산하는 유형",
+          "crossConcept": "모든 x에서 두 합성함수가 같으므로 계수를 비교",
+          "condition": "f∘g=g∘f는 모든 입력에 대해 성립해야 함",
+          "integration": "합성식 두 개를 세운 뒤 상수항을 비교하고 함숫값을 구함",
+          "curriculum": "수학(하) 합성함수: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 2,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "함수",
+        "L2": "함수"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q2: 원본 Q2의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "함수",
+        "L2": "함수",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-102",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 함수>함수>합성함수>합성함수 계산의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 3,
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-04",
+        "standardUnit": "유리함수",
+        "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+        "subUnit": "유리함수의 그래프",
+        "conceptClusterKey": "H15-SB-04-RATIONAL_GRAPH",
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "유리함수",
+          "l3": "유리함수의 그래프",
+          "l4": "평행이동",
+          "recordId": "H1-RPM-109",
+          "l3Label": "유리함수의 그래프",
+          "l4Label": "평행이동",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-109"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "유리함수",
+        "rpmPrimaryL3": "유리함수의 그래프",
+        "rpmPrimaryL4": "평행이동",
+        "rpmPrimaryRecordId": "H1-RPM-109",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "crossConceptKeys": [
+          "CC_RATIONAL_EXPRESSION_TRANSFORM",
+          "CC_RATIONAL_FUNCTION_ASYMPTOTE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 3,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "분자를 분모로 나누어 표준형으로 고친 뒤 평행이동량을 읽는 직접 대입이라 하",
+        "difficultyBasis": "표준형 변환과 이동량 읽기 2단계 → 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "ACTIVE:BOUND"
+        },
+        "metaRationale": {
+          "problemType": "유리함수를 y=a/(x-b)+c 꼴로 고쳐 평행이동량을 구하는 유형",
+          "crossConcept": "분자를 분모로 나누는 식 변형과 점근선의 이동",
+          "condition": "별도 제약 조건 없음",
+          "integration": "식 변형 후 이동량을 읽는 순차 풀이",
+          "curriculum": "수학(하) 유리함수의 그래프와 평행이동: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 3,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "함수",
+        "L2": "유리함수"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q3: 원본 Q3의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "함수",
+        "L2": "유리함수",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-109",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 함수>유리함수>유리함수의 그래프>평행이동의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 4,
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "standardUnit": "무리함수",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+        "subUnit": "무리함수의 그래프",
+        "conceptClusterKey": "H15-SB-05-IRRATIONAL_GRAPH",
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "무리함수",
+          "l3": "무리함수의 그래프",
+          "l4": "평행이동",
+          "recordId": "H1-RPM-116",
+          "l3Label": "무리함수의 그래프",
+          "l4Label": "평행이동",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-116"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "무리함수",
+        "rpmPrimaryL3": "무리함수의 그래프",
+        "rpmPrimaryL4": "평행이동",
+        "rpmPrimaryRecordId": "H1-RPM-116",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "crossConceptKeys": [
+          "CC_IRRATIONAL_FUNCTION_GRAPH",
+          "CC_PARAMETER_DETERMINATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 4,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "끝점 조건과 한 점의 대입으로 세 상수를 차례로 정하는 3~4단계 풀이라 중",
+        "difficultyBasis": "끝점 조건, 점 대입, 연립 정리 3단계지만 각 단계가 직접적이라 → 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 끝점의 좌표와 지나는 점으로 완결되어 학생이 풀 때 필요한 그림이 없다. (공식 엔진은 무리함수 그림에 식 라벨을 항상 그려 계수 a,b,c가 드러나므로 발문 그림으로 쓸 수 없다.)",
+          "solution": "ACTIVE:BOUND"
+        },
+        "metaRationale": {
+          "problemType": "무리함수의 끝점과 지나는 점으로 식의 계수를 결정하는 유형",
+          "crossConcept": "끝점은 근호 안이 0이 되는 점이라는 무리함수 그래프의 성질",
+          "condition": "별도 제약 조건 없음",
+          "integration": "끝점 조건과 점 대입 조건을 차례로 사용",
+          "curriculum": "수학(하) 무리함수의 그래프(끝점·평행이동): 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 4,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "함수",
+        "L2": "무리함수"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q4: 원본 Q4의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "함수",
+        "L2": "무리함수",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-116",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 함수>무리함수>무리함수의 그래프>평행이동의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 5,
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-04",
+        "standardUnit": "유리함수",
+        "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+        "subUnit": "유리함수의 그래프",
+        "conceptClusterKey": "H15-SB-04-RATIONAL_GRAPH",
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "유리함수",
+          "l3": "점근선과 위치",
+          "l4": "점근선",
+          "recordId": "H1-RPM-110",
+          "l3Label": "점근선과 위치",
+          "l4Label": "점근선",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-110"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "유리함수",
+        "rpmPrimaryL3": "점근선과 위치",
+        "rpmPrimaryL4": "점근선",
+        "rpmPrimaryRecordId": "H1-RPM-110",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+        "crossConceptKeys": [
+          "CC_RATIONAL_FUNCTION_SYMMETRY",
+          "CC_QUADRANT_PASSAGE",
+          "CC_TRANSLATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 5,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "표준형으로 고친 뒤 점근선·대칭·평행이동·사분면을 각각 판단하는 5개 보기 판정이라 중",
+        "difficultyBasis": "표준형 변환 후 보기 5개를 각각 짧게 판정하며 사분면 판단에 반례 점이 필요 → 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 문장 보기로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "ACTIVE:BOUND"
+        },
+        "metaRationale": {
+          "problemType": "유리함수의 점근선·대칭·평행이동·사분면 성질을 보기 판정으로 묻는 유형",
+          "crossConcept": "대칭축 기울기 ±1, 평행이동, 사분면 통과 판정을 표준형에서 읽음",
+          "condition": "별도 제약 조건 없음",
+          "integration": "표준형 변환 뒤 보기별 판정",
+          "curriculum": "수학(하) 유리함수의 그래프와 성질: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 5,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "함수",
+        "L2": "유리함수"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q5: 원본 Q5의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "함수",
+        "L2": "유리함수",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-110",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 함수>유리함수>점근선과 위치>점근선의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 6,
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "standardUnit": "무리함수",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+        "subUnit": "무리함수의 뜻과 계산",
+        "conceptClusterKey": "H15-SB-05-IRRATIONAL_BASIC",
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "무리함수",
+          "l3": "무리함수의 활용",
+          "l4": "무리함수의 교점",
+          "recordId": "H1-RPM-121",
+          "l3Label": "무리함수의 활용",
+          "l4Label": "무리함수의 교점",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-121"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "무리함수",
+        "rpmPrimaryL3": "무리함수의 활용",
+        "rpmPrimaryL4": "무리함수의 교점",
+        "rpmPrimaryRecordId": "H1-RPM-121",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [
+          "CC_MONOTONE_EXTREMA",
+          "CC_RESTRICTED_DOMAIN_EXTREMA"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL",
+          "COND_EXACT_INTERSECTION_COUNT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 6,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "교점 조건을 k에 관한 식으로 바꾸고 단조성으로 구간 끝값을 택하는 3~4단계 풀이라 중",
+        "difficultyBasis": "교점 조건식 정리, 단조성 판정, 끝점 대입, 교점 존재 확인 4단계 → 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 정의역 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 교점 조건식의 정리와 단조성 판단, 끝점 대입만으로 닫혀 그래프를 읽어 얻는 값이 없다. (두 곡선의 제한된 교점을 한 그림에 그리는 공식 plan도 없다.)"
+        },
+        "metaRationale": {
+          "problemType": "정의역이 제한된 유리함수와 무리함수가 한 점에서 만나도록 하는 매개변수의 최솟값을 구하는 유형",
+          "crossConcept": "교점 조건을 k에 관한 함수로 바꾸고 구간에서의 단조성으로 최솟값을 구함",
+          "condition": "정의역이 닫힌 구간으로 제한되어 끝점에서 최솟값이 정해짐",
+          "integration": "식 정리 → 단조성 판정 → 끝점 대입 순서",
+          "curriculum": "수학(하) 유리함수·무리함수의 그래프와 교점: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 6,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "함수",
+        "L2": "무리함수"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q6: 원본 Q6의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "함수",
+        "L2": "무리함수",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-121",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 함수>무리함수>무리함수의 활용>무리함수의 교점의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 7,
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-04",
+        "standardUnit": "유리함수",
+        "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+        "subUnit": "유리함수의 활용",
+        "conceptClusterKey": "H15-SB-04-RATIONAL_APPLICATION",
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "유리함수",
+          "l3": "유리함수의 활용",
+          "l4": "유리함수와 그래프의 교점",
+          "recordId": "H1-RPM-114",
+          "l3Label": "유리함수의 활용",
+          "l4Label": "유리함수와 그래프의 교점",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-114"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "유리함수",
+        "rpmPrimaryL3": "유리함수의 활용",
+        "rpmPrimaryL4": "유리함수와 그래프의 교점",
+        "rpmPrimaryRecordId": "H1-RPM-114",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [
+          "CC_ABSOLUTE_VALUE_GRAPH_FOLDING",
+          "CC_GRAPH_INTERSECTION_COUNT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 7,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "절댓값을 풀어 두 경우의 방정식으로 나누고 k값마다 해의 개수를 세는 3~4단계라 중",
+        "difficultyBasis": "부호 두 경우 분류, k=0과 k=3의 예외 처리, 합산 → 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "UNSUPPORTED",
+          "solutionReason": "절댓값 유리함수의 그래프와 여러 수평선 y=k를 한 그림에 그리는 공식 plan이 없다. 해설은 식 풀이만으로 완결된다."
+        },
+        "metaRationale": {
+          "problemType": "절댓값을 포함한 유리함수의 그래프와 수평선의 교점 개수를 묻는 유형",
+          "crossConcept": "절댓값을 부호로 나누고 k값마다 방정식의 해의 개수를 셈",
+          "condition": "분모가 0이 되는 x=-2 제외와 k=0, k=3의 예외가 개수를 좌우함",
+          "integration": "부호 경우 분류 후 k별 개수를 더함",
+          "curriculum": "수학(하) 유리함수의 그래프와 교점: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 7,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "함수",
+        "L2": "유리함수",
+        "reviewFlag": "OPEN_DEFECT",
+        "reviewFlagKind": "VISUAL_DEBT",
+        "reviewFlagReason": "해설 그림 UNSUPPORTED: 절댓값 유리함수와 여러 수평선 y=k를 한 그림에 그리는 공식 plan 없음. 해설은 식 풀이로 완결(비차단)."
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q7: 원본 Q7의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "함수",
+        "L2": "유리함수",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-114",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 함수>유리함수>유리함수의 활용>유리함수와 그래프의 교점의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 8,
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-06",
+        "standardUnit": "경우의 수",
+        "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+        "subUnit": "경우의 수의 기본 원리",
+        "conceptClusterKey": "H15-SB-06-COUNTING_PRINCIPLE",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "경우의 수와 순열",
+          "l3": "합·곱의 법칙",
+          "l4": "경우를 나누어 세기",
+          "recordId": "H1-RPM-122",
+          "l3Label": "합·곱의 법칙",
+          "l4Label": "경우를 나누어 세기",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-122"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "경우의 수와 순열",
+        "rpmPrimaryL3": "합·곱의 법칙",
+        "rpmPrimaryL4": "경우를 나누어 세기",
+        "rpmPrimaryRecordId": "H1-RPM-122",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+        "crossConceptKeys": [
+          "CC_NUMBER_PRIME_COPRIME",
+          "CC_SET_CARDINALITY"
+        ],
+        "conditionKeys": [
+          "COND_COPRIME_TO_FIXED_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 8,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "소인수로 나누어 배수의 개수를 세고 합집합의 원소 개수 공식을 쓰는 직접 계산이라 하",
+        "difficultyBasis": "소인수분해, 배수 개수 세기, 중복 보정 3단계지만 각각 직접적 → 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "배수의 개수를 세는 계산만으로 풀이가 닫혀 보조 그림의 추가 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "주어진 범위의 자연수 중 어떤 수와 서로소인 것의 개수를 세는 유형",
+          "crossConcept": "2의 배수·3의 배수의 개수와 합집합의 원소 개수 공식",
+          "condition": "1에서 200까지의 범위와 6과 서로소라는 조건",
+          "integration": "배수 개수 계산 후 중복을 보정하여 전체에서 뺌",
+          "curriculum": "수학(하) 경우의 수·집합의 원소의 개수: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 8,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q8: 원본 Q8의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-122",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 경우의 수>경우의 수와 순열>합·곱의 법칙>경우를 나누어 세기의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 9,
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "standardUnit": "순열",
+        "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+        "subUnit": "조건이 있는 순열",
+        "conceptClusterKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "경우의 수와 순열",
+          "l3": "순열",
+          "l4": "특정 조건 배열",
+          "recordId": "H1-RPM-125",
+          "l3Label": "순열",
+          "l4Label": "특정 조건 배열",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-125"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "경우의 수와 순열",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "특정 조건 배열",
+        "rpmPrimaryRecordId": "H1-RPM-125",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [
+          "CC_CASE_EXHAUSTION_PERMUTATION",
+          "CC_CIRCULAR_PERMUTATION",
+          "CC_COMBINATION"
+        ],
+        "conditionKeys": [
+          "COND_NO_FIXED_POINTS"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 9,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "자기 것을 채점하지 않는 조건을 고리 구조로 해석해 네 가지 경우를 나누어 세는 4단계 이상의 풀이라 중",
+        "difficultyBasis": "고리 크기 분류, 묶음 나누기, 고리 배열, 합산 4단계 → 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 문장만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "경우를 나누어 세는 계산 풀이이고 보조 그림의 추가 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "자기 몫을 맡지 않는 순열(고정점 없는 배열)의 경우의 수를 구하는 유형",
+          "crossConcept": "고리 크기로 경우를 나누고 원순열·조합으로 각 경우를 셈",
+          "condition": "자기 답안지를 채점하지 않는 조건이 한 고리에 1명만 있는 경우를 제외",
+          "integration": "고리의 크기에 따라 경우를 분류하여 더함",
+          "curriculum": "수학(하) 순열·조합·원순열 기초: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 9,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q9: 원본 Q9의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-125",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 경우의 수>경우의 수와 순열>순열>특정 조건 배열의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 10,
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "standardUnit": "순열",
+        "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+        "subUnit": "순열",
+        "conceptClusterKey": "H15-SB-07-PERMUTATION_BASIC",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "경우의 수와 순열",
+          "l3": "순열",
+          "l4": "일렬 배열",
+          "recordId": "H1-RPM-124",
+          "l3Label": "순열",
+          "l4Label": "일렬 배열",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-124"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "경우의 수와 순열",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "일렬 배열",
+        "rpmPrimaryRecordId": "H1-RPM-124",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [
+          "CC_COMBINATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 10,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "순열과 조합의 정의에 숫자를 직접 대입하는 1~2단계 계산이라 하",
+        "difficultyBasis": "순열 값과 조합 값을 각각 한 줄로 계산 → 1",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "정의에 따른 직접 계산이라 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "순열의 수와 조합의 수를 정의로 계산하는 유형",
+          "crossConcept": "nCn=1(전부 뽑는 방법은 한 가지)이라는 조합의 성질",
+          "condition": "별도 제약 조건 없음",
+          "integration": "두 값을 각각 구해 더함",
+          "curriculum": "수학(하) 순열과 조합의 계산: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 10,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q10: 원본 Q10의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-124",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 경우의 수>경우의 수와 순열>순열>일렬 배열의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 11,
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "standardUnit": "순열",
+        "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+        "subUnit": "순열",
+        "conceptClusterKey": "H15-SB-07-PERMUTATION_BASIC",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "경우의 수와 순열",
+          "l3": "순열",
+          "l4": "일렬 배열",
+          "recordId": "H1-RPM-283",
+          "l3Label": "순열",
+          "l4Label": "일렬 배열",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-283 (RPM leaf of H1-RPM-124; PT/TPL add-only DIRECT_ACTIVE row)"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "경우의 수와 순열",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "일렬 배열",
+        "rpmPrimaryRecordId": "H1-RPM-283",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
+        "crossConceptKeys": [
+          "CC_FACTORIAL"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 11,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "앞자리부터 자리별로 앞서는 배열을 세어 더하는 3~4단계 풀이라 중",
+        "difficultyBasis": "자리별 개수 세기 네 번과 합산, 각 단계는 직접적 → 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 문장만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "자리별로 개수를 세는 계산 풀이이고 보조 그림의 추가 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "사전식 배열에서 주어진 배열의 순서(순위)를 구하는 유형",
+          "crossConcept": "남은 글자의 수만큼의 계승(팩토리얼)으로 자리별 개수를 계산",
+          "condition": "별도 제약 조건 없음",
+          "integration": "앞자리부터 앞서는 배열 수를 차례로 더함",
+          "curriculum": "수학(하) 순열(일렬 배열): 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 11,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "reviewFlag": "OPEN_DEFECT",
+        "reviewFlagKind": "META_RESOLVER_DIVERGENCE",
+        "reviewFlagReason": "공식 Resolver(H1-RPM-124)는 TPL_PERMUTATION_STANDARD_CONSTRAINT를 내지만 메타는 canonical ACTIVE TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK(원본 24 매산 Q11 운영 메타와 동일). 크로스워크에 해당 TPL add-only 행이 없어 등록기 PT/TPL 정합이 거절될 수 있음. 공유 크로스워크 수정은 검수자 권한 밖."
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q11: 원본 Q11의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-283",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 경우의 수>경우의 수와 순열>순열>일렬 배열의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 12,
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "standardUnit": "순열",
+        "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+        "subUnit": "순열",
+        "conceptClusterKey": "H15-SB-07-PERMUTATION_BASIC",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "경우의 수와 순열",
+          "l3": "순열",
+          "l4": "일렬 배열",
+          "recordId": "H1-RPM-124",
+          "l3Label": "순열",
+          "l4Label": "일렬 배열",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-124"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "경우의 수와 순열",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "일렬 배열",
+        "rpmPrimaryRecordId": "H1-RPM-124",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [
+          "CC_INTEGER_PARAMETER_ANALYSIS"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 12,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "순열의 곱 꼴 표현으로 두 식을 정리하고 치환 후 정수해를 찾는 3~4단계라 중",
+        "difficultyBasis": "순열식 약분, 연립 대입, 치환 후 단조성으로 해 확정 → 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "순열식의 대수 계산만으로 풀이가 닫혀 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "순열 등식 두 개에서 미지수 m, n을 정하는 유형",
+          "crossConcept": "nPr을 곱의 꼴로 쓰고 공통 부분을 약분하는 계산",
+          "condition": "m, n이 자연수이고 n이 순열의 첨자 조건을 만족해야 함",
+          "integration": "두 조건식을 연립하고 치환하여 정수해를 찾음",
+          "curriculum": "수학(하) 순열의 계산: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 12,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q12: 원본 Q12의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-124",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 경우의 수>경우의 수와 순열>순열>일렬 배열의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 13,
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-06",
+        "standardUnit": "경우의 수",
+        "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+        "subUnit": "경우의 수의 기본 원리",
+        "conceptClusterKey": "H15-SB-06-COUNTING_PRINCIPLE",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "경우의 수와 순열",
+          "l3": "합·곱의 법칙",
+          "l4": "경우를 나누어 세기",
+          "recordId": "H1-RPM-122",
+          "l3Label": "합·곱의 법칙",
+          "l4Label": "경우를 나누어 세기",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-122"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "경우의 수와 순열",
+        "rpmPrimaryL3": "합·곱의 법칙",
+        "rpmPrimaryL4": "경우를 나누어 세기",
+        "rpmPrimaryRecordId": "H1-RPM-122",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+        "crossConceptKeys": [
+          "CC_INTEGER_COUNT"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 13,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "z의 값으로 경우를 나누고 각 경우의 (x,y)를 찾는 3~4단계 풀이라 중",
+        "difficultyBasis": "범위 제한 확인, z별 경우 분류, 각 경우의 해 나열 → 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 문장과 식만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "경우를 나누어 순서쌍을 나열하는 풀이이고 보조 그림의 추가 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "주사위 눈의 범위에서 일차 방정식을 만족하는 순서쌍의 개수를 세는 유형",
+          "crossConcept": "변수 하나를 고정해 경우를 나누고 순서쌍을 나열",
+          "condition": "x, y, z가 1 이상 6 이하의 정수라는 범위",
+          "integration": "z의 값에 따라 경우를 나누어 더함",
+          "curriculum": "수학(하) 경우의 수(곱의 법칙·합의 법칙): 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 13,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q13: 원본 Q13의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-122",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 경우의 수>경우의 수와 순열>합·곱의 법칙>경우를 나누어 세기의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 14,
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-08",
+        "standardUnit": "조합",
+        "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
+        "subUnit": "조합",
+        "conceptClusterKey": "H15-SB-08-COMBINATION_BASIC",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "조합",
+          "l3": "조합의 뜻과 계산",
+          "l4": "조합 계산",
+          "recordId": "H1-RPM-128",
+          "l3Label": "조합의 뜻과 계산",
+          "l4Label": "조합 계산",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-128"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "조합",
+        "rpmPrimaryL3": "조합의 뜻과 계산",
+        "rpmPrimaryL4": "조합 계산",
+        "rpmPrimaryRecordId": "H1-RPM-128",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 14,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "전체 쌍에서 제외할 쌍을 빼는 직접 계산 1~2단계라 하",
+        "difficultyBasis": "전체 인원 계산, 조합 계산, 부부 쌍 제외 3단계의 직접 계산 → 2",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 문장만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "조합 계산과 제외 계산만으로 풀이가 닫혀 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "두 사람씩 짝을 짓는 조합에서 제외할 쌍을 빼어 악수 수를 구하는 유형",
+          "crossConcept": "별도 보조 개념 없이 조합 계산과 여사건 방식의 제외만 사용",
+          "condition": "부부끼리는 악수하지 않는다는 제외 조건",
+          "integration": "전체 조합 수에서 제외할 쌍을 뺌",
+          "curriculum": "수학(하) 조합의 계산: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 14,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "조합"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q14: 원본 Q14의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "조합",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-128",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 경우의 수>조합>조합의 뜻과 계산>조합 계산의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 15,
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-04",
+        "standardUnit": "유리함수",
+        "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+        "subUnit": "유리함수의 활용",
+        "conceptClusterKey": "H15-SB-04-RATIONAL_APPLICATION",
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "유리함수",
+          "l3": "유리함수의 활용",
+          "l4": "유리함수의 최대·최소",
+          "recordId": "H1-RPM-113",
+          "l3Label": "유리함수의 활용",
+          "l4Label": "유리함수의 최대·최소",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-113"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "유리함수",
+        "rpmPrimaryL3": "유리함수의 활용",
+        "rpmPrimaryL4": "유리함수의 최대·최소",
+        "rpmPrimaryRecordId": "H1-RPM-113",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+        "crossConceptKeys": [
+          "CC_AM_GM",
+          "CC_RATIONAL_FUNCTION_ASYMPTOTE"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 15,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "점의 좌표를 한 변수로 나타내 직사각형 둘레를 세우고 산술·기하평균으로 최솟값을 구하는 3~4단계라 중",
+        "difficultyBasis": "제1사분면 조건 확인, 변수 설정, 둘레식, 산술·기하평균 및 등호 확인 → 3",
+        "visualNecessity": {
+          "problem": "ACTIVE:BOUND",
+          "solution": "EXEMPT",
+          "solutionReason": "발문 그림과 같은 설정이고 풀이가 식과 부등식으로 닫혀 새로운 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "유리함수 그래프 위의 점과 점근선이 만드는 직사각형 둘레의 최솟값을 구하는 유형",
+          "crossConcept": "산술평균과 기하평균의 관계로 u+5/u의 최솟값을 구함",
+          "condition": "P가 제1사분면 위의 점이라는 조건이 u>0을 정함",
+          "integration": "좌표 설정 → 둘레식 → 산술·기하평균 순서",
+          "curriculum": "수학(하) 유리함수의 그래프와 수학(상) 산술기하 부등식: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 15,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "함수",
+        "L2": "유리함수",
+        "reviewFlag": "OPEN_DEFECT",
+        "reviewFlagKind": "META_RESOLVER_DIVERGENCE",
+        "reviewFlagReason": "H1-RPM-113은 크로스워크 RPM_ONLY라 Resolver PT/TPL이 비어 있음. 메타의 PT_FUNCTION_EXTREMUM/TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER는 canonical ACTIVE이고 동일 단원 기존 기출(19 금당고·20 매산고·20 효천고)이 같은 값을 쓰나 Resolver 결과는 아님. 크로스워크 DIRECT_ACTIVE 행 추가 또는 PT/TPL 비움 결정 필요."
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q15: 원본 Q15의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "함수",
+        "L2": "유리함수",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-113",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 함수>유리함수>유리함수의 활용>유리함수의 최대·최소의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 16,
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "standardUnit": "무리함수",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+        "subUnit": "무리함수의 뜻과 계산",
+        "conceptClusterKey": "H15-SB-05-IRRATIONAL_BASIC",
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "무리함수",
+          "l3": "무리함수의 활용",
+          "l4": "무리함수의 교점",
+          "recordId": "H1-RPM-121",
+          "l3Label": "무리함수의 활용",
+          "l4Label": "무리함수의 교점",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-121"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "무리함수",
+        "rpmPrimaryL3": "무리함수의 활용",
+        "rpmPrimaryL4": "무리함수의 교점",
+        "rpmPrimaryRecordId": "H1-RPM-121",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [
+          "CC_ROOT_INTERSECTION_COUNT_FUNCTION",
+          "CC_FUNCTION_MONOTONICITY",
+          "CC_IRRATIONAL_EQUATION_ROOT"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_EXACT_INTERSECTION_COUNT"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 16,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "근호 조건과 두 구간의 단조성으로 k에 따른 실근의 개수를 분석하는 5단계 이상의 풀이라 상",
+        "difficultyBasis": "부호 조건으로 구간 분리, 단조성 논증, k에 따른 존재성 판정, 정수 조건 처리 → 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 부호 조건과 구간별 단조성 논증만으로 닫혀 그래프를 읽어 얻는 값이 없다. (k에 따라 움직이는 두 곡선의 교점을 그리는 공식 plan도 없다.)"
+        },
+        "metaRationale": {
+          "problemType": "무리방정식의 서로 다른 실근의 개수가 정해진 값이 되도록 하는 매개변수를 구하는 유형",
+          "crossConcept": "제곱근이 0 이상이라는 조건과 감소·증가 함수의 대소 비교로 해의 개수를 판정",
+          "condition": "실근의 개수가 정확히 2이고 k가 정수이며 x≥k, x≠4",
+          "integration": "구간별로 해의 존재를 나누어 k의 범위를 합침",
+          "curriculum": "수학(하) 무리함수와 유리함수의 그래프·무리방정식: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 16,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "함수",
+        "L2": "무리함수"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q16: 원본 Q16의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "함수",
+        "L2": "무리함수",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-121",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 함수>무리함수>무리함수의 활용>무리함수의 교점의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 17,
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "standardUnit": "무리함수",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+        "subUnit": "무리함수의 그래프",
+        "conceptClusterKey": "H15-SB-05-IRRATIONAL_GRAPH",
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "무리함수",
+          "l3": "정의역과 치역",
+          "l4": "정의역 조건",
+          "recordId": "H1-RPM-117",
+          "l3Label": "정의역과 치역",
+          "l4Label": "정의역 조건",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-117"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "무리함수",
+        "rpmPrimaryL3": "정의역과 치역",
+        "rpmPrimaryL4": "정의역 조건",
+        "rpmPrimaryRecordId": "H1-RPM-117",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+        "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
+        "crossConceptKeys": [
+          "CC_FUNCTION_MONOTONICITY",
+          "CC_QUADRATIC_VERTEX_MAXIMUM"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL",
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 17,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "치역 조건을 단조성으로 해석하고 q, r에 대한 이차식의 최댓값을 등호 가능성까지 확인하는 5단계 이상이라 상",
+        "difficultyBasis": "단조성에서 정의역 왼쪽 끝 설정, 부등식 변환, 완전제곱식 최댓값, 등호 성립 확인 → 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "부등식과 완전제곱식 계산으로 풀이가 닫혀 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "무리함수의 치역 조건에서 상수들의 식의 최댓값을 구하는 유형",
+          "crossConcept": "증가함수의 치역이 정의역의 왼쪽 끝에서 정해지는 성질과 완전제곱식으로 이차식의 최댓값을 구하는 계산",
+          "condition": "p>0이고 정의역이 x≥0의 부분집합이며 치역이 y≥4",
+          "integration": "정의역 끝점 조건과 r에 대한 이차식 최대화가 함께 얽혀 등호 성립 여부를 확인",
+          "curriculum": "수학(하) 무리함수의 정의역과 치역: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 17,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "함수",
+        "L2": "무리함수"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q17: 원본 Q17의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "함수",
+        "L2": "무리함수",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-117",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 함수>무리함수>정의역과 치역>정의역 조건의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 18,
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "standardUnit": "무리함수",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+        "subUnit": "무리함수의 뜻과 계산",
+        "conceptClusterKey": "H15-SB-05-IRRATIONAL_BASIC",
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "무리함수",
+          "l3": "무리함수의 활용",
+          "l4": "무리함수의 교점",
+          "recordId": "H1-RPM-121",
+          "l3Label": "무리함수의 활용",
+          "l4Label": "무리함수의 교점",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-121"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "무리함수",
+        "rpmPrimaryL3": "무리함수의 활용",
+        "rpmPrimaryL4": "무리함수의 교점",
+        "rpmPrimaryRecordId": "H1-RPM-121",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [
+          "CC_ABSOLUTE_VALUE_FUNCTION",
+          "CC_QUADRATIC_EXTREMA",
+          "CC_RADICAL_REAL_CONDITION"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 18,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "절댓값 무리함수의 정의역을 둘로 나누고 각각 치환하여 k의 값의 범위를 구하는 5단계 이상이라 상",
+        "difficultyBasis": "근호 조건, 구간 두 개 분리, 치환 후 이차식의 범위, 보집합 해석 → 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "구간 분류와 치환으로 k의 범위를 구하는 식 풀이이고 보조 그림의 추가 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "절댓값이 있는 무리함수의 그래프와 기울기 1인 직선이 만나지 않도록 하는 절편의 범위를 구하는 유형",
+          "crossConcept": "정의역을 구간으로 나누고 치환으로 k를 이차식으로 바꾸어 k의 값의 범위를 구함",
+          "condition": "근호 안이 0 이상이어야 하는 정의역 조건",
+          "integration": "두 구간의 k의 값의 범위를 합친 뒤 여집합을 취함",
+          "curriculum": "수학(하) 무리함수의 그래프와 직선의 교점: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 18,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "함수",
+        "L2": "무리함수"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q18: 원본 Q18의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "함수",
+        "L2": "무리함수",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-121",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 함수>무리함수>무리함수의 활용>무리함수의 교점의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 19,
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "standardUnit": "순열",
+        "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+        "subUnit": "조건이 있는 순열",
+        "conceptClusterKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "경우의 수와 순열",
+          "l3": "순열",
+          "l4": "특정 조건 배열",
+          "recordId": "H1-RPM-125",
+          "l3Label": "순열",
+          "l4Label": "특정 조건 배열",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-125"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "경우의 수와 순열",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "특정 조건 배열",
+        "rpmPrimaryRecordId": "H1-RPM-125",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [
+          "CC_CASE_EXHAUSTION_PERMUTATION",
+          "CC_NON_CONSECUTIVE_SELECTION"
+        ],
+        "conditionKeys": [
+          "COND_NO_ADJACENT_SELECTED_SYMBOLS",
+          "COND_MINIMUM_CATEGORY_COUNTS"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBucket": 4,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 19,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "줄별 교사 수의 분배로 경우를 나누고 이웃하지 않는 자리 선택과 배열을 곱하는 5단계 이상이라 상",
+        "difficultyBasis": "교사 수 분배 분류, 이웃하지 않는 자리 세기, 곱의 법칙과 순열 결합 → 4",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 문장과 조건만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "자리 선택 경우를 나열해 세는 풀이이고 보조 그림의 추가 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "두 줄 배치에서 줄마다 교사가 있고 교사끼리 이웃하지 않도록 하는 경우의 수를 구하는 유형",
+          "crossConcept": "이웃하지 않는 자리의 선택과 경우 분류",
+          "condition": "각 줄에 교사가 적어도 1명이고 같은 줄에서 교사끼리 이웃하지 않음",
+          "integration": "교사 수의 분배로 경우를 나누고 자리 선택 후 배열을 곱함",
+          "curriculum": "수학(하) 순열·경우의 수: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 19,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q19: 원본 Q19의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-125",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 경우의 수>경우의 수와 순열>순열>특정 조건 배열의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 20,
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "standardUnit": "순열",
+        "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+        "subUnit": "순열",
+        "conceptClusterKey": "H15-SB-07-PERMUTATION_BASIC",
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "경우의 수와 순열",
+          "l3": "순열",
+          "l4": "일렬 배열",
+          "recordId": "H1-RPM-124",
+          "l3Label": "순열",
+          "l4Label": "일렬 배열",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-124"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "경우의 수와 순열",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "일렬 배열",
+        "rpmPrimaryRecordId": "H1-RPM-124",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [
+          "CC_NUMBER_PARITY"
+        ],
+        "conditionKeys": [
+          "COND_DISTINCT_DIGITS",
+          "COND_PARITY_POSITION"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 20,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "시작 숫자의 홀짝으로 두 경우를 나누고 각 경우를 순열의 곱으로 세는 3~4단계라 중",
+        "difficultyBasis": "두 경우 분류와 각 경우의 순열 두 번을 곱한 뒤 합산 → 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 문장만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "경우를 나누어 순열을 계산하는 풀이이고 보조 그림의 추가 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "홀짝을 번갈아 배열하는 비밀번호의 수를 순열로 세는 유형",
+          "crossConcept": "홀수·짝수 개수 확인과 자리에 따른 홀짝 배치",
+          "condition": "서로 다른 숫자를 쓰고 홀짝이 교대로 놓임",
+          "integration": "시작 홀짝에 따라 경우를 나누어 더함",
+          "curriculum": "수학(하) 순열의 계산과 합의 법칙: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 20,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q20: 원본 Q20의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-124",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 경우의 수>경우의 수와 순열>순열>일렬 배열의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 21,
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "standardUnit": "함수",
+        "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+        "subUnit": "함수의 뜻과 대응",
+        "conceptClusterKey": "H15-SB-03-FUNCTION_RELATION",
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "함수",
+          "l3": "함수의 성질",
+          "l4": "일대일함수",
+          "recordId": "H1-RPM-284",
+          "l3Label": "함수의 성질",
+          "l4Label": "일대일함수",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-284 (RPM leaf of H1-RPM-106; PT/TPL add-only DIRECT_ACTIVE row)"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "함수",
+        "rpmPrimaryL3": "함수의 성질",
+        "rpmPrimaryL4": "일대일함수",
+        "rpmPrimaryRecordId": "H1-RPM-284",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_FUNCTION_COUNTING",
+        "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+        "crossConceptKeys": [
+          "CC_COMBINATION_SELECTION",
+          "CC_FUNCTION_COUNTING"
+        ],
+        "conditionKeys": [
+          "COND_STRICT_MONOTONE_VALUES",
+          "COND_FUNCTION_VALUE_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 21,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "엄격한 감소 조건과 f(3)=7을 해석해 앞뒤 구간의 값을 조합으로 고르는 3~4단계라 중",
+        "difficultyBasis": "조건 해석, 두 구간의 값 집합 구분, 각각 조합으로 세기, 곱의 법칙 → 3",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 집합과 조건으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "조합 계산으로 풀이가 닫혀 보조 그림의 추가 정보가 없다."
+        },
+        "metaRationale": {
+          "problemType": "엄격하게 감소하는 함수 중 한 점의 값이 정해진 함수의 개수를 세는 유형",
+          "crossConcept": "값을 고르면 크기 순서가 자동으로 정해지므로 조합으로 셈",
+          "condition": "함수값이 엄격히 감소하고 f(3)=7로 고정됨",
+          "integration": "f(3)를 기준으로 앞쪽·뒤쪽 값을 각각 고르고 곱함",
+          "curriculum": "수학(하) 함수의 뜻과 조합: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 21,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "함수",
+        "L2": "함수",
+        "reviewFlag": "OPEN_DEFECT",
+        "reviewFlagKind": "META_RESOLVER_DIVERGENCE",
+        "reviewFlagReason": "H1-RPM-106의 Resolver 결과는 PT_ONE_TO_ONE_BIJECTION/TPL_BIJECTION_JUDGMENT_CONDITION이나 메타는 PT_FUNCTION_COUNTING/TPL_MONOTONE_FUNCTION_COUNT(canonical ACTIVE, 동일 단원 기존 19 팔마고 기출과 일치, 의미상 더 정확). 크로스워크 add-only 행 필요."
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q21: 원본 Q21의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "함수",
+        "L2": "함수",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-284",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 함수>함수>함수의 성질>일대일함수의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 22,
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-04",
+        "standardUnit": "유리함수",
+        "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+        "subUnit": "유리함수의 그래프",
+        "conceptClusterKey": "H15-SB-04-RATIONAL_GRAPH",
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "유리함수",
+          "l3": "점근선과 위치",
+          "l4": "그래프의 사분면",
+          "recordId": "H1-RPM-111",
+          "l3Label": "점근선과 위치",
+          "l4Label": "그래프의 사분면",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-111"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "유리함수",
+        "rpmPrimaryL3": "점근선과 위치",
+        "rpmPrimaryL4": "그래프의 사분면",
+        "rpmPrimaryRecordId": "H1-RPM-111",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+        "crossConceptKeys": [
+          "CC_RATIONAL_FUNCTION_ASYMPTOTE",
+          "CC_LINEAR_INEQUALITY"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 22,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 유리함수의 사분면 조건을 각각 부등식으로 바꾸고 공통 범위의 정수를 구하는 5단계 이상이라 상",
+        "difficultyBasis": "모든 사분면 조건 분석, 제3사분면 비통과 조건, 경계값 포함 여부, 공통 범위와 정수 조건 → 5",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 조건만으로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 점근선과 일차부등식 풀이만으로 닫혀 그래프를 읽어 얻는 값이 없다. (매개변수 k를 포함한 두 유리함수를 한 그림에 그리는 공식 plan도 없다.)"
+        },
+        "metaRationale": {
+          "problemType": "유리함수의 그래프가 지나는 사분면 조건을 매개변수의 범위로 바꾸는 유형",
+          "crossConcept": "점근선과 표준형으로 곡선의 위치를 알고, 사분면 조건을 일차부등식으로 정리",
+          "condition": "k가 정수이며 두 그래프 조건의 공통 범위",
+          "integration": "두 조건을 각각 구한 뒤 공통 범위를 취함",
+          "curriculum": "수학(하) 유리함수의 그래프와 일차부등식: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 22,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "함수",
+        "L2": "유리함수"
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q22: 원본 Q22의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "함수",
+        "L2": "유리함수",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-111",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 함수>유리함수>점근선과 위치>그래프의 사분면의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    },
+    {
+      "questionUid": 23,
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "수학(하)",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "standardUnit": "무리함수",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
+        "subUnit": "무리함수와 역함수",
+        "conceptClusterKey": "H15-SB-05-IRRATIONAL_INVERSE",
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "무리함수",
+          "l3": "무리함수의 활용",
+          "l4": "무리함수의 역함수",
+          "recordId": "H1-RPM-120",
+          "l3Label": "무리함수의 활용",
+          "l4Label": "무리함수의 역함수",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high1 crosswalk record H1-RPM-120"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "무리함수",
+        "rpmPrimaryL3": "무리함수의 활용",
+        "rpmPrimaryL4": "무리함수의 역함수",
+        "rpmPrimaryRecordId": "H1-RPM-120",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_FUNCTION_FORM",
+        "crossConceptKeys": [
+          "CC_INVERSE_GRAPH_SYMMETRY",
+          "CC_INVERSE_GRAPH_INTERSECTION",
+          "CC_POINT_LINE_DISTANCE"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 5,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 23,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "역함수의 식과 정의역을 구하고 교점 두 개와 점·직선 거리로 삼각형 넓이를 구하는 5단계 이상이라 상",
+        "difficultyBasis": "역함수 정의역 처리, 대칭축 위 교점, 직선과 역함수의 교점, 밑변과 높이 계산 → 5",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 식과 점의 좌표로 완결되어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "UNSUPPORTED",
+          "solutionReason": "무리함수와 그 역함수, 직선 y=x와 직선 l, 삼각형 ABC를 한 그림에 그리는 공식 plan이 없다. 해설은 식과 좌표 계산만으로 완결된다."
+        },
+        "metaRationale": {
+          "problemType": "무리함수와 그 역함수의 그래프를 이용해 교점·삼각형의 넓이를 구하는 유형",
+          "crossConcept": "함수와 역함수의 y=x 대칭, 점과 직선 사이의 거리",
+          "condition": "역함수의 정의역이 원래 함수의 치역 x≥0",
+          "integration": "역함수 구하기 → 교점 A, C 결정 → 넓이 계산 순서",
+          "curriculum": "수학(하) 무리함수의 역함수와 수학(상) 점과 직선 사이의 거리: 허용"
+        },
+        "provenance": {
+          "sourceExam": "archive/exams/original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-02",
+          "reviewRequired": true,
+          "sourceQid": 23,
+          "variationNote": "",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item final solution"
+          }
+        },
+        "L1": "함수",
+        "L2": "무리함수",
+        "reviewFlag": "OPEN_DEFECT",
+        "reviewFlagKind": "VISUAL_DEBT",
+        "reviewFlagReason": "해설 그림 UNSUPPORTED: 무리함수·역함수·y=x·직선 l·삼각형 ABC를 한 그림에 그리는 공식 plan 없음. 해설은 좌표 계산으로 완결(비차단)."
+      },
+      "reason": "24_매산여고_2학기_기말_고1_유사 Q23: 원본 Q23의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "함수",
+        "L2": "무리함수",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H1-RPM-120",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "소형 메타의 RPM Primary 경로 함수>무리함수>무리함수의 활용>무리함수의 역함수의 부모(L1/L2)와 같다. 등록기는 단원 라벨이 아닌 이 정본 RPM 부모를 근거 있는 참조로만 받는다."
+      }
+    }
+  ],
+  "openDefects": [
+    {
+      "qid": 7,
+      "kind": "VISUAL_DEBT",
+      "reason": "해설 그림 UNSUPPORTED: 절댓값 유리함수와 여러 수평선 y=k를 한 그림에 그리는 공식 plan 없음. 해설은 식 풀이로 완결(비차단).",
+      "severity": "LOW",
+      "round": 1
+    },
+    {
+      "qid": 11,
+      "kind": "META_RESOLVER_DIVERGENCE",
+      "reason": "공식 Resolver(H1-RPM-124)는 TPL_PERMUTATION_STANDARD_CONSTRAINT를 내지만 메타는 canonical ACTIVE TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK(원본 24 매산 Q11 운영 메타와 동일). 크로스워크에 해당 TPL add-only 행이 없어 등록기 PT/TPL 정합이 거절될 수 있음. 공유 크로스워크 수정은 검수자 권한 밖.",
+      "severity": "LOW",
+      "round": 1
+    },
+    {
+      "qid": 15,
+      "kind": "META_RESOLVER_DIVERGENCE",
+      "reason": "H1-RPM-113은 크로스워크 RPM_ONLY라 Resolver PT/TPL이 비어 있음. 메타의 PT_FUNCTION_EXTREMUM/TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER는 canonical ACTIVE이고 동일 단원 기존 기출(19 금당고·20 매산고·20 효천고)이 같은 값을 쓰나 Resolver 결과는 아님. 크로스워크 DIRECT_ACTIVE 행 추가 또는 PT/TPL 비움 결정 필요.",
+      "severity": "LOW",
+      "round": 1
+    },
+    {
+      "qid": 21,
+      "kind": "META_RESOLVER_DIVERGENCE",
+      "reason": "H1-RPM-106의 Resolver 결과는 PT_ONE_TO_ONE_BIJECTION/TPL_BIJECTION_JUDGMENT_CONDITION이나 메타는 PT_FUNCTION_COUNTING/TPL_MONOTONE_FUNCTION_COUNT(canonical ACTIVE, 동일 단원 기존 19 팔마고 기출과 일치, 의미상 더 정확). 크로스워크 add-only 행 필요.",
+      "severity": "LOW",
+      "round": 1
+    },
+    {
+      "qid": 23,
+      "kind": "VISUAL_DEBT",
+      "reason": "해설 그림 UNSUPPORTED: 무리함수·역함수·y=x·직선 l·삼각형 ABC를 한 그림에 그리는 공식 plan 없음. 해설은 좌표 계산으로 완결(비차단).",
+      "severity": "LOW",
+      "round": 1
+    }
+  ],
+  "independentReview": {
+    "receipt": "archive/exams/similar/high/h1/2final/24_매산여고_2학기_기말_고1_유사.review-receipt.json",
+    "reviewer": "independent-exam-reviewer (Sonnet)",
+    "round": 1,
+    "signOffStatus": "PASS_WITH_OPEN_DEFECTS_AND_VISUAL_DEBT",
+    "note": "Q6/Q16/Q18 binding는 registryChanges 1건(PT_FUNCTION_GRAPH_INTERSECTION, H15-SB-05-IRRATIONAL_BASIC)으로 add-only 처리: 유효. Q17은 ACTIVE 바인딩이 h1-original-source 팩에 실재(크로스워크 MISSING 표기는 stale)하여 공식 Resolver PROJECTION_REUSE."
+  }
+}
