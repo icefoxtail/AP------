@@ -245,13 +245,13 @@ window.questionBank = [
     "answer": "②",
     "solution": "$y=k$와의 교점은\n$\\left|\\dfrac{2x+1}{3-x}\\right|=k\\quad(x\\ne3)$\n를 만족하는 서로 다른 실수 $x$의 개수이다.\n$k=1,2,3$은 모두 양수이므로 다음 두 경우를 나눈다.\n\n① $\\dfrac{2x+1}{3-x}=k$\n$2x+1=3k-kx$\n$(k+2)x=3k-1$\n$\\Rightarrow x=\\dfrac{3k-1}{k+2}$\n$k=1,2,3$에서 각각 해가 하나이고 $x=3$이 되지 않는다.\n\n② $\\dfrac{2x+1}{3-x}=-k$\n$2x+1=-3k+kx$\n$(2-k)x=-3k-1$\n$k=1,3$에서는 각각 해가 하나이다.\n$k=2$이면 $0\\cdot x=-7$로 해가 없다.\n\n$k\\gt0$이므로 ①과 ②의 해는 겹칠 수 없다.\n$N(1)=2,\\quad N(2)=1,\\quad N(3)=2$\n$N(1)+N(2)+N(3)=2+1+2=5$\n\n따라서 정답은 ②이다.",
 
-    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q07-solution.svg",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q7-solution-v2.svg",
 
-    "solutionImageAlt": "절댓값 유리함수와 수평선의 교점 개수를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: y=|f(x)|의 그래프와 수평선 y=1, y=3, 점근선 x=3, y=2를 그린 그림. 곡선과 수평선의 교점이 점으로 표시되어 있다.",
 
-    "solutionImageCaption": "k=1,2,3 수평선과의 교점 수를 비교하여 N(1),N(2),N(3)을 확인한다.",
+    "solutionImageCaption": "y=|f(x)|의 그래프와 y=1, y=3은 각각 두 점에서 만나고, y=2는 점근선이므로 한 점에서만 만난다. N(1)=2, N(2)=1, N(3)=2이므로 합은 5이고 정답은 ②이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -502,7 +502,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 함수 y=3/(x-1)+3의 그래프(식은 3x/(x-1)로 표시)와 점근선 x=1, y=3. 곡선 위의 점 P에서 점근선에 내린 수선의 발 M, N과 교점 Q로 이루어진 파란 정사각형 PNQM이 그려져 있고 P 옆에 u=√3이 적혀 있다.",
+    "solutionImageCaption": "점 P가 u=√3인 위치에 있을 때 직사각형 PNQM은 가로와 세로가 모두 √3인 정사각형이 되어 둘레가 최소이다. 따라서 둘레의 최솟값은 4√3이므로 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,

@@ -726,9 +726,9 @@ window.questionBank = [
     "subUnit": "확률변수와 기댓값",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q15-solution.svg",
-    "solutionImageAlt": "확률밀도함수의 두 구간과 삼각형의 넓이를 보여주는 해설 그래프",
-    "solutionImageCaption": "삼각형의 넓이로 구간확률을 계산한다.",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 확률밀도함수 y=f(x)의 그래프. 0≤x≤3에서 높이 4/9에서 0으로 줄어드는 파란 삼각형(넓이 2/3), 3≤x≤6에서 0에서 높이 2/9로 늘어나는 주황 삼각형(넓이 1/3)이 그려져 있다.",
+    "solutionImageCaption": "확률밀도함수의 그래프는 두 삼각형이고 f(0)=3a=4/9, f(6)=b=2/9이며 넓이는 왼쪽 2/3, 오른쪽 1/3(합 1)이다. a=4/27, b=2/9이므로 a+b=10/27이고 정답은 ④이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -1021,10 +1021,10 @@ window.questionBank = [
     "subUnit": "확률변수와 기댓값",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q21-solution.svg",
-    "solutionImageAlt": "f와 g의 대칭성 및 확률구간의 넓이를 보여주는 해설 그래프",
-    "solutionImageCaption": "두 밀도함수의 대칭성을 이용해 전체 넓이 1과 구간확률을 계산한다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 확률밀도함수 f(x)(검은 꺾은선, y축 대칭, f(0)=1/12, f(4)=1/6)와 g(x)의 그래프. g(x)는 x=-3에서 x=9까지 x=3에서 최대 7/48인 지붕 모양이며 색칠한 두 사다리꼴의 넓이는 모두 6b이다.",
+    "solutionImageCaption": "g(x)는 직선 x=3에 대칭이라 색칠한 두 사다리꼴의 넓이가 모두 6b이므로 12b=1에서 b=1/12이고, f(x)는 y축 대칭이라 2(8a+4b)=1에서 a=1/48이다(f(0)=1/12, f(4)=1/6, f(3)=g(3)=7/48). 이 값으로 16P(-3≤X≤3)을 구하면 11이므로 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,

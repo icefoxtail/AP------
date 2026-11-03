@@ -507,7 +507,11 @@ window.questionBank = [
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_강남여고_2학기_기말_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: y=√(x+5)와 y=√x의 그래프, x축, 직선 y=2로 둘러싸인 부분을 색칠한 그림. 점 (-5,0), (0,0), (-1,2), (4,2)가 표시되어 있다.",
+    "solutionImageCaption": "곡선 y=√(x+5), y=√x와 x축, 직선 y=2로 둘러싸인 부분(색칠)은 0≤y≤2에서 가로 길이가 항상 5이다. 가로 5, 세로 2인 직사각형과 넓이가 같으므로 S=5×2=10이고 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,

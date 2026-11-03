@@ -356,13 +356,13 @@ window.questionBank = [
     "answer": "④",
     "solution": "제곱근은 0 이상이고 가장 작은 값은 0이므로 $f$의 최솟값은 b이다.\n따라서 $b=2$이다.\n또 $f$는 증가함수이다. 증가함수와 그 역함수의 그래프가 만나는 점은 $y=x$ 위에 있다. 실제로 서로 다른 두 수 u, v가 $f(u)=v$, $f(v)=u$를 만족한다고 하면, $u<v$일 때 증가성으로 $f(u)<f(v)$, 즉 $v<u$가 되어 모순이다.\n교점의 x좌표가 3이므로 교점은 $(3,3)$이고 $f(3)=3$이다.\n$\\sqrt{6+a}+2=3$\n$\\sqrt{6+a}=1$, 따라서 $a=-5$이다.\n이제 주어진 함수에 $\\dfrac92$를 대입하면\n$f\\left(\\dfrac92\\right)=\\sqrt{9-5}+2=4$이다.\n따라서 정답은 ④이다.",
 
-    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q11-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수와 역함수의 그래프 및 교점 A를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 무리함수 y=f(x)(파란 곡선, 시작점 (5/2,2))와 역함수 y=f⁻¹(x)(주황 곡선)가 직선 y=x에 대칭으로 그려지고, 두 곡선이 y=x 위의 점 (3,3)에서 만난다.",
 
-    "solutionImageCaption": "최솟값으로 b=2, 교점 A=(3,3)으로부터 a=−5를 확인한다.",
+    "solutionImageCaption": "교점이 (3,3)이므로 f(3)=3에서 a=-5, b=2이고 f(x)=√(2x-5)+2이다. 따라서 f(9/2)=4이다(정답 ④).",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -583,7 +583,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 (2,3)인 산 모양 꺾은선 y=f(x)와 수평선 y=3, 2, 3/2, 1, 2/3을 그린 그림. 네 수평선 교점에서 x축으로 내린 점선이 a의 위치를 보인다.",
+    "solutionImageCaption": "f(f(f(a)))=3/2에서 f(f(a))는 1 또는 3, f(a)는 2/3 또는 2(10/3은 최댓값 3보다 커서 없음)이고, 그때의 a(점선이 x축에 닿는 네 곳)는 4/9, 4/3, 8/3, 32/9이다. 따라서 a는 4개이고 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

@@ -564,13 +564,13 @@ window.questionBank = [
     "answer": "$k>-1$",
     "solution": "교점의 $y$좌표를 $u$라 두면 무리함수에서 $u\\ge0$이다.\n유리함수의 식을 $x$에 대해 풀면\n$u=\\dfrac{x+1}{x-1}$\n$u(x-1)=x+1$\n$x=\\dfrac{u+1}{u-1}\\quad(u\\ne1)$\n또 $u=\\sqrt{x-k}$에서 $x=u^2+k$이므로\n$k=\\dfrac{u+1}{u-1}-u^2$\n$=1+\\dfrac2{u-1}-u^2$\n이 식을 $K(u)$라 하자. $u\\ge0$, $u\\ne1$이다.\n같은 구간의 $0\\le p<q<1$ 또는 $1<p<q$에 대하여\n$K(p)-K(q)$\n$=\\dfrac{2(q-p)}{(p-1)(q-1)}+(q-p)(p+q)>0$\n그러므로 $K(u)$는 $[0,1)$과 $(1,\\infty)$에서 각각 감소한다.\n$0\\le u<1$에서는\n$K(0)=-1$, $u\\to1$에 가까워질수록 $K(u)$는 한없이 작아진다.\n따라서 이 구간에는 $k\\le-1$일 때 교점이 하나 있다.\n$u>1$에서는 $u$가 $1$에 가까우면 $K(u)$는 한없이 크고, $u$가 커지면 한없이 작아진다.\n따라서 모든 실수 $k$에 대하여 이 구간에 교점이 정확히 하나 있다.\n결국 $k\\le-1$이면 교점이 두 개이고, $k>-1$이면 교점이 하나이다.\n따라서 구하는 범위는 $k>-1$이다.",
 
-    "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q18-solution.svg",
+    "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q18-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수와 무리함수의 교점 조건을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 유리함수 y=(x+1)/(x-1)(파랑)과 무리함수 y=√(x-k)의 그래프. k=-1(주황)이면 시작점 (-1,0)과 점 (3,2)에서 두 번 만나고, k=2(초록)이면 한 점에서만 만난다. 점근선 x=1, y=1이 점선으로 표시되어 있다.",
 
-    "solutionImageCaption": "유리함수와 y=√x의 한 교점을 표시하고 k≤−1과 k>−1의 차이를 확인한다.",
+    "solutionImageCaption": "y=(x+1)/(x-1)과 y=√(x-k)의 그래프에서, k=-1이면 두 점 (-1,0), (3,2)에서 만나고 k=2이면 한 점에서 만난다. k>-1이면 교점이 한 개이므로 구하는 범위는 k>-1이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

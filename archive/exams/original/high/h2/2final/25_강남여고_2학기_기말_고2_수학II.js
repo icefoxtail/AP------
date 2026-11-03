@@ -499,14 +499,15 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "①",
-    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q16-solution.svg",
-    "solutionImageAlt": "세 개의 사차함수 그래프에 x=−1, 1, 2의 극값과 수평선 f(x)=9를 함께 그려, a=−2와 a=3에서는 실근 3개, a=30에서는 1개가 됨을 비교한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 사차함수 y=f(x)에서 a=3일 때(파랑 곡선)와 a=-2일 때(주황 곡선)를 한 그림에 그리고 점선 y=9를 그었다. 파랑 곡선은 (2,9)의 극소점에서, 주황 곡선은 (1,9)의 극대점에서 점선에 접하고 각각 바깥쪽에서 한 번씩 더 만난다.",
+    "solutionImageSize": "large",
     "solution": "증감표에서 도함수의 부호는 차례로 $-,+,-,+$이다.\n따라서\n$x=-1$에서 극소: $f(-1)=a-21$\n$x=1$에서 극대: $f(1)=a+11$\n$x=2$에서 극소: $f(2)=a+6$\n이다.\n이처럼 양 끝에서 함수값이 커지는 사차함수의 그래프와 수평선 $y=9$가 서로 다른 $3$개의 점에서 만나려면 극값 중 하나가 $9$여야 한다.\n\n① $x=1$의 극댓값이 $9$인 경우\n$a+11=9\\ \\Rightarrow\\ a=-2$\n이때 $f(-1)=-23<9$, $f(2)=4<9$이다.\n$x=1$에서 접하고 양쪽 바깥에서 한 번씩 만나므로 서로 다른 실근은 $3$개이다.\n\n② $x=2$의 극솟값이 $9$인 경우\n$a+6=9\\ \\Rightarrow\\ a=3$\n이때 $f(-1)=-18<9$, $f(1)=14>9$이다.\n왼쪽의 두 단조 구간에서 한 번씩 만나고 $x=2$에서 접하므로 서로 다른 실근은 $3$개이다.\n\n③ $x=-1$의 극솟값이 $9$인 경우\n$a-21=9\\ \\Rightarrow\\ a=30$\n이때 다른 극솟값 $f(2)=36>9$이다.\n$x=-1$에서 접할 뿐 다른 교점은 없으므로 서로 다른 실근은 $1$개이다.\n\n따라서 가능한 값은 $a=-2,\\ 3$이고 그 합은\n$-2+3=1$\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "두 경우의 y=f(x)를 한 그림에 그렸다. a=3(파랑, 그림에서 g(x))은 x=2의 극솟값 a+6=9, a=-2(주황, 그림에서 f(x))는 x=1의 극댓값 a+11=9로 y=9에 접하고 서로 다른 세 점에서 만난다. 따라서 a=-2, 3이고 합은 1이므로 정답은 ①이다."
   },
   {
     "id": 17,

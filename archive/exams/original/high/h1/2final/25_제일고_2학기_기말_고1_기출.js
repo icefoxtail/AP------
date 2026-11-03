@@ -421,13 +421,13 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "식을 나누어 나타내면\n$y=\\dfrac{-x}{x-1}=-1-\\dfrac1{x-1}$이다.\n따라서 수직 점근선은 $x=1$, 수평 점근선은 $y=-1$이다. 두 점근선의 교점 $(1,-1)$이 그래프의 대칭 중심이고, $y=-\\dfrac1x$를 오른쪽으로 1, 아래로 1만큼 옮기면 이 그래프가 된다.\n또 $x<0$이면 $-x>0$이고 $x-1<0$이므로 $y<0$이다. 그래프는 제3사분면을 지난다.\n\n따라서 ‘제3사분면을 지나지 않는다’는 ⑤가 옳지 않다.",
 
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q13-solution.svg",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q13-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수 y=−1−1/(x−1)의 그래프와 점근선 x=1, y=−1, 대칭의 중심 (1,−1)을 표시한 좌표평면이다. 두 곡선이 점근선에 접근하며 제3사분면을 지나는 모습을 보여 준다.",
+    "solutionImageAlt": "해설 그림: 유리함수 y=-x/(x-1)의 그래프와 점근선 x=1, y=-1, 대칭 중심 (1,-1). 왼쪽 가지가 제3사분면(색칠한 부분)을 지난다.",
 
-    "solutionImageCaption": "y=−1−1/(x−1)에서 점근선 x=1, y=−1과 중심 (1,−1)을 확인한다.",
+    "solutionImageCaption": "y=-x/(x-1)=-1-1/(x-1)이므로 점근선은 x=1, y=-1이고 두 점근선의 교점 (1,-1)이 대칭 중심이다. x<0이면 y<0이므로 그래프는 제3사분면을 지나고, 따라서 옳지 않은 것은 ⑤이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -557,7 +557,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 무리함수 y=√(2x)(파랑)와 y=√x(초록)의 그래프 사이에 정사각형 ABCD가 그려져 있다. A는 파란 곡선 위, D는 초록 곡선 위에 있고, 위쪽 변 AD의 길이는 a, 왼쪽 변 AB의 길이는 √(2a)로 표시되어 있다.",
+    "solutionImageCaption": "A는 곡선 y=√(2x) 위, D는 같은 높이의 곡선 y=√x 위에 있으므로 D의 x좌표는 2a이고 AD=a, AB=√(2a)이다. 정사각형 ABCD에서 AD=AB이므로 a=√(2a)이고 점 A의 x좌표는 2이다. 정답 ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
