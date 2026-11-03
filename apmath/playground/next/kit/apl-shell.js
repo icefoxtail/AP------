@@ -166,6 +166,7 @@
       // 화면 폭이 859/860px 경계를 넘거나 무대 폭이 바뀌면(패널 접기 포함) 조작부를 알맞은 자리로 다시 옮깁니다.
       const replace = () => requestAnimationFrame(() => this._placeControls());
       if (NARROW.addEventListener) NARROW.addEventListener('change', replace); else if (NARROW.addListener) NARROW.addListener(replace);
+      this._orientHint();
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(replace); // 글꼴이 늦게 바뀌어 칩 폭이 달라져도 다시 잽니다
       if (window.ResizeObserver) {
         this._stageW = 0;
@@ -176,6 +177,24 @@
           replace();
         }).observe(ui.stage);
       }
+    }
+    /** 태블릿 세로(폭 700~859px, 세로 방향): 처음 열 때 「가로로 돌리면…」 한 줄 안내를 무대 위쪽 가장자리에 띄웁니다.
+     *  닫으면 localStorage 에 기억해 다시 띄우지 않고(저장이 막혀도 이번 화면에서는 닫힌 채), 가로로 돌리면 저절로 사라집니다. 휴대폰(700px 미만)·PC에는 나오지 않습니다. */
+    _orientHint() {
+      const mq = window.matchMedia('(min-width: 700px) and (max-width: 859px) and (orientation: portrait)');
+      const KEY = 'orientHintOff';
+      if (APLab.store.get(KEY, false) || !mq.matches) return;
+      const el = h('div', { class: 'apl-orient-hint', role: 'status' },
+        h('span', { class: 't', text: '가로로 돌리면 그림과 막대가 더 크게 보여요' }),
+        h('button', { class: 'x', 'aria-label': '안내 닫기', title: '닫기', html: icon('x'), onclick: () => close(true) }));
+      const close = (remember) => {
+        el.remove();
+        if (remember) APLab.store.set(KEY, true);
+        if (mq.removeEventListener) mq.removeEventListener('change', onChange); else if (mq.removeListener) mq.removeListener(onChange);
+      };
+      const onChange = () => { if (!mq.matches) close(false); }; // 가로로 돌렸거나 다른 크기가 되면 사라집니다(기억은 하지 않음)
+      if (mq.addEventListener) mq.addEventListener('change', onChange); else if (mq.addListener) mq.addListener(onChange);
+      this.ui.canvasWrap.append(el);
     }
     _syncThemeIcon() {
       this.ui.themeBtn.innerHTML = icon(APLab.theme.current() === 'paper' ? 'moon' : 'sun');
