@@ -20,6 +20,8 @@
      to    숫자 상태값을 목표값까지 부드럽게 바꿈 { 상태값이름: 목표값 }. 같은 이름의 앞선 움직임이 끝난 뒤에 시작해야 함
      set   (숫자가 아니어도 되는) 상태값을 이 시각에 바로 바꿈 { 이름: 값 }
      ease  smooth(기본) | linear | in | out
+     snap  to 로 움직이는 동안 값을 (그 움직임의 시작값 기준) snap 의 배수로 반올림해 계단식으로 넘깁니다. 예: snap 15 → 90, 105, 120 … 180.
+           움직이는 동안 호·넓이·각이 소수(94.91°, 6.33π)로 보이는 장면에서 깨끗한 값만 지나가게 할 때 씁니다. 끝 값은 정확히 to 입니다
      say   자막. **굵게**, $수식$ 가능
      step  정리 탭 단계 번호(s.step)를 바꿈. 탐구 화면에서 단계를 읽는 장면에서만 의미가 있음
      part  그림에서 강조할 부분 이름(s.part). 장면의 view().parts[].id 와 같은 값. null 이면 강조 해제
@@ -42,7 +44,7 @@
     in: (x) => x * x,
     out: (x) => 1 - (1 - x) * (1 - x)
   };
-  const CUE_FIELDS = ['at', 'dur', 'to', 'set', 'ease', 'say', 'step', 'part'];
+  const CUE_FIELDS = ['at', 'dur', 'to', 'set', 'ease', 'snap', 'say', 'step', 'part'];
   const SCRIPT_FIELDS = ['length', 'title', 'start', 'summary', 'task', 'cues'];
   const EPS = 1e-9;
   const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
@@ -99,6 +101,10 @@
       const dur = c.dur != null ? c.dur : nextAt - c.at;
       if (c.dur != null && (!isNum(c.dur) || c.dur <= 0)) err(`${w}.dur 는 0보다 큰 숫자여야 합니다`);
       else if (isNum(L) && isNum(dur) && c.at + dur > L + 1e-6) err(`${w}: at+dur(${(c.at + dur).toFixed(2)})가 length(${L})를 넘습니다`);
+      if (c.snap != null) {
+        if (!isNum(c.snap) || c.snap <= 0) err(`${w}.snap 은 0보다 큰 숫자여야 합니다`);
+        else if (c.to == null) err(`${w}.snap 은 to 와 함께만 씁니다`);
+      }
       if (c.ease != null && !EASE[c.ease]) err(`${w}.ease 는 ${Object.keys(EASE).join('|')} 중 하나여야 합니다`);
       if (c.to != null) {
         if (typeof c.to !== 'object' || Array.isArray(c.to)) err(`${w}.to 는 객체여야 합니다`);
@@ -136,13 +142,13 @@
     const L = script.length;
     const cues = script.cues.map((c, i) => {
       const nextAt = i + 1 < script.cues.length ? script.cues[i + 1].at : L;
-      return { at: c.at, dur: c.dur != null ? c.dur : nextAt - c.at, ease: EASE[c.ease] ? c.ease : 'smooth', say: c.say || null, to: c.to || null, set: c.set || null, step: c.step, part: c.part, index: i };
+      return { at: c.at, dur: c.dur != null ? c.dur : nextAt - c.at, ease: EASE[c.ease] ? c.ease : 'smooth', say: c.say || null, snap: c.snap > 0 ? c.snap : null, to: c.to || null, set: c.set || null, step: c.step, part: c.part, index: i };
     });
     const tracks = {}; // 상태값 → [{t0, t1, to, ease}]
     const setKeys = new Set();
     let usesStep = false, usesPart = false;
     cues.forEach((c) => {
-      if (c.to) for (const [k, v] of Object.entries(c.to)) (tracks[k] = tracks[k] || []).push({ t0: c.at, t1: c.at + c.dur, to: v, ease: c.ease });
+      if (c.to) for (const [k, v] of Object.entries(c.to)) (tracks[k] = tracks[k] || []).push({ t0: c.at, t1: c.at + c.dur, to: v, ease: c.ease, snap: c.snap });
       if (c.set) Object.keys(c.set).forEach((k) => setKeys.add(k));
       if (c.step !== undefined) usesStep = true;
       if (c.part !== undefined) usesPart = true;
@@ -161,7 +167,14 @@
       if (t >= g.t1 - EPS) { v = g.to; continue; }
       if (t <= g.t0) break;
       const x = EASE[g.ease]((t - g.t0) / (g.t1 - g.t0));
-      v = v + (g.to - v) * x;
+      const from = v;
+      v = from + (g.to - from) * x;
+      if (g.snap) { // 시작값 기준 snap 의 배수로 반올림(to 를 넘지 않게)
+        const n = Math.round((v - from) / g.snap);
+        v = from + n * g.snap;
+        v = g.to >= from ? Math.min(g.to, Math.max(from, v)) : Math.max(g.to, Math.min(from, v));
+        v = Math.round(v * 1e9) / 1e9;
+      }
       break;
     }
     return v;
