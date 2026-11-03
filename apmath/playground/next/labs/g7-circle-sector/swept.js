@@ -1105,7 +1105,7 @@
     const V = [[0, 0]];
     let p = [0, 0], dir = 0;
     for (let i = 0; i < n - 1; i++) { p = [p[0] + side * Math.cos(dir), p[1] + side * Math.sin(dir)]; V.push(p); dir += TAU / n; }
-    return { V, names: 'ABCDEF'.slice(0, n), maxL: kind === 'tri' ? 1.5 * side : 2 * side };
+    return { V, names: 'ABCDEF'.slice(0, n), maxL: kind === 'tri' ? Math.floor(1.5 * side) : 2 * side, maxExact: kind !== 'tri' || side % 2 === 0 }; // 정삼각형은 끈 최대 1.5×변. 변이 홀수면 소수가 되므로 정수로 내려 제한(막대 step=1)
   }
   function goatClamp(s) {
     const k = s.gtKind;
@@ -1146,7 +1146,7 @@
     };
     const ccw = chain(1), cw = chain(-1);
     const secs = [...cw.slice().reverse(), A, ...ccw]; // 염소의 자취가 이어지는 차례 (끝점 = 다음 시작점)
-    return { kind, V, names, L, sp, A, ccw, cw, secs, order: [A, ...ccw, ...cw], area: ratSum(secs.map((x) => x.area)), maxL: sp.maxL, side: dist(V[0], V[1]), sideLast: dist(V[0], V[n - 1]), interior: 360 - A.deg };
+    return { kind, V, names, L, sp, A, ccw, cw, secs, order: [A, ...ccw, ...cw], area: ratSum(secs.map((x) => x.area)), maxL: sp.maxL, maxExact: sp.maxExact, side: dist(V[0], V[1]), sideLast: dist(V[0], V[n - 1]), interior: 360 - A.deg };
   }
   /** 염소가 지나가는 시간표: 부채꼴의 중심각에 비례해 0~0.8 구간을 나눕니다 */
   function goatTimeline(M) {
@@ -1495,7 +1495,7 @@
       const status = t <= 0 ? { tone: 'info', text: `끈을 팽팽히 당긴 ${kd.animal}` }
         : !done ? { tone: 'info', text: cur.sec.chain === 'A' ? `큰 부채꼴 · r = ${num(cur.sec.R)} m, ${cur.sec.deg}°` : `${cur.sec.id}를 돌아가는 부채꼴 · r = ${num(cur.sec.R)} m, ${cur.sec.deg}°` }
           : { tone: 'ok', text: `부채꼴 ${M.secs.length}개 · 넓이 ${ratPi(M.area)} m²` };
-      const note = M.L >= M.maxL - 1e-9 ? `끈이 가장 길 수 있는 값(${num(M.maxL)} m)이에요. 이보다 길면 끈이 겹쳐 돌아가서 이 장면의 계산이 달라져요.` : '';
+      const note = M.maxExact && M.L >= M.maxL - 1e-9 ? `끈이 가장 길 수 있는 값(${num(M.maxL)} m)이에요. 이보다 길면 끈이 겹쳐 돌아가서 이 장면의 계산이 달라져요.` : '';
       const readouts = [{ label: '끈의 길이', value: `${num(M.L)} m`, color: 'rose', ref: 'rope', note: M.kind === 'rect' ? `AB ${num(M.side)} m, AD ${num(M.sideLast)} m` : `${kd.thing}의 한 변 ${num(M.side)} m` }];
       M.order.forEach((sec) => readouts.push({
         label: sec.chain === 'A' ? `큰 부채꼴 (${sec.id} 중심)` : `${sec.id}를 돌아가는 부채꼴`,
