@@ -279,6 +279,10 @@ const requiredCommands = [
   {
     label: 'apmath/playground/next/tools/alg-sequence-plus.test.mjs',
     args: ['--test', 'apmath/playground/next/tools/alg-sequence-plus.test.mjs']
+  },
+  {
+    label: 'apmath/playground/next/tools/polyhedra-names.test.mjs',
+    args: ['--test', 'apmath/playground/next/tools/polyhedra-names.test.mjs']
   }
 ];
 
