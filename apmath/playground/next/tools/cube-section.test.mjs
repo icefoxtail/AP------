@@ -218,3 +218,16 @@ test('시점 돌리기: 단면이 선이 되는 점을 고르면 부드럽게 �
   const w2 = CS.viewFor(CS.sectionOf3('A', 'C', 'H'));
   assert.ok(Math.abs(s2.phYaw - w2.yaw) < 0.1);
 });
+
+test('학생 화면 글(정리 풀이·힌트·읽는 값)에 제곱근 등 중1 밖 표현이 없다', () => {
+  const s = {};
+  P3.init(s);
+  const bad = /√|sqrt|제곱근|법선|벡터|\\\\sqrt/;
+  for (const x of CS.ALL) {
+    s.phQ = { tri: x.tri };
+    s.phC3 = x.tri;
+    const M = P3.model(s), Q = P3.prob(M, s), v = P3.view(M);
+    const texts = [...P3.steps(M), Q.stem, ...Q.choices.map((c) => c.hint), v.guide, v.rule, v.formula, v.notes, ...v.readouts.map((r) => `${r.label}${r.value}${r.note || ''}`)];
+    texts.forEach((t) => assert.ok(!bad.test(t), `${x.tri.join('')}: ${t.slice(0, 60)}`));
+  }
+});
