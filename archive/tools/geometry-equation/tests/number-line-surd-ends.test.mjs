@@ -25,6 +25,6 @@ test('a surd end equal to a rational end is detected exactly (a one-point result
 });
 test('two different radicals and non-surd text are refused', () => {
   assert.throws(()=>solveNumberLineFigure({rows:[set(piece(O('sqrt(2)'),null)),set(piece(O('sqrt(3)'),null)),{kind:'RESULT'}]}));
-  assert.throws(()=>solveNumberLineFigure({rows:[set(piece(O('1.5'),null))]}),code('NUMBER_LINE_VALUE_INVALID'));
+  assert.throws(()=>solveNumberLineFigure({rows:[set(piece(O('1.567'),null))]}),code('NUMBER_LINE_VALUE_INVALID'));   // G19: up to 2 decimal places are exact values
   assert.throws(()=>solveNumberLineFigure({rows:[set(piece(O('sqrt(-1)'),null))]}),code('NUMBER_LINE_VALUE_INVALID'));
 });

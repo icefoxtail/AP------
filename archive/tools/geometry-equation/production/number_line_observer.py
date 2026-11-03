@@ -17,6 +17,7 @@ v = S.Symbol('v', real=True)
 NS = '{http://www.w3.org/2000/svg}'
 TOL = 0.01
 RATIONAL = re.compile(r'^-?\d{1,15}(?:/\d{1,15})?$')
+DECIMAL = re.compile(r'^-?\d{1,6}\.\d{1,2}$')
 
 
 def _rational(text, code):
@@ -31,6 +32,7 @@ SURD = re.compile(r'^[0-9+\-*/() ]*sqrt[0-9+\-*/()sqrt ]{0,60}$')
 def _value(text, code):
     """An end value: an exact rational, or an exact surd text such as sqrt(10), -sqrt(10), (1+sqrt(2))/2 (SymPy parses it)."""
     if isinstance(text, str) and RATIONAL.fullmatch(text): return S.Rational(text)
+    if isinstance(text, str) and DECIMAL.fullmatch(text): return S.Rational(text)   # G19: a decimal the problem writes (40.2), exactly
     if not isinstance(text, str) or not SURD.fullmatch(text) or len(text) > 64: raise ValueError(code)
     try: value = S.sympify(text, rational=True)
     except Exception: raise ValueError(code)
@@ -75,7 +77,7 @@ def expected_solution(numberLine):
 def parse_tex_number(tex, symbols=None):
     """symbols (optional): {letter: value} for a label that may carry the figure's parameter (a, 2a, \frac{a+2}{3})."""
     tex = re.sub(r'^\\displaystyle\s*', '', tex)
-    tokens = re.findall(r'\\dfrac|\\frac|\\sqrt|\d+|[a-z]|[{}+\-]', tex.replace(' ', ''))
+    tokens = re.findall(r'\\dfrac|\\frac|\\sqrt|\d+\.\d+|\d+|[a-z]|[{}+\-]', tex.replace(' ', ''))
     if ''.join(tokens) != tex.replace(' ', ''): raise ValueError('NL_LABEL_TEX_UNREADABLE')
     position = [0]
     def peek(): return tokens[position[0]] if position[0] < len(tokens) else None
@@ -92,6 +94,8 @@ def parse_tex_number(tex, symbols=None):
             take(); return group() / group()
         if token == '\\sqrt':
             take(); return S.sqrt(group())
+        if token is not None and re.fullmatch(r'\d+\.\d+', token):   # a decimal the problem writes (G19)
+            return S.Rational(take())
         if token is not None and token.isdigit():
             value = S.Integer(take())
             if peek() == '\\sqrt':

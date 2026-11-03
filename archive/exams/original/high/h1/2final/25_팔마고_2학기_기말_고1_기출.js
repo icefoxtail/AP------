@@ -27,7 +27,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: ①~⑤ 다섯 그래프에 y축에 평행한 점선 수직선을 그어 만나는 점을 표시한 다섯 개의 작은 그림.",
+    "solutionImageCaption": "수직선을 그어 보면 ①은 1점, ②는 한 x에 점이 여러 개, ③은 2점, ④는 열린 점과 닫힌 점이 구분되어 1점, ⑤는 x=1에 점 2개이다. 따라서 함수의 그래프인 것은 ①, ④이다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 2,
@@ -61,7 +65,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
     "subUnit": "합성함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: X→X→X 대응도. 왼쪽에서 가운데로 가는 화살표는 f, 가운데에서 오른쪽으로 가는 화살표는 g로 이름이 붙어 있다. 파랑 굵은 화살표는 f의 2→4, 주황 굵은 화살표는 g의 2→2이다.",
+    "solutionImageCaption": "파랑 굵은 화살표가 f(2)=4, 주황 굵은 화살표가 g(2)=2이다. (f∘g)(2)=f(g(2))=f(2)=4이다. 정답: ④",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -96,7 +104,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
     "subUnit": "역함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 개의 X를 잇는 대응도. 왼쪽 두 집합 사이의 파란 화살표는 f(2→4, 3→2, 4→3), 오른쪽 두 집합 사이의 주황 화살표는 g(2→2, 3→4, 4→3)이다. f의 2→4와 g의 4→3을 이은 경로가 초록색 굵은 선이다.",
+    "solutionImageCaption": "f(2)=4이므로 f⁻¹(4)=2이고(굵은 화살표를 거꾸로 읽는다), g(4)=3이므로 f⁻¹(4)+g(4)=2+3=5이다. 정답: ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -126,10 +138,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "주어진 함수를\n$y=-\\dfrac{5}{x-3}-2$\n로 나타내면 점근선은\n$x=3$, $y=-2$이다.\n$x<0$이면 $3-x>3$이므로\n$0<\\dfrac{5}{3-x}<\\dfrac53$이다.\n따라서 $y<0$이어서 제3사분면을 지난다.\n$0<x<3$에서는\n$y=0$일 때\n$\\dfrac{5}{3-x}=2$,\n$x=\\dfrac12$이다.\n따라서\n$0<x<\\dfrac12$에서는 제4사분면,\n$\\dfrac12<x<3$에서는 제1사분면을 지난다.\n$x>3$이면 $\\dfrac{5}{3-x}<0$이므로\n$y<-2$이다.\n따라서 제4사분면을 지난다.\n제2사분면은 지나지 않으므로 정답은 ③이다.",
-    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q04-solution.svg",
-    "solutionImageAlt": "유리함수의 점근선과 사분면 통과를 나타낸 해설 그래프",
-    "solutionImageCaption": "점근선 x=3, y=−2와 x절편을 기준으로 그래프가 지나는 사분면을 확인한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점근선 x=3, y=-2를 점선으로 보이고 x절편 (1/2,0), y절편 (0,-1/3)을 지나는 유리함수 y=5/(3-x)-2의 그래프.",
+    "solutionImageCaption": "x절편 (1/2,0), y절편 (0,-1/3)이고 점근선이 x=3, y=-2인 y=5/(3-x)-2의 그래프는 제3, 4, 1사분면을 지나므로 정답은 ③이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -167,7 +179,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 끝점 (4,2)와 y절편 (0,4)를 지나 왼쪽 위로 뻗는 y=√(4-x)+2의 그래프와 x=-12인 곡선 위의 점.",
+    "solutionImageCaption": "끝점 (4,2)와 y절편 (0,4)로 f(x)=√(4-x)+2를 구한 뒤 x=-12인 점(그림)에서 f(-12)=6이므로 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -198,10 +214,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "분모가 $0$이 되는 값에서 수직점근선을 구하면\n$x=-1$이다.\n분자와 분모의 최고차항 계수의 비를 이용하면 수평점근선은\n$y=4$이다.\n따라서\n$a=-1$, $b=4$이고\n$a+b=3$이다.\n$f^{-1}(3)$은 $f(x)=3$을 만족시키는 $x$이므로\n$\\dfrac{4x+5}{x+1}=3$이다.\n$4x+5=3x+3$에서\n$x=-2$이다.\n\n따라서 $f^{-1}(3)=-2$이고 정답은 ①이다.",
-    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q06-solution.svg",
-    "solutionImageAlt": "유리함수의 점근선과 f⁻¹(3)의 위치를 나타낸 해설 그래프",
-    "solutionImageCaption": "점근선 x=−1, y=4를 읽고 y=3과 그래프의 교점 x=−2를 확인한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: y=(4x+5)/(x+1)의 그래프와 점근선 x=-1, y=4가 그려져 있고, 직선 y=3이 곡선과 만나는 점이 점으로 표시되어 있다. 각 점근선과 직선의 식이 자기 선 옆에 쓰여 있다.",
+    "solutionImageCaption": "점근선이 x=-1, y=4이므로 a=-1, b=4, a+b=3이다. f⁻¹(3)은 f(x)=3의 해이므로 4x+5=3(x+1)에서 x=-2이다(정답 ①).",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -238,7 +254,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: y=(4x-1)/(x+1)의 그래프. 점근선 x=-1, y=4, x=0일 때의 점 (0,k)와 증가하여 x=4에서 최댓값 3을 갖는 점 (4,3)을 표시했다.",
+    "solutionImageCaption": "정의역 0 이상 4 이하에서 y=4+(k-4)/(x+1)은 점근선 y=4보다 작은 값을 가지므로 k-4가 음수이고 증가하여, 최댓값 3은 x=4에서 생긴다. 따라서 (16+k)/5=3이고 k=-1이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -366,13 +386,13 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "$x\\ge3$에서\n$f(x)=x^2-6x+a=(x-3)^2+a-9$\n이므로 $f$는 증가한다.\n증가함수와 그 역함수의 그래프가 만나는 점은 직선 $y=x$ 위에 있으므로\n교점의 $x$좌표는\n$f(x)=x$\n를 만족한다.\n두 그래프가 한 점에서 접하려면 이 방정식이 중근을 가져야 한다.\n$x^2-6x+a=x$이므로\n$x^2-7x+a=0$이다.\n판별식이 $0$이어야 하므로\n$49-4a=0$이다.\n따라서\n$a=\\dfrac{49}{4}$이다.\n이때 중근은\n$x=\\dfrac72\\ge3$\n이므로 정의역 조건도 만족한다.\n정답은 ⑤이다.",
 
-    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q11-solution-v2.svg",
 
-    "solutionImageAlt": "함수와 역함수의 접점 및 y=x를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: x≥3에서 증가하는 이차함수 y=f(x)와 그 역함수 y=f⁻¹(x)의 그래프가 직선 y=x에 대하여 대칭이고, 점 T(7/2, 7/2)에서 y=x 위에서 접하는 그림",
 
-    "solutionImageCaption": "f(x)=x의 중근 (7/2,7/2)을 표시하여 두 그래프의 접점을 확인한다.",
+    "solutionImageCaption": "x≥3에서 f는 증가하므로 y=f(x)와 y=f⁻¹(x)의 그래프는 y=x에 대하여 대칭이고, 접점 T(7/2, 7/2)는 y=x 위에 있어 방정식 f(x)=x, 곧 x²-7x+a=0이 중근을 가져야 하므로 a=49/4이다. 정답 ⑤",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -475,13 +495,13 @@ window.questionBank = [
     "answer": "①",
     "solution": "각 보기를 차례로 판단한다.\n\nㄱ. $f(x)=\\dfrac1x$는 정의역과 공역이 모두 $0$을 제외한 실수 전체이고 일대일대응이다.\n또\n$f(f(x))=x$\n이므로\n$f^{-1}(x)=\\dfrac1x$이다.\n따라서 ㄱ은 참이다.\n\nㄴ. $y=\\dfrac1x$의 그래프는 제1사분면과 제3사분면을 지난다.\n따라서 ㄴ은 거짓이다.\n\nㄷ. $f=f^{-1}$이므로 두 그래프는 완전히 일치한다.\n따라서 두 그래프의 교점은 무수히 많다.\n반면\n$f(x)=x$이면\n$\\dfrac1x=x$,\n$x^2=1$이므로\n$x=\\pm1$의 두 실근만 가진다.\n따라서 ㄷ은 거짓이다.\n\n그러므로 옳은 것은 ㄱ뿐이고 정답은 ①이다.",
 
-    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q14-solution.svg",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q14-solution-v2.svg",
 
-    "solutionImageAlt": "함수 y=1/x의 두 가지 그래프와 좌표축을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: y=1/x의 그래프(제1사분면과 제3사분면)와 직선 y=x, 두 그래프의 교점 (1,1)과 (-1,-1)을 나타낸 좌표평면 그림",
 
-    "solutionImageCaption": "y=1/x는 자기 자신이 역함수이고 제1·3사분면을 지나며 좌표축은 점근선이다.",
+    "solutionImageCaption": "f(x)=1/x의 역함수도 1/x이므로 y=f(x)와 y=f⁻¹(x)의 그래프가 일치하여 직선 y=x에 대하여 대칭이고, 그래프는 제1·3사분면을 지나며 f(x)=x의 실근은 x=±1뿐이므로 ㄱ만 옳다. 정답 ①",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -519,7 +539,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
     "subUnit": "합성함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: f(x)=(3x+1)/(x-3)의 그래프. 점근선 x=3, y=3과 교점 (3,3), 직선 y=x가 있고, 점 (1,-2)와 (-2,1)이 y=x에 대하여 서로 대칭이다.",
+    "solutionImageCaption": "a=-3이면 f의 그래프는 점근선의 교점 (3,3)을 지나는 직선 y=x에 대하여 대칭(예: (1,-2)와 (-2,1))이어서 f⁻¹=f이고, f⁻¹(13)=f(13)=4이다(정답 ③).",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -587,7 +611,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 예 a=1, c=-5에서 x<1일 때 y=x-5, x≥1일 때 y=(x-1)²-4가 점 (1,-4)에서 이어지는 함수 f(x)의 그래프이다.",
+    "solutionImageCaption": "예: a=1, c=-5일 때 b=1에서 두 조각이 점 (1,-4)에서 이어져 역함수가 존재하며, 이때 a+c=-4이므로 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -623,7 +651,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 무리함수 f(x)=√x+2와 g(x)=√(x-3)의 곡선이 직선과 A(4,4), B(7,2)에서 만나고 P(0,2), Q(3,0)이 곡선의 시작점이다. 점선 PQ와 가로 7, 세로 4인 직사각형의 윗변·오른쪽 변이 점선으로 있다.",
+    "solutionImageCaption": "곡선 PA를 오른쪽 3, 아래 2만큼 옮기면 곡선 QB와 겹쳐 곡선 사이의 띠가 평행사변형 PABQ와 같은 넓이가 된다. 가로 7, 세로 4인 직사각형에서 바깥 네 직각삼각형(합 14)을 빼면 PABQ=14이고 삼각형 POQ=3이므로, 구하는 넓이는 14+3=17이고 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -658,7 +690,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 이차함수 y=f(x)=x²+x-2의 그래프와 수평선 y=-2, y=1. y=-2와의 교점 (-1,-2), (0,-2)와 y=1과의 교점 두 개를 점으로 나타냄",
+    "solutionImageCaption": "f(f(x))=0이면 f(x)=-2 또는 f(x)=1이다. y=-2와의 교점은 x=0, -1이고 y=1과의 교점은 x²+x-3=0의 두 근(합 -1)이므로 서로 다른 모든 실근의 합은 0+(-1)+(-1)=-2이고 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -684,13 +720,13 @@ window.questionBank = [
     "answer": "$0$",
     "solution":"$f(x)=-(x-2)^2+4$의 그래프는 꼭짓점이 $(2,4)$이고 $x\\le2$에서 증가한다.\n정의역이 $(-\\infty,k]$일 때 $k>2$이면 꼭짓점의 양쪽을 모두 포함하므로 같은 함수값을 만드는 서로 다른 두 $x$가 생긴다.\n따라서 일대일이 되려면\n$k\\le2$\n이어야 한다.\n$k\\le2$이면 정의역 전체에서 함수가 증가하고, $x$가 작아질수록 함수값은 제한 없이 작아진다.\n따라서 치역은\n$(-\\infty,f(k)]$\n이다.\n공역 $X=(-\\infty,k]$와 치역이 같아야 하므로\n$f(k)=k$이다.\n$-(k-2)^2+4=k$\n$-k^2+4k=k$\n$k(k-3)=0$이다.\n따라서\n$k=0$ 또는 $k=3$이다.\n일대일 조건 $k\\le2$를 만족하는 값은\n$k=0$\n뿐이다.\n\n따라서 구하는 값은 $0$이다.",
 
-    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q20-solution-v2.svg",
 
-    "solutionImageAlt": "정의역 제한 이차함수의 그래프를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선 f(x)=-(x-2)²+4와 직선 y=x. 증가하는 x≤2 부분을 굵게 표시하고 꼭짓점 (2,4)와 교점 (0,0), (3,3)을 점으로 나타냈다.",
 
-    "solutionImageCaption": "k=0에서 f=−(x−2)²+4가 x≤0에서 일대일대응임을 확인한다.",
+    "solutionImageCaption": "f(x)=-(x-2)²+4의 꼭짓점은 (2,4)이고 x≤2(굵게 표시한 부분)에서 증가하며 직선 y=x와 (0,0), (3,3)에서 만난다. 일대일대응이 되려면 k≤2이고 f(k)=k이므로 k의 값은 0이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -722,7 +758,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 세로축을 y-70으로 놓은 y-70=6/(x+1/5)의 그래프. x>0에서 감소하며, 구간 양 끝 x=0.8과 x=5.8에 대응하는 곡선 위의 두 점과 축까지의 점선, 점근선 x=-1/5가 그려져 있다. 가로·세로 눈금이 같다.",
+    "solutionImageCaption": "y=70+6/(x+1/5)는 x>0에서 감소하므로 0.8≤x≤5.8에서 x=0.8일 때 최대, x=5.8일 때 최소이다. (1) y=(70x+20)/(x+1/5) (2) 최댓값 76, 최솟값 71",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -775,10 +815,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac13\\le k\\lt \\dfrac{11}{6}$",
     "solution": "무리함수의 그래프 위에서는\n$y\\ge0$이고\n$x=\\dfrac{2-y^2}{3}$이다.\n이를 직선\n$y=-\\dfrac12x+k$\n에 대입한다.\n$y=-\\dfrac12\\cdot\\dfrac{2-y^2}{3}+k$이므로\n$6y=y^2-2+6k$이다.\n따라서\n$y^2-6y+6k-2=0$이다.\n서로 다른 두 교점을 가지려면 이 방정식이 서로 다른 두 실근을 가져야 하므로\n$36-4(6k-2)>0$이다.\n따라서\n$k<\\dfrac{11}{6}$이다.\n또 두 교점이 모두 무리함수의 그래프 위에 있으려면 두 근이 모두 $0$ 이상이어야 한다.\n두 근의 합은 $6>0$이고 곱은 $6k-2$이므로\n$6k-2\\ge0$,\n$k\\ge\\dfrac13$이다.\n$k=\\dfrac13$일 때 두 근은 $0$, $6$으로 서로 다르므로 포함된다.\n따라서\n$\\dfrac13\\le k<\\dfrac{11}{6}$이다.",
-    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q23-solution.svg",
-    "solutionImageAlt": "무리함수 y=√(2−3x)의 감소하는 곡선과 기울기 −1/2인 직선 y=−x/2+1이 만나는 두 점 P₁, P₂를 표시한 그림. 두 교점이 생기는 k의 범위가 1/3≤k<11/6임을 보여준다.",
-    "solutionImageCaption": "무리함수의 정의역과 직선의 교점 두 개를 표시하여 1/3≤k<11/6 범위를 확인한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: y=√(2-3x)의 그래프와 기울기가 -1/2인 평행한 세 직선 l1, l2, l3. l1은 끝점 E(2/3,0)을 지나 곡선과 두 점에서 만나고, l2도 두 점에서 만나며, l3은 곡선에 점 T에서 접한다. 두 점에서 만나는 교점이 모두 그림 안에 있다.",
+    "solutionImageCaption": "y²-6y+6k-2=0이 0 이상의 서로 다른 두 실근을 가져야 하므로, 직선이 끝점을 지날 때(l1)부터 접할 때(l3) 직전까지이다. 따라서 1/3≤k<11/6이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

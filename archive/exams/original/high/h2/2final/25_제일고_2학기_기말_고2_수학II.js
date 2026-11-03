@@ -30,7 +30,11 @@ window.questionBank=[
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: f(x)=x²-2x+7의 [0,2] 구간 그래프. 양 끝 (0,7), (2,7)의 함숫값이 같고, 그 사이 한 점에서 접선이 수평이며 그 x좌표를 c로 표시했다.",
+    "solutionImageCaption": "양 끝 f(0)=f(2)=7이므로 롤의 정리에 의해 f′(c)=2c-2=0, c=1이다. 정답 ③",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -57,15 +61,16 @@ window.questionBank=[
       "$10$"
     ],
     "answer": "①",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q2-solution.svg",
-    "solutionImageAlt": "감소구간과 극값: 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: f(x)=x³+6x²+9x+1의 그래프. x=−3에서 극대 (−3, 1), x=−1에서 극소 (−1, −3)이고, 두 점 사이 −3≤x≤−1 구간을 색칠해 f가 감소하는 구간임을 보인다.",
+    "solutionImageSize": "medium",
     "solution": "감소하는 구간은 도함수의 부호가 음수인 곳에서 찾는다.\n$f'(x)=3x^2+12x+9$\n$=3(x+3)(x+1)$\n\n$f'(x)$의 부호는\n$x<-3$: 양수\n$-3<x<-1$: 음수\n$x>-1$: 양수이다.\n따라서 $f(x)$는 $-3$부터 $-1$까지 감소한다.\n\n$a=-3,\\quad b=-1$이므로\n$b-a=(-1)-(-3)=2$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "x가 −3과 −1 사이일 때 f′(x)=3(x+3)(x+1)이 음수이므로 f는 [−3, −1]에서 감소하고, a=−3, b=−1이므로 b−a=2이다. 정답 ①"
   },
   {
     "id": 3,
@@ -92,15 +97,16 @@ window.questionBank=[
       "$10$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q3-solution.svg",
-    "solutionImageAlt": "극댓값과 극솟값: 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: f(x)=x³−6x²+9x+4의 그래프. x=1에서 극댓값 M=f(1)=8, x=3에서 극솟값 m=f(3)=4를 점과 점선으로 표시했다.",
+    "solutionImageSize": "medium",
     "solution": "극댓값과 극솟값을 구하려면 도함수의 부호 변화를 살핀다.\n$f'(x)=3x^2-12x+9$\n$=3(x-1)(x-3)$\n\n$x<1$에서 $f'(x)>0$,\n$1<x<3$에서 $f'(x)<0$,\n$x>3$에서 $f'(x)>0$이다.\n따라서 $x=1$에서 극대, $x=3$에서 극소이다.\n\n$M=f(1)=1-6+9+4=8$\n$m=f(3)=27-54+27+4=4$\n$M-m=8-4=4$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "M=8, m=4이므로 M−m=4, 정답은 ②이다."
   },
   {
     "id": 4,
@@ -127,15 +133,16 @@ window.questionBank=[
       "$5$"
     ],
     "answer": "④",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q4-solution.svg",
-    "solutionImageAlt": "사차함수의 네 실근: 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 사차함수 h(x)=3x⁴+4x³−12x²의 그래프에 극솟값 −32, −5와 극댓값 0이 표시되고, 수평선 y=a(예: a=−2)가 −5와 0 사이에서 곡선과 네 점에서 만난다.",
+    "solutionImageSize": "medium",
     "solution": "$h(x)=3x^4+4x^3-12x^2$로 놓으면 방정식은 $h(x)=a$이다.\n$h'(x)=12x^3+12x^2-24x$\n$=12x(x+2)(x-1)$\n도함수의 영점은 $-2,0,1$이다.\n\n도함수의 부호는 왼쪽부터\n$(-\\infty,-2)$에서 $-$,\n$(-2,0)$에서 $+$,\n$(0,1)$에서 $-$,\n$(1,\\infty)$에서 $+$이다.\n따라서 $x=-2,1$에서 극소, $x=0$에서 극대이다.\n\n$h(-2)=48-32-48=-32$\n$h(0)=0$\n$h(1)=3+4-12=-5$이다.\n\n수평선 $y=a$가 증가·감소하는 네 구간을 각각 한 번씩 만나야 서로 다른 실근이 네 개이다.\n두 극솟값 $-32,-5$보다 높고 극댓값 $0$보다 낮아야 하므로\n$-5<a<0$이다.\n양 끝값에서는 접점이 합쳐져 네 실근이 되지 않는다.\n\n가능한 정수 $a$는 $-4,-3,-2,-1$의 $4$개이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "h(x)=3x⁴+4x³−12x²의 극솟값은 −32, −5, 극댓값은 0이다. 수평선 y=a가 네 점에서 만나려면 −5보다 크고 0보다 작아야 하며(그림은 a=−2인 예), 정수 a는 −4, −3, −2, −1의 4개이다. 정답 ④"
   },
   {
     "id": 5,
@@ -193,10 +200,10 @@ window.questionBank=[
       "$4$"
     ],
     "answer": "③",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q6-solution.svg",
-    "solutionImageAlt": "포물선 y=3x-x²와 x축으로 둘러싸인 넓이, 교점 0과 3을 나타낸 해설 그래프",
-    "solutionImageCaption": "넓이 a³/6이 9/2이므로 a=3이다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=ax−x²이 x축과 원점 (0,0)과 x=a인 점에서 만나고, 둘러싸인 부분의 넓이가 9/2이다. 이 영역을 색칠했다.",
+    "solutionImageCaption": "곡선 y=ax−x²은 x=0, x=a에서 x축과 만나고, 둘러싸인 넓이 S=a³/6=9/2이므로 a³=27이다. 따라서 양수 a의 값은 3이다. 정답 ③",
+    "solutionImageSize": "medium",
     "solution": "곡선 $y=ax-x^2=x(a-x)$는 $a>0$이므로 $x=0,a$에서 $x$축과 만난다.\n$0<x<a$에서는 $ax-x^2>0$이므로, 둘러싸인 넓이는 다음과 같다.\n$S=\\displaystyle\\int_0^a(ax-x^2)\\,dx$\n$=\\left[\\dfrac{ax^2}{2}-\\dfrac{x^3}{3}\\right]_0^a$\n$=\\dfrac{a^3}{2}-\\dfrac{a^3}{3}$\n$=\\dfrac{a^3}{6}$\n\n$S=\\dfrac92$이므로\n$\\dfrac{a^3}{6}=\\dfrac92$\n$a^3=27$\n$a=3$이다. ($a>0$)\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
@@ -240,8 +247,11 @@ window.questionBank=[
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_수2_2기말.pdf",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q07-solution.png",
-    "imageKind": "diagram"
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q7-solution-v2.svg",
+    "imageKind": "diagram",
+    "solutionImageAlt": "해설 그림: 속도 v(t)의 그래프(0≤t≤7). t축 위의 연한 영역 넓이는 2, 1, 2, 1이고 t=2와 t=4 사이 t축 아래 진한 영역의 넓이는 2이다. t=1, 5, 6에서 값 2, t=3에서 값 −2를 가진다.",
+    "solutionImageCaption": "속도의 부호가 t=2와 t=4에서 바뀌어 방향을 2번 바꾼다. t=5의 위치는 2−2+1=1, t=4에서 원점으로 돌아올 때까지 움직인 거리는 2+2=4, 전체 거리는 2+2+1+2+1=8이므로 ㄴ, ㄹ이 옳고 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -268,15 +278,16 @@ window.questionBank=[
       "$4$"
     ],
     "answer": "③",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q8-solution.svg",
-    "solutionImageAlt": "도함수의 두 영점 (a=2 예시): 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 예 a=2에서 도함수 f′의 그래프가 아래로 볼록하지 않은 포물선 모양으로 x=-a/3과 x=a에서 x축과 만난다. f′는 작은 영점에서 음에서 양으로, 큰 영점에서 양에서 음으로 바뀌고 x=-1, x=1 점선이 함께 그려져 있다.",
+    "solutionImageSize": "medium",
     "solution": "극솟값을 갖는 점과 극댓값을 갖는 점을 도함수의 영점으로 구한다.\n$f'(x)=-3x^2+2ax+a^2$\n$=-(3x+a)(x-a)$\n따라서 두 영점은 $x=-\\dfrac a3,\\ a$이다.\n\n$f'$는 최고차항의 계수가 음수인 이차식이므로, 서로 다른 두 영점 중 작은 점에서 $-$에서 $+$로, 큰 점에서 $+$에서 $-$로 부호가 변한다.\n즉 작은 영점이 극소가 되는 점, 큰 영점이 극대가 되는 점이다.\n\n① $a>0$이면 $-\\dfrac a3<a$이다.\n극소가 되는 점이 $(-1,1)$ 안에 있고 극대가 되는 점이 $1$보다 커야 하므로\n$-1<-\\dfrac a3<1,\\qquad a>1$\n$0<a<3,\\qquad a>1$\n따라서 $1<a<3$이다.\n\n② $a<0$이면 $a<-\\dfrac a3$이다.\n극소가 되는 점이 $(-1,1)$ 안에 있으려면 $-1<a<0$이어야 한다.\n그러나 이때 극대가 되는 점은 $0<-\\dfrac a3<\\dfrac13<1$이므로 조건을 만족할 수 없다.\n\n③ $a=0$이면 $f'(x)=-3x^2$이고 극값이 생기지 않는다.\n\n따라서 $n=1,\\ m=3$이므로 $nm=3$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "f′(x)>0인 구간은 -a/3<x<a이다. a>0일 때 극소 x=-a/3∈(-1,1), 극대 x=a>1에서 1<a<3이고 a<0이면 불가능하므로 nm=1×3=3이다. 정답 ③"
   },
   {
     "id": 9,
@@ -312,8 +323,11 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_수2_2기말.pdf",
     "image": "assets/images/25_제일고_2학기_기말_고2_수학II/q09.png",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q09-solution.png",
-    "imageKind": "diagram"
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q9-solution-v2.svg",
+    "imageKind": "diagram",
+    "solutionImageAlt": "해설 그림: 최고차항 계수가 양수인 삼차함수 f의 그래프. x=1에서 x축을 지나고 x=10에서 x축에 접하며, x=4에서 극대이다. x가 4보다 작거나 10보다 클 때 증가, 4와 10 사이에서 감소한다. (예시 모양)",
+    "solutionImageCaption": "예: c=1/9인 모양. f(n)f′(n)≤0을 만족하는 자연수 n은 1, 4, 5, 6, 7, 8, 9, 10의 8개이다. 정답 ④",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -340,15 +354,16 @@ window.questionBank=[
       "$27$"
     ],
     "answer": "③",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q10-solution.svg",
-    "solutionImageAlt": "상자 부피의 최댓값: 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 6인 정사각형 종이의 네 귀퉁이에서 한 변이 x인 정사각형을 잘라낸 모양(밑면 한 변 6-2x)과, 그것을 접어 만든 높이 x, 밑면 한 변 6-2x인 뚜껑 없는 상자.",
+    "solutionImageSize": "medium",
     "solution": "잘라내는 작은 정사각형의 한 변을 $x$라 하자.\n상자의 높이는 $x$, 밑면은 한 변이 $6-2x$인 정사각형이다.\n따라서 $0<x<3$이고\n$V(x)=x(6-2x)^2$이다.\n\n$V'(x)=(6-2x)^2-4x(6-2x)$\n$=(6-2x)(6-6x)$\n$=12(3-x)(1-x)$이다.\n\n$0<x<1$에서는 $V'(x)>0$,\n$1<x<3$에서는 $V'(x)<0$이므로\n$V(x)$는 $x=1$에서 최대가 된다.\n\n$V(1)=1\\cdot(6-2)^2$\n$=1\\cdot16=16$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "네 귀퉁이를 x만큼 자르면 높이 x, 밑면 한 변 6-2x인 상자가 되어 V(x)=x(6-2x)²(0<x<3)이고(그림은 x에 예를 든 모양), V'(x)=12(3-x)(1-x)에서 V(x)는 0<x<1에서 증가, 1<x<3에서 감소하므로 x=1에서 최대이고 최댓값은 V(1)=16, 정답은 ③이다."
   },
   {
     "id": 11,
@@ -375,15 +390,16 @@ window.questionBank=[
       "$12$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q11-solution.svg",
-    "solutionImageAlt": "두 양의 시각이 존재할 조건: 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: t>0에서 k=-3(t-1)²+6의 그래프와 수평선 y=k. 꼭짓점은 (1,6)이고 t=0의 값 3은 제외되며, 3<k<6이면 수평선이 두 점에서 만난다.",
+    "solutionImageSize": "medium",
     "solution": "두 점의 가속도가 같아지는 때를 찾으려면 위치를 각각 두 번 미분한다.\n$P$의 위치를 $p(t)$, $Q$의 위치를 $q(t)$라 하면\n$p''(t)=-6t^2+12t+6$\n$q''(t)=2k$이다.\n\n$p''(t)=q''(t)$에서\n$-6t^2+12t+6=2k$\n$k=-3t^2+6t+3$\n$=-3(t-1)^2+6$이다.\n\n$t>0$에서 포물선 $y=-3(t-1)^2+6$과 수평선 $y=k$가 서로 다른 두 점에서 만나야 한다.\n꼭짓점은 $(1,6)$이고, 제외되는 끝점 $t=0$의 함수값은 $3$이다.\n따라서 두 양의 교점이 생기는 조건은\n$3<k<6$이다.\n$k=3$에서는 한 교점이 $t=0$이므로 제외되고, $k=6$에서는 교점이 하나뿐이다.\n\n가능한 정수는 $k=4,5$이므로\n$4+5=9$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "예: 3<k<6인 k의 수평선은 그래프와 t>0에서 두 점에서 만난다. 이때 정수 k는 4, 5이므로 합은 9이다. 정답 ②"
   },
   {
     "id": 12,
@@ -418,8 +434,11 @@ window.questionBank=[
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_수2_2기말.pdf",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q12-solution.png",
-    "imageKind": "diagram"
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q12-solution-v2.svg",
+    "imageKind": "diagram",
+    "solutionImageAlt": "해설 그림: 주기가 4인 연속함수 f의 그래프 두 주기. 한 주기 [−1, 3]에서 (−1,0), (0,3), (3,0)을 잇는 삼각형을 색칠했고 두 부분의 넓이 3/2와 9/2가 쓰여 있으며, 아래 선분이 주기 4를 나타낸다. 다음 주기는 (4,3), (7,0)으로 같은 모양이 반복된다.",
+    "solutionImageCaption": "f(x+4)=f(x)이므로 한 주기 [−1, 3]의 적분값은 3/2+9/2=6이고, 구간 [−1, 19]는 5주기이므로 정적분은 6×5=30이다. 정답 ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -514,15 +533,16 @@ window.questionBank=[
       "$5$"
     ],
     "answer": "①",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q15-solution.svg",
-    "solutionImageAlt": "도함수의 최댓값: 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수 y=f(x)의 그래프에서 f(0)=f(1)=f(2)=7을 나타내는 수평선 y=7과 세 점, 점 (1,7)에서의 접선 y=x+6(기울기 1, y절편 (0,6))이 표시된 그림.",
+    "solutionImageSize": "medium",
     "solution": "세 함수값이 같다는 조건을 먼저 인수분해에 이용한다.\n$f(x)=Ax^3+Bx^2+Cx+D\\quad(A\\ne0)$라 하자.\n$f(0)=f(1)=f(a)$이고 $a\\ne0,1$이므로\n$f(x)-f(0)=Ax(x-1)(x-a)$이다.\n\n이를 전개하면\n$f'(x)=A\\{3x^2-2(1+a)x+a\\}$이다.\n따라서\n$f'(0)=Aa$,\n$f'(a)=A\\{3a^2-2a(1+a)+a\\}$\n$=Aa(a-1)$이다.\n$f'(0)=f'(a)$에서\n$Aa=Aa(a-1)$이다.\n$A\\ne0,\\ a\\ne0$이므로 $1=a-1$,\n즉 $a=2$이다.\n\n따라서\n$f'(x)=A(3x^2-6x+2)$\n$=A\\{3(x-1)^2-1\\}$이다.\n$f'$의 최댓값이 존재하려면 $A<0$이어야 한다.\n꼭짓점 $x=1$에서 그 최댓값은 $-A=1$이므로 $A=-1$이다.\n\n$f(x)=-x(x-1)(x-2)+D$이고,\n$x=1$에서 $f(1)=D,\\ f'(1)=1$이다.\n접선 $y=f'(1)(x-1)+f(1)$의 $y$절편은 $D-1=6$이므로 $D=7$이다.\n\n$f(3)=-3\\cdot2\\cdot1+7=1$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "f(0)=f(1)=f(2)이므로 f(x)=−x(x−1)(x−2)+f(0)이고, f′의 최댓값 1은 x=1에서의 기울기이다. (1,f(1))에서의 접선 y=x+f(1)−1의 y절편이 6이므로 f(1)=7이고 f(3)=1이다. 정답 ①"
   },
   {
     "id": 16,
@@ -549,15 +569,16 @@ window.questionBank=[
       "$9$"
     ],
     "answer": "①",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q16-solution.svg",
-    "solutionImageAlt": "닫힌구간의 최댓값과 최솟값: 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: f(x)=2x³−9x²+12x의 그래프. 극대점 (1,5), 극소점 (2,4)와 높이가 5로 다시 같아지는 점 (5/2,5)를 점선으로 표시했다. 구간 [1,t]에서 t=2와 t=5/2가 표시되어 있다.",
+    "solutionImageSize": "medium",
     "solution": "먼저 도함수의 부호와 주요 함수값을 구한다.\n$f'(x)=6x^2-18x+12$\n$=6(x-1)(x-2)$이다.\n$1<x<2$에서 $f'(x)<0$, $x>2$에서 $f'(x)>0$이다.\n또한\n$f(1)=2-9+12=5$,\n$f(2)=16-36+24=4$이다.\n\n구간 $[1,t]$에서 최솟값이 $4$가 되려면 $x=2$가 포함되어야 하므로 $t\\ge2$이다.\n이때 최솟값은 $4$이며, 최댓값이 $5$가 되려면 오른쪽 끝의 함수값도 $5$를 넘지 않아야 한다.\n즉 $f(t)\\le5$이다.\n\n$f(t)-5=2t^3-9t^2+12t-5$\n$=(t-1)^2(2t-5)$이다.\n$t\\ge2$이면 $(t-1)^2>0$이므로\n$f(t)\\le5\\iff2t-5\\le0$\n$\\iff t\\le\\dfrac52$이다.\n\n따라서 $2\\le t\\le\\dfrac52$이고\n$a=\\dfrac52,\\quad b=2$,\n$ab=\\dfrac52\\cdot2=5$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "f(1)=5가 극댓값, f(2)=4가 극솟값이다. 최솟값 4를 가지려면 t≥2이고, 최댓값 5를 유지하려면 f(t)≤5이므로 2≤t≤5/2이다. t의 최댓값 a=5/2, 최솟값 b=2이므로 ab=5이다. 정답 ①"
   },
   {
     "id": 17,
@@ -584,15 +605,16 @@ window.questionBank=[
       "$5$"
     ],
     "answer": "④",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q17-solution.svg",
-    "solutionImageAlt": "도함수의 극솟값: 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 0과 3 사이에서 f의 도함수 f′(x)=2x²−6x+9의 그래프. 아래로 볼록한 포물선이고 x=3/2에서 가장 낮은 점이 극소로 표시되어 있다.",
+    "solutionImageSize": "medium",
     "solution": "$0<x<3$이므로 적분변수 $t$가 $x$보다 작은지 큰지에 따라 절댓값을 나눈다.\n$0\\le t\\le x$에서 $|x-t|=x-t$,\n$x\\le t\\le3$에서 $|x-t|=t-x$이다.\n\n따라서\n$f(x)=\\displaystyle\\int_0^x(x-t)^2\\,dt-\\int_x^3(t-x)^2\\,dt$이다.\n\n첫 적분은\n$\\displaystyle\\int_0^x(x-t)^2\\,dt$\n$=\\left[-\\dfrac{(x-t)^3}{3}\\right]_0^x$\n$=0-\\left(-\\dfrac{x^3}{3}\\right)=\\dfrac{x^3}{3}$이다.\n\n둘째 적분은\n$\\displaystyle\\int_x^3(t-x)^2\\,dt$\n$=\\left[\\dfrac{(t-x)^3}{3}\\right]_x^3$\n$=\\dfrac{(3-x)^3}{3}$이다.\n\n그러므로\n$f(x)=\\dfrac{x^3}{3}-\\dfrac{(3-x)^3}{3}$\n$f'(x)=x^2+(3-x)^2$\n$=2x^2-6x+9$\n$=2\\left(x-\\dfrac32\\right)^2+\\dfrac92$이다.\n\n$x=\\dfrac32$는 정의역 $0<x<3$에 포함된다.\n제곱항이 $0$이 될 때 $f'(x)$가 가장 작으므로 극솟값은 $\\dfrac92$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "f′(x)=2x²−6x+9=2(x−3/2)²+9/2는 정의역 안의 x=3/2에서 최소이므로 f′의 극솟값은 9/2이고, 정답은 ④이다."
   },
   {
     "id": 18,
@@ -619,15 +641,16 @@ window.questionBank=[
       "$3$"
     ],
     "answer": "⑤",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q18-solution.svg",
-    "solutionImageAlt": "도함수의 중근과 부호: 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 사차함수 f의 도함수 f′의 그래프로, x=a에서 x축에 접하지만 계속 음수이고, x=3에서 음수에서 양수로 바뀌어 f가 극소가 된다.",
+    "solutionImageSize": "medium",
     "solution": "도함수를 구하면\n$f'(x)=3(x-a)^2(x-b)+(x-a)^3$\n$=(x-a)^2\\{3(x-b)+(x-a)\\}$\n$=(x-a)^2(4x-a-3b)$이다.\n\n$x=a$에서는 제곱인수 때문에 $f'(x)$의 부호가 바뀌지 않는다.\n반면 $a<b$이므로\n$r=\\dfrac{a+3b}{4}$는 $a<r<b$를 만족하고,\n$f'(x)$는 $r$에서 음수에서 양수로 변한다.\n따라서 함수가 극솟값을 갖는 점은 $x=r$이다.\n\n$x=3$에서 극솟값을 가지므로\n$\\dfrac{a+3b}{4}=3$\n$a+3b=12$\n$a=12-3b$이다.\n\n$a<b$를 적용하면\n$12-3b<b$\n$12<4b$\n$b>3$이다.\n$b$는 정수이므로 $b\\ge4$이다.\n\n$f'(x)=0$의 서로 다른 두 근은 $a$와 $3$이고, 그 합은\n$a+3=(12-3b)+3=15-3b$이다.\n이는 $b$가 가장 작은 $4$일 때 최대이다.\n$b=4$이면 $a=0$이고 두 근 $0,3$은 서로 다르다.\n따라서 최댓값은 $15-12=3$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "예: a=0, b=4로 그렸다. f′의 서로 다른 두 근은 a와 3이고 합은 15-3b이므로 b=4, a=0일 때 최대 3이다. 정답 ⑤"
   },
   {
     "id": 19,
@@ -654,15 +677,16 @@ window.questionBank=[
       "$34$"
     ],
     "answer": "②",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q19-solution.svg",
-    "solutionImageAlt": "f(x)와 구간 최댓값 g(x): 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원점 대칭인 f의 그래프(실선)와 구간 [t,t+1]에서의 최댓값 g(t)의 그래프(점선). x=−3/2부터 0까지 두 곡선 사이를 x=−1에서 나눠 S₁, S₂로 색칠했다.",
+    "solutionImageSize": "medium",
     "solution": "원점 대칭인 함수는 $f(-x)=-f(x)$이다.\n$x\\ge0$에서 $f(x)=-x^2+2x=1-(x-1)^2$이므로\n$x<0$에서는\n$f(x)=-f(-x)=x^2+2x=(x+1)^2-1$이다.\n\n즉 $x=-1$에서 최솟값 $-1$, $x=1$에서 최댓값 $1$을 갖는다.\n구간 $[t,t+1]$의 위치에 따라 양 끝값 또는 $1$을 비교하여 최댓값함수 $g(t)$를 구한다.\n\n① $t\\le-\\dfrac32$: 왼쪽 끝의 값이 크므로\n$g(t)=f(t)=t^2+2t$이다.\n\n② $-\\dfrac32\\le t\\le-1$: 오른쪽 끝의 값이 크므로\n$g(t)=f(t+1)=(t+1)^2+2(t+1)$\n$=t^2+4t+3$이다.\n실제로 $f(t+1)-f(t)=2t+3\\ge0$이다.\n\n③ $-1\\le t\\le0$: 오른쪽 끝점이 $0$ 이상 $1$ 이하이므로\n$g(t)=f(t+1)=-(t+1)^2+2(t+1)$\n$=1-t^2$이다.\n\n④ $0\\le t\\le1$: 구간에 $x=1$이 포함되므로 $g(t)=1$이다.\n\n⑤ $t\\ge1$: $f$가 감소하므로 왼쪽 끝에서 최대,\n$g(t)=f(t)=-t^2+2t$이다.\n\n구하는 구간 $-\\dfrac32\\le x\\le0$에서 항상 $g(x)\\ge f(x)$이다.\n$x=-1$을 기준으로 나누어 넓이를 구한다.\n\n$S_1=\\displaystyle\\int_{-3/2}^{-1}\\{(x^2+4x+3)-(x^2+2x)\\}\\,dx$\n$=\\displaystyle\\int_{-3/2}^{-1}(2x+3)\\,dx$\n$=\\left[x^2+3x\\right]_{-3/2}^{-1}$\n$=-2-\\left(-\\dfrac94\\right)=\\dfrac14$이다.\n\n$S_2=\\displaystyle\\int_{-1}^{0}\\{(1-x^2)-(x^2+2x)\\}\\,dx$\n$=\\displaystyle\\int_{-1}^{0}(1-2x^2-2x)\\,dx$\n$=\\left[x-\\dfrac23x^3-x^2\\right]_{-1}^{0}$\n$=0-\\left(-1+\\dfrac23-1\\right)=\\dfrac43$이다.\n\n전체 넓이는\n$S=S_1+S_2=\\dfrac14+\\dfrac43=\\dfrac{19}{12}$이다.\n서로소인 자연수 $p=12$, $q=19$이므로\n$p+q=31$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "파란 S₁=1/4, 주황 S₂=4/3이므로 넓이는 19/12이고 p=12, q=19이다. p+q=31이다. 정답 ②"
   },
   {
     "id": 20,
@@ -710,15 +734,16 @@ window.questionBank=[
     "wide": false,
     "content": "<div class=\"question-note-box\"><b>서술형 2</b></div><br>직선 $x=t$가 곡선 $y=x^3$, 직선 $y=x$와 만나는 점을 각각 $P$, $Q$라 하자. 선분 $PQ$를 $3:1$로 외분하는 점을 $R$이라 할 때, 점 $R$의 $y$좌표를 $f(t)$라 하자. 함수 $f(t)$의 극솟값과 극댓값을 구하시오. [6점]",
     "answer": "극솟값 −1, 극댓값 1",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q21-solution.svg",
-    "solutionImageAlt": "외분점 높이 함수의 극값: 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=x³과 직선 y=x, 직선 x=t(예: t=3/2)가 만나는 점 P, Q와 선분 PQ를 3:1로 외분하는 점 R이 표시되어 있다. R의 y좌표를 나타내는 함수 f(x)의 그래프가 함께 그려져 있고, x=-1에서 극소, x=1에서 극대인 점이 표시되어 있다.",
+    "solutionImageSize": "medium",
     "solution": "직선 $x=t$와 곡선 $y=x^3$, 직선 $y=x$의 교점은\n$P=(t,t^3)$,\n$Q=(t,t)$이다.\n\n점 $R$은 $P$와 $Q$를 $3:1$로 외분하므로 외분점 공식에 의해\n$R=\\left(\\dfrac{3t-t}{3-1},\\,\\dfrac{3t-t^3}{3-1}\\right)$\n$=\\left(t,\\dfrac{3t-t^3}{2}\\right)$이다.\n따라서 $R$의 $y$좌표 함수는\n$f(t)=\\dfrac{3t-t^3}{2}$이다.\n\n$f'(t)=\\dfrac{3-3t^2}{2}$\n$=\\dfrac32(1-t)(1+t)$이다.\n도함수의 영점은 $t=-1,1$이다.\n\n$t<-1$에서 $f'(t)<0$,\n$-1<t<1$에서 $f'(t)>0$,\n$t>1$에서 $f'(t)<0$이다.\n따라서 $t=-1$에서는 감소에서 증가로 바뀌어 극솟값을,\n$t=1$에서는 증가에서 감소로 바뀌어 극댓값을 갖는다.\n\n$f(-1)=\\dfrac{-3+1}{2}=-1$\n$f(1)=\\dfrac{3-1}{2}=1$이다.\n따라서 극솟값은 $-1$, 극댓값은 $1$이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_수2_2기말.pdf"
+    "sourcePdf": "2025_제일고2_수2_2기말.pdf",
+    "solutionImageCaption": "예: t=3/2일 때 P(t, t³), Q(t, t), R(t, (3t-t³)/2)이고 f(t)=(3t-t³)/2에서 f′(t)=0인 t=-1, 1에서 극값을 갖는다. 극솟값은 -1, 극댓값은 1이다."
   },
   {
     "id": 22,
@@ -778,8 +803,10 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_수2_2기말.pdf",
     "image": "assets/images/25_제일고_2학기_기말_고2_수학II/q23.png",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q23-solution.svg",
-    "solutionImageAlt": "삼차함수의 세 실근 조건: 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
-    "imageKind": "diagram"
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 도함수 y=f′(x)의 그래프로 (−2,0), (2,0)에서 x축과 만나고 (0,3)을 지난다. 아래 패널은 f(x)=3x−x³/4의 그래프로 x=−2에서 극소 −4, x=2에서 극대 4이며, 점선 y=±4 사이에 수평선 y=k가 곡선과 세 점에서 만난다.",
+    "imageKind": "diagram",
+    "solutionImageCaption": "f′(x)=3−3x²/4이므로 f(x)=3x−x³/4이고 극솟값 f(−2)=−4, 극댓값 f(2)=4이다. y=k가 서로 다른 세 점에서 만나려면 k가 −4보다 크고 4보다 작아야 하므로 정수 k는 −3부터 3까지 7개이다.",
+    "solutionImageSize": "medium"
   }
 ];

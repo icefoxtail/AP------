@@ -62,7 +62,7 @@ def _sample_graph_boundary(rows,vp):
     rows are joined left to right. A boundary that leaves its declared rows is refused, never silently bridged."""
     points=[]
     for row in rows:
-        result=sample(row['expression'],row['domain'],vp,critical_x=[])
+        result=sample(row['expression'],row['domain'],vp,critical_x=list(row.get('criticalX') or []))   # (G18c) a row may name the x values a curve bends at (a square root's start, an |f| corner)
         if len(result['branches'])!=1 or not result['branches'][0]:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
         pts=[vp.screen(value) for value in result['branches'][0]]
         if points and pts and abs(points[-1][0]-pts[0][0])<=1e-9:pts=pts[1:]
@@ -81,6 +81,7 @@ FREE_LABEL_RINGS=(6,12,18)   # px: how far a centred free text label may slide f
 FREE_LABEL_GAPS=(8,12,18,26) # px: the gaps a free text label beside a point or in a named direction tries
 LINE_AT_NAMED={'START':.08,'END':.92}   # lineAt names: a line label near the left (lower) end / the right (upper) end of the drawn line
 LINE_AT_BAND=.25            # the wide search of a lineAt label stays within this fraction of the line round the stated place
+BOLD_CURVE_WIDTH=3.2           # curveWeight BOLD on a FUNCTION_GRAPH (G18a): the heavy curve of a figure with several (axisOverlapShape width)
 ACCENT_STROKE='#c0392b'      # emphasis ACCENT on a plane figure's segment (the same red as a solid figure's accent edge)
 GUIDE_STROKE='#8a8a8a'      # a callout's guide line from the main figure to the pulled-out copy: light grey, dotted (E37)
 ANGLE_EMPHASIS_STROKES={1:'#c0392b',2:'#1f5fa8',3:'#2e7d32'}   # emphasisGroup of an angle mark: red, blue, green arcs
@@ -428,7 +429,7 @@ def prepare(spec):
     if pair_features is not None:
         if pair_features.get('schemaVersion')!='EXP_LOG_PAIR_FEATURES_v1':raise ValueError('EXP_LOG_PAIR_FEATURE_INVENTORY_REQUIRED')
         for row in pair_features.get('curves',[]):critical.append((float(Fraction(row['referencePoint']['x'])),float(Fraction(row['referencePoint']['y']))))
-    if isinstance(axis_option,bool) and axis_option:critical.extend([(0,0),(1,0),(0,1)])
+    if isinstance(axis_option,bool) and axis_option:critical.extend([(0,0)] if spec['viewport'].get('declaredScale') is True else [(0,0),(1,0),(0,1)])   # (G18c) an author-declared axisScale frame keeps its proportion: no 8 % widening for the unit points (0,1) / (1,0) that the window may not reach
     vp=for_spec(spec,critical)
     if not vp.equal and any(isinstance(v,(Circle,CircularArc)) for v in geometry.values()):raise ValueError('CIRCLE_REQUIRES_EQUAL_UNITS')
     primitives=[];labels=[];obstacles=[];sampling=[]
@@ -492,7 +493,7 @@ def prepare(spec):
             # A plain Korean title (a name with its unit) is a text label that must find room (never suppressed); the letter is a math label.
             if title is not None:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':title,'layoutText':title,'font':13,'priority':4,'allowSuppress':False,'math':False,'bindText':True})
             else:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':text,'font':13,'priority':4,'allowSuppress':True,'math':True})
-        visible_axes=[]
+        visible_axes=[];fraction_text={}
         if show_x:visible_axes.append(('x',xmin,xmax))
         if show_y:visible_axes.append(('y',ymin,ymax))
         for axis,lo,hi in visible_axes:
@@ -501,6 +502,8 @@ def prepare(spec):
                 values=[(index*step,index) for index in range(math.ceil(lo/step),math.floor(hi/step)+1)]
             else:
                 values=[(float(Fraction(str(raw_value))),None) for raw_value in axis_tick_values.get(axis,[])]
+                # (G18c) a tick written as a fraction string ('2/9') is shown as that fraction, not as the decimal 0.2222222222
+                fraction_text.update({(axis,float(Fraction(str(raw_value)))):str(Fraction(str(raw_value))) for raw_value in axis_tick_values.get(axis,[]) if isinstance(raw_value,str) and '/' in raw_value and Fraction(str(raw_value)).denominator!=1})
             reference_positions=[]
             for feature in (exponential_features,logarithmic_features):
                 if isinstance(feature,dict) and isinstance(feature.get('referencePoint'),dict):
@@ -523,7 +526,7 @@ def prepare(spec):
                     oid='model-x-unit' if axis=='x' else 'model-y-unit'
                     if axis_tick_values is not None and not any(item['id']==oid for item in primitives):primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
                 else:primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
-                text=display_token.replace('-','−');tick_pi=None
+                text=fraction_text.get((axis,value),display_token).replace('-','−');tick_pi=None
                 if tick_pi_labels is not None:
                     matches=[row for row in tick_pi_labels if axis=='x' and abs(float(row['value'])-value)<=1e-9]
                     if len(matches)!=1:raise ValueError('TICK_PI_LABEL_MISMATCH')
@@ -540,6 +543,18 @@ def prepare(spec):
                 labels.append(label)
         if tick_callouts:raise ValueError('TICK_LABEL_CALLOUT_OWNER_NOT_FOUND')
         if tick_pi_labels is not None and len(used_pi)!=len(tick_pi_labels):raise ValueError('TICK_PI_LABEL_UNUSED')
+    # (G18a) multi-curve-figure: the dashed asymptotes of its RATIONAL curves, one line per asymptote across the frame, named by curve (an asymptote on an axis is the axis and is not drawn).
+    for mark in spec['displayFacts'].get('multiCurveMarks',[]):
+        if isinstance(mark,dict) and mark.get('kind')=='ENDPOINT':
+            # (G18a-4) the open (white) or closed (dark) dot at an end of an emphasised stretch
+            if mark.get('state') not in ('OPEN','CLOSED') or not isinstance(mark.get('curve'),str) or not isinstance(mark.get('index'),int) or mark.get('which') not in ('from','to') or any(isinstance(mark.get(key),bool) or not isinstance(mark.get(key),(int,float)) for key in ('x','y')):raise ValueError('MULTI_CURVE_MARK_INVALID')
+            primitive({'id':'emphasis-'+mark['curve']+'-'+str(mark['index'])+'-'+mark['which'],'kind':'circle','at':vp.screen((mark['x'],mark['y'])),'radius':4.0,'token':'indicator','layer':65,'role':'emphasis-endpoint','state':mark['state'],'fill':'#fff' if mark['state']=='OPEN' else '#111'},'circle')
+            continue
+        if not isinstance(mark,dict) or mark.get('kind')!='ASYMPTOTE' or mark.get('axis') not in ('vertical','horizontal') or not isinstance(mark.get('curve'),str) or isinstance(mark.get('value'),bool) or not isinstance(mark.get('value'),(int,float)):raise ValueError('MULTI_CURVE_MARK_INVALID')
+        xmin,xmax,ymin,ymax=vp.bounds
+        if mark['axis']=='vertical':a,b=vp.screen((mark['value'],ymin)),vp.screen((mark['value'],ymax))
+        else:a,b=vp.screen((xmin,mark['value'])),vp.screen((xmax,mark['value']))
+        primitive({'id':'asymptote-'+mark['curve']+('-v' if mark['axis']=='vertical' else '-h'),'kind':'line','from':a,'to':b,'token':'auxiliary','layer':25,'role':'asymptote','dash':'5 4','branch':'ASYM_'+mark['curve']+('_V' if mark['axis']=='vertical' else '_H')},'line')
     rational_features=spec['displayFacts'].get('rationalGraphFeatures')
     if rational_features is not None and rational_features.get('schemaVersion')=='RATIONAL_CONSTANT_OVER_LINEAR_FEATURES_v1':
         # Inverse proportion: an asymptote on a coordinate axis is the axis itself, so only an off-axis vertical asymptote is drawn (dashed).
@@ -930,13 +945,13 @@ def prepare(spec):
                 label['candidateCenters']=_region_label_centres([polygon],obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(polygon[0])
                 labels.append(label)
         elif kind=='FUNCTION_GRAPH':
-            result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]))
+            result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]),clip_refine=obj.get('clipRefine') is True)
             sampling.append({'id':oid,**{k:v for k,v in result.items() if k!='branches'}})
             # The pieces of one piecewise function (branch PIECE_n) are all the main curve, not a first curve and secondary ones.
             main=graph_index==0 or str(obj.get('branch','')).startswith(('PIECE_','G_PIECE_'))
             curve_style=obj.get('curveStyle')
             for index,branch in enumerate(result['branches']):
-                primitive({'id':oid+'-branch-'+str(index),'kind':'polyline','points':[vp.screen(p) for p in branch],'token':'mainCurve' if main else 'secondaryCurve','layer':40 if main else 35,'role':'curve',**({'branch':obj['branch']} if 'branch' in obj else {}),**({'dash':'6 4'} if curve_style=='DASHED' else {'stroke':ACCENT_STROKE} if curve_style=='ACCENT' else {}),**({'stroke':PALETTE[obj['color']]['line']} if obj.get('color') else {})},'curve')
+                primitive({'id':oid+'-branch-'+str(index),'kind':'polyline','points':[vp.screen(p) for p in branch],'token':'mainCurve' if main else 'secondaryCurve','layer':41 if obj.get('curveWeight')=='BOLD' else 40 if main else 35,'role':'curve',**({'branch':obj['branch']} if 'branch' in obj else {}),**({'dash':'6 4'} if curve_style=='DASHED' else {'stroke':ACCENT_STROKE} if curve_style=='ACCENT' else {}),**({'stroke':PALETTE[obj['color']]['line']} if obj.get('color') else {}),**({'strokeWidth':BOLD_CURVE_WIDTH} if obj.get('curveWeight')=='BOLD' else {})},'curve')
             graph_index+=1
         elif kind=='PERPENDICULAR_MARK':
             at=vp.screen(obj['at']);vectors=[]
@@ -1254,6 +1269,35 @@ def prepare(spec):
     for label in region_labels:label['regionLeader']['regions']=[{'id':row['id'],'polygons':row['polygons']} for row in region_areas]
     for label in labels:
         if 'wedgeSearch' in label:label['wedgeSearch']['others']=[sector for other,sector in angle_sectors.items() if other!=label.get('target') and label.get('target') not in angle_over.get(other,())]
+    # (G18b) multi-curve figure: a curve's formula (nearCurve) stands beside its own curve and an asymptote's value (nearLine) at the end of its own dashed line. Here, with every stroke drawn,
+    # the label learns its own polyline(s) and the strokes it must stay clear of in screen px; label_layout places it by them once the label's size is known.
+    near_labels=[label for label in labels if 'nearCurve' in label or 'nearLine' in label]
+    if near_labels:
+        # the curve rows carry their drawing object's id: f-<curve>[-left|-right|-positive|-negative]-branch-<n> (a curve), e-<curve>-<n>-branch-<k> (an emphasised stretch of it)
+        curve_rows=[row for row in primitives if row.get('role')=='curve' and row.get('kind')=='polyline' and len(row['points'])>1]
+        asymptote_rows=[row for row in primitives if row.get('role')=='asymptote' and row.get('kind')=='line']
+        def thin(points):
+            kept=[tuple(points[0])]
+            for point in points[1:-1]:
+                if math.dist(point,kept[-1])>=4.0:kept.append(tuple(point))
+            kept.append(tuple(points[-1]));return kept   # about one vertex per 4 px: enough to place a label, far fewer distances to measure
+        def owns(row_id,ident):return re.fullmatch(r'f-'+re.escape(ident)+r'(?:-left|-right|-positive|-negative)?-branch-\d+',row_id) is not None
+        def emphasis(row_id):return re.fullmatch(r'e-.+-\d+-branch-\d+',row_id) is not None
+        for label in near_labels:
+            if 'nearCurve' in label:
+                ident=label['nearCurve']
+                if not isinstance(ident,str) or label['kind']!='EQUATION_LABEL':raise ValueError('INVALID_NEAR_CURVE:'+label['id'])
+                own=[thin(row['points']) for row in curve_rows if owns(row['id'],ident)]
+                if not own:raise ValueError('NEAR_CURVE_NOT_DRAWN:'+label['id'])
+                others=[thin(row['points']) for row in curve_rows if not owns(row['id'],ident) and not emphasis(row['id'])]
+                label['nearCurve']={'own':own,'others':others,'end':label.get('nearEnd')=='END','id':ident}
+            else:
+                ident=label['nearLine']
+                own=next((row for row in asymptote_rows if row['id']==ident),None)
+                if not isinstance(ident,str) or own is None or label['kind'] not in {'GRAPH_ANNOTATION','EQUATION_LABEL'}:raise ValueError('NEAR_LINE_NOT_DRAWN:'+label['id'])
+                others=[[tuple(row['from']),tuple(row['to'])] for row in asymptote_rows if row is not own]   # an asymptote value belongs to the nearest dashed line; the curves have the layout's own clearance
+                label['nearLine']={'own':[tuple(own['from']),tuple(own['to'])],'others':others,'end':label.get('nearEnd','END')}
+            label.pop('nearEnd',None)
     equation_centers=spec['displayFacts'].get('equationLabelCenters',{})
     if not isinstance(equation_centers,dict):raise ValueError('INVALID_EQUATION_LABEL_CENTERS')
     for label_id,center in equation_centers.items():

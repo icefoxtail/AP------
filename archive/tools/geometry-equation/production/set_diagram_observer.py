@@ -268,7 +268,7 @@ def inside_contours(x, y, contours):
 
 
 # --- counts (the opt-in headcount labels of a Venn diagram) ---------------------------------------------------------------------------------
-VENN_KEYS = ('kind', 'sets', 'elements', 'shade', 'subset', 'universe', 'countStyle')
+VENN_KEYS = ('kind', 'sets', 'elements', 'shade', 'subset', 'disjoint', 'universe', 'countStyle')
 SET_KEYS = ('id', 'name', 'count', 'countUnit')
 UNIVERSE_KEYS = ('name', 'count', 'countUnit')
 COUNT_PATTERN = re.compile(r'^(0|[1-9][0-9]{0,3})$')
@@ -367,6 +367,20 @@ def audit_venn(plan, doc):
     if len(universal) != 1:
         fail('SD_UNIVERSAL_RECT')
     rect = (num(universal[0], 'x'), num(universal[0], 'y'), num(universal[0], 'width'), num(universal[0], 'height'))
+    # G17: the drawn circles show what the plan says about the sets: every circle lies in the universal rectangle, each set of a subset chain (innermost
+    # first) lies wholly inside the next one, and the two sets of a disjoint pair are drawn apart
+    for set_id, ellipse in drawn.items():
+        if ellipse['cx'] - ellipse['rx'] < rect[0] or ellipse['cx'] + ellipse['rx'] > rect[0] + rect[2] or ellipse['cy'] - ellipse['ry'] < rect[1] or ellipse['cy'] + ellipse['ry'] > rect[1] + rect[3]:
+            doc.err('SD_SET_OUTSIDE_UNIVERSAL:' + set_id)
+    chain = plan.get('subset') or []
+    for inner_id, outer_id in zip(chain, chain[1:]):
+        inner, outer = drawn.get(inner_id), drawn.get(outer_id)
+        if inner and outer and math.hypot(inner['cx'] - outer['cx'], inner['cy'] - outer['cy']) + inner['rx'] > outer['rx'] - 1:
+            doc.err('SD_SUBSET_GEOMETRY:%s:%s' % (inner_id, outer_id))
+    for pair in plan.get('disjoint') or []:
+        first, second = drawn.get(pair[0]), drawn.get(pair[1])
+        if first and second and math.hypot(first['cx'] - second['cx'], first['cy'] - second['cy']) < first['rx'] + second['rx'] + 2:
+            doc.err('SD_DISJOINT_GEOMETRY:%s:%s' % (pair[0], pair[1]))
     style, counts, uni = count_plan(plan)
     if style == 'n' and uni['count'] is None and not any(counts.values()):
         fail('SD_COUNT_INVALID')
@@ -453,8 +467,8 @@ def audit_venn(plan, doc):
             for other in sets:
                 if other == set_id:
                     continue
-                if subset and subset[0] == set_id and subset[1] == other:
-                    continue  # the inner set of B-in-A is reached across the outer circle's line
+                if subset and set_id in subset and other in subset and subset.index(other) > subset.index(set_id):
+                    continue  # the inner set of B-in-A (or of a chain) is reached across the outer circles' lines
                 for k in range(1, 20):
                     px, py = start[0] + (end[0] - start[0]) * k / 20, start[1] + (end[1] - start[1]) * k / 20
                     if inside_ellipse(px, py, drawn[other]) != inside_ellipse(start[0], start[1], drawn[other]):
@@ -572,8 +586,66 @@ def segment_hits_box(a, b, box):
     return high > 0 and low < 1
 
 
+MAPPING_NUMBER = re.compile('^[-\u2212]?(?:[0-9]{1,2}(?:/[0-9]{1,2})?|[0-9]{0,2}\u221a[0-9]{1,2})$')
+
+
+def mapping_shown(text):
+    """The text a mapping element must carry in the FINAL SVG: an ordinary short element as typed, a signed number / fraction / root (G17) as the
+    math label whose TeX has the real minus (written '-' in TeX) and \\sqrt for the root sign. This observer's own copy of the rule."""
+    if not isinstance(text, str) or not text:
+        fail('SD_ELEMENT_TEXT_PLAN')
+    if len(text) <= 4 and (re.search('[\uac00-\ud7a3]', text) or re.fullmatch('[A-Za-z0-9]+', text)):
+        return text
+    if not MAPPING_NUMBER.fullmatch(text):
+        fail('SD_ELEMENT_TEXT_PLAN')
+    return re.sub('\u221a([0-9]+)', r'\\sqrt{\1}', text.replace('\u2212', '-'))
+
+
+ARROW_PALETTE_LINE = {'BLUE': '#1f5fa8', 'WARM': '#b85c00', 'GREEN': '#2e7d32', 'ROSE': '#b8325f', 'VIOLET': '#6b46b3'}      # this observer's own copy of the C1 line colours
+ARROW_PLAIN = '#111'
+
+
+def mapping_arrow_colours(plan):
+    """G17: from the plan alone, {arrow index: palette name or None} (a highlighted path's colour, else its group's) and the set of arrow indices on a highlighted path."""
+    columns = plan['columns']
+    ids = [c['id'] for c in columns]
+    arrows = plan['arrows']
+    colour = {}
+    for group in plan.get('arrowGroups') or []:
+        if group.get('color') is None:
+            continue
+        if group['color'] not in ARROW_PALETTE_LINE or group['from'] not in ids or group['to'] not in ids:
+            fail('SD_ARROW_GROUP_PLAN')
+        a, b = ids.index(group['from']), ids.index(group['to'])
+        for index, arrow in enumerate(arrows):
+            if arrow['from']['column'] == a and arrow['to']['column'] == b:
+                colour[index] = group['color']
+    on_path = set()
+    for path in plan.get('highlightPaths') or []:
+        cells = []
+        for k, text in enumerate(path['path']):
+            column = int(path.get('startColumn', 0)) + k
+            if column >= len(columns):
+                fail('SD_PATH_PLAN')
+            shown = [t.replace('-', '\u2212') for t in columns[column]['elements']]
+            if text.replace('-', '\u2212') not in shown:
+                fail('SD_PATH_PLAN')
+            cells.append((column, shown.index(text.replace('-', '\u2212'))))
+        for (c0, e0), (c1, e1) in zip(cells, cells[1:]):
+            found = [i for i, a in enumerate(arrows) if (a['from']['column'], a['from']['element'], a['to']['column'], a['to']['element']) == (c0, e0, c1, e1)]
+            if len(found) != 1:
+                fail('SD_PATH_PLAN')
+            on_path.add(found[0])
+            if path.get('color') is not None:
+                if path['color'] not in ARROW_PALETTE_LINE:
+                    fail('SD_PATH_PLAN')
+                colour[found[0]] = path['color']
+    return colour, on_path
+
+
 def audit_mapping(plan, doc):
     columns = plan['columns']
+    arrow_colour, path_arrows = mapping_arrow_colours(plan)
     ovals = doc.role('ellipse', 'oval')
     drawn = {int(e.get('data-column', -1)): ellipse_of(e) for e in ovals}
     if len(ovals) != len(columns) or set(drawn) != set(range(len(columns))):
@@ -590,6 +662,22 @@ def audit_mapping(plan, doc):
         box = doc.label_box(labels[0])
         if box[1] + box[3] > ordered[index]['cy'] - ordered[index]['ry'] + 4:
             doc.err('SD_COLUMN_NAME_PLACE:%d' % index)
+    group_labels = doc.label_role('arrow-group-name')
+    wanted_groups = plan.get('arrowGroups') or []
+    if len(group_labels) != len(wanted_groups):
+        doc.err('SD_ARROW_GROUP_LABEL_SET')
+    ids = [c['id'] for c in columns]
+    for index, group in enumerate(wanted_groups):
+        labels = [l for l in group_labels if l.get('data-group') == str(index)]
+        if len(labels) != 1:
+            doc.err('SD_ARROW_GROUP_LABEL:%d' % index)
+            continue
+        if doc.shown_text(labels[0]) != group['name']:
+            doc.err('SD_ARROW_GROUP_TEXT:%d' % index)
+        a, b = ordered[ids.index(group['from'])], ordered[ids.index(group['to'])]
+        box = doc.label_box(labels[0])
+        if abs(box[0] + box[2] / 2 - (a['cx'] + b['cx']) / 2) > 3 or box[1] + box[3] > min(a['cy'] - a['ry'], b['cy'] - b['ry']) + 4:
+            doc.err('SD_ARROW_GROUP_PLACE:%d' % index)
     elements = {(l.get('data-column'), l.get('data-element')): l for l in doc.label_role('element')}
     expected = {(str(c), str(e)) for c, column in enumerate(columns) for e in range(len(column['elements']))}
     if set(elements) != expected:
@@ -601,7 +689,7 @@ def audit_mapping(plan, doc):
             label = elements.get((str(c), str(e)))
             if label is None:
                 continue
-            if doc.shown_text(label) != text:
+            if doc.shown_text(label) != mapping_shown(text):
                 doc.err('SD_ELEMENT_TEXT:%d:%d' % (c, e))
             box = doc.label_box(label)
             element_boxes[(c, e)] = box
@@ -617,6 +705,13 @@ def audit_mapping(plan, doc):
             if centre_y <= last_y:
                 doc.err('SD_ELEMENT_ORDER:%d' % c)
             last_y = centre_y
+    # G17: all ovals are as tall as the longest column needs, and each column's element block (first to last label) is centred vertically in its oval
+    if len({round(oval['ry'], 1) for oval in ordered}) != 1:
+        doc.err('SD_OVAL_HEIGHT')
+    for c, column in enumerate(columns):
+        ys = [element_boxes[(c, e)][1] + element_boxes[(c, e)][3] / 2 for e in range(len(column['elements'])) if (c, e) in element_boxes]
+        if ys and abs((ys[0] + ys[-1]) / 2 - ordered[c]['cy']) > 3:
+            doc.err('SD_ELEMENT_BLOCK_CENTRE:%d' % c)
     arrows = {}
     for poly in doc.role('polyline', 'arrow'):
         index = int(poly.get('data-arrow', -1))
@@ -665,12 +760,17 @@ def audit_mapping(plan, doc):
         dashed = poly.get('stroke-dasharray') is not None
         if dashed != (arrow.get('style', 'SOLID') == 'DASHED'):
             doc.err('SD_ARROW_STYLE:%d' % index)
-        highlighted = index in set(plan.get('highlight', {}).get('arrows', []))
+        highlighted = index in set(plan.get('highlight', {}).get('arrows', [])) or index in path_arrows
         try:
             width = float(poly.get('stroke-width'))
         except (TypeError, ValueError):
             width = 1.4
         if (width >= 2.0) != highlighted:
+            doc.err('SD_ARROW_HIGHLIGHT:%d' % index)
+        want_colour = ARROW_PALETTE_LINE[arrow_colour[index]] if index in arrow_colour else ARROW_PLAIN
+        if (poly.get('stroke') or '').lower() != want_colour:
+            doc.err('SD_ARROW_COLOUR:%d' % index)
+        if index in arrow_colour and not highlighted and abs(width - 1.8) > 0.05:
             doc.err('SD_ARROW_HIGHLIGHT:%d' % index)
         heads = [h for h in doc.role('polygon', 'arrow-head') if h.get('data-arrow') == str(index)]
         if len(heads) != 1:
@@ -682,6 +782,8 @@ def audit_mapping(plan, doc):
                 fail('SD_ARROW_HEAD_UNREADABLE')
             if len(head) != 3:
                 doc.err('SD_ARROW_HEAD:%d' % index)
+            elif (heads[0].get('fill') or '').lower() != want_colour:
+                doc.err('SD_ARROW_COLOUR:%d' % index)
             else:
                 tip = points[-1]
                 distances = sorted(math.hypot(px - tip[0], py - tip[1]) for px, py in head)

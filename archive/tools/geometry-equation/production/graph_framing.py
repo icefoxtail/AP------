@@ -136,14 +136,124 @@ def _fit_cubic_quartic(plan,coefficients):
     fitted={**plan,'domain':[lo,hi],'viewport':[lo,hi,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','overviewFeatures':features,'overviewFeaturePolicy':feature_policy,'overviewEndDirections':end_directions,**({'overviewWindowPolicy':'FEATURE_BAND'} if window_policy else {})}
     return {'graphPlan':fitted,'policy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
+# ---- graphPlan.hideLabels / graphPlan.formulaTex of a single rational or square-root curve (G18a) ---------------------------------------------------------
+# hideLabels: a list of the automatic texts the figure does not show. 'formula' = the curve's formula text, 'asymptotes' (rational) = the x=p and y=q texts
+# (the dashed lines stay), 'start' (square root) = the texts that name its start / end (domain and range inequalities, x=end). A point or a line is never hidden.
+# Why: a drawn asymptote value can be the answer of the question, the automatic form (1-2*x)/(x-3) can differ from the form of the solution, and a formula label
+# may find no room. formulaTex: the formula label in the author's own form (-\frac{8}{x-1}-4); it must be the same function as the plan, which framing and
+# the independent observer both check numerically.
+SINGLE_CURVE_HIDEABLE={'rational':('formula','asymptotes'),'sqrt-affine':('formula','start')}
+
+def tex_formula_ascii(text):
+    """The ASCII math string (the form the label machinery typesets) of a formula written in simple TeX; ValueError('FORMULA_TEX_INVALID') when it is not one."""
+    if not isinstance(text,str) or not text.strip() or len(text)>80:raise ValueError('FORMULA_TEX_INVALID')
+    try:value=_mc_label_ascii(text.strip(),'formula')
+    except ValueError:raise ValueError('FORMULA_TEX_INVALID') from None
+    value=re.sub(r'^(?:y|f\(x\))\s*=\s*','',value)
+    if not value or value!=value.strip():raise ValueError('FORMULA_TEX_INVALID')
+    return value
+
+def evaluate_formula_text(text,x_value):
+    """The value of an ASCII formula (digits, x, + - * / ^, parentheses, sqrt( ), implicit products such as 2x or 3(x-1)) at x, as a float; None where it is undefined.
+    Own recursive-descent reader, never eval."""
+    tokens=re.findall(r'sqrt|\d+(?:\.\d+)?|x|[-+*/^()]',text.replace(' ',''))
+    if ''.join(tokens)!=text.replace(' ',''):raise ValueError('FORMULA_TEX_INVALID')
+    position=[0]
+    def peek():return tokens[position[0]] if position[0]<len(tokens) else None
+    def take():
+        token=peek();position[0]+=1;return token
+    def starts_factor(token):return token is not None and (token in ('x','sqrt','(') or token[0].isdigit())
+    def expression():
+        value=term()
+        while peek() in ('+','-'):
+            sign=take();right=term();value=None if value is None or right is None else (value+right if sign=='+' else value-right)
+        return value
+    def term():
+        value=unary()
+        while peek() in ('*','/') or starts_factor(peek()):
+            operator=take() if peek() in ('*','/') else '*';right=unary()
+            if value is None or right is None:value=None
+            elif operator=='*':value=value*right
+            else:value=None if right==0 else value/right
+        return value
+    def unary():
+        if peek()=='-':take();value=unary();return None if value is None else -value
+        if peek()=='+':take();return unary()
+        return power()
+    def power():
+        base=atom()
+        if peek()=='^':
+            take();exponent=unary()
+            if base is None or exponent is None:return None
+            try:return base**exponent
+            except (ZeroDivisionError,OverflowError,ValueError):return None
+        return base
+    def atom():
+        token=take()
+        if token is None:raise ValueError('FORMULA_TEX_INVALID')
+        if token=='x':return x_value
+        if token[0].isdigit():return float(token)
+        if token=='(':
+            value=expression()
+            if take()!=')':raise ValueError('FORMULA_TEX_INVALID')
+            return value
+        if token=='sqrt':
+            if take()!='(':raise ValueError('FORMULA_TEX_INVALID')
+            value=expression()
+            if take()!=')':raise ValueError('FORMULA_TEX_INVALID')
+            return None if value is None or value<0 else math.sqrt(value)
+        raise ValueError('FORMULA_TEX_INVALID')
+    value=expression()
+    if position[0]!=len(tokens):raise ValueError('FORMULA_TEX_INVALID')
+    return value
+
+def single_curve_function(plan):
+    """A float function x -> y (None where undefined) of a rational or square-root plan, from its exact fields."""
+    if plan.get('family')=='rational':
+        n=[float(Fraction(v)) for v in plan['numerator']];d=[float(Fraction(v)) for v in plan['denominator']]
+        return lambda x_value:None if abs(d[0]+d[1]*x_value)<1e-12 else (n[0]+n[1]*x_value)/(d[0]+d[1]*x_value)
+    radicand=[pp_exact_float(v) for v in plan['radicand']];amplitude=pp_exact_float(plan.get('amplitude','1'));sign=plan.get('sign',1);offset=pp_exact_float(plan.get('offset','0'))
+    return lambda x_value:None if radicand[0]+radicand[1]*x_value<0 else offset+sign*amplitude*math.sqrt(radicand[0]+radicand[1]*x_value)
+
+def formula_text_matches(plan,ascii_text):
+    """True when the ASCII formula is the plan's function on a spread of x (at least five points where both are defined, relative error 1e-9)."""
+    function=single_curve_function(plan);compared=0
+    for step in range(-40,41):
+        x_value=step*0.37+0.0123
+        want=function(x_value)
+        try:got=evaluate_formula_text(ascii_text,x_value)
+        except (ValueError,OverflowError,ZeroDivisionError):return False
+        if want is None and got is None:continue
+        if want is None or got is None or abs(want-got)>1e-9*max(1.0,abs(want)):return False
+        compared+=1
+    return compared>=5
+
+def _with_label_options(plan,result):
+    """hideLabels / formulaTex (G18a) of a rational or square-root plan, validated; the fitted plan carries hideLabels and formulaAscii."""
+    hide=plan.get('hideLabels');tex=plan.get('formulaTex')
+    if hide is None and tex is None:return result
+    family=plan['family'];allowed=SINGLE_CURVE_HIDEABLE[family]
+    if hide is not None and (not isinstance(hide,list) or not hide or len(set(hide))!=len(hide) or any(item not in allowed for item in hide)):raise ValueError('HIDE_LABELS_INVALID')
+    if family=='rational' and (plan.get('numerator') or [None,None])[1] in ('0',0):raise ValueError('HIDE_LABELS_UNSUPPORTED_FOR_INVERSE_PROPORTION')
+    hidden=set(hide or [])
+    if 'asymptotes' in hidden and (plan.get('asymptoteLabelAt') is not None or plan.get('verticalAsymptoteLabelAt') not in (None,'NONE')):raise ValueError('HIDE_LABELS_INVALID')
+    fitted={**result['graphPlan']}
+    if hide is not None:fitted['hideLabels']=[item for item in allowed if item in hidden]
+    if tex is not None:
+        if 'formula' in hidden:raise ValueError('HIDE_LABELS_INVALID')
+        ascii_text=tex_formula_ascii(tex)
+        if not formula_text_matches(fitted,ascii_text):raise ValueError('FORMULA_TEX_NOT_THE_FUNCTION')
+        fitted['formulaAscii']=ascii_text
+    return {**result,'graphPlan':fitted}
+
 def _fit_overview_family(plan):
-    if 'regions' in plan and plan.get('family')!='piecewise-polynomial':raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')
+    if 'regions' in plan and plan.get('family') not in ('piecewise-polynomial','multi-curve'):raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')   # (G18c) a multi-curve figure shades its own regions
     if 'applicationAxes' in plan and not (plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL'):raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
-    if 'axisScale' in plan and plan.get('family')!='piecewise-polynomial':raise ValueError('AXIS_SCALE_UNSUPPORTED_FAMILY')
+    if 'axisScale' in plan and plan.get('family') not in ('piecewise-polynomial','multi-curve'):raise ValueError('AXIS_SCALE_UNSUPPORTED_FAMILY')   # (G18c) a multi-curve figure may stretch y too (horizontal lines a unit apart need room for their labels)
     if 'displayWindow' in plan and plan.get('family')!='rational':raise ValueError('DISPLAY_WINDOW_UNSUPPORTED_FAMILY')
     if 'formulaAt' in plan and plan.get('family')!='rational':raise ValueError('FORMULA_AT_UNSUPPORTED_FAMILY')
-    if plan.get('family')=='rational':return _fit_rational_overview(plan)
-    if plan.get('family')=='sqrt-affine':return _fit_sqrt_affine_general_overview(plan) if _sqrt_affine_general_plan(plan) else _fit_sqrt_affine_overview(plan)
+    if plan.get('family')=='rational':return _with_label_options(plan,_fit_rational_overview(plan))
+    if plan.get('family')=='sqrt-affine':return _with_label_options(plan,_fit_sqrt_affine_general_overview(plan) if _sqrt_affine_general_plan(plan) else _fit_sqrt_affine_overview(plan))
     if plan.get('family')=='absolute-value':return _fit_absolute_value_overview(plan)
     if plan.get('family')=='piecewise-affine':return _fit_piecewise_affine_overview(plan)
     if plan.get('family')=='exponential-affine':return _fit_exponential_base_overview(plan) if plan.get('base') is not None or plan.get('shiftX') is not None else _fit_exponential_affine_overview(plan)
@@ -207,6 +317,7 @@ QUADRATIC_PLOT_HEIGHT=(160,640)
 EQUAL_UNIT_EDGE_PX=40
 EQUAL_UNIT_MIN_CURVE_PX=48
 EQUAL_UNIT_MIN_NATURAL_PX=24
+EQUAL_UNITS_MIN_SCALE_PX=10   # G18b equalUnits on a rational / square root: fewer px per unit than this is refused (EQUAL_UNITS_WINDOW_TOO_WIDE)
 
 def plot_height_limit(plan):
     """plotHeightLimit is set by composite-candidate-svg-v1 for panels of a stack; a single figure may be up to 640 high."""
@@ -432,10 +543,23 @@ def _fit_rational_overview(plan):
     low=min([*endpoint_values,*key_values]);high=max([*endpoint_values,*key_values])
     span=max(1.0,high-low,abs(low),abs(high));padding=.35*span
     ymin=min(0.0,low)-padding;ymax=max(0.0,high)+padding
+    # G18a: the drawing engine adds (0,0), (1,0) and (0,1) to the frame as axis facts and silently widens the whole frame by 8% when one of them is not strictly inside.
+    # A rational with k<0 (left branch above, right branch below the asymptote) can end below y=1, which made the drawn frame larger than the plan's frame
+    # and every dashed asymptote, branch end and clip edge missed the audit. Keep (0,1) comfortably inside the planned frame, so the two frames stay one.
+    if ymax<1.0+.005*(ymax-ymin):ymax=1.0+.12*(ymax-ymin)   # same trigger as the engine (ymax<=1) plus a hair, so frames of rationals whose ymax is already above 1 are untouched
     if not all(math.isfinite(value) and abs(value)<=1e6 for value in (lo,hi,ymin,ymax)):raise ValueError('UNSUPPORTED_RATIONAL_NUMERIC_SCOPE')
+    equal_fields={}
+    if plan.get('equalUnits') is not None:
+        # G18b: equalUnits:true draws one x unit and one y unit the same length (y=x at 45 degrees, a circle a circle). The window is the one above, framed at one scale (the plot
+        # grows taller, up to the height limit, or the x range widens); a window that would need more than the limit to keep the pole, the curve ends and the origin readable is refused.
+        if plan.get('equalUnits') is not True or 'axisScale' in plan or plan.get('axisSqueeze') not in (None,False):raise ValueError('EQUAL_UNITS_INVALID')
+        viewport,height,scale=equal_unit_frame([(lo,ymin),(hi,ymax),(0.0,0.0),(0.0,1.0),(1.0,0.0)],plot_height_limit(plan),1.0)
+        if scale<EQUAL_UNITS_MIN_SCALE_PX or min(singularity_x-viewport[0],viewport[1]-singularity_x)*scale<EQUAL_UNIT_MIN_CURVE_PX:raise ValueError('EQUAL_UNITS_WINDOW_TOO_WIDE')
+        lo,hi,ymin,ymax=viewport[0],viewport[1],viewport[2],viewport[3]
+        equal_fields={'equalUnits':True,'axisRatio':1.0,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height},'clipRefine':True}
     features={'schemaVersion':'RATIONAL_LINEAR_OVER_LINEAR_FEATURES_v1','singularity':singularity,'horizontalAsymptoteY':_fraction_text(horizontal),'xIntercept':x_intercept}
     policy={'schemaVersion':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_POLICY_v1','sourceDomain':'ALL_REALS_WITH_DENOMINATOR_EXCLUSION','degreeGrammar':'LINEAR_OVER_LINEAR','singularityPolicy':'ONE_SIMPLE_REAL_POLE_OR_ONE_REMOVABLE_HOLE','horizontalAsymptotePolicy':'EXACT_LEADING_COEFFICIENT_RATIO','minimumFeatureSeparationCssPx':1,'holeMarkerRadiusIntrinsicPx':4,'minimumHoleMarkerDiameterCssPx':4.5}
-    fitted={**plan,'domain':[lo,hi],'viewport':[lo,hi,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_v1','rationalFeatures':features,'rationalFeaturePolicy':policy}
+    fitted={**plan,'domain':[lo,hi],'viewport':[lo,hi,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_v1','rationalFeatures':features,'rationalFeaturePolicy':policy,**equal_fields}
     return {'graphPlan':fitted,'policy':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
 # ---- inverse proportion y=k/(d0+d1*x): a nonzero CONSTANT numerator over a linear denominator (middle school 반비례, y=k/x) ----------------
@@ -555,6 +679,30 @@ def _sqrt_coefficients(values):
     if slope<=0:raise ValueError('UNSUPPORTED_SQRT_AFFINE_SLOPE')
     return constant,slope
 
+def _sqrt_overlay_window(plan,xmin,xmax,ymin,ymax):
+    """(G18b) A square-root figure with overlays shows both axes: the engine draws an axis only when the window reaches it, and an overlay line is cut by the window the figure is drawn in,
+    which the observer recomputes from the plan's window. So the window of a plan with overlays holds the origin and the unit points (1,0), (0,1) strictly inside (widened by 8 % of
+    the span otherwise, the rule of visual_engine/viewport.py). Plans without overlays keep their window."""
+    if not isinstance(plan.get('overlays'),dict):return [xmin,xmax,ymin,ymax]
+    unit_points=((0.0,0.0),(1.0,0.0),(0.0,1.0))
+    anchors=[(float(x),float(y)) for x,y in plan.get('overlayAnchors',[])]   # the declared overlay points: the window reaches them too
+    if all(xmin<x<xmax and ymin<y<ymax for x,y in unit_points+tuple(anchors)):return [xmin,xmax,ymin,ymax]
+    xs=[xmin,xmax]+[x for x,_ in unit_points+tuple(anchors)];ys=[ymin,ymax]+[y for _,y in unit_points+tuple(anchors)]
+    lo_x,hi_x,lo_y,hi_y=min(xs),max(xs),min(ys),max(ys);dx=(hi_x-lo_x)*.08;dy=(hi_y-lo_y)*.08
+    return [lo_x-dx,hi_x+dx,lo_y-dy,hi_y+dy]
+
+def _sqrt_equal_units(plan,xmin,xmax,ymin,ymax,lo,hi):
+    """(G18b) equalUnits on a square-root curve: the window above reframed at one scale on both axes (the origin and the unit points stay inside). Returns the viewport and the plan
+    fields; refuses a window that would need fewer than EQUAL_UNITS_MIN_SCALE_PX px per unit."""
+    xmin,xmax,ymin,ymax=_sqrt_overlay_window(plan,xmin,xmax,ymin,ymax)
+    refine={'clipRefine':True} if isinstance(plan.get('overlays'),dict) else {}   # the widened window of a square root with overlays is sampled finely (see function_sampling.sample clip_refine)
+    if plan.get('equalUnits') is None:return [xmin,xmax,ymin,ymax],refine
+    if plan.get('equalUnits') is not True or 'axisScale' in plan or plan.get('axisSqueeze') not in (None,False):raise ValueError('EQUAL_UNITS_INVALID')
+    points=[(xmin,ymin),(xmax,ymax),(0.0,0.0),(1.0,0.0),(0.0,1.0)]+[(x,y) for x,y in plan.get('overlayAnchors',[])]
+    viewport,height,scale=equal_unit_frame(points,plot_height_limit(plan),1.0)
+    if scale<EQUAL_UNITS_MIN_SCALE_PX or (hi-lo)*scale<EQUAL_UNIT_MIN_CURVE_PX:raise ValueError('EQUAL_UNITS_WINDOW_TOO_WIDE')
+    return viewport,{'equalUnits':True,'axisRatio':1.0,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height},'clipRefine':True}
+
 def _fit_sqrt_affine_overview(plan):
     constant,slope=_sqrt_coefficients(plan.get('radicand'))
     boundary=-constant/slope
@@ -613,7 +761,8 @@ def _fit_sqrt_affine_overview(plan):
     if not all(math.isfinite(value) and abs(value)<=1e6 for value in (lo,hi,xmin,xmax,ymin,ymax)):raise ValueError('UNSUPPORTED_SQRT_NUMERIC_SCOPE')
     features={'schemaVersion':'SQRT_AFFINE_FEATURES_v1','radicandBoundaryX':_fraction_text(boundary),'sourceEndpoints':endpoints,'rightTailDirection':'UP'}
     policy={'schemaVersion':'SQRT_AFFINE_FEATURE_POLICY_v1','sourceDomainMode':mode,'boundaryPolicy':'NATURAL_NONNEGATIVE_RADICAND','endpointState':'CLOSED','rightTailDirection':'UP','endpointMarkerRadiusIntrinsicPx':4,'minimumEndpointMarkerDiameterCssPx':3,'minimumEndpointToTailSpanCssPx':48}
-    fitted={**plan,'domain':[lo,hi],'viewport':[xmin,xmax,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'SQRT_AFFINE_ENDPOINT_OVERVIEW_v1','sqrtFeatures':features,'sqrtFeaturePolicy':policy,'requiredPoints':required_points}
+    window,equal_fields=_sqrt_equal_units(plan,xmin,xmax,ymin,ymax,lo,hi)
+    fitted={**plan,'domain':[lo,hi],'viewport':window,'shapeIntent':'OVERVIEW','overviewPolicy':'SQRT_AFFINE_ENDPOINT_OVERVIEW_v1','sqrtFeatures':features,'sqrtFeaturePolicy':policy,'requiredPoints':required_points,**equal_fields}
     return {'graphPlan':fitted,'policy':'SQRT_AFFINE_ENDPOINT_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
 # ---- General square-root functions y = s*k*sqrt(a(x-p)) + q (sqrt-affine family, GENERAL policy) -------------
@@ -735,7 +884,8 @@ def _fit_sqrt_affine_general_overview(plan):
     tail_direction='UP' if scale>0 else 'DOWN'
     features={'schemaVersion':'SQRT_AFFINE_GENERAL_FEATURES_v1','endpoint':{'x':pp_surd_text(boundary),'y':pp_surd_text(offset)},'radicandBoundaryX':pp_surd_text(boundary),'branchDirection':'RIGHT' if right else 'LEFT','tailDirection':tail_direction,'rangeDirection':'ABOVE' if scale>0 else 'BELOW','sourceEndpoints':endpoints}
     policy={'schemaVersion':'SQRT_AFFINE_GENERAL_FEATURE_POLICY_v1','sourceDomainMode':mode,'boundaryPolicy':'NATURAL_NONNEGATIVE_RADICAND','endpointState':'CLOSED','branchDirection':features['branchDirection'],'tailDirection':tail_direction,'rangeDirection':features['rangeDirection'],'endpointMarkerRadiusIntrinsicPx':4,'minimumEndpointMarkerDiameterCssPx':3,'minimumEndpointToTailSpanCssPx':48}
-    fitted={**plan,'domain':[lo,hi],'viewport':[xmin,xmax,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'SQRT_AFFINE_GENERAL_OVERVIEW_v1','sqrtFeatures':features,'sqrtFeaturePolicy':policy,'requiredPoints':required_points}
+    window,equal_fields=_sqrt_equal_units(plan,xmin,xmax,ymin,ymax,lo,hi)
+    fitted={**plan,'domain':[lo,hi],'viewport':window,'shapeIntent':'OVERVIEW','overviewPolicy':'SQRT_AFFINE_GENERAL_OVERVIEW_v1','sqrtFeatures':features,'sqrtFeaturePolicy':policy,'requiredPoints':required_points,**equal_fields}
     return {'graphPlan':fitted,'policy':'SQRT_AFFINE_GENERAL_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
 def _fit_absolute_value_overview(plan):
@@ -2609,9 +2759,11 @@ def fit_piecewise_discontinuous(plan,frame=None,probe=False):
 # segments to the axes, simple polygons and extra named points on the curve. Every coordinate is recomputed here exactly; the plan names
 # the points and the elements, never raw derived coordinates. The fitted plan carries overlaysFeatures (numeric, for the model/spec) and
 # the independent graph observer recomputes the same values from the raw overlays field and reads the FINAL SVG back.
-OVERLAY_LIMITS={'points':12,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4,'quadrants':4,'circles':2,'circleRegions':2,'callouts':4,'rightAngles':3,'angles':4,'equalAngles':2}
+OVERLAY_LIMITS={'points':12,'lines':6,'segments':6,'guides':4,'polygons':2,'names':4,'quadrants':4,'circles':2,'circleRegions':2,'callouts':6,'rightAngles':3,'angles':4,'equalAngles':2}
 # overlays.names: a plain Korean name (토끼, 거북이, 직선 l) written beside one overlay segment, overlay line or the drawn curve at curveX.
 OVERLAY_NAME_PATTERN=r'[가-힣A-Za-z0-9 ()]{1,10}'
+OVERLAY_CALLOUT_TEXT_PATTERN=r'[가-힣A-Za-z0-9 (),.+\-=αβγθ′√]{1,14}'   # (G18b) a plain-text callout may carry commas (a coordinate pair), Greek letters and a prime
+OVERLAY_CALLOUT_PLAIN_MARKS=',αβγθ′√'
 OVERLAY_LATTICE_REGIONS=('BELOW_CURVE','ABOVE_CURVE')
 OVERLAY_LATTICE_FIELDS={'region','xRange','yMin','yMax','strict','counts','curve'}
 OVERLAY_LATTICE_MAX_POINTS=40
@@ -2921,6 +3073,9 @@ def _overlay_curve_exact(plan,x_value,curve_id=None):
         if family=='sqrt-affine':
             radicand=sum((_overlay_exact(c,'curve')*x_value**i for i,c in enumerate(plan['radicand'])),S.Integer(0))
             if radicand<0:_overlay_fail('OVERLAY_POINT_NOT_ON_CURVE',str(x_value))
+            if any(plan.get(key) is not None for key in ('amplitude','sign','offset')):
+                # (G18b) the general square root y = offset + sign*amplitude*sqrt(radicand): the point of curveX is on that curve, not on the bare root
+                fields=_sqrt_affine_general_fields(plan);return fields[4]+fields[5]*S.sqrt(radicand)
             return S.sqrt(radicand)
         if family=='absolute-value':
             b,a,scale,offset=(_overlay_exact(value,'curve') for value in plan['coefficients'])
@@ -3260,8 +3415,8 @@ def _overlay_callouts(plan,rows,claim,by_point):
         kind=entry.get('labelKind')
         if kind is not None and kind not in ('TEXT','MATH'):_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
         if not isinstance(text,str) or text!=text.strip() or not text:_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
-        if kind is None:kind='TEXT' if re.search('[가-힣]',text) else 'MATH'
-        if kind=='TEXT' and re.fullmatch(OVERLAY_NAME_PATTERN,text) is None:_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
+        if kind is None:kind='TEXT' if re.search('[가-힣]',text) or any(mark in text for mark in OVERLAY_CALLOUT_PLAIN_MARKS) else 'MATH'
+        if kind=='TEXT' and re.fullmatch(OVERLAY_CALLOUT_TEXT_PATTERN if any(mark in text for mark in OVERLAY_CALLOUT_PLAIN_MARKS) else OVERLAY_NAME_PATTERN,text) is None:_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
         if kind=='MATH' and (TEXT_PATTERN.fullmatch(text) is None or len(text)>12):_overlay_fail('OVERLAY_CALLOUT_TEXT_INVALID',ident)
         row={'id':ident,'point':ref,'dot':dot,'at':at,'text':text,'labelKind':kind}
         if 'direction' in entry:
@@ -3451,7 +3606,7 @@ def _overlay_features(plan):
     lines=[]
     for entry in raw.get('lines',[]):
         if not isinstance(entry,dict):_overlay_fail('OVERLAY_LINE_INVALID','line')
-        if set(entry)-{'id','slope','intercept','x','label','labelAt','labelValues','style','color'}:_overlay_fail('OVERLAY_LINE_INVALID',entry.get('id'))
+        if set(entry)-{'id','slope','intercept','x','label','labelAt','labelValues','style','color','ownership'}:_overlay_fail('OVERLAY_LINE_INVALID',entry.get('id'))
         ident=_overlay_id(entry.get('id'),'line');claim('line:'+ident)
         if 'x' in entry:
             if 'slope' in entry or 'intercept' in entry:_overlay_fail('OVERLAY_LINE_INVALID',ident)
@@ -3471,6 +3626,10 @@ def _overlay_features(plan):
         if 'color' in entry:
             if entry['color'] not in OVERLAY_COLOR_NAMES:_overlay_fail('OVERLAY_COLOR_INVALID',ident)
             line['color']=entry['color']
+        # ownership (G18c): NEAREST lets the equation stand where its own line is the nearest one by a small margin (horizontal lines a unit apart); STRICT (default) keeps the clear margin
+        if 'ownership' in entry:
+            if entry['ownership'] not in ('STRICT','NEAREST'):_overlay_fail('OVERLAY_LINE_OWNERSHIP_INVALID',ident)
+            if entry['ownership']=='NEAREST':line['ownership']='NEAREST'
         line['text']=_overlay_line_text(line)
         if not _overlay_line_crosses_view(plan['viewport'],line):_overlay_fail('OVERLAY_LINE_OUTSIDE_VIEWPORT',ident)
         line['labelAt']=_overlay_label_anchor(plan['viewport'],line)
@@ -3679,7 +3838,8 @@ def _overlay_anchor_points(plan):
             # A declared point outside the author's reviewed draw interval or viewport is not a frame anchor: the framer must not
             # enlarge its window to make an invalid claim look valid (the overlay validator then refuses it).
             if on_curve and isinstance(domain,list) and len(domain)==2 and not (domain[0]-1e-9<=xf<=domain[1]+1e-9):continue
-            if isinstance(viewport,list) and len(viewport)==4 and not (viewport[0]-1e-9<=xf<=viewport[1]+1e-9 and viewport[2]-1e-9<=yf<=viewport[3]+1e-9):continue
+            # (G18b) a multi-curve figure's viewport is only the window the curves are cut by: a declared point (an intersection of a line with the curves, say) outside it widens the frame instead of being refused
+            if plan.get('family')!='multi-curve' and isinstance(viewport,list) and len(viewport)==4 and not (viewport[0]-1e-9<=xf<=viewport[1]+1e-9 and viewport[2]-1e-9<=yf<=viewport[3]+1e-9):continue
             anchors.append((xf,yf))
         except (ValueError,KeyError,TypeError,ZeroDivisionError):continue
     # The lattice points are part of the figure: the family framer must reach them (a bad entry is refused later with its own code).
@@ -3701,9 +3861,27 @@ def _overlay_anchor_points(plan):
 # (vertical squeeze at most 1/2), freezes every branch's exact x interval and sampling expression, and refuses a
 # curve it cannot represent. The independent observer recomputes every branch from the same coefficients and reads
 # the final SVG; it never trusts a frozen expression.
-MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plotCanvas','axisSqueeze','plotHeightLimit','overlays','overlayAnchors','axisTitles'}
+MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plotCanvas','axisSqueeze','plotHeightLimit','overlays','overlayAnchors','axisTitles','regions','axisScale'}
+# G18a: besides the two quadratic kinds a curve may be LINE (y=c0+c1*x), RATIONAL (y=(a0+a1*x)/(d0+d1*x)) or SQRT (y=offset+amplitude*sqrt(c0+c1*x)), each with
+# its own look (color, weight, style, label, hideLabels), or the inverse of another curve (inverseOf). These kinds are not bounded by their own shape, so the
+# author names the window (graphPlan.viewport = [xmin,xmax,ymin,ymax]) and a curve is clipped to the frame built around that window.
+MULTI_CURVE_KINDS=('Y_OF_X','X_OF_Y','LINE','RATIONAL','SQRT')
+MULTI_CURVE_FREE_KINDS=('LINE','RATIONAL','SQRT')
+MULTI_CURVE_KIND_KEYS={'Y_OF_X':{'coefficients','domain','branch','abs'},'X_OF_Y':{'coefficients','domain','branch'},'LINE':{'coefficients','domain','abs'},'RATIONAL':{'numerator','denominator','domain','abs'},'SQRT':{'radicand','amplitude','offset','domain','abs'}}
+MULTI_CURVE_LOOK_KEYS={'id','kind','label','color','weight','style','hideLabel','hideLabels','inverseOf','emphasis'}
+# G18a-4: emphasis:[{from?,to?,color?,fromState?,toState?}] draws only that x stretch of the curve heavier and in a colour, with an open or closed end dot (states OPEN | CLOSED | NONE);
+# domain may be written {from,to} as well as [from,to] (the curve is then not drawn outside it).
+MULTI_CURVE_EMPHASIS_KEYS={'from','to','color','fromState','toState'}
+MULTI_CURVE_EMPHASIS_STATES=('NONE','OPEN','CLOSED')
+MULTI_CURVE_EMPHASIS_MAX=3
+MULTI_CURVE_EMPHASIS_COLOR='WARM'
+MULTI_CURVE_HIDE_LABELS=('formula','asymptotes','start')
+MULTI_CURVE_WEIGHTS=('BOLD','NORMAL')
+MULTI_CURVE_STYLES=('SOLID','DASHED')
+_MC_EXACT=r'-?\d+(?:/\d+)?'
+
 MULTI_CURVE_LABEL_PATTERN=r'[0-9A-Za-z=+\-*/().^ ]{1,40}'
-MULTI_CURVE_MIN_CURVES=3
+MULTI_CURVE_MIN_CURVES=2   # G18a: two curves are enough once a curve can be a rational, a square root or a line (a pair, an inverse pair)
 MULTI_CURVE_MAX_CURVES=6
 MULTI_CURVE_OVERVIEW_POLICY='MULTI_CURVE_OVERVIEW_v1'
 MULTI_CURVE_BRANCHES=('BOTH','POSITIVE','NEGATIVE')
@@ -3736,49 +3914,449 @@ def _mc_sideways_branches(curve):
         row['expression']=f'({_pp_text(y_vertex)})+({row["sign"]})*sqrt((x-({_pp_text(x_vertex)}))/({_pp_text(c2)}))'
     return rows
 
+def _mc_fraction(value,code):
+    """An exact integer or a/b string (a JSON integer too) as a Fraction, or the refusal code."""
+    if isinstance(value,bool):raise ValueError(code)
+    if isinstance(value,int):return Fraction(value)
+    if not isinstance(value,str) or len(value)>64 or not re.fullmatch(_MC_EXACT,value):raise ValueError(code)
+    try:return Fraction(value)
+    except (ValueError,ZeroDivisionError):raise ValueError(code) from None
+
+def _mc_label_ascii(text,ident):
+    """A curve's own label: the exact ASCII math string (y=2-x^2), or for the new kinds the TeX form of the same formula (-\\frac{8}{x-1}-4), which is turned
+    into the ASCII form the existing math-label machinery typesets (stacked fractions and radicals)."""
+    if not isinstance(text,str):raise ValueError('MULTI_CURVE_LABEL_INVALID:'+ident)
+    value=text
+    for _ in range(8):
+        changed=re.sub(r'\\frac\{([^{}]*)\}\{([^{}]*)\}',lambda m:(m.group(1) if re.fullmatch(r'[A-Za-z0-9.]+',m.group(1)) else '('+m.group(1)+')')+'/'+(m.group(2) if re.fullmatch(r'[A-Za-z0-9.]+',m.group(2)) else '('+m.group(2)+')'),value)
+        changed=re.sub(r'\\sqrt\{([^{}]*)\}',lambda m:'sqrt('+m.group(1)+')',changed)
+        if changed==value:break
+        value=changed
+    value=value.replace('\\left|','abs(').replace('\\right|',')').replace('\\cdot','*').replace('\\left','').replace('\\right','')   # (G18c) |..| written \left|..\right| is the abs(..) the label machinery typesets
+    if not re.fullmatch(MULTI_CURVE_LABEL_PATTERN,value):raise ValueError('MULTI_CURVE_LABEL_INVALID:'+ident)
+    return value
+
+def _mc_look(entry,ident,free):
+    """color / weight / style / label / hideLabel(s) of a curve (the looks the author may choose), validated; returns the frozen look dict."""
+    look={}
+    if 'color' in entry:
+        if entry['color'] not in OVERLAY_COLOR_NAMES:raise ValueError('MULTI_CURVE_COLOR_INVALID:'+ident)
+        look['color']=entry['color']
+    if 'weight' in entry:
+        if entry['weight'] not in MULTI_CURVE_WEIGHTS:raise ValueError('MULTI_CURVE_WEIGHT_INVALID:'+ident)
+        look['weight']=entry['weight']
+    if 'style' in entry:
+        if entry['style'] not in MULTI_CURVE_STYLES:raise ValueError('MULTI_CURVE_STYLE_INVALID:'+ident)
+        look['style']=entry['style']
+    hidden=[]
+    if 'hideLabel' in entry:
+        if entry['hideLabel'] is not True and entry['hideLabel'] is not False:raise ValueError('MULTI_CURVE_HIDE_LABELS_INVALID:'+ident)
+        if entry['hideLabel']:hidden.append('formula')
+    if 'hideLabels' in entry:
+        raw=entry['hideLabels']
+        if not isinstance(raw,list) or len(set(raw))!=len(raw) or any(item not in MULTI_CURVE_HIDE_LABELS for item in raw):raise ValueError('MULTI_CURVE_HIDE_LABELS_INVALID:'+ident)
+        hidden.extend(item for item in raw if item not in hidden)
+    if hidden:look['hideLabels']=[item for item in MULTI_CURVE_HIDE_LABELS if item in hidden]
+    if 'label' in entry:
+        if free:look['label']=_mc_label_ascii(entry['label'],ident)
+        elif not isinstance(entry['label'],str) or not re.fullmatch(MULTI_CURVE_LABEL_PATTERN,entry['label']):raise ValueError('MULTI_CURVE_LABEL_INVALID:'+ident)
+        else:look['label']=entry['label']
+    return look
+
+def _mc_window(plan):
+    raw=plan.get('viewport')
+    if raw is None:return None
+    if not isinstance(raw,list) or len(raw)!=4 or any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) or abs(v)>1e6 for v in raw) or not raw[0]<raw[1] or not raw[2]<raw[3]:raise ValueError('MULTI_CURVE_WINDOW_INVALID')
+    return [Fraction(str(v)) for v in raw]
+
+def _mc_interval_fractions(value,code):
+    if not isinstance(value,list) or len(value)!=2:raise ValueError(code)
+    lo=_mc_fraction(value[0],code);hi=_mc_fraction(value[1],code)
+    if not lo<hi:raise ValueError(code)
+    return lo,hi
+
+def mc_rational_value(curve,x_value):
+    n0,n1=curve['numerator'];d0,d1=curve['denominator']
+    return (n0+n1*x_value)/(d0+d1*x_value)
+
+def mc_sqrt_value(curve,x_value):
+    """The exact value of offset+amplitude*sqrt(c0+c1*x) when the radicand is the square of a rational, else None."""
+    radicand=curve['radicand'][0]+curve['radicand'][1]*x_value
+    if radicand<0:return None
+    if radicand==0:return curve['offset']
+    product=radicand.numerator*radicand.denominator;root=math.isqrt(product)
+    if root*root!=product:return None
+    return curve['offset']+curve['amplitude']*Fraction(root,radicand.denominator)
+
+def _mc_to_fraction(value,ident):
+    """A sympy rational (a quadratic's exact coefficient) as a Fraction; a surd cannot be turned into an inverse."""
+    if isinstance(value,Fraction):return value
+    if not getattr(value,'is_Rational',False):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+    return Fraction(int(value.p),int(value.q))
+
+def _mc_abs_flag(entry,ident):
+    """(G18c) abs:true draws y=|f(x)| for a LINE / RATIONAL / SQRT / quadratic curve (the part below the x-axis is folded up)."""
+    if 'abs' not in entry:return False
+    if entry['abs'] is not True and entry['abs'] is not False:raise ValueError('MULTI_CURVE_ABS_INVALID:'+ident)
+    return entry['abs']
+
+def mc_value(curve,x_value):
+    """y of a free-kind curve at x as a float (None where it is not defined); |f(x)| for an abs curve."""
+    kind=curve['kind']
+    if kind=='LINE':value=float(curve['coefficients'][0]+curve['coefficients'][1]*x_value)
+    elif kind=='RATIONAL':
+        den=curve['denominator'][0]+curve['denominator'][1]*x_value
+        if den==0:return None
+        value=float(mc_rational_value(curve,x_value))
+    else:
+        radicand=curve['radicand'][0]+curve['radicand'][1]*x_value
+        if radicand<0:return None
+        value=float(curve['offset'])+float(curve['amplitude'])*math.sqrt(float(radicand))
+    return abs(value) if curve.get('abs') else value
+
+def _mc_free_curve(entry,ident,kind,window,look):
+    """LINE / RATIONAL / SQRT from its own fields; the draw interval is the author's domain or the window's."""
+    extra=set(entry)-MULTI_CURVE_LOOK_KEYS-MULTI_CURVE_KIND_KEYS[kind]
+    if extra:raise ValueError('MULTI_CURVE_CURVE_INVALID:'+ident)
+    curve={'id':ident,'kind':kind,'look':look}
+    if kind=='LINE':
+        raw=entry.get('coefficients')
+        if not isinstance(raw,list) or len(raw)!=2:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
+        curve['coefficients']=[_mc_fraction(v,'MULTI_CURVE_COEFFICIENT_INVALID:'+ident) for v in raw]
+    elif kind=='RATIONAL':
+        for key in ('numerator','denominator'):
+            raw=entry.get(key)
+            if not isinstance(raw,list) or len(raw)!=2:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
+            curve[key]=[_mc_fraction(v,'MULTI_CURVE_COEFFICIENT_INVALID:'+ident) for v in raw]
+        if curve['denominator'][1]==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
+        pole=-curve['denominator'][0]/curve['denominator'][1]
+        if curve['numerator'][0]+curve['numerator'][1]*pole==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
+    else:
+        raw=entry.get('radicand')
+        if not isinstance(raw,list) or len(raw)!=2:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
+        curve['radicand']=[_mc_fraction(v,'MULTI_CURVE_COEFFICIENT_INVALID:'+ident) for v in raw]
+        if curve['radicand'][1]==0:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
+        curve['amplitude']=_mc_fraction(entry.get('amplitude','1'),'MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
+        curve['offset']=_mc_fraction(entry.get('offset','0'),'MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
+        if curve['amplitude']==0:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
+    curve['intervalGiven']='domain' in entry
+    curve['abs']=_mc_abs_flag(entry,ident)
+    if 'domain' in entry:curve['interval']=_mc_interval_fractions(entry['domain'],'MULTI_CURVE_DOMAIN_INVALID:'+ident)
+    return curve
+
+def _mc_inverse_curve(entry,ident,source,look):
+    """The inverse of a curve, as the other curve it is: RATIONAL -> RATIONAL, LINE -> LINE, SQRT -> the quadratic half Y_OF_X, a quadratic half -> SQRT."""
+    extra=set(entry)-MULTI_CURVE_LOOK_KEYS-{'domain'}
+    if extra:raise ValueError('MULTI_CURVE_CURVE_INVALID:'+ident)
+    kind=source['kind'];curve={'id':ident,'look':look,'inverseOf':source['id']}
+    if source.get('abs'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)   # |f| is not one-to-one
+    if kind=='RATIONAL':
+        a0,a1=source['numerator'];d0,d1=source['denominator']
+        curve.update({'kind':'RATIONAL','numerator':[a0,-d0],'denominator':[-a1,d1]})
+        if curve['denominator'][1]==0:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+        if curve['numerator'][0]+curve['numerator'][1]*(-curve['denominator'][0]/curve['denominator'][1])==0:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+    elif kind=='LINE':
+        c0,c1=source['coefficients']
+        if c1==0:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+        curve.update({'kind':'LINE','coefficients':[-c0/c1,1/c1]})
+    elif kind=='SQRT':
+        (c0,c1),amplitude,offset=source['radicand'],source['amplitude'],source['offset']
+        q2=1/(amplitude*amplitude*c1)
+        curve.update({'kind':'Y_OF_X','coefficients':[offset*offset*q2-c0/c1,-2*offset*q2,q2]})
+    elif kind=='Y_OF_X':
+        c0,c1,c2=(_mc_to_fraction(value,ident) for value in source['coefficients'])
+        lo,hi=(_mc_to_fraction(value,ident) for value in source['interval']);vertex=-c1/(2*c2)
+        if lo<vertex<hi:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+        k=c0+c1*vertex+c2*vertex*vertex;side=1 if lo>=vertex else -1
+        curve.update({'kind':'SQRT','radicand':[-k/c2,1/c2],'amplitude':Fraction(side),'offset':vertex})
+    else:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+    return curve
+
 def multi_curve_source(plan):
     unknown=set(plan)-MULTI_CURVE_FIELDS
     if unknown:raise ValueError('MULTI_CURVE_FIELD_UNKNOWN:'+sorted(unknown)[0])
     raw=plan.get('curves')
-    if not isinstance(raw,list) or not MULTI_CURVE_MIN_CURVES<=len(raw)<=MULTI_CURVE_MAX_CURVES:raise ValueError('MULTI_CURVE_COUNT_INVALID')
-    curves=[];ids=set()
+    minimum=1 if isinstance(raw,list) and (any(isinstance(entry,dict) and (entry.get('emphasis') or entry.get('abs') is True) for entry in raw) or (isinstance(plan.get('regions'),list) and plan['regions'])) else MULTI_CURVE_MIN_CURVES   # a single curve is a figure when one stretch of it (or the region it bounds) is the point
+    if not isinstance(raw,list) or not minimum<=len(raw)<=MULTI_CURVE_MAX_CURVES:raise ValueError('MULTI_CURVE_COUNT_INVALID')
+    raw=[{**entry,'domain':[entry['domain'].get('from'),entry['domain'].get('to')]} if isinstance(entry,dict) and isinstance(entry.get('domain'),dict) and set(entry['domain'])=={'from','to'} else entry for entry in raw]
+    window=_mc_window(plan)
+    curves=[];ids=set();by_id={}
     for entry in raw:
         if not isinstance(entry,dict):raise ValueError('MULTI_CURVE_CURVE_INVALID')
         ident=entry.get('id')
         if not isinstance(ident,str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9_-]{0,15}',ident) or ident in ids:raise ValueError('MULTI_CURVE_ID_INVALID')
         ids.add(ident)
+        inverse_of=entry.get('inverseOf')
+        if inverse_of is not None:
+            source=by_id.get(inverse_of) if isinstance(inverse_of,str) else None
+            if source is None or source.get('inverseOf') is not None:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+            if 'kind' in entry and entry['kind'] not in MULTI_CURVE_KINDS:raise ValueError('MULTI_CURVE_KIND_INVALID:'+ident)
+            curve=_mc_inverse_curve(entry,ident,source,_mc_look(entry,ident,True))
+            curve['intervalGiven']='domain' in entry
+            if 'domain' in entry:curve['interval']=_mc_interval_fractions(entry['domain'],'MULTI_CURVE_DOMAIN_INVALID:'+ident)
+            elif curve['kind'] in ('RATIONAL','LINE'):
+                if window is None:raise ValueError('MULTI_CURVE_WINDOW_REQUIRED:'+ident)
+                curve['interval']=(window[0],window[1])
+            else:
+                lo,hi=source['interval']
+                if source['kind']=='SQRT':
+                    ends=[mc_sqrt_value(source,lo),mc_sqrt_value(source,hi)]
+                    if None in ends:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)   # the image of an irrational end is not exact: give the inverse its own domain
+                    ends.sort();curve['interval']=(ends[0],ends[1])
+                else:
+                    c0,c1,c2=(_mc_to_fraction(value,ident) for value in source['coefficients']);lo,hi=(_mc_to_fraction(value,ident) for value in (lo,hi))
+                    ends=sorted([c0+c1*lo+c2*lo*lo,c0+c1*hi+c2*hi*hi]);curve['interval']=(ends[0],ends[1])
+            curves.append(curve);by_id[ident]=curve
+            continue
         kind=entry.get('kind')
-        if kind not in ('Y_OF_X','X_OF_Y'):raise ValueError('MULTI_CURVE_KIND_INVALID:'+ident)
-        if set(entry)-{'id','kind','coefficients','domain','branch','label'}:raise ValueError('MULTI_CURVE_CURVE_INVALID:'+ident)
-        if 'label' in entry and (not isinstance(entry['label'],str) or not re.fullmatch(MULTI_CURVE_LABEL_PATTERN,entry['label'])):raise ValueError('MULTI_CURVE_LABEL_INVALID:'+ident)
+        if kind not in MULTI_CURVE_KINDS:raise ValueError('MULTI_CURVE_KIND_INVALID:'+ident)
+        free=kind in MULTI_CURVE_FREE_KINDS
+        if set(entry)-MULTI_CURVE_LOOK_KEYS-MULTI_CURVE_KIND_KEYS[kind]:raise ValueError('MULTI_CURVE_CURVE_INVALID:'+ident)
+        look=_mc_look(entry,ident,free)
+        if free:
+            curve=_mc_free_curve(entry,ident,kind,window,look)
+            if 'interval' not in curve:
+                if window is None:raise ValueError('MULTI_CURVE_WINDOW_REQUIRED:'+ident)
+                if kind=='SQRT':
+                    boundary=-curve['radicand'][0]/curve['radicand'][1]
+                    curve['interval']=(boundary,window[1]) if curve['radicand'][1]>0 else (window[0],boundary)
+                else:curve['interval']=(window[0],window[1])
+            if kind=='RATIONAL' and window is None:raise ValueError('MULTI_CURVE_WINDOW_REQUIRED:'+ident)
+            if kind=='SQRT':
+                boundary=-curve['radicand'][0]/curve['radicand'][1]
+                lo,hi=curve['interval']
+                if (curve['radicand'][1]>0 and lo<boundary) or (curve['radicand'][1]<0 and hi>boundary):raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+                if not lo<hi:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+            curves.append(curve);by_id[ident]=curve
+            continue
         coefficients=_mc_coefficients(entry.get('coefficients'),'MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
         if coefficients[2]==0:raise ValueError('MULTI_CURVE_NOT_QUADRATIC:'+ident)
         interval=_mc_interval(entry.get('domain'),'MULTI_CURVE_DOMAIN_INVALID:'+ident)
         branch=entry.get('branch','BOTH')
         if kind=='Y_OF_X' and 'branch' in entry:raise ValueError('MULTI_CURVE_BRANCH_INVALID:'+ident)
         if kind=='X_OF_Y' and branch not in MULTI_CURVE_BRANCHES:raise ValueError('MULTI_CURVE_BRANCH_INVALID:'+ident)
-        curve={'id':ident,'kind':kind,'coefficients':coefficients,'interval':interval,'branch':branch}
+        curve={'id':ident,'kind':kind,'coefficients':coefficients,'interval':interval,'branch':branch,'look':look,'abs':_mc_abs_flag(entry,ident)}
         curve['branches']=_mc_sideways_branches(curve) if kind=='X_OF_Y' else [{'side':'FUNCTION','xInterval':interval,'yInterval':None}]
-        curves.append(curve)
+        curves.append(curve);by_id[ident]=curve
+    # The new kinds and the inverses get their branches here (a quadratic keeps the ones it was given).
+    for curve in curves:
+        if 'branches' not in curve:curve['branches']=_mc_free_branches(curve,window)
+    for entry,curve in zip(raw,curves):
+        curve['emphasis']=_mc_emphasis_rows(entry,curve)
     return curves
 
-def _mc_bbox_points(curves):
+def _mc_emphasis_rows(entry,curve):
+    """The emphasised stretches of a curve (G18a-4), exact: from/to default to the curve's own ends, lie inside its draw interval, are in order and do not overlap, and a
+    stretch of a rational never crosses its pole. Only a curve drawn as y(x) with exact ends can carry one."""
+    raw=entry.get('emphasis') if isinstance(entry,dict) else None
+    ident=curve['id']
+    if raw is None:return []
+    if not isinstance(raw,list) or not 1<=len(raw)<=MULTI_CURVE_EMPHASIS_MAX:raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+    if curve['kind']=='X_OF_Y':raise ValueError('MULTI_CURVE_EMPHASIS_UNSUPPORTED:'+ident)
+    try:lo,hi=(_mc_to_fraction(value,ident) for value in curve['interval'])
+    except ValueError:raise ValueError('MULTI_CURVE_EMPHASIS_UNSUPPORTED:'+ident) from None
+    rows=[];previous=None
+    for index,item in enumerate(raw,1):
+        if not isinstance(item,dict) or set(item)-MULTI_CURVE_EMPHASIS_KEYS:raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+        start=lo if item.get('from') is None else _mc_fraction(item['from'],'MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+        end=hi if item.get('to') is None else _mc_fraction(item['to'],'MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+        if not lo<=start<end<=hi or (previous is not None and start<previous):raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+        color=item.get('color',MULTI_CURVE_EMPHASIS_COLOR)
+        if color not in OVERLAY_COLOR_NAMES:raise ValueError('MULTI_CURVE_COLOR_INVALID:'+ident)
+        states=[item.get('fromState','NONE'),item.get('toState','NONE')]
+        if any(state not in MULTI_CURVE_EMPHASIS_STATES for state in states):raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+        if curve['kind']=='RATIONAL':
+            pole=-curve['denominator'][0]/curve['denominator'][1]
+            if start<pole<end:raise ValueError('MULTI_CURVE_EMPHASIS_ACROSS_POLE:'+ident)
+        rows.append({'from':start,'to':end,'color':color,'fromState':states[0],'toState':states[1]});previous=end
+    return rows
+
+def _mc_free_branches(curve,window):
+    """The exact branches of a curve that has no vertex split: LINE, SQRT and a quadratic half are one branch; RATIONAL is split at its pole (LEFT / RIGHT)
+    when the pole lies inside the draw interval."""
+    ident=curve['id'];lo,hi=curve['interval']
+    if curve['kind']=='RATIONAL':
+        pole=-curve['denominator'][0]/curve['denominator'][1]
+        if lo<pole<hi:return [{'side':'LEFT','xInterval':(lo,pole),'yInterval':None},{'side':'RIGHT','xInterval':(pole,hi),'yInterval':None}]
+        if pole in (lo,hi):raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+    return [{'side':'FUNCTION','xInterval':(lo,hi),'yInterval':None}]
+
+def _mc_bbox_points(curves,window=None):
     points=[]
     for curve in curves:
+        kind=curve['kind']
+        if kind in MULTI_CURVE_FREE_KINDS or curve.get('inverseOf') is not None:
+            lo,hi=curve['interval']
+            if kind=='Y_OF_X':
+                c0,c1,c2=curve['coefficients']
+                points.extend([(float(lo),float(c0+c1*lo+c2*lo*lo)),(float(hi),float(c0+c1*hi+c2*hi*hi))])
+                vertex=-c1/(2*c2)
+                if lo<vertex<hi:points.append((float(vertex),float(c0+c1*vertex+c2*vertex*vertex)))
+            elif kind=='RATIONAL':
+                pole=-curve['denominator'][0]/curve['denominator'][1];horizontal=curve['numerator'][1]/curve['denominator'][1]
+                points.append((float(min(max(pole,lo),hi)),float(abs(horizontal) if curve.get('abs') else horizontal)))
+            else:
+                for edge in (lo,hi):
+                    value=mc_value(curve,edge)
+                    if value is not None:points.append((float(edge),value))
+            continue
         c0,c1,c2=curve['coefficients'];lo,hi=curve['interval']
         if curve['kind']=='Y_OF_X':
-            points.extend([(lo,c0+c1*lo+c2*lo*lo),(hi,c0+c1*hi+c2*hi*hi)])
+            fold=abs if curve.get('abs') else (lambda value:value)
+            points.extend([(lo,fold(c0+c1*lo+c2*lo*lo)),(hi,fold(c0+c1*hi+c2*hi*hi))])
             vertex=-c1/(2*c2)
-            if lo<vertex<hi:points.append((vertex,c0+c1*vertex+c2*vertex*vertex))
+            if lo<vertex<hi:points.append((vertex,fold(c0+c1*vertex+c2*vertex*vertex)))
         else:
             points.extend([(c0+c1*lo+c2*lo*lo,lo),(c0+c1*hi+c2*hi*hi,hi)])
             vertex=-c1/(2*c2)
             if lo<vertex<hi:points.append((c0+c1*vertex+c2*vertex*vertex,vertex))
-    return [(float(x_value),float(y_value)) for x_value,y_value in points]
+    result=[(float(x_value),float(y_value)) for x_value,y_value in points]
+    if window is not None:
+        x0,x1,y0,y1=(float(v) for v in window)
+        result.extend([(x0,y0),(x1,y0),(x0,y1),(x1,y1)])
+    return result
+
+def _mc_text(value):
+    return str(Fraction(value))
+
+def _mc_row(curve):
+    """The frozen row of a curve: exact texts of what the engine draws and the observer compares."""
+    kind=curve['kind'];row={'id':curve['id'],'kind':kind}
+    if kind in ('Y_OF_X','X_OF_Y') and curve.get('inverseOf') is None:
+        row['coefficients']=[_pp_text(value) for value in curve['coefficients']];row['interval']=[_pp_text(value) for value in curve['interval']]
+        if kind=='X_OF_Y':row['branch']=curve['branch']
+    else:
+        row['interval']=[_mc_text(value) for value in curve['interval']]
+        if kind in ('LINE','Y_OF_X'):row['coefficients']=[_mc_text(value) for value in curve['coefficients']]
+        elif kind=='RATIONAL':
+            row['numerator']=[_mc_text(value) for value in curve['numerator']];row['denominator']=[_mc_text(value) for value in curve['denominator']]
+            pole=-curve['denominator'][0]/curve['denominator'][1];horizontal=curve['numerator'][1]/curve['denominator'][1]
+            if curve.get('abs'):horizontal=abs(horizontal)   # the asymptote of |f| is |h|
+            lo,hi=curve['interval']
+            row['asymptotes']={'vertical':{'x':_mc_text(pole),'drawn':bool(lo<pole<hi and pole!=0)},'horizontal':{'y':_mc_text(horizontal),'drawn':bool(horizontal!=0)}}
+        else:
+            row['radicand']=[_mc_text(value) for value in curve['radicand']];row['amplitude']=_mc_text(curve['amplitude']);row['offset']=_mc_text(curve['offset'])
+            boundary=-curve['radicand'][0]/curve['radicand'][1];lo,hi=curve['interval']
+            start=lo if curve['radicand'][1]>0 else hi
+            row['start']={'x':_mc_text(boundary),'y':_mc_text(abs(curve['offset']) if curve.get('abs') else curve['offset']),'drawn':bool(start==boundary)}   # |f| starts at |offset|
+    if curve.get('inverseOf') is not None:row['inverseOf']=curve['inverseOf']
+    if curve.get('abs'):row['abs']=True
+    for key,value in (curve.get('look') or {}).items():row[key]=value
+    if curve.get('emphasis'):row['emphasis']=[{'from':_mc_text(value['from']),'to':_mc_text(value['to']),'color':value['color'],'fromState':value['fromState'],'toState':value['toState']} for value in curve['emphasis']]
+    row['branches']=[]
+    for branch in curve['branches']:
+        entry={'side':branch['side'],'xInterval':[_pp_text(value) if not isinstance(value,Fraction) else _mc_text(value) for value in branch['xInterval']]}
+        if branch['yInterval'] is not None:entry['yInterval']=[_pp_text(value) for value in branch['yInterval']]
+        if branch.get('expression') is not None:entry['expression']=branch['expression']
+        row['branches'].append(entry)
+    return row
+
+# ---- (G18c) shaded regions of a multi-curve figure: between two drawn curves, under a curve, or a half-plane / quadrant piece that runs to the frame ----
+MULTI_CURVE_REGION_FIELDS={'id','between','under','from','to','halfPlane','and','fill','label'}
+MULTI_CURVE_MAX_REGIONS=4
+MULTI_CURVE_HALF_PLANE_OPS=('<','<=','>','>=')
+MULTI_CURVE_REGION_SAMPLES=41
+
+def _mc_boundary_y(curve,x_value):
+    """y of a region boundary ('axis' or a drawn curve of the figure) at x as a float, None where the curve is not defined there."""
+    if curve=='axis':return 0.0
+    if curve['kind']=='Y_OF_X':
+        c0,c1,c2=(float(value) for value in curve['coefficients']);x=float(x_value)
+        value=c0+c1*x+c2*x*x
+        return abs(value) if curve.get('abs') else value
+    if curve['kind']=='X_OF_Y':return None
+    return mc_value(curve,Fraction(x_value))
+
+def _mc_region_boundary(curve,ident,region_id,start,end):
+    """The boundary must be defined over the whole closed [start,end] inside its own draw interval (no pole of a rational, no start of a square root outside it)."""
+    if curve=='axis':return
+    if curve['kind']=='X_OF_Y':raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+region_id+':'+ident)
+    lo,hi=curve['interval']
+    if float(start)<float(lo)-1e-9 or float(end)>float(hi)+1e-9:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':'+ident)
+    if curve['kind']=='RATIONAL':
+        pole=-curve['denominator'][0]/curve['denominator'][1]
+        if start<=pole<=end:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':'+ident)
+
+def _mc_regions(plan,curves,viewport):
+    """The frozen rows of graphPlan.regions (G18c): BETWEEN {upper,lower,from,to} (two curves, or a curve and 'axis'), or HALF_PLANE {box} (a quadrant piece cut by
+    the frame: halfPlane {x|y:'<'|'<='|'>'|'>=',value} and optionally 'and' with the other axis). Everything is recomputed here exactly; the independent observer
+    rebuilds it again from the plan."""
+    raw=plan.get('regions')
+    if raw is None:return []
+    if not isinstance(raw,list) or not 1<=len(raw)<=MULTI_CURVE_MAX_REGIONS:raise ValueError('GRAPH_REGION_COUNT_INVALID')
+    by_id={curve['id']:curve for curve in curves}
+    rows=[];ids=set()
+    for entry in raw:
+        if not isinstance(entry,dict):raise ValueError('GRAPH_REGION_FIELD_INVALID')
+        unknown=sorted(set(entry)-MULTI_CURVE_REGION_FIELDS)
+        if unknown:raise ValueError('GRAPH_REGION_FIELD_UNKNOWN:'+str(unknown[0]))
+        region_id=entry.get('id')
+        if not isinstance(region_id,str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9_-]{0,31}',region_id):raise ValueError('GRAPH_REGION_ID_INVALID')
+        if region_id in ids:raise ValueError('GRAPH_REGION_ID_DUPLICATE:'+region_id)
+        ids.add(region_id)
+        fill=entry.get('fill','LIGHT')
+        if fill not in PIECEWISE_POLY_REGION_FILLS:raise ValueError('GRAPH_REGION_FILL_UNSUPPORTED:'+region_id)
+        label=entry.get('label')
+        if label is not None and (not isinstance(label,str) or not label.strip() or len(label)>40):raise ValueError('GRAPH_REGION_LABEL_INVALID:'+region_id)
+        shapes=[key for key in ('between','under','halfPlane') if key in entry]
+        if len(shapes)!=1:raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+        row={'id':region_id,'fill':fill}
+        if label is not None:row['label']=label
+        if shapes[0]=='halfPlane':
+            if 'from' in entry or 'to' in entry:raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+            sides=[entry['halfPlane']]
+            if 'and' in entry:sides.append(entry['and'])
+            x0,x1,y0,y1=(float(value) for value in viewport)
+            seen=set()
+            for side in sides:
+                if not isinstance(side,dict) or len(side)!=2 or 'value' not in side:raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+                axis=[key for key in side if key in ('x','y')]
+                if len(axis)!=1 or axis[0] in seen or side[axis[0]] not in MULTI_CURVE_HALF_PLANE_OPS:raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+                seen.add(axis[0])
+                value=float(_mc_fraction(side['value'],'GRAPH_REGION_FIELD_INVALID:'+region_id))
+                low,high=(x0,x1) if axis[0]=='x' else (y0,y1)
+                if not low<value<high:raise ValueError('GRAPH_REGION_EMPTY:'+region_id)   # the boundary line must cross the frame, else the region is all or nothing
+                less=side[axis[0]] in ('<','<=')
+                if axis[0]=='x':x1,x0=(value,x0) if less else (x1,value)
+                else:y1,y0=(value,y0) if less else (y1,value)
+            row.update({'kind':'HALF_PLANE','box':[x0,x1,y0,y1]})
+            rows.append(row);continue
+        if shapes[0]=='under':
+            names=[entry['under'],'axis']
+            if not isinstance(entry['under'],str):raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+        else:
+            names=entry['between']
+            if not isinstance(names,list) or len(names)!=2 or any(not isinstance(name,str) for name in names) or names[0]==names[1]:raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+        if not {'from','to'}<=set(entry):raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+        start=_mc_fraction(entry['from'],'GRAPH_REGION_DOMAIN_INVALID:'+region_id);end=_mc_fraction(entry['to'],'GRAPH_REGION_DOMAIN_INVALID:'+region_id)
+        if not start<end:raise ValueError('GRAPH_REGION_DOMAIN_INVALID:'+region_id)
+        boundaries=[]
+        for name in names:
+            curve='axis' if name=='axis' else by_id.get(name)
+            if curve is None:raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+region_id+':'+name)
+            _mc_region_boundary(curve,name,region_id,start,end)
+            boundaries.append(curve)
+        signs=set()
+        for index in range(1,MULTI_CURVE_REGION_SAMPLES):
+            x_value=start+(end-start)*Fraction(index,MULTI_CURVE_REGION_SAMPLES)
+            a=_mc_boundary_y(boundaries[0],x_value);b=_mc_boundary_y(boundaries[1],x_value)
+            if a is None or b is None:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id)
+            if abs(a-b)>1e-9:signs.add(a>b)
+        if not signs:raise ValueError('GRAPH_REGION_EMPTY:'+region_id)
+        if len(signs)>1:raise ValueError('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id)
+        upper,lower=(names[0],names[1]) if signs=={True} else (names[1],names[0])
+        row.update({'kind':'BETWEEN','upper':upper,'lower':lower,'from':_mc_text(start),'to':_mc_text(end)})
+        rows.append(row)
+    return rows
 
 def fit_multi_curve(plan):
     curves=multi_curve_source(plan)
-    points=_mc_bbox_points(curves)
+    window=_mc_window(plan) if any(curve['kind'] in MULTI_CURVE_FREE_KINDS or curve.get('inverseOf') is not None for curve in curves) else None
+    points=_mc_bbox_points(curves,window)
+    if window is not None:
+        # The axes' facts (origin, (1,0), (0,1)) must lie strictly inside the frame: the engine widens the whole frame by 8% when one does not, and then the planned
+        # frame and the drawn frame differ (the same fault as the rational overview above).
+        points.extend([(0.0,0.0),(1.0,0.0),(0.0,1.0)])
     points.extend((float(x_value),float(y_value)) for x_value,y_value in plan.get('overlayAnchors',[]))
     xs=[point[0] for point in points];ys=[point[1] for point in points]
     xspan,yspan=max(xs)-min(xs),max(ys)-min(ys)
@@ -3788,19 +4366,20 @@ def fit_multi_curve(plan):
         viewport,height,scale=equal_unit_frame(points,limit,ratio)
         if xspan*scale>=EQUAL_UNIT_MIN_CURVE_PX and yspan*scale*ratio>=EQUAL_UNIT_MIN_CURVE_PX:break
     else:raise ValueError('MULTI_CURVE_TOO_NARROW')
-    rows=[]
-    for curve in curves:
-        row={'id':curve['id'],'kind':curve['kind'],'coefficients':[_pp_text(value) for value in curve['coefficients']],'interval':[_pp_text(value) for value in curve['interval']]}
-        if curve['kind']=='X_OF_Y':row['branch']=curve['branch']
-        row['branches']=[]
-        for branch in curve['branches']:
-            entry={'side':branch['side'],'xInterval':[_pp_text(value) for value in branch['xInterval']]}
-            if branch['yInterval'] is not None:entry['yInterval']=[_pp_text(value) for value in branch['yInterval']]
-            if branch.get('expression') is not None:entry['expression']=branch['expression']
-            row['branches'].append(entry)
-        rows.append(row)
+    rows=[_mc_row(curve) for curve in curves]
     features={'schemaVersion':'MULTI_CURVE_FEATURES_v1','curves':rows}
+    regions=_mc_regions(plan,curves,viewport)
+    if regions:features['regions']=regions
     fitted={key:value for key,value in plan.items() if key not in ('domain','viewport')}
+    # A curve's label may have been written in TeX; the plan that travels on carries the ASCII form the label machinery typesets.
+    labelled=[]
+    for entry,curve in zip(plan['curves'],curves):
+        if 'label' in curve['look'] and entry.get('label')!=curve['look']['label']:entry={**entry,'label':curve['look']['label']}
+        # the draw interval of a curve the author left to the window (or an inverse's image) is written down, so the observer reads the same interval the engine draws
+        if 'domain' not in entry:entry={**entry,'domain':[_mc_text(value) for value in curve['interval']]}
+        elif isinstance(entry['domain'],dict):entry={**entry,'domain':[entry['domain']['from'],entry['domain']['to']]}
+        labelled.append(entry)
+    fitted['curves']=labelled
     fitted.update({'domain':[viewport[0],viewport[1]],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':MULTI_CURVE_OVERVIEW_POLICY,
                    'equalUnits':True,'axisRatio':ratio,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height},'multiCurveFeatures':features})
     return {'graphPlan':fitted,'policy':MULTI_CURVE_OVERVIEW_POLICY,'sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}

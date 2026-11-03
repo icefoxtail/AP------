@@ -109,7 +109,7 @@ def _produce(plan):
         critical.extend(point['x'] for row in features.get('lines',[]) for point in row['intersections'])
         critical.extend(float(Fraction(row['x']))*factor for row in features.get('keyPoints',[]))
         critical.extend(float(Fraction(row['x']))*factor for row in features.get('poles',[]))
-    result=sample(expression(plan),plan['domain'],vp,critical_x=critical)
+    result=sample(expression(plan),plan['domain'],vp,critical_x=critical,clip_refine=plan.get('clipRefine') is True)
     # A tangent branch near a pole can exceed the finite wire range in its refinement-cap report; the code is the evidence, not the huge px.
     for warning in result.get('warnings',[]):
         if isinstance(warning,dict) and 'errorPx' in warning and not (math.isfinite(warning['errorPx']) and abs(warning['errorPx'])<=9007199254740991):warning['errorPx']=None
@@ -370,25 +370,159 @@ def _region_parts(features,vp):
             labels.append(f'<text id="region-{region["id"]}-label" x="{cx:.12g}" y="{cy:.12g}" text-anchor="middle" font-size="12">{html.escape(region["label"])}</text>')
     return fills,labels
 
+def _mc_look_attrs(curve):
+    """(G18a) the stroke, dash and weight of a curve's polylines, as the engine writes them: a palette colour's line colour, DASHED '6 4', BOLD width 3.2."""
+    stroke='"'+PALETTE[curve['color']]['line']+'"' if curve.get('color') else '"black"'
+    return stroke,(' stroke-dasharray="6 4"' if curve.get('style')=='DASHED' else '')+(' stroke-width="3.2"' if curve.get('weight')=='BOLD' else '')
+
+def _mc_plain_expression(curve):
+    if curve['kind']=='LINE' or curve['kind']=='Y_OF_X':return _polynomial_text(curve['coefficients'])
+    if curve['kind']=='RATIONAL':return '('+_polynomial_text(curve['numerator'])+')/('+_polynomial_text(curve['denominator'])+')'
+    return '('+curve['offset']+')+('+curve['amplitude']+')*sqrt('+_polynomial_text(curve['radicand'])+')'
+
+def _mc_free_expression(curve):
+    """The sampler expression of a LINE / RATIONAL / SQRT row (exact fraction texts); abs(..) for a curve drawn as y=|f(x)| (G18c)."""
+    text=_mc_plain_expression(curve)
+    return 'abs('+text+')' if curve.get('abs') else text
+
+def _mc_kinks(row):
+    """(G18c) the x values where the underlying f of an abs curve is 0 (the folded corners), as floats."""
+    from graph_framing import pp_exact_float
+    if not row.get('abs'):return []
+    kind=row['kind']
+    if kind=='LINE':
+        c0,c1=(pp_exact_float(value) for value in row['coefficients']);return [-c0/c1] if c1 else []
+    if kind=='RATIONAL':
+        n0,n1=(pp_exact_float(value) for value in row['numerator']);return [-n0/n1] if n1 else []
+    if kind=='SQRT':
+        o=pp_exact_float(row.get('offset','0'));a=pp_exact_float(row.get('amplitude','1'));r0,r1=(pp_exact_float(value) for value in row['radicand']);root=-o/a
+        return [(root*root-r0)/r1] if root>0 and r1 else []
+    if kind=='Y_OF_X':
+        c0,c1,c2=(pp_exact_float(value) for value in row['coefficients']);disc=c1*c1-4*c2*c0
+        return [(-c1-math.sqrt(disc))/(2*c2),(-c1+math.sqrt(disc))/(2*c2)] if disc>0 else []
+    return []
+
+def _mc_region_boundary_points(features,name,start,end,vp):
+    """Screen points of one region boundary ('axis' or a drawn curve) over [start,end]: sampled from the curve's own expression, split where an abs curve folds."""
+    points=[]
+    if name=='axis':segments=[('0',[start,end],[])]
+    else:
+        row=next((curve for curve in features['curves'] if curve['id']==name),None)
+        if row is None:raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+name)
+        expression=_mc_free_expression(row);cuts=[start]+[z for z in sorted(_mc_kinks(row)) if start+1e-9<z<end-1e-9]+[end];segments=[]
+        for left,right in zip(cuts,cuts[1:]):
+            critical=[]
+            if row['kind']=='SQRT':
+                slope=float(Fraction(row['radicand'][1]));amplitude=abs(float(Fraction(row['amplitude'])));step=(1.2/((vp.sy)*math.sqrt(abs(slope))*amplitude))**2
+                if slope>0 and left+step<right:critical.append(left+step)
+                elif slope<0 and right-step>left:critical.append(right-step)
+            segments.append((expression,[left,right],critical))
+    for expression,domain,critical in segments:
+        result=sample(expression,domain,vp,critical_x=critical)
+        if len(result['branches'])!=1 or not result['branches'][0]:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+        pts=[vp.screen(value) for value in result['branches'][0]]
+        if points and pts and abs(points[-1][0]-pts[0][0])<=1e-9:pts=pts[1:]
+        points.extend(pts)
+    return points
+
+def _mc_region_parts(features,vp):
+    """(G18c) The model-stage drawing of a multi-curve figure's regions: one even-odd fill path (a band between two sampled curves, or the frame piece of a half-plane) and
+    its plain label, with the ids the final figure uses."""
+    import html
+    from graph_framing import pp_exact_float
+    fills=[];labels=[]
+    for region in features.get('regions',[]):
+        if region['kind']=='HALF_PLANE':
+            x0,x1,y0,y1=(float(value) for value in region['box'])
+            polygon=[vp.screen(point) for point in ((x0,y1),(x1,y1),(x1,y0),(x0,y0))]
+            upper=polygon[:2];lower=[polygon[3],polygon[2]]
+        else:
+            start,end=pp_exact_float(region['from']),pp_exact_float(region['to'])
+            upper=_mc_region_boundary_points(features,region['upper'],start,end,vp);lower=_mc_region_boundary_points(features,region['lower'],start,end,vp)
+            if len(upper)<2 or len(lower)<2:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+            polygon=upper+list(reversed(lower))
+        path='M'+','.join(svg_number(value) for value in polygon[0])+' '+' '.join('L'+','.join(svg_number(value) for value in point) for point in polygon[1:])+' Z'
+        tint=region.get('fill','LIGHT')
+        fill={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}[tint] if tint in ('LIGHT','MEDIUM') else PALETTE[tint]['fill']
+        opacity='' if tint in ('LIGHT','MEDIUM') else f' fill-opacity="{PALETTE[tint]["opacity"]}"'
+        fills.append(f'<path id="region-{region["id"]}" data-role="region" data-mark="graph-region" data-mark-id="{region["id"]}" fill="{fill}"{opacity} fill-rule="evenodd" stroke="none" d="{path}"/>')
+        if region.get('label') is not None:
+            mid=(min(point[0] for point in polygon)+max(point[0] for point in polygon))/2
+            upper_at=min(upper,key=lambda point:abs(point[0]-mid));lower_at=min(lower,key=lambda point:abs(point[0]-mid))
+            cx,cy=(upper_at[0]+lower_at[0])/2,(upper_at[1]+lower_at[1])/2
+            labels.append(f'<text id="region-{region["id"]}-label" x="{cx:.12g}" y="{cy:.12g}" text-anchor="middle" font-size="12">{html.escape(region["label"])}</text>')
+    return fills,labels
+
+def _mc_row_y(row,x_value):
+    """y of a frozen LINE / quadratic Y_OF_X / RATIONAL / SQRT row at x (a float), for the end dots of an emphasised stretch."""
+    from graph_framing import pp_exact_float
+    kind=row['kind']
+    if kind in ('LINE','Y_OF_X'):return sum(pp_exact_float(value)*x_value**index for index,value in enumerate(row['coefficients']))
+    if kind=='RATIONAL':
+        n=[pp_exact_float(value) for value in row['numerator']];d=[pp_exact_float(value) for value in row['denominator']]
+        return (n[0]+n[1]*x_value)/(d[0]+d[1]*x_value)
+    r=[pp_exact_float(value) for value in row['radicand']]
+    return pp_exact_float(row.get('offset','0'))+pp_exact_float(row.get('amplitude','1'))*math.sqrt(max(0.0,r[0]+r[1]*x_value))
+
+def _mc_emphasis_parts(row,vp,sampling):
+    """(G18a-4) the heavier coloured polyline over each emphasised stretch of a curve (tag EMPH_<id>_<n>) and its open / closed end dots."""
+    from graph_framing import pp_exact_float
+    from xml.sax.saxutils import escape
+    parts=[];ident=escape(str(row['id']))
+    for number,emphasis in enumerate(row.get('emphasis') or [],1):
+        domain=[pp_exact_float(emphasis['from']),pp_exact_float(emphasis['to'])]
+        result=sample(_mc_free_expression(row),domain,vp,critical_x=list(domain))
+        if len(result['branches'])!=1:raise ValueError('MULTI_CURVE_SAMPLING_FAILED:'+str(row['id']))
+        sampling.append({'id':'emph-'+str(row['id'])+'-'+str(number),**{key:value for key,value in result.items() if key!='branches'}})
+        points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
+        parts.append(f'<polyline id="emph-{ident}-{number}" data-role="curve" data-branch="EMPH_{ident}_{number}" points="{points}" fill="none" stroke="{PALETTE[emphasis["color"]]["line"]}" stroke-width="3.2"/>')
+        for which,state,value in (('from',emphasis['fromState'],domain[0]),('to',emphasis['toState'],domain[1])):
+            if state not in ('OPEN','CLOSED'):continue
+            cx,cy=vp.screen((value,_mc_row_y(row,value)))
+            parts.append(f'<circle id="emphasis-{ident}-{number}-{which}" data-role="emphasis-endpoint" data-state="{state}" cx="{cx:.12g}" cy="{cy:.12g}" r="4" fill="{"#fff" if state=="OPEN" else "#111"}" stroke="black"/>')
+    return parts
+
 def _produce_multi_curve(plan,vp):
-    """Three to six independent quadratic arcs, each drawn only on its own branch interval, with the data-branch ids the
-    final composed figure uses (CURVE_<id> for y=f(x), CURVE_<id>_POS/_NEG for the two branches of x=g(y))."""
+    """Two to six curves: independent quadratic arcs (each drawn only on its own branch interval), lines, rational and square-root curves, with the data-branch
+    ids the final composed figure uses (CURVE_<id> for y=f(x), a line or a square root, CURVE_<id>_L / _R for the two sides of a rational's pole,
+    CURVE_<id>_POS/_NEG for the two branches of x=g(y)), the dashed asymptotes of a rational (ASYM_<id>_V / _H) and the start dot of a square root."""
     from graph_framing import pp_exact_float
     from xml.sax.saxutils import escape
     features=plan.get('multiCurveFeatures')
     if not isinstance(features,dict) or features.get('schemaVersion')!='MULTI_CURVE_FEATURES_v1' or not isinstance(features.get('curves'),list):raise ValueError('MULTI_CURVE_FEATURE_INVENTORY_REQUIRED')
-    parts=[];sampling=[]
+    parts=[];sampling=[];extras=[]
+    region_fills,region_labels=_mc_region_parts(features,vp)
     for curve in features['curves']:
-        ident=curve.get('id')
-        if curve.get('kind')=='Y_OF_X':
+        ident=curve.get('id');stroke,look=_mc_look_attrs(curve)
+        if curve.get('kind') in ('Y_OF_X','LINE','RATIONAL','SQRT'):
             intervals=curve.get('branches') or []
-            if len(intervals)!=1:raise ValueError('MULTI_CURVE_BRANCH_INVENTORY_REQUIRED:'+str(ident))
-            branch=intervals[0];domain=[pp_exact_float(value) for value in branch['xInterval']]
-            result=sample(_polynomial_text(curve['coefficients']),domain,vp,critical_x=domain)
-            if len(result['branches'])!=1:raise ValueError('MULTI_CURVE_SAMPLING_FAILED:'+str(ident))
-            sampling.append({'id':'curve-'+str(ident),**{key:value for key,value in result.items() if key!='branches'}})
-            points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
-            parts.append(f'<polyline id="curve-{escape(str(ident))}" data-role="curve" data-branch="CURVE_{escape(str(ident))}" points="{points}" fill="none" stroke="black"/>')
+            if curve['kind']=='Y_OF_X' and len(intervals)!=1:raise ValueError('MULTI_CURVE_BRANCH_INVENTORY_REQUIRED:'+str(ident))
+            for branch in intervals:
+                side=branch.get('side');domain=[pp_exact_float(value) for value in branch['xInterval']]
+                suffix='' if side=='FUNCTION' else '_L' if side=='LEFT' else '_R' if side=='RIGHT' else None
+                if suffix is None:raise ValueError('MULTI_CURVE_BRANCH_INVENTORY_REQUIRED:'+str(ident))
+                critical=list(domain)+[z for z in _mc_kinks(curve) if domain[0]<z<domain[1]]
+                if curve['kind']=='SQRT':
+                    slope=float(Fraction(curve['radicand'][1]));amplitude=abs(float(Fraction(curve['amplitude'])));step=(1.2/((vp.sy)*math.sqrt(abs(slope))*amplitude))**2
+                    if slope>0 and domain[0]+step<domain[1]:critical.append(domain[0]+step)
+                    elif slope<0 and domain[1]-step>domain[0]:critical.append(domain[1]-step)
+                result=sample(_mc_free_expression(curve),domain,vp,critical_x=critical)
+                if len(result['branches'])!=1:raise ValueError('MULTI_CURVE_SAMPLING_FAILED:'+str(ident))
+                sampling.append({'id':'curve-'+str(ident)+suffix.lower(),**{key:value for key,value in result.items() if key!='branches'}})
+                points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
+                parts.append(f'<polyline id="curve-{escape(str(ident))}{suffix.lower()}" data-role="curve" data-branch="CURVE_{escape(str(ident))}{suffix}" points="{points}" fill="none" stroke={stroke}{look}/>')
+            extras.extend(_mc_emphasis_parts(curve,vp,sampling))
+            asymptotes=curve.get('asymptotes') or {}
+            xmin,xmax,ymin,ymax=vp.bounds
+            if (asymptotes.get('vertical') or {}).get('drawn'):
+                x_value=pp_exact_float(asymptotes['vertical']['x']);a,b=vp.screen((x_value,ymin)),vp.screen((x_value,ymax))
+                extras.append(f'<line id="asymptote-{escape(str(ident))}-v" data-role="asymptote" data-branch="ASYM_{escape(str(ident))}_V" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
+            if (asymptotes.get('horizontal') or {}).get('drawn'):
+                y_value=pp_exact_float(asymptotes['horizontal']['y']);a,b=vp.screen((xmin,y_value)),vp.screen((xmax,y_value))
+                extras.append(f'<line id="asymptote-{escape(str(ident))}-h" data-role="asymptote" data-branch="ASYM_{escape(str(ident))}_H" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
+            if curve['kind']=='SQRT' and (curve.get('start') or {}).get('drawn'):
+                cx,cy=vp.screen((pp_exact_float(curve['start']['x']),pp_exact_float(curve['start']['y'])))
+                extras.append(f'<circle id="curve-{escape(str(ident))}-start" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
             continue
         if curve.get('kind')!='X_OF_Y':raise ValueError('MULTI_CURVE_KIND_INVALID:'+str(ident))
         for branch in curve.get('branches') or []:
@@ -400,8 +534,8 @@ def _produce_multi_curve(plan,vp):
             tag='POS' if side=='POSITIVE' else 'NEG'
             sampling.append({'id':'curve-'+str(ident)+'-'+tag.lower(),**{key:value for key,value in result.items() if key!='branches'}})
             points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
-            parts.append(f'<polyline id="curve-{escape(str(ident))}-{tag.lower()}" data-role="curve" data-branch="CURVE_{escape(str(ident))}_{tag}" points="{points}" fill="none" stroke="black"/>')
-    svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(parts)+'</svg>'
+            parts.append(f'<polyline id="curve-{escape(str(ident))}-{tag.lower()}" data-role="curve" data-branch="CURVE_{escape(str(ident))}_{tag}" points="{points}" fill="none" stroke={stroke}{look}/>')
+    svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(region_fills+parts+extras+region_labels)+'</svg>'
     return {'svg':svg,'sampling':{'branches':sampling,'branchCount':len(sampling),'status':'PASS' if all(row['status']=='PASS' for row in sampling) else 'POLISH_REQUIRED'},'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
 
 def _produce_piecewise_polynomial(plan,vp):

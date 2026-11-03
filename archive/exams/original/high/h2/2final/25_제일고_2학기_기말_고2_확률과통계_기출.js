@@ -225,7 +225,11 @@ window.questionBank = [
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 30인 표본평균의 분포 곡선에서 30~36의 넓이 0.4772를 칠했고, 36은 표준화한 값 Z=2에 대응한다.",
+    "solutionImageCaption": "표본평균 X̄는 평균 30, 표준편차 σ/4인 정규분포를 따른다. P(30≤X̄≤36)=P(0≤Z≤24/σ)=0.4772이고 표에서 P(0≤Z≤2)=0.4772이므로 24/σ=2이다. 정답은 ⑤ 12이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -260,11 +264,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_확통_2기말.pdf",
     "image": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q08.png",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q08-solution.svg",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q8-solution-v2.svg",
     "imageKind": "graph",
     "visualAssetStatus": "asset_verified",
-    "solutionImageAlt": "삼각형 확률밀도함수에서 0부터 1까지의 넓이는 1/6, 0부터 b=2까지의 넓이는 2/3이다.",
-    "solutionImageCaption": "넓이와 확률이 같음을 이용해 a=3, b=2, c=2/3을 구한다.",
+    "solutionImageAlt": "해설 그림: 확률밀도함수의 그래프 (0,0)→(b,c)→(a,0)에서 b=2, c=2/3, a=3을 표시했다. 파란 부분은 x=0~1(넓이 1/6), 파란+회색 부분은 x=0~b(넓이 2/3)이다.",
+    "solutionImageCaption": "x=0~1의 넓이 1/6(파랑)과 x=1~b의 넓이 1/2(회색)을 더하면 x=0~b의 넓이가 2/3이다. P(X≤b)=2/3에서 bc=4/3, P(X≤1)=1/6에서 b=3c이므로 c=2/3, b=2, a=3이고 a×b×c=4, 정답은 ④이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -362,7 +366,11 @@ window.questionBank = [
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 1116, 표준편차 18인 정규분포 곡선에서 1116 이하가 연한 색(0.5), 1116~1134가 진한 색(0.3413)으로 칠해져 있고 z 눈금은 0, 1이다.",
+    "solutionImageCaption": "9봉지의 무게 합 W는 N(1116, 18의 제곱)이고 1134는 Z=1이다. P(W≤1134)=0.5+0.3413=0.8413이므로 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -426,7 +434,11 @@ window.questionBank = [
     "subUnit": "통계적 추정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 같은 표본평균을 중심으로 한 신뢰도 95%의 구간과 신뢰도 99%의 구간을 위아래로 나타낸 그림. 99% 구간 안의 자연수 38부터 62까지가 점으로 찍혀 있다.",
+    "solutionImageCaption": "구간의 끝은 40.2, 59.8, 37.1, 62.9이다. 99% 구간 37.1≤m≤62.9에 속하는 자연수는 38, 39, …, 62이므로 62-38+1=25개이고 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -459,7 +471,11 @@ window.questionBank = [
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: N(15,4²)인 X(실선)와 N(20,6²)인 Y(점선) 두 곡선에서 X의 17 이상 꼬리(진하게)와 Y의 17 이하 꼬리(연하게)를 같은 넓이 0.3085로 칠했고, X 곡선 위에 9의 눈금이 표시되어 있다.",
+    "solutionImageCaption": "X의 17은 Z=0.5이므로 P(X≥17)=0.3085이고 Y의 17이 Z=-0.5라서 σ=6이다. P(X>m-σ)=P(X>9)=P(Z>-1.5)=0.5+0.4332=0.9332이다. 정답 ③ 0.9332.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -492,7 +508,11 @@ window.questionBank = [
     "subUnit": "확률분포",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 패널의 정규분포 곡선. 위쪽은 키위 무게 X(평균 50, 표준편차 5)에서 평균~60(z 0~2)의 옅은 넓이 0.48과 60 이상(z 2 이상)의 진한 꼬리 p를, 아래쪽은 1등급 개수 Y의 근사(평균 50, 표준편차 7)에서 평균~57(z 0~1)의 옅은 넓이 0.34와 57 이상(z 1 이상)의 진한 꼬리 물음표를 보였다.",
+    "solutionImageCaption": "옅은 부분은 평균부터 경계까지의 넓이(표 값), 진한 부분은 경계 이상의 꼬리이다. 위쪽에서 1등급 확률은 p=P(X≥60)=P(Z≥2)=0.5-0.48=0.02이고, 2500개 중 1등급 개수 Y는 B(2500, 0.02)이므로 평균 50, 표준편차 7인 정규분포로 근사해 아래쪽 진한 꼬리 P(Y≥57)=P(Z≥1)=0.5-0.34를 구한다. 정답은 ④ 0.16이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -525,7 +545,11 @@ window.questionBank = [
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균이 같은 넓은 곡선 X(표준편차 4)와 좁은 점선 곡선 표본평균(표준편차 1)이 있고 m~a는 0.3413으로 칠해져 있으며 표본평균 곡선의 a-2 이상 꼬리가 진하게 칠해져 있다.",
+    "solutionImageCaption": "P(m≤X≤a)=0.3413에서 (a-m)/4=1이므로 a=m+4이다. 표본평균은 N(m, 1의 제곱)이고 a-2=m+2는 Z=2이므로 P(표본평균≥a-2)=0.5-0.4772=0.0228이고 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -623,7 +647,11 @@ window.questionBank = [
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균 4.5, 표준편차 0.1인 표본평균의 정규분포 곡선에서 4.6이 표준화 값 Z=1에 해당함을 표시하고, 4.5에서 4.6까지의 넓이 0.3413과 4.6 오른쪽 꼬리(구하는 확률)를 칠한 그림",
+    "solutionImageCaption": "P(X≥4.5)=1/2에서 m=4.5, P(X≤5)=0.8413에서 σ=0.5이므로 표본평균의 표준편차는 0.5/5=0.1이다. 따라서 P(X̄≥4.6)=P(Z≥1)=0.5-0.3413=0.1587이고 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -683,7 +711,11 @@ window.questionBank = [
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선에서 0을 중심으로 -1.5부터 1.5까지의 대칭 구간을 칠한 그림으로, 이 구간의 넓이가 표의 0.43을 두 배한 0.86에 해당한다.",
+    "solutionImageCaption": "표 값 P(0≤Z≤1.5)=0.43이므로 P(-1.5≤Z≤1.5)=0.86이고, 18/√n≥1.5에서 n≤144이다. 정답 144.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -737,6 +769,10 @@ window.questionBank = [
     "subUnit": "통계적 추정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 표본 크기 36과 81인 두 신뢰구간을 수직선 두 줄로 나타낸 그림. 각각 하한 25와 29, 평균 31과 33, 상한 37이고 오차한계는 6과 4이다.",
+    "solutionImageCaption": "신뢰도 99%의 신뢰상수는 3이고 오차한계는 σ/2, σ/3이다. 상한이 모두 37이므로 x̄+σ/2=37, x̄+2+σ/3=37에서 σ=12, x̄=31이고 a=25, b=29이므로 a+b=54이다.",
+    "solutionImageSize": "medium"
   }
 ];

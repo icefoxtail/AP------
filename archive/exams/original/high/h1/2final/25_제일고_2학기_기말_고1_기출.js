@@ -56,9 +56,10 @@ window.questionBank = [
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q02-solution.svg",
-    "solutionImageAlt": "점 (4,1)에서 (−1,3)으로 가는 좌표 변화 (−5,2)를 화살표로 보이고, 같은 이동으로 P(2,5)가 P′(−3,7)로 옮겨지는 모습을 나타낸 좌표평면이다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점 (4,1)이 (-1,3)으로, 점 (2,5)가 같은 방향·같은 크기로 이동하는 두 화살표를 좌표평면에 나타낸 그림이다.",
+    "solutionImageSize": "medium",
+    "solutionImageCaption": "점 (4,1)이 (-1,3)으로 옮겨지면 좌표가 (-5,2)만큼 변하므로 점 (2,5)는 (-3,7)로 옮겨진다. 정답은 ②이다."
   },
   {
     "id": 3,
@@ -83,10 +84,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "원점 $O$와 접점 $T=(3,4)$를 잇는 반지름의 기울기는\n$\\dfrac43$이다.\n접선은 반지름에 수직이므로 기울기는 $-\\dfrac34$이다. 접점 $T$를 지나는 직선은\n$y-4=-\\dfrac34(x-3)$이다.\n양변을 정리하면\n$3x+4y=25$이다.\n\n따라서 접선의 방정식은 $3x+4y=25$이고 정답은 ③이다.",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q03-solution.svg",
-    "solutionImageAlt": "원 x²+y²=25 위의 점 (3,4)와 그 점에서의 접선을 나타낸 그림",
-    "solutionImageCaption": "접점의 반지름과 접선은 서로 수직이며 접선은 3x+4y=25이다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 x²+y²=25 위의 점 T(3,4)에서 반지름 OT(기울기 4/3)와 접선(기울기 -3/4)이 직각으로 만나는 그림.",
+    "solutionImageCaption": "반지름 OT의 기울기는 4/3이고 접선은 OT에 수직이므로 기울기가 -3/4이며, 점 T(3,4)를 지나는 접선의 방정식은 3x+4y=25이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-03-TANGENT",
     "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -118,7 +119,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-06-CORE",
     "subUnit": "명제 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 직선 x+y=6과 그 아래쪽의 x+y<6 부분, 점 (4,2)에서 오른쪽과 위쪽으로 뻗는 x≥4, y≥2 영역의 경계가 직선 위의 한 점에서만 닿는 그림",
+    "solutionImageCaption": "결론이 거짓인 영역 x≥4, y≥k+3은 k=-1일 때 모서리 (4,2)가 직선 x+y=6 위에 놓여 가정 x+y<6인 영역과 겹치지 않으므로 명제가 참이 되며 k의 최솟값은 -1이다. 정답 ①",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -146,7 +151,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-06-CORE",
     "subUnit": "명제 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 줄에 p의 진리집합 [-2,3]∪(5,∞), q의 진리집합 x>-3, r의 진리집합 x≥6을 나타낸 그림",
+    "solutionImageCaption": "p⇒q이므로 q의 진리집합 (a,∞)는 p의 가장 작은 원소 -2를 포함해야 해서 정수 a의 최댓값은 -3이고, r⇒p이므로 r의 진리집합 [b,∞)는 5보다 오른쪽이어야 해서 정수 b의 최솟값은 6이다. 따라서 a+b=3이다. 정답 ⑤",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -171,13 +180,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "점 $A(2,1)$을 직선 $y=x$에 대하여 대칭이동하면\n$A'=(1,2)$이다.\n$P$가 $y=x$ 위에 있으므로 $PA=PA'$이다. 따라서\n$PA+PB=A'P+PB$이다.\n삼각형에서 두 변의 길이의 합은 나머지 한 변보다 작지 않으므로\n$A'P+PB\\ge A'B$이다.\n$A'B=\\sqrt{(5-1)^2+(4-2)^2}=2\\sqrt5$이다.\n$A'$에서 $y-x=1$이고 $B$에서 $y-x=-1$이므로 선분 $A'B$는 직선 $y=x$와 만난다. 그 교점을 $P$로 잡으면 등호가 성립한다.\n\n따라서 최솟값은 $2\\sqrt5$이고 정답은 ②이다.",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q06-solution.svg",
-    "solutionImageAlt": "직선 y=x에 대한 A(2,1)의 대칭점 A′(1,2)와 B(5,4)를 잇는 선분을 그린 좌표평면이다. y=x 위의 P(3,3)에서 A′P+PB가 최소 2√5가 됨을 보여 준다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=x와 점 A(2,1), 그 대칭점 A'(1,2), 점 B(5,4), A'B와 y=x의 교점 P(3,3)이 그려져 있고 PA와 PA'가 같은 길이로 표시되어 있다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageCaption": "PA=PA'이므로 AP+BP=A'P+PB≥A'B이고 A', P, B가 한 직선 위일 때 같으므로 최솟값은 A'B=2√5이다(정답 ②)."
   },
   {
     "id": 7,
@@ -202,10 +212,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "점 $(-1,2)$을 지나는 접선 중 수직선이 있는지 먼저 확인한다.\n수직선 $x=-1$과 원의 중심 $(3,-2)$ 사이의 거리는\n$|3-(-1)|=4$이다.\n반지름은 2이므로 $x=-1$은 접선이 아니다.\n따라서 두 접선은 모두 기울기를 가지며\n$y-2=m(x+1)$\n로 나타낼 수 있다.\n일반형으로 쓰면\n$mx-y+m+2=0$이다.\n중심 $(3,-2)$에서 이 직선까지의 거리가 반지름 2와 같아야 하므로\n$\\dfrac{|3m+2+m+2|}{\\sqrt{m^2+1}}=2$이다.\n따라서\n$\\dfrac{|4m+4|}{\\sqrt{m^2+1}}=2$,\n$16(m+1)^2=4(m^2+1)$이다.\n정리하면\n$3m^2+8m+3=0$이다.\n두 접선의 기울기를 $m_1,m_2$라 하면 근과 계수의 관계에서\n$m_1m_2=\\dfrac{3}{3}=1$이다.\n\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q07-solution.svg",
-    "solutionImageAlt": "점 (-1,2)에서 중심 (3,-2)의 원에 그은 두 접선과 두 기울기를 나타낸 그림",
-    "solutionImageCaption": "외부점에서 그은 두 접선의 기울기를 거리 조건으로 구해 곱한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 (3,-2), 반지름 2인 원과 원 밖의 점 P(-1,2), P에서 원에 그은 두 접선과 접점 Q1, Q2를 나타낸 그림이다.",
+    "solutionImageCaption": "점 P(-1,2)에서 그은 두 접선 y-2=m(x+1)의 기울기 m₁, m₂는 3m²+8m+3=0의 두 근이므로 m₁m₂=1이며 정답은 ③이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-03-TANGENT",
     "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -266,10 +276,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "직선이 $(3,12)$를 지나므로\n$\\dfrac3a+\\dfrac{12}{b}=1$이다.\n$b>0$이므로 $\\dfrac{12}{b}>0$, 따라서 $\\dfrac3a<1$이고 $a>3$이다.\n$t=a-3>0$으로 놓으면 $a=t+3$이다. 주어진 식에서\n$\\dfrac{12}{b}=\\dfrac{a-3}{a}=\\dfrac{t}{t+3}$,\n$b=\\dfrac{12(t+3)}t=12+\\dfrac{36}t$이다.\n따라서\n$a+b=t+15+\\dfrac{36}t$\n$=27+\\dfrac{(t-6)^2}{t}\\ge27$이다.\n$t=6$일 때 등호가 성립하므로 최솟값은 27이다.",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q09-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 9의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "교점 · a=9, b=18 · 절편 A=(9,0), B=(0,18)",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직선 x/9+y/18=1이 점 P(3,12)를 지나고 x축, y축과 A, B에서 만나며 OA=9, OB=18임을 나타낸 좌표평면 그림.",
+    "solutionImageCaption": "직선 x/9+y/18=1은 점 P(3,12)를 지나고 x축, y축과 만나는 점 A, B에 대하여 최솟값일 때 OA=9, OB=18이다. 따라서 OA+OB의 최솟값은 27이므로 정답은 ④이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-02-EQUATION_APPLICATION",
     "subUnit": "방정식과 부등식의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -305,7 +315,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 X에서 X로 가는 함수 f의 대응도. 1→3, 2→4, 3→1, 4→5, 5→2이다. 2→4와 4→5 화살표가 굵고 두 화살표의 4에 바탕이 칠해져 있다.",
+    "solutionImageCaption": "f(2)=4이고 4를 다시 f에 넣으면 f(4)=5이므로 (f∘f)(2)=f(f(2))=f(4)=5이다. 정답: ⑤",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -333,13 +347,13 @@ window.questionBank = [
     "answer": "②",
     "solution": "근호 안이 $0$ 이상이어야 하므로\n$-x-1\\ge0$,\n$x\\le-1$이다.\n함숫값이 $0$이 되는 경계는\n$\\sqrt{-x-1}-1=0$,\n$x=-2$이다.\n$x<-2$이면 $y>0$이고 $x<0$이므로 그래프는 제2사분면을 지난다.\n$-2<x\\le-1$이면 $y<0$이고 $x<0$이므로 제3사분면을 지난다.\n\n따라서 제2, 제3사분면이고 정답은 ②이다.",
 
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q11-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수의 끝점과 x절편, 사분면을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: y=√(-x-1)-1의 그래프: 시작점 (-1,-1)에서 왼쪽 위로 뻗으며 x축과 (-2,0)에서 만난다. 축 이름 x, y와 원점 O 표시",
 
-    "solutionImageCaption": "정의역 x≤−1, x절편 (−2,0), 끝점 (−1,−1)을 확인한다.",
+    "solutionImageCaption": "y=√(-x-1)-1은 x≤-1에서 시작점 (-1,-1)에서 왼쪽 위로 뻗고 x축과 (-2,0)에서 만난다. x<-2에서는 y>0, -2<x≤-1에서는 y<0이므로 그래프는 제2, 3사분면을 지나고 정답은 ②이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -375,7 +389,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 증가하는 곡선 y=f(x)(개형)가 직선 y=x 아래에서 (5,3)과 (8,7)을 지나고, 두 점에서 점선이 축으로 이어지는 그림.",
+    "solutionImageCaption": "그림에서 f(5)=3이고 곡선이 점 (8,7)을 지나므로 f(8)=7, 즉 f⁻¹(7)=8이다(곡선의 모양은 개형이다). 따라서 f(5)+f⁻¹(7)=3+8=11이고 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -403,13 +421,13 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "식을 나누어 나타내면\n$y=\\dfrac{-x}{x-1}=-1-\\dfrac1{x-1}$이다.\n따라서 수직 점근선은 $x=1$, 수평 점근선은 $y=-1$이다. 두 점근선의 교점 $(1,-1)$이 그래프의 대칭 중심이고, $y=-\\dfrac1x$를 오른쪽으로 1, 아래로 1만큼 옮기면 이 그래프가 된다.\n또 $x<0$이면 $-x>0$이고 $x-1<0$이므로 $y<0$이다. 그래프는 제3사분면을 지난다.\n\n따라서 ‘제3사분면을 지나지 않는다’는 ⑤가 옳지 않다.",
 
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q13-solution.svg",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q13-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수 y=−1−1/(x−1)의 그래프와 점근선 x=1, y=−1, 대칭의 중심 (1,−1)을 표시한 좌표평면이다. 두 곡선이 점근선에 접근하며 제3사분면을 지나는 모습을 보여 준다.",
+    "solutionImageAlt": "해설 그림: 유리함수 y=-x/(x-1)의 그래프와 점근선 x=1, y=-1, 대칭 중심 (1,-1). 왼쪽 가지가 제3사분면(색칠한 부분)을 지난다.",
 
-    "solutionImageCaption": "y=−1−1/(x−1)에서 점근선 x=1, y=−1과 중심 (1,−1)을 확인한다.",
+    "solutionImageCaption": "y=-x/(x-1)=-1-1/(x-1)이므로 점근선은 x=1, y=-1이고 두 점근선의 교점 (1,-1)이 대칭 중심이다. x<0이면 y<0이므로 그래프는 제3사분면을 지나고, 따라서 옳지 않은 것은 ⑤이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -441,13 +459,13 @@ window.questionBank = [
     "answer": "④",
     "solution": "첫째 유리함수\n$y=\\dfrac{2}{x-k}$\n의 점근선은 $x=k$, $y=0$이다.\n\n둘째 유리함수는\n$y=\\dfrac{kx-1}{x-1}$\n$=k+\\dfrac{k-1}{x-1}$이다.\n$k\\ne1$이면 점근선은 $x=1$, $y=k$이다.\n$k=1$이면 둘째 함수는 $x\\ne1$에서 $y=1$이므로 점근선 네 개로 직사각형을 만들 수 없다.\n\n$k>0$, $k\\ne1$에서 두 수직 점근선 사이의 거리는 $|k-1|$이고, 두 수평 점근선 사이의 거리는 $k$이다.\n넓이가 $12$이므로\n$k|k-1|=12$이다.\n\n$0<k<1$이면\n$k|k-1|=k(1-k)$\n$=\\dfrac14-\\left(k-\\dfrac12\\right)^2\\le\\dfrac14$로 불가능하다.\n\n$k>1$이면\n$k(k-1)=12$\n$k^2-k-12=0$\n$(k-4)(k+3)=0$이다.\n$k>1$에 맞는 값은 $k=4$이다.\n\n따라서 정답은 ④이다.",
 
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q14-solution.svg",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q14-solution-v2.svg",
 
-    "solutionImageAlt": "두 유리함수의 점근선과 직사각형 넓이를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 점근선 x=1, x=k, y=0, y=k로 둘러싸인 직사각형. 가로는 k-1, 세로는 k, 넓이는 12이다.",
 
-    "solutionImageCaption": "k=4일 때 점근선 x=1,4와 y=0,4가 만드는 넓이 12를 확인한다.",
+    "solutionImageCaption": "두 유리함수의 점근선 x=1, x=k, y=0, y=k로 둘러싸인 직사각형의 가로는 k-1, 세로는 k, 넓이는 12이므로 k(k-1)=12이고 k=4이다. 따라서 정답은 ④이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -539,7 +557,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 무리함수 y=√(2x)(파랑)와 y=√x(초록)의 그래프 사이에 정사각형 ABCD가 그려져 있다. A는 파란 곡선 위, D는 초록 곡선 위에 있고, 위쪽 변 AD의 길이는 a, 왼쪽 변 AB의 길이는 √(2a)로 표시되어 있다.",
+    "solutionImageCaption": "A는 곡선 y=√(2x) 위, D는 같은 높이의 곡선 y=√x 위에 있으므로 D의 x좌표는 2a이고 AD=a, AB=√(2a)이다. 정사각형 ABCD에서 AD=AB이므로 a=√(2a)이고 점 A의 x좌표는 2이다. 정답 ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -567,13 +589,13 @@ window.questionBank = [
     "answer": "①",
     "solution": "먼저 $f(x)$가 1보다 작은지 큰지에 따라 바깥 함수 $g$의 식이 달라진다.\n$0\\le x<1$에서는 $f(x)=1-x$이다. $g$의 첫째 식을 적용하면\n$(g\\circ f)(x)=(1-x)+1=2-x$이다. 끝점 $x=0$에서도 값은 2이다.\n$1\\le x<\\dfrac32$에서는 $f(x)=2x-2<1$이므로\n$(g\\circ f)(x)=(2x-2)+1=2x-1$이다.\n$\\dfrac32\\le x\\le2$에서는 $f(x)=2x-2\\ge1$이므로\n$(g\\circ f)(x)=-2(2x-2)+4=-4x+8$이다.\n\n첫째 구간의 넓이는 양 끝 높이가 2와 1인 사다리꼴이므로\n$\\dfrac{2+1}{2}\\cdot1=\\dfrac32$이다.\n\n둘째 구간의 넓이는 양 끝 높이가 1과 2이고 폭이 $\\dfrac12$인 사다리꼴이므로\n$\\dfrac{1+2}{2}\\cdot\\dfrac12=\\dfrac34$이다.\n\n셋째 구간은 밑변 $\\dfrac12$, 높이 2인 삼각형이므로\n$\\dfrac12\\cdot\\dfrac12\\cdot2=\\dfrac12$이다.\n전체 넓이는\n$\\dfrac32+\\dfrac34+\\dfrac12=\\dfrac{11}{4}$이다.",
 
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q18-solution.svg",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q18-solution-v2.svg",
 
-    "solutionImageAlt": "합성함수의 조각별 그래프와 좌표축 넓이를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: y=(g∘f)(x)의 꺾은선 그래프(꼭짓점 (0,2), (1,1), (3/2,2), (2,0))와 x축·y축으로 둘러싸인 부분을 x=1, 3/2에서 세 구간으로 나누어 색칠한 그림",
 
-    "solutionImageCaption": "구간별 식 2−x, 2x−1, −4x+8과 넓이 11/4를 확인한다.",
+    "solutionImageCaption": "y=(g∘f)(x)는 (0,2), (1,1), (3/2,2), (2,0)을 잇는 꺾은선이고 세 구간의 넓이는 각각 3/2, 3/4, 1/2이므로 둘러싸인 부분의 넓이는 11/4이다. 정답 ①",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -601,7 +623,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-06-CORE",
     "subUnit": "명제 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: y=(x-2)²+k-4의 그래프. 꼭짓점 (2,k-4)가 x축 위에 놓여 x축에 접하는 경계 상태가 그려져 있다.",
+    "solutionImageCaption": "예: k=4일 때 꼭짓점이 x축에 닿고, 모든 실수 x에서 (x-2)²+k-4≥0이려면 k-4≥0이어야 하므로 k의 최솟값은 4이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -624,13 +650,13 @@ window.questionBank = [
     "answer": "$(2,2)$",
     "solution": "$f(x)=\\sqrt{x+2}$의 정의역은 $x\\ge-2$, 치역은 $y\\ge0$이다.\n$f$는 정의역에서 증가하므로 일대일 대응으로 생각할 수 있고 역함수가 존재한다.\n\n$y=\\sqrt{x+2}$에서 $y\\ge0$이므로\n$y^2=x+2$\n$x=y^2-2$이다.\n따라서 역함수는\n$g(x)=x^2-2\\quad(x\\ge0)$이다.\n\n두 그래프의 교점을 $(u,v)$라 하면\n$v=f(u)$, $u=f(v)$이다.\n만약 $u<v$라면 $f$가 증가함수이므로 $f(u)<f(v)$, 곧 $v<u$가 되어 모순이다.\n$u>v$라고 해도 같은 이유로 모순이다.\n따라서 반드시 $u=v$이고 교점은 직선 $y=x$ 위에 있다.\n\n$x=\\sqrt{x+2}$에서 $x\\ge0$이어야 하므로\n$x^2=x+2$\n$x^2-x-2=0$\n$(x-2)(x+1)=0$이다.\n$x=-1$은 $x\\ge0$에 맞지 않으므로 $x=2$이다.\n\n따라서 두 그래프의 교점은 $(2,2)$이다.",
 
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q20-solution-v2.svg",
 
-    "solutionImageAlt": "함수와 역함수의 그래프 및 교점 A를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: y=f(x)=√(x+2)와 그 역함수 y=g(x)=x²-2(x≥0)의 그래프가 직선 y=x에 대하여 대칭이고, 두 그래프의 교점이 직선 y=x 위에 있는 그림이다.",
 
-    "solutionImageCaption": "함수와 역함수는 y=x에 대하여 대칭이고 교점은 A=(2,2)임을 확인한다.",
+    "solutionImageCaption": "f(x)=√(x+2)와 역함수 g(x)=x²-2(x≥0)의 그래프는 y=x에 대하여 대칭이어서 교점은 y=x 위에 있으며 x=√(x+2)에서 교점은 (2,2)이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

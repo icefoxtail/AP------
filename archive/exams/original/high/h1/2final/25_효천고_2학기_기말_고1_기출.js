@@ -185,7 +185,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-06-CORE",
     "subUnit": "명제 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 집합 P, Q, R의 벤다이어그램에서 P는 R과 겹치는 색칠한 부분에만 원소가 있고, P만 있는 부분과 Q와 겹치는 부분은 ∅로 비어 있음을 보인다.",
+    "solutionImageCaption": "P∩R=P에서 P⊆R이고, P∪Qᶜ=Qᶜ에서 P⊆Qᶜ이므로 P와 Q는 겹치지 않는다. 그림에서 P는 R과만 겹치는 색칠한 부분에 있고, ∅로 표시한 부분에는 P의 원소가 없다. 정답: ③",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -216,7 +220,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-06-CORE",
     "subUnit": "명제 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 그림 세 개. 보기 ㄱ과 ㄷ은 Q가 P 안에 들어 있고 Q가 색칠되어 있으며, 보기 ㄱ에는 P에만 속하는 4와 Q 안의 8이 적혀 있다. 보기 ㄴ은 P와 Q가 같아 하나의 원에 P=Q를 적고 색칠했다.",
+    "solutionImageCaption": "p의 해집합 P, q의 해집합 Q라 하자. 보기 ㄱ·ㄷ은 Q가 P 안에 들어가고 P와 Q가 같지 않으므로 p는 q의 필요조건이지만 충분조건이 아니고, 보기 ㄴ은 P=Q이므로 필요충분조건이다. (보기 ㄱ의 4는 P에만, 8은 P와 Q에 모두 속하는 원소의 예이다.) 정답: ㄱ, ㄷ이므로 ③",
+    "solutionImageSize": "large"
   },
   {
     "id": 8,
@@ -246,13 +254,13 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "제곱근 안이 0 이상이어야 하므로 정의역은 $x\\le2$이다.\n$x=2$에서 제곱근이 0이 되어 함수값은 4이고, 제곱근 앞의 부호가 음수이므로 이 값이 최댓값이다. 치역도 $y\\le4$이다.\n$y=-\\sqrt{x+2}+4$에서 x를 $-x$로 바꾸면 $y=-\\sqrt{-x+2}+4$가 되므로 ④도 옳다.\n실제로 $x=1$이면 $y=3$이어서 제1사분면을 지나고, $x=-1$이면 $y=4-\\sqrt3>0$이어서 제2사분면을 지난다. $x=-20$이면 $y=4-\\sqrt{22}<0$이어서 제3사분면도 지난다.\n한편 $x\\ge0$인 정의역에서는 $x\\le2$이고\n$y=4-\\sqrt{2-x}\\ge4-\\sqrt2>0$이다.\n따라서 제4사분면은 지나지 않는다. 모든 사분면을 지난다는 ⑤가 옳지 않다.\n따라서 정답은 ⑤이다.",
 
-    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q08-solution.svg",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q8-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수의 끝점·정의역·치역·사분면을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 무리함수 y=-√(-x+2)+4의 그래프가 끝점 (2,4)에서 왼쪽으로 뻗어 y축과 (0, 4-√2), x축과 (-14, 0)에서 만나고, 곡선이 지나지 않는 제4사분면을 색칠한 그림",
 
-    "solutionImageCaption": "끝점 (2,4)와 x절편 (−14,0)을 기준으로 제4사분면을 지나지 않음을 확인한다.",
+    "solutionImageCaption": "y=-√(-x+2)+4는 끝점 (2,4)에서 왼쪽으로 뻗어 y축과 (0, 4-√2), x축과 (-14, 0)에서 만나며, x≥0에서는 y≥4-√2>0이므로 색칠한 제4사분면을 지나지 않아 모든 사분면을 지난다는 ⑤가 옳지 않다. 정답 ⑤",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -348,13 +356,13 @@ window.questionBank = [
     "answer": "④",
     "solution": "제곱근은 0 이상이고 가장 작은 값은 0이므로 $f$의 최솟값은 b이다.\n따라서 $b=2$이다.\n또 $f$는 증가함수이다. 증가함수와 그 역함수의 그래프가 만나는 점은 $y=x$ 위에 있다. 실제로 서로 다른 두 수 u, v가 $f(u)=v$, $f(v)=u$를 만족한다고 하면, $u<v$일 때 증가성으로 $f(u)<f(v)$, 즉 $v<u$가 되어 모순이다.\n교점의 x좌표가 3이므로 교점은 $(3,3)$이고 $f(3)=3$이다.\n$\\sqrt{6+a}+2=3$\n$\\sqrt{6+a}=1$, 따라서 $a=-5$이다.\n이제 주어진 함수에 $\\dfrac92$를 대입하면\n$f\\left(\\dfrac92\\right)=\\sqrt{9-5}+2=4$이다.\n따라서 정답은 ④이다.",
 
-    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q11-solution.svg",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q11-solution-v2.svg",
 
-    "solutionImageAlt": "무리함수와 역함수의 그래프 및 교점 A를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: 무리함수 y=f(x)(파란 곡선, 시작점 (5/2,2))와 역함수 y=f⁻¹(x)(주황 곡선)가 직선 y=x에 대칭으로 그려지고, 두 곡선이 y=x 위의 점 (3,3)에서 만난다.",
 
-    "solutionImageCaption": "최솟값으로 b=2, 교점 A=(3,3)으로부터 a=−5를 확인한다.",
+    "solutionImageCaption": "교점이 (3,3)이므로 f(3)=3에서 a=-5, b=2이고 f(x)=√(2x-5)+2이다. 따라서 f(9/2)=4이다(정답 ④).",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -388,13 +396,13 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "분자를 나누어 그래프의 중심을 확인한다.\n$y=\\dfrac{3x+5}{x-a}=3+\\dfrac{3a+5}{x-a}$\n두 점근선은 $x=a$, $y=3$이므로 중심은 $(a,3)$이다. 이 그래프의 대칭축은 중심을 지나며 기울기가 1 또는 -1인 두 직선이다.\n첫째 대칭축 $y=x+5$가 $(a,3)$을 지나므로\n$3=a+5$, 따라서 $a=-2$이다.\n둘째 대칭축 $y=-x+\\dfrac12b$도 $(a,3)$을 지난다.\n$3=-(-2)+\\dfrac12b$\n$\\dfrac12b=1$, 따라서 $b=2$이다.\n그러므로 $ab=(-2)\\cdot2=-4$이다.\n따라서 정답은 ⑤이다.",
 
-    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q12-solution.svg",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q12-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수의 중심과 두 대칭축을 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: y=3-1/(x+2)의 그래프. 점근선 x=-2, y=3의 교점인 중심 C(-2,3)을 기울기 1, -1인 두 직선 y=x+5, y=-x+1이 지나고, 가로·세로 눈금이 같아 두 직선이 서로 수직이며 곡선이 두 직선에 대해 대칭으로 보인다.",
 
-    "solutionImageCaption": "a=−2, b=2일 때 중심 C=(−2,3)과 대칭축 y=x+5, y=−x+1을 확인한다.",
+    "solutionImageCaption": "중심 C(-2,3)이 y=x+5 위에 있으므로 a=-2이고, y=-x+b/2도 지나므로 b=2이다. 따라서 ab=-4이다(정답 ⑤).",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -432,7 +440,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 출발점 (-1,2)에서 시작하는 무리함수 y=-√(a(x+1))+2의 그래프를 a=1, a=4, a=9일 때 비교한 그림으로, a=4는 원점을 지나고 a=9는 x절편 (-5/9,0)이 음수여서 제3사분면을 지난다.",
+    "solutionImageCaption": "예: 출발점 (-1,2)에서 a=1, a=4(원점 통과)는 제3사분면을 지나지 않고 a=9는 x절편 (-5/9,0)이 음수여서 제3사분면을 지나므로 0<a≤4이고 a+b+c의 최댓값은 5, 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -463,7 +475,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-06-CORE",
     "subUnit": "명제 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 진리집합의 포함관계를 두 장의 벤다이어그램으로 보인다. 왼쪽은 C가 Q 안에, Q가 B 안에 차례로 들어 있고, 오른쪽은 A와 Q가 일부만 겹친다.",
+    "solutionImageCaption": "조건 p1, p2, p3, q의 진리집합을 각각 A, B, C, Q라 하면 C는 Q 안에, Q는 B 안에 들어가고, A와 Q는 일부만 겹친다(예: (2,2,2)는 p1만 참, (0,2,2)는 p1과 q가 모두 참, (0,0,0)은 q만 참). N(p1)=4, N(p2)=1, N(p3)=0. 정답: ②",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -494,7 +510,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: a=2, b=3인 예에서 x<3일 때 y=3x+3, x≥3일 때 y=4x인 두 직선 조각이 점 (3,12)에서 이어지는 함수의 그래프.",
+    "solutionImageCaption": "예: a=2, b=3이면 x<3에서 y=3x+3, x≥3에서 y=4x이고 두 조각이 점 (3,12)에서 이어져 일대일대응이 된다. 이어지려면 b=6a-9이므로 a+b=7a-9이고, 정수 a의 최솟값 -1에서 a+b의 최솟값은 -16이므로 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -525,7 +545,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점과 (4,0)에서 x축에 닿는 W꼴 그래프 y=|2x(x-4)|와 수평선 y=k가 꼭짓점을 지나며 서로 다른 세 점에서 만나는 모습",
+    "solutionImageCaption": "y=|2x(x-4)|의 그래프와 수평선 y=k가 서로 다른 세 점에서 만나려면 위로 볼록한 부분의 꼭짓점을 지나야 하므로(2x(x-4)=-k가 중근) k의 최댓값은 8이고 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -559,7 +583,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 (2,3)인 산 모양 꺾은선 y=f(x)와 수평선 y=3, 2, 3/2, 1, 2/3을 그린 그림. 네 수평선 교점에서 x축으로 내린 점선이 a의 위치를 보인다.",
+    "solutionImageCaption": "f(f(f(a)))=3/2에서 f(f(a))는 1 또는 3, f(a)는 2/3 또는 2(10/3은 최댓값 3보다 커서 없음)이고, 그때의 a(점선이 x축에 닿는 네 곳)는 4/9, 4/3, 8/3, 32/9이다. 따라서 a는 4개이고 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -588,10 +616,10 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "유리함수를 중심 $(2,3)$을 기준으로 옮겨 쓴다.\n$X=x-2$, $Y=y-3$으로 놓으면\n$y=3+\\dfrac1{x-2}$이므로 $XY=1$이다.\n원도 같은 기준으로 옮기면 $X^2+Y^2=r^2$이다.\n$u=X^2$라 놓으면 $u>0$, $Y^2=\\dfrac1u$이므로\n$u+\\dfrac1u=r^2$\n이다. 양변의 차를 정리하면\n$u+\\dfrac1u-2=\\dfrac{(u-1)^2}{u}\\ge0$\n이므로 $r^2\\ge2$이어야 한다.\n$r^2=2$일 때는 $u=1$이고, 따라서 $X=1$ 또는 $X=-1$이다. $XY=1$에서 각각 $Y=1$, $Y=-1$이므로 교점은 서로 다른 두 개이다.\n$r^2>2$이면 $u^2-r^2u+1=0$이 서로 다른 두 양의 해를 가져, 각 해에서 X의 부호를 두 가지로 정할 수 있으므로 교점은 네 개이다. 따라서 서로 다른 두 점에서 만나는 경우는 $r^2=2$뿐이다.\n$r=\\sqrt2$이다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "유리함수의 그래프와 같은 중심을 갖는 원, 두 교점을 나타낸 해설 그래프",
-    "solutionImageCaption": "중심을 (2,3)으로 옮긴 뒤 유리함수와 원이 두 점에서 만나는 경계 반지름을 확인한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: y=3+1/(x-2)의 그래프와 점근선 x=2, y=3, 점근선의 교점 (2,3)을 중심으로 하는 원이 그려져 있고, 원이 곡선과 두 점 P(3,4), Q(1,2)에서 만난다. 가로·세로 눈금이 같아 원이 둥글게 보인다.",
+    "solutionImageCaption": "원이 곡선과 서로 다른 두 점에서 만나는 것은 u=X²일 때 u+1/u=r²에서 r²=2(u=1)일 때뿐이므로 r=√2이다(정답 ⑤).",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -670,7 +698,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-06-CORE",
     "subUnit": "명제 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 a=2일 때 y=x²-2x+3이 x축 위에 있는 모양(꼭짓점 (1,2)), 아래 패널은 a=2√3일 때 y=x²-2√3x+3이 x축에 접하는 모양(접점 (√3,0)).",
+    "solutionImageCaption": "모든 실수 x에서 x²-ax+3이 0 이상이려면 그래프가 x축 위에 있거나 접해야 하므로, a=2일 때는 x축 위에 있고 a=2√3일 때는 x축에 접하며, -2√3≤a≤2√3을 만족하는 정수 a는 -3부터 3까지 7개이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -694,13 +726,13 @@ window.questionBank = [
     "answer": "$5$",
     "solution": "점 P의 x좌표를 x, y좌표를 y라 하면 x축과 y축까지의 거리는 각각 $|y|$, $|x|$이다.\n$x<-2$이므로 $x<0$이고\n$y=\\dfrac1{x+2}-1<0$이다.\n따라서 두 길이의 합은 $-y-x$이다.\n$t=-(x+2)$라 놓으면 $t>0$, $x=-t-2$, $y=-\\dfrac1t-1$이다.\n그러므로\n$\\overline{PQ}+\\overline{PR}=t+\\dfrac1t+3$\n이다. $t>0$에서\n$t+\\dfrac1t-2=\\dfrac{(t-1)^2}{t}\\ge0$\n이므로 길이의 합은 5 이상이다. $t=1$, 즉 $x=-3$일 때 등호가 성립한다.\n따라서 최솟값은 5이다.",
 
-    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q22-solution.svg",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q22-solution-v2.svg",
 
-    "solutionImageAlt": "유리함수와 수선 길이를 나타낸 해설 그래프",
+    "solutionImageAlt": "해설 그림: y=1/(x+2)-1 (x<-2)의 왼쪽 가지와 점근선 x=-2, y=-1, 곡선 위의 점 P(-3,-2)에서 x축, y축에 내린 수선의 발 Q, R이 그려져 있고 PQ=2, PR=3으로 표시되어 있다. 가로·세로 눈금이 같다.",
 
-    "solutionImageCaption": "P=(−3,−2)에서 두 수선 길이의 합이 5가 됨을 확인한다.",
+    "solutionImageCaption": "t=-(x+2)로 놓으면 PQ+PR=t+1/t+3이고 t=1, 즉 x=-3일 때 최소이므로 PQ+PR의 최솟값은 5이다.",
 
-    "solutionImageSize": "full",
+    "solutionImageSize": "medium",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -729,6 +761,10 @@ window.questionBank = [
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: f(x)=3x-2 (x≥0), x/5-2 (x<0)의 그래프(파랑)와 역함수 f⁻¹(x)의 그래프(주황), 직선 y=x가 그려져 있다. f(x)=0인 점 (2/3,0), 두 그래프와 y=x가 만나는 점 (1,1), (-5/2,-5/2)가 표시되어 있다.",
+    "solutionImageCaption": "f(x)=0에서 x=2/3, f(x)=f⁻¹(x)에서 x=1, -5/2이므로 모든 x의 값의 합은 2/3+1-5/2=-5/6이다.",
+    "solutionImageSize": "medium"
   }
 ];

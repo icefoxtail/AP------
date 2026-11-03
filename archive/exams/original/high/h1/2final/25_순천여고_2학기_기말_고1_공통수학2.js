@@ -270,7 +270,11 @@ window.questionBank = [
       }
     },
     "tags": [],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 바깥 원 Q 안에 작은 원 P=R이 들어 있고 작은 원 안에 원소 (0,0)이 적힌 벤다이어그램.",
+    "solutionImageCaption": "P={(0,0)}과 R={(0,0)}은 같은 집합이고 Q={(x,y)|xy≥0}에 포함되므로 P=R⊆Q이다. 정답: ④",
+    "solutionImageSize": "medium"
   },
       {
     "number": 5,
@@ -338,7 +342,11 @@ window.questionBank = [
       }
     },
     "tags": [],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 그림 두 개. 왼쪽은 Q가 R 안에 들어 있고 Q가 색칠되어 있다. 오른쪽은 P와 Q가 서로 떨어진 두 원이고 P가 색칠되어 있다.",
+    "solutionImageCaption": "(가)에서 Q⊂R이고 (나)에서 P⊂U−Q, 즉 P와 Q는 서로 겹치지 않는다(P∩Q=∅). P의 원소는 Q에 속하지 않으므로 p이면 ~q이다. 정답: ②",
+    "solutionImageSize": "large"
   },
     {
   "number": 6,
@@ -618,7 +626,11 @@ window.questionBank = [
     "tags": [
       "도형"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: X→X→X 대응도. 왼쪽에서 가운데로 가는 화살표는 f, 가운데에서 오른쪽으로 가는 화살표는 g로 이름이 붙어 있다. 초록 굵은 경로 3→1→4는 f(3)=1, g(1)=4를 보이고, 주황 굵은 화살표는 f(4)=3을 보인다.",
+    "solutionImageCaption": "초록 경로 3→1→4에서 f(3)=1, g(1)=4이므로 (f⁻¹∘g⁻¹)⁻¹(3)=g(f(3))=4이다. (f∘g)⁻¹(3)은 f(g(x))=3인 x이다. 초록 화살표에서 g(1)=4, 주황 화살표에서 f(4)=3이므로 x=1이고, g(1)=4이다. 따라서 4+4=8이고 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
     {
   "number": 10,
@@ -757,7 +769,11 @@ window.questionBank = [
       }
     },
     "tags": [],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²-4x에서 x≥4 부분을 굵게 표시하고 꼭짓점 (2,-4)와 시작점 (4,0)을 나타낸 그림.",
+    "solutionImageCaption": "y=(x-2)²-4에서 일대일이 되려면 a≥2이고, 굵게 표시한 x≥4 부분은 (4,0)에서 시작해 치역이 y≥0이므로 a=4이다. 따라서 값들의 합은 4이고 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 12,
@@ -825,7 +841,11 @@ window.questionBank = [
       }
     },
     "tags": [],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 점근선 x=-2, y=3과 그 교점인 대칭 중심 (-2,3), 그래프 위의 점 (2,1)을 나타낸 그림이다.",
+    "solutionImageCaption": "점근선 x=-2, y=3의 교점 (-2,3)이 대칭 중심이고 그래프가 점 (2,1)을 지나므로 a=2, b=-2, c=3이다. 따라서 a-b+c=7이고 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 13,
@@ -843,9 +863,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "content": "다음 <보기> 중 함수 그래프가 함수 $y=\\frac{x}{x-1}$의 그래프를 평행이동하여 겹칠 수 있는 것으로만 모두 고른 것은? [4.1점]<br><br><div style=\"border: 1px solid #000; padding: 10px; margin: 10px 0;\"><b>&lt; 보 기 &gt;</b><br>ㄱ. $y=\\frac{x-2}{x-1}$<br>ㄴ. $y=\\frac{1}{x-1}$<br>ㄷ. $y=\\frac{3x+4}{x+1}$<br>ㄹ. $y=\\frac{2x-3}{x+1}$</div>",
     "image": "",
-    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q13-solution.svg",
-    "solutionImageAlt": "원래 유리함수와 ㄴ, ㄷ의 그래프를 두 좌표평면에서 비교한 그림",
-    "solutionImageCaption": "평행이동은 분수항의 계수 1을 그대로 유지한다.",
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 y=x/(x-1)의 그래프(파랑)와 이를 왼쪽으로 2만큼 위로 2만큼 평행이동한 ㄷ의 그래프 y=(3x+4)/(x+1)(주황)를 점근선과 함께 나타낸 그림이다.",
+    "solutionImageCaption": "y=x/(x-1)=1+1/(x-1)의 그래프(파랑)를 아래로 1만큼 옮기면 ㄴ의 그래프가 되고, 왼쪽으로 2만큼, 위로 2만큼 옮기면 ㄷ의 그래프(주황)가 되어 겹친다. 분수항의 계수가 1이 아닌 ㄱ, ㄹ은 겹칠 수 없으므로 정답은 ④이다.",
     "solutionImageSize": "medium",
     "answer": "④",
     "solution": "주어진 유리함수를 먼저 정리한다.\n$y=\\dfrac{x}{x-1}=1+\\dfrac1{x-1}$이다.\n이 그래프의 점근선은 $x=1$, $y=1$이다.\n\n$y=b+\\dfrac{a}{x-h}$를 평행이동하면 $h,b$는 달라질 수 있지만 분수항의 계수 $a$는 바뀌지 않는다.\n따라서 각 보기에서 분수항의 계수가 $1$인지 확인한다.\n\nㄱ. $y=\\dfrac{x-2}{x-1}=1-\\dfrac1{x-1}$\n분수항의 계수가 $-1$이므로 평행이동하여 겹칠 수 없다.\n\nㄴ. $y=\\dfrac1{x-1}$\n원래 그래프를 아래로 $1$만큼 옮긴 것이다. 가능하다.\n\nㄷ. $y=\\dfrac{3x+4}{x+1}=3+\\dfrac1{x+1}$\n원래 그래프를 왼쪽으로 $2$만큼, 위로 $2$만큼 옮긴 것이다. 가능하다.\n\nㄹ. $y=\\dfrac{2x-3}{x+1}=2-\\dfrac5{x+1}$\n분수항의 계수가 $-5$이므로 평행이동으로 겹칠 수 없다.\n\n가능한 것은 ㄴ, ㄷ이므로 정답은 ④이다.",
@@ -972,7 +992,11 @@ window.questionBank = [
       }
     },
     "tags": [],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 유리함수 y=f(x)의 그래프와 점선 직선 y=x. 곡선의 두 가지가 y=x에 대하여 대칭이고, 점근선의 교점이 y=x 위에 있으며, 대칭인 두 점을 잇는 점선이 y=x에 수직으로 놓인 모습을 나타낸 그림이다.",
+    "solutionImageCaption": "f(x)=(ax+1)/(x-1)의 역함수는 f⁻¹(x)=(x+1)/(x-a)이고, f=f⁻¹이면 a=1이다. 이때 f(x)=(x+1)/(x-1)의 그래프는 직선 y=x에 대하여 대칭이고 두 점근선의 교점이 y=x 위에 있다. 따라서 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
     {
     "number": 15,
@@ -1043,7 +1067,11 @@ window.questionBank = [
     "tags": [
       "그래프"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: y=k/x와 직선 y=-x+10의 두 교점 P, Q와 삼각형 OPQ(넓이 44), 두 교점의 x좌표 u, v를 나타낸 그림(그림은 풀이로 얻은 k의 값으로 그림)",
+    "solutionImageCaption": "교점의 x좌표 u, v는 x²-10x+k=0의 두 근이고 삼각형 OPQ의 넓이 5|u-v|=44에서 |u-v|=44/5이므로 100-4k=(44/5)²이고 k=141/25이다. 정답 ①",
+    "solutionImageSize": "medium"
   },
   {
     "number": 16,
@@ -1129,9 +1157,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "content": "함수 $y=\\sqrt{x-3}$과 $y=x+k$의 그래프의 교점의 개수가 $2$개가 되도록 하는 상수 $k$의 값의 범위를 구하면? [4.9점]",
     "image": "",
-    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q17-solution.svg",
-    "solutionImageAlt": "무리함수와 직선이 두 점에서 만나거나 한 점에서 만나는 경계 사례",
-    "solutionImageCaption": "k=-3은 두 교점, k=-11/4는 한 교점이므로 오른쪽 끝값은 제외한다.",
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 무리함수 y=√(x-3)의 그래프(식은 오른쪽 위에서 지시선으로 표시)와 기울기가 1인 두 직선. 직선 m은 끝점 (3,0)과 점 (4,1)을 지나고, 직선 n은 점 (13/4,1/2), 즉 (3.25,0.5)에서 곡선에 접한다.",
+    "solutionImageCaption": "직선 m은 곡선의 끝점 (3,0)을 지나 (4,1)에서도 만나고, 직선 n은 (13/4,1/2), 즉 (3.25,0.5)에서 곡선에 접한다. m일 때 k=-3, n일 때 k=-11/4이고 교점이 2개이려면 -3≤k<-11/4이므로 정답은 ②이다.",
     "solutionImageSize": "medium",
     "answer": "②",
     "solution": "교점의 $x$좌표는 $x\\ge3$이다.\n$t=\\sqrt{x-3}$으로 놓으면 $t\\ge0$, $x=t^2+3$이다.\n교점에서 $t=x+k$이므로\n$t=t^2+3+k$\n$t^2-t+(3+k)=0$이다.\n\n서로 다른 두 교점을 얻으려면 서로 다른 두 근이 모두 $0$ 이상이어야 한다.\n판별식은\n$D=(-1)^2-4(3+k)=-11-4k$이므로\n$D>0\\ \\Longrightarrow\\ k<-\\dfrac{11}{4}$이다.\n\n두 근의 합은 $1>0$, 곱은 $3+k$이다.\n두 실근이 모두 $0$ 이상이려면 $3+k\\ge0$, 즉 $k\\ge-3$이어야 한다.\n따라서 $-3\\le k<-\\dfrac{11}{4}$이다.\n\n끝값을 직접 확인한다.\n$k=-3$이면 $t^2-t=0$에서 $t=0,1$이다.\n교점은 $(3,0)$, $(4,1)$로 서로 다르므로 $-3$은 포함한다.\n\n$k=-\\dfrac{11}{4}$이면\n$\\left(t-\\dfrac12\\right)^2=0$에서 $t=\\dfrac12$ 한 개뿐이다.\n교점은 $\\left(\\dfrac{13}{4},\\dfrac12\\right)$ 하나이므로 $-\\dfrac{11}{4}$는 제외한다.\n\n따라서 정답은 ②이다.",
@@ -1266,9 +1294,9 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-solution.svg",
-    "solutionImageAlt": "함수 f(u)와 직선 y=2-u가 u=1/2, 2에서 만나는 그래프",
-    "solutionImageCaption": "f(u)=2-u의 교점을 구한 다음 f(x)=u를 다시 푼다.",
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 꺾은선 y=f(x)의 그래프와 수평선 y=1/2, y=2가 만나는 점 (7/4,1/2), (1,2)를 나타낸 그림으로, u=1/2, u=2에 대한 f(x)=u의 해를 읽는다.",
+    "solutionImageCaption": "f(u)=2-u의 해 u=1/2, u=2에 대하여 f(x)=1/2의 해는 x=7/4, f(x)=2의 해는 x=1이므로 모든 실근의 합은 11/4이며 정답은 ⑤이다.",
     "solutionImageSize": "medium"
   },
   {
@@ -1333,7 +1361,11 @@ window.questionBank = [
     "tags": [
       "서술형"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: x<2에서 아래로 볼록, x≥2에서 위로 볼록인 두 조각이 점 (2,4)에서 이어지는 f의 그래프와 y=4, 점 (1,5), f(5)의 위치를 나타낸 그림.",
+    "solutionImageCaption": "y=4를 경계로 x<2에서는 f의 값이 4보다 크고 x≥2에서는 4 이하이므로 f는 일대일대응이고, f(1)=5이며 f(5)가 a의 값이다. 따라서 a=(f∘f)(1)=-5이다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 20,
@@ -1397,7 +1429,11 @@ window.questionBank = [
     "tags": [
       "서술형"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: y=√(2x+6)-2의 그래프와 점선 x=-3, y=-2를 그린 그림. 시작점 (-3,-2), x절편 T, y절편 f(0)이 표시되어 있다.",
+    "solutionImageCaption": "예: (a,b,c)=(2,6,-2)이면 y=√(2x+6)-2는 시작점 (-3,-2)에서 출발해 x절편 T(-1,0)을 지나 y축의 양수 부분에서 만나므로 제1, 2, 3사분면만 지난다. 점선 x=-3의 오른쪽이 정의역 x≥-3이고 점선 y=-2의 위쪽이 y≥-2이다(조건을 만족하는 순서쌍 중 하나). 구하는 순서쌍은 (1,3,-1), (1,5,-2), (1,6,-2), (1,10,-3), (2,6,-2), (2,6,-1), (2,7,-2), (2,8,-2), (2,9,-2), (2,10,-3), (3,9,-2), (3,9,-1), (3,10,-3), (3,10,-2)이다.",
+    "solutionImageSize": "medium"
   },
         {
   "number": 21,
@@ -1468,9 +1504,9 @@ window.questionBank = [
   },
   "tags": ["함수", "역함수", "정의역", "그래프"],
   "wide": false,
-  "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q21-solution.svg",
-  "solutionImageAlt": "역함수 y=2+√(x−1)와 직선 y=x−2의 한 교점 P를 나타낸 좌표 그래프",
-  "solutionImageCaption": "제곱하기 전에 x≥4를 확인하면 교점 P의 x좌표만 해가 된다.",
+  "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q21-solution-v2.svg",
+  "solutionImageAlt": "해설 그림: 가파른 곡선 f(x)=(x-2)²+1(x≥2)와 완만한 역함수 곡선 y=2+√(x-1)이 직선 y=x에 대칭이고, 직선 y=x-2가 역함수와 만나는 점 P.",
+  "solutionImageCaption": "가파른 곡선이 f, 완만한 곡선이 역함수 y=2+√(x-1)이며 둘은 y=x에 대하여 대칭이다. 역함수와 직선 y=x-2의 교점 P의 x좌표가 구하는 값 (9+√13)/2이다.",
   "solutionImageSize": "medium"
 }
 ];
