@@ -316,7 +316,7 @@
     // 화면 배치: 전개도(왼쪽)와 접은 모양(오른쪽 칸)을 나란히(PC). 휴대폰은 지금 모양만 화면에 꼭 맞춥니다(접을수록 입체가 커집니다).
     const curB = bboxOf(flatPts(t)), cw = curB.x1 - curB.x0, ch = curB.y1 - curB.y0;
     let box, placeL = null, placeR;
-    const g = 0.7;
+    const g = net.kind === 'octa' ? 1.5 : 0.7; // 정팔면체: 왼쪽 그림의 끝 점 이름(G)과 오른쪽 그림의 왼쪽 점 이름(C)이 맞닿지 않게 사이를 넓힙니다
     if (dual) {
       const bL = bboxOf(flatPts(0)), wL = bL.x1 - bL.x0, hL = bL.y1 - bL.y0, slot = { w: wL, h: hL * 1.9, cx: g / 2 + wL / 2 };
       placeL = { cx: -g / 2 - wL / 2, cy: 0, z: 1 };
