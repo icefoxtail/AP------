@@ -77,7 +77,7 @@
     }
   ],
   "candidates": [
-    {"term": "고정점", "kind": "방법", "parent": "역함수", "note": "f(x)=x인 점", "usedIn": [15]}
+    {"term": "전체집합", "en": "UNIVERSAL_SET", "synonyms": [], "kind": "대상", "parent": "집합", "note": "부분집합·여집합을 정하는 기준 집합", "usedIn": [3, 7]}
   ],
   "selfCheck": {"items": 22, "quotesChecked": 180, "quotesNotFound": 0, "notes": ""}
 }
@@ -85,7 +85,7 @@
 
 - `sourceOrdinal`은 시험지 JS의 문항 `id`다. `questionUid`와 지문(QBODY·QFULL)은 Claude가 받을 때 채운다. 이유: GPT가 직접 계산하면 식이 조금만 달라도 값이 어긋난다(계약 §12).
 - `src`는 `stem`(문항 `content`), `choices`(보기 중 하나), `solution`(해설) 중 하나. `quote`는 그 텍스트에 **글자 그대로**(LaTeX·공백 포함) 있는 5~40자.
-- `term`은 사전의 `ko`(대표 표기)나 `synonyms` 중 하나. 없으면 `candidates`에 선언하고 같은 이름으로 쓴다.
+- `term`은 사전의 `ko`(대표 표기)나 `synonyms` 중 하나. 문항이 쓰는 정확한 개념이 사전에 없으면 넓은 말로 바꿔 쓰지 말고 `candidates`에 선언해 같은 이름으로 쓰고, 사전의 상위 용어도 같은 칸에 함께 적는다(계약 §10). 선언에는 `en`(영문 대문자 코드)·`synonyms`·`kind`·`parent`·`note`·`usedIn`을 모두 채운다.
 - method 항목마다 `evidenceType`(`NAMED`/`IMPLIED`). IMPLIED면 `"justification": "왜 같은 방법인지 한 줄"`이 필수.
 - `format`은 계약 §5의 9개 값 중 하나.
 - `selfCheck`는 제출 전 자기 점검 결과다. 인용을 원문에서 찾지 못한 것이 있으면 고친 뒤 제출하고, 끝내 못 고친 것은 `notes`에 적는다.
