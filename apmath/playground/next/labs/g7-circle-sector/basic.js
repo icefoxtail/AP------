@@ -532,7 +532,7 @@
       };
     },
     problem: () => ({
-      text: qHtml('오른쪽 그림의 원 O에서 $\\angle AOB=\\angle BOC$일 때, 다음 중 옳지 않은 것은?', T1607.map((p) => p.name.slice(2)), true),
+      text: qHtml('그림의 원 O에서 $\\angle AOB=\\angle BOC$일 때, 다음 중 옳지 않은 것은?', T1607.map((p) => p.name.slice(2)), true),
       answer: '③ 현의 길이는 중심각에 정비례하지 않으므로 $\\overline{AC}\\ne 2\\overline{BC}$ 입니다.'
     }),
     draw(g, q, mode, step) {
@@ -697,7 +697,7 @@
       const v = sQ(q);
       const pair = (a, b) => `${T(piT(a))} cm, ${T(piT(b))} cm²`;
       const items = [pair(v.l, 0.75 * v.S), pair(v.l, v.S), pair(1.5 * v.l, 0.5 * v.S), pair(1.5 * v.l, 0.75 * v.S), pair(1.5 * v.l, v.S)];
-      return { text: qHtml(`오른쪽 그림과 같은 부채꼴(반지름 ${q.r} cm, 중심각 ${q.th}°)의 호의 길이와 넓이를 차례대로 구하면?`, items, true), answer: `② ${items[1]}` };
+      return { text: qHtml(`그림과 같은 부채꼴(반지름 ${q.r} cm, 중심각 ${q.th}°)의 호의 길이와 넓이를 차례대로 구하면?`, items, true), answer: `② ${items[1]}` };
     },
     relation: (q) => rd('호 : 넓이', piS(sQ(q).l) + ' : ' + piS(sQ(q).S), 'violet', '둘 다 중심각에 정비례')
   }));
@@ -780,7 +780,7 @@
     problem: (q) => {
       const v = sQ(q);
       const c = mkChoices(v.S, 2, 3, (x) => `${T(piT(x))} cm²`);
-      return { text: qHtml(`오른쪽 그림과 같이 호의 길이가 ${T(piT(v.l))} cm이고 중심각의 크기가 ${q.th}°인 부채꼴의 넓이는?`, c.items), answer: ansOf(c) };
+      return { text: qHtml(`그림과 같이 호의 길이가 ${T(piT(v.l))} cm이고 중심각의 크기가 ${q.th}°인 부채꼴의 넓이는?`, c.items), answer: ansOf(c) };
     },
     relation: (q, v) => rd('넓이 ÷ 호의 길이', frS(q.r / 2), 'violet', '= 반지름 ÷ 2')
   }));
@@ -866,7 +866,7 @@
     problem: (q) => {
       const k = q.u / 5, x = k * q.t2, ans = x + q.y;
       const c = mkChoices(ans, 4, 3, (v) => numF(v));
-      return { text: qHtml('오른쪽 그림의 원 O에서 $x+y$의 값은?', c.items), answer: ansOf(c) };
+      return { text: qHtml('그림의 원 O에서 $x+y$의 값은?', c.items), answer: ansOf(c) };
     },
     draw(g, q, mode, step) {
       const O = [0, 0], R = 100, k = q.u / 5;
@@ -974,7 +974,7 @@
       fixRatio(q);
       const tot = q.a + q.b + q.c, u = 360 / tot;
       const c = mkChoices(u * q.a, 3, 0, (v) => angD(v) + '°');
-      return { text: qHtml(`오른쪽 그림의 원 O에서 $\\widehat{AB}:\\widehat{BC}:\\widehat{CA}=${q.a}:${q.b}:${q.c}$일 때, $\\angle AOB$의 크기는?`, c.items), answer: ansOf(c) };
+      return { text: qHtml(`그림의 원 O에서 $\\widehat{AB}:\\widehat{BC}:\\widehat{CA}=${q.a}:${q.b}:${q.c}$일 때, $\\angle AOB$의 크기는?`, c.items), answer: ansOf(c) };
     },
     draw(g, q, mode, step) {
       fixRatio(q);
@@ -1045,7 +1045,7 @@
     problem: (q) => {
       const a = (q.S * q.al) / 360, x = (q.S * q.be) / 360;
       const c = mkChoices(x, 1, 4, (v) => `${T(piT(v))} cm²`);
-      return { text: qHtml(`오른쪽 그림의 원 O에서 $\\angle AOB=${q.al}^\\circ$, $\\angle COD=${q.be}^\\circ$이고 부채꼴 AOB의 넓이가 ${T(piT(a))} cm²일 때, 부채꼴 COD의 넓이는?`, c.items), answer: ansOf(c) };
+      return { text: qHtml(`그림의 원 O에서 $\\angle AOB=${q.al}^\\circ$, $\\angle COD=${q.be}^\\circ$이고 부채꼴 AOB의 넓이가 ${T(piT(a))} cm²일 때, 부채꼴 COD의 넓이는?`, c.items), answer: ansOf(c) };
     },
     draw(g, q, mode, step) {
       const O = [0, 0], R = 100;
@@ -1126,7 +1126,7 @@
       };
     },
     problem: (q) => ({
-      text: `<p class="cs-q">오른쪽 그림과 같은 원 O에서 $\\overline{AB}$는 지름이고 $\\widehat{AC}$의 길이가 $\\widehat{BC}$의 길이의 ${q.n}배일 때, $\\angle x$의 크기를 구하고, 그 과정을 서술하시오. [6점]</p>`,
+      text: `<p class="cs-q">그림과 같은 원 O에서 $\\overline{AB}$는 지름이고 $\\widehat{AC}$의 길이가 $\\widehat{BC}$의 길이의 ${q.n}배일 때, $\\angle x$의 크기를 구하고, 그 과정을 서술하시오. [6점]</p>`,
       answer: `∠x = ${num(90 / (q.n + 1))}°`
     }),
     draw(g, q, mode, step) {
@@ -1188,7 +1188,7 @@
     }),
     problem: (q) => {
       const c = mkChoices(q.cof / 3, 5, 2, (v) => num(v) + '°');
-      return { text: qHtml(`오른쪽 그림의 원 O에서 $\\overline{AB}=\\overline{CD}=\\overline{DE}=\\overline{EF}$이고 $\\angle COF=${q.cof}^\\circ$일 때, $\\angle AOB$의 크기는?`, c.items), answer: ansOf(c) };
+      return { text: qHtml(`그림의 원 O에서 $\\overline{AB}=\\overline{CD}=\\overline{DE}=\\overline{EF}$이고 $\\angle COF=${q.cof}^\\circ$일 때, $\\angle AOB$의 크기는?`, c.items), answer: ansOf(c) };
     },
     draw(g, q, mode, step) {
       const O = [0, 0], R = 100, x = q.cof / 3;
@@ -1258,7 +1258,7 @@
     problem: (q) => {
       const cd = 180 - 2 * q.al, lAC = (q.r * q.al) / 180, lCD = (q.r * cd) / 180;
       const c = mkChoices(lCD, 1, 2, (v) => `${T(piT(v))} cm`);
-      return { text: qHtml(`오른쪽 그림의 원 O에서 $\\overline{AB}\\parallel\\overline{CD}$이고 $\\angle AOC=${q.al}^\\circ$, $\\widehat{AC}=${piT(lAC)}$ cm일 때, $\\widehat{CD}$의 길이는?`, c.items), answer: ansOf(c) };
+      return { text: qHtml(`그림의 원 O에서 $\\overline{AB}\\parallel\\overline{CD}$이고 $\\angle AOC=${q.al}^\\circ$, $\\widehat{AC}=${piT(lAC)}$ cm일 때, $\\widehat{CD}$의 길이는?`, c.items), answer: ansOf(c) };
     },
     draw(g, q, mode, step) {
       const O = [0, 0], R = 100, al = q.al, cd = 180 - 2 * al;
@@ -1337,7 +1337,7 @@
     problem: (q) => {
       const ac = 180 - 2 * q.be, lBD = (q.r * q.be) / 180, lAC = (q.r * ac) / 180;
       const c = mkChoices(lAC, 1, 1, (v) => `${T(piT(v))} cm`);
-      return { text: qHtml(`오른쪽 그림의 반원 O에서 $\\overline{AC}\\parallel\\overline{OD}$이고 $\\angle BOD=${q.be}^\\circ$, $\\widehat{BD}=${piT(lBD)}$ cm일 때, $\\widehat{AC}$의 길이는?`, c.items), answer: ansOf(c) };
+      return { text: qHtml(`그림의 반원 O에서 $\\overline{AC}\\parallel\\overline{OD}$이고 $\\angle BOD=${q.be}^\\circ$, $\\widehat{BD}=${piT(lBD)}$ cm일 때, $\\widehat{AC}$의 길이는?`, c.items), answer: ansOf(c) };
     },
     draw(g, q, mode, step) {
       const O = [0, 0], R = 100, be = q.be, ac = 180 - 2 * be;
@@ -1422,7 +1422,7 @@
     problem: (q) => {
       const p = polyOf(q);
       const c = mkChoices(p.S, 5, 4, (v) => `${T(piT(v))} cm²`);
-      return { text: qHtml(`오른쪽 그림과 같이 한 변의 길이가 ${q.r} cm인 ${p.nm}에서 색칠한 부채꼴의 넓이는?`, c.items), answer: ansOf(c) };
+      return { text: qHtml(`그림과 같이 한 변의 길이가 ${q.r} cm인 ${p.nm}에서 색칠한 부채꼴의 넓이는?`, c.items), answer: ansOf(c) };
     },
     draw(g, q, mode, step) {
       const p = polyOf(q), n = p.n;

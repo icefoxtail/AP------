@@ -727,7 +727,7 @@ body.apl {
 @media (max-width: 859px) {
   body:has(.apl-scene-head[data-tab="problem"][data-compact]) .apl-stage { height: clamp(240px, 40svh, 560px); }
   /* data-tight: 카드를 접어도 문제 글이 첫 화면 밖인 장면만 셸(_fitProblemStage)이 붙입니다. */
-  body:has(.apl-scene-head[data-qfold][data-tight]:not([data-compact])) .apl-stage { height: clamp(260px, 44svh, 560px); }
+  body:has(.apl-scene-head[data-qfold][data-tight]:not([data-compact])) .apl-stage { height: clamp(250px, 42svh, 560px); }
 }
 /* 휴대폰 탐구 탭: 막대가 4개 이상인 장면은 그림 무대를 낮춰 막대가 한 화면에 더 많이 보이게 합니다(셸 _placeControls 가 data-many-ctl 을 붙임).
    막대 3개 이하 장면은 그대로(54svh)입니다. 무대 크기가 바뀌면 보드(ResizeObserver)가 그림을 다시 맞춥니다. */

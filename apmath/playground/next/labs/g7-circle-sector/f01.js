@@ -560,7 +560,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '색칠한 부분의 넓이 (1) 색칠하지 않은 부분의 넓이를 빼는 경우', unit: 'cm²',
-      stem: () => '오른쪽 그림에서 색칠한 부분의 넓이는?',
+      stem: () => '그림에서 색칠한 부분의 넓이는?',
       choices: (V) => { const c = V.a * V.a / 4, st = Math.max(1, Math.round(c / 5)); return ladder(X(V.a * V.a, -c), X(0, st), 0, (v) => v.p[0] < 0); },
       hint: () => '정사각형의 넓이에서 사분원 4개(원 1개)의 넓이를 빼요.',
       std: (V, M) => `<b>해결 전략</b> 색칠하지 않은 부분의 넓이를 전체에서 뺀다.<br>정사각형의 넓이: $${V.a}\\times${V.a}=${V.a * V.a}$<br>사분원 4개의 넓이의 합 = 원 1개: $\\pi\\times${V.a / 2}^2=${xt(M.partX)}$<br>따라서 색칠한 부분의 넓이는 $${xt(M.resX)}$ (cm²)`,
@@ -619,7 +619,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '색칠하지 않은 부분의 넓이를 빼서 넓이를 구하는 경우 · 서술형 2 [6점]', unit: 'cm²',
-      stem: (V) => `오른쪽 그림과 같이 한 변의 길이가 ${V.a} cm인 정사각형에서 색칠한 부분의 둘레의 길이와 넓이를 각각 구하고, 그 과정을 서술하시오. [6점]`,
+      stem: (V) => `그림과 같이 한 변의 길이가 ${V.a} cm인 정사각형에서 색칠한 부분의 둘레의 길이와 넓이를 각각 구하고, 그 과정을 서술하시오. [6점]`,
       answer: (V) => { const a = V.a; return `둘레 $${xt(X(a, a))}$ cm, 넓이 $${xt(X(0, Q(a * a, 8)))}$ cm²`; },
       std: (V, M) => {
         const a = V.a, h = a / 2, arcQ = X(0, Q(a, 2));
@@ -668,7 +668,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '색칠하지 않은 부분의 넓이를 빼서 넓이를 구하는 경우 · 연습 2-1 [6점]', unit: 'cm²',
-      stem: (V) => `오른쪽 그림과 같이 한 변의 길이가 ${V.a} cm인 정사각형에서 색칠한 부분의 넓이를 구하고, 그 과정을 서술하시오. [6점]`,
+      stem: (V) => `그림과 같이 한 변의 길이가 ${V.a} cm인 정사각형에서 색칠한 부분의 넓이를 구하고, 그 과정을 서술하시오. [6점]`,
       answer: (V) => `$${xt(X(2 * V.a * V.a, Q(-V.a * V.a, 2)))}$ cm²`,
       std: (V, M) => `<b>풀이</b><br>(잎 모양의 넓이)=(사분원 2개의 넓이)−(정사각형의 넓이)<br>$=2\\times\\left(\\pi\\times${V.a}^2\\times\\dfrac14\\right)-${V.a * V.a}=${xt(M.partX)}$ (cm²)<br>(색칠한 부분의 넓이)=(정사각형의 넓이)−(잎 모양의 넓이)<br>$=${V.a * V.a}-${xtp(M.partX)}=${xt(M.resX)}$ (cm²)`,
       quick: (V, M) => `잎 모양 $=2\\times\\frac{\\pi a^2}{4}-a^2$ → 색칠 $=2a^2-\\frac{\\pi a^2}{2}=${xt(M.resX)}$`
@@ -711,7 +711,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '색칠하지 않은 부분의 넓이를 빼서 넓이를 구하는 경우 · 연습 2-2 [6점]', unit: 'cm²',
-      stem: (V) => `오른쪽 그림과 같이 한 변의 길이가 ${V.a} cm인 정사각형에서 색칠한 부분의 넓이를 구하고, 그 과정을 서술하시오. [6점]`,
+      stem: (V) => `그림과 같이 한 변의 길이가 ${V.a} cm인 정사각형에서 색칠한 부분의 넓이를 구하고, 그 과정을 서술하시오. [6점]`,
       answer: (V) => `$${xt(X(V.a * V.a, Q(-V.a * V.a, 8)))}$ cm²`,
       std: (V, M) => `<b>풀이</b><br>(흰 부분의 넓이)=(사분원의 넓이)−(반원의 넓이)<br>$=\\pi\\times${V.a}^2\\times\\dfrac14-\\pi\\times${fn(V.a / 2)}^2\\times\\dfrac12=${xt(M.partX)}$ (cm²)<br>(색칠한 부분의 넓이)=(정사각형의 넓이)−(흰 부분의 넓이)<br>$=${V.a * V.a}-${xtp(M.partX)}=${xt(M.resX)}$ (cm²)`,
       quick: (V, M) => `$a^2-\\left(\\frac{\\pi a^2}{4}-\\frac{\\pi a^2}{8}\\right)=${xt(M.resX)}$`
@@ -853,7 +853,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '반원을 파낸 넓이', unit: 'cm²', textbook: false,
-      stem: (V) => `오른쪽 그림은 반지름의 길이가 ${V.R} cm인 반원에서 지름을 둘로 나누어 반지름의 길이가 각각 ${V.r1} cm, ${V.R - V.r1} cm인 반원을 파낸 것이다. 색칠한 부분의 넓이는?`,
+      stem: (V) => `그림은 반지름의 길이가 ${V.R} cm인 반원에서 지름을 둘로 나누어 반지름의 길이가 각각 ${V.r1} cm, ${V.R - V.r1} cm인 반원을 파낸 것이다. 색칠한 부분의 넓이는?`,
       choices: (V) => {
         const r2 = V.R - V.r1, h = (n) => X(0, Q(n, 2));
         const A = X(0, V.r1 * r2);
@@ -912,7 +912,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '활꼴의 넓이', unit: 'cm²', textbook: false,
-      stem: (V) => `오른쪽 그림은 반지름의 길이가 ${V.R} cm이고 중심각의 크기가 ${V.th}°인 부채꼴 OAB이다. 현 AB와 호 AB로 이루어진 활꼴(색칠한 부분)의 넓이는?`,
+      stem: (V) => `그림은 반지름의 길이가 ${V.R} cm이고 중심각의 크기가 ${V.th}°인 부채꼴 OAB이다. 현 AB와 호 AB로 이루어진 활꼴(색칠한 부분)의 넓이는?`,
       choices: (V) => {
         const S = X(0, Q(V.R * V.R * V.th, 360)), T0 = V.th === 90 ? X(Q(V.R * V.R, 2)) : X(Q(V.R * V.R, 4));
         const A = xsub(S, T0);
@@ -979,7 +979,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '반원과 직각삼각형', unit: 'cm²', textbook: false,
-      stem: (V) => `오른쪽 그림에서 점 C는 선분 AB를 지름으로 하는 반원 위의 점이다. AC = ${V.AC} cm, BC = ${V.BC} cm일 때, 색칠한 두 부분의 넓이의 합은?`,
+      stem: (V) => `그림에서 점 C는 선분 AB를 지름으로 하는 반원 위의 점이다. AC = ${V.AC} cm, BC = ${V.BC} cm일 때, 색칠한 두 부분의 넓이의 합은?`,
       choices: (V) => {
         const ab2 = V.AC * V.AC + V.BC * V.BC, half = X(0, Q(ab2, 8)), tri = X(Q(V.AC * V.BC, 2));
         const A = xsub(half, tri);

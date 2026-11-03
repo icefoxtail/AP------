@@ -860,8 +860,8 @@
       if (again) this.invalidate();
       else this._last = 0;
     }
-    /** 휴대폰 문제 탭: 탐구 질문 카드를 접어도 문제 글이 첫 화면(약 760px) 밖이면(제목이 두 줄이거나 세부 장면 줄이 있는 장면)
-     *  그 장면만 그림 무대를 조금(54svh → 44svh) 낮춥니다. 실험실별 설정 없이 쓰며, 이미 첫 화면 안이면 무대는 그대로입니다. */
+    /** 휴대폰 문제 탭: 탐구 질문 카드를 접어도 문제 글이 화면 아래쪽(약 480px 아래)에서 시작하면
+     *  그림 무대를 낮춥니다(54svh → 42svh). 보기가 ①만 보이던 문제를 3개 이상 보이게 하려는 것입니다. 실험실별 설정 없이 쓰며, 글이 이미 위쪽에서 시작하면 무대는 그대로입니다. */
     _fitProblemStage() {
       this._fitPending = false;
       const head = this.ui.head;
@@ -869,7 +869,7 @@
       const pt = this.refs && this.refs.problemText;
       if (!pt || !pt.isConnected || !pt.checkVisibility()) { delete head.dataset.tight; return; }
       delete head.dataset.tight;
-      const limit = Math.min(760, window.innerHeight * 0.9);
+      const limit = Math.min(480, window.innerHeight * 0.58); // 문제 글이 화면 아래쪽 40%에서 시작하면 그림 무대를 낮춰 글과 보기 3개 이상이 첫 화면에 오게 합니다
       if (pt.getBoundingClientRect().top + window.scrollY > limit) head.dataset.tight = '1';
     }
     render() {
