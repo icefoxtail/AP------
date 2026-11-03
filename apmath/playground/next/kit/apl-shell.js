@@ -965,9 +965,9 @@
       const ins = {
         top: ui.chips.childElementCount ? ui.chips.offsetHeight + 18 : 0,
         right: 0,
-        // 넓은 화면: 그림 둘레에는 이미 여백(board.pad)이 있으므로 도구 막대가 그 여백을 넘는 만큼만 비웁니다(전부 비우면 높이에 맞춘 그림이 15% 가까이 작아집니다).
-        bottom: narrow ? Math.max(Math.max(ui.tools.offsetHeight, Math.min(ui.tr.offsetHeight, 60)) + 14, presH)
-          : Math.max(0, ui.tools.offsetHeight + 6 - Math.round(this.board.pad * Math.min(this.board.W, this.board.H))) + presH
+        // 넓은 화면: 도구 막대는 모서리의 작은 반투명 막대라 그림 영역을 따로 비우지 않습니다(비우면 높이에 맞춘 그림이 8~12% 작아져 라벨이 서로 겹침).
+        // 수업 모드 발표 막대가 있으면 막대가 그 위로 올라가므로 그만큼만 비웁니다.
+        bottom: narrow ? Math.max(Math.max(ui.tools.offsetHeight, Math.min(ui.tr.offsetHeight, 60)) + 14, presH) : presH
       };
       ui.canvasWrap.style.setProperty('--tools-w', ui.tools.offsetWidth + 'px');
       ui.canvasWrap.style.setProperty('--pres-h', presH + 'px');
