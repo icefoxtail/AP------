@@ -92,6 +92,78 @@ test('the lane never changes the canonical resolution or the strict approval met
   // advanced-eligible record must stay canonically approved, and the counts must not fall below the 2026-10-30 floor.
   const strict = data.records.filter(row => core.basicEligibility(row, auth).ok);
   const advanced = data.records.filter(row => core.advancedEligible(row, auth));
+  // DIAGNOSTIC ONLY: compare historical canonical authority without changing runtime thresholds.
+  // NEVER MERGE this branch. The two snapshots are reconstructed at their own Git refs.
+  try {
+    const { execFileSync } = require('node:child_process');
+    const readRef = (ref, rel) => execFileSync('git', ['show', ref + ':' + rel], {
+      cwd: root, encoding: 'utf8', maxBuffer: 160 * 1024 * 1024, timeout: 30000,
+    }).replace(/^\uFEFF/, '').replace(/\r\n/g, '\n');
+    const snapshot = ref => {
+      const manifest = JSON.parse(readRef(ref, 'archive/data/archive2-canonical-input-manifest.json'));
+      const resources = {}, files = {};
+      for (const row of manifest.files) {
+        const gitPath = path.posix.normalize(path.posix.join('archive', row.path));
+        const content = readRef(ref, gitPath);
+        const digest = crypto.createHash('sha256').update(Buffer.from(content)).digest('hex');
+        if (digest !== row.sha256) throw new Error(ref + ': hash mismatch ' + gitPath);
+        resources[row.path] = JSON.parse(content);
+        files[row.path] = { sha256: row.sha256 };
+      }
+      const sorted = manifest.files.map(row => ({path: row.path, sha256: row.sha256.toLowerCase()}))
+        .sort((a,b) => a.path.localeCompare(b.path));
+      const version = 'archive2-canonical-v1:' + crypto.createHash('sha256')
+        .update(JSON.stringify({resolverVersion: manifest.resolverVersion, files: sorted})).digest('hex');
+      if (version !== manifest.projectionVersion) throw new Error(ref + ': projection mismatch');
+      return core.Canonical.resolveCatalog({versionBundle: {manifest, projectionVersion: version, files, resources}});
+    };
+    const baselineRef = '1146082c';
+    const oldData = snapshot(baselineRef);
+    const oldAuth = {canonicalAuthority: oldData.canonicalAuthority};
+    const oldStrict = oldData.records.filter(r => core.basicEligibility(r, oldAuth).ok);
+    const oldAdvanced = oldData.records.filter(r => core.advancedEligible(r, oldAuth));
+    const oldByUid = new Map(oldData.records.map(r => [r.questionUid, r]));
+    const nowByUid = new Map(data.records.map(r => [r.questionUid, r]));
+    const nowBySource = new Map(data.records.map(r => [r.sourceFile + '#' + r.sourceOrdinal, r]));
+    const oldAssignments = oldData.canonicalAuthority?.assignmentsByUid || {};
+    const newAssignments = data.canonicalAuthority?.assignmentsByUid || {};
+    const classify = previous => {
+      const current = nowByUid.get(previous.questionUid);
+      const mapped = nowBySource.get(previous.sourceFile + '#' + previous.sourceOrdinal);
+      let category;
+      if (!current) category = mapped && mapped.questionUid !== previous.questionUid ? 'IDENTITY_REMAP' : 'RECORD_MISSING';
+      else if (current.sourceFile !== previous.sourceFile || current.sourceOrdinal !== previous.sourceOrdinal) category = 'IDENTITY_REMAP';
+      else if (previous.sourceFingerprint !== current.sourceFingerprint || previous.contentFingerprint !== current.contentFingerprint)
+        category = 'SOURCE_FINGERPRINT_CHANGED';
+      else if ((oldAssignments[previous.questionUid] || []).length && !(newAssignments[previous.questionUid] || []).length)
+        category = 'APPROVAL_RECORD_LOST';
+      else if (current.sourceStatus !== previous.sourceStatus || current.sourceIntegrityStatus !== previous.sourceIntegrityStatus)
+        category = 'SOURCE_RELEASE_OR_INTEGRITY_CHANGED';
+      else category = 'AUTHORITY_OR_PROJECTION_CHANGED';
+      return {uid:previous.questionUid, source:previous.sourceFile + '#' + previous.sourceOrdinal,category,
+        oldSourceStatus:previous.sourceStatus,newSourceStatus:current?.sourceStatus,
+        oldSourceFingerprint:previous.sourceFingerprint,newSourceFingerprint:current?.sourceFingerprint,
+        oldAssignmentCount:(oldAssignments[previous.questionUid]||[]).length,
+        newAssignmentCount:(newAssignments[previous.questionUid]||[]).length,
+        newBasicReasons:current?core.basicEligibility(current,auth).reasons:['not_indexed'],
+        newAdvancedReasons:current?(core.Canonical.validateAdvancedAssignment(current,data.canonicalAuthority)?.reasons||[]):['not_indexed']};
+    };
+    const diff = (oldList,newList) => {
+      const newSet = new Set(newList.map(r=>r.questionUid));
+      const oldSet = new Set(oldList.map(r=>r.questionUid));
+      const lost=oldList.filter(r=>!newSet.has(r.questionUid)).map(classify);
+      const gained=newList.filter(r=>!oldSet.has(r.questionUid)).map(r=>r.questionUid);
+      const categories={};for(const r of lost) categories[r.category]=(categories[r.category]||0)+1;
+      return {old:oldList.length,current:newList.length,lostCount:lost.length,gainedCount:gained.length,categories,lost,gained};
+    };
+    const report={schema:'ARCHIVE2_APPROVAL_UID_DELTA_DIAGNOSTIC_V1',baselineRef,currentRef:process.env.GITHUB_SHA||'HEAD',
+      baselineProjection:oldData.canonicalProjectionVersion||oldData.indexVersion,
+      currentProjection:data.canonicalProjectionVersion||data.indexVersion,
+      strict:diff(oldStrict,strict),advanced:diff(oldAdvanced,advanced)};
+    console.log('ARCHIVE2_APPROVAL_UID_DIAGNOSTIC='+JSON.stringify(report));
+  } catch (e) {
+    console.error('ARCHIVE2_APPROVAL_UID_DIAGNOSTIC_ERROR='+String(e&&e.stack||e));
+  }
   assert.ok(strict.length >= 1495, String(strict.length));
   assert.ok(advanced.length >= 195, String(advanced.length));
   assert.ok(data.records.filter(row => row.problemTypeKey).length >= 549);
