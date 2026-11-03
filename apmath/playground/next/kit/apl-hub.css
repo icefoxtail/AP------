@@ -61,6 +61,12 @@
 .hub-bar { position: sticky; top: 65px; z-index: 20; display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 10px 0; background: linear-gradient(var(--bg) 70%, transparent); }
 .hub-courses { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding: 2px; }
 .hub-courses::-webkit-scrollbar { display: none; }
+/* 태블릿·PC(721px 이상): 학년 칩이 보기 전환 단추 뒤로 잘리지 않도록 다음 줄로 넘깁니다. 휴대폰은 한 줄로 밀어 넘깁니다(아래 720px 규칙). */
+@media (min-width: 721px) {
+  .hub-bar { align-items: flex-start; }
+  .hub-courses { flex: 1 1 auto; min-width: 0; flex-wrap: wrap; overflow: visible; }
+  .hub-view { margin-top: 2px; }
+}
 .hub-course {
   flex: none; display: inline-flex; align-items: center; gap: 7px; min-height: 38px; padding: 0 14px; border-radius: 999px;
   border: 1px solid var(--line-2); background: var(--card); color: var(--text-2); font-size: var(--fs-sm); font-weight: 750; white-space: nowrap;
@@ -177,7 +183,7 @@
   .hub-switch .txt { font-size: 0; }
   .hub-switch .txt::after { content: "수업"; font-size: var(--fs-xs); }
   .hub-view button { padding: 0 12px; }
-  .hub-bar { gap: 8px; }
+  .hub-bar { gap: 8px; align-items: center; }
   .hub-wrap { padding: 0 14px 60px; }
   .hub-bar { top: 108px; }
   .hub-intro { padding-top: 14px; }

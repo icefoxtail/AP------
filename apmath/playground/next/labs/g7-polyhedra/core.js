@@ -426,6 +426,7 @@
       },
       tick: (s, dt, lab) => {
         let again = false;
+        if (D.viewTick && lab && D.viewTick(s, dt, lab)) again = true; // 장면이 시점을 스스로 부드럽게 돌릴 때(예: 세 꼭짓점 단면)
         if (s.phSpin && lab && lab.tab === 'explore' && !s.dragging) { s.phYaw += 26 * dt; if (s.phYaw > 180) s.phYaw -= 360; again = true; }
         if (A && s.playing) {
           s[A.key] = Math.min(1, (s[A.key] || 0) + dt / (A.dur || 6));

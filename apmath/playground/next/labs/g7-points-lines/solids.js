@@ -95,7 +95,7 @@
     controls: ['p1n', 'plYaw'],
     presets: (s) => kindChips('p1k', '입체', 'sky'),
     model: (s) => { const n = s.p1n, k = s.p1k, c = cnt(k, n), e = EXPR[s.p1e || 0]; return { n, k, name: kname(k, n), ...c, e, val: e.f(c.a, c.b) }; },
-    guide: (M) => `<b>${M.name}</b>의 선과 선이 만나는 곳이 <b>교점</b>(노랑 점), 면과 면이 만나는 선이 <b>교선</b>(하늘 선)입니다. 위 막대에서 n과 입체의 종류를 바꾸고, 입체의 빈 곳을 끌어 돌려 보세요. 점과 선의 개수가 어떻게 달라지나요?`,
+    guide: (M) => `<b>${M.name}</b>의 선과 선이 만나는 곳이 <b>교점</b>(노랑 점), 면과 면이 만나는 선이 <b>교선</b>(하늘 선)입니다. 막대에서 n과 입체의 종류를 바꾸고, 입체의 빈 곳을 끌어 돌려 보세요. 점과 선의 개수가 어떻게 달라지나요?`,
     readouts: (M) => [
       { label: '교점 a (꼭짓점)', value: `${M.a}개`, color: 'amber', note: M.k === 1 ? `밑면 ${M.n} + 꼭대기 1` : `윗면 ${M.n} + 아랫면 ${M.n}` },
       { label: '교선 b (모서리)', value: `${M.b}개`, color: 'sky', note: M.k === 1 ? `밑면 ${M.n} + 옆 ${M.n}` : `윗면 ${M.n} + 아랫면 ${M.n} + 옆 ${M.n}` },

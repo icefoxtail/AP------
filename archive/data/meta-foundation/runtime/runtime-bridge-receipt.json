@@ -33,14 +33,14 @@
     "integralCalculusCatalogJoin": 184,
     "integralCalculusCatalogJoinMismatch": 0,
     "integralCalculusDifficultyDeferred": 0,
-    "integralCalculusAutomaticEligibleExpected": 105,
+    "integralCalculusAutomaticEligibleExpected": 101,
     "integralCalculusSupplementary": 1,
     "integralCalculusDifficultyReviewed": 135,
     "integralCalculusRuntimeVersion": "INTEGRAL_CALCULUS@1.0.0/runtime-bridge-v2",
     "integralCalculusCrossConceptReferenceCount": 63,
     "integralCalculusNewCanonicalCrossConceptCount": 8,
     "integralCalculusReusedCanonicalCrossConceptCount": 4,
-    "integralCalculusSourceHold": 79,
+    "integralCalculusSourceHold": 83,
     "derivativeCanonicalAssignments": 320,
     "derivativeRuntimeRecords": 380,
     "derivativeExistingCatalogUidJoin": 380,
@@ -48,13 +48,13 @@
     "derivativeCatalogJoin": 380,
     "derivativeCatalogJoinMismatch": 0,
     "derivativeDifficultyDeferred": 0,
-    "derivativeAutomaticEligibleExpected": 236,
+    "derivativeAutomaticEligibleExpected": 234,
     "derivativeDifficultyReviewed": 320,
     "derivativeRuntimeVersion": "DERIVATIVE@1.0.0/runtime-bridge-v3",
     "derivativeCrossConceptReferenceCount": 165,
     "derivativeNewCanonicalCrossConceptCount": 8,
     "derivativeReusedCanonicalCrossConceptCount": 24,
-    "derivativeSourceHold": 144,
+    "derivativeSourceHold": 146,
     "crossPackPrimaryOwnershipResolved": 14,
     "crossPackDuplicateUidCount": 0,
     "crossPackDuplicateSourceIdentityCount": 0,
@@ -79,7 +79,7 @@
     "probabilityStatisticsSourceHold": 0,
     "questionMetadataFingerprintSync": 3,
     "questionMetadataDigest": "817f5314751f27e9216955de3be961443ebaf8e39d31f76f0382cc0f74a3d8f3",
-    "archive2CatalogIndexVersion": "archive2-canonical-v1:585266772140d63ba5b8c552680e81e9b122c0d8fe09a57558702d932ccf02dd",
+    "archive2CatalogIndexVersion": "archive2-canonical-v1:07dcc0764f39eedcbd17066535680d21085dfdc7a6a7ba412de8bb09cb77cf35",
     "metaFoundationRuntimePackCount": 11,
     "metaFoundationRuntimeUrlCount": 11,
     "probabilityStatisticsTaxonomyRows": 95,
@@ -137,7 +137,7 @@
     "reviewOverrideDigest": "e14dcc132d12ebd053759eb74b96a823e15f8b15e9bce26a0a3eb112634e3d2a",
     "currentCanonicalSourceReadinessV1": {
       "schemaVersion": "ARCHIVE2_META_FOUNDATION_SOURCE_READINESS_V1",
-      "catalogIndexVersion": "archive2-canonical-v1:585266772140d63ba5b8c552680e81e9b122c0d8fe09a57558702d932ccf02dd",
+      "catalogIndexVersion": "archive2-canonical-v1:07dcc0764f39eedcbd17066535680d21085dfdc7a6a7ba412de8bb09cb77cf35",
       "combinedRuntimeRecords": 6164,
       "combinedUniqueUid": 6164,
       "combinedUniqueSourceIdentity": 6164,
@@ -150,11 +150,11 @@
           "currentCatalogUidDirectJoinCount": 380,
           "currentCatalogSourceIdentityRepairJoinCount": 0,
           "currentCatalogJoinMismatchCount": 0,
-          "currentCatalogSourceHoldDirectCount": 144,
-          "sourceReadyCount": 236,
-          "sourceHoldCount": 144,
+          "currentCatalogSourceHoldDirectCount": 146,
+          "sourceReadyCount": 234,
+          "sourceHoldCount": 146,
           "supplementaryCount": 0,
-          "automaticEligibleExpected": 236,
+          "automaticEligibleExpected": 234,
           "heldRecords": [
             {
               "questionUid": "qid_v1_0105883805ae1786318fcf1c0c1802d327de254dbe5c5b1d168d035c18fcfe45",
@@ -289,6 +289,23 @@
               "sourceIntegrityStatus": "VERIFIED",
               "approvedSourceFingerprint": "18bae77f128ad1ad7f4d39fa9025c7c7bf85841710a32f43061da7843bc9ac17",
               "currentSourceFingerprint": "8b1dc41c1b47f3fc1afa90ae8f88c5a1cf47dbb7c76921feef44e7e3ccbb8bb5",
+              "releaseGateReasons": [
+                "source_release",
+                "taxonomy",
+                "course_namespace_invalid",
+                "assignment_missing",
+                "canonical_parent_missing"
+              ]
+            },
+            {
+              "questionUid": "qid_v1_12f6048dc05f0d05d430887a2dabbd75fac71391dd8e676aa1bdd13f5e0e7ee8",
+              "sourceArchiveFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+              "sourceOrdinal": 1,
+              "sourceStatus": "HOLD",
+              "identityStatus": "VERIFIED",
+              "sourceIntegrityStatus": "VERIFIED",
+              "approvedSourceFingerprint": "24c04e7efd9856b6ed73436fa71f692c704b3cc5db20f36bce5c3b49a5c2dfd1",
+              "currentSourceFingerprint": "9d76a557308f0324e9847d4cf3565075712978a70a1a3d933465652f692d4745",
               "releaseGateReasons": [
                 "source_release",
                 "taxonomy",
@@ -700,6 +717,19 @@
                 "course_namespace_invalid",
                 "assignment_missing",
                 "canonical_parent_missing"
+              ]
+            },
+            {
+              "questionUid": "qid_v1_4787821e4c8cb8a85ea7f47976557f03f9543dfa20744587858c0a713bed1be2",
+              "sourceArchiveFile": "original/high/h2/2final/25_순천고_2학기_기말_고2_수학II.js",
+              "sourceOrdinal": 17,
+              "sourceStatus": "HOLD",
+              "identityStatus": "VERIFIED",
+              "sourceIntegrityStatus": "VERIFIED",
+              "approvedSourceFingerprint": "c559bcf39c9b78b722c5bd9f1c5311f3bffb7c20dbf9251573a1e24ce71cdf0b",
+              "currentSourceFingerprint": "cb0be7b046173ef598a8c831d5195bee2cede5813aaf0d0558867cdf7a2140c5",
+              "releaseGateReasons": [
+                "source_release"
               ]
             },
             {
@@ -2486,11 +2516,11 @@
           "currentCatalogUidDirectJoinCount": 184,
           "currentCatalogSourceIdentityRepairJoinCount": 0,
           "currentCatalogJoinMismatchCount": 0,
-          "currentCatalogSourceHoldDirectCount": 79,
-          "sourceReadyCount": 105,
-          "sourceHoldCount": 79,
+          "currentCatalogSourceHoldDirectCount": 83,
+          "sourceReadyCount": 101,
+          "sourceHoldCount": 83,
           "supplementaryCount": 0,
-          "automaticEligibleExpected": 105,
+          "automaticEligibleExpected": 101,
           "heldRecords": [
             {
               "questionUid": "qid_v1_0647d31d7653d97c2ee9cdde64c23bf3c1941892e082bbb15d5c22322a6966f5",
@@ -2745,6 +2775,23 @@
               ]
             },
             {
+              "questionUid": "qid_v1_3bc131c4ab68d2a9e5c670c625ff6963b00e20619365ad9e5ca50b00dc74a2f5",
+              "sourceArchiveFile": "original/high/h2/2final/25_제일고_2학기_기말_고2_수학II.js",
+              "sourceOrdinal": 5,
+              "sourceStatus": "HOLD",
+              "identityStatus": "VERIFIED",
+              "sourceIntegrityStatus": "VERIFIED",
+              "approvedSourceFingerprint": "7ef53e1603ba90ae5413655d66fac96d956fea8160315093c1a42e94aebb79f2",
+              "currentSourceFingerprint": "d97ed21fe1083a56ef7c29f51a1122afb9a6c7121a7fb8fce8abb489ebaf308e",
+              "releaseGateReasons": [
+                "source_release",
+                "taxonomy",
+                "course_namespace_invalid",
+                "assignment_missing",
+                "canonical_parent_missing"
+              ]
+            },
+            {
               "questionUid": "qid_v1_3c6e898d3aeb6ac76f1d83e462d5a8430206313da3f40266c69385868914e471",
               "sourceArchiveFile": "original/high/h2/2final/23_순천여고_2학기_기말_고2_수학II.js",
               "sourceOrdinal": 10,
@@ -2793,6 +2840,19 @@
                 "course_namespace_invalid",
                 "assignment_missing",
                 "canonical_parent_missing"
+              ]
+            },
+            {
+              "questionUid": "qid_v1_409f6b73609352f075cb083565d9f02cf6ca4bd0ea75915458b30f6f7eb45191",
+              "sourceArchiveFile": "original/high/h2/2final/25_순천고_2학기_기말_고2_수학II.js",
+              "sourceOrdinal": 19,
+              "sourceStatus": "HOLD",
+              "identityStatus": "VERIFIED",
+              "sourceIntegrityStatus": "VERIFIED",
+              "approvedSourceFingerprint": "6ad0aef06765e456a5438c0426e6896432aed4ac1549ad5ee407bd154423534f",
+              "currentSourceFingerprint": "b16ca4a9c92affefc632a200bae9239eb4c7fdba5d0c5a5fd21627462d82acde",
+              "releaseGateReasons": [
+                "source_release"
               ]
             },
             {
@@ -2847,6 +2907,23 @@
               "sourceIntegrityStatus": "VERIFIED",
               "approvedSourceFingerprint": "1a4705c48e878b99dc8cde4149f725fcda44c20b38e907c71876044c9a1ae941",
               "currentSourceFingerprint": "67a1e7e4981a4ce75db36899590870c5ca7f3703aa5b8031295e6836c4eb2cf2",
+              "releaseGateReasons": [
+                "source_release",
+                "taxonomy",
+                "course_namespace_invalid",
+                "assignment_missing",
+                "canonical_parent_missing"
+              ]
+            },
+            {
+              "questionUid": "qid_v1_563450ba72121b7a538a5762e2406250cd3c2e4d2f137b4f245fc4db079791f6",
+              "sourceArchiveFile": "original/high/h2/2final/25_순천고_2학기_기말_고2_수학II.js",
+              "sourceOrdinal": 3,
+              "sourceStatus": "HOLD",
+              "identityStatus": "VERIFIED",
+              "sourceIntegrityStatus": "VERIFIED",
+              "approvedSourceFingerprint": "a8fc0c65f1c6a920494b4d3bfe8c7a5017f112754f26cf20fc808d11ee04ce0f",
+              "currentSourceFingerprint": "ef5ce300671c5ca6ddc52bcbf5b9840f4065a47e486b91e2b75db0c3920d5aeb",
               "releaseGateReasons": [
                 "source_release",
                 "taxonomy",
@@ -3237,6 +3314,23 @@
               "currentSourceFingerprint": "d7b58802139dfb5cf7414e0ac8b36d8a811d26d35509c0cd1820d42f4ec3ce94",
               "releaseGateReasons": [
                 "source_release"
+              ]
+            },
+            {
+              "questionUid": "qid_v1_9338b2ddb9ffe49fcaf475aae415740b28993fc2837cfe0fd9e3962224ffa958",
+              "sourceArchiveFile": "original/high/h2/2final/25_순천고_2학기_기말_고2_수학II.js",
+              "sourceOrdinal": 9,
+              "sourceStatus": "HOLD",
+              "identityStatus": "VERIFIED",
+              "sourceIntegrityStatus": "VERIFIED",
+              "approvedSourceFingerprint": "8d5eb56b259e54be188496018feb859048280ea54ae7890469ac7e0ed12f18c0",
+              "currentSourceFingerprint": "7d7653a969f0a33eba4be2ac8a1cc991e9c58055f94c70716c7163ca37c6c2fa",
+              "releaseGateReasons": [
+                "source_release",
+                "taxonomy",
+                "course_namespace_invalid",
+                "assignment_missing",
+                "canonical_parent_missing"
               ]
             },
             {
@@ -3821,7 +3915,7 @@
         "packId": "DERIVATIVE",
         "records": 380,
         "runtimeFile": "derivative-v1.json",
-        "runtimeSha256": "884b79aafe9073291e0d61bb252462700c7b0504f70c913d69b4cfcb92d38b5f"
+        "runtimeSha256": "5d43946a71c5dc2334abe0da483ee29e3c1de1e828640f47bdb61d78994a8a3d"
       },
       {
         "packId": "FUNCTIONS_GRAPHS",
@@ -3851,7 +3945,7 @@
         "packId": "INTEGRAL_CALCULUS",
         "records": 184,
         "runtimeFile": "integral-calculus-v1.json",
-        "runtimeSha256": "c9ea434bc9de975d609e5756f6188b68e6561ed222d5a02859953648ffc3741c"
+        "runtimeSha256": "574cfd4b3ad2fedd15b87446d03da7aca9b334b59d1f27024bd4499d7124361a"
       },
       {
         "packId": "LIMIT_CONTINUITY",

@@ -280,7 +280,13 @@
   const notes = (...li) => `<ul class="so-notes">${li.map((x) => `<li>${x}</li>`).join('')}</ul>`;
   const rd = (label, value, color, note, ref, wide) => ({ label, value, color, note, ref, wide });
 
+  // 부채꼴의 중심각 360°×r/R이 자연수가 되는 (r, R)만 고르게 하는 도구(소수 각도가 화면에 나오지 않게)
+  const angPairs = (rMax, RMax, ok) => { const o = []; for (let r = 1; r <= rMax; r++) for (let R = 2; R <= RMax; R++) if (ok(r, R) && (360 * r) % R === 0) o.push([r, R]); return o; };
+  // 끌고 있는 막대(first 0: r, 1: R)를 우선해 가장 가까운 허용 쌍으로 맞춥니다
+  const snapAng = (pairs, r, R, first) => { let best = pairs[0], bd = Infinity; pairs.forEach((p) => { const d = first === 0 ? Math.abs(p[0] - r) * 1000 + Math.abs(p[1] - R) : Math.abs(p[1] - R) * 1000 + Math.abs(p[0] - r); if (d < bd) { bd = d; best = p; } }); return best; };
+
   window.APL_SO = {
+    angPairs, snapAng,
     PI, DEG, clamp, ease, seg01, NUM, esc, rint, pick, shuffle, sshuffle, texFix, fmtN, gcd, jo, piT, piTex, span, cm,
     textW, bboxOf, fit, fitK, PITCH0, solidScale, FS, T, P, VIEW, VIEW_PARAMS, mkNum, mkText, baseCtx, makeScene, register, notes, rd
   };

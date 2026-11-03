@@ -31,6 +31,11 @@
   const CIRC = ['①', '②', '③', '④', '⑤'];
   const wrap2pi = (x) => ((x % TAU) + TAU) % TAU;
   const cpi = (c) => (c === 1 ? 'π' : `${num(c)}π`); // 계수가 1이면 π 만
+  /** 움직이는 도중의 '지금까지 간 거리': 끝(한 바퀴)이면 정확한 꼴, 정수면 그대로, 아니면 소수 대신 「…」 */
+  const distTxt = (M, sl) => {
+    if (sl >= M.Lc - 1e-9) return M.shape === 'inside' ? `${num(M.Lc)}` : `${num(M.per)} + ${num(2 * M.r)}π`;
+    return Math.abs(sl - Math.round(sl)) < 1e-9 ? `${Math.round(sl)}` : '…';
+  };
 
   /* ------------------------------ 식 문자열 ------------------------------ */
   /** p·π + q (정수) 를 교재식 문자열로 */
@@ -775,10 +780,10 @@
       const path = sc.mode === 'path';
       const sl = clamp(t / T.travel, 0, 1) * M.Lc;
       const status = path
-        ? (ph === 'travel' ? { tone: 'info', text: `중심이 지나온 길 ${num(sl)} cm` }
+        ? (ph === 'travel' ? { tone: 'info', text: `중심이 지나온 길 ${distTxt(M, sl)} cm` }
           : ph === 'split' ? { tone: 'info', text: '직선 부분과 호로 나눠요' }
             : ph === 'copy' || ph === 'slide' ? { tone: 'info', text: '호를 복사해 가로로 모아요' } : { tone: 'ok', text: `직선 ${num(M.per)} + 원의 둘레 ${num(2 * r)}π` })
-        : (ph === 'travel' ? { tone: 'info', text: `중심이 지나온 길 ${num(sl)} cm` }
+        : (ph === 'travel' ? { tone: 'info', text: `중심이 지나온 길 ${distTxt(M, sl)} cm` }
           : ph === 'split' ? { tone: 'info', text: '직사각형 + 모서리 부채꼴' }
             : ph === 'copy' || ph === 'slide' ? { tone: 'info', text: '부채꼴을 복사해 가로로 모아요' } : { tone: 'ok', text: `부채꼴 ${M.n}개 = 원 1개 (중심각 합 360°)` });
       const guide = ph === 'travel'
@@ -788,16 +793,16 @@
           : (path ? '호를 복사해 가로로 밀어 붙이면 원 하나의 둘레가 돼요.' : '부채꼴을 복사해 가로로 밀어 붙이면 원 하나가 돼요.');
       const readouts = path ? [
         { label: '원의 반지름 r', value: `${num(r)} cm`, color: 'green', ref: 'circle' },
-        { label: '중심이 움직인 거리(지금까지)', value: `${num(sl)} cm`, color: 'violet', ref: 'path', wide: true },
+        { label: '중심이 움직인 거리(지금까지)', value: `${distTxt(M, sl)} cm`, color: 'violet', ref: 'path', wide: true },
         { label: '직선 부분', value: `${num(M.per)} cm`, color: 'violet', ref: 'segs', note: M.E.map((e) => num(e.len)).join(' + ') },
         { label: '호 부분', value: `${num(2 * r)}π cm`, color: 'amber', ref: 'arcs', note: `반지름 ${num(r)}인 원의 둘레` },
-        { label: '중심이 움직인 거리', value: `${num(M.per)} + ${num(2 * r)}π ≈ ${num(M.Lc)} cm`, color: 'rose', wide: true }
+        { label: '중심이 움직인 거리', value: `${num(M.per)} + ${num(2 * r)}π cm`, color: 'rose', wide: true }
       ] : [
         { label: '원의 반지름 r', value: `${num(r)} cm`, color: 'green', ref: 'circle', note: `지름 ${num(2 * r)} cm` },
-        { label: '중심이 움직인 거리', value: `${num(sl)} cm`, color: 'violet', ref: 'path', note: `한 바퀴: ${num(M.per)} + ${num(2 * r)}π ≈ ${num(M.Lc)}` },
+        { label: '중심이 움직인 거리', value: `${distTxt(M, sl)} cm`, color: 'violet', ref: 'path', note: `한 바퀴: ${num(M.per)} + ${num(2 * r)}π` },
         { label: `직사각형 ${M.n}개`, value: `${num(M.rectArea)} cm²`, color: 'sky', ref: 'rects', note: `(변의 합 ${num(M.per)}) × 지름 ${num(2 * r)}` },
         { label: `모서리 부채꼴 ${M.n}개`, value: `${num(4 * r * r)}π cm²`, color: 'amber', ref: 'sectors', note: `모으면 반지름 ${num(2 * r)}인 원 1개` },
-        { label: '지나간 자리의 넓이', value: `${num(M.rectArea)} + ${num(4 * r * r)}π ≈ ${num(M.area)} cm²`, color: 'rose', wide: true }
+        { label: '지나간 자리의 넓이', value: `${num(M.rectArea)} + ${num(4 * r * r)}π cm²`, color: 'rose', wide: true }
       ];
       const parts = path ? [
         { id: 'segs', name: '직선 부분', desc: '도형의 변과 같은 길이', value: `${num(M.per)}`, color: 'violet' },
@@ -806,7 +811,7 @@
       ] : [
         { id: 'rects', name: `직사각형 ${M.n}개`, desc: '변의 길이 × 원의 지름', value: `${num(M.rectArea)}`, color: 'sky' },
         { id: 'sectors', name: `모서리 부채꼴 ${M.n}개`, desc: `반지름 ${num(2 * r)}, 중심각 합 360°`, value: `${num(4 * r * r)}π`, color: 'amber' },
-        { id: 'path', name: '원의 중심이 간 길', desc: `${num(M.per)} + ${num(2 * r)}π`, value: `${num(M.Lc)}`, color: 'violet' }
+        { id: 'path', name: '원의 중심이 간 길', desc: `${num(M.per)} + ${num(2 * r)}π`, value: `${num(M.per)} + ${num(2 * r)}π`, color: 'violet' }
       ];
       const done = t >= 0.96;
       const chips = done ? (path
@@ -818,7 +823,7 @@
       const notes = path
         ? '<p>• 호의 반지름은 <b>원의 반지름 r</b>이에요.</p><p>• 직선 부분은 도형의 변과 <b>길이가 같아요</b>.</p><p>• 호를 모으면 원 하나의 <b>둘레(2πr)</b>예요. 넓이(πr²)와 헷갈리지 마세요.</p>'
         : '<p>• 모서리 부채꼴의 반지름은 r이 아니라 <b>지름 2r</b>이에요 (꼭짓점 → 중심 r, 중심 → 가장자리 r).</p><p>• 직사각형의 세로도 r이 아니라 <b>지름 2r</b>이에요.</p><p>• 부채꼴의 중심각 합이 360°이면 <b>원 하나</b>예요.</p>';
-      return { guide, status, readouts, parts, chips, formula, notes, summary: done ? (path ? `중심이 움직인 거리 = ${num(M.per)} + ${num(2 * r)}π ≈ ${num(M.Lc)} cm` : `지나간 자리의 넓이 = ${num(M.rectArea)} + ${num(4 * r * r)}π ≈ ${num(M.area)} cm²`) : null };
+      return { guide, status, readouts, parts, chips, formula, notes, summary: done ? (path ? `중심이 움직인 거리 = ${num(M.per)} + ${num(2 * r)}π cm` : `지나간 자리의 넓이 = ${num(M.rectArea)} + ${num(4 * r * r)}π cm²`) : null };
     };
   }
 
@@ -887,7 +892,7 @@
       tag: o.tag,
       text: (s) => problemHTML(sc, s),
       answer: (s) => mk(s).ansTex,
-      note: '숫자 바꾸기를 누르면 그림의 숫자와 보기가 함께 바뀌어요.'
+      note: '새 문제를 누르면 그림의 숫자와 보기가 함께 바뀌어요.'
     };
     SW[sc.id] = sc;
     return sc;
@@ -1035,7 +1040,7 @@
       const M = insideModel(s.swI, s.swR);
       const t = s.swT, ph = phaseOf(t), r = M.r;
       const sl = clamp(t / T.travel, 0, 1) * M.Lc;
-      const status = ph === 'travel' ? { tone: 'info', text: `중심이 지나온 길 ${num(sl)} cm` }
+      const status = ph === 'travel' ? { tone: 'info', text: `중심이 지나온 길 ${distTxt(M, sl)} cm` }
         : ph === 'split' ? { tone: 'info', text: '바깥 − 가운데 − 모서리 4곳' }
           : ph === 'copy' || ph === 'slide' ? { tone: 'info', text: '모서리 조각을 복사해 가로로 모아요' } : { tone: 'ok', text: `모서리 조각 4개 = ${num(4 * r * r)} − π × ${num(r)}²` };
       return {
@@ -1044,10 +1049,10 @@
         status,
         readouts: [
           { label: '원의 반지름 r', value: `${num(r)} cm`, color: 'green', ref: 'circle' },
-          { label: '중심이 움직인 거리', value: `${num(sl)} cm`, color: 'violet', ref: 'path', note: `한 바퀴: ${num(M.per)} cm` },
+          { label: '중심이 움직인 거리', value: `${distTxt(M, sl)} cm`, color: 'violet', ref: 'path', note: `한 바퀴: ${num(M.per)} cm` },
           { label: '벽 둘레 띠 (바깥 − 가운데)', value: `${num(M.outerRing)} cm²`, color: 'sky', ref: 'band', note: `${num(M.a)}² − ${num(M.hole)}²` },
           { label: '모서리 못 가는 조각 4개', value: `${num(4 * r * r)} − ${cpi(r * r)} cm²`, color: 'amber', ref: 'corners', note: '정사각형에서 원 1개 빼기' },
-          { label: '지나간 자리의 넓이', value: `${num(M.outerRing - 4 * r * r)} + ${cpi(r * r)} ≈ ${num(M.area)} cm²`, color: 'rose', wide: true }
+          { label: '지나간 자리의 넓이', value: `${num(M.outerRing - 4 * r * r)} + ${cpi(r * r)} cm²`, color: 'rose', wide: true }
         ],
         parts: [
           { id: 'band', name: '벽 둘레 띠', desc: '바깥 정사각형 − 가운데 정사각형', value: `${num(M.outerRing)}`, color: 'sky' },
@@ -1079,7 +1084,7 @@
     again: (s) => { Object.assign(s, pickRandom([{ swI: 6, swR: 1 }, { swI: 8, swR: 1 }, { swI: 7, swR: 1 }, { swI: 9, swR: 2 }, { swI: 10, swR: 2 }, { swI: 9, swR: 1 }], s, (x, c) => x.swI === c.swI && x.swR === c.swR)); },
     reset: (s) => { Object.assign(s, { swI: 6, swR: 1 }); }
   };
-  insideScene.problem = { tag: '응용 · 안쪽', text: (s) => problemHTML(insideScene, s), answer: (s) => insideScene.csd.make(s).ansTex, note: '숫자 바꾸기를 누르면 그림의 숫자와 보기가 함께 바뀌어요.' };
+  insideScene.problem = { tag: '응용 · 안쪽', text: (s) => problemHTML(insideScene, s), answer: (s) => insideScene.csd.make(s).ansTex, note: '새 문제를 누르면 그림의 숫자와 보기가 함께 바뀌어요.' };
   SW['sw-inside'] = insideScene;
 
   /* ========================================================================
@@ -1100,7 +1105,7 @@
     const V = [[0, 0]];
     let p = [0, 0], dir = 0;
     for (let i = 0; i < n - 1; i++) { p = [p[0] + side * Math.cos(dir), p[1] + side * Math.sin(dir)]; V.push(p); dir += TAU / n; }
-    return { V, names: 'ABCDEF'.slice(0, n), maxL: kind === 'tri' ? 1.5 * side : 2 * side };
+    return { V, names: 'ABCDEF'.slice(0, n), maxL: kind === 'tri' ? Math.floor(1.5 * side) : 2 * side, maxExact: kind !== 'tri' || side % 2 === 0 }; // 정삼각형은 끈 최대 1.5×변. 변이 홀수면 소수가 되므로 정수로 내려 제한(막대 step=1)
   }
   function goatClamp(s) {
     const k = s.gtKind;
@@ -1141,7 +1146,7 @@
     };
     const ccw = chain(1), cw = chain(-1);
     const secs = [...cw.slice().reverse(), A, ...ccw]; // 염소의 자취가 이어지는 차례 (끝점 = 다음 시작점)
-    return { kind, V, names, L, sp, A, ccw, cw, secs, order: [A, ...ccw, ...cw], area: ratSum(secs.map((x) => x.area)), maxL: sp.maxL, side: dist(V[0], V[1]), sideLast: dist(V[0], V[n - 1]), interior: 360 - A.deg };
+    return { kind, V, names, L, sp, A, ccw, cw, secs, order: [A, ...ccw, ...cw], area: ratSum(secs.map((x) => x.area)), maxL: sp.maxL, maxExact: sp.maxExact, side: dist(V[0], V[1]), sideLast: dist(V[0], V[n - 1]), interior: 360 - A.deg };
   }
   /** 염소가 지나가는 시간표: 부채꼴의 중심각에 비례해 0~0.8 구간을 나눕니다 */
   function goatTimeline(M) {
@@ -1264,6 +1269,7 @@
     w.point(M.V[0], { color: 'ink', r: 4.6, glow: false });
 
     // 끈과 동물
+    const rectLike = M.kind === 'rect' || M.kind === 'square';
     if (tab === 'explore') {
       let cur = tl[0];
       for (const x of tl) if (sweepT >= x.ts) cur = x;
@@ -1277,7 +1283,7 @@
       const samples = [];
       tl.forEach((x) => { for (let k = 0; k <= 40; k++) { const uu = k / 40; samples.push({ t: x.ts + (x.te - x.ts) * uu, p: goatPoint(x.sec, x.sec.t0 + (x.sec.t1 - x.sec.t0) * uu) }); } });
       w.handle('gp', P, {
-        color: 'amber', r: 7, label: sweepT < 0.8 ? kd.animal : '', dx: 12, dy: -12, size: 13.5, ariaLabel: `${kd.animal}를 끌어 끈이 닿는 곳을 따라 움직이기`,
+        color: 'amber', r: 7, label: sweepT < 0.8 ? kd.animal : '', dx: rectLike ? -12 : 12, dy: -12, align: rectLike ? 'right' : 'left', size: 13.5, // 사각 울타리: 시작점이 꼭짓점 이름(C 등) 바로 옆이라 이름표를 왼쪽 위로 보내 글자끼리 닿지 않게 합니다 ariaLabel: `${kd.animal}를 끌어 끈이 닿는 곳을 따라 움직이기`,
         drag: (q) => {
           const pt = w.unP(q);
           let best = samples[0], bd = Infinity;
@@ -1490,13 +1496,13 @@
       const status = t <= 0 ? { tone: 'info', text: `끈을 팽팽히 당긴 ${kd.animal}` }
         : !done ? { tone: 'info', text: cur.sec.chain === 'A' ? `큰 부채꼴 · r = ${num(cur.sec.R)} m, ${cur.sec.deg}°` : `${cur.sec.id}를 돌아가는 부채꼴 · r = ${num(cur.sec.R)} m, ${cur.sec.deg}°` }
           : { tone: 'ok', text: `부채꼴 ${M.secs.length}개 · 넓이 ${ratPi(M.area)} m²` };
-      const note = M.L >= M.maxL - 1e-9 ? `끈이 가장 길 수 있는 값(${num(M.maxL)} m)이에요. 이보다 길면 끈이 겹쳐 돌아가서 이 장면의 계산이 달라져요.` : '';
+      const note = M.maxExact && M.L >= M.maxL - 1e-9 ? `끈이 가장 길 수 있는 값(${num(M.maxL)} m)이에요. 이보다 길면 끈이 겹쳐 돌아가서 이 장면의 계산이 달라져요.` : '';
       const readouts = [{ label: '끈의 길이', value: `${num(M.L)} m`, color: 'rose', ref: 'rope', note: M.kind === 'rect' ? `AB ${num(M.side)} m, AD ${num(M.sideLast)} m` : `${kd.thing}의 한 변 ${num(M.side)} m` }];
       M.order.forEach((sec) => readouts.push({
         label: sec.chain === 'A' ? `큰 부채꼴 (${sec.id} 중심)` : `${sec.id}를 돌아가는 부채꼴`,
         value: `${ratPi(sec.area)} m²`, color: sec.col, ref: sec.id, note: `r = ${num(sec.R)} m, 중심각 ${sec.deg}°`
       }));
-      readouts.push({ label: '움직일 수 있는 영역의 넓이', value: `${ratPi(M.area)} ≈ ${num(ratVal(M.area) * PI)} m²`, color: 'rose', wide: true });
+      readouts.push({ label: '움직일 수 있는 영역의 넓이', value: `${ratPi(M.area)} m²`, color: 'rose', wide: true });
       return {
         guide: t <= 0 ? `노란 점(${kd.animal})을 끌거나 재생을 눌러 보세요. 끈이 닿는 곳이 칠해져요.`
           : !done ? `${kd.thing} 모서리를 만나면 끈이 꺾여요. 남은 끈이 작은 부채꼴의 반지름이에요.` : '영역 = 큰 부채꼴 + 모서리를 돌아가는 작은 부채꼴.',
@@ -1507,10 +1513,10 @@
         chips: done ? [{ k: '영역의 넓이', html: `$${TEX_SUM(M.order)}=${ratPiTex(M.area)}$ m²`, color: 'rose' }] : [],
         formula: o.formula(M),
         notes: o.notes,
-        summary: done ? `움직일 수 있는 영역의 넓이 = ${ratPi(M.area)} ≈ ${num(ratVal(M.area) * PI)} m²` : null
+        summary: done ? `움직일 수 있는 영역의 넓이 = ${ratPi(M.area)} m²` : null
       };
     };
-    sc.problem = { tag: o.tag, text: (s) => problemHTML(sc, s), answer: (s) => mk(s).ansTex, note: '숫자 바꾸기를 누르면 그림의 숫자가 바뀌어요. (끈의 굵기와 동물의 크기는 생각하지 않아요.)' };
+    sc.problem = { tag: o.tag, text: (s) => problemHTML(sc, s), answer: (s) => mk(s).ansTex, note: '새 문제를 누르면 그림의 숫자가 바뀌어요. (끈의 굵기와 동물의 크기는 생각하지 않아요.)' };
     GOAT[sc.id] = sc;
     return sc;
   }
@@ -1652,13 +1658,13 @@
         readouts: [
           { label: '정육각형의 한 변', value: `${num(M.p)} cm`, color: 'amber' },
           ...M.secs.map((x, i) => ({ label: `꼭짓점 ${x.id} 중심 부채꼴`, value: `${ratPi(x.area)} cm²`, color: x.col, ref: 'S' + i, note: `r = ${num(x.R)} cm, 중심각 60°` })),
-          { label: '색칠한 부분의 넓이', value: `${ratPi(M.area)} ≈ ${num(ratVal(M.area) * PI)} cm²`, color: 'rose', wide: true }
+          { label: '색칠한 부분의 넓이', value: `${ratPi(M.area)} cm²`, color: 'rose', wide: true }
         ],
         parts: M.secs.map((x, i) => ({ id: 'S' + i, name: `꼭짓점 ${x.id} 중심`, desc: `반지름 ${num(x.R)}, 중심각 60°`, value: ratPi(x.area), color: x.col })),
         chips: done ? [{ k: '색칠한 부분', html: `$${M.secs.map((x) => ratPiTex(x.area)).join('+')}=${ratPiTex(M.area)}$ cm²`, color: 'rose' }] : [],
         formula: `<p><b>색칠한 부분의 넓이</b> = (부채꼴들의 합)</p><p>정육각형의 한 바깥각은 360° ÷ 6 = 60°이므로 모든 부채꼴의 중심각이 60°예요.</p><p>반지름: ${M.secs.map((x) => num(x.R)).join(', ')} (한 변씩 늘어요)</p>`,
         notes: '<p>• 중심각은 정육각형의 <b>안쪽 각 120°</b>가 아니라 <b>바깥각 60°</b>예요.</p><p>• 반지름은 꼭짓점이 바뀔 때마다 <b>한 변의 길이만큼</b> 늘어나요 (3, 6, 9 …).</p>',
-        summary: done ? `색칠한 부분의 넓이 = ${ratPi(M.area)} ≈ ${num(ratVal(M.area) * PI)} cm²` : null
+        summary: done ? `색칠한 부분의 넓이 = ${ratPi(M.area)} cm²` : null
       };
     },
     csd: null

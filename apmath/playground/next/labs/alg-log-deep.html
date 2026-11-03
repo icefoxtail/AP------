@@ -957,7 +957,7 @@ scen.problem = `**[숫자를 바꾼 문제]** $1 \\le x \\le ${mx},\\; 1 \\le y 
   });
 
   const actions = () => [
-    { id: 'twin', icon: 'spark', label: '숫자를 바꾼 문제', run: (s, lab) => twin(s, lab) },
+    { id: 'twin', icon: 'spark', label: '숫자 바꿔 보기', run: (s, lab) => twin(s, lab) },
     { id: 'diag', icon: 'layers', label: (s) => (s.diag ? 'y = x 기준 대칭축 켜짐' : 'y = x 기준 대칭축'), on: (s) => s.diag, run: (s) => { s.diag = !s.diag; } },
     { id: 'abs', icon: 'wand', label: (s) => (s.abs ? '|f(x)|의 그래프 켜짐' : '|f(x)|의 그래프 보기'), on: (s) => s.abs, run: (s) => { s.abs = !s.abs; } }
   ];

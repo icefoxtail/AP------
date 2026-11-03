@@ -184,7 +184,7 @@
       if (t.cap) {
         const lw = G.textW(t.label || '', eff) + 6;
         const below = t.label && !(lw <= sPx && t.sh * b.k >= eff * 1.4 && t.shape !== 'hole');
-        b.text({ x: x0 + sw / 2, y: y1 }, t.cap, { dy: eff * (below ? 2.15 : 0.95), color: t.ccolor || 'muted', size: D.fs(t.csize || 13), weight: 750, align: 'center', baseline: 'middle' });
+        b.text({ x: x0 + sw / 2, y: y1 }, t.cap, { dy: eff * (below ? 2.5 : 0.95), color: t.ccolor || 'muted', size: D.fs(t.csize || 13), weight: 750, align: 'center', baseline: 'middle' });
       }
       if (n > 1) b.text({ x: x0 + sw, y: y0 }, '×' + n, { dx: 4, dy: -4 + -n * 1.5, color: 'amber', size: D.fs(14), weight: 800, align: 'right', baseline: 'bottom' });
     });

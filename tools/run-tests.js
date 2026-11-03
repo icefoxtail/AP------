@@ -279,6 +279,26 @@ const requiredCommands = [
   {
     label: 'apmath/playground/next/tools/alg-sequence-plus.test.mjs',
     args: ['--test', 'apmath/playground/next/tools/alg-sequence-plus.test.mjs']
+  },
+  {
+    label: 'apmath/playground/next/tools/polyhedra-names.test.mjs',
+    args: ['--test', 'apmath/playground/next/tools/polyhedra-names.test.mjs']
+  },
+  {
+    label: 'apmath/playground/next/tools/cube-section.test.mjs',
+    args: ['--test', 'apmath/playground/next/tools/cube-section.test.mjs']
+  },
+  {
+    label: 'apmath/playground/next/tools/polyhedra-dual.test.mjs',
+    args: ['--test', 'apmath/playground/next/tools/polyhedra-dual.test.mjs']
+  },
+  {
+    label: 'apmath/playground/next/tools/video.test.mjs',
+    args: ['--test', 'apmath/playground/next/tools/video.test.mjs']
+  },
+  {
+    label: 'apmath/playground/next/tools/label-sweep.test.mjs',
+    args: ['--test', 'apmath/playground/next/tools/label-sweep.test.mjs']
   }
 ];
 

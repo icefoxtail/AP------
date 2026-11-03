@@ -37,32 +37,79 @@
     }
     return null;
   }
-  const rTxt = (r) => { const f = toFrac(r); return f && f.q === 1 ? String(f.p) : f ? String(Math.round(r * 100) / 100) : r.toFixed(1); };
+  /** 제곱근(√)은 중3 내용이라 학생 화면에 쓰지 않습니다. 분수로 안 떨어지는 값은 「…」로 둡니다(그래서 늘 null). */
+  function surd() { return null; }
+  const surdPlain = (u) => `${u.s > 1 ? u.s : ''}√${u.k}${u.q > 1 ? '/' + u.q : ''}`;
+  const rTxt = (r) => {
+    const f = toFrac(r);
+    if (f) return f.q === 1 ? String(f.p) : `${f.p}/${f.q}`;
+    const u = surd(r);
+    return u ? surdPlain(u) : '…';
+  };
   const coefTex = (c) => {
+    if (isSym(c)) return symTex(c.k);
     const f = toFrac(c);
-    if (!f) return `\\approx ${c.toFixed(2)}\\pi`;
+    if (!f) {
+      const u = surd(c);
+      if (!u) return '\\cdots';
+      const top = (u.s > 1 ? u.s : '') + `\\sqrt{${u.k}}`;
+      return u.q > 1 ? `\\frac{${top}}{${u.q}}\\pi` : `${top}\\pi`;
+    }
     if (f.p === 0) return '0';
     if (f.q === 1) return (f.p === 1 ? '' : f.p) + '\\pi';
     return `\\frac{${f.p}}{${f.q}}\\pi`;
   };
   const coefPlain = (c) => {
+    if (isSym(c)) return symPlain(c.k);
     const f = toFrac(c);
-    if (!f) return `약 ${c.toFixed(2)}π`;
+    if (!f) {
+      const u = surd(c);
+      if (!u) return '…';
+      return `${u.s > 1 ? u.s : ''}√${u.k}π${u.q > 1 ? '/' + u.q : ''}`;
+    }
     if (f.p === 0) return '0';
     if (f.q === 1) return (f.p === 1 ? '' : f.p) + 'π';
     return `${f.p === 1 ? '' : f.p}π/${f.q}`;
   };
-  const arcEq = (r, th) => {
+  const arcEq = (r, th, sym) => {
+    if (sym) return `2\\pi\\times x\\times\\frac{${th}}{360}=${symTex(q2(th, 180))}`;
     const c = (r * th) / 180;
-    return toFrac(c)
-      ? `2\\pi\\times${rTxt(r)}\\times\\frac{${th}}{360}=${coefTex(c)}`
-      : `2\\pi\\times${r.toFixed(1)}\\times\\frac{${th}}{360}\\approx${c.toFixed(2)}\\pi`;
+    return `2\\pi\\times${rTexN(r)}\\times\\frac{${th}}{360}=${coefTex(c)}`;
   };
-  const sumTex = (coefs) => {
-    const total = coefs.reduce((t, c) => t + c, 0);
-    return coefs.map(coefTex).join('+') + (toFrac(total) ? '=' : '\\approx') + coefTex(total);
+  const q2 = (n, d) => { const g = gcd(n, d) || 1; return [n / g, d / g]; };
+  const rTexN = (r) => {
+    const f = toFrac(r);
+    if (f) return f.q === 1 ? String(f.p) : `\\frac{${f.p}}{${f.q}}`;
+    const u = surd(r);
+    if (!u) return '\\cdots';
+    const top = (u.s > 1 ? u.s : '') + `\\sqrt{${u.k}}`;
+    return u.q > 1 ? `\\frac{${top}}{${u.q}}` : top;
   };
-  const sumPlain = (coefs) => coefs.map(coefPlain).join(' + ') + ' = ' + coefPlain(coefs.reduce((t, c) => t + c, 0));
+  // 정수로 안 떨어지는 길이(대각선 등)는 제곱근 대신 문자 l(cm)로 둡니다. 그 호의 길이는 (중심각/180)·l·π 꼴.
+  class Sym { constructor(v, k) { this.v = v; this.k = k; } valueOf() { return this.v; } }
+  const isSym = (c) => c instanceof Sym;
+  const symTex = (k) => (k[1] === 1 ? (k[0] === 1 ? '' : k[0]) + 'x' + '\\' + 'pi' : '\\' + 'frac{' + (k[0] === 1 ? '' : k[0]) + 'x}{' + k[1] + '}' + '\\' + 'pi');
+  const symPlain = (k) => (k[1] === 1 ? (k[0] === 1 ? '' : k[0]) + 'xπ' : `(${k[0] === 1 ? '' : k[0]}x/${k[1]})π`);
+  function splitCoefs(coefs) {
+    let n = 0, kp = 0, kq = 1;
+    coefs.forEach((c) => {
+      if (isSym(c)) { kp = kp * c.k[1] + c.k[0] * kq; kq *= c.k[1]; const g = gcd(kp, kq) || 1; kp /= g; kq /= g; } else n += c;
+    });
+    return { n, k: kp ? [kp, kq] : null };
+  }
+  const totalTex = (coefs) => {
+    const sp = splitCoefs(coefs);
+    const a = sp.n ? coefTex(sp.n) : '';
+    return (a && sp.k ? a + '+' : a) + (sp.k ? symTex(sp.k) : '') || '0';
+  };
+  const totalPlain = (coefs) => {
+    const sp = splitCoefs(coefs);
+    const a = sp.n ? coefPlain(sp.n) : '';
+    return (a && sp.k ? a + ' + ' : a) + (sp.k ? symPlain(sp.k) : '') || '0';
+  };
+  const sumTex = (coefs) => coefs.map(coefTex).join('+') + (coefs.length > 1 ? '=' + totalTex(coefs) : (!isSym(coefs[0]) && toFrac(coefs[0]) !== null ? '=' + coefTex(coefs[0]) : ''));
+  const sumPlain = (coefs) => coefs.map(coefPlain).join(' + ') + (coefs.length > 1 || (coefs.length === 1 && !isSym(coefs[0])) ? ' = ' + totalPlain(coefs) : '');
+  const rOf = (rt) => (rt.sym ? 'x' : rTxt(rt.r));
   const rollPhrase = (N) => (N === 1 ? '한 번' : `${N}번`);
 
   /* ======================= 2. 도형 정의 ======================= */
@@ -80,7 +127,7 @@
     }),
     square: (c) => ({
       names: ['A', 'B', 'C', 'D'], pts: [[0, 0], [c.a, 0], [c.a, c.a], [0, c.a]],
-      lens: { 0: c.a }, diags: [], ticks: [1, 1, 1, 1], rights: [0, 1, 2, 3], angles: []
+      lens: { 0: c.a }, diags: [{ a: 1, b: 3, v: c.a * Math.SQRT2, sym: true }], ticks: [1, 1, 1, 1], rights: [0, 1, 2, 3], angles: []
     }),
     // 직각삼각형: ∠C=90°, ∠B=β(기본 60°), BC=a, AB=a/cosβ (교과서 연습문제 2-2: β=60° → AB=2a)
     rtri: (c) => {
@@ -147,7 +194,8 @@
       const phi0 = Math.atan2(cur[T].y - c.y, cur[T].x - c.x);
       const next = cur.map((p) => rotCW(p, c, th * D2R));
       const arc = r > 1e-9 ? arcN++ : -1;
-      rots.push({ i, kind: 'pivot', pivot: pv, pname: sh.names[pv], C: c, theta: th, r, phi0, arc, coef: (r * th) / 180, dur: 1 });
+      const sym = r > 1e-9 && toFrac(r) === null; // 정수·분수로 안 떨어지는 반지름(대각선): 문자 l 로 둡니다
+      rots.push({ i, kind: 'pivot', pivot: pv, pname: sh.names[pv], C: c, theta: th, r, phi0, arc, sym, coef: sym ? new Sym((r * th) / 180, q2(th, 180)) : (r * th) / 180, dur: 1 });
       states.push(next);
       cur = next;
     }
@@ -257,12 +305,13 @@
       if (rt.kind === 'roll') {
         L.push({
           type: 'arc', arc: rt.arc, rot: rt.i,
-          text: `${JAMO[rt.arc]} 반원이 둥근 부분으로 굴러가는 동안 점 ${T}는 가로로 곧게 움직인다. 움직인 거리는 굴러간 호의 길이와 같다. 반지름 ${rTxt(rt.r)} cm, 중심각 ${rt.theta}°인 호이므로 $${arcEq(rt.r, rt.theta)}$ (cm)`
+          text: `${JAMO[rt.arc]} 반원이 둥근 부분으로 굴러가는 동안 점 ${T}는 가로로 곧게 움직인다. 움직인 거리는 굴러간 호의 길이와 같다. 반지름 ${rOf(rt)} cm, 중심각 ${rt.theta}°인 호이므로 $${arcEq(rt.r, rt.theta, rt.sym)}$ (cm)`
         });
       } else if (rt.arc >= 0) {
         const adj = ((M.T - rt.pivot + M.n) % M.n === 1) || ((rt.pivot - M.T + M.n) % M.n === 1);
         const seg = [T, P].sort().join('');
-        let why = `반지름은 점 ${T}와 회전의 중심 ${P} 사이의 거리 $\\overline{${seg}}$=${rTxt(rt.r)} cm`;
+        let why = `반지름은 점 ${T}와 회전의 중심 ${P} 사이의 거리 $\\overline{${seg}}$=${rt.sym ? 'x' : rTxt(rt.r)} cm`;
+        if (rt.sym) why += `(선분 ${seg}의 길이를 x cm라 해요)`;
         if (spec.shape !== 'semi') {
           if (!adj && spec.shape === 'rect') why += '(직사각형의 대각선, 두 대각선의 길이는 같다)';
           else if (!adj) why += '(대각선)';
@@ -274,13 +323,13 @@
             : `${why}, 중심각은 180° − ${M.interior[rt.pivot]}° = ${rt.theta}°`;
         L.push({
           type: 'arc', arc: rt.arc, rot: rt.i,
-          text: `${JAMO[rt.arc]} 점 ${P}를 중심으로 회전한다. ${mid}이므로 $${arcEq(rt.r, rt.theta)}$ (cm)`
+          text: `${JAMO[rt.arc]} 점 ${P}를 중심으로 회전한다. ${mid}이므로 $${arcEq(rt.r, rt.theta, rt.sym)}$ (cm)`
         });
       } else {
         L.push({ type: 'still', rot: rt.i, text: `(참고) 점 ${P}를 중심으로 회전할 때는 점 ${T}가 회전의 중심이라 움직이지 않는다. 호가 생기지 않으니 더하지 않는다.` });
       }
     });
-    L.push({ type: 'total', text: `따라서 점 ${T}가 움직인 거리는 ${names.join(' + ')} = $${sumTex(arcs.map((a) => a.coef))}$ (cm)` });
+    L.push({ type: 'total', text: `따라서 점 ${T}가 움직인 거리는 ${names.join(' + ')} = $${sumTex(arcs.map((a) => a.coef))}$ (cm)` + (arcs.some((a) => a.sym) ? ' (x: 대각선의 길이)' : '') });
     return L;
   }
 
@@ -338,7 +387,7 @@
     const outline = (pos) => pos.slice(0, n);
     const cen = (pos) => { const o = outline(pos); return { x: o.reduce((t, p) => t + p.x, 0) / o.length, y: o.reduce((t, p) => t + p.y, 0) / o.length }; };
     const away = (p, c, px) => { const dx = p.x - c.x, dy = p.y - c.y, l = Math.hypot(dx, dy) || 1; return { dx: (dx / l) * px, dy: (-dy / l) * px }; };
-    const cm = (v) => (toFrac(v) ? `${rTxt(v)} cm` : `≈${v.toFixed(1)} cm`);
+    const cm = (v) => `${rTxt(v)} cm`;
     const arcAt = (C, r, phi0, sweep, o) => {
       if (FIG) b.arc(P(C), r, -phi0, -phi0 + sweep, o);
       else b.arc(P(C), r, phi0, phi0 - sweep, { ...o, cw: true });
@@ -387,7 +436,7 @@
       if (diag) sh.diags.forEach((d) => {
         b.seg(P(pos[d.a]), P(pos[d.b]), { color: 'muted', width: 1.6, dash: [4, 4], alpha: 0.9 });
         const m = { x: (pos[d.a].x + pos[d.b].x) / 2, y: (pos[d.a].y + pos[d.b].y) / 2 };
-        label(m, cm(d.v), { dx: 18, dy: -11, size: FS.len, color: 'muted', weight: 800 });
+        label(m, [`대각선 ${sh.names[d.a]}${sh.names[d.b]}`, `= ${d.sym ? 'x' : rTxt(d.v)} cm`], { dx: 30, dy: -11, size: FS.len, color: 'muted', weight: 800 });
       });
     };
 
@@ -492,7 +541,7 @@
         const c = colOf(rt), live = fr < 1 ? Math.round(rt.theta * fr) : rt.theta;
         if (rt.kind === 'roll') {
           const mid = { x: rt.C.x + (rt.len * fr) / 2, y: rt.C.y };
-          label(mid, `r=${rTxt(rt.r)}  ${live}°`, { dy: 18, color: c, size: FS.sec, part: rt.arc });
+          label(mid, `r=${rOf(rt)}  ${live}°`, { dy: 18, color: c, size: FS.sec, part: rt.arc });
           return;
         }
         const m = rt.phi0 - (rt.theta * D2R) / 2;
@@ -501,7 +550,7 @@
         const rho = inside ? rhoPx / kpx : rt.r;
         const anchor = { x: rt.C.x + rho * Math.cos(m), y: rt.C.y + rho * Math.sin(m) };
         const ox = inside ? 0 : Math.cos(m) * 34, oy = inside ? 0 : -Math.sin(m) * 34;
-        label(anchor, `r=${rTxt(rt.r)}`, { dx: ox, dy: oy - 9, color: c, size: FS.sec, part: rt.arc });
+        label(anchor, `r=${rOf(rt)}`, { dx: ox, dy: oy - 9, color: c, size: FS.sec, part: rt.arc });
         label(anchor, `${live}°`, { dx: ox, dy: oy + 9, color: c, size: FS.sec, part: rt.arc });
         if (rt.r * kpx >= 44) { // 중심각 표시(중심 가까이에 작은 호)
           const S = b.toS(P(rt.C));
@@ -569,7 +618,7 @@
           b.handle('size' + j, P(M.states[0][idx]), {
             color: 'sky', ariaLabel: '도형 모양 바꾸기 손잡이', priority: 1,
             drag: (w) => {
-              const y = FIG ? -w.y : w.y, patch = h.patch(w.x, y, st.cfg), nc = { ...st.cfg, ...patch };
+              const y = FIG ? -w.y : w.y, patch = h.patch(w.x, y, st.cfg), nc = fixCfg(spec, { ...st.cfg, ...patch }, Object.keys(patch)[0]);
               if (Object.keys(patch).some((k) => nc[k] !== st.cfg[k])) { st.cfg = nc; syncSliders(spec, st); cfgChanged(st); }
             }
           });
@@ -616,7 +665,7 @@
     const ch = choicesOf(spec, s);
     const A = window.APLab;
     let html = '<div class="rl-prob">';
-    if (cfg !== s.cfg) html += '<div class="apl-callout" data-tone="info"><div>지금 조절한 그림은 길이가 깔끔하게 떨어지지 않아서(√가 필요해요), 기본 그림으로 문제를 보여 줘요. 숫자 바꾸기를 눌러 새 문제를 만들 수도 있어요.</div></div>';
+    if (cfg !== s.cfg) html += '<div class="apl-callout" data-tone="info"><div>지금 조절한 그림은 길이가 깔끔하게 떨어지지 않아서(대각선이 정수가 아니에요), 기본 그림으로 문제를 보여 줘요. 새 문제를 눌러 다른 문제를 만들 수도 있어요.</div></div>';
     html += `<p class="rl-stmt">${spec.statement(cfg, M)}</p>`;
     if (ch.opts) {
       html += '<div class="rl-choices">';
@@ -739,12 +788,19 @@
       id: 'rl-rect', shape: 'rect', title: '직사각형을 굴릴 때 점이 움직인 거리', short: '직사각형 (예제)',
       base: { w: 3, h: 4, track: 0, rolls: 3 }, baseChoices: null,
       sliders: [
-        { param: 'rlW', key: 'w', min: 2, max: 8, step: 1, label: 'AB의 길이', fmt: (v) => `${Math.round(v)} cm` },
-        { param: 'rlH', key: 'h', min: 2, max: 8, step: 1, label: 'AD의 길이', fmt: (v) => `${Math.round(v)} cm` }
+        { param: 'rlW', key: 'w', min: 2, max: 8, step: 1, label: 'AB의 길이', fmt: (v) => `${Math.round(v)} cm`, hint: '대각선이 자연수가 되는 직사각형만 골라져요' },
+        { param: 'rlH', key: 'h', min: 2, max: 8, step: 1, label: 'AD의 길이', fmt: (v) => `${Math.round(v)} cm`, hint: '대각선이 자연수가 되는 직사각형만 골라져요' }
       ],
+      fix: (nc, key) => {
+        if (PAIRS_RECT.some((z) => z[0] === nc.w && z[1] === nc.h)) return nc;
+        const oth = key === 'w' ? 'h' : 'w';
+        let best = null, bc = Infinity;
+        PAIRS_RECT.forEach((z) => { const zz = { w: z[0], h: z[1] }, c = Math.abs(zz[key] - nc[key]) * 10 + Math.abs(zz[oth] - nc[oth]); if (c < bc) { bc = c; best = zz; } });
+        return { ...nc, ...best };
+      },
       hdls: [{ i: 2, patch: (x, y) => ({ w: clamp(Math.round(x), 2, 8), h: clamp(Math.round(y), 2, 8) }) }],
       question: '직사각형 ABCD를 직선 l 위에서 회전시키면 점 A는 어떤 길을 따라 움직일까? 그 길이는 얼마일까?',
-      guide: (M) => `<b>굴리기</b>를 눌러 직사각형이 직선 <i>l</i> 위를 굴러가는 모습을 보세요. 한 번 회전할 때마다 직사각형은 한 꼭짓점(<b>회전의 중심</b>)을 중심으로 90°씩 돌아가고, 점 ${M.names[M.T]}는 그 중심을 중심으로 하는 <b>부채꼴의 호</b>를 그려요. AB, AD의 길이를 바꾸면 반지름과 합이 바로 다시 계산돼요. 대각선(BD)이 정수가 아니면 &lsquo;≈&rsquo;로 표시돼요.` + GUIDE_TAIL,
+      guide: (M) => `<b>굴리기</b>를 눌러 직사각형이 직선 <i>l</i> 위를 굴러가는 모습을 보세요. 한 번 회전할 때마다 직사각형은 한 꼭짓점(<b>회전의 중심</b>)을 중심으로 90°씩 돌아가고, 점 ${M.names[M.T]}는 그 중심을 중심으로 하는 <b>부채꼴의 호</b>를 그려요. AB, AD의 길이를 바꾸면 반지름과 합이 바로 다시 계산돼요. 대각선(BD)이 자연수가 되는 직사각형만 골라져요.` + GUIDE_TAIL,
       statement: (c) => `오른쪽 그림과 같이 직사각형 ABCD를 직선 $l$ 위에서 회전시켰다. ${len('A', 'B', c.w)}, ${len('A', 'D', c.h)}, ${len('B', 'D', Math.hypot(c.w, c.h))}일 때, 점 ${'ABCD'[c.track]}가 움직인 거리를 구하시오.`,
       reroll: (cur, rng) => {
         const z = pick(rng, [[3, 4], [4, 3], [6, 8], [8, 6]].filter((q) => !(q[0] === cur.w && q[1] === cur.h)));
@@ -773,11 +829,12 @@
       base: { a: 3, beta: 60, track: 0, rolls: 2 }, baseChoices: [6, 6.5, 7, 7.5, 8].map(numOpt),
       sliders: [
         { param: 'rlRa', key: 'a', min: 2, max: 6, step: 1, label: 'BC의 길이', fmt: (v) => `${Math.round(v)} cm` },
-        { param: 'rlRb', key: 'beta', min: 30, max: 75, step: 5, label: '∠ABC의 크기', fmt: (v) => `${Math.round(v)}°` }
+        { param: 'rlRb', key: 'beta', min: 30, max: 75, step: 5, label: '∠ABC의 크기', fmt: (v) => `${Math.round(v)}°`, hidden: true }
       ],
-      hdls: [{ i: 1, patch: (x) => ({ a: clamp(Math.round(x), 2, 6) }) }, { i: 2, patch: (x, y, c) => ({ beta: clamp(rd(Math.atan2(y, c.a) / D2R, 5), 30, 75) }) }],
+      fix: (nc) => ({ ...nc, beta: 60 }),
+      hdls: [{ i: 1, patch: (x) => ({ a: clamp(Math.round(x), 2, 6) }) }],
       question: '직각삼각형은 꼭짓점마다 내각이 달라요. 돌아가는 각(중심각)도 달라질까?',
-      guide: (M) => `직각삼각형은 꼭짓점마다 내각이 달라서 돌아가는 각도 달라요. ` + M.names.map((nm, i) => `점 ${nm}를 중심으로는 ${rTxt(M.ext[i])}°`).join(', ') + ` 돌아가요. BC의 길이와 ∠ABC의 크기를 바꾸면 반지름과 중심각이 바로 다시 계산돼요.` + GUIDE_TAIL,
+      guide: (M) => `직각삼각형은 꼭짓점마다 내각이 달라서 돌아가는 각도 달라요. ` + M.names.map((nm, i) => `점 ${nm}를 중심으로는 ${rTxt(M.ext[i])}°`).join(', ') + ` 돌아가요. 조건: ∠ABC = 60° (빗변 AB = 2×BC)예요. BC의 길이를 바꾸면 반지름과 중심각이 바로 다시 계산돼요.` + GUIDE_TAIL,
       statement: (c) => `다음 그림과 같이 직각삼각형 ABC를 직선 $l$ 위에서 회전시켰다. ${len('A', 'B', rTxt(c.a / Math.cos(c.beta * D2R)))}, ${len('B', 'C', c.a)}, $\\angle \\mathrm{ABC}=${c.beta}^\\circ$일 때, 점 B가 움직인 거리는?`,
       reroll: (cur, rng) => ({ a: pick(rng, [2, 3, 4, 6].filter((x) => x !== cur.a)), beta: 60, track: 0, rolls: 2 }),
       chips: () => [], trackChips: true, rollChips: 3,
@@ -813,7 +870,7 @@
       sliders: [{ param: 'rlS', key: 'a', min: 2, max: 8, step: 1, label: '한 변의 길이', fmt: (v) => `${Math.round(v)} cm` }],
       hdls: [{ i: 2, patch: (x, y) => ({ a: clamp(Math.round((x + y) / 2), 2, 8) }) }],
       question: '정사각형을 회전시킬 때, 점 C가 회전의 중심이 되면 점 C는 어떻게 될까?',
-      guide: (M) => `정사각형은 한 번 회전할 때마다 90°씩 돌아가요. 점 ${M.names[M.T]}가 회전의 중심이 되는 때에는 움직이지 않아요. 점 A나 D를 골라 보면 <b>대각선</b>이 반지름이 되는 호도 나타나요(그 길이는 중3에서 배우는 √ 가 필요해 &lsquo;≈&rsquo;로 표시돼요).` + GUIDE_TAIL,
+      guide: (M) => `정사각형은 한 번 회전할 때마다 90°씩 돌아가요. 점 ${M.names[M.T]}가 회전의 중심이 되는 때에는 움직이지 않아요. 점 A나 D를 골라 보면 <b>대각선</b>이 반지름이 되는 호도 나타나요. 정사각형의 대각선은 자연수가 될 수 없어서 길이를 <b>x cm</b>라 두고 식으로 써요.` + GUIDE_TAIL,
       statement: (c) => `한 변의 길이가 ${c.a} cm인 정사각형 ABCD를 직선 $l$ 위에서 오른쪽으로 ${rollPhrase(c.rolls)} 회전시켰을 때, 점 ${'ABCD'[c.track]}가 움직인 거리는?`,
       reroll: (cur, rng) => {
         const combo = pick(rng, [[2, 3], [2, 3], [2, 2], [0, 1], [1, 2], [2, 1]]);
@@ -837,11 +894,14 @@
       }
     }
   };
+  /** 막대를 끌었을 때: 대각선(빗변)이 자연수가 되는 조합만 허용. 끈 막대를 우선해 가장 가까운 허용 조합으로 맞춥니다. */
+  const fixCfg = (spec, nc, key) => (spec.fix ? spec.fix(nc, key) : nc);
+  const PAIRS_RECT = [[3, 4], [4, 3], [6, 8], [8, 6]];
   SPECS.forEach((spec) => (spec.sliders || []).forEach((sl) => {
     if (PARAMS[sl.param]) return;
     PARAMS[sl.param] = {
       value: spec.base[sl.key], min: sl.min, max: sl.max, step: sl.step, color: 'sky', label: sl.label, hint: sl.hint, format: sl.fmt,
-      onInput: (s) => { s.cfg = { ...s.cfg, [sl.key]: s[sl.param] }; cfgChanged(s); } // 반지름·합·풀이·문제가 바로 다시 계산됩니다
+      onInput: (s) => { s.cfg = fixCfg(spec, { ...s.cfg, [sl.key]: s[sl.param] }, sl.key); syncSliders(spec, s); cfgChanged(s); } // 반지름·합·풀이·문제가 바로 다시 계산됩니다
     };
   }));
   function ensureParams(lab) {
@@ -882,7 +942,7 @@
         resetRun(s, !!(lab && s === lab.s));
         syncSliders(spec, s);
       },
-      controls: () => ['rlT'].concat((spec.sliders || []).map((sl) => sl.param)),
+      controls: () => ['rlT'].concat((spec.sliders || []).filter((sl) => !sl.hidden).map((sl) => sl.param)),
       presets: (s) => {
         const cfg = s.cfg || spec.base, M = buildModel(spec, cfg), out = [];
         if (spec.trackChips) {
@@ -928,7 +988,7 @@
         const M = sc.M, N = M.N, T = M.names[M.T];
         const arcFr = (rt) => sc.fracs[rt.i];
         const done = M.arcs.filter((rt) => arcFr(rt) >= 1 - 1e-9);
-        const dist = M.arcs.reduce((t, rt) => t + Math.PI * rt.coef * arcFr(rt), 0);
+        const partial = M.arcs.some((rt) => arcFr(rt) > 1e-9 && arcFr(rt) < 1 - 1e-9); // 도는 중에는 깨끗한 π 꼴이 안 나오므로 「…」
         const i = Math.min(sc.k, N - 1), rt = M.rots[i], P = rt.pname;
         const finished = sc.k >= N;
         const live = finished ? rt.theta : Math.round(rt.theta * sc.f);
@@ -937,13 +997,13 @@
         const reads = [
           { label: '지금 회전하는 중', value: sc.u <= 0 ? `${N}번 중 0번` : finished ? `${N}번 중 ${N}번 (끝)` : `${N}번 중 ${sc.k + 1}번째`, note: roll ? '반원이 둥근 부분으로 굴러가요' : `회전의 중심: 점 ${P}`, color: 'amber' },
           rt.arc >= 0
-            ? { label: roll ? '반지름 r (굴러가는 호)' : `반지름 r (점 ${T}~점 ${P})`, value: `${toFrac(rt.r) ? rTxt(rt.r) : '약 ' + rTxt(rt.r)} cm`, note: `${JAMO[rt.arc]}의 반지름`, color: col }
+            ? { label: roll ? '반지름 r (굴러가는 호)' : `반지름 r (점 ${T}~점 ${P})`, value: `${rOf(rt)} cm`, note: `${JAMO[rt.arc]}의 반지름`, color: col }
             : { label: `반지름 r (점 ${T}~점 ${P})`, value: '0 cm', note: `점 ${T}가 회전의 중심 → 움직이지 않아요`, color: 'muted' },
           { label: '중심각', value: rt.arc >= 0 ? `${live}°` : '—', note: rt.arc >= 0 ? (roll ? `굴러간 호의 중심각 (끝나면 ${rt.theta}°)` : `돌아가는 각 (끝나면 ${rt.theta}°)`) : '호가 없어요', color: col },
-          { label: `지금까지 점 ${T}가 움직인 거리`, value: `${dist.toFixed(2)} cm`, note: done.length ? `끝난 부분의 합 = ${sumPlain(done.map((d) => d.coef))}` : '아직 끝난 부분이 없어요', color: 'rose', wide: true }
+          { label: `지금까지 점 ${T}가 움직인 거리`, value: partial ? '… cm' : done.length ? `${totalPlain(done.map((d) => d.coef))} cm` : '0 cm', note: done.length ? `끝난 부분의 합 = ${sumPlain(done.map((d) => d.coef))}` : '아직 끝난 부분이 없어요', color: 'rose', wide: true }
         ];
         const parts = M.arcs.map((a) => ({
-          id: a.arc, name: `${JAMO[a.arc]} 반지름 ${rTxt(a.r)} cm · 중심각 ${a.theta}°`, desc: a.kind === 'roll' ? '굴러가는 동안 가로로 곧게 움직인 거리' : `점 ${a.pname}가 중심`, value: coefPlain(a.coef), color: ARC_COL[a.arc % ARC_COL.length]
+          id: a.arc, name: `${JAMO[a.arc]} 반지름 ${rOf(a)} cm · 중심각 ${a.theta}°`, desc: a.kind === 'roll' ? '굴러가는 동안 가로로 곧게 움직인 거리' : `점 ${a.pname}가 중심`, value: coefPlain(a.coef), color: ARC_COL[a.arc % ARC_COL.length]
         }));
         // 띠(움직인 거리를 한 줄로 이어 붙인 모양)
         const segsOf = (fracOf) => M.arcs.filter((a) => fracOf(a) > 0).map((a) => ({

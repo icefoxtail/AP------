@@ -53,9 +53,9 @@
     return hasC ? ftex(v.c) : '0';
   }
   const num = (x) => String(Math.round(x * 100) / 100);
-  // 반지름 표기: 정수·소수(.5)는 그대로, 그 밖의 분수는 괄호
-  const rt = (r) => (r.d === 1 ? String(r.n) : r.d === 2 ? String(r.n / 2) : `(${r.n}/${r.d})`);
-  const rtex = (r) => (r.d === 1 ? String(r.n) : r.d === 2 ? String(r.n / 2) : `\\left(${ftex(r)}\\right)`);
+  // 반지름 표기: 정수는 그대로, 분수는 소수 없이 괄호 안의 분수로 (3/2)
+  const rt = (r) => (r.d === 1 ? String(r.n) : `(${r.n}/${r.d})`);
+  const rtex = (r) => (r.d === 1 ? String(r.n) : `\\left(${ftex(r)}\\right)`);
   const sq = (r) => fmul(r, r);
 
   /* ======================= 기하 도우미 (수학 좌표, y 위쪽) ======================= */
@@ -345,11 +345,9 @@
     const tri = { id: 'tri', name: '△ABC', sign: 1, pts: [B, C, A], area: V(ZERO, fr(p * q, 2)), aExpr: `½×${p}×${q}`, aTex: `\\frac12\\times ${p}\\times ${q}` };
     const sBC = {
       id: 'bc', name: '반원 BC', sign: -1, pts: halfArc(c / 2, 0, c / 2, PI / 2), area: V(fr(c2, 8)),
-      aExpr: cInt ? `π×${num(c / 2)}²×½` : 'π×($\\frac{BC}{2}$)²×½',
-      aTex: cInt ? `\\pi\\times ${num(c / 2)}^2\\times\\frac12` : '\\pi\\times\\left(\\frac{\\overline{BC}}{2}\\right)^2\\times\\frac12'
+      aExpr: cInt ? `π×${rt(fr(c, 2))}²×½` : 'π×($\\frac{BC}{2}$)²×½',
+      aTex: cInt ? `\\pi\\times ${rtex(fr(c, 2))}^2\\times\\frac12` : '\\pi\\times\\left(\\frac{\\overline{BC}}{2}\\right)^2\\times\\frac12'
     };
-    sAB.aExpr = `π×${num(p / 2)}²×½`; sAB.aTex = `\\pi\\times ${num(p / 2)}^2\\times\\frac12`;
-    sAC.aExpr = `π×${num(q / 2)}²×½`; sAC.aTex = `\\pi\\times ${num(q / 2)}^2\\times\\frac12`;
     sAB.arc = null; sAC.arc = null;
     const alA = Math.atan2(A[1], A[0] - c / 2);
     const m = { kind: 'LUNE', P, items: [sAB, sAC, tri, sBC], order: ['ab', 'ac', 'tri', 'bc'], hasArc: false, A, B, C, c, cInt };
@@ -370,7 +368,7 @@
       const l1 = inside(A, B, C, 26), l2 = inside(A, C, B, 26), l3 = inside(B, C, A, 18);
       G.text(l1[0], l1[1], `${p} cm`, { color: 'amber', alpha: Al });
       G.text(l2[0], l2[1], `${q} cm`, { color: 'amber', alpha: Al });
-      G.text(l3[0], l3[1], cInt ? `${c} cm` : `√${c2} cm`, { color: 'amber', alpha: Al });
+      G.text(l3[0], l3[1], cInt ? `BC = ${c} cm` : 'BC', { color: 'amber', alpha: Al });
     };
     m.extra = (G, st) => {
       const f = st.flags || {};
@@ -654,7 +652,7 @@
     const pdefs = {};
     const uKey = gid(spec.id, 'u');
     const defs = [...spec.params, { k: 'u', label: '조각 나누기 ↔ 합치기', min: 0, max: 1, step: 0.01, value: 0, color: 'green', hint: '오른쪽으로 갈수록 조각이 가로로 갈라져 늘어섭니다', fmt: (v) => (v < 0.03 ? '합친 모양' : v > 0.97 ? '모두 나눔' : `${Math.round(v * 100)}%`) }];
-    defs.forEach((d) => { pdefs[gid(spec.id, d.k)] = { value: d.value, min: d.min, max: d.max, step: d.step, color: d.color || 'amber', label: d.label, hint: d.hint, format: d.fmt ? (v) => d.fmt(v) : (v) => `${num(v)}${d.unit || ''}` }; });
+    defs.forEach((d) => { pdefs[gid(spec.id, d.k)] = { value: d.value, min: d.min, max: d.max, step: d.step, color: d.color || 'amber', label: d.label, hint: d.hint, format: d.fmt ? (v) => d.fmt(v) : (v) => `${num(v)}${d.unit || ''}`, onInput: spec.fixP && d.k !== 'u' ? (s) => { const raw = {}; defs.forEach((x) => { raw[x.k] = s[gid(spec.id, x.k)]; }); const F = spec.fixP(raw, d.k); Object.keys(F).forEach((k) => { s[gid(spec.id, k)] = F[k]; }); } : undefined }; });
     // explore=false 이면 '돌리는 중'(sw)은 항상 끝(1)으로 읽어, 정리·문제의 그림과 식이 막대 위치에 흔들리지 않게 합니다.
     spec.read = (s, explore) => {
       const P = {};
@@ -663,7 +661,7 @@
         P[d.k] = v == null ? d.value : +(Math.round(v / d.step) * d.step).toFixed(6);
       });
       if (!explore && 'sw' in P) P.sw = 1;
-      return P;
+      return spec.fixP ? spec.fixP(P) : P;
     };
     const memo = { key: '', m: null };
     const buildCached = (P) => { const key = JSON.stringify(P); if (memo.key !== key) { memo.key = key; memo.m = spec.buildRaw(P); } return memo.m; };
@@ -719,7 +717,7 @@
       ],
       actions: () => [
         { id: 'play', play: true, primary: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '멈춤' : spec.playLabel || '조각 나누기 재생'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; if (s.playing) { const pk = gid(spec.id, spec.playKey || 'u'); if (s[pk] >= 0.995) { s[pk] = 0; s.f02dir = 1; s.f02hold = 0; } } } },
-        { id: 'reroll', icon: 'reset', label: '숫자 바꾸기', run: (s, lab) => reroll(s, lab) }
+        { id: 'reroll', icon: 'reset', label: '숫자 바꿔 보기', run: (s, lab) => reroll(s, lab) }
       ],
       tick: (s, dt, lab) => {
         if (s.f02sid !== spec.id) return false;
@@ -829,7 +827,7 @@
     view: (P, m, st) => {
       const Q = m.byId.sec.area;
       return {
-        guide: `반원을 점 <b>A</b>를 중심으로 <b>${P.th}°</b> 돌렸어요. <b>B′ 손잡이</b>를 끌어 보세요. 색칠한 부분(<span style="color:var(--m-sky)">파란색</span>)의 넓이가 어떻게 달라지나요? 아래 막대로 조각을 가로로 떼어 놓을 수도 있어요.<br><span style="opacity:.8">초록 = 더하는 조각(+), 분홍 = 빼는 조각(−)</span>`,
+        guide: `반원을 점 <b>A</b>를 중심으로 <b>${P.th}°</b> 돌렸어요. <b>B′ 손잡이</b>를 끌어 보세요. 색칠한 부분(<span style="color:var(--m-sky)">파란색</span>)의 넓이가 어떻게 달라지나요? 막대로 조각을 가로로 떼어 놓을 수도 있어요.<br><span style="opacity:.8">초록 = 더하는 조각(+), 분홍 = 빼는 조각(−)</span>`,
         readouts: [
           { label: '색칠한 부분의 넓이', value: `${vplain(m.area)} cm²`, color: 'sky', note: '= 부채꼴 ABB′의 넓이' },
           { label: '부채꼴 ABB′', value: `반지름 ${2 * P.r} cm, 중심각 ${P.th}°`, color: 'amber', wide: true },
@@ -1002,13 +1000,22 @@
     id: 'lune13', title: '직각삼각형 세 변 위의 반원', short: '초승달 두 개', tag: '교재 문제',
     question: '직각삼각형 세 변을 지름으로 하는 반원을 그리면, 색칠한 두 초승달의 넓이는 얼마일까요?',
     params: [
-      { k: 'p', label: '변 AB의 길이', min: 2, max: 12, step: 1, value: 4, color: 'amber', unit: ' cm' },
-      { k: 'q', label: '변 CA의 길이', min: 2, max: 12, step: 1, value: 3, color: 'amber', unit: ' cm' }
+      { k: 'p', label: '변 AB의 길이', min: 2, max: 12, step: 1, value: 4, color: 'amber', unit: ' cm', hint: '빗변 BC가 자연수가 되는 직각삼각형만 골라져요' },
+      { k: 'q', label: '변 CA의 길이', min: 2, max: 12, step: 1, value: 3, color: 'amber', unit: ' cm', hint: '빗변 BC가 자연수가 되는 직각삼각형만 골라져요' }
     ],
+    // 빗변이 정수(3·4·5, 6·8·10, 5·12·13, 9·12·15)가 되는 두 변만 허용. 끈 막대를 우선해 가장 가까운 조합으로 맞춥니다.
+    fixP: (P, key) => {
+      const pairs = [[3, 4], [4, 3], [6, 8], [8, 6], [5, 12], [12, 5], [9, 12], [12, 9]];
+      if (pairs.some((z) => z[0] === P.p && z[1] === P.q)) return P;
+      const oth = key === 'p' ? 'q' : 'p';
+      let best = null, bc = Infinity;
+      pairs.forEach((z) => { const zz = { p: z[0], q: z[1] }, c = Math.abs(zz[key || 'p'] - P[key || 'p']) * (key ? 10 : 1) + Math.abs(zz[oth] - P[oth]); if (c < bc) { bc = c; best = zz; } });
+      return { ...P, ...best };
+    },
     hasArc: false,
     snap: { p: 4, q: 3 },
     rolls: [{ p: 4, q: 3 }, { p: 6, q: 8 }, { p: 5, q: 12 }, { p: 12, q: 9 }, { p: 8, q: 6 }, { p: 9, q: 12 }],
-    examples: [{ label: '4, 3 (교재)', set: { p: 4, q: 3 } }, { label: '6, 8', set: { p: 6, q: 8 } }, { label: '5, 12', set: { p: 5, q: 12 } }, { label: '4, 4 (이등변)', set: { p: 4, q: 4 } }],
+    examples: [{ label: '4, 3 (교재)', set: { p: 4, q: 3 } }, { label: '6, 8', set: { p: 6, q: 8 } }, { label: '5, 12', set: { p: 5, q: 12 } }, { label: '9, 12', set: { p: 9, q: 12 } }],
     buildRaw: buildLUNE,
     view: (P, m, st) => {
       const tri = m.byId.tri.area;

@@ -216,7 +216,7 @@
       }
       const g = M.g, pkk = M.pick == null ? null : PERMS[M.pick], ok = pkk ? orderOK(g, pkk) : null;
       return {
-        guide: '위의 칩에서 <b>△ABC ≡ △○○○</b>의 순서를 골라 보세요. 맞으면 초록, 틀리면 어떤 변이 안 맞는지 알려 줘요. 변의 길이가 그림 안에 적혀 있어요.',
+        guide: '칩에서 <b>△ABC ≡ △○○○</b>의 순서를 골라 보세요. 맞으면 초록, 틀리면 어떤 변이 안 맞는지 알려 줘요. 변의 길이가 그림 안에 적혀 있어요.',
         readouts: [rd('세 변', `${g.c}, ${g.a}, ${g.b}`, 'sky', 'AB, BC, CA'), rd('고른 순서', pkk ? `△ABC ≡ △${permName(pkk)}` : '아직 안 골랐어요', ok == null ? 'ink' : ok ? 'green' : 'rose')],
         status: ok == null ? { tone: 'info', text: '순서를 골라 보세요' } : ok ? { tone: 'ok', text: '대응 순서가 맞아요' } : { tone: 'warn', text: '대응 순서가 틀렸어요' },
         rule: '합동인 두 삼각형은 대응하는 꼭짓점의 순서대로 쓴다  △ABC ≡ △DEF',

@@ -14,19 +14,19 @@
 
   const PARAMS = {
     soT: P('돌리는 각도', 0, 1, 0.005, 0.4, { color: 'amber', hint: '오른쪽으로 끌면 평면도형이 축을 따라 한 바퀴 돌아요', format: (v) => Math.round(v * 360) + '°' }),
-    soR: P('반지름 r', 1, 6, 1, 3, { color: 'sky', hint: '그림의 노란 점을 끌어도 돼요', format: (v) => Math.round(v) + ' cm' }),
-    soH1: P('높이 h', 2, 8, 1, 5, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
-    soA: P('밑변 BC', 2, 6, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
-    soB: P('높이 AB', 2, 6, 1, 4, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
-    soRB: P('아랫변', 2, 7, 1, 4, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
-    soRT: P('윗변', 1, 6, 1, 2, { color: 'amber', hint: '아랫변보다 짧아야 사다리꼴이에요', format: (v) => Math.round(v) + ' cm' }),
-    soW: P('직사각형의 너비', 1, 4, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
-    soD: P('축에서 떨어진 거리', 0, 4, 1, 2, { color: 'rose', hint: '그림의 노란 점을 가로로 끌어도 돼요', format: (v) => Math.round(v) + ' cm' }),
+    soR: P('반지름 r', 1, 15, 1, 3, { color: 'sky', hint: '그림의 노란 점을 끌어도 돼요', format: (v) => Math.round(v) + ' cm' }),
+    soH1: P('높이 h', 2, 20, 1, 5, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
+    soA: P('밑변 BC', 2, 15, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
+    soB: P('높이 AB', 2, 20, 1, 4, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
+    soRB: P('아랫변', 2, 15, 1, 4, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
+    soRT: P('윗변', 1, 14, 1, 2, { color: 'amber', hint: '아랫변보다 짧아야 사다리꼴이에요', format: (v) => Math.round(v) + ' cm' }),
+    soW: P('직사각형의 너비', 1, 15, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
+    soD: P('축에서 떨어진 거리', 0, 15, 1, 2, { color: 'rose', hint: '그림의 노란 점을 가로로 끌어도 돼요', format: (v) => Math.round(v) + ' cm' }),
     soK: P('삼각형의 크기', 1, 2, 1, 1, { color: 'sky', format: (v) => (Math.round(v) === 1 ? '3-4-5 (1배)' : '6-8-10 (2배)') }),
-    soVR: P('큰 반지름', 2, 6, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
-    soVr: P('작은 반지름', 1, 5, 1, 2, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
-    soV1: P('아래 부분의 높이', 2, 6, 1, 3, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
-    soV2: P('위 부분의 높이', 1, 5, 1, 2, { color: 'rose', format: (v) => Math.round(v) + ' cm' }),
+    soVR: P('큰 반지름', 2, 15, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
+    soVr: P('작은 반지름', 1, 14, 1, 2, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
+    soV1: P('아래 부분의 높이', 2, 20, 1, 3, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
+    soV2: P('위 부분의 높이', 1, 20, 1, 2, { color: 'rose', format: (v) => Math.round(v) + ' cm' }),
     soRot: P('세로 축 둘레로 돌려 보기', 0, 360, 5, 40, { color: 'amber', hint: '돌려도 모양이 그대로인지 보세요', format: (v) => Math.round(v) + '°' })
   };
   const AMB = 'amber', SKY = 'sky', ROSE = 'rose', GRN = 'green';
@@ -120,7 +120,7 @@
     init: (s) => { s.soR = 3; s.soH1 = 5; },
     reroll: (s) => { s.soAx = pick(['v', 'h'], s.soAx); s.soPw = pick([2, 3, 4, 5, 6], s.soPw); s.soPh = pick([3, 4, 5, 6, 7].filter((x) => x !== s.soPw), s.soPh); },
     model: (s) => {
-      const R = clamp(Math.round(s.soR), 1, 6), h = clamp(Math.round(s.soH1), 2, 8);
+      const R = clamp(Math.round(s.soR), 1, 15), h = clamp(Math.round(s.soH1), 2, 20);
       const ax = s.soAx || 'v', w = s.soPw || 3, ht = s.soPh || 5;
       return { R, h, sol: S3.solid('cyl', { R, h1: h }), ax, w, ht, r2: ax === 'v' ? w : ht, h2: ax === 'v' ? ht : w };
     },
@@ -138,7 +138,7 @@
           S3.rLabel(D.b, D, m.R, `r = ${m.R} cm`, AMB, 16);
           D.lab({ x: m.R, y: m.h / 2, z: 0 }, `h = ${m.h} cm`, AMB, { dx: 44 });
         },
-        handles: (D, bd, st, m) => bd.handle('rh', D.P({ x: m.R, y: m.h, z: 0 }), { color: AMB, ariaLabel: '직사각형의 오른쪽 위 꼭짓점', drag: (w) => { const u = D.unproj(w.x, w.y); st.playing = false; st.soR = clamp(Math.round(u.rho), 1, 6); st.soH1 = clamp(Math.round(u.y), 2, 8); } })
+        handles: (D, bd, st, m) => bd.handle('rh', D.P({ x: m.R, y: m.h, z: 0 }), { color: AMB, ariaLabel: '직사각형의 오른쪽 위 꼭짓점', drag: (w) => { const u = D.unproj(w.x, w.y); st.playing = false; st.soR = clamp(Math.round(u.rho), 1, 15); st.soH1 = clamp(Math.round(u.y), 2, 20); } })
       });
     },
     steps: (M) => [
@@ -168,7 +168,7 @@
 
   /* ================================================================== s1-2 직각삼각형 → 원뿔 (축 선택) */
   function triM(s) {
-    const a = clamp(Math.round(s.soA), 2, 6), bb = clamp(Math.round(s.soB), 2, 6), ax = s.soAxis || 'AB';
+    const a = clamp(Math.round(s.soA), 2, 15), bb = clamp(Math.round(s.soB), 2, 20), ax = s.soAxis || 'AB';
     const h = ax === 'AB' ? bb : a, r = ax === 'AB' ? a : bb;
     return { a, b: bb, ax, h, r, sol: S3.solid('cone', { R: r, h1: h }) };
   }
@@ -215,7 +215,7 @@
       '축을 중심으로 한 바퀴(360°) 돌리면 <b>원뿔</b>이 돼요.'
     ],
     view: (M, C) => ({
-      guide: turnGuide + ' 위의 칩으로 <b>축으로 삼는 변</b>을 바꿔 보세요. 같은 삼각형인데 다른 원뿔이 나와요.',
+      guide: turnGuide + ' 칩으로 <b>축으로 삼는 변</b>을 바꿔 보세요. 같은 삼각형인데 다른 원뿔이 나와요.',
       readouts: [rd('회전축', `변 ${M.ax}`, ROSE), rd('높이 (축으로 삼은 변)', cmv(M.h), AMB), rd('밑면의 반지름', cmv(M.r), AMB, '축에 수직인 변'), rd('회전체', M.sol.name, SKY)],
       status: C.t >= 0.999 ? { tone: 'ok', text: `원뿔 완성 (반지름 ${M.r}, 높이 ${M.h})` } : { tone: 'info', text: `${Math.round(C.t * 360)}° 돌린 자취` },
       formula: `<p>변 ${M.ax}를 축으로 1회전 → 원뿔</p><p>(높이) = ${M.h} cm · (밑면의 반지름) = ${M.r} cm</p><p>다른 변을 축으로 하면 → (높이) = ${M.r} cm · (반지름) = ${M.h} cm</p>`,
@@ -235,7 +235,7 @@
 
   /* ================================================================== s1-3 사다리꼴 → 원뿔대 */
   function trapM(s) {
-    const R = clamp(Math.round(s.soRB), 2, 7), r = clamp(Math.min(Math.round(s.soRT), R - 1), 1, 6), h = clamp(Math.round(s.soH1), 2, 8);
+    const R = clamp(Math.round(s.soRB), 2, 15), r = clamp(Math.min(Math.round(s.soRT), R - 1), 1, 14), h = clamp(Math.round(s.soH1), 2, 20);
     return { R, r, h, sol: S3.solid('frus', { R, r, h1: h }) };
   }
   S.push({
@@ -262,9 +262,12 @@
           rm(D, [0, 0], [1, 0], [0, 1], sz); rm(D, [0, m.h], [1, 0], [0, -1], sz);
           S3.rLabel(D.b, D, m.R, `아랫변 ${m.R} cm`, AMB, 16);
           S3.rLabel(D.b, D, m.r, `윗변 ${m.r} cm`, AMB, 16, m.h);
-          D.lab({ x: 0, y: m.h / 2, z: 0 }, `높이 ${m.h} cm`, AMB, { dx: -48 });
+          // 입체가 납작하고 윗변이 짧으면 '윗변' 글자가 축 가까이에 와서 '높이' 글자와 겹쳐요: 그때만 '높이' 글자를 더 왼쪽으로 옮겨요
+          const kp = D.k * D.b.k, w1 = G.textW(`윗변 ${m.r} cm`, G.FS(D.b, 16)), w2 = G.textW(`높이 ${m.h} cm`, G.FS(D.b, 16));
+          const hdx = m.h * kp < 90 ? Math.min(-48, (m.r / 2) * kp - w1 / 2 - 10 - w2 / 2) : -48;
+          D.lab({ x: 0, y: m.h / 2, z: 0 }, `높이 ${m.h} cm`, AMB, { dx: hdx });
         },
-        handles: (D, bd, st, m) => bd.handle('rt', D.P({ x: m.r, y: m.h, z: 0 }), { color: AMB, ariaLabel: '윗변의 오른쪽 끝', drag: (w) => { const u = D.unproj(w.x, w.y); st.playing = false; st.soRT = clamp(Math.round(u.rho), 1, Math.max(1, Math.round(st.soRB) - 1)); st.soH1 = clamp(Math.round(u.y), 2, 8); } })
+        handles: (D, bd, st, m) => bd.handle('rt', D.P({ x: m.r, y: m.h, z: 0 }), { color: AMB, ariaLabel: '윗변의 오른쪽 끝', drag: (w) => { const u = D.unproj(w.x, w.y); st.playing = false; st.soRT = clamp(Math.round(u.rho), 1, Math.max(1, Math.round(st.soRB) - 1)); st.soH1 = clamp(Math.round(u.y), 2, 20); } })
       });
     },
     steps: (M) => [
@@ -300,7 +303,7 @@
     stepT: (n) => (n >= 3 ? 1 : 0),
     init: (s) => { s.soR = 3; },
     reroll: (s) => { s.soPR = pick([2, 3, 4, 5, 6, 7], s.soPR); s.soPax = pick(['v', 'h'], s.soPax); },
-    model: (s) => { const R = clamp(Math.round(s.soR), 1, 6); return { R, sol: S3.solid('sphere', { R }), pR: s.soPR || 4, pax: s.soPax || 'v' }; },
+    model: (s) => { const R = clamp(Math.round(s.soR), 1, 15); return { R, sol: S3.solid('sphere', { R }), pR: s.soPR || 4, pax: s.soPax || 'v' }; },
     draw(b, s, M, C) {
       if (C.problem) {
         const R = M.pR, poly = [], horiz = M.pax === 'h', d0 = -0.9;
@@ -353,7 +356,7 @@
   function offM(s) {
     const kind = s.soK5 || 'rect';
     if (kind === 'rect') {
-      const w = clamp(Math.round(s.soW), 1, 4), d = clamp(Math.round(s.soD), 0, 4), h = clamp(Math.round(s.soH1), 2, 6);
+      const w = clamp(Math.round(s.soW), 1, 15), d = clamp(Math.round(s.soD), 0, 15), h = clamp(Math.round(s.soH1), 2, 20);
       const sol = d === 0 ? S3.solid('cyl', { R: w, h1: h }) : S3.solid('hollow', { w, g: d, h1: h });
       return { kind, w, d, h, sol, name: d === 0 ? '원기둥' : '속이 빈 원기둥' };
     }
@@ -402,7 +405,7 @@
             D.lab({ x: m.r / 2, y: m.h1, z: 0 }, `${fmtN(m.r)}`, GRN, { dy: 16, size: 15 });
           }
         },
-        handles: (D, bd, st, m) => { if (m.kind === 'rect') bd.handle('d', D.P({ x: m.d, y: m.h, z: 0 }), { color: AMB, ariaLabel: '도형을 가로로 옮기기', drag: (w) => { const u = D.unproj(w.x, w.y); st.playing = false; st.soD = clamp(Math.round(u.rho), 0, 4); } }); }
+        handles: (D, bd, st, m) => { if (m.kind === 'rect') bd.handle('d', D.P({ x: m.d, y: m.h, z: 0 }), { color: AMB, ariaLabel: '도형을 가로로 옮기기', drag: (w) => { const u = D.unproj(w.x, w.y); st.playing = false; st.soD = clamp(Math.round(u.rho), 0, 15); } }); }
       });
     },
     steps: (M) => (M.kind === 'tri' ? [
@@ -437,7 +440,7 @@
 
   /* ================================================================== s1-6 회전체 → 평면도형 (역추론) */
   const KINDS6 = ['frus', 'pencil', 'dbl', 'stairs'];
-  const dims6 = (s) => { const R = clamp(Math.round(s.soVR), 2, 6); return { R, r: clamp(Math.min(Math.round(s.soVr), R - 1), 1, 5), h1: clamp(Math.round(s.soV1), 2, 6), h2: clamp(Math.round(s.soV2), 1, 5) }; };
+  const dims6 = (s) => { const R = clamp(Math.round(s.soVR), 2, 15); return { R, r: clamp(Math.min(Math.round(s.soVr), R - 1), 1, 14), h1: clamp(Math.round(s.soV1), 2, 20), h2: clamp(Math.round(s.soV2), 1, 20) }; };
   S.push({
     id: 's1-6', title: '[핵심] 회전체를 보고 평면도형 찾기', short: '[핵심] 입체→평면도형',
     question: '회전체를 축을 따라 반으로 자른 한쪽 단면이 회전하기 전의 평면도형이야. 그림의 회전체는 어떤 평면도형을 돌린 것일까?',
@@ -532,7 +535,7 @@
         // 휴대폰: 입체를 위에 크게, 위에서 본 모양은 읽을 만큼만(고정 크기 px) 아래에 둡니다
         const blockH = 104, c0 = { il: b.insets.left, ir: b.insets.right, ib: b.insets.bottom };
         fit(b, bboxOf(body), { l: 30, r: 30, t: 30, b: blockH + 38 });
-        const c = b.toW((b.W + c0.il - c0.ir) / 2, b.H - c0.ib - 8 - blockH / 2);
+        const c = b.toW((b.W + c0.il - c0.ir) / 2, b.H - Math.max(c0.ib, 16) - 8 - blockH / 2); // 아래 칩이 없는 태블릿 가로에서도 글줄이 무대 밖으로 잘리지 않게 최소 여백 16px
         ins = { x: c.x, y: c.y }; th = 50 / b.k; kt = 34 / (b.k * 1.8);
       } else {
         const pts = body.concat([{ x: ins.x - 1.2, y: ins.y - 1.7 }, { x: ins.x + 1.2, y: ins.y + 1.7 }]);

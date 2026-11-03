@@ -27,7 +27,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[키포인트] 제곱한 수의 제곱근을 차례로 구한다.\n$(-8)^2=64$이므로 $a=8$이다. 또 $\\sqrt{16}=4$이고, $4$의 음의 제곱근은 $b=-2$이다.\n따라서 $a+b=8+(-2)=6$이다. 정답은 ②이다.",
+    "solution": "$(-8)^2=64$이다.\n$64$의 양의 제곱근은 $8$이므로 $a=8$이다.\n또 $\\sqrt{16}=4$이고 $4$의 제곱근은 $2$와 $-2$이다.\n그중 음의 제곱근은 $b=-2$이다.\n따라서 $a+b=8+(-2)=6$이다.\n정답은 ②이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -311,7 +311,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$\\sqrt{32}=4\\sqrt2$, $2\\sqrt{12}=4\\sqrt3$, $\\frac4{\\sqrt{24}}=\\frac{\\sqrt6}{3}$이다.\n따라서 $\\sqrt3(2+\\frac4{\\sqrt{24}})=2\\sqrt3+\\sqrt2$이고 전체 식은 $3\\sqrt2-6\\sqrt3$이다.\n즉 $a=3, b=-6$이므로 $2a-b=12$이다. 정답은 ④이다.",
+    "solution": "근호 안의 제곱인수를 꺼내면\n$\\sqrt{32}=\\sqrt{16\\cdot2}=4\\sqrt2$,\n$2\\sqrt{12}=2\\sqrt{4\\cdot3}=4\\sqrt3$이다.\n\n또 $\\sqrt{24}=2\\sqrt6$이므로\n$\\dfrac4{\\sqrt{24}}=\\dfrac4{2\\sqrt6}=\\dfrac2{\\sqrt6}$\n$=\\dfrac{2\\sqrt6}{6}=\\dfrac{\\sqrt6}{3}$이다.\n\n따라서 괄호를 곱한 부분은\n$\\sqrt3\\left(2+\\dfrac{\\sqrt6}{3}\\right)$\n$=2\\sqrt3+\\dfrac{\\sqrt{18}}3$\n$=2\\sqrt3+\\sqrt2$이다.\n\n이제 원래 식을 정리하면\n$4\\sqrt2-4\\sqrt3-(2\\sqrt3+\\sqrt2)$\n$=4\\sqrt2-\\sqrt2-4\\sqrt3-2\\sqrt3$\n$=3\\sqrt2-6\\sqrt3$이다.\n\n$a=3$, $b=-6$이므로\n$2a-b=2\\cdot3-(-6)=12$이다.\n정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -347,7 +347,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "주어진 근삿값을 이용하면 ① $\\sqrt{0.08}=0.2828$, ② $\\sqrt{0.2}=0.4472$, ③ $\\sqrt{0.5}=0.707$, ④ $\\sqrt{18}=4.242$이다.\n⑤ $\\sqrt{200}=10\\sqrt2=14.14$이므로 $141.4$가 아니다. 따라서 정답은 ⑤이다.",
+    "solution": "주어진 근삿값 $\\sqrt2=1.414$, $\\sqrt{20}=4.472$를 이용하여 각각 계산한다.\n\n① $\\sqrt{0.08}=\\sqrt{\\dfrac8{100}}=\\dfrac{2\\sqrt2}{10}$\n$\\approx\\dfrac{2\\cdot1.414}{10}=0.2828$이므로 옳다.\n\n② $\\sqrt{0.2}=\\sqrt{\\dfrac{20}{100}}=\\dfrac{\\sqrt{20}}{10}$\n$\\approx\\dfrac{4.472}{10}=0.4472$이므로 옳다.\n\n③ $\\sqrt{0.5}=\\sqrt{\\dfrac{50}{100}}=\\dfrac{5\\sqrt2}{10}=\\dfrac{\\sqrt2}{2}$\n$\\approx\\dfrac{1.414}{2}=0.707$이므로 옳다.\n\n④ $\\sqrt{18}=\\sqrt{9\\cdot2}=3\\sqrt2$\n$\\approx3\\cdot1.414=4.242$이므로 옳다.\n\n⑤ $\\sqrt{200}=\\sqrt{100\\cdot2}=10\\sqrt2$\n$\\approx10\\cdot1.414=14.14$이므로 $141.4$와 다르다.\n\n따라서 옳지 않은 것은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -385,7 +385,7 @@ window.questionBank = [
       "(10 + 2\\sqrt{3}) \\text{cm}"
     ],
     "answer": "④",
-    "solution": "정육각형의 한 변은 $2\\text{cm}$이고 짧은 대각선은 $2\\sqrt3\\text{cm}$이다. 그림에서 $a=2\\sqrt3$, $b=2$이다.\n새 도형의 바깥쪽에는 길이 $a$인 변 2개와 길이 $b$인 변 4개가 있으므로 둘레는 $2a+4b=2(2\\sqrt3)+4\\cdot2=8+4\\sqrt3$이다. 따라서 정답은 ④이다.",
+    "solution": "정육각형의 한 변을 $b$라 하면\n$b=2\\,\\mathrm{cm}$이다.\n정육각형의 중심을 사이에 둔 두 꼭짓점 사이의 긴 대각선은 한 변의 두 배이므로 길이가 $4\\,\\mathrm{cm}$이다.\n\n그림에서 길이 $a$인 짧은 대각선과 한 변 $2\\,\\mathrm{cm}$, 긴 대각선 $4\\,\\mathrm{cm}$가 직각삼각형을 이룬다.\n피타고라스 정리에 따라\n$a^2+2^2=4^2$\n$a^2=16-4=12$\n$a=\\sqrt{12}=2\\sqrt3\\,\\mathrm{cm}$이다.\n\n조각들을 이어 붙인 새 도형의 바깥쪽에는 길이 $a$인 변이 $2$개, 길이 $b$인 변이 $4$개 있다.\n따라서 둘레는\n$2a+4b=2(2\\sqrt3)+4\\cdot2$\n$=8+4\\sqrt3\\,\\mathrm{cm}$이다.\n정답은 ④이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -452,7 +452,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "공통분모는 $(\\sqrt6+\\sqrt2)(\\sqrt6-\\sqrt2)=4$이다.\n따라서 주어진 식은 $\\frac{(\\sqrt6-\\sqrt2)^2-(\\sqrt6+\\sqrt2)^2}{4}=\\frac{-8\\sqrt3}{4}=-2\\sqrt3$이다.\n정답은 ①이다.",
+    "solution": "두 분수를 통분하면 공통분모는\n$(\\sqrt6+\\sqrt2)(\\sqrt6-\\sqrt2)$\n$=6-2=4$이다.\n\n분자의 두 식을 각각 전개한다.\n$(\\sqrt6-\\sqrt2)^2=6-2\\sqrt{12}+2$\n$=8-4\\sqrt3$이고,\n$(\\sqrt6+\\sqrt2)^2=6+2\\sqrt{12}+2$\n$=8+4\\sqrt3$이다.\n\n따라서 전체 식은\n$\\dfrac{(\\sqrt6-\\sqrt2)^2-(\\sqrt6+\\sqrt2)^2}{4}$\n$=\\dfrac{(8-4\\sqrt3)-(8+4\\sqrt3)}4$\n$=\\dfrac{-8\\sqrt3}4=-2\\sqrt3$이다.\n정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -569,7 +569,7 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "content": "다음 중 $x^{3}-7x^{2}$의 인수가 아닌 것을 고르면? [4점]",
+    "content": "다음 중 $x^{3}-7x^{2}$를 정수 계수인 두 다항식의 곱으로 나타낼 때 인수가 될 수 없는 것은? [4점]",
     "choices": [
       "1",
       "$x$",
@@ -594,7 +594,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$x^3-7x^2=x^2(x-7)$이다.\n따라서 정답은 ④이다.",
+    "solution": "주어진 다항식은\n$x^3-7x^2=x^2(x-7)$로 인수분해된다.\n정수 계수인 다항식끼리의 곱으로 표현할 때\n$1$, $x$, $x-7$, $x(x-7)=x^2-7x$는 모두 인수가 된다.\n\n④의 $7x$를 인수로 하여 나누면\n$\\dfrac{x^3-7x^2}{7x}=\\dfrac17x^2-x$이다.\n몫의 $x^2$의 계수 $\\dfrac17$은 정수가 아니므로 주어진 조건에서는 $7x$를 인수로 삼을 수 없다.\n\n따라서 정수 계수 다항식의 인수가 아닌 것은 ④이다.\n단, 유리수 계수 다항식까지 허용하면 $7x$도 인수가 되므로 문제의 계수 조건이 필요하다.",
     "level": "하",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -731,7 +731,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$\\sqrt{\\frac{108}{x}}$가 자연수이려면 $\\frac{108}{x}$가 자연수의 제곱이어야 한다.\n$108=2^2\\cdot3^3$의 제곱수인 약수는 $1,4,9,36$이므로 $x=108,27,12,3$이다.\n따라서 $x=3,12,27,108$이다.",
+    "solution": "$\\sqrt{\\dfrac{108}{x}}$가 자연수가 되려면 근호 안의 $\\dfrac{108}{x}$가 자연수의 제곱이어야 한다.\n따라서 $x$는 $108$의 약수이고, $\\dfrac{108}{x}$는 제곱수여야 한다.\n\n$108=2^2\\cdot3^3$이므로 $108$의 약수 중 자연수의 제곱인 것은\n$1,\\ 4,\\ 9,\\ 36$이다.\n\n각 경우에 $\\dfrac{108}{x}$를 대입하면\n$\\dfrac{108}{x}=1$일 때 $x=108$,\n$\\dfrac{108}{x}=4$일 때 $x=27$,\n$\\dfrac{108}{x}=9$일 때 $x=12$,\n$\\dfrac{108}{x}=36$일 때 $x=3$이다.\n\n따라서 구하는 자연수 $x$는\n$3,\\ 12,\\ 27,\\ 108$이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -823,7 +823,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "계수를 비교하면 $ac=4$, $bd=5$, $A=ad+bc$이다.\n$(a,c)=(1,4),(2,2),(4,1)$이고 $(b,d)=(1,5),(5,1)$이다. 모든 조합에서 $A$는 $9,21,12,12,21,9$가 된다.\n따라서 $A$가 될 수 있는 수는 $9,12,21$이다.",
+    "solution": "양변을 전개해 계수를 비교하면\n$(ax+b)(cx+d)=acx^2+(ad+bc)x+bd$이므로\n$ac=4$,\n$bd=5$,\n$A=ad+bc$이다.\n\n$a,c$가 자연수이므로\n$(a,c)=(1,4),\\ (2,2),\\ (4,1)$이고,\n$b,d$가 자연수이므로\n$(b,d)=(1,5),\\ (5,1)$이다.\n\n각 경우를 나누어 $A$를 구한다.\n\n(1) $(a,c)=(1,4)$인 경우\n$(b,d)=(1,5)$이면 $A=1\\cdot5+1\\cdot4=9$,\n$(b,d)=(5,1)$이면 $A=1\\cdot1+5\\cdot4=21$이다.\n\n(2) $(a,c)=(2,2)$인 경우\n$(b,d)=(1,5)$이면 $A=2\\cdot5+1\\cdot2=12$,\n$(b,d)=(5,1)$이면 $A=2\\cdot1+5\\cdot2=12$이다.\n\n(3) $(a,c)=(4,1)$인 경우\n$(b,d)=(1,5)$이면 $A=4\\cdot5+1\\cdot1=21$,\n$(b,d)=(5,1)$이면 $A=4\\cdot1+5\\cdot1=9$이다.\n\n따라서 $A$가 될 수 있는 값은 중복을 제외한\n$9,\\ 12,\\ 21$이다.",
     "level": "상",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
