@@ -11,7 +11,7 @@
   const { cube8, PI, DEG, clamp, ease, seg01, lin01, v3, add3, sub3, mul3, lerp3, mid3, dot3, unit3, len3, V, vadd, vsub, vmul, vnum, tx, plainVal, mkV, P, fmtN, pick, rint, notes, rd, span, scene3, solidNet, circleBase, netScene, roleStyle, layoutTiles, drawTiles, polyMesh, revolveMesh, shiftT, centroid } = G;
 
   const TRI = { A: [3, 4, 5], B: [4, 3, 5], C: [5, 12, 13], D: [6, 8, 10] }; // [r, h, R]
-  const TRI_LABEL = { A: 'r:h:R = 3:4:5', B: 'r:h:R = 4:3:5', C: 'r:h:R = 5:12:13', D: 'r:h:R = 6:8:10' };
+  const TRI_LABEL = { A: '반지름 3 · 높이 4 · 모선 5', B: '반지름 4 · 높이 3 · 모선 5', C: '반지름 5 · 높이 12 · 모선 13', D: '반지름 6 · 높이 8 · 모선 10' };
   const TRI_ORDER = ['A', 'B', 'C'];
   const PARAMS = {
     s2A: P('정육면체의 한 모서리 a', 2, 8, 1, 4, { color: 'amber', format: (v) => v + ' cm' }),
@@ -25,9 +25,9 @@
     // sv2-3
     s3K: P('크기 배율 k', 1, 2, 1, 1, { color: 'amber', hint: '세 수 (r, h, R)를 k배 해요', format: (v) => `${v}배` }),
     // sv2-4
-    s4K: P('큰 원뿔의 크기 k', 2, 5, 1, 3, { color: 'sky', format: (v) => `k = ${v}` }),
-    s4J: P('자르는 위치 (작은 원뿔의 크기 j)', 1, 4, 1, 1, { color: 'amber', hint: '작은 원뿔은 큰 원뿔과 같은 모양이고 $\\frac{j}{k}$ 배예요', format: (v) => `j = ${v}`, clampTo: (s) => [1, Math.round(s.s4K) - 1] }),
-    s4T: P('작은 원뿔 빼내기', 0, 1, 0.01, 0, { color: 'green', format: (v) => (v < 0.02 ? '붙어 있음' : v > 0.98 ? '빠짐' : Math.round(v * 100) + '%') }),
+    s4K: P('큰 원뿔의 크기', 2, 5, 1, 2, { color: 'sky', hint: '고른 반지름·높이·모선의 몇 배인지 정해요', format: (v) => `${v}배` }),
+    s4J: P('작은 원뿔의 크기', 1, 4, 1, 1, { color: 'amber', hint: '작은 원뿔은 큰 원뿔과 같은 모양이에요(큰 원뿔보다 작은 배수)', format: (v) => `${v}배`, clampTo: (s) => [1, Math.round(s.s4K) - 1] }),
+    s4T: P('움직여 보기', 0, 1, 0.01, 0, { color: 'green', hint: '겉넓이는 펼치기, 부피는 작은 원뿔 빼내기예요', format: (v, s) => ((s && s.svMode === 'vol') ? (v < 0.02 ? '붙어 있음' : v > 0.98 ? '빠짐' : Math.round(v * 100) + '%') : (v < 0.02 ? '입체' : v > 0.98 ? '전개도' : Math.round(v * 100) + '%')) }),
     // sv2-5
     s5K: P('큰 각뿔의 크기 k', 2, 4, 1, 3, { color: 'sky', format: (v) => `밑면 한 변 ${6 * v} cm` }),
     s5J: P('자르는 위치 (작은 각뿔의 크기 j)', 1, 3, 1, 1, { color: 'amber', hint: '각뿔대의 윗면은 한 변이 6j cm인 정사각형', format: (v) => `j = ${v}`, clampTo: (s) => [1, Math.round(s.s5K) - 1] }),
@@ -356,46 +356,55 @@
       const v2 = V(0, (r2 * r2 * h2) / 3), v1 = V(0, (r1 * r1 * h1) / 3), vol = vsub(v2, v1);
       return { fam, k, j, r2, h2, R2, r1, h1, R1, hf, Rf, lat2, lat1, latF, top, bot, surf, v2, v1, vol, mode, ans: mode === 'vol' ? vol : surf };
     };
-    const draw = (b, s, M, C) => {
-      const sc = 4.8 / Math.max(M.h2, 2.2 * M.r2), r2 = M.r2 * sc, r1 = M.r1 * sc, h2 = M.h2 * sc, h1 = M.h1 * sc, hf = M.hf * sc, st = C.step;
-      const t = C.problem ? 0.62 : C.t, D = scene3(b, s, C);
-      const slide = ease(t) * (r1 * 2.4 + 0.5);
-      const yaw = Math.atan2(D.cam.sy, D.cam.cy), thL = PI - yaw, thR = -yaw, pb = (th, rr, y) => v3(rr * Math.cos(th), y, rr * Math.sin(th));
-      const y0 = -h2 / 2, yc = y0 + hf;
-      const frM = revolveMesh([[0, 0], [r2, 0], [r1, hf], [0, hf]], { O: v3(0, y0, 0), N: 44, tags: ['bot', 'side', 'top'] });
-      const smM = G.xfMesh(revolveMesh([[0, 0], [r1, 0], [0, h1]], { O: v3(0, yc, 0), N: 44, tags: ['bot', 'side'] }), shiftT(D.hx(slide)));
-      D.fit([pb(thL, r2, y0), pb(thR, r2, y0), v3(0, y0 + h2, 0), add3(pb(thR, r1, yc), D.hx(slide)), add3(pb(thL, r1, yc), D.hx(slide)), add3(v3(0, yc + h1, 0), D.hx(slide)), add3(v3(0, yc + h1, 0), D.hx(slide * 0.0)), v3(0, y0, r2), v3(0, y0, -r2)], [], { l: 52, r: 52, t: 40, b: 44 });
-      const lvF = !C.review ? 1 : st === 1 ? 0 : st === 3 ? 2 : st === 4 ? 2 : 1;
-      // 큰 원뿔의 윤곽(작은 뿔이 빠지기 전: 점선)
-      if (t < 0.98) {
-        D.line(pb(thL, r2, y0), v3(0, y0 + h2, 0), 'muted', 1.8, { dash: [5, 4], alpha: 0.7 * (1 - ease(t)) });
-        D.line(pb(thR, r2, y0), v3(0, y0 + h2, 0), 'muted', 1.8, { dash: [5, 4], alpha: 0.7 * (1 - ease(t)) });
-      }
-      const big = C.review && ((M.mode === 'surf' && st === 1) || (M.mode === 'vol' && st === 1)), sm = C.review && st === 2;
-      D.body({ mesh: frM, fill: lvF === 2 ? 'amber' : 'sky', alpha: lvF === 2 ? 0.34 : 0.22, edge: 'ink', edgeW: 2.6, dashBack: () => (slide < 1e-4 ? v3(0, 0, 0) : null), faceStyle: (f) => (f.tag === 'bot' || f.tag === 'top' ? { fill: C.review && st === 4 ? 'amber' : 'sky', alpha: C.review && st === 4 ? 0.42 : 0.24 } : {}) });
-      D.body({ mesh: smM, fill: sm || big ? 'amber' : 'violet', alpha: sm ? 0.42 : 0.24, edge: 'ink', edgeW: 2.6, dashBack: () => (slide < 1e-4 ? v3(0, 0, 0) : null) });
-      // 길이: 큰 뿔 r₂·R₂, 작은 뿔 r₁·R₁
-      const cb = v3(0, y0, 0), rpB = pb(thR, r2, y0);
-      D.line(cb, rpB, 'ink', 2.4, { dash: [5, 4] });
-      D.tag(mid3(cb, rpB), `r₂=${M.r2}`, { dy: 14, size: 14 });
-      const ctop = v3(0, yc, 0), rpT = pb(thR, r1, yc);
-      D.line(ctop, rpT, 'ink', 2.4, { dash: [5, 4] });
-      D.tag(mid3(ctop, rpT), `r₁=${M.r1}`, { dy: -12, size: 14 });
-      D.elabel(pb(thL, r2, y0), pb(thL, r1, yc), `R₂−R₁=${M.Rf}`, { side: { x: -1, y: 0 }, size: 14, gap: 8, color: 'amber' });
-      const sh = D.hx(slide);
-      D.elabel(add3(pb(thR, r1, yc), sh), add3(v3(0, yc + h1, 0), sh), `R₁=${M.R1}`, { side: { x: 1, y: 0 }, size: 15, gap: 8, color: 'violet' });
-      D.tag(add3(v3(0, yc + h1 * 0.66, 0), sh), `h₁=${M.h1}`, { size: 13, color: 'violet' }); // r₁ 글자와 겹치지 않게 위쪽에
-      const ey = (D.P(v3(0, y0, r2)).y - D.P(v3(0, y0, 0)).y) * (b.k || 40);
-      D.tag(v3(0, y0, 0), `큰 원뿔  r₂=${M.r2}  h₂=${M.h2}  R₂=${M.R2}`, { dy: ey + 22, size: 14 });
-      if (!C.problem) D.tag(v3(0, y0 + hf * 0.45, 0), M.mode === 'surf' ? `πR₂r₂−πR₁r₁` : `V₂−V₁`, { size: 14, color: 'green' });
+    // 겉넓이: 전개도(부채꼴 고리 + 원 2개) — solid3d.js 의 coneNet 이 그립니다
+    const drawSurf = (b, s, M, C) => {
+      const st = C.step, rv = C.review;
+      const hl = !rv ? {} : st <= 1 ? { big: true } : st === 2 ? { small: true } : st === 3 ? { ring: 2 } : { ring: 3, bot: 2, top: 2 };
+      G.coneNet(b, s, C, {
+        r2: M.r2, r1: M.r1, hf: M.hf, R2: M.R2, R1: M.R1, t: C.problem ? 0 : rv ? 1 : C.t, problem: C.problem, review: rv, hl,
+        vals: { ring: plainVal(M.latF), top: plainVal(M.top), bot: plainVal(M.bot), arcBig: plainVal(V(0, 2 * M.r2)), arcSmall: plainVal(V(0, 2 * M.r1)), tot: plainVal(M.surf), big: plainVal(M.lat2), small: plainVal(M.lat1) }
+      });
     };
+    // 부피: 겨냥도 — 큰 원뿔 − 작은 원뿔(작은 원뿔이 가로로 빠져나감)
+    const drawVol = (b, s, M, C) => {
+      const sc = 4.8 / Math.max(M.h2, 2.2 * M.r2), r2 = M.r2 * sc, r1 = M.r1 * sc, h2 = M.h2 * sc, h1 = M.h1 * sc, hf = M.hf * sc, st = C.step;
+      const t = C.problem ? 0.62 : C.t, D = scene3(b, s, C), thumb = !!b.thumb;
+      const slide = ease(t) * (r1 * 2.4 + 0.5), sh = D.hx(slide);
+      const yaw = Math.atan2(D.cam.sy, D.cam.cy), thL = PI - yaw, thR = -yaw, pb = (th, rr, y) => v3(rr * Math.cos(th), y, rr * Math.sin(th));
+      const y0 = -h2 / 2, yc = y0 + hf, apexBig = v3(0, y0 + h2, 0), cb = v3(0, y0, 0), ct = v3(0, yc, 0);
+      const frM = revolveMesh([[0, 0], [r2, 0], [r1, hf], [0, hf]], { O: v3(0, y0, 0), N: 44, tags: ['bot', 'side', 'top'] });
+      const smM = G.xfMesh(revolveMesh([[0, 0], [r1, 0], [0, h1]], { O: v3(0, yc, 0), N: 44, tags: ['bot', 'side'] }), shiftT(sh));
+      D.fit([pb(thL, r2, y0), pb(thR, r2, y0), apexBig, add3(pb(thR, r1, yc), sh), add3(pb(thL, r1, yc), sh), add3(v3(0, yc + h1, 0), sh), v3(0, y0, r2), v3(0, y0, -r2)], [], { l: 52, r: 52, t: thumb ? 5 : 84, b: thumb ? 5 : 76 });
+      const rv = C.review, big = rv && st <= 1, sm = rv && st === 2, fr = rv && st >= 3;
+      if (t < 0.98) {
+        D.line(pb(thL, r2, y0), apexBig, 'muted', 1.8, { dash: [5, 4], alpha: 0.7 * (1 - ease(t)) });
+        D.line(pb(thR, r2, y0), apexBig, 'muted', 1.8, { dash: [5, 4], alpha: 0.7 * (1 - ease(t)) });
+      }
+      D.body({ mesh: frM, fill: fr || big ? 'amber' : 'sky', alpha: fr || big ? 0.34 : 0.22, edge: 'ink', edgeW: 2.6, dashBack: () => (slide < 1e-4 ? v3(0, 0, 0) : null), faceStyle: (f) => (f.tag === 'bot' || f.tag === 'top' ? { fill: fr || big ? 'amber' : 'sky', alpha: fr || big ? 0.42 : 0.24 } : {}) });
+      D.body({ mesh: smM, fill: sm || big ? 'amber' : 'violet', alpha: sm || big ? 0.42 : 0.24, edge: 'ink', edgeW: 2.6, dashBack: () => (slide < 1e-4 ? v3(0, 0, 0) : null) });
+      if (thumb) return;
+      // 길이: 반지름은 오른쪽 앞으로, 높이는 점선 + 직각 표시
+      const rf = D.rightFront(35), aBig = 1 - ease(lin01(t, 0, 0.35)), aSm = ease(lin01(t, 0.25, 0.6));
+      D.radius(cb, add3(cb, mul3(rf, r2)), `반지름 ${M.r2}`, { dash: true, end: true });
+      D.radius(add3(ct, sh), add3(add3(ct, sh), mul3(rf, r1)), `반지름 ${M.r1}`, { dash: slide < 1e-3, end: true });
+      D.height(cb, apexBig, `높이 ${M.h2}`, { alpha: aBig, side: { x: 1, y: 0 } });
+      D.height(add3(ct, sh), add3(v3(0, yc + h1, 0), sh), `높이 ${M.h1}`, { alpha: aSm, color: 'violet', side: { x: 1, y: 0 } });
+      if (!C.problem) {
+        const ey = (D.P(v3(0, y0, r2)).y - D.P(cb).y) * (b.k || 40), ey1 = (D.P(v3(0, yc, r1)).y - D.P(ct).y) * (b.k || 40), a3 = ease(lin01(t, 0.55, 0.95));
+        D.areaLab(cb, '큰 원뿔', plainVal(M.v2), { dy: ey + 24 });
+        D.areaLab(add3(ct, sh), '작은 원뿔', plainVal(M.v1), { dy: ey1 + 24, alpha: aSm, color: 'violet' });
+        D.areaLab(v3(0, y0 + hf * 0.4, 0), '원뿔대', plainVal(M.vol), { alpha: a3, maxW: r2 * (b.k || 40) * 1.2, color: 'green' });
+        G.sumRows(D, [[{ t: '원뿔대의 부피 = ' }, { t: '큰 원뿔', c: 'sky' }, { t: ' − ' }, { t: '작은 원뿔', c: 'violet' }], [{ t: '= ' }, { t: plainVal(M.v2), c: 'sky' }, { t: ' − ' }, { t: plainVal(M.v1), c: 'violet' }, { t: ` = ${plainVal(M.vol)}` }]], 1);
+      }
+    };
+    const draw = (b, s, M, C) => (M.mode === 'vol' ? drawVol(b, s, M, C) : drawSurf(b, s, M, C));
     return {
       id: 'sv2-4', title: '원뿔대', short: '원뿔대',
       question: '원뿔의 윗부분을 잘라 내고 남은 원뿔대의 겉넓이와 부피는 큰 원뿔과 작은 원뿔로 어떻게 구할까?',
-      anim: { key: 's4T', dur: 4, label: '작은 원뿔 빼내기' }, cam0: { yaw: 28, pitch: 20 }, stepT: (st) => (st >= 2 ? 1 : 0.55), thumbT: 0.7, problemT: 0.62,
+      anim: { key: 's4T', dur: 4, label: '움직여 보기' }, cam0: { yaw: 28, pitch: 20 }, stepT: (st) => { const lab = window.lab, v = lab && lab.s && lab.s.svMode === 'vol'; return v ? (st <= 1 ? 0 : 1) : 1; }, thumbT: 1, problemT: 0.62,
       ctl: () => ['s4K', 's4J', 's4T'],
-      presets: () => TRI_ORDER.map((k, i) => ({ group: i === 0 ? '(r, h, R)의 모양' : '', label: TRI_LABEL[k], apply: (st) => { st.svTri4 = k; }, on: (st) => oneOf(st.svTri4, TRI_ORDER, 'A') === k })).concat([{ group: '구하는 것', label: '겉넓이', apply: (st) => { st.svMode = 'surf'; }, on: (st) => st.svMode !== 'vol' }, { label: '부피', apply: (st) => { st.svMode = 'vol'; }, on: (st) => st.svMode === 'vol' }]),
-      init: (s) => { s.svTri4 = 'A'; s.s4K = 3; s.s4J = 1; s.s4T = 0.0; s.svMode = 'surf'; },
+      presets: () => TRI_ORDER.map((k, i) => ({ group: i === 0 ? '큰 원뿔의 반지름·높이·모선' : '', label: TRI_LABEL[k], apply: (st) => { st.svTri4 = k; }, on: (st) => oneOf(st.svTri4, TRI_ORDER, 'A') === k })).concat([{ group: '구하는 것', label: '겉넓이', apply: (st) => { st.svMode = 'surf'; st.s4T = 0; }, on: (st) => st.svMode !== 'vol' }, { label: '부피', apply: (st) => { st.svMode = 'vol'; st.s4T = 0; }, on: (st) => st.svMode === 'vol' }]),
+      init: (s) => { s.svTri4 = 'A'; s.s4K = 2; s.s4J = 1; s.s4T = 0.0; s.svMode = 'surf'; },
       reroll: (s) => { s.svTri4 = pick(TRI_ORDER, s.svTri4); s.s4K = rint(2, s.svTri4 === 'C' ? 3 : 4); s.s4J = rint(1, s.s4K - 1); s.svMode = pick(['surf', 'vol'], s.svMode); s.s4T = 0; },
       model, draw,
       check: (s) => {
@@ -405,23 +414,25 @@
         return { ans: lat + PI * M.r1 * M.r1 + PI * M.r2 * M.r2, model: vnum(M.surf) };
       },
       steps: (M) => M.mode === 'vol' ? [
-        `큰 원뿔(반지름 $${M.r2}$, 높이 $${M.h2}$)의 부피 $V_2=\\frac{1}{3}\\times\\pi\\times${M.r2}^2\\times${M.h2}=${tx(M.v2)}$예요.`,
-        `잘라 낸 작은 원뿔(반지름 $${M.r1}$, 높이 $${M.h1}$)의 부피 $V_1=\\frac{1}{3}\\times\\pi\\times${M.r1}^2\\times${M.h1}=${tx(M.v1)}$예요.`,
-        `(원뿔대의 부피) $=V_2-V_1=${tx(M.v2)}-${tx(M.v1)}=${tx(M.vol)}\\,\\mathrm{cm}^3$예요.`
+        `큰 원뿔(반지름 $${M.r2}$, 높이 $${M.h2}$)의 부피는 $\\frac{1}{3}\\times\\pi\\times${M.r2}^2\\times${M.h2}=${tx(M.v2)}$예요.`,
+        `잘라 낸 작은 원뿔(반지름 $${M.r1}$, 높이 $${M.h1}$)의 부피는 $\\frac{1}{3}\\times\\pi\\times${M.r1}^2\\times${M.h1}=${tx(M.v1)}$예요.`,
+        `(원뿔대의 부피) $=$ (큰 원뿔) $-$ (작은 원뿔) $=${tx(M.v2)}-${tx(M.v1)}=${tx(M.vol)}\\,\\mathrm{cm}^3$예요.`
       ] : [
-        `큰 원뿔의 옆넓이 $\\pi R_2r_2=\\pi\\times${M.R2}\\times${M.r2}=${tx(M.lat2)}$예요.`,
-        `잘라 낸 작은 원뿔의 옆넓이 $\\pi R_1r_1=\\pi\\times${M.R1}\\times${M.r1}=${tx(M.lat1)}$예요.`,
-        `원뿔대의 옆넓이 $=$ 큰 것 $-$ 작은 것 $=${tx(M.lat2)}-${tx(M.lat1)}=${tx(M.latF)}$예요.`,
+        `전개도에서 큰 부채꼴은 반지름이 큰 원뿔의 모선 $${M.R2}$이고 호의 길이가 아랫면의 둘레 $2\\times\\pi\\times${M.r2}=${tx(V(0, 2 * M.r2))}$예요. 넓이는 $\\pi\\times${M.r2}\\times${M.R2}=${tx(M.lat2)}$예요.`,
+        `잘라 낸 작은 부채꼴은 반지름이 작은 원뿔의 모선 $${M.R1}$이고 호의 길이가 윗면의 둘레 $2\\times\\pi\\times${M.r1}=${tx(V(0, 2 * M.r1))}$예요. 넓이는 $\\pi\\times${M.r1}\\times${M.R1}=${tx(M.lat1)}$예요.`,
+        `원뿔대의 옆넓이는 부채꼴 고리의 넓이예요. (큰 부채꼴) $-$ (작은 부채꼴) $=${tx(M.lat2)}-${tx(M.lat1)}=${tx(M.latF)}$예요.`,
         `(겉넓이) $=$ (옆넓이) $+$ (윗면) $+$ (아랫면) $=${tx(M.latF)}+${tx(M.top)}+${tx(M.bot)}=${tx(M.surf)}\\,\\mathrm{cm}^2$예요.`
       ],
       view: (M) => ({
-        guide: `<b>작은 원뿔 빼내기</b> 막대를 끌어 보세요. 작은 원뿔이 ${span('violet', '가로로')} 빠져나가요. <b>k·j 막대</b>로 큰 원뿔과 자르는 위치를 바꾸면 작은 원뿔은 큰 원뿔의 $\\frac{j}{k}$배예요.`,
+        guide: M.mode === 'vol'
+          ? `<b>움직여 보기</b> 막대를 끌어 보세요. ${span('violet', '작은 원뿔')}이 가로로 빠져나가고 ${span('sky', '원뿔대')}가 남아요. <b>큰 원뿔의 크기</b>와 <b>작은 원뿔의 크기</b> 막대로 두 원뿔의 크기를 바꿔 보세요. 부피는 <b>큰 원뿔 − 작은 원뿔</b>이에요.`
+          : `<b>움직여 보기</b> 막대를 끌어 원뿔대를 펼쳐 보세요. 옆면은 ${span('green', '부채꼴 고리')}(큰 부채꼴 − 작은 부채꼴)이고, ${span('violet', '큰 호')}는 아랫면의 둘레, ${span('orange', '작은 호')}는 윗면의 둘레와 같아요. 겉넓이는 옆넓이에 <b>두 밑면</b>을 더해요.`,
         readouts: M.mode === 'vol'
-          ? [rd('큰 원뿔 V₂', plainVal(M.v2) + ' cm³', 'sky'), rd('작은 원뿔 V₁', plainVal(M.v1) + ' cm³', 'violet'), rd('원뿔대의 부피', plainVal(M.vol) + ' cm³', 'green', 'V₂ − V₁')]
-          : [rd('큰 원뿔 옆넓이', plainVal(M.lat2) + ' cm²', 'sky', 'πR₂r₂'), rd('작은 원뿔 옆넓이', plainVal(M.lat1) + ' cm²', 'violet', 'πR₁r₁'), rd('원뿔대의 옆넓이', plainVal(M.latF) + ' cm²', 'amber', '큰 것 − 작은 것'), rd('겉넓이', plainVal(M.surf) + ' cm²', 'green', '옆넓이 + 두 밑면')],
-        formula: `<p>(원뿔대의 부피) $=$ (큰 뿔) $-$ (작은 뿔) &nbsp;,&nbsp; (겉넓이) $=$ (큰 뿔의 옆넓이 $-$ 작은 뿔의 옆넓이) $+$ (두 밑면)</p>`,
+          ? [rd('큰 원뿔의 부피', plainVal(M.v2) + ' cm³', 'sky', `⅓ × π × ${M.r2} × ${M.r2} × ${M.h2}`), rd('작은 원뿔의 부피', plainVal(M.v1) + ' cm³', 'violet', `⅓ × π × ${M.r1} × ${M.r1} × ${M.h1}`), rd('원뿔대의 부피', plainVal(M.vol) + ' cm³', 'green', '큰 원뿔 − 작은 원뿔')]
+          : [rd('큰 부채꼴의 넓이', plainVal(M.lat2) + ' cm²', 'sky', `π × ${M.r2} × ${M.R2}`), rd('작은 부채꼴의 넓이', plainVal(M.lat1) + ' cm²', 'violet', `π × ${M.r1} × ${M.R1}`), rd('원뿔대의 옆넓이', plainVal(M.latF) + ' cm²', 'amber', '큰 부채꼴 − 작은 부채꼴'), rd('두 밑면의 넓이', plainVal(vadd(M.top, M.bot)) + ' cm²', 'orange', `${plainVal(M.top)} + ${plainVal(M.bot)}`), rd('겉넓이', plainVal(M.surf) + ' cm²', 'green', '옆넓이 + 두 밑면')],
+        formula: `<p>(원뿔대의 부피) $=$ (큰 원뿔) $-$ (작은 원뿔) &nbsp;,&nbsp; (겉넓이) $=$ (옆넓이) $+$ (윗면) $+$ (아랫면), (옆넓이) $=$ (큰 부채꼴) $-$ (작은 부채꼴)</p>`,
         rule: '원뿔대 = 큰 원뿔 − 작은 원뿔 (겉넓이는 두 밑면을 꼭 더해요)',
-        notes: notes('원뿔대의 겉넓이에는 <b>위·아래 두 밑면</b>이 모두 들어가요. 작은 원뿔을 잘라 낸 자리(윗면)도 밑면이에요.', '뺄 것은 <b>옆넓이끼리</b>예요. 밑넓이까지 빼지 않아요.')
+        notes: notes('원뿔대의 겉넓이에는 <b>위·아래 두 밑면</b>이 모두 들어가요. 작은 원뿔을 잘라 낸 자리(윗면)도 밑면이에요.', '뺄 것은 <b>옆넓이끼리</b>(부채꼴끼리)예요. 밑넓이까지 빼지 않아요.')
       }),
       prob: (M) => {
         let wrongs, stem;
