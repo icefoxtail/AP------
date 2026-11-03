@@ -68,6 +68,9 @@
 
       // 상단 바
       ui.rail = h('nav', { class: 'apl-rail', role: 'tablist', 'aria-label': '장면' });
+      // '모든 장면' 단추는 가로로 밀리는 장면 줄 밖에 두어 장면이 많아도 늘 오른쪽 끝에 보이게 합니다.
+      ui.allBtn = h('button', { class: 'apl-btn sm apl-all-btn', 'aria-label': '모든 장면 한눈에 보기', title: '모든 장면 한눈에 보기', html: icon('list') + '<span>모든 장면</span>', onclick: () => this.openOverview() });
+      ui.railWrap = h('div', { class: 'apl-railwrap' }, ui.rail, ui.allBtn);
       ui.themeBtn = h('button', { class: 'apl-icon-btn', 'aria-label': '테마 바꾸기 (칠판/종이)', title: '칠판 ↔ 종이', onclick: () => { APLab.theme.toggle(); this._syncThemeIcon(); } });
       ui.teachBtn = h('button', { class: 'apl-btn sm apl-teach-btn', 'aria-pressed': 'false', title: '수업 모드 (T)', onclick: () => this.setTeach(!this.teach), html: icon('teach') + '<span class="lbl">수업 모드</span>' });
       ui.panelBtn = h('button', { class: 'apl-icon-btn apl-hide-sm', 'aria-label': '설명 패널 접기/펴기 (H)', title: '패널 접기 (H)', html: icon('panel'), onclick: () => this.togglePanel() });
@@ -78,7 +81,7 @@
         h('div', { class: 'apl-titlebox' },
           h('div', { class: 'apl-crumbs', html: `<b>${APLab.esc(d.courseName || '')}</b>${d.unit ? ' · ' + APLab.esc(d.unit) : ''}` }),
           h('h1', { class: 'apl-title', text: d.title })),
-        ui.rail,
+        ui.railWrap,
         h('div', { class: 'apl-actions' },
           ui.themeBtn,
           h('button', { class: 'apl-icon-btn', 'aria-label': '학생에게 공유', title: '학생 화면으로 보내기 (QR)', html: icon('share'), onclick: () => this.openShare() }),
@@ -122,6 +125,8 @@
         ui.panes[t.id] = h('div', { class: 'apl-tabpanel', role: 'tabpanel', id: 'apl-pane-' + t.id, hidden: true });
       }
       ui.live = h('div', { class: 'apl-sr', 'aria-live': 'polite' });
+      // 실험실이 문제 탭 안을 스스로 다시 그려도 '새 문제' 단추 이름·모양이 유지되고 정리 탭 끝단계가 따라오게 합니다.
+      if (window.MutationObserver) new MutationObserver(() => { if (this.scene && this.refs) { this._normNewProb(); this._syncEndStep(); } }).observe(ui.panes.problem, { childList: true, subtree: true, characterData: true });
       ui.panelInner = h('div', { class: 'apl-panel-inner' }, ui.head, ui.tabs, ...Object.values(ui.panes), ui.live);
       ui.panel = h('aside', { class: 'apl-panel', 'aria-label': '탐구 안내' }, ui.panelInner);
       ui.main = h('main', { class: 'apl-main' }, ui.stage, ui.panel);
@@ -235,7 +240,6 @@
         });
         rail.append(b);
       });
-      rail.append(h('button', { class: 'apl-btn sm ghost apl-all-btn', title: '모든 장면 한눈에 보기', html: icon('list') + '<span>모든 장면</span>', onclick: () => this.openOverview() }));
       this._edgeFade(rail);
       // 지금 장면 탭이 가운데에 오도록 레일만 가로로 옮깁니다(페이지는 움직이지 않습니다). 글꼴이 늦게 바뀌어도 한 번 더 맞춥니다.
       const center = () => {
@@ -451,15 +455,19 @@
       if (sc.reviewTop) { r.top = h('div', { class: 'apl-section apl-review-top' }); r.top.__h = null; pane.append(r.top); } // 선택 사항: 풀이 탭 맨 위에 문제 다시 보기
       if (steps && steps.length) {
         r.steps = h('div', { class: 'apl-steps' });
-        r.stepPrev = h('button', { class: 'apl-btn sm', html: icon('prev') + '<span>이전</span>', onclick: () => this.stepBy(-1) });
-        r.stepNext = h('button', { class: 'apl-btn sm primary', html: '<span>다음 단계</span>' + icon('next'), onclick: () => this.stepBy(1) });
-        r.stepAll = h('button', { class: 'apl-btn sm ghost', text: '모두 보기', onclick: () => this.setStep(steps.length) });
-        pane.append(this._section(rt.steps || '단계별로 그림에 나타내기', 'layers', r.steps, h('div', { class: 'apl-step-ctl' }, r.stepPrev, r.stepNext, r.stepAll)));
+        r.stepPrev = h('button', { class: 'apl-btn sm apl-step-prev', html: icon('prev') + '<span>이전</span>', onclick: () => this.stepBy(-1) });
+        r.stepNext = h('button', { class: 'apl-btn sm primary apl-step-next', html: '<span>다음 단계</span>' + icon('next'), onclick: () => this._stepNextClick() });
+        r.stepAll = h('button', { class: 'apl-btn sm ghost apl-step-all', text: '모두 보기', onclick: () => this.setStep(steps.length) });
+        // 마지막 단계에서만 보입니다(문제 탭에 '새 문제' 단추가 있는 장면): 문제 탭으로 가서 새 문제를 바로 냅니다.
+        r.stepNew = h('button', { class: 'apl-btn sm apl-step-new', hidden: true, text: '새 문제', onclick: () => this._newProblemFromReview() });
+        r.stepCtl = h('div', { class: 'apl-step-ctl' }, r.stepPrev, r.stepNext, r.stepAll, r.stepNew);
+        r.nextMode = 'step';
+        pane.append(this._section(rt.steps || '단계별로 그림에 나타내기', 'layers', r.steps, r.stepCtl));
         steps.forEach((t, i) => {
           const b = h('button', { class: 'apl-step', html: `<span class="n">${i + 1}</span><span>${APLab.renderMath(APLab.esc(String(t).replace(/^Step\s*\d+\s*·\s*/, '')).replace(/&amp;/g, '&'))}</span>`, onclick: () => this.setStep(i + 1) });
           r.steps.append(b);
         });
-      } else r.steps = null;
+      } else { r.steps = null; r.stepCtl = r.stepNew = null; }
       r.formula = h('div', { class: 'apl-rich' });
       r.formulaSec = this._section('공식과 원리', 'book', h('div', { class: 'apl-card' }, r.formula));
       r.rule = h('div', { hidden: true });
@@ -515,6 +523,71 @@
       const snapBtn = pr.snap ? h('button', { class: 'apl-btn block', html: icon('target') + '<span>문제 조건으로 그림 맞추기</span>', onclick: () => this.snap() }) : null;
       pane.append(h('div', { class: 'apl-card apl-problem' }, meta, r.problemText, snapBtn, r.answer));
       if (pr.note) pane.append(h('div', { class: 'apl-note-line', html: APLab.renderMath(call(pr.note, this.s)) }));
+    }
+    /* ---------- '새 문제' 단추 통일 + 정리 탭 끝단계 연결 (2026-11 출시 전 비평 반영) ----------
+       실험실마다 '새 문제'·'새 문제 (숫자 바꾸기)'·'숫자 바꾸기'로 달리 쓰던 단추를 문제 탭에서 모두 '새 문제'로 통일하고 같은 보통 단추 모양(apl-newprob)으로 맞춥니다.
+       단추의 동작은 실험실 자신의 것(보통 data-xx-new 이벤트)이라 바꾸지 않습니다. 정리 탭 끝단계가 이 단추를 click()으로 불러 '새 문제'를 냅니다(공통 훅 = 문제 탭 안의 .apl-newprob).
+       대상: 문제 탭 전체와 정리 탭 맨 위 '문제 다시 보기'(sc.reviewTop). 탐구 탭의 '숫자 바꿔 보기'(탐구 그림 숫자만 바꿈)는 하는 일이 달라 건드리지 않습니다. */
+    _normNewProb() {
+      const NAME = /^(새 문제(\s*\(숫자 바꾸기\))?|숫자 바꾸기)$/;
+      const roots = [this.ui.panes.problem, this.refs.top].filter(Boolean);
+      let changed = false;
+      for (const root of roots) {
+        root.querySelectorAll('button').forEach((b) => {
+          if (!NAME.test((b.textContent || '').replace(/\s+/g, ' ').trim())) return;
+          const walker = document.createTreeWalker(b, NodeFilter.SHOW_TEXT);
+          for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+            if (n.nodeValue.trim() && n.nodeValue.trim() !== '새 문제') { n.nodeValue = '새 문제'; changed = true; }
+          }
+          if (!b.classList.contains('apl-newprob')) { b.classList.add('apl-newprob'); b.classList.remove('ghost'); changed = true; }
+        });
+      }
+      return changed;
+    }
+    _newProbBtn() { return this.ui.panes.problem.querySelector('button.apl-newprob'); }
+    // 정리 탭 마지막 단계: 주 단추를 '문제로 가서 정답 확인'으로 바꾸고, 문제 탭에 '새 문제'가 있으면 옆에 둡니다. 문제 탭이 없으면 예전 그대로(비활성 '다음 단계').
+    _syncEndStep() {
+      const r = this.refs;
+      if (!r.steps || !r.stepNext) return;
+      const steps = call(this.scene.steps, this.s) || [];
+      const end = this.s.step >= steps.length && this._tabAvailable('problem');
+      const mode = end ? 'problem' : 'step';
+      if (r.nextMode !== mode) {
+        r.nextMode = mode;
+        r.stepNext.innerHTML = end ? icon('target') + '<span>문제로 가서 정답 확인</span>' : '<span>다음 단계</span>' + icon('next');
+        r.stepCtl.classList.toggle('end', end);
+      }
+      if (r.stepNew) r.stepNew.hidden = !(end && this._newProbBtn());
+    }
+    _stepNextClick() {
+      if (this.refs.nextMode === 'problem') {
+        this.setTab('problem');
+        window.scrollTo({ top: 0 });
+        // 문제 탭으로 옮긴 뒤(그리기가 끝난 다음) 열린 정답 상자가 화면 안에 오도록 스크롤합니다. 정답 상자가 없는 장면은 맨 위 그대로입니다.
+        requestAnimationFrame(() => requestAnimationFrame(() => this._showAnswer()));
+        return;
+      }
+      this.stepBy(1);
+    }
+    // 문제 카드가 화면에 들어가면 카드 맨 위(문제 글과 정답이 함께 보임)로, 너무 길면 정답 상자가 온전히 보이도록 옮깁니다. 가로 폭이 좁으면 고정된 그림 무대 아래를 위쪽 한계로 씁니다.
+    _showAnswer() {
+      const r = this.refs;
+      if (this.tab !== 'problem' || !r.answer || !r.answer.classList.contains('open')) return;
+      const vh = window.innerHeight;
+      const topLim = (NARROW.matches ? this.ui.stage.getBoundingClientRect().bottom : 60) + 8;
+      const card = r.answer.closest('.apl-problem');
+      const cr = card ? card.getBoundingClientRect() : null;
+      const ar = r.answer.getBoundingClientRect();
+      let dy;
+      if (cr && cr.height <= vh - topLim - 16) dy = cr.top - topLim;
+      else dy = ar.bottom - (vh - 16);
+      if (dy > 1 || dy < -1) window.scrollBy({ top: dy, behavior: 'instant' });
+    }
+    _newProblemFromReview() {
+      const b = this._newProbBtn();
+      this.setTab('problem');
+      if (b) b.click();
+      window.scrollTo({ top: 0 });
     }
     _answerOpen() {
       const steps = call(this.scene.steps, this.s);
@@ -830,7 +903,7 @@
           el.classList.toggle('cur', i === s.step - 1);
         });
         r.stepPrev.disabled = s.step <= 0;
-        r.stepNext.disabled = s.step >= steps.length;
+        r.stepNext.disabled = s.step >= steps.length && !this._tabAvailable('problem');
         // 선택 사항(sc.reviewTop 을 쓰는 풀이 흐름): 단계가 바뀌면 지금 단계가 화면 안에 보이도록 페이지를 조금 옮깁니다
         if (sc.reviewTop && this.tab === 'review' && r.__stepSeen !== s.step) {
           r.__stepSeen = s.step;
@@ -859,6 +932,8 @@
       if (pr && r.problemText) {
         APLab.setHTML(r.problemText, call(pr.text, s));
       }
+      this._normNewProb();
+      this._syncEndStep();
       if (pr && r.problemText && r.answer) {
         const open = this._answerOpen();
         r.answer.classList.toggle('open', open);
