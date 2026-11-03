@@ -560,8 +560,28 @@
       if (r.stepNew) r.stepNew.hidden = !(end && this._newProbBtn());
     }
     _stepNextClick() {
-      if (this.refs.nextMode === 'problem') { this.setTab('problem'); window.scrollTo({ top: 0 }); return; }
+      if (this.refs.nextMode === 'problem') {
+        this.setTab('problem');
+        window.scrollTo({ top: 0 });
+        // 문제 탭으로 옮긴 뒤(그리기가 끝난 다음) 열린 정답 상자가 화면 안에 오도록 스크롤합니다. 정답 상자가 없는 장면은 맨 위 그대로입니다.
+        requestAnimationFrame(() => requestAnimationFrame(() => this._showAnswer()));
+        return;
+      }
       this.stepBy(1);
+    }
+    // 문제 카드가 화면에 들어가면 카드 맨 위(문제 글과 정답이 함께 보임)로, 너무 길면 정답 상자가 온전히 보이도록 옮깁니다. 가로 폭이 좁으면 고정된 그림 무대 아래를 위쪽 한계로 씁니다.
+    _showAnswer() {
+      const r = this.refs;
+      if (this.tab !== 'problem' || !r.answer || !r.answer.classList.contains('open')) return;
+      const vh = window.innerHeight;
+      const topLim = (NARROW.matches ? this.ui.stage.getBoundingClientRect().bottom : 60) + 8;
+      const card = r.answer.closest('.apl-problem');
+      const cr = card ? card.getBoundingClientRect() : null;
+      const ar = r.answer.getBoundingClientRect();
+      let dy;
+      if (cr && cr.height <= vh - topLim - 16) dy = cr.top - topLim;
+      else dy = ar.bottom - (vh - 16);
+      if (dy > 1 || dy < -1) window.scrollBy({ top: dy, behavior: 'instant' });
     }
     _newProblemFromReview() {
       const b = this._newProbBtn();
