@@ -16,9 +16,9 @@
   const PARAMS = {
     s41K: P('삼각형의 크기', 1, 3, 1, 1, { color: 'amber', hint: '세 변을 모두 몇 배 할지 정해요(모양마다 고를 수 있는 배수가 달라요)', format: (v) => `${v}배`, clampTo: (s) => [1, KMAX41[oneOf(s.svTri, ['A', 'B', 'C', 'D'], 'A')]] }),
     s41T: P('돌리기 · 펼치기', 0, 1, 0.005, 0, { color: 'green', hint: '앞쪽 절반은 삼각형이 축을 중심으로 제자리에서 한 바퀴 돌고, 뒤쪽 절반은 겉넓이를 전개도로 펼쳐요', format: (v, s) => (v < 0.01 ? '0°' : v < 0.5 ? Math.round(v * 720) + '°' : v > 0.99 ? ((s && s.svMode === 'vol') ? '원뿔' : '전개도') : ((s && s.svMode === 'vol') ? '원뿔' : '펼치는 중')) }),
-    s42J: P('위쪽 반지름', 1, 3, 1, 1, { color: 'amber', hint: '위쪽 반지름은 3의 배수예요', format: (v) => `${3 * v} cm` }),
-    s42K: P('아랫변이 더 긴 정도', 1, 2, 1, 1, { color: 'sky', hint: '아랫변이 윗변보다 3 cm(또는 6 cm) 더 길어요. 높이와 빗변도 함께 커져요', format: (v) => `${3 * v} cm` }),
-    s42A: P('원기둥 부분의 길이', 1, 6, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
+    s42J: P('위쪽 반지름', 1, 4, 1, 1, { color: 'amber', hint: '위쪽 반지름은 3의 배수예요(아래 반지름이 15 cm를 넘지 않게 맞춰요)', format: (v) => `${3 * v} cm`, clampTo: (s) => [1, Math.min(4, 5 - Math.round(s.s42K))] }),
+    s42K: P('아랫변이 더 긴 정도', 1, 2, 1, 1, { color: 'sky', hint: '아랫변이 윗변보다 3 cm(또는 6 cm) 더 길어요. 높이와 빗변도 함께 커져요', format: (v) => `${3 * v} cm`, clampTo: (s) => [1, Math.min(2, 5 - Math.round(s.s42J))] }),
+    s42A: P('원기둥 부분의 길이', 1, 15, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
     s42T: P('돌리기 · 펼치기', 0, 1, 0.005, 0, { color: 'green', hint: '원뿔대는 앞쪽 절반은 돌리기, 뒤쪽 절반은 겉넓이는 펼치기·부피는 작은 원뿔 빼내기예요', format: (v, s) => ((s && s.svAxis2 !== 'base') ? (v < 0.01 ? '0°' : v < 0.5 ? Math.round(v * 720) + '°' : v > 0.99 ? (s.svMode === 'vol' ? '빠짐' : '전개도') : (s.svMode === 'vol' ? '작은 원뿔을 빼는 중' : '펼치는 중')) : (v < 0.01 ? '0°' : v > 0.99 ? '한 바퀴' : Math.round(v * 360) + '°')) }),
     s43T: P('돌리기 · 분해하기', 0, 1, 0.005, 0, { color: 'green', hint: '겉넓이는 앞쪽 절반이 돌리기, 뒤쪽 절반이 펼치기예요. 부피는 뒤쪽 절반에서 두 원뿔이 갈라져요', format: (v, s) => (v < 0.5 ? (v < 0.01 ? '0°' : Math.round(v * 2 * 360) + '°') : (s && s.svMode === 'vol') ? (v > 0.99 ? '분해 완료' : '가로로 분해하는 중') : (v > 0.99 ? '전개도' : '펼치는 중')) }),
     s44H: P('원기둥 부분의 높이', 1, 20, 1, 4, { color: 'amber', format: (v) => v + ' cm' }),
@@ -135,11 +135,11 @@
     const model = (s) => {
       const axis = s.svAxis2 === 'base' ? 'base' : 'leg', mode = s.svMode === 'vol' ? 'vol' : 'surf';
       if (axis === 'leg') {
-        const j = clamp(Math.round(s.s42J), 1, 3), k = clamp(Math.round(s.s42K), 1, 2), K = j + k, r1 = 3 * j, r2 = 3 * K, h = 4 * k, R2 = 5 * K, R1 = 5 * j, h2 = 4 * K, h1 = 4 * j;
+        const k = clamp(Math.round(s.s42K), 1, 2), j = clamp(Math.round(s.s42J), 1, Math.min(4, 5 - k)), K = j + k, r1 = 3 * j, r2 = 3 * K, h = 4 * k, R2 = 5 * K, R1 = 5 * j, h2 = 4 * K, h1 = 4 * j;
         const lat2 = V(0, r2 * R2), lat1 = V(0, r1 * R1), latF = vsub(lat2, lat1), top = V(0, r1 * r1), bot = V(0, r2 * r2), surf = vadd(latF, vadd(top, bot)), v2 = V(0, (r2 * r2 * h2) / 3), v1 = V(0, (r1 * r1 * h1) / 3), vol = vsub(v2, v1);
         return { axis, mode, j, k, K, r1, r2, h, R1, R2, h1, h2, lat2, lat1, latF, top, bot, surf, v2, v1, vol, ans: mode === 'vol' ? vol : surf };
       }
-      const a = clamp(Math.round(s.s42A), 1, 6), k = clamp(Math.round(s.s42K), 1, 2), hh = 4 * k, p = 3 * k, c = 5 * k, b = a + p; // 높이(반지름) hh, 원기둥 길이 a, 원뿔 높이 p, 모선 c
+      const a = clamp(Math.round(s.s42A), 1, 15), k = clamp(Math.round(s.s42K), 1, 2), hh = 4 * k, p = 3 * k, c = 5 * k, b = a + p; // 높이(반지름) hh, 원기둥 길이 a, 원뿔 높이 p, 모선 c
       const base = V(0, hh * hh), cylLat = V(0, 2 * hh * a), coneLat = V(0, hh * c), surf = vadd(base, vadd(cylLat, coneLat)), vcyl = V(0, hh * hh * a), vcone = V(0, (hh * hh * p) / 3), vol = vadd(vcyl, vcone);
       return { axis, mode, a, k, hh, p, c, b, base, cylLat, coneLat, surf, vcyl, vcone, vol, ans: mode === 'vol' ? vol : surf };
     };
@@ -458,7 +458,7 @@
       const pa = (rr, yy, off) => add3(v3(rr * Math.cos(A0), yy, rr * Math.sin(A0)), D.hx(off));
       D.dim(pa(r, yC, 2 * dx), pa(0, yC + hc, 2 * dx), `모선 ${M.R}`, { side: { x: 1, y: 0 }, off: 20 });
       D.height(pa(0, yC, 2 * dx), pa(0, yC + hc, 2 * dx), `원뿔의 높이 ${M.hc}`, { side: { x: -1, y: 0 }, alongFrac: -0.1, color: 'amber' });
-      D.dim(pa(r, yH, dx), pa(r, yC, dx), `원기둥의 높이 ${M.H}`, { side: { x: 1, y: 0 }, off: 20, color: 'amber' });
+      D.dim(pa(r, yH, dx), pa(r, yC, dx), `높이 ${M.H}`, { side: { x: 1, y: 0 }, off: 20, color: 'amber' });
       D.radius(lp(pa(0, yH, 0)), lp(pa(r, yH, 0)), `반지름 ${M.r}`, { end: true });
       if (!C.problem && dx > r * 0.5) {
         const sv = M.mode === 'vol', hy = flipE > 0.5 ? { dy: r * b.k * Math.abs(D.cam.sp) + 22 } : { dy: 22 }; // 뒤집힌 반구는 밑면 아래 바깥에

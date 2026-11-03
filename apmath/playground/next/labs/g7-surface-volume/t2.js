@@ -453,7 +453,7 @@
             if (dot3(tp[idx].n, vw) < 0.35) return;
             const bmid = mid3(A[k], A[(k + 1) % 4]), tmid = pyr ? B[0] : mid3(B[k], B[(k + 1) % 4]), f = pyr ? 0.34 : 0.5;
             const pl = px(at(idx, lerp3(A[k], pyr ? B[0] : B[k], f))), pr = px(at(idx, lerp3(A[(k + 1) % 4], pyr ? B[0] : B[(k + 1) % 4], f))), wpx = Math.hypot(pl.x - pr.x, pl.y - pr.y);
-            D.areaLab(at(idx, lerp3(bmid, tmid, f)), '옆면', plainVal(eachLat), { maxW: wpx * 0.9, dx: idx === fr ? -0.22 * wpx : 0 });
+            D.areaLab(at(idx, lerp3(bmid, tmid, f)), wpx < 58 ? '' : '옆면', plainVal(eachLat), { maxW: wpx * 0.9, dx: idx === fr ? -0.22 * wpx : 0, size: wpx < 58 ? 13 : 15, color: wpx < 58 ? 'green' : 'ink' });
           });
           [sn.bot, sn.top].forEach((k) => {
             if (k < 0 || !tp[k].front) return;
