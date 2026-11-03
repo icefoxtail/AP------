@@ -19,8 +19,8 @@
     s2H: P('높이 h', 2, 9, 1, 6, { color: 'sky', format: (v) => v + ' cm' }),
     s2T: P('움직여 보기', 0, 1, 0.01, 0, { color: 'green', format: (v, s) => ((s && s.svMode2 === 'pour') ? (v < 0.02 ? '비어 있음' : v > 0.98 ? '3번 부음' : `${Math.min(3, Math.floor(v * 3 + 0.001) + (v * 3 % 1 > 0.0 ? 1 : 0))}번째 붓는 중`) : (v < 0.02 ? '합쳐진 정육면체' : v > 0.98 ? '모두 갈라 놓음' : Math.round(v * 100) + '%')) }),
     // sv2-2
-    s2r: P('밑면의 반지름 r', 2, 6, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
-    s2G: P('모선의 길이 R', 3, 12, 1, 5, { color: 'sky', hint: 'R은 r보다 커야 해요(작으면 r+1로 맞춰요)', format: (v) => v + ' cm', clampTo: (s) => [Math.round(s.s2r) + 1, 12] }),
+    s2r: P('밑면의 반지름', 2, 6, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
+    s2G: P('모선의 길이', 3, 12, 1, 5, { color: 'sky', hint: '모선의 길이는 반지름보다 길어야 해요(짧으면 반지름+1로 맞춰요)', format: (v) => v + ' cm', clampTo: (s) => [Math.round(s.s2r) + 1, 12] }),
     s2U: P('펼치기', 0, 1, 0.01, 0, { color: 'green', format: (v) => (v < 0.02 ? '입체' : v > 0.98 ? '전개도' : Math.round(v * 100) + '%') }),
     // sv2-3
     s3K: P('크기 배율 k', 1, 2, 1, 1, { color: 'amber', hint: '세 수 (r, h, R)를 k배 해요', format: (v) => `${v}배` }),
@@ -179,37 +179,52 @@
   function sv22() {
     const model = (s) => { const r = clamp(Math.round(s.s2r), 2, 6), R = Math.max(clamp(Math.round(s.s2G), 3, 12), r + 1); s.s2r = r; s.s2G = R; return coneModel(r, R); };
     const draw = (b, s, M, C) => {
-      const { r, R, h } = M, sc = 4.6 / Math.max(R, 2 * r), ru = r * sc, hu = h * sc, Ru = R * sc, st = C.step;
+      const { r, R, h } = M, sc = 4.6 / Math.max(R, 2 * r), ru = r * sc, hu = h * sc, st = C.step;
       const sn = solidNet(circleBase(ru, 36), hu, 0, Array(36).fill(true), 18);
       const lvB = !C.review ? 1 : st === 1 ? 2 : 3, lvL = !C.review ? 1 : st === 1 ? 0 : st === 2 ? 2 : 3;
-      const t = C.problem ? 0 : C.t;
+      const t = C.problem ? 0 : C.t, eNow = G.ease(t), glue = eNow > 0.3 && !C.problem && !b.thumb;
+      const hInt = Math.abs(h - Math.round(h)) < 1e-9; // 높이가 √ 꼴이면 숫자는 쓰지 않고 이름만
       netScene(b, s, C, {
-        sn, t, fitOpt: { l: 40, r: 40, t: 40, b: 40 },
-        style: (pc) => roleStyle(pc.tag === 'lat' ? 'lat' : 'base', pc.tag === 'lat' ? lvL : lvB),
+        sn, t, fitOpt: { l: 60, r: 60, t: 44, b: 56 },
+        // 부채꼴의 호 ↔ 밑면의 둘레(둘레가 같다)는 같은 색
+        style: (pc) => Object.assign(roleStyle(pc.tag === 'lat' ? 'lat' : 'base', pc.tag === 'lat' ? lvL : lvB), {
+          edgeStyle: (e, p) => (glue && ((p.tag === 'lat' && e.i === 0) || p.tag === 'bot') ? { color: 'violet', width: 3.6 } : null)
+        }),
         labels: (ctx) => {
-          const { D, tp } = ctx, vw = D.vw, A = sn.A, apex = sn.B[0], m = 18;
-          // 모선 R: 뿌리 옆면의 왼쪽 모서리
-          D.elabel(ctx.at(sn.root, apex), ctx.at(sn.root, A[m]), `R=${R}`, { side: { x: -1, y: 0 }, color: 'amber', size: 15, gap: 8 });
-          // 밑면: 반지름 r
-          const k = sn.bot;
-          const c0 = ctx.at(k, centroid(A)), rim = ctx.at(k, A[27]);
-          const front = tp[k].front;
-          D.line(c0, rim, 'ink', 2.4, { dash: front ? undefined : [5, 4] });
-          D.dot(c0, 'ink', 3.5);
-          D.tag(mid3(c0, rim), `r=${r}`, { dy: front ? -12 : 14, size: 14, color: 'amber' });
-          if (front && !C.problem) D.tag(c0, `πr²=${plainVal(M.S)}`, { dy: 16, size: 14 });
-          // 호의 길이 = 밑면의 둘레
-          if (!C.problem && ctx.e > 0.7) {
-            const bm = mid3(ctx.at(sn.root, A[m]), ctx.at(sn.root, A[m + 1]));
-            D.label(bm, `호 = 밑면의 둘레 2πr = ${plainVal(M.arc)}`, { dir: D.out(bm, ctx.at(sn.root, apex)), gap: 14, color: 'amber', size: 15 });
-            const cs = sn.lat.map((idx) => ctx.at(idx, centroid(sn.net.pieces[idx].pts)));
-            D.tag(centroid(cs), `옆넓이 πRr = ${plainVal(M.lat)}`, { size: 15 });
+          if (b.thumb) return;
+          const { D, tp, e } = ctx, A = sn.A, apex = sn.B[0], L = sn.lat, at = ctx.at, kb = sn.bot;
+          const solidA = 1 - G.lin01(e, 0.05, 0.45), flatA = G.lin01(e, 0.78, 0.98);
+          const c0 = at(kb, centroid(A)), cs3 = centroid(L.map((idx) => at(idx, centroid(sn.net.pieces[idx].pts))));
+          // 반지름: 밑면 중심에서 오른쪽 앞으로(밑면이 가려지면 점선)
+          D.radius(c0, D.rimPick(c0, A.map((p) => at(kb, p))), `반지름 ${r}`, { dash: !tp[kb].front, end: true });
+          // 입체: 왼쪽 윤곽선의 모선 + 높이(점선·직각 표시)
+          if (solidA > 0.02) {
+            const ap = D.px(at(L[0], apex));
+            let best = 0, ba = -9;
+            A.forEach((p, k) => { const q = D.px(at(L[k], p)), ang = Math.atan2(q.y - ap.y, q.x - ap.x); if (ang > ba) { ba = ang; best = k; } });
+            D.edgeLab(at(L[best], apex), at(L[best], A[best]), `모선 ${R}`, { from: c0, alpha: solidA });
+            D.height(c0, at(L[0], apex), hInt ? `높이 ${Math.round(h)}` : '높이', { alpha: solidA, side: { x: 1, y: 0 } });
+          }
+          // 전개도: 부채꼴의 반지름 = 모선, 호의 길이 = 밑면의 둘레, 넓이 이름표
+          if (flatA > 0.02) {
+            D.edgeLab(at(L[1], apex), at(L[1], A[1]), `모선 ${R}`, { from: cs3, alpha: flatA });
+            if (!C.problem) {
+              D.edgeLab(at(L[9], A[9]), at(L[9], A[10]), `호의 길이 ${plainVal(M.arc)}`, { from: c0, color: 'violet', alpha: flatA });
+              let k2 = 0, bs = -2;
+              const dir = { x: Math.cos(1.0), y: Math.sin(1.0) }, cp = D.px(c0);
+              A.forEach((p, k) => { const q = D.px(at(kb, p)), l = Math.hypot(q.x - cp.x, q.y - cp.y) || 1, sc2 = ((q.x - cp.x) * dir.x + (q.y - cp.y) * dir.y) / l; if (sc2 > bs) { bs = sc2; k2 = k; } });
+              D.edgeLab(at(kb, A[k2]), at(kb, A[(k2 + 1) % A.length]), `밑면의 둘레 ${plainVal(M.arc)}`, { from: c0, color: 'violet', alpha: flatA });
+              const rr = Math.hypot(D.px(at(kb, A[0])).x - cp.x, D.px(at(kb, A[0])).y - cp.y);
+              D.areaLab(c0, '밑넓이', plainVal(M.S), { dx: -0.4 * rr, dy: -0.04 * rr, maxW: rr * 1.05, alpha: flatA });
+              const ra = at(L[18], apex), rb = G.mid3(at(L[18], A[18]), at(L[18], A[19]));
+              D.areaLab(G.lerp3(ra, rb, 0.3), '옆넓이', plainVal(M.lat), { alpha: flatA });
+            }
           }
         }
       });
     };
     return {
-      id: 'sv2-2', title: '원뿔의 옆넓이 πRr', short: '원뿔 옆넓이',
+      id: 'sv2-2', title: '원뿔의 옆넓이 πrl', short: '원뿔 옆넓이',
       question: '원뿔의 옆면을 펼치면 어떤 모양이 될까? 그 모양의 반지름과 호의 길이는 원뿔의 어디와 같을까?',
       anim: { key: 's2U', dur: 5, label: '펼쳐 보기' }, cam0: { yaw: 28, pitch: 22 }, stepT: () => 1, thumbT: 1, problemT: 0,
       ctl: () => ['s2r', 's2G', 's2U'],
@@ -218,28 +233,28 @@
       model, draw,
       check: (s) => { const M = model(s); let a = 0; const N = 4000, th = (2 * PI * M.r) / M.R; for (let i = 0; i < N; i++) a += 0.5 * M.R * M.R * (th / N); return { ans: PI * M.r * M.r + a, model: vnum(M.tot) }; },
       steps: (M) => [
-        `밑면은 반지름 $${M.r}$인 원이에요. 밑넓이 $\\pi r^2=\\pi\\times${M.r}^2=${tx(M.S)}\\,\\mathrm{cm}^2$예요.`,
-        `옆면을 펼치면 반지름이 모선 $R=${M.R}$이고 호의 길이가 밑면의 둘레 $2\\pi r=${tx(M.arc)}$인 부채꼴이에요. 넓이 $=\\frac{1}{2}\\times R\\times(\\text{호})=\\frac{1}{2}\\times${M.R}\\times${tx(M.arc)}=${tx(M.lat)}\\,\\mathrm{cm}^2$ ($=\\pi Rr$)예요.`,
-        `(겉넓이) $=${tx(M.S)}+${tx(M.lat)}=${tx(M.tot)}\\,\\mathrm{cm}^2$ ($=\\pi r(r+R)$)예요.`
+        `밑면은 반지름 $${M.r}$인 원이에요. 밑넓이 $=\\pi\\times${M.r}^2=${tx(M.S)}\\,\\mathrm{cm}^2$예요.`,
+        `옆면을 펼치면 반지름이 모선의 길이 $${M.R}$이고 호의 길이가 밑면의 둘레 $2\\times\\pi\\times${M.r}=${tx(M.arc)}$인 부채꼴이에요. 넓이 $=\\frac{1}{2}\\times(\\text{반지름})\\times(\\text{호의 길이})=\\frac{1}{2}\\times${M.R}\\times${tx(M.arc)}=${tx(M.lat)}\\,\\mathrm{cm}^2$ ($=\\pi\\times${M.r}\\times${M.R}=\\pi rl$)예요.`,
+        `(겉넓이) $=$ (밑넓이) $+$ (옆넓이) $=${tx(M.S)}+${tx(M.lat)}=${tx(M.tot)}\\,\\mathrm{cm}^2$ ($=\\pi r^2+\\pi rl$)예요.`
       ],
       view: (M) => ({
-        guide: `<b>펼치기</b> 막대를 끌거나 ▶를 눌러 원뿔을 펼쳐 보세요. ${span('green', '옆면')}은 부채꼴이에요. <b>반지름 r</b>과 <b>모선 R</b>을 바꾸면 부채꼴의 모양이 어떻게 달라지는지 살펴보세요.`,
+        guide: `<b>펼치기</b> 막대를 끌거나 ▶를 눌러 원뿔을 펼쳐 보세요. ${span('green', '옆면')}은 부채꼴이에요. <b>반지름</b>과 <b>모선의 길이</b>를 바꾸면 부채꼴의 모양이 어떻게 달라지는지 살펴보세요.`,
         readouts: [
-          rd('밑넓이 πr²', plainVal(M.S) + ' cm²', 'sky'),
-          rd('부채꼴의 호 2πr', plainVal(M.arc) + ' cm', 'amber', '밑면의 둘레'),
-          rd('옆넓이 πRr', plainVal(M.lat) + ' cm²', 'green', `½ × ${M.R} × ${plainVal(M.arc)}`),
-          rd('겉넓이', plainVal(M.tot) + ' cm²', 'amber', 'πr² + πRr')
+          rd('밑넓이', plainVal(M.S) + ' cm²', 'sky', `π × ${M.r} × ${M.r}`),
+          rd('부채꼴의 호의 길이', plainVal(M.arc) + ' cm', 'amber', `밑면의 둘레 2 × π × ${M.r}`),
+          rd('옆넓이', plainVal(M.lat) + ' cm²', 'green', `½ × ${M.R} × ${plainVal(M.arc)}`),
+          rd('겉넓이', plainVal(M.tot) + ' cm²', 'amber', `${plainVal(M.S)} + ${plainVal(M.lat)}`)
         ],
-        formula: `<p>(원뿔의 겉넓이) $=\\pi r^2+\\pi R r=\\pi r(r+R)$ &nbsp; ($r$ 밑면의 반지름, $R$ 모선의 길이)</p>`,
-        rule: '원뿔의 옆면은 부채꼴: 반지름 = 모선 R, 호의 길이 = 밑면의 둘레 2πr',
-        notes: notes('부채꼴의 반지름은 밑면의 반지름 $r$이 아니라 <b>모선 $R$</b>이에요.', '옆넓이는 $\\pi R r$이에요. 높이 $h$를 곱하지 않아요.')
+        formula: `<p>(원뿔의 겉넓이) $=\\pi r^2+\\pi r l$ &nbsp; ($r$ 밑면의 반지름, $l$ 모선의 길이)</p>`,
+        rule: '원뿔의 옆면은 부채꼴: 반지름 = 모선의 길이, 호의 길이 = 밑면의 둘레',
+        notes: notes('부채꼴의 반지름은 밑면의 반지름 $r$이 아니라 <b>모선의 길이 $l$</b>이에요.', '옆넓이는 $\\pi r l$이에요. 높이를 곱하지 않아요.')
       }),
       prob: (M) => {
         const wrongs = [
           [M.lat, '옆넓이만 구했어요. 밑넓이 $\\pi r^2$도 더해야 해요.'],
-          [vadd(M.S, vmul(V(0, M.r * M.R), 2)), '옆넓이는 $\\pi Rr$이에요. 두 배로 계산했어요.'],
-          [vadd(M.S, V(0, M.R * M.R)), '부채꼴 전체(반지름 $R$인 원)의 넓이를 썼어요. 부채꼴은 $\\frac{r}{R}$만큼이에요.'],
-          [vadd(M.S, V(0, M.r * M.r)), '옆넓이를 $\\pi r^2$으로 계산했어요. 모선 $R$을 써야 해요.'],
+          [vadd(M.S, vmul(V(0, M.r * M.R), 2)), '옆넓이는 $\\pi rl$이에요. 두 배로 계산했어요.'],
+          [vadd(M.S, V(0, M.R * M.R)), '부채꼴 전체(반지름이 모선의 길이인 원)의 넓이를 썼어요. 부채꼴은 그중 $\\frac{r}{l}$만큼이에요.'],
+          [vadd(M.S, V(0, M.r * M.r)), '옆넓이를 $\\pi r^2$으로 계산했어요. 모선의 길이 $l$을 써야 해요.'],
           [vadd(V(0, 2 * M.r * M.r), M.lat), '밑면은 1개예요(뿔의 꼭대기에는 밑면이 없어요).']
         ];
         return { tag: '원뿔의 겉넓이', key: `${M.r}|${M.R}`, stem: `그림과 같이 밑면의 반지름이 $${M.r}\\,\\mathrm{cm}$이고 모선의 길이가 $${M.R}\\,\\mathrm{cm}$인 원뿔의 겉넓이는?`, choices: mkV(M.tot, wrongs, { dim: 2 }) };
