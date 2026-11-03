@@ -7,7 +7,10 @@
 
 - `archive/data/meta-foundation/crosswalks/**`는 다른 세션이 계속 행을 덧붙이는 공유 파일이다. 승인된 Generated Meta가 박아 둔 파일 통해시(`rpmDraftAuthoritySha256`, `rpmAuthoritySha256`)는 이 파일이 자라면 달라진다. 가드는 고정된 옛 해시를 (1) 봉인된 영수증(`archive/tools/sealed-crosswalk-digests.cjs`)이 같은 파일에 대해 기록한 해시이고 (2) Meta가 가리키는 행이 현재 파일에 그대로 있을 때(코스·단원·소단원·L1~L3, 생성 L4가 아니면 L4 라벨 일치)만 받는다. 어느 쪽이든 어긋나면 그대로 실패시킨다. 승인·영수증·학생 화면 내용은 고치지 않는다.
 - `auto-register-approved-qid9.mjs`는 기존 승인 기록을 "다시 계산한 Meta와 크로스워크 해시 필드만 다르다"(해시를 같게 맞춘 정규화 비교) + 위 두 조건일 때만 변경 없음으로 넘긴다. 소스 샤드·시각 결속·샤드 드리프트·중복 검사는 그대로다. 새 가드를 만들 때도 통해시 동일성 대신 이 방식을 쓴다.
-- 이유: 2026-11-03 f8e9ca610(고1 2학기 기말 유사 5건의 크로스워크 행 추가)이 `high1.json` 통해시를 바꿔 승인 Palma UID 약 171건의 Meta가 옛 해시를 가리키게 됐고, 학생 내용은 그대로인데 CI(`EXISTING_APPROVED_UID_REQUIRES_PINPOINT_REPAIR`)와 학생 사이트 배포가 막혔다. 주의: 봉인 영수증(현재 2개)에 없는 해시를 박은 기록은 다음 추가 때 같은 이유로 막힌다. 그런 기록이 생기면 봉인 목록에 영수증을 더하는 방안을 사용자와 정한다(임의로 목록을 넓히지 않는다).
+- 이유: 2026-11-03 f8e9ca610(고1 2학기 기말 유사 5건의 크로스워크 행 추가)이 `high1.json` 통해시를 바꿔 승인 Palma UID 약 171건의 Meta가 옛 해시를 가리키게 됐고, 학생 내용은 그대로인데 CI(`EXISTING_APPROVED_UID_REQUIRES_PINPOINT_REPAIR`)와 학생 사이트 배포가 막혔다. 이 때문에 봉인을 영수증 2개에 손으로 두지 않고 아래 레지스트리로 자동화했다(2026-11-03 사용자 승인).
+- **봉인 레지스트리:** `archive/data/meta-foundation/crosswalks/sealed-digests.v1.json`(추가 전용, 항목 = path·sha256·gitBlobSha1·sealedAt·sealedBy·reason). `crosswalkDigestAccepted`는 현재 해시, 영수증, 레지스트리에 같은 경로로 봉인된 해시만 받는다(경로가 다르면 불가). 레지스트리가 깨지면(중복·형식 오류·`crosswalks/` 밖 경로) 실패 쪽으로 닫는다.
+- **등록 때 자동 봉인:** Meta에 통해시를 박는 도구(`register-approved-generated-meta.mjs`, 이를 부르는 `auto-register-approved-qid9.mjs`, `backfill-generated-meta.cjs`, `build-generated-meta-browse-aliases.cjs`)는 자기가 실제로 읽은 크로스워크 바이트의 해시를 같은 쓰기에서 덧붙인다(멱등). 현재도 봉인도 아닌 해시를 박은 Meta는 `auto-register ... --check`와 게이트에서 `CROSSWALK_DIGEST_NOT_SEALED`로 실패하므로 PR 단계에서 잡힌다. 새 도구를 만들 때도 `planSeal`로 같은 방식을 쓴다.
+- **백필은 git 이력으로 검증되는 것만:** `node archive/tools/backfill-sealed-crosswalk-digests.cjs [--write]`는 저장소의 승인 Meta가 박은 해시를 모아 그 크로스워크 파일의 실제 과거 버전(`git log -- <path>`)과 일치하는 것만 봉인하고, 일치 없는 해시는 봉인하지 않고 목록으로 보고한다. 이유: 추가 전용 공유 파일 때문에 행이 그대로인 승인 항목이 막혀서는 안 된다. 봉인은 증거일 뿐 면제가 아니다(Meta가 가리키는 행 검사는 그대로).
 
 ## CURRENT TOP — 단일 메타 Resolver 연결 (2026-10-30)
 
