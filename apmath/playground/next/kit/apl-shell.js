@@ -975,7 +975,7 @@
       const presH = ui.presenter.hidden ? 0 : ui.presenter.offsetHeight + 22;
       const ins = {
         top: ui.chips.childElementCount ? ui.chips.offsetHeight + 18 : 0,
-        right: 0,
+        right: narrow ? 0 : 16, // 넓은 화면: 도구 막대 자리는 비웠지만 오른쪽 끝 라벨이 잘리지 않을 만큼의 여백만 둡니다(예전에는 도구 폭 + 16px)
         // 넓은 화면: 도구 막대는 모서리의 작은 반투명 막대라 그림 영역을 따로 비우지 않습니다(비우면 높이에 맞춘 그림이 8~12% 작아져 라벨이 서로 겹침).
         // 수업 모드 발표 막대가 있으면 막대가 그 위로 올라가므로 그만큼만 비웁니다.
         bottom: narrow ? Math.max(Math.max(ui.tools.offsetHeight, Math.min(ui.tr.offsetHeight, 60)) + 14, presH) : presH
