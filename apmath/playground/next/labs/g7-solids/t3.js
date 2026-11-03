@@ -19,16 +19,17 @@
   const pkT = (n) => (n === 1 ? '\\pi' : n + '\\pi');
 
   const PARAMS = {
-    soCr: P('밑면의 반지름 r', 1, 3, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
-    soCh: P('높이 h', 2, 6, 1, 4, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
+    soCr: P('밑면의 반지름 r', 1, 15, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
+    soCr3: P('밑면의 반지름 r', 1, 7, 1, 2, { color: 'sky', hint: 'R = r × (배)라서 r은 7 cm까지만 정해요', format: (v) => Math.round(v) + ' cm' }),
+    soCh: P('높이 h', 2, 20, 1, 4, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
     soRl: P('옆면 펼친 정도', 0, 1, 0.005, 0.5, { color: 'amber', hint: '오른쪽으로 끌면 옆면이 한 줄로 오른쪽으로 펼쳐져요', format: (v) => (v * 100 >= 99.5 ? '한 바퀴' : Math.round(v * 360) + '°') }),
-    soNr: P('밑면의 반지름 r', 1, 6, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
-    soNR: P('모선의 길이 R', 2, 9, 1, 6, { color: 'amber', hint: 'R은 r보다 길어야 해요', format: (v) => Math.round(v) + ' cm' }),
+    soNr: P('밑면의 반지름 r', 1, 14, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
+    soNR: P('모선의 길이 R', 2, 15, 1, 6, { color: 'amber', hint: 'R은 r보다 길어야 해요', format: (v) => Math.round(v) + ' cm' }),
     soNt: P('호와 둘레 비교하기', 0, 1, 0.005, 0.5, { color: 'amber', hint: '오른쪽으로 끌면 색이 칠해지며 길이가 같아지는 것을 볼 수 있어요', format: (v) => Math.round(v * 100) + '%' }),
     soNk: P('R은 r의 몇 배', 2, 6, 1, 3, { color: 'amber', format: (v) => 'R = ' + Math.round(v) + ' × r' }),
     soNq: P('조각 밀기', 0, 1, 0.005, 0.4, { color: 'green', hint: '오른쪽으로 끌면 조각이 가로로 밀려 맞물려요', format: (v) => Math.round(v * 100) + '%' }),
-    soF1: P('작은 밑면의 반지름', 1, 4, 1, 2, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
-    soF2: P('큰 밑면의 반지름', 2, 6, 1, 4, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
+    soF1: P('작은 밑면의 반지름', 1, 6, 1, 2, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
+    soF2: P('큰 밑면의 반지름', 2, 7, 1, 4, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
     soFk: P('모선은 반지름의 몇 배', 2, 5, 1, 3, { color: 'amber', format: (v) => '× ' + Math.round(v) }),
     soFg: P('작은 부채꼴 빼기', 0, 1, 0.005, 1, { color: 'rose', hint: '작은 부채꼴이 가로로 빠져요', format: (v) => Math.round(v * 100) + '%' })
   };
@@ -111,7 +112,7 @@
   }
 
   /* ================================================================== s3-1 원기둥 굴리기 */
-  const rollM = (s) => { const r = clamp(Math.round(s.soCr), 1, 3), h = clamp(Math.round(s.soCh), 2, 6); return { r, h, t: clamp(s.soRl, 0, 1), sol: S3.solid('cyl', { R: r, h1: h }), pr: s.soPr || 3, ph: s.soPh || 5 }; };
+  const rollM = (s) => { const r = clamp(Math.round(s.soCr), 1, 15), h = clamp(Math.round(s.soCh), 2, 20); return { r, h, t: clamp(s.soRl, 0, 1), sol: S3.solid('cyl', { R: r, h1: h }), pr: s.soPr || 3, ph: s.soPh || 5 }; };
   const S = [];
   S.push({
     id: 's3-1', noView: true, title: '원기둥의 옆면을 펼치면 직사각형', short: '원기둥 옆면 펼치기',
@@ -163,17 +164,20 @@
       if (C.txt) {
         T(b, { x: X0 + w / 2, y: Y0 + h }, `가로 = 밑면의 둘레 = 2π × ${r} = ${2 * r}π cm`, AMB, { dy: -17, size: 16 });
         const rwPx = w * b.k; // 직사각형이 좁으면 세로 길이 글자를 오른쪽 바깥에 둡니다
-        if (rwPx < 150) T(b, { x: X0 + w, y: Y0 + h / 2 }, `세로 h = ${h} cm`, AMB, { dx: 8, align: 'left', size: 16 });
+        const thin = h * b.k < 26; // 직사각형이 아주 납작하면 세로 글자를 직사각형 아래에 둬요(선과 겹치지 않게)
+        if (thin) T(b, { x: X0 + w / 2, y: Y0 }, `세로 h = ${h} cm`, AMB, { dy: 20, size: 16 });
+        else if (rwPx < 150) T(b, { x: X0 + w, y: Y0 + h / 2 }, `세로 h = ${h} cm`, AMB, { dx: 8, align: 'left', size: 16 });
         else T(b, { x: X0 + w, y: Y0 + h / 2 }, `세로 h = ${h} cm`, AMB, { dx: -62, size: 16 });
         const c0 = D.P({ x: 0, y: 0, z: 0 }), rimP = D.P(D.pol(r, 0, 0));
         b.seg(c0, rimP, { color: SKY, width: 2.6 });
         S3.rLabel(b, D, r, `r = ${r}`, SKY, 16);
         const hm = D.P({ x: r, y: h / 2, z: 0 });
-        T(b, hm, `h = ${h}`, AMB, { dx: 36, size: 15 });
+        const hdx = b.toS(hm).x + 36 + G.textW(`h = ${h}`, G.FS(b, 15)) / 2 > b.W - 8 ? -36 : 36; // 원기둥이 무대 폭을 거의 채우면 h 글자를 입체 안쪽(왼쪽)에 둬요
+        T(b, hm, `h = ${h}`, AMB, { dx: hdx, size: 15 });
         if (C.review && C.step >= 3) {
           const full = `옆넓이 = ${2 * r}π × ${h} = ${2 * r * h}π cm²`, short = `옆넓이 = ${2 * r * h}π cm²`, wide = w * b.k - 12 >= G.textW(full, G.FS(b, 17));
           if (wide) T(b, { x: X0 + w / 2, y: Y0 + h / 2 }, full, GRN, { size: 17 });
-          else T(b, { x: X0 + w / 2, y: Y0 }, short, GRN, { size: 16, dy: 20 }); // 좁으면 짧은 식을 직사각형 아래에
+          else T(b, { x: X0 + w / 2, y: Y0 }, short, GRN, { size: 16, dy: thin ? 42 : 20 }); // 좁으면 짧은 식을 직사각형 아래에
         }
       }
     },
@@ -228,7 +232,7 @@
   }
 
   /* ================================================================== s3-2 원뿔 펼치기 */
-  const coneM = (s) => { const r = clamp(Math.round(s.soNr), 1, 6), R = Math.max(clamp(Math.round(s.soNR), 2, 9), r + 1); return { r, R, x: xOf(r, R), t: clamp(s.soNt, 0, 1) }; };
+  const coneM = (s) => { const r = clamp(Math.round(s.soNr), 1, 14), R = Math.max(clamp(Math.round(s.soNR), 2, 15), r + 1); return { r, R, x: xOf(r, R), t: clamp(s.soNt, 0, 1) }; };
   const xTxt = (x) => (Math.abs(x - Math.round(x)) < 1e-6 ? String(Math.round(x)) : fmtN(x, 1));
   const CONE_PAIRS = (() => { const o = []; for (let r = 1; r <= 5; r++) for (let R = r + 1; R <= 9; R++) if ((360 * r) % R === 0) o.push([r, R]); return o; })();
   S.push({
@@ -310,12 +314,12 @@
   });
 
   /* ================================================================== s3-3 중심각 구하기 */
-  const angM = (s) => { const r = clamp(Math.round(s.soCr), 1, 3), k = clamp(Math.round(s.soNk), 2, 6); return { r, k, R: r * k, x: 360 / k }; };
+  const angM = (s) => { const r = clamp(Math.round(s.soCr3), 1, 7), k = clamp(Math.round(s.soNk), 2, 6); return { r, k, R: r * k, x: 360 / k }; };
   S.push({
     id: 's3-3', noView: true, title: '[핵심] 중심각은 r : R로 정해져요', short: '[핵심] 중심각 구하기',
     question: '밑면의 반지름 r와 모선 R의 비가 정해지면 전개도 부채꼴의 중심각은 얼마일까?',
-    ctl: ['soCr', 'soNk'], presets: () => [2, 3, 4, 6].map((k, i) => ({ group: i === 0 ? 'r : R' : '', label: `1 : ${k}`, apply: (st) => { st.soNk = k; }, on: (st) => Math.round(st.soNk) === k })),
-    init: (s) => { s.soCr = 2; s.soNk = 3; },
+    ctl: ['soCr3', 'soNk'], presets: () => [2, 3, 4, 6].map((k, i) => ({ group: i === 0 ? 'r : R' : '', label: `1 : ${k}`, apply: (st) => { st.soNk = k; }, on: (st) => Math.round(st.soNk) === k })),
+    init: (s) => { s.soCr3 = 2; s.soNk = 3; },
     reroll: (s) => { s.soQk = pick([2, 3, 4, 5, 6], s.soQk); s.soQr = pick([1, 2, 3], s.soQr); s.soQv = pick(['x', 'ratio'], s.soQv); },
     model: (s) => Object.assign(angM(s), { qk: s.soQk || 4, qr: s.soQr || 2, qv: s.soQv || 'x' }),
     draw(b, s, M, C) {
@@ -372,7 +376,7 @@
   });
 
   /* ================================================================== s3-4 원뿔의 옆넓이 = πRr */
-  const areaM = (s) => { const r = clamp(Math.round(s.soNr), 1, 4), R = Math.max(clamp(Math.round(s.soNR), 2, 9), r + 1); return { r, R, x: xOf(r, R), q: clamp(s.soNq, 0, 1) }; };
+  const areaM = (s) => { const r = clamp(Math.round(s.soNr), 1, 14), R = Math.max(clamp(Math.round(s.soNR), 2, 15), r + 1); return { r, R, x: xOf(r, R), q: clamp(s.soNq, 0, 1) }; };
   S.push({
     id: 's3-4', noView: true, title: '원뿔의 옆넓이는 πRr', short: '옆넓이 = πRr',
     question: '원뿔의 옆면인 부채꼴의 넓이는 어떻게 구할까? 부채꼴을 잘게 잘라 다시 배열하면 어떤 도형에 가까워질까?',
@@ -449,7 +453,7 @@
   });
 
   /* ================================================================== s3-5 원뿔대의 전개도 */
-  const frM = (s) => { const r2 = clamp(Math.round(s.soF2), 2, 6), r1 = clamp(Math.min(Math.round(s.soF1), r2 - 1), 1, 4), k = clamp(Math.round(s.soFk), 2, 5); return { r1, r2, k, R1: k * r1, R2: k * r2, x: 360 / k, g: clamp(s.soFg, 0, 1), side: k * (r2 - r1) }; };
+  const frM = (s) => { const r2 = clamp(Math.round(s.soF2), 2, 7), r1 = clamp(Math.min(Math.round(s.soF1), r2 - 1), 1, 6), k = clamp(Math.round(s.soFk), 2, 5); return { r1, r2, k, R1: k * r1, R2: k * r2, x: 360 / k, g: clamp(s.soFg, 0, 1), side: k * (r2 - r1) }; };
   S.push({
     id: 's3-5', noView: true, title: '원뿔대의 전개도', short: '원뿔대 전개도',
     question: '원뿔대의 옆면을 펼치면 어떤 모양일까? 큰 부채꼴에서 작은 부채꼴을 빼면 무엇이 남을까?',

@@ -18,11 +18,11 @@
   const cmv = (v) => fmtN(v) + ' cm';
 
   const PARAMS = {
-    soTr: P('밑면의 반지름 r', 1, 4, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm', onInput: (st) => { st.soTR = Math.max(st.soTR == null ? 6 : st.soTR, 2 * Math.round(st.soTr)); } }),
-    soTR: P('모선의 길이 R', 2, 9, 1, 6, { color: 'amber', hint: '끈이 한 바퀴를 도는 경우만 다뤄요: R은 r의 2배 이상(중심각 180° 이하)', format: (v) => Math.round(v) + ' cm', onInput: (st) => { st.soTR = Math.max(st.soTR, 2 * Math.round(st.soTr)); } }),
-    soTp: P('점 P의 위치 (꼭짓점에서의 거리)', 1, 12, 1, 3, { color: 'amber', hint: '모선을 따라 꼭짓점 O에서 떨어진 거리', format: (v) => Math.round(v) + ' cm' }),
-    soTf: P('작은 밑면의 반지름', 1, 4, 1, 2, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
-    soTg: P('큰 밑면의 반지름', 2, 6, 1, 4, { color: 'sky', format: (v) => Math.round(v) + ' cm' })
+    soTr: P('밑면의 반지름 r', 1, 7, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm', onInput: (st) => { st.soTR = Math.max(st.soTR == null ? 6 : st.soTR, 2 * Math.round(st.soTr)); } }),
+    soTR: P('모선의 길이 R', 2, 15, 1, 6, { color: 'amber', hint: '끈이 한 바퀴를 도는 경우만 다뤄요: R은 r의 2배 이상(중심각 180° 이하)', format: (v) => Math.round(v) + ' cm', onInput: (st) => { st.soTR = Math.max(st.soTR, 2 * Math.round(st.soTr)); } }),
+    soTp: P('점 P의 위치 (꼭짓점에서의 거리)', 1, 20, 1, 3, { color: 'amber', hint: '모선을 따라 꼭짓점 O에서 떨어진 거리', format: (v) => Math.round(v) + ' cm' }),
+    soTf: P('작은 밑면의 반지름', 1, 6, 1, 2, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
+    soTg: P('큰 밑면의 반지름', 2, 7, 1, 4, { color: 'sky', format: (v) => Math.round(v) + ' cm' })
   };
 
   /* ------------------------------------------------------------------ 전개도(부채꼴) ↔ 원뿔 위의 점 */
@@ -88,7 +88,7 @@
 
   /* ================================================================== s4-1 끈 감기 */
   function m1(s) {
-    const r = clamp(Math.round(s.soTr), 1, 4), R = Math.max(clamp(Math.round(s.soTR), 2, 9), 2 * r), x = 360 * r / R;
+    const r = clamp(Math.round(s.soTr), 1, 7), R = Math.max(clamp(Math.round(s.soTR), 2, 15), 2 * r), x = 360 * r / R;
     const mode = s.soMode || 'via', a0 = -90 - x / 2, a1 = -90 + x / 2;
     const ms = clamp(s.soMs == null ? 0.75 * R : s.soMs, 0.12 * R, R), mp = clamp(s.soMp == null ? -90 : s.soMp, a0 + 1, a1 - 1);
     const A = pt({ x: 0, y: 0 }, R, a0), A2 = pt({ x: 0, y: 0 }, R, a1), M = pt({ x: 0, y: 0 }, ms, mp);
@@ -166,7 +166,7 @@
   /* ================================================================== s4-2 길이 구하기 (60° · 180°) */
   const S42 = { 60: 6, 180: 2 };
   function m2(s) {
-    const ang = s.soAng === 180 ? 180 : 60, kk = S42[ang], r = clamp(Math.round(s.soTr), 1, 4), R = r * kk, x = ang;
+    const ang = s.soAng === 180 ? 180 : 60, kk = S42[ang], r = clamp(Math.round(s.soTr), 1, 7), R = r * kk, x = ang;
     const O = { x: 0, y: 0 }, a0 = -90 - x / 2, a1 = -90 + x / 2, A = pt(O, R, a0), A2 = pt(O, R, a1);
     return { ang, kk, r, R, x, a0, a1, A, A2, ans: ang === 60 ? R : 2 * R };
   }
@@ -246,7 +246,7 @@
 
   /* ================================================================== s4-3 모선 위의 점에서 출발 */
   function m3(s) {
-    const ang = s.soAng3 === 180 ? 180 : 60, kk = S42[ang], r = clamp(Math.round(s.soTr), 1, 4), R = r * kk, x = ang;
+    const ang = s.soAng3 === 180 ? 180 : 60, kk = S42[ang], r = clamp(Math.round(s.soTr), 1, 7), R = r * kk, x = ang;
     const p = clamp(Math.round(s.soTp), 1, R), O = { x: 0, y: 0 }, a0 = -90 - x / 2, a1 = -90 + x / 2;
     return { ang, kk, r, R, x, p, a0, a1, P1: pt(O, p, a0), P2: pt(O, p, a1), A: pt(O, R, a0), A2: pt(O, R, a1), ans: ang === 60 ? p : 2 * p };
   }
@@ -320,7 +320,7 @@
 
   /* ================================================================== s4-4 원뿔대에서도 (중심각 60°) */
   function m4(s) {
-    const r2 = clamp(Math.round(s.soTg), 2, 6), r1 = clamp(Math.min(Math.round(s.soTf), r2 - 1), 1, 4), k = 6, R2 = k * r2, R1 = k * r1, x = 60;
+    const r2 = clamp(Math.round(s.soTg), 2, 7), r1 = clamp(Math.min(Math.round(s.soTf), r2 - 1), 1, 6), k = 6, R2 = k * r2, R1 = k * r1, x = 60;
     const O = { x: 0, y: 0 }, a0 = -90 - x / 2, a1 = -90 + x / 2, A = pt(O, R2, a0), A2 = pt(O, R2, a1), Hf = Math.sqrt(R2 * R2 - r2 * r2);
     return { r1, r2, R1, R2, x, a0, a1, A, A2, Hf, hF: (R2 - R1) * Hf / R2, ans: R2 };
   }

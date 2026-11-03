@@ -17,9 +17,9 @@
   const cmv = (v) => fmtN(v) + ' cm';
 
   const PARAMS = {
-    soSR: P('반지름 r', 2, 6, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
-    soSr: P('윗면의 반지름', 1, 5, 1, 2, { color: 'amber', hint: '아랫면보다 작아야 해요', format: (v) => Math.round(v) + ' cm' }),
-    soSH: P('높이 h', 3, 9, 1, 6, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
+    soSR: P('반지름 r', 2, 15, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
+    soSr: P('윗면의 반지름', 1, 14, 1, 2, { color: 'amber', hint: '아랫면보다 작아야 해요', format: (v) => Math.round(v) + ' cm' }),
+    soSH: P('높이 h', 3, 20, 1, 6, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
     soU: P('자르는 높이', 0.04, 0.96, 0.01, 0.4, { color: 'rose', hint: '평면의 높이를 정해요(칼날은 이 높이에서 가로로 지나가요)', format: (v) => Math.round(v * 100) + '%' }),
     soE: P('칼날 밀어 넣기', 0, 1, 0.005, 1, { color: 'rose', hint: '오른쪽으로 끌면 판이 왼쪽에서 들어와 가로로 지나가요', format: (v) => Math.round(v * 100) + '%' }),
     soPsi: P('단면판 돌리기', 0, 90, 1, 0, { color: 'rose', hint: '축을 포함한 채 제자리에서 돌아요', format: (v) => Math.round(v) + '°' }),
@@ -29,7 +29,7 @@
   };
 
   /* ------------------------------------------------------------------ 입체·단면 계산 */
-  const dimsOf = (s) => { const R = clamp(Math.round(s.soSR), 2, 6); return { R, r: clamp(Math.min(Math.round(s.soSr), R - 1), 1, 5), h1: clamp(Math.round(s.soSH), 3, 9) }; };
+  const dimsOf = (s) => { const R = clamp(Math.round(s.soSR), 2, 15); return { R, r: clamp(Math.min(Math.round(s.soSr), R - 1), 1, 14), h1: clamp(Math.round(s.soSH), 3, 20) }; };
   function mkSol(kind, d) {
     if (kind === 'dbl') { const a = Math.ceil(d.h1 / 2); return S3.solid('dbl', { R: d.R, h1: a, h2: d.h1 - a }); }
     return S3.solid(kind, d);
@@ -508,7 +508,7 @@
     init: (s) => { s.soSR = 4; s.soSH = 6; s.soC = 2; s.soG = 0.7; },
     reroll: (s) => { s.soPR = pick([2, 3, 4], s.soPR); s.soPH = pick([4, 6, 8, 12], s.soPH); s.soPc = pick([1, 2, 3], s.soPc); },
     model: (s) => {
-      const R = clamp(Math.round(s.soSR), 2, 6), H = clamp(Math.round(s.soSH), 3, 9), c = clamp(Math.round(s.soC), 1, 3) / 4;
+      const R = clamp(Math.round(s.soSR), 2, 15), H = clamp(Math.round(s.soSH), 3, 20), c = clamp(Math.round(s.soC), 1, 3) / 4;
       const hs = H * c, rs = R * c, pR = s.soPR || 3, pH = s.soPH || 8, pc = s.soPc || 2;
       return { R, H, c, hs, rs, hf: H - hs, pR, pH, pc, ph: pH * pc / 4, prs: pR * pc / 4, gap: clamp(s.soG, 0, 1) };
     },
