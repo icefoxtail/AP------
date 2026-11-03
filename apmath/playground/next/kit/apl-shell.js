@@ -510,6 +510,9 @@
       const box = r.controls;
       const L = this._lay;
       const subs = this._subs;
+      // 막대가 4개 이상인 장면의 탐구 탭: 휴대폰(859px 이하)에서 그림 무대를 낮춰 막대가 한 화면에 더 많이 보이게 합니다(apl.css의 data-many-ctl).
+      // 막대 수가 장면 상태에 따라 바뀌어도(sc.controls 가 함수) 조작부를 다시 지을 때마다 이 함수가 불리므로 다시 셉니다.
+      if (explore && L && L.ctls.length >= 4) ui.head.dataset.manyCtl = '1'; else delete ui.head.dataset.manyCtl;
       // 세부 장면 칩: 넓은 화면은 위 띠 첫 줄(이동), 좁은 화면은 패널 머리말(예전 자리)
       if (subs) {
         if (wide) ui.topNav.append(subs, this._subCount);
