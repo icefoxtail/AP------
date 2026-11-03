@@ -54,6 +54,8 @@
       this._build();
       this._bindKeys();
       this._restore();
+      // 선택 기능(영상 재생기·목차 패널 등)이 붙는 자리: 해당 스크립트를 불러온 실험실에서만 동작합니다(kit/apl-player.js, apl-toc.js).
+      if (APLab.labHooks) APLab.labHooks.forEach((hook) => hook(this));
       APLab.pushRecent({ id: this.id, title: def.title, course: def.courseName, href: location.pathname.split('/').slice(-3).join('/') });
       // 실험실을 연 탭은 허브로 돌아와도 Universe로 되돌려 보내지 않습니다(next/index.html의 입구 확인과 짝).
       try { sessionStorage.setItem('apl:viaUniverse', '1'); } catch (e) {}

@@ -46,6 +46,10 @@
     });
     return { p, t, v: qv(k) * PI + qv(c) };
   }
+  // 소수 없이 쓰기: v 가 1/d 의 배수면 기약분수 [분자,분모], 아니면 null(그 순간은 「…」로 둡니다)
+  const cl = (v, d = 2) => { const n = Math.round(v * d); return Math.abs(v * d - n) < 1e-6 ? q(n, d) : null; };
+  const qOr = (k, unit) => (k ? qP(k) + (unit ? ' ' + unit : '') : '…');
+  const qSub = (a, b) => q(a[0] * b[1] - b[0] * a[1], a[1] * b[1]);
   const Z = [0, 1];
   const par = (L, unit) => '\\left(' + L.t + '\\right)\\mathrm{' + unit + '}';        // (…) cm²
   const parP = (L, unit) => '(' + L.p + ') ' + unit;
@@ -176,18 +180,20 @@
     format: (v) => Math.round(v * 100) + '%'
   };
   const cmF = (v) => fmtN(v) + ' cm';
+  // AD 의 길이 글자: 넓이가 같아지는 값(π·r/4)은 π 꼴, 정수·반 단위는 분수, 그 밖(움직이는 중간)은 「…」
+  const adTxt = (v, r) => (Math.abs(v - (PI * r) / 4) < 0.006 ? piP(q(r, 4)) : qOr(cl(v, 2))) + ' cm';
   const PARAMS = {
     f3t: PARAM_T,
     f3a: { value: 6, min: 2, max: 12, step: 1, color: 'sky', label: '정사각형의 한 변 a', format: cmF },
     f3e: { value: 6, min: 2, max: 12, step: 2, color: 'sky', label: '정사각형의 한 변 a', hint: '반지름 $\\frac{a}{2}$가 정수가 되도록 짝수만', format: cmF },
     f3b: { value: 4, min: 2, max: 10, step: 2, color: 'sky', label: '$\\overline{AB}$의 길이', format: cmF },
-    f3w: { value: 2, min: 0.5, max: 9, step: 0.01, color: 'amber', label: '$\\overline{AD}$의 길이', hint: '그림의 점 D를 좌우로 끌어도 돼요', format: cmF },
+    f3w: { value: 2, min: 0.5, max: 9, step: 0.5, color: 'amber', label: '$\\overline{AD}$의 길이', hint: '그림의 점 D를 좌우로 끌어도 돼요', format: (v, st) => adTxt(v, (st && st.f3b) || 4) },
     f3r: { value: 6, min: 3, max: 9, step: 1, color: 'sky', label: '원의 반지름 r', format: cmF },
-    f3k: { value: 1, min: 1, max: 2, step: 0.05, color: 'amber', label: '두 원의 중심 사이의 거리 d', hint: '그림의 오른쪽 점을 좌우로 끌어도 돼요. d=r 이 교과서 그림', format: (v) => (Math.abs(v - 1) < 0.001 ? 'd = r' : 'd = ' + fmtN(v) + ' r') },
+    f3k: { value: 1, min: 1, max: 2, step: 0.25, color: 'amber', label: '두 원의 중심 사이의 거리 d', hint: '그림의 오른쪽 점을 좌우로 끌어도 돼요. d=r 이 교과서 그림', format: (v) => (Math.abs(v - 1) < 0.001 ? 'd = r' : 'd = ' + qOr(cl(v, 4)) + ' r') },
     f3q: { value: 12, min: 6, max: 18, step: 2, color: 'sky', label: '반원의 지름', format: cmF },
-    f3x: { value: 30, min: 5, max: 90, step: 1, color: 'amber', label: '부채꼴의 중심각 x', hint: '그림의 노란 점을 끌어도 돼요', format: (v) => v + '°' },
+    f3x: { value: 30, min: 5, max: 90, step: 1, color: 'amber', label: '부채꼴의 중심각 x', hint: '그림의 노란 점을 끌어도 돼요', format: (v) => (Math.abs(v - Math.round(v)) < 1e-6 ? Math.round(v) + '°' : '…') },
     f3h: { value: 3, min: 2, max: 6, step: 1, color: 'sky', label: '두 직사각형의 세로', format: cmF },
-    f3o: { value: 2, min: 0, max: 4, step: 0.5, color: 'amber', label: '겹친 부분의 가로', hint: '오른쪽 직사각형(분홍)을 좌우로 끌어도 돼요', format: cmF }
+    f3o: { value: 2, min: 0, max: 4, step: 0.5, color: 'amber', label: '겹친 부분의 가로', hint: '오른쪽 직사각형(분홍)을 좌우로 끌어도 돼요', format: (v) => qOr(cl(v, 2)) + ' cm' }
   };
   const NUMERIC = ['f3a', 'f3e', 'f3b', 'f3r', 'f3q', 'f3h'];
 
@@ -297,7 +303,7 @@
           rd('정사각형의 한 변 = 반지름', cmF(M.a), 'ink', '호의 반지름'),
           rd('호 ① (중심각 90°)', piP(M.arc) + ' cm', CB, `2π×${M.a}×90/360`, 'arc1'),
           rd('호 ② (중심각 90°)', piP(M.arc) + ' cm', CA, `2π×${M.a}×90/360`, 'arc2'),
-          rd('색칠한 부분의 둘레', piP(M.tot) + ' cm', 'sky', '≈ ' + fmtN(qv(M.tot) * PI) + ' cm', 'leaf', true)
+          rd('색칠한 부분의 둘레', piP(M.tot) + ' cm', 'sky', null, 'leaf', true)
         ],
         status: half ? { tone: 'ok', text: `둘레 = ${piP(M.tot)} cm (반원의 호)` } : { tone: 'info', text: '둘레 = 호 2개' },
         parts: [
@@ -334,19 +340,28 @@
   /* ------------------------------------------------------------------ ② 직사각형과 부채꼴 · 넓이가 같을 때 (교과서 16번) */
   function mRS(s, truth) {
     const r = s.f3b;
-    const w = truth ? (PI * r) / 4 : clamp(s.f3w, 0.5, 9);
+    const ad = (PI * r) / 4;
+    let w = truth ? ad : clamp(s.f3w, 0.5, 9);
+    const eq = truth || Math.abs(w - ad) < 0.006; // 넓이가 같은 AD: 슬라이더·주소 저장으로 생긴 반올림 오차는 허용
+    if (eq) w = ad;
     const x0 = Math.min(w, r), root = Math.sqrt(Math.max(0, r * r - x0 * x0));
     const K = 0.5 * (x0 * root + r * r * Math.asin(clamp(x0 / r, 0, 1)));
     const rect = r * w, sect = (PI * r * r) / 4;
-    return { r, w, x0, root, K, rect, sect, P1: rect - K, P2: sect - K, eq: Math.abs(rect - sect) < 0.006 * r, secK: q(r * r, 4), adK: q(r, 4) };
+    const secK = q(r * r, 4), adK = q(r, 4);
+    const rc = eq ? null : cl(rect, 2); // 직사각형 넓이(정수·분수 꼴이면)
+    // 소수 없이 보이는 글자: 직사각형 넓이, AD, (가)−(나)=직사각형−부채꼴
+    const rectP = eq ? piP(secK) : qOr(rc);
+    const adP = eq ? piP(adK) : qOr(cl(w, 2));
+    const dP = eq ? '0' : rc ? lin([-secK[0], secK[1]], rc, false).p : '…';
+    return { r, w, x0, root, K, rect, sect, P1: rect - K, P2: sect - K, eq, secK, adK, rectP, adP, dP };
   }
   SCENES.push({
     id: 'f3-rect-sector', title: '직사각형과 부채꼴 · 넓이가 같을 때', short: '직사각형·부채꼴',
     question: '색칠한 두 부분 (가), (나)의 넓이가 같으면, 직사각형 ABCD와 부채꼴 ABE의 넓이는 어떤 관계일까?',
     ctl: ['f3b', 'f3w', 'f3t'], dur: 12,
     init: (s) => { s.f3b = 4; s.f3w = 2; },
-    reroll: (s) => { s.f3b = pick([2, 4, 6, 8, 10], s.f3b); s.f3w = Math.round(s.f3b / 2 * 100) / 100; },
-    presets: () => [{ group: '넓이가 같아지는 AD 찾기', label: '같아질 때의 AD 보기', apply: (s, lab) => lab.tween({ f3w: Math.round((PI * s.f3b / 4) * 100) / 100 }), on: (s) => mRS(s, false).eq }],
+    reroll: (s) => { s.f3b = pick([2, 4, 6, 8, 10], s.f3b); s.f3w = s.f3b / 2; },
+    presets: () => [{ group: '넓이가 같아지는 AD 찾기', label: '같아질 때의 AD 보기', apply: (s, lab) => lab.tween({ f3w: (PI * s.f3b) / 4 }), on: (s) => mRS(s, false).eq }],
     model: (s, truth) => mRS(s, truth),
     stepT: (n) => (n >= 2 ? 1 : 1),
     draw(b, s, M, C) {
@@ -396,15 +411,15 @@
         } else {
           tx(b, C, pt(0, -r / 2), cmF(r), 'ink', { dx: -13, align: 'right' });
         }
-        if (!C.plain && sepOn) tx(b, C, pt(w / 2, -r), cmF(w), CA, { dy: -17 });
+        if (!C.plain && sepOn) tx(b, C, pt(w / 2, -r), M.adP + ' cm', CA, { dy: -17 });
         if (!C.plain && !sepOn && C.step >= 4) tx(b, C, pt(w / 2, -r), 'AD = ?', CA, { dy: -17 });
         // 따로 있을 때: 이름과 넓이
         const nm = 1 - sl;
         if (nm > 0.05 && !C.plain && sepOn) {
           tx(b, C, pt(Math.min(w, r) * 0.42, -r * 0.55), '직사각형', CA, { alpha: nm, dy: -9 });
-          tx(b, C, pt(Math.min(w, r) * 0.42, -r * 0.55), fmtN(M.rect) + ' cm²', CA, { alpha: nm, dy: 12, size: 14 });
+          tx(b, C, pt(Math.min(w, r) * 0.42, -r * 0.55), M.rectP + ' cm²', CA, { alpha: nm, dy: 12, size: 14 });
           tx(b, C, polar(Bs, 0.52 * r, -42), '부채꼴', CB, { alpha: nm, dy: -9 });
-          tx(b, C, polar(Bs, 0.52 * r, -42), fmtN(M.sect) + ' cm²', CB, { alpha: nm, dy: 12, size: 14 });
+          tx(b, C, polar(Bs, 0.52 * r, -42), piP(M.secK) + ' cm²', CB, { alpha: nm, dy: 12, size: 14 });
         }
         if (ov > 0.05 && sepOn || (C.review && C.step >= 2)) {
           const a = C.review ? 1 : ov;
@@ -414,14 +429,14 @@
           const sk = spot(Kp);
           tx(b, C, sk, '공통', CO, { alpha: a, ref: 'k' });
           if (!C.review || C.step >= 4) {
-            tx(b, C, pt(w / 2, 0), '직사각형 ' + fmtN(M.rect), CA, { dy: 38, size: 14, alpha: a });
-            tx(b, C, pt(Math.max(w, r) * 0.78, 0), '부채꼴 ' + fmtN(M.sect), CB, { dy: 38, size: 14, alpha: a, dx: Math.max(0, (w < r ? 14 : 0)) });
+            tx(b, C, pt(w / 2, 0), '직사각형 ' + M.rectP, CA, { dy: 38, size: 14, alpha: a });
+            tx(b, C, pt(Math.max(w, r) * 0.78, 0), '부채꼴 ' + piP(M.secK), CB, { dy: 38, size: 14, alpha: a, dx: Math.max(0, (w < r ? 14 : 0)) });
           }
         }
       }
       // 끌 수 있는 점 D (가로로만)
       if (sepOn && C.txt) {
-        b.handle('ad', D, { color: 'amber', r: 7, ariaLabel: 'AD의 길이', drag: (p) => { s.f3w = clamp(Math.round(p.x * 100) / 100, 0.5, 9); } });
+        b.handle('ad', D, { color: 'amber', r: 7, ariaLabel: 'AD의 길이', drag: (p) => { s.f3w = clamp(Math.round(p.x * 2) / 2, 0.5, 9); } });
       }
     },
     steps: (M) => [
@@ -432,25 +447,25 @@
       `$${M.r}\\times\\overline{AD}=${piT(M.secK)}$ 이므로 $\\overline{AD}=${piT(M.adK)}$ (cm)`
     ],
     view(M, C, s) {
-      const d = M.P1 - M.P2;
-      const msg = M.eq ? '(가)와 (나)의 넓이가 거의 같아요!' : d > 0 ? '(가)가 더 넓어요' : '(나)가 더 넓어요';
+      const d = M.rect - M.sect; // (가) − (나) 와 같은 값
+      const msg = M.eq ? '(가)와 (나)의 넓이가 같아요!' : d > 0 ? '(가)가 더 넓어요' : '(나)가 더 넓어요';
       return {
         guide: C.t < 0.16 ? `직사각형 ABCD와 부채꼴 ABE를 따로 놓았어요. 막대를 오른쪽으로 끌거나 ▶를 눌러 부채꼴을 <b>가로로</b> 밀어 겹쳐 보세요. 그림의 <b>점 D</b>를 끌어 AD를 바꿀 수도 있어요.`
           : C.t < 0.62 ? '부채꼴을 왼쪽으로 밀고 있어요. 겹친 곳은 색이 섞여 보여요 — 겹친 부분은 <b>두 번</b> 들어 있어요.'
           : `겹치면 (가), (나), 공통 부분이 생겨요. AD를 바꾸며 (가)와 (나)가 같아지는 곳을 찾아보세요. 같아질 때 직사각형과 부채꼴의 넓이도 <b>같아져요</b>!`,
         readouts: [
-          rd('직사각형 ABCD', fmtN(M.rect) + ' cm²', CA, `${M.r} × ${fmtN(M.w)}`, 'rect'),
-          rd('부채꼴 ABE', fmtN(M.sect) + ' cm²', CB, `π×${M.r}²×90/360 = ${piP(M.secK)}`, 'sec'),
-          rd('(가) 직사각형 쪽', fmtN(M.P1) + ' cm²', CA, '직사각형 − 공통', 'p1'),
-          rd('(나) 부채꼴 쪽', fmtN(M.P2) + ' cm²', CB, '부채꼴 − 공통', 'p2'),
-          rd('(가) − (나)', fmtN(d) + ' cm²', M.eq ? 'green' : 'orange', msg, null, true),
-          rd('직사각형 − 부채꼴', fmtN(M.rect - M.sect) + ' cm²', 'ink', '(가) − (나) 와 늘 같아요', null, true)
+          rd('직사각형 ABCD', M.rectP + ' cm²', CA, `${M.r} × ${M.adP}`, 'rect'),
+          rd('부채꼴 ABE', piP(M.secK) + ' cm²', CB, `π×${M.r}²×90/360 = ${piP(M.secK)}`, 'sec'),
+          rd('(가) 직사각형 쪽', '직사각형 − 공통', CA, '공통 부분의 넓이는 구하지 않아도 돼요', 'p1'),
+          rd('(나) 부채꼴 쪽', '부채꼴 − 공통', CB, '공통 부분의 넓이는 구하지 않아도 돼요', 'p2'),
+          rd('(가) − (나)', M.dP + ' cm²', M.eq ? 'green' : 'orange', msg, null, true),
+          rd('직사각형 − 부채꼴', M.dP + ' cm²', 'ink', '(가) − (나) 와 늘 같아요', null, true)
         ],
-        status: M.eq ? { tone: 'ok', text: `(가) = (나) → 직사각형 = 부채꼴, AD ≈ ${fmtN(M.w)} cm` } : { tone: 'info', text: `(가) ${fmtN(M.P1)}  (나) ${fmtN(M.P2)}` },
+        status: M.eq ? { tone: 'ok', text: `(가) = (나) → 직사각형 = 부채꼴, AD = ${M.adP} cm` } : { tone: 'info', text: `(가) − (나) = ${M.dP} cm²` },
         parts: [
-          { id: 'p1', name: '(가) 직사각형 안쪽', desc: '직사각형 − 공통 부분', value: fmtN(M.P1), color: CA },
-          { id: 'p2', name: '(나) 부채꼴 바깥쪽', desc: '부채꼴 − 공통 부분', value: fmtN(M.P2), color: CB },
-          { id: 'k', name: '공통 부분', desc: '두 도형이 겹친 부분', value: fmtN(M.K), color: CO }
+          { id: 'p1', name: '(가) 직사각형 안쪽', desc: '직사각형 − 공통 부분', value: '직사각형 쪽', color: CA },
+          { id: 'p2', name: '(나) 부채꼴 바깥쪽', desc: '부채꼴 − 공통 부분', value: '부채꼴 쪽', color: CB },
+          { id: 'k', name: '공통 부분', desc: '두 도형이 겹친 부분', value: '두 번 센 곳', color: CO }
         ],
         formula: `<p>(직사각형) = (가) + (공통), (부채꼴) = (나) + (공통)</p><p>(가) = (나) ⟺ (직사각형) = (부채꼴)</p><p>$${M.r}\\times\\overline{AD}=${piT(M.secK)}\\ \\Rightarrow\\ \\overline{AD}=${piT(M.adK)}$ (cm)</p>`,
         rule: '(가)=(나) 이면, 같은 공통 부분을 더한 두 도형의 넓이도 같다.',
@@ -556,7 +571,7 @@
           rd('정삼각형 EBC', 'BE = CE = BC = ' + M.a, CS, '각 60°'),
           rd('부채꼴 ABE (30°)', piP(M.one) + ' cm²', CB, `π×${M.a}²×30/360`, 'h1'),
           rd('부채꼴 DCE (30°)', piP(M.one) + ' cm²', CA, '위와 같아요', 'h2'),
-          rd('색칠한 부분', ans.p + ' cm²', 'sky', '≈ ' + fmtN(ans.v) + ' cm²', 'sh', true)
+          rd('색칠한 부분', ans.p + ' cm²', 'sky', null, 'sh', true)
         ],
         status: { tone: C.t > 0.7 ? 'ok' : 'info', text: C.t > 0.7 ? `색칠한 넓이 = ${ans.p} cm²` : '색칠한 부분 = 정사각형 − 30° 부채꼴 2개' },
         parts: [
@@ -566,7 +581,7 @@
         ],
         formula: `<p>(색칠한 부분) = (정사각형) − (부채꼴 ABE) − (부채꼴 DCE)</p><p>$=${M.a * M.a}-2\\times${piT(M.one)}=${ans.t}$ (cm²)</p>`,
         rule: '정삼각형의 각은 60° → 90° − 60° = 30°인 부채꼴 두 개를 뺀다.',
-        notes: '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>정삼각형의 높이(√3)를 쓰지 않아도 돼요. 색칠한 부분의 모양을 "정사각형에서 뺀 것"으로 바꿔 보세요.</li><li>뺀 부채꼴의 중심각은 <b>90° − 60° = 30°</b>, 반지름은 정사각형의 한 변이에요.</li></ul>'
+        notes: '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>정삼각형의 높이를 구하지 않아도 돼요. 색칠한 부분의 모양을 "정사각형에서 뺀 것"으로 바꿔 보세요.</li><li>뺀 부채꼴의 중심각은 <b>90° − 60° = 30°</b>, 반지름은 정사각형의 한 변이에요.</li></ul>'
       };
     },
     std: (M) => {
@@ -664,7 +679,7 @@
           rd('반원 ' + '하나', piP(M.D) + ' cm²', CA, `½×π×${fmtN(M.h)}²`, 'd1'),
           rd('반원 둘의 합', piP(qm(M.D, [2, 1])) + ' cm²', CB, '큰 사분원과 같아요', 'd2'),
           rd('겹친 부분', M.L.p + ' cm²', CO, '사분원 둘 − 정사각형', 'lens'),
-          rd('색칠한 초승달', M.L.p + ' cm²', 'sky', '≈ ' + fmtN(M.L.v) + ' cm²  (= 겹친 부분)', 'cres', true)
+          rd('색칠한 초승달', M.L.p + ' cm²', 'sky', '= 겹친 부분', 'cres', true)
         ],
         status: { tone: 'info', text: `초승달 = 겹친 부분 = ${M.L.p} cm²` },
         parts: [
@@ -774,7 +789,7 @@
           rd('사분원 하나', piP(M.qd) + ' cm²', CA, `¼×π×${fmtN(M.h)}²`, 'qd'),
           rd('한 칸 (정사각형)', fmtN(M.h * M.h) + ' cm²', CO, `${fmtN(M.h)} × ${fmtN(M.h)}`),
           rd('잎 하나', M.leaf.p + ' cm²', 'sky', '사분원 둘 − 한 칸', 'leaf'),
-          rd('잎 네 개 (색칠한 부분)', M.all.p + ' cm²', 'sky', '≈ ' + fmtN(M.all.v) + ' cm²', 'leaf', true)
+          rd('잎 네 개 (색칠한 부분)', M.all.p + ' cm²', 'sky', null, 'leaf', true)
         ],
         status: { tone: 'info', text: `잎 4개 = ${M.all.p} cm²` },
         parts: [
@@ -815,7 +830,13 @@
     ],
     model: (s, truth) => {
       const r = s.f3r, k = truth ? 1 : clamp(s.f3k, 1, 2), d = k * r;
-      return { r, k, d, area: 2 * r * d, areaQ: q(2 * r * r * Math.round(k * 20), 20), rectEq: truth || Math.abs(k - 1) < 0.001 };
+      // d = k·r 는 k 가 1/4 단위이므로 분수로 정확히 쓴다(움직이는 중간만 「…」)
+      const kn = Math.round(k * 4), ok = Math.abs(k * 4 - kn) < 1e-6;
+      const dK = ok ? q(r * kn, 4) : null, aK = ok ? q(2 * r * r * kn, 4) : null;
+      return {
+        r, k, d, area: 2 * r * d, rectEq: truth || Math.abs(k - 1) < 0.001,
+        dP: qOr(dK), dT: dK ? qT(dK) : '\\ldots', areaP: qOr(aK), areaT: aK ? qT(aK) : '\\ldots'
+      };
     },
     stepT: (n) => (n >= 4 ? 1 : n === 3 ? 0.2 : 0),
     draw(b, s, M, C) {
@@ -858,7 +879,7 @@
       b.point(O1, { r: 4, color: 'ink', glow: false }); b.point(O2, { r: 4, color: 'ink', glow: false });
       if (C.txt) {
         if (mg < 0.3) {
-          tx(b, C, pt(d / 2, 0), 'd = ' + fmtN(d) + ' cm', 'ink', { dy: -15, alpha: 1 - mg });
+          tx(b, C, pt(d / 2, 0), 'd = ' + M.dP + ' cm', 'ink', { dy: -15, alpha: 1 - mg });
           tx(b, C, pt(-r / 2, 0), 'r = ' + fmtN(r), 'ink', { dy: -14, alpha: 1 - mg });
         }
         if (!C.plain) {
@@ -866,49 +887,49 @@
           if (sl < 0.3 && hi > 0.3) tx(b, C, pt(d + r * 0.55, -r * 0.45), '덧붙은 반원', CA, { alpha: hi, size: 14 });
           if (mg > 0.3) {
             tx(b, C, pt(d / 2, 0), '직사각형', 'ink', { alpha: mg, dy: -2, size: 15, ref: 'sh' });
-            tx(b, C, pt(d / 2, r), fmtN(d) + ' cm', 'sky', { alpha: mg, dy: 20 });
+            tx(b, C, pt(d / 2, r), M.dP + ' cm', 'sky', { alpha: mg, dy: 20 });
             tx(b, C, pt(d, -r / 2), fmtN(2 * r) + ' cm', 'sky', { alpha: mg, dx: 10, align: 'left' });
           }
         }
       }
       if (!C.plain && !C.review && C.txt) {
-        b.handle('d', O2, { color: 'amber', r: 7, ariaLabel: '두 원의 중심 사이의 거리', drag: (p) => { s.f3k = clamp(Math.round((p.x / r) * 20) / 20, 1, 2); } });
+        b.handle('d', O2, { color: 'amber', r: 7, ariaLabel: '두 원의 중심 사이의 거리', drag: (p) => { s.f3k = clamp(Math.round((p.x / r) * 4) / 4, 1, 2); } });
       }
     },
     steps: (M) => [
-      `두 원의 위·아래를 접선으로 이은 도형(직사각형 ${fmtN(M.d)}×${fmtN(2 * M.r)} + 양쪽 반원)에서 왼쪽 원을 뺀 부분이 색칠한 부분이에요. 위·아래 좁은 틈도 색칠되어 있어요.`,
+      `두 원의 위·아래를 접선으로 이은 도형(직사각형 ${M.dP}×${2 * M.r} + 양쪽 반원)에서 왼쪽 원을 뺀 부분이 색칠한 부분이에요. 위·아래 좁은 틈도 색칠되어 있어요.`,
       `왼쪽 원 = 왼쪽 반원 + 오른쪽 반원. 오른쪽 반원은 직사각형 안에 있어요.`,
       `(색칠한 부분) = (직사각형) + (오른쪽에 덧붙은 반원) − (왼쪽 원의 오른쪽 반원)`,
-      `덧붙은 반원을 가로로 d=${fmtN(M.d)}만큼 밀면 빠진 반원 자리에 꼭 맞아요. 서로 없어지고 직사각형만 남아요.`,
-      `(색칠한 부분) = (직사각형) $=${fmtN(M.d)}\\times${fmtN(2 * M.r)}=${fmtN(M.d * 2 * M.r)}$ (cm²)`
+      `덧붙은 반원을 가로로 d=${M.dP}만큼 밀면 빠진 반원 자리에 꼭 맞아요. 서로 없어지고 직사각형만 남아요.`,
+      `(색칠한 부분) = (직사각형) $=${M.dT}\\times${2 * M.r}=${M.areaT}$ (cm²)`
     ],
     view(M, C, s) {
       return {
         guide: C.t < 0.1 ? `두 원이 서로의 중심을 지나요(d = r). 색칠한 부분 = (두 원을 감싼 도형) − (왼쪽 원). ▶를 누르면 오른쪽 <b>덧붙은 반원</b>이 <b>가로로</b> 밀려 가요. 오른쪽 점을 끌면 d가 바뀌어요.`
           : C.t < 0.62 ? '덧붙은 반원(노랑)을 왼쪽으로 밀고 있어요. 왼쪽 원의 오른쪽 반원(분홍 점선)이 빠진 자리예요.'
-          : `덧붙은 반원이 빠진 반원 자리에 꼭 맞아요! 남은 것은 가로 ${fmtN(M.d)}, 세로 ${fmtN(2 * M.r)}인 <b>직사각형</b>이에요.`,
+          : `덧붙은 반원이 빠진 반원 자리에 꼭 맞아요! 남은 것은 가로 ${M.dP}, 세로 ${2 * M.r}인 <b>직사각형</b>이에요.`,
         readouts: [
-          rd('반지름 r · 거리 d', `r = ${fmtN(M.r)}, d = ${fmtN(M.d)}`, 'ink', M.rectEq ? 'd = r : 서로의 중심을 지나요' : 'd를 바꾸면 도형이 달라져요'),
-          rd('직사각형', `${fmtN(M.d)} × ${fmtN(2 * M.r)}`, 'sky', '가로 d, 세로 2r'),
-          rd('색칠한 부분', fmtN(M.area) + ' cm²', 'sky', '= 2r × d', 'sh', true),
-          rd('두 반원', '넓이가 같아요', CA, `π×$\\dfrac{${fmtN(M.r)}^2}{2}$ 로 같은 크기`, 'bump')
+          rd('반지름 r · 거리 d', `r = ${M.r}, d = ${M.dP}`, 'ink', M.rectEq ? 'd = r : 서로의 중심을 지나요' : 'd를 바꾸면 도형이 달라져요'),
+          rd('직사각형', `${M.dP} × ${2 * M.r}`, 'sky', '가로 d, 세로 2r'),
+          rd('색칠한 부분', M.areaP + ' cm²', 'sky', '= 2r × d', 'sh', true),
+          rd('두 반원', '넓이가 같아요', CA, `π×$\\dfrac{${M.r}^2}{2}$ 로 같은 크기`, 'bump')
         ],
-        status: { tone: 'ok', text: `색칠한 부분 = 직사각형 = ${fmtN(M.area)} cm²` },
+        status: { tone: 'ok', text: `색칠한 부분 = 직사각형 = ${M.areaP} cm²` },
         parts: [
           { id: 'bump', name: '덧붙은 반원', desc: '오른쪽에 더해진 반원', value: piP(q(M.r * M.r, 2)) + ' cm²', color: CA },
           { id: 'hole', name: '빠진 반원', desc: '왼쪽 원의 오른쪽 반원', value: piP(q(M.r * M.r, 2)) + ' cm²', color: CB }
         ],
-        formula: `<p>(색칠한 부분) = (직사각형) + (반원) − (반원) = (직사각형)</p><p>$= d\\times 2r = ${fmtN(M.d)}\\times${fmtN(2 * M.r)}=${fmtN(M.area)}$ (cm²)</p>`,
+        formula: `<p>(색칠한 부분) = (직사각형) + (반원) − (반원) = (직사각형)</p><p>$= d\\times 2r = ${M.dT}\\times${2 * M.r}=${M.areaT}$ (cm²)</p>`,
         rule: '밀어서 포개지는 두 도형은 넓이가 같다 → 더하고 빼면 서로 없어진다.',
         notes: '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>색칠한 부분에는 <b>위·아래의 좁은 틈</b>도 들어 있어요(접선과 두 원 사이).</li><li>π가 들어 있는 부분(반원)이 서로 없어져서, 답에 π가 없어요.</li><li>두 원의 거리가 d일 때(d ≥ r) 색칠한 넓이는 항상 2r × d 예요.</li></ul>'
       };
     },
     std: (M) => ({
-      steps: `<b>해결 전략</b><br>① 두 원을 접선으로 감싼 도형을 직사각형과 반원으로 나눈다.<br>② 더해진 반원과 빼는 반원이 같음을 이용한다.<br><br>(색칠한 부분) = (직사각형) + (반원) − (반원)<br>$=${fmtN(M.d)}\\times${fmtN(2 * M.r)}=${fmtN(M.d * 2 * M.r)}$ (cm²)`,
+      steps: `<b>해결 전략</b><br>① 두 원을 접선으로 감싼 도형을 직사각형과 반원으로 나눈다.<br>② 더해진 반원과 빼는 반원이 같음을 이용한다.<br><br>(색칠한 부분) = (직사각형) + (반원) − (반원)<br>$=${M.dT}\\times${2 * M.r}=${M.areaT}$ (cm²)`,
       warning: '"서로의 중심을 지난다"는 두 원의 중심 사이의 거리가 반지름과 같다는 뜻이에요.'
     }),
     quick: (M) => ({
-      steps: `원이 가로로 d만큼 지나간 자리에서 원 자신을 빼면 (가로 d) × (세로 2r) 직사각형이에요. $${fmtN(M.d)}\\times${fmtN(2 * M.r)}=${fmtN(M.d * 2 * M.r)}$`,
+      steps: `원이 가로로 d만큼 지나간 자리에서 원 자신을 빼면 (가로 d) × (세로 2r) 직사각형이에요. $${M.dT}\\times${2 * M.r}=${M.areaT}$`,
       highlight: '(지나간 자리) − (처음 원) = 2r × (움직인 거리)'
     }),
     prob(M) {
@@ -931,7 +952,12 @@
     const xr = x * DEG;
     const K = 72 * 0 + (dia * dia / 2) * (xr / 2 + Math.sin(2 * xr) / 4);
     const hd = (PI * r * r) / 2, sec = (PI * dia * dia * x) / 360;
-    return { dia, r, x, K, hd, sec, P1: hd - K, P2: sec - K, eq: Math.abs(hd - sec) < 0.02 * r * r, hdK: q(r * r, 2), secK: q(dia * dia * 45, 360) };
+    const clean = Math.abs(x - Math.round(x)) < 1e-6; // 막대·점으로 정한 각은 정수. 움직이는 중간에만 아님 → 「…」
+    const hdK = q(r * r, 2), secX = q(dia * dia * Math.round(x), 360);
+    return {
+      dia, r, x, K, hd, sec, P1: hd - K, P2: sec - K, eq: Math.abs(hd - sec) < 0.02 * r * r, hdK, secK: q(dia * dia * 45, 360),
+      xP: clean ? Math.round(x) + '°' : '…', secP: clean ? piP(secX) : '…', dP: clean ? lin(qSub(hdK, secX), Z).p : '…'
+    };
   }
   SCENES.push({
     id: 'f3-half-sector', title: '반원과 부채꼴 · 넓이가 같을 때', short: '반원과 부채꼴',
@@ -973,11 +999,11 @@
       if (C.txt) {
         tx(b, C, A, 'A', 'ink', { dx: -12, dy: 4, align: 'right' });
         tx(b, C, pt(r, 0), cmF(dia), 'ink', { dy: 22 });
-        angMark(b, C, Ac, 0, -x, 'amber', (C.plain || (C.review && C.step < 5)) ? 'x°' : x + '°', clamp(dia * b.k * 0.14, 24, 44), { labelGap: 16 });
+        angMark(b, C, Ac, 0, -x, 'amber', (C.plain || (C.review && C.step < 5)) ? 'x°' : M.xP, clamp(dia * b.k * 0.14, 24, 44), { labelGap: 16 });
         if (!C.plain && sepOn && sl < 0.97) {
           const nm = 1 - sl;
-          tx(b, C, pt(r, 0), '반원 ' + fmtN(M.hd) + ' cm²', CA, { alpha: nm, dy: 46, size: 14 });
-          tx(b, C, pt(Ac.x + dia / 2, 0), '부채꼴 ' + fmtN(M.sec) + ' cm²', CB, { alpha: nm, dy: 24, size: 14 });
+          tx(b, C, pt(r, 0), '반원 ' + piP(M.hdK) + ' cm²', CA, { alpha: nm, dy: 46, size: 14 });
+          tx(b, C, pt(Ac.x + dia / 2, 0), '부채꼴 ' + M.secP + ' cm²', CB, { alpha: nm, dy: 24, size: 14 });
         }
         if ((sepOn && ov > 0.05) || (C.review && C.step >= 2)) {
           const a = C.review ? 1 : ov;
@@ -985,8 +1011,8 @@
           tx(b, C, spot(P2), '(나)', CB, { alpha: a, ref: 'p2' });
           tx(b, C, spot(Kp), '공통', CO, { alpha: a, ref: 'k' });
           if (!C.review || C.step >= 4) {
-            tx(b, C, pt(r, 0), '반원 ' + fmtN(M.hd), CA, { dy: 44, size: 14, alpha: a });
-            tx(b, C, pt(r, 0), '부채꼴 ' + fmtN(M.sec), CB, { dy: 64, size: 14, alpha: a });
+            tx(b, C, pt(r, 0), '반원 ' + piP(M.hdK), CA, { dy: 44, size: 14, alpha: a });
+            tx(b, C, pt(r, 0), '부채꼴 ' + M.secP, CB, { dy: 64, size: 14, alpha: a });
           }
         }
       }
@@ -1002,23 +1028,23 @@
       `$${piT(M.hdK)}=\\pi\\times${M.dia}^2\\times\\dfrac{x}{360}$ 이므로 $x=45$`
     ],
     view(M, C, s) {
-      const d = M.P1 - M.P2;
+      const d = M.hd - M.sec; // (가) − (나) 와 같은 값
       return {
         guide: C.t < 0.16 ? '반원(노랑)과 부채꼴(분홍)을 따로 놓았어요. ▶를 누르거나 막대를 끌어 부채꼴을 <b>가로로</b> 밀어 겹쳐 보세요. 그림의 <b>노란 점</b>을 끌어 중심각 x를 바꿔 보세요.'
           : C.t < 0.62 ? '부채꼴을 왼쪽으로 밀고 있어요. 겹친 곳은 두 번 들어 있어요.'
           : `겹치면 (가), (나), 공통 부분이 생겨요. x를 바꾸며 (가)와 (나)가 같아지는 곳을 찾아보세요. 같아질 때 반원과 부채꼴의 넓이도 <b>같아요</b>.`,
         readouts: [
-          rd('반원', fmtN(M.hd) + ' cm²', CA, `½×π×${M.r}² = ${piP(M.hdK)}`, 'hd'),
-          rd(`부채꼴 (중심각 ${M.x}°)`, fmtN(M.sec) + ' cm²', CB, `π×${M.dia}²×${M.x}/360`, 'sec'),
-          rd('(가) 반원 쪽', fmtN(M.P1) + ' cm²', CA, '반원 − 공통', 'p1'),
-          rd('(나) 부채꼴 쪽', fmtN(M.P2) + ' cm²', CB, '부채꼴 − 공통', 'p2'),
-          rd('(가) − (나)', fmtN(d) + ' cm²', M.eq ? 'green' : 'orange', M.eq ? '거의 같아요!' : d > 0 ? '(가)가 더 넓어요' : '(나)가 더 넓어요', null, true)
+          rd('반원', piP(M.hdK) + ' cm²', CA, `½×π×${M.r}² = ${piP(M.hdK)}`, 'hd'),
+          rd(`부채꼴 (중심각 ${M.xP})`, M.secP + ' cm²', CB, `π×${M.dia}²×${M.xP === '…' ? 'x' : M.x}/360`, 'sec'),
+          rd('(가) 반원 쪽', '반원 − 공통', CA, '공통 부분의 넓이는 구하지 않아도 돼요', 'p1'),
+          rd('(나) 부채꼴 쪽', '부채꼴 − 공통', CB, '공통 부분의 넓이는 구하지 않아도 돼요', 'p2'),
+          rd('(가) − (나)', M.dP + ' cm²', M.eq ? 'green' : 'orange', M.eq ? '같아요!' : d > 0 ? '(가)가 더 넓어요' : '(나)가 더 넓어요', null, true)
         ],
-        status: M.eq ? { tone: 'ok', text: `(가) = (나) → 반원 = 부채꼴, x ≈ ${M.x}°` } : { tone: 'info', text: `(가) ${fmtN(M.P1)}  (나) ${fmtN(M.P2)}` },
+        status: M.eq ? { tone: 'ok', text: `(가) = (나) → 반원 = 부채꼴, x = ${M.xP}` } : { tone: 'info', text: `(가) − (나) = ${M.dP} cm²` },
         parts: [
-          { id: 'p1', name: '(가) 반원 쪽', desc: '반원 − 공통 부분', value: fmtN(M.P1), color: CA },
-          { id: 'p2', name: '(나) 부채꼴 쪽', desc: '부채꼴 − 공통 부분', value: fmtN(M.P2), color: CB },
-          { id: 'k', name: '공통 부분', desc: '두 도형이 겹친 부분', value: fmtN(M.K), color: CO }
+          { id: 'p1', name: '(가) 반원 쪽', desc: '반원 − 공통 부분', value: '반원 쪽', color: CA },
+          { id: 'p2', name: '(나) 부채꼴 쪽', desc: '부채꼴 − 공통 부분', value: '부채꼴 쪽', color: CB },
+          { id: 'k', name: '공통 부분', desc: '두 도형이 겹친 부분', value: '두 번 센 곳', color: CO }
         ],
         formula: `<p>(가)=(나) ⟺ (반원) = (부채꼴)</p><p>$${piT(M.hdK)}=\\pi\\times${M.dia}^2\\times\\dfrac{x}{360}\\ \\Rightarrow\\ x=45$</p>`,
         rule: '(가)=(나) 이면, 같은 공통 부분을 더한 두 도형의 넓이도 같다.',
@@ -1084,7 +1110,7 @@
         readouts: [
           rd('사분원 하나', piP(M.qd) + ' cm²', CA, `¼×π×${M.a}²`, 'q1'),
           rd('정사각형', M.A + ' cm²', 'ink', `${M.a} × ${M.a}`),
-          rd('잎 모양의 넓이', M.leaf.p + ' cm²', 'sky', '≈ ' + fmtN(M.leaf.v) + ' cm²', 'leaf', true)
+          rd('잎 모양의 넓이', M.leaf.p + ' cm²', 'sky', null, 'leaf', true)
         ],
         status: { tone: 'info', text: `잎 = 사분원 2개 − 정사각형 = ${M.leaf.p} cm²` },
         parts: [
@@ -1112,9 +1138,12 @@
 
   /* ------------------------------------------------------------------ ⑨ 확장 · 직사각형 두 개 겹치기 */
   function mRR(s, truth) {
-    const h = s.f3h, o = truth ? clamp(s.f3o, 0.5, 3.5) : clamp(s.f3o, 0, 4), wA = 5, wB = 4;
+    const h = s.f3h, o = truth ? clamp(Math.round(s.f3o * 2) / 2, 0.5, 3.5) : clamp(s.f3o, 0, 4), wA = 5, wB = 4;
     const A = wA * h, B = wB * h, O = o * h;
-    return { h, o, wA, wB, A, B, O, U: A + B - O };
+    // 겹친 가로 o 는 1/2 단위 → 분수로 정확히 쓴다(▶로 움직이는 중간만 「…」)
+    const oK = cl(o, 2), OK = cl(O, 2), UK = cl(A + B - O, 2);
+    const P = (k) => qOr(k), T = (k) => (k ? qT(k) : '\\ldots');
+    return { h, o, wA, wB, A, B, O, U: A + B - O, oP: P(oK), OP: P(OK), UP: P(UK), oT: T(oK), OT: T(OK), UT: T(UK) };
   }
   SCENES.push({
     id: 'f3-two-rects', title: '확장 · 직사각형 두 개를 겹쳐 놓기', short: '겹쳐 놓기(확장)',
@@ -1146,16 +1175,16 @@
         if (C.review) {
           tx(b, C, pt(aX, -h), 'A ' + fmtN(M.A) + ' cm²', CA, { dy: -16, size: 14 });
           tx(b, C, pt(bX, -h), 'B ' + fmtN(M.B) + ' cm²', CB, { dy: -16, size: 14 });
-          if (o > 0.3 && C.step >= 3) tx(b, C, pt((xB + wA) / 2, 0), '겹침 ' + fmtN(M.O) + ' cm²', CO, { dy: 56, size: 14 });
-        } else if (o > 0.3) tx(b, C, pt((xB + wA) / 2, -h), fmtN(o) + ' cm', CO, { dy: -16, size: 14 });
+          if (o > 0.3 && C.step >= 3) tx(b, C, pt((xB + wA) / 2, 0), '겹침 ' + M.OP + ' cm²', CO, { dy: 56, size: 14 });
+        } else if (o > 0.3) tx(b, C, pt((xB + wA) / 2, -h), (C.review ? M.oP : qOr(cl(o, 2))) + ' cm', CO, { dy: -16, size: 14 });
         if (!C.plain && !C.review && !C.thumb) b.handle('ob', pt(xB, -h), { color: 'rose', r: 7, ariaLabel: '겹친 부분의 가로', drag: (p) => { s.f3o = clamp(Math.round((wA - p.x) * 2) / 2, 0, 4); } });
       }
     },
     steps: (M) => [
       `직사각형 A의 넓이 $=${M.wA}\\times${M.h}=${M.A}$, 직사각형 B의 넓이 $=${M.wB}\\times${M.h}=${M.B}$`,
       `두 직사각형을 겹쳐 놓으면 겹친 부분은 A에도, B에도 들어 있어요. 그래서 A + B로 세면 겹친 부분을 두 번 센 거예요.`,
-      `겹친 부분의 넓이 $=${fmtN(M.o)}\\times${M.h}=${fmtN(M.O)}$`,
-      `(전체 넓이) = (A) + (B) − (겹친 부분) $=${M.A}+${M.B}-${fmtN(M.O)}=${fmtN(M.U)}$ (cm²)`
+      `겹친 부분의 넓이 $=${M.oT}\\times${M.h}=${M.OT}$`,
+      `(전체 넓이) = (A) + (B) − (겹친 부분) $=${M.A}+${M.B}-${M.OT}=${M.UT}$ (cm²)`
     ],
     view(M, C, s) {
       return {
@@ -1163,26 +1192,26 @@
         readouts: [
           rd('직사각형 A', fmtN(M.A) + ' cm²', CA, `${M.wA} × ${M.h}`, 'ra'),
           rd('직사각형 B', fmtN(M.B) + ' cm²', CB, `${M.wB} × ${M.h}`, 'rb'),
-          rd('겹친 부분', fmtN(M.O) + ' cm²', CO, `${fmtN(M.o)} × ${M.h}`, 'ov'),
-          rd('합친 도형의 넓이', fmtN(M.U) + ' cm²', 'sky', 'A + B − 겹친 부분', null, true)
+          rd('겹친 부분', M.OP + ' cm²', CO, `${M.oP} × ${M.h}`, 'ov'),
+          rd('합친 도형의 넓이', M.UP + ' cm²', 'sky', 'A + B − 겹친 부분', null, true)
         ],
-        status: { tone: 'info', text: `전체 = ${fmtN(M.A)} + ${fmtN(M.B)} − ${fmtN(M.O)} = ${fmtN(M.U)}` },
+        status: { tone: 'info', text: `전체 = ${M.A} + ${M.B} − ${M.OP} = ${M.UP}` },
         parts: [
-          { id: 'ov', name: '겹친 부분', desc: 'A와 B에 모두 들어 있어요', value: fmtN(M.O), color: CO }
+          { id: 'ov', name: '겹친 부분', desc: 'A와 B에 모두 들어 있어요', value: M.OP, color: CO }
         ],
-        formula: `<p>(합친 넓이) = (A) + (B) − (겹친 부분)</p><p>$=${M.A}+${M.B}-${fmtN(M.O)}=${fmtN(M.U)}$ (cm²)</p>`,
+        formula: `<p>(합친 넓이) = (A) + (B) − (겹친 부분)</p><p>$=${M.A}+${M.B}-${M.OT}=${M.UT}$ (cm²)</p>`,
         rule: '겹친 부분은 두 번 세어지므로 한 번 빼 준다.',
         notes: '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>원과 부채꼴 문제에서 <b>겹친 부분</b>이 보이면 이 생각을 떠올리세요.</li></ul>'
       };
     },
-    std: (M) => ({ steps: `<b>해결 전략</b><br>① 두 직사각형의 넓이를 각각 구한다.<br>② 겹친 부분을 구해서 한 번 뺀다.<br><br>$${M.wA}\\times${M.h}+${M.wB}\\times${M.h}-${fmtN(M.o)}\\times${M.h}=${fmtN(M.U)}$ (cm²)`, warning: '겹친 부분을 빼지 않으면 두 번 센 거예요.' }),
-    quick: (M) => ({ steps: `세로가 같으므로 가로만 합쳐서: $(${M.wA}+${M.wB}-${fmtN(M.o)})\\times${M.h}=${fmtN(M.U)}$`, highlight: '합친 도형의 가로 = 5 + 4 − (겹친 가로)' }),
+    std: (M) => ({ steps: `<b>해결 전략</b><br>① 두 직사각형의 넓이를 각각 구한다.<br>② 겹친 부분을 구해서 한 번 뺀다.<br><br>$${M.wA}\\times${M.h}+${M.wB}\\times${M.h}-${M.oT}\\times${M.h}=${M.UT}$ (cm²)`, warning: '겹친 부분을 빼지 않으면 두 번 센 거예요.' }),
+    quick: (M) => ({ steps: `세로가 같으므로 가로만 합쳐서: $(${M.wA}+${M.wB}-${M.oT})\\times${M.h}=${M.UT}$`, highlight: '합친 도형의 가로 = 5 + 4 − (겹친 가로)' }),
     prob(M) {
       const u = M.U;
       const vals = [M.A + M.B, u, M.A + M.B + M.O, M.A, M.B];
       const hints = ['겹친 부분을 두 번 세었어요. 한 번 빼 주세요.', '', '겹친 부분을 빼야 하는데 더했어요.', '직사각형 A만 구했어요.', '직사각형 B만 구했어요.'];
-      const opts = vals.map((v, i) => ({ t: fmtN(v) + '\\ \\mathrm{cm^2}', p: fmtN(v) + ' cm²', ok: i === 1, hint: hints[i] }));
-      return { tag: '겹쳐 놓은 도형의 넓이', stem: `가로 ${M.wA} cm, 세로 ${M.h} cm인 직사각형과 가로 ${M.wB} cm, 세로 ${M.h} cm인 직사각형을 가로로 ${fmtN(M.o)} cm만큼 겹쳐 놓았다. 합친 도형의 넓이는?`, choices: opts, key: 'h' + M.h + 'o' + M.o };
+      const opts = vals.map((v, i) => { const k = cl(v, 2); return { t: qT(k) + '\\ \\mathrm{cm^2}', p: qOr(k) + ' cm²', ok: i === 1, hint: hints[i] }; });
+      return { tag: '겹쳐 놓은 도형의 넓이', stem: `가로 ${M.wA} cm, 세로 ${M.h} cm인 직사각형과 가로 ${M.wB} cm, 세로 ${M.h} cm인 직사각형을 가로로 ${M.oP} cm만큼 겹쳐 놓았다. 합친 도형의 넓이는?`, choices: opts, key: 'h' + M.h + 'o' + M.o };
     }
   });
 

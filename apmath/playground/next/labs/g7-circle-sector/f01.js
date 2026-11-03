@@ -200,7 +200,11 @@
     const kt = K('t'), kmode = K('mode'), kseed = K('seed'), kpick = K('pick');
     const NAMES = sp.phaseNames || ['전체 도형', '파낼 부분 찾기', '옆으로 꺼내기', '남은 부분', '완성'];
     const phaseName = (t) => (t < 0.12 ? NAMES[0] : t < 0.3 ? NAMES[1] : t < 0.74 ? NAMES[2] : t < 0.96 ? NAMES[3] : NAMES[4]);
-    const onInput = (s, lab) => { s[kpick] = null; refreshReview(lab); };
+    const onInput = (s, lab) => {
+      s[kpick] = null;
+      if (sp.fix) { const V = getV(s); sp.vars.forEach((v) => { s[K(v.k)] = V[v.k]; }); } // 허용되지 않는 조합은 가장 가까운 값으로 맞춤
+      refreshReview(lab);
+    };
     sp.vars.forEach((v) => {
       PARAMS[K(v.k)] = {
         value: v.value, min: v.min, max: v.max, step: v.step || 1, color: v.color || 'amber', label: v.label, hint: v.hint,
@@ -426,7 +430,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       readouts: [
         { label: o.cap.whole.l, value: st.whole, color: 'ink' },
         { label: o.cap.part.l, value: st.part, color: 'amber' },
-        { label: '색칠한 부분', value: st.res, color: 'sky', wide: true, note: `≈ ${fn(xv(o.resX))} cm²` }
+        { label: '색칠한 부분', value: st.res, color: 'sky', wide: true }
       ],
       guide: guide4(o.tx, st.res),
       formula: `<p><b>색칠한 부분</b> = (전체) − (파낸 부분)</p><p>= ${xs(o.wholeX)} − ${xsp(o.partX)} = <b>${xs(o.resX)}</b> (cm²)</p>`,
@@ -867,16 +871,16 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     question: '부채꼴에서 두 반지름과 현으로 이루어진 삼각형을 파내면 활꼴이 남아요. 중심각을 바꾸면 활꼴은 어떻게 변할까요?',
     vars: [
       { k: 'R', sym: 'R', label: '부채꼴의 반지름 R', min: 4, max: 12, step: 2, value: 6 },
-      { k: 'th', sym: '중심각', label: '중심각', min: 60, max: 120, step: 30, value: 90, fmt: (v) => `중심각 ${fn(v)}°` }
+      { k: 'th', sym: '중심각', label: '중심각', min: 30, max: 150, step: 60, value: 90, fmt: (v) => `중심각 ${fn(v)}°` } // 30°·90°·150°: sin 값이 1/2·1·1/2 라서 √ 없이 넓이가 정확히 나옵니다(60°·120°는 √3 이 필요해 중3 내용)
     ],
-    pool: [{ R: 4, th: 90 }, { R: 8, th: 90 }, { R: 10, th: 90 }, { R: 12, th: 90 }, { R: 6, th: 60 }, { R: 6, th: 120 }],
+    pool: [{ R: 4, th: 90 }, { R: 8, th: 90 }, { R: 10, th: 90 }, { R: 12, th: 90 }, { R: 6, th: 30 }, { R: 6, th: 150 }],
     model: (V) => {
       const R = V.R, th = V.th, a0 = 90 - th / 2, a1 = 90 + th / 2;
       const B = P(R * Math.cos(rad(a0)), R * Math.sin(rad(a0))), A = P(R * Math.cos(rad(a1)), R * Math.sin(rad(a1)));
       const outer = sectorP(0, 0, R, a0, a1), tri = [P(0, 0), A, B];
       const wholeX = X(0, Q(R * R * th, 360));
       const rt = th === 90;
-      const partX = rt ? X(Q(R * R, 2)) : X(0, 0, Q(R * R, 4));
+      const partX = rt ? X(Q(R * R, 2)) : X(Q(R * R, 4)); // sin30°=sin150°=1/2
       const resX = xsub(wholeX, partX);
       const nx = Math.cos(rad(a0) - PI / 2), ny = Math.sin(rad(a0) - PI / 2);
       const fig = [
@@ -910,7 +914,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       tag: '활꼴의 넓이', unit: 'cm²', textbook: false,
       stem: (V) => `오른쪽 그림은 반지름의 길이가 ${V.R} cm이고 중심각의 크기가 ${V.th}°인 부채꼴 OAB이다. 현 AB와 호 AB로 이루어진 활꼴(색칠한 부분)의 넓이는?`,
       choices: (V) => {
-        const S = X(0, Q(V.R * V.R * V.th, 360)), T0 = V.th === 90 ? X(Q(V.R * V.R, 2)) : X(0, 0, Q(V.R * V.R, 4));
+        const S = X(0, Q(V.R * V.R * V.th, 360)), T0 = V.th === 90 ? X(Q(V.R * V.R, 2)) : X(Q(V.R * V.R, 4));
         const A = xsub(S, T0);
         return ascending(A, [xadd(S, T0), S, xsub(S, xmul(T0, 2)), xmul(S, 2), X(0, 1)].map((v) => v), X(0, 1));
       },
@@ -920,15 +924,20 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     }
   });
 
+  /* 반원 − 직각삼각형: 빗변(지름) AB 가 자연수가 되는 (AC, BC) 만 씁니다(제곱근은 중3 내용) */
+  const TRI_PAIRS = [[3, 4], [4, 3], [5, 12], [12, 5], [6, 8], [8, 6], [8, 15], [15, 8], [9, 12], [12, 9]];
+  const triNearest = (ac, bc) => TRI_PAIRS.reduce((b, z) => (Math.abs(z[0] - ac) + Math.abs(z[1] - bc) < Math.abs(b[0] - ac) + Math.abs(b[1] - bc) ? z : b), TRI_PAIRS[0]);
+
   /* ⑧ 반원 − 직각삼각형 (분리된 두 영역) : AC, BC 를 정수로 바꾸면 모든 값이 정확한 식으로 나옵니다 */
   SPECS.push({
     id: 'tri', title: '반원에서 직각삼각형 파내기', short: '반원−삼각형',
     question: '지름을 한 변으로 하는 삼각형은 어떤 삼각형일까요? AC, BC를 바꾸어 삼각형을 파내고 남은 두 부분의 넓이를 구해 보세요.',
     vars: [
-      { k: 'AC', sym: 'AC', label: '변 AC의 길이', min: 3, max: 15, step: 1, value: 6 },
-      { k: 'BC', sym: 'BC', label: '변 BC의 길이', hint: '점 C를 끌어도 돼요 (반원 위의 점)', min: 3, max: 15, step: 1, value: 8 }
+      { k: 'AC', sym: 'AC', label: '변 AC의 길이', hint: '지름 AB가 자연수가 되는 직각삼각형만 골라져요', min: 3, max: 15, step: 1, value: 6 },
+      { k: 'BC', sym: 'BC', label: '변 BC의 길이', hint: '점 C를 끌어도 돼요 (반원 위의 점). 지름 AB가 자연수가 되는 값만 골라져요', min: 3, max: 15, step: 1, value: 8 }
     ],
-    pool: [{ AC: 6, BC: 8 }, { AC: 5, BC: 12 }, { AC: 9, BC: 12 }, { AC: 8, BC: 15 }, { AC: 12, BC: 16 }, { AC: 3, BC: 4 }, { AC: 4, BC: 6 }],
+    fix: (V) => { const z = triNearest(V.AC, V.BC); V.AC = z[0]; V.BC = z[1]; }, // 지름(빗변) AB 가 자연수가 되는 조합만
+    pool: [{ AC: 6, BC: 8 }, { AC: 5, BC: 12 }, { AC: 9, BC: 12 }, { AC: 8, BC: 15 }, { AC: 12, BC: 5 }, { AC: 3, BC: 4 }, { AC: 15, BC: 8 }],
     presets: [{ group: '직각삼각형', label: '6 · 8 · 10', set: { AC: 6, BC: 8 } }, { group: '직각삼각형', label: '5 · 12 · 13', set: { AC: 5, BC: 12 } }, { group: '직각삼각형', label: '9 · 12 · 15', set: { AC: 9, BC: 12 } }],
     model: (V) => {
       const ac = V.AC, bc = V.BC, ab2 = ac * ac + bc * bc, AB = Math.sqrt(ab2), R = AB / 2, phi = Math.atan2(bc, ac);
@@ -936,7 +945,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       const outer = arcP(0, 0, R, 0, 180);
       const Ap = P(-R, 0), Bp = P(R, 0), Cp = P(R * Math.cos(2 * phi), R * Math.sin(2 * phi));
       const wholeX = X(0, Q(ab2, 8)), partX = X(Q(ac * bc, 2)), resX = xsub(wholeX, partX);
-      const abTxt = intAB ? `AB=${Math.round(AB)}` : `AB=√${ab2}≈${fn(AB, 1)}`;
+      const abTxt = intAB ? `AB=${Math.round(AB)}` : 'AB'; // 정수가 아니면 √ 대신 이름만(제곱근은 중3)
       const fig = [
         { k: 'right', v: [Cp.x, Cp.y], p: [Ap.x, Ap.y], q: [Bp.x, Bp.y], when: 'g', size: 12 },
         T([(Ap.x + Cp.x) / 2, (Ap.y + Cp.y) / 2], `AC=${ac}`, { dx: -4, dy: -14, color: 'ink', when: 'g' }),
@@ -950,10 +959,11 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
         outer, cuts: [{ polys: [[Ap, Bp, Cp]] }], fig, part: [], wholeX, partX, resX,
         handles: [{ id: 'C', label: '점 C', p: [Cp.x, Cp.y], drag: (w, c) => {
           const ang = Math.atan2(Math.max(0.01, w.y), w.x) / 2;      // 중심각 2φ → φ
-          c.set('AC', clamp(Math.round(AB * Math.cos(ang)), 3, 15), true);
-          c.set('BC', clamp(Math.round(AB * Math.sin(ang)), 3, 15));
+          const z = triNearest(clamp(Math.round(AB * Math.cos(ang)), 3, 15), clamp(Math.round(AB * Math.sin(ang)), 3, 15));
+          c.set('AC', z[0], true);
+          c.set('BC', z[1]);
         } }],
-        tx: { whole: `지름 AB(${abTxt.slice(3)} cm)인 반원`, part: '직각삼각형 ABC (∠C = 90°)' },
+        tx: { whole: intAB ? `지름 AB(${abTxt.slice(3)} cm)인 반원` : '지름 AB인 반원', part: '직각삼각형 ABC (∠C = 90°)' },
         cap: { whole: { l: '전체 (반원)', v: `${xs(wholeX)} cm²` }, part: { l: '파낸 부분 (직각삼각형)', v: triS } },
         str: { part: triS },
         wholeTex: `\\dfrac12\\times\\pi\\times\\left(\\dfrac{AB}{2}\\right)^2=${xt(wholeX)}`, partTex: `\\dfrac12\\times${ac}\\times${bc}=${fn(ac * bc / 2, 1)}`,

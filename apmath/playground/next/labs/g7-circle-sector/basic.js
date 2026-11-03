@@ -32,7 +32,7 @@
     const [n, d] = rat(x);
     if (d === 0) return String(+x.toFixed(2));
     if (d === 1) return String(n);
-    if (decOK(d)) return String(+(n / d).toFixed(4));
+    // 소수로 떨어지는 값(1.9, 0.5 …)도 소수로 쓰지 않고 분수로 쓴다(중1 π 꼴 표기 원칙)
     return tex ? `\\frac{${n}}{${d}}` : `${n}/${d}`;
   }
   function piS(x) { // 캔버스·일반 글자용: 13π/2
@@ -50,6 +50,7 @@
   const frS = (x) => { const [n, d] = rat(x); return d === 0 ? String(+x.toFixed(3)) : d === 1 ? String(n) : `${n}/${d}`; };
   const frT = (x) => { const [n, d] = rat(x); return d === 0 ? String(+x.toFixed(3)) : d === 1 ? String(n) : `\\frac{${n}}{${d}}`; };
   const T = (s) => '$' + s + '$';
+  const numF = (x, tex) => (tex ? frT(x) : frS(x)); // 소수 대신 항상 분수(0.2 → 1/5)
   const d1 = (x) => String(+x.toFixed(1));
   const d2 = (x) => String(+x.toFixed(2));
 
@@ -271,6 +272,13 @@
      ====================================================================== */
   const verdictParts = (list, colorOk) => list.map((p) => ({ id: p.id, name: p.name, value: p.ok ? '옳음' : '옳지 않음', ok: p.ok, color: p.ok ? (colorOk || 'green') : 'red' }));
   const chordLen = (r, th) => 2 * r * Math.sin((th * D2R) / 2);
+  /** 현의 길이: 60°(= 반지름)·180°(= 지름)처럼 정수로 딱 떨어질 때만 값을 쓰고, 아니면 null(소수·√ 대신 지름과 비교하는 글을 씁니다) */
+  const chordExact = (r, th) => {
+    const h = th > 180 ? 360 - th : th;
+    if (h === 60) return `${r}`;
+    if (h === 180) return `${2 * r}`;
+    return null;
+  };
 
   /* ---------- 11-01 원의 요소: 옳지 않은 것 ---------- */
   const T1101 = [
@@ -295,10 +303,9 @@
     partOfStep: (st) => st,
     steps: () => T1101.map((p) => p.name.replace(/\.$/, '') + (p.ok ? ' → 옳음' : ' → 옳지 않음')),
     work: (q) => {
-      const ch = chordLen(q.r, q.th);
       const half = q.th === 180;
       return [
-        `① 중심을 지나는 현이 <b>지름</b>입니다. 지금 현 PQ = <b>${d1(ch)} cm</b>, 지름 = <b>${2 * q.r} cm</b>${half ? ' (같음: 지름)' : ' → 지름이 더 깁니다'}. <b>옳음</b>`,
+        `① 중심을 지나는 현이 <b>지름</b>입니다. 지금 ${chordExact(q.r, q.th) ? `현 PQ = <b>${chordExact(q.r, q.th)} cm</b>, ` : ''}지름 = <b>${2 * q.r} cm</b>${half ? ' (같음: 지름)' : ' → 현 PQ보다 지름이 더 깁니다'}. <b>옳음</b>`,
         '② 두 점을 이은 <b>선분</b>은 <b>현</b>이고, 두 점 사이의 <b>곡선</b>이 <b>호</b>입니다. 선분을 호라 하면 틀립니다. <b>옳지 않음</b>',
         `③ 중심각이 180°일 때만 부채꼴과 활꼴이 겹쳐 <b>반원</b>이 됩니다. 지금 중심각 ${q.th}° → ${half ? '반원입니다' : '두 도형이 서로 다릅니다'}. <b>옳음</b>`,
         '④ 현과 호로 둘러싸인 도형이 <b>활꼴</b>입니다. <b>옳음</b>',
@@ -307,11 +314,11 @@
     },
     rule: (q) => (q.step >= 5 ? '정답 ② — 선분은 현, 곡선이 호' : null),
     view: (q, mode) => {
-      const ch = chordLen(q.r, q.th);
       const sel = mode === 'review' ? q.step : q.part | 0;
       const half = q.th === 180;
-      let st = stat('info', `중심각 ${q.th}° · 현 PQ = ${d1(ch)} cm`);
-      if (sel === 1) st = half ? stat('ok', `현 PQ가 지름입니다 (${2 * q.r} cm) — 가장 긴 현`) : stat('info', `현 PQ = ${d1(ch)} cm < 지름 ${2 * q.r} cm`);
+      const chx = chordExact(q.r, q.th);
+      let st = stat('info', chx ? `중심각 ${q.th}° · 현 PQ = ${chx} cm` : `중심각 ${q.th}° · 현 PQ < 지름 ${2 * q.r} cm`);
+      if (sel === 1) st = half ? stat('ok', `현 PQ가 지름입니다 (${2 * q.r} cm) — 가장 긴 현`) : stat('info', chx ? `현 PQ = ${chx} cm < 지름 ${2 * q.r} cm` : `현 PQ는 지름 ${2 * q.r} cm보다 짧음`);
       if (sel === 2) st = stat('bad', '선분 PQ는 현, 곡선 PQ가 호입니다 → 옳지 않음');
       if (sel === 3) st = half ? stat('ok', '반원 — 부채꼴이면서 활꼴입니다') : stat('info', '지금은 부채꼴과 활꼴이 다릅니다 · 180°로 맞춰 보세요');
       if (sel === 4) st = stat('ok', '현과 호로 둘러싸인 초록 부분 = 활꼴');
@@ -322,7 +329,7 @@
         readouts: [
           rd('반지름 r', q.r + ' cm', 'sky'),
           rd('중심각 ∠POQ', q.th + '°', 'amber'),
-          rd('현 PQ', d1(ch) + ' cm', 'sky', half ? '지름과 같음' : '지름 ' + 2 * q.r + ' cm보다 짧음'),
+          rd('현 PQ', chx ? chx + ' cm' : '지름보다 짧음', 'sky', half ? '지름과 같음' : '지름 ' + 2 * q.r + ' cm보다 짧음'),
           rd('호 PQ', piS((q.r * q.th) / 180) + ' cm', 'rose')
         ]
       };
@@ -397,9 +404,9 @@
     work: (q) => {
       const cA = chordLen(q.r, q.al), cB = chordLen(q.r, q.be), k = q.be / q.al;
       return [
-        `① 현 중에서 중심을 지나는 것이 <b>지름</b>이고 가장 깁니다. 분홍 현 = ${d1(cB)} cm ≤ 지름 ${2 * q.r} cm. <b>옳음</b>`,
+        `① 현 중에서 중심을 지나는 것이 <b>지름</b>이고 가장 깁니다. 분홍 현 ≤ 지름 ${2 * q.r} cm. <b>옳음</b>`,
         `② 중심각이 ${num(k)}배 → 호의 길이도 ${num(k)}배 (${piS((q.r * q.al) / 180)} : ${piS((q.r * q.be) / 180)}). <b>옳음</b>`,
-        `③ 중심각이 ${num(k)}배인데 현은 ${d2(cB / cA)}배 (${d1(cA)} cm : ${d1(cB)} cm)로 <b>비례하지 않습니다</b>. <b>옳지 않음</b>`,
+        `③ 중심각이 ${num(k)}배인데 현은 ${num(k)}배가 되지 않고 ${cB / cA < k ? '그보다 작게' : '그보다 크게'} 달라져서 <b>비례하지 않습니다</b>. <b>옳지 않음</b>`,
         '④ 중심각이 같으면 두 반지름 사이의 현도 같은 길이입니다(합동인 이등변삼각형). <b>옳음</b>',
         '⑤ 중심각이 같으면 부채꼴이 포개어져 넓이도 같습니다. <b>옳음</b>'
       ];
@@ -408,11 +415,11 @@
     view: (q, mode) => {
       const cA = chordLen(q.r, q.al), cB = chordLen(q.r, q.be), k = q.be / q.al, kc = cB / cA;
       const sel = mode === 'review' ? q.step : q.part | 0;
-      let st = stat('info', `중심각의 비 ${num(k)}배 → 호 ${num(k)}배 · 넓이 ${num(k)}배 · 현 ${d2(kc)}배`);
-      if (sel === 1) st = q.be === 180 ? stat('ok', `분홍 현이 지름 (${2 * q.r} cm) — 가장 긴 현`) : stat('info', `분홍 현 ${d1(cB)} cm ≤ 지름 ${2 * q.r} cm`);
+      let st = stat('info', `중심각의 비 ${num(k)}배 → 호 ${num(k)}배 · 넓이 ${num(k)}배 · 현은 ${Math.abs(kc - k) < 0.005 ? '같은 배' : kc < k ? '그보다 작은 배' : '그보다 큰 배'}`);
+      if (sel === 1) st = q.be === 180 ? stat('ok', `분홍 현이 지름 (${2 * q.r} cm) — 가장 긴 현`) : stat('info', `분홍 현 ≤ 지름 ${2 * q.r} cm`);
       if (sel === 2) st = stat('ok', `중심각 ${num(k)}배 → 호 ${num(k)}배`);
-      if (sel === 3) st = Math.abs(kc - k) < 0.005 ? stat('info', '지금은 비가 같아 보여도, 중심각을 바꿔 보면 현의 비는 달라집니다') : stat('bad', `중심각 ${num(k)}배인데 현은 ${d2(kc)}배 → 정비례 아님`);
-      if (sel === 4) st = q.al === q.be ? stat('ok', `같은 중심각 → 현이 같음 (${d1(cA)} cm = ${d1(cB)} cm)`) : stat('info', '두 중심각을 같게 맞춰 보세요 (같은 중심각 → 같은 현)');
+      if (sel === 3) st = Math.abs(kc - k) < 0.005 ? stat('info', '지금은 비가 같아 보여도, 중심각을 바꿔 보면 현의 비는 달라집니다') : stat('bad', `중심각 ${num(k)}배인데 현은 ${kc < k ? '그보다 작은 배' : '그보다 큰 배'} → 정비례 아님`);
+      if (sel === 4) st = q.al === q.be ? stat('ok', '같은 중심각 → 현의 길이가 같음') : stat('info', '두 중심각을 같게 맞춰 보세요 (같은 중심각 → 같은 현)');
       if (sel === 5) st = q.al === q.be ? stat('ok', `같은 중심각 → 넓이가 같음 (${piS((q.r * q.r * q.al) / 360)} cm²)`) : stat('info', '두 중심각을 같게 맞춰 보세요 (같은 중심각 → 같은 넓이)');
       return {
         status: mode === 'problem' ? null : st,
@@ -421,7 +428,7 @@
           rd('중심각의 비 β÷α', num(k), 'amber', `${q.be}° ÷ ${q.al}°`),
           rd('호의 길이의 비', num(k), 'green', '중심각의 비와 같음', 2),
           rd('부채꼴 넓이의 비', num(k), 'green', '중심각의 비와 같음', 5),
-          rd('현의 길이의 비', d2(kc), 'red', Math.abs(kc - k) < 0.005 ? '' : '중심각의 비와 다름', 3)
+          rd('현의 길이의 비', Math.abs(kc - k) < 0.005 ? '같음' : kc < k ? '더 작음' : '더 큼', 'red', Math.abs(kc - k) < 0.005 ? '' : '중심각의 비와 다름', 3)
         ]
       };
     },
@@ -459,8 +466,8 @@
       if (sel === 0 || sel === 1 || sel === 3 || sel === 4) {
         const mx = (P) => [(P[0][0] + P[1][0]) / 2, (P[0][1] + P[1][1]) / 2];
         const sg = (th) => (th < 90 ? -16 : 26);
-        g.text(mx(PA), '현 ' + d1(cA), { color: 'sky', ref: [1, 3, 4], dx: Math.cos(mA * D2R) * sg(q.al), dy: -Math.sin(mA * D2R) * sg(q.al) });
-        g.text(mx(PB), '현 ' + d1(cB), { color: 'sky', ref: [1, 3, 4], dx: Math.cos(mB * D2R) * sg(q.be), dy: -Math.sin(mB * D2R) * sg(q.be) });
+        g.text(mx(PA), '현', { color: 'sky', ref: [1, 3, 4], dx: Math.cos(mA * D2R) * sg(q.al), dy: -Math.sin(mA * D2R) * sg(q.al) });
+        g.text(mx(PB), '현', { color: 'sky', ref: [1, 3, 4], dx: Math.cos(mB * D2R) * sg(q.be), dy: -Math.sin(mB * D2R) * sg(q.be) });
       }
       if (sel === 5) {
         g.text(g.pol(O, R * 0.66, mA), '넓이 ' + piS((q.r * q.r * q.al) / 360), { color: 'amber', ref: 5, size: 14 });
@@ -497,9 +504,9 @@
     work: (q) => {
       const bc = chordLen(q.r, q.ph), ac = chordLen(q.r, 2 * q.ph);
       return [
-        `① 중심각이 같으면 현도 같습니다. $\\overline{AB}=\\overline{BC}$ (${d1(bc)} cm). <b>옳음</b>`,
+        `① 중심각이 같으면 현도 같습니다. $\\overline{AB}=\\overline{BC}$. <b>옳음</b>`,
         `② $\\angle AOC=2\\angle BOC$ 이므로 호도 2배: $\\widehat{AC}$ = ${piS((q.r * 2 * q.ph) / 180)}, $\\widehat{BC}$ = ${piS((q.r * q.ph) / 180)}. <b>옳음</b>`,
-        `③ 현은 중심각에 정비례하지 않습니다. $\\overline{AC}$ = ${d1(ac)} cm, 2$\\overline{BC}$ = ${d1(2 * bc)} cm → 같지 않습니다. <b>옳지 않음</b>`,
+        `③ 현은 중심각에 정비례하지 않습니다. $\\overline{AC}<2\\overline{BC}$ (삼각형 ABC에서 AB+BC > AC) → 같지 않습니다. <b>옳지 않음</b>`,
         '④ 중심각이 같으므로 호도 같습니다. <b>옳음</b>',
         `⑤ 부채꼴의 넓이는 중심각에 정비례하므로 AOC = 2×BOC (${piS((q.r * q.r * 2 * q.ph) / 360)} cm² = 2×${piS((q.r * q.r * q.ph) / 360)} cm²). <b>옳음</b>`
       ];
@@ -509,18 +516,17 @@
       const bc = chordLen(q.r, q.ph), ac = chordLen(q.r, 2 * q.ph);
       const sel = mode === 'review' ? q.step : q.part | 0;
       let st = stat('info', `∠AOC = 2×∠BOC = ${2 * q.ph}°`);
-      if (sel === 1) st = stat('ok', `AB = BC = ${d1(bc)} cm`);
+      if (sel === 1) st = stat('ok', 'AB = BC');
       if (sel === 2) st = stat('ok', `호 AC = 2×호 BC (${piS((q.r * 2 * q.ph) / 180)} = 2×${piS((q.r * q.ph) / 180)})`);
-      if (sel === 3) st = stat('bad', `AC = ${d1(ac)} cm ≠ 2×BC = ${d1(2 * bc)} cm`);
+      if (sel === 3) st = stat('bad', 'AC < 2×BC → AC ≠ 2×BC');
       if (sel === 4) st = stat('ok', '호 AB = 호 BC');
       if (sel === 5) st = stat('ok', '부채꼴 AOC = 2 × 부채꼴 BOC');
       return {
         status: mode === 'problem' ? null : st,
         parts: verdictParts(T1607).map((p, i) => ({ ...p, name: T1607[i].name })),
         readouts: [
-          rd('현 AB = 현 BC', d1(bc) + ' cm', 'amber', '중심각이 같아서', 1),
-          rd('현 AC', d1(ac) + ' cm', 'rose', '', 3),
-          rd('2 × 현 BC', d1(2 * bc) + ' cm', 'sky', ac < 2 * bc - 0.001 ? 'AC보다 큼' : '', 3),
+          rd('현 AB, 현 BC', '같음', 'amber', '중심각이 같아서', 1),
+          rd('현 AC와 2 × 현 BC', 'AC < 2 × BC', 'rose', '현은 중심각에 정비례하지 않아요', 3),
           rd('호 AC ÷ 호 BC', '2', 'green', '중심각의 비와 같음', 2)
         ]
       };
@@ -550,10 +556,10 @@
       g.ang(O, a0 + ph, a0 + 2 * ph, { r: 22, color: 'amber', label: ph + '°', lr: 44 });
       const mid = (P, Q) => [(P[0] + Q[0]) / 2, (P[1] + Q[1]) / 2];
       if (sel === 1 || sel === 3) {
-        g.text(mid(A, B), d1(bc), { color: 'amber', ref: [1, 3], dx: -14, dy: -16, align: 'center' });
-        g.text(mid(B, C), d1(bc), { color: 'amber', ref: [1, 3], dx: -22, dy: 6, align: 'center' });
+        g.text(mid(A, B), 'AB', { color: 'amber', ref: [1, 3], dx: -14, dy: -16, align: 'center' });
+        g.text(mid(B, C), 'BC', { color: 'amber', ref: [1, 3], dx: -22, dy: 6, align: 'center' });
       }
-      if (sel === 3) g.text(mid(A, C), 'AC ' + d1(ac), { color: 'rose', ref: 3, dx: 28, dy: -4 });
+      if (sel === 3) g.text(mid(A, C), 'AC', { color: 'rose', ref: 3, dx: 28, dy: -4 });
       if (sel === 2) {
         g.out(g.pol(O, R + 9, a0 + ph), a0 + ph, '호 AC ' + piS((q.r * 2 * ph) / 180), { color: 'rose', ref: 2 }, 34);
         g.out(g.pol(O, R, a0 + 1.5 * ph), a0 + 1.5 * ph, '호 BC ' + piS((q.r * ph) / 180), { color: 'amber', ref: 2 }, 62);
@@ -721,7 +727,7 @@
       const c = mkChoices(v.l, 2, 4, (x) => `${T(piT(x))} cm`);
       return { text: qHtml(`반지름의 길이가 ${q.r} cm이고 넓이가 ${T(piT(v.S))} cm²인 부채꼴의 호의 길이는?`, c.items), answer: ansOf(c) };
     },
-    relation: (q) => rd('넓이 ÷ 호의 길이', num(q.r / 2), 'violet', '= 반지름 ÷ 2 (늘 같음)')
+    relation: (q) => rd('넓이 ÷ 호의 길이', frS(q.r / 2), 'violet', '= 반지름 ÷ 2 (늘 같음)')
   }));
 
   /* ---------- 16-09 반지름과 넓이가 주어진 부채꼴: 중심각 ---------- */
@@ -776,7 +782,7 @@
       const c = mkChoices(v.S, 2, 3, (x) => `${T(piT(x))} cm²`);
       return { text: qHtml(`오른쪽 그림과 같이 호의 길이가 ${T(piT(v.l))} cm이고 중심각의 크기가 ${q.th}°인 부채꼴의 넓이는?`, c.items), answer: ansOf(c) };
     },
-    relation: (q, v) => rd('넓이 ÷ 호의 길이', num(q.r / 2), 'violet', '= 반지름 ÷ 2')
+    relation: (q, v) => rd('넓이 ÷ 호의 길이', frS(q.r / 2), 'violet', '= 반지름 ÷ 2')
   }));
 
   /* ---------- 18-08 중심각과 호의 길이가 주어진 부채꼴: 반지름 ---------- */
@@ -818,7 +824,7 @@
     guide: '세 부채꼴의 <b>중심각</b>을 손잡이로 끌거나 막대로 바꿔 보세요. 호의 길이가 중심각에 정비례하므로 <b>호 ÷ 중심각</b>은 늘 같습니다.',
     box: { x: [-135, 135], y: [-135, 135] },
     params: {
-      u: { value: 1, min: 0.5, max: 2.5, step: 0.5, color: 'sky', label: '5°에 해당하는 호의 길이', format: (v) => v + ' cm' },
+      u: { value: 1, min: 0.5, max: 2.5, step: 0.5, color: 'sky', label: '5°에 해당하는 호의 길이', format: (v) => frS(v) + ' cm' },
       t1: { value: 30, min: 10, max: 60, step: 5, color: 'amber', label: '왼쪽 중심각', format: (v) => v + '°' },
       t2: { value: 45, min: 10, max: 80, step: 5, color: 'amber', label: '오른쪽 중심각', format: (v) => v + '°' },
       y: { value: 75, min: 20, max: 120, step: 5, color: 'rose', label: '아래쪽 중심각 y', format: (v) => v + '°' }
@@ -826,22 +832,22 @@
     controls: ['t1', 't2', 'y', 'u'],
     steps: (q) => {
       const k = q.u / 5, l1 = k * q.t1, x = k * q.t2, l3 = k * q.y;
-      return [`① ${num(l1)} : x = ${q.t1} : ${q.t2} → x = ${num(x)}`, `② ${num(l1)} : ${num(l3)} = ${q.t1} : y → y = ${q.y}`, `③ x + y = ${num(x)} + ${q.y} = ${num(x + q.y)}`];
+      return [`① ${numF(l1)} : x = ${q.t1} : ${q.t2} → x = ${numF(x)}`, `② ${numF(l1)} : ${numF(l3)} = ${q.t1} : y → y = ${q.y}`, `③ x + y = ${numF(x)} + ${q.y} = ${numF(x + q.y)}`];
     },
     work: (q) => {
       const k = q.u / 5, l1 = k * q.t1, x = k * q.t2, l3 = k * q.y;
       return [
-        `호의 길이는 중심각에 정비례하므로 $${num(l1, true)}:x=${q.t1}:${q.t2}$, $x=${num(l1, true)}\\times\\frac{${q.t2}}{${q.t1}}=${num(x, true)}$`,
-        `$${num(l1, true)}:${num(l3, true)}=${q.t1}:y$, $y=${q.t1}\\times\\frac{${num(l3, true)}}{${num(l1, true)}}=${q.y}$`,
-        `$x+y=${num(x, true)}+${q.y}=${num(x + q.y, true)}$`
+        `호의 길이는 중심각에 정비례하므로 $${numF(l1, true)}:x=${q.t1}:${q.t2}$, $x=${numF(l1, true)}\\times\\frac{${q.t2}}{${q.t1}}=${numF(x, true)}$`,
+        `$${numF(l1, true)}:${numF(l3, true)}=${q.t1}:y$, $y=${q.t1}\\times\\frac{${numF(l3, true)}}{${numF(l1, true)}}=${q.y}$`,
+        `$x+y=${numF(x, true)}+${q.y}=${numF(x + q.y, true)}$`
       ];
     },
     chips: (q, mode, step) => {
       const k = q.u / 5, l1 = k * q.t1, x = k * q.t2;
-      if (mode === 'review' && step === 1) return [{ k: '비례식', tex: `${num(l1, true)}:x=${q.t1}:${q.t2}\\ \\Rightarrow\\ x=${num(x, true)}`, color: 'rose' }];
-      if (mode === 'review' && step === 2) return [{ k: '비례식', tex: `${num(l1, true)}:${num(k * q.y, true)}=${q.t1}:y\\ \\Rightarrow\\ y=${q.y}`, color: 'rose' }];
-      if (mode === 'review') return [{ k: '합', tex: `x+y=${num(x, true)}+${q.y}=${num(x + q.y, true)}`, color: 'rose' }];
-      if (mode === 'explore') return [{ k: '1°당 호', tex: `\\frac{${num(l1, true)}}{${q.t1}}=${num(k, true)}\\ \\text{cm}`, color: 'amber' }];
+      if (mode === 'review' && step === 1) return [{ k: '비례식', tex: `${numF(l1, true)}:x=${q.t1}:${q.t2}\\ \\Rightarrow\\ x=${numF(x, true)}`, color: 'rose' }];
+      if (mode === 'review' && step === 2) return [{ k: '비례식', tex: `${numF(l1, true)}:${numF(k * q.y, true)}=${q.t1}:y\\ \\Rightarrow\\ y=${q.y}`, color: 'rose' }];
+      if (mode === 'review') return [{ k: '합', tex: `x+y=${numF(x, true)}+${q.y}=${numF(x + q.y, true)}`, color: 'rose' }];
+      if (mode === 'explore') return [{ k: '1°당 호', tex: `\\frac{${numF(l1, true)}}{${q.t1}}=${numF(k, true)}\\ \\text{cm}`, color: 'amber' }];
       return [];
     },
     rule: (q) => (q.step >= 3 ? '한 원에서 호의 길이 ∝ 중심각 → (호) : (호) = (중심각) : (중심각)' : null),
@@ -849,17 +855,17 @@
       const k = q.u / 5;
       return {
         readouts: [
-          rd('원의 둘레', num(72 * q.u) + ' cm', 'sky', '중심각 360° = 5°의 72배'),
-          rd('호 ÷ 중심각', num(k) + ' cm/°', 'amber', '모든 호에서 같음'),
-          rd('왼쪽', `${q.t1}° ↔ ${num(k * q.t1)} cm`, 'amber'),
-          rd('오른쪽 x', `${q.t2}° ↔ ${num(k * q.t2)} cm`, 'rose'),
-          rd('아래쪽 y', `${q.y}° ↔ ${num(k * q.y)} cm`, 'rose')
+          rd('원의 둘레', numF(72 * q.u) + ' cm', 'sky', '중심각 360° = 5°의 72배'),
+          rd('호 ÷ 중심각', numF(k) + ' cm/°', 'amber', '모든 호에서 같음'),
+          rd('왼쪽', `${q.t1}° ↔ ${numF(k * q.t1)} cm`, 'amber'),
+          rd('오른쪽 x', `${q.t2}° ↔ ${numF(k * q.t2)} cm`, 'rose'),
+          rd('아래쪽 y', `${q.y}° ↔ ${numF(k * q.y)} cm`, 'rose')
         ]
       };
     },
     problem: (q) => {
       const k = q.u / 5, x = k * q.t2, ans = x + q.y;
-      const c = mkChoices(ans, 4, 3, (v) => num(v));
+      const c = mkChoices(ans, 4, 3, (v) => numF(v));
       return { text: qHtml('오른쪽 그림의 원 O에서 $x+y$의 값은?', c.items), answer: ansOf(c) };
     },
     draw(g, q, mode, step) {
@@ -881,9 +887,9 @@
       g.ang(O, a1, 180, { r: 22, color: 'amber', label: q.t1 + '°', lr: 46 });
       g.ang(O, 0, a2, { r: 22, color: 'amber', label: q.t2 + '°', lr: 46 });
       g.ang(O, b0, b1, { r: 22, color: 'rose', label: showY ? q.y + '°' : 'y°', lr: 44, dy: 4 });
-      g.out(g.pol(O, R, (a1 + 180) / 2), (a1 + 180) / 2, num(k * q.t1) + ' cm', { color: 'amber' }, 30);
-      g.out(g.pol(O, R, a2 / 2), a2 / 2, showX ? 'x = ' + num(k * q.t2) + ' cm' : 'x cm', { color: 'rose' }, 34);
-      g.out(g.pol(O, R, 270), 270, num(k * q.y) + ' cm', { color: 'amber' }, 28);
+      g.out(g.pol(O, R, (a1 + 180) / 2), (a1 + 180) / 2, numF(k * q.t1) + ' cm', { color: 'amber' }, 30);
+      g.out(g.pol(O, R, a2 / 2), a2 / 2, showX ? 'x = ' + numF(k * q.t2) + ' cm' : 'x cm', { color: 'rose' }, 34);
+      g.out(g.pol(O, R, 270), 270, numF(k * q.y) + ' cm', { color: 'amber' }, 28);
       if (mode === 'explore') {
         g.handle('L', g.pol(O, R, a1), { color: 'amber', label: '', drag: (w) => { const a = mod(dirOf(O, w), 360); q.t1 = clamp(snap(180 - clamp(a, 90, 190), 5), 10, 60); } });
         g.handle('R', g.pol(O, R, a2), { color: 'amber', label: '', drag: (w) => { let a = mod(dirOf(O, w), 360); if (a > 180) a = 0; q.t2 = clamp(snap(a, 5), 10, 80); } });
@@ -893,18 +899,35 @@
     }
   });
 
+  // 11-03: 한 칸(360°÷비의 합)과 모든 각이 정수°가 되도록 비의 합이 360의 약수인 조합만 허용합니다(소수 각도 금지).
+  // 학생이 막대를 끌면 끈 막대를 가장 가까운 허용 값으로 맞추고, 주소 복원처럼 다른 경로로 들어온 값은 c, b, a 순으로 맞춥니다.
+  const ratioOK = (a, b, c) => 360 % (a + b + c) === 0;
+  function fixRatio(q, key) {
+    const ks = key ? [key] : ['c', 'b', 'a'];
+    for (const k of ks) {
+      if (ratioOK(q.a, q.b, q.c)) return;
+      const cur = q[k];
+      let best = null;
+      for (let v = 1; v <= 9; v++) {
+        const o = { a: q.a, b: q.b, c: q.c }; o[k] = v;
+        if (!ratioOK(o.a, o.b, o.c)) continue;
+        if (best == null || Math.abs(v - cur) < Math.abs(best - cur)) best = v;
+      }
+      if (best != null) q[k] = best;
+    }
+  }
   const angD = (x) => { const [n, d] = rat(x); return d !== 0 && !decOK(d) ? String(+x.toFixed(1)) : num(x); };
 
   /* ---------- 11-03 호의 길이의 비 AB : BC : CA = 3 : 5 : 7 → ∠AOB ---------- */
   build({
     id: '1103', title: '호의 길이의 비로 중심각 구하기', short: '호의 길이의 비',
     question: '원을 호의 길이의 비 3 : 5 : 7 로 나누면, 각 호에 대한 중심각은 얼마일까?',
-    guide: '막대로 <b>호의 비</b>를 바꿔 보세요. 원을 비의 합만큼 똑같이 나눈 <b>한 칸</b>이 중심각 몇 도인지 눈금으로 확인합니다.',
+    guide: '막대로 <b>호의 비</b>를 바꿔 보세요. 원을 비의 합만큼 똑같이 나눈 <b>한 칸</b>이 중심각 몇 도인지 눈금으로 확인합니다. (각이 정수로 떨어지도록 비의 합이 360의 약수가 되는 값만 골라져요.)',
     box: { x: [-130, 130], y: [-130, 130] },
     params: {
-      a: { value: 3, min: 1, max: 9, step: 1, color: 'rose', label: '호 AB의 비', format: (v) => String(v) },
-      b: { value: 5, min: 1, max: 9, step: 1, color: 'sky', label: '호 BC의 비', format: (v) => String(v) },
-      c: { value: 7, min: 1, max: 9, step: 1, color: 'sky', label: '호 CA의 비', format: (v) => String(v) }
+      a: { value: 3, min: 1, max: 9, step: 1, color: 'rose', label: '호 AB의 비', format: (v) => String(v), onInput: (q) => fixRatio(q, 'a') },
+      b: { value: 5, min: 1, max: 9, step: 1, color: 'sky', label: '호 BC의 비', format: (v) => String(v), onInput: (q) => fixRatio(q, 'b') },
+      c: { value: 7, min: 1, max: 9, step: 1, color: 'sky', label: '호 CA의 비', format: (v) => String(v), onInput: (q) => fixRatio(q, 'c') }
     },
     controls: ['a', 'b', 'c'],
     presets: [
@@ -914,10 +937,12 @@
       { label: '3 : 4 : 5', apply: (q) => { q.a = 3; q.b = 4; q.c = 5; }, on: (q) => q.a === 3 && q.b === 4 && q.c === 5 }
     ],
     steps: (q) => {
+      fixRatio(q);
       const tot = q.a + q.b + q.c, u = 360 / tot;
       return [`① 원 전체를 ${q.a}+${q.b}+${q.c} = ${tot} 칸으로 나눈다 (한 칸 = 360° ÷ ${tot} = ${angD(u)}°)`, `② ∠AOB = ${angD(u)}° × ${q.a} = ${angD(u * q.a)}°`];
     },
     work: (q) => {
+      fixRatio(q);
       const tot = q.a + q.b + q.c, u = 360 / tot;
       return [
         `호의 길이의 비가 $${q.a}:${q.b}:${q.c}$ 이므로 중심각의 비도 같습니다. 전체 $${q.a}+${q.b}+${q.c}=${tot}$ 칸, 한 칸 $=360^\\circ\\div${tot}=${num(u, true)}^\\circ$`,
@@ -925,6 +950,7 @@
       ];
     },
     chips: (q, mode, step) => {
+      fixRatio(q);
       const tot = q.a + q.b + q.c, u = 360 / tot;
       if (mode === 'review' && step === 1) return [{ k: '한 칸', tex: `\\frac{360^\\circ}{${tot}}=${num(u, true)}^\\circ`, color: 'green' }];
       if (mode === 'review') return [{ k: '답', tex: `\\angle AOB=360^\\circ\\times\\frac{${q.a}}{${tot}}=${num(u * q.a, true)}^\\circ`, color: 'rose' }];
@@ -932,9 +958,9 @@
     },
     rule: (q) => (q.step >= 2 ? '한 원에서 호의 길이의 비 = 중심각의 비 → 360° × (비 ÷ 비의 합)' : null),
     view: (q) => {
+      fixRatio(q);
       const tot = q.a + q.b + q.c, u = 360 / tot;
       return {
-        alert: 360 % tot === 0 ? null : { tone: 'info', text: `비의 합 ${tot}은 360의 약수가 아니라서 각이 소수로 나옵니다(근삿값). 합이 6, 8, 9, 10, 12, 15, 18, 20, 24 가 되게 맞추면 깔끔해요.` },
         readouts: [
           rd('호의 비  AB : BC : CA', `${q.a} : ${q.b} : ${q.c}`, 'violet', `합 ${tot}`),
           rd('한 칸의 중심각', angD(u) + '°', 'green', `360° ÷ ${tot}`),
@@ -945,11 +971,13 @@
       };
     },
     problem: (q) => {
+      fixRatio(q);
       const tot = q.a + q.b + q.c, u = 360 / tot;
       const c = mkChoices(u * q.a, 3, 0, (v) => angD(v) + '°');
       return { text: qHtml(`오른쪽 그림의 원 O에서 $\\widehat{AB}:\\widehat{BC}:\\widehat{CA}=${q.a}:${q.b}:${q.c}$일 때, $\\angle AOB$의 크기는?`, c.items), answer: ansOf(c) };
     },
     draw(g, q, mode, step) {
+      fixRatio(q);
       const O = [0, 0], R = 100, tot = q.a + q.b + q.c, u = 360 / tot;
       g.reserve([-R - 14, -R - 14], [R + 14, R + 14]);
       const A0 = 125, B0 = A0 + u * q.a, C0 = B0 + u * q.b, E0 = A0 + 360;
