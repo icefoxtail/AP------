@@ -7,7 +7,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
 const { deriveMetaBrowsePath } = require('./backfill-generated-meta.cjs');
-const { crosswalkDigestAccepted } = require('./sealed-crosswalk-digests.cjs');
+const { crosswalkDigestAccepted, planSeal } = require('./sealed-crosswalk-digests.cjs');
 
 const ROOT = path.resolve(__dirname, '../..');
 const INDEX_REL = 'archive/data/generated-lite-consumer/v1/index.json';
@@ -224,6 +224,9 @@ function writeAliases(root = ROOT) {
     throw new Error('INDEX_CHANGED_DURING_ALIAS_BUILD');
   }
   fs.renameSync(tempPath, indexPath);
+  // The receipt records the crosswalk digest it was built from; seal exactly the bytes buildPlan read (append-only, idempotent).
+  const crosswalkSeal = planSeal(root, { path: CROSSWALK_REL, bytes: fs.readFileSync(path.join(root, CROSSWALK_REL)), sealedBy: 'build-generated-meta-browse-aliases.cjs', reason: `meta browse alias receipt ${RECEIPT_REL}` });
+  if (crosswalkSeal.changed && crosswalkSeal.entry.sha256 === plan.rpmCrosswalk.sha256) { fs.mkdirSync(path.dirname(crosswalkSeal.file), { recursive: true }); fs.writeFileSync(crosswalkSeal.file, crosswalkSeal.after); }
   const receipt = { ...plan, indexAfter: { path: INDEX_REL, sha256: sha256(bytes), gitBlobSha1: gitBlobSha1(bytes) }, writtenAliasCount: changed };
   fs.writeFileSync(path.join(root, RECEIPT_REL), `${JSON.stringify(receipt, null, 2)}\n`);
   return receipt;

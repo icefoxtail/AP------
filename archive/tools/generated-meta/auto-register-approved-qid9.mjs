@@ -8,7 +8,7 @@ import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {registerApprovedGeneratedMeta,metaSha256,sha256Bytes,gitBlobSha} from './register-approved-generated-meta.mjs';
 import gate from '../generated-meta-retention-gate.cjs';
-import {crosswalkDigestAccepted} from '../sealed-crosswalk-digests.cjs';
+import {crosswalkDigestAccepted,crosswalkDigestStatus,crosswalkDigestIsSealed,sealCrosswalkDigest,CROSSWALK_DIR} from '../sealed-crosswalk-digests.cjs';
 import { loadEvidenceAuthorityIndex, readHotEvidenceAuthority } from '../evidence-authority-v1.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../..');
 const DIR='alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/';
@@ -504,6 +504,12 @@ const main=()=>{
   approvedPackageItems.set(item.uid,item);
  }
  const crossBytes=read(CROS),cross=json(CROS),crossHash=hex(crossBytes);
+ // Resolution evidence files embed the crosswalk digest of the day. When this run writes one that differs from what is stored,
+ // the digest it pins is sealed first (registrations seal inside registerApprovedGeneratedMeta in the same atomic write).
+ const sealForEvidenceWrite=(storedBytes,newBytes,uid)=>{
+  if(storedBytes&&Buffer.from(storedBytes).equals(Buffer.from(newBytes)))return;
+  sealCrosswalkDigest(root,{path:CROS,bytes:crossBytes,sealedBy:'auto-register-approved-qid9.mjs',reason:'rpm resolution evidence: '+uid});
+ };
  const compiledConcept=json('archive/data/meta-foundation/compiled/concept_registry.json');
  const condRegistry=json('archive/data/meta-foundation/compiled/condition_registry.json');
  const knownCross=new Set(compiledConcept.concepts.filter(x=>x.status==='ACTIVE').map(x=>x.conceptKey));
@@ -604,7 +610,7 @@ const main=()=>{
        approvalReceipt:{path:receiptPath,sha256:receiptGit.sha256,gitBlobSha1:receiptGit.blobSha1},
        authority:{path:CROS,sha256:crossHash},manifestDeclaredRecordIds:item.rpmRecordIds||[]};
        const resolutionPath=q21ParameterRpmResolutionPath(uid),resolutionBytes=reconcileRpmResolutionBytes({root,crosswalkPath:CROS,currentCrosswalkSha256:crossHash,builtDoc:resolutionDoc,builtBytes:buf(resolutionDoc),storedBytes:exists(resolutionPath)?read(resolutionPath):null}),resolutionSha=hex(resolutionBytes),resolutionBlob=gitBlobSha(resolutionBytes);
-       if(mode==='write')write(resolutionPath,resolutionBytes);
+       if(mode==='write'){sealForEvidenceWrite(exists(resolutionPath)?read(resolutionPath):null,resolutionBytes,uid);write(resolutionPath,resolutionBytes);}
        else requireTrue(exists(resolutionPath)&&canonicalOrWorkingBytes(root,resolutionPath).bytes.equals(resolutionBytes),'Q21_PARAMETER_RPM_RESOLUTION_EVIDENCE_REQUIRED_OR_DRIFTED:'+uid);
        rpmResolutionEvidence={path:resolutionPath,sha256:resolutionSha,gitBlobSha1:resolutionBlob,declaredRecordIds:declaredRpmIds,selectedRecordId:record.id,selectionBasis:rpmResolutionEvidence.selectionBasis};
      }else if(uid==='ALITE-PALMA25-2MID-Q22-B2'){
@@ -615,7 +621,7 @@ const main=()=>{
         approvalReceipt:{path:receiptPath,sha256:receiptGit.sha256,gitBlobSha1:receiptGit.blobSha1},
         authority:{path:CROS,sha256:crossHash},manifestDeclaredRecordIds:item.rpmRecordIds||[],packageDeclaredRecordIds:m.rpmRecordIds||[]};
        const resolutionBytes=reconcileRpmResolutionBytes({root,crosswalkPath:CROS,currentCrosswalkSha256:crossHash,builtDoc:resolutionDoc,builtBytes:buf(resolutionDoc),storedBytes:exists(q22B2RpmResolutionPath)?read(q22B2RpmResolutionPath):null}),resolutionSha=hex(resolutionBytes),resolutionBlob=gitBlobSha(resolutionBytes);
-       if(mode==='write')write(q22B2RpmResolutionPath,resolutionBytes);
+       if(mode==='write'){sealForEvidenceWrite(exists(q22B2RpmResolutionPath)?read(q22B2RpmResolutionPath):null,resolutionBytes,uid);write(q22B2RpmResolutionPath,resolutionBytes);}
        else requireTrue(exists(q22B2RpmResolutionPath)&&canonicalOrWorkingBytes(root,q22B2RpmResolutionPath).bytes.equals(resolutionBytes),'Q22_B2_RPM_RESOLUTION_EVIDENCE_REQUIRED_OR_DRIFTED');
        rpmResolutionEvidence={path:q22B2RpmResolutionPath,sha256:resolutionSha,gitBlobSha1:resolutionBlob,declaredRecordIds:declaredRpmIds,selectedRecordId:record.id,selectionBasis:rpmResolutionEvidence.selectionBasis};
     }else{
@@ -723,8 +729,11 @@ const main=()=>{
     requireTrue(existingCount===0||existingCount===1,'EXISTING_UID_DUPLICATE:'+uid);
      const currentGeneratedSourceBlob=exists(sourcePath)?gitBlobSha(read(sourcePath)):null;
      const existingRepair=!!existing&&(isAllowedGeneratedMetaProjectionRepair(uid,existing.meta,meta)||needsSameMetaSourceRebind(existing,meta,currentGeneratedSourceBlob));
-     const crosswalkDigestOnlyDrift=!!existing&&existing.metaFinalSha256!==digest&&
-      sealedCrosswalkDigestOnlyDrift({root,crosswalkPath:CROS,crosswalkRecords:cross.records,currentCrosswalkSha256:crossHash,existingRow:existing,meta}).ok;
+     const driftCheck=existing&&existing.metaFinalSha256!==digest
+      ?sealedCrosswalkDigestOnlyDrift({root,crosswalkPath:CROS,crosswalkRecords:cross.records,currentCrosswalkSha256:crossHash,existingRow:existing,meta}):{ok:false};
+     // An approved Meta whose only difference is a crosswalk digest nobody sealed must say so (instead of the generic repair error).
+     requireTrue(driftCheck.reason!=='PINNED_DIGEST_NOT_SEALED','CROSSWALK_DIGEST_NOT_SEALED:'+uid+':'+CROS);
+     const crosswalkDigestOnlyDrift=driftCheck.ok;
     if((existing?.metaFinalSha256===digest||crosswalkDigestOnlyDrift) && existing.metaVerification?.status==='VERIFIED_CURRENT_SOURCE'&&
        existing.sourceShardGitSha===currentGeneratedSourceBlob&&existing.metaVerification.sourceShardGitSha===currentGeneratedSourceBlob){
     requireTrue(existing.shard===consumerPath.replace(/^archive\//,''),'EXISTING_UID_SHARD_DRIFT:'+uid);
@@ -806,6 +815,29 @@ const main=()=>{
    index=json(INDEX);
    updated++;done++;
   }
+ }
+ // Every approved Meta that pins a crosswalk digest must pin the current one or a sealed one, and the digest it pins must
+ // be sealed (registration writes the seal). A missing seal is a PR-time failure here, not a surprise at the next append.
+ {
+  const digestsNow=new Map(),verdicts=new Map(),unsealed=[];
+  const currentDigest=ref=>{
+   if(!digestsNow.has(ref))digestsNow.set(ref,ref===CROS?crossHash:exists(ref)?hex(read(ref)):null);
+   return digestsNow.get(ref);
+  };
+  for(const row of json(INDEX).records){
+   const m=row.meta;if(!m)continue;
+   const generatedL4=m.rpmL4Namespace==='GENERATED_EXT_L4';
+   const ref=generatedL4?m.rpmAuthorityRef:m.rpmDraftAuthorityRef,pinned=generatedL4?m.rpmAuthoritySha256:m.rpmDraftAuthoritySha256;
+   if(typeof ref!=='string'||!ref.startsWith(CROSSWALK_DIR)||typeof pinned!=='string')continue;
+   const current=currentDigest(ref);if(!current)continue;
+   const key=ref+'\0'+pinned;
+   if(!verdicts.has(key)){
+    const status=crosswalkDigestStatus(root,ref,pinned,current);
+    verdicts.set(key,status==='NOT_SEALED'||status==='CURRENT'&&!crosswalkDigestIsSealed(root,ref,pinned));
+   }
+   if(verdicts.get(key))unsealed.push(row.uid);
+  }
+  requireTrue(unsealed.length===0,'CROSSWALK_DIGEST_NOT_SEALED:'+unsealed.length+':'+unsealed.slice(0,5).join(','));
  }
  if(mode==='write'){
   latestSummary.sourceHashBindingsRefreshed=refreshApprovedSourceHashBindings(expectedApprovedUids);

@@ -7,6 +7,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const crypto = require('node:crypto');
+const { planSeal } = require('./sealed-crosswalk-digests.cjs');
 
 const ROOT = path.resolve(__dirname, '../..');
 const INDEX_REL = 'archive/data/generated-lite-consumer/v1/index.json';
@@ -404,6 +405,11 @@ function build({ write = false, indexDocument = null, crosswalkDocument = null }
     records: ledgerRows
   };
   if (write) {
+    // The ledger pins the crosswalk digest it was built from; seal exactly the bytes it read (append-only, idempotent).
+    if (!crosswalkDocument && ledger.crosswalk.sha256 === sha(crossBytes)) {
+      const crosswalkSeal = planSeal(ROOT, { path: CROSSWALK_REL, bytes: crossBytes, sealedBy: 'backfill-generated-meta.cjs', reason: `legacy meta evidence ledger ${LEDGER_REL}` });
+      if (crosswalkSeal.changed) { fs.mkdirSync(path.dirname(crosswalkSeal.file), { recursive: true }); fs.writeFileSync(crosswalkSeal.file, crosswalkSeal.after); }
+    }
     for (const entry of shardCache.values()) if (entry.changed) fs.writeFileSync(path.join(ROOT, entry.rel), consumerHashes.get(entry.rel.slice('archive/'.length)).bytes);
     fs.writeFileSync(path.join(ROOT, INDEX_REL), `${JSON.stringify(index, null, 2)}\n`);
     fs.writeFileSync(path.join(ROOT, LEDGER_REL), `${JSON.stringify(ledger, null, 2)}\n`);

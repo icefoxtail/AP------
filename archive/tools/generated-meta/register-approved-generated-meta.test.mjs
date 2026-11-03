@@ -7,6 +7,7 @@ import vm from 'node:vm';
 import {execFileSync} from 'node:child_process';
 import { registerApprovedGeneratedMeta, withdrawGeneratedUid, metaSha256, sha256Bytes, gitBlobSha } from './register-approved-generated-meta.mjs';
 import gate from '../generated-meta-retention-gate.cjs';
+import sealedCrosswalk from '../sealed-crosswalk-digests.cjs';
 import problemBankMeta from '../../problem-bank-meta.js';
 import assessmentRecipes from '../../problem-bank-assessment-recipes.js';
 const { validateReviewBinding, validateAuthorityBinding, validateMetaTaxonomyBindings, audit } = gate;
@@ -248,6 +249,58 @@ test('registration restores every prior file if a staged replacement fails', () 
     assert.throws(() => registerApprovedGeneratedMeta(f.args, { beforeReplace: (_entry, index) => { if (index === 1) throw new Error('injected replace failure'); } }), /REGISTRATION_WRITE_ROLLED_BACK/);
     for (let index = 0; index < files.length; index++) assert.deepEqual(fs.readFileSync(path.join(f.root, files[index])), before[index]);
     assert.equal(fs.existsSync(`${path.join(f.root, f.rel.consumerIndex)}.meta-register.lock`), false);
+    // the crosswalk seal is part of the same write set: a rolled-back registration leaves no seal behind
+    assert.equal(fs.existsSync(path.join(f.root, sealedCrosswalk.REGISTRY_REL)), false);
+  } finally { fs.rmSync(f.root, { recursive: true, force: true }); }
+});
+
+test('registration seals the crosswalk digest it pinned in the same write, append-only and idempotent', () => {
+  const f = fixture();
+  try {
+    const crosswalkRel = f.meta.rpmDraftAuthorityRef;
+    const crosswalkBytes = fs.readFileSync(path.join(f.root, crosswalkRel));
+    const old = { path: crosswalkRel, sha256: 'a'.repeat(64), gitBlobSha1: 'b'.repeat(40), sealedAt: '2026-11-01T00:00:00.000Z', sealedBy: 'fixture', reason: 'pre-existing seal' };
+    const registryFile = path.join(f.root, sealedCrosswalk.REGISTRY_REL);
+    fs.mkdirSync(path.dirname(registryFile), { recursive: true });
+    fs.writeFileSync(registryFile, sealedCrosswalk.serializeRegistry([old]));
+    const result = registerApprovedGeneratedMeta(f.args);
+    assert.equal(result.crosswalkSeal.appended, true);
+    const entries = sealedCrosswalk.readRegistryEntries(f.root);
+    assert.equal(entries.length, 2);
+    assert.deepEqual(entries[0], old, 'existing entries are never rewritten');
+    assert.equal(entries[1].path, crosswalkRel);
+    assert.equal(entries[1].sha256, sha256Bytes(crosswalkBytes));
+    assert.equal(entries[1].gitBlobSha1, gitBlobSha(crosswalkBytes));
+    assert.equal(entries[1].sealedBy, 'register-approved-generated-meta.mjs');
+    assert.equal(sealedCrosswalk.crosswalkDigestIsSealed(f.root, crosswalkRel, sha256Bytes(crosswalkBytes)), true);
+    assert.equal(sealedCrosswalk.planSeal(f.root, { path: crosswalkRel, bytes: crosswalkBytes, sealedBy: 'x', reason: 'y' }).changed, false);
+  } finally { fs.rmSync(f.root, { recursive: true, force: true }); }
+});
+
+test('registration creates the seal registry when none exists and does not append twice', () => {
+  const f = fixture();
+  try {
+    assert.equal(fs.existsSync(path.join(f.root, sealedCrosswalk.REGISTRY_REL)), false);
+    registerApprovedGeneratedMeta(f.args);
+    assert.equal(sealedCrosswalk.readRegistryEntries(f.root).length, 1);
+    const again = sealedCrosswalk.sealCrosswalkDigest(f.root, { path: f.meta.rpmDraftAuthorityRef, bytes: fs.readFileSync(path.join(f.root, f.meta.rpmDraftAuthorityRef)), sealedBy: 'x', reason: 'y' });
+    assert.equal(again.changed, false);
+    assert.equal(sealedCrosswalk.readRegistryEntries(f.root).length, 1);
+  } finally { fs.rmSync(f.root, { recursive: true, force: true }); }
+});
+
+test('registration refuses a Meta whose pinned crosswalk digest is neither current nor sealed, with CROSSWALK_DIGEST_NOT_SEALED', () => {
+  const f = fixture();
+  try {
+    f.args.meta.rpmDraftAuthoritySha256 = 'd'.repeat(64);
+    const evidenceFile = path.join(f.root, f.rel.evidence);
+    const evidence = JSON.parse(fs.readFileSync(evidenceFile, 'utf8'));
+    evidence.items[0].metaFinalSha256 = metaSha256(f.args.meta);
+    const evidenceBytes = Buffer.from(JSON.stringify(evidence, null, 2) + '\n');
+    fs.writeFileSync(evidenceFile, evidenceBytes);
+    f.args.reviewEvidence.sha256 = sha256Bytes(evidenceBytes);
+    assert.throws(() => registerApprovedGeneratedMeta(f.args), /CROSSWALK_DIGEST_NOT_SEALED/);
+    assert.equal(fs.existsSync(path.join(f.root, sealedCrosswalk.REGISTRY_REL)), false);
   } finally { fs.rmSync(f.root, { recursive: true, force: true }); }
 });
 
