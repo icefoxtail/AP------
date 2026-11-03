@@ -10,11 +10,12 @@
   if (!G) return;
   const { cube8, PI, DEG, TAU, clamp, ease, seg01, lin01, v3, add3, sub3, mul3, lerp3, mid3, dot3, V, vadd, vsub, vmul, vnum, tx, plainVal, mkV, P, fmtN, pick, rint, notes, rd, span, scene3, revolveMesh, sphereProfile, xfMesh, shiftT, centroid, bboxOf } = G;
 
-  const TRI = { A: [3, 4, 5], B: [5, 12, 13], C: [6, 8, 10] }; // 직각삼각형의 두 변과 빗변
-  const TRI_LABEL = { A: '3·4·5', B: '5·12·13', C: '6·8·10' };
+  const TRI = { A: [3, 4, 5], B: [5, 12, 13], C: [6, 8, 10], D: [8, 15, 17] }; // 직각삼각형의 두 변과 빗변
+  const KMAX41 = { A: 3, B: 2, C: 2, D: 1 }; // sv4-1: 세 변을 k배 할 수 있는 최대(반지름 15·높이 20 안팎)
+  const TRI_LABEL = { A: '3·4·5', B: '5·12·13', C: '6·8·10', D: '8·15·17' };
   const PARAMS = {
-    s41K: P('삼각형의 크기 k', 1, 2, 1, 1, { color: 'amber', format: (v) => `${v}배` }),
-    s41T: P('돌리기', 0, 1, 0.005, 0, { color: 'green', hint: '삼각형이 축을 중심으로 제자리에서 한 바퀴 돌아요', format: (v) => (v < 0.01 ? '0°' : v > 0.99 ? '한 바퀴' : Math.round(v * 360) + '°') }),
+    s41K: P('삼각형의 크기', 1, 3, 1, 1, { color: 'amber', hint: '세 변을 모두 몇 배 할지 정해요(모양마다 고를 수 있는 배수가 달라요)', format: (v) => `${v}배`, clampTo: (s) => [1, KMAX41[oneOf(s.svTri, ['A', 'B', 'C', 'D'], 'A')]] }),
+    s41T: P('돌리기 · 펼치기', 0, 1, 0.005, 0, { color: 'green', hint: '앞쪽 절반은 삼각형이 축을 중심으로 제자리에서 한 바퀴 돌고, 뒤쪽 절반은 겉넓이를 전개도로 펼쳐요', format: (v, s) => (v < 0.01 ? '0°' : v < 0.5 ? Math.round(v * 720) + '°' : v > 0.99 ? ((s && s.svMode === 'vol') ? '원뿔' : '전개도') : ((s && s.svMode === 'vol') ? '원뿔' : '펼치는 중')) }),
     s42J: P('위쪽 반지름', 1, 3, 1, 1, { color: 'amber', hint: '위쪽 반지름은 3의 배수예요', format: (v) => `${3 * v} cm` }),
     s42K: P('아랫변이 더 긴 정도', 1, 2, 1, 1, { color: 'sky', hint: '아랫변이 윗변보다 3 cm(또는 6 cm) 더 길어요. 높이와 빗변도 함께 커져요', format: (v) => `${3 * v} cm` }),
     s42A: P('원기둥 부분의 길이', 1, 6, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
@@ -45,37 +46,52 @@
   /* ================================================================ sv4-1 직각삼각형 회전 */
   function sv41() {
     const model = (s) => {
-      const key = oneOf(s.svTri, ['A', 'B', 'C'], 'A'), k = clamp(Math.round(s.s41K), 1, 2), [a, b, c] = TRI[key], A = a * k, B = b * k, Cc = c * k;
+      const key = oneOf(s.svTri, ['A', 'B', 'C', 'D'], 'A'), k = clamp(Math.round(s.s41K), 1, KMAX41[oneOf(s.svTri, ['A', 'B', 'C', 'D'], 'A')]), [a, b, c] = TRI[key], A = a * k, B = b * k, Cc = c * k;
       const axis = s.svAxis === 'long' ? 'long' : 'short', r = axis === 'short' ? B : A, h = axis === 'short' ? A : B; // 축으로 삼는 변이 높이
       const mode = s.svMode === 'vol' ? 'vol' : 'surf', S = V(0, r * r), lat = V(0, r * Cc), tot = vadd(S, lat), vol = V(0, (r * r * h) / 3);
       return { key, k, legA: A, legB: B, hyp: Cc, axis, r, h, R: Cc, mode, S, lat, tot, vol, ans: mode === 'vol' ? vol : tot };
     };
     const draw = (b, s, M, C) => {
-      const sc = 4.6 / Math.max(M.h, M.r * 1.5), r = M.r * sc, h = M.h * sc, D = scene3(b, s, C), st = C.step;
-      const th = C.problem ? 0.25 : C.t, y0 = -h / 2;
+      const st = C.step, rvw = C.review, surf = M.mode === 'surf';
+      // 뒤쪽 절반(원뿔이 만들어진 뒤): 겉넓이 = 전개도(부채꼴 + 원), 부피 = 원뿔 겨냥도(밑넓이·높이)
+      if (!C.problem && (rvw || C.t >= 0.5 || b.thumb)) {
+        const t2 = b.thumb ? 1 : rvw ? 1 : clamp((C.t - 0.5) * 2, 0, 1);
+        const hl = !rvw ? {} : st <= 1 ? {} : surf ? (st === 2 ? { ring: 2, bot: 2 } : { ring: 3, bot: 2 }) : (st === 2 ? { bot: 2 } : { ring: 3, bot: 2 });
+        const res = G.coneNet(b, s, C, { r2: M.r, r1: 0, hf: M.h, R2: M.R, R1: 0, t: surf ? t2 : 0, problem: !surf, review: rvw, hl, fitT: surf ? undefined : 84, vals: { ring: plainVal(M.lat), bot: plainVal(M.S), arcBig: plainVal(V(0, 2 * M.r)), tot: plainVal(M.tot) } });
+        if (!surf && !b.thumb) {
+          D4cone(res, M);
+        }
+        return;
+      }
+      const sc = 4.6 / Math.max(M.h, M.r * 1.5), r = M.r * sc, h = M.h * sc, D = scene3(b, s, C);
+      const th = C.problem ? 0.25 : Math.min(1, C.t * 2), y0 = -h / 2;
       const prof = [[0, y0], [r, y0], [0, y0 + h]], poly = prof;
       D.fit(bxc(v3(0, y0 + h / 2, 0), r, h / 2), [], { l: 30, r: 30, t: 34, b: 34 });
-      const lvB = !C.review ? 1 : st === 1 ? 2 : 1, lvL = !C.review ? 1 : st === 2 ? 2 : 1;
       axisLine(D, y0 - 0.5, y0 + h + 0.7);
-      sweepDraw(D, prof, poly, th, { O: v3(0, 0, 0), faceStyle: (f) => (f.tag === 'seg0' && st === 2 && C.review && M.mode === 'surf' ? { fill: 'amber', alpha: 0.38 } : f.tag === 'seg1' && st === 3 && C.review ? { fill: 'amber', alpha: 0.3 } : {}) });
-      // 길이 표시는 평면도형(오른쪽 정면 자리)에
-      const pa = (rr, yy) => v3(rr * Math.cos(A0), yy, rr * Math.sin(A0)), o = pa(0, y0), pr = pa(r, y0), pt = pa(0, y0 + h);
+      sweepDraw(D, prof, poly, th, { O: v3(0, 0, 0) });
+      // 길이 표시는 평면도형(오른쪽 정면 자리)에: 말 + 치수선
+      const pa = (rr, yy) => v3(rr * Math.cos(A0), yy, rr * Math.sin(A0)), o = pa(0, y0), pr = pa(r, y0), pt = pa(0, y0 + h), ctr = pa(r / 3, y0 + h / 3);
       D.right(o, sub3(pr, o), sub3(pt, o), Math.min(0.32, r * 0.22), 'amber');
-      D.elabel(o, pr, `r=${M.r}`, { side: { x: 0, y: 1 }, size: 15, color: 'amber', gap: 7 });
-      D.elabel(o, pt, `h=${M.h}`, { side: { x: -1, y: 0 }, size: 15, color: 'amber', gap: 8 });
-      D.elabel(pr, pt, `R=${M.R}`, { side: { x: 1, y: 0 }, size: 15, gap: 8 });
+      D.dim(o, pr, `반지름 ${M.r}`, { side: { x: 0, y: 1 }, off: 20, color: 'amber' });
+      D.dim(o, pt, `높이 ${M.h}`, { side: { x: -1, y: 0 }, off: 22, color: 'amber' });
+      D.dim(pr, pt, `모선(빗변) ${M.R}`, { from: ctr, off: 20 });
       D.label(add3(o, v3(0, 0, 0)), '축', { dir: { x: -1, y: 0.3 }, size: 13, color: 'muted', gap: 4 });
-      if (!C.problem && th > 0.99) D.tag(add3(o, v3(0, 0, 0)), M.mode === 'surf' ? `πr²=${plainVal(M.S)}` : `S=${plainVal(M.S)}`, { dy: 30, size: 14 });
+    };
+    // 부피 쪽 원뿔 겨냥도의 이름표(밑넓이)와 식
+    const D4cone = (res, M) => {
+      const { D, sn } = res;
+      D.areaLab(centroid(sn.A), '밑넓이', plainVal(M.S), { dx: -0.1, dy: 34 });
+      G.sumRows(D, [[{ t: '부피 = ' }, { t: '⅓', c: 'amber' }, { t: ' × ' }, { t: '밑넓이', c: 'violet' }, { t: ' × ' }, { t: '높이', c: 'amber' }], [{ t: `= ⅓ × ${plainVal(M.S)} × ${M.h} = ${plainVal(M.vol)}` }]], 1);
     };
     const bg = (M) => `직각을 낀 두 변이 $${M.legA}\\,\\mathrm{cm}$, $${M.legB}\\,\\mathrm{cm}$이고 빗변이 $${M.hyp}\\,\\mathrm{cm}$인 직각삼각형`;
     return {
       id: 'sv4-1', title: '직각삼각형 회전', short: '삼각형 회전',
       question: '직각삼각형을 한 변을 축으로 한 바퀴 돌리면 어떤 입체가 될까? 어느 변을 축으로 하느냐에 따라 달라질까?',
-      anim: { key: 's41T', dur: 5, label: '한 바퀴 돌리기' }, cam0: { yaw: 28, pitch: 20 }, stepT: () => 1, thumbT: 1, problemT: 1,
+      anim: { key: 's41T', dur: 6, label: '돌리기 · 펼치기' }, cam0: { yaw: 28, pitch: 20 }, stepT: () => 1, thumbT: 1, problemT: 1,
       ctl: () => ['s41K', 's41T'],
-      presets: () => TRI_ORDER.map((k, i) => ({ group: i === 0 ? '삼각형의 세 변' : '', label: TRI_LABEL[k], apply: (st) => { st.svTri = k; }, on: (st) => oneOf(st.svTri, ['A', 'B', 'C'], 'A') === k })).concat([{ group: '축으로 하는 변', label: '짧은 변', apply: (st) => { st.svAxis = 'short'; }, on: (st) => st.svAxis !== 'long' }, { label: '긴 변', apply: (st) => { st.svAxis = 'long'; }, on: (st) => st.svAxis === 'long' }, { group: '구하는 것', label: '겉넓이', apply: (st) => { st.svMode = 'surf'; }, on: (st) => st.svMode !== 'vol' }, { label: '부피', apply: (st) => { st.svMode = 'vol'; }, on: (st) => st.svMode === 'vol' }]),
-      init: (s) => { s.svTri = 'A'; s.svAxis = 'long'; s.svMode = 'surf'; s.s41K = 1; s.s41T = 0.3; },
-      reroll: (s) => { s.svTri = pick(['A', 'B', 'C'], s.svTri); s.svAxis = pick(['short', 'long'], s.svAxis); s.svMode = pick(['surf', 'vol'], s.svMode); s.s41K = 1; s.s41T = 0.3; },
+      presets: () => TRI_ORDER.map((k, i) => ({ group: i === 0 ? '삼각형의 세 변' : '', label: TRI_LABEL[k], apply: (st) => { st.svTri = k; st.s41K = Math.min(Math.round(st.s41K) || 1, KMAX41[k]); }, on: (st) => oneOf(st.svTri, ['A', 'B', 'C', 'D'], 'A') === k })).concat([{ group: '축으로 하는 변', label: '짧은 변', apply: (st) => { st.svAxis = 'short'; }, on: (st) => st.svAxis !== 'long' }, { label: '긴 변', apply: (st) => { st.svAxis = 'long'; }, on: (st) => st.svAxis === 'long' }, { group: '구하는 것', label: '겉넓이', apply: (st) => { st.svMode = 'surf'; }, on: (st) => st.svMode !== 'vol' }, { label: '부피', apply: (st) => { st.svMode = 'vol'; }, on: (st) => st.svMode === 'vol' }]),
+      init: (s) => { s.svTri = 'A'; s.svAxis = 'long'; s.svMode = 'surf'; s.s41K = 1; s.s41T = 0.5; },
+      reroll: (s) => { s.svTri = pick(['A', 'B', 'C'], s.svTri); s.svAxis = pick(['short', 'long'], s.svAxis); s.svMode = pick(['surf', 'vol'], s.svMode); s.s41K = 1; s.s41T = 0.5; },
       model, draw,
       check: (s) => {
         const M = model(s), n = 4000;
@@ -86,16 +102,16 @@
         return { ans: PI * M.r * M.r + lat, model: vnum(M.tot) };
       },
       steps: (M) => [
-        `축으로 하는 변은 길이 $${M.h}$이고 이 변이 높이 $h$가 돼요. 다른 직각변 $${M.r}$이 밑면의 반지름 $r$이고, 빗변 $${M.R}$이 모선 $R$인 <b>원뿔</b>이 만들어져요.`,
-        M.mode === 'vol' ? `밑넓이 $S=\\pi\\times${M.r}^2=${tx(M.S)}\\,\\mathrm{cm}^2$예요.` : `밑넓이 $\\pi r^2=${tx(M.S)}$, 옆넓이 $\\pi Rr=\\pi\\times${M.R}\\times${M.r}=${tx(M.lat)}$이에요. (모선 $R$는 빗변이에요.)`,
-        M.mode === 'vol' ? `(부피) $=\\frac{1}{3}\\times${tx(M.S)}\\times${M.h}=${tx(M.vol)}\\,\\mathrm{cm}^3$예요.` : `(겉넓이) $=${tx(M.S)}+${tx(M.lat)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
+        `축으로 하는 변은 길이 $${M.h}$이고 이 변이 높이가 돼요. 다른 직각변 $${M.r}$이 밑면의 반지름이고, 빗변 $${M.R}$이 모선인 <b>원뿔</b>이 만들어져요.`,
+        M.mode === 'vol' ? `밑넓이 $=\\pi\\times${M.r}^2=${tx(M.S)}\\,\\mathrm{cm}^2$예요.` : `밑넓이 $=\\pi\\times${M.r}^2=${tx(M.S)}$예요. 전개도의 부채꼴은 반지름이 모선(빗변) $${M.R}$, 호의 길이가 밑면의 둘레 $${tx(V(0, 2 * M.r))}$이므로 옆넓이는 $\\pi\\times${M.R}\\times${M.r}=${tx(M.lat)}$예요.`,
+        M.mode === 'vol' ? `(부피) $=\\frac{1}{3}\\times$ (밑넓이) $\\times$ (높이) $=\\frac{1}{3}\\times${tx(M.S)}\\times${M.h}=${tx(M.vol)}\\,\\mathrm{cm}^3$예요.` : `(겉넓이) $=$ (옆넓이) $+$ (밑넓이) $=${tx(M.lat)}+${tx(M.S)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
       ],
       view: (M) => ({
-        guide: `<b>돌리기</b> 막대를 끌거나 ▶를 눌러 보세요. ${span('amber', '노란 삼각형')}이 점선 <b>축</b>을 중심으로 제자리에서 돌아 원뿔이 돼요. 위 칩에서 <b>축으로 하는 변</b>을 바꾸면 반지름과 높이가 서로 바뀌어요.`,
-        readouts: [rd('반지름 r', M.r + ' cm', 'amber', '축이 아닌 직각변'), rd('높이 h', M.h + ' cm', 'amber', '축으로 한 변'), rd('모선 R', M.R + ' cm', 'sky', '빗변'), rd('겉넓이 πr(r+R)', plainVal(M.tot) + ' cm²', M.mode === 'surf' ? 'green' : 'muted'), rd('부피 ⅓πr²h', plainVal(M.vol) + ' cm³', M.mode === 'vol' ? 'green' : 'muted')],
-        formula: `<p>(겉넓이) $=\\pi r^2+\\pi Rr$ &nbsp;,&nbsp; (부피) $=\\frac{1}{3}\\pi r^2h$</p>`,
+        guide: `<b>돌리기 · 펼치기</b> 막대를 끌거나 ▶를 눌러 보세요. ${span('amber', '노란 삼각형')}이 점선 <b>축</b>을 중심으로 제자리에서 돌아 원뿔이 되고, 이어서 겉넓이는 <b>전개도</b>로 펼쳐져요. 위 칩에서 <b>축으로 하는 변</b>을 바꾸면 반지름과 높이가 서로 바뀌어요.`,
+        readouts: [rd('반지름', M.r + ' cm', 'amber', '축이 아닌 직각변'), rd('높이', M.h + ' cm', 'amber', '축으로 한 변'), rd('모선', M.R + ' cm', 'sky', '빗변'), rd('겉넓이', plainVal(M.tot) + ' cm²', M.mode === 'surf' ? 'green' : 'muted', `옆넓이 ${plainVal(M.lat)} + 밑넓이 ${plainVal(M.S)}`), rd('부피', plainVal(M.vol) + ' cm³', M.mode === 'vol' ? 'green' : 'muted', `⅓ × ${plainVal(M.S)} × ${M.h}`)],
+        formula: `<p>(겉넓이) $=$ (옆넓이) $+$ (밑넓이) &nbsp;,&nbsp; (부피) $=\\frac{1}{3}\\times$ (밑넓이) $\\times$ (높이)</p>`,
         rule: '직각삼각형을 한 직각변을 축으로 돌리면 원뿔: 축 = 높이, 다른 직각변 = 반지름, 빗변 = 모선',
-        notes: notes('<b>축으로 삼는 변이 높이</b>예요. 축을 바꾸면 $r$와 $h$가 서로 바뀌어 겉넓이·부피가 달라져요.', '모선은 항상 <b>빗변</b>이에요.')
+        notes: notes('<b>축으로 삼는 변이 높이</b>예요. 축을 바꾸면 반지름과 높이가 서로 바뀌어 겉넓이·부피가 달라져요.', '모선은 항상 <b>빗변</b>이에요.')
       }),
       prob: (M) => {
         let wrongs, stem;
@@ -112,7 +128,7 @@
       }
     };
   }
-  const TRI_ORDER = ['A', 'B', 'C'];
+  const TRI_ORDER = ['A', 'B', 'C', 'D'];
 
   /* ================================================================ sv4-2 직각사다리꼴 회전 */
   function sv42() {
