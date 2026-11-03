@@ -337,7 +337,12 @@
         this._subCount = h('span', { class: 'apl-sub-count', 'aria-hidden': 'true', text: cnt }); // 넓은 화면의 위 띠 끝에 붙는 「5 / 8」 위치 표시
       }
       if (sc.question) {
-        ui.head.append(h('div', { class: 'apl-question', html: `<small>탐구 질문</small>${APLab.renderMath(sc.question)}` }));
+        // 휴대폰(859px 이하)에서는 제목 바로 아래 한 줄로 접혀 있다가 누르면 펼칩니다(apl.css). 넓은 화면은 예전처럼 카드입니다.
+        const qe = h('div', { class: 'apl-question', html: `<small>탐구 질문</small><span class="q">${APLab.renderMath(sc.question)}</span>` });
+        const flipQ = () => { if (NARROW.matches) qe.setAttribute('aria-expanded', String(qe.classList.toggle('open'))); };
+        qe.addEventListener('click', flipQ);
+        qe.addEventListener('keydown', (e) => { if (e.target === qe && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); flipQ(); } });
+        ui.head.append(qe);
       }
       // 탭
       ui.tabs.innerHTML = '';
@@ -527,6 +532,12 @@
       const wide = !NARROW.matches;
       const explore = this.tab === 'explore';
       const box = r.controls;
+      // 접힌 탐구 질문(휴대폰)은 누를 수 있는 단추로, 넓은 화면에서는 보통 글로 되돌립니다.
+      const qe = ui.head.querySelector('.apl-question');
+      if (qe) {
+        if (wide) { qe.removeAttribute('role'); qe.removeAttribute('tabindex'); qe.removeAttribute('aria-expanded'); qe.classList.remove('open'); }
+        else { qe.setAttribute('role', 'button'); qe.tabIndex = 0; qe.setAttribute('aria-expanded', String(qe.classList.contains('open'))); }
+      }
       const L = this._lay;
       const subs = this._subs;
       // 막대가 4개 이상인 장면의 탐구 탭: 휴대폰(859px 이하)에서 그림 무대를 낮춰 막대가 한 화면에 더 많이 보이게 합니다(apl.css의 data-many-ctl).

@@ -682,11 +682,20 @@ body.apl {
   .apl-scene-head, #apl-pane-explore { display: contents; }
   .apl-eyebrow { display: none; }
   .apl-scene-title { order: 1; font-size: var(--fs-lg); }
-  .apl-subscenes { order: 2; }
-  .apl-tabs { order: 3; }
+  .apl-question { order: 2; }
+  .apl-subscenes { order: 3; }
+  .apl-tabs { order: 4; }
   #apl-pane-explore > * { order: 7; }
-  #apl-pane-explore > .apl-controls { order: 4; gap: 8px; }
-  .apl-question { order: 6; }
+  #apl-pane-explore > .apl-controls { order: 5; gap: 8px; }
+  /* 탐구 질문: 제목 바로 아래 한 줄(말줄임)로 접어 첫 화면에서 '무엇을 할지'를 알려 주고, 누르면 펼칩니다(아래쪽 카드와 중복되지 않게 한 곳에만 둡니다). */
+  .apl-question { display: flex; align-items: center; gap: 8px; min-width: 0; min-height: 40px; padding: 0 12px; margin: 0; cursor: pointer; font-size: var(--fs-sm); line-height: 1.4; }
+  .apl-question small { display: inline; flex: none; margin: 0; }
+  .apl-question .q { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .apl-question::after { content: ""; flex: none; width: 7px; height: 7px; margin: 0 4px 3px 2px; border-right: 2px solid var(--text-3); border-bottom: 2px solid var(--text-3); transform: rotate(45deg); }
+  .apl-question.open { display: block; padding: 10px 14px; line-height: 1.6; }
+  .apl-question.open small { display: block; margin-bottom: 2px; }
+  .apl-question.open .q { overflow: visible; white-space: normal; }
+  .apl-question.open::after { display: none; }
   .apl-tabpanel:not(#apl-pane-explore) { order: 7; }
   .apl-sr { order: 9; }
   .apl-ctl { gap: 2px; }
