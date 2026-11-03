@@ -10,20 +10,23 @@
   if (!G) return;
   const { cube8, PI, DEG, clamp, ease, seg01, lin01, v3, add3, sub3, mul3, lerp3, mid3, dot3, unit3, len3, V, vadd, vsub, vmul, vnum, tx, plainVal, mkV, P, fmtN, pick, rint, notes, rd, span, scene3, solidNet, circleBase, netScene, roleStyle, layoutTiles, drawTiles, polyMesh, revolveMesh, shiftT, centroid } = G;
 
-  const TRI = { A: [3, 4, 5], B: [4, 3, 5], C: [5, 12, 13], D: [6, 8, 10] }; // [r, h, R]
-  const TRI_LABEL = { A: '반지름 3 · 높이 4 · 모선 5', B: '반지름 4 · 높이 3 · 모선 5', C: '반지름 5 · 높이 12 · 모선 13', D: '반지름 6 · 높이 8 · 모선 10' };
+  const TRI = { A: [3, 4, 5], B: [4, 3, 5], C: [5, 12, 13], D: [8, 15, 17], E: [12, 5, 13], F: [15, 8, 17] }; // [r, h, R]
+  const KMAX3 = { A: 5, B: 3, C: 2, D: 1, E: 1, F: 1 }; // sv2-3: 세 길이를 k배 할 수 있는 최대(반지름 12·높이 20 안팎)
+  const TRI_LABEL = { A: '반지름 3 · 높이 4 · 모선 5', B: '반지름 4 · 높이 3 · 모선 5', C: '반지름 5 · 높이 12 · 모선 13', D: '반지름 8 · 높이 15 · 모선 17', E: '반지름 12 · 높이 5 · 모선 13', F: '반지름 15 · 높이 8 · 모선 17' };
   const TRI_ORDER = ['A', 'B', 'C'];
+  const TRI_ORDER3 = ['A', 'B', 'C', 'D', 'E', 'F'];
   const PARAMS = {
-    s2A: P('정육면체의 한 모서리 a', 2, 8, 1, 4, { color: 'amber', format: (v) => v + ' cm' }),
-    s2R: P('밑면의 반지름 r', 1, 6, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
-    s2H: P('높이 h', 2, 9, 1, 6, { color: 'sky', format: (v) => v + ' cm' }),
+    s2A: P('정육면체의 한 모서리', 2, 15, 1, 4, { color: 'amber', format: (v) => v + ' cm' }),
+    s2R: P('밑면의 반지름', 1, 15, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
+    s2H: P('높이', 2, 20, 1, 6, { color: 'sky', format: (v) => v + ' cm' }),
     s2T: P('움직여 보기', 0, 1, 0.01, 0, { color: 'green', format: (v, s) => ((s && s.svMode2 === 'pour') ? (v < 0.02 ? '비어 있음' : v > 0.98 ? '3번 부음' : `${Math.min(3, Math.floor(v * 3 + 0.001) + (v * 3 % 1 > 0.0 ? 1 : 0))}번째 붓는 중`) : (v < 0.02 ? '합쳐진 정육면체' : v > 0.98 ? '모두 갈라 놓음' : Math.round(v * 100) + '%')) }),
     // sv2-2
-    s2r: P('밑면의 반지름', 2, 6, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
-    s2G: P('모선의 길이', 3, 12, 1, 5, { color: 'sky', hint: '모선의 길이는 반지름보다 길어야 해요(짧으면 반지름+1로 맞춰요)', format: (v) => v + ' cm', clampTo: (s) => [Math.round(s.s2r) + 1, 12] }),
+    s2r: P('밑면의 반지름', 2, 15, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
+    s2G: P('모선의 길이', 3, 17, 1, 5, { color: 'sky', hint: '모선의 길이는 반지름보다 길어야 해요(짧으면 반지름+1로 맞춰요)', format: (v) => v + ' cm', clampTo: (s) => [Math.round(s.s2r) + 1, 17] }),
     s2U: P('펼치기', 0, 1, 0.01, 0, { color: 'green', format: (v) => (v < 0.02 ? '입체' : v > 0.98 ? '전개도' : Math.round(v * 100) + '%') }),
     // sv2-3
-    s3K: P('크기 배율 k', 1, 2, 1, 1, { color: 'amber', hint: '세 수 (r, h, R)를 k배 해요', format: (v) => `${v}배` }),
+    s3K: P('크기 배율', 1, 5, 1, 1, { color: 'amber', hint: '반지름·높이·모선을 모두 몇 배 할지 정해요(모양마다 고를 수 있는 배수가 달라요)', format: (v) => `${v}배`, clampTo: (s) => [1, KMAX3[oneOf(s.svTri, TRI_ORDER3, 'A')]] }),
+    s3U: P('펼치기', 0, 1, 0.01, 0, { color: 'green', format: (v) => (v < 0.02 ? '입체' : v > 0.98 ? '전개도' : Math.round(v * 100) + '%') }),
     // sv2-4
     s4K: P('큰 원뿔의 크기', 2, 5, 1, 2, { color: 'sky', hint: '고른 반지름·높이·모선의 몇 배인지 정해요', format: (v) => `${v}배` }),
     s4J: P('작은 원뿔의 크기', 1, 4, 1, 1, { color: 'amber', hint: '작은 원뿔은 큰 원뿔과 같은 모양이에요(큰 원뿔보다 작은 배수)', format: (v) => `${v}배`, clampTo: (s) => [1, Math.round(s.s4K) - 1] }),
@@ -265,45 +268,32 @@
   /* ================================================================ sv2-3 원뿔 종합 (r, h, R) */
   function sv23() {
     const model = (s) => {
-      const key = oneOf(s.svTri, TRI_ORDER, 'A'), k = clamp(Math.round(s.s3K), 1, 2), [r0, h0, R0] = TRI[key], r = r0 * k, h = h0 * k, R = R0 * k, mode = s.svMode === 'vol' ? 'vol' : 'surf';
+      const key = oneOf(s.svTri, TRI_ORDER3, 'A'), k = clamp(Math.round(s.s3K), 1, KMAX3[key]), [r0, h0, R0] = TRI[key], r = r0 * k, h = h0 * k, R = R0 * k, mode = s.svMode === 'vol' ? 'vol' : 'surf';
+      s.s3K = k;
       const S = V(0, r * r), lat = V(0, r * R), tot = vadd(S, lat), vol = V(0, (r * r * h) / 3);
       return { key, k, r, h, R, mode, S, lat, tot, vol, ans: mode === 'vol' ? vol : tot };
     };
+    // 겉넓이 = 전개도(부채꼴 + 원), 부피 = 입체(겨냥도): 반지름·높이·모선과 밑넓이, ⅓ × 밑넓이 × 높이
     const draw = (b, s, M, C) => {
-      const sc = 4.4 / Math.max(M.h, 1.6 * M.r), ru = M.r * sc, hu = M.h * sc, Ru = M.R * sc, D = scene3(b, s, C), st = C.step;
-      const mesh = revolveMesh([[0, 0], [ru, 0], [0, hu]], { O: v3(0, -hu / 2, 0), N: 44, tags: ['bot', 'side'] });
-      const yawR = (D.cam.cy >= 0 ? Math.atan2(D.cam.sy, D.cam.cy) : 0), yaw = Math.atan2(D.cam.sy, D.cam.cy);
-      void yawR;
-      const thL = PI - yaw, thR = -yaw, pb = (th, rr, y) => v3(rr * Math.cos(th), y, rr * Math.sin(th));
-      const y0 = -hu / 2, apex = v3(0, y0 + hu, 0), c0 = v3(0, y0, 0);
-      D.fit([pb(thL, ru, y0), pb(thR, ru, y0), apex, v3(0, y0, ru), v3(0, y0, -ru)], [], { l: 44, r: 44, t: 40, b: 40 });
-      const lvB = !C.review ? (M.mode === 'surf' ? 1 : 2) : M.mode === 'surf' ? (st === 1 ? 2 : 1) : (st === 1 ? 2 : 1), lvL = !C.review ? 1 : M.mode === 'surf' ? (st === 2 ? 2 : 1) : 1;
-      D.body({ mesh, fill: 'sky', alpha: 0.2, faceStyle: (f) => (f.tag === 'bot' && lvB === 2 ? { fill: 'amber', alpha: 0.4 } : f.tag === 'side' && lvL === 2 ? { fill: 'amber', alpha: 0.3 } : f.tag === 'side' ? { fill: 'green', alpha: 0.2 } : {}) });
-      // 높이 h (점선) + 직각 표시
-      D.line(c0, apex, 'amber', 2.8, { dash: [6, 5] });
-      D.right(c0, pb(thR, 1, 0), v3(0, 1, 0), Math.min(0.32, ru * 0.25), 'amber');
-      D.tag(mid3(c0, apex), `h=${M.h}`, { dx: -22, size: 15, color: 'amber' });
-      // 반지름 r
-      const rp = pb(thR, ru, y0);
-      D.line(c0, rp, 'ink', 2.6);
-      D.dot(c0, 'ink', 3.5);
-      D.tag(mid3(c0, rp), `r=${M.r}`, { dy: 14, size: 15 });
-      // 모선 R (오른쪽 윤곽)
-      D.elabel(rp, apex, `R=${M.R}`, { side: { x: 1, y: 0 }, size: 15, gap: 8 });
-      if (!C.problem) {
-        D.tag(add3(c0, v3(0, 0, 0)), M.mode === 'surf' ? `πr²=${plainVal(M.S)}` : `S=${plainVal(M.S)}`, { dy: 36, size: 14, color: 'ink' });
-        if (M.mode === 'surf') D.tag(mid3(mid3(rp, apex), v3(0, y0 + hu * 0.4, 0)), `πRr=${plainVal(M.lat)}`, { size: 14, dx: -6, dy: -4 });
-        else D.tag(v3(0, y0 + hu * 0.35, 0), `V=⅓Sh`, { size: 14, color: 'green', dx: -8 });
+      const st = C.step, rv = C.review, surf = M.mode === 'surf';
+      const hl = !rv ? {} : surf ? (st <= 1 ? { bot: 2 } : st === 2 ? { ring: 2 } : { ring: 3, bot: 2 }) : (st <= 1 ? { bot: 2 } : st === 2 ? {} : { ring: 3, bot: 2 });
+      const o = { r2: M.r, r1: 0, hf: M.h, R2: M.R, R1: 0, t: !surf ? 0 : C.problem ? 0 : rv ? 1 : C.t, problem: C.problem || !surf, review: rv, hl, vals: { ring: plainVal(M.lat), bot: plainVal(M.S), arcBig: plainVal(V(0, 2 * M.r)), tot: plainVal(M.tot) } };
+      if (!surf && !C.problem) o.fitT = 84;
+      const res = G.coneNet(b, s, C, o);
+      if (!surf && !C.problem && !b.thumb) {
+        const { D, sn } = res;
+        D.areaLab(G.centroid(sn.A), '밑넓이', plainVal(M.S), { dx: -0.1, dy: 34 });
+        G.sumRows(D, [[{ t: '부피 = ' }, { t: '⅓', c: 'amber' }, { t: ' × ' }, { t: '밑넓이', c: 'violet' }, { t: ' × ' }, { t: '높이', c: 'amber' }], [{ t: `= ⅓ × ${plainVal(M.S)} × ${M.h} = ${plainVal(M.vol)}` }]], 1);
       }
     };
     return {
       id: 'sv2-3', title: '원뿔 종합', short: '원뿔 종합',
-      question: '반지름 r, 높이 h, 모선 R이 모두 주어진 원뿔의 겉넓이와 부피를 구할 때 어떤 길이를 어디에 쓸까?',
-      cam0: { yaw: 28, pitch: 20 }, problemT: 1,
-      ctl: () => ['s3K'],
-      presets: (s) => TRI_ORDER.map((k, i) => ({ group: i === 0 ? '(r, h, R)의 모양' : '', label: TRI_LABEL[k], apply: (st) => { st.svTri = k; }, on: (st) => oneOf(st.svTri, TRI_ORDER, 'A') === k })).concat([{ group: '구하는 것', label: '겉넓이', apply: (st) => { st.svMode = 'surf'; }, on: (st) => st.svMode !== 'vol' }, { label: '부피', apply: (st) => { st.svMode = 'vol'; }, on: (st) => st.svMode === 'vol' }]),
-      init: (s) => { s.svTri = 'A'; s.s3K = 1; s.svMode = 'surf'; },
-      reroll: (s) => { s.svTri = pick(TRI_ORDER, s.svTri); s.s3K = 1; s.svMode = pick(['surf', 'vol'], s.svMode); },
+      question: '반지름, 높이, 모선이 모두 주어진 원뿔의 겉넓이와 부피를 구할 때 어떤 길이를 어디에 쓸까?',
+      anim: { key: 's3U', dur: 5, label: '펼쳐 보기', start: 1 }, cam0: { yaw: 28, pitch: 20 }, stepT: () => 1, thumbT: 1, problemT: 0,
+      ctl: (s) => (s.svMode === 'vol' ? ['s3K'] : ['s3K', 's3U']),
+      presets: (s) => TRI_ORDER3.map((k, i) => ({ group: i === 0 ? '반지름·높이·모선' : '', label: TRI_LABEL[k], apply: (st) => { st.svTri = k; st.s3K = Math.min(Math.round(st.s3K) || 1, KMAX3[k]); }, on: (st) => oneOf(st.svTri, TRI_ORDER3, 'A') === k })).concat([{ group: '구하는 것', label: '겉넓이', apply: (st) => { st.svMode = 'surf'; st.s3U = 1; }, on: (st) => st.svMode !== 'vol' }, { label: '부피', apply: (st) => { st.svMode = 'vol'; }, on: (st) => st.svMode === 'vol' }]),
+      init: (s) => { s.svTri = 'A'; s.s3K = 1; s.svMode = 'surf'; s.s3U = 1; },
+      reroll: (s) => { s.svTri = pick(['A', 'B', 'C'], s.svTri); s.s3K = 1; s.svMode = pick(['surf', 'vol'], s.svMode); s.s3U = 1; },
       model, draw,
       check: (s) => {
         const M = model(s);
@@ -313,35 +303,35 @@
         return { ans: PI * M.r * M.r + lat, model: vnum(M.tot) };
       },
       steps: (M) => M.mode === 'vol' ? [
-        `밑면은 반지름 $${M.r}$인 원이에요. 밑넓이 $S=\\pi\\times${M.r}^2=${tx(M.S)}\\,\\mathrm{cm}^2$예요.`,
-        `부피에는 꼭짓점에서 밑면까지의 수직 거리인 높이 $h=${M.h}$를 써요. (모선 $R=${M.R}$는 쓰지 않아요.)`,
-        `(부피) $=\\frac{1}{3}\\times S\\times h=\\frac{1}{3}\\times${tx(M.S)}\\times${M.h}=${tx(M.vol)}\\,\\mathrm{cm}^3$예요.`
+        `밑면은 반지름 $${M.r}$인 원이에요. 밑넓이 $=\\pi\\times${M.r}^2=${tx(M.S)}\\,\\mathrm{cm}^2$예요.`,
+        `부피에는 꼭짓점에서 밑면까지의 수직 거리인 높이 $${M.h}$를 써요. (모선 $${M.R}$은 쓰지 않아요.)`,
+        `(부피) $=\\frac{1}{3}\\times$ (밑넓이) $\\times$ (높이) $=\\frac{1}{3}\\times${tx(M.S)}\\times${M.h}=${tx(M.vol)}\\,\\mathrm{cm}^3$예요.`
       ] : [
-        `밑넓이 $\\pi r^2=\\pi\\times${M.r}^2=${tx(M.S)}\\,\\mathrm{cm}^2$예요.`,
-        `겉넓이에는 모선 $R=${M.R}$를 써요. 옆넓이 $\\pi Rr=\\pi\\times${M.R}\\times${M.r}=${tx(M.lat)}\\,\\mathrm{cm}^2$예요. (높이 $h$는 쓰지 않아요.)`,
-        `(겉넓이) $=${tx(M.S)}+${tx(M.lat)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
+        `밑넓이 $=\\pi\\times${M.r}^2=${tx(M.S)}\\,\\mathrm{cm}^2$예요.`,
+        `겉넓이에는 모선 $${M.R}$을 써요. 전개도의 부채꼴은 반지름이 모선 $${M.R}$이고 호의 길이가 밑면의 둘레 $${tx(V(0, 2 * M.r))}$이에요. 옆넓이 $=\\pi\\times${M.R}\\times${M.r}=${tx(M.lat)}\\,\\mathrm{cm}^2$예요. (높이는 쓰지 않아요.)`,
+        `(겉넓이) $=$ (옆넓이) $+$ (밑넓이) $=${tx(M.lat)}+${tx(M.S)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
       ],
       view: (M) => ({
-        guide: `위 칩에서 <b>(r, h, R) 모양</b>과 <b>겉넓이·부피</b>를 골라 보세요. ${span('amber', '높이 h')}는 수직으로 내린 점선, <b>모선 R</b>은 비스듬한 변이에요. 겉넓이에는 <b>R</b>, 부피에는 <b>h</b>를 써요.`,
+        guide: `위 칩에서 <b>반지름·높이·모선</b>의 모양과 <b>겉넓이·부피</b>를 골라 보세요. ${span('amber', '높이')}는 수직으로 내린 점선, <b>모선</b>은 비스듬한 변이에요. 겉넓이는 <b>펼치기</b> 막대로 전개도를 보며 구하고(모선을 써요), 부피는 입체에서 <b>높이</b>를 써요.`,
         readouts: [
-          rd('반지름 r', M.r + ' cm', 'ink'), rd('높이 h', M.h + ' cm', 'amber'), rd('모선 R', M.R + ' cm', 'sky'),
-          rd('겉넓이 πr(r+R)', plainVal(M.tot) + ' cm²', M.mode === 'surf' ? 'green' : 'muted'), rd('부피 ⅓πr²h', plainVal(M.vol) + ' cm³', M.mode === 'vol' ? 'green' : 'muted')
+          rd('반지름', M.r + ' cm', 'ink'), rd('높이', M.h + ' cm', 'amber'), rd('모선', M.R + ' cm', 'sky'),
+          rd('겉넓이', plainVal(M.tot) + ' cm²', M.mode === 'surf' ? 'green' : 'muted', `옆넓이 ${plainVal(M.lat)} + 밑넓이 ${plainVal(M.S)}`), rd('부피', plainVal(M.vol) + ' cm³', M.mode === 'vol' ? 'green' : 'muted', `⅓ × ${plainVal(M.S)} × ${M.h}`)
         ],
-        formula: `<p>(겉넓이) $=\\pi r^2+\\pi R r$ &nbsp;,&nbsp; (부피) $=\\frac{1}{3}\\pi r^2 h$</p>`,
-        rule: '겉넓이는 모선 R, 부피는 높이 h',
-        notes: notes('겉넓이에 높이 $h$를, 부피에 모선 $R$를 쓰는 실수가 많아요. <b>수직인 점선이 $h$, 비스듬한 변이 $R$</b>이에요.', '부피에는 $\\frac{1}{3}$을 꼭 곱해요.')
+        formula: `<p>(겉넓이) $=$ (옆넓이) $+$ (밑넓이) $=\\pi r l+\\pi r^2$ &nbsp;,&nbsp; (부피) $=\\frac{1}{3}\\times$ (밑넓이) $\\times$ (높이) $=\\frac{1}{3}\\pi r^2 h$ &nbsp; ($l$ 모선의 길이)</p>`,
+        rule: '겉넓이에는 모선, 부피에는 높이',
+        notes: notes('겉넓이에 높이를, 부피에 모선을 쓰는 실수가 많아요. <b>수직인 점선이 높이, 비스듬한 변이 모선</b>이에요.', '부피에는 $\\frac{1}{3}$을 꼭 곱해요.')
       }),
       prob: (M) => {
         let wrongs, stem;
         const base = `밑면의 반지름이 $${M.r}\\,\\mathrm{cm}$, 높이가 $${M.h}\\,\\mathrm{cm}$, 모선의 길이가 $${M.R}\\,\\mathrm{cm}$인 원뿔`;
         if (M.mode === 'vol') {
-          wrongs = [[vmul(M.vol, 3), '$\\frac{1}{3}$을 곱하지 않았어요.'], [V(0, (M.r * M.r * M.R) / 3), '부피에는 높이 $h$를 써요. 모선 $R$를 썼어요.'], [vmul(M.vol, 1 / 2), '$\\frac{1}{3}$이 아니라 $\\frac{1}{2}$을 곱했어요.'], [V(0, (M.r * M.h) / 3), '밑넓이는 $\\pi r^2$이에요.'], [M.tot, '겉넓이를 구했어요.']];
+          wrongs = [[vmul(M.vol, 3), '$\\frac{1}{3}$을 곱하지 않았어요.'], [V(0, (M.r * M.r * M.R) / 3), '부피에는 높이를 써요. 모선을 썼어요.'], [vmul(M.vol, 1 / 2), '$\\frac{1}{3}$이 아니라 $\\frac{1}{2}$을 곱했어요.'], [V(0, (M.r * M.h) / 3), '밑넓이는 $\\pi\\times r\\times r$이에요.'], [M.tot, '겉넓이를 구했어요.']];
           stem = `그림과 같이 ${base}의 부피는?`;
         } else {
-          wrongs = [[vadd(M.S, V(0, M.r * M.h)), '옆넓이에는 모선 $R$를 써요. 높이 $h$를 썼어요.'], [M.lat, '옆넓이만 구했어요. 밑넓이도 더해야 해요.'], [vmul(M.vol, 1), '부피를 구했어요.'], [vadd(M.S, V(0, M.R * M.h)), '옆넓이는 $\\pi Rr$이에요.'], [vadd(vmul(M.S, 2), M.lat), '밑면은 1개예요.']];
+          wrongs = [[vadd(M.S, V(0, M.r * M.h)), '옆넓이에는 모선을 써요. 높이를 썼어요.'], [M.lat, '옆넓이만 구했어요. 밑넓이도 더해야 해요.'], [vmul(M.vol, 1), '부피를 구했어요.'], [vadd(M.S, V(0, M.R * M.h)), '옆넓이는 $\\pi\\times$ (모선) $\\times$ (반지름)이에요.'], [vadd(vmul(M.S, 2), M.lat), '밑면은 1개예요.']];
           stem = `그림과 같이 ${base}의 겉넓이는?`;
         }
-        return { tag: M.mode === 'vol' ? '원뿔의 부피 (종합)' : '원뿔의 겉넓이 (종합·함정: h와 R)', key: `${M.mode}|${M.key}|${M.k}`, stem, choices: mkV(M.ans, wrongs, { dim: M.mode === 'vol' ? 3 : 2 }) };
+        return { tag: M.mode === 'vol' ? '원뿔의 부피 (종합)' : '원뿔의 겉넓이 (종합·함정: 높이와 모선)', key: `${M.mode}|${M.key}|${M.k}`, stem, choices: mkV(M.ans, wrongs, { dim: M.mode === 'vol' ? 3 : 2 }) };
       }
     };
   }
