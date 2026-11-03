@@ -11,6 +11,13 @@
   if (!G) return;
   const { PI, DEG, clamp, v3, add3, sub3, mul3, dot3, cross3, len3, unit3, lerp3, mid3, rotAxis, camOf, LET, rint, pick } = G;
   const PHI = (1 + Math.sqrt(5)) / 2;
+  /* ---- 정다면체 장면이 쓰는 전개도 목록(선생님이 고름). 숫자는 「정팔면체 전개도 11가지 접촉 시트」의 번호이고, 첫 번째가 처음에 뜨는 기본입니다.
+     바꾸려면 이 배열만 고치면 됩니다(단추 이름 ㉮㉯㉰는 개수에 맞춰 저절로 붙습니다). */
+  const OCTA_PICK = [4, 1, 8];
+  const TETRA_PICK = [1, 2];
+  // 선생님 교과서 그림과 같은 모양·방향·이름 시작점(번호 → { rot: 돌림(60°씩), flip: 뒤집기, start0: 이름 시작점의 테두리 번호 이동 }).
+  // 정사면체 1번 = 평행사변형 띠(위 줄 A·F·E, 아래 줄 B·C·D), 정팔면체 4번 = 가운데 띠 양 끝에 삼각형 2개씩(A~J, 반시계).
+  const NET_ORIENT = { tetra: { 1: { rot: 2, flip: 0, start0: 0 } }, octa: { 4: { rot: 1, flip: 1, start0: 0 } } };
   const cen3 = (pts) => mul3(pts.reduce((a, p) => add3(a, p), v3(0, 0, 0)), 1 / pts.length);
 
   /* ------------------------------------------------------------------ 가로 이동 */
@@ -192,6 +199,47 @@
     for (let i = chain.length - 1; i >= 0; i--) { const h = chain[i]; cur = rotAxis(cur, h.p1, unit3(sub3(h.p2, h.p1)), h.ang * t); }
     return cur;
   };
+  const mulberry = (a) => () => { a |= 0; a = (a + 0x6d2b79f5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  /* ---- 점 이름표(전개도 위 점 → 알파벳): 테두리를 따라 붙이는 방식과 그 변형 ----
+     bd = 테두리 점 번호(반시계, 기본 시작점부터). nameVars[i] = 점 번호 → 글자 (0번이 기본). 접힌 입체·정답은 점 번호(위치)로만 계산하므로 이름이 바뀌어도 정답은 같습니다. */
+  function nameVariantsOf(net, start0) {
+    const n = net.pt.length, flatIdx = net.pt.map((_, i) => i);
+    const posNames = flatIdx.map((i) => (i < 26 ? LET[i] : ''));
+    const cnt = new Map();
+    net.faces.forEach((f, fi) => f.poly.forEach((_, vi) => { const a = net.ptOf[fi][vi], b = net.ptOf[fi][(vi + 1) % f.poly.length], k = a < b ? a + '-' + b : b + '-' + a; cnt.set(k, (cnt.get(k) || 0) + 1); }));
+    const nb = net.pt.map(() => []);
+    cnt.forEach((c, k) => { if (c === 1) { const [a, b] = k.split('-').map(Number); nb[a].push(b); nb[b].push(a); } });
+    let seq = [];
+    if (nb.every((l) => l.length === 2)) {
+      let prev = -1, cur = 0;
+      for (let g = 0; g < n; g++) { seq.push(cur); const nx = nb[cur].find((x) => x !== prev); prev = cur; cur = nx; if (cur === 0) break; }
+    }
+    if (seq.length !== n || n < 3) return { bd: null, bdOk: false, nameVars: [posNames], nameDef: { dir: 1, s: 0 } };
+    let area = 0; seq.forEach((a, i) => { const p = net.pt[a], q = net.pt[seq[(i + 1) % n]]; area += p.x * q.y - q.x * p.y; });
+    if (area < 0) seq.reverse();
+    const maxY = Math.max(...net.pt.map((p) => p.y)), isTop = (i) => net.pt[seq[i]].y > maxY - 1e-4;
+    let st = -1;
+    seq.forEach((_, i) => { if (isTop(i) && !isTop((i + 1) % n) && (st < 0 || net.pt[seq[i]].x < net.pt[seq[st]].x)) st = i; });
+    seq = seq.slice(st < 0 ? 0 : st).concat(seq.slice(0, st < 0 ? 0 : st));
+    const corner = (i) => { const p = net.pt[seq[(i + n - 1) % n]], q = net.pt[seq[i]], r = net.pt[seq[(i + 1) % n]], ax = q.x - p.x, ay = q.y - p.y, bx = r.x - q.x, by = r.y - q.y; return Math.abs(ax * by - ay * bx) > 1e-3 * Math.hypot(ax, ay) * Math.hypot(bx, by); };
+    const def = { dir: 1, s: ((start0 % n) + n) % n }, rest = [];
+    [1, -1].forEach((dir) => seq.forEach((_, i) => { if (corner(i) && !(dir === 1 && i === def.s)) rest.push({ dir, s: i }); }));
+    const seed = n * 7919 + Math.round(net.pt.reduce((a, p) => a + p.x * 31 + p.y * 17, 0) * 100);
+    const rnd = mulberry(seed);
+    for (let i = rest.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [rest[i], rest[j]] = [rest[j], rest[i]]; }
+    const vars = [def].concat(rest);
+    const nameVars = vars.map((v) => { const arr = new Array(n); for (let j = 0; j < n; j++) arr[seq[(((v.s + v.dir * j) % n) + n) % n]] = j < 26 ? LET[j] : ''; return arr; });
+    return { bd: seq, bdOk: true, nameVars, nameVarDefs: vars, nameDef: def };
+  }
+  // 이름 배치 seed(0 = 기본) → 그 배치의 이름을 쓰는 전개도(원래 전개도의 사본). 위치·접힘·정답 계산은 그대로이고 ptName 만 다릅니다.
+  function namedNet(net, seed) {
+    const n = net.nameVars.length, vi = (((seed | 0) % n) + n) % n;
+    if (vi === 0) return net;
+    net._nv = net._nv || {};
+    if (!net._nv[vi]) { foldInfoOf(net); const v = Object.assign({}, net, { ptName: net.nameVars[vi], nameIdx: vi }); delete v._land; delete v._nv; net._nv[vi] = v; }
+    return net._nv[vi];
+  }
+  const nameIdxOf = (net, seed) => { const n = net.nameVars.length; return (((seed | 0) % n) + n) % n; };
   // def: { kind, faces:[{poly:[v3…], parent, ang}] } → 접기 도구 모음
   function finishNet(def) {
     const faces = def.faces.map((f) => Object.assign({}, f));
@@ -211,13 +259,16 @@
     faces.forEach(doChain);
     const net = { kind: def.kind, faces, name: def.name, label: def.label };
     net.at = (t) => faces.map((f) => f.poly.map((p) => applyChain(p, f.chain, t)));
-    // 전개도 위의 점(겹치는 점은 하나로), 위에서 아래·왼쪽에서 오른쪽 차례로 A, B, C …
+    // 전개도 위의 점(겹치는 점은 하나로). 점 번호는 위에서 아래·왼쪽에서 오른쪽 차례(위치 기준이라 이름이 바뀌어도 그대로)
     const flat = [], pi = faces.map((f) => f.poly.map((p) => { let k = flat.findIndex((q) => len3(sub3(q, p)) < 1e-5); if (k < 0) { flat.push(p); k = flat.length - 1; } return k; }));
     const ord = flat.map((p, i) => i).sort((a, b) => (Math.abs(flat[a].y - flat[b].y) > 1e-4 ? flat[b].y - flat[a].y : flat[a].x - flat[b].x));
     const rank = []; ord.forEach((i, r) => { rank[i] = r; });
     net.pt = ord.map((i) => flat[i]);
     net.ptOf = pi.map((row) => row.map((i) => rank[i]));
-    net.ptName = net.pt.map((_, i) => (i < 26 ? LET[i] : ''));
+    // 이름: 교과서처럼 전개도의 테두리를 따라 반시계 방향으로 A, B, C … (기본은 맨 위 왼쪽 점에서 시작). 「이름 바꾸기」는 시작점과 방향만 바꿉니다.
+    // 테두리가 한 바퀴로 이어지지 않는 전개도(드묾)는 위→아래·왼쪽→오른쪽 차례로 붙입니다.
+    Object.assign(net, nameVariantsOf(net, def.start0 || 0));
+    net.ptName = net.nameVars[0];
     // 접으면(t=1) 한 점이 되는 꼭짓점끼리 묶습니다.
     const end = net.at(1), cl = [];
     net.clOf = faces.map(() => []);
@@ -299,7 +350,7 @@
 
   /* ---- 칸(정사각형) 전개도: 정육면체 */
   const LCUBE = 1.2;
-  function cellNet(cells0, label) {
+  function cellNet(cells0, label, start0) {
     const cells = cells0.map((c) => c.slice());
     const nb = (c) => cells.filter((d) => Math.abs(d[0] - c[0]) + Math.abs(d[1] - c[1]) === 1).length;
     let root = cells[0]; cells.forEach((c) => { if (nb(c) > nb(root)) root = c; });
@@ -307,7 +358,7 @@
     const poly = (c) => { const x0 = (c[0] - mx - 0.5) * LCUBE, x1 = x0 + LCUBE, y1 = -(c[1] - my - 0.5) * LCUBE, y0 = y1 - LCUBE; return [v3(x0, y1, 0), v3(x1, y1, 0), v3(x1, y0, 0), v3(x0, y0, 0)]; };
     const order = [root], parent = [-1];
     for (let i = 0; i < order.length; i++) cells.forEach((d) => { if (!order.includes(d) && Math.abs(d[0] - order[i][0]) + Math.abs(d[1] - order[i][1]) === 1) { order.push(d); parent.push(i); } });
-    const net = finishNet({ kind: 'cube', name: '정육면체', label, faces: order.map((c, i) => ({ poly: poly(c), parent: parent[i], ang: PI / 2, cell: c })) });
+    const net = finishNet({ kind: 'cube', name: '정육면체', label, start0, faces: order.map((c, i) => ({ poly: poly(c), parent: parent[i], ang: PI / 2, cell: c })) });
     // 면 번호 ①~⑥: 전개도에서 위→아래, 왼쪽→오른쪽
     const rk = net.faces.map((f, i) => i).sort((a, b) => (net.faces[a].cell[1] - net.faces[b].cell[1]) || (net.faces[a].cell[0] - net.faces[b].cell[0]));
     net.num = []; rk.forEach((fi, k) => { net.num[fi] = k + 1; });
@@ -380,7 +431,6 @@
   }
 
   /* ---- 정다면체 전개도: 입체를 펼쳐 서로 겹치지 않는 것만 고릅니다(정다각형 면 → 평면 위에 차례로 붙이기) */
-  const mulberry = (a) => () => { a |= 0; a = (a + 0x6d2b79f5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
   function polyOverlap(A, B) { // 볼록다각형 둘이 겹치는가(분리축 정리, 살짝 줄여서 맞닿는 것은 허용)
     const sh = (P) => { const c = { x: P.reduce((a, q) => a + q.x, 0) / P.length, y: P.reduce((a, q) => a + q.y, 0) / P.length }; return P.map((q) => ({ x: c.x + (q.x - c.x) * 0.96, y: c.y + (q.y - c.y) * 0.96 })); };
     const a = sh(A), b = sh(B);
@@ -393,10 +443,10 @@
     }
     return true;
   }
-  function unfoldTry(S, rnd) {
+  function unfoldTry(S, rnd, tree) { // tree(선택): 접는 선(펼치며 붙일 모서리 번호의 집합) — 주면 그 모서리로만 붙입니다
     const nF = S.F.length, p = S.F[0].i.length, l = len3(sub3(S.V[S.F[0].i[0]], S.V[S.F[0].i[1]]));
     const adj = S.F.map(() => []);
-    S.E.forEach((e) => { adj[e.f[0]].push({ to: e.f[1], a: e.a, b: e.b }); adj[e.f[1]].push({ to: e.f[0], a: e.a, b: e.b }); });
+    S.E.forEach((e, ei) => { if (tree && !tree.has(ei)) return; adj[e.f[0]].push({ to: e.f[1], a: e.a, b: e.b }); adj[e.f[1]].push({ to: e.f[0], a: e.a, b: e.b }); });
     const placed = new Array(nF).fill(null), parent = new Array(nF).fill(-1), order = [];
     const place = (fi, pos, center) => { placed[fi] = { pos, center }; order.push(fi); };
     const R0 = l / (2 * Math.sin(PI / p));
@@ -429,13 +479,82 @@
     }
     let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
     polys.forEach((P) => P.forEach((q) => { x0 = Math.min(x0, q.x); x1 = Math.max(x1, q.x); y0 = Math.min(y0, q.y); y1 = Math.max(y1, q.y); }));
-    return { placed, parent, order, polys, w: x1 - x0, h: y1 - y0, area: (x1 - x0) * (y1 - y0), box: { x0, x1, y0, y1 } };
+    return { placed, parent, order, polys, l, w: x1 - x0, h: y1 - y0, area: (x1 - x0) * (y1 - y0), box: { x0, x1, y0, y1 } };
+  }
+  /* ---- 정사면체·정팔면체: 서로 다른 전개도를 모두 찾습니다(펼치는 방법 = 면을 잇는 접는 선의 모음 = 면 그래프의 신장 트리).
+     삼각형 8개를 삼각 격자 위에 놓고 회전·뒤집기가 같은 것은 하나로 묶으면 정팔면체 11가지, 정사면체 2가지입니다. */
+  const SQ3 = Math.sqrt(3) / 2;
+  const latOf = (q, l) => { const j = Math.round(q.y / (l * SQ3)); return [Math.round(q.x / l - j / 2), j]; };
+  const latXY = (c) => ({ x: c[0] + c[1] / 2, y: c[1] * SQ3 });
+  const latTf = (c, rot, flip) => { let i = c[0], j = c[1]; if (flip) { const t = i; i = j; j = t; } for (let r = 0; r < rot; r++) { const t = i; i = -j; j = t + j; } return [i, j]; };
+  const latSig = (lat, rot, flip) => {
+    const T = lat.map((tri) => tri.map((c) => latTf(c, rot, flip))), all = T.flat();
+    const mi = Math.min(...all.map((c) => c[0])), mj = Math.min(...all.map((c) => c[1]));
+    return T.map((tri) => tri.map((c) => (c[0] - mi) + ',' + (c[1] - mj)).sort().join('/')).sort().join('|');
+  };
+  const latBox = (lat, rot, flip) => { const P = lat.flat().map((c) => latXY(latTf(c, rot, flip))); const xs = P.map((p) => p.x), ys = P.map((p) => p.y); return { w: Math.max(...xs) - Math.min(...xs), h: Math.max(...ys) - Math.min(...ys) }; };
+  // 전개도를 놓는 방향: 가로로 가장 길게(같으면 표시 글자가 작은 쪽). 선생님이 정한 모양은 NET_ORIENT 가 따로 정합니다.
+  function bestOrient(lat) {
+    let best = null;
+    for (let flip = 0; flip < 2; flip++) for (let rot = 0; rot < 6; rot++) {
+      const bx = latBox(lat, rot, flip), r = Math.round((bx.w / bx.h) * 1e6), sg = latSig(lat, rot, flip);
+      if (!best || r > best.r || (r === best.r && sg < best.sg)) best = { rot, flip, r, sg };
+    }
+    return best;
+  }
+  const rowsOf = (lat, rot, flip) => { const m = {}; lat.forEach((tri) => { const T = tri.map((c) => latTf(c, rot, flip)); const j = Math.min(...T.map((c) => c[1])); m[j] = (m[j] || 0) + 1; }); return Object.keys(m).map(Number).sort((a, b) => b - a).map((j) => m[j]); };
+  const SHAPES = {};
+  function netShapes(key) {
+    if (SHAPES[key]) return SHAPES[key];
+    const S = platS(key), nF = S.F.length, nE = S.E.length, seen = new Map();
+    for (let mask = 0; mask < (1 << nE); mask++) {
+      let c = 0; for (let b = 0; b < nE; b++) if (mask >> b & 1) c++;
+      if (c !== nF - 1) continue;
+      const tree = new Set(); for (let b = 0; b < nE; b++) if (mask >> b & 1) tree.add(b);
+      const uf = S.F.map((_, i) => i), fd = (x) => (uf[x] === x ? x : (uf[x] = fd(uf[x])));
+      let joined = 0; tree.forEach((ei) => { const a = fd(S.E[ei].f[0]), b = fd(S.E[ei].f[1]); if (a !== b) { uf[a] = b; joined++; } });
+      if (joined !== nF - 1) continue; // 순환이 있거나 끊어진 모음은 건너뜀
+      const r = unfoldTry(S, () => 0, tree);
+      if (!r) continue;
+      const o0 = r.placed[0].pos[S.F[0].i[0]]; // 첫 면의 꼭짓점을 격자의 원점으로
+      const lat = S.F.map((f, fi) => f.i.map((vi) => { const q = r.placed[fi].pos[vi]; return latOf({ x: q.x - o0.x, y: q.y - o0.y }, r.l); }));
+      // 접는 선이 아닌 모서리끼리 평면에서 맞닿은 모양은 제외(진짜 전개도는 맞닿은 변이 모두 접는 선)
+      const ec = new Map(); lat.forEach((tri) => tri.forEach((c0, k) => { const a = tri[(k + 1) % tri.length], kk = [c0.join(','), a.join(',')].sort().join('>'); ec.set(kk, (ec.get(kk) || 0) + 1); }));
+      let shared = 0; ec.forEach((v) => { if (v === 2) shared++; });
+      if (shared !== nF - 1) continue;
+      let canon = null; for (let flip = 0; flip < 2; flip++) for (let rot = 0; rot < 6; rot++) { const sg = latSig(lat, rot, flip); if (canon == null || sg < canon) canon = sg; }
+      if (seen.has(canon)) continue;
+      seen.set(canon, { canon, lat, parent: r.parent, l: r.l });
+    }
+    const list = Array.from(seen.values());
+    list.forEach((q) => { const o = bestOrient(q.lat); q.rot = o.rot; q.flip = o.flip; q.rows = rowsOf(q.lat, o.rot, o.flip); q.start0 = 0; });
+    // 번호: 줄이 적은 것(가로로 긴 것)부터, 같으면 줄별 삼각형 수의 사전순
+    list.sort((a, b) => a.rows.length - b.rows.length || (a.rows.join('') < b.rows.join('') ? -1 : a.rows.join('') > b.rows.join('') ? 1 : a.canon < b.canon ? -1 : 1));
+    list.forEach((q, i) => { q.id = i + 1; const f = (NET_ORIENT[key] || {})[q.id]; if (f) { q.rot = f.rot; q.flip = f.flip; q.start0 = f.start0 || 0; q.rows = rowsOf(q.lat, q.rot, q.flip); q.fixed = true; } });
+    return (SHAPES[key] = list);
   }
   const polyNets = {};
+  function shapeNet(key, sh, ni) {
+    const S = platS(key), info = PLAT[key], scale = key === 'octa' ? 0.95 : 1.2;
+    const P = sh.lat.map((tri) => tri.map((c) => latXY(latTf(c, sh.rot, sh.flip))));
+    const all = P.flat(), cx = (Math.min(...all.map((p) => p.x)) + Math.max(...all.map((p) => p.x))) / 2, cy = (Math.min(...all.map((p) => p.y)) + Math.max(...all.map((p) => p.y))) / 2;
+    const faces = S.F.map((f, fi) => ({
+      poly: P[fi].map((q) => v3((q.x - cx) * sh.l * scale, (q.y - cy) * sh.l * scale, 0)),
+      parent: sh.parent[fi],
+      ang: sh.parent[fi] < 0 ? 0 : Math.acos(clamp(dot3(f.n, S.F[sh.parent[fi]].n), -1, 1))
+    }));
+    const net = finishNet({ kind: key, name: info.name, label: `전개도 ${'㉮㉯㉰㉱㉲㉳'[ni]}`, faces, start0: sh.start0 });
+    net.shapeId = sh.id;
+    return net;
+  }
   function polyNetsOf(key) {
     if (polyNets[key]) return polyNets[key];
+    if (key === 'tetra' || key === 'octa') {
+      const sh = netShapes(key), pick = key === 'octa' ? OCTA_PICK : TETRA_PICK;
+      return (polyNets[key] = pick.map((id, ni) => shapeNet(key, sh[id - 1], ni)));
+    }
     const S = platS(key), rnd = mulberry(key.length * 977 + 13), cand = [];
-    const tries = key === 'dodeca' || key === 'icosa' ? 1500 : key === 'octa' ? 400 : 80;
+    const tries = 1500; // 정십이면체·정이십면체(정사면체·정팔면체는 위에서 모두 찾음)
     for (let t = 0; t < tries; t++) {
       const r = unfoldTry(S, rnd);
       if (!r) continue;
@@ -449,7 +568,7 @@
     const picked = [];
     for (const c of cand) { if (picked.length >= 2) break; if (picked.every((q) => Math.abs(q.w - c.w) + Math.abs(q.h - c.h) > 0.5)) picked.push(c); }
     if (picked.length < 2 && cand.length) picked.push(cand[Math.min(1, cand.length - 1)]);
-    const info = PLAT[key], scale = key === 'dodeca' ? 0.62 : key === 'icosa' ? 0.7 : key === 'octa' ? 0.95 : 1.2;
+    const info = PLAT[key], scale = key === 'dodeca' ? 0.62 : 0.7;
     polyNets[key] = picked.map((r, ni) => {
       const cx = (r.box.x0 + r.box.x1) / 2, cy = (r.box.y0 + r.box.y1) / 2;
       const faces = S.F.map((f, fi) => ({
@@ -491,6 +610,7 @@
   Object.assign(G, {
     NK, KNAME, nameOf, countsOf, solidOfKind, banner, sRect, shuf,
     PHI, cen3, hx, hxOf, platV, PLAT_TILT, hullFaces, solidOf, ring, prismS, pyrS, frustumS, topPyrS, PLAT, PLAT_KEYS, platS, truncS, dualDeg,
-    drawPoly, faceMid, drawCurved, finishNet, foldInfoOf, cellNet, cubeNetOK, CUBE_NETS, BAD_NETS, cubeNetOf, transformCells, canonCells, randCells, netSvg, polyNetsOf, hasBlock
+    drawPoly, faceMid, drawCurved, finishNet, foldInfoOf, cellNet, cubeNetOK, CUBE_NETS, BAD_NETS, cubeNetOf, transformCells, canonCells, randCells, netSvg, polyNetsOf, hasBlock,
+    namedNet, nameIdxOf, netShapes, shapeNet, OCTA_PICK, TETRA_PICK
   });
 })();
