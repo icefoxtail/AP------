@@ -1,0 +1,1411 @@
+{
+  "schemaVersion": "4slot-v1",
+  "sourceArchiveFile": "original/high/h2/2final/19_매산여고_2학기_기말_고2_확률과통계.js",
+  "sourceGitBlobSha": "4a2ec53114b01acc11cb89fe9c67673c10b6cbe5",
+  "dictionaryVersion": "term-dict-v1.4-2026-11-03",
+  "judgedBy": {
+    "agent": "Antigravity-gemini-3.8-flash",
+    "run": "original-41-50",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이산확률변수",
+            "src": "stem",
+            "quote": "확률변수 $X$의 확률분포가 다음 표와 같을 때"
+          },
+          {
+            "term": "확률분포",
+            "src": "stem",
+            "quote": "확률분포가 다음 표와 같을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "$V(X)$는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "확률의 합은 1이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "확률의 총합이 1임을 이용하여 미정상수 a 결정"
+          },
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "$E(X)=0\\cdot\\frac16+1\\cdot\\frac16+2\\cdot\\frac16+3\\cdot\\frac12=2$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "V(X)=E(X^2)-\\{E(X)\\}^2",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "단, $a$는 상수이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이산확률분포표에서 확률의 합으로 a를 구하고 제곱의 평균과 평균의 제곱의 차로 분산 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "전체 도서의 $40\\%$가"
+          },
+          {
+            "term": "표본",
+            "src": "stem",
+            "quote": "도서 $600$권을 임의로 택하였을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "문학도서가 $252$권 이상 $264$권 이하일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "이항분포·정규근사 모형에서는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "정규분포로 근사하여 표준화한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표준정규분포",
+            "src": "solution",
+            "quote": "표준정규곡선에서 $Z=1$부터 $Z=2$까지의 넓이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "표준정규분포곡선으로부터 구간 확률 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$252$권 이상 $264$권 이하일"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이항분포를 정규분포로 근사하고 표준화하여 표준정규분포표로부터 구간 확률 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "확률변수 $X$의"
+          },
+          {
+            "term": "확률질량함수",
+            "src": "stem",
+            "quote": "확률질량함수가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(X=2)$을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "확률질량함수의 확률을 모두 더하면 1이어야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "확률의 총합이 1임을 이용하여 상수 k 결정"
+          },
+          {
+            "term": "함숫값",
+            "src": "solution",
+            "quote": "대입한 값과 다르다.",
+            "evidenceType": "IMPLIED",
+            "justification": "상수 k를 대입하여 x=2에서의 특정 확률 계산"
+          },
+          {
+            "term": "상수",
+            "src": "solution",
+            "quote": "이므로 $k=",
+            "evidenceType": "IMPLIED",
+            "justification": "일차방정식을 풀어 상수 k의 값 도출"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "단, $k$는 상수이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "확률질량함수의 합이 1임을 이용하여 상수를 구하고 x=2에서의 확률값 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "통계적추정",
+            "src": "stem",
+            "quote": "전수조사가 적합한 것을 &lt;보기&gt;에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "따라서 ㄴ, ㄹ, ㅁ만 옳다."
+          }
+        ],
+        "method": [
+          {
+            "term": "통계적추정",
+            "src": "solution",
+            "quote": "전수조사는 조사 대상 전체를 확인할 필요가 있고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표본",
+            "src": "solution",
+            "quote": "표본조사가 적합하다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "전체집합",
+            "src": "solution",
+            "quote": "조사 대상 전체를 확인할 필요가 있고",
+            "evidenceType": "IMPLIED",
+            "justification": "전수조사는 전체 집합을 대상으로 전수 확인"
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "초등학교의 개수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전수조사와 표본조사의 개념과 대상을 구별하여 적합한 항목 판정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포 $N(120, 4\\sigma^2), N(100, 9\\sigma^2)$을 따를 때"
+          },
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "두 확률변수 $X, Y$가 각각"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "P(X\\le130)=P\\left(Z\\le\\frac{130-120}{2\\sigma}\\right)",
+            "evidenceType": "IMPLIED",
+            "justification": "두 정규분포 확률변수를 각각 표준화하여 z값 비교"
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "정규분포의 대칭성으로 $P(Y\\ge k)=P\\left(Z\\le\\frac{100-k}{3\\sigma}\\right)$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "15=100-k$, 따라서 $k=85$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 표준화 경계가 같음을 이용하여 일차방정식 해결"
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "$P(X \\le 130) = P(Y \\ge k)$를 만족시키는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "서로 다른 정규분포를 표준화하고 대칭성을 이용하여 경계값을 일치시켜 상수 k 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "주사위 한 개를 던져서"
+          },
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "$3$의 배수가 나오면"
+          },
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "나온 앞면의 수를 확률변수 $X$라 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "확률변수 $3X+4$의 평균은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "주사위 결과에 따라 동전을 던지는 횟수가 달라지므로 먼저 두 경우로 나눈다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주사위 결과에 따라 동전 던지는 횟수를 분류"
+          },
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "전체 평균은 각 경우의 평균에 그 경우가 일어날 확률을 곱하여 더한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "E(3X+4)=3E(X)+4",
+            "evidenceType": "IMPLIED",
+            "justification": "기댓값의 선형성을 적용하여 일차식의 평균 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "각 동전의 앞면 확률이 $1/2$이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "조건부 기댓값을 이용하여 전체 평균 E(X)를 구하고 기댓값의 선형성으로 E(3X+4) 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원점",
+            "src": "stem",
+            "quote": "원점 $\\mathrm{O}$에서 출발하여"
+          },
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "수직선 위를 움직이는 점"
+          },
+          {
+            "term": "홀수",
+            "src": "stem",
+            "quote": "홀수의 눈이 나오면"
+          },
+          {
+            "term": "짝수",
+            "src": "stem",
+            "quote": "짝수의 눈이 나오면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "$X$의 분산은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "한 번의 이동량 평균은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "V(Y)=E(Y^2)-\\{E(Y)\\}^2=5-1^2=4$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "합의 분산은 각 분산의 합과 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "독립인 시행들의 합에 대해 분산의 가법성 적용"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "주사위 $1$개를 $20$번 던질 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "1회 시행의 분산을 구하고 독립시행의 합에 대한 분산 성질을 적용하여 최종 좌표의 분산 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포 $N(m, 4)$을 따르는"
+          },
+          {
+            "term": "모집단",
+            "src": "stem",
+            "quote": "따르는 모집단에서"
+          },
+          {
+            "term": "표본평균",
+            "src": "stem",
+            "quote": "표본평균을 측정하였더니 $\\overline{x}$이었다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "신뢰구간",
+            "src": "stem",
+            "quote": "신뢰도 $95\\%$의 신뢰구간의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "모표준편차",
+            "src": "solution",
+            "quote": "모표준편차는 $\\sigma=2$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "신뢰구간",
+            "src": "solution",
+            "quote": "L=2\\times1.96\\times\\frac2{40}=0.196$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표본의크기",
+            "src": "solution",
+            "quote": "표본의 크기는 $n=1600$이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "신뢰도",
+            "src": "stem",
+            "quote": "신뢰도 $95\\%$의 신뢰구간의 길이는?"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "모표준편차와 표본크기를 신뢰구간 길이 공식에 대입하여 95% 신뢰구간의 길이 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "모집단의 확률변수 $X$가"
+          },
+          {
+            "term": "확률분포",
+            "src": "stem",
+            "quote": "확률분포를 따른다고 한다."
+          },
+          {
+            "term": "표본평균",
+            "src": "stem",
+            "quote": "표본평균 $\\overline{X}$의 분산은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "표본평균 $\\overline{X}$의 분산은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "$E(X)=0\\cdot\\frac14+1\\cdot\\frac12+2\\cdot\\frac14=1$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "모분산",
+            "src": "solution",
+            "quote": "모집단 분산은\n$V(X)=E(X^2)-\\{E(X)\\}^2=",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표본평균",
+            "src": "solution",
+            "quote": "V(\\overline X)=\\frac1{4^2}\\{V(X_1)+\\cdots+V(X_4)\\}",
+            "evidenceType": "IMPLIED",
+            "justification": "표본평균의 분산이 모분산을 표본크기로 나눈 것임을 이용"
+          }
+        ],
+        "condition": [
+          {
+            "term": "표본의크기",
+            "src": "stem",
+            "quote": "크기가 $4$인 표본을 임의 추출할 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "모집단의 확률분포로부터 모분산을 계산하고 표본평균의 분산 공식을 적용하여 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포 $N(15, 4)$를 따르는"
+          },
+          {
+            "term": "모집단",
+            "src": "stem",
+            "quote": "따르는 모집단에서"
+          },
+          {
+            "term": "표본",
+            "src": "stem",
+            "quote": "크기가 $4$인 표본을 임의추출하였을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(S \\ge 64)$을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "정규분포를 따른다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "평균 $4\\cdot15=60$, 분산 $4\\cdot4=16$인",
+            "evidenceType": "IMPLIED",
+            "justification": "독립 정규 표본 합의 평균과 분산 유도"
+          },
+          {
+            "term": "표준정규분포",
+            "src": "solution",
+            "quote": "Z=\\frac{S-60}{4}$로 표준화하면",
+            "evidenceType": "IMPLIED",
+            "justification": "표준화 후 오른쪽 꼬리 확률을 표준정규분포표로부터 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "S \\ge 64"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정규 모집단에서 추출한 표본들의 합의 분포를 구하고 표준화하여 확률 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "모표준편차",
+            "src": "stem",
+            "quote": "표준편차가 $\\sigma$인"
+          },
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포를 따르는 모집단에서"
+          },
+          {
+            "term": "신뢰구간",
+            "src": "stem",
+            "quote": "신뢰구간은 $a \\le m \\le b$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것만을 있는 대로 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "표본평균",
+            "src": "solution",
+            "quote": "표본평균의 분산은 $V(\\overline X)=\\frac{\\sigma^2}{n}$이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "신뢰구간",
+            "src": "solution",
+            "quote": "신뢰구간의 길이는 $L=2z\\frac\\sigma{\\sqrt n}$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "신뢰도",
+            "src": "solution",
+            "quote": "신뢰도를 낮추면 $z$가 작아지고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "표본의크기",
+            "src": "stem",
+            "quote": "크기가 $n$인 표본을 임의추출하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "표본평균의 분산 공식과 신뢰구간 길이 공식을 바탕으로 신뢰도 및 표본크기 변화의 영향 판정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "확률변수 $X$가"
+          },
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포 $N(40, 10^2)$을 따를 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "$Z=\\frac{X-40}{10}$은 표준정규분포를 따른다.",
+            "evidenceType": "IMPLIED",
+            "justification": "확률변수를 표준화하여 표준정규분포 상의 구간으로 변환"
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "$P(-1\\le Z\\le2)=0.8185$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭성과 표에 주어진 확률값의 합으로 z 경계 확인"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "\\frac{k-40}{10}=2$에서 $k=60$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "표준화 관계식의 일차방정식을 풀어 k 결정"
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "$P(30 \\le X \\le k) = 0.8185$를 만족시키는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정규분포를 표준화하고 표준정규분포표의 누적면적 합과 일치하는 z값을 찾아 k 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포를 따르는 모집단에서"
+          },
+          {
+            "term": "모평균",
+            "src": "stem",
+            "quote": "모평균을 신뢰도 $99\\%$로 추정할 때"
+          },
+          {
+            "term": "신뢰구간",
+            "src": "stem",
+            "quote": "신뢰구간의 길이를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "자연수 $n$의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "신뢰구간",
+            "src": "solution",
+            "quote": "99% 신뢰구간의 길이는 $L=2\\times2.58\\frac\\sigma{\\sqrt n}$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "모표준편차",
+            "src": "solution",
+            "quote": "모표준편차의 $\\frac15$ 이하이려면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "n\\ge665.64$이다. $n$은 자연수이므로 최솟값은 $666$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "신뢰구간 길이 부등식을 풀어 표본크기 n의 최솟값 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "모표준편차의 $\\frac{1}{5}$ 이하로 하기 위한"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$의 최솟값은?"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "99% 신뢰구간 길이 공식을 모표준편차 부등식에 대입하여 최소 자연수 n 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "복원추출",
+            "src": "stem",
+            "quote": "다시 주머니에 넣는 시행을 $2$번 반복할 때"
+          },
+          {
+            "term": "표본평균",
+            "src": "stem",
+            "quote": "꺼낸 공에 적힌 수의 평균을 $\\overline{X}$라고 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "$p=\\frac2{n+2}$, $q=\\frac n{n+2}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공을 꺼내는 1회 시행에서 각 숫자가 나올 확률 설정"
+          },
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "공을 다시 넣고 꺼내므로 두 시행은 독립이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "n^2-4n+4=(n-2)^2=0$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "표본평균의 확률 조건을 정리하여 n에 대한 이차방정식 해결"
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "$P(\\overline{X}=2) = \\frac{1}{2}$일 때"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$의 값은?"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "독립시행 복원추출에서 표본평균이 2가 되는 확률식을 세우고 n에 대한 방정식을 풀어 해결"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "표본평균",
+            "src": "stem",
+            "quote": "결과 평균이 $45$점이었다."
+          },
+          {
+            "term": "모표준편차",
+            "src": "stem",
+            "quote": "모표준편차가 $20$점인"
+          },
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포를 따른다고 한다."
+          },
+          {
+            "term": "신뢰구간",
+            "src": "stem",
+            "quote": "신뢰구간이 $42 \\le m \\le 48$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $\\alpha$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "표본평균",
+            "src": "solution",
+            "quote": "표준오차는 $\\frac{\\sigma}{\\sqrt n}=\\frac{20}{\\sqrt{100}}=2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "모표준편차와 표본크기로부터 표준오차 계산"
+          },
+          {
+            "term": "신뢰구간",
+            "src": "solution",
+            "quote": "반길이는 $48-45=3$이다. 따라서 $z\\cdot2=3$에서 $z=1.5$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "신뢰구간의 오차한계로부터 임계값 z 산출"
+          },
+          {
+            "term": "신뢰도",
+            "src": "solution",
+            "quote": "양쪽 중심구간의 확률은 $2\\times0.43=0.86$, 즉 신뢰도 $86\\%$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "표본의크기",
+            "src": "stem",
+            "quote": "학생 중에서 $100$명을 임의추출하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 신뢰구간의 오차한계로부터 임계값 z를 찾고 표준정규분포표에서 신뢰도 백분율 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포 $N(60, 5^2)$을 따르는"
+          },
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "확률변수 $Y$가 $Y=3X+1$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "확률 $P(Y \\le 211)$을"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "$Y=3X+1$이고 계수 3이 양수이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "확률변수의 일차변환에 대한 부등식 동치 변형"
+          },
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "$Z=\\frac{X-60}{5}$로 표준화하면",
+            "evidenceType": "IMPLIED",
+            "justification": "정규분포를 표준화하여 표준정규변수 부등식으로 변환"
+          },
+          {
+            "term": "표준정규분포",
+            "src": "solution",
+            "quote": "$P(Y\\le211)=P(Z\\le2)=0.5+P(0\\le Z\\le2)=",
+            "evidenceType": "IMPLIED",
+            "justification": "표준정규분포의 대칭성과 표를 이용하여 누적확률 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "Y \\le 211"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "일차변환된 확률변수의 부등식을 X에 대해 풀고 정규분포를 표준화하여 확률 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포 $N(m, \\sigma^2)$을 따르는"
+          },
+          {
+            "term": "모집단",
+            "src": "stem",
+            "quote": "따르는 모집단에서"
+          },
+          {
+            "term": "신뢰구간",
+            "src": "stem",
+            "quote": "신뢰구간의 길이가 $\\frac{7}{8}\\sigma$이었다."
+          },
+          {
+            "term": "표본평균",
+            "src": "stem",
+            "quote": "표본의 표본평균을 $\\overline{X_n}$이라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "신뢰구간",
+            "src": "solution",
+            "quote": "신뢰구간의 길이는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표본평균",
+            "src": "solution",
+            "quote": "표본평균은 평균 $m$, 표준편차",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표준정규분포",
+            "src": "solution",
+            "quote": "표준정규분포의 중앙구간 확률은 양의 경계가 커질수록 엄격히 증가한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "새 표본크기 n에 대한 오차 확률을 표준화하여 경계값 비교"
+          }
+        ],
+        "condition": [
+          {
+            "term": "표본의크기",
+            "src": "stem",
+            "quote": "크기가 $4$인 표본을 임의추출하여"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$의 값은?"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "처음 신뢰구간 길이로부터 임계값을 구하고 새 표본크기 n에 대한 표준화 경계와 일치시켜 n 결정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률분포",
+            "src": "stem",
+            "quote": "모집단의 확률변수 $X$의 확률분포를 나타낸 것이다."
+          },
+          {
+            "term": "표본평균",
+            "src": "stem",
+            "quote": "그 표본평균을 $\\overline{X}$라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기댓값",
+            "src": "stem",
+            "quote": "$\\mathrm{E}(2\\overline{X}-3)+\\mathrm{V}(2\\overline{X}+5)$의 값을 구하시오."
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "$\\mathrm{E}(2\\overline{X}-3)+\\mathrm{V}(2\\overline{X}+5)$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "주어진 확률은 $X\\sim B(200,\\frac12)$의 이항분포이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표본평균",
+            "src": "solution",
+            "quote": "$E(\\overline X)=100$, $V(\\overline X)=\\frac{50}{2}=25$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "E(2\\overline X-3)=2\\cdot100-3=197",
+            "evidenceType": "IMPLIED",
+            "justification": "표본평균의 일차변환에 대한 기댓값 및 분산 성질 적용"
+          }
+        ],
+        "condition": [
+          {
+            "term": "표본의크기",
+            "src": "stem",
+            "quote": "크기 $2$인 표본을 임의추출하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이항분포로부터 모평균과 모분산을 구하고 표본평균의 일차식에 대한 기댓값과 분산의 합 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "동시에 뽑는 시행을 $16$번 반복한다."
+          },
+          {
+            "term": "표본평균",
+            "src": "stem",
+            "quote": "평균 $\\overline{X}$라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기댓값",
+            "src": "stem",
+            "quote": "$E(5\\overline{X}+14)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "전체 경우의 수는 ${}_7C_4=35$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률분포",
+            "src": "solution",
+            "quote": "전체 표본을 빠짐없이 분류했다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 번째로 큰 수 T의 각 값에 따른 경우의 수를 분류하여 확률분포 구성"
+          },
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "E(5\\overline X+14)=5\\cdot\\frac{24}{5}+14=24+14=38$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$1$부터 $7$까지의 자연수가"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "비복원추출에서 두 번째로 큰 수의 확률분포와 기댓값을 구하고 표본평균의 일차식 기댓값 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "표본",
+            "src": "stem",
+            "quote": "크기가 $3$인 표본을 임의추출하여"
+          },
+          {
+            "term": "표본평균",
+            "src": "stem",
+            "quote": "그 표본평균을 $\\overline{X}$라 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률분포",
+            "src": "stem",
+            "quote": "(1) 확률분포표를 구하여라."
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "(2) $\\mathrm{E}(\\overline{X})$를 구하여라."
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "(3) $\\mathrm{V}(\\overline{X})$를 구하여라."
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "전체 표본의 수는 ${}_8C_3=56$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "분포가 2를 중심으로 좌우대칭이므로 $E(\\overline X)=2$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "V(\\overline X)=",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "비복원추출",
+            "src": "solution",
+            "quote": "카드를 한 번에 3장 뽑는 비복원 표본이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "비복원 표본추출에서 표본평균의 확률분포표를 작성하고 대칭성을 활용하여 평균과 분산 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포를 따르는 모집단에서"
+          },
+          {
+            "term": "모평균",
+            "src": "stem",
+            "quote": "모평균 $m$에 대한 신뢰도 $95\\%$의 신뢰구간이"
+          },
+          {
+            "term": "신뢰구간",
+            "src": "stem",
+            "quote": "신뢰구간이 $30.2 \\le m \\le 49.8$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "신뢰구간에 속하는 자연수의 개수를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "신뢰구간",
+            "src": "solution",
+            "quote": "95% 신뢰구간의 중심은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표준정규분포",
+            "src": "solution",
+            "quote": "신뢰구간 반길이는 표준정규분포 임계값 $z$에 비례한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "신뢰도 변화에 따른 오차한계의 비례 관계 적용"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "여기에 속하는 자연수는 $28,29,\\ldots,52$로 $52-28+1=25$개이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "신뢰도",
+            "src": "stem",
+            "quote": "신뢰도 $99\\%$의 신뢰구간에"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수의 개수를 구하시오."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "95% 신뢰구간으로부터 표준오차를 구하고 99% 임계값을 적용하여 신뢰구간 내 자연수의 개수 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포 $N(0, 2^2)$을 따르는"
+          },
+          {
+            "term": "모집단",
+            "src": "stem",
+            "quote": "따르는 모집단에서"
+          },
+          {
+            "term": "표본평균",
+            "src": "stem",
+            "quote": "구한 표본 평균을 $\\overline{X}$라 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "자연수 $n$의 최댓값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "표본평균",
+            "src": "solution",
+            "quote": "표본평균은 $\\overline X\\sim N(0,\\frac4n)$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표준정규분포",
+            "src": "solution",
+            "quote": "$P(Z\\le-0.5)=0.5-0.1915=0.3085$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "표준정규분포의 대칭성을 이용하여 왼쪽 꼬리 확률의 임계값 도출"
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "25\\ge n$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "표준화된 경계의 부등식을 풀어 n의 최댓값 결정"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "P(\\overline{X} \\le -\\frac{5}{n}) \\le 0.3085"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$의 최댓값을 구하시오."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "표본평균의 정규분포를 표준화하고 단조증가성과 대칭성을 이용하여 부등식을 만족하는 최대 자연수 n 결정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 22,
+    "quotesChecked": 175,
+    "quotesNotFound": 0,
+    "warningsRechecked": [],
+    "notes": ""
+  }
+}
