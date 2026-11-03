@@ -75,7 +75,8 @@ test('consumer DB preserves previous approvals, registers current Palma rows and
   assert.ok(index.records.every(r=>r.sourceKind==='generated'&&typeof r.uid==='string'&&r.uid.trim().length>0));
   assert.equal(index.records.filter(r => r.uid.includes('BSG26-B01R2-')).length, 45);
   assert.equal(index.records.filter(r => r.uid.includes('BSG26-B02-')).length, 38);
-  assert.equal(canonicalSourceGitSha(fs.readFileSync(path.join(root, originalFile))), '58bc37888ea64eae59f345580f7e3aaf26a87d55');
+  // 2026-11-03 재승인: #1237, #1245에서 해설(solution)만 수정됨. 문제·정답·보기는 변경 없음.
+  assert.equal(canonicalSourceGitSha(fs.readFileSync(path.join(root, originalFile))), '18c8efa8d59150aac04ffcc170ae12ea41193712');
 });
 
 test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound consumer shards with five choices', () => {
