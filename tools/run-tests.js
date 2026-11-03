@@ -283,6 +283,10 @@ const requiredCommands = [
   {
     label: 'apmath/playground/next/tools/polyhedra-names.test.mjs',
     args: ['--test', 'apmath/playground/next/tools/polyhedra-names.test.mjs']
+  },
+  {
+    label: 'apmath/playground/next/tools/cube-section.test.mjs',
+    args: ['--test', 'apmath/playground/next/tools/cube-section.test.mjs']
   }
 ];
 
