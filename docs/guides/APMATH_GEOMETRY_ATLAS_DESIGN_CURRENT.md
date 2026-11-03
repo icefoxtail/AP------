@@ -13,7 +13,7 @@
 
 | 기둥 | 하는 일 | 상태 |
 |---|---|---|
-| 실험실 | 눈으로 보고 움직이는 장면. 탐구·정리·문제 | 출시(실험실 54개) |
+| 실험실 | 눈으로 보고 움직이는 장면. 탐구·정리·문제 | 실험실 54개, 고등 옛 장면 살리기 완료 |
 | 노선 | 개념 노선(완행) + 빠른 풀이 노선(급행) | 개념 노선만 있음 |
 | 사전 | 도형별 정의·성질·판정 조건·서술형 문장 카드 | 범위 조사 완료(초중고 196항목), 화면은 설계 |
 
@@ -67,15 +67,11 @@
 
 ## 6. 순서
 
-1. 지금 실험실 출시(2026-11-03 아침, 중고등 통합 점검 뒤).
-2. 고등 옛 장면 살리기: 문제 없는 장면에 문제, 문제 장면에 「새 문제」. 진행 중.
-3. 도형 사전 카드.
-4. 빠른 풀이 급행 노선. 근거는 기출 빈도 조사(「도형 빠른 접근 유형 지도」)이고, 장면에 기술 태그를 붙이면 노선이 자동으로 만들어진다.
-5. 우주 속 기차 노선도 화면.
-6. 초등 역 연결.
+작업 순서·완료 기준·결정 대기 목록은 [Atlas 로드맵](APMATH_GEOMETRY_ATLAS_ROADMAP_CURRENT.md)에 둔다. 요약: 출시 점검 → 출시 뒤 정리 → 사전 카드 1차·기술 태그 → 공백 장면 신설 → 급행 노선·기술 카드 → 우주 속 기차 화면 → 초등 역. 고등 옛 장면 살리기는 끝났다(PR #1254).
 
 ## 관련 문서
 
+- 로드맵(단계·완료 기준·결정 대기): [APMATH_GEOMETRY_ATLAS_ROADMAP_CURRENT.md](APMATH_GEOMETRY_ATLAS_ROADMAP_CURRENT.md)
 - 도형 사전 범위(196항목, 카드 초안·계층도): [APMATH_GEOMETRY_DICTIONARY_SCOPE_CURRENT.md](APMATH_GEOMETRY_DICTIONARY_SCOPE_CURRENT.md), 데이터 [geometry-dictionary.json](geometry-dictionary.json)
 - 도형 빠른 접근 유형 지도(51유형, 실험실 판정·우선순위): [APMATH_GEOMETRY_SHORTCUT_MAP_CURRENT.md](APMATH_GEOMETRY_SHORTCUT_MAP_CURRENT.md)
 - 기출 분류표: [기하](APMATH_GEOMETRY_HIGH_KICE_INDEX_CURRENT.md), [대수](APMATH_ALGEBRA_KICE_INDEX_CURRENT.md), [미적분Ⅰ](APMATH_CALCULUS1_KICE_INDEX_CURRENT.md), [고1 공통수학](APMATH_COMMON_MATH_KICE_INDEX_CURRENT.md), [확률과 통계](APMATH_PROBSTAT_KICE_INDEX_CURRENT.md)
