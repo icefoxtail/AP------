@@ -89,12 +89,15 @@ for (const file of pages) {
         const c = b.canvas;
         const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;
         let ink = 0;
-        for (let k = 3; k < d.length; k += 4 * 31) if (d[k] > 30) ink++;
+        // 표본 수는 캔버스 넓이와 상관없이 일정하게 둡니다(무대 위 띠·아래 받침으로 그림이 작아져도 가는 선 그림이 '빈 그림'으로 잘못 걸리지 않게. 예전 1280×820 캔버스 기준 31칸 간격과 같은 밀도).
+        const step = Math.min(31, Math.max(1, Math.round((c.width * c.height) / 20360)));
+        for (let k = 3; k < d.length; k += 4 * step) if (d[k] > 30) ink++;
         const clipped = boxes.filter((q) => Math.max(-q.x0, q.x1 - b.W, -q.y0, q.y1 - b.H) > 2).map((q) => q.str.slice(0, 20));
         // 장면을 차례로 넘긴 뒤에도 화면의 조작부(막대·칩·버튼)가 장면 정의와 같은 개수로 보이는지(같은 조작부 장면이 이어질 때 사라지던 오류)
         const L = (f) => (typeof f === 'function' ? f(lab.s) : f) || [];
         const want = L(lab.scene.controls).filter((k) => lab.params[k]).length + L(lab.scene.presets).length + L(lab.scene.actions).length;
-        const have = [...lab.refs.controls.querySelectorAll('.apl-ctl, .apl-presets .apl-chip, .apl-actions-row button')].filter((e) => e.checkVisibility()).length;
+        // 넓은 화면에서는 조작부가 무대 위 띠·아래 받침으로 옮겨 가므로(refs.controls 밖) 화면 전체에서 찾습니다. 장면 칩(.apl-subscenes)·도구 막대는 이 선택자에 걸리지 않습니다.
+        const have = [...document.querySelectorAll('.apl-ctl, .apl-presets .apl-chip, .apl-actions-row button')].filter((e) => e.checkVisibility()).length;
         out.push({ id: lab.scene.id, ink, clipped, ctl: have === want ? '' : `${have}/${want}`, guide: !!document.querySelector('.apl-guide .apl-rich')?.textContent.trim() });
       }
       b._text = drawText;

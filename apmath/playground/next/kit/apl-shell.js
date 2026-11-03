@@ -54,6 +54,8 @@
       this._build();
       this._bindKeys();
       this._restore();
+      // 선택 기능(영상 재생기·목차 패널 등)이 붙는 자리: 해당 스크립트를 불러온 실험실에서만 동작합니다(kit/apl-player.js, apl-toc.js).
+      if (APLab.labHooks) APLab.labHooks.forEach((hook) => hook(this));
       APLab.pushRecent({ id: this.id, title: def.title, course: def.courseName, href: location.pathname.split('/').slice(-3).join('/') });
       // 실험실을 연 탭은 허브로 돌아와도 Universe로 되돌려 보내지 않습니다(next/index.html의 입구 확인과 짝).
       try { sessionStorage.setItem('apl:viaUniverse', '1'); } catch (e) {}
@@ -115,7 +117,14 @@
       ui.penTools = h('div', { class: 'apl-pen-tools apl-glass', hidden: true });
       ui.canvasWrap = h('div', { class: 'apl-canvas-wrap' }, ui.canvas, ui.ink, ui.labels, ui.chips, ui.tr, ui.tools, ui.presenter, ui.penTools);
       ui.tape = h('div', { class: 'apl-tape', hidden: true });
-      ui.stage = h('section', { class: 'apl-stage', 'aria-label': '수학 무대' }, ui.canvasWrap, ui.tape);
+      // 넓은 화면(860px 이상)의 무대 = 위 선택 띠(세부 장면·고르기 칩) + 그림 + 아래 막대 받침(막대·버튼). 휴대폰에서는 비워 두고 숨깁니다(조작부는 패널에 그대로).
+      // 키보드 초점 순서: 위 띠 → 그림 → 받침 → 패널.
+      ui.topNav = h('div', { class: 'apl-top-nav', hidden: true });
+      ui.topPick = h('div', { class: 'apl-top-pick', hidden: true });
+      ui.top = h('div', { class: 'apl-stage-top', hidden: true, role: 'group', 'aria-label': '장면 고르기' }, ui.topNav, ui.topPick);
+      ui.dockCtls = h('div', { class: 'apl-dock-ctls' });
+      ui.dock = h('div', { class: 'apl-dock', hidden: true, role: 'group', 'aria-label': '조절 막대' }, ui.dockCtls);
+      ui.stage = h('section', { class: 'apl-stage', 'aria-label': '수학 무대' }, ui.top, ui.canvasWrap, ui.tape, ui.dock);
 
       // 패널
       ui.head = h('div', { class: 'apl-scene-head' });
@@ -154,6 +163,19 @@
       this._bindInk();
       window.addEventListener('apl:theme', () => { this.board.readTheme(); this.invalidate(true); });
       window.addEventListener('resize', () => this._sizeInk());
+      // 화면 폭이 859/860px 경계를 넘거나 무대 폭이 바뀌면(패널 접기 포함) 조작부를 알맞은 자리로 다시 옮깁니다.
+      const replace = () => requestAnimationFrame(() => this._placeControls());
+      if (NARROW.addEventListener) NARROW.addEventListener('change', replace); else if (NARROW.addListener) NARROW.addListener(replace);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(replace); // 글꼴이 늦게 바뀌어 칩 폭이 달라져도 다시 잽니다
+      if (window.ResizeObserver) {
+        this._stageW = 0;
+        new ResizeObserver((es) => {
+          const w = Math.round(es[0].contentRect.width);
+          if (w === this._stageW) return;
+          this._stageW = w;
+          replace();
+        }).observe(ui.stage);
+      }
     }
     _syncThemeIcon() {
       this.ui.themeBtn.innerHTML = icon(APLab.theme.current() === 'paper' ? 'moon' : 'sun');
@@ -274,6 +296,7 @@
       const grouped = this.groups.length > 1;
       const g = sc.group;
       // 머리말
+      this._removeSubs();
       ui.head.innerHTML = '';
       const pos = grouped
         ? `${sc.gi + 1}. ${APLab.stripEmoji(g.short || g.title)}`
@@ -291,6 +314,8 @@
         });
         ui.head.append(subs);
         this._edgeFade(subs);
+        this._subs = subs;
+        this._subCount = h('span', { class: 'apl-sub-count', 'aria-hidden': 'true', text: cnt }); // 넓은 화면의 위 띠 끝에 붙는 「5 / 8」 위치 표시
       }
       if (sc.question) {
         ui.head.append(h('div', { class: 'apl-question', html: `<small>탐구 질문</small>${APLab.renderMath(sc.question)}` }));
@@ -312,7 +337,13 @@
       this._buildReview();
       this._buildProblem();
       this._syncTabAttr();
+      this._placeControls();
       this._dirtyPanel = true;
+    }
+    _removeSubs() {
+      if (this._subs) this._subs.remove();
+      if (this._subCount) this._subCount.remove();
+      this._subs = this._subCount = null;
     }
     // 선택 사항: sc.tabs 를 쓰는 장면은 머리말에 data-tab 을 달아 탭마다 머리말 모양을 달리할 수 있게 합니다(실험실 자체 CSS가 이 속성에 기대므로 sc.tabs 가 없는 장면에는 달지 않습니다).
     //  - data-qfold: 문제 탭에서 '탐구 질문' 카드를 접습니다(탐구 탭에서 이미 읽은 글). 모든 장면의 기본값이며, 장면이 sc.tabs = { compact: false } 를 주면 접지 않습니다.
@@ -331,6 +362,7 @@
       this._syncTabAttr();
       APLab.$$('.apl-tab', this.ui.tabs).forEach((b) => b.setAttribute('aria-selected', String(b.getAttribute('aria-controls') === 'apl-pane-' + id)));
       for (const t of TABS) this.ui.panes[t.id].hidden = this.tab !== t.id;
+      this._placeControls(); // 막대·고르기 칩은 탐구 탭에서만 보입니다(받침·띠를 숨기면 그림이 커집니다)
       if (id === 'problem' && was !== 'problem') this._autoSnap();
       this._fitPending = true;
       this.invalidate(true);
@@ -361,6 +393,7 @@
       r.guide = h('div', { class: 'apl-rich' });
       pane.append(h('div', { class: 'apl-card' }, h('div', { class: 'apl-guide' }, h('span', { class: 'badge', html: icon('hand') }), r.guide)));
       // 조작
+      this._clearPlaced();
       r.controls = h('div', { class: 'apl-section apl-controls' });
       pane.append(r.controls);
       this._ctlIds = null;
@@ -376,6 +409,14 @@
       pane.append(r.partSec, r.summary);
     }
 
+    /* 조작부(막대·고르기 칩·버튼)는 항상 refs.controls 상자 안에 먼저 지어 두고 _placeControls 가 화면 폭에 맞는 자리로 옮깁니다.
+       860px 이상: 막대 → 무대 아래 받침(.apl-dock), 버튼 → 받침 끝, 고르기 칩 → 무대 위 띠(두 줄을 넘으면 패널의 「고르기」 칸).
+       859px 이하: 예전처럼 패널 안(막대 → 칩 → 버튼). 아래 캐시·_ctls·_presetRow·_actionBtns 규칙은 그대로입니다. */
+    _clearPlaced() {
+      const L = this._lay;
+      if (L) [...L.ctls, L.presets, L.presetsSec, L.acts].forEach((el) => el && el.remove());
+      this._lay = null;
+    }
     _buildControls() {
       const sc = this.scene;
       const box = this.refs.controls;
@@ -385,17 +426,25 @@
       const key = JSON.stringify([ids, presets.map((p) => p.label), actions.map((a) => a.id + (a.label || ''))]);
       if (key === box.__ctlKey) return false; // 캐시 키는 조작부 상자에 붙입니다 → 상자를 새로 만드는 어떤 경로든 자동으로 다시 짓습니다
       box.__ctlKey = key;
+      this._clearPlaced(); // 위 띠·받침으로 옮겨 둔 예전 조작부도 함께 치웁니다
       box.innerHTML = '';
       this._ctls = {};
+      const L = (this._lay = { ctls: [], presets: null, presetsSec: null, acts: null, any: !!(ids.length || presets.length || actions.length) });
       for (const id of ids) {
         const p = this.params[id];
         if (!p) continue;
         const input = h('input', { type: 'range', class: 'apl-range', min: p.min, max: p.max, step: p.step || 0.01, value: this.s[id], 'aria-label': APLab.stripEmoji(p.label) });
         const out = h('output', {});
+        const hint = p.hint ? h('div', { class: 'apl-ctl-hint', html: APLab.renderMath(this._sf(p.hint)) }) : null;
+        if (hint) {
+          // 받침에서는 도움말이 한 줄로 줄어듭니다(넘치면 …). 마우스를 올리면 전체 글이 뜨고, 눌러도 펼쳐집니다(내용은 지우지 않습니다).
+          hint.title = String(p.hint).replace(/<[^>]+>/g, '').replace(/\$/g, '');
+          hint.addEventListener('click', () => hint.classList.toggle('open'));
+        }
         const wrap = h('div', { class: 'apl-ctl', style: { '--c': `var(--m-${p.color || 'amber'})` } },
           h('div', { class: 'apl-ctl-head' }, h('label', { html: APLab.renderMath(this._sf(p.label)) }), out),
           input,
-          p.hint ? h('div', { class: 'apl-ctl-hint', html: APLab.renderMath(this._sf(p.hint)) }) : null);
+          hint);
         input.addEventListener('input', () => {
           this._tween = null;
           this.s[id] = parseFloat(input.value);
@@ -404,7 +453,7 @@
           this._saveHashSoon();
         });
         this._ctls[id] = { input, out, p };
-        box.append(wrap);
+        L.ctls.push(wrap);
       }
       if (presets.length) {
         const row = h('div', { class: 'apl-presets' });
@@ -425,7 +474,7 @@
           b.__isOn = pr.on;
           row.append(b);
         });
-        box.append(row);
+        L.presets = row;
         this._presetRow = row;
       } else this._presetRow = null;
       if (actions.length) {
@@ -436,10 +485,73 @@
           row.append(b);
           return { a, b };
         });
-        box.append(row);
+        L.acts = row;
       } else this._actionBtns = [];
-      box.hidden = !ids.length && !presets.length && !actions.length;
       return true;
+    }
+
+    /** 조작부·세부 장면 칩을 지금 화면 폭과 탭에 맞는 자리에 놓습니다(폭이 바뀔 때마다 양쪽으로 다시 옮깁니다). */
+    _placeControls() {
+      const ui = this.ui;
+      const r = this.refs;
+      if (!r || !r.controls || !this.scene) return;
+      const wide = !NARROW.matches;
+      const explore = this.tab === 'explore';
+      const box = r.controls;
+      const L = this._lay;
+      const subs = this._subs;
+      // 세부 장면 칩: 넓은 화면은 위 띠 첫 줄(이동), 좁은 화면은 패널 머리말(예전 자리)
+      if (subs) {
+        if (wide) ui.topNav.append(subs, this._subCount);
+        else { this._subCount.remove(); ui.head.insertBefore(subs, ui.head.querySelector('.apl-question')); }
+      }
+      ui.topNav.hidden = !wide || !subs;
+      ui.topPick.hidden = true;
+      ui.dock.hidden = true;
+      if (L) {
+        if (wide) {
+          // 막대 → 받침 격자, 버튼 → 격자의 마지막 칸(= 받침 끝. 빈 칸이 있으면 거기에 들어가 높이를 아낍니다)
+          ui.dockCtls.dataset.n = String(L.ctls.length + (L.acts ? 1 : 0));
+          L.ctls.forEach((el) => ui.dockCtls.append(el));
+          if (L.acts) ui.dockCtls.append(L.acts);
+          ui.dockCtls.hidden = !(L.ctls.length || L.acts);
+          ui.dock.hidden = !explore || !(L.ctls.length || L.acts);
+          // 고르기 칩 → 위 띠 둘째 줄. 실제 높이를 재서 두 줄을 넘으면 묶음 통째로 패널의 「고르기」 칸으로 보냅니다(쪼개지 않습니다).
+          if (L.presets) {
+            if (L.presetsSec) L.presetsSec.remove();
+            ui.topPick.append(L.presets);
+            if (explore) {
+              ui.top.hidden = false;
+              ui.topPick.hidden = false;
+              if (ui.topPick.scrollHeight > ui.topPick.clientHeight + 1) {
+                ui.topPick.hidden = true;
+                if (!L.presetsSec) L.presetsSec = this._section('고르기', 'target', L.presets);
+                else L.presetsSec.append(L.presets);
+                box.append(L.presetsSec);
+              }
+            }
+          }
+          box.hidden = !box.childElementCount;
+        } else {
+          if (L.presetsSec) L.presetsSec.remove();
+          L.ctls.forEach((el) => box.append(el));
+          if (L.presets) box.append(L.presets);
+          if (L.acts) box.append(L.acts);
+          box.hidden = !L.any;
+        }
+      }
+      ui.top.hidden = !wide || (ui.topNav.hidden && ui.topPick.hidden);
+      if (wide && subs) this._centerSub();
+    }
+    /** 지금 장면 칩이 줄 안에서 늘 보이도록 줄만 가로로 옮깁니다(페이지는 움직이지 않습니다). */
+    _centerSub() {
+      const el = this._subs;
+      if (!el) return;
+      const on = el.querySelector('.apl-chip.on');
+      if (!on) return;
+      const max = el.scrollWidth - el.clientWidth;
+      el.scrollLeft = Math.max(0, Math.min(max, on.offsetLeft - el.offsetLeft - (el.clientWidth - on.offsetWidth) / 2));
+      this._edgeFade(el);
     }
 
     _buildReview() {
@@ -812,7 +924,7 @@
       const guide = v.guide != null ? v.guide : call(sc.guide, s);
       APLab.setHTML(r.guide, guide || '그림의 <b>후광이 있는 점</b>을 끌거나 조절 막대를 움직여 보세요.');
       // 조작부
-      this._buildControls();
+      if (this._buildControls()) this._placeControls();
       for (const [id, c] of Object.entries(this._ctls || {})) {
         const val = s[id];
         if (document.activeElement !== c.input) c.input.value = val;

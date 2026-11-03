@@ -291,6 +291,14 @@ const requiredCommands = [
   {
     label: 'apmath/playground/next/tools/polyhedra-dual.test.mjs',
     args: ['--test', 'apmath/playground/next/tools/polyhedra-dual.test.mjs']
+  },
+  {
+    label: 'apmath/playground/next/tools/video.test.mjs',
+    args: ['--test', 'apmath/playground/next/tools/video.test.mjs']
+  },
+  {
+    label: 'apmath/playground/next/tools/label-sweep.test.mjs',
+    args: ['--test', 'apmath/playground/next/tools/label-sweep.test.mjs']
   }
 ];
 

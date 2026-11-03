@@ -427,7 +427,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       readouts: [
         { label: '옮기기 전', value: o.startShort || '곡선이 섞인 모양', color: 'ink', note: o.startStr },
         { label: '옮긴 뒤 모양', value: o.shapeShort, color: 'amber', note: o.shapeStr },
-        { label: '색칠한 부분의 넓이', value: resStr, color: 'sky', wide: true, note: `≈ ${fn(xv(o.resX))} cm²` }
+        { label: '색칠한 부분의 넓이', value: resStr, color: 'sky', wide: true }
       ],
       guide: guide4(o.g),
       formula: `<p><b>색칠한 부분</b> = (옮긴 뒤의 간단한 도형)</p><p>${o.formulaLine} = <b>${xs(o.resX)}</b> (cm²)</p>`,
