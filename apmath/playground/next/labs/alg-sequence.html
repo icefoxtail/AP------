@@ -1035,7 +1035,7 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
 
   const STEMS = new Set([0, 1, 3]); // 기둥(Stem)이 그려지는 탐구관
   const actions = (mi) => () => {
-    const out = [{ id: 'twin', icon: 'spark', label: '숫자를 바꾼 문제', run: (s, lab) => twin(s, lab) }];
+    const out = [{ id: 'twin', icon: 'spark', label: '숫자 바꿔 보기', run: (s, lab) => twin(s, lab) }];
     if (!DESIGN.has(mi)) {
       out.push({ id: 'cont', icon: 'wand', label: '실수 전체의 그래프(실선)', on: (s) => s.cont, run: (s) => { s.cont = !s.cont; } });
       out.push({ id: 'abs', icon: 'layers', label: '|수열|의 그래프 보기', on: (s) => s.abs, run: (s) => { s.abs = !s.abs; } });

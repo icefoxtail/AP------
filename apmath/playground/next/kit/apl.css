@@ -222,9 +222,11 @@ body.apl {
 .apl-title { margin: 0; font-size: var(--fs-lg); font-weight: 800; letter-spacing: -.025em; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .apl-actions { grid-area: actions; display: flex; align-items: center; gap: 2px; }
 .apl-actions .apl-teach-btn { margin-left: 6px; }
+/* 장면 줄(.apl-rail)은 가로로 밀리고, '모든 장면' 단추는 그 밖(.apl-railwrap 오른쪽 끝)에 고정됩니다. */
+.apl-railwrap { grid-area: rail; display: flex; align-items: center; gap: 8px; min-width: 0; padding-bottom: 9px; }
 .apl-rail {
-  grid-area: rail; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
-  padding: 0 2px 9px; margin: 0 -2px;
+  flex: 1 1 auto; min-width: 0; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  padding: 0 2px; margin: 0 -2px;
 }
 .apl-rail::-webkit-scrollbar { display: none; }
 /* 가로로 넘치는 줄은 넘친 쪽 가장자리를 흐리게 해서 "옆에 더 있다"를 알려 줍니다(apl-shell.js _edgeFade가 클래스를 켭니다). */
@@ -245,14 +247,20 @@ body.apl {
 .apl-scene-tab:hover { color: var(--text); border-color: var(--line-2); background: var(--card); }
 .apl-scene-tab[aria-selected="true"] { color: var(--text); background: var(--card); border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
 .apl-scene-tab[aria-selected="true"] .n { background: var(--accent); color: var(--accent-ink); }
-.apl-rail .apl-all-btn { margin-left: auto; flex: none; }
+.apl-railwrap .apl-all-btn { flex: none; min-height: 36px; padding: 0 12px; }
+@media (max-width: 560px) {
+  /* 휴대폰: 글자 없이 아이콘만 남겨 장면 줄 자리를 넓힙니다(이름은 aria-label·title). */
+  .apl-railwrap .apl-all-btn { width: 36px; padding: 0; }
+  .apl-railwrap .apl-all-btn > span:not(.apl-ico) { display: none; }
+}
 
 @media (min-width: 1280px) {
   .apl-bar:not(.many) { grid-template-columns: auto minmax(220px, 300px) minmax(0, 1fr) auto; grid-template-areas: "back title rail actions"; height: var(--bar-h); }
+  .apl-bar:not(.many) .apl-railwrap { padding-bottom: 0; }
   .apl-bar:not(.many) .apl-rail { padding: 0; margin: 0; }
-  /* 넘칠 때 왼쪽이 잘리지 않는 가운데 정렬 */
+  /* 넘칠 때 왼쪽이 잘리지 않는 가운데 정렬(단추는 줄 밖 오른쪽 끝에 고정) */
   .apl-bar:not(.many) .apl-rail > :first-child { margin-left: auto; }
-  .apl-bar:not(.many) .apl-rail .apl-all-btn { margin-left: 4px; margin-right: auto; }
+  .apl-bar:not(.many) .apl-rail > :last-child { margin-right: auto; }
 }
 
 .apl-main { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) var(--panel-w); min-height: 0; }
@@ -476,6 +484,20 @@ body.apl {
 .apl-step.cur { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--card-2)); color: var(--text); }
 .apl-step.cur .n { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
 .apl-step-ctl { display: grid; grid-template-columns: auto 1fr auto; gap: 8px; }
+/* 마지막 단계: 주 단추('문제로 가서 정답 확인')를 윗줄 전체에 크게, 이전·새 문제·모두 보기는 아랫줄에 둡니다. */
+.apl-step-ctl.end { grid-template-areas: "next next next" "prev new all"; }
+.apl-step-ctl.end .apl-step-next { grid-area: next; min-height: 44px; font-size: var(--fs-sm); justify-content: center; }
+.apl-step-ctl.end .apl-btn { min-height: 40px; font-size: var(--fs-sm); }
+.apl-step-ctl.end .apl-step-next { min-height: 44px; }
+.apl-step-ctl.end .apl-step-prev { grid-area: prev; }
+.apl-step-ctl.end .apl-step-all { grid-area: all; }
+.apl-step-ctl.end .apl-step-new { grid-area: new; }
+.apl-step-new[hidden] { display: none; }
+/* 정리 탭 맨 위 '문제' 이름표: 12px 미만 금지(small 기본 크기는 10.8px) */
+.apl-review-top small { font-size: var(--fs-xs); }
+/* '새 문제'(숫자를 바꿔 같은 유형을 다시 내는 단추): 문제 탭 어디서나 같은 보통 단추 모양(셸이 apl-newprob 를 붙이고 이름을 '새 문제'로 통일) */
+.apl-btn.apl-newprob { min-height: 40px; padding: 0 14px; font-size: var(--fs-sm); background: var(--card); border: 1px solid var(--line-2); color: var(--text); }
+.apl-btn.apl-newprob:hover { background: var(--hover); }
 
 /* 문제 카드 */
 .apl-problem { display: grid; gap: 12px; }

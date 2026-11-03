@@ -616,7 +616,7 @@
     const ch = choicesOf(spec, s);
     const A = window.APLab;
     let html = '<div class="rl-prob">';
-    if (cfg !== s.cfg) html += '<div class="apl-callout" data-tone="info"><div>지금 조절한 그림은 길이가 깔끔하게 떨어지지 않아서(√가 필요해요), 기본 그림으로 문제를 보여 줘요. 숫자 바꾸기를 눌러 새 문제를 만들 수도 있어요.</div></div>';
+    if (cfg !== s.cfg) html += '<div class="apl-callout" data-tone="info"><div>지금 조절한 그림은 길이가 깔끔하게 떨어지지 않아서(√가 필요해요), 기본 그림으로 문제를 보여 줘요. 새 문제를 눌러 다른 문제를 만들 수도 있어요.</div></div>';
     html += `<p class="rl-stmt">${spec.statement(cfg, M)}</p>`;
     if (ch.opts) {
       html += '<div class="rl-choices">';
