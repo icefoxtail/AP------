@@ -1,6 +1,6 @@
 # 4칸 기록 본작업 — 회차 지시서 (v1, 2026-11-03)
 
-이 파일은 작업 브랜치 `work/4slot-annotate-v1`의 회차 지시서다. 실행할 때마다 이 파일을 처음부터 끝까지 읽고 그대로 따른다. 실행 프롬프트는 `QUEUE`(original 또는 similar)와 `N`(이번 회차 시험지 수)만 정해 준다.
+이 파일은 작업 브랜치 `work/4slot-annotate-v1`의 회차 지시서다. 실행할 때마다 이 파일을 처음부터 끝까지 읽고 그대로 따른다. 실행 프롬프트는 `N`(이번 회차 시험지 수)만 정해 준다. 대상은 원본 기출 큐 하나다(2026-11-03 사용자 결정: 목적은 아카이브 문항을 분류해 두고 나중에 검색에 쓰는 것이고, 유사시험지 비교 시범은 충분히 했으므로 유사시험지는 돌리지 않는다).
 
 이 기록은 약 2만 2천 문항 중에서 쌍둥이·유사 문항을 골라내는 데 쓰인다. 형식보다 **이 문항을 다른 문항과 구별해 주는 용어를 빠짐없이 적는 것**이 더 중요하다. 빨리 끝내는 것보다 문항마다 꼼꼼히 하는 것이 목표다. 시범(25년 고1 2학기 기말)에서 이 지시서 수준으로 했을 때 원본 찾기 Top-3가 87%에서 95%로 올랐다.
 
@@ -17,17 +17,14 @@
 
 ## 1. 이번 회차 대상 고르기
 
-- 큐 파일: `archive-work/4slot-annotate-v1/QUEUE-<QUEUE>.json`의 `list`를 `order` 순서로 본다.
+- 큐 파일: `archive-work/4slot-annotate-v1/QUEUE-original.json`의 `list`를 `order` 순서로 본다.
 - 출력 파일 `archive-work/4slot-annotate-v1/out/<path에서 .js를 .4slot.json으로>`이 **origin 브랜치에 이미 있는 시험지는 건너뛴다**(`git pull` 후 확인).
-- 남은 것 중 앞에서부터 `N`개를 이번 회차 대상으로 한다. 시작할 때 대상 목록(order·path·문항 수)을 답변에 적는다.
-- 한 큐는 한 번에 한 세션만 돌린다. 같은 큐를 두 세션이 동시에 돌리지 않는다.
+- 남은 것 중 앞에서부터 `N`개를 이번 회차 대상으로 한다. 실행 프롬프트가 `ORDER=시작-끝` 범위를 주면 그 범위 안에서만 고른다(세션 여러 개를 동시에 돌릴 때 범위를 나눠 겹치지 않게 하기 위해서다). 시작할 때 대상 목록(order·path·문항 수)을 답변에 적는다.
 
-## 2. 블라인드
+## 2. 참고하지 않는 것
 
-- `QUEUE=original` 회차는 `archive/exams/similar/`와 `out/similar/`를 열거나 검색하지 않는다.
-- `QUEUE=similar` 회차는 `archive/exams/original/`과 `out/original/`을 열거나 검색하지 않는다.
-- 어느 회차든 `archive-work/4slot-gpt-pilot-20261103/`(시범 기록)과 다른 시험지의 기존 4칸 기록을 참고하지 않는다. 이유: 원본·유사의 4칸이 서로를 베끼면 쌍둥이 검색이 실제보다 좋아 보이고, 새 문항에서는 못 찾게 된다.
-- 문항에서 읽는 것은 발문·보기·해설·그림뿐이다. problemTypeKey, templateKey, crossConceptKeys, conditionKeys, sourceQid, sourceExamPath, L1~L4, 단원명, semanticMeta, tags 같은 메타 필드는 보지 않는다(`exam-items.cjs`는 이것들을 보여 주지 않는다).
+- 문항에서 읽는 것은 발문·보기·해설·그림뿐이다. problemTypeKey, templateKey, crossConceptKeys, conditionKeys, L1~L4, 단원명, semanticMeta, tags 같은 메타 필드는 보지 않는다(`exam-items.cjs`는 이것들을 보여 주지 않는다). 이유: 키를 보고 채우면 키 치환이 된다(계약 §7).
+- 다른 시험지의 4칸 기록을 불러와 베끼지 않는다. 문항마다 직접 읽고 정한다.
 
 ## 3. 문항 하나를 처리하는 순서 (모든 문항에 똑같이)
 
@@ -51,16 +48,16 @@
 ## 4. 스크립트 사용 범위
 
 - 허용: `exam-items.cjs`·`validate-4slot.cjs` 실행, 네가 문항마다 직접 적은 값을 JSON 파일로 저장하는 스크립트.
-- 금지: 키워드 매칭·정규식·용어 목록 대조로 용어·칸·format을 자동으로 고르는 것, 한 문항의 값을 다른 문항에 복사하는 것, 이전 회차·다른 시험지의 4칸을 불러오는 것.
+- 금지: 키워드 매칭·정규식·용어 목록 대조로 용어·칸·format을 자동으로 고르는 것, 한 문항의 값을 다른 문항에 복사하는 것, 다른 시험지의 4칸을 불러와 쓰는 것.
 - 보조 스크립트는 커밋하지 않는다.
 
 ## 5. 제출 (시험지마다)
 
 - 파일: `archive-work/4slot-annotate-v1/out/<path에서 .js를 .4slot.json으로>` (예: `out/original/high/h2/2final/25_강남여고_2학기_기말_고2_수학II.4slot.json`). 형식은 인계 문서 §4.
-- `sourceArchiveFile` = 큐의 `path`, `sourceGitBlobSha` = 큐의 `blob`, `dictionaryVersion` = "term-dict-v1.3-2026-11-03", `judgedBy` = {"agent": "<도구>-<실제 모델 이름>", "run": "<QUEUE>-<회차 첫 order>-<끝 order>", "at": "<날짜>"}.
+- `sourceArchiveFile` = 큐의 `path`, `sourceGitBlobSha` = 큐의 `blob`, `dictionaryVersion` = "term-dict-v1.3-2026-11-03", `judgedBy` = {"agent": "<도구>-<실제 모델 이름>", "run": "original-<회차 첫 order>-<끝 order>", "at": "<날짜>"}.
 - `sourceOrdinal`은 `exam-items.cjs`가 보여 주는 `=== 번호`다(questionBank는 id, examData는 number).
 - `validate-4slot.cjs`가 FAIL 0일 때만 커밋한다. WARN은 해당 문항을 다시 보고, 그대로 두면 이유를 `selfCheck.notes`에 적는다. `selfCheck`에는 items, quotesChecked, quotesNotFound, warningsRechecked(다시 본 문항 번호), notes.
-- 커밋은 시험지마다 하나: `4slot <QUEUE> #<order>: <시험지 이름>`. 결과 파일만 `git add -f`(archive-work는 .gitignore 대상).
+- 커밋은 시험지마다 하나: `4slot original #<order>: <시험지 이름>`. 결과 파일만 `git add -f`(archive-work는 .gitignore 대상).
 - push 전에 `git pull`, 그다음 push. 강제 push 금지. 이 폴더(`archive-work/4slot-annotate-v1/out/`) 밖 파일은 수정하지 않는다. main 커밋·push, PR 생성·병합 금지.
 - 시험지 하나가 끝나면 커밋·push까지 마치고 다음 시험지로 간다. 이유: 한도로 회차가 중간에 끊겨도 끝난 시험지는 남는다.
 
