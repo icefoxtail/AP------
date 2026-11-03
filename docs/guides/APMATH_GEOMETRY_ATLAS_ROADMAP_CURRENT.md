@@ -72,7 +72,7 @@
 - **결정(선생님, 2026-11-03):**
   - 순서는 원과 부채꼴(g7-circle-sector) → 다면체(g7-polyhedra) → 회전체(g7-solids) → 입체도형의 겉넓이·부피(g7-surface-volume)다. 중1만 하고 하나씩 넓힌다.
   - 목차에 진도 표시(✓)는 넣지 않는다. 학생마다 필요한 것을 골라 보는 곳이지, 숙제처럼 만들면 안 된다. 같은 이유로 「내 기차」 진도 표시도 다시 묻는다.
-  - 만드는 일은 DeepSeek(OpenCode)에 맡겨 볼 수 있고, 검수는 따로 한다. 이유: DeepSeek은 이미지를 못 본다. 재생기·목차 같은 공용 코드는 원과 부채꼴 시범에서 지금 방식으로 만들고, 다면체부터 대본 작성을 DeepSeek에 맡겨 비용과 품질을 비교한다. 호출 경로(2026-11-03 확인): DeepSeek 계정이나 키를 따로 쓰지 않는다. 환경의 `opencode.ai` 시크릿(OpenCode Go)을 프록시가 요청에 넣어 주므로 별도 키가 필요 없다.
+  - 대본·영상의 초안은 DeepSeek(OpenCode)가 만들고, 마감은 Claude가 한다(선생님 결정, 2026-11-03). 마감은 메인이 화면을 보고 고칠 목록을 정한 뒤 Sonnet 작업자가 고치고, 메인이 다시 화면과 정리·정답을 대조해 확인하는 순서다. 이유: DeepSeek은 이미지를 못 보므로 그림이 학생에게 맞게 보이는지는 Claude가 판단해야 한다. 원과 부채꼴 시범부터 이 방식으로 한다. 호출 경로(2026-11-03 확인): DeepSeek 계정이나 키를 따로 쓰지 않는다. 환경의 `opencode.ai` 시크릿(OpenCode Go)을 프록시가 요청에 넣어 주므로 별도 키가 필요 없다.
     - 모델: `opencode-go/deepseek-v4.1-flash`, `opencode-go/deepseek-v4-pro`
     - 실행: `OPENCODE_API_KEY=dummy npx opencode-ai run --model opencode-go/deepseek-v4.1-flash "<지시>"`. 저장소 밖 작업 폴더에서 실행하거나 범위를 `apmath/playground/`로 한정한다.
     - API를 직접 부를 때는 `x-opencode-session` 헤더가 필요하다.
