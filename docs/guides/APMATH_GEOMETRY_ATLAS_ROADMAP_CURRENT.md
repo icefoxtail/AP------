@@ -80,6 +80,8 @@
     - 모델: `opencode-go/deepseek-v4.1-flash`, `opencode-go/deepseek-v4-pro`
     - 실행: `OPENCODE_API_KEY=dummy npx opencode-ai run --model opencode-go/deepseek-v4.1-flash "<지시>"`. 저장소 밖 작업 폴더에서 실행하거나 범위를 `apmath/playground/`로 한정한다.
     - API를 직접 부를 때는 `x-opencode-session` 헤더가 필요하다.
+- **최종 목표(선생님, 2026-11-03):** 중1 실험실에 짧은 영상을 최대한 많이 만든다. 원리 장면뿐 아니라 문제 탭의 문항 풀이도 영상으로 만든다. 순서는 원과 부채꼴 시범 8장면 → 라벨 겹침 정리 → 문항 영상 형식 정하기 → 나머지 중1 실험실이다.
+- **라벨 겹침 검사 도구:** `tools/label-sweep.mjs`(만드는 중)가 장면 상태값을 차례로 바꾸며 캔버스 글자 상자(`board._bbox.texts`)의 겹침·잘림을 계산해 「깨끗한 값」 구간을 낸다. 영상 지시서의 상태값 표를 이 도구로 뽑고, `--all`로 실험실 전체 라벨 결함도 찾는다. 이유: 사람이 화면을 보며 값을 찾는 비용이 영상 작업에서 가장 컸다.
 - **원과 부채꼴 시범 범위(약 8장면):**
   1. 호의 길이와 넓이
   2. 넓이와 호의 관계(S=½rl)
