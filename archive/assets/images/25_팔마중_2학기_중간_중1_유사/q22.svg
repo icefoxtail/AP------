@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 440" width="540" height="440" role="img" aria-labelledby="q22-title q22-desc">
+  <title id="q22-title">삼각형 ABC와 외부에 그린 두 정삼각형 ABD, ACE</title>
+  <desc id="q22-desc">삼각형 ABC의 두 변에 붙인 정삼각형 ABD와 ACE에 의한 삼각형 ABE와 ADC의 합동 다이어그램</desc>
+  <rect width="540" height="440" fill="#ffffff"/>
+  <!-- Triangle ABC: A=(260,200), B=(170,360), C=(370,360) -->
+  <polygon points="260,200 170,360 370,360" fill="#f8fafc" stroke="#0f172a" stroke-width="2.5"/>
+  <!-- Equilateral triangle ABD on AB (outside to upper left) -->
+  <polygon points="260,200 170,360 110,215" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+  <!-- Equilateral triangle ACE on AC (outside to upper right) -->
+  <polygon points="260,200 370,360 410,215" fill="#fef2f2" stroke="#dc2626" stroke-width="2.5"/>
+  <!-- Segments BE and DC for congruence comparison -->
+  <line x1="170" y1="360" x2="410" y2="215" stroke="#2563eb" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="110" y1="215" x2="370" y2="360" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,4"/>
+  <!-- Vertices -->
+  <circle cx="260" cy="200" r="5" fill="#0f172a"/>
+  <circle cx="170" cy="360" r="5" fill="#0f172a"/>
+  <circle cx="370" cy="360" r="5" fill="#0f172a"/>
+  <circle cx="110" cy="215" r="5" fill="#2563eb"/>
+  <circle cx="410" cy="215" r="5" fill="#dc2626"/>
+  <!-- Labels -->
+  <g font-family="sans-serif" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">
+    <text x="260" y="185">A</text>
+    <text x="155" y="380">B</text>
+    <text x="385" y="380">C</text>
+    <text x="90" y="215" fill="#2563eb">D</text>
+    <text x="430" y="215" fill="#dc2626">E</text>
+  </g>
+</svg>
