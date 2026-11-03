@@ -175,3 +175,24 @@ test('1209 자막의 수치(6π→12π, 36π→72π)가 공식과 같다', () =>
   assert.ok(text.includes(`${S(r, th0)}π → ${S(r, th1)}π`), `넓이 ${S(r, th0)}π → ${S(r, th1)}π`);
   assert.ok(text.includes(`${th0}°`) && text.includes(`${th1}°`), '중심각 시작·끝 값');
 });
+
+// 영상 제목(title): 대본마다 있고(견본 8개), 20자 이하이며, 검증이 긴 제목·빈 제목·태그를 막는다.
+test('모든 영상 대본에 짧은 제목(title, 20자 이하)이 있다', () => {
+  for (const [id, script] of Object.entries(videos)) {
+    assert.ok(typeof script.title === 'string' && script.title.trim(), `${id}: title 이 없습니다`);
+    assert.ok(script.title.trim().length <= core.LIMITS.maxTitleChars, `${id}: title ${script.title.length}자`);
+  }
+});
+
+test('title 검증: 없어도 통과, 20자 초과·빈 글·태그·수식은 오류, compile 이 title 을 돌려준다', () => {
+  const base = videos['1209'];
+  const withTitle = (t) => ({ ...base, title: t });
+  assert.deepEqual(core.validate({ ...base, title: undefined }).errors, [], 'title 생략 가능');
+  assert.deepEqual(core.validate(withTitle('중심각이 2배면 호는?')).errors, []);
+  assert.ok(core.validate(withTitle('가'.repeat(core.LIMITS.maxTitleChars + 1))).errors.some((e) => e.includes('title')), '너무 긴 title');
+  assert.ok(core.validate(withTitle('   ')).errors.some((e) => e.includes('title')), '빈 title');
+  assert.ok(core.validate(withTitle('<b>호</b>')).errors.some((e) => e.includes('title')), '태그 title');
+  assert.ok(core.validate(withTitle('$x$')).errors.some((e) => e.includes('title')), '수식 title');
+  assert.equal(core.compile(withTitle(' 제목 ')).title, '제목');
+  assert.equal(core.compile({ ...base, title: undefined }).title, null);
+});

@@ -52,6 +52,38 @@ body.apl-vid .apl-toc-edge { display: none !important; }
 .apl-vbar[data-step="1"] .apl-vrange { opacity: .55; }
 .apl-vbar[data-step="1"] .apl-vtime::after { content: " · 한 칸씩"; }
 
+/* ---------- 2-1. 영상 제목: 시작 때 위쪽에 크게 → 2초 뒤 맨 위 머리글 줄로 ----------
+   머리글 줄(.apl-vtbar)은 무대 맨 위의 별도 줄이라 그림 위 칩(공식 칩·상태 칩)과 겹치지 않습니다. 큰 제목(.apl-vtbig)은 처음 2초만 그림 위에 반투명으로 얹힙니다. */
+.apl-vtbar, .apl-vtbig { display: none; }
+body.apl-vid .apl-vtbar {
+  display: flex; flex: none; align-items: center; min-height: 30px; padding: 0 14px; border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--panel) 86%, transparent); font-size: 13.5px; font-weight: 800; letter-spacing: -.01em; color: var(--text-2);
+}
+body.apl-vid .apl-vtbar[hidden] { display: none; }
+.apl-vtbar .tt { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: opacity .45s var(--ease), transform .45s var(--ease); }
+.apl-vtbar::before { content: ""; flex: none; width: 4px; height: 14px; margin-right: 8px; border-radius: 2px; background: var(--m-amber); transition: opacity .45s var(--ease); }
+.apl-vtbar[data-phase="big"] .tt, .apl-vtbar[data-phase="big"]::before { opacity: 0; }
+.apl-vtbar[data-phase="big"] .tt { transform: translateY(6px); }
+body.apl-vid .apl-vtbig {
+  display: block; position: absolute; z-index: 4; left: 50%; top: 17%; max-width: calc(100% - 32px); padding: 10px 22px;
+  border-radius: var(--r-md); border: 1px solid color-mix(in srgb, var(--m-amber) 45%, var(--line));
+  background: color-mix(in srgb, var(--panel) 82%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-sm); color: var(--text); font-size: clamp(22px, 3.2vw, 34px); font-weight: 800; line-height: 1.3; letter-spacing: -.025em;
+  text-align: center; text-wrap: balance; word-break: keep-all; overflow-wrap: break-word; pointer-events: none;
+  opacity: 0; transform: translate(-50%, 6px) scale(.97);
+  transition: opacity .5s var(--ease), transform .55s var(--ease);
+}
+body.apl-vid .apl-vtbig.on { opacity: 1; transform: translate(-50%, 0) scale(1); }
+body.apl-vid .apl-vtbig.on.shrink { opacity: 0; transform: translate(-50%, -64px) scale(.42); }
+@media (max-width: 859px) {
+  body.apl-vid .apl-vtbar { min-height: 28px; padding: 0 12px; font-size: 13px; }
+  body.apl-vid .apl-vtbig { top: 20%; padding: 8px 16px; font-size: 22px; max-width: calc(100% - 24px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.apl-vid .apl-vtbig { display: none; }
+  .apl-vtbar .tt, .apl-vtbar::before { transition: none; }
+}
+
 /* ---------- 3. 끝 카드: 한 줄 정리 + 「이제 직접 해 보세요」 ---------- */
 .apl-vbar[data-mode="end"] .apl-vcap,
 .apl-vbar[data-mode="end"] .apl-vprog,

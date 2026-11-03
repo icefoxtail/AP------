@@ -17,6 +17,7 @@ Object.assign(window.APL_VIDEOS['g7-circle-sector'], {
      깨끗한 값 gtT 0.03~0.61·0.63~0.78·0.80~1 (VIDEO_FINDINGS.md #13). */
   'gt-kennel': {
     length: 12,
+    title: '강아지가 갈 수 있는 영역은?',
     start: { gtQ: 2, gtL: 4, gtT: 0.03 },
     summary: '움직일 수 있는 영역 = $12\\pi+\\pi+\\pi=14\\pi$ m²',
     task: '개집의 한 변이나 끈의 길이를 바꿔 부채꼴이 어떻게 달라지는지 보세요',
@@ -33,6 +34,7 @@ Object.assign(window.APL_VIDEOS['g7-circle-sector'], {
      호 하나 2π×6×90/360=3π, 둘 3π+3π=6π=반지름 6 원 둘레의 절반(반원의 호). 깨끗한 값 f3t 0~0.07·0.09~1. */
   'f3-leaf-len': {
     length: 12,
+    title: '잎 모양 둘레 = 반원의 호',
     start: { f3a: 6, f3t: 0 },
     summary: '잎 모양 둘레 = 반원의 호 = $3\\pi+3\\pi=6\\pi$ cm',
     task: '한 변 a를 바꿔 잎 모양 둘레가 반원의 호가 되는지 보세요',

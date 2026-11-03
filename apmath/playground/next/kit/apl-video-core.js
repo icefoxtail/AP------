@@ -5,6 +5,7 @@
    영상은 따로 그린 동영상이 아니라, 실험실 그림을 「대본」대로 움직이는 것입니다. 대본 = 시간순 cue 목록.
      {
        length: 12,                              // 전체 길이(초). 8~15 (쇼츠: 영상 하나에 핵심 하나)
+       title:  '중심각이 2배면 호는?',            // (선택) 영상 제목(20자 이하, 질문형·핵심형). 재생이 시작되면 위쪽에 크게 떴다가 작은 머리글로 남음. 생략하면 장면 제목
        start:  { f1_ss2_t: 0 },                 // (선택) 시작할 때 맞출 숫자 상태값(움직이지 않는 값도 가능). 자막이 말하는 값은 여기에 적어 그림과 맞춥니다. 생략하면 장면에 들어갔을 때의 값
        summary: '$S=\\frac12 rl$',               // 끝 화면 한 줄 요약
        task:    '중심각을 움직여 보세요',          // 끝 화면 「이제 직접 해 보세요」
@@ -34,7 +35,7 @@
   'use strict';
 
   // 쇼츠 규칙(선생님 지적 2026-11-03: 24초·22초 샘플이 늘어진다): 8~15초, 자막 2~3줄, 한 줄 40자(휴대폰 화면 2줄 이내), 첫 1초 안에 그림이 움직이기 시작
-  const LIMITS = { minLen: 8, maxLen: 15, minSay: 2, maxSay: 3, maxSayChars: 40, minSayGap: 2.5, maxSummaryChars: 40, maxTaskChars: 90, maxFirstMoveAt: 1 };
+  const LIMITS = { minLen: 8, maxLen: 15, minSay: 2, maxSay: 3, maxSayChars: 40, minSayGap: 2.5, maxSummaryChars: 40, maxTaskChars: 90, maxTitleChars: 20, maxFirstMoveAt: 1 };
   const EASE = {
     smooth: (x) => x * x * (3 - 2 * x),
     linear: (x) => x,
@@ -42,7 +43,7 @@
     out: (x) => 1 - (1 - x) * (1 - x)
   };
   const CUE_FIELDS = ['at', 'dur', 'to', 'set', 'ease', 'say', 'step', 'part'];
-  const SCRIPT_FIELDS = ['length', 'start', 'summary', 'task', 'cues'];
+  const SCRIPT_FIELDS = ['length', 'title', 'start', 'summary', 'task', 'cues'];
   const EPS = 1e-9;
   const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
 
@@ -70,6 +71,11 @@
       if (typeof v !== 'string' || !v.trim()) err(`${name} 가 비어 있습니다`);
       else if (plainLen(v) > max) err(`${name} 가 너무 깁니다(${plainLen(v)}자 > ${max}자)`);
     };
+    if (script.title != null) {
+      if (typeof script.title !== 'string' || !script.title.trim()) err('title 이 비어 있습니다(없애거나 글자를 쓰세요)');
+      else if (script.title.trim().length > LIMITS.maxTitleChars) err(`title 이 너무 깁니다(${script.title.trim().length}자 > ${LIMITS.maxTitleChars}자)`);
+      else if (/[<$]|\*\*/.test(script.title)) err('title 은 글자만 씁니다(HTML 태그·수식·**굵게** 불가)');
+    }
     textOk('summary', LIMITS.maxSummaryChars);
     textOk('task', LIMITS.maxTaskChars);
     const cues = script.cues;
@@ -145,7 +151,7 @@
     Object.keys(script.start || {}).forEach((k) => { if (!tracks[k]) tracks[k] = []; });
     const says = cues.filter((c) => c.say).map((c) => ({ at: c.at, text: c.say, cue: c.index }));
     says.forEach((s, k) => { s.end = k + 1 < says.length ? says[k + 1].at : L; });
-    return { length: L, start: script.start || {}, summary: script.summary, task: script.task, cues, tracks, setKeys: [...setKeys], usesStep, usesPart, says };
+    return { length: L, title: typeof script.title === 'string' && script.title.trim() ? script.title.trim() : null, start: script.start || {}, summary: script.summary, task: script.task, cues, tracks, setKeys: [...setKeys], usesStep, usesPart, says };
   }
 
   /** 시각 t 에서 숫자 상태값 하나의 값. base 는 영상이 시작할 때의 값. */

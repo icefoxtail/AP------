@@ -6,7 +6,7 @@
    - 영상이 끝나면 한 줄 요약 + 「이제 직접 해 보세요」 카드를 띄우고 탐구 화면으로 돌아갑니다(끝난 상태 그대로 조작 가능).
    - 재생 중에 그림을 만지면 멈춥니다. prefers-reduced-motion 이면 자동 재생 대신 자막을 한 칸씩 넘깁니다.
    [쓰는 법] 실험실 페이지에서 kit/apl-video-core.js · apl-player.js · apl-toc.js · apl-video.css 를 apl-shell.js 다음에 불러오고,
-   createLab({ ..., videos: { 장면id: 대본 } }) 또는 장면에 video: 대본 을 줍니다. 자세한 형식: docs/guides/APMATH_LAB_VIDEO_SCRIPT_GUIDE_CURRENT.md
+   createLab({ ..., videos: { 장면id: 대본 } }) 또는 장면에 video: 대본 을 줍니다. 제목: 대본 title(없으면 장면 제목)을 시작 때 크게 → 2초 뒤 머리글로. 자세한 형식: docs/guides/APMATH_LAB_VIDEO_SCRIPT_GUIDE_CURRENT.md
    ========================================================================== */
 (function () {
   'use strict';
@@ -15,6 +15,7 @@
   if (!APLab || !core || !APLab.h) return;
   const { h, icon } = APLab;
   const REDUCED = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+  const TITLE_BIG_MS = 2000; // 제목이 크게 보이는 시간
   const mmss = (t) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
 
   /** 자막/요약 글: **굵게**, $수식$ 만 허용. 수식 바깥만 HTML 이스케이프합니다. */
@@ -90,6 +91,12 @@
       ui.end = h('div', { class: 'apl-vend', hidden: true },
         h('div', { class: 'apl-vend-h' }, h('span', { class: 'ttl', html: icon('check') + '<span>한 줄 정리</span>' }), ui.endX),
         ui.endSum, ui.endTask, h('div', { class: 'apl-vend-btns' }, ui.endGo, ui.endAgain));
+      // 제목: 재생이 시작되면 그림 위쪽에 크게(tBig) 떴다가 약 2초 뒤 무대 맨 위 머리글 줄(tbar)로 줄어듭니다. 머리글 줄은 그림 위 별도 줄이라 칩·도형을 가리지 않습니다.
+      ui.tText = h('span', { class: 'tt' });
+      ui.tbar = h('div', { class: 'apl-vtbar', 'aria-hidden': 'true' }, ui.tText);
+      ui.tBig = h('div', { class: 'apl-vtbig', 'aria-hidden': 'true' });
+      this.lab.ui.stage.insertBefore(ui.tbar, this.lab.ui.canvasWrap);
+      this.lab.ui.canvasWrap.append(ui.tBig);
       ui.bar = h('div', { class: 'apl-vbar', hidden: true, role: 'region', 'aria-label': '영상 해설' }, ui.cap, ui.prog, ui.live, ui.end);
       this.lab.ui.stage.append(ui.bar);
       // 진행 막대는 0~1000 정수 위치로 다룹니다
@@ -138,6 +145,27 @@
       }, true);
     }
 
+    /** 영상 제목(대본 title, 없으면 장면 제목)을 크게 띄웠다가 TITLE_BIG_MS 뒤 머리글로 줄입니다. 움직임 줄이기 설정이면 머리글만 보입니다. */
+    _showTitle(i) {
+      const ui = this.ui, script = this.scriptOf(i), sc = this.lab.list[i];
+      const text = String((script && script.title) || (sc && sc.title) || '').trim();
+      clearTimeout(this._titleT);
+      ui.tText.textContent = text;
+      ui.tBig.textContent = text;
+      ui.tbar.hidden = !text;
+      ui.tBig.classList.remove('on', 'shrink');
+      if (!text) return;
+      if (REDUCED.matches) { ui.tbar.dataset.phase = 'small'; return; }
+      ui.tbar.dataset.phase = 'big';
+      void ui.tBig.offsetWidth; // 다시 보기 때도 처음부터 다시 나타나게
+      ui.tBig.classList.add('on');
+      this._titleT = setTimeout(() => { ui.tbar.dataset.phase = 'small'; ui.tBig.classList.add('shrink'); }, TITLE_BIG_MS);
+    }
+    _hideTitle() {
+      clearTimeout(this._titleT);
+      this.ui.tBig.classList.remove('on', 'shrink');
+    }
+
     /** 영상 화면(오른쪽 패널 접기, 자막 막대)으로 바꾸거나 되돌립니다. */
     _layout(on) {
       document.body.classList.toggle('apl-vid', !!on);
@@ -171,6 +199,7 @@
       this.ui.bar.dataset.mode = 'play';
       this.ui.bar.dataset.step = this.stepMode ? '1' : '';
       this._layout(true);
+      this._showTitle(i);
       this.state = 'paused';
       if (this.stepMode) { this.seek(this._stepEnd(0)); this._syncUi(); this._announce(); return true; }
       this.apply();
@@ -285,6 +314,7 @@
       this.t = this.cs.length;
       this.apply();
       this.state = 'ended';
+      this._hideTitle(); // 끝 카드가 나오면 제목은 숨김(머리글 줄은 영상 화면이 풀리며 함께 사라짐)
       const lab = this.lab, cs = this.cs;
       this._layout(false); // 탐구 화면(패널)으로 돌아옴. 그림은 끝난 상태 그대로
       lab.tab = 'explore';
@@ -305,6 +335,7 @@
       const was = this.state;
       this.state = 'idle';
       this.cs = null;
+      this._hideTitle();
       this.ui.bar.hidden = true;
       this.ui.end.hidden = true;
       document.body.classList.remove('apl-vend-on');

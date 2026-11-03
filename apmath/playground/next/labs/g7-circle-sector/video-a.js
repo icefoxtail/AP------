@@ -17,6 +17,7 @@ Object.assign(window.APL_VIDEOS['g7-circle-sector'], {
      smooth라 f5T 0.34→1 (dur 5) 에서 「6π」라벨(≈f5T 0.97)은 약 8.9초에 도달 → 결론 자막 at 9.5. */
   'f5-sq4': {
     length: 12,
+    title: '끈의 길이 = 직선 + 원 하나',
     start: { f5A: 3, f5T: 0 },
     summary: '끈 = 직선 부분 + 원 하나의 둘레',
     task: '반지름 r을 바꿔 직선 부분과 곡선 부분이 어떻게 변하는지 보세요',
@@ -34,6 +35,7 @@ Object.assign(window.APL_VIDEOS['g7-circle-sector'], {
      rlT 깨끗한 값(멈춤): 0, 0.09~0.12, 0.46~0.54, 0.63~0.66, 0.96, 0.98~1 (굴러가는 중간은 지나감. 끝은 1). */
   'rl-rect': {
     length: 12,
+    title: '점 A가 움직인 거리는?',
     start: { rlT: 0 },
     summary: '점 A가 움직인 거리 = 호 3개의 합',
     task: 'AB, AD의 길이를 바꿔 점 A가 움직인 거리를 다시 구해 보세요',

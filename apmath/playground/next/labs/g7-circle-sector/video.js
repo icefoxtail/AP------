@@ -18,6 +18,7 @@ window.APL_VIDEOS['g7-circle-sector'] = {
      (θ=240° 는 「240°」와 「넓이 …」 라벨이 맞닿아 쓰지 않습니다 → VIDEO_FINDINGS.md) */
   '1209': {
     length: 12,
+    title: '중심각이 2배면 호와 넓이는?',
     start: { b1209_r: 12, b1209_th: 90 },
     summary: '$l=2\\pi r\\times\\frac{\\theta}{360}$, $S=\\pi r^2\\times\\frac{\\theta}{360}$',
     task: '중심각 θ를 바꿔 호의 길이와 넓이가 같은 비율로 변하는지 보세요',
@@ -33,6 +34,7 @@ window.APL_VIDEOS['g7-circle-sector'] = {
      결과 라벨은 휴대폰에서 「r=3」과 겹쳐(VIDEO_FINDINGS.md) 라벨이 나오기 전 t=0.78 에서 멈춥니다. */
   'f4-swirl': {
     length: 12,
+    title: 'S자 곡선 → 반원',
     start: { f4_swirl_R: 6, f4_swirl_t: 0 },
     summary: '색칠한 부분 = 큰 반원 $\\frac12\\pi R^2$',
     task: '큰 원의 반지름 R을 바꿔도 색칠한 부분이 큰 반원이 되는지 보세요',
@@ -49,6 +51,7 @@ window.APL_VIDEOS['g7-circle-sector'] = {
      라벨은 θ=120·160 에서 깨끗(40·80·200·240·280·320 은 겹침/맞닿음 → VIDEO_FINDINGS.md #4~#6) */
   '1210': {
     length: 12,
+    title: '넓이 ÷ 호의 길이는?',
     start: { b1210_r: 9, b1210_th: 120 },
     summary: '$S=\\frac12 rl$',
     task: '중심각 θ를 바꿔 넓이 ÷ 호의 길이가 늘 r ÷ 2 로 같은지 보세요',
@@ -64,6 +67,7 @@ window.APL_VIDEOS['g7-circle-sector'] = {
      부채꼴(전체) π·6²·90/360=9π, 반원 π·3²·½=9π/2, 색칠한 부분 = 9π−9π/2 = 9π/2. 규칙 (색칠)=(전체)−(파낸 부분). */
   'f1-ss2': {
     length: 12,
+    title: '부채꼴 − 반원 = 색칠한 부분',
     start: { f1_ss2_a: 6, f1_ss2_t: 0 },
     summary: '색칠한 부분 = 부채꼴 − 반원 = $\\frac{9\\pi}{2}$',
     task: '한 변 a를 바꿔도 색칠한 부분이 (부채꼴 − 반원)으로 구해지는지 보세요',
