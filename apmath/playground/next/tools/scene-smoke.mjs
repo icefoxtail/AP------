@@ -2,7 +2,10 @@
 // 실행 예: (저장소 루트에서 정적 서버를 띄운 뒤)
 //   python3 -m http.server 8765 &
 //   node apmath/playground/next/tools/scene-smoke.mjs http://127.0.0.1:8765/apmath/playground/next/labs/
-// 각 실험실의 모든 장면을 PC(칠판·종이 테마)와 휴대폰 크기로 열어
+// 선택 옵션(인자 없으면 전체):
+//   --only common-lines,geom-parabola   파일 이름(.html 앞부분)이 쉼표 목록과 같거나, /정규식/ 형태면 그 식에 맞는 실험실만
+//   --runs tablet                        환경 이름에 이 글자가 든 환경만(PC·휴대폰·태블릿 등)
+// 각 실험실의 모든 장면을 PC(칠판·종이 테마)·휴대폰·태블릿(세로 768×1024, 가로 1024×768) 크기로 열어
 // ① 실행 오류 ② 빈 그림 ③ 깨진 패널 ④ 무대 밖으로 잘린 라벨 ⑤ 장면을 넘기다 사라진 조작부를 찾습니다.
 // 기존 실험실에서 오류 장면 5개(삼각비 4, 피타고라스 1)를 찾아낸 방법과 같은 원리입니다.
 import { createRequire } from 'node:module';
@@ -12,19 +15,37 @@ import { fileURLToPath } from 'node:url';
 
 // playwright는 전역 설치(NODE_PATH)인 경우가 많아 require로 불러옵니다.
 const { chromium } = createRequire(import.meta.url)('playwright');
-const base = (process.argv[2] || 'http://127.0.0.1:8765/apmath/playground/next/labs/').replace(/\/?$/, '/');
+const argv = process.argv.slice(2);
+const optVal = (k) => { const i = argv.indexOf(k); if (i < 0) return null; const v = argv[i + 1]; argv.splice(i, v === undefined ? 1 : 2); return v ?? ''; };
+const onlyArg = optVal('--only');
+const runsArg = optVal('--runs');
+const base = (argv[0] || 'http://127.0.0.1:8765/apmath/playground/next/labs/').replace(/\/?$/, '/');
+const onlyTest = (() => {
+  if (!onlyArg) return null;
+  const m = /^\/(.+)\/([a-z]*)$/.exec(onlyArg);
+  if (m) { const re = new RegExp(m[1], m[2]); return (id) => re.test(id); }
+  const set = new Set(onlyArg.split(',').map((x) => x.trim().replace(/\.html$/, '')).filter(Boolean));
+  return (id) => set.has(id);
+})();
 const labsDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../labs');
 // 실험실 무대(window.lab)가 없는 안내 전용 페이지(이전됨)는 검사 대상이 아닙니다. 소스에 무대 틀(APLab 셸)이 없으면 건너뜁니다.
 const pages = fs.readdirSync(labsDir).filter((f) => {
   if (!f.endsWith('.html')) return false;
+  if (onlyTest && !onlyTest(f.replace(/\.html$/, ''))) return false;
   if (!/apl-shell\.js/.test(fs.readFileSync(path.join(labsDir, f), 'utf8'))) { console.log(`SKIP ${f} (실험실 무대 없음)`); return false; }
   return true;
 });
-const RUNS = [
+const ALL_RUNS = [
   { name: 'PC·칠판', theme: 'board', viewport: { width: 1280, height: 820 } },
   { name: 'PC·종이', theme: 'paper', viewport: { width: 1280, height: 820 } },
-  { name: '휴대폰', theme: 'board', viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2 }
+  { name: '휴대폰', theme: 'board', viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2 },
+  // 태블릿은 주 화면입니다(설계 §5). 터치는 되지만 휴대폰 모드(isMobile)는 아닙니다.
+  { name: '태블릿·세로', theme: 'board', viewport: { width: 768, height: 1024 }, hasTouch: true, deviceScaleFactor: 2 },
+  { name: '태블릿·가로', theme: 'board', viewport: { width: 1024, height: 768 }, hasTouch: true, deviceScaleFactor: 2 }
 ];
+const RUNS = runsArg ? ALL_RUNS.filter((r) => r.name.includes(runsArg)) : ALL_RUNS;
+if (onlyTest && !pages.length) { console.error(`--only ${onlyArg}: 맞는 실험실이 없습니다`); process.exit(2); }
+if (!RUNS.length) { console.error(`--runs ${runsArg}: 맞는 환경이 없습니다`); process.exit(2); }
 
 const browser = await chromium.launch();
 let failed = 0;

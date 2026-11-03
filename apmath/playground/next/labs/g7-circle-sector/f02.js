@@ -719,7 +719,7 @@
       ],
       actions: () => [
         { id: 'play', play: true, primary: true, icon: (s) => (s.playing ? 'pause' : 'play'), label: (s) => (s.playing ? '멈춤' : spec.playLabel || '조각 나누기 재생'), on: (s) => s.playing, run: (s) => { s.playing = !s.playing; if (s.playing) { const pk = gid(spec.id, spec.playKey || 'u'); if (s[pk] >= 0.995) { s[pk] = 0; s.f02dir = 1; s.f02hold = 0; } } } },
-        { id: 'reroll', icon: 'reset', label: '숫자 바꾸기', run: (s, lab) => reroll(s, lab) }
+        { id: 'reroll', icon: 'reset', label: '숫자 바꿔 보기', run: (s, lab) => reroll(s, lab) }
       ],
       tick: (s, dt, lab) => {
         if (s.f02sid !== spec.id) return false;

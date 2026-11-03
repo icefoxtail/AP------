@@ -532,7 +532,7 @@
         // 휴대폰: 입체를 위에 크게, 위에서 본 모양은 읽을 만큼만(고정 크기 px) 아래에 둡니다
         const blockH = 104, c0 = { il: b.insets.left, ir: b.insets.right, ib: b.insets.bottom };
         fit(b, bboxOf(body), { l: 30, r: 30, t: 30, b: blockH + 38 });
-        const c = b.toW((b.W + c0.il - c0.ir) / 2, b.H - c0.ib - 8 - blockH / 2);
+        const c = b.toW((b.W + c0.il - c0.ir) / 2, b.H - Math.max(c0.ib, 16) - 8 - blockH / 2); // 아래 칩이 없는 태블릿 가로에서도 글줄이 무대 밖으로 잘리지 않게 최소 여백 16px
         ins = { x: c.x, y: c.y }; th = 50 / b.k; kt = 34 / (b.k * 1.8);
       } else {
         const pts = body.concat([{ x: ins.x - 1.2, y: ins.y - 1.7 }, { x: ins.x + 1.2, y: ins.y + 1.7 }]);
