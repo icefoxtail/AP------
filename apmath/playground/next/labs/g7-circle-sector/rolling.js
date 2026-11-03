@@ -37,17 +37,8 @@
     }
     return null;
   }
-  /** x = s√k/q (제곱 인수를 뺀 √ 꼴) 이면 {s,k,q}, 아니면 null. 소수 대신 √ 로 보여 주려고 씁니다. */
-  function surd(x) {
-    if (!Number.isFinite(x) || x <= 0) return null;
-    const f = toFrac(x * x);
-    if (!f) return null;
-    let k = f.p * f.q, s = 1;
-    for (let i = 2; i * i <= k; i++) while (k % (i * i) === 0) { k /= i * i; s *= i; }
-    if (k === 1) return null;
-    const g = gcd(s, f.q);
-    return { s: s / g, k, q: f.q / g };
-  }
+  /** 제곱근(√)은 중3 내용이라 학생 화면에 쓰지 않습니다. 분수로 안 떨어지는 값은 「…」로 둡니다(그래서 늘 null). */
+  function surd() { return null; }
   const surdPlain = (u) => `${u.s > 1 ? u.s : ''}√${u.k}${u.q > 1 ? '/' + u.q : ''}`;
   const rTxt = (r) => {
     const f = toFrac(r);
@@ -652,7 +643,7 @@
     const ch = choicesOf(spec, s);
     const A = window.APLab;
     let html = '<div class="rl-prob">';
-    if (cfg !== s.cfg) html += '<div class="apl-callout" data-tone="info"><div>지금 조절한 그림은 길이가 깔끔하게 떨어지지 않아서(√가 필요해요), 기본 그림으로 문제를 보여 줘요. 새 문제를 눌러 다른 문제를 만들 수도 있어요.</div></div>';
+    if (cfg !== s.cfg) html += '<div class="apl-callout" data-tone="info"><div>지금 조절한 그림은 길이가 깔끔하게 떨어지지 않아서(대각선이 정수가 아니에요), 기본 그림으로 문제를 보여 줘요. 새 문제를 눌러 다른 문제를 만들 수도 있어요.</div></div>';
     html += `<p class="rl-stmt">${spec.statement(cfg, M)}</p>`;
     if (ch.opts) {
       html += '<div class="rl-choices">';
@@ -780,7 +771,7 @@
       ],
       hdls: [{ i: 2, patch: (x, y) => ({ w: clamp(Math.round(x), 2, 8), h: clamp(Math.round(y), 2, 8) }) }],
       question: '직사각형 ABCD를 직선 l 위에서 회전시키면 점 A는 어떤 길을 따라 움직일까? 그 길이는 얼마일까?',
-      guide: (M) => `<b>굴리기</b>를 눌러 직사각형이 직선 <i>l</i> 위를 굴러가는 모습을 보세요. 한 번 회전할 때마다 직사각형은 한 꼭짓점(<b>회전의 중심</b>)을 중심으로 90°씩 돌아가고, 점 ${M.names[M.T]}는 그 중심을 중심으로 하는 <b>부채꼴의 호</b>를 그려요. AB, AD의 길이를 바꾸면 반지름과 합이 바로 다시 계산돼요. 대각선(BD)이 정수가 아니면 √로 표시돼요.` + GUIDE_TAIL,
+      guide: (M) => `<b>굴리기</b>를 눌러 직사각형이 직선 <i>l</i> 위를 굴러가는 모습을 보세요. 한 번 회전할 때마다 직사각형은 한 꼭짓점(<b>회전의 중심</b>)을 중심으로 90°씩 돌아가고, 점 ${M.names[M.T]}는 그 중심을 중심으로 하는 <b>부채꼴의 호</b>를 그려요. AB, AD의 길이를 바꾸면 반지름과 합이 바로 다시 계산돼요. 대각선(BD)의 길이가 정수가 아니면 값을 「…」로 두어요.` + GUIDE_TAIL,
       statement: (c) => `오른쪽 그림과 같이 직사각형 ABCD를 직선 $l$ 위에서 회전시켰다. ${len('A', 'B', c.w)}, ${len('A', 'D', c.h)}, ${len('B', 'D', Math.hypot(c.w, c.h))}일 때, 점 ${'ABCD'[c.track]}가 움직인 거리를 구하시오.`,
       reroll: (cur, rng) => {
         const z = pick(rng, [[3, 4], [4, 3], [6, 8], [8, 6]].filter((q) => !(q[0] === cur.w && q[1] === cur.h)));
@@ -849,7 +840,7 @@
       sliders: [{ param: 'rlS', key: 'a', min: 2, max: 8, step: 1, label: '한 변의 길이', fmt: (v) => `${Math.round(v)} cm` }],
       hdls: [{ i: 2, patch: (x, y) => ({ a: clamp(Math.round((x + y) / 2), 2, 8) }) }],
       question: '정사각형을 회전시킬 때, 점 C가 회전의 중심이 되면 점 C는 어떻게 될까?',
-      guide: (M) => `정사각형은 한 번 회전할 때마다 90°씩 돌아가요. 점 ${M.names[M.T]}가 회전의 중심이 되는 때에는 움직이지 않아요. 점 A나 D를 골라 보면 <b>대각선</b>이 반지름이 되는 호도 나타나요(그 길이는 중3에서 배우는 √ 로 표시돼요).` + GUIDE_TAIL,
+      guide: (M) => `정사각형은 한 번 회전할 때마다 90°씩 돌아가요. 점 ${M.names[M.T]}가 회전의 중심이 되는 때에는 움직이지 않아요. 점 A나 D를 골라 보면 <b>대각선</b>이 반지름이 되는 호도 나타나요(그 길이는 중3에서 배우므로 값은 「…」로 두어요).` + GUIDE_TAIL,
       statement: (c) => `한 변의 길이가 ${c.a} cm인 정사각형 ABCD를 직선 $l$ 위에서 오른쪽으로 ${rollPhrase(c.rolls)} 회전시켰을 때, 점 ${'ABCD'[c.track]}가 움직인 거리는?`,
       reroll: (cur, rng) => {
         const combo = pick(rng, [[2, 3], [2, 3], [2, 2], [0, 1], [1, 2], [2, 1]]);

@@ -272,12 +272,10 @@
      ====================================================================== */
   const verdictParts = (list, colorOk) => list.map((p) => ({ id: p.id, name: p.name, value: p.ok ? '옳음' : '옳지 않음', ok: p.ok, color: p.ok ? (colorOk || 'green') : 'red' }));
   const chordLen = (r, th) => 2 * r * Math.sin((th * D2R) / 2);
-  /** 현의 길이: 60°·90°·120°·180° 처럼 √ 꼴로 딱 떨어질 때만 값을 쓰고, 아니면 null(소수 대신 지름과 비교하는 글을 씁니다) */
+  /** 현의 길이: 60°(= 반지름)·180°(= 지름)처럼 정수로 딱 떨어질 때만 값을 쓰고, 아니면 null(소수·√ 대신 지름과 비교하는 글을 씁니다) */
   const chordExact = (r, th) => {
     const h = th > 180 ? 360 - th : th;
     if (h === 60) return `${r}`;
-    if (h === 90) return `${r}√2`;
-    if (h === 120) return `${r}√3`;
     if (h === 180) return `${2 * r}`;
     return null;
   };

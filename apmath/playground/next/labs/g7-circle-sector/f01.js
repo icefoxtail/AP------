@@ -867,16 +867,16 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     question: '부채꼴에서 두 반지름과 현으로 이루어진 삼각형을 파내면 활꼴이 남아요. 중심각을 바꾸면 활꼴은 어떻게 변할까요?',
     vars: [
       { k: 'R', sym: 'R', label: '부채꼴의 반지름 R', min: 4, max: 12, step: 2, value: 6 },
-      { k: 'th', sym: '중심각', label: '중심각', min: 60, max: 120, step: 30, value: 90, fmt: (v) => `중심각 ${fn(v)}°` }
+      { k: 'th', sym: '중심각', label: '중심각', min: 30, max: 150, step: 60, value: 90, fmt: (v) => `중심각 ${fn(v)}°` } // 30°·90°·150°: sin 값이 1/2·1·1/2 라서 √ 없이 넓이가 정확히 나옵니다(60°·120°는 √3 이 필요해 중3 내용)
     ],
-    pool: [{ R: 4, th: 90 }, { R: 8, th: 90 }, { R: 10, th: 90 }, { R: 12, th: 90 }, { R: 6, th: 60 }, { R: 6, th: 120 }],
+    pool: [{ R: 4, th: 90 }, { R: 8, th: 90 }, { R: 10, th: 90 }, { R: 12, th: 90 }, { R: 6, th: 30 }, { R: 6, th: 150 }],
     model: (V) => {
       const R = V.R, th = V.th, a0 = 90 - th / 2, a1 = 90 + th / 2;
       const B = P(R * Math.cos(rad(a0)), R * Math.sin(rad(a0))), A = P(R * Math.cos(rad(a1)), R * Math.sin(rad(a1)));
       const outer = sectorP(0, 0, R, a0, a1), tri = [P(0, 0), A, B];
       const wholeX = X(0, Q(R * R * th, 360));
       const rt = th === 90;
-      const partX = rt ? X(Q(R * R, 2)) : X(0, 0, Q(R * R, 4));
+      const partX = rt ? X(Q(R * R, 2)) : X(Q(R * R, 4)); // sin30°=sin150°=1/2
       const resX = xsub(wholeX, partX);
       const nx = Math.cos(rad(a0) - PI / 2), ny = Math.sin(rad(a0) - PI / 2);
       const fig = [
@@ -910,7 +910,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       tag: '활꼴의 넓이', unit: 'cm²', textbook: false,
       stem: (V) => `오른쪽 그림은 반지름의 길이가 ${V.R} cm이고 중심각의 크기가 ${V.th}°인 부채꼴 OAB이다. 현 AB와 호 AB로 이루어진 활꼴(색칠한 부분)의 넓이는?`,
       choices: (V) => {
-        const S = X(0, Q(V.R * V.R * V.th, 360)), T0 = V.th === 90 ? X(Q(V.R * V.R, 2)) : X(0, 0, Q(V.R * V.R, 4));
+        const S = X(0, Q(V.R * V.R * V.th, 360)), T0 = V.th === 90 ? X(Q(V.R * V.R, 2)) : X(Q(V.R * V.R, 4));
         const A = xsub(S, T0);
         return ascending(A, [xadd(S, T0), S, xsub(S, xmul(T0, 2)), xmul(S, 2), X(0, 1)].map((v) => v), X(0, 1));
       },
@@ -936,7 +936,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       const outer = arcP(0, 0, R, 0, 180);
       const Ap = P(-R, 0), Bp = P(R, 0), Cp = P(R * Math.cos(2 * phi), R * Math.sin(2 * phi));
       const wholeX = X(0, Q(ab2, 8)), partX = X(Q(ac * bc, 2)), resX = xsub(wholeX, partX);
-      const abTxt = intAB ? `AB=${Math.round(AB)}` : `AB=√${ab2}`;
+      const abTxt = intAB ? `AB=${Math.round(AB)}` : 'AB'; // 정수가 아니면 √ 대신 이름만(제곱근은 중3)
       const fig = [
         { k: 'right', v: [Cp.x, Cp.y], p: [Ap.x, Ap.y], q: [Bp.x, Bp.y], when: 'g', size: 12 },
         T([(Ap.x + Cp.x) / 2, (Ap.y + Cp.y) / 2], `AC=${ac}`, { dx: -4, dy: -14, color: 'ink', when: 'g' }),
@@ -953,7 +953,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
           c.set('AC', clamp(Math.round(AB * Math.cos(ang)), 3, 15), true);
           c.set('BC', clamp(Math.round(AB * Math.sin(ang)), 3, 15));
         } }],
-        tx: { whole: `지름 AB(${abTxt.slice(3)} cm)인 반원`, part: '직각삼각형 ABC (∠C = 90°)' },
+        tx: { whole: intAB ? `지름 AB(${abTxt.slice(3)} cm)인 반원` : '지름 AB인 반원', part: '직각삼각형 ABC (∠C = 90°)' },
         cap: { whole: { l: '전체 (반원)', v: `${xs(wholeX)} cm²` }, part: { l: '파낸 부분 (직각삼각형)', v: triS } },
         str: { part: triS },
         wholeTex: `\\dfrac12\\times\\pi\\times\\left(\\dfrac{AB}{2}\\right)^2=${xt(wholeX)}`, partTex: `\\dfrac12\\times${ac}\\times${bc}=${fn(ac * bc / 2, 1)}`,

@@ -581,7 +581,7 @@
         ],
         formula: `<p>(색칠한 부분) = (정사각형) − (부채꼴 ABE) − (부채꼴 DCE)</p><p>$=${M.a * M.a}-2\\times${piT(M.one)}=${ans.t}$ (cm²)</p>`,
         rule: '정삼각형의 각은 60° → 90° − 60° = 30°인 부채꼴 두 개를 뺀다.',
-        notes: '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>정삼각형의 높이(√3)를 쓰지 않아도 돼요. 색칠한 부분의 모양을 "정사각형에서 뺀 것"으로 바꿔 보세요.</li><li>뺀 부채꼴의 중심각은 <b>90° − 60° = 30°</b>, 반지름은 정사각형의 한 변이에요.</li></ul>'
+        notes: '<ul style="margin:0;padding-left:18px;display:grid;gap:4px"><li>정삼각형의 높이를 구하지 않아도 돼요. 색칠한 부분의 모양을 "정사각형에서 뺀 것"으로 바꿔 보세요.</li><li>뺀 부채꼴의 중심각은 <b>90° − 60° = 30°</b>, 반지름은 정사각형의 한 변이에요.</li></ul>'
       };
     },
     std: (M) => {
