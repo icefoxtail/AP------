@@ -1705,7 +1705,7 @@ ST[K('lineT')] = Math.max(0.5, Math.min(4.5, Math.round(mPos.y * 10) / 10));
       controls: (SLIDERS[md.id] || []).map((d) => pk(m, d.key)),
       actions: () => [
         ...MUTATORS.map((a) => ({ id: a.id, icon: a.icon, label: a.label, on: (s) => !!s[a.key], run: (s) => { s[a.key] = !s[a.key]; } })),
-        { id: 'twin', icon: 'wand', label: '숫자를 바꾼 문제', primary: true, run: (s) => { twin(s, m); VARY[m][j].next(); } }
+        { id: 'twin', icon: 'wand', label: '숫자 바꿔 보기', primary: true, run: (s) => { twin(s, m); VARY[m][j].next(); } }
       ],
       steps: md.stepDescs.map((d, i) => stepText(md.stepLabels[i] + ': ' + d.replace(/^Step\s*\d+\s*:\s*/, ''))),
       vary: VARY[m][j],

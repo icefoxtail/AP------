@@ -887,7 +887,7 @@
       tag: o.tag,
       text: (s) => problemHTML(sc, s),
       answer: (s) => mk(s).ansTex,
-      note: '숫자 바꾸기를 누르면 그림의 숫자와 보기가 함께 바뀌어요.'
+      note: '새 문제를 누르면 그림의 숫자와 보기가 함께 바뀌어요.'
     };
     SW[sc.id] = sc;
     return sc;
@@ -1079,7 +1079,7 @@
     again: (s) => { Object.assign(s, pickRandom([{ swI: 6, swR: 1 }, { swI: 8, swR: 1 }, { swI: 7, swR: 1 }, { swI: 9, swR: 2 }, { swI: 10, swR: 2 }, { swI: 9, swR: 1 }], s, (x, c) => x.swI === c.swI && x.swR === c.swR)); },
     reset: (s) => { Object.assign(s, { swI: 6, swR: 1 }); }
   };
-  insideScene.problem = { tag: '응용 · 안쪽', text: (s) => problemHTML(insideScene, s), answer: (s) => insideScene.csd.make(s).ansTex, note: '숫자 바꾸기를 누르면 그림의 숫자와 보기가 함께 바뀌어요.' };
+  insideScene.problem = { tag: '응용 · 안쪽', text: (s) => problemHTML(insideScene, s), answer: (s) => insideScene.csd.make(s).ansTex, note: '새 문제를 누르면 그림의 숫자와 보기가 함께 바뀌어요.' };
   SW['sw-inside'] = insideScene;
 
   /* ========================================================================
@@ -1510,7 +1510,7 @@
         summary: done ? `움직일 수 있는 영역의 넓이 = ${ratPi(M.area)} ≈ ${num(ratVal(M.area) * PI)} m²` : null
       };
     };
-    sc.problem = { tag: o.tag, text: (s) => problemHTML(sc, s), answer: (s) => mk(s).ansTex, note: '숫자 바꾸기를 누르면 그림의 숫자가 바뀌어요. (끈의 굵기와 동물의 크기는 생각하지 않아요.)' };
+    sc.problem = { tag: o.tag, text: (s) => problemHTML(sc, s), answer: (s) => mk(s).ansTex, note: '새 문제를 누르면 그림의 숫자가 바뀌어요. (끈의 굵기와 동물의 크기는 생각하지 않아요.)' };
     GOAT[sc.id] = sc;
     return sc;
   }
