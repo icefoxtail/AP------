@@ -320,7 +320,7 @@
       ];
     },
     view: (M) => ({
-      guide: `<b>노란 점 A</b>를 끌거나 막대로 ∠A를 바꿔 보세요. 위의 칩으로 <b>이등분선의 종류</b>를 고르면 그림이 바뀌어요. 구하는 각 x는 늘 <b>${BIS[M.k].sym}</b>예요.`,
+      guide: `<b>노란 점 A</b>를 끌거나 막대로 ∠A를 바꿔 보세요. 칩으로 <b>이등분선의 종류</b>를 고르면 그림이 바뀌어요. 구하는 각 x는 늘 <b>${BIS[M.k].sym}</b>예요.`,
       readouts: [
         rd('이등분선', BIS[M.k].name, 'green'), rd('∠A', `${M.a}°`, 'sky'),
         rd('x', `${dg(M.x)}`, 'amber', BIS[M.k].sym, null, true)

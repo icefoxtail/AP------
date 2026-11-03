@@ -1727,7 +1727,7 @@ $n$개를 모두 다르게 보면 $n!$가지이고, 같은 것끼리 줄 세우�
     let rot = s.r5 % n;
     if (fix) rot = -arr.indexOf(0);
     const hT = clamp(H * 0.44, 140, 300), R = Math.max(40, hT / 2 - 40);
-    g.title(10, '① 원탁 (사람을 눌러 두 명씩 자리 바꾸기 · 아래 막대로 돌리기)');
+    g.title(10, '① 원탁 (사람을 눌러 두 명씩 자리 바꾸기 · 막대로 돌리기)');
     drawTable(g, { cx: W / 2, cy: 18 + hT / 2 + 8, R, people: peopleOf5(arr), rot, sel: s.sel5, glue, prMax: 22 });
     const yM = 18 + hT + 14;
     g.title(yM, `② 같은 자리 관계로 돌려 얻는 ${n}가지 (칸마다 돌린 모양)`);

@@ -305,7 +305,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return baseScene({
       id: 'cube', title: '(a+b)³ 정육면체 조각', short: '(a+b)³',
       question: '한 모서리가 a+b인 정육면체를 잘라 보면 어떤 조각이 몇 개 나올까? (a+b)³ = a³ + 3a²b + 3ab² + b³ 의 각 항은 어느 조각일까?',
-      guide: '<b>조각 펼치기</b> 막대를 밀면 큰 정육면체가 8조각(파랑 $a^3$ 1개, 초록 $a^2b$ 3개, 노랑 $ab^2$ 3개, 분홍 $b^3$ 1개)으로 떨어집니다. 빈 곳을 끌어 돌려 보고, 아래 버튼으로 한 종류만 골라 보세요.',
+      guide: '<b>조각 펼치기</b> 막대를 밀면 큰 정육면체가 8조각(파랑 $a^3$ 1개, 초록 $a^2b$ 3개, 노랑 $ab^2$ 3개, 분홍 $b^3$ 1개)으로 떨어집니다. 빈 곳을 끌어 돌려 보고, 버튼으로 한 종류만 골라 보세요.',
       enter: (s) => { viewDefaults(s); s.yaw = 30; s.pitch = 22; s.a2 = 3; s.b2 = 2; s.gap2 = 0.6; s.lens2 = 'all'; },
       controls: () => ['a2', 'b2', 'gap2', 'yaw', 'pitch'],
       presets: (s) => [

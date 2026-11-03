@@ -90,7 +90,7 @@
     view: (M) => {
       const g = M.g, cs = g.cs;
       return {
-        guide: '막대로 <b>호 AB의 크기</b>와 <b>점 P의 위치</b>를 바꿔 보세요. P가 어디에 있어도 <b>∠APB는 ∠AOB의 절반</b>이에요. 위의 칩으로 O의 세 가지 위치를 확인해 보세요.',
+        guide: '막대로 <b>호 AB의 크기</b>와 <b>점 P의 위치</b>를 바꿔 보세요. P가 어디에 있어도 <b>∠APB는 ∠AOB의 절반</b>이에요. 칩으로 O의 세 가지 위치를 확인해 보세요.',
         readouts: [rd('∠AOB (중심각)', dgx(g.th), 'sky'), rd('∠APB (원주각)', dgx(g.th / 2), 'rose', '중심각의 절반'), rd('O의 위치', cs === 'in' ? '∠APB의 안쪽' : cs === 'side' ? '한 변 위' : '∠APB의 바깥', 'green')],
         status: { tone: 'key', text: `∠APB = ∠AOB ÷ 2 = ${fmtN(g.th / 2)}°` },
         rule: '한 호에 대한 원주각의 크기는 그 호에 대한 중심각의 크기의 $\\frac{1}{2}$이다',

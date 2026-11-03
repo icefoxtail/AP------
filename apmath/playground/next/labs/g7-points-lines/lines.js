@@ -246,7 +246,7 @@
     controls: ['lp0', 'lp1', 'lp2', 'lp3'],
     presets: (s) => ['마주 봄', '같은 방향', '서로 등짐', '시작점이 같음'].map((nm, i) => ({ group: i === 0 ? '두 반직선' : '', label: `${nm} (${rname(CASES[i].r1).slice(4)}, ${rname(CASES[i].r2).slice(4)})`, color: 'violet', apply: (st) => { st.lcs = i; }, on: (st) => (st.lcs || 0) === i })),
     model: (s) => { const xs = xs4(s), cs = CASES[s.lcs || 0]; return { xs, cs, r1: cs.r1, r2: cs.r2, n1: rname(cs.r1), n2: rname(cs.r2), sh: interName(cs.r1, cs.r2) }; },
-    guide: (M) => `${M.n1}과 ${M.n2}를 위아래로 놓고, <b>두 줄 모두에 칠해진 곳</b>을 찾으세요. 그곳이 공통부분입니다. 위 칩으로 두 반직선을 바꾸고 점을 끌어 보세요.`,
+    guide: (M) => `${M.n1}과 ${M.n2}를 위아래로 놓고, <b>두 줄 모두에 칠해진 곳</b>을 찾으세요. 그곳이 공통부분입니다. 칩으로 두 반직선을 바꾸고 점을 끌어 보세요.`,
     readouts: (M) => [{ label: M.n1, value: '시작점 ' + LET[M.r1.s], color: 'violet' }, { label: M.n2, value: '시작점 ' + LET[M.r2.s], color: 'rose' }, { label: '공통부분', value: shapeText(M.sh), color: 'green' }],
     steps: (M) => [
       `${M.n1}은 점 ${LET[M.r1.s]}에서 시작해 ${M.r1.d > 0 ? '오른쪽' : '왼쪽'}으로 끝없이 뻗습니다.`,

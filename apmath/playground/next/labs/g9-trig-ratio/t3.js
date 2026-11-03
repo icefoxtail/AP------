@@ -240,7 +240,7 @@
       `따라서 $x=${M.h}^{\\circ}$ 예요. (표에 없는 값이면 가장 가까운 값을 골라요.)`
     ],
     view: (M) => ({
-      guide: '<b>숨은 각</b>으로 찾을 값을 정하고(위의 칩으로 sin·cos·tan 선택), <b>내가 고른 각 x</b>를 바꿔 표의 값과 맞춰 보세요. 값이 같아지면 노랗게 표시돼요.',
+      guide: '<b>숨은 각</b>으로 찾을 값을 정하고(칩으로 sin·cos·tan 선택), <b>내가 고른 각 x</b>를 바꿔 표의 값과 맞춰 보세요. 값이 같아지면 노랗게 표시돼요.',
       readouts: [rd('찾을 값', d4(M.target), col[M.f]), rd(`${FNN[M.f]} x`, d4(M.got), M.ok ? 'amber' : 'ink', M.ok ? '같아요' : M.got < M.target ? '값이 작아요' : '값이 커요')],
       formula: tableHTML(M.x),
       status: M.ok ? { tone: 'ok', text: `x = ${M.h}° 를 찾았어요` } : undefined,

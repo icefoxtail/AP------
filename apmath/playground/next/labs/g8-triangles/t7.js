@@ -542,7 +542,7 @@
     view: (M) => {
       const k = M.k, g = M.g, truth = chipTruth(k, g);
       return {
-        guide: '위의 칩에서 <b>보기 ①~⑤</b>를 하나씩 눌러 보세요. 해당 성질이 그림에 나타나요(참이면 초록, 거짓이면 분홍). 막대로 <b>∠A, ∠B</b>를 바꿔 <b>반례</b>(예: ∠A가 둔각)를 직접 만들어 보세요. 이 그림으로 문제를 풀어 보고, 풀이 탭에서 단계마다 확인해요.',
+        guide: '칩에서 <b>보기 ①~⑤</b>를 하나씩 눌러 보세요. 해당 성질이 그림에 나타나요(참이면 초록, 거짓이면 분홍). 막대로 <b>∠A, ∠B</b>를 바꿔 <b>반례</b>(예: ∠A가 둔각)를 직접 만들어 보세요. 이 그림으로 문제를 풀어 보고, 풀이 탭에서 단계마다 확인해요.',
         readouts: [rd('∠A · ∠B · ∠C', `${M.a}° · ${M.b}° · ${M.c}°`, 'sky'), rd('외심 O', g.oIn ? '삼각형의 안쪽' : '삼각형의 바깥', g.oIn ? 'green' : 'rose'), rd('이 삼각형에서 보기 ' + '①②③④⑤'[k], truth ? '참' : '거짓', truth ? 'green' : 'rose', null, null, true)],
         status: truth ? { tone: 'ok', text: `보기 ${'①②③④⑤'[k]} — 이 삼각형에서는 참` } : { tone: 'warn', text: `보기 ${'①②③④⑤'[k]} — 거짓 (반례)` },
         formula: `<p>외심 O: $\\overline{OA}=\\overline{OB}=\\overline{OC}$ (수직이등분선)</p><p>내심 I: $\\overline{ID}=\\overline{IE}=\\overline{IF}$ (각의 이등분선)</p>`,
