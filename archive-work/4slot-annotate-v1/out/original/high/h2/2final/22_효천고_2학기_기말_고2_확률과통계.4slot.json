@@ -1,0 +1,1489 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/high/h2/2final/22_효천고_2학기_기말_고2_확률과통계.js",
+  "sourceGitBlobSha": "248c4b90600b2604ff0ee88f625ffca8154b43cf",
+  "dictionaryVersion": "term-dict-v1.4-2026-11-03",
+  "judgedBy": {
+    "agent": "Antigravity-gemini-3.8-flash",
+    "run": "original-31-40",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "주사위 한 개와 동전 1개를 동시에 던지는 시행에서"
+          },
+          {
+            "term": "표본공간",
+            "src": "stem",
+            "quote": "표본공간을 $S$ 라고 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$n(S)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "표본공간",
+            "src": "solution",
+            "quote": "표본공간의 원소 수 12와 다릅니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "곱의 법칙으로 $n(S)=6\\times2=12$입니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "주사위의 눈은 1~6까지 6가지, 동전의 면은 앞·뒤 2가지입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 독립된 시행의 가능한 경우의 수를 각각 산출"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "주사위 눈의 경우의 수와 동전 면의 경우의 수에 곱의 법칙을 적용하여 표본공간의 원소 수 결정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$ 가"
+          },
+          {
+            "term": "배반사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$ 가 서로 배반사건이고"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(A)=\\frac{1}{4}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(A \\cup B)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "배반사건",
+            "src": "solution",
+            "quote": "배반사건은 두 사건이 동시에 일어나지 않으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "덧셈정리 $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$를 쓰면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교집합",
+            "src": "solution",
+            "quote": "P(A\\cap B)=0",
+            "evidenceType": "IMPLIED",
+            "justification": "배반사건의 정의로부터 교사건의 확률이 0임을 이용"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "배반사건 조건에서 곱사건 확률이 0임을 이용하여 확률의 덧셈정리로 합사건 확률 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "통계적확률",
+            "src": "stem",
+            "quote": "통계적 확률은?"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1000명에게"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "사람의 통계적 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "① 또는 ③을 택한 사람은 ②를 택하지 않은 사람입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "전체에서 2번을 선택한 사람을 뺀 여사건으로 경우의 수 산출"
+          },
+          {
+            "term": "통계적확률",
+            "src": "solution",
+            "quote": "통계적 확률은 $\\frac{800}{1000}=\\frac45$입니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비율",
+            "src": "solution",
+            "quote": "인원은 $1000-200=800$명이고",
+            "evidenceType": "IMPLIED",
+            "justification": "해당 인원을 전체 인원으로 나누어 상대도수 확률 계산"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "여사건으로 1번 또는 3번을 택한 인원을 구하고 전체 조사 인원으로 나누어 통계적 확률 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "적어도 한 명은 쫄면을 택할 확률은"
+          },
+          {
+            "term": "여사건",
+            "src": "stem",
+            "quote": "적어도 한 명은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$ 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "'적어도 한 명이 쫄면'의 여사건은 '세 명 모두 쫄면이 아님'입니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "P(\\text{쫄면 없음})=(\\frac34)^3",
+            "evidenceType": "IMPLIED",
+            "justification": "세 손님의 선택이 독립이므로 여사건의 확률을 곱으로 계산"
+          },
+          {
+            "term": "서로소",
+            "src": "solution",
+            "quote": "37과 64는 서로소이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "단, $p, q$ 는 서로소인 자연수이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "적어도 하나의 사건에 대해 여사건(모두 다른 음식 선택)의 확률을 1에서 빼서 확률을 구하고 분모·분자 합산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이산확률변수",
+            "src": "stem",
+            "quote": "이산확률변수 $X$에 대하여"
+          },
+          {
+            "term": "기댓값",
+            "src": "stem",
+            "quote": "$E(X)=5$"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "$V(X)=2$ 일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$E(3X+1)-V(2X-3)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "기댓값의 선형성으로 $E(3X+1)=3E(X)+1=3\\cdot5+1=16$입니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "V(2X-3)=2^2V(X)=4\\cdot2=8",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률변수",
+            "src": "solution",
+            "quote": "E(3X+1)=3E(X)+1",
+            "evidenceType": "IMPLIED",
+            "justification": "확률변수의 일차식 변환에 대한 평균과 분산의 연산 성질 적용"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "확률변수의 선형변환 공식을 이용해 E(3X+1)과 V(2X-3)을 각각 계산하여 차 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "확률변수 $X$가 정규분포 $N(70, 3^2)$을 따를 때"
+          },
+          {
+            "term": "표준정규분포",
+            "src": "stem",
+            "quote": "확률변수 $Z$는 표준정규분포를 따른다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(67 \\le X \\le 74.5)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "Z=\\frac{X-70}{3}$으로 표준화합니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "표준정규분포의 대칭성과 표 값을 쓰면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "합은 $0.3413+0.4332=0.7745$이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "X를 표준화하여 Z=-1부터 1.5까지의 확률을 대칭성과 표준정규분포표 값의 합으로 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "평균이 30회, 표준편차가 2회인 정규분포를 따른다."
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균이 30회"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "표준편차가 2회인"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "28회 이하일 확률은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "28회 이하일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "Z=\\frac{X-30}{2}$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "확률변수 X를 평균과 표준편차를 이용해 표준정규분포 Z로 표준화"
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "대칭성을 이용하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "P(X\\le28)=P(Z\\le-1)=0.5-P(0\\le Z\\le1)",
+            "evidenceType": "IMPLIED",
+            "justification": "음수 영역의 꼬리확률을 대칭성을 이용하여 0.5 - P(0<=Z<=1)로 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "28회 이하일 확률은?"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평균 30, 표준편차 2로 표준화하여 z=-1 이하의 누적확률을 대칭성으로 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "모평균이 45, 모표준편차가 10인 정규분포를 따르는 모집단에서"
+          },
+          {
+            "term": "표본평균",
+            "src": "stem",
+            "quote": "구한 표본평균을 $\\overline{X}$ 라 할 때"
+          },
+          {
+            "term": "표본의크기",
+            "src": "stem",
+            "quote": "크기가 25인 표본을 임의추출하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "표본평균",
+            "src": "solution",
+            "quote": "표본평균의 평균은 45이고 표준편차는 $\\frac{10}{\\sqrt{25}}=2$입니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "41$을 표준화하면 $(41-45)/2=-2$입니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "표준정규",
+            "evidenceType": "IMPLIED",
+            "justification": "표준정규분포의 대칭성을 이용해 목표 확률 0.8185를 만족하는 위끝 z값 결정"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "표본평균의 표준오차를 구하고 표준화 식을 세워 확률 0.8185를 주는 상수 a 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "모표준편차",
+            "src": "solution",
+            "quote": "모표준편차 $\\sigma=2$"
+          },
+          {
+            "term": "표본의크기",
+            "src": "solution",
+            "quote": "표본 수 $n=20$"
+          },
+          {
+            "term": "표본평균",
+            "src": "solution",
+            "quote": "표본평균 $\\overline x=4$입니다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "신뢰구간",
+            "src": "stem",
+            "quote": "신뢰도 95%의 신뢰구간을 구한 것으로 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "신뢰구간",
+            "src": "solution",
+            "quote": "모평균의 95% 신뢰구간은 $\\overline x\\pm1.96\\frac{\\sigma}{\\sqrt n}$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "모평균",
+            "src": "solution",
+            "quote": "모평균의 95% 신뢰구간은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "4-1.96\\frac2{\\sqrt{20}}\\le m\\le4+1.96\\frac2{\\sqrt{20}}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "신뢰도",
+            "src": "stem",
+            "quote": "신뢰도 95%의"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "표본평균, 모표준편차, 표본크기 및 95% 임계값 1.96을 신뢰구간 공식에 대입"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포 $N(m, \\sigma^2)$ 을 따르는 모집단에서"
+          },
+          {
+            "term": "표본평균",
+            "src": "stem",
+            "quote": "그 표본평균을 $\\overline{X}$ 라 하자."
+          },
+          {
+            "term": "신뢰구간",
+            "src": "stem",
+            "quote": "신뢰도 99% 의 신뢰구간이 $a \\le m \\le b$ 라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$1000 P(\\overline{X} \\ge m+12.9)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "신뢰구간",
+            "src": "solution",
+            "quote": "99% 신뢰구간의 전체 길이는 $2\\cdot2.58\\frac{\\sigma}{\\sqrt n}$입니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "P(Z\\ge12.9/5)=P(Z\\ge2.58)=0.5-0.4950=0.005",
+            "evidenceType": "IMPLIED",
+            "justification": "표본평균의 표준오차를 신뢰구간 길이로부터 구하고 z값으로 표준화하여 확률 계산"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "표본평균의 표준편차는 $\\frac{\\sigma}{\\sqrt n}=5$입니다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "신뢰도",
+            "src": "stem",
+            "quote": "신뢰도 99% 의"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "신뢰구간의 길이로부터 표준오차 sigma/sqrt(n)=5를 유도하고 z=2.58 표준화를 통해 꼬리확률 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "임의로 3개의 공을 동시에 꺼내는 시행을 한다."
+          },
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "검은 공이 2개인 사건을 $A$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(A \\cup B)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "전체 경우의 수는 ${}_6C_3=20$입니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교집합",
+            "src": "solution",
+            "quote": "n(A\\cap B)=3+3=6",
+            "evidenceType": "IMPLIED",
+            "justification": "두 사건의 공통 부분의 원소 수를 계산"
+          },
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "포함배제 원리로 $n(A\\cup B)=12+12-6=18$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 사건의 합사건 경우의 수를 덧셈정리 n(A)+n(B)-n(A∩B)로 계산"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 사건의 경우의 수와 교사건의 경우의 수를 조합으로 계산한 뒤 포함배제의 원리로 합사건 확률 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1 부터 5 까지의 자연수가 각각 하나씩 적힌"
+          },
+          {
+            "term": "복원추출",
+            "src": "stem",
+            "quote": "임의의 카드 한 장씩 3번 복원추출할 때"
+          },
+          {
+            "term": "표본평균",
+            "src": "stem",
+            "quote": "적힌 숫자의 평균을 $\\overline{X}$ 라 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "이 때 $\\sigma(3\\overline{X}+1)$ 는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "V(U)=E(U^2)-\\{E(U)\\}^2=11-9=2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "E(U)=\\frac{1+2+3+4+5}{5}=3",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표본평균",
+            "src": "solution",
+            "quote": "V(\\overline X)=\\frac{1}{3^2}\\{V(U_1)+V(U_2)+V(U_3)\\}=\\frac{2+2+2}{9}=\\frac23",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "표준편차는 분산의 양의 제곱근이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1 부터 5 까지의 자연수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "모집단의 분산 V(U)=2를 구하고 표본크기 3인 표본평균의 분산을 계산한 뒤 선형변환 표준편차 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "좌표평면",
+            "src": "stem",
+            "quote": "좌표평면의 원점에 점 $P$가 있다."
+          },
+          {
+            "term": "독립시행",
+            "src": "stem",
+            "quote": "이 시행을 30번 반복하여"
+          },
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "사이의 거리를 확률변수 $X$라 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "기댓값",
+            "src": "stem",
+            "quote": "$E(X)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "$K$는 $B(30,2/3)$을 따릅니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "E(X)=54-\\frac15E(K)=54-4=50",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "점 $(x,y)$에서 직선 $4x+3y=0$까지의 거리는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립시행",
+            "src": "stem",
+            "quote": "이 시행을 30번 반복하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이동 횟수를 이항분포로 모델링하고 점과 직선 사이의 거리 공식을 전개하여 기댓값의 선형성으로 E(X) 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포 $N(m, \\sigma^2)$ 을 따른다고 한다."
+          },
+          {
+            "term": "신뢰구간",
+            "src": "stem",
+            "quote": "신뢰도 95%의 신뢰구간이 $69.06 \\le m \\le 73.54$ 이다."
+          },
+          {
+            "term": "표본의크기",
+            "src": "stem",
+            "quote": "49개를 임의추출하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "자연수 $n$의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "신뢰구간",
+            "src": "solution",
+            "quote": "2.24=1.96\\frac{\\sigma}{\\sqrt{49}}=1.96\\frac{\\sigma}{7}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "\\sigma=8$입니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "n\\ge26.6256$입니다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$의 최솟값은?"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "95% 신뢰구간 길이로부터 모표준편차 sigma=8을 구하고 99% 신뢰구간 길이 <= 8 부등식을 풀어 n 최솟값 결정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "복원추출",
+            "src": "stem",
+            "quote": "꺼낸 공을 다시 넣으면서 3개의 공을 꺼내는 시행을 1200번 반복할 때"
+          },
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "발생 횟수 $Y$는 $B(1200,3/4)$를 따릅니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표준정규분포",
+            "src": "stem",
+            "quote": "확률변수 $Z$는 표준정규분포를 따른다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "전체는 ${}_9C_3=84$가지이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "여사건을 세면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "반복 횟수가 충분히 커 정규분포로 근사하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "E(Y)=1200\\cdot\\frac34=900",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "870회 이하일 확률은"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "여사건으로 1회 성공확률 3/4을 구하고 이항분포 B(1200, 3/4)의 정규근사를 적용해 표준화 z값 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "복원추출",
+            "src": "stem",
+            "quote": "다시 넣고 섞는 시행을 100번 독립적으로 반복할 때"
+          },
+          {
+            "term": "표본평균",
+            "src": "stem",
+            "quote": "$P(\\overline{X} \\ge k)=0.0228$"
+          },
+          {
+            "term": "표준정규분포",
+            "src": "stem",
+            "quote": "$Z$가 표준정규분포를 따르는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$5k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "E(X)=3(0.4)+4(0.3)+5(0.2)+6(0.1)=4",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "V(X)=17-4^2=1",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표본평균",
+            "src": "solution",
+            "quote": "E(\\overline X)=4$, $\\sigma(\\overline X)=1/\\sqrt{100}=0.1$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "(k-4)/0.1=2",
+            "evidenceType": "IMPLIED",
+            "justification": "표본평균의 상위 0.0228에 해당하는 z=2로부터 k값 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $k$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "모집단의 평균과 분산을 구하고 크기 100인 표본평균의 표준화 식에서 P(Z>=2)=0.0228을 매칭하여 k 결정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "확률변수 $X$ 는 평균이 10, 표준편차가 2인 정규분포를 따르고"
+          },
+          {
+            "term": "표준정규분포",
+            "src": "stem",
+            "quote": "확률변수 $Z$는 표준정규분포를 따른다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "P\\left(\\frac{7-10}{2}\\le Z\\le0\\right)=P(-1.5\\le Z\\le0)=0.4332",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "오른쪽 꼬리확률 $0.0668$에 해당하는 값은 $1.5$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "표준정규분포의 누적확률과 대칭성을 이용해 Y의 미지 모수 관계식 도출"
+          },
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "10-m}{\\sigma}=1.5",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "\\sigma>0"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "X의 확률을 표준화하여 P(Y>=10)=0.0668을 얻고 (10-m)/sigma=1.5로부터 10+sigma/2의 표준화 값 a=2 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1에서 6까지 자연수가 하나씩 적혀 있는"
+          },
+          {
+            "term": "복원추출",
+            "src": "stem",
+            "quote": "원래대로 돌려 놓으면서 시행을 반복한다."
+          },
+          {
+            "term": "표본평균",
+            "src": "stem",
+            "quote": "평균을 $\\overline{X}$라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "$V(5\\overline{X}-10)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "전체 경우는 ${}_6C_4=15$가지입니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "E(T)=\\frac{2\\cdot6+3\\cdot6+4\\cdot3}{15}=\\frac{14}{5}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "V(T)=\\frac{42}{5}-\\left(\\frac{14}{5}\\right)^2=\\frac{210-196}{25}=\\frac{14}{25}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표본평균",
+            "src": "solution",
+            "quote": "V(\\overline X)=\\frac{V(T)}{14}=\\frac1{25}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1에서 6까지 자연수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 번째로 작은 수 T의 확률분포를 조합으로 구하고 모분산 V(T)=14/25로부터 표본평균 분산 및 선형변환 분산 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $X=\\{1, 2, 3, 4, 5\\}$에 대하여"
+          },
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "$X$에서 $X$로의 함수 $f$ 중"
+          },
+          {
+            "term": "치역",
+            "src": "stem",
+            "quote": "함수 $f$ 의 치역의 원소의 개수는 2개이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "b=4$일 때 가능한 $(a,b)$는",
+            "evidenceType": "IMPLIED",
+            "justification": "치역의 최댓값 b가 4일 때와 5일 때로 나누어 가능한 (a,b) 쌍 분류"
+          },
+          {
+            "term": "치역",
+            "src": "solution",
+            "quote": "함수의 치역에 정확히 두 값이 있으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "조건을 만족하는 함수는 $17+(3+7+7+10)=44$개, 그중 $f(3)=5$인 함수는 $1+3+3+5=12$개입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "조건을 만족하는 전체 함수 개수 중 f(3)=5인 경우의 비율로 확률 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "f(x) \\ge x"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "치역 원소 2개 조건과 단조/부등식 제약을 만족하는 함수를 경우분류로 세고 f(3)=5인 조건부확률 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "독립시행",
+            "src": "stem",
+            "quote": "위의 시행을 3번 반복한 후"
+          },
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "모든 수의 합이 짝수일 때, 동전의 앞면이 3번 나왔을 확률은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "P(H\\mid E)=\\frac{P(H\\cap E)}{P(E)}=\\frac{1/16}{7/16}=\\frac17",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "세 시행은 서로 독립입니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "홀수",
+            "src": "solution",
+            "quote": "처음 카드의 합은 $1+2+3+4+5+6=21$로 홀수입니다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1부터 6까지의 자연수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "홀수 카드 뒤집기에 따른 합의 홀짝 변화를 이항확률로 구하고 동전 3회 앞면과의 곱사건으로부터 조건부확률 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "어떤 이등변삼각형의 세 변의 길이가 될"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "될 확률이 $\\frac{q}{p}$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "삼각형의 부등식에서 가장 중요한 조건은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "전체 경우의 수는 $6\\times6=36$입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주사위 2회 시행의 전체 경우의 수를 6*6=36으로 계산"
+          },
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "유리한 경우는 $1+3+5+6+6+6=27$가지입니다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "단, $p, q$는 서로소이다."
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "b<2a"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "삼각형 형성 조건 b<2a를 만족하는 순서쌍 (a,b)의 개수를 셈하여 확률 계산 후 p+q 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "표본의크기",
+            "src": "stem",
+            "quote": "표본의 개수"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "표준편차"
+          },
+          {
+            "term": "신뢰도",
+            "src": "stem",
+            "quote": "신뢰도"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$b-a$의 값을 구하는 방법을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "신뢰구간",
+            "src": "solution",
+            "quote": "신뢰구간의 전체 길이는 임계값의 2배에 표준오차를 곱한 값입니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "2\\cdot2.0\\cdot\\frac{16}{\\sqrt a}=\\frac{64}{\\sqrt a}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "\\frac ba=(\\frac{104}{64})^2=(\\frac{13}{8})^2=\\frac{169}{64}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "a=699\\cdot\\frac{64}{233}=192"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 신뢰구간의 길이가 같다는 방정식으로부터 표본크기의 비를 구하고 a+b=699와 연립하여 b-a 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "평균이 $30\\text{g}$이고 표준편차가 $4\\text{g}$인 정규분포를 따른다고 한다."
+          },
+          {
+            "term": "표본의크기",
+            "src": "stem",
+            "quote": "초콜릿 상자 400개 중에서"
+          },
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "불량 상자 수 $Y$는 이항분포 $B(400,0.1)$를 따릅니다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "불량품인 상자가 49개 이하일 확률을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "합계 무게 $S$도 정규분포를 따릅니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "E(S)=4\\cdot30=120",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "불량 상자 수 $Y$는 이항분포 $B(400,0.1)$를 따릅니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "0.5+P(0\\le Z\\le1.5)=0.5+0.4=0.9",
+            "evidenceType": "IMPLIED",
+            "justification": "표준정규분포의 0.5 기준 누적확률 대칭성 적용"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "108\\text{g}$ 이하이면"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "4개 합의 정규분포로부터 1상자 불량확률 0.1을 구하고, B(400, 0.1)의 정규근사를 통해 49개 이하 확률 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "연속확률변수",
+            "src": "stem",
+            "quote": "두 연속확률변수 $X$와 $Y$가 갖는 값의 범위는"
+          },
+          {
+            "term": "확률밀도함수",
+            "src": "stem",
+            "quote": "확률밀도함수는 각각 $f(x), g(x)$ 이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$7^3 \\times 5 \\times p$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "확률밀도함수",
+            "src": "solution",
+            "quote": "확률밀도함수의 그래프 아래 넓이는 반드시 1입니다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "k+2k+\\frac{k}{2}=1",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정적분",
+            "src": "solution",
+            "quote": "\\int_{4/7}^{1}\\left(\\frac25-\\frac27y\\right)dy+\\int_1^3\\frac4{35}dy",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "치환적분",
+            "src": "solution",
+            "quote": "y=-x$로 치환하면",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 관계식에 y=-x 치환을 적용하여 g(y) 함수식 도출"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "0 \\le X \\le 5, 0 \\le Y \\le 5"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "f의 전체 넓이 1로부터 k=2/7를 구하고 함수 변환식으로 g(y)를 유도한 뒤 지정 구간 정적분으로 확률 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 24,
+    "quotesChecked": 185,
+    "quotesNotFound": 0,
+    "warningsRechecked": [],
+    "notes": ""
+  }
+}
