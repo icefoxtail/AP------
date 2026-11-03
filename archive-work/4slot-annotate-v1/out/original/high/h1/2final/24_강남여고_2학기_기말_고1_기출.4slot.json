@@ -1,0 +1,1410 @@
+{
+  "schemaVersion": "4slot-v1",
+  "sourceArchiveFile": "original/high/h1/2final/24_강남여고_2학기_기말_고1_기출.js",
+  "sourceGitBlobSha": "09e87cb1798474d80140d60fa292289011b1fa79",
+  "dictionaryVersion": "term-dict-v1.4-2026-11-03",
+  "judgedBy": {
+    "agent": "Antigravity-gemini-3.8-flash",
+    "run": "original-41-50",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리식",
+            "src": "stem",
+            "quote": "다음 함수 중 유리식이 아닌 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "따라서 정답은 ⑤이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "유리식",
+            "src": "solution",
+            "quote": "유리식은 두 다항식 $A$, $B$에 대하여",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "다항식의 비이므로 유리식이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "무리식",
+            "src": "solution",
+            "quote": "문자가 근호 안에 들어 있는 무리식이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "근호",
+            "src": "solution",
+            "quote": "문자가 근호 안에 들어 있는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "유리식과 무리식의 정의를 구별하여 근호 안에 문자가 포함된 식 판정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "다음 무리함수 $y=-\\sqrt{2x-4}+3$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정의역",
+            "src": "stem",
+            "quote": "정의역과 치역을 바르게 나타낸 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의역",
+            "src": "solution",
+            "quote": "제곱근의 근호 안은 $0$ 이상이어야 한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "치역",
+            "src": "solution",
+            "quote": "따라서 치역은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "$2x-4\\ge0$",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 내부가 0 이상임을 이용한 일차부등식 풀이"
+          }
+        ],
+        "condition": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "제곱근의 근호 안은"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "근호 내부가 0 이상인 조건으로 정의역을 구하고 근호 앞 음의 부호로부터 치역 범위 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "${}_{5}P_{3}=5\\times4\\times3$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "5개에 서로 다른 음료수 3종류를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "모든 방법의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "세 선택은 순서에 따라 서로 다른 배치가 된다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "=5\\times4\\times3$",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 대상을 선택하여 일대일 배정하는 순열 곱의법칙"
+          },
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "첫 번째 음료수를 넣을 병: $5$가지",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "순서",
+            "src": "solution",
+            "quote": "순서에 따라 서로 다른 배치가 된다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "서로 다른 5개 유리병 중 3개를 순서를 고려하여 고르는 순열 5P3 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "${}_{6}C_{4}={}_{6}C_{2}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "6개에 같은 종류의 꽃 4그루를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "방법의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "서로 다른 화분 $6$개 가운데 꽃을 심을 $4$개만 고르면 된다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "${}_{6}C_{4}={}_{6}C_{2}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "꽃 $4$그루는 같은 종류이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "꽃을 심을 $4$개만 고르면 된다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "구별되지 않는 대상을 구별되는 화분에 배정하기 위해 화분 6개 중 4개를 고르는 조합 6C4 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "유리함수 $y=\\dfrac{3x-5}{x-2}$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "점근선",
+            "src": "stem",
+            "quote": "점근선을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "분모가 $0$에 가까워질 때 그래프는 직선 $x=2$에 가까워지고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "분자를 분모의 배수와 나머지로 나누면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정의역",
+            "src": "solution",
+            "quote": "정의역에서 제외한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "\\dfrac{3x-5}{x-2}"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "유리함수를 기본형 y=k/(x-p)+q로 변형하여 수직점근선 x=p, 수평점근선 y=q 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "무리함수 $y=\\sqrt{-3x}$를"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$x$축으로 $2$만큼, $y$축으로 $1$만큼 평행이동한"
+          }
+        ],
+        "goal": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "평행이동한 함수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "오른쪽으로 $2$만큼 평행이동하려면 $x$ 대신 $x-2$를 넣는다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "시점",
+            "src": "solution",
+            "quote": "이동한 그래프의 시작점은 $(2,1)$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "무리함수 시작점의 평행이동 좌표 확인"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x$ 대신 $x-2$를 넣는다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정의역",
+            "src": "solution",
+            "quote": "정의역은 $x\\le2$이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "도형의 평행이동 규칙(x->x-2, y->y-1)을 무리함수 식에 적용하여 변환된 함수식 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "독립시행",
+            "src": "stem",
+            "quote": "서로 다른 세 개의 주사위를 동시에 던질 때"
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "합이 $4$ 이상 $6$ 이하인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "분류",
+            "src": "solution",
+            "quote": "세 눈의 합이 $4$인 경우:",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "3+6+10=19",
+            "evidenceType": "IMPLIED",
+            "justification": "눈의 합이 4, 5, 6인 경우의 수를 합산"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "배열 $3!=6$가지",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 세 주사위에 나오는 눈의 순서 순열"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "세 경우는 겹치지 않으므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "세 주사위 눈의 합이 4, 5, 6인 경우로 분류하고 각 조합의 순열을 구하여 합산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일대일대응",
+            "src": "stem",
+            "quote": "일대일 대응인 $f$의"
+          },
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $X=\\{1,2,3,4\\}$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "조건이 없는 일대일 대응의 수는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "24-6=18",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 일대일 대응에서 f(1)=1인 경우를 뺌"
+          },
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "대응만 정하면 되므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "$f(1)\\ne1$이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전체 일대일 대응의 수 4!에서 여사건인 f(1)=1인 경우의 수 3!을 빼서 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "함수 $y=\\dfrac{k}{x+a}+b$의 그래프가 그림과 같을 때"
+          },
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$, $b$, $k$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "합 $a+b+k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "주어진 그래프에서 점근선은 $x=3$, $y=2$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "이 점을 대입한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "0=-\\dfrac{k}{2}+2",
+            "evidenceType": "IMPLIED",
+            "justification": "절편 좌표 대입 후 k에 관한 일차방정식 풀이"
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "그래프는 $x$축과 $(1,0)$에서 만나므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "그래프의 점근선으로부터 a, b를 구하고 x절편 (1,0)을 대입하여 k를 구한 후 합 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "x=\\dfrac{\\sqrt3+1}{\\sqrt3-1}$일 때"
+          },
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "\\dfrac{\\sqrt{x}-1}{\\sqrt{x}+1}+\\dfrac{\\sqrt{x}+1}{\\sqrt{x}-1}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "무리수",
+            "src": "solution",
+            "quote": "이므로 구하는 값은 $2\\sqrt3$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "먼저 주어진 $x$의 분모를 유리화한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "통분",
+            "src": "solution",
+            "quote": "=\\dfrac{(t-1)^2+(t+1)^2}{(t+1)(t-1)}",
+            "evidenceType": "IMPLIED",
+            "justification": "두 분수식을 통분하여 합침"
+          },
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=\\sqrt{x}$라 두면",
+            "evidenceType": "IMPLIED",
+            "justification": "sqrt(x)를 t로 치환하여 식 단순화"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "$t>1$이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "x의 분모를 유리화하고 식을 치환 및 통분하여 x에 관한 유리식으로 정리한 뒤 대입하여 값 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "세 자리 자연수 중에서"
+          },
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "백의 자리 수는 소수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "것의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "각 자리의 선택은 서로 독립이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "십의 자리 수로 선택하는 $2$의 배수를 나열하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "일의 자리 수는 $6$의 양의 약수 중에서 고른다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립",
+            "src": "solution",
+            "quote": "각 자리의 선택은 서로 독립이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 자릿수별 조건(소수 4개, 2의 배수 4개, 6의 약수 4개)의 경우의 수를 곱의 법칙으로 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "일렬로 세울 때"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "3명의 남자와 4명의 여자를"
+          },
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "서로 다른 남자 $3$명 중"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "방법의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "서로 다른 남자 $3$명 중 이 두 자리에 들어갈 사람을 순서 있게 고르는 방법은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "6\\times120=720",
+            "evidenceType": "IMPLIED",
+            "justification": "남자 배치 경우의 수와 나머지 사람 배치 경우의 수를 곱함"
+          },
+          {
+            "term": "분류",
+            "src": "solution",
+            "quote": "앞에서 둘째 자리와 넷째 자리를 먼저 정한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "지정된 자리 배치와 나머지 자리 배치로 분할"
+          }
+        ],
+        "condition": [
+          {
+            "term": "순서",
+            "src": "solution",
+            "quote": "순서 있게 고르는 방법은"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "지정된 두 자리에 남자를 세우는 3P2와 나머지 5자리에 나머지 사람들을 세우는 5!을 곱하여 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\dfrac1{1-x}$에 대하여"
+          },
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "f^{1662}(2)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "반복합성",
+            "src": "solution",
+            "quote": "합성을 반복하면 같은 함수가 다시 나오는지 확인한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "따라서 합성 $3$번마다 처음 값으로 돌아온다.",
+            "evidenceType": "IMPLIED",
+            "justification": "3회 합성 시 항등함수가 되는 주기성 활용"
+          },
+          {
+            "term": "항등함수",
+            "src": "solution",
+            "quote": "=x",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "1662=3\\times554$이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "유리함수의 반복 합성을 통해 3회 합성 시 항등함수가 됨을 확인하고 지수를 3으로 나눈 나머지를 이용해 값 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "y=\\sqrt{3x-2}+2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$2\\le x\\le a$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "상수 $a$, $m$의 합 $a+m$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "최댓값 $12$는 $x=a$일 때이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최솟값",
+            "src": "solution",
+            "quote": "최솟값은 $x=2$일 때이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "함수값도 커진다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$, $m$의 합"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "무리함수가 증가함수임을 이용하여 구간 양 끝에서 최솟값과 최댓값을 대입해 a와 m을 구하고 합 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "일렬로 나열할 때"
+          },
+          {
+            "term": "원소",
+            "src": "stem",
+            "quote": "7개의 문자를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "양 끝에 놓을 자음 두 개를 순서 있게 고르면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "12\\times120=1440",
+            "evidenceType": "IMPLIED",
+            "justification": "자음 양 끝 배치와 나머지 5개 문자 배치 경우의 수 곱"
+          },
+          {
+            "term": "분류",
+            "src": "solution",
+            "quote": "자음은 $b,t,f,l$의 $4$개이고 모음은 $e,i,u$의 $3$개이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "순서",
+            "src": "solution",
+            "quote": "순서 있게 고르면"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "자음 4개 중 양 끝 2자리를 정하는 4P2와 남은 5개 문자를 배열하는 5!을 곱하여 경우의 수 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "두 곡선 $y=\\sqrt{x+5}$, $y=\\sqrt{x}$와"
+          },
+          {
+            "term": "곡선",
+            "src": "stem",
+            "quote": "둘러싸인 부분의 넓이는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "부분의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "가로 $5$, 세로 $2$인 직사각형과 넓이가 같다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "가로 길이가 항상 $5$로 일정하다.",
+            "evidenceType": "IMPLIED",
+            "justification": "x축 방향 5 평행이동에 따른 가로 단면 폭 일정성 활용"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "x=y^2-5",
+            "evidenceType": "IMPLIED",
+            "justification": "y에 관한 식으로 변환하여 x좌표 차 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "solution",
+            "quote": "0\\le y\\le2$에서"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 무리함수의 x축 평행이동 관계로부터 y구간에서의 가로 폭이 5로 일정함을 보여 직사각형 넓이로 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "$f(x)=\\dfrac1{x-1}$, $g(x)=\\dfrac{x+2}{x}$이고"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "(f^{-1}\\circ g^{-1})(a)=2"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "역함수를 적용한 뒤 원래 함수를 합성하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "f^{-1}(g^{-1}(a))=2",
+            "evidenceType": "IMPLIED",
+            "justification": "합성함수 정의에 따라 순차적 원래 함수 합성 적용"
+          },
+          {
+            "term": "함숫값",
+            "src": "solution",
+            "quote": "a=g(1)=\\dfrac{1+2}{1}=3",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "solution",
+            "quote": "b=f(2)=1"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "역함수의 성질 f^{-1}(y)=x <=> f(x)=y를 순차적으로 적용하여 a와 b를 구하고 합 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "${}_{n+2}C_2+{}_{n+1}C_2=100$"
+          },
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "다음 등식을 만족하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "조합의 공식 $_mC_2=\\dfrac{m(m-1)}2$를 적용한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "(n+1)^2=100",
+            "evidenceType": "IMPLIED",
+            "justification": "조합 공식 정리 후 완전제곱식 도출"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "\\dfrac{(n+1)\\{(n+2)+n\\}}2=100",
+            "evidenceType": "IMPLIED",
+            "justification": "공통인수 (n+1)을 묶어내어 정리"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "n+1>0$이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "조합 공식을 적용해 n에 대한 이차방정식을 세우고 완전제곱식으로 풀어 자연수 n 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "인접",
+            "src": "stem",
+            "quote": "인접하는 영역은 서로 다른 색으로 칠하려고 한다."
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "서로 다른 4가지 색을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "칠하는 방법의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "4\\times3\\times2\\times3\\times2\\times2",
+            "evidenceType": "IMPLIED",
+            "justification": "각 영역별 가능한 색의 수를 곱함"
+          },
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "별도로 색을 고를 수 있다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "독립",
+            "src": "solution",
+            "quote": "서로 닿지 않으므로 별도로 색을 고를 수 있다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "같은 색은 여러 번 사용할 수 있으나"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "인접 영역이 가장 많은 중앙 영역부터 인접 여부에 따른 선택 가능한 색의 수를 순차적으로 곱하여 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "${}_5C_2=\\dfrac{5\\times4}{2}=10$가지",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "5명이 함께 승강기를 탔다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "내리는 방법의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "남은 $3$명 가운데 $4$층에서 내릴 $1$명을 고른다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "10\\times3\\times3=90",
+            "evidenceType": "IMPLIED",
+            "justification": "층별 내릴 사람 선택 조합과 내릴 층 선택 경우의 수를 곱함"
+          },
+          {
+            "term": "분류",
+            "src": "solution",
+            "quote": "그 층은 $6,7,8$층 중 하나이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "5$명은 서로 다른 사람들이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "조합을 이용해 3층과 4층에서 내릴 인원을 분할하고 남은 2명이 함께 내릴 층을 선택하여 곱의 법칙으로 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "유리함수 $y=\\dfrac{k}{x-3}+2$가"
+          },
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "제 $1$, $2$, $3$, $4$사분면을 모두 지나도록 하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "정수 $k$의 최솟값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "제$3$사분면의 점이 존재할 조건은",
+            "evidenceType": "IMPLIED",
+            "justification": "y절편 f(0)이 음수여야 제3사분면을 지남"
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "-\\dfrac{k}{3}+2<0",
+            "evidenceType": "IMPLIED",
+            "justification": "y절편 음수 조건 부등식 해결"
+          },
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "y=\\dfrac{k}{x-3}+2$의 점근선은 $x=3$, $y=2$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $k$의 최솟값을 구하시오."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "유리함수의 점근선과 개형을 파악하고 제3사분면을 지나기 위한 y절편 음수 조건을 통해 k>6을 도출하여 최소 정수 결정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$1$에서 $60$까지의 자연수를"
+          },
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "$7$로 나누었을 때, 나머지가 홀수인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "경우의 수를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "나머지정리",
+            "src": "solution",
+            "quote": "57=7\\times8+1",
+            "evidenceType": "IMPLIED",
+            "justification": "7로 나눈 몫과 나머지의 표현 적용"
+          },
+          {
+            "term": "홀수",
+            "src": "solution",
+            "quote": "나머지가 홀수이려면 나머지가 $1$, $3$, $5$ 가운데 하나여야 한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "24+2=26",
+            "evidenceType": "IMPLIED",
+            "justification": "주기 구간의 개수와 잔여 수의 개수를 합산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "조건",
+            "src": "solution",
+            "quote": "추가로 해당하는 수는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "7로 나눈 나머지 주기성을 이용해 56까지의 홀수 나머지 개수를 구하고 남은 57~60 중 홀수 나머지를 합산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "${}_9C_6={}_9C_3",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "친구 9명 중에서 6명을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "모든 경우의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "친구 $9$명 가운데 초대할 $6$명을 순서 없이 선택한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분류",
+            "src": "solution",
+            "quote": "세쌍둥이 $3$명을 모두 초대하거나 모두 초대하지 않는 경우로 나눈다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "20+1=21",
+            "evidenceType": "IMPLIED",
+            "justification": "두 배반 사건의 경우의 수를 합산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "친구 $9$명 가운데"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "(1) 전체 조합 9C6 계산, (2) 특정 3명을 모두 포함하는 경우(6C3)와 모두 제외하는 경우(6C6)를 합산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "무리함수 $y=\\sqrt{ax+b}+c$의 그래프가 그림과 같을 때"
+          },
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "유리함수 $y=\\dfrac{cx+3}{ax+b}$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$m+n$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "시점",
+            "src": "solution",
+            "quote": "그림에서 $(-1,2)$에서 시작한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "무리함수의 시작점 좌표로부터 a, b, c 관계식 도출"
+          },
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "수직점근선은 $x=-1$, 수평점근선은 $y=2$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "이 값을 유리함수에 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "두 점근선의 교점의 좌표를 $(m,n)$이라 할 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "무리함수 그래프의 시작점과 절편으로 계수 a, b, c를 구하고 유리함수에 대입하여 점근선 교점 좌표의 합 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 24,
+    "quotesChecked": 166,
+    "quotesNotFound": 0,
+    "warningsRechecked": [],
+    "notes": ""
+  }
+}
