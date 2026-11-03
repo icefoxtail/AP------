@@ -556,10 +556,10 @@ window.questionBank = [
       "40"
     ],
     "answer": "④",
-    "solution": "원의 방정식을 표준형으로 바꾸면\n$(x-2)^2+(y+3)^2=25$이다.\n따라서 원의 중심은\n$C=(2,-3)$이고 반지름은 $5$이다.\n점 $P=(2,5)$이므로\n$CP=5-(-3)=8$이다.\n접점 $A$에서 반지름 $CA$와 접선 $PA$는 서로 수직이다.\n따라서 직각삼각형 $CPA$에서\n$PA^2=CP^2-CA^2$\n$=8^2-5^2$\n$=64-25$\n$=39$이므로\n$PA=\\sqrt{39}$이다.\n두 접점 $A$, $B$에 대하여\n$PA=PB$, $CA=CB$이므로 직선 $PC$는 선분 $AB$의 수직이등분선이다.\n$M=PC\\cap AB$라 하자.\n그러면\n$AM=BM$이고\n$AB\\perp PC$이다.\n직각삼각형 $CMA$와 $CPA$는 서로 닮음이므로\n$\\dfrac{CM}{CA}=\\dfrac{CA}{CP}$이다.\n따라서\n$CM=\\dfrac{CA^2}{CP}$\n$=\\dfrac{25}{8}$이다.\n그러므로\n$PM=PC-CM$\n$=8-\\dfrac{25}{8}$\n$=\\dfrac{39}{8}$이다.\n직각삼각형 $CMA$에서\n$AM^2=CA^2-CM^2$\n$=25-\\left(\\dfrac{25}{8}\\right)^2$\n$=\\dfrac{975}{64}$이므로\n$AM=\\dfrac{5\\sqrt{39}}8$이다.\n따라서\n$AB=2AM=\\dfrac{5\\sqrt{39}}4$이다.\n네 점 $P,A,C,B$가 만드는 사각형은 두 대각선 $PC$, $AB$가 서로 수직인 사각형이다.\n따라서 그 넓이는\n$\\dfrac12\\cdot PC\\cdot AB$\n$=\\dfrac12\\cdot8\\cdot\\dfrac{5\\sqrt{39}}4$\n$=5\\sqrt{39}$이다.\n\n따라서 정답은 ④이다.",
+    "solution": "원의 방정식을 완전제곱식으로 고치면\n$(x-2)^2+(y+3)^2=25$이다.\n따라서 원의 중심은 $C=(2,-3)$이고 반지름은 $CA=CB=5$이다.\n외부의 점 $P=(2,5)$와 중심 사이의 거리는\n$CP=5-(-3)=8$이다.\n\n접점에서 반지름과 접선은 수직이므로\n$\\angle CAP=\\angle CBP=90^\\circ$이다.\n직각삼각형 $CPA$에 피타고라스 정리를 적용하면\n$PA^2=CP^2-CA^2$\n$=8^2-5^2=64-25=39$,\n$PA=\\sqrt{39}$이다.\n한 점에서 원에 그은 두 접선의 길이는 같으므로 $PB=PA=\\sqrt{39}$이다.\n\n사각형 $PACB$는 합동인 두 직각삼각형 $\\triangle PAC$와 $\\triangle PBC$로 나뉜다.\n각 삼각형의 넓이는\n$\\dfrac12\\times5\\times\\sqrt{39}$이다.\n따라서 사각형의 넓이는\n$2\\times\\dfrac12\\times5\\times\\sqrt{39}$\n$=5\\sqrt{39}$이다.\n정답은 ④이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q16-solution.svg",
     "solutionImageAlt": "외부점 P에서 원에 그은 두 접선, 접점 현 AB와 중심 C를 나타낸 그림",
-    "solutionImageCaption": "PC와 AB가 수직인 접점 현 구조를 이용해 사각형의 두 대각선 넓이를 구한다.",
+    "solutionImageCaption": "접선과 반지름이 접점에서 수직이므로 두 직각삼각형의 넓이를 더한다.",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-03-TANGENT",
     "subUnit": "원과 접선",
