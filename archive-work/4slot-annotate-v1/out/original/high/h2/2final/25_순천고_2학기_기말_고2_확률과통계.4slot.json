@@ -55,13 +55,6 @@
             "src": "solution",
             "quote": "E(X)=np=90\\times\\dfrac{2}{3}=60",
             "evidenceType": "NAMED"
-          },
-          {
-            "term": "사칙연산",
-            "src": "solution",
-            "quote": "20+60^2=3620",
-            "evidenceType": "IMPLIED",
-            "justification": "E(X^2) = V(X) + {E(X)}^2 공식에 대입 계산"
           }
         ],
         "condition": []
@@ -119,13 +112,6 @@
             "quote": "E(2X+3)",
             "evidenceType": "IMPLIED",
             "justification": "확률변수의 선형변환 평균 성질 E(aX+b)=aE(X)+b 적용"
-          },
-          {
-            "term": "사칙연산",
-            "src": "solution",
-            "quote": "2\\times50+3=103",
-            "evidenceType": "IMPLIED",
-            "justification": "선형식에 50 대입 계산"
           }
         ],
         "condition": []
@@ -176,13 +162,6 @@
             "src": "solution",
             "quote": "\\sigma_{\\bar X}=\\dfrac{3}{\\sqrt{36}}=\\dfrac{1}{2}",
             "evidenceType": "NAMED"
-          },
-          {
-            "term": "사칙연산",
-            "src": "solution",
-            "quote": "60\\times\\dfrac{1}{2}=30",
-            "evidenceType": "IMPLIED",
-            "justification": "a와 b를 곱하여 ab 계산"
           }
         ],
         "condition": [
@@ -302,13 +281,6 @@
             "quote": "1.96\\times\\dfrac{5}{10}=0.98",
             "evidenceType": "IMPLIED",
             "justification": "95% 신뢰도에 대응하는 오차한계 계산"
-          },
-          {
-            "term": "사칙연산",
-            "src": "solution",
-            "quote": "169.02\\le m\\le170.98",
-            "evidenceType": "IMPLIED",
-            "justification": "양 끝점 덧셈 및 뺄셈"
           }
         ],
         "condition": [
@@ -366,13 +338,6 @@
             "quote": "e=2.58\\times\\dfrac{3}{\\sqrt{81}}",
             "evidenceType": "IMPLIED",
             "justification": "99% 신뢰도 오차한계 e=0.86 계산"
-          },
-          {
-            "term": "사칙연산",
-            "src": "solution",
-            "quote": "a=\\bar x+e=3.00+0.86=3.86",
-            "evidenceType": "IMPLIED",
-            "justification": "표본평균 3.00에 오차한계 0.86을 더해 a 계산"
           }
         ],
         "condition": [
@@ -492,13 +457,6 @@
             "src": "solution",
             "quote": "P(-2\\le Z\\le1.5)",
             "evidenceType": "NAMED"
-          },
-          {
-            "term": "사칙연산",
-            "src": "solution",
-            "quote": "0.48+0.43=0.91",
-            "evidenceType": "IMPLIED",
-            "justification": "표준정규분포표 두 확률값의 합산"
           }
         ],
         "condition": []
@@ -809,13 +767,6 @@
             "quote": "a\\times\\dfrac{5}{12}=1",
             "evidenceType": "IMPLIED",
             "justification": "확률 총합 1로부터 a=12/5 도출"
-          },
-          {
-            "term": "사칙연산",
-            "src": "solution",
-            "quote": "\\dfrac{12}{5}\\times\\dfrac{1}{36}=\\dfrac{1}{15}",
-            "evidenceType": "IMPLIED",
-            "justification": "소거된 급수 합 계산"
           }
         ],
         "condition": [
@@ -873,13 +824,6 @@
             "quote": "(12-m)(1+\\sqrt n)=0",
             "evidenceType": "IMPLIED",
             "justification": "대칭성 조건으로부터 모평균 m=12 도출"
-          },
-          {
-            "term": "방정식",
-            "src": "solution",
-            "quote": "\\sqrt n=2",
-            "evidenceType": "IMPLIED",
-            "justification": "(나) 조건 표준화로부터 표본 크기 n=4 도출"
           }
         ],
         "condition": []
@@ -931,13 +875,6 @@
             "src": "solution",
             "quote": "밑변이 $3$",
             "evidenceType": "NAMED"
-          },
-          {
-            "term": "사칙연산",
-            "src": "solution",
-            "quote": "\\dfrac{4}{27}+\\dfrac{6}{27}=\\dfrac{10}{27}",
-            "evidenceType": "IMPLIED",
-            "justification": "a와 b의 분수 덧셈 통분"
           }
         ],
         "condition": [
@@ -995,13 +932,6 @@
             "quote": "\\dfrac{\\sigma}{\\sqrt n}",
             "evidenceType": "IMPLIED",
             "justification": "신뢰구간 폭 비교를 위해 표준오차 sigma/sqrt(n) 값 대소 비교"
-          },
-          {
-            "term": "사칙연산",
-            "src": "solution",
-            "quote": "\\dfrac{9}{\\sqrt{25}}=\\dfrac{9}{5}=1.8",
-            "evidenceType": "IMPLIED",
-            "justification": "각 보기별 비율 계산 및 최대값 판정"
           }
         ],
         "condition": [
@@ -1058,13 +988,6 @@
             "src": "solution",
             "quote": "\\sqrt n\\ge7.84",
             "evidenceType": "NAMED"
-          },
-          {
-            "term": "사칙연산",
-            "src": "solution",
-            "quote": "(7.84)^2=61.4656",
-            "evidenceType": "IMPLIED",
-            "justification": "제곱 계산 후 올림하여 최소 자연수 n=62 결정"
           }
         ],
         "condition": [
@@ -1122,23 +1045,10 @@
             "evidenceType": "NAMED"
           },
           {
-            "term": "표준화",
-            "src": "solution",
-            "quote": "\\dfrac{3120-3200}{80}=-1",
-            "evidenceType": "NAMED"
-          },
-          {
             "term": "독립사건",
             "src": "solution",
             "quote": "두 상자의 내용량은 서로 독립이므로",
             "evidenceType": "NAMED"
-          },
-          {
-            "term": "사칙연산",
-            "src": "solution",
-            "quote": "2\\times0.82\\times0.18=0.2952",
-            "evidenceType": "IMPLIED",
-            "justification": "독립시행 확률 2*p*(1-p) 계산"
           }
         ],
         "condition": []
@@ -1449,12 +1359,6 @@
             "src": "solution",
             "quote": "정규분포로 근사하면",
             "evidenceType": "NAMED"
-          },
-          {
-            "term": "표준화",
-            "src": "solution",
-            "quote": "P\\left(Z\\ge\\dfrac{3330-3240}{45}\\right)",
-            "evidenceType": "NAMED"
           }
         ],
         "condition": []
@@ -1511,13 +1415,6 @@
             "src": "solution",
             "quote": "V(X)=E(X^2)-\\{E(X)\\}^2",
             "evidenceType": "NAMED"
-          },
-          {
-            "term": "사칙연산",
-            "src": "solution",
-            "quote": "\\dfrac{540-361}{144}=\\dfrac{179}{144}",
-            "evidenceType": "IMPLIED",
-            "justification": "분수 제곱 계산 및 통분"
           }
         ],
         "condition": []

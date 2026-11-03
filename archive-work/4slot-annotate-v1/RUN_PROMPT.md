@@ -1,4 +1,4 @@
-# 4칸 기록 본작업 — 회차 지시서 (v1, 2026-11-03)
+# 4칸 기록 본작업 — 회차 지시서 (v1.1, 2026-11-03: 사전 v1.4)
 
 이 파일은 작업 브랜치 `work/4slot-annotate-v1`의 회차 지시서다. 실행할 때마다 이 파일을 처음부터 끝까지 읽고 그대로 따른다. 실행 프롬프트는 `N`(이번 회차 시험지 수)만 정해 준다. 대상은 원본 기출 큐 하나다(2026-11-03 사용자 결정: 목적은 아카이브 문항을 분류해 두고 나중에 검색에 쓰는 것이고, 유사시험지 비교 시범은 충분히 했으므로 유사시험지는 돌리지 않는다).
 
@@ -10,10 +10,10 @@
 2. 아래 문서를 `git show origin/main:<경로>`로 끝까지 읽고, 답변 맨 앞에 경로와 origin/main 커밋 SHA를 적는다.
    - `docs/architecture/JS_Archive_Item_4Slot_Term_Contract_CURRENT_v1.md` — §1(용어·대표 표기)·§2·§3·§3-1·§4·§5·§7·§7-1·§8·§10을 정독한다.
    - `docs/operations/JS_Archive_4Slot_GPT_Handoff_CURRENT_v1.md` — §4 제출 형식, §6 로컬 에이전트 규칙.
-   - `docs/architecture/4slot/term-dictionary-v1.3.json` — 용어 682개. 시작 전에 ko·synonyms를 훑어 쓸 수 있는 말을 먼저 익힌다. `status: RETIRED` 용어는 쓰지 않는다.
+   - `docs/architecture/4slot/term-dictionary-v1.4.json`(`dictionaryVersion` `term-dict-v1.4-2026-11-03`) — 용어 690개. 작업 브랜치에 같은 경로로 들어 있으므로 origin/main에 아직 없으면 작업 폴더의 파일을 읽는다. 시작 전에 ko·synonyms를 훑어 쓸 수 있는 말을 먼저 익힌다. `status: RETIRED` 용어는 쓰지 않는다.
 3. 이 폴더의 도구를 쓴다. 새로 만들 필요 없다.
    - 문항 꺼내기: `node archive-work/4slot-annotate-v1/tools/exam-items.cjs archive/exams/<경로>.js [시작번호] [끝번호]` — 판정에 쓰는 필드(발문 Q, 보기 C, 해설 S, 그림 IMG)만 보여 준다.
-   - 검사: `node archive-work/4slot-annotate-v1/tools/validate-4slot.cjs <제출 파일>` — FAIL은 반드시 0, WARN은 그 문항으로 돌아가 다시 본다.
+   - 검사: `node archive-work/4slot-annotate-v1/tools/validate-4slot.cjs <제출 파일>` — FAIL은 반드시 0, WARN은 그 문항으로 돌아가 다시 본다. v1.4부터 **한 칸 안의 같은 용어(동의어를 풀어 같은 번호가 되는 경우 포함)는 FAIL**, **method의 `사칙연산`은 WARN**이다.
 
 ## 1. 이번 회차 대상 고르기
 
@@ -57,7 +57,7 @@
 ## 5. 제출 (시험지마다)
 
 - 파일: `archive-work/4slot-annotate-v1/out/<path에서 .js를 .4slot.json으로>` (예: `out/original/high/h2/2final/25_강남여고_2학기_기말_고2_수학II.4slot.json`). 형식은 인계 문서 §4.
-- `sourceArchiveFile` = 큐의 `path`, `sourceGitBlobSha` = 큐의 `blob`, `dictionaryVersion` = "term-dict-v1.3-2026-11-03", `judgedBy` = {"agent": "<도구>-<실제 모델 이름>", "run": "original-<회차 첫 order>-<끝 order>", "at": "<날짜>"}.
+- `sourceArchiveFile` = 큐의 `path`, `sourceGitBlobSha` = 큐의 `blob`, `dictionaryVersion` = "term-dict-v1.4-2026-11-03", `judgedBy` = {"agent": "<도구>-<실제 모델 이름>", "run": "original-<회차 첫 order>-<끝 order>", "at": "<날짜>"}.
 - `sourceOrdinal`은 `exam-items.cjs`가 보여 주는 `=== 번호`다(questionBank는 id, examData는 number).
 - `validate-4slot.cjs`가 FAIL 0일 때만 커밋한다. WARN은 해당 문항을 다시 보고, 그대로 두면 이유를 `selfCheck.notes`에 적는다. `selfCheck`에는 items, quotesChecked, quotesNotFound, warningsRechecked(다시 본 문항 번호), notes.
 - 커밋은 시험지마다 하나: `4slot original #<order>: <시험지 이름>`. 결과 파일만 `git add -f`(archive-work는 .gitignore 대상).
