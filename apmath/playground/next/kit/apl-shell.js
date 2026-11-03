@@ -939,14 +939,19 @@
       this._renderPresenter();
       this.ui.gridBtn.classList.toggle('on', !!this.s.grid);
       // 무대 위 칩·배지·도구·발표 막대가 차지한 가장자리는 도형 배치에서 비워 둡니다(그림을 가리지 않도록).
-      // 넓은 화면은 도구가 오른쪽 세로 막대, 좁은 화면은 상태 배지(왼쪽)·도구(오른쪽)가 아래 한 줄입니다.
+      // 도구 막대는 어느 화면 폭에서나 그림 영역 아래 가장자리의 가로 한 줄입니다(넓은 화면은 오른쪽 아래 모서리, 좁은 화면은 상태 배지(왼쪽)와 한 줄).
+      // 그래서 오른쪽은 비우지 않아 그림이 가로 폭을 다 씁니다. 수업 모드 발표 막대가 떠 있으면 넓은 화면에서는 도구 막대가 그 위로 올라갑니다.
       const narrow = NARROW.matches;
+      const presH = ui.presenter.hidden ? 0 : ui.presenter.offsetHeight + 22;
       const ins = {
         top: ui.chips.childElementCount ? ui.chips.offsetHeight + 18 : 0,
-        right: narrow ? 0 : ui.tools.offsetWidth + 16,
-        bottom: Math.max(narrow ? Math.max(ui.tools.offsetHeight, Math.min(ui.tr.offsetHeight, 60)) + 14 : 0, ui.presenter.hidden ? 0 : ui.presenter.offsetHeight + 22)
+        right: 0,
+        // 넓은 화면: 그림 둘레에는 이미 여백(board.pad)이 있으므로 도구 막대가 그 여백을 넘는 만큼만 비웁니다(전부 비우면 높이에 맞춘 그림이 15% 가까이 작아집니다).
+        bottom: narrow ? Math.max(Math.max(ui.tools.offsetHeight, Math.min(ui.tr.offsetHeight, 60)) + 14, presH)
+          : Math.max(0, ui.tools.offsetHeight + 6 - Math.round(this.board.pad * Math.min(this.board.W, this.board.H))) + presH
       };
       ui.canvasWrap.style.setProperty('--tools-w', ui.tools.offsetWidth + 'px');
+      ui.canvasWrap.style.setProperty('--pres-h', presH + 'px');
       if (['top', 'right', 'bottom'].some((k) => Math.abs(ins[k] - this.board.insets[k]) > 2)) {
         this.board.setInsets(ins);
         this.invalidate();

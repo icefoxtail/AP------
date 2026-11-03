@@ -333,6 +333,16 @@ body.apl {
 .apl-tools { display: flex; flex-direction: column; padding: 4px; gap: 2px; }
 .apl-tools .apl-icon-btn { width: 38px; height: 38px; }
 .apl-tools hr { border: 0; height: 1px; background: var(--line); margin: 2px 6px; }
+/* 860px 이상: 도구 막대도 그림 영역 아래 가장자리의 가로 한 줄(오른쪽 아래 모서리)입니다. 휴대폰이 이미 쓰는 방식과 같고,
+   오른쪽을 비우지 않아 그림이 가로 폭을 다 씁니다. 받침(.apl-dock)은 그림 영역 밖 아래 칸이라 겹치지 않고,
+   상태 배지·카드(.apl-float.tr)는 위쪽 오른쪽입니다. 수업 모드 발표 막대가 떠 있으면 셸이 --pres-h 로 알려 그 위로 올라갑니다. */
+@media (min-width: 860px) {
+  .apl-float.br { bottom: calc(6px + var(--pres-h, 0px)); right: 8px; flex-direction: row; }
+  .apl-tools { flex-direction: row; align-items: center; }
+  .apl-tools { padding: 3px; }
+  .apl-tools .apl-icon-btn { width: 34px; height: 34px; }
+  .apl-tools hr { width: 1px; height: 20px; margin: 0 3px; }
+}
 
 /* 하단 요약 띠(테이프): 무대 아래에 따로 자리를 잡아 도형을 절대 덮지 않습니다. */
 .apl-tape {
