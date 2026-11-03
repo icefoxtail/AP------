@@ -21,9 +21,9 @@
 <script>
 /* ==========================================================================
    중1 · 다면체와 정다면체 (AP Math Lab 2.0) — Ⅲ-1. 다면체와 회전체 중 「다면체」 부분
-   탭(order 순): ① 다면체와 각기둥·각뿔·각뿔대(10, 8장면) · ② 정다면체(20, 6) · ③ 정다면체의 전개도와 꼬인 위치(30, 8) · ④ 도전: 단면·꼭짓점 자르기(40, 2)
+   탭(order 순): ① 다면체와 각기둥·각뿔·각뿔대(10, 8장면) · ② 정다면체(20, 6) · ③ 정다면체의 전개도와 꼬인 위치(30, 8) · ④ 도전: 단면·꼭짓점 자르기(40, 3)
    이 파일은 얇은 껍데기입니다. 공용 도구는 labs/g7-polyhedra/core.js(투영·라벨 배치·문제 틀)와 geo.js(입체·전개도),
-   각 탭은 t1~t4.js 모듈이 window.APL_PH_GROUPS 에 { order, id, title, short, params, scenes } 를 등록하면 order 순으로 붙습니다.
+   cubesec.js 는 정육면체 꼭짓점 A~H 와 세 점 단면 계산(④탭 p4-3)이고, 각 탭은 t1~t4.js 모듈이 window.APL_PH_GROUPS 에 { order, id, title, short, params, scenes } 를 등록하면 order 순으로 붙습니다.
    (옛 g7-nets 「전개도와 입체 단면」은 이 실험실로 합쳤습니다. 회전체는 g7-solids 로 나뉘었습니다.)
    원칙(학생 가독성)
    - 입체는 처음부터 3차원 · 빈 곳을 끌면 시점이 제자리에서 돌아갑니다(이동이 아니라 회전) · 안 보이는 모서리는 점선
@@ -33,7 +33,7 @@
    ========================================================================== */
 window.addEventListener('DOMContentLoaded', function () {
 'use strict';
-const MODULES = ['core', 'geo', 't1', 't2', 't3', 't4'];
+const MODULES = ['core', 'geo', 'cubesec', 't1', 't2', 't3', 't4'];
 const loadScript = (src) => new Promise((res) => {
   const el = document.createElement('script');
   el.src = src; el.async = false;
