@@ -19,3 +19,6 @@
 - **문항·발문·해설 작성 중** 문제용 시각정보와 해설용 SVG를 각각 결정하고, SVG 필요 시 같은 원본 qid의 CREATE closure 안에서 기존 엔진으로 사실 동결→spec→실파일 제작→좌표/semantic QA→UID/asset 결속을 완료한다. 도형의 방정식 H22-C2-01~04는 시각화 기본 필수, 예외는 수학적으로 좁게 기록. SVG 누락인데 TEXT_ONLY라고 정상완료 금지.
 - **팔마고 기존 QID9 제작분은 적용 제외**: 형님이 별도 SVG 엔진 보강라인에 맡긴다. 기존 승인·문항은 일괄 재제작하지 않는다.
 - 실행 정본: `alive/06_EXECUTION/ALIVE_NEXT_SCHOOL_CREATE_WITH_SOLUTION_SVG_CURRENT_v1.md`. 기존 엔진의 실제 미지원 family를 ACTIVE라 속이지 않고 HOLD/기존 대체 backend 경로로 마감하며, 실제 하지 않은 Chrome/Consumer 검사를 PASS라 표시하지 않는다.
+
+## 확장 후보 — 생성문항 문제 그림을 SVG 엔진 "문항 모드"로 (2026-11-03, 사용자 대화, 아직 구현 전)
+- 생성·유사문항의 문제 그림을 해설 그림과 같은 SVG 엔진 plan으로 만들어 본문 수치와 그림 불일치를 막는 방안이다. 착수 전 설계 메모 `archive/tools/geometry-equation/ops/svg-m1/notes/DESIGN-question-mode.md`를 읽는다(정답·실마리 누출 금지, "그림은 정확하지 않다" 옵션, 흑백 인쇄, 원본 배치 따르기). 이유: 사용자가 확장할 때 기억하라고 지시했다. 지금 규칙을 바꾸지는 않는다.
