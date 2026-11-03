@@ -855,7 +855,7 @@
       if (!isDefault) { const maxPos = Math.max(0, Math.min(4, Math.floor(fnum(x) / fnum(unit)) - 1)); pos = (P.r * 7 + P.th) % (maxPos + 1); }
       const list = ap5(x, unit, pos);
       return {
-        text: `<div>오른쪽 그림은 반지름의 길이가 ${P.r} cm인 반원 O를 점 A를 중심으로 ${P.th}°만큼 회전시킨 것이다. 이때 색칠한 부분의 넓이는?</div>${choicesHTML(list.map(piCm2))}`,
+        text: `<div>그림은 반지름의 길이가 ${P.r} cm인 반원 O를 점 A를 중심으로 ${P.th}°만큼 회전시킨 것이다. 이때 색칠한 부분의 넓이는?</div>${choicesHTML(list.map(piCm2))}`,
         answer: `${CIRC[pos]} $${piTex(x)}\\text{ cm}^2$ — 회전한 반원과 처음 반원은 넓이가 같으므로 색칠한 부분은 반지름 ${2 * P.r} cm, 중심각 ${P.th}°인 부채꼴의 넓이와 같아요.`
       };
     }
@@ -902,12 +902,12 @@
         const d = m.d, perim = vplain(m.perim), area = vplain(m.area);
         if (sj) {
           return {
-            text: `<div>오른쪽 그림과 같이 지름의 길이가 ${d} cm인 원에 대하여 다음 물음에 답하고, 그 과정을 서술하시오. <span style="opacity:.7">[6점]</span></div><div style="margin-top:8px">(1) 색칠한 부분의 둘레의 길이를 구하시오. (3점)<br>(2) 색칠한 부분의 넓이를 구하시오. (3점)</div>`,
+            text: `<div>그림과 같이 지름의 길이가 ${d} cm인 원에 대하여 다음 물음에 답하고, 그 과정을 서술하시오. <span style="opacity:.7">[6점]</span></div><div style="margin-top:8px">(1) 색칠한 부분의 둘레의 길이를 구하시오. (3점)<br>(2) 색칠한 부분의 넓이를 구하시오. (3점)</div>`,
             answer: `(1) $${vtex(m.perim)}\\text{ cm}$ &nbsp; (2) $${vtex(m.area)}\\text{ cm}^2$ — 둘레는 세 반원의 호의 합, 넓이는 (큰 반원) + (작은 반원) − (중간 반원)`
           };
         }
         return {
-          text: `<div>오른쪽 그림과 같이 지름의 길이가 ${d} cm인 원에서 색칠한 부분의 둘레의 길이와 넓이를 각각 구하고, 그 과정을 서술하시오. <span style="opacity:.7">[6점]</span></div>`,
+          text: `<div>그림과 같이 지름의 길이가 ${d} cm인 원에서 색칠한 부분의 둘레의 길이와 넓이를 각각 구하고, 그 과정을 서술하시오. <span style="opacity:.7">[6점]</span></div>`,
           answer: `둘레 $${vtex(m.perim)}\\text{ cm}$ &nbsp; 넓이 $${vtex(m.area)}\\text{ cm}^2$ — 둘레는 세 호의 합, 넓이는 (큰 반원) − (왼쪽 반원) + (오른쪽 반원)`
         };
       },
@@ -947,7 +947,7 @@
     steps: (P, m) => arcAreaSteps(m),
     formulaLines: (m) => solLinesArcArea(m),
     problem: (P, m) => ({
-      text: `<div>오른쪽 그림과 같은 반원에서 색칠한 부분의 둘레의 길이와 넓이를 각각 구하고, 그 과정을 서술하시오. <span style="opacity:.7">[6점]</span></div><div style="margin-top:8px;font-size:.9em;opacity:.8">(그림의 ${P.p} cm, ${P.q} cm는 작은 반원의 반지름)</div>`,
+      text: `<div>그림과 같은 반원에서 색칠한 부분의 둘레의 길이와 넓이를 각각 구하고, 그 과정을 서술하시오. <span style="opacity:.7">[6점]</span></div><div style="margin-top:8px;font-size:.9em;opacity:.8">(그림의 ${P.p} cm, ${P.q} cm는 작은 반원의 반지름)</div>`,
       answer: `둘레 $${vtex(m.perim)}\\text{ cm}$ &nbsp; 넓이 $${vtex(m.area)}\\text{ cm}^2$ — 큰 반원의 반지름 ${m.R} cm`
     }),
     solution: {
@@ -985,7 +985,7 @@
       if (R === 10) list = [['40π cm', '40π cm²'], ['40π cm', '50π cm²'], ['40π cm', '75π cm²'], ['50π cm', '40π cm²'], ['50π cm', '50π cm²']];
       else list = [[p4, area[0]], [p4, area[1]], [p4, area[2]], [p5, area[0]], [p5, area[1]]].map(([a, c]) => [`${vplain(V(a))} cm`, `${vplain(V(c))} cm²`]);
       return {
-        text: `<div>오른쪽 그림과 같이 반지름의 길이가 ${R} cm인 원에서 색칠한 부분의 둘레의 길이와 넓이를 차례대로 구하면?</div>${choicesHTML(list.map((c) => `${c[0]}, ${c[1]}`))}`,
+        text: `<div>그림과 같이 반지름의 길이가 ${R} cm인 원에서 색칠한 부분의 둘레의 길이와 넓이를 차례대로 구하면?</div>${choicesHTML(list.map((c) => `${c[0]}, ${c[1]}`))}`,
         answer: `② ${vplain(m.perim)} cm, ${vplain(m.area)} cm² — 둘레는 큰 원 + 작은 원 2개, 넓이는 큰 원 − 작은 원 2개`
       };
     },
@@ -1048,7 +1048,7 @@
       const lst = [fr(pq, 2), fr(3 * pq, 4), fr(pq)].map((x) => `$${ftex(x)}\\text{ cm}^2$`).concat([fr(pq, 6), fr(pq, 4)].map((x) => `$${piTex(x)}\\text{ cm}^2$`));
       const bcTxt = m.cInt ? `, $\\overline{\\mathrm{BC}}=${m.c}$ cm` : '';
       return {
-        text: `<div>오른쪽 그림은 ∠A=90°인 직각삼각형 ABC의 각 변을 지름으로 하는 반원을 그린 것이다. $\\overline{\\mathrm{AB}}=${P.p}$ cm${bcTxt}, $\\overline{\\mathrm{CA}}=${P.q}$ cm일 때, 색칠한 부분의 넓이는?</div>${choicesHTML(lst)}`,
+        text: `<div>그림은 ∠A=90°인 직각삼각형 ABC의 각 변을 지름으로 하는 반원을 그린 것이다. $\\overline{\\mathrm{AB}}=${P.p}$ cm${bcTxt}, $\\overline{\\mathrm{CA}}=${P.q}$ cm일 때, 색칠한 부분의 넓이는?</div>${choicesHTML(lst)}`,
         answer: `① $${vtex(m.area)}\\text{ cm}^2$ — (반원 AB) + (반원 AC) = (반원 BC)이므로 색칠한 부분은 △ABC와 같아요.`
       };
     },
@@ -1093,7 +1093,7 @@
       const x = fr(P.a * P.a, 16);
       const list = [fr(2), fr(3), fr(4), fr(5), fr(6)].map((k) => fmul(x, fmul(k, HALF)));
       return {
-        text: `<div>오른쪽 그림은 한 변의 길이가 ${P.a} cm인 정삼각형 ABC의 각 변을 지름으로 하는 반원을 그린 것이다. 이때 색칠한 부분의 넓이는?</div>${choicesHTML(list.map(piCm2))}`,
+        text: `<div>그림은 한 변의 길이가 ${P.a} cm인 정삼각형 ABC의 각 변을 지름으로 하는 반원을 그린 것이다. 이때 색칠한 부분의 넓이는?</div>${choicesHTML(list.map(piCm2))}`,
         answer: `③ $${vtex(m.area)}\\text{ cm}^2$ — 꽃잎 하나는 반지름 ${P.a / 2} cm, 중심각 60°인 부채꼴과 같으므로 $3\\times ${vtex(m.byId.pa.area)}$`
       };
     },

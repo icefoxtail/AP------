@@ -2372,7 +2372,7 @@ window.addEventListener('DOMContentLoaded', function () {
       lab.s.t = initialOf(p);
       lab.setStep(0);
       const qe = lab.ui.head.querySelector('.apl-question');
-      if (qe) qe.innerHTML = '<small>탐구 질문</small>' + APLab.renderMath(rm(p.statement));
+      if (qe) qe.innerHTML = '<small>탐구 질문</small><span class="q">' + APLab.renderMath(rm(p.statement)) + '</span>';
       try { lab._buildReview(); } catch (e) { /* 키트가 바뀌어도 그림은 그대로 */ }
       lab.invalidate(true);
       try { APLab.toast('숫자를 바꾼 새 문제가 만들어졌습니다'); } catch (e) { /* 토스트가 없어도 그림은 그대로 */ }

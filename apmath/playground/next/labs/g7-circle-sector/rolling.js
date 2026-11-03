@@ -772,7 +772,7 @@
       out.push(`점 A′이 직선 l 위에 오므로 ∠ACB와 중심각을 합하면 180°(한 직선 위의 각)이다. 따라서 중심각은 180° − ${g}° = ${180 - g}°이다.`);
       return out;
     },
-    statement: (c) => `오른쪽 그림과 같이 직각삼각형 ABC를 직선 $l$ 위에서 점 C를 중심으로 점 A가 점 A′에 오도록 회전시켰다. ${len('A', 'C', c.d)}, $${c.at === 'C' ? '\\angle \\mathrm{ACB}' : '\\angle \\mathrm{ABC}'}=${c.deg}^\\circ$일 때, 점 A가 움직인 거리는?`,
+    statement: (c) => `그림과 같이 직각삼각형 ABC를 직선 $l$ 위에서 점 C를 중심으로 점 A가 점 A′에 오도록 회전시켰다. ${len('A', 'C', c.d)}, $${c.at === 'C' ? '\\angle \\mathrm{ACB}' : '\\angle \\mathrm{ABC}'}=${c.deg}^\\circ$일 때, 점 A가 움직인 거리는?`,
     reroll: (cur, rng) => {
       const pool = TURN_VARS[at].filter((v) => !(v.d === cur.d && v.deg === cur.deg));
       return { ...pick(rng, pool), at, track: 2, rolls: 1 };
@@ -801,7 +801,7 @@
       hdls: [{ i: 2, patch: (x, y) => ({ w: clamp(Math.round(x), 2, 8), h: clamp(Math.round(y), 2, 8) }) }],
       question: '직사각형 ABCD를 직선 l 위에서 회전시키면 점 A는 어떤 길을 따라 움직일까? 그 길이는 얼마일까?',
       guide: (M) => `<b>굴리기</b>를 눌러 직사각형이 직선 <i>l</i> 위를 굴러가는 모습을 보세요. 한 번 회전할 때마다 직사각형은 한 꼭짓점(<b>회전의 중심</b>)을 중심으로 90°씩 돌아가고, 점 ${M.names[M.T]}는 그 중심을 중심으로 하는 <b>부채꼴의 호</b>를 그려요. AB, AD의 길이를 바꾸면 반지름과 합이 바로 다시 계산돼요. 대각선(BD)이 자연수가 되는 직사각형만 골라져요.` + GUIDE_TAIL,
-      statement: (c) => `오른쪽 그림과 같이 직사각형 ABCD를 직선 $l$ 위에서 회전시켰다. ${len('A', 'B', c.w)}, ${len('A', 'D', c.h)}, ${len('B', 'D', Math.hypot(c.w, c.h))}일 때, 점 ${'ABCD'[c.track]}가 움직인 거리를 구하시오.`,
+      statement: (c) => `그림과 같이 직사각형 ABCD를 직선 $l$ 위에서 회전시켰다. ${len('A', 'B', c.w)}, ${len('A', 'D', c.h)}, ${len('B', 'D', Math.hypot(c.w, c.h))}일 때, 점 ${'ABCD'[c.track]}가 움직인 거리를 구하시오.`,
       reroll: (cur, rng) => {
         const z = pick(rng, [[3, 4], [4, 3], [6, 8], [8, 6]].filter((q) => !(q[0] === cur.w && q[1] === cur.h)));
         return { w: z[0], h: z[1], track: pick(rng, [0, 0, 1, 2, 3]), rolls: 3 };

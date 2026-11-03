@@ -166,6 +166,7 @@
       // 화면 폭이 859/860px 경계를 넘거나 무대 폭이 바뀌면(패널 접기 포함) 조작부를 알맞은 자리로 다시 옮깁니다.
       const replace = () => requestAnimationFrame(() => this._placeControls());
       if (NARROW.addEventListener) NARROW.addEventListener('change', replace); else if (NARROW.addListener) NARROW.addListener(replace);
+      this._orientHint();
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(replace); // 글꼴이 늦게 바뀌어 칩 폭이 달라져도 다시 잽니다
       if (window.ResizeObserver) {
         this._stageW = 0;
@@ -176,6 +177,24 @@
           replace();
         }).observe(ui.stage);
       }
+    }
+    /** 태블릿 세로(폭 700~859px, 세로 방향): 처음 열 때 「가로로 돌리면…」 한 줄 안내를 무대 위쪽 가장자리에 띄웁니다.
+     *  닫으면 localStorage 에 기억해 다시 띄우지 않고(저장이 막혀도 이번 화면에서는 닫힌 채), 가로로 돌리면 저절로 사라집니다. 휴대폰(700px 미만)·PC에는 나오지 않습니다. */
+    _orientHint() {
+      const mq = window.matchMedia('(min-width: 700px) and (max-width: 859px) and (orientation: portrait)');
+      const KEY = 'orientHintOff';
+      if (APLab.store.get(KEY, false) || !mq.matches) return;
+      const el = h('div', { class: 'apl-orient-hint', role: 'status' },
+        h('span', { class: 't', text: '가로로 돌리면 그림과 막대가 더 크게 보여요' }),
+        h('button', { class: 'x', 'aria-label': '안내 닫기', title: '닫기', html: icon('x'), onclick: () => close(true) }));
+      const close = (remember) => {
+        el.remove();
+        if (remember) APLab.store.set(KEY, true);
+        if (mq.removeEventListener) mq.removeEventListener('change', onChange); else if (mq.removeListener) mq.removeListener(onChange);
+      };
+      const onChange = () => { if (!mq.matches) close(false); }; // 가로로 돌렸거나 다른 크기가 되면 사라집니다(기억은 하지 않음)
+      if (mq.addEventListener) mq.addEventListener('change', onChange); else if (mq.addListener) mq.addListener(onChange);
+      this.ui.canvasWrap.append(el);
     }
     _syncThemeIcon() {
       this.ui.themeBtn.innerHTML = icon(APLab.theme.current() === 'paper' ? 'moon' : 'sun');
@@ -318,7 +337,12 @@
         this._subCount = h('span', { class: 'apl-sub-count', 'aria-hidden': 'true', text: cnt }); // 넓은 화면의 위 띠 끝에 붙는 「5 / 8」 위치 표시
       }
       if (sc.question) {
-        ui.head.append(h('div', { class: 'apl-question', html: `<small>탐구 질문</small>${APLab.renderMath(sc.question)}` }));
+        // 휴대폰(859px 이하)에서는 제목 바로 아래 한 줄로 접혀 있다가 누르면 펼칩니다(apl.css). 넓은 화면은 예전처럼 카드입니다.
+        const qe = h('div', { class: 'apl-question', html: `<small>탐구 질문</small><span class="q">${APLab.renderMath(sc.question)}</span>` });
+        const flipQ = () => { if (NARROW.matches) qe.setAttribute('aria-expanded', String(qe.classList.toggle('open'))); };
+        qe.addEventListener('click', flipQ);
+        qe.addEventListener('keydown', (e) => { if (e.target === qe && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); flipQ(); } });
+        ui.head.append(qe);
       }
       // 탭
       ui.tabs.innerHTML = '';
@@ -508,8 +532,17 @@
       const wide = !NARROW.matches;
       const explore = this.tab === 'explore';
       const box = r.controls;
+      // 접힌 탐구 질문(휴대폰)은 누를 수 있는 단추로, 넓은 화면에서는 보통 글로 되돌립니다.
+      const qe = ui.head.querySelector('.apl-question');
+      if (qe) {
+        if (wide) { qe.removeAttribute('role'); qe.removeAttribute('tabindex'); qe.removeAttribute('aria-expanded'); qe.classList.remove('open'); }
+        else { qe.setAttribute('role', 'button'); qe.tabIndex = 0; qe.setAttribute('aria-expanded', String(qe.classList.contains('open'))); }
+      }
       const L = this._lay;
       const subs = this._subs;
+      // 막대가 4개 이상인 장면의 탐구 탭: 휴대폰(859px 이하)에서 그림 무대를 낮춰 막대가 한 화면에 더 많이 보이게 합니다(apl.css의 data-many-ctl).
+      // 막대 수가 장면 상태에 따라 바뀌어도(sc.controls 가 함수) 조작부를 다시 지을 때마다 이 함수가 불리므로 다시 셉니다.
+      if (explore && L && L.ctls.length >= 4) ui.head.dataset.manyCtl = '1'; else delete ui.head.dataset.manyCtl;
       // 세부 장면 칩: 넓은 화면은 위 띠 첫 줄(이동), 좁은 화면은 패널 머리말(예전 자리)
       if (subs) {
         if (wide) ui.topNav.append(subs, this._subCount);
@@ -827,8 +860,8 @@
       if (again) this.invalidate();
       else this._last = 0;
     }
-    /** 휴대폰 문제 탭: 탐구 질문 카드를 접어도 문제 글이 첫 화면(약 760px) 밖이면(제목이 두 줄이거나 세부 장면 줄이 있는 장면)
-     *  그 장면만 그림 무대를 조금(54svh → 44svh) 낮춥니다. 실험실별 설정 없이 쓰며, 이미 첫 화면 안이면 무대는 그대로입니다. */
+    /** 휴대폰 문제 탭: 탐구 질문 카드를 접어도 문제 글이 화면 아래쪽(약 480px 아래)에서 시작하면
+     *  그림 무대를 낮춥니다(54svh → 42svh). 보기가 ①만 보이던 문제를 3개 이상 보이게 하려는 것입니다. 실험실별 설정 없이 쓰며, 글이 이미 위쪽에서 시작하면 무대는 그대로입니다. */
     _fitProblemStage() {
       this._fitPending = false;
       const head = this.ui.head;
@@ -836,7 +869,7 @@
       const pt = this.refs && this.refs.problemText;
       if (!pt || !pt.isConnected || !pt.checkVisibility()) { delete head.dataset.tight; return; }
       delete head.dataset.tight;
-      const limit = Math.min(760, window.innerHeight * 0.9);
+      const limit = Math.min(480, window.innerHeight * 0.58); // 문제 글이 화면 아래쪽 40%에서 시작하면 그림 무대를 낮춰 글과 보기 3개 이상이 첫 화면에 오게 합니다
       if (pt.getBoundingClientRect().top + window.scrollY > limit) head.dataset.tight = '1';
     }
     render() {
@@ -936,14 +969,19 @@
       this._renderPresenter();
       this.ui.gridBtn.classList.toggle('on', !!this.s.grid);
       // 무대 위 칩·배지·도구·발표 막대가 차지한 가장자리는 도형 배치에서 비워 둡니다(그림을 가리지 않도록).
-      // 넓은 화면은 도구가 오른쪽 세로 막대, 좁은 화면은 상태 배지(왼쪽)·도구(오른쪽)가 아래 한 줄입니다.
+      // 도구 막대는 어느 화면 폭에서나 그림 영역 아래 가장자리의 가로 한 줄입니다(넓은 화면은 오른쪽 아래 모서리, 좁은 화면은 상태 배지(왼쪽)와 한 줄).
+      // 그래서 오른쪽은 비우지 않아 그림이 가로 폭을 다 씁니다. 수업 모드 발표 막대가 떠 있으면 넓은 화면에서는 도구 막대가 그 위로 올라갑니다.
       const narrow = NARROW.matches;
+      const presH = ui.presenter.hidden ? 0 : ui.presenter.offsetHeight + 22;
       const ins = {
         top: ui.chips.childElementCount ? ui.chips.offsetHeight + 18 : 0,
-        right: narrow ? 0 : ui.tools.offsetWidth + 16,
-        bottom: Math.max(narrow ? Math.max(ui.tools.offsetHeight, Math.min(ui.tr.offsetHeight, 60)) + 14 : 0, ui.presenter.hidden ? 0 : ui.presenter.offsetHeight + 22)
+        right: narrow ? 0 : 16, // 넓은 화면: 도구 막대 자리는 비웠지만 오른쪽 끝 라벨이 잘리지 않을 만큼의 여백만 둡니다(예전에는 도구 폭 + 16px)
+        // 넓은 화면: 도구 막대는 모서리의 작은 반투명 막대라 그림 영역을 따로 비우지 않습니다(비우면 높이에 맞춘 그림이 8~12% 작아져 라벨이 서로 겹침).
+        // 수업 모드 발표 막대가 있으면 막대가 그 위로 올라가므로 그만큼만 비웁니다.
+        bottom: narrow ? Math.max(Math.max(ui.tools.offsetHeight, Math.min(ui.tr.offsetHeight, 60)) + 14, presH) : presH
       };
       ui.canvasWrap.style.setProperty('--tools-w', ui.tools.offsetWidth + 'px');
+      ui.canvasWrap.style.setProperty('--pres-h', presH + 'px');
       if (['top', 'right', 'bottom'].some((k) => Math.abs(ins[k] - this.board.insets[k]) > 2)) {
         this.board.setInsets(ins);
         this.invalidate();
