@@ -1,0 +1,1476 @@
+{
+  "schemaVersion": "4slot-v1",
+  "sourceArchiveFile": "original/high/h2/2final/20_매산여고_2학기_기말_고2_수학II.js",
+  "sourceGitBlobSha": "1c6b06e77d750dce8e0535786f966bc9ca269cc3",
+  "dictionaryVersion": "term-dict-v1.4-2026-11-03",
+  "judgedBy": {
+    "agent": "Antigravity-gemini-3.8-flash",
+    "run": "original-41-50",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "수직선 위를 움직이는"
+          },
+          {
+            "term": "위치",
+            "src": "stem",
+            "quote": "시각 $t$에서 위치 $x$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "가속도",
+            "src": "stem",
+            "quote": "점 $P$의 가속도를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "미분",
+            "src": "solution",
+            "quote": "위치를 미분하면 속도이고, 속도를 한 번 더 미분하면 가속도이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "속도",
+            "src": "solution",
+            "quote": "속도는\nv(t)=x′(t)=−15t²+14t",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "도함수",
+            "src": "solution",
+            "quote": "a(t)=v′(t)=−30t+14",
+            "evidenceType": "IMPLIED",
+            "justification": "속도의 도함수로 가속도 도함수를 도출"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "$t=1$일 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "위치를 시간에 대해 두 번 미분하여 가속도를 구함"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부정적분",
+            "src": "stem",
+            "quote": "등식 $\\displaystyle\\int f(x),dx=7x^2-3x+C$를 만족시키는"
+          },
+          {
+            "term": "적분상수",
+            "src": "stem",
+            "quote": "단, $C$는 적분상수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(1)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "미분",
+            "src": "solution",
+            "quote": "부정적분 식을 미분하면 피적분함수 f(x)를 얻는다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피적분함수",
+            "src": "solution",
+            "quote": "피적분함수 f(x)를 얻는다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "등식 $\\displaystyle\\int f(x),dx=7x^2-3x+C$를 만족시키는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "부정적분의 양변을 미분하여 피적분함수를 구함"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정적분",
+            "src": "stem",
+            "quote": "정적분 $\\displaystyle\\int_{-1}^0(4x^3+4),dx$"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "_{-1}^0"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정적분",
+            "src": "stem",
+            "quote": "정적분 $\\displaystyle\\int_{-1}^0(4x^3+4),dx$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부정적분",
+            "src": "solution",
+            "quote": "피적분함수의 원시함수를 구한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원시함수를 구하는 과정은 부정적분을 구하는 것과 동일"
+          },
+          {
+            "term": "미적분의기본정리",
+            "src": "solution",
+            "quote": "=[x⁴+4x]₋₁⁰\n=0−(1−4)\n=3",
+            "evidenceType": "IMPLIED",
+            "justification": "원시함수에 위끝과 아래끝을 대입해 뺀 값을 계산"
+          },
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "∫(4x³+4)dx=x⁴+4x",
+            "evidenceType": "IMPLIED",
+            "justification": "다항식의 각 항별 부정적분 공식을 적용"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "-1"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원시함수를 구해 미적분의 기본정리로 정적분 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "도함수",
+            "src": "stem",
+            "quote": "$f'(x)=4x^3+x^2-1$이다."
+          },
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(0)=4$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(3)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "적분",
+            "src": "solution",
+            "quote": "f′(x)를 적분하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "적분상수",
+            "src": "solution",
+            "quote": "C=4\n이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "도함수를 적분하여 적분상수를 결정하고 함숫값 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부정적분",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\displaystyle\\int\\left\\{\\dfrac{d}{dx}(2x^2-8x)\\right\\}dx$에 대하여"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$f(x)$의 최솟값이 $5$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(1)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "적분상수",
+            "src": "solution",
+            "quote": "적분상수 C에 대하여",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차함수",
+            "src": "solution",
+            "quote": "=2(x−2)²+C−8",
+            "evidenceType": "IMPLIED",
+            "justification": "이차함수의 꼭짓점을 이용해 최솟값 조건 적용"
+          },
+          {
+            "term": "최솟값",
+            "src": "solution",
+            "quote": "최솟값이 5이므로\nC−8=5",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$f(x)$의 최솟값이 $5$일 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "적분 후 나타나는 이차함수의 최솟값 조건으로 적분상수를 결정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=x^3+ax^2+2ax+5$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$의 값의 범위를 구하면?"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "상수 $a$의 값의 범위를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "함수 f(x)가 모든 실수에서 증가하려면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "도함수",
+            "src": "solution",
+            "quote": "f′(x)=3x²+2ax+2a≥0\n이어야 한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식이 0 이하여야 한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "임의의 두 실수 $x_1,x_2$에 대하여"
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$x_1<x_2$이면 $f(x_1)<f(x_2)$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "삼차함수가 증가하기 위해 도함수인 이차식이 항상 0 이상이어야 하므로 판별식 <= 0 적용"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=x^3+ax^2+bx+3$은"
+          },
+          {
+            "term": "극소",
+            "src": "stem",
+            "quote": "$x=3$에서 극솟값 $3$을 가진다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b+k$를 구하면?"
+          },
+          {
+            "term": "극대",
+            "src": "stem",
+            "quote": "함수 $f(x)$의 극댓값을 $k$라 하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "도함수",
+            "src": "solution",
+            "quote": "f′(3)=0,",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "두 식을 빼면\n3a=−18,\na=−6,\nb=9",
+            "evidenceType": "IMPLIED",
+            "justification": "두 일차방정식을 연립하여 a, b를 구함"
+          },
+          {
+            "term": "극대",
+            "src": "solution",
+            "quote": "극댓값을 갖는다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "단, $a,b,k$는 상수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "극값 조건 f'(3)=0, f(3)=3으로 미정계수를 구하고 다른 극점에서 극댓값 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "연속",
+            "src": "stem",
+            "quote": "연속함수 $f(x)$의 도함수"
+          },
+          {
+            "term": "도함수",
+            "src": "stem",
+            "quote": "도함수 $y=f'(x)$의 그래프가"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프가 다음 그림과 같을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프의 개형으로 옳은 것을 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "도함수 그래프에서 구간별 부호를 읽는다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "극대",
+            "src": "solution",
+            "quote": "x=−1에서 극대",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "극소",
+            "src": "solution",
+            "quote": "x=0에서 극소",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "원점",
+            "src": "stem",
+            "quote": "원점을 지나는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "도함수의 부호 변화로부터 원래 함수의 극대, 극소 및 그래프 개형 추론"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부정적분",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\displaystyle\\int(x^2+2x-3),dx$의"
+          },
+          {
+            "term": "극소",
+            "src": "stem",
+            "quote": "극솟값이 $-4$일 때"
+          },
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "x^2+2x-3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "극대",
+            "src": "stem",
+            "quote": "$f(x)$의 극댓값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "도함수",
+            "src": "solution",
+            "quote": "f′(x)=x²+2x−3=(x+3)(x−1)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부정적분",
+            "src": "solution",
+            "quote": "원시함수는\nf(x)=x³/3+x²−3x+C",
+            "evidenceType": "IMPLIED",
+            "justification": "도함수의 부정적분을 구하여 f(x)를 표현"
+          },
+          {
+            "term": "적분상수",
+            "src": "solution",
+            "quote": "C=−7/3\n이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "극대",
+            "src": "solution",
+            "quote": "극댓값은\nf(−3)=−9+9+9−7/3=20/3",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "극소",
+            "src": "stem",
+            "quote": "극솟값이 $-4$일 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "도함수의 영점에서 극대/극소 위치를 파악하고 극솟값으로 적분상수를 구한 뒤 극댓값 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차함수",
+            "src": "stem",
+            "quote": "삼차함수 $f(x)$의 도함수가"
+          },
+          {
+            "term": "도함수",
+            "src": "stem",
+            "quote": "도함수가 $f'(x)$일 때"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "$y=f'(x)$의 그래프는 다음과 같다."
+          },
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(0)=5$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수 $k$의 개수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "적분",
+            "src": "solution",
+            "quote": "적분하고 f(0)=5를 적용하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "극대",
+            "src": "solution",
+            "quote": "은 각각 극솟값과 극댓값이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "실근",
+            "src": "solution",
+            "quote": "f(x)=k가 서로 다른 세 실근을 가지려면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "방정식 $f(x)=k$가"
+          },
+          {
+            "term": "실근",
+            "src": "stem",
+            "quote": "서로 다른 세 실근을 갖기 위한"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $k$의 개수를 구하면?"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "도함수 그래프로부터 삼차함수를 복원하고 극대/극소 사이 범위에서 서로 다른 세 실근 조건 해석"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항함수",
+            "src": "stem",
+            "quote": "다항함수 $f(x)$의 한 부정적분을"
+          },
+          {
+            "term": "부정적분",
+            "src": "stem",
+            "quote": "한 부정적분을 $F(x)$라 하면"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "$F(x)=xf(x)-3x^3+5x^2$이 성립하고"
+          },
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(2)=6$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(-2)$를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "미분",
+            "src": "solution",
+            "quote": "양변을 미분한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "도함수",
+            "src": "solution",
+            "quote": "f′(x)=9x−10이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "적분",
+            "src": "solution",
+            "quote": "적분하면\nf(x)=9x²/2−10x+C",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "$F(x)=xf(x)-3x^3+5x^2$이 성립하고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "양변을 x로 미분하여 xf'(x) 식을 얻고 적분하여 f(x)를 결정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차함수",
+            "src": "stem",
+            "quote": "$f(x)=2x^3-3x^2-12x+k+3$의"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값이 $38$일 때"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "닫힌구간 $[-2,4]$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "함수 $f(x)$의 최솟값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "도함수",
+            "src": "solution",
+            "quote": "h′(x)=6(x−2)(x+1)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "따라서 f의 최댓값은 32+k+3=k+35이고,",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최솟값",
+            "src": "solution",
+            "quote": "최솟값은 x=2에서\n−20+3+3=−14",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "닫힌구간 $[-2,4]$에서"
+          },
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "단, $k$는 상수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "닫힌구간에서 도함수의 임계점과 양 끝점의 함숫값을 비교하여 최댓값으로 k를 결정하고 최솟값 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "곡선",
+            "src": "stem",
+            "quote": "두 곡선 $y=x^3-x$, $y=-x^2+x$로"
+          },
+          {
+            "term": "삼차함수",
+            "src": "stem",
+            "quote": "$y=x^3-x$"
+          },
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=-x^2+x$로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "둘러싸인 도형의 넓이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "두 곡선의 교점을 구한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정적분",
+            "src": "solution",
+            "quote": "넓이는\n∫₋₂⁰D(x)dx−∫₀¹D(x)dx",
+            "evidenceType": "IMPLIED",
+            "justification": "두 곡선의 차를 구간별로 정적분하여 넓이 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "곡선",
+            "src": "stem",
+            "quote": "두 곡선 $y=x^3-x$, $y=-x^2+x$로 둘러싸인"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "교점을 구해 두 곡선 사이의 대소 관계에 따라 정적분으로 넓이를 구함"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "수직선 위를 움직이는"
+          },
+          {
+            "term": "속도",
+            "src": "stem",
+            "quote": "속도 $v(t)$가 $v(t)=6(t-1)(t-2)$이다."
+          },
+          {
+            "term": "원점",
+            "src": "stem",
+            "quote": "점 $P$의 위치가 모두 원점일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "적분",
+            "src": "solution",
+            "quote": "속도를 적분해 위치를 구한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "위치",
+            "src": "solution",
+            "quote": "x(t)=−5+∫₀ᵗ6(s−1)(s−2)ds",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼차방정식",
+            "src": "solution",
+            "quote": "2t³−9t²+12t−5=0\n(t−1)²(2t−5)=0",
+            "evidenceType": "IMPLIED",
+            "justification": "위치가 원점이 되는 삼차방정식을 인수분해하여 해를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$t\\ge0$"
+          },
+          {
+            "term": "원점",
+            "src": "stem",
+            "quote": "점 $P$의 위치가 모두 원점일 때"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "단, $a<b$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "속도를 적분해 위치 함수를 구하고 원점에 위치하는 시각 t의 값을 구함"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "함수 $f(x)=x^2-5|x|+6$에 대하여"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "$y=f(x)$의 그래프와 $x$축으로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "둘러싸인 부분의 넓이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "짝함수",
+            "src": "solution",
+            "quote": "f는 짝함수이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정적분",
+            "src": "solution",
+            "quote": "2(∫₀²f(x)dx+∫₂³−f(x)dx)",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭성을 이용하여 x>=0 구간의 정적분을 구해 2배함"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "x²−5|x|+6=(|x|−2)(|x|−3)=0",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값 이차식을 인수분해하여 영점 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "x축",
+            "src": "stem",
+            "quote": "$x$축으로 둘러싸인"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "절댓값을 포함한 함수의 대칭성(짝함수)을 이용하여 구간별 정적분으로 둘러싸인 넓이 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항함수",
+            "src": "stem",
+            "quote": "두 다항함수 $f(x),g(x)$가"
+          },
+          {
+            "term": "홀함수",
+            "src": "stem",
+            "quote": "$f(-x)=-f(x)$"
+          },
+          {
+            "term": "정적분",
+            "src": "stem",
+            "quote": "$\\displaystyle\\int_{-2}^2(x^3+x-3)g'(x),dx=20$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$12g(-2)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "홀함수",
+            "src": "solution",
+            "quote": "g도 홀함수, g′는 짝함수이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "짝함수",
+            "src": "solution",
+            "quote": "g′는 짝함수이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "미적분의기본정리",
+            "src": "solution",
+            "quote": "미적분의 기본정리를 적용하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "항등식",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여 $f(-x)=-f(x)$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "대칭구간 적분에서 기함수와 우함수의 성질을 이용하고 미적분의 기본정리로 함숫값 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항함수",
+            "src": "stem",
+            "quote": "두 다항함수 $f(x),g(x)$가"
+          },
+          {
+            "term": "삼차함수",
+            "src": "stem",
+            "quote": "$f(x)=3x^3+5x^2-2x+1$"
+          },
+          {
+            "term": "부정적분",
+            "src": "stem",
+            "quote": "함수 $f(x)+g(x)$는 함수 $f(x)-g(x)$의 부정적분 중 하나이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "함수 $g(1)$을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "도함수",
+            "src": "solution",
+            "quote": "f′(x)+g′(x)=f(x)−g(x)",
+            "evidenceType": "IMPLIED",
+            "justification": "부정적분 관계식을 양변 미분하여 도함수 관계식 도출"
+          },
+          {
+            "term": "미정계수",
+            "src": "solution",
+            "quote": "로 두고 계수를 비교한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "차수 판정 후 미정계수를 설정하여 계수비교법 적용"
+          },
+          {
+            "term": "차수",
+            "src": "solution",
+            "quote": "g의 차수는 3 이하이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부정적분",
+            "src": "stem",
+            "quote": "함수 $f(x)+g(x)$는 함수 $f(x)-g(x)$의 부정적분 중 하나이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "양변을 미분하여 g와 g의 관계식을 얻고 차수 판정 후 계수비교법으로 다항함수 g(x) 결정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차함수",
+            "src": "stem",
+            "quote": "$f(x)=-x^3+6ax^2-a$의"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$0\\le x\\le2$에서"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값을 $g(a)$라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$g(-1)+8g\\left(\\dfrac{1}{4}\\right)+g(1)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "도함수",
+            "src": "solution",
+            "quote": "각 a에서 도함수와 구간 끝값을 비교한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "a=−1일 때",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 a의 세 값 각각에 대해 구간 내 도함수 부호와 최댓값 위치를 분류하여 계산"
+          },
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "최댓값은 x=0에서",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$0\\le x\\le2$에서"
+          },
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "단, $a$는 상수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 매개변수 값에 대해 닫힌구간에서의 도함수 부호와 극값을 분석하여 최댓값 함수 g(a) 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차함수",
+            "src": "stem",
+            "quote": "곡선 $f(x)=x(x-2)^2$과"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "둘러싸인 도형의 넓이를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "곡선과 x축의 교점은\nx(x−2)²=0",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정적분",
+            "src": "solution",
+            "quote": "∫₀²x(x−2)²dx",
+            "evidenceType": "IMPLIED",
+            "justification": "교점으로 정의된 구간에서 삼차함수를 정적분하여 둘러싸인 넓이 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "x축",
+            "src": "stem",
+            "quote": "$x$축으로 둘러싸인"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "삼차곡선과 x축의 교점을 구하고 정적분을 이용하여 둘러싸인 넓이 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차함수",
+            "src": "stem",
+            "quote": "곡선 $y=2x^3+1$"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $x=t$가 곡선 $y=2x^3+1$, $y=9x+1$과"
+          },
+          {
+            "term": "외분점",
+            "src": "stem",
+            "quote": "선분 $PQ$를 $6:1$로 외분하는 점을 $R$라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "극대",
+            "src": "stem",
+            "quote": "함수 $f(t)$의 극댓값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "외분점",
+            "src": "solution",
+            "quote": "PQ를 6:1로 외분하는 점 R의 y좌표는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "도함수",
+            "src": "solution",
+            "quote": "f′(t)=(54−6t²)/5",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "극대",
+            "src": "solution",
+            "quote": "극댓값은\nf(3)=(−54+162+5)/5=113/5",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 $PQ$를 $6:1$로 외분하는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "외분점 공식을 통해 삼차함수 f(t)를 세우고 도함수를 통해 극댓값 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "점 $(1,6)$을 지나는"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "접하는 접선의 기울기가 $6x^2+10x-4$일 때"
+          },
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "접하는 접선의 기울기가 $6x^2+10x-4$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "도함수",
+            "src": "stem",
+            "quote": "1) 함수 $f(x)$의 도함수 $f'(x)$를 구하여라."
+          },
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "2) 함수 $f(x)$를 구하여라."
+          },
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "3) $f(-1)$의 값을 구하여라."
+          }
+        ],
+        "method": [
+          {
+            "term": "접선",
+            "src": "solution",
+            "quote": "접선의 기울기는 도함수이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부정적분",
+            "src": "solution",
+            "quote": "이를 적분하면\nf(x)=2x³+5x²−4x+C",
+            "evidenceType": "IMPLIED",
+            "justification": "도함수의 부정적분을 구하여 함수 f(x)를 표현"
+          },
+          {
+            "term": "적분상수",
+            "src": "solution",
+            "quote": "2+5−4+C=6\nC=3",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "곡선",
+            "src": "stem",
+            "quote": "곡선 $y=f(x)$ 위의 임의의 점 $(x,y)$에서"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접선의 기울기로부터 도함수를 얻고 부정적분과 지난 점 조건으로 함수와 함숫값 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "다항함수",
+            "src": "stem",
+            "quote": "최고차항의 계수가 $1$인 두 다항함수 $f(x),g(x)$가"
+          },
+          {
+            "term": "짝함수",
+            "src": "stem",
+            "quote": "$f(-x)=f(x)$"
+          },
+          {
+            "term": "홀함수",
+            "src": "stem",
+            "quote": "$g(-x)=-g(x)$"
+          },
+          {
+            "term": "극한",
+            "src": "stem",
+            "quote": "(가) $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{f'(x)}{x^3g'(x)}=4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "1) $y=f(x)$, $y=g(x)$를 구하여라."
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "2) $y=f(x)$와 $x$축으로 둘러싸인 도형의 넓이를 구하여라."
+          }
+        ],
+        "method": [
+          {
+            "term": "차수",
+            "src": "solution",
+            "quote": "f,g의 차수를 각각 m,n이라 하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "극한",
+            "src": "solution",
+            "quote": "주어진 극한이 0이 아닌 유한한 값이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정적분",
+            "src": "solution",
+            "quote": "−∫₋₂²f(x)dx\n=−[x⁵/5−x³−4x]₋₂²",
+            "evidenceType": "IMPLIED",
+            "justification": "x축 아래에 위치한 사차함수를 음의 정적분하여 둘러싸인 도형의 넓이 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "최고차항",
+            "src": "stem",
+            "quote": "최고차항의 계수가 $1$인"
+          },
+          {
+            "term": "항등식",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여 $f(-x)=f(x)$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "무한대 및 0에서의 극한 조건과 우함수/기함수 대칭성으로 차수와 식을 결정하고 둘러싸인 넓이 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "|x^2-1|"
+          },
+          {
+            "term": "정적분",
+            "src": "stem",
+            "quote": "\\displaystyle\\int_{-2}^0 f(x),dx"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "f(x)=|x^2-1|+\\displaystyle\\int_{-2}^0 f(x),dx"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정적분",
+            "src": "stem",
+            "quote": "1) $\\displaystyle\\int_{-2}^0 f(x),dx$의 값을 구하여라."
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "2) $\\displaystyle\\int_0^k f(x),dx=\\dfrac{4}{3}$인 실수 $k$의 값을 구하여라."
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "A=∫₋₂⁰f(x)dx라 두면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "짝함수",
+            "src": "solution",
+            "quote": "짝함수이므로\nA=∫₀²f(x)dx",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정적분",
+            "src": "solution",
+            "quote": "k≥1이므로\n∫₀ᵏf(x)dx=∫₀¹(−x²−1)dx+∫₁ᵏ(x²−3)dx",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "단, $k\\ge1$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정적분으로 표현된 상수를 치환하고 우함수 대칭성을 활용하여 함수를 특정한 후 구간별 정적분 방정식 해결"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 23,
+    "quotesChecked": 187,
+    "quotesNotFound": 0,
+    "warningsRechecked": [],
+    "notes": ""
+  }
+}
