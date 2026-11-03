@@ -4,7 +4,8 @@
 //  1) 정육면체의 서로 다른 세 꼭짓점 56가지 모두 단면이 정사각형·직사각형·정삼각형 중 하나이고,
 //     좌표로 따로 센 기준(한 면 위 · 한 꼭짓점에 이웃한 세 점 · 나머지)과 같다. 단면의 꼭짓점은 정육면체의 꼭짓점뿐(모서리 가운데를 지나지 않음).
 //  2) 넷째 점은 평행한 모서리/같은 면으로 직접 구한 값과 같고, 선생님 문항(A·G·H)은 직사각형 ABGH.
-//  3) 문제 탭: 첫 문제는 A·G·H, 정답 보기는 정확히 하나이고 계산한 모양과 같으며, 「새 문제」는 정사각형을 드물게 뽑는다. 정리 풀이는 3단계.
+//  3) 평면 넓히기: 0 이면 세 점 삼각형(넓이·꼭짓점), 1 이면 단면, 그 사이는 삼각형에서 단면으로 커지고, 정삼각형 단면은 그대로.
+//  4) 문제 탭: 첫 문제는 A·G·H, 정답 보기는 정확히 하나이고 계산한 모양과 같으며, 「새 문제」는 정사각형을 드물게 뽑는다. 정리 풀이는 3단계.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -79,7 +80,7 @@ test('선생님 문항: A·G·H 는 직사각형 ABGH (AB ∥ GH), B·D·E 는 �
   assert.equal(CS.sectionOf3('A', 'B', 'C').label, '정사각형 ABCD');
 });
 
-test('문제 탭: 첫 문제는 A·G·H, 보기 5개 중 정답은 계산한 모양 하나뿐, 정리는 3단계', () => {
+test('문제 탭: 첫 문제는 A·G·H, 보기 5개 중 정답은 계산한 모양 하나뿐, 정리는 4단계', () => {
   const s = {};
   P3.init(s);
   assert.equal(js(s.phQ.tri), js(['A', 'G', 'H']));
@@ -91,8 +92,9 @@ test('문제 탭: 첫 문제는 A·G·H, 보기 5개 중 정답은 계산한 모
     assert.equal(Q.choices.find((c) => c.ok).h, sec.name);
     assert.ok(Q.stem.includes(`세 꼭짓점 ${s.phQ.tri.join(', ')}`));
     Q.choices.filter((c) => !c.ok).forEach((c) => assert.ok(c.hint, `${sec.label}: ${c.h} 힌트 없음`));
-    assert.equal(P3.steps(M).length, 3);
-    assert.ok(P3.steps(M)[2].includes(sec.name));
+    assert.equal(P3.steps(M).length, 4);
+    assert.ok(P3.steps(M)[3].includes(sec.name));
+    assert.ok(P3.steps(M)[1].includes(sec.tri.join('')), '2단계가 문제의 세 점 삼각형 이름을 씀');
   }
 });
 
@@ -124,4 +126,51 @@ test('꼭짓점 단추: 세 개까지 고르고 네 번째를 누르면 가장 �
   assert.equal(P3.model(s).sec, null);
   assert.equal(chip('G').on(s), true);
   assert.equal(chip('A').on(s), false);
+});
+
+const area = (ps) => { let a = [0, 0, 0]; ps.forEach((p, i) => { const q = ps[(i + 1) % ps.length]; a = [a[0] + p[1] * q[2] - p[2] * q[1], a[1] + p[2] * q[0] - p[0] * q[2], a[2] + p[0] * q[1] - p[1] * q[0]]; }); return Math.hypot(...a) / 2; };
+const same = (p, q) => p.every((v, i) => Math.abs(v - q[i]) < 1e-9);
+
+test('평면 넓히기: 0 이면 세 점을 이은 삼각형, 1 이면 단면, 그 사이는 점점 커진다 (56가지 모두)', () => {
+  for (const x of CS.ALL) {
+    const p0 = CS.patchAt(x, 0), p1 = CS.patchAt(x, 1), tri = x.tri.map(CS.pos);
+    assert.ok(p1.every((p, i) => same(p, CS.pos(x.poly[i]))), `${x.tri.join('')}: 1 이면 단면의 꼭짓점`);
+    // 0 이면 넓이가 세 점 삼각형의 넓이와 같고, 세 점이 모두 꼭짓점으로 남아 있다
+    assert.ok(Math.abs(area(p0) - area(tri)) < 1e-9, `${x.tri.join('')}: 0 이면 삼각형의 넓이`);
+    assert.ok(tri.every((p) => p0.some((q) => same(p, q))), `${x.tri.join('')}: 0 에서도 세 점이 꼭짓점`);
+    let prev = area(p0);
+    for (const t of [0.25, 0.5, 0.75, 1]) { const a = area(CS.patchAt(x, t)); assert.ok(a >= prev - 1e-9, `${x.tri.join('')}: 넓이가 줄어듦`); prev = a; }
+    if (x.kind === 'tri') { assert.equal(js(CS.patchAt(x, 0)), js(CS.patchAt(x, 1)), '정삼각형은 넓혀도 그대로'); assert.ok(p0.length === 3); }
+    else assert.ok(area(p1) > area(p0) + 1e-9, `${x.tri.join('')}: 넓히면 넓이가 늘어야 함`);
+  }
+  // 선생님 문항: 삼각형 AGH(직각삼각형, 직각은 H) → 직사각형 ABGH, 넓이 2배
+  const a = CS.sectionOf3('A', 'G', 'H');
+  assert.equal(CS.triName(a), '직각삼각형');
+  assert.equal(CS.rightVertex(a), 'H');
+  assert.ok(Math.abs(area(CS.patchAt(a, 1)) / area(CS.patchAt(a, 0)) - 2) < 1e-9);
+  const b = CS.sectionOf3('B', 'D', 'E');
+  assert.equal(CS.triName(b), '정삼각형');
+  assert.equal(CS.rightVertex(b), null);
+});
+
+test('직각삼각형 보기의 힌트는 문제의 세 점 삼각형 이름을 쓰고 평면이 더 넓다고 알려 준다', () => {
+  const s = {};
+  P3.init(s);
+  const hint = (tri) => { s.phQ = { tri }; return P3.prob(P3.model(s), s).choices.find((c) => c.h === '직각삼각형').hint; };
+  assert.ok(hint(['A', 'G', 'H']).includes('AGH') && hint(['A', 'G', 'H']).includes('평면은 더 넓어요'));
+  assert.ok(hint(['A', 'B', 'C']).includes('ABC') && hint(['A', 'B', 'C']).includes('평면은 더 넓어요'));
+  assert.ok(hint(['B', 'D', 'E']).includes('BDE') && !hint(['B', 'D', 'E']).includes('더 넓어요'));
+});
+
+test('대표 단면: A·G·H 는 삼각형(0)에서 시작해 저절로 넓어지고, 나머지와 직접 고르기는 단면(1)부터', () => {
+  const s = {};
+  P3.init(s);
+  assert.equal(s.phTe, 0);
+  const chip = (L) => P3.presets(s).find((p) => p.label === L);
+  chip('정삼각형 (B·D·E)').apply(s);
+  assert.equal(s.phTe, 1); assert.ok(!s.playing);
+  chip('직사각형 (A·G·H)').apply(s);
+  assert.equal(s.phTe, 0); assert.ok(s.playing);
+  s.phTe = 0; chip('C').apply(s);
+  assert.equal(s.phTe, 1); assert.ok(!s.playing);
 });

@@ -90,10 +90,26 @@
     return sec;
   }
 
+  // 「평면 넓히기」: t=0 이면 세 점을 이은 삼각형, t=1 이면 정육면체 안에서 평면이 지나는 부분 전체(단면).
+  // 단면이 사각형이면 넷째 점이 세 점 삼각형의 한 변 위(이웃한 두 점의 가운데)에서 출발해 제자리로 옮겨 가며 삼각형이 사각형으로 넓어집니다.
+  // 단면이 삼각형이면 넓혀도 그대로입니다. 반환: 3차원 점(배열)의 목록
+  function patchAt(sec, t) {
+    const ps = sec.poly.map(pos), n = ps.length;
+    if (n === 3) return ps;
+    const j = sec.poly.indexOf(sec.fourth), a = ps[(j + n - 1) % n], c = ps[(j + 1) % n], w = ps[j];
+    ps[j] = [0, 1, 2].map((i) => (a[i] + c[i]) / 2 + (w[i] - (a[i] + c[i]) / 2) * t);
+    return ps;
+  }
+  // 세 점을 이은 삼각형의 이름(정삼각형 · 직각삼각형)과 직각인 꼭짓점(없으면 null)
+  const triName = (sec) => shapeOf(sec.tri).name;
+  function rightVertex(sec) {
+    return sec.tri.find((L) => { const o = sec.tri.filter((x) => x !== L); return Math.abs(dot(sub(pos(o[0]), pos(L)), sub(pos(o[1]), pos(L)))) < EPS; }) || null;
+  }
+
   // 서로 다른 세 꼭짓점의 조합 56가지
   const ALL = [];
   for (let i = 0; i < 8; i++) for (let j = i + 1; j < 8; j++) for (let k = j + 1; k < 8; k++) ALL.push(sectionOf3(NAMES[i], NAMES[j], NAMES[k]));
 
-  const api = { NAMES, POS, pos, relOf, REL_KO, FACE_KO, commonFace, lettersOnFace, cyc, shapeOf, crossCount, sectionOf3, ALL, KIND_KO };
+  const api = { NAMES, POS, pos, relOf, REL_KO, FACE_KO, commonFace, lettersOnFace, cyc, shapeOf, crossCount, sectionOf3, ALL, KIND_KO, patchAt, triName, rightVertex };
   (window.APL_PH = window.APL_PH || {}).cubeSec = api;
 })();
