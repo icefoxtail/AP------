@@ -175,3 +175,54 @@ test('1209 자막의 수치(6π→12π, 36π→72π)가 공식과 같다', () =>
   assert.ok(text.includes(`${S(r, th0)}π → ${S(r, th1)}π`), `넓이 ${S(r, th0)}π → ${S(r, th1)}π`);
   assert.ok(text.includes(`${th0}°`) && text.includes(`${th1}°`), '중심각 시작·끝 값');
 });
+
+// 영상 제목(title): 대본마다 있고(견본 8개), 20자 이하이며, 검증이 긴 제목·빈 제목·태그를 막는다.
+test('모든 영상 대본에 짧은 제목(title, 20자 이하)이 있다', () => {
+  for (const [id, script] of Object.entries(videos)) {
+    assert.ok(typeof script.title === 'string' && script.title.trim(), `${id}: title 이 없습니다`);
+    assert.ok(script.title.trim().length <= core.LIMITS.maxTitleChars, `${id}: title ${script.title.length}자`);
+  }
+});
+
+test('title 검증: 없어도 통과, 20자 초과·빈 글·태그·수식은 오류, compile 이 title 을 돌려준다', () => {
+  const base = videos['1209'];
+  const withTitle = (t) => ({ ...base, title: t });
+  assert.deepEqual(core.validate({ ...base, title: undefined }).errors, [], 'title 생략 가능');
+  assert.deepEqual(core.validate(withTitle('중심각이 2배면 호는?')).errors, []);
+  assert.ok(core.validate(withTitle('가'.repeat(core.LIMITS.maxTitleChars + 1))).errors.some((e) => e.includes('title')), '너무 긴 title');
+  assert.ok(core.validate(withTitle('   ')).errors.some((e) => e.includes('title')), '빈 title');
+  assert.ok(core.validate(withTitle('<b>호</b>')).errors.some((e) => e.includes('title')), '태그 title');
+  assert.ok(core.validate(withTitle('$x$')).errors.some((e) => e.includes('title')), '수식 title');
+  assert.equal(core.compile(withTitle(' 제목 ')).title, '제목');
+  assert.equal(core.compile({ ...base, title: undefined }).title, null);
+});
+
+// snap: to 로 움직이는 동안 시작값 기준 snap 의 배수로만 지나가고(소수 방지), 끝 값은 정확히 to.
+test('snap 검증: 양수 숫자·to 와 함께만, compile·stateAt 이 계단식으로 넘긴다', () => {
+  const base = videos['1209'];
+  const withSnap = (snap) => ({ ...base, cues: base.cues.map((c, i) => (i === 0 ? { ...c, snap } : c)) });
+  assert.deepEqual(core.validate(withSnap(15)).errors, []);
+  assert.ok(core.validate(withSnap(0)).errors.some((e) => e.includes('snap')), 'snap 0');
+  assert.ok(core.validate(withSnap('x')).errors.some((e) => e.includes('snap')), 'snap 문자');
+  assert.ok(core.validate({ ...base, cues: base.cues.map((c, i) => (i === 1 ? { ...c, snap: 5 } : c)) }).errors.some((e) => e.includes('snap')), 'to 없는 칸의 snap');
+  const cs = core.compile(withSnap(15));
+  const b = { nums: { ...base.start }, sets: {}, step: 0, part: null };
+  const vals = new Set();
+  for (let t = 0; t <= 4 + 1e-9; t += 0.05) vals.add(core.stateAt(cs, t, b).nums.b1209_th);
+  assert.deepEqual([...vals].sort((a, c) => a - c), [90, 105, 120, 135, 150, 165, 180]);
+});
+
+// 움직이는 동안 소수가 보이지 않게 snap 을 쓴 영상은, 지나가는 모든 값에서 호·넓이(π 계수)가 정수여야 한다(1209·1210).
+test('1209·1210 snap: 지나가는 모든 중심각에서 호·넓이의 π 계수가 정수', () => {
+  for (const [id, key, r] of [['1209', 'b1209_th', 12], ['1210', 'b1210_th', 9]]) {
+    const script = videos[id];
+    assert.ok(script.cues.some((c) => c.snap > 0), `${id}: snap 이 있어야 합니다`);
+    const cs = core.compile(script);
+    const b = { nums: { ...script.start }, sets: {}, step: 0, part: null };
+    for (let t = 0; t <= script.length + 1e-9; t += 0.05) {
+      const th = core.stateAt(cs, Math.min(t, script.length), b).nums[key];
+      const arc = (2 * r * th) / 360, area = (r * r * th) / 360;
+      assert.ok(Math.abs(arc - Math.round(arc)) < 1e-9 && Math.abs(area - Math.round(area)) < 1e-9, `${id} t=${t.toFixed(2)} θ=${th}: 호 ${arc}π, 넓이 ${area}π 가 정수가 아님`);
+    }
+  }
+});
