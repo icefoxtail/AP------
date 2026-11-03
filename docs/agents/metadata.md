@@ -3,6 +3,12 @@
 > 2026-10-30 루트 `AGENTS.md`에서 옮긴 원문이다. 문구는 그대로 두고, 링크 경로만 이 폴더 기준으로 고쳤다. 본문 속 백틱 경로는 저장소 루트 기준이다.
 > 이 영역 작업을 시작할 때 읽는다. 공통 규칙과 작업별 안내는 루트 [AGENTS.md](../../AGENTS.md)에 있다. 새 지시는 루트 `AGENTS.md`가 아니라 이 문서에 추가한다.
 
+## CURRENT — 공유 크로스워크는 추가만 한다 / 통파일 해시 고정은 봉인 영수증 + 행 검사로만 허용 (2026-11-03, 사용자 결정 A안)
+
+- `archive/data/meta-foundation/crosswalks/**`는 다른 세션이 계속 행을 덧붙이는 공유 파일이다. 승인된 Generated Meta가 박아 둔 파일 통해시(`rpmDraftAuthoritySha256`, `rpmAuthoritySha256`)는 이 파일이 자라면 달라진다. 가드는 고정된 옛 해시를 (1) 봉인된 영수증(`archive/tools/sealed-crosswalk-digests.cjs`)이 같은 파일에 대해 기록한 해시이고 (2) Meta가 가리키는 행이 현재 파일에 그대로 있을 때(코스·단원·소단원·L1~L3, 생성 L4가 아니면 L4 라벨 일치)만 받는다. 어느 쪽이든 어긋나면 그대로 실패시킨다. 승인·영수증·학생 화면 내용은 고치지 않는다.
+- `auto-register-approved-qid9.mjs`는 기존 승인 기록을 "다시 계산한 Meta와 크로스워크 해시 필드만 다르다"(해시를 같게 맞춘 정규화 비교) + 위 두 조건일 때만 변경 없음으로 넘긴다. 소스 샤드·시각 결속·샤드 드리프트·중복 검사는 그대로다. 새 가드를 만들 때도 통해시 동일성 대신 이 방식을 쓴다.
+- 이유: 2026-11-03 f8e9ca610(고1 2학기 기말 유사 5건의 크로스워크 행 추가)이 `high1.json` 통해시를 바꿔 승인 Palma UID 약 171건의 Meta가 옛 해시를 가리키게 됐고, 학생 내용은 그대로인데 CI(`EXISTING_APPROVED_UID_REQUIRES_PINPOINT_REPAIR`)와 학생 사이트 배포가 막혔다. 주의: 봉인 영수증(현재 2개)에 없는 해시를 박은 기록은 다음 추가 때 같은 이유로 막힌다. 그런 기록이 생기면 봉인 목록에 영수증을 더하는 방안을 사용자와 정한다(임의로 목록을 넓히지 않는다).
+
 ## CURRENT TOP — 단일 메타 Resolver 연결 (2026-10-30)
 
 - 신규 기출 CREATE/R1/R2/R3에서 Primary RPM L1~L4 + CrossConcept/Condition/Integration을 교육과정 내 실제 풀이로 판정하고, PT/TPL은 [단일 진입·Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)의 공식 명령/ACTIVE 바인딩으로만 투영한다. 작업자가 PT/TPL을 자유 추정하거나 CrossConcept으로 Primary를 대체하지 않는다. 모델 공통 규칙이며 사후 FINAL QA의 기존 PT/TPL 재검 제외·예약 Git writer 금지/현재 캠페인 설정은 유지한다.
