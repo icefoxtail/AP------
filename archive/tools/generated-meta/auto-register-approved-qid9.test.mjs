@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {eligibleApprovedQids,missingApprovedUids,unknownApprovedQid9Manifests,verifyExplicitPackageApproval,resolveQ21ParameterRpmRecord,resolveQ22B2RpmRecord,verifySourceProjectionBinding,verifyApprovedQuestionBodyParity,canonicalIntegrationPattern,isAllowedGeneratedMetaProjectionRepair} from './auto-register-approved-qid9.mjs';
-import {gitBlobSha} from './register-approved-generated-meta.mjs';
+import {eligibleApprovedQids,missingApprovedUids,unknownApprovedQid9Manifests,verifyExplicitPackageApproval,resolveQ21ParameterRpmRecord,resolveQ22B2RpmRecord,verifySourceProjectionBinding,verifyApprovedQuestionBodyParity,canonicalIntegrationPattern,isAllowedGeneratedMetaProjectionRepair,sealedCrosswalkDigestOnlyDrift,reconcileRpmResolutionBytes} from './auto-register-approved-qid9.mjs';
+import {gitBlobSha,metaSha256,sha256Bytes} from './register-approved-generated-meta.mjs';
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../..');
 const DIR='alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/';
@@ -159,4 +159,81 @@ test('only scoped Q18 and Q23 generated-L4 fingerprint refreshes qualify for pro
   assert.equal(isAllowedGeneratedMetaProjectionRepair('ALITE-PALMA25-2MID-Q23-C3',q23C3Old,q23C3New),true);
   assert.equal(isAllowedGeneratedMetaProjectionRepair('ALITE-PALMA25-2MID-Q23-C3',q23C3Old,{...q23C3New,crossConceptKeys:['FAKE']}),false);
   assert.equal(isAllowedGeneratedMetaProjectionRepair('ALITE-PALMA25-2MID-Q22-B2',q23Old,q23New),false);
+});
+
+// ---- Shared crosswalk grows (append-only): pinned whole-file digest drift, 2026-11-03 (f8e9ca610) ----
+const CROS='archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json';
+const crossBytes=fs.readFileSync(path.join(ROOT,CROS));
+const crossDoc=JSON.parse(crossBytes.toString('utf8'));
+const currentCrossSha=sha256Bytes(crossBytes);
+const consumerIndex=JSON.parse(fs.readFileSync(path.join(ROOT,'archive/data/generated-lite-consumer/v1/index.json'),'utf8'));
+function driftFixture(uid){
+  const existingRow=structuredClone(consumerIndex.records.find(row=>row.uid===uid));
+  const field=existingRow.meta.rpmL4Namespace==='GENERATED_EXT_L4'?'rpmAuthoritySha256':'rpmDraftAuthoritySha256';
+  const meta=structuredClone(existingRow.meta);meta[field]=currentCrossSha;
+  return {existingRow,meta,field};
+}
+const drift=(fx,over={})=>sealedCrosswalkDigestOnlyDrift({root:ROOT,crosswalkPath:CROS,crosswalkRecords:crossDoc.records,currentCrosswalkSha256:currentCrossSha,existingRow:fx.existingRow,meta:fx.meta,...over});
+
+test('an approved record whose only difference is a sealed crosswalk digest with intact rows is treated as unchanged (draft and generated-L4 namespaces)',()=>{
+  for(const uid of ['ALITE-PALMA25-2MID-Q17-A1','ALITE-PALMA25-2MID-Q23-C3']){
+    const fx=driftFixture(uid);
+    assert.notEqual(fx.existingRow.meta[fx.field],currentCrossSha,'precondition: the record pins an older crosswalk digest');
+    assert.notEqual(metaSha256(fx.meta),fx.existingRow.metaFinalSha256,'precondition: the recomputed Meta hash differs only because of the digest');
+    assert.deepEqual(drift(fx),{ok:true,reason:'SEALED_CROSSWALK_DIGEST_ONLY_DRIFT'},uid);
+  }
+});
+
+test('a changed or missing crosswalk row that the Meta names keeps the record failing even with a sealed digest',()=>{
+  const fx=driftFixture('ALITE-PALMA25-2MID-Q17-A1');
+  const id=fx.existingRow.meta.rpmPrimaryRecordId;
+  const mutate=fn=>{const records=structuredClone(crossDoc.records);fn(records.find(row=>row.id===id));return records;};
+  const cases={
+    RPM_ROW_RPML3_CHANGED:()=>mutate(row=>{row.rpmPath.l3+=' (changed)';}),
+    RPM_ROW_L4_CHANGED:()=>mutate(row=>{row.rpmPath.l4+=' (changed)';}),
+    RPM_ROW_COURSE_UNIT_CHANGED:()=>mutate(row=>{row.subUnitKey='H22-C2-00-OTHER';}),
+    RPM_PRIMARY_RECORD_NOT_UNIQUE:()=>crossDoc.records.filter(row=>row.id!==id)
+  };
+  for(const [reason,build] of Object.entries(cases))assert.equal(drift(fx,{crosswalkRecords:build()}).reason,reason);
+  // rows the Meta does not name may be added or changed freely
+  const unrelated=structuredClone(crossDoc.records);unrelated.push({...structuredClone(unrelated[0]),id:'H1-RPM-999-TEST-ADDED'});
+  assert.equal(drift(fx,{crosswalkRecords:unrelated}).ok,true);
+  // the generated-L4 record keeps its L1-L3 and unit checks as well
+  const g=driftFixture('ALITE-PALMA25-2MID-Q23-C3');
+  const changed=structuredClone(crossDoc.records);changed.find(row=>row.id===g.existingRow.meta.rpmPrimaryRecordId).rpmPath.l3+=' (changed)';
+  assert.equal(drift(g,{crosswalkRecords:changed}).reason,'RPM_ROW_RPML3_CHANGED');
+});
+
+test('a pinned digest that no sealed receipt recorded, or any other Meta difference, is still refused',()=>{
+  const fx=driftFixture('ALITE-PALMA25-2MID-Q17-A1');
+  const unsealed=structuredClone(fx.existingRow);unsealed.meta[fx.field]='d'.repeat(64);unsealed.metaFinalSha256=metaSha256(unsealed.meta);
+  assert.equal(drift({...fx,existingRow:unsealed}).reason,'PINNED_DIGEST_NOT_SEALED');
+  // a sealed digest is sealed for one crosswalk file only
+  const otherFile='archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json';
+  const moved=structuredClone(fx.existingRow);moved.meta.rpmDraftAuthorityRef=otherFile;moved.metaFinalSha256=metaSha256(moved.meta);
+  assert.equal(drift({...fx,existingRow:moved,meta:{...fx.meta,rpmDraftAuthorityRef:otherFile}},{crosswalkPath:otherFile}).reason,'PINNED_DIGEST_NOT_SEALED');
+  // any non-digest field differing (a level, a key, the unit) is a real change, not drift
+  for(const [key,value] of [['level','상'],['templateKey','TPL_OTHER'],['conditionKeys',['COND_OTHER']],['standardUnitKey','H22-C2-00']])
+    assert.equal(drift({...fx,meta:{...fx.meta,[key]:value}}).reason,'META_DIFFERS_BEYOND_CROSSWALK_DIGEST',key);
+  // the recomputed digest must be the current crosswalk digest, and the stored record must be self-consistent
+  assert.equal(drift({...fx,meta:{...fx.meta,[fx.field]:'e'.repeat(64)}}).reason,'RECOMPUTED_DIGEST_NOT_CURRENT');
+  assert.equal(drift({...fx,existingRow:{...fx.existingRow,metaFinalSha256:'f'.repeat(64)}}).reason,'EXISTING_RECORD_INTERNALLY_INCONSISTENT');
+  // a Meta that never pinned a crosswalk digest is not a drift case
+  const noField=structuredClone(fx.existingRow);delete noField.meta[fx.field];noField.metaFinalSha256=metaSha256(noField.meta);
+  assert.equal(drift({...fx,existingRow:noField,meta:noField.meta}).reason,'NO_CROSSWALK_DIGEST_FIELD');
+});
+
+test('immutable record-resolution evidence keeps its sealed authority digest only while the rebuilt document is otherwise identical',()=>{
+  const storedBytes=fs.readFileSync(path.join(ROOT,'archive/data/evidence-authority/v1/palma-mock-builder-20261010/Q21_C1_RPM_RECORD_RESOLUTION.json'));
+  const stored=JSON.parse(storedBytes.toString('utf8'));
+  assert.notEqual(stored.authority.sha256,currentCrossSha);
+  const build=over=>{const doc={...structuredClone(stored),...over,authority:{...stored.authority,sha256:currentCrossSha}};return {builtDoc:doc,builtBytes:Buffer.from(JSON.stringify(doc,null,2)+'\n')};};
+  const run=(built,extra={})=>reconcileRpmResolutionBytes({root:ROOT,crosswalkPath:CROS,currentCrosswalkSha256:currentCrossSha,...built,storedBytes,...extra});
+  assert.ok(run(build({})).equals(storedBytes));
+  const changed=build({selectedRecordId:'H1-RPM-247'});
+  assert.ok(run(changed).equals(changed.builtBytes),'a changed selected row must not reuse the stored bytes');
+  const unsealedStored=Buffer.from(JSON.stringify({...stored,authority:{...stored.authority,sha256:'d'.repeat(64)}},null,2)+'\n');
+  const same=build({});
+  assert.ok(run(same,{storedBytes:unsealedStored}).equals(same.builtBytes),'an unsealed stored digest must not be accepted');
+  assert.ok(run(same,{storedBytes:null}).equals(same.builtBytes));
 });

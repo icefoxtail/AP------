@@ -8,6 +8,7 @@ import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {registerApprovedGeneratedMeta,metaSha256,sha256Bytes,gitBlobSha} from './register-approved-generated-meta.mjs';
 import gate from '../generated-meta-retention-gate.cjs';
+import {crosswalkDigestAccepted} from '../sealed-crosswalk-digests.cjs';
 import { loadEvidenceAuthorityIndex, readHotEvidenceAuthority } from '../evidence-authority-v1.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../..');
 const DIR='alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/';
@@ -103,6 +104,55 @@ export function isAllowedGeneratedMetaProjectionRepair(uid,before,after){
   return result;
  };
  return metaSha256(strip(before))===metaSha256(strip(after));
+}
+// The shared RPM crosswalk (CROS) only grows. Approved Meta pins the whole-file sha256 of the crosswalk of its day, so every
+// append by another session changes the recomputed Meta even though the student-facing record did not change
+// (2026-11-03: f8e9ca610 blocked CI and deploy). An existing approved record is accepted as "unchanged" only when
+//  1) the existing and the recomputed Meta differ in the crosswalk digest field(s) and nothing else (normalized comparison),
+//  2) the existing record is internally consistent (metaFinalSha256 === metaSha256(meta)),
+//  3) the pinned digest is the current one or one a committed, sealed receipt recorded for this very file, and
+//  4) the crosswalk row the Meta names still exists in the CURRENT file and agrees with every field the Meta recorded
+//     (same checks as the retention gate: course, unit, sub-unit, L1-L3 labels, L4 label for non-generated L4).
+// Source shard, visual binding, shard drift and duplicate checks stay with the caller and are not relaxed.
+const CROSSWALK_DIGEST_FIELDS=['rpmDraftAuthoritySha256','rpmAuthoritySha256'];
+const authorityLabel=value=>typeof value==='string'?value.split('|').at(-1).trim():'';
+export function sealedCrosswalkDigestOnlyDrift({root,crosswalkPath,crosswalkRecords,currentCrosswalkSha256,existingRow,meta}){
+ const no=reason=>({ok:false,reason});
+ const old=existingRow?.meta;
+ if(!old||!meta)return no('META_MISSING');
+ if(existingRow.metaFinalSha256!==metaSha256(old))return no('EXISTING_RECORD_INTERNALLY_INCONSISTENT');
+ const present=CROSSWALK_DIGEST_FIELDS.filter(field=>field in old);
+ if(!present.length)return no('NO_CROSSWALK_DIGEST_FIELD');
+ const normalize=value=>{const copy=structuredClone(value);for(const field of CROSSWALK_DIGEST_FIELDS)if(field in copy)copy[field]='<CROSSWALK_DIGEST>';return copy;};
+ if(metaSha256(normalize(old))!==metaSha256(normalize(meta)))return no('META_DIFFERS_BEYOND_CROSSWALK_DIGEST');
+ const refField=old.rpmL4Namespace==='GENERATED_EXT_L4'?'rpmAuthorityRef':'rpmDraftAuthorityRef';
+ const shaField=old.rpmL4Namespace==='GENERATED_EXT_L4'?'rpmAuthoritySha256':'rpmDraftAuthoritySha256';
+ if(present.length!==1||present[0]!==shaField||old[refField]!==crosswalkPath||meta[refField]!==crosswalkPath)return no('CROSSWALK_DIGEST_FIELD_SHAPE');
+ if(meta[shaField]!==currentCrosswalkSha256)return no('RECOMPUTED_DIGEST_NOT_CURRENT');
+ if(!crosswalkDigestAccepted(root,crosswalkPath,old[shaField],currentCrosswalkSha256))return no('PINNED_DIGEST_NOT_SEALED');
+ const rows=(crosswalkRecords||[]).filter(row=>(row.id||row.recordId)===old.rpmPrimaryRecordId);
+ if(rows.length!==1)return no('RPM_PRIMARY_RECORD_NOT_UNIQUE');
+ const row=rows[0],p=row.rpmPath||row;
+ for(const [field,key] of [['rpmL1','majorUnit'],['rpmL2','midUnit'],['rpmL3','l3']])
+  if(authorityLabel(old[field])!==p[key])return no('RPM_ROW_'+field.toUpperCase()+'_CHANGED');
+ if(old.rpmL4Namespace!=='GENERATED_EXT_L4'&&authorityLabel(old.rpmL4)!==p.l4)return no('RPM_ROW_L4_CHANGED');
+ if(old.standardCourse!==row.standardCourse||old.standardUnitKey!==row.standardUnitKey||old.subUnitKey!==row.subUnitKey)return no('RPM_ROW_COURSE_UNIT_CHANGED');
+ return {ok:true,reason:'SEALED_CROSSWALK_DIGEST_ONLY_DRIFT'};
+}
+// Q21 C1-C3 / Q22 B2 keep a per-UID record-resolution evidence file whose `authority.sha256` is the crosswalk digest of the day it
+// was sealed (immutable hot evidence). The resolver rebuilds the evidence from the CURRENT rows, so a change to any row it used
+// (ids, L3/L4, unit, status, template candidate) already makes the rebuilt document differ. When the stored file equals the rebuilt
+// one except for a sealed `authority.sha256`, the stored bytes stay authoritative; otherwise the freshly built bytes are returned
+// and the caller's byte comparison fails exactly as before.
+export function reconcileRpmResolutionBytes({root,crosswalkPath,currentCrosswalkSha256,builtDoc,builtBytes,storedBytes}){
+ if(!storedBytes||!builtDoc?.authority)return builtBytes;
+ let stored;try{stored=JSON.parse(Buffer.from(storedBytes).toString('utf8'));}catch{return builtBytes;}
+ if(!stored?.authority||stored.authority.path!==crosswalkPath||builtDoc.authority.path!==crosswalkPath)return builtBytes;
+ if(stored.authority.sha256===builtDoc.authority.sha256)return builtBytes;
+ if(builtDoc.authority.sha256!==currentCrosswalkSha256)return builtBytes;
+ if(!crosswalkDigestAccepted(root,crosswalkPath,stored.authority.sha256,currentCrosswalkSha256))return builtBytes;
+ const normalize=doc=>JSON.stringify({...doc,authority:{...doc.authority,sha256:'<CROSSWALK_DIGEST>'}});
+ return normalize(stored)===normalize(builtDoc)?Buffer.from(storedBytes):builtBytes;
 }
 export function needsSameMetaSourceRebind(row,meta,currentSourceBlobSha){
  return !!row&&!!currentSourceBlobSha&&(!row.metaVerification||row.metaVerification.status==='VERIFIED_CURRENT_SOURCE')&&
@@ -553,7 +603,7 @@ const main=()=>{
        approvedPackage:{path:base,sha256:packageGit.sha256,gitBlobSha1:packageGit.blobSha1},
        approvalReceipt:{path:receiptPath,sha256:receiptGit.sha256,gitBlobSha1:receiptGit.blobSha1},
        authority:{path:CROS,sha256:crossHash},manifestDeclaredRecordIds:item.rpmRecordIds||[]};
-       const resolutionPath=q21ParameterRpmResolutionPath(uid),resolutionBytes=buf(resolutionDoc),resolutionSha=hex(resolutionBytes),resolutionBlob=gitBlobSha(resolutionBytes);
+       const resolutionPath=q21ParameterRpmResolutionPath(uid),resolutionBytes=reconcileRpmResolutionBytes({root,crosswalkPath:CROS,currentCrosswalkSha256:crossHash,builtDoc:resolutionDoc,builtBytes:buf(resolutionDoc),storedBytes:exists(resolutionPath)?read(resolutionPath):null}),resolutionSha=hex(resolutionBytes),resolutionBlob=gitBlobSha(resolutionBytes);
        if(mode==='write')write(resolutionPath,resolutionBytes);
        else requireTrue(exists(resolutionPath)&&canonicalOrWorkingBytes(root,resolutionPath).bytes.equals(resolutionBytes),'Q21_PARAMETER_RPM_RESOLUTION_EVIDENCE_REQUIRED_OR_DRIFTED:'+uid);
        rpmResolutionEvidence={path:resolutionPath,sha256:resolutionSha,gitBlobSha1:resolutionBlob,declaredRecordIds:declaredRpmIds,selectedRecordId:record.id,selectionBasis:rpmResolutionEvidence.selectionBasis};
@@ -564,7 +614,7 @@ const main=()=>{
         approvedPackage:{path:base,sha256:packageGit.sha256,gitBlobSha1:packageGit.blobSha1},
         approvalReceipt:{path:receiptPath,sha256:receiptGit.sha256,gitBlobSha1:receiptGit.blobSha1},
         authority:{path:CROS,sha256:crossHash},manifestDeclaredRecordIds:item.rpmRecordIds||[],packageDeclaredRecordIds:m.rpmRecordIds||[]};
-       const resolutionBytes=buf(resolutionDoc),resolutionSha=hex(resolutionBytes),resolutionBlob=gitBlobSha(resolutionBytes);
+       const resolutionBytes=reconcileRpmResolutionBytes({root,crosswalkPath:CROS,currentCrosswalkSha256:crossHash,builtDoc:resolutionDoc,builtBytes:buf(resolutionDoc),storedBytes:exists(q22B2RpmResolutionPath)?read(q22B2RpmResolutionPath):null}),resolutionSha=hex(resolutionBytes),resolutionBlob=gitBlobSha(resolutionBytes);
        if(mode==='write')write(q22B2RpmResolutionPath,resolutionBytes);
        else requireTrue(exists(q22B2RpmResolutionPath)&&canonicalOrWorkingBytes(root,q22B2RpmResolutionPath).bytes.equals(resolutionBytes),'Q22_B2_RPM_RESOLUTION_EVIDENCE_REQUIRED_OR_DRIFTED');
        rpmResolutionEvidence={path:q22B2RpmResolutionPath,sha256:resolutionSha,gitBlobSha1:resolutionBlob,declaredRecordIds:declaredRpmIds,selectedRecordId:record.id,selectionBasis:rpmResolutionEvidence.selectionBasis};
@@ -673,7 +723,9 @@ const main=()=>{
     requireTrue(existingCount===0||existingCount===1,'EXISTING_UID_DUPLICATE:'+uid);
      const currentGeneratedSourceBlob=exists(sourcePath)?gitBlobSha(read(sourcePath)):null;
      const existingRepair=!!existing&&(isAllowedGeneratedMetaProjectionRepair(uid,existing.meta,meta)||needsSameMetaSourceRebind(existing,meta,currentGeneratedSourceBlob));
-    if(existing?.metaFinalSha256===digest && existing.metaVerification?.status==='VERIFIED_CURRENT_SOURCE'&&
+     const crosswalkDigestOnlyDrift=!!existing&&existing.metaFinalSha256!==digest&&
+      sealedCrosswalkDigestOnlyDrift({root,crosswalkPath:CROS,crosswalkRecords:cross.records,currentCrosswalkSha256:crossHash,existingRow:existing,meta}).ok;
+    if((existing?.metaFinalSha256===digest||crosswalkDigestOnlyDrift) && existing.metaVerification?.status==='VERIFIED_CURRENT_SOURCE'&&
        existing.sourceShardGitSha===currentGeneratedSourceBlob&&existing.metaVerification.sourceShardGitSha===currentGeneratedSourceBlob){
     requireTrue(existing.shard===consumerPath.replace(/^archive\//,''),'EXISTING_UID_SHARD_DRIFT:'+uid);
     skipped++;continue;
