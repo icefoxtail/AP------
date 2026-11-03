@@ -18,11 +18,11 @@
   const cmv = (v) => fmtN(v) + ' cm';
 
   const PARAMS = {
-    soTr: P('밑면의 반지름 r', 1, 4, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm', onInput: (st) => { st.soTR = Math.max(st.soTR == null ? 6 : st.soTR, 2 * Math.round(st.soTr)); } }),
-    soTR: P('모선의 길이 R', 2, 9, 1, 6, { color: 'amber', hint: '끈이 한 바퀴를 도는 경우만 다뤄요: R은 r의 2배 이상(중심각 180° 이하)', format: (v) => Math.round(v) + ' cm', onInput: (st) => { st.soTR = Math.max(st.soTR, 2 * Math.round(st.soTr)); } }),
-    soTp: P('점 P의 위치 (꼭짓점에서의 거리)', 1, 12, 1, 3, { color: 'amber', hint: '모선을 따라 꼭짓점 O에서 떨어진 거리', format: (v) => Math.round(v) + ' cm' }),
-    soTf: P('작은 밑면의 반지름', 1, 4, 1, 2, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
-    soTg: P('큰 밑면의 반지름', 2, 6, 1, 4, { color: 'sky', format: (v) => Math.round(v) + ' cm' })
+    soTr: P('밑면의 반지름 r', 1, 7, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm', onInput: (st) => fixAng4(st, 0) }),
+    soTR: P('모선의 길이 R', 2, 15, 1, 6, { color: 'amber', hint: '끈이 한 바퀴를 도는 경우만 다뤄요: R은 r의 2배 이상(중심각 180° 이하). 중심각이 자연수가 되는 값만 골라져요', format: (v) => Math.round(v) + ' cm', onInput: (st) => fixAng4(st, 1) }),
+    soTp: P('점 P의 위치 (꼭짓점에서의 거리)', 1, 20, 1, 3, { color: 'amber', hint: '모선을 따라 꼭짓점 O에서 떨어진 거리', format: (v) => Math.round(v) + ' cm' }),
+    soTf: P('작은 밑면의 반지름', 1, 6, 1, 2, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
+    soTg: P('큰 밑면의 반지름', 2, 7, 1, 4, { color: 'sky', format: (v) => Math.round(v) + ' cm' })
   };
 
   /* ------------------------------------------------------------------ 전개도(부채꼴) ↔ 원뿔 위의 점 */
@@ -87,8 +87,15 @@
   const lenOf = { rim: (r, R, x) => 2 * PI * r, chord: (r, R, x) => 2 * R * Math.sin(rad(x / 2)) };
 
   /* ================================================================== s4-1 끈 감기 */
+  // 중심각 x = 360°×r/R이 자연수가 되는 (r, R)만 허용(R은 r의 2배 이상): 막대를 끌면 끈 막대를 우선해 가장 가까운 허용값으로 맞춰요
+  const ANG4 = G.angPairs(7, 15, (r, R) => R >= 2 * r);
+  const pairOf4 = (s, first) => { const r = clamp(Math.round(s.soTr), 1, 7), R = clamp(Math.round(s.soTR == null ? 6 : s.soTR), 2, 15); return ANG4.some((p) => p[0] === r && p[1] === R) ? [r, R] : G.snapAng(ANG4, r, R, first); };
+  function fixAng4(st, first) { const p = pairOf4(st, first); st.soTr = p[0]; st.soTR = p[1]; }
+  // 길이 값(√)은 중2 내용이라 학생 화면에 근삿값 소수를 쓰지 않아요: 선분 AA′의 길이는 자연수일 때(중심각 60°이면 R, 180°이면 2R)만 숫자로 쓰고, 그 밖에는 그림 비교와 「가장 짧아요」로 보여 줘요
+  const chordNat = (x, R) => (x === 60 ? R : x === 180 ? 2 * R : null);
+  const near1 = (M) => Math.abs(M.cur - M.chord) < 0.05;
   function m1(s) {
-    const r = clamp(Math.round(s.soTr), 1, 4), R = Math.max(clamp(Math.round(s.soTR), 2, 9), 2 * r), x = 360 * r / R;
+    const [r, R] = pairOf4(s, 0), x = 360 * r / R;
     const mode = s.soMode || 'via', a0 = -90 - x / 2, a1 = -90 + x / 2;
     const ms = clamp(s.soMs == null ? 0.75 * R : s.soMs, 0.12 * R, R), mp = clamp(s.soMp == null ? -90 : s.soMp, a0 + 1, a1 - 1);
     const A = pt({ x: 0, y: 0 }, R, a0), A2 = pt({ x: 0, y: 0 }, R, a1), M = pt({ x: 0, y: 0 }, ms, mp);
@@ -141,18 +148,19 @@
       // 길이 비교 막대(같은 눈금, 가로로 늘어남)
       if (C.txt) {
         const mx = Math.max(M.rim, M.chord, M.via);
-        bars(b, C, F.all, [{ label: '밑면 둘레를 따라', len: M.rim, text: `약 ${fmtN(M.rim)} cm`, color: SKY, hi: M.mode === 'rim' }, { label: '점 M을 지나게', len: M.via, text: `약 ${fmtN(M.via)} cm`, color: AMB, hi: M.mode === 'via' }, { label: '전개도의 직선', len: M.chord, text: `약 ${fmtN(M.chord)} cm`, color: GRN, hi: M.mode === 'line' }], mx);
+        const nat = chordNat(x, R);
+        bars(b, C, F.all, [{ label: '밑면 둘레를 따라', len: M.rim, text: `${2 * r}π cm`, color: SKY, hi: M.mode === 'rim' }, { label: '점 M을 지나게', len: M.via, text: Math.abs(M.via - M.chord) < 0.05 ? '직선과 같아요' : '직선보다 길어요', color: AMB, hi: M.mode === 'via' }, { label: '전개도의 직선', len: M.chord, text: nat != null ? `AA′ = ${nat} cm` : '가장 짧아요', color: GRN, hi: M.mode === 'line' }], mx);
       }
     },
     steps: (M) => [
       `원뿔의 옆면을 <b>펼쳐요</b>. 부채꼴의 두 끝 A, A′이 입체에서는 같은 점 A예요. 입체 위의 끈은 전개도에서 A와 A′을 잇는 선이에요.`,
       '두 점 사이를 잇는 선 중 가장 짧은 것은 <b>직선</b>이에요. 점 M을 지나가거나 호를 따라가면 더 길어요.',
-      `끈이 가장 짧을 때는 전개도의 <b>현 AA′</b>(직선)이에요. 이 값은 약 ${fmtN(M.chord)} cm이고 밑면 둘레(약 ${fmtN(M.rim)} cm)보다 짧아요.`
+      `끈이 가장 짧을 때는 전개도의 <b>선분 AA′</b>(직선)이에요. ${chordNat(M.x, M.R) != null ? `이때 AA′ = ${chordNat(M.x, M.R)} cm예요. ` : ''}호를 따라가는 끈(밑면 둘레 ${2 * M.r}π cm)보다 짧아요. <b>직선이 가장 짧아요.</b>`
     ],
     view: (M) => ({
       guide: '칩으로 끈의 모양을 바꿔 보세요. <b>점 M을 지나게</b>를 고르면 노란 점 M을 끌어 끈의 모양을 바꿀 수 있어요. 입체 위의 끈은 전개도의 선과 같고, 아래 막대로 길이를 비교해요.',
-      readouts: [rd('중심각 x', xTxt(M.x) + '°', ROSE), rd('지금 끈의 길이', `약 ${fmtN(M.cur)} cm`, AMB), rd('가장 짧은 끈 (직선 AA′)', `약 ${fmtN(M.chord)} cm`, GRN, '전개도의 현', null, true), rd('밑면 둘레를 따를 때', `약 ${fmtN(M.rim)} cm`, SKY)],
-      status: Math.abs(M.cur - M.chord) < 0.05 ? { tone: 'ok', text: '가장 짧은 끈!' } : { tone: 'info', text: `직선보다 ${fmtN(M.cur - M.chord)} cm 더 길어요` },
+      readouts: [rd('중심각 x', xTxt(M.x) + '°', ROSE), rd('지금 끈', M.mode === 'rim' ? `${2 * M.r}π cm` : near1(M) ? (chordNat(M.x, M.R) != null ? `${chordNat(M.x, M.R)} cm` : '직선 AA′') : '직선보다 더 길어요', AMB), rd('가장 짧은 끈 (직선 AA′)', chordNat(M.x, M.R) != null ? `${chordNat(M.x, M.R)} cm` : '선분 AA′', GRN, '전개도의 선분', null, true), rd('밑면 둘레를 따를 때', `${2 * M.r}π cm`, SKY)],
+      status: near1(M) ? { tone: 'ok', text: '가장 짧은 끈! 직선이 가장 짧아요' } : { tone: 'info', text: '직선보다 더 길어요' },
       formula: '<p>입체 위의 최단 거리 = <b>전개도에서 두 점을 잇는 선분</b>의 길이</p><p>펼치기 → 두 점 A, A′ 잇기 → 선분 AA′의 길이</p>',
       rule: '원뿔의 옆면을 따라 한 바퀴 도는 최단 거리는 전개도에서 두 점을 직선으로 이은 선분의 길이이다',
       notes: notes('밑면의 둘레를 따라 도는 끈은 <b>최단이 아니에요</b>.', '입체에서는 곡선처럼 보여도 펼치면 <b>직선</b>이에요.')
@@ -166,7 +174,7 @@
   /* ================================================================== s4-2 길이 구하기 (60° · 180°) */
   const S42 = { 60: 6, 180: 2 };
   function m2(s) {
-    const ang = s.soAng === 180 ? 180 : 60, kk = S42[ang], r = clamp(Math.round(s.soTr), 1, 4), R = r * kk, x = ang;
+    const ang = s.soAng === 180 ? 180 : 60, kk = S42[ang], r = clamp(Math.round(s.soTr), 1, 7), R = r * kk, x = ang;
     const O = { x: 0, y: 0 }, a0 = -90 - x / 2, a1 = -90 + x / 2, A = pt(O, R, a0), A2 = pt(O, R, a1);
     return { ang, kk, r, R, x, a0, a1, A, A2, ans: ang === 60 ? R : 2 * R };
   }
@@ -246,7 +254,7 @@
 
   /* ================================================================== s4-3 모선 위의 점에서 출발 */
   function m3(s) {
-    const ang = s.soAng3 === 180 ? 180 : 60, kk = S42[ang], r = clamp(Math.round(s.soTr), 1, 4), R = r * kk, x = ang;
+    const ang = s.soAng3 === 180 ? 180 : 60, kk = S42[ang], r = clamp(Math.round(s.soTr), 1, 7), R = r * kk, x = ang;
     const p = clamp(Math.round(s.soTp), 1, R), O = { x: 0, y: 0 }, a0 = -90 - x / 2, a1 = -90 + x / 2;
     return { ang, kk, r, R, x, p, a0, a1, P1: pt(O, p, a0), P2: pt(O, p, a1), A: pt(O, R, a0), A2: pt(O, R, a1), ans: ang === 60 ? p : 2 * p };
   }
@@ -320,7 +328,7 @@
 
   /* ================================================================== s4-4 원뿔대에서도 (중심각 60°) */
   function m4(s) {
-    const r2 = clamp(Math.round(s.soTg), 2, 6), r1 = clamp(Math.min(Math.round(s.soTf), r2 - 1), 1, 4), k = 6, R2 = k * r2, R1 = k * r1, x = 60;
+    const r2 = clamp(Math.round(s.soTg), 2, 7), r1 = clamp(Math.min(Math.round(s.soTf), r2 - 1), 1, 6), k = 6, R2 = k * r2, R1 = k * r1, x = 60;
     const O = { x: 0, y: 0 }, a0 = -90 - x / 2, a1 = -90 + x / 2, A = pt(O, R2, a0), A2 = pt(O, R2, a1), Hf = Math.sqrt(R2 * R2 - r2 * r2);
     return { r1, r2, R1, R2, x, a0, a1, A, A2, Hf, hF: (R2 - R1) * Hf / R2, ans: R2 };
   }

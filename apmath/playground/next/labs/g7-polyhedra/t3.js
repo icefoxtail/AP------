@@ -16,7 +16,7 @@
 
   const PARAMS = {
     phFold: P('접기', 0, 1, 0.005, 0, { color: 'amber', hint: '막대를 끌거나 ▶ 를 눌러 전개도를 접어 보세요', format: (v) => (v < 0.01 ? '펼친 전개도' : v > 0.99 ? '다 접음' : Math.round(v * 100) + '%') }),
-    phEdge: P('정육면체의 한 모서리 a', 4, 12, 2, 8, { color: 'sky', hint: '모서리의 길이를 바꿔 보세요', format: (v) => `${Math.round(v)}` }),
+    phEdge: P('정육면체의 한 모서리 a', 4, 14, 2, 8, { color: 'sky', hint: '모서리의 길이를 바꿔 보세요', format: (v) => `${Math.round(v)}` }),
     phAnt: P('점 P의 위치 (E에서 F까지)', 0.1, 0.9, 0.01, 0.3, { color: 'amber', hint: '경로가 모서리 EF를 지나는 점 P를 옮겨 보세요', format: (v) => `${Math.round(v * 100)}%` })
   };
   const AMB = 'amber', SKY = 'sky', GRN = 'green', RED = 'red', VIO = 'violet', ORG = 'orange';
