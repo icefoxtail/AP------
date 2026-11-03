@@ -91,6 +91,9 @@
   const ANG4 = G.angPairs(7, 15, (r, R) => R >= 2 * r);
   const pairOf4 = (s, first) => { const r = clamp(Math.round(s.soTr), 1, 7), R = clamp(Math.round(s.soTR == null ? 6 : s.soTR), 2, 15); return ANG4.some((p) => p[0] === r && p[1] === R) ? [r, R] : G.snapAng(ANG4, r, R, first); };
   function fixAng4(st, first) { const p = pairOf4(st, first); st.soTr = p[0]; st.soTR = p[1]; }
+  // 길이 값(√)은 중2 내용이라 학생 화면에 근삿값 소수를 쓰지 않아요: 선분 AA′의 길이는 자연수일 때(중심각 60°이면 R, 180°이면 2R)만 숫자로 쓰고, 그 밖에는 그림 비교와 「가장 짧아요」로 보여 줘요
+  const chordNat = (x, R) => (x === 60 ? R : x === 180 ? 2 * R : null);
+  const near1 = (M) => Math.abs(M.cur - M.chord) < 0.05;
   function m1(s) {
     const [r, R] = pairOf4(s, 0), x = 360 * r / R;
     const mode = s.soMode || 'via', a0 = -90 - x / 2, a1 = -90 + x / 2;
@@ -145,18 +148,19 @@
       // 길이 비교 막대(같은 눈금, 가로로 늘어남)
       if (C.txt) {
         const mx = Math.max(M.rim, M.chord, M.via);
-        bars(b, C, F.all, [{ label: '밑면 둘레를 따라', len: M.rim, text: `약 ${fmtN(M.rim)} cm`, color: SKY, hi: M.mode === 'rim' }, { label: '점 M을 지나게', len: M.via, text: `약 ${fmtN(M.via)} cm`, color: AMB, hi: M.mode === 'via' }, { label: '전개도의 직선', len: M.chord, text: `약 ${fmtN(M.chord)} cm`, color: GRN, hi: M.mode === 'line' }], mx);
+        const nat = chordNat(x, R);
+        bars(b, C, F.all, [{ label: '밑면 둘레를 따라', len: M.rim, text: `${2 * r}π cm`, color: SKY, hi: M.mode === 'rim' }, { label: '점 M을 지나게', len: M.via, text: Math.abs(M.via - M.chord) < 0.05 ? '직선과 같아요' : '직선보다 길어요', color: AMB, hi: M.mode === 'via' }, { label: '전개도의 직선', len: M.chord, text: nat != null ? `AA′ = ${nat} cm` : '가장 짧아요', color: GRN, hi: M.mode === 'line' }], mx);
       }
     },
     steps: (M) => [
       `원뿔의 옆면을 <b>펼쳐요</b>. 부채꼴의 두 끝 A, A′이 입체에서는 같은 점 A예요. 입체 위의 끈은 전개도에서 A와 A′을 잇는 선이에요.`,
       '두 점 사이를 잇는 선 중 가장 짧은 것은 <b>직선</b>이에요. 점 M을 지나가거나 호를 따라가면 더 길어요.',
-      `끈이 가장 짧을 때는 전개도의 <b>현 AA′</b>(직선)이에요. 이 값은 약 ${fmtN(M.chord)} cm이고 밑면 둘레(약 ${fmtN(M.rim)} cm)보다 짧아요.`
+      `끈이 가장 짧을 때는 전개도의 <b>선분 AA′</b>(직선)이에요. ${chordNat(M.x, M.R) != null ? `이때 AA′ = ${chordNat(M.x, M.R)} cm예요. ` : ''}호를 따라가는 끈(밑면 둘레 ${2 * M.r}π cm)보다 짧아요. <b>직선이 가장 짧아요.</b>`
     ],
     view: (M) => ({
       guide: '칩으로 끈의 모양을 바꿔 보세요. <b>점 M을 지나게</b>를 고르면 노란 점 M을 끌어 끈의 모양을 바꿀 수 있어요. 입체 위의 끈은 전개도의 선과 같고, 아래 막대로 길이를 비교해요.',
-      readouts: [rd('중심각 x', xTxt(M.x) + '°', ROSE), rd('지금 끈의 길이', `약 ${fmtN(M.cur)} cm`, AMB), rd('가장 짧은 끈 (직선 AA′)', `약 ${fmtN(M.chord)} cm`, GRN, '전개도의 현', null, true), rd('밑면 둘레를 따를 때', `약 ${fmtN(M.rim)} cm`, SKY)],
-      status: Math.abs(M.cur - M.chord) < 0.05 ? { tone: 'ok', text: '가장 짧은 끈!' } : { tone: 'info', text: `직선보다 ${fmtN(M.cur - M.chord)} cm 더 길어요` },
+      readouts: [rd('중심각 x', xTxt(M.x) + '°', ROSE), rd('지금 끈', M.mode === 'rim' ? `${2 * M.r}π cm` : near1(M) ? (chordNat(M.x, M.R) != null ? `${chordNat(M.x, M.R)} cm` : '직선 AA′') : '직선보다 더 길어요', AMB), rd('가장 짧은 끈 (직선 AA′)', chordNat(M.x, M.R) != null ? `${chordNat(M.x, M.R)} cm` : '선분 AA′', GRN, '전개도의 선분', null, true), rd('밑면 둘레를 따를 때', `${2 * M.r}π cm`, SKY)],
+      status: near1(M) ? { tone: 'ok', text: '가장 짧은 끈! 직선이 가장 짧아요' } : { tone: 'info', text: '직선보다 더 길어요' },
       formula: '<p>입체 위의 최단 거리 = <b>전개도에서 두 점을 잇는 선분</b>의 길이</p><p>펼치기 → 두 점 A, A′ 잇기 → 선분 AA′의 길이</p>',
       rule: '원뿔의 옆면을 따라 한 바퀴 도는 최단 거리는 전개도에서 두 점을 직선으로 이은 선분의 길이이다',
       notes: notes('밑면의 둘레를 따라 도는 끈은 <b>최단이 아니에요</b>.', '입체에서는 곡선처럼 보여도 펼치면 <b>직선</b>이에요.')
