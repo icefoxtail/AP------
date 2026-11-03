@@ -216,14 +216,13 @@
   function netScene(b, s, C, r, R, o = {}) {
     const x = xOf(r, R), G0 = netGeom(R, r, x), A = sectorBox(R, x, r, true), phone = b.W < 560 && !b.thumb;
     // 휴대폰: 막대(둘레 비교)가 칩 위에 오도록 아래 여백을 픽셀로 잡습니다. 그 위쪽에서 입체·전개도를 한 화면에 키웁니다.
-    const padS = { l: 34, r: 34, t: 46, b: o.extraBottom ? (phone ? 104 : 30 + o.extraBottom) : 30 };
+    const padS = { l: 34, r: 34, t: 46, b: o.extraBottom ? (phone ? 104 : 96) : 30 }; // 막대 둘이 들어갈 아래 여백은 화면 픽셀로 잡습니다(세계 단위로 잡으면 무대가 작을 때 막대가 무대 밖으로 나가요)
     let all = A, off = null, ms = 1;
     if (!o.noCone) {
       const lay = layoutSolid(b, A, coneBox(s, r, R, 1), Math.max(r, R) * 0.45, padS);
       ms = lay.ms; off = lay.off;
       all = unionB(A, shiftB(coneBox(s, r, R, ms), off.dx, off.dy));
     }
-    if (o.extraBottom && !phone) all = unionB(all, { x0: all.x0, x1: all.x1, y0: all.y0 - o.extraBottom, y1: all.y1 });
     fit(b, all, padS);
     return { G0, off, A, x, all, ms };
   }
