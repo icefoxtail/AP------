@@ -18,8 +18,8 @@
   const cmv = (v) => fmtN(v) + ' cm';
 
   const PARAMS = {
-    soTr: P('밑면의 반지름 r', 1, 7, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm', onInput: (st) => { st.soTR = Math.max(st.soTR == null ? 6 : st.soTR, 2 * Math.round(st.soTr)); } }),
-    soTR: P('모선의 길이 R', 2, 15, 1, 6, { color: 'amber', hint: '끈이 한 바퀴를 도는 경우만 다뤄요: R은 r의 2배 이상(중심각 180° 이하)', format: (v) => Math.round(v) + ' cm', onInput: (st) => { st.soTR = Math.max(st.soTR, 2 * Math.round(st.soTr)); } }),
+    soTr: P('밑면의 반지름 r', 1, 7, 1, 2, { color: 'sky', format: (v) => Math.round(v) + ' cm', onInput: (st) => fixAng4(st, 0) }),
+    soTR: P('모선의 길이 R', 2, 15, 1, 6, { color: 'amber', hint: '끈이 한 바퀴를 도는 경우만 다뤄요: R은 r의 2배 이상(중심각 180° 이하). 중심각이 자연수가 되는 값만 골라져요', format: (v) => Math.round(v) + ' cm', onInput: (st) => fixAng4(st, 1) }),
     soTp: P('점 P의 위치 (꼭짓점에서의 거리)', 1, 20, 1, 3, { color: 'amber', hint: '모선을 따라 꼭짓점 O에서 떨어진 거리', format: (v) => Math.round(v) + ' cm' }),
     soTf: P('작은 밑면의 반지름', 1, 6, 1, 2, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
     soTg: P('큰 밑면의 반지름', 2, 7, 1, 4, { color: 'sky', format: (v) => Math.round(v) + ' cm' })
@@ -87,8 +87,12 @@
   const lenOf = { rim: (r, R, x) => 2 * PI * r, chord: (r, R, x) => 2 * R * Math.sin(rad(x / 2)) };
 
   /* ================================================================== s4-1 끈 감기 */
+  // 중심각 x = 360°×r/R이 자연수가 되는 (r, R)만 허용(R은 r의 2배 이상): 막대를 끌면 끈 막대를 우선해 가장 가까운 허용값으로 맞춰요
+  const ANG4 = G.angPairs(7, 15, (r, R) => R >= 2 * r);
+  const pairOf4 = (s, first) => { const r = clamp(Math.round(s.soTr), 1, 7), R = clamp(Math.round(s.soTR == null ? 6 : s.soTR), 2, 15); return ANG4.some((p) => p[0] === r && p[1] === R) ? [r, R] : G.snapAng(ANG4, r, R, first); };
+  function fixAng4(st, first) { const p = pairOf4(st, first); st.soTr = p[0]; st.soTR = p[1]; }
   function m1(s) {
-    const r = clamp(Math.round(s.soTr), 1, 7), R = Math.max(clamp(Math.round(s.soTR), 2, 15), 2 * r), x = 360 * r / R;
+    const [r, R] = pairOf4(s, 0), x = 360 * r / R;
     const mode = s.soMode || 'via', a0 = -90 - x / 2, a1 = -90 + x / 2;
     const ms = clamp(s.soMs == null ? 0.75 * R : s.soMs, 0.12 * R, R), mp = clamp(s.soMp == null ? -90 : s.soMp, a0 + 1, a1 - 1);
     const A = pt({ x: 0, y: 0 }, R, a0), A2 = pt({ x: 0, y: 0 }, R, a1), M = pt({ x: 0, y: 0 }, ms, mp);

@@ -23,8 +23,8 @@
     soCr3: P('밑면의 반지름 r', 1, 7, 1, 2, { color: 'sky', hint: 'R = r × (배)라서 r은 7 cm까지만 정해요', format: (v) => Math.round(v) + ' cm' }),
     soCh: P('높이 h', 2, 20, 1, 4, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
     soRl: P('옆면 펼친 정도', 0, 1, 0.005, 0.5, { color: 'amber', hint: '오른쪽으로 끌면 옆면이 한 줄로 오른쪽으로 펼쳐져요', format: (v) => (v * 100 >= 99.5 ? '한 바퀴' : Math.round(v * 360) + '°') }),
-    soNr: P('밑면의 반지름 r', 1, 14, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
-    soNR: P('모선의 길이 R', 2, 15, 1, 6, { color: 'amber', hint: 'R은 r보다 길어야 해요', format: (v) => Math.round(v) + ' cm' }),
+    soNr: P('밑면의 반지름 r', 1, 14, 1, 3, { color: 'sky', hint: '중심각이 자연수가 되는 값만 골라져요', format: (v) => Math.round(v) + ' cm', onInput: (st) => fixAng3(st, 0) }),
+    soNR: P('모선의 길이 R', 2, 15, 1, 6, { color: 'amber', hint: 'R은 r보다 길어야 해요. 중심각이 자연수가 되는 값만 골라져요', onInput: (st) => fixAng3(st, 1), format: (v) => Math.round(v) + ' cm' }),
     soNt: P('호와 둘레 비교하기', 0, 1, 0.005, 0.5, { color: 'amber', hint: '오른쪽으로 끌면 색이 칠해지며 길이가 같아지는 것을 볼 수 있어요', format: (v) => Math.round(v * 100) + '%' }),
     soNk: P('R은 r의 몇 배', 2, 6, 1, 3, { color: 'amber', format: (v) => 'R = ' + Math.round(v) + ' × r' }),
     soNq: P('조각 밀기', 0, 1, 0.005, 0.4, { color: 'green', hint: '오른쪽으로 끌면 조각이 가로로 밀려 맞물려요', format: (v) => Math.round(v * 100) + '%' }),
@@ -232,7 +232,11 @@
   }
 
   /* ================================================================== s3-2 원뿔 펼치기 */
-  const coneM = (s) => { const r = clamp(Math.round(s.soNr), 1, 14), R = Math.max(clamp(Math.round(s.soNR), 2, 15), r + 1); return { r, R, x: xOf(r, R), t: clamp(s.soNt, 0, 1) }; };
+  // 중심각 x = 360°×r/R이 자연수가 되는 (r, R)만 허용: 막대를 끌면 끈 막대를 우선해 가장 가까운 허용값으로 맞춰요(s3-2·s3-4 공용)
+  const ANG3 = G.angPairs(14, 15, (r, R) => R > r);
+  const pairOf = (s, first) => { const r = clamp(Math.round(s.soNr), 1, 14), R = clamp(Math.round(s.soNR), 2, 15); return ANG3.some((p) => p[0] === r && p[1] === R) ? [r, R] : G.snapAng(ANG3, r, R, first); };
+  const fixAng3 = (st, first) => { const p = pairOf(st, first); st.soNr = p[0]; st.soNR = p[1]; };
+  const coneM = (s) => { const [r, R] = pairOf(s, 0); return { r, R, x: xOf(r, R), t: clamp(s.soNt, 0, 1) }; };
   const xTxt = (x) => (Math.abs(x - Math.round(x)) < 1e-6 ? String(Math.round(x)) : fmtN(x, 1));
   const CONE_PAIRS = (() => { const o = []; for (let r = 1; r <= 5; r++) for (let R = r + 1; R <= 9; R++) if ((360 * r) % R === 0) o.push([r, R]); return o; })();
   S.push({
@@ -376,7 +380,7 @@
   });
 
   /* ================================================================== s3-4 원뿔의 옆넓이 = πRr */
-  const areaM = (s) => { const r = clamp(Math.round(s.soNr), 1, 14), R = Math.max(clamp(Math.round(s.soNR), 2, 15), r + 1); return { r, R, x: xOf(r, R), q: clamp(s.soNq, 0, 1) }; };
+  const areaM = (s) => { const [r, R] = pairOf(s, 0); return { r, R, x: xOf(r, R), q: clamp(s.soNq, 0, 1) }; };
   S.push({
     id: 's3-4', noView: true, title: '원뿔의 옆넓이는 πRr', short: '옆넓이 = πRr',
     question: '원뿔의 옆면인 부채꼴의 넓이는 어떻게 구할까? 부채꼴을 잘게 잘라 다시 배열하면 어떤 도형에 가까워질까?',

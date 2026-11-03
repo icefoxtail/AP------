@@ -15,15 +15,29 @@
   const { PI, DEG, clamp, fmtN, T, fit, P, rd, notes, mkNum, mkText, rint, pick, sshuffle, jo, bboxOf } = G;
   const AMB = 'amber', SKY = 'sky', ROSE = 'rose', GRN = 'green';
   const cmv = (v) => fmtN(v) + ' cm';
+  // s2-6: 작은 원뿔의 반지름 R·c/4와 높이 H·c/4가 모두 자연수가 되는 (R, H, c)만 허용해요.
+  // 막대를 끌면 끈 막대를 우선해 가장 가까운 허용값으로 맞춰요(다른 장면의 R·H 막대는 그대로 아무 정수나 돼요).
+  const OK6 = (R, H, c) => (R * c) % 4 === 0 && (H * c) % 4 === 0;
+  const ALL6 = (() => { const o = []; for (let R = 2; R <= 15; R++) for (let H = 3; H <= 20; H++) for (let c = 1; c <= 3; c++) if (OK6(R, H, c)) o.push([R, H, c]); return o; })();
+  const tri6 = (s, first) => {
+    const R = clamp(Math.round(s.soSR), 2, 15), H = clamp(Math.round(s.soSH), 3, 20), c = clamp(Math.round(s.soC), 1, 3);
+    if (OK6(R, H, c)) return [R, H, c];
+    const w = { R: first === 'R' ? 1e6 : 1000, H: first === 'H' ? 1e6 : 1000, c: first === 'c' ? 1e6 : 1 };
+    let best = ALL6[0], bd = Infinity;
+    ALL6.forEach((p) => { const d = Math.abs(p[0] - R) * w.R + Math.abs(p[1] - H) * w.H + Math.abs(p[2] - c) * w.c; if (d < bd) { bd = d; best = p; } });
+    return best;
+  };
+  const fix6 = (st, lab, first) => { if (!lab || !lab.scene || lab.scene.id !== 's2-6') return; const p = tri6(st, first); st.soSR = p[0]; st.soSH = p[1]; st.soC = p[2]; };
+  const P6 = (() => { const o = []; [2, 4, 6, 8].forEach((R) => [4, 6, 8, 12].forEach((H) => [1, 2, 3].forEach((c) => { if (OK6(R, H, c)) o.push([R, H, c]); }))); return o; })();
 
   const PARAMS = {
-    soSR: P('반지름 r', 2, 15, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm' }),
+    soSR: P('반지름 r', 2, 15, 1, 3, { color: 'sky', format: (v) => Math.round(v) + ' cm', onInput: (st, lab) => fix6(st, lab, 'R') }),
     soSr: P('윗면의 반지름', 1, 14, 1, 2, { color: 'amber', hint: '아랫면보다 작아야 해요', format: (v) => Math.round(v) + ' cm' }),
-    soSH: P('높이 h', 3, 20, 1, 6, { color: 'amber', format: (v) => Math.round(v) + ' cm' }),
+    soSH: P('높이 h', 3, 20, 1, 6, { color: 'amber', format: (v) => Math.round(v) + ' cm', onInput: (st, lab) => fix6(st, lab, 'H') }),
     soU: P('자르는 높이', 0.04, 0.96, 0.01, 0.4, { color: 'rose', hint: '평면의 높이를 정해요(칼날은 이 높이에서 가로로 지나가요)', format: (v) => Math.round(v * 100) + '%' }),
     soE: P('칼날 밀어 넣기', 0, 1, 0.005, 1, { color: 'rose', hint: '오른쪽으로 끌면 판이 왼쪽에서 들어와 가로로 지나가요', format: (v) => Math.round(v * 100) + '%' }),
     soPsi: P('단면판 돌리기', 0, 90, 1, 0, { color: 'rose', hint: '축을 포함한 채 제자리에서 돌아요', format: (v) => Math.round(v) + '°' }),
-    soC: P('작은 원뿔의 높이', 1, 3, 1, 2, { color: 'amber', hint: '큰 원뿔 높이의 1/4, 2/4, 3/4', format: (v) => Math.round(v) + '/4' }),
+    soC: P('작은 원뿔의 높이', 1, 3, 1, 2, { color: 'amber', hint: '큰 원뿔 높이의 1/4, 2/4, 3/4. 길이가 자연수가 되는 값만 골라져요', format: (v) => Math.round(v) + '/4', onInput: (st, lab) => fix6(st, lab, 'c') }),
     soG: P('작은 원뿔 떼어 내기', 0, 1, 0.01, 0.7, { color: 'rose', hint: '작은 원뿔이 오른쪽으로 밀려 나가요', format: (v) => Math.round(v * 100) + '%' }),
     soFold: P('왼쪽 반을 접기', 0, 1, 0.005, 0.5, { color: 'rose', hint: '회전축을 접는 선으로 접어요', format: (v) => Math.round(v * 180) + '°' })
   };
@@ -506,10 +520,10 @@
     question: '원뿔을 밑면에 평행하게 잘라 윗부분을 떼어 내면 무엇이 남을까? 떼어 낸 부분과 남은 부분은 어떤 입체일까?',
     ctl: ['soSR', 'soSH', 'soC', 'soG'],
     init: (s) => { s.soSR = 4; s.soSH = 6; s.soC = 2; s.soG = 0.7; },
-    reroll: (s) => { s.soPR = pick([2, 3, 4], s.soPR); s.soPH = pick([4, 6, 8, 12], s.soPH); s.soPc = pick([1, 2, 3], s.soPc); },
+    reroll: (s) => { const t = P6[pick(P6.map((p, i) => i), s.soP6i)]; s.soP6i = P6.indexOf(t); s.soPR = t[0]; s.soPH = t[1]; s.soPc = t[2]; },
     model: (s) => {
-      const R = clamp(Math.round(s.soSR), 2, 15), H = clamp(Math.round(s.soSH), 3, 20), c = clamp(Math.round(s.soC), 1, 3) / 4;
-      const hs = H * c, rs = R * c, pR = s.soPR || 3, pH = s.soPH || 8, pc = s.soPc || 2;
+      const [R, H, c4] = tri6(s, 'R'), c = c4 / 4;
+      const hs = H * c, rs = R * c, pR = s.soPR || 4, pH = s.soPH || 8, pc = s.soPc || 2;
       return { R, H, c, hs, rs, hf: H - hs, pR, pH, pc, ph: pH * pc / 4, prs: pR * pc / 4, gap: clamp(s.soG, 0, 1) };
     },
     draw(b, s, M, C) {
@@ -575,7 +589,7 @@
       return {
         tag: '원뿔대의 높이', key: `${M.pR}-${H}-${M.pc}`,
         stem: `그림은 높이가 ${H} cm인 큰 원뿔에서 높이가 ${fmtN(hs)} cm인 작은 원뿔을 잘라 낸 것이다. 남은 원뿔대의 높이는 몇 cm인가?`,
-        choices: mkNum(ans, [[H, '큰 원뿔의 높이예요. 작은 원뿔을 빼야 해요.'], [hs, '작은 원뿔의 높이예요.'], [H + hs, '더하지 않고 빼요.'], [ans + 1, '']], (v) => fmtN(v) + ' cm', { valid: (v) => v > 0, step: 0.5 })
+        choices: mkNum(ans, [[H, '큰 원뿔의 높이예요. 작은 원뿔을 빼야 해요.'], [hs, '작은 원뿔의 높이예요.'], [H + hs, '더하지 않고 빼요.'], [ans + 1, '']], (v) => fmtN(v) + ' cm', { valid: (v) => v > 0 && Number.isInteger(v), step: 1 })
       };
     }
   });
