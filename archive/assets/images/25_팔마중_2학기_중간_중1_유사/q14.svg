@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 340" width="480" height="340" role="img" aria-labelledby="q14-title q14-desc">
+  <title id="q14-title">정사각형과 정삼각형의 결합</title>
+  <desc id="q14-desc">정사각형 ABCD 내부에 정삼각형 EBC를 그린 도형</desc>
+  <rect width="480" height="340" fill="#ffffff"/>
+  <!-- 정사각형 ABCD: A(140,70), B(140,270), C(340,270), D(340,70) -->
+  <rect x="140" y="70" width="200" height="200" fill="none" stroke="#1e293b" stroke-width="2.5"/>
+  <!-- 정삼각형 EBC: E(240, 97) -->
+  <polygon points="140,270 340,270 240,97" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+  <!-- 선분 AE, DE -->
+  <line x1="140" y1="70" x2="240" y2="97" stroke="#dc2626" stroke-width="2"/>
+  <line x1="340" y1="70" x2="240" y2="97" stroke="#dc2626" stroke-width="2"/>
+  <!-- 점들 -->
+  <circle cx="140" cy="70" r="4.5" fill="#1e293b"/>
+  <circle cx="140" cy="270" r="4.5" fill="#1e293b"/>
+  <circle cx="340" cy="270" r="4.5" fill="#1e293b"/>
+  <circle cx="340" cy="70" r="4.5" fill="#1e293b"/>
+  <circle cx="240" cy="97" r="4.5" fill="#2563eb"/>
+  <!-- 라벨 -->
+  <g font-family="sans-serif" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">
+    <text x="125" y="65">A</text>
+    <text x="125" y="285">B</text>
+    <text x="355" y="285">C</text>
+    <text x="355" y="65">D</text>
+    <text x="240" y="80" fill="#2563eb">E</text>
+  </g>
+</svg>

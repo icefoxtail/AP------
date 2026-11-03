@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" width="500" height="360" role="img" aria-labelledby="q22-title q22-desc">
+  <title id="q22-title">삼각형 외부에 정삼각형을 붙인 도형</title>
+  <desc id="q22-desc">삼각형 ABC의 두 변 AB, AC를 한 변으로 하는 정삼각형 ABD와 ACE</desc>
+  <rect width="500" height="360" fill="#ffffff"/>
+  <!-- 삼각형 ABC: A(240,160), B(160,260), C(340,260) -->
+  <polygon points="240,160 160,260 340,260" fill="none" stroke="#1e293b" stroke-width="2.5"/>
+  <!-- 정삼각형 ABD -->
+  <polygon points="240,160 160,260 130,130" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+  <!-- 정삼각형 ACE -->
+  <polygon points="240,160 340,260 350,130" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+  <!-- 연결선 BE, CD -->
+  <line x1="160" y1="260" x2="350" y2="130" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,4"/>
+  <line x1="130" y1="130" x2="340" y2="260" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,4"/>
+  <circle cx="240" cy="160" r="4.5" fill="#1e293b"/>
+  <circle cx="160" cy="260" r="4.5" fill="#1e293b"/>
+  <circle cx="340" cy="260" r="4.5" fill="#1e293b"/>
+  <circle cx="130" cy="130" r="4.5" fill="#2563eb"/>
+  <circle cx="350" cy="130" r="4.5" fill="#2563eb"/>
+  <g font-family="sans-serif" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">
+    <text x="240" y="145">A</text>
+    <text x="145" y="280">B</text>
+    <text x="355" y="280">C</text>
+    <text x="115" y="125" fill="#2563eb">D</text>
+    <text x="365" y="125" fill="#2563eb">E</text>
+  </g>
+</svg>
