@@ -30,7 +30,7 @@ window.questionBank = [
     "$2x+y-1=0$"
   ],
     answer: "③",
-    solution: "[키포인트] 서로 평행한 두 직선은 기울기가 같다.\n주어진 그래프는 $(-2,0)$과 $(0,4)$를 지나므로 기울기는 $\\dfrac{4-0}{0-(-2)}=2$이다.\n각 보기를 $y=mx+n$ 꼴로 정리하면 ③은 $2x-y+3=0$, 즉 $y=2x+3$이므로 기울기가 2이다.\n따라서 주어진 그래프와 평행한 것은 ③이다.",
+    solution: "서로 평행한 두 직선은 기울기가 같다.\n주어진 그래프는 $(-2,0)$과 $(0,4)$를 지나므로 기울기는 $\\dfrac{4-0}{0-(-2)}=2$이다.\n각 보기를 $y=mx+n$ 꼴로 정리하면 ③은 $2x-y+3=0$, 즉 $y=2x+3$이므로 기울기가 2이다.\n따라서 주어진 그래프와 평행한 것은 ③이다.",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q01.png",
     imageSize: "full",
     problemTypeKey: "",
@@ -75,7 +75,7 @@ window.questionBank = [
     "$a\\lt0,\\ b=0$"
   ],
     answer: "①",
-    solution: "[키포인트] 기울기와 $y$절편의 부호를 식에서 읽는다.\n$x-ay+b=0$을 $y$에 대하여 정리하면 $y=\\dfrac{1}{a}x+\\dfrac{b}{a}$이다.\n그래프가 오른쪽으로 갈수록 내려가므로 기울기 $\\dfrac1a<0$, 따라서 $a<0$이다. 또 $y$절편이 양수이므로 $\\dfrac ba>0$이다. $a<0$이므로 $b$도 음수여야 한다.\n따라서 $a<0,\\ b<0$인 ①이다.",
+    solution: "기울기와 $y$절편의 부호를 식에서 읽는다.\n$x-ay+b=0$을 $y$에 대하여 정리하면 $y=\\dfrac{1}{a}x+\\dfrac{b}{a}$이다.\n그래프가 오른쪽으로 갈수록 내려가므로 기울기 $\\dfrac1a<0$, 따라서 $a<0$이다.\n또 $y$절편이 양수이므로 $\\dfrac ba>0$이다. $a<0$이므로 $b$도 음수여야 한다.\n따라서 $a<0,\\ b<0$인 ①이다.",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q02.png",
     imageSize: "full",
     problemTypeKey: "",
@@ -119,7 +119,7 @@ window.questionBank = [
     "$y=4$"
   ],
     answer: "⑤",
-    solution: "[키포인트] $x$축에 평행한 직선은 모든 점의 $y$좌표가 같다.\n주어진 직선은 점 $(-3,4)$를 지나므로 그 직선 위 모든 점의 $y$좌표는 4이다.\n따라서 직선의 방정식은 $y=4$이고 정답은 ⑤이다.",
+    solution: "$x$축에 평행한 직선은 모든 점의 $y$좌표가 같다.\n주어진 직선은 점 $(-3,4)$를 지나므로 그 직선 위 모든 점의 $y$좌표는 4이다.\n따라서 직선의 방정식은 $y=4$이고 정답은 ⑤이다.",
     problemTypeKey: "",
     templateKey: "",
     crossConceptKeys: [],
@@ -165,7 +165,7 @@ window.questionBank = [
     "12"
   ],
     answer: "②",
-    solution: "[키포인트] 두 직선과 $y$축이 만드는 삼각형의 밑변과 높이를 구한다.\n첫째 직선은 $y=x+4$, 둘째 직선은 $y=-2x-2$이다. 두 직선의 $y$절편은 각각 $(0,4)$, $(0,-2)$이므로 $y$축 위 밑변의 길이는 $6$이다.\n두 직선의 교점은 $x+4=-2x-2$에서 $x=-2$, $y=2$이다. 이 점에서 $y$축까지의 거리는 $2$이다.\n따라서 넓이는 $\\dfrac12\\times6\\times2=6$이므로 정답은 ②이다.",
+    solution: "두 직선과 $y$축이 만드는 삼각형의 밑변과 높이를 구한다.\n첫째 직선은 $y=x+4$, 둘째 직선은 $y=-2x-2$이다.\n두 직선의 $y$절편은 각각 $(0,4)$, $(0,-2)$이므로 $y$축 위 밑변의 길이는 $6$이다.\n두 직선의 교점은 $x+4=-2x-2$에서 $x=-2$, $y=2$이다.\n이 점에서 $y$축까지의 거리는 $2$이다.\n따라서 넓이는 $\\dfrac12\\times6\\times2=6$이므로 정답은 ②이다.",
     problemTypeKey: "",
     templateKey: "",
     crossConceptKeys: [],
@@ -211,7 +211,7 @@ window.questionBank = [
     "$x=1,\\ y=3$"
   ],
     answer: "④",
-    solution: "[키포인트] 연립방정식의 해는 두 직선의 교점이다.\n그래프에서 두 직선은 점 $(3,1)$에서 만난다. 식으로 확인하면 $x+y=4$에서 $y=4-x$이고, 이를 $2x-y=5$에 대입하면 $3x=9$, $x=3$이다. 따라서 $y=1$이다.\n그러므로 해는 $x=3,\\ y=1$이고 정답은 ④이다.",
+    solution: "연립방정식의 해는 두 직선의 교점이다.\n그래프에서 두 직선은 점 $(3,1)$에서 만난다.\n식으로 확인하면 $x+y=4$에서 $y=4-x$이고, 이를 $2x-y=5$에 대입하면 $3x=9$, $x=3$이다.\n따라서 $y=1$이다.\n그러므로 해는 $x=3,\\ y=1$이고 정답은 ④이다.",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q05.png",
     imageSize: "full",
     problemTypeKey: "",
@@ -256,7 +256,7 @@ window.questionBank = [
     "$\\dfrac73$"
   ],
     answer: "⑤",
-    solution: "[키포인트] 해가 없으면 두 직선은 평행하고, 해가 무수히 많으면 두 직선이 일치한다.\n첫째 식은 $y=\\dfrac43x+2$, 둘째 식은 $y=\\dfrac a3x-\\dfrac13$이다. 해가 없으므로 기울기가 같아야 하므로 $a=4$이다.\n따라서 둘째 그래프는 $y=\\dfrac43x-\\dfrac13$이다. 이 그래프를 첫째 그래프와 일치시키려면 $y$절편을 $-\\dfrac13$에서 $2$로 올려야 한다.\n이동량은 $2-(-\\dfrac13)=\\dfrac73$이므로 정답은 ⑤이다.",
+    solution: "해가 없으면 두 직선은 평행하고, 해가 무수히 많으면 두 직선이 일치한다.\n첫째 식은 $y=\\dfrac43x+2$, 둘째 식은 $y=\\dfrac a3x-\\dfrac13$이다.\n해가 없으므로 기울기가 같아야 하므로 $a=4$이다.\n따라서 둘째 그래프는 $y=\\dfrac43x-\\dfrac13$이다.\n이 그래프를 첫째 그래프와 일치시키려면 $y$절편을 $-\\dfrac13$에서 $2$로 올려야 한다.\n이동량은 $2-(-\\dfrac13)=\\dfrac73$이므로 정답은 ⑤이다.",
     problemTypeKey: "",
     templateKey: "",
     crossConceptKeys: [],
@@ -303,7 +303,7 @@ window.questionBank = [
     "10"
   ],
     answer: "④",
-    solution: "[키포인트] 같은 크기의 각을 이용해 이등변삼각형과 정삼각형을 차례로 찾는다.\n$\\triangle BDC$에서 $\\angle DBC=\\angle BCD=30^\\circ$이므로 마주 보는 변의 길이가 같아 $DC=DB=9\\mathrm{cm}$이다.\n또 $\\triangle ADC$에서 $\\angle ADC=60^\\circ$, $\\angle DAC=60^\\circ$이므로 나머지 각도 $60^\\circ$이다. 따라서 $\\triangle ADC$는 정삼각형이다.\n그러므로 $AC=DC=9\\mathrm{cm}$이므로 $x=9$, 정답은 ④이다.",
+    solution: "같은 크기의 각을 이용해 이등변삼각형과 정삼각형을 차례로 찾는다.\n$\\triangle BDC$에서 $\\angle DBC=\\angle BCD=30^\\circ$이므로 마주 보는 변의 길이가 같아 $DC=DB=9\\mathrm{cm}$이다.\n또 $\\triangle ADC$에서 $\\angle ADC=60^\\circ$, $\\angle DAC=60^\\circ$이므로 나머지 각도 $60^\\circ$이다.\n따라서 $\\triangle ADC$는 정삼각형이다.\n그러므로 $AC=DC=9\\mathrm{cm}$이므로 $x=9$, 정답은 ④이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q7-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q07.png",
     problemTypeKey: "PT_ISOSCELES_TRIANGLE",
@@ -348,7 +348,7 @@ window.questionBank = [
     "10"
   ],
     answer: "①",
-    solution: "[키포인트] 두 직각삼각형 $ABD$, $CAE$의 합동을 이용한다.\n$\\angle ADB=\\angle CEA=90^\\circ$이고, 직각이등변삼각형이므로 $AB=AC$이다. 또한 $AB\\perp AC$, $BD\\perp AE$이므로 $\\angle BAD=\\angle ACE$이다.\n따라서 두 직각삼각형은 빗변의 길이와 한 예각의 크기가 각각 같아 합동이다. 그러므로 $AD=CE=6$, $AE=BD=8$이다.\n점 $A$가 $D,E$ 사이에 있으므로 $DE=DA+AE=6+8=14$이다. 정답은 ①이다.",
+    solution: "두 직각삼각형 $ABD$, $CAE$의 합동을 이용한다.\n$\\angle ADB=\\angle CEA=90^\\circ$이고, 직각이등변삼각형이므로 $AB=AC$이다.\n또한 $AB\\perp AC$, $BD\\perp AE$이므로 $\\angle BAD=\\angle ACE$이다.\n따라서 두 직각삼각형은 빗변의 길이와 한 예각의 크기가 각각 같아 합동이다.\n그러므로 $AD=CE=6$, $AE=BD=8$이다.\n점 $A$가 $D,E$ 사이에 있으므로 $DE=DA+AE=6+8=14$이다.\n정답은 ①이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q8-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q08.png",
     problemTypeKey: "PT_RIGHT_TRIANGLE_CONGRUENCE",
@@ -394,7 +394,7 @@ window.questionBank = [
     "두 직각삼각형의 세 내각의 크기가 같으므로"
   ],
     answer: "③",
-    solution: "[키포인트] 증명 과정에서 확인된 조건이 직각삼각형의 어떤 합동 조건인지 판단한다.\n두 삼각형은 모두 직각삼각형이므로 $\\angle C=\\angle F=90^\\circ$이다. 또 그림의 조건에서 빗변 $AB=DE$이고, 겹쳐 만든 이등변삼각형에서 $\\angle B=\\angle E$이다.\n따라서 두 직각삼각형의 빗변의 길이와 한 예각의 크기가 각각 같으므로 서로 합동이다.\n그러므로 괄호에 들어갈 내용은 ③이다.",
+    solution: "증명 과정에서 확인된 조건이 직각삼각형의 어떤 합동 조건인지 판단한다.\n두 삼각형은 모두 직각삼각형이므로 $\\angle C=\\angle F=90^\\circ$이다.\n또 그림의 조건에서 빗변 $AB=DE$이고, 겹쳐 만든 이등변삼각형에서 $\\angle B=\\angle E$이다.\n따라서 두 직각삼각형의 빗변의 길이와 한 예각의 크기가 각각 같으므로 서로 합동이다.\n그러므로 괄호에 들어갈 내용은 ③이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q9-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q09_diagrams.png",
     problemTypeKey: "PT_RIGHT_TRIANGLE_CONGRUENCE",
@@ -439,7 +439,7 @@ window.questionBank = [
     "30"
   ],
     answer: "①",
-    solution: "[키포인트] 외심에서 세 꼭짓점까지의 거리가 같다는 성질을 두 번 이용한다.\n$OB=OC$이므로 $\\triangle BOC$는 이등변삼각형이다. 따라서 $\\angle OBC=30^\\circ$이므로 $\\angle BCO=30^\\circ$이다.\n또 $OA=OC$이므로 $\\triangle AOC$도 이등변삼각형이고, $\\angle ACO=50^\\circ$이므로 $\\angle OAC=50^\\circ$이다. $OA=OB$이므로 $\\angle BAO=\\angle ABO=x$이다.\n$\\triangle ABC$의 세 각의 합에서 $(x+50^\\circ)+(x+30^\\circ)+(30^\\circ+50^\\circ)=180^\\circ$이므로 $2x=20^\\circ$, $x=10^\\circ$이다. 정답은 ①이다.",
+    solution: "외심에서 세 꼭짓점까지의 거리가 같다는 성질을 두 번 이용한다.\n$OB=OC$이므로 $\\triangle BOC$는 이등변삼각형이다.\n따라서 $\\angle OBC=30^\\circ$이므로 $\\angle BCO=30^\\circ$이다.\n또 $OA=OC$이므로 $\\triangle AOC$도 이등변삼각형이고, $\\angle ACO=50^\\circ$이므로 $\\angle OAC=50^\\circ$이다. $OA=OB$이므로 $\\angle BAO=\\angle ABO=x$이다.\n$\\triangle ABC$의 세 각의 합에서 $(x+50^\\circ)+(x+30^\\circ)+(30^\\circ+50^\\circ)=180^\\circ$이므로 $2x=20^\\circ$, $x=10^\\circ$이다.\n정답은 ①이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q10-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q10.png",
     imageSize: "full",
@@ -485,7 +485,7 @@ window.questionBank = [
     "$81\\pi\\mathrm{cm}^2$"
   ],
     answer: "③",
-    solution: "[키포인트] 외심에서 꼭짓점까지의 거리는 모두 외접원의 반지름이다.\n외접원의 반지름을 $R$이라 하면 $OA=OB=R$이다. $\\triangle OAB$의 둘레가 29이므로 $R+R+13=29$이다.\n따라서 $2R=16$, $R=8$이다. 외접원의 넓이는 $\\pi R^2=\\pi\\times8^2=64\\pi\\mathrm{cm}^2$이다.\n정답은 ③이다.",
+    solution: "외심에서 꼭짓점까지의 거리는 모두 외접원의 반지름이다.\n외접원의 반지름을 $R$이라 하면 $OA=OB=R$이다. $\\triangle OAB$의 둘레가 29이므로 $R+R+13=29$이다.\n따라서 $2R=16$, $R=8$이다.\n외접원의 넓이는 $\\pi R^2=\\pi\\times8^2=64\\pi\\mathrm{cm}^2$이다.\n정답은 ③이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q11-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q11.png",
     imageSize: "full",
@@ -532,7 +532,7 @@ window.questionBank = [
     "$80\\mathrm{cm}^2$"
   ],
     answer: "②",
-    solution: "[키포인트] 내심에서 세 변까지의 거리가 같음을 이용해 내접원의 반지름을 구한다.\n직각삼각형 $ABC$의 넓이는 $\\dfrac12\\times12\\times16=96\\mathrm{cm}^2$이다.\n내접원의 반지름을 $r$이라 하면 점 $I$에서 세 변까지의 거리는 모두 $r$이다.\n따라서 $96=\\dfrac12(12+16+20)r=24r$이므로 $r=4\\mathrm{cm}$이다.\n점 $I$에서 변 $AB$까지의 거리가 $4\\mathrm{cm}$이고 $AB=20\\mathrm{cm}$이므로 $\\triangle IAB$의 넓이는 $\\dfrac12\\times20\\times4=40\\mathrm{cm}^2$이다.\n따라서 정답은 ②이다.",
+    solution: "내심에서 세 변까지의 거리가 같음을 이용해 내접원의 반지름을 구한다.\n직각삼각형 $ABC$의 넓이는 $\\dfrac12\\times12\\times16=96\\mathrm{cm}^2$이다.\n내접원의 반지름을 $r$이라 하면 점 $I$에서 세 변까지의 거리는 모두 $r$이다.\n따라서 $96=\\dfrac12(12+16+20)r=24r$이므로 $r=4\\mathrm{cm}$이다.\n점 $I$에서 변 $AB$까지의 거리가 $4\\mathrm{cm}$이고 $AB=20\\mathrm{cm}$이므로 $\\triangle IAB$의 넓이는 $\\dfrac12\\times20\\times4=40\\mathrm{cm}^2$이다.\n따라서 정답은 ②이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q12-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q12.png",
     imageSize: "full",
@@ -579,7 +579,7 @@ window.questionBank = [
     "ㄴ, ㄷ, ㄹ"
   ],
     answer: "④",
-    solution: "[키포인트] 두 내각의 이등분선의 교점은 삼각형의 내심이다.\n점 $I$는 $\\angle A$, $\\angle B$의 이등분선의 교점이므로 내심이다. 따라서 $BI$는 $\\angle B$의 이등분선이어서 $\\angle ABI=\\angle CBI$이므로 ㄴ은 참이다.\n내심에서 세 변까지의 거리는 같고, 그림의 $ID$는 한 변에 내린 수선의 길이이므로 내접원의 반지름이다. $ID=2$이면 내접원의 넓이는 $\\pi\\times2^2=4\\pi$이므로 ㄹ은 참이다.\n내심이라고 해서 $AI=BI$인 것은 아니며, $AI$만으로 외접원의 반지름을 정할 수도 없다. 따라서 ㄱ, ㄷ은 거짓이다. 정답은 ㄴ, ㄹ인 ④이다.",
+    solution: "두 내각의 이등분선의 교점은 삼각형의 내심이다.\n점 $I$는 $\\angle A$, $\\angle B$의 이등분선의 교점이므로 내심이다.\n따라서 $BI$는 $\\angle B$의 이등분선이어서 $\\angle ABI=\\angle CBI$이므로 ㄴ은 참이다.\n내심에서 세 변까지의 거리는 같고, 그림의 $ID$는 한 변에 내린 수선의 길이이므로 내접원의 반지름이다. $ID=2$이면 내접원의 넓이는 $\\pi\\times2^2=4\\pi$이므로 ㄹ은 참이다.\n내심이라고 해서 $AI=BI$인 것은 아니며, $AI$만으로 외접원의 반지름을 정할 수도 없다.\n따라서 ㄱ, ㄷ은 거짓이다.\n정답은 ㄴ, ㄹ인 ④이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q13-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q13.png",
     problemTypeKey: "PT_TRIANGLE_CENTERS",
@@ -624,7 +624,7 @@ window.questionBank = [
     "75"
   ],
     answer: "③",
-    solution: "[키포인트] 평행사변형의 마주 보는 변과 이웃한 각의 성질을 이용한다.\n마주 보는 변의 길이는 같으므로 $AB=CD=10\\mathrm{cm}$이다. 따라서 $x=10$이다.\n이웃한 두 각의 합은 $180^\\circ$이므로 $y+125^\\circ=180^\\circ$, $y=55$이다.\n따라서 $x+y=10+55=65$이고 정답은 ③이다.",
+    solution: "평행사변형의 마주 보는 변과 이웃한 각의 성질을 이용한다.\n마주 보는 변의 길이는 같으므로 $AB=CD=10\\mathrm{cm}$이다.\n따라서 $x=10$이다.\n이웃한 두 각의 합은 $180^\\circ$이므로 $y+125^\\circ=180^\\circ$, $y=55$이다.\n따라서 $x+y=10+55=65$이고 정답은 ③이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q14-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q14.png",
     imageSize: "full",
@@ -670,7 +670,7 @@ window.questionBank = [
     "$42\\mathrm{cm}$"
   ],
     answer: "③",
-    solution: "[키포인트] 평행사변형의 대각선은 서로를 이등분한다.\n평행사변형에서 $AB=CD=10\\mathrm{cm}$이다. $\\triangle ABO$의 둘레가 28cm이므로 $AO+BO=28-10=18\\mathrm{cm}$이다.\n대각선은 서로를 이등분하므로 $AC=2AO$, $BD=2BO$이다. 따라서 $AC+BD=2(AO+BO)=2\\times18=36\\mathrm{cm}$이다.\n정답은 ③이다.",
+    solution: "평행사변형의 대각선은 서로를 이등분한다.\n평행사변형에서 $AB=CD=10\\mathrm{cm}$이다. $\\triangle ABO$의 둘레가 28cm이므로 $AO+BO=28-10=18\\mathrm{cm}$이다.\n대각선은 서로를 이등분하므로 $AC=2AO$, $BD=2BO$이다.\n따라서 $AC+BD=2(AO+BO)=2\\times18=36\\mathrm{cm}$이다.\n정답은 ③이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q15-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q15.png",
     problemTypeKey: "PT_QUADRILATERAL_PROPERTIES",
@@ -716,7 +716,7 @@ window.questionBank = [
     "$\\angle C$"
   ],
     answer: "②",
-    solution: "[키포인트] 각 빈칸이 증명 흐름에서 어떤 내용을 나타내는지 확인한다.\n$AB\\parallel DC$이므로 $\\angle BAC=\\angle DCA$이고, $AD\\parallel BC$이므로 $\\angle BCA=\\angle DAC$이다. 또한 $AC$는 공통이므로 $\\triangle ABC\\equiv\\triangle CDA$이다.\n따라서 ①에는 $AB\\parallel DC$, ③에는 $\\triangle ABC\\equiv\\triangle CDA$가 들어간다. 또 $\\angle A=\\angle BAC+\\angle CAD=\\angle DCA+\\angle ACB=\\angle C$이므로 ④와 ⑤도 알맞다.\n②의 자리에는 $\\angle BCA=\\angle DAC$이 들어가야 하므로 '$\\angle B=\\angle C$'는 적절하지 않다. 정답은 ②이다.",
+    solution: "각 빈칸이 증명 흐름에서 어떤 내용을 나타내는지 확인한다.\n$AB\\parallel DC$이므로 $\\angle BAC=\\angle DCA$이고, $AD\\parallel BC$이므로 $\\angle BCA=\\angle DAC$이다.\n또한 $AC$는 공통이므로 $\\triangle ABC\\equiv\\triangle CDA$이다.\n따라서 ①에는 $AB\\parallel DC$, ③에는 $\\triangle ABC\\equiv\\triangle CDA$가 들어간다.\n또 $\\angle A=\\angle BAC+\\angle CAD=\\angle DCA+\\angle ACB=\\angle C$이므로 ④와 ⑤도 알맞다.\n②의 자리에는 $\\angle BCA=\\angle DAC$이 들어가야 하므로 '$\\angle B=\\angle C$'는 적절하지 않다.\n정답은 ②이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q16-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q16_diagram.png",
     imageSize: "half",
@@ -763,7 +763,7 @@ window.questionBank = [
     "$\\triangle AOB=\\triangle FOB$"
   ],
     answer: "⑤",
-    solution: "[키포인트] 평행사변형의 대각선 넓이 분할과 중심대칭을 이용해 넓이 관계를 확인한다.\n평행사변형의 두 대각선은 서로를 이등분하므로 $\\triangle AOB$, $\\triangle BOC$, $\\triangle COD$, $\\triangle DOA$의 넓이는 모두 $32\\div4=8\\mathrm{cm}^2$이다. 따라서 ①과 ③은 참이다.\n점 $O$를 중심으로 $180^\\circ$ 회전하면 $A$와 $C$, $B$와 $D$, $E$와 $F$가 서로 대응한다. 따라서 $\\triangle DOE$와 $\\triangle BOF$의 넓이는 같고, $\\triangle AOD=\\triangle AOE+\\triangle DOE$이므로 $\\triangle AOE$와 $\\triangle BFO$의 넓이의 합은 $8\\mathrm{cm}^2$이다. 따라서 ②는 참이다.\n또 직선 $EF$를 경계로 나뉜 평행사변형의 두 부분도 이 $180^\\circ$ 회전으로 서로 대응하므로 넓이가 같다. 따라서 사각형 $FCDE$의 넓이는 $32\\div2=16\\mathrm{cm}^2$이고 ④는 참이다.\n한편 점 $F$의 위치는 직선 $EF$의 방향에 따라 달라지므로 $\\triangle FOB$의 넓이가 항상 $\\triangle AOB$와 같지는 않다.\n따라서 옳지 않은 것은 ⑤이다.",
+    solution: "평행사변형의 대각선 넓이 분할과 중심대칭을 이용해 넓이 관계를 확인한다.\n평행사변형의 두 대각선은 서로를 이등분하므로 $\\triangle AOB$, $\\triangle BOC$, $\\triangle COD$, $\\triangle DOA$의 넓이는 모두 $32\\div4=8\\mathrm{cm}^2$이다.\n따라서 ①과 ③은 참이다.\n점 $O$를 중심으로 $180^\\circ$ 회전하면 $A$와 $C$, $B$와 $D$, $E$와 $F$가 서로 대응한다.\n따라서 $\\triangle DOE$와 $\\triangle BOF$의 넓이는 같고, $\\triangle AOD=\\triangle AOE+\\triangle DOE$이므로 $\\triangle AOE$와 $\\triangle BFO$의 넓이의 합은 $8\\mathrm{cm}^2$이다.\n따라서 ②는 참이다.\n또 직선 $EF$를 경계로 나뉜 평행사변형의 두 부분도 이 $180^\\circ$ 회전으로 서로 대응하므로 넓이가 같다.\n따라서 사각형 $FCDE$의 넓이는 $32\\div2=16\\mathrm{cm}^2$이고 ④는 참이다.\n한편 점 $F$의 위치는 직선 $EF$의 방향에 따라 달라지므로 $\\triangle FOB$의 넓이가 항상 $\\triangle AOB$와 같지는 않다.\n따라서 옳지 않은 것은 ⑤이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q17-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q17.png",
     imageSize: "full",
@@ -810,7 +810,7 @@ window.questionBank = [
     "9"
   ],
     answer: "②",
-    solution: "[키포인트] 각의 이등분선과 평행선의 엇각을 이용해 두 이등변삼각형을 찾는다.\n$AF$는 $\\angle A$의 이등분선이므로 $\\angle BAF=\\angle FAD$이다. $AD\\parallel BC$이므로 $\\angle FAD=\\angle AFB$이다. 따라서 $\\triangle ABF$는 이등변삼각형이고 $BF=AB=8$이다.\n또 $AB\\parallel DE$이므로 $\\angle BAE=\\angle AED$이다. $\\angle BAE=\\angle EAD$이므로 $\\angle EAD=\\angle AED$, 따라서 $\\triangle ADE$는 이등변삼각형이고 $DE=AD$이다.\n평행사변형에서 $AD=BC=BF+FC=8+x$이므로 $y=DE=x+8$이다. $x+y=20$에 대입하면 $x+(x+8)=20$, $2x=12$, $x=6$이다. 정답은 ②이다.",
+    solution: "각의 이등분선과 평행선의 엇각을 이용해 두 이등변삼각형을 찾는다.\n$AF$는 $\\angle A$의 이등분선이므로 $\\angle BAF=\\angle FAD$이다. $AD\\parallel BC$이므로 $\\angle FAD=\\angle AFB$이다.\n따라서 $\\triangle ABF$는 이등변삼각형이고 $BF=AB=8$이다.\n또 $AB\\parallel DE$이므로 $\\angle BAE=\\angle AED$이다. $\\angle BAE=\\angle EAD$이므로 $\\angle EAD=\\angle AED$, 따라서 $\\triangle ADE$는 이등변삼각형이고 $DE=AD$이다.\n평행사변형에서 $AD=BC=BF+FC=8+x$이므로 $y=DE=x+8$이다. $x+y=20$에 대입하면 $x+(x+8)=20$, $2x=12$, $x=6$이다.\n정답은 ②이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q18-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q18.png",
     imageSize: "full",
@@ -856,7 +856,7 @@ window.questionBank = [
     "ㄴ, ㄷ, ㄹ, ㅁ"
   ],
     answer: "③",
-    solution: "[키포인트] 직사각형의 대각선은 길이가 같고 서로를 이등분한다.\n$AC=BD$이고 $AO=CO=\\dfrac12AC$, $BO=DO=\\dfrac12BD$이다. 두 대각선의 길이가 같으므로 $AO=BO$도 성립한다. 따라서 ㄴ, ㄷ, ㄹ은 참이다.\n직사각형의 대각선이 항상 수직인 것은 아니므로 ㄱ은 거짓이다. 또한 일반적인 직사각형에서 $AB=BC$ 또는 $AB=AD$가 보장되지 않으므로 ㅁ, ㅂ도 거짓이다.\n따라서 옳은 것은 ㄴ, ㄷ, ㄹ이고 정답은 ③이다.",
+    solution: "직사각형의 대각선은 길이가 같고 서로를 이등분한다.\n$AC=BD$이고 $AO=CO=\\dfrac12AC$, $BO=DO=\\dfrac12BD$이다.\n두 대각선의 길이가 같으므로 $AO=BO$도 성립한다.\n따라서 ㄴ, ㄷ, ㄹ은 참이다.\n직사각형의 대각선이 항상 수직인 것은 아니므로 ㄱ은 거짓이다.\n또한 일반적인 직사각형에서 $AB=BC$ 또는 $AB=AD$가 보장되지 않으므로 ㅁ, ㅂ도 거짓이다.\n따라서 옳은 것은 ㄴ, ㄷ, ㄹ이고 정답은 ③이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q19-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q19.png",
     imageSize: "medium",
@@ -901,7 +901,7 @@ window.questionBank = [
     "네 변의 길이가 모두 같은 사각형"
   ],
     answer: "④, ⑤",
-    solution: "[키포인트] 주어진 조건이 반드시 마름모를 보장하는지 확인한다.\n④에서 두 쌍의 대각이 각각 같으면 그 사각형은 평행사변형이다. 평행사변형의 두 대각선이 서로 수직이면 마름모이므로 ④는 참이다.\n⑤는 네 변의 길이가 모두 같은 사각형으로, 마름모의 정의에 해당한다.\n①은 일반적인 평행사변형, ②는 등변사다리꼴 등이 될 수 있고, ③도 마름모를 보장하지 않는다. 따라서 정답은 ④, ⑤이다.",
+    solution: "주어진 조건이 반드시 마름모를 보장하는지 확인한다.\n④에서 두 쌍의 대각이 각각 같으면 그 사각형은 평행사변형이다.\n평행사변형의 두 대각선이 서로 수직이면 마름모이므로 ④는 참이다.\n⑤는 네 변의 길이가 모두 같은 사각형으로, 마름모의 정의에 해당한다.\n①은 일반적인 평행사변형, ②는 등변사다리꼴 등이 될 수 있고, ③도 마름모를 보장하지 않는다.\n따라서 정답은 ④, ⑤이다.",
     problemTypeKey: "PT_QUADRILATERAL_PROPERTIES",
     templateKey: "TPL_SPECIAL_QUADRILATERALS",
     crossConceptKeys: [],
@@ -945,7 +945,7 @@ window.questionBank = [
     "39"
   ],
     answer: "④",
-    solution: "[키포인트] 마름모와 정사각형의 대각선 성질을 각각 이용한다.\n마름모의 대각선은 서로 수직이고 꼭짓각을 이등분한다. $\\triangle BOC$에서 $\\angle BOC=90^\\circ$, $\\angle BCO=58^\\circ$이므로 $x=\\angle CBO=180^\\circ-90^\\circ-58^\\circ=32^\\circ$이다.\n정사각형의 두 대각선은 길이가 같고 서로를 이등분한다. 그림에서 대각선 $FH=10\\mathrm{cm}$이므로 다른 대각선 $EG$도 10cm이고, $EO=\\dfrac12EG=5\\mathrm{cm}$이다. 따라서 $y=5$이다.\n그러므로 $x+y=32+5=37$이고 정답은 ④이다.",
+    solution: "마름모와 정사각형의 대각선 성질을 각각 이용한다.\n마름모의 대각선은 서로 수직이고 꼭짓각을 이등분한다. $\\triangle BOC$에서 $\\angle BOC=90^\\circ$, $\\angle BCO=58^\\circ$이므로 $x=\\angle CBO=180^\\circ-90^\\circ-58^\\circ=32^\\circ$이다.\n정사각형의 두 대각선은 길이가 같고 서로를 이등분한다.\n그림에서 대각선 $FH=10\\mathrm{cm}$이므로 다른 대각선 $EG$도 10cm이고, $EO=\\dfrac12EG=5\\mathrm{cm}$이다.\n따라서 $y=5$이다.\n그러므로 $x+y=32+5=37$이고 정답은 ④이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q21-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q21.png",
     problemTypeKey: "PT_QUADRILATERAL_PROPERTIES",
@@ -991,7 +991,7 @@ window.questionBank = [
     "$55^\\circ$"
   ],
     answer: "⑤",
-    solution: "[키포인트] 수선과 평행선의 각 관계를 이용해 구하는 두 각을 한 삼각형의 두 각으로 바꾼다.\n$BP\\perp AC$이고 $\\angle PBQ=35^\\circ$이므로 직선 $BQ$와 $AC$가 이루는 예각은 $90^\\circ-35^\\circ=55^\\circ$이다. 따라서 $\\angle BQP=55^\\circ$이다.\n점 $P,Q,C$는 한 직선 위에 있으므로 $\\angle BQC=180^\\circ-55^\\circ=125^\\circ$이다. $AD\\parallel BC$이고 $AP$와 $CQ$가 같은 직선 위에 있으므로 $\\angle DAP=\\angle QCB$이다.\n따라서 $\\angle DAP+\\angle QBC=\\angle QCB+\\angle QBC=180^\\circ-125^\\circ=55^\\circ$이다. 정답은 ⑤이다.",
+    solution: "수선과 평행선의 각 관계를 이용해 구하는 두 각을 한 삼각형의 두 각으로 바꾼다.\n$BP\\perp AC$이고 $\\angle PBQ=35^\\circ$이므로 직선 $BQ$와 $AC$가 이루는 예각은 $90^\\circ-35^\\circ=55^\\circ$이다.\n따라서 $\\angle BQP=55^\\circ$이다.\n점 $P,Q,C$는 한 직선 위에 있으므로 $\\angle BQC=180^\\circ-55^\\circ=125^\\circ$이다. $AD\\parallel BC$이고 $AP$와 $CQ$가 같은 직선 위에 있으므로 $\\angle DAP=\\angle QCB$이다.\n따라서 $\\angle DAP+\\angle QBC=\\angle QCB+\\angle QBC=180^\\circ-125^\\circ=55^\\circ$이다.\n정답은 ⑤이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q22-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q22.png",
     imageSize: "full",
@@ -1031,7 +1031,7 @@ window.questionBank = [
     content: "[서술형 1] 그림에서 직선의 방정식을 각각 구하고, 두 직선의 방정식의 교점을 구하시오. [6점]<br>(직선의 방정식을 구하기: 각각 2점, 교점 구하기: 2점)",
     choices: [],
     answer: "$y=\\dfrac12x+3$, $y=3x-1$; 교점 $\\left(\\dfrac85,\\dfrac{19}5\\right)$",
-    solution: "[키포인트] 그래프에서 각 직선 위의 두 점을 읽어 기울기와 절편을 구한 뒤 두 식을 연립한다.\n완만한 직선은 $(-4,1)$, $(-2,2)$를 지나므로 기울기는 $\\dfrac{2-1}{-2-(-4)}=\\dfrac12$이다. 점 $(-2,2)$를 대입하면 $2=-1+b$이므로 $b=3$이고, 방정식은 $y=\\dfrac12x+3$이다.\n가파른 직선은 $(0,-1)$, $(1,2)$를 지나므로 기울기는 $\\dfrac{2-(-1)}{1-0}=3$이고, $y$절편이 $-1$이므로 방정식은 $y=3x-1$이다.\n두 식을 연립하면 $\\dfrac12x+3=3x-1$, $4=\\dfrac52x$이므로 $x=\\dfrac85$이다. 이를 $y=3x-1$에 대입하면 $y=\\dfrac{24}5-1=\\dfrac{19}5$이다.\n따라서 두 직선의 교점은 $\\left(\\dfrac85,\\dfrac{19}5\\right)$이다.",
+    solution: "그래프에서 각 직선 위의 두 점을 읽어 기울기와 절편을 구한 뒤 두 식을 연립한다.\n완만한 직선은 $(-4,1)$, $(-2,2)$를 지나므로 기울기는 $\\dfrac{2-1}{-2-(-4)}=\\dfrac12$이다.\n점 $(-2,2)$를 대입하면 $2=-1+b$이므로 $b=3$이고, 방정식은 $y=\\dfrac12x+3$이다.\n가파른 직선은 $(0,-1)$, $(1,2)$를 지나므로 기울기는 $\\dfrac{2-(-1)}{1-0}=3$이고, $y$절편이 $-1$이므로 방정식은 $y=3x-1$이다.\n두 식을 연립하면 $\\dfrac12x+3=3x-1$, $4=\\dfrac52x$이므로 $x=\\dfrac85$이다.\n이를 $y=3x-1$에 대입하면 $y=\\dfrac{24}5-1=\\dfrac{19}5$이다.\n따라서 두 직선의 교점은 $\\left(\\dfrac85,\\dfrac{19}5\\right)$이다.",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q23.png",
     problemTypeKey: "",
     templateKey: "",
@@ -1074,7 +1074,7 @@ window.questionBank = [
     content: "[서술형 2] 그림과 같은 $\\triangle ABC$에서 $BC$의 중점을 $M$이라 하고, 점 $M$에서 두 변 $AB,AC$에 내린 수선의 발을 각각 $D,E$라고 하자. $AD=6.4\\mathrm{cm}$, $CE=3.6\\mathrm{cm}$, $MD=ME$일 때, $\\triangle BDM$과 $\\triangle CEM$이 합동임을 보이고, $AB$의 길이를 구하시오. [7점]<br>(두 삼각형이 합동임을 설명하기: 4점, $AB$의 길이 구하는 과정: 3점)",
     choices: [],
     answer: "$10\\mathrm{cm}$",
-    solution: "[키포인트] 두 직각삼각형의 빗변과 다른 한 변의 길이를 비교하여 합동을 보인다.\n$M$은 $BC$의 중점이므로 $BM=CM$이다. 또한 $MD\\perp AB$, $ME\\perp AC$이므로 $\\angle BDM=\\angle CEM=90^\\circ$이고, 조건에서 $MD=ME$이다.\n따라서 두 직각삼각형 $BDM$, $CEM$은 빗변 $BM=CM$이고 다른 한 변 $MD=ME$이므로 서로 합동이다. 그러므로 대응하는 변 $BD=CE=3.6\\mathrm{cm}$이다.\n점 $D$는 변 $AB$ 위에 있으므로 $AB=AD+DB=6.4+3.6=10\\mathrm{cm}$이다.",
+    solution: "두 직각삼각형의 빗변과 다른 한 변의 길이를 비교하여 합동을 보인다.\n$M$은 $BC$의 중점이므로 $BM=CM$이다.\n또한 $MD\\perp AB$, $ME\\perp AC$이므로 $\\angle BDM=\\angle CEM=90^\\circ$이고, 조건에서 $MD=ME$이다.\n따라서 두 직각삼각형 $BDM$, $CEM$은 빗변 $BM=CM$이고 다른 한 변 $MD=ME$이므로 서로 합동이다.\n그러므로 대응하는 변 $BD=CE=3.6\\mathrm{cm}$이다.\n점 $D$는 변 $AB$ 위에 있으므로 $AB=AD+DB=6.4+3.6=10\\mathrm{cm}$이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q24-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q24.png",
     imageSize: "full",
@@ -1115,7 +1115,7 @@ window.questionBank = [
     content: "[서술형 3] 다음 그림과 같은 $\\square ABCD$에서 $AB\\parallel CD$, $AB=CD$이면 $\\square ABCD$는 평행사변형임을 설명하시오. [7점]<br>(보조선 긋기: 1점, 두 삼각형이 합동임을 설명하기: 4점, 평행사변형임을 설명하기: 2점)",
     choices: [],
     answer: "$\\square ABCD$는 평행사변형이다.",
-    solution: "[키포인트] 대각선을 그어 두 삼각형의 합동을 보인 뒤, 나머지 한 쌍의 대변도 평행함을 증명한다.\n대각선 $AC$를 긋는다. $AB\\parallel CD$이므로 엇각인 $\\angle BAC=\\angle DCA$이다. 또 조건에서 $AB=CD$이고, $AC$는 두 삼각형의 공통인 변이다.\n따라서 $\\triangle BAC$와 $\\triangle DCA$는 두 변의 길이와 그 끼인각의 크기가 각각 같으므로 서로 합동이다. 그러므로 대응각인 $\\angle BCA=\\angle DAC$이다.\n이 두 각은 직선 $AC$가 $BC$, $AD$와 만나서 생기는 엇각이므로 $BC\\parallel AD$이다. 이미 $AB\\parallel CD$이므로 두 쌍의 대변이 각각 평행하다.\n따라서 $\\square ABCD$는 평행사변형이다.",
+    solution: "대각선을 그어 두 삼각형의 합동을 보인 뒤, 나머지 한 쌍의 대변도 평행함을 증명한다.\n대각선 $AC$를 긋는다. $AB\\parallel CD$이므로 엇각인 $\\angle BAC=\\angle DCA$이다.\n또 조건에서 $AB=CD$이고, $AC$는 두 삼각형의 공통인 변이다.\n따라서 $\\triangle BAC$와 $\\triangle DCA$는 두 변의 길이와 그 끼인각의 크기가 각각 같으므로 서로 합동이다.\n그러므로 대응각인 $\\angle BCA=\\angle DAC$이다.\n이 두 각은 직선 $AC$가 $BC$, $AD$와 만나서 생기는 엇각이므로 $BC\\parallel AD$이다.\n이미 $AB\\parallel CD$이므로 두 쌍의 대변이 각각 평행하다.\n따라서 $\\square ABCD$는 평행사변형이다.",
     solutionImage: "assets/images/25_왕운중_2학기_중간_중2_수학/q25-solution.svg",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q25.png",
     problemTypeKey: "PT_QUADRILATERAL_PROPERTIES",
