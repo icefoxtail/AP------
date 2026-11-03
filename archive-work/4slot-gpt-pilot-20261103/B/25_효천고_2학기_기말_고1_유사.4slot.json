@@ -1,0 +1,1184 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/high/h1/2final/25_효천고_2학기_기말_고1_유사.js",
+  "sourceGitBlobSha": "1cf187cf5ec89bc97f9b63737e1420450b251eda",
+  "dictionaryVersion": "term-dict-v1.1-2026-11-03",
+  "judgedBy": {
+    "agent": "gpt-gemini-3.8-flash",
+    "run": "B",
+    "at": "2026-11-03"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "다음 중 명제인 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "다음 중 명제인 것은?"
+          },
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "참과 거짓을 분명하게 판정할 수 있는 문장이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "명제",
+            "src": "solution",
+            "quote": "명제는 참과 거짓을 분명하게 판정할 수 있는 문장이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "문장의 참·거짓이 객관적으로 명확히 판정되는지 여부로 명제 식별"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "두 함수 $f(x)=ax+b$,"
+          },
+          {
+            "term": "정의역",
+            "src": "stem",
+            "quote": "정의역이 $\\{-1,2\\}$인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "함수",
+            "src": "solution",
+            "quote": "두 함수가 같으면 정의역의 각 원소에서 함숫값이 같다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "두 입력값에서 얻는 일차방정식을 연립한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "f(-1)=g(-1), f(2)=g(2)로부터 일차방정식을 세워 연립하여 a, b 결정"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "두 실수 $a$, $b$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 함수의 상등 정의(정의역의 모든 원소에서 함숫값 일치)로부터 연립방정식을 세워 계수 결정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "두 함수 $f(x)=2x+3$,"
+          },
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$g(x)=x^2-1$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$(f\\circ g)(1)+(g\\circ f)(1)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "합성함수는 안쪽 함수를 먼저 계산한 뒤 바깥 함수를 적용한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "합성함수의 정의에 따라 안쪽 함수값을 구한 뒤 바깥 함수에 대입"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=2x-a$의 그래프가"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "두 점 $A(1,1)$, $B(5,9)$를 잇는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "먼저 선분의 중점을 구해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "$f^{-1}(7)=b$를 $f(b)=7$로 바꾼다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "선분의 중점을 구해 f에 대입하여 a를 구하고 역함수 성질로 b를 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리식",
+            "src": "stem",
+            "quote": "$\\dfrac{x^2-9}{x^2-x-6}\\div\\dfrac{x+3}{x-1}$을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "유리식",
+            "src": "stem",
+            "quote": "간단히 한 식은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "각 다항식을 인수분해한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "나눗셈을 역수의 곱셈으로 바꾸고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "정의되는 모든 실수 $x$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "유리식의 나눗셈을 역수의 곱셈으로 바꾸고 분자·분모를 인수분해하여 약분"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "진리집합",
+            "src": "stem",
+            "quote": "진리집합을 각각 $P$, $Q$, $R$이라"
+          },
+          {
+            "term": "집합",
+            "src": "solution",
+            "quote": "$P^C\\cup Q^C=U$는 드모르간 법칙으로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "다음 중 항상 참인 명제는?"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 항상 참인 명제는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "드모르간법칙",
+            "src": "solution",
+            "quote": "드모르간 법칙으로 $P\\cap Q=\\varnothing$과 같다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "$Q\\subseteq P^C$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "드모르간 법칙으로 서로소 조건을 얻고 진리집합 포함관계로부터 참인 명제 판정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "두 조건 $p$, $q$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "필요조건",
+            "src": "stem",
+            "quote": "필요조건이지만 충분조건이 아닌 것만을"
+          },
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "필요성은 $q\\to p$, 충분성은 $p\\to q$로 판정한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "필요조건",
+            "src": "solution",
+            "quote": "필요조건은 $q\\to p$,",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "충분조건",
+            "src": "solution",
+            "quote": "충분조건은 $p\\to q$로 바꾸어 각각 확인한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "(단, $a,x,y$는 실수이다.)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 보기에서 양방향 함의(p->q, q->p)의 참·거짓을 판별하여 필요조건이지만 충분조건이 아닌 것 선택"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "무리함수 $y=-\\sqrt{x-p}+q$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "설명으로 옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의역",
+            "src": "solution",
+            "quote": "정의역·치역·대칭·사분면을 판정한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "치역",
+            "src": "solution",
+            "quote": "정의역·치역·대칭·사분면을 판정한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "정의역·치역·대칭·사분면을 판정한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "시작점으로 함수식을 복원하고 정의역, 치역, 대칭이동, 지나는 사분면의 옳고 그름을 판정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수방정식",
+            "src": "stem",
+            "quote": "f(m+n)=f(m)+f(n)+kmn"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$f(4)+f(-4)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "함수방정식",
+            "src": "solution",
+            "quote": "$n=-m$을 대입하면 대칭인 두 함수값의 합을 $k$로 나타낼 수 있다.",
+            "evidenceType": "IMPLIED",
+            "justification": "함수방정식에 특수값을 대입해 대칭합 식을 유도하고 k를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "임의의 정수 $m,n$에 대하여"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "(단, $k$는 실수이다.)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "함수방정식에 n=-m을 대입해 f(m)+f(-m)=km^2 관계를 도출하고 k를 구해 f(4)+f(-4) 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f:X\\to X$가 $f(x)=$"
+          },
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "$f^{n+1}=f\\circ f^n$이다.)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대입",
+            "src": "stem",
+            "quote": "$f^8(3)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "반복되는 궤도의 주기를 찾은 뒤",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "반복합성에서는 시작값의 함수값을 차례로 계산해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "나머지 함수를 반복 합성하여 순환 주기가 3임을 확인하고 8번째 함숫값 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "무리함수 $f(x)=\\sqrt{x+a}+b$의"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "그 역함수의 그래프의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대입",
+            "src": "stem",
+            "quote": "$f(8)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치역",
+            "src": "solution",
+            "quote": "치역의 시작값으로 $b$를 정하고,",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "함수와 역함수의 교점이 $y=x$ 위에 있음을 이용한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "치역",
+            "src": "stem",
+            "quote": "치역이 $\\{y\\mid y\\ge1\\}$이고,"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "치역의 하한으로부터 b=1을 정하고 역함수와의 교점이 y=x 위에 있음을 이용해 f(3)=3으로부터 a를 구함"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "유리함수 $y=\\dfrac{2x+7}{x-a}$의"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "그래프가 두 직선에 대하여 모두 대칭이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$ab$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "유리함수의 중심을 지나는 두 대칭축과 비교한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "유리함수의 대칭축이 점근선의 교점을 지나고 기울기가 +-1임을 이용"
+          },
+          {
+            "term": "대칭",
+            "src": "solution",
+            "quote": "기울기 $1,-1$인 두 대칭축을",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "유리함수의 대칭축 기울기가 +-1이고 점근선의 교점(a,2)을 지난다는 성질로 a와 b를 결정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "유리함수 $y=\\dfrac{a}{x+b}+c$의"
+          },
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "무리함수 $y=-\\sqrt{a(x-b)}+c$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$a-b+c$의 최댓값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "유리함수의 점근선과 가지의 방향으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "무리함수의 $x$절편 조건을 식으로 바꾼다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a,b,c$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "유리함수 그림에서 점근선과 부호 조건을 얻고 무리함수의 x절편이 0 이상인 범위로부터 최댓값 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "두 조건 $p,q$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$N(p_1)+N(p_2)+N(p_3)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "충분조건",
+            "src": "solution",
+            "quote": "필요성·충분성을 따로 판정한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "필요조건",
+            "src": "solution",
+            "quote": "필요성·충분성을 따로 판정한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "(단, $a,b,c$는 실수이다.)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "세 실수의 곱이 음수라는 조건과 max/min 조건 간의 필요조건·충분조건 관계를 판별하여 정의된 점수 합산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조각함수",
+            "src": "stem",
+            "quote": "$x\\lt2$에서 $f(x)=(4-a)x+b$이고,"
+          },
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "기울기가 $a+1$인 직선의 일부이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$a+b$의 최솟값은?"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일대일대응",
+            "src": "solution",
+            "quote": "경계 치역이 실수 전체를 빈틈없이 한 번씩 덮는 조건을 사용한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "두 기울기가 모두 양수이려면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "두 정수 $a,b$에 대하여"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "정의역과 공역이 각각 실수 전체의 집합인"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "구간별 일차함수가 실수 전체에서 일대일대응이 되도록 두 기울기 양수 및 경계 연속성 조건 연립"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "최고차항의 계수가 $1$인 이차함수 $g(x)$의"
+          },
+          {
+            "term": "상수함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=|g(x)|$가 상수함수이고"
+          },
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "함수 $f(x)=|g(x)|$가 상수함수이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "정수 $k$의 최댓값은?"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $k$의 최댓값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "상수함수",
+            "src": "solution",
+            "quote": "실근의 개수를 조사한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값 이차함수가 세 서로 다른 입력에서 같은 k값을 갖도록 실근 개수 조건 분석"
+          },
+          {
+            "term": "실근",
+            "src": "solution",
+            "quote": "실근의 개수를 조사한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "서로 다른 세 실수 $a,b,c$에 대하여"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $k$의 최댓값은?"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "절댓값 이차함수 |g(x)|=k가 세 개 이상의 실근을 갖는 꼭짓점 높이 범위(0<=k<=9)로부터 정수 k의 최댓값 산출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=6-2|x-3|$의"
+          },
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "$(f\\circ f\\circ f)(a)=2$를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "실수 $a$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "목표값에서 시작해 $f(x)=t$의 원상을 세 단계 거꾸로 추적한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원상(역상)을 반복하여 거꾸로 역추적함으로써 최종 입력값의 개수를 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "만족시키는 실수 $a$의 개수는?"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "집합 $X=[0,6]$에서 $X$로의"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "함숫값 2에서 시작하여 f의 역상을 세 단계 거꾸로 분기 추적하여 최종 해의 개수 8 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\dfrac{(a+2)x-a^2-2a+4}{x-a}$의"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "반지름의 길이가 $r$인 원이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$r$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "원의 중심을 먼저 복원하되,",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "$X^2+Y^2\\ge2XY=8$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭",
+            "src": "solution",
+            "quote": "두 중심이 일치하는 $a=0$을 선택한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "모든 a에 대해 성립하므로 중심이 일치하는 특수위치에서 접촉 조건을 산술기하로 해결"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $a$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "모든 a에 대해 두 점에서 접하듯 만나는 반지름 r을 동심 형태인 a=0에서 산술기하평균 등호 조건으로 결정"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "기울기가 $2$이고 점 $(1,5)$를 지나는"
+          },
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "함수 $g(x)=x^2-4x+1$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대입",
+            "src": "stem",
+            "quote": "$(f^{-1}\\circ g)(3)$의 값을 구하고 그 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "역함수를 구한 뒤 합성한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "역함수를 구한 뒤 합성한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "기울기와 지나는 점으로 일차함수 식과 역함수를 구하고 g(3)을 대입하여 합성함숫값 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $f,g$가 $f(0)=m$,"
+          },
+          {
+            "term": "항등식",
+            "src": "stem",
+            "quote": "$(f\\circ g)(x)=(g\\circ f)(x)+5n-2m$이 항상 성립할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$ab$의 값을 구하고 그 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "항등식",
+            "src": "solution",
+            "quote": "합성함수 항등식의 계수를 비교한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "합성함수 항등식의 계수를 비교한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "임의의 두 실수 $m,n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 정보로 f, g의 식을 세우고 합성함수 전개식이 m, n에 대한 항등식이 되도록 계수를 비교해 ab 계산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "명제 ‘어떤 실수 $x$에 대하여"
+          },
+          {
+            "term": "이차부등식",
+            "src": "stem",
+            "quote": "$x^2-ax+5\\le0$이다.’의 부정이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수 $a$의 개수를 구하고 그 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "부정",
+            "src": "solution",
+            "quote": "존재명제의 부정을 모든 실수에 대한 부등식으로 바꾸고,",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식으로 판단한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $a$의 개수를 구하고"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "‘어떤 실수 $x$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "존재명제의 부정이 모든 실수에 대해 x^2-ax+5>0이 되는 판별식 D=a^2-20<0을 풀어 정수 a의 개수 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "유리함수 $y=\\dfrac4{x-1}+2$ $(x\\gt1)$의"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "그래프 위의 점 $P$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "둘레의 길이의 최솟값을 구하고 그 과정을 서술하시오."
+          },
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레의 길이의 최솟값을 구하고 그 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "양수 치환과 산술기하평균을 사용한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "양수 치환과 산술기하평균을 사용한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$(x\\gt1)$의 그래프 위의"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "P(x,y)의 직사각형 둘레 2(x+y)를 t=x-1>0으로 치환한 뒤 산술기하평균 부등식으로 최솟값 도출"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "조각함수",
+            "src": "stem",
+            "quote": "f^{-1}(x)=\\begin{cases}2x+5&(x\\lt-2)"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "역함수가 $f^{-1}(x)=\\begin{cases}2x+5&(x\\lt-2)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "실수 $x$의 값의 합을 구하고 그 과정을 서술하시오."
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "만족시키는 모든 실수 $x$의"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "원래 함수 $f$를 구간별로 복원한 뒤",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "식을 $f(x)\\{f(x)-f^{-1}(x)\\}=0$으로 나누어 푼다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "만족시키는 모든 실수 $x$의"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "역함수로부터 f를 구간별로 복원하고 f(x)=0과 f(x)=f^{-1}(x)로 분기하여 유효한 모든 실수 해를 구해 합산"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [
+    {
+      "term": "드모르간법칙",
+      "kind": "방법",
+      "parent": "집합",
+      "note": "여집합 연산 법칙",
+      "usedIn": [
+        6
+      ]
+    }
+  ],
+  "selfCheck": {
+    "items": 23,
+    "quotesChecked": 135,
+    "quotesNotFound": 0,
+    "notes": ""
+  }
+}
