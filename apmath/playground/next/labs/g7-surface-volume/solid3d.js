@@ -547,8 +547,10 @@
     order.forEach((q) => {
       const st = (style && style(q.pc, q.k)) || {};
       if (st.skip) return;
-      const col = st.edge || 'ink', ew = st.ew || 2.4;
+      const col0 = st.edge || 'ink', ew0 = st.ew || 2.4;
       q.pc.edges.forEach((e) => {
+        // st.edgeStyle(변, 조각) → {color, width}: 맞붙는 변을 같은 색으로 칠할 때 씁니다
+        const es = (st.edgeStyle && st.edgeStyle(e, q.pc, q.k)) || null, col = (es && es.color) || col0, ew = (es && es.width) || ew0;
         const nb = e.nb != null && e.nb >= 0 ? tp[e.nb] : null;
         const a = q.pts[e.i], c = q.pts[(e.i + 1) % q.pts.length];
         if (e.kind === 's') {

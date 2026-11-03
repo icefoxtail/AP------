@@ -12,9 +12,9 @@
   const { cube8, PI, DEG, TAU, clamp, ease, seg01, lin01, v3, add3, sub3, mul3, lerp3, mid3, dot3, V, vadd, vsub, vmul, vnum, tx, plainVal, mkV, P, fmtN, pick, rint, notes, rd, span, scene3, revolveMesh, sphereProfile, xfMesh, shiftT, rotM, centroid, bboxOf, prismMesh, boxMesh, boxMinusBoxes, meshArea, flipMesh, polyMesh, layoutTiles, drawTiles } = G;
 
   const PARAMS = {
-    s51A: P('정사각형의 한 변 a', 4, 10, 1, 6, { color: 'amber', format: (v) => v + ' cm' }),
-    s51H: P('기둥의 길이(높이) h', 1, 10, 1, 5, { color: 'sky', format: (v) => v + ' cm' }),
-    s51Q: P('구멍의 반지름 q', 1, 4, 1, 2, { color: 'red', hint: 'a의 절반보다 작아야 해요', format: (v) => v + ' cm', clampTo: (s) => [1, Math.min(4, Math.floor((Math.round(s.s51A) - 1) / 2))] }),
+    s51A: P('정사각형의 한 변', 4, 10, 1, 6, { color: 'amber', format: (v) => v + ' cm' }),
+    s51H: P('기둥의 길이(높이)', 1, 10, 1, 5, { color: 'sky', format: (v) => v + ' cm' }),
+    s51Q: P('구멍의 반지름', 1, 4, 1, 2, { color: 'red', hint: '정사각형의 한 변의 절반보다 작아야 해요', format: (v) => v + ' cm', clampTo: (s) => [1, Math.min(4, Math.floor((Math.round(s.s51A) - 1) / 2))] }),
     s51T: P('뚫기 · 열기 · 분해', 0, 1, 0.005, 0, { color: 'green', format: (v) => (v < 0.02 ? '구멍 없음' : v < 0.25 ? '구멍 막대가 가로로 관통' : v < 0.55 ? '앞쪽 절반을 옆으로 열기' : v > 0.99 ? '분해 완료' : '조각을 가로로 늘어놓기') }),
     s52D: P('구멍의 깊이 d', 1, 9, 1, 3, { color: 'red', format: (v) => v + ' cm', clampTo: (s) => [1, Math.max(1, Math.round(s.s51H) - 1)] }),
     s52U: P('구멍의 크기', 1, 5, 1, 2, { color: 'red', format: (v) => v + ' cm', clampTo: (s) => [1, (s.svK52 || 'cb') === 'cb' ? Math.min(4, Math.floor((Math.round(s.s51A) - 1) / 2)) : Math.min(5, Math.round(s.s51A) - 2)] }),
@@ -80,23 +80,27 @@
       const hlOf = (k) => (!C.review ? 1 : st === k ? 2 : st === 4 ? 3 : 1);
       const t0 = { w: M.a, h: M.a, shape: 'hole', holeR: (M.q / M.a) * 0.5, count: 2, fill: 'sky', label: plainVal(V(M.a * M.a, -M.q * M.q)), cap: '뚫린 면 ×2', hl: hlOf(2) };
       const t1 = { w: M.a, h: M.h, shape: 'rect', count: 4, fill: 'sky', label: `${M.a * M.h}`, cap: '바깥 옆면 ×4', hl: hlOf(1) };
-      const t2 = { w: 2 * PI * M.q, h: M.h, shape: 'rect', fill: 'amber', label: plainVal(M.plus), cap: '안쪽 옆면 2πq×h', hl: hlOf(3) };
-      const R = C.problem ? null : G.layoutTileRows(narrow ? [[t0, t1], [t2]] : [[t0, t1, t2]], narrow ? 4.6 : 6.4, narrow ? 1.6 : 2.0, 0.7, 1.9);
+      const t2 = { w: 2 * PI * M.q, h: M.h, shape: 'rect', fill: 'amber', label: `2×π×${M.q}×${M.h} = ${plainVal(M.plus)}`, cap: '안쪽 옆면', hl: hlOf(3) };
+      const R = C.problem ? null : G.layoutTileRows(narrow ? [[t0, t1], [t2]] : [[t0, t1, t2]], narrow ? 4.6 : 6.4, narrow ? 1.6 : 2.0, narrow ? 1.6 : 1.0, 1.9);
       const pts = cube8(v3(0, 0, 0), Math.max(A, Hh / 2)).concat(cube8(D.hx(C.problem ? 0 : dOpen), Math.max(A, Hh / 2))); // 지금 프레임(열린 만큼)만으로 맞춰요
       const bb = bboxOf(pts.map(D.P));
       const blend = narrow && R ? ease(lin01(te, 0, 0.15)) : 0, rowTop = bb.y1 + 0.9;
       if (blend > 0) {
         const mix = (p, q) => p + (q - p) * blend;
-        D.fit([], [{ x: mix(bb.x0, -R.total / 2), y: mix(bb.y0, rowTop) }, { x: mix(bb.x1, R.total / 2), y: mix(bb.y1, rowTop + R.height + 2.6) }], { l: 36, r: 36, t: 44, b: 40 });
-      } else D.fit(pts, R && !narrow ? [{ x: -R.total / 2, y: rowTop }, { x: R.total / 2, y: rowTop + R.height + 2.6 }] : [], { l: 36, r: 36, t: 44, b: 40 });
+        D.fit([], [{ x: mix(bb.x0, -R.total / 2), y: mix(bb.y0, rowTop) }, { x: mix(bb.x1, R.total / 2), y: mix(bb.y1, rowTop + R.height + 2.6) }], { l: 86, r: 40, t: 78, b: 60 });
+      } else D.fit(pts, R && !narrow ? [{ x: -R.total / 2, y: rowTop }, { x: R.total / 2, y: rowTop + R.height + 2.6 }] : [], { l: 86, r: 40, t: 78, b: 60 });
       const showSolid = !(narrow && te > 0.15);
       const lvAll = !C.review ? 1 : st === 1 ? 2 : 1, lvWall = !C.review ? 1 : st === 3 ? 2 : 1;
       if (!showSolid) {
         // 휴대폰: 조각 줄이 펼쳐지는 동안 입체는 물러나요
       } else if (plain) {
         D.body({ mesh: boxMesh(-A, A, y0, y1, -A, A), fill: 'sky', alpha: 0.22, edge: 'ink' });
-        [y0, y1].forEach((y) => D.path(D.circ(v3(0, y, 0), v3(1, 0, 0), v3(0, 0, 1), qu, 0, TAU, 60), 'red', 2.4, { dash: [6, 5], alpha: 0.85 }));
-        [qu, -qu].forEach((xx) => D.line(v3(xx, y0, 0), v3(xx, y1, 0), 'red', 2, { dash: [6, 5], alpha: 0.7 }));
+        // 뚫릴 자리: 붉은 반투명 원기둥(윗면의 원은 실선, 상자 속에 가려진 부분은 점선)
+        const ghost = revolveMesh([[0, y0], [qu, y0], [qu, y1], [0, y1]], { N: 40 });
+        D.body({ mesh: ghost, fill: 'red', alpha: 0.18, edgeFn: () => ({ skip: true }), hidden: false, sil: false });
+        D.path(D.circ(v3(0, y1, 0), v3(1, 0, 0), v3(0, 0, 1), qu, 0, TAU, 60), 'red', 2.6);
+        D.path(D.circ(v3(0, y0, 0), v3(1, 0, 0), v3(0, 0, 1), qu, 0, TAU, 60), 'red', 2.2, { dash: [6, 5], alpha: 0.85 });
+        G.silLines(ghost, D.vw).forEach(([pa, pb]) => D.line(pa, pb, 'red', 2.2, { dash: [6, 5], alpha: 0.85 }));
       } else {
         const { left, right } = holeHalvesUp(A, Hh, qu), rightM = xfMesh(right, shiftT(D.hx(dOpen)));
         const cutSkip = (m) => (e) => (closed && ((m.faces[e.f1] && m.faces[e.f1].tag === 'cut') || (m.faces[e.f2] && m.faces[e.f2].tag === 'cut')) ? { skip: true } : {});
@@ -108,16 +112,17 @@
       }
       // 길이: 바깥 모서리에
       if (showSolid) {
-        D.elabel(v3(-A, y0, A), v3(A, y0, A), `a=${M.a}`, { side: { x: 0, y: 1 }, size: 15, color: 'amber', gap: 8 });
-        D.elabel(v3(A, y0, A), v3(A, y1, A), `h=${M.h}`, { side: { x: 1, y: 0 }, size: 15, color: 'amber', gap: 8 });
-        // 구멍의 반지름 q (윗면)
-        D.line(v3(0, y1, 0), v3(-qu, y1, 0), 'red', 2.8);
-        D.dot(v3(0, y1, 0), 'ink', 3.5);
-        D.tag(v3(-qu / 2, y1, 0), `q=${M.q}`, { dy: -12, size: 15, color: 'red' });
+        // 정사각형의 두 변(앞 · 오른쪽 아래 모서리)과 높이(왼쪽 세로 모서리): 도형 바깥 치수선. 입체가 벌어지면 두 변은 사라집니다.
+        const dimA = 1 - lin01(open, 0, 0.25), c0 = v3(0, 0, 0);
+        D.dim(v3(-A, y0, A), v3(A, y0, A), `${M.a}`, { from: c0, off: 15, alpha: dimA });
+        D.dim(v3(A, y0, A), v3(A, y0, -A), `${M.a}`, { from: c0, off: 15, alpha: dimA });
+        D.dim(v3(-A, y0, A), v3(-A, y1, A), `높이 ${M.h}`, { side: { x: -1, y: 0 }, off: 18, color: 'amber' });
+        // 구멍의 반지름: 윗면 중심에서 오른쪽 앞으로
+        if (open < 0.02) { const ct = v3(0, y1, 0); D.radius(ct, add3(ct, mul3(D.rightFront(), qu)), `반지름 ${M.q}`, { color: 'red', end: true }); }
       }
       if (!C.problem) {
-        if (!showSolid) { /* 입체 글자 없음 */ } else if (plain) topText(D, y1, A, A, `구멍 없는 기둥  S₀ = 2a²+4ah = ${plainVal(M.S0)}`);
-        else if (open > 0.3) topText(D, y1, A, A, `노란 면 = 안쪽 벽 (높이 ${M.h}, 둘레 2πq)`, { shift: dOpen, size: D.fs(14), color: 'amber' });
+        if (!showSolid) { /* 입체 글자 없음 */ } else if (plain) { topText(D, y1, A, A, '구멍 뚫기 전 직육면체의 겉넓이', { dy: -40 }); topText(D, y1, A, A, `${M.a}×${M.a}×2 + 4×${M.a}×${M.h} = ${plainVal(M.S0)}`, { dy: -18 }); }
+        else if (open > 0.3) topText(D, y1, A, A, `노란 면 = 안쪽 벽 (높이 ${M.h}, 둘레 2×π×${M.q})`, { shift: dOpen, size: D.fs(14), color: 'amber' });
         if (R && te > (narrow ? 0.15 : 0.01)) {
           slideTiles(R, te);
           const top = rowTop;
@@ -142,21 +147,21 @@
         return { ans: area, model: vnum(M.tot) };
       },
       steps: (M) => [
-        `구멍이 없을 때의 겉넓이는 $S_0=2a^2+4ah=2\\times${M.a}^2+4\\times${M.a}\\times${M.h}=${tx(M.S0)}\\,\\mathrm{cm}^2$예요.`,
-        `기둥의 양쪽 면에 구멍 입구(반지름 $${M.q}$인 원)가 2개 생겨 겉면이 없어져요. $-2\\pi q^2=-2\\pi\\times${M.q}^2=${tx(M.minus)}$예요.`,
-        `구멍 안쪽에 새로운 <b>옆면</b>이 생겨요. 가로가 둘레 $2\\pi q$, 세로가 $h$인 직사각형이므로 $+2\\pi qh=${tx(M.plus)}$예요.`,
-        `(새 겉넓이) $=S_0-2\\pi q^2+2\\pi qh=${tx(M.S0)}${vnum(M.delta) < 0 ? '' : '+'}${tx(M.delta)}=${tx(M.tot)}\\,\\mathrm{cm}^2$ ($=S_0+2\\pi q(h-q)$)예요.`
+        `구멍을 뚫기 전 직육면체의 겉넓이는 $${M.a}\\times${M.a}\\times2+4\\times${M.a}\\times${M.h}=${M.a * M.a * 2}+${4 * M.a * M.h}=${tx(M.S0)}\\,\\mathrm{cm}^2$예요.`,
+        `기둥의 양쪽 면에 구멍 입구(반지름 $${M.q}$인 원)가 2개 생겨 겉면이 없어져요. $-2\\times\\pi\\times${M.q}^2=${tx(M.minus)}$예요.`,
+        `구멍 안쪽에 새로운 <b>옆면</b>이 생겨요. 가로가 둘레 $2\\times\\pi\\times${M.q}=${tx(V(0, 2 * M.q))}$, 세로가 높이 $${M.h}$인 직사각형이므로 $${tx(V(0, 2 * M.q))}\\times${M.h}=${tx(M.plus)}$예요.`,
+        `(새 겉넓이) $=$ (뚫기 전 겉넓이) $-$ (입구 2개) $+$ (안쪽 옆면) $=${tx(M.S0)}${tx(M.minus)}+${tx(M.plus)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
       ],
       view: (M) => ({
-        guide: `<b>뚫기·열기·분해</b> 막대를 끌거나 ▶를 눌러 보세요. ${span('amber', '구멍 막대')}가 기둥을 가로로 관통하고, 앞쪽 절반이 옆으로 열려 ${span('amber', '안쪽 벽')}이 드러나요. 아래 조각 줄에서 면을 가로로 늘어놓아 합해 보세요. <b>q</b>와 <b>h</b>를 바꿔 겉넓이가 늘고 주는 경우를 찾아보세요.`,
-        alert: { tone: M.trend === 'up' ? 'warn' : 'key', text: M.trend === 'up' ? `구멍이 뚫리면 안쪽에 새로운 벽면이 생겨요! 높이 $h=${M.h}$가 구멍의 반지름 $q=${M.q}$보다 크므로 겉넓이가 <b>늘어요</b> ($+2\\pi q(h-q)=${tx(M.delta)}$).` : M.trend === 'down' ? `높이 $h=${M.h}$가 반지름 $q=${M.q}$보다 작은 얇은 판이에요. 이때는 입구 두 원이 안쪽 벽보다 커서 겉넓이가 <b>줄어요</b> ($${tx(M.delta)}$).` : `높이 $h$와 반지름 $q$가 같아서 겉넓이가 <b>변하지 않아요</b>.` },
-        readouts: [rd('구멍 없을 때 S₀', plainVal(M.S0) + ' cm²', 'sky'), rd('없어진 입구 2개', plainVal(M.minus) + ' cm²', 'red', '−2πq²'), rd('생긴 안쪽 벽', '+' + plainVal(M.plus) + ' cm²', 'amber', '2πq × h'), rd('새 겉넓이', plainVal(M.tot) + ' cm²', 'green', `변화 ${vnum(M.delta) >= 0 ? '+' : ''}${plainVal(M.delta)}`)],
-        formula: `<p>(구멍 뚫린 입체의 겉넓이) $=S_0-2\\pi q^2+2\\pi qh=S_0+2\\pi q(h-q)$</p>`,
-        rule: '구멍을 뚫으면: 입구 두 원은 빼고, 안쪽 옆면(2πq × h)은 더해요',
-        notes: notes('<b>함정</b>: 안쪽 옆면을 빠뜨리거나, 입구의 원을 빼는 것을 잊거나, 입구를 한 개만 빼기 쉬워요.', '안쪽 옆면은 가로가 원의 둘레 $2\\pi q$예요. $\\pi q^2$(넓이)가 아니에요.', '높이가 반지름보다 <b>크면</b> 늘고, <b>작으면</b> 줄어요. 슬라이더로 확인해 보세요.')
+        guide: `<b>뚫기·열기·분해</b> 막대를 끌거나 ▶를 눌러 보세요. ${span('amber', '구멍 막대')}가 기둥을 가로로 관통하고, 앞쪽 절반이 옆으로 열려 ${span('amber', '안쪽 벽')}이 드러나요. 아래 조각 줄에서 면을 가로로 늘어놓아 합해 보세요. <b>구멍의 반지름</b>과 <b>기둥의 길이</b>를 바꿔 겉넓이가 늘고 주는 경우를 찾아보세요.`,
+        alert: { tone: M.trend === 'up' ? 'warn' : 'key', text: M.trend === 'up' ? `구멍이 뚫리면 안쪽에 새로운 벽면이 생겨요! 기둥의 길이 $${M.h}$가 구멍의 반지름 $${M.q}$보다 크므로 겉넓이가 <b>늘어요</b> (변화 $${tx(M.minus)}+${tx(M.plus)}=+${tx(M.delta)}$).` : M.trend === 'down' ? `기둥의 길이 $${M.h}$가 구멍의 반지름 $${M.q}$보다 작은 얇은 판이에요. 이때는 입구 두 원이 안쪽 벽보다 커서 겉넓이가 <b>줄어요</b> (변화 $${tx(M.delta)}$).` : `기둥의 길이와 구멍의 반지름이 같아서 겉넓이가 <b>변하지 않아요</b>.` },
+        readouts: [rd('구멍 뚫기 전', plainVal(M.S0) + ' cm²', 'sky', `${M.a}×${M.a}×2 + 4×${M.a}×${M.h}`), rd('없어진 입구 2개', plainVal(M.minus) + ' cm²', 'red', `−2×π×${M.q}×${M.q}`), rd('생긴 안쪽 벽', '+' + plainVal(M.plus) + ' cm²', 'amber', `2×π×${M.q}×${M.h}`), rd('새 겉넓이', plainVal(M.tot) + ' cm²', 'green', `변화 ${vnum(M.delta) >= 0 ? '+' : ''}${plainVal(M.delta)}`)],
+        formula: `<p>(구멍 뚫린 입체의 겉넓이) $=$ (뚫기 전 겉넓이) $-$ (입구 2개) $+$ (안쪽 옆면)</p>`,
+        rule: '구멍을 뚫으면: 입구 두 원은 빼고, 안쪽 옆면(둘레 × 길이)은 더해요',
+        notes: notes('<b>함정</b>: 안쪽 옆면을 빠뜨리거나, 입구의 원을 빼는 것을 잊거나, 입구를 한 개만 빼기 쉬워요.', '안쪽 옆면은 가로가 원의 <b>둘레</b>예요. 원의 넓이가 아니에요.', '기둥의 길이가 구멍의 반지름보다 <b>크면</b> 늘고, <b>작으면</b> 줄어요. 막대로 확인해 보세요.')
       }),
       prob: (M) => {
-        const wrongs = [[vadd(M.S0, M.minus), '안쪽 옆면(구멍 안쪽 벽)을 더하지 않았어요.'], [vadd(M.S0, M.plus), '구멍 입구의 원 2개를 빼지 않았어요.'], [vadd(M.S0, vadd(V(0, -M.q * M.q), M.plus)), '구멍 입구는 양쪽에 2개라 $2\\pi q^2$을 빼야 해요. 한 개만 뺐어요.'], [vadd(M.S0, vadd(M.minus, V(0, M.q * M.q * M.h))), '안쪽 옆면의 가로는 둘레 $2\\pi q$예요. $\\pi q^2$을 썼어요.'], [M.S0, '구멍을 무시했어요.']];
+        const wrongs = [[vadd(M.S0, M.minus), '안쪽 옆면(구멍 안쪽 벽)을 더하지 않았어요.'], [vadd(M.S0, M.plus), '구멍 입구의 원 2개를 빼지 않았어요.'], [vadd(M.S0, vadd(V(0, -M.q * M.q), M.plus)), '구멍 입구는 양쪽에 2개라 원의 넓이를 2번 빼야 해요. 한 개만 뺐어요.'], [vadd(M.S0, vadd(M.minus, V(0, M.q * M.q * M.h))), '안쪽 옆면의 가로는 원의 둘레예요. 원의 넓이를 썼어요.'], [M.S0, '구멍을 무시했어요.']];
         return { tag: '구멍 뚫린 입체의 겉넓이 (함정)', key: `${M.a}|${M.h}|${M.q}`, stem: `그림과 같이 한 변이 $${M.a}\\,\\mathrm{cm}$인 정사각형이고 길이가 $${M.h}\\,\\mathrm{cm}$인 사각기둥의 가운데를 반지름이 $${M.q}\\,\\mathrm{cm}$인 원기둥 모양으로 관통하게 뚫었다. 이 입체의 겉넓이는?`, choices: mkV(M.tot, wrongs, { dim: 2 }) };
       }
     };

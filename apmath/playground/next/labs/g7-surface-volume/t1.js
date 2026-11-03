@@ -12,12 +12,12 @@
   const { cube8, PI, DEG, clamp, ease, seg01, lin01, v3, add3, sub3, mul3, lerp3, mid3, dot3, unit3, len3, V, vadd, vmul, vnum, tx, plainVal, mkV, mkText, P, fmtN, jo, pick, rint, shuffle, notes, rd, span, scene3, solidNet, circleBase, sectorBase, netScene, roleStyle, layoutTiles, drawTiles, prismMesh, revolveMesh, xfMesh, rotM } = G;
 
   const PARAMS = {
-    sA: P('가로 a', 2, 8, 1, 4, { color: 'amber', format: (v) => v + ' cm' }),
-    sB: P('세로 b', 2, 8, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
-    sK: P('직각삼각형의 크기 k', 1, 3, 1, 1, { color: 'amber', hint: '세 변이 3k, 4k, 5k인 직각삼각형이에요', format: (v) => `${3 * v}·${4 * v}·${5 * v} cm` }),
+    sA: P('가로', 2, 8, 1, 4, { color: 'amber', format: (v) => v + ' cm' }),
+    sB: P('세로', 2, 8, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
+    sK: P('직각삼각형의 크기', 1, 3, 1, 1, { color: 'amber', hint: '세 변이 3·4·5, 6·8·10, 9·12·15 cm인 직각삼각형이에요', format: (v) => `${3 * v}·${4 * v}·${5 * v} cm` }),
     sU: P('사다리꼴의 윗변', 1, 6, 1, 3, { color: 'amber', hint: '아랫변은 윗변보다 6 cm 길고, 높이 4 cm·다리 5 cm는 그대로예요', format: (v) => `${v} cm (아랫변 ${v + 6} cm)` }),
-    sR: P('반지름 r', 1, 5, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
-    sH: P('기둥의 높이 h', 2, 8, 1, 5, { color: 'sky', format: (v) => v + ' cm' }),
+    sR: P('반지름', 1, 5, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
+    sH: P('기둥의 높이', 2, 8, 1, 5, { color: 'sky', format: (v) => v + ' cm' }),
     sT: P('펼치기', 0, 1, 0.01, 0, { color: 'green', hint: '오른쪽으로 끌수록 입체가 전개도로 펼쳐져요', format: (v) => (v < 0.02 ? '입체' : v > 0.98 ? '전개도' : Math.round(v * 100) + '%') }),
     // sv1-2 부채꼴기둥
     sTh: P('부채꼴의 중심각', 60, 300, 30, 120, { color: 'amber', format: (v) => v + '°' }),
@@ -44,7 +44,7 @@
     let m;
     if (shape === 'rect') {
       const a = clamp(Math.round(s.sA), 2, 8), b = clamp(Math.round(s.sB), 2, 8);
-      m = { poly: [[-a / 2, -b / 2], [a / 2, -b / 2], [a / 2, b / 2], [-a / 2, b / 2]], smooth: null, sides: [a, b, a, b], root: 1, area: V(a * b), per: V(2 * (a + b)), areaTex: `${a}\\times${b}`, perTex: `2\\times(${a}+${b})`, given: `가로 ${a} cm, 세로 ${b} cm`, one: V(a) };
+      m = { poly: [[-a / 2, -b / 2], [a / 2, -b / 2], [a / 2, b / 2], [-a / 2, b / 2]], smooth: null, sides: [a, b, a, b], root: 1, area: V(a * b), per: V(2 * (a + b)), areaTex: `${a}\\times${b}`, perTex: `${a}+${b}+${a}+${b}`, given: `가로 ${a} cm, 세로 ${b} cm`, one: V(a) };
     } else if (shape === 'tri') {
       const k = clamp(Math.round(s.sK), 1, 3);
       m = { poly: [[0, 0], [3 * k, 0], [0, 4 * k]], smooth: null, sides: [3 * k, 5 * k, 4 * k], root: 0, area: V(6 * k * k), per: V(12 * k), areaTex: `\\frac{1}{2}\\times${3 * k}\\times${4 * k}`, perTex: `${3 * k}+${4 * k}+${5 * k}`, given: `세 변 ${3 * k} cm, ${4 * k} cm, ${5 * k} cm`, one: V(3 * k), legs: [3 * k, 4 * k] };
@@ -71,65 +71,75 @@
       const L = vmul(bm.per, h), S2 = vmul(bm.area, 2), tot = vadd(S2, L);
       return { shape, bm, h, S: bm.area, S2, P: bm.per, L, tot };
     };
-    const topKnown = (ctx) => ctx.front(ctx.tp.length - 1) && ctx.tp[ctx.tp.length - 1].pc.tag === 'top';
+    // 밑면의 변 ↔ 옆면에서 맞붙는 변은 같은 색(원 밑면은 한 색): 전개도에서 어느 변끼리 붙는지 보입니다
+    const glueColor = (bm, k) => (bm.shape === 'circ' ? 'violet' : G.pairColor(k));
     const draw = (b, s, M, C) => {
       const bm = M.bm, sc = 5.2 / Math.max(bm.ex, bm.ez, M.h), hu = M.h * sc, poly = scaledPoly(bm, sc);
       const sn = solidNet(poly, hu, 1, bm.smooth, bm.root);
       const n = poly.length, st = C.step;
       const lvB = !C.review ? 1 : st === 1 ? 2 : st === 2 ? 1 : 3, lvL = !C.review ? 1 : st === 1 ? 0 : st === 2 ? 2 : 3;
-      const t = C.problem ? 0 : C.t;
+      const t = C.problem ? 0 : C.t, eNow = G.ease(t), glue = eNow > 0.3 && !C.problem && !b.thumb;
       netScene(b, s, C, {
-        sn, t, fitOpt: { l: 40, r: 40, t: 40, b: 40 },
-        style: (pc) => roleStyle(pc.tag === 'lat' ? 'lat' : 'base', pc.tag === 'lat' ? lvL : lvB),
+        sn, t, fitOpt: { l: 84, r: 40, t: 40, b: 112 },
+        style: (pc) => Object.assign(roleStyle(pc.tag === 'lat' ? 'lat' : 'base', pc.tag === 'lat' ? lvL : lvB), {
+          edgeStyle: (e, p) => {
+            if (!glue) return null;
+            const k = p.tag === 'lat' ? (e.i === 0 || e.i === 2 ? p.k : -1) : e.nb;
+            return k != null && k >= 0 ? { color: glueColor(bm, k), width: 3.6 } : null;
+          }
+        }),
         labels: (ctx) => {
-          const { D, tp } = ctx, vw = D.vw;
-          const m = sn.lat.indexOf(sn.root), A = sn.A, B = sn.B;
-          // 옆면마다 밑변의 길이 (보이는 쪽)
-          if (bm.sides) {
-            sn.lat.forEach((idx, k) => {
-              if (dot3(tp[idx].n, vw) < 0.35) return;
-              const p = lerp3(mid3(A[k], A[(k + 1) % n]), mid3(B[k], B[(k + 1) % n]), 0.2);
-              D.tag(ctx.at(idx, p), fmtN(bm.sides[k]), { size: 15, color: C.problem ? 'ink' : 'ink' });
+          if (b.thumb) return;
+          const { D, tp, e } = ctx, vw = D.vw, A = sn.A, B = sn.B, L = sn.lat, at = ctx.at;
+          const solidA = 1 - G.lin01(e, 0.05, 0.45), flatA = G.lin01(e, 0.78, 0.98);
+          const cen = at(sn.root, add3(G.centroid(A), v3(0, hu / 2, 0)));
+          const vis = (k) => dot3(tp[L[k]].n, vw) > 0.35;
+          const topSeen = sn.top >= 0 && tp[sn.top].front;
+          // 입체: 보이는 옆면의 밑변 길이는 그 변 바깥(아래)에 치수선으로
+          if (bm.sides && solidA > 0.02) {
+            L.forEach((idx, k) => { if (vis(k)) D.dim(at(idx, A[k]), at(idx, A[(k + 1) % n]), fmtN(bm.sides[k]), { from: cen, off: 15, alpha: solidA }); });
+            // 가려진 옆면의 밑변 길이는 윗면의 변 바깥에(보이는 변과 길이가 같으면 생략)
+            if (topSeen) L.forEach((idx, k) => {
+              if (vis(k) || L.some((j, kk) => vis(kk) && bm.sides[kk] === bm.sides[k])) return;
+              D.dim(at(idx, B[k]), at(idx, B[(k + 1) % n]), fmtN(bm.sides[k]), { from: cen, off: 15, alpha: solidA });
             });
           }
-          // 뒤쪽 옆면의 밑변 길이는 윗면의 변에 적어 줍니다(보이는 변과 길이가 같으면 생략)
-          if (bm.sides && ctx.e < 0.5 && topKnown(ctx)) {
-            sn.lat.forEach((idx, k) => {
-              if (dot3(tp[idx].n, vw) >= 0.35) return;
-              const val = bm.sides[k];
-              if (sn.lat.some((j, kk) => dot3(tp[j].n, vw) >= 0.35 && bm.sides[kk] === val)) return;
-              D.elabel(ctx.at(sn.top, B[k]), ctx.at(sn.top, B[(k + 1) % n]), fmtN(val), { from: ctx.at(sn.top, G.centroid(B)), size: 14, gap: 6 });
-            });
+          // 높이: 가장 왼쪽 세로 모서리 바깥에 세로 치수선(입체와 전개도에서 같은 모서리를 따라 움직임)
+          let hk = null, xL = 1e9;
+          L.forEach((idx, k) => [k, (k + 1) % n].forEach((j) => { const x = D.px(at(idx, A[j])).x; if (x < xL - 0.5) { xL = x; hk = { idx, j }; } }));
+          D.dim(at(hk.idx, A[hk.j]), at(hk.idx, B[hk.j]), `높이 ${M.h}`, { side: { x: -1, y: 0 }, off: 18, color: 'amber' });
+          // 전개도: 각 옆면 아래 바깥에 치수선 + 그 아래 긴 괄호(밑면의 둘레)
+          if (flatA > 0.02) {
+            const items = L.map((idx, k) => { const a = D.px(at(idx, A[k])), c = D.px(at(idx, A[(k + 1) % n])); return { k, a: at(idx, A[k]), c: at(idx, A[(k + 1) % n]), x0: Math.min(a.x, c.x), x1: Math.max(a.x, c.x), y: a.y }; }).sort((p, q) => p.x0 - q.x0);
+            const rowY = Math.max(...ctx.all.map((p) => D.px(p).y)) + 16, xl = items[0].x0, xr = items[items.length - 1].x1;
+            if (bm.sides) items.forEach((it) => D.dim(it.a, it.c, fmtN(bm.sides[it.k]), { side: { x: 0, y: 1 }, off: rowY - it.y, color: glueColor(bm, it.k), alpha: flatA }));
+            const sum = bm.sides ? items.map((it) => fmtN(bm.sides[it.k])).join('+') : `2×π×${bm.r}`;
+            D.brace({ x: xl, y: rowY }, { x: xr, y: rowY }, `밑면의 둘레 = ${sum} = ${plainVal(M.P)}`, { px: true, side: { x: 0, y: 1 }, off: 14, color: 'amber', alpha: flatA });
           }
-          // 높이
-          const rootK = m, a1 = A[rootK], b1 = B[rootK];
-          D.elabel(ctx.at(sn.root, a1), ctx.at(sn.root, b1), `h=${M.h}`, { side: { x: -1, y: 0 }, color: 'amber', gap: 9 });
-          // 밑면의 정보
-          const topK = sn.top, botK = sn.bot;
-          const showBase = (k, pts, first) => {
-            if (dot3(tp[k].n, vw) < 0.3) return false;
-            const ctr = ctx.at(k, G.centroid(pts));
+          // 밑면: 넓이 이름표(보이는 밑면마다), 모양별 표시는 처음 보이는 밑면 한 곳에만
+          let first = true;
+          [sn.top, sn.bot].forEach((k) => {
+            if (k < 0 || !tp[k].front) return;
+            const pts = k === sn.top ? B : A, c3 = at(k, G.centroid(pts)), cs = D.px(c3);
+            const xs = pts.map((p) => D.px(at(k, p)).x), ys = pts.map((p) => D.px(at(k, p)).y), faceW = Math.max(...xs) - Math.min(...xs), faceH = Math.max(...ys) - Math.min(...ys);
+            let dx = 0, dy = 0, rimTo = null, maxW = faceW * 0.86;
+            if (bm.shape === 'tri') maxW = faceW * 0.5; // 삼각형은 아래쪽이 좁아 일찍 두 줄로
+            if (bm.shape === 'trap') dy = 0.37 * faceH * G.lin01(e, 0.5, 0.9); // 높이 점선 글자와 겹치지 않게 넓은 변 쪽으로
+            if (bm.shape !== 'circ') dx = (bm.shape === 'trap' ? 0.25 : -0.2) * faceW * (1 - G.lin01(e, 0.1, 0.5)); // 입체에서는 뒤쪽 점선 모서리를 피해 왼쪽으로
             if (bm.shape === 'circ') {
-              const rim = ctx.at(k, pts[0]), c0 = ctx.at(k, G.centroid(pts));
-              D.line(c0, rim, 'ink', 2.2);
-              D.dot(c0, 'ink', 3.5);
-              if (first) D.tag(mid3(c0, rim), `r=${bm.r}`, { dy: -12, size: 14 });
-            } else if (bm.shape === 'tri') {
-              D.right(ctx.at(k, pts[0]), sub3(ctx.at(k, pts[1]), ctx.at(k, pts[0])), sub3(ctx.at(k, pts[2]), ctx.at(k, pts[0])), 0.32, 'amber');
-            } else if (bm.shape === 'trap') {
-              const a0 = ctx.at(k, pts[0]), a1 = ctx.at(k, pts[1]), t2 = ctx.at(k, pts[2]), dir = unit3(sub3(a1, a0)), foot = add3(a0, mul3(dir, dot3(sub3(t2, a0), dir)));
-              D.line(t2, foot, 'amber', 2.2, { dash: [5, 4] });
-              D.tag(mid3(t2, foot), '4', { dx: 9, size: 14, color: 'amber' });
+              rimTo = D.rimPick(c3, pts.map((p) => at(k, p)));
+              if (first) { const rp = D.px(rimTo), R = Math.hypot(rp.x - cs.x, rp.y - cs.y); dx = -0.4 * R; maxW = R * 1.05; }
             }
-            if (!C.problem) D.tag(ctr, `S=${plainVal(M.S)}`, { size: 15, color: lvB === 2 ? 'ink' : 'ink', dy: bm.shape === 'circ' ? 14 : 0 });
-            return true;
-          };
-          if (topK >= 0) { showBase(topK, B, true); showBase(botK, A, false); }
-          // 전개도에서 옆면 전체 가로
-          if (!C.problem && ctx.e > 0.8) {
-            const cs = sn.lat.map((idx, k) => ctx.at(idx, lerp3(mid3(A[k], A[(k + 1) % n]), mid3(B[k], B[(k + 1) % n]), 0.8)));
-            D.tag(G.centroid(cs), `밑면의 둘레 ${plainVal(M.P)}`, { size: 15, color: 'amber' });
-          }
+            if (!C.problem) D.areaLab(c3, '밑넓이', plainVal(M.S), { dx, dy, maxW });
+            if (!first) return;
+            first = false;
+            if (bm.shape === 'circ') D.radius(c3, rimTo, `반지름 ${bm.r}`, { end: true });
+            else if (bm.shape === 'tri') D.right(at(k, pts[0]), sub3(at(k, pts[1]), at(k, pts[0])), sub3(at(k, pts[2]), at(k, pts[0])), 0.3, 'amber');
+            else if (bm.shape === 'trap') {
+              const a0 = at(k, pts[0]), a1 = at(k, pts[1]), t2 = at(k, pts[2]), dir = unit3(sub3(a1, a0)), foot = add3(a0, mul3(dir, dot3(sub3(t2, a0), dir)));
+              D.height(foot, t2, '높이 4', { a: dir, side: { x: 1, y: 0 }, size: 14, alongFrac: 0.3 });
+            }
+          });
         }
       });
     };
@@ -154,24 +164,24 @@
       steps: (M) => {
         const { bm, h } = M;
         return [
-          `밑면은 ${bm.name}이고 2개예요. 밑넓이 $S=${bm.areaTex}=${tx(M.S)}$이므로 $2S=${tx(M.S)}\\times2=${tx(M.S2)}\\,\\mathrm{cm}^2$예요.`,
-          `전개도에서 옆면은 직사각형 하나예요. 가로는 밑면의 둘레 전체 $P=${bm.perTex}=${tx(M.P)}$, 세로는 높이 $${h}$이므로 옆넓이는 $P\\times h=${tx(M.P)}\\times${h}=${tx(M.L)}\\,\\mathrm{cm}^2$예요.`,
+          `밑면은 ${bm.name}이고 2개예요. 밑넓이 $=${bm.areaTex}=${tx(M.S)}$이므로 밑면 2개의 넓이는 $${tx(M.S)}\\times2=${tx(M.S2)}\\,\\mathrm{cm}^2$예요.`,
+          `전개도에서 옆면은 직사각형 하나예요. 가로는 밑면의 둘레 전체 $${bm.perTex}=${tx(M.P)}$, 세로는 높이 $${h}$이므로 옆넓이는 $${tx(M.P)}\\times${h}=${tx(M.L)}\\,\\mathrm{cm}^2$예요.`,
           `(겉넓이) $=$ (밑넓이)$\\times2+$(옆넓이) $=${tx(M.S2)}+${tx(M.L)}=${tx(M.tot)}\\,\\mathrm{cm}^2$예요.`
         ];
       },
       view: (M, C) => {
         const { bm, h } = M;
         return {
-          guide: `아래 막대 <b>펼치기</b>를 끌거나 ▶를 눌러 ${bm.solid}를 펼쳐 보세요. <b>밑면 모양 칩</b>과 <b>길이 막대</b>로 값을 바꿀 수 있고, 빈 곳을 끌면 입체가 돌아가요. 펼치면 ${span('sky', '밑면 2개')}와 ${span('green', '옆면 직사각형 1개')}가 나와요.`,
+          guide: `아래 막대 <b>펼치기</b>를 끌거나 ▶를 눌러 ${bm.solid}를 펼쳐 보세요. <b>밑면 모양 칩</b>과 <b>길이 막대</b>로 값을 바꿀 수 있고, 빈 곳을 끌면 입체가 돌아가요. 펼치면 ${span('sky', '밑면 2개')}와 ${span('green', '옆면 직사각형 1개')}가 나오고, 맞붙는 변은 같은 색으로 칠해져요.`,
           readouts: [
-            rd('밑넓이 S', plainVal(M.S) + ' cm²', 'sky', bm.areaTex.replace(/\\frac\{1\}\{2\}/g, '½').replace(/\\times/g, '×').replace(/\\pi/g, 'π')),
-            rd('밑면의 둘레 P', plainVal(M.P) + ' cm', 'amber', '옆면의 가로'),
-            rd('옆넓이 P×h', plainVal(M.L) + ' cm²', 'green', `${plainVal(M.P)} × ${h}`),
-            rd('겉넓이', plainVal(M.tot) + ' cm²', 'amber', `2×${plainVal(M.S)} + ${plainVal(M.L)}`)
+            rd('밑넓이', plainVal(M.S) + ' cm²', 'sky', bm.areaTex.replace(/\\frac\{1\}\{2\}/g, '½').replace(/\\times/g, '×').replace(/\\pi/g, 'π')),
+            rd('밑면의 둘레', plainVal(M.P) + ' cm', 'amber', '옆면의 가로'),
+            rd('옆넓이', plainVal(M.L) + ' cm²', 'green', `${plainVal(M.P)} × ${h}`),
+            rd('겉넓이', plainVal(M.tot) + ' cm²', 'amber', `${plainVal(M.S)} × 2 + ${plainVal(M.L)}`)
           ],
-          formula: `<p>(겉넓이) $=2S+P\\times h$ &nbsp; ($S$ 밑넓이, $P$ 밑면의 둘레, $h$ 높이)</p>`,
+          formula: `<p>(겉넓이) $=$ (밑넓이)$\\times2+$(옆넓이) $=$ (밑넓이)$\\times2+$(밑면의 둘레)$\\times$(높이)</p>`,
           rule: '기둥의 옆면은 직사각형: 가로 = 밑면의 둘레 전체, 세로 = 높이',
-          notes: notes('옆면의 가로는 밑면의 <b>한 변이 아니라 둘레 전체</b>예요. 전개도에서 옆면을 한 줄로 펴 보면 알 수 있어요.', '밑면은 위·아래 <b>2개</b>예요. 밑넓이를 두 번 더해요.', '부피($S\\times h$)와 겉넓이를 헷갈리지 않아요. 겉넓이는 면의 넓이의 합이에요.')
+          notes: notes('옆면의 가로는 밑면의 <b>한 변이 아니라 둘레 전체</b>예요. 전개도에서 옆면을 한 줄로 펴 보면 알 수 있어요.', '밑면은 위·아래 <b>2개</b>예요. 밑넓이를 두 번 더해요.', '부피(밑넓이$\\times$높이)와 겉넓이를 헷갈리지 않아요. 겉넓이는 면의 넓이의 합이에요.')
         };
       },
       prob: (M) => {
