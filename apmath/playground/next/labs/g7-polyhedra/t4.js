@@ -3,6 +3,7 @@
    · p4-1 정육면체의 단면 — 단면판이 화면 가로로만 움직이도록 입체를 제자리에서 돌려 놓고, 판을 좌우로 밉니다.
    · p4-3 세 꼭짓점을 지나는 단면 — 교과서 겨냥도의 꼭짓점 이름 A~H, 세 점을 골라 단면을 칠하고 이름(예: 직사각형 ABGH)을 표시. 계산은 cubesec.js
    · p4-2 꼭짓점을 잘라 낸 입체(축구공) — 면·모서리·꼭짓점의 수가 어떻게 달라지는지
+   · p4-4 면의 중심을 이으면? — 정다면체 5종의 각 면의 중심에 점을 찍고 이웃한 점끼리 이어 만든 새 입체(면과 꼭짓점의 수가 서로 바뀜). 점 이름(A, B…)은 쓰지 않고 모양과 색으로만 보여 줍니다. 새 입체는 좌표(면 중심 + 볼록 껍질)에서 계산합니다.
    교육과정을 조금 넘어서는 도전 탭입니다(선택).
    ========================================================================== */
 (function () {
@@ -10,13 +11,14 @@
   const G = window.APL_PH;
   if (!G || !G.prismS) return;
   const CS = G.cubeSec;
-  const { clamp, rint, shuf, jo, NUM, PI, DEG, v3, add3, sub3, mul3, dot3, cross3, len3, unit3, scene3, P, VIEW, mkChoices, mkText, rd, notes, solidOf, platS, PLAT, PLAT_KEYS, truncS, drawPoly, faceMid, banner, sRect, cen3 } = G;
+  const { ease, lerp3, clamp, rint, shuf, jo, NUM, PI, DEG, v3, add3, sub3, mul3, dot3, cross3, len3, unit3, scene3, P, VIEW, mkChoices, mkText, rd, notes, solidOf, platS, PLAT, PLAT_KEYS, truncS, drawPoly, faceMid, banner, sRect, cen3 } = G;
 
   const PARAMS = {
     phTa: P('자르는 방향 ①', 0, 45, 1, 45, { color: 'sky', hint: '막대를 움직이면 입체가 제자리에서 돌아요', format: (v) => Math.round(v) + '°' }),
     phTb: P('자르는 방향 ②', 0, 45, 1, 45, { color: 'violet', hint: '입체를 다른 쪽으로 기울여요', format: (v) => Math.round(v) + '°' }),
     phTd: P('단면판의 위치', -1, 1, 0.01, 0, { color: 'amber', hint: '단면판을 가로로 밀어 보세요', format: (v) => (Math.abs(v) < 0.015 ? '가운데' : (v > 0 ? '오른쪽 ' : '왼쪽 ') + Math.round(Math.abs(v) * 100) + '%') }),
     phTe: P('평면 넓히기', 0, 1, 0.01, 1, { color: 'amber', hint: '0이면 세 점을 이은 삼각형만, 1이면 정육면체를 끝까지 자른 단면', format: (v) => (v < 0.01 ? '세 점 삼각형만' : v > 0.99 ? '끝까지 자름' : Math.round(v * 100) + '%'), onInput: (s) => { s.playing = false; } }),
+    phDu: P('잇기', 0, 1, 0.01, 0, { color: 'amber', hint: '오른쪽으로 밀면 ① 점 찍기 → ② 선분 잇기 → ③ 새 입체 칠하기 순서로 보여 줘요', format: (v) => (v < 0.02 ? '처음' : v < 0.32 ? '① 점 찍기' : v < 0.655 ? '② 선분 잇기' : v < 0.99 ? '③ 새 입체 칠하기' : '완성'), onInput: (s) => { s.playing = false; } }),
     phTr: P('자르는 깊이', 0.05, 0.45, 0.01, 1 / 3, { color: 'amber', hint: '모서리의 길이의 몇 분의 몇을 잘라 낼까요?', format: (v) => `모서리의 ${Math.round(v * 100)}%` })
   };
   const AMB = 'amber', SKY = 'sky', GRN = 'green', RED = 'red', VIO = 'violet';
@@ -451,5 +453,138 @@
     };
   })();
 
-  G.register(40, 't4', '④ 도전: 단면과 꼭짓점 자르기', '도전', PARAMS, CS ? [T1, T3, T2] : [T1, T2]);
+
+  /* ------------------------------------------------------------------ p4-4 면의 중심을 이으면? */
+  // 정다면체의 각 면의 중심 → 새 입체의 꼭짓점. 새 입체의 면·모서리는 중심들의 볼록 껍질(좌표)에서 구하고,
+  // 모서리가 「이웃한 면 둘」에서 생기는 것과 같은지는 tools/polyhedra-dual.test.mjs 가 확인합니다. 이름은 PLAT 표의 (면·꼭짓점·모서리 수)와 맞춰 찾습니다(정답 표를 따로 두지 않음).
+  const DUAL_CACHE = {};
+  const dualOf = (k) => {
+    if (DUAL_CACHE[k]) return DUAL_CACHE[k];
+    const S = platS(k), centers = S.F.map((f) => faceMid(S.V, f)), T = solidOf(centers);
+    const len = T.E.map((e) => len3(sub3(T.V[e.a], T.V[e.b])));
+    const same = len.every((x) => Math.abs(x - len[0]) < 1e-6 * Math.max(1, len[0]));
+    const deg = T.vf.map((l) => l.length), nSide = T.F.map((f) => f.i.length);
+    const regular = same && deg.every((x) => x === deg[0]) && nSide.every((x) => x === nSide[0]);
+    const cnt = { V: T.V.length, F: T.F.length, E: T.E.length };
+    const key = regular ? PLAT_KEYS.find((q) => PLAT[q].V === cnt.V && PLAT[q].F === cnt.F && PLAT[q].E === cnt.E) || null : null;
+    return (DUAL_CACHE[k] = { S, T, centers, cnt, regular, key, name: key ? PLAT[key].name : '정다면체가 아닌 입체', side: nSide[0], deg: deg[0] });
+  };
+  const POLY_KO = { 3: '정삼각형', 4: '정사각형', 5: '정오각형' };
+  const NM_VFE = { V: '꼭짓점', F: '면', E: '모서리' };
+  const DU = { dot: [0, 0.3], edge: [0.33, 0.64], fill: [0.68, 1] }; // 잇기 막대 0~1 에서 세 단계가 차지하는 구간
+  const ph01 = (t, a, b) => clamp((t - a) / (b - a), 0, 1);
+  const stg = (p, i, n) => clamp((p - 0.5 * i / Math.max(1, n)) / 0.5, 0, 1); // i번째가 차례로 나타나게
+  const duStage = (t) => (t < 0.01 ? 0 : t < 0.32 ? 1 : t < 0.655 ? 2 : 3);
+  function rollT4(prev) {
+    for (let g = 0; g < 30; g++) {
+      const r = Math.random(), q = { k: PLAT_KEYS[rint(0, 4)], ask: r < 0.4 ? 'shape' : ['V', 'F', 'E'][rint(0, 2)] };
+      if (!prev || q.k !== prev.k || q.ask !== prev.ask) return q;
+    }
+    return { k: 'cube', ask: 'shape' };
+  }
+  const T4 = {
+    id: 'p4-4', title: '면의 중심을 이으면?', short: '면의 중심 잇기',
+    question: '정육면체의 각 면의 한가운데에 점을 찍고 이웃한 점끼리 이으면 어떤 입체가 될까? 입체를 바꿔 가며 새 입체의 꼭짓점·면·모서리의 수를 비교해 보자.',
+    cam0: { yaw: -36, pitch: 22 },
+    anim: { key: 'phDu', dur: 7, label: '면의 중심 이어 보기', start: 0 },
+    stepT: (n) => (n <= 0 ? 0 : n === 1 ? 0.31 : n === 2 ? 0.65 : 1),
+    ctl: () => ['phDu'].concat(VIEW),
+    presets: () => PLAT_KEYS.map((k, i) => ({ group: i === 0 ? '입체 고르기' : '', label: PLAT[k].name, apply: (st) => { st.phSel7 = k; st.phDu = 0; st.playing = true; }, on: (st) => st.phSel7 === k })),
+    init: (s) => { s.phSel7 = 'cube'; s.phDu = 0; s.phQ = { k: 'cube', ask: 'shape' }; },
+    reroll: (s) => { s.phQ = rollT4(s.phQ); },
+    model: (s) => ({ k: s.phSel7 || 'cube', Q: s.phQ || { k: 'cube', ask: 'shape' } }),
+    draw(b, s, M, C) {
+      const D = scene3(b, s, C), asQ = C.problem || C.review;
+      const k = asQ ? M.Q.k : M.k, X = dualOf(k), S = X.S, T = X.T, I = PLAT[k], dense = S.E.length > 20;
+      const t = C.problem ? 0 : C.thumb ? 1 : clamp(C.t, 0, 1);
+      const pd = ph01(t, DU.dot[0], DU.dot[1]), pe = ph01(t, DU.edge[0], DU.edge[1]), pf = ph01(t, DU.fill[0], DU.fill[1]);
+      const nF = S.F.length, nE = T.E.length;
+      const rD = dense ? 5.4 : 7, rH = dense ? 3.6 : 4.4;
+      const sx = b.W < 560 ? 20 : 40;
+      D.fitPts(S.V, { t: topFor(2, 17) + 4, b: 40, l: sx, r: sx });
+      // 맨 위 줄글(항상 2줄)
+      if (C.txt) {
+        const st3 = duStage(t);
+        let l1, l2;
+        if (C.problem) { l1 = { t: I.name, c: 'ink', size: 17 }; l2 = { t: '각 면의 한가운데에 점을 찍었어요', c: AMB, size: 14 }; }
+        else if (st3 === 0) { l1 = { t: I.name, c: GRN, size: 17 }; l2 = { t: `면 ${I.F}개 · 꼭짓점 ${I.V}개 · 모서리 ${I.E}개`, c: 'ink', size: 14 }; }
+        else if (st3 === 1) { l1 = { t: '각 면의 한가운데에 점을 찍어요', c: AMB, size: 16 }; l2 = { t: `점 ${nF}개 중 ${Math.min(nF, Math.round(pd * nF + 0.4))}개`, c: 'ink', size: 14 }; }
+        else if (st3 === 2) { l1 = { t: '이웃한 면의 점끼리 이어요', c: AMB, size: 16 }; l2 = { t: `선분 ${nE}개 중 ${Math.min(nE, Math.round(pe * nE + 0.4))}개`, c: 'ink', size: 14 }; }
+        else { l1 = { t: pf > 0.99 ? `새 입체: ${X.name}` : '새 입체를 칠해요', c: AMB, size: 17 }; l2 = { t: `꼭짓점 ${X.cnt.V} · 면 ${X.cnt.F} · 모서리 ${X.cnt.E}`, c: GRN, size: 14 }; }
+        banner(b, [l1, l2], C);
+      }
+      const V = S.V, vis = S.F.map((f) => D.facing(f.n));
+      const eVis = S.E.map((e) => e.f.some((fi) => vis[fi]));
+      const fadeA = 1 - 0.62 * pf;
+      // ① 원래 입체의 뒤쪽 모서리(점선, 옅게)
+      S.E.forEach((e, ei) => { if (!eVis[ei]) D.line(V[e.a], V[e.b], 'ink', dense ? 1.5 : 2, { dash: [6, 5], alpha: (dense ? 0.26 : 0.38) * fadeA }); });
+      // ② 새 입체: 뒤쪽 선 → 앞쪽 면 칠 → 앞쪽 선
+      const grow = (e, j) => {
+        const g = pf > 0 ? 1 : ease(stg(pe, j, nE));
+        return g <= 0 ? null : [T.V[e.a], lerp3(T.V[e.a], T.V[e.b], g)];
+      };
+      const tVis = T.F.map((f) => D.facing(f.n)), teVis = T.E.map((e) => e.f.some((fi) => tVis[fi]));
+      T.E.forEach((e, j) => { if (!teVis[j]) { const sg = grow(e, j); if (sg) D.line(sg[0], sg[1], AMB, dense ? 1.8 : 2.4, { dash: [5, 5], alpha: 0.55 }); } });
+      if (pf > 0) T.F.forEach((f, fi) => { if (tVis[fi]) D.fill(f.i.map((i) => T.V[i]), AMB, 0.4 * ease(pf)); });
+      T.E.forEach((e, j) => { if (teVis[j]) { const sg = grow(e, j); if (sg) D.line(sg[0], sg[1], AMB, dense ? 3.4 : 4.4, { glow: false }); } });
+      // ③ 가려진 면의 중심: 속이 빈 작은 점
+      const dotP = (fi) => (C.problem ? 1 : ease(stg(pd, fi, nF)));
+      X.centers.forEach((c, fi) => { if (!vis[fi]) { const p = dotP(fi); if (p > 0) b.point(D.P(c), { color: AMB, r: rH * (0.5 + 0.5 * p), hollow: true }); } });
+      // ④ 원래 입체의 앞쪽 면(옅은 초록)과 앞쪽 모서리 — 새 입체가 안에 들어 있는 것처럼 보이도록 위에 겹침
+      S.F.forEach((f, fi) => { if (vis[fi]) D.fill(f.i.map((i) => V[i]), 'green', 0.13 * (1 - 0.7 * pf)); });
+      S.E.forEach((e, ei) => { if (eVis[ei]) D.line(V[e.a], V[e.b], 'ink', dense ? 2.4 : 3, { alpha: fadeA }); });
+      // ⑤ 앞쪽 면의 중심: 또렷한 점
+      X.centers.forEach((c, fi) => { if (vis[fi]) { const p = dotP(fi); if (p > 0) b.point(D.P(c), { color: AMB, r: rD * (0.4 + 0.6 * p) }); } });
+      D.flush();
+    },
+    steps: (M) => {
+      const Q = M.Q, I = PLAT[Q.k], X = dualOf(Q.k), N = X.name, nm = I.name;
+      return [
+        `${nm}${jo(nm, 'eun')} 면이 $${I.F}$개예요. 면 하나마다 한가운데에 점을 하나씩 찍으면 점이 $${I.F}$개 생기고, 이 점들이 새 입체의 꼭짓점이에요. (새 입체의 꼭짓점의 수) $=$ (원래 면의 수) $=${I.F}$예요.`,
+        `이웃한 두 면의 점끼리 이으면, 두 면이 만나는 모서리 하나마다 선분이 하나씩 생겨요. 그래서 새 입체의 모서리는 원래와 같은 $${I.E}$개예요. 또 원래 꼭짓점 하나를 둘러싼 면 $${I.q}$개의 점이 새 입체의 면 하나를 이루므로 (새 입체의 면의 수) $=$ (원래 꼭짓점의 수) $=${I.V}$예요.`,
+        `새 입체의 면은 모두 합동인 ${POLY_KO[X.side] || '정다각형'}이고, 각 꼭짓점에 모이는 면의 수도 $${X.deg}$개로 같아요. 그래서 새 입체도 정다면체예요. 꼭짓점이 $${X.cnt.V}$개인 정다면체는 ${N}뿐이므로 새 입체는 ${N}이에요.`
+      ];
+    },
+    view: (M) => {
+      const I = PLAT[M.k], X = dualOf(M.k), c = X.cnt, N = X.name;
+      return {
+        guide: `입체를 고르고 <b>▶</b>를 누르거나 <b>잇기</b> 막대를 밀어 보세요. ${span('amber', '노란 점')}이 각 면의 중심, ${span('amber', '노란 입체')}가 새 입체이고 옅은 초록 입체가 원래 입체예요. 끌어서 돌려 보면 새 입체가 안에 들어 있는 것이 보여요. 가려진 선은 점선이에요.`,
+        readouts: [
+          rd('원래 입체', I.name, GRN, `면 ${I.F} · 꼭짓점 ${I.V} · 모서리 ${I.E}`),
+          rd('새 입체', N, AMB, `꼭짓점 ${c.V} · 면 ${c.F} · 모서리 ${c.E}`),
+          rd('새 입체의 꼭짓점', `${c.V}개`, AMB, `= 원래 면의 수 ${I.F}`),
+          rd('새 입체의 면', `${c.F}개`, AMB, `= 원래 꼭짓점의 수 ${I.V}`),
+          rd('새 입체의 모서리', `${c.E}개`, AMB, `= 원래 모서리의 수 ${I.E}`),
+          rd('면과 꼭짓점이 서로 바뀌어요', `${I.name}: 면 ${I.F} · 꼭짓점 ${I.V} · 모서리 ${I.E} → ${N}: 꼭짓점 ${c.V} · 면 ${c.F} · 모서리 ${c.E}`, 'ink', null, null, true)
+        ],
+        formula: '<p>(새 꼭짓점) = (원래 면) · (새 면) = (원래 꼭짓점) · (새 모서리) = (원래 모서리)</p>',
+        rule: '정다면체의 각 면의 중심을 이웃한 것끼리 이으면 면과 꼭짓점의 수가 서로 바뀐 정다면체가 되고, 모서리의 수는 그대로이다',
+        notes: notes('정사면체는 면과 꼭짓점이 모두 4개라서 새 입체도 정사면체예요(거꾸로 선 모양).', '정육면체와 정팔면체, 정십이면체와 정이십면체는 서로 짝이에요. 한쪽의 면의 중심을 이으면 다른 쪽이 돼요.')
+      };
+    },
+    prob: (M) => {
+      const Q = M.Q, I = PLAT[Q.k], X = dualOf(Q.k), key = `${Q.k}|${Q.ask}`, note = '초록 입체의 각 면 한가운데에 점이 찍혀 있어요. 점선은 가려진 선이에요.';
+      if (Q.ask === 'shape') {
+        return {
+          tag: '면의 중심을 이은 입체', key, note,
+          stem: `${I.name}의 각 면의 중심을 꼭짓점으로 하는 입체도형은?`,
+          choices: mkText(PLAT_KEYS.map((j) => {
+            const J = PLAT[j];
+            return { h: J.name, ok: j === X.key, hint: `${J.name}${jo(J.name, 'eun')} 꼭짓점이 ${J.V}개예요. 새 입체의 꼭짓점은 원래 면의 수와 같은 ${I.F}개예요.${j === Q.k && j !== X.key ? ' 원래 입체와 같은 모양이 아니에요. 면과 꼭짓점의 수가 서로 바뀌어요.' : ''}` };
+          }))
+        };
+      }
+      const a = Q.ask, val = X.cnt[a];
+      const tip = { V: '새 입체의 꼭짓점은 원래 면마다 하나씩 생겨요.', F: '새 입체의 면은 원래 꼭짓점마다 하나씩 생겨요.', E: '새 입체의 모서리는 이웃한 면 둘마다 하나씩, 원래 모서리와 같은 수만큼 생겨요.' }[a];
+      const wr = ['V', 'F', 'E'].map((c2) => [I[c2], `원래 입체의 ${NM_VFE[c2]}의 수예요. ${tip}`]);
+      return {
+        tag: '면의 중심을 이은 입체', key, note,
+        stem: `${I.name}의 각 면의 중심을 꼭짓점으로 하는 입체도형을 만들었다. 이 입체의 ${NM_VFE[a]}의 개수는?`,
+        choices: mkChoices(val, wr)
+      };
+    }
+  };
+  G.dualOf = dualOf;
+
+  G.register(40, 't4', '④ 도전: 단면과 꼭짓점 자르기', '도전', PARAMS, CS ? [T1, T3, T2, T4] : [T1, T2, T4]);
 })();
