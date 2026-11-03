@@ -106,10 +106,40 @@
     return sec.tri.find((L) => { const o = sec.tri.filter((x) => x !== L); return Math.abs(dot(sub(pos(o[0]), pos(L)), sub(pos(o[1]), pos(L)))) < EPS; }) || null;
   }
 
+  // 시점: 단면이 가는 선으로 보이지 않게 합니다(평면을 옆에서 보면 단면이 선이 됨).
+  // 투영 비율 = (화면에 그려지는 단면의 넓이) ÷ (단면의 실제 넓이) = 평면 법선과 시선이 이루는 각의 코사인.
+  const DEG = Math.PI / 180, DEFAULT_VIEW = { yaw: -30, pitch: 22 }, MIN_RATIO = 0.35;
+  function projPt(p, yaw, pitch) { // core.js 의 proj 와 같은 평행투영(화면 x, 화면 y 아래쪽)
+    const cy = Math.cos(yaw * DEG), sy = Math.sin(yaw * DEG), cp = Math.cos(pitch * DEG), sp = Math.sin(pitch * DEG);
+    const y1 = p[0] * sy + p[1] * cy;
+    return [p[0] * cy - p[1] * sy, -(p[2] * cp + y1 * sp)];
+  }
+  const area2 = (q) => Math.abs(q.reduce((a, p, i) => { const r = q[(i + 1) % q.length]; return a + p[0] * r[1] - r[0] * p[1]; }, 0)) / 2;
+  function area3(ps) { let a = [0, 0, 0]; ps.forEach((p, i) => { const r = cross(p, ps[(i + 1) % ps.length]); a = [a[0] + r[0], a[1] + r[1], a[2] + r[2]]; }); return Math.hypot(a[0], a[1], a[2]) / 2; }
+  function viewRatio(sec, yaw, pitch) { const ps = sec.poly.map(pos); return area2(ps.map((p) => projPt(p, yaw, pitch))) / area3(ps); }
+  function minSep(yaw, pitch) { // 꼭짓점 8개의 화면 위치 사이 최소 거리(모서리 길이 2 기준): 이름이 겹치지 않게
+    const q = NAMES.split('').map((L) => projPt(pos(L), yaw, pitch));
+    let m = 1e9; for (let i = 0; i < 8; i++) for (let j = i + 1; j < 8; j++) m = Math.min(m, Math.hypot(q[i][0] - q[j][0], q[i][1] - q[j][1]));
+    return m;
+  }
+  // 기본 시점에서 단면이 충분히 보이면 그대로, 아니면 후보 시점 중 투영 넓이가 가장 큰(꼭짓점이 서로 가깝지 않은) 시점
+  function viewFor(sec) {
+    const d = DEFAULT_VIEW, r0 = viewRatio(sec, d.yaw, d.pitch);
+    if (r0 >= MIN_RATIO) return { yaw: d.yaw, pitch: d.pitch, ratio: r0 };
+    const sepMin = Math.min(0.4, minSep(d.yaw, d.pitch));
+    let best = { yaw: d.yaw, pitch: d.pitch, ratio: r0 }, bs = r0;
+    for (let yaw = -75; yaw <= 75; yaw += 15) for (const pitch of [22, 35, 50, 65]) {
+      if (minSep(yaw, pitch) < sepMin) continue;
+      const r = viewRatio(sec, yaw, pitch), sc = r - 0.002 * (Math.abs(yaw - d.yaw) + Math.abs(pitch - d.pitch)); // 비슷하면 기본 시점에 가까운 쪽
+      if (sc > bs) { bs = sc; best = { yaw, pitch, ratio: r }; }
+    }
+    return best;
+  }
+
   // 서로 다른 세 꼭짓점의 조합 56가지
   const ALL = [];
   for (let i = 0; i < 8; i++) for (let j = i + 1; j < 8; j++) for (let k = j + 1; k < 8; k++) ALL.push(sectionOf3(NAMES[i], NAMES[j], NAMES[k]));
 
-  const api = { NAMES, POS, pos, relOf, REL_KO, FACE_KO, commonFace, lettersOnFace, cyc, shapeOf, crossCount, sectionOf3, ALL, KIND_KO, patchAt, triName, rightVertex };
+  const api = { NAMES, POS, pos, relOf, REL_KO, FACE_KO, commonFace, lettersOnFace, cyc, shapeOf, crossCount, sectionOf3, ALL, KIND_KO, patchAt, triName, rightVertex, DEFAULT_VIEW, MIN_RATIO, viewRatio, minSep, viewFor };
   (window.APL_PH = window.APL_PH || {}).cubeSec = api;
 })();

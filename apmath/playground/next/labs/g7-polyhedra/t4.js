@@ -345,7 +345,20 @@
       ctl: () => ['phTe'].concat(VIEW),
       presets: () => PRESETS3.map((p, i) => ({ group: i === 0 ? '대표 단면' : '', label: p.label, apply: (st) => { st.phC3 = p.tri.slice(); st.phTe = p.play ? 0 : 1; st.playing = !!p.play; }, on: (st) => sameSel(st.phC3, p.tri) }))
         .concat(LET8.map((L, i) => ({ group: i === 0 ? '꼭짓점 고르기 (3개)' : '', label: L, apply: (st) => toggle(st, L), on: (st) => (st.phC3 || []).includes(L) }))),
-      init: (s) => { s.phC3 = ['A', 'G', 'H']; s.phQ = { tri: ['A', 'G', 'H'] }; s.phTe = 0; },
+      init: (s) => { s.phC3 = ['A', 'G', 'H']; s.phQ = { tri: ['A', 'G', 'H'] }; s.phTe = 0; s.phVa = { yaw: s.phYaw, pitch: s.phPitch }; s.phVman = false; },
+      // 평면을 옆에서 보면 단면이 가는 선이 되므로, 단면이 충분히 보이는 시점으로 부드럽게 돌립니다(기본 시점이 괜찮으면 그대로).
+      // 학생이 돌려 보기 막대·끌기로 직접 시점을 바꾼 뒤에는 이 장면에서 더는 자동으로 돌리지 않습니다.
+      viewTick: (s, dt, lab) => {
+        if (s.phVman) return false;
+        if (s.phVa && (Math.abs(s.phYaw - s.phVa.yaw) > 0.02 || Math.abs(s.phPitch - s.phVa.pitch) > 0.02)) { s.phVman = true; return false; } // 우리가 둔 값과 달라졌다 = 학생이 돌렸다
+        const M = T3.model(s), sec = lab.tab === 'explore' ? M.sec : M.qsec;
+        const tg = sec ? CS.viewFor(sec) : CS.DEFAULT_VIEW, dy = tg.yaw - s.phYaw, dp = tg.pitch - s.phPitch;
+        if (Math.abs(dy) < 0.05 && Math.abs(dp) < 0.05) { s.phVa = { yaw: s.phYaw, pitch: s.phPitch }; return false; }
+        const k = 1 - Math.exp(-Math.min(dt, 0.1) * 6);
+        s.phYaw += dy * k; s.phPitch += dp * k;
+        s.phVa = { yaw: s.phYaw, pitch: s.phPitch };
+        return true;
+      },
       reroll: (s) => { s.phQ = rollQ(s.phQ && s.phQ.tri); },
       model: (s) => {
         const sel = (s.phC3 || []).slice(), Q = s.phQ || { tri: ['A', 'G', 'H'] };

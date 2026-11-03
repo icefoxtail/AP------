@@ -5,7 +5,8 @@
 //     좌표로 따로 센 기준(한 면 위 · 한 꼭짓점에 이웃한 세 점 · 나머지)과 같다. 단면의 꼭짓점은 정육면체의 꼭짓점뿐(모서리 가운데를 지나지 않음).
 //  2) 넷째 점은 평행한 모서리/같은 면으로 직접 구한 값과 같고, 선생님 문항(A·G·H)은 직사각형 ABGH.
 //  3) 평면 넓히기: 0 이면 세 점 삼각형(넓이·꼭짓점), 1 이면 단면, 그 사이는 삼각형에서 단면으로 커지고, 정삼각형 단면은 그대로.
-//  4) 문제 탭: 첫 문제는 A·G·H, 정답 보기는 정확히 하나이고 계산한 모양과 같으며, 「새 문제」는 정사각형을 드물게 뽑는다. 정리 풀이는 3단계.
+//  4) 시점: 56가지 모두 최종 시점에서 단면이 선처럼 보이지 않고(투영 넓이 비율 0.35 이상) 꼭짓점 이름이 겹치지 않으며, 선생님 문항 3가지는 기본 시점 그대로.
+//  5) 문제 탭: 첫 문제는 A·G·H, 정답 보기는 정확히 하나이고 계산한 모양과 같으며, 「새 문제」는 정사각형을 드물게 뽑는다. 정리 풀이는 3단계.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -173,4 +174,47 @@ test('대표 단면: A·G·H 는 삼각형(0)에서 시작해 저절로 넓어�
   assert.equal(s.phTe, 0); assert.ok(s.playing);
   s.phTe = 0; chip('C').apply(s);
   assert.equal(s.phTe, 1); assert.ok(!s.playing);
+});
+
+test('시점: 56가지 모두 최종 시점에서 단면의 투영 넓이 비율이 0.35 이상이고 꼭짓점이 서로 가깝지 않다', () => {
+  let low = 1;
+  for (const x of CS.ALL) {
+    const v = CS.viewFor(x);
+    assert.ok(v.ratio >= CS.MIN_RATIO, `${x.label}: 투영 넓이 비율 ${v.ratio.toFixed(2)}`);
+    assert.ok(Math.abs(CS.viewRatio(x, v.yaw, v.pitch) - v.ratio) < 1e-9);
+    assert.ok(CS.minSep(v.yaw, v.pitch) >= 0.4, `${x.label}: 꼭짓점 사이가 너무 가까움`);
+    low = Math.min(low, v.ratio);
+  }
+  assert.ok(low >= CS.MIN_RATIO);
+  // 기본 시점이 괜찮으면 그대로: 선생님 문항 3가지
+  for (const t of [['A', 'G', 'H'], ['B', 'D', 'E'], ['A', 'B', 'C']]) {
+    const v = CS.viewFor(CS.sectionOf3(...t));
+    assert.equal(v.yaw, CS.DEFAULT_VIEW.yaw); assert.equal(v.pitch, CS.DEFAULT_VIEW.pitch);
+  }
+  // 기본 시점에서 선처럼 보이던 것(예: B·E·G, C·E·F, A·C·H)은 시점이 바뀐다
+  for (const t of [['B', 'E', 'G'], ['C', 'E', 'F'], ['A', 'C', 'H']]) assert.ok(CS.viewFor(CS.sectionOf3(...t)).yaw !== CS.DEFAULT_VIEW.yaw, t.join(''));
+});
+
+test('시점 돌리기: 단면이 선이 되는 점을 고르면 부드럽게 돌아가고, 학생이 직접 돌린 뒤에는 자동으로 돌리지 않는다', () => {
+  const s = { phYaw: -30, phPitch: 22 };
+  P3.init(s);
+  const lab = { tab: 'explore' };
+  s.phC3 = ['B', 'E', 'G'];
+  const want = CS.viewFor(CS.sectionOf3('B', 'E', 'G'));
+  let n = 0;
+  while (P3.viewTick(s, 0.05, lab) && n < 400) n++;
+  assert.ok(n > 3 && n < 400, `부드럽게(여러 프레임) 도착: ${n}`);
+  assert.ok(Math.abs(s.phYaw - want.yaw) < 0.1 && Math.abs(s.phPitch - want.pitch) < 0.1);
+  // 학생이 직접 돌림 → 이후 점을 바꿔도 자동 회전 없음
+  s.phYaw = 10;
+  s.phC3 = ['C', 'E', 'F'];
+  assert.equal(P3.viewTick(s, 0.05, lab), false);
+  assert.equal(s.phYaw, 10);
+  // 문제·정리 탭은 문제의 세 점 기준
+  const s2 = { phYaw: -30, phPitch: 22 };
+  P3.init(s2);
+  s2.phQ = { tri: ['A', 'C', 'H'] };
+  for (let i = 0; i < 400 && P3.viewTick(s2, 0.05, { tab: 'problem' }); i++);
+  const w2 = CS.viewFor(CS.sectionOf3('A', 'C', 'H'));
+  assert.ok(Math.abs(s2.phYaw - w2.yaw) < 0.1);
 });
