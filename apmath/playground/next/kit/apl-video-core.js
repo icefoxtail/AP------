@@ -5,7 +5,7 @@
    영상은 따로 그린 동영상이 아니라, 실험실 그림을 「대본」대로 움직이는 것입니다. 대본 = 시간순 cue 목록.
      {
        length: 22,                              // 전체 길이(초). 15~30
-       start:  { f1_ss2_t: 0 },                 // (선택) 시작할 때 맞출 숫자 상태값. 생략하면 장면에 들어갔을 때의 값
+       start:  { f1_ss2_t: 0 },                 // (선택) 시작할 때 맞출 숫자 상태값(움직이지 않는 값도 가능). 자막이 말하는 값은 여기에 적어 그림과 맞춥니다. 생략하면 장면에 들어갔을 때의 값
        summary: '$S=\\frac12 rl$',               // 끝 화면 한 줄 요약
        task:    '중심각을 움직여 보세요',          // 끝 화면 「이제 직접 해 보세요」
        cues: [
@@ -138,6 +138,8 @@
       if (c.step !== undefined) usesStep = true;
       if (c.part !== undefined) usesPart = true;
     });
+    // start 에만 있고 to 로 움직이지 않는 숫자 상태값도 영상이 시작할 때 그 값으로 맞춥니다(자막이 말하는 값과 그림을 같게)
+    Object.keys(script.start || {}).forEach((k) => { if (!tracks[k]) tracks[k] = []; });
     const says = cues.filter((c) => c.say).map((c) => ({ at: c.at, text: c.say, cue: c.index }));
     says.forEach((s, k) => { s.end = k + 1 < says.length ? says[k + 1].at : L; });
     return { length: L, start: script.start || {}, summary: script.summary, task: script.task, cues, tracks, setKeys: [...setKeys], usesStep, usesPart, says };

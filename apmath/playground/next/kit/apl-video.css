@@ -26,6 +26,8 @@ body.apl-vid .apl-toc-edge { display: none !important; }
   min-height: calc(2 * 1.5em); display: flex; align-items: center; font-size: 19px; font-weight: 700; line-height: 1.5;
   letter-spacing: -.015em; color: var(--text); overflow-wrap: anywhere;
 }
+/* 글자·굵은 글씨·수식을 한 덩어리로 흘려 씁니다(flex 자식으로 두면 굵은 글씨 앞뒤 띄어쓰기가 사라짐) */
+.apl-vcap > .t { display: block; min-width: 0; }
 .apl-vcap b { color: var(--m-amber); font-weight: 800; }
 .apl-vcap .katex { font-size: 1.12em; }
 .apl-vcap.pop { animation: apl-vcap .26s var(--ease); }
@@ -70,12 +72,16 @@ body.apl-vid .apl-toc-edge { display: none !important; }
 .apl-vtaskline { display: grid; gap: 2px; padding: 0 2px; font-size: var(--fs-md); line-height: 1.55; color: var(--text); }
 .apl-vtaskline b { color: var(--m-amber); font-weight: 800; font-size: var(--fs-sm); }
 .apl-vend-btns { display: flex; gap: 8px; flex-wrap: wrap; }
-.apl-vend.min .apl-vsum, .apl-vend.min .apl-vend-btns { display: none; }
-.apl-vend.min { gap: 2px; }
 @media (max-width: 859px) {
-  .apl-vsum { font-size: 18px; padding: 8px 10px; }
-  .apl-vtaskline { font-size: var(--fs-sm); }
-  .apl-vend { gap: 6px; }
+  /* 휴대폰: 끝 카드를 낮추고, 카드가 떠 있는 동안 그림 무대를 그만큼 키워 그림이 좁아지지 않게 합니다 */
+  body.apl-vend-on .apl-stage { height: clamp(420px, calc(54svh + 170px), 760px); }
+  .apl-vbar[data-mode="end"] { padding: 6px 12px 10px; }
+  .apl-vsum { font-size: 17px; padding: 6px 10px; }
+  .apl-vtaskline { font-size: var(--fs-sm); line-height: 1.45; }
+  .apl-vend { gap: 5px; }
+  .apl-vend-h .ttl { font-size: var(--fs-2xs); }
+  .apl-vendx { width: 30px; height: 30px; }
+  .apl-vend-btns .apl-vbtn { min-height: 40px; }
 }
 .apl-vtask[data-tone="key"] { --c: var(--m-amber); }
 

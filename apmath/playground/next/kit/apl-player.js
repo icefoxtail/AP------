@@ -97,8 +97,9 @@
       ui.range.step = '1';
       ui.range.addEventListener('input', () => {
         if (!this.cs || this.state === 'idle' || this.state === 'ended') return;
+        const to = (+ui.range.value / 1000) * this.cs.length; // pause() 가 막대 위치를 되돌리기 전에 읽어 둡니다
         this.pause();
-        this.seek((+ui.range.value / 1000) * this.cs.length);
+        this.seek(to);
       });
     }
 
@@ -117,8 +118,8 @@
       const lab = this.lab;
       // 재생 중 그림을 만지면 멈춥니다(만지는 순간 손잡이 끌기는 그대로 동작).
       lab.ui.canvasWrap.addEventListener('pointerdown', () => {
+        // 끝 카드는 그림을 만져도 그대로 둡니다(카드 높이가 바뀌면 손잡이를 끄는 도중 그림이 다시 맞춰져 튀기 때문). 「직접 해 보기」나 ✕ 로 닫습니다.
         if (this.state === 'playing') { this.pause(); APLab.toast('멈췄어요. 그림을 움직여 보고, ▶ 로 이어 볼 수 있어요'); }
-        else if (this.state === 'ended') ui_min(this.ui.end, true);
       }, true);
       document.addEventListener('visibilitychange', () => { if (document.hidden && this.state === 'playing') this.pause(); });
       document.addEventListener('keydown', (e) => {
@@ -165,7 +166,7 @@
       this.t = 0;
       this._capIndex = -2;
       this.ui.end.hidden = true;
-      ui_min(this.ui.end, false);
+      document.body.classList.remove('apl-vend-on');
       this.ui.bar.hidden = false;
       this.ui.bar.dataset.mode = 'play';
       this.ui.bar.dataset.step = this.stepMode ? '1' : '';
@@ -257,7 +258,7 @@
       st = st || core.stateAt(cs, this.t, this.base);
       if (st.say !== this._capIndex) {
         this._capIndex = st.say;
-        ui.cap.innerHTML = st.say >= 0 ? richHtml(cs.says[st.say].text) : '';
+        ui.cap.innerHTML = st.say >= 0 ? `<span class="t">${richHtml(cs.says[st.say].text)}</span>` : '';
         ui.cap.classList.remove('pop');
         void ui.cap.offsetWidth;
         ui.cap.classList.add('pop');
@@ -294,7 +295,7 @@
       this.ui.endSum.innerHTML = richHtml(cs.summary);
       this.ui.endTask.innerHTML = `<b>이제 직접 해 보세요</b><span>${richHtml(cs.task)}</span>`;
       this.ui.end.hidden = false;
-      ui_min(this.ui.end, false);
+      document.body.classList.add('apl-vend-on'); // 휴대폰: 끝 카드만큼 그림 무대를 키움
       this._taskNote(cs.task);
     }
     /** 영상 상태를 끝내고 화면을 원래대로 되돌립니다(rebuild: 패널을 다시 만들지 여부). */
@@ -306,6 +307,7 @@
       this.cs = null;
       this.ui.bar.hidden = true;
       this.ui.end.hidden = true;
+      document.body.classList.remove('apl-vend-on');
       this._layout(false);
       if (rebuild && was !== 'idle') { this.lab.tab = 'explore'; this.lab._buildPanel(); this.lab.invalidate(true); this.lab._saveHashSoon(); }
     }
@@ -328,7 +330,6 @@
     }
   }
 
-  function ui_min(el, on) { el.classList.toggle('min', !!on); }
 
   APLab.Player = Player;
   (APLab.labHooks = APLab.labHooks || []).push((lab) => {
