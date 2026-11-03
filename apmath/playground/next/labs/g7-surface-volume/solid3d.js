@@ -655,6 +655,7 @@
 
   // 화면 위쪽에 「겉넓이 = 옆넓이 + 밑넓이」 같은 합 식을 줄마다(조각 [{t, c}]) 가운데 맞춤으로 씁니다. 폭이 모자라면 글자를 줄입니다.
   function sumRows(D, rows, a, bottom) {
+    if (a < 0.02) return;
     const b = D.b, size = D.fs(15), eff = size * b.fs * b._ts(), avail = b.W - b.insets.left - b.insets.right - 16, c = b.ctx;
     rows.forEach((segs, i) => {
       let w = 0; c.save(); c.font = `800 ${eff}px ${b.font}`; segs.forEach((g) => { g.w = c.measureText(g.t).width; w += g.w; }); c.restore();
