@@ -550,7 +550,7 @@ mineGroups.forEach((g) => g.scenes.forEach((sc) => {
   sc.autoFit = true;
 }));
 
-const MODULES = ['basic', 'f01', 'f02', 'f03', 'f04', 'f05', 'rolling', 'swept', 'video']; // video: 영상 대본(window.APL_VIDEOS) — 그룹이 아니라 장면 id별 대본 데이터
+const MODULES = ['basic', 'f01', 'f02', 'f03', 'f04', 'f05', 'rolling', 'swept', 'video', 'video-a', 'video-b']; // video*: 영상 대본(window.APL_VIDEOS) — 그룹이 아니라 장면 id별 대본 데이터. video-a/b 는 두 작업이 같은 파일을 동시에 고치지 않도록 나눈 파일
 const loadScript = (src) => new Promise((res) => {
   const el = document.createElement('script');
   el.src = src; el.async = false;

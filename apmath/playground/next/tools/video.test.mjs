@@ -26,15 +26,22 @@ const SCENE_STATE = {
   'f4-swirl': { f4_swirl_R: [4, 10], f4_swirl_t: [0, 1], f4_swirl_mode: null, f4_swirl_seed: null, f4_swirl_pick: null },
   // 다음 대본(DeepSeek 시험) 대상: 1210(basic.js, 1209 와 같은 sectorSpec) · f1-ss2(f01.js 부채꼴에서 반원 파내기, 장면 id 는 'f1-ss2')
   '1210': { b1210_r: [3, 12], b1210_th: [10, 350] },
-  'f1-ss2': { f1_ss2_a: [4, 12], f1_ss2_t: [0, 1], f1_ss2_mode: null, f1_ss2_seed: null, f1_ss2_pick: null }
+  'f1-ss2': { f1_ss2_a: [4, 12], f1_ss2_t: [0, 1], f1_ss2_mode: null, f1_ss2_seed: null, f1_ss2_pick: null },
+  // 지시서 A (video-a.js): 끈의 길이(f05.js 'f5-sq4', 이름 f5A 반지름 2~8 · f5T 0~1) · 굴리기(rolling.js 'rl-rect', rlT 0~1. 직사각형 크기는 s.cfg 라 대본으로 못 바꿈)
+  'f5-sq4': { f5A: [2, 8], f5T: [0, 1] },
+  'rl-rect': { rlT: [0, 1] },
+  // 지시서 B (video-b.js): 묶인 동물의 영역(swept.js 'gt-kennel', gtQ 개집 한 변 1~6 · gtL 끈 1~16 · gtT 0~1) · 잎 모양(f03.js 'f3-leaf-len', f3a 한 변 2~12 · f3t 0~1)
+  'gt-kennel': { gtT: [0, 1], gtQ: [1, 6], gtL: [1, 16] },
+  'f3-leaf-len': { f3a: [2, 12], f3t: [0, 1] }
 };
 const SCENE_STATE_KEYS = Object.fromEntries(Object.entries(SCENE_STATE).map(([k, v]) => [k, new Set(Object.keys(v))]));
 
+// 대본 파일: video.js(견본·시험) + video-a.js, video-b.js(DeepSeek 두 작업이 따로 쓰는 파일). html 의 MODULES 순서와 같게 한 sandbox 에서 차례로 읽어 합칩니다.
+const VIDEO_FILES = ['video.js', 'video-a.js', 'video-b.js'];
 function loadVideos() {
-  const src = fs.readFileSync(path.join(SCENE_DIR, 'video.js'), 'utf8');
   const sandbox = { window: {} };
   vm.createContext(sandbox);
-  vm.runInContext(src, sandbox);
+  for (const f of VIDEO_FILES) vm.runInContext(fs.readFileSync(path.join(SCENE_DIR, f), 'utf8'), sandbox, { filename: f });
   return (sandbox.window.APL_VIDEOS || {})['g7-circle-sector'] || {};
 }
 
@@ -80,6 +87,11 @@ test('실험실 HTML이 영상 대본을 videos 로 연결한다', () => {
   const html = fs.readFileSync(path.join(SCENE_DIR + '.html'), 'utf8');
   assert.ok(/videos:\s*\(window\.APL_VIDEOS\s*\|\|\s*\{\}\)\['g7-circle-sector'\]/.test(html), 'createLab 의 videos 연결');
   assert.ok(/MODULES\s*=\s*\[[^\]]*'video'/.test(html), 'MODULES 에 video 포함');
+  VIDEO_FILES.forEach((f) => {
+    const m = f.replace(/\.js$/, '');
+    assert.ok(new RegExp(`MODULES\\s*=\\s*\\[[^\\]]*'${m}'`).test(html), `MODULES 에 ${m} 포함`);
+    assert.ok(fs.existsSync(path.join(SCENE_DIR, f)), `${f} 파일`);
+  });
 });
 
 test('상태값 표가 장면 소스와 같다', () => {
@@ -103,6 +115,16 @@ test('상태값 표가 장면 소스와 같다', () => {
   const swirl = f04.slice(f04.indexOf("id: 'swirl'"));
   assert.ok(/vars:\s*\[\{\s*k:\s*'R'[^}]*min:\s*4,\s*max:\s*10/.test(swirl.slice(0, 600)), 'swirl R 범위 4~10');
   assert.ok(/PARAMS\[kt\]\s*=\s*\{\s*value:\s*0,\s*min:\s*0,\s*max:\s*1/.test(f04), 't 범위 0~1');
+  // 지시서 A·B 장면: 장면 id 와 상태값 이름·범위가 소스에 있다
+  const f05 = fs.readFileSync(path.join(SCENE_DIR, 'f05.js'), 'utf8');
+  const rolling = fs.readFileSync(path.join(SCENE_DIR, 'rolling.js'), 'utf8');
+  const swept = fs.readFileSync(path.join(SCENE_DIR, 'swept.js'), 'utf8');
+  const f03 = fs.readFileSync(path.join(SCENE_DIR, 'f03.js'), 'utf8');
+  assert.ok(/id:\s*'f5-sq4'/.test(f05) && /f5A:\s*\{[^}]*value:\s*A\.r0|min:\s*2,\s*max:\s*8,\s*step:\s*1,\s*value:\s*A\.r0/.test(f05), "f05.js 'f5-sq4' 와 반지름 f5A 2~8");
+  assert.ok(/f5T:\s*DEF_T|const DEF_T/.test(f05), 'f05.js f5T');
+  assert.ok(/id:\s*'rl-rect'/.test(rolling) && /rlT:\s*\{\s*value:\s*0,\s*min:\s*0,\s*max:\s*1/.test(rolling), "rolling.js 'rl-rect' 와 rlT 0~1");
+  assert.ok(/id:\s*'gt-kennel'/.test(swept) && /gtT:\s*\{\s*value:\s*0,\s*min:\s*0,\s*max:\s*1/.test(swept) && /gtQ:\s*\{\s*value:\s*2,\s*min:\s*1,\s*max:\s*6/.test(swept) && /gtL:\s*\{\s*value:\s*5,\s*min:\s*1,\s*max:\s*16/.test(swept), "swept.js 'gt-kennel' 와 gtT·gtQ·gtL 범위");
+  assert.ok(/id:\s*'f3-leaf-len'/.test(f03) && /f3a:\s*\{\s*value:\s*6,\s*min:\s*2,\s*max:\s*12/.test(f03) && /f3t:\s*PARAM_T/.test(f03) && /PARAM_T\s*=\s*\{\s*value:\s*0,\s*min:\s*0,\s*max:\s*1/.test(f03), "f03.js 'f3-leaf-len' 와 f3a 2~12 · f3t 0~1");
 });
 
 for (const [id, script] of Object.entries(videos)) {
