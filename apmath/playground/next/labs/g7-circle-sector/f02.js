@@ -53,9 +53,9 @@
     return hasC ? ftex(v.c) : '0';
   }
   const num = (x) => String(Math.round(x * 100) / 100);
-  // 반지름 표기: 정수·소수(.5)는 그대로, 그 밖의 분수는 괄호
-  const rt = (r) => (r.d === 1 ? String(r.n) : r.d === 2 ? String(r.n / 2) : `(${r.n}/${r.d})`);
-  const rtex = (r) => (r.d === 1 ? String(r.n) : r.d === 2 ? String(r.n / 2) : `\\left(${ftex(r)}\\right)`);
+  // 반지름 표기: 정수는 그대로, 분수는 소수 없이 괄호 안의 분수로 (3/2)
+  const rt = (r) => (r.d === 1 ? String(r.n) : `(${r.n}/${r.d})`);
+  const rtex = (r) => (r.d === 1 ? String(r.n) : `\\left(${ftex(r)}\\right)`);
   const sq = (r) => fmul(r, r);
 
   /* ======================= 기하 도우미 (수학 좌표, y 위쪽) ======================= */
@@ -345,11 +345,9 @@
     const tri = { id: 'tri', name: '△ABC', sign: 1, pts: [B, C, A], area: V(ZERO, fr(p * q, 2)), aExpr: `½×${p}×${q}`, aTex: `\\frac12\\times ${p}\\times ${q}` };
     const sBC = {
       id: 'bc', name: '반원 BC', sign: -1, pts: halfArc(c / 2, 0, c / 2, PI / 2), area: V(fr(c2, 8)),
-      aExpr: cInt ? `π×${num(c / 2)}²×½` : 'π×($\\frac{BC}{2}$)²×½',
-      aTex: cInt ? `\\pi\\times ${num(c / 2)}^2\\times\\frac12` : '\\pi\\times\\left(\\frac{\\overline{BC}}{2}\\right)^2\\times\\frac12'
+      aExpr: cInt ? `π×${rt(fr(c, 2))}²×½` : 'π×($\\frac{BC}{2}$)²×½',
+      aTex: cInt ? `\\pi\\times ${rtex(fr(c, 2))}^2\\times\\frac12` : '\\pi\\times\\left(\\frac{\\overline{BC}}{2}\\right)^2\\times\\frac12'
     };
-    sAB.aExpr = `π×${num(p / 2)}²×½`; sAB.aTex = `\\pi\\times ${num(p / 2)}^2\\times\\frac12`;
-    sAC.aExpr = `π×${num(q / 2)}²×½`; sAC.aTex = `\\pi\\times ${num(q / 2)}^2\\times\\frac12`;
     sAB.arc = null; sAC.arc = null;
     const alA = Math.atan2(A[1], A[0] - c / 2);
     const m = { kind: 'LUNE', P, items: [sAB, sAC, tri, sBC], order: ['ab', 'ac', 'tri', 'bc'], hasArc: false, A, B, C, c, cInt };
@@ -370,7 +368,7 @@
       const l1 = inside(A, B, C, 26), l2 = inside(A, C, B, 26), l3 = inside(B, C, A, 18);
       G.text(l1[0], l1[1], `${p} cm`, { color: 'amber', alpha: Al });
       G.text(l2[0], l2[1], `${q} cm`, { color: 'amber', alpha: Al });
-      G.text(l3[0], l3[1], cInt ? `${c} cm` : `√${c2} cm`, { color: 'amber', alpha: Al });
+      G.text(l3[0], l3[1], cInt ? `${c} cm` : 'BC', { color: 'amber', alpha: Al });
     };
     m.extra = (G, st) => {
       const f = st.flags || {};
