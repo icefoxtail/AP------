@@ -851,7 +851,7 @@
       const choices = list.map(([p, q]) => choiceTex(p, q, isPath ? 'cm' : 'cm^2'));
       const rr = `${num(r)} cm`;
       const nm = sc.shape === 'square' ? '정사각형' : sc.shape === 'rect' ? '직사각형' : '정삼각형';
-      const stem = `오른쪽 그림과 같이 반지름의 길이가 ${rr}인 원이 ${nm}의 변을 따라 한 바퀴 돌아서 제자리로 왔을 때, ${isPath ? '원의 중심이 움직인 거리는' : '원이 지나간 자리의 넓이는'}?`;
+      const stem = `그림과 같이 반지름의 길이가 ${rr}인 원이 ${nm}의 변을 따라 한 바퀴 돌아서 제자리로 왔을 때, ${isPath ? '원의 중심이 움직인 거리는' : '원이 지나간 자리의 넓이는'}?`;
       return { stem, choices, ans, ansTex: `${CIRC[ans]} ${choices[ans]}`, M, list };
     };
   }
@@ -1075,7 +1075,7 @@
       const ans = list.findIndex((x) => x[0] === r * r && x[1] === base);
       const choices = list.map(([p, q]) => choiceTex(p, q, 'cm^2'));
       return {
-        stem: `오른쪽 그림과 같이 반지름의 길이가 ${num(r)} cm인 원이 한 변의 길이가 ${num(M.a)} cm인 정사각형의 안쪽 벽을 따라 한 바퀴 돌아서 제자리로 왔을 때, 원이 지나간 자리의 넓이는?`,
+        stem: `그림과 같이 반지름의 길이가 ${num(r)} cm인 원이 한 변의 길이가 ${num(M.a)} cm인 정사각형의 안쪽 벽을 따라 한 바퀴 돌아서 제자리로 왔을 때, 원이 지나간 자리의 넓이는?`,
         choices, ans, ansTex: `${CIRC[ans]} ${choices[ans]}`, M, list
       };
     },
@@ -1562,7 +1562,7 @@
     textbook: { list: [[10, 1], [12, 1], [14, 1], [16, 1], [18, 1]], ans: 2 },
     steps: goatSteps('square'),
     tag: '교재 문제 · 실수 유발',
-    stem: (M) => `오른쪽 그림과 같이 한 변의 길이가 ${num(M.side)} m인 정사각형 모양의 개집의 한 꼭짓점에 강아지가 끈으로 묶여 있다. 끈의 길이가 ${num(M.L)} m일 때, 강아지가 움직일 수 있는 영역의 최대 넓이는? (단, 개집의 내부는 제외하고, 강아지의 크기와 끈의 매듭의 길이는 생각하지 않는다.)`,
+    stem: (M) => `그림과 같이 한 변의 길이가 ${num(M.side)} m인 정사각형 모양의 개집의 한 꼭짓점에 강아지가 끈으로 묶여 있다. 끈의 길이가 ${num(M.L)} m일 때, 강아지가 움직일 수 있는 영역의 최대 넓이는? (단, 개집의 내부는 제외하고, 강아지의 크기와 끈의 매듭의 길이는 생각하지 않는다.)`,
     formula: goatFormula, notes: GOAT_NOTES, solution: goatSolution('square')
   });
 
@@ -1577,7 +1577,7 @@
     numberPresets: [goatNumPreset('5×4 · 끈 7 (교재)', { gtA: 5, gtB: 4, gtL: 7 }), goatNumPreset('4×3 · 끈 5', { gtA: 4, gtB: 3, gtL: 5 }), goatNumPreset('6×2 · 끈 4', { gtA: 6, gtB: 2, gtL: 4 })],
     steps: goatSteps('rect'),
     tag: '교재 20 예제 · 서답형',
-    stem: (M) => `오른쪽 그림과 같이 가로의 길이가 ${num(M.side)} m, 세로의 길이가 ${num(M.sideLast)} m인 직사각형 모양의 창고의 한 모퉁이에 말뚝을 박아서 길이가 ${num(M.L)} m인 끈으로 강아지를 묶어 놓았다. 강아지가 창고 밖의 풀밭을 움직일 때, 움직일 수 있는 영역의 최대 넓이를 구하시오. ${stemTail}`,
+    stem: (M) => `그림과 같이 가로의 길이가 ${num(M.side)} m, 세로의 길이가 ${num(M.sideLast)} m인 직사각형 모양의 창고의 한 모퉁이에 말뚝을 박아서 길이가 ${num(M.L)} m인 끈으로 강아지를 묶어 놓았다. 강아지가 창고 밖의 풀밭을 움직일 때, 움직일 수 있는 영역의 최대 넓이를 구하시오. ${stemTail}`,
     formula: goatFormula, notes: GOAT_NOTES, solution: goatSolution('rect')
   });
 
@@ -1593,7 +1593,7 @@
     textbook: { list: [[66, 1], [200, 3], [72, 1], [250, 3], [86, 1]], ans: 4 },
     steps: goatSteps('tri'),
     tag: '교재 20 유사 1 · 실수 유발',
-    stem: (M) => `오른쪽 그림과 같이 한 변의 길이가 ${num(M.side)} m인 정삼각형 모양의 울타리의 한 꼭짓점에 길이가 ${num(M.L)} m인 끈으로 염소를 묶어 놓았다. 염소가 울타리 밖의 풀밭을 움직일 때, 움직일 수 있는 영역의 최대 넓이는? (단, 염소의 크기와 끈의 매듭의 길이는 생각하지 않는다.)`,
+    stem: (M) => `그림과 같이 한 변의 길이가 ${num(M.side)} m인 정삼각형 모양의 울타리의 한 꼭짓점에 길이가 ${num(M.L)} m인 끈으로 염소를 묶어 놓았다. 염소가 울타리 밖의 풀밭을 움직일 때, 움직일 수 있는 영역의 최대 넓이는? (단, 염소의 크기와 끈의 매듭의 길이는 생각하지 않는다.)`,
     formula: goatFormula, notes: GOAT_NOTES, solution: goatSolution('tri')
   });
 
@@ -1608,7 +1608,7 @@
     numberPresets: [goatNumPreset('변 6 · 끈 9 (교재)', { gtH: 6, gtL: 9 }), goatNumPreset('변 4 · 끈 6', { gtH: 4, gtL: 6 }), goatNumPreset('변 5 · 끈 7', { gtH: 5, gtL: 7 })],
     steps: goatSteps('hex'),
     tag: '교재 20 유사 2 · 서답형',
-    stem: (M) => `오른쪽 그림과 같이 한 변의 길이가 ${num(M.side)} m인 정육각형 모양의 가축우리의 한 꼭짓점에 길이가 ${num(M.L)} m인 끈으로 소를 묶어 놓았다. 소가 움직일 수 있는 영역의 최대 넓이를 구하시오. (단, 가축우리의 내부는 제외하고, 소의 크기와 끈의 매듭의 길이는 생각하지 않는다.)`,
+    stem: (M) => `그림과 같이 한 변의 길이가 ${num(M.side)} m인 정육각형 모양의 가축우리의 한 꼭짓점에 길이가 ${num(M.L)} m인 끈으로 소를 묶어 놓았다. 소가 움직일 수 있는 영역의 최대 넓이를 구하시오. (단, 가축우리의 내부는 제외하고, 소의 크기와 끈의 매듭의 길이는 생각하지 않는다.)`,
     formula: goatFormula, notes: GOAT_NOTES, solution: goatSolution('hex')
   });
 
@@ -1674,7 +1674,7 @@
       const M = spiralModel(s), k = M.secs.length;
       const names = M.secs.map((x) => x.id).join(', ');
       return {
-        stem: `오른쪽 그림은 한 변의 길이가 ${num(M.p)} cm인 정육각형 ABCDEF의 ${spiralWords[k]} 꼭짓점 ${names}를 각각 중심으로 하는 부채꼴을 그린 것이다. 이때 색칠한 부분의 넓이를 구하고, 그 과정을 서술하시오.`,
+        stem: `그림은 한 변의 길이가 ${num(M.p)} cm인 정육각형 ABCDEF의 ${spiralWords[k]} 꼭짓점 ${names}를 각각 중심으로 하는 부채꼴을 그린 것이다. 이때 색칠한 부분의 넓이를 구하고, 그 과정을 서술하시오.`,
         free: { coef: M.area, unit: 'π cm²', show: `색칠한 부분의 넓이는 ${ratPi(M.area)} cm² 예요.` }, ans: 0, ansTex: `$${ratPiTex(M.area)}\\,\\mathrm{cm}^2$`, M
       };
     },

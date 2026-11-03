@@ -532,7 +532,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '색칠한 부분의 넓이 (3) 도형의 일부분을 이동하는 경우', unit: 'cm²',
-      stem: (V) => `오른쪽 그림과 같이 한 변의 길이가 ${V.a} cm인 정사각형에서 색칠한 부분의 넓이는?`,
+      stem: (V) => `그림과 같이 한 변의 길이가 ${V.a} cm인 정사각형에서 색칠한 부분의 넓이는?`,
       choices: (V) => { const q = V.a * V.a; return { vals: [X(Q(q, 4)), X(0, Q(q, 4)), X(Q(q, 2)), X(0, Q(q, 2)), X(Q(3 * q, 4))], ok: 2 }; },
       hint: () => '반원의 넓이를 구하지 말고, 겹친 잎 모양의 두 조각을 빈 곳으로 옮겨 보세요.',
       std: (V, M) => `<b>해결 전략</b> 색칠한 부분의 일부를 옮겨 간단한 도형으로 바꾼다.<br>잎 모양의 두 조각을 각각 90° 돌려 빈 곳에 채우면 색칠한 부분은 정사각형의 대각선으로 나눈 직각삼각형이 된다.<br>(색칠한 부분의 넓이) $=\\dfrac12\\times${V.a}\\times${V.a}=${V.a * V.a / 2}$ (cm²)`,
@@ -578,7 +578,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '일부분을 옮기는 경우 (겹치는 두 원)', unit: 'cm²',
-      stem: (V) => `오른쪽 그림과 같이 반지름의 길이가 ${V.r} cm인 두 원이 서로의 중심을 지날 때, 색칠한 부분의 넓이는?`,
+      stem: (V) => `그림과 같이 반지름의 길이가 ${V.r} cm인 두 원이 서로의 중심을 지날 때, 색칠한 부분의 넓이는?`,
       choices: (V) => ({ vals: [X(10 * V.r), X(2 * V.r * V.r), X(13 * V.r), X(0, 4 * V.r), X(0, 5 * V.r)], ok: 1 }),
       hint: () => '오른쪽 반원을 왼쪽으로 가로로 밀어 빈 곳에 끼워 보세요.',
       std: (V) => `<b>해결 전략</b> 오른쪽 원의 오른쪽 반원을 왼쪽으로 ${V.r} cm 옮겨 왼쪽 원의 오른쪽 반원 자리에 채운다.<br>색칠한 부분은 가로 ${V.r} cm, 세로 ${2 * V.r} cm인 직사각형이 된다.<br>(넓이) $=${V.r}\\times${2 * V.r}=${2 * V.r * V.r}$ (cm²)`,
@@ -629,7 +629,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '색칠한 부분의 넓이 (2) 도형의 넓이의 합, 차', unit: 'cm²',
-      stem: (V) => `오른쪽 그림은 반지름의 길이가 ${V.r} cm인 반원 O를 점 A를 중심으로 ${V.th}°만큼 회전시킨 것이다. 이때 색칠한 부분의 넓이는?`,
+      stem: (V) => `그림은 반지름의 길이가 ${V.r} cm인 반원 O를 점 A를 중심으로 ${V.th}°만큼 회전시킨 것이다. 이때 색칠한 부분의 넓이는?`,
       choices: (V) => ladder(X(0, Q(4 * V.r * V.r * V.th, 360)), X(0, 1), 4, (v) => v.p[0] > 0),
       hint: () => '돌린 반원과 처음 반원의 넓이가 같으니 색칠한 부분은 부채꼴과 같아요. 부채꼴의 반지름은 지름 AB예요.',
       std: (V, M) => `<b>해결 전략</b> 회전한 반원과 처음 반원의 넓이가 같으므로 색칠한 부분의 넓이는 부채꼴 AB′B의 넓이와 같다.<br>부채꼴의 반지름은 $${2 * V.r}$ cm, 중심각은 ${V.th}°이므로<br>(넓이) $=\\pi\\times${2 * V.r}^2\\times\\dfrac{${V.th}}{360}=${xt(M.resX)}$ (cm²)`,
@@ -676,7 +676,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '일부분을 옮기는 경우 (반원 밀기)', unit: 'cm²', textbook: false,
-      stem: (V) => `오른쪽 그림은 가로 ${V.W} cm, 세로 ${2 * V.r} cm인 직사각형의 왼쪽에서 반지름이 ${V.r} cm인 반원을 파내고, 오른쪽에 같은 반원을 붙인 것이다. 색칠한 부분의 넓이는?`,
+      stem: (V) => `그림은 가로 ${V.W} cm, 세로 ${2 * V.r} cm인 직사각형의 왼쪽에서 반지름이 ${V.r} cm인 반원을 파내고, 오른쪽에 같은 반원을 붙인 것이다. 색칠한 부분의 넓이는?`,
       choices: (V) => { const A = X(2 * V.W * V.r), pi2 = X(0, Q(V.r * V.r, 2)); return ascending(A, [xsub(A, pi2), xadd(A, pi2), X(V.W * V.r), X(4 * V.W * V.r)], X(V.W)); },
       hint: () => '붙은 반원을 왼쪽으로 밀어 파인 곳에 끼우면 직사각형이 돼요.',
       std: (V) => `<b>해결 전략</b> 오른쪽의 반원을 왼쪽으로 ${V.W} cm 밀어 파인 곳에 끼우면 색칠한 부분은 직사각형이 된다.<br>(넓이) $=${V.W}\\times${2 * V.r}=${2 * V.W * V.r}$ (cm²)`,
@@ -724,7 +724,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '일부분을 옮기는 경우 (사분원 밀기)', unit: 'cm²', textbook: false,
-      stem: (V) => `오른쪽 그림은 가로 ${V.W} cm, 세로 ${V.H} cm인 직사각형의 왼쪽 위에서 반지름이 ${V.r} cm인 사분원을 파내고, 오른쪽에 같은 사분원을 붙인 것이다. 색칠한 부분의 넓이는?`,
+      stem: (V) => `그림은 가로 ${V.W} cm, 세로 ${V.H} cm인 직사각형의 왼쪽 위에서 반지름이 ${V.r} cm인 사분원을 파내고, 오른쪽에 같은 사분원을 붙인 것이다. 색칠한 부분의 넓이는?`,
       choices: (V) => { const A = X(V.W * V.H), q = X(0, Q(V.r * V.r, 4)); return ascending(A, [xsub(A, q), xadd(A, q), X(Q(V.W * V.H, 2)), X(2 * V.W * V.H)], X(V.W)); },
       hint: () => '붙은 사분원을 왼쪽으로 밀어 파인 곳에 끼우면 직사각형이 돼요.',
       std: (V) => `<b>해결 전략</b> 오른쪽의 사분원을 왼쪽으로 ${V.W} cm 밀어 파인 곳에 끼우면 색칠한 부분은 직사각형이 된다.<br>(넓이) $=${V.W}\\times${V.H}=${V.W * V.H}$ (cm²)`,
@@ -767,7 +767,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '일부분을 옮기는 경우 (S자 곡선)', unit: 'cm²', textbook: false,
-      stem: (V) => `오른쪽 그림은 반지름의 길이가 ${V.R} cm인 원의 지름 위에 반지름이 ${V.R / 2} cm인 반원 두 개를 그린 것이다. 색칠한 부분의 넓이는?`,
+      stem: (V) => `그림은 반지름의 길이가 ${V.R} cm인 원의 지름 위에 반지름이 ${V.R / 2} cm인 반원 두 개를 그린 것이다. 색칠한 부분의 넓이는?`,
       choices: (V) => { const R2 = V.R * V.R; return ascending(X(0, Q(R2, 2)), [X(0, Q(R2, 4)), X(0, R2), X(0, Q(3 * R2, 4)), X(0, Q(3 * R2, 2))], X(0, Q(R2, 8))); },
       hint: () => '오른쪽 아래의 작은 반원을 큰 원의 중심을 기준으로 180° 돌려 파인 곳에 끼워 보세요.',
       std: (V, M) => `<b>해결 전략</b> 오른쪽 아래의 작은 반원을 큰 원의 중심을 기준으로 180° 돌려 왼쪽의 파인 곳에 끼우면 색칠한 부분은 큰 반원이 된다.<br>(넓이) $=\\dfrac12\\times\\pi\\times${V.R}^2=${xt(M.resX)}$ (cm²)`,
@@ -809,7 +809,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '일부분을 옮기는 경우 (정사각형 속 원)', unit: 'cm²', textbook: false,
-      stem: (V) => `오른쪽 그림과 같이 한 변의 길이가 ${2 * V.r} cm인 정사각형에 원이 꼭 맞게 들어 있다. 색칠한 부분의 넓이는?`,
+      stem: (V) => `그림과 같이 한 변의 길이가 ${2 * V.r} cm인 정사각형에 원이 꼭 맞게 들어 있다. 색칠한 부분의 넓이는?`,
       choices: (V) => { const r2 = V.r * V.r; return ascending(X(2 * r2), [X(4 * r2, -r2), X(0, r2), X(4 * r2), X(0, 2 * r2)], X(r2)); },
       hint: () => '원의 오른쪽 반원을 중심을 기준으로 180° 돌려 왼쪽의 빈 반원 자리에 끼워 보세요.',
       std: (V) => `<b>해결 전략</b> 원의 오른쪽 반원을 원의 중심을 기준으로 180° 돌려 왼쪽의 빈 반원 자리에 끼우면 색칠한 부분은 정사각형의 왼쪽 절반이 된다.<br>(넓이) $=${V.r}\\times${2 * V.r}=${2 * V.r * V.r}$ (cm²)`,
@@ -863,7 +863,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
     },
     problem: {
       tag: '일부분을 옮기는 경우 (부채꼴 고리)', unit: 'cm²', textbook: false,
-      stem: (V) => `오른쪽 그림에서 두 부분의 중심각은 모두 ${V.th}°이고, 큰 부채꼴의 반지름은 ${V.R} cm, 작은 부채꼴의 반지름은 ${V.r} cm이다. 색칠한 부분의 넓이는?`,
+      stem: (V) => `그림에서 두 부분의 중심각은 모두 ${V.th}°이고, 큰 부채꼴의 반지름은 ${V.R} cm, 작은 부채꼴의 반지름은 ${V.r} cm이다. 색칠한 부분의 넓이는?`,
       choices: (V) => {
         const A = X(0, Q(V.R * V.R * V.th, 360));
         return ascending(A, [X(0, Q(V.R * V.R * V.th, 720)), X(0, Q(V.R * V.R * V.th, 180)), X(0, V.R * V.R), X(0, Q((V.R * V.R + V.r * V.r) * V.th, 360))], X(0, Q(1, 2)));
