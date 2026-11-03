@@ -32,7 +32,7 @@
     const [n, d] = rat(x);
     if (d === 0) return String(+x.toFixed(2));
     if (d === 1) return String(n);
-    if (decOK(d)) return String(+(n / d).toFixed(4));
+    // 소수로 떨어지는 값(1.9, 0.5 …)도 소수로 쓰지 않고 분수로 쓴다(중1 π 꼴 표기 원칙)
     return tex ? `\\frac{${n}}{${d}}` : `${n}/${d}`;
   }
   function piS(x) { // 캔버스·일반 글자용: 13π/2
@@ -901,18 +901,35 @@
     }
   });
 
+  // 11-03: 한 칸(360°÷비의 합)과 모든 각이 정수°가 되도록 비의 합이 360의 약수인 조합만 허용합니다(소수 각도 금지).
+  // 학생이 막대를 끌면 끈 막대를 가장 가까운 허용 값으로 맞추고, 주소 복원처럼 다른 경로로 들어온 값은 c, b, a 순으로 맞춥니다.
+  const ratioOK = (a, b, c) => 360 % (a + b + c) === 0;
+  function fixRatio(q, key) {
+    const ks = key ? [key] : ['c', 'b', 'a'];
+    for (const k of ks) {
+      if (ratioOK(q.a, q.b, q.c)) return;
+      const cur = q[k];
+      let best = null;
+      for (let v = 1; v <= 9; v++) {
+        const o = { a: q.a, b: q.b, c: q.c }; o[k] = v;
+        if (!ratioOK(o.a, o.b, o.c)) continue;
+        if (best == null || Math.abs(v - cur) < Math.abs(best - cur)) best = v;
+      }
+      if (best != null) q[k] = best;
+    }
+  }
   const angD = (x) => { const [n, d] = rat(x); return d !== 0 && !decOK(d) ? String(+x.toFixed(1)) : num(x); };
 
   /* ---------- 11-03 호의 길이의 비 AB : BC : CA = 3 : 5 : 7 → ∠AOB ---------- */
   build({
     id: '1103', title: '호의 길이의 비로 중심각 구하기', short: '호의 길이의 비',
     question: '원을 호의 길이의 비 3 : 5 : 7 로 나누면, 각 호에 대한 중심각은 얼마일까?',
-    guide: '막대로 <b>호의 비</b>를 바꿔 보세요. 원을 비의 합만큼 똑같이 나눈 <b>한 칸</b>이 중심각 몇 도인지 눈금으로 확인합니다.',
+    guide: '막대로 <b>호의 비</b>를 바꿔 보세요. 원을 비의 합만큼 똑같이 나눈 <b>한 칸</b>이 중심각 몇 도인지 눈금으로 확인합니다. (각이 정수로 떨어지도록 비의 합이 360의 약수가 되는 값만 골라져요.)',
     box: { x: [-130, 130], y: [-130, 130] },
     params: {
-      a: { value: 3, min: 1, max: 9, step: 1, color: 'rose', label: '호 AB의 비', format: (v) => String(v) },
-      b: { value: 5, min: 1, max: 9, step: 1, color: 'sky', label: '호 BC의 비', format: (v) => String(v) },
-      c: { value: 7, min: 1, max: 9, step: 1, color: 'sky', label: '호 CA의 비', format: (v) => String(v) }
+      a: { value: 3, min: 1, max: 9, step: 1, color: 'rose', label: '호 AB의 비', format: (v) => String(v), onInput: (q) => fixRatio(q, 'a') },
+      b: { value: 5, min: 1, max: 9, step: 1, color: 'sky', label: '호 BC의 비', format: (v) => String(v), onInput: (q) => fixRatio(q, 'b') },
+      c: { value: 7, min: 1, max: 9, step: 1, color: 'sky', label: '호 CA의 비', format: (v) => String(v), onInput: (q) => fixRatio(q, 'c') }
     },
     controls: ['a', 'b', 'c'],
     presets: [
@@ -922,10 +939,12 @@
       { label: '3 : 4 : 5', apply: (q) => { q.a = 3; q.b = 4; q.c = 5; }, on: (q) => q.a === 3 && q.b === 4 && q.c === 5 }
     ],
     steps: (q) => {
+      fixRatio(q);
       const tot = q.a + q.b + q.c, u = 360 / tot;
       return [`① 원 전체를 ${q.a}+${q.b}+${q.c} = ${tot} 칸으로 나눈다 (한 칸 = 360° ÷ ${tot} = ${angD(u)}°)`, `② ∠AOB = ${angD(u)}° × ${q.a} = ${angD(u * q.a)}°`];
     },
     work: (q) => {
+      fixRatio(q);
       const tot = q.a + q.b + q.c, u = 360 / tot;
       return [
         `호의 길이의 비가 $${q.a}:${q.b}:${q.c}$ 이므로 중심각의 비도 같습니다. 전체 $${q.a}+${q.b}+${q.c}=${tot}$ 칸, 한 칸 $=360^\\circ\\div${tot}=${num(u, true)}^\\circ$`,
@@ -933,6 +952,7 @@
       ];
     },
     chips: (q, mode, step) => {
+      fixRatio(q);
       const tot = q.a + q.b + q.c, u = 360 / tot;
       if (mode === 'review' && step === 1) return [{ k: '한 칸', tex: `\\frac{360^\\circ}{${tot}}=${num(u, true)}^\\circ`, color: 'green' }];
       if (mode === 'review') return [{ k: '답', tex: `\\angle AOB=360^\\circ\\times\\frac{${q.a}}{${tot}}=${num(u * q.a, true)}^\\circ`, color: 'rose' }];
@@ -940,9 +960,9 @@
     },
     rule: (q) => (q.step >= 2 ? '한 원에서 호의 길이의 비 = 중심각의 비 → 360° × (비 ÷ 비의 합)' : null),
     view: (q) => {
+      fixRatio(q);
       const tot = q.a + q.b + q.c, u = 360 / tot;
       return {
-        alert: 360 % tot === 0 ? null : { tone: 'info', text: `비의 합 ${tot}은 360의 약수가 아니라서 각이 소수로 나옵니다(근삿값). 합이 6, 8, 9, 10, 12, 15, 18, 20, 24 가 되게 맞추면 깔끔해요.` },
         readouts: [
           rd('호의 비  AB : BC : CA', `${q.a} : ${q.b} : ${q.c}`, 'violet', `합 ${tot}`),
           rd('한 칸의 중심각', angD(u) + '°', 'green', `360° ÷ ${tot}`),
@@ -953,11 +973,13 @@
       };
     },
     problem: (q) => {
+      fixRatio(q);
       const tot = q.a + q.b + q.c, u = 360 / tot;
       const c = mkChoices(u * q.a, 3, 0, (v) => angD(v) + '°');
       return { text: qHtml(`오른쪽 그림의 원 O에서 $\\widehat{AB}:\\widehat{BC}:\\widehat{CA}=${q.a}:${q.b}:${q.c}$일 때, $\\angle AOB$의 크기는?`, c.items), answer: ansOf(c) };
     },
     draw(g, q, mode, step) {
+      fixRatio(q);
       const O = [0, 0], R = 100, tot = q.a + q.b + q.c, u = 360 / tot;
       g.reserve([-R - 14, -R - 14], [R + 14, R + 14]);
       const A0 = 125, B0 = A0 + u * q.a, C0 = B0 + u * q.b, E0 = A0 + 360;
