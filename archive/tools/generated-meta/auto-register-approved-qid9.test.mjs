@@ -204,6 +204,22 @@ test('a changed or missing crosswalk row that the Meta names keeps the record fa
   assert.equal(drift(g,{crosswalkRecords:changed}).reason,'RPM_ROW_RPML3_CHANGED');
 });
 
+test('a digest sealed only in the append-only registry is accepted for that crosswalk file and refused for another',async()=>{
+  const os=await import('node:os');const sealed=(await import('../sealed-crosswalk-digests.cjs')).default;
+  const fx=driftFixture('ALITE-PALMA25-2MID-Q17-A1');
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'auto-register-seal-'));
+  try{
+    const pinned=fx.existingRow.meta[fx.field];
+    assert.equal(drift({...fx},{root:dir}).reason,'PINNED_DIGEST_NOT_SEALED','nothing sealed in an empty root');
+    const gitBlobSha1='a'.repeat(40),base={gitBlobSha1,sealedAt:'2026-11-03T00:00:00.000Z',sealedBy:'test',reason:'test'};
+    fs.mkdirSync(path.join(dir,path.dirname(sealed.REGISTRY_REL)),{recursive:true});
+    fs.writeFileSync(path.join(dir,sealed.REGISTRY_REL),sealed.serializeRegistry([{...base,path:'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json',sha256:pinned}]));
+    assert.equal(drift({...fx},{root:dir}).reason,'PINNED_DIGEST_NOT_SEALED','sealed for another file does not count');
+    fs.writeFileSync(path.join(dir,sealed.REGISTRY_REL),sealed.serializeRegistry([{...base,path:CROS,sha256:pinned}]));
+    assert.deepEqual(drift({...fx},{root:dir}),{ok:true,reason:'SEALED_CROSSWALK_DIGEST_ONLY_DRIFT'});
+  }finally{fs.rmSync(dir,{recursive:true,force:true});}
+});
+
 test('a pinned digest that no sealed receipt recorded, or any other Meta difference, is still refused',()=>{
   const fx=driftFixture('ALITE-PALMA25-2MID-Q17-A1');
   const unsealed=structuredClone(fx.existingRow);unsealed.meta[fx.field]='d'.repeat(64);unsealed.metaFinalSha256=metaSha256(unsealed.meta);

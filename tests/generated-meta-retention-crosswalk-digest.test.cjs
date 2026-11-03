@@ -50,7 +50,9 @@ const sealed = () => [...sealedCrosswalkDigests(root, CROSSWALK)][0];
 
 test('the sealed receipts record the digest that approved Meta still pins, for the crosswalk file only', () => {
   assert.match(sealed(), /^[a-f0-9]{64}$/);
-  assert.equal(sealedCrosswalkDigests(root, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json').size, 0);
+  // a digest sealed for one crosswalk file is never accepted for another (the registry also seals each file's own current digest)
+  assert.equal(sealedCrosswalkDigests(root, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json').has(sealed()), false);
+  assert.equal(crosswalkDigestAccepted(root, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json', sealed(), 'b'.repeat(64)), false);
   assert.equal(crosswalkDigestAccepted(root, CROSSWALK, sealed(), 'b'.repeat(64)), true);
   assert.equal(crosswalkDigestAccepted(root, CROSSWALK, 'c'.repeat(64), 'b'.repeat(64)), false);
   assert.equal(crosswalkDigestAccepted(root, CROSSWALK, 'not-a-digest', 'b'.repeat(64)), false);

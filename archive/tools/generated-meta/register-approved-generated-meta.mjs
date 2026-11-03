@@ -6,6 +6,7 @@ import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import { pathToFileURL } from 'node:url';
 import gate from '../generated-meta-retention-gate.cjs';
+import sealedCrosswalk from '../sealed-crosswalk-digests.cjs';
 
 const ROOT_PREFIXES = ['archive/', 'alive/'];
 const HEX64 = /^[a-f0-9]{64}$/i;
@@ -161,10 +162,12 @@ function atomicReplace(files, beforeReplace) {
     try { lockFd = fs.openSync(lock, 'wx'); }
     catch { throw new Error('REGISTRATION_LOCK_BUSY'); }
     for (const entry of files) {
-      if (sha256Bytes(fs.readFileSync(entry.file)) !== entry.expectedSha256) throw new Error(`${entry.label.toUpperCase()}_CAS_CONFLICT`);
+      // A file that did not exist when planned (expectedSha256 === null) must still not exist.
+      if (entry.expectedSha256 === null ? fs.existsSync(entry.file) : sha256Bytes(fs.readFileSync(entry.file)) !== entry.expectedSha256) throw new Error(`${entry.label.toUpperCase()}_CAS_CONFLICT`);
     }
     for (const entry of files) {
       const temp = `${entry.file}.tmp-${nonce}`;
+      fs.mkdirSync(path.dirname(entry.file), { recursive: true });
       const fd = fs.openSync(temp, 'wx');
       try { fs.writeFileSync(fd, entry.after); fs.fsyncSync(fd); }
       finally { fs.closeSync(fd); }
@@ -179,7 +182,7 @@ function atomicReplace(files, beforeReplace) {
   } catch (error) {
     const rollbackErrors = [];
     for (const entry of replaced.reverse()) {
-      try { fs.writeFileSync(entry.file, entry.before); } catch (rollbackError) { rollbackErrors.push(`${entry.file}:${rollbackError.message}`); }
+      try { if (entry.before === null) fs.rmSync(entry.file, { force: true }); else fs.writeFileSync(entry.file, entry.before); } catch (rollbackError) { rollbackErrors.push(`${entry.file}:${rollbackError.message}`); }
     }
     if (rollbackErrors.length) throw new Error(`REGISTRATION_ROLLBACK_FAILED:${rollbackErrors.join('|')};cause=${error.message}`);
     throw new Error(`REGISTRATION_WRITE_ROLLED_BACK:${error.message}`);
@@ -216,6 +219,12 @@ export function registerApprovedGeneratedMeta({ root, uid, meta, reviewEvidence,
   const authorityValidation = validateAuthorityBinding(root, meta, sourceQuestion, uid);
   if (authorityValidation.issues.length) throw new Error(`META_AUTHORITY_INVALID:${authorityValidation.issues.join('|')}`);
   const parentRecord = authorityValidation.primaryRecord;
+  // Seal the crosswalk bytes the authority check just read, in the same atomic write as the Meta that pins its digest
+  // (append-only registry, idempotent). Without the seal the next append to the shared crosswalk would block this item.
+  const crosswalkSeal = sealedCrosswalk.planSeal(root, {
+    path: authorityValidation.crosswalk.path, bytes: authorityValidation.crosswalk.bytes,
+    sealedBy: 'register-approved-generated-meta.mjs', reason: `registration: ${uid}`, now: options.now
+  });
   const taxonomyIssues = validateMetaTaxonomyBindings(root, meta, parentRecord, uid);
   if (taxonomyIssues.length) throw new Error(`META_TAXONOMY_INVALID:${taxonomyIssues.join('|')}`);
   const sourceHadUid = sourceQuestion.uid === uid;
@@ -357,8 +366,9 @@ export function registerApprovedGeneratedMeta({ root, uid, meta, reviewEvidence,
     { ...targets.consumerShard, label: 'CONSUMER_SHARD', expectedSha256: expectedSha256.consumerShard.toLowerCase(), after: newConsumerBytes },
     { ...targets.consumerIndex, label: 'CONSUMER_INDEX', expectedSha256: expectedSha256.consumerIndex.toLowerCase(), after: newIndexBytes }
   ];
+  if (crosswalkSeal.changed) writes.unshift({ file: crosswalkSeal.file, before: crosswalkSeal.before, label: 'CROSSWALK_SEAL_REGISTRY', expectedSha256: crosswalkSeal.before ? sha256Bytes(crosswalkSeal.before) : null, after: crosswalkSeal.after });
   atomicReplace(writes, options.beforeReplace);
-  return { status: 'REGISTERED', uid, metaFinalSha256: digest, reviewEvidence: evidence, sourceShardGitBlobSha: newSourceBlob, consumerShardGitBlobSha: newConsumerBlob };
+  return { status: 'REGISTERED', uid, crosswalkSeal: { path: crosswalkSeal.entry.path, sha256: crosswalkSeal.entry.sha256, appended: crosswalkSeal.changed }, metaFinalSha256: digest, reviewEvidence: evidence, sourceShardGitBlobSha: newSourceBlob, consumerShardGitBlobSha: newConsumerBlob };
 }
 
 export function withdrawGeneratedUid({ root, uid, reason, withdrawalEvidence, paths, expectedSha256 }, options = {}) {
