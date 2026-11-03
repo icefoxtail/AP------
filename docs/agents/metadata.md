@@ -7,6 +7,12 @@
 
 - 신규 기출 CREATE/R1/R2/R3에서 Primary RPM L1~L4 + CrossConcept/Condition/Integration을 교육과정 내 실제 풀이로 판정하고, PT/TPL은 [단일 진입·Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)의 공식 명령/ACTIVE 바인딩으로만 투영한다. 작업자가 PT/TPL을 자유 추정하거나 CrossConcept으로 Primary를 대체하지 않는다. 모델 공통 규칙이며 사후 FINAL QA의 기존 PT/TPL 재검 제외·예약 Git writer 금지/현재 캠페인 설정은 유지한다.
 
+## CURRENT — 문항 4칸·용어 사전 (2026-11-03, 사용자 결정)
+
+- 문항의 4칸(given·goal·method·condition × 용어 번호) 기록을 만들거나 검사할 때는 [4칸·용어 사전 계약](../architecture/JS_Archive_Item_4Slot_Term_Contract_CURRENT_v1.md)을 먼저 읽는다.
+- 4칸은 문항의 발문과 해설을 읽고 판정한다. PT/TPL/CC/COND 키나 라벨을 보고 치환해 채우지 않는다.
+- 아직 운영 메타(`question_metadata.json`)·등록기·catalog·검색 화면과 연결하지 않았고 기존 승인·출제 자격에 영향이 없다. 이유: 시범 결과는 좋지만 통합은 장애 주입과 PC·휴대폰 실제 확인을 거쳐 따로 승인받기로 했다.
+
 ## CURRENT — PT·TPL·CrossConcept·Condition·크로스워크 행 확장 원칙 (2026-11-02, 사용자 결정)
 
 사용자 결정 취지: "맞는 키가 없으면 새로 만들어도 된다. PT·TPL·CrossConcept 등은 언제나 확장 가능하고, 나중에 같은 형태의 문제가 나오면 거기에 붙이면 된다. 문항은 계속 생성되고 형태가 다양하니 유연하게 만들고 문서화하라."
