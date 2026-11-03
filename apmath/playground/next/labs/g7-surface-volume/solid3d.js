@@ -708,7 +708,8 @@
     // 반지름: 입체에서도 펼친 모습에서도 같은 방향(오른쪽 앞)
     const rB = circR(kb, A, c0);
     D.radius(c0, D.rimPick(c0, A.map((p) => at(kb, p))), `반지름 ${r2}`, { dash: !tp[kb].front, end: true });
-    if (!cone) D.radius(c1, D.rimPick(c1, B.map((p) => at(kt, p))), `반지름 ${r1}`, { dash: !tp[kt].front, end: true });
+    const r1pxAll = cone ? 0 : circR(kt, B, c1), smallTop = !cone && r1pxAll < 46;
+    if (!cone) D.radius(c1, D.rimPick(c1, B.map((p) => at(kt, p)), smallTop && e > 0.6 ? { x: -0.82, y: -0.57 } : undefined), `반지름 ${r1}`, { dash: !tp[kt].front, end: true });
     // 입체: 모서리 모선 + 높이
     if (solidA > 0.02) {
       let kl = 0, bx = 1e9;
@@ -731,11 +732,12 @@
         const kq = 27;
         D.edgeLab(at(kq, A[kq]), at(kq, A[(kq + 1) % N]), `${cone ? '호의 길이' : (D.narrow ? '큰 호' : '큰 호의 길이')} ${V0.arcBig}`, { from: apexF, color: BIG, alpha: flatA });
         D.areaLab(c0, cone ? '밑넓이' : '아랫면', V0.bot, { dx: -0.4 * rB, dy: -0.04 * rB, maxW: rB * 1.05, alpha: flatA });
-        const kr = 18, pa = px(at(kr, mid3(A[kr], A[(kr + 1) % N]))), pbb = px(at(kr, mid3(B[kr], B[(kr + 1) % N]))), bandPx = Math.hypot(pa.x - pbb.x, pa.y - pbb.y);
-        D.areaLab(cone ? lerp3(at(18, B[0]), mid3(at(18, A[18]), at(18, A[19])), 0.3) : mid3(at(kr, mid3(A[kr], A[(kr + 1) % N])), at(kr, mid3(B[kr], B[(kr + 1) % N]))), '옆넓이', V0.ring, { alpha: flatA });
+        const bandAt = (kk) => { const qa = px(at(kk, mid3(A[kk], A[(kk + 1) % N]))), qb = px(at(kk, mid3(B[kk], B[(kk + 1) % N]))); return Math.hypot(qa.x - qb.x, qa.y - qb.y); };
+        const thin = !cone && bandAt(18) < 50, kr = thin ? 27 : 18, bandPx = bandAt(kr);
+        D.areaLab(cone ? lerp3(at(18, B[0]), mid3(at(18, A[18]), at(18, A[19])), 0.3) : mid3(at(kr, mid3(A[kr], A[(kr + 1) % N])), at(kr, mid3(B[kr], B[(kr + 1) % N]))), thin ? '' : '옆넓이', V0.ring, { alpha: flatA, size: thin ? 13 : 15 });
         if (!cone) {
           const c1p = px(c1), r1p = circR(kt, B, c1);
-          D.areaLab(c1, '윗면', V0.top, { dx: -0.4 * r1p, dy: -0.04 * r1p, maxW: r1p * 1.05, alpha: flatA });
+          D.areaLab(c1, '윗면', V0.top, { dx: (smallTop ? 0.3 : -0.4) * r1p, dy: -0.04 * r1p, maxW: r1p * 1.05, alpha: flatA });
         }
         // 합: 겉넓이 = 옆넓이 + 밑넓이
         if (V0.tot) {
@@ -748,7 +750,15 @@
         }
       }
       // 점선: 잘라 낸 작은 부채꼴(원뿔대) / 강조 단계의 부채꼴
-      if (!cone && !o.review) b.path(sectorPts(inner), { close: true, color: 'muted', width: 1.8, dash: [5, 4], alpha: 0.7 * flatA });
+      if (!cone && !o.review) {
+        const cf = D.P(c1), rf = Math.hypot(D.P(at(kt, B[0])).x - cf.x, D.P(at(kt, B[0])).y - cf.y), a0 = D.P(apexF);
+        [inner[0], inner[inner.length - 1]].forEach((q3) => {
+          const q = D.P(q3), dx = q.x - a0.x, dy = q.y - a0.y, fx = a0.x - cf.x, fy = a0.y - cf.y, A2 = dx * dx + dy * dy, B2 = 2 * (fx * dx + fy * dy), C2 = fx * fx + fy * fy - rf * rf, disc = B2 * B2 - 4 * A2 * C2;
+          const pts = (u0, u1) => [{ x: a0.x + dx * u0, y: a0.y + dy * u0 }, { x: a0.x + dx * u1, y: a0.y + dy * u1 }];
+          if (disc > 0) { const t0 = (-B2 - Math.sqrt(disc)) / (2 * A2), t1 = (-B2 + Math.sqrt(disc)) / (2 * A2); if (t0 > 0) b.path(pts(0, Math.min(1, t0)), { color: 'muted', width: 1.8, dash: [5, 4], alpha: 0.7 * flatA }); if (t1 < 1) b.path(pts(Math.max(0, t1), 1), { color: 'muted', width: 1.8, dash: [5, 4], alpha: 0.7 * flatA }); }
+          else b.path(pts(0, 1), { color: 'muted', width: 1.8, dash: [5, 4], alpha: 0.7 * flatA });
+        });
+      }
       if (hl.big) b.path(sectorPts(outer), { close: true, fill: 'amber', fillAlpha: 0.2 * flatA, color: 'amber', width: 2.4, dash: [6, 5], alpha: flatA });
       if (hl.small && !cone) b.path(sectorPts(inner), { close: true, fill: SMALL, fillAlpha: 0.25 * flatA, color: SMALL, width: 2.4, alpha: flatA });
     }

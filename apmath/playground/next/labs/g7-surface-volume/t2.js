@@ -446,14 +446,16 @@
           if (!pyr) D.dim(at(f1, B[1]), at(f1, B[2]), `윗변 ${M.a1}`, { from: cen, off: 16, color: SMALL });
           // 옆면의 높이: 점선 + 직각 표시
           const bm = mid3(at(fr, A[0]), at(fr, A[1])), tm = pyr ? at(fr, B[0]) : mid3(at(fr, B[0]), at(fr, B[1]));
-          D.height(bm, tm, `옆면의 높이 ${M.lf}`, { a: unit3(sub3(at(fr, A[1]), at(fr, A[0]))), side: { x: 1, y: 0 }, size: 14, alongFrac: -0.35 });
+          const hpxEarly = Math.hypot(px(bm).x - px(tm).x, px(bm).y - px(tm).y);
+          D.height(bm, tm, hpxEarly < 50 ? '' : `옆면의 높이 ${M.lf}`, { a: unit3(sub3(at(fr, A[1]), at(fr, A[0]))), side: { x: 1, y: 0 }, size: 14, alongFrac: -0.35 });
           if (C.problem) return;
           // 면마다 넓이 이름표
+          const hpx = Math.hypot(px(bm).x - px(tm).x, px(bm).y - px(tm).y), thinF = hpx < 50;
           sn.lat.forEach((idx, k) => {
             if (dot3(tp[idx].n, vw) < 0.35) return;
             const bmid = mid3(A[k], A[(k + 1) % 4]), tmid = pyr ? B[0] : mid3(B[k], B[(k + 1) % 4]), f = pyr ? 0.34 : 0.5;
             const pl = px(at(idx, lerp3(A[k], pyr ? B[0] : B[k], f))), pr = px(at(idx, lerp3(A[(k + 1) % 4], pyr ? B[0] : B[(k + 1) % 4], f))), wpx = Math.hypot(pl.x - pr.x, pl.y - pr.y);
-            D.areaLab(at(idx, lerp3(bmid, tmid, f)), wpx < 58 ? '' : '옆면', plainVal(eachLat), { maxW: wpx * 0.9, dx: idx === fr ? -0.22 * wpx : 0, size: wpx < 58 ? 13 : 15, color: wpx < 58 ? 'green' : 'ink' });
+            D.areaLab(at(idx, lerp3(bmid, tmid, f)), thinF ? '' : '옆면', plainVal(eachLat), { maxW: wpx * 0.9, dx: idx === fr ? -0.22 * wpx : 0, size: thinF ? 13 : 15, color: thinF ? 'green' : 'ink' });
           });
           [sn.bot, sn.top].forEach((k) => {
             if (k < 0 || !tp[k].front) return;

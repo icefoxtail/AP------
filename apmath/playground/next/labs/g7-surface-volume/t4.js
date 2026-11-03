@@ -19,7 +19,7 @@
     s42J: P('위쪽 반지름', 1, 4, 1, 1, { color: 'amber', hint: '위쪽 반지름은 3의 배수예요(아래 반지름이 15 cm를 넘지 않게 맞춰요)', format: (v) => `${3 * v} cm`, clampTo: (s) => [1, Math.min(4, 5 - Math.round(s.s42K))] }),
     s42K: P('아랫변이 더 긴 정도', 1, 2, 1, 1, { color: 'sky', hint: '아랫변이 윗변보다 3 cm(또는 6 cm) 더 길어요. 높이와 빗변도 함께 커져요', format: (v) => `${3 * v} cm`, clampTo: (s) => [1, Math.min(2, 5 - Math.round(s.s42J))] }),
     s42A: P('원기둥 부분의 길이', 1, 15, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
-    s42T: P('돌리기 · 펼치기', 0, 1, 0.005, 0, { color: 'green', hint: '원뿔대는 앞쪽 절반은 돌리기, 뒤쪽 절반은 겉넓이는 펼치기·부피는 작은 원뿔 빼내기예요', format: (v, s) => ((s && s.svAxis2 !== 'base') ? (v < 0.01 ? '0°' : v < 0.5 ? Math.round(v * 720) + '°' : v > 0.99 ? (s.svMode === 'vol' ? '빠짐' : '전개도') : (s.svMode === 'vol' ? '작은 원뿔을 빼는 중' : '펼치는 중')) : (v < 0.01 ? '0°' : v > 0.99 ? '한 바퀴' : Math.round(v * 360) + '°')) }),
+    s42T: P('돌리기 · 펼치기', 0, 1, 0.005, 0, { color: 'green', hint: '원뿔대는 앞쪽 절반은 돌리기, 뒤쪽 절반은 겉넓이는 펼치기·부피는 작은 원뿔 빼내기예요', format: (v, s) => ((s && (s.svAxis2 !== 'base' || s.svMode !== 'vol')) ? (v < 0.01 ? '0°' : v < 0.5 ? Math.round(v * 720) + '°' : v > 0.99 ? (s.svMode === 'vol' ? '빠짐' : '전개도') : (s.svMode === 'vol' ? '작은 원뿔을 빼는 중' : '펼치는 중')) : (v < 0.01 ? '0°' : v > 0.99 ? '한 바퀴' : Math.round(v * 360) + '°')) }),
     s43T: P('돌리기 · 분해하기', 0, 1, 0.005, 0, { color: 'green', hint: '겉넓이는 앞쪽 절반이 돌리기, 뒤쪽 절반이 펼치기예요. 부피는 뒤쪽 절반에서 두 원뿔이 갈라져요', format: (v, s) => (v < 0.5 ? (v < 0.01 ? '0°' : Math.round(v * 2 * 360) + '°') : (s && s.svMode === 'vol') ? (v > 0.99 ? '분해 완료' : '가로로 분해하는 중') : (v > 0.99 ? '전개도' : '펼치는 중')) }),
     s44H: P('원기둥 부분의 높이', 1, 20, 1, 4, { color: 'amber', format: (v) => v + ' cm' }),
     s44T: P('분해하기 · 펼치기', 0, 1, 0.01, 0, { color: 'green', hint: '원기둥과 원뿔이 오른쪽으로 옮겨지고 반구는 제자리에서 뒤집혀요. 겉넓이는 뒤쪽 절반에서 조각이 전개도로 펼쳐져요', format: (v, s) => (v < 0.02 ? '붙어 있음' : v > 0.98 ? ((s && s.svMode === 'vol') ? '모두 분해' : '전개도') : Math.round(v * 100) + '%') })
@@ -146,6 +146,10 @@
     const draw = (b, s, M, C) => {
       const st = C.step;
       // 높이가 되는 변을 축으로(원뿔대): 앞 절반은 사다리꼴 돌리기, 뒤 절반은 겉넓이 = 전개도(coneNet) · 부피 = 큰 원뿔 − 작은 원뿔 겨냥도(frustumVol)
+      if (M.axis === 'base' && M.mode === 'surf' && !C.problem && (C.review || C.t >= 0.5 || b.thumb)) {
+        compNet(b, s, C, { r: M.hh, R: M.c, H: M.a, nCirc: 1, circNm: '밑면', coneLat: M.coneLat, cylLat: M.cylLat, circTot: M.base, tot: M.surf, hot: { cone: 3, cyl: 2, circ: 2 }, legend: [[{ t: `밑면은 1개만 더해요 (${plainVal(M.base)})`, c: 'sky' }], [{ t: '원뿔과 맞붙은 쪽은 겉에 드러나지 않아서 빼요', c: 'red' }]] });
+        return;
+      }
       if (M.axis === 'leg' && !C.problem && (C.review || C.t >= 0.5 || b.thumb)) {
         const t2 = C.review || b.thumb ? (C.review ? clamp((C.t - 0.5) * 2, 0, 1) : 1) : clamp((C.t - 0.5) * 2, 0, 1);
         if (M.mode === 'vol') {
@@ -156,7 +160,7 @@
         }
         return;
       }
-      const D = scene3(b, s, C), th = C.problem ? 0.25 : C.review ? 1 : M.axis === 'leg' ? Math.min(1, C.t * 2) : C.t;
+      const D = scene3(b, s, C), th = C.problem ? 0.25 : C.review ? 1 : (M.axis === 'leg' || M.mode === 'surf') ? Math.min(1, C.t * 2) : C.t;
       if (M.axis === 'leg') {
         const sc = 4.4 / Math.max(M.h2, 2 * M.r2), r1 = M.r1 * sc, r2 = M.r2 * sc, h = M.h * sc, h2 = M.h2 * sc, h1 = M.h1 * sc, y0 = -h2 / 2;
         const prof = [[0, y0], [r2, y0], [r1, y0 + h], [0, y0 + h]], poly = prof;
@@ -176,7 +180,7 @@
         // 아랫변(긴 변)을 축으로: 반지름 hh 인 원기둥(길이 a) + 원뿔(높이 p)
         const sc = 4.6 / Math.max(M.b, 2 * M.hh), hh = M.hh * sc, a = M.a * sc, bb = M.b * sc, y0 = -bb / 2;
         const prof = [[0, y0], [hh, y0], [hh, y0 + a], [0, y0 + bb]], poly = prof;
-        D.fit(bxc(v3(0, 0, 0), hh, bb / 2), [], { l: 34, r: 34, t: 34, b: 34 });
+        D.fit(bxc(v3(0, 0, 0), hh, bb / 2), [], { l: b.W < 560 ? 70 : 60, r: b.W < 560 ? 100 : 80, t: 34, b: 44 });
         axisLine(D, y0 - 0.5, y0 + bb + 0.5);
         sweepDraw(D, prof, poly, th, { faceStyle: (f) => (C.review && st === 1 && M.mode === 'surf' && f.tag === 'seg0' ? { fill: 'amber', alpha: 0.4 } : C.review && st === 2 && f.tag === 'seg1' ? { fill: 'amber', alpha: 0.34 } : C.review && st === 3 && f.tag === 'seg2' ? { fill: 'amber', alpha: 0.34 } : {}) });
         const pa = (rr, yy) => v3(rr * Math.cos(A0), yy, rr * Math.sin(A0)), o = pa(0, y0), pd = pa(hh, y0), pc = pa(hh, y0 + a), pbb = pa(0, y0 + bb);
@@ -195,7 +199,7 @@
     return {
       id: 'sv4-2', title: '직각사다리꼴 회전', short: '사다리꼴 회전',
       question: '직각사다리꼴을 돌리면 어떤 입체가 될까? 높이가 되는 변을 축으로 할 때와 긴 밑변을 축으로 할 때 어떻게 다를까?',
-      anim: { key: 's42T', dur: 6, label: '돌리기 · 펼치기' }, cam0: { yaw: 28, pitch: 20 }, stepT: (st) => { const lab = window.lab, s0 = lab && lab.s; return s0 && s0.svAxis2 !== 'base' && s0.svMode === 'vol' && st <= 1 ? 0.5 : 1; }, thumbT: 1, problemT: 1,
+      anim: { key: 's42T', dur: 6, label: '돌리기 · 펼치기' }, cam0: { yaw: 28, pitch: 20 }, stepT: (st) => { const lab = window.lab, s0 = lab && lab.s; return s0 && s0.svAxis2 !== 'base' && s0.svMode === 'vol' && st <= 1 ? 0.5 : (s0 && s0.svAxis2 === 'base' && s0.svMode === 'vol' ? 1 : 1); }, thumbT: 1, problemT: 1,
       ctl: (s) => (s.svAxis2 === 'base' ? ['s42A', 's42K', 's42T'] : ['s42J', 's42K', 's42T']),
       presets: () => [{ group: '축으로 하는 변', label: '높이가 되는 변 (원뿔대)', apply: (st) => { st.svAxis2 = 'leg'; }, on: (st) => st.svAxis2 !== 'base' }, { label: '긴 밑변 (원기둥+원뿔)', apply: (st) => { st.svAxis2 = 'base'; }, on: (st) => st.svAxis2 === 'base' }, { group: '구하는 것', label: '겉넓이', apply: (st) => { st.svMode = 'surf'; }, on: (st) => st.svMode !== 'vol' }, { label: '부피', apply: (st) => { st.svMode = 'vol'; }, on: (st) => st.svMode === 'vol' }],
       init: (s) => { s.svAxis2 = 'leg'; s.svMode = 'surf'; s.s42J = 1; s.s42K = 1; s.s42A = 3; s.s42T = 0.5; },
@@ -232,8 +236,8 @@
           `(부피) $=${tx(M.vcyl)}+${tx(M.vcone)}=${tx(M.vol)}\\,\\mathrm{cm}^3$예요.`
         ] : [
           `긴 밑변을 축으로 돌리면 반지름 $${M.hh}$인 원기둥(길이 $${M.a}$)에 원뿔(모선 $${M.c}$)이 붙은 입체예요. 붙은 면은 겉에 드러나지 않아요.`,
-          `원기둥의 한쪽 밑면 $\\pi\\times${M.hh}^2=${tx(M.base)}$ 와 원기둥의 옆면 $2\\pi\\times${M.hh}\\times${M.a}=${tx(M.cylLat)}$예요.`,
-          `원뿔의 옆넓이 $\\pi\\times${M.c}\\times${M.hh}=${tx(M.coneLat)}$예요.`,
+          `전개도에서 원기둥의 한쪽 밑면은 원이에요. $\\pi\\times${M.hh}^2=${tx(M.base)}$ 이고, 옆면은 가로가 밑면의 둘레, 세로가 길이인 직사각형이라 $2\\pi\\times${M.hh}\\times${M.a}=${tx(M.cylLat)}$예요.`,
+          `원뿔의 옆면은 부채꼴이에요. 넓이 $\\pi\\times${M.c}\\times${M.hh}=${tx(M.coneLat)}$예요.`,
           `(겉넓이) $=${tx(M.base)}+${tx(M.cylLat)}+${tx(M.coneLat)}=${tx(M.surf)}\\,\\mathrm{cm}^2$예요.`
         ];
       },
@@ -385,6 +389,46 @@
     };
   }
 
+  /* ================================================================ 조각 줄 전개도(원뿔 옆면 부채꼴 + 원기둥 옆면 직사각형 + 원): sv4-2(긴 밑변이 축)·sv4-4 */
+  function compNet(b, s, C, o) {
+    const D = G.scene3(b, s, C, { yaw: 0, pitch: 0 }), st = C.step, thumb = !!b.thumb, u = C.review || thumb ? 1 : clamp((C.t - 0.5) * 2, 0, 1), e = ease(u), nar = b.W < 560;
+    const { r, R, H, nCirc } = o, th = (360 * r) / R, gap = Math.max(1.4, r * 0.6);
+    const secPts = (a) => { const out = []; for (let i = 0; i <= 48; i++) { const f = -90 - a / 2 + (a * i) / 48; out.push(v3(R * Math.cos(f * DEG), R * Math.sin(f * DEG), 0)); } return out; };
+    const full = secPts(th), ys = full.map((q) => q.y).concat([0]), xs = full.map((q) => q.x).concat([0]);
+    const sec = { w: Math.max(...xs) - Math.min(...xs), x0: (Math.max(...xs) + Math.min(...xs)) / 2, ymin: Math.min(...ys) };
+    const rect = { w: 2 * PI * r }, cg = 0.8, circW = nCirc * 2 * r + (nCirc - 1) * cg;
+    // 두 줄 배치: 위 줄 = 부채꼴 · 원(들), 아래 줄 = 직사각형(가로가 길어서 따로)
+    const W1 = sec.w + gap + circW, rowGap = Math.max(gap, 4.6) + (nar ? 0.6 : 0);
+    const secCx = -W1 / 2 + sec.w / 2, circL = -W1 / 2 + sec.w + gap, yBot = Math.min(sec.ymin, -2 * r) - rowGap;
+    const apex = v3(secCx - sec.x0, 0, 0), arcAt = (a) => secPts(a).map((q) => add3(q, apex));
+    const rx0 = -rect.w / 2, rx1 = rect.w / 2, ry0 = yBot, ry1 = yBot - H;
+    const cs = []; for (let i = 0; i < nCirc; i++) cs.push(v3(circL + r + i * (2 * r + cg), -r, 0));
+    const all = arcAt(th).concat([apex, v3(rx0, ry0, 0), v3(rx1, ry1, 0)]); cs.forEach((c) => { all.push(v3(c.x - r, c.y - r, 0)); all.push(v3(c.x + r, c.y + r, 0)); });
+    D.fit(all, [], { l: nar ? 40 : 50, r: nar ? 76 : 64, t: thumb ? 5 : (nar ? 92 : 96), b: thumb ? 5 : (nar ? 62 : 70) });
+    const hot = (k) => C.review && st === k;
+    D.panel([apex].concat(arcAt(th * e)), hot(o.hot.cone) ? 'amber' : 'violet', hot(o.hot.cone) ? 0.4 : 0.26, 'ink', 2.4);
+    if (e > 0.02) {
+      const w = rect.w * e;
+      D.panel([v3(-w / 2, ry0, 0), v3(w / 2, ry0, 0), v3(w / 2, ry1, 0), v3(-w / 2, ry1, 0)], hot(o.hot.cyl) ? 'amber' : 'green', hot(o.hot.cyl) ? 0.4 : 0.26, 'ink', 2.4);
+      cs.forEach((c) => D.panel(D.circ(c, v3(1, 0, 0), v3(0, 1, 0), r * e, 0, TAU, 72), hot(o.hot.circ) ? 'amber' : 'sky', hot(o.hot.circ) ? 0.4 : 0.26, 'ink', 2.4));
+      if (u > 0.8) D.path(arcAt(th), 'orange', 3.6, {});
+      if (u > 0.8) D.line(v3(rx0, ry0, 0), v3(rx1, ry0, 0), 'orange', 3.6);
+    }
+    if (thumb) return;
+    const flatA = lin01(u, 0.8, 1), arcLen = plainVal(V(0, 2 * r)), kpx = b.k || 40, endL = arcAt(th)[0];
+    D.dim(apex, endL, `모선 ${R}`, { from: v3(apex.x, apex.y - R, 0), off: 20, alpha: flatA });
+    D.areaLab(v3(apex.x, apex.y - R * 0.55, 0), '원뿔 옆넓이', plainVal(o.coneLat), { alpha: flatA, maxW: Math.max(70, R * kpx * 0.9) });
+    const arcs = arcAt(th);
+    D.edgeLab(arcs[24], arcs[25], `호의 길이 ${arcLen}`, { from: apex, color: 'orange', alpha: flatA });
+    D.dim(v3(rx0, ry0, 0), v3(rx1, ry0, 0), `밑면의 둘레 ${arcLen}`, { side: { x: 0, y: -1 }, off: 18, color: 'orange', alpha: flatA });
+    D.dim(v3(rx1, ry0, 0), v3(rx1, ry1, 0), `높이 ${H}`, { side: { x: 1, y: 0 }, off: 18, color: 'amber', alpha: flatA });
+    D.areaLab(v3(0, (ry0 + ry1) / 2, 0), '원기둥 옆넓이', plainVal(o.cylLat), { alpha: flatA, maxW: Math.max(70, rect.w * kpx * 0.9) });
+    const each = plainVal(V(0, r * r));
+    cs.forEach((c) => D.areaLab(c, '원', each, { alpha: flatA }));
+    G.sumRows(D, [[{ t: '겉넓이 = ' }, { t: '원뿔 옆넓이', c: 'violet' }, { t: ' + ' }, { t: '원기둥 옆넓이', c: 'green' }, { t: ' + ' }, { t: o.circNm, c: 'sky' }], [{ t: `= ${plainVal(o.coneLat)} + ${plainVal(o.cylLat)} + ${plainVal(o.circTot)} = ${plainVal(o.tot)}` }]], flatA);
+    G.sumRows(D, o.legend, flatA, true);
+  }
+
   /* ================================================================ sv4-4 복합 (원뿔 + 원기둥 + 반구) */
   const TRI4 = { A: [3, 4, 5], B: [4, 3, 5], C: [6, 8, 10], D: [5, 12, 13] }; // [r, 원뿔의 높이, 모선]
   function sv44() {
@@ -394,45 +438,9 @@
       const vh = V(0, (2 * r * r * r) / 3), vc = V(0, r * r * H), vk = V(0, (r * r * hc) / 3), vol = vadd(vh, vadd(vc, vk));
       return { key, r, hc, R, H, mode, hemi, cylLat, coneLat, surf, vh, vc, vk, vol, ans: mode === 'vol' ? vol : surf };
     };
-    // 겉넓이: 겉에 드러난 세 면을 펼친 조각(부채꼴 · 직사각형 · 반구의 곡면 = 원 2개의 넓이)
-    const drawNet44 = (b, s, M, C) => {
-      const D = G.scene3(b, s, C, { yaw: 0, pitch: 0 }), st = C.step, thumb = !!b.thumb, u = C.review || thumb ? 1 : clamp((C.t - 0.5) * 2, 0, 1), e = ease(u), nar = b.W < 560;
-      const r = M.r, R = M.R, H = M.H, th = (360 * r) / R, rho = r * Math.SQRT2, gap = Math.max(1.4, r * 0.6);
-      const secPts = (a) => { const out = []; for (let i = 0; i <= 48; i++) { const f = -90 - a / 2 + (a * i) / 48; out.push(v3(R * Math.cos(f * DEG), R * Math.sin(f * DEG), 0)); } return out; };
-      const full = secPts(th), ys = full.map((q) => q.y).concat([0]), xs = full.map((q) => q.x).concat([0]);
-      const sec = { w: Math.max(...xs) - Math.min(...xs), x0: (Math.max(...xs) + Math.min(...xs)) / 2, ymax: Math.max(...ys), ymin: Math.min(...ys) };
-      const rect = { w: 2 * PI * r, ymax: 0, ymin: -H }, circ = { w: 2 * rho, ymax: 0, ymin: -2 * rho };
-      // 두 줄 배치: 위 줄 = 부채꼴 · 반구의 곡면(원), 아래 줄 = 직사각형(가로가 길어서 따로)
-      const W1 = sec.w + gap + circ.w, rowGap = Math.max(gap, 3.4) + (nar ? 0.6 : 0);
-      const secCx = -W1 / 2 + sec.w / 2, circCx = -W1 / 2 + sec.w + gap + rho, yBot = Math.min(sec.ymin, -2 * rho) - rowGap;
-      sec.cx = secCx - sec.x0; sec.dy = 0; rect.cx = 0; rect.dy = yBot; circ.cx = circCx; circ.dy = 0;
-      const apex = v3(sec.cx, sec.dy, 0), arcAt = (a) => secPts(a).map((q) => add3(q, apex));
-      const rx0 = rect.cx - rect.w / 2, rx1 = rect.cx + rect.w / 2, ry0 = rect.dy, ry1 = rect.dy - H, cc = v3(circ.cx, circ.dy - rho, 0);
-      const all = arcAt(th).concat([apex, v3(rx0, ry0, 0), v3(rx1, ry1, 0), v3(cc.x - rho, cc.y - rho, 0), v3(cc.x + rho, cc.y + rho, 0)]);
-      D.fit(all, [], { l: nar ? 34 : 50, r: nar ? 34 : 50, t: thumb ? 5 : (nar ? 92 : 96), b: thumb ? 5 : (nar ? 62 : 70) });
-      const hot = (k) => C.review && st === k;
-      D.panel([apex].concat(arcAt(th * e)), hot(1) ? 'amber' : 'violet', hot(1) ? 0.4 : 0.26, 'ink', 2.4);
-      if (e > 0.02) {
-        const w = rect.w * e;
-        D.panel([v3(rect.cx - w / 2, ry0, 0), v3(rect.cx + w / 2, ry0, 0), v3(rect.cx + w / 2, ry1, 0), v3(rect.cx - w / 2, ry1, 0)], hot(2) ? 'amber' : 'green', hot(2) ? 0.4 : 0.26, 'ink', 2.4);
-        D.panel(D.circ(cc, v3(1, 0, 0), v3(0, 1, 0), rho * e, 0, TAU, 72), hot(3) ? 'amber' : 'sky', hot(3) ? 0.4 : 0.26, 'ink', 2.4);
-        if (u > 0.8) D.path(arcAt(th), 'orange', 3.6, {});
-        if (u > 0.8) D.line(v3(rx0, ry0, 0), v3(rx1, ry0, 0), 'orange', 3.6);
-      }
-      if (thumb) return;
-      const flatA = lin01(u, 0.8, 1), arcLen = plainVal(V(0, 2 * r)), kpx = b.k || 40;
-      const endL = arcAt(th)[0];
-      D.dim(apex, endL, `모선 ${R}`, { from: v3(apex.x, apex.y - R, 0), off: 20, alpha: flatA });
-      D.areaLab(v3(apex.x, apex.y - R * 0.55, 0), '원뿔 옆넓이', plainVal(M.coneLat), { alpha: flatA, maxW: Math.max(70, R * kpx * 0.9) });
-      const arcs = arcAt(th), kq = 6;
-      D.edgeLab(arcs[kq], arcs[kq + 1], nar ? `호 ${arcLen}` : `호의 길이 ${arcLen}`, { from: apex, color: 'orange', alpha: flatA });
-      D.dim(v3(rx0, ry0, 0), v3(rx1, ry0, 0), `밑면의 둘레 ${arcLen}`, { side: { x: 0, y: -1 }, off: 18, color: 'orange', alpha: flatA });
-      D.dim(v3(rx1, ry0, 0), v3(rx1, ry1, 0), `높이 ${H}`, { side: { x: 1, y: 0 }, off: 18, color: 'amber', alpha: flatA });
-      D.areaLab(v3(rect.cx, (ry0 + ry1) / 2, 0), '원기둥 옆넓이', plainVal(M.cylLat), { alpha: flatA, maxW: Math.max(70, rect.w * kpx * 0.9) });
-      D.areaLab(cc, '반구의 곡면', plainVal(M.hemi), { alpha: flatA, maxW: Math.max(70, 2 * rho * kpx * 0.8) });
-      G.sumRows(D, [[{ t: '겉넓이 = ' }, { t: '원뿔 옆넓이', c: 'violet' }, { t: ' + ' }, { t: '원기둥 옆넓이', c: 'green' }, { t: ' + ' }, { t: '반구의 곡면', c: 'sky' }], [{ t: `= ${plainVal(M.coneLat)} + ${plainVal(M.cylLat)} + ${plainVal(M.hemi)} = ${plainVal(M.surf)}` }]], flatA);
-      G.sumRows(D, [[{ t: `반구의 곡면 = 반지름 ${r}인 원 2개의 넓이`, c: 'sky' }], [{ t: '맞붙은 면은 겉에 드러나지 않아서 빼요', c: 'red' }]], flatA, true);
-    };
+    // 겉넓이: 겉에 드러난 세 면을 펼친 조각(부채꼴 · 직사각형 · 반구의 곡면 = 반지름 r인 원 2개)
+    const drawNet44 = (b, s, M, C) => compNet(b, s, C, { r: M.r, R: M.R, H: M.H, nCirc: 2, circNm: '반구의 곡면', coneLat: M.coneLat, cylLat: M.cylLat, circTot: M.hemi, tot: M.surf, hot: { cone: 1, cyl: 2, circ: 3 },
+      legend: [[{ t: `반구의 곡면 = 반지름 ${M.r}인 원 ${plainVal(V(0, M.r * M.r))} × 2 = ${plainVal(M.hemi)}`, c: 'sky' }], [{ t: '맞붙은 면은 겉에 드러나지 않아서 빼요', c: 'red' }]] });
     const draw = (b, s, M, C) => {
       if (M.mode === 'surf' && !C.problem && (C.review || C.t >= 0.5 || b.thumb)) return drawNet44(b, s, M, C);
       const sc = 5.4 / (M.r + M.H + M.hc), r = M.r * sc, H = M.H * sc, hc = M.hc * sc, D = scene3(b, s, C), st = C.step;
