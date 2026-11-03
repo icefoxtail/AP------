@@ -267,11 +267,11 @@ test('registration seals the crosswalk digest it pinned in the same write, appen
     assert.equal(result.crosswalkSeal.appended, true);
     const entries = sealedCrosswalk.readRegistryEntries(f.root);
     assert.equal(entries.length, 2);
-    assert.deepEqual(entries[0], old, 'existing entries are never rewritten');
-    assert.equal(entries[1].path, crosswalkRel);
-    assert.equal(entries[1].sha256, sha256Bytes(crosswalkBytes));
-    assert.equal(entries[1].gitBlobSha1, gitBlobSha(crosswalkBytes));
-    assert.equal(entries[1].sealedBy, 'register-approved-generated-meta.mjs');
+    assert.deepEqual(entries.find(row => row.sha256 === old.sha256), old, 'existing entries are never rewritten');
+    const added = entries.find(row => row.sha256 === sha256Bytes(crosswalkBytes));
+    assert.equal(added.path, crosswalkRel);
+    assert.equal(added.gitBlobSha1, gitBlobSha(crosswalkBytes));
+    assert.equal(added.sealedBy, 'register-approved-generated-meta.mjs');
     assert.equal(sealedCrosswalk.crosswalkDigestIsSealed(f.root, crosswalkRel, sha256Bytes(crosswalkBytes)), true);
     assert.equal(sealedCrosswalk.planSeal(f.root, { path: crosswalkRel, bytes: crosswalkBytes, sealedBy: 'x', reason: 'y' }).changed, false);
   } finally { fs.rmSync(f.root, { recursive: true, force: true }); }

@@ -69,7 +69,8 @@ test('registry validation rejects malformed and duplicate entries', () => {
     [{ ...entry(), extra: 1 }, 'UNKNOWN_KEYS']
   ];
   for (const [row, code] of bad) assert.ok(seal.validateRegistryEntries([row]).some(issue => issue.includes(code)), code);
-  assert.ok(seal.validateRegistryEntries([entry(), entry({ sealedAt: '2026-11-04T00:00:00.000Z' })]).some(issue => issue.includes('DUPLICATE_PATH_SHA256')));
+  assert.deepEqual(seal.validateRegistryEntries([entry(), entry({ sealedAt: '2026-11-04T00:00:00.000Z', sealedBy: 'other' })]), [], 'exact duplicates (same path, sha256, blob) are tolerated');
+  assert.ok(seal.validateRegistryEntries([entry(), entry({ gitBlobSha1: 'c'.repeat(40) })]).some(issue => issue.includes('CONFLICTING_GIT_BLOB_SHA1')));
   assert.deepEqual(seal.validateRegistryEntries([entry(), entry({ path: OTHER })]), [], 'same digest for two paths is two distinct entries');
   assert.deepEqual(seal.validateRegistryEntries('nope'), ['ENTRIES_NOT_ARRAY']);
 });
@@ -79,8 +80,8 @@ test('a malformed registry file makes the digest check fail closed instead of si
   try {
     put(dir, seal.REGISTRY_REL, JSON.stringify({ schemaVersion: seal.REGISTRY_SCHEMA, entries: [entry({ sha256: 'zz' })] }));
     assert.throws(() => seal.crosswalkDigestAccepted(dir, CROSSWALK, 'a'.repeat(64), 'b'.repeat(64)), /SEALED_DIGEST_REGISTRY_INVALID/);
-    put(dir, seal.REGISTRY_REL, JSON.stringify({ schemaVersion: seal.REGISTRY_SCHEMA, entries: [entry(), entry()] }));
-    assert.throws(() => seal.crosswalkDigestAccepted(dir, CROSSWALK, 'a'.repeat(64), 'b'.repeat(64)), /DUPLICATE_PATH_SHA256/);
+    put(dir, seal.REGISTRY_REL, JSON.stringify({ schemaVersion: seal.REGISTRY_SCHEMA, entries: [entry(), entry({ gitBlobSha1: 'c'.repeat(40) })] }));
+    assert.throws(() => seal.crosswalkDigestAccepted(dir, CROSSWALK, 'a'.repeat(64), 'b'.repeat(64)), /CONFLICTING_GIT_BLOB_SHA1/);
     put(dir, seal.REGISTRY_REL, '{not json');
     assert.throws(() => seal.crosswalkDigestAccepted(dir, CROSSWALK, 'a'.repeat(64), 'b'.repeat(64)), /SEALED_DIGEST_REGISTRY_INVALID/);
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }
@@ -116,7 +117,8 @@ test('planSeal appends exactly the bytes it was given, idempotently, and refuses
     const second = seal.sealCrosswalkDigest(dir, { path: OTHER, bytes, sealedBy: 'unit-test', reason: 'unit' });
     assert.equal(second.changed, true);
     assert.equal(seal.readRegistryEntries(dir).length, 2, 'same bytes under another path is a separate seal');
-    assert.ok(fs.readFileSync(path.join(dir, seal.REGISTRY_REL)).toString('utf8').startsWith(snapshot.toString('utf8').slice(0, snapshot.length - '\n  ]\n}\n'.length)), 'earlier entries are kept as they were');
+    assert.deepEqual(seal.readRegistryEntries(dir).map(row => row.path), [OTHER, CROSSWALK].sort(), 'entries are kept sorted by (path, sha256)');
+    assert.deepEqual(seal.readRegistryEntries(dir).find(row => row.path === CROSSWALK), written[0], 'earlier entries are kept as they were');
     assert.throws(() => seal.planSeal(dir, { path: 'archive/data/elsewhere/high1.json', bytes, sealedBy: 'x', reason: 'y' }), /PATH_NOT_UNDER_CROSSWALKS/);
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
@@ -192,4 +194,36 @@ test('a sealed digest whose referenced row changed or disappeared still fails th
       assert.ok(!issues.includes('RPM_AUTHORITY_BYTES_MISMATCH') && !issues.some(issue => issue.startsWith('CROSSWALK_DIGEST_NOT_SEALED')), 'the digest itself is sealed; the row check is what fails');
     } finally { fs.rmSync(f.dir, { recursive: true, force: true }); }
   }
+});
+
+test('two branches sealing the same digest merge by textual union, validate, and dedupe to one entry', () => {
+  const dir = tmp();
+  try {
+    const bytes = Buffer.from('{"records":[1]}\n');
+    const base = entry({ sha256: 'a'.repeat(64) });
+    put(dir, seal.REGISTRY_REL, seal.serializeRegistry([base]));
+    const baseBytes = fs.readFileSync(path.join(dir, seal.REGISTRY_REL));
+    const branch = (sealedBy, extra) => {
+      fs.writeFileSync(path.join(dir, seal.REGISTRY_REL), baseBytes);
+      seal.sealCrosswalkDigest(dir, { path: CROSSWALK, bytes, sealedBy, reason: sealedBy, now: new Date(sealedBy === 'branch-a' ? '2026-11-03T01:00:00Z' : '2026-11-03T02:00:00Z') });
+      if (extra) seal.sealCrosswalkDigest(dir, { path: OTHER, bytes: Buffer.from('other\n'), sealedBy, reason: sealedBy });
+      return fs.readFileSync(path.join(dir, seal.REGISTRY_REL), 'utf8');
+    };
+    const a = branch('branch-a', false);
+    const b = branch('branch-b', true);
+    const rows = text => text.split('\n').filter(line => line.startsWith('    {')).map(line => line.trim().replace(/,$/, ''));
+    const union = [...new Set([...rows(a), ...rows(b)])];
+    assert.ok(union.length > new Set([...rows(a)]).size + 1, 'the two branches wrote different lines for the same digest (different sealedAt/sealedBy)');
+    const merged = `{\n  "schemaVersion": "${seal.REGISTRY_SCHEMA}",\n  "entries": [\n    ${union.join(',\n    ')}\n  ]\n}\n`;
+    put(dir, seal.REGISTRY_REL, merged);
+    const entries = seal.readRegistryEntries(dir);
+    assert.deepEqual(seal.validateRegistryEntries(JSON.parse(merged).entries), []);
+    assert.equal(entries.filter(row => row.path === CROSSWALK && row.sha256 === sha(bytes)).length, 1, 'deduped to one entry');
+    assert.equal(entries.length, 3, 'base + shared digest + the other branch\'s extra seal');
+    assert.equal(seal.crosswalkDigestAccepted(dir, CROSSWALK, sha(bytes), 'f'.repeat(64)), true);
+    // the next write rewrites the file deduplicated and sorted
+    seal.sealCrosswalkDigest(dir, { path: OTHER, bytes: Buffer.from('third\n'), sealedBy: 'c', reason: 'c' });
+    assert.equal(seal.parseRegistry(fs.readFileSync(path.join(dir, seal.REGISTRY_REL))).length, 4);
+    assert.equal(fs.readFileSync(path.join(dir, seal.REGISTRY_REL), 'utf8').split('\n').filter(line => line.startsWith('    {')).length, 4);
+  } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });

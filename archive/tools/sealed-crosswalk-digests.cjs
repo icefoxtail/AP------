@@ -46,7 +46,7 @@ function crosswalkPathIssue(rel) {
 function validateRegistryEntries(entries) {
   const issues = [];
   if (!Array.isArray(entries)) return ['ENTRIES_NOT_ARRAY'];
-  const seen = new Set();
+  const seen = new Map();
   entries.forEach((entry, index) => {
     const at = `entries[${index}]`;
     if (!entry || typeof entry !== 'object' || Array.isArray(entry)) { issues.push(`${at}:NOT_OBJECT`); return; }
@@ -60,12 +60,25 @@ function validateRegistryEntries(entries) {
     if (!nonEmptyString(entry.sealedBy)) issues.push(`${at}:SEALED_BY_INVALID`);
     if (!nonEmptyString(entry.reason)) issues.push(`${at}:REASON_INVALID`);
     if (typeof entry.path === 'string' && typeof entry.sha256 === 'string') {
+      // Parallel branches seal the same digest: an exact duplicate (same path, sha256 and blob) is harmless and is
+      // deduplicated on read/write. The same (path, sha256) with a different blob is a conflict.
       const key = `${entry.path}\0${entry.sha256.toLowerCase()}`;
-      if (seen.has(key)) issues.push(`${at}:DUPLICATE_PATH_SHA256`);
-      seen.add(key);
+      if (seen.has(key) && seen.get(key) !== entry.gitBlobSha1) issues.push(`${at}:CONFLICTING_GIT_BLOB_SHA1`);
+      if (!seen.has(key)) seen.set(key, entry.gitBlobSha1);
     }
   });
   return issues;
+}
+
+/** Entries deduplicated by (path, sha256) (first one wins) and sorted by (path, sha256), so parallel appends land apart. */
+function normalizeEntries(entries) {
+  const byKey = new Map();
+  for (const entry of entries) {
+    const key = `${entry.path}\0${entry.sha256.toLowerCase()}`;
+    if (!byKey.has(key)) byKey.set(key, entry);
+  }
+  const compare = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
+  return [...byKey.values()].sort((a, b) => compare(a.path, b.path) || compare(a.sha256, b.sha256));
 }
 
 /** Parse and validate registry bytes. Throws SEALED_DIGEST_REGISTRY_INVALID:<issues> when malformed. */
@@ -80,12 +93,12 @@ function parseRegistry(bytes) {
     issues.push(...validateRegistryEntries(doc.entries));
   }
   if (issues.length) throw new Error(`SEALED_DIGEST_REGISTRY_INVALID:${issues.slice(0, 8).join('|')}`);
-  return doc.entries;
+  return normalizeEntries(doc.entries);
 }
 
-/** Deterministic registry bytes: one entry per line so concurrent appends diff and merge line by line. */
+/** Deterministic registry bytes: deduplicated, sorted by (path, sha256), one entry per line so parallel appends merge line by line. */
 function serializeRegistry(entries) {
-  const rows = entries.map(entry => `    ${JSON.stringify(Object.fromEntries(ENTRY_KEYS.map(key => [key, entry[key]])))}`);
+  const rows = normalizeEntries(entries).map(entry => `    ${JSON.stringify(Object.fromEntries(ENTRY_KEYS.map(key => [key, entry[key]])))}`);
   return Buffer.from(`{\n  "schemaVersion": ${JSON.stringify(REGISTRY_SCHEMA)},\n  "appendOnly": true,\n  "entries": [\n${rows.join(',\n')}\n  ]\n}\n`, 'utf8');
 }
 
@@ -183,5 +196,5 @@ function sealCrosswalkDigest(root, options) {
 module.exports = {
   REGISTRY_REL, REGISTRY_SCHEMA, CROSSWALK_DIR, SEALED_RECEIPTS, NOT_SEALED,
   sealedCrosswalkDigests, crosswalkDigestAccepted, crosswalkDigestStatus, crosswalkDigestIsSealed,
-  validateRegistryEntries, parseRegistry, serializeRegistry, readRegistryEntries, planSeal, sealCrosswalkDigest
+  validateRegistryEntries, normalizeEntries, parseRegistry, serializeRegistry, readRegistryEntries, planSeal, sealCrosswalkDigest
 };
