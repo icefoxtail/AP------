@@ -7280,6 +7280,37 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "similar/middle/m1/2mid/25_왕의중_2학기_중간_중1_유사.js",
+      "school": "왕의중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2025,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "M1-04",
+      "rangeStartUnit": "좌표평면과 그래프",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "M1-05",
+      "rangeEndUnit": "기본도형",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-04",
+          "rangeStartUnit": "좌표평면과 그래프",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "M1-05",
+          "rangeEndUnit": "기본도형",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
       "file": "original/high/h2/1final/24_강남여고_1학기_기말_고2_수학I.js",
       "school": "강남여고",
       "topic": "",
