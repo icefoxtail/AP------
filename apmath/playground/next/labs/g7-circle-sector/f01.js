@@ -426,7 +426,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       readouts: [
         { label: o.cap.whole.l, value: st.whole, color: 'ink' },
         { label: o.cap.part.l, value: st.part, color: 'amber' },
-        { label: '색칠한 부분', value: st.res, color: 'sky', wide: true, note: `≈ ${fn(xv(o.resX))} cm²` }
+        { label: '색칠한 부분', value: st.res, color: 'sky', wide: true }
       ],
       guide: guide4(o.tx, st.res),
       formula: `<p><b>색칠한 부분</b> = (전체) − (파낸 부분)</p><p>= ${xs(o.wholeX)} − ${xsp(o.partX)} = <b>${xs(o.resX)}</b> (cm²)</p>`,
@@ -936,7 +936,7 @@ ${q}-note{font-size:var(--fs-xs);color:var(--text-3);margin-top:6px}`;
       const outer = arcP(0, 0, R, 0, 180);
       const Ap = P(-R, 0), Bp = P(R, 0), Cp = P(R * Math.cos(2 * phi), R * Math.sin(2 * phi));
       const wholeX = X(0, Q(ab2, 8)), partX = X(Q(ac * bc, 2)), resX = xsub(wholeX, partX);
-      const abTxt = intAB ? `AB=${Math.round(AB)}` : `AB=√${ab2}≈${fn(AB, 1)}`;
+      const abTxt = intAB ? `AB=${Math.round(AB)}` : `AB=√${ab2}`;
       const fig = [
         { k: 'right', v: [Cp.x, Cp.y], p: [Ap.x, Ap.y], q: [Bp.x, Bp.y], when: 'g', size: 12 },
         T([(Ap.x + Cp.x) / 2, (Ap.y + Cp.y) / 2], `AC=${ac}`, { dx: -4, dy: -14, color: 'ink', when: 'g' }),

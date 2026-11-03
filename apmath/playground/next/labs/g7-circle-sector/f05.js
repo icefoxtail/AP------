@@ -337,7 +337,7 @@
     v.readouts = M.P.map((P, i) => ({
       label: NUM[groupOf[i]] + ' ' + P.name, value: P.text, color: P.color, ref: 'p' + i,
       note: P.kind === 'arc' ? '2π×' + P.rcm + '×' + P.deg + '/360' : (P.why || '선분')
-    })).concat([{ label: '둘레', value: cmText(M.total), color: 'amber', wide: true, note: '≈ ' + valL(M.total).toFixed(2) + ' cm' }]);
+    })).concat([{ label: '둘레', value: cmText(M.total), color: 'amber', wide: true }]);
     if (st.sum) v.status = { tone: 'ok', text: '둘레 = ' + cmText(M.total) };
     else if (st.cur >= 0) v.status = { tone: 'info', text: NUM[st.cur] + ' ' + G[st.cur].name + ' → ' + M.P[G[st.cur].idx[0]].text };
     else v.status = { tone: 'info', text: tab === 'problem' ? '문제의 그림' : '경계 = 호 + 선분' };
@@ -348,7 +348,7 @@
       };
     }
     v.formula = '<p><b>둘레</b> = (호의 길이의 합) + (선분의 길이의 합)</p>' + (D.formula ? D.formula(M, s) : '')
-      + '<p>∴ <b>' + esc(M.sumText) + '</b> ≈ ' + valL(M.total).toFixed(2) + ' cm</p>';
+      + '<p>∴ <b>' + esc(M.sumText) + '</b></p>';
     v.rule = D.rule || '(호의 길이) = 2πr × ($\\dfrac{\\text{중심각}}{360}$), (둘레) = (호의 길이의 합) + (선분의 길이의 합)';
     v.notes = D.notes ? '<ul style="margin:0;padding-left:18px;display:grid;gap:4px">' + D.notes.map((x) => '<li>' + x + '</li>').join('') + '</ul>' : '';
     return v;
@@ -1156,7 +1156,7 @@
       { label: '반지름 r', value: bdCm(r), color: 'ink', note: '원기둥 밑면의 반지름' },
       { label: '직선 부분', value: 2 * r + ' × ' + M.E + ' = ' + M.straight + ' cm', color: SEGC, ref: 'straight', note: '중심 사이 거리 ' + r + '+' + r + ' = ' + 2 * r + ' 가 ' + M.E + '개' },
       { label: '곡선 부분', value: '2π×' + r + ' = ' + 2 * r + 'π cm', color: 'sky', ref: 'curve', note: '중심각의 합 ' + M.degSum + '° → 원 하나의 둘레' },
-      { label: '끈의 길이', value: totalStr, color: 'amber', wide: true, note: '≈ ' + valL(M.total).toFixed(2) + ' cm' },
+      { label: '끈의 길이', value: totalStr, color: 'amber', wide: true },
       { label: '모은 중심각의 합', value: sumNow + '°', color: 'violet', wide: true, note: sumNow >= 360 ? '360° → 원 하나!' : '360°가 되면 원 하나가 돼요' }
     ];
     v.parts = [
@@ -1178,7 +1178,7 @@
     v.formula = '<p><b>끈의 길이</b> = (직선 부분) + (곡선 부분)</p>'
       + '<p>직선 부분 = ' + 2 * r + ' × ' + M.E + ' = <b>' + M.straight + '</b> (cm) <small>중심 사이 거리 ' + r + '+' + r + '가 ' + M.E + '개</small></p>'
       + '<p>곡선 부분 = 2π × ' + r + ' = <b>' + 2 * r + 'π</b> (cm) <small>중심각의 합 ' + M.arcs.map((a) => a.deg + '°').join('+') + ' = ' + M.degSum + '°</small></p>'
-      + '<p>∴ <b>' + totalStr + '</b> ≈ ' + valL(M.total).toFixed(2) + ' cm</p>';
+      + '<p>∴ <b>' + totalStr + '</b></p>';
     v.rule = '(끈의 길이) = (중심을 이은 선분의 길이의 합) + (원 한 개의 둘레 2πr)';
     v.notes = '<ul style="margin:0;padding-left:18px;display:grid;gap:4px">'
       + '<li>곡선 부분을 원마다 2πr로 모두 더하면 안 돼요. 곡선 부분은 <b>조각</b>이라서, 모으면 원 <b>하나</b>(2πr)예요.</li>'

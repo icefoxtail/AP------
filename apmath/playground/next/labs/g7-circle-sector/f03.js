@@ -297,7 +297,7 @@
           rd('정사각형의 한 변 = 반지름', cmF(M.a), 'ink', '호의 반지름'),
           rd('호 ① (중심각 90°)', piP(M.arc) + ' cm', CB, `2π×${M.a}×90/360`, 'arc1'),
           rd('호 ② (중심각 90°)', piP(M.arc) + ' cm', CA, `2π×${M.a}×90/360`, 'arc2'),
-          rd('색칠한 부분의 둘레', piP(M.tot) + ' cm', 'sky', '≈ ' + fmtN(qv(M.tot) * PI) + ' cm', 'leaf', true)
+          rd('색칠한 부분의 둘레', piP(M.tot) + ' cm', 'sky', null, 'leaf', true)
         ],
         status: half ? { tone: 'ok', text: `둘레 = ${piP(M.tot)} cm (반원의 호)` } : { tone: 'info', text: '둘레 = 호 2개' },
         parts: [
@@ -556,7 +556,7 @@
           rd('정삼각형 EBC', 'BE = CE = BC = ' + M.a, CS, '각 60°'),
           rd('부채꼴 ABE (30°)', piP(M.one) + ' cm²', CB, `π×${M.a}²×30/360`, 'h1'),
           rd('부채꼴 DCE (30°)', piP(M.one) + ' cm²', CA, '위와 같아요', 'h2'),
-          rd('색칠한 부분', ans.p + ' cm²', 'sky', '≈ ' + fmtN(ans.v) + ' cm²', 'sh', true)
+          rd('색칠한 부분', ans.p + ' cm²', 'sky', null, 'sh', true)
         ],
         status: { tone: C.t > 0.7 ? 'ok' : 'info', text: C.t > 0.7 ? `색칠한 넓이 = ${ans.p} cm²` : '색칠한 부분 = 정사각형 − 30° 부채꼴 2개' },
         parts: [
@@ -664,7 +664,7 @@
           rd('반원 ' + '하나', piP(M.D) + ' cm²', CA, `½×π×${fmtN(M.h)}²`, 'd1'),
           rd('반원 둘의 합', piP(qm(M.D, [2, 1])) + ' cm²', CB, '큰 사분원과 같아요', 'd2'),
           rd('겹친 부분', M.L.p + ' cm²', CO, '사분원 둘 − 정사각형', 'lens'),
-          rd('색칠한 초승달', M.L.p + ' cm²', 'sky', '≈ ' + fmtN(M.L.v) + ' cm²  (= 겹친 부분)', 'cres', true)
+          rd('색칠한 초승달', M.L.p + ' cm²', 'sky', '= 겹친 부분', 'cres', true)
         ],
         status: { tone: 'info', text: `초승달 = 겹친 부분 = ${M.L.p} cm²` },
         parts: [
@@ -774,7 +774,7 @@
           rd('사분원 하나', piP(M.qd) + ' cm²', CA, `¼×π×${fmtN(M.h)}²`, 'qd'),
           rd('한 칸 (정사각형)', fmtN(M.h * M.h) + ' cm²', CO, `${fmtN(M.h)} × ${fmtN(M.h)}`),
           rd('잎 하나', M.leaf.p + ' cm²', 'sky', '사분원 둘 − 한 칸', 'leaf'),
-          rd('잎 네 개 (색칠한 부분)', M.all.p + ' cm²', 'sky', '≈ ' + fmtN(M.all.v) + ' cm²', 'leaf', true)
+          rd('잎 네 개 (색칠한 부분)', M.all.p + ' cm²', 'sky', null, 'leaf', true)
         ],
         status: { tone: 'info', text: `잎 4개 = ${M.all.p} cm²` },
         parts: [
@@ -1084,7 +1084,7 @@
         readouts: [
           rd('사분원 하나', piP(M.qd) + ' cm²', CA, `¼×π×${M.a}²`, 'q1'),
           rd('정사각형', M.A + ' cm²', 'ink', `${M.a} × ${M.a}`),
-          rd('잎 모양의 넓이', M.leaf.p + ' cm²', 'sky', '≈ ' + fmtN(M.leaf.v) + ' cm²', 'leaf', true)
+          rd('잎 모양의 넓이', M.leaf.p + ' cm²', 'sky', null, 'leaf', true)
         ],
         status: { tone: 'info', text: `잎 = 사분원 2개 − 정사각형 = ${M.leaf.p} cm²` },
         parts: [
