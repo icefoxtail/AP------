@@ -404,7 +404,7 @@ window.questionBank = [
       "$(가)\\ -\\dfrac{a}{b}(x-x_1),\\quad (나)\\ |x_2-x_1|+|y_2-y_1|$"
     ],
     "answer": "④",
-    "solution": "직선 $l:ax+by+c=0$의 기울기는 $-\\dfrac{a}{b}$이다. 이에 수직인 $PH$의 기울기는 $\\dfrac{b}{a}$이므로 (가)에 들어갈 식은 $\\dfrac{b}{a}(x-x_1)$이다.\n또한 두 점 $P$, $H$ 사이의 거리는 $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$이므로 이것이 $(나)$이다.\n따라서 정답은 ④이다.",
+    "solution": "직선 $l:ax+by+c=0$의 기울기는 $-\\dfrac{a}{b}$이다. 이에 수직인 $PH$의 기울기는 $\\dfrac{b}{a}$이므로 (가)에 들어갈 식은 $\\dfrac{b}{a}(x-x_1)$이다.\n또한 두 점 $P$, $H$ 사이의 거리는 $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$이므로 이 거리 공식이 (나)에 들어간다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
