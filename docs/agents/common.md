@@ -3,6 +3,19 @@
 > 2026-10-30 루트 `AGENTS.md`에서 옮긴 원문이다. 문구는 그대로 두고, 링크 경로만 이 폴더 기준으로 고쳤다. 본문 속 백틱 경로는 저장소 루트 기준이다.
 > 이 영역 작업을 시작할 때 읽는다. 공통 규칙과 작업별 안내는 루트 [AGENTS.md](../../AGENTS.md)에 있다. 새 지시는 루트 `AGENTS.md`가 아니라 이 문서에 추가한다.
 
+## CURRENT HARD — 공유 데이터 고정값: 원본 시험지·공유 크로스워크·생성문항 Meta (2026-11-03, 사용자 지시)
+
+Claude·GPT·Codex 모든 라인 공통이다. 상세 원문은 [metadata.md](metadata.md) "공유 크로스워크" CURRENT 절에 있다.
+이유: 2026-11-02~03에 서로 다른 세션의 정상 작업 때문에 main CI와 학생 사이트 배포가 두 번 막혔다. 원본 시험지 해설만 고쳤는데 테스트의 파일 해시 고정값이 깨졌고(#1263), 크로스워크에 행을 추가했더니 승인 생성문항 약 171건의 Meta 해시가 어긋났다(#1264). 지금은 봉인 레지스트리와 행 검사로 고쳐져 있다(#1264·#1266).
+
+1. 공유 크로스워크(`archive/data/meta-foundation/crosswalks`)는 행을 추가만 한다. 기존 행의 수정·삭제·순서 변경은 하지 않는다. 고쳐야 하면 먼저 사용자에게 보고한다. 승인 생성문항은 자기가 쓰는 행이 그대로인지로 검증되기 때문이다.
+2. 생성문항 Meta의 등록·승인은 공식 도구로만 한다(register-approved-generated-meta, auto-register-approved-qid9, backfill-generated-meta, build-generated-meta-browse-aliases). 이 도구들은 그때 읽은 크로스워크 해시를 `archive/data/meta-foundation/crosswalks/sealed-digests.v1.json`에 자동 봉인한다. Meta나 해시 필드(rpmDraftAuthoritySha256, rpmAuthoritySha256)를 손으로 고치지 않는다.
+3. 봉인 레지스트리는 손으로 넓히지 않는다. 실제 파일 버전과 맞지 않는 해시는 넣지 않는다. 병합 때 완전히 같은 항목이 겹치는 것은 정상이다(도구가 합친다). 같은 (path, sha256)에 gitBlobSha1이 다르다는 CONFLICTING_GIT_BLOB_SHA1이 나오면 손대지 않고 보고한다.
+4. CROSSWALK_DIGEST_NOT_SEALED가 나오면 검사를 끄거나 우회하지 않는다. 해당 공식 도구를 `--write`로 다시 돌려 봉인을 만들고 `--check`로 확인한다. EXISTING_APPROVED_UID_REQUIRES_PINPOINT_REPAIR가 나오면 원인을 조사해 보고한다. 승인 영수증(alive/)과 metaFinalSha256은 고치지 않는다.
+5. 원본 시험지 JS(`archive/exams/original`)를 고칠 때는 바뀐 필드(content·answer·choices·solution)를 확인하고, 그 시험지를 고정한 생성문항·테스트 해시가 있는지 grep으로 찾는다(예: `tests/archive2-generated-bank-registration.test.js`). solution만 바뀌었으면 같은 PR에서 고정 해시를 갱신하고 "해설만 수정, 문제·정답·보기 변경 없음" 주석을 단다. content·answer·choices가 바뀌었으면 고정값을 바꾸지 말고 멈춰서 보고한다. 그 문항에서 나온 생성문항을 다시 검토해야 하기 때문이다.
+6. 병합 전에 바꾼 부분의 관련 테스트를 직접 돌리고, PR CI가 전부 녹색인지 확인한다. 특히 "Approved source, scoped Meta, and Consumer validation", "test", "Archive2 runtime contract"를 본다. 빨간 CI로는 병합하지 않는다. 내 변경과 무관한 기존 실패라면 main에서도 실패한다는 근거를 PR에 적고 사용자에게 보고한다. PR을 연 사이 main이 움직였으면 main을 병합해 다시 돌린다(이력 재작성·강제 push 금지).
+7. 보고에는 한 일, 확인 근거(실행한 명령과 결과), 남은 일, 사용자 결정이 필요한 것을 쓴다. 돌리지 않은 검사는 NOT_RUN으로 적는다.
+
 ## CURRENT TOP — 작업별 진입 / 과거 Notion 필독 해제 (2026-10-22)
 
 - **범용으로 'GPT 작업 전 필독 라우터' 900줄과 Archive 생명주기를 매 작업 선열람하는 의무를 폐지한다.** 사용자 지정 범위·역할·현행 exact Git/Notion CURRENT **한 곳과 실물**에서 바로 시작한다. [Notion 공통 행동 규칙](https://app.notion.com/p/3e10e68bd69f81f19397e7cd1c8d3cfd)은 실제 공통 원칙·충돌이 있을 때만 확인하며, [캠페인별 상세 문서](https://app.notion.com/p/4010e68bd69f81b7a445c7c48abe1c05)는 **자기 캠페인 담당자만** 연다.
