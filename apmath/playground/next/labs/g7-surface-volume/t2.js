@@ -365,37 +365,9 @@
         vals: { ring: plainVal(M.latF), top: plainVal(M.top), bot: plainVal(M.bot), arcBig: plainVal(V(0, 2 * M.r2)), arcSmall: plainVal(V(0, 2 * M.r1)), tot: plainVal(M.surf), big: plainVal(M.lat2), small: plainVal(M.lat1) }
       });
     };
-    // 부피: 겨냥도 — 큰 원뿔 − 작은 원뿔(작은 원뿔이 가로로 빠져나감)
+    // 부피: 겨냥도 — 큰 원뿔 − 작은 원뿔(작은 원뿔이 가로로 빠져나감). solid3d.js 의 frustumVol
     const drawVol = (b, s, M, C) => {
-      const sc = 4.8 / Math.max(M.h2, 2.2 * M.r2), r2 = M.r2 * sc, r1 = M.r1 * sc, h2 = M.h2 * sc, h1 = M.h1 * sc, hf = M.hf * sc, st = C.step;
-      const t = C.problem ? 0.62 : C.t, D = scene3(b, s, C), thumb = !!b.thumb;
-      const slide = ease(t) * (r1 * 2.4 + 0.5), sh = D.hx(slide);
-      const yaw = Math.atan2(D.cam.sy, D.cam.cy), thL = PI - yaw, thR = -yaw, pb = (th, rr, y) => v3(rr * Math.cos(th), y, rr * Math.sin(th));
-      const y0 = -h2 / 2, yc = y0 + hf, apexBig = v3(0, y0 + h2, 0), cb = v3(0, y0, 0), ct = v3(0, yc, 0);
-      const frM = revolveMesh([[0, 0], [r2, 0], [r1, hf], [0, hf]], { O: v3(0, y0, 0), N: 44, tags: ['bot', 'side', 'top'] });
-      const smM = G.xfMesh(revolveMesh([[0, 0], [r1, 0], [0, h1]], { O: v3(0, yc, 0), N: 44, tags: ['bot', 'side'] }), shiftT(sh));
-      D.fit([pb(thL, r2, y0), pb(thR, r2, y0), apexBig, add3(pb(thR, r1, yc), sh), add3(pb(thL, r1, yc), sh), add3(v3(0, yc + h1, 0), sh), v3(0, y0, r2), v3(0, y0, -r2)], [], { l: 52, r: 52, t: thumb ? 5 : 84, b: thumb ? 5 : 76 });
-      const rv = C.review, big = rv && st <= 1, sm = rv && st === 2, fr = rv && st >= 3;
-      if (t < 0.98) {
-        D.line(pb(thL, r2, y0), apexBig, 'muted', 1.8, { dash: [5, 4], alpha: 0.7 * (1 - ease(t)) });
-        D.line(pb(thR, r2, y0), apexBig, 'muted', 1.8, { dash: [5, 4], alpha: 0.7 * (1 - ease(t)) });
-      }
-      D.body({ mesh: frM, fill: fr || big ? 'amber' : 'sky', alpha: fr || big ? 0.34 : 0.22, edge: 'ink', edgeW: 2.6, dashBack: () => (slide < 1e-4 ? v3(0, 0, 0) : null), faceStyle: (f) => (f.tag === 'bot' || f.tag === 'top' ? { fill: fr || big ? 'amber' : 'sky', alpha: fr || big ? 0.42 : 0.24 } : {}) });
-      D.body({ mesh: smM, fill: sm || big ? 'amber' : 'violet', alpha: sm || big ? 0.42 : 0.24, edge: 'ink', edgeW: 2.6, dashBack: () => (slide < 1e-4 ? v3(0, 0, 0) : null) });
-      if (thumb) return;
-      // 길이: 반지름은 오른쪽 앞으로, 높이는 점선 + 직각 표시
-      const rf = D.rightFront(35), aBig = 1 - ease(lin01(t, 0, 0.35)), aSm = ease(lin01(t, 0.25, 0.6));
-      D.radius(cb, add3(cb, mul3(rf, r2)), `반지름 ${M.r2}`, { dash: true, end: true });
-      D.radius(add3(ct, sh), add3(add3(ct, sh), mul3(rf, r1)), `반지름 ${M.r1}`, { dash: slide < 1e-3, end: true });
-      D.height(cb, apexBig, `높이 ${M.h2}`, { alpha: aBig, side: { x: 1, y: 0 } });
-      D.height(add3(ct, sh), add3(v3(0, yc + h1, 0), sh), `높이 ${M.h1}`, { alpha: aSm, color: 'violet', side: { x: 1, y: 0 } });
-      if (!C.problem) {
-        const ey = (D.P(v3(0, y0, r2)).y - D.P(cb).y) * (b.k || 40), ey1 = (D.P(v3(0, yc, r1)).y - D.P(ct).y) * (b.k || 40), a3 = ease(lin01(t, 0.55, 0.95));
-        D.areaLab(cb, '큰 원뿔', plainVal(M.v2), { dy: ey + 24 });
-        D.areaLab(add3(ct, sh), '작은 원뿔', plainVal(M.v1), { dy: ey1 + 24, alpha: aSm, color: 'violet' });
-        D.areaLab(v3(0, y0 + hf * 0.4, 0), '원뿔대', plainVal(M.vol), { alpha: a3, maxW: r2 * (b.k || 40) * 1.2, color: 'green' });
-        G.sumRows(D, [[{ t: '원뿔대의 부피 = ' }, { t: '큰 원뿔', c: 'sky' }, { t: ' − ' }, { t: '작은 원뿔', c: 'violet' }], [{ t: '= ' }, { t: plainVal(M.v2), c: 'sky' }, { t: ' − ' }, { t: plainVal(M.v1), c: 'violet' }, { t: ` = ${plainVal(M.vol)}` }]], 1);
-      }
+      G.frustumVol(b, s, C, { r2: M.r2, r1: M.r1, h2: M.h2, h1: M.h1, t: C.problem ? 0.62 : C.t, problem: C.problem, review: C.review, step: C.step, vals: { v2: plainVal(M.v2), v1: plainVal(M.v1), vol: plainVal(M.vol) } });
     };
     const draw = (b, s, M, C) => (M.mode === 'vol' ? drawVol(b, s, M, C) : drawSurf(b, s, M, C));
     return {

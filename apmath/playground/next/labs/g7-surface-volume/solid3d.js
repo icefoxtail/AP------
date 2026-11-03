@@ -754,10 +754,45 @@
     return { D, tp, sn, e };
   }
 
+  /* ------------------------------------------------------------ 원뿔대의 부피 겨냥도: 큰 원뿔 − 작은 원뿔 (작은 원뿔이 가로로 빠져나감)
+     o: { r2, r1, h2(큰 원뿔의 높이), h1(작은 원뿔의 높이), t 빼내기(0~1), problem, review, step, vals:{v2,v1,vol} } */
+  function frustumVol(b, s, C, o) {
+    const sc = 4.8 / Math.max(o.h2, 2.2 * o.r2), r2 = o.r2 * sc, r1 = o.r1 * sc, h2 = o.h2 * sc, h1 = o.h1 * sc, hf = h2 - h1, st = o.step || 0, V0 = o.vals || {};
+    const t = o.t, D = G.scene3(b, s, C), thumb = !!b.thumb;
+    const slide = ease(t) * (r1 * 2.4 + 0.5), sh = D.hx(slide);
+    const yaw = Math.atan2(D.cam.sy, D.cam.cy), thL = PI - yaw, thR = -yaw, pb = (th, rr, y) => v3(rr * Math.cos(th), y, rr * Math.sin(th));
+    const y0 = -h2 / 2, yc = y0 + hf, apexBig = v3(0, y0 + h2, 0), cb = v3(0, y0, 0), ct = v3(0, yc, 0);
+    const frM = revolveMesh([[0, 0], [r2, 0], [r1, hf], [0, hf]], { O: v3(0, y0, 0), N: 44, tags: ['bot', 'side', 'top'] });
+    const smM = xfMesh(revolveMesh([[0, 0], [r1, 0], [0, h1]], { O: v3(0, yc, 0), N: 44, tags: ['bot', 'side'] }), shiftT(sh));
+    D.fit([pb(thL, r2, y0), pb(thR, r2, y0), apexBig, add3(pb(thR, r1, yc), sh), add3(pb(thL, r1, yc), sh), add3(v3(0, yc + h1, 0), sh), v3(0, y0, r2), v3(0, y0, -r2)], [], { l: 52, r: 52, t: thumb ? 5 : (o.problem ? 40 : 84), b: thumb ? 5 : (o.problem ? 52 : 76) });
+    const rv = o.review, big = rv && st <= 1, sm = rv && st === 2, fr = rv && st >= 3;
+    if (t < 0.98) {
+      D.line(pb(thL, r2, y0), apexBig, 'muted', 1.8, { dash: [5, 4], alpha: 0.7 * (1 - ease(t)) });
+      D.line(pb(thR, r2, y0), apexBig, 'muted', 1.8, { dash: [5, 4], alpha: 0.7 * (1 - ease(t)) });
+    }
+    D.body({ mesh: frM, fill: fr || big ? 'amber' : 'sky', alpha: fr || big ? 0.34 : 0.22, edge: 'ink', edgeW: 2.6, dashBack: () => (slide < 1e-4 ? v3(0, 0, 0) : null), faceStyle: (f) => (f.tag === 'bot' || f.tag === 'top' ? { fill: fr || big ? 'amber' : 'sky', alpha: fr || big ? 0.42 : 0.24 } : {}) });
+    D.body({ mesh: smM, fill: sm || big ? 'amber' : 'violet', alpha: sm || big ? 0.42 : 0.24, edge: 'ink', edgeW: 2.6, dashBack: () => (slide < 1e-4 ? v3(0, 0, 0) : null) });
+    if (thumb) return D;
+    // 길이: 반지름은 오른쪽 앞으로, 높이는 점선 + 직각 표시
+    const rf = D.rightFront(35), aBig = 1 - ease(lin01(t, 0, 0.35)), aSm = ease(lin01(t, 0.25, 0.6));
+    D.radius(cb, add3(cb, mul3(rf, r2)), `반지름 ${o.r2}`, { dash: true, end: true });
+    D.radius(add3(ct, sh), add3(add3(ct, sh), mul3(rf, r1)), `반지름 ${o.r1}`, { dash: slide < 1e-3, end: true });
+    D.height(cb, apexBig, `높이 ${o.h2}`, { alpha: aBig, side: { x: 1, y: 0 } });
+    D.height(add3(ct, sh), add3(v3(0, yc + h1, 0), sh), `높이 ${o.h1}`, { alpha: aSm, color: 'violet', side: { x: 1, y: 0 } });
+    if (!o.problem) {
+      const k = b.k || 40, ey = (D.P(v3(0, y0, r2)).y - D.P(cb).y) * k, ey1 = (D.P(v3(0, yc, r1)).y - D.P(ct).y) * k, a3 = ease(lin01(t, 0.55, 0.95));
+      D.areaLab(cb, '큰 원뿔', V0.v2, { dy: ey + 24 });
+      D.areaLab(add3(ct, sh), '작은 원뿔', V0.v1, { dy: ey1 + 24, alpha: aSm, color: 'violet' });
+      D.areaLab(v3(0, y0 + hf * 0.4, 0), '원뿔대', V0.vol, { alpha: a3, maxW: r2 * k * 1.2, color: 'green' });
+      sumRows(D, [[{ t: '원뿔대의 부피 = ' }, { t: '큰 원뿔', c: 'sky' }, { t: ' − ' }, { t: '작은 원뿔', c: 'violet' }], [{ t: '= ' }, { t: V0.v2, c: 'sky' }, { t: ' − ' }, { t: V0.v1, c: 'violet' }, { t: ` = ${V0.vol}` }]], 1);
+    }
+    return D;
+  }
+
   const cube8 = (c, R) => { const o = []; for (const x of [-R, R]) for (const y of [-R, R]) for (const z of [-R, R]) o.push(add3(c, v3(x, y, z))); return o; };
   Object.assign(G, {
     boxMinusBoxes, meshArea, flipMesh, cube8, PI, DEG, TAU, clamp, ease, seg01, lin01, v3, add3, sub3, mul3, dot3, cross3, len3, unit3, lerp3, mid3, centroid, rotM, mulM, rotAbout, rotYAt, shiftT, compose, applyT, Tid,
     camOf, proj, textW, polyMesh, prismMesh, boxMesh, loftMesh, revolveMesh, sphereProfile, xfMesh, mergeMeshes, silLines, netBuild, netPose, netAt, netDraw, solidNet, circleBase, sectorBase,
-    fitBox, bboxOf, fillPolys, scene3, newellN, coneNet, sumRows
+    fitBox, bboxOf, fillPolys, scene3, newellN, coneNet, sumRows, frustumVol
   });
 })();

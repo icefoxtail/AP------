@@ -15,10 +15,10 @@
   const PARAMS = {
     s41K: P('삼각형의 크기 k', 1, 2, 1, 1, { color: 'amber', format: (v) => `${v}배` }),
     s41T: P('돌리기', 0, 1, 0.005, 0, { color: 'green', hint: '삼각형이 축을 중심으로 제자리에서 한 바퀴 돌아요', format: (v) => (v < 0.01 ? '0°' : v > 0.99 ? '한 바퀴' : Math.round(v * 360) + '°') }),
-    s42J: P('위쪽 반지름의 크기 j', 1, 3, 1, 1, { color: 'amber', hint: '위쪽 반지름은 3j cm예요', format: (v) => `${3 * v} cm` }),
-    s42K: P('아랫변이 위쪽보다 긴 정도 k', 1, 2, 1, 1, { color: 'sky', hint: '긴 쪽은 3k cm, 높이는 4k cm, 빗변은 5k cm', format: (v) => `${3 * v} cm` }),
-    s42A: P('원기둥 부분의 길이 a', 1, 6, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
-    s42T: P('돌리기', 0, 1, 0.005, 0, { color: 'green', format: (v) => (v < 0.01 ? '0°' : v > 0.99 ? '한 바퀴' : Math.round(v * 360) + '°') }),
+    s42J: P('위쪽 반지름', 1, 3, 1, 1, { color: 'amber', hint: '위쪽 반지름은 3의 배수예요', format: (v) => `${3 * v} cm` }),
+    s42K: P('아랫변이 더 긴 정도', 1, 2, 1, 1, { color: 'sky', hint: '아랫변이 윗변보다 3 cm(또는 6 cm) 더 길어요. 높이와 빗변도 함께 커져요', format: (v) => `${3 * v} cm` }),
+    s42A: P('원기둥 부분의 길이', 1, 6, 1, 3, { color: 'amber', format: (v) => v + ' cm' }),
+    s42T: P('돌리기 · 펼치기', 0, 1, 0.005, 0, { color: 'green', hint: '원뿔대는 앞쪽 절반은 돌리기, 뒤쪽 절반은 겉넓이는 펼치기·부피는 작은 원뿔 빼내기예요', format: (v, s) => ((s && s.svAxis2 !== 'base') ? (v < 0.01 ? '0°' : v < 0.5 ? Math.round(v * 720) + '°' : v > 0.99 ? (s.svMode === 'vol' ? '빠짐' : '전개도') : (s.svMode === 'vol' ? '작은 원뿔을 빼는 중' : '펼치는 중')) : (v < 0.01 ? '0°' : v > 0.99 ? '한 바퀴' : Math.round(v * 360) + '°')) }),
     s43T: P('돌리기 · 분해하기', 0, 1, 0.005, 0, { color: 'green', format: (v) => (v < 0.5 ? (v < 0.01 ? '0°' : Math.round(v * 2 * 360) + '°') : v > 0.99 ? '분해 완료' : '가로로 분해하는 중') }),
     s44H: P('원기둥 부분의 높이 H', 1, 8, 1, 4, { color: 'amber', format: (v) => v + ' cm' }),
     s44T: P('분해하기', 0, 1, 0.01, 0, { color: 'green', hint: '원기둥과 원뿔이 오른쪽으로 옮겨지고 반구는 제자리에서 뒤집혀요', format: (v) => (v < 0.02 ? '붙어 있음' : v > 0.98 ? '모두 분해' : Math.round(v * 100) + '%') })
@@ -128,24 +128,34 @@
       return { axis, mode, a, k, hh, p, c, b, base, cylLat, coneLat, surf, vcyl, vcone, vol, ans: mode === 'vol' ? vol : surf };
     };
     const draw = (b, s, M, C) => {
-      const D = scene3(b, s, C), st = C.step, th = C.problem ? 0.25 : C.t;
+      const st = C.step;
+      // 높이가 되는 변을 축으로(원뿔대): 앞 절반은 사다리꼴 돌리기, 뒤 절반은 겉넓이 = 전개도(coneNet) · 부피 = 큰 원뿔 − 작은 원뿔 겨냥도(frustumVol)
+      if (M.axis === 'leg' && !C.problem && (C.review || C.t >= 0.5 || b.thumb)) {
+        const t2 = C.review || b.thumb ? (C.review ? clamp((C.t - 0.5) * 2, 0, 1) : 1) : clamp((C.t - 0.5) * 2, 0, 1);
+        if (M.mode === 'vol') {
+          G.frustumVol(b, s, C, { r2: M.r2, r1: M.r1, h2: M.h2, h1: M.h1, t: t2, review: C.review, step: st, vals: { v2: plainVal(M.v2), v1: plainVal(M.v1), vol: plainVal(M.vol) } });
+        } else {
+          const rv = C.review, hl = !rv ? {} : st <= 1 ? { big: true } : st === 2 ? { small: true } : st === 3 ? { ring: 2 } : { ring: 3, bot: 2, top: 2 };
+          G.coneNet(b, s, C, { r2: M.r2, r1: M.r1, hf: M.h, R2: M.R2, R1: M.R1, t: rv ? 1 : t2, review: rv, hl, vals: { ring: plainVal(M.latF), top: plainVal(M.top), bot: plainVal(M.bot), arcBig: plainVal(V(0, 2 * M.r2)), arcSmall: plainVal(V(0, 2 * M.r1)), tot: plainVal(M.surf), big: plainVal(M.lat2), small: plainVal(M.lat1) } });
+        }
+        return;
+      }
+      const D = scene3(b, s, C), th = C.problem ? 0.25 : C.review ? 1 : M.axis === 'leg' ? Math.min(1, C.t * 2) : C.t;
       if (M.axis === 'leg') {
         const sc = 4.4 / Math.max(M.h2, 2 * M.r2), r1 = M.r1 * sc, r2 = M.r2 * sc, h = M.h * sc, h2 = M.h2 * sc, h1 = M.h1 * sc, y0 = -h2 / 2;
         const prof = [[0, y0], [r2, y0], [r1, y0 + h], [0, y0 + h]], poly = prof;
         D.fit(bxc(v3(0, 0, 0), r2, h2 / 2), [], { l: 34, r: 34, t: 34, b: 34 });
         axisLine(D, y0 - 0.5, y0 + h + 1.4);
-        // 큰 뿔 − 작은 뿔 윤곽(보조선)
-        D.line(v3(r2 * Math.cos(A0), y0, r2 * Math.sin(A0)), v3(0, y0 + h2, 0), 'muted', 1.8, { dash: [5, 4], alpha: 0.55 });
         sweepDraw(D, prof, poly, th, { faceStyle: (f) => (C.review && st === 4 && M.mode === 'surf' && (f.tag === 'seg0' || f.tag === 'seg2') ? { fill: 'amber', alpha: 0.4 } : C.review && st === 3 && f.tag === 'seg1' ? { fill: 'amber', alpha: 0.3 } : {}) });
         const pa = (rr, yy) => v3(rr * Math.cos(A0), yy, rr * Math.sin(A0)), o = pa(0, y0), pb2 = pa(r2, y0), pc = pa(r1, y0 + h), pd = pa(0, y0 + h);
         D.right(o, sub3(pb2, o), sub3(pd, o), 0.26, 'amber');
         D.right(pd, sub3(pc, pd), sub3(o, pd), 0.26, 'amber');
-        D.elabel(o, pb2, `${M.r2}`, { side: { x: 0, y: 1 }, size: 15, color: 'amber', gap: 7 });
-        D.elabel(pd, pc, `${M.r1}`, { side: { x: 0, y: -1 }, size: 15, color: 'amber', gap: 7 });
-        D.elabel(o, pd, `${M.h}`, { side: { x: -1, y: 0 }, size: 15, color: 'amber', gap: 8 });
-        D.elabel(pb2, pc, `${5 * M.k}`, { side: { x: 1, y: 0 }, size: 15, gap: 8 });
+        const ctr = v3(pa(r2 / 2, y0 + h / 2).x, y0 + h / 2, pa(r2 / 2, y0 + h / 2).z);
+        D.dim(o, pb2, `아랫변 ${M.r2}`, { side: { x: 0, y: 1 }, off: 22, color: 'amber' });
+        D.dim(pd, pc, `윗변 ${M.r1}`, { side: { x: 0, y: -1 }, off: 22, color: 'amber' });
+        D.dim(o, pd, `높이 ${M.h}`, { side: { x: -1, y: 0 }, off: 22, color: 'amber' });
+        D.dim(pb2, pc, `빗변 ${5 * M.k}`, { from: ctr, off: 22 });
         D.label(o, '축', { dir: { x: -1, y: 0.4 }, size: 13, color: 'muted', gap: 4 });
-        if (!C.problem && th > 0.99) D.tag(v3(0, y0 + h * 0.5, 0), '원뿔대', { size: 15, color: 'green', dy: 8, dx: 30 });
       } else {
         // 아랫변(긴 변)을 축으로: 반지름 hh 인 원기둥(길이 a) + 원뿔(높이 p)
         const sc = 4.6 / Math.max(M.b, 2 * M.hh), hh = M.hh * sc, a = M.a * sc, bb = M.b * sc, y0 = -bb / 2;
@@ -156,24 +166,24 @@
         const pa = (rr, yy) => v3(rr * Math.cos(A0), yy, rr * Math.sin(A0)), o = pa(0, y0), pd = pa(hh, y0), pc = pa(hh, y0 + a), pbb = pa(0, y0 + bb);
         D.right(o, sub3(pd, o), sub3(pbb, o), 0.26, 'amber');
         D.right(pd, sub3(pc, pd), sub3(o, pd), 0.26, 'amber');
-        D.elabel(o, pd, `${M.hh}`, { side: { x: 0, y: 1 }, size: 15, color: 'amber', gap: 7 });
-        D.elabel(pd, pc, `${M.a}`, { side: { x: 1, y: 0 }, size: 15, color: 'amber', gap: 8 });
-        D.elabel(pc, pbb, `${M.c}`, { side: { x: 1, y: 0 }, size: 15, gap: 8 });
-        D.elabel(pa(0, y0 + a), pbb, `${M.p}`, { side: { x: -1, y: 0 }, size: 14, color: 'ink', gap: 8 });
+        const ctr2 = pa(hh / 2, y0 + bb / 2);
+        D.dim(o, pd, `높이 ${M.hh}`, { side: { x: 0, y: 1 }, off: 22, color: 'amber' });
+        D.dim(pd, pc, `짧은 밑변 ${M.a}`, { side: { x: 1, y: 0 }, off: 22, color: 'amber' });
+        D.dim(pc, pbb, `빗변 ${M.c}`, { from: ctr2, off: 22 });
+        D.dim(o, pbb, `긴 밑변 ${M.b}`, { side: { x: -1, y: 0 }, off: 22 });
         D.label(o, '축', { dir: { x: -1, y: 0.4 }, size: 13, color: 'muted', gap: 4 });
         D.line(pa(0, y0 + a), pc, 'muted', 1.8, { dash: [5, 4] });
-        if (!C.problem && th > 0.99) D.tag(v3(0, y0 + a / 2, 0), '원기둥', { size: 14, color: 'green', dy: 6 });
       }
     };
     const lab = (M) => (M.axis === 'leg' ? `아랫변 $${M.r2}\\,\\mathrm{cm}$, 윗변 $${M.r1}\\,\\mathrm{cm}$, 높이(축) $${M.h}\\,\\mathrm{cm}$, 빗변 $${5 * M.k}\\,\\mathrm{cm}$인 직각사다리꼴을 높이가 되는 변을 축으로` : `긴 밑변 $${M.b}\\,\\mathrm{cm}$, 짧은 밑변 $${M.a}\\,\\mathrm{cm}$, 높이 $${M.hh}\\,\\mathrm{cm}$, 빗변 $${M.c}\\,\\mathrm{cm}$인 직각사다리꼴을 긴 밑변을 축으로`);
     return {
       id: 'sv4-2', title: '직각사다리꼴 회전', short: '사다리꼴 회전',
       question: '직각사다리꼴을 돌리면 어떤 입체가 될까? 높이가 되는 변을 축으로 할 때와 긴 밑변을 축으로 할 때 어떻게 다를까?',
-      anim: { key: 's42T', dur: 5, label: '한 바퀴 돌리기' }, cam0: { yaw: 28, pitch: 20 }, stepT: () => 1, thumbT: 1, problemT: 1,
+      anim: { key: 's42T', dur: 6, label: '돌리기 · 펼치기' }, cam0: { yaw: 28, pitch: 20 }, stepT: (st) => { const lab = window.lab, s0 = lab && lab.s; return s0 && s0.svAxis2 !== 'base' && s0.svMode === 'vol' && st <= 1 ? 0.5 : 1; }, thumbT: 1, problemT: 1,
       ctl: (s) => (s.svAxis2 === 'base' ? ['s42A', 's42K', 's42T'] : ['s42J', 's42K', 's42T']),
       presets: () => [{ group: '축으로 하는 변', label: '높이가 되는 변 (원뿔대)', apply: (st) => { st.svAxis2 = 'leg'; }, on: (st) => st.svAxis2 !== 'base' }, { label: '긴 밑변 (원기둥+원뿔)', apply: (st) => { st.svAxis2 = 'base'; }, on: (st) => st.svAxis2 === 'base' }, { group: '구하는 것', label: '겉넓이', apply: (st) => { st.svMode = 'surf'; }, on: (st) => st.svMode !== 'vol' }, { label: '부피', apply: (st) => { st.svMode = 'vol'; }, on: (st) => st.svMode === 'vol' }],
-      init: (s) => { s.svAxis2 = 'leg'; s.svMode = 'surf'; s.s42J = 1; s.s42K = 1; s.s42A = 3; s.s42T = 0.3; },
-      reroll: (s) => { s.svAxis2 = pick(['leg', 'base'], s.svAxis2); s.svMode = pick(['surf', 'vol'], s.svMode); s.s42J = rint(1, 3); s.s42K = rint(1, 2); s.s42A = rint(1, 6); s.s42T = 0.3; },
+      init: (s) => { s.svAxis2 = 'leg'; s.svMode = 'surf'; s.s42J = 1; s.s42K = 1; s.s42A = 3; s.s42T = 0.5; },
+      reroll: (s) => { s.svAxis2 = pick(['leg', 'base'], s.svAxis2); s.svMode = pick(['surf', 'vol'], s.svMode); s.s42J = rint(1, 3); s.s42K = rint(1, 2); s.s42A = rint(1, 6); s.s42T = 0.5; },
       model, draw,
       check: (s) => {
         const M = model(s), n = 4000;
@@ -191,13 +201,13 @@
         if (M.axis === 'leg') {
           return M.mode === 'vol' ? [
             `높이가 되는 변을 축으로 돌리면 <b>원뿔대</b>예요. 큰 원뿔(반지름 $${M.r2}$, 높이 $${M.h2}$)에서 작은 원뿔(반지름 $${M.r1}$, 높이 $${M.h1}$)을 빼요.`,
-            `$V_2=\\frac{1}{3}\\times\\pi\\times${M.r2}^2\\times${M.h2}=${tx(M.v2)}$, $V_1=\\frac{1}{3}\\times\\pi\\times${M.r1}^2\\times${M.h1}=${tx(M.v1)}$예요.`,
-            `(부피) $=V_2-V_1=${tx(M.vol)}\\,\\mathrm{cm}^3$예요.`
+            `큰 원뿔의 부피 $\\frac{1}{3}\\times\\pi\\times${M.r2}^2\\times${M.h2}=${tx(M.v2)}$, 작은 원뿔의 부피 $\\frac{1}{3}\\times\\pi\\times${M.r1}^2\\times${M.h1}=${tx(M.v1)}$예요.`,
+            `(원뿔대의 부피) $=$ (큰 원뿔) $-$ (작은 원뿔) $=${tx(M.v2)}-${tx(M.v1)}=${tx(M.vol)}\\,\\mathrm{cm}^3$예요.`
           ] : [
-            `높이가 되는 변을 축으로 돌리면 <b>원뿔대</b>예요. 큰 원뿔의 모선은 $${M.R2}$, 작은 원뿔의 모선은 $${M.R1}$이에요.`,
-            `옆넓이 $=\\pi\\times${M.R2}\\times${M.r2}-\\pi\\times${M.R1}\\times${M.r1}=${tx(M.lat2)}-${tx(M.lat1)}=${tx(M.latF)}$예요.`,
-            `위·아래 밑면 $\\pi\\times${M.r1}^2+\\pi\\times${M.r2}^2=${tx(vadd(M.top, M.bot))}$를 더해요.`,
-            `(겉넓이) $=${tx(M.latF)}+${tx(vadd(M.top, M.bot))}=${tx(M.surf)}\\,\\mathrm{cm}^2$예요.`
+            `높이가 되는 변을 축으로 돌리면 <b>원뿔대</b>예요. 전개도에서 큰 부채꼴은 반지름이 큰 원뿔의 모선 $${M.R2}$이고 호의 길이가 아랫면의 둘레 $${tx(V(0, 2 * M.r2))}$예요. 넓이는 $\\pi\\times${M.r2}\\times${M.R2}=${tx(M.lat2)}$예요.`,
+            `잘라 낸 작은 부채꼴은 반지름이 작은 원뿔의 모선 $${M.R1}$이고 호의 길이가 윗면의 둘레 $${tx(V(0, 2 * M.r1))}$예요. 넓이는 $\\pi\\times${M.r1}\\times${M.R1}=${tx(M.lat1)}$예요.`,
+            `원뿔대의 옆넓이는 부채꼴 고리의 넓이예요. (큰 부채꼴) $-$ (작은 부채꼴) $=${tx(M.lat2)}-${tx(M.lat1)}=${tx(M.latF)}$예요.`,
+            `(겉넓이) $=$ (옆넓이) $+$ (윗면) $+$ (아랫면) $=${tx(M.latF)}+${tx(M.top)}+${tx(M.bot)}=${tx(M.surf)}\\,\\mathrm{cm}^2$예요.`
           ];
         }
         return M.mode === 'vol' ? [
@@ -212,9 +222,9 @@
         ];
       },
       view: (M) => ({
-        guide: `위 칩에서 <b>축으로 하는 변</b>과 <b>구하는 것</b>을 골라 보세요. <b>돌리기</b>를 끌면 ${span('amber', '사다리꼴')}이 축 둘레를 제자리에서 돌아요. 축이 바뀌면 전혀 다른 입체가 만들어져요.`,
+        guide: `위 칩에서 <b>축으로 하는 변</b>과 <b>구하는 것</b>을 골라 보세요. <b>돌리기</b>를 끌면 ${span('amber', '사다리꼴')}이 축 둘레를 제자리에서 돌아요. 원뿔대는 막대 뒤쪽 절반에서 겉넓이는 <b>전개도</b>로 펼쳐지고, 부피는 <b>큰 원뿔 − 작은 원뿔</b>로 보여요. 축이 바뀌면 전혀 다른 입체가 만들어져요.`,
         readouts: M.axis === 'leg'
-          ? (M.mode === 'vol' ? [rd('큰 원뿔 V₂', plainVal(M.v2) + ' cm³', 'sky'), rd('작은 원뿔 V₁', plainVal(M.v1) + ' cm³', 'violet'), rd('원뿔대의 부피', plainVal(M.vol) + ' cm³', 'green')] : [rd('옆넓이(큰−작은)', plainVal(M.latF) + ' cm²', 'amber'), rd('두 밑면', plainVal(vadd(M.top, M.bot)) + ' cm²', 'sky'), rd('겉넓이', plainVal(M.surf) + ' cm²', 'green')])
+          ? (M.mode === 'vol' ? [rd('큰 원뿔의 부피', plainVal(M.v2) + ' cm³', 'sky'), rd('작은 원뿔의 부피', plainVal(M.v1) + ' cm³', 'violet'), rd('원뿔대의 부피', plainVal(M.vol) + ' cm³', 'green', '큰 원뿔 − 작은 원뿔')] : [rd('원뿔대의 옆넓이', plainVal(M.latF) + ' cm²', 'amber', '큰 부채꼴 − 작은 부채꼴'), rd('윗면 + 아랫면', plainVal(vadd(M.top, M.bot)) + ' cm²', 'sky'), rd('겉넓이', plainVal(M.surf) + ' cm²', 'green', '옆넓이 + 두 밑면')])
           : (M.mode === 'vol' ? [rd('원기둥', plainVal(M.vcyl) + ' cm³', 'sky'), rd('원뿔', plainVal(M.vcone) + ' cm³', 'violet'), rd('부피', plainVal(M.vol) + ' cm³', 'green')] : [rd('원기둥의 밑면 1개', plainVal(M.base) + ' cm²', 'sky'), rd('원기둥의 옆면', plainVal(M.cylLat) + ' cm²', 'sky'), rd('원뿔의 옆면', plainVal(M.coneLat) + ' cm²', 'violet'), rd('겉넓이', plainVal(M.surf) + ' cm²', 'green')]),
         formula: M.axis === 'leg' ? `<p>(원뿔대) $=$ (큰 원뿔) $-$ (작은 원뿔) &nbsp;·&nbsp; (겉넓이) $=$ (옆넓이의 차) $+$ (두 밑면)</p>` : `<p>(겉넓이) $=$ (원기둥의 밑면 1개) $+$ (원기둥의 옆면) $+$ (원뿔의 옆면) &nbsp;·&nbsp; (부피) $=$ (원기둥) $+$ (원뿔)</p>`,
         rule: '회전체를 이루는 입체로 나눈 뒤, 서로 붙은 면은 빼고 더해요',
