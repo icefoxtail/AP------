@@ -4,7 +4,7 @@
 
    영상은 따로 그린 동영상이 아니라, 실험실 그림을 「대본」대로 움직이는 것입니다. 대본 = 시간순 cue 목록.
      {
-       length: 22,                              // 전체 길이(초). 15~30
+       length: 12,                              // 전체 길이(초). 8~15 (쇼츠: 영상 하나에 핵심 하나)
        start:  { f1_ss2_t: 0 },                 // (선택) 시작할 때 맞출 숫자 상태값(움직이지 않는 값도 가능). 자막이 말하는 값은 여기에 적어 그림과 맞춥니다. 생략하면 장면에 들어갔을 때의 값
        summary: '$S=\\frac12 rl$',               // 끝 화면 한 줄 요약
        task:    '중심각을 움직여 보세요',          // 끝 화면 「이제 직접 해 보세요」
@@ -33,7 +33,8 @@
 })(typeof window !== 'undefined' ? window : globalThis, function () {
   'use strict';
 
-  const LIMITS = { minLen: 15, maxLen: 30, minSay: 3, maxSay: 5, maxSayChars: 64, minSayGap: 2.5, maxSummaryChars: 40, maxTaskChars: 90 };
+  // 쇼츠 규칙(선생님 지적 2026-11-03: 24초·22초 샘플이 늘어진다): 8~15초, 자막 2~3줄, 한 줄 40자(휴대폰 화면 2줄 이내), 첫 1초 안에 그림이 움직이기 시작
+  const LIMITS = { minLen: 8, maxLen: 15, minSay: 2, maxSay: 3, maxSayChars: 40, minSayGap: 2.5, maxSummaryChars: 40, maxTaskChars: 90, maxFirstMoveAt: 1 };
   const EASE = {
     smooth: (x) => x * x * (3 - 2 * x),
     linear: (x) => x,
@@ -113,6 +114,8 @@
         }
       }
     });
+    // 소개 줄 금지: 첫 칸 근처에서 그림이 바로 움직여야 합니다(to 로 움직이는 칸이 maxFirstMoveAt 초 안에 시작)
+    if (!cues.some((c) => c && c.to && isNum(c.at) && c.at <= LIMITS.maxFirstMoveAt + EPS)) err(`첫 ${LIMITS.maxFirstMoveAt}초 안에 그림이 움직이기 시작해야 합니다(첫 칸에 to 를 두세요. 소개만 하는 칸 금지)`);
     if (says.length < LIMITS.minSay || says.length > LIMITS.maxSay) err(`자막 ${says.length}줄: ${LIMITS.minSay}~${LIMITS.maxSay}줄이어야 합니다`);
     if (cues[0] && !cues[0].say) err('첫 칸(at 0)에 자막이 있어야 합니다');
     for (let k = 0; k < says.length; k++) {

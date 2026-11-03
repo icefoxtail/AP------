@@ -23,7 +23,10 @@ const SCENE_DIR = path.join(labsDir, 'g7-circle-sector');
 // 새 장면의 대본을 추가할 때는 여기에 그 장면의 상태값(범위)도 함께 적어 주세요.
 const SCENE_STATE = {
   '1209': { b1209_r: [3, 12], b1209_th: [10, 350] },
-  'f4-swirl': { f4_swirl_R: [4, 10], f4_swirl_t: [0, 1], f4_swirl_mode: null, f4_swirl_seed: null, f4_swirl_pick: null }
+  'f4-swirl': { f4_swirl_R: [4, 10], f4_swirl_t: [0, 1], f4_swirl_mode: null, f4_swirl_seed: null, f4_swirl_pick: null },
+  // 다음 대본(DeepSeek 시험) 대상: 1210(basic.js, 1209 와 같은 sectorSpec) · f1-ss2(f01.js 부채꼴에서 반원 파내기, 장면 id 는 'f1-ss2')
+  '1210': { b1210_r: [3, 12], b1210_th: [10, 350] },
+  'f1-ss2': { f1_ss2_a: [4, 12], f1_ss2_t: [0, 1], f1_ss2_mode: null, f1_ss2_seed: null, f1_ss2_pick: null }
 };
 const SCENE_STATE_KEYS = Object.fromEntries(Object.entries(SCENE_STATE).map(([k, v]) => [k, new Set(Object.keys(v))]));
 
@@ -37,19 +40,21 @@ function loadVideos() {
 
 const videos = loadVideos();
 
-test('대본이 실려 있는 장면이 예상한 두 장면이다', () => {
-  assert.deepEqual(Object.keys(videos).sort(), ['1209', 'f4-swirl']);
+test('견본 두 장면(1209, f4-swirl)의 대본이 있고, 대본이 있는 장면은 모두 SCENE_STATE 표에 있다', () => {
+  const ids = Object.keys(videos);
+  assert.ok(ids.includes('1209') && ids.includes('f4-swirl'), '견본 대본 1209, f4-swirl');
+  ids.forEach((id) => assert.ok(SCENE_STATE[id], `${id}: 이 테스트 파일 SCENE_STATE 표에 상태값이 없습니다`));
 });
 
 for (const [id, script] of Object.entries(videos)) {
   test(`영상 대본 ${id}: 형식·길이·자막·시각`, () => {
     const { errors } = core.validate(script);
     assert.deepEqual(errors, [], `대본 오류:\n${errors.join('\n')}`);
-    // 길이 15~30초
+    // 쇼츠: 길이 8~15초
     assert.ok(core.LIMITS.minLen <= script.length && script.length <= core.LIMITS.maxLen, `length ${script.length}초`);
     // 자막이 비어 있지 않음 (validate가 say 없음·빈 줄도 잡지만 명시 확인)
     const says = script.cues.filter((c) => c.say);
-    assert.ok(says.length >= 3, '자막 3줄 이상');
+    assert.ok(says.length >= core.LIMITS.minSay && says.length <= core.LIMITS.maxSay, `자막 ${core.LIMITS.minSay}~${core.LIMITS.maxSay}줄`);
     says.forEach((c) => assert.ok(typeof c.say === 'string' && c.say.trim(), '빈 자막'));
     // cue 시각이 증가함
     for (let i = 1; i < script.cues.length; i++) assert.ok(script.cues[i].at > script.cues[i - 1].at, `cues[${i}].at 증가`);
@@ -85,6 +90,14 @@ test('상태값 표가 장면 소스와 같다', () => {
   assert.ok(/'b'\s*\+\s*[\w.]+\s*\+\s*'_'/.test(basic) || /`b\$\{[^}]+\}_/.test(basic) || /'b'\s*\+/.test(basic), "상태값 접두어 'b' 규칙");
   assert.ok(/r:\s*\{\s*value:\s*o\.def\.r,\s*min:\s*3,\s*max:\s*12/.test(basic), '1209 r 범위 3~12');
   assert.ok(/th:\s*\{\s*value:\s*o\.def\.th,\s*min:\s*thMin,\s*max:\s*thMax/.test(basic) && /thMin\s*=\s*o\.thMin\s*\|\|\s*10,\s*thMax\s*=\s*o\.thMax\s*\|\|\s*350/.test(basic), '1209 th 범위 10~350');
+  // 1210: 1209 와 같은 sectorSpec(r 3~12, th 10~350)이고 장면 id 가 있다
+  assert.ok(/id:\s*'1210'/.test(basic), "basic.js 에 id '1210' 장면");
+  // f1-ss2: f01.js 접두어 f1, id ss2, 변수 a(4~12), t 0~1
+  const f01 = fs.readFileSync(path.join(SCENE_DIR, 'f01.js'), 'utf8');
+  assert.ok(/const PFX\s*=\s*'f1'/.test(f01), "f01.js 접두어 'f1'");
+  const ss2 = f01.slice(f01.indexOf("id: 'ss2'"));
+  assert.ok(/vars:\s*\[\{\s*k:\s*'a'[^}]*min:\s*4,\s*max:\s*12/.test(ss2.slice(0, 600)), 'ss2 a 범위 4~12');
+  assert.ok(/PARAMS\[kt\]\s*=\s*\{\s*value:\s*0,\s*min:\s*0,\s*max:\s*1/.test(f01), 'f01 t 범위 0~1');
   // f4-swirl: 접두어 f4, id swirl, 변수 R(4~10), t 0~1
   assert.ok(/const PFX\s*=\s*'f4'/.test(f04), "f04.js 접두어 'f4'");
   const swirl = f04.slice(f04.indexOf("id: 'swirl'"));
@@ -126,16 +139,17 @@ for (const [id, script] of Object.entries(videos)) {
 }
 
 // 1209 자막이 말하는 수가 장면의 정답식(rule: 호 = 2πr·θ/360, 넓이 = πr²·θ/360)과 같은지 다시 계산합니다.
-test('1209 자막의 수치(8π→16π, 48π→96π)가 공식과 같다', () => {
+test('1209 자막의 수치(6π→12π, 36π→72π)가 공식과 같다', () => {
   const script = videos['1209'];
   const l = (r, th) => (2 * r * th) / 360;      // π 의 계수
   const S = (r, th) => (r * r * th) / 360;
   const r = script.start.b1209_r, th0 = script.start.b1209_th;
   const th1 = script.cues.find((c) => c.to && c.to.b1209_th).to.b1209_th;
   assert.equal(r, 12);
+  assert.ok(th1 <= 200, '240° 근처는 라벨이 맞닿음(VIDEO_FINDINGS.md): 쇼츠 견본은 180°까지');
   assert.equal(th1, 2 * th0, '자막이 「2배」라고 말하므로 중심각 목표는 시작의 2배');
   const text = script.cues.map((c) => c.say || '').join(' ');
   assert.ok(text.includes(`${l(r, th0)}π → ${l(r, th1)}π`), `호 ${l(r, th0)}π → ${l(r, th1)}π`);
   assert.ok(text.includes(`${S(r, th0)}π → ${S(r, th1)}π`), `넓이 ${S(r, th0)}π → ${S(r, th1)}π`);
-  assert.ok(text.includes(`${r} cm`) && text.includes(`${th0}°`), '반지름·중심각 값');
+  assert.ok(text.includes(`${th0}°`) && text.includes(`${th1}°`), '중심각 시작·끝 값');
 });
