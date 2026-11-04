@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "FUNCTIONS",
-  "shardVersion": "1.5.12",
+  "shardVersion": "1.5.13",
   "status": "ACTIVE",
-  "conceptCount": 126,
+  "conceptCount": 128,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
@@ -4735,6 +4735,76 @@
       ],
       "curriculumRefs": [
         "2015:중2-1:M2-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_ABSOLUTE_VALUE_CURVE_GRAPH",
+      "canonicalLabelKo": "절댓값 곡선의 그래프",
+      "definition": "함수의 그래프에서 x축 아래에 있는 부분을 x축에 대하여 접어 올려 y=|f(x)|의 그래프를 만들고, 그 그래프의 모양과 교점·극값의 변화를 해석하는 개념.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_bcab6134c6af6dc7c88e7e9ea1eb8d46cb4c7f2d9075ffe006c23d3fb4798549"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-M2-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_bcab6134c6af6dc7c88e7e9ea1eb8d46cb4c7f2d9075ffe006c23d3fb4798549",
+          "sourceOrdinal": 13,
+          "classificationRationale": "Corrected or original audited record 13 binds CC_ABSOLUTE_VALUE_CURVE_GRAPH for PT_DERIVATIVE_EQUATION_INEQUALITY/TPL_ROOT_COUNT_BY_EXTREMA.",
+          "decisiveEvidence": "삼차함수의 극댓값 15와 극솟값 -17을 구하고 절댓값 접어올린 그래프 |f(x)|와 직선 y=a가 서로 다른 6개 교점을 갖는 구간 1<a<15를 결정하는 4단계 절댓값 방정식 실근 개수 문항으로 기존 난이도 Bucket 4를 불변 보존한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/audit.json",
+            "sha256": "e3c058750bb5cc6a16dab75bb8ce0feb0f05797ed8aedc16354bd12afd7ee37e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_DERIVATIVE_EQUATION_INEQUALITY"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-06"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_HORIZONTAL_LINE_INTERSECTIONS",
+      "canonicalLabelKo": "수평선과 그래프의 교점",
+      "definition": "함수 그래프와 수평선의 교점 개수를 극댓값·극솟값의 높이와 비교하여 세는 개념.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_bcab6134c6af6dc7c88e7e9ea1eb8d46cb4c7f2d9075ffe006c23d3fb4798549"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-M2-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_bcab6134c6af6dc7c88e7e9ea1eb8d46cb4c7f2d9075ffe006c23d3fb4798549",
+          "sourceOrdinal": 13,
+          "classificationRationale": "Corrected or original audited record 13 binds CC_HORIZONTAL_LINE_INTERSECTIONS for PT_DERIVATIVE_EQUATION_INEQUALITY/TPL_ROOT_COUNT_BY_EXTREMA.",
+          "decisiveEvidence": "삼차함수의 극댓값 15와 극솟값 -17을 구하고 절댓값 접어올린 그래프 |f(x)|와 직선 y=a가 서로 다른 6개 교점을 갖는 구간 1<a<15를 결정하는 4단계 절댓값 방정식 실근 개수 문항으로 기존 난이도 Bucket 4를 불변 보존한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1/audit.json",
+            "sha256": "e3c058750bb5cc6a16dab75bb8ce0feb0f05797ed8aedc16354bd12afd7ee37e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_DERIVATIVE_EQUATION_INEQUALITY"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-06"
       ],
       "ownerConceptShard": "FUNCTIONS"
     }
