@@ -1,0 +1,1140 @@
+{
+  "schemaVersion": "4slot-v1",
+  "sourceArchiveFile": "original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js",
+  "sourceGitBlobSha": "db1ecdbda3963e099841fe2acecd547364e82fe5",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "antigravity-gemini-3.8-flash",
+    "run": "original-51-60",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "10 이상 20 이하의 소수"
+          },
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "원소 관계와 부분집합 관계를 구별하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "보기에서 옳은 것만을 있는 대로 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "$\\in$은 하나의 원소인지",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "$\\subset$은 집합의 모든 원소가 $A$에 들어 있는지를 확인한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "공집합",
+            "src": "solution",
+            "quote": "공집합이 모든 집합의 부분집합이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "$A\\subseteq B$이고 $B\\subseteq A$일 때"
+          },
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$A=\\{x\\mid ax^2-x-6=0\\}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "서로가 서로의 부분집합이면 두 집합은 같다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=-2$를 $ax^2-x-6=0$에 대입하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "방정식은 $x^2-x-6=0$, 즉 $(x+2)(x-3)=0$이므로 근은 $-2,3$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$a,b$는 상수"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "유리함수 $y=\\dfrac{bx+c}{x+a}$의 그래프가 오른쪽 그림과 같을 때"
+          },
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "수직점근선은 $x=2$, 수평점근선은 $y=-3$"
+          },
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "$x$절편은 $x=1$이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$a+b+c$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "수직점근선이 $x=-a=2$이므로 $a=-2$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "$x=1$에서 그래프가 $x$축과 만나므로 $b+c=0$이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a,b,c$에 대하여"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "작품 6개 중에서 2개만 동일한 작가의 작품일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "동일한 작가의 작품 2개를 서로 이웃하게 나열하는 모든 경우의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이웃",
+            "src": "solution",
+            "quote": "반드시 이웃해야 하는 두 작품을 하나의 묶음으로 처리한다",
+            "evidenceType": "IMPLIED",
+            "justification": "이웃하는 대상을 한 묶음으로 묶어 순열 계산"
+          },
+          {
+            "term": "팩토리얼",
+            "src": "solution",
+            "quote": "묶음을 포함한 5개 대상을 일렬로 나열하는 방법은 $5!$가지이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "전체 경우의 수는 $5!\\times2!=120\\times2=240$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 묶음 순열과 묶음 내부 순열을 곱함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 미술 작품 6개를"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "차집합",
+            "src": "stem",
+            "quote": "$(A-B)\\cup(A\\cap C)$와 같은 집합은?"
+          },
+          {
+            "term": "여집합",
+            "src": "solution",
+            "quote": "차집합을 여집합과 교집합으로 바꾸면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "다음 중 집합 $(A-B)\\cup(A\\cap C)$와 같은 집합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "차집합",
+            "src": "solution",
+            "quote": "$A-B=A\\cap B^C$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분배법칙",
+            "src": "solution",
+            "quote": "분배법칙으로 $A$를 묶은 뒤 보기의 식과 비교한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "드모르간법칙",
+            "src": "solution",
+            "quote": "A-(B-C)=A-(B\\cap C^C)=A\\cap(B\\cap C^C)^C=A\\cap(B^C\\cup C)",
+            "evidenceType": "IMPLIED",
+            "justification": "여집합 전개에 드모르간 법칙 적용"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "명제 $p\\to\\sim q$가 참일 때"
+          },
+          {
+            "term": "진리집합",
+            "src": "stem",
+            "quote": "두 조건 $p,q$의 진리집합을 각각 $P,Q$라 하자"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 항상 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "진리집합",
+            "src": "solution",
+            "quote": "진리집합으로 나타내면 $P\\subset Q^C$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "서로소",
+            "src": "solution",
+            "quote": "$p$와 $q$가 동시에 참일 수 없다는 뜻이다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 조건이 배타적이어서 두 진리집합이 서로소임 판정"
+          },
+          {
+            "term": "차집합",
+            "src": "solution",
+            "quote": "따라서 $P-Q=P$가 항상 성립한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "scenarioNote": "도시 A-B-C 경로 경우의 수",
+      "slots": {
+        "given": [
+          {
+            "term": "경로",
+            "src": "stem",
+            "quote": "A도시를 출발하여 B도시를 거쳐 C도시까지 갔다가 B도시로 돌아오는 경우의 수는 80가지이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "자연수 $n$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "전체 경우의 수는 $4\\times n\\times(n-1)=80$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "$n^2-n-20=0$, 즉 $(n-5)(n+4)=0$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$의 값을 구하면?"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "자기 이름표를 고르는 두 명을 고르는 방법은 ${}_5C_2$가지이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "5명 중에서 2명만 자신의 이름표를 고르는 모든 경우의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "자기 이름표를 고를 두 명을 정하는 방법은 ${}_5C_2=10$가지이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수형도",
+            "src": "solution",
+            "quote": "모두 자기 이름표를 피하는 배치는 A가 B의 것, B가 C의 것, C가 A의 것을 고르는 경우와",
+            "evidenceType": "IMPLIED",
+            "justification": "자기 자신을 제외한 수형도 전개로 2가지 도출"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "전체 경우의 수는 $10\\times2=20$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "조합과 완전순열의 경우의 수를 곱함"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "필요충분조건",
+            "src": "stem",
+            "quote": "$p$가 $q$이기 위한 필요충분조건인 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "필요충분조건인 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "필요충분조건",
+            "src": "solution",
+            "quote": "필요충분조건은 $p\\to q$와 $q\\to p$가 모두 참이어야 한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "성립하지 않는 방향은 반례를 찾는다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "$x,y\\gt0$이면 $x+y\\gt0$, $xy\\gt0$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "양수 부호 조건과 합·곱 부등식의 동치 판정"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "$x,y$는 실수이다"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일대일대응",
+            "src": "stem",
+            "quote": "함수 $f$는 $X$에서 $Y$로의 일대일 대응이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(3)\\times f(4)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일대일대응",
+            "src": "solution",
+            "quote": "일대일 대응에서는 공역의 네 값이 각각 정확히 한 번씩 사용된다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$f(2)=8$, $f(3)=5$이고, 남은 값은 $6$이므로 $f(4)=6$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "차이 조건을 만족하는 함수값을 대응시키고 남은 원소 결정"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "무리함수 $f(x)=\\sqrt{x-1}+1$에 대하여"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "그 역함수 $y=f^{-1}(x)$의 그래프가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "이 두 점 사이의 거리를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "증가함수와 그 역함수의 공통점은 직선 $y=x$ 위에서 찾는다",
+            "evidenceType": "IMPLIED",
+            "justification": "증가함수와 역함수의 교점이 직선 y=x에 놓임을 이용"
+          },
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=x-1\\ge0$이라 두면 $t=\\sqrt t$이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "두 점 사이의 거리는 $\\sqrt{(2-1)^2+(2-1)^2}=\\sqrt2$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "서로 다른 7개의 자연수를 일렬로 나열하였더니"
+          },
+          {
+            "term": "여사건",
+            "src": "stem",
+            "quote": "적어도 한 쪽 끝에 홀수가 오는 경우의 수가 3600이었다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "홀수의 개수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "전체 배열에서 양쪽 끝이 모두 짝수인 배열을 빼서 구한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "양쪽 끝이 모두 짝수인 경우는 ${}_eP_2\\times5!=e(e-1)\\times120$가지이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "$e(e-1)=12$이다. 자연수 범위에서 $e=4$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "짝수 개수에 대한 이차방정식을 자연수 해로 해결"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "서로 다른 7개의 자연수를"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "산술기하평균",
+            "src": "stem",
+            "quote": "$a,b$가 양수일 때, $a+b\\ge2\\sqrt{ab}$가 성립한다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$ab$의 최댓값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "산술평균과 기하평균의 관계를 바로 적용할 수 있다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=\\sqrt{ab}\\gt0$으로 놓아 $t$의 범위를 구한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차부등식",
+            "src": "solution",
+            "quote": "$t^2+2t-8\\le0$, 즉 $(t+4)(t-2)\\le0$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$a,b$가 양수일 때"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "$x$가 유리수일 때"
+          },
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "$x$가 무리수일 때"
+          },
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "합성함수 $f\\circ f$의 치역은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "치역",
+            "src": "stem",
+            "quote": "치역은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치역",
+            "src": "solution",
+            "quote": "어떤 실수 $x$를 넣더라도 $f(x)$는 $0$ 또는 $1$이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$0$과 $1$은 모두 유리수이므로 $f(0)=1$, $f(1)=1$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "함숫값을 다시 함수식에 대입하여 합성함수 치역 산출"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "함수 $y=\\dfrac{x-1}{x-2}$의 그래프에 대한"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "점근선은 $x=2$, $y=1$이므로 ㄴ은 참이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "두 대칭축은 $y-1=\\pm(x-2)$, 즉 $y=x-1$, $y=-x+3$이므로 ㄷ도 참이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "제2사분면을 지난다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "$\\dfrac{{}_nC_r}{2}=\\dfrac{{}_nC_{r+1}}{3}=\\dfrac{{}_nC_{r+2}}{4}$를 만족시키는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "두 자연수 $n,r$의 합 $n+r$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "연속한 조합의 비를 이용하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "첫째 식에 3, 둘째 식에 2를 곱해 빼면 $r=13$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "비례식으로부터 도출된 두 일차방정식의 연립"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "두 자연수 $n,r$의 합"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "scenarioNote": "7개 정육각형 이동 경로 경우의 수",
+      "slots": {
+        "given": [
+          {
+            "term": "다각형",
+            "src": "stem",
+            "quote": "7개의 정육각형이 서로 이웃해 있다"
+          },
+          {
+            "term": "경로",
+            "src": "stem",
+            "quote": "1의 정육각형을 출발하여 모든 정육각형을 한 번씩만 지나는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "방법의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "1에서 첫 번째로 이동하는 칸을 2, 3, 4로 나누고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "따라서 전체는 $8+8+2=18$가지이다",
+            "evidenceType": "IMPLIED",
+            "justification": "각 첫 이동별 완주 경로 수를 합산"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "두 함수 $y=\\sqrt{x+1}$, $y=\\sqrt{x}$의 그래프가"
+          },
+          {
+            "term": "선분",
+            "src": "solution",
+            "quote": "$\\overline{P_kQ_k}=\\sqrt{k+1}-\\sqrt{k}$이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "유리수 $a,b$에 대하여 $ab$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "중간의 근호항이 모두 소거되어 $\\sqrt{32}-1=4\\sqrt2-1$이 남는다",
+            "evidenceType": "IMPLIED",
+            "justification": "인접한 맞물린 근호항들의 연속 소거"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "따라서 $a=-1$, $b=4$이므로 $ab=-4$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "유리수와 무리수 부분의 계수 비교"
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "유리수 $a,b$에 대하여"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "만들 수 있는 세 자리 자연수의 집합을 $A$"
+          },
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "서로 다른 3개의 자연수로 만들 수 있는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "$n(A\\cup B)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "$n(A)={}_7P_3=210$, $n(B)={}_6P_3=120$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "포함배제",
+            "src": "solution",
+            "quote": "두 집합의 합집합 원소 수는 각각의 원소 수를 더한 뒤 교집합을 한 번 뺀다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 3개의 자연수로"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\dfrac{3x-4}{x+a}$에 대하여"
+          },
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "$(f\\circ f)(k)=k$를 만족시키는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$a+k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "합성함수를 먼저 계산하고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "$x^2+(a-3)x+4=0$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중근",
+            "src": "solution",
+            "quote": "이차방정식이 중근을 가져야 한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식을 $0$으로 두면 $(a-3)^2-16=0$이므로 $a=7$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$a\\gt0$"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "24의 양의 약수"
+          },
+          {
+            "term": "여집합",
+            "src": "stem",
+            "quote": "$A^C=\\{1,8,24\\}$"
+          },
+          {
+            "term": "차집합",
+            "src": "stem",
+            "quote": "집합 $(B\\cup C)-A$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "모든 원소들의 합을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "여집합",
+            "src": "solution",
+            "quote": "주어진 여집합을 $U$에서 빼 원래 집합을 구한 뒤",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차집합",
+            "src": "solution",
+            "quote": "따라서 $(B\\cup C)-A=\\{1,24\\}$이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\sqrt{2x+a}-4$의"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "$f(x)$의 역함수와 역함수의 정의역을 구하시오"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정의역",
+            "src": "stem",
+            "quote": "역함수의 정의역을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$f(0)=\\sqrt a-4=0$이므로 $a=16$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "$f^{-1}(x)=\\dfrac{x^2}{2}+4x$이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정의역",
+            "src": "solution",
+            "quote": "역함수의 정의역은 $\\{x\\mid x\\ge-4\\}$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "scenarioNote": "회장/부회장 마주보는 좌석 배치 경우의 수",
+      "slots": {
+        "given": [
+          {
+            "term": "배정",
+            "src": "stem",
+            "quote": "마주보도록 배치된 고정된 좌석에서"
+          },
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "A동아리 6명, B동아리 4명이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "앉는 경우의 수를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "남은 위쪽 4자리에 $4!$가지로 앉고, B동아리의 나머지 2명은 남은 아래쪽 2자리에 $2!$가지로 앉는다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "따라서 경우의 수는 $4\\times3\\times4!\\times2!=576$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "임원 좌석 선택과 일반 회원 좌석 배치를 곱함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "대칭성",
+            "src": "stem",
+            "quote": "회장은 회장끼리, 부회장은 부회장끼리 정면으로 볼 수 있도록"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "같은 종류 9개의 공을 바구니에 넣으려고 한다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "공을 넣는 방법의 수를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "분할",
+            "src": "solution",
+            "quote": "9개의 공이 순서대로 7개의 비어 있지 않은 묶음으로 나뉘고",
+            "evidenceType": "IMPLIED",
+            "justification": "공 사이 틈을 경계로 분할하여 양의 정수 분할"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "경우의 수는 ${}_8C_6={}_8C_2=28$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "반드시 적어도 1개의 공을 넣어야 한다"
+          }
+        ]
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 24,
+    "quotesChecked": 141,
+    "quotesNotFound": 0,
+    "warningsRechecked": [
+      "#8 only 4 distinct terms",
+      "#10 only 3 distinct terms",
+      "#16 only 4 distinct terms",
+      "#21 only 4 distinct terms",
+      "#22 only 4 distinct terms",
+      "#24 only 4 distinct terms"
+    ],
+    "notes": "Q1, Q15 보기(ㄱㄴㄷ) 판정, Q21~Q24 서술형 적용."
+  }
+}
