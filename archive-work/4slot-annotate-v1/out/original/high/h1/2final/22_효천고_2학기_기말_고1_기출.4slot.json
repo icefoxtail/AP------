@@ -1,0 +1,231 @@
+{
+  "schemaVersion":"archive-meta-4slot-v0",
+  "sourceArchiveFile":"original/high/h1/2final/22_효천고_2학기_기말_고1_기출.js",
+  "sourceGitBlobSha":"456629f82051d55a62481a70a913c0836c62ebac",
+  "dictionaryVersion":"term-dict-v1.5-2026-11-04",
+  "judgedBy":{"agent":"Codex-gpt-6.1-terra","run":"original-61-70","at":"2026-11-04"},
+  "items":[
+    {
+      "sourceOrdinal":1,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"일차함수","src":"stem","quote":"함수 $y=-x+1$의 역함수는?"}],
+        "goal":[{"term":"역함수","src":"stem","quote":"함수 $y=-x+1$의 역함수는?"}],
+        "method":[{"term":"역함수","src":"solution","quote":"입력과 출력을 서로 바꾸어","evidenceType":"NAMED"}],
+        "condition":[]
+      },
+      "reasons":{"method":"입출력을 교환하고 y에 관하여 정리해 역함수를 구한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":2,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"유리함수","src":"stem","quote":"$f(x)=\\dfrac{5x+1}{2x-3}$"},{"term":"역함수","src":"stem","quote":"의 역함수가 $f^{-1}(x)"}],
+        "goal":[{"term":"매개변수","src":"stem","quote":"상수 $a,b,c$의 합"},{"term":"합","src":"stem","quote":"합 $a+b+c$의 값은?"}],
+        "method":[{"term":"역함수","src":"solution","quote":"$x,y$를 교환하여 역함수의 식을 구한","evidenceType":"NAMED"},{"term":"계수비교","src":"solution","quote":"다음 계수를 비교한다","evidenceType":"NAMED"}],
+        "condition":[]
+      },
+      "reasons":{"method":"입출력을 교환하여 역함수식을 구하고 계수를 비교해 상수의 합을 정한다."},"steps":["역함수","계수비교"],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":3,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"다항식","src":"stem","quote":"다항식 $(a+b)(p+q+r)"}],
+        "goal":[{"term":"항","src":"stem","quote":"전개 하였을 때 항의 개수"},{"term":"개수","src":"stem","quote":"항의 개수는?"}],
+        "method":[{"term":"전개","src":"solution","quote":"두 곱을 각각 전개하고","evidenceType":"NAMED"},{"term":"동류항","src":"solution","quote":"동류항이 있는지 확인한다","evidenceType":"NAMED"},{"term":"합의법칙","src":"solution","quote":"전체 항의 개수는 $6+6=12$","evidenceType":"IMPLIED","justification":"서로 다른 두 묶음의 항 수를 더한다."}],
+        "condition":[]
+      },
+      "reasons":{"method":"두 곱을 전개하고 동류항이 없는지 확인해 항 수를 더한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":4,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"유리함수","src":"stem","quote":"유리함수 $y=\\dfrac{2-5x}{x-1}$"},{"term":"직선","src":"stem","quote":"두 직선 $y=-x+a$, $y=x+b$"}],
+        "goal":[{"term":"매개변수","src":"stem","quote":"상수 $a+b$의 값은?"},{"term":"합","src":"stem","quote":"상수 $a+b$의 값은?"}],
+        "method":[{"term":"중심","src":"solution","quote":"그래프의 중심은 $(1,-5)$","evidenceType":"NAMED"},{"term":"축대칭","src":"solution","quote":"두 대칭축을 구해 주어진 두 직선과 비교","evidenceType":"NAMED"},{"term":"기울기","src":"solution","quote":"기울기가 $1,-1$인 두 대칭축","evidenceType":"NAMED"},{"term":"계수비교","src":"solution","quote":"와 비교하면 $a=-4$, $b=-6$","evidenceType":"IMPLIED","justification":"구한 두 대칭축과 제시된 식을 비교해 상수를 정한다."}],
+        "condition":[{"term":"축대칭","src":"stem","quote":"에 대하여 대칭일 때"}]
+      },
+      "reasons":{"method":"유리함수 중심을 찾고 그 점을 지나는 기울기 ±1의 두 대칭축을 주어진 직선과 비교한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":5,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"무리함수","src":"stem","quote":"함수 $y=\\sqrt{a+x}$"},{"term":"역함수","src":"stem","quote":"역함수의 그래프가 점 $(5,3)$"}],
+        "goal":[{"term":"매개변수","src":"stem","quote":"상수 $a$의 값은?"},{"term":"결정","src":"stem","quote":"상수 $a$의 값은?"}],
+        "method":[{"term":"역함수","src":"solution","quote":"원래 함수의 그래프 위 점 $(v,u)$","evidenceType":"IMPLIED","justification":"역함수 위 점의 좌표를 교환해 원함수의 점을 얻는다."},{"term":"대입","src":"solution","quote":"원래 함수에 $x=3$, $y=5$를 대입","evidenceType":"NAMED"}],
+        "condition":[{"term":"통과","src":"stem","quote":"그래프가 점 $(5,3)$을 지날 때"}]
+      },
+      "reasons":{"method":"역함수 위 점의 좌표를 교환하여 원함수에 대입하고 제곱해 상수를 정한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":6,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"분배","src":"stem","quote":"동전의 일부 또는 전부를 사용"},{"term":"합","src":"stem","quote":"지불할 수 있는 금액의 수"}],
+        "goal":[{"term":"개수","src":"stem","quote":"지불할 수 있는 방법의 수를 $A$"},{"term":"합","src":"stem","quote":"$A+B$ 값은?"}],
+        "method":[{"term":"곱의법칙","src":"solution","quote":"동전 사용 개수는 $3\\times4\\times5=60$","evidenceType":"IMPLIED","justification":"종류별 사용 개수의 선택을 곱한다."},{"term":"제외","src":"solution","quote":"아무 동전도 쓰지 않는 한 가지를 빼면","evidenceType":"IMPLIED","justification":"사용하지 않는 경우를 제외한다."},{"term":"범위","src":"solution","quote":"$0$부터 $39$까지 모든 정수를 만들 수 있다","evidenceType":"IMPLIED","justification":"겹치는 금액 구간을 합쳐 가능한 서로 다른 금액을 센다."}],
+        "condition":[{"term":"범위","src":"solution","quote":"100원은 $0,1,2$개"},{"term":"제외","src":"stem","quote":"0원을 지불하는 것은 제외한다"}]
+      },
+      "reasons":{"method":"동전 개수 선택을 곱해 사용 방법을 세고 가능한 금액 구간의 연속성을 이용해 서로 다른 금액을 따로 센다."},"steps":[],"scenarioNote":"100원·50원·10원 동전"
+    },
+    {
+      "sourceOrdinal":7,"format":"빈칸 채우기",
+      "slots":{
+        "given":[{"term":"조합","src":"solution","quote":"조합의 정의"},{"term":"항등식","src":"stem","quote":"다음 등식이 성립함을 보인 것이다"}],
+        "goal":[{"term":"판정","src":"stem","quote":"빈칸에 들어갈 말로 알맞은 것은?"}],
+        "method":[{"term":"조합","src":"solution","quote":"조합의 정의","evidenceType":"NAMED"},{"term":"팩토리얼","src":"solution","quote":"각각 $(n-1)!$, $r!$이다","evidenceType":"IMPLIED","justification":"조합의 계승 표현을 읽어 빈칸을 정한다."}],
+        "condition":[{"term":"범위","src":"stem","quote":"$1\\le r\\le n$일 때"}]
+      },
+      "reasons":{"method":"조합의 계승 정의를 각 조합에 적용하여 분자와 분모의 빈칸을 정한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":8,"format":"옳지 않은 것 고르기",
+      "slots":{
+        "given":[{"term":"순열","src":"solution","quote":"순열의 곱셈식이고"},{"term":"팩토리얼","src":"solution","quote":"팩토리얼 꼴로 바꾸어"}],
+        "goal":[{"term":"판정","src":"stem","quote":"이 아닌 것은?"}],
+        "method":[{"term":"순열","src":"solution","quote":"순열의 곱셈식이고","evidenceType":"NAMED"},{"term":"팩토리얼","src":"solution","quote":"팩토리얼 꼴로 바꾸어","evidenceType":"NAMED"},{"term":"항등식","src":"solution","quote":"항등적으로 같은지 비교한다","evidenceType":"IMPLIED","justification":"각 식을 순열의 표준식과 항등적으로 비교한다."}],
+        "condition":[{"term":"범위","src":"stem","quote":"$0\\lt r\\lt n$"}]
+      },
+      "reasons":{"method":"각 순열식을 계승 표현으로 변형하고 주어진 순열과 항등적으로 같은지 비교한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":9,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"순열","src":"solution","quote":"주어진 순열식이 이차방정식"}],
+        "goal":[{"term":"자연수","src":"stem","quote":"자연수 $n$의 값은?"},{"term":"결정","src":"stem","quote":"자연수 $n$의 값은?"}],
+        "method":[{"term":"순열","src":"solution","quote":"주어진 순열식이 이차방정식","evidenceType":"IMPLIED","justification":"두 순열을 연속된 두 수의 곱으로 바꾼다."},{"term":"이차방정식","src":"solution","quote":"이차방정식으로 바뀐다","evidenceType":"NAMED"},{"term":"인수분해","src":"solution","quote":"$(n-5)(n+4)=0$이다","evidenceType":"NAMED"}],
+        "condition":[{"term":"자연수","src":"stem","quote":"자연수 $n$의 값은?"}]
+      },
+      "reasons":{"method":"두 순열을 곱으로 바꾸어 이차방정식을 세우고 인수분해한 해에서 자연수를 선택한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":10,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"직사각형","src":"stem","quote":"정사각형이 아닌 직사각형"},{"term":"격자점","src":"solution","quote":"가로 $4$칸, 세로 $4$칸"}],
+        "goal":[{"term":"개수","src":"stem","quote":"직사각형의 개수는?"}],
+        "method":[{"term":"조합","src":"solution","quote":"두 세로선과 두 가로선을 고르는 방법","evidenceType":"IMPLIED","justification":"가로선과 세로선을 각각 두 개씩 선택한다."},{"term":"경우분류","src":"solution","quote":"정사각형은 한 변의 길이별로 센다","evidenceType":"IMPLIED","justification":"정사각형의 변의 길이별 개수를 더한다."},{"term":"제외","src":"solution","quote":"정사각형만 정확히 빼면 된다","evidenceType":"IMPLIED","justification":"전체 직사각형에서 정사각형을 뺀다."}],
+        "condition":[{"term":"수선","src":"stem","quote":"수직으로 만난다"},{"term":"일정","src":"stem","quote":"같은 간격을 이루며"}]
+      },
+      "reasons":{"method":"가로·세로선을 각 두 개씩 골라 직사각형을 세고 변의 길이별 정사각형을 제외한다."},"steps":[],"scenarioNote":"4×4 격자"
+    },
+    {
+      "sourceOrdinal":11,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"유한집합","src":"stem","quote":"집합 $A=\\{1,2,3,4,5,6,7\\}$"},{"term":"함수","src":"stem","quote":"$A$에서 $A$로의 함수"}],
+        "goal":[{"term":"개수","src":"stem","quote":"함수 $f$의 개수는?"}],
+        "method":[{"term":"일대일대응","src":"solution","quote":"$f$는 $A$의 원소를 한 번씩 대응시키는","evidenceType":"IMPLIED","justification":"유한집합의 역함수 존재에서 일대일대응을 얻는다."},{"term":"자리제한","src":"solution","quote":"$n=1,2,3,4,5$의 $5$가지","evidenceType":"IMPLIED","justification":"함숫값 1과 7의 정의역 위치 차를 2로 고정한다."},{"term":"순열","src":"solution","quote":"남은 함수값 $2,3,4,5,6$을 임의의 순서","evidenceType":"IMPLIED","justification":"나머지 다섯 함수값을 배열한다."},{"term":"곱의법칙","src":"solution","quote":"함수의 개수는 $5\\times5!$","evidenceType":"IMPLIED","justification":"자리 선택과 나머지 순열을 곱한다."}],
+        "condition":[{"term":"역함수","src":"stem","quote":"함수 $f$의 역함수가 존재한다"},{"term":"유일성","src":"stem","quote":"오직 한 원소 $n$에 대하여"}]
+      },
+      "reasons":{"method":"역함수 존재로 순열임을 이용해 차 6을 만드는 1과 7의 위치를 정하고 나머지 값을 배열한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":12,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"사전식배열","src":"stem","quote":"문자를 사전식으로 배열할 때"},{"term":"순열","src":"stem","quote":"sprite의 6개의 문자"}],
+        "goal":[{"term":"사전식순위","src":"stem","quote":"300번째에 있는 단어는?"}],
+        "method":[{"term":"사전식배열","src":"solution","quote":"앞 글자를 고정한 묶음의 크기","evidenceType":"IMPLIED","justification":"자리별 사전순 묶음을 차례로 좁힌다."},{"term":"팩토리얼","src":"solution","quote":"팩토리얼로 계산하여","evidenceType":"NAMED"},{"term":"열거","src":"solution","quote":"사전식 배열은 $est,ets,set,ste,tes,tse$","evidenceType":"IMPLIED","justification":"마지막 세 글자의 가능한 배열을 나열해 순위를 정한다."}],
+        "condition":[{"term":"사전식배열","src":"stem","quote":"사전식으로 배열할 때"}]
+      },
+      "reasons":{"method":"앞자리마다 남은 글자 순열의 묶음 크기를 계승으로 구하고 해당 묶음을 좁혀 마지막 배열을 열거한다."},"steps":[],"scenarioNote":"문자 배열"
+    },
+    {
+      "sourceOrdinal":13,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"이차함수","src":"stem","quote":"두 함수 $f(x)=\\dfrac14x^2"},{"term":"무리함수","src":"stem","quote":"$g(x)=\\sqrt{4x-k}$"}],
+        "goal":[{"term":"정수","src":"stem","quote":"모든 정수 $k$의 개수"},{"term":"개수","src":"stem","quote":"모든 정수 $k$의 개수"}],
+        "method":[{"term":"역함수","src":"solution","quote":"$g$는 $f$의 역함수이고","evidenceType":"NAMED"},{"term":"증가감소","src":"solution","quote":"$f$가 $x\\ge0$에서 증가하므로","evidenceType":"NAMED"},{"term":"고정점","src":"solution","quote":"$y=x$ 위의 고정점이다","evidenceType":"NAMED"},{"term":"근의분리","src":"solution","quote":"두 해가 서로 다르고 모두","evidenceType":"IMPLIED","justification":"고정점 방정식의 두 근이 서로 다르고 0 이상일 조건을 구한다."}],
+        "condition":[{"term":"정의역제한","src":"stem","quote":"$(x\\ge0)$"},{"term":"구별가능","src":"stem","quote":"서로 다른 두 점에서 만나도록"},{"term":"정수","src":"stem","quote":"모든 정수 $k$의 개수"}]
+      },
+      "reasons":{"method":"두 함수가 서로 역함수이고 증가함을 이용해 교점을 고정점으로 환원하고, 이차방정식의 서로 다른 비음수 두 근 조건을 구한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":14,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"조합","src":"stem","quote":"대표 3명을 뽑을 때"}],
+        "goal":[{"term":"개수","src":"stem","quote":"모든 경우의 수는?"}],
+        "method":[{"term":"조합","src":"solution","quote":"전체 선택은","evidenceType":"IMPLIED","justification":"전체 인원에서 대표 세 명을 순서 없이 고른다."},{"term":"제외","src":"solution","quote":"한 성별로만 뽑는 경우를 빼는","evidenceType":"IMPLIED","justification":"전체 선택에서 한 집단만 고른 두 경우를 제외한다."}],
+        "condition":[{"term":"적어도","src":"stem","quote":"적어도 1명씩 포함하는"}]
+      },
+      "reasons":{"method":"전체 세 명의 조합에서 남학생만과 여학생만 고르는 조합을 제외한다."},"steps":[],"scenarioNote":"동아리 대표 선택"
+    },
+    {
+      "sourceOrdinal":15,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"유리함수","src":"stem","quote":"함수 $y=\\dfrac{k-2}{x+4}"},{"term":"사분면","src":"stem","quote":"그래프는 모든 사분면을 지나고"}],
+        "goal":[{"term":"매개변수","src":"stem","quote":"실수 $k$의 값의 범위는?"},{"term":"범위","src":"stem","quote":"실수 $k$의 값의 범위는?"}],
+        "method":[{"term":"부호","src":"solution","quote":"함수값의 부호를 직접 조사하면","evidenceType":"NAMED"},{"term":"사분면","src":"solution","quote":"제4사분면 통과 여부는","evidenceType":"IMPLIED","justification":"양의 x에서 함수값의 부호로 제4사분면 통과를 판정한다."},{"term":"교집합","src":"solution","quote":"두 조건의 교집합은","evidenceType":"NAMED"}],
+        "condition":[{"term":"실수","src":"stem","quote":"실수 $k$의 값의 범위는?"},{"term":"제외","src":"stem","quote":"$k\\ne2$"},{"term":"사분면","src":"stem","quote":"그래프는 제4사분면을 지나지 않도록"}]
+      },
+      "reasons":{"method":"각 유리함수의 양의 x에서의 부호를 조사해 사분면 조건을 구하고 첫 그래프의 나머지 사분면을 확인한 뒤 범위의 교집합을 구한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":16,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"무리함수","src":"stem","quote":"무리함수 $f(x)=\\sqrt{-x+k}$"},{"term":"역함수","src":"stem","quote":"함수 $f(x)$의 역함수의 그래프"},{"term":"삼각형","src":"stem","quote":"삼각형 $ABC$가 있다"}],
+        "goal":[{"term":"매개변수","src":"stem","quote":"실수 $k$의 최댓값은?"},{"term":"최댓값","src":"stem","quote":"실수 $k$의 최댓값은?"}],
+        "method":[{"term":"역함수","src":"solution","quote":"역함수는 $y=k-x^2$","evidenceType":"NAMED"},{"term":"부등식의성질","src":"solution","quote":"$k=x^2+y\\le25+6=31$","evidenceType":"IMPLIED","justification":"삼각형의 좌표 범위에서 k의 상한을 얻는다."},{"term":"존재","src":"solution","quote":"변 $AC$ 위에 $x+y^2=31$인 점","evidenceType":"IMPLIED","justification":"상한에서 원함수도 삼각형과 만나는 점을 확인한다."}],
+        "condition":[{"term":"실수","src":"stem","quote":"실수 $k$의 최댓값은?"},{"term":"교점","src":"stem","quote":"삼각형 $ABC$와 만나도록"}]
+      },
+      "reasons":{"method":"원함수와 역함수의 좌표 조건을 k에 관해 정리하고 역함수의 상한을 점 C에서 달성한 뒤 원함수도 변 AC에서 만나는지 확인한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":17,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"경로","src":"stem","quote":"정사각형으로 이루어진 도로망"},{"term":"선분","src":"stem","quote":"선분 $CD$ 위의 점"}],
+        "goal":[{"term":"경로","src":"stem","quote":"$B$지점까지 가는 경로의 수"},{"term":"개수","src":"stem","quote":"경로의 수는?"}],
+        "method":[{"term":"최단경로","src":"solution","quote":"최단 경로로 윗변 $CD$를 거치려면","evidenceType":"NAMED"},{"term":"중복조합","src":"solution","quote":"중복을 허용하여 두 개를 고르므로","evidenceType":"IMPLIED","justification":"내려오는 두 세로선 위치를 비감소 순서의 중복 선택으로 센다."},{"term":"경우분류","src":"solution","quote":"$x_2=j$로 고정하면","evidenceType":"IMPLIED","justification":"두 번째 상승 위치별로 나누어 센다."},{"term":"곱의법칙","src":"solution","quote":"$j+1$가지이다","evidenceType":"IMPLIED","justification":"앞선 상승 위치와 두 하강 위치의 선택 수를 곱한다."},{"term":"합의법칙","src":"solution","quote":"네 번의 세로 이동 위치를 세어 합한다","evidenceType":"IMPLIED","justification":"두 번째 상승 위치별 경로 수를 합한다."}],
+        "condition":[{"term":"최단경로","src":"stem","quote":"최단 경로를 이용한다"},{"term":"재방문금지","src":"stem","quote":"한 번 지난 길은 다시 지나지 않는다"},{"term":"적어도","src":"stem","quote":"적어도 한 번 지나서"},{"term":"제외","src":"stem","quote":"왼쪽으로 움직일 수 없고"}]
+      },
+      "reasons":{"method":"상승 두 번과 하강 두 번의 위치를 비감소로 놓고 같은 길 재사용을 막는 부등식 아래 두 번째 상승 위치별 중복조합을 세어 합한다."},"steps":[],"scenarioNote":"도로망에서 윗변을 거치는 경로"
+    },
+    {
+      "sourceOrdinal":18,"format":"서술",
+      "slots":{
+        "given":[{"term":"무리함수","src":"stem","quote":"함수 $y=\\sqrt{6-2x}-1$"}],
+        "goal":[{"term":"정의역","src":"stem","quote":"그래프의 정의역과 치역"},{"term":"치역","src":"stem","quote":"그래프의 정의역과 치역"}],
+        "method":[{"term":"근호","src":"solution","quote":"근호 안이 $0$ 이상이어야","evidenceType":"IMPLIED","justification":"근호의 실수 정의 조건으로 x의 범위를 정한다."},{"term":"최솟값","src":"solution","quote":"제곱근의 최솟값으로 치역","evidenceType":"NAMED"}],
+        "condition":[]
+      },
+      "reasons":{"method":"근호 안의 비음수 조건으로 정의역을 정하고 제곱근의 최솟값과 무한한 증가를 이용해 치역을 구한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":19,"format":"서술",
+      "slots":{
+        "given":[{"term":"유한집합","src":"stem","quote":"집합 $X=\\{-3,-2,-1,0,1,2,3\\}$"},{"term":"함수","src":"stem","quote":"$X$에서 $X$로의 함수이다"}],
+        "goal":[{"term":"함수","src":"stem","quote":"함수의 개수를 구하고"},{"term":"개수","src":"stem","quote":"함수의 개수를 구하고"}],
+        "method":[{"term":"우함수","src":"stem","quote":"$f(-x)=f(x)$","evidenceType":"IMPLIED","justification":"서로 반대인 입력에 동일한 값을 주는 짝함수 조건을 이용한다."},{"term":"묶음","src":"solution","quote":"한 쌍으로 묶인다","evidenceType":"NAMED"},{"term":"중복순열","src":"solution","quote":"모두 $4$개이다","evidenceType":"IMPLIED","justification":"세 쌍과 0의 네 대표에 공역의 일곱 값을 독립적으로 선택한다."}],
+        "condition":[{"term":"양화","src":"stem","quote":"$X$의 모든 원소 $x$에 대하여"},{"term":"우함수","src":"stem","quote":"$f(-x)=f(x)$"}]
+      },
+      "reasons":{"method":"반대수 쌍마다 같은 함수값을 주어 세 쌍과 0으로 독립 선택 네 개를 만들고 공역의 값 일곱 개 중 중복 허용해 배정한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":20,"format":"서술",
+      "slots":{
+        "given":[{"term":"유리식","src":"solution","quote":"분모가 연속된 두 일차식의 곱인 항"},{"term":"합","src":"stem","quote":"분모를 0으로 하지 않는 모든 실수"}],
+        "goal":[{"term":"매개변수","src":"stem","quote":"$A,B$의 식 또는 값을 각각 구하고"},{"term":"함수식","src":"stem","quote":"$A,B$의 식 또는 값을 각각 구하고"}],
+        "method":[{"term":"부분분수","src":"solution","quote":"모든 항을 부분분수로 분해하여","evidenceType":"NAMED"},{"term":"망원합","src":"solution","quote":"망원합으로 만든다","evidenceType":"NAMED"},{"term":"통분","src":"solution","quote":"이를 통분하면","evidenceType":"NAMED"},{"term":"계수비교","src":"solution","quote":"와 비교하면 $A=x+16$, $B=14$","evidenceType":"IMPLIED","justification":"남은 식과 제시된 분수 꼴을 비교한다."}],
+        "condition":[{"term":"실수","src":"stem","quote":"모든 실수 $x$에 대하여"},{"term":"정의역제한","src":"stem","quote":"분모를 0으로 하지 않는"}]
+      },
+      "reasons":{"method":"각 항을 부분분수 차로 분해해 망원합으로 소거하고 남은 두 항을 통분해 제시된 형태와 비교한다."},"steps":["부분분수","망원합","통분"],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":21,"format":"서술",
+      "slots":{
+        "given":[{"term":"배정","src":"stem","quote":"2개의 조로 나누어 서로 다른 2곳"},{"term":"집단","src":"stem","quote":"남학생 4명과 여학생 4명"}],
+        "goal":[{"term":"개수","src":"stem","quote":"배정하는 경우의 수를 구하고"}],
+        "method":[{"term":"경우분류","src":"solution","quote":"인원수를 $3,4,5$로 나누고","evidenceType":"NAMED"},{"term":"조합","src":"solution","quote":"각 경우 전체 선택에서","evidenceType":"IMPLIED","justification":"한 장소의 학생 집합을 크기별로 조합하여 선택한다."},{"term":"제외","src":"solution","quote":"한 성별만 뽑히는 경우를 제외한다","evidenceType":"NAMED"},{"term":"합의법칙","src":"solution","quote":"전체 배정 방법은 $48+68+48=164$","evidenceType":"IMPLIED","justification":"첫 장소 인원수별로 겹치지 않는 경우를 더한다."}],
+        "condition":[{"term":"구별가능","src":"stem","quote":"서로 다른 2곳에 봉사활동"},{"term":"적어도","src":"stem","quote":"각 조에는 적어도 3명"},{"term":"배정","src":"stem","quote":"남학생과 여학생은 각각 최소 1명씩"}]
+      },
+      "reasons":{"method":"서로 다른 한 장소의 인원을 3·4·5명으로 나누고 각 선택에서 한 성별만 있는 경우를 뺀 뒤 합한다."},"steps":[],"scenarioNote":"두 봉사활동 장소"
+    },
+    {
+      "sourceOrdinal":22,"format":"서술",
+      "slots":{
+        "given":[{"term":"유리함수","src":"stem","quote":"함수 $f(x)=\\dfrac{ax+b}{x-2}$"},{"term":"합성함수","src":"stem","quote":"$f(f(x))=x$이다"},{"term":"직선","src":"stem","quote":"직선 $y=x$가 만나는 두 점"}],
+        "goal":[{"term":"함숫값","src":"stem","quote":"$f(5)$의 값을 구하고"}],
+        "method":[{"term":"반복합성","src":"solution","quote":"합성함수 조건으로 $a$를 구하고","evidenceType":"IMPLIED","justification":"자기 합성을 항등식으로 전개한다."},{"term":"계수비교","src":"solution","quote":"$x^2$항 계수는 $a-2$이므로","evidenceType":"IMPLIED","justification":"항등식의 이차항 계수를 비교해 a를 구한다."},{"term":"고정점","src":"solution","quote":"고정점 방정식의 두 근의 차","evidenceType":"NAMED"},{"term":"거리","src":"solution","quote":"두 점 사이의 거리는","evidenceType":"NAMED"},{"term":"판별식","src":"solution","quote":"이차방정식의 두 근의 차의 제곱은 판별식","evidenceType":"IMPLIED","justification":"고정점 방정식의 두 근 차로 판별식과 b를 정한다."},{"term":"대입","src":"solution","quote":"$f(5)$를 계산한다","evidenceType":"NAMED"}],
+        "condition":[{"term":"실수","src":"stem","quote":"모든 실수 $x$에 대하여"},{"term":"정의역제한","src":"stem","quote":"$x\\ne2$인 모든 실수"},{"term":"항상성립","src":"stem","quote":"모든 실수 $x$에 대하여"},{"term":"거리","src":"stem","quote":"두 점 사이의 거리는 $2\\sqrt6$"}]
+      },
+      "reasons":{"method":"자기 합성의 항등식에서 계수를 비교해 a를 구하고 고정점 두 근의 거리와 판별식으로 b를 정한 뒤 함숫값을 대입한다."},"steps":["반복합성","고정점","대입"],"scenarioNote":""
+    }
+  ],
+  "candidates":[],
+  "selfCheck":{"items":22,"quotesChecked":181,"quotesNotFound":0,"warningsRechecked":[1,9,14],"notes":"1번은 일차함수의 입출력을 교환하여 역함수식을 정리하는 한 단계이므로 추가 방법을 억지로 넣지 않았다. 9번은 순열을 이차방정식으로 바꾼 뒤 인수분해하는 단계가 핵심이므로 이차방정식을 보완했다. 14번은 전체 조합에서 남자만과 여자만 고르는 조합을 제외하면 끝난다. 20번은 A와 B의 정규화 조건이 없어 동시에 같은 영이 아닌 배수를 취한 표현도 가능하므로 해설의 값은 한 표현이다. 수정 후 검사기는 실행하지 않았다."}
+}
