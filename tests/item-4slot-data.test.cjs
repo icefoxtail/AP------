@@ -16,7 +16,8 @@ const SCHEMA = 'archive-meta-4slot-compact-v1';
 const SLOTS = ['given', 'goal', 'method', 'condition'];
 const DICT_BY_VERSION = {
   'term-dict-v1.3-2026-11-03': 'docs/architecture/4slot/term-dictionary-v1.3.json',
-  'term-dict-v1.4-2026-11-03': 'docs/architecture/4slot/term-dictionary-v1.4.json'
+  'term-dict-v1.4-2026-11-03': 'docs/architecture/4slot/term-dictionary-v1.4.json',
+  'term-dict-v1.5-2026-11-04': 'docs/architecture/4slot/term-dictionary-v1.5.json'
 };
 const FORMATS = ['단일 정답', '옳은 것 고르기', '옳지 않은 것 고르기', '보기(ㄱㄴㄷ) 판정', '보기 판정', '빈칸 채우기', '단답', '서술', '증명', '소문항 묶음'];
 

@@ -4,7 +4,8 @@
 //        [--only <시험지 경로>...] [--sampled <시험지 경로>=<번호,번호>] [--at YYYY-MM-DD] [--dry-run]
 // 절차와 이유: docs/operations/JS_Archive_4Slot_Review_and_Main_Import_CURRENT_v1.md
 // 쓰는 곳: archive/data/item-4slot/<시험지 경로 .js → .4slot.json>. 시험지 JS·question_metadata.json·등록기는 건드리지 않는다.
-// 이미 가져온 시험지는 건너뛴다(--only로 지정하면 덮어쓴다). 같은 입력이면 같은 결과가 나온다.
+// 실제 가져오기는 --only가 필수다(검수를 통과한 시험지만). --only 없이는 --dry-run으로 목록만 본다.
+// --only로 이미 있는 파일을 다시 가져오면 덮어쓰되 reviewedBy.sampled/at는 --sampled/--at를 주지 않는 한 그대로 둔다. 같은 입력이면 같은 결과가 나온다.
 const fs = require('fs'), path = require('path');
 const { execFileSync } = require('child_process');
 const { validateData, buildLookup, loadDict, norm, REPO_ROOT, DEFAULT_DICT } = require('./validate-4slot.cjs');
@@ -98,7 +99,8 @@ function main() {
   const o = parseArgs(process.argv.slice(2));
   if (!o.fromRef) throw new Error('--from-ref <ref> is required');
   if (!o.reviewer && !o.dryRun) throw new Error('--reviewer <name> is required (reviewedBy.agent is recorded in every file)');
-  const at = o.at || new Date().toISOString().slice(0, 10);
+  if (!o.dryRun && !o.only.length) throw new Error('a real import needs --only <exam path>... (only exams that passed review). Without --only the tool would import every unreviewed output; use --dry-run to list them.');
+  const today = new Date().toISOString().slice(0, 10);
   const refCommit = git(['rev-parse', o.fromRef]).trim();
   const branch = o.fromRef.replace(/^(refs\/remotes\/)?origin\//, '').replace(/^refs\/heads\//, '');
   const dict = loadDict(REPO_ROOT, DEFAULT_DICT);
@@ -142,7 +144,11 @@ function main() {
     const v = validateData(d, { root: REPO_ROOT, dict, lut });
     if (v.fail.length) { skip('VALIDATION_FAIL', `${v.fail.length} FAIL; first: ${v.fail.slice(0, 3).join(' | ')}`); continue; }
     const commit = git(['log', '-1', '--format=%H', o.fromRef, '--', outPath]).trim();
-    const sampled = (o.sampled.get(key) || []).slice().sort((a, b) => a - b);
+    // 덮어쓸 때는 이전 검수 기록(표본 번호, 날짜)을 지키고, --sampled/--at를 줄 때만 바꾼다.
+    let prev = null;
+    try { prev = JSON.parse(fs.readFileSync(dest, 'utf8')).reviewedBy || null; } catch { /* 새 파일 */ }
+    const at = o.at || (prev && prev.at) || today;
+    const sampled = (o.sampled.has(key) ? o.sampled.get(key) : (prev && Array.isArray(prev.sampled) ? prev.sampled : [])).slice().sort((a, b) => a - b);
     const compact = {
       schemaVersion: SCHEMA,
       sourceArchiveFile: examPath,
