@@ -3,10 +3,10 @@
   "examUid": "24_매산중_2학기_중간_중1_유사",
   "candidateJsPath": "archive/exams/similar/middle/m1/2mid/24_매산중_2학기_중간_중1_유사.js",
   "candidateMetaPath": "archive/exams/similar/middle/m1/2mid/24_매산중_2학기_중간_중1_유사.meta-q01-q24.json",
-  "candidateGitBlobSha1": "95d31d5da848d9a8eeccb5596400bcaae912487a",
-  "reviewTimestamp": "2026-11-04T19:15:00.000Z",
+  "candidateGitBlobSha1": "3776f02d8023601208cbfb7215ec6cece9730253",
+  "reviewTimestamp": "2026-11-04T12:17:25.819804+00:00",
   "reviewerRole": "MIDDLE_SIMILAR_REVIEWER_MERGER",
-  "signOffStatus": "SIGNED_OFF_PASS",
+  "signOffStatus": "SIGNED_OFF_PASS_WITH_NOTES",
   "auditSummary": {
     "totalQuestions": 24,
     "totalScore": 100,
@@ -201,10 +201,12 @@
       "derivedAnswer": "①",
       "candidateAnswer": "①",
       "blindMatch": true,
-      "blindDerivation": "크기가 같은 각의 작도 순서는 점 O 중심 호 그리기(㉠) -> 점 A 중심 동일 반지름 호 그리기(㉡) -> 컴퍼스로 선분 CD 길이 재기(㉢) -> 점 P 중심 호 그리기(㉣) -> 반직선 AQ 긋기(㉤) 순이다. 따라서 올바른 작도 순서는 ㉠ -> ㉡ -> ㉢ -> ㉣ -> ㉤이다. 정답 ①.",
+      "blindDerivation": "Independent pre-key freeze selected ①. The marked construction order is ㉠→㉡→㉢→㉣→㉤: draw the source arc, matching arc at A, set compass width to CD once, locate Q from P, then draw ray AQ.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "동일한 각 작도의 논리적 단계 절차를 정확히 추적함.",
-      "assetCheck": "PASS"
+      "pedagogicalComment": "Compass construction order matches source diagram and fixed-width condition; explanation correctly identifies arc centers, CD compass setting, intersection Q and ray AQ.",
+      "assetCheck": "PASS",
+      "targetedFinalQaResult": "PASS",
+      "reviewEvidence": ".tmp/finalqa-review/maesan-review.json"
     },
     {
       "qid": 11,
@@ -225,10 +227,12 @@
       "derivedAnswer": "③",
       "candidateAnswer": "③",
       "blindMatch": true,
-      "blindDerivation": "삼각형의 가장 긴 변의 길이가 11 cm이므로 x <= 11이다. 삼각부등식에 의해 가장 긴 변은 나머지 두 변의 합보다 작아야 하므로 11 < 5 + x에서 x > 6이다. 즉 6 < x <= 11이어야 하므로 주어진 보기 중 가능한 x의 값은 8이다. 정답 ③.",
+      "blindDerivation": "Independent pre-key freeze selected ③ (x=8). Triangle inequality gives 5+x>11, so x>6; since 11 cm is explicitly the longest side, x≤11. Only 8 among the listed choices satisfies 6<x≤11.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "삼각형의 세 변의 길이 결정조건 부등식을 정확히 도출함.",
-      "assetCheck": "EXEMPT"
+      "pedagogicalComment": "Triangle inequalities and longest-side condition give 6<x≤11; only 8 among choices qualifies.",
+      "assetCheck": "EXEMPT",
+      "targetedFinalQaResult": "PASS",
+      "reviewEvidence": ".tmp/finalqa-review/maesan-review.json"
     },
     {
       "qid": 13,
@@ -354,13 +358,15 @@
       "qid": 23,
       "type": "서술형",
       "score": 5,
-      "derivedAnswer": "(1) $\\triangle BCF$, SAS 합동 (2) ^\\circ$",
-      "candidateAnswer": "(1) $\\triangle BCF$, SAS 합동 (2) ^\\circ$",
+      "derivedAnswer": "(1) $\\triangle BCF$, SAS 합동 (2) $90^\\circ$",
+      "candidateAnswer": "(1) $\\triangle BCF$, SAS 합동 (2) $90^\\circ$",
       "blindMatch": true,
-      "blindDerivation": "(1) 정사각형 ABCD에서 AB=BC, 각 ABE=각 BCF=90도, BE=CF이므로 삼각형 ABE와 BCF는 두 변과 그 끼인각이 각각 같아 SAS 합동이다. (2) 각 BAE=각 CBF이므로 삼각형 ABG에서 각 GAB+각 GBA = 각 BAE + (90도-각 CBF) = 90도이다. 따라서 각 AGB = 180도 - 90도 = 90도이다. 정답 (1) 삼각형 BCF, SAS 합동 (2) 90도.",
+      "blindDerivation": "Independent pre-key freeze derived △BCF by SAS and ∠AGB=90°. The corrected solution establishes ∠BGE=90°; since A,G,E are collinear, ∠AGB and ∠BGE are adjacent angles on the straight line A-G-E and sum to 180°, so ∠AGB=90°.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "정사각형 내부 직각삼각형의 합동 조건과 각의 합을 이용한 수직 증명이 완벽함.",
-      "assetCheck": "PASS"
+      "pedagogicalComment": "Square sides and given BE=CF produce SAS; solution maps corresponding angles and correctly obtains a right angle at G via triangle BGE and linear pair.",
+      "assetCheck": "PASS",
+      "targetedFinalQaResult": "PASS",
+      "reviewEvidence": ".tmp/finalqa-review/maesan-review.json"
     },
     {
       "qid": 24,
@@ -374,5 +380,163 @@
       "pedagogicalComment": "대각선 개수 역산 후 다각형의 내각의 합 공식 적용 단계가 완벽히 서술됨.",
       "assetCheck": "EXEMPT"
     }
-  ]
+  ],
+  "targetedFinalQa": {
+    "schemaVersion": "FINALQA_TARGETED_REVIEW_V1",
+    "sourceBinding": {
+      "sourcePath": "archive/exams/similar/middle/m1/2mid/24_매산중_2학기_중간_중1_유사.js",
+      "sourceGitBlobSha1": "3776f02d8023601208cbfb7215ec6cece9730253",
+      "sourceSha256": "3899448e5607a7e396e52d509a8910e3449c804b01ea66e606df924b2cc99a44",
+      "priorReviewSourceGitBlobSha1": "95d31d5da848d9a8eeccb5596400bcaae912487a",
+      "relationship": "Current patched source; prior full review source is retained as provenance.",
+      "originalReceiptProvenance": {
+        "candidateGitBlobSha1": "95d31d5da848d9a8eeccb5596400bcaae912487a",
+        "reviewTimestamp": "2026-11-04T19:15:00.000Z"
+      },
+      "previousSourceBlobSha1": "95d31d5da848d9a8eeccb5596400bcaae912487a"
+    },
+    "reviewScope": {
+      "qidsChangedAndIndependentlyReviewed": [
+        {
+          "qid": 10,
+          "result": "PASS",
+          "currentAnswer": "①",
+          "independentAnswer": "Choice 1, ㉠→㉡→㉢→㉣→㉤",
+          "evidence": "Compass construction order matches source diagram and fixed-width condition; explanation correctly identifies arc centers, CD compass setting, intersection Q and ray AQ."
+        },
+        {
+          "qid": 12,
+          "result": "PASS",
+          "currentAnswer": "③",
+          "independentAnswer": "Choice 3, x=8",
+          "evidence": "Triangle inequalities and longest-side condition give 6<x≤11; only 8 among choices qualifies."
+        },
+        {
+          "qid": 23,
+          "result": "PASS",
+          "currentAnswer": "△BCF by SAS; 90°",
+          "independentAnswer": "△BCF by SAS; ∠AGB=90°",
+          "evidence": "Square sides and given BE=CF produce SAS; solution maps corresponding angles and correctly obtains a right angle at G via triangle BGE and linear pair."
+        }
+      ],
+      "unchangedQidsReused": {
+        "qids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          24
+        ],
+        "count": 21,
+        "status": "REUSE_VERIFIED",
+        "basis": "Compared prior Git blob 95d31d5da848d9a8eeccb5596400bcaae912487a with current source for content, choices, answer, solution, and image; all five fields are byte-equivalent for these 21 QIDs. No new review is claimed for unchanged rows.",
+        "comparedFields": [
+          "content",
+          "choices",
+          "answer",
+          "solution",
+          "image"
+        ],
+        "comparisonResult": "21/21 unchanged across all compared fields"
+      },
+      "previousReceiptRetained": true,
+      "priorFreezeRetained": true
+    },
+    "independentEvidence": {
+      "reviewPath": ".tmp/finalqa-review/maesan-review.json",
+      "reviewSha256": "b4495fa49a41cd6ab08cb175728b8a1221195a8d710a807a3b4f4c24ea477a46",
+      "freezePath": ".tmp/finalqa-review/maesan-freeze.json",
+      "freezeSha256": "4005b4efe8e38528cd6f5d9b6b93e107a5966e458bbdaf4a4866f15c0c89d5d3",
+      "studentBundlePath": ".tmp/finalqa-review/maesan-student.json",
+      "studentBundleSha256": "9096b2e3c7f48d3a858f5a50619461d1062c93fb5902b2776891aeeef335306b",
+      "freezeBeforeAnswerKeyInspection": true,
+      "reviewedAtUtc": "2026-11-04T12:17:25.819804+00:00",
+      "browserReviewSha256": "021e717d6f1a45c9c71222bc332a0cd3e51850c7aa8b6f8d85a1fd110b39a292",
+      "solutionMobileReviewSha256": "2110006a515b676c0f94a17981f746a5ad2d9c40027799722501f4b5ff2f5fbe"
+    },
+    "actualChromium": {
+      "examDesktop": "PASS; 24 questions, 19/19 referenced images decoded, math errors 0, overflow false",
+      "examMobile": "PASS; 24 questions, 19/19 referenced images decoded, math errors 0, overflow false",
+      "solutionDesktop": "PASS; 24 questions, math errors 0, overflow false",
+      "solutionMobile": "PASS after runtime.busy=false and all 24 question boxes rendered; Q10/Q12/Q23 mobile solution views checked, math/request/resource errors 0, overflow false.",
+      "solutionMobileEvidence": "Reviewed targeted Q10/Q12/Q23 after runtime.busy=false and 24 q-boxes; 0 math/request/resource errors and no overflow."
+    },
+    "separateStatuses": {
+      "finalReleaseHarness": "NOT_RUN",
+      "fourSlotReview": "NOT_RUN",
+      "publicationOrRemoteReadback": "NOT_RUN",
+      "solutionMobile": "NOT_VERIFIED; loading UI observed; follow-up pending"
+    },
+    "signOffScope": "Current source has 3 changed QIDs independently PASS and 21 unchanged QIDs REUSE_VERIFIED; desktop/mobile exam and solution views PASS after runtime completion.",
+    "history": {
+      "originalReceiptProvenance": {
+        "candidateGitBlobSha1": "95d31d5da848d9a8eeccb5596400bcaae912487a",
+        "reviewTimestamp": "2026-11-04T19:15:00.000Z",
+        "reviewerRole": "MIDDLE_SIMILAR_REVIEWER_MERGER",
+        "signOffStatus": "SIGNED_OFF_PASS"
+      },
+      "priorQuestionReviews": [
+        {
+          "qid": 10,
+          "type": "객관식",
+          "score": 4,
+          "derivedAnswer": "①",
+          "candidateAnswer": "①",
+          "blindMatch": true,
+          "blindDerivation": "크기가 같은 각의 작도 순서는 점 O 중심 호 그리기(㉠) -> 점 A 중심 동일 반지름 호 그리기(㉡) -> 컴퍼스로 선분 CD 길이 재기(㉢) -> 점 P 중심 호 그리기(㉣) -> 반직선 AQ 긋기(㉤) 순이다. 따라서 올바른 작도 순서는 ㉠ -> ㉡ -> ㉢ -> ㉣ -> ㉤이다. 정답 ①.",
+          "pedagogicalVerdict": "PASS",
+          "pedagogicalComment": "동일한 각 작도의 논리적 단계 절차를 정확히 추적함.",
+          "assetCheck": "PASS"
+        },
+        {
+          "qid": 12,
+          "type": "객관식",
+          "score": 4,
+          "derivedAnswer": "③",
+          "candidateAnswer": "③",
+          "blindMatch": true,
+          "blindDerivation": "삼각형의 가장 긴 변의 길이가 11 cm이므로 x <= 11이다. 삼각부등식에 의해 가장 긴 변은 나머지 두 변의 합보다 작아야 하므로 11 < 5 + x에서 x > 6이다. 즉 6 < x <= 11이어야 하므로 주어진 보기 중 가능한 x의 값은 8이다. 정답 ③.",
+          "pedagogicalVerdict": "PASS",
+          "pedagogicalComment": "삼각형의 세 변의 길이 결정조건 부등식을 정확히 도출함.",
+          "assetCheck": "EXEMPT"
+        },
+        {
+          "qid": 23,
+          "type": "서술형",
+          "score": 5,
+          "derivedAnswer": "(1) $\\triangle BCF$, SAS 합동 (2) ^\\circ$",
+          "candidateAnswer": "(1) $\\triangle BCF$, SAS 합동 (2) ^\\circ$",
+          "blindMatch": true,
+          "blindDerivation": "(1) 정사각형 ABCD에서 AB=BC, 각 ABE=각 BCF=90도, BE=CF이므로 삼각형 ABE와 BCF는 두 변과 그 끼인각이 각각 같아 SAS 합동이다. (2) 각 BAE=각 CBF이므로 삼각형 ABG에서 각 GAB+각 GBA = 각 BAE + (90도-각 CBF) = 90도이다. 따라서 각 AGB = 180도 - 90도 = 90도이다. 정답 (1) 삼각형 BCF, SAS 합동 (2) 90도.",
+          "pedagogicalVerdict": "PASS",
+          "pedagogicalComment": "정사각형 내부 직각삼각형의 합동 조건과 각의 합을 이용한 수직 증명이 완벽함.",
+          "assetCheck": "PASS"
+        }
+      ],
+      "solutionMobileInitialObservation": {
+        "result": "NOT_VERIFIED; direct route displayed loading UI; follow-up pending",
+        "evidenceReviewSha256": "a114b60b8737b7fd001c14d27cb679fe0e31f492b0305fb6f266370625c0391c",
+        "disposition": "RESOLVED_AFTER_IDLE_WAIT",
+        "note": "Initial direct mobile solution route displayed loading UI. Follow-up review waited for runtime.busy=false and all 24 question boxes, then verified the targeted solution views."
+      }
+    },
+    "previousSourceBlobSha1": "95d31d5da848d9a8eeccb5596400bcaae912487a",
+    "updatedAtUtc": "2026-11-04T12:17:25.819804+00:00"
+  }
 }

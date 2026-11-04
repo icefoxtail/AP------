@@ -364,7 +364,7 @@ window.questionBank = [
       "작도"
     ],
     "wide": false,
-    "content": "다음 그림은 $\\angle XOY$와 크기가 같은 각을 반직선 $AB$를 한 변으로 하여 작도하는 과정이다. 작도 순서를 바르게 나열한 것은? [4점]",
+    "content": "다음 그림은 $\\angle XOY$와 크기가 같은 각을 반직선 $AB$를 한 변으로 하여 작도하는 과정이다. 한 개의 컴퍼스만 사용하며, 컴퍼스 폭은 ㉢에서 선분 $CD$의 길이로 한 번 바꾸고 이후 다시 조정하지 않는다. 작도 순서를 바르게 나열한 것은? [4점]",
     "choices": [
       "㉠ $\\rightarrow$ ㉡ $\\rightarrow$ ㉢ $\\rightarrow$ ㉣ $\\rightarrow$ ㉤",
       "㉠ $\\rightarrow$ ㉢ $\\rightarrow$ ㉡ $\\rightarrow$ ㉣ $\\rightarrow$ ㉤",
@@ -440,7 +440,7 @@ window.questionBank = [
       "삼각형"
     ],
     "wide": false,
-    "content": "삼각형의 세 변의 길이가 각각 $5\\,\\mathrm{cm}$, $x\\,\\mathrm{cm}$이고 가장 긴 변의 길이가 $11\\,\\mathrm{cm}$일 때, $x$의 값으로 가능한 것은? [4점]",
+    "content": "삼각형의 세 변의 길이가 각각 $5\\,\\mathrm{cm}$, $x\\,\\mathrm{cm}$, $11\\,\\mathrm{cm}$이고, $11\\,\\mathrm{cm}$가 가장 긴 변일 때, $x$의 값으로 가능한 것은? [4점]",
     "choices": [
       "$4$",
       "$5$",
@@ -852,7 +852,7 @@ window.questionBank = [
     "points": 5,
     "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
     "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_SQUARE_CONGRUENCE_TRANSFER",
-    "solution": "[풀이과정]\n(1) 사각형 $ABCD$는 정사각형이므로\n$\\overline{AB} = \\overline{BC},\\quad \\angle ABE = \\angle BCF = 90^\\circ$\n조건에서 $\\overline{BE} = \\overline{CF}$이므로\n두 변의 길이와 그 끼인각의 크기가 각각 같다.\n따라서 $\\triangle ABE \\equiv \\triangle BCF$ (SAS 합동)이다.\n(2) $\\triangle ABE \\equiv \\triangle BCF$에서 대응각의 크기가 같으므로\n$\\angle BAE = \\angle CBF$\n직각삼각형 $ABE$에서 $\\angle B = 90^\\circ$이므로\n$\\angle BAE + \\angle AEB = 90^\\circ$\n$\\angle BAE = \\angle CBF$를 대입하면\n$\\angle CBF + \\angle AEB = 90^\\circ$, 즉 $\\angle GBE + \\angle GEB = 90^\\circ$이다.\n$\\triangle BGE$에서 세 내각의 합은 $180^\\circ$이므로\n$\\angle BGE = 180^\\circ - (\\angle GBE + \\angle GEB) = 180^\\circ - 90^\\circ = 90^\\circ$\n맞꼭지각 또는 평각의 성질에 의해\n$\\angle AGB = 180^\\circ - \\angle BGE = 180^\\circ - 90^\\circ = 90^\\circ$이다.\n[답]\n(1) $\\triangle BCF$, SAS 합동 (2) $90^\\circ$",
+    "solution": "[풀이과정]\n(1) 사각형 $ABCD$는 정사각형이므로\n$\\overline{AB} = \\overline{BC},\\quad \\angle ABE = \\angle BCF = 90^\\circ$\n조건에서 $\\overline{BE} = \\overline{CF}$이므로\n두 변의 길이와 그 끼인각의 크기가 각각 같다.\n따라서 $\\triangle ABE \\equiv \\triangle BCF$ (SAS 합동)이다.\n(2) $\\triangle ABE \\equiv \\triangle BCF$에서 대응각의 크기가 같으므로\n$\\angle BAE = \\angle CBF$\n직각삼각형 $ABE$에서 $\\angle B = 90^\\circ$이므로\n$\\angle BAE + \\angle AEB = 90^\\circ$\n$\\angle BAE = \\angle CBF$를 대입하면\n$\\angle CBF + \\angle AEB = 90^\\circ$, 즉 $\\angle GBE + \\angle GEB = 90^\\circ$이다.\n$\\triangle BGE$에서 세 내각의 합은 $180^\\circ$이므로\n$\\angle BGE = 180^\\circ - (\\angle GBE + \\angle GEB) = 180^\\circ - 90^\\circ = 90^\\circ$\n점 $A, G, E$는 한 직선 위에 있고, $\\angle AGB$와 $\\angle BGE$는 직선 $A-G-E$의 이웃한 각이므로 두 각은 평각을 이룬다. 따라서\n$\\angle AGB + \\angle BGE = 180^\\circ$이고,\n$\\angle AGB = 180^\\circ - 90^\\circ = 90^\\circ$이다.\n[답]\n(1) $\\triangle BCF$, SAS 합동 (2) $90^\\circ$",
     "image": "assets/images/24_매산중_2학기_중간_중1_유사/q23.svg",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
