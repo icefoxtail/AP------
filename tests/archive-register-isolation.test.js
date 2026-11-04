@@ -253,6 +253,20 @@ test('pass: build_db may need one re-run to reach its fixed point, then the pass
   assert.match(r.stdout, /build_db did not converge on the first run/);
 });
 
+test('pass: provisional META_PIPELINE approval keeps the request for student access verification', t => {
+  const f = passFixture(t, { 'pending-meta': { behavior:'fail', approval:{type:'META_PIPELINE_AUDIT'},sourceArchiveFile:'original/a.js',expectedQuestionCount:1 } });
+  fs.mkdirSync(path.join(f.dir,'archive/exams/original'),{recursive:true});
+  fs.writeFileSync(path.join(f.dir,'archive/engine.html'),'<html>engine</html>');
+  fs.writeFileSync(path.join(f.dir,'archive/exams/original/a.js'),'window.questionBank=[{id:1,content:"Question",solution:"Current solution"}];');
+  const r=f.run();
+  assert.equal(r.status,0,r.stdout+r.stderr);
+  assert.deepEqual(r.copies,['pending-meta.json']);
+  const receipt=f.readJson('.archive-meta-register/pending-supplement/pending-meta.receipt.json');
+  assert.equal(receipt.releaseStatus,'APPROVED');
+  assert.equal(receipt.metadataVerificationStatus,'NOT_VERIFIED');
+  assert.equal(r.builds,0);
+});
+
 test('pass: every request refused -> green, nothing built, rejections recorded', t => {
   const f = passFixture(t, { a: 'fail', b: 'fail' });
   const r = f.run();
