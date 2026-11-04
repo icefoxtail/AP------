@@ -1,0 +1,1191 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/high/h2/1mid/22_금당고_1학기_중간_고2_수학I.js",
+  "sourceGitBlobSha": "09cdcde7f34681bf26e004ca7d502728da9ca5c2",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Codex-gpt-6.1-terra",
+    "run": "original-221-230",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "\\right)}^{-2}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "음의 지수는 밑을 뒤집어",
+            "evidenceType": "IMPLIED",
+            "justification": "음의 정수 지수를 역수의 양의 지수로 바꾼다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "음의 지수의 정의로 역수의 제곱을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "로그",
+            "src": "stem",
+            "quote": "\\log_2 \\frac{1}{16}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "로그의 정의",
+            "src": "solution",
+            "quote": "로그는 지수로 바꾸어 생각합니다",
+            "evidenceType": "IMPLIED",
+            "justification": "진수를 2의 거듭제곱으로 표현한 지수를 찾는다."
+          },
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "로그는 지수로 바꾸어 생각합니다",
+            "evidenceType": "IMPLIED",
+            "justification": "로그와 지수식의 동치를 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "진수를 밑 2의 거듭제곱으로 바꾸어 로그값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일반각",
+            "src": "choices",
+            "quote": "$-780^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "나머지 넷과 다른 하나"
+          }
+        ],
+        "method": [
+          {
+            "term": "동경",
+            "src": "solution",
+            "quote": "두 각의 차가 $360^\\circ$의 정수배",
+            "evidenceType": "IMPLIED",
+            "justification": "한 바퀴의 정수배 차이를 이용해 동경이 같은 각을 판별한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각을 360도의 정수배만큼 옮겨 동경을 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부채꼴",
+            "src": "stem",
+            "quote": "넓이가 $12\\pi$인 부채꼴"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름의 길이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부채꼴의 넓이",
+            "src": "solution",
+            "quote": "넓이가 $S=\\frac12rl$",
+            "evidenceType": "IMPLIED",
+            "justification": "호의 길이와 반지름의 곱 절반으로 넓이를 쓴다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이가 $S=\\frac12rl$",
+            "evidenceType": "IMPLIED",
+            "justification": "호와 반지름으로 부채꼴의 넓이를 표현한다."
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$r=6$입니다",
+            "evidenceType": "IMPLIED",
+            "justification": "호와 넓이의 값을 대입해 반지름을 결정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "부채꼴 넓이를 반지름과 호의 길이로 나타내어 반지름을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱근",
+            "src": "stem",
+            "quote": "\\sqrt{\\frac{3^7 + 9^7}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "간단히 하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "$9=3^2$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "같은 인수를 묶습니다",
+            "evidenceType": "IMPLIED",
+            "justification": "분자와 분모에서 거듭제곱을 각각 묶어 공통인수를 약분한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "밑을 3으로 통일하여 공통인수를 약분하고 양의 제곱근을 취한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수함수",
+            "src": "stem",
+            "quote": "$y=4^{x+a}+b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "$a-b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "수평 점근선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "교점 $(0,1)$을 식에 넣습니다",
+            "evidenceType": "IMPLIED",
+            "justification": "그래프의 y절편을 식에 대입해 a를 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "그림의 수평 점근선에서 b를, y절편을 대입해 a를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "로그함수",
+            "src": "stem",
+            "quote": "y=\\log_a(x+2)+\\log_a(4-x)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의역",
+            "src": "solution",
+            "quote": "정의역 확인",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "로그의 성질",
+            "src": "solution",
+            "quote": "로그의 곱셈법칙",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "로그의 곱셈법칙",
+            "evidenceType": "IMPLIED",
+            "justification": "로그의 곱셈법칙을 사용한다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "9-(x-1)^2",
+            "evidenceType": "IMPLIED",
+            "justification": "진수 이차식의 최댓값을 구한다."
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "로그함수는 감소하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "최솟값 존재를 위해 밑이 0과 1 사이임을 판정하고 단조성을 이용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$a>0, a\\ne 1$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "진수 조건과 밑의 범위를 따져 감소 로그함수의 최솟값을 이차식의 최댓값으로 정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수함수",
+            "src": "stem",
+            "quote": "4^x+4^{-x}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=2^x+2^{-x}$라 놓습니다",
+            "evidenceType": "IMPLIED",
+            "justification": "역수 관계의 두 지수항의 합을 치환한다."
+          },
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "$t\\ge2\\sqrt{1}=2$",
+            "evidenceType": "IMPLIED",
+            "justification": "곱이 1인 양수 두 항의 합의 최솟값을 구한다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "2-(t-1)^2",
+            "evidenceType": "IMPLIED",
+            "justification": "치환 범위에서 이차식의 최대와 등호를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "두 실수 $a, b$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "역수인 두 지수항의 합을 치환하고 산술기하평균으로 범위를 정한 뒤 이차식의 최댓값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원뿔",
+            "src": "stem",
+            "quote": "모선의 길이가 $8$인 원뿔"
+          }
+        ],
+        "goal": [
+          {
+            "term": "겉넓이",
+            "src": "stem",
+            "quote": "원뿔의 겉넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원뿔의 겉넓이",
+            "src": "solution",
+            "quote": "밑면의 넓이와 옆면의 넓이를 더합니다",
+            "evidenceType": "IMPLIED",
+            "justification": "원뿔의 밑면과 부채꼴 옆면 넓이를 합한다."
+          },
+          {
+            "term": "겉넓이",
+            "src": "solution",
+            "quote": "밑면의 넓이와 옆면의 넓이를 더합니다",
+            "evidenceType": "IMPLIED",
+            "justification": "밑면과 옆면의 넓이를 합해 겉넓이를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "원뿔의 밑면과 옆면 넓이를 각각 구해 합한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각함수",
+            "src": "stem",
+            "quote": "\\sin\\theta - \\cos\\theta"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱",
+            "src": "solution",
+            "quote": "$(\\sin\\theta-\\cos\\theta)^2",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 차를 제곱하여 사인과 코사인의 곱을 얻는다."
+          },
+          {
+            "term": "삼각함수의 관계",
+            "src": "solution",
+            "quote": "\\sin^2\\theta+\\cos^2\\theta=1",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱합 항등식과 사인 코사인 비를 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "주어진 차를 제곱해 사인 코사인의 곱을 구하고 탄젠트와 역수의 합으로 바꾼다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "로그함수",
+            "src": "stem",
+            "quote": "$y=\\log_2 x, y=\\log_2 4x$"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이의 비가 $3:1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "$p+4^q$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "로그의 성질",
+            "src": "solution",
+            "quote": "$AB=\\log_2(4t)-\\log_2t",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 x좌표에서 두 로그의 차로 수직 길이를 구한다."
+          },
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "$AB=\\log_2(4t)-\\log_2t",
+            "evidenceType": "IMPLIED",
+            "justification": "로그의 차를 몫의 로그로 바꾼다."
+          },
+          {
+            "term": "삼각형의 넓이",
+            "src": "solution",
+            "quote": "공통 밑변 $AB$를 가지므로",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 밑변을 가진 삼각형의 넓이 비를 높이 비로 바꾼다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "공통 밑변 $AB$를 가지므로",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 밑변의 두 넓이 비를 높이 비로 바꾼다."
+          },
+          {
+            "term": "로그의 정의",
+            "src": "solution",
+            "quote": "$2^q=20$",
+            "evidenceType": "IMPLIED",
+            "justification": "D의 로그 좌표에서 지수값을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "($t>1$)"
+          },
+          {
+            "term": "대소관계",
+            "src": "stem",
+            "quote": "$t$보다 작다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 로그의 차로 밑변 길이를 정하고 넓이 비를 높이 비로 바꾸어 점 D의 좌표를 얻는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수",
+            "src": "stem",
+            "quote": "(n^{-3} \\times 12)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$m+n$의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "$m=(12n^{-3})^{-2}",
+            "evidenceType": "IMPLIED",
+            "justification": "음의 지수를 바꾸어 n의 여섯제곱을 144로 나눈 식으로 정리한다."
+          },
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "$144=2^4\\cdot3^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "정수 조건에 필요한 n의 소인수와 최소 배수를 찾는다."
+          },
+          {
+            "term": "증가",
+            "src": "solution",
+            "quote": "$n$이 커질수록 증가하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "허용된 가장 작은 n에서 합이 최소임을 판정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "두 자연수 $m, n$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "자연수 조건을 소인수 배수 조건으로 바꾸고 증가성을 이용해 최솟값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "로그",
+            "src": "stem",
+            "quote": "$1+\\log_2 b"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "\\log_2 \\frac{12b}{a}"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "공통값을 $t$라 두고",
+            "evidenceType": "IMPLIED",
+            "justification": "세 로그의 공통값을 변수로 설정한다."
+          },
+          {
+            "term": "로그의 정의",
+            "src": "solution",
+            "quote": "지수식으로 바꿉니다",
+            "evidenceType": "IMPLIED",
+            "justification": "각 로그식을 밑별 거듭제곱으로 바꾼다."
+          },
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "지수식으로 바꿉니다",
+            "evidenceType": "IMPLIED",
+            "justification": "로그와 지수의 정의 관계를 사용한다."
+          },
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "$6^t=2^t3^t$",
+            "evidenceType": "IMPLIED",
+            "justification": "밑 6의 지수를 밑 2와 3의 곱으로 바꾸어 a,b의 비를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "두 양수 $a, b$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "공통 로그값을 지수식으로 바꾸고 밑 6을 2와 3의 곱으로 분해해 양수의 비를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수함수",
+            "src": "stem",
+            "quote": "\\right)}^x$의 그래프"
+          },
+          {
+            "term": "로그함수",
+            "src": "stem",
+            "quote": "$y=\\log_2(x-n)+m$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(4)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "평행이동을 식으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "1-d=\\log_2d$",
+            "evidenceType": "IMPLIED",
+            "justification": "기울기와 로그 그래프 조건을 연립해 점 C를 정한다."
+          },
+          {
+            "term": "삼각형의 넓이",
+            "src": "solution",
+            "quote": "$[ABC]=\\frac12(m\\sqrt2)",
+            "evidenceType": "IMPLIED",
+            "justification": "수직인 변을 밑변과 높이로 사용해 m을 결정한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$[ABC]=\\frac12(m\\sqrt2)",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형의 밑변과 높이로 넓이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$n, m$은 양의 실수"
+          },
+          {
+            "term": "수직",
+            "src": "stem",
+            "quote": "기울기가 $-1$인 직선"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평행이동과 직선 조건에서 n=m을 얻고 점 C 및 수직 삼각형 넓이로 상수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수방정식",
+            "src": "stem",
+            "quote": "$4^x - k \\cdot 2^{x+1} + 3k = 0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$k$의 값의 범위는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=2^x$로 치환합니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D=(-2k)^2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "근의 분리",
+            "src": "solution",
+            "quote": "두 근 모두 $1$보다 커야 함",
+            "evidenceType": "IMPLIED",
+            "justification": "치환한 이차방정식의 두 근이 모두 1보다 큰 조건을 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$의 값"
+          },
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 두 양의 실근"
+          },
+          {
+            "term": "실근",
+            "src": "stem",
+            "quote": "서로 다른 두 양의 실근"
+          },
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "서로 다른 두 양의 실근"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "t=2^x로 치환해 두 근이 서로 다르고 1보다 큰 조건을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "자연수 전체의 집합을 $S$"
+          },
+          {
+            "term": "로그",
+            "src": "stem",
+            "quote": "\\log_2 n - \\log_2 k"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의 수",
+            "src": "stem",
+            "quote": "$n$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "로그의 성질",
+            "src": "solution",
+            "quote": "\\log_2(n/k)$가 정수이면",
+            "evidenceType": "IMPLIED",
+            "justification": "로그의 차를 비의 로그로 바꾸고 정수 지수의 거듭제곱으로 표시한다."
+          },
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "\\log_2(n/k)$가 정수이면",
+            "evidenceType": "IMPLIED",
+            "justification": "로그의 몫 성질을 이용한다."
+          },
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "$n=2^rd$ ($d$는 홀수",
+            "evidenceType": "IMPLIED",
+            "justification": "2의 거듭제곱 부분을 떼어 같은 홀수 부분의 수를 묶는다."
+          },
+          {
+            "term": "경우의 수",
+            "src": "solution",
+            "quote": "$25<d\\le50$",
+            "evidenceType": "IMPLIED",
+            "justification": "해당 범위의 홀수를 세어 유일한 원소인 경우를 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$50$ 이하의 자연수"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "는 정수}"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "로그 차의 정수 조건을 같은 홀수 부분의 동치로 바꾸고 한 원소만 남는 범위의 홀수를 센다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "로그함수",
+            "src": "stem",
+            "quote": "$y=\\log_a x$의 그래프"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $\\mathrm{ABC}$의 넓이가 $1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "$a^4$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "$A=(1,0)$뿐입니다",
+            "evidenceType": "IMPLIED",
+            "justification": "밑이 다른 두 로그함수의 교점을 구한다."
+          },
+          {
+            "term": "삼각형의 넓이",
+            "src": "solution",
+            "quote": "삼각형 넓이는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "삼각형 넓이는",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형의 밑변과 높이로 넓이를 구한다."
+          },
+          {
+            "term": "로그의 정의",
+            "src": "solution",
+            "quote": "로그를 지수로 바꾸면",
+            "evidenceType": "IMPLIED",
+            "justification": "로그 관계를 지수식으로 바꾸어 a의 네제곱을 구한다."
+          },
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "로그를 지수로 바꾸면",
+            "evidenceType": "IMPLIED",
+            "justification": "로그식과 지수식의 동치를 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$a>2$인 상수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 로그 곡선의 교점과 수직 밑변으로 넓이를 세워 a의 지수값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "부채꼴",
+            "src": "stem",
+            "quote": "부채꼴 모양의 텃밭이 있다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "통로 $\\mathrm{CEFD}$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "부채꼴의 넓이",
+            "src": "solution",
+            "quote": "r^2+s^2=100$",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 중심각의 안쪽과 바깥 띠 넓이를 같게 두어 반지름 관계를 구한다."
+          },
+          {
+            "term": "정수해",
+            "src": "solution",
+            "quote": "정수해는 $r=6,s=8$뿐",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "호의 길이",
+            "src": "solution",
+            "quote": "$(r+s+10)\\theta",
+            "evidenceType": "IMPLIED",
+            "justification": "세 호의 길이 합으로 중심각을 구한다."
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "$(r+s+10)\\theta",
+            "evidenceType": "IMPLIED",
+            "justification": "각 호의 길이를 반지름과 공통 중심각의 곱으로 나타낸다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "부채꼴을 뺀 띠입니다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 부채꼴의 넓이 차로 통로 넓이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "길이는 각각 자연수"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이는 서로 같다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "넓이 같음으로 반지름의 정수해를 구하고 호의 합에서 중심각을 구해 부채꼴 넓이를 뺀다."
+      },
+      "steps": [],
+      "scenarioNote": "부채꼴 텃밭 통로"
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "지름으로 하는 원 위의 점"
+          },
+          {
+            "term": "거듭제곱근",
+            "src": "stem",
+            "quote": "\\sqrt[3]{54}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의 값",
+            "src": "stem",
+            "quote": "$x+y-z$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "원주각 $\\angle APB=90^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스 정리",
+            "src": "solution",
+            "quote": "피타고라스 정리로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "직각삼각형의 닮음에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형의 넓이",
+            "src": "solution",
+            "quote": "넓이를 두 방법으로 계산하면",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 직각삼각형의 넓이를 두 밑변으로 나타내 높이를 구한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이를 두 방법으로 계산하면",
+            "evidenceType": "IMPLIED",
+            "justification": "한 삼각형의 밑변을 다르게 하여 넓이를 구한다."
+          },
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "넓이와 지수 비교",
+            "evidenceType": "IMPLIED",
+            "justification": "근호를 유리수 지수로 정리하고 지수를 읽는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "서로소인 자연수"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "$z$는 정수이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "반원 원주각과 피타고라스 정리, 직각삼각형 닮음 및 넓이로 목표 삼각형을 구해 지수를 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "로그함수",
+            "src": "stem",
+            "quote": "$f(x)=\\log_2(x+k)$"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "그 역함수 $f^{-1}(x)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "자연수 $n$의 최솟값"
+          }
+        ],
+        "method": [
+          {
+            "term": "증가",
+            "src": "solution",
+            "quote": "정의역에서 증가합니다",
+            "evidenceType": "IMPLIED",
+            "justification": "증가함수와 역함수의 교점이 y=x 위임을 보인다."
+          },
+          {
+            "term": "고정점",
+            "src": "solution",
+            "quote": "고정점 조건 $f(x)=x$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "$2^t(2^n-1)=n$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 고정점의 식을 빼서 공통 인수를 묶는다."
+          },
+          {
+            "term": "로그의 성질",
+            "src": "solution",
+            "quote": "$g(n)-g(2n)=",
+            "evidenceType": "IMPLIED",
+            "justification": "두 로그의 차를 몫의 로그로 바꿔 부등식을 정리한다."
+          },
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "$g(n)-g(2n)=",
+            "evidenceType": "IMPLIED",
+            "justification": "로그의 차를 몫의 로그로 바꾼다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$의 최솟값"
+          },
+          {
+            "term": "대소관계",
+            "src": "stem",
+            "quote": "점 $\\mathrm{B}$의 $x$좌표보다 작다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "증가성과 역함수로 고정점을 얻고 교점 간격을 이용해 g를 구하여 로그 부등식을 푼다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [
+    {"term":"로그의 정의","en":"LOGARITHM_DEFINITION","synonyms":[],"kind":"방법","parent":"로그","note":"로그식과 지수식의 동치를 사용한다.","usedIn":[2,11,13,17]},
+    {"term":"로그의 성질","en":"LOGARITHM_LAWS","synonyms":[],"kind":"방법","parent":"로그","note":"곱과 몫의 로그를 합과 차로 바꾼다.","usedIn":[7,11,16,20]},
+    {"term":"부채꼴의 넓이","en":"SECTOR_AREA_FORMULA","synonyms":[],"kind":"방법","parent":"넓이","note":"반지름과 호도법 중심각 또는 호의 길이로 부채꼴의 넓이를 구한다.","usedIn":[4,18]},
+    {"term":"원뿔의 겉넓이","en":"CONE_SURFACE_AREA","synonyms":[],"kind":"방법","parent":"겉넓이","note":"원뿔의 밑면과 옆면 넓이를 더한다.","usedIn":[9]},
+    {"term":"삼각형의 넓이","en":"TRIANGLE_AREA_FORMULA","synonyms":[],"kind":"방법","parent":"넓이","note":"밑변과 높이의 곱의 절반으로 삼각형의 넓이를 구한다.","usedIn":[11,14,17,19]},
+    {"term":"호의 길이","en":"SECTOR_ARC_LENGTH","synonyms":[],"kind":"방법","parent":"호","note":"호도법 중심각과 반지름의 곱으로 호의 길이를 구한다.","usedIn":[18]}
+  ],
+  "selfCheck": {
+    "items": 20,
+    "quotesChecked": 134,
+    "quotesNotFound": 0,
+    "warningsRechecked": [1,2,3,4,5,6,9,10],
+    "notes": "Q6,11,14,18 원문 PNG와 Q14,18,19 해설 SVG Chrome PNG 일곱 개 직접 열람. Q6 9e42ae5d; Q11 7af92b5d; Q14 1fd63b37 및 5a8a77f4; Q18 e2415070 및 c7f0e88a; Q19 5e2df768. Q1 음의 지수를 역수의 제곱으로 바꾼다. Q2 로그 정의에 따라 1/16을 2의 거듭제곱으로 나타낸다. Q3 각 차가 360도의 정수배인지로 동경을 판별한다. Q4 호 길이와 넓이의 공식으로 반지름 방정식을 푼다. Q5 같은 밑의 거듭제곱으로 바꾸어 공통인수를 약분한다. Q6 수평 점근선과 y절편으로 두 상수를 정한다. Q9 원뿔의 밑면과 옆면 넓이를 합한다. Q10 사인과 코사인 차를 제곱하여 곱을 구하고 목표식을 변형한다."
+  }
+}
