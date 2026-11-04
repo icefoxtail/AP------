@@ -324,5 +324,39 @@ class NormalCurvePlan(unittest.TestCase):
         self.assertFalse(S.segments_cross((0,0),(10,0),(10,0),(10,10)))     # touching at an end is not crossing
 
 
+class ScatterEqualUnits(unittest.TestCase):
+    chart={'kind':'SCATTER','points':[{'x':'1','y':'1'}],
+           'xRange':['0','2'],'yRange':['0','2'],'grid':False,'diagonal':True,'equalUnits':True}
+
+    @staticmethod
+    def svg(xunit=50,yunit=50):
+        # Independent hand-built geometry. All dots, labels and the diagonal
+        # remain consistent with their own axis, even when its scale is wrong.
+        out=['<svg xmlns="http://www.w3.org/2000/svg" data-stat-chart="stat-chart-figure-v1" data-kind="SCATTER">']
+        for axis,unit in [('x',xunit),('y',yunit)]:
+            for value in [0,2]:
+                coord=round(100+value*unit if axis=='x' else 250-value*unit,6)
+                x,y=(coord,250) if axis=='x' else (100,coord)
+                ident='%s-%d'%(axis,value)
+                out.append('<line id="%s" data-role="%s-tick" data-value="%d" x1="%s" y1="%s" x2="%s" y2="%s"/>'%(ident,axis,value,x,y,x,y))
+                cx,cy=(x,y+15) if axis=='x' else (x-15,y)
+                out.append('<g id="%s-label" data-owner="%s" data-label-role="%s-tick" data-tex="%d" data-box="%s,%s,10,10"/>'%(ident,ident,axis,value,cx-5,cy-5))
+        out.append('<circle id="pt-0" data-role="point" data-index="0" fill="#111" r="3.6" cx="%s" cy="%s"/>'%(round(100+xunit,6),round(250-yunit,6)))
+        out.append('<line id="diagonal" x1="100" y1="250" x2="%s" y2="%s"/>'%(round(100+2*xunit,6),round(250-2*yunit,6)))
+        return ''.join(out)+'</svg>'
+
+    def test_equal_units_are_recovered_from_actual_tick_coordinates(self):
+        self.assertEqual(S.audit(self.chart,self.svg())['errors'],[])
+        # A completely coherent stretched chart used to pass the observer.
+        self.assertEqual(S.audit(self.chart,self.svg(xunit=65,yunit=47))['errors'],['SC_SCATTER_EQUAL_UNITS'])
+        legacy={k:v for k,v in self.chart.items() if k!='equalUnits'}
+        self.assertEqual(S.audit(legacy,self.svg(xunit=65,yunit=47))['errors'],[])
+        self.assertEqual(S.audit({**legacy,'equalUnits':False},self.svg(xunit=65,yunit=47))['errors'],[])
+
+    def test_only_coordinate_rounding_is_tolerated(self):
+        self.assertEqual(S.audit(self.chart,self.svg(xunit=50,yunit=50.0000003))['errors'],[])
+        self.assertEqual(S.audit(self.chart,self.svg(xunit=50,yunit=50.00001))['errors'],['SC_SCATTER_EQUAL_UNITS'])
+
+
 if __name__=='__main__':
     unittest.main()
