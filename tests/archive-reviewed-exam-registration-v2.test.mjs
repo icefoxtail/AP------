@@ -1636,3 +1636,406 @@ test("source rebind refuses changed question text, value changes, drifted metada
   typed.request.approval.type = "REVIEW2"; typed.request.approval.reviewPassCount = 2;
   assert.throws(() => registerReviewedExamV2({ root: typed.root, request: typed.request }), /sourceRebind requires FINAL_QA/);
 });
+
+// ---- SOP_v1.2 META_AUDIT_ATOMIC_PACKAGE / approval v4 ----
+const SOP_V12_EVIDENCE_ROOT = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1";
+const SOP_V12_STUDENT_FIELDS = ["id", "questionType", "content", "choices", "answer", "solution", "image", "images", "figureSvg", "solutionImage", "solutionFigureSvg", "layoutTag", "wide"];
+
+function sopV12Refs(f) {
+  const ref = relative => ({ path: relative, sha256: hash(fs.readFileSync(path.join(f.root, relative))) });
+  const proof = f.request.approval.metaPipelineAudit;
+  const auditRef = ref(proof.auditPackageRef.path);
+  const manifestRef = ref(proof.manifestRef.path);
+  const sourceParityRef = ref(proof.sourceParityRef.path);
+  const correctiveReviewRef = ref(proof.correctiveReviewRef.path);
+  const parentRef = ref(f.request.items[0].basicScopeParentRef.path);
+  const evidenceRefs = [...f.evidenceRefs, auditRef, manifestRef, sourceParityRef, correctiveReviewRef, parentRef];
+  f.request.approval.evidenceRefs = evidenceRefs;
+  f.request.approval.metaPipelineAudit = { ...proof, auditPackageRef: auditRef, manifestRef, sourceParityRef, correctiveReviewRef };
+  f.request.items = f.request.items.map(item => ({ ...item, basicScopeParentRef: parentRef, evidenceRefs }));
+  return { auditRef, manifestRef, sourceParityRef, correctiveReviewRef, parentRef };
+}
+
+function attachSopV12(f, options = {}) {
+  const { driveSourceHashDrift = false, difficultyDebt = false, legacyAssignment = null, preserveConditionKeys = null, auditEdit, manifestEdit, reviewEdit, parityEdit } = options;
+  const source = f.request.sourceArchiveFile;
+  const requestId = f.request.requestId;
+  const sourceDriveId = "fixture-sop-v12-drive";
+  const examTitle = "픽스처 사람이 읽는 시험지명";
+  const examSlug = path.basename(source, ".js");
+
+  const conditionKeys = preserveConditionKeys ?? [];
+  f.q = { ...f.q, conditionKeys, score: 3, questionType: "객관식" };
+  if (difficultyDebt) delete f.q.difficultyBucket;
+  const sourceText = `window.questions = ${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${source}`, sourceText);
+  f.request.expectedSourceBlobSha1 = blob(sourceText);
+  const sourceBytes = fs.readFileSync(path.join(f.root, `archive/exams/${source}`));
+  const productionSha = hash(sourceBytes);
+  const declaredSha = driveSourceHashDrift ? "e".repeat(64) : productionSha;
+
+  if (!conditionKeys.length) f.request.registryChanges = f.request.registryChanges.filter(change => change.collection !== "conditions");
+  const item = f.request.items[0];
+  const metadata = f.read(META);
+  const current = metadata.records[0];
+  current.difficultyBucket = difficultyDebt ? "중" : 3;
+  current.conditionKeys = conditionKeys;
+  const originalAssignment = legacyAssignment
+    ? { standardUnitKey: legacyAssignment.standardUnitKey, subUnitKey: legacyAssignment.subUnitKey }
+    : { standardUnitKey: f.q.standardUnitKey, subUnitKey: f.q.subUnitKey };
+  const correctedAssignment = { standardUnitKey: item.after.standardUnitKey, subUnitKey: item.after.subUnitKey };
+  if (difficultyDebt) current.fieldStatus = { ...(current.fieldStatus || {}), difficulty: "approved_source" };
+  f.put(META, metadata);
+  delete item.after.difficultyBucket;
+  delete item.before.difficultyBucket;
+  if (difficultyDebt) { item.after.difficultyBucket = null; item.before.difficultyBucket = "중"; }
+  item.after.conditionKeys = conditionKeys;
+  item.before.conditionKeys = conditionKeys;
+  item.after.level = f.q.level;
+  item.before.level = current.level ?? null;
+  item.after.L1 = f.q.standardUnit;
+  item.after.L2 = f.q.subUnit;
+  item.before.L1 = null;
+  item.before.L2 = null;
+
+  const parentPath = `${SOP_V12_EVIDENCE_ROOT}/${requestId}.parent-labels.json`;
+  f.put("archive/data/basic-scope-parent-links.json", { records: [] });
+  f.put(parentPath, { schemaVersion: "archive-meta-pipeline-parent-label-evidence-v1",
+    sourcePath: "archive/data/basic-scope-parent-links.json",
+    sourceSha256: hash(fs.readFileSync(path.join(f.root, "archive/data/basic-scope-parent-links.json"))),
+    records: [{ curriculumKey: item.after.curriculum, courseKey: item.after.courseKey, standardUnitKey: correctedAssignment.standardUnitKey,
+      subUnitKey: correctedAssignment.subUnitKey, L1: f.q.standardUnit, L2: f.q.subUnit }], derivedRecords: [] });
+
+  const audit = { manifestType: "META_AUDIT_ATOMIC_PACKAGE", examTitle, examSlug, sourceDriveId,
+    sourceFileSha256: declaredSha, standardCourse: item.after.standardCourse, primaryPack: "NEW_COURSE",
+    totalQuestionsAudited: 1, auditPassedCount: 1, holdCount: 0,
+    auditStatus: "AUDIT_COMPLETE_100_PERCENT_PASS", sopVersion: "SOP_v1.2", auditedAt: "2026-11-04T00:00:00Z",
+    auditRecords: [{ questionNumber: 1, sourceQuestionId: 1, auditStatus: "PASS", packIsolationPassed: true,
+      designatedPack: "NEW_COURSE", verifiedPrimaryTaxonomy: "PT_NEW", verifiedTemplatePattern: "TPL_NEW",
+      verifiedCrossConcepts: ["CC_NEW"], curriculumAlignment: { unitKey: originalAssignment.standardUnitKey, subUnitKey: originalAssignment.subUnitKey },
+      levelVerbatimPreserved: "중", difficultyRank: 3,
+      difficultyReasonTrace: "SOP_v1.2 감사 설명이며 원문 발췌가 아니다.",
+      solutionStepCountVerified: 5, zeroHoldCompliance: true, zeroStubCertified: true }] };
+  auditEdit?.(audit, f);
+
+  const manifest = { manifestType: "COURIER_INTAKE_MANIFEST", examTitle, examSlug, sourceDriveId,
+    sourceFileSha256: declaredSha, standardCourse: item.after.standardCourse, targetPack: "NEW_COURSE",
+    totalQuestionsToRegister: 1, readyForRegistrationCount: 1, pipelineStatus: "READY_FOR_COURIER_REGISTRATION",
+    sopVersion: "SOP_v1.2", registeredAt: "2026-11-04T00:00:00Z",
+    recordsToBind: [{ questionNumber: 1, sourceQuestionId: 1, score: 3, level: "중", difficulty: 3,
+      primaryTaxonomy: "PT_NEW", templatePattern: "TPL_NEW", pack: "NEW_COURSE", crossConcepts: ["CC_NEW"],
+      unitKey: originalAssignment.standardUnitKey, subUnitKey: originalAssignment.subUnitKey, answer: f.q.answer, questionType: f.q.questionType,
+      choicesCount: f.q.choices.length, zeroStubCertified: true }] };
+  manifestEdit?.(manifest, f);
+
+  const review = { schemaVersion: "archive-meta-pipeline-sop-v12-corrective-review-v1", sopVersion: "SOP_v1.2",
+    examTitle, examSlug, sourceArchiveFile: source, sourceFileDriveId: sourceDriveId,
+    originalDeclaredSourceSha256: declaredSha, excerptBasis: "CURRENT_PRODUCTION_SOURCE",
+    driveSourceSha256: productionSha, productionSourceSha256: productionSha, sourceHashDrift: declaredSha !== productionSha,
+    reviewer: { id: "fixture-root-reviewer", role: "ROOT" }, reviewedAt: "2026-11-04T00:00:00Z", questionCount: 1,
+    rows: [{ questionUid: item.questionUid, sourceOrdinal: 1, auditQuestionNumber: 1,
+      problemTypeKey: "PT_NEW", templateKey: "TPL_NEW", crossConceptKeys: ["CC_NEW"],
+      standardUnitKey: originalAssignment.standardUnitKey, subUnitKey: originalAssignment.subUnitKey,
+      originalAssignment, correctedAssignment, assignmentCorrectionReason: legacyAssignment?.correctionReason ?? null,
+      sourceTextExcerpt: f.q.content, solutionDecisiveExcerpt: f.q.solution,
+      visualEvidence: { assetChecked: false, visualType: "NONE" } }] };
+  reviewEdit?.(review, f, audit);
+
+  const studentPayloadHash = hash(stable(Object.fromEntries(SOP_V12_STUDENT_FIELDS.map(field =>
+    [field, Object.hasOwn(f.q, field) ? f.q[field] : null]))));
+  const sourceParity = { schemaVersion: "archive-meta-pipeline-source-parity-v1",
+    status: "EXACT_STUDENT_VISIBLE_PARITY", sourceFileDriveId: sourceDriveId,
+    parityBasis: "EXACT_SOURCE_SHA256",
+    originalDeclaredSourceSha256: declaredSha,
+    driveSourceSha256: productionSha, productionSourceSha256: productionSha,
+    productionSourceBlobSha1: f.request.expectedSourceBlobSha1, sourceArchiveFile: source,
+    studentFields: SOP_V12_STUDENT_FIELDS, questionCount: 1,
+    records: [{ sourceOrdinal: 1, questionId: 1, questionUid: item.questionUid,
+      driveSourceTextExcerptMatched: false, driveSolutionExcerptMatched: false,
+      driveStudentPayloadSha256: studentPayloadHash, productionStudentPayloadSha256: studentPayloadHash,
+      studentPayloadEqual: true }] };
+  parityEdit?.(sourceParity, f);
+
+  const auditPath = `${SOP_V12_EVIDENCE_ROOT}/${requestId}.audit.json`;
+  const manifestPath = `${SOP_V12_EVIDENCE_ROOT}/${requestId}.manifest.json`;
+  const reviewPath = `${SOP_V12_EVIDENCE_ROOT}/${requestId}.corrective-review.json`;
+  const parityPath = `${SOP_V12_EVIDENCE_ROOT}/${requestId}.source-parity.json`;
+  f.put(auditPath, audit);
+  f.put(manifestPath, manifest);
+  f.put(reviewPath, review);
+  f.put(parityPath, sourceParity);
+  item.basicScopeParentRef = { path: parentPath, sha256: hash(fs.readFileSync(path.join(f.root, parentPath))) };
+  f.request.approval = { type: "META_PIPELINE_AUDIT", metadataReviewed: true, approvedBy: "fixture-root-reviewer",
+    evidenceRefs: [], metaPipelineAudit: {
+      schemaVersion: "meta-pipeline-audit-approval-v4", sourceFileDriveId: sourceDriveId,
+      auditPackageRef: { path: auditPath, sha256: hash(fs.readFileSync(path.join(f.root, auditPath))) },
+      manifestRef: { path: manifestPath, sha256: hash(fs.readFileSync(path.join(f.root, manifestPath))) },
+      sourceParityRef: { path: parityPath, sha256: hash(fs.readFileSync(path.join(f.root, parityPath))) },
+      correctiveReviewRef: { path: reviewPath, sha256: hash(fs.readFileSync(path.join(f.root, reviewPath))) },
+      unreviewedFields: difficultyDebt ? [{ field: "difficultyBucket", status: "EVIDENCE_DEBT",
+        questionUids: [item.questionUid],
+        reason: "The SOP_v1.2 audit reports a difficulty rank, not an audited 1-5 bucket; no bucket is inferred." }] : [],
+      existingConceptReviews: [] } };
+  const refs = sopV12Refs(f);
+  return { audit, manifest, review, sourceParity, refs };
+}
+
+function rewriteSopV12Doc(f, refs, kind, mutate) {
+  const target = refs[kind];
+  const doc = f.read(target.path);
+  mutate(doc);
+  f.put(target.path, doc);
+  return sopV12Refs(f);
+}
+
+test("SOP_v1.2 META_AUDIT_ATOMIC_PACKAGE registers through approval v4 with a corrective review", t => {
+  const f = fixture(t);
+  attachSopV12(f);
+  const sourcePath = `archive/exams/${f.request.sourceArchiveFile}`;
+  const before = fs.readFileSync(path.join(f.root, sourcePath));
+  const auditBefore = fs.readFileSync(path.join(f.root, f.request.approval.metaPipelineAudit.auditPackageRef.path));
+  const manifestBefore = fs.readFileSync(path.join(f.root, f.request.approval.metaPipelineAudit.manifestRef.path));
+  const dry = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.equal(dry.totalQuestions, 1);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, sourcePath)), before);
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.approvalType, "META_PIPELINE_AUDIT");
+  const row = f.read(META).records[0];
+  assert.equal(row.metadataApprovalType, "META_PIPELINE_AUDIT");
+  assert.equal(row.problemTypeKey, "PT_NEW");
+  assert.equal(row.templateKey, "TPL_NEW");
+  assert.equal(Object.hasOwn(row.fieldStatus, "condition"), false);
+  assert.equal(Object.hasOwn(row.fieldStatus, "difficulty"), false);
+  const receipt = f.read(`${SOP_V12_EVIDENCE_ROOT}/${f.request.requestId}.json`);
+  assert.equal(receipt.metaPipelineAudit.inputAuditVariant, "sop_v12_corrective_review");
+  assert.equal(receipt.metaPipelineAudit.sopV12CorrectiveReview.templateInflation, "NOT_REPORTED_IN_SOURCE_SCHEMA");
+  assert.equal(receipt.metaPipelineAudit.sopV12CorrectiveReview.conditionEvidence, "NOT_PRESENT_IN_SOURCE_SCHEMA");
+  assert.equal(receipt.metaPipelineAudit.sopV12CorrectiveReview.sourceHashDrift, false);
+  assert.equal(receipt.metaPipelineAudit.sopV12CorrectiveReview.originalDeclaredSourceSha256,
+    receipt.metaPipelineAudit.sopV12CorrectiveReview.productionSourceSha256);
+  assert.equal(Object.hasOwn(receipt.metaPipelineAudit.sopV12CorrectiveReview, "newTemplatesCreated"), false);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, sourcePath)), before);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, f.request.approval.metaPipelineAudit.auditPackageRef.path)), auditBefore);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, f.request.approval.metaPipelineAudit.manifestRef.path)), manifestBefore);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+});
+
+test("SOP_v1.2 approval v4 keeps the declared SHA while current source bytes differ only through the review", t => {
+  const f = fixture(t);
+  const attached = attachSopV12(f, { driveSourceHashDrift: true });
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.status, "PASS");
+  const receipt = f.read(`${SOP_V12_EVIDENCE_ROOT}/${f.request.requestId}.json`);
+  const sop = receipt.metaPipelineAudit.sopV12CorrectiveReview;
+  assert.equal(sop.sourceHashDrift, true);
+  assert.equal(sop.originalDeclaredSourceSha256, "e".repeat(64));
+  assert.equal(sop.driveSourceSha256, hash(fs.readFileSync(path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`))));
+  assert.equal(sop.driveSourceSha256, sop.productionSourceSha256);
+  assert.equal(sop.productionSourceSha256, hash(fs.readFileSync(path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`))));
+  assert.equal(receipt.metaPipelineAudit.auditSourceSha256, "e".repeat(64));
+  assert.equal(receipt.metaPipelineAudit.driveSourceSha256, sop.driveSourceSha256);
+  assert.equal(receipt.metaPipelineAudit.productionSourceSha256, sop.productionSourceSha256);
+  assert.equal(f.read(attached.refs.auditRef.path).sourceFileSha256, "e".repeat(64));
+  assert.notEqual(receipt.sourceRawSha256, "e".repeat(64));
+});
+
+test("SOP_v1.2 approval v4 records difficulty as EVIDENCE_DEBT instead of binding the rank", t => {
+  const f = fixture(t);
+  attachSopV12(f, { difficultyDebt: true });
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.difficultyBucket, null);
+  assert.equal(row.fieldStatus.difficulty, "EVIDENCE_DEBT");
+  assert.equal(row.difficultyEvidenceDebt.status, "EVIDENCE_DEBT");
+});
+
+test("SOP_v1.2 approval v4 rejects a fabricated source excerpt", t => {
+  const f = fixture(t);
+  const attached = attachSopV12(f);
+  rewriteSopV12Doc(f, attached.refs, "correctiveReviewRef", review => { review.rows[0].sourceTextExcerpt = "원문에 없는 발췌"; });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /source excerpt is not in the production question/);
+});
+
+test("SOP_v1.2 approval v4 rejects reusing difficultyReasonTrace as a source excerpt", t => {
+  const f = fixture(t);
+  const attached = attachSopV12(f);
+  const audit = f.read(attached.refs.auditRef.path);
+  rewriteSopV12Doc(f, attached.refs, "correctiveReviewRef", review => {
+    review.rows[0].sourceTextExcerpt = audit.auditRecords[0].difficultyReasonTrace;
+  });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /must not reuse difficultyReasonTrace/);
+});
+
+test("SOP_v1.2 approval v4 rejects visual evidence that does not match the production assets", t => {
+  const f = fixture(t);
+  const attached = attachSopV12(f);
+  rewriteSopV12Doc(f, attached.refs, "correctiveReviewRef", review => { review.rows[0].visualEvidence.visualType = "IMAGE"; });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /visual evidence does not match the production source assets/);
+});
+
+for (const [name, mutate, pattern] of [
+  ["UID", review => { review.rows[0].questionUid = "other-uid"; }, /UID.ordinal.classification parity/],
+  ["audit ordinal", review => { review.rows[0].auditQuestionNumber = 2; }, /UID.ordinal.classification parity/],
+  ["primary taxonomy", review => { review.rows[0].problemTypeKey = "PT_OTHER"; }, /UID.ordinal.classification parity/],
+  ["template", review => { review.rows[0].templateKey = "TPL_OTHER"; }, /UID.ordinal.classification parity/],
+  ["cross concepts", review => { review.rows[0].crossConceptKeys = []; }, /UID.ordinal.classification parity/],
+  ["subunit", review => { review.rows[0].subUnitKey = "SUB_OTHER"; }, /UID.ordinal.classification parity/]
+]) {
+  test(`SOP_v1.2 approval v4 rejects corrective review ${name} drift`, t => {
+    const f = fixture(t);
+    const attached = attachSopV12(f);
+    rewriteSopV12Doc(f, attached.refs, "correctiveReviewRef", mutate);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), pattern);
+  });
+}
+
+test("SOP_v1.2 approval v4 requires the corrective review reference and binds both SHAs", t => {
+  const missing = fixture(t);
+  attachSopV12(missing);
+  const proof = missing.request.approval.metaPipelineAudit;
+  const reviewPath = proof.correctiveReviewRef.path;
+  delete missing.request.approval.metaPipelineAudit.correctiveReviewRef;
+  missing.request.approval.evidenceRefs = missing.request.approval.evidenceRefs.filter(ref => ref.path !== reviewPath);
+  missing.request.items = missing.request.items.map(item => ({ ...item,
+    evidenceRefs: item.evidenceRefs.filter(ref => ref.path !== reviewPath) }));
+  assert.throws(() => registerReviewedExamV2({ root: missing.root, request: missing.request }), /correctiveReviewRef is required only for approval v4/);
+
+  const original = fixture(t);
+  const originalAttached = attachSopV12(original);
+  rewriteSopV12Doc(original, originalAttached.refs, "correctiveReviewRef", review => { review.originalDeclaredSourceSha256 = "0".repeat(64); });
+  assert.throws(() => registerReviewedExamV2({ root: original.root, request: original.request }), /original source SHA does not match the audit declaration/);
+
+  const current = fixture(t);
+  const currentAttached = attachSopV12(current);
+  rewriteSopV12Doc(current, currentAttached.refs, "correctiveReviewRef", review => { review.productionSourceSha256 = "0".repeat(64); });
+  assert.throws(() => registerReviewedExamV2({ root: current.root, request: current.request }), /production source SHA does not match the current source bytes/);
+
+  const drive = fixture(t);
+  const driveAttached = attachSopV12(drive);
+  rewriteSopV12Doc(drive, driveAttached.refs, "correctiveReviewRef", review => { review.driveSourceSha256 = "0".repeat(64); });
+  assert.throws(() => registerReviewedExamV2({ root: drive.root, request: drive.request }), /actual current Drive SHA does not match the current source bytes/);
+
+  const parityDrive = fixture(t);
+  const parityDriveAttached = attachSopV12(parityDrive, { driveSourceHashDrift: true });
+  rewriteSopV12Doc(parityDrive, parityDriveAttached.refs, "sourceParityRef", parity => { parity.driveSourceSha256 = "e".repeat(64); });
+  assert.throws(() => registerReviewedExamV2({ root: parityDrive.root, request: parityDrive.request }), /exact current Drive.production bytes/);
+
+  const flag = fixture(t);
+  const flagAttached = attachSopV12(flag);
+  rewriteSopV12Doc(flag, flagAttached.refs, "correctiveReviewRef", review => { review.sourceHashDrift = true; });
+  assert.throws(() => registerReviewedExamV2({ root: flag.root, request: flag.request }), /sourceHashDrift flag is inconsistent/);
+});
+
+test("SOP_v1.2 approval v4 keeps N/N and zero holds fail-closed", t => {
+  const count = fixture(t);
+  const countAttached = attachSopV12(count);
+  rewriteSopV12Doc(count, countAttached.refs, "auditRef", audit => { audit.auditPassedCount = 0; });
+  assert.throws(() => registerReviewedExamV2({ root: count.root, request: count.request }), /audit denominator.identity/);
+
+  const hold = fixture(t);
+  const holdAttached = attachSopV12(hold);
+  rewriteSopV12Doc(hold, holdAttached.refs, "auditRef", audit => { audit.holdCount = 1; });
+  assert.throws(() => registerReviewedExamV2({ root: hold.root, request: hold.request }), /audit denominator.identity/);
+});
+
+test("SOP_v1.2 approval v4 rejects manifest classification and production answer drift", t => {
+  const taxonomy = fixture(t);
+  const taxonomyAttached = attachSopV12(taxonomy);
+  rewriteSopV12Doc(taxonomy, taxonomyAttached.refs, "manifestRef", manifest => {
+    manifest.recordsToBind[0].primaryTaxonomy = "PT_OTHER";
+  });
+  assert.throws(() => registerReviewedExamV2({ root: taxonomy.root, request: taxonomy.request }), /SOP_v1.2 manifest binding mismatch/);
+
+  const answer = fixture(t);
+  const answerAttached = attachSopV12(answer);
+  rewriteSopV12Doc(answer, answerAttached.refs, "manifestRef", manifest => {
+    manifest.recordsToBind[0].answer = "9";
+  });
+  assert.throws(() => registerReviewedExamV2({ root: answer.root, request: answer.request }), /SOP_v1.2 manifest binding mismatch/);
+});
+
+test("SOP_v1.2 approval v4 refuses Condition evidence and unaudited difficulty buckets", t => {
+  const condition = fixture(t);
+  attachSopV12(condition);
+  condition.request.items[0].after.conditionKeys = ["COND_OTHER"];
+  assert.throws(() => registerReviewedExamV2({ root: condition.root, request: condition.request }), /audited binding limits violated/);
+
+  const bucket = fixture(t);
+  attachSopV12(bucket);
+  bucket.request.items[0].after.difficultyBucket = 3;
+  assert.throws(() => registerReviewedExamV2({ root: bucket.root, request: bucket.request }), /audited binding limits violated/);
+
+  const debt = fixture(t);
+  attachSopV12(debt, { difficultyDebt: true });
+  debt.request.approval.metaPipelineAudit.unreviewedFields = [];
+  assert.throws(() => registerReviewedExamV2({ root: debt.root, request: debt.request }), /difficultyBucket invalid without explicit META_PIPELINE_AUDIT EVIDENCE_DEBT/);
+});
+
+test("SOP_v1.2 approval v4 accepts a documented unit correction without creating fake original keys", t => {
+  const f = fixture(t);
+  f.q.standardUnitKey = "M3-05";
+  f.q.subUnitKey = "M3-03-01";
+  attachSopV12(f, { legacyAssignment: { standardUnitKey: "M3-05", subUnitKey: "M3-03-01",
+    correctionReason: "M3-05 is the audit statistics label; the canonical unit is UNIT_NEW and M3-03-01 has no canonical master row." } });
+  const sourcePath = `archive/exams/${f.request.sourceArchiveFile}`;
+  const sourceBefore = fs.readFileSync(path.join(f.root, sourcePath));
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.standardUnitKey, "UNIT_NEW");
+  assert.equal(row.subUnitKey, "SUB_NEW");
+  const masterKeys = f.read("archive/data/master_tables/js_archive_tag_master.json").map(entry => entry.key);
+  assert.equal(masterKeys.includes("M3-05"), false);
+  assert.equal(masterKeys.includes("M3-03-01"), false);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, sourcePath)), sourceBefore);
+});
+
+test("SOP_v1.2 approval v4 rejects an unexplained or mismatched unit correction", t => {
+  const unexplained = fixture(t);
+  attachSopV12(unexplained, { legacyAssignment: { standardUnitKey: "M3-05", subUnitKey: "M3-03-01" } });
+  assert.throws(() => registerReviewedExamV2({ root: unexplained.root, request: unexplained.request }), /assignment correction requires a reason/);
+
+  const originalMismatch = fixture(t);
+  const originalAttached = attachSopV12(originalMismatch, { legacyAssignment: { standardUnitKey: "M3-05", subUnitKey: "M3-03-01",
+    correctionReason: "documented correction" } });
+  rewriteSopV12Doc(originalMismatch, originalAttached.refs, "correctiveReviewRef", review => {
+    review.rows[0].originalAssignment = { standardUnitKey: "M3-99", subUnitKey: "M3-03-01" };
+  });
+  assert.throws(() => registerReviewedExamV2({ root: originalMismatch.root, request: originalMismatch.request }), /original.corrected assignment mismatch/);
+
+  const requestMismatch = fixture(t);
+  attachSopV12(requestMismatch, { legacyAssignment: { standardUnitKey: "M3-05", subUnitKey: "M3-03-01",
+    correctionReason: "documented correction" } });
+  requestMismatch.request.items[0].after.standardUnitKey = "UNIT_OTHER";
+  assert.throws(() => registerReviewedExamV2({ root: requestMismatch.root, request: requestMismatch.request }), /audited binding limits violated/);
+});
+
+test("SOP_v1.2 approval v4 preserves existing conditionKeys and never approves Condition", t => {
+  const f = fixture(t);
+  attachSopV12(f, { preserveConditionKeys: ["COND_NEW"] });
+  const sourcePath = `archive/exams/${f.request.sourceArchiveFile}`;
+  const sourceBefore = fs.readFileSync(path.join(f.root, sourcePath));
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.deepEqual(row.conditionKeys, ["COND_NEW"]);
+  assert.equal(Object.hasOwn(row.fieldStatus, "condition"), false);
+  assert.equal(Object.hasOwn(row.fieldStatus, "difficulty"), false);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, sourcePath)), sourceBefore);
+
+  const removed = fixture(t);
+  attachSopV12(removed, { preserveConditionKeys: ["COND_NEW"] });
+  removed.request.items[0].after.conditionKeys = [];
+  assert.throws(() => registerReviewedExamV2({ root: removed.root, request: removed.request }), /audited binding limits violated/);
+});
+
+test("SOP_v1.2 approval v4 cannot be mixed with legacy audit or proof schemas", t => {
+  const legacyAudit = fixture(t);
+  attachSopV12(legacyAudit);
+  legacyAudit.request.approval.metaPipelineAudit.schemaVersion = "meta-pipeline-audit-approval-v3";
+  assert.throws(() => registerReviewedExamV2({ root: legacyAudit.root, request: legacyAudit.request }), /correctiveReviewRef is required only for approval v4/);
+
+  const legacyProof = fixture(t);
+  attachMetaPipelineAudit(legacyProof);
+  legacyProof.request.approval.metaPipelineAudit.schemaVersion = "meta-pipeline-audit-approval-v4";
+  legacyProof.request.approval.metaPipelineAudit.correctiveReviewRef = legacyProof.evidenceRefs[0];
+  assert.throws(() => registerReviewedExamV2({ root: legacyProof.root, request: legacyProof.request }), /source identity.schema mismatch/);
+});
