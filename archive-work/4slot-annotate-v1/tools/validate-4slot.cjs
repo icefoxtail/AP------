@@ -1,17 +1,17 @@
 // 4칸 제출 파일 검사. node validate-4slot.cjs <file.4slot.json> [사전경로]
 // 실패(종료코드 1): JSON·필드·문항 누락·인용 불일치·사전 밖 용어(후보 미선언)·format·evidence.
-// 한 칸 안에 같은 용어(동의어를 풀어 같은 번호)가 두 번 있으면 FAIL. dictionaryVersion은 v1.3 또는 v1.4만 허용(옛 출력은 v1.3).
+// 한 칸 안에 같은 용어(동의어를 풀어 같은 번호)가 두 번 있으면 FAIL. dictionaryVersion은 v1.3·v1.4·v1.5만 허용(옛 출력은 v1.3).
 // 경고(종료코드 0, 다시 보기): goal 방법어, 용어 4개 이하, method 1개, 같은 4칸 문항, method의 사칙연산.
 const fs = require('fs'), path = require('path');
 const { loadExam } = require('./exam-items.cjs');
 const [file, dictArg] = process.argv.slice(2);
 const root = process.cwd();
-const dictPath = dictArg || 'docs/architecture/4slot/term-dictionary-v1.4.json';
+const dictPath = dictArg || 'docs/architecture/4slot/term-dictionary-v1.5.json';
 const dict = JSON.parse(fs.readFileSync(path.join(root, dictPath), 'utf8'));
 const norm = s => String(s).replace(/[\s·()\[\]]/g, '');
 const lut = new Map();
 for (const t of dict.terms) for (const s of [t.ko, ...(t.synonyms || [])]) if (!lut.has(norm(s))) lut.set(norm(s), t);
-const OK_DICT_VERSIONS = ['term-dict-v1.3-2026-11-03', 'term-dict-v1.4-2026-11-03'];
+const OK_DICT_VERSIONS = ['term-dict-v1.3-2026-11-03', 'term-dict-v1.4-2026-11-03', 'term-dict-v1.5-2026-11-04'];
 const FORMATS = ['단일 정답', '옳은 것 고르기', '옳지 않은 것 고르기', '보기(ㄱㄴㄷ) 판정', '보기 판정', '빈칸 채우기', '단답', '서술', '증명', '소문항 묶음'];
 const ACTION = ['대입', '계산', '치환', '정리', '적용', '변형', '구하기', '확인'];
 const SLOTS = ['given', 'goal', 'method', 'condition'];
