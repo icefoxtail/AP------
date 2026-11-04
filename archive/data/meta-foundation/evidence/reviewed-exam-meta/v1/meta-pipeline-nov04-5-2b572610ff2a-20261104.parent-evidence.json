@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "archive-meta-pipeline-parent-evidence-v1",
+  "requestId": "meta-pipeline-nov04-5-2b572610ff2a-20261104",
+  "examUid": "17_경북영신중_1학기_기말_중3_수학",
+  "examKey": "nov04-5",
+  "curriculum": "2015",
+  "standardCourse": "중3-1",
+  "masterPath": "archive/data/master_tables/js_archive_tag_master.json",
+  "masterSha256": "71e32dc81537aaba8012a4a9e9a9a983148710ad22c90d79fcf8aacbc663aacf",
+  "canonicalMasterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+  "canonicalMasterSha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+  "basicScopePath": "archive/data/basic-scope-parent-links.json",
+  "basicScopeSha256": "bb8ec8068003663754081c98bbd3920a5128685a8b6cb648b7d85395d58535aa",
+  "records": [
+    {
+      "curriculum": "2015",
+      "standardCourse": "중3-1",
+      "standardUnitKey": "M3-03",
+      "standardUnitLabel": "이차방정식",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "subUnitLabel": "이차방정식",
+      "selectedL1": "이차방정식",
+      "selectedL2": "이차방정식의 풀이",
+      "basis": "BASIC_SCOPE_UNIQUE_EXACT",
+      "reason": "Exactly one distinct L1/L2 pair exists for this curriculum/unit/subunit in basic-scope-parent-links.",
+      "basicScopeMatches": [
+        {
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 풀이"
+        }
+      ],
+      "masterRow": {
+        "key": "M3-03",
+        "keyType": "standardUnitKey",
+        "labelKo": "이차방정식"
+      },
+      "masterSubRow": {
+        "key": "M3-03-QUADRATIC_EQUATION",
+        "keyType": "subUnitKey",
+        "labelKo": "이차방정식",
+        "parentKey": "M3-03"
+      }
+    },
+    {
+      "curriculum": "2015",
+      "standardCourse": "중3-1",
+      "standardUnitKey": "M3-03",
+      "standardUnitLabel": "이차방정식",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+      "subUnitLabel": "이차방정식의 활용",
+      "selectedL1": "이차방정식",
+      "selectedL2": "이차방정식의 활용",
+      "basis": "BASIC_SCOPE_UNIQUE_EXACT",
+      "reason": "Exactly one distinct L1/L2 pair exists for this curriculum/unit/subunit in basic-scope-parent-links.",
+      "basicScopeMatches": [
+        {
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 활용"
+        }
+      ],
+      "masterRow": {
+        "key": "M3-03",
+        "keyType": "standardUnitKey",
+        "labelKo": "이차방정식"
+      },
+      "masterSubRow": {
+        "key": "M3-03-QUADRATIC_EQUATION_WORD",
+        "keyType": "subUnitKey",
+        "labelKo": "이차방정식의 활용",
+        "parentKey": "M3-03"
+      }
+    },
+    {
+      "curriculum": "2015",
+      "standardCourse": "중3-1",
+      "standardUnitKey": "M3-04",
+      "standardUnitLabel": "이차함수와 그래프",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnitLabel": "이차함수의 그래프",
+      "selectedL1": "이차함수와 그래프",
+      "selectedL2": "이차함수의 그래프",
+      "basis": "CANONICAL_MASTER_UNIT_SUBUNIT_LABEL",
+      "reason": "Basic-scope links contain multiple distinct L1/L2 pairs; the exact canonical master unit/subunit labels are used without choosing among them.",
+      "basicScopeMatches": [
+        {
+          "courseKey": "M3-1",
+          "L1": "이차함수",
+          "L2": "이차함수와 그 그래프"
+        },
+        {
+          "courseKey": "M3-1",
+          "L1": "이차함수",
+          "L2": "이차함수 y=ax²+bx+c의 그래프"
+        }
+      ],
+      "masterRow": {
+        "key": "M3-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "이차함수와 그래프"
+      },
+      "masterSubRow": {
+        "key": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "keyType": "subUnitKey",
+        "labelKo": "이차함수의 그래프",
+        "parentKey": "M3-04"
+      }
+    },
+    {
+      "curriculum": "2015",
+      "standardCourse": "중3-1",
+      "standardUnitKey": "M3-04",
+      "standardUnitLabel": "이차함수와 그래프",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+      "subUnitLabel": "이차함수의 활용",
+      "selectedL1": "이차함수와 그래프",
+      "selectedL2": "이차함수의 활용",
+      "basis": "CANONICAL_MASTER_UNIT_SUBUNIT_LABEL",
+      "reason": "No basic-scope link exists for this exact unit/subunit; the exact canonical master unit/subunit labels are used.",
+      "basicScopeMatches": [],
+      "masterRow": {
+        "key": "M3-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "이차함수와 그래프"
+      },
+      "masterSubRow": {
+        "key": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+        "keyType": "subUnitKey",
+        "labelKo": "이차함수의 활용",
+        "parentKey": "M3-04"
+      }
+    }
+  ],
+  "note": "Parent keys are exact ACTIVE tag-master rows. When the exact basic-scope link is unique its L1/L2 is used; otherwise the exact canonical master unit/subunit labels are used without choosing among multiple basic-scope pairs."
+}
