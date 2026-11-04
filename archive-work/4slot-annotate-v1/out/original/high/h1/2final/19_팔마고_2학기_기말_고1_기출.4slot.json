@@ -1,0 +1,221 @@
+{
+  "schemaVersion":"archive-meta-4slot-v0",
+  "sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+  "sourceGitBlobSha":"491147578c3cf8f335a6ad0746e934e19fd0ca4d",
+  "dictionaryVersion":"term-dict-v1.5-2026-11-04",
+  "judgedBy":{"agent":"Codex-gpt-6.1-terra","run":"original-71-80","at":"2026-11-04"},
+  "items":[
+    {
+      "sourceOrdinal":1,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"항등함수","src":"stem","quote":"$f$는 항등함수이고"},{"term":"상수함수","src":"stem","quote":"$g$는 상수함수이다"}],
+        "goal":[{"term":"합","src":"stem","quote":"$f(5)+g(5)$의 값은?"}],
+        "method":[{"term":"항등함수","src":"solution","quote":"항등함수이므로 $f(3)=3$","evidenceType":"NAMED"},{"term":"상수함수","src":"solution","quote":"상수함수 $g$의 값은 항상 $3$","evidenceType":"NAMED"}],
+        "condition":[{"term":"실수","src":"stem","quote":"실수 전체의 집합에서 정의된"},{"term":"상등","src":"stem","quote":"$f(3)=g(1)$일 때"}]
+      },
+      "reasons":{"method":"항등함수와 상수함수의 정의 및 주어진 함숫값의 일치를 이용한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":2,"format":"옳지 않은 것 고르기",
+      "slots":{
+        "given":[{"term":"유한집합","src":"stem","quote":"두 집합 $X=\\{-1,0,1,2\\}"},{"term":"함수","src":"stem","quote":"$X$에서 $Y$로의 함수가 아닌 것은?"}],
+        "goal":[{"term":"판정","src":"stem","quote":"함수가 아닌 것은?"}],
+        "method":[{"term":"치역","src":"solution","quote":"나오는 값이 모두 $Y$에 속해야 한다","evidenceType":"IMPLIED","justification":"각 정의역 원소의 상이 공역에 포함되는지 확인한다."},{"term":"대입","src":"solution","quote":"$x=0$을 넣으면","evidenceType":"IMPLIED","justification":"각 식에 정의역 원소를 넣어 결과를 비교한다."}],
+        "condition":[{"term":"정의역","src":"stem","quote":"X=\\{-1,0,1,2\\}"},{"term":"공역","src":"stem","quote":"Y=\\{0,1,2,3,4\\}"}]
+      },
+      "reasons":{"method":"각 정의역 원소를 대입해 치역이 공역에 포함되는지 판정한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":3,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"일차함수","src":"stem","quote":"함수 $f(x)=ax+b$"},{"term":"역함수","src":"stem","quote":"f^{-1}(1)=3$일 때"}],
+        "goal":[{"term":"합","src":"stem","quote":"$a+b$의 값은?"}],
+        "method":[{"term":"역함수","src":"solution","quote":"$f^{-1}(1)=3$은 $f(3)=1$","evidenceType":"NAMED"},{"term":"연립방정식","src":"solution","quote":"두 조건을 각각 넣어 연립한다","evidenceType":"NAMED"}],
+        "condition":[]
+      },
+      "reasons":{"method":"역함숫값을 원함숫값으로 바꾸고 두 입력의 조건을 연립한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":4,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"무리함수","src":"stem","quote":"무리함수 $y=-\\sqrt{1-x}-3$"}],
+        "goal":[{"term":"합","src":"stem","quote":"$a+b$의 값은?"}],
+        "method":[{"term":"정의역","src":"solution","quote":"제곱근 안의 값이 음이 아니어야","evidenceType":"IMPLIED","justification":"근호 안이 음이 아닌 x의 범위를 정한다."},{"term":"치역","src":"solution","quote":"$x=1$에서 실제로 $y=-3$","evidenceType":"IMPLIED","justification":"근호의 비음성과 등호가 되는 끝점을 이용해 치역을 구한다."}],
+        "condition":[]
+      },
+      "reasons":{"method":"근호 안과 함수값의 범위를 구해 정의역과 치역의 경계값을 정한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":5,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"부등식","src":"stem","quote":"$5x+y+3z\\le15$"}],
+        "goal":[{"term":"순서쌍","src":"stem","quote":"순서쌍 $(x,y,z)$의 개수"},{"term":"개수","src":"stem","quote":"순서쌍 $(x,y,z)$의 개수"}],
+        "method":[{"term":"치환","src":"solution","quote":"각각 1을 빼서 음이 아닌 정수로","evidenceType":"IMPLIED","justification":"각 자연수에서 1을 빼어 비음수 정수로 바꾼다."},{"term":"경우분류","src":"solution","quote":"먼저 $z'=0$이면","evidenceType":"IMPLIED","justification":"z의 값별로 나머지 두 변수의 가능 범위를 나눈다."},{"term":"열거","src":"solution","quote":"$y'=0,1,2,3,4,5,6$으로 7가지","evidenceType":"IMPLIED","justification":"각 경우에서 가능한 정수들을 열거한다."}],
+        "condition":[{"term":"자연수","src":"stem","quote":"자연수 $x,y,z$의 순서쌍"},{"term":"범위","src":"stem","quote":"$5x+y+3z\\le15$"}]
+      },
+      "reasons":{"method":"자연수에서 1을 빼고 z와 x를 분류하여 y의 가능한 정수값을 센다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":6,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"순열","src":"stem","quote":"한 명씩 출입문을 지날 때"}],
+        "goal":[{"term":"개수","src":"stem","quote":"경우의 수를 구하면?"}],
+        "method":[{"term":"묶음","src":"solution","quote":"여학생 3명을 한 묶음으로 보면","evidenceType":"NAMED"},{"term":"순열","src":"solution","quote":"묶음 안에서 여학생 3명이 서는 순서","evidenceType":"IMPLIED","justification":"묶음과 남학생을 배열하고 묶음 내부도 배열한다."},{"term":"곱의법칙","src":"solution","quote":"곱의 법칙에 따라","evidenceType":"NAMED"}],
+        "condition":[{"term":"이웃","src":"stem","quote":"여학생 3명이 연속적으로"}]
+      },
+      "reasons":{"method":"여학생 세 명을 묶어 외부와 내부의 순열 수를 곱한다."},"steps":[],"scenarioNote":"학생 출입 순서"
+    },
+    {
+      "sourceOrdinal":7,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"조합","src":"stem","quote":"대표 5명을 뽑을 때"}],
+        "goal":[{"term":"개수","src":"stem","quote":"모든 경우의 수를 구하면?"}],
+        "method":[{"term":"경우분류","src":"solution","quote":"남학생을 $k$명 뽑으면","evidenceType":"IMPLIED","justification":"남학생 선택 인원 1, 2, 3명에 따라 분류한다."},{"term":"조합","src":"solution","quote":"\\binom31\\binom54","evidenceType":"IMPLIED","justification":"각 인원수별 남녀 선택을 조합으로 센다."},{"term":"합의법칙","src":"solution","quote":"$15+30+10=55$가지","evidenceType":"IMPLIED","justification":"배타적인 인원수별 경우를 더한다."}],
+        "condition":[{"term":"적어도","src":"stem","quote":"적어도 남학생 1명과 여학생 2명"}]
+      },
+      "reasons":{"method":"남학생 선택 인원별 남녀 조합의 곱을 합한다."},"steps":[],"scenarioNote":"남녀 대표 선출"
+    },
+    {
+      "sourceOrdinal":8,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"절댓값","src":"stem","quote":"함수 $f(x)=3x+a|x+2|-1$"}],
+        "goal":[{"term":"정수","src":"stem","quote":"정수 $a$의 최댓값은?"},{"term":"최댓값","src":"stem","quote":"정수 $a$의 최댓값은?"}],
+        "method":[{"term":"조각함수","src":"solution","quote":"경계 $x=-2$에서 식은 이어진다","evidenceType":"IMPLIED","justification":"절댓값의 부호에 따라 양쪽 일차식으로 나눈다."},{"term":"증가감소","src":"solution","quote":"두 기울기가 같은 부호이고 $0$이 아니면","evidenceType":"IMPLIED","justification":"두 기울기의 부호로 전체의 엄격한 단조성을 판정한다."},{"term":"일대일대응","src":"solution","quote":"따라서 이때 일대일대응이 된다","evidenceType":"NAMED"},{"term":"이차부등식","src":"solution","quote":"$(3-a)(3+a)>0$","evidenceType":"IMPLIED","justification":"기울기의 곱이 양수라는 이차부등식에서 정수 범위를 구한다."}],
+        "condition":[{"term":"일대일대응","src":"stem","quote":"일대일대응이 되도록"},{"term":"정수","src":"stem","quote":"정수 $a$의 최댓값은?"}]
+      },
+      "reasons":{"method":"절댓값 경계 양쪽의 기울기가 0이 아닌 같은 부호여야 전단사임을 이용한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":9,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"그래프","src":"stem","quote":"두 함수 $y=f(x)$와 $y=x$의 그래프"},{"term":"역함수","src":"stem","quote":"함수 $f$의 역함수가 존재할 때"}],
+        "goal":[{"term":"함숫값","src":"stem","quote":"$(f^{-1}\\circ f^{-1})(b)$의 값"}],
+        "method":[{"term":"역함수","src":"solution","quote":"$f^{-1}(b)=c$","evidenceType":"NAMED"},{"term":"반복합성","src":"solution","quote":"이어서 $f^{-1}(c)=d$","evidenceType":"IMPLIED","justification":"그림의 점선 대응으로 역함수를 연속해서 두 번 적용한다."}],
+        "condition":[]
+      },
+      "reasons":{"method":"그림에서 b와 c의 원상을 차례로 읽어 역함수를 두 번 합성한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":10,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"반복합성","src":"stem","quote":"f^{n+1}(x)=f(f^n(x))"},{"term":"함수","src":"stem","quote":"함수 $f:X\\to X$는 다음 그림"}],
+        "goal":[{"term":"차","src":"stem","quote":"$f^{150}(3)-f^{200}(3)$의 값"}],
+        "method":[{"term":"주기","src":"solution","quote":"주기 3이 반복된다","evidenceType":"NAMED"},{"term":"나머지","src":"solution","quote":"$200=3\\cdot66+2$이므로","evidenceType":"IMPLIED","justification":"반복 횟수를 주기 3으로 나눈 나머지를 적용한다."}],
+        "condition":[]
+      },
+      "reasons":{"method":"그림의 대응이 길이 3의 순환을 이루므로 반복 횟수의 나머지로 함숫값을 정한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":11,"format":"옳지 않은 것 고르기",
+      "slots":{
+        "given":[{"term":"유리함수","src":"stem","quote":"함수 $y=\\dfrac{2x+5}{x-1}$"}],
+        "goal":[{"term":"판정","src":"stem","quote":"옳지 않은 것은?"}],
+        "method":[{"term":"점근선","src":"solution","quote":"수직점근선은 $x=1$","evidenceType":"NAMED"},{"term":"치역","src":"solution","quote":"치역은 $y\\ne2$인 실수 전체","evidenceType":"NAMED"},{"term":"평행이동","src":"solution","quote":"위로 3만큼 옮기면 겹치므로","evidenceType":"IMPLIED","justification":"두 함수의 분수꼴을 비교해 수직 평행이동 관계를 판정한다."},{"term":"사분면","src":"solution","quote":"그래프는 제4사분면을 지난다","evidenceType":"NAMED"},{"term":"대입","src":"solution","quote":"$x=8$을 넣으면","evidenceType":"IMPLIED","justification":"주어진 점이 그래프 위인지 확인한다."}],
+        "condition":[]
+      },
+      "reasons":{"method":"분수꼴로 바꾸어 점근선과 치역, 평행이동을 확인하고 점과 사분면 통과를 판정한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":12,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"유리함수","src":"stem","quote":"함수 $y=\\dfrac{bx+c}{x+a}$"},{"term":"무리함수","src":"stem","quote":"함수 $y=\\sqrt{cx+b}+a$"}],
+        "goal":[{"term":"그래프의개형","src":"stem","quote":"그래프의 개형으로 알맞은 것은?"}],
+        "method":[{"term":"점근선","src":"solution","quote":"그림의 수평점근선은 $y=6$","evidenceType":"NAMED"},{"term":"y절편","src":"solution","quote":"그림의 $y$절편은 3이다","evidenceType":"NAMED"},{"term":"정의역","src":"solution","quote":"제곱근 안이 음이 아니어야 하므로","evidenceType":"IMPLIED","justification":"계수가 정해진 근호의 정의역을 구한다."},{"term":"끝점","src":"solution","quote":"그래프의 끝점은 $(2,-1)$이다","evidenceType":"NAMED"}],
+        "condition":[]
+      },
+      "reasons":{"method":"그림의 점근선과 y절편으로 계수를 구하고 무리함수의 정의역·끝점 및 방향을 보기 그림과 비교한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":13,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"선택","src":"stem","quote":"음료수와 케이크를 하나씩 주문"}],
+        "goal":[{"term":"자연수","src":"stem","quote":"자연수 $n$의 값을 구하면?"},{"term":"결정","src":"stem","quote":"자연수 $n$의 값을 구하면?"}],
+        "method":[{"term":"곱의법칙","src":"solution","quote":"곱의 법칙으로","evidenceType":"NAMED"},{"term":"이차방정식","src":"solution","quote":"$n^2-n-30=0$","evidenceType":"NAMED"},{"term":"인수분해","src":"solution","quote":"$(n-6)(n+5)=0$","evidenceType":"IMPLIED","justification":"경우의 수로 세운 이차방정식을 인수분해해 자연수 해를 택한다."}],
+        "condition":[{"term":"구별가능","src":"stem","quote":"서로 다른 $n$개의 음료수"},{"term":"제외","src":"stem","quote":"현민이와 다른 음료수와 케이크"},{"term":"자연수","src":"stem","quote":"자연수 $n$의 값을 구하면?"}]
+      },
+      "reasons":{"method":"두 사람의 음료와 케이크 선택을 순서대로 곱하고 이차방정식의 자연수 해를 찾는다."},"steps":[],"scenarioNote":"두 사람의 음료·케이크 주문"
+    },
+    {
+      "sourceOrdinal":14,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"분배","src":"stem","quote":"일부 또는 전부를 사용하여 지불"}],
+        "goal":[{"term":"차","src":"stem","quote":"$a-b$의 값을 구하면?"}],
+        "method":[{"term":"곱의법칙","src":"solution","quote":"사용 조합은","evidenceType":"IMPLIED","justification":"동전 종류별 사용 개수의 선택 수를 곱한다."},{"term":"합집합","src":"solution","quote":"두 구간의 합집합은 0부터 34까지","evidenceType":"NAMED"},{"term":"제외","src":"solution","quote":"0원을 제외하므로","evidenceType":"IMPLIED","justification":"아무것도 사용하지 않는 경우와 0원을 제외한다."}],
+        "condition":[]
+      },
+      "reasons":{"method":"동전과 지폐의 사용 개수 조합을 세고 지폐 사용 여부별 금액 구간의 합집합에서 0을 제외한다."},"steps":[],"scenarioNote":"동전·지폐 지불 방법과 금액"
+    },
+    {
+      "sourceOrdinal":15,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"자릿수","src":"stem","quote":"세 자리의 자연수를 만들 때"}],
+        "goal":[{"term":"배수","src":"stem","quote":"3의 배수의 개수를 구하면?"},{"term":"개수","src":"stem","quote":"3의 배수의 개수를 구하면?"}],
+        "method":[{"term":"나머지","src":"solution","quote":"3으로 나눈 나머지가 0, 1, 2","evidenceType":"NAMED"},{"term":"조합","src":"solution","quote":"세 숫자 조합은","evidenceType":"IMPLIED","justification":"각 나머지 부류에서 한 숫자씩 고른다."},{"term":"순열","src":"solution","quote":"각 조합의 배열은 6개","evidenceType":"NAMED"},{"term":"자리제한","src":"solution","quote":"맨 앞이 0인 2개를 뺀","evidenceType":"IMPLIED","justification":"0이 포함된 숫자 조합에서는 백의 자리가 0인 배열을 제외한다."}],
+        "condition":[{"term":"중복불허","src":"stem","quote":"서로 다른 3개를 택하여"},{"term":"배수","src":"stem","quote":"3의 배수의 개수를 구하면?"}]
+      },
+      "reasons":{"method":"3으로 나눈 나머지별 숫자를 선택하고 0이 첫 자리에 오는 배열을 제외한다."},"steps":[],"scenarioNote":"숫자 카드로 세 자리 수 만들기"
+    },
+    {
+      "sourceOrdinal":16,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"조각함수","src":"stem","quote":"함수 $f(x)=\\begin{cases}"},{"term":"유리함수","src":"stem","quote":"\\dfrac{x+1}{x-3}"},{"term":"무리함수","src":"stem","quote":"\\sqrt{4-x}+a"}],
+        "goal":[{"term":"매개변수","src":"stem","quote":"상수 $k$의 값을 구하면?"},{"term":"결정","src":"stem","quote":"상수 $k$의 값을 구하면?"}],
+        "method":[{"term":"치역","src":"solution","quote":"부분의 치역은 $[a,\\infty)$","evidenceType":"NAMED"},{"term":"일대일함수","src":"solution","quote":"두 치역은 겹치지 않아 함수는 일대일","evidenceType":"IMPLIED","justification":"서로 다른 가지의 치역이 겹치지 않아야 한다."},{"term":"경계조건","src":"solution","quote":"첫 부분이 $[5,\\infty)$를 채워야","evidenceType":"IMPLIED","justification":"두 가지 치역이 중복 없이 전체 범위를 채우는 경계를 맞춘다."},{"term":"원상","src":"solution","quote":"$f(k)=2$이다","evidenceType":"IMPLIED","justification":"지정된 함수값의 원상을 해당 가지에서 구한다."}],
+        "condition":[{"term":"실수","src":"stem","quote":"실수 전체의 집합에서 정의된"},{"term":"치역","src":"stem","quote":"치역은 $\\{y|y>1\\}$이다"},{"term":"일대일함수","src":"stem","quote":"$f(x_1)=f(x_2)$이면 $x_1=x_2$"}]
+      },
+      "reasons":{"method":"두 가지 치역의 경계를 전단사 조건에 맞추어 a를 구하고 지정된 함숫값의 원상을 찾는다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":17,"format":"보기(ㄱㄴㄷ) 판정",
+      "slots":{
+        "given":[{"term":"함수방정식","src":"stem","quote":"$f(ab)=f^{-1}(a)\\times f^{-1}(b)$"},{"term":"역함수","src":"stem","quote":"역함수 $f^{-1}(x)$가 존재하고"}],
+        "goal":[{"term":"판정","src":"stem","quote":"옳은 것만을 있는 대로 고른 것은?"}],
+        "method":[{"term":"대입","src":"solution","quote":"주어진 관계식에 필요한 값을 넣어","evidenceType":"IMPLIED","justification":"1, 2 및 같은 변수 등의 특수값을 함수방정식에 넣는다."},{"term":"역함수","src":"solution","quote":"양변에 $f^{-1}$을 적용하면","evidenceType":"NAMED"},{"term":"고정점","src":"solution","quote":"점 $(ab,ab)$는 $y=f(x)$와 $y=x$","evidenceType":"IMPLIED","justification":"서로 교환되는 두 값의 곱이 함수의 고정점임을 보인다."}],
+        "condition":[{"term":"실수","src":"stem","quote":"임의의 두 실수 $a,b$에 대하여"},{"term":"항상성립","src":"stem","quote":"임의의 두 실수 $a,b$에 대하여"}]
+      },
+      "reasons":{"method":"특수값과 역함수의 정의를 적용해 각 명제를 판정하고 교환되는 값의 곱이 고정점임을 보인다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":18,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"함수","src":"stem","quote":"함수 $f:X\\to X$ 중에서"}],
+        "goal":[{"term":"개수","src":"stem","quote":"함수 $f$의 개수를 구하면?"}],
+        "method":[{"term":"조합","src":"solution","quote":"$X$에서 서로 다른 원소 다섯 개를 고른 뒤","evidenceType":"IMPLIED","justification":"엄격한 증가를 따르는 가운데 다섯 상을 선택한다."},{"term":"상대순서고정","src":"solution","quote":"작은 순서로 놓은 것이다","evidenceType":"IMPLIED","justification":"선택한 다섯 값은 증가 조건에 따라 유일한 순서로 놓인다."},{"term":"곱의법칙","src":"solution","quote":"이 두 값은 가운데 다섯 값과 중복되어도","evidenceType":"IMPLIED","justification":"서로 반대인 양 끝 상은 가운데 선택과 독립이므로 선택 수를 곱한다."}],
+        "condition":[{"term":"상등","src":"stem","quote":"$f(-3)+f(3)=0$"},{"term":"순서","src":"stem","quote":"$f(-2)&lt;f(-1)&lt;f(0)"}]
+      },
+      "reasons":{"method":"가운데 다섯 상을 고르면 증가 순서가 고정되고 양 끝 상은 서로 반대인 일곱 쌍 중 하나다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":19,"format":"서술",
+      "slots":{
+        "given":[{"term":"일차함수","src":"stem","quote":"두 함수 $f(x)=x+a"},{"term":"조각함수","src":"stem","quote":"g(x)=\\begin{cases}2x+17"}],
+        "goal":[{"term":"실수","src":"stem","quote":"모든 실수 $a$의 값을 구하시오"},{"term":"결정","src":"stem","quote":"모든 실수 $a$의 값을 구하시오"}],
+        "method":[{"term":"합성함수","src":"solution","quote":"먼저 $(g\\circ f)(2)$를 구한다","evidenceType":"NAMED"},{"term":"경우분류","src":"solution","quote":"경계 $a=3$을 기준으로 나눈다","evidenceType":"NAMED"},{"term":"이차방정식","src":"solution","quote":"$a^2+5a-50=0$","evidenceType":"NAMED"},{"term":"범위","src":"solution","quote":"$a\\le3$을 만족하는 것은","evidenceType":"IMPLIED","justification":"각 경우에서 얻은 근이 그 경우의 a 범위에 속하는지 확인한다."}],
+        "condition":[{"term":"실수","src":"stem","quote":"모든 실수 $a$의 값을 구하시오"}]
+      },
+      "reasons":{"method":"두 합성값을 구하되 g(3)의 가지가 바뀌는 a=3에서 분류하고 각 방정식의 유효한 근을 택한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":20,"format":"서술",
+      "slots":{
+        "given":[{"term":"유리함수","src":"stem","quote":"f(x)=\\dfrac{3x-2}{x-2}"},{"term":"무리함수","src":"stem","quote":"g(x)=\\sqrt{x-k}-k$"}],
+        "goal":[{"term":"매개변수","src":"stem","quote":"실수 $k$의 값의 범위를 구하시오"},{"term":"범위","src":"stem","quote":"실수 $k$의 값의 범위를 구하시오"}],
+        "method":[{"term":"증가감소","src":"solution","quote":"각 구간에서 $h(x)$는 감소한다","evidenceType":"NAMED"},{"term":"경우분류","src":"solution","quote":"먼저 $x>2$인 오른쪽 가지를 본다","evidenceType":"IMPLIED","justification":"점근선 좌우로 나누고 k에 따라 정의역 시작점을 구분한다."},{"term":"끝점","src":"solution","quote":"시작점에서","evidenceType":"IMPLIED","justification":"왼쪽 가지의 시작점에서 함수 차의 부호로 교점 존재 여부를 정한다."},{"term":"이차부등식","src":"solution","quote":"$(k+2)(k-1)\\le0$","evidenceType":"IMPLIED","justification":"끝점 부호 조건을 이차부등식으로 풀어 k의 범위를 정한다."}],
+        "condition":[{"term":"실수","src":"stem","quote":"실수 $k$의 값의 범위를"},{"term":"구별가능","src":"stem","quote":"서로 다른 두 점에서 만나도록"}]
+      },
+      "reasons":{"method":"두 함수의 차가 각 가지에서 감소함을 이용해 오른쪽 교점과 왼쪽 시작점 부호로 두 교점 조건을 찾는다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":21,"format":"서술",
+      "slots":{
+        "given":[{"term":"순열","src":"stem","quote":"서로 다른 4개를 택해 일렬로 나열"}],
+        "goal":[{"term":"개수","src":"stem","quote":"자연수의 개수를 구하시오"}],
+        "method":[{"term":"자리제한","src":"solution","quote":"천의 자리는 짝수","evidenceType":"IMPLIED","justification":"첫 자리를 짝수로 정하면 인접 제한에 의해 둘째는 홀수가 된다."},{"term":"경우분류","src":"solution","quote":"십의 자리가 홀수이면","evidenceType":"IMPLIED","justification":"셋째 자리의 홀짝에 따라 마지막 자리를 선택한다."},{"term":"곱의법칙","src":"solution","quote":"천의 자리와 백의 자리의 선택은","evidenceType":"IMPLIED","justification":"각 자리의 조건부 선택 수를 곱한다."}],
+        "condition":[{"term":"짝수","src":"stem","quote":"천의 자리의 수는 짝수이고"},{"term":"이웃하지않음","src":"stem","quote":"짝수끼리는 서로 이웃하지 않는"},{"term":"중복불허","src":"stem","quote":"서로 다른 4개를 택해"}]
+      },
+      "reasons":{"method":"첫 짝수와 둘째 홀수를 정한 뒤 셋째 자리의 홀짝으로 마지막 자리 선택 수를 나눈다."},"steps":[],"scenarioNote":"네 자리 자연수"
+    }
+  ],
+  "candidates":[],
+  "selfCheck":{"items":21,"quotesChecked":153,"quotesNotFound":0,"warningsRechecked":[3,4,9],"notes":"3번은 역함숫값을 원함숫값으로 바꾸어 두 일차식을 연립한다. 4번은 근호의 정의역과 치역을 직접 구하는 두 단계이다. 9번은 그래프에서 두 원상을 차례로 읽어 역함수를 두 번 적용한다."}
+}
