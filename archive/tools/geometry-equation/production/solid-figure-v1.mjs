@@ -1541,8 +1541,9 @@ function solveSolids(plan){
       if(!Array.isArray(plan.marks.angles)||plan.marks.angles.length>4)bad('SOLID_MARKS_INVALID');
       const counts=new Map();
       for(const [k,m] of plan.marks.angles.entries()){
-        onlyKeys(m,['id','refs','value','arcs','equalGroup','label'],'SOLID_MARKS_INVALID');
+        onlyKeys(m,['id','refs','value','arcs','equalGroup','label','labelPlacement'],'SOLID_MARKS_INVALID');
         const id=markId(m.id,'an',k);
+        if(m.labelPlacement!==undefined&&(m.labelPlacement!=='WEDGE'||m.label===undefined))bad('SOLID_MARK_ANGLE_LABEL_PLACEMENT_INVALID:'+id);
         if(!Array.isArray(m.refs)||m.refs.length!==3||new Set(m.refs).size!==3)bad('SOLID_MARKS_INVALID');
         const a=keyOf(m.refs[0]),v=keyOf(m.refs[1]),b=keyOf(m.refs[2]);
         if(new Set([a,v,b]).size!==3)bad('SOLID_MARKS_INVALID');
@@ -1566,7 +1567,7 @@ function solveSolids(plan){
           if(n!==null&&Math.abs(n-measured)>0.5)bad('SOLID_MARK_ANGLE_LABEL_MISMATCH:'+id);
           label=m.label;
         }
-        marks.angles.push({id,refs:[a,v,b],value:r6(measured),arcs,...(label!==undefined?{label}:{})});
+        marks.angles.push({id,refs:[a,v,b],value:r6(measured),arcs,...(label!==undefined?{label}:{}),...(m.labelPlacement!==undefined?{labelPlacement:m.labelPlacement}:{})});
       }
     }
   }
@@ -2436,7 +2437,7 @@ function spec3d(plan,model,ctx){
       const u1=[(p1[0]-pv[0])/l1,(p1[1]-pv[1])/l1],u2=[(p2[0]-pv[0])/l2,(p2[1]-pv[1])/l2];
       let bis=[u1[0]+u2[0],u1[1]+u2[1]];const bl=Math.hypot(bis[0],bis[1]);
       bis=bl>1e-6?[bis[0]/bl,bis[1]/bl]:[-u1[1],u1[0]];
-      labels.push({id:'angle-label-'+m.id,role:'angle-label',owner:'angle-'+m.id,kind:'MATH',tex:m.label,plain:m.label,value:m.label,mark:m.id,place:'ANGLE',anchor:pt(pv),dir:[r6(bis[0]),r6(bis[1])],reach:20+5*(m.arcs-1),...(model.solids.length===0?{wedge:true,arcEnds:outerEnds}:{})});
+      labels.push({id:'angle-label-'+m.id,role:'angle-label',owner:'angle-'+m.id,kind:'MATH',tex:m.label,plain:m.label,value:m.label,mark:m.id,place:'ANGLE',anchor:pt(pv),dir:[r6(bis[0]),r6(bis[1])],reach:20+5*(m.arcs-1),...(model.solids.length===0||m.labelPlacement==='WEDGE'?{wedge:true,arcEnds:outerEnds}:{})});
     }
   }
   if(model.section?.kind==='AXIAL'){

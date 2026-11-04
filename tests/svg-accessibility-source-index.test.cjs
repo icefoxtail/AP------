@@ -113,3 +113,36 @@ test('production delta scope finds changed SVGs and newly referenced refs withou
   assert.deepEqual(scope.newUses.map(use => [use.assetRef, use.sourceQid, use.visualRole]), [['assets/images/new.svg', '2', 'problem']]);
   assert.equal(scope.baseRef, baseRef);
 });
+
+test('changed scope includes Korean tracked sources and untracked SVGs with core.quotepath=true', t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'svg-a11y-korean-delta-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  // Isolate this regression from a caller's temporary Git configuration override.
+  // All configuration writes below target this disposable repository only.
+  const env = { ...process.env, GIT_CONFIG_COUNT: '1', GIT_CONFIG_KEY_0: 'core.quotepath', GIT_CONFIG_VALUE_0: 'true' };
+  delete env.GIT_CONFIG_PARAMETERS;
+  const git = (...args) => execFileSync('git', ['-C', root, ...args], { encoding: 'utf8', env });
+  git('init', '-q');
+  git('config', '--local', 'user.email', 'svg-a11y@example.test');
+  git('config', '--local', 'user.name', 'SVG Accessibility Test');
+  git('config', '--local', 'core.quotepath', 'true');
+  const source = 'archive/exams/original/한글학교/중2_시험.js';
+  const asset = 'assets/images/한글학교/q2-solution.svg';
+  fs.mkdirSync(path.dirname(path.join(root, source)), { recursive: true });
+  fs.writeFileSync(path.join(root, source), "window.questionBank=[{id:1,image:'assets/images/old.svg'}];\n");
+  git('add', '.');
+  git('commit', '-qm', 'Korean source baseline');
+  const baseRef = git('rev-parse', 'HEAD').trim();
+  fs.writeFileSync(path.join(root, source), `window.questionBank=[{id:1,image:'assets/images/old.svg'},{id:2,solutionImage:'${asset}'}];\n`);
+  fs.mkdirSync(path.dirname(path.join(root, 'archive', asset)), { recursive: true });
+  fs.writeFileSync(path.join(root, 'archive', asset), '<svg/>');
+  assert.match(git('diff', '--name-only', baseRef), /^"archive\/exams\/original\//);
+  assert.match(git('ls-files', '--others', '--exclude-standard'), /^"archive\/assets\/images\//);
+  const script = "const c=require(process.argv[1]);process.stdout.write(JSON.stringify(c.collectChangedSourceScope({repoRoot:process.argv[2],baseRef:process.argv[3]})));";
+  const scope = JSON.parse(execFileSync(process.execPath, ['-e', script, collectorPath, root, baseRef], { encoding: 'utf8', env }));
+  assert.deepEqual(scope.changedPaths, ['archive/' + asset, source]);
+  assert.deepEqual(scope.changedJsPaths, [source]);
+  assert.deepEqual(scope.changedSvgRefs, [asset]);
+  assert.deepEqual(scope.newUses.map(use => [use.assetRef, use.sourceExamRef, use.sourceQid, use.visualRole]), [[asset, source, '2', 'solution']]);
+  assert.equal(git('config', '--local', '--get', 'core.quotepath').trim(), 'true');
+});

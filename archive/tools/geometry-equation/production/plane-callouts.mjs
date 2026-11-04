@@ -11,7 +11,7 @@
 // The copies are real points of the picture named `<callout id>__<point id>`; its marks are the ordinary plane marks, written on the copies and checked by the same code
 // (planeMarkSpec) and by the independent observer, which also reads the copies back against the main figure's own points.
 import {vectorArrows} from './plane-vectors.mjs';
-import {planeMarkSpec,dimensionSites,PLANE_RECIPE,isPlaneFigure,isCoordinateFigure} from './plane-marks.mjs';
+import {planeMarkSpec,dimensionSites,PLANE_RECIPE,isPlaneFigure,isCoordinateFigure,unmarkedPointIds} from './plane-marks.mjs';
 export const CALLOUT_KINDS=['SEGMENT','ANGLE'];
 export const CALLOUT_SIDES=['RIGHT','LEFT','ABOVE','BELOW'];
 export const CALLOUT_ORIENTATIONS=['HORIZONTAL','VERTICAL'];
@@ -24,7 +24,7 @@ export const CALLOUT_DIM_FACTOR_MIN=0.6,CALLOUT_DIM_FACTOR_MAX=1.5,CALLOUT_DIM_F
 export const CALLOUT_ANGLE_DIM_ID='angDim';
 export const CALLOUT_SEP='__';
 export const CALLOUT_ID=/^[A-Za-z][A-Za-z0-9]{0,7}$/;
-const KEYS={SEGMENT:['id','kind','path','at','scale','gap','orientation','link','dimensions','marks'],ANGLE:['id','kind','vertex','rays','at','radius','gap','link','angles','marks','arcScale','angleDimension'],marks:['equalLengths','expressionLabels']};
+const KEYS={SEGMENT:['id','kind','path','at','scale','gap','orientation','link','dimensions','marks','nameMode'],ANGLE:['id','kind','vertex','rays','at','radius','gap','link','angles','marks','arcScale','angleDimension'],marks:['equalLengths','expressionLabels']};
 const bad=code=>{throw Error(code);};
 const sub=(p,q)=>[p[0]-q[0],p[1]-q[1]];
 const norm=v=>Math.hypot(v[0],v[1]);
@@ -81,15 +81,21 @@ export function calloutEntries(plan,points,bounds,hidden=new Set(),model=undefin
     if(!CALLOUT_SIDES.includes(at))bad('CALLOUT_AT_INVALID:'+cid);
     const link=row.link??'NONE';
     if(!CALLOUT_LINKS[row.kind].includes(link))bad('CALLOUT_LINK_INVALID:'+cid);
+    if(row.nameMode!==undefined&&!['HIDDEN','SOURCE'].includes(row.nameMode))bad('CALLOUT_NAME_MODE_INVALID:'+cid);
+    if(['HIDDEN','SOURCE'].includes(row.nameMode)&&link!=='ENDS')bad('CALLOUT_UNNAMED_NEEDS_LINK:'+cid);
+    const unmarked=new Set(unmarkedPointIds(plan));
     const main=id=>{
       if(typeof id!=='string'||!points[id])bad('MARK_TARGET_UNKNOWN:'+id);
-      if(hidden.has(id))bad('CALLOUT_POINT_HIDDEN:'+cid+':'+id);
+      if(row.nameMode==='HIDDEN'||(row.nameMode==='SOURCE'&&hidden.has(id))){
+        if(!hidden.has(id))bad('CALLOUT_UNNAMED_POINT_HAS_NAME:'+cid+':'+id);
+        if(unmarked.has(id))bad('CALLOUT_SOURCE_POINT_UNDRAWN:'+cid+':'+id);
+      }else if(hidden.has(id))bad('CALLOUT_POINT_HIDDEN:'+cid+':'+id);
       return points[id].approximation;
     };
     const span=Math.max(bounds.xMax-bounds.xMin,bounds.yMax-bounds.yMin,1e-9);
     const gap=row.gap===undefined?0.3*span:numberOf(row.gap);
     if(gap===null||!(gap>0)||gap>10*span)bad('CALLOUT_GAP_INVALID:'+cid);
-    const entry={id:cid,kind:row.kind,row,prefix,at,link,local:{},order:[],pieces:[],guides:[]};
+    const entry={id:cid,kind:row.kind,row,prefix,at,link,local:{},order:[],pieces:[],guides:[],...(row.nameMode==='SOURCE'?{hiddenNames:new Set(hidden)}:{})};
     // ---- the geometry of the copies
     if(row.kind==='SEGMENT'){
       const path=row.path;
@@ -239,9 +245,10 @@ export function calloutSpec(plan,model,entries,pointNames){
   for(const entry of entries){
     const {prefix}=entry;
     for(const [id,at] of Object.entries(entry.local)){
-      objects.push({id:prefix+id,kind:'POINT',at:[at[0],at[1]],name:pointNames.tex(id)});
+      const hideName=entry.row.nameMode==='HIDDEN'||entry.hiddenNames?.has(id);
+      objects.push({id:prefix+id,kind:'POINT',at:[at[0],at[1]],name:hideName?null:pointNames.tex(id)});
       const node=plan.mathPlan.nodes.find(n=>n.id===id);
-      factRolesByLabel[prefix+id+'-name']=node?.factRole??'GIVEN';
+      if(!hideName)factRolesByLabel[prefix+id+'-name']=node?.factRole??'GIVEN';
     }
     for(const piece of entry.pieces)objects.push({id:prefix+piece.id,kind:'SEGMENT',from:[...entry.local[piece.from]],to:[...entry.local[piece.to]]});
     for(const guide of entry.guides)objects.push({id:prefix+guide.id,kind:'SEGMENT',from:[...guide.mainAt],to:[...entry.local[guide.mainPoint]],guide:true});

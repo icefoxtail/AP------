@@ -339,3 +339,29 @@ test('G11 path label: a total length never starts its second-round leader on a p
   const composed=await composeOf(plan,model);
   assert.equal(composed.status,'PATH_LABEL_NO_ROOM');assert.equal(composed.detail.id,'pCD');
 });
+
+test('unnamed segment callout retains point geometry and owner links without inventing names',async()=>{
+  // Keep both dimension sets outside the triangle: the copy and its dimensions above, AB's dimension below.
+  // With the copy below, moving AB's dimension above puts its required label inside the triangle.
+  const hidden=['C','D','G'],row=calloutRow({nameMode:'HIDDEN',link:'ENDS',at:'ABOVE',gap:6,scale:1.2,
+    dimensions:calloutRow().dimensions.map(d=>({...d,side:'ABOVE'}))});
+  // This fixture constructs the midpoint and centroid; their role must describe derived helpers before their names may be hidden.
+  const graph={...triangle,nodes:triangle.nodes.map(n=>['D','G'].includes(n.id)?{...n,factRole:'DERIVED_INTERMEDIATE'}:n)};
+  const make=(r,extra={})=>trianglePlan(r,{mathPlan:graph,hiddenPointNames:hidden,caption:'이름 없는 선분의 길이를 비교한다.',...extra});
+  const plan=make(row);
+  const model=await modelOf(graph);
+  assert.match(specError({...plan,hiddenPointStyle:'NONE'},model),/CALLOUT_SOURCE_POINT_UNDRAWN/);
+  assert.match(specError(make({...row,link:'NONE'}),model),/CALLOUT_UNNAMED_NEEDS_LINK/);
+  assert.match(specError(make(row,{hiddenPointNames:['C','D']}),model),/CALLOUT_UNNAMED_POINT_HAS_NAME/);
+  const c=await composeOf(plan,model);expectComposed(c);
+  for(const id of hidden){assert.ok(tagOf(c.svg,id));assert.ok(tagOf(c.svg,'k1__'+id));assert.equal(tagOf(c.svg,id+'-name'),undefined);assert.equal(tagOf(c.svg,'k1__'+id+'-name'),undefined);}
+  const transform=await transformOf(plan,model);
+  const audit=svg=>observe(svg,graph,plan.planeMarks,plan.displaySegments,transform,{hiddenPointNames:hidden,unmarkedPoints:[]});
+  const invented=c.svg.replace('</svg>','<g id="D-name"><path data-c="1D437"/></g></svg>');
+  assert.ok(codes(await audit(invented)).includes('CALLOUT_UNNAMED_NAME_SHOWN'));
+  const removed=c.svg.replace(/<circle[^>]*id="D"[^>]*\/>/,'');
+  assert.notEqual(removed,c.svg);assert.ok(codes(await audit(removed)).some(e=>e.startsWith('CALLOUT_SOURCE_POINT_UNDRAWN')));
+  const guide=tagOf(c.svg,'k1__g1');assert.ok(guide);
+  const noGuide=c.svg.replace(guide,guide.replace('id="k1__g1"','id="lost-guide"'));
+  assert.ok(codes(await audit(noGuide)).some(e=>e.startsWith('CALLOUT_GUIDE_MISSING')));
+});

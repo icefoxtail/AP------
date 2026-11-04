@@ -123,7 +123,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형에서 D가 D′에 포개질 때 AD=AD′와 PD=PD′를 다른 색으로 표시한다.",
+    "solutionImageCaption": "AD=AD′=10cm이므로 직각삼각형 ABD′에서 BD′=6cm이다. 답: ① 4cm",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -182,7 +186,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 세 변을 지름으로 하는 반원과 두 초승달 영역을 표시한다.",
+    "solutionImageCaption": "두 작은 반원의 넓이 합이 큰 반원의 넓이와 같으므로 두 초승달의 넓이 합은 삼각형 ABC의 넓이와 같다. 답: ③ 120cm²",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -612,7 +620,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형을 축 l 주위로 회전시켜 만든 원뿔의 높이 15cm, 반지름 8cm와 모선 17cm를 나타낸다.",
+    "solutionImageCaption": "회전축을 따라 높이 h=15cm이고 원뿔의 반지름은 8cm이다. 답: 320πcm³",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
