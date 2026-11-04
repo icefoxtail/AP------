@@ -2,7 +2,7 @@
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "original/high/h2/2final/25_강남여고_2학기_기말_고2_수학II.js",
   "sourceGitBlobSha": "b445b45819f8e7663fbfe4f6d8f4864163936a15",
-  "dictionaryVersion": "term-dict-v1.3-2026-11-03",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
     "agent": "Antigravity-gemini-3.8-flash",
     "run": "original-1-10",
@@ -39,7 +39,7 @@
         ],
         "method": [
           {
-            "term": "평균값정리",
+            "term": "롤의정리",
             "src": "solution",
             "quote": "롤의 정리에 의해",
             "evidenceType": "NAMED"
@@ -77,9 +77,9 @@
       "slots": {
         "given": [
           {
-            "term": "다항식",
-            "src": "solution",
-            "quote": "다항식의 각 항을"
+            "term": "이차식",
+            "src": "stem",
+            "quote": "3x^2-4x+5"
           },
           {
             "term": "정적분",
@@ -168,7 +168,7 @@
             "evidenceType": "NAMED"
           },
           {
-            "term": "속도",
+            "term": "가속도",
             "src": "solution",
             "quote": "가속도는 속도를 시간에 대하여 미분한 값이다",
             "evidenceType": "NAMED"
@@ -184,6 +184,11 @@
         "condition": [
           {
             "term": "부등식",
+            "src": "stem",
+            "quote": "t\\ge 0"
+          },
+          {
+            "term": "구간",
             "src": "stem",
             "quote": "t\\ge 0"
           }
@@ -206,7 +211,7 @@
             "quote": "함수 $f(x)$에 대하여"
           },
           {
-            "term": "다항식",
+            "term": "이차식",
             "src": "stem",
             "quote": "3x^2+x"
           },
@@ -220,7 +225,7 @@
           {
             "term": "함숫값",
             "src": "stem",
-            "quote": "f(1)"
+            "quote": "$f(1)$의 값"
           }
         ],
         "method": [
@@ -269,12 +274,12 @@
           {
             "term": "일차함수",
             "src": "stem",
-            "quote": "6-2t"
+            "quote": "v(t)=6-2t"
           }
         ],
         "goal": [
           {
-            "term": "위치관계",
+            "term": "위치",
             "src": "stem",
             "quote": "t=5$일 때의 위치"
           }
@@ -287,20 +292,20 @@
             "evidenceType": "NAMED"
           },
           {
-            "term": "위치관계",
+            "term": "위치",
             "src": "solution",
             "quote": "s(5)-s(0)",
             "evidenceType": "IMPLIED",
             "justification": "초기 위치 s(0)=0에 위치의 변화량을 더하여 위치 계산"
-          },
-          {
-            "term": "거리",
-            "src": "solution",
-            "quote": "앞으로 이동한 거리",
-            "evidenceType": "NAMED"
           }
         ],
-        "condition": []
+        "condition": [
+          {
+            "term": "원점",
+            "src": "stem",
+            "quote": "원점을 출발하여"
+          }
+        ]
       },
       "reasons": {
         "method": "속도의 정적분으로 위치의 변화량을 구하고 t=5에서의 위치를 계산"
@@ -365,12 +370,17 @@
           {
             "term": "연속",
             "src": "stem",
-            "quote": "연속이고"
+            "quote": "에서 연속이고"
           },
           {
             "term": "미분가능",
             "src": "stem",
             "quote": "미분가능할 때"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "닫힌 구간 $[a,b]$"
           }
         ]
       },
@@ -405,7 +415,7 @@
           {
             "term": "합",
             "src": "stem",
-            "quote": "M+m"
+            "quote": "$M+m$의 값"
           }
         ],
         "method": [
@@ -462,12 +472,17 @@
           {
             "term": "합",
             "src": "stem",
-            "quote": "a+b"
+            "quote": "$a+b$의 값"
           },
           {
             "term": "거리",
             "src": "stem",
             "quote": "움직인 거리를 $b$"
+          },
+          {
+            "term": "변화량",
+            "src": "stem",
+            "quote": "위치의 변화량을 $a$"
           }
         ],
         "method": [
@@ -492,6 +507,11 @@
           }
         ],
         "condition": [
+          {
+            "term": "원점",
+            "src": "stem",
+            "quote": "원점을 출발하여"
+          },
           {
             "term": "구간",
             "src": "stem",
@@ -555,11 +575,9 @@
         ],
         "condition": [
           {
-            "term": "항상성립",
-            "src": "solution",
-            "quote": "모든 실수에서 $f'(x)\\ge0$",
-            "evidenceType": "IMPLIED",
-            "justification": "실수 전체에서 도함수가 0 이상이어야 한다는 항상성립 조건"
+            "term": "일대일함수",
+            "src": "stem",
+            "quote": "일대일함수가 되도록"
           }
         ]
       },
@@ -623,6 +641,11 @@
             "term": "구별가능",
             "src": "stem",
             "quote": "서로 다른 실근"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $k$"
           }
         ]
       },
@@ -683,12 +706,22 @@
         ],
         "condition": [
           {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여"
+          },
+          {
             "term": "항상성립",
             "src": "stem",
             "quote": "모든 실수 $x$에 대하여 부등식"
           },
           {
             "term": "부등식",
+            "src": "stem",
+            "quote": "x\\gt 0"
+          },
+          {
+            "term": "양수",
             "src": "stem",
             "quote": "x\\gt 0"
           }
@@ -706,7 +739,7 @@
       "slots": {
         "given": [
           {
-            "term": "포물선",
+            "term": "이차함수",
             "src": "stem",
             "quote": "y=x^2-2x"
           },
@@ -790,7 +823,7 @@
             "evidenceType": "NAMED"
           },
           {
-            "term": "구간",
+            "term": "경우분류",
             "src": "solution",
             "quote": "[-2,0]",
             "evidenceType": "IMPLIED",
@@ -801,13 +834,19 @@
             "src": "solution",
             "quote": "$f(x)$가 위쪽",
             "evidenceType": "IMPLIED",
-            "justification": "각 구간에서 두 함수의 위아래 대소관계를 판정하여 피적분함수 결정"
+            "justification": "넓이는 각 구간의 위쪽 함수에서 아래쪽 함수를 빼어 구한다. 다만 실제 그림의 위아래는 이 해설과 반대이므로 원본 모순으로 보류한다."
           }
         ],
-        "condition": []
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "\\int_{-2}^{1}f(x)dx"
+          }
+        ]
       },
       "reasons": {
-        "method": "정적분의 구간 덧셈 성질로 구간별 정적분을 구하고 두 곡선의 차의 정적분으로 넓이 계산"
+        "method": "구간별 정적분의 차의 절댓값을 합하는 구조는 판정 가능하나, 그림은 (-2,0)에서 g>f, (0,1)에서 f>g이고 적분값과 해설은 그 반대여서 원본 자체가 모순이다. 수치 정답은 확정하지 않는다."
       },
       "steps": [],
       "scenarioNote": ""
@@ -839,7 +878,7 @@
           {
             "term": "기함수",
             "src": "solution",
-            "quote": "$f(-x)=-f(x)$이므로 삼차함수 $f(x)$는 홀수 차수의 항",
+            "quote": "$f(-x)=-f(x)$이므로",
             "evidenceType": "IMPLIED",
             "justification": "기함수 성질로부터 홀수차수 계수만 존재함을 유도"
           },
@@ -848,6 +887,13 @@
             "src": "solution",
             "quote": "f'(x)=3px^2+q",
             "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립일차방정식",
+            "src": "solution",
+            "quote": "3p+q=18",
+            "evidenceType": "IMPLIED",
+            "justification": "도함수 조건과 정적분 조건으로 얻은 두 일차방정식을 연립하여 p와 q를 정한다."
           },
           {
             "term": "우함수",
@@ -859,7 +905,22 @@
         ],
         "condition": [
           {
+            "term": "항상성립",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여"
+          },
+          {
             "term": "원점대칭",
+            "src": "stem",
+            "quote": "f(-x)=-f(x)"
+          },
+          {
+            "term": "기함수",
             "src": "stem",
             "quote": "f(-x)=-f(x)"
           }
@@ -896,10 +957,17 @@
           {
             "term": "함숫값",
             "src": "stem",
-            "quote": "f(4)"
+            "quote": "$f(4)$의 최솟값"
           }
         ],
         "method": [
+          {
+            "term": "등호조건",
+            "src": "solution",
+            "quote": "이 하한이 실제로 가능한지 확인한다",
+            "evidenceType": "IMPLIED",
+            "justification": "f(x)=4x-7이 하한 9를 실제 달성함을 보여 최솟값임을 확정한다."
+          },
           {
             "term": "평균값정리",
             "src": "solution",
@@ -924,6 +992,16 @@
             "term": "부등식",
             "src": "stem",
             "quote": "f'(x)\\ge 4"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "닫힌구간 $[1,4]$"
+          },
+          {
+            "term": "미분가능",
+            "src": "stem",
+            "quote": "미분가능한 함수 $f(x)$"
           }
         ]
       },
@@ -962,6 +1040,13 @@
           }
         ],
         "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "극댓값이 $9$인 경우",
+            "evidenceType": "IMPLIED",
+            "justification": "극대와 두 극소가 각각 9인 경우의 교점 개수를 구별하여 가능한 a만 남긴다."
+          },
           {
             "term": "증감표",
             "src": "solution",
@@ -1041,9 +1126,14 @@
         ],
         "condition": [
           {
+            "term": "범위",
+            "src": "stem",
+            "quote": "k=1}^{25}"
+          },
+          {
             "term": "자연수",
             "src": "stem",
-            "quote": "k=1"
+            "quote": "k=1}^{25}"
           }
         ]
       },
@@ -1066,7 +1156,7 @@
           {
             "term": "부등식",
             "src": "stem",
-            "quote": "x_1+x_2\\gt\\dfrac{f(x_1)-f(x_2)}{x_1-x_2}"
+            "quote": "x_1+x_2\\gt\\dfrac{f(x_1)-f(x_2)}"
           }
         ],
         "goal": [
@@ -1088,6 +1178,13 @@
         ],
         "method": [
           {
+            "term": "치환",
+            "src": "solution",
+            "quote": "s=x_1+x_2,\\quad d=x_1-x_2",
+            "evidenceType": "IMPLIED",
+            "justification": "두 변수의 합 s와 차 d로 치환하여 d가 0이 아닌 완전제곱식의 하한을 조사한다."
+          },
+          {
             "term": "평균변화율",
             "src": "solution",
             "quote": "\\dfrac{f(x_1)-f(x_2)}{x_1-x_2}",
@@ -1104,12 +1201,17 @@
             "src": "solution",
             "quote": "(1-k)^2\\le36",
             "evidenceType": "IMPLIED",
-            "justification": "모든 s, d에 대해 양수가 되기 위한 판별식/상수항 부등식 조건 도출"
+            "justification": "d는 0이 아니지만 0에 임의로 가까워질 수 있으므로 상수항이 0 이상일 조건 (1-k)^2≤36을 푼다."
           }
         ],
         "condition": [
           {
             "term": "항상성립",
+            "src": "stem",
+            "quote": "모든 실수 $x_1$, $x_2$에 대하여"
+          },
+          {
+            "term": "실수",
             "src": "stem",
             "quote": "모든 실수 $x_1$, $x_2$에 대하여"
           },
@@ -1137,7 +1239,7 @@
       "slots": {
         "given": [
           {
-            "term": "속도",
+            "term": "속력",
             "src": "stem",
             "quote": "매초 $2$의 속력"
           },
@@ -1154,12 +1256,23 @@
         ],
         "goal": [
           {
-            "term": "평균변화율",
+            "term": "미분계수",
+            "src": "stem",
+            "quote": "넓이의 변화율은?"
+          },
+          {
+            "term": "넓이",
             "src": "stem",
             "quote": "넓이의 변화율은?"
           }
         ],
         "method": [
+          {
+            "term": "정사각형",
+            "src": "solution",
+            "quote": "정사각형이 되려면",
+            "evidenceType": "NAMED"
+          },
           {
             "term": "좌표평면",
             "src": "solution",
@@ -1182,9 +1295,24 @@
         ],
         "condition": [
           {
-            "term": "양수",
+            "term": "수선",
             "src": "stem",
-            "quote": "양의 방향으로 움직이는"
+            "quote": "$x$축에 수직인 직선"
+          },
+          {
+            "term": "분할",
+            "src": "stem",
+            "quote": "선분 $OP$를 사등분하는"
+          },
+          {
+            "term": "원점",
+            "src": "stem",
+            "quote": "원점을 출발하여"
+          },
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "사각형 $ABDC$가 정사각형"
           }
         ]
       },
@@ -1200,9 +1328,14 @@
       "slots": {
         "given": [
           {
-            "term": "입체도형",
+            "term": "원뿔",
             "src": "stem",
             "quote": "원뿔에 크기와 모양이 같은 두 개의 원기둥이 내접"
+          },
+          {
+            "term": "원기둥",
+            "src": "stem",
+            "quote": "같은 두 개의 원기둥이 내접"
           },
           {
             "term": "부피",
@@ -1222,9 +1355,14 @@
             "quote": "밑면의 반지름의 길이는"
           },
           {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "밑면의 반지름의 길이는"
+          },
+          {
             "term": "합",
             "src": "stem",
-            "quote": "p+q"
+            "quote": "$p+q$의 값"
           }
         ],
         "method": [
@@ -1257,7 +1395,27 @@
         ],
         "condition": [
           {
+            "term": "내접",
+            "src": "stem",
+            "quote": "두 개의 원기둥이 내접하고"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "크기와 모양이 같은"
+          },
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$h$는 상수이고"
+          },
+          {
             "term": "자연수",
+            "src": "stem",
+            "quote": "서로소인 자연수"
+          },
+          {
+            "term": "서로소",
             "src": "stem",
             "quote": "서로소인 자연수"
           }
@@ -1287,7 +1445,7 @@
           {
             "term": "정적분으로정의된함수",
             "src": "stem",
-            "quote": "\\int_1^x(x-t)f(t)dt"
+            "quote": "\\int_0^x f(t)dt"
           }
         ],
         "goal": [
@@ -1306,7 +1464,7 @@
           {
             "term": "정적분",
             "src": "solution",
-            "quote": "x\\displaystyle\\int_1^xf(t)\\,dt-\\int_1^xtf(t)\\,dt",
+            "quote": "\\int_1^xtf(t)\\,dt",
             "evidenceType": "IMPLIED",
             "justification": "적분변수 t와 무관한 x를 적분기호 밖으로 분리"
           },
@@ -1317,6 +1475,20 @@
             "evidenceType": "NAMED"
           },
           {
+            "term": "미적분의기본정리",
+            "src": "solution",
+            "quote": "\\int_1^xf(t)\\,dt+xf(x)-xf(x)",
+            "evidenceType": "IMPLIED",
+            "justification": "위끝이 x인 정적분의 도함수로 피적분함수 값을 얻는다."
+          },
+          {
+            "term": "곱의미분법",
+            "src": "solution",
+            "quote": "\\int_1^xf(t)\\,dt+xf(x)-xf(x)",
+            "evidenceType": "IMPLIED",
+            "justification": "x와 정적분의 곱을 미분해 정적분과 x f(x)의 합을 얻는다."
+          },
+          {
             "term": "항등식",
             "src": "solution",
             "quote": "0=-3+a+f(1)",
@@ -1325,6 +1497,11 @@
           }
         ],
         "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여"
+          },
           {
             "term": "항상성립",
             "src": "stem",
@@ -1361,7 +1538,7 @@
             "quote": "상수 $a$, $b$에 대하여"
           },
           {
-            "term": "합",
+            "term": "제곱합",
             "src": "stem",
             "quote": "a^2+b^2"
           }
@@ -1409,7 +1586,7 @@
         ],
         "method": [
           {
-            "term": "접선의방정식",
+            "term": "접함",
             "src": "solution",
             "quote": "곡선이 $x=-2$에서 $x$축에 접하므로",
             "evidenceType": "IMPLIED",
@@ -1429,6 +1606,11 @@
           }
         ],
         "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "$x$축에 접할 때"
+          },
           {
             "term": "상수",
             "src": "stem",
@@ -1467,12 +1649,18 @@
           {
             "term": "합",
             "src": "stem",
-            "quote": "a+b"
+            "quote": "$a+b$의 값"
           }
         ],
         "method": [
           {
             "term": "정적분",
+            "src": "solution",
+            "quote": "\\int_0^3(t^2-2t-3)\\,dt",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "미적분의기본정리",
             "src": "solution",
             "quote": "적분으로 정의된 함수는 미분하면",
             "evidenceType": "NAMED"
@@ -1535,7 +1723,7 @@
             "evidenceType": "NAMED"
           },
           {
-            "term": "미정계수",
+            "term": "계수비교",
             "src": "solution",
             "quote": "계수를 비교한다",
             "evidenceType": "NAMED"
@@ -1550,29 +1738,12 @@
       "scenarioNote": ""
     }
   ],
-  "candidates": [
-    {
-      "term": "정적분으로정의된함수",
-      "en": [
-        "FUNCTION_DEFINED_BY_INTEGRAL"
-      ],
-      "synonyms": [
-        "적분으로정의된함수"
-      ],
-      "kind": "대상",
-      "parent": "정적분",
-      "note": "적분의 위끝이나 아래끝에 변수가 포함되어 정의된 함수",
-      "usedIn": [
-        21,
-        24
-      ]
-    }
-  ],
+  "candidates": [],
   "selfCheck": {
     "items": 25,
-    "quotesChecked": 196,
+    "quotesChecked": 230,
     "quotesNotFound": 0,
     "warningsRechecked": [],
-    "notes": ""
+    "notes": "Sol High가 25문항 Q/C/S 및 그림 5개를 직접 검수. 승격된 정적분으로정의된함수 후보를 제거. 동의어 추가 필요: 적분으로정의된함수 → 정적분으로정의된함수. Q13 그림의 f/g 순서가 적분값 및 해설과 반대여서 원본 모순을 receipt에 남김; 수치 정답은 승인하지 않음. 기계검사/통계 갱신은 ROOT 담당. | 2026-11-04 Codex-gpt-6.1-sol High 전 문항·그림 4칸 의미 검수. 원작성자 judgedBy 보존. 원본문항 수학 품질 승인과 별개."
   }
 }
