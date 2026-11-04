@@ -27,6 +27,26 @@ import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { verifyStudentAccess } from '../../archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs';
+
+export function acceptPendingSupplement(opt, requestAbs, error) {
+  const bytes=fs.readFileSync(requestAbs),doc=JSON.parse(bytes.toString('utf8'));
+  if(doc.approval?.type!=='META_PIPELINE_AUDIT')return null;
+  const access=verifyStudentAccess(opt.root,doc);
+  const dir=path.join(opt.root,'.archive-meta-register/pending-supplement');
+  const name=path.basename(requestAbs),target=path.join(dir,name);
+  if(fs.existsSync(target)&&!fs.readFileSync(target).equals(bytes))throw Error('pending supplement request conflict: '+name);
+  fs.mkdirSync(dir,{recursive:true});
+  fs.writeFileSync(target,bytes);
+  const receipt={schemaVersion:'archive-meta-provisional-approval-v1',request:name,requestSha256:sha256(bytes),
+    examUid:doc.examUid,sourceArchiveFile:doc.sourceArchiveFile,metadataApprovalStatus:'USER_APPROVED_PENDING_SUPPLEMENT',
+    metadataVerificationStatus:'NOT_VERIFIED',canonicalProjectionStatus:'NOT_APPLIED',
+    releaseStatus:access.status==='PASS'?'APPROVED':'STUDENT_ACCESS_REPAIR_REQUIRED',studentAccess:access,
+    supplements:[{stage:'registrar',error}],policy:'Student access first; unverified metadata is user-approved for subsequent supplementation.'};
+  fs.writeFileSync(path.join(dir,name.replace(/\.json$/,'.receipt.json')),jsonText(receipt));
+  fs.rmSync(requestAbs);
+  return receipt;
+}
 
 export const REJECTION_SCHEMA = "archive-reviewed-meta-register-rejection-v1";
 const DEFAULT_REGISTRAR = "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs";
@@ -37,7 +57,7 @@ function parseArgs(argv) {
   const opt = { root: process.cwd(), registrar: DEFAULT_REGISTRAR, rejectedDir: DEFAULT_REJECTED_DIR, guardPathsFile: DEFAULT_GUARD_PATHS,
     appliedFile: "", rejectedFile: "", summaryFile: "", reject: "", error: "", stage: "registrar", resetDerived: false, requests: [] };
   const names = { "--root": "root", "--registrar": "registrar", "--rejected-dir": "rejectedDir", "--guard-paths-file": "guardPathsFile",
-    "--applied-file": "appliedFile", "--rejected-file": "rejectedFile", "--summary-file": "summaryFile",
+    "--applied-file": "appliedFile", "--rejected-file": "rejectedFile", "--summary-file": "summaryFile", "--pending-file": "pendingFile",
     "--reject": "reject", "--error": "error", "--stage": "stage" };
   let i = 0;
   for (; i < argv.length && argv[i] !== "--"; i += 2) {
@@ -68,7 +88,7 @@ function derivedGuardPaths(opt) {
   const root = opt.root, rejectedDirAbs = path.resolve(root, opt.rejectedDir);
   const guardSpecs = fs.existsSync(path.resolve(root, opt.guardPathsFile))
     ? fs.readFileSync(path.resolve(root, opt.guardPathsFile), "utf8").split(/\r?\n/).map(l => l.trim()).filter(l => l && !l.startsWith("#")) : [];
-  const skip = [".archive-meta-register/inbox", posix(path.relative(root, rejectedDirAbs))];
+  const skip = [".archive-meta-register/inbox", ".archive-meta-register/pending-supplement", posix(path.relative(root, rejectedDirAbs))];
   return guardSpecs.filter(s => !skip.some(k => s.replace(/\/+$/, "") === k));
 }
 
@@ -118,7 +138,7 @@ export function registerRequests(opt, { log = console.log } = {}) {
     return h.digest("hex");
   };
 
-  const applied = [], rejected = [];
+  const applied = [], rejected = [], pendingSupplement = [];
   let dirtied = null;
   for (const requestArg of opt.requests) {
     const requestAbs = path.resolve(root, requestArg), rel = posix(path.relative(root, requestAbs)), name = path.basename(requestAbs);
@@ -134,16 +154,22 @@ export function registerRequests(opt, { log = console.log } = {}) {
     }
     const error = summarizeFailure(run.stderr || "", run.stdout || "");
     if (fingerprint() !== before) { dirtied = { request: rel, error }; rejected.push({ request: rel, name, error, exitCode: run.status, treeChanged: true }); break; }
+    let pending=null;
+    try { pending=acceptPendingSupplement(opt,requestAbs,error); } catch(e) {
+      if(!(e instanceof SyntaxError))throw e;
+    }
+    if(pending){pendingSupplement.push(pending);log(`[register] USER_APPROVED_PENDING_SUPPLEMENT ${name}: ${error}`);continue;}
     recordRejection(opt, requestAbs, { error, exitCode: run.status }, { log });
     rejected.push({ request: rel, name, error, exitCode: run.status });
   }
-  return { applied, rejected, dirtied };
+  return { applied, rejected, pendingSupplement, dirtied };
 }
 
 export function renderSummary(result, { total }) {
   const lines = ["### Reviewed meta registration (per-request isolation)", "",
     `- requests: ${total}, applied: **${result.applied.length}**, rejected: **${result.rejected.length}**${result.dirtied ? " (ISOLATION BROKEN, run aborted)" : ""}`];
   for (const a of result.applied) lines.push(`- APPLIED \`${a.name}\``);
+  for(const p of result.pendingSupplement||[])lines.push(`- ${p.metadataApprovalStatus} \`${p.request}\`: release=${p.releaseStatus}; metadata verification=NOT_VERIFIED; ${p.supplements[0].error.replace(/\|/g,'/')}`);
   if (result.rejected.length) {
     lines.push("", "Rejected requests are fail-closed (nothing from them was applied) and were moved to `.archive-meta-register/rejected/` with a `*.rejection.json` record; the meta owner must resubmit them.", "",
       "| request | error |", "| --- | --- |");
@@ -158,6 +184,15 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   if (opt.resetDerived) { resetDerived(opt); console.log("[register] derived registration paths restored to HEAD"); process.exit(0); }
   if (opt.reject) {
     if (!opt.error) { console.error("usage error: --reject needs --error"); process.exit(1); }
+    let pending=null;
+    try { pending=acceptPendingSupplement(opt,path.resolve(opt.root,opt.reject),opt.error.slice(0,600)); }
+    catch(error){if(!(error instanceof SyntaxError))throw error;}
+    if(pending){
+      if(opt.pendingFile)fs.writeFileSync(opt.pendingFile,`.archive-meta-register/pending-supplement/${pending.request}\n`);
+      if(opt.summaryFile)fs.appendFileSync(opt.summaryFile,`\n- USER_APPROVED_PENDING_SUPPLEMENT ${pending.request}: ${pending.releaseStatus}\n`);
+      process.exit(0);
+    }
+    if(opt.pendingFile)fs.writeFileSync(opt.pendingFile,'');
     recordRejection(opt, path.resolve(opt.root, opt.reject), { error: opt.error.slice(0, 600), stage: opt.stage });
     if (opt.summaryFile) fs.appendFileSync(opt.summaryFile, `\n- REJECTED (${opt.stage}) \`${path.basename(opt.reject)}\`: ${opt.error.replace(/\|/g, "\\|").slice(0, 600)}\n`);
     process.exit(0);
@@ -167,6 +202,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const list = items => items.map(i => i.request).join("\n") + (items.length ? "\n" : "");
   fs.writeFileSync(opt.appliedFile, list(result.applied));
   fs.writeFileSync(opt.rejectedFile, list(result.rejected));
+  if(opt.pendingFile)fs.writeFileSync(opt.pendingFile,(result.pendingSupplement||[]).map(p=>`.archive-meta-register/pending-supplement/${p.request}`).join('\n'));
   const summary = renderSummary(result, { total: opt.requests.length });
   console.log(summary);
   if (opt.summaryFile) fs.appendFileSync(opt.summaryFile, "\n" + summary);

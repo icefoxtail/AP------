@@ -37,7 +37,7 @@ if [[ ${#reqs[@]} -gt 0 ]]; then
   has_difficulty5=false
   has_basic_rebind=false
   for request in "${reqs[@]}"; do
-    schema="$(jq -r '.schemaVersion // ""' "$request")"
+    schema="$(node -e 'try { console.log(JSON.parse(require("fs").readFileSync(process.argv[1],"utf8")).schemaVersion || "") } catch {}' "$request")"
     if [[ "$schema" == "archive-finalqa-nonpt-register-request-v1" ]]; then
       has_legacy_finalqa=true
     fi
@@ -66,7 +66,10 @@ for round in 1 2; do
   applied=()
   mapfile -t reqs < <(find .archive-meta-register/inbox -maxdepth 1 -type f -name '*.json' -print 2>/dev/null | sort)
   if [[ ${#reqs[@]} -gt 0 ]]; then
-    node "$isolate" --applied-file "$work/applied.txt" --rejected-file "$work/rejected.txt" --summary-file "$summary" -- "${reqs[@]}"
+    node "$isolate" --applied-file "$work/applied.txt" --rejected-file "$work/rejected.txt" --pending-file "$work/pending.txt" --summary-file "$summary" -- "${reqs[@]}"
+    while IFS= read -r pending || [[ -n "$pending" ]]; do
+      [[ -z "$pending" ]] || cp -- "$pending" "$work/requests/$(basename "$pending")"
+    done < "$work/pending.txt"
     mapfile -t applied < "$work/applied.txt"
   fi
   if [[ ${#applied[@]} -eq 0 && "$scoped" != "true" ]]; then
@@ -97,7 +100,7 @@ for round in 1 2; do
   # Verify every applied request (do not stop at the first refusal) so one extra round can drop all of them.
   verify_failed=(); verify_errors=()
   for request in "${applied[@]}"; do
-    schema="$(jq -r .schemaVersion "$request")"
+    schema="$(node -e 'console.log(JSON.parse(require("fs").readFileSync(process.argv[1],"utf8")).schemaVersion)' "$request")"
     if [[ "$schema" == "archive-reviewed-exam-meta-register-request-v2" || "$schema" == "archive-finalqa-pinpoint-register-request-v1" || "$schema" == "archive-finalqa-nonpt-register-request-v1" || "$schema" == "archive-difficulty5-register-request-v1" || "$schema" == "archive-basic-scope-rebind-request-v1" ]]; then
       verify_rc=0
       out="$(node "$registrar" --request "$request" --verify-projection 2>&1)" || verify_rc=$?
@@ -118,13 +121,15 @@ for round in 1 2; do
   # Undo this round's registration, reject exactly the refused requests, and redo the others from the same base.
   node "$isolate" --reset-derived
   for i in "${!verify_failed[@]}"; do
-    node "$isolate" --reject "${verify_failed[$i]}" --stage projection-verify --error "${verify_errors[$i]:-consumer projection verification failed}" --summary-file "$summary"
+    node "$isolate" --reject "${verify_failed[$i]}" --stage projection-verify --error "${verify_errors[$i]:-consumer projection verification failed}" --summary-file "$summary" --pending-file "$work/projection-pending.txt"
+    while IFS= read -r pending || [[ -n "$pending" ]]; do
+      [[ -z "$pending" ]] || cp -- "$pending" "$work/requests/$(basename "$pending")"
+    done < "$work/projection-pending.txt"
   done
 done
 git diff --check
 
 # Applied requests are consumed (deleted); keep copies for the post-push changed-UID check.
 # Rejected requests were moved to .archive-meta-register/rejected/ and are never verified as changed UIDs.
-rm -f "$work"/requests/*.json
 for request in "${applied[@]}"; do cp -- "$request" "$work/requests/$(basename "$request")"; done
 for request in "${applied[@]}"; do rm -f -- "$request"; done
