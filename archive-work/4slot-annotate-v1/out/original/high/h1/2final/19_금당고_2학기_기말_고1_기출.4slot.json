@@ -1,0 +1,231 @@
+{
+  "schemaVersion":"archive-meta-4slot-v0",
+  "sourceArchiveFile":"original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+  "sourceGitBlobSha":"fed5e3b44abd893dee0900c61d5f7fbbe24a02d4",
+  "dictionaryVersion":"term-dict-v1.5-2026-11-04",
+  "judgedBy":{"agent":"Codex-gpt-6.1-terra","run":"original-71-80","at":"2026-11-04"},
+  "items":[
+    {
+      "sourceOrdinal":1,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"점","src":"stem","quote":"점 $(7,2)$를"}],
+        "goal":[{"term":"차","src":"stem","quote":"$b-a$의 값을 구하시오"}],
+        "method":[{"term":"평행이동","src":"solution","quote":"만큼 평행이동하면 $(x+p,y+q)$","evidenceType":"NAMED"}],
+        "condition":[{"term":"평행이동","src":"stem","quote":"$3$만큼 평행이동한 점"}]
+      },
+      "reasons":{"method":"각 좌표에 주어진 평행이동량을 더한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":2,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"유리함수","src":"stem","quote":"유리함수 $y=\\dfrac{2x-3}{x-1}$"}],
+        "goal":[{"term":"합","src":"stem","quote":"$a+b$의 값을 구하시오"}],
+        "method":[{"term":"다항식의나눗셈","src":"solution","quote":"분자를 분모로 나누어 점근선을 찾으면","evidenceType":"NAMED"},{"term":"점근선","src":"solution","quote":"수직점근선이고","evidenceType":"NAMED"}],
+        "condition":[]
+      },
+      "reasons":{"method":"분자를 분모로 나누어 수직·수평점근선을 읽는다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":3,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"무리함수","src":"stem","quote":"무리함수 $y=\\sqrt{2x-6}+2$"}],
+        "goal":[{"term":"곱","src":"stem","quote":"$a\\times b$의 값을 구하시오"}],
+        "method":[{"term":"정의역","src":"solution","quote":"정의역의 시작값은 $a=3$","evidenceType":"NAMED"},{"term":"치역","src":"solution","quote":"치역의 시작값은 $b=2$","evidenceType":"NAMED"},{"term":"제곱근","src":"solution","quote":"근호 안이 $0$ 이상이 되는 범위","evidenceType":"IMPLIED","justification":"근호 안과 근호값이 음이 아닌 성질로 두 범위의 끝점을 정한다."}],
+        "condition":[]
+      },
+      "reasons":{"method":"근호의 비음성으로 정의역과 치역의 시작값을 정한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":4,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"순서쌍","src":"stem","quote":"순서쌍 $(x,y)$의 개수"}],
+        "goal":[{"term":"개수","src":"stem","quote":"순서쌍 $(x,y)$의 개수를 구하시오"}],
+        "method":[{"term":"경우분류","src":"solution","quote":"합은 $3$ 또는 $4$뿐이므로","evidenceType":"IMPLIED","justification":"두 자연수의 합이 3인 경우와 4인 경우를 나눈다."},{"term":"열거","src":"solution","quote":"가능한 순서쌍은 $(1,2),(2,1)$","evidenceType":"IMPLIED","justification":"각 합을 갖는 양의 정수 순서쌍을 나열한다."}],
+        "condition":[{"term":"자연수","src":"stem","quote":"$x,y$가 자연수일 때"},{"term":"범위","src":"stem","quote":"$3\\le x+y\\le 4$"}]
+      },
+      "reasons":{"method":"합이 3 또는 4인 경우의 자연수 순서쌍을 나열해 더한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":5,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"조합","src":"stem","quote":"케이크 2개와 음료 3잔을 택하는"}],
+        "goal":[{"term":"개수","src":"stem","quote":"모든 경우의 수를 구하시오"}],
+        "method":[{"term":"조합","src":"solution","quote":"선택한 순서는 중요하지 않으므로 조합","evidenceType":"NAMED"},{"term":"곱의법칙","src":"solution","quote":"곱의 법칙에 의해","evidenceType":"NAMED"}],
+        "condition":[{"term":"구별가능","src":"stem","quote":"서로 다른 케이크 7개와 서로 다른 음료"}]
+      },
+      "reasons":{"method":"각 종류에서 조합으로 선택하고 두 선택 수를 곱한다."},"steps":[],"scenarioNote":"케이크와 음료 선택"
+    },
+    {
+      "sourceOrdinal":6,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"조합","src":"stem","quote":"대표 4명을 뽑을 때"}],
+        "goal":[{"term":"개수","src":"stem","quote":"모든 경우의 수를 구하시오"}],
+        "method":[{"term":"조합","src":"solution","quote":"전체 $10$명 중 $4$명을 뽑는 경우","evidenceType":"IMPLIED","justification":"순서 없이 네 명을 선택한다."},{"term":"여사건","src":"solution","quote":"한쪽 성별만 뽑는 경우를 빼면","evidenceType":"IMPLIED","justification":"남학생만 또는 여학생만 뽑는 경우를 전체에서 뺀다."}],
+        "condition":[{"term":"적어도","src":"stem","quote":"남학생과 여학생을 적어도 1명씩"}]
+      },
+      "reasons":{"method":"전체 네 명 선택에서 한 성별만 선택한 두 경우를 제외한다."},"steps":[],"scenarioNote":"남녀 대표 선출"
+    },
+    {
+      "sourceOrdinal":7,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"유리함수","src":"stem","quote":"$f(x)=\\dfrac{-x+3}{x+a}$"},{"term":"역함수","src":"stem","quote":"$g^{-1}(x)=f(x)$가 성립할 때"}],
+        "goal":[{"term":"합","src":"stem","quote":"$a+b+c$의 값을 구하시오"}],
+        "method":[{"term":"역함수","src":"solution","quote":"$g$의 식에서 역함수를 구해","evidenceType":"NAMED"},{"term":"약분","src":"solution","quote":"분자의 공통인수 $x-3$을 제외하고","evidenceType":"IMPLIED","justification":"허용되는 x에서 공통인수를 약분해 분모를 비교한다."},{"term":"계수비교","src":"solution","quote":"$x$의 계수와 상수항을 비교하여","evidenceType":"NAMED"}],
+        "condition":[{"term":"상등","src":"stem","quote":"$g^{-1}(x)=f(x)$가 성립할 때"}]
+      },
+      "reasons":{"method":"g의 역함수를 구하고 f와 비교하여 공통인수를 제외한 분모의 계수를 정한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":8,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"일차식","src":"stem","quote":"일차다항식 $P(x)$"},{"term":"유리함수","src":"stem","quote":"함수 $y=\\dfrac{P(x)}{x-a}$"}],
+        "goal":[{"term":"함숫값","src":"stem","quote":"$-5P(a)$의 값을 구하시오"}],
+        "method":[{"term":"점근선","src":"solution","quote":"그림에서 점근선과 그래프가 지나는 점","evidenceType":"NAMED"},{"term":"원점","src":"solution","quote":"그래프가 원점 $O(0,0)$을 지나므로","evidenceType":"NAMED"},{"term":"계수비교","src":"solution","quote":"수평점근선이 $y=1$이므로 $m=1$","evidenceType":"IMPLIED","justification":"수평점근선과 원점 통과를 이용해 일차분자의 계수를 정한다."}],
+        "condition":[]
+      },
+      "reasons":{"method":"그림에서 두 점근선과 원점 통과를 읽어 분자와 a를 결정한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":9,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"원의방정식","src":"stem","quote":"원 $(x-5)^2+(y-1)^2=1$"},{"term":"직선","src":"stem","quote":"직선 $y=x-2$에 대하여"}],
+        "goal":[{"term":"합","src":"stem","quote":"$a+b+c$의 값을 구하시오"}],
+        "method":[{"term":"대칭이동","src":"solution","quote":"대칭에서는 점 $(u,v)$가","evidenceType":"IMPLIED","justification":"원의 중심을 직선에 대칭이동한다."},{"term":"반지름","src":"solution","quote":"반지름이 변하지 않으므로","evidenceType":"NAMED"},{"term":"원의방정식","src":"solution","quote":"대칭이동한 원의 반지름도 $1$","evidenceType":"IMPLIED","justification":"이동한 중심과 유지되는 반지름으로 원의 방정식을 쓴다."}],
+        "condition":[{"term":"대칭이동","src":"stem","quote":"대칭이동한 원의 방정식"}]
+      },
+      "reasons":{"method":"원의 중심을 직선에 대칭이동하고 반지름은 그대로 유지한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":10,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"무리함수","src":"stem","quote":"y=\\sqrt{x-3}"},{"term":"일차함수","src":"stem","quote":"y=x+k"}],
+        "goal":[{"term":"정수","src":"stem","quote":"정수 $k$의 최댓값은?"},{"term":"최댓값","src":"stem","quote":"정수 $k$의 최댓값은?"}],
+        "method":[{"term":"치환","src":"solution","quote":"$t=\\sqrt{x-3}$으로 두면","evidenceType":"NAMED"},{"term":"근의분리","src":"solution","quote":"$t\\ge0$인 근의 개수가 실제 교점","evidenceType":"IMPLIED","justification":"치환한 이차방정식의 비음수 실근 수로 교점 수를 센다."},{"term":"근과계수의관계","src":"solution","quote":"두 근의 곱이 음수이므로","evidenceType":"IMPLIED","justification":"근의 곱의 부호로 두 근의 부호를 판별한다."},{"term":"판별식","src":"solution","quote":"판별식 $D=(-1)^2-4(k+3)","evidenceType":"NAMED"}],
+        "condition":[{"term":"유일성","src":"stem","quote":"$n(A\\cap B)=1$이 되도록"},{"term":"정수","src":"stem","quote":"정수 $k$의 최댓값은?"}]
+      },
+      "reasons":{"method":"근호를 비음수 변수로 치환하고 k의 정수 범위별 이차방정식의 유효 근 개수를 센다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":11,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"무리함수","src":"stem","quote":"$y=3\\sqrt{x+1}-2$"},{"term":"역함수","src":"stem","quote":"$x=3\\sqrt{y+1}-2$"}],
+        "goal":[{"term":"합","src":"stem","quote":"$a+b$의 값을 구하시오"}],
+        "method":[{"term":"치환","src":"solution","quote":"$u=\\sqrt{x+1}$, $v=\\sqrt{y+1}$","evidenceType":"NAMED"},{"term":"인수분해","src":"solution","quote":"$(v-u)(u+v+3)=0$","evidenceType":"IMPLIED","justification":"두 관계식을 빼 인수분해하여 x=y를 얻는다."},{"term":"이차방정식","src":"solution","quote":"$t^2-3t+1=0$이다","evidenceType":"NAMED"},{"term":"거리","src":"solution","quote":"두 점 사이의 거리는","evidenceType":"NAMED"}],
+        "condition":[{"term":"교점","src":"stem","quote":"그래프가 두 점에서 만날 때"}]
+      },
+      "reasons":{"method":"두 근호값의 관계를 빼어 교점이 y=x 위임을 증명하고 이차방정식을 풀어 두 점 사이 거리를 구한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":12,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"삼각형","src":"stem","quote":"삼각형 $ABC$의 둘레의 길이"},{"term":"직선","src":"stem","quote":"직선 $y=x$ 위의 점 $C$"}],
+        "goal":[{"term":"둘레","src":"stem","quote":"둘레의 길이의 최솟값"},{"term":"최솟값","src":"stem","quote":"둘레의 길이의 최솟값"}],
+        "method":[{"term":"대칭이동","src":"solution","quote":"대칭이동을 이용해 꺾인 경로를","evidenceType":"NAMED"},{"term":"최단거리","src":"solution","quote":"양 끝점 사이의 직선거리보다 짧을 수 없으므로","evidenceType":"IMPLIED","justification":"반사한 두 끝점 사이의 직선거리로 꺾인 경로를 최소화한다."},{"term":"등호조건","src":"solution","quote":"등호가 실제로 성립한다","evidenceType":"NAMED"}],
+        "condition":[{"term":"좌표축","src":"stem","quote":"$y$축 위의 점 $B$"},{"term":"통과","src":"stem","quote":"직선 $y=x$ 위의 점 $C$"}]
+      },
+      "reasons":{"method":"두 고정점의 반사상 사이 직선거리로 둘레를 바꾸고 반사점의 순서가 유효한지 확인한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":13,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"순열","src":"stem","quote":"다섯 자리 자연수를 만든다"}],
+        "goal":[{"term":"개수","src":"stem","quote":"같은 경우의 수를 구하시오"}],
+        "method":[{"term":"경우분류","src":"solution","quote":"둘째 자리가 $2$인 경우","evidenceType":"IMPLIED","justification":"양 끝을 고정하고 둘째와 셋째 자리의 값에 따라 경우를 나눈다."},{"term":"대칭성","src":"solution","quote":"숫자 $1,2,3$은 서로 같은 역할","evidenceType":"IMPLIED","justification":"첫 자리 숫자를 고정해 센 뒤 세 숫자의 대칭성으로 곱한다."}],
+        "condition":[{"term":"이웃하지않음","src":"stem","quote":"같은 숫자가 이웃하지 않도록"},{"term":"상등","src":"stem","quote":"만의 자리 숫자와 일의 자리 숫자가 같은"},{"term":"중복허용","src":"stem","quote":"전부 또는 일부를 사용하여"}]
+      },
+      "reasons":{"method":"첫 숫자를 고정한 뒤 인접 제한에 따라 중간 자리를 분류하고 세 숫자의 대칭으로 확장한다."},"steps":[],"scenarioNote":"세 숫자의 다섯 자리 수"
+    },
+    {
+      "sourceOrdinal":14,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"원의방정식","src":"stem","quote":"원 $(x-a)^2+(y-a)^2=b^2$"}],
+        "goal":[{"term":"식의값","src":"stem","quote":"$2a^2-8b$의 값을 구하시오"}],
+        "method":[{"term":"평행이동","src":"solution","quote":"원을 평행이동할 때 중심의 좌표는 이동하지만","evidenceType":"IMPLIED","justification":"원을 아래로 이동한 중심과 반지름을 정한다."},{"term":"점과직선사이의거리","src":"solution","quote":"중심 $C$에서 이 직선까지의 거리는","evidenceType":"NAMED"},{"term":"접함","src":"solution","quote":"거리가 반지름과 같으므로","evidenceType":"IMPLIED","justification":"각 직선까지의 거리가 반지름과 같다는 접선 조건을 쓴다."}],
+        "condition":[{"term":"양수","src":"stem","quote":"$a>2$, $b>0$"},{"term":"접함","src":"stem","quote":"$x$축에 동시에 접할 때"},{"term":"평행이동","src":"stem","quote":"$-2$만큼 평행이동한 도형"}]
+      },
+      "reasons":{"method":"이동한 중심에서 두 직선까지의 거리와 반지름을 같게 놓아 계수를 정한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":15,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"순열","src":"stem","quote":"서로 다른 세 개의 수를 뽑아"}],
+        "goal":[{"term":"사전식순위","src":"stem","quote":"62번째 오는 비밀번호를 구하시오"}],
+        "method":[{"term":"경우분류","src":"solution","quote":"백의 자리 숫자에 따라","evidenceType":"IMPLIED","justification":"백의 자리별로 소수 두 개 이상인 배열 수를 센다."},{"term":"여사건","src":"solution","quote":"나머지 두 자리에 소수가 전혀 없는 경우","evidenceType":"IMPLIED","justification":"첫 자리가 소수인 경우 나머지에 소수가 없는 배열을 전체에서 뺀다."},{"term":"사전식배열","src":"solution","quote":"큰 수부터 나열하면","evidenceType":"IMPLIED","justification":"백의 자리별 누적을 이용해 내림차순 62번째를 찾는다."}],
+        "condition":[{"term":"소수","src":"stem","quote":"소수가 두 개 이상 포함되도록"},{"term":"적어도","src":"stem","quote":"소수가 두 개 이상 포함되도록"},{"term":"중복불허","src":"stem","quote":"서로 다른 세 개의 수를 뽑아"},{"term":"사전식배열","src":"stem","quote":"가장 큰 자연수부터 차례대로 나열할 때"}]
+      },
+      "reasons":{"method":"백의 자리별 소수 개수 조건을 세고 누적 60개 뒤 내림차순의 두 번째를 찾는다."},"steps":[],"scenarioNote":"세 자리 비밀번호"
+    },
+    {
+      "sourceOrdinal":16,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"격자점","src":"stem","quote":"$x,y$는 정수이다"},{"term":"원","src":"stem","quote":"$x^2+y^2\\le4$"}],
+        "goal":[{"term":"사각형","src":"stem","quote":"사각형의 개수는?"},{"term":"개수","src":"stem","quote":"사각형의 개수는?"}],
+        "method":[{"term":"열거","src":"solution","quote":"가능한 격자점의 수","evidenceType":"IMPLIED","justification":"좌표별 가능한 격자점을 센다."},{"term":"조합","src":"solution","quote":"서로 다른 $4$점을 고르는 방법은","evidenceType":"IMPLIED","justification":"13점 중 네 점의 전체 선택을 센다."},{"term":"일직선","src":"solution","quote":"세 점 이상이 한 직선 위에 있으면","evidenceType":"IMPLIED","justification":"사각형이 되지 않는 공선 삼점 이상의 경우를 방향별로 센다."},{"term":"여사건","src":"solution","quote":"사각형을 만들지 못하는 경우를 빼야 한다","evidenceType":"IMPLIED","justification":"전체 네 점 선택에서 공선으로 불가능한 경우를 제외한다."}],
+        "condition":[{"term":"정수","src":"stem","quote":"$x,y$는 정수이다"},{"term":"범위","src":"stem","quote":"$x^2+y^2\\le4$"}]
+      },
+      "reasons":{"method":"원판 내 격자점 13개에서 네 점을 고른 전체에서 직선별 공선 세 점 이상의 경우를 제외한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":17,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"무리함수","src":"stem","quote":"곡선 $y=\\sqrt{x}$ 위의 한 점"},{"term":"삼각형","src":"stem","quote":"삼각형 $ABP$의 넓이의 최솟값"}],
+        "goal":[{"term":"차","src":"stem","quote":"$b-a$의 값은?"}],
+        "method":[{"term":"치환","src":"solution","quote":"$t=\\sqrt{x}\\ge0$으로 두면","evidenceType":"NAMED"},{"term":"점과직선사이의거리","src":"solution","quote":"점 $P(t^2,t)$에서 직선 $AB$까지의 거리","evidenceType":"NAMED"},{"term":"완전제곱식","src":"solution","quote":"절댓값을 없앨 수 있다","evidenceType":"IMPLIED","justification":"거리식의 이차식이 양수임을 완전제곱으로 보이고 넓이의 최소를 구한다."}],
+        "condition":[]
+      },
+      "reasons":{"method":"근호값으로 점을 매개화하고 고정 밑변에 대한 높이의 이차식을 완전제곱으로 최소화한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":18,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"유리함수","src":"stem","quote":"함수 $f(x)=\\dfrac{3x+a}{x+b}$"},{"term":"역함수","src":"stem","quote":"$f^{-1}(x)=f(x+5)+5$"}],
+        "goal":[{"term":"합","src":"stem","quote":"$a+b$의 값을 구하시오"}],
+        "method":[{"term":"역함수","src":"solution","quote":"역함수를 구하기 위해","evidenceType":"NAMED"},{"term":"평행이동","src":"solution","quote":"평행이동은 분자에 있는 $6$의 값을 바꾸지","evidenceType":"NAMED"},{"term":"점근선","src":"solution","quote":"수평점근선을 비교하면","evidenceType":"NAMED"},{"term":"연립방정식","src":"solution","quote":"$a-3b=6$에 $b=-8$을 대입하면","evidenceType":"IMPLIED","justification":"평행이동으로 얻은 계수 관계와 점근선 관계를 연립한다."}],
+        "condition":[{"term":"실수","src":"stem","quote":"3이 아닌 모든 실수 $x$에 대하여"},{"term":"항상성립","src":"stem","quote":"3이 아닌 모든 실수 $x$에 대하여"},{"term":"평행이동","src":"stem","quote":"그래프를 평행이동하면"}]
+      },
+      "reasons":{"method":"역함수의 분수꼴과 평행이동의 분수항 계수, 항등관계의 점근선을 비교한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":19,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"반원","src":"stem","quote":"반원 $y=\\sqrt{289-x^2}$"},{"term":"직선의방정식","src":"stem","quote":"직선 $y=-x+k$"}],
+        "goal":[{"term":"최댓값","src":"stem","quote":"양의 정수 $k$의 최댓값은?"},{"term":"정수","src":"stem","quote":"양의 정수 $k$의 최댓값은?"}],
+        "method":[{"term":"판별식","src":"solution","quote":"이 이차방정식의 판별식이 양수","evidenceType":"NAMED"},{"term":"근의공식","src":"solution","quote":"교점의 $x$좌표는","evidenceType":"IMPLIED","justification":"교점 방정식의 두 근을 공식으로 표현한다."},{"term":"부등식","src":"solution","quote":"작은 값도 $0$ 이상이어야 하므로","evidenceType":"IMPLIED","justification":"두 교점이 윗반원에 있도록 작은 y좌표가 비음수인 범위를 구한다."},{"term":"범위","src":"solution","quote":"$17\\le k<17\\sqrt2$이다","evidenceType":"IMPLIED","justification":"판별식 조건과 반원 조건을 결합해 정수의 최댓값을 정한다."}],
+        "condition":[{"term":"양수","src":"stem","quote":"양의 정수 $k$의 최댓값"},{"term":"정수","src":"stem","quote":"양의 정수 $k$의 최댓값"},{"term":"구별가능","src":"stem","quote":"서로 다른 두 점에서 만나도록"}]
+      },
+      "reasons":{"method":"원과 직선이 두 점에서 만나는 판별식 조건과 두 y좌표가 음이 아닌 반원 조건을 결합한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":20,"format":"단일 정답",
+      "slots":{
+        "given":[{"term":"직각삼각형","src":"stem","quote":"삼각형 $OAB$를 평행이동한"},{"term":"원의방정식","src":"stem","quote":"$x^2+y^2+ax+by+c=0$"}],
+        "goal":[{"term":"식의값","src":"stem","quote":"$\\dfrac{a+b+c}{2}$의 값을 구하시오"}],
+        "method":[{"term":"평행이동","src":"solution","quote":"각 점의 좌표는","evidenceType":"IMPLIED","justification":"한 꼭짓점의 이동량을 다른 꼭짓점에 적용한다."},{"term":"피타고라스정리","src":"solution","quote":"피타고라스 정리에 따라","evidenceType":"NAMED"},{"term":"내심","src":"solution","quote":"내심에서 세 변까지의 거리가 모두","evidenceType":"NAMED"},{"term":"원의방정식","src":"solution","quote":"원의 방정식은","evidenceType":"NAMED"}],
+        "condition":[{"term":"평행이동","src":"stem","quote":"삼각형 $OAB$를 평행이동한"},{"term":"내접","src":"stem","quote":"내접하는 원의 방정식"}]
+      },
+      "reasons":{"method":"이동한 직각삼각형의 변과 넓이에서 내접원 반지름과 중심을 구해 원의 방정식을 전개한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":21,"format":"서술",
+      "slots":{
+        "given":[{"term":"유리함수","src":"stem","quote":"유리함수 $y=\\dfrac{5}{x-2}+3$"},{"term":"직사각형","src":"stem","quote":"직사각형 $OAPB$의 네 변의 길이"}],
+        "goal":[{"term":"합","src":"stem","quote":"$a+b$의 값을 구하시오"}],
+        "method":[{"term":"치환","src":"solution","quote":"$t=x-2>0$이다","evidenceType":"IMPLIED","justification":"점근선으로부터의 양의 거리를 새 변수로 둔다."},{"term":"둘레","src":"solution","quote":"직사각형의 가로와 세로의 길이는","evidenceType":"IMPLIED","justification":"둘레를 x와 y의 합으로 표현한다."},{"term":"산술기하평균","src":"solution","quote":"$(\\sqrt t-\\sqrt{5/t})^2\\ge0$","evidenceType":"IMPLIED","justification":"양수 t와 5/t의 합을 제곱의 비음성으로 최소화한다."},{"term":"등호조건","src":"solution","quote":"등호는 $t=\\dfrac5t$","evidenceType":"NAMED"}],
+        "condition":[{"term":"사분면","src":"stem","quote":"점 $P$는 제1사분면 위에 있으며"},{"term":"정의역제한","src":"stem","quote":"오른쪽 가지($x>2$)"}]
+      },
+      "reasons":{"method":"점의 좌표로 둘레를 표현하고 양수 t와 5/t의 합을 최소화하여 점을 구한다."},"steps":[],"scenarioNote":""
+    },
+    {
+      "sourceOrdinal":22,"format":"서술",
+      "slots":{
+        "given":[{"term":"무리함수","src":"stem","quote":"함수 $f(x)=-\\sqrt{-x-4}$"},{"term":"역함수","src":"stem","quote":"역함수 $y=f^{-1}(x)$의 그래프"},{"term":"직선의방정식","src":"stem","quote":"직선 $y=-x+n$"}],
+        "goal":[{"term":"길이","src":"stem","quote":"선분 $AB$의 길이의 최솟값"},{"term":"최솟값","src":"stem","quote":"길이의 최솟값을 구하시오"}],
+        "method":[{"term":"대칭이동","src":"solution","quote":"직선 $y=x$에 대하여 대칭이다","evidenceType":"NAMED"},{"term":"치환","src":"solution","quote":"$t=\\sqrt{-x-4}\\ge0$으로 두면","evidenceType":"NAMED"},{"term":"거리","src":"solution","quote":"두 점 사이의 거리를 구한다","evidenceType":"NAMED"},{"term":"완전제곱식","src":"solution","quote":"완전제곱식으로 정리하면","evidenceType":"NAMED"}],
+        "condition":[{"term":"범위","src":"stem","quote":"$n\\le-4$"}]
+      },
+      "reasons":{"method":"직선이 좌표교환에 불변임을 이용해 두 점을 대칭으로 매개화하고 거리의 이차식을 최소화한다."},"steps":[],"scenarioNote":""
+    }
+  ],
+  "candidates":[],
+  "selfCheck":{"items":22,"quotesChecked":165,"quotesNotFound":0,"warningsRechecked":[1,2,5,6],"notes":"Q1은 좌표에 이동량을 더하는 한 단계이다. Q2는 분수꼴에서 두 점근선을 읽는다. Q5는 두 종류에서 조합으로 선택한 수를 곱한다. Q6은 전체 네 명 조합에서 한 성별만 선택한 두 경우를 뺀다. Q16과 Q19의 SVG는 ROOT가 제공한 PNG로 확인했다."}
+}
