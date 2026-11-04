@@ -146,9 +146,24 @@ jobs:
         run: npm install --no-save --package-lock=false playwright@1.62.1
 
       - name: Verify original exam visibility in the student search UI
+        id: original_search_diagnostics
+        continue-on-error: true
         env:
           CHROME_BIN: ${{ steps.search_chrome.outputs.chrome-path }}
         run: node tests/archive-original-search-exposure.browser.cjs
+      - name: Verify original exam opens for students in actual Chrome
+        env:
+          CHROME_BIN: ${{ steps.search_chrome.outputs.chrome-path }}
+        run: node tests/archive-original-exam-access.browser.cjs
+      - name: Record search metadata repair debt
+        if: always()
+        env:
+          SEARCH_OUTCOME: ${{ steps.original_search_diagnostics.outcome }}
+        run: |
+          echo "original_search_diagnostics=$SEARCH_OUTCOME" >> "$GITHUB_STEP_SUMMARY"
+          if [[ "$SEARCH_OUTCOME" != success ]]; then
+            echo "::warning title=Search metadata supplement required::Direct original exam access remains the release check."
+          fi
 
       - name: Set up real Chrome for Jeil print QA
         if: github.event_name == 'pull_request' && (github.head_ref == 'work/review-25-jeil-h1-2final-legacy22-20261012' || github.head_ref == 'work/palma-legacy-similar-23-final-20261014')

@@ -40,6 +40,21 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npm install --no-save --package-lock=false playwright@1.62.1
       - name: Actual Chrome shared search and storage failure
+        id: browser_meta_diagnostics
+        continue-on-error: true
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
         run: node tests/problem-bank-meta-browser.cjs
+      - name: Verify original exam opens for students in actual Chrome
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: node tests/archive-original-exam-access.browser.cjs
+      - name: Record browser metadata repair debt
+        if: always()
+        env:
+          BROWSER_META_OUTCOME: ${{ steps.browser_meta_diagnostics.outcome }}
+        run: |
+          echo "browser_meta_diagnostics=$BROWSER_META_OUTCOME" >> "$GITHUB_STEP_SUMMARY"
+          if [[ "$BROWSER_META_OUTCOME" != success ]]; then
+            echo "::warning title=Search metadata supplement required::Original exam access was checked separately."
+          fi

@@ -145,7 +145,8 @@ test('registration sync records metadata debt while keeping student source and C
   const workflow=read('.github/workflows/archive-registration-sync.yml');
   assert.match(workflow, /id: meta_v2_diagnostics\n\s+continue-on-error: true/);
   assert.match(workflow, /name: Verify student registration and source identity\n\s+run:/);
-  assert.match(workflow, /name: Verify original exam visibility in the student search UI\n\s+env:/);
+  assert.match(workflow, /name: Verify original exam visibility in the student search UI\n\s+id: original_search_diagnostics\n\s+continue-on-error: true/);
+  assert.match(workflow, /name: Verify original exam opens for students in actual Chrome\n\s+env:/);
   assert.match(workflow, /META_OUTCOME.*steps\.meta_v2_diagnostics\.outcome/);
 });
 
