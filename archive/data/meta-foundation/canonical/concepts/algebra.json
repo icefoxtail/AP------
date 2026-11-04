@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.4.19",
+  "shardVersion": "1.4.20",
   "status": "ACTIVE",
-  "conceptCount": 301,
+  "conceptCount": 302,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -10144,6 +10144,45 @@
       ],
       "curriculumRefs": [
         "2015:중3-1:M3-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_GEOMETRIC_AREA_VOLUME_FORMULA",
+      "canonicalLabelKo": "도형의 둘레·넓이·부피 공식",
+      "definition": "정사각형 둘레 4x, 삼각형 넓이 ½×밑변×높이, 원 넓이 πx², 정육면체 부피 x³ 등 도형 공식을 x의 식으로 쓴다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_258f4918b80ba1034758ae714755cc9b47c451164a96bdccf1406536382b50aa"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_258f4918b80ba1034758ae714755cc9b47c451164a96bdccf1406536382b50aa",
+          "sourceOrdinal": 1,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_DEFINITION/TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- ③ 원의 넓이: $y = \\pi x^2$ ($x^2$의 계수가 $\\pi \\ne 0$인 이차함수)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_DEFINITION"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
       ],
       "ownerConceptShard": "ALGEBRA"
     }

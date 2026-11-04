@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "FUNCTIONS",
-  "shardVersion": "1.5.10",
+  "shardVersion": "1.5.11",
   "status": "ACTIVE",
-  "conceptCount": 117,
+  "conceptCount": 119,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
@@ -4211,6 +4211,84 @@
       ],
       "taxonomyRefs": [
         "PT_M3_QUADRATIC_FUNCTION_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_FUNCTION_DEGREE_CLASSIFICATION",
+      "canonicalLabelKo": "관계식의 차수에 따른 함수 분류",
+      "definition": "관계식의 최고차항 차수에 따라 일차함수·이차함수·삼차함수로 분류한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_258f4918b80ba1034758ae714755cc9b47c451164a96bdccf1406536382b50aa"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_258f4918b80ba1034758ae714755cc9b47c451164a96bdccf1406536382b50aa",
+          "sourceOrdinal": 1,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_DEFINITION/TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- ③ 원의 넓이: $y = \\pi x^2$ ($x^2$의 계수가 $\\pi \\ne 0$인 이차함수)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_DEFINITION"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_GENERAL_FORM",
+      "canonicalLabelKo": "이차함수의 일반형",
+      "definition": "y=ax^2+bx+c (a≠0) 꼴로, 계수 a, b, c가 그래프의 모양과 위치를 결정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0e245fd0206e51e376b65b45dd1a8460c96906525b562fb4e1e368fb65086257"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_0e245fd0206e51e376b65b45dd1a8460c96906525b562fb4e1e368fb65086257",
+          "sourceOrdinal": 11,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS/TPL_M3_DETERMINE_EQUATION_FROM_THREE_GIVEN_POINTS bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$5a = -10 \\implies a = -2$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS"
       ],
       "curriculumRefs": [
         "2015:중3-1:M3-04"
