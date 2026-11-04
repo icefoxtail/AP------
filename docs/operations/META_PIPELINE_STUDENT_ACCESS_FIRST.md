@@ -14,4 +14,4 @@
 
 ## Archive 2.0 CI 출고 기준
 
-Pages release의 `selection_tests`는 학생용 원본 자산·Consumer 동기화·시험지 선택 테스트를 계속 필수로 검사한다. 메타 등록·보존·분류 완성도 테스트는 별도 `metadata_integrity_tests`로 실행하고 실패 결과를 release gate의 advisory 진단에 남긴다. `Problem Bank Shared Meta`도 메타 진단을 실행해 보완 경고를 남기며, 실제 Chrome 검색·저장 흐름은 필수로 검사한다. 파생 데이터 생성 실패, 원본 자산 누락, 브라우저 이용 장애는 여전히 배포 실패다.
+Pages release의 `selection_tests`는 학생용 원본 자산·Consumer 동기화·시험지 선택 테스트를 계속 필수로 검사한다. 메타 등록·보존·분류 완성도 테스트는 별도 `metadata_integrity_tests`로 실행하고, 메타 투영 재확인 `projection_check`와 함께 advisory 진단에 남긴다. 투영 생성 `projection_write`, 실제 Consumer 일치 `qid9_parity`, 브라우저 흐름은 필수다. `Problem Bank Shared Meta`도 메타 진단을 실행해 보완 경고를 남기며, 실제 Chrome 검색·저장 흐름은 필수로 검사한다. 파생 데이터 생성 실패, 원본 자산 누락, 브라우저 이용 장애는 여전히 배포 실패다.
