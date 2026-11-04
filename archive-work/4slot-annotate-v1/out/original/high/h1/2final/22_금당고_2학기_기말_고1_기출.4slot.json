@@ -4,7 +4,7 @@
   "sourceGitBlobSha": "e078f4fc60ff33dd0dcee0464abc99c05277e120",
   "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
-    "agent": "antigravity-gemini-3.8-flash",
+    "agent": "antigravity-gemini-2.5-pro",
     "run": "original-51-60",
     "at": "2026-11-04"
   },
@@ -14,1034 +14,573 @@
       "format": "단일 정답",
       "slots": {
         "given": [
-          {
-            "term": "유리함수",
-            "src": "stem",
-            "quote": "유리함수 $y=\\dfrac{2}{x-2}-1$의"
-          },
-          {
-            "term": "점근선",
-            "src": "stem",
-            "quote": "그래프의 점근선의 방정식이 $x=p$, $y=q$일 때"
-          }
+          { "term": "유리함수", "src": "stem", "quote": "유리함수 $y=\\dfrac{2}{x-2}-1$의" },
+          { "term": "점근선", "src": "stem", "quote": "점근선의 방정식이 $x=p$, $y=q$일 때" },
+          { "term": "방정식", "src": "stem", "quote": "점근선의 방정식이 $x=p$, $y=q$일 때" }
         ],
         "goal": [
-          {
-            "term": "함숫값",
-            "src": "stem",
-            "quote": "$p+q$의 값은?"
-          }
+          { "term": "상수", "src": "stem", "quote": "$p+q$의 값은? [3.8점]" },
+          { "term": "합", "src": "solution", "quote": "따라서 $p+q=2+(-1)=1$이다." },
+          { "term": "결정", "src": "solution", "quote": "수직점근선은 $x=2$이므로 $p=2$이고" }
         ],
         "method": [
-          {
-            "term": "점근선",
-            "src": "solution",
-            "quote": "수직점근선은 $x=2$이므로 $p=2$이고, 수평점근선은 $y=-1$이므로 $q=-1$이다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "대입",
-            "src": "solution",
-            "quote": "따라서 $p+q=2+(-1)=1$이다",
-            "evidenceType": "IMPLIED",
-            "justification": "점근선 값들의 합 계산"
-          }
+          { "term": "표준형", "src": "solution", "quote": "유리함수의 표준형에서 수직·수평 점근선을 바로 읽는다.", "evidenceType": "NAMED" },
+          { "term": "분모", "src": "solution", "quote": "분모를 0으로 만드는 $x$값과", "evidenceType": "NAMED" },
+          { "term": "점근선", "src": "solution", "quote": "상수항을 각각 점근선으로 본다.", "evidenceType": "NAMED" }
         ],
-        "condition": []
-      }
+        "condition": [
+          { "term": "상수", "src": "solution", "quote": "상수항을 각각 점근선으로 본다." }
+        ]
+      },
+      "reasons": { "method": "유리함수의 표준형에서 분모를 0으로 만드는 값과 상수항으로 점근선 결정" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 2,
       "format": "단일 정답",
       "slots": {
         "given": [
-          {
-            "term": "무리함수",
-            "src": "stem",
-            "quote": "함수 $f(x)=\\sqrt{x+a}+1$가"
-          }
+          { "term": "함수", "src": "stem", "quote": "함수 $f(x)=\\sqrt{x+a}+1$가" },
+          { "term": "근호", "src": "solution", "quote": "근호 안의 식을 결정한다." },
+          { "term": "함숫값", "src": "solution", "quote": "주어진 함숫값을 대입하여" }
         ],
         "goal": [
-          {
-            "term": "매개변수",
-            "src": "stem",
-            "quote": "상수 $a$의 값은?"
-          }
+          { "term": "상수", "src": "stem", "quote": "상수 $a$의 값은? [3.8점]" },
+          { "term": "결정", "src": "solution", "quote": "근호 안의 식을 결정한다." }
         ],
         "method": [
-          {
-            "term": "대입",
-            "src": "solution",
-            "quote": "$f(-1)=2$이므로 $\\sqrt{-1+a}+1=2$이다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "무리방정식",
-            "src": "solution",
-            "quote": "$\\sqrt{a-1}=1$이므로 $a-1=1$이고 $a=2$이다",
-            "evidenceType": "IMPLIED",
-            "justification": "근호식을 제곱하여 미지수 a 결정"
-          }
+          { "term": "대입", "src": "solution", "quote": "주어진 함숫값을 대입하여", "evidenceType": "NAMED" },
+          { "term": "거듭제곱", "src": "solution", "quote": "근호를 한쪽에 남긴 뒤 양변을 제곱한다.", "evidenceType": "NAMED" },
+          { "term": "무리함수", "src": "solution", "quote": "정의 조건도 만족한다.", "evidenceType": "IMPLIED", "justification": "근호 안의 식이 0 이상이어야 하는 무리함수의 정의 조건 점검" }
         ],
         "condition": [
-          {
-            "term": "상수",
-            "src": "stem",
-            "quote": "상수 $a$의 값은?"
-          }
+          { "term": "상수", "src": "stem", "quote": "상수 $a$의 값은? [3.8점]" },
+          { "term": "부등식", "src": "solution", "quote": "이때 $a-1=1\\ge0$이므로" }
         ]
-      }
+      },
+      "reasons": { "method": "함숫값을 대입하고 근호 식을 제곱하여 상수 결정" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 3,
       "format": "단일 정답",
       "slots": {
         "given": [
-          {
-            "term": "자연수",
-            "src": "stem",
-            "quote": "숫자 $1,2,3,4$가 각각 적힌 카드 4장이 있다"
-          },
-          {
-            "term": "짝수",
-            "src": "stem",
-            "quote": "짝수의 개수는?"
-          }
+          { "term": "자연수", "src": "stem", "quote": "두 자리의 자연수를 만들 때" },
+          { "term": "개수", "src": "stem", "quote": "짝수의 개수는? [4점]" }
         ],
         "goal": [
-          {
-            "term": "개수",
-            "src": "stem",
-            "quote": "짝수의 개수는?"
-          }
+          { "term": "짝수", "src": "stem", "quote": "짝수의 개수는? [4점]" },
+          { "term": "개수", "src": "stem", "quote": "짝수의 개수는? [4점]" }
         ],
         "method": [
-          {
-            "term": "경우분류",
-            "src": "solution",
-            "quote": "일의 자리는 2가지이고, 일의 자리를 정한 뒤 십의 자리는 남은 3장 중 하나이므로 3가지이다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "곱의법칙",
-            "src": "solution",
-            "quote": "따라서 짝수는 $2\\times3=6$개이다",
-            "evidenceType": "NAMED"
-          }
+          { "term": "경우분류", "src": "solution", "quote": "일의 자리를 먼저 정한 뒤 십의 자리를 고른다.", "evidenceType": "IMPLIED", "justification": "일의 자리가 짝수인 경우를 기준으로 나누어 처리" },
+          { "term": "곱의법칙", "src": "solution", "quote": "따라서 짝수는 $2\\times3=6$개이다.", "evidenceType": "IMPLIED", "justification": "일의 자리 선택과 십의 자리 선택을 연속하여 곱하는 법칙" },
+          { "term": "순열", "src": "solution", "quote": "십의 자리는 남은 3장 중 하나이므로 3가지이다.", "evidenceType": "IMPLIED", "justification": "남은 카드 중 1장을 순서를 고려해 선택 및 배치" }
         ],
         "condition": [
-          {
-            "term": "구별가능",
-            "src": "stem",
-            "quote": "이 중에서 2장을 뽑아"
-          }
+          { "term": "자연수", "src": "stem", "quote": "두 자리의 자연수를 만들 때" },
+          { "term": "짝수", "src": "solution", "quote": "두 자리 수가 짝수이려면 일의 자리만 짝수이면 된다." }
         ]
-      }
+      },
+      "reasons": { "method": "일의 자리의 짝수 배치를 먼저 분류하고 십의 자리 선택과 곱의 법칙 적용" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 4,
       "format": "단일 정답",
       "slots": {
         "given": [
-          {
-            "term": "순열",
-            "src": "stem",
-            "quote": "이어달리기 선수 6명 중에서 4명을 뽑아 달리기 순서를 정하는"
-          }
+          { "term": "자연수", "src": "stem", "quote": "선수 6명 중에서 4명을 뽑아" },
+          { "term": "순서", "src": "stem", "quote": "달리기 순서를 정하는 모든 경우의 수는?" }
         ],
         "goal": [
-          {
-            "term": "개수",
-            "src": "stem",
-            "quote": "모든 경우의 수는?"
-          }
+          { "term": "개수", "src": "stem", "quote": "모든 경우의 수는? [4점]" },
+          { "term": "결정", "src": "stem", "quote": "달리기 순서를 정하는 모든 경우의 수는?" }
         ],
         "method": [
-          {
-            "term": "순열",
-            "src": "solution",
-            "quote": "${}_6P_4=6\\times5\\times4\\times3=360$이다",
-            "evidenceType": "NAMED"
-          }
+          { "term": "순열", "src": "solution", "quote": "순서까지 정하므로 순열을 사용한다.", "evidenceType": "NAMED" },
+          { "term": "곱의법칙", "src": "solution", "quote": "${}_6P_4=6\\times5\\times4\\times3=360$이다.", "evidenceType": "IMPLIED", "justification": "주자 4명을 순차적으로 정하는 단계별 경우의 수를 곱하여 계산" },
+          { "term": "조합", "src": "solution", "quote": "6명 중 4명을 뽑아", "evidenceType": "IMPLIED", "justification": "전체 선수 중 달릴 선수를 먼저 고르는 개념 포함" }
         ],
         "condition": [
-          {
-            "term": "구별가능",
-            "src": "stem",
-            "quote": "선수 6명 중에서"
-          }
+          { "term": "순서", "src": "stem", "quote": "달리기 순서를 정하는 모든 경우의 수는?" },
+          { "term": "구별가능", "src": "solution", "quote": "같은 네 명을 뽑더라도 달리는 순서가 다르면 다른 경우이다." }
         ]
-      }
+      },
+      "reasons": { "method": "순서를 고려하여 주자 4명을 선택 배열하는 순열 공식 적용" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 5,
       "format": "단일 정답",
       "slots": {
         "given": [
-          {
-            "term": "조합",
-            "src": "stem",
-            "quote": "${}_{10}C_a={}_9C_4+{}_9C_5$, ${}_8C_5={}_bC_5+{}_7C_4$가 성립할 때"
-          }
+          { "term": "조합", "src": "solution", "quote": "조합의 성질과 조합값 비교로 해결한다." },
+          { "term": "자연수", "src": "stem", "quote": "두 자연수 $a,b$에 대하여" }
         ],
         "goal": [
-          {
-            "term": "함숫값",
-            "src": "stem",
-            "quote": "$a+b$의 값은?"
-          }
+          { "term": "상수", "src": "stem", "quote": "$a+b$의 값은? [4점]" },
+          { "term": "합", "src": "stem", "quote": "$a+b$의 값은? [4점]" }
         ],
         "method": [
-          {
-            "term": "항등식",
-            "src": "solution",
-            "quote": "${}_9C_4+{}_9C_5={}_{10}C_5$",
-            "evidenceType": "IMPLIED",
-            "justification": "조합 덧셈 항등식 적용"
-          },
-          {
-            "term": "조합",
-            "src": "solution",
-            "quote": "${}_bC_5=56-35=21={}_7C_5$이므로 $b=7$이다",
-            "evidenceType": "NAMED"
-          }
+          { "term": "조합", "src": "solution", "quote": "조합의 성질과 조합값 비교로 해결한다.", "evidenceType": "NAMED" },
+          { "term": "파스칼의삼각형", "src": "solution", "quote": "${}_9C_4+{}_9C_5={}_{10}C_5$이고", "evidenceType": "IMPLIED", "justification": "파스칼의 삼각형 기본 항등식에 따라 인접 조합값의 합 계산" },
+          { "term": "대칭성", "src": "solution", "quote": "가운데 항은 하나뿐이므로 $a=5$이다.", "evidenceType": "IMPLIED", "justification": "조합 nCr의 대칭성을 고려하여 미지수 결정" }
         ],
         "condition": [
-          {
-            "term": "자연수",
-            "src": "stem",
-            "quote": "두 자연수 $a,b$에 대하여"
-          }
+          { "term": "자연수", "src": "stem", "quote": "두 자연수 $a,b$에 대하여" },
+          { "term": "등식", "src": "stem", "quote": "${}_{10}C_a={}_9C_4+{}_9C_5$," }
         ]
-      }
+      },
+      "reasons": { "method": "파스칼의 항등식 및 조합의 성질을 이용하여 각 미지수를 결정" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 6,
       "format": "단일 정답",
       "slots": {
         "given": [
-          {
-            "term": "유리함수",
-            "src": "stem",
-            "quote": "유리함수 $y=\\dfrac{3x-1}{x-2}$의"
-          },
-          {
-            "term": "역함수",
-            "src": "stem",
-            "quote": "역함수가 $y=\\dfrac{ax+b}{x+c}$일 때"
-          }
+          { "term": "유리함수", "src": "stem", "quote": "유리함수 $y=\\dfrac{3x-1}{x-2}$의" },
+          { "term": "역함수", "src": "stem", "quote": "역함수가 $y=\\dfrac{ax+b}{x+c}$일 때" },
+          { "term": "상수", "src": "stem", "quote": "(단, $a,b,c$는 상수이다.)" }
         ],
         "goal": [
-          {
-            "term": "함숫값",
-            "src": "stem",
-            "quote": "$a+b+c$의 값은?"
-          }
+          { "term": "합", "src": "stem", "quote": "$a+b+c$의 값은?" },
+          { "term": "결정", "src": "solution", "quote": "$a=2$, $b=-1$, $c=-3$이다." }
         ],
         "method": [
-          {
-            "term": "역함수",
-            "src": "solution",
-            "quote": "$x$와 $y$를 바꾼 뒤 다시 $y$에 대하여 푼다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "유리식",
-            "src": "solution",
-            "quote": "따라서 $f^{-1}(x)=\\dfrac{2x-1}{x-3}$이므로 $a=2$, $b=-1$, $c=-3$이다",
-            "evidenceType": "IMPLIED",
-            "justification": "유리함수 역함수 식 유도"
-          }
+          { "term": "역함수", "src": "solution", "quote": "역함수는 $x$와 $y$를 바꾼 뒤", "evidenceType": "NAMED" },
+          { "term": "분모", "src": "solution", "quote": "분모를 없애고 $y$가 포함된 항을", "evidenceType": "NAMED" },
+          { "term": "계수", "src": "solution", "quote": "$a=2$, $b=-1$, $c=-3$이다.", "evidenceType": "IMPLIED", "justification": "유리함수 일반형 식의 동류항 계수 비교로 미정계수 결정" }
         ],
         "condition": [
-          {
-            "term": "상수",
-            "src": "stem",
-            "quote": "$a,b,c$는 상수이다"
-          }
+          { "term": "상수", "src": "stem", "quote": "(단, $a,b,c$는 상수이다.)" },
+          { "term": "분모", "src": "solution", "quote": "분모를 없애고 $y$가 포함된 항을" }
         ]
-      }
+      },
+      "reasons": { "method": "x와 y를 바꾸어 정리한 역함수 식에서 각 계수를 비교하여 결정" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 7,
       "format": "단일 정답",
       "slots": {
         "given": [
-          {
-            "term": "부분분수",
-            "src": "solution",
-            "quote": "분모를 연속한 두 인수로 만든 뒤 부분분수로 분해하면"
-          },
-          {
-            "term": "이차식",
-            "src": "stem",
-            "quote": "함수 $f(x)=x^2+5x+6$에 대하여"
-          }
+          { "term": "함수", "src": "stem", "quote": "함수 $f(x)=x^2+5x+6$에 대하여" },
+          { "term": "유리식", "src": "solution", "quote": "두 분수의 차로 바꾸어 $k=1$부터" }
         ],
         "goal": [
-          {
-            "term": "함숫값",
-            "src": "stem",
-            "quote": "$\\dfrac1{f(1)}+\\dfrac1{f(2)}+\\dfrac1{f(3)}+\\cdots+\\dfrac1{f(18)}$의 값은?"
-          }
+          { "term": "합", "src": "solution", "quote": "따라서 전체 합은" },
+          { "term": "함숫값", "src": "solution", "quote": "$(\\dfrac13-\\dfrac14)+(\\dfrac14-\\dfrac15)+\\cdots+(\\dfrac1{20}-\\dfrac1{21})=\\dfrac13-\\dfrac1{21}=\\dfrac27$이다." }
         ],
         "method": [
-          {
-            "term": "부분분수",
-            "src": "solution",
-            "quote": "$\\dfrac1{(k+2)(k+3)}=\\dfrac1{k+2}-\\dfrac1{k+3}$이다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "소거",
-            "src": "solution",
-            "quote": "전체 합은 $(\\dfrac13-\\dfrac14)+(\\dfrac14-\\dfrac15)+\\cdots+(\\dfrac1{20}-\\dfrac1{21})=\\dfrac13-\\dfrac1{21}=\\dfrac27$이다",
-            "evidenceType": "IMPLIED",
-            "justification": "부분분수 전개 후 인접항 상쇄"
-          }
+          { "term": "부분분수", "src": "solution", "quote": "부분분수로 분해하면 합이 연쇄적으로 소거된다.", "evidenceType": "NAMED" },
+          { "term": "소거", "src": "solution", "quote": "연쇄적으로 소거된다.", "evidenceType": "NAMED" },
+          { "term": "인수분해", "src": "solution", "quote": "$f(k)=k^2+5k+6=(k+2)(k+3)$이다.", "evidenceType": "IMPLIED", "justification": "이차식을 일차식의 곱으로 인수분해하여 분모에 배치" }
         ],
-        "condition": []
-      }
+        "condition": [
+          { "term": "자연수", "src": "solution", "quote": "두 분수의 차로 바꾸어 $k=1$부터 18까지 더한다." }
+        ]
+      },
+      "reasons": { "method": "분모를 인수분해 후 부분분수로 전개하여 연쇄 소거" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 8,
       "format": "단일 정답",
       "slots": {
         "given": [
-          {
-            "term": "무리함수",
-            "src": "stem",
-            "quote": "함수 $y=\\sqrt{x-1}+1$과"
-          },
-          {
-            "term": "역함수",
-            "src": "stem",
-            "quote": "그 역함수의 그래프는 서로 다른 두 점에서 만난다"
-          }
+          { "term": "무리함수", "src": "stem", "quote": "함수 $y=\\sqrt{x-1}+1$과" },
+          { "term": "역함수", "src": "stem", "quote": "그 역함수의 그래프는 서로 다른 두 점에서 만난다." },
+          { "term": "직선", "src": "stem", "quote": "두 교점을 지나는 직선의 기울기를 $m$" }
         ],
         "goal": [
-          {
-            "term": "함숫값",
-            "src": "stem",
-            "quote": "$d+m$의 값은?"
-          }
+          { "term": "거리", "src": "stem", "quote": "두 교점 사이의 거리를 $d$," },
+          { "term": "기울기", "src": "stem", "quote": "두 교점을 지나는 직선의 기울기를 $m$이라고 할 때," },
+          { "term": "합", "src": "stem", "quote": "$d+m$의 값은? [4.2점]" }
         ],
         "method": [
-          {
-            "term": "대칭성",
-            "src": "solution",
-            "quote": "함수와 역함수의 공통점은 직선 $y=x$ 위에서 찾을 수 있다",
-            "evidenceType": "IMPLIED",
-            "justification": "증가함수와 역함수의 교점이 직선 y=x에 놓임을 이용"
-          },
-          {
-            "term": "치환",
-            "src": "solution",
-            "quote": "$t=x-1$로 치환하여 두 교점을 구한 뒤",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "거리",
-            "src": "solution",
-            "quote": "두 점 사이의 거리는 $d=\\sqrt{1^2+1^2}=\\sqrt2$",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "기울기",
-            "src": "solution",
-            "quote": "기울기는 $m=1$이다",
-            "evidenceType": "NAMED"
-          }
+          { "term": "역함수", "src": "solution", "quote": "함수와 역함수의 공통점은 직선 $y=x$ 위에서 찾을 수 있다.", "evidenceType": "NAMED" },
+          { "term": "치환", "src": "solution", "quote": "$t=x-1$로 치환하여 두 교점을 구한 뒤", "evidenceType": "NAMED" },
+          { "term": "교점", "src": "solution", "quote": "따라서 교점은 $(1,1)$, $(2,2)$이다.", "evidenceType": "NAMED" }
         ],
-        "condition": []
-      }
+        "condition": [
+          { "term": "부등식", "src": "solution", "quote": "교점에서는 $x=\\sqrt{x-1}+1$이고 $x\\ge1$이다." }
+        ]
+      },
+      "reasons": { "method": "y=x와의 교점을 치환을 통해 구하고 두 점 사이의 거리와 기울기 도출" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 9,
       "format": "단일 정답",
       "slots": {
         "given": [
-          {
-            "term": "유리함수",
-            "src": "stem",
-            "quote": "유리함수 $f(x)=\\dfrac{bx+c}{x+a}$가"
-          },
-          {
-            "term": "대칭성",
-            "src": "stem",
-            "quote": "$f(2-x)+f(2+x)=6$을 만족시키고"
-          }
+          { "term": "유리함수", "src": "stem", "quote": "다항함수가 아닌 유리함수 $f(x)=\\dfrac{bx+c}{x+a}$가" },
+          { "term": "다항함수", "src": "stem", "quote": "다항함수가 아닌 유리함수" },
+          { "term": "실수", "src": "stem", "quote": "$x\\ne-a$인 모든 실수 $x$에 대해" }
         ],
         "goal": [
-          {
-            "term": "함숫값",
-            "src": "stem",
-            "quote": "$|a|+|b|+|c|$의 값은?"
-          }
+          { "term": "절댓값", "src": "stem", "quote": "$|a|+|b|+|c|$의 값은?" },
+          { "term": "합", "src": "stem", "quote": "$|a|+|b|+|c|$의 값은?" }
         ],
         "method": [
-          {
-            "term": "대칭성",
-            "src": "solution",
-            "quote": "유리함수를 상수항과 분수항으로 나누면 대칭 조건이 간단해진다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "대입",
-            "src": "solution",
-            "quote": "또 $f(3)=\\dfrac{9+c}{1}=5$이므로 $c=-4$이다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "절댓값",
-            "src": "solution",
-            "quote": "따라서 $|a|+|b|+|c|=2+3+4=9$이다",
-            "evidenceType": "NAMED"
-          }
+          { "term": "대칭성", "src": "solution", "quote": "유리함수를 상수항과 분수항으로 나누면 대칭 조건이 간단해진다.", "evidenceType": "NAMED" },
+          { "term": "항등식", "src": "solution", "quote": "분수항이 모든 $x$에서 사라지도록 $a$를 정하고", "evidenceType": "IMPLIED", "justification": "모든 x에 대해 대칭 등식이 성립하도록 항등식의 성질 이용" },
+          { "term": "분모", "src": "solution", "quote": "분수항이 모든 $x$에서 사라지도록 $a$를 정하고", "evidenceType": "NAMED" }
         ],
         "condition": [
-          {
-            "term": "상수",
-            "src": "stem",
-            "quote": "$a,b,c$는 상수이다"
-          }
+          { "term": "상수", "src": "stem", "quote": "(단, $a,b,c$는 상수이다.)" },
+          { "term": "항등식", "src": "solution", "quote": "이 값이 항상 6이고 $d\\ne0$이므로" }
         ]
-      }
+      },
+      "reasons": { "method": "점대칭 조건식의 분수항이 소거되도록 계수를 정하고 지나는 점을 대입" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 10,
       "format": "단일 정답",
       "slots": {
         "given": [
-          {
-            "term": "배정",
-            "src": "stem",
-            "quote": "서로 다른 공 5개를 서로 다른 5개의 상자에 넣을 때"
-          }
+          { "term": "자연수", "src": "stem", "quote": "서로 다른 공 5개를 서로 다른 5개의 상자에" },
+          { "term": "구별가능", "src": "stem", "quote": "서로 다른 공 5개를 서로 다른 5개의 상자에" }
         ],
         "goal": [
-          {
-            "term": "개수",
-            "src": "stem",
-            "quote": "공이 한 개도 없는 상자가 2개가 되도록 넣는 방법의 수는?"
-          }
+          { "term": "개수", "src": "stem", "quote": "방법의 수는? [4.2점]" }
         ],
         "method": [
-          {
-            "term": "조합",
-            "src": "solution",
-            "quote": "사용할 상자를 고르는 방법은 ${}_5C_3=10$가지이다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "포함배제",
-            "src": "solution",
-            "quote": "3개의 사용 상자를 고른 후 포함배제로 전사 배치의 수를 센다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "곱의법칙",
-            "src": "solution",
-            "quote": "따라서 전체는 $10\\times150=1500$가지이다",
-            "evidenceType": "IMPLIED",
-            "justification": "상자 선택 조합과 전사함수 배치를 곱함"
-          }
+          { "term": "조합", "src": "solution", "quote": "사용할 상자를 고르는 방법은 ${}_5C_3=10$가지이다.", "evidenceType": "IMPLIED", "justification": "빈 상자가 아닌 상자 3개를 선택하는 조합" },
+          { "term": "포함배제의원리", "src": "solution", "quote": "포함배제로 전사 배치의 수를 센다.", "evidenceType": "NAMED" },
+          { "term": "배정", "src": "solution", "quote": "포함배제로 전사 배치의 수를 센다.", "evidenceType": "NAMED" },
+          { "term": "곱의법칙", "src": "solution", "quote": "따라서 전체는 $10\\times150=1500$가지이다.", "evidenceType": "IMPLIED", "justification": "상자 선택의 경우의 수와 전사 배치 경우의 수를 곱함" }
         ],
         "condition": [
-          {
-            "term": "구별가능",
-            "src": "stem",
-            "quote": "서로 다른 공 5개를 서로 다른 5개의 상자에"
-          }
+          { "term": "구별가능", "src": "solution", "quote": "공은 서로 다르고 상자도 서로 다르며" }
         ]
-      }
+      },
+      "reasons": { "method": "사용할 3개 상자를 조합으로 고르고 포함배제의 원리로 전사함수의 개수를 구함" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 11,
       "format": "단일 정답",
       "slots": {
         "given": [
-          {
-            "term": "순열",
-            "src": "stem",
-            "quote": "여학생이 양 끝에 오도록 한 줄로 서는 경우의 수가"
-          }
+          { "term": "자연수", "src": "stem", "quote": "남학생 5명과 여학생 $n$명이" },
+          { "term": "이웃", "src": "stem", "quote": "남학생 5명이 서로 이웃하도록" }
         ],
         "goal": [
-          {
-            "term": "매개변수",
-            "src": "stem",
-            "quote": "$n$의 값은?"
-          }
+          { "term": "자연수", "src": "stem", "quote": "$n$의 값은? [4.2점]" },
+          { "term": "결정", "src": "solution", "quote": "보기 중 $n=6$일 때 $6\\times5\\times8\\times9=2160$이 성립한다." }
         ],
         "method": [
-          {
-            "term": "순열",
-            "src": "solution",
-            "quote": "여학생이 양 끝에 서는 방법은 ${}_nP_2(n+3)!$이다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "이웃",
-            "src": "solution",
-            "quote": "남학생 5명이 서로 이웃하는 방법은 남학생 5명을 한 묶음으로 보아",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "고차방정식",
-            "src": "solution",
-            "quote": "$n(n-1)(n+2)(n+3)=2160$이다",
-            "evidenceType": "IMPLIED",
-            "justification": "4차 다항방정식 풀이"
-          }
+          { "term": "순열", "src": "solution", "quote": "여학생이 양 끝에 서는 방법은 ${}_nP_2(n+3)!$이다.", "evidenceType": "IMPLIED", "justification": "양 끝에 여학생을 배치하고 남은 자리를 나열하는 순열" },
+          { "term": "묶음", "src": "solution", "quote": "남학생 5명을 한 묶음으로 보아", "evidenceType": "NAMED" },
+          { "term": "곱의법칙", "src": "solution", "quote": "한 묶음으로 보아 $(n+1)!5!$이다.", "evidenceType": "IMPLIED", "justification": "묶음의 배열과 묶음 내부 학생의 배열을 곱하여 계산" }
         ],
         "condition": [
-          {
-            "term": "자연수",
-            "src": "stem",
-            "quote": "여학생 $n$명이"
-          }
+          { "term": "이웃", "src": "stem", "quote": "남학생 5명이 서로 이웃하도록" },
+          { "term": "자연수", "src": "stem", "quote": "남학생 5명과 여학생 $n$명이" }
         ]
-      }
+      },
+      "reasons": { "method": "양 끝 배치 순열과 이웃 묶음 순열을 각각 n에 대한 식으로 세워 비교" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 12,
       "format": "단일 정답",
-      "scenarioNote": "사탕 4개 초콜릿 2개 간식 꺼내기 경우의 수",
       "slots": {
         "given": [
-          {
-            "term": "배열",
-            "src": "solution",
-            "quote": "가능한 간식 배열을 나눈다"
-          }
+          { "term": "구별가능", "src": "stem", "quote": "서로 다른 사탕 4개와 서로 같은" },
+          { "term": "이웃하지않음", "src": "stem", "quote": "초콜릿은 연속하여 꺼내지 않는다." }
         ],
         "goal": [
-          {
-            "term": "개수",
-            "src": "stem",
-            "quote": "5개의 간식을 꺼내는 방법의 수는?"
-          }
+          { "term": "개수", "src": "stem", "quote": "꺼내는 방법의 수는? [4.4점]" }
         ],
         "method": [
-          {
-            "term": "경우분류",
-            "src": "solution",
-            "quote": "초콜릿을 1개 꺼내면 사탕 4개를 모두 써야 하므로",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "순열",
-            "src": "solution",
-            "quote": "사용할 사탕 3개를 고르고 배열하는 방법은 ${}_4P_3=24$가지이므로",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "합의법칙",
-            "src": "solution",
-            "quote": "전체는 $24+120=144$가지이다",
-            "evidenceType": "IMPLIED",
-            "justification": "초콜릿 1개, 2개 경우의 수를 합산"
-          }
+          { "term": "경우분류", "src": "solution", "quote": "꺼낸 초콜릿의 개수가 1개인지 2개인지에 따라", "evidenceType": "IMPLIED", "justification": "초콜릿 개수에 따라 가능한 배치 패턴 분류" },
+          { "term": "순열", "src": "solution", "quote": "사탕 3개를 고르고 배열하는 방법은 ${}_4P_3=24$가지", "evidenceType": "IMPLIED", "justification": "서로 다른 사탕 중 일부를 선택하여 배열하는 순열" },
+          { "term": "여사건", "src": "solution", "quote": "사탕 3개가 연속되므로 제외하여 5개이다.", "evidenceType": "IMPLIED", "justification": "조건을 만족하지 않는 패턴을 제외하는 여사건 접근" },
+          { "term": "합의법칙", "src": "solution", "quote": "전체는 $24+120=144$가지이다.", "evidenceType": "IMPLIED", "justification": "각 경우의 수를 합산하여 최종 개수 산출" }
         ],
         "condition": [
-          {
-            "term": "이웃하지않음",
-            "src": "stem",
-            "quote": "초콜릿은 연속하여 꺼내지 않는다"
-          }
+          { "term": "이웃하지않음", "src": "solution", "quote": "초콜릿끼리는 붙을 수 없고" }
         ]
-      }
+      },
+      "reasons": { "method": "초콜릿 개수로 분류하여 이웃하지 않는 자리 패턴을 찾고 사탕 순열을 곱함" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 13,
       "format": "단일 정답",
       "slots": {
         "given": [
-          {
-            "term": "유리식",
-            "src": "stem",
-            "quote": "y=\\dfrac{|x|-1}{|x-1|}"
-          },
-          {
-            "term": "직선",
-            "src": "stem",
-            "quote": "$B=\\{(x,y)\\mid y=mx\\}$에 대하여"
-          }
+          { "term": "집합", "src": "stem", "quote": "두 집합 $A=\\{(x,y)\\mid y=\\dfrac{|x|-1}{|x-1|},\\;$" },
+          { "term": "교집합", "src": "stem", "quote": "$A\\cap B=\\varnothing$일 때" },
+          { "term": "공집합", "src": "stem", "quote": "$A\\cap B=\\varnothing$일 때" },
+          { "term": "절댓값", "src": "stem", "quote": "y=\\dfrac{|x|-1}{|x-1|},\\;" }
         ],
         "goal": [
-          {
-            "term": "범위",
-            "src": "stem",
-            "quote": "실수 $m$의 값의 범위는?"
-          }
+          { "term": "범위", "src": "stem", "quote": "실수 $m$의 값의 범위는? [4.4점]" },
+          { "term": "기울기", "src": "solution", "quote": "교점이 없는 범위는 $-1\\le m\\lt-3+2\\sqrt2$이다." }
         ],
         "method": [
-          {
-            "term": "경우분류",
-            "src": "solution",
-            "quote": "세 x-범위에서 교점이 생기는 $m$의 범위를 각각 구해 합친다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "절댓값",
-            "src": "solution",
-            "quote": "$0\\le x\\lt1$에서는 $y=-1$, $x\\gt1$에서는 $y=1$이다",
-            "evidenceType": "IMPLIED",
-            "justification": "절댓값 기호 제거를 위한 구간 분할"
-          },
-          {
-            "term": "여사건",
-            "src": "solution",
-            "quote": "교점이 없는 범위는 $-1\\le m\\lt-3+2\\sqrt2$이다",
-            "evidenceType": "IMPLIED",
-            "justification": "교점 존재 범위의 여집합 도출"
-          }
+          { "term": "경우분류", "src": "solution", "quote": "세 x-범위에서 교점이 생기는 $m$의 범위를 각각", "evidenceType": "IMPLIED", "justification": "절댓값 기호의 부호에 따라 x 구간을 분할하여 함수 정리" },
+          { "term": "여집합", "src": "solution", "quote": "기울기의 전체 범위를 구한 뒤 그 여집합을 찾는다.", "evidenceType": "NAMED" },
+          { "term": "직선", "src": "solution", "quote": "원점을 지나는 직선 $y=mx$가", "evidenceType": "NAMED" }
         ],
         "condition": [
-          {
-            "term": "실수",
-            "src": "stem",
-            "quote": "실수 $m$의 값의 범위는?"
-          }
+          { "term": "실수", "src": "stem", "quote": "실수 $m$의 값의 범위는? [4.4점]" }
         ]
-      }
+      },
+      "reasons": { "method": "구간별 유리함수의 교점 기울기 범위를 구하고 여집합으로 교점이 없는 범위 결정" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 14,
       "format": "단일 정답",
-      "scenarioNote": "가오리연 6개 영역 4가지 색 칠하기 경우의 수",
       "slots": {
         "given": [
-          {
-            "term": "다각형",
-            "src": "solution",
-            "quote": "위쪽의 바깥 영역과 원 안의 두 영역은 서로 모두 인접한다"
-          },
-          {
-            "term": "인접",
-            "src": "solution",
-            "quote": "4개의 영역이 순환형 인접 관계를 이룬다"
-          }
+          { "term": "개수", "src": "stem", "quote": "색칠하는 경우의 수는? (단, 인접한" },
+          { "term": "구별가능", "src": "stem", "quote": "인접한 영역은 서로 다른 색을 칠한다." }
         ],
         "goal": [
-          {
-            "term": "개수",
-            "src": "stem",
-            "quote": "색칠하는 경우의 수는?"
-          }
+          { "term": "개수", "src": "stem", "quote": "색칠하는 경우의 수는? (단, 인접한" }
         ],
         "method": [
-          {
-            "term": "곱의법칙",
-            "src": "solution",
-            "quote": "위쪽 바깥 영역은 4가지, 원 안의 첫 영역은 3가지, 나머지 원 영역은 앞의 두 색과 달라야 하므로 2가지여서 $4\\times3\\times2$가지이다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "경우분류",
-            "src": "solution",
-            "quote": "좌우 색이 같으면 3가지 선택마다 맨 아래 영역은 3가지, 좌우 색이 다르면 6가지 선택마다 맨 아래 영역은 2가지이므로",
-            "evidenceType": "NAMED"
-          }
+          { "term": "배정", "src": "solution", "quote": "위쪽 세 영역을 먼저 칠하고", "evidenceType": "IMPLIED", "justification": "영역별로 인접 조건을 고려하여 색을 순차 배정" },
+          { "term": "경우분류", "src": "solution", "quote": "좌우 색이 같으면 3가지 선택마다 맨 아래 영역은 3가지, 좌우 색이 다르면", "evidenceType": "IMPLIED", "justification": "마주보는 영역의 색이 같은지 다른지에 따라 분류" },
+          { "term": "합의법칙", "src": "solution", "quote": "아래쪽은 $3\\times3+6\\times2=21$가지이다.", "evidenceType": "IMPLIED", "justification": "분류된 두 경우의 수를 합산" },
+          { "term": "곱의법칙", "src": "solution", "quote": "따라서 전체는 $4\\times3\\times2\\times21=504$가지이다.", "evidenceType": "IMPLIED", "justification": "위쪽 영역과 아래쪽 영역의 경우의 수를 곱하여 계산" }
         ],
         "condition": [
-          {
-            "term": "구별가능",
-            "src": "stem",
-            "quote": "인접한 영역은 서로 다른 색을 칠한다"
-          }
+          { "term": "이웃하지않음", "src": "solution", "quote": "인접 관계를 이룬다." }
         ]
-      }
+      },
+      "reasons": { "method": "위쪽 영역을 칠한 뒤 아래쪽 영역의 색 일치 여부를 분류하여 경우의 수 계산" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 15,
       "format": "단일 정답",
       "slots": {
         "given": [
-          {
-            "term": "유리함수",
-            "src": "solution",
-            "quote": "가운데 식은 $1+\\dfrac4t$"
-          },
-          {
-            "term": "이차함수",
-            "src": "solution",
-            "quote": "양쪽 식은 각각 $at^2+1$, $bt^2+1$이다"
-          },
-          {
-            "term": "부등식",
-            "src": "stem",
-            "quote": "부등식 $ax^2-4ax+4a+1\\le\\dfrac{x+2}{x-2}\\le bx^2-4bx+4b+1$이 항상 성립할 때"
-          }
+          { "term": "부등식", "src": "stem", "quote": "부등식 $ax^2-4ax+4a+1\\le\\dfrac{x+2}{x-2}\\le bx^2-4bx+4b+1$이" },
+          { "term": "구간", "src": "stem", "quote": "$3\\le x\\le4$인 임의의 실수 $x$에 대하여" },
+          { "term": "유리식", "src": "solution", "quote": "가운데 유리식의 비교가 한 항의 부등식으로" }
         ],
         "goal": [
-          {
-            "term": "함숫값",
-            "src": "stem",
-            "quote": "$M+m$의 값은?"
-          }
+          { "term": "최댓값", "src": "stem", "quote": "$a$의 최댓값을 $M$," },
+          { "term": "최솟값", "src": "stem", "quote": "$b$의 최솟값을 $m$이라고 하자." },
+          { "term": "합", "src": "stem", "quote": "$M+m$의 값은? (단, $a\\ne0,b\\ne0$)" }
         ],
         "method": [
-          {
-            "term": "치환",
-            "src": "solution",
-            "quote": "$t=x-2$로 치환하면",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "부등식",
-            "src": "solution",
-            "quote": "$at^2+1\\le1+\\dfrac4t$에서 $a\\le\\dfrac4{t^3}$이고",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "최댓값",
-            "src": "solution",
-            "quote": "$M=\\dfrac4{2^3}=\\dfrac12$, $m=\\dfrac4{1^3}=4$이다",
-            "evidenceType": "NAMED"
-          }
+          { "term": "치환", "src": "solution", "quote": "$t=x-2$로 치환하면", "evidenceType": "NAMED" },
+          { "term": "증가감소", "src": "solution", "quote": "$[1,2]$에서 감소하므로", "evidenceType": "IMPLIED", "justification": "치환된 분수함수의 단조감소성을 활용하여 끝값에서 상한 및 하한 결정" },
+          { "term": "항상성립", "src": "solution", "quote": "모든 $t\\in[1,2]$에서 성립하도록", "evidenceType": "IMPLIED", "justification": "구간 내 모든 값에 대해 부등식이 성립하는 조건 판정" }
         ],
         "condition": [
-          {
-            "term": "구간",
-            "src": "stem",
-            "quote": "$3\\le x\\le4$인 임의의 실수 $x$에 대하여"
-          }
+          { "term": "항상성립", "src": "stem", "quote": "항상 성립할 때, $a$의 최댓값을" },
+          { "term": "구간", "src": "solution", "quote": "$3\\le x\\le4$이므로 $1\\le t\\le2$이고" }
         ]
-      }
+      },
+      "reasons": { "method": "t=x-2 치환 후 감소함수의 양 끝값 비교로 부등식 매개변수의 상하한 결정" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 16,
       "format": "단일 정답",
-      "scenarioNote": "남학생 2명 여학생 3명 독서실 좌석 배정",
       "slots": {
         "given": [
-          {
-            "term": "배정",
-            "src": "stem",
-            "quote": "남은 7개의 좌석에 자리를 배정할 때"
-          },
-          {
-            "term": "이웃",
-            "src": "stem",
-            "quote": "남학생끼리는 이웃하고"
-          }
+          { "term": "이웃", "src": "stem", "quote": "남학생끼리는 이웃하고" },
+          { "term": "이웃하지않음", "src": "stem", "quote": "여학생끼리는 서로 이웃하지 않는" },
+          { "term": "배정", "src": "stem", "quote": "남은 7개의 좌석에 자리를 배정할 때" }
         ],
         "goal": [
-          {
-            "term": "개수",
-            "src": "stem",
-            "quote": "모든 방법의 수는?"
-          }
+          { "term": "개수", "src": "stem", "quote": "모든 방법의 수는? [4.5점]" }
         ],
         "method": [
-          {
-            "term": "경우분류",
-            "src": "solution",
-            "quote": "남학생이 $(4,5)$에 앉으면 남은 좌석 $2,6,7,8,11$에서 여학생이 서로 이웃하지 않도록 고르는 방법은 7가지이다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "순열",
-            "src": "solution",
-            "quote": "남학생 2명과 여학생 3명을 각 좌석에 배치하는 방법은 $2!\\times3!$가지이므로",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "곱의법칙",
-            "src": "solution",
-            "quote": "전체는 $19\\times2!\\times3!=228$가지이다",
-            "evidenceType": "IMPLIED",
-            "justification": "좌석 선택 수와 학생 순열 수를 곱함"
-          }
+          { "term": "경우분류", "src": "solution", "quote": "남학생 좌석쌍을 하나 고정한 뒤", "evidenceType": "IMPLIED", "justification": "남학생이 앉을 수 있는 인접 좌석쌍의 위치별로 분류" },
+          { "term": "합의법칙", "src": "solution", "quote": "좌석 선택은 $7+7+5=19$가지이고", "evidenceType": "IMPLIED", "justification": "분류된 좌석 선택 경우의 수를 합산" },
+          { "term": "순열", "src": "solution", "quote": "각 좌석에 배치하는 방법은 $2!\\times3!$가지이므로", "evidenceType": "IMPLIED", "justification": "선택된 자리에 학생들을 1대1로 대응시키는 순열" },
+          { "term": "곱의법칙", "src": "solution", "quote": "전체는 $19\\times2!\\times3!=228$가지이다.", "evidenceType": "IMPLIED", "justification": "좌석 배치 경우와 학생 순열을 곱하여 계산" }
         ],
         "condition": [
-          {
-            "term": "이웃하지않음",
-            "src": "stem",
-            "quote": "여학생끼리는 서로 이웃하지 않는"
-          }
+          { "term": "이웃", "src": "solution", "quote": "남학생이 서로 이웃해 앉을 수 있는 쌍은" },
+          { "term": "이웃하지않음", "src": "solution", "quote": "여학생이 서로 이웃하지 않도록 고르는 방법은" }
         ]
-      }
+      },
+      "reasons": { "method": "남학생 이웃 좌석쌍별로 여학생 비이웃 좌석 선택 수를 합산한 뒤 순열 곱함" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 17,
       "format": "단일 정답",
       "slots": {
         "given": [
-          {
-            "term": "유리함수",
-            "src": "stem",
-            "quote": "함수 $y=\\dfrac{2x}{x-1}$의 그래프와"
-          },
-          {
-            "term": "무리함수",
-            "src": "stem",
-            "quote": "함수 $y=\\sqrt{x-2t}-t$의 그래프가"
-          }
+          { "term": "무리함수", "src": "stem", "quote": "함수 $y=\\sqrt{x-2t}-t$의 그래프가" },
+          { "term": "교점", "src": "stem", "quote": "서로 다른 두 점에서 만날 때" },
+          { "term": "실수", "src": "stem", "quote": "실수 $t$의 최댓값을 $M$" }
         ],
         "goal": [
-          {
-            "term": "함숫값",
-            "src": "stem",
-            "quote": "$M-2m$의 값은?"
-          }
+          { "term": "최댓값", "src": "stem", "quote": "실수 $t$의 최댓값을 $M$," },
+          { "term": "최솟값", "src": "stem", "quote": "최솟값을 $m$이라 하자." },
+          { "term": "결정", "src": "solution", "quote": "따라서 $M=0$, $m=-\\dfrac32$이고" }
         ],
         "method": [
-          {
-            "term": "치환",
-            "src": "solution",
-            "quote": "$w=y+t\\ge0$, $x=w^2+2t$이다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "연립방정식",
-            "src": "solution",
-            "quote": "대입하면 $(w+1)^2=R(y)$이다",
-            "evidenceType": "IMPLIED",
-            "justification": "무리함수와 유리함수 관계식 연립"
-          },
-          {
-            "term": "최솟값",
-            "src": "solution",
-            "quote": "따라서 $M=0$, $m=-\\dfrac32$이고 $M-2m=3$이다",
-            "evidenceType": "NAMED"
-          }
+          { "term": "치환", "src": "solution", "quote": "$w=\\sqrt{x-2t}$를 이용해", "evidenceType": "NAMED" },
+          { "term": "유리함수", "src": "solution", "quote": "유리함수에서 $x=\\dfrac{y}{y-2}$이고", "evidenceType": "NAMED" },
+          { "term": "증가감소", "src": "solution", "quote": "즉 $T$는 감소한다.", "evidenceType": "IMPLIED", "justification": "유도된 t(y) 함수의 단조성을 분석하여 극값 도출" }
         ],
         "condition": [
-          {
-            "term": "구별가능",
-            "src": "stem",
-            "quote": "서로 다른 두 점에서 만날 때"
-          }
+          { "term": "근호", "src": "solution", "quote": "근호의 정의 조건을 보존한 채" },
+          { "term": "부등식", "src": "solution", "quote": "$w=y+t\\ge0$, $x=w^2+2t$이다." }
         ]
-      }
+      },
+      "reasons": { "method": "근호를 치환하여 매개변수 t를 y의 함수로 표현하고 단조성을 분석하여 극값 도출" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 18,
       "format": "단답",
       "slots": {
         "given": [
-          {
-            "term": "이차함수",
-            "src": "stem",
-            "quote": "y=\\dfrac{x^2+n}{6},\\;x\\ge0"
-          },
-          {
-            "term": "무리함수",
-            "src": "stem",
-            "quote": "y=\\sqrt{6x-n}"
-          }
+          { "term": "집합", "src": "stem", "quote": "두 집합 $A=\\{(x,y)\\mid y=\\dfrac{x^2+n}{6},\\;x\\ge0\\}$," },
+          { "term": "교집합", "src": "stem", "quote": "$n(A\\cap B)=1$이 되도록 하는" },
+          { "term": "원소의개수", "src": "stem", "quote": "$n(A\\cap B)=1$이 되도록 하는" },
+          { "term": "정수", "src": "stem", "quote": "양의 정수 $n$의 값은? [4점]" }
         ],
         "goal": [
-          {
-            "term": "매개변수",
-            "src": "stem",
-            "quote": "양의 정수 $n$의 값은?"
-          }
+          { "term": "정수", "src": "stem", "quote": "양의 정수 $n$의 값은? [4점]" },
+          { "term": "결정", "src": "solution", "quote": "따라서 구하는 값은 $9$이다." }
         ],
         "method": [
-          {
-            "term": "역함수",
-            "src": "solution",
-            "quote": "$x+y+6>0$이므로 $x=y$이다",
-            "evidenceType": "IMPLIED",
-            "justification": "역함수 대칭성으로부터 교점 y=x 성립"
-          },
-          {
-            "term": "판별식",
-            "src": "solution",
-            "quote": "$n=9$이면 $(x-3)^2=0$이므로 교점이 1개이고",
-            "evidenceType": "NAMED"
-          }
+          { "term": "교점", "src": "solution", "quote": "교점의 좌표를 $(x,y)$라 하면", "evidenceType": "NAMED" },
+          { "term": "이차방정식", "src": "solution", "quote": "$x^2-6x+n=0$", "evidenceType": "IMPLIED", "justification": "두 역함수 관계의 곡선의 교점을 x=y를 통해 이차방정식으로 유도" },
+          { "term": "중근", "src": "solution", "quote": "$n=9$이면 $(x-3)^2=0$이므로 교점이 1개이고", "evidenceType": "IMPLIED", "justification": "교점이 하나만 생기도록 완전제곱식 중근 조건 적용" },
+          { "term": "소거", "src": "solution", "quote": "두 식을 빼면", "evidenceType": "IMPLIED", "justification": "대칭인 두 식을 변변 빼어 x=y 관계식을 도출" }
         ],
         "condition": [
-          {
-            "term": "정수",
-            "src": "stem",
-            "quote": "양의 정수 $n$의 값은?"
-          }
+          { "term": "정수", "src": "stem", "quote": "양의 정수 $n$의 값은? [4점]" },
+          { "term": "부등식", "src": "solution", "quote": "$x,y\\ge0$이다. 두 식을 빼면" }
         ]
-      }
+      },
+      "reasons": { "method": "역함수 관계의 두 식을 연립하여 얻은 이차방정식이 중근을 갖는 조건 판정" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 19,
       "format": "단답",
       "slots": {
         "given": [
-          {
-            "term": "직선",
-            "src": "stem",
-            "quote": "평면 위에 13개의 직선이 있다"
-          },
-          {
-            "term": "조합",
-            "src": "solution",
-            "quote": "세 직선을 고르는 전체 방법은 ${}_{13}C_3=286$가지이다"
-          }
+          { "term": "직선", "src": "stem", "quote": "평면 위에 13개의 직선이 있다." },
+          { "term": "삼각형", "src": "stem", "quote": "13개의 직선으로 만들어지는 삼각형의 개수는?" },
+          { "term": "평행", "src": "stem", "quote": "세 직선만 평행하다." }
         ],
         "goal": [
-          {
-            "term": "개수",
-            "src": "stem",
-            "quote": "13개의 직선으로 만들어지는 삼각형의 개수는?"
-          }
+          { "term": "개수", "src": "stem", "quote": "만들어지는 삼각형의 개수는? [5점]" }
         ],
         "method": [
-          {
-            "term": "조합",
-            "src": "solution",
-            "quote": "${}_{13}C_3=286$가지이다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "여사건",
-            "src": "solution",
-            "quote": "평행선 때문에 삼각형이 생기지 않는 경우를 제외한다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "평행",
-            "src": "solution",
-            "quote": "평행선 중 정확히 2개와 나머지 10개 중 1개를 고르는 방법은 ${}_3C_2\\times10=30$가지이고",
-            "evidenceType": "NAMED"
-          }
+          { "term": "조합", "src": "solution", "quote": "세 직선을 고르는 전체 방법은 ${}_{13}C_3=286$가지이다.", "evidenceType": "IMPLIED", "justification": "13개 직선 중 3개를 고르는 조합 계산" },
+          { "term": "여사건", "src": "solution", "quote": "삼각형이 생기지 않는 경우를 제외한다.", "evidenceType": "IMPLIED", "justification": "평행선으로 인해 삼각형을 이루지 못하는 비삼각형 경우를 제외" },
+          { "term": "곱의법칙", "src": "solution", "quote": "${}_3C_2\\times10=30$가지이고", "evidenceType": "IMPLIED", "justification": "평행선 중 2개와 비평행선 1개를 고르는 경우의 수를 곱하여 계산" }
         ],
         "condition": [
-          {
-            "term": "평행",
-            "src": "stem",
-            "quote": "세 직선만 평행하다"
-          }
+          { "term": "평행", "src": "solution", "quote": "정확히 3개의 직선이 서로 평행하고" }
         ]
-      }
+      },
+      "reasons": { "method": "전체 3개 직선 선택 조합에서 평행선으로 삼각형이 안 되는 여사건을 차감" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 20,
       "format": "서술",
       "slots": {
         "given": [
-          {
-            "term": "부분집합",
-            "src": "stem",
-            "quote": "전체집합 $U=\\{x\\mid x$는 10 이하의 자연수$\\}$의 두 부분집합 $A,B$가"
-          },
-          {
-            "term": "대칭차집합",
-            "src": "stem",
-            "quote": "집합 $(A-B)\\cup(B-A)$의 원소의 합의 4배이다"
-          }
+          { "term": "전체집합", "src": "stem", "quote": "전체집합 $U=\\{x\\mid x$는 10 이하의 자연수$\\}$의" },
+          { "term": "부분집합", "src": "stem", "quote": "두 부분집합 $A,B$가 다음 조건을 만족시킨다." },
+          { "term": "여집합", "src": "stem", "quote": "집합 $A^C\\cap B^C$의" },
+          { "term": "대칭차집합", "src": "stem", "quote": "집합 $(A-B)\\cup(B-A)$의" },
+          { "term": "교집합", "src": "stem", "quote": "$n(A\\cap B)=1$" },
+          { "term": "합집합", "src": "stem", "quote": "$3\\le n(A\\cup B)\\le4$일 때" }
         ],
         "goal": [
-          {
-            "term": "개수",
-            "src": "stem",
-            "quote": "두 집합 $A,B$의 순서쌍 $(A,B)$의 개수를 구하고"
-          }
+          { "term": "순서쌍", "src": "stem", "quote": "순서쌍 $(A,B)$의 개수를 구하고" },
+          { "term": "개수", "src": "stem", "quote": "개수를 구하고 그 과정을 서술하시오. [10점]" }
         ],
         "method": [
-          {
-            "term": "경우분류",
-            "src": "solution",
-            "quote": "$c$는 5의 배수여야 하므로 $c=5$ 또는 $10$이다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "분할",
-            "src": "solution",
-            "quote": "각 $S$의 두 원소는 각각 $A-B$ 또는 $B-A$에 들어가므로",
-            "evidenceType": "IMPLIED",
-            "justification": "대칭차집합 원소를 두 집합에 분배"
-          },
-          {
-            "term": "합의법칙",
-            "src": "solution",
-            "quote": "따라서 전체 순서쌍은 $32+40=72$개이다",
-            "evidenceType": "IMPLIED",
-            "justification": "두 경우의 순서쌍 개수를 합산"
-          }
+          { "term": "경우분류", "src": "solution", "quote": "$|S|=2,3$을 각각 조사한 뒤", "evidenceType": "IMPLIED", "justification": "대칭차집합의 크기에 따라 가능한 경우를 분류" },
+          { "term": "배정", "src": "solution", "quote": "$S$의 원소를 $A-B$와 $B-A$에 배분한다.", "evidenceType": "IMPLIED", "justification": "대칭차집합 원소를 두 영역에 배정" },
+          { "term": "합의법칙", "src": "solution", "quote": "따라서 전체 순서쌍은 $32+40=72$개이다.", "evidenceType": "IMPLIED", "justification": "분류된 경우별 순서쌍 개수를 합산" }
         ],
         "condition": [
-          {
-            "term": "자연수",
-            "src": "stem",
-            "quote": "10 이하의 자연수"
-          }
+          { "term": "자연수", "src": "stem", "quote": "10 이하의 자연수$\\}$의" },
+          { "term": "원소의개수", "src": "stem", "quote": "$3\\le n(A\\cup B)\\le4$일 때" }
         ]
-      }
+      },
+      "reasons": { "method": "전체합 조건으로 교집합 원소와 대칭차집합을 확정하고 각 원소를 두 집합에 배분" },
+      "steps": [],
+      "scenarioNote": ""
     },
     {
       "sourceOrdinal": 21,
       "format": "서술",
       "slots": {
         "given": [
-          {
-            "term": "유리함수",
-            "src": "stem",
-            "quote": "함수 $f(x)=\\dfrac{ax+1}{bx+c}$는"
-          },
-          {
-            "term": "원",
-            "src": "stem",
-            "quote": "접점의 $x$좌표가 양수인 서로 다른 두 점에서 접하는 원이 있다"
-          }
+          { "term": "직선", "src": "stem", "quote": "두 직선 $y=x+\\dfrac12$, $y=-x+\\dfrac32$에 대하여" },
+          { "term": "대칭성", "src": "stem", "quote": "대하여 대칭이고 점 $(1,3)$을 지난다." },
+          { "term": "원의방정식", "src": "stem", "quote": "서로 다른 두 점에서 접하는 원이 있다." },
+          { "term": "접선", "src": "stem", "quote": "함수 $f(x)$와 접점의 $x$좌표가" },
+          { "term": "거리", "src": "stem", "quote": "중심 사이의 거리가 $k$인" },
+          { "term": "넓이", "src": "stem", "quote": "두 원의 넓이 중 큰 것부터" }
         ],
         "goal": [
-          {
-            "term": "넓이",
-            "src": "stem",
-            "quote": "$g(3)-h(3)$의 값을 구하고"
-          }
+          { "term": "넓이", "src": "stem", "quote": "$g(3)-h(3)$의 값을 구하고" },
+          { "term": "결정", "src": "solution", "quote": "따라서 구하는 값은 $4\\pi$이다." }
         ],
         "method": [
-          {
-            "term": "대칭성",
-            "src": "solution",
-            "quote": "두 대칭축의 교점은 $(\\dfrac12,1)$이다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "평행이동",
-            "src": "solution",
-            "quote": "유리함수를 중심 $(\\dfrac12,1)$로 평행이동해",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "중근",
-            "src": "solution",
-            "quote": "사차식은 서로 다른 두 중근을 가져야 한다",
-            "evidenceType": "NAMED"
-          },
-          {
-            "term": "넓이",
-            "src": "solution",
-            "quote": "큰 원과 작은 원의 넓이 차는 $\\pi\\{(\\dfrac{k^2}{2}+2)-(\\dfrac{k^2}{2}-2)\\}=4\\pi$이다",
-            "evidenceType": "NAMED"
-          }
+          { "term": "평행이동", "src": "solution", "quote": "중심 $(\\dfrac12,1)$로 평행이동해 $XY=1$로 만든 뒤", "evidenceType": "NAMED" },
+          { "term": "사차방정식", "src": "solution", "quote": "얻어지는 사차식은 서로 다른 두 중근을", "evidenceType": "NAMED" },
+          { "term": "중근", "src": "solution", "quote": "서로 다른 두 중근을 가져야 한다.", "evidenceType": "NAMED" },
+          { "term": "유리함수", "src": "solution", "quote": "유리함수를 중심 $(\\dfrac12,1)$로 평행이동해", "evidenceType": "NAMED" },
+          { "term": "근과계수의관계", "src": "solution", "quote": "상수항 비교에서 $(\\alpha\\beta)^2=1$이다.", "evidenceType": "IMPLIED", "justification": "사차식의 계수 비교를 통해 접점 좌표의 곱과 반지름 관계 유도" }
         ],
         "condition": [
-          {
-            "term": "상수",
-            "src": "stem",
-            "quote": "$a,b,c$는 상수이다"
-          }
+          { "term": "상수", "src": "stem", "quote": "(단, $a,b,c$는 상수이다.)" },
+          { "term": "부등식", "src": "stem", "quote": "$2\\sqrt2$보다 큰 양수 $k$에 대하여" }
         ]
-      }
+      },
+      "reasons": { "method": "대칭축의 교점으로 평행이동한 후 연립 사차방정식이 두 중근을 가질 조건으로 원의 반지름 제곱차 결정" },
+      "steps": [],
+      "scenarioNote": ""
     }
   ],
   "candidates": [],
   "selfCheck": {
     "items": 21,
-    "quotesChecked": 131,
+    "quotesChecked": 208,
     "quotesNotFound": 0,
-    "warningsRechecked": [
-      "#1 only 4 distinct terms",
-      "#4 only 3 distinct terms",
-      "#4 method has 1 term",
-      "#5 only 4 distinct terms",
-      "#7 only 4 distinct terms"
-    ],
-    "notes": "Q18~Q19 단답형, Q20~Q21 서술형 적용."
+    "warningsRechecked": [],
+    "notes": "Q18, Q19 단답 포맷, Q20, Q21 서술 포맷 적용."
   }
 }
