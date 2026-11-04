@@ -1,0 +1,563 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "examTitle": "22_팔마고_2학기_기말_고1_기출",
+  "sourceFileDriveId": "13owESCfpmsUNm-bz7hjgoAGPvZqNr7A2",
+  "sourceSha256": "f93cfa5d3ea16018365a39f6dcbd85b875b6f590ac8730da322a4bcc398cb522",
+  "auditedTimestamp": "2026-10-24T00:39:50.091432+00:00",
+  "auditVerdict": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "totalAuditedCount": 22,
+  "zeroStubCertified": true,
+  "allVisualAssetsVerified": true,
+  "records": [
+    {
+      "questionId": 1,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-04",
+      "standardUnit": "유리함수",
+      "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
+      "subUnit": "유리함수의 뜻과 계산",
+      "problemTypeKey": "PT_H1_RATIONAL_EXPRESSION_IDENTITY",
+      "templateKey": "TPL_H1_PARTIAL_FRACTION_UNDETERMINED_COEFFICIENTS",
+      "crossConceptKeys": [
+        "CC_RATIONAL_EXPRESSION",
+        "CC_UNDETERMINED_COEFFICIENTS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "통분 후 분자 항등식 a(x+1)+b(x-2)=5x-4에서 a=2, b=3 도출하여 ab=6 산출 (1단계)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 식의 분모를 0으로 만들지 않는 모든 실수 $x$에 대하여 $\\dfrac{a}{x-2}+\\dfrac{b}{x+1}=\\dfrac{5x-4}{x^2-x-2}$가 성립할 때, $ab$의 값은? (단, $a,b$는 상수) [3.7점]",
+        "solutionDecisiveExcerpt": "a(x+1)+b(x-2)=(a+b)x+(a-2b)=5x-4에서 a+b=5, a-2b=-4 연립하여 a=2, b=3, ab=6 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 2,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-05",
+      "standardUnit": "무리함수",
+      "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+      "subUnit": "무리함수의 뜻과 계산",
+      "problemTypeKey": "PT_H1_IRRATIONAL_EXPRESSION_REAL_CONDITION",
+      "templateKey": "TPL_H1_RADICAL_QUOTIENT_REAL_DOMAIN",
+      "crossConceptKeys": [
+        "CC_RADICAL_REAL_CONDITION",
+        "CC_NONZERO_DENOMINATOR"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "분자 x-3>=0 및 분모 5-x>0 연립하여 3<=x<5 직접 도출 (1단계)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "무리식 $\\dfrac{\\sqrt{x-3}}{\\sqrt{5-x}}$의 값이 실수이기 위한 $x$의 값의 범위는? [3.7점]",
+        "solutionDecisiveExcerpt": "x-3>=0이고 5-x>0이므로 3<=x<5 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 3,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-08",
+      "standardUnit": "조합",
+      "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+      "templateKey": "TPL_H1_DIRECT_COMBINATION_PERMUTATION_DIFFERENCE",
+      "crossConceptKeys": [
+        "CC_COMBINATION_FORMULA",
+        "CC_PERMUTATION_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "8C3=56과 5P2=20을 각각 계산하여 차 36 직접 산출 (1단계)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "${}_8C_3-{}_5P_2$의 값은? [3.7점]",
+        "solutionDecisiveExcerpt": "8C3=56, 5P2=20이므로 56-20=36 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 4,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-04",
+      "standardUnit": "유리함수",
+      "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
+      "subUnit": "유리함수의 뜻과 계산",
+      "problemTypeKey": "PT_H1_RATIONAL_FUNCTION_TRANSLATION",
+      "templateKey": "TPL_H1_RATIONAL_FUNCTION_SUPERIMPOSITION_K_MATCH",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION_TRANSLATION",
+        "CC_STANDARD_FORM_CONVERSION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "각 보기를 표준형 y=k/(x-p)+q로 변형하여 k=3과 일치하는 ㄴ, ㄷ 선별 (2단계)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "보기의 함수 중 그 그래프가 평행이동에 의하여 함수 $y=\\dfrac3{x+1}-4$의 그래프와 겹쳐지는 것을 모두 고르면? [4.1점]",
+        "solutionDecisiveExcerpt": "분수항 계수 k=3인 함수를 찾으면 ㄴ(y=-2+3/(x-2))과 ㄷ(y=2+3/(x+2))이 일치하여 ㄴ, ㄷ 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 5,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-06",
+      "standardUnit": "경우의 수",
+      "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+      "subUnit": "경우의 수의 기본 원리",
+      "problemTypeKey": "PT_H1_DERANGEMENT_COUNTING",
+      "templateKey": "TPL_H1_PARTIAL_FIXED_POINT_DERANGEMENT",
+      "crossConceptKeys": [
+        "CC_DERANGEMENT",
+        "CC_MULTIPLICATION_RULE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "자기 폰 가져가는 1명 선택(5가지) 후 나머지 4명 완전순열(9가지) 곱하여 45가지 산출 (2단계)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "5명의 학생이 시험을 보기 전에 모두 핸드폰을 1개씩 제출하였다. 시험이 끝난 후 한 명의 학생만 자신의 핸드폰을 가져가는 방법의 수는? [3.9점]",
+        "solutionDecisiveExcerpt": "자기 휴대폰을 받는 1명 선택 5가지, 나머지 4명 교란순열 D_4=9가지이므로 5*9=45 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 6,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-04",
+      "standardUnit": "유리함수",
+      "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
+      "subUnit": "유리함수의 뜻과 계산",
+      "problemTypeKey": "PT_H1_RATIONAL_FUNCTION_SYMMETRY",
+      "templateKey": "TPL_H1_RATIONAL_SYMMETRY_CENTER_POINT_PARAMETER",
+      "crossConceptKeys": [
+        "CC_RATIONAL_SYMMETRY_CENTER",
+        "CC_RATIONAL_FUNCTION_ASYMPTOTE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "대칭 중심 (-1,1)에서 c=1, a=1 구하고 f(2)=1/3 대입하여 b=-1, a^2+b^2+c^2=3 산출 (2단계, SVG_IMAGE)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "함수 $f(x)=\\dfrac{ax+b}{x+c}$에 대하여 $f(2)=\\dfrac13$이고 점 $(-1,1)$에 대하여 대칭일 때, $a^2+b^2+c^2$의 값은? [4.2점]",
+        "solutionDecisiveExcerpt": "점근선 교점 (-c,a)=(-1,1)에서 a=1, c=1, f(2)=(2+b)/3=1/3에서 b=-1, a^2+b^2+c^2=3 산출",
+        "visualAssetChecked": true,
+        "visualType": "SVG_IMAGE"
+      }
+    },
+    {
+      "questionId": 7,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-07",
+      "standardUnit": "순열",
+      "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_H1_CONSTRAINED_PERMUTATION",
+      "templateKey": "TPL_H1_FIXED_SPACING_BLOCK_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_BLOCK_PERMUTATION",
+        "CC_ADJACENCY_SPACING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "a와 f 사이 3개 문자 선택·나열(5P3=60), a·f 자리교환(2), 묶음과 나머지 2문자 배열(3!=6) 곱하여 720 산출 (2단계)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "$careful$의 7개의 문자를 일렬로 나열할 때, $a$와 $f$ 사이에 3개의 문자가 들어가도록 배열하는 방법의 수는? [3.8점]",
+        "solutionDecisiveExcerpt": "5P3 * 2 * 3! = 60 * 2 * 6 = 720 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 8,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-04",
+      "standardUnit": "유리함수",
+      "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
+      "subUnit": "유리함수의 뜻과 계산",
+      "problemTypeKey": "PT_H1_RATIONAL_LINE_INTERSECTION_DISTANCE",
+      "templateKey": "TPL_H1_HYPERBOLA_CHORD_MINIMUM_DISTANCE",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION_SYMMETRY",
+        "CC_AM_GM_INEQUALITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "대칭 중심 (1,1)을 지나는 기울기 1 직선(k=0) 또는 근과 계수 관계에서 두 교점 최소 거리 4 산출 (3단계, SVG_IMAGE)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "유리함수 $y=\\dfrac{x+1}{x-1}$의 그래프와 직선 $y=x+k$ $(k$는 실수)가 만나는 두 점 사이의 거리의 최솟값을 구하면? [4.6점]",
+        "solutionDecisiveExcerpt": "x^2+(k-2)x-(k+1)=0에서 두 근 차의 제곱 (k-2)^2+4(k+1)=k^2+8 >= 8, 거리 sqrt(2*(k^2+8)) >= 4 산출",
+        "visualAssetChecked": true,
+        "visualType": "SVG_IMAGE"
+      }
+    },
+    {
+      "questionId": 9,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-03",
+      "standardUnit": "함수",
+      "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+      "subUnit": "합성함수",
+      "problemTypeKey": "PT_H1_COMPOSITE_INVERSE_FUNCTION",
+      "templateKey": "TPL_H1_PIECEWISE_ITERATED_INVERSE_EVALUATION",
+      "crossConceptKeys": [
+        "CC_PIECEWISE_FUNCTION",
+        "CC_INVERSE_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "(f^{-1} o f^{-1})(a)=16에서 a=f(f(16))=f(0)=-sqrt(10) 순차 산출 (2단계)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "함수 $f(x)=\\begin{cases}-\\sqrt{10-x}&(x<9)\\\\\\sqrt{x}-4&(x\\ge9)\\end{cases}$에 대하여 $(f^{-1}\\circ f^{-1})(a)=16$을 만족하는 상수 $a$의 값은? [3.8점]",
+        "solutionDecisiveExcerpt": "f(16)=sqrt(16)-4=0, a=f(0)=-sqrt(10-0)=-sqrt(10) 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 10,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-07",
+      "standardUnit": "순열",
+      "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_H1_ADJACENT_GROUP_PERMUTATION",
+      "templateKey": "TPL_H1_SELECTION_AND_ADJACENT_ARRANGEMENT_CASES",
+      "crossConceptKeys": [
+        "CC_COMBINATION_AND_PERMUTATION",
+        "CC_ADJACENT_ARRANGEMENT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "학생 2명·교사 2명 뽑아 학생 이웃(3C2*5C2*3!*2!=360)과 학생 3명·교사 1명(3C3*5C1*2!*3!=60) 합산 420 산출 (3단계)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "선생님 5명, 학생 3명 중 학생을 2명 이상 포함하여 4명을 뽑아 일렬로 세울 때, 학생끼리 모두 이웃하는 경우의 수는? [4.1점]",
+        "solutionDecisiveExcerpt": "학생 2명(3*10*6*2=360) + 학생 3명(1*5*2*6=60) = 420 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 11,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-03",
+      "standardUnit": "함수",
+      "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+      "subUnit": "함수의 뜻과 대응",
+      "problemTypeKey": "PT_H1_FUNCTION_COUNTING_CONDITIONS",
+      "templateKey": "TPL_H1_RESTRICTED_CODOMAIN_ORDER_FUNCTION_COUNT",
+      "crossConceptKeys": [
+        "CC_FUNCTION_COUNTING",
+        "CC_COMBINATION_ORDER"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "치역 후보 {0,2,3,4} 4개 원소 중 f(1)<f(2) 선택(4C2=6) 및 f(3) 선택(4가지) 곱하여 24개 산출 (2단계)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 집합 $X=\\{1,2,3\\}$, $Y=\\{0,1,2,3,4,5\\}$에 대하여 $X$에서 $Y$로의 함수 $f$ 중에서 $\\{f(x)-1\\}\\{f(x)-5\\}\\ne0$, $f(1)<f(2)$를 만족시키는 함수의 개수는? [4.3점]",
+        "solutionDecisiveExcerpt": "1과 5 제외한 {0,2,3,4} 4개 중 f(1)<f(2) 선택 4C2=6가지, f(3) 선택 4가지 곱하여 24 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 12,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-05",
+      "standardUnit": "무리함수",
+      "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+      "subUnit": "무리함수의 뜻과 계산",
+      "problemTypeKey": "PT_H1_IRRATIONAL_LINE_INTERSECTION",
+      "templateKey": "TPL_H1_IRRATIONAL_CURVE_LINE_TANGENCY_PARAMETER",
+      "crossConceptKeys": [
+        "CC_IRRATIONAL_LINE_TANGENCY",
+        "CC_DISCRIMINANT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "무리함수와 기울기 -1 직선이 접할 때 판별식 D=0에서 k=19/4 최솟값 도출 (3단계, SVG_IMAGE)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "무리함수 $y=-\\sqrt{x-5}$의 그래프와 $y=-x+k$가 한 점에서 만나도록 하는 실수 $k$의 최솟값은? [4.2점]",
+        "solutionDecisiveExcerpt": "x-5=(x-k)^2에서 접할 때 판별식 (2k-1)^2-4(k^2-5)=0 -> -4k+21=0 또는 k=x-sqrt(x-5) 최솟값 19/4 산출",
+        "visualAssetChecked": true,
+        "visualType": "SVG_IMAGE"
+      }
+    },
+    {
+      "questionId": 13,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-08",
+      "standardUnit": "조합",
+      "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_H1_CONSECUTIVE_COMBINATION_RATIO",
+      "templateKey": "TPL_H1_COMBINATION_PROPORTION_SYSTEM_SOLVE",
+      "crossConceptKeys": [
+        "CC_COMBINATION_RATIO",
+        "CC_LINEAR_SYSTEM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "nC(r+1)/nCr=(n-r)/(r+1)=4/5 및 (n-r-1)/(r+2)=1/2 연립하여 n=6, r=1, 2n-r=11 산출 (3단계)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "등식 $\\dfrac{{}_nC_r}{5}=\\dfrac{{}_nC_{r+1}}4=\\dfrac{{}_nC_{r+2}}2$를 만족시키는 자연수 $n,r$에 대하여 $2n-r$의 값은? [4.3점]",
+        "solutionDecisiveExcerpt": "5(n-r)=4(r+1) 및 2(n-r-1)=r+2 연립하여 n=6, r=1 도출 후 2n-r=11 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 14,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-06",
+      "standardUnit": "경우의 수",
+      "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+      "subUnit": "경우의 수의 기본 원리",
+      "problemTypeKey": "PT_H1_COMBINATORIAL_GEOMETRY_CIRCLE",
+      "templateKey": "TPL_H1_REGULAR_POLYGON_RIGHT_TRIANGLE_RECTANGLE",
+      "crossConceptKeys": [
+        "CC_INSCRIBED_RIGHT_TRIANGLE",
+        "CC_INSCRIBED_RECTANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "전체 삼각형 120에서 직각삼각형 40 제외한 p=80, 직사각형 5C2=10인 q=10에서 p+q=90 산출 (3단계, SVG_IMAGE)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림과 같이 원 위에 같은 간격으로 놓인 10개의 점 중에서 3개의 점을 꼭짓점으로 하는 삼각형 중 직각삼각형이 아닌 삼각형의 개수를 $p$, 4개의 점을 꼭짓점으로 하는 사각형 중 직사각형의 개수를 $q$라 할 때, $p+q$의 값은? [4.5점]",
+        "solutionDecisiveExcerpt": "p = 10C3 - 5*8 = 120 - 40 = 80, q = 5C2 = 10이므로 p+q = 90 산출",
+        "visualAssetChecked": true,
+        "visualType": "SVG_IMAGE"
+      }
+    },
+    {
+      "questionId": 15,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-07",
+      "standardUnit": "순열",
+      "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_H1_DICTIONARY_ORDER_PERMUTATION",
+      "templateKey": "TPL_H1_LEXICOGRAPHIC_RANK_EVALUATION",
+      "crossConceptKeys": [
+        "CC_PERMUTATION",
+        "CC_LEXICOGRAPHIC_ORDER"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "A, E 시작 48개, KA, KE, KO 시작 18개, KRA, KRE 시작 4개 합산 후 KROAE 71번째 도출 (2단계)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "$K,O,R,E,A$의 5개의 문자를 한 번씩 써서 사전식으로 나열할 때, $KROAE$는 $x$번째 나오는 문자이다. 이때 $x$의 값은? [4.2점]",
+        "solutionDecisiveExcerpt": "A, E 시작 2*24=48, KA, KE, KO 시작 3*6=18, KRA, KRE 시작 2*2=4 뒤 첫 번째로 48+18+4+1=71 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 16,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-05",
+      "standardUnit": "무리함수",
+      "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+      "subUnit": "무리함수의 뜻과 계산",
+      "problemTypeKey": "PT_H1_IRRATIONAL_GRAPH_AREA_SYMMETRY",
+      "templateKey": "TPL_H1_CUT_AND_PASTE_CONGRUENT_CURVE_AREA",
+      "crossConceptKeys": [
+        "CC_CURVE_TRANSLATION_CONGRUENCE",
+        "CC_GEOMETRIC_AREA_TRANSFORM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "두 무리함수 곡선의 대칭 이동 합동성을 이용해 직사각형 넓이 4*10=40으로 등적변형 산출 (3단계, SVG_IMAGE)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 무리함수 $f(x)=\\sqrt{x+2}+5$, $g(x)=\\sqrt{-x+2}-5$의 그래프와 두 직선 $x=-2$, $x=2$로 둘러싸인 도형의 넓이를 구하면? [4.6점]",
+        "solutionDecisiveExcerpt": "y=5 위쪽 볼록 부분과 y=-5 위쪽 오목 부분의 넓이가 같으므로 가로 4, 세로 10인 직사각형 넓이 40 산출",
+        "visualAssetChecked": true,
+        "visualType": "SVG_IMAGE"
+      }
+    },
+    {
+      "questionId": 17,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-01",
+      "standardUnit": "집합",
+      "subUnitKey": "H15-SB-01-SET_BASIC",
+      "subUnit": "집합의 뜻과 표현",
+      "problemTypeKey": "PT_H1_SUBSET_SELECTION_COUNTING",
+      "templateKey": "TPL_H1_SUBSET_PAIR_INTERSECTION_COMPLEMENT",
+      "crossConceptKeys": [
+        "CC_SUBSET_COUNTING",
+        "CC_COMPLEMENTARY_COUNTING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "n(A)=3, n(B)=2 전체 쌍 7C3*7C2=735에서 서로소인 쌍 7C3*4C2=210 제외하여 525 산출 (3단계)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "집합 $X=\\{a,b,c,d,e,f,g\\}$의 부분집합 중에서 두 부분집합 $A,B$를 택할 때, 다음 조건을 만족시키는 경우의 수는? [4.6점]<br>(가) $A\\cap B\\ne\\varnothing$<br>(나) $n(A)=3$, $n(B)=2$",
+        "solutionDecisiveExcerpt": "전체 7C3*7C2=35*21=735에서 교집합이 공집합인 경우 7C3*4C2=35*6=210을 빼서 525 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 18,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-04",
+      "standardUnit": "유리함수",
+      "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
+      "subUnit": "유리함수의 뜻과 계산",
+      "problemTypeKey": "PT_H1_ITERATED_COMPOSITE_FUNCTION",
+      "templateKey": "TPL_H1_RATIONAL_FUNCTION_PERIODIC_ITERATION",
+      "crossConceptKeys": [
+        "CC_ITERATED_COMPOSITION",
+        "CC_PERIODICITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "f^2(x)=x 주기 2 성질 확인 후 홀수·짝수 거듭 합성값 대입하여 8/3 산출 (2단계 단답형)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "서답형1 (단답형1) [5점]<br>함수 $f(x)=\\dfrac{3x-8}{x-3}$에 대하여 $f^1=f$, $f^{n+1}=f\\circ f^n$ ($n$은 자연수)으로 정의할 때, $f^{100}(2)+f^{101}(2)$의 값을 구하시오.",
+        "solutionDecisiveExcerpt": "f(2)=2, 또는 주기성에 의해 f^{100}(2)+f^{101}(2)=8/3 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 19,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-06",
+      "standardUnit": "경우의 수",
+      "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+      "subUnit": "경우의 수의 기본 원리",
+      "problemTypeKey": "PT_H1_ORDER_CONSTRAINED_TUPLE_COUNTING",
+      "templateKey": "TPL_H1_WEAK_INEQUALITY_COMBINATION_WITH_REPETITION",
+      "crossConceptKeys": [
+        "CC_CASE_BRANCHING",
+        "CC_MONOTONE_SEQUENCE_COUNTING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "d값(2~7) 기준 분기하여 a<=b<=c<d 순서쌍 개수와 e<d 조건 결합 합산으로 126 산출 (4단계 단답형)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "서답형2 (단답형2) [5점]<br>$A,B,C,D,E$ 다섯 명에게 같은 종류의 초콜릿을 1명당 1개 이상 8개 미만으로 나누어 주려고 한다. $A,B,C,D,E$가 받는 초콜릿의 개수를 각각 $a,b,c,d,e$라 할 때, 다음 조건을 만족시키는 순서쌍 $(a,b,c,d,e)$의 개수를 구하시오.",
+        "solutionDecisiveExcerpt": "d값에 따라 경우를 나누어 a<=b<=c<d와 e 조건 경우의 수를 합산하여 126 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 20,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-05",
+      "standardUnit": "무리함수",
+      "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+      "subUnit": "무리함수의 뜻과 계산",
+      "problemTypeKey": "PT_H1_IRRATIONAL_EXPRESSION_SIMPLIFICATION",
+      "templateKey": "TPL_H1_CONJUGATE_DENOMINATOR_RATIONALIZATION",
+      "crossConceptKeys": [
+        "CC_RATIONALIZATION_OF_DENOMINATOR",
+        "CC_RADICAL_EVALUATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "켤레 분모 통분 정리 -2(x+1)/x에 x=sqrt(2) 대입하여 -2-sqrt(2), a=-2, b=-1, a+b=-3 산출 (2단계 서술형)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "서답형3 (서술형1) [6점]<br>$x=\\sqrt2$일 때 $\\dfrac{x+1}{1+\\sqrt{x+1}}+\\dfrac{x+1}{1-\\sqrt{x+1}}=a+b\\sqrt2$이다. 유리수 $a,b$에 대하여 $a+b$의 값을 구하시오.",
+        "solutionDecisiveExcerpt": "통분하면 -2(x+1)/x = -2(sqrt(2)+1)/sqrt(2) = -2-sqrt(2)이므로 a=-2, b=-1, a+b=-3 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 21,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-04",
+      "standardUnit": "유리함수",
+      "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
+      "subUnit": "유리함수의 뜻과 계산",
+      "problemTypeKey": "PT_H1_FUNCTION_COEFFICIENT_SIGNS",
+      "templateKey": "TPL_H1_IRRATIONAL_TO_RATIONAL_GRAPH_QUADRANTS",
+      "crossConceptKeys": [
+        "CC_IRRATIONAL_FUNCTION_GRAPH",
+        "CC_RATIONAL_FUNCTION_ASYMPTOTE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "무리함수 시작점과 방향에서 a>0, b>0, c>0 판정 후 유리함수 점근선·절편 조사로 제2,3,4사분면 통과 도출 (3단계 서술형, SVG_IMAGE)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "서답형4 (서술형2) [7점]<br>함수 $y=a\\sqrt{-x+b}+c$의 그래프가 아래의 그림과 같을 때, 함수 $y=-\\dfrac{bx+c}{x+a}$의 그래프가 항상 지나는 사분면을 모두 구하시오.",
+        "solutionDecisiveExcerpt": "a>0, b>0, c>0에서 유리함수 점근선 x=-a<0, y=-b<0 및 절편 -c/a<0으로 제2, 3, 4사분면 통과 산출",
+        "visualAssetChecked": true,
+        "visualType": "SVG_IMAGE"
+      }
+    },
+    {
+      "questionId": 22,
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-06",
+      "standardUnit": "경우의 수",
+      "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+      "subUnit": "경우의 수의 기본 원리",
+      "problemTypeKey": "PT_H1_NUMBER_THEORETIC_COUNTING",
+      "templateKey": "TPL_H1_NON_COPRIME_PAIR_INCLUSION_EXCLUSION",
+      "crossConceptKeys": [
+        "CC_GREATEST_COMMON_DIVISOR",
+        "CC_INCLUSION_EXCLUSION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "canonical_inferred",
+      "difficultyReason": "2의 배수(6C2=15), 3의 배수(4C2=6), 5의 배수(2C2=1)에서 6의 배수 중복(2C2=1) 제외하여 21가지 산출 (3단계 서술형)",
+      "readingEvidence": {
+        "sourceTextExcerpt": "서답형5 (서술형3) [7점]<br>1부터 13까지의 자연수가 하나씩 적혀 있는 13장의 카드에서 2장을 택할 때, 2장의 카드에 적힌 두 수가 1 이외의 공약수를 갖는 경우의 수를 구하시오.",
+        "solutionDecisiveExcerpt": "공약수 2(6C2=15), 공약수 3(4C2=6), 공약수 5(2C2=1)에서 6의 배수 쌍({6,12} 1가지) 중복 제외하여 15+6+1-1=21 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    }
+  ]
+}
