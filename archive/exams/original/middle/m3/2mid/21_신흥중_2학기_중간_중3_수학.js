@@ -29,7 +29,7 @@ window.questionBank = [
       "$\\frac{9}{5}$"
     ],
     "answer": "③",
-    "solution": "[핵심] 그림에서 ∠B=90°, AB=4, BC=3, AC=5입니다. 따라서 sin A=BC/AC=3/5, cos A=AB/AC=4/5이므로 sin A+cos A=7/5입니다. 정답은 ③입니다.",
+    "solution": "그림에서 ∠B=90°, AB=4, BC=3, AC=5입니다. 따라서 sin A=BC/AC=3/5, cos A=AB/AC=4/5이므로 sin A+cos A=7/5입니다. 정답은 ③입니다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비의 뜻과 관계",
     "subUnitConfidence": "candidate_evidence",
@@ -83,7 +83,7 @@ window.questionBank = [
       "$\\frac{12}{13}$"
     ],
     "answer": "⑤",
-    "solution": "[핵심] ∠BDE는 ∠ABC의 여각입니다. 큰 직각삼각형 ABC에서 BC=√(12²+5²)=13이고 cos B=AB/BC=12/13입니다. 따라서 sin x=sin(90°−B)=cos B=12/13입니다. 정답은 ⑤입니다.",
+    "solution": "∠BDE는 ∠ABC의 여각입니다. 큰 직각삼각형 ABC에서 BC=√(12²+5²)=13이고 cos B=AB/BC=12/13입니다. 따라서 sin x=sin(90°−B)=cos B=12/13입니다. 정답은 ⑤입니다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비의 뜻과 관계",
     "subUnitConfidence": "candidate_evidence",
@@ -137,7 +137,7 @@ window.questionBank = [
       "$\\frac{1}{5}$"
     ],
     "answer": "②",
-    "solution": "[핵심] 직선 y=3x+9의 기울기는 3이므로 tan a=3입니다. 대응하는 직각삼각형의 빗변을 √10으로 보면 sin a=3/√10, cos a=1/√10입니다. 따라서 sin a·cos a=3/10이고 정답은 ②입니다.",
+    "solution": "직선 y=3x+9의 기울기는 3이므로 tan a=3입니다. 대응하는 직각삼각형의 빗변을 √10으로 보면 sin a=3/√10, cos a=1/√10입니다. 따라서 sin a·cos a=3/10이고 정답은 ②입니다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비의 뜻과 관계",
     "subUnitConfidence": "candidate_evidence",
@@ -191,7 +191,7 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "③",
-    "solution": "[핵심] 정육면체 모서리가 6이므로 AE=6, GE=6√2, GA=6√3입니다. △AEG는 E에서 직각이므로 cos x·tan x=(GE/GA)(AE/GE)=AE/GA=√3/3입니다. 정답은 ③입니다.",
+    "solution": "정육면체 모서리가 6이므로 AE=6, GE=6√2, GA=6√3입니다. △AEG는 E에서 직각이므로 cos x·tan x=(GE/GA)(AE/GE)=AE/GA=√3/3입니다. 정답은 ③입니다.",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -245,7 +245,7 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "①",
-    "solution": "[핵심] tan30°·sin60°=(1/√3)(√3/2)=1/2이고, cos60°·tan45°=(1/2)·1=1/2입니다. 두 값의 차가 0이므로 정답은 ①입니다.",
+    "solution": "tan30°·sin60°=(1/√3)(√3/2)=1/2이고, cos60°·tan45°=(1/2)·1=1/2입니다. 두 값의 차가 0이므로 정답은 ①입니다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비의 뜻과 관계",
     "subUnitConfidence": "candidate_evidence",
@@ -299,7 +299,7 @@ window.questionBank = [
       "$0.1806$"
     ],
     "answer": "③",
-    "solution": "[핵심] 점 A의 y좌표는 sin35°=0.5736이고 x좌표는 cos35°=0.8192입니다. B는 A의 x축 위 수선발, D의 x좌표는 1이므로 BD=1−0.8192=0.1808입니다. 정답은 ③입니다.",
+    "solution": "점 A의 y좌표는 sin35°=0.5736이고 x좌표는 cos35°=0.8192입니다. B는 A의 x축 위 수선발, D의 x좌표는 1이므로 BD=1−0.8192=0.1808입니다. 정답은 ③입니다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비의 뜻과 관계",
     "subUnitConfidence": "candidate_evidence",
@@ -353,7 +353,7 @@ window.questionBank = [
       "$\\sqrt{3}$"
     ],
     "answer": "⑤",
-    "solution": "[핵심] 직각삼각형의 내심에서 ∠BIC=90°+A/2입니다. 120°=90°+A/2이므로 A=60°, C=90°에서 B=30°입니다. cos B+sin B·tan A=√3/2+(1/2)√3=√3이므로 정답은 ⑤입니다.",
+    "solution": "직각삼각형의 내심에서 ∠BIC=90°+A/2입니다. 120°=90°+A/2이므로 A=60°, C=90°에서 B=30°입니다. cos B+sin B·tan A=√3/2+(1/2)√3=√3이므로 정답은 ⑤입니다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비의 뜻과 관계",
     "subUnitConfidence": "candidate_evidence",
@@ -407,7 +407,7 @@ window.questionBank = [
       "$5\\sqrt{13}$"
     ],
     "answer": "④",
-    "solution": "[핵심] C에서 BC에 내린 수선의 발을 H라 하면 CH=AC·cos C=20·4/5=16, AH=AC·sin C=20·3/5=12입니다. BH=24−16=8이므로 AB=√(12²+8²)=4√13입니다. 정답은 ④입니다.",
+    "solution": "C에서 BC에 내린 수선의 발을 H라 하면 CH=AC·cos C=20·4/5=16, AH=AC·sin C=20·3/5=12입니다. BH=24−16=8이므로 AB=√(12²+8²)=4√13입니다. 정답은 ④입니다.",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -461,7 +461,7 @@ window.questionBank = [
       "$3-\\sqrt{3}\\,\\text{m}$"
     ],
     "answer": "①",
-    "solution": "[핵심] $h=\\overline{AH}$라 하면, $\\tan45^\\circ=\\frac{h}{\\overline{BH}}=1$이므로 $\\overline{BH}=h$입니다. 또 $\\tan60^\\circ=\\frac{h}{\\overline{CH}}=\\sqrt3$이므로 $\\overline{CH}=\\frac{h}{\\sqrt3}$입니다. H가 B와 C 사이에 있으므로 $h+\\frac{h}{\\sqrt3}=300$입니다. 따라서 $h=\\frac{300}{1+1/\\sqrt3}=\\frac{300\\sqrt3}{\\sqrt3+1}=\\frac{300\\sqrt3(\\sqrt3-1)}{2}=150(3-\\sqrt3)\\,\\text{m}$입니다. 정답은 ①입니다.",
+    "solution": "$h=\\overline{AH}$라 하면, $\\tan45^\\circ=\\frac{h}{\\overline{BH}}=1$이므로 $\\overline{BH}=h$입니다. 또 $\\tan60^\\circ=\\frac{h}{\\overline{CH}}=\\sqrt3$이므로 $\\overline{CH}=\\frac{h}{\\sqrt3}$입니다. H가 B와 C 사이에 있으므로 $h+\\frac{h}{\\sqrt3}=300$입니다. 따라서 $h=\\frac{300}{1+1/\\sqrt3}=\\frac{300\\sqrt3}{\\sqrt3+1}=\\frac{300\\sqrt3(\\sqrt3-1)}{2}=150(3-\\sqrt3)\\,\\text{m}$입니다. 정답은 ①입니다.",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -515,7 +515,7 @@ window.questionBank = [
       "$7\\sqrt{3}$"
     ],
     "answer": "①",
-    "solution": "[핵심] AD와 AB, AC가 이루는 각은 각각 30°입니다. 밑변 AD에 대한 B,C의 높이는 12sin30°=6, 18sin30°=9입니다. △ABC의 넓이는 ½·12·18·sin60°=54√3입니다. 그러므로 ½·AD·(6+9)=54√3에서 AD=36√3/5입니다. 정답은 ①입니다.",
+    "solution": "AD와 AB, AC가 이루는 각은 각각 30°입니다. 밑변 AD에 대한 B,C의 높이는 12sin30°=6, 18sin30°=9입니다. △ABC의 넓이는 ½·12·18·sin60°=54√3입니다. 그러므로 ½·AD·(6+9)=54√3에서 AD=36√3/5입니다. 정답은 ①입니다.",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -569,7 +569,7 @@ window.questionBank = [
       "$431\\sqrt{3}\\,\\text{cm}^2$"
     ],
     "answer": "④",
-    "solution": "[핵심] 여섯 합동 마름모가 한 점을 둘러싸므로 그 점의 여섯 합동각은 360°/6=60°입니다. 한 마름모의 넓이는 12·12·sin60°=72√3cm²입니다. 모두 6개이므로 432√3cm²이고 정답은 ④입니다.",
+    "solution": "여섯 합동 마름모가 한 점을 둘러싸므로 그 점의 여섯 합동각은 360°/6=60°입니다. 한 마름모의 넓이는 12·12·sin60°=72√3cm²입니다. 모두 6개이므로 432√3cm²이고 정답은 ④입니다.",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -623,7 +623,7 @@ window.questionBank = [
       "$35\\sqrt{2}\\,\\text{cm}^2$"
     ],
     "answer": "②",
-    "solution": "[핵심] 접는 선 AC에 대한 대칭으로 위쪽 테이프 가장자리의 반사선이 AB가 됩니다. 접기 전 위·아래 가장자리는 평행하고, 접는 선은 반사 전후 각을 같게 하므로 ∠BAC=∠ACB, 따라서 AB=BC입니다. A에서 BC까지 높이가 테이프 폭 8cm이고 ∠ABC=45°이므로 AB=8/sin45°=8√2, BC=8√2입니다. 넓이는 ½·BC·8=32√2cm²입니다. 정답은 ②입니다.",
+    "solution": "접는 선 AC에 대한 대칭으로 위쪽 테이프 가장자리의 반사선이 AB가 됩니다. 접기 전 위·아래 가장자리는 평행하고, 접는 선은 반사 전후 각을 같게 하므로 ∠BAC=∠ACB, 따라서 AB=BC입니다. A에서 BC까지 높이가 테이프 폭 8cm이고 ∠ABC=45°이므로 AB=8/sin45°=8√2, BC=8√2입니다. 넓이는 ½·BC·8=32√2cm²입니다. 정답은 ②입니다.",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -677,7 +677,7 @@ window.questionBank = [
       "$30\\pi\\,\\text{cm}^2$"
     ],
     "answer": "④",
-    "solution": "[핵심] 반지름을 $r$이라 하면 $OM=r-2$이고, $AB\\perp OM$이므로 M은 현 AB의 중점입니다. 따라서 $MB=4$입니다. 직각삼각형 OMB에서 $r^2=(r-2)^2+4^2=r^2-4r+20$이므로 $4r=20$, $r=5$입니다. 원의 넓이는 $25\\pi\\,\\text{cm}^2$이고 정답은 ④입니다.",
+    "solution": "반지름을 $r$이라 하면 $OM=r-2$이고, $AB\\perp OM$이므로 M은 현 AB의 중점입니다. 따라서 $MB=4$입니다. 직각삼각형 OMB에서 $r^2=(r-2)^2+4^2=r^2-4r+20$이므로 $4r=20$, $r=5$입니다. 원의 넓이는 $25\\pi\\,\\text{cm}^2$이고 정답은 ④입니다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
@@ -737,7 +737,7 @@ window.questionBank = [
       "$65^\\circ$"
     ],
     "answer": "②",
-    "solution": "[핵심] OM ⟂ AC, ON ⟂ BC이고 OM=ON이므로 중심 O에서 같은 거리에 있는 현 AC와 BC의 길이가 같습니다. 같은 원에서 같은 길이의 현에 대한 원주각의 크기는 같습니다. 따라서 ∠ABC=∠BAC=65°이고, 삼각형 ABC의 내각의 합으로 x=∠ACB=180°−65°−65°=50°입니다. 정답은 ②입니다.",
+    "solution": "OM ⟂ AC, ON ⟂ BC이고 OM=ON이므로 중심 O에서 같은 거리에 있는 현 AC와 BC의 길이가 같습니다. 같은 원에서 같은 길이의 현에 대한 원주각의 크기는 같습니다. 따라서 ∠ABC=∠BAC=65°이고, 삼각형 ABC의 내각의 합으로 x=∠ACB=180°−65°−65°=50°입니다. 정답은 ②입니다.",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각과 중심각",
     "subUnitConfidence": "candidate_evidence",
@@ -791,7 +791,7 @@ window.questionBank = [
       "$5\\sqrt{2}\\,\\text{cm}$"
     ],
     "answer": "④",
-    "solution": "[핵심] 접는 선분 AB에 대해 짧은 호 AB가 접혀 O를 지나므로 원래 중심 O와 반사된 원의 중심 O′ 사이 거리는 반지름 4cm입니다. 두 중심은 AB에 대칭이므로 O에서 AB까지 거리는 2cm입니다. 현의 반은 √(4²−2²)=2√3cm이므로 AB=4√3cm입니다. 정답은 ④입니다. (원본 문구의 두 번째 ‘선분 AB’를 도형에 맞게 ‘짧은 호 AB’로만 최소 교정했습니다.)",
+    "solution": "접는 선분 AB에 대해 짧은 호 AB가 접혀 O를 지나므로 원래 중심 O와 반사된 원의 중심 O′ 사이 거리는 반지름 4cm입니다. 두 중심은 AB에 대칭이므로 O에서 AB까지 거리는 2cm입니다. 현의 반은 √(4²−2²)=2√3cm이므로 AB=4√3cm입니다. 정답은 ④입니다. (원본 문구의 두 번째 ‘선분 AB’를 도형에 맞게 ‘짧은 호 AB’로만 최소 교정했습니다.)",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
@@ -851,7 +851,7 @@ window.questionBank = [
       "$48\\pi\\,\\text{cm}^2$"
     ],
     "answer": "③",
-    "solution": "[핵심] OD=OE=OF이고 각각 현에 수직이므로 세 현 AB, BC, AC는 중심 O에서 같은 거리에 있습니다. 따라서 길이가 같고 △ABC는 한 변 6cm인 정삼각형입니다. 외접반지름은 6/√3=2√3cm이므로 원의 넓이는 12πcm²입니다. 정답은 ③입니다.",
+    "solution": "OD=OE=OF이고 각각 현에 수직이므로 세 현 AB, BC, AC는 중심 O에서 같은 거리에 있습니다. 따라서 길이가 같고 △ABC는 한 변 6cm인 정삼각형입니다. 외접반지름은 6/√3=2√3cm이므로 원의 넓이는 12πcm²입니다. 정답은 ③입니다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
@@ -911,7 +911,7 @@ window.questionBank = [
       "$6\\sqrt{3}\\,\\text{cm}$"
     ],
     "answer": "⑤",
-    "solution": "[핵심] OA는 접선 PA와 수직이고 OP는 ∠APB를 이등분합니다. 따라서 △OAP에서 ∠P=30°입니다. tan30°=OA/18이므로 반지름 OA=6√3cm입니다. 정답은 ⑤입니다.",
+    "solution": "OA는 접선 PA와 수직이고 OP는 ∠APB를 이등분합니다. 따라서 △OAP에서 ∠P=30°입니다. tan30°=OA/18이므로 반지름 OA=6√3cm입니다. 정답은 ⑤입니다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
@@ -971,7 +971,7 @@ window.questionBank = [
       "$4\\sqrt{21}$"
     ],
     "answer": "④",
-    "solution": "[핵심] D에서 그은 두 접선 길이가 같으므로 AD=DT=3입니다. CD=10이어서 CT=7이고, C에서 접선 길이가 같으므로 BC=7입니다. AD∥BC이므로 평행선 사이 높이 차는 7−3=4입니다. 빗변 CD=10인 직각삼각형에서 AB²+4²=10², 따라서 AB=2√21입니다. 정답은 ④입니다.",
+    "solution": "D에서 그은 두 접선 길이가 같으므로 AD=DT=3입니다. CD=10이어서 CT=7이고, C에서 접선 길이가 같으므로 BC=7입니다. AD∥BC이므로 평행선 사이 높이 차는 7−3=4입니다. 빗변 CD=10인 직각삼각형에서 AB²+4²=10², 따라서 AB=2√21입니다. 정답은 ④입니다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
@@ -1031,7 +1031,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "③",
-    "solution": "[핵심] P에서 두 접선 길이가 같아 PA=PB입니다. PC=11, AC=3이므로 PA=14, PB=14입니다. C에서 접선 길이가 같으므로 CD=CA=3이며 CE=8이어서 DE=5입니다. E에서 접선 길이가 같아 EB=5이므로 PE=PB−EB=9입니다. 정답은 ③입니다.",
+    "solution": "P에서 두 접선 길이가 같아 PA=PB입니다. PC=11, AC=3이므로 PA=14, PB=14입니다. C에서 접선 길이가 같으므로 CD=CA=3이며 CE=8이어서 DE=5입니다. E에서 접선 길이가 같아 EB=5이므로 PE=PB−EB=9입니다. 정답은 ③입니다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
@@ -1091,7 +1091,7 @@ window.questionBank = [
       "$\\frac{11}{2}\\,\\text{cm}$"
     ],
     "answer": "③",
-    "solution": "[핵심] ∠C=90°인 △BCD에서 CD=√(10²−8²)=6cm입니다. 원에 외접하는 사각형에서 맞은편 변의 합이 같으므로 AB+CD=AD+BC=13입니다. AB=7cm이고 정답은 ③입니다.",
+    "solution": "∠C=90°인 △BCD에서 CD=√(10²−8²)=6cm입니다. 원에 외접하는 사각형에서 맞은편 변의 합이 같으므로 AB+CD=AD+BC=13입니다. AB=7cm이고 정답은 ③입니다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
@@ -1145,7 +1145,7 @@ window.questionBank = [
     "content": "【서술형 1】 다음 그림과 같은 탑의 높이를 알아보기 위하여 탑으로부터 $100\\,\\text{m}$ 떨어진 지점에서 탑의 꼭대기를 올려다본 각이 $34^\\circ$일 때, 탑의 높이를 구하시오. (5점)<br>(단, $\\sin 34^\\circ = 0.5592$, $\\cos 34^\\circ = 0.8290$, $\\tan 34^\\circ = 0.6745$로 계산한다.)<br><img src=\"assets/images/21_신흥중_2학기_중간_중3_수학/s01.png\" />",
     "choices": [],
     "answer": "67.45 m",
-    "solution": "[핵심] 탑까지 수평거리는 100m입니다. tan34°=탑의 높이/100=0.6745이므로 탑의 높이는 67.45m입니다.",
+    "solution": "탑까지 수평거리는 100m입니다. tan34°=탑의 높이/100=0.6745이므로 탑의 높이는 67.45m입니다.",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -1193,7 +1193,7 @@ window.questionBank = [
     "content": "【서술형 2】 한 변의 길이가 $4$인 정사각형 $\\mathrm{ABCD}$의 두 변 $\\mathrm{AD}, \\mathrm{CD}$의 중점을 각각 $\\mathrm{M}, \\mathrm{N}$이라 하고 $\\angle \\mathrm{MBN} = x^\\circ$라 할 때, $\\sin x^\\circ$의 값을 구하시오. (7점)",
     "choices": [],
     "answer": "3/5",
-    "solution": "[풀이] M,N은 각각 AD, CD의 중점이므로 $AM=DN=CN=2$입니다. 직각삼각형 ABM과 BCN에서 $BM=\\sqrt{4^2+2^2}=2\\sqrt5$, $BN=\\sqrt{4^2+2^2}=2\\sqrt5$입니다. 삼각형 BMN의 넓이는 정사각형 넓이에서 직각삼각형 ABM, BCN, DMN의 넓이를 빼어 $16-4-4-2=6$입니다. BM을 밑변으로 보면 높이는 $BN\\sin x$이므로 $6=\\frac12\\cdot BM\\cdot BN\\sin x=10\\sin x$입니다. 따라서 $\\sin x=\\frac35$입니다.",
+    "solution": "M,N은 각각 AD, CD의 중점이므로 $AM=DN=CN=2$입니다. 직각삼각형 ABM과 BCN에서 $BM=\\sqrt{4^2+2^2}=2\\sqrt5$, $BN=\\sqrt{4^2+2^2}=2\\sqrt5$입니다. 삼각형 BMN의 넓이는 정사각형 넓이에서 직각삼각형 ABM, BCN, DMN의 넓이를 빼어 $16-4-4-2=6$입니다. BM을 밑변으로 보면 높이는 $BN\\sin x$이므로 $6=\\frac12\\cdot BM\\cdot BN\\sin x=10\\sin x$입니다. 따라서 $\\sin x=\\frac35$입니다.",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -1241,7 +1241,7 @@ window.questionBank = [
     "content": "【서술형 3】 다음 그림에서 원 $\\mathrm{O}$는 $\\angle \\mathrm{A} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내접원이고 세 점 $\\mathrm{D}, \\mathrm{E}, \\mathrm{F}$는 접점이다. $\\overline{\\mathrm{AC}} = 8\\,\\text{cm}$, $\\overline{\\mathrm{BC}} = 10\\,\\text{cm}$일 때, $\\overline{\\mathrm{OC}}$의 길이를 구하시오. (8점)<br><img src=\"assets/images/21_신흥중_2학기_중간_중3_수학/q23_diagram_RECONSTRUCTED.svg\" />",
     "choices": [],
     "answer": "2√10 cm",
-    "solution": "[풀이] 피타고라스 정리로 $AB=\\sqrt{10^2-8^2}=6$cm입니다. 원의 반지름을 $r$이라 하면, 내심에서 세 변까지의 거리는 모두 $r$이므로 삼각형 넓이는 $\\frac12 r(6+8+10)=12r$입니다. 삼각형 넓이 $\\frac12\\cdot6\\cdot8=24\\,\\text{cm}^2$와 같으므로 $12r=24$, $r=2$cm입니다. 각 A가 직각이므로 O는 두 직각변에서 각각 2cm 떨어져 있습니다. C에서 O까지의 직각 성분은 $8-2=6$cm와 2cm이므로 $OC=\\sqrt{6^2+2^2}=2\\sqrt{10}\\,\\text{cm}$입니다.",
+    "solution": "피타고라스 정리로 $AB=\\sqrt{10^2-8^2}=6$cm입니다. 원의 반지름을 $r$이라 하면, 내심에서 세 변까지의 거리는 모두 $r$이므로 삼각형 넓이는 $\\frac12 r(6+8+10)=12r$입니다. 삼각형 넓이 $\\frac12\\cdot6\\cdot8=24\\,\\text{cm}^2$와 같으므로 $12r=24$, $r=2$cm입니다. 각 A가 직각이므로 O는 두 직각변에서 각각 2cm 떨어져 있습니다. C에서 O까지의 직각 성분은 $8-2=6$cm와 2cm이므로 $OC=\\sqrt{6^2+2^2}=2\\sqrt{10}\\,\\text{cm}$입니다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",

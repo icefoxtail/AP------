@@ -28,7 +28,7 @@ window.questionBank = [
     "원의 반지름의 길이가 $x$이고, 넓이가 $y$인 원"
   ],
   "answer": "②",
-  "solution": "[풀이] 각 보기를 $y$를 $x$에 대한 식으로 나타내고, 이차항이 남는지 확인한다. ①은 $y=x^2+5x$이고, ③은 정사각형의 넓이이므로 $y=x^2$, ⑤는 원의 넓이이므로 $y=\\pi x^2$이다. ④에서 $x$각형의 한 꼭짓점에서는 양옆 두 꼭짓점을 제외한 $x-3$개의 꼭짓점에 대각선을 그을 수 있다. 이를 $x$개 꼭짓점에 대해 세면 각 대각선을 양 끝에서 두 번 세므로 $y=\\frac{x(x-3)}{2}$이다. 따라서 ①, ③, ④, ⑤는 모두 이차함수이다. 한편 ②는 $y=(x+3)^2-x^2-3=x^2+6x+9-x^2-3=6x+6$으로 이차항이 사라져 일차함수이다. 그러므로 이차함수가 아닌 것은 ②이다.",
+  "solution": "각 보기를 $y$를 $x$에 대한 식으로 나타내고, 이차항이 남는지 확인한다. ①은 $y=x^2+5x$이고, ③은 정사각형의 넓이이므로 $y=x^2$, ⑤는 원의 넓이이므로 $y=\\pi x^2$이다. ④에서 $x$각형의 한 꼭짓점에서는 양옆 두 꼭짓점을 제외한 $x-3$개의 꼭짓점에 대각선을 그을 수 있다. 이를 $x$개 꼭짓점에 대해 세면 각 대각선을 양 끝에서 두 번 세므로 $y=\\frac{x(x-3)}{2}$이다. 따라서 ①, ③, ④, ⑤는 모두 이차함수이다. 한편 ②는 $y=(x+3)^2-x^2-3=x^2+6x+9-x^2-3=6x+6$으로 이차항이 사라져 일차함수이다. 그러므로 이차함수가 아닌 것은 ②이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -101,7 +101,7 @@ window.questionBank = [
     "$y=-\\frac{1}{4}x^2$"
   ],
   "answer": "⑤",
-  "solution": "[풀이] 그림의 어두운 부분은 두 그래프 사이, 즉 $-\\frac12x^2<y<x^2$인 부분이다. $y=ax^2$가 이 영역을 지나려면 $x\\ne0$인 점에서 $-\\frac12x^2<ax^2<x^2$를 만족해야 한다. 이때 $x^2>0$이므로 양변을 $x^2$로 나누어 $-\\frac12<a<1$을 얻는다. 보기의 계수 중 이 범위에 속하는 것은 $-\\frac14$뿐이므로 $y=-\\frac14x^2$인 ⑤가 정답이다.",
+  "solution": "그림의 어두운 부분은 두 그래프 사이, 즉 $-\\frac12x^2<y<x^2$인 부분이다. $y=ax^2$가 이 영역을 지나려면 $x\\ne0$인 점에서 $-\\frac12x^2<ax^2<x^2$를 만족해야 한다. 이때 $x^2>0$이므로 양변을 $x^2$로 나누어 $-\\frac12<a<1$을 얻는다. 보기의 계수 중 이 범위에 속하는 것은 $-\\frac14$뿐이므로 $y=-\\frac14x^2$인 ⑤가 정답이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -174,7 +174,7 @@ window.questionBank = [
     "점 $(-3, 9)$를 지난다."
   ],
   "answer": "③",
-  "solution": "[풀이] $y=x^2$의 꼭짓점은 $(0,0)$이고 위로 열린다. $y=-x^2$를 $x$축에 대칭이동한 그래프이며, 대칭축은 $y$축인 $x=0$이다. $x<0$에서 감소하고 $x>0$에서 증가하며, $(-3,9)$를 지난다. 따라서 축을 $y=0$이라고 한 ③이 옳지 않다.",
+  "solution": "$y=x^2$의 꼭짓점은 $(0,0)$이고 위로 열린다. $y=-x^2$를 $x$축에 대칭이동한 그래프이며, 대칭축은 $y$축인 $x=0$이다. $x<0$에서 감소하고 $x>0$에서 증가하며, $(-3,9)$를 지난다. 따라서 축을 $y=0$이라고 한 ③이 옳지 않다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -247,7 +247,7 @@ window.questionBank = [
     "$a\\le 0, q\\le 0$"
   ],
   "answer": "④",
-  "solution": "[풀이] $y=ax^2+q$의 그래프는 아래로 열리므로 $a<0$이다. $x=0$일 때 $y=q$이고, 그림에서 그래프가 $y$축과 만나는 점은 $x$축 위이므로 $q>0$이다. 따라서 옳은 것은 ④이다.",
+  "solution": "$y=ax^2+q$의 그래프는 아래로 열리므로 $a<0$이다. $x=0$일 때 $y=q$이고, 그림에서 그래프가 $y$축과 만나는 점은 $x$축 위이므로 $q>0$이다. 따라서 옳은 것은 ④이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -320,7 +320,7 @@ window.questionBank = [
     "$2$"
   ],
   "answer": "②",
-  "solution": "[풀이] 점 $P(2,-8)$을 $y=ax^2$에 대입하면 $-8=4a$이므로 $a=-2$이다. 점 $Q(-1,b)$도 그래프 위에 있으므로 $b=a(-1)^2=-2$이다. 따라서 $a+b=-4$이고 정답은 ②이다.",
+  "solution": "점 $P(2,-8)$을 $y=ax^2$에 대입하면 $-8=4a$이므로 $a=-2$이다. 점 $Q(-1,b)$도 그래프 위에 있으므로 $b=a(-1)^2=-2$이다. 따라서 $a+b=-4$이고 정답은 ②이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -393,7 +393,7 @@ window.questionBank = [
     "$y=-2(x-1)^2$"
   ],
   "answer": "⑤",
-  "solution": "[풀이] $y=-2x^2+c$ 꼴은 모두 $y$축, 즉 $x=0$을 대칭축으로 한다. ⑤는 $y=-2(x-1)^2$이므로 대칭축은 $x=1$이다. 따라서 나머지 넷과 다른 것은 ⑤이다.",
+  "solution": "$y=-2x^2+c$ 꼴은 모두 $y$축, 즉 $x=0$을 대칭축으로 한다. ⑤는 $y=-2(x-1)^2$이므로 대칭축은 $x=1$이다. 따라서 나머지 넷과 다른 것은 ⑤이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -466,7 +466,7 @@ window.questionBank = [
     "$-4$"
   ],
   "answer": "①",
-  "solution": "[풀이] $y=-2x^2-3$의 그래프를 위로 $k$만큼 옮기면 $y=-2x^2-3+k$이다. 이것이 $y=-2x^2+1$과 같으므로 $-3+k=1$, 따라서 $k=4$이다. 정답은 ①이다.",
+  "solution": "$y=-2x^2-3$의 그래프를 위로 $k$만큼 옮기면 $y=-2x^2-3+k$이다. 이것이 $y=-2x^2+1$과 같으므로 $-3+k=1$, 따라서 $k=4$이다. 정답은 ①이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -538,7 +538,7 @@ window.questionBank = [
     "$y=(x+3)^2+5$"
   ],
   "answer": "①",
-  "solution": "[풀이] $x$축 방향으로 $-3$만큼 옮기면 식의 $x$를 $x+3$으로 바꾼다. 이어 $y$축 방향으로 $5$만큼 옮기면 5를 더하므로 $y=-(x+3)^2+5$이다. 정답은 ①이다.",
+  "solution": "$x$축 방향으로 $-3$만큼 옮기면 식의 $x$를 $x+3$으로 바꾼다. 이어 $y$축 방향으로 $5$만큼 옮기면 5를 더하므로 $y=-(x+3)^2+5$이다. 정답은 ①이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -610,7 +610,7 @@ window.questionBank = [
     "최솟값은 없다."
   ],
   "answer": "②",
-  "solution": "[풀이] $y=-x^2+4x-4=-(x-2)^2$이다. 축은 $x=2$이고, 아래로 열린 포물선이라 $x$축과 $(2,0)$에서 접하며 최댓값 0만 있고 최솟값은 없다. $y=-2x^2$와는 계수의 절댓값이 달라 폭도 같지 않다. 따라서 옳지 않은 것은 ②이다.",
+  "solution": "$y=-x^2+4x-4=-(x-2)^2$이다. 축은 $x=2$이고, 아래로 열린 포물선이라 $x$축과 $(2,0)$에서 접하며 최댓값 0만 있고 최솟값은 없다. $y=-2x^2$와는 계수의 절댓값이 달라 폭도 같지 않다. 따라서 옳지 않은 것은 ②이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -683,7 +683,7 @@ window.questionBank = [
     "$x>5$"
   ],
   "answer": "③",
-  "solution": "[풀이] $y=-3(x+1)^2+5$의 꼭짓점은 $(-1,5)$이고 아래로 열린다. 꼭짓점의 왼쪽에서는 $x$가 증가할수록 $y$도 증가하므로 $x<-1$이다. 정답은 ③이다.",
+  "solution": "$y=-3(x+1)^2+5$의 꼭짓점은 $(-1,5)$이고 아래로 열린다. 꼭짓점의 왼쪽에서는 $x$가 증가할수록 $y$도 증가하므로 $x<-1$이다. 정답은 ③이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -756,7 +756,7 @@ window.questionBank = [
     "$a<0, p>0, q>0$"
   ],
   "answer": "④",
-  "solution": "[풀이] 그래프가 아래로 열리므로 $a<0$이다. 꼭짓점의 $x$좌표는 $-p$이고 그래프에서 꼭짓점은 $y$축 왼쪽이므로 $-p<0$, 즉 $p>0$이다. 꼭짓점의 $y$좌표는 $-q$이고 $x$축 위이므로 $-q>0$, 즉 $q<0$이다. 따라서 ④이다.",
+  "solution": "그래프가 아래로 열리므로 $a<0$이다. 꼭짓점의 $x$좌표는 $-p$이고 그래프에서 꼭짓점은 $y$축 왼쪽이므로 $-p<0$, 즉 $p>0$이다. 꼭짓점의 $y$좌표는 $-q$이고 $x$축 위이므로 $-q>0$, 즉 $q<0$이다. 따라서 ④이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -829,7 +829,7 @@ window.questionBank = [
     "$24$"
   ],
   "answer": "③",
-  "solution": "[풀이] 꼭짓점이 $(-1,4)$이므로 $y=a(x+1)^2+4$이다. $y$절편이 2이므로 $x=0$을 대입해 $a+4=2$, 따라서 $a=-2$이다. 식을 전개하면 $y=-2x^2-4x+2$이므로 $a=-2, b=-4, c=2$이고 $abc=16$이다. 정답은 ③이다.",
+  "solution": "꼭짓점이 $(-1,4)$이므로 $y=a(x+1)^2+4$이다. $y$절편이 2이므로 $x=0$을 대입해 $a+4=2$, 따라서 $a=-2$이다. 식을 전개하면 $y=-2x^2-4x+2$이므로 $a=-2, b=-4, c=2$이고 $abc=16$이다. 정답은 ③이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -902,7 +902,7 @@ window.questionBank = [
     "$5$"
   ],
   "answer": "②",
-  "solution": "[풀이] $y=2x^2+4x+2=2(x+1)^2$이다. 이를 오른쪽으로 3만큼 옮기면 $y=2(x-2)^2$이다. $x=3$을 대입하면 $m=2(3-2)^2=2$이다. 정답은 ②이다.",
+  "solution": "$y=2x^2+4x+2=2(x+1)^2$이다. 이를 오른쪽으로 3만큼 옮기면 $y=2(x-2)^2$이다. $x=3$을 대입하면 $m=2(3-2)^2=2$이다. 정답은 ②이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -974,7 +974,7 @@ window.questionBank = [
     "$4$"
   ],
   "answer": "⑤",
-  "solution": "[풀이] 그래프의 $x$절편이 $-1,3$이므로 $y=a(x+1)(x-3)$이다. $y$절편은 3이므로 $x=0,y=3$을 대입하면 $-3a=3$, 따라서 $a=-1$이다. 두 $x$절편의 중점은 $x=\\frac{-1+3}{2}=1$이므로 대칭축은 $x=1$이다. 이때 $y(1)=a(1+1)(1-3)=(-1)\\cdot2\\cdot(-2)=4$이다. $a=-1<0$이므로 포물선은 아래로 열리고, 꼭짓점의 $y$좌표 4가 최댓값이다. 따라서 정답은 ⑤이다.",
+  "solution": "그래프의 $x$절편이 $-1,3$이므로 $y=a(x+1)(x-3)$이다. $y$절편은 3이므로 $x=0,y=3$을 대입하면 $-3a=3$, 따라서 $a=-1$이다. 두 $x$절편의 중점은 $x=\\frac{-1+3}{2}=1$이므로 대칭축은 $x=1$이다. 이때 $y(1)=a(1+1)(1-3)=(-1)\\cdot2\\cdot(-2)=4$이다. $a=-1<0$이므로 포물선은 아래로 열리고, 꼭짓점의 $y$좌표 4가 최댓값이다. 따라서 정답은 ⑤이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -1047,7 +1047,7 @@ window.questionBank = [
     "$-3$"
   ],
   "answer": "⑤",
-  "solution": "[풀이] $y=-3x^2+4ax+2$의 꼭짓점 $x$좌표는 $-\\frac{4a}{2(-3)}=\\frac{2a}{3}$이다. 최댓값을 $x=-2$에서 가지므로 $\\frac{2a}{3}=-2$, 따라서 $a=-3$이다. 정답은 ⑤이다.",
+  "solution": "$y=-3x^2+4ax+2$의 꼭짓점 $x$좌표는 $-\\frac{4a}{2(-3)}=\\frac{2a}{3}$이다. 최댓값을 $x=-2$에서 가지므로 $\\frac{2a}{3}=-2$, 따라서 $a=-3$이다. 정답은 ⑤이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -1120,7 +1120,7 @@ window.questionBank = [
     "$36$"
   ],
   "answer": "④",
-  "solution": "[풀이] $-x^2-2x+8=0$에서 $x^2+2x-8=(x+4)(x-2)=0$이므로 $A=(-4,0), B=(2,0)$이다. $y$축과의 교점은 $C=(0,8)$이다. 밑변 $AB=6$, 높이는 점 $C$의 $y$좌표 8이므로 삼각형의 넓이는 $\\frac12\\cdot6\\cdot8=24$이다. 정답은 ④이다.",
+  "solution": "$-x^2-2x+8=0$에서 $x^2+2x-8=(x+4)(x-2)=0$이므로 $A=(-4,0), B=(2,0)$이다. $y$축과의 교점은 $C=(0,8)$이다. 밑변 $AB=6$, 높이는 점 $C$의 $y$좌표 8이므로 삼각형의 넓이는 $\\frac12\\cdot6\\cdot8=24$이다. 정답은 ④이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -1193,7 +1193,7 @@ window.questionBank = [
     "$\\cos B = \\frac{1}{2}$"
   ],
   "answer": "④",
-  "solution": "[풀이] 그림에서 $\\angle C=90^\\circ$, $AC=\\sqrt3$, $BC=1$이므로 피타고라스 정리에 따라 $AB=\\sqrt{(\\sqrt3)^2+1^2}=2$이다. 따라서 $\\sin A=\\frac{BC}{AB}=\\frac12$, $\\cos A=\\frac{AC}{AB}=\\frac{\\sqrt3}{2}$, $\\tan A=\\frac{BC}{AC}=\\frac1{\\sqrt3}$이다. 또 $\\sin B=\\frac{AC}{AB}=\\frac{\\sqrt3}{2}$, $\\cos B=\\frac{BC}{AB}=\\frac12$이다. 그러므로 보기 ④의 $\\sin B=\\frac2{\\sqrt3}$는 맞지 않는다. 실제로 $\\frac2{\\sqrt3}>1$인데 사인값은 1보다 클 수 없다.",
+  "solution": "그림에서 $\\angle C=90^\\circ$, $AC=\\sqrt3$, $BC=1$이므로 피타고라스 정리에 따라 $AB=\\sqrt{(\\sqrt3)^2+1^2}=2$이다. 따라서 $\\sin A=\\frac{BC}{AB}=\\frac12$, $\\cos A=\\frac{AC}{AB}=\\frac{\\sqrt3}{2}$, $\\tan A=\\frac{BC}{AC}=\\frac1{\\sqrt3}$이다. 또 $\\sin B=\\frac{AC}{AB}=\\frac{\\sqrt3}{2}$, $\\cos B=\\frac{BC}{AB}=\\frac12$이다. 그러므로 보기 ④의 $\\sin B=\\frac2{\\sqrt3}$는 맞지 않는다. 실제로 $\\frac2{\\sqrt3}>1$인데 사인값은 1보다 클 수 없다.",
   "subUnitKey": "M3-05-TRIG_RATIO",
   "subUnit": "삼각비",
   "subUnitConfidence": "candidate_evidence",
@@ -1263,7 +1263,7 @@ window.questionBank = [
     "$\\frac{1}{\\sqrt{3}}$"
   ],
   "answer": "⑤",
-  "solution": "[풀이] 주어진 직각삼각형에서 $BC^2=AC^2-AB^2=3^2-1^2=8$이므로 $BC=2\\sqrt2$이다. $D$는 $BC$의 중점이므로 $BD=\\sqrt2$이다. 직각삼각형 $ABD$에서 $AD^2=AB^2+BD^2=1^2+(\\sqrt2)^2=3$이므로 $AD=\\sqrt3$이다. 따라서 $\\cos x=\\frac{AB}{AD}=\\frac1{\\sqrt3}$이고 정답은 ⑤이다.",
+  "solution": "주어진 직각삼각형에서 $BC^2=AC^2-AB^2=3^2-1^2=8$이므로 $BC=2\\sqrt2$이다. $D$는 $BC$의 중점이므로 $BD=\\sqrt2$이다. 직각삼각형 $ABD$에서 $AD^2=AB^2+BD^2=1^2+(\\sqrt2)^2=3$이므로 $AD=\\sqrt3$이다. 따라서 $\\cos x=\\frac{AB}{AD}=\\frac1{\\sqrt3}$이고 정답은 ⑤이다.",
   "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
   "subUnit": "삼각비의 활용",
   "subUnitConfidence": "candidate_evidence",
@@ -1333,7 +1333,7 @@ window.questionBank = [
     "$\\frac{7}{8}$"
   ],
   "answer": "①",
-  "solution": "[풀이] $\\tan A=5/12$이므로 직각삼각형에서 맞은편 변과 이웃한 변의 비는 $5:12$이다. 빗변은 $\\sqrt{5^2+12^2}=13$에 해당하므로 $\\sin A=5/13$, $\\cos A=12/13$이다. 따라서 $\\cos A-\\sin A=12/13-5/13=7/13$이고 정답은 ①이다.",
+  "solution": "$\\tan A=5/12$이므로 직각삼각형에서 맞은편 변과 이웃한 변의 비는 $5:12$이다. 빗변은 $\\sqrt{5^2+12^2}=13$에 해당하므로 $\\sin A=5/13$, $\\cos A=12/13$이다. 따라서 $\\cos A-\\sin A=12/13-5/13=7/13$이고 정답은 ①이다.",
   "subUnitKey": "M3-05-TRIG_RATIO",
   "subUnit": "삼각비",
   "subUnitConfidence": "candidate_evidence",
@@ -1403,7 +1403,7 @@ window.questionBank = [
     "$\\tan x = \\overline{\\mathrm{CD}}$"
   ],
   "answer": "④",
-  "solution": "[풀이] 사분원의 중심은 $O$, 반지름은 1이다. $\\triangle OAB$는 $B$에서 직각이고 $\\angle AOB=x$이므로 $\\sin x=\\frac{AB}{OA}=AB$, $\\cos x=\\frac{OB}{OA}=OB$이다. 따라서 ①은 참이다. $O,A,C$가 한 직선 위에 있고 $OD\\perp CD$이므로 $\\angle y=90^\\circ-x$이다. 이에 따라 $\\cos y=\\sin x=AB$, $\\sin y=\\cos x=OB$이므로 ②와 ③도 참이다. 또 $\\triangle ODC$에서 $\\tan x=\\frac{CD}{OD}$이고 $OD=1$이므로 $CD=\\tan x$라서 ⑤도 참이다. 반면 $\\cos x=OB$이므로 그림만으로 $CD=\\cos x$는 성립하지 않는다. 따라서 옳지 않은 것은 ④이다.",
+  "solution": "사분원의 중심은 $O$, 반지름은 1이다. $\\triangle OAB$는 $B$에서 직각이고 $\\angle AOB=x$이므로 $\\sin x=\\frac{AB}{OA}=AB$, $\\cos x=\\frac{OB}{OA}=OB$이다. 따라서 ①은 참이다. $O,A,C$가 한 직선 위에 있고 $OD\\perp CD$이므로 $\\angle y=90^\\circ-x$이다. 이에 따라 $\\cos y=\\sin x=AB$, $\\sin y=\\cos x=OB$이므로 ②와 ③도 참이다. 또 $\\triangle ODC$에서 $\\tan x=\\frac{CD}{OD}$이고 $OD=1$이므로 $CD=\\tan x$라서 ⑤도 참이다. 반면 $\\cos x=OB$이므로 그림만으로 $CD=\\cos x$는 성립하지 않는다. 따라서 옳지 않은 것은 ④이다.",
   "subUnitKey": "M3-05-TRIG_RATIO",
   "subUnit": "삼각비",
   "subUnitConfidence": "candidate_evidence",
@@ -1467,7 +1467,7 @@ window.questionBank = [
   "content": "서답형 1. 다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}=8$이고, $\\sin A = \\frac{3}{4}$일 때, 다음의 값을 구하여라. (5점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/s01.png\" /><br>(1) $\\overline{\\mathrm{BC}}$의 길이를 구하여라. (1점)<br>(2) $\\overline{\\mathrm{AB}}$의 길이를 구하여라. (1점)<br>(3) $\\cos A$의 값을 구하여라. (1점)<br>(4) $\\tan A$의 값을 구하여라. (1점)<br>(5) $\\sin C$의 값을 구하여라. (1점)",
   "choices": [],
   "answer": "(1) 6, (2) $2\\sqrt7$, (3) $\\sqrt7/4$, (4) $3/\\sqrt7$, (5) $\\sqrt7/4$",
-  "solution": "[풀이] 그림에서 $\\angle B=90^\\circ$이고 $AC=8$은 빗변이다. $\\sin A=\\frac{BC}{AC}=\\frac34$이므로 $BC=8\\cdot\\frac34=6$이다. 피타고라스 정리를 쓰면 $AB^2=AC^2-BC^2=8^2-6^2=28$이므로 $AB=\\sqrt{28}=2\\sqrt7$이다. 이제 $\\cos A=\\frac{AB}{AC}=\\frac{2\\sqrt7}{8}=\\frac{\\sqrt7}{4}$이고, $\\tan A=\\frac{BC}{AB}=\\frac{6}{2\\sqrt7}=\\frac3{\\sqrt7}$이다. $\\angle C$의 맞은편 변은 $AB$이므로 $\\sin C=\\frac{AB}{AC}=\\frac{2\\sqrt7}{8}=\\frac{\\sqrt7}{4}$이다. 따라서 답은 (1) 6, (2) $2\\sqrt7$, (3) $\\frac{\\sqrt7}{4}$, (4) $\\frac3{\\sqrt7}$, (5) $\\frac{\\sqrt7}{4}$이다.",
+  "solution": "그림에서 $\\angle B=90^\\circ$이고 $AC=8$은 빗변이다. $\\sin A=\\frac{BC}{AC}=\\frac34$이므로 $BC=8\\cdot\\frac34=6$이다. 피타고라스 정리를 쓰면 $AB^2=AC^2-BC^2=8^2-6^2=28$이므로 $AB=\\sqrt{28}=2\\sqrt7$이다. 이제 $\\cos A=\\frac{AB}{AC}=\\frac{2\\sqrt7}{8}=\\frac{\\sqrt7}{4}$이고, $\\tan A=\\frac{BC}{AB}=\\frac{6}{2\\sqrt7}=\\frac3{\\sqrt7}$이다. $\\angle C$의 맞은편 변은 $AB$이므로 $\\sin C=\\frac{AB}{AC}=\\frac{2\\sqrt7}{8}=\\frac{\\sqrt7}{4}$이다. 따라서 답은 (1) 6, (2) $2\\sqrt7$, (3) $\\frac{\\sqrt7}{4}$, (4) $\\frac3{\\sqrt7}$, (5) $\\frac{\\sqrt7}{4}$이다.",
   "subUnitKey": "M3-05-TRIG_RATIO",
   "subUnit": "삼각비",
   "subUnitConfidence": "candidate_evidence",
@@ -1531,7 +1531,7 @@ window.questionBank = [
   "content": "서답형 2. 이차함수 $y=-3(x+2)^2-1$의 그래프에 대하여 다음 물음에 답하여라. (5점)<br>(1) 꼭짓점의 좌표를 구하여라. (1점)<br>(2) 대칭축(축의 방정식)을 구하여라. (1점)<br>(3) $x$축에 대칭인 식을 구하여라. (1점)<br>(4) 최댓값 또는 최솟값이 존재하는지 말하고, 그 값을 구하여라. (1점)<br>(5) 그래프에서 $x$의 값이 증가할 때, $y$값도 증가하고, $x$의 값이 증가할 때 $y$값은 감소하는 $x$의 구간을 각각 구하여라. (1점)",
   "choices": [],
   "answer": "(1) $(-2,-1)$; (2) $x=-2$; (3) $y=3(x+2)^2+1$; (4) 최댓값 $-1$; (5) 증가 $x<-2$, 감소 $x>-2$",
-  "solution": "[풀이] $y=-3(x+2)^2-1$은 꼭짓점형 $y=a(x-p)^2+q$에서 $a=-3$, $p=-2$, $q=-1$인 식이다. (1) 꼭짓점은 $(-2,-1)$이다. (2) 대칭축은 $x=-2$이다. (3) $x$축에 대칭이동하면 $y$의 부호가 바뀌므로 $y=3(x+2)^2+1$이다. (4) 아래로 열린 포물선이므로 최댓값 $-1$이 존재한다. (5) 꼭짓점 왼쪽 $x<-2$에서는 증가하고, 오른쪽 $x>-2$에서는 감소한다.",
+  "solution": "$y=-3(x+2)^2-1$은 꼭짓점형 $y=a(x-p)^2+q$에서 $a=-3$, $p=-2$, $q=-1$인 식이다. (1) 꼭짓점은 $(-2,-1)$이다. (2) 대칭축은 $x=-2$이다. (3) $x$축에 대칭이동하면 $y$의 부호가 바뀌므로 $y=3(x+2)^2+1$이다. (4) 아래로 열린 포물선이므로 최댓값 $-1$이 존재한다. (5) 꼭짓점 왼쪽 $x<-2$에서는 증가하고, 오른쪽 $x>-2$에서는 감소한다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -1633,7 +1633,7 @@ window.questionBank = [
   "content": "서답형 3. 이차함수 $y=2x^2-4x$의 최솟값이 $\\mathrm{A}$, 이차함수 $y=-2x^2+4x+1$의 최댓값이 $\\mathrm{B}$일 때, $\\mathrm{A}-\\mathrm{B}$의 값을 구하여라. (5점)<br>(1) 풀이 과정을 쓰시오. 풀이 과정이 맞으면 (4점)<br>(2) 정답이 맞으면 (1점)",
   "choices": [],
   "answer": "-5",
-  "solution": "[풀이] $y=2x^2-4x=2(x-1)^2-2$이므로 최솟값 $A=-2$이다. 또 $y=-2x^2+4x+1=-2(x-1)^2+3$이므로 최댓값 $B=3$이다. 따라서 $A-B=-2-3=-5$이다.",
+  "solution": "$y=2x^2-4x=2(x-1)^2-2$이므로 최솟값 $A=-2$이다. 또 $y=-2x^2+4x+1=-2(x-1)^2+3$이므로 최댓값 $B=3$이다. 따라서 $A-B=-2-3=-5$이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
@@ -1700,7 +1700,7 @@ window.questionBank = [
   "content": "서답형 4. 이차함수 $y=-\\frac{1}{2}x^2$의 그래프와 폭이 같고, $x=1$일 때 최댓값이 $2$인 이차함수 $y=ax^2+bx+c$에 대하여 $abc$의 값을 구하여라. (단, $a, b, c$는 상수이다.) (5점)<br>(1) 풀이 과정을 쓰시오. 풀이 과정이 맞으면 (3점)<br>(2) 정답이 맞으면 (2점)",
   "choices": [],
   "answer": "-3/4",
-  "solution": "[풀이] 그래프의 폭이 $y=-\\frac12x^2$와 같으므로 $|a|=1/2$이다. $x=1$에서 최댓값을 가지므로 아래로 열려 $a=-1/2$이다. 꼭짓점이 $(1,2)$이므로 $y=-\\frac12(x-1)^2+2$이다. 전개하면 $y=-\\frac12x^2+x+\\frac32$이므로 $a=-1/2, b=1, c=3/2$이다. 따라서 $abc=-3/4$이다.",
+  "solution": "그래프의 폭이 $y=-\\frac12x^2$와 같으므로 $|a|=1/2$이다. $x=1$에서 최댓값을 가지므로 아래로 열려 $a=-1/2$이다. 꼭짓점이 $(1,2)$이므로 $y=-\\frac12(x-1)^2+2$이다. 전개하면 $y=-\\frac12x^2+x+\\frac32$이므로 $a=-1/2, b=1, c=3/2$이다. 따라서 $abc=-3/4$이다.",
   "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
   "subUnit": "이차함수와 그래프",
   "subUnitConfidence": "candidate_evidence",
