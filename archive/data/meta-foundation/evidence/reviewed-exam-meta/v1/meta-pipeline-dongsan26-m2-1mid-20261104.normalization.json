@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "archive-meta-pipeline-audit-normalization-v1",
+  "requestId": "meta-pipeline-dongsan26-m2-1mid-20261104",
+  "examUid": "26_동산중_1학기_중간_중2_기출",
+  "sourceFileDriveId": "1LH7T0LD2VefXSWCcDLNs0Q-YSUjvHKNz",
+  "rawInputs": {
+    "audit": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-dongsan26-m2-1mid-20261104.raw-audit.json",
+      "sha256": "4c356b79eb0bb3ea306cdab21c12d23b9b23ddd0ff8a1e28fe46dec0912b45b3"
+    },
+    "classification": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-dongsan26-m2-1mid-20261104.raw-classification.json",
+      "sha256": "64bd97455c05fec371ebbb935cf6dfb5b1536923c53ac6bdd7e01ecda72d9112"
+    },
+    "manifest": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-dongsan26-m2-1mid-20261104.raw-manifest.json",
+      "sha256": "064345b070f9bc271edc5931d507c975a4986365777ca4d867f8944100c0b1fc"
+    }
+  },
+  "normalized": {
+    "auditRef": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-dongsan26-m2-1mid-20261104.audit.json",
+      "sha256": "24af12984b8cf7ce256a79a2df4fa971b3d8f8a137bf078b0dce60f1f4f8746f"
+    },
+    "classificationRef": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-dongsan26-m2-1mid-20261104.classification.json",
+      "sha256": "87037775823a4091c35912a4d0e0b5a5dc8309cbc85d330d415a2c31109141f0"
+    },
+    "manifestRef": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-dongsan26-m2-1mid-20261104.manifest.json",
+      "sha256": "840b782152fe9ee218bfd0d756000616bf31830d2e775f68cc903aa1240ecf9c"
+    }
+  },
+  "targetProofSchema": "meta-pipeline-audit-approval-v2",
+  "targetAuditVariant": "key_only_v3",
+  "reason": "The raw audit is ALIVE_META_AUDIT_ATOMIC_v3 with flat per-record readingEvidence and no boundAtomicCrossConcepts/statistics. The registrar's supported key-only v3 adapter requires those derived fields and a paired CANDIDATE_CLASSIFICATION_PACKAGE_v2. Added fields are derived only from the raw audit records, source level, and canonical owner-pack scope; no audited value, excerpt, or student-visible field is changed.",
+  "derivedFields": [
+    "statistics from raw record counts and unique templates/concepts",
+    "boundAtomicCrossConcepts from the union of audited crossConceptKeys",
+    "per-record auditStatus=APPROVED and targetPack from canonical unit ownership",
+    "per-record level from the production source",
+    "per-record auditRemarks from the audit's own difficultyReason (the raw audit has no auditRemarks field)",
+    "classification sourceFileName, contentSnippet from the audit readingEvidence, hasImage from audit visualType, level/targetPack",
+    "manifest recordsToBind standardUnitKey/subUnitKey/targetPack from the audit"
+  ]
+}
