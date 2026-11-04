@@ -148,6 +148,7 @@ window.examData = {
       "hasVisual": false,
       "sourceParity": "EXACT",
       "question": "4. 오른쪽 삼각형 ABC에서 $\\overline{\\text{AD}} \\perp \\overline{\\text{BC}}$이고 $\\overline{\\text{AB}}=13$, $\\overline{\\text{BD}}=5$, $\\overline{\\text{CD}}=16$일 때, $\\overline{\\text{AC}}$의 길이를 구하면? [3점]",
+      "image": "assets/images/21_향림중_2학기_기말_중2_수학/q4.png",
       "choices": [
         "$16$",
         "$17$",

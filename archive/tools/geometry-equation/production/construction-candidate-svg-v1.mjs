@@ -118,6 +118,8 @@ async function call(worker,stage,payload,options){
 export async function composeConstructionCandidate({plan,model,identity,typographyPolicy,repairContext=null,worker=pythonWorker,browser,compositePanel=false}={}){
   const lineage=Object.fromEntries(LINEAGE_KEYS.map(key=>[key,null]));
   const state={svg:null,staticAudit:{status:'NOT_RUN'},renderedLayout:{status:'NOT_RUN'},layoutRepairs:[]};
+  // Opt-in failure evidence only. These bytes never enter an acceptance decision or replace a final asset.
+  const diagnostic=process.env.APMS_LAYOUT_DIAGNOSTICS_DIR?{plan,identity,typographyPolicy}:null;
   let ownBrowser=null;
   const outcome=(status,detail=null)=>({schemaVersion:CANDIDATE_SVG_VERSION,status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:status==='COMPOSED'?state.layoutRepairs:[],typographyPolicyProvenance:'CALLER_SUPPLIED_UNVERIFIED',sizeSelection:'NOT_RUN',actualArchive:'NOT_RUN',independentVisualReview:'NOT_RUN',productionAuthorized:false,qualification:'NOT_RUN'});
   const chrome=async()=>browser??(ownBrowser??=await launchBrowser());
@@ -141,11 +143,18 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
 
     let spec;
     try{spec=specFor(plan,model,identity.assetId);}catch(error){if(!isDomainCode(error))throw error;throw new Stop('SPEC_ERROR',{code:error.message});}
+    if(Object.hasOwn(plan,'accessibilityDescription')){
+      const description=plan.accessibilityDescription;
+      if(typeof description!=='string'||!description.trim()||description.length>500||/[\r\n]/.test(description))throw new Stop('SPEC_ERROR',{code:'INVALID_ACCESSIBILITY_DESCRIPTION'});
+      spec.description=description;
+    }
     lineage.specSha256=digest(spec,'spec','OUTPUT_NOT_CANONICAL');
     const bridged=reserveCurveBranches(spec);
+    if(diagnostic)diagnostic.spec=bridged.spec;
     // runPhase2 633-670 widens the formula panel to the measured formula; here the panel keeps the spec width and the composed layout audit
     // (inventory + rendered layout) rejects a formula that does not fit, so graph families without a HEADER_BAND (cubic/quartic) compose too.
     const prepared=await call(worker,'prepare',{action:'prepare',spec:bridged.spec});
+    if(diagnostic)diagnostic.prepared=prepared;
 
     // Re-enactment of runPhase2 (phase2.mjs, base commit d0bd40de6) 622-628: owner-bound fragments at the policy base font.
     const typeset=typesetter(),fragments={};
@@ -172,8 +181,11 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
       }
     }finally{await page.close();}
     lineage.measurementsSha256=digest(measurements,'measurements','OUTPUT_NOT_CANONICAL');
+    if(diagnostic)Object.assign(diagnostic,{measurements,fragments});
 
     const built=await call(worker,'build',{action:'build',spec:bridged.spec,measurements,fragments});
+    // Freeze the raw worker return before branch restoration/text-free decoration mutates built.svg.
+    if(diagnostic){diagnostic.built=structuredClone(built);diagnostic.builtSvgStage='RAW_WORKER_BUILD';}
     if(typeof built.svg!=='string'||!built.svg.includes('<svg')||!built.witness?.layout)throw new Stop('WORKER_ERROR',{stage:'build',code:'BUILD_RESULT_INVALID'});
     built.svg=restoreCurveBranches(built.svg,bridged.tags);
     // E32: an axis-free plane figure that draws no label at all (a trapezoid of unnamed points with only marks) is not refused for having none when its plan carries a caption (the caption says it):
@@ -236,7 +248,7 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     // runPhase2 715: graphs also need the graph observer on the final SVG at the intrinsic scale.
     const graphAudit=graph?await call(pythonWorker,'graphAudit',{graphPlan:plan.graphPlan,svg,transform:{...observerFrame(witness.coordinateModel),displayScale:1}},{script:GRAPH_OBSERVER_SCRIPT,timeoutMs:120000}):null;
     // The plane-marks observer recomputes every stated angle, length, parallel and arc fact from the Cindy peer's points and the drawn primitives.
-    const planeAudit=!graph&&usesPlaneMarks(plan)?await call(pythonWorker,'planeMarksAudit',{svg,points:peer.points,marks:plan.planeMarks||{},segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:witness.coordinateModel,...(Array.isArray(spec.displayFacts.axisBounds)?{axisBounds:spec.displayFacts.axisBounds}:{})},{script:PLANE_MARKS_OBSERVER_SCRIPT}):null;
+    const planeAudit=!graph&&usesPlaneMarks(plan)?await call(pythonWorker,'planeMarksAudit',{svg,points:peer.points,marks:plan.planeMarks||{},hiddenPointNames:plan.hiddenPointNames||[],unmarkedPoints:unmarkedPointIds(plan),segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:witness.coordinateModel,...(Array.isArray(spec.displayFacts.axisBounds)?{axisBounds:spec.displayFacts.axisBounds}:{})},{script:PLANE_MARKS_OBSERVER_SCRIPT}):null;
     lineage.staticAuditSha256=digest(graph?{primitive:audit,graph:graphAudit}:planeAudit?{primitive:audit,planeMarks:planeAudit}:audit,'staticAudit','OUTPUT_NOT_CANONICAL');
     const auditErrors=Array.isArray(audit.errors)?[...audit.errors]:[];
     // The observer reports the bytes it parsed; they must be the bytes the render below receives.
@@ -266,6 +278,23 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     return outcome('COMPOSED');
   }catch(error){
     if(!(error instanceof Stop))throw error;
+    if(diagnostic){
+      try{
+        const fs=await import('node:fs'),path=await import('node:path'),{randomUUID}=await import('node:crypto');
+        const directory=path.resolve(process.env.APMS_LAYOUT_DIAGNOSTICS_DIR);
+        fs.mkdirSync(directory,{recursive:true});
+        const stem='layout-failure-'+randomUUID(),jsonPath=path.join(directory,stem+'.json');
+        const svgPath=typeof diagnostic.built?.svg==='string'?path.join(directory,stem+'.svg'):null;
+        if(svgPath)fs.writeFileSync(svgPath,diagnostic.built.svg,{encoding:'utf8',flag:'wx'});
+        fs.writeFileSync(jsonPath,JSON.stringify({schemaVersion:'APMATH_LAYOUT_FAILURE_DIAGNOSTIC_v1',
+          classification:'INCOMPLETE_CANDIDATE_DIAGNOSTIC_ONLY',productionAuthorized:false,
+          failure:{status:error.status,detail:error.detail},lineage:{...lineage},...diagnostic},null,2)+'\n',{encoding:'utf8',flag:'wx'});
+        error.detail={...error.detail,diagnostics:{jsonPath,svgPath}};
+      }catch(diagnosticError){
+        // Evidence I/O cannot turn the original domain refusal into a different layout verdict.
+        error.detail={...error.detail,diagnosticsError:errorText(diagnosticError)};
+      }
+    }
     return outcome(error.status,error.detail);
   }finally{if(ownBrowser)await ownBrowser.close();}
 }

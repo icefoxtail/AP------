@@ -35,6 +35,17 @@ class Counts(unittest.TestCase):
         plan = O.Plan({**Q12, 'hideTargetCount': False})
         self.assertEqual(plan.shown(plan.expected_counts())[(6, 3)], 69)
 
+    def test_waypoint_segment_counts_are_independent_prefixes(self):
+        lat = {'grid': {'cols': 4, 'rows': 3}, 'points': {'A': [0, 0], 'P': [2, 2], 'B': [4, 3]}, 'viaPoints': ['P'], 'counts': 'segments', 'hideTargetCount': False}
+        plan = O.Plan(lat)
+        counts = plan.expected_counts()
+        self.assertEqual((plan.total, counts[(2, 2)], counts[(4, 3)]), (18, 6, 3))
+        self.assertNotIn((0, 3), counts)
+        cumulative = O.Plan({**lat, 'counts': True})
+        self.assertEqual(cumulative.expected_counts()[(4, 3)], 18)
+        for refs in ([], ['Z'], ['A'], ['P', 'P'], ['B']):
+            with self.assertRaises(ValueError): O.Plan({**lat, 'viaPoints': refs})
+
     def test_plans_that_cannot_be_read_are_errors(self):
         for bad in ({}, {'grid': {'cols': 0, 'rows': 2}}, {'grid': {'cols': 3, 'rows': 3}, 'points': {'a': [0, 0]}},
                     {'grid': {'cols': 3, 'rows': 3}, 'points': {'A': [9, 0]}},

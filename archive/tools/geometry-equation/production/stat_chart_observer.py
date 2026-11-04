@@ -1392,6 +1392,11 @@ def audit_tree(chart, doc):
     for n in nodes: n['path'] = Fraction(1) if n['parent'] is None else (by_id[n['parent']]['path'] * n['p'] if has_p else None)
     leaves = [n for n in nodes if not n['children']]
     if has_p and sum(n['path'] for n in leaves) != 1: fail('STAT_TREE_BRANCH_PROBABILITY_SUM')
+    compact = chart.get('leafLayout') == 'COMPACT'
+    if 'leafLayout' in chart and not compact: fail('STAT_TREE_COMPACT_INVALID')
+    if compact and (any(n['depth'] > 2 or n['p'] is not None or (n['label'] is not None and len(n['label']) > 3) for n in nodes) or chart.get('showPathProbability') or chart.get('pathColumn') or 'highlightPaths' in chart): fail('STAT_TREE_COMPACT_INVALID')
+    if len(leaves) > (16 if compact else 12): fail('STAT_TREE_TOO_LARGE')
+
     # highlightPaths: each path names the labels from the root's child down to a leaf; those branches are heavy and those leaves ringed (resolved here from the plan alone)
     lit, lit_color = [], {}
     raw_paths = chart.get('highlightPaths')
@@ -1443,6 +1448,12 @@ def audit_tree(chart, doc):
         if n['children'] and all(c in centres for c in n['children']):
             ys = [centres[c][1] for c in n['children']]
             if not min(ys) <= centres[n['id']][1] <= max(ys): doc.err('SC_PARENT_NOT_BETWEEN_CHILDREN:' + n['id'])
+    if compact:
+        for a, b in zip(leaves, leaves[1:]):
+            if a['id'] not in centres or b['id'] not in centres: continue
+            la, lb = doc.by_id.get('node-'+a['id']), doc.by_id.get('node-'+b['id'])
+            fa, fb = float(la.get('data-font-px') or 0), float(lb.get('data-font-px') or 0)
+            if centres[b['id']][1]-centres[a['id']][1] < max(48, 2.4*max(fa, fb))-0.1: doc.err('SC_COMPACT_LEAF_SPACING')
     branches = {l.get('data-child'): l for l in doc.role('line', 'branch')}
     if set(branches) != {n['id'] for n in nodes if n['parent'] is not None}: doc.err('SC_BRANCH_SET')
     for n in nodes:

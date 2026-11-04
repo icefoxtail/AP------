@@ -180,7 +180,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: y=4x+1과 평행한 y=4x 및 점 (1,5).",
+    "solutionImageCaption": "기울기가 양수이므로 x가 증가하면 y도 증가한다. 옳지 않은 것은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -207,7 +211,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 직선은 주어진 식의 그래프, 주황 직선은 문제에 제시된 그래프이다.",
+    "solutionImageCaption": "파란 직선의 y절편은 -1/2이지만 제시된 주황 직선의 y절편은 -1이다. 정답 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -239,7 +247,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: A, B, C와 수직선 x=2 및 그 바깥의 점 (3,2).",
+    "solutionImageCaption": "점 (3,2)는 x좌표가 3이므로 x=2 위에 없다. 정답 ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -269,7 +281,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 같고 y절편이 다른 두 평행선.",
+    "solutionImageCaption": "두 식의 x, y 계수를 같게 하면 상수항이 달라 서로 평행하므로 a=6이다. 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -421,7 +437,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 연못으로 막힌 도로를 표시하고 P를 거치는 최단 경로를 두 구간으로 세는 격자.",
+    "solutionImageCaption": "점선은 연못에 막혀 지날 수 없는 길이다. A에서 P까지 3가지이며 P에서 새로 세면 연못 때문에 오른쪽으로 먼저 가는 1가지이다. 정답 ① 3가지.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -675,7 +695,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 직선과 네 연립방정식에 대응하는 교점들.",
+    "solutionImageCaption": "각 교점의 순서쌍은 (1) (2,0), (2) (0,-1), (3) (2,2), (4) (4,-1)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -701,6 +725,10 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 풍덕중에서 순천역, 아랫장으로 이어지는 두 구간의 거리 x와 y.",
+    "solutionImageCaption": "전체 거리 x+y=2.2, 전체 시간 x/3+y/2=5/6이므로 x=1.6 km, y=0.6 km이다.",
+    "solutionImageSize": "full"
   }
 ];

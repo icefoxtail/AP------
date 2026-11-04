@@ -25,7 +25,7 @@ const r6=value=>{const v=Math.round(value*1e6)/1e6;return v===0?0:v;};
 const MAX_COLS=10,MAX_ROWS=8,MAX_POINTS=12,MAX_VIA=3,MAX_SEGMENTS=12,MAX_PATH=40;
 const POINT_ID=/^[A-Z][0-9']?$/;
 const TOP_KEYS=['capability','lattice','caption','sourceConditions','newVisualInformation','sourceQuote'];
-const LATTICE_KEYS=['grid','points','from','to','forbidden','via','counts','hideTargetCount','highlightPath'];
+const LATTICE_KEYS=['grid','points','from','to','forbidden','via','viaPoints','counts','hideTargetCount','highlightPath'];
 const isInt=v=>Number.isSafeInteger(v);
 const key=(x,y)=>`${x},${y}`;
 
@@ -78,6 +78,43 @@ export function solveLattice(lat){
   if(via.length>MAX_VIA)bad('LATTICE_VIA_TOO_MANY');
   const forbiddenSet=new Set(forbidden.map(e=>e.join(',')));
   if(via.some(e=>forbiddenSet.has(e.join(','))))bad('LATTICE_VIA_FORBIDDEN_CONFLICT');
+  // Opt-in named waypoint decomposition. Legacy plans never enter this branch.
+  if(lat.viaPoints!==undefined){
+    if(!Array.isArray(lat.viaPoints)||lat.viaPoints.length<1||lat.viaPoints.length>3||lat.viaPoints.some(p=>typeof p!=='string'||!Object.hasOwn(pointsByName,p)))bad('LATTICE_VIA_POINTS_INVALID');
+    if(via.length)bad('LATTICE_VIA_POINTS_ROAD_MIX_UNSUPPORTED');
+    const start=resolve(lat.from??'A','LATTICE_ENDPOINT_INVALID'),target=resolve(lat.to??'B','LATTICE_ENDPOINT_INVALID');
+    const stops=[start,...lat.viaPoints.map(p=>pointsByName[p]),target];
+    const sx=Math.sign(target[0]-start[0]),sy=Math.sign(target[1]-start[1]);
+    for(let i=1;i<stops.length;i++){
+      const a=stops[i-1],b=stops[i];
+      if(key(...a)===key(...b)||(b[0]-a[0])*sx<0||(b[1]-a[1])*sy<0||(sx===0&&a[0]!==b[0])||(sy===0&&a[1]!==b[1]))bad('LATTICE_VIA_POINTS_ORDER_INVALID');
+    }
+    const {viaPoints,...base}=lat,raw=lat.counts??false,segmentMode=raw==='segments';
+    if(!(segmentMode||raw===true||raw===false||Array.isArray(raw)))bad('LATTICE_COUNTS_INVALID');
+    const parts=stops.slice(1).map((to,i)=>solveLattice({...base,from:stops[i],to,counts:true,hideTargetCount:false,highlightPath:undefined}));
+    const counts=[];let multiplier=1;
+    for(let i=0;i<parts.length;i++){
+      for(const [x,y,c] of parts[i].counts){
+        if(i>0&&x===stops[i][0]&&y===stops[i][1])continue; // shared waypoint keeps the preceding segment's count
+        counts.push([x,y,segmentMode?c:c*multiplier]);
+      }
+      multiplier*=parts[i].total;
+    }
+    counts.sort((a,b)=>a[0]-b[0]||a[1]-b[1]);
+    let want=null;
+    if(Array.isArray(raw)){
+      if(raw.length<1||raw.length>40)bad('LATTICE_COUNTS_INVALID');
+      want=new Set(raw.map(ref=>key(...resolve(ref,'LATTICE_COUNTS_INVALID'))));
+      if(want.size!==raw.length)bad('LATTICE_COUNTS_INVALID');
+    }
+    // Reuse legacy validation for optional path and hideTargetCount, but never display its unconstrained totals.
+    const shell=solveLattice({...base,counts:false});
+    if(shell.path){
+      if(key(...shell.path[0])!==key(...start)||key(...shell.path.at(-1))!==key(...target)||shell.path.length!==Math.abs(target[0]-start[0])+Math.abs(target[1]-start[1])+1||stops.some(p=>!shell.path.some(q=>key(...p)===key(...q))))bad('LATTICE_WAYPOINT_HIGHLIGHT_INVALID');
+    }
+    const shown=raw===false?[]:counts.filter(([x,y])=>(!want||want.has(key(x,y)))&&!(shell.hideTargetCount&&x===target[0]&&y===target[1]));
+    return {...shell,start,target,counts,shown,total:multiplier,viaPoints:lat.viaPoints.map(name=>({name,point:pointsByName[name]})),countMode:segmentMode?'segments':'prefix'};
+  }
   const countsRaw=lat.counts??false;
   if(!(countsRaw===true||countsRaw===false||(Array.isArray(countsRaw)&&countsRaw.length>=1&&countsRaw.length<=40)))bad('LATTICE_COUNTS_INVALID');
   if(lat.hideTargetCount!==undefined&&typeof lat.hideTargetCount!=='boolean')bad('LATTICE_COUNTS_INVALID');

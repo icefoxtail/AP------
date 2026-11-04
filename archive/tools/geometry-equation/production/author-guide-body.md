@@ -5,6 +5,8 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 
 정확한 plan 형식은 이 문서 아래쪽 「plan 계약 전문」이 정본이다. 이 지침과 계약 전문이 충돌하면 계약 전문을 따른다.
 
+construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDescription`은 그림의 점·도형 관계를 설명하는 짧은 한국어 평문 한 줄(공백만은 불가, 500자 이하)이다. 지정하면 SVG의 접근성 `<desc>`에 XML 이스케이프하여 전달한다. 정답은 넣지 않는다. 생략하면 기존 기본 설명과 SVG 출력은 그대로 유지된다.
+
 ## 1. 순서
 
 1. 문항(발문, 보기, 정답)과 풀이를 먼저 완성한다. 모든 값을 직접 풀어 확인한다.
@@ -816,6 +818,8 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - **독립 검수.** `lattice_path_observer.py`는 plan만 보고 시작점에서 도착점까지의 모든 최단 경로를 **하나씩 걸어서** 금지·경유 조건을 거른 뒤 교차점마다 서로 다른 앞부분 경로를 세어, **최종 SVG**에 적힌 숫자와 대조한다. 그려진 도로의 간격으로 격자 배율을 되찾아 모든 도로가 정확한 위치에 하나씩 있는지, 끊긴 길이 점선인지, 꼭 지나는 길이 더 굵은지, 이름 점과 `highlightPath`가 제 교차점에 있는지, 숨긴 최종 수가 적히지 않았는지 확인한다.
 - 오류 코드: `LATTICE_PLAN_INVALID`(허용하지 않는 키), `LATTICE_GRID_INVALID`(범위 밖), `LATTICE_POINT_INVALID`/`LATTICE_POINT_ID_INVALID`/`LATTICE_POINT_OUT_OF_GRID`/`LATTICE_POINT_POSITION_DUPLICATE`, `LATTICE_SEGMENT_INVALID`/`LATTICE_SEGMENT_NOT_ADJACENT`/`LATTICE_SEGMENT_DUPLICATE`, `LATTICE_VIA_TOO_MANY`/`LATTICE_VIA_FORBIDDEN_CONFLICT`/`LATTICE_VIA_UNREACHABLE`, `LATTICE_ENDPOINT_INVALID`(시작점·도착점 없음·같음), `LATTICE_NO_PATH`(조건을 만족하는 경로 없음), `LATTICE_COUNTS_INVALID`, `LATTICE_HIGHLIGHT_PATH_INVALID`, `LATTICE_LABEL_NO_ROOM`(숫자·이름이 들어갈 자리 없음: 칸을 줄이거나 `counts` 목록으로 일부만 쓴다).
 
+**경유점(옵트인).** `lattice.viaPoints:["P"]`는 이름 있는 점 1~3개를 순서대로 반드시 거친다. 기존 `via`는 도로 선분이며 이 필드와 혼용하지 않는다. 시작·경유·도착점은 서로 달라야 하며 전체 최단 이동 방향에서 되돌아가면 거절한다. `counts:true`/목록은 전체 시작점 기준 누적 경로 수를 유지한다. `counts:"segments"`는 각 경유점에서 다시 세는 **구간별** 누적수다. 공통 경유점에는 이전 구간의 도착 수를 한 번만 쓴다. `hideTargetCount:false`일 때 마지막 점에는 마지막 구간 수(전체 곱 아님)가 나온다. caption에 "P에서 새로 세기"처럼 수의 의미를 반드시 설명한다. 예: 4×3 도로망 A(0,0), P(2,2), B(4,3)은 P에6, B에3이며 전체18은 그림 밖 caption에만 둔다. 기본 `hideTargetCount:true`는 이 모드에서도 마지막 점의 수를 숨긴다. 관측기는 전체 경로를 독립 열거하고 경유점을 지난 경로만 남겨 구간별 prefix를 중복 제거해 다시 센다. 거절: `LATTICE_VIA_POINTS_INVALID`, `LATTICE_VIA_POINTS_ORDER_INVALID`, `LATTICE_VIA_POINTS_ROAD_MIX_UNSUPPORTED`, `LATTICE_WAYPOINT_HIGHLIGHT_INVALID`. 골든: `item117codexwaypoint`.
+
 ### 3-40. 서로 다른 곡선 2~6개를 한 그림에: `multi-curve-figure-v1`
 
 한 문항의 그림이 **서로 다른 곡선 2~6개**(이차곡선, 직선, 유리함수, 무리함수, 역함수 쌍)로 이루어지거나 둘러싸일 때 쓴다. 한 곡선의 조각(가지)만 있는 그림은 이 기능의 대상이 아니며 기존 family(`piecewise-*`)를 쓴다. 곡선이 둘일 때는 아래 "유리·무리·직선 섞기" 종류(`LINE`·`RATIONAL`·`SQRT`·`inverseOf`)를 쓴다. 실제 예: 22 효천고 2학기 기말 고2 수학II q10의 `y=2-x^2`, `x=2-y^2`, `y=x^2-2`, `x=y^2-2` 네 포물선.
@@ -1144,3 +1148,17 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 저장소 루트에서 `node archive/tools/geometry-equation/production/render-plan.mjs --item item.json --plan plan.json --out out/` 한 번으로 그린다. `item.json`은 `{"sourcePath":"archive/exams/....js","ordinal":3}`.
 - 결과는 `out/figure-result.json`의 `status`: `ARCHIVE_BOUND`(그림 `figure-solution.svg` 완성), `EXEMPT`/`UNSUPPORTED`(작성자 판단 그대로), `FAILED`(`stage`와 엔진 오류 `detail`을 보고 6에 따라 고친다).
 - 독립 관측기 검사는 이 안에서 함께 돈다. 시험지 해설 페이지 열림 검증은 하지 않는다.
+
+### Codex: 일차 그래프 세 경우 / 큰 계수 나무
+- `composite-panels-v1`의 `linearStack:true`: 정확히 세 개의 `piecewise-polynomial-spike-v1` 패널을 별도 세로축으로 쌓는다. 각 패널은 단일 일차 piece(계수 두 개, 비영 기울기), breakpoint 없음이다. 각 plot 높이220 제한을 지키고 식은 각 패널에 남긴다. 기존 이차 compositeHeader를 사용하지 않으며 혼합/개수 오류는 `LINEAR_STACK_INVALID`. 패널별 그래프 관측 및 최종 stack의640 CSS px 높이·폰트·충돌 검사는 그대로다. 예: `item118codexlinear3`.
+- TREE `leafLayout:"COMPACT"`: 최대16개 leaf, 깊이2 이하, 각 label3자 이하인 확률 없는 경우의 수 나무다. 기존 입력은12leaf 상한과 bytes를 유지한다. 확률·pathColumn·highlightPaths와 혼용하면 `STAT_TREE_COMPACT_INVALID`,16초과는 `STAT_TREE_TOO_LARGE`. leaf 간격은48 SVG px 이상이며 font20 초과 시 같은 비율로 증가한다. 글자를 줄이지 않는다. 관측기는 모든 node/branch/label 및 간격을 독립 확인하며 기존 충돌/클리핑 검사도 유지한다. 실제13leaf 예: `item119codextree13`. 캡션에 첫 단계 일의 자리, 다음 단계 십의 자리임을 설명하고 전체 정답13은 그림 밖에만 쓴다.
+
+### 정사면체의 여러 평행 단면: 기존 space 계약
+전체 입체를 보존할 때 `cuts`를 쓰지 않는다. `REGULAR_POLYHEDRON faces:4`의 `#v3`가 꼭짓점, `#v0..2`가 밑면이다. `space.points`의 `at:{divide:["#v3","#v0"],ratio:"1:2"}`와 `"2:1"`을 세 모서리에 적용하면 높이 삼등분점이 정확히 만들어진다. `hideName:true,hideDot:true`로 보조점 표기를 숨기고 세 점씩 `space.segments style:"AUTO"`로 연결한다. 원래 전체 모서리는 남으며 기존 깊이 관측기가 단면의 앞선/은선을 검사한다. 보이는 측면의 층별 polygon은 highlights, 내부 centroid 보조점은 labels의 owner로 사용할 수 있다. 누적 높이와 누적 부피 관계는 solidCaption에 표시한다. 실제 예 `item120codextetra`(25 연향중 중2 기말 q6), 신규 엔진 기능 아님.
+
+### 이름 없는 선분의 끌어내기
+이름 있는 끝점과 무명 수선발을 함께 끌어낼 때는 SEGMENT에 `nameMode:"SOURCE",link:"ENDS"`를 쓴다. `hiddenPointNames`에 있는 점만 복사본에서도 무명으로 남고, G·G′ 같은 이름은 원본과 똑같이 남는다. 무명 owner 마커와 ENDS 지시선은 필수이며, `hiddenPointStyle:"NONE"`는 사용하지 않는다. 예: `path:["G","T"]`에서 T만 숨겨 높이 치수를 붙인다. 기존 HIDDEN의 전원 무명 조건과 기본 모드는 바뀌지 않는다.
+
+입체의 좁은 각 라벨은 해당 `marks.angles[]`에 `labelPlacement:"WEDGE"`를 명시하면 기존 공간도형의 이등분선 우선 배치와 호 끝에 붙는 지시선을 사용한다. label이 필수다. 각의 실제 3D 값·호·방향·지시선 owner 및 충돌 관측은 그대로이며, 옵션이 없는 기존 출력은 바꾸지 않는다.
+
+원문에 점 이름이 없는 경우 `planeMarks.callouts`의 SEGMENT에 `nameMode:"HIDDEN",link:"ENDS"`를 함께 쓴다. path의 모든 owner는 `hiddenPointNames`에 있고 **실제 점 마커는 표시되어야** 한다. 복사본도 점과 선분·치수는 남고 이름만 표시하지 않는다. `hiddenPointStyle:"NONE"` 또는 `unmarkedPointNames`로 owner 점 자체를 지우면 `CALLOUT_SOURCE_POINT_UNDRAWN`; 이름이 있는 owner를 숨기려 하면 `CALLOUT_UNNAMED_POINT_HAS_NAME`; ENDS가 없으면 `CALLOUT_UNNAMED_NEEDS_LINK`이다. 이름 있는 도형의 필수 이름을 삭제하는 기능이 아니다. 다른 helper의 점도 숨길 필요가 있으면 NONE 대신 unmarkedPointNames에 **callout owner를 제외한 helper만** 넣는다. 독립 관측은 원본/복사 마커·원본좌표·조각길이·방향·배율·ENDS 지시선·치수 값을 계속 검사하고 이름의 부재도 검사한다(`CALLOUT_UNNAMED_NAME_SHOWN`). 새 필드 없는 입력은 기존 거절과 렌더를 유지한다. 예: `item121codexunnamedcallout`.

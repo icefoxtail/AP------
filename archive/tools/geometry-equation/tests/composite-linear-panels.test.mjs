@@ -27,3 +27,13 @@ test('another capability is still not a graph panel',()=>{
   const other=linePanel(['1'],'가');other.plan.capability='sqrt-affine-spike-v1';
   assert.equal(refusal({capability:'composite-panels-v1',panels:[other,linePanel(['2'],'나')]}),'PANEL_PLAN_0');
 });
+
+test('opt-in three linear panels preserve separate plots and reject nonlinear or mixed cases',()=>{
+  const p={capability:'composite-panels-v1',linearStack:true,panels:[linePanel(['3/2','-1/4'],'가'),linePanel(['3/2','-1/4'],'나'),linePanel(['3/2','-1/4'],'다')]};
+  const checked=compositePanels(p);
+  assert.equal(checked.length,3);assert.ok(checked.every(x=>x.plan.graphPlan.plotHeightLimit===220&&x.plan.graphPlan.compositeHeader===undefined));
+  assert.equal(refusal({...p,panels:p.panels.slice(0,2)}),'LINEAR_STACK_INVALID');
+  assert.equal(refusal({...p,panels:[...p.panels.slice(0,2),quadraticPanel('다')]}),'LINEAR_STACK_INVALID');
+  assert.equal(refusal({...p,panels:[...p.panels.slice(0,2),linePanel(['1','0'],'다')]}),'LINEAR_STACK_INVALID');
+  assert.equal(refusal({...p,linearStack:false}),'LINEAR_STACK_INVALID');
+});
