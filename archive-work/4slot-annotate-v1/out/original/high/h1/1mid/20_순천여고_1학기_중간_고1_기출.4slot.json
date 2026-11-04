@@ -1,0 +1,1168 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/high/h1/1mid/20_순천여고_1학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "5f83e2fc8f0a94ff9b25a77dbeb71be0cfc90b1f",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Codex-gpt-6.1-terra",
+    "run": "original-331-340",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$A=x^2-2x+3$, $B=x^2-x+1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$3A-(A-B)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "$3A-(A-B)=3A-A+B=2A+B$",
+            "evidenceType": "IMPLIED",
+            "justification": "괄호를 풀고 다항식을 대입해 동류항을 정리한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$2A+B=2(x^2-2x+3)",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "식의 괄호를 풀고 두 다항식을 대입하여 동류항을 정리한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "$a(1+i)-2b=2+6i$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "복소수의상등",
+            "src": "solution",
+            "quote": "실수부분과 허수부분이 각각 같다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "실수부분과 허수부분이 각각 같다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "$a-2b=2,\\quad a=6$",
+            "evidenceType": "IMPLIED",
+            "justification": "실수부와 허수부를 비교한 두 식을 푼다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a$, $b$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "복소수의 실수부와 허수부를 비교해 두 상수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "stem",
+            "quote": "몫과 나머지를 각각 $Q(x)$, $R$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "몫",
+            "src": "stem",
+            "quote": "몫과 나머지를 바르게 나타낸 것은?"
+          },
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "몫과 나머지를 바르게 나타낸 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "나눗셈 관계식에서 출발한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$2x-1=2(x-\\frac12)$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 제수의 상수배 관계를 나눗셈 항등식에 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "나눗셈 관계식에서 제수의 두 배 관계를 이용해 몫과 나머지를 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$x^2-5x+2=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$(\\alpha-1)(\\beta-1)$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "두 근의 합과 곱은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭식",
+            "src": "solution",
+            "quote": "\\alpha\\beta-(\\alpha+\\beta)+1",
+            "evidenceType": "IMPLIED",
+            "justification": "근의 합과 곱으로 구하는 곱을 표현한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근의 합과 곱으로 주어진 곱을 전개해 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$(x-3y)(x-3y-2)-3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "인수분해한 것으로 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=x-3y$로 놓는다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$=t^2-2t-3=(t-3)(t+1)$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "반복된 식을 치환해 이차식을 인수분해한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$f(x)=-x^2+4x+4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$f(x)=-x^2+4x+4=-(x-2)^2+8$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "양 끝점의 값 중 작다",
+            "evidenceType": "IMPLIED",
+            "justification": "아래로 열린 이차함수의 닫힌 구간 최솟값은 끝점에서 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정의역제한",
+            "src": "stem",
+            "quote": "$1\\le x\\le4$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "완전제곱식의 아래로 열린 그래프에서 구간 양끝을 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "$(1+i)^{48}+(1-i)^{48}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "을 간단히 하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$(1+i)^4=(2i)^2=-4$",
+            "evidenceType": "IMPLIED",
+            "justification": "허수단위의 거듭제곱을 반복해 지수를 줄인다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "허수단위",
+            "src": "stem",
+            "quote": "$i=\\sqrt{-1}$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 켤레복소수의 거듭제곱을 8제곱 단위로 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=x^2+x-3$"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=3x-k$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "상수 $k$의 값은?"
+          },
+          {
+            "term": "결정",
+            "src": "stem",
+            "quote": "상수 $k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식이 $0$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "두 그래프의 교점은 연립해서 찾는다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 식을 같게 두어 접점의 중근 조건을 세운다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "접하도록 하는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직선과 포물선의 교점 방정식이 중근을 가지도록 판별식을 0으로 둔다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "stem",
+            "quote": "$x+2$로 나누어 떨어지고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "$R(-1)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$x^2+x-2=(x+2)(x-1)$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "나머지정리",
+            "src": "solution",
+            "quote": "$R(x)=ux+v$라 놓는다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 제수의 근에서 나머지의 값을 정해 일차식을 결정한다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "두 식을 빼면",
+            "evidenceType": "IMPLIED",
+            "justification": "두 나머지 조건으로 계수를 푼다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제수를 인수분해하고 각 근에서 일차 나머지의 값을 정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱근",
+            "src": "stem",
+            "quote": "\\frac{\\sqrt b}{\\sqrt a}=\\sqrt{\\frac ba}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "를 간단히 하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의역",
+            "src": "solution",
+            "quote": "$a,b$가 양수여야 한다",
+            "evidenceType": "IMPLIED",
+            "justification": "실수 제곱근과 분모 조건으로 부호를 정한다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$\\sqrt{9a^2}=3|a|=3a$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "0이 아닌 두 실수 $a$, $b$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "근호가 실수로 정의되는 조건에서 양수를 확인하고 절댓값을 정리한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=x^2+2ax+b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식으로 변형해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "$-a=3$",
+            "evidenceType": "IMPLIED",
+            "justification": "최솟값의 위치와 값으로 두 상수를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$x=3$일 때 최솟값 $-5$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "완전제곱식의 꼭짓점 위치와 값으로 상수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=x^2-ax+b$"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=3x+2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "켤레근",
+            "src": "solution",
+            "quote": "다른 근은 $2+\\sqrt3$",
+            "evidenceType": "IMPLIED",
+            "justification": "유리수 계수 이차방정식의 무리근이 켤레로 나타남을 이용한다."
+          },
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "두 근의 합은",
+            "evidenceType": "IMPLIED",
+            "justification": "두 교점의 근의 합과 곱으로 a,b를 결정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "유리수 $a$, $b$"
+          },
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 두 점에서 만난다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "교점의 유리수 계수 방정식에서 켤레근을 구하고 근과 계수를 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "$x^3-2x^2+4x-3=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$\\alpha^3+\\beta^3$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(x-1)(x^2-x+3)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "$\\alpha+\\beta=1$, $\\alpha\\beta=3$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭식",
+            "src": "solution",
+            "quote": "(\\alpha+\\beta)^3-3\\alpha\\beta",
+            "evidenceType": "IMPLIED",
+            "justification": "세제곱 합을 근의 합과 곱으로 나타낸다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "두 허근을 $\\alpha$, $\\beta$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "삼차식을 인수분해해 허근의 합과 곱을 구하고 세제곱 합을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=x^2+2(a-k)x+k^2+4k+b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식이 항상 $0$이어야 한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "항등식",
+            "src": "solution",
+            "quote": "모든 실수 $k$에서 $0$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "k에 관한 일차식의 계수와 상수항을 각각 0으로 둔다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "항상 $x$축에 접할 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접선 조건의 판별식이 k에 대한 항등식이 되도록 계수를 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "x+y=3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "자연수 $k$의 최솟값"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$(x-y)^2\\ge0$",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱의 음이 아닌 성질로 x²+y²의 하한을 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$k=6$일 때 $x=1$, $y=2$",
+            "evidenceType": "IMPLIED",
+            "justification": "최소 자연수에서 실제 해의 존재를 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $k$의 최솟값"
+          },
+          {
+            "term": "존재",
+            "src": "stem",
+            "quote": "실수 $x$, $y$가 존재"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "제곱의 음이 아닌 성질로 k의 하한을 구하고 최소 정수에서 해를 확인한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립부등식",
+            "src": "stem",
+            "quote": "$2x-a<x+1\\le3x-5$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "정수 $a$의 최댓값"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "각 부등식을 따로 푼다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교집합",
+            "src": "solution",
+            "quote": "$3\\le x<a+1$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 해구간의 교집합이 비는 조건을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $a$의 최댓값"
+          },
+          {
+            "term": "존재",
+            "src": "stem",
+            "quote": "해가 없을 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 부등식을 풀어 공통 구간이 비는 a의 조건을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "절댓값부등식",
+            "src": "stem",
+            "quote": "$|ax-1|<3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "곱 $ab$를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값부등식",
+            "src": "solution",
+            "quote": "$|ax-1|<3\\iff-3<ax-1<3$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "\\frac4a=-2",
+            "evidenceType": "IMPLIED",
+            "justification": "a의 음수 부호에 유의해 해구간의 끝점을 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "$a<0$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "절댓값 부등식을 풀고 음수로 나눌 때 방향을 바꾸어 끝점을 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "$\\triangle APS\\sim\\triangle ABC$"
+          },
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 $PQRS$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$abf(3)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "닮음비를 사용하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$=-\\frac23(x-3)^2+6$",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이의 이차식을 완전제곱식으로 바꾸어 꼭짓점과 최대를 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$f(3)=4-\\frac23\\cdot3=2$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "닮음으로 폭과 높이 관계를 구하고 넓이의 이차식 꼭짓점을 이용한다."
+      },
+      "steps": [],
+      "scenarioNote": "삼각형 내접 직사각형"
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$x+y^2=2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=2-y^2$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "$y^4\\ge0$, $2y^2\\ge0$",
+            "evidenceType": "IMPLIED",
+            "justification": "대입한 식의 음이 아닌 두 항으로 하한과 등호를 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $(x,y)$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "조건에서 x를 제거하고 남은 제곱항의 비음수성으로 최솟값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "stem",
+            "quote": "$(x-3)^2$으로 나누었을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$a-b$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$x=3+t$로 놓으면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "상수항이 $0$이어야 하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "t² 이상을 제외한 상수항과 일차항을 주어진 나머지와 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$n$은 자연수이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "x−3을 치환해 나머지의 상수·일차 계수를 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$x^2-4x+a=0$"
+          },
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "$\\sqrt{(a-5)^2+|a|}=15$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "의 해를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식이 음수여야 한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$|a|=a$로 놓고",
+            "evidenceType": "IMPLIED",
+            "justification": "허근 조건 a>4로 절댓값을 푼다."
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "a^2-9a-200=0",
+            "evidenceType": "IMPLIED",
+            "justification": "양변을 제곱하여 얻은 이차방정식을 풀고 범위에 맞는 근을 고른다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "허근을 가질 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "허근의 판별식 조건으로 a의 범위를 정하고 절댓값을 제거해 근호 방정식을 푼다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=f(x)$의 그래프"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $ACB$의 넓이가 $12$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "점 $A$, 점 $B$를 구하시오"
+          },
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=f(x)$를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "높이는 $|{-4}|=4$",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형의 높이와 넓이로 두 근 사이 길이를 정한다."
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "두 근은 대칭축 $x=1$을 중심",
+            "evidenceType": "IMPLIED",
+            "justification": "두 근의 중점과 거리로 좌표를 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$C(0,-4)$를 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "대칭축",
+            "src": "stem",
+            "quote": "축의 방정식이 $x=1$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "넓이와 대칭축으로 두 근을 정하고 y절편을 대입해 이차함수를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "포물선과 삼각형"
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $f(x)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "함수 $f(x)$를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$f(x)=a(x+1)^2+c$",
+            "evidenceType": "IMPLIED",
+            "justification": "전역 최솟값의 위치로 꼭짓점형을 놓는다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "같은 거리에 있을 때 최댓값이 가장 작다",
+            "evidenceType": "IMPLIED",
+            "justification": "길이 2 구간의 두 끝을 꼭짓점에서 등거리로 놓아 최대의 최소를 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$-3a=-6$",
+            "evidenceType": "IMPLIED",
+            "justification": "최소화한 구간 최댓값 조건으로 계수를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "항상성립",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$f(-3)=0$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "꼭짓점형과 근 조건으로 표현하고 구간의 최대가 최소인 등거리 배치를 적용한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [{"term":"복소수의상등","en":"COMPLEX_EQUALITY","synonyms":[],"kind":"조건","parent":"상등","note":"두 복소수의 실수부분과 허수부분이 각각 같은 관계","usedIn":[2]}],
+  "selfCheck": {
+    "items": 23,
+    "quotesChecked": 127,
+    "quotesNotFound": 0,
+    "warningsRechecked": [1,3,4,5,7,17],
+    "notes": "q18·q22 PNG 실제 열람. 경고 재독: 1 괄호 정리와 대입 및 동류항을 기록; 3 몫과 나머지의 나눗셈 관계를 기록; 4 근의 합과 곱으로 대칭식을 계산; 5 인수분해 결과를 묻는 다항식으로 goal 수정하고 치환과 인수분해 유지; 7 허수단위의 거듭제곱을 거듭제곱법칙으로 간단히 하는 단일 핵심 단계; 17 절댓값 부등식과 음수 부등호 방향 및 끝점 비교를 기록. 18 삼각형의 닮음은 사전 닮음으로 표기했다."
+  }
+}
