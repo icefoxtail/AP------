@@ -1,0 +1,1111 @@
+{
+  "schemaVersion": "4slot-v1",
+  "sourceArchiveFile": "original/high/h1/2final/24_제일고_2학기_기말_고1_기출.js",
+  "sourceGitBlobSha": "5cbedc8febf32259794867c5b08bc4ffaa489331",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "antigravity-gemini-3.8-flash",
+    "run": "original-51-60",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "$120$의 양의 약수의 개수는?"
+          },
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "$120=2^3\\times3\\times5$이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "양의 약수의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "$120=2^3\\times3\\times5$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "지수",
+            "src": "solution",
+            "quote": "$2$의 지수 $a$는 $0,1,2,3$의 $4$가지",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "각 지수를 독립적으로 고를 수 있으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "소인수들의 각 지수 선택 경우의 수를 곱하여 약수의 개수를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "$120=2^3\\times3\\times5$이다"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "진리집합",
+            "src": "stem",
+            "quote": "두 조건 $p$, $q$의 진리집합을 각각 $P$, $Q$라고 하자"
+          },
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "$p\\Rightarrow\\sim q$일 때, 다음 중 항상 옳은 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 항상 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여집합",
+            "src": "solution",
+            "quote": "진리집합으로 나타내면\n$P\\subset Q^C$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교집합",
+            "src": "solution",
+            "quote": "따라서\n$P\\cap Q=\\varnothing$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "공집합",
+            "src": "solution",
+            "quote": "$P\\cap Q=\\varnothing$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "네 조건 $p,q,r,s$에 대하여 $p\\Rightarrow q$, $r\\Rightarrow\\sim q$, $s\\Rightarrow r$이라고 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "보기 중 옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대우",
+            "src": "solution",
+            "quote": "$r$이 참이면 $q$가 거짓이므로 $p$도 거짓이다",
+            "evidenceType": "IMPLIED",
+            "justification": "명제의 대우가 참임을 이용하여 명제 판정"
+          },
+          {
+            "term": "삼단논법",
+            "src": "solution",
+            "quote": "$s\\Rightarrow r$과 $r\\Rightarrow\\sim q$를 연결하면",
+            "evidenceType": "IMPLIED",
+            "justification": "조건들을 삼단논법으로 연결하여 결론 도출"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "전칭명제",
+            "src": "solution",
+            "quote": "'모든 실수 $x$에서 $x^2-2x+k-1\\ge0$'이다"
+          },
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "$x^2-2x+k-1\\lt0$이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "실수 $k$의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부정",
+            "src": "solution",
+            "quote": "'어떤 실수 $x$에서 $x^2-2x+k-1\\lt0$'의 부정은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식으로 고치면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$의 최솟값은?"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "scenarioNote": "같은 색의 모자를 쓴 학생끼리 이웃하여 일렬로 서는 경우의 수",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "$4$개의 대상 배열: $4!$가지"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "이웃하여 서는 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이웃",
+            "src": "solution",
+            "quote": "파란 모자 학생 $3$명을 한 묶음, 빨간 모자 학생 $2$명을 다른 한 묶음으로 본다",
+            "evidenceType": "IMPLIED",
+            "justification": "이웃하는 대상을 한 묶음으로 묶어 나열"
+          },
+          {
+            "term": "팩토리얼",
+            "src": "solution",
+            "quote": "$4!\\times3!\\times2!$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "이 선택들은 서로 독립이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "각 묶음 내부 및 전체 배열 경우의 수를 곱함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "파란모자를 쓴 학생 3명과 빨간모자를 쓴 학생 2명을 포함하여 7명의 학생이"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "필요조건",
+            "src": "stem",
+            "quote": "$p$는 $q$이기 위한 필요조건일 때"
+          },
+          {
+            "term": "이차부등식",
+            "src": "stem",
+            "quote": "$p:x^2-2x-8\\lt0$, $q:x^2\\le a$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "정수 $a$의 최댓값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "진리집합",
+            "src": "solution",
+            "quote": "먼저 $p$의 진리집합을 구한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "$p$가 $q$이기 위한 필요조건이므로 $Q\\subset P$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "필요조건의 집합 포함관계를 이용해 부등식 영역 포함"
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "$0\\le a\\lt4$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $a$의 최댓값은?"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "scenarioNote": "5개의 영역에 서로 다른 4가지 색 중 인접 영역을 서로 다른 색으로 칠하는 방법",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같은 5개의 영역에 서로 다른 4가지 색 중 전부 혹은 일부를 사용하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "서로 다른 색으로 칠하는 방법의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$C=A$인 경우 $D$는 $A,C$와 다른 $2$가지이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "바깥 색 $4$가지까지 곱하면\n$4\\times18=72$가지이다",
+            "evidenceType": "IMPLIED",
+            "justification": "바깥 영역과 안쪽 영역 칠하는 경우의 수를 곱함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "인접한 영역을 서로 다른 색으로 칠하는"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "공집합이 아닌 부분집합 $P$에 대하여"
+          },
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "명제 '집합 $P$의 어떤 원소는 소수이다.'가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "참이 되도록 하는 집합 $P$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여집합",
+            "src": "solution",
+            "quote": "소수를 하나도 포함하지 않는 부분집합은 $\\{1,4\\}$의 부분집합이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 부분집합 개수에서 소수를 포함하지 않는 여집합을 뺌"
+          },
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "모든 부분집합은\n$2^5=32$개이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "공집합",
+            "src": "stem",
+            "quote": "공집합이 아닌 부분집합 $P$에 대하여"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$x,y$가 양수이고"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "$x+2y=3$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$\\dfrac1x+\\dfrac2y$의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "$\\dfrac{x}{y}+\\dfrac{y}{x}\\ge2$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "구하는 식과 주어진 합을 곱하면",
+            "evidenceType": "IMPLIED",
+            "justification": "두 식의 곱을 전개하여 역수 합 형태 도출"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$x,y$가 양수이고"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "등식 $\\dfrac2{x-1}-\\dfrac3{x+2}-\\dfrac4{x^2+x-2}=\\dfrac{ax+b}{x^2+x-2}$가 성립할 때"
+          },
+          {
+            "term": "항등식",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여 등식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "통분",
+            "src": "solution",
+            "quote": "공통분모로 통분하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "모든 허용된 $x$에서 항등식이 성립하므로 분자를 비교하여",
+            "evidenceType": "IMPLIED",
+            "justification": "항등식의 양변 분자 계수를 비교"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "함수 $y=\\dfrac{bx+c}{x+a}$의 그래프가"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "두 직선 $y=x+1$과 $y=-x+5$에 대하여 각각 대칭이고"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "그 역함수의 그래프는 점 $(10,3)$을 지난다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "상수 $a,b,c$의 곱 $abc$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "두 대칭축 $y=x+1$, $y=-x+5$의 교점이 중심이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭축의 교점이 점근선의 교점임을 이용"
+          },
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "역함수의 그래프가 $(10,3)$을 지나면 원함수는 $(3,10)$을 지난다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a,b,c$의 곱 $abc$의 값은?"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=-\\sqrt{2x+4}+1$의 그래프에 대한 설명으로 옳지 않은 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의역",
+            "src": "solution",
+            "quote": "제곱근 안이 음수가 아니어야 하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "왼쪽으로 $2$만큼, 위쪽으로 $1$만큼 이동한 것이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "역함수는 $x$와 $y$를 바꾸어 구한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "함수 $y=\\dfrac{4x-2k+15}{x+3}$의 그래프가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "모든 자연수 $k$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "제4사분면에 있는 점은 $x\\gt0$, $y\\lt0$을 만족한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "$4x-2k+15\\ge0$이어야 한다",
+            "evidenceType": "IMPLIED",
+            "justification": "제4사분면을 지나지 않는 부등식 조건 도출"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $k$의 개수는?"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "$ax+1\\le-\\sqrt{x+3}+5\\le bx+1$이 항상 성립할 때"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$1\\le x\\le6$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "상수 $a,b$에 대하여 $a-b$의 최댓값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "$1\\le x\\le6$에서 $x\\gt0$이므로 주어진 양쪽 부등식을 $x$로 나눌 수 있다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "$x=1$에서 $R(1)=2$이므로 최댓값은 $2$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최솟값",
+            "src": "solution",
+            "quote": "$x=6$에서 $R(6)=\\dfrac16$이므로 최솟값은 $\\dfrac16$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a,b$에 대하여"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "함수 $y=\\sqrt{2x+4}$의 그래프를"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$x$축의 방향으로 3만큼, $y$축의 방향으로 $-1$만큼 평행이동한 후"
+          },
+          {
+            "term": "대칭이동",
+            "src": "stem",
+            "quote": "$y$축에 대하여 대칭이동한 함수의 그래프는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "이때 상수 $k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "오른쪽으로 $3$만큼 이동하므로 $x$를 $x-3$으로 바꾸고, 아래로 $1$만큼 이동한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "이 그래프를 $y$축에 대하여 대칭이동하면 $x$를 $-x$로 바꾼다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "점 $(k,3)$이 그래프 위에 있으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "지나는 점의 좌표를 대입하여 k 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "이때 상수 $k$의 값은?"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "함수 $y=\\dfrac{ax+b}{x+c}$의 그래프의 점근선의 방정식이"
+          },
+          {
+            "term": "점근선",
+            "src": "stem",
+            "quote": "점근선의 방정식이 $x=3$, $y=-2$이고"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "평행이동에 의하여 함수 $y=-\\dfrac3x$의 그래프와 겹쳐질 수 있을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "상수 $a,b,c$에 대하여 $a+b+c$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "수직점근선은 $x=-c$이고 수평점근선은 $y=a$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "$y=-\\dfrac3x$의 그래프를 평행이동하면 분수의 분자 상수 $-3$은 변하지 않는다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a,b,c$에 대하여"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\dfrac{3x+5}{x-1}$의 그래프가"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=ax+b$ $(a\\gt0)$에 대하여 대칭이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "두 점 A, B 사이의 거리를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "중심은 $(1,3)$이고 대칭축은\n$y-3=\\pm(x-1)$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "유리함수의 기울기 ±1인 직선에 대한 선대칭성을 이용"
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "$x^2-2x-7=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "직선과 유리함수의 연립이차방정식 해 도출"
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "두 점의 좌표 차는 각각 $4\\sqrt2$이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$(a\\gt0)$"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "세 곡선 $y=\\sqrt{x}+3$, $y=\\sqrt{x}$, $y=\\sqrt{x-3}$이"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=-x+k$와 만나는 점을 각각 A, B, C라 하고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$\\overline{AB}=2\\overline{BC}$일 때 상수 $k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "점 A의 $x$좌표를 $t^2$ ($t\\ge0$)",
+            "evidenceType": "IMPLIED",
+            "justification": "무리함수 위의 좌표를 t^2으로 매개화"
+          },
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "세 점은 기울기 $-1$인 한 직선 위에 있으므로 선분 길이의 비는 $x$좌표 차의 비와 같다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$2t+1=2$",
+            "evidenceType": "IMPLIED",
+            "justification": "t에 대한 일차방정식을 풀어 t 도출"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $k$의 값은?"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "$x,y$가 실수이고"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "$x^2+y^2=5$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$x+2y$의 최댓값과 최솟값이 되는 조건을 구하는 과정을 서술하시오"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$x+2y$의 최댓값과 최솟값이 되는 조건을 구하는 과정을 서술하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "코시슈바르츠부등식",
+            "src": "solution",
+            "quote": "$(x+2y)^2\\le5(x^2+y^2)=25$",
+            "evidenceType": "IMPLIED",
+            "justification": "코시-슈바르츠 부등식을 적용하여 일차식의 범위 산출"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$=(2x-y)^2\\ge0$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "$x,y$가 실수이고"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "증명",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "명제 '$m,n$이 자연수일 때, $m^2+n^2$이 홀수이면 $mn$은 짝수이다'가 참임을"
+          },
+          {
+            "term": "귀류법",
+            "src": "stem",
+            "quote": "귀류법을 이용하여 증명하시오"
+          }
+        ],
+        "goal": [
+          {
+            "term": "증명",
+            "src": "stem",
+            "quote": "귀류법을 이용하여 증명하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "귀류법",
+            "src": "solution",
+            "quote": "결론 '$mn$은 짝수이다'를 부정하여 $mn$이 홀수라고 가정한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "홀수",
+            "src": "solution",
+            "quote": "두 자연수의 곱 $mn$이 홀수이면 $m,n$은 모두 홀수이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "짝수",
+            "src": "solution",
+            "quote": "이는 $m^2+n^2$이 홀수라는 조건과 모순이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$m,n$이 자연수일 때"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\dfrac{2x+3}{4x-5}$의 역함수 구하는 과정을 서술하고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "역함수 구하는 과정을 서술하고"
+          },
+          {
+            "term": "정의역",
+            "src": "stem",
+            "quote": "역함수의 정의역과 치역을 구하시오"
+          },
+          {
+            "term": "치역",
+            "src": "stem",
+            "quote": "역함수의 정의역과 치역을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "여기서 $x$와 $y$를 바꾸면\n$f^{-1}(x)=\\dfrac{5x+3}{4x-2}$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정의역",
+            "src": "solution",
+            "quote": "원함수의 치역은 $y\\ne\\dfrac12$이므로 역함수의 정의역은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "치역",
+            "src": "solution",
+            "quote": "원함수의 정의역은 $x\\ne\\dfrac54$이므로 역함수의 치역은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "분모",
+            "src": "solution",
+            "quote": "원함수의 분모가 $0$이면 안 되므로"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "두 함수 $f(x)=\\sqrt{3x}$, $g(x)=\\sqrt{x}$의 그래프와"
+          },
+          {
+            "term": "사다리꼴",
+            "src": "solution",
+            "quote": "따라서 사다리꼴 $ACDB$의 넓이는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$n$의 값을 구하는 과정을 서술하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "사다리꼴",
+            "src": "solution",
+            "quote": "따라서 사다리꼴 $ACDB$의 넓이는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$S=\\dfrac12(\\overline{AB}+\\overline{CD})\\times6$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "$u+v=3+\\sqrt3$이고\n$v^2-u^2=(n+6)-n=6$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "치환한 u, v의 합과 제곱차 연립방정식을 풀어 n 결정"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "단, $n$은 자연수"
+          }
+        ]
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 22,
+    "quotesChecked": 141,
+    "quotesNotFound": 0,
+    "warningsRechecked": [
+      3,
+      7
+    ],
+    "notes": "Q3은 옳지 않은 것 고르기, Q20은 증명 format 적용. Q19 코시-슈바르츠 부등식 적용. Q3/Q7 개념 수 4개 적정함 확인."
+  }
+}
