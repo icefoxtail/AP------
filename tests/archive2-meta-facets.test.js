@@ -563,7 +563,7 @@ test('the workspace and the unit page load the new scripts with a new cache vers
     assert.match(workspace, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   // The shared unit layer and the canonical authority moved on with the registered textbooks (S11).
   assert.match(workspace, /archive2-unified-units\.js\?v=20261030-s11-1/);
-  assert.match(workspace, /archive2-canonical\.js\?v=20261104-meta-audit-approval-1/);
+  assert.match(workspace, /archive2-canonical\.js\?v=20261104-source-meta-approval-1/);
   // The workspace itself moved on with the final-check fixes (S10).
   assert.match(workspace, /archive2-workspace\.js\?v=20261031-recorded-use-1/);
   const unitPage = read('unit-past-exams.html');

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "meta-pipeline-source-crossconcept-corrections-v1",
+  "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+  "sourceSha256": "8e27cdf483491dec3f2fc8d375e24045b33dffdb5b0630319b6d782417840ec3",
+  "sourceBlobSha1": "8dbdc762a9bb78a57fa770c97a6307802b7f762c",
+  "reviewer": {
+    "id": "CODEX_ROOT",
+    "role": "CODEX_META_PIPELINE_COURIER"
+  },
+  "records": [
+    {
+      "questionUid": "qid_v1_af45375f1f36e0af80945f3b1537a0cc27ab0be96694d68d7fbf49ef585f9a84",
+      "sourceOrdinal": 11,
+      "sourceCrossConceptKeys": [
+        "CC_ONE_TO_ONE_FUNCTION"
+      ],
+      "auditedCrossConceptKeys": [
+        "CC_INVERSE_FUNCTION_EXISTENCE_MONOTONICITY",
+        "CC_ALWAYS_POSITIVE_QUADRATIC_DERIVATIVE"
+      ],
+      "sourceTextExcerpt": "11. 실수 전체의 집합에서 정의된 함수 $f(x)=x^3+x^2-ax+1$의 역함수가 존재하도록 하는 실수 $a$의 최댓값은? [4.0점]",
+      "reason": "역함수 존재를 요구하므로 일대일함수 성질을 사용한다."
+    },
+    {
+      "questionUid": "qid_v1_bcab6134c6af6dc7c88e7e9ea1eb8d46cb4c7f2d9075ffe006c23d3fb4798549",
+      "sourceOrdinal": 13,
+      "sourceCrossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_GRAPH"
+      ],
+      "auditedCrossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_CURVE_GRAPH",
+        "CC_HORIZONTAL_LINE_INTERSECTIONS"
+      ],
+      "sourceTextExcerpt": "13. 함수 $f(x)=x^3-12x-1$일 때, 함수 $y=|f(x)|$의 그래프와 직선 $y=a$가 서로 다른 세 점에서만 만날 때의 양수 $a$의 값은? [4.0점]",
+      "reason": "절댓값이 적용된 함수 그래프와 직선의 교점을 다룬다."
+    },
+    {
+      "questionUid": "qid_v1_f89cf382d81a5362513f88a552c020e610bf801dbb48f19ddc09a1213ead6497",
+      "sourceOrdinal": 15,
+      "sourceCrossConceptKeys": [
+        "CC_FUNCTION_EXTREMA"
+      ],
+      "auditedCrossConceptKeys": [
+        "CC_POLYNOMIAL_INEQUALITY_DERIVATIVE",
+        "CC_MINIMUM_VALUE_GREATER_THAN_ZERO"
+      ],
+      "sourceTextExcerpt": "15. 두 함수\n$f(x)=x^3-x+6$, $g(x)=x^2+a$\n가 있다. $x \\ge 0$인 모든 실수 $x$에 대하여 부등식\n$f(x) \\ge g(x)$\n가 성립할 때, 실수 $a$의 최댓값은? [4.0점]",
+      "reason": "모든 x에 대한 부등식에서 함수의 극값으로 매개변수 최댓값을 정한다."
+    },
+    {
+      "questionUid": "qid_v1_b5598531be2bfb8be7b15ee1e66c26003fa1fa2fe5cc0081adea7d26916f520f",
+      "sourceOrdinal": 17,
+      "sourceCrossConceptKeys": [
+        "CC_ROOT_INTERSECTION_COUNT_FUNCTION"
+      ],
+      "auditedCrossConceptKeys": [
+        "CC_SEPARATED_PARAMETER_CUBIC_ROOTS",
+        "CC_LOCAL_EXTREMA_INTERSECTION_BOUNDS"
+      ],
+      "sourceTextExcerpt": "17. 자연수 $n$에 대하여 $x$에 대한 방정식\n$x^3-3x+n-2=0$\n의 서로 다른 실근의 개수를 $a_n$이라 할 때, $\\sum_{n=1}^{10} a_n$의 값은? [4.0점]",
+      "reason": "자연수 n에 따라 방정식의 서로 다른 실근 개수를 수열로 정의한다."
+    },
+    {
+      "questionUid": "qid_v1_b86bc5a3c57b913264d3eaca35ee7c530992c547b0746121fa4cabc7a274edf0",
+      "sourceOrdinal": 21,
+      "sourceCrossConceptKeys": [
+        "CC_FUNCTION_SYMMETRY"
+      ],
+      "auditedCrossConceptKeys": [
+        "CC_SYMMETRIC_FUNCTION_PERIODIC_INTEGRATION",
+        "CC_INTERVAL_ADDITIVITY_PROPERTY"
+      ],
+      "sourceTextExcerpt": "21. 실수 전체의 집합에서 연속인 함수 $f(x)$가 다음 조건을 만족시킬 때, $\\int_{-3}^5 \\{4x+f(x)\\}dx$의 값은? [4.5점]\n\n<조건>\n(가) 모든 실수 $x$에 대하여 $f(x)+f(-x)=0$이다.\n(나) $\\int_{-2}^3 f(x)dx = 6$\n(다) $\\int_{-5}^{-2} f(x)dx = -20$",
+      "reason": "f(x)+f(-x)=0인 대칭 성질을 정적분에 이용한다. 원문 감사의 주기성 키는 실제 원본에 없고 홀함수 정적분이므로 별도 정정 증거에 따라 같은 감사 9번의 홀·짝함수 적분 키를 사용한다.",
+      "correctedAuditedCrossConceptKeys": [
+        "CC_ODD_EVEN_FUNCTION_INTEGRATION",
+        "CC_INTERVAL_ADDITIVITY_PROPERTY"
+      ]
+    }
+  ]
+}
