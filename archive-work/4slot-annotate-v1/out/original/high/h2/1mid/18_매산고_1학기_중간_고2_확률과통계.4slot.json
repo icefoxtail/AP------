@@ -1,0 +1,896 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/high/h2/1mid/18_매산고_1학기_중간_고2_확률과통계.js",
+  "sourceGitBlobSha": "6f6fb64e2c605d7bc3dde3b832a3be8202f1b030",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Codex-gpt-6.1-terra",
+    "run": "original-261-270",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "${}_5\\mathrm{P}_2 \\times 3!$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "순열을 적용하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "순열과 계승 값을 계산해 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "중복순열",
+            "src": "stem",
+            "quote": "5개의 각 구멍을 막거나 여는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "방법의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "곱의 법칙을 쓴다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "다섯 구멍마다 두 상태를 독립 선택한다."
+      },
+      "steps": [],
+      "scenarioNote": "단소"
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분배",
+            "src": "stem",
+            "quote": "서로 같은 축구공 5개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "경우의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "별과 막대의 방법으로",
+            "evidenceType": "IMPLIED",
+            "justification": "세 바구니에 들어갈 공 수를 음이 아닌 정수해로 센다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별불가",
+            "src": "stem",
+            "quote": "서로 같은 축구공"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "같은 공의 바구니별 개수를 음이 아닌 정수해로 센다."
+      },
+      "steps": [],
+      "scenarioNote": "공과 바구니"
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "배반사건",
+            "src": "stem",
+            "quote": "서로 배반인 두 사건 $A, B$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$12P(B)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+              "quote": "P(A\\cup B)=1-\\frac14",
+            "evidenceType": "IMPLIED",
+            "justification": "두 여사건 교집합의 여사건을 이용한다."
+          },
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "$P(A\\cup B)=P(A)+P(B)$",
+            "evidenceType": "IMPLIED",
+            "justification": "배반사건의 합집합 확률을 더한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "배반사건",
+            "src": "stem",
+            "quote": "서로 배반인 두 사건"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "여사건으로 합집합 확률을 구하고 배반사건의 확률을 뺀다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "6명의 학생"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "이웃하는 방법의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "묶음",
+            "src": "solution",
+              "quote": "$A,B$를 한 묶음으로 보면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "묶음 안은 $AB,BA$",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 단위 배열과 묶음 안 순서를 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "인접",
+            "src": "stem",
+            "quote": "$\\mathrm{A}$와 $\\mathrm{B}$가 이웃"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "A,B를 묶은 다섯 단위와 내부 순서를 배열한다."
+      },
+      "steps": [],
+      "scenarioNote": "학생 배열"
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원순열",
+            "src": "stem",
+            "quote": "6명이 원탁에 둘러 앉을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "이웃하여 앉지 않을 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "원순열",
+            "src": "solution",
+            "quote": "원탁 전체 경우는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "묶음",
+            "src": "solution",
+            "quote": "정현이와 호정이를 묶으면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "이웃하지 않는 경우는",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 원순열에서 인접한 묶음 배열을 뺀다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "이웃하지않음",
+            "src": "stem",
+            "quote": "이웃하여 앉지 않을"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전체 원순열에서 두 사람이 인접한 묶음 배열을 빼 확률을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "원탁"
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이항정리",
+            "src": "stem",
+            "quote": "\\left(x^2 - \\frac{1}{x^2}\\right)^8"
+          }
+        ],
+        "goal": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "$\\frac{p}{q}$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항정리",
+            "src": "solution",
+            "quote": "지수는 $2(8-k)-2k=16-4k$",
+            "evidenceType": "IMPLIED",
+            "justification": "일반항의 지수로 두 계수의 선택 횟수를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "일반항에서 4차와 8차를 만드는 선택 횟수를 정해 계수의 비를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "학생 8명 중에서 3명을 뽑아"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+              "quote": "현욱이 또는 성희가 뽑힐 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+              "quote": "현욱이와 성희가 모두 빠지는 경우",
+            "evidenceType": "IMPLIED",
+            "justification": "둘 다 선택되지 않는 경우를 전체에서 뺀다."
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "전체 조합은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "적어도",
+            "src": "stem",
+              "quote": "현욱이 또는 성희가 뽑힐"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전체 3명 선택에서 두 지정 학생이 모두 빠지는 여사건을 뺀다."
+      },
+      "steps": [],
+      "scenarioNote": "대회 참가"
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "소인수분해",
+            "src": "stem",
+            "quote": "$39270 = 2 \\times 3 \\times 5"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "세 합성수의 곱으로 나타내는 경우"
+          }
+        ],
+        "method": [
+          {
+            "term": "분할",
+            "src": "solution",
+            "quote": "6개 소수를 세 쌍으로 나눈다",
+            "evidenceType": "IMPLIED",
+            "justification": "여섯 서로 다른 소수를 크기 2인 구별 없는 세 묶음으로 분할한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "순서를 고려하지 않고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "서로 다른 여섯 소수를 구별 없는 세 쌍으로 나눈다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "4장의 카드를 동시에 뽑아"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+              "quote": "그 수가 2100이상일 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "천의 자리가 1이면",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 자리가 1인 경우를 제외하고 2 이상인 경우를 센다."
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+              "quote": "네 자리 수의 전체 경우",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 카드 중 네 장을 순서 있게 배열한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "2100이상"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전체 네 자리 배열에서 천의 자리별 조건 충족 여부를 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": "카드 배열"
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분할",
+            "src": "stem",
+              "quote": "5명의 학생이 자전거 3대"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "방법의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "분할",
+            "src": "solution",
+            "quote": "$2,2,1$명 무리로 나눈다",
+            "evidenceType": "IMPLIED",
+            "justification": "최대 2명씩 세 자전거에 타는 인원 구성을 정한다."
+          },
+          {
+            "term": "중복계수",
+            "src": "solution",
+            "quote": "두 쌍으로 나누는 방법",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 크기 두 쌍의 교환 중복을 나눈다."
+          },
+          {
+            "term": "개수",
+            "src": "solution",
+            "quote": "두 쌍으로 나누는 방법",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "세 무리를 서로 다른 자전거에 배정",
+            "evidenceType": "IMPLIED",
+            "justification": "선택한 자전거에 세 무리를 배정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "자전거 1대에 최대 2명"
+          },
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "각 자전거는 색상이 다르다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "학생을 2·2·1명으로 분할한 뒤 구별되는 세 자전거를 골라 배정한다."
+      },
+      "steps": [],
+      "scenarioNote": "자전거 탑승"
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분배",
+            "src": "stem",
+            "quote": "같은 모양의 연필 5자루"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "경우의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+              "quote": "제한을 무시한 음이 아닌 정수해",
+            "evidenceType": "IMPLIED",
+            "justification": "종류별 개수의 합이 7인 전체 해를 센다."
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "연필이 6개 이상인 해 4가지",
+            "evidenceType": "IMPLIED",
+            "justification": "연필과 빨간 볼펜의 수량 상한을 넘는 경우를 뺀다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별불가",
+            "src": "stem",
+            "quote": "같은 모양의 빨간색 볼펜 6자루"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전체 종류별 개수의 정수해에서 재고 상한 위반을 제외한다."
+      },
+      "steps": [],
+      "scenarioNote": "필기구 선택"
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "두 부분집합 $A, B$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "극한",
+            "src": "stem",
+              "quote": "\\lim_{n \\to \\infty} \\frac{c_n}"
+          }
+        ],
+        "method": [
+          {
+            "term": "배정",
+            "src": "solution",
+            "quote": "원소마다 $(A,B)$에 들어가는 상태",
+            "evidenceType": "IMPLIED",
+            "justification": "조건별 각 원소의 소속 상태를 분류한다."
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "$A=B$인 $2^n$쌍을 빼",
+            "evidenceType": "IMPLIED",
+            "justification": "엄격한 포함에서 같은 집합을 제외한다."
+          },
+          {
+            "term": "극한",
+            "src": "solution",
+              "quote": "\\to1$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "3의 거듭제곱으로 나누어 무한대 극한을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "교집합",
+            "src": "stem",
+            "quote": "$A \\cap B = \\varnothing$"
+          },
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "$A \\subset B, A \\ne B$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원소별 소속 상태로 세 수열을 구하고 지수 비의 극한을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "집합 상태"
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이항정리",
+            "src": "stem",
+              "quote": "\\left(x+\\frac{1}{x^3}\\right)^k"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수항",
+            "src": "stem",
+              "quote": "상수항을 구하여라"
+          }
+        ],
+        "method": [
+          {
+            "term": "상수항",
+            "src": "solution",
+            "quote": "$k=4j$",
+            "evidenceType": "IMPLIED",
+            "justification": "일반항의 x 지수를 0으로 두어 가능한 항의 차수를 고른다."
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+              "quote": "4+28+220=252",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "상수항이 생기는 차수를 정하고 각 이항계수를 합한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $a, b, c, d$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "순서쌍 $(a, b, c, d)$의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "0이 아닌 좌표 수를 $r$",
+            "evidenceType": "IMPLIED",
+            "justification": "0이 아닌 위치 수에 따라 세 경우로 나눈다."
+          },
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "양의 절댓값 $r$개의 합이 7",
+            "evidenceType": "IMPLIED",
+            "justification": "양의 절댓값의 합을 분배한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "부호는 $2^r$가지",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$abcd = 0$"
+          },
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "$2^{|a|+|b|+|c|+|d|} = 128$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "0이 아닌 좌표 수를 정하고 위치·양의 절댓값 분배·부호를 곱해 합한다."
+      },
+      "steps": [],
+      "scenarioNote": "정수 좌표"
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+              "quote": "두 개 이상의 수가 연속할 확률"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+              "quote": "의 값을 구하여라"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+              "quote": "정확히 한 쌍만 연속하는 간격",
+            "evidenceType": "IMPLIED",
+            "justification": "정확히 한 쌍인 경우와 세 수 모두 연속인 경우를 나눈다."
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "$p_n=6(n-2)/(n(n-1))$",
+            "evidenceType": "IMPLIED",
+            "justification": "조건을 만족하는 세 카드 수를 전체 조합으로 나눈다."
+          },
+          {
+            "term": "부분분수",
+            "src": "solution",
+              "quote": "90(1/5-1/45)=16",
+            "evidenceType": "IMPLIED",
+            "justification": "1/[n(n−1)]을 부분분수로 분해해 망원합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$n\\,(n \\ge 5)$"
+          },
+          {
+            "term": "연속",
+            "src": "stem",
+              "quote": "두 개 이상의 수가 연속"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "연속쌍 개수로 분류해 확률을 구하고 부분분수 망원합을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "연속 카드"
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f: X \\to X$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "함수 $f: X \\to X$의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$t=f(2)$라 두면",
+            "evidenceType": "IMPLIED",
+            "justification": "중간 함수값을 고정하고 양쪽 함수값을 센다."
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$\\;{}_{6-t}\\mathrm{C}_2$",
+            "evidenceType": "IMPLIED",
+            "justification": "f(6),f(5)의 두 서로 다른 큰 값을 선택한다."
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "$6\\sum_{t=1}^4",
+            "evidenceType": "IMPLIED",
+            "justification": "각 t의 독립 선택 수를 곱해 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "비감소",
+            "src": "stem",
+            "quote": "$f(a) \\le f(b)$"
+          },
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "$f(2) < f(6) < f(5)$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "f(2)를 고정해 비감소인 앞값과 뒤의 엄격한 두 값을 독립 선택한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "복원추출",
+            "src": "stem",
+              "quote": "꺼낸 공을 다시 주머니에 넣는다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$1250p$의 값을 구하여라"
+          }
+        ],
+        "method": [
+          {
+            "term": "홀짝",
+            "src": "solution",
+            "quote": "홀수 횟수인 숫자의 개수도 짝수",
+            "evidenceType": "IMPLIED",
+            "justification": "총 여섯 번의 선택에서 홀수 횟수 숫자의 개수는 짝수다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "원소의개수",
+            "src": "stem",
+            "quote": "1장의 카드에만 스티커"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 카드의 스티커 상태를 선택 횟수의 홀짝에 대응해 한 장만 남을 수 없음을 보인다."
+      },
+      "steps": [],
+      "scenarioNote": "카드 스티커"
+    }
+  ],
+  "candidates": [
+    {
+      "term": "중복계수",
+      "en": "DOUBLE_COUNT_CORRECTION",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "개수",
+      "note": "구별 라벨로 중복하여 센 횟수를 보정한다.",
+      "usedIn": [
+        11
+      ]
+    }
+  ],
+  "selfCheck": {
+    "items": 18,
+    "quotesChecked": 92,
+    "quotesNotFound": 0,
+    "warningsRechecked": [1,2,3,4,5,7,8,9,10,14,18],
+    "notes": "Q1 순열과 계승, Q2 구멍별 두 선택, Q3 같은 공의 바구니별 분배, Q4 배반사건과 여사건, Q5 두 사람 묶음, Q7 일반항의 두 지수, Q8 지정 학생 둘 다 빠지는 여사건, Q9 소수 여섯 개의 세 쌍 분할, Q10 천의 자리별 선택, Q14 차수별 상수항, Q18 선택 횟수 홀짝으로 불가능함을 재확인. 연결된 그림 없음."
+  }
+}
