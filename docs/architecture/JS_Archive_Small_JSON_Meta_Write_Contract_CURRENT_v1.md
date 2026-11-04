@@ -6,6 +6,10 @@
 
 ## 한 줄 원칙
 
+신규 기출·유사·ALIVE/Generated·교과서·문제집·교재/평가 결과물의 작성·검토 의무는 [의미 메타 계약의 공통 작성·검토·인계 요건](JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)을 따른다. 제출 묶음에는 **source JS/에셋 + 지원 스키마의 소형 의미 메타 + `.4slot.json` + 작성·검토·출처·변경 기록의 참조**를 포함한다. 결과물별 UID와 최종 판본으로 서로 연결하고, 기존 stage 패킷/ledger가 같은 정보를 담고 있으면 참조로 재사용한다.
+
+4칸·검토 기록은 기존 등록 요청 JSON의 허용 필드와 별개다. 통합 전에는 작업별 stage-local/Drive 인계 위치에 보존하고, 인계 목록에 파일 위치·revision 또는 SHA·대상 UID·후속 담당을 적는다. 운영 저장 경로가 미확정이라는 이유로 작성을 생략하지 않으며, 임의의 production 경로나 등록기 필드를 만들지도 않는다. 원시 검토 증거는 [Git/Drive 저장 경계](../agents/git-evidence.md)를 따른다. 작업 브랜치에 증거를 강제 추가하는 4칸 시범의 예외를 일반 제작에 확대하지 않는다.
+
 **READ SHARED, WRITE SMALL, MATERIALIZE SERVER-SIDE, VERIFY CONSUMER.**
 
 - **READ**: `archive/data/question_metadata.json`은 전 UID의 기존 등록 상태·검색·조회용 공용 집계(projection)다. 대상 `examUid`/`sourceArchiveFile`/`sourceOrdinal`/`questionUid`로 필요한 N행만 추출해 대조한다. 필요한 경우 원본 JS, ACTIVE registry/taxonomy/bindings, RPM/crosswalk/runtime와 소비자 검색 데이터를 함께 읽는다. 공용 집계가 의미 정본의 권위를 대체하지 않는다.
