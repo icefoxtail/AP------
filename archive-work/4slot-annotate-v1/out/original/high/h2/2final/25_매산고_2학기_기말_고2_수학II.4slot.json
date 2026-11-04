@@ -1,8 +1,8 @@
 {
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "original/high/h2/2final/25_매산고_2학기_기말_고2_수학II.js",
-  "sourceGitBlobSha": "6bc4b5b719ee27b72ba437ba77b4202bf5804362",
-  "dictionaryVersion": "term-dict-v1.3-2026-11-03",
+  "sourceGitBlobSha": "ab7da42bfd5554b614bbe1c0075a73949f7d70eb",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
     "agent": "Antigravity-gemini-3.8-flash",
     "run": "original-1-10",
@@ -95,7 +95,7 @@
           {
             "term": "적분상수",
             "src": "solution",
-            "quote": "C=12",
+            "quote": "$C=12$이다",
             "evidenceType": "IMPLIED",
             "justification": "초기값 F(0)=12를 대입하여 적분상수 C 결정"
           }
@@ -114,7 +114,7 @@
       "slots": {
         "given": [
           {
-            "term": "다항식",
+            "term": "이차식",
             "src": "stem",
             "quote": "3x^2-6x+5"
           },
@@ -128,7 +128,7 @@
           {
             "term": "정적분",
             "src": "stem",
-            "quote": "정적분 $\\displaystyle\\int_1^2(3x^2-6x+5)dx$의 값"
+            "quote": "\\int_1^2(3x^2-6x+5)dx"
           }
         ],
         "method": [
@@ -170,7 +170,7 @@
             "quote": "수직선 위를 움직이는"
           },
           {
-            "term": "위치관계",
+            "term": "위치",
             "src": "stem",
             "quote": "위치 $x$가 $x=-t^3+6t^2$"
           },
@@ -181,6 +181,11 @@
           }
         ],
         "goal": [
+          {
+            "term": "가속도",
+            "src": "stem",
+            "quote": "속도와 가속도의 합"
+          },
           {
             "term": "속도",
             "src": "stem",
@@ -194,6 +199,12 @@
         ],
         "method": [
           {
+            "term": "가속도",
+            "src": "solution",
+            "quote": "a(t)=v'(t)=-6t+12",
+            "evidenceType": "NAMED"
+          },
+          {
             "term": "미분",
             "src": "solution",
             "quote": "위치를 시간에 대해 미분하면 속도, 속도를 미분하면 가속도이다",
@@ -206,7 +217,13 @@
             "evidenceType": "NAMED"
           }
         ],
-        "condition": []
+        "condition": [
+          {
+            "term": "원점",
+            "src": "stem",
+            "quote": "원점에서 출발하여"
+          }
+        ]
       },
       "reasons": {
         "method": "위치를 미분하여 속도와 가속도를 구하고 t=1에서의 값을 각각 계산하여 합산"
@@ -226,6 +243,11 @@
           }
         ],
         "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "실수 $a$의 값의 범위"
+          },
           {
             "term": "범위",
             "src": "stem",
@@ -259,6 +281,11 @@
           }
         ],
         "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a$의 값의 범위"
+          },
           {
             "term": "실근",
             "src": "stem",
@@ -393,6 +420,26 @@
         ],
         "condition": [
           {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여"
+          },
+          {
+            "term": "항상성립",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여"
+          },
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 실근의 개수가"
+          },
+          {
+            "term": "최고차항",
+            "src": "stem",
+            "quote": "최고차항의 계수가 $1$"
+          },
+          {
             "term": "원점대칭",
             "src": "stem",
             "quote": "f(-x)+f(x)=0"
@@ -435,10 +482,11 @@
         ],
         "method": [
           {
-            "term": "미정계수",
+            "term": "치환",
             "src": "solution",
             "quote": "정적분 부분을 상수로 놓는다",
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "상수인 정적분을 새 문자 A로 치환하여 방정식을 만든다."
           },
           {
             "term": "정적분",
@@ -455,6 +503,11 @@
           }
         ],
         "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여"
+          },
           {
             "term": "항상성립",
             "src": "stem",
@@ -498,6 +551,12 @@
         ],
         "method": [
           {
+            "term": "적분상수",
+            "src": "solution",
+            "quote": "$C=0$, 따라서",
+            "evidenceType": "NAMED"
+          },
+          {
             "term": "부정적분",
             "src": "solution",
             "quote": "f(x)=\\displaystyle\\int\\dfrac{x^n}{n}\\,dx",
@@ -510,7 +569,7 @@
             "evidenceType": "NAMED"
           },
           {
-            "term": "급수",
+            "term": "망원합",
             "src": "solution",
             "quote": "1-\\dfrac1{11}=\\dfrac{10}{11}",
             "evidenceType": "IMPLIED",
@@ -519,9 +578,14 @@
         ],
         "condition": [
           {
+            "term": "범위",
+            "src": "stem",
+            "quote": "\\sum_{n=1}^{10}"
+          },
+          {
             "term": "자연수",
             "src": "stem",
-            "quote": "n=1"
+            "quote": "n=1}^{10}"
           }
         ]
       },
@@ -556,6 +620,13 @@
         ],
         "method": [
           {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$n$은 $2$ 이상의 자연수이므로 작은 값부터 조사한다",
+            "evidenceType": "IMPLIED",
+            "justification": "n=2가 실패하고 n=3이 성공함을 차례로 확인하여 최소 자연수를 확정한다."
+          },
+          {
             "term": "도함수",
             "src": "solution",
             "quote": "h'(x)=3x^2-3=3(x-1)(x+1)",
@@ -576,6 +647,16 @@
           }
         ],
         "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $x$에서"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "x\\ge1"
+          },
           {
             "term": "부등식",
             "src": "stem",
@@ -619,6 +700,19 @@
         ],
         "method": [
           {
+            "term": "반례",
+            "src": "solution",
+            "quote": "$f(x)=x^3$이면",
+            "evidenceType": "IMPLIED",
+            "justification": "비상수 다항함수가 항상 극값을 갖는다는 ㄱ에 삼차함수 x³을 반례로 든다."
+          },
+          {
+            "term": "차수",
+            "src": "solution",
+            "quote": "차수는 $n-1$이다",
+            "evidenceType": "NAMED"
+          },
+          {
             "term": "극값",
             "src": "solution",
             "quote": "부호가 바뀌지 않으므로 극값이 없다",
@@ -638,7 +732,23 @@
             "justification": "우함수 다항식의 짝수차수 및 최솟값/최댓값 존재성 분석"
           }
         ],
-        "condition": []
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여"
+          },
+          {
+            "term": "정의역",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여 정의된"
+          },
+          {
+            "term": "제외",
+            "src": "stem",
+            "quote": "상수함수가 아니다"
+          }
+        ]
       },
       "reasons": {
         "method": "다항함수의 차수 성질, 도함수의 부호 변화, 우함수 대칭성을 적용하여 ㄱㄴㄷ 참거짓 판정"
@@ -660,11 +770,6 @@
             "term": "절댓값",
             "src": "stem",
             "quote": "|t-2x|"
-          },
-          {
-            "term": "정적분으로정의된함수",
-            "src": "stem",
-            "quote": "f(x)=\\displaystyle\\int_1^6|t-2x|dt"
           }
         ],
         "goal": [
@@ -685,6 +790,20 @@
           }
         ],
         "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$u=2x$라 두면",
+            "evidenceType": "IMPLIED",
+            "justification": "적분 안의 매개변수 2x를 u로 치환하여 구간1≤u≤6의 이차함수로 정리한다."
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "절댓값이 바뀌는 지점은 $t=2x$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "t=u를 기준으로 부호가 다른 두 적분구간으로 나누어 절댓값을 푼다."
+          },
           {
             "term": "정적분",
             "src": "solution",
@@ -760,7 +879,7 @@
           {
             "term": "삼차함수",
             "src": "solution",
-            "quote": "그런데 $a=2$이면 $f$의 최고차항 계수가 $0$이므로 삼차함수가 아니다",
+            "quote": "$f$의 최고차항 계수가 $0$이므로 삼차함수가 아니다",
             "evidenceType": "IMPLIED",
             "justification": "삼차함수 정의 조건(최고차항 계수 != 0) 검토"
           }
@@ -814,11 +933,18 @@
         ],
         "method": [
           {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$u=g(x)$라 두면",
+            "evidenceType": "IMPLIED",
+            "justification": "안쪽 함수의 치역을 바깥 함수의 제한 정의역 u≥1로 바꾼다."
+          },
+          {
             "term": "산술기하평균",
             "src": "solution",
-            "quote": "x^2+\\dfrac4{x^2}-4=\\dfrac{(x^2-2)^2}{x^2}\\ge0",
+            "quote": "\\dfrac{(x^2-2)^2}{x^2}\\ge0",
             "evidenceType": "IMPLIED",
-            "justification": "역수 합 형태의 최솟값(치역 하한) 도출"
+            "justification": "양수 x²와 4/x²의 곱이 4이므로 산술기하평균의 등가식인 완전제곱의 비음수성으로 합≥4와 등호조건을 도출한다."
           },
           {
             "term": "치역",
@@ -834,6 +960,11 @@
           }
         ],
         "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$의 최솟값"
+          },
           {
             "term": "실근",
             "src": "stem",
@@ -863,7 +994,7 @@
             "quote": "수직선 위를 움직이는"
           },
           {
-            "term": "위치관계",
+            "term": "위치",
             "src": "stem",
             "quote": "수직선 위의 위치가 $8$인 점"
           }
@@ -882,9 +1013,16 @@
         ],
         "method": [
           {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "10t^2-3t^3=8+kt",
+            "evidenceType": "IMPLIED",
+            "justification": "만나는 순간의 두 위치가 같다는 식에서 k를 시각 t의 함수로 표현한다."
+          },
+          {
             "term": "정적분",
             "src": "solution",
-            "quote": "x_P(t)=\\displaystyle\\int_0^t(20s-9s^2)\\,ds",
+            "quote": "\\int_0^t(20s-9s^2)\\,ds",
             "evidenceType": "NAMED"
           },
           {
@@ -900,7 +1038,18 @@
             "evidenceType": "NAMED"
           }
         ],
-        "condition": []
+        "condition": [
+          {
+            "term": "원점",
+            "src": "stem",
+            "quote": "원점을 출발하여"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "두 점 P, Q가 만나기 위한"
+          }
+        ]
       },
       "reasons": {
         "method": "두 점의 위치 함수를 정적분으로 구하고 만나는 조건식에서 함수 K(t)의 극대·최댓값 결정"
@@ -921,12 +1070,12 @@
           {
             "term": "정적분",
             "src": "stem",
-            "quote": "g(x)=\\displaystyle\\int_{-x}^{2x}\\{f(t)-|f(t)|\\}dt"
+            "quote": "\\int_{-x}^{2x}\\{f(t)-|f(t)|\\}dt"
           },
           {
             "term": "정적분으로정의된함수",
             "src": "stem",
-            "quote": "g(x)=\\displaystyle\\int_{-x}^{2x}\\{f(t)-|f(t)|\\}dt"
+            "quote": "\\int_{-x}^{2x}\\{f(t)-|f(t)|\\}dt"
           }
         ],
         "goal": [
@@ -937,6 +1086,13 @@
           }
         ],
         "method": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$f(t)\\ge0$일 때 $H(t)=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "g가 상수인 구간과 감소하는 구간을 피적분함수 H의 영/음 부호구간으로 바꾸어 f의 근4,10을 결정한다."
+          },
           {
             "term": "절댓값",
             "src": "solution",
@@ -958,6 +1114,26 @@
           }
         ],
         "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "0\\lt x\\lt 2$과 $x\\gt 5"
+          },
+          {
+            "term": "상수함수",
+            "src": "stem",
+            "quote": "$g(x)$는 상수함수이다"
+          },
+          {
+            "term": "증가감소",
+            "src": "stem",
+            "quote": "2\\lt x\\lt 5$에서 $g(x)$는 감소함수이다"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실근은 음이 아닌 실수이다"
+          },
           {
             "term": "부등식",
             "src": "stem",
@@ -1000,6 +1176,13 @@
           }
         ],
         "method": [
+          {
+            "term": "연립일차방정식",
+            "src": "solution",
+            "quote": "두 식을 빼면 $a=-6$",
+            "evidenceType": "IMPLIED",
+            "justification": "극대점의 함수값과 도함수 조건에서 얻은 두 일차방정식으로 a,b를 정한다."
+          },
           {
             "term": "극대",
             "src": "solution",
@@ -1064,9 +1247,23 @@
         ],
         "method": [
           {
+            "term": "곱의미분법",
+            "src": "solution",
+            "quote": "\\int_2^x f(t)\\,dt+xf(x)-xf(x)",
+            "evidenceType": "IMPLIED",
+            "justification": "x와 정적분의 곱을 미분하면서 x f(x)항이 생긴다."
+          },
+          {
+            "term": "미적분의기본정리",
+            "src": "solution",
+            "quote": "\\int_2^x f(t)\\,dt=3x^2+2ax",
+            "evidenceType": "IMPLIED",
+            "justification": "위끝변수 정적분을 미분해 피적분함숫값을 얻어 두 x f(x)항을 소거한다."
+          },
+          {
             "term": "정적분",
             "src": "solution",
-            "quote": "x\\displaystyle\\int_2^x f(t)\\,dt-\\int_2^x t f(t)\\,dt",
+            "quote": "\\int_2^x t f(t)\\,dt",
             "evidenceType": "IMPLIED",
             "justification": "적분변수 t와 무관한 x를 적분 밖으로 분리"
           },
@@ -1085,6 +1282,11 @@
           }
         ],
         "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "임의의 실수 $x$에 대하여"
+          },
           {
             "term": "항상성립",
             "src": "stem",
@@ -1111,7 +1313,7 @@
           {
             "term": "조각함수",
             "src": "stem",
-            "quote": "g(x)=\\begin{cases}f(x)&(x\\le t)\\\\-f(x)&(x\\gt t)\\end{cases}"
+            "quote": "f(x)&(x\\le t)\\\\-f(x)&(x\\gt t)"
           },
           {
             "term": "연속",
@@ -1127,6 +1329,13 @@
           }
         ],
         "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "① $\\alpha$가 이중근이면",
+            "evidenceType": "IMPLIED",
+            "justification": "α 또는 β가 이중근인 두 배치를 나누어 두 경우 모두 같은 극값 -4d³/27을 얻는다."
+          },
           {
             "term": "연속",
             "src": "solution",
@@ -1149,6 +1358,31 @@
           }
         ],
         "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 세 점"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 전체의 집합에서 연속"
+          },
+          {
+            "term": "연속",
+            "src": "stem",
+            "quote": "실수 전체의 집합에서 연속"
+          },
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "\\alpha\\lt \\beta"
+          },
+          {
+            "term": "관계",
+            "src": "stem",
+            "quote": "g(\\alpha)+g(\\beta)+g(\\gamma)=-20"
+          },
           {
             "term": "극값",
             "src": "stem",
@@ -1178,7 +1412,7 @@
             "quote": "수직선 위를 움직이는"
           },
           {
-            "term": "위치관계",
+            "term": "위치",
             "src": "stem",
             "quote": "위치 $x$가 $x=3t^3-\\dfrac{27}{2}t^2+18t$"
           },
@@ -1189,6 +1423,11 @@
           }
         ],
         "goal": [
+          {
+            "term": "위치",
+            "src": "stem",
+            "quote": "점 P가 $x=a$, $x=b$에서"
+          },
           {
             "term": "합",
             "src": "stem",
@@ -1209,7 +1448,7 @@
             "evidenceType": "NAMED"
           },
           {
-            "term": "위치관계",
+            "term": "위치",
             "src": "solution",
             "quote": "x(1)=3-\\dfrac{27}{2}+18=\\dfrac{15}{2}",
             "evidenceType": "IMPLIED",
@@ -1217,6 +1456,11 @@
           }
         ],
         "condition": [
+          {
+            "term": "원점",
+            "src": "stem",
+            "quote": "원점에서 출발하여"
+          },
           {
             "term": "구별가능",
             "src": "stem",
@@ -1236,6 +1480,11 @@
       "slots": {
         "given": [
           {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "h(x)=x^2+1"
+          },
+          {
             "term": "삼차함수",
             "src": "stem",
             "quote": "삼차함수 $f(x)$"
@@ -1247,6 +1496,11 @@
           }
         ],
         "goal": [
+          {
+            "term": "미분계수",
+            "src": "stem",
+            "quote": "f'(2)$의 최솟값"
+          },
           {
             "term": "최솟값",
             "src": "stem",
@@ -1319,6 +1573,19 @@
         ],
         "method": [
           {
+            "term": "중근",
+            "src": "solution",
+            "quote": "f(x)=(x-2)^2(x-a)",
+            "evidenceType": "IMPLIED",
+            "justification": "극소점 x=2에서 함수값과 도함수가 모두0이므로 x=2를 이중근으로 갖는 삼차식을 세운다."
+          },
+          {
+            "term": "적분상수",
+            "src": "solution",
+            "quote": "C=\\dfrac38",
+            "evidenceType": "NAMED"
+          },
+          {
             "term": "곱의미분법",
             "src": "solution",
             "quote": "(x-2)f(x)$를 미분한 결과이다",
@@ -1358,30 +1625,15 @@
       "scenarioNote": ""
     }
   ],
-  "candidates": [
-    {
-      "term": "정적분으로정의된함수",
-      "en": [
-        "FUNCTION_DEFINED_BY_INTEGRAL"
-      ],
-      "synonyms": [
-        "적분으로정의된함수"
-      ],
-      "kind": "대상",
-      "parent": "정적분",
-      "note": "적분의 위끝이나 아래끝에 변수가 포함되어 정의된 함수",
-      "usedIn": [
-        12,
-        16,
-        18
-      ]
-    }
-  ],
+  "candidates": [],
   "selfCheck": {
     "items": 22,
-    "quotesChecked": 173,
+    "quotesChecked": 216,
     "quotesNotFound": 0,
-    "warningsRechecked": [],
-    "notes": ""
+    "warningsRechecked": [
+      2,
+      3
+    ],
+    "notes": "Sol High 22문항 Q/C/S 전수검수. 실제 그림 없음. Q2,Q3 용어수 WARN은 각각 원시함수+적분상수, 원시함수+끝값차로 충분하여 일반어를 늘리지 않음. 사전 승격된 정적분으로정의된함수 후보 제거. Q12는 x가 적분변수와 다른 매개변수이고 적분끝은 고정이므로 위끝변수 적분함수 용어를 제거. Q10의 모든 실수는 발문 첫 x≥1에 제한된 범위로 해석함. 동의어 추가 필요: 적분으로정의된함수 → 정적분으로정의된함수. 기계검사/통계는 ROOT 담당. | 2026-11-04 Codex-gpt-6.1-sol High 전 문항·그림 4칸 의미 검수. 원작성자 judgedBy 보존. 원본문항 수학 품질 승인과 별개."
   }
 }
