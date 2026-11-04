@@ -1,0 +1,1122 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+  "sourceGitBlobSha": "3908cd9ed6ed160a2a273a4c6ea4749ebb6167a7",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Codex-gpt-6.1-terra",
+    "run": "original-261-270",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순서쌍",
+            "src": "stem",
+            "quote": "크기가 서로 다른 두 개의 주사위"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "합이 5인 경우는",
+            "evidenceType": "IMPLIED",
+            "justification": "합이 5와 7인 순서쌍을 각각 열거한다."
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "두 경우는 겹치지 않으므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "눈의 수의 합이 5 또는 7"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "서로 구별되는 주사위의 두 합별 순서쌍을 세어 더한다."
+      },
+      "steps": [],
+      "scenarioNote": "주사위"
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$(a+b+c)(d+e)(f+g)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "모든 항의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "각 괄호에서 한 항씩 선택하면",
+            "evidenceType": "IMPLIED",
+            "justification": "괄호별 독립 선택 수를 곱한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "세 괄호에서 각각 한 항을 선택하는 수를 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "색칠",
+            "src": "stem",
+            "quote": "5개의 영역이 서로 구분될 수 있도록"
+            },
+            {
+              "term": "배치",
+              "src": "stem",
+              "quote": "5개의 영역이 서로 구분될 수 있도록"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "색칠하는 방법의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "아래쪽 영역의 색을 정하는",
+            "evidenceType": "IMPLIED",
+            "justification": "모든 위 영역과 맞닿은 아래 영역을 먼저 정한다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "바로 앞 영역과 색이 달라야",
+            "evidenceType": "IMPLIED",
+            "justification": "위 영역을 차례로 정하며 인접 색을 제외한 선택 수를 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "인접",
+            "src": "stem",
+            "quote": "서로 구분될 수 있도록"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "모든 위 영역에 접한 아래 색을 정하고 위의 연속 영역을 차례로 색칠한다."
+      },
+      "steps": [],
+      "scenarioNote": "영역 색칠"
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "남학생 4명과 여학생 4명"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "서는 방법의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "남학생을 먼저 배열하면 $4!$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "남학생으로 시작하거나 여학생으로 시작",
+            "evidenceType": "IMPLIED",
+            "justification": "교대 시작 성별 두 경우를 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "교대",
+            "src": "stem",
+            "quote": "남학생과 여학생이 교대로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 성별의 내부 순열과 교대 시작 성별 두 가지를 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": "학생 배열"
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원순열",
+            "src": "stem",
+            "quote": "학생 6명이 원탁에 둘러앉을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원순열",
+            "src": "solution",
+            "quote": "혜민이를 한 자리에 고정하면",
+            "evidenceType": "IMPLIED",
+            "justification": "회전을 제거하고 마주 보는 자리를 정한다."
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "나머지 네 학생은",
+            "evidenceType": "IMPLIED",
+            "justification": "나머지 네 자리에 학생을 배열한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "마주봄",
+            "src": "stem",
+            "quote": "서로 마주보고 앉을"
+            },
+            {
+              "term": "위치",
+              "src": "stem",
+              "quote": "서로 마주보고 앉을"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "한 사람을 고정해 상대의 맞은편을 정하고 나머지를 배열한다."
+      },
+      "steps": [],
+      "scenarioNote": "원탁"
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "배치",
+            "src": "stem",
+            "quote": "직사각형 모양의 탁자에 학생 6명"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "방법의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "여섯 학생을 여섯 자리에 배열",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "회전동치",
+            "src": "solution",
+            "quote": "회전으로 같은 배치가 두 번씩",
+            "evidenceType": "IMPLIED",
+            "justification": "180도 회전으로 같은 두 배열을 묶는다."
+          },
+          {
+            "term": "회전이동",
+            "src": "solution",
+            "quote": "$180^\\circ$ 회전하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "여섯 자리 배열을 직사각형의 180도 회전 중복으로 나눈다."
+      },
+      "steps": [],
+      "scenarioNote": "직사각형 탁자"
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "경로",
+            "src": "stem",
+            "quote": "그림과 같은 도로망"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최단경로",
+            "src": "stem",
+              "quote": "최단 경로의 수는?"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경로의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "위로 가는 두 번을 고르면",
+            "evidenceType": "IMPLIED",
+            "justification": "각 구간의 가로·세로 이동 순서를 고른다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "두 구간의 선택을 하나씩 결합",
+            "evidenceType": "IMPLIED",
+            "justification": "R까지와 이후 경로 수를 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "통과",
+            "src": "stem",
+            "quote": "지점 $\\mathrm{R}$를 거쳐"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "R 전후 최단경로의 이동 순서 수를 각각 구해 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": "도로망"
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "배정",
+            "src": "stem",
+            "quote": "6명의 학생이 두 동아리"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "모든 방법의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복순열",
+            "src": "solution",
+            "quote": "학생마다 선택이 $2$가지",
+            "evidenceType": "IMPLIED",
+            "justification": "각 학생이 두 동아리 중 한 곳을 독립 선택한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "원소의개수",
+            "src": "stem",
+            "quote": "하나의 동아리에만 가입"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 학생의 두 동아리 선택 수를 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": "동아리 가입"
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "{}_{n+3}\\mathrm{C}_{n+1} = 15"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+              "quote": "자연수 $n$의 값"
+          },
+          {
+            "term": "결정",
+            "src": "stem",
+              "quote": "자연수 $n$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "대칭성으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "$(n+3)(n+2)=30$",
+            "evidenceType": "IMPLIED",
+            "justification": "조합을 두 개 선택의 식으로 바꾸어 n을 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+              "quote": "자연수 $n$의 값"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "조합의 대칭성을 이용해 이차식으로 바꾸고 자연수 해를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분할",
+            "src": "stem",
+            "quote": "서로 다른 색연필 8자루"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "방법의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "한 묶음에 들어갈 네 자루를 고르면",
+            "evidenceType": "IMPLIED",
+            "justification": "한 묶음의 네 자루를 고른다."
+          },
+          {
+            "term": "중복계수",
+            "src": "solution",
+            "quote": "각 나눔을 두 번씩 세게 된다",
+            "evidenceType": "IMPLIED",
+            "justification": "구별 없는 두 묶음의 교환 중복을 나눈다."
+          },
+          {
+            "term": "개수",
+            "src": "solution",
+            "quote": "각 나눔을 두 번씩 세게 된다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 색연필 8자루"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "한 묶음을 선택하고 두 동일 크기 묶음의 교환 중복을 제거한다."
+      },
+      "steps": [],
+      "scenarioNote": "색연필 분할"
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부정방정식",
+            "src": "stem",
+            "quote": "$x+y+z=7$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "양의 정수해의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$x=a+1$, $y=b+1$, $z=c+1$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "별 네 개와 칸막이 두 개",
+            "evidenceType": "IMPLIED",
+            "justification": "양의 하한을 빼고 음이 아닌 정수해를 센다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양의 정수해"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 변수에서 1을 빼고 합이 4인 음이 아닌 정수해를 센다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "서로 다른 5개 중에서 2개를 순서 없이"
+          },
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "서로 다른 4개 중에서 2개를 순서 있게"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+              "quote": "방법의 수의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$\\binom{5}{2}=10$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "${}_4P_2=4\\cdot3=12$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "순서 없는 조합과 순서 있는 순열의 수를 각각 구해 합한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분할",
+            "src": "stem",
+            "quote": "똑같은 3개의 접시에 서로 다른 5개의 빵"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "모든 방법의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "묶음 크기가 $1,1,3$이면",
+            "evidenceType": "IMPLIED",
+            "justification": "세 양의 묶음의 크기를 1·1·3과 1·2·2로 분류한다."
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "단독 빵을 고른 뒤",
+            "evidenceType": "IMPLIED",
+            "justification": "각 크기별 빵을 선택하고 동일 크기 묶음의 중복을 보정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별불가",
+            "src": "stem",
+            "quote": "똑같은 3개의 접시"
+          },
+          {
+            "term": "적어도",
+            "src": "stem",
+            "quote": "빈 접시가 없도록"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "구별 없는 세 비어 있지 않은 묶음의 크기별 사람 분할을 센다."
+      },
+      "steps": [],
+      "scenarioNote": "빵 분배"
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정수의분할",
+            "src": "stem",
+            "quote": "똑같은 3개의 바구니"
+            },
+            {
+              "term": "분할",
+              "src": "stem",
+              "quote": "똑같은 3개의 바구니"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "방법의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정수의분할",
+            "src": "solution",
+            "quote": "세 양의 정수를 순서를 생각하지 않고",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 공과 바구니의 분배를 9의 세 양의 정수 분할로 센다."
+            },
+            {
+              "term": "분할",
+              "src": "solution",
+              "quote": "세 양의 정수를 순서를 생각하지 않고",
+              "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별불가",
+            "src": "stem",
+            "quote": "똑같은 9개의 공"
+          },
+          {
+            "term": "적어도",
+            "src": "stem",
+            "quote": "빈 바구니가 없도록"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "9를 세 양의 정수로 순서 없이 분할한다."
+      },
+      "steps": [],
+      "scenarioNote": "공과 바구니"
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정수의분할",
+            "src": "stem",
+              "quote": "자연수 10을 순서를 생각하지 않고"
+            },
+            {
+              "term": "분할",
+              "src": "stem",
+              "quote": "자연수 10을 순서를 생각하지 않고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "모든 방법의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$a=1$이면",
+            "evidenceType": "IMPLIED",
+            "justification": "정렬된 세 수의 최솟값별 가능한 분할을 열거한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "순서",
+            "src": "stem",
+              "quote": "순서를 생각하지 않고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "세 양의 정수를 오름차순으로 두고 가장 작은 수별로 센다."
+      },
+      "steps": [],
+      "scenarioNote": "정수 분할"
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+              "quote": "서로 다른 3개의 자연수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "경우의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "세 수가 모두 홀수이거나 모두 짝수",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 세 수 선택에서 단일 홀짝인 경우를 뺀다."
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+              "quote": "전체 선택은",
+            "evidenceType": "IMPLIED",
+            "justification": "전체와 각 동질 선택을 조합으로 센다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "홀짝",
+            "src": "stem",
+            "quote": "홀수와 짝수가 모두 포함"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전체 세 수 선택에서 모두 홀수 또는 모두 짝수인 경우를 제외한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분배",
+            "src": "stem",
+            "quote": "같은 금액의 상품권 15장"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "방법의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$y_i=x_i-2$로 두면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중복조합",
+            "src": "solution",
+              "quote": "별과 칸막이로",
+            "evidenceType": "IMPLIED",
+            "justification": "각 학생에게 2장씩 먼저 준 뒤 나머지를 분배한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "적어도",
+            "src": "stem",
+            "quote": "모든 학생에게 적어도 두 장씩"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 학생에게 두 장을 먼저 주고 남은 일곱 장을 분배한다."
+      },
+      "steps": [],
+      "scenarioNote": "상품권 분배"
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "3! \\cdot {}_4\\mathrm{P}_3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "다음 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "네 개 중 세 개를 순서 있게",
+            "evidenceType": "IMPLIED",
+            "justification": "순열과 계승을 각각 계산해 곱한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "순열과 계승의 값을 계산해 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "네 자리 자연수 중에서 짝수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "짝수의 개수를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+              "quote": "마지막 숫자가 짝수인지에 따라 나눈다",
+            "evidenceType": "IMPLIED",
+            "justification": "마지막 자리가 0인 경우와 2,4인 경우를 나눈다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "가운데 두 자리는 각각 $5$가지",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 자리의 0을 제외하고 자리별 선택을 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중복허용",
+            "src": "stem",
+            "quote": "중복을 허락하여"
+          },
+          {
+            "term": "짝수",
+            "src": "stem",
+              "quote": "네 자리 자연수 중에서 짝수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "일의 자리를 0 또는 2·4로 나누고 첫 자리의 0을 제외한다."
+      },
+      "steps": [],
+      "scenarioNote": "숫자 배열"
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "같은것이있는순열",
+            "src": "stem",
+            "quote": "$C, O, F, F, E, E$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+              "quote": "모든 배열의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "짝수 번째 자리는 $2,4,6$",
+            "evidenceType": "IMPLIED",
+            "justification": "C의 세 가능한 자리를 정한다."
+          },
+          {
+            "term": "같은것이있는순열",
+            "src": "solution",
+            "quote": "같은 $F$ 두 개와 같은 $E$ 두 개",
+            "evidenceType": "IMPLIED",
+            "justification": "나머지 문자 배열에서 두 쌍의 중복을 제거한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "짝수",
+            "src": "stem",
+              "quote": "$C$가 짝수 번째"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "C의 위치를 정하고 나머지 두 쌍의 같은 문자를 고려해 배열한다."
+      },
+      "steps": [],
+      "scenarioNote": "문자 배열"
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 위에 일정한 간격으로 놓여 있는 8개의 점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "모든 사각형의 개수"
+          },
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형인 경우의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "여덟 점에서 네 점을 고르는",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 사각형을 네 점 선택으로 센다."
+          },
+          {
+            "term": "지름",
+            "src": "solution",
+            "quote": "직사각형의 두 대각선은 원의 지름",
+            "evidenceType": "IMPLIED",
+            "justification": "네 지름 중 두 지름을 선택해 직사각형을 센다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "전체는 네 점을 고르고 직사각형은 두 지름의 끝점을 선택한다."
+      },
+      "steps": [],
+      "scenarioNote": "원 위 점"
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "집합 $X = \\{1, 2, 3, 4\\}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "함수의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복순열",
+            "src": "solution",
+            "quote": "함수의 수는 $5^4=625$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 정의역 원소의 값을 독립 선택한다."
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+              "quote": "일대일 함수는 서로 다른 네 치역 원소",
+            "evidenceType": "IMPLIED",
+            "justification": "일대일 대응의 함수값을 순서 있게 선택한다."
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "엄격히 증가하는 함수는",
+            "evidenceType": "IMPLIED",
+            "justification": "엄격히 증가하는 값은 네 값의 선택으로 정해진다."
+          },
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "순서를 지키며 고르는 중복조합",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 엄격 부등식에 따른 중간값을 고정해 나머지 비감소 값을 선택한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "일대일함수",
+            "src": "stem",
+              "quote": "일대일 함수의 개수"
+          },
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "$f(1) < f(2) \\le f(3) \\le f(4)$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전체·일대일·엄격증가·부분 비감소 함수의 수를 각 선택 조건에 따라 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [
+    {"term":"색칠","en":"COLORING","synonyms":[],"kind":"대상","parent":"배치","note":"도형 영역에 색을 배정하는 구성.","usedIn":[3]},
+    {"term":"마주봄","en":"OPPOSITE_POSITIONS","synonyms":[],"kind":"조건","parent":"위치","note":"두 대상이 원탁에서 서로 마주 보는 자리에 위치한다.","usedIn":[5]},
+    {"term":"정수의분할","en":"INTEGER_PARTITION","synonyms":[],"kind":"대상","parent":"분할","note":"자연수를 순서 없이 양의 정수들의 합으로 표현한다.","usedIn":[14,15]},
+    {
+      "term": "회전동치",
+      "en": "ROTATIONAL_EQUIVALENCE",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "회전이동",
+      "note": "회전으로 일치하는 배치를 한 경우로 센다.",
+      "usedIn": [
+        6
+      ]
+    },
+    {
+      "term": "중복계수",
+      "en": "DOUBLE_COUNT_CORRECTION",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "개수",
+      "note": "구별 라벨로 중복하여 센 횟수를 보정한다.",
+      "usedIn": [
+        10
+      ]
+    }
+  ],
+  "selfCheck": {
+    "items": 22,
+    "quotesChecked": 117,
+    "quotesNotFound": 0,
+    "warningsRechecked": [2,4,5,8,12,14,15,16,18,20],
+    "notes": "Q2 괄호별 항 선택 곱, Q4 교대 시작과 두 내부 순열, Q5 원탁 고정과 맞은편, Q8 학생별 두 동아리 선택, Q12 조합과 순열 계산, Q14 9의 세 양의 정수 분할, Q15 10의 세 양의 정수 분할, Q16 홀짝 단일 선택의 여사건, Q18 계승과 순열 계산, Q20 C의 짝수 위치와 동일 문자 중복을 재확인. q03·q06·q07·q21 PNG 실제 열람."
+  }
+}
