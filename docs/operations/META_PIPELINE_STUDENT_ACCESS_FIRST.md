@@ -4,7 +4,7 @@
 
 - 기존 등록기가 메타 계약을 만족하면 종전대로 정본/Runtime에 반영한다.
 - META_PIPELINE_AUDIT 요청이 메타 계약에서 거부되면 원본 요청을 `.archive-meta-register/pending-supplement/`에 보존한다. 영수증은 `USER_APPROVED_PENDING_SUPPLEMENT`, `NOT_VERIFIED`, `canonicalProjectionStatus: NOT_APPLIED`를 명시한다. 이는 사용자 선승인이며 검수 PASS가 아니다.
-- 해당 시험지 JS 로드, 문항 수, 발문/보기, 참조된 로컬 그림 자산 존재를 검사한다. 해설이 비어 있는 SOURCE_ONLY 기출은 출고 통과하며 문항별 `SOLUTION_PENDING` 후보완을 남긴다. 참조된 해설 자산이 깨졌거나 문항을 읽고 풀 수 없는 이용 장애는 `STUDENT_ACCESS_REPAIR_REQUIRED`로 기록하고 출고 검사를 실패시킨다. 브라우저 렌더 및 수학 검수는 이 검사만으로 PASS가 되지 않는다.
+- 해당 시험지 JS 로드, 문항 수, 발문/보기, 문제에 참조된 로컬 그림 자산을 검사한다. 해설이 비어 있는 SOURCE_ONLY 기출은 출고 통과하며 문항별 `SOLUTION_PENDING` 후보완을 남긴다. 문제 그림·발문·선택지 등 실제로 문제를 읽고 풀 수 없는 장애는 `STUDENT_ACCESS_REPAIR_REQUIRED`로 기록하고 출고 검사를 실패시킨다. 해설 텍스트·그림 자산 누락은 `SOLUTION_ASSET_PENDING` 후보완으로 기록하고 학생의 문제 풀이 출고를 막지 않는다. 브라우저 렌더 및 수학 검수는 이 검사만으로 PASS가 되지 않는다.
 - 메타의 소비자 승인/검색 값 검사는 보고서로 남긴다. 메타 불완전만으로 Pages 후속 출고를 중단하지 않는다. META_PIPELINE 이외 등록 유형의 기존 게이트는 유지한다.
 - 변환기는 현재 production JS와 난이도를 쓰지 않는다. 감사본 SHA, 현재 SHA, UID별 payload 차이는 그대로 기록한다. 최신 해설이 달라도 원본을 되돌리지 않고 후보완 요청으로 접수한다. L1/L2 미확정도 후보완으로 기록한다.
 - 원본 감사 파일 자체의 SHA 불일치, UID 중복/식별 불능은 별도 BLOCKED 입력 기록으로 남긴다. 그런 상태를 특정 문항의 검증 완료로 꾸미지 않는다.

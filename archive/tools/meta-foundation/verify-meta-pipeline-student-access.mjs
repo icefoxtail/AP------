@@ -21,22 +21,24 @@ export function verifyStudentAccess(root, request) {
     const rows=ctx.window.questionBank||ctx.window.questions||ctx.questions||ctx.questionBank||ctx.window.examData?.questions;
     if(!Array.isArray(rows)||!rows.length)throw Error('QUESTION_BANK_MISSING');
     if(request.expectedQuestionCount!==rows.length)failures.push('QUESTION_COUNT_MISMATCH');
-    const checkAsset=(url,qid)=>{
-      if(url&&typeof url==='object'){url=url.src||url.url||url.path;if(!url){failures.push(`${qid}:ASSET_REFERENCE_UNSUPPORTED`);return;}}
+    const checkAsset=(url,qid,{supplemental=false}={})=>{
+      const report=supplemental?supplements:failures;
+      if(url&&typeof url==='object'){url=url.src||url.url||url.path;if(!url){report.push(`${qid}:${supplemental?'SOLUTION_ASSET_REFERENCE_UNSUPPORTED':'ASSET_REFERENCE_UNSUPPORTED'}`);return;}}
       if(typeof url!=='string'||!url.trim()||url.trim().startsWith('<svg')||/^data:/i.test(url))return;
-      if(/^https?:/i.test(url)){failures.push(`${qid}:REMOTE_ASSET_NOT_VERIFIED:${url}`);return;}
+      if(/^https?:/i.test(url)){report.push(`${qid}:${supplemental?'SOLUTION_ASSET_NOT_VERIFIED':'REMOTE_ASSET_NOT_VERIFIED'}:${url}`);return;}
       const rel=url.split(/[?#]/)[0].replace(/^\/?archive\//,'').replace(/^\//,'');
       const asset=path.resolve(root,'archive',rel);
-      if(!asset.startsWith(path.resolve(root,'archive')+path.sep)||!fs.existsSync(asset))failures.push(`${qid}:ASSET_MISSING:${url}`);
+      if(!asset.startsWith(path.resolve(root,'archive')+path.sep)||!fs.existsSync(asset))report.push(`${qid}:${supplemental?'SOLUTION_ASSET_PENDING':'ASSET_MISSING'}:${url}`);
     };
     rows.forEach((q,i)=>{
       const qid=i+1;
       if(!String(q.content??q.question??q.stem??'').trim())failures.push(`${qid}:QUESTION_EMPTY`);
       if(!String(q.solution??q.explanation??'').trim()&&!q.solutionImage&&!q.solutionFigureSvg)supplements.push(`${qid}:SOLUTION_PENDING`);
       if(q.questionType==='객관식'&&(!Array.isArray(q.choices)||!q.choices.length))failures.push(`${qid}:CHOICES_EMPTY`);
-      for(const value of [q.image,...(Array.isArray(q.images)?q.images:[]),q.solutionImage])checkAsset(value,qid);
-      for(const html of [q.content,q.solution,q.figureSvg,q.solutionFigureSvg])for(const m of String(html||'').matchAll(/(?:src|href)=["']([^"']+)["']/g)){
-        if(!m[1].startsWith('#'))checkAsset(m[1],qid);
+      for(const value of [q.image,...(Array.isArray(q.images)?q.images:[])])checkAsset(value,qid);
+      if(q.solutionImage)checkAsset(q.solutionImage,qid,{supplemental:true});
+      for(const [html,supplemental] of [[q.content,false],[q.figureSvg,false],[q.solution,true],[q.solutionFigureSvg,true]])for(const m of String(html||'').matchAll(/(?:src|href)=["']([^"']+)["']/g)){
+        if(!m[1].startsWith('#'))checkAsset(m[1],qid,{supplemental});
       }
     });
     return {status:failures.length?'FAIL':'PASS',sourceArchiveFile:source,questionCount:rows.length,failures,supplements,browserRendering:'NOT_RUN',mathReview:'NOT_RUN'};

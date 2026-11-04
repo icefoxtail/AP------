@@ -34,6 +34,10 @@ test('usable exam gets provisional metadata approval without changing difficulty
   assert.equal(verifyStudentAccess(root,req).status,'FAIL');
   fs.writeFileSync(sourcePath,'window.questionBank=[{id:1,content:"Question",solution:"Solution",image:"assets/missing.svg"}];');
   assert.match(verifyStudentAccess(root,req).failures[0],/ASSET_MISSING/);
+  fs.writeFileSync(sourcePath,'window.questionBank=[{id:1,content:"Question",choices:["A"],solution:"",solutionImage:"assets/missing-solution.svg"}];');
+  const solutionAsset=verifyStudentAccess(root,req);
+  assert.equal(solutionAsset.status,'PASS');
+  assert.deepEqual(solutionAsset.supplements,['1:SOLUTION_ASSET_PENDING:assets/missing-solution.svg']);
   assert.equal(verifyStudentAccess(root,{...req,sourceArchiveFile:'../../outside.js'}).status,'FAIL');
  }finally{fs.rmSync(root,{recursive:true,force:true});}
 });
