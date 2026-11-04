@@ -1,0 +1,1519 @@
+{
+  "schemaVersion": "nov04-four-semantic-review-summary-v1",
+  "requestId": "meta-pipeline-nov04-4-31cbb3b72991-20261104",
+  "examKey": "nov04-4",
+  "examTitle": "2022학년도 순천풍덕중 2학년 1학기 기말고사 수학",
+  "examSlug": "22_풍덕중_1학기_기말_중2_수학",
+  "sourceArchiveFile": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+  "correctiveReviewPath": "C:/Users/USER/AppData/Local/Temp/MetaChild20261026/nov04-drift.mjs",
+  "correctiveReviewSha256": "ffa64d591391dc6fb787e2bb9891f6e2b8ad6313309c05d2ae39226bedd44b7b",
+  "correctiveReviewSchema": "CORRECTIVE_CURRENT_SOURCE_REVIEW_V1",
+  "correctiveReviewType": "CORRECTIVE_METADATA_AUDIT_BY_CURRENT_SOURCE",
+  "generatedAt": "2026-11-04",
+  "reviewer": {
+    "agent": "OpenCode",
+    "model": "deepseek-v4.1-flash",
+    "provider": "opencode-go",
+    "modelId": "deepseek-v4.1-flash"
+  },
+  "attribution": {
+    "thisReview": "OpenCode deepseek-v4.1-flash",
+    "originalAudit": "NOT_ATTRIBUTABLE_TO_THIS_REVIEW; historical audit provenance unchanged",
+    "note": "This corrective review supersedes nothing automatically; it is an additive finding set for ROOT."
+  },
+  "definitionsModule": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.reviewed-definitions.mjs",
+    "sha256": "ab56d314d522868a5a75363616f0c754060407db19371fcf82bdd16d344ddc3c",
+    "schema": "NOV04_M2_DEFINITIONS_V1",
+    "counts": {
+      "rows": 25,
+      "uniqueProblemTypes": 25,
+      "uniqueTemplatePatterns": 25,
+      "uniqueCrossConcepts": 53,
+      "units": 3,
+      "subUnits": 5,
+      "rowsBoundToMiddle2": 12,
+      "rowsBoundToMiddleGeometry": 13,
+      "canonicalCcExactReuse": 6,
+      "canonicalCcConflictNewKey": 4,
+      "visualRowsUnchecked": [
+        2,
+        3,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        20,
+        21,
+        22,
+        24,
+        25
+      ],
+      "visualRowsRequiredForAssignmentUnchecked": [
+        3,
+        12,
+        17,
+        18,
+        21,
+        22,
+        25
+      ]
+    }
+  },
+  "rowCount": 25,
+  "driftSeverity": "MAJOR_CONTENT_DRIFT",
+  "driftSummary": {
+    "exam": "nov04-4",
+    "examTitle": "2022학년도 순천풍덕중 2학년 1학기 기말고사 수학",
+    "examSlug": "22_풍덕중_1학기_기말_중2_수학",
+    "auditRecordedSha256": "d7b32b4a064acb0214f5b16cfa2fb55e473ad64b0cb0150fdceacb619e64c080",
+    "questions": 25,
+    "driftSeverity": "MAJOR_CONTENT_DRIFT",
+    "contentDriftedOrdinals": [
+      1,
+      2,
+      3,
+      5,
+      7,
+      8,
+      10,
+      11,
+      12,
+      14,
+      16,
+      17,
+      18,
+      23,
+      25
+    ],
+    "traceOnlyDriftedOrdinals": [
+      9
+    ],
+    "unitKeyDriftedOrdinals": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      24,
+      25
+    ],
+    "subUnitFormatOnlyOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      22,
+      23
+    ],
+    "levelDriftedOrdinals": [],
+    "difficultyDriftedOrdinals": [],
+    "headline": "Same exam shell and same level/difficulty ladder, but a large share of audited answer keys and item parameters belong to a different item variant than the current source."
+  },
+  "rows": [
+    {
+      "sourceOrdinal": 1,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templatePattern": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "crossConcepts": [
+          "CC_EXPONENT_RULES",
+          "CC_MONOMIAL_DIVISION",
+          "CC_ALGEBRAIC_SIMPLIFICATION"
+        ],
+        "unitKey": "M2-02",
+        "subUnitKey": "M2-02-01",
+        "level": "하",
+        "difficultyRank": 1,
+        "auditAnswer": "⑤"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item is a five-way accuracy check on monomial multiplication/division using exponent laws."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Template describes evaluating exponent-law monomial operations; the solution performs exactly that for all five choices."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Exponent rules, monomial division (choices ④, ⑤) and algebraic simplification are all exercised."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-02 agrees; audit M2-02-01 vs source M2-02-EXPONENT_LAWS is a naming-format difference only."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "answer",
+        "from": "⑤",
+        "to": "②",
+        "reason": "Current choice ② is the false statement ($-27x^6y^8$ printed as $-9x^6y^8$). The current solution verifies ①③④⑤ as true, so the audited key is inverted relative to current source."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": false,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA",
+        "templatePattern": "TPL_M2_FIND_TRIANGLE_HEIGHT_FROM_POLYNOMIAL_AREA",
+        "crossConcepts": [
+          "CC_TRIANGLE_AREA",
+          "CC_POLYNOMIAL_DIVISION",
+          "CC_ALGEBRAIC_MODELING"
+        ],
+        "unitKey": "M2-02",
+        "subUnitKey": "M2-02-02",
+        "level": "하",
+        "difficultyRank": 2,
+        "auditAnswer": "②"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item derives a height by dividing a polynomial area by a monomial base."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "The audited template name matches the current geometric-area height derivation."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Triangle area, polynomial division and modeling are all present."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-02 agrees; numeric vs semantic subUnit suffix."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "answer",
+        "from": "②",
+        "to": "④",
+        "reason": "Current derivation ends at $8y^2-4y$, which is choice ④. The audited trace itself states a third expression ($8x-4y$) that is not any current choice, so the audited key belongs to a different variant."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": true,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null,
+        "note": "Figure is illustrative; area and base are stated in text, so assignment fit is decidable without the image."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA",
+        "templatePattern": "TPL_M2_CALCULATE_FOLDED_TRIANGLE_AREA_WITH_VARIABLES",
+        "crossConcepts": [
+          "CC_RECTANGLE_AREA",
+          "CC_POLYNOMIAL_MULTIPLICATION",
+          "CC_GEOMETRIC_FOLDING"
+        ],
+        "unitKey": "M2-02",
+        "subUnitKey": "M2-02-02",
+        "level": "중",
+        "difficultyRank": 3,
+        "auditAnswer": "①"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Folded-triangle area with variable side lengths is the current task."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Template matches computing a folded triangle area with variables."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Rectangle area, polynomial multiplication and folding congruence are used."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-02 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "answer",
+        "from": "①",
+        "to": "③",
+        "reason": "Current derivation gives $3ab-\\frac23b^2$, which is choice ③. The audited value $3ab-\\frac12b^2$ (choice ①) is a different parameter variant."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": true,
+        "requiredForAssignment": true,
+        "inspected": false,
+        "evidenceDebt": "VISUAL_EVIDENCE_DEBT: the current solution reads $AD=2b$, $CD=AB=3a$, $CE=\\frac23b$ from the figure; those lengths are not in the statement text. Figure was not inspected, so only source-solution-consistent metadata is asserted."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+        "templatePattern": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+        "crossConcepts": [
+          "CC_POLYNOMIAL_ADDITION",
+          "CC_POLYNOMIAL_SUBTRACTION",
+          "CC_ERROR_CORRECTION"
+        ],
+        "unitKey": "M2-02",
+        "subUnitKey": "M2-02-02",
+        "level": "하",
+        "difficultyRank": 2,
+        "auditAnswer": "①"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item asks to undo a mistaken addition by a second subtraction."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Restore-correct-polynomial-calculation matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Addition, subtraction and error correction are all present."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-02 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": null,
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": false,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+        "templatePattern": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+        "crossConcepts": [
+          "CC_LINEAR_INEQUALITIES",
+          "CC_POLYNOMIAL_DEGREE",
+          "CC_INEQUALITY_IDENTIFICATION"
+        ],
+        "unitKey": "M2-03",
+        "subUnitKey": "M2-03-01",
+        "level": "하",
+        "difficultyRank": 1,
+        "auditAnswer": "②"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current task classifies which listed inequalities remain linear after simplification."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Select-valid-linear-inequalities matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Degree inspection and inequality identification are used; CC_POLYNOMIAL_DEGREE is justified by ㄹ."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-03 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "answer",
+        "from": "②",
+        "to": "⑤",
+        "reason": "Current source solution identifies ㄱ, ㄷ, ㅁ (choice ⑤). The audited pair ㄱ, ㅁ (choice ②) omits ㄷ, which the current solution simplifies to $2x>5$."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": false,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+        "templatePattern": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+        "crossConcepts": [
+          "CC_INEQUALITY_PROPERTIES",
+          "CC_NEGATIVE_MULTIPLICATION",
+          "CC_DIRECTION_OF_INEQUALITY"
+        ],
+        "unitKey": "M2-03",
+        "subUnitKey": "M2-03-01",
+        "level": "하",
+        "difficultyRank": 1,
+        "auditAnswer": "③"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item is a true/false check of inequality transformation properties."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Evaluate-inequality-transformation-properties matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Negative multiplication and direction reversal are the decisive concepts."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-03 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": null,
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": false,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+        "templatePattern": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+        "crossConcepts": [
+          "CC_LINEAR_INEQUALITIES",
+          "CC_FRACTION_COEFFICIENTS",
+          "CC_DECIMAL_COEFFICIENTS"
+        ],
+        "unitKey": "M2-03",
+        "subUnitKey": "M2-03-02",
+        "level": "하",
+        "difficultyRank": 2,
+        "auditAnswer": "⑤"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item checks five solved linear inequalities for the incorrect result."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Fractional/decimal inequality check matches current choices ③ and ④."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Fraction and decimal coefficients both appear."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-03 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "answer",
+        "from": "⑤",
+        "to": "④",
+        "reason": "Current source marks ④ as the false solution ($x>\\frac{64}{3}$, not $x>3$) and explicitly verifies ⑤ as correct ($x\\ge-14$). Audited key ⑤ is inverted."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": false,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM",
+        "templatePattern": "TPL_M2_CALCULATE_SUM_OF_NATURAL_SOLUTIONS_TO_INEQUALITY",
+        "crossConcepts": [
+          "CC_LINEAR_INEQUALITIES",
+          "CC_FRACTION_COEFFICIENTS",
+          "CC_NATURAL_NUMBER_SUM"
+        ],
+        "unitKey": "M2-03",
+        "subUnitKey": "M2-03-02",
+        "level": "중",
+        "difficultyRank": 2,
+        "auditAnswer": "③"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item sums the natural solutions of a linear inequality."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Calculate-sum-of-natural-solutions matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Natural-number summation is decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-03 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "answer",
+        "from": "③",
+        "to": "②",
+        "reason": "Current inequality yields $x<\\frac{22}{7}$, so natural solutions are 1, 2, 3 and the sum is 6 (choice ②). The audited trace cites $x<6$ and sum 15, which is a different inequality than the current statement."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": false,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS",
+        "templatePattern": "TPL_M2_FIND_PARAMETER_RANGE_FOR_NO_NATURAL_SOLUTIONS",
+        "crossConcepts": [
+          "CC_LINEAR_INEQUALITIES",
+          "CC_NUMBER_LINE",
+          "CC_BOUNDARY_VALUE_ANALYSIS"
+        ],
+        "unitKey": "M2-03",
+        "subUnitKey": "M2-03-02",
+        "level": "중",
+        "difficultyRank": 3,
+        "auditAnswer": "①"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item finds the parameter range with no natural solution."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Boundary analysis for absence of natural solutions matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Boundary value 1 is decisive; number-line reasoning is implicit."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-03 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": null,
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": "TRACE_ONLY_DRIFT: the audited reason writes $(a+17)/4$; the current solution has denominator 10 and concludes $a\\le-7$. The audited key ① survives, but the audited trace cannot be used as evidence.",
+      "visual": {
+        "hasFigure": false,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templatePattern": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+        "crossConcepts": [
+          "CC_APPLIED_WORD_PROBLEMS",
+          "CC_SPEED_DISTANCE_TIME",
+          "CC_LINEAR_INEQUALITIES"
+        ],
+        "unitKey": "M2-03",
+        "subUnitKey": "M2-03-03",
+        "level": "중",
+        "difficultyRank": 3,
+        "auditAnswer": "③"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item is a round-trip speed/time inequality word problem."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Round-trip time-limit inequality matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Speed-distance-time and applied modeling are used."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-03 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "answer",
+        "from": "③",
+        "to": "⑤",
+        "reason": "Current solution yields $x\\le\\frac83$, i.e. choice ⑤. The audited answer $\\frac73$ km (③) corresponds to a different stored item version."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": false,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+        "templatePattern": "TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER",
+        "crossConcepts": [
+          "CC_PARALLELOGRAMS",
+          "CC_RATIO_AND_PROPORTION",
+          "CC_PERIMETER"
+        ],
+        "unitKey": "MG-02",
+        "subUnitKey": "MG-02-01",
+        "level": "하",
+        "difficultyRank": 2,
+        "auditAnswer": "①"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item computes a parallelogram side from ratio and perimeter."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Side-from-ratio-and-perimeter template matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Parallelogram, ratio and perimeter are all decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "Audit MG-02 is a namespace not present in canonical. Source M2-06 conflicts with canonical MIDDLE_GEOMETRY evidence that quadrilateral properties live under M2-05 (subUnitKey M2-05-QUADRILATERAL_PROPERTIES); canonical M2-06 is similarity."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "answer+unitKey",
+        "from": "answer ① ; unitKey MG-02 ; subUnitKey MG-02-01",
+        "to": "answer ② ; unitKey M2-05 ; subUnitKey M2-05-QUADRILATERAL_PROPERTIES",
+        "reason": "Current source gives perimeter 48cm and ratio 3:5, hence AB=9cm (choice ②). Unit recommendation follows canonical MIDDLE_GEOMETRY binding for quadrilateral properties; MG-02 has no canonical support."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": true,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null,
+        "note": "Ratio and perimeter are stated; figure is illustrative."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+        "templatePattern": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+        "crossConcepts": [
+          "CC_PARALLELOGRAMS",
+          "CC_ANGLE_BISECTOR",
+          "CC_ISOSCELES_TRIANGLES"
+        ],
+        "unitKey": "MG-02",
+        "subUnitKey": "MG-02-01",
+        "level": "중",
+        "difficultyRank": 3,
+        "auditAnswer": "②"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item computes an overlapping segment made by two angle bisectors in a parallelogram."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Two-bisector overlapping segment template matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Isosceles triangles formed by bisectors are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05 quadrilateral properties."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "answer+unitKey",
+        "from": "answer ② ; unitKey MG-02",
+        "to": "answer ③ ; unitKey M2-05",
+        "reason": "Current solution states $EF=3$cm (choice ③). Unit recommendation follows canonical quadrilateral binding."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": true,
+        "requiredForAssignment": true,
+        "inspected": false,
+        "evidenceDebt": "VISUAL_EVIDENCE_DEBT: the solution uses $AB=BE=6$cm and $AD=BC=9$cm, which are read from the figure; the statement gives no lengths. Figure not inspected."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+        "templatePattern": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+        "crossConcepts": [
+          "CC_PARALLELOGRAMS",
+          "CC_QUADRILATERAL_PROPERTIES",
+          "CC_TRIANGLE_CONGRUENCE"
+        ],
+        "unitKey": "MG-02",
+        "subUnitKey": "MG-02-01",
+        "level": "하",
+        "difficultyRank": 2,
+        "auditAnswer": "①"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item selects the invalid sufficient condition for a parallelogram."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Identify-invalid-parallelogram-condition matches."
+        },
+        "crossConcepts": {
+          "verdict": "PARTIAL",
+          "note": "CC_TRIANGLE_CONGRUENCE is not used by the current solution; the decisive concept is counterexample insufficiency of a condition set."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "unitKey",
+        "from": "MG-02",
+        "to": "M2-05",
+        "reason": "Canonical quadrilateral-property binding; answer ① is correct for current source and needs no change."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": true,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null,
+        "note": "All five conditions are written in the choices; the figure is illustrative."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+        "templatePattern": "TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT",
+        "crossConcepts": [
+          "CC_PARALLELOGRAMS",
+          "CC_TRIANGLE_AREA",
+          "CC_INTERNAL_POINT_PROPERTIES"
+        ],
+        "unitKey": "MG-02",
+        "subUnitKey": "MG-02-01",
+        "level": "중",
+        "difficultyRank": 3,
+        "auditAnswer": "①"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item uses the half-area property for an internal point of a parallelogram."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Opposite-triangle-area-from-internal-point matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Parallelogram area plus triangle area."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "unitKey",
+        "from": "MG-02",
+        "to": "M2-05",
+        "reason": "Canonical quadrilateral binding; current answer ① is correct."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": "TRACE_NUMERIC_DRIFT: audited trace uses $35/2-14=7/2$, but current source statement uses total area 68 and triangle ABP 24, giving 34-24=10. The audited arithmetic does not exist in the current solution.",
+      "visual": {
+        "hasFigure": true,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null,
+        "note": "Areas are stated; figure is illustrative."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+        "templatePattern": "TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS",
+        "crossConcepts": [
+          "CC_PARALLELOGRAMS",
+          "CC_RECTANGLES",
+          "CC_ANGLE_BISECTOR"
+        ],
+        "unitKey": "MG-02",
+        "subUnitKey": "MG-02-02",
+        "level": "중",
+        "difficultyRank": 3,
+        "auditAnswer": "⑤"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item analyses the rectangle formed by the four angle bisectors of a parallelogram."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Evaluate-rectangle-formed-by-bisectors matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Parallelogram, rectangle and angle bisector all appear."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05 (M2-05 has no rectangle subUnit but is the quadrilateral domain)."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "unitKey",
+        "from": "MG-02",
+        "to": "M2-05",
+        "reason": "Canonical quadrilateral binding; answer ⑤ is correct."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": true,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null,
+        "note": "Construction is fully described in text."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS",
+        "templatePattern": "TPL_MG_SELECT_NON_RECTANGLE_CONDITIONS_FOR_PARALLELOGRAM",
+        "crossConcepts": [
+          "CC_PARALLELOGRAMS",
+          "CC_RECTANGLES",
+          "CC_RHOMBUS"
+        ],
+        "unitKey": "MG-02",
+        "subUnitKey": "MG-02-02",
+        "level": "중",
+        "difficultyRank": 3,
+        "auditAnswer": "③, ④"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item selects the two non-rectangle conditions for a parallelogram."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Select-non-rectangle-conditions matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Rhombus conditions are the decisive distractors."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "answer+unitKey",
+        "from": "answer ③, ④ ; unitKey MG-02",
+        "to": "answer ①, ⑤ ; unitKey M2-05",
+        "reason": "Current choices assign the rhombus-only conditions to ① ($AB=AD$) and ⑤ ($AO\\perp BD$); the current solution selects ① and ⑤. Audited ③, ④ are, in the current choice set, valid rectangle conditions ($AO=BO$ and $AC=BD$)."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": true,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES",
+        "templatePattern": "TPL_MG_CALCULATE_SUM_OF_ANGLES_IN_RHOMBUS",
+        "crossConcepts": [
+          "CC_RHOMBUS",
+          "CC_PERPENDICULAR_BISECTOR",
+          "CC_ANGLE_RELATIONS"
+        ],
+        "unitKey": "MG-02",
+        "subUnitKey": "MG-02-02",
+        "level": "하",
+        "difficultyRank": 2,
+        "auditAnswer": "④"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item uses perpendicular diagonals of a rhombus to sum two acute angles."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Sum-of-angles-in-rhombus matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Perpendicular bisector property is decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "unitKey",
+        "from": "MG-02",
+        "to": "M2-05",
+        "reason": "Canonical quadrilateral binding; answer index ④ is unchanged. Numeric value differs: audited 85°, current 90°."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": "TRACE_VALUE_DRIFT: audited value 85°; current solution states $\\angle x+\\angle y=90^\\circ$ (choice ④).",
+      "visual": {
+        "hasFigure": true,
+        "requiredForAssignment": true,
+        "inspected": false,
+        "evidenceDebt": "VISUAL_EVIDENCE_DEBT: angle labels x and y are defined only in the figure. Figure not inspected; no visual claim made."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_MG_PARALLELOGRAM_TO_RHOMBUS_CONDITIONS",
+        "templatePattern": "TPL_MG_IDENTIFY_RHOMBUS_FROM_PARALLELOGRAM_ANGLES",
+        "crossConcepts": [
+          "CC_PARALLELOGRAMS",
+          "CC_RHOMBUS",
+          "CC_ISOSCELES_TRIANGLES"
+        ],
+        "unitKey": "MG-02",
+        "subUnitKey": "MG-02-02",
+        "level": "하",
+        "difficultyRank": 2,
+        "auditAnswer": "③"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "PARTIAL",
+          "note": "The audited PT stops at rhombus; the current item requires the stronger final classification square. Rhombus reasoning is a necessary intermediate."
+        },
+        "templatePattern": {
+          "verdict": "PARTIAL",
+          "note": "Identify-rhombus is only the intermediate step; current solution continues to square."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Parallelogram and isosceles-triangle angle reasoning are used."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "answer+primaryTaxonomy+unitKey",
+        "from": "answer ③ (마름모) ; PT_MG_PARALLELOGRAM_TO_RHOMBUS_CONDITIONS ; MG-02",
+        "to": "answer ⑤ (정사각형) ; PT requiring parallelogram->square classification ; M2-05",
+        "reason": "Current solution derives rhombus and then rectangle, concluding square (choice ⑤). Audited rhombus key understates the current final classification. No canonical PT identifier for the square step was found, so a new PT id is NOT fabricated; ROOT must decide the taxonomy label."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": true,
+        "requiredForAssignment": true,
+        "inspected": false,
+        "evidenceDebt": "VISUAL_EVIDENCE_DEBT: the equality $\\angle ABD=\\angle ACD=\\angle CAD$ is stated in text, but the configuration is drawn; no visual inspection performed. Assignment correction rests solely on the current solution text."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH",
+        "templatePattern": "TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS",
+        "crossConcepts": [
+          "CC_QUADRILATERAL_PROPERTIES",
+          "CC_DIAGONALS",
+          "CC_CLASSIFICATION"
+        ],
+        "unitKey": "MG-02",
+        "subUnitKey": "MG-02-02",
+        "level": "하",
+        "difficultyRank": 1,
+        "auditAnswer": "③"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item counts quadrilaterals with equal diagonals."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Count-quadrilaterals-with-equal-diagonals matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Diagonal and classification knowledge are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "unitKey",
+        "from": "MG-02",
+        "to": "M2-05",
+        "reason": "Canonical quadrilateral binding; answer ③ is correct."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": false,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
+        "templatePattern": "TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID",
+        "crossConcepts": [
+          "CC_TRAPEZOID",
+          "CC_TRIANGLE_AREA",
+          "CC_AREA_RATIO"
+        ],
+        "unitKey": "MG-02",
+        "subUnitKey": "MG-02-03",
+        "level": "중",
+        "difficultyRank": 3,
+        "auditAnswer": "②"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item computes a side-triangle area in a trapezoid via diagonal ratio."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Side-triangle area in trapezoid matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Trapezoid, triangle area and area ratio are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02/MG-02-03 vs source M2-06/M2-06-PARALLEL_AND_AREA vs canonical M2-05 quadrilateral domain. Also the audited subUnit 'MG-02-03' sits outside the canonical subUnit inventory."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "unitKey",
+        "from": "MG-02 / MG-02-03",
+        "to": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES",
+        "reason": "Canonical quadrilateral binding; answer ② (14cm^2) matches current source."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": true,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null,
+        "note": "Given areas and ratio are in text."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+        "templatePattern": "TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL",
+        "crossConcepts": [
+          "CC_PARALLEL_LINES",
+          "CC_EQUAL_AREA_TRANSFORMATION",
+          "CC_TRIANGLE_AREA"
+        ],
+        "unitKey": "MG-02",
+        "subUnitKey": "MG-02-03",
+        "level": "하",
+        "difficultyRank": 2,
+        "auditAnswer": "①"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item finds the parallel condition enabling equal-area transformation."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Parallel-condition-for-equal-area matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Parallel lines and equal-area transformation are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "unitKey",
+        "from": "MG-02 / MG-02-03",
+        "to": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES",
+        "reason": "Canonical quadrilateral binding; answer ① is correct."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": true,
+        "requiredForAssignment": true,
+        "inspected": false,
+        "evidenceDebt": "VISUAL_EVIDENCE_DEBT: the point E and the configuration of triangle ABE are only in the figure; statement does not define E. Figure not inspected."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO",
+        "templatePattern": "TPL_M2_CALCULATE_VOLUME_RATIO_OF_TWO_REVOLVED_CYLINDERS_DESCRIPTIVE",
+        "crossConcepts": [
+          "CC_POLYNOMIAL_MULTIPLICATION",
+          "CC_CYLINDER_VOLUME",
+          "CC_VOLUME_RATIO"
+        ],
+        "unitKey": "M2-02",
+        "subUnitKey": "M2-02-01",
+        "level": "중",
+        "difficultyRank": 3,
+        "auditAnswer": "$\\dfrac{3b}{4a}$"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item forms a ratio of two revolved-cylinder volumes built from monomials."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Descriptive volume-ratio template matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Cylinder volume and polynomial multiplication are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-02 agrees; subUnit label differs only in format."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": null,
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": true,
+        "requiredForAssignment": true,
+        "inspected": false,
+        "evidenceDebt": "VISUAL_EVIDENCE_DEBT: the side lengths $AB=4a$, $BC=3b$ are only in the figure; the statement does not give them. Figure not inspected."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK",
+        "templatePattern": "TPL_M2_SOLVE_WATER_TANK_CAPACITY_INEQUALITY_DESCRIPTIVE",
+        "crossConcepts": [
+          "CC_LINEAR_INEQUALITIES",
+          "CC_APPLIED_WORD_PROBLEMS",
+          "CC_FRACTION_ARITHMETIC"
+        ],
+        "unitKey": "M2-03",
+        "subUnitKey": "M2-03-03",
+        "level": "중",
+        "difficultyRank": 3,
+        "auditAnswer": "$33\\text{L}$ 이상"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item is a water-tank capacity inequality word problem."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Water-tank capacity inequality descriptive matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Fraction arithmetic is decisive (one third used)."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-03 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "answer",
+        "from": "$33\\text{L}$ 이상",
+        "to": "$15\\text{L}$ 이상",
+        "reason": "Current solution requires $\\frac23(x+3)\\ge12$, giving $x\\ge15$. The audited answer 33L follows from $\\frac13(x+3)\\ge12$, an inequality that contradicts the current statement (one third is used, so two thirds remain)."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": false,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC",
+        "templatePattern": "TPL_MG_WRITE_FIVE_PARALLELOGRAM_CONDITIONS_IN_SYMBOLS_DESCRIPTIVE",
+        "crossConcepts": [
+          "CC_PARALLELOGRAMS",
+          "CC_MATHEMATICAL_SYMBOLS",
+          "CC_GEOMETRIC_CONDITIONS"
+        ],
+        "unitKey": "MG-02",
+        "subUnitKey": "MG-02-01",
+        "level": "중",
+        "difficultyRank": 3,
+        "auditAnswer": "(1) $\\overline{\\text{AB}} \\parallel \\overline{\\text{DC}}, \\overline{\\text{AD}} \\parallel \\overline{\\text{BC}}$  (2) $\\overline{\\text{AB}} = \\overline{\\text{DC}}, \\overline{\\text{AD}} = \\overline{\\text{BC}}$  (3) $\\angle \\text{A} = \\angle \\text{C}, \\angle \\text{B} = \\angle \\text{D}$  (4) $\\overline{\\text{OA}} = \\overline{\\text{OC}}, \\overline{\\text{OB}} = \\overline{\\text{OD}}$  (5) $\\overline{\\text{AB}} \\parallel \\overline{\\text{DC}}, \\overline{\\text{AB}} = \\overline{\\text{DC}}$ (또는 $\\overline{\\text{AD}} \\parallel \\overline{\\text{BC}}, \\overline{\\text{AD}} = \\overline{\\text{BC}}$)"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item asks for the five parallelogram conditions in symbols."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Symbolic five-condition descriptive matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Mathematical symbols and geometric conditions are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "unitKey",
+        "from": "MG-02",
+        "to": "M2-05",
+        "reason": "Canonical quadrilateral binding. Answer content agrees; audited answer uses overline notation, current source uses segment notation, which is a notation variant only."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": true,
+        "requiredForAssignment": false,
+        "inspected": false,
+        "evidenceDebt": null,
+        "note": "The task is text-only; image is a template/illustration."
+      }
+    },
+    {
+      "sourceOrdinal": 25,
+      "auditAssigned": {
+        "primaryTaxonomy": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+        "templatePattern": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+        "crossConcepts": [
+          "CC_QUADRILATERAL_PROPERTIES",
+          "CC_QUADRILATERAL_HIERARCHY",
+          "CC_SUFFICIENT_CONDITIONS"
+        ],
+        "unitKey": "MG-02",
+        "subUnitKey": "MG-02-02",
+        "level": "중",
+        "difficultyRank": 3,
+        "auditAnswer": "(1) 한 쌍의 대변이 평행하다  (2) 다른 한 쌍의 대변이 평행하다  (3) 한 내각이 직각이다(또는 두 대각선의 길이가 같다)  (4) 이웃하는 두 변의 길이가 같다(또는 두 대각선이 수직이다)  (5) 이웃하는 두 변의 길이가 같다(또는 두 대각선이 수직이다)"
+      },
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item completes a quadrilateral hierarchy flowchart with sufficient conditions."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Flowchart completion template matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Hierarchy and sufficient conditions are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "assignmentCorrection": {
+        "field": "answer+unitKey",
+        "from": "audited (1)..(5) ordering: 한 쌍의 대변이 평행하다 / 다른 한 쌍의 대변이 평행하다 / 한 내각이 직각 / 이웃하는 두 변 / 이웃하는 두 변 ; unitKey MG-02",
+        "to": "current ① 다른 한 쌍의 대변도 평행하다 ② 이웃하는 두 변의 길이가 같다 ③ 한 내각의 크기가 직각이다 ④ 한 내각의 크기가 직각이다 ⑤ 이웃하는 두 변의 길이가 같다 ; unitKey M2-05",
+        "reason": "Current solution maps blank ① to 사다리꼴→평행사변형 (add the other parallel side). The audited sequence starts with the trapezoid definition and shifts the later blanks, so it cannot be the current blank assignment."
+      },
+      "unitKeyDecision": null,
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "visual": {
+        "hasFigure": true,
+        "requiredForAssignment": true,
+        "inspected": false,
+        "evidenceDebt": "VISUAL_EVIDENCE_DEBT: the five numbered blanks exist only in the flowchart image; the statement gives no blank text. Answer mapping is asserted only from the current solution's explicit ①~⑤ statements."
+      }
+    }
+  ],
+  "note": "This summary cites the OpenCode/deepseek-v4.1-flash corrective review (nov04-drift.mjs). It is not the original Gemini audit, is not a math re-solve, and claims no visual inspection."
+}

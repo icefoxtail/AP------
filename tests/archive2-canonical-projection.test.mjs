@@ -431,6 +431,39 @@ test("META_PIPELINE_AUDIT registration receipt binds its approved metadata into 
   assert.equal(page.L3, "검증된 개념");
   assert.equal(page.L4, "검증된 유형");
   assert.equal(page.level, "중");
+
+  // A completed metadata audit may bind its classification while the separate
+  // original-exam review remains required. Do not manufacture a QA pass.
+  const auditFields = Object.fromEntries(
+    ["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept"]
+      .map(field => [field, "approved_meta_pipeline_audit"]),
+  );
+  assignment.reviewStatus = "review_required";
+  assignment.metadataApprovalType = "META_PIPELINE_AUDIT";
+  assignment.fieldStatus = auditFields;
+  source.reviewStatus = "review_required";
+  source.metadataAssignmentEvidence.fieldStatus = { ...auditFields };
+  runtime.records[0] = { ...assignment, metaFoundationPackId: runtime.packId, metaFoundationPackVersion: runtime.packVersion };
+  resources[proofPath].examFinalQaStatus = "NOT_EVALUATED_BY_REGISTRAR";
+  const audited = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
+  assert.equal(audited.assignmentEvidence.reviewEvidence.approvalType, "META_PIPELINE_AUDIT");
+  assert.equal(audited.reviewStatus, "review_required");
+  assert.equal(audited.standardUnitKey, assignment.standardUnitKey);
+  source.metadataAssignmentEvidence.fieldStatus.template = "manual_review_pending";
+  const held = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
+  assert.ok(held.canonicalAssignmentReasons.includes("assignment_missing"));
+  source.metadataAssignmentEvidence.fieldStatus.template = "approved_meta_pipeline_audit";
+  resources[proofPath].examFinalQaStatus = "PASS";
+  const falseQa = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
+  assert.ok(falseQa.canonicalAssignmentReasons.includes("assignment_missing"));
+  resources[proofPath].examFinalQaStatus = "NOT_EVALUATED_BY_REGISTRAR";
+  runtime.records[0].metadataApprovalType = "REVIEW2";
+  const wrongApproval = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
+  assert.ok(wrongApproval.canonicalAssignmentReasons.includes("assignment_missing"));
+  runtime.records[0].metadataApprovalType = "META_PIPELINE_AUDIT";
+  resources[proofPath].sourceRawSha256 = "e".repeat(64);
+  const wrongSource = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
+  assert.ok(wrongSource.canonicalAssignmentReasons.includes("assignment_missing"));
 });
 
 test("built catalog has no production taxonomy fallback without a fingerprint-bound reviewed assignment", () => {

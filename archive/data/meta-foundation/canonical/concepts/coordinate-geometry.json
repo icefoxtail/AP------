@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "COORDINATE_GEOMETRY",
-  "shardVersion": "1.1.8",
+  "shardVersion": "1.1.10",
   "status": "ACTIVE",
-  "conceptCount": 44,
+  "conceptCount": 53,
   "concepts": [
     {
       "conceptKey": "CC_CIRCLE_CENTER_RADIUS",
@@ -1976,6 +1976,438 @@
       ],
       "curriculumRefs": [
         "2022:공통수학2:H22-C2-09"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_EQUATIONS_PARALLEL_TO_AXES",
+      "canonicalLabelKo": "좌표축에 평행한 직선의 방정식",
+      "definition": "x축에 평행하면 y값이, y축에 평행하면 x값이 일정한 직선의 방정식.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_00db77520dc86bfcc9a9598ec147053dcb759d6310941e3934889e411eb4211b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_00db77520dc86bfcc9a9598ec147053dcb759d6310941e3934889e411eb4211b",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS/TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT bound at M2-04/M2-04-LINEAR_FUNCTION_EQUATION; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "따라서 구하는 직선의 방정식은 $x = -3$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_INTERCEPTS",
+      "canonicalLabelKo": "절편",
+      "definition": "그래프가 좌표축과 만나는 점의 좌표.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+        "qid_v1_b5015ea7ce79dd88a8564e89195ea6cca7ce68897bf1923307dd578cc058de3d",
+        "qid_v1_cdda356a88dbc1d56c71dc67c52bedcb9644f6b0069200dbe8d3feea37664c7f"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "M2-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_cdda356a88dbc1d56c71dc67c52bedcb9644f6b0069200dbe8d3feea37664c7f",
+          "sourceOrdinal": 11,
+          "classificationRationale": "PT_M2_LINEAR_FUNCTION_SOLID_OF_REVOLUTION/TPL_M2_CALCULATE_CONE_VOLUME_FROM_INTERCEPT_TRIANGLE bound at M2-04/M2-04-LINEAR_FUNCTION_BASIC; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "$V = \\dfrac{1}{3} \\pi \\times 3^2 \\times 6 = \\dfrac{1}{3} \\pi \\times 9 \\times 6 = 18\\pi$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_b5015ea7ce79dd88a8564e89195ea6cca7ce68897bf1923307dd578cc058de3d",
+          "sourceOrdinal": 12,
+          "classificationRationale": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA/TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES bound at M2-04/M2-04-LINEAR_FUNCTION_BASIC; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "$8 - 1 = 7$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+          "sourceOrdinal": 15,
+          "classificationRationale": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM/TPL_M2_MATCH_LINEAR_EQUATION_GRAPH_FROM_INTERCEPTS bound at M2-04/M2-04-LINEAR_FUNCTION_EQUATION; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: 점 $(-2, 0)$과 $(0, 3)$을 지나는 직선을 찾으면 ①번 그림이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM",
+        "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+        "PT_M2_LINEAR_FUNCTION_SOLID_OF_REVOLUTION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_QUADRANTS",
+      "canonicalLabelKo": "사분면",
+      "definition": "좌표평면을 두 좌표축이 나누는 네 영역.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_b17d1c4cee2045cf08ccb8ac8da9ef453405196a3d663f82f3a05f3079d94b7b",
+        "qid_v1_e695dd895128b8552110491a008369a71e738420c52511c53594a2ed171c5876",
+        "qid_v1_ecf2b058943b3213a7ba079d340ab21bedfdd8d1484f05365cd5ccad7833ed1c"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "M2-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_e695dd895128b8552110491a008369a71e738420c52511c53594a2ed171c5876",
+          "sourceOrdinal": 13,
+          "classificationRationale": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION/TPL_M2_FIND_PARAMETER_RANGE_AVOIDING_FIRST_QUADRANT bound at M2-04/M2-04-LINEAR_FUNCTION_BASIC; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "$a + b = -3 + 2 = -1$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_b17d1c4cee2045cf08ccb8ac8da9ef453405196a3d663f82f3a05f3079d94b7b",
+          "sourceOrdinal": 16,
+          "classificationRationale": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES/TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH bound at M2-04/M2-04-LINEAR_FUNCTION_EQUATION; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "⑤ $x=0$일 때 $y=2$이므로 $y$절편은 $2$이다. 따라서 $6$이라는 설명은 옳지 않다. (거짓)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_ecf2b058943b3213a7ba079d340ab21bedfdd8d1484f05365cd5ccad7833ed1c",
+          "sourceOrdinal": 20,
+          "classificationRationale": "PT_M2_SYSTEM_OF_EQUATIONS_INTERSECTION_QUADRANT/TPL_M2_FIND_PARAMETER_RANGE_FOR_INTERSECTION_IN_QUADRANT bound at M2-04/M2-04-LINEAR_FUNCTION_EQUATION; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "$-2 < m < -1$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+        "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+        "PT_M2_SYSTEM_OF_EQUATIONS_INTERSECTION_QUADRANT"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_SLOPE_AND_INTERCEPT",
+      "canonicalLabelKo": "기울기와 절편",
+      "definition": "직선의 방향을 정하는 기울기와 좌표축과 만나는 위치를 정하는 절편.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_b17d1c4cee2045cf08ccb8ac8da9ef453405196a3d663f82f3a05f3079d94b7b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_b17d1c4cee2045cf08ccb8ac8da9ef453405196a3d663f82f3a05f3079d94b7b",
+          "sourceOrdinal": 16,
+          "classificationRationale": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES/TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH bound at M2-04/M2-04-LINEAR_FUNCTION_EQUATION; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "⑤ $x=0$일 때 $y=2$이므로 $y$절편은 $2$이다. 따라서 $6$이라는 설명은 옳지 않다. (거짓)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_SLOPE_FORMULA",
+      "canonicalLabelKo": "기울기 공식",
+      "definition": "서로 다른 두 점의 좌표의 차를 이용해 직선의 기울기를 구하는 식.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_9e07b7ff3d15b31beec74f3989cb65194ce32196b4ec21c64ae498b915746ccf"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_9e07b7ff3d15b31beec74f3989cb65194ce32196b4ec21c64ae498b915746ccf",
+          "sourceOrdinal": 14,
+          "classificationRationale": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION/TPL_M2_FIND_UNKNOWN_COORDINATE_FROM_PARALLEL_SLOPE bound at M2-04/M2-04-LINEAR_FUNCTION_BASIC; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "$\\dfrac{k - 3}{3} = 3 \\implies k - 3 = 9 \\implies k = 12$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_SLOPE_SIGN",
+      "canonicalLabelKo": "기울기의 부호",
+      "definition": "직선이 오른쪽 위로 향하면 양수, 오른쪽 아래로 향하면 음수가 되는 기울기의 성질.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_d090bf57651fa33dbe27bf9bcc612d0485fda5df97cd90b2e8fa19ce02cc7b39",
+        "qid_v1_e695dd895128b8552110491a008369a71e738420c52511c53594a2ed171c5876"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M2-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_d090bf57651fa33dbe27bf9bcc612d0485fda5df97cd90b2e8fa19ce02cc7b39",
+          "sourceOrdinal": 10,
+          "classificationRationale": "PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING/TPL_M2_SELECT_FUNCTION_MATCHING_SLOPE_AND_INTERCEPT_CONDITIONS bound at M2-04/M2-04-LINEAR_FUNCTION_BASIC; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: 두 조건을 모두 만족하는 일차함수는 $y = -\\dfrac{2}{3}x - 1$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        },
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_e695dd895128b8552110491a008369a71e738420c52511c53594a2ed171c5876",
+          "sourceOrdinal": 13,
+          "classificationRationale": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION/TPL_M2_FIND_PARAMETER_RANGE_AVOIDING_FIRST_QUADRANT bound at M2-04/M2-04-LINEAR_FUNCTION_BASIC; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "$a + b = -3 + 2 = -1$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING",
+        "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_X_INTERCEPT",
+      "canonicalLabelKo": "x절편",
+      "definition": "그래프가 x축과 만나는 점의 x좌표.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_d090bf57651fa33dbe27bf9bcc612d0485fda5df97cd90b2e8fa19ce02cc7b39"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_d090bf57651fa33dbe27bf9bcc612d0485fda5df97cd90b2e8fa19ce02cc7b39",
+          "sourceOrdinal": 10,
+          "classificationRationale": "PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING/TPL_M2_SELECT_FUNCTION_MATCHING_SLOPE_AND_INTERCEPT_CONDITIONS bound at M2-04/M2-04-LINEAR_FUNCTION_BASIC; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: 두 조건을 모두 만족하는 일차함수는 $y = -\\dfrac{2}{3}x - 1$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_Y_INTERCEPT",
+      "canonicalLabelKo": "y절편",
+      "definition": "그래프가 y축과 만나는 점의 y좌표.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_e695dd895128b8552110491a008369a71e738420c52511c53594a2ed171c5876"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_e695dd895128b8552110491a008369a71e738420c52511c53594a2ed171c5876",
+          "sourceOrdinal": 13,
+          "classificationRationale": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION/TPL_M2_FIND_PARAMETER_RANGE_AVOIDING_FIRST_QUADRANT bound at M2-04/M2-04-LINEAR_FUNCTION_BASIC; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "$a + b = -3 + 2 = -1$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_NUMBER_LINE_COORDINATE_SHIFT",
+      "canonicalLabelKo": "수직선 위 좌표의 이동",
+      "definition": "수직선 위의 한 점에서 일정한 거리만큼 왼쪽·오른쪽으로 이동한 점의 좌표를 기준점의 좌표에 거리를 더하거나 빼서 구하는 것.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_5a68f57ee594c62de2e241d3889e38562e7f78b2c73dec93a91543ac898215b3"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_5a68f57ee594c62de2e241d3889e38562e7f78b2c73dec93a91543ac898215b3",
+          "sourceOrdinal": 5,
+          "classificationRationale": "META_PIPELINE_AUDIT record 5 binds CC_NUMBER_LINE_COORDINATE_SHIFT for PT_M3_REAL_NUMBER_LINE/TPL_M3_NUMBER_LINE_SQUARE_ROTATION at M3-01/M3-01-SQUARE_ROOT_REAL_NUMBER.",
+          "decisiveEvidence": "모눈 위 정사각형의 대각선 길이 sqrt(5)를 구하고 기준점 1에서 좌우 이동한 두 점 P(1-sqrt5), Q(1+sqrt5)의 곱 -4를 도출하는 3단계 기하-수직선 융합 문항으로 Bucket 3을 부여한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang24-m3-1mid-20261104.audit.json",
+            "sha256": "a888de2634d9b47247a0fac09a4915850527a47831e597b560b350b5ce7d30e4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_REAL_NUMBER_LINE"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-01"
       ],
       "ownerConceptShard": "COORDINATE_GEOMETRY"
     }

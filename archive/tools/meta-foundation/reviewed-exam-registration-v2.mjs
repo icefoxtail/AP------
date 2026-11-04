@@ -69,6 +69,20 @@ export function isMetaPipelineApprovedTypeRebindAllowed({ field, current, priorT
   return ["problemTypeKey", "templateKey"].includes(field) && approved(current) &&
     priorTypeStatus === "ACTIVE" && !["FINAL_QA", "REVIEW2"].includes(current.metadataApprovalType);
 }
+export function isSopPendingSourceNamespaceCorrectionAllowed({ field, current, question, patch, final, audited, resolved }) {
+  if (!["standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit"].includes(field) ||
+      current.metadataStatus !== "registration_pending_semantic_review" ||
+      ["FINAL_QA", "REVIEW2"].includes(current.metadataApprovalType) ||
+      !audited?.assignmentCorrectionReason || !patch.sourceMetadataBefore ||
+      !Object.hasOwn(patch.sourceMetadataBefore, field) ||
+      !eq(patch.sourceMetadataBefore[field] ?? null, question[field] ?? null) ||
+      !eq(current[field] ?? null, question[field] ?? null) ||
+      final.standardUnitKey !== audited.correctedStandardUnitKey || final.subUnitKey !== audited.correctedSubUnitKey)
+    return false;
+  const courses = resolved?.pack?.meta?.standardCourses || [];
+  return courses.includes(question.standardCourse) && courses.includes(final.standardCourse) &&
+    final.standardUnit === resolved?.unit?.labelKo && final.subUnit === resolved?.sub?.labelKo;
+}
 const canRebindPendingAuditMetadata = ({ approvalType, metaPipelineAudit, beforeTables, current, question, patch, final, ordinal, field }) => {
   const pendingStatusKeys = {
     standardUnitKey: ["standardUnit"], subUnitKey: ["subUnit"], problemTypeKey: ["problemType"],
@@ -118,6 +132,300 @@ const canRebindPendingAuditMetadata = ({ approvalType, metaPipelineAudit, before
   return auditedValue !== undefined && eq(final[field] ?? null, auditedValue ?? null);
 };
 
+// ---- SOP_v1.2 META_AUDIT_ATOMIC_PACKAGE (approval v4) ----------------------------------------------
+// The native SOP_v1.2 audit names the audited PT/TPL/CC/unit of every row and its Courier manifest
+// names the same rows, but neither carries readingEvidence. A separate SHA-bound corrective review
+// supplies the exact current-source excerpts, the visual evidence status, the UID/ordinal parity and
+// both the originally declared and the current source SHA. difficultyRank is provenance only: it is
+// never converted into a 1-5 difficultyBucket, and the absent template statistic is never set to zero.
+const SOP_V12_AUDIT_TYPE = "META_AUDIT_ATOMIC_PACKAGE";
+const SOP_V12_MANIFEST_TYPE = "COURIER_INTAKE_MANIFEST";
+const SOP_V12_CORRECTIVE_REVIEW_SCHEMA = "archive-meta-pipeline-sop-v12-corrective-review-v1";
+const SOP_V12_REVIEWER_ROLES = new Set(["ROOT", "AUTHORIZED_REVIEWER"]);
+export function sopV12PackIncludes(primaryPack, rowPack) {
+  return typeof primaryPack === "string" && typeof rowPack === "string" && primaryPack.split("_AND_").includes(rowPack);
+}
+const SOP_V12_LEVELS = new Set(["하", "중", "상"]);
+const textValue = value => typeof value === "string" && value.trim().length > 0;
+const compactSourceText = value => String(value ?? "").normalize("NFC").replace(/\s+/g, " ").trim();
+const isSvgAsset = value => /\.svg(?:$|[?#])/i.test(String(value ?? ""));
+export function sourceVisualType(question) {
+  const asset = value => typeof value === "string" ? value.trim() : "";
+  const images = Array.isArray(question?.images) ? question.images.filter(textValue) : [];
+  const html = [question?.content, question?.solution, ...(Array.isArray(question?.choices) ? question.choices : [])].filter(value => typeof value === "string").join("\n");
+  const inlineImages = [...html.matchAll(/<img\b[^>]*\bsrc\s*=\s*["']([^"']+)["']/gi)].map(match => match[1]);
+  const svgAssets = [asset(question?.figureSvg), asset(question?.solutionFigureSvg), ...images.filter(isSvgAsset), ...inlineImages.filter(isSvgAsset), /<svg\b/i.test(html) ? "inline-svg" : ""].filter(Boolean);
+  const rasterAssets = [asset(question?.image), asset(question?.solutionImage), ...images.filter(name => !isSvgAsset(name)), ...inlineImages.filter(name => !isSvgAsset(name))].filter(Boolean);
+  if (rasterAssets.length && svgAssets.length) return "SVG_IMAGE";
+  if (rasterAssets.length) return "IMAGE";
+  if (svgAssets.length) return "SVG";
+  return "NONE";
+}
+const SOP_V12_SOURCE_CORRECTION_FIELDS = new Set(["answer", "questionType", "choicesCount", "score"]);
+export function isSopV12SourceFieldCorrectionAllowed({ field, ordinal, questionUid, originalValue, currentValue, reviewEntry, itemEntry }) {
+  if (!SOP_V12_SOURCE_CORRECTION_FIELDS.has(field)) return false;
+  if (!reviewEntry || typeof reviewEntry !== "object" || Array.isArray(reviewEntry) ||
+      !itemEntry || typeof itemEntry !== "object" || Array.isArray(itemEntry) || !eq(reviewEntry, itemEntry)) return false;
+  if (reviewEntry.field !== field || reviewEntry.questionUid !== questionUid ||
+      Number(reviewEntry.auditQuestionNumber ?? reviewEntry.sourceOrdinal) !== ordinal ||
+      reviewEntry.appliedToManifest !== false || !textValue(reviewEntry.reason)) return false;
+  if (!Object.hasOwn(reviewEntry, "originalManifestValue") || !Object.hasOwn(reviewEntry, "currentSourceValue")) return false;
+  if (!eq(reviewEntry.originalManifestValue, originalValue)) return false;
+  if (!eq(reviewEntry.currentSourceValue, currentValue)) return false;
+  if (eq(reviewEntry.originalManifestValue, reviewEntry.currentSourceValue)) return false;
+  return true;
+}
+function validateSopV12SourceFieldCorrections({ ordinal, questionUid, question, manifestRow, reviewed, patch }) {
+  const reviewEntries = reviewed.sourceFieldCorrections ?? [];
+  const itemEntries = patch.sourceFieldCorrections ?? [];
+  if (!Array.isArray(reviewEntries) || !Array.isArray(itemEntries))
+    fail("SOP_v1.2 source field corrections must be arrays: " + ordinal);
+  const collect = entries => {
+    const map = new Map();
+    for (const entry of entries) {
+      if (!entry || typeof entry !== "object" || Array.isArray(entry))
+        fail("SOP_v1.2 source field correction entry must be an object: " + ordinal);
+      if (typeof entry.field !== "string" || !SOP_V12_SOURCE_CORRECTION_FIELDS.has(entry.field))
+        fail("SOP_v1.2 source field correction is not permitted for field " + String(entry.field) + ": " + ordinal);
+      if (map.has(entry.field)) fail("SOP_v1.2 duplicate source field correction: " + ordinal + "." + entry.field);
+      map.set(entry.field, entry);
+    }
+    return map;
+  };
+  const reviewMap = collect(reviewEntries);
+  const itemMap = collect(itemEntries);
+  if (!eq([...reviewMap.keys()].sort(), [...itemMap.keys()].sort()))
+    fail("SOP_v1.2 corrective review/request source field correction fields differ: " + ordinal);
+  const result = new Map();
+  for (const [field, reviewEntry] of reviewMap) {
+    const itemEntry = itemMap.get(field);
+    if (!manifestRow) fail("SOP_v1.2 source field correction has no manifest row: " + ordinal + "." + field);
+    const originalValue = manifestRow[field] ?? null;
+    const currentValue = field === "choicesCount"
+      ? (Array.isArray(question?.choices) ? question.choices.length : null)
+      : question?.[field] ?? null;
+    if (!isSopV12SourceFieldCorrectionAllowed({ field, ordinal, questionUid, originalValue, currentValue, reviewEntry, itemEntry }))
+      fail("SOP_v1.2 invalid source field correction: " + ordinal + "." + field);
+    result.set(field, reviewEntry);
+  }
+  return result;
+}
+function normalizeSopV12Audit({ root, proof, rawAudit, manifest, review, bank, source, sourceBytes, expectedQuestionCount, items, registryChanges }) {
+  const reviewRef = proof.correctiveReviewRef;
+  const currentSourceSha256 = digest(sourceBytes);
+  const expectedTitle = path.basename(source, ".js");
+  if (!review || typeof review !== "object" || Array.isArray(review) ||
+      review.schemaVersion !== SOP_V12_CORRECTIVE_REVIEW_SCHEMA || review.sopVersion !== "SOP_v1.2" ||
+      review.excerptBasis !== "CURRENT_PRODUCTION_SOURCE" ||
+      !textValue(review.examTitle) || !textValue(review.reviewedAt) ||
+      !review.reviewer || typeof review.reviewer !== "object" || Array.isArray(review.reviewer) ||
+      !SOP_V12_REVIEWER_ROLES.has(review.reviewer.role) || !textValue(review.reviewer.id) ||
+      !Array.isArray(review.rows) || review.questionCount !== expectedQuestionCount ||
+      review.rows.length !== expectedQuestionCount ||
+      !/^[a-f0-9]{64}$/.test(review.originalDeclaredSourceSha256 || "") ||
+      !/^[a-f0-9]{64}$/.test(review.driveSourceSha256 || "") ||
+      !/^[a-f0-9]{64}$/.test(review.productionSourceSha256 || "") ||
+      typeof review.sourceHashDrift !== "boolean")
+    fail("SOP_v1.2 corrective review schema/identity incomplete");
+  if (review.sourceArchiveFile !== source) fail("SOP_v1.2 corrective review sourceArchiveFile mismatch");
+  if (review.examSlug !== expectedTitle || rawAudit.examSlug !== expectedTitle)
+    fail("SOP_v1.2 audit/review examSlug does not bind the production source file");
+  if (review.examTitle !== rawAudit.examTitle || review.examTitle !== manifest.examTitle)
+    fail("SOP_v1.2 audit/manifest/review examTitle mismatch");
+  if (review.sourceFileDriveId !== proof.sourceFileDriveId)
+    fail("SOP_v1.2 corrective review source drive identity mismatch");
+  if (review.originalDeclaredSourceSha256 !== rawAudit.sourceFileSha256)
+    fail("SOP_v1.2 corrective review original source SHA does not match the audit declaration");
+  if (review.driveSourceSha256 !== currentSourceSha256)
+    fail("SOP_v1.2 corrective review actual current Drive SHA does not match the current source bytes");
+  if (review.productionSourceSha256 !== currentSourceSha256)
+    fail("SOP_v1.2 corrective review production source SHA does not match the current source bytes");
+  if (review.sourceHashDrift !== (review.originalDeclaredSourceSha256 !== currentSourceSha256))
+    fail("SOP_v1.2 corrective review sourceHashDrift flag is inconsistent");
+  if (rawAudit.manifestType !== SOP_V12_AUDIT_TYPE || rawAudit.sopVersion !== "SOP_v1.2" ||
+      !textValue(rawAudit.examTitle) || !textValue(rawAudit.primaryPack) || !textValue(rawAudit.standardCourse) ||
+      !Number.isInteger(rawAudit.totalQuestionsAudited) || rawAudit.totalQuestionsAudited !== expectedQuestionCount ||
+      !Number.isInteger(rawAudit.auditPassedCount) || rawAudit.auditPassedCount !== expectedQuestionCount ||
+      rawAudit.holdCount !== 0 || !Array.isArray(rawAudit.auditRecords) ||
+      rawAudit.auditRecords.length !== expectedQuestionCount)
+    fail("SOP_v1.2 audit denominator/identity mismatch");
+  const auditRows = new Map();
+  for (const row of rawAudit.auditRecords) {
+    const ordinal = Number(row?.questionNumber);
+    if (!Number.isInteger(ordinal) || ordinal < 1 || ordinal > expectedQuestionCount || auditRows.has(ordinal) ||
+        Number(row?.sourceQuestionId) !== ordinal)
+      fail("SOP_v1.2 audit questionNumber/sourceQuestionId is not a unique 1..N ordinal");
+    auditRows.set(ordinal, row);
+  }
+  if (auditRows.size !== expectedQuestionCount) fail("SOP_v1.2 audit record denominator mismatch");
+  const patches = unique(items || [], "sourceOrdinal", "SOP_v1.2 request sourceOrdinal");
+  const reviewRows = unique(review.rows, "sourceOrdinal", "SOP_v1.2 corrective review sourceOrdinal");
+  if (reviewRows.size !== expectedQuestionCount) fail("SOP_v1.2 corrective review row denominator mismatch");
+  const manifestRows = new Map();
+  for (const manifestRow of Array.isArray(manifest?.recordsToBind) ? manifest.recordsToBind : []) {
+    const manifestOrdinal = Number(manifestRow?.questionNumber);
+    if (Number.isInteger(manifestOrdinal)) manifestRows.set(manifestOrdinal, manifestRow);
+  }
+  const sourceFieldCorrections = new Map();
+  const records = [];
+  for (let ordinal = 1; ordinal <= expectedQuestionCount; ordinal++) {
+    const row = auditRows.get(ordinal), reviewed = reviewRows.get(ordinal), patch = patches.get(ordinal);
+    const question = bank[ordinal - 1];
+    const sourceText = question?.content ?? question?.question ?? question?.stem ?? question?.text ?? "";
+    const solutionText = question?.solution ?? question?.explanation ?? question?.answerExplanation ?? "";
+    const unitKey = row?.curriculumAlignment?.unitKey;
+    const subUnitKey = row?.curriculumAlignment?.subUnitKey;
+    if (!row || row.auditStatus !== "PASS" || row.packIsolationPassed !== true ||
+        row.zeroHoldCompliance !== true || row.zeroStubCertified !== true ||
+        !sopV12PackIncludes(rawAudit.primaryPack, row.designatedPack) ||
+        !/^PT_[A-Z0-9_]+$/.test(row.verifiedPrimaryTaxonomy || "") ||
+        !/^TPL_[A-Z0-9_]+$/.test(row.verifiedTemplatePattern || "") ||
+        !textValue(unitKey) || !textValue(subUnitKey) ||
+        !SOP_V12_LEVELS.has(row.levelVerbatimPreserved) ||
+        !Number.isInteger(row.difficultyRank) || row.difficultyRank < 1 || row.difficultyRank > 5 ||
+        !textValue(row.difficultyReasonTrace) ||
+        !Number.isInteger(row.solutionStepCountVerified) || row.solutionStepCountVerified < 1)
+      fail(`SOP_v1.2 audit record incomplete: ${ordinal}`);
+    if (!Array.isArray(row.verifiedCrossConcepts) || new Set(row.verifiedCrossConcepts).size !== row.verifiedCrossConcepts.length ||
+        row.verifiedCrossConcepts.some(key => !/^CC_[A-Z0-9_]+$/.test(key || "")))
+      fail(`SOP_v1.2 audit CrossConcept keys invalid: ${ordinal}`);
+    if (!patch || patch.sourceOrdinal !== ordinal || !textValue(patch.questionUid))
+      fail(`SOP_v1.2 request UID/ordinal mismatch: ${ordinal}`);
+    if (!reviewed || !textValue(reviewed.questionUid) || reviewed.questionUid !== patch.questionUid ||
+        Number(reviewed.auditQuestionNumber) !== ordinal ||
+        reviewed.problemTypeKey !== (reviewed.correctedAssignment?.problemTypeKey ?? row.verifiedPrimaryTaxonomy) ||
+        reviewed.templateKey !== (reviewed.correctedAssignment?.templateKey ?? row.verifiedTemplatePattern) ||
+        !Array.isArray(reviewed.crossConceptKeys) || !eq(reviewed.crossConceptKeys, reviewed.correctedAssignment?.crossConceptKeys ?? row.verifiedCrossConcepts) ||
+        ![unitKey, reviewed.correctedAssignment?.standardUnitKey].includes(reviewed.standardUnitKey) ||
+        ![subUnitKey, reviewed.correctedAssignment?.subUnitKey].includes(reviewed.subUnitKey))
+      fail(`SOP_v1.2 corrective review UID/ordinal/classification parity mismatch: ${ordinal}`);
+    if (!reviewed.originalAssignment || typeof reviewed.originalAssignment !== "object" || Array.isArray(reviewed.originalAssignment) ||
+        !reviewed.correctedAssignment || typeof reviewed.correctedAssignment !== "object" || Array.isArray(reviewed.correctedAssignment) ||
+        reviewed.originalAssignment.standardUnitKey !== unitKey || reviewed.originalAssignment.subUnitKey !== subUnitKey ||
+        !textValue(reviewed.correctedAssignment.standardUnitKey) || !textValue(reviewed.correctedAssignment.subUnitKey))
+      fail(`SOP_v1.2 corrective review original/corrected assignment mismatch: ${ordinal}`);
+    const correctedUnitKey = reviewed.correctedAssignment.standardUnitKey;
+    const correctedSubUnitKey = reviewed.correctedAssignment.subUnitKey;
+    const corrected = { problemTypeKey: row.verifiedPrimaryTaxonomy, templateKey: row.verifiedTemplatePattern,
+      crossConceptKeys: row.verifiedCrossConcepts, standardCourse: rawAudit.standardCourse, ...reviewed.correctedAssignment };
+    for (const [field, original] of Object.entries({problemTypeKey: row.verifiedPrimaryTaxonomy,
+      templateKey: row.verifiedTemplatePattern, crossConceptKeys: row.verifiedCrossConcepts, standardCourse: rawAudit.standardCourse})) {
+      if (Object.hasOwn(reviewed.originalAssignment, field) && !eq(reviewed.originalAssignment[field], original))
+        fail(`SOP_v1.2 corrective review original/corrected assignment mismatch: ${ordinal}`);
+      if (!eq(corrected[field], original) && !eq(reviewed.originalAssignment[field], original))
+        fail(`SOP_v1.2 correction lacks exact original assignment: ${ordinal}`);
+    }
+    const assignmentChanged = correctedUnitKey !== unitKey || correctedSubUnitKey !== subUnitKey ||
+      corrected.problemTypeKey !== row.verifiedPrimaryTaxonomy || corrected.templateKey !== row.verifiedTemplatePattern ||
+      !eq(corrected.crossConceptKeys, row.verifiedCrossConcepts) || corrected.standardCourse !== rawAudit.standardCourse;
+    if (assignmentChanged && !textValue(reviewed.assignmentCorrectionReason))
+      fail(`SOP_v1.2 corrective review assignment correction requires a reason: ${ordinal}`);
+    if (reviewed.sourceTextExcerpt === row.difficultyReasonTrace || reviewed.solutionDecisiveExcerpt === row.difficultyReasonTrace)
+      fail(`SOP_v1.2 corrective review must not reuse difficultyReasonTrace as a source excerpt: ${ordinal}`);
+    if (!textValue(reviewed.sourceTextExcerpt) ||
+        !compactSourceText(sourceText).includes(compactSourceText(reviewed.sourceTextExcerpt)))
+      fail(`SOP_v1.2 corrective review source excerpt is not in the production question: ${ordinal}`);
+    if (!textValue(reviewed.solutionDecisiveExcerpt) ||
+        !compactSourceText(solutionText).includes(compactSourceText(reviewed.solutionDecisiveExcerpt)))
+      fail(`SOP_v1.2 corrective review solution excerpt is not in the production solution: ${ordinal}`);
+    const actualVisualType = sourceVisualType(question);
+    if (!reviewed.visualEvidence || typeof reviewed.visualEvidence.assetChecked !== "boolean" ||
+        reviewed.visualEvidence.visualType !== actualVisualType)
+      fail(`SOP_v1.2 corrective review visual evidence does not match the production source assets: ${ordinal}`);
+    if (Object.keys(reviewed).some(key => /difficultyBucket|^bucket$/i.test(key)))
+      fail(`SOP_v1.2 corrective review must not declare a difficulty bucket: ${ordinal}`);
+    const corrections = validateSopV12SourceFieldCorrections({ ordinal, questionUid: reviewed.questionUid,
+      question, manifestRow: manifestRows.get(ordinal), reviewed, patch });
+    if (corrections.size) sourceFieldCorrections.set(ordinal, corrections);
+    records.push({
+      questionId: ordinal,
+      standardCourse: corrected.standardCourse,
+      standardUnitKey: correctedUnitKey,
+      subUnitKey: correctedSubUnitKey,
+      auditVerdict: "APPROVED",
+      classification: {
+        status: "APPROVED_CANONICAL",
+        problemTypeKey: corrected.problemTypeKey,
+        templateKey: corrected.templateKey,
+        crossConceptKeys: [...corrected.crossConceptKeys],
+        conditionKeys: null,
+        targetPack: row.designatedPack,
+        assignedPack: row.designatedPack,
+      },
+      readingEvidence: {
+        sourceTextExcerpt: reviewed.sourceTextExcerpt,
+        solutionDecisiveExcerpt: reviewed.solutionDecisiveExcerpt,
+        visualAssetChecked: reviewed.visualEvidence.assetChecked,
+        visualType: actualVisualType,
+        evidenceOrigin: "SOP_V12_CORRECTIVE_REVIEW",
+        reviewSha256: reviewRef.sha256,
+      },
+      auditedClassification: {
+        auditedOrdinal: ordinal,
+        questionUid: reviewed.questionUid,
+        problemTypeKey: row.verifiedPrimaryTaxonomy,
+        templateKey: row.verifiedTemplatePattern,
+        crossConceptKeys: [...row.verifiedCrossConcepts],
+        standardUnitKey: unitKey,
+        subUnitKey,
+        correctedStandardUnitKey: correctedUnitKey,
+        correctedSubUnitKey: correctedSubUnitKey,
+        assignmentCorrectionReason: textValue(reviewed.assignmentCorrectionReason) ? reviewed.assignmentCorrectionReason : null,
+        level: row.levelVerbatimPreserved,
+        difficultyRank: row.difficultyRank,
+        difficultyReasonTrace: row.difficultyReasonTrace,
+        solutionStepCountVerified: row.solutionStepCountVerified,
+      },
+      classificationReadingEvidenceStatus: "CORRECTIVE_REVIEW_EXCERPTS_VERIFIED",
+      sourceSchemaVisualEvidence: reviewed.visualEvidence.assetChecked ? "EXPLICITLY_CHECKED" : "EXPLICITLY_NOT_CHECKED",
+      sourceSchemaVisualType: actualVisualType,
+    });
+  }
+  const beforeTables = lookup(registryPlan(root, [], () => {}));
+  const conceptKeys = [...new Set(records.flatMap(record => record.classification.crossConceptKeys))].sort();
+  const afterTables = conceptKeys.some(key => !beforeTables.cc.has(key)) && (registryChanges || []).length
+    ? lookup(registryPlan(root, registryChanges, () => {})) : beforeTables;
+  const boundAtomicCrossConcepts = conceptKeys.map(key => {
+    const definition = (beforeTables.cc.has(key) ? beforeTables : afterTables).cc.get(key);
+    if (!definition || definition.status !== "ACTIVE" || !definition.canonicalLabelKo || !definition.definition)
+      fail(`SOP_v1.2 audit lacks an active canonical CrossConcept definition: ${key}`);
+    return { conceptKey: key, labelKo: definition.canonicalLabelKo, definition: definition.definition };
+  });
+  const statistics = {
+    totalQuestions: rawAudit.totalQuestionsAudited,
+    approved: rawAudit.auditPassedCount,
+    holdRemaining: rawAudit.holdCount,
+    atomicCrossConceptsBound: records.reduce((sum, record) => sum + record.classification.crossConceptKeys.length, 0),
+    canonicalTemplatesReusedStatus: "NOT_REPORTED_IN_SOURCE_SCHEMA",
+    templateInflationStatus: "NOT_REPORTED_IN_SOURCE_SCHEMA",
+    normalizationBasis: "SOP_v1.2 rows are individually PASS; template creation/reuse statistics are absent from the native schema and are not synthesized as zero",
+  };
+  return {
+    audit: {
+      ...rawAudit,
+      sourceSha256: rawAudit.sourceFileSha256,
+      inputAuditSchemaVersion: rawAudit.manifestType,
+      inputAuditVariant: "sop_v12_corrective_review",
+      statistics,
+      records,
+      boundAtomicCrossConcepts,
+      sopV12: {
+        originalDeclaredSourceSha256: rawAudit.sourceFileSha256,
+        driveSourceSha256: review.driveSourceSha256,
+        productionSourceSha256: currentSourceSha256,
+        sourceHashDrift: review.sourceHashDrift,
+        reviewSha256: reviewRef.sha256,
+        reviewer: { id: review.reviewer.id, role: review.reviewer.role },
+        reviewedAt: review.reviewedAt,
+        excerptBasis: review.excerptBasis,
+        conditionEvidence: "NOT_PRESENT_IN_SOURCE_SCHEMA",
+        difficultyBucketSource: "NOT_AUDITED_1_5_BUCKET",
+        templateInflation: "NOT_REPORTED_IN_SOURCE_SCHEMA",
+      },
+    },
+    sourceFieldCorrections,
+  };
+}
 function safePath(root, relative) {
   if (typeof relative !== "string" || !relative || relative.includes("\\") || relative.split("/").some(x => !x || x === "." || x === "..") || path.isAbsolute(relative)) fail(`unsafe path: ${relative}`);
   const full = path.resolve(root, relative);
@@ -146,13 +454,53 @@ function manifestKeyList(row, arrayField, legacyField = arrayField) {
   return null;
 }
 
+// A source-bound targeted replacement review may supply fields the Gemini
+// audit did not examine. Keep this evidence distinct from Gemini approval.
+export function validateTargetedRecoverySupplement({ recovery, source, sourceBlobSha1, bank, items, rawAudit, classificationPackage, manifest, ref }) {
+  if (!recovery || recovery.schemaVersion !== "JS_ARCHIVE_M3_ITEM_RECOVERY_META_V2_PAYLOAD_v1" ||
+      recovery.examFile !== path.basename(source) || recovery.finalArtifactSha !== sourceBlobSha1 ||
+      recovery.sourceReview2Audit !== "FRESH_INDEPENDENT_REVIEW2" || recovery.itemRecoveryQuestionCount !== 1 ||
+      !Array.isArray(recovery.itemRecoveryQuestionIds) || recovery.itemRecoveryQuestionIds.length !== 1)
+    fail("targeted recovery supplement identity/source/review mismatch");
+  const ordinal = Number(recovery.itemRecoveryQuestionIds[0]);
+  const rows = (recovery.freshMetadataRows || []).filter(row => Number(row.sourceOrdinal) === ordinal);
+  const resolutions = (recovery.itemHoldResolution || []).filter(row => Number(row.qid) === ordinal);
+  const patch = (items || []).find(row => Number(row.sourceOrdinal) === ordinal);
+  const audited = (rawAudit.records || []).find(row => Number(row.questionId) === ordinal);
+  const candidate = (classificationPackage?.records || []).find(row => Number(row.questionId) === ordinal);
+  const manifestRow = (manifest.recordsToBind || []).find(row => Number(row.questionId) === ordinal);
+  const question = bank[ordinal - 1], row = rows[0], resolution = resolutions[0];
+  if (rows.length !== 1 || resolutions.length !== 1 || !patch || !question || !audited || !candidate || !manifestRow ||
+      row.questionUid !== patch.questionUid || row.metadataReviewStatus !== "TARGETED_RECOVERY_PASS" ||
+      row.difficultyAudit !== "FRESH_INDEPENDENT_TARGETED_PASS" || row.replacementType !== "QUESTION_REPLACEMENT" ||
+      resolution.recoveryType !== "QUESTION_REPLACEMENT" || Number(resolution.replacedQid) !== ordinal ||
+      !Array.isArray(row.conditionKeys) || !row.conditionKeys.length || !row.integrationPattern ||
+      Object.hasOwn(audited, "conditionKeys") || Object.hasOwn(candidate, "conditionKeys") ||
+      Object.hasOwn(audited, "integrationPattern") || Object.hasOwn(candidate, "integrationPattern") ||
+      !eq(manifestRow.conditionKeys || [], []) ||
+      !eq(patch.after?.conditionKeys, row.conditionKeys) || patch.after?.integrationPattern !== row.integrationPattern ||
+      !(patch.evidenceRefs || []).some(e => e.path === ref.path && e.sha256 === ref.sha256) ||
+      ["content", "choices", "answer", "solution"].some(key =>
+        JSON.stringify(question[key] ?? null) !== JSON.stringify(resolution.replacementQuestion?.[key] ?? null)))
+    fail(`targeted recovery supplement item/evidence mismatch: ${ordinal}`);
+  return { ordinal, questionUid: row.questionUid, conditionKeys: row.conditionKeys, integrationPattern: row.integrationPattern, ref };
+}
+
+export function isSourceConditionEvidenceDebtAllowed({ debt, flatV3, rawRow, candidateRow, question, patch }) {
+  return Boolean(debt) && flatV3 && !Object.hasOwn(rawRow || {}, "conditionKeys") &&
+    !Object.hasOwn(candidateRow || {}, "conditionKeys") && !Object.hasOwn(question, "conditionKeys") &&
+    patch?.before?.conditionKeys == null && patch?.after?.conditionKeys === null &&
+    Boolean(requireText(debt.reason, "conditionKeys EVIDENCE_DEBT reason"));
+}
+
 function validateMetaPipelineAudit({ root, approval, source, sourceBytes, sourceBlobSha1, bank, expectedQuestionCount, items, registryChanges }) {
   if (approval.type !== "META_PIPELINE_AUDIT") return null;
   const proof = approval.metaPipelineAudit;
   const proofV1 = proof?.schemaVersion === "meta-pipeline-audit-approval-v1";
   const proofV2 = proof?.schemaVersion === "meta-pipeline-audit-approval-v2";
   const proofV3 = proof?.schemaVersion === "meta-pipeline-audit-approval-v3";
-  if (!proof || !proofV1 && !proofV2 && !proofV3) fail("META_PIPELINE_AUDIT proof required");
+  const proofV4 = proof?.schemaVersion === "meta-pipeline-audit-approval-v4";
+  if (!proof || !proofV1 && !proofV2 && !proofV3 && !proofV4) fail("META_PIPELINE_AUDIT proof required");
   requireText(proof.sourceFileDriveId, "META_PIPELINE_AUDIT sourceFileDriveId");
   const readEvidence = (ref, name) => {
     if (!ref || typeof ref !== "object" || Array.isArray(ref) || !/^[a-f0-9]{64}$/.test(ref.sha256 || "")) fail(`${name} reference required`);
@@ -165,8 +513,15 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
   const rawAudit = readEvidence(proof.auditPackageRef, "META_PIPELINE_AUDIT package");
   const manifest = readEvidence(proof.manifestRef, "META_PIPELINE_AUDIT manifest");
   const sourceParity = readEvidence(proof.sourceParityRef, "META_PIPELINE_AUDIT source parity");
+  if (proofV4 !== Boolean(proof.correctiveReviewRef)) fail("META_PIPELINE_AUDIT correctiveReviewRef is required only for approval v4");
   const classificationPackage = proofV2 || proofV3
     ? readEvidence(proof.classificationRef, "META_PIPELINE_AUDIT paired classification package")
+    : null;
+  if (proofV4 !== Boolean(proof.correctiveReviewRef)) fail("META_PIPELINE_AUDIT correctiveReviewRef is required only for approval v4");
+  if (proofV4 && [proof.auditPackageRef?.path, proof.manifestRef?.path, proof.sourceParityRef?.path].includes(proof.correctiveReviewRef?.path))
+    fail("META_PIPELINE_AUDIT SOP_v1.2 corrective review must be a distinct evidence file");
+  const correctiveReview = proofV4
+    ? readEvidence(proof.correctiveReviewRef, "META_PIPELINE_AUDIT SOP_v1.2 corrective review")
     : null;
   const parentBindingCorrection = proof.parentBindingCorrectionRef
     ? readEvidence(proof.parentBindingCorrectionRef, "META_PIPELINE_AUDIT canonical parent-binding correction")
@@ -186,21 +541,38 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     Boolean(rawAudit.records?.[0]?.difficulty) && Number.isInteger(rawAudit.totalQuestions) &&
     Number.isInteger(rawAudit.totalApproved) && Number.isInteger(rawAudit.totalHold);
   const auditV2 = rawAudit.schemaVersion === "META_AUDIT_ATOMIC_PACKAGE_v2";
+  if (proof.targetedRecoveryRef && !auditV3SourceDriveFlat)
+    fail("targeted recovery supplement requires sourceDrive flat v3 audit");
+  const targetedRecovery = proof.targetedRecoveryRef
+    ? validateTargetedRecoverySupplement({ recovery: readEvidence(proof.targetedRecoveryRef, "targeted recovery supplement"),
+      source, sourceBlobSha1, bank, items, rawAudit, classificationPackage, manifest, ref: proof.targetedRecoveryRef })
+    : null;
+  const auditV4 = rawAudit.manifestType === SOP_V12_AUDIT_TYPE && rawAudit.sopVersion === "SOP_v1.2" &&
+    Array.isArray(rawAudit.auditRecords) && Boolean(rawAudit.auditRecords.length);
   const pairedLegacyInput = auditV2 || auditV3KeyOnly;
   const auditV3 = auditV3Rich || auditV3KeyOnly || auditV3SourceDriveFlat;
   const expectedAuditSourceId = rawAudit.sourceFileDriveId || rawAudit.sourceDriveId;
+  const declaredSourceSha256 = auditV4 ? rawAudit.sourceFileSha256 : rawAudit.sourceSha256;
   if (auditV3Rich !== proofV1 || (auditV2 || auditV3KeyOnly) !== proofV2 ||
-      auditV3SourceDriveFlat !== proofV3 || !auditV3 && !auditV2 || rawAudit.examTitle !== expectedTitle ||
-      expectedAuditSourceId !== proof.sourceFileDriveId || !/^[a-f0-9]{64}$/.test(rawAudit.sourceSha256 || ""))
+      auditV3SourceDriveFlat !== proofV3 || auditV4 !== proofV4 || !auditV3 && !auditV2 && !auditV4 ||
+      (auditV4 ? rawAudit.examSlug !== expectedTitle : rawAudit.examTitle !== expectedTitle) ||
+      expectedAuditSourceId !== proof.sourceFileDriveId || !/^[a-f0-9]{64}$/.test(declaredSourceSha256 || ""))
     fail("META_PIPELINE_AUDIT source identity/schema mismatch");
   const rawAuditVerdict = rawAudit.auditVerdict || rawAudit.auditStatus;
-  if (rawAuditVerdict !== "ALL_APPROVED_CANONICAL_STANDARDIZED") fail("META_PIPELINE_AUDIT audit verdict mismatch");
+  const expectedVerdict = auditV4 ? "AUDIT_COMPLETE_100_PERCENT_PASS" : "ALL_APPROVED_CANONICAL_STANDARDIZED";
+  if (rawAuditVerdict !== expectedVerdict) fail("META_PIPELINE_AUDIT audit verdict mismatch");
   if (auditV3Rich && (rawAudit.handOffToCourier?.status !== "READY_FOR_COURIER_REGISTRATION" ||
       rawAudit.handOffToCourier?.author !== "META_PIPELINE_UNIFIED_AUTHOR" ||
       rawAudit.handOffToCourier?.registrationProtocol !== "DIRECT_ATOMIC_METADATA_BINDING"))
     fail("META_PIPELINE_AUDIT is not an approved Courier handoff");
   let audit = rawAudit;
-  if (pairedLegacyInput || auditV3SourceDriveFlat) {
+  let sopSourceFieldCorrections = new Map();
+  if (auditV4) {
+    const normalizedSop = normalizeSopV12Audit({ root, proof, rawAudit, manifest, review: correctiveReview, bank, source, sourceBytes,
+      expectedQuestionCount, items, registryChanges });
+    audit = normalizedSop.audit;
+    sopSourceFieldCorrections = normalizedSop.sourceFieldCorrections;
+  } else if (pairedLegacyInput || auditV3SourceDriveFlat) {
     const classificationSchema = auditV3SourceDriveFlat ? "ALIVE_CANDIDATE_CLASSIFICATION_v3"
       : auditV3KeyOnly ? "CANDIDATE_CLASSIFICATION_PACKAGE_v2" : "CANDIDATE_CLASSIFICATION_v2";
     const classificationSourceId = classificationPackage?.sourceFileDriveId || classificationPackage?.sourceDriveId;
@@ -228,9 +600,14 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     // states so legacy key-only audits can use an unchanged active definition
     // or an exact add-only definition carried by this request.
     const v2BeforeTables = lookup(registryPlan(root, [], () => {}));
-    const v2Tables = (registryChanges || []).length
-      ? lookup(registryPlan(root, registryChanges, () => {}))
-      : v2BeforeTables;
+    // On replay the additive changes are already present; applying their
+    // before:null plan again would reject an otherwise valid registration.
+    // The plan is still checked below for a new registration.
+    const v2Tables = conceptKeys.every(key => v2BeforeTables.cc.get(key)?.status === "ACTIVE")
+      ? v2BeforeTables
+      : (registryChanges || []).length
+        ? lookup(registryPlan(root, registryChanges, () => {}))
+        : v2BeforeTables;
     const boundAtomicCrossConcepts = conceptKeys.map(key => {
       const existed = v2BeforeTables.cc.has(key);
       const definition = (existed ? v2BeforeTables : v2Tables).cc.get(key);
@@ -352,27 +729,63 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
   }
   const stats = audit.statistics;
   if (!stats || stats.totalQuestions !== expectedQuestionCount || stats.approved !== expectedQuestionCount ||
-      stats.holdRemaining !== 0 || stats.newTemplatesCreated !== 0 || !metaPipelineTemplateReuseCountMatches(stats, audit)) fail("META_PIPELINE_AUDIT denominator/hold/template gate mismatch");
+      stats.holdRemaining !== 0) fail("META_PIPELINE_AUDIT denominator/hold/template gate mismatch");
+  if (auditV4) {
+    if (stats.templateInflationStatus !== "NOT_REPORTED_IN_SOURCE_SCHEMA" ||
+        stats.canonicalTemplatesReusedStatus !== "NOT_REPORTED_IN_SOURCE_SCHEMA" ||
+        Object.hasOwn(stats, "newTemplatesCreated") || Object.hasOwn(stats, "canonicalTemplatesReused"))
+      fail("META_PIPELINE_AUDIT SOP_v1.2 must not synthesize template inflation statistics");
+  } else if (stats.newTemplatesCreated !== 0 || !metaPipelineTemplateReuseCountMatches(stats, audit))
+    fail("META_PIPELINE_AUDIT denominator/hold/template gate mismatch");
   const manifestV2 = manifest.schemaVersion === "COURIER_INTAKE_MANIFEST_v2";
   const manifestV3 = ["ALIVE_COURIER_INTAKE_MANIFEST_v3", "COURIER_INTAKE_MANIFEST_v3"].includes(manifest.schemaVersion);
-  if ((!manifestV2 && !manifestV3) || manifest.examTitle !== expectedTitle ||
+  const manifestV4 = manifest.manifestType === SOP_V12_MANIFEST_TYPE && manifest.sopVersion === "SOP_v1.2";
+  if (auditV4) {
+    if (!manifestV4 || manifest.examTitle !== rawAudit.examTitle || manifest.examSlug !== expectedTitle ||
+        manifest.sourceDriveId !== proof.sourceFileDriveId ||
+        manifest.sourceFileSha256 !== rawAudit.sourceFileSha256 ||
+        manifest.standardCourse !== rawAudit.standardCourse || manifest.targetPack !== rawAudit.primaryPack ||
+        manifest.totalQuestionsToRegister !== expectedQuestionCount ||
+        manifest.readyForRegistrationCount !== expectedQuestionCount ||
+        manifest.pipelineStatus !== "READY_FOR_COURIER_REGISTRATION" ||
+        !Array.isArray(manifest.recordsToBind) || manifest.recordsToBind.length !== expectedQuestionCount)
+      fail("META_PIPELINE_AUDIT SOP_v1.2 manifest identity/denominator mismatch");
+  } else if ((!manifestV2 && !manifestV3) || manifest.examTitle !== expectedTitle ||
       manifest.sourceFileDriveId !== proof.sourceFileDriveId || manifest.sourceSha256 !== audit.sourceSha256 ||
       manifest.status !== "READY_FOR_COURIER_REGISTRATION") fail("META_PIPELINE_AUDIT manifest/source mismatch");
   if (manifestV2 && (manifest.courierAction !== "COMMIT_CANONICAL_BINDING" ||
       path.basename(manifest.bindingTarget || "") !== `${expectedTitle}.js`)) fail("META_PIPELINE_AUDIT v2 manifest routing mismatch");
   if (manifestV3 && (manifest.totalQuestions !== expectedQuestionCount || manifest.totalHoldCount !== 0))
     fail("META_PIPELINE_AUDIT v3 manifest denominator/hold gate mismatch");
-  const auditSourceSha256 = sourceParity.auditSourceSha256 || sourceParity.driveSourceSha256;
+  const auditSourceSha256 = auditV4
+    ? (sourceParity.originalDeclaredSourceSha256 || "")
+    : sourceParity.auditSourceSha256 || sourceParity.driveSourceSha256;
   const sourceHashDrift = sourceParity.driveSourceSha256 !== audit.sourceSha256;
     if (auditV2 && sourceHashDrift)
     fail("META_PIPELINE_AUDIT v2 cannot reconcile audit/Drive source hash drift without final audit excerpts");
   const exactSourceHashParity = !sourceHashDrift && sourceParity.parityBasis === "EXACT_SOURCE_SHA256" &&
     sourceParity.driveSourceSha256 === audit.sourceSha256 && sourceParity.productionSourceSha256 === audit.sourceSha256;
-  const sourceParityStatusValid = sourceHashDrift
-    ? sourceParity.status === "EXACT_STUDENT_VISIBLE_PARITY_WITH_AUDIT_HASH_DRIFT" &&
-      sourceParity.auditSourceSha256 === audit.sourceSha256 &&
-      sourceParity.sourceHashDriftReason === "AUDIT_SOURCE_HASH_DIFFERS_FROM_CURRENT_DRIVE_FILE"
-    : sourceParity.status === "EXACT_STUDENT_VISIBLE_PARITY";
+  const sopCurrentSourceParity = auditV4 &&
+    sourceParity.originalDeclaredSourceSha256 === rawAudit.sourceFileSha256 &&
+    sourceParity.driveSourceSha256 === digest(sourceBytes) &&
+    sourceParity.productionSourceSha256 === digest(sourceBytes) &&
+    sourceParity.parityBasis === "EXACT_SOURCE_SHA256" &&
+    ["EXACT_STUDENT_VISIBLE_PARITY", "EXACT_STUDENT_VISIBLE_PARITY_WITH_AUDIT_HASH_DRIFT"].includes(sourceParity.status);
+  if (auditV4) {
+    if (sourceParity.originalDeclaredSourceSha256 !== rawAudit.sourceFileSha256)
+      fail("META_PIPELINE_AUDIT SOP_v1.2 source parity does not preserve the originally declared source SHA");
+    if (auditV4 && !sopCurrentSourceParity)
+      fail("META_PIPELINE_AUDIT SOP_v1.2 source parity must bind the original declaration and exact current Drive/production bytes");
+  }
+  const sourceParityStatusValid = auditV4
+    ? ["EXACT_STUDENT_VISIBLE_PARITY", "EXACT_STUDENT_VISIBLE_PARITY_WITH_AUDIT_HASH_DRIFT"].includes(sourceParity.status) && sourceParity.parityBasis === "EXACT_SOURCE_SHA256" &&
+      sourceParity.driveSourceSha256 === digest(sourceBytes) && sourceParity.productionSourceSha256 === digest(sourceBytes) &&
+      sourceParity.originalDeclaredSourceSha256 === audit.sourceSha256
+    : sourceHashDrift
+      ? sourceParity.status === "EXACT_STUDENT_VISIBLE_PARITY_WITH_AUDIT_HASH_DRIFT" &&
+        sourceParity.auditSourceSha256 === audit.sourceSha256 &&
+        sourceParity.sourceHashDriftReason === "AUDIT_SOURCE_HASH_DIFFERS_FROM_CURRENT_DRIVE_FILE"
+      : sourceParity.status === "EXACT_STUDENT_VISIBLE_PARITY";
   if (sourceParity.schemaVersion !== "archive-meta-pipeline-source-parity-v1" || !sourceParityStatusValid ||
       !/^[a-f0-9]{64}$/.test(sourceParity.driveSourceSha256 || "") || auditSourceSha256 !== audit.sourceSha256 ||
       sourceParity.sourceFileDriveId !== proof.sourceFileDriveId ||
@@ -391,9 +804,10 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
   if (!Array.isArray(audit.records) || audit.records.length !== expectedQuestionCount ||
       !Array.isArray(manifest.recordsToBind) || manifest.recordsToBind.length !== expectedQuestionCount) fail("META_PIPELINE_AUDIT record denominator mismatch");
   const records = unique(audit.records, "questionId", "audit questionId");
-  const manifestRecords = unique(manifest.recordsToBind, "questionId", "manifest questionId");
+  const manifestRecords = unique(manifest.recordsToBind, auditV4 ? "questionNumber" : "questionId", "manifest questionId");
   const parityRecords = unique(sourceParity.records, "sourceOrdinal", "source parity ordinal");
   const patches = unique(items || [], "sourceOrdinal", "META_PIPELINE_AUDIT sourceOrdinal");
+  const conditionDebtUids = [];
   if (patches.size !== expectedQuestionCount || bank.length !== expectedQuestionCount) fail("META_PIPELINE_AUDIT request denominator mismatch");
   for (let ordinal = 1; ordinal <= expectedQuestionCount; ordinal++) {
     const record = records.get(ordinal), manifestRow = manifestRecords.get(ordinal), parityRow = parityRecords.get(ordinal), patch = patches.get(ordinal);
@@ -407,24 +821,54 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     if (pairedLegacyInput && (!record.legacyV2Evidence?.sourceTextExcerpt || !record.legacyV2Evidence?.difficultyReason ||
         !record.legacyV2Evidence?.auditRemarks || typeof record.legacyV2Evidence.hasImage !== "boolean"))
       fail(`META_PIPELINE_AUDIT paired legacy evidence incomplete: ${ordinal}`);
-    const manifestCrossConceptKeys = manifestKeyList(manifestRow, "crossConceptKeys", "crossConcepts");
-    const manifestConditionKeys = manifestKeyList(manifestRow, "conditionKeys");
-    const manifestConditionsMatch = manifestConditionKeys === null
-      ? manifestV2 || manifestRow?.conditionKeys === undefined
-      : eq(manifestConditionKeys, classification.conditionKeys || []);
-    const manifestUnitsMatch = !(pairedLegacyInput || auditV3SourceDriveFlat) || manifestRow?.standardUnitKey === record.standardUnitKey &&
-      manifestRow?.subUnitKey === record.subUnitKey &&
-      (manifestRow.targetPack || manifestRow.pack) === classification.targetPack;
-    if (!manifestRow || manifestRow.problemTypeKey !== classification.problemTypeKey || manifestRow.templateKey !== classification.templateKey ||
-        !manifestCrossConceptKeys || !eq(manifestCrossConceptKeys, classification.crossConceptKeys) ||
-        !manifestConditionsMatch || !manifestUnitsMatch)
-      fail(`META_PIPELINE_AUDIT manifest binding mismatch: ${ordinal}`);
+    if (auditV4) {
+      const bankRow = bank[ordinal - 1];
+      const manifestCrossConcepts = manifestKeyList(manifestRow, "crossConcepts", "crossConceptKeys");
+      if (!manifestRow) fail("META_PIPELINE_AUDIT SOP_v1.2 manifest binding mismatch: " + ordinal);
+      const sourceChoicesCount = Array.isArray(bankRow.choices) ? bankRow.choices.length : null;
+      const correctionAllows = (field, manifestValue, sourceValue) => {
+        const correction = sopSourceFieldCorrections.get(ordinal)?.get(field);
+        return Boolean(correction) && isSopV12SourceFieldCorrectionAllowed({ field, ordinal, questionUid: patch.questionUid,
+          originalValue: manifestValue, currentValue: sourceValue, reviewEntry: correction, itemEntry: correction });
+      };
+      const questionTypeMatches = eq(manifestRow.questionType ?? null, bankRow.questionType ?? null) ||
+        correctionAllows("questionType", manifestRow.questionType ?? null, bankRow.questionType ?? null);
+      const answerMatches = eq(manifestRow.answer ?? null, bankRow.answer ?? null) ||
+        correctionAllows("answer", manifestRow.answer ?? null, bankRow.answer ?? null);
+      const choicesCountMatches = manifestRow.choicesCount === sourceChoicesCount ||
+        correctionAllows("choicesCount", manifestRow.choicesCount ?? null, sourceChoicesCount);
+      const scoreMatches = eq(Number(manifestRow.score), Number(bankRow.score)) ||
+        correctionAllows("score", manifestRow.score ?? null, bankRow.score ?? null);
+      if (Number(manifestRow.questionNumber) !== ordinal || Number(manifestRow.sourceQuestionId) !== ordinal ||
+          manifestRow.primaryTaxonomy !== record.auditedClassification.problemTypeKey ||
+          manifestRow.templatePattern !== record.auditedClassification.templateKey ||
+          !manifestCrossConcepts || !eq(manifestCrossConcepts, record.auditedClassification.crossConceptKeys) ||
+          manifestRow.unitKey !== record.auditedClassification.standardUnitKey || manifestRow.subUnitKey !== record.auditedClassification.subUnitKey ||
+          manifestRow.pack !== classification.targetPack ||
+          Number(manifestRow.difficulty) !== record.auditedClassification.difficultyRank ||
+          manifestRow.level !== record.auditedClassification.level ||
+          !questionTypeMatches || !answerMatches || !choicesCountMatches || !scoreMatches)
+        fail(`META_PIPELINE_AUDIT SOP_v1.2 manifest binding mismatch: ${ordinal}`);
+    } else {
+      const manifestCrossConceptKeys = manifestKeyList(manifestRow, "crossConceptKeys", "crossConcepts");
+      const manifestConditionKeys = manifestKeyList(manifestRow, "conditionKeys");
+      const manifestConditionsMatch = manifestConditionKeys === null
+        ? manifestV2 || manifestRow?.conditionKeys === undefined
+        : eq(manifestConditionKeys, classification.conditionKeys || []);
+      const manifestUnitsMatch = !(pairedLegacyInput || auditV3SourceDriveFlat) || manifestRow?.standardUnitKey === record.standardUnitKey &&
+        manifestRow?.subUnitKey === record.subUnitKey &&
+        (manifestRow.targetPack || manifestRow.pack) === classification.targetPack;
+      if (!manifestRow || manifestRow.problemTypeKey !== classification.problemTypeKey || manifestRow.templateKey !== classification.templateKey ||
+          !manifestCrossConceptKeys || !eq(manifestCrossConceptKeys, classification.crossConceptKeys) ||
+          !manifestConditionsMatch || !manifestUnitsMatch)
+        fail(`META_PIPELINE_AUDIT manifest binding mismatch: ${ordinal}`);
+    }
     if (record.difficultyEvidence && (patch.after?.difficultyBucket !== record.difficultyEvidence.bucket ||
         patch.after?.difficultyConfidence !== record.difficultyEvidence.confidence))
       fail(`META_PIPELINE_AUDIT sourceDrive v3 difficulty binding mismatch: ${ordinal}`);
     const actualPayloadHash = studentPayloadSha256(bank[ordinal - 1]);
     if (!parityRow || parityRow.questionId !== ordinal || parityRow.questionUid !== patch?.questionUid ||
-        !(exactSourceHashParity || parityRow.driveSourceTextExcerptMatched === true && parityRow.driveSolutionExcerptMatched === true) ||
+        !(exactSourceHashParity || sopCurrentSourceParity || parityRow.driveSourceTextExcerptMatched === true && parityRow.driveSolutionExcerptMatched === true) ||
         parityRow.driveStudentPayloadSha256 !== actualPayloadHash || parityRow.productionStudentPayloadSha256 !== actualPayloadHash ||
         parityRow.studentPayloadEqual !== true) fail(`META_PIPELINE_AUDIT student source parity mismatch: ${ordinal}`);
     const after = patch?.after || {};
@@ -440,10 +884,26 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
             approvalEvidence.some(approvedRef => approvedRef.path === ref.path && approvedRef.sha256 === ref.sha256) &&
             fs.existsSync(safePath(root, ref.path)) && digest(fs.readFileSync(safePath(root, ref.path))) === ref.sha256)
         : false;
+    if (auditV4 && (after.level !== record.auditedClassification.level ||
+        after.standardUnitKey !== record.auditedClassification.correctedStandardUnitKey ||
+        after.subUnitKey !== record.auditedClassification.correctedSubUnitKey ||
+        after.standardCourse !== record.standardCourse && after.courseKey !== record.standardCourse ||
+        Object.hasOwn(patch?.after || {}, "difficultyBucket") && patch.after.difficultyBucket !== null ||
+        Array.isArray(patch?.after?.conditionKeys) && !eq(patch.after.conditionKeys, patch?.before?.conditionKeys ?? null)))
+      fail(`META_PIPELINE_AUDIT SOP_v1.2 audited binding limits violated: ${ordinal}`);
+    const rawRow = (rawAudit.records || []).find(row => Number(row.questionId) === ordinal);
+    const candidateRow = (classificationPackage?.records || []).find(row => Number(row.questionId) === ordinal);
+    const conditionDebt = (proof.unreviewedFields || []).find(row => row.field === "conditionKeys" &&
+      row.status === "EVIDENCE_DEBT" && Array.isArray(row.questionUids) && row.questionUids.includes(patch?.questionUid));
+    const explicitConditionDebt = isSourceConditionEvidenceDebtAllowed({ debt: conditionDebt,
+      flatV3: auditV3SourceDriveFlat, rawRow, candidateRow, question: bank[ordinal - 1], patch });
+    if (conditionDebt && !explicitConditionDebt) fail(`conditionKeys EVIDENCE_DEBT mismatch: ${ordinal}`);
+    if (explicitConditionDebt) conditionDebtUids.push(patch.questionUid);
     if (!patch || patch.questionId !== undefined && patch.questionId !== ordinal ||
         after.standardUnitKey !== record.standardUnitKey || after.subUnitKey !== record.subUnitKey ||
         after.problemTypeKey !== classification.problemTypeKey || after.templateKey !== classification.templateKey ||
-        !eq(after.crossConceptKeys, classification.crossConceptKeys) || !eq(after.conditionKeys, classification.conditionKeys || []) ||
+        !eq(after.crossConceptKeys, classification.crossConceptKeys) || (!auditV4 && !eq(after.conditionKeys,
+          targetedRecovery?.ordinal === ordinal ? targetedRecovery.conditionKeys : explicitConditionDebt ? null : classification.conditionKeys || [])) ||
         Boolean(basicParentRef) === Boolean(targetParentRef) || !parentRef ||
         basicParentRef && !/^[a-f0-9]{64}$/.test(basicParentRef.sha256 || "") || !parentEvidenceLinked)
       fail(`META_PIPELINE_AUDIT registration binding mismatch: ${ordinal}`);
@@ -459,11 +919,13 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     if (definition.labelKo.trim() === definition.conceptKey || definition.definition.trim() === definition.conceptKey)
       fail(`META_PIPELINE_AUDIT CrossConcept definition placeholder: ${definition.conceptKey}`);
   }
-  return { audit, manifest, sourceParity, parentBindingCorrection, parentBindingCorrectionRef: proof.parentBindingCorrectionRef || null,
-    sourceFileDriveId: proof.sourceFileDriveId, inputAuditSchemaVersion: rawAudit.schemaVersion,
-    inputAuditVariant: auditV3Rich ? "rich_v3" : auditV3KeyOnly ? "key_only_v3"
+  return { audit, manifest, sourceParity, parentBindingCorrection, targetedRecovery, conditionDebtUids, parentBindingCorrectionRef: proof.parentBindingCorrectionRef || null,
+    sourceFileDriveId: proof.sourceFileDriveId, inputAuditSchemaVersion: audit.inputAuditSchemaVersion || rawAudit.schemaVersion,
+    inputAuditVariant: auditV4 ? "sop_v12_corrective_review" : auditV3Rich ? "rich_v3" : auditV3KeyOnly ? "key_only_v3"
       : auditV3SourceDriveFlat ? "source_drive_flat_v3" : "atomic_package_v2",
-    classificationRef: proof.classificationRef || null };
+    classificationRef: proof.classificationRef || null,
+    sourceFieldCorrections: [...sopSourceFieldCorrections.entries()].sort(([a], [b]) => a - b).flatMap(([ordinal, corrections]) =>
+      [...corrections.values()].map(entry => ({ ...entry, sourceOrdinal: ordinal }))) };
 }
 
 function validateMetaPipelineRegistry({ audit, parentBindingCorrection, parentBindingCorrectionRef, beforeTables, afterTables, registryChanges, existingConceptReviews, items, root }) {
@@ -918,7 +1380,7 @@ function lookup(plan) {
   return result;
 }
 
-function resolve(row, tables) {
+function resolve(row, tables, { allowConditionDebt = false } = {}) {
   const active = (map, key, type) => {
     const r = map.get(key);
     if (!r || r.status !== "ACTIVE") fail(`inactive/missing ${type}: ${key}`);
@@ -929,6 +1391,7 @@ function resolve(row, tables) {
   if (tpl.parentProblemTypeKey !== pt.problemTypeKey) fail(`TPL parent mismatch: ${row.templateKey}`);
   const extensionKeys = [];
   for (const [field, map] of [["crossConceptKeys", tables.cc], ["conditionKeys", tables.cond]]) {
+    if (field === "conditionKeys" && row[field] === null && allowConditionDebt) continue;
     if (!Array.isArray(row[field]) || new Set(row[field]).size !== row[field].length) fail(`invalid ${field}`);
     for (const k of row[field]) {
       // A key that is not a canonical definition at all may be a Generated extension (checked below, once
@@ -1190,7 +1653,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     for (const record of previous.appliedIdentityRecords || []) if (!eq(ids.get(record.questionUid), record)) fail(`registered identity drift: ${record.questionUid}`);
     const currentPlan = registryPlan(root, [], evidenceRefs), currentTables = lookup(currentPlan);
     for (const record of previous.approval?.sourceRebind ? [] : previous.appliedRecords) {
-      const r = resolve(record, currentTables);
+      const r = resolve(record, currentTables, { allowConditionDebt: metaPipelineAudit?.conditionDebtUids.includes(record.questionUid) });
       const labels = labelsFor(root, patches.get(record.questionUid), record, r, read, blob, { registeredReplay: true });
       for (const [key, value] of Object.entries(labels)) if (record[key] !== value) fail(`registered canonical label drift: ${record.questionUid}.${key}`);
     }
@@ -1314,10 +1777,21 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (!Object.hasOwn(patch.before, field)) fail(`before required: ${current.questionUid}.${field}`);
     }
     const final = { ...current, ...structuredClone(patch.after) };
+    if (req.approval.type === "META_PIPELINE_AUDIT" && metaPipelineAudit?.inputAuditVariant === "sop_v12_corrective_review" &&
+        !eq(final.conditionKeys ?? null, current.conditionKeys ?? null))
+      fail(`SOP_v1.2 audit has no Condition evidence; existing conditionKeys must be preserved: ${current.questionUid}`);
     for (const f of sourceFields) if (Object.hasOwn(q, f) && !eq(q[f], final[f])) {
       const preservesApprovedAuditValue = req.approval.type === "META_PIPELINE_AUDIT" && approved(current) &&
         eq(current[f] ?? null, final[f] ?? null);
-      if (!preservesApprovedAuditValue && !(req.approval.type === "META_PIPELINE_AUDIT" && isPendingMetaPlaceholder(q, f, final[f])) &&
+      const sopAuditedRecord = req.approval.type === "META_PIPELINE_AUDIT" && metaPipelineAudit?.inputAuditVariant === "sop_v12_corrective_review"
+        ? metaPipelineAudit.audit.records.find(record => Number(record.questionId) === i + 1) : null;
+      const sopAssignmentRebind = Boolean(sopAuditedRecord) && ["standardUnitKey", "subUnitKey"].includes(f) &&
+        eq(q[f] ?? null, sopAuditedRecord.auditedClassification[f]) &&
+        eq(final[f], sopAuditedRecord.auditedClassification[f === "standardUnitKey" ? "correctedStandardUnitKey" : "correctedSubUnitKey"]);
+      const pendingNamespaceCorrection = Boolean(sopAuditedRecord) &&
+        isSopPendingSourceNamespaceCorrectionAllowed({ field: f, current, question: q, patch, final,
+          audited: sopAuditedRecord.auditedClassification, resolved: resolve(final, tables) });
+      if (!preservesApprovedAuditValue && !sopAssignmentRebind && !pendingNamespaceCorrection && !(req.approval.type === "META_PIPELINE_AUDIT" && isPendingMetaPlaceholder(q, f, final[f])) &&
           !canRebindPendingAuditMetadata({ approvalType: req.approval.type, metaPipelineAudit, beforeTables, current, question: q, patch, final, ordinal: i + 1, field: f }))
         fail(`source/approved metadata parity: ${current.questionUid}.${f}`);
     }
@@ -1353,7 +1827,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         requireText(final.integrationPattern, "integrationPattern (explicit NONE if not applicable)");
       integrationPatternEvidenceDebt = debt.reason;
     } else requireText(final.integrationPattern, "integrationPattern");
-    const resolved = resolve(final, tables), { pt, tpl, unit, sub, pack, curriculum, course } = resolved;
+    const resolved = resolve(final, tables, { allowConditionDebt: metaPipelineAudit?.conditionDebtUids.includes(current.questionUid) }), { pt, tpl, unit, sub, pack, curriculum, course } = resolved;
     for (const use of resolved.extensions) {
       const seen = extensionUsage.get(use.key) || { ...use, questionUids: [] };
       seen.questionUids.push(current.questionUid);
@@ -1369,11 +1843,20 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       req.approval.type === "META_PIPELINE_AUDIT" ? "meta_pipeline_audit" : "approved_final_qa";
     const fieldApproval = req.approval.type === "REVIEW2" ? "approved_review2" :
       req.approval.type === "META_PIPELINE_AUDIT" ? "approved_meta_pipeline_audit" : "approved_final_qa";
+    const sopV12Variant = metaPipelineAudit?.inputAuditVariant === "sop_v12_corrective_review";
     const approvedFields = req.approval.type === "META_PIPELINE_AUDIT"
-      ? ["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept", "condition",
+      ? ["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept",
+        ...(sopV12Variant ? [] : ["condition"]),
         ...(metaPipelineAudit?.inputAuditVariant === "source_drive_flat_v3" && final.difficultyBucket !== current.difficultyBucket ? ["difficulty"] : [])]
       : ["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept", "condition", "integrationPattern", "difficulty"];
     const fieldStatus = { ...(current.fieldStatus || {}), ...Object.fromEntries(approvedFields.map(k => [k, fieldApproval])) };
+    const targetedRecovery = metaPipelineAudit?.targetedRecovery?.questionUid === current.questionUid
+      ? metaPipelineAudit.targetedRecovery : null;
+    if (targetedRecovery) {
+      fieldStatus.condition = "approved_r2e_targeted_recovery";
+      fieldStatus.integrationPattern = "approved_r2e_targeted_recovery";
+    }
+    if (metaPipelineAudit?.conditionDebtUids.includes(current.questionUid)) fieldStatus.condition = "EVIDENCE_DEBT";
     const manualFieldHoldRemains = Object.values(fieldStatus).includes("manual_review_pending");
     const priorPartialHoldResolved = current.reviewStatus === "manual_review" &&
       current.metadataStatus === "approved_partial_with_explicit_holds" &&
@@ -1387,7 +1870,9 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         ? "approved_partial_with_explicit_holds" : current.metadataStatus)
       : "approved_semantic_review";
     const approvalEvidence = metaPipelineAudit
-      ? [receiptPath, req.approval.metaPipelineAudit.auditPackageRef.path, req.approval.metaPipelineAudit.manifestRef.path, req.approval.metaPipelineAudit.sourceParityRef.path]
+      ? [receiptPath, req.approval.metaPipelineAudit.auditPackageRef.path, req.approval.metaPipelineAudit.manifestRef.path, req.approval.metaPipelineAudit.sourceParityRef.path,
+        ...(targetedRecovery ? [targetedRecovery.ref.path] : []),
+        ...(sopV12Variant ? [req.approval.metaPipelineAudit.correctiveReviewRef.path] : [])]
       : [receiptPath];
     Object.assign(final, { curriculum, curriculumKey: curriculum, standardCourse: course, courseKey: final.courseKey || course,
       reviewStatus: req.approval.type === "META_PIPELINE_AUDIT"
@@ -1430,6 +1915,10 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     if (integrationPatternEvidenceDebt) {
       final.fieldStatus.integrationPattern = "EVIDENCE_DEBT";
       final.integrationPatternEvidenceDebt = { field: "integrationPattern", status: "EVIDENCE_DEBT", reason: integrationPatternEvidenceDebt };
+    }
+    if (metaPipelineAudit?.conditionDebtUids.includes(current.questionUid)) {
+      const debt = req.approval.metaPipelineAudit.unreviewedFields.find(row => row.field === "conditionKeys" && row.questionUids.includes(current.questionUid));
+      final.conditionKeysEvidenceDebt = { field: "conditionKeys", status: "EVIDENCE_DEBT", reason: debt.reason };
     }
     const packId = pack.meta.packId;
     if (!runtimes.has(packId)) {
@@ -1500,6 +1989,41 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         },
         classificationEvidenceAbsent: metaPipelineAudit.audit.records.filter(row => row.classificationReadingEvidenceStatus === "NOT_PROVIDED_AUDIT_EXCERPTS_VERIFIED").length,
       } } : {}),
+      ...(metaPipelineAudit.inputAuditVariant === "sop_v12_corrective_review" ? { sopV12CorrectiveReview: {
+        schemaVersion: SOP_V12_CORRECTIVE_REVIEW_SCHEMA,
+        correctiveReviewSha256: req.approval.metaPipelineAudit.correctiveReviewRef.sha256,
+        reviewer: metaPipelineAudit.audit.sopV12.reviewer,
+        reviewedAt: metaPipelineAudit.audit.sopV12.reviewedAt,
+        excerptBasis: metaPipelineAudit.audit.sopV12.excerptBasis,
+        originalDeclaredSourceSha256: metaPipelineAudit.audit.sopV12.originalDeclaredSourceSha256,
+        driveSourceSha256: metaPipelineAudit.audit.sopV12.driveSourceSha256,
+        productionSourceSha256: metaPipelineAudit.audit.sopV12.productionSourceSha256,
+        sourceHashDrift: metaPipelineAudit.audit.sopV12.sourceHashDrift,
+        sourceFieldCorrections: (metaPipelineAudit.sourceFieldCorrections || []).map(correction => ({
+          questionUid: correction.questionUid,
+          field: correction.field,
+          originalManifestValue: correction.originalManifestValue,
+          currentSourceValue: correction.currentSourceValue,
+          reason: correction.reason,
+          appliedToManifest: false,
+          reviewer: { id: metaPipelineAudit.audit.sopV12.reviewer.id, role: metaPipelineAudit.audit.sopV12.reviewer.role },
+          reviewedAt: metaPipelineAudit.audit.sopV12.reviewedAt,
+          sourceOrdinal: correction.sourceOrdinal,
+        })),
+        sourceBytesMutation: "NONE",
+        conditionEvidence: "NOT_PRESENT_IN_SOURCE_SCHEMA",
+        difficultyBucketSource: "NOT_AUDITED_1_5_BUCKET",
+        templateInflation: "NOT_REPORTED_IN_SOURCE_SCHEMA",
+        statistics: metaPipelineAudit.audit.statistics,
+        visualEvidenceCounts: {
+          checked: metaPipelineAudit.audit.records.filter(row => row.readingEvidence?.visualAssetChecked === true).length,
+          notChecked: metaPipelineAudit.audit.records.filter(row => row.readingEvidence?.visualAssetChecked === false).length,
+          actualTypes: Object.fromEntries(["IMAGE", "SVG", "SVG_IMAGE", "NONE"].map(type =>
+            [type, metaPipelineAudit.audit.records.filter(row => row.sourceSchemaVisualType === type).length])),
+        },
+        auditedDifficultyRanks: metaPipelineAudit.audit.records.map(row => ({ questionId: row.questionId,
+          difficultyRank: row.auditedClassification.difficultyRank })),
+      } } : {}),
       ...(metaPipelineAudit.classificationRef ? { classificationSha256: metaPipelineAudit.classificationRef.sha256 } : {}),
       sourceFileDriveId: metaPipelineAudit.sourceFileDriveId,
       auditSha256: req.approval.metaPipelineAudit.auditPackageRef.sha256, manifestSha256: req.approval.metaPipelineAudit.manifestRef.sha256,
@@ -1507,13 +2031,17 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       auditSourceSha256: metaPipelineAudit.audit.sourceSha256,
       driveSourceSha256: metaPipelineAudit.sourceParity.driveSourceSha256,
       productionSourceSha256: metaPipelineAudit.sourceParity.productionSourceSha256,
-      sourceHashDrift: metaPipelineAudit.sourceParity.driveSourceSha256 !== metaPipelineAudit.audit.sourceSha256 } } : {}),
+      sourceHashDrift: metaPipelineAudit.inputAuditVariant === "sop_v12_corrective_review"
+        ? metaPipelineAudit.audit.sopV12.sourceHashDrift
+        : metaPipelineAudit.sourceParity.driveSourceSha256 !== metaPipelineAudit.audit.sourceSha256 } } : {}),
     metadataRegistrationStatus: "REGISTERED", examFinalQaStatus: "NOT_EVALUATED_BY_REGISTRAR",
     consumerSearchStatus: "NOT_RUN", totalQuestions: applied.length, registryChanges: req.registryChanges || [],
     ...(extensionUsage.size ? { generatedExtensionKeys: [...extensionUsage.values()].sort((x, y) => x.key.localeCompare(y.key, "en")) } : {}),
     appliedRecords: applied, appliedIdentityRecords, fingerprintRepairs, runtimeRecords, outputDigests };
   plan.output.set(receiptPath, json(receipt));
   const changed = [...plan.output].filter(([file, text]) => !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text);
+  if (changed.some(([file]) => file.startsWith("archive/exams/"))) fail("registration must not write exam source bytes");
+  if (!eq(fs.readFileSync(safePath(root, `archive/exams/${source}`)), bytes)) fail("exam source bytes changed during registration");
   // All semantic and reference checks precede the first write; restore originals
   // if an I/O failure occurs. CLI dry-run never changes production data.
   if (write) {
@@ -1653,7 +2181,8 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
     // That is the intended "usable, never promoted" outcome. It is waived here only when the record's whole
     // classification (PT/TPL/binding/canonical keys/extension keys) re-validates through the registrar's own resolve().
     const extensionExplained = field => field === "foundationTaxonomy" && hasExtensionKey(r) &&
-      resolve(r, (extensionTables ||= lookup(registryPlan(root, [], () => {})))).extensions.length > 0;
+      resolve(r, (extensionTables ||= lookup(registryPlan(root, [], () => {}))),
+        { allowConditionDebt: r.conditionKeysEvidenceDebt?.status === "EVIDENCE_DEBT" }).extensions.length > 0;
     const blockingConflicts = (c.metadataConflicts || []).filter(field => !(laneBound && field === "reviewStatus") && !extensionExplained(field));
     if (blockingConflicts.length) fail(`Consumer metadata conflict: ${r.questionUid}`);
     if ((c.metadataConflicts || []).includes("foundationTaxonomy") && hasExtensionKey(r)) lanes.generatedExtension = (lanes.generatedExtension || 0) + 1;
@@ -1678,11 +2207,17 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
           searchSourceCache.set(sourceFile, bank);
         }
         const sourceQuestion = bank?.[Number(r.sourceOrdinal) - 1];
-        if (sourceQuestion && eq(found[f] ?? null, sourceQuestion[f] ?? null)) continue;
+        // The source-only index serializes absent source metadata as an empty
+        // string. Effective catalog and runtime values were verified above.
+        if (sourceQuestion && eq(found[f] ?? "", sourceQuestion[f] ?? "")) continue;
       }
       fail("Search metadata mismatch: " + r.questionUid + "." + f);
     }
-    if (found.course !== r.standardCourse) fail(`Search course mismatch: ${r.questionUid}`);
+    if (found.course !== r.standardCourse) {
+      const sourceQuestion = searchSourceCache.get("archive/exams/" + r.sourceArchiveFile)?.[Number(r.sourceOrdinal) - 1];
+      if (!(r.metadataApprovalType === "META_PIPELINE_AUDIT" && sourceQuestion &&
+          eq(found.course ?? "", sourceQuestion.standardCourse ?? ""))) fail(`Search course mismatch: ${r.questionUid}`);
+    }
   }
   if (!runtimeRecords.length) fail("runtime records missing");
   return lanes;

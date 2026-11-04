@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "LOGIC_SET",
-  "shardVersion": "1.0.5",
+  "shardVersion": "1.0.6",
   "status": "ACTIVE",
-  "conceptCount": 24,
+  "conceptCount": 25,
   "concepts": [
     {
       "conceptKey": "CC_COUNTEREXAMPLE",
@@ -763,6 +763,45 @@
       ],
       "curriculumRefs": [
         "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_SUFFICIENT_CONDITIONS",
+      "canonicalLabelKo": "충분조건",
+      "definition": "어떤 명제가 성립하기에 충분한 조건.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e",
+          "sourceOrdinal": 25,
+          "classificationRationale": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS/TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "① 사다리꼴→평행사변형: 다른 한 쌍의 대변도 평행하다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중2-2:M2-05"
       ],
       "ownerConceptShard": "LOGIC_SET"
     }

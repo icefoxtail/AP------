@@ -1,0 +1,4173 @@
+{
+  "schemaVersion": "archive-meta-pipeline-sop-v12-corrective-review-v1",
+  "sopVersion": "SOP_v1.2",
+  "examTitle": "2022학년도 순천풍덕중 2학년 1학기 기말고사 수학",
+  "examSlug": "22_풍덕중_1학기_기말_중2_수학",
+  "sourceArchiveFile": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+  "sourceFileDriveId": "19HPeOoAUCbpsP81HDQE10jclB7tQtEch",
+  "originalDeclaredSourceSha256": "d7b32b4a064acb0214f5b16cfa2fb55e473ad64b0cb0150fdceacb619e64c080",
+  "driveSourceSha256": "876d7469b13d5da0db326ced8fbf68407a770a3c05334be661f5f07310350506",
+  "productionSourceSha256": "876d7469b13d5da0db326ced8fbf68407a770a3c05334be661f5f07310350506",
+  "sourceHashDrift": true,
+  "excerptBasis": "CURRENT_PRODUCTION_SOURCE",
+  "reviewer": {
+    "id": "OPENCODE_DEEPSEEK_V4_1_FLASH",
+    "role": "AUTHORIZED_REVIEWER",
+    "model": "deepseek-v4.1-flash",
+    "provider": "opencode-go"
+  },
+  "approvalAuthority": {
+    "id": "CODEX_ROOT",
+    "role": "ROOT"
+  },
+  "attribution": {
+    "correctiveReview": "OpenCode / deepseek-v4.1-flash (nov04-drift.mjs)",
+    "excerptCorrections": "CODEX_ROOT (nov04-root-excerpt-corrections.json)",
+    "originalAudit": "NOT_ATTRIBUTABLE_TO_THIS_REVIEW; historical audit provenance unchanged",
+    "preparedBy": "nov04-four.mjs restricted child builder; not FINAL_QA and not a registration receipt"
+  },
+  "reviewedAt": "2026-11-04",
+  "questionCount": 25,
+  "auditPackageRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+    "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+  },
+  "manifestRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.manifest.source.json",
+    "sha256": "6c56cf262d94911e0cf739cef95b2287a9948111f1fa70983df8fcaabafe677e"
+  },
+  "sourceParityRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.source-parity.json",
+    "sha256": "021ffc17f887225a8e2a52ae3893ecebff57defecaf468a9fdfc413bbf640c78"
+  },
+  "semanticReviewRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.semantic-review.json",
+    "sha256": "cd0f9ae44f88ddebf8192d897c33e11fa7167fa2fd89573794165581201591d6"
+  },
+  "sourceMasterMappingRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.source-master-mapping.json",
+    "sha256": "b599134ae1fec747bbfe58b4690849da7abcad8df8a8d20226e2767aa422323b"
+  },
+  "rootVisualRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.root-visual.json",
+    "sha256": "70a1171974b76ae1762e4d90570f381a54c1ac1173747de1baeaf4434e78220f"
+  },
+  "reviewedDefinitionsRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.reviewed-definitions.mjs",
+    "sha256": "ab56d314d522868a5a75363616f0c754060407db19371fcf82bdd16d344ddc3c"
+  },
+  "rootExcerptCorrectionsRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.root-excerpt-corrections.json",
+    "sha256": "2e4391f3aaa5bb8226226408ade35994b19490cc7ff25c0bae991dd8c59ff93d"
+  },
+  "ownerPackResolution": {
+    "packs": [
+      "MIDDLE2",
+      "MIDDLE_GEOMETRY"
+    ],
+    "mechanism": "ADDITIVE_BINDINGS_AND_PROMOTIONS_ONLY; EXISTING_CANONICAL_DEFINITIONS_IMMUTABLE",
+    "note": "Owner pack is taken from each original audit row's designatedPack. No row is re-homed and no pack is consolidated."
+  },
+  "threeShaSeparation": {
+    "originalDeclaredSourceSha256": "d7b32b4a064acb0214f5b16cfa2fb55e473ad64b0cb0150fdceacb619e64c080",
+    "driveSourceSha256": "876d7469b13d5da0db326ced8fbf68407a770a3c05334be661f5f07310350506",
+    "productionSourceSha256": "876d7469b13d5da0db326ced8fbf68407a770a3c05334be661f5f07310350506",
+    "sourceHashDrift": true,
+    "basis": "Each SHA is kept in its own field. Actual Drive bytes equal actual production bytes here; the audit declaration is preserved and is not asserted to equal them."
+  },
+  "rows": [
+    {
+      "questionUid": "qid_v1_05ce5c09a7509969adfde9039406da8bae6edbe4a3f5b54aa06b6f1b0b06d6bd",
+      "sourceOrdinal": 1,
+      "auditQuestionNumber": 1,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-EXPONENT_LAW",
+      "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+      "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+      "crossConceptKeys": [
+        "CC_EXPONENT_RULES",
+        "CC_MONOMIAL_DIVISION",
+        "CC_ALGEBRAIC_SIMPLIFICATION"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-01",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "crossConceptKeys": [
+          "CC_EXPONENT_RULES",
+          "CC_MONOMIAL_DIVISION",
+          "CC_ALGEBRAIC_SIMPLIFICATION"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "crossConceptKeys": [
+          "CC_EXPONENT_RULES",
+          "CC_MONOMIAL_DIVISION",
+          "CC_ALGEBRAIC_SIMPLIFICATION"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit M2-02/M2-02-01 and source M2-02/M2-02-EXPONENT_LAWS both place 식의 계산 under M2-02, but canonical M2-02 is 일차부등식. Actual content is M2-01 수와 식 / M2-01-EXPONENT_LAW. Audit and source originals preserved; no answer or trace is asserted correct. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: M2-02 agrees; audit M2-02-01 vs source M2-02-EXPONENT_LAWS is a naming-format difference only. Original M2-02/M2-02-01 → corrected M2-01/M2-01-EXPONENT_LAW. Source metadata: the current production source declares M2-02/M2-02-EXPONENT_LAWS; the reviewed correction binds M2-01/M2-01-EXPONENT_LAW because M2-02 agrees; audit M2-02-01 vs source M2-02-EXPONENT_LAWS is a naming-format difference only.",
+      "sourceTextExcerpt": "<p>1. 다음 식과 그 식을 간단히 한 결과로 옳지 <u>않은</u> 것은? [4점]</p>",
+      "solutionDecisiveExcerpt": "②의 왼쪽은 $x^3y^2\\times(-3xy^2)^3=x^3y^2\\times(-27x^3y^6)=-27x^6y^8$이다.",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_05ce5c09a7509969adfde9039406da8bae6edbe4a3f5b54aa06b6f1b0b06d6bd",
+          "sourceOrdinal": 1,
+          "field": "answer",
+          "old": "⑤",
+          "current": "②",
+          "originalManifestValue": "⑤",
+          "currentSourceValue": "②",
+          "appliedToManifest": false,
+          "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item is a five-way accuracy check on monomial multiplication/division using exponent laws."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Template describes evaluating exponent-law monomial operations; the solution performs exactly that for all five choices."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Exponent rules, monomial division (choices ④, ⑤) and algebraic simplification are all exercised."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-02 agrees; audit M2-02-01 vs source M2-02-EXPONENT_LAWS is a naming-format difference only."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "labelKo": "단항식 곱셈·나눗셈의 옳고 그름 판별",
+        "definitionKo": "여러 단항식 곱셈·나눗셈 계산식 중에서 지수법칙과 계수 계산을 적용한 결과가 옳지 않은 하나를 고르는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "parentProblemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "labelKo": "지수법칙 적용 단항식 계산 검증 절차",
+        "definitionKo": "각 보기의 계수와 문자 부분을 분리해 거듭제곱의 곱·나눗셈 규칙으로 간단히 한 뒤, 제시된 결과와 비교해 옳지 않은 보기를 찾는다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_EXPONENT_RULES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "지수법칙",
+          "definitionKo": "지수의 덧셈, 뺄셈, 곱셈 기본 성질",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_MONOMIAL_DIVISION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "단항식의 나눗셈",
+          "definitionKo": "단항식을 단항식으로 나눌 때 계수끼리 나누고, 같은 문자끼리 지수를 빼며, 분모로 내려간 문자는 음의 지수로 처리하는 계산.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_ALGEBRAIC_SIMPLIFICATION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "식의 간단히 하기",
+          "definitionKo": "곱셈·나눗셈과 거듭제곱을 차례로 계산해 하나의 단항식 또는 다항식으로 정리하는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "식의 계산",
+        "midUnit": "단항식의 계산"
+      }
+    },
+    {
+      "questionUid": "qid_v1_19d960620b30288e76f690ead3d1dde40f594661c564b36897f89fc8eed7c9ef",
+      "sourceOrdinal": 2,
+      "auditQuestionNumber": 2,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+      "problemTypeKey": "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA",
+      "templateKey": "TPL_M2_FIND_TRIANGLE_HEIGHT_FROM_POLYNOMIAL_AREA",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA",
+        "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL",
+        "CC_ALGEBRAIC_MODELING"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-02",
+        "problemTypeKey": "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA",
+        "templateKey": "TPL_M2_FIND_TRIANGLE_HEIGHT_FROM_POLYNOMIAL_AREA",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA",
+          "CC_POLYNOMIAL_DIVISION",
+          "CC_ALGEBRAIC_MODELING"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA",
+        "templateKey": "TPL_M2_FIND_TRIANGLE_HEIGHT_FROM_POLYNOMIAL_AREA",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA",
+          "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL",
+          "CC_ALGEBRAIC_MODELING"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Canonical M2-02 is 일차부등식, so the audited/source M2-02 placement of 다항식의 계산 is rejected. Actual content is M2-01 수와 식 / M2-01-POLYNOMIAL_OPERATIONS. CC_POLYNOMIAL_DIVISION is not reused because its canonical definition is a different polynomial-division concept; a distinct additive key is used. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: M2-02 agrees; numeric vs semantic subUnit suffix. Original M2-02/M2-02-02 → corrected M2-01/M2-01-POLYNOMIAL_OPERATIONS. Source metadata: the current production source declares M2-02/M2-02-POLYNOMIAL_ARITHMETIC; the reviewed correction binds M2-01/M2-01-POLYNOMIAL_OPERATIONS because M2-02 agrees; numeric vs semantic subUnit suffix. CrossConcept: Triangle area, polynomial division and modeling are all present.",
+      "sourceTextExcerpt": "<p>2. 다음 삼각형의 넓이가 $6x^2y^3-3x^2y^2$이고 밑변의 길이가 $\\dfrac32x^2y$일 때, 높이를 옳게 구한 것은? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q02.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 2번 원본 그림\" /></p>",
+      "solutionDecisiveExcerpt": "2단계: $h=\\frac{2(6x^2y^3-3x^2y^2)}{\\frac32x^2y}=\\frac{12x^2y^3-6x^2y^2}{\\frac32x^2y}=8y^2-4y$.",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_19d960620b30288e76f690ead3d1dde40f594661c564b36897f89fc8eed7c9ef",
+          "sourceOrdinal": 2,
+          "field": "answer",
+          "old": "②",
+          "current": "④",
+          "originalManifestValue": "②",
+          "currentSourceValue": "④",
+          "appliedToManifest": false,
+          "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item derives a height by dividing a polynomial area by a monomial base."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "The audited template name matches the current geometric-area height derivation."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Triangle area, polynomial division and modeling are all present."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-02 agrees; numeric vs semantic subUnit suffix."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": "assets/images/22_풍덕중_1학기_기말_중2_수학/q02.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/22_풍덕중_1학기_기말_중2_수학/q02.png",
+            "resolvedPath": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q02.png",
+            "fileSha256": "82cfef4e00db5845221067567ecc5717a82ee032ceaa7b5e8d248260d4d8e349",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "The asset reference is recorded; no visual inspection is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA",
+        "labelKo": "다항식 넓이에서 삼각형 높이 계산",
+        "definitionKo": "삼각형의 넓이를 다항식으로 주고 밑변의 길이로 나누어 높이를 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_FIND_TRIANGLE_HEIGHT_FROM_POLYNOMIAL_AREA",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_FIND_TRIANGLE_HEIGHT_FROM_POLYNOMIAL_AREA",
+        "parentProblemTypeKey": "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA",
+        "labelKo": "다항식 나눗셈으로 높이 결정 절차",
+        "definitionKo": "삼각형 넓이 공식을 높이에 대해 정리하고, 넓이의 2배를 밑변의 길이로 나누어 다항식 나눗셈을 수행한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_TRIANGLE_AREA",
+          "reviewedVerdict": "FIT",
+          "labelKo": "삼각형의 넓이",
+          "definitionKo": "밑변과 높이 또는 좌표를 이용하여 삼각형의 넓이를 구하는 개념.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL",
+          "reviewedVerdict": "FIT",
+          "labelKo": "다항식을 단항식으로 나누기",
+          "definitionKo": "다항식의 각 항을 같은 단항식으로 나누어 몫을 구하는 계산.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_ALGEBRAIC_MODELING",
+          "reviewedVerdict": "FIT",
+          "labelKo": "문자식을 이용한 도형 관계 모델링",
+          "definitionKo": "도형의 넓이·높이 같은 양을 문자를 포함한 식으로 나타내고, 주어진 공식에 대입해 관계를 세우는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "식의 계산",
+        "midUnit": "다항식의 계산"
+      }
+    },
+    {
+      "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+      "sourceOrdinal": 3,
+      "auditQuestionNumber": 3,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+      "problemTypeKey": "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA",
+      "templateKey": "TPL_M2_CALCULATE_FOLDED_TRIANGLE_AREA_WITH_VARIABLES",
+      "crossConceptKeys": [
+        "CC_RECTANGLE_AREA",
+        "CC_POLYNOMIAL_MULTIPLICATION",
+        "CC_GEOMETRIC_FOLDING",
+        "CC_TRIANGLE_CONGRUENCE"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-02",
+        "problemTypeKey": "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA",
+        "templateKey": "TPL_M2_CALCULATE_FOLDED_TRIANGLE_AREA_WITH_VARIABLES",
+        "crossConceptKeys": [
+          "CC_RECTANGLE_AREA",
+          "CC_POLYNOMIAL_MULTIPLICATION",
+          "CC_GEOMETRIC_FOLDING"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA",
+        "templateKey": "TPL_M2_CALCULATE_FOLDED_TRIANGLE_AREA_WITH_VARIABLES",
+        "crossConceptKeys": [
+          "CC_RECTANGLE_AREA",
+          "CC_POLYNOMIAL_MULTIPLICATION",
+          "CC_GEOMETRIC_FOLDING",
+          "CC_TRIANGLE_CONGRUENCE"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual folded-area content is M2-01-POLYNOMIAL_OPERATIONS, not canonical M2-02. CC_TRIANGLE_CONGRUENCE is added because the current solution explicitly uses the congruence of triangles ADE and AFE. ROOT must visually inspect q03.png; no visual inspection is claimed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: M2-02 agrees. Original M2-02/M2-02-02 → corrected M2-01/M2-01-POLYNOMIAL_OPERATIONS. Source metadata: the current production source declares M2-02/M2-02-POLYNOMIAL_ARITHMETIC; the reviewed correction binds M2-01/M2-01-POLYNOMIAL_OPERATIONS because M2-02 agrees. CrossConcept: Rectangle area, polynomial multiplication and folding congruence are used.",
+      "sourceTextExcerpt": "<p>3. 다음 직사각형에서 선분 $AE$를 접어서 삼각형 $AEF$를 만들었다고 할 때 색칠한 삼각형 $AEF$의 넓이를 옳게 구한 것은? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q03.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 3번 원본 그림\" /></p>",
+      "solutionDecisiveExcerpt": "2단계: $\\triangle ADE$의 넓이는 $\\frac12\\times AD\\times DE=\\frac12\\times 2b(3a-\\frac23b)=3ab-\\frac23b^2$.",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+          "sourceOrdinal": 3,
+          "field": "answer",
+          "old": "①",
+          "current": "③",
+          "originalManifestValue": "①",
+          "currentSourceValue": "③",
+          "appliedToManifest": false,
+          "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Folded-triangle area with variable side lengths is the current task."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Template matches computing a folded triangle area with variables."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Rectangle area, polynomial multiplication and folding congruence are used."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-02 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": true,
+        "checkedBy": "CODEX_ROOT",
+        "observation": "직사각형 ABCD에서 AB=3a, AD=2b, E는 CD 위이고 EC=2b/3, F는 BC 위.",
+        "assetRef": "assets/images/22_풍덕중_1학기_기말_중2_수학/q03.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/22_풍덕중_1학기_기말_중2_수학/q03.png",
+            "resolvedPath": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q03.png",
+            "fileSha256": "fb80fd524869c4a608c7e631d0b77c7e1f08ff2e971d2b9389eb6fdb06c3c4e9",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": true,
+        "visualDiscrepancy": null,
+        "note": "ROOT directly inspected the referenced source image."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA",
+        "labelKo": "접힌 삼각형의 넓이 계산",
+        "definitionKo": "직사각형에서 한 변을 접어 만든 삼각형의 넓이를 문자를 포함한 식으로 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_CALCULATE_FOLDED_TRIANGLE_AREA_WITH_VARIABLES",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_CALCULATE_FOLDED_TRIANGLE_AREA_WITH_VARIABLES",
+        "parentProblemTypeKey": "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA",
+        "labelKo": "접기 합동을 이용한 삼각형 넓이 절차",
+        "definitionKo": "접어서 겹치는 두 삼각형이 합동임을 이용해 넓이가 같은 삼각형을 찾고, 그 밑변과 높이를 문자식으로 세워 넓이를 계산한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_RECTANGLE_AREA",
+          "reviewedVerdict": "FIT",
+          "labelKo": "직사각형의 넓이",
+          "definitionKo": "직사각형의 가로와 세로의 길이를 곱하여 넓이를 구하는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_POLYNOMIAL_MULTIPLICATION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "다항식의 곱셈",
+          "definitionKo": "분배법칙을 이용해 다항식의 각 항을 서로 곱하고 동류항을 정리하는 계산.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_GEOMETRIC_FOLDING",
+          "reviewedVerdict": "FIT",
+          "labelKo": "도형의 접기",
+          "definitionKo": "종이를 한 선분을 따라 접었을 때 겹치는 부분이 합동이 되는 성질을 이용하는 기하 조작.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_TRIANGLE_CONGRUENCE",
+          "reviewedVerdict": "FIT",
+          "labelKo": "삼각형의 합동과 대응 요소",
+          "definitionKo": "합동인 두 삼각형에서 대응변의 길이와 대응각의 크기가 각각 같다는 성질 및 합동 조건(SSS, SAS, ASA)",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "식의 계산",
+        "midUnit": "다항식의 계산"
+      }
+    },
+    {
+      "questionUid": "qid_v1_db021d814b20d08da2681d6dbaf45ea9d2654a18d5e17a606b8544d67cd9089a",
+      "sourceOrdinal": 4,
+      "auditQuestionNumber": 4,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+      "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+      "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_ADDITION",
+        "CC_POLYNOMIAL_SUBTRACTION",
+        "CC_ERROR_CORRECTION"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-02",
+        "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+        "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_ADDITION",
+          "CC_POLYNOMIAL_SUBTRACTION",
+          "CC_ERROR_CORRECTION"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+        "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_ADDITION",
+          "CC_POLYNOMIAL_SUBTRACTION",
+          "CC_ERROR_CORRECTION"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual polynomial addition/subtraction correction is M2-01-POLYNOMIAL_OPERATIONS, not canonical M2-02. Audit answer matches the current source but the audit unit namespace is corrected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: M2-02 agrees. Original M2-02/M2-02-02 → corrected M2-01/M2-01-POLYNOMIAL_OPERATIONS. Source metadata: the current production source declares M2-02/M2-02-POLYNOMIAL_ARITHMETIC; the reviewed correction binds M2-01/M2-01-POLYNOMIAL_OPERATIONS because M2-02 agrees.",
+      "sourceTextExcerpt": "<p>4. 어떤 식에서 $-2a+1$을 빼야 할 것을 잘못하여 더하였더니 $3a^2-4a+5$가 되었다. 바르게 계산한 식을 옳게 구한 것은? [4점]</p>",
+      "solutionDecisiveExcerpt": "2단계: 바른 값은 $(3a^2-4a+5)-2(-2a+1)=3a^2-4a+5+4a-2=3a^2+3$이다.",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item asks to undo a mistaken addition by a second subtraction."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Restore-correct-polynomial-calculation matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Addition, subtraction and error correction are all present."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-02 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+        "labelKo": "잘못 더한 다항식의 바른 계산 복원",
+        "definitionKo": "어떤 식에서 빼야 할 식을 잘못 더한 결과가 주어졌을 때, 원래 식을 거꾸로 구해 바르게 계산하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+        "parentProblemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+        "labelKo": "오연산 되돌림 다항식 복원 절차",
+        "definitionKo": "잘못 더한 결과에서 더해 버린 식을 두 번 빼거나, 먼저 원래 식을 구한 뒤 빼야 할 식을 빼서 바른 결과를 구한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_POLYNOMIAL_ADDITION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "다항식의 덧셈",
+          "definitionKo": "동류항끼리 계수를 더해 다항식을 간단히 하는 계산.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_POLYNOMIAL_SUBTRACTION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "다항식의 뺄셈",
+          "definitionKo": "빼는 다항식의 각 항의 부호를 바꾼 뒤 동류항끼리 계수를 더하는 계산.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_ERROR_CORRECTION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "오연산의 역보정",
+          "definitionKo": "잘못 적용한 연산을 되돌려 원래의 식이나 값을 복원하는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "식의 계산",
+        "midUnit": "다항식의 계산"
+      }
+    },
+    {
+      "questionUid": "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7",
+      "sourceOrdinal": 5,
+      "auditQuestionNumber": 5,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+      "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+      "crossConceptKeys": [
+        "CC_LINEAR_INEQUALITIES",
+        "CC_POLYNOMIAL_DEGREE",
+        "CC_INEQUALITY_IDENTIFICATION"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-01",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+        "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+        "crossConceptKeys": [
+          "CC_LINEAR_INEQUALITIES",
+          "CC_POLYNOMIAL_DEGREE",
+          "CC_INEQUALITY_IDENTIFICATION"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+        "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+        "crossConceptKeys": [
+          "CC_LINEAR_INEQUALITIES",
+          "CC_POLYNOMIAL_DEGREE",
+          "CC_INEQUALITY_IDENTIFICATION"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit/source M2-03 is 연립일차방정식 in canonical master; actual 일차부등식 identification belongs to M2-02-LINEAR_INEQUALITY. The audit answer ② and its ㄱ,ㅁ trace conflict with the current source, whose solution selects ㄱ,ㄷ,ㅁ (⑤); the original audit key and trace are not asserted correct. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: M2-03 agrees. Original M2-03/M2-03-01 → corrected M2-02/M2-02-LINEAR_INEQUALITY. Source metadata: the current production source declares M2-03/M2-03-INEQUALITY_PROPERTIES; the reviewed correction binds M2-02/M2-02-LINEAR_INEQUALITY because M2-03 agrees.",
+      "sourceTextExcerpt": "<p>5. 다음 &lt;보기&gt;에서 일차부등식을 모두 찾은 것은? [3점]<p>ㄱ. $4x>2x+1$ &nbsp; ㄴ. $3x-3\\ge3x-7$ &nbsp; ㄷ. $x(2-x)+x^2>5$</p><p>ㄹ. $x^2+4x>2x^2$ &nbsp; ㅁ. $2-x<4+6x$</p></p>",
+      "solutionDecisiveExcerpt": "따라서 ㄱ, ㄷ, ㅁ이고 정답은 ⑤이다.",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7",
+          "sourceOrdinal": 5,
+          "field": "answer",
+          "old": "②",
+          "current": "⑤",
+          "originalManifestValue": "②",
+          "currentSourceValue": "⑤",
+          "appliedToManifest": false,
+          "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+        },
+        {
+          "questionUid": "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7",
+          "sourceOrdinal": 5,
+          "field": "score",
+          "old": 4,
+          "current": 3,
+          "originalManifestValue": 4,
+          "currentSourceValue": 3,
+          "appliedToManifest": false,
+          "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current task classifies which listed inequalities remain linear after simplification."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Select-valid-linear-inequalities matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Degree inspection and inequality identification are used; CC_POLYNOMIAL_DEGREE is justified by ㄹ."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-03 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+        "labelKo": "일차부등식 판별",
+        "definitionKo": "여러 부등식을 정리했을 때 미지수의 일차식만 남는지 판별하여 일차부등식을 모두 고르는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+        "parentProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+        "labelKo": "일차부등식 여부 선별 절차",
+        "definitionKo": "각 부등식의 양변을 정리해 미지수의 최고차항이 소거되는지 확인하고, 일차식만 남는 보기를 모두 선택한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_INEQUALITIES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "일차부등식",
+          "definitionKo": "미지수의 일차식으로 이루어져 부등호로 연결된 식.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_POLYNOMIAL_DEGREE",
+          "reviewedVerdict": "FIT",
+          "labelKo": "다항식의 차수",
+          "definitionKo": "다항식에서 문자가 곱해진 횟수가 가장 큰 항의 차수.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_INEQUALITY_IDENTIFICATION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "부등식의 일차성 판별",
+          "definitionKo": "부등식을 정리한 뒤 남는 미지수 항이 일차인지 확인하여 일차부등식인지 판단하는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "일차부등식"
+      }
+    },
+    {
+      "questionUid": "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704",
+      "sourceOrdinal": 6,
+      "auditQuestionNumber": 6,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+      "crossConceptKeys": [
+        "CC_INEQUALITY_PROPERTIES",
+        "CC_NEGATIVE_MULTIPLICATION",
+        "CC_DIRECTION_OF_INEQUALITY"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-01",
+        "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+        "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+        "crossConceptKeys": [
+          "CC_INEQUALITY_PROPERTIES",
+          "CC_NEGATIVE_MULTIPLICATION",
+          "CC_DIRECTION_OF_INEQUALITY"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+        "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+        "crossConceptKeys": [
+          "CC_INEQUALITY_PROPERTIES",
+          "CC_NEGATIVE_MULTIPLICATION",
+          "CC_DIRECTION_OF_INEQUALITY"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual inequality-property true/false content belongs to M2-02-LINEAR_INEQUALITY, not canonical M2-03. Answer ③ agrees with the current source; the unit namespace is corrected. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: M2-03 agrees. Original M2-03/M2-03-01 → corrected M2-02/M2-02-LINEAR_INEQUALITY. Source metadata: the current production source declares M2-03/M2-03-INEQUALITY_PROPERTIES; the reviewed correction binds M2-02/M2-02-LINEAR_INEQUALITY because M2-03 agrees.",
+      "sourceTextExcerpt": "<p>6. 다음 중에서 부등식의 성질을 옳지 <u>않게</u> 이용한 것은?</p>",
+      "solutionDecisiveExcerpt": "③ $-a + 7 < -b + 7$의 양변에서 $7$을 빼면 $-a < -b$이고, 양변에 $-1$을 곱하면 부등호 방향이 바뀌어 $a > b$가 된다.",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item is a true/false check of inequality transformation properties."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Evaluate-inequality-transformation-properties matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Negative multiplication and direction reversal are the decisive concepts."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-03 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+        "labelKo": "부등식 성질 적용의 옳고 그름 판별",
+        "definitionKo": "부등식의 양변에 수를 더하거나 곱하고 나눌 때 성질을 옳게 적용한 보기를 찾는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+        "parentProblemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+        "labelKo": "부등식 변형 성질 검증 절차",
+        "definitionKo": "각 보기에서 양변에 같은 수를 더하거나 곱하는 단계를 추적하고, 음수를 곱하거나 나눌 때 부등호 방향이 바뀌는지 확인한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_INEQUALITY_PROPERTIES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "부등식의 성질",
+          "definitionKo": "부등식의 양변에 같은 수를 더하거나 곱하고 나누어도 성립하는 관계.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_NEGATIVE_MULTIPLICATION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "음수 곱셈",
+          "definitionKo": "부등식의 양변에 음수를 곱하는 연산.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_DIRECTION_OF_INEQUALITY",
+          "reviewedVerdict": "FIT",
+          "labelKo": "부등호의 방향",
+          "definitionKo": "부등식이 나타내는 두 값의 대소 관계가 향하는 방향.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "일차부등식"
+      }
+    },
+    {
+      "questionUid": "qid_v1_da3c7f2341f14c6a4d8c7e58c6745fd968bc10299fc9cb1a12bb4d14f6b0aa89",
+      "sourceOrdinal": 7,
+      "auditQuestionNumber": 7,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+      "templateKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+      "crossConceptKeys": [
+        "CC_LINEAR_INEQUALITIES",
+        "CC_FRACTION_COEFFICIENTS",
+        "CC_DECIMAL_COEFFICIENTS"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-02",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+        "templateKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+        "crossConceptKeys": [
+          "CC_LINEAR_INEQUALITIES",
+          "CC_FRACTION_COEFFICIENTS",
+          "CC_DECIMAL_COEFFICIENTS"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+        "templateKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+        "crossConceptKeys": [
+          "CC_LINEAR_INEQUALITIES",
+          "CC_FRACTION_COEFFICIENTS",
+          "CC_DECIMAL_COEFFICIENTS"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual fractional/decimal inequality solving belongs to M2-02-LINEAR_INEQUALITY. The audit answer ⑤ conflicts with the current source, which selects ④; the original audit trace is not reused. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: M2-03 agrees. Original M2-03/M2-03-02 → corrected M2-02/M2-02-LINEAR_INEQUALITY. Source metadata: the current production source declares M2-03/M2-03-SOLVE_INEQUALITY; the reviewed correction binds M2-02/M2-02-LINEAR_INEQUALITY because M2-03 agrees.",
+      "sourceTextExcerpt": "<p>7. 다음 일차부등식을 푼 결과로 옳지 <u>않은</u> 것은? [4점]</p>",
+      "solutionDecisiveExcerpt": "1단계: ④에서 $\\frac14x-5>\\frac13$이므로 $\\frac14x>\\frac{16}{3}$, 따라서 $x>\\frac{64}{3}$이다.",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_da3c7f2341f14c6a4d8c7e58c6745fd968bc10299fc9cb1a12bb4d14f6b0aa89",
+          "sourceOrdinal": 7,
+          "field": "answer",
+          "old": "⑤",
+          "current": "④",
+          "originalManifestValue": "⑤",
+          "currentSourceValue": "④",
+          "appliedToManifest": false,
+          "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item checks five solved linear inequalities for the incorrect result."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Fractional/decimal inequality check matches current choices ③ and ④."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Fraction and decimal coefficients both appear."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-03 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+        "labelKo": "일차부등식 풀이 결과 검증",
+        "definitionKo": "여러 일차부등식의 풀이 결과 중 옳지 않은 것을 찾는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+        "parentProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+        "labelKo": "분수·소수 계수 일차부등식 검증 절차",
+        "definitionKo": "분수나 소수 계수를 정수로 고친 뒤 이항과 나눗셈을 수행하고, 제시된 해와 비교해 옳지 않은 보기를 찾는다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_INEQUALITIES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "일차부등식",
+          "definitionKo": "미지수의 일차식으로 이루어져 부등호로 연결된 식.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_FRACTION_COEFFICIENTS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "분수 계수",
+          "definitionKo": "미지수나 상수에 붙은 계수가 분수로 주어진 상태.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_DECIMAL_COEFFICIENTS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "소수 계수",
+          "definitionKo": "미지수나 상수에 붙은 계수가 소수로 주어진 상태.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "일차부등식"
+      }
+    },
+    {
+      "questionUid": "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f",
+      "sourceOrdinal": 8,
+      "auditQuestionNumber": 8,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM",
+      "templateKey": "TPL_M2_CALCULATE_SUM_OF_NATURAL_SOLUTIONS_TO_INEQUALITY",
+      "crossConceptKeys": [
+        "CC_LINEAR_INEQUALITIES",
+        "CC_FRACTION_COEFFICIENTS",
+        "CC_NATURAL_NUMBER_SUM"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-02",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM",
+        "templateKey": "TPL_M2_CALCULATE_SUM_OF_NATURAL_SOLUTIONS_TO_INEQUALITY",
+        "crossConceptKeys": [
+          "CC_LINEAR_INEQUALITIES",
+          "CC_FRACTION_COEFFICIENTS",
+          "CC_NATURAL_NUMBER_SUM"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM",
+        "templateKey": "TPL_M2_CALCULATE_SUM_OF_NATURAL_SOLUTIONS_TO_INEQUALITY",
+        "crossConceptKeys": [
+          "CC_LINEAR_INEQUALITIES",
+          "CC_FRACTION_COEFFICIENTS",
+          "CC_NATURAL_NUMBER_SUM"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual natural-solution-sum content belongs to M2-02-LINEAR_INEQUALITY. Audit answer ③/trace x<6 and sum 15 conflict with the current source x<22/7 and sum 6 (②); the original audit trace is not asserted correct. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: M2-03 agrees. Original M2-03/M2-03-02 → corrected M2-02/M2-02-LINEAR_INEQUALITY. Source metadata: the current production source declares M2-03/M2-03-SOLVE_INEQUALITY; the reviewed correction binds M2-02/M2-02-LINEAR_INEQUALITY because M2-03 agrees.",
+      "sourceTextExcerpt": "<p>8. 일차부등식 $3x-5<17-4x$를 만족시키는 모든 자연수 $x$의 값의 합으로 옳은 것은? [4점]</p>",
+      "solutionDecisiveExcerpt": "1단계: $3x-5<17-4x$에서 $7x<22$, 따라서 $x<\\frac{22}{7}$이다.",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f",
+          "sourceOrdinal": 8,
+          "field": "answer",
+          "old": "③",
+          "current": "②",
+          "originalManifestValue": "③",
+          "currentSourceValue": "②",
+          "appliedToManifest": false,
+          "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item sums the natural solutions of a linear inequality."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Calculate-sum-of-natural-solutions matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Natural-number summation is decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-03 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM",
+        "labelKo": "부등식의 자연수 해 합 계산",
+        "definitionKo": "일차부등식을 만족시키는 자연수를 모두 구해 그 합을 계산하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_CALCULATE_SUM_OF_NATURAL_SOLUTIONS_TO_INEQUALITY",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_CALCULATE_SUM_OF_NATURAL_SOLUTIONS_TO_INEQUALITY",
+        "parentProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM",
+        "labelKo": "자연수 해 나열 후 합산 절차",
+        "definitionKo": "부등식을 풀어 해의 범위를 구한 뒤, 그 범위에 속하는 자연수를 나열하고 모두 더한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_INEQUALITIES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "일차부등식",
+          "definitionKo": "미지수의 일차식으로 이루어져 부등호로 연결된 식.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_FRACTION_COEFFICIENTS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "분수 계수",
+          "definitionKo": "미지수나 상수에 붙은 계수가 분수로 주어진 상태.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_NATURAL_NUMBER_SUM",
+          "reviewedVerdict": "FIT",
+          "labelKo": "자연수 해의 합",
+          "definitionKo": "조건을 만족하는 자연수들을 모두 더한 값.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "일차부등식"
+      }
+    },
+    {
+      "questionUid": "qid_v1_0a8bde92a417d8fb1deacc811630e357a55dfd14a1a4a3e0db977fe03abd0c23",
+      "sourceOrdinal": 9,
+      "auditQuestionNumber": 9,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS",
+      "templateKey": "TPL_M2_FIND_PARAMETER_RANGE_FOR_NO_NATURAL_SOLUTIONS",
+      "crossConceptKeys": [
+        "CC_LINEAR_INEQUALITIES",
+        "CC_NUMBER_LINE",
+        "CC_BOUNDARY_VALUE_ANALYSIS"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-02",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS",
+        "templateKey": "TPL_M2_FIND_PARAMETER_RANGE_FOR_NO_NATURAL_SOLUTIONS",
+        "crossConceptKeys": [
+          "CC_LINEAR_INEQUALITIES",
+          "CC_NUMBER_LINE",
+          "CC_BOUNDARY_VALUE_ANALYSIS"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS",
+        "templateKey": "TPL_M2_FIND_PARAMETER_RANGE_FOR_NO_NATURAL_SOLUTIONS",
+        "crossConceptKeys": [
+          "CC_LINEAR_INEQUALITIES",
+          "CC_NUMBER_LINE",
+          "CC_BOUNDARY_VALUE_ANALYSIS"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual no-natural-solution boundary analysis belongs to M2-02-LINEAR_INEQUALITY. Audit answer ① survives, but its (a+17)/4 trace and a≤-13 conclusion conflict with the current source denominator 10 and a≤-7; the audit trace is not reused. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: M2-03 agrees. Original M2-03/M2-03-02 → corrected M2-02/M2-02-LINEAR_INEQUALITY. Source metadata: the current production source declares M2-03/M2-03-SOLVE_INEQUALITY; the reviewed correction binds M2-02/M2-02-LINEAR_INEQUALITY because M2-03 agrees.",
+      "sourceTextExcerpt": "<p>9. 일차부등식 $17-3x>7x-a$를 만족시키는 자연수 해가 없을 때, 수 $a$의 값의 범위를 옳게 구한 것은? [4점]</p>",
+      "solutionDecisiveExcerpt": "1단계: $17-3x>7x-a$에서 $10x<17+a$, 즉 $x<\\frac{17+a}{10}$이다.",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item finds the parameter range with no natural solution."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Boundary analysis for absence of natural solutions matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Boundary value 1 is decisive; number-line reasoning is implicit."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-03 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": "TRACE_ONLY_DRIFT: the audited reason writes $(a+17)/4$; the current solution has denominator 10 and concludes $a\\le-7$. The audited key ① survives, but the audited trace cannot be used as evidence.",
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS",
+        "labelKo": "자연수 해가 없을 조건의 매개변수 범위",
+        "definitionKo": "일차부등식이 자연수 해를 갖지 않도록 하는 문자의 값의 범위를 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_FIND_PARAMETER_RANGE_FOR_NO_NATURAL_SOLUTIONS",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_FIND_PARAMETER_RANGE_FOR_NO_NATURAL_SOLUTIONS",
+        "parentProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS",
+        "labelKo": "경계값 비교로 자연수 해 없음 판정 절차",
+        "definitionKo": "부등식을 정리해 해의 상한을 문자로 나타내고, 가장 작은 자연수도 해가 되지 않도록 하는 경계 부등식을 세워 문자의 범위를 구한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_INEQUALITIES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "일차부등식",
+          "definitionKo": "미지수의 일차식으로 이루어져 부등호로 연결된 식.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_NUMBER_LINE",
+          "reviewedVerdict": "FIT",
+          "labelKo": "수직선",
+          "definitionKo": "수의 대소와 범위를 위치로 나타내는 직선.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_BOUNDARY_VALUE_ANALYSIS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "경계값 분석",
+          "definitionKo": "부등식의 해가 특정 값을 포함하는지 판단하기 위해 경계가 되는 값을 비교하는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "일차부등식"
+      }
+    },
+    {
+      "questionUid": "qid_v1_6e7f80ca0d802690305d56d21c5efa020588439d2494098acaf7167fb9a6ecfb",
+      "sourceOrdinal": 10,
+      "auditQuestionNumber": 10,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+      "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+      "crossConceptKeys": [
+        "CC_APPLIED_WORD_PROBLEMS",
+        "CC_SPEED_DISTANCE_TIME",
+        "CC_LINEAR_INEQUALITIES"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-03",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+        "crossConceptKeys": [
+          "CC_APPLIED_WORD_PROBLEMS",
+          "CC_SPEED_DISTANCE_TIME",
+          "CC_LINEAR_INEQUALITIES"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+        "crossConceptKeys": [
+          "CC_APPLIED_WORD_PROBLEMS",
+          "CC_SPEED_DISTANCE_TIME",
+          "CC_LINEAR_INEQUALITIES"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual round-trip time-limit word problem belongs to M2-02-LINEAR_INEQUALITY_WORD. Audit answer ③ (7/3 km) conflicts with the current source x≤8/3 km (⑤); the original audit trace is not asserted correct. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: M2-03 agrees. Original M2-03/M2-03-03 → corrected M2-02/M2-02-LINEAR_INEQUALITY_WORD. Source metadata: the current production source declares M2-03/M2-03-INEQUALITY_APPLICATION; the reviewed correction binds M2-02/M2-02-LINEAR_INEQUALITY_WORD because M2-03 agrees.",
+      "sourceTextExcerpt": "<p>10. 기차를 타기 전 상점에서 물건을 사오려고 한다. 출발 시각까지 $2$시간 $30$분의 여유가 있다. 역에서 상점을 갈 때는 시속 $4\\text{km}$로, 상점에서 역으로 올 때는 시속 $2\\text{km}$로 걷고 $30$분 동안 물건을 산다고 한다. 역에서 몇 $\\text{km}$ 이내의 상점까지 다녀올 수 있는가? [5점]</p>",
+      "solutionDecisiveExcerpt": "2단계: $\\frac{x}{4}+\\frac{x}{2}+\\frac12\\le\\frac52$에서 $\\frac34x\\le2$, 따라서 $x\\le\\frac83$.",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_6e7f80ca0d802690305d56d21c5efa020588439d2494098acaf7167fb9a6ecfb",
+          "sourceOrdinal": 10,
+          "field": "answer",
+          "old": "③",
+          "current": "⑤",
+          "originalManifestValue": "③",
+          "currentSourceValue": "⑤",
+          "appliedToManifest": false,
+          "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+        },
+        {
+          "questionUid": "qid_v1_6e7f80ca0d802690305d56d21c5efa020588439d2494098acaf7167fb9a6ecfb",
+          "sourceOrdinal": 10,
+          "field": "score",
+          "old": 4,
+          "current": 5,
+          "originalManifestValue": 4,
+          "currentSourceValue": 5,
+          "appliedToManifest": false,
+          "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item is a round-trip speed/time inequality word problem."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Round-trip time-limit inequality matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Speed-distance-time and applied modeling are used."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-03 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "labelKo": "왕복 이동 시간 제한 활용",
+        "definitionKo": "갈 때와 올 때의 속력과 구매 시간이 주어진 상황에서 시간의 합이 제한 이하가 되는 거리 범위를 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+        "parentProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "labelKo": "왕복 시간 합 부등식 모델링 절차",
+        "definitionKo": "편도 거리를 미지수로 두고 갈 때·올 때의 시간과 머무는 시간을 더한 식을 세워 제한 시간 이하라는 부등식을 풀고 거리 범위를 구한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_APPLIED_WORD_PROBLEMS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "문장제 모델링",
+          "definitionKo": "실생활 상황의 문장 조건을 미지수 사이의 방정식이나 함수 관계로 옮기는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_SPEED_DISTANCE_TIME",
+          "reviewedVerdict": "FIT",
+          "labelKo": "속력·거리·시간 관계",
+          "definitionKo": "속력과 시간의 곱으로 거리를 구하는 관계.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_LINEAR_INEQUALITIES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "일차부등식",
+          "definitionKo": "미지수의 일차식으로 이루어져 부등호로 연결된 식.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "일차부등식의 활용"
+      }
+    },
+    {
+      "questionUid": "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb",
+      "sourceOrdinal": 11,
+      "auditQuestionNumber": 11,
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+      "templateKey": "TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAMS",
+        "CC_RATIO_AND_PROPORTION",
+        "CC_PERIMETER"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "MG-02",
+        "subUnitKey": "MG-02-01",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+        "templateKey": "TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAMS",
+          "CC_RATIO_AND_PROPORTION",
+          "CC_PERIMETER"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+        "templateKey": "TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAMS",
+          "CC_RATIO_AND_PROPORTION",
+          "CC_PERIMETER"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Audit MG-02 is not a canonical middle2 geometry unit; source M2-06 is canonical 도형의 닮음. Actual parallelogram side/ratio content belongs to canonical M2-05 사각형의 성질 / M2-05-QUADRILATERAL_PROPERTIES, owned by MIDDLE_GEOMETRY. Audit answer ① and 45/8 trace conflict with current source AB=9 cm (②). Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-2'. The original value is preserved in originalAssignment. Unit: Audit MG-02 is a namespace not present in canonical. Source M2-06 conflicts with canonical MIDDLE_GEOMETRY evidence that quadrilateral properties live under M2-05 (subUnitKey M2-05-QUADRILATERAL_PROPERTIES); canonical M2-06 is similarity. Original MG-02/MG-02-01 → corrected M2-05/M2-05-QUADRILATERAL_PROPERTIES. Source metadata: the current production source declares M2-06/M2-06-PARALLELOGRAM_PROPERTIES; the reviewed correction binds M2-05/M2-05-QUADRILATERAL_PROPERTIES because Audit MG-02 is a namespace not present in canonical. Source M2-06 conflicts with canonical MIDDLE_GEOMETRY evidence that quadrilateral properties live under M2-05 (subUnitKey M2-05-QUADRILATERAL_PROPERTIES); canonical M2-06 is similarity.",
+      "sourceTextExcerpt": "<p>11. 평행사변형 $ABCD$의 둘레의 길이는 $48\\text{cm}$이고 $\\overline{AB}:\\overline{AD}=3:5$일 때, $\\overline{AB}$의 길이는? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q11.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 11번 원본 그림\" /></p>",
+      "solutionDecisiveExcerpt": "2단계: 비가 $3:5$이므로 $AB=24\\times\\frac{3}{3+5}=9\\text{cm}$이다.",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb",
+          "sourceOrdinal": 11,
+          "field": "answer",
+          "old": "①",
+          "current": "②",
+          "originalManifestValue": "①",
+          "currentSourceValue": "②",
+          "appliedToManifest": false,
+          "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item computes a parallelogram side from ratio and perimeter."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Side-from-ratio-and-perimeter template matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Parallelogram, ratio and perimeter are all decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "Audit MG-02 is a namespace not present in canonical. Source M2-06 conflicts with canonical MIDDLE_GEOMETRY evidence that quadrilateral properties live under M2-05 (subUnitKey M2-05-QUADRILATERAL_PROPERTIES); canonical M2-06 is similarity."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": "assets/images/22_풍덕중_1학기_기말_중2_수학/q11.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/22_풍덕중_1학기_기말_중2_수학/q11.png",
+            "resolvedPath": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q11.png",
+            "fileSha256": "84b59143ea4cf228a2c5696e67e605f5f5d938e3bf64e6316202f4c2586e0e23",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "The asset reference is recorded; no visual inspection is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+        "labelKo": "평행사변형 둘레와 변의 비로 한 변 계산",
+        "definitionKo": "평행사변형의 둘레와 이웃하는 두 변의 비가 주어졌을 때 특정 변의 길이를 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER",
+        "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+        "labelKo": "둘레 절반을 비례배분하는 변 계산 절차",
+        "definitionKo": "평행사변형의 둘레를 2로 나누어 이웃하는 두 변의 합을 구하고, 주어진 비에 따라 그 합을 비례배분해 각 변의 길이를 구한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_PARALLELOGRAMS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "평행사변형",
+          "definitionKo": "두 쌍의 대변이 각각 평행한 사각형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_RATIO_AND_PROPORTION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "비와 비례배분",
+          "definitionKo": "주어진 비에 따라 전체 양을 나누어 각 부분의 크기를 정하는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_PERIMETER",
+          "reviewedVerdict": "FIT",
+          "labelKo": "둘레",
+          "definitionKo": "도형의 가장자리를 따라 한 바퀴 돈 길이.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "평행사변형"
+      }
+    },
+    {
+      "questionUid": "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+      "sourceOrdinal": 12,
+      "auditQuestionNumber": 12,
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+      "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAMS",
+        "CC_ANGLE_BISECTOR_PROPERTY",
+        "CC_ISOSCELES_TRIANGLES"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "MG-02",
+        "subUnitKey": "MG-02-01",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+        "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAMS",
+          "CC_ANGLE_BISECTOR",
+          "CC_ISOSCELES_TRIANGLES"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+        "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAMS",
+          "CC_ANGLE_BISECTOR_PROPERTY",
+          "CC_ISOSCELES_TRIANGLES"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual two-angle-bisector segment content belongs to M2-05-QUADRILATERAL_PROPERTIES. Canonical CC_ANGLE_BISECTOR has a meta recording definition, so the distinct CC_ANGLE_BISECTOR_PROPERTY is used. Audit answer ② conflicts with current source EF=3 cm (③). ROOT must inspect q12.png; no visual inspection is claimed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-2'. The original value is preserved in originalAssignment. Unit: MG-02 vs source M2-06 vs canonical M2-05 quadrilateral properties. Original MG-02/MG-02-01 → corrected M2-05/M2-05-QUADRILATERAL_PROPERTIES. Source metadata: the current production source declares M2-06/M2-06-PARALLELOGRAM_PROPERTIES; the reviewed correction binds M2-05/M2-05-QUADRILATERAL_PROPERTIES because MG-02 vs source M2-06 vs canonical M2-05 quadrilateral properties. CrossConcept: Isosceles triangles formed by bisectors are decisive.",
+      "sourceTextExcerpt": "<p>12. 평행사변형 $ABCD$에서 $\\overline{AE}$와 $\\overline{DF}$가 각각 $\\angle A$, $\\angle D$의 이등분선일 때, $\\overline{EF}$의 길이는? [3점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q12.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 12번 원본 그림\" /></p>",
+      "solutionDecisiveExcerpt": "3단계: $EF=BE-BF=6-3=3\\text{cm}$.",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+          "sourceOrdinal": 12,
+          "field": "answer",
+          "old": "②",
+          "current": "③",
+          "originalManifestValue": "②",
+          "currentSourceValue": "③",
+          "appliedToManifest": false,
+          "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+        },
+        {
+          "questionUid": "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+          "sourceOrdinal": 12,
+          "field": "score",
+          "old": 4,
+          "current": 3,
+          "originalManifestValue": 4,
+          "currentSourceValue": 3,
+          "appliedToManifest": false,
+          "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item computes an overlapping segment made by two angle bisectors in a parallelogram."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Two-bisector overlapping segment template matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Isosceles triangles formed by bisectors are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05 quadrilateral properties."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": true,
+        "checkedBy": "CODEX_ROOT",
+        "observation": "평행사변형 그림에서 AB=6cm, AD=9cm, 두 대각선과 각 표식이 있다.",
+        "assetRef": "assets/images/22_풍덕중_1학기_기말_중2_수학/q12.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/22_풍덕중_1학기_기말_중2_수학/q12.png",
+            "resolvedPath": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q12.png",
+            "fileSha256": "2d1ef16394447b0175b55a8d43adb0993d446aa68ca0c8c6f812fee66d6786af",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": true,
+        "visualDiscrepancy": null,
+        "note": "ROOT directly inspected the referenced source image."
+      },
+      "ptDecision": {
+        "auditKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+        "labelKo": "평행사변형의 각 이등분선이 만드는 선분 계산",
+        "definitionKo": "평행사변형에서 두 내각의 이등분선이 만드는 겹치는 선분의 길이를 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+        "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+        "labelKo": "각 이등분선과 이등변삼각형을 이용한 선분 계산 절차",
+        "definitionKo": "평행선의 엇각과 각의 이등분선으로 생기는 이등변삼각형을 찾아 같은 길이의 변을 표시하고, 전체 변의 길이에서 겹치는 부분을 빼거나 더해 원하는 선분을 구한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_PARALLELOGRAMS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "평행사변형",
+          "definitionKo": "두 쌍의 대변이 각각 평행한 사각형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_ANGLE_BISECTOR_PROPERTY",
+          "reviewedVerdict": "FIT",
+          "labelKo": "각의 이등분선의 성질",
+          "definitionKo": "한 각을 크기가 같은 두 각으로 나누는 직선이 만드는 변과 각의 관계.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_ISOSCELES_TRIANGLES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "이등변삼각형",
+          "definitionKo": "두 변의 길이가 같은 삼각형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "평행사변형"
+      }
+    },
+    {
+      "questionUid": "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09",
+      "sourceOrdinal": 13,
+      "auditQuestionNumber": 13,
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+      "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAMS",
+        "CC_QUADRILATERAL_PROPERTIES",
+        "CC_COUNTEREXAMPLE_CONDITION",
+        "CC_ALTERNATE_INTERIOR_ANGLES"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "MG-02",
+        "subUnitKey": "MG-02-01",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+        "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAMS",
+          "CC_QUADRILATERAL_PROPERTIES",
+          "CC_TRIANGLE_CONGRUENCE"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+        "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAMS",
+          "CC_QUADRILATERAL_PROPERTIES",
+          "CC_COUNTEREXAMPLE_CONDITION",
+          "CC_ALTERNATE_INTERIOR_ANGLES"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual condition-discrimination content belongs to M2-05-QUADRILATERAL_PROPERTIES. The current solution uses alternate interior angles and an insufficiency/counterexample reading; it does not use triangle congruence. CC_TRIANGLE_CONGRUENCE is preserved only in originalCrossConcepts and replaced by precise actual concepts. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-2'. The original value is preserved in originalAssignment. Unit: MG-02 vs source M2-06 vs canonical M2-05. Original MG-02/MG-02-01 → corrected M2-05/M2-05-QUADRILATERAL_PROPERTIES. Source metadata: the current production source declares M2-06/M2-06-PARALLELOGRAM_CONDITIONS; the reviewed correction binds M2-05/M2-05-QUADRILATERAL_PROPERTIES because MG-02 vs source M2-06 vs canonical M2-05. CrossConcept: CC_TRIANGLE_CONGRUENCE is not used by the current solution; the decisive concept is counterexample insufficiency of a condition set.",
+      "sourceTextExcerpt": "<p>13. $ABCD$가 평행사변형이 되지 <u>않는</u> 것은? [4점]<p>(단, 점 $O$는 두 대각선의 교점이다.)</p></p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q13.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 13번 원본 그림\" /></p>",
+      "solutionDecisiveExcerpt": "2단계: ①은 한 쌍의 대변의 길이와 이웃각의 크기만 같아 평행사변형임이 보장되지 않는다.",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item selects the invalid sufficient condition for a parallelogram."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Identify-invalid-parallelogram-condition matches."
+        },
+        "crossConcepts": {
+          "verdict": "PARTIAL",
+          "note": "CC_TRIANGLE_CONGRUENCE is not used by the current solution; the decisive concept is counterexample insufficiency of a condition set."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": "assets/images/22_풍덕중_1학기_기말_중2_수학/q13.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/22_풍덕중_1학기_기말_중2_수학/q13.png",
+            "resolvedPath": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q13.png",
+            "fileSha256": "b9dcb0518c7568487a7fbc2c63353a707cb8e3e06145f9740ed91e9044b4af9b",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "The asset reference is recorded; no visual inspection is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+        "labelKo": "평행사변형이 되지 않는 조건 판별",
+        "definitionKo": "제시된 사각형의 조건 중 평행사변형임을 보장하지 않는 것을 찾는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+        "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+        "labelKo": "평행사변형 판정 조건의 반례 검토 절차",
+        "definitionKo": "평행사변형이 되는 다섯 가지 조건과 비교해 각 보기가 충분조건인지 확인하고, 조건을 만족해도 평행사변형이 아닌 반례가 가능한 보기를 찾는다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_PARALLELOGRAMS",
+          "reviewedVerdict": "PARTIAL",
+          "labelKo": "평행사변형",
+          "definitionKo": "두 쌍의 대변이 각각 평행한 사각형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_QUADRILATERAL_PROPERTIES",
+          "reviewedVerdict": "PARTIAL",
+          "labelKo": "사각형의 성질",
+          "definitionKo": "사각형의 변·각·대각선이 갖는 일반적인 관계.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_COUNTEREXAMPLE_CONDITION",
+          "reviewedVerdict": "PARTIAL",
+          "labelKo": "반례에 의한 조건 불충분",
+          "definitionKo": "주어진 조건을 만족하면서도 결론이 성립하지 않는 예가 존재해 그 조건이 충분하지 않음을 보이는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_ALTERNATE_INTERIOR_ANGLES",
+          "reviewedVerdict": "PARTIAL",
+          "labelKo": "엇각",
+          "definitionKo": "두 평행선과 한 직선이 만날 때 생기는, 서로 엇갈린 위치의 같은 크기 각.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "평행사변형"
+      }
+    },
+    {
+      "questionUid": "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55",
+      "sourceOrdinal": 14,
+      "auditQuestionNumber": 14,
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+      "templateKey": "TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAMS",
+        "CC_TRIANGLE_AREA",
+        "CC_INTERNAL_POINT_PROPERTIES"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "MG-02",
+        "subUnitKey": "MG-02-01",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+        "templateKey": "TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAMS",
+          "CC_TRIANGLE_AREA",
+          "CC_INTERNAL_POINT_PROPERTIES"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+        "templateKey": "TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAMS",
+          "CC_TRIANGLE_AREA",
+          "CC_INTERNAL_POINT_PROPERTIES"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual internal-point opposite-triangle area belongs to M2-05-QUADRILATERAL_PROPERTIES. Audit answer ① survives, but its 35/2−14 trace conflicts with the current source total area 68 and ABP=24 giving 34−24=10; the audit trace is not reused. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-2'. The original value is preserved in originalAssignment. Unit: MG-02 vs source M2-06 vs canonical M2-05. Original MG-02/MG-02-01 → corrected M2-05/M2-05-QUADRILATERAL_PROPERTIES. Source metadata: the current production source declares M2-06/M2-06-PARALLELOGRAM_PROPERTIES; the reviewed correction binds M2-05/M2-05-QUADRILATERAL_PROPERTIES because MG-02 vs source M2-06 vs canonical M2-05.",
+      "sourceTextExcerpt": "<p>14. 넓이가 $68\\text{cm}^2$인 평행사변형 $ABCD$의 내부의 한 점 $P$에 대하여 $\\triangle ABP=24\\text{cm}^2$일 때, $\\triangle CDP$의 넓이는? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q14.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 14번 원본 그림\" /></p>",
+      "solutionDecisiveExcerpt": "2단계: $[CDP]=34-24=10\\text{cm}^2$.",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item uses the half-area property for an internal point of a parallelogram."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Opposite-triangle-area-from-internal-point matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Parallelogram area plus triangle area."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": "TRACE_NUMERIC_DRIFT: audited trace uses $35/2-14=7/2$, but current source statement uses total area 68 and triangle ABP 24, giving 34-24=10. The audited arithmetic does not exist in the current solution.",
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": "assets/images/22_풍덕중_1학기_기말_중2_수학/q14.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/22_풍덕중_1학기_기말_중2_수학/q14.png",
+            "resolvedPath": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q14.png",
+            "fileSha256": "4b579cdf77e9a860a8c885ccfcdbec67e634b05bf7e3cba2b4faff75ab265f48",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "The asset reference is recorded; no visual inspection is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+        "labelKo": "평행사변형 내부 점과 반대 삼각형 넓이",
+        "definitionKo": "평행사변형 내부의 한 점과 두 대변으로 만든 삼각형의 넓이 관계를 이용해 다른 삼각형의 넓이를 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT",
+        "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+        "labelKo": "내부 점 삼각형 넓이 합 반분 절차",
+        "definitionKo": "평행사변형 내부의 점에서 마주 보는 두 변에 만든 삼각형의 넓이 합이 전체 넓이의 절반임을 이용해, 주어진 삼각형 넓이를 전체 넓이의 절반에서 빼 원하는 넓이를 구한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_PARALLELOGRAMS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "평행사변형",
+          "definitionKo": "두 쌍의 대변이 각각 평행한 사각형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_TRIANGLE_AREA",
+          "reviewedVerdict": "FIT",
+          "labelKo": "삼각형의 넓이",
+          "definitionKo": "밑변과 높이 또는 좌표를 이용하여 삼각형의 넓이를 구하는 개념.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_INTERNAL_POINT_PROPERTIES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "내부점과 삼각형 넓이",
+          "definitionKo": "도형 내부의 한 점과 변들로 만든 삼각형들의 넓이 관계.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "평행사변형"
+      }
+    },
+    {
+      "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+      "sourceOrdinal": 15,
+      "auditQuestionNumber": 15,
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+      "templateKey": "TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAMS",
+        "CC_RECTANGLES",
+        "CC_ANGLE_BISECTOR_PROPERTY"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "MG-02",
+        "subUnitKey": "MG-02-02",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+        "templateKey": "TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAMS",
+          "CC_RECTANGLES",
+          "CC_ANGLE_BISECTOR"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+        "templateKey": "TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAMS",
+          "CC_RECTANGLES",
+          "CC_ANGLE_BISECTOR_PROPERTY"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual rectangle-from-four-bisectors content belongs to M2-05-QUADRILATERAL_PROPERTIES under 여러 가지 사각형. Canonical CC_ANGLE_BISECTOR is meta-defined, so CC_ANGLE_BISECTOR_PROPERTY is used. Answer ⑤ agrees with the current source. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-2'. The original value is preserved in originalAssignment. Unit: MG-02 vs source M2-06 vs canonical M2-05 (M2-05 has no rectangle subUnit but is the quadrilateral domain). Original MG-02/MG-02-02 → corrected M2-05/M2-05-QUADRILATERAL_PROPERTIES. Source metadata: the current production source declares M2-06/M2-06-RECTANGLE_PROPERTIES; the reviewed correction binds M2-05/M2-05-QUADRILATERAL_PROPERTIES because MG-02 vs source M2-06 vs canonical M2-05 (M2-05 has no rectangle subUnit but is the quadrilateral domain). CrossConcept: Parallelogram, rectangle and angle bisector all appear.",
+      "sourceTextExcerpt": "<p>15. 평행사변형 $\\text{ABCD}$의 네 내각의 이등분선의 교점으로 만들어진 사각형 $\\text{EFGH}$에 대한 설명으로 옳지 <u>않은</u> 것은?</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q15.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 15번 원본 그림\" /></p>",
+      "solutionDecisiveExcerpt": "⑤ 이웃하는 두 변의 길이가 같은 것은 마름모 또는 정사각형의 성질이며 직사각형의 성질이 아니다. (거짓)",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item analyses the rectangle formed by the four angle bisectors of a parallelogram."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Evaluate-rectangle-formed-by-bisectors matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Parallelogram, rectangle and angle bisector all appear."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05 (M2-05 has no rectangle subUnit but is the quadrilateral domain)."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": "assets/images/22_풍덕중_1학기_기말_중2_수학/q15.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/22_풍덕중_1학기_기말_중2_수학/q15.png",
+            "resolvedPath": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q15.png",
+            "fileSha256": "208edb0a257805a167a869a24d6a20bcd94f3c1603c9271618485caf3013a675",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "The asset reference is recorded; no visual inspection is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+        "labelKo": "평행사변형 내각 이등분선이 만드는 사각형의 성질 판정",
+        "definitionKo": "평행사변형의 네 내각 이등분선의 교점으로 만든 사각형이 어떤 성질을 갖는지 판정하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS",
+        "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+        "labelKo": "이등분선 교각으로 직사각형 성질 검증 절차",
+        "definitionKo": "이웃하는 두 내각의 합이 180도임을 이용해 이등분선이 만나는 각이 직각임을 보이고, 만들어진 사각형이 직사각형임을 확인한 뒤 각 성질의 참·거짓을 판정한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_PARALLELOGRAMS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "평행사변형",
+          "definitionKo": "두 쌍의 대변이 각각 평행한 사각형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_RECTANGLES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "직사각형",
+          "definitionKo": "네 내각이 모두 직각인 사각형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_ANGLE_BISECTOR_PROPERTY",
+          "reviewedVerdict": "FIT",
+          "labelKo": "각의 이등분선의 성질",
+          "definitionKo": "한 각을 크기가 같은 두 각으로 나누는 직선이 만드는 변과 각의 관계.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "여러 가지 사각형"
+      }
+    },
+    {
+      "questionUid": "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+      "sourceOrdinal": 16,
+      "auditQuestionNumber": 16,
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS",
+      "templateKey": "TPL_MG_SELECT_NON_RECTANGLE_CONDITIONS_FOR_PARALLELOGRAM",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAMS",
+        "CC_RECTANGLES",
+        "CC_RHOMBUS"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "MG-02",
+        "subUnitKey": "MG-02-02",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS",
+        "templateKey": "TPL_MG_SELECT_NON_RECTANGLE_CONDITIONS_FOR_PARALLELOGRAM",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAMS",
+          "CC_RECTANGLES",
+          "CC_RHOMBUS"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS",
+        "templateKey": "TPL_MG_SELECT_NON_RECTANGLE_CONDITIONS_FOR_PARALLELOGRAM",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAMS",
+          "CC_RECTANGLES",
+          "CC_RHOMBUS"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual rectangle-condition selection belongs to M2-05-QUADRILATERAL_PROPERTIES under 여러 가지 사각형. Audit answer ③,④ conflicts with current source choices, whose non-rectangle conditions are ①,⑤. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-2'. The original value is preserved in originalAssignment. Unit: MG-02 vs source M2-06 vs canonical M2-05. Original MG-02/MG-02-02 → corrected M2-05/M2-05-QUADRILATERAL_PROPERTIES. Source metadata: the current production source declares M2-06/M2-06-RECTANGLE_PROPERTIES; the reviewed correction binds M2-05/M2-05-QUADRILATERAL_PROPERTIES because MG-02 vs source M2-06 vs canonical M2-05.",
+      "sourceTextExcerpt": "<p>16. 평행사변형 $ABCD$에서 다음 중 $ABCD$가 직사각형이 되는 조건이 <u>아닌</u> 것은? (정답 2개) [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q16.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 16번 원본 그림\" /></p>",
+      "solutionDecisiveExcerpt": "2단계: ① 이웃변 길이가 같다는 조건과 ⑤ 두 대각선이 수직이라는 조건은 각각 마름모의 조건이지만 직사각형까지 보장하지는 않는다.",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+          "sourceOrdinal": 16,
+          "field": "answer",
+          "old": "③, ④",
+          "current": "①, ⑤",
+          "originalManifestValue": "③, ④",
+          "currentSourceValue": "①, ⑤",
+          "appliedToManifest": false,
+          "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item selects the two non-rectangle conditions for a parallelogram."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Select-non-rectangle-conditions matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Rhombus conditions are the decisive distractors."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": "assets/images/22_풍덕중_1학기_기말_중2_수학/q16.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/22_풍덕중_1학기_기말_중2_수학/q16.png",
+            "resolvedPath": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q16.png",
+            "fileSha256": "f2001eff23b21d7ffbab37b460ebcedce3113363b985cc93f98868bee75d9f7d",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "The asset reference is recorded; no visual inspection is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS",
+        "labelKo": "평행사변형이 직사각형이 되는 조건 선별",
+        "definitionKo": "평행사변형이 직사각형이 되기 위한 조건이 아닌 보기를 두 개 고르는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_MG_SELECT_NON_RECTANGLE_CONDITIONS_FOR_PARALLELOGRAM",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_MG_SELECT_NON_RECTANGLE_CONDITIONS_FOR_PARALLELOGRAM",
+        "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS",
+        "labelKo": "직사각형 조건과 마름모 조건 구별 절차",
+        "definitionKo": "한 내각이 직각이거나 두 대각선의 길이가 같다는 직사각형 조건과, 이웃변의 길이가 같거나 두 대각선이 수직이라는 마름모 조건을 구별해 직사각형을 보장하지 않는 보기를 선택한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_PARALLELOGRAMS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "평행사변형",
+          "definitionKo": "두 쌍의 대변이 각각 평행한 사각형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_RECTANGLES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "직사각형",
+          "definitionKo": "네 내각이 모두 직각인 사각형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_RHOMBUS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "마름모",
+          "definitionKo": "네 변의 길이가 모두 같은 사각형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "여러 가지 사각형"
+      }
+    },
+    {
+      "questionUid": "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b",
+      "sourceOrdinal": 17,
+      "auditQuestionNumber": 17,
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES",
+      "templateKey": "TPL_MG_CALCULATE_SUM_OF_ANGLES_IN_RHOMBUS",
+      "crossConceptKeys": [
+        "CC_RHOMBUS",
+        "CC_PERPENDICULAR_BISECTOR",
+        "CC_ANGLE_RELATIONS"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "MG-02",
+        "subUnitKey": "MG-02-02",
+        "problemTypeKey": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES",
+        "templateKey": "TPL_MG_CALCULATE_SUM_OF_ANGLES_IN_RHOMBUS",
+        "crossConceptKeys": [
+          "CC_RHOMBUS",
+          "CC_PERPENDICULAR_BISECTOR",
+          "CC_ANGLE_RELATIONS"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES",
+        "templateKey": "TPL_MG_CALCULATE_SUM_OF_ANGLES_IN_RHOMBUS",
+        "crossConceptKeys": [
+          "CC_RHOMBUS",
+          "CC_PERPENDICULAR_BISECTOR",
+          "CC_ANGLE_RELATIONS"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual rhombus diagonal-angle content belongs to M2-05-QUADRILATERAL_PROPERTIES under 여러 가지 사각형. Audit answer ④ survives, but its 85° trace conflicts with the current source 90°; the audit trace is not reused. ROOT must inspect q17.png; no visual inspection is claimed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-2'. The original value is preserved in originalAssignment. Unit: MG-02 vs source M2-06 vs canonical M2-05. Original MG-02/MG-02-02 → corrected M2-05/M2-05-QUADRILATERAL_PROPERTIES. Source metadata: the current production source declares M2-06/M2-06-RHOMBUS_PROPERTIES; the reviewed correction binds M2-05/M2-05-QUADRILATERAL_PROPERTIES because MG-02 vs source M2-06 vs canonical M2-05.",
+      "sourceTextExcerpt": "<p>17. 마름모 $\\text{ABCD}$에서 두 대각선의 교점을 $\\text{O}$라 할 때, $\\angle x + \\angle y$의 값은?</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q17.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 17번 원본 그림\" /></p>",
+      "solutionDecisiveExcerpt": "$\\angle x + \\angle y = 90^\\circ$",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item uses perpendicular diagonals of a rhombus to sum two acute angles."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Sum-of-angles-in-rhombus matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Perpendicular bisector property is decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": "TRACE_VALUE_DRIFT: audited value 85°; current solution states $\\angle x+\\angle y=90^\\circ$ (choice ④).",
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": true,
+        "checkedBy": "CODEX_ROOT",
+        "observation": "마름모형 ABCD의 대각선 교점 O, B에 y, C에 x, D에 25도가 표시된다.",
+        "assetRef": "assets/images/22_풍덕중_1학기_기말_중2_수학/q17.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/22_풍덕중_1학기_기말_중2_수학/q17.png",
+            "resolvedPath": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q17.png",
+            "fileSha256": "09bd8ff80c96c3580f390b0533f0db43150e392e244406a2c887bc78c2085fd2",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": true,
+        "visualDiscrepancy": null,
+        "note": "ROOT directly inspected the referenced source image."
+      },
+      "ptDecision": {
+        "auditKey": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES",
+        "labelKo": "마름모 대각선과 두 각의 합 계산",
+        "definitionKo": "마름모의 두 대각선이 만나는 점을 이용해 주어진 두 각의 합을 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_MG_CALCULATE_SUM_OF_ANGLES_IN_RHOMBUS",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_MG_CALCULATE_SUM_OF_ANGLES_IN_RHOMBUS",
+        "parentProblemTypeKey": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES",
+        "labelKo": "마름모 대각선의 수직 성질로 각 합 계산 절차",
+        "definitionKo": "마름모의 두 대각선이 서로 수직이등분함을 이용해 직각삼각형을 찾고, 그 직각삼각형의 두 예각의 합이 직각임을 이용해 두 각의 합을 구한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_RHOMBUS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "마름모",
+          "definitionKo": "네 변의 길이가 모두 같은 사각형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_PERPENDICULAR_BISECTOR",
+          "reviewedVerdict": "FIT",
+          "labelKo": "선분의 수직이등분선",
+          "definitionKo": "두 점에서 같은 거리에 있는 점의 자취로서 수직이등분선을 사용하는 개념.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_ANGLE_RELATIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "각의 대소 관계",
+          "definitionKo": "삼각형이나 사각형에서 여러 각 사이의 합·차·대소 관계.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "여러 가지 사각형"
+      }
+    },
+    {
+      "questionUid": "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+      "sourceOrdinal": 18,
+      "auditQuestionNumber": 18,
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION",
+      "templateKey": "TPL_MG_CLASSIFY_SQUARE_FROM_PARALLELOGRAM_ANGLE_EQUALITIES",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAMS",
+        "CC_RHOMBUS",
+        "CC_ISOSCELES_TRIANGLES",
+        "CC_SQUARE_CLASSIFICATION"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "MG-02",
+        "subUnitKey": "MG-02-02",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_TO_RHOMBUS_CONDITIONS",
+        "templateKey": "TPL_MG_IDENTIFY_RHOMBUS_FROM_PARALLELOGRAM_ANGLES",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAMS",
+          "CC_RHOMBUS",
+          "CC_ISOSCELES_TRIANGLES"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION",
+        "templateKey": "TPL_MG_CLASSIFY_SQUARE_FROM_PARALLELOGRAM_ANGLE_EQUALITIES",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAMS",
+          "CC_RHOMBUS",
+          "CC_ISOSCELES_TRIANGLES",
+          "CC_SQUARE_CLASSIFICATION"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: The current solution does not stop at rhombus: it derives rhombus, then rectangle, then square (⑤). The audited rhombus PT/TPL is only an intermediate and is not reused as the final task type. A distinct additive square-classification PT/TPL pair and CC_SQUARE_CLASSIFICATION are used; audit keys remain recorded. ROOT must inspect q18.png; no visual inspection is claimed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-2'. The original value is preserved in originalAssignment. Unit: MG-02 vs source M2-06 vs canonical M2-05. Original MG-02/MG-02-02 → corrected M2-05/M2-05-QUADRILATERAL_PROPERTIES. Source metadata: the current production source declares M2-06/M2-06-RHOMBUS_PROPERTIES; the reviewed correction binds M2-05/M2-05-QUADRILATERAL_PROPERTIES because MG-02 vs source M2-06 vs canonical M2-05. ProblemType: The audited PT stops at rhombus; the current item requires the stronger final classification square. Rhombus reasoning is a necessary intermediate. Template: Identify-rhombus is only the intermediate step; current solution continues to square. CrossConcept: Parallelogram and isosceles-triangle angle reasoning are used.",
+      "sourceTextExcerpt": "<p>18. 그림과 같이 $\\angle ABD=\\angle ACD=\\angle CAD$인 평행사변형 $ABCD$는 어떤 사각형인가? [3점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q18.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 18번 원본 그림\" /></p>",
+      "solutionDecisiveExcerpt": "3단계: 마름모이면서 직사각형이므로 정사각형이다. 정답은 ⑤이다.",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+          "sourceOrdinal": 18,
+          "field": "answer",
+          "old": "③",
+          "current": "⑤",
+          "originalManifestValue": "③",
+          "currentSourceValue": "⑤",
+          "appliedToManifest": false,
+          "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+        },
+        {
+          "questionUid": "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+          "sourceOrdinal": 18,
+          "field": "score",
+          "old": 4,
+          "current": 3,
+          "originalManifestValue": 4,
+          "currentSourceValue": 3,
+          "appliedToManifest": false,
+          "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "PARTIAL",
+          "note": "The audited PT stops at rhombus; the current item requires the stronger final classification square. Rhombus reasoning is a necessary intermediate."
+        },
+        "templatePattern": {
+          "verdict": "PARTIAL",
+          "note": "Identify-rhombus is only the intermediate step; current solution continues to square."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Parallelogram and isosceles-triangle angle reasoning are used."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": true,
+        "checkedBy": "CODEX_ROOT",
+        "observation": "평행사변형 ABCD의 두 대각선 교점 O와 A·B·C의 각 표식.",
+        "assetRef": "assets/images/22_풍덕중_1학기_기말_중2_수학/q18.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/22_풍덕중_1학기_기말_중2_수학/q18.png",
+            "resolvedPath": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q18.png",
+            "fileSha256": "b92d6f60c5e489290ac86c11b244dfa5c414946132e9ee2fbfb8dd80c064f50f",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": true,
+        "visualDiscrepancy": null,
+        "note": "ROOT directly inspected the referenced source image."
+      },
+      "ptDecision": {
+        "auditKey": "PT_MG_PARALLELOGRAM_TO_RHOMBUS_CONDITIONS",
+        "reviewedVerdict": "PARTIAL",
+        "finalKey": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION",
+        "labelKo": "평행사변형에서 정사각형 판별",
+        "definitionKo": "평행사변형의 각과 변에 주어진 조건을 이용해 최종적으로 정사각형임을 판별하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_MG_IDENTIFY_RHOMBUS_FROM_PARALLELOGRAM_ANGLES",
+        "reviewedVerdict": "PARTIAL",
+        "finalKey": "TPL_MG_CLASSIFY_SQUARE_FROM_PARALLELOGRAM_ANGLE_EQUALITIES",
+        "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION",
+        "labelKo": "마름모와 직사각형 조건을 결합한 정사각형 판별 절차",
+        "definitionKo": "이등변삼각형의 두 밑각이 같아 이웃변의 길이가 같아지면 마름모임을 보이고, 이어서 이웃한 두 꼭짓각이 같아져 직각이 되면 정사각형임을 결론짓는다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_PARALLELOGRAMS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "평행사변형",
+          "definitionKo": "두 쌍의 대변이 각각 평행한 사각형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_RHOMBUS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "마름모",
+          "definitionKo": "네 변의 길이가 모두 같은 사각형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_ISOSCELES_TRIANGLES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "이등변삼각형",
+          "definitionKo": "두 변의 길이가 같은 삼각형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_SQUARE_CLASSIFICATION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "정사각형 판별",
+          "definitionKo": "사각형이 마름모이면서 직사각형이라는 두 조건을 함께 만족해 정사각형임을 판별하는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "여러 가지 사각형"
+      }
+    },
+    {
+      "questionUid": "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201",
+      "sourceOrdinal": 19,
+      "auditQuestionNumber": 19,
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH",
+      "templateKey": "TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS",
+      "crossConceptKeys": [
+        "CC_QUADRILATERAL_PROPERTIES",
+        "CC_DIAGONALS",
+        "CC_QUADRILATERAL_CLASSIFICATION"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "MG-02",
+        "subUnitKey": "MG-02-02",
+        "problemTypeKey": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH",
+        "templateKey": "TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS",
+        "crossConceptKeys": [
+          "CC_QUADRILATERAL_PROPERTIES",
+          "CC_DIAGONALS",
+          "CC_CLASSIFICATION"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH",
+        "templateKey": "TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS",
+        "crossConceptKeys": [
+          "CC_QUADRILATERAL_PROPERTIES",
+          "CC_DIAGONALS",
+          "CC_QUADRILATERAL_CLASSIFICATION"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual equal-diagonal quadrilateral counting belongs to M2-05-QUADRILATERAL_PROPERTIES. Canonical CC_CLASSIFICATION defines function classification by degree, so the distinct CC_QUADRILATERAL_CLASSIFICATION is used. Answer ③ agrees with the current source. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-2'. The original value is preserved in originalAssignment. Unit: MG-02 vs source M2-06 vs canonical M2-05. Original MG-02/MG-02-02 → corrected M2-05/M2-05-QUADRILATERAL_PROPERTIES. Source metadata: the current production source declares M2-06/M2-06-VARIOUS_QUADRILATERALS; the reviewed correction binds M2-05/M2-05-QUADRILATERAL_PROPERTIES because MG-02 vs source M2-06 vs canonical M2-05. CrossConcept: Diagonal and classification knowledge are decisive.",
+      "sourceTextExcerpt": "<p>19. 다음 &lt;보기&gt;에서 두 대각선의 길이가 같은 사각형의 개수는?</p><blockquote><p>ㄱ. 평행사변형<br>ㄴ. 직사각형<br>ㄷ. 마름모<br>ㄹ. 정사각형<br>ㅁ. 등변사다리꼴</p></blockquote>",
+      "solutionDecisiveExcerpt": "2단계: 대각선의 길이가 같은 사각형은 ㄴ, ㄹ, ㅁ으로 총 $3$개이다.",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201",
+          "sourceOrdinal": 19,
+          "field": "score",
+          "old": 4,
+          "current": 3,
+          "originalManifestValue": 4,
+          "currentSourceValue": 3,
+          "appliedToManifest": false,
+          "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item counts quadrilaterals with equal diagonals."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Count-quadrilaterals-with-equal-diagonals matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Diagonal and classification knowledge are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH",
+        "labelKo": "대각선의 길이가 같은 사각형 개수 세기",
+        "definitionKo": "여러 사각형 중 두 대각선의 길이가 같은 사각형의 개수를 세는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS",
+        "parentProblemTypeKey": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH",
+        "labelKo": "사각형별 대각선 성질 분류 후 개수 합산 절차",
+        "definitionKo": "각 사각형의 대각선 성질을 확인해 길이가 항상 같은 것과 그렇지 않은 것을 분류하고, 해당하는 사각형의 개수를 센다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_QUADRILATERAL_PROPERTIES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "사각형의 성질",
+          "definitionKo": "사각형의 변·각·대각선이 갖는 일반적인 관계.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_DIAGONALS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "대각선",
+          "definitionKo": "다각형에서 이웃하지 않는 두 꼭짓점을 잇는 선분.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_QUADRILATERAL_CLASSIFICATION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "사각형의 분류",
+          "definitionKo": "변·각·대각선의 성질에 따라 사각형을 평행사변형·직사각형·마름모·정사각형·등변사다리꼴 등으로 나누는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "여러 가지 사각형"
+      }
+    },
+    {
+      "questionUid": "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41",
+      "sourceOrdinal": 20,
+      "auditQuestionNumber": 20,
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
+      "templateKey": "TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID",
+      "crossConceptKeys": [
+        "CC_TRAPEZOID",
+        "CC_TRIANGLE_AREA",
+        "CC_AREA_RATIO"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "MG-02",
+        "subUnitKey": "MG-02-03",
+        "problemTypeKey": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
+        "templateKey": "TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID",
+        "crossConceptKeys": [
+          "CC_TRAPEZOID",
+          "CC_TRIANGLE_AREA",
+          "CC_AREA_RATIO"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
+        "templateKey": "TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID",
+        "crossConceptKeys": [
+          "CC_TRAPEZOID",
+          "CC_TRIANGLE_AREA",
+          "CC_AREA_RATIO"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual trapezoid side-triangle area ratio belongs to M2-05-QUADRILATERAL_PROPERTIES. Audit MG-02-03 is not a canonical subUnit. Answer ② (14 cm²) agrees with the current source. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-2'. The original value is preserved in originalAssignment. Unit: MG-02/MG-02-03 vs source M2-06/M2-06-PARALLEL_AND_AREA vs canonical M2-05 quadrilateral domain. Also the audited subUnit 'MG-02-03' sits outside the canonical subUnit inventory. Original MG-02/MG-02-03 → corrected M2-05/M2-05-QUADRILATERAL_PROPERTIES. Source metadata: the current production source declares M2-06/M2-06-PARALLEL_AND_AREA; the reviewed correction binds M2-05/M2-05-QUADRILATERAL_PROPERTIES because MG-02/MG-02-03 vs source M2-06/M2-06-PARALLEL_AND_AREA vs canonical M2-05 quadrilateral domain. Also the audited subUnit 'MG-02-03' sits outside the canonical subUnit inventory.",
+      "sourceTextExcerpt": "<p>20. $\\overline{AD}\\parallel\\overline{BC}$인 사다리꼴 $ABCD$에서 $\\triangle DBC=35\\text{cm}^2$, $\\overline{OD}:\\overline{OB}=2:3$일 때, $\\triangle ABO$의 넓이는? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q20.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 20번 원본 그림\" /></p>",
+      "solutionDecisiveExcerpt": "3단계: 삼각형 $ABD$에서 $[ABO]:[ADO]=BO:OD=3:2$이므로 $[ABO]=\\frac35\\times\\frac{70}{3}=14\\text{cm}^2$.",
+      "sourceFieldCorrections": [],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item computes a side-triangle area in a trapezoid via diagonal ratio."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Side-triangle area in trapezoid matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Trapezoid, triangle area and area ratio are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02/MG-02-03 vs source M2-06/M2-06-PARALLEL_AND_AREA vs canonical M2-05 quadrilateral domain. Also the audited subUnit 'MG-02-03' sits outside the canonical subUnit inventory."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": "assets/images/22_풍덕중_1학기_기말_중2_수학/q20.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/22_풍덕중_1학기_기말_중2_수학/q20.png",
+            "resolvedPath": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q20.png",
+            "fileSha256": "820aca115fa38e1386d54ca702d3e29803059278c7367b375edf6000c76ecc8a",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "The asset reference is recorded; no visual inspection is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
+        "labelKo": "사다리꼴 대각선 비로 삼각형 넓이 계산",
+        "definitionKo": "사다리꼴에서 한 삼각형의 넓이와 대각선의 분할 비가 주어졌을 때 다른 삼각형의 넓이를 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID",
+        "parentProblemTypeKey": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
+        "labelKo": "사다리꼴 평행선 비와 삼각형 넓이비 절차",
+        "definitionKo": "평행한 두 밑변에 의해 대각선이 나뉘는 비를 이용해 삼각형들의 넓이비를 정하고, 주어진 넓이에 그 비를 차례로 적용해 원하는 삼각형의 넓이를 구한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_TRAPEZOID",
+          "reviewedVerdict": "FIT",
+          "labelKo": "사다리꼴",
+          "definitionKo": "한 쌍의 대변이 평행한 사각형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_TRIANGLE_AREA",
+          "reviewedVerdict": "FIT",
+          "labelKo": "삼각형의 넓이",
+          "definitionKo": "밑변과 높이 또는 좌표를 이용하여 삼각형의 넓이를 구하는 개념.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_AREA_RATIO",
+          "reviewedVerdict": "FIT",
+          "labelKo": "넓이의 비",
+          "definitionKo": "두 도형의 넓이 사이의 비율 관계.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "여러 가지 사각형"
+      }
+    },
+    {
+      "questionUid": "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083",
+      "sourceOrdinal": 21,
+      "auditQuestionNumber": 21,
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+      "templateKey": "TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL",
+      "crossConceptKeys": [
+        "CC_PARALLEL_LINES_EQUAL_AREA",
+        "CC_EQUAL_AREA_TRANSFORMATION",
+        "CC_TRIANGLE_AREA"
+      ],
+      "level": "하",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "MG-02",
+        "subUnitKey": "MG-02-03",
+        "problemTypeKey": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+        "templateKey": "TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL",
+        "crossConceptKeys": [
+          "CC_PARALLEL_LINES",
+          "CC_EQUAL_AREA_TRANSFORMATION",
+          "CC_TRIANGLE_AREA"
+        ],
+        "level": "하"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+        "templateKey": "TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL",
+        "crossConceptKeys": [
+          "CC_PARALLEL_LINES_EQUAL_AREA",
+          "CC_EQUAL_AREA_TRANSFORMATION",
+          "CC_TRIANGLE_AREA"
+        ],
+        "level": "하"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual equal-area transformation under a parallel condition belongs to M2-05-QUADRILATERAL_PROPERTIES. Canonical CC_PARALLEL_LINES is coordinate-slope defined, so CC_PARALLEL_LINES_EQUAL_AREA is used. Answer ① agrees. ROOT must inspect q21.png; no visual inspection is claimed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-2'. The original value is preserved in originalAssignment. Unit: MG-02 vs source M2-06 vs canonical M2-05. Original MG-02/MG-02-03 → corrected M2-05/M2-05-QUADRILATERAL_PROPERTIES. Source metadata: the current production source declares M2-06/M2-06-PARALLEL_AND_AREA; the reviewed correction binds M2-05/M2-05-QUADRILATERAL_PROPERTIES because MG-02 vs source M2-06 vs canonical M2-05. CrossConcept: Parallel lines and equal-area transformation are decisive.",
+      "sourceTextExcerpt": "<p>21. $\\square ABCD$의 넓이와 $\\triangle ABE$의 넓이가 같기 위한 조건은? [3점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q21.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 21번 원본 그림\" /></p>",
+      "solutionDecisiveExcerpt": "2단계: 두 삼각형 $ACD, ACE$는 밑변 $AC$를 공유하므로 $DE\\parallel AC$이면 높이가 같아서 넓이가 같다.",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083",
+          "sourceOrdinal": 21,
+          "field": "score",
+          "old": 4,
+          "current": 3,
+          "originalManifestValue": 4,
+          "currentSourceValue": 3,
+          "appliedToManifest": false,
+          "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item finds the parallel condition enabling equal-area transformation."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Parallel-condition-for-equal-area matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Parallel lines and equal-area transformation are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": true,
+        "checkedBy": "CODEX_ROOT",
+        "observation": "BC 연장선 위 E, 삼각형과 선분 AE·DC가 P에서 만난다.",
+        "assetRef": "assets/images/22_풍덕중_1학기_기말_중2_수학/q21.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/22_풍덕중_1학기_기말_중2_수학/q21.png",
+            "resolvedPath": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q21.png",
+            "fileSha256": "a78f3054cad9ee1b6c2cdaba2a7d56335d31b85bb50c0356cbeb71ecf050d787",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": true,
+        "visualDiscrepancy": null,
+        "note": "ROOT directly inspected the referenced source image."
+      },
+      "ptDecision": {
+        "auditKey": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+        "labelKo": "평행선 조건으로 넓이가 같은 삼각형 찾기",
+        "definitionKo": "주어진 사각형과 삼각형의 넓이가 같아지도록 하는 평행 조건을 찾는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL",
+        "parentProblemTypeKey": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+        "labelKo": "공통 밑변 삼각형의 등적변형 조건 절차",
+        "definitionKo": "두 도형에서 공통인 삼각형을 제외하고 남은 두 삼각형의 넓이가 같아야 함을 이용해, 공통 밑변에 대한 높이가 같아지는 평행 조건을 찾는다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_PARALLEL_LINES_EQUAL_AREA",
+          "reviewedVerdict": "FIT",
+          "labelKo": "평행선과 등적변형",
+          "definitionKo": "두 삼각형이 같은 밑변을 공유할 때 밑변에 평행한 선을 이용해 높이가 같아지도록 만드는 조건.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_EQUAL_AREA_TRANSFORMATION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "등적변형",
+          "definitionKo": "도형의 넓이를 바꾸지 않고 모양이나 위치를 옮기는 변형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_TRIANGLE_AREA",
+          "reviewedVerdict": "FIT",
+          "labelKo": "삼각형의 넓이",
+          "definitionKo": "밑변과 높이 또는 좌표를 이용하여 삼각형의 넓이를 구하는 개념.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "여러 가지 사각형"
+      }
+    },
+    {
+      "questionUid": "qid_v1_0622e195cd91d697a36aa43e1c5fa8e9d9e937e549fb56f082fbfc6c608a3730",
+      "sourceOrdinal": 22,
+      "auditQuestionNumber": 22,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-EXPONENT_LAW",
+      "problemTypeKey": "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO",
+      "templateKey": "TPL_M2_CALCULATE_VOLUME_RATIO_OF_TWO_REVOLVED_CYLINDERS_DESCRIPTIVE",
+      "crossConceptKeys": [
+        "CC_EXPONENT_RULES",
+        "CC_POLYNOMIAL_MULTIPLICATION",
+        "CC_CYLINDER_VOLUME",
+        "CC_VOLUME_RATIO"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-01",
+        "problemTypeKey": "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO",
+        "templateKey": "TPL_M2_CALCULATE_VOLUME_RATIO_OF_TWO_REVOLVED_CYLINDERS_DESCRIPTIVE",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_MULTIPLICATION",
+          "CC_CYLINDER_VOLUME",
+          "CC_VOLUME_RATIO"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "problemTypeKey": "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO",
+        "templateKey": "TPL_M2_CALCULATE_VOLUME_RATIO_OF_TWO_REVOLVED_CYLINDERS_DESCRIPTIVE",
+        "crossConceptKeys": [
+          "CC_EXPONENT_RULES",
+          "CC_POLYNOMIAL_MULTIPLICATION",
+          "CC_CYLINDER_VOLUME",
+          "CC_VOLUME_RATIO"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual cylinder-volume ratio from monomial side lengths belongs to M2-01 수와 식 / M2-01-EXPONENT_LAW, not canonical M2-02. CC_EXPONENT_RULES is added because the volume simplification uses exponent laws. Answer 3b/4a agrees. ROOT must inspect q22.png; no visual inspection is claimed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: M2-02 agrees; subUnit label differs only in format. Original M2-02/M2-02-01 → corrected M2-01/M2-01-EXPONENT_LAW. Source metadata: the current production source declares M2-02/M2-02-MONOMIAL_GEOMETRY; the reviewed correction binds M2-01/M2-01-EXPONENT_LAW because M2-02 agrees; subUnit label differs only in format. CrossConcept: Cylinder volume and polynomial multiplication are decisive.",
+      "sourceTextExcerpt": "<p>[서술형 1] 오른쪽 직사각형 $ABCD$를 선분 $AB$와 선분 $BC$를 각각 축으로 하여 1회전시킬 때 생기는 두 회전체의 부피를 각각 $P,Q$라고 하자. 이때 $\\dfrac{P}{Q}$를 구하시오. [5점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q22.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 22번 원본 그림\" /></p>",
+      "solutionDecisiveExcerpt": "3단계: $\\frac{P}{Q}=\\frac{36\\pi ab^2}{48\\pi a^2b}=\\frac{3b}{4a}$.",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_0622e195cd91d697a36aa43e1c5fa8e9d9e937e549fb56f082fbfc6c608a3730",
+          "sourceOrdinal": 22,
+          "field": "score",
+          "old": 4,
+          "current": 5,
+          "originalManifestValue": 4,
+          "currentSourceValue": 5,
+          "appliedToManifest": false,
+          "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item forms a ratio of two revolved-cylinder volumes built from monomials."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Descriptive volume-ratio template matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Cylinder volume and polynomial multiplication are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-02 agrees; subUnit label differs only in format."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": true,
+        "checkedBy": "CODEX_ROOT",
+        "observation": "직사각형 ABCD에서 AB=4a, AD=3b.",
+        "assetRef": "assets/images/22_풍덕중_1학기_기말_중2_수학/q22.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/22_풍덕중_1학기_기말_중2_수학/q22.png",
+            "resolvedPath": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q22.png",
+            "fileSha256": "e36e727ea384fc4576acd8cb48cc70f7c40d071ced40bec3ddf317633697ac73",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": true,
+        "visualDiscrepancy": null,
+        "note": "ROOT directly inspected the referenced source image."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO",
+        "labelKo": "직사각형 회전체 두 부피의 비",
+        "definitionKo": "직사각형을 서로 다른 두 변을 축으로 회전시켜 생기는 두 원기둥의 부피 비를 문자식으로 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_CALCULATE_VOLUME_RATIO_OF_TWO_REVOLVED_CYLINDERS_DESCRIPTIVE",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_CALCULATE_VOLUME_RATIO_OF_TWO_REVOLVED_CYLINDERS_DESCRIPTIVE",
+        "parentProblemTypeKey": "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO",
+        "labelKo": "회전축에 따른 원기둥 부피비 계산 절차",
+        "definitionKo": "각 회전축에 수직인 변을 반지름, 회전축 방향의 변을 높이로 보아 두 원기둥의 부피를 각각 구하고, 공통 인수를 약분해 부피의 비를 간단히 한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_EXPONENT_RULES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "지수법칙",
+          "definitionKo": "지수의 덧셈, 뺄셈, 곱셈 기본 성질",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_POLYNOMIAL_MULTIPLICATION",
+          "reviewedVerdict": "FIT",
+          "labelKo": "다항식의 곱셈",
+          "definitionKo": "분배법칙을 이용해 다항식의 각 항을 서로 곱하고 동류항을 정리하는 계산.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_CYLINDER_VOLUME",
+          "reviewedVerdict": "FIT",
+          "labelKo": "원기둥의 부피",
+          "definitionKo": "밑면의 반지름과 높이를 이용해 원기둥의 부피를 구하는 공식.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_VOLUME_RATIO",
+          "reviewedVerdict": "FIT",
+          "labelKo": "부피의 비",
+          "definitionKo": "두 입체도형의 부피 사이의 비율.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "식의 계산",
+        "midUnit": "단항식의 계산"
+      }
+    },
+    {
+      "questionUid": "qid_v1_e6095f2fb6f3bff7f906c5fbd830fb9efeb5d5d1d98fae2fca15732221f25fd2",
+      "sourceOrdinal": 23,
+      "auditQuestionNumber": 23,
+      "standardCourse": "중2-1",
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK",
+      "templateKey": "TPL_M2_SOLVE_WATER_TANK_CAPACITY_INEQUALITY_DESCRIPTIVE",
+      "crossConceptKeys": [
+        "CC_LINEAR_INEQUALITIES",
+        "CC_APPLIED_WORD_PROBLEMS",
+        "CC_FRACTION_ARITHMETIC"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-03",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK",
+        "templateKey": "TPL_M2_SOLVE_WATER_TANK_CAPACITY_INEQUALITY_DESCRIPTIVE",
+        "crossConceptKeys": [
+          "CC_LINEAR_INEQUALITIES",
+          "CC_APPLIED_WORD_PROBLEMS",
+          "CC_FRACTION_ARITHMETIC"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK",
+        "templateKey": "TPL_M2_SOLVE_WATER_TANK_CAPACITY_INEQUALITY_DESCRIPTIVE",
+        "crossConceptKeys": [
+          "CC_LINEAR_INEQUALITIES",
+          "CC_APPLIED_WORD_PROBLEMS",
+          "CC_FRACTION_ARITHMETIC"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual water-tank capacity inequality belongs to M2-02-LINEAR_INEQUALITY_WORD. Audit answer 33 L and its one-third-remaining inequality conflict with the current statement/solution, which uses two-thirds remaining and x≥15 L. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-1'. The original value is preserved in originalAssignment. Unit: M2-03 agrees. Original M2-03/M2-03-03 → corrected M2-02/M2-02-LINEAR_INEQUALITY_WORD. Source metadata: the current production source declares M2-03/M2-03-INEQUALITY_APPLICATION; the reviewed correction binds M2-02/M2-02-LINEAR_INEQUALITY_WORD because M2-03 agrees.",
+      "sourceTextExcerpt": "<p>[서술형 2] 어느 물탱크에 물이 들어 있다. $3\\text{L}$의 물을 채운 후, 들어 있는 물의 $\\dfrac13$을 사용하였을 때 $12\\text{L}$ 이상의 물이 남아 있게 하려면 처음에 들어 있는 물의 양은 몇 $\\text{L}$ 이상이어야 하는지 구하시오. [5점]</p>",
+      "solutionDecisiveExcerpt": "3단계: $x+3\\ge18$이므로 $x\\ge15$.",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_e6095f2fb6f3bff7f906c5fbd830fb9efeb5d5d1d98fae2fca15732221f25fd2",
+          "sourceOrdinal": 23,
+          "field": "answer",
+          "old": "$33\\text{L}$ 이상",
+          "current": "$15\\text{L}$ 이상",
+          "originalManifestValue": "$33\\text{L}$ 이상",
+          "currentSourceValue": "$15\\text{L}$ 이상",
+          "appliedToManifest": false,
+          "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+        },
+        {
+          "questionUid": "qid_v1_e6095f2fb6f3bff7f906c5fbd830fb9efeb5d5d1d98fae2fca15732221f25fd2",
+          "sourceOrdinal": 23,
+          "field": "score",
+          "old": 4,
+          "current": 5,
+          "originalManifestValue": 4,
+          "currentSourceValue": 5,
+          "appliedToManifest": false,
+          "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item is a water-tank capacity inequality word problem."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Water-tank capacity inequality descriptive matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Fraction arithmetic is decisive (one third used)."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "TOP_LEVEL_MATCH_SUBUNIT_FORMAT_DRIFT",
+        "note": "M2-03 agrees."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "NONE",
+        "assetPresent": false,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": null,
+        "assetEvidence": [],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "No visual asset in the current source; no visual check is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK",
+        "labelKo": "물탱크 용량 부등식 활용",
+        "definitionKo": "물을 채운 뒤 일부를 사용하고 남는 양의 하한이 주어졌을 때 처음 물의 양의 범위를 구하는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_M2_SOLVE_WATER_TANK_CAPACITY_INEQUALITY_DESCRIPTIVE",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_M2_SOLVE_WATER_TANK_CAPACITY_INEQUALITY_DESCRIPTIVE",
+        "parentProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK",
+        "labelKo": "사용 후 잔량 부등식 모델링 절차",
+        "definitionKo": "처음 물의 양을 미지수로 두고 채운 양을 더한 뒤 사용한 비율을 반영한 잔량식을 세워, 잔량이 기준 이상이라는 부등식을 풀어 처음 양의 범위를 구한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_LINEAR_INEQUALITIES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "일차부등식",
+          "definitionKo": "미지수의 일차식으로 이루어져 부등호로 연결된 식.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_APPLIED_WORD_PROBLEMS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "문장제 모델링",
+          "definitionKo": "실생활 상황의 문장 조건을 미지수 사이의 방정식이나 함수 관계로 옮기는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_FRACTION_ARITHMETIC",
+          "reviewedVerdict": "FIT",
+          "labelKo": "분수의 사칙계산",
+          "definitionKo": "분수의 분자와 분모를 이용해 더하기·빼기·곱하기·나누기를 계산하는 것.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "일차부등식의 활용"
+      }
+    },
+    {
+      "questionUid": "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6",
+      "sourceOrdinal": 24,
+      "auditQuestionNumber": 24,
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC",
+      "templateKey": "TPL_MG_WRITE_FIVE_PARALLELOGRAM_CONDITIONS_IN_SYMBOLS_DESCRIPTIVE",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAMS",
+        "CC_MATHEMATICAL_SYMBOLS",
+        "CC_GEOMETRIC_CONDITIONS"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "MG-02",
+        "subUnitKey": "MG-02-01",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC",
+        "templateKey": "TPL_MG_WRITE_FIVE_PARALLELOGRAM_CONDITIONS_IN_SYMBOLS_DESCRIPTIVE",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAMS",
+          "CC_MATHEMATICAL_SYMBOLS",
+          "CC_GEOMETRIC_CONDITIONS"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC",
+        "templateKey": "TPL_MG_WRITE_FIVE_PARALLELOGRAM_CONDITIONS_IN_SYMBOLS_DESCRIPTIVE",
+        "crossConceptKeys": [
+          "CC_PARALLELOGRAMS",
+          "CC_MATHEMATICAL_SYMBOLS",
+          "CC_GEOMETRIC_CONDITIONS"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual five parallelogram conditions in symbols belongs to M2-05-QUADRILATERAL_PROPERTIES under 평행사변형. Answer content agrees; only notation differs. ROOT must inspect q24.png; no visual inspection is claimed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-2'. The original value is preserved in originalAssignment. Unit: MG-02 vs source M2-06 vs canonical M2-05. Original MG-02/MG-02-01 → corrected M2-05/M2-05-QUADRILATERAL_PROPERTIES. Source metadata: the current production source declares M2-06/M2-06-PARALLELOGRAM_CONDITIONS; the reviewed correction binds M2-05/M2-05-QUADRILATERAL_PROPERTIES because MG-02 vs source M2-06 vs canonical M2-05.",
+      "sourceTextExcerpt": "<p>[서술형 3] 사각형 $ABCD$가 평행사변형이 되는 조건 5가지를 수학적 기호를 사용하여 나타내시오. [5점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q24.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 24번 원본 그림\" /></p>",
+      "solutionDecisiveExcerpt": "⑤ 한 쌍의 대변이 평행하고 길이도 같다: $AB\\parallel CD$, $AB=CD$ (또는 $AD\\parallel BC$, $AD=BC$).",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6",
+          "sourceOrdinal": 24,
+          "field": "answer",
+          "old": "(1) $\\overline{\\text{AB}} \\parallel \\overline{\\text{DC}}, \\overline{\\text{AD}} \\parallel \\overline{\\text{BC}}$  (2) $\\overline{\\text{AB}} = \\overline{\\text{DC}}, \\overline{\\text{AD}} = \\overline{\\text{BC}}$  (3) $\\angle \\text{A} = \\angle \\text{C}, \\angle \\text{B} = \\angle \\text{D}$  (4) $\\overline{\\text{OA}} = \\overline{\\text{OC}}, \\overline{\\text{OB}} = \\overline{\\text{OD}}$  (5) $\\overline{\\text{AB}} \\parallel \\overline{\\text{DC}}, \\overline{\\text{AB}} = \\overline{\\text{DC}}$ (또는 $\\overline{\\text{AD}} \\parallel \\overline{\\text{BC}}, \\overline{\\text{AD}} = \\overline{\\text{BC}}$)",
+          "current": "(1) $AB\\parallel CD$, $AD\\parallel BC$; (2) $AB=CD$, $AD=BC$; (3) $\\angle A=\\angle C$, $\\angle B=\\angle D$; (4) $AO=OC$, $BO=OD$; (5) $AB\\parallel CD$, $AB=CD$ (또는 $AD\\parallel BC$, $AD=BC$)",
+          "originalManifestValue": "(1) $\\overline{\\text{AB}} \\parallel \\overline{\\text{DC}}, \\overline{\\text{AD}} \\parallel \\overline{\\text{BC}}$  (2) $\\overline{\\text{AB}} = \\overline{\\text{DC}}, \\overline{\\text{AD}} = \\overline{\\text{BC}}$  (3) $\\angle \\text{A} = \\angle \\text{C}, \\angle \\text{B} = \\angle \\text{D}$  (4) $\\overline{\\text{OA}} = \\overline{\\text{OC}}, \\overline{\\text{OB}} = \\overline{\\text{OD}}$  (5) $\\overline{\\text{AB}} \\parallel \\overline{\\text{DC}}, \\overline{\\text{AB}} = \\overline{\\text{DC}}$ (또는 $\\overline{\\text{AD}} \\parallel \\overline{\\text{BC}}, \\overline{\\text{AD}} = \\overline{\\text{BC}}$)",
+          "currentSourceValue": "(1) $AB\\parallel CD$, $AD\\parallel BC$; (2) $AB=CD$, $AD=BC$; (3) $\\angle A=\\angle C$, $\\angle B=\\angle D$; (4) $AO=OC$, $BO=OD$; (5) $AB\\parallel CD$, $AB=CD$ (또는 $AD\\parallel BC$, $AD=BC$)",
+          "appliedToManifest": false,
+          "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+        },
+        {
+          "questionUid": "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6",
+          "sourceOrdinal": 24,
+          "field": "score",
+          "old": 4,
+          "current": 5,
+          "originalManifestValue": 4,
+          "currentSourceValue": 5,
+          "appliedToManifest": false,
+          "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item asks for the five parallelogram conditions in symbols."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Symbolic five-condition descriptive matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Mathematical symbols and geometric conditions are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": false,
+        "checkedBy": null,
+        "observation": null,
+        "assetRef": "assets/images/22_풍덕중_1학기_기말_중2_수학/q24.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/22_풍덕중_1학기_기말_중2_수학/q24.png",
+            "resolvedPath": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q24.png",
+            "fileSha256": "b10a1e2db9696a482972e727e937c53873c4df97b667a1ad2cef7d59b652f0a6",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": false,
+        "visualDiscrepancy": null,
+        "note": "The asset reference is recorded; no visual inspection is claimed."
+      },
+      "ptDecision": {
+        "auditKey": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC",
+        "labelKo": "평행사변형이 되는 다섯 조건의 기호 표현",
+        "definitionKo": "사각형이 평행사변형이 되는 다섯 가지 조건을 수학 기호로 각각 나타내는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_MG_WRITE_FIVE_PARALLELOGRAM_CONDITIONS_IN_SYMBOLS_DESCRIPTIVE",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_MG_WRITE_FIVE_PARALLELOGRAM_CONDITIONS_IN_SYMBOLS_DESCRIPTIVE",
+        "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC",
+        "labelKo": "평행사변형 판정 조건 기호화 절차",
+        "definitionKo": "대변의 평행, 대변의 길이, 대각의 크기, 대각선의 이등분, 한 쌍의 대변의 평행과 길이 같음을 각각 기호를 사용한 조건식으로 표현한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_PARALLELOGRAMS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "평행사변형",
+          "definitionKo": "두 쌍의 대변이 각각 평행한 사각형.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_MATHEMATICAL_SYMBOLS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "수학 기호",
+          "definitionKo": "평행·합동·각·선분 같은 수학적 관계를 나타내는 기호.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_GEOMETRIC_CONDITIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "도형의 조건",
+          "definitionKo": "도형이 특정 종류가 되기 위해 만족해야 하는 변·각·대각선에 관한 조건.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "평행사변형"
+      }
+    },
+    {
+      "questionUid": "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e",
+      "sourceOrdinal": 25,
+      "auditQuestionNumber": 25,
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+      "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+      "crossConceptKeys": [
+        "CC_QUADRILATERAL_PROPERTIES",
+        "CC_QUADRILATERAL_HIERARCHY",
+        "CC_SUFFICIENT_CONDITIONS"
+      ],
+      "level": "중",
+      "originalAssignment": {
+        "standardCourse": "중2",
+        "standardUnitKey": "MG-02",
+        "subUnitKey": "MG-02-02",
+        "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+        "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+        "crossConceptKeys": [
+          "CC_QUADRILATERAL_PROPERTIES",
+          "CC_QUADRILATERAL_HIERARCHY",
+          "CC_SUFFICIENT_CONDITIONS"
+        ],
+        "level": "중"
+      },
+      "correctedAssignment": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+        "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+        "crossConceptKeys": [
+          "CC_QUADRILATERAL_PROPERTIES",
+          "CC_QUADRILATERAL_HIERARCHY",
+          "CC_SUFFICIENT_CONDITIONS"
+        ],
+        "level": "중"
+      },
+      "assignmentCorrectionReason": "Reviewed definitions: Actual quadrilateral-hierarchy condition completion belongs to M2-05-QUADRILATERAL_PROPERTIES under 여러 가지 사각형. Audit blank ordering conflicts with the current source's ①~⑤ mapping; the audit sequence is preserved only as provenance. ROOT must inspect q25.png; no visual inspection is claimed. Course: the original audit declares '중2'; the current production source declares the exact semester course '중2-2'. The original value is preserved in originalAssignment. Unit: MG-02 vs source M2-06 vs canonical M2-05. Original MG-02/MG-02-02 → corrected M2-05/M2-05-QUADRILATERAL_PROPERTIES. Source metadata: the current production source declares M2-06/M2-06-VARIOUS_QUADRILATERALS; the reviewed correction binds M2-05/M2-05-QUADRILATERAL_PROPERTIES because MG-02 vs source M2-06 vs canonical M2-05.",
+      "sourceTextExcerpt": "<p>[서술형 4] 일반적인 사각형에 조건이 하나씩 덧붙여져 여러 가지 사각형이 되는 과정을 나타낸 것이다. 각 도형의 뜻에 맞도록 ①~⑤에 각각 알맞은 조건을 쓰시오. [5점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q25.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 25번 원본 그림\" /></p>",
+      "solutionDecisiveExcerpt": "① 사다리꼴→평행사변형: 다른 한 쌍의 대변도 평행하다.",
+      "sourceFieldCorrections": [
+        {
+          "questionUid": "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e",
+          "sourceOrdinal": 25,
+          "field": "answer",
+          "old": "(1) 한 쌍의 대변이 평행하다  (2) 다른 한 쌍의 대변이 평행하다  (3) 한 내각이 직각이다(또는 두 대각선의 길이가 같다)  (4) 이웃하는 두 변의 길이가 같다(또는 두 대각선이 수직이다)  (5) 이웃하는 두 변의 길이가 같다(또는 두 대각선이 수직이다)",
+          "current": "① 다른 한 쌍의 대변도 평행하다. ② 이웃하는 두 변의 길이가 같다. ③ 한 내각의 크기가 직각이다. ④ 한 내각의 크기가 직각이다. ⑤ 이웃하는 두 변의 길이가 같다.",
+          "originalManifestValue": "(1) 한 쌍의 대변이 평행하다  (2) 다른 한 쌍의 대변이 평행하다  (3) 한 내각이 직각이다(또는 두 대각선의 길이가 같다)  (4) 이웃하는 두 변의 길이가 같다(또는 두 대각선이 수직이다)  (5) 이웃하는 두 변의 길이가 같다(또는 두 대각선이 수직이다)",
+          "currentSourceValue": "① 다른 한 쌍의 대변도 평행하다. ② 이웃하는 두 변의 길이가 같다. ③ 한 내각의 크기가 직각이다. ④ 한 내각의 크기가 직각이다. ⑤ 이웃하는 두 변의 길이가 같다.",
+          "appliedToManifest": false,
+          "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+        },
+        {
+          "questionUid": "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e",
+          "sourceOrdinal": 25,
+          "field": "score",
+          "old": 4,
+          "current": 5,
+          "originalManifestValue": 4,
+          "currentSourceValue": 5,
+          "appliedToManifest": false,
+          "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+        }
+      ],
+      "provenanceDiscrepancies": [],
+      "semanticFit": {
+        "primaryTaxonomy": {
+          "verdict": "FIT",
+          "note": "Current item completes a quadrilateral hierarchy flowchart with sufficient conditions."
+        },
+        "templatePattern": {
+          "verdict": "FIT",
+          "note": "Flowchart completion template matches."
+        },
+        "crossConcepts": {
+          "verdict": "FIT",
+          "note": "Hierarchy and sufficient conditions are decisive."
+        }
+      },
+      "unitKeyFit": {
+        "verdict": "MISMATCH",
+        "note": "MG-02 vs source M2-06 vs canonical M2-05."
+      },
+      "levelFit": {
+        "verdict": "FIT"
+      },
+      "difficultyFit": {
+        "verdict": "FIT"
+      },
+      "sourceSideRisk": null,
+      "driftNote": null,
+      "unitKeyDecision": null,
+      "visualEvidence": {
+        "visualType": "IMAGE",
+        "assetPresent": true,
+        "assetChecked": true,
+        "checkedBy": "CODEX_ROOT",
+        "observation": "사다리꼴에서 평행사변형으로, 이후 마름모·직사각형을 거쳐 정사각형으로 향하는 ①~⑤ 조건 흐름도.",
+        "assetRef": "assets/images/22_풍덕중_1학기_기말_중2_수학/q25.png",
+        "assetEvidence": [
+          {
+            "reference": "assets/images/22_풍덕중_1학기_기말_중2_수학/q25.png",
+            "resolvedPath": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q25.png",
+            "fileSha256": "d3f2ed87752226d7c06334825a7190831f8c591d2807dcce4963b9734315ded4",
+            "verification": "FILE_PRESENT_READ_ONLY"
+          }
+        ],
+        "reviewerVisualChecked": false,
+        "rootVisualObservationAvailable": true,
+        "visualDiscrepancy": null,
+        "note": "ROOT directly inspected the referenced source image."
+      },
+      "ptDecision": {
+        "auditKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+        "reviewedVerdict": "FIT",
+        "finalKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+        "labelKo": "사각형 계통도에서 단계별 추가 조건 완성",
+        "definitionKo": "일반 사각형에서 평행사변형·마름모·직사각형·정사각형으로 발전하는 계통도의 빈칸에 필요한 조건을 쓰는 과제.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "tplDecision": {
+        "auditKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+        "reviewedVerdict": "FIT",
+        "finalKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+        "parentProblemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+        "labelKo": "사각형 포함 관계 계통도 조건 완성 절차",
+        "definitionKo": "직전 사각형에 어떤 성질을 추가하면 다음 사각형이 되는지 판단해, 각 단계의 포함 관계를 만족시키는 충분조건을 차례로 서술한다.",
+        "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+      },
+      "crossConceptDecisions": [
+        {
+          "finalKey": "CC_QUADRILATERAL_PROPERTIES",
+          "reviewedVerdict": "FIT",
+          "labelKo": "사각형의 성질",
+          "definitionKo": "사각형의 변·각·대각선이 갖는 일반적인 관계.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_QUADRILATERAL_HIERARCHY",
+          "reviewedVerdict": "FIT",
+          "labelKo": "사각형의 포함 관계",
+          "definitionKo": "일반 사각형에서 평행사변형·마름모·직사각형·정사각형으로 갈수록 조건이 추가되는 포함 관계.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        },
+        {
+          "finalKey": "CC_SUFFICIENT_CONDITIONS",
+          "reviewedVerdict": "FIT",
+          "labelKo": "충분조건",
+          "definitionKo": "어떤 명제가 성립하기에 충분한 조건.",
+          "definitionSource": "NOV04_M2_DEFINITIONS_V1"
+        }
+      ],
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "사각형의 성질",
+        "midUnit": "여러 가지 사각형"
+      }
+    }
+  ],
+  "visualFieldSemantics": {
+    "rowAssetChecked": "ROOT directly inspected the seven listed source images; other visual rows remain explicitly unchecked.",
+    "reviewerVisualChecked": "false everywhere: the OpenCode reviewer did not open the images.",
+    "assetEvidence": "Each visual row records the actual source asset reference and, when the file is resolvable read-only in the repo, its SHA-256."
+  },
+  "visualEvidenceSummary": {
+    "rowsWithVisualAsset": 15,
+    "rowsWithoutVisualAsset": 10,
+    "rootObservedAssets": 7,
+    "rootCheckedAssets": 7,
+    "openCodeCheckedAssets": 0,
+    "reviewerVisualChecked": false,
+    "assetEvidenceRows": 15,
+    "assetFilesResolved": 15,
+    "checkedBy": "CODEX_ROOT",
+    "countSemantics": "ROOT inspected ordinals 3, 12, 17, 18, 21, 22, 25; remaining visual assets were not inspected."
+  },
+  "templateInflation": "NOT_REPORTED_IN_SOURCE_SCHEMA",
+  "conditionEvidence": "PRESERVED_EXISTING_ONLY_NOT_APPROVED",
+  "difficultyBucketSource": "NOT_AUDITED_1_5_BUCKET",
+  "sourceFieldCorrections": [
+    {
+      "questionUid": "qid_v1_05ce5c09a7509969adfde9039406da8bae6edbe4a3f5b54aa06b6f1b0b06d6bd",
+      "sourceOrdinal": 1,
+      "field": "answer",
+      "old": "⑤",
+      "current": "②",
+      "originalManifestValue": "⑤",
+      "currentSourceValue": "②",
+      "appliedToManifest": false,
+      "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+    },
+    {
+      "questionUid": "qid_v1_19d960620b30288e76f690ead3d1dde40f594661c564b36897f89fc8eed7c9ef",
+      "sourceOrdinal": 2,
+      "field": "answer",
+      "old": "②",
+      "current": "④",
+      "originalManifestValue": "②",
+      "currentSourceValue": "④",
+      "appliedToManifest": false,
+      "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+    },
+    {
+      "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+      "sourceOrdinal": 3,
+      "field": "answer",
+      "old": "①",
+      "current": "③",
+      "originalManifestValue": "①",
+      "currentSourceValue": "③",
+      "appliedToManifest": false,
+      "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+    },
+    {
+      "questionUid": "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7",
+      "sourceOrdinal": 5,
+      "field": "answer",
+      "old": "②",
+      "current": "⑤",
+      "originalManifestValue": "②",
+      "currentSourceValue": "⑤",
+      "appliedToManifest": false,
+      "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+    },
+    {
+      "questionUid": "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7",
+      "sourceOrdinal": 5,
+      "field": "score",
+      "old": 4,
+      "current": 3,
+      "originalManifestValue": 4,
+      "currentSourceValue": 3,
+      "appliedToManifest": false,
+      "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+    },
+    {
+      "questionUid": "qid_v1_da3c7f2341f14c6a4d8c7e58c6745fd968bc10299fc9cb1a12bb4d14f6b0aa89",
+      "sourceOrdinal": 7,
+      "field": "answer",
+      "old": "⑤",
+      "current": "④",
+      "originalManifestValue": "⑤",
+      "currentSourceValue": "④",
+      "appliedToManifest": false,
+      "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+    },
+    {
+      "questionUid": "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f",
+      "sourceOrdinal": 8,
+      "field": "answer",
+      "old": "③",
+      "current": "②",
+      "originalManifestValue": "③",
+      "currentSourceValue": "②",
+      "appliedToManifest": false,
+      "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+    },
+    {
+      "questionUid": "qid_v1_6e7f80ca0d802690305d56d21c5efa020588439d2494098acaf7167fb9a6ecfb",
+      "sourceOrdinal": 10,
+      "field": "answer",
+      "old": "③",
+      "current": "⑤",
+      "originalManifestValue": "③",
+      "currentSourceValue": "⑤",
+      "appliedToManifest": false,
+      "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+    },
+    {
+      "questionUid": "qid_v1_6e7f80ca0d802690305d56d21c5efa020588439d2494098acaf7167fb9a6ecfb",
+      "sourceOrdinal": 10,
+      "field": "score",
+      "old": 4,
+      "current": 5,
+      "originalManifestValue": 4,
+      "currentSourceValue": 5,
+      "appliedToManifest": false,
+      "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+    },
+    {
+      "questionUid": "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb",
+      "sourceOrdinal": 11,
+      "field": "answer",
+      "old": "①",
+      "current": "②",
+      "originalManifestValue": "①",
+      "currentSourceValue": "②",
+      "appliedToManifest": false,
+      "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+    },
+    {
+      "questionUid": "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+      "sourceOrdinal": 12,
+      "field": "answer",
+      "old": "②",
+      "current": "③",
+      "originalManifestValue": "②",
+      "currentSourceValue": "③",
+      "appliedToManifest": false,
+      "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+    },
+    {
+      "questionUid": "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+      "sourceOrdinal": 12,
+      "field": "score",
+      "old": 4,
+      "current": 3,
+      "originalManifestValue": 4,
+      "currentSourceValue": 3,
+      "appliedToManifest": false,
+      "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+    },
+    {
+      "questionUid": "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+      "sourceOrdinal": 16,
+      "field": "answer",
+      "old": "③, ④",
+      "current": "①, ⑤",
+      "originalManifestValue": "③, ④",
+      "currentSourceValue": "①, ⑤",
+      "appliedToManifest": false,
+      "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+    },
+    {
+      "questionUid": "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+      "sourceOrdinal": 18,
+      "field": "answer",
+      "old": "③",
+      "current": "⑤",
+      "originalManifestValue": "③",
+      "currentSourceValue": "⑤",
+      "appliedToManifest": false,
+      "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+    },
+    {
+      "questionUid": "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+      "sourceOrdinal": 18,
+      "field": "score",
+      "old": 4,
+      "current": 3,
+      "originalManifestValue": 4,
+      "currentSourceValue": 3,
+      "appliedToManifest": false,
+      "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+    },
+    {
+      "questionUid": "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201",
+      "sourceOrdinal": 19,
+      "field": "score",
+      "old": 4,
+      "current": 3,
+      "originalManifestValue": 4,
+      "currentSourceValue": 3,
+      "appliedToManifest": false,
+      "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+    },
+    {
+      "questionUid": "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083",
+      "sourceOrdinal": 21,
+      "field": "score",
+      "old": 4,
+      "current": 3,
+      "originalManifestValue": 4,
+      "currentSourceValue": 3,
+      "appliedToManifest": false,
+      "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+    },
+    {
+      "questionUid": "qid_v1_0622e195cd91d697a36aa43e1c5fa8e9d9e937e549fb56f082fbfc6c608a3730",
+      "sourceOrdinal": 22,
+      "field": "score",
+      "old": 4,
+      "current": 5,
+      "originalManifestValue": 4,
+      "currentSourceValue": 5,
+      "appliedToManifest": false,
+      "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+    },
+    {
+      "questionUid": "qid_v1_e6095f2fb6f3bff7f906c5fbd830fb9efeb5d5d1d98fae2fca15732221f25fd2",
+      "sourceOrdinal": 23,
+      "field": "answer",
+      "old": "$33\\text{L}$ 이상",
+      "current": "$15\\text{L}$ 이상",
+      "originalManifestValue": "$33\\text{L}$ 이상",
+      "currentSourceValue": "$15\\text{L}$ 이상",
+      "appliedToManifest": false,
+      "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+    },
+    {
+      "questionUid": "qid_v1_e6095f2fb6f3bff7f906c5fbd830fb9efeb5d5d1d98fae2fca15732221f25fd2",
+      "sourceOrdinal": 23,
+      "field": "score",
+      "old": 4,
+      "current": 5,
+      "originalManifestValue": 4,
+      "currentSourceValue": 5,
+      "appliedToManifest": false,
+      "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+    },
+    {
+      "questionUid": "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6",
+      "sourceOrdinal": 24,
+      "field": "answer",
+      "old": "(1) $\\overline{\\text{AB}} \\parallel \\overline{\\text{DC}}, \\overline{\\text{AD}} \\parallel \\overline{\\text{BC}}$  (2) $\\overline{\\text{AB}} = \\overline{\\text{DC}}, \\overline{\\text{AD}} = \\overline{\\text{BC}}$  (3) $\\angle \\text{A} = \\angle \\text{C}, \\angle \\text{B} = \\angle \\text{D}$  (4) $\\overline{\\text{OA}} = \\overline{\\text{OC}}, \\overline{\\text{OB}} = \\overline{\\text{OD}}$  (5) $\\overline{\\text{AB}} \\parallel \\overline{\\text{DC}}, \\overline{\\text{AB}} = \\overline{\\text{DC}}$ (또는 $\\overline{\\text{AD}} \\parallel \\overline{\\text{BC}}, \\overline{\\text{AD}} = \\overline{\\text{BC}}$)",
+      "current": "(1) $AB\\parallel CD$, $AD\\parallel BC$; (2) $AB=CD$, $AD=BC$; (3) $\\angle A=\\angle C$, $\\angle B=\\angle D$; (4) $AO=OC$, $BO=OD$; (5) $AB\\parallel CD$, $AB=CD$ (또는 $AD\\parallel BC$, $AD=BC$)",
+      "originalManifestValue": "(1) $\\overline{\\text{AB}} \\parallel \\overline{\\text{DC}}, \\overline{\\text{AD}} \\parallel \\overline{\\text{BC}}$  (2) $\\overline{\\text{AB}} = \\overline{\\text{DC}}, \\overline{\\text{AD}} = \\overline{\\text{BC}}$  (3) $\\angle \\text{A} = \\angle \\text{C}, \\angle \\text{B} = \\angle \\text{D}$  (4) $\\overline{\\text{OA}} = \\overline{\\text{OC}}, \\overline{\\text{OB}} = \\overline{\\text{OD}}$  (5) $\\overline{\\text{AB}} \\parallel \\overline{\\text{DC}}, \\overline{\\text{AB}} = \\overline{\\text{DC}}$ (또는 $\\overline{\\text{AD}} \\parallel \\overline{\\text{BC}}, \\overline{\\text{AD}} = \\overline{\\text{BC}}$)",
+      "currentSourceValue": "(1) $AB\\parallel CD$, $AD\\parallel BC$; (2) $AB=CD$, $AD=BC$; (3) $\\angle A=\\angle C$, $\\angle B=\\angle D$; (4) $AO=OC$, $BO=OD$; (5) $AB\\parallel CD$, $AB=CD$ (또는 $AD\\parallel BC$, $AD=BC$)",
+      "appliedToManifest": false,
+      "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+    },
+    {
+      "questionUid": "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6",
+      "sourceOrdinal": 24,
+      "field": "score",
+      "old": 4,
+      "current": 5,
+      "originalManifestValue": 4,
+      "currentSourceValue": 5,
+      "appliedToManifest": false,
+      "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+    },
+    {
+      "questionUid": "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e",
+      "sourceOrdinal": 25,
+      "field": "answer",
+      "old": "(1) 한 쌍의 대변이 평행하다  (2) 다른 한 쌍의 대변이 평행하다  (3) 한 내각이 직각이다(또는 두 대각선의 길이가 같다)  (4) 이웃하는 두 변의 길이가 같다(또는 두 대각선이 수직이다)  (5) 이웃하는 두 변의 길이가 같다(또는 두 대각선이 수직이다)",
+      "current": "① 다른 한 쌍의 대변도 평행하다. ② 이웃하는 두 변의 길이가 같다. ③ 한 내각의 크기가 직각이다. ④ 한 내각의 크기가 직각이다. ⑤ 이웃하는 두 변의 길이가 같다.",
+      "originalManifestValue": "(1) 한 쌍의 대변이 평행하다  (2) 다른 한 쌍의 대변이 평행하다  (3) 한 내각이 직각이다(또는 두 대각선의 길이가 같다)  (4) 이웃하는 두 변의 길이가 같다(또는 두 대각선이 수직이다)  (5) 이웃하는 두 변의 길이가 같다(또는 두 대각선이 수직이다)",
+      "currentSourceValue": "① 다른 한 쌍의 대변도 평행하다. ② 이웃하는 두 변의 길이가 같다. ③ 한 내각의 크기가 직각이다. ④ 한 내각의 크기가 직각이다. ⑤ 이웃하는 두 변의 길이가 같다.",
+      "appliedToManifest": false,
+      "reason": "The original manifest answer belongs to the audited item variant; the current production source answer is authoritative and the original manifest is preserved unchanged."
+    },
+    {
+      "questionUid": "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e",
+      "sourceOrdinal": 25,
+      "field": "score",
+      "old": 4,
+      "current": 5,
+      "originalManifestValue": 4,
+      "currentSourceValue": 5,
+      "appliedToManifest": false,
+      "reason": "The original manifest score differs from the current production source; the original manifest is preserved."
+    }
+  ],
+  "provenanceDiscrepancies": [],
+  "reviewGaps": [],
+  "rootExcerptCorrectionsApplied": [],
+  "evidenceCorrection": {
+    "reason": "Correct aggregate summary to match the already recorded per-question visual observations.",
+    "supersedes": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+      "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+    }
+  }
+}

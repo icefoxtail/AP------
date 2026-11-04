@@ -1,0 +1,1598 @@
+{
+  "schemaVersion": "nov04-source-master-mapping-v1",
+  "requestId": "meta-pipeline-nov04-6-94d3b8929ef9-20261104",
+  "examUid": "21_팔마중_1학기_기말_중2_수학",
+  "examKey": "nov04-6",
+  "sourceArchiveFile": "original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+  "masterPath": "archive/data/master_tables/js_archive_tag_master.json",
+  "masterSha256": "71e32dc81537aaba8012a4a9e9a9a983148710ad22c90d79fcf8aacbc663aacf",
+  "canonicalMasterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+  "canonicalMasterSha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+  "mappings": [
+    {
+      "questionUid": "qid_v1_961de2d5c97209aa1d7997837941b0c3331f085755cffd2b6d430c48567792b4",
+      "sourceOrdinal": 1,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "subUnitKey": "M2-04-SOLVE_SYSTEM",
+        "subUnit": "가감법을 이용한 연립방정식의 풀이",
+        "level": "하",
+        "difficultyBucket": 1,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-03",
+        "keyType": "standardUnitKey",
+        "labelKo": "연립일차방정식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "keyType": "subUnitKey",
+        "labelKo": "연립일차방정식",
+        "status": "active",
+        "parentKey": "M2-03",
+        "standardUnitKey": "M2-03"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "연립일차방정식",
+        "auditUnitKeyOriginal": "M2-03",
+        "auditSubUnitKeyOriginal": "M2-03-01",
+        "sourceUnitKeyOriginal": "M2-04",
+        "sourceSubUnitKeyOriginal": "M2-04-SOLVE_SYSTEM",
+        "correctionReason": "Audit top-level M2-03 matches verified canonical. Numeric audit subUnit M2-03-01 is replaced by canonical M2-03-SIMULTANEOUS_LINEAR_EQUATION. Source M2-04 system namespace is rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-SOLVE_SYSTEM",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_4e6650e61093966b73c6ba71208266bc048b9a8584012d00b0a6d19bf1c2b597",
+      "sourceOrdinal": 2,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "subUnitKey": "M2-04-SPECIAL_CASES",
+        "subUnit": "해가 없는 연립방정식",
+        "level": "하",
+        "difficultyBucket": 1,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-03",
+        "keyType": "standardUnitKey",
+        "labelKo": "연립일차방정식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "keyType": "subUnitKey",
+        "labelKo": "연립일차방정식",
+        "status": "active",
+        "parentKey": "M2-03",
+        "standardUnitKey": "M2-03"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "연립일차방정식",
+        "auditUnitKeyOriginal": "M2-03",
+        "auditSubUnitKeyOriginal": "M2-03-01",
+        "sourceUnitKeyOriginal": "M2-04",
+        "sourceSubUnitKeyOriginal": "M2-04-SPECIAL_CASES",
+        "correctionReason": "Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-SPECIAL_CASES",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_d9fcce4a31dbe085588a3d57255dd85bd7edae0e4df99e2328b03232e7178636",
+      "sourceOrdinal": 3,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "subUnitKey": "M2-04-SOLVE_SYSTEM",
+        "subUnit": "소수 계수 연립방정식",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-03",
+        "keyType": "standardUnitKey",
+        "labelKo": "연립일차방정식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "keyType": "subUnitKey",
+        "labelKo": "연립일차방정식",
+        "status": "active",
+        "parentKey": "M2-03",
+        "standardUnitKey": "M2-03"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "연립일차방정식",
+        "auditUnitKeyOriginal": "M2-03",
+        "auditSubUnitKeyOriginal": "M2-03-01",
+        "sourceUnitKeyOriginal": "M2-04",
+        "sourceSubUnitKeyOriginal": "M2-04-SOLVE_SYSTEM",
+        "correctionReason": "Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-SOLVE_SYSTEM",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_5bb04d89fb97361cacd81aa924e07484759dc9e3c3d452eed0e53e0821a5ae62",
+      "sourceOrdinal": 4,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "subUnitKey": "M2-04-SOLVE_SYSTEM",
+        "subUnit": "해가 같은 두 연립방정식",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-03",
+        "keyType": "standardUnitKey",
+        "labelKo": "연립일차방정식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "keyType": "subUnitKey",
+        "labelKo": "연립일차방정식",
+        "status": "active",
+        "parentKey": "M2-03",
+        "standardUnitKey": "M2-03"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "연립일차방정식",
+        "auditUnitKeyOriginal": "M2-03",
+        "auditSubUnitKeyOriginal": "M2-03-01",
+        "sourceUnitKeyOriginal": "M2-04",
+        "sourceSubUnitKeyOriginal": "M2-04-SOLVE_SYSTEM",
+        "correctionReason": "Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-SOLVE_SYSTEM",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_e1299c17ed605b66b38360db9fca661d02fd3d41b84bdde85628052442846530",
+      "sourceOrdinal": 5,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "subUnitKey": "M2-04-SYSTEM_APPLICATION",
+        "subUnit": "가위바위보 계단 연립방정식의 활용",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-03",
+        "keyType": "standardUnitKey",
+        "labelKo": "연립일차방정식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "keyType": "subUnitKey",
+        "labelKo": "연립일차방정식의 활용",
+        "status": "active",
+        "parentKey": "M2-03",
+        "standardUnitKey": "M2-03"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식의 활용"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "연립일차방정식의 활용",
+        "auditUnitKeyOriginal": "M2-03",
+        "auditSubUnitKeyOriginal": "M2-03-02",
+        "sourceUnitKeyOriginal": "M2-04",
+        "sourceSubUnitKeyOriginal": "M2-04-SYSTEM_APPLICATION",
+        "correctionReason": "Audit top-level M2-03 matches verified canonical. Numeric subUnit M2-03-02 is replaced by canonical M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-SYSTEM_APPLICATION",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_f3595d71c3560f2a7b7078c21faf762b93703f3a8bc0e5804b6621974d8e4574",
+      "sourceOrdinal": 6,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "subUnitKey": "M2-04-SYSTEM_APPLICATION",
+        "subUnit": "자릿수 연립방정식의 활용",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-03",
+        "keyType": "standardUnitKey",
+        "labelKo": "연립일차방정식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "keyType": "subUnitKey",
+        "labelKo": "연립일차방정식의 활용",
+        "status": "active",
+        "parentKey": "M2-03",
+        "standardUnitKey": "M2-03"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식의 활용"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "연립일차방정식의 활용",
+        "auditUnitKeyOriginal": "M2-03",
+        "auditSubUnitKeyOriginal": "M2-03-02",
+        "sourceUnitKeyOriginal": "M2-04",
+        "sourceSubUnitKeyOriginal": "M2-04-SYSTEM_APPLICATION",
+        "correctionReason": "Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-SYSTEM_APPLICATION",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_eca7fb65b58d3d60fe80a73788473ccd36907e2d58a0a49db3b39517084e23a7",
+      "sourceOrdinal": 7,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-05-FUNCTION_CONCEPT",
+        "subUnit": "함수의 개념과 함숫값",
+        "level": "하",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차함수와 그래프",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-04-LINEAR_FUNCTION_BASIC",
+        "keyType": "subUnitKey",
+        "labelKo": "일차함수의 뜻과 그래프",
+        "status": "active",
+        "parentKey": "M2-04",
+        "standardUnitKey": "M2-04"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차함수",
+        "L2": "일차함수와 그 그래프",
+        "auditUnitKeyOriginal": "M2-04",
+        "auditSubUnitKeyOriginal": "M2-04-01",
+        "sourceUnitKeyOriginal": "M2-05",
+        "sourceSubUnitKeyOriginal": "M2-05-FUNCTION_CONCEPT",
+        "correctionReason": "Audit top-level M2-04 matches verified canonical 일차함수와 그래프. Numeric subUnit M2-04-01 is replaced by M2-04-LINEAR_FUNCTION_BASIC. Source M2-05 is rejected because canonical M2-05 is a geometry domain."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-FUNCTION_CONCEPT",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_f74b7bab9fed48f1366e40789907f81d07632fbd8d776ed4315b3b178cbc8a59",
+      "sourceOrdinal": 8,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-05-FUNCTION_CONCEPT",
+        "subUnit": "함수와 일차함수의 판별",
+        "level": "중",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차함수와 그래프",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-04-LINEAR_FUNCTION_BASIC",
+        "keyType": "subUnitKey",
+        "labelKo": "일차함수의 뜻과 그래프",
+        "status": "active",
+        "parentKey": "M2-04",
+        "standardUnitKey": "M2-04"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차함수",
+        "L2": "일차함수와 그 그래프",
+        "auditUnitKeyOriginal": "M2-04",
+        "auditSubUnitKeyOriginal": "M2-04-01",
+        "sourceUnitKeyOriginal": "M2-05",
+        "sourceSubUnitKeyOriginal": "M2-05-FUNCTION_CONCEPT",
+        "correctionReason": "Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected (canonical geometry collision)."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-FUNCTION_CONCEPT",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_4fcd1faec46797a9ed91544d1f4426b4932de5a0a06e586b1c8bcd101ab6154d",
+      "sourceOrdinal": 9,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "subUnit": "일차함수의 평행이동",
+        "level": "하",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차함수와 그래프",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-04-LINEAR_FUNCTION_BASIC",
+        "keyType": "subUnitKey",
+        "labelKo": "일차함수의 뜻과 그래프",
+        "status": "active",
+        "parentKey": "M2-04",
+        "standardUnitKey": "M2-04"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차함수",
+        "L2": "일차함수와 그 그래프",
+        "auditUnitKeyOriginal": "M2-04",
+        "auditSubUnitKeyOriginal": "M2-04-02",
+        "sourceUnitKeyOriginal": "M2-05",
+        "sourceSubUnitKeyOriginal": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "correctionReason": "Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_d090bf57651fa33dbe27bf9bcc612d0485fda5df97cd90b2e8fa19ce02cc7b39",
+      "sourceOrdinal": 10,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "subUnit": "일차함수의 그래프의 성질과 절편",
+        "level": "중",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차함수와 그래프",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-04-LINEAR_FUNCTION_BASIC",
+        "keyType": "subUnitKey",
+        "labelKo": "일차함수의 뜻과 그래프",
+        "status": "active",
+        "parentKey": "M2-04",
+        "standardUnitKey": "M2-04"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차함수",
+        "L2": "일차함수와 그 그래프",
+        "auditUnitKeyOriginal": "M2-04",
+        "auditSubUnitKeyOriginal": "M2-04-02",
+        "sourceUnitKeyOriginal": "M2-05",
+        "sourceSubUnitKeyOriginal": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "correctionReason": "Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_cdda356a88dbc1d56c71dc67c52bedcb9644f6b0069200dbe8d3feea37664c7f",
+      "sourceOrdinal": 11,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "subUnit": "일차함수와 도형의 회전체 부피",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차함수와 그래프",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-04-LINEAR_FUNCTION_BASIC",
+        "keyType": "subUnitKey",
+        "labelKo": "일차함수의 뜻과 그래프",
+        "status": "active",
+        "parentKey": "M2-04",
+        "standardUnitKey": "M2-04"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차함수",
+        "L2": "일차함수와 그 그래프",
+        "auditUnitKeyOriginal": "M2-04",
+        "auditSubUnitKeyOriginal": "M2-04-02",
+        "sourceUnitKeyOriginal": "M2-05",
+        "sourceSubUnitKeyOriginal": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "correctionReason": "Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_b5015ea7ce79dd88a8564e89195ea6cca7ce68897bf1923307dd578cc058de3d",
+      "sourceOrdinal": 12,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "subUnit": "두 일차함수의 그래프로 둘러싸인 넓이",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차함수와 그래프",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-04-LINEAR_FUNCTION_BASIC",
+        "keyType": "subUnitKey",
+        "labelKo": "일차함수의 뜻과 그래프",
+        "status": "active",
+        "parentKey": "M2-04",
+        "standardUnitKey": "M2-04"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차함수",
+        "L2": "일차함수와 그 그래프",
+        "auditUnitKeyOriginal": "M2-04",
+        "auditSubUnitKeyOriginal": "M2-04-02",
+        "sourceUnitKeyOriginal": "M2-05",
+        "sourceSubUnitKeyOriginal": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "correctionReason": "Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_e695dd895128b8552110491a008369a71e738420c52511c53594a2ed171c5876",
+      "sourceOrdinal": 13,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "subUnit": "사분면을 지나지 않을 조건",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차함수와 그래프",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-04-LINEAR_FUNCTION_BASIC",
+        "keyType": "subUnitKey",
+        "labelKo": "일차함수의 뜻과 그래프",
+        "status": "active",
+        "parentKey": "M2-04",
+        "standardUnitKey": "M2-04"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차함수",
+        "L2": "일차함수와 그 그래프",
+        "auditUnitKeyOriginal": "M2-04",
+        "auditSubUnitKeyOriginal": "M2-04-02",
+        "sourceUnitKeyOriginal": "M2-05",
+        "sourceSubUnitKeyOriginal": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "correctionReason": "Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_9e07b7ff3d15b31beec74f3989cb65194ce32196b4ec21c64ae498b915746ccf",
+      "sourceOrdinal": 14,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "subUnit": "평행한 일차함수의 기울기",
+        "level": "하",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차함수와 그래프",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-04-LINEAR_FUNCTION_BASIC",
+        "keyType": "subUnitKey",
+        "labelKo": "일차함수의 뜻과 그래프",
+        "status": "active",
+        "parentKey": "M2-04",
+        "standardUnitKey": "M2-04"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차함수",
+        "L2": "일차함수와 그 그래프",
+        "auditUnitKeyOriginal": "M2-04",
+        "auditSubUnitKeyOriginal": "M2-04-02",
+        "sourceUnitKeyOriginal": "M2-05",
+        "sourceSubUnitKeyOriginal": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "correctionReason": "Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-LINEAR_FUNCTION_GRAPH",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+      "sourceOrdinal": 15,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "일차함수와 일차방정식",
+        "subUnitKey": "M2-06-EQUATION_AND_FUNCTION",
+        "subUnit": "일차방정식과 일차함수의 그래프",
+        "level": "중",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차함수와 그래프",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "keyType": "subUnitKey",
+        "labelKo": "일차함수와 일차방정식의 관계",
+        "status": "active",
+        "parentKey": "M2-04",
+        "standardUnitKey": "M2-04"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차함수",
+        "L2": "일차함수와 일차방정식의 관계",
+        "auditUnitKeyOriginal": "M2-04",
+        "auditSubUnitKeyOriginal": "M2-04-03",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-EQUATION_AND_FUNCTION",
+        "correctionReason": "Audit top-level M2-04 matches verified canonical 일차함수와 그래프, whose second subunit is M2-04-LINEAR_FUNCTION_EQUATION. Numeric M2-04-03 is replaced. Source M2-06 is rejected because canonical M2-06 is 도형의 닮음."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-EQUATION_AND_FUNCTION",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_b17d1c4cee2045cf08ccb8ac8da9ef453405196a3d663f82f3a05f3079d94b7b",
+      "sourceOrdinal": 16,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "일차함수와 일차방정식",
+        "subUnitKey": "M2-06-EQUATION_AND_FUNCTION",
+        "subUnit": "일차방정식의 그래프의 성질",
+        "level": "하",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차함수와 그래프",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "keyType": "subUnitKey",
+        "labelKo": "일차함수와 일차방정식의 관계",
+        "status": "active",
+        "parentKey": "M2-04",
+        "standardUnitKey": "M2-04"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차함수",
+        "L2": "일차함수와 일차방정식의 관계",
+        "auditUnitKeyOriginal": "M2-04",
+        "auditSubUnitKeyOriginal": "M2-04-03",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-EQUATION_AND_FUNCTION",
+        "correctionReason": "Numeric audit subUnit replaced by M2-04-LINEAR_FUNCTION_EQUATION; source M2-06 rejected (canonical geometry collision)."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-EQUATION_AND_FUNCTION",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_1136a42150f0c4bbe9a465dda5976fb9f4668a98787921e00cbe59620bd996d4",
+      "sourceOrdinal": 17,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "일차함수와 일차방정식",
+        "subUnitKey": "M2-06-EQUATION_AND_FUNCTION",
+        "subUnit": "직선의 방정식 위의 점과 미지수",
+        "level": "하",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차함수와 그래프",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "keyType": "subUnitKey",
+        "labelKo": "일차함수와 일차방정식의 관계",
+        "status": "active",
+        "parentKey": "M2-04",
+        "standardUnitKey": "M2-04"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차함수",
+        "L2": "일차함수와 일차방정식의 관계",
+        "auditUnitKeyOriginal": "M2-04",
+        "auditSubUnitKeyOriginal": "M2-04-03",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-EQUATION_AND_FUNCTION",
+        "correctionReason": "Numeric audit subUnit replaced by M2-04-LINEAR_FUNCTION_EQUATION; source M2-06 rejected."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-EQUATION_AND_FUNCTION",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_00db77520dc86bfcc9a9598ec147053dcb759d6310941e3934889e411eb4211b",
+      "sourceOrdinal": 18,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "일차함수와 일차방정식",
+        "subUnitKey": "M2-06-EQUATION_AND_FUNCTION",
+        "subUnit": "좌표축에 평행한 직선의 방정식",
+        "level": "하",
+        "difficultyBucket": 1,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차함수와 그래프",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "keyType": "subUnitKey",
+        "labelKo": "일차함수와 일차방정식의 관계",
+        "status": "active",
+        "parentKey": "M2-04",
+        "standardUnitKey": "M2-04"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차함수",
+        "L2": "일차함수와 일차방정식의 관계",
+        "auditUnitKeyOriginal": "M2-04",
+        "auditSubUnitKeyOriginal": "M2-04-03",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-EQUATION_AND_FUNCTION",
+        "correctionReason": "Numeric audit subUnit replaced by M2-04-LINEAR_FUNCTION_EQUATION; source M2-06 rejected."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-EQUATION_AND_FUNCTION",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_56b755eede5cba871ec09993d68d5b94ed1f309054536ed4d571abfb92daae99",
+      "sourceOrdinal": 19,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "일차함수와 일차방정식",
+        "subUnitKey": "M2-06-SYSTEM_AND_GRAPH",
+        "subUnit": "두 직선의 교점과 연립방정식의 해",
+        "level": "하",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차함수와 그래프",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "keyType": "subUnitKey",
+        "labelKo": "일차함수와 일차방정식의 관계",
+        "status": "active",
+        "parentKey": "M2-04",
+        "standardUnitKey": "M2-04"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차함수",
+        "L2": "일차함수와 일차방정식의 관계",
+        "auditUnitKeyOriginal": "M2-04",
+        "auditSubUnitKeyOriginal": "M2-04-03",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-SYSTEM_AND_GRAPH",
+        "correctionReason": "Graph-intersection/equation relation belongs to canonical M2-04-LINEAR_FUNCTION_EQUATION. Numeric audit subUnit replaced; source M2-06 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. ROOT adds CC_INTERSECTION_OF_TWO_GRAPHS because existing CC_GRAPH_INTERSECTION has a narrower canonical meaning; no canonical definition is changed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SYSTEM_AND_GRAPH",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_ecf2b058943b3213a7ba079d340ab21bedfdd8d1484f05365cd5ccad7833ed1c",
+      "sourceOrdinal": 20,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "일차함수와 일차방정식",
+        "subUnitKey": "M2-06-SYSTEM_AND_GRAPH",
+        "subUnit": "두 직선의 교점의 사분면 조건",
+        "level": "상",
+        "difficultyBucket": 4,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차함수와 그래프",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "keyType": "subUnitKey",
+        "labelKo": "일차함수와 일차방정식의 관계",
+        "status": "active",
+        "parentKey": "M2-04",
+        "standardUnitKey": "M2-04"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차함수",
+        "L2": "일차함수와 일차방정식의 관계",
+        "auditUnitKeyOriginal": "M2-04",
+        "auditSubUnitKeyOriginal": "M2-04-03",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-SYSTEM_AND_GRAPH",
+        "correctionReason": "Intersection-quadrant condition belongs to M2-04-LINEAR_FUNCTION_EQUATION. Numeric audit subUnit replaced; source M2-06 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. ROOT adds CC_INTERSECTION_OF_TWO_GRAPHS because existing CC_GRAPH_INTERSECTION has a narrower canonical meaning; no canonical definition is changed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SYSTEM_AND_GRAPH",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_ea068752786b026fc4090aa5b4c4f116c1bd5d548bf6f6bf76cfaa411b354ffd",
+      "sourceOrdinal": 21,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "subUnitKey": "M2-04-SOLVE_SYSTEM",
+        "subUnit": "계수를 바꾸어 푼 연립방정식",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-03",
+        "keyType": "standardUnitKey",
+        "labelKo": "연립일차방정식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "keyType": "subUnitKey",
+        "labelKo": "연립일차방정식",
+        "status": "active",
+        "parentKey": "M2-03",
+        "standardUnitKey": "M2-03"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "연립일차방정식",
+        "auditUnitKeyOriginal": "M2-03",
+        "auditSubUnitKeyOriginal": "M2-03-01",
+        "sourceUnitKeyOriginal": "M2-04",
+        "sourceSubUnitKeyOriginal": "M2-04-SOLVE_SYSTEM",
+        "correctionReason": "Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed. ROOT adds CC_SUBSTITUTION_IN_EQUATIONS because existing CC_ALGEBRAIC_SUBSTITUTION has a narrower canonical meaning; no canonical definition is changed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-SOLVE_SYSTEM",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_c523894c210ec83120cb0828335d8fcd6522fdaf4b10db428bdf11c8a3156abf",
+      "sourceOrdinal": 22,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "subUnitKey": "M2-04-SYSTEM_APPLICATION",
+        "subUnit": "연립일차방정식의 활용 (가격 계산)",
+        "level": "중",
+        "difficultyBucket": 2,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-03",
+        "keyType": "standardUnitKey",
+        "labelKo": "연립일차방정식",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "keyType": "subUnitKey",
+        "labelKo": "연립일차방정식의 활용",
+        "status": "active",
+        "parentKey": "M2-03",
+        "standardUnitKey": "M2-03"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식의 활용"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "연립일차방정식의 활용",
+        "auditUnitKeyOriginal": "M2-03",
+        "auditSubUnitKeyOriginal": "M2-03-02",
+        "sourceUnitKeyOriginal": "M2-04",
+        "sourceSubUnitKeyOriginal": "M2-04-SYSTEM_APPLICATION",
+        "correctionReason": "Audit top-level M2-03 matches verified canonical. Numeric subUnit replaced by M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD; source M2-04 rejected. ROOT adds CC_SIMULTANEOUS_LINEAR_EQUATIONS because existing CC_SYSTEM_OF_LINEAR_EQUATIONS has a narrower canonical meaning; no canonical definition is changed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-SYSTEM_APPLICATION",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_fe62e7955ce2dadfea717c48f2c728ddd6f27435d5817aa607b5e2f7a3b01431",
+      "sourceOrdinal": 23,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-05-LINEAR_FUNCTION_APPLICATION",
+        "subUnit": "일차함수의 활용 (기온과 고도)",
+        "level": "중",
+        "difficultyBucket": 3,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차함수와 그래프",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-04-LINEAR_FUNCTION_BASIC",
+        "keyType": "subUnitKey",
+        "labelKo": "일차함수의 뜻과 그래프",
+        "status": "active",
+        "parentKey": "M2-04",
+        "standardUnitKey": "M2-04"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차함수",
+        "L2": "일차함수와 그 그래프",
+        "auditUnitKeyOriginal": "M2-04",
+        "auditSubUnitKeyOriginal": "M2-04-04",
+        "sourceUnitKeyOriginal": "M2-05",
+        "sourceSubUnitKeyOriginal": "M2-05-LINEAR_FUNCTION_APPLICATION",
+        "correctionReason": "Audit top-level M2-04 matches verified canonical. Numeric subUnit replaced by M2-04-LINEAR_FUNCTION_BASIC; source M2-05 rejected. ROOT corrected the transcribed original audit subunit from the exact raw audit; canonical target unchanged."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-LINEAR_FUNCTION_APPLICATION",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+      "sourceOrdinal": 24,
+      "sourceBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "일차함수와 일차방정식",
+        "subUnitKey": "M2-06-SYSTEM_AND_GRAPH",
+        "subUnit": "일차함수의 그래프의 교점과 활용",
+        "level": "상",
+        "difficultyBucket": 4,
+        "conditionKeys": null
+      },
+      "canonicalUnit": {
+        "key": "M2-04",
+        "keyType": "standardUnitKey",
+        "labelKo": "일차함수와 그래프",
+        "status": "active",
+        "parentKey": null
+      },
+      "canonicalSubUnit": {
+        "key": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "keyType": "subUnitKey",
+        "labelKo": "일차함수와 일차방정식의 관계",
+        "status": "active",
+        "parentKey": "M2-04",
+        "standardUnitKey": "M2-04"
+      },
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계"
+      },
+      "reviewedDefinitions": {
+        "module": "nov04-m2-definitions-root.mjs",
+        "parentRpmScope": "M2-1",
+        "L1": "일차함수",
+        "L2": "일차함수와 일차방정식의 관계",
+        "auditUnitKeyOriginal": "M2-04",
+        "auditSubUnitKeyOriginal": "M2-04-04",
+        "sourceUnitKeyOriginal": "M2-06",
+        "sourceSubUnitKeyOriginal": "M2-06-SYSTEM_AND_GRAPH",
+        "correctionReason": "Two motion graphs meeting is an intersection of linear-function graphs, i.e. M2-04-LINEAR_FUNCTION_EQUATION. Numeric audit subUnit replaced; source M2-06 rejected. ROOT corrected the transcribed original audit subunit from the exact raw audit; canonical target unchanged. ROOT adds CC_INTERSECTION_OF_TWO_GRAPHS because existing CC_GRAPH_INTERSECTION has a narrower canonical meaning; no canonical definition is changed."
+      },
+      "metadataBefore": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SYSTEM_AND_GRAPH",
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null,
+        "conditionKeys": [],
+        "integrationPattern": ""
+      }
+    }
+  ],
+  "note": "Exact current source → exact ACTIVE tag-master/RPM mapping, with the metadata before state preserved verbatim for each UID."
+}

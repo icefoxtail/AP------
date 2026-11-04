@@ -78,7 +78,9 @@ PT/TPL에는 확장 키를 받지 않는다. 확장 키는 정본 registry·comp
 
 `META_PIPELINE_AUDIT`는 Gemini의 심화 메타 감사 인계를 등록하는 별도 유형이다. 이 유형은 FINAL_QA 또는 REVIEW2로 변환하지 않으며, 시험지의 최종 수학·해설 QA 상태를 승인하지 않는다. 요청은 다음을 제공한다.
 
-- `approval.metaPipelineAudit.schemaVersion` is `"meta-pipeline-audit-approval-v1"` for the rich `ALIVE_META_AUDIT_ATOMIC_v3` input, `"meta-pipeline-audit-approval-v2"` for paired key-only audit/classification inputs, or `"meta-pipeline-audit-approval-v3"` for the paired `sourceDriveId` flat v3 audit and `ALIVE_CANDIDATE_CLASSIFICATION_v3` input.
+SOP v1.2의 기존 원본에 예전 단원 네임스페이스가 남아 있으면, 문항 메타가 `registration_pending_semantic_review`이고 원본과 현재 메타의 해당 값 및 `sourceMetadataBefore`가 정확히 일치하는 경우에만 SHA 결속 교정 검토의 정본 단원으로 재지정한다. 교정 사유, 정본 단원·세부단원 표시명, 원본과 대상 과목의 동일 owner pack 범위를 검증하며 FINAL_QA/REVIEW2 값을 덮지 않는다. 이유: 원본 텍스트를 바꾸지 않고 감사된 단원 네임스페이스를 바로잡기 위해서다. 발문·보기·해설 HTML에 직접 포함된 이미지와 SVG도 그림 유형 판정에 포함한다.
+
+- `approval.metaPipelineAudit.schemaVersion` is `"meta-pipeline-audit-approval-v1"` for the rich `ALIVE_META_AUDIT_ATOMIC_v3` input, `"meta-pipeline-audit-approval-v2"` for paired key-only audit/classification inputs, or `"meta-pipeline-audit-approval-v3"` for the paired `sourceDriveId` flat v3 audit and `ALIVE_CANDIDATE_CLASSIFICATION_v3` input. `"meta-pipeline-audit-approval-v4"` is the SOP_v1.2 `META_AUDIT_ATOMIC_PACKAGE` audit with its SHA-bound corrective review.
 - `approval.metaPipelineAudit.sourceFileDriveId`
 - `approval.metaPipelineAudit.auditPackageRef`, `manifestRef`, `sourceParityRef`: 정확한 Drive 산출물 JSON 바이트와 source-parity report를 저장소 evidence 경로에 보존한 `{path, sha256}` 참조. 세 참조 모두 `approval.evidenceRefs`에도 포함한다.
 - 감사 패키지는 `ALIVE_META_AUDIT_ATOMIC_v3`, `ALL_APPROVED_CANONICAL_STANDARDIZED`, `READY_FOR_COURIER_REGISTRATION`, N/N 승인, zero hold, zero template inflation을 만족해야 한다. `sourceSha256`는 매니페스트의 Drive source SHA와 일치해야 한다.
@@ -87,6 +89,14 @@ PT/TPL에는 확장 키를 받지 않는다. 확장 키는 정본 registry·comp
 - `ALIVE_META_AUDIT_ATOMIC_v3`의 key-only flat 변형은 `boundAtomicCrossConcepts`가 키 문자열 배열이고 record에 nested `classification`이 없을 때 `CANDIDATE_CLASSIFICATION_PACKAGE_v2`와 함께 `meta-pipeline-audit-approval-v2`로 등록한다. 이 변형의 per-qid `readingEvidence`는 보존하고, 모든 ordinal의 classification·manifest·source binding을 확인한다. richer v3 audit는 handoff metadata와 definition objects를 포함하는 기존 approval v1 경로를 사용한다.
 - 새 `sourceDriveId` flat v3 변형은 root의 `totalQuestions/totalApproved/totalHold/auditStatus`, row의 `auditVerdict/difficulty/readingEvidence`, 그리고 짝을 이룬 `ALIVE_CANDIDATE_CLASSIFICATION_v3`의 분류값을 대조한다. 시험지명·Drive source ID/SHA·N/N·ordinal·모든 PT/TPL/CC/단원·난이도 근거·발문 및 풀이 발췌가 audit, classification, manifest와 현재 production source에서 일치해야 한다. 이 스키마에 없는 visual-check 필드는 등록기가 보충하거나 확인했다고 주장하지 않는다. 해당 source schema의 모든 행이 `APPROVED_CANONICAL`이고 hold가 0일 때만 내부 통계 어댑터가 기존 denominator gate에 필요한 수치를 정규화하며, Git 정본 승격 수와 Gemini의 template inflation 수를 혼동하지 않는다.
 - classification이 중복 `readingEvidence`를 생략한 실제 flat v3 입력은 최종 audit의 UID별 발문·풀이 발췌를 production source에 직접 대조한다. classification이 발췌를 제공하면 두 텍스트 발췌는 최종 audit와 같아야 하며, 버킷·confidence·reason과 분류 바인딩은 항상 일치해야 한다. 생략된 classification 증거를 복사해 원래 작성자의 독립 검수로 기록하지 않는다. 보충감사가 제공한 visual-check 상태는 row별 checked/notChecked/notProvided 분모로 영수증에 보존한다.
+- SOP_v1.2 `META_AUDIT_ATOMIC_PACKAGE` 네이티브 입력은 `manifestType`, `sopVersion: "SOP_v1.2"`, `auditRecords`, `auditPassedCount`, `holdCount`, `auditStatus: "AUDIT_COMPLETE_100_PERCENT_PASS"`와 `COURIER_INTAKE_MANIFEST`의 `recordsToBind`만 가진다. 이 입력에는 `readingEvidence`가 없으므로 `meta-pipeline-audit-approval-v4`는 SHA 결속된 `correctiveReviewRef`를 필수로 받는다. 이 참조가 없거나 `approval.evidenceRefs`/각 item 근거에 없으면 등록하지 않는다.
+- SOP_v1.2 corrective review(`archive-meta-pipeline-sop-v12-corrective-review-v1`)는 다음을 실제 값으로 제공해야 한다: `sopVersion: "SOP_v1.2"`, `examTitle`, `examSlug`, `sourceArchiveFile`, `sourceFileDriveId`, `originalDeclaredSourceSha256`, `excerptBasis: "CURRENT_PRODUCTION_SOURCE"`, `productionSourceSha256`, `sourceHashDrift`, `questionCount`, `reviewer: { id, role: "ROOT" | "AUTHORIZED_REVIEWER" }`, `reviewedAt`, `rows[]`. 각 row는 `questionUid`, `sourceOrdinal`, `auditQuestionNumber`, `problemTypeKey`, `templateKey`, `crossConceptKeys`, `standardUnitKey`, `subUnitKey`, `sourceTextExcerpt`, `solutionDecisiveExcerpt`, `visualEvidence: { assetChecked, visualType }`를 가진다.
+- review의 발췌는 현재 production source의 `content`/`solution`에 실제로 포함되어야 한다. `difficultyReasonTrace`나 감사 설명 문장을 발췌로 재사용할 수 없고, 발췌를 대신 만들어 넣지 않는다. `visualType`은 현재 source asset에서 계산한 실제 상태(`IMAGE`, `SVG`, `SVG_IMAGE`, `NONE`)와 같아야 하며, `assetChecked`는 검토자가 기록한 checked/notChecked만 영수증에 남기고 등록기가 시각 검수를 대신했다고 기록하지 않는다.
+- `originalDeclaredSourceSha256`은 audit/manifest의 `sourceFileSha256`에 결속되는 감사 시점 선언값이고, `driveSourceSha256`은 실제 현재 Drive 바이트, `productionSourceSha256`은 실제 현재 production 바이트의 SHA-256이다. `driveSourceSha256`과 `productionSourceSha256`은 서로 같아야 하며 `parityBasis: "EXACT_SOURCE_SHA256"`/`status: "EXACT_STUDENT_VISIBLE_PARITY"`로 증명한다. `sourceHashDrift`는 `originalDeclaredSourceSha256 !== driveSourceSha256`의 실제 비교 결과와 같아야 한다. 원본 선언 SHA는 절대 덮어쓰지 않으며 영수증은 세 SHA를 모두 보존한다. 선언 SHA와 현재 SHA가 달라도 corrective review가 현재 발췌를 제공하고 per-UID student-payload parity가 있으면 등록할 수 있다.
+- `sourceFileSha256`와 무관하게 `difficultyRank`는 1~5 `difficultyBucket`이 아니다. SOP_v1.2 경로는 bucket을 계산·추론하지 않고, 기존 유효 bucket은 보존하며 값이 없는 UID는 `unreviewedFields`의 `EVIDENCE_DEBT`로 남긴다. `auditRecords`는 Condition 증거를 포함하지 않으므로 기존 `conditionKeys`를 그대로 보존하며, v4는 Condition을 승인하거나 변경하지 않는다(변경 시 fail-closed).
+- 원본 감사 단원/세부단원 표기가 정본과 다른 경우(예: 통계를 뜻하는 `M3-05` vs 정본 `M3-07`, 존재하지 않는 `M3-03-01`) corrective review의 `originalAssignment`는 audit/manifest 값과 정확히 같아야 하고, `correctedAssignment`는 요청 item과 정본 registry에서 검증한다. 두 값이 다르면 UID별 `assignmentCorrectionReason`이 필수이며, 설명 없는 변경은 거부한다. 등록기는 원본 표기에 대한 가짜 master/registry 키를 만들지 않는다.
+- SOP_v1.2 감사에는 `newTemplatesCreated`/`canonicalTemplatesReused` 통계가 없다. 등록기는 이를 0으로 합성하지 않고 `templateInflationStatus: "NOT_REPORTED_IN_SOURCE_SCHEMA"`로 영수증에 기록한다. 대신 감사가 명명한 PT/TPL/CC만 add-only로 승격하며, 승격 키 집합이 감사 키와 정확히 일치하지 않으면 거부한다.
+- `examTitle`은 사람이 읽는 제목이므로 source basename과 같을 필요가 없다. v4는 `examSlug === basename(sourceArchiveFile, ".js")`를 source identity로 요구하고 audit/manifest/review의 `examTitle`이 서로 같아야 한다. manifest는 `manifestType: "COURIER_INTAKE_MANIFEST"`, `sopVersion: "SOP_v1.2"`, `sourceDriveId`, `sourceFileSha256`, `standardCourse`, `targetPack`, `totalQuestionsToRegister`, `readyForRegistrationCount`, `pipelineStatus: "READY_FOR_COURIER_REGISTRATION"`와 N개 `recordsToBind`를 가져야 하며 각 row의 UID/ordinal·PT/TPL/CC/단원/level/difficulty rank와 `answer`/`questionType`/`choicesCount`/`score`가 audit와 현재 production source에 일치해야 한다.
 - `META_AUDIT_ATOMIC_PACKAGE_v2`에는 PT/TPL 정의나 CrossConcept label/definition이 들어 있지 않다. 이 형식의 키가 ACTIVE 정본에 없으면 등록 요청에 정확한 before-null additive 정의와 UID별 source evidence를 제공해야 한다. 정본에 없는 키를 이름만 보고 자동 생성하지 않는다. rich v3 입력의 audited definitions는 기존 v3 승격 검증을 그대로 사용한다.
 - 구형 `approved_partial_with_explicit_holds` 원장의 `crossConceptKeys` 필드가 누락/null이고 실제 source에 명시적 배열이 있을 때는 그 source 태그 전체를 순서 그대로 접두부에 보존한 채 SHA-bound 감사가 승인한 CC를 추가 투영할 수 있다. 기존 태그 제거·재정렬이나 fully-approved 원장의 누락 필드 재해석은 허용하지 않는다.
 - 감사 통계의 `atomicCrossConceptsBound`는 고유 정의 수 또는 문항별 태깅 총수로 기록될 수 있다. 등록기는 둘 다 실제 `records`에서 다시 계산하고, `boundAtomicCrossConcepts`가 사용된 고유 키 전체와 정확히 일치하는지 별도로 확인한다.
@@ -104,6 +114,21 @@ PT/TPL에는 확장 키를 받지 않는다. 확장 키는 정본 registry·comp
 - 이전 `META_PIPELINE_AUDIT` 등록에서 PT 의미가 아니라 exact ACTIVE binding의 부모 L2만 잘못 연결된 경우, `parentBindingCorrectionRef`가 가리키는 SHA-bound 증거와 현재 binding의 정확한 before/after, 그 binding의 전체 supporting UID, 정본 부모 근거를 함께 제시하면 L2만 정정할 수 있다. 정정은 부모 경로를 바로잡는 범위로 제한하고 PT/TPL/CrossConcept 정의·키·supporting UID 및 학생용 payload는 바꾸지 않으며, 영향을 받는 모든 UID를 같은 N/N 요청에 포함한다. 정본 compiler가 owner pack patch version을 갱신한다.
 - Archive2 학생 검색 Consumer가 L1/L2와 PT/TPL/CC를 직접 노출하지만 `level/L3/L4`는 해당 행에 노출하지 않는 경우, 이 필드들은 source UID·ordinal·metadataRevision에 일치하는 단 하나의 ACTIVE Meta Foundation runtime row에서 확인한다. consumer 행의 미노출 `null`을 runtime의 승인값으로 덮어 PASS 처리하지 않으며, runtime 누락·중복·값 불일치는 실패다.
 - 감사 records, 매니페스트 `recordsToBind`, 등록 요청 `items`는 source ordinal별 PT/TPL/CrossConcept/단원 값이 정확히 일치해야 한다. 결정적 풀이 발췌와 시각자료 확인 필드도 qid마다 필요하다.
+
+### SOP_v1.2 sourceFieldCorrections (2026-11-04)
+
+SOP_v1.2 approval v4의 매니페스트 바인딩은 answer/questionType/choicesCount/score가 현재 production source와 다를 때 원래처럼 무조건 거부한다. 실제 풍덕중 22문항 입력처럼 원본 감사/매니페스트 값이 오래되어 현재 source와 여러 row가 다른 정상 교정 감사는, 다음 조건을 모두 만족할 때만 그 네 필드의 불일치를 등록 입력으로 인정한다.
+
+- 독립 SHA-bound correctiveReviewRef의 row와 등록 요청 item이 같은 UID/ordinal에 대해 완전히 동일한 sourceFieldCorrections 항목을 각각 가진다. 한쪽에만 있거나 값이 다르면 거부한다.
+- 항목은 field, questionUid, sourceOrdinal(또는 auditQuestionNumber), originalManifestValue, currentSourceValue, 비어 있지 않은 reason, appliedToManifest:false를 가진다.
+- originalManifestValue는 현재 매니페스트의 실제 값과 정확히 같고, currentSourceValue는 현재 production source의 실제 값과 정확히 같으며, 두 값은 서로 달라야 한다.
+- field는 answer, questionType, choicesCount, score만 허용한다. content/choices/source UID/identity 또는 PT/TPL/CC/단원/level/difficulty/assignment를 바꾸는 교정은 허용하지 않는다.
+- 기존 source parity, student payload parity, corrected canonical assignment 검증은 그대로 유지한다. 이 예외는 매니페스트 비교에만 적용된다.
+- 등록기는 원본 audit/manifest/source를 덮어쓰거나 새 값으로 만들지 않는다. appliedToManifest:false는 영수증에 그대로 남기고, 각 교정에 corrective review의 reviewer id/role과 reviewedAt을 귀속해 사람 검수 책임을 식별한다.
+- 누락, 중복, 다른 UID, 원본/현재 값 불일치, reason 없음, appliedToManifest:true, 원본과 현재가 같은 모순 교정은 fail-closed로 거부한다.
+- 기존 교정 없는 입력의 매니페스트 동등성 검사는 정확히 이전과 같다.
+
+기본 실행은 dry-run이며 실제 적용은 --write를 명시해야 한다.
 
 이 유형의 등록 receipt는 `examFinalQaStatus: NOT_EVALUATED_BY_REGISTRAR`를 유지한다. 문항 메타 provenance에는 `metadataApprovalType: META_PIPELINE_AUDIT`, `tagConfidence: meta_pipeline_audit`, `fieldStatus.*: approved_meta_pipeline_audit`를 기록해 다른 승인 경로와 구별한다.
 
@@ -196,4 +221,4 @@ workflow에는 `::error` 주석과 요약 표가 남는다. 거절은 run을 실
 `node --test tests/archive-reviewed-exam-registration-v2.test.mjs`는 격리된 임시 저장소에서
 중등 전 학년·고등 과목·미등록 미래 과목, 실제 Git 정본과의 확장 결합, 24 UID 보존,
 키 교체/수정/폐기/삭제, UID·근거·before·binding 오류, 재실행을 확인한다.
-순천고 실제 24 UID의 의미 승인이나 운영 등록 결과를 대신하지 않는다.
+순천고 실제 24 UID의 의미 승인이나 운영 등록 결과를 대신하지 않는다. SOP_v1.2 approval v4는 `META_AUDIT_ATOMIC_PACKAGE` + `COURIER_INTAKE_MANIFEST`의 UID/ordinal/PT/TPL/CC/단원 parity, corrective review 발췌의 실제 source 포함, 현재/원본 선언 SHA의 독립 결속, visual evidence 실제 상태, Condition 증거 부재 시 fail-closed, template inflation 미합성, 원본 바이트 불변을 검증한다. 두 네이티브 JSON만으로는 등록되지 않으며, 위 evidence contract가 모두 갖춰진 뒤에만 v4 등록이 성립한다.

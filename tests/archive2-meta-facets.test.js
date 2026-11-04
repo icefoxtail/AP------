@@ -87,14 +87,19 @@ test('the catalog lane exposes only content-bound, registry-labelled concept/typ
 test('the lane never changes the canonical resolution or the strict approval metric', async () => {
   const data = await catalog();
   const auth = { canonicalAuthority: data.canonicalAuthority };
-  // New exams/approvals may raise strict counts. A legitimate answer/solution-only edit also changes the
-  // full-payload release fingerprint: sourceStatus becomes HOLD until that source is reapproved, even though
-  // its content-bound taxonomy assignments remain intact. The 2026-11-04 regenerated main measured 1422
-  // after such exam-solution repairs (issue #1335); keep a regression floor without granting any approvals.
-  // The usable-meta lane must never ADD to the canonical strict metric.
+  // Source maintenance can change the approved set. Check the live count and
+  // each approval's identity/evidence instead of freezing a production count.
   const strict = data.records.filter(row => core.basicEligibility(row, auth).ok);
   const advanced = data.records.filter(row => core.advancedEligible(row, auth));
-  assert.ok(strict.length >= 1422, String(strict.length));
+  assert.equal(data.health.automatic, strict.length, 'reported approval count must match the actual eligible set');
+  for (const row of strict) {
+    assert.equal(row.identityStatus, 'VERIFIED', row.questionUid);
+    assert.equal(row.sourceIntegrityStatus, 'VERIFIED', row.questionUid);
+    assert.equal(row.sourceStatus, 'VERIFIED', row.questionUid);
+    assert.equal(row.assignmentEvidence?.questionUid, row.questionUid, 'approval must bind the same UID');
+    assert.equal(row.assignmentEvidence?.approvalStatus, 'APPROVED', row.questionUid);
+    assert.equal(row.assignmentEvidence?.assignmentFingerprint, row.assignmentFingerprint, 'approval must bind the current problem');
+  }
   assert.ok(advanced.length >= 195, String(advanced.length));
   assert.ok(data.records.filter(row => row.problemTypeKey).length >= 549);
   assert.ok(data.records.filter(row => row.curriculumKey).length >= 3206, 'canonical curriculumKey is untouched');
@@ -146,6 +151,13 @@ test('recorded curriculum is read as recorded (never converted) and outranks the
       assert.equal(original.basis, 'approved-metadata');
       const withoutLane = Unified.originalCurriculum({ ...row, metaHintCurriculum: '' }, row.effectiveBrowseGrade || row.sourceGrade);
       if (withoutLane.value !== row.metaHintCurriculum) overridesYearRule++;
+    } else if (row.curriculumKey === row.metaHintCurriculum) {
+      // A newly approved canonical assignment still demonstrates the same
+      // recorded-curriculum override; do not lose it from the denominator.
+      const withoutRecorded = Unified.originalCurriculum(
+        { ...row, curriculumKey: '', metaHintCurriculum: '' }, row.effectiveBrowseGrade || row.sourceGrade,
+      );
+      if (withoutRecorded.value !== row.curriculumKey) overridesYearRule++;
     }
   }
   assert.ok(overridesYearRule > 50, 'the recorded curriculum corrects year-rule guesses: ' + overridesYearRule);
@@ -551,7 +563,7 @@ test('the workspace and the unit page load the new scripts with a new cache vers
     assert.match(workspace, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   // The shared unit layer and the canonical authority moved on with the registered textbooks (S11).
   assert.match(workspace, /archive2-unified-units\.js\?v=20261030-s11-1/);
-  assert.match(workspace, /archive2-canonical\.js\?v=20261030-release-sync-1/);
+  assert.match(workspace, /archive2-canonical\.js\?v=20261104-meta-audit-approval-1/);
   // The workspace itself moved on with the final-check fixes (S10).
   assert.match(workspace, /archive2-workspace\.js\?v=20261031-recorded-use-1/);
   const unitPage = read('unit-past-exams.html');
