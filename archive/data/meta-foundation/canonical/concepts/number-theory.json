@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "NUMBER_THEORY",
-  "shardVersion": "1.1.8",
+  "shardVersion": "1.1.9",
   "status": "ACTIVE",
-  "conceptCount": 27,
+  "conceptCount": 31,
   "concepts": [
     {
       "conceptKey": "CC_NUMBER_DIVISOR_MULTIPLE",
@@ -906,6 +906,162 @@
       ],
       "curriculumRefs": [
         "2022:공통수학1:H22-C-05"
+      ],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_LEAST_COMMON_MULTIPLE",
+      "canonicalLabelKo": "최소공배수",
+      "definition": "두 개 이상의 자연수의 공배수 가운데 가장 작은 수.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_961de2d5c97209aa1d7997837941b0c3331f085755cffd2b6d430c48567792b4"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_961de2d5c97209aa1d7997837941b0c3331f085755cffd2b6d430c48567792b4",
+          "sourceOrdinal": 1,
+          "classificationRationale": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD/TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION bound at M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "따라서 필요한 식은 $\\text{㉠}\\times 4 - \\text{㉡}\\times 3$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-03"
+      ],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_NUMBER_OF_ELEMENTS",
+      "canonicalLabelKo": "원소의 개수",
+      "definition": "주어진 조건을 만족하는 대상의 수를 세어 얻은 값.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_eca7fb65b58d3d60fe80a73788473ccd36907e2d58a0a49db3b39517084e23a7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_eca7fb65b58d3d60fe80a73788473ccd36907e2d58a0a49db3b39517084e23a7",
+          "sourceOrdinal": 7,
+          "classificationRationale": "PT_M2_FUNCTION_VALUE_PRIME_COUNT/TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE bound at M2-04/M2-04-LINEAR_FUNCTION_BASIC; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "총 $6$개이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_FUNCTION_VALUE_PRIME_COUNT"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-04"
+      ],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_PLACE_VALUE",
+      "canonicalLabelKo": "자릿값",
+      "definition": "각 자리의 숫자에 그 자리의 단위를 곱하여 수 전체의 값을 이루는 값.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f3595d71c3560f2a7b7078c21faf762b93703f3a8bc0e5804b6621974d8e4574"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_f3595d71c3560f2a7b7078c21faf762b93703f3a8bc0e5804b6621974d8e4574",
+          "sourceOrdinal": 6,
+          "classificationRationale": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_DIGITS/TPL_M2_FIND_THREE_DIGIT_NUMBER_FROM_DIGIT_RELATIONS bound at M2-03/M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "따라서 처음 세 자리의 자연수는 $235$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_DIGITS"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-03"
+      ],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_PRIME_NUMBERS",
+      "canonicalLabelKo": "소수",
+      "definition": "1보다 큰 자연수 가운데 1과 자기 자신만을 약수로 갖는 수.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_eca7fb65b58d3d60fe80a73788473ccd36907e2d58a0a49db3b39517084e23a7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_eca7fb65b58d3d60fe80a73788473ccd36907e2d58a0a49db3b39517084e23a7",
+          "sourceOrdinal": 7,
+          "classificationRationale": "PT_M2_FUNCTION_VALUE_PRIME_COUNT/TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE bound at M2-04/M2-04-LINEAR_FUNCTION_BASIC; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "총 $6$개이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.audit.source.json",
+            "sha256": "602980a34db5beb171fa89c30ff9a1df48ef57613b81a73a13929a022a22b715"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-6-94d3b8929ef9-20261104.corrective-review.json",
+            "sha256": "6ed6667660463989b1b5b2885dedb7f79d97430234109dfab8dd3bae790f703e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M2_FUNCTION_VALUE_PRIME_COUNT"
+      ],
+      "curriculumRefs": [
+        "2015:중2-1:M2-04"
       ],
       "ownerConceptShard": "NUMBER_THEORY"
     }
