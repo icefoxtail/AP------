@@ -3,16 +3,31 @@
   "requestId": "similar-25-pungdeok-m1-2mid-candidate-v1",
   "examUid": "25_풍덕중_2학기_중간_중1_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m1/2mid/25_풍덕중_2학기_중간_중1_유사.js",
-  "expectedSourceBlobSha1": "cf1dc3c2880067520318326a4cb011d823f7fddc",
+  "expectedSourceBlobSha1": "b56373428b05fb3625afd8bb3868a9c867773e04",
   "expectedQuestionCount": 25,
   "approval": {
-    "type": "INDEPENDENT_REVIEW_GATE",
-    "metadataReviewed": true,
-    "approvedBy": "MIDDLE_SIMILAR_REVIEWER_MERGER",
-    "reviewStatus": "approved",
-    "reviewPassCount": 25,
+    "type": "FINAL_QA",
+    "metadataReviewed": false,
+    "approvedBy": null,
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
     "evidenceRefs": [
-      "archive/exams/similar/middle/m1/2mid/25_풍덕중_2학기_중간_중1_유사.review-receipt.json"
+      {
+        "path": ".tmp/finalqa-20261104/pungdeok-meta-audit.json",
+        "sha256": "f949eee010194ea8dad8f44a97d955a19cb5f17b0e0e7ccbf2596683d2166a8b"
+      },
+      {
+        "path": ".tmp/finalqa-review/pung-q09-q15/independent-review.json",
+        "sha256": "f232ceff0e1746f5e8028a699ceff03b527adfd1156fd0869151be037c6247cd"
+      },
+      {
+        "path": ".tmp/finalqa-review/pung-q09-q15/independent-freeze.json",
+        "sha256": "bfa03a0751e93f85340c533884f02f111d755e81f55029b72682f0d769d26571"
+      },
+      {
+        "path": ".tmp/finalqa-review/pung-q09-q15/source-binding-after-link.json",
+        "sha256": "f40c082deecb04961fcded072ea013c68fa5219b46d926ac0235904537a37e2a"
+      }
     ]
   },
   "registryChanges": [],
@@ -145,7 +160,11 @@
     {
       "questionUid": 6,
       "sourceOrdinal": 6,
-      "before": null,
+      "before": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "위치 관계"
+      },
       "after": {
         "standardCourse": "중1 수학",
         "curriculum": "2015",
@@ -153,7 +172,7 @@
         "courseKey": "중1 수학",
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
-        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnitKey": "M1-05-POSITION_RELATION",
         "subUnit": "위치 관계",
         "problemTypeKey": "PT_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE",
         "templateKey": "TPL_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE_CORE",
@@ -165,12 +184,22 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
-      }
+      },
+      "evidenceRefs": [
+        {
+          "path": ".tmp/finalqa-20261104/pungdeok-meta-audit.json",
+          "sha256": "f949eee010194ea8dad8f44a97d955a19cb5f17b0e0e7ccbf2596683d2166a8b"
+        }
+      ]
     },
     {
       "questionUid": 7,
       "sourceOrdinal": 7,
-      "before": null,
+      "before": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "위치 관계"
+      },
       "after": {
         "standardCourse": "중1 수학",
         "curriculum": "2015",
@@ -178,7 +207,7 @@
         "courseKey": "중1 수학",
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
-        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnitKey": "M1-05-POSITION_RELATION",
         "subUnit": "위치 관계",
         "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
         "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_COUNT",
@@ -190,12 +219,22 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
-      }
+      },
+      "evidenceRefs": [
+        {
+          "path": ".tmp/finalqa-20261104/pungdeok-meta-audit.json",
+          "sha256": "f949eee010194ea8dad8f44a97d955a19cb5f17b0e0e7ccbf2596683d2166a8b"
+        }
+      ]
     },
     {
       "questionUid": 8,
       "sourceOrdinal": 8,
-      "before": null,
+      "before": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "위치 관계"
+      },
       "after": {
         "standardCourse": "중1 수학",
         "curriculum": "2015",
@@ -203,7 +242,7 @@
         "courseKey": "중1 수학",
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
-        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnitKey": "M1-05-POSITION_RELATION",
         "subUnit": "위치 관계",
         "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
         "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FOLDED_NET_RELATION_AUDIT",
@@ -215,12 +254,22 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
-      }
+      },
+      "evidenceRefs": [
+        {
+          "path": ".tmp/finalqa-20261104/pungdeok-meta-audit.json",
+          "sha256": "f949eee010194ea8dad8f44a97d955a19cb5f17b0e0e7ccbf2596683d2166a8b"
+        }
+      ]
     },
     {
       "questionUid": 9,
       "sourceOrdinal": 9,
-      "before": null,
+      "before": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "위치 관계"
+      },
       "after": {
         "standardCourse": "중1 수학",
         "curriculum": "2015",
@@ -228,7 +277,7 @@
         "courseKey": "중1 수학",
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
-        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnitKey": "M1-05-POSITION_RELATION",
         "subUnit": "위치 관계",
         "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
         "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_CLAIM_AUDIT",
@@ -240,7 +289,25 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
-      }
+      },
+      "evidenceRefs": [
+        {
+          "path": ".tmp/finalqa-20261104/pungdeok-meta-audit.json",
+          "sha256": "f949eee010194ea8dad8f44a97d955a19cb5f17b0e0e7ccbf2596683d2166a8b"
+        },
+        {
+          "path": ".tmp/finalqa-review/pung-q09-q15/independent-review.json",
+          "sha256": "f232ceff0e1746f5e8028a699ceff03b527adfd1156fd0869151be037c6247cd"
+        },
+        {
+          "path": ".tmp/finalqa-review/pung-q09-q15/independent-freeze.json",
+          "sha256": "bfa03a0751e93f85340c533884f02f111d755e81f55029b72682f0d769d26571"
+        },
+        {
+          "path": ".tmp/finalqa-review/pung-q09-q15/source-binding-after-link.json",
+          "sha256": "f40c082deecb04961fcded072ea013c68fa5219b46d926ac0235904537a37e2a"
+        }
+      ]
     },
     {
       "questionUid": 10,
@@ -295,7 +362,11 @@
     {
       "questionUid": 12,
       "sourceOrdinal": 12,
-      "before": null,
+      "before": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "작도와 합동"
+      },
       "after": {
         "standardCourse": "중1 수학",
         "curriculum": "2015",
@@ -304,7 +375,7 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "subUnitKey": "M1-05-BASIC_FIGURE",
-        "subUnit": "작도와 합동",
+        "subUnit": "점·선·면과 각",
         "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
         "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
         "crossConceptKeys": [],
@@ -315,12 +386,22 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
-      }
+      },
+      "evidenceRefs": [
+        {
+          "path": ".tmp/finalqa-20261104/pungdeok-meta-audit.json",
+          "sha256": "f949eee010194ea8dad8f44a97d955a19cb5f17b0e0e7ccbf2596683d2166a8b"
+        }
+      ]
     },
     {
       "questionUid": 13,
       "sourceOrdinal": 13,
-      "before": null,
+      "before": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "작도와 합동"
+      },
       "after": {
         "standardCourse": "중1 수학",
         "curriculum": "2015",
@@ -329,7 +410,7 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "subUnitKey": "M1-05-BASIC_FIGURE",
-        "subUnit": "작도와 합동",
+        "subUnit": "점·선·면과 각",
         "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
         "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
         "crossConceptKeys": [],
@@ -340,12 +421,22 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
-      }
+      },
+      "evidenceRefs": [
+        {
+          "path": ".tmp/finalqa-20261104/pungdeok-meta-audit.json",
+          "sha256": "f949eee010194ea8dad8f44a97d955a19cb5f17b0e0e7ccbf2596683d2166a8b"
+        }
+      ]
     },
     {
       "questionUid": 14,
       "sourceOrdinal": 14,
-      "before": null,
+      "before": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "작도와 합동"
+      },
       "after": {
         "standardCourse": "중1 수학",
         "curriculum": "2015",
@@ -354,7 +445,7 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "subUnitKey": "M1-05-BASIC_FIGURE",
-        "subUnit": "작도와 합동",
+        "subUnit": "점·선·면과 각",
         "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
         "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
         "crossConceptKeys": [],
@@ -365,12 +456,22 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
-      }
+      },
+      "evidenceRefs": [
+        {
+          "path": ".tmp/finalqa-20261104/pungdeok-meta-audit.json",
+          "sha256": "f949eee010194ea8dad8f44a97d955a19cb5f17b0e0e7ccbf2596683d2166a8b"
+        }
+      ]
     },
     {
       "questionUid": 15,
       "sourceOrdinal": 15,
-      "before": null,
+      "before": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "작도와 합동"
+      },
       "after": {
         "standardCourse": "중1 수학",
         "curriculum": "2015",
@@ -379,7 +480,7 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "subUnitKey": "M1-05-BASIC_FIGURE",
-        "subUnit": "작도와 합동",
+        "subUnit": "점·선·면과 각",
         "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
         "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
         "crossConceptKeys": [],
@@ -390,12 +491,34 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
-      }
+      },
+      "evidenceRefs": [
+        {
+          "path": ".tmp/finalqa-20261104/pungdeok-meta-audit.json",
+          "sha256": "f949eee010194ea8dad8f44a97d955a19cb5f17b0e0e7ccbf2596683d2166a8b"
+        },
+        {
+          "path": ".tmp/finalqa-review/pung-q09-q15/independent-review.json",
+          "sha256": "f232ceff0e1746f5e8028a699ceff03b527adfd1156fd0869151be037c6247cd"
+        },
+        {
+          "path": ".tmp/finalqa-review/pung-q09-q15/independent-freeze.json",
+          "sha256": "bfa03a0751e93f85340c533884f02f111d755e81f55029b72682f0d769d26571"
+        },
+        {
+          "path": ".tmp/finalqa-review/pung-q09-q15/source-binding-after-link.json",
+          "sha256": "f40c082deecb04961fcded072ea013c68fa5219b46d926ac0235904537a37e2a"
+        }
+      ]
     },
     {
       "questionUid": 16,
       "sourceOrdinal": 16,
-      "before": null,
+      "before": {
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "작도와 합동"
+      },
       "after": {
         "standardCourse": "중1 수학",
         "curriculum": "2015",
@@ -404,7 +527,7 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "subUnitKey": "M1-05-BASIC_FIGURE",
-        "subUnit": "작도와 합동",
+        "subUnit": "점·선·면과 각",
         "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
         "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
         "crossConceptKeys": [],
@@ -415,12 +538,22 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
-      }
+      },
+      "evidenceRefs": [
+        {
+          "path": ".tmp/finalqa-20261104/pungdeok-meta-audit.json",
+          "sha256": "f949eee010194ea8dad8f44a97d955a19cb5f17b0e0e7ccbf2596683d2166a8b"
+        }
+      ]
     },
     {
       "questionUid": 17,
       "sourceOrdinal": 17,
-      "before": null,
+      "before": {
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE",
+        "subUnit": "다각형"
+      },
       "after": {
         "standardCourse": "중1 수학",
         "curriculum": "2015",
@@ -428,8 +561,8 @@
         "courseKey": "중1 수학",
         "standardUnitKey": "M1-06",
         "standardUnit": "평면도형",
-        "subUnitKey": "M1-06-PLANE_FIGURE",
-        "subUnit": "다각형",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
         "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
         "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
         "crossConceptKeys": [],
@@ -440,12 +573,22 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
-      }
+      },
+      "evidenceRefs": [
+        {
+          "path": ".tmp/finalqa-20261104/pungdeok-meta-audit.json",
+          "sha256": "f949eee010194ea8dad8f44a97d955a19cb5f17b0e0e7ccbf2596683d2166a8b"
+        }
+      ]
     },
     {
       "questionUid": 18,
       "sourceOrdinal": 18,
-      "before": null,
+      "before": {
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE",
+        "subUnit": "원과 부채꼴"
+      },
       "after": {
         "standardCourse": "중1 수학",
         "curriculum": "2015",
@@ -453,8 +596,8 @@
         "courseKey": "중1 수학",
         "standardUnitKey": "M1-06",
         "standardUnit": "평면도형",
-        "subUnitKey": "M1-06-PLANE_FIGURE",
-        "subUnit": "원과 부채꼴",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "subUnit": "평면도형의 측정",
         "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
         "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
         "crossConceptKeys": [],
@@ -465,12 +608,22 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
-      }
+      },
+      "evidenceRefs": [
+        {
+          "path": ".tmp/finalqa-20261104/pungdeok-meta-audit.json",
+          "sha256": "f949eee010194ea8dad8f44a97d955a19cb5f17b0e0e7ccbf2596683d2166a8b"
+        }
+      ]
     },
     {
       "questionUid": 19,
       "sourceOrdinal": 19,
-      "before": null,
+      "before": {
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE",
+        "subUnit": "원과 부채꼴"
+      },
       "after": {
         "standardCourse": "중1 수학",
         "curriculum": "2015",
@@ -478,8 +631,8 @@
         "courseKey": "중1 수학",
         "standardUnitKey": "M1-06",
         "standardUnit": "평면도형",
-        "subUnitKey": "M1-06-PLANE_FIGURE",
-        "subUnit": "원과 부채꼴",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "subUnit": "평면도형의 측정",
         "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
         "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
         "crossConceptKeys": [],
@@ -490,12 +643,22 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
-      }
+      },
+      "evidenceRefs": [
+        {
+          "path": ".tmp/finalqa-20261104/pungdeok-meta-audit.json",
+          "sha256": "f949eee010194ea8dad8f44a97d955a19cb5f17b0e0e7ccbf2596683d2166a8b"
+        }
+      ]
     },
     {
       "questionUid": 20,
       "sourceOrdinal": 20,
-      "before": null,
+      "before": {
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE",
+        "subUnit": "원과 부채꼴"
+      },
       "after": {
         "standardCourse": "중1 수학",
         "curriculum": "2015",
@@ -503,8 +666,8 @@
         "courseKey": "중1 수학",
         "standardUnitKey": "M1-06",
         "standardUnit": "평면도형",
-        "subUnitKey": "M1-06-PLANE_FIGURE",
-        "subUnit": "원과 부채꼴",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "subUnit": "평면도형의 측정",
         "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
         "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
         "crossConceptKeys": [],
@@ -515,12 +678,22 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
-      }
+      },
+      "evidenceRefs": [
+        {
+          "path": ".tmp/finalqa-20261104/pungdeok-meta-audit.json",
+          "sha256": "f949eee010194ea8dad8f44a97d955a19cb5f17b0e0e7ccbf2596683d2166a8b"
+        }
+      ]
     },
     {
       "questionUid": 21,
       "sourceOrdinal": 21,
-      "before": null,
+      "before": {
+        "standardUnitKey": "M1-02",
+        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "subUnit": "정수와 유리수의 사칙계산"
+      },
       "after": {
         "standardCourse": "중1 수학",
         "curriculum": "2015",
@@ -528,8 +701,8 @@
         "courseKey": "중1 수학",
         "standardUnitKey": "M1-02",
         "standardUnit": "정수와 유리수",
-        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-        "subUnit": "정수와 유리수의 사칙계산",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
         "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
         "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER",
         "crossConceptKeys": [],
@@ -540,7 +713,13 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
-      }
+      },
+      "evidenceRefs": [
+        {
+          "path": ".tmp/finalqa-20261104/pungdeok-meta-audit.json",
+          "sha256": "f949eee010194ea8dad8f44a97d955a19cb5f17b0e0e7ccbf2596683d2166a8b"
+        }
+      ]
     },
     {
       "questionUid": 22,
@@ -620,7 +799,11 @@
     {
       "questionUid": 25,
       "sourceOrdinal": 25,
-      "before": null,
+      "before": {
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE",
+        "subUnit": "다각형"
+      },
       "after": {
         "standardCourse": "중1 수학",
         "curriculum": "2015",
@@ -628,8 +811,8 @@
         "courseKey": "중1 수학",
         "standardUnitKey": "M1-06",
         "standardUnit": "평면도형",
-        "subUnitKey": "M1-06-PLANE_FIGURE",
-        "subUnit": "다각형",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
         "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
         "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
         "crossConceptKeys": [],
@@ -640,7 +823,86 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
-      }
+      },
+      "evidenceRefs": [
+        {
+          "path": ".tmp/finalqa-20261104/pungdeok-meta-audit.json",
+          "sha256": "f949eee010194ea8dad8f44a97d955a19cb5f17b0e0e7ccbf2596683d2166a8b"
+        }
+      ]
     }
-  ]
+  ],
+  "handoff": "DRAFT / NOT SUBMITTED. The old approval is historical provenance only. Current review_required scope is 15 subunit changes; Q9 and Q15 targeted math/visual review passed, while all 15 metadata rows remain current-review-required and Q12-Q16 retain semantic-fit debt.",
+  "historicalProvenance": {
+    "sourceBlobSha1": "cf1dc3c2880067520318326a4cb011d823f7fddc",
+    "priorExpectedSourceBlobSha1": "db974da599eb104b1a6c4bd6c8f0c970b25e436c",
+    "priorApproval": {
+      "type": "INDEPENDENT_REVIEW_GATE",
+      "metadataReviewed": true,
+      "approvedBy": "MIDDLE_SIMILAR_REVIEWER_MERGER",
+      "reviewStatus": "approved",
+      "reviewPassCount": 25,
+      "evidenceRefs": [
+        "archive/exams/similar/middle/m1/2mid/25_풍덕중_2학기_중간_중1_유사.review-receipt.json"
+      ]
+    },
+    "priorReceiptPath": "archive/exams/similar/middle/m1/2mid/25_풍덕중_2학기_중간_중1_유사.review-receipt.json",
+    "description": "Original full-exam sign-off is retained only as historical provenance for its prior source blob."
+  },
+  "repairScope": {
+    "status": "review_required",
+    "changedQuestionUids": [
+      6,
+      7,
+      8,
+      9,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      25
+    ],
+    "independentTargetedMathVisualPassQuestionUids": [
+      9,
+      15
+    ],
+    "canonicalPairCorrectionQuestionUids": [
+      6,
+      7,
+      8,
+      9,
+      17,
+      18,
+      19,
+      20,
+      21,
+      25
+    ],
+    "semanticFitDebtQuestionUids": [
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "unchangedPreviouslyApprovedCanonicalKeepUids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      10,
+      11,
+      22,
+      23,
+      24
+    ],
+    "note": "The prior full-exam approval remains historical; this candidate does not revoke untouched-row provenance. Ten mismatched rows were corrected to existing canonical pairs, five remain coarse semantic-fit debt and require a master taxonomy decision."
+  }
 }
