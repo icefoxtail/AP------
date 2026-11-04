@@ -1,0 +1,1167 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/high/h2/1mid/19_순천여고_1학기_중간_고2_수학I.js",
+  "sourceGitBlobSha": "731c1b0bf117877cf08b734360ec0b9c050a0c29",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Codex-gpt-6.1-terra",
+    "run": "original-261-270",
+    "at": "2026-11-04"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "로그",
+            "src": "stem",
+            "quote": "$3^{\\log_3 6} + 2\\log_4 6"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "밑변환",
+            "src": "solution",
+            "quote": "$2\\log_4 6=\\log_2 6$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "$3^{\\log_3 6}=6$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "지수·로그 역관계와 밑변환으로 로그 차를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱근",
+            "src": "stem",
+            "quote": "$A = \\sqrt[3]{\\sqrt{10}}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "대소관계를 바르게 나타낸 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "$A=10^{1/6}$",
+            "evidenceType": "IMPLIED",
+            "justification": "세 수를 같은 여섯제곱근으로 표현한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "$10<28<125$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "모두 같은 차수의 근호로 바꾸고 진수를 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱근",
+            "src": "stem",
+            "quote": "$n$제곱근 중에서 실수 인 것의 개수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "홀짝",
+            "src": "solution",
+            "quote": "홀수 차수는 실수근이 하나",
+            "evidenceType": "IMPLIED",
+            "justification": "각 입력의 부호와 차수의 홀짝으로 실근 수를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n(n \\ge 2)$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "근호의 입력을 계산하고 차수와 부호별 실근 수를 더한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "상용로그",
+            "src": "stem",
+            "quote": "$\\log 6 = 0.78$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a^2+b^2+c^2$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "로그의성질",
+            "src": "solution",
+            "quote": "\\log(AB)=-1.22+2.78",
+            "evidenceType": "IMPLIED",
+            "justification": "상용로그의 합으로 AB를 정한다."
+          },
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "\\log(AB)=-1.22+2.78",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "소수",
+            "src": "solution",
+            "quote": "$(a,b,c)=(2,2,3)$",
+            "evidenceType": "IMPLIED",
+            "justification": "로그식에서 소수 a,b,c를 결정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "$a, b, c$는 소수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 상용로그를 합해 AB를 정하고 밑 2의 로그로 바꾸어 소수들을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수",
+            "src": "stem",
+            "quote": "$x^{\\frac{1}{3}} - x^{-\\frac{1}{3}} = 3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$x^2 + x^{-2}$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$u=x^{1/3}$, $v=x^{-1/3}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭식",
+            "src": "solution",
+            "quote": "$u^2+v^2=11$",
+            "evidenceType": "IMPLIED",
+            "justification": "차와 곱으로 제곱합을 구하고 세제곱 합으로 여섯제곱 합을 얻는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수 $x$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "역수인 두 지수항을 치환하여 차와 곱으로 거듭제곱 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수함수",
+            "src": "stem",
+            "quote": "유리판 1장을 통과할 때마다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$x$의 값은 약 얼마인가?"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수방정식",
+            "src": "solution",
+            "quote": "$(1-x/100)^{10}=0.05$",
+            "evidenceType": "IMPLIED",
+            "justification": "한 장에서 남는 비율의 열 번 곱을 주어진 비율과 같게 둔다."
+          },
+          {
+            "term": "상용로그",
+            "src": "solution",
+            "quote": "로그를 취하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "근삿값",
+            "src": "stem",
+            "quote": "$\\log 2 = 0.3010$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "투과할 때마다 남는 비율의 지수방정식을 세우고 로그 근삿값으로 푼다."
+      },
+      "steps": [],
+      "scenarioNote": "유리판 밝기"
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y=f(x)$의 그래프"
+          },
+          {
+            "term": "지수함수",
+            "src": "stem",
+            "quote": "\\left(\\frac{1}{2}\\right)^{1-f(x)}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "그래프의 개형으로 알맞은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "그림에서 $f(x)=x+1$",
+            "evidenceType": "IMPLIED",
+            "justification": "그래프의 일차식을 지수에 대입한다."
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "증가하고 $(0,1)$을 지나며",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "$x$축을 점근선으로 갖는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "직선 그래프에서 f를 구해 지수식을 정리하고 증가성과 점근선으로 그림을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수함수",
+            "src": "stem",
+            "quote": "y = 2^{2x+2} \\times 3^{-x+1}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$M+m$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "$y=2^{2x+2}3^{-x+1}=12(4/3)^x$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "$[-1,1]$에서 증가한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정의역제한",
+            "src": "stem",
+            "quote": "-1 \\le x \\le 1"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "한 밑의 지수함수로 정리하고 구간 양끝을 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수함수",
+            "src": "stem",
+            "quote": "$y = -3^{x+1}+1$"
+          },
+          {
+            "term": "로그함수",
+            "src": "stem",
+            "quote": "$y = -\\log_{\\frac{1}{3}}(x+a)-1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$\\alpha+\\beta$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=3^{x+1}$이면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "$a$는 감소한다",
+            "evidenceType": "IMPLIED",
+            "justification": "교점 조건으로 표현한 a의 t에 대한 감소성과 끝값을 이용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "제3사분면에서 만나도록"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "제3사분면의 x범위를 지수 변수로 바꾸고 교점에서 a의 범위를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "로그함수",
+            "src": "stem",
+            "quote": "$y=\\log_{\\frac{1}{3}}(3x-p)$"
+          },
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "$y=|3^{-x-1}-p|$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "모든 정수 $p$의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "진수조건",
+            "src": "solution",
+            "quote": "$12-p>0$",
+            "evidenceType": "IMPLIED",
+            "justification": "x=4에서 로그의 진수가 양수여야 한다."
+          },
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=3^{-x-1}>0$이면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$|t-p|=4$",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값 방정식의 두 해가 모두 양수인 조건을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "모든 정수 $p$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "로그의 진수조건과 치환한 절댓값 방정식의 양수 두 근 조건을 연립한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "주기",
+            "src": "stem",
+            "quote": "$f(x) = f(x+2)$"
+          },
+          {
+            "term": "로그함수",
+            "src": "stem",
+            "quote": "$y=\\log_{3n} x$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$n$의 값을 구하면?"
+          },
+          {
+            "term": "결정",
+            "src": "stem",
+            "quote": "$n$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$N=(3n)^2$라 두면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "각 단위구간에서 $f$는 단조",
+            "evidenceType": "IMPLIED",
+            "justification": "로그와 주기 함수의 차가 각 구간에서 단조임을 사용한다."
+          },
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "단위구간마다 교점이 하나씩",
+            "evidenceType": "IMPLIED",
+            "justification": "각 구간의 끝값 부호와 단조성으로 교점 수를 센다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$에 대하여"
+          },
+          {
+            "term": "원소의개수",
+            "src": "stem",
+            "quote": "교점의 개수가 143개"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주기 구간별 단조성과 끝값을 이용해 교점을 세고 n을 정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "동경",
+            "src": "stem",
+            "quote": "$x$축에 대하여 대칭인 두 동경"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳게 나타낸 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "두 기준각은",
+            "evidenceType": "IMPLIED",
+            "justification": "x축 대칭 동경의 기준각이 서로 반대임을 쓴다."
+          },
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "$360^\\circ(l+m)$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 일반각의 정수 회전수를 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "l\\text{은 정수}"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "대칭인 동경의 기준각은 서로 상쇄되고 정수 회전수만 남는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$750^\\circ$는 제1사분면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것만을 있는 대로 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "호도법",
+            "src": "solution",
+            "quote": "$3\\pi/2=270^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "도와 라디안 사이를 변환한다."
+          },
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "$30^\\circ$와 동치",
+            "evidenceType": "IMPLIED",
+            "justification": "한 바퀴의 정수배를 빼 사분면을 판정한다."
+          },
+          {
+            "term": "삼각함수의성질",
+            "src": "solution",
+            "quote": "$\\cos(\\pi/2+x)=-\\sin x$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각도를 한 바퀴 범위로 바꾸고 도·라디안 및 각변환 성질을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "부채꼴",
+            "src": "stem",
+            "quote": "부채꼴의 호의길이와 넓이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "사실과 다르게 이야기하고 있는 학생"
+          }
+        ],
+        "method": [
+          {
+            "term": "호의길이",
+            "src": "solution",
+            "quote": "$s=r\\theta$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "$s=r\\theta$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "호도법",
+            "src": "solution",
+            "quote": "$60^\\circ=\\pi/3$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "60도를 라디안으로 바꾸어 반지름 1인 호의 길이를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $3x-y+3=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "$\\tan\\theta=3$",
+            "evidenceType": "IMPLIED",
+            "justification": "직선의 기울기를 탄젠트값으로 쓴다."
+          },
+          {
+            "term": "삼각함수의성질",
+            "src": "solution",
+            "quote": "사인항은 상쇄되어",
+            "evidenceType": "IMPLIED",
+            "justification": "각변환 후 사인 항을 소거한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "직선 기울기로 탄젠트를 정하고 각변환으로 사인항을 상쇄한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "\\tan\\left(2x-\\dfrac{\\pi}{2}\\right)-3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것만을 [보기]에서 있는 대로"
+          }
+        ],
+        "method": [
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "그래프 주기는 $\\pi/2$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "점근선은 $2x-\\pi/2=\\pi/2+n\\pi$",
+            "evidenceType": "IMPLIED",
+            "justification": "탄젠트의 점근선 각에 대입한다."
+          },
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "수평 이동은 $\\pi/4$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "탄젠트의 주기와 점근선, 수평이동량을 각각 확인한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "함수 $y=\\sin x"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "가 만나는 두 점의 $x$좌표"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$\\beta-\\alpha$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각방정식",
+            "src": "solution",
+            "quote": "$\\sin x=\\sqrt2/2$의 두 해",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 구간의 두 특수각을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "0 \\le x \\le 2\\pi"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "사인방정식의 두 교점 각을 구해 차를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각부등식",
+            "src": "stem",
+            "quote": "$2\\cos^2 x + 3\\sin(\\pi-x) \\le 0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "최댓값과 최솟값의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각함수의성질",
+            "src": "solution",
+            "quote": "$\\sin(\\pi-x)=\\sin x$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$s=\\sin x$라 두면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차부등식",
+            "src": "solution",
+            "quote": "$(2s+1)(s-2)\\ge0$",
+            "evidenceType": "IMPLIED",
+            "justification": "사인 치역에서 인수분해한 부등식을 푼다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$0 \\le x < 2\\pi$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각변환과 사인 치환으로 이차부등식을 풀고 x해의 양 끝을 더한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "동경",
+            "src": "stem",
+            "quote": "동경 $OP$가 나타내는 각"
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "점 $P(-6, 8)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$10(\\sin\\theta+\\cos\\theta)$"
+          }
+        ],
+        "method": [
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "$r=\\sqrt{(-6)^2+8^2}=10$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각함수",
+            "src": "solution",
+            "quote": "$\\sin\\theta=4/5$",
+            "evidenceType": "IMPLIED",
+            "justification": "좌표를 원점까지 거리로 나누어 사인과 코사인을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "동경의 좌표와 원점 거리를 이용해 삼각함수의 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "$y=a\\cos(bx+c)$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "상수 $a, b, c$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "진폭",
+            "src": "solution",
+            "quote": "최댓값과 최솟값이 $3,-3$",
+            "evidenceType": "IMPLIED",
+            "justification": "그래프의 최대·최소로 진폭을 정한다."
+          },
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "극댓값 x좌표 차는 $\\pi$",
+            "evidenceType": "IMPLIED",
+            "justification": "연속한 최대점의 간격에서 b를 정한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=0$에서 $3\\cos c=3/2$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$a>0$, $b>0$"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$0 < c < \\dfrac{\\pi}{2}$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "최대·최소와 주기로 a,b를 구하고 y절편과 c의 범위로 c를 정한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "세 변의 길이가 $a, b, c$인 삼각형"
+          },
+          {
+            "term": "로그",
+            "src": "stem",
+            "quote": "$x\\log_a(b+c) = y\\log_a(b-c) = 1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "어떤 삼각형인지 자세히 서술하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$U=\\log_a(b+c)$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "로그의성질",
+            "src": "solution",
+            "quote": "$\\log_a((b+c)(b-c))=2$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 로그의 합을 곱의 로그로 바꾼다."
+          },
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "$\\log_a((b+c)(b-c))=2$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$a^2+c^2=b^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "세 변의 제곱 관계로 직각삼각형임을 판정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$b > c$"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $x, y$가 존재"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "역수 관계의 두 로그를 치환해 곱의 로그를 정리하고 세 변의 제곱 관계를 얻는다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "지수함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=3^{x-1}+2$"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "역함수의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "실수 $a$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "$f^{-1}(x)=\\log_3(x-2)+1$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "왼쪽 2, 위로 $a$만큼 이동하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "$(1+3^{2-a})/2=14$",
+            "evidenceType": "IMPLIED",
+            "justification": "수평선 위 두 교점의 x좌표 평균을 14와 같게 둔다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "선분 $AB$의 중점의 좌표가 $(14, 3)$"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$y$축의 방향으로 $a$만큼 평행이동"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "역함수를 평행이동하고 수평선 교점 두 개의 중점 조건을 적용한다."
+      },
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [
+    {
+      "term": "로그의성질",
+      "en": "LOGARITHM_LAWS",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "로그",
+      "note": "로그의 곱·몫·거듭제곱 성질로 식을 변형한다.",
+      "usedIn": [
+        4,
+        21
+      ]
+    },
+    {
+      "term": "호의길이",
+      "en": "ARC_LENGTH",
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "길이",
+      "note": "원의 호를 따라 잰 길이.",
+      "usedIn": [
+        14
+      ]
+    }
+  ],
+  "selfCheck": {
+    "items": 22,
+    "quotesChecked": 125,
+    "quotesNotFound": 0,
+    "warningsRechecked": [
+      1,
+      2,
+      3,
+      15,
+      17
+    ],
+    "notes": "Q1 지수·로그 역관계와 밑변환, Q2 근호의 차수 통일, Q3 홀짝 차수와 부호별 실근, Q15 기울기와 삼각함수 각변환, Q17 사인방정식 두 해의 차를 재확인. q07·q07_1~5·q12·q17·q20 PNG 실제 열람. Q9·Q11 해설에서 미분을 사용한 단조성 논증을 기록함."
+  }
+}
