@@ -1,8 +1,8 @@
 {
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "original/high/h2/2final/25_강남여고_2학기_기말_고2_확률과통계.js",
-  "sourceGitBlobSha": "6ef6fe948578683528b8f2c62c2fbe5039bebe57",
-  "dictionaryVersion": "term-dict-v1.3-2026-11-03",
+  "sourceGitBlobSha": "04402124c203ac7fbdac2247fc569dc11461b793",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
   "judgedBy": {
     "agent": "Antigravity-gemini-3.8-flash",
     "run": "original-1-10",
@@ -20,7 +20,7 @@
             "quote": "확률변수 X의 확률분포를 표로 나타내면"
           },
           {
-            "term": "확률변수",
+            "term": "이산확률변수",
             "src": "stem",
             "quote": "확률변수 X"
           }
@@ -51,7 +51,7 @@
           {
             "term": "부등식",
             "src": "stem",
-            "quote": "X≥2"
+            "quote": "P(X≥2)"
           }
         ]
       },
@@ -75,11 +75,6 @@
             "term": "확률변수",
             "src": "stem",
             "quote": "확률변수 X가"
-          },
-          {
-            "term": "자연수",
-            "src": "solution",
-            "quote": "시행 횟수는 $n=54$"
           }
         ],
         "goal": [
@@ -151,7 +146,7 @@
         ],
         "condition": [
           {
-            "term": "부등식",
+            "term": "구간",
             "src": "stem",
             "quote": "-1≤Z≤1"
           }
@@ -205,9 +200,9 @@
             "justification": "정규분포 매개변수로부터 평균과 표준편차 도출"
           },
           {
-            "term": "분산",
+            "term": "표준화",
             "src": "solution",
-            "quote": "표준편차는 $2$이다",
+            "quote": "Z=\\dfrac{X-10}{2}",
             "evidenceType": "NAMED"
           }
         ],
@@ -249,7 +244,7 @@
         ],
         "method": [
           {
-            "term": "정규분포",
+            "term": "표준화",
             "src": "solution",
             "quote": "Z=\\dfrac{X-64}{2}",
             "evidenceType": "IMPLIED",
@@ -306,6 +301,16 @@
         ],
         "goal": [
           {
+            "term": "평균",
+            "src": "stem",
+            "quote": "E(Y)-V(Y)의 값"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "E(Y)-V(Y)의 값"
+          },
+          {
             "term": "차",
             "src": "stem",
             "quote": "E(Y)-V(Y)의 값"
@@ -325,7 +330,7 @@
             "evidenceType": "NAMED"
           },
           {
-            "term": "선형변환",
+            "term": "확률변수의일차식",
             "src": "solution",
             "quote": "$Y=2X+5$이므로",
             "evidenceType": "IMPLIED",
@@ -358,7 +363,7 @@
         ],
         "goal": [
           {
-            "term": "모평균",
+            "term": "평균",
             "src": "stem",
             "quote": "상수 m의 값"
           }
@@ -374,7 +379,8 @@
             "term": "대칭성",
             "src": "solution",
             "quote": "두 경계점 $48$과 $52$는 평균에서 같은 거리만큼 떨어져 있다",
-            "evidenceType": "NAMED"
+            "evidenceType": "IMPLIED",
+            "justification": "평균에서 등거리인 경계의 양쪽 꼬리확률이 같은 정규분포의 대칭성을 이용한다."
           },
           {
             "term": "방정식",
@@ -404,6 +410,11 @@
       "slots": {
         "given": [
           {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "f(x)=a(x-2)"
+          },
+          {
             "term": "확률밀도함수",
             "src": "stem",
             "quote": "확률밀도함수가 f(x)=a(x-2)"
@@ -423,7 +434,7 @@
         ],
         "method": [
           {
-            "term": "확률변수",
+            "term": "확률밀도함수",
             "src": "solution",
             "quote": "확률밀도함수의 그래프 아래 전체 넓이가 $1$이므로",
             "evidenceType": "NAMED"
@@ -437,7 +448,7 @@
           {
             "term": "방정식",
             "src": "solution",
-            "quote": "9a=2",
+            "quote": "$9a=2$",
             "evidenceType": "IMPLIED",
             "justification": "전체 넓이가 1이라는 성질로 a에 대한 일차방정식 풀이"
           }
@@ -458,9 +469,14 @@
     },
     {
       "sourceOrdinal": 9,
-      "format": "단일 정답",
+      "format": "보기(ㄱㄴㄷ) 판정",
       "slots": {
         "given": [
+          {
+            "term": "확률밀도함수",
+            "src": "stem",
+            "quote": "각각의 확률밀도함수의 그래프"
+          },
           {
             "term": "정규분포",
             "src": "stem",
@@ -474,6 +490,11 @@
         ],
         "goal": [
           {
+            "term": "개수",
+            "src": "stem",
+            "quote": "옳은 것의 개수는?"
+          },
+          {
             "term": "판정",
             "src": "stem",
             "quote": "옳은 것의 개수는?"
@@ -481,13 +502,19 @@
         ],
         "method": [
           {
+            "term": "평균",
+            "src": "solution",
+            "quote": "대칭축 위치는 평균",
+            "evidenceType": "NAMED"
+          },
+          {
             "term": "정규분포",
             "src": "solution",
             "quote": "정규분포의 대칭축 위치는 평균, 그래프의 퍼짐은 표준편차가 결정한다",
             "evidenceType": "NAMED"
           },
           {
-            "term": "분산",
+            "term": "표준편차",
             "src": "solution",
             "quote": "그래프의 퍼짐은 표준편차가 결정한다",
             "evidenceType": "NAMED"
@@ -500,7 +527,13 @@
             "justification": "정규분포 곡선의 대칭축 기준 반쪽 넓이 성질 활용"
           }
         ],
-        "condition": []
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "학생 수가 서로 같은"
+          }
+        ]
       },
       "reasons": {
         "method": "정규분포 곡선의 평균(대칭축 위치)과 표준편차(퍼짐 정도)의 기하학적 성질을 판정"
@@ -532,6 +565,19 @@
           }
         ],
         "method": [
+          {
+            "term": "표준화",
+            "src": "solution",
+            "quote": "55$를 표준화하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이항분포의정규근사",
+            "src": "solution",
+            "quote": "$X$를 $N(50,5^2)$로 근사한다",
+            "evidenceType": "IMPLIED",
+            "justification": "이항분포 B(100,0.5)의 평균과 분산을 일치시킨 정규분포로 근사한다."
+          },
           {
             "term": "이항분포",
             "src": "solution",
@@ -597,20 +643,27 @@
         ],
         "method": [
           {
+            "term": "표준오차",
+            "src": "solution",
+            "quote": "\\dfrac6{\\sqrt{36}}=1",
+            "evidenceType": "IMPLIED",
+            "justification": "표본평균의 표준편차는 모표준편차를 표본크기의 제곱근으로 나눈 표준오차이다."
+          },
+          {
             "term": "표본평균",
             "src": "solution",
             "quote": "표본평균의 평균은 $150$",
             "evidenceType": "NAMED"
           },
           {
-            "term": "분산",
+            "term": "표준편차",
             "src": "solution",
-            "quote": "\\sigma_{\\overline X}=\\dfrac6{\\sqrt{36}}=1",
+            "quote": "\\dfrac6{\\sqrt{36}}=1",
             "evidenceType": "IMPLIED",
             "justification": "표본평균의 표준편차 sigma/sqrt(n) 계산"
           },
           {
-            "term": "정규분포",
+            "term": "표준화",
             "src": "solution",
             "quote": "Z=\\dfrac{\\overline X-150}{1}",
             "evidenceType": "IMPLIED",
@@ -642,7 +695,7 @@
             "quote": "연속확률변수 X"
           },
           {
-            "term": "확률변수",
+            "term": "확률밀도함수",
             "src": "stem",
             "quote": "확률밀도함수 f(x)의 그래프"
           }
@@ -656,7 +709,7 @@
         ],
         "method": [
           {
-            "term": "확률변수",
+            "term": "확률밀도함수",
             "src": "solution",
             "quote": "전체 넓이가 $1$이므로",
             "evidenceType": "IMPLIED",
@@ -695,6 +748,11 @@
       "slots": {
         "given": [
           {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포 N(m, σ^2)"
+          },
+          {
             "term": "모평균",
             "src": "stem",
             "quote": "모평균 m의 신뢰구간"
@@ -721,11 +779,11 @@
           {
             "term": "신뢰구간",
             "src": "solution",
-            "quote": "신뢰구간의 길이는 $L=\\dfrac{2z\\sigma}{\\sqrt n}$이다",
+            "quote": "L=\\dfrac{2z\\sigma}{\\sqrt n}",
             "evidenceType": "NAMED"
           },
           {
-            "term": "비례",
+            "term": "반비례",
             "src": "solution",
             "quote": "표본 크기 $100$에서 길이가 $12$이므로",
             "evidenceType": "IMPLIED",
@@ -786,6 +844,26 @@
         ],
         "method": [
           {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "두 번째로 큰 수는 $3,4,5$ 중 하나이다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 번째로 큰 값이 3,4,5인 경우별로 조합을 세어 확률분포를 만든다."
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "V(X)=\\dfrac{91}{5}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "E(5\\overline X-15)",
+            "evidenceType": "IMPLIED",
+            "justification": "표본평균의 일차식의 기댓값과 분산을 각각 5배 및 25배 법칙으로 구한다."
+          },
+          {
             "term": "조합",
             "src": "solution",
             "quote": "전체 경우의 수는 $\\binom{6}{4}=15$이다",
@@ -794,7 +872,7 @@
           {
             "term": "기댓값",
             "src": "solution",
-            "quote": "E(X)=3\\cdot\\dfrac15+4\\cdot\\dfrac25+5\\cdot\\dfrac25",
+            "quote": "E(X)=3\\cdot\\dfrac15",
             "evidenceType": "IMPLIED",
             "justification": "확률분포로부터 모평균과 모분산 계산"
           },
@@ -807,6 +885,26 @@
           }
         ],
         "condition": [
+          {
+            "term": "표본의크기",
+            "src": "stem",
+            "quote": "14개의 수 x_1, x_2"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "1부터 6까지의 자연수"
+          },
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "두 번째로 큰 수를 x_n"
+          },
+          {
+            "term": "중복불허",
+            "src": "stem",
+            "quote": "4장의 카드를 동시에 뽑는"
+          },
           {
             "term": "자연수",
             "src": "stem",
@@ -845,7 +943,7 @@
         ],
         "method": [
           {
-            "term": "독립시행",
+            "term": "이항분포",
             "src": "solution",
             "quote": "{}_4C_3(2p)^3(1-2p)+{}_4C_4(2p)^4",
             "evidenceType": "IMPLIED",
@@ -863,7 +961,7 @@
           {
             "term": "양수",
             "src": "stem",
-            "quote": "양수 p"
+            "quote": "양수 p의 값"
           }
         ]
       },
@@ -903,13 +1001,20 @@
         ],
         "method": [
           {
+            "term": "표준오차",
+            "src": "solution",
+            "quote": "\\dfrac{\\sigma}{\\sqrt n}=1",
+            "evidenceType": "IMPLIED",
+            "justification": "99% 신뢰구간의 반길이를 신뢰상수로 나누어 표준오차를 복원한다."
+          },
+          {
             "term": "신뢰구간",
             "src": "solution",
             "quote": "신뢰구간의 중심은 표본평균이고",
             "evidenceType": "NAMED"
           },
           {
-            "term": "모평균",
+            "term": "표준편차",
             "src": "solution",
             "quote": "\\dfrac{\\sigma}{\\sqrt n}=1",
             "evidenceType": "IMPLIED",
@@ -924,6 +1029,16 @@
           }
         ],
         "condition": [
+          {
+            "term": "신뢰도",
+            "src": "stem",
+            "quote": "신뢰도 95%의 신뢰구간"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "같은 표본을 이용하여"
+          },
           {
             "term": "자연수",
             "src": "stem",
@@ -961,6 +1076,27 @@
           }
         ],
         "method": [
+          {
+            "term": "이차부등식",
+            "src": "solution",
+            "quote": "(X-20)(X-35)\\ge0",
+            "evidenceType": "IMPLIED",
+            "justification": "판별식의 비음수 조건을 두 근 바깥의 X 범위로 푼다."
+          },
+          {
+            "term": "표준화",
+            "src": "solution",
+            "quote": "$X=20$은 $Z=-2$",
+            "evidenceType": "IMPLIED",
+            "justification": "평균30, 표준편차5로 양 끝 경계를 표준화하여 확률표를 조회한다."
+          },
+          {
+            "term": "이항분포의정규근사",
+            "src": "solution",
+            "quote": "$X$를 $N(30,5^2)$로 근사한다",
+            "evidenceType": "IMPLIED",
+            "justification": "이항분포의 평균30과 분산25를 갖는 정규분포로 근사한다."
+          },
           {
             "term": "판별식",
             "src": "solution",
@@ -1063,11 +1199,9 @@
             "quote": "표본평균 X̄가"
           },
           {
-            "term": "임의추출",
-            "src": "solution",
-            "quote": "한 상자의 9병 평균",
-            "evidenceType": "IMPLIED",
-            "justification": "9병을 한 상자로 표본 추출"
+            "term": "표본의크기",
+            "src": "stem",
+            "quote": "음료수 9병의 용량에 대한"
           }
         ],
         "goal": [
@@ -1079,14 +1213,28 @@
         ],
         "method": [
           {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "다시 $Y$를 $N(40,6^2)$로 근사하면",
+            "evidenceType": "IMPLIED",
+            "justification": "불량 상자 수 이항분포를 평균40, 분산36인 정규분포로 다시 근사한다."
+          },
+          {
+            "term": "이항분포의정규근사",
+            "src": "solution",
+            "quote": "다시 $Y$를 $N(40,6^2)$로 근사하면",
+            "evidenceType": "IMPLIED",
+            "justification": "표본평균에서 산출한 불량률을 사용한 이항분포를 두 번째 단계에서 정규근사한다."
+          },
+          {
             "term": "표본평균",
             "src": "solution",
-            "quote": "\\overline X\\sim N\\left(240,\\left(\\dfrac{12}{\\sqrt9}\\right)^2\\right)",
+            "quote": "한 상자의 9병 평균 $\\overline X$는",
             "evidenceType": "IMPLIED",
             "justification": "표본평균의 정규분포 유도"
           },
           {
-            "term": "정규분포",
+            "term": "표준화",
             "src": "solution",
             "quote": "불량 판정 경계를 표준화하면",
             "evidenceType": "NAMED"
@@ -1100,6 +1248,11 @@
           }
         ],
         "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "234.4mL보다 작거나 249.6mL보다 크면"
+          },
           {
             "term": "부등식",
             "src": "stem",
@@ -1136,6 +1289,11 @@
         ],
         "goal": [
           {
+            "term": "표본의크기",
+            "src": "stem",
+            "quote": "크기가 n인 표본"
+          },
+          {
             "term": "최솟값",
             "src": "stem",
             "quote": "n의 최솟값은?"
@@ -1143,9 +1301,15 @@
         ],
         "method": [
           {
-            "term": "정규분포",
+            "term": "표본평균",
             "src": "solution",
-            "quote": "P\\left(Z\\le1.96-\\dfrac{m\\sqrt n}{4}\\right)",
+            "quote": "표본평균은 $\\overline X",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표준화",
+            "src": "solution",
+            "quote": "1.96-\\dfrac{m\\sqrt n}{4}",
             "evidenceType": "IMPLIED",
             "justification": "표본평균의 확률식을 표준정규분포 Z로 표준화"
           },
@@ -1203,6 +1367,27 @@
         ],
         "method": [
           {
+            "term": "일차식",
+            "src": "solution",
+            "quote": "7X-300$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "앞면 횟수 X에 대해 최종점수를 일차식 7X-300으로 모델링하고 X≥60으로 바꾼다."
+          },
+          {
+            "term": "표준화",
+            "src": "solution",
+            "quote": "\\dfrac{60-50}{5}",
+            "evidenceType": "IMPLIED",
+            "justification": "횟수 경계60을 평균50과 표준편차5로 표준화한다."
+          },
+          {
+            "term": "이항분포의정규근사",
+            "src": "solution",
+            "quote": "$X$를 $N(50,5^2)$로 근사한다",
+            "evidenceType": "IMPLIED",
+            "justification": "100회의 독립 시행 성공횟수 이항분포를 정규분포로 근사한다."
+          },
+          {
             "term": "이항분포",
             "src": "solution",
             "quote": "$X\\sim B\\left(100,\\dfrac12\\right)$이다",
@@ -1237,6 +1422,11 @@
       "slots": {
         "given": [
           {
+            "term": "확률변수의일차식",
+            "src": "stem",
+            "quote": "Y=3X-100"
+          },
+          {
             "term": "정규분포",
             "src": "stem",
             "quote": "정규분포 $N(100,9)$를 따를 때"
@@ -1256,6 +1446,13 @@
         ],
         "method": [
           {
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "E(Y)=3E(X)-100",
+            "evidenceType": "IMPLIED",
+            "justification": "Y=3X-100의 평균과 분산 변환 공식으로 Y의 분포를 정한다."
+          },
+          {
             "term": "평균",
             "src": "solution",
             "quote": "E(Y)=3E(X)-100",
@@ -1268,7 +1465,7 @@
             "evidenceType": "NAMED"
           },
           {
-            "term": "정규분포",
+            "term": "표준화",
             "src": "solution",
             "quote": "$Y=191$을 표준화하면",
             "evidenceType": "NAMED"
@@ -1320,12 +1517,12 @@
           {
             "term": "표본평균",
             "src": "solution",
-            "quote": "\\overline X\\sim N\\left(300,\\dfrac{625}{n}\\right)",
+            "quote": "\\dfrac{625}{n}",
             "evidenceType": "IMPLIED",
             "justification": "표본평균의 정규분포 및 표준오차 도출"
           },
           {
-            "term": "정규분포",
+            "term": "표준화",
             "src": "solution",
             "quote": "표준화하면",
             "evidenceType": "NAMED"
@@ -1357,6 +1554,11 @@
       "slots": {
         "given": [
           {
+            "term": "확률변수의일차식",
+            "src": "stem",
+            "quote": "Y=-3X+a"
+          },
+          {
             "term": "정규분포",
             "src": "stem",
             "quote": "정규분포 $N(80,5^2)$를 따르는 확률변수 $X$"
@@ -1376,7 +1578,14 @@
         ],
         "method": [
           {
-            "term": "정규분포",
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "E(Y)=-3\\times80+a=a-240",
+            "evidenceType": "IMPLIED",
+            "justification": "음의 일차변환 Y=-3X+a의 평균 a-240, 표준편차15를 구한 후 두 번째 확률조건에 사용한다."
+          },
+          {
+            "term": "표준화",
             "src": "solution",
             "quote": "$X=75$를 표준화하면",
             "evidenceType": "NAMED"
@@ -1390,6 +1599,11 @@
           }
         ],
         "condition": [
+          {
+            "term": "관계",
+            "src": "stem",
+            "quote": "P(a-240\\le Y\\le b)=0.3413"
+          },
           {
             "term": "등식",
             "src": "stem",
@@ -1406,28 +1620,41 @@
   ],
   "candidates": [
     {
-      "term": "선형변환",
-      "en": [
-        "LINEAR_TRANSFORMATION"
-      ],
+      "term": "이항분포의정규근사",
+      "en": "NORMAL_APPROXIMATION_TO_BINOMIAL",
       "synonyms": [
-        "일차변환"
+        "이항분포의 정규근사"
       ],
       "kind": "방법",
-      "parent": "확률변수",
-      "note": "확률변수에 상수를 곱하고 더하여 새 확률변수를 만드는 변환 Y=aX+b",
+      "parent": "정규분포",
+      "note": "시행 횟수가 큰 이항분포를 같은 평균과 분산의 정규분포로 근사하여 확률을 구하는 방법",
       "usedIn": [
-        6,
-        22,
-        24
+        10,
+        17,
+        19,
+        21
+      ]
+    },
+    {
+      "term": "표준오차",
+      "en": "STANDARD_ERROR",
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "표준편차",
+      "note": "표본통계량의 표본분포의 표준편차. 표본평균에서는 모표준편차를 표본크기의 제곱근으로 나눈 값",
+      "usedIn": [
+        11,
+        16
       ]
     }
   ],
   "selfCheck": {
     "items": 24,
-    "quotesChecked": 176,
+    "quotesChecked": 205,
     "quotesNotFound": 0,
-    "warningsRechecked": [],
-    "notes": ""
+    "warningsRechecked": [
+      2
+    ],
+    "notes": "Sol High가 24문항 Q/C/S와 고유 그림5개를 전부 직접 검수. Q2 용어수 WARN 재확인: E(X)=np 공식 한 단계인 기초문항이라 일반 용어를 추가하지 않음. 기존 선형변환 후보는 확률변수의일차식의 동의어이므로 제거하고 대표표기 사용. 신규 후보 이항분포의정규근사 및 표준오차는 사전749개 ko/synonyms에 없음을 직접 확인. 기계검사/통계/SHA는 ROOT 담당. | 2026-11-04 Codex-gpt-6.1-sol High 전 문항·그림 4칸 의미 검수. 원작성자 judgedBy 보존. 원본문항 수학 품질 승인과 별개."
   }
 }
