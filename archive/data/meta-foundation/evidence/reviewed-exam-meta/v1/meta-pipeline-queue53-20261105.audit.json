@@ -1,0 +1,645 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "auditTimestamp": "2026-10-25T01:23:38.656222+00:00",
+  "examTitle": "26_왕운중_1학기_중간_중2_기출",
+  "sourceDriveId": "1yApz14r59mmRlLrCwtX-4pau3APmQlvF",
+  "sourceSha256": "58034e35743b26b2431445509f305c17ff2a3a628bcbbe57f1ca90d97ed688ac",
+  "totalQuestions": 24,
+  "totalApproved": 24,
+  "totalHold": 0,
+  "auditStatus": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "records": [
+    {
+      "questionId": 1,
+      "questionNo": 1,
+      "readingEvidence": {
+        "sourceTextExcerpt": "순환소수 $0.\\overline{23}$를 기약분수로 나타낸 것은? [3점]",
+        "solutionDecisiveExcerpt": "순환소수 $0.\\overline{23}$를 $x$라 하면,\n순환마디가 두 자리이므로 소수점 아래 첫 두 자리가 한 번 밀려 같은 소수가 되도록 $100$을 곱한다.\n$100x=23.\\overline{23}$\n두 식을 빼면 순환 부분이 사라진다.\n$100x-x=23.\\o"
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "subUnit": "유리수와 순환소수",
+      "problemTypeKey": "PT_REPEATING_DECIMAL_TO_FRACTION",
+      "templateKey": "TPL_POWER_OF_TEN_SUBTRACTION_METHOD",
+      "crossConceptKeys": [
+        "CC_REPEATING_DECIMAL_TO_FRACTION",
+        "CC_POWER_OF_TEN_SUBTRACTION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "순환소수 0.\\overline{23}에 100을 곱해 100x-x=23으로부터 23/99를 도출하는 1단계 기본 분수 변환 문항으로 기존 난이도 Bucket 1을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 2,
+      "questionNo": 2,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 분수를 소수로 나타낼 때, 순환소수로만 나타낼 수 있는 것의 개수는? [3점]",
+        "solutionDecisiveExcerpt": "각 분수를 기약분수로 나타낸다.\n$\\dfrac27$은 분모에 $7$이 남으므로 순환소수이다.\n$\\dfrac{49}{2\\times5\\times7}=\\dfrac7{10}$은 유한소수이다.\n$-\\dfrac1{13}$과 $\\dfrac{10}{45}=\\dfrac29$은 순환소수"
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "subUnit": "유리수와 순환소수",
+      "problemTypeKey": "PT_TERMINATING_DECIMAL_DETERMINATION",
+      "templateKey": "TPL_DENOMINATOR_PRIME_FACTOR_FILTER",
+      "crossConceptKeys": [
+        "CC_TERMINATING_DECIMAL_CONDITION",
+        "CC_DENOMINATOR_PRIME_FACTORIZATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "각 분수를 기약분수로 나타내어 분모의 소인수에 2, 5 이외의 소인수가 남는 순환소수 3개를 선별하는 2단계 분수 분류 문항으로 기존 난이도 Bucket 2를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 3,
+      "questionNo": 3,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 보기 중에서 옳은 것을 모두 고른 것은? (정답 2개) [4점]",
+        "solutionDecisiveExcerpt": "① 무한소수 중에는 무리수도 있다.\n② $\\pi$는 순환하지 않는다.\n③ 순환소수는 분수로 나타낼 수 있다.\n④ $\\dfrac{64}{81}$의 기약분모는 $81=3^4$이므로 유한소수가 아니다.\n⑤ 유리수의 소수 표현은 유한소수 또는 순환소수이다.\n따라서 옳은 것은"
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "subUnit": "유리수와 순환소수",
+      "problemTypeKey": "PT_RATIONAL_AND_REPEATING_CLASSIFICATION",
+      "templateKey": "TPL_FRACTION_DECIMAL_PROPERTY_STATEMENT_AUDIT",
+      "crossConceptKeys": [
+        "CC_RATIONAL_NUMBER_CLASSIFICATION",
+        "CC_REPEATING_DECIMAL_PROPERTIES"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "순환소수의 유리수 포함 관계와 유한/무한소수 분류 명제의 참·거짓을 종합 판정하여 ③, ⑤를 고르는 2단계 개념 감사 문항으로 기존 난이도 Bucket 2를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 4,
+      "questionNo": 4,
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 분수 $\\dfrac{2}{55}$, $\\dfrac{3}{11}$ 사이에 있는 분모가 $55$인 분수 중에서 유한소수로 나타낼 수 있는 분수는 모두 몇 개인가? (단, 분자는 자연수이다.) [4점]",
+        "solutionDecisiveExcerpt": "두 분수를 분모가 $55$인 분수로 나타낸다.\n$\\dfrac{2}{55}<\\dfrac{n}{55}<\\dfrac{15}{55}$\n따라서 $n=3,4,\\ldots,14$이다.\n$\\dfrac{n}{55}$이 유한소수이려면 기약분모에서 $11$이 없어져야 하므로 $n$은 $1"
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "subUnit": "유리수와 순환소수",
+      "problemTypeKey": "PT_TERMINATING_DECIMAL_DETERMINATION",
+      "templateKey": "TPL_DENOMINATOR_PRIME_FACTOR_FILTER",
+      "crossConceptKeys": [
+        "CC_TERMINATING_DECIMAL_CONDITION",
+        "CC_COMMON_MULTIPLE_CONSTRAINT",
+        "CC_INTERVAL_BOUNDED_ENUMERATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "2/55 < n/55 < 15/55에서 55=5*11이므로 n이 11의 배수이어야 함을 파악하여 n=11 단 1개를 도출하는 3단계 유한소수 조건 응용 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 5,
+      "questionNo": 5,
+      "readingEvidence": {
+        "sourceTextExcerpt": "분수 $\\dfrac{9}{37}$을 소수로 나타낼 때, 순환마디를 이루는 숫자의 개수를 $a$개, 소수점 아래 $2026$번째 자리의 숫자를 $b$라고 하자. $\\dfrac{b^a+b^a+b^a}{a}$의 값은? [",
+        "solutionDecisiveExcerpt": "$\\dfrac9{37}=0.\\overline{243}$이므로 순환마디의 숫자 개수는 $a=3$이다.\n$2026=3\\times675+1$이므로 $b=2$이다.\n$\\dfrac{b^a+b^a+b^a}{a}=\\dfrac{2^3+2^3+2^3}{3}=8$"
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "subUnit": "유리수와 순환소수",
+      "problemTypeKey": "PT_REPEATING_DECIMAL_NOTATION",
+      "templateKey": "TPL_REPEATING_PERIOD_DOT_NOTATION_AUDIT",
+      "crossConceptKeys": [
+        "CC_REPEATING_PERIOD_CYCLE",
+        "CC_DECIMAL_PERIODICITY_MODULO",
+        "CC_EXPONENT_CALCULATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "9/37=0.\\overline{243}에서 주기 a=3, 2026=3*675+1로부터 b=2를 구한 뒤 (2^3+2^3+2^3)/3=24/3=8을 산출하는 3단계 복합 주기 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 6,
+      "questionNo": 6,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 보기는 세 학생이 어느 날의 날짜 $a$월 $b$일을 분수로 나타내는 활동을 하고 이에 대한 내용을 나눈 대화이다. 옳은 설명을 한 학생을 모두 고른 것은? (단, 1보다 작은 분수로 나타낼 수 있는 날짜만 생",
+        "solutionDecisiveExcerpt": "$\\dfrac7{28}=\\dfrac14$이므로 레이의 말은 맞다.\n$b=8$이면 $1\\le a<8$이고 $\\dfrac a8$의 기약분모는 $2$의 거듭제곱이므로 모두 유한소수이다. 원영도 맞다.\n1월에는 $a=1$이고, $1<b\\le31$인 날짜만 분수로 나타낼 수 있"
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "subUnit": "유리수와 순환소수",
+      "problemTypeKey": "PT_TERMINATING_DECIMAL_DETERMINATION",
+      "templateKey": "TPL_DENOMINATOR_PRIME_FACTOR_FILTER",
+      "crossConceptKeys": [
+        "CC_TERMINATING_DECIMAL_CONDITION",
+        "CC_REPEATING_DECIMAL_PROPERTIES",
+        "CC_REAL_WORLD_CONTEXT_REASONING"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "분수 a/b가 유한소수인지 순환소수인지 학생별 주장의 기약분모 소인수를 각각 검증하여 레이, 원영을 선별하는 3단계 대화 판정 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 7,
+      "questionNo": 7,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 순환소수를 분수로 나타낸 것으로 옳지 않은 것은? [3점]",
+        "solutionDecisiveExcerpt": "$0.\\dot4=\\dfrac49$, $0.\\overline{23}=\\dfrac{23}{99}$이다.\n$0.4\\dot7=0.4777\\cdots=\\dfrac{43}{90}$이다.\n$1.8\\overline{23}=1.82323\\cdots=\\dfrac{361}{198}$이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "subUnit": "유리수와 순환소수",
+      "problemTypeKey": "PT_REPEATING_DECIMAL_TO_FRACTION",
+      "templateKey": "TPL_POWER_OF_TEN_SUBTRACTION_METHOD",
+      "crossConceptKeys": [
+        "CC_REPEATING_DECIMAL_TO_FRACTION",
+        "CC_DECIMAL_CONVERSION_AUDIT"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "선지별 순환소수 공식 (전체 수 - 비순환 수)/9..0을 대조하여 1.8\\overline{23}=1805/990임을 확인하고 ⑤의 오류를 선별하는 2단계 공식 감사 문항으로 기존 난이도 Bucket 2를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 8,
+      "questionNo": 8,
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 유리수 $\\dfrac13$과 $\\dfrac27$을 각각 소수로 나타낼 때, 소수점 아래 $n$번째 자리의 숫자를 각각 $a_n$, $b_n$이라고 하자. $a_n+b_n=5$를 만족하는 20 이하의 자연수 $n$",
+        "solutionDecisiveExcerpt": "$\\dfrac13=0.333\\cdots$이므로 $a_n=3$이다.\n$\\dfrac27=0.\\overline{285714}$에서 $a_n+b_n=5$가 되려면 $b_n=2$여야 한다.\n순환마디에서 $2$는 첫째 자리이므로\n$n=1,7,13,19$\n따라서 $20$ 이하의 자"
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "subUnit": "유리수와 순환소수",
+      "problemTypeKey": "PT_REPEATING_DECIMAL_NOTATION",
+      "templateKey": "TPL_REPEATING_PERIOD_DOT_NOTATION_AUDIT",
+      "crossConceptKeys": [
+        "CC_REPEATING_PERIOD_CYCLE",
+        "CC_PERIODIC_SEQUENCE_SUM",
+        "CC_MODULO_CONGRUENCE"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "a_n=3 고정에서 b_n=2가 되도록 2/7=0.\\overline{285714}의 6주기 중 첫째 자리가 되는 20 이하 n=1, 7, 13, 19의 4개를 도출하는 3단계 이중 주기 수열 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 9,
+      "questionNo": 9,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 옳지 않은 것은? [3점]",
+        "solutionDecisiveExcerpt": "거듭제곱의 곱에서는 같은 밑의 지수를 더한다.\n$x^2\\times x^3\\times y^3\\times y^2=x^{2+3}y^{3+2}=x^5y^5$\n따라서 ⑤가 옳지 않다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-EXPONENT_LAW",
+      "subUnit": "지수법칙",
+      "problemTypeKey": "PT_EXPONENT_LAWS_EVALUATION",
+      "templateKey": "TPL_EXPONENT_LAW_VALIDITY_AUDIT",
+      "crossConceptKeys": [
+        "CC_EXPONENT_ADDITION_RULE",
+        "CC_EXPONENT_POWER_RULE"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "지수법칙의 밑이 같은 거듭제곱의 곱셈·나눗셈·거듭제곱 공식을 선지별로 대조하여 x^2*x^3*y^3*y^2=x^5 y^5임을 확인하고 ⑤의 오류를 선별하는 2단계 지수법칙 감사 문항으로 기존 난이도 Bucket 2를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 10,
+      "questionNo": 10,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$3^2=A$라고 할 때, $81^4$을 $A$를 사용하여 나타내면? [4점]",
+        "solutionDecisiveExcerpt": "$81=3^4$이므로\n$81^4=(3^4)^4=3^{16}$\n$A=3^2$이므로\n$A^8=(3^2)^8=3^{16}$\n따라서 $81^4=A^8$이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-EXPONENT_LAW",
+      "subUnit": "지수법칙",
+      "problemTypeKey": "PT_EXPONENT_LAWS_APPLICATION",
+      "templateKey": "TPL_POWER_OF_QUOTIENT_EXPONENT_EQUATION",
+      "crossConceptKeys": [
+        "CC_BASE_CONVERSION_EXPONENT",
+        "CC_EXPONENT_SUBSTITUTION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "81^4=(3^4)^4=3^16이고 (3^2)^8=A^8임을 연계하여 치환식을 산출하는 2단계 지수 변형 문항으로 기존 난이도 Bucket 2를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 11,
+      "questionNo": 11,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음을 계산한 식에 대한 설명으로 옳은 것은? [4점]<br>$(9x^2y^3+27xy^4)\\div3y-(20x^3y-8x^2y^2)$",
+        "solutionDecisiveExcerpt": "첫 괄호를 $3y$로 나눈다.\n$(9x^2y^3+27xy^4)\\div3y=3x^2y^2+9xy^3$\n둘째 괄호를 빼면\n$3x^2y^2+9xy^3-(20x^3y-8x^2y^2)$\n$=-20x^3y+11x^2y^2+9xy^3$\n항의 계수 합은 $-20+11+9=0$이므로"
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-POLYNOMIAL_CALCULATION",
+      "subUnit": "식의 계산",
+      "problemTypeKey": "PT_POLYNOMIAL_DIVISION_BY_MONOMIAL",
+      "templateKey": "TPL_DUAL_POLYNOMIAL_QUOTIENT_SUBTRACTION",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL",
+        "CC_POLYNOMIAL_SUBTRACTION_DISTRIBUTION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "다항식을 단항식 3y로 나눈 3x^2y^2+9xy^3에서 뒤의 다항식을 분배 감산하여 -20x^3y+11x^2y^2+9xy^3을 구하고 ⑤를 확인하는 3단계 다항식 혼합 계산 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 12,
+      "questionNo": 12,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$A=x^2-5x+3$, $B=-x+2$이고, $-3A-\\{5B-2(A-B)\\}-3$을 간단히 하였을 때, $x$의 계수와 상수항의 합을 구하면? [4점]",
+        "solutionDecisiveExcerpt": "먼저 $A-B$를 구한다.\n$A-B=x^2-4x+1$\n$5B-2(A-B)=5(-x+2)-2(x^2-4x+1)$\n$=-2x^2+3x+8$\n따라서\n$-3A-\\{5B-2(A-B)\\}-3$\n$=-3(x^2-5x+3)-(-2x^2+3x+8)-3$\n$=-x^2+12x-20$\n$x"
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-POLYNOMIAL_CALCULATION",
+      "subUnit": "식의 계산",
+      "problemTypeKey": "PT_POLYNOMIAL_BRACKET_SIMPLIFICATION",
+      "templateKey": "TPL_NESTED_BRACKETS_LINEAR_COMBINATION",
+      "crossConceptKeys": [
+        "CC_NESTED_BRACKET_SIMPLIFICATION",
+        "CC_ALGEBRAIC_POLYNOMIAL_SUBSTITUTION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "중괄호와 소괄호 식을 먼저 동류항 정리하여 -A-3B-3으로 변형한 뒤 A, B를 대입해 -x^2+8x-12를 얻고 8+(-12)=-4를 도출하는 3단계 괄호 전개 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 13,
+      "questionNo": 13,
+      "readingEvidence": {
+        "sourceTextExcerpt": "오른쪽 그림과 같이 가로의 길이가 $2x^3y$, 세로의 길이가 $4x^3y$인 직사각형 $ABCD$, $AB$를 지름으로 하는 반원 $O$, 직각삼각형 $ABC$가 있다. 변 $AB$를 축으로 하여 직각삼각형 $A",
+        "solutionDecisiveExcerpt": "직각삼각형을 $AB$를 축으로 회전시키면 반지름이 $2x^3y$, 높이가 $4x^3y$인 원뿔이 생긴다.\n$V_1=\\dfrac13\\pi(2x^3y)^2(4x^3y)=\\dfrac{16}{3}\\pi x^9y^3$\n반원을 지름 $AB$를 축으로 회전시키면 반지름이 $2x^3"
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-POLYNOMIAL_CALCULATION",
+      "subUnit": "식의 계산",
+      "problemTypeKey": "PT_MONOMIAL_OPERATION_AUDIT",
+      "templateKey": "TPL_MONOMIAL_MULT_DIV_VERIFICATION",
+      "crossConceptKeys": [
+        "CC_REVOLUTION_SOLID_VOLUME",
+        "CC_MONOMIAL_POWER_CALCULATION",
+        "CC_RATIO_SIMPLIFICATION"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "원뿔 부피 V1=16/3 pi x^9y^3, 반구 부피 V2=16/3 pi x^9y^3, 원기둥 부피 V3=16 pi x^9y^3을 문자로 모델링하여 비 1:1:3을 도출하는 4단계 회전체-단항식 심화 문항으로 기존 난이도 Bucket 4를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 14,
+      "questionNo": 14,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$x$에 대한 이차식 $A$가 다음 조건을 모두 만족시킬 때, 상수 $a$, $b$에 대하여 $a+b$의 값을 구하면? [5점]<br>(가) $5x^2-x+4$에서 $A$를 빼면 $-x^2+7x-b$<br>(나) $",
+        "solutionDecisiveExcerpt": "(가)에서\n$A=(5x^2-x+4)-(-x^2+7x-b)$\n$=6x^2-8x+4+b$\n(나)에서 $2x$를 곱하면\n$A=2x(3x-a+\\dfrac{9}{2x})=6x^2-2ax+9$\n계수를 비교하여 $-8=-2a$, $4+b=9$를 얻는다.\n따라서 $a=4$, $b=5"
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-POLYNOMIAL_CALCULATION",
+      "subUnit": "식의 계산",
+      "problemTypeKey": "PT_ERRONEOUS_OPERATION_REVERSAL",
+      "templateKey": "TPL_RECOVER_ORIGINAL_POLYNOMIAL",
+      "crossConceptKeys": [
+        "CC_INVERSE_POLYNOMIAL_OPERATION",
+        "CC_COEFFICIENT_MATCHING_POLYNOMIAL"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "(가)에서 A=6x^2-8x+4+b, (나)에서 A=6x^2-2ax+9를 각각 유도한 뒤 계수비교법으로 -2a=-8, 4+b=9로부터 a=4, b=5, a+b=9를 도출하는 4단계 역연산 계수비교 문항으로 기존 난이도 Bucket 4를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 15,
+      "questionNo": 15,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\dfrac{21x^2-28xy}{7x}-\\dfrac{15xy+9y^3}{3y}$를 간단히 하였을 때, 모든 항의 계수의 합을 구하면? [4점]",
+        "solutionDecisiveExcerpt": "각 분수를 나누어 계산한다.\n$\\dfrac{21x^2-28xy}{7x}=3x-4y$\n$\\dfrac{15xy+9y^3}{3y}=5x+3y^2$\n따라서 전체 식은\n$(3x-4y)-(5x+3y^2)=-2x-4y-3y^2$\n계수의 합은 $-2-4-3=-9$이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-POLYNOMIAL_CALCULATION",
+      "subUnit": "식의 계산",
+      "problemTypeKey": "PT_POLYNOMIAL_DIVISION_BY_MONOMIAL",
+      "templateKey": "TPL_DUAL_POLYNOMIAL_QUOTIENT_SUBTRACTION",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL",
+        "CC_POLYNOMIAL_COEFFICIENT_SUM"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "두 분수식을 (3x-4y)-(5x+3y^2)=-2x-4y-3y^2으로 정리한 후 계수의 합 (-2)+(-4)+(-3)=-9를 계산하는 2단계 나눗셈 연산 문항으로 기존 난이도 Bucket 2를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 16,
+      "questionNo": 16,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 일차부등식을 풀면? [3점]<br>$4x+3>2x-5$",
+        "solutionDecisiveExcerpt": "먼저 양변에서 $2x$를 빼고 $3$을 뺀다.<br>$4x+3>2x-5$<br>$2x+3>-5$<br>$2x>-8$<br>양변을 양수 $2$로 나누므로 부등호의 방향은 바뀌지 않는다.<br>$x>-4$<br>따라서 정답은 ①이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-02",
+      "standardUnit": "일차부등식",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "subUnit": "일차부등식",
+      "problemTypeKey": "PT_LINEAR_INEQUALITY_SOLUTION",
+      "templateKey": "TPL_SIMPLE_LINEAR_INEQUALITY_SOLUTION",
+      "crossConceptKeys": [
+        "CC_LINEAR_INEQUALITY_SOLVE",
+        "CC_INEQUALITY_TRANSPOSITION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "이항 및 동류항 정리 2x > -8로부터 x > -4를 바로 도출하는 1단계 기본 일차부등식 풀이 문항으로 기존 난이도 Bucket 1을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 17,
+      "questionNo": 17,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$a-3<b-3$일 때, 다음 중 옳지 않은 것을 고르면? [4점]",
+        "solutionDecisiveExcerpt": "주어진 부등식의 양변에 $3$을 더하면 $a<b$이다.\n양변에 양수를 곱하거나 같은 수를 더하면 부등호 방향은 바뀌지 않는다.\n$-3$을 곱하면 부등호 방향이 바뀌어 $-3a>-3b$이다.\n따라서 $-3a+5<-3b+5$라고 한 ②가 옳지 않다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-02",
+      "standardUnit": "일차부등식",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "subUnit": "일차부등식",
+      "problemTypeKey": "PT_INEQUALITY_PROPERTIES_AUDIT",
+      "templateKey": "TPL_INEQUALITY_ORDER_TRANSFORMATION_AUDIT",
+      "crossConceptKeys": [
+        "CC_INEQUALITY_SIGN_REVERSAL_NEGATIVE",
+        "CC_INEQUALITY_PROPERTY_AUDIT"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "a < b의 양변에 음수 -3을 곱하면 부등호 방향이 바뀌어 -3a+5 > -3b+5이어야 함을 확인하여 ②의 오류를 선별하는 2단계 부등식 성질 감사 문항으로 기존 난이도 Bucket 2를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 18,
+      "questionNo": 18,
+      "readingEvidence": {
+        "sourceTextExcerpt": "일차부등식 $\\frac92x-7\\le3x+a$를 만족시키는 해가 모두 음수일 때, 수 $a$의 값의 범위를 구하면? [4점]",
+        "solutionDecisiveExcerpt": "부등식을 풀면\n$\\dfrac92x-7\\le3x+a$\n$\\dfrac32x\\le a+7$\n$x\\le\\dfrac23(a+7)$\n모든 해가 음수이려면 가장 큰 해도 $0$보다 작아야 한다.\n$\\dfrac23(a+7)<0$\n따라서 $a<-7$이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-02",
+      "standardUnit": "일차부등식",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "subUnit": "일차부등식",
+      "problemTypeKey": "PT_LINEAR_INEQUALITY_SOLUTION",
+      "templateKey": "TPL_MIXED_DECIMAL_FRACTION_INEQUALITY",
+      "crossConceptKeys": [
+        "CC_FRACTIONAL_INEQUALITY_SOLVE",
+        "CC_ALL_NEGATIVE_SOLUTIONS_CONDITION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "부등식의 해 x <= 2/3(a+7)에서 모든 해가 음수가 되기 위한 경계 조건 2/3(a+7) < 0을 풀어 a < -7을 도출하는 3단계 조건부 부등식 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 19,
+      "questionNo": 19,
+      "readingEvidence": {
+        "sourceTextExcerpt": "일차부등식 $1.2x+1>\\frac15(5x-10)$을 만족시키는 $x$의 값 중 가장 작은 정수는? [4점]",
+        "solutionDecisiveExcerpt": "부등식을 정리한다.\n$1.2x+1>\\dfrac15(5x-10)$\n$\\dfrac65x+1>x-2$\n$\\dfrac15x>-3$\n$x>-15$\n따라서 가장 작은 정수는 $-14$이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-02",
+      "standardUnit": "일차부등식",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "subUnit": "일차부등식",
+      "problemTypeKey": "PT_LINEAR_INEQUALITY_SOLUTION",
+      "templateKey": "TPL_MIXED_DECIMAL_FRACTION_INEQUALITY",
+      "crossConceptKeys": [
+        "CC_DECIMAL_FRACTION_INEQUALITY",
+        "CC_MINIMUM_INTEGER_SOLUTION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "소수와 분수가 혼합된 부등식을 정리하여 1/5 x > -3, x > -15를 구한 뒤 가장 작은 정수 -14를 결정하는 2단계 정수해 탐색 문항으로 기존 난이도 Bucket 2를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 20,
+      "questionNo": 20,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 (가), (나)의 일차부등식을 만족하는 임의의 해 중 정수인 것을 각각 $a$, $b$라고 할 때, $a+b$의 최솟값을 구하면? [5점]<br>(가) $4x+9>2x+1$<br>(나) $0.01x-0.3>-0",
+        "solutionDecisiveExcerpt": "(가)를 풀면\n$4x+9>2x+1$\n$x>-4$\n따라서 가장 작은 정수해는 $a=-3$이다.\n(나)를 풀면\n$0.01x-0.3>-0.1x+0.14$\n$0.11x>0.44$\n$x>4$\n따라서 가장 작은 정수해는 $b=5$이다.\n$a+b=-3+5=2$이다."
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-02",
+      "standardUnit": "일차부등식",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "subUnit": "일차부등식",
+      "problemTypeKey": "PT_LINEAR_INEQUALITY_SOLUTION",
+      "templateKey": "TPL_MIXED_DECIMAL_FRACTION_INEQUALITY",
+      "crossConceptKeys": [
+        "CC_DUAL_INEQUALITY_INTEGER_MINIMUM",
+        "CC_DECIMAL_INEQUALITY_SCALING"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "(가)에서 x > -4로 최소 정수 a=-3, (나)에서 양변 100배하여 11x > 44, x > 4로부터 최소 정수 b=5를 구하여 a+b=2를 산출하는 3단계 복합 일차부등식 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 21,
+      "questionNo": 21,
+      "readingEvidence": {
+        "sourceTextExcerpt": "분수 $\\frac{x}{630}$은 유한소수로 나타낼 수 있고, 기약분수로 나타내면 $\\frac1y$가 된다. $x$가 100보다 크고 200보다 작은 자연수일 때, $x+y$의 값을 구하시오. [4점]",
+        "solutionDecisiveExcerpt": "$\\dfrac{x}{630}=\\dfrac1y$이므로 $xy=630$이다.\n유한소수 $\\dfrac1y$의 기약분모 $y$는 $2,5$만을 소인수로 가져야 한다.\n$100<x<200$에서 $3.15<y=630/x<6.3$이므로 $y=4,5,6$을 확인한다.\n$y=5$일 때"
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "subUnit": "유리수와 순환소수",
+      "problemTypeKey": "PT_TERMINATING_DECIMAL_DETERMINATION",
+      "templateKey": "TPL_DENOMINATOR_PRIME_FACTOR_FILTER",
+      "crossConceptKeys": [
+        "CC_TERMINATING_DECIMAL_CONDITION",
+        "CC_UNIT_FRACTION_FACTORIZATION",
+        "CC_BOUNDED_RANGE_SEARCH"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "630=2*3^2*5*7에서 x가 9*7=63의 배수이어야 하고 xy=630에서 100<x<200 범위의 x=126, y=5를 결정하여 x+y=131을 서술하는 4단계 최고난도 유한소수 서술형 문항으로 기존 난이도 Bucket 4를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 22,
+      "questionNo": 22,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$2^a\\times11\\times5^9$이 11자리의 자연수라고 할 때, 가능한 자연수 $a$의 값을 모두 구하시오. [5점]",
+        "solutionDecisiveExcerpt": "$a\\ge9$이면\n$2^a\\times11\\times5^9=11\\times2^{a-9}\\times10^9$이다.\n11자리의 수이려면\n$10\\le11\\times2^{a-9}<100$\n이어야 한다. 따라서 $a-9=0,1,2,3$이다.\n$a<9$이면 가장 큰 경우에도 $5,"
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-EXPONENT_LAW",
+      "subUnit": "지수법칙",
+      "problemTypeKey": "PT_NUMBER_OF_DIGITS_ESTIMATION",
+      "templateKey": "TPL_BASE_TEN_POWER_FACTORING",
+      "crossConceptKeys": [
+        "CC_BASE_TEN_POWER_FACTORING",
+        "CC_NUMBER_OF_DIGITS_ANALYSIS",
+        "CC_EXPONENT_RANGE_ENUMERATION"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "10^9을 묶어내어 11*2^(a-9)*10^9으로 변형하고 11자리가 되기 위한 10 <= 11*2^(a-9) < 100 조건에서 a-9=0, 1, 2, 3으로부터 a=9, 10, 11, 12를 도출하는 4단계 자릿수 심화 서술형 문항으로 기존 난이도 Bucket 4를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 23,
+      "questionNo": 23,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림은 넓이가 각각 $10x^2y+15xy^3$, $-12x^2y^4+21x^3y^2$인 직사각형 $A$, $B$를 서로 붙여 놓은 것이다. $A$의 세로의 길이가 $5xy$, $B$의 세로의 길이가 $3x^2",
+        "solutionDecisiveExcerpt": "직사각형 $A$의 가로 길이는\n$\\dfrac{10x^2y+15xy^3}{5xy}=2x+3y^2$이다.\n직사각형 $B$의 가로 길이는\n$\\dfrac{-12x^2y^4+21x^3y^2}{3x^2y^2}=-4y^2+7x$이다.\n따라서\n$L=(2x+3y^2)+(-4y^2+7x"
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-01",
+      "standardUnit": "수와 식",
+      "subUnitKey": "M2-01-POLYNOMIAL_CALCULATION",
+      "subUnit": "식의 계산",
+      "problemTypeKey": "PT_POLYNOMIAL_DIVISION_BY_MONOMIAL",
+      "templateKey": "TPL_DUAL_POLYNOMIAL_QUOTIENT_SUBTRACTION",
+      "crossConceptKeys": [
+        "CC_RECTANGLE_DIMENSION_DIVISION",
+        "CC_POLYNOMIAL_SUM_APPLICATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "직사각형 A의 가로 (10x^2y+15xy^3)/(5xy)=2x+3y^2과 B의 가로 (-12x^2y^4+21x^3y^2)/(3x^2y^2)=-4y^2+7x를 각각 나눗셈으로 구한 뒤 합 9x-y^2을 서술하는 3단계 도형 융합 서술형 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 24,
+      "questionNo": 24,
+      "readingEvidence": {
+        "sourceTextExcerpt": "왕운이가 역에서 기차를 기다리는데 출발 시각까지 2시간 이내에 식당에서 점심을 먹고 오려고 한다. 역과 식당까지 시속 $4\\text{ km}$로 같은 길을 걸어서 왕복하고 식당에서 점심을 40분 동안 먹으려고 할 때",
+        "solutionDecisiveExcerpt": "역에서 식당까지의 거리를 $x\\text{ km}$라고 한다. 왕복 걷는 시간은\n$\\dfrac{2x}{4}=\\dfrac{x}{2}$시간이다.\n점심 시간은 $40$분, 즉 $\\dfrac23$시간이므로\n$\\dfrac{x}{2}+\\dfrac23\\le2$\n$\\dfrac{x}{2"
+      },
+      "pack": "MIDDLE2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-02",
+      "standardUnit": "일차부등식",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "subUnit": "일차부등식",
+      "problemTypeKey": "PT_INEQUALITY_WORD_PROBLEM",
+      "templateKey": "TPL_MULTI_STAGE_SPEED_TIME_INEQUALITY",
+      "crossConceptKeys": [
+        "CC_SPEED_DISTANCE_TIME_INEQUALITY",
+        "CC_TIME_UNIT_CONVERSION",
+        "CC_WORD_PROBLEM_MODELING"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "왕복 이동 시간 2x/4=x/2시간과 점심 시간 40분=2/3시간의 합이 2시간 이내인 부등식 x/2+2/3 <= 2를 세워 x <= 8/3 km를 도출하는 3단계 거리-속력-시간 활용 서술형 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    }
+  ]
+}

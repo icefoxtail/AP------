@@ -1,0 +1,678 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "auditTimestamp": "2026-10-25T04:49:24.220528+00:00",
+  "examTitle": "19_풍덕중_1학기_중간_중3_기출",
+  "sourceDriveId": "1Ye5CeaYBYyr72W269Uv1BkaOOk4RtTlM",
+  "sourceSha256": "7fc0d0a1491a66715f55d2238c3f1762bb6563210055afe9dbc1fb59f3a827a6",
+  "totalQuestions": 25,
+  "totalApproved": 25,
+  "totalHold": 0,
+  "auditStatus": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "records": [
+    {
+      "questionId": 1,
+      "questionNo": 1,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 수를 근호를 사용하지 않고 나타낸 것 중 틀린 것은?",
+        "solutionDecisiveExcerpt": "각 보기의 값을 직접 확인한다.\n① $\\sqrt{49}=7$\n② $\\sqrt{(-5)^2}=|-5|=5$\n③ $\\sqrt{\\dfrac{25}{4}}=\\dfrac52$\n④ $-\\sqrt{0.16}=-0.4$\n⑤ $-\\sqrt{(-\\dfrac13)^2}=-\\dfrac13$"
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "subUnit": "제곱근과 실수",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+      "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+      "crossConceptKeys": [
+        "CC_RADICAL_SIGN_PROPERTIES",
+        "CC_NEGATIVE_SQUARE_ROOT",
+        "CC_DECIMAL_SQUARE_ROOT"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "음의 제곱근 부호 판정 및 소수 제곱근의 기본 계산 규칙을 대조하여 -sqrt(0.16)=-0.4임을 확인하는 1단계 기본 개념 문항이므로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 2,
+      "questionNo": 2,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\sqrt{x}-3$의 정수부분이 $3$일 때, $x$가 될 수 있는 자연수의 개수를 구하면?",
+        "solutionDecisiveExcerpt": "정수부분이 $3$이므로 $3\\le\\sqrt{x}-3<4$이다. 양변에 $3$을 더하면 $6\\le\\sqrt{x}<7$이므로, $36\\le x<49$이다.\n자연수 $x$는 $36,37,\\ldots,48$의 $13$개이다.\n$\\therefore$ ③"
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "subUnit": "제곱근과 실수",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+      "templateKey": "TPL_M3_RADICAL_INTEGER_PART_RANGE",
+      "crossConceptKeys": [
+        "CC_RADICAL_INTEGER_PART",
+        "CC_DOUBLE_INEQUALITY",
+        "CC_NATURAL_NUMBER_COUNTING"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "무리수의 정수부분 조건으로부터 연립부등식 6<=sqrt(x)<7을 세우고 양변 제곱을 통해 자연수 x의 개수 13을 도출하는 2단계 부등식 연계 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 3,
+      "questionNo": 3,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$10 \\le x \\le 20$일 때, $\\sqrt{\\frac{x}{240}}$이 유리수가 되는 $x$의 값을 구하면?",
+        "solutionDecisiveExcerpt": "보기의 값을 하나씩 확인한다.\\n$x=11$이면 $\\sqrt{\\frac{11}{240}}=\\frac{\\sqrt{165}}{60}$이고 $12^2<165<13^2$이므로 무리수이다.\\n$x=12$이면 $\\sqrt{\\frac{12}{240}}=\\frac{\\sqrt5}{10"
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "subUnit": "제곱근과 실수",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+      "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+      "crossConceptKeys": [
+        "CC_RATIONAL_SQUARE_ROOT_CONDITION",
+        "CC_PRIME_FACTORIZATION_SQUARE",
+        "CC_BOUNDED_RANGE_SEARCH"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "분모 240을 소인수분해하여 근호 안이 유리수의 제곱이 되도록 x의 소인수 조건을 분석하고 주어진 범위 안의 x=15를 결정하는 2단계 소인수 응용 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 4,
+      "questionNo": 4,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\sqrt{5}$의 소수부분을 $a$라고 할 때, $\\sqrt{45}$의 소수부분을 $a$를 사용하여 나타내면?",
+        "solutionDecisiveExcerpt": "$a$는 $\\sqrt5$의 소수부분이므로 $a=\\sqrt5-2$이고, 따라서 $\\sqrt5=a+2$이다.\\n$\\sqrt{45}=3\\sqrt5=3(a+2)=3a+6$이다.\\n또 $6^2=36<45<49=7^2$이므로 $6<\\sqrt{45}<7$이다. 따라서 $\\sqrt{"
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+      "templateKey": "TPL_M3_RADICAL_FRACTIONAL_PART_EXPRESSION",
+      "crossConceptKeys": [
+        "CC_RADICAL_FRACTIONAL_PART",
+        "CC_RADICAL_SIMPLIFICATION",
+        "CC_ALGEBRAIC_SUBSTITUTION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "sqrt(5)의 소수부분 a를 이용해 sqrt(5)=a+2로 두고 sqrt(45)=3*sqrt(5)의 정수부분 6을 감산하여 3a를 도출하는 2단계 치환 연산 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 5,
+      "questionNo": 5,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 식을 간단히 하면? $\\sqrt{32}+\\sqrt{2}-\\sqrt{8}$",
+        "solutionDecisiveExcerpt": "각 근호를 제곱인수와 $\\sqrt{2}$의 곱으로 정리한다.\n$\\sqrt{32}=4\\sqrt{2}$, $\\sqrt{8}=2\\sqrt{2}$이므로\n$\\sqrt{32}+\\sqrt{2}-\\sqrt{8}=(4+1-2)\\sqrt{2}=3\\sqrt{2}$이다.\n$\\therefor"
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_POWER_DIVISION",
+      "crossConceptKeys": [
+        "CC_RADICAL_ADDITION_SUBTRACTION",
+        "CC_RADICAL_SIMPLIFICATION",
+        "CC_LIKE_RADICAL_TERMS"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "각 근호에서 제곱인수를 꺼내어 동류근호로 변형한 뒤 계수 덧셈·뺄셈을 수행하여 3*sqrt(2)를 도출하는 1단계 기본 연산 문항이므로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 6,
+      "questionNo": 6,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$ab=4$일 때, $2a\\sqrt{\\frac{b}{a}} + 3b\\sqrt{\\frac{a}{b}}$의 값을 구하면? (단, $a, b > 0$)",
+        "solutionDecisiveExcerpt": "$a,b>0$이므로\n$a\\sqrt{\\dfrac ba}=\\sqrt{a^2\\cdot\\dfrac ba}=\\sqrt{ab}$,\n$b\\sqrt{\\dfrac ab}=\\sqrt{b^2\\cdot\\dfrac ab}=\\sqrt{ab}$이다.\n따라서\n$2a\\sqrt{\\dfrac ba}+3"
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+      "crossConceptKeys": [
+        "CC_COEFFICIENT_INTO_RADICAL",
+        "CC_RADICAL_PRODUCT_SIMPLIFICATION",
+        "CC_SUBSTITUTION_EVALUATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "근호 밖의 양수 계수를 근호 안으로 넣어 ab 꼴로 단순화한 뒤 주어진 곱 ab=4를 대입하여 10을 산출하는 2단계 식 변형 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 7,
+      "questionNo": 7,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$2 < x < 3$일 때, 다음 식을 간단히 하면?<div class='box'>$\\sqrt{(x-2)^2} + \\sqrt{(3-x)^2} + \\sqrt{(x-3)^2}$</div>",
+        "solutionDecisiveExcerpt": "$2<x<3$이므로 $x-2>0$, $3-x>0$, $x-3<0$이다.\n따라서 $\\sqrt{(x-2)^2}=|x-2|=x-2$, $\\sqrt{(3-x)^2}=|3-x|=3-x$, $\\sqrt{(x-3)^2}=|x-3|=3-x$이다.\n주어진 식은 $(x-2)+(3-x)+"
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+      "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+      "crossConceptKeys": [
+        "CC_RADICAL_SQUARE_ABSOLUTE_VALUE",
+        "CC_INTERVAL_SIGN_DEDUCTION",
+        "CC_COMBINING_LIKE_TERMS"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "주어진 구간 2<x<3에서 세 일차식의 부호를 각각 판별하여 절댓값을 풀고 동류항을 정리해 -x+4를 도출하는 2단계 부호 연산 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 8,
+      "questionNo": 8,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$A=4\\sqrt{2}-1, B=4, C=5\\sqrt{2}-1$일 때 대소 관계가 옳은 것은?",
+        "solutionDecisiveExcerpt": "먼저 $A$와 $B$를 비교한다.\n$A>B$는 $4\\sqrt2-1>4$, 즉 $4\\sqrt2>5$와 같다.\n양변이 양수이고 $32>25$이므로 $4\\sqrt2>5$이다.\n또\n$C-A=(5\\sqrt2-1)-(4\\sqrt2-1)=\\sqrt2>0$이다.\n따라서 $B<A<C$"
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+      "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+      "crossConceptKeys": [
+        "CC_REAL_NUMBER_SUBTRACTION_COMPARISON",
+        "CC_RADICAL_SQUARE_COMPARISON"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "실수의 대소 판별법인 차의 부호 조사 및 근호 안 수의 제곱 비교를 적용하여 B<A<C의 순서를 결정하는 2단계 대소 비교 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 9,
+      "questionNo": 9,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\sqrt{7}=a, \\sqrt{70}=b$일 때, $\\sqrt{175} + \\sqrt{2.8}$을 $a, b$로 나타내면?",
+        "solutionDecisiveExcerpt": "$\\sqrt{175}=\\sqrt{25\\cdot7}=5\\sqrt7=5a$이다.\n또\n$\\sqrt{2.8}=\\sqrt{\\dfrac{70}{25}}=\\dfrac{\\sqrt{70}}5=\\dfrac b5$이다.\n따라서\n$\\sqrt{175}+\\sqrt{2.8}=5a+\\dfrac15"
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
+      "crossConceptKeys": [
+        "CC_RADICAL_DECIMAL_SCALING",
+        "CC_RADICAL_ALGEBRAIC_SUBSTITUTION",
+        "CC_PRIME_FACTOR_EXTRACTION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "근호 안의 수 175와 2.8을 7과 70의 배수 및 분수로 변형하여 a, b의 일차결합식 5a+b/5를 산출하는 2단계 문자 치환 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 10,
+      "questionNo": 10,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$x = \\frac{2-\\sqrt{3}}{2+\\sqrt{3}}$일 때, 식 $(x^2-14x+5)(x^2-14x-5)$의 값은?",
+        "solutionDecisiveExcerpt": "분모를 유리화하면\n$x=\\dfrac{2-\\sqrt3}{2+\\sqrt3}\n=\\dfrac{(2-\\sqrt3)^2}{4-3}=7-4\\sqrt3$이다.\n따라서\n$\\dfrac1x=7+4\\sqrt3$이고 $x+\\dfrac1x=14$이다.\n양변에 $x$를 곱하면 $x^2+1=14x"
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+      "crossConceptKeys": [
+        "CC_DENOMINATOR_RATIONALIZATION",
+        "CC_QUADRATIC_RECONSTRUCTION_RADICAL",
+        "CC_NUMERICAL_EXPRESSION_EVALUATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "분모 유리화를 통해 x=7-4*sqrt(3)을 얻고 무리수 항을 고립시켜 제곱함으로써 x^2-14x=-1을 도출해 대입 계산하는 3단계 심화 연산 문항이므로 Bucket 3을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 11,
+      "questionNo": 11,
+      "readingEvidence": {
+        "sourceTextExcerpt": "식 $\\sqrt{48} - \\frac{3}{4\\sqrt{3}} - 2\\sqrt{3}$을 간단히 하면?",
+        "solutionDecisiveExcerpt": "$\\sqrt{48}=4\\sqrt3$이고\n$\\dfrac3{4\\sqrt3}=\\dfrac{3\\sqrt3}{12}=\\dfrac{\\sqrt3}{4}$이다.\n따라서\n$4\\sqrt3-\\dfrac{\\sqrt3}{4}-2\\sqrt3\n=2\\sqrt3-\\dfrac{\\sqrt3}{4}\n=\\"
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_POWER_DIVISION",
+      "crossConceptKeys": [
+        "CC_DENOMINATOR_RATIONALIZATION",
+        "CC_RADICAL_FRACTION_ARITHMETIC",
+        "CC_LIKE_RADICAL_TERMS"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "분모 유리화와 제곱인수 추출 후 분수 계수를 통분하여 동류근호를 묶어 7*sqrt(3)/4를 산출하는 2단계 기본 사칙연산 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 12,
+      "questionNo": 12,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다항식 $3x^2 + Ax - 5$가 $x-1$을 인수로 가질 때, 상수 $A$의 값은?",
+        "solutionDecisiveExcerpt": "$x-1$이 인수이므로 인수정리에 따라 $x=1$을 대입한 값이 $0$이다.\n$3(1)^2+A(1)-5=0$\n$3+A-5=0$\n$A=2$이다.\n따라서 정답은 ②이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+      "crossConceptKeys": [
+        "CC_FACTOR_THEOREM_INSPECTION",
+        "CC_LINEAR_EQUATION_COEFFICIENT"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "일차식 x-1이 인수임을 이용하여 x=1 대입 시 식이 0이 됨을 일차방정식으로 풀어 A=2를 즉시 결정하는 1단계 기본 계수 결정 문항이므로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 13,
+      "questionNo": 13,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다항식 $\\frac{1}{2}x^2 - 4x + k$가 완전제곱식이 되는 $k$의 값은?",
+        "solutionDecisiveExcerpt": "$\\dfrac12x^2-4x+k\n=\\dfrac12(x^2-8x)+k$\n$=\\dfrac12\\{(x-4)^2-16\\}+k$\n$=\\dfrac12(x-4)^2+(k-8)$이다.\n완전제곱식이 되려면 남는 상수항이 $0$이어야 하므로\n$k-8=0$이다.\n따라서 $k=8$이고 정답"
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_PERFECT_SQUARE_CONDITION",
+      "crossConceptKeys": [
+        "CC_PERFECT_SQUARE_TRINOMIAL",
+        "CC_COEFFICIENT_MATCHING_FACTORIZATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "최고차항 계수 1/2을 묶어내고 괄호 안의 이차식이 (x-4)^2 완전제곱식이 되도록 상수항 k=8을 산출하는 2단계 완전제곱식 조건 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 14,
+      "questionNo": 14,
+      "readingEvidence": {
+        "sourceTextExcerpt": "윗변 $3x-2$, 아랫변 $5x-4$인 사다리꼴 넓이가 $8x^2 + 6x - 9$일 때 높이는?",
+        "solutionDecisiveExcerpt": "사다리꼴의 높이를 $h$라 하자.\n넓이는\n$\\dfrac{(3x-2)+(5x-4)}2h=(4x-3)h$이다.\n한편\n$8x^2+6x-9=(4x-3)(2x+3)$이다.\n따라서\n$(4x-3)h=(4x-3)(2x+3)$이므로\n$h=2x+3$이다.\n정답은 ③이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_FACTORIZATION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_TRAPEZOID_AREA_FORMULA",
+        "CC_QUADRATIC_FACTORIZATION",
+        "CC_POLYNOMIAL_DIVISION_GEOMETRY"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "사다리꼴 넓이 공식에서 윗변과 아랫변의 합의 절반인 4x-3을 구하고 넓이 다항식을 인수분해하여 높이 2x+3을 결정하는 2단계 기하 융합 인수분해 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 15,
+      "questionNo": 15,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$3^{16}-1$의 $10$보다 작은 약수의 합을 구하면?",
+        "solutionDecisiveExcerpt": "$3^{16}-1=(3^8+1)(3^4+1)(3^2+1)(3+1)(3-1)=2^6\\cdot5\\cdot17\\cdot41\\cdot193$. 따라서 $10$보다 작은 양의 약수는 $1,2,4,5,8$이고 합은 $20$이다.\\n$\\therefore$ ①"
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_DIFFERENCE_OF_SQUARES_REPEATED",
+        "CC_INTEGER_DIVISORS_ENUMERATION",
+        "CC_NUMERICAL_FACTORIZATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "합차 공식을 반복 적용하여 3^16-1을 인수분해하고 2의 거듭제곱과 5를 인수로 추출해 10보다 작은 약수 1, 2, 4, 5, 8의 합 20을 산출하는 3단계 수론 융합 문항이므로 Bucket 3을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 16,
+      "questionNo": 16,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다항식 $x^2 - y^2 + z^2 - 2xz$를 인수분해하면?",
+        "solutionDecisiveExcerpt": "앞의 세 항을 묶으면\n$x^2-y^2+z^2-2xz=(x-z)^2-y^2$이다.\n합차 공식으로\n$(x-z)^2-y^2=\\{(x-z)-y\\}\\{(x-z)+y\\}$\n$=(x-y-z)(x+y-z)$이다.\n따라서 정답은 ①이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_SUBSTITUTION_FACTORIZATION",
+      "crossConceptKeys": [
+        "CC_FOUR_TERM_GROUPING",
+        "CC_PERFECT_SQUARE_TRINOMIAL",
+        "CC_DIFFERENCE_OF_SQUARES"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "4개 항 중 3개 항을 완전제곱식 (x-z)^2으로 묶은 뒤 합차 공식을 적용하여 두 일차식의 곱으로 인수분해하는 2단계 복합 인수분해 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 17,
+      "questionNo": 17,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$x^2 + Ax - 18$이 두 일차식 곱으로 인수분해될 때 $A$가 될 수 없는 수는?",
+        "solutionDecisiveExcerpt": "$x^2+Ax-18=(x+p)(x+q)$라 두면\n$pq=-18$, $A=p+q$이다.\n정수 인수쌍을 확인하면 합은\n$\\pm17,\\ \\pm7,\\ \\pm3$이 될 수 있다.\n보기 중 $13$은 만들 수 없으므로 정답은 ④이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
+      "crossConceptKeys": [
+        "CC_FACTOR_PAIRS_ENUMERATION",
+        "CC_INTEGER_SUM_POSSIBILITIES"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "상수항 -18의 모든 정수 인수쌍을 열거하여 일차항 계수 A가 취할 수 있는 합의 값들을 조사하고 선지 중 불가능한 13을 선별하는 2단계 인수쌍 탐색 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 18,
+      "questionNo": 18,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$x^2 + 13x + k$가 $(x+a)(x+b)$로 인수분해될 때 $k$의 최댓값은? (단, $a, b$는 자연수)",
+        "solutionDecisiveExcerpt": "$(x+a)(x+b)=x^2+(a+b)x+ab$이므로\n$a+b=13$, $k=ab$이다.\n합이 $13$인 두 자연수의 곱은 두 수가 가장 가까울 때 최대이다.\n따라서 $a,b=6,7$일 때\n$k=6\\cdot7=42$가 최댓값이다.\n정답은 ④이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
+      "crossConceptKeys": [
+        "CC_INTEGER_PARTITION_PRODUCT_EXTREMA",
+        "CC_NATURAL_NUMBER_PAIR"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "두 자연수의 합이 13으로 고정될 때 곱 k=ab가 최대가 되는 쌍 (6, 7)을 찾아 최댓값 42를 도출하는 2단계 부정방정식 극값 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 19,
+      "questionNo": 19,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$(a+b)^2 - 4(a+b) - 5$를 인수분해하면?",
+        "solutionDecisiveExcerpt": "$t=a+b$로 놓으면\n$(a+b)^2-4(a+b)-5=t^2-4t-5$이다.\n$t^2-4t-5=(t+1)(t-5)$이므로\n원래 식은\n$(a+b+1)(a+b-5)$이다.\n따라서 정답은 ①이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_SUBSTITUTION_FACTORIZATION",
+      "crossConceptKeys": [
+        "CC_COMMON_EXPRESSION_SUBSTITUTION",
+        "CC_QUADRATIC_FACTORIZATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "공통부분 a+b를 한 문자로 치환하여 이차식을 인수분해한 후 원래 식을 환원하는 2단계 치환 인수분해 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 20,
+      "questionNo": 20,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$2x^2 - 11x + 5$를 인수분해할 때, 두 일차식의 합은?",
+        "solutionDecisiveExcerpt": "$2x^2-11x+5$에서 곱이 $10$, 합이 $-11$이 되도록 나누면\n$2x^2-x-10x+5$\n$=x(2x-1)-5(2x-1)$\n$=(2x-1)(x-5)$이다.\n두 일차식의 합은\n$(2x-1)+(x-5)=3x-6$이다.\n따라서 정답은 ⑤이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
+      "crossConceptKeys": [
+        "CC_CROSS_MULTIPLICATION_FACTORIZATION",
+        "CC_POLYNOMIAL_ADDITION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "대각선 곱 인수분해를 통해 (2x-1)(x-5)를 구하고 두 일차식의 합 3x-6을 즉시 계산하는 1단계 기본 인수분해 문항이므로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 21,
+      "questionNo": 21,
+      "readingEvidence": {
+        "sourceTextExcerpt": "인수분해를 이용하여 다음 식을 계산하면?<div class='box'>$2019^2 - 2019 \\times 4040 + 2020^2$</div>",
+        "solutionDecisiveExcerpt": "$4040=2019+2021$이므로\\n$2019^2-2019\\cdot4040+2020^2$\\n$=2019^2-2019(2019+2021)+2020^2$\\n$=2020^2-2019\\cdot2021$이다.\\n여기서 $2019=2020-1$, $2021=2020+1$이므로\\"
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_PERFECT_SQUARE_NUMERICAL",
+        "CC_ALGEBRAIC_IDENTITY_ARITHMETIC"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "4040=2*2020임을 포착하여 완전제곱식 a^2-2ab+b^2=(a-b)^2 구조로 변형한 뒤 (2019-2020)^2=1을 산출하는 2단계 수 계산 곱셈공식 응용 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 22,
+      "questionNo": 22,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$x^2 + (a-2)x + 6 = 0$의 한 근이 $x = -2$일 때 상수 $a$의 값은?",
+        "solutionDecisiveExcerpt": "주어진 방정식에 한 근 $x=-2$를 대입한다.\n$(-2)^2+(a-2)(-2)+6=0$\n$4-2a+4+6=0$\n$14-2a=0$\n따라서 $a=7$이고 정답은 ③이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "subUnit": "이차방정식",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+      "templateKey": "TPL_M3_QUADRATIC_ROOT_SUBSTITUTION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_ROOT_SUBSTITUTION",
+        "CC_LINEAR_EQUATION_SOLVE"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "이차방정식에 주어진 한 근 x=-2를 직접 대입하여 미지수 a에 대한 일차방정식을 풀어 a=7을 산출하는 1단계 기본 대입 문항이므로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 23,
+      "questionNo": 23,
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형1] $\\sqrt{39-n}$이 자연수가 되게 하는 자연수 $n$을 모두 구하여라.",
+        "solutionDecisiveExcerpt": "$\\sqrt{39-n}$이 자연수이므로\n$39-n=k^2$인 자연수 $k$가 존재해야 한다.\n$n$도 자연수이므로 $k^2<39$이고\n$k=1,2,3,4,5,6$이다.\n따라서\n$n=39-1,39-4,39-9,39-16,39-25,39-36$\n$=38,35,30,23,1"
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "subUnit": "제곱근과 실수",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+      "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+      "crossConceptKeys": [
+        "CC_RADICAL_NATURAL_NUMBER_CONDITION",
+        "CC_PERFECT_SQUARE_SUBTRACTION",
+        "CC_EXHAUSTIVE_ENUMERATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "근호 안 39-n이 39보다 작은 양의 제곱수 1, 4, 9, 16, 25, 36이 되는 6개 경우를 체계적으로 분류하여 자연수 n의 6개 값을 모두 구하는 3단계 전수 서술형 문항이므로 Bucket 3을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 24,
+      "questionNo": 24,
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형2] $2x^2 + 5x - 12$와 $2x^2 - x - 3$의 공통인수를 구하여라.",
+        "solutionDecisiveExcerpt": "두 식을 각각 인수분해한다.\n$2x^2+5x-12=2x^2+8x-3x-12$\n$=(2x-3)(x+4)$이다.\n또\n$2x^2-x-3=2x^2-3x+2x-3$\n$=(2x-3)(x+1)$이다.\n따라서 두 다항식의 공통인수는 $2x-3$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+      "crossConceptKeys": [
+        "CC_DUAL_QUADRATIC_FACTORIZATION",
+        "CC_COMMON_FACTOR_DETERMINATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "두 이차다항식을 각각 대각선 공식으로 독립 인수분해한 뒤 공통인 인수를 추출하여 2x-3을 서술하는 3단계 다단계 인수분해 서술형 문항이므로 Bucket 3을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 25,
+      "questionNo": 25,
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형3] $a+b = \\sqrt{3}-1$일 때 $a^2 + b^2 + 2ab + 2a + 2b + 1$의 값을 구하여라.",
+        "solutionDecisiveExcerpt": "주어진 식을 묶으면\n$a^2+b^2+2ab+2a+2b+1$\n$=(a+b)^2+2(a+b)+1$\n$=(a+b+1)^2$이다.\n$a+b=\\sqrt3-1$이므로\n$a+b+1=\\sqrt3$이다.\n따라서 값은\n$(\\sqrt3)^2=3$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_SUBSTITUTION_FACTORIZATION",
+      "crossConceptKeys": [
+        "CC_ALGEBRAIC_EXPRESSION_GROUPING",
+        "CC_PERFECT_SQUARE_FACTORIZATION",
+        "CC_RADICAL_SUBSTITUTION_EVALUATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "6개 항의 다항식을 a+b에 대한 완전제곱식 (a+b+1)^2으로 구조화하여 묶은 후 주어진 무리수 합을 대입해 3을 도출하는 3단계 식 변형 서술형 문항이므로 Bucket 3을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    }
+  ]
+}

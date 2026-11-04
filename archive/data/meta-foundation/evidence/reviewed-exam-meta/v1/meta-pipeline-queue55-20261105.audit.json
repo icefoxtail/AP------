@@ -1,0 +1,649 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "auditTimestamp": "2026-10-25T00:42:23.911771+00:00",
+  "examTitle": "25_순천여고_1학기_중간_고2_확률과통계",
+  "sourceDriveId": "1z9roMBFBc6MZz21v_X56nPKIoefGNSFF",
+  "sourceSha256": "2b4d6ad4e25c60ad11896dcd1fb774c0adc86571004125941c477def06f54006",
+  "totalQuestions": 24,
+  "totalApproved": 24,
+  "totalHold": 0,
+  "auditStatus": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "records": [
+    {
+      "questionId": 1,
+      "questionNo": 1,
+      "readingEvidence": {
+        "sourceTextExcerpt": "아래의 그림과 같이 정사각형을 4등분한 4개의 영역을 서로 다른 4가지 색을 모두 사용하여 칠하는 경우의 수를 구하면? (단, 각 영역에는 한 가지 색만 칠하고, 회전하여 일치하는 것은 같은 것으로 본다.) [3.2",
+        "solutionDecisiveExcerpt": "[풀이]\n서로 다른 4가지 색을 정사각형의 4영역에 칠할 때, 회전 대칭성이 존재하므로 원순열을 적용함\n\\rightarrow (4-1)! = 3!\n\\rightarrow 3 \\times 2 \\times 1 = 6\n--"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_CIRCULAR_PERMUTATION",
+        "CC_ROTATIONAL_SYMMETRY"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "정사각형 4개 영역에 4가지 색을 칠할 때 회전 대칭성을 고려하여 (4-1)!=6으로 계산하는 2단계 기본 원순열 문항이므로 원본 난이도 중(Bucket 2)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 2,
+      "questionNo": 2,
+      "readingEvidence": {
+        "sourceTextExcerpt": "아래 그림과 같이 정삼각형 모양의 탁자에 남자 2명과 여자 4명이 둘러앉을 때, 남자 2명이 탁자의 다른 모서리에 앉는 경우의 수를 구하면? (단, 회전하여 일치하는 것은 같은 것으로 본다.) [3.8점]<br><s",
+        "solutionDecisiveExcerpt": "[풀이]\n1) 전체 경우의 수: 6명을 정삼각형 탁자에 앉히는 경우 (회전 대칭 3곳 존재)\n\\rightarrow \\frac{6!}{3} = 240\n2) 남자가 같은 모서리에 앉는 경우의 수:\n\\rightarrow"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_POLYHEDRON_CIRCULAR_PERMUTATION",
+        "CC_COMPLEMENTARY_COUNTING"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "정삼각형 탁자의 회전 대칭성을 적용한 전체 경우에서 두 남학생이 같은 모서리에 앉는 경우를 여사건으로 차감하여 192를 구하는 4단계 심화 원순열 문항이므로 원본 난이도 상(Bucket 4)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 3,
+      "questionNo": 3,
+      "readingEvidence": {
+        "sourceTextExcerpt": "3명의 학생이 서로 다른 4곳의 여행지 중 하나를 택하는 경우의 수를 구하면? (단, 아무도 고르지 않은 여행지가 있을 수 있다.) [3.4점]",
+        "solutionDecisiveExcerpt": "3명의 학생이 각각 4곳의 여행지 중 하나를 선택할 수 있으므로, 서로 다른 4개에서 중복을 허락하여 3개를 택하는 중복순열의 수이다. ${}_4\\Pi_3 = 4^3 = 64$"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "crossConceptKeys": [
+        "CC_REPEATED_PERMUTATION",
+        "CC_MULTIPLICATION_PRINCIPLE"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "3명의 학생이 4개 여행지를 중복 허용하여 선택하는 4^3=64를 직접 계산하는 1단계 기본 중복순열 문항이므로 원본 난이도 하(Bucket 1)를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 4,
+      "questionNo": 4,
+      "readingEvidence": {
+        "sourceTextExcerpt": "suncheon에 있는 8개의 문자를 일렬로 나열하는 경우의 수가 $k \\times 7!$일 때, 상수 $k$의 값은? [3.4점]",
+        "solutionDecisiveExcerpt": "'suncheon'에는 'n'이 2개 있고 나머지 s, u, c, h, e, o는 모두 1개씩 총 8개의 문자가 있다.\n이 문자들을 일렬로 나열하는 경우의 수는 $\\frac{8!}{2!} = 4 \\times 7!$"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_IDENTICAL_OBJECTS_PERMUTATION",
+        "CC_FACTORIAL_RELATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "중복 문자 n 2개를 포함한 8개 문자의 순열 8!/2!=4*7!에서 계수 k=4를 도출하는 2단계 순열 문항이므로 원본 난이도 중(Bucket 2)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 5,
+      "questionNo": 5,
+      "readingEvidence": {
+        "sourceTextExcerpt": "3개의 숫자 1, 2, 3에서 중복을 허용하여 4개를 뽑아 일렬로 나열할 때, 짝수끼리 이웃하지 않도록 나열하는 경우의 수를 구하면? [4점]",
+        "solutionDecisiveExcerpt": "짝수는 2뿐이므로 '2'끼리 이웃하지 않는 경우의 수를 구한다.\n전체 경우의 수는 ${}_3\\Pi_4 = 3^4 = 81$ 이다.\n2끼리 이웃하는 경우를 구하여 전체에서 뺀다.\n- 2가 4번 나오는 경우 (2222)"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "crossConceptKeys": [
+        "CC_REPEATED_PERMUTATION",
+        "CC_NON_ADJACENT_CONSTRAINT",
+        "CC_COMPLEMENTARY_COUNTING"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "중복순열 3^4=81에서 짝수 2가 연속하여 이웃하는 케이스들을 여사건으로 분류 계산하여 60을 산출하는 3단계 조건부 중복순열 문항이므로 원본 난이도 상(Bucket 3)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 6,
+      "questionNo": 6,
+      "readingEvidence": {
+        "sourceTextExcerpt": "목련이는 확통과 독서, 영어를 포함한 7개의 과목을 월요일부터 일요일까지 매일 한 과목씩 공부하려고 한다. 다음 <조건>을 만족하면서 7일 동안 공부하는 과목의 순서를 정하는 경우의 수는? [4.2점]<br><조 건",
+        "solutionDecisiveExcerpt": "월~목 4일 중 확통, 독서를 포함하여 4과목을 배치하고, 금~일 3일 중 영어를 포함하여 3과목을 배치해야 한다.\n남은 4과목 중 월~목에 들어갈 2과목을 선택하는 경우의 수는 ${}_4C_2 = 6$가지이다.\n월"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+      "subUnit": "경우의 수의 활용",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "crossConceptKeys": [
+        "CC_PERMUTATION_WITH_RESTRICTIONS",
+        "CC_RELATIVE_ORDER_SYMMETRY",
+        "CC_COMBINATION_SELECTION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "기간 분할 선택(4C2), 순서가 정해진 순열의 대칭성(4!/2), 나머지 배열(3!)을 곱의 법칙으로 연계하여 432를 산출하는 3단계 응용 순열 문항이므로 원본 난이도 상(Bucket 3)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 7,
+      "questionNo": 7,
+      "readingEvidence": {
+        "sourceTextExcerpt": "${}_3H_4$의 값은? [3.2점]",
+        "solutionDecisiveExcerpt": "${}_3H_4 = {}_{3+4-1}C_4 = {}_6C_4 = {}_6C_2 = \\frac{6 \\times 5}{2 \\times 1} = 15$ 이다."
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_REPEATED_COMBINATION_FORMULA",
+        "CC_COMBINATION_EVALUATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "중복조합 공식 nHr = (n+r-1)Cr을 직접 적용하여 3H4=6C2=15를 계산하는 1단계 공식 문항이므로 원본 난이도 하(Bucket 1)를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 8,
+      "questionNo": 8,
+      "readingEvidence": {
+        "sourceTextExcerpt": "2명의 후보자가 출마한 선거에서 7명의 유권자가 한 명의 후보에게 각각 투표할 때, 무기명으로 투표하는 경우의 수를 $a$, 기명으로 투표하는 경우의 수를 $b$라 하자. $b-a$의 값을 구하면? (단, 기권이나",
+        "solutionDecisiveExcerpt": "무기명 투표의 경우의 수 $a$는 서로 다른 2명의 후보 중 중복을 허락하여 7명을 뽑는 중복조합의 수이므로 $a = {}_2H_7 = {}_{2+7-1}C_7 = {}_8C_7 = 8$ 이다.\n기명 투표의 경우의"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+      "subUnit": "경우의 수의 활용",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SECRET_VS_OPEN_BALLOT",
+        "CC_REPEATED_COMBINATION",
+        "CC_REPEATED_PERMUTATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "무기명 투표(중복조합 2H7=8)와 기명 투표(중복순열 2^7=128)의 모델링 차이를 명확히 구분하여 차 120을 산출하는 2단계 개념 비교 문항이므로 원본 난이도 중(Bucket 2)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 9,
+      "questionNo": 9,
+      "readingEvidence": {
+        "sourceTextExcerpt": "주사위 한 개를 세 번 던져 나온 눈의 수를 차례대로 $a, b, c$라고 하자. $a<b<c$인 경우의 수를 $m$, $a \\le b \\le c$인 경우의 수를 $n$이라고 할 때 $m+n$을 구하면? [3.8점]",
+        "solutionDecisiveExcerpt": "$a<b<c$인 경우의 수 $m$은 1부터 6까지의 자연수 중 서로 다른 3개를 선택하는 조합의 수이므로 $m = {}_6C_3 = \\frac{6 \\times 5 \\times 4}{3 \\times 2 \\times 1"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_STRICT_INEQUALITY_COMBINATION",
+        "CC_WEAK_INEQUALITY_REPEATED_COMBINATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "순서가 엄격한 부등식(조합 6C3=20)과 등호가 포함된 부등식(중복조합 6H3=56)을 모델링하여 합 76을 산출하는 2단계 부등식 경우의 수 문항이므로 원본 난이도 중(Bucket 2)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 10,
+      "questionNo": 10,
+      "readingEvidence": {
+        "sourceTextExcerpt": "방정식 $x+y+z=15$을 만족시키는 홀수인 자연수 $x, y, z$의 순서쌍 $(x, y, z)$의 개수를 구하면? [4점]",
+        "solutionDecisiveExcerpt": "$x, y, z$가 홀수인 자연수이므로 $x = 2a+1$, $y = 2b+1$, $z = 2c+1$ ($a, b, c$는 0 이상의 정수)로 나타낼 수 있다.\n방정식에 대입하면 $(2a+1) + (2b+1) + ("
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_ODD_INTEGER_SUBSTITUTION",
+        "CC_NON_NEGATIVE_INTEGER_SOLUTIONS"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "홀수 조건 치환 x=2a+1을 통해 음이 아닌 정수해 방정식 a+b+c=6으로 변환하고 3H6=28을 구하는 2단계 중복조합 정수해 문항이므로 원본 난이도 중(Bucket 2)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 11,
+      "questionNo": 11,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 ${}_3C_0 + {}_4C_1 + {}_5C_2 + {}_6C_3 + {}_7C_4$의 값과 같은 것은? [3.4점]",
+        "solutionDecisiveExcerpt": "파스칼의 삼각형 성질 ${}_nC_r + {}_nC_{r+1} = {}_{n+1}C_{r+1}$ 을 이용한다.\n${}_3C_0 = {}_4C_0$ 이므로,\n$({}_3C_0) + {}_4C_1 = {}_4C_0 +"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "subUnit": "이항정리",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [
+        "CC_PASCAL_TRIANGLE_IDENTITY",
+        "CC_HOCKEY_STICK_IDENTITY"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "파스칼의 덧셈정리 nCr + nC(r+1) = (n+1)C(r+1)를 연속 적용하는 하키스틱 패턴으로 식의 값이 8C4임을 도출하는 2단계 이항계수 항등식 문항이므로 원본 난이도 중(Bucket 2)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 12,
+      "questionNo": 12,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$31^{17}$을 90으로 나눈 나머지를 구하면? [4점]",
+        "solutionDecisiveExcerpt": "$31^{17} = (30 + 1)^{17}$ 을 이항정리를 이용하여 전개하면,\n$(30+1)^{17} = {}_{17}C_0 \\cdot 30^0 + {}_{17}C_1 \\cdot 30^1 + {}_{17}C_2 \\"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "subUnit": "이항정리",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_EXPANSION_REMAINDER",
+        "CC_MODULAR_ARITHMETIC"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "31을 (30+1)로 분해하여 이항전개한 뒤 900의 배수 항들을 소거하고 앞 두 항 511을 90으로 나누어 나머지 61을 구하는 3단계 정수론-이항정리 융합 문항이므로 원본 난이도 중(Bucket 3)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 13,
+      "questionNo": 13,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$(x^2 - 3x)^6$의 전개식에서 $x^9$의 계수를 $p$, $x^{10}$의 계수를 $q$라고 할 때, $p+q$의 값은? [4.2점]",
+        "solutionDecisiveExcerpt": "$(x^2 - 3x)^6 = (x(x - 3))^6 = x^6(x - 3)^6$ 이므로,\n$x^9$의 계수 $p$는 $(x - 3)^6$ 전개식에서 $x^3$의 계수와 같고, $x^{10}$의 계수 $q$는 $(x"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "subUnit": "이항정리",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_TERM_COEFFICIENT",
+        "CC_EXPONENT_SUM_SOLVING"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "공통인수 x^6을 분리한 뒤 (x-3)^6의 일반항에서 차수 조건을 만족하는 r값을 각각 찾아 p=-540, q=135의 합 -405를 계산하는 2단계 이항계수 문항이므로 원본 난이도 중(Bucket 2)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 14,
+      "questionNo": 14,
+      "readingEvidence": {
+        "sourceTextExcerpt": "아래의 그림과 같은 도로망이 있다. A지점에서 출발하여 B지점까지 최단거리로 갈 때, P지점을 거치지 않고 가는 경우의 수는? (단, 끊어진 도로는 통행할 수 없다.) [4.4점]<br><svg width=\"260\"",
+        "solutionDecisiveExcerpt": "[풀이]\n각 교차점까지 A에서 최단경로로 오는 경우의 수를 적는다. 왼쪽과 위쪽의 이전 교차점이 모두 연결되어 있으면 두 값을 더하고, 끊어진 길을 지나는 경우에는 그 방향의 값을 더하지 않는다. 표는 위에서부터 아"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+      "subUnit": "경우의 수의 활용",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_SHORTEST_GRID_PATH",
+        "CC_INCLUSION_EXCLUSION_PATH",
+        "CC_ADDITION_PRINCIPLE_GRID"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "부분 결손 도로망의 합의 법칙 누적 격자표(전체 62가지)와 특정 경유점 P를 지나는 경로(30가지)를 차감하여 32를 산출하는 3단계 최단경로 문항이므로 원본 난이도 상(Bucket 3)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 15,
+      "questionNo": 15,
+      "readingEvidence": {
+        "sourceTextExcerpt": "집합 $X=\\{1, 3, 5, 7, 9, 11, 13\\}$, $Y=\\{2, 4, 6, 8\\}$에 대하여 다음 <조건>을 만족시키는 $X$에서 $Y$로의 함수 $f$의 개수를 구하면? [4.6점]<br><조 건><br",
+        "solutionDecisiveExcerpt": "$X$의 원소는 7개, $Y$의 원소는 4개이다.\n(가)에 의해 $f(a)=8$인 $a$가 1개이므로, 7개의 원소 중 8에 대응될 1개를 선택하는 경우의 수는 ${}_7C_1 = 7$가지이다.\n나머지 6개의 원소를"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+      "subUnit": "경우의 수의 활용",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_FUNCTION_COUNT_RESTRICTION",
+        "CC_PARTITION_OF_DOMAIN",
+        "CC_CASE_BRANCH_ENUMERATION"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "치역 원소 8에 대응할 정의역 원소를 선택(7C1)한 뒤 남은 6개 원소의 분배 상한 조건을 n6=0, 1의 두 경우로 분기하여 합산해 1379를 도출하는 4단계 복합 함수 개수 문항이므로 원본 난이도 상(Bucket 4)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 16,
+      "questionNo": 16,
+      "readingEvidence": {
+        "sourceTextExcerpt": "집합 $A=\\{1, 2, 3, 4, 5, 6, 7, 8, 9\\}$의 부분집합 중에서 원소 1을 포함하고 원소의 개수가 홀수인 집합의 개수를 구하면? [4.4점]",
+        "solutionDecisiveExcerpt": "원소 1을 반드시 포함해야 하므로, 나머지 8개의 원소 중 짝수 개를 선택하여 부분집합을 구성하면 전체 원소의 개수가 홀수 개가 된다.\n8개의 원소 중 짝수 개를 선택하는 경우의 수의 합은 ${}_8C_0 + {}_"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "subUnit": "이항정리",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_COEFFICIENT_SUM_IDENTITY",
+        "CC_SUBSET_PARITY_SELECTION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "원소 1을 고정한 뒤 나머지 8개 원소 중 짝수 개를 선택하는 8C0+8C2+8C4+8C6+8C8=2^7=128 공식을 적용하는 2단계 이항계수 성질 문항이므로 원본 난이도 중(Bucket 2)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 17,
+      "questionNo": 17,
+      "readingEvidence": {
+        "sourceTextExcerpt": "전체집합 $U=\\{0, 1, 2, 3, 4\\}$의 두 부분집합 $A, B$에 대하여 다음의 조건을 만족하도록 하는 $A, B$의 순서쌍 $(A, B)$의 개수를 구하면? [4.4점]<br><조 건><br>(가) $A",
+        "solutionDecisiveExcerpt": "(가) $A \\cup B = U$ 를 만족하는 부분집합의 순서쌍 $(A, B)$의 개수를 구하고, 그 중 조건 (나)의 여사건인 $A \\cap B = \\varnothing$ 인 경우를 뺀다.\n$A \\cup B = U"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+      "subUnit": "경우의 수의 활용",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "crossConceptKeys": [
+        "CC_SET_PARTITION_VENN_DIAGRAM",
+        "CC_REPEATED_PERMUTATION",
+        "CC_COMPLEMENTARY_COUNTING"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "합집합이 전체집합인 벤다이어그램의 3영역 분배 3^5=243에서 교집합이 공집합인 여사건 2^5=32를 차감하여 211을 구하는 2단계 집합 분할 문항이므로 원본 난이도 중(Bucket 2)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 18,
+      "questionNo": 18,
+      "readingEvidence": {
+        "sourceTextExcerpt": "같은 종류의 사탕 13개를 4명의 학생 A, B, C, D에게 남김없이 나누어 줄 때, 다음 조건을 만족시키도록 나누어 주는 경우의 수를 구하면? [4.6점]<br><조 건><br>(가) 각 학생은 적어도 1개의 사",
+        "solutionDecisiveExcerpt": "학생들이 받는 사탕의 개수를 각각 $a, b, c, d$라 하면 $a+b+c+d=13$ 이고 (가) 조건에 의해 모두 1 이상이다.\n조건 (나)에서 $a>b$ 이므로 $a$는 최소 2 이상이다. 따라서 A는 1개를"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_CONSTRAINED_INTEGER_PARTITION",
+        "CC_REPEATED_COMBINATION",
+        "CC_CASE_BRANCH_DISTRIBUTION"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "사탕 1개 수령자 2명을 B, C, D 중에서 선정하는 3가지 경우로 분기하고 A>B 대소 제약 조건을 결합해 8+8+4=20을 구하는 4단계 심화 분배 문항이므로 원본 난이도 상(Bucket 4)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 19,
+      "questionNo": 19,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$(1+x+x^2+x^3)\\left(x^2+\\frac{a}{x}\\right)^5$의 전개식에서 $x^7$의 계수가 225일 때, 정수 $a$의 값은? [4.6점]",
+        "solutionDecisiveExcerpt": "$(x^2 + ax^{-1})^5$의 일반항은 ${}_5C_r (x^2)^{5-r} (ax^{-1})^r = {}_5C_r a^r x^{10-3r}$ 이다.\n전체 전개식에서 $x^7$ 항이 나오려면 앞의 다항식 $("
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "subUnit": "이항정리",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_PRODUCT_OF_POLYNOMIALS_EXPANSION",
+        "CC_BINOMIAL_GENERAL_TERM",
+        "CC_QUADRATIC_EQUATION_FACTORIZATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "이항식 일반항 x^(10-3r)과 앞 다항식 차수를 결합해 10a^2+5a=225의 이차방정식을 풀고 정수해 a=-5를 결정하는 3단계 전개식 계수 문항이므로 원본 난이도 상(Bucket 3)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 20,
+      "questionNo": 20,
+      "readingEvidence": {
+        "sourceTextExcerpt": "집합 $X=\\{1, 2, 3, 4, 5\\}$에 대하여 $X$에서 $X$로의 함수 $f$중에서 다음 조건을 만족시키는 함수의 개수를 구하고, 그 과정을 함께 서술하시오. [5점]<br><조 건><br>(가) $f(2)",
+        "solutionDecisiveExcerpt": "조건 (가)에서 $f(2)$는 1 또는 2이다.\n\n경우 1) $f(2) = 1$ 인 경우\n조건 (나)에 의해 $f(1) \\le 1$ 이므로 $f(1) = 1$ (1가지).\n$1 \\le f(3) < f(4) \\le f"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_MONOTONIC_FUNCTION_COUNT",
+        "CC_STRICT_INEQUALITY_BY_COMPLEMENT",
+        "CC_REPEATED_COMBINATION"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "f(2)의 값에 따라 경우를 나누고, f(3)<f(4) 조건을 전체 중복조합에서 f(3)=f(4)를 빼는 여사건으로 계산하여 20+20=40을 서술하는 4단계 심화 서술형 문항이므로 원본 난이도 상(Bucket 4)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 21,
+      "questionNo": 21,
+      "readingEvidence": {
+        "sourceTextExcerpt": "파란 펜 1자루와 빨간 펜 7자루를 세 학생 A, B, C에게 남김없이 나누어주려고 한다. 다음 경우의 수를 각각 구하고 그 과정을 함께 서술하시오. (단, 같은 색의 펜끼리는 서로 구분하지 않는다.) [총 6점]<",
+        "solutionDecisiveExcerpt": "(1) 파란 펜 1자루를 세 명 중 1명에게 나누어 주는 방법은 3가지이다.\n빨간 펜 7자루를 세 명에게 중복을 허락하여 나누어 주는 방법은 ${}_3H_7 = {}_{3+7-1}C_7 = {}_9C_2 = 36$가"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_DISTRIBUTION_DISTINCT_OBJECTS_IDENTICAL_OBJECTS",
+        "CC_POSITIVE_INTEGER_SOLUTIONS",
+        "CC_REPEATED_COMBINATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "구별되는 파란 펜 배치(3가지)와 같은 빨간 펜의 중복조합(음이 아닌 정수해 36, 자연수해 21)을 소문항별로 단계적으로 서술하는 3단계 서술형 문항이므로 원본 난이도 중(Bucket 3)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 22,
+      "questionNo": 22,
+      "readingEvidence": {
+        "sourceTextExcerpt": "1학년 학생 2명, 2학년 학생 3명, 3학년 학생 3명이 일정한 간격을 두고 원 모양의 탁자에 다음 조건을 만족시키도록 모두 둘러앉는 경우의 수를 구하시오. (단, 회전하여 일치하는 것은 같은 것으로 본다.) [4",
+        "solutionDecisiveExcerpt": "[풀이]\n1) 3학년 3명을 탁자에 배치하는 원순열의 수 (비대칭 좌석 간격): 6가지\n2) 남은 5자리 중 1, 2학년의 조건(이웃 및 마주보기 금지)을 모두 만족하는 유효 좌석 조합: 2가지\n3) 해당 좌석에 1"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_CIRCULAR_PERMUTATION_RESTRICTIONS",
+        "CC_OPPOSITE_AND_ADJACENT_CONSTRAINTS",
+        "CC_STEPWISE_PERMUTATION_PLACEMENT"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "원형 탁자에서 이웃 금지와 마주보기 금지의 복합 대칭 조건을 학년별 단계적 배치로 해석하여 6*2*12=144를 구하는 4단계 고난도 원순열 문항이므로 원본 난이도 상(Bucket 4)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 23,
+      "questionNo": 23,
+      "readingEvidence": {
+        "sourceTextExcerpt": "아래의 그림과 같이 밑면이 정사각형이고 옆면이 모두 합동인 사각뿔의 5개의 면에 서로 다른 6가지 색 중 5가지 색을 사용하여 칠하는 경우의 수를 구하고, 그 과정을 함께 서술하시오. (단, 한 면에는 한 가지 색만",
+        "solutionDecisiveExcerpt": "[풀이] 수식 중심 전개\n1) 6가지 색 중 5가지 색을 선택하는 경우: ${}_6C_5 = 6$\n2) 선택된 5색 중 밑면을 칠하는 경우: 5\n3) 옆면 4개를 칠하는 원순열의 수: $(4-1)! = 6$\n$\\th"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_POLYHEDRON_COLORING",
+        "CC_COMBINATION_COLOR_SELECTION",
+        "CC_CIRCULAR_PERMUTATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "색 선택(6C5=6), 밑면 고정(5가지), 옆면 4개의 회전 대칭 원순열((4-1)!=6)의 3단계를 차례로 서술하여 180을 도출하는 3단계 입체 색칠 서술형 문항이므로 원본 난이도 중(Bucket 3)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 24,
+      "questionNo": 24,
+      "readingEvidence": {
+        "sourceTextExcerpt": "6개의 숫자 0, 1, 2, 3, 4, 5를 모두 사용하여 만들 수 있는 여섯 자리 자연수 중에서 4의 배수의 개수를 구하고, 그 과정을 함께 서술하시오. [5점]",
+        "solutionDecisiveExcerpt": "여섯 자리 자연수가 4의 배수가 되려면 끝의 두 자리 수가 4의 배수이어야 한다.\n주어진 숫자 0, 1, 2, 3, 4, 5로 만들 수 있는 서로 다른 숫자로 구성된 끝 두 자리 4의 배수는 04, 12, 20, 2"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "crossConceptKeys": [
+        "CC_DIVISIBILITY_RULE_FOUR",
+        "CC_PERMUTATION_LEADING_ZERO_CONSTRAINT"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "4의 배수 판정법(끝 두 자리)을 적용하여 0 포함 여부에 따라 최고자리 0 불가 제약을 체계적으로 케이스 분류해 72+72=144를 서술하는 3단계 배수 순열 서술형 문항이므로 원본 난이도 상(Bucket 3)을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    }
+  ]
+}

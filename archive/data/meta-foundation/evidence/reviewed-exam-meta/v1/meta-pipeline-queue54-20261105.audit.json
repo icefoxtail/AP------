@@ -1,0 +1,618 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "auditTimestamp": "2026-10-25T01:14:13.912378+00:00",
+  "examTitle": "24_순천고_1학기_중간_고2_확률과통계",
+  "sourceDriveId": "1QW7Qp3rACX6kFPYwvPcLjuqo1lV3ovkd",
+  "sourceSha256": "3f0b9de62af14ce11371d149717e682aeb4879982bee9ed3e73c906e8c13b96f",
+  "totalQuestions": 23,
+  "totalApproved": 23,
+  "totalHold": 0,
+  "auditStatus": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "records": [
+    {
+      "questionId": 1,
+      "questionNo": 1,
+      "readingEvidence": {
+        "sourceTextExcerpt": "${}_5\\Pi_3 + {}_3\\mathrm{H}_5$의 값은?",
+        "solutionDecisiveExcerpt": "$\\!{}_{5}\\Pi_3=5^3=125$이고, 중복조합의 수는 $\\!{}_{3}\\mathrm H_5=\\binom{3+5-1}{5}=\\binom75=21$이다.\n따라서 구하는 값은 $125+21=146$이다.\n\n그러므로 정답은 ①이다."
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "crossConceptKeys": [
+        "CC_REPEATED_PERMUTATION",
+        "CC_REPEATED_COMBINATION",
+        "CC_ARITHMETIC_SUM"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "중복순열 5^3=125와 중복조합 7C5=21을 각각 계산하여 합 146을 구하는 2단계 기본 연산 문항으로 원본 난이도 중(Bucket 2)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 2,
+      "questionNo": 2,
+      "readingEvidence": {
+        "sourceTextExcerpt": "같은 모양의 빨간색 구슬 3개, 같은 모양의 주황색 구슬 4개, 같은 모양의 노란색 구슬 2개를 일렬로 배치하려고 한다. 양 끝에 주황색 구슬이 배치되게 하는 경우의 수는?",
+        "solutionDecisiveExcerpt": "양 끝에 주황색 구슬을 하나씩 놓는다. 남은 일곱 자리에는 빨간색 3개, 주황색 2개, 노란색 2개를 놓는다.\n같은 색 구슬은 서로 구별하지 않으므로 경우의 수는 $\\dfrac{7!}{3!\\,2!\\,2!}=210$이다.\n\n따라서 정답은 ②이다."
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_IDENTICAL_OBJECT_PERMUTATION",
+        "CC_END_POSITION_RESTRICTION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "양 끝에 주황색 구슬 2개를 고정하고 남은 7개 자리에 빨강 3, 주황 2, 노랑 2를 배열하는 같은 것이 있는 순열 7!/(3!2!2!)=210을 계산하는 2단계 조건부 순열 문항으로 원본 난이도 중(Bucket 2)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 3,
+      "questionNo": 3,
+      "readingEvidence": {
+        "sourceTextExcerpt": "음이 아닌 정수 $x, y, z, w$에 대하여 방정식\n\n$$x+y+z+w=6$$\n\n을 만족하는 해의 개수는?",
+        "solutionDecisiveExcerpt": "네 변수의 합이 6인 음이 아닌 정수해의 수를 구한다.\n별 6개와 변수 사이를 나누는 막대 3개를 배열하면 되므로 $\\binom{6+4-1}{4-1}=\\binom93=84$이다.\n\n따라서 정답은 ④이다."
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_NON_NEGATIVE_INTEGER_SOLUTIONS",
+        "CC_REPEATED_COMBINATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "4개 변수의 합이 6인 음이 아닌 정수해의 개수를 중복조합 4H6=9C3=84로 단일 공식 적용하여 산출하는 1단계 기본 문항으로 원본 난이도 하(Bucket 1)를 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 4,
+      "questionNo": 4,
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 집합 $X=\\{1, 2, 3\\}$, $Y=\\{5, 6, 7, 8\\}$에 대하여 임의의 $X$의 원소 $x_1, x_2$가 $x_1 < x_2$이면 $f(x_1) \\ge f(x_2)$를 만족하는 함수 $f: X \\",
+        "solutionDecisiveExcerpt": "$f(1)\\ge f(2)\\ge f(3)$이므로 함수값 세 개는 집합 $Y$의 네 값 중에서 중복을 허용해 고른 뒤 큰 순서로 놓은 것과 같다.\n따라서 함수의 수는 $\\binom{4+3-1}{3}=\\binom63=20$이다.\n\n그러므로 정답은 ③이다."
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_NON_INCREASING_FUNCTION",
+        "CC_REPEATED_COMBINATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "단조감소 부등호 조건을 만족하는 함수의 개수를 공역 4개 원소에서 중복을 허용하여 3개를 택하는 중복조합 4H3=6C3=20으로 계산하는 2단계 함수 개수 문항으로 원본 난이도 중(Bucket 2)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 5,
+      "questionNo": 5,
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림과 같은 바둑판 모양의 도로망이 있다. $\\mathrm{A}$지점에서 $\\mathrm{B}$지점까지 도로를 따라 최단 거리로 가는 경우 중에서 $\\mathrm{X}$지점과 $\\mathrm{Y}$지점을 거치고 가는",
+        "solutionDecisiveExcerpt": "최단 경로는 오른쪽과 위쪽으로만 이동한다. $A\\to X$, $X\\to Y$, $Y\\to B$의 경우의 수를 각각 구해 곱한다.\n\n$A\\to X$: 오른쪽 2번, 위쪽 2번이므로 $\\dfrac{4!}{2!2!}=6$.\n\n$X\\to Y$: 오른쪽 2번, 위쪽 1번이므로"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "crossConceptKeys": [
+        "CC_GRID_SHORTEST_PATH",
+        "CC_PRODUCT_RULE_PATH"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "바둑판 모양 도로망에서 필수 경유지 X, Y를 지나는 최단 경로 수를 세 구간의 같은 것이 있는 순열 곱 6*3*3=54로 구하는 2단계 경로 문항으로 원본 난이도 중(Bucket 2)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 6,
+      "questionNo": 6,
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림과 같은 도로망이 있다. $\\mathrm{A}$지점에서 $\\mathrm{C}$지점을 거치지 않고 $\\mathrm{B}$지점으로 가는 최단 경로의 경우의 수는?\n\n<div class=\"diagram-box\"><im",
+        "solutionDecisiveExcerpt": "각 교차점에 A에서 그 점까지 가는 최단 경로 수를 적는다. A에는 1을 적고, 다른 교차점에서는 그 점으로 이어지는 왼쪽 도로와 아래쪽 도로의 경로 수를 더한다. 도로가 없는 구간은 더하지 않는다. 이 방법으로 B까지 채우면 전체 최단 경로 수는 332이다.\n\nC에"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "crossConceptKeys": [
+        "CC_GRID_SHORTEST_PATH",
+        "CC_COMPLEMENT_PATH_COUNTING",
+        "CC_OBSTACLE_GRID_ADDITION"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "누적합 격자 덧셈으로 전체 경로 수 332를 구한 뒤 여사건으로 C 경유 경로 수 15*15=225를 차감하여 107을 산출하는 4단계 복합 격자 경로 문항으로 원본 난이도 상(Bucket 4)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 7,
+      "questionNo": 7,
+      "readingEvidence": {
+        "sourceTextExcerpt": "방정식 $x+y+z=9$를 만족시키는 $x \\ge 4, y \\ge 2, z \\ge 1$인 정수해의 개수는?",
+        "solutionDecisiveExcerpt": "최소값을 먼저 빼어 미지수를 0 이상의 정수로 바꾼다.\n$X=x-4$, $Y=y-2$, $Z=z-1$로 두면 $X,Y,Z\\ge0$이고 $X+Y+Z=9-(4+2+1)=2$이다.\n따라서 해의 수는 $\\binom{2+3-1}{3-1}=\\binom42=6$이다.\n\n그러므로 정"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_LOWER_BOUND_VARIABLE_SHIFT",
+        "CC_REPEATED_COMBINATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "하한 조건 x>=4, y>=2, z>=1에 대해 변수 치환 X+Y+Z=9-(4+2+1)=2로 변환 후 중복조합 3H2=4C2=6을 계산하는 2단계 조건부 정수해 문항으로 원본 난이도 중(Bucket 2)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 8,
+      "questionNo": 8,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\mathrm{A}$ 동아리 학생 4명, $\\mathrm{B}$ 동아리 학생 3명이 일정한 간격을 두고 원 모양의 탁자에 모두 둘러앉을 때, $\\mathrm{B}$ 동아리 학생끼리는 이웃하도록 앉는 경우의 수는?",
+        "solutionDecisiveExcerpt": "B 동아리 학생 3명을 한 묶음으로 보면 원탁에는 A 학생 4명과 B 묶음, 모두 5개의 단위가 앉는다.\n회전하여 같은 배열은 하나로 보므로 원순열은 $(5-1)!=24$가지다. B 학생이 묶음 안에 앉는 순서는 $3!=6$가지다.\n따라서 $24\\times6=144$이"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_CIRCULAR_PERMUTATION",
+        "CC_ADJACENT_BLOCK_ARRANGEMENT"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "이웃하는 B 동아리 3명을 한 묶음으로 처리하여 5개 단위의 원순열 (5-1)!=24에 묶음 내부 순열 3!=6을 곱해 144를 구하는 2단계 원순열 문항으로 원본 난이도 중(Bucket 2)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 9,
+      "questionNo": 9,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다섯 명이 둘러앉을 수 있는 원 모양의 탁자와 두 학생 $\\mathrm{A}, \\mathrm{B}$를 포함한 7명의 학생이 있다. 7명의 학생 중에서 $\\mathrm{A}, \\mathrm{B}$를 포함하여 5명을 선",
+        "solutionDecisiveExcerpt": "A, B를 포함하고 나머지 다섯 명 중 세 명을 더 선택하는 경우는 $\\binom53=10$가지다.\n선택한 다섯 명 중 A와 B를 한 묶음으로 보면 원탁의 단위는 AB 묶음과 나머지 세 명, 모두 네 개다. 원순열은 $(4-1)!$가지이고 묶음 안의 A, B 순서는 2"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_COMBINATION_SELECTION",
+        "CC_CIRCULAR_PERMUTATION",
+        "CC_ADJACENT_PAIR_ARRANGEMENT"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "남은 5명 중 3명을 고르는 조합 5C3=10에 AB 묶음 포함 4개 단위 원순열 (4-1)!=6 및 AB 자리바꿈 2를 순차 적용해 10*6*2=120을 도출하는 3단계 복합 원순열 문항으로 원본 난이도 중(Bucket 3)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 10,
+      "questionNo": 10,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$(ax^2-y)^9$의 전개식에서 $x^4 y^7$의 계수가 $-324$일 때, 양수 $a$의 값은?",
+        "solutionDecisiveExcerpt": "$(ax^2-y)^9$에서 $x^4y^7$을 만들려면 $ax^2$를 두 번, $-y$를 일곱 번 선택한다.\n따라서 그 계수는 $\\binom92a^2(-1)^7=-36a^2$이다. 조건에 따라 $-36a^2=-324$이므로 $a^2=9$이다. $a>0$이므로 $a=3$이"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "subUnit": "이항정리",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_GENERAL_TERM",
+        "CC_COEFFICIENT_EQUATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "이항정리 일반항에서 9C2*(ax^2)^2*(-y)^7 = -36a^2 x^4 y^7의 계수 -36a^2=-324로부터 a^2=9, 양수 a=3을 구하는 2단계 이항계수 방정식 문항으로 원본 난이도 중(Bucket 2)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 11,
+      "questionNo": 11,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다항식 $(2x+1)^3(3x-1)^4$의 전개식에서 $x^2$의 계수는?",
+        "solutionDecisiveExcerpt": "두 인수에서 차수가 각각 0, 1, 2인 항을 골라 차수의 합이 2가 되는 경우를 더한다.\n\n$\\begin{aligned}\n[x^2](2x+1)^3(3x-1)^4\n&=\\binom30\\binom42 3^2-\\binom31 2\\binom41 3+\\binom32 2^2\\\\"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "subUnit": "이항정리",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_PRODUCT_BINOMIAL_EXPANSION",
+        "CC_DEGREE_CONVOLUTION_SUM"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "두 다항식의 곱 전개식에서 차수 합이 2가 되는 (0차,2차), (1차,1차), (2차,0차) 세 가지 경우를 각각 이항정리로 계산하여 54-72+12=-6을 도출하는 3단계 곱 전개식 문항으로 원본 난이도 중(Bucket 3)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 12,
+      "questionNo": 12,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$23^6$을 20으로 나눈 나머지는?",
+        "solutionDecisiveExcerpt": "$23=20+3$이므로 20으로 나눈 나머지를 구할 때 $23^6$은 $3^6$과 같은 나머지를 갖는다.\n$3^6=729=20\\times36+9$이므로 나머지는 9이다.\n\n따라서 정답은 ⑤이다."
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_APPLICATION",
+      "subUnit": "이항정리의 활용",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_REMAINDER_APPLICATION",
+        "CC_MODULAR_ARITHMETIC"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "23^6=(20+3)^6으로 변형하여 20의 배수 항을 제외한 3^6=729를 20으로 나눈 나머지 9를 구하는 1단계 이항정리 응용 문항으로 원본 난이도 하(Bucket 1)를 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 13,
+      "questionNo": 13,
+      "readingEvidence": {
+        "sourceTextExcerpt": "같은 종류의 공 15개를 $A, B, C, D$ 4개의 바구니에 넣으려고 한다. $A, B$ 바구니에는 적어도 3개, $C, D$ 바구니에는 적어도 2개의 공을 넣게 하는 경우의 수는?",
+        "solutionDecisiveExcerpt": "A, B에는 각각 3개씩, C, D에는 각각 2개씩 먼저 넣는다. 이미 넣은 공은 10개이므로 남은 5개를 네 바구니에 나누어 넣는다.\n경우의 수는 $\\binom{5+4-1}{4-1}=\\binom83=56$이다.\n\n따라서 정답은 ⑤이다."
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_PREASSIGNMENT_REDUCTION",
+        "CC_REPEATED_COMBINATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "A, B에 3개씩, C, D에 2개씩 총 10개를 사전 배정한 후 남은 5개를 4개 바구니에 나누는 중복조합 4H5=8C3=56을 구하는 2단계 배분 문항으로 원본 난이도 중(Bucket 2)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 14,
+      "questionNo": 14,
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 개의 주사위 $A, B$를 동시에 던질 때, 나오는 두 눈의 수의 차가 4 이상일 확률은?",
+        "solutionDecisiveExcerpt": "두 주사위의 눈을 순서 있는 순서쌍으로 보면 전체 경우는 $6\\times6=36$이다.\n눈의 차가 4인 경우는 $(1,5),(5,1),(2,6),(6,2)$로 4가지이고, 차가 5인 경우는 $(1,6),(6,1)$로 2가지다.\n따라서 확률은 $\\dfrac{4+2}{36"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "subUnit": "확률의 뜻과 활용",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "crossConceptKeys": [
+        "CC_CLASSICAL_PROBABILITY",
+        "CC_SAMPLE_SPACE_ENUMERATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "두 주사위 표본공간 36가지 중 두 눈의 차가 4인 4가지와 5인 2가지를 세어 확률 6/36=1/6을 계산하는 1단계 기본 확률 문항으로 원본 난이도 하(Bucket 1)를 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 15,
+      "questionNo": 15,
+      "readingEvidence": {
+        "sourceTextExcerpt": "흰 공 3개, 빨간 공 4개, 검은색 공 3개가 들어 있는 주머니가 있다. 이 주머니에서 임의로 2개의 공을 동시에 꺼낼 때, 꺼낸 2개의 공이 모두 같은 색일 확률은?",
+        "solutionDecisiveExcerpt": "전체 10개의 공에서 2개를 뽑는 경우는 $\\binom{10}{2}=45$가지다.\n같은 색 공을 뽑는 경우는 $\\binom32+\\binom42+\\binom32=3+6+3=12$가지다.\n따라서 확률은 $\\dfrac{12}{45}=\\dfrac4{15}$이다.\n\n따라서 정답"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "subUnit": "확률의 뜻과 활용",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "crossConceptKeys": [
+        "CC_HYPERGEOMETRIC_SELECTION",
+        "CC_ADDITION_RULE_MUTUALLY_EXCLUSIVE"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "전체 10C2=45가지 중 같은 색이 나오는 배타적 경우 3C2+4C2+3C2=12를 합산하여 확률 12/45=4/15를 구하는 2단계 수학적 확률 문항으로 원본 난이도 중(Bucket 2)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 16,
+      "questionNo": 16,
+      "readingEvidence": {
+        "sourceTextExcerpt": "남학생 3명과 $A, B$를 포함한 여학생 4명이 있다. 이 학생들이 일렬로 자리에 앉을 때, 다음 조건을 만족하여 앉을 확률은?\n\n<div class=\"quote-box\">\n(가) 남학생들은 이웃하여 앉는다.<br",
+        "solutionDecisiveExcerpt": "남학생 세 명을 한 묶음으로 보면 남학생 묶음과 여학생 네 명, 다섯 단위를 배열하는 경우는 $5!\\times3!$가지다.\n이 중 A와 B가 이웃하는 경우에는 AB도 한 묶음으로 만들 수 있다. 남학생 묶음, AB 묶음, 나머지 여학생 두 명의 네 단위를 배열하고 묶음"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "subUnit": "확률의 뜻과 활용",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "crossConceptKeys": [
+        "CC_CONDITIONAL_PERMUTATION_PROBABILITY",
+        "CC_COMPLEMENT_ADJACENCY_COUNTING"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "남학생 묶음 순열 5!*3!=720에서 A, B가 동시에 이웃하는 4!*3!*2!=288을 여사건 차감하여 432를 구한 뒤 전체 7!=5040으로 나눈 432/5040=3/35를 산출하는 4단계 복합 확률 문항으로 원본 난이도 상(Bucket 4)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 17,
+      "questionNo": 17,
+      "readingEvidence": {
+        "sourceTextExcerpt": "세 문자 $a, b, c$에서 중복을 허락하여 각각 짝수개씩 모두 6개를 선택하여 일렬로 나열하는 경우의 수는? (단, 어떤 문자를 사용하지 않을 수도 있다.)",
+        "solutionDecisiveExcerpt": "각 문자의 개수는 짝수이고 합은 6이다. 가능한 개수 유형을 나누어 센다.\n\n$(6,0,0)$ 유형은 어느 문자가 6개인지 3가지이고, 배열은 각각 1가지이므로 3가지다.\n\n$(4,2,0)$ 유형은 4개인 문자와 2개인 문자를 정하는 방법이 $3\\times2=6$가지다"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_INTEGER_PARTITION_PARITY",
+        "CC_IDENTICAL_OBJECT_PERMUTATION",
+        "CC_DISJOINT_CASE_ANALYSIS"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "짝수 합 6을 만족하는 (6,0,0)형 3가지, (4,2,0)형 90가지, (2,2,2)형 90가지를 배타적으로 분류하고 같은 것이 있는 순열로 각각 계산하여 총 183을 도출하는 4단계 심화 순열 문항으로 원본 난이도 상(Bucket 4)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 18,
+      "questionNo": 18,
+      "readingEvidence": {
+        "sourceTextExcerpt": "같은 종류의 공책 8권을 4명의 학생 $A, B, C, D$에게 남김없이 나누어 줄 때, 4명의 학생 중에서 적어도 한 명은 공책을 받지 못하는 경우의 수는?",
+        "solutionDecisiveExcerpt": "같은 공책 8권을 네 학생에게 나누는 전체 경우는 $\\binom{8+4-1}{4-1}=\\binom{11}{3}=165$이다.\n모든 학생이 적어도 한 권씩 받는 경우는 한 권씩 먼저 나누고 남은 4권을 분배하여 $\\binom{4+4-1}{4-1}=\\binom73=35$이"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_COMPLEMENT_COUNTING",
+        "CC_REPEATED_COMBINATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "전체 중복조합 4H8=11C3=165에서 모든 학생이 적어도 한 권씩 받는 4H4=7C3=35를 여사건으로 차감하여 130을 계산하는 2단계 여사건 중복조합 문항으로 원본 난이도 중(Bucket 2)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 19,
+      "questionNo": 19,
+      "readingEvidence": {
+        "sourceTextExcerpt": "1부터 8까지의 자연수가 각각 하나씩 적혀 있는 8장의 카드가 있다. 이 카드 중 7장의 카드를 선택하여 일렬로 배열할 때, 홀수는 왼쪽부터 작은 수부터 크기 순서대로 배열하는 경우의 수는?\n\n<div class=\"",
+        "solutionDecisiveExcerpt": "선택한 일곱 장에서 홀수 카드가 왼쪽부터 오름차순으로 놓이는 순서는 하나로 정해진다. 제외하는 카드가 홀수인지 짝수인지 나누어 센다.\n\n홀수 카드 한 장을 제외하면 홀수 카드가 3장 남는다. 홀수 3장의 상대적 순서는 고정되므로 배열은 $\\dfrac{7!}{3!}=84"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "crossConceptKeys": [
+        "CC_FIXED_ORDER_PERMUTATION",
+        "CC_DISJOINT_EXCLUSION_CASES"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "제외할 한 장이 홀수인 경우 4*(7!/3!)=3360과 짝수인 경우 4*(7!/4!)=840으로 분류하고 순서가 정해진 순열을 적용하여 합 4200을 구하는 3단계 조건부 순열 문항으로 원본 난이도 중(Bucket 3)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 20,
+      "questionNo": 20,
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 집합 $X=\\{1, 2, 3, 4\\}$, $Y=\\{1, 2, 3, 4, 5\\}$에 대하여 $X$에서 $Y$로의 모든 일대일함수 $f$ 중에서 임의로 하나를 선택할 때, 이 함수가 다음 조건을 만족시킬 확률은?",
+        "solutionDecisiveExcerpt": "일대일함수이므로 함수값은 서로 다르다. 먼저 $f(1)f(2)$가 6의 배수가 되는 순서쌍은 $(2,3),(3,2),(3,4),(4,3)$이다.\n\n$(2,3)$이면 남은 값에서 4와 5를 골라 순서를 정하므로 2가지다.\n$(3,2)$이면 남은 값에서 5와 1 또는 4를"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "subUnit": "확률의 뜻과 활용",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "crossConceptKeys": [
+        "CC_ONE_TO_ONE_FUNCTION_PROBABILITY",
+        "CC_DIVISIBILITY_ORDERED_PAIRS",
+        "CC_EXHAUSTIVE_BRANCHING"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "f(1)f(2)가 6의 배수인 순서쌍 (2,3), (3,2), (3,4), (4,3) 각각에 대해 f(3), f(4)에 5가 포함되도록 남은 원소를 배정하는 경우 2+4+4+2=12를 구하고 전체 일대일함수 5P4=120으로 나눈 확률 12/120=1/10을 도출하는 4단계 일대일함수 확률 문항으로 원본 난이도 상(Bucket 4)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 21,
+      "questionNo": 21,
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형 1] 두 집합 $X=\\{1, 2, 3, 4, 5\\}$, $Y=\\{6, 7, 8, 9\\}$에 대하여 다음 조건을 만족시키는 함수 $f: X \\to Y$의 개수를 구하시오.\n\n<div class=\"quote-b",
+        "solutionDecisiveExcerpt": "조건 (가), (나)에 따라 $f(1),f(2)$는 각각 $\\{6,7\\}$ 중 하나다. 이 두 값의 선택은 $2^2$가지다.\n$f(3)=7$은 정해져 있고, $f(4),f(5)$는 각각 $Y$의 네 값 중에서 자유롭게 정하므로 $4^2$가지다.\n따라서 함수의 수는 $2"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+      "subUnit": "경우의 수의 활용",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "crossConceptKeys": [
+        "CC_INDEPENDENT_CHOICE_ASSIGNMENT",
+        "CC_RESTRICTED_FUNCTION_COUNT"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "f(3)=7 고정 하에 f(1), f(2)는 {6,7}에서 2^2=4가지, f(4), f(5)는 Y 전체에서 4^2=16가지를 독립 선택하여 4*16=64를 서술하는 1단계 서술형 함수 개수 문항으로 원본 난이도 하(Bucket 1)를 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 22,
+      "questionNo": 22,
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형 2] 자연수 $n\\,(n \\ge 5)$에 대하여 다항식\n\n$$P(x)=(x+a)^n$$\n\n이 있다. 다항식 $P(x)$의 전개식에서 $x^2$의 계수는 $x^3$의 계수의 $\\frac{1}{2}$배이고, 다",
+        "solutionDecisiveExcerpt": "$P(x)=(x+a)^n$에서 $x^2,x^3$의 계수는 각각 $\\binom n2a^{n-2}$, $\\binom n3a^{n-3}$이다.\n$x^2$의 계수가 $x^3$ 계수의 $\\frac12$이므로 $\\binom n2a^{n-2}=\\frac12\\binom n3a^{n-"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항계수와 계수 비교",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_COEFFICIENT_SYSTEM",
+        "CC_POLYNOMIAL_SCALING_EXPANSION",
+        "CC_NONLINEAR_EQUATION_SOLVE"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "(x+a)^n과 (2x+a)^n의 이항전개 일반항 계수 관계식 nC2 a^(n-2) = 1/2 nC3 a^(n-3)에서 a=(n-2)/6을 유도하고, 4 nC2 a^(n-2) = 1/10 * 16 nC4 a^(n-4)와 연립하여 n=8, a=1, n-a=7을 도출하는 4단계 최고난도 이항정리 서술형 문항으로 원본 난이도 상(Bucket 4)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 23,
+      "questionNo": 23,
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형 3] 두 집합 $X=\\{n \\mid n\\text{는 } 6\\text{이하의 자연수}\\}$, $Y=\\{n \\mid -8 \\le n \\le 8, n\\text{는 정수}\\}$에 대하여 다음 조건을 만족시키는 함수",
+        "solutionDecisiveExcerpt": "조건 (가)에 따라 이웃한 함수값의 차는 적어도 2다. $t=f(3)$으로 놓고 앞의 두 값과 뒤의 세 값의 경우를 나누어 센다.\n\n$f_6=t+10\\le8$이므로 $t\\le-2$이다. $f_1\\ge-8$, $f_1+2\\le f_2$, $f_2+2\\le t$를 만족하는"
+      },
+      "pack": "PROBABILITY_STATISTICS",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+      "subUnit": "경우의 수의 활용",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SPACING_VARIABLE_TRANSFORMATION",
+        "CC_REPEATED_COMBINATION",
+        "CC_CASE_SPLIT_SUM"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "t=f(3) 기준 앞의 (f1, f2) 경우의 수 10가지와 뒤의 세 간격 g1, g2, g3의 합 10에 대한 중복조합 3H4=6C2=15가지를 각각 도출하여 곱 10*15=150을 단계별 논증하는 4단계 최고난도 서술형 문항으로 원본 난이도 상(Bucket 4)을 유지한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    }
+  ]
+}
