@@ -6,7 +6,14 @@ import os from "node:os";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { isMetaPipelineApprovedTypeRebindAllowed, isSopPendingSourceNamespaceCorrectionAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, registerReviewedExamV2, sourceVisualType, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { isMetaPipelineApprovedTypeRebindAllowed, isSopPendingSourceNamespaceCorrectionAllowed, isSopV12SourceFieldCorrectionAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, registerReviewedExamV2, sopV12PackIncludes, sourceVisualType, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+
+test("SOP mixed packs accept only exact named owner packs", () => {
+  assert.equal(sopV12PackIncludes("MIDDLE2_AND_MIDDLE_GEOMETRY", "MIDDLE2"), true);
+  assert.equal(sopV12PackIncludes("MIDDLE2_AND_MIDDLE_GEOMETRY", "MIDDLE_GEOMETRY"), true);
+  assert.equal(sopV12PackIncludes("MIDDLE2_AND_MIDDLE_GEOMETRY", "MIDDLE3"), false);
+  assert.equal(sopV12PackIncludes("MIDDLE2", "MIDDLE"), false);
+});
 
 test("SOP namespace correction requires pending state, exact source and canonical labels", () => {
   const question = { standardCourse: "중2-1", standardUnitKey: "OLD", standardUnit: "old", subUnitKey: "OLD-SUB", subUnit: "old sub" };
@@ -28,6 +35,27 @@ test("source visual detection includes images embedded in question HTML", () => 
   assert.equal(sourceVisualType({ choices: ['<img src="assets/images/q.svg" />'] }), "SVG");
   assert.equal(sourceVisualType({ content: '<svg></svg><img src="q.png">' }), "SVG_IMAGE");
   assert.equal(sourceVisualType({ content: '<p>only text</p>' }), "NONE");
+});
+
+test("SOP v1.2 source field correction requires identical review and request entries", () => {
+  const entry = { field: "answer", questionUid: "uid1", auditQuestionNumber: 1, originalManifestValue: "2",
+    currentSourceValue: "1", reason: "Human reviewer confirmed the original manifest answer was stale.", appliedToManifest: false };
+  const base = { field: "answer", ordinal: 1, questionUid: "uid1", originalValue: "2", currentValue: "1",
+    reviewEntry: entry, itemEntry: { ...entry } };
+  assert.equal(isSopV12SourceFieldCorrectionAllowed(base), true);
+  for (const field of ["content", "choices", "questionUid", "id", "sourceOrdinal", "standardUnitKey"]) {
+    assert.equal(isSopV12SourceFieldCorrectionAllowed({ ...base, field }), false);
+  }
+  assert.equal(isSopV12SourceFieldCorrectionAllowed({ ...base, itemEntry: { ...entry, reason: "different" } }), false);
+  assert.equal(isSopV12SourceFieldCorrectionAllowed({ ...base, reviewEntry: { ...entry, appliedToManifest: true }, itemEntry: { ...entry, appliedToManifest: true } }), false);
+  assert.equal(isSopV12SourceFieldCorrectionAllowed({ ...base, reviewEntry: { ...entry, reason: "   " }, itemEntry: { ...entry, reason: "   " } }), false);
+  assert.equal(isSopV12SourceFieldCorrectionAllowed({ ...base, originalValue: "1" }), false);
+  assert.equal(isSopV12SourceFieldCorrectionAllowed({ ...base, currentValue: "2" }), false);
+  assert.equal(isSopV12SourceFieldCorrectionAllowed({ ...base, ordinal: 2 }), false);
+  assert.equal(isSopV12SourceFieldCorrectionAllowed({ ...base, questionUid: "uid2" }), false);
+  const equal = { ...entry, originalManifestValue: "1", currentSourceValue: "1" };
+  assert.equal(isSopV12SourceFieldCorrectionAllowed({ ...base, originalValue: "1", currentValue: "1",
+    reviewEntry: equal, itemEntry: { ...equal } }), false);
 });
 
 test("template reuse statistics accept exact distinct-key or item-binding counts", () => {
@@ -392,6 +420,224 @@ function attachMetaPipelineAuditSourceDriveFlatV3(f, { difficultyBucketOverride,
     evidenceRefs: replace(item.evidenceRefs) }));
   return { ...attached, audit, classification, auditPackageRef, classificationRef };
 }
+
+function syncFixtureSource(f) {
+  const text = "window.questions = " + JSON.stringify([f.q]) + ";\n";
+  f.put("archive/exams/" + f.request.sourceArchiveFile, text);
+  f.request.expectedSourceBlobSha1 = blob(text);
+}
+
+function attachMetaPipelineAuditV4(f, { sourceFieldCorrections = [], manifestOverrides = {}, auditSourceSha256, reviewRowOverrides = {} } = {}) {
+  attachMetaPipelineAudit(f, { exactSourceHashBasis: true });
+  const proof = f.request.approval.metaPipelineAudit;
+  const conditionKeys = Array.isArray(f.q.conditionKeys) ? [...f.q.conditionKeys] : [];
+  const metadata = f.read(META);
+  Object.assign(metadata.records[0], { conditionKeys, difficultyBucket: f.q.difficultyBucket });
+  f.put(META, metadata);
+  f.request.items = f.request.items.map(item => ({ ...item,
+    before: { ...item.before, conditionKeys, difficultyBucket: f.q.difficultyBucket },
+    after: { ...item.after, conditionKeys } }));
+  const item = f.request.items[0];
+  delete item.after.difficultyBucket;
+  const sourceBytes = fs.readFileSync(path.join(f.root, "archive/exams/" + f.request.sourceArchiveFile));
+  const examTitle = path.basename(f.request.sourceArchiveFile, ".js");
+  const currentSourceSha256 = hash(sourceBytes);
+  const originalSourceSha256 = auditSourceSha256 || currentSourceSha256;
+  const target = item.after;
+  const corrections = Array.isArray(sourceFieldCorrections) ? sourceFieldCorrections : [];
+  if (corrections.length) item.sourceFieldCorrections = corrections;
+  const auditRow = {
+    questionNumber: 1, sourceQuestionId: 1, auditStatus: "PASS",
+    packIsolationPassed: true, zeroHoldCompliance: true, zeroStubCertified: true,
+    designatedPack: "new-course", verifiedPrimaryTaxonomy: target.problemTypeKey,
+    verifiedTemplatePattern: target.templateKey, verifiedCrossConcepts: [...target.crossConceptKeys],
+    curriculumAlignment: { unitKey: f.q.standardUnitKey, subUnitKey: f.q.subUnitKey },
+    levelVerbatimPreserved: f.q.level, difficultyRank: 3,
+    difficultyReasonTrace: "fixture source-supported difficulty reason", solutionStepCountVerified: 2,
+  };
+  const audit = {
+    manifestType: "META_AUDIT_ATOMIC_PACKAGE", sopVersion: "SOP_v1.2",
+    examTitle, examSlug: examTitle, sourceFileDriveId: proof.sourceFileDriveId,
+    sourceFileSha256: originalSourceSha256, primaryPack: "new-course",
+    standardCourse: f.q.standardCourse, totalQuestionsAudited: 1, auditPassedCount: 1, holdCount: 0,
+    auditVerdict: "AUDIT_COMPLETE_100_PERCENT_PASS", auditRecords: [auditRow],
+  };
+  const correctedAssignment = { problemTypeKey: target.problemTypeKey, templateKey: target.templateKey,
+    crossConceptKeys: [...target.crossConceptKeys], standardUnitKey: f.q.standardUnitKey,
+    subUnitKey: f.q.subUnitKey, standardCourse: f.q.standardCourse };
+  const reviewRow = {
+    questionUid: item.questionUid, sourceOrdinal: 1, auditQuestionNumber: 1,
+    problemTypeKey: target.problemTypeKey, templateKey: target.templateKey,
+    crossConceptKeys: [...target.crossConceptKeys], standardUnitKey: f.q.standardUnitKey,
+    subUnitKey: f.q.subUnitKey,
+    originalAssignment: { standardUnitKey: f.q.standardUnitKey, subUnitKey: f.q.subUnitKey },
+    correctedAssignment, sourceTextExcerpt: f.q.content, solutionDecisiveExcerpt: f.q.solution,
+    visualEvidence: { assetChecked: false, visualType: "NONE" },
+    ...(corrections.length ? { sourceFieldCorrections: corrections } : {}),
+    ...reviewRowOverrides,
+  };
+  const review = {
+    schemaVersion: "archive-meta-pipeline-sop-v12-corrective-review-v1", sopVersion: "SOP_v1.2",
+    excerptBasis: "CURRENT_PRODUCTION_SOURCE", examTitle, examSlug: examTitle,
+    sourceArchiveFile: f.request.sourceArchiveFile, sourceFileDriveId: proof.sourceFileDriveId,
+    originalDeclaredSourceSha256: originalSourceSha256, driveSourceSha256: currentSourceSha256,
+    productionSourceSha256: currentSourceSha256,
+    sourceHashDrift: originalSourceSha256 !== currentSourceSha256,
+    questionCount: 1, rows: [reviewRow],
+    reviewer: { id: "fixture-human-reviewer", role: "AUTHORIZED_REVIEWER" },
+    reviewedAt: "2026-11-04T00:00:00Z",
+  };
+  const manifestRow = {
+    questionNumber: 1, sourceQuestionId: 1, primaryTaxonomy: target.problemTypeKey,
+    templatePattern: target.templateKey, crossConcepts: [...target.crossConceptKeys],
+    unitKey: f.q.standardUnitKey, subUnitKey: f.q.subUnitKey, pack: "new-course",
+    difficulty: 3, level: f.q.level, questionType: f.q.questionType ?? null,
+    answer: f.q.answer ?? null, choicesCount: Array.isArray(f.q.choices) ? f.q.choices.length : null,
+    score: f.q.score ?? null, ...manifestOverrides,
+  };
+  const manifest = {
+    manifestType: "COURIER_INTAKE_MANIFEST", sopVersion: "SOP_v1.2",
+    examTitle, examSlug: examTitle, sourceDriveId: proof.sourceFileDriveId,
+    sourceFileSha256: originalSourceSha256, standardCourse: f.q.standardCourse,
+    targetPack: "new-course", totalQuestionsToRegister: 1, readyForRegistrationCount: 1,
+    pipelineStatus: "READY_FOR_COURIER_REGISTRATION", recordsToBind: [manifestRow],
+  };
+  const evidenceRoot = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1";
+  const reviewPath = evidenceRoot + "/" + f.request.requestId + ".corrective-review.json";
+  f.put(proof.auditPackageRef.path, audit);
+  f.put(proof.manifestRef.path, manifest);
+  const parity = f.read(proof.sourceParityRef.path);
+  parity.originalDeclaredSourceSha256 = originalSourceSha256;
+  parity.parityBasis = "EXACT_SOURCE_SHA256";
+  parity.status = originalSourceSha256 === currentSourceSha256 ? "EXACT_STUDENT_VISIBLE_PARITY" : "EXACT_STUDENT_VISIBLE_PARITY_WITH_AUDIT_HASH_DRIFT";
+  f.put(proof.sourceParityRef.path, parity);
+  f.put(reviewPath, review);
+  const ref = file => ({ path: file, sha256: hash(fs.readFileSync(path.join(f.root, file))) });
+  const auditRef = ref(proof.auditPackageRef.path);
+  const manifestRef = ref(proof.manifestRef.path);
+  const sourceParityRef = ref(proof.sourceParityRef.path);
+  const correctiveReviewRef = ref(reviewPath);
+  const replace = refs => [...refs.filter(row => ![auditRef.path, manifestRef.path, sourceParityRef.path, reviewPath].includes(row.path)),
+    auditRef, manifestRef, sourceParityRef, correctiveReviewRef];
+  f.request.approval.evidenceRefs = replace(f.request.approval.evidenceRefs);
+  f.request.approval.metaPipelineAudit = { schemaVersion: "meta-pipeline-audit-approval-v4",
+    sourceFileDriveId: proof.sourceFileDriveId, auditPackageRef: auditRef, manifestRef,
+    sourceParityRef, correctiveReviewRef, existingConceptReviews: [] };
+  f.request.items = f.request.items.map(row => ({ ...row, evidenceRefs: replace(row.evidenceRefs) }));
+  return { audit, manifest, review, auditRef, manifestRef, sourceParityRef, correctiveReviewRef };
+}
+
+function answerCorrection(overrides = {}) {
+  return { field: "answer", questionUid: "uid1", auditQuestionNumber: 1,
+    originalManifestValue: "2", currentSourceValue: "1",
+    reason: "Human reviewer confirmed the current source answer is authoritative.",
+    appliedToManifest: false, ...overrides };
+}
+
+function v4CorrectionFixture(t, options = {}) {
+  const f = fixture(t);
+  f.q.questionType = "객관식";
+  f.q.score = 3;
+  syncFixtureSource(f);
+  attachMetaPipelineAuditV4(f, { sourceFieldCorrections: [answerCorrection()], auditSourceSha256: "a".repeat(64),
+    manifestOverrides: { answer: "2" }, ...options });
+  return f;
+}
+
+test("SOP_v1.2 v4 registers an exact no-correction input unchanged", t => {
+  const f = fixture(t);
+  f.q.questionType = "객관식";
+  f.q.score = 3;
+  syncFixtureSource(f);
+  attachMetaPipelineAuditV4(f);
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.totalQuestions, 1);
+  const receipt = f.read("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json");
+  assert.deepEqual(receipt.metaPipelineAudit.sopV12CorrectiveReview.sourceFieldCorrections, []);
+});
+
+test("SOP_v1.2 v4 accepts all four reviewed source-field drifts without rewriting audit, manifest or source", t => {
+  const f = fixture(t);
+  f.q.questionType = "객관식";
+  f.q.score = 3;
+  syncFixtureSource(f);
+  const corrections = [
+    answerCorrection(),
+    answerCorrection({ field: "questionType", originalManifestValue: "서술형", currentSourceValue: "객관식",
+      reason: "Human reviewer confirmed the current source question type is authoritative." }),
+    answerCorrection({ field: "choicesCount", originalManifestValue: 5, currentSourceValue: 2,
+      reason: "Human reviewer confirmed the current source choices count is authoritative." }),
+    answerCorrection({ field: "score", originalManifestValue: 5, currentSourceValue: 3,
+      reason: "Human reviewer confirmed the current source score is authoritative." }),
+  ];
+  attachMetaPipelineAuditV4(f, { sourceFieldCorrections: corrections, auditSourceSha256: "a".repeat(64),
+    manifestOverrides: { answer: "2", questionType: "서술형", choicesCount: 5, score: 5 } });
+  const auditPath = f.request.approval.metaPipelineAudit.auditPackageRef.path;
+  const manifestPath = f.request.approval.metaPipelineAudit.manifestRef.path;
+  const sourcePath = "archive/exams/" + f.request.sourceArchiveFile;
+  const auditBefore = fs.readFileSync(path.join(f.root, auditPath));
+  const manifestBefore = fs.readFileSync(path.join(f.root, manifestPath));
+  const sourceBefore = fs.readFileSync(path.join(f.root, sourcePath));
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.totalQuestions, 1);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, auditPath)), auditBefore);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, manifestPath)), manifestBefore);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, sourcePath)), sourceBefore);
+  assert.equal(result.plannedPaths.includes(auditPath), false);
+  assert.equal(result.plannedPaths.includes(manifestPath), false);
+  const receipt = f.read("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json");
+  const recorded = receipt.metaPipelineAudit.sopV12CorrectiveReview.sourceFieldCorrections;
+  assert.equal(recorded.length, 4);
+  assert.equal(recorded.every(row => row.appliedToManifest === false), true);
+  assert.equal(recorded.every(row => row.reviewer.id === "fixture-human-reviewer" && row.reviewer.role === "AUTHORIZED_REVIEWER"), true);
+  assert.deepEqual(recorded.map(row => row.field), ["answer", "questionType", "choicesCount", "score"]);
+});
+
+test("SOP_v1.2 v4 rejects missing, duplicated, cross-UID, mismatched, reasonless and contradictory corrections", t => {
+  const missing = fixture(t);
+  missing.q.questionType = "객관식";
+  missing.q.score = 3;
+  syncFixtureSource(missing);
+  attachMetaPipelineAuditV4(missing, { auditSourceSha256: "a".repeat(64), manifestOverrides: { answer: "2" } });
+  const metadataBefore = fs.readFileSync(path.join(missing.root, META));
+  assert.throws(() => registerReviewedExamV2({ root: missing.root, request: missing.request, write: true }), /manifest binding mismatch/);
+  assert.deepEqual(fs.readFileSync(path.join(missing.root, META)), metadataBefore);
+
+  const duplicate = v4CorrectionFixture(t, { sourceFieldCorrections: [answerCorrection(), answerCorrection()] });
+  assert.throws(() => registerReviewedExamV2({ root: duplicate.root, request: duplicate.request }), /duplicate source field correction/);
+
+  const crossUid = v4CorrectionFixture(t, { sourceFieldCorrections: [answerCorrection({ questionUid: "uid2" })] });
+  assert.throws(() => registerReviewedExamV2({ root: crossUid.root, request: crossUid.request }), /invalid source field correction/);
+
+  const split = v4CorrectionFixture(t);
+  split.request.items[0].sourceFieldCorrections = [answerCorrection({ reason: "Different human reason." })];
+  assert.throws(() => registerReviewedExamV2({ root: split.root, request: split.request }), /invalid source field correction/);
+
+  const wrongOriginal = v4CorrectionFixture(t, { sourceFieldCorrections: [answerCorrection({ originalManifestValue: "9" })] });
+  assert.throws(() => registerReviewedExamV2({ root: wrongOriginal.root, request: wrongOriginal.request }), /invalid source field correction/);
+
+  const wrongCurrent = v4CorrectionFixture(t, { sourceFieldCorrections: [answerCorrection({ currentSourceValue: "9" })] });
+  assert.throws(() => registerReviewedExamV2({ root: wrongCurrent.root, request: wrongCurrent.request }), /invalid source field correction/);
+
+  const reasonless = v4CorrectionFixture(t, { sourceFieldCorrections: [answerCorrection({ reason: "   " })] });
+  assert.throws(() => registerReviewedExamV2({ root: reasonless.root, request: reasonless.request }), /invalid source field correction/);
+
+  const applied = v4CorrectionFixture(t, { sourceFieldCorrections: [answerCorrection({ appliedToManifest: true })] });
+  assert.throws(() => registerReviewedExamV2({ root: applied.root, request: applied.request }), /invalid source field correction/);
+
+  const contradictory = v4CorrectionFixture(t, { sourceFieldCorrections: [answerCorrection({ originalManifestValue: "1", currentSourceValue: "1" })],
+    manifestOverrides: { answer: "1" } });
+  assert.throws(() => registerReviewedExamV2({ root: contradictory.root, request: contradictory.request }), /invalid source field correction/);
+
+  for (const field of ["content", "choices", "questionUid", "id", "sourceOrdinal"]) {
+    const forbidden = v4CorrectionFixture(t, { sourceFieldCorrections: [answerCorrection({ field })] });
+    assert.throws(() => registerReviewedExamV2({ root: forbidden.root, request: forbidden.request }), /not permitted for field/);
+  }
+
+  const uncoveredField = v4CorrectionFixture(t, { manifestOverrides: { answer: "2", questionType: "서술형" } });
+  assert.throws(() => registerReviewedExamV2({ root: uncoveredField.root, request: uncoveredField.request }), /manifest binding mismatch/);
+});
 
 for (const [course, curriculum] of [["중1 수학", "2015"], ["중2 수학", "2022"], ["중3 수학", "2022"], ["공통수학1", "2022"], ["대수", "2022"], ["미적분Ⅰ", "2022"], ["확률과통계", "2022"], ["수학Ⅱ", "2015"], ["기하", "2015"], ["아직 등록되지 않은 미래 선택과목", "2030"]]) {
   test(`native canonical extension and registration without subject code: ${curriculum}/${course}`, t => {

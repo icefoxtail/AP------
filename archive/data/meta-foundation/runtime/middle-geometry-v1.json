@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-runtime-overlay-v1",
   "status": "ACTIVE",
-  "runtimeVersion": "MIDDLE_GEOMETRY@1.0.3/reviewed-exam-v2",
+  "runtimeVersion": "MIDDLE_GEOMETRY@1.0.4/reviewed-exam-v2",
   "packId": "MIDDLE_GEOMETRY",
-  "packVersion": "1.0.3",
+  "packVersion": "1.0.4",
   "generatedFrom": {
     "l3": "archive/data/meta-foundation/evidence/middle-geometry/v1/l3_semantic_final_928.json",
     "l4CrossConcept": "archive/data/meta-foundation/evidence/middle-geometry/v1/l4_crossconcept_semantic_freeze_928.json",
@@ -17,22 +17,24 @@
     "canonicalIdentityRepair20261025": "docs/operations/META_CANONICAL_KEY_COLLISION_REPAIR_20261025.json",
     "reviewedExam_meta-pipeline-middle-1-ee88316d175e-20261026": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.json",
     "reviewedExam_meta-pipeline-middle-3-18d13404206e-20261026": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
-    "reviewedExam_meta-pipeline-middle-2-d835bd2d8b27-20261026": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-2-d835bd2d8b27-20261026.json"
+    "reviewedExam_meta-pipeline-middle-2-d835bd2d8b27-20261026": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-2-d835bd2d8b27-20261026.json",
+    "reviewedExam_meta-pipeline-nov04-4-31cbb3b72991-20261104": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.json",
+    "reviewedExam_meta-pipeline-nov04-4-31cbb3b72991-20261104-final": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-final.json"
   },
   "counts": {
-    "records": 975,
+    "records": 988,
     "finalL3": 921,
     "finalL4": 901,
     "explicitL4Hold": 20,
     "routeOut": 7,
     "difficultyHold": 781,
-    "defaultSelectable": 209,
+    "defaultSelectable": 222,
     "supplementary": 0,
     "sourceHold": 0,
-    "automaticEligibleExpected": 71,
-    "catalogUidDirectJoin": 975,
+    "automaticEligibleExpected": 84,
+    "catalogUidDirectJoin": 988,
     "catalogSourceIdentityRepairJoin": 0,
-    "taxonomyRows": 91
+    "taxonomyRows": 104
   },
   "ownedScopes": [
     {
@@ -234,6 +236,110 @@
       "courseKey": "M2-2",
       "L1": "사각형의 성질",
       "L2": "여러 가지 사각형",
+      "L3": "평행선 조건으로 넓이가 같은 삼각형 찾기",
+      "L4": "공통 밑변 삼각형의 등적변형 조건 절차",
+      "problemTypeKey": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+      "templateKey": "TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "여러 가지 사각형",
+      "L3": "평행사변형 내각 이등분선이 만드는 사각형의 성질 판정",
+      "L4": "이등분선 교각으로 직사각형 성질 검증 절차",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+      "templateKey": "TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "여러 가지 사각형",
+      "L3": "평행사변형이 직사각형이 되는 조건 선별",
+      "L4": "직사각형 조건과 마름모 조건 구별 절차",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS",
+      "templateKey": "TPL_MG_SELECT_NON_RECTANGLE_CONDITIONS_FOR_PARALLELOGRAM",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "여러 가지 사각형",
+      "L3": "평행사변형에서 정사각형 판별",
+      "L4": "마름모와 직사각형 조건을 결합한 정사각형 판별 절차",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION",
+      "templateKey": "TPL_MG_CLASSIFY_SQUARE_FROM_PARALLELOGRAM_ANGLE_EQUALITIES",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "여러 가지 사각형",
+      "L3": "사각형 계통도에서 단계별 추가 조건 완성",
+      "L4": "사각형 포함 관계 계통도 조건 완성 절차",
+      "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+      "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "여러 가지 사각형",
+      "L3": "대각선의 길이가 같은 사각형 개수 세기",
+      "L4": "사각형별 대각선 성질 분류 후 개수 합산 절차",
+      "problemTypeKey": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH",
+      "templateKey": "TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "여러 가지 사각형",
+      "L3": "마름모 대각선과 두 각의 합 계산",
+      "L4": "마름모 대각선의 수직 성질로 각 합 계산 절차",
+      "problemTypeKey": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES",
+      "templateKey": "TPL_MG_CALCULATE_SUM_OF_ANGLES_IN_RHOMBUS",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "여러 가지 사각형",
+      "L3": "사다리꼴 대각선 비로 삼각형 넓이 계산",
+      "L4": "사다리꼴 평행선 비와 삼각형 넓이비 절차",
+      "problemTypeKey": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
+      "templateKey": "TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "여러 가지 사각형",
       "L3": "사각형의 성질과 판정",
       "L4": "특수한 사각형의 성질",
       "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
@@ -241,6 +347,71 @@
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
       "supportingItemCount": 4
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "평행사변형",
+      "L3": "평행사변형의 각 이등분선이 만드는 선분 계산",
+      "L4": "각 이등분선과 이등변삼각형을 이용한 선분 계산 절차",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+      "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "평행사변형",
+      "L3": "평행사변형이 되지 않는 조건 판별",
+      "L4": "평행사변형 판정 조건의 반례 검토 절차",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+      "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "평행사변형",
+      "L3": "평행사변형이 되는 다섯 조건의 기호 표현",
+      "L4": "평행사변형 판정 조건 기호화 절차",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC",
+      "templateKey": "TPL_MG_WRITE_FIVE_PARALLELOGRAM_CONDITIONS_IN_SYMBOLS_DESCRIPTIVE",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "평행사변형",
+      "L3": "평행사변형 내부 점과 반대 삼각형 넓이",
+      "L4": "내부 점 삼각형 넓이 합 반분 절차",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+      "templateKey": "TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "평행사변형",
+      "L3": "평행사변형 둘레와 변의 비로 한 변 계산",
+      "L4": "둘레 절반을 비례배분하는 변 계산 절차",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+      "templateKey": "TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
     },
     {
       "curriculumKey": "2015",
@@ -3502,6 +3673,84 @@
       "runtimeSelectable": true
     },
     {
+      "questionUid": "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201",
+      "sourceArchiveFile": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+      "sourceOrdinal": 19,
+      "sourceQuestionNo": "19",
+      "sourceFingerprint": "37576737a8e0727dbaefa294a52fb1aa3e51ec00def534eb9bb4903c2c07f8a0",
+      "contentFingerprint": "30a6c607cc2460a82381d02b80d61f03d7a88c21c2b4ab53be260ebf924fe810",
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "여러 가지 사각형",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "대각선의 길이가 같은 사각형",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH",
+      "templateKey": "TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS",
+      "crossConceptKeys": [
+        "CC_QUADRILATERAL_PROPERTIES",
+        "CC_DIAGONALS",
+        "CC_QUADRILATERAL_CLASSIFICATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.4:exam-meta_pipeline_audit-v2:meta-pipeline-nov04-4-31cbb3b72991-20261104-final",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-final.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-visual-correction.json"
+      ],
+      "difficultyBucket": 1,
+      "level": "하",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "여러 가지 사각형",
+      "L3": "대각선의 길이가 같은 사각형 개수 세기",
+      "L4": "사각형별 대각선 성질 분류 후 개수 합산 절차",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.4",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "The SOP_v1.2 audit does not judge IntegrationPattern and the source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js#19",
+      "approvedSourceFingerprint": "37576737a8e0727dbaefa294a52fb1aa3e51ec00def534eb9bb4903c2c07f8a0",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_0f7283b784125bdf1f050712a770dd5edbb2bbabd709f39a8ef3f481238c4842",
       "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
       "sourceOrdinal": 9,
@@ -5628,6 +5877,84 @@
       "runtimeSelectable": true
     },
     {
+      "questionUid": "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55",
+      "sourceArchiveFile": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": "14",
+      "sourceFingerprint": "ca19bbb3948cfb3b59751d8ec6b15fa4cadd25a93c8d6e82ee8bb04afd444a30",
+      "contentFingerprint": "2999b1b4356ccb9a8551c1842cba76cb0e15e3768300860e3cec1e6d36cfba18",
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "여러 가지 사각형",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "평행사변형 내부의 점과 삼각형의 넓이",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+      "templateKey": "TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAMS",
+        "CC_TRIANGLE_AREA",
+        "CC_INTERNAL_POINT_PROPERTIES"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.4:exam-meta_pipeline_audit-v2:meta-pipeline-nov04-4-31cbb3b72991-20261104-final",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-final.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-visual-correction.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "평행사변형",
+      "L3": "평행사변형 내부 점과 반대 삼각형 넓이",
+      "L4": "내부 점 삼각형 넓이 합 반분 절차",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.4",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "The SOP_v1.2 audit does not judge IntegrationPattern and the source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js#14",
+      "approvedSourceFingerprint": "ca19bbb3948cfb3b59751d8ec6b15fa4cadd25a93c8d6e82ee8bb04afd444a30",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_1d54adefc00dc675affa923d916410f8f5c2b56fdcfee14350acf452455939a5",
       "sourceArchiveFile": "original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
       "sourceOrdinal": 21,
@@ -6330,6 +6657,84 @@
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
       "metaFoundationPackVersion": "1.0.0",
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
+    },
+    {
+      "questionUid": "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e",
+      "sourceArchiveFile": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+      "sourceOrdinal": 25,
+      "sourceQuestionNo": "25",
+      "sourceFingerprint": "da2fe4886a5841ee60d3760b027f26085169a9716e44a8a3ae70c9510fa66a35",
+      "contentFingerprint": "629a1af67da448cecdc3a6e833cfc75f6fda98a3ed597b93294a0ff42462c48c",
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "여러 가지 사각형",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "여러 가지 사각형 사이의 관계 조건",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+      "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+      "crossConceptKeys": [
+        "CC_QUADRILATERAL_PROPERTIES",
+        "CC_QUADRILATERAL_HIERARCHY",
+        "CC_SUFFICIENT_CONDITIONS"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.4:exam-meta_pipeline_audit-v2:meta-pipeline-nov04-4-31cbb3b72991-20261104-final",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-final.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-visual-correction.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "여러 가지 사각형",
+      "L3": "사각형 계통도에서 단계별 추가 조건 완성",
+      "L4": "사각형 포함 관계 계통도 조건 완성 절차",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.4",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "The SOP_v1.2 audit does not judge IntegrationPattern and the source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js#25",
+      "approvedSourceFingerprint": "da2fe4886a5841ee60d3760b027f26085169a9716e44a8a3ae70c9510fa66a35",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_23b82fa074fe8a65252992e5581b49dfb79f702b8e218d88c05401e1de335350",
@@ -15507,6 +15912,84 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+      "sourceArchiveFile": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": "16",
+      "sourceFingerprint": "c4144bac24f9303654f39c8bce5ff851c8446306e0286ab4a41f2bfb4f29b18c",
+      "contentFingerprint": "fe11f3e899827e069c13078167a95a6ae8254a9286f186b090c3f3333e109f70",
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "여러 가지 사각형",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "평행사변형이 직사각형이 되는 조건",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS",
+      "templateKey": "TPL_MG_SELECT_NON_RECTANGLE_CONDITIONS_FOR_PARALLELOGRAM",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAMS",
+        "CC_RECTANGLES",
+        "CC_RHOMBUS"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.4:exam-meta_pipeline_audit-v2:meta-pipeline-nov04-4-31cbb3b72991-20261104-final",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-final.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-visual-correction.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "여러 가지 사각형",
+      "L3": "평행사변형이 직사각형이 되는 조건 선별",
+      "L4": "직사각형 조건과 마름모 조건 구별 절차",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.4",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "The SOP_v1.2 audit does not judge IntegrationPattern and the source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js#16",
+      "approvedSourceFingerprint": "c4144bac24f9303654f39c8bce5ff851c8446306e0286ab4a41f2bfb4f29b18c",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_5821bb29aeb617cfb7aeef38bebf72df7c3cb1fcb2aad0bb5574c322917625c7",
       "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 20,
@@ -19431,6 +19914,84 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6",
+      "sourceArchiveFile": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+      "sourceOrdinal": 24,
+      "sourceQuestionNo": "24",
+      "sourceFingerprint": "eba1d4c10b7bb184b2d8df75b1c2236d240c7c517455984833d08e349ae1928a",
+      "contentFingerprint": "335c41842454f4c674b32ecf074c968a838fcb058f2799d48164a40cf1b78362",
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "여러 가지 사각형",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "평행사변형이 되는 조건 5가지 기호 표현",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC",
+      "templateKey": "TPL_MG_WRITE_FIVE_PARALLELOGRAM_CONDITIONS_IN_SYMBOLS_DESCRIPTIVE",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAMS",
+        "CC_MATHEMATICAL_SYMBOLS",
+        "CC_GEOMETRIC_CONDITIONS"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.4:exam-meta_pipeline_audit-v2:meta-pipeline-nov04-4-31cbb3b72991-20261104-final",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-final.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-visual-correction.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "평행사변형",
+      "L3": "평행사변형이 되는 다섯 조건의 기호 표현",
+      "L4": "평행사변형 판정 조건 기호화 절차",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.4",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "The SOP_v1.2 audit does not judge IntegrationPattern and the source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js#24",
+      "approvedSourceFingerprint": "eba1d4c10b7bb184b2d8df75b1c2236d240c7c517455984833d08e349ae1928a",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_6b720257c3715c5b52f7fd0e99c0feb79d08cc8aea81d83dbad8af7539e3c13c",
       "sourceArchiveFile": "original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
       "sourceOrdinal": 12,
@@ -23043,6 +23604,85 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+      "sourceArchiveFile": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": "18",
+      "sourceFingerprint": "0e77e0c9093417ce177495f130c571b5da84b8772d2bdfab304b674e89f5f375",
+      "contentFingerprint": "7aaaba9f12373efc10c0e703a53a0102d72ffce845c75eebac247b4f7dc65070",
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "여러 가지 사각형",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "평행사변형이 마름모가 되는 조건",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION",
+      "templateKey": "TPL_MG_CLASSIFY_SQUARE_FROM_PARALLELOGRAM_ANGLE_EQUALITIES",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAMS",
+        "CC_RHOMBUS",
+        "CC_ISOSCELES_TRIANGLES",
+        "CC_SQUARE_CLASSIFICATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.4:exam-meta_pipeline_audit-v2:meta-pipeline-nov04-4-31cbb3b72991-20261104-final",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-final.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-visual-correction.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "하",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "여러 가지 사각형",
+      "L3": "평행사변형에서 정사각형 판별",
+      "L4": "마름모와 직사각형 조건을 결합한 정사각형 판별 절차",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.4",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "The SOP_v1.2 audit does not judge IntegrationPattern and the source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js#18",
+      "approvedSourceFingerprint": "0e77e0c9093417ce177495f130c571b5da84b8772d2bdfab304b674e89f5f375",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_7d0633cc3d175ee66d91fbb31a920fc7c55febc7f80c3f0f2babe2907460005f",
       "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 15,
@@ -26181,6 +26821,85 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09",
+      "sourceArchiveFile": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": "13",
+      "sourceFingerprint": "efbfd1511b1ded930e829cab3aa31d5df0acbcb68548c4d44b0117ca83d388e5",
+      "contentFingerprint": "45434b1bc17abd4918e3682f5af85e7b8242c98343c65da262ecdd72d6f70bf2",
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "여러 가지 사각형",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "평행사변형이 되는 조건의 판별",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+      "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAMS",
+        "CC_QUADRILATERAL_PROPERTIES",
+        "CC_COUNTEREXAMPLE_CONDITION",
+        "CC_ALTERNATE_INTERIOR_ANGLES"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.4:exam-meta_pipeline_audit-v2:meta-pipeline-nov04-4-31cbb3b72991-20261104-final",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-final.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-visual-correction.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "하",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "평행사변형",
+      "L3": "평행사변형이 되지 않는 조건 판별",
+      "L4": "평행사변형 판정 조건의 반례 검토 절차",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.4",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "The SOP_v1.2 audit does not judge IntegrationPattern and the source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js#13",
+      "approvedSourceFingerprint": "efbfd1511b1ded930e829cab3aa31d5df0acbcb68548c4d44b0117ca83d388e5",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_8eef3617c70d09f0257f7671e71067c6c33adc0a11d2a77c126c05c1c309d846",
       "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
       "sourceOrdinal": 1,
@@ -29124,6 +29843,84 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b",
+      "sourceArchiveFile": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "sourceFingerprint": "ecfece88f5189d3cc257632fd0d678c2dcdf2a4430c076c7f34d1f093bab37f3",
+      "contentFingerprint": "7ed059ec6d49c6b5a98fe1d4d43873cf3575b66724872d786f1db1f3ea9ad68c",
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "여러 가지 사각형",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "마름모의 대각선과 각의 크기",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES",
+      "templateKey": "TPL_MG_CALCULATE_SUM_OF_ANGLES_IN_RHOMBUS",
+      "crossConceptKeys": [
+        "CC_RHOMBUS",
+        "CC_PERPENDICULAR_BISECTOR",
+        "CC_ANGLE_RELATIONS"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.4:exam-meta_pipeline_audit-v2:meta-pipeline-nov04-4-31cbb3b72991-20261104-final",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-final.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-visual-correction.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "하",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "여러 가지 사각형",
+      "L3": "마름모 대각선과 두 각의 합 계산",
+      "L4": "마름모 대각선의 수직 성질로 각 합 계산 절차",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.4",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "The SOP_v1.2 audit does not judge IntegrationPattern and the source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js#17",
+      "approvedSourceFingerprint": "ecfece88f5189d3cc257632fd0d678c2dcdf2a4430c076c7f34d1f093bab37f3",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_9a1c71c7ed648940f63646fd8f2062e131ad914bdf109362eef3aef1a880d7f2",
       "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
       "sourceOrdinal": 12,
@@ -29170,6 +29967,84 @@
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
       "metaFoundationPackVersion": "1.0.0",
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
+    },
+    {
+      "questionUid": "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083",
+      "sourceArchiveFile": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": "21",
+      "sourceFingerprint": "79b3b1e0043cf630dd388ac1a277799f4c577d30bff6f9e1219c89982e776bad",
+      "contentFingerprint": "b60978b9a628eba92b03835f655dcc82741308e3848e64aa231c7cd54cf859c5",
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "여러 가지 사각형",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "평행선과 삼각형의 등적변형",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+      "templateKey": "TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL",
+      "crossConceptKeys": [
+        "CC_PARALLEL_LINES_EQUAL_AREA",
+        "CC_EQUAL_AREA_TRANSFORMATION",
+        "CC_TRIANGLE_AREA"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.4:exam-meta_pipeline_audit-v2:meta-pipeline-nov04-4-31cbb3b72991-20261104-final",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-final.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-visual-correction.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "하",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "여러 가지 사각형",
+      "L3": "평행선 조건으로 넓이가 같은 삼각형 찾기",
+      "L4": "공통 밑변 삼각형의 등적변형 조건 절차",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.4",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "The SOP_v1.2 audit does not judge IntegrationPattern and the source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js#21",
+      "approvedSourceFingerprint": "79b3b1e0043cf630dd388ac1a277799f4c577d30bff6f9e1219c89982e776bad",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_9a7617321dbb9f3cc2d39e363d2de382de17ac82c77ca41d857154b52b20bcc4",
@@ -37765,6 +38640,84 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+      "sourceArchiveFile": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": "12",
+      "sourceFingerprint": "8beaec7e3b48fafa33e2c0ae72df2ffe69e5de2221e38cc717b94c9a5c90a102",
+      "contentFingerprint": "ea29057ace1bcd2ce662baff8bb62f50758300fb4077129aafbc6c0599c23657",
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "여러 가지 사각형",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "각의 이등분선과 평행사변형의 변",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+      "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAMS",
+        "CC_ANGLE_BISECTOR_PROPERTY",
+        "CC_ISOSCELES_TRIANGLES"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.4:exam-meta_pipeline_audit-v2:meta-pipeline-nov04-4-31cbb3b72991-20261104-final",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-final.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-visual-correction.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "평행사변형",
+      "L3": "평행사변형의 각 이등분선이 만드는 선분 계산",
+      "L4": "각 이등분선과 이등변삼각형을 이용한 선분 계산 절차",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.4",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "The SOP_v1.2 audit does not judge IntegrationPattern and the source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js#12",
+      "approvedSourceFingerprint": "8beaec7e3b48fafa33e2c0ae72df2ffe69e5de2221e38cc717b94c9a5c90a102",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_c5b07c11f914f9d6addd00cf47bf1b6449d1f21d5ae5d98bbd23dafe2d41d6d4",
       "sourceArchiveFile": "original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js",
       "sourceOrdinal": 13,
@@ -37809,6 +38762,84 @@
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
       "metaFoundationPackVersion": "1.0.0",
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
+    },
+    {
+      "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+      "sourceArchiveFile": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": "15",
+      "sourceFingerprint": "be91a8aa968f5a90257a9888b5548ccd81a6f1dbdb8c7845682032ddc84a3d74",
+      "contentFingerprint": "bbb3d4c82a449d35cd43deadb4e7343737885a9013df6edefe70ab8a409845f2",
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "여러 가지 사각형",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "내각의 이등분선으로 만들어진 직사각형",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+      "templateKey": "TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAMS",
+        "CC_RECTANGLES",
+        "CC_ANGLE_BISECTOR_PROPERTY"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.4:exam-meta_pipeline_audit-v2:meta-pipeline-nov04-4-31cbb3b72991-20261104-final",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-final.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-visual-correction.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "여러 가지 사각형",
+      "L3": "평행사변형 내각 이등분선이 만드는 사각형의 성질 판정",
+      "L4": "이등분선 교각으로 직사각형 성질 검증 절차",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.4",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "The SOP_v1.2 audit does not judge IntegrationPattern and the source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js#15",
+      "approvedSourceFingerprint": "be91a8aa968f5a90257a9888b5548ccd81a6f1dbdb8c7845682032ddc84a3d74",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_c60eb1ec277931476109399e0b39e2b9b5e866e1aefec8962f802149eb2cd3c3",
@@ -44834,6 +45865,84 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb",
+      "sourceArchiveFile": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": "11",
+      "sourceFingerprint": "8d84a2280d0d486ba450516b2c680641ca4e583b9a8752c42df96ba118dcd6f1",
+      "contentFingerprint": "5d1024e681db6103eff6371fe97ac0f616e175da629a91dd58ec5129a8b442ab",
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "여러 가지 사각형",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "평행사변형의 대변의 길이와 비례배분",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+      "templateKey": "TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAMS",
+        "CC_RATIO_AND_PROPORTION",
+        "CC_PERIMETER"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.4:exam-meta_pipeline_audit-v2:meta-pipeline-nov04-4-31cbb3b72991-20261104-final",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-final.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-visual-correction.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "하",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "평행사변형",
+      "L3": "평행사변형 둘레와 변의 비로 한 변 계산",
+      "L4": "둘레 절반을 비례배분하는 변 계산 절차",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.4",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "The SOP_v1.2 audit does not judge IntegrationPattern and the source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js#11",
+      "approvedSourceFingerprint": "8d84a2280d0d486ba450516b2c680641ca4e583b9a8752c42df96ba118dcd6f1",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_ee6e07c33e87ca4b56c85e0987080ff6d28924bc58dcbe5c26b3271cab54b3ef",
       "sourceArchiveFile": "original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
       "sourceOrdinal": 6,
@@ -48425,6 +49534,84 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41",
+      "sourceArchiveFile": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "sourceFingerprint": "1778ddc50b45f82bd1872575e439e72ed91ed989572179295fd27047e948e417",
+      "contentFingerprint": "fc696bf5fe42e5eaa7ae17bc1dfe2f645c2b253d5060cecca162554defd520d8",
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "여러 가지 사각형",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "사다리꼴과 높이가 같은 삼각형의 넓이의 비",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
+      "templateKey": "TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID",
+      "crossConceptKeys": [
+        "CC_TRAPEZOID",
+        "CC_TRIANGLE_AREA",
+        "CC_AREA_RATIO"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.4:exam-meta_pipeline_audit-v2:meta-pipeline-nov04-4-31cbb3b72991-20261104-final",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.manifest.source.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.source-parity.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-final.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104-visual-correction.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "L1": "사각형의 성질",
+      "L2": "여러 가지 사각형",
+      "L3": "사다리꼴 대각선 비로 삼각형 넓이 계산",
+      "L4": "사다리꼴 평행선 비와 삼각형 넓이비 절차",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.4",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "The SOP_v1.2 audit does not judge IntegrationPattern and the source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js#20",
+      "approvedSourceFingerprint": "1778ddc50b45f82bd1872575e439e72ed91ed989572179295fd27047e948e417",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3",
       "sourceArchiveFile": "original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
       "sourceOrdinal": 3,
@@ -48526,7 +49713,7 @@
   },
   "usage": {
     "schemaVersion": "archive-reviewed-runtime-usage-v1",
-    "records": 975,
+    "records": 988,
     "problemTypes": [
       {
         "key": "PT_CIRCLE_ANGLE_RELATIONS",
@@ -48932,6 +50119,97 @@
           "qid_v1_f79602b4b00d7a9d9501abe8027cea374d5167488219a5062d963f3d76c12911",
           "qid_v1_f7ea6087ad496c4efcc82bd2eb0a0d30bcfe35bc5304afdd23a3f86dedb7cb2d",
           "qid_v1_fc40513f50e6014b508eb1e8061f135682b5a065fbf336fa755918de6c97ccf7"
+        ]
+      },
+      {
+        "key": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083"
+        ]
+      },
+      {
+        "key": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1"
+        ]
+      },
+      {
+        "key": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5"
+        ]
+      },
+      {
+        "key": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09"
+        ]
+      },
+      {
+        "key": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6"
+        ]
+      },
+      {
+        "key": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55"
+        ]
+      },
+      {
+        "key": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb"
+        ]
+      },
+      {
+        "key": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a"
+        ]
+      },
+      {
+        "key": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36"
+        ]
+      },
+      {
+        "key": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e"
+        ]
+      },
+      {
+        "key": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201"
+        ]
+      },
+      {
+        "key": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b"
+        ]
+      },
+      {
+        "key": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41"
         ]
       },
       {
@@ -50078,6 +51356,97 @@
         ]
       },
       {
+        "key": "TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55"
+        ]
+      },
+      {
+        "key": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1"
+        ]
+      },
+      {
+        "key": "TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb"
+        ]
+      },
+      {
+        "key": "TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41"
+        ]
+      },
+      {
+        "key": "TPL_MG_CALCULATE_SUM_OF_ANGLES_IN_RHOMBUS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b"
+        ]
+      },
+      {
+        "key": "TPL_MG_CLASSIFY_SQUARE_FROM_PARALLELOGRAM_ANGLE_EQUALITIES",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36"
+        ]
+      },
+      {
+        "key": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e"
+        ]
+      },
+      {
+        "key": "TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201"
+        ]
+      },
+      {
+        "key": "TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5"
+        ]
+      },
+      {
+        "key": "TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083"
+        ]
+      },
+      {
+        "key": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09"
+        ]
+      },
+      {
+        "key": "TPL_MG_SELECT_NON_RECTANGLE_CONDITIONS_FOR_PARALLELOGRAM",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a"
+        ]
+      },
+      {
+        "key": "TPL_MG_WRITE_FIVE_PARALLELOGRAM_CONDITIONS_IN_SYMBOLS_DESCRIPTIVE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6"
+        ]
+      },
+      {
         "key": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
         "count": 21,
         "questionUids": [
@@ -50804,6 +52173,13 @@
     ],
     "crossConcepts": [
       {
+        "key": "CC_ALTERNATE_INTERIOR_ANGLES",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09"
+        ]
+      },
+      {
         "key": "CC_ANGLE_BISECTOR",
         "count": 29,
         "questionUids": [
@@ -50846,10 +52222,25 @@
         ]
       },
       {
+        "key": "CC_ANGLE_BISECTOR_PROPERTY",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+          "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5"
+        ]
+      },
+      {
         "key": "CC_ANGLE_BISECTOR_THEOREM",
         "count": 1,
         "questionUids": [
           "qid_v1_d923745c2dc8001bd522354fa916db2c9b9c1938f6a617df5e9ae826b9b3fedb"
+        ]
+      },
+      {
+        "key": "CC_ANGLE_RELATIONS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b"
         ]
       },
       {
@@ -50873,6 +52264,13 @@
           "qid_v1_e619e81e58f114e10a57ebc9a0e1b4ab3249f6426d22270568d760b8f759aa97",
           "qid_v1_ef20a6c26730e0f8d28a3cf2eb84c4ed8a64ce9531a5dbd24d70f37ef14303ae",
           "qid_v1_f7be4418352cb51897eabfaa23709be51702d4aad8cf0789fcb89ba5cef54193"
+        ]
+      },
+      {
+        "key": "CC_AREA_RATIO",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41"
         ]
       },
       {
@@ -50961,6 +52359,20 @@
         ]
       },
       {
+        "key": "CC_COUNTEREXAMPLE_CONDITION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09"
+        ]
+      },
+      {
+        "key": "CC_DIAGONALS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201"
+        ]
+      },
+      {
         "key": "CC_DIAMETER",
         "count": 19,
         "questionUids": [
@@ -51001,11 +52413,25 @@
         ]
       },
       {
+        "key": "CC_EQUAL_AREA_TRANSFORMATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083"
+        ]
+      },
+      {
         "key": "CC_EQUILATERAL_TRIANGLE",
         "count": 2,
         "questionUids": [
           "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6",
           "qid_v1_675fd78074a129d25aeae426fc763ee79c0980b6c90f17976e51a1a206277ac7"
+        ]
+      },
+      {
+        "key": "CC_GEOMETRIC_CONDITIONS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6"
         ]
       },
       {
@@ -51049,6 +52475,13 @@
         ]
       },
       {
+        "key": "CC_INTERNAL_POINT_PROPERTIES",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55"
+        ]
+      },
+      {
         "key": "CC_ISOSCELES_CONVERSE",
         "count": 1,
         "questionUids": [
@@ -51085,6 +52518,14 @@
         ]
       },
       {
+        "key": "CC_ISOSCELES_TRIANGLES",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+          "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1"
+        ]
+      },
+      {
         "key": "CC_LINE_SLOPE_TANGENT",
         "count": 1,
         "questionUids": [
@@ -51098,6 +52539,13 @@
           "qid_v1_0e389d9c42fdce03a188d2b167e3c575ed4a2ef70b7fe2e1ba1476cae466c51b",
           "qid_v1_72e49a2a2750e5d84eb7fafebe43c1fc6f7a06148692d51525383206e8de0901",
           "qid_v1_cabeb01d604c16c39e86b56cb545700147864caafc640dfef6d4b2782d418f0a"
+        ]
+      },
+      {
+        "key": "CC_MATHEMATICAL_SYMBOLS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6"
         ]
       },
       {
@@ -51150,6 +52598,13 @@
         ]
       },
       {
+        "key": "CC_PARALLEL_LINES_EQUAL_AREA",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083"
+        ]
+      },
+      {
         "key": "CC_PARALLEL_LINES_RATIO",
         "count": 2,
         "questionUids": [
@@ -51184,10 +52639,32 @@
         ]
       },
       {
+        "key": "CC_PARALLELOGRAMS",
+        "count": 8,
+        "questionUids": [
+          "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55",
+          "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+          "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6",
+          "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+          "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09",
+          "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+          "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+          "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb"
+        ]
+      },
+      {
+        "key": "CC_PERIMETER",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb"
+        ]
+      },
+      {
         "key": "CC_PERPENDICULAR_BISECTOR",
-        "count": 6,
+        "count": 7,
         "questionUids": [
           "qid_v1_7c8045846596a97fd168e12fa77d709521e58ce8e00047c357b722eeb97209c3",
+          "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b",
           "qid_v1_c4a376e540879fc952ffc11ad69787cffe02eea257b94686fd0d0a30e2af6bf5",
           "qid_v1_d4aa1b6dd61fdb3a5410a6ba95022cd647543979c1ee19a50edeab454180e6b8",
           "qid_v1_dac810bf3b89381938743c5d437577d0a6f110a2aca3b641cb951416b1e8e053",
@@ -51348,6 +52825,29 @@
         ]
       },
       {
+        "key": "CC_QUADRILATERAL_CLASSIFICATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201"
+        ]
+      },
+      {
+        "key": "CC_QUADRILATERAL_HIERARCHY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e"
+        ]
+      },
+      {
+        "key": "CC_QUADRILATERAL_PROPERTIES",
+        "count": 3,
+        "questionUids": [
+          "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201",
+          "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e",
+          "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09"
+        ]
+      },
+      {
         "key": "CC_RADICAL_ABSOLUTE_VALUE",
         "count": 1,
         "questionUids": [
@@ -51371,6 +52871,13 @@
         ]
       },
       {
+        "key": "CC_RATIO_AND_PROPORTION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb"
+        ]
+      },
+      {
         "key": "CC_RECTANGLE_INSCRIBED_CIRCLE_TANGENT",
         "count": 1,
         "questionUids": [
@@ -51389,6 +52896,14 @@
         "count": 1,
         "questionUids": [
           "qid_v1_d73f321d3488f5b6c220bd5cfc4b742cef64f34861434d3447e3c22a24fd6a09"
+        ]
+      },
+      {
+        "key": "CC_RECTANGLES",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+          "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5"
         ]
       },
       {
@@ -51415,6 +52930,15 @@
         "count": 1,
         "questionUids": [
           "qid_v1_76c01a675d734cb05888d8566b0f29d109b58b1306f27003e9341f547410452a"
+        ]
+      },
+      {
+        "key": "CC_RHOMBUS",
+        "count": 3,
+        "questionUids": [
+          "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+          "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+          "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b"
         ]
       },
       {
@@ -51530,10 +53054,24 @@
         ]
       },
       {
+        "key": "CC_SQUARE_CLASSIFICATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36"
+        ]
+      },
+      {
         "key": "CC_SQUARE_PROPERTIES",
         "count": 1,
         "questionUids": [
           "qid_v1_296d10458b92438351df35ee9f31908c44448145b806b9c9f7bd2f3cc8fb4abc"
+        ]
+      },
+      {
+        "key": "CC_SUFFICIENT_CONDITIONS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e"
         ]
       },
       {
@@ -51567,6 +53105,13 @@
         ]
       },
       {
+        "key": "CC_TRAPEZOID",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41"
+        ]
+      },
+      {
         "key": "CC_TRIANGLE_ANGLE_SUM",
         "count": 1,
         "questionUids": [
@@ -51575,13 +53120,14 @@
       },
       {
         "key": "CC_TRIANGLE_AREA",
-        "count": 88,
+        "count": 91,
         "questionUids": [
           "qid_v1_05daec14579c8b0ad326ad3ba39d161c8ff6564afc7d2ba08840126422e57601",
           "qid_v1_0a9c48e55c5a0d94082e2fe352c1a9d450ad0c16db0baccd66889876f74c34e6",
           "qid_v1_0b87a12d0ae090d88165eeaa3b12b28324643aff621b7cc42f31b80452e4d984",
           "qid_v1_0ccaa24dc139ce4cf597356d5d1003afa0b37e8b9f5a0155fd7d0fddfc68acf1",
           "qid_v1_0fc64493d70adeeb7e15027aa5842e0e2776a75870028335cc2da273b890ee26",
+          "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55",
           "qid_v1_1fe640371ed53750b26b3c317c36c27b0da8f82b275504fe20831cbad80f0c34",
           "qid_v1_214cbb7253ddc80447ac27c0576660965f48ee534bcd03ff9b61a1ce1d8fcf98",
           "qid_v1_32c8608ad82c5fafe0d02cc716756c9a42b7cf1d8a4a44de9bc6a06676ab9463",
@@ -51629,6 +53175,7 @@
           "qid_v1_9922fdb0d30c265378a8f2f73ab4fb0d6ce20236cfe56b7ba8629752aeeb2072",
           "qid_v1_9a0686ad7215cc2afff66c158131fd343a64bd2111f30341df6b8383aaba1b7c",
           "qid_v1_9a1c71c7ed648940f63646fd8f2062e131ad914bdf109362eef3aef1a880d7f2",
+          "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083",
           "qid_v1_9da60224de63e75d017892461250ba4a324d2fc267022173e70fc89770f4a75f",
           "qid_v1_a5fbe1472c327d76d6f5ecf84aa165b767b0162e3a4640fea21fb31346f7277f",
           "qid_v1_a7a28ed2d0042c682c607fe9525d20191e3dfda454ba197d21399c69e13e96c8",
@@ -51664,6 +53211,7 @@
           "qid_v1_f833211db4f6db8cac467cef0f4b06390519b0c18d9f4002b84baebb2066d552",
           "qid_v1_fbe1585c663bd4f0ea45dfd2a68eb09ca0771d24334dc1f126b3d8e85faed417",
           "qid_v1_fc4b845acbedac9832b4dd132457352095c2e7487b04cde5f1e71b02d8d03f9e",
+          "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41",
           "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3"
         ]
       },

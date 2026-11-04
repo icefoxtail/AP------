@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 11,
-  "templateCount": 34,
+  "problemTypeCount": 24,
+  "templateCount": 47,
   "problemTypes": [
     {
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
@@ -983,6 +983,422 @@
       ],
       "action": "ADD",
       "promotionStatus": "REVIEW_REQUIRED"
+    },
+    {
+      "problemTypeKey": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+      "canonicalLabelKo": "평행선 조건으로 넓이가 같은 삼각형 찾기",
+      "definition": "주어진 사각형과 삼각형의 넓이가 같아지도록 하는 평행 조건을 찾는 과제.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083",
+          "sourceOrdinal": 21,
+          "classificationRationale": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION/TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 두 삼각형 $ACD, ACE$는 밑변 $AC$를 공유하므로 $DE\\parallel AC$이면 높이가 같아서 넓이가 같다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+      "canonicalLabelKo": "평행사변형의 각 이등분선이 만드는 선분 계산",
+      "definition": "평행사변형에서 두 내각의 이등분선이 만드는 겹치는 선분의 길이를 구하는 과제.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+          "sourceOrdinal": 12,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT/TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: $EF=BE-BF=6-3=3\\text{cm}$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+      "canonicalLabelKo": "평행사변형 내각 이등분선이 만드는 사각형의 성질 판정",
+      "definition": "평행사변형의 네 내각 이등분선의 교점으로 만든 사각형이 어떤 성질을 갖는지 판정하는 과제.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+          "sourceOrdinal": 15,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE/TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "⑤ 이웃하는 두 변의 길이가 같은 것은 마름모 또는 정사각형의 성질이며 직사각형의 성질이 아니다. (거짓)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+      "canonicalLabelKo": "평행사변형이 되지 않는 조건 판별",
+      "definition": "제시된 사각형의 조건 중 평행사변형임을 보장하지 않는 것을 찾는 과제.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09",
+          "sourceOrdinal": 13,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION/TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: ①은 한 쌍의 대변의 길이와 이웃각의 크기만 같아 평행사변형임이 보장되지 않는다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC",
+      "canonicalLabelKo": "평행사변형이 되는 다섯 조건의 기호 표현",
+      "definition": "사각형이 평행사변형이 되는 다섯 가지 조건을 수학 기호로 각각 나타내는 과제.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6",
+          "sourceOrdinal": 24,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC/TPL_MG_WRITE_FIVE_PARALLELOGRAM_CONDITIONS_IN_SYMBOLS_DESCRIPTIVE bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "⑤ 한 쌍의 대변이 평행하고 길이도 같다: $AB\\parallel CD$, $AB=CD$ (또는 $AD\\parallel BC$, $AD=BC$).",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+      "canonicalLabelKo": "평행사변형 내부 점과 반대 삼각형 넓이",
+      "definition": "평행사변형 내부의 한 점과 두 대변으로 만든 삼각형의 넓이 관계를 이용해 다른 삼각형의 넓이를 구하는 과제.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55",
+          "sourceOrdinal": 14,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA/TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: $[CDP]=34-24=10\\text{cm}^2$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+      "canonicalLabelKo": "평행사변형 둘레와 변의 비로 한 변 계산",
+      "definition": "평행사변형의 둘레와 이웃하는 두 변의 비가 주어졌을 때 특정 변의 길이를 구하는 과제.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb",
+          "sourceOrdinal": 11,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER/TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 비가 $3:5$이므로 $AB=24\\times\\frac{3}{3+5}=9\\text{cm}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS",
+      "canonicalLabelKo": "평행사변형이 직사각형이 되는 조건 선별",
+      "definition": "평행사변형이 직사각형이 되기 위한 조건이 아닌 보기를 두 개 고르는 과제.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+          "sourceOrdinal": 16,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS/TPL_MG_SELECT_NON_RECTANGLE_CONDITIONS_FOR_PARALLELOGRAM bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: ① 이웃변 길이가 같다는 조건과 ⑤ 두 대각선이 수직이라는 조건은 각각 마름모의 조건이지만 직사각형까지 보장하지는 않는다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION",
+      "canonicalLabelKo": "평행사변형에서 정사각형 판별",
+      "definition": "평행사변형의 각과 변에 주어진 조건을 이용해 최종적으로 정사각형임을 판별하는 과제.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION/TPL_MG_CLASSIFY_SQUARE_FROM_PARALLELOGRAM_ANGLE_EQUALITIES bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: 마름모이면서 직사각형이므로 정사각형이다. 정답은 ⑤이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+      "canonicalLabelKo": "사각형 계통도에서 단계별 추가 조건 완성",
+      "definition": "일반 사각형에서 평행사변형·마름모·직사각형·정사각형으로 발전하는 계통도의 빈칸에 필요한 조건을 쓰는 과제.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e",
+          "sourceOrdinal": 25,
+          "classificationRationale": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS/TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "① 사다리꼴→평행사변형: 다른 한 쌍의 대변도 평행하다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH",
+      "canonicalLabelKo": "대각선의 길이가 같은 사각형 개수 세기",
+      "definition": "여러 사각형 중 두 대각선의 길이가 같은 사각형의 개수를 세는 과제.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201",
+          "sourceOrdinal": 19,
+          "classificationRationale": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH/TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 대각선의 길이가 같은 사각형은 ㄴ, ㄹ, ㅁ으로 총 $3$개이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES",
+      "canonicalLabelKo": "마름모 대각선과 두 각의 합 계산",
+      "definition": "마름모의 두 대각선이 만나는 점을 이용해 주어진 두 각의 합을 구하는 과제.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b",
+          "sourceOrdinal": 17,
+          "classificationRationale": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES/TPL_MG_CALCULATE_SUM_OF_ANGLES_IN_RHOMBUS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "$\\angle x + \\angle y = 90^\\circ$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
+      "canonicalLabelKo": "사다리꼴 대각선 비로 삼각형 넓이 계산",
+      "definition": "사다리꼴에서 한 삼각형의 넓이와 대각선의 분할 비가 주어졌을 때 다른 삼각형의 넓이를 구하는 과제.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41",
+          "sourceOrdinal": 20,
+          "classificationRationale": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO/TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: 삼각형 $ABD$에서 $[ABO]:[ADO]=BO:OD=3:2$이므로 $[ABO]=\\frac35\\times\\frac{70}{3}=14\\text{cm}^2$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
     }
   ],
   "templates": [
@@ -2259,6 +2675,435 @@
           "representativeQuestionUid": "qid_v1_d247e8a713ec628aa817bbdcc42dd52387eb8c2e7a0989faf5b1e58325b74ebe",
           "representativePrimaryMethod": "환형 부채꼴 경계를 바깥 호, 안쪽 호, 두 방사형 선분으로 나눈다.",
           "representativeDecisiveStep": "바깥 호 3π, 안쪽 호 2π, 두 선분 4cm씩을 더해 (5π+8)cm를 얻는다."
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT",
+      "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+      "canonicalLabelKo": "내부 점 삼각형 넓이 합 반분 절차",
+      "definition": "평행사변형 내부의 점에서 마주 보는 두 변에 만든 삼각형의 넓이 합이 전체 넓이의 절반임을 이용해, 주어진 삼각형 넓이를 전체 넓이의 절반에서 빼 원하는 넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55",
+          "sourceOrdinal": 14,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA/TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: $[CDP]=34-24=10\\text{cm}^2$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+      "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+      "canonicalLabelKo": "각 이등분선과 이등변삼각형을 이용한 선분 계산 절차",
+      "definition": "평행선의 엇각과 각의 이등분선으로 생기는 이등변삼각형을 찾아 같은 길이의 변을 표시하고, 전체 변의 길이에서 겹치는 부분을 빼거나 더해 원하는 선분을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+          "sourceOrdinal": 12,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT/TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: $EF=BE-BF=6-3=3\\text{cm}$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER",
+      "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+      "canonicalLabelKo": "둘레 절반을 비례배분하는 변 계산 절차",
+      "definition": "평행사변형의 둘레를 2로 나누어 이웃하는 두 변의 합을 구하고, 주어진 비에 따라 그 합을 비례배분해 각 변의 길이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb",
+          "sourceOrdinal": 11,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER/TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 비가 $3:5$이므로 $AB=24\\times\\frac{3}{3+5}=9\\text{cm}$이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID",
+      "parentProblemTypeKey": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
+      "canonicalLabelKo": "사다리꼴 평행선 비와 삼각형 넓이비 절차",
+      "definition": "평행한 두 밑변에 의해 대각선이 나뉘는 비를 이용해 삼각형들의 넓이비를 정하고, 주어진 넓이에 그 비를 차례로 적용해 원하는 삼각형의 넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41",
+          "sourceOrdinal": 20,
+          "classificationRationale": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO/TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: 삼각형 $ABD$에서 $[ABO]:[ADO]=BO:OD=3:2$이므로 $[ABO]=\\frac35\\times\\frac{70}{3}=14\\text{cm}^2$.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MG_CALCULATE_SUM_OF_ANGLES_IN_RHOMBUS",
+      "parentProblemTypeKey": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES",
+      "canonicalLabelKo": "마름모 대각선의 수직 성질로 각 합 계산 절차",
+      "definition": "마름모의 두 대각선이 서로 수직이등분함을 이용해 직각삼각형을 찾고, 그 직각삼각형의 두 예각의 합이 직각임을 이용해 두 각의 합을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b",
+          "sourceOrdinal": 17,
+          "classificationRationale": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES/TPL_MG_CALCULATE_SUM_OF_ANGLES_IN_RHOMBUS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "$\\angle x + \\angle y = 90^\\circ$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MG_CLASSIFY_SQUARE_FROM_PARALLELOGRAM_ANGLE_EQUALITIES",
+      "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION",
+      "canonicalLabelKo": "마름모와 직사각형 조건을 결합한 정사각형 판별 절차",
+      "definition": "이등변삼각형의 두 밑각이 같아 이웃변의 길이가 같아지면 마름모임을 보이고, 이어서 이웃한 두 꼭짓각이 같아져 직각이 되면 정사각형임을 결론짓는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION/TPL_MG_CLASSIFY_SQUARE_FROM_PARALLELOGRAM_ANGLE_EQUALITIES bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "3단계: 마름모이면서 직사각형이므로 정사각형이다. 정답은 ⑤이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+      "parentProblemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+      "canonicalLabelKo": "사각형 포함 관계 계통도 조건 완성 절차",
+      "definition": "직전 사각형에 어떤 성질을 추가하면 다음 사각형이 되는지 판단해, 각 단계의 포함 관계를 만족시키는 충분조건을 차례로 서술한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e",
+          "sourceOrdinal": 25,
+          "classificationRationale": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS/TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "① 사다리꼴→평행사변형: 다른 한 쌍의 대변도 평행하다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS",
+      "parentProblemTypeKey": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH",
+      "canonicalLabelKo": "사각형별 대각선 성질 분류 후 개수 합산 절차",
+      "definition": "각 사각형의 대각선 성질을 확인해 길이가 항상 같은 것과 그렇지 않은 것을 분류하고, 해당하는 사각형의 개수를 센다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201",
+          "sourceOrdinal": 19,
+          "classificationRationale": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH/TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 대각선의 길이가 같은 사각형은 ㄴ, ㄹ, ㅁ으로 총 $3$개이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS",
+      "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+      "canonicalLabelKo": "이등분선 교각으로 직사각형 성질 검증 절차",
+      "definition": "이웃하는 두 내각의 합이 180도임을 이용해 이등분선이 만나는 각이 직각임을 보이고, 만들어진 사각형이 직사각형임을 확인한 뒤 각 성질의 참·거짓을 판정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+          "sourceOrdinal": 15,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE/TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "⑤ 이웃하는 두 변의 길이가 같은 것은 마름모 또는 정사각형의 성질이며 직사각형의 성질이 아니다. (거짓)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL",
+      "parentProblemTypeKey": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+      "canonicalLabelKo": "공통 밑변 삼각형의 등적변형 조건 절차",
+      "definition": "두 도형에서 공통인 삼각형을 제외하고 남은 두 삼각형의 넓이가 같아야 함을 이용해, 공통 밑변에 대한 높이가 같아지는 평행 조건을 찾는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083",
+          "sourceOrdinal": 21,
+          "classificationRationale": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION/TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: 두 삼각형 $ACD, ACE$는 밑변 $AC$를 공유하므로 $DE\\parallel AC$이면 높이가 같아서 넓이가 같다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+      "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+      "canonicalLabelKo": "평행사변형 판정 조건의 반례 검토 절차",
+      "definition": "평행사변형이 되는 다섯 가지 조건과 비교해 각 보기가 충분조건인지 확인하고, 조건을 만족해도 평행사변형이 아닌 반례가 가능한 보기를 찾는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09",
+          "sourceOrdinal": 13,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION/TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: ①은 한 쌍의 대변의 길이와 이웃각의 크기만 같아 평행사변형임이 보장되지 않는다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MG_SELECT_NON_RECTANGLE_CONDITIONS_FOR_PARALLELOGRAM",
+      "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS",
+      "canonicalLabelKo": "직사각형 조건과 마름모 조건 구별 절차",
+      "definition": "한 내각이 직각이거나 두 대각선의 길이가 같다는 직사각형 조건과, 이웃변의 길이가 같거나 두 대각선이 수직이라는 마름모 조건을 구별해 직사각형을 보장하지 않는 보기를 선택한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+          "sourceOrdinal": 16,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS/TPL_MG_SELECT_NON_RECTANGLE_CONDITIONS_FOR_PARALLELOGRAM bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "2단계: ① 이웃변 길이가 같다는 조건과 ⑤ 두 대각선이 수직이라는 조건은 각각 마름모의 조건이지만 직사각형까지 보장하지는 않는다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MG_WRITE_FIVE_PARALLELOGRAM_CONDITIONS_IN_SYMBOLS_DESCRIPTIVE",
+      "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC",
+      "canonicalLabelKo": "평행사변형 판정 조건 기호화 절차",
+      "definition": "대변의 평행, 대변의 길이, 대각의 크기, 대각선의 이등분, 한 쌍의 대변의 평행과 길이 같음을 각각 기호를 사용한 조건식으로 표현한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+          "questionUid": "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6",
+          "sourceOrdinal": 24,
+          "classificationRationale": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC/TPL_MG_WRITE_FIVE_PARALLELOGRAM_CONDITIONS_IN_SYMBOLS_DESCRIPTIVE bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+          "decisiveEvidence": "⑤ 한 쌍의 대변이 평행하고 길이도 같다: $AB\\parallel CD$, $AB=CD$ (또는 $AD\\parallel BC$, $AD=BC$).",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+            "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+            "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+          }
         }
       ]
     }
