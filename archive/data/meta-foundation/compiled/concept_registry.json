@@ -4,13 +4,13 @@
   "sourceShards": [
     {
       "shardId": "ALGEBRA",
-      "version": "1.4.19",
-      "conceptCount": 301
+      "version": "1.4.20",
+      "conceptCount": 302
     },
     {
       "shardId": "FUNCTIONS",
-      "version": "1.5.10",
-      "conceptCount": 117
+      "version": "1.5.11",
+      "conceptCount": 119
     },
     {
       "shardId": "LOGIC_SET",
@@ -59,11 +59,11 @@
     },
     {
       "shardId": "STATISTICS_CONCEPTS",
-      "version": "1.0.5",
-      "conceptCount": 64
+      "version": "1.0.6",
+      "conceptCount": 77
     }
   ],
-  "conceptCount": 750,
+  "conceptCount": 766,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -10208,6 +10208,45 @@
       "ownerConceptShard": "ALGEBRA"
     },
     {
+      "conceptKey": "CC_GEOMETRIC_AREA_VOLUME_FORMULA",
+      "canonicalLabelKo": "도형의 둘레·넓이·부피 공식",
+      "definition": "정사각형 둘레 4x, 삼각형 넓이 ½×밑변×높이, 원 넓이 πx², 정육면체 부피 x³ 등 도형 공식을 x의 식으로 쓴다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_258f4918b80ba1034758ae714755cc9b47c451164a96bdccf1406536382b50aa"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_258f4918b80ba1034758ae714755cc9b47c451164a96bdccf1406536382b50aa",
+          "sourceOrdinal": 1,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_DEFINITION/TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- ③ 원의 넓이: $y = \\pi x^2$ ($x^2$의 계수가 $\\pi \\ne 0$인 이차함수)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_DEFINITION"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
       "canonicalLabelKo": "절댓값 기호가 포함된 함수의 그래프",
       "definition": "절댓값 기호가 포함된 식을 구간별 식으로 나누어 함수의 그래프와 교점 구조를 해석하는 개념.",
@@ -14413,6 +14452,84 @@
       ],
       "taxonomyRefs": [
         "PT_M3_QUADRATIC_FUNCTION_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_FUNCTION_DEGREE_CLASSIFICATION",
+      "canonicalLabelKo": "관계식의 차수에 따른 함수 분류",
+      "definition": "관계식의 최고차항 차수에 따라 일차함수·이차함수·삼차함수로 분류한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_258f4918b80ba1034758ae714755cc9b47c451164a96bdccf1406536382b50aa"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_258f4918b80ba1034758ae714755cc9b47c451164a96bdccf1406536382b50aa",
+          "sourceOrdinal": 1,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_DEFINITION/TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- ③ 원의 넓이: $y = \\pi x^2$ ($x^2$의 계수가 $\\pi \\ne 0$인 이차함수)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_DEFINITION"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_GENERAL_FORM",
+      "canonicalLabelKo": "이차함수의 일반형",
+      "definition": "y=ax^2+bx+c (a≠0) 꼴로, 계수 a, b, c가 그래프의 모양과 위치를 결정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0e245fd0206e51e376b65b45dd1a8460c96906525b562fb4e1e368fb65086257"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_0e245fd0206e51e376b65b45dd1a8460c96906525b562fb4e1e368fb65086257",
+          "sourceOrdinal": 11,
+          "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS/TPL_M3_DETERMINE_EQUATION_FROM_THREE_GIVEN_POINTS bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$5a = -10 \\implies a = -2$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS"
       ],
       "curriculumRefs": [
         "2015:중3-1:M3-04"
@@ -26516,6 +26633,632 @@
       ],
       "curriculumRefs": [
         "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_BAR_GRAPH_DISTRIBUTION",
+      "canonicalLabelKo": "막대그래프의 도수 분포",
+      "definition": "이산 범주별 도수를 막대의 높이로 나타낸 그래프에서 분포의 중심과 퍼짐을 읽는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e",
+          "sourceOrdinal": 21,
+          "classificationRationale": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON/TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS bound at M3-07/M3-07-STATISTICS_DATA_INTERPRETATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 세 반의 그래프는 모두 중앙의 동일한 권수를 기준으로 완벽히 좌우 대칭입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_CENTRAL_TENDENCY",
+      "canonicalLabelKo": "대푯값",
+      "definition": "자료 전체의 특징을 하나의 값으로 나타내는 평균·중앙값·최빈값을 통틀어 이르는 말.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_63c7fb6ae4bf62a3b5af3ceae6f949d15855f6158737e84b78d364638cdb392e",
+        "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402",
+          "sourceOrdinal": 17,
+          "classificationRationale": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE/TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 가장 많이 나타난 수는 $8$(3회)입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_63c7fb6ae4bf62a3b5af3ceae6f949d15855f6158737e84b78d364638cdb392e",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS/TPL_M3_EVALUATE_CENTRAL_TENDENCY_FROM_LINE_GRAPHS bound at M3-07/M3-07-STATISTICS_DATA_INTERPRETATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 2반 그래프에서 가장 높은 도수(정점)를 나타내는 점수는 $4$점입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_DEVIATION",
+      "canonicalLabelKo": "편차",
+      "definition": "변량에서 평균을 뺀 값으로, 변량이 평균보다 크면 양수·작으면 음수가 된다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_df165d3ac5e4a44e2d778536ec86d843872938d1f11c9b19261a676a447b15dd"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_df165d3ac5e4a44e2d778536ec86d843872938d1f11c9b19261a676a447b15dd",
+          "sourceOrdinal": 22,
+          "classificationRationale": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE/TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\text{편차} = \\text{변량} - \\text{평균} < 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_DISPERSION_VISUAL_COMPARISON",
+      "canonicalLabelKo": "분포 그림으로 산포 비교",
+      "definition": "평균 주변에 도수가 밀집할수록 분산·표준편차가 작다는 성질로 여러 분포의 산포를 비교한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e",
+          "sourceOrdinal": 21,
+          "classificationRationale": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON/TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS bound at M3-07/M3-07-STATISTICS_DATA_INTERPRETATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 세 반의 그래프는 모두 중앙의 동일한 권수를 기준으로 완벽히 좌우 대칭입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_LINE_GRAPH_READING",
+      "canonicalLabelKo": "꺾은선그래프 읽기",
+      "definition": "가로축 값에 대한 도수를 꺾은선으로 나타낸 그래프에서 정점과 도수 분포를 읽는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_63c7fb6ae4bf62a3b5af3ceae6f949d15855f6158737e84b78d364638cdb392e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_63c7fb6ae4bf62a3b5af3ceae6f949d15855f6158737e84b78d364638cdb392e",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS/TPL_M3_EVALUATE_CENTRAL_TENDENCY_FROM_LINE_GRAPHS bound at M3-07/M3-07-STATISTICS_DATA_INTERPRETATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 2반 그래프에서 가장 높은 도수(정점)를 나타내는 점수는 $4$점입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_MEAN_SCALING_PROPERTY",
+      "canonicalLabelKo": "변량 변환과 평균",
+      "definition": "각 변량에 k를 곱하면 평균도 k배가 되고, b를 더하면 평균도 b만큼 커진다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_68c7f338cd3057ba3a7f66a0ec25a7e28888873817ccc0e074a1997c009f4208"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_68c7f338cd3057ba3a7f66a0ec25a7e28888873817ccc0e074a1997c009f4208",
+          "sourceOrdinal": 19,
+          "classificationRationale": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS/TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\text{분산} = 3^2 \\times \\dfrac{8}{3} = 9 \\times \\dfrac{8}{3} = 24$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_LINEAR_TRANSFORMATION_STATISTICS"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_MEAN",
+      "canonicalLabelKo": "평균",
+      "definition": "모든 변량의 합을 변량의 개수(또는 총도수)로 나눈 값.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c1e2a05a4305e0a48b1bd81fbf9f147373d777b18f24a17d00054b24c51ba359"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_c1e2a05a4305e0a48b1bd81fbf9f147373d777b18f24a17d00054b24c51ba359",
+          "sourceOrdinal": 20,
+          "classificationRationale": "PT_M3_DISPERSION_FREQUENCY_TABLE/TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\text{분산} = \\dfrac{84}{20} = \\dfrac{21}{5}$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_DISPERSION_FREQUENCY_TABLE"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_MEDIAN",
+      "canonicalLabelKo": "중앙값",
+      "definition": "변량을 작은 값부터 크기순으로 나열했을 때 한가운데 위치하는 값.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_63c7fb6ae4bf62a3b5af3ceae6f949d15855f6158737e84b78d364638cdb392e",
+        "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402",
+          "sourceOrdinal": 17,
+          "classificationRationale": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE/TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 가장 많이 나타난 수는 $8$(3회)입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_63c7fb6ae4bf62a3b5af3ceae6f949d15855f6158737e84b78d364638cdb392e",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS/TPL_M3_EVALUATE_CENTRAL_TENDENCY_FROM_LINE_GRAPHS bound at M3-07/M3-07-STATISTICS_DATA_INTERPRETATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 2반 그래프에서 가장 높은 도수(정점)를 나타내는 점수는 $4$점입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_MODE",
+      "canonicalLabelKo": "최빈값",
+      "definition": "자료에서 가장 많이 나타나는 값, 즉 도수가 가장 큰 변량.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_63c7fb6ae4bf62a3b5af3ceae6f949d15855f6158737e84b78d364638cdb392e",
+        "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402",
+          "sourceOrdinal": 17,
+          "classificationRationale": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE/TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 가장 많이 나타난 수는 $8$(3회)입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_63c7fb6ae4bf62a3b5af3ceae6f949d15855f6158737e84b78d364638cdb392e",
+          "sourceOrdinal": 18,
+          "classificationRationale": "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS/TPL_M3_EVALUATE_CENTRAL_TENDENCY_FROM_LINE_GRAPHS bound at M3-07/M3-07-STATISTICS_DATA_INTERPRETATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 2반 그래프에서 가장 높은 도수(정점)를 나타내는 점수는 $4$점입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_STANDARD_DEVIATION",
+      "canonicalLabelKo": "표준편차",
+      "definition": "분산의 음이 아닌 제곱근으로, 자료의 흩어진 정도를 원래 단위로 나타낸 값.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_73d2b48684d7dd3c4b26db633558febd2046dab02be059fbb4fd8a1a3c5145c4",
+        "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e",
+        "qid_v1_df165d3ac5e4a44e2d778536ec86d843872938d1f11c9b19261a676a447b15dd"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e",
+          "sourceOrdinal": 21,
+          "classificationRationale": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON/TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS bound at M3-07/M3-07-STATISTICS_DATA_INTERPRETATION; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "- 세 반의 그래프는 모두 중앙의 동일한 권수를 기준으로 완벽히 좌우 대칭입니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_df165d3ac5e4a44e2d778536ec86d843872938d1f11c9b19261a676a447b15dd",
+          "sourceOrdinal": 22,
+          "classificationRationale": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE/TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\text{편차} = \\text{변량} - \\text{평균} < 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_73d2b48684d7dd3c4b26db633558febd2046dab02be059fbb4fd8a1a3c5145c4",
+          "sourceOrdinal": 25,
+          "classificationRationale": "PT_M3_DISPERSION_DEVIATION_PROPERTIES/TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$2 + 3 + 1 + (-1) + (-2) + 0 + a = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON",
+        "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_SUM_OF_DEVIATIONS_ZERO",
+      "canonicalLabelKo": "편차의 합이 0인 성질",
+      "definition": "모든 변량의 편차를 더하면 항상 0이 된다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_73d2b48684d7dd3c4b26db633558febd2046dab02be059fbb4fd8a1a3c5145c4"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_73d2b48684d7dd3c4b26db633558febd2046dab02be059fbb4fd8a1a3c5145c4",
+          "sourceOrdinal": 25,
+          "classificationRationale": "PT_M3_DISPERSION_DEVIATION_PROPERTIES/TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$2 + 3 + 1 + (-1) + (-2) + 0 + a = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_DISPERSION_DEVIATION_PROPERTIES"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_VARIANCE_SCALING_PROPERTY",
+      "canonicalLabelKo": "변량 변환과 분산",
+      "definition": "각 변량에 k를 곱하면 분산은 k²배가 되고, 상수를 더해도 분산은 변하지 않는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_68c7f338cd3057ba3a7f66a0ec25a7e28888873817ccc0e074a1997c009f4208"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_68c7f338cd3057ba3a7f66a0ec25a7e28888873817ccc0e074a1997c009f4208",
+          "sourceOrdinal": 19,
+          "classificationRationale": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS/TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\text{분산} = 3^2 \\times \\dfrac{8}{3} = 9 \\times \\dfrac{8}{3} = 24$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_LINEAR_TRANSFORMATION_STATISTICS"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_VARIANCE",
+      "canonicalLabelKo": "분산",
+      "definition": "편차의 제곱의 평균으로, 자료가 평균 주변에 흩어진 정도를 나타내는 값.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_73d2b48684d7dd3c4b26db633558febd2046dab02be059fbb4fd8a1a3c5145c4",
+        "qid_v1_c1e2a05a4305e0a48b1bd81fbf9f147373d777b18f24a17d00054b24c51ba359",
+        "qid_v1_df165d3ac5e4a44e2d778536ec86d843872938d1f11c9b19261a676a447b15dd"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_c1e2a05a4305e0a48b1bd81fbf9f147373d777b18f24a17d00054b24c51ba359",
+          "sourceOrdinal": 20,
+          "classificationRationale": "PT_M3_DISPERSION_FREQUENCY_TABLE/TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\text{분산} = \\dfrac{84}{20} = \\dfrac{21}{5}$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_df165d3ac5e4a44e2d778536ec86d843872938d1f11c9b19261a676a447b15dd",
+          "sourceOrdinal": 22,
+          "classificationRationale": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE/TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$\\text{편차} = \\text{변량} - \\text{평균} < 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+          "questionUid": "qid_v1_73d2b48684d7dd3c4b26db633558febd2046dab02be059fbb4fd8a1a3c5145c4",
+          "sourceOrdinal": 25,
+          "classificationRationale": "PT_M3_DISPERSION_DEVIATION_PROPERTIES/TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+          "decisiveEvidence": "$$2 + 3 + 1 + (-1) + (-2) + 0 + a = 0$$",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+            "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+          },
+          "correctiveReviewRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+            "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "PT_M3_DISPERSION_FREQUENCY_TABLE",
+        "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE"
+      ],
+      "curriculumRefs": [
+        "2015:중3-1:M3-07"
       ],
       "ownerConceptShard": "STATISTICS_CONCEPTS"
     }
