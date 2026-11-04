@@ -235,7 +235,7 @@ window.questionBank=[
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: 원에 내접한 오각형 ABCDE와 중심각 COD=72°, 꼭짓점 B와 E의 원주각 x와 y.",
+    "solutionImageAlt": "해설 그림: 원에 내접한 다섯 꼭짓점 A, B, C, D, E의 오각형과 중심각 COD=72°, 꼭짓점 B와 E의 원주각 x와 y.",
     "solutionImageCaption": "중심각 COD는 호 CD의 크기를 정한다. x와 y가 보는 호의 합은 한 바퀴와 호 CD를 더한 크기이다. 정답 ③.",
     "solutionImageSize": "full"
   },
